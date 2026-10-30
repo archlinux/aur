@@ -8,7 +8,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm" "${pkgbase}-xpu" "${pkgbase}-opt-xpu")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.14.1
+pkgver=2.15.0
 pkgrel=1
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
@@ -112,7 +112,6 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-ideep::git+https://github.com/intel/ideep"
         "${pkgname}-ittapi::git+https://github.com/intel/ittapi.git"
         "${pkgname}-json::git+https://github.com/nlohmann/json.git"
-        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-kleidiai::git+https://github.com/ARM-software/kleidiai.git"
         "${pkgname}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
@@ -132,8 +131,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         fix_noinline_macro.h
         $pkgname-187006.patch::https://github.com/pytorch/pytorch/pull/187006.patch
         )
-b2sums=('92a5e26e27889896c55947c21c7c3a182e856c4feb6d35665ee20d01bd53df03e18a7c912a07acd7b927f869dfddb55cdc0b0916be72531d5b2b63b75b32196d'
-        'SKIP'
+b2sums=('229332601a80fc49d6fefe393e98ddee27db12e587f8fb222790a0d023bb97f846921e94544b7db8af973078febd81429f5abf39e80c829ebcc26df39ab468c9'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -171,11 +169,11 @@ b2sums=('92a5e26e27889896c55947c21c7c3a182e856c4feb6d35665ee20d01bd53df03e18a7c9
         'SKIP'
         'SKIP'
         '8c91e931f34fcc1cc5d916572e9808435bbc4a853d80af92a5484b4bb1111ef3b2a1c58283b97c2c3071de3177a124669004855f7ebad0734b0941714e3baf4f'
-        'd87164726e398d201719d629889d6f460e6dc4911de6c10234b046a3e2ffd5d26892ac34a6518abb20bb3ff1dc9f1f01e0e78b789eec92cd13696a3fd8d484b7'
+        'c19aa4fc8d6416789453163d53bfd4f52682a68746bc6ad6ac2b7520ecbca1bb6363afc969e98738206b6374ceec4ca6769724d4653e677c2be514ddee20fdef'
         'b9bb1ac1260a55db9126c7568f1cb4daea071c20609f0117e186c85caad163d41053e43ddda988e8969e074e2323d1de1bece9086bc3222396e8817a79bd0079'
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '55bb148db8d61c90fd59257bd70fdf13577a9740f02c39d7fce786eea2c6b324c7ef913eba7c0a4d6c8894c072270bc79f1c83a8ccd269ac973cb6c00c014381'
+        'bf0a737c76e44186ef4df121290eb6ac6203c9366b8e8b74b41ab24b920a88d7a3ac95a918dc9aef591719e5df3ff206f512728a8af47999af0635bccc6e0623'
         'ccfa6616257ed9df0efa4ae5c7491b980e0b87667cef53b2f1164909791ac7aa36aadcadb199b12acebd0781a29126b4289d5266beb3488141f0253c96704c93'
         '8b7d8ee806613a5e3ce5ecf6be09b3f1bb31fed193b644dc17b1caad2212e2774e0f67452199bc00c5655fea6b6401ad00e4e99b4fd858fcb3749f1e1f4c9d04')
 options=('!lto' '!debug')
@@ -215,7 +213,6 @@ prepare() {
   git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
   git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
   git config submodule."third_party/ittapi".url "${srcdir}/${pkgname}"-ittapi
-  git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git config submodule."third_party/kleidiai".url "${srcdir}/${pkgname}"-kleidiai
   git config submodule."third_party/mimalloc".url "${srcdir}/${pkgname}"-mimalloc
   git config submodule."third_party/mslk".url "${srcdir}/${pkgname}"-MSLK
@@ -302,13 +299,6 @@ _prepare() {
   export CC="${NVCC_CCBIN/++/cc}"
   export CXX="$NVCC_CCBIN"
   export CXXFLAGS+=" -Wno-error=maybe-uninitialized"
-  # The HIP headers (hip/amd_detail/host_defines.h) define __noinline__ as an
-  # empty macro when compiled with GCC. This breaks GCC 16's libstdc++ <format>,
-  # which uses [[__gnu__::__noinline__]] and then fails with
-  # "error: expected an identifier for the attribute name".
-  # Force-including <format> before any HIP header fixes this.
-  # Now that's some bs.
-  export CXXFLAGS+=" -include ${srcdir}/fix_noinline_macro.h"
   export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
@@ -391,9 +381,19 @@ build() {
 
   cd "${srcdir}/${_pkgname}-rocm"
   echo "Building with rocm and without non-x86-64 optimizations"
+
   # -fcf-protection is not supported by HIP, see
   # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
   CXXFLAGS+=" -fcf-protection=none"
+
+  # The HIP headers (hip/amd_detail/host_defines.h) define __noinline__ as an
+  # empty macro when compiled with GCC. This breaks GCC 16's libshdc++ <format>,
+  # which uses [[__gnu__::__noinline__]] and then fails with
+  # "error: expected an identifier for the attribute name".
+  # Force-including <format> before any HIP header fixes this.
+  # Now that's some bs.
+  CXXFLAGS+=" -include ${srcdir}/fix_noinline_macro.h"
+
   _prepare
   export USE_CUDA=0
   export USE_CUDNN=0
@@ -415,6 +415,9 @@ build() {
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
   python -m build --wheel --no-isolation
+
+  # Remove the -include fix_noinline_macro.h thing again so it's not part of the XPU build below.
+  export CXXFLAGS="${CXXFLAGS// -include ${srcdir}\/fix_noinline_macro.h/}"
 
   # Strip the problematic format-security flag that breaks SYCL CMake scripts
   export CFLAGS="${CFLAGS/-Werror=format-security/}"

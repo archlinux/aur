@@ -1,8 +1,8 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 695842c971ae..266c1dc206aa 100644
+index e7648b0..650bf18 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -312,10 +312,8 @@ dev = [
+@@ -314,10 +314,8 @@ dev = [
      # after which this can be removed as it is already specified in the
      # [build-system] section
      "scikit-build-core>=1.0",
@@ -15,13 +15,13 @@ index 695842c971ae..266c1dc206aa 100644
      "packaging>=24.2",  # required by setuptools>=77 to validate PEP 639 license expressions
      "pyyaml",
 diff --git a/tools/metadata/dependencies.py b/tools/metadata/dependencies.py
-index 0845141d729f..33b276bc8c22 100644
+index 5daec86..4723162 100644
 --- a/tools/metadata/dependencies.py
 +++ b/tools/metadata/dependencies.py
-@@ -27,7 +27,7 @@ __all__ = ["dynamic_metadata", "dynamic_wheel"]
+@@ -29,7 +29,7 @@ __all__ = ["dynamic_metadata", "dynamic_wheel"]
  BASE_DEPENDENCIES = [
      "filelock",
-     "typing-extensions>=4.10.0",
+     "typing-extensions>=4.13.0",
 -    "setuptools>=77.0.3",
 +    "setuptools",
      "sympy>=1.13.3",
