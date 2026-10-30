@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!debug')
 optdepends=('firefox: the browser the extension runs in')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d68c4d9b8efb7d05beaf6d5fe268ec1c5dedcac69c7e9c173ee8517590664d66')
+sha256sums=('7fe71726ac98aad71db08d58af2ad4a6bdb60e2523aae10a92a154178ede52a5')
 
 build() {
   cd "$pkgname-$pkgver/host"
