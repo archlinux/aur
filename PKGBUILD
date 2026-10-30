@@ -2,7 +2,7 @@
 # Published source asset, pinned to this version and its SHA-256.
 # Local development snapshots: tools/prepare-package.py (bump version before releasing changes).
 pkgname=plasma6-themes-nobara-fixed
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Nobara appearance for Plasma 6.8 with wallpapers, icons, GTK and Konsole themes"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('konsole: use the Nobara terminal profile and colors'
             'plasma-login-manager: apply Nobara appearance to the Plasma login screen')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f7792e814c7cd92b95e01aeded9984db3c395b96e96194c9c55e4cafa7d04a21')
+sha256sums=('396a76e880cf5edf834b286562667d3fadf9b59d8e60d9af884eb84958a60ff9')
 
 check() {
   cd "$pkgname-$pkgver"
