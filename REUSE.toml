@@ -2,55 +2,57 @@ version = 1
 
 [[annotations]]
 path = [
-    "PKGBUILD",
-    "powershell-modules.psm1",
-    "build-modules.ps1",
-    "crossgen2-pack.targets",
-    "update-help.ps1",
-    "invoke-pester.ps1",
-    "update-pwsh-deps.ps1",
-    "update-pwsh-deps",
-    "psresourceget-test.ps1",
-    "nuget-modules.config",
-    "README.md",
-    "keys/**",
-    ".SRCINFO",
-    ".nvchecker.toml",
-    "*.install",
-    "*.sysusers",
-    "*.tmpfiles",
-    "*.logrotate",
-    "*.pam",
-    "*.service",
-    "*.socket",
-    "*.timer",
-    "*.desktop",
-    "*.hook",
-    ".gitignore",
+  "PKGBUILD",
+  "powershell-modules.psm1",
+  "build-modules.ps1",
+  "crossgen2-pack.targets",
+  "update-help.ps1",
+  "invoke-pester.ps1",
+  "update-pwsh-deps.ps1",
+  "update-pwsh-deps",
+  "psresourceget-test.ps1",
+  "nuget-modules.config",
+  "README.md",
+  "keys/**",
+  ".SRCINFO",
+  ".nvchecker.toml",
+  "*.install",
+  "*.sysusers",
+  "*.tmpfiles",
+  "*.logrotate",
+  "*.pam",
+  "*.service",
+  "*.socket",
+  "*.timer",
+  "*.desktop",
+  "*.hook",
+  ".gitignore",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "psmodulepath-combined-paths.patch",
-    "mmi-optional.patch",
-    "system-drawing-windows-only.patch",
+  "psmodulepath-combined-paths.patch",
+  "mmi-optional.patch",
+  "system-drawing-windows-only.patch",
 ]
 SPDX-FileCopyrightText = "PowerShell contributors"
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
 path = [
-    "oneget-user-temp-folder.patch",
-    "oneget-net10.patch",
+  "oneget-user-temp-folder.patch",
+  "oneget-net10.patch",
 ]
 SPDX-FileCopyrightText = "OneGet contributors"
 SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
 path = [
-    "psresourceget-net10.patch",
+  "psresourceget-net10.patch",
 ]
 SPDX-FileCopyrightText = "Microsoft Corporation"
 SPDX-License-Identifier = "MIT"
