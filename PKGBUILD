@@ -3,7 +3,7 @@
 pkgauthor="hcgatewood"
 pkgname="appa"
 pkgdesc="☁️ Markdown previews with live reload"
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -22,7 +22,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('8d7f43fdc697caf6fecc47e22e9f98d7b72d895a9ccf9309f19ac33fd0b9ab734cc2d408e5d4c94c5d497ac820598962c14e1356b824ce999d6247fb894a3de5')
+b2sums=('6f2c039ea3731b173c3eaed549c2491383a16f18182b75f6e63cd1eea5ccdef2e81d77cf2bfef0f6318114e9f487444a48d99715f9ba2ecaee2eccab7982d366')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
