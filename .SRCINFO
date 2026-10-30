@@ -1,6 +1,6 @@
 pkgbase = bombsquad
 	pkgdesc = An explosive arcade-style party game
-	pkgver = 1.8.4
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = http://www.froemling.net/apps/bombsquad
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = bombsquad
 	sha256sums = 31f3af8d59a384b7a3ac999d2e8fe0a0033d0d31ae6e760686537ab85d86ba00
 	sha256sums = 850f8a66eb045ce833f8d7dae4533f69b629ac648bd205d98bf5f851339d4515
 	sha256sums = 900ffdf250eb2c59a2944703ccab9b69e58b5cdd7809f8349f6291db0301935c
-	source_x86_64 = https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_x86_64_1.8.4.tar.gz
-	sha256sums_x86_64 = 9375e48133ba2f8cbb91cfc5254efcd2a8fe99837acd5482c99c51590b01ce05
-	source_aarch64 = https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_Arm64_1.8.4.tar.gz
-	sha256sums_aarch64 = 298f2ce3bb5324297dba49c15bb4c3c566e2b0835793095adc02a7feb3f85243
+	source_x86_64 = https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_x86_64_1.8.5.tar.gz
+	sha256sums_x86_64 = a6db8865eaab9620531015ad8b66e442b699bf260ade941889bf33d9a5599347
+	source_aarch64 = https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_Arm64_1.8.5.tar.gz
+	sha256sums_aarch64 = a731e6af2c1f0fcfa6e886b305206468374f905b80501e535c5868599e805241
 
 pkgname = bombsquad
