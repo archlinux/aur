@@ -1,6 +1,6 @@
 pkgbase = llamastash
 	pkgdesc = Zero-overhead, terminal-native local-LLM orchestrator. Run any engine, any model via the same proxy.
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/llamastash/llamastash
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = llamastash
 	conflicts = llamastash-bin
 	conflicts = llamastash-git
 	options = !lto
-	source = llamastash-0.10.0.tar.gz::https://github.com/llamastash/llamastash/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 1eced1c53a8a849f0a9c43760c7a4b3997ecd507f349c0aa701578474cde469f
+	source = llamastash-0.10.1.tar.gz::https://github.com/llamastash/llamastash/archive/refs/tags/v0.10.1.tar.gz
+	sha256sums = f9f230786d4dcdc15219897ebfc5b5e0663cdc027df247d6a0d390722657610a
 
 pkgname = llamastash
