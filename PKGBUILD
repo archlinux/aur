@@ -1,6 +1,7 @@
 pkgname=nagram-desktop
-pkgver=7.2.10.3
-_td_commit=bc9c263e2bfee06aaab41e82db51a103376030bc
+pkgver=7.3.3.2
+_td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
+_wallet_engine_ver=0.0.7
 pkgrel=1
 pkgdesc='An independent Telegram client built with Qt.'
 arch=('x86_64')
@@ -53,10 +54,12 @@ depends=(
 makedepends=(
   'boost'
   'boost-libs'
+  'cargo'
   'cmake'
   'git'
   'glib2-devel'
   'gobject-introspection'
+  'just'
   'qt6-shadertools'
   'gperf'
   'libtg_owt'
@@ -77,6 +80,9 @@ optdepends=(
 source=(
   "git+https://github.com/NextAlone/Nagram-Qt.git#tag=v${pkgver}"
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
+  # We're vendoring wallet-engine because tdesktop requires a massive patch against it.
+  "wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz"
+  "https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch"
   "git+https://github.com/Microsoft/GSL.git"
   "git+https://github.com/Cyan4973/xxHash.git"
   "git+https://github.com/lz4/lz4.git"
@@ -112,11 +118,15 @@ source=(
   "git+https://github.com/tzcnt/TooManyCooks.git"
   "git+https://github.com/PJK/libcbor.git"
   "git+https://github.com/Yubico/libfido2.git"
+  "git+https://github.com/tsyrogit/zxcvbn-c.git"
   "git+https://gitlab.com/mnauw/cppgir.git"
   "git+https://github.com/martinmoene/expected-lite.git"
 )
-sha512sums=('d19e8ba70b5f91f20df96150a2d7c642097003a00493ed8389ec566f2b13bad80aa20fc4d5728bc9af1821c60183933ed60318d5ff88393493bc4c174205cf92'
-            '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1'
+sha512sums=('f2ffc861fe6ff4061a2107ddcacb6a9ff0baefafc46af4ca46c10038156fa9a2b7fc85abf930f345665072cfe19ecb72ff6cde82fe694f7403042efb79251472'
+            'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
+            'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
+            '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -191,6 +201,7 @@ prepare() {
   git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/TooManyCooks".url "file://${srcdir}/TooManyCooks"
   git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/libcbor".url "file://${srcdir}/libcbor"
   git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/libfido2".url "file://${srcdir}/libfido2"
+  git -C Nagram-Qt config --local submodule."Telegram/ThirdParty/zxcvbn".url "file://${srcdir}/zxcvbn-c"
   git -C Nagram-Qt -c protocol.file.allow=always submodule update
 
   git -C Nagram-Qt/cmake submodule init
@@ -200,9 +211,21 @@ prepare() {
   git -C Nagram-Qt/cmake/external/glib/cppgir submodule init
   git -C Nagram-Qt/cmake/external/glib/cppgir config --local submodule."expected-lite".url "file://${srcdir}/expected-lite" 
   git -C Nagram-Qt/cmake/external/glib/cppgir -c protocol.file.allow=always submodule update
+
+  cd wallet-engine-${_wallet_engine_ver}
+  patch -Np1 -i "$srcdir"/wallet-engine.patch
 }
 
 build() {
+  # Build wallet-engine
+  cd wallet-engine-${_wallet_engine_ver}
+  just build
+  just bindings-cpp
+  install -Dm644 target/release/libwallet_engine.a -t install/lib/
+  install -Dm644 bindings/cpp-experimental/* -t install/include/wallet_engine/
+  cd ..
+
+  # Build td
   cmake -S td -B td/build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
@@ -223,6 +246,7 @@ build() {
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
+    -DCMAKE_PREFIX_PATH="$PWD/wallet-engine-${_wallet_engine_ver}/install" \
     -DCMAKE_BUILD_TYPE=None \
     "${_api_defines[@]}"
   cmake --build build
