@@ -1,7 +1,7 @@
 pkgbase = sonic-tv-interface
 	pkgdesc = SonicDE interface for TVs
 	pkgver = 6.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-tv-interface
 	arch = x86_64
 	groups = sonicde
