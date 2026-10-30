@@ -1,0 +1,18 @@
+pkgbase = zdotool-git
+	pkgdesc = C++ port of ydotool: inject keyboard and mouse input through uinput
+	pkgver = r1.g0000000
+	pkgrel = 1
+	url = https://github.com/Monjaris/zdotool
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = xmake
+	depends = glibc
+	depends = gcc-libs
+	provides = zdotool
+	conflicts = zdotool
+	options = !debug
+	source = zdotool::git+https://github.com/Monjaris/zdotool.git
+	sha256sums = SKIP
+
+pkgname = zdotool-git
