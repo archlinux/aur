@@ -1,7 +1,7 @@
 pkgbase = fthr-clips-git
 	pkgdesc = Instant replay capture and clip management (upstream Linux development branch)
 	pkgver = 1.1.1alpha0.r10.g2208931
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FTHR-Community/FTHR-Clips
 	arch = x86_64
 	license = GPL-3.0-only
@@ -47,7 +47,6 @@ pkgbase = fthr-clips-git
 	optdepends = grim: screenshots on supported Wayland compositors
 	optdepends = openbsd-netcat: compositor hotkey socket commands
 	optdepends = xdg-utils: open the clips folder
-	optdepends = xorg-xwayland: run the UI with QT_QPA_PLATFORM=xcb when native Wayland fails
 	optdepends = libva-mesa-driver: AMD VA-API encoding
 	optdepends = nvidia-utils: NVIDIA NVENC encoding
 	optdepends = xdotool: X11 window detection
@@ -76,7 +75,7 @@ pkgbase = fthr-clips-git
 	sha256sums = 1de1a5e49a878122010b88c7e295502bc69776c157c4a4dc78741a4e6178b00f
 	sha256sums = f3a22400bce1b0c701683820ac4f3b159cd301acab067c51c653e06961600597
 	sha256sums = 4a351c53faee8b004fae2a1b31d24bdbae444534996013f0e184ae9d3b367fc2
-	sha256sums = 090ef9fa5b6ac5de8a7fdf2be24f0d8bbc43c241375c76d7b23d9ccc4bed714a
+	sha256sums = 7ef444e34c812cb6f862ec66dcd26c4953596be292fdc019ab85114da54f3297
 	sha256sums = 248fc13c182338eced319efdaa0137334f9a773fedaaf0380f35a28a65c40f2a
 	sha256sums = 0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1
 

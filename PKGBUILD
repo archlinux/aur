@@ -1,7 +1,7 @@
 # Maintainer: Vaspyyy <lolbautz2 at gmail dot com>
 pkgname=fthr-clips-git
 pkgver=1.1.1alpha0.r10.g2208931
-pkgrel=2
+pkgrel=3
 pkgdesc='Instant replay capture and clip management (upstream Linux development branch)'
 arch=('x86_64')
 url='https://github.com/FTHR-Community/FTHR-Clips'
@@ -21,7 +21,6 @@ optdepends=(
   'grim: screenshots on supported Wayland compositors'
   'openbsd-netcat: compositor hotkey socket commands'
   'xdg-utils: open the clips folder'
-  'xorg-xwayland: run the UI with QT_QPA_PLATFORM=xcb when native Wayland fails'
   'libva-mesa-driver: AMD VA-API encoding'
   'nvidia-utils: NVIDIA NVENC encoding'
   'xdotool: X11 window detection'
@@ -52,7 +51,7 @@ sha256sums=('SKIP'
             '1de1a5e49a878122010b88c7e295502bc69776c157c4a4dc78741a4e6178b00f'
             'f3a22400bce1b0c701683820ac4f3b159cd301acab067c51c653e06961600597'
             '4a351c53faee8b004fae2a1b31d24bdbae444534996013f0e184ae9d3b367fc2'
-            '090ef9fa5b6ac5de8a7fdf2be24f0d8bbc43c241375c76d7b23d9ccc4bed714a'
+            '7ef444e34c812cb6f862ec66dcd26c4953596be292fdc019ab85114da54f3297'
             '248fc13c182338eced319efdaa0137334f9a773fedaaf0380f35a28a65c40f2a'
             '0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1')
 
@@ -79,6 +78,14 @@ pkgver() {
 
 prepare() {
   python prepare-ffmpeg.py FTHR-Clips "${_ffmpeg}.tar.xz"
+  # BtbN's tools carry the broken relative RPATH "-Wl:../lib". Relocate only
+  # these executables before upstream's release gate inspects them in build();
+  # upstream's checksum-pinned shared libraries stay intact.
+  local tool
+  for tool in ffmpeg ffprobe; do
+    patchelf --force-rpath --set-rpath '$ORIGIN/../lib' \
+      "FTHR-Clips/FTHRcapture_linux/third_party/ffmpeg/bin/$tool"
+  done
 }
 
 build() {
@@ -130,13 +137,6 @@ package() {
   install -d "$root/FTHRcapture_linux/third_party/ffmpeg/bin"
   install -m755 FTHRcapture_linux/third_party/ffmpeg/bin/{ffmpeg,ffprobe} \
     "$root/FTHRcapture_linux/third_party/ffmpeg/bin/"
-  # BtbN's tools carry the broken relative RPATH "-Wl:../lib". Relocate only
-  # these executables; upstream's checksum-pinned shared libraries stay intact.
-  local tool
-  for tool in ffmpeg ffprobe; do
-    patchelf --force-rpath --set-rpath '$ORIGIN/../lib' \
-      "$root/FTHRcapture_linux/third_party/ffmpeg/bin/$tool"
-  done
   install -Dm644 plugin-packages/FTHR-Uploader-linux.fthrplugin \
     "$root/plugin-packages/FTHR-Uploader-linux.fthrplugin"
   install -Dm755 "$srcdir/fthr-clips" "$pkgdir/usr/bin/fthr-clips"
