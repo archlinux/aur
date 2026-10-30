@@ -2,7 +2,7 @@
 
 pkgname=python-typed-ffmpeg-v9
 _origpkgname=typed_ffmpeg_v9
-pkgver=4.5
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="Typed FFmpeg bindings for FFmpeg 9.x."
 arch=("x86_64")
@@ -24,7 +24,7 @@ conflicts=(
  	"python-typed-ffmpeg-v8"
 )
 source=("https://files.pythonhosted.org/packages/source/t/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
-sha256sums=('38e0a5af7b2fe0aebd0eeae3ddb1c8b16b89bf007ccfa4452ee0ea14aa31a5fa')
+sha256sums=('167e7aa44daad2eb3ee3ad47ccc04a9933aad59fd0ea3b698bb3b82422924cdd')
 
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
