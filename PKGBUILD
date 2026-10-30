@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=palace
 pkgname=${_pkgname}-git
-pkgver=0.18.0.r32.g0fb92e0
+pkgver=0.18.1.r436.g3eebd43
 pkgrel=1
 pkgdesc="3D finite element solver for computational electromagnetics"
 arch=('x86_64')
@@ -101,7 +101,7 @@ build() {
         -D PALACE_WITH_SLEPC=OFF            # Default: ON
         -D PALACE_WITH_ARPACK=ON            # Default: ON
         -D PALACE_WITH_SUNDIALS=ON          # Default: ON
-        -D PALACE_WITH_GSLIB=ON             # Default: ON
+        -D PALACE_WITH_GSLIB=OFF            # Default: ON
     )
 
     external_deps=(
