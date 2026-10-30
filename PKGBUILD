@@ -3,7 +3,7 @@
 
 pkgname=sonic-drawing-tablet
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for Wacom Linux drivers that supports different button/pen layout profiles'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-drawing-tablet'
