@@ -29,9 +29,9 @@ _assetscommit="4e73ccefdeecad24e95641f3592a7da92c153bd3"
 source=("azure-sdk-for-net-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "azure-sdk-assets-$_assetscommit.tar.gz::https://github.com/Azure/azure-sdk-assets/archive/$_assetscommit.tar.gz")
 sha512sums=('b2f3bca7ea300de872f922146f4e81b3fe2f48a96fa8ed3d9bf5fcba23f5ff5cc1ea41456e44561d46837e06b4ae8de69fa13a5534b7b9e4f08b0a29cc07ebf9'
-            '938722d2598e60f5631a883ec194c2e1c0bab08846f932ad109a27f5e6b4d41e9df677d69872af0481dc3727eca9c80aef2ad7d74ea3e6e10b7390f803c259b3')
+  '938722d2598e60f5631a883ec194c2e1c0bab08846f932ad109a27f5e6b4d41e9df677d69872af0481dc3727eca9c80aef2ad7d74ea3e6e10b7390f803c259b3')
 b2sums=('78bd307dd5de35a5ab58b3246a3daab826331afab04a37e95209a5f5ae49a9412d06a7e05dd99a4d5f55fb7f020813d5b8a6dd7ea95de48eed18c9a90e6eb313'
-        'c28c5251411ede98364add0955e5826a06c2d3bc84e461ec898852c45a004ab8d61a0fb8188d3b9680fd59db795db376b6e8825d42712c27a9431478cbf8fb68')
+  'c28c5251411ede98364add0955e5826a06c2d3bc84e461ec898852c45a004ab8d61a0fb8188d3b9680fd59db795db376b6e8825d42712c27a9431478cbf8fb68')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
