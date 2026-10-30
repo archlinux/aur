@@ -1,4 +1,4 @@
-# Maintainer: CPT-Dawn <dawnsp0456@gmail.com>
+# Maintainer: CPT-Dawn <ping@cptdawn.dev>
 pkgname=vellum
 _reponame=Vellum
 pkgver=1.1.0
