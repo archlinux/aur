@@ -1,0 +1,23 @@
+pkgbase = powershell-pester-4
+	pkgdesc = Test and mock framework for PowerShell, Pester (version 4)
+	pkgver = 4.10.2beta1
+	pkgrel = 1
+	url = https://github.com/pester/Pester
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = dotnet-gherkin-5
+	makedepends = dotnet-sdk-10.0
+	depends = powershell
+	source = Pester-fe25ff3ffa96734d23f6d4b8d2933431b146006e.tar.gz::https://github.com/pester/Pester/archive/fe25ff3ffa96734d23f6d4b8d2933431b146006e.tar.gz
+	source = crossgen2-pack.targets
+	source = invoke-tests.ps1
+	sha512sums = 4220951f1721f547319fd3de64c52b721f6166b181d4333f0298b5cd13342efb43783734edde55ebddbbb0cdcf7459981d90745b17c8f58ac68dbe797f1a1b4b
+	sha512sums = 340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981
+	sha512sums = 3a77144c1cc4913a4daeedd785ced6a96a6642c8b41c5f8481dbdb42540ab1a970ad0850de0bed0b000ddcb7e6ed07c2e307c67d4f766528588685e71e7864b7
+	b2sums = a7ece0e081f30526a1e2d674da520deb4c64f5a8e222b61b9c706ee766f53025c8736c22cdb14108159b4e62264793af9ba48b7c74adc51defcb09afee56aa97
+	b2sums = 3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b
+	b2sums = f5837db9d212e30aecf4d4a630d691acdd7cb05be9a68e97287516e0e860b2302ef482e1c5b7b9edd66689e98b057ec328c4ef2d8cd5ba7cddb2734c04661bfa
+	makedepends_x86_64 = dotnet-source-built-artifacts-10.0
+
+pkgname = powershell-pester-4

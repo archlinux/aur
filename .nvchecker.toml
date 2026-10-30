@@ -1,0 +1,6 @@
+# The package is built from the latest commit of the 4.x branch, see the PKGBUILD
+[powershell-pester-4]
+source = "git"
+git = "https://github.com/pester/Pester.git"
+branch = "rel/4.x.x"
+use_commit = true
