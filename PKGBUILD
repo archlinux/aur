@@ -4,7 +4,7 @@
 pkgname=sober-bin
 _upstream_version=2026.10.31
 pkgver="${_upstream_version//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first repository governance and code review with native core grammars'
 arch=('x86_64')
 url='https://sober-dev.app'
@@ -30,7 +30,21 @@ prepare() {
   cd "${srcdir}"
   local bin="sober_v${_upstream_version}_linux_amd64"
   local archive="sober-grammars_v${_upstream_version}_linux_amd64.tar.gz"
-  local file expected actual name type language
+  local file expected actual name type language refresh=0 refreshed
+  [[ -f SHA256SUMS ]] || { echo 'missing release manifest' >&2; return 1; }
+  for file in "$bin" "$archive"; do
+    [[ -f $file ]] || { echo "missing release source file: $file" >&2; return 1; }
+    if ! awk -v name="$file" '$2 == name { found=1 } END { exit !found }' SHA256SUMS; then refresh=1; fi
+  done
+  if [[ $refresh == 1 ]]; then
+    refreshed=$(mktemp "${srcdir}/.sober-manifest.XXXXXX") || return 1
+    if ! curl -fsSL "https://pkg.sober-dev.app/ce/SHA256SUMS?ref=${_upstream_version}" -o "$refreshed"; then
+      rm -f -- "$refreshed"
+      return 1
+    fi
+    # Replace only srcdir's cache link; retain the original download cache.
+    mv -f -- "$refreshed" SHA256SUMS || { rm -f -- "$refreshed"; return 1; }
+  fi
   for file in "$bin" "$archive"; do
     # makepkg links download-cache files into srcdir. Require a regular target;
     # the release manifest and recipe pins below authenticate its bytes.

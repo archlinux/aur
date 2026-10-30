@@ -1,7 +1,7 @@
 pkgbase = sober-bin
 	pkgdesc = Local-first repository governance and code review with native core grammars
 	pkgver = 2026.10.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sober-dev.app
 	arch = x86_64
 	license = LSL-1.0
