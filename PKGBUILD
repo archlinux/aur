@@ -20,7 +20,7 @@ _phpbase="81"
 _suffix=""
 pkgver="8.1.34"
 pkgbase_rc=""
-pkgrel="1"
+pkgrel="2"
 pkgbase="php81"
 pkgdesc="PHP 8.1.34 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -129,6 +129,7 @@ source=(
     "pear-config-patcher.php"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "libxml-pear-php-8.1.patch"
+    "php81-cve-2026-109618-109619.patch"
     "debian-php-8.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -197,6 +198,7 @@ arch=(
 )
 _patches=(
     "libxml-pear-php-8.1.patch"
+    "php81-cve-2026-109618-109619.patch"
     "debian-php-8.1.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -451,7 +453,7 @@ prepare() {
 
     for patch_name in "${_patches[@]}"; do
         echo "[PATCH] Applying source patch ${patch_name}";
-        patch -p1 -i "../${patch_name}"
+        patch -Np1 -i "../${patch_name}"
     done
     ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
@@ -479,7 +481,7 @@ _build_sapi() {
 
     pushd "build-${_sapi}"
      ./configure ${_phpconfig} ${_commands}
-    patch -p1 -i "${srcdir}/make-tests.patch"
+    patch -Np1 -i "${srcdir}/make-tests.patch"
     if (($_sapi != "cli")); then
         make clean
     elif ((_phpbase < 82)); then
@@ -1389,7 +1391,6 @@ package_php81-mcrypt() {
 ###############################################################################
 # PHP Zend modules: opcache/jit
 ###############################################################################
-
 # Opcache
 package_php81-opcache() {
     pkgdesc="opcache zend module for php81"
@@ -1482,6 +1483,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ffa9e0982e82eeaea848f57687b425ed173aa278fe563001310ae2638db5c251'
             '06e7c7e052dfd6b73d0f3079e127802d787670c0b71d8b06ead1c44d870aece8'
+            'c85ad0fddcbff7f2318617eeaa54d271135463b5bf70a01228447e3ed78de96e'
             'd1778f038dd742400707307d6845c1dc40ea1962ff9676f880be88a5ebdd8577'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
