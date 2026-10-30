@@ -1,0 +1,9 @@
+# Including the pre-releases, which bundle the latest PowerShell Editor Services
+[vscode-powershell]
+source = "github"
+github = "PowerShell/vscode-powershell"
+prefix = "v"
+use_latest_release = true
+include_prereleases = true
+from_pattern = '^(.*)-preview$'
+to_pattern = '\1preview'

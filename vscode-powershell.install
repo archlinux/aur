@@ -1,0 +1,7 @@
+#!/bin/sh
+
+post_install() {
+	echo '>>> The PowerShell extension (ms-vscode.powershell) is now a built-in extension of the editor.'
+	echo '>>> If you installed it from a marketplace, uninstall it there: the editor uses an installed'
+	echo '>>> copy instead of this one when it is newer, and its PSScriptAnalyzer fails on this PowerShell.'
+}

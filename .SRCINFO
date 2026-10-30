@@ -1,0 +1,40 @@
+pkgbase = vscode-powershell
+	pkgdesc = PowerShell extension for Visual Studio Code, using powershell-editor-services
+	pkgver = 2026.1.2preview
+	pkgrel = 1
+	url = https://github.com/PowerShell/vscode-powershell
+	install = vscode-powershell.install
+	arch = any
+	license = MIT
+	checkdepends = code
+	checkdepends = xorg-server-xvfb
+	makedepends = npm
+	depends = powershell
+	depends = powershell-editor-services>=4.7.0
+	source = vscode-powershell-v2026.1.2-preview.tar.gz::https://github.com/PowerShell/vscode-powershell/archive/v2026.1.2-preview.tar.gz
+	sha512sums = b8e9fe217265d95bced8ff5dff315449f54b3cb8f8ebb579fa126aaf1faa62de57c74efbf5a78034a29df5206d525449115df4614481145513bc8d8b75747933
+	b2sums = 9818181f73af82cd97a93af2c977fce4b69f803604da21ef2efeb7d29e6e5fdfbb4195e43e3d314fc6e4145fde6e7534c58f265b4fad1b471079b067d60508df
+
+pkgname = code-powershell
+	pkgdesc = PowerShell extension for Code - OSS, using powershell-editor-services
+	depends = powershell
+	depends = powershell-editor-services>=4.7.0
+	depends = code>=1.114.0
+
+pkgname = visual-studio-code-bin-powershell
+	pkgdesc = PowerShell extension for Visual Studio Code, using powershell-editor-services (for visual-studio-code-bin)
+	depends = powershell
+	depends = powershell-editor-services>=4.7.0
+	depends = visual-studio-code-bin>=1.114.0
+
+pkgname = vscodium-powershell
+	pkgdesc = PowerShell extension for VSCodium, using powershell-editor-services
+	depends = powershell
+	depends = powershell-editor-services>=4.7.0
+	depends = vscodium>=1.114.0
+
+pkgname = vscodium-bin-powershell
+	pkgdesc = PowerShell extension for VSCodium, using powershell-editor-services (for vscodium-bin)
+	depends = powershell
+	depends = powershell-editor-services>=4.7.0
+	depends = vscodium-bin>=1.114.0
