@@ -14,7 +14,7 @@ pkgname=(ionix-base-git ionix-desktop-git ionix-server-git)
 # Placeholder: aur-publish.sh patches this to the real r<count>.<hash> before
 # generating .SRCINFO. Keep it in the r-scheme: a bare 0.1.0 would sort *newer*
 # than every r-version if it ever reached the AUR unpatched.
-pkgver=r8.3b83201
+pkgver=r9.e715b9c
 pkgrel=1
 pkgdesc="Ionix system files"
 arch=('any')
@@ -67,6 +67,8 @@ package_ionix-desktop-git() {
         'fprintd: fingerprint login (ionix-fingerprint)'
         'yay: optional software bundles from the AUR (ionix-extras)'
         'matugen: wallpaper-adaptive themes'
+        'socat: Hyprland event sounds (ionix-sounds)'
+        'ffmpeg: m4a and aac event sounds (ionix-sounds)'
     )
     provides=('ionix-desktop')
     conflicts=('ionix-desktop' 'ionix-server')

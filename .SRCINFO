@@ -1,6 +1,6 @@
 pkgbase = ionix-system-git
 	pkgdesc = Ionix system files
-	pkgver = r8.3b83201
+	pkgver = r9.e715b9c
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionix-iso
 	arch = any
@@ -33,6 +33,8 @@ pkgname = ionix-desktop-git
 	optdepends = fprintd: fingerprint login (ionix-fingerprint)
 	optdepends = yay: optional software bundles from the AUR (ionix-extras)
 	optdepends = matugen: wallpaper-adaptive themes
+	optdepends = socat: Hyprland event sounds (ionix-sounds)
+	optdepends = ffmpeg: m4a and aac event sounds (ionix-sounds)
 	provides = ionix-desktop
 	conflicts = ionix-desktop
 	conflicts = ionix-server
