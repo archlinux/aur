@@ -1,0 +1,16 @@
+pkgbase = python-torch-ema
+	pkgdesc = Exponential Moving Average of PyTorch model parameters
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/fadel/pytorch_ema
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytorch
+	source = torch_ema-0.3.tar.gz::https://files.pythonhosted.org/packages/source/t/torch_ema/torch_ema-0.3.tar.gz
+	sha256sums = 5a3595405fa311995f01291a1d4a9242d6be08a0fc9db29152ec6cfd586ea414
+
+pkgname = python-torch-ema
