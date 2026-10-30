@@ -1,0 +1,34 @@
+pkgbase = libfprint-zk9500-git
+	pkgdesc = libfprint-2 with native ZKTeco ZK9500 (1b55:0124) optical fingerprint reader support
+	pkgver = 1.94.100.r3.gfbf28c1
+	pkgrel = 1
+	url = https://github.com/arqueon/zk9500-libfprint
+	arch = x86_64
+	arch = aarch64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libgudev
+	depends = libgusb
+	depends = libusb
+	depends = openssl
+	depends = pixman
+	optdepends = fprintd: D-Bus daemon and PAM module for fingerprint authentication
+	optdepends = python-gobject: for zk9500-fprintd multi-reader enrollment and PAM status CLI
+	provides = libfprint=1.94.100.r3.gfbf28c1
+	provides = libfprint-2.so
+	provides = libfprint-zk9500
+	conflicts = libfprint
+	source = libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git
+	source = zk9500-libfprint::git+https://github.com/arqueon/zk9500-libfprint.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libfprint-zk9500-git
