@@ -1,0 +1,22 @@
+pkgbase = strata-app-bin
+	pkgdesc = Strata Desktop - Local inference engine and GUI for frontier AI models
+	pkgver = 0.2.8
+	pkgrel = 2
+	url = https://github.com/Niko1221/Strata
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = python312
+	depends = zlib
+	optdepends = cuda: NVIDIA GPU acceleration support
+	optdepends = cudnn: Fast tensor execution paths
+	options = !strip
+	source = Strata-0.2.8-x86_64.AppImage::https://github.com/Niko1221/Strata/releases/download/v0.2.8/Strata-0.2.8-linux-x86_64.AppImage
+	source = LICENSE-0.2.8::https://raw.githubusercontent.com/Niko1221/Strata/v0.2.8/LICENSE
+	sha256sums = a042f05dd7a740e0cd8c43cad6d8958152595b16fc3a566c029280a836ad3b6e
+	sha256sums = 949b9b0aada7476006469e58ee4ffb0e0f68c2d9137e90a356757b61a09d37f0
+
+pkgname = strata-app-bin

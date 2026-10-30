@@ -1,0 +1,11 @@
+# Arch package build artifacts
+*.pkg.tar.*
+*.src.tar.*
+src/
+pkg/
+squashfs-root/
+
+# Downloaded sources
+*.AppImage
+*.AppImage.*
+LICENSE-*
