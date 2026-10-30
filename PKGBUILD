@@ -1,14 +1,14 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-desktop
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/chatwithwork-desktop"
 license=('MIT OR Apache-2.0')
 install="${pkgname}.install"
-depends=('alsa-lib' 'libpipewire' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'dbus')
-makedepends=('cargo' 'pkgconf' 'cmake' 'clang')
+depends=('alsa-lib' 'libpipewire' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'dbus' 'bubblewrap' 'slirp4netns' 'util-linux' 'iptables-nft')
+makedepends=('cargo' 'pkgconf' 'cmake' 'clang' 'python' 'npm')
 optdepends=('org.freedesktop.secrets: store the device key in your keyring'
             'xdg-desktop-portal: native folder picker'
             'sane: scan with a USB scanner'
@@ -20,9 +20,9 @@ conflicts=('cww' 'chatwithwork-desktop-bin' 'chatwithwork-desktop-git')
 # objects in the archive, which the linker then cannot resolve. !debug
 # because the release profile strips symbols, so a debug package would be
 # empty.
-options=('!debug' '!lto')
+options=('!debug' '!lto' '!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/chatwithwork-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('617059bbec1cba1b7188af064a611b43043d20160100ef6d844778ceb7351630')
+sha256sums=('3e9737b67789ad5866ead71c81650036d4e99b3c2ffe0644b7e83f4799877527')
 
 prepare() {
   cd "${srcdir}/chatwithwork-desktop-${pkgver}"
@@ -36,6 +36,10 @@ build() {
   export CARGO_TARGET_DIR=target
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/"
   cargo build --frozen --release --workspace
+  python browser/engine/scripts/package.py stage --replace \
+    --target "$(rustc -vV | sed -n 's/host: //p')" \
+    --app-version "$(sed -n 's/^version = "\(.*\)"$/\1/p' Cargo.toml | head -n 1)" \
+    --output browser-engine --cache "${srcdir}/node-runtime-cache"
 }
 
 check() {
@@ -47,6 +51,8 @@ check() {
 
 package() {
   cd "${srcdir}/chatwithwork-desktop-${pkgver}"
+  install -dm755 "${pkgdir}/usr/lib/chatwithwork"
+  cp -R browser-engine "${pkgdir}/usr/lib/chatwithwork/"
   install -Dm755 target/release/cww "${pkgdir}/usr/bin/cww"
   install -Dm755 target/release/cww-app "${pkgdir}/usr/bin/cww-app"
   install -Dm644 packaging/linux/cww-app.desktop "${pkgdir}/usr/share/applications/cww-app.desktop"
