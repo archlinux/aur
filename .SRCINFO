@@ -1,0 +1,17 @@
+pkgbase = python-skmatter
+	pkgdesc = A collection of scikit-learn compatible utilities for materials science and chemistry
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/scikit-learn-contrib/scikit-matter
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-scikit-learn
+	depends = python-scipy
+	source = skmatter-0.4.1.tar.gz::https://files.pythonhosted.org/packages/06/5e/bae5ead0f4c2ca92475f300ed0c88ee9e9e976054a63e5ffe028de1fe6c2/skmatter-0.4.1.tar.gz
+	sha256sums = 1d4e47369bb054aa7d609769dd6dd9609e03ec3a04a1a54393aaabd49fe8cd92
+
+pkgname = python-skmatter
