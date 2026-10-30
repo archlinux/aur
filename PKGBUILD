@@ -1,7 +1,7 @@
 # Maintainer: chen-shuhan <2502820816@qq.com>
 # 非官方社区打包
 pkgname=vantage-browser-appimage
-pkgver=153.5.0
+pkgver=153.6.0
 pkgrel=1
 pkgdesc="Vantage 浏览器 - 基于 Firefox ESR (AppImage 封装) - 非官方社区打包"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=('vantage-browser')
 conflicts=('vantage-browser' 'vantage-browser-bin')
 source_x86_64=("https://github.com/asystech-chen/Vantage/releases/download/v${pkgver}-${pkgrel}/vantage-${pkgver}-${pkgrel}.x86_64.AppImage")
 source_aarch64=("https://github.com/asystech-chen/Vantage/releases/download/v${pkgver}-${pkgrel}/vantage-${pkgver}-${pkgrel}.aarch64.AppImage")
-sha256sums_x86_64=('4488f263724a1ea3417fc7096640855881c14e128b23aa03b9fbd40a69db5695')
-sha256sums_aarch64=('7f12aad0c50c5d9608ddf6f02460025241d2b8b99ba59d3fe151401766b4945e')
+sha256sums_x86_64=('bd47df809f1d888cc11332d5fd83834dafd742317ff83e94201b62891b2657ae')
+sha256sums_aarch64=('672d1226b4a428d884242b77dafdd75b7eded6d09c9a2c637591094e08c0799a')
 
 noextract=("vantage-${pkgver}-${pkgrel}.x86_64.AppImage" "vantage-${pkgver}-${pkgrel}.aarch64.AppImage")
 
