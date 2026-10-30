@@ -3,7 +3,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=mosdepth
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc='Fast BAM/CRAM depth calculation for WGS, exome, or targeted sequencing'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('htslib')
 makedepends=('git' 'nim')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('abac67de4547dc5642efd46846044d6b3536d2ca3443b4ca172446edf82eeb42')
+sha256sums=('7fc4bacd5cd1fecad76c93f08921e32efaad2ebabccd7a65e6f4fdf9095ea08e')
 
 build() {
   cd "${pkgname}-${pkgver}"
