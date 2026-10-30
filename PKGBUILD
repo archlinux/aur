@@ -2,7 +2,7 @@
 pkgname=wheelwizard-bin
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.5.9
+pkgver=2.6.4
 _pkgver="v$pkgver"
 pkgrel=1
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater (prebuilt binary)"
@@ -20,9 +20,9 @@ source=("${_name}-${pkgver}_Linux::https://github.com/Team${_name}/${_name}/rele
         "${_app_id}-url-handler-${pkgver}.desktop::https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}-url-handler.desktop"
         "${_app_id}-${pkgver}.png::https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/Flatpak/${_app_id}.png"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/Team${_name}/${_name}/${_pkgver}/LICENSE")
-sha256sums=('2a16c7d4945e7bfaf93cff3e13e5ec8395fa69571341574c9d8fd9ac0a883e9c'
-            '38e89cae5e18ec818549571f98f6898f8dc72b2974a382983cb9897ac6421e01'
-            'b94a3ce5115a77741ce5900738dcdac923f16738d850b2e1aa1bd7278d6d8311'
+sha256sums=('5c7d9ec43119aeaa2942d8c658270201ba09b9fa57cdc27b95e9efa6bf969a35'
+            'ff89e34e08cd2255c7ea2d4efc0108dd22b7b259802c07f5b6845350bedf54ce'
+            '2ecb703c0dc55c4f79ce93ab374914dba260d6e977df6b9d1af59e0e3a6a9c1c'
             'd055ae9b991da94d016598d93e36f0177c609598001240cc6cae96f6e564a1ee'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
