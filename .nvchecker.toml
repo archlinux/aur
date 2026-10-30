@@ -1,0 +1,4 @@
+["nemo-speech-cpu-nightly-bin"]
+source = "jq"
+url = "https://api.github.com/repos/NVIDIA/NeMo-Speech.cpp/releases/tags/nightly"
+filter = '.assets[] | select(.name == "SHA256SUMS") | .updated_at | fromdateiso8601 | strftime("%Y%m%d.%H%M%S")'
