@@ -1,23 +1,24 @@
 pkgbase = upgrade
 	pkgdesc = Automate system upgrades
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/dnut/upgrade
 	install = upgrade.install
-	arch = i686
-	arch = pentium4
-	arch = x86_64
-	arch = arm
-	arch = armv7h
-	arch = armv6h
-	arch = aarch64
+	arch = any
 	license = GPL3
 	depends = kernel-modules-hook
-	optdepends = yay
-	optdepends = paru
-	optdepends = flatpak
-	backup = etc/upgrade.conf
-	source = git+https://github.com/dnut/upgrade#tag=0.3.2
+	depends = polkit
+	depends = python
+	depends = pyalpm
+	depends = pacman-contrib
+	depends = git
+	depends = fakeroot
+	optdepends = yay: upgrade AUR packages
+	optdepends = paru: upgrade AUR packages
+	optdepends = flatpak: upgrade flatpak packages
+	options = !strip
+	options = !debug
+	source = upgrade-0.4.0::git+https://github.com/dnut/upgrade#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = upgrade
