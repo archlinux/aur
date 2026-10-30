@@ -1,0 +1,37 @@
+pkgbase = cinnabar-bin
+	pkgdesc = Unofficial client compatible with Minecraft: Bedrock Edition, written in Rust
+	pkgver = 0.1.31
+	pkgrel = 1
+	url = https://github.com/cinnabar-mc/cinnabar
+	arch = x86_64
+	license = PolyForm-Noncommercial-1.0.0
+	depends = alsa-lib
+	depends = bash
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = systemd-libs
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = kdialog: file picker and dialogs without an XDG portal
+	optdepends = pipewire-alsa: sound on PipeWire
+	optdepends = pulseaudio-alsa: sound on PulseAudio
+	optdepends = xdg-utils: open links and accept Discord invites
+	optdepends = zenity: file picker and dialogs without an XDG portal
+	provides = cinnabar=0.1.31
+	conflicts = cinnabar
+	options = !debug
+	options = !strip
+	source = cinnabar-0.1.31-x86_64.AppImage::https://github.com/cinnabar-mc/cinnabar/releases/download/v0.1.31/Cinnabar-x86_64.AppImage
+	source = cinnabar.sh
+	sha256sums = ffddee0f190678106d2689ef8a52f6dfa07c3c62c3eb2ff1a2e18fd4ab27336f
+	sha256sums = 7c5357b45eb23687940ebfdafce0c27b163a4c6a986a03bb757a272c3bd796a3
+
+pkgname = cinnabar-bin
