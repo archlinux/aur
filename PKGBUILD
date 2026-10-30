@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=1.7.0.r6.g9d649e2
+pkgver=1.11.0.r3.g528f7a5
 pkgrel=1
 pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -22,10 +22,8 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-launcher.git'
-        'lto.patch')
-sha256sums=('SKIP'
-            '852bbae9d79b0ababff4e0cc9e79ff3511622f1511cd854c5b176cba6928cde6')
+source=('git+https://github.com/pop-os/cosmic-launcher.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -34,9 +32,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  # Use thin LTO
-  patch -Np1 -i ../lto.patch
-
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 }
