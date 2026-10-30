@@ -12,7 +12,7 @@ makepkg -si
 启动脚本设置 `DESKTOPINTEGRATION=1`，使用包内桌面入口，避免程序重复生成用户级入口。
 预编译程序使用带实例哈希的 D-Bus 名称，桌面入口直接执行程序，不使用固定名称的 D-Bus 激活。
 
-上游保留 `com.ayugram.desktop` 应用标识，因此此包声明与 AyuGram 包冲突。
+上游保留 `com.ayugram.desktop` 应用标识。
 它不替代 `telegram-desktop`，也不修改 Telegram 的默认协议处理器设置。
 
 图标和许可证从固定版本标签下载，所有下载源均固定 SHA-256。

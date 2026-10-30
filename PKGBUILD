@@ -1,7 +1,7 @@
 # Maintainer: undefined-ux <undefined_1@outlook.com>
 pkgname=astragram-desktop
 pkgver=7.3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Customizable Telegram desktop client based on AyuGram (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Kindness-Kismet/AstraGram-Desktop'
@@ -35,8 +35,6 @@ optdepends=(
   'webkit2gtk-4.1: Embedded web content'
   'xdg-desktop-portal: Desktop portals and screen sharing'
 )
-# Upstream retains AyuGram's desktop and D-Bus application ID.
-conflicts=('ayugram-desktop' 'ayugram-desktop-bin' 'ayugram-desktop-git')
 options=('!strip' '!debug')
 
 _app_id=com.ayugram.desktop
