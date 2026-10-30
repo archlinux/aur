@@ -2,8 +2,8 @@
 
 pkgname=cadcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.0.r10.g75d9d72
-pkgrel=2
+pkgver=0.14.0.r33.gf536bf4
+pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Autodesk AutoCAD (Git HEAD)'
@@ -34,6 +34,7 @@ _srcenv() {
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 }
 
 _icons=(512 256 128 64 48 32 16)
