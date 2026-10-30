@@ -1,6 +1,6 @@
 pkgbase = arithmetic-arena-bin
 	pkgdesc = Mental arithmetic chains without the countdown: follow the steps, type the result, see how long it took afterwards
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://kairollmann.de/arithmeticarena
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = arithmetic-arena-bin
 	provides = arithmetic-arena
 	conflicts = arithmetic-arena
 	options = !strip
-	source = https://kairollmann.de/arithmeticarena/releases/1.1.1/Arithmetic-Arena_1.1.1_amd64.tar.gz
-	sha256sums = 2dd561d3a2e301e6509a52f78fec7f49bc53359b77a95a60156063660e2ab730
+	source = https://kairollmann.de/arithmeticarena/releases/1.2.0/Arithmetic-Arena_1.2.0_amd64.tar.gz
+	sha256sums = d2b3ce288a0e207faa9f99a472d22f2477d46711e837fee27f0b56a839291004
 
 pkgname = arithmetic-arena-bin
