@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-bin
 _pkgname=Atlassify
-pkgver=3.17.1
+pkgver=3.17.2
 _electronversion=45
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar."
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d9fdc576449cc54f5ed8df46742646b9dcc17320fa6fdbe26ad7fcc95b7bcaa8'
+sha256sums=('4b658507f998bb5b36eca11d1ffffd8c92c2be902857fafe075c3c1b146f9d98'
             '2030af44675d6523de146944f48720295a82c2e89023ec6f579661e22ad8be2d'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
