@@ -1,5 +1,5 @@
 pkgname=bennu-bin
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Bennu — Linux desktop file manager written in Rust and Iced'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
 provides=('file-manager')
 conflicts=('file-manager')
 source_x86_64=("https://github.com/nsjsv/Bennu/releases/download/v${pkgver}/bennu-v${pkgver}-x86_64.tar.xz")
-sha256sums_x86_64=('d0fd7364004c03140c5acaec471abb288f39d5a2c7c046f107276535fea5afab')
+sha256sums_x86_64=('8207a34f795b9badaf90528387c1214f0b7661326962b01e9245fce262929edd')
 
 package() {
     cp -a "${srcdir}/bennu-v${pkgver}-x86_64/usr" "${pkgdir}/"
