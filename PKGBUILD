@@ -6,7 +6,7 @@
 # armv7h tester: kauron
 pkgname=duplicati-bin
 pkgver=2.4.1.0
-pkgrel=2
+pkgrel=1
 _date=2026-10-29
 _branch=stable
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
