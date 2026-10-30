@@ -1,7 +1,7 @@
 # Maintainer: Demir Yerli <me@mrquantumoff.dev>
 
 pkgname=winepipe
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="PipeWire-native ASIO driver for Wine (no JACK), with a COSMIC settings app"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('rustup' 'mingw-w64-gcc')
 options=('!strip' '!lto' '!debug')
 install=winepipe.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7df10b42b34e3e1178cb0a07e86e9aab27e96b212b7bdf1e3699cdc566de2ad3')
+sha256sums=('57d189a32a040a7e80781e49426a70a807552d36a1d73270a7bd705f85ac6e9b')
 
 _rust_env() {
   # Private toolchain with the Windows targets, so the user's rustup setup
