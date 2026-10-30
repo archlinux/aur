@@ -1,0 +1,28 @@
+pkgbase = python-nequip
+	pkgdesc = E(3)-equivariant interatomic potentials
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/mir-group/nequip
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-pytorch
+	depends = python-numpy
+	depends = python-matscipy
+	depends = python-ase
+	depends = python-lmdb
+	depends = python-tqdm
+	depends = python-e3nn
+	depends = python-yaml
+	depends = python-hydra-core
+	depends = python-lightning
+	depends = python-torchmetrics
+	depends = python-requests
+	source = nequip-0.19.1.tar.gz::https://github.com/mir-group/nequip/archive/refs/tags/v0.19.1.tar.gz
+	sha256sums = b2d676b3ac3e2cfd3270f948adf11efe1dd7ab8d21617ff5b30ac90d8f3254fd
+
+pkgname = python-nequip
