@@ -1,7 +1,7 @@
 # Maintainer: Satyam Jha <satyam_jha at zohomail dot in>
 
 pkgname=oinkoin-bin
-pkgver=1.14.0
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="An offline Privacy focused expense tracker"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('sqlite' 'gtk3' 'glib2')
 options=('!strip')
 provides=('oinkoin')
 conflicts=('oinkoin')
-_appimage="piggybank-1.14.0+7150-linux.AppImage"
+_appimage="piggybank-1.16.3+7159-linux.AppImage"
 source=("${_appimage}::${url}/releases/download/${pkgver}/${_appimage}")
-sha256sums=('d587b0d518e0b2643285dc006db9c7cd4a57f55950c7b2a109ff944a70043530')
+sha256sums=('963e246ffe5574c6ad868d9d7402940627da1759b52dde57356ad7a2e49195d0')
 
 prepare() {
     chmod +x "${_appimage}"
