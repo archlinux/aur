@@ -1,0 +1,10 @@
+post_install() {
+  echo "Restart Steam and select \"Proton-GE Phoenix\" in a game's compatibility settings."
+  echo "To enable HDR in a game on X11, enable HDR on the monitor with xorg-server-phoenix,"
+  echo "install vk-hdr-layer-phoenix and set the game's launch options to:"
+  echo "    ENABLE_HDR_WSI=1 DXVK_HDR=1 %command%"
+}
+
+post_upgrade() {
+  post_install
+}
