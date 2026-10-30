@@ -6,7 +6,7 @@
 _ghrepo="mrquantumoff/audioclock"
 
 pkgname=audioclock
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Inspect and manage PipeWire and WirePlumber audio clock and format settings"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('pipewire' 'wireplumber')
 makedepends=('rust' 'cargo' 'pipewire' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_ghrepo}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ea76c737173d9ae8fd62f9ec497495890a7cb3f4a015df674250d38381bae259')
+sha256sums=('fb8dfc60bab3cffe06a9d25a33b9f4dc4654fb925e7712011641bbc11910d2a4')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

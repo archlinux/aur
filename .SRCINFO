@@ -1,6 +1,6 @@
 pkgbase = audioclock
 	pkgdesc = Inspect and manage PipeWire and WirePlumber audio clock and format settings
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mrquantumoff/audioclock
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = audioclock
 	makedepends = clang
 	depends = pipewire
 	depends = wireplumber
-	source = audioclock-0.2.0.tar.gz::https://github.com/mrquantumoff/audioclock/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = ea76c737173d9ae8fd62f9ec497495890a7cb3f4a015df674250d38381bae259
+	source = audioclock-0.3.0.tar.gz::https://github.com/mrquantumoff/audioclock/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = fb8dfc60bab3cffe06a9d25a33b9f4dc4654fb925e7712011641bbc11910d2a4
 
 pkgname = audioclock
