@@ -5,7 +5,7 @@
 
 pkgname=sonic-print-management
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for managing print jobs and printers'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-print-management'
