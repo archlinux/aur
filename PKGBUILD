@@ -1,4 +1,4 @@
-# Maintainer: Mikko Tuomikoski <me@snoozyman.eu>
+# Maintainer: Mikko Tuomikoski <me AT snoozyman DOT eu>
 # Contributor: MoazSalem <https://github.com/MoazSalem>
 
 pkgname=litefin-bin
