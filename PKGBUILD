@@ -7,7 +7,7 @@
 
 pkgname=sonic-workspace-addons
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='All kind of addons to improve your SonicDE experience'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-workspace-addons'

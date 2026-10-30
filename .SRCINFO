@@ -1,7 +1,7 @@
 pkgbase = sonic-workspace-addons
 	pkgdesc = All kind of addons to improve your SonicDE experience
 	pkgver = 6.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-workspace-addons
 	arch = x86_64
 	groups = sonicde
