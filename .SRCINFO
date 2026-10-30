@@ -1,6 +1,6 @@
 pkgbase = auto-editor-bin
 	pkgdesc = A command line application for automatically editing video and audio.
-	pkgver = 31.7.2
+	pkgver = 31.8.0
 	pkgrel = 1
 	url = https://auto-editor.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = auto-editor-bin
 	provides = auto-editor
 	conflicts = auto-editor
 	options = !debug
-	source = auto-editor-31.7.2-bin::https://github.com/WyattBlue/auto-editor/releases/download/31.7.2/auto-editor-linux-x86_64
-	sha256sums = 3da1ff7fb0dbc9057527d5776310e4b0a680004814a7bbb60db2f8c37c45269a
+	source = auto-editor-31.8.0-bin::https://github.com/WyattBlue/auto-editor/releases/download/31.8.0/auto-editor-linux-x86_64
+	sha256sums = ab6da1fb01019505eea416b948d053b4d5918778ddaeea9955b90bafd8227713
 
 pkgname = auto-editor-bin
