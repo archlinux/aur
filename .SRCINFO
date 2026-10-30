@@ -1,0 +1,18 @@
+pkgbase = chilen-git
+	pkgdesc = Fully offline, blazingly fast music player for your library
+	pkgver = r624.2cb51b2
+	pkgrel = 1
+	url = https://github.com/tpaau/chilen
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo-nightly
+	depends = wayland
+	depends = libxkbcommon
+	depends = alsa-lib
+	provides = chilen-git=r624.2cb51b2
+	conflicts = chilen-git
+	source = git+https://github.com/tpaau/chilen.git
+	b2sums = SKIP
+
+pkgname = chilen-git
