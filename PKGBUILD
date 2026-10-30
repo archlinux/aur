@@ -7,6 +7,7 @@ DLAGENTS=('http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-a
 _pkgauthor=cesarferreira
 _pkgname=toppy
 _cratename=${_pkgname}
+_appname=tp
 pkgname=${_cratename}
 pkgdesc="A colorful htop/btop-style system monitor TUI"
 
@@ -24,7 +25,7 @@ license=('MIT')
 makedepends=('rust')
 depends=('glibc' 'gcc-libs')
 
-provides=("${_pkgname}")
+provides=("${_appname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
@@ -40,7 +41,7 @@ build() {
 package() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	install -Dm755 "target/release/${_cratename%%-cli}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
