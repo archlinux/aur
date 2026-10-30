@@ -18,27 +18,27 @@ b2sums=('79faf75babf85f7bcee3bfbb96e4379a8d798059b28b671feb9958f08ac3b8a2ab71f45
 backup=("etc/ergochat/ldap-config.yaml")
 
 build() {
-    export GOPATH="$srcdir/gopath"
-    cd "${srcdir}/$_upstream_pkgname" || exit
+  export GOPATH="$srcdir/gopath"
+  cd "${srcdir}/$_upstream_pkgname" || exit
 
-    GIT_COMMIT="$(git rev-parse HEAD)" # 2>/dev/null)"
+  GIT_COMMIT="$(git rev-parse HEAD)" # 2>/dev/null)"
 
-    export CGO_CPPFLAGS="$CPPFLAGS"
-    export CGO_CFLAGS="$CFLAGS"
-    export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
 
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=vendor \
-        -modcacherw \
-        -ldflags "-X main.commit=${GIT_COMMIT} -compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" \
-        -v \
-        .
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=vendor \
+    -modcacherw \
+    -ldflags "-X main.commit=${GIT_COMMIT} -compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" \
+    -v \
+    .
 }
 
 package() {
-    cd "$srcdir/$_upstream_pkgname" || exit
-    install -Dm755 "$_upstream_pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 example.yaml "$pkgdir/etc/ergochat/ldap-config.yaml"
+  cd "$srcdir/$_upstream_pkgname" || exit
+  install -Dm755 "$_upstream_pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 example.yaml "$pkgdir/etc/ergochat/ldap-config.yaml"
 }
