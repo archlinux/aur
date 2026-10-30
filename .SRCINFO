@@ -1,7 +1,7 @@
 pkgbase = processing-bin
 	pkgdesc = A flexible software sketchbook and a programming language designed for learning how to code.
 	pkgver = 4.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://processing.org/
 	arch = aarch64
 	arch = x86_64

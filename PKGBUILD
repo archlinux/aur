@@ -5,7 +5,7 @@ pkgname=processing-bin
 _pkgname=Processing
 pkgver=4.5.7
 _subver=1435
-pkgrel=1
+pkgrel=2
 arch=(
     'aarch64'
     'x86_64'
@@ -35,7 +35,7 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/Exec=\/opt\/${pkgname%-bin}\/bin\/${_pkgname}/Exec=${pkgname%-bin}/g
-        s/Icon=\/opt\/${pkgname%-bin}\/bin\/${_pkgname}.png/Icon=${pkgname%-bin}/g
+        s/Icon=\/opt\/${pkgname%-bin}\/lib\/${_pkgname}.png/Icon=${pkgname%-bin}/g
     " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
     find "${srcdir}/opt/${pkgname%-bin}/lib/app/resources/modes/java/application/launch4j/w32api" -type f -exec chmod 644 {} +
     find "${srcdir}/opt/${pkgname%-bin}/lib/app/resources/modes/java/application/launch4j/bin" \
