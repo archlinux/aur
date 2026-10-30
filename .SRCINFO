@@ -1,6 +1,6 @@
 pkgbase = jarvis-bin
 	pkgdesc = Jarvis — private AI agent for professionals (CE binary, static SQLite)
-	pkgver = 0.3.0_beta.87
+	pkgver = 0.3.0_beta.127
 	pkgrel = 1
 	url = https://git.sovereign-society.org/libertaria/Jarvis
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = jarvis-bin
 	conflicts = mnemos
 	conflicts = jarvis-git
 	options = !strip
-	source = jarvis-0.3.0-beta.87-x86_64-linux.tar.gz::https://git.sovereign-society.org/libertaria/Jarvis/releases/download/v0.3.0-beta.87/jarvis-0.3.0-beta.87-x86_64-linux.tar.gz
-	source = jarvis-0.3.0-beta.87-x86_64-linux.sha256::https://git.sovereign-society.org/libertaria/Jarvis/releases/download/v0.3.0-beta.87/jarvis-0.3.0-beta.87-x86_64-linux.sha256
-	sha256sums = db70fd849d140f6a5d394d317e2337fe9b146bed67c7cf47b7d2706192a705aa
+	source = jarvis-0.3.0-beta.127-x86_64-linux.tar.gz::https://git.sovereign-society.org/libertaria/Jarvis/releases/download/v0.3.0-beta.127/jarvis-0.3.0-beta.127-x86_64-linux.tar.gz
+	source = jarvis-0.3.0-beta.127-x86_64-linux.sha256::https://git.sovereign-society.org/libertaria/Jarvis/releases/download/v0.3.0-beta.127/jarvis-0.3.0-beta.127-x86_64-linux.sha256
+	sha256sums = c7d0b178b9cc549570083474a7a12f960c33fa8a5bdb4e6096bc19fd93d02d85
 	sha256sums = SKIP
 
 pkgname = jarvis-bin
