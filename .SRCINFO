@@ -1,6 +1,6 @@
 pkgbase = letta-code-desktop-bin
 	pkgdesc = Letta lets you build agents that learn
-	pkgver = 0.33.6
+	pkgver = 0.34.10
 	pkgrel = 1
 	url = https://www.letta.com
 	arch = x86_64

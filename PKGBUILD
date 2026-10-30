@@ -1,6 +1,6 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 pkgname=letta-code-desktop-bin
-pkgver=0.33.6
+pkgver=0.34.10
 pkgrel=1
 pkgdesc="Letta lets you build agents that learn"
 arch=('x86_64')
