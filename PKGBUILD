@@ -1,6 +1,6 @@
 # Maintainer: Soumadip Das <soumadip+github@zohomail.in>
 pkgname=quikrun
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Run your code without hassle"
 arch=("any")
@@ -14,7 +14,7 @@ backup=('etc/quikrun/config.toml')
 
 source=(
     "https://files.pythonhosted.org/packages/py3/q/$pkgname/$pkgname-$pkgver-py3-none-any.whl"
-    "https://raw.githubusercontent.com/soymadip/quikrun/refs/heads/main/src/scripts/gen_default_config.py"
+    "https://raw.githubusercontent.com/soymadip/$pkgname/refs/heads/main/src/scripts/gen_default_config.py"
 )
 sha256sums=('SKIP' 'SKIP')
 
