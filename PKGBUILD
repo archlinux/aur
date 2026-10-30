@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=ele-messenger
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Household chat that keeps working without internet, router or power: one mesh over Bluetooth, Wi-Fi and the tailnet"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ install=ele-messenger-app.install
 # makepkg's GCC LTO turns the bundled SQLite into objects the Rust linker can't read.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/ele-messenger/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cecb81235cd5a05a07bcfa7b1a96a8c6d327485137e81f2db58c7e9f1389e073')
+sha256sums=('3af4abe0f02227222c8731bbdbd3d7a84ff3b21b173b8dd41b7ede705542c45a')
 
 prepare() {
     cd "$pkgname-$pkgver"
