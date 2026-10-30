@@ -1,6 +1,6 @@
 pkgbase = plasma6-themes-steamos-vapor-fixed
-	pkgdesc = SteamOS Vapor and VGUI themes for KDE Plasma, fixed for Plasma 6.8, with Konsole and Alacritty colors
-	pkgver = 1.0.2
+	pkgdesc = SteamOS Vapor and VGUI themes for KDE Plasma, fixed for Plasma 6.8, with GTK 3/4, Konsole, Alacritty and kitty colors
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/orlfman/steamos-vapor-plasma-6.8
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = plasma6-themes-steamos-vapor-fixed
 	optdepends = oxygen-cursors: KDE_Classic cursor for VGUI
 	optdepends = konsole: Vapor Konsole profile
 	optdepends = alacritty: Vapor Alacritty colors
+	optdepends = kitty: Vapor kitty colors
 	conflicts = plasma6-themes-vapor-steamos
 	conflicts = plasma5-themes-vapor-steamos
 	conflicts = steamdeck-kde-presets
-	source = plasma6-themes-steamos-vapor-fixed-1.0.2.tar.gz::https://github.com/orlfman/steamos-vapor-plasma-6.8/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = aa4fdf1fcc704726ac806fabec230a6cc38303559960429d8bc1c174d3d6e683
+	source = plasma6-themes-steamos-vapor-fixed-1.0.3.tar.gz::https://github.com/orlfman/steamos-vapor-plasma-6.8/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 5731bd432594572ce02954b3189349e94447866ccd9a4c66e0a725978c5d5512
 
 pkgname = plasma6-themes-steamos-vapor-fixed
