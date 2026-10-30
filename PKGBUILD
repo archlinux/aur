@@ -1,6 +1,6 @@
 # Maintainer: Gianluca Boiano <morf3089@gmail.com>
 pkgname=openartifact-bin
-pkgver=0.14.0 # renovate: datasource=github-releases depName=openartifact/openartifact extractVersion=^v(?<version>\d.+)$
+pkgver=0.15.0 # renovate: datasource=github-releases depName=openartifact/openartifact extractVersion=^v(?<version>\d.+)$
 pkgrel=1
 pkgdesc="Free-as-in-freedom artifact repository manager (Maven, npm, PyPI, OCI, Helm, ...) - prebuilt binaries"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgve
                 "oa-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/oa_${pkgver}_linux_arm64.tar.gz")
 noextract=("$pkgname-$pkgver-$CARCH.tar.gz" "oa-$pkgver-$CARCH.tar.gz")
 sha256sums=('bc1ec1cb88982f5c3bfc5a86505bcc8b87e6e83541609526b90b298ea2c473cb')
-sha256sums_x86_64=('28111815c7c64d6b649412abb283a05cf7793728a47a35d4da10f02d2ff67d70'
-                   '0828f9adbfe283c2af07922b7838879d33060f4e10dbbc070630e048b0f6a08d')
-sha256sums_aarch64=('8423795e23fda8a347bbe1a7ca59131b059e06ea6e938f8c4b3fe56b645c6858'
-                    'e98f03ca91cd777a2a45d1adf2bee469702dcbf34cf08f0b81734ad519d58cd4')
+sha256sums_x86_64=('02a6014c0011e4436d60e63d5a5ad3527959b160940ee81a130c98612dd11daf'
+                   'ff38e23962f9ba18a8496030919f2245c035a046f93483128df8acde2cf2e052')
+sha256sums_aarch64=('421924de17a402e2d888bdcada27f280d2192a7f4d18e5613f84e1a8917e8c23'
+                    '436f637c1b8042711d087705a594ce8df189542b67bdd947787476ac317e004e')
 
 prepare() {
   mkdir -p server cli
