@@ -1,55 +1,29 @@
+--- a/src/utils.rs
++++ b/src/utils.rs
+@@ -118,7 +118,10 @@
+ }
+
+ pub fn platform_tools_cache_dir() -> PathBuf {
+-    platform_tools_cache_dir_from(env::var_os("SOLANA_PLATFORM_TOOLS_DIR"))
++    platform_tools_cache_dir_from(
++        env::var_os("SOLANA_PLATFORM_TOOLS_DIR")
++            .or_else(|| Some("/usr/lib/solana/platform-tools".into())),
++    )
+ }
+
+ pub fn is_version_string(arg: &str) -> Result<(), String> {
 --- a/src/toolchain.rs
 +++ b/src/toolchain.rs
-@@ -100,7 +100,16 @@
-     }
- }
- 
-+#[allow(unreachable_code)]
- pub fn validate_platform_tools_version(requested_version: &str, builtin_version: &str) -> String {
-+    // Skip version probes. The distro package has one toolchain.
-+    if requested_version != builtin_version {
-+        warn!(
-+            "Ignoring platform-tools version {requested_version}. Using the system toolchain."
-+        );
-+    }
-+    return builtin_version.to_string();
-+
-     // Early return here in case it's the first time we're running `cargo build-sbf`
-     // and we need to create the cache folders
-     if requested_version == builtin_version {
-@@ -136,12 +145,8 @@
-     }
- }
+@@ -21,7 +21,7 @@
+     tar::Archive,
+ };
 
--pub fn make_platform_tools_path_for_version(version: &str) -> PathBuf {
--    home_dir()
--        .join(".cache")
--        .join("solana")
--        .join(version)
--        .join("platform-tools")
-+pub fn make_platform_tools_path_for_version(_version: &str) -> PathBuf {
-+    PathBuf::from("/usr/lib/solana/platform-tools")
- }
+-pub const DEFAULT_PLATFORM_TOOLS_VERSION: &str = "v1.57";
++pub const DEFAULT_PLATFORM_TOOLS_VERSION: &str = "v1.58";
+ pub const DEFAULT_RUST_VERSION: &str = "1.95.0";
 
- pub fn get_base_rust_version(platform_tools_version: &str) -> String {
-@@ -253,6 +258,16 @@
-     target_path: &Path,
-     use_rest_api: bool,
- ) -> Result<(), String> {
-+    // Never download, replace, or uninstall the distro toolchain.
-+    if target_path.starts_with("/usr/lib/solana") {
-+        if config.force_tools_install {
-+            warn!(
-+                "Refusing to delete the distro platform-tools at {}.",
-+                target_path.display()
-+            );
-+        }
-+        return Ok(());
-+    }
-     if config.force_tools_install && target_path.is_dir() {
-         debug!("Remove directory {target_path:?}");
-         fs::remove_dir_all(target_path)
-@@ -367,6 +382,7 @@
+ // Common headers used for Github API.
+@@ -383,6 +383,7 @@
  }
 
  // check whether custom solana toolchain is linked, and link it if it is not.
@@ -57,7 +31,7 @@
  fn link_solana_toolchain(
      config: &Config,
      platform_tools_dir: &Path,
-@@ -508,30 +524,23 @@
+@@ -526,30 +527,23 @@
          install_tools(config, &platform_tools_version, false);
      }
 
@@ -79,8 +53,8 @@
 -            // Safety: cargo-build-sbf doesn't spawn any threads until final child process is spawned
 -            unsafe { env::remove_var("RUSTC") }
 -        }
-+    // cargo is the binary inside the toolchain directory, not `cargo +toolchain`,
-+    // so rustup is not required. A host RUSTC would still override it.
++    // cargo is the binary inside the toolchain directory, not `cargo +toolchain`.
++    // Arch rust is not rustup. A host RUSTC would still override the toolchain.
 +    if env::var("RUSTC").is_ok() {
 +        warn!("Removed RUSTC from cargo environment so the platform-tools rustc is used.");
 +        // Safety: cargo-build-sbf doesn't spawn any threads until final child process is spawned
@@ -93,50 +67,23 @@
 
      platform_tools_version
  }
- 
+
  // allow user to set proper `rustc` into RUSTC or into PATH
 +#[allow(dead_code)]
  fn check_solana_target_installed(target: &str) {
      let rustc = env::var("RUSTC").unwrap_or("rustc".to_owned());
      let rustc = PathBuf::from(rustc);
-@@ -546,12 +555,9 @@
- }
-
- pub fn rust_target_triple(config: &Config) -> String {
--    let tools_version = semver::Version::parse(&semver_version(
--        config
--            .platform_tools_version
--            .unwrap_or(DEFAULT_PLATFORM_TOOLS_VERSION),
--    ))
--    .unwrap();
-+    // Target name follows the system toolchain, not a requested version.
-+    let tools_version =
-+        semver::Version::parse(&semver_version(DEFAULT_PLATFORM_TOOLS_VERSION)).unwrap();
-     let sbpf_minimum_version = semver::Version::parse(&semver_version("v1.44")).unwrap();
-
-     if config.arch == "v0" && tools_version < sbpf_minimum_version {
 --- a/src/bin/build_sbf.rs
 +++ b/src/bin/build_sbf.rs
-@@ -3,7 +3,7 @@
-         config::Config,
+@@ -4,7 +4,7 @@
          post_processing::post_process,
          toolchain::{
--            DEFAULT_PLATFORM_TOOLS_VERSION, corrupted_toolchain, generate_toolchain_name,
-+            DEFAULT_PLATFORM_TOOLS_VERSION, corrupted_toolchain,
-             get_base_rust_version, install_and_link_tools, install_tools,
+             DEFAULT_PLATFORM_TOOLS_VERSION, DEFAULT_RUST_VERSION, corrupted_toolchain,
+-            generate_toolchain_name, install_and_link_tools, install_tools,
++            install_and_link_tools, install_tools,
              make_platform_tools_path_for_version, rust_target_triple,
              validate_platform_tools_version,
-@@ -56,8 +56,8 @@
-
-     if corrupted_toolchain(platform_tools_dir) {
-         error!(
--            "The Solana toolchain is corrupted. Please, run cargo-build-sbf with the \
--             --force-tools-install argument to fix it."
-+            "The platform-tools at {} are unusable. Reinstall solana-dev.",
-+            platform_tools_dir.display()
-         );
-         exit(1);
-     }
+         },
 @@ -120,15 +120,22 @@
          );
      }

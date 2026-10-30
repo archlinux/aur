@@ -7,13 +7,13 @@
 pkgbase=solana
 pkgname=(solana-cli agave-validator solana-dev solana)
 epoch=1
-pkgver=4.3.2
+pkgver=4.4.0
 pkgrel=1
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
-_splTokenCliVersion=5.6.1
-# https://github.com/anza-xyz/agave/blob/$pkgver/scripts/cargo-build-sbf-version.sh
-_cargoBuildSbfVersion=4.4.0
-# We're ignoring the platform tools version specified by cargo-build-spf. Instead we'll ship whatever the latest compatible version is
+_splTokenCliVersion=5.7.1
+# https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/cargo-build-sbf-version.sh
+_cargoBuildSbfVersion=4.5.0
+# https://github.com/anza-xyz/cargo-build-sbf/blob/cargo-build-sbf%40v$_cargoBuildSbfVersion/sbf/scripts/install.sh
 _platformToolsVersion=1.58
 url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
@@ -25,11 +25,11 @@ source=("git+https://github.com/anza-xyz/agave.git#tag=v${pkgver}"
         "https://github.com/anza-xyz/platform-tools/releases/download/v${_platformToolsVersion}/platform-tools-linux-x86_64.tar.bz2"
         $pkgbase-sbf_sdk-path.patch)
 noextract=(platform-tools-linux-x86_64.tar.bz2)
-sha256sums=('0c08b244d9570bb8d02ec9266c6579a6295110c59de4df5258123326fe911b82'
-            'b039350d6d73488e1b4296c78475738c3c2e5c54e8370d031983c6e59a6d7c8d'
-            '5191648d2bb219c91774966900e6fcf44e2e5b08cfe2b2c483cf955dd36d9cd8'
+sha256sums=('d489b6b9a5db7d16f73d644ad960da18fca673e38c983b3dc478fb6d34ff293d'
+            '1694e997efe94b0eaf0114359511d877f8f5c5ab7b2779fea8633cbb47ea58ec'
+            '0cc64f633474bcbed02604abb3ab0fbdd9c8bb242e174d117587153371374744'
             '7b82eb420b5aebd1e5590db0ae25c523eca06724d4238ae02139690535636c37'
-            '34b4ca06956669e23b7043a4b025365a43b42a6c3f13b21d5a60a6ac7d8b7c3f')
+            '959e7a27067bc7ca53c19999c2c4295b3a1fe0b012f67088b4d4a09d68e84244')
 options=(!lto)
 
 # Build lists
@@ -187,8 +187,8 @@ package_solana-dev() {
   install -Dm755 "$srcdir/cargo-build-sbf/target/release/cargo-test-sbf" \
     -t "$pkgdir/usr/bin"
 
-  install -d "$pkgdir/usr/lib/solana"
-  cp -a "$srcdir/platform-tools" "$pkgdir/usr/lib/solana/platform-tools"
+  install -d "$pkgdir/usr/lib/solana/platform-tools/v${_platformToolsVersion}"
+  cp -a "$srcdir/platform-tools" "$pkgdir/usr/lib/solana/platform-tools/v${_platformToolsVersion}/platform-tools"
 }
 
 package_solana() {
