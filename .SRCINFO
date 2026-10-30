@@ -1,6 +1,6 @@
 pkgbase = pgadmin4-desktop
 	pkgdesc = The desktop user interface for pgAdmin (binary from Ubuntu). pgAdmin is the most popular administration platform for PostgreSQL.
-	pkgver = 9.18
+	pkgver = 9.19
 	pkgrel = 1
 	url = https://www.pgadmin.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pgadmin4-desktop
 	depends = pgadmin4-server
 	depends = xdg-utils
 	depends = python-dbus
-	source = pgadmin4-desktop-9.18-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_9.18-1.noble_amd64.deb
-	sha256sums = aad3e46f433ad5d05d0966df1a9b76a9f9047a42d5afb547fcb9db1dc4e190db
+	source = pgadmin4-desktop-9.19-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_9.19-1.noble_amd64.deb
+	sha256sums = 79ce340d1a09ec828905dd7938b218bc5c06b15d4a77f109a07d344b473c7a7c
 
 pkgname = pgadmin4-desktop

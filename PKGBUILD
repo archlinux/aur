@@ -2,7 +2,7 @@
 # Maintainer: higorslva <higor.slva at outlook dot com>
 
 pkgname=pgadmin4-desktop
-pkgver=9.18
+pkgver=9.19
 pkgrel=1
 pkgdesc='The desktop user interface for pgAdmin (binary from Ubuntu). pgAdmin is the most popular administration platform for PostgreSQL.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-  'aad3e46f433ad5d05d0966df1a9b76a9f9047a42d5afb547fcb9db1dc4e190db'
+  '79ce340d1a09ec828905dd7938b218bc5c06b15d4a77f109a07d344b473c7a7c'
 )
 
 prepare() {
