@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#commit=811ecd73fd201de30cf333af53ccfa7cdb966740")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=c376402043e35a4d86ff2049632de77f1944566c")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -150,6 +150,11 @@ package() {
     "$pkgdir/etc/skel/.config/cava/config"
   install -Dm644 "$stage/.config/cava/themes/Hornero Dynamic" \
     "$pkgdir/etc/skel/.config/cava/themes/Hornero Dynamic"
+
+  # Factory Zsh baseline + editor contract for new accounts (skel).
+  install -Dm644 "$stage/.zshrc" "$pkgdir/etc/skel/.zshrc"
+  install -Dm644 "$stage/.config/environment.d/10-hornero-editor.conf" \
+    "$pkgdir/etc/skel/.config/environment.d/10-hornero-editor.conf"
 
   # Hyprland's factory config imports modules from the user's XDG config
   # directory. Seed new accounts with that complete profile so the first
