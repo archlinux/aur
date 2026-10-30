@@ -123,6 +123,37 @@ check() {
   HOME="$srcdir/home" pwsh -NoProfile -NonInteractive -File "$srcdir/invoke-tests.ps1" -Path "$srcdir/Pester-$pkgver"
 }
 
+# Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
+# restored from a remote feed like nuget.org into $1, so no prebuilt binary slips in instead of one built
+# from source
+_check_prebuilt() {
+  local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0
+  local _binaries=(-type f '(' -name '*.dll' -o -name '*.exe' -o -name '*.so' -o -name '*.so.*' -o -name '*.dylib' ')')
+  local -A _prebuilt=()
+  while IFS= read -r -d '' _metadata; do
+    grep -qE '"source": *"https?://' "$_metadata" || continue
+    while IFS= read -r -d '' _file; do
+      _prebuilt[$(sha256sum <"$_file")]="${_file#"$1"/}"
+    done < <(find "${_metadata%/*}" "${_binaries[@]}" -print0)
+  done < <(find "$1" -name .nupkg.metadata -print0)
+
+  rm -rf "$_extracted"
+  mkdir -p "$_extracted"
+  while IFS= read -r -d '' _file; do
+    mkdir -p "$_extracted/${_file#"$pkgdir"/}"
+    bsdtar -xf "$_file" -C "$_extracted/${_file#"$pkgdir"/}"
+  done < <(find "$pkgdir" -type f -name '*.nupkg' -print0)
+  while IFS= read -r -d '' _file; do
+    _hash=$(sha256sum <"$_file")
+    if [[ -v "_prebuilt[$_hash]" ]]; then
+      echo "Prebuilt binary: ${_file#"$_extracted"/} is ${_prebuilt[$_hash]}" >&2
+      _found=1
+    fi
+  done < <(find "$pkgdir" "$_extracted" "${_binaries[@]}" -print0)
+  rm -rf "$_extracted"
+  return "$_found"
+}
+
 package() {
   cd "Pester-$pkgver" || exit
   # The files of the PowerShell Gallery package (buildPSGalleryPackage.ps1), without the tests
@@ -133,4 +164,6 @@ package() {
     bin Functions Dependencies Snippets en-US lib "$_destdir/"
   find "$_destdir" -name '*.Tests.ps1' -delete
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  _check_prebuilt "$srcdir/nuget"
 }
