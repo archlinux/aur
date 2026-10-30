@@ -1,6 +1,6 @@
 pkgbase = rlsp-yaml
 	pkgdesc = A YAML language server implementing the Language Server Protocol.
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/chdalski/rlsp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rlsp-yaml
 	depends = libgcc
 	depends = glibc
 	options = !lto
-	source = rlsp-rlsp-yaml-v0.13.1.tar.gz::https://github.com/chdalski/rlsp/archive/refs/tags/rlsp-yaml-v0.13.1.tar.gz
-	sha256sums = 62f7cab0e389fd2b0fa1050885fd3bafcffbb03d003fef9631551f9e0a988f66
+	source = rlsp-rlsp-yaml-v0.14.0.tar.gz::https://github.com/chdalski/rlsp/archive/refs/tags/rlsp-yaml-v0.14.0.tar.gz
+	sha256sums = 1464139b42fc4f83b8b5472dfe273c348b3828056e2a32b1ccddfa61a6738b1f
 
 pkgname = rlsp-yaml

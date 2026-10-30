@@ -1,5 +1,5 @@
 pkgname=rlsp-yaml
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A YAML language server implementing the Language Server Protocol."
 arch=(x86_64)
@@ -9,7 +9,7 @@ depends=(libgcc glibc)
 makedepends=(cargo)
 options=(!lto)
 source=("${pkgname%-yaml}-$pkgname-v$pkgver.tar.gz::https://github.com/chdalski/rlsp/archive/refs/tags/rlsp-yaml-v$pkgver.tar.gz")
-sha256sums=('62f7cab0e389fd2b0fa1050885fd3bafcffbb03d003fef9631551f9e0a988f66')
+sha256sums=('1464139b42fc4f83b8b5472dfe273c348b3828056e2a32b1ccddfa61a6738b1f')
 
 prepare() {
     cd "${pkgname%-yaml}-$pkgname-v$pkgver"
