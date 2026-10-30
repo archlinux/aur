@@ -1,0 +1,101 @@
+--- a/src/io/fileview.cpp
++++ b/src/io/fileview.cpp
+@@ -1,5 +1,7 @@
+ #include "fileview.hpp"
+ #include <array>
++#include <cerrno>
++#include <sys/stat.h>
+ #include <utility>
+ 
+ #include <qatomic.h>
+@@ -110,6 +112,20 @@
+ 	qCDebug(logFileView) << "Reader started for" << state.path;
+ 
+ 	auto info = QFileInfo(state.path);
++	// Qt's false existence result can also mean an unreadable query. Only a
++	// native stat's own missing-path errors confirm disappearance for callers.
++	auto failedRead = [&state, &info](FileViewError::Enum error) {
++		if (!info.isNativePath() || state.path.contains(QChar(u'\0'))) return error;
++		struct stat result {};
++		if (::stat(QFile::encodeName(state.path).constData(), &result) == -1) {
++			const auto failure = errno;
++			if (failure == ENOENT || failure == ENOTDIR) {
++				state.exists = false;
++				return FileViewError::FileNotFound;
++			}
++		}
++		return error;
++	};
+ 	state.exists = info.exists();
+ 
+ 	if (!state.exists) {
+@@ -117,7 +133,8 @@
+ 			qmlWarning(view) << "Read of " << state.path << " failed: File does not exist.";
+ 		}
+ 
+-		state.error = FileViewError::FileNotFound;
++		state.error = info.isNativePath() ? failedRead(FileViewError::Unknown)
++		                                : FileViewError::FileNotFound;
+ 		return;
+ 	}
+ 
+@@ -126,14 +143,14 @@
+ 			qmlWarning(view) << "Read of " << state.path << " failed: Not a file.";
+ 		}
+ 
+-		state.error = FileViewError::NotAFile;
++		state.error = failedRead(FileViewError::NotAFile);
+ 		return;
+ 	} else if (!info.isReadable()) {
+ 		if (state.printErrors) {
+ 			qmlWarning(view) << "Read of " << state.path << " failed: Permission denied.";
+ 		}
+ 
+-		state.error = FileViewError::PermissionDenied;
++		state.error = failedRead(FileViewError::PermissionDenied);
+ 		return;
+ 	}
+ 
+@@ -142,8 +159,10 @@
+ 	auto file = QFile(state.path);
+ 
+ 	if (!file.open(QFile::ReadOnly)) {
+-		qmlWarning(view) << "Read of " << state.path << " failed: Unknown failure when opening file.";
+-		state.error = FileViewError::Unknown;
++		if (state.printErrors) {
++			qmlWarning(view) << "Read of " << state.path << " failed: Unknown failure when opening file.";
++		}
++		state.error = failedRead(FileViewError::Unknown);
+ 		return;
+ 	}
+ 
+@@ -159,9 +178,11 @@
+ 			auto r = file.read(data.data() + i, data.length() - i); // NOLINT
+ 
+ 			if (r == -1) {
+-				qmlWarning(view) << "Read of " << state.path << " failed: read() failed.";
+-
+-				state.error = FileViewError::Unknown;
++				if (state.printErrors) {
++					qmlWarning(view) << "Read of " << state.path << " failed: read() failed.";
++				}
++
++				state.error = failedRead(FileViewError::Unknown);
+ 				return;
+ 			} else if (r == 0) {
+ 				data.resize(i);
+@@ -182,9 +203,11 @@
+ 			auto r = file.read(buf.data(), buf.size()); // NOLINT
+ 
+ 			if (r == -1) {
+-				qmlWarning(view) << "Read of " << state.path << " failed: read() failed.";
+-
+-				state.error = FileViewError::Unknown;
++				if (state.printErrors) {
++					qmlWarning(view) << "Read of " << state.path << " failed: read() failed.";
++				}
++
++				state.error = failedRead(FileViewError::Unknown);
+ 				return;
+ 			} else {
+ 				data.append(buf.data(), r);
