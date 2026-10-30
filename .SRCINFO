@@ -1,6 +1,6 @@
 pkgbase = chatwithwork-desktop-git
 	pkgdesc = Chat with Work Desktop: the desktop app, terminal interface and background agent (development version)
-	pkgver = 0.7.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/crmne/chatwithwork-desktop
 	install = chatwithwork-desktop-git.install
