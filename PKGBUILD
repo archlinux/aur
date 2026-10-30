@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modal text editor aiming to supersede Helix"
 
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.zip")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
-sha256sums=('15be82d732c2405fe59197ac357eabe18623df56bffd4a274212970555fcafdb'
+sha256sums=('40a3e11ec20c9b0e661c5be2bf2ca7fc18370e778ac57b2660b2b8a19531f293'
             'ddec419b3e1e15ff0e03b24e51665e2be0a6b8c39cf5071d7e939ddc56370f4f')
-sha256sums_x86_64=('de23e0be8b93410dec7e0475a57f04063c0f352a6437bd385db8eb111f64774b')
-sha256sums_aarch64=('b5ecdc0576dd1d88fd7dff1b391aa33473724fa3bcfa0018729e585b43648138')
+sha256sums_x86_64=('b061f98a015e1107a5ded474c25c3790c1762000e42179bb0cf1fb1cfcc02ae0')
+sha256sums_aarch64=('4e0b846349725454d0f606e316cad9b91c1374b8c56a1fb0182dc323ac4de42c')
 
 
 package() {
