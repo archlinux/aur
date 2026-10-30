@@ -10,7 +10,7 @@ _nfver=3.5.1
 # families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -34,6 +34,7 @@ source=(
   "font_meta.py"
   "fix_weights.py"
   "add_stat.py"
+  "strip_trak.py"
   "fix_names.py"
   "make_features.py"
 )
@@ -56,6 +57,7 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
             '1297a4be9504032cc3457c3d50f30a21c3101f4203f5dd545c8d4c19f4859600'
             'e475b94e90c3e569d51a24b3355e854db5195b4e161384896b7637cd42a2564e'
             '4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0'
+            '1bb0cc9643383d54e2d7e39e889f169f1ebc34df473fb9ba0d159a2febcd2af4'
             '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
             '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
 
@@ -106,10 +108,33 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
 #  TRACKING  true/false      Enable Apple's size-specific tracking (default: true).
 #                            SF Pro / New York carry an AAT `trak` table, which
 #                            HarfBuzz applies only if the font also has STAT;
-#                            add_stat.py adds a minimal one. Result in pango:
-#                            9pt +4.3%, 11pt +0.8%, 13pt -1%, 17pt -4% width.
-#                            No effect with NERD_PATCH=true: font-patcher
-#                            (FontForge) drops both trak and STAT.
+#                            add_stat.py adds a minimal one. No effect with
+#                            NERD_PATCH=true: font-patcher (FontForge) drops
+#                            both trak and STAT.
+#                            Forced to false when STRIP_TRAK=true, because the
+#                            two do opposite things.
+#
+#  STRIP_TRAK  true/false    Remove the `trak` table instead (default: true).
+#                            Every program treats it differently, and the result
+#                            is visible as letter-spacing:
+#                              pango/GTK   ignores it  (identical widths)
+#                              Chromium    applies it  (+22 units/glyph at 32px,
+#                                           the value the table asks for: 24)
+#                              Firefox     applies it ~5x too strongly
+#                                           (+115 units/glyph at 32px, +171 at
+#                                           13px -> +20% line width in body text)
+#                            Measured on SF Pro Rounded Regular, 20x"H" at 32px
+#                            through fontconfig, only the trak table differing:
+#                              chromium with 455 / without 448 px
+#                              firefox  with 484 / without 448 px
+#                            and a 57-character sentence at 13px:
+#                              firefox  377 px with trak, 315 without; GTK 353
+#                            either way. 448 and 315 are the hmtx design widths.
+#                            So stripping changes nothing in GTK, makes the
+#                            browsers agree with each other exactly, and takes
+#                            the extra letterspacing out of Firefox. Set it to
+#                            false to keep Apple's tracking (then TRACKING=true
+#                            is what makes it reachable).
 #
 #  ── ttfautohint tuning ──
 #  HINT_PRESET  name         Named bundle of ttfautohint flags (default: balanced)
@@ -621,6 +646,28 @@ _resolve_options() {
     echo "Error: TRACKING='$TRACKING' must be true or false."; exit 1
   fi
 
+  # ── Apple's trak table: keep it or take it out ─────────────────────────────
+  if [[ "$_interactive" == true && -z "${STRIP_TRAK:-}" ]]; then
+    echo ""
+    echo "  Apple's 'trak' table is size-specific tracking. Linux programs"
+    echo "  disagree about it: GTK ignores it, Chromium applies it as written,"
+    echo "  Firefox applies it about five times too strongly (+20% line width"
+    echo "  at 13px). Removing it changes nothing in GTK and makes the browsers"
+    echo "  agree. See the header for the measurements."
+    _ask_yn "Remove the trak table (recommended)" y
+    [[ "$_yn" =~ ^[yY]$ ]] && STRIP_TRAK=true || STRIP_TRAK=false
+  fi
+  STRIP_TRAK="${STRIP_TRAK:-true}"
+  if [[ "$STRIP_TRAK" != true && "$STRIP_TRAK" != false ]]; then
+    echo "Error: STRIP_TRAK='$STRIP_TRAK' must be true or false."; exit 1
+  fi
+  if [[ "$STRIP_TRAK" == true && "$TRACKING" == true ]]; then
+    # STAT was added only so that HarfBuzz would pick the tracking up; there is
+    # nothing left to pick up once the table is gone.
+    echo "==> STRIP_TRAK=true: turning TRACKING off (STAT exists only for trak)."
+    TRACKING=false
+  fi
+
   # gasp default + validation (used by both engines, but only meaningful for TTF)
   GASP_MODE="${GASP_MODE:-keep}"
   case "$GASP_MODE" in
@@ -766,7 +813,7 @@ _resolve_options() {
   printf "  NERD_PATCH:    %s\n" "$NERD_PATCH"
   printf "  WANT_VARIABLE: %s\n" "$WANT_VARIABLE"
   printf "  FIX_WEIGHTS:   %s\n" "$FIX_WEIGHTS"
-  printf "  TRACKING:      %s\n" "$TRACKING"
+  printf "  TRACKING:      %s   (STRIP_TRAK: %s)\n" "$TRACKING" "$STRIP_TRAK"
   if [[ "$HINTING" == true ]]; then
     printf "  HINTING:       true  (engine=%s)\n" "$HINT_ENGINE"
     if [[ "$HINT_ENGINE" == ttfautohint ]]; then
@@ -799,6 +846,7 @@ _resolve_options() {
     echo "WANT_VARIABLE=$WANT_VARIABLE"
     echo "FIX_WEIGHTS=$FIX_WEIGHTS"
     echo "TRACKING=$TRACKING"
+    echo "STRIP_TRAK=$STRIP_TRAK"
     echo "HINTING=$HINTING"
     echo "HINT_ENGINE=$HINT_ENGINE"
     echo "HINT_PRESET=${HINT_PRESET:-}"
@@ -839,7 +887,7 @@ _load_options() {
   [[ -f "$srcdir/.build_opts" ]] || { echo "Error: missing .build_opts; run prepare() first."; exit 1; }
   while IFS='=' read -r _k _v; do
     case "$_k" in
-      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
+      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|STRIP_TRAK|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
       FEATURE_DEFAULTS|FEATURE_FAMILY| \
@@ -1039,6 +1087,14 @@ build() {
   if [[ "$FIX_WEIGHTS" == true ]]; then
     echo "==> Normalising usWeightClass..."
     python "$srcdir/fix_weights.py" "$srcdir/selected/"*
+  fi
+
+  # Apple's trak table goes first: every later step (conversion, patching,
+  # hinting, feature baking) then carries fonts that have no tracking at all,
+  # instead of each of them deciding whether to preserve it.
+  if [[ "$STRIP_TRAK" == true ]]; then
+    echo "==> Removing Apple's trak (size-specific tracking)..."
+    python "$srcdir/strip_trak.py" "$srcdir/selected/"*
   fi
 
   # STAT goes in after the weight fix (it records usWeightClass). fontTools

@@ -29,7 +29,7 @@ all at scale 1.0: the built-in 2240×1400 14" panel (~190 dpi), an ASUS MB16AMT
 | environment | **no** `FREETYPE_PROPERTIES` stem-darkening tweak | It does not affect TrueType bytecode hinting at all |
 | Firefox `user.js` / about:config | `gfx.text.subpixel-position.force-enabled = true` | At hintmedium Firefox rounds glyph advances and turns off subpixel positioning (§9) |
 | build | default `HINT_PRESET=balanced`, not `natural` | `natural` glues i/j dots and diaereses at 10–12 px (§8) |
-| build | default `TRACKING=true` | Adds STAT so HarfBuzz applies Apple's `trak` size-specific tracking (§11) |
+| build | default `STRIP_TRAK=true` | Removes Apple's `trak` table, which every program applies differently and Firefox applies 2–5× too strongly (§11) |
 
 Apply it:
 
@@ -285,26 +285,68 @@ programs out of its hintmedium edit:
 
 Verified: with the rule, Chrome and Chromium report 49/54 fractional advances again.
 
-### 11. Tracking: Apple's `trak` table needs STAT
+### 11. `trak`: why Firefox letterspaces these fonts
 
-SF Pro Text/Display/Rounded and New York ship an AAT `trak` table: Apple's
-size-specific letter-spacing, e.g. SF Pro Text +12/2048 em at 11pt, 0 at 12pt,
-−47 at 17pt. SF Mono has none. HarfBuzz applies `trak` only when the font also
-has a STAT table (`hb-ot-shape.cc`: `apply_trak = has_tracking && STAT->has_data()`),
-and Apple's static fonts have no STAT. `add_stat.py` (build option `TRACKING`,
-default on) adds a minimal one: a wght and an ital axis describing what the
-font already is. fontconfig's family/style/weight are unchanged.
+SF Pro Text/Display/Rounded, SF Compact and New York ship an AAT `trak` table:
+Apple's size-specific tracking. Three programs, three different answers, and
+the disagreement is perfectly visible as letter-spacing. Measured with
+SF Pro Rounded Regular, 20 capital `H` at 32 px, only the `trak` table differing
+between the two files, through fontconfig:
 
-pango, SF Pro Text Regular, "Hamburgefonstiv Αλφάβητο ελληνικά":
+| program | with `trak` | without | what it does |
+|---|---|---|---|
+| pango / GTK (13 px text) | 353 px | 319 px | applies it as written |
+| Chromium / Skia | 455 px | 448 px | applies it as written (+22 units/glyph; the table asks 24) |
+| **Firefox** | **484 px** | 448 px | **applies it ~5× too strongly** (+115 units/glyph) |
 
-| pt | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 17 | 20 |
-|---|---|---|---|---|---|---|---|---|---|
-| width change | +4.3 % | +0.9 % | +0.8 % | 0 | −1.0 % | −2.7 % | −1.4 % | −4.0 % | −5.9 % |
+448 px is what `hmtx` says (20 × 1432/2048 × 32), so "without" is the design
+width. A 57-character sentence at 13 px tells the same story in body text:
 
-pango passes HarfBuzz the size in points. Chrome passes CSS px as points,
-like Safari, so 16 px web text gets the 16pt track (−3.9 % measured). STAT and
-`trak` survive otf2ttf and ttfautohint. font-patcher (FontForge) drops both, so
-`NERD_PATCH=true` builds get no tracking.
+| 13 px sentence | width |
+|---|---|
+| GTK | 353 px |
+| Chromium | 348 px |
+| Firefox, `trak` in the font | **377 px** |
+| Firefox, `trak` removed | 315 px |
+
+So `trak` does not just move text by a pixel: at 13 px it adds 0.5 px per glyph
+as designed (that is Apple's intent, and it is why Rounded looks airy), and
+Firefox adds 1.1 px. That is the "large gaps between letters" — nothing is
+broken in the font, the browser just reads a table nobody else reads the same
+way.
+
+The table is *per family*, and the sign is not always positive: SF Pro Text
+reads +12 units at 11pt, 0 at 12pt and −47 at 17pt, so it gets tighter at large
+sizes, while SF Pro Rounded is positive from 6 pt up to 80 pt and therefore
+always looser (174 units at 6pt, 92 at 12pt, 52 at 16pt, 24 at 32pt, 0 at 80pt).
+
+**What this package does:** `STRIP_TRAK=true` (the default since pkgrel 7)
+removes the table from every selected font before any other step, so the
+conversion, patching, hinting and feature baking all work on fonts that have no
+tracking at all. Verified on the built package in both engines, 13 px and 32 px:
+
+| after stripping | 32 px, 20×`H` | 13 px sentence |
+|---|---|---|
+| Firefox | 448 px | 315 px |
+| Chromium | 448 px | 314 px |
+| GTK | – | 319 px |
+
+All three agree within 1 %, and Firefox no longer differs from the rest of the
+desktop. The cost is that GTK also stops applying Apple's tracking, so text is
+about 10 % tighter at 13 px than it used to be (and slightly wider at 17 pt and
+above in SF Pro Text, whose tracking is negative there).
+
+`STRIP_TRAK=false` keeps Apple's behaviour, and then `TRACKING=true` (also
+available as its own build option) is what makes it reachable: HarfBuzz applies
+`trak` only when the font also has STAT (`hb-ot-shape.cc`:
+`apply_trak = has_tracking && STAT->has_data()`), and Apple's static fonts ship
+without one. `add_stat.py` adds a minimal one — a `wght` and an `ital` axis
+describing what the font already is — which changes no family, style or weight
+in fontconfig. The two options do opposite things, so `STRIP_TRAK=true` forces
+`TRACKING` off.
+
+`trak` and STAT survive `otf2ttf` and `ttfautohint`; font-patcher (FontForge)
+drops both, so `NERD_PATCH=true` builds never had either.
 
 ### 12. Other variants measured and rejected (2026-09-30)
 
