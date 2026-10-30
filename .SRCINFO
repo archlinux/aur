@@ -1,5 +1,6 @@
 pkgbase = inter-doom-git
-	pkgver = 8.2.r44
+	pkgdesc = International Doom. Small, functional and simple Doom, Heretic, Hexen source port, created with help, efforts and bits of code from people around the world (git version)
+	pkgver = 9.1.r2
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
@@ -8,25 +9,23 @@ pkgbase = inter-doom-git
 	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = cmake
+	depends = hicolor-icon-theme
+	depends = glibc
 	depends = sdl2>=2.0.18
 	depends = sdl2_mixer>=2.0.2
-	depends = sdl2_net>=2.0.0
 	depends = libsamplerate
 	depends = fluidsynth
+	optdepends = doom1-wad: Doom shareware game data
+	optdepends = heretic1-wad: Heretic shareware game data
+	optdepends = hexen1-wad: Hexen demo game data
+	provides = inter-heretic-git
+	provides = inter-hexen-git
+	conflicts = inter-doom
+	conflicts = inter-heretic
+	conflicts = inter-hexen
+	conflicts = inter-heretic-git
+	conflicts = inter-hexen-git
 	source = git+https://github.com/JNechaevsky/international-doom.git
 	b2sums = SKIP
 
 pkgname = inter-doom-git
-	pkgdesc = Small, functional and simple Doom source port, created with help, efforts and bits of code from people around the world (git version)
-	optdepends = doom1-wad: Doom shareware game data
-	conflicts = inter-doom
-
-pkgname = inter-heretic-git
-	pkgdesc = Small, functional and simple Heretic source port, created with help, efforts and bits of code from people around the world (git version)
-	optdepends = heretic1-wad: Heretic shareware game data
-	conflicts = inter-heretic
-
-pkgname = inter-hexen-git
-	pkgdesc = Small, functional and simple Hexen source port, created with help, efforts and bits of code from people around the world (git version)
-	optdepends = hexen1-wad: Hexen demo game data
-	conflicts = inter-hexen
