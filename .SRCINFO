@@ -1,6 +1,6 @@
 pkgbase = bootimus-bin
 	pkgdesc = A Complete enhanced version of the PXE server
-	pkgver = 0.1.79
+	pkgver = 0.1.80
 	pkgrel = 1
 	url = https://github.com/garybowers/bootimus
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = bootimus-bin
 	license = Apache-2.0
 	provides = bootimus
 	conflicts = bootimus
-	source = LICENSE_0.1.79::https://raw.githubusercontent.com/garybowers/bootimus/refs/tags/v0.1.79/LICENSE
-	source = README_0.1.79.md::https://raw.githubusercontent.com/garybowers/bootimus/refs/tags/v0.1.79/README.md
+	source = LICENSE_0.1.80::https://raw.githubusercontent.com/garybowers/bootimus/refs/tags/v0.1.80/LICENSE
+	source = README_0.1.80.md::https://raw.githubusercontent.com/garybowers/bootimus/refs/tags/v0.1.80/README.md
 	sha256sums = 8f25b2e99b634951e318c5f648e0fc36fa567e49e000f9bee6e2a7eb94a28c16
 	sha256sums = 09571218530d76891ed748e7ff1254009dba3aff61b7fb8645dc96f430dfbd7b
-	source_x86_64 = bootimus-amd64-0.1.79::https://github.com/garybowers/bootimus/releases/download/v0.1.79/bootimus-linux-amd64
-	sha256sums_x86_64 = 9bada34a72db1fbf72824dd9e2932cc49c869bcb6a03a5e14a5b4bb736a6e04e
-	source_aarch64 = bootimus-arm64-0.1.79::https://github.com/garybowers/bootimus/releases/download/v0.1.79/bootimus-linux-arm64
-	sha256sums_aarch64 = 69488637253aec30855babfbf362fc984b51e5a8131867a32186613a386c902f
+	source_x86_64 = bootimus-amd64-0.1.80::https://github.com/garybowers/bootimus/releases/download/v0.1.80/bootimus-linux-amd64
+	sha256sums_x86_64 = 2415f83f146ec1a7245233a5c31e71a6cf0d214a89a0b6782f2d01b48890ad77
+	source_aarch64 = bootimus-arm64-0.1.80::https://github.com/garybowers/bootimus/releases/download/v0.1.80/bootimus-linux-arm64
+	sha256sums_aarch64 = 530839bbd7e1ec34a709e33b898f08608fe728231cc9890ae33eebbf8f32e0a5
 
 pkgname = bootimus-bin
