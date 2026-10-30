@@ -7,7 +7,7 @@ pkgrel=2
 epoch=1
 license=('GPL-2.0-only')
 pkgdesc="Jellyfin Desktop Client"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/jellyfin/jellyfin-desktop"
 depends=(
     'libcec'
