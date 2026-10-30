@@ -1,6 +1,6 @@
 pkgbase = mdns-scanner
 	pkgdesc = Scan a network and create a list of IPs and associated hostnames, including mDNS hostnames and other aliases.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/CramBL/mdns-scanner
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = mdns-scanner
 	makedepends = pkgconf
 	depends = glibc
 	depends = gcc-libs
-	source = mdns-scanner-1.0.1.tar.gz::https://github.com/CramBL/mdns-scanner/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 09bc30c592f077010418359e6e04b2837e1fb776f694eff196d2dd4e7e7f0dfc
+	source = mdns-scanner-1.0.2.tar.gz::https://github.com/CramBL/mdns-scanner/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 44126fa4c8ee783a427c5edbea3422c04d82671583668d363091c43515949165
 
 pkgname = mdns-scanner
