@@ -2,7 +2,7 @@
 pkgname=smartsub-bin
 _pkgname=SmartSub
 _zhsname='妙幕'
-pkgver=3.12.0
+pkgver=3.12.1
 _electronversion=30
 pkgrel=1
 pkgdesc="A cross-platform client side tool that can generate subtitle files for video or audio in batches, and supports subtitle translation. It supports Baidu, Volcano, OpenAI, Olama, DeepSeek and other translators."
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e4d1213a598b7514c3b6ba23ed1a6c58a971915b2da15fec212512944bd52600'
+sha256sums=('669a817dd7e1a1b5ff4e2e601b314b1df9c2438d4ed9c8309213241d2599b424'
             '324178aaf0ebe3ab663803d3a63439cd8cdf02c3a4a40609c9ac6f8af517faed'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
