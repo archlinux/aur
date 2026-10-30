@@ -11,6 +11,7 @@ pkgbase = terminaltexteffects-git
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
+	optdepends = python-pillow: image-based effects
 	provides = terminaltexteffects
 	provides = python-terminaltexteffects
 	conflicts = terminaltexteffects

@@ -2,12 +2,13 @@
 
 pkgname=terminaltexteffects-git
 pkgver=0.12.1.r9.g1613a8c
-pkgrel=1
+pkgrel=2
 pkgdesc='Visual effects engine applied to text in the terminal. '
 url="https://github.com/ChrisBuilds/terminaltexteffects"
 arch=('any')
 license=('MIT')
 depends=('python')
+optdepends=('python-pillow: image-based effects')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 provides=('terminaltexteffects' 'python-terminaltexteffects')
 conflicts=('terminaltexteffects' 'python-terminaltexteffects')
