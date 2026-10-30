@@ -1,6 +1,6 @@
 pkgbase = opencode-beta
 	pkgdesc = OpenCode beta - the AI coding agent for the terminal
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = opencode-beta
 	source = opencode2
 	sha256sums = 625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b
 	sha256sums = cd03022601e4848a957999a2a7b1c1ccf18b94f9a084a44719f62abaacebe83c
-	source_x86_64 = opencode-beta-2.2.2-x86_64.tgz::https://registry.npmjs.org/@opencode/cli-linux-x64-baseline/-/cli-linux-x64-baseline-2.2.2.tgz
-	sha256sums_x86_64 = 8166eefaa06b38736dff025cd10190a359a54e2fe49c9f6e21c0799cdcf8acce
-	source_aarch64 = opencode-beta-2.2.2-aarch64.tgz::https://registry.npmjs.org/@opencode/cli-linux-arm64/-/cli-linux-arm64-2.2.2.tgz
-	sha256sums_aarch64 = d573e9efcd7d340103cfb5d136b54e2951e75169b1865da99a18a7da0211cb99
+	source_x86_64 = opencode-beta-2.2.3-x86_64.tgz::https://registry.npmjs.org/@opencode/cli-linux-x64-baseline/-/cli-linux-x64-baseline-2.2.3.tgz
+	sha256sums_x86_64 = 6c4600333f617d59c10a41eb57ebe6f03b58fa0031c021af2bf2df14ff72ce1c
+	source_aarch64 = opencode-beta-2.2.3-aarch64.tgz::https://registry.npmjs.org/@opencode/cli-linux-arm64/-/cli-linux-arm64-2.2.3.tgz
+	sha256sums_aarch64 = c83e14de3994ee4c4bf6826b48b6e774e51727e8629e2b60047a1c9d0e3278d6
 
 pkgname = opencode-beta
