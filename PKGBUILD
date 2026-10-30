@@ -8,7 +8,7 @@
 
 pkgname=pythonscad-git
 _pkg="${pkgname%-git}"
-pkgver=r12762.8a13038
+pkgver=r14226.e2ee812
 pkgrel=1
 pkgdesc="Fork of OpenSCAD allowing models to be written in Python"
 arch=('x86_64')
@@ -38,8 +38,27 @@ depends=(
     'python'
 )
 makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'ninja' 'bison' 'flex')
-source=("$_pkg::git+$url.git")
-sha256sums=('SKIP')
+source=(
+	"$_pkg::git+$url.git"
+	"${_pkg}-MCAD::git+https://github.com/openscad/MCAD.git"
+	"${_pkg}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
+	"${_pkg}-manifold::git+https://github.com/elalish/manifold.git"
+	"${_pkg}-libfive::git+https://github.com/libfive/libfive.git"
+	"${_pkg}-sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake.git"
+	"${_pkg}-OpenCSG::git+https://github.com/floriankirsch/OpenCSG.git"
+	"${_pkg}-Clipper2::git+https://github.com/AngusJohnson/Clipper2.git"
+)
+
+sha256sums=(
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+)
 
 pkgver() {
 	# git -C "$_pkg" describe --long --tags | sed 's/^openscad-//;s/-/.r/;s/-/./'
@@ -56,7 +75,15 @@ prepare() {
 	sed -i 's/target_include_directories(OpenSCAD SYSTEM PRIVATE ${EIGEN3_INCLUDE_DIR})/target_link_libraries(OpenSCAD PRIVATE Eigen3::Eigen)/' CMakeLists.txt
 	sed -i 's/target_compile_definitions(OpenSCAD PRIVATE EIGEN_DONT_ALIGN)//' CMakeLists.txt
 
-	git submodule update --init --recursive
+	git submodule init
+	git config 'submodule.libraries/MCAD.url' "$srcdir/${_pkg}-MCAD"
+	git config 'submodule.mimalloc.url' "$srcdir/${_pkg}-mimalloc"
+	git config 'submodule.submodules/manifold.url' "$srcdir/${_pkg}-manifold"
+	git config 'submodule.submodules/libfive.url' "$srcdir/${_pkg}-libfive"
+	git config 'submodule.sanitizers-cmake.url' "$srcdir/${_pkg}-sanitizers-cmake"
+	git config 'submodule.OpenCSG.url' "$srcdir/${_pkg}-OpenCSG"
+	git config 'submodule.Clipper2.url' "$srcdir/${_pkg}-Clipper2"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
