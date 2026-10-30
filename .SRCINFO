@@ -1,6 +1,6 @@
 pkgbase = tapeback-llm-local
 	pkgdesc = Local LLM summaries for tapeback: llama.cpp's server, started for each summary
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/yastcher/tapeback
 	arch = any

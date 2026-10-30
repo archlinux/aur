@@ -1,6 +1,6 @@
 # Maintainer: Yast <yastcher@gmail.com>
 pkgname=tapeback-llm-local
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Local LLM summaries for tapeback: llama.cpp's server, started for each summary"
 arch=('any')
