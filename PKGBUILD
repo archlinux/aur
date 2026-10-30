@@ -1,7 +1,7 @@
 # Maintainer: Joe Sedutto <joe@millyardlabs.com>
 
 pkgname=jlcone-bin
-pkgver=1.0.71
+pkgver=1.0.72
 pkgrel=1
 pkgdesc="JLCPCB desktop client for PCB, PCBA, stencil, and CNC orders"
 arch=('x86_64')
@@ -30,7 +30,7 @@ options=('!strip' '!debug')
 # Upstream CDN rejected curl's default User-Agent
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -A "Mozilla/5.0" -o %o %u')
 source=("https://rs.jlcone.com/static/APP/app_version/jlcone-${pkgver}.deb")
-sha256sums=('bfb855c54c58d69fa0203d5295b012027d35d94383b23f5651f3d3b8d51694e8')
+sha256sums=('5e79bb035e089f0779aceaf667d0ef34e819b9a75996799781a7e5f6a8cf0c8b')
 noextract=("jlcone-${pkgver}.deb")
 
 package() {
