@@ -1,4 +1,4 @@
-# Maintainer: Mikko Tuomikoski <me@snoozyman.eu>
+# Maintainer: Mikko Tuomikoski <me AT snoozyman DOT eu>
 # Contributor: MoazSalem <https://github.com/MoazSalem>
 
 pkgname=litefin
@@ -48,6 +48,6 @@ Name=Litefin
 Exec=/usr/bin/litefin
 Icon=/usr/share/icons/hicolor/512x512/apps/litefin.png
 Type=Application
-Categories=Network;AudioVideo;
+Categories=Multimedia;
 EOF
 }
