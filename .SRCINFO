@@ -1,0 +1,26 @@
+pkgbase = python-dara-xrd
+	pkgdesc = Data-driven Automated Rietveld Analysis for powder XRD phase search and refinement
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/CederGroupHub/dara
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-git-versioning
+	makedepends = python-wheel
+	depends = python-pymatgen-core
+	depends = python-mp-api
+	depends = spglib
+	depends = python-plotly
+	depends = python-toml
+	depends = python-scikit-learn
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-fastapi
+	depends = uvicorn
+	source = dara_xrd-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/d/dara_xrd/dara_xrd-1.3.0.tar.gz
+	sha256sums = 1ddf23e2b2794c20d7a284c7e17af2066f1fa89413681f8a8dfaf17e49af32ee
+
+pkgname = python-dara-xrd
