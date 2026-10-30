@@ -5,24 +5,24 @@
 # Modified for a proper AUR release
 
 pkgname=grexa-bin
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Fast Linux file content search with tabs, replace, and AI assistance"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/visorcraft/Grexa"
-license=('GPL-3.0-only')
-provides=('grexa-cli' 'grexa')
-conflicts=('grexa')
+license=(GPL-3.0-only)
+provides=(grexa-cli grexa)
+conflicts=(grexa)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/grexa-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('0a065036d717e7321bc07cf5df69f2245e880829eb88e58f761599dae0ced797')
+sha256sums=('ad756a684af4d641f8333a86883a308c38345303d783265758c3d78cdaaf56ea')
 
 package() {
     depends=(
-        'qt6-base'
-        'qt6-declarative'
-        'kirigami'
-        'hicolor-icon-theme'
-        'poppler'
+        qt6-base
+        qt6-declarative
+        kirigami
+        hicolor-icon-theme
+        poppler
     )
     optdepends=(
         'podman: container search via rootless Podman'
