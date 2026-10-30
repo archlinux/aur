@@ -1,7 +1,7 @@
 # Maintainer: Eric Busch <me@etbus.ch>
 _name=pebble_tool
 pkgname=pebble-tool
-pkgver=5.0.40
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Command-line tool for the Pebble SDK: build, install and debug apps for Pebble smartwatches"
 arch=('any')
@@ -17,8 +17,8 @@ depends=('python' 'python-cobs' 'python-colorama' 'python-freetype-py'
          'python-wheel' 'npm')
 optdepends=('pypkjs: required by the default managed QEMU emulator (`pebble install --emulator <platform>`); not a hard depend because it pulls in python-stpyv8, which is x86_64-only')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-source=("https://files.pythonhosted.org/packages/24/01/b0ca611473d17c23312441ef6d24a97299df5c697008b1703898c5ea6ab6/$_name-$pkgver.tar.gz")
-sha256sums=('67ca56dd8ac4ed9e302c449c99ff17e0c7169c28ca5e252a12840680781e8e09')
+source=("https://files.pythonhosted.org/packages/89/46/a5f424d32f92968c448df7e3ff4e1eaa3f8ef6f9403679a37fb21dd8f1b0/$_name-$pkgver.tar.gz")
+sha256sums=('b79d5e43c4ce593eadab95dfb109ec7b652eb9e6ef1fdfea1e25681fa4c4d84f')
 
 build() {
   cd "$_name-$pkgver"
