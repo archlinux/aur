@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.4.0
-_nvmdver="${pkgver}"
+pkgver=4.5.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
@@ -18,88 +17,126 @@ conflicts=("${pkgname}")
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
+    'libayatana-indicator'
+	'libappindicator'
 )
 makedepends=(
     'gendesk'
     'npm'
     'nvm'
     'pnpm'
-    'curl'
     'rustup'
     'librsvg'
     'patchelf'
     'git'
 )
-source_aarch64=("nvmd-${_nvmdver}-aarch64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-arm64")
-source_armv7h=("nvmd-${_nvmdver}-armv7h::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-armv7")
-source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-x64")
-source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('20c4e5324069038753d21b2387177692887097a6de26a14c7846f43332528979')
-sha256sums_aarch64=('d25bb17da578f5c66daa9e3bd1c7af259d01f1cfe111dd42d64c94d7e6f715ba')
-sha256sums_armv7h=('caf6f5d0eb1110c44ad201c681501c3881d0dd7c258f1d405bd931390f4a52b6')
-sha256sums_x86_64=('c6a6cbb0ab600058c0c01bf05014fec84f77f8a956e9990ad8c9b853829ac856')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('dba095fbd28d5f901dff279aaeb1e4e377847cb0804140af89a7e21bc4442f3d')
+_get_project_dir() {
+	find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
+		while read -r tauri_dir; do
+			[ -f "${tauri_dir}/Cargo.toml" ] || continue
+			local dir="${tauri_dir}"
+			until [ -f "${dir}/package.json" ] || [ "$dir" = "${srcdir}" ] || [ "$dir" = "/" ]; do
+				dir="$(dirname "$dir")"
+			done
+			[ -f "${dir}/package.json" ] && { echo "$dir"; return; }
+		done
+}
+_get_nvmd_dir() {
+	find "${srcdir}" -type d -name "crates" \
+		-exec test -f "{}/../Cargo.toml" -a -f "{}/../Cargo.lock" -a ! -f "{}/../tauri.conf.json" \; \
+		-printf "%h\n" -quit 2>/dev/null
+}
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-_set_build_env() {
-    export HOME="${srcdir}/.electron-gyp"
-    export CARGO_HOME="${srcdir}/.cargo"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export RUSTUP_DIST_SERVER="https://mirrors.aliyun.com/rustup"
-            export RUSTUP_UPDATE_ROOT="https://mirrors.aliyun.com/rustup/rustup"
-
-        }
-    fi
+_set_rust_build_env() {
+	export HOME="${srcdir}/.home"
+	export CARGO_HOME="${HOME}/.cargo"
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export CARGO_NET_RETRY=5
+	export CARGO_HTTP_MULTIPLEXING=false
+	export CARGO_INCREMENTAL=0
+	export CARGO_TERM_COLOR=never
+	export CARGO_PROFILE_RELEASE_STRIP=symbols
+	mkdir -p "${HOME}" "${CARGO_HOME}"
+}
+_set_pnpm_build_env() {
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _pnpmver=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_pnpmver}" ]; then
+			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		fi
+	fi
+	if [ -n "${_pnpmver}" ]; then
+		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
+	fi
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$(_get_project_dir)"
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Development" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    install -Dm755 "${srcdir}/nvmd-${_nvmdver}-${CARCH}" "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/nvmd"
-    _set_build_env
+    wget -c "${_nvmdurl}/archive/refs/tags/v${pkgver}.tar.gz" -O nvmd.tar.gz
+    bsdtar -xf nvmd.tar.gz
     _ensure_local_nvm
-    sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" src-tauri/tauri.conf.json
+    _set_rust_build_env
+    _set_pnpm_build_env
+    rustup toolchain install stable
     rustup default stable
+    cd "$(_get_nvmd_dir)"
+    cargo build --release
+    install -Dm755 target/release/nvmd -t "$(_get_project_dir)/src-tauri/resources"
+    cd "$(_get_project_dir)"
+    jq '.bundle.active = false' src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
     cp "src-tauri/icons/128x128@2x.png" "src-tauri/icons/256x256.png"
-    NODE_ENV=development    pnpm install
+    export NODE_ENV=development
+    pnpm install
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    _set_build_env
+    cd "$(_get_project_dir)"
     _ensure_local_nvm
-    NODE_ENV=production     pnpm run build
+    _set_rust_build_env
+    _set_pnpm_build_env
+    export NODE_ENV=production
+    pnpm run build
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm755 "${srcdir}/nvmd-${_nvmdver}-${CARCH}" "${pkgdir}/usr/lib/${_pkgname//-/ }/resources/nvmd"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/icons/icon.png" -t "${pkgdir}/usr/lib/${_pkgname//-/ }/icons"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm755 "$(_get_project_dir)/src-tauri/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "$(_get_nvmd_dir)/target/release/nvmd" -t "${pkgdir}/usr/lib/${_pkgname//-/ }/resources"
+    install -Dm644 "$(_get_project_dir)/src-tauri/icons/icon.png" -t "${pkgdir}/usr/lib/${_pkgname//-/ }/icons"
+    install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     _icon_sizes=(32x32 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/icons/${_icons}.png" \
+        install -Dm644 "$(_get_project_dir)/src-tauri/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
