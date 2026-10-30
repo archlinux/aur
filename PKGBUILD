@@ -1,6 +1,6 @@
 # Maintainer: Vyrnexis <315210836+Vyrnexis@users.noreply.github.com>
 pkgname=inkpane-git
-pkgver=0.2.0.r0.gb5df965
+pkgver=0.2.0.r0.g305ce0d
 pkgrel=1
 pkgdesc="Draw on your screen through a transparent Wayland overlay (layer-shell)"
 arch=('x86_64' 'aarch64')
