@@ -1,0 +1,17 @@
+pkgbase = python-nequip-allegro
+	pkgdesc = Allegro: scalable E(3)-equivariant interatomic potentials
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/mir-group/allegro
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-nequip
+	source = allegro-0.8.3.tar.gz::https://github.com/mir-group/allegro/archive/refs/tags/v0.8.3.tar.gz
+	sha256sums = e0404db5a94a8e3fabb0c65d3e8cef31ea2b24671303d3d03ad44193c177df4a
+
+pkgname = python-nequip-allegro
