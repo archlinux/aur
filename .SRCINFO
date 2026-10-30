@@ -1,6 +1,6 @@
 pkgbase = ionix-quickshell-git
 	pkgdesc = Ionix Quickshell desktop shell — bar, popouts and OSD (git)
-	pkgver = r49.2e29417
+	pkgver = r50.b2cd2f9
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionix-quickshell
 	arch = any

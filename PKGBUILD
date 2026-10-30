@@ -5,7 +5,7 @@ _pkgname=ionix-quickshell
 # Placeholder: aur-publish.sh patches this to the real r<count>.<hash> before
 # generating .SRCINFO. Keep it in the r-scheme — a bare 0.1.0 would sort *newer*
 # than every r-version if it ever reached the AUR unpatched.
-pkgver=r49.2e29417
+pkgver=r50.b2cd2f9
 pkgrel=1
 pkgdesc="Ionix Quickshell desktop shell — bar, popouts and OSD (git)"
 arch=('any')
