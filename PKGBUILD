@@ -5,7 +5,7 @@ _pkgname=bencher
 _execname=${_pkgname}
 
 pkgname=${_pkgname}-cli-bin
-pkgver=0.6.14
+pkgver=0.6.15
 pkgrel=1
 _pkgver=v${pkgver}
 pkgdesc="Detect and prevent performance regressions before they make it to production with continuous benchmarking"
@@ -32,10 +32,10 @@ source=("SECURITY-${pkgver}.md::${_ghurlraw}/SECURITY.md"
 source_x86_64=("${_execname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_pkgver}/${_pkgname}-${_pkgver}-${_barch[0]}")
 source_aarch64=("${_execname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_pkgver}/${_pkgname}-${_pkgver}-${_barch[1]}")
 sha256sums=('1efae98c80428e7aa00686872ca31101828a6d73e1f7f057b69fc94bbbfeb2a9'
-            '6cec290efa82e7401a27ff4a45f35cb9399ab60dd3bf83c76858858cbc4d1875'
+            '69527c6b73d21b3c6e814816b5b2e88fce13b7fa0579b80101d10cad4d3fb75d'
             '5cb75a9d3cb35e114a77844515b4a4760afbdff486a03593bdb7eb243a4d12d4')
-sha256sums_x86_64=('966cf07ef5bdb33a919c27027380853523b8340e458488cab7bfb780baf3d1c9')
-sha256sums_aarch64=('612a20c2413838d0f8fff2b93eb5de5bc286e5c16fdb84365953d1d6257612ee')
+sha256sums_x86_64=('16ac76f938f86421b66fd5082ae022719af8fe7741fe674868d335201023287a')
+sha256sums_aarch64=('e97981634aa5101a44478ab4c1c6f3a30b0a49b935fdefa5ee39a611be02cdc1')
 
 
 package() {
