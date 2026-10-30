@@ -1,6 +1,6 @@
 pkgbase = foundry-bin
 	pkgdesc = Blazing fast, portable and modular Ethereum development toolkit written in Rust
-	pkgver = 1.8.6
+	pkgver = 1.8.7
 	pkgrel = 1
 	url = https://github.com/foundry-rs/foundry
 	arch = aarch64
@@ -17,10 +17,10 @@ pkgbase = foundry-bin
 	provides = chisel
 	conflicts = foundry
 	conflicts = foundry-git
-	source_aarch64 = https://github.com/foundry-rs/foundry/releases/download/v1.8.6/foundry_v1.8.6_linux_arm64.tar.gz
+	source_aarch64 = https://github.com/foundry-rs/foundry/releases/download/v1.8.7/foundry_v1.8.7_linux_arm64.tar.gz
 	makedepends_aarch64 = rust
-	sha256sums_aarch64 = ca61f3f6e7d635f34e3e174409964d29126fa135794cd84cead8919dd50e0930
-	source_x86_64 = https://github.com/foundry-rs/foundry/releases/download/v1.8.6/foundry_v1.8.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = 58850106984038f3a7200f38a4182c8cb423d3a4f4c7848eacbc2453e6bc35fc
+	sha256sums_aarch64 = 6f0e5697801cbdd059553360b2cb54ff52870789a0249a16da2a07c157a18534
+	source_x86_64 = https://github.com/foundry-rs/foundry/releases/download/v1.8.7/foundry_v1.8.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = ba470eb718e779e4b0e3f1520b5284231b1bf98e9a39de07fb8f77ed70525bcf
 
 pkgname = foundry-bin
