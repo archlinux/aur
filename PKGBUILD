@@ -2,8 +2,8 @@
 
 pkgname=designcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.11.0.r17.gf3b7c3e
-pkgrel=2
+pkgver=0.14.0.r129.gea08e4c
+pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe InDesign (Git HEAD)'
@@ -32,6 +32,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
