@@ -2,7 +2,7 @@
 # Maintainer: Daniel Lee Harple <git@dlh.dev>
 
 pkgname='vedi-bin'
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='Pager for colored text; select with the keyboard and copy'
 url='https://github.com/dlh/vedi'
@@ -13,13 +13,14 @@ conflicts=('vedi')
 depends=('gcc-libs' 'glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('8c708b7836ae126badf7699e0613a36355edbe463b380d0d9edfd5aac23403f3')
+sha256sums_aarch64=('b48468286a297245b99dbbd21d7ae67c41c1d1beb7ec2f2f344f19c7fa41c0fc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('64dc799c1af3bccb489a2235fc43185bade7c8b5c09bfff4be985850f8595b3a')
+sha256sums_x86_64=('08c600181b7b89f39dafb7af2c60338a96c6bc4cb41b26da2a75ec214777da4c')
 
 package() {
   install -Dm755 vedi "${pkgdir}/usr/bin/vedi"
+  install -Dm644 LICENSE-THIRD-PARTY "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-THIRD-PARTY"
   install -Dm644 man/vedi.1 "${pkgdir}/usr/share/man/man1/vedi.1"
   install -Dm644 completions/vedi.bash "${pkgdir}/usr/share/bash-completion/completions/vedi"
   install -Dm644 completions/_vedi "${pkgdir}/usr/share/zsh/site-functions/_vedi"
