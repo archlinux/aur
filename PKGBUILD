@@ -2,7 +2,7 @@
 
 pkgname=umbriel-git
 pkgver=0.1.0.r1225.2339fc3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A Wayland compositor designed for daily use, with scrolling, dwindle, and master layouts, per-output workspaces, window rules, blur, shadows, and fluid animations'
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ depends=(
   'lcms2'
   'libdrm'
   'libdisplay-info'
+  'libei>=1.3'
   'libglvnd'
   'libinput'
   'libxcb'
@@ -58,7 +59,7 @@ build() {
   arch-meson "$srcdir/umbriel" "$srcdir/umbriel/build" \
     -Db_ndebug=true \
     -Dtests=disabled \
-    -Dtest_ipc=disabled
+    -Dharness=disabled
   meson compile -C "$srcdir/umbriel/build"
 }
 
