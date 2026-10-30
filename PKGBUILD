@@ -105,6 +105,7 @@ optdepends=(
   'imv: opens a saved screenshot from its Capture notification'
   'satty: edits a saved screenshot from its Capture notification'
   'mpv: plays a saved recording from its Capture notification'
+  'nautilus: shows a saved recording in its folder from its Capture notification'
   'google-chrome: opens a calendar day in a Google Chrome profile'
   'brave-bin: opens a calendar day in a Brave profile'
   'vivaldi: opens a calendar day in a Vivaldi profile'
