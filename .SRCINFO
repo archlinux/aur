@@ -1,0 +1,16 @@
+pkgbase = python-cheby-git
+	pkgdesc = The Cheby project aims at defining a file format to describe the HW/SW interface (the memory map), and a set of tools to generate HDL, drivers, documentation... from these files.
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://gitlab.cern.ch/be-cem-edl/common/cheby
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyaml
+	source = python-cheby-git-1.7.2::git+https://gitlab.cern.ch/be-cem-edl/common/cheby#tag=v1.7.2
+	sha256sums = SKIP
+
+pkgname = python-cheby-git
