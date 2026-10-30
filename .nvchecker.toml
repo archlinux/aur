@@ -1,0 +1,5 @@
+[hexal-bin]
+source = "github"
+github = "navid-m/hexal"
+use_latest_release = true
+prefix = "v"
