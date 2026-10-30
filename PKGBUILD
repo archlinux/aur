@@ -1,11 +1,11 @@
 # Maintainer: gimgiwer <gimgiwer@gmail.com>
 pkgname=swiftify
-pkgver=0.21.0
+pkgver=0.24.5
 pkgrel=1
 pkgdesc="A Spotify player for Wayland, in Material 3 after end4"
 arch=('x86_64' 'aarch64')
 url="https://github.com/swiftify-org/swiftify"
-license=('custom')
+license=('GPL-3.0-or-later')
 depends=(
     'alsa-lib'
     'hicolor-icon-theme'
@@ -31,7 +31,7 @@ optdepends=(
 )
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/swiftify-org/swiftify/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6d17b7dfb373862c8d285e88a5841347d815f51565836c7ac5401089e6daa6f5')
+sha256sums=('e0fdbf4b99794cc3f97e38c493405dc62b69b25d8fcbbf43d5cab7b1c57aa92d')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" -G Ninja         -DCMAKE_BUILD_TYPE=Release         -DCMAKE_INSTALL_PREFIX=/usr         -DBUILD_TESTING=OFF
@@ -40,5 +40,4 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "${pkgname}-${pkgver}/third_party/material-color-utilities/LICENSE"         "${pkgdir}/usr/share/licenses/${pkgname}/material-color-utilities.LICENSE"
 }
