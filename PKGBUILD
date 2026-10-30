@@ -2,7 +2,7 @@
 # Maintainer: higorslva <higor.slva at outlook dot com>
 
 pkgname=pgadmin4-server
-pkgver=9.18
+pkgver=9.19
 pkgrel=1
 pkgdesc='The core server package for pgAdmin (binary from Ubuntu). pgAdmin is the most popular administration platform for PostgreSQL.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 
 # Real SHA256 of the pinned requirements file (maintained by the update script)
 sha256sums=(
-  '242ff77edfa1a380fdbd26bab10495608ecfc9d9332b503ec3b37b909160c12c'
+  '03b4baf0f48b9eebcf3676004bf02dce02aee8b8a93bbc0736dd85e7a930e0e1'
   'a4927028b94ac02664c1184c70f9c13e3f155d7a7c164f4ff9e7c117635abcbf'
 )
 
