@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The code review workbench"
 
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE-MIT" "LICENSE-APACHE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('c155e06e5ac3e577b591ededc61de465b1e84a57275655528395e69b9266ab55'
+sha256sums=('fa24521a947d863c0e6fdd64f6fc0f33274ee1f3adcdb74d47f415bc3803e41b'
             'f07118dec05cd4d1b23459e754d7b8ccd948d3ef851aa558ddb46154a67594cd'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('83ade45c21b814ce7fa64ff02bf91ba7f292e2ec15249a73cc81d651ace37de7')
+sha256sums_x86_64=('af2f78974f877c71ae0878190ca076b59fb21356e72e69a53fd2df1768a421b4')
 
 
 package() {
