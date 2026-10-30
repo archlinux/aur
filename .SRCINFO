@@ -1,6 +1,6 @@
 pkgbase = fish-tide
 	pkgdesc = 🌊 The ultimate Fish prompt.
-	pkgver = 7.2.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://github.com/plttn/tide
 	install = fish-tide.install
@@ -9,7 +9,7 @@ pkgbase = fish-tide
 	depends = fish
 	optdepends = ttf-meslo-nerd-font-powerlevel10k: recommended font, install this if you only want Meslo LGS Nerd Font variants
 	optdepends = ttf-meslo-nerd: recommended font, contains all Meslo Nerd Font variants
-	source = fish-tide-7.2.0.tar.gz::https://github.com/plttn/tide/archive/refs/tags/v7.2.0.tar.gz
-	sha256sums = e2b533b016e4422c1f76247d401787bd174ffed7ab64f33b1455e07745133985
+	source = fish-tide-7.2.1.tar.gz::https://github.com/plttn/tide/archive/refs/tags/v7.2.1.tar.gz
+	sha256sums = 8919835517566bc4211db71a16d9616c61e4ad5589fac0bebcae99f69cc13e0c
 
 pkgname = fish-tide

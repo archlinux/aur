@@ -3,7 +3,7 @@
 
 pkgname=fish-tide
 _pkgname=tide
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc="🌊 The ultimate Fish prompt."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('ttf-meslo-nerd-font-powerlevel10k: recommended font, install this i
             'ttf-meslo-nerd: recommended font, contains all Meslo Nerd Font variants')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e2b533b016e4422c1f76247d401787bd174ffed7ab64f33b1455e07745133985')
+sha256sums=('8919835517566bc4211db71a16d9616c61e4ad5589fac0bebcae99f69cc13e0c')
 
 package() {
     cd "${_pkgname}-${pkgver}"
