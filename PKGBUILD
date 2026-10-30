@@ -1,7 +1,7 @@
 # Maintainer: catcraft
 
 pkgname=harmony-im
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An extensible [matrix] client."
 arch=(any)
@@ -15,7 +15,7 @@ source=(
 	"harmony-im.desktop"
 )
 sha256sums=(
-	'51085ee2d0729b3d82d6f6e76dc7981dc2743c328cba3039c00e3e8ac4f600e6'
+	'a728be82eb2f621024913501208edac7c849c550bece250e04ab5bc06545678a'
 	'b7d645b78914197fa4b5d47d98f25ec570fd52d4e1fea2e39b6057fac2794857'
 	'3ecb6bf1ad06373bfbaad033d46a447c1fad76785afa2f0587fccef9524a01a3'
 )
