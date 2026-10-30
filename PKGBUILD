@@ -2,7 +2,7 @@
 
 pkgname=mailcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.6.0.r24.g761f54b
+pkgver=0.8.2.r99.g99fe393
 pkgrel=1
 url="https://github.com/UCS-Care-Group/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft Outlook (Git HEAD)'
@@ -31,6 +31,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
