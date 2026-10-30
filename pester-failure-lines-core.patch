@@ -1,0 +1,54 @@
+From 9c84249b24422b9dcb76bf5dc4af87c5d3e66a32 Mon Sep 17 00:00:00 2001
+From: "Craig E. Shea" <fourpastmidnight@users.noreply.github.com>
+Date: Sat, 4 Apr 2020 01:57:21 -0400
+Subject: [PATCH] Fixes Convert-FailureLines for Core vs. Desktop PS (#1475)
+
+* Fixes Convert-FailureLines for Core vs. Desktop PS
+
+For the desktop version of Powershell, when getting the exception
+message, there would be 3 lines: the exeception name and message, any
+parameter name, and then the inner exception type (and first line
+message):
+
+<Exception Name>: <first message line>
+Parameter: <param name>
+<Inner Exception Name>: <first inner exn line>
+
+But, in PowerShell Core (7.0?), the output looked like this:
+
+<Exception name>: <first message line> (Parameter '<param name>')
+<Inner Exception name>: <first inner exn line>
+
+This commit detects whether the first message line matches a regex that
+matches the parenthesized parameter name in the first message line, and
+if so, splits the line into two. This "normalizes" the message lines
+between PowerShell Desktop and PowerShell Core.
+---
+ Functions/Output.ps1 | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/Functions/Output.ps1 b/Functions/Output.ps1
+index 0ab1a54..42f8bf6 100644
+--- a/Functions/Output.ps1
++++ b/Functions/Output.ps1
+@@ -473,7 +473,16 @@ function ConvertTo-FailureLines {
+             $exceptionName = $exception.GetType().Name
+             $thisLines = $exception.Message.Split([string[]]($([System.Environment]::NewLine), "\n", "`n"), [System.StringSplitOptions]::RemoveEmptyEntries)
+             if ($ErrorRecord.FullyQualifiedErrorId -ne 'PesterAssertionFailed' -and $thisLines.Length -gt 0) {
+-                $thisLines[0] = "$exceptionName`: $($thisLines[0])"
++                if ($thisLines[0] -match '(?n)\(Parameter ''(?<param>[^'']+)''\)$') {
++                    $thisLines = @(
++                        "$exceptionName`: $($thisLines[0] -replace '\s*\(Parameter ''[^'']+''\)$')"
++                        "Parameter name: $($Matches.param)"
++                        for ($i = 1; $i -lt $thisLines.Length; $i++) { $thisLines[$i] }
++                    )
++                }
++                else {
++                    $thisLines[0] = "$exceptionName`: $($thisLines[0])"
++                }
+             }
+             [array]::Reverse($thisLines)
+             $exceptionLines += $thisLines
+-- 
+2.56.0
+

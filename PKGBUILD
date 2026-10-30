@@ -4,7 +4,7 @@
 
 pkgname=powershell-pester-4
 _module=Pester
-pkgver=4.10.2beta1
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="Test and mock framework for PowerShell, Pester (version 4)"
 # Gherkin.dll is compiled to a ReadyToRun image for the architecture
@@ -23,19 +23,23 @@ makedepends_x86_64=(
   dotnet-source-built-artifacts-"$_dotnetsdkver"
 )
 # Pester 5 isn't compatible with tests written for Pester 4, like PowerShell's own, which ask for
-# version 4 (Save-Module -Name Pester -MaximumVersion 4.99 in build.psm1).
-# The latest commit of the 4.x branch, which only gets security fixes now. It has fixes that were
-# never released since 4.10.1 and versions the module as 4.10.2-beta1.
-_commit="fe25ff3ffa96734d23f6d4b8d2933431b146006e"
-source=("Pester-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
+# version 4 (Save-Module -Name Pester -MaximumVersion 4.99 in build.psm1). That's the latest stable
+# release, 4.10.1, as Save-Module skips prereleases like 4.10.2-beta1.
+source=("Pester-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+  "pester-failure-lines-core.patch"
+  "pester-tests-new-timespan.patch"
   "crossgen2-pack.targets"
   "invoke-tests.ps1")
-sha512sums=('4220951f1721f547319fd3de64c52b721f6166b181d4333f0298b5cd13342efb43783734edde55ebddbbb0cdcf7459981d90745b17c8f58ac68dbe797f1a1b4b'
+sha512sums=('1ca27ad9507547b04a9a6cb51bced6533312acff8a117ea10ac8843f2c25becda30b91c0c5e75693aa7870619238dfae3c86820e4ac04243cc42f7da8b0c37ca'
+            '2139d7b806908ac6eff5af89545a7d5cbf8df2a5dc00704b6f61bc3fc475622e68bd8d37b9e9ba1e67b3b72734344059bbf8993361f4f405718df386f9db35c6'
+            '543cf3242522b2b9a30245776d26d75a0b2722a6ccef98c1c13f2e57f3769c57e8c597784011ee861ede5a8d76b2fddd31bb15d91c544c0f6b33d46487f02fff'
             '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
-            '3a77144c1cc4913a4daeedd785ced6a96a6642c8b41c5f8481dbdb42540ab1a970ad0850de0bed0b000ddcb7e6ed07c2e307c67d4f766528588685e71e7864b7')
-b2sums=('a7ece0e081f30526a1e2d674da520deb4c64f5a8e222b61b9c706ee766f53025c8736c22cdb14108159b4e62264793af9ba48b7c74adc51defcb09afee56aa97'
+            'f6cba5ee39c6cba9e860d8faeab2544ec489253a7b3bae6eab1bc64cddb8656b918d209e5902569b2708089e273875dd5994c59de4dd38440d79630bddbb7f9b')
+b2sums=('7533a4ed44964bcb3878e8a968c86cce9eb6e77a663bf08dee0acbc4ad66d144e76153a5865e008747bb24cfd43f82b6ec5b49748773f6e4109f2a81bcc4dfb8'
+        '995a7fb46b41713c7c391de75d01fbdab414c03193e27a5abc773460b4212932fe84d14080f3cdb83d3fb17356b504aac794271d1d12eb50f00142526d1b4536'
+        '8ee8bc3bbe9a512f1b49c65d0d9a33412deef83ad1ca3145c9edd59097f49034befa7bd5756520375ef1f074011cb33897daefd60017459fb5fe04973f8988c6'
         '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
-        'f5837db9d212e30aecf4d4a630d691acdd7cb05be9a68e97287516e0e860b2302ef482e1c5b7b9edd66689e98b057ec328c4ef2d8cd5ba7cddb2734c04661bfa')
+        '79e70e2c384d96cf28db8af3cf584e6ecf6996873d0b85ee849d7eddb9ff0988ece73b6d1499eaf7e5728b15c16e3479d1e1ef386886b1e1e740aa5436cc53e0')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
@@ -48,13 +52,21 @@ _dotnet_env() {
 }
 
 prepare() {
-  cd "Pester-$_commit" || exit
+  cd "Pester-$pkgver" || exit
   # The Gherkin parser comes from dotnet-gherkin-5 instead of the prebuilt one. The one for Windows
   # PowerShell (legacy) isn't needed, as PowerShell loads the one for .NET (core).
   rm -r lib/Gherkin/core lib/Gherkin/legacy vendor
   mkdir lib/Gherkin/core
   bsdtar -xOf "/usr/share/dotnet/nuget-packages/Gherkin.5.1.0.nupkg" lib/netstandard2.0/Gherkin.dll \
     >lib/Gherkin/core/Gherkin.dll
+
+  # The archive has CRLF line endings (.gitattributes), the patches from git LF
+  sed -i 's/\r$//' Functions/Output.ps1 Functions/TestResults.Tests.ps1
+  # Exception messages on PowerShell 7 include the parameter name, which the failure output shows on
+  # a line of its own (upstream fix after 4.10.1, released in 4.10.2-beta1)
+  patch -Np1 -i "$srcdir/pester-failure-lines-core.patch"
+  # Tests: New-TimeSpan -mi is ambiguous on PowerShell 7 (-Milliseconds), upstream fix after 4.10.1
+  patch -Np1 -i "$srcdir/pester-tests-new-timespan.patch"
 }
 
 build() {
@@ -100,22 +112,22 @@ EOF
     x86_64) _arch=x64 ;;
     aarch64) _arch=arm64 ;;
   esac
-  "$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_rid/$_runtimever/tools/crossgen2" "Pester-$_commit/lib/Gherkin/core/Gherkin.dll" --out Gherkin.dll \
+  "$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_rid/$_runtimever/tools/crossgen2" "Pester-$pkgver/lib/Gherkin/core/Gherkin.dll" --out Gherkin.dll \
     --targetos linux --targetarch "$_arch" -O \
     -r "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever/*.dll" -r '/usr/lib/powershell-7/*.dll'
-  mv Gherkin.dll "Pester-$_commit/lib/Gherkin/core/Gherkin.dll"
+  mv Gherkin.dll "Pester-$pkgver/lib/Gherkin/core/Gherkin.dll"
 }
 
 check() {
   # With the user's PowerShell data in $srcdir
-  HOME="$srcdir/home" pwsh -NoProfile -NonInteractive -File "$srcdir/invoke-tests.ps1" -Path "$srcdir/Pester-$_commit"
+  HOME="$srcdir/home" pwsh -NoProfile -NonInteractive -File "$srcdir/invoke-tests.ps1" -Path "$srcdir/Pester-$pkgver"
 }
 
 package() {
-  cd "Pester-$_commit" || exit
+  cd "Pester-$pkgver" || exit
   # The files of the PowerShell Gallery package (buildPSGalleryPackage.ps1), without the tests
   # (cleanUpBeforeBuild.ps1)
-  local _destdir="$pkgdir/usr/share/powershell/Modules/$_module/${pkgver%%[a-z]*}"
+  local _destdir="$pkgdir/usr/share/powershell/Modules/$_module/$pkgver"
   install -dm755 "$_destdir"
   cp -r --no-preserve=ownership Pester.ps?1 nunit_schema_2.5.xsd junit_schema_4.xsd \
     bin Functions Dependencies Snippets en-US lib "$_destdir/"

@@ -1,6 +1,6 @@
-# The package is built from the latest commit of the 4.x branch, see the PKGBUILD
+# The latest stable 4.x release, like build.psm1 of PowerShell gets (Save-Module skips prereleases)
 [powershell-pester-4]
-source = "git"
-git = "https://github.com/pester/Pester.git"
-branch = "rel/4.x.x"
-use_commit = true
+source = "github"
+github = "pester/Pester"
+use_max_tag = true
+include_regex = '4\.\d+\.\d+'

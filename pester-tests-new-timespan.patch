@@ -1,0 +1,29 @@
+From: Jakub Jareš <me@jakubjares.com>
+Date: Fri, 24 Jul 2026 09:16:07 +0200
+Subject: [PATCH] Spell out New-TimeSpan -Minutes in the tests
+
+Part of upstream commit 24ec55840c0a9785c356b077222a582b3224bfa8 (Move v4 CI from AppVeyor to GitHub Actions (#2919)):
+-mi is ambiguous since New-TimeSpan has -Milliseconds as well (PowerShell 7.x).
+---
+diff --git a/Functions/TestResults.Tests.ps1 b/Functions/TestResults.Tests.ps1
+index fc17c2f..60ebe00 100644
+--- a/Functions/TestResults.Tests.ps1
++++ b/Functions/TestResults.Tests.ps1
+@@ -198,7 +198,7 @@ InModuleScope Pester {
+                 #create state
+                 $TestResults = New-PesterState -Path TestDrive:\
+                 $testResults.EnterTestGroup('Describe #1', 'Describe')
+-                $TestResults.AddTestResult("Successful testcase", 'Passed', (New-TimeSpan -mi 1))
++                $TestResults.AddTestResult("Successful testcase", 'Passed', (New-TimeSpan -Minutes 1))
+                 $testResults.LeaveTestGroup('Describe #1', 'Describe')
+                 $testResults.EnterTestGroup('Describe #2', 'Describe')
+                 $TestResults.AddTestResult("Failed testcase", 'Failed', (New-TimeSpan -Seconds 2))
+@@ -352,7 +352,7 @@ InModuleScope Pester {
+                 #create state
+                 $TestResults = New-PesterState -Path TestDrive:\
+                 $testResults.EnterTestGroup('Describe #1', 'Describe')
+-                $TestResults.AddTestResult("Successful testcase", 'Passed', (New-TimeSpan -mi 1))
++                $TestResults.AddTestResult("Successful testcase", 'Passed', (New-TimeSpan -Minutes 1))
+                 $testResults.LeaveTestGroup('Describe #1', 'Describe')
+                 $testResults.EnterTestGroup('Describe #2', 'Describe')
+                 $TestResults.AddTestResult("Failed testcase", 'Failed', (New-TimeSpan -Seconds 2))

@@ -1,4 +1,4 @@
-# Runs the tests of Pester like upstream's CI (.github/workflows/ci-v4.yml), without the tests of the
+# Runs the tests of Pester like upstream's CI (azure-pipelines.yml), without the tests of the
 # release (version, style and help), which testRelease.ps1 runs.
 param(
     # The Pester repository

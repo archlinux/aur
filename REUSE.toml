@@ -11,3 +11,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+  "pester-failure-lines-core.patch",
+  "pester-tests-new-timespan.patch",
+]
+SPDX-FileCopyrightText = "Pester contributors"
+SPDX-License-Identifier = "Apache-2.0"
