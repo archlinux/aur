@@ -1,0 +1,1075 @@
+diff --git a/gradio/analytics.py b/gradio/analytics.py
+index 70df024..56809ff 100644
+--- a/gradio/analytics.py
++++ b/gradio/analytics.py
+@@ -10,7 +10,7 @@ import urllib.parse
+ import warnings
+ from typing import Any
+ 
+-import httpx
++import httpx2
+ from huggingface_hub.utils._telemetry import _send_telemetry_in_thread
+ from packaging.version import Version
+ 
+@@ -88,7 +88,9 @@ async def _do_wasm_analytics_request(url: str, data: dict[str, Any]) -> None:
+ def version_check():
+     try:
+         current_pkg_version = get_package_version()
+-        latest_pkg_version = httpx.get(url=PKG_VERSION_URL, timeout=3).json()["version"]
++        latest_pkg_version = httpx2.get(url=PKG_VERSION_URL, timeout=3).json()[
++            "version"
++        ]
+         if Version(latest_pkg_version) > Version(current_pkg_version):
+             warnings.warn(
+                 f"IMPORTANT: You are using gradio version {current_pkg_version}, "
+diff --git a/gradio/blocks.py b/gradio/blocks.py
+index 9120a31..8c588b2 100644
+--- a/gradio/blocks.py
++++ b/gradio/blocks.py
+@@ -27,7 +27,7 @@ from urllib.parse import urlparse, urlunparse
+ 
+ import anyio
+ import fastapi
+-import httpx
++import httpx2
+ from anyio import CapacityLimiter
+ from gradio_client import utils as client_utils
+ from gradio_client.documentation import document
+@@ -1521,7 +1521,7 @@ class Blocks(BlockContext, BlocksEvents, metaclass=BlocksMeta):
+         components_config = config["components"]
+         original_mapping: dict[int, Block] = {}
+         proxy_urls: set[str] = set()
+-        if httpx.URL(proxy_url).host.endswith(".hf.space"):
++        if httpx2.URL(proxy_url).host.endswith(".hf.space"):
+             proxy_urls.add(proxy_url)
+ 
+         def get_block_instance(id: int) -> Block:
+@@ -1549,7 +1549,7 @@ class Blocks(BlockContext, BlocksEvents, metaclass=BlocksMeta):
+                 )
+             # Only add proxy URLs that point to known Hugging Face Space
+             # hosts to prevent SSRF via malicious configs.
+-            if httpx.URL(block_proxy_url).host.endswith(".hf.space"):
++            if httpx2.URL(block_proxy_url).host.endswith(".hf.space"):
+                 proxy_urls.add(block_proxy_url)
+             if (
+                 _selectable := block_config["props"].pop("_selectable", None)
+@@ -3556,7 +3556,7 @@ Received inputs:
+                     s = "* Running on local URL:  {}://{}:{}"
+                     print(s.format(self.protocol, self.server_name, self.server_port))
+ 
+-            resp = httpx.get(
++            resp = httpx2.get(
+                 f"{self.local_api_url}startup-events",
+                 verify=ssl_verify,
+                 timeout=None,
+diff --git a/gradio/cli/commands/components/docs.py b/gradio/cli/commands/components/docs.py
+index 73d0372..fd91395 100644
+--- a/gradio/cli/commands/components/docs.py
++++ b/gradio/cli/commands/components/docs.py
+@@ -5,7 +5,7 @@ import re
+ from pathlib import Path
+ from typing import Annotated, Any
+ 
+-import httpx
++import httpx2
+ import tomlkit as toml
+ from typer import Argument, Option
+ 
+@@ -133,7 +133,7 @@ def run_command(
+     with open(_demo_path, encoding="utf-8") as f:
+         demo = f.read()
+ 
+-    pypi_exists = httpx.get(f"https://pypi.org/pypi/{name}/json").status_code
++    pypi_exists = httpx2.get(f"https://pypi.org/pypi/{name}/json").status_code
+ 
+     pypi_exists = pypi_exists == 200 or False
+ 
+diff --git a/gradio/cli/commands/upload_mcp.py b/gradio/cli/commands/upload_mcp.py
+index 7816f9c..abd58d7 100644
+--- a/gradio/cli/commands/upload_mcp.py
++++ b/gradio/cli/commands/upload_mcp.py
+@@ -1,5 +1,5 @@
+ def main(url_or_space_id: str, source_directory: str):
+-    import httpx
++    import httpx2
+     from gradio_client.utils import encode_file_path, is_http_url_like
+     from huggingface_hub import space_info
+     from mcp.server.fastmcp import FastMCP  # type: ignore
+@@ -30,7 +30,7 @@ def main(url_or_space_id: str, source_directory: str):
+             raise ValueError(f"File {file} is not in {source_path}")
+ 
+         with open(target_path, "rb") as f:
+-            response = httpx.post(f"{url}/gradio_api/upload", files={"files": f})
++            response = httpx2.post(f"{url}/gradio_api/upload", files={"files": f})
+         response.raise_for_status()
+         result = response.json()[0]
+         return f"{url}/gradio_api/file={encode_file_path(result)}"
+diff --git a/gradio/components/audio.py b/gradio/components/audio.py
+index 2ed2cae..0f2135d 100644
+--- a/gradio/components/audio.py
++++ b/gradio/components/audio.py
+@@ -10,7 +10,7 @@ from pathlib import Path
+ from typing import TYPE_CHECKING, Any, Literal
+ 
+ import anyio
+-import httpx
++import httpx2
+ import numpy as np
+ from gradio_client import handle_file
+ from gradio_client import utils as client_utils
+@@ -314,7 +314,7 @@ class Audio(
+             orig_name = Path(file_path).name
+         elif isinstance(value, (str, Path)):
+             if client_utils.is_http_url_like(value):
+-                original_suffix = Path(httpx.URL(str(value)).path).suffix.lower()
++                original_suffix = Path(httpx2.URL(str(value)).path).suffix.lower()
+             else:
+                 original_suffix = Path(value).suffix.lower()
+             if self.format is not None and original_suffix != f".{self.format}":
+diff --git a/gradio/external.py b/gradio/external.py
+index 2213269..0e1982e 100644
+--- a/gradio/external.py
++++ b/gradio/external.py
+@@ -12,7 +12,7 @@ from collections.abc import Callable, Generator
+ from pathlib import Path
+ from typing import TYPE_CHECKING, Literal
+ 
+-import httpx
++import httpx2
+ import huggingface_hub
+ from gradio_client import Client
+ from gradio_client.client import Endpoint
+@@ -213,7 +213,7 @@ def from_model(
+ 
+     def custom_post_binary(data):
+         data = to_binary({"path": data})
+-        response = httpx.request("POST", api_url, headers=headers, content=data)
++        response = httpx2.request("POST", api_url, headers=headers, content=data)
+         return save_base64_to_cache(
+             external_utils.encode_to_base64(response), cache_dir=GRADIO_CACHE
+         )
+@@ -526,7 +526,7 @@ def from_spaces(
+     if token not in [False, None]:
+         headers["Authorization"] = f"Bearer {token}"
+     iframe_url = (
+-        httpx.get(
++        httpx2.get(
+             f"https://huggingface.co/api/spaces/{space_name}/host", headers=headers
+         )
+         .json()
+@@ -538,9 +538,9 @@ def from_spaces(
+             f"Could not find Space: {space_name}. If it is a private or gated Space, please provide your Hugging Face access token (https://huggingface.co/settings/tokens) as the argument for the `token` parameter."
+         )
+ 
+-    config_request = httpx.get(iframe_url + "/config", headers=headers)
++    config_request = httpx2.get(iframe_url + "/config", headers=headers)
+     if config_request.status_code == 404:
+-        r = httpx.get(iframe_url, headers=headers)
++        r = httpx2.get(iframe_url, headers=headers)
+ 
+         result = re.search(
+             r"window.gradio_config = (.*?);[\s]*</script>", r.text
+@@ -648,7 +648,7 @@ def from_spaces_interface(
+     # The function should call the API with preprocessed data
+     def fn(*data):
+         data = json.dumps({"data": data})
+-        response = httpx.post(api_url, headers=headers, data=data)  # type: ignore
++        response = httpx2.post(api_url, headers=headers, data=data)  # type: ignore
+         result = json.loads(response.content.decode("utf-8"))
+         if "error" in result and "429" in result["error"]:
+             raise TooManyRequestsError("Too many requests to the Hugging Face API")
+@@ -759,9 +759,9 @@ def _is_text_encoded_file(path: str) -> bool:
+ 
+ def _text_encoded_file_as_prompt(path: str) -> str:
+     if is_http_url_like(path):
+-        response = httpx.get(path)
++        response = httpx2.get(path)
+         response.raise_for_status()
+-        name, contents = Path(httpx.URL(path).path).name, response.text
++        name, contents = Path(httpx2.URL(path).path).name, response.text
+     else:
+         name, contents = Path(path).name, Path(path).read_text()
+     return f"\n## {name}\n{contents}"
+@@ -973,7 +973,7 @@ def load_openapi(
+         spec = openapi_spec
+     elif isinstance(openapi_spec, str):
+         if is_http_url_like(openapi_spec):
+-            response = httpx.get(openapi_spec)
++            response = httpx2.get(openapi_spec)
+             response.raise_for_status()
+             content = response.text
+         else:
+diff --git a/gradio/external_utils.py b/gradio/external_utils.py
+index 15bcb3e..226d38d 100644
+--- a/gradio/external_utils.py
++++ b/gradio/external_utils.py
+@@ -9,7 +9,7 @@ import math
+ import re
+ import warnings
+ 
+-import httpx
++import httpx2
+ import yaml
+ from gradio_client.utils import encode_url_or_file_to_base64
+ from huggingface_hub import HfApi, ImageClassificationOutputElement, InferenceClient
+@@ -41,7 +41,7 @@ def get_model_info(model_name, token=None):
+ 
+ 
+ def get_tabular_examples(model_name: str) -> dict[str, list[float]]:
+-    readme = httpx.get(f"https://huggingface.co/{model_name}/resolve/main/README.md")
++    readme = httpx2.get(f"https://huggingface.co/{model_name}/resolve/main/README.md")
+     if readme.status_code != 200:
+         warnings.warn(f"Cannot load examples from README for {model_name}", UserWarning)
+         example_data = {}
+@@ -155,7 +155,7 @@ def conversational_wrapper(client: InferenceClient):
+     return chat_fn
+ 
+ 
+-def encode_to_base64(r: httpx.Response) -> str:
++def encode_to_base64(r: httpx2.Response) -> str:
+     # Handles the different ways HF API returns the prediction
+     base64_repr = base64.b64encode(r.content).decode("utf-8")
+     data_prefix = ";base64,"
+@@ -387,9 +387,9 @@ def create_endpoint_fn(
+                 body_data = json.loads(args[param_index])
+         try:
+             if endpoint_method.lower() == "get":
+-                response = httpx.get(url, params=params, headers=headers)
++                response = httpx2.get(url, params=params, headers=headers)
+             elif endpoint_method.lower() == "post":
+-                response = httpx.post(
++                response = httpx2.post(
+                     url,
+                     params=params,
+                     content=body_data if is_file_upload else None,
+@@ -397,7 +397,7 @@ def create_endpoint_fn(
+                     headers=headers,
+                 )
+             elif endpoint_method.lower() == "put":
+-                response = httpx.put(
++                response = httpx2.put(
+                     url,
+                     params=params,
+                     content=body_data if is_file_upload else None,
+@@ -405,7 +405,7 @@ def create_endpoint_fn(
+                     headers=headers,
+                 )
+             elif endpoint_method.lower() == "patch":
+-                response = httpx.patch(
++                response = httpx2.patch(
+                     url,
+                     params=params,
+                     content=body_data if is_file_upload else None,
+@@ -413,7 +413,7 @@ def create_endpoint_fn(
+                     headers=headers,
+                 )
+             elif endpoint_method.lower() == "delete":
+-                response = httpx.delete(url, params=params, headers=headers)
++                response = httpx2.delete(url, params=params, headers=headers)
+             else:
+                 raise ValueError(f"Unsupported HTTP method: {endpoint_method}")
+ 
+diff --git a/gradio/mcp.py b/gradio/mcp.py
+index 2f1def0..e92774d 100644
+--- a/gradio/mcp.py
++++ b/gradio/mcp.py
+@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Any, Optional, cast
+ from urllib.parse import unquote, urlparse
+ 
+ import gradio_client.utils as client_utils
+-import httpx
++import httpx2
+ from anyio.to_thread import run_sync
+ from gradio_client import Client, handle_file
+ from gradio_client.utils import Status, StatusUpdate
+@@ -510,7 +510,7 @@ class GradioMCPServer:
+         Gets the route path of the MCP server based on the incoming request.
+         Can be different depending on whether the request is coming from the MCP SSE transport or the HTTP transport.
+         """
+-        url = httpx.URL(str(request.url))
++        url = httpx2.URL(str(request.url))
+         url = url.copy_with(query=None)
+         url = str(url).rstrip("/")
+         if url.endswith("/gradio_api/mcp/messages"):
+diff --git a/gradio/networking.py b/gradio/networking.py
+index 7b97b71..22d1f63 100644
+--- a/gradio/networking.py
++++ b/gradio/networking.py
+@@ -10,7 +10,7 @@ import time
+ import warnings
+ from pathlib import Path
+ 
+-import httpx
++import httpx2
+ 
+ from gradio.exceptions import ShareCertificateWriteError
+ from gradio.routes import App  # HACK: to avoid circular import # noqa: F401
+@@ -34,7 +34,7 @@ def setup_tunnel(
+     )
+     if share_server_address is None:
+         try:
+-            response = httpx.get(GRADIO_API_SERVER, timeout=30)
++            response = httpx2.get(GRADIO_API_SERVER, timeout=30)
+             payload = response.json()[0]
+             remote_host, remote_port = payload["host"], int(payload["port"])
+             certificate = payload["root_ca"]
+@@ -72,12 +72,12 @@ def url_ok(url: str) -> bool:
+         for _ in range(5):
+             with warnings.catch_warnings():
+                 warnings.filterwarnings("ignore")
+-                r = httpx.head(url, timeout=3, verify=False)
++                r = httpx2.head(url, timeout=3, verify=False)
+             if (
+                 r.status_code in (200, 401, 301, 302, 303, 307, 308)
+             ):  # 401 or 302 if auth is set; 303 or 307 are alternatives to 302 for temporary redirects; 301 and 308 are permanent redirects
+                 return True
+             time.sleep(0.500)
+-    except (ConnectionError, httpx.ConnectError, httpx.TimeoutException):
++    except (ConnectionError, httpx2.ConnectError, httpx2.TimeoutException):
+         return False
+     return False
+diff --git a/gradio/processing_utils.py b/gradio/processing_utils.py
+index cac2e01..86f4164 100644
+--- a/gradio/processing_utils.py
++++ b/gradio/processing_utils.py
+@@ -20,7 +20,7 @@ from pathlib import Path
+ from typing import TYPE_CHECKING, Any, TypeVar
+ from urllib.parse import urljoin, urlparse
+ 
+-import httpx
++import httpx2
+ import numpy as np
+ import safehttpx as sh
+ from gradio_client import utils as client_utils
+@@ -43,7 +43,7 @@ with warnings.catch_warnings():
+ sync_transport = None
+ async_transport = None
+ 
+-sync_client = httpx.Client(transport=sync_transport)
++sync_client = httpx2.Client(transport=sync_transport)
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -85,9 +85,9 @@ def _get_original_url_from_proxy(url: str, proxy_url: str) -> str | None:
+         return None
+ 
+     try:
+-        parsed_original_url = httpx.URL(original_url)
+-        parsed_proxy_url = httpx.URL(proxy_url)
+-    except httpx.InvalidURL:
++        parsed_original_url = httpx2.URL(original_url)
++        parsed_proxy_url = httpx2.URL(proxy_url)
++    except httpx2.InvalidURL:
+         return None
+     if (
+         parsed_original_url.scheme,
+@@ -348,9 +348,9 @@ def lru_cache_async(maxsize: int = 128):
+ MAX_REDIRECTS = 20
+ 
+ 
+-async def async_ssrf_protected_get(url: str) -> httpx.Response:
++async def async_ssrf_protected_get(url: str) -> httpx2.Response:
+     """SSRF-protected GET: routes through `safehttpx` with the public hostname
+-    allow-list and re-validates each redirect. Returns the `httpx.Response`
++    allow-list and re-validates each redirect. Returns the `httpx2.Response`
+     without raising on non-2xx status (callers decide how to handle that)."""
+     response = await sh.get(
+         url, domain_whitelist=PUBLIC_HOSTNAME_WHITELIST, _transport=async_transport
+@@ -546,7 +546,7 @@ def move_files_to_cache(
+         if (
+             block.proxy_url
+             and client_utils.is_http_url_like(payload.path)
+-            and httpx.URL(payload.path).host == httpx.URL(block.proxy_url).host
++            and httpx2.URL(payload.path).host == httpx2.URL(block.proxy_url).host
+         ):
+             url = f"{API_PREFIX}/proxy={payload.path}"
+         elif block.proxy_url and not client_utils.is_http_url_like(payload.path):
+@@ -688,7 +688,7 @@ async def async_move_files_to_cache(
+         if (
+             block.proxy_url
+             and client_utils.is_http_url_like(payload.path)
+-            and httpx.URL(payload.path).host == httpx.URL(block.proxy_url).host
++            and httpx2.URL(payload.path).host == httpx2.URL(block.proxy_url).host
+         ):
+             url = f"{API_PREFIX}/proxy={payload.path}"
+         elif block.proxy_url and not client_utils.is_http_url_like(payload.path):
+diff --git a/gradio/route_utils.py b/gradio/route_utils.py
+index 3872677..a161d81 100644
+--- a/gradio/route_utils.py
++++ b/gradio/route_utils.py
+@@ -39,7 +39,7 @@ from urllib.parse import quote, urlparse
+ import anyio
+ import fastapi
+ import gradio_client.utils as client_utils
+-import httpx
++import httpx2
+ import safehttpx
+ from gradio_client.documentation import document
+ from python_multipart.exceptions import MultipartParseError
+@@ -571,13 +571,13 @@ def get_first_header_value(request: fastapi.Request, header_name: str):
+     return None
+ 
+ 
+-def get_request_origin(request: fastapi.Request, route_path: str) -> httpx.URL:
++def get_request_origin(request: fastapi.Request, route_path: str) -> httpx2.URL:
+     """
+     Examines the request headers to determine the origin of the request.
+     If the request includes the x-forwarded-host header, it is used directly to determine the origin.
+     Otherwise, the request url is used and the route path is stripped off.
+ 
+-    The returned URL is a httpx.URL object without a trailing slash, e.g. "https://example.com"
++    The returned URL is a httpx2.URL object without a trailing slash, e.g. "https://example.com"
+     """
+ 
+     x_forwarded_host = get_first_header_value(request, "x-forwarded-host")
+@@ -587,7 +587,7 @@ def get_request_origin(request: fastapi.Request, route_path: str) -> httpx.URL:
+         if x_forwarded_host
+         else str(x_gradio_server or request.url)
+     )
+-    root_url = httpx.URL(root_url)
++    root_url = httpx2.URL(root_url)
+     root_url = root_url.copy_with(query=None)
+     root_url = str(root_url).rstrip("/")
+ 
+@@ -600,7 +600,7 @@ def get_request_origin(request: fastapi.Request, route_path: str) -> httpx.URL:
+         root_url = root_url[: -len(route_path)]
+ 
+     root_url = root_url.rstrip("/")
+-    root_url = httpx.URL(root_url)
++    root_url = httpx2.URL(root_url)
+ 
+     return root_url
+ 
+@@ -1487,7 +1487,7 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
+     redirects = 0
+     while True:
+         try:
+-            parsed = httpx.URL(current_url)
++            parsed = httpx2.URL(current_url)
+         except Exception as e:
+             raise HTTPException(403, f"File not allowed: {url}.") from e
+         if parsed.scheme not in ("http", "https") or not parsed.host:
+@@ -1498,8 +1498,8 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
+             raise HTTPException(403, f"File not allowed: {url}.") from e
+ 
+         transport = safehttpx.AsyncSecureTransport(verified_ip)
+-        client = httpx.AsyncClient(
+-            transport=transport, timeout=httpx.Timeout(None, connect=10.0)
++        client = httpx2.AsyncClient(
++            transport=transport, timeout=httpx2.Timeout(None, connect=10.0)
+         )
+         try:
+             req = client.build_request(
+@@ -1517,7 +1517,7 @@ async def secure_url_stream_response(url: str, request: StarletteRequest):
+             redirects += 1
+             if redirects > _FILE_STREAM_MAX_REDIRECTS or not location:
+                 raise HTTPException(502, f"Could not fetch file: {url}.")
+-            current_url = str(httpx.URL(current_url).join(location))
++            current_url = str(httpx2.URL(current_url).join(location))
+             continue
+ 
+         upstream_mime = upstream.headers.get("content-type", "").split(";")[0].strip()
+diff --git a/gradio/routes.py b/gradio/routes.py
+index a03f008..6bd7f25 100644
+--- a/gradio/routes.py
++++ b/gradio/routes.py
+@@ -32,7 +32,7 @@ from urllib.parse import urlencode
+ 
+ import anyio
+ import fastapi
+-import httpx
++import httpx2
+ import markupsafe
+ import orjson
+ from fastapi import (
+@@ -217,12 +217,12 @@ templates = Jinja2Templates(directory=STATIC_TEMPLATE_LIB)
+ templates.env.filters["toorjson"] = toorjson
+ 
+ # Shared transport keeps the connection pool warm without sharing an
+-# `httpx.AsyncClient` (and therefore a cookie jar) across `/proxy=` requests.
++# `httpx2.AsyncClient` (and therefore a cookie jar) across `/proxy=` requests.
+ # A single shared `AsyncClient` would persist `Set-Cookie` headers from one
+ # proxied response and replay them on subsequent requests to any sibling
+ # `*.hf.space` URL — see GHSA-2mr9-9r47-px2g.
+-_proxy_transport = httpx.AsyncHTTPTransport(
+-    limits=httpx.Limits(
++_proxy_transport = httpx2.AsyncHTTPTransport(
++    limits=httpx2.Limits(
+         max_connections=100,
+         max_keepalive_connections=20,
+     ),
+@@ -303,12 +303,12 @@ class App(FastAPI):
+         return self.blocks
+ 
+     def build_proxy_request(self, url_path):
+-        url = httpx.URL(route_utils.requote_proxied_url(url_path))
++        url = httpx2.URL(route_utils.requote_proxied_url(url_path))
+         assert self.blocks  # noqa: S101
+         # Don't proxy a URL unless it's a URL specifically loaded by the user using
+         # gr.load() to prevent SSRF or harvesting of HF tokens by malicious Spaces.
+         is_safe_url = any(
+-            url.host == httpx.URL(root).host for root in self.blocks.proxy_urls
++            url.host == httpx2.URL(root).host for root in self.blocks.proxy_urls
+         )
+         if not is_safe_url:
+             raise PermissionError("This URL cannot be proxied.")
+@@ -320,7 +320,7 @@ class App(FastAPI):
+         if Context.token is not None:
+             headers["Authorization"] = f"Bearer {Context.token}"
+         # Build a plain request rather than `client.build_request` so that
+-        # the proxy does not share an `httpx.AsyncClient` (or cookie jar)
++        # the proxy does not share an `httpx2.AsyncClient` (or cookie jar)
+         # across calls (see GHSA-2mr9-9r47-px2g).
+         return url, headers
+ 
+@@ -1304,9 +1304,9 @@ class App(FastAPI):
+         async def reverse_proxy(url_path: str):
+             # Adapted from: https://github.com/tiangolo/fastapi/issues/1788
+             try:
+-                proxy_client = httpx.AsyncClient(
++                proxy_client = httpx2.AsyncClient(
+                     transport=_proxy_transport,
+-                    timeout=httpx.Timeout(10.0),
++                    timeout=httpx2.Timeout(10.0),
+                 )
+                 url, headers = app.build_proxy_request(url_path)
+                 rp_req = proxy_client.build_request("GET", url, headers=headers)
+@@ -2761,7 +2761,7 @@ demo.launch()
+ 
+         """
+     try:
+-        with httpx.Client() as client:
++        with httpx2.Client() as client:
+             response = client.get("https://www.gradio.app/llms.txt")
+             system_prompt = response.text
+     except Exception:
+diff --git a/gradio/static_server.py b/gradio/static_server.py
+index f5ba5b1..00d72eb 100644
+--- a/gradio/static_server.py
++++ b/gradio/static_server.py
+@@ -219,12 +219,12 @@ class StaticWorkerPool:
+             self.workers.append(process)
+ 
+         # Wait for workers to be ready
+-        import httpx
++        import httpx2
+ 
+         for port in self.ports:
+             for _ in range(50):
+                 try:
+-                    r = httpx.get(f"http://127.0.0.1:{port}/health", timeout=1)
++                    r = httpx2.get(f"http://127.0.0.1:{port}/health", timeout=1)
+                     if r.status_code == 200:
+                         break
+                 except Exception:
+diff --git a/gradio/tunneling.py b/gradio/tunneling.py
+index f0ea969..25c3e81 100644
+--- a/gradio/tunneling.py
++++ b/gradio/tunneling.py
+@@ -9,7 +9,7 @@ import sys
+ import time
+ from pathlib import Path
+ 
+-import httpx
++import httpx2
+ from huggingface_hub.constants import HF_HOME
+ 
+ from gradio.exceptions import ChecksumMismatchError
+@@ -83,7 +83,7 @@ class Tunnel:
+     def download_binary():
+         if not Path(BINARY_PATH).exists():
+             Path(BINARY_FOLDER).mkdir(parents=True, exist_ok=True)
+-            resp = httpx.get(BINARY_URL, timeout=30)
++            resp = httpx2.get(BINARY_URL, timeout=30)
+ 
+             if resp.status_code == 403:
+                 raise OSError(
+diff --git a/gradio/utils.py b/gradio/utils.py
+index bd123b2..2cddfc4 100644
+--- a/gradio/utils.py
++++ b/gradio/utils.py
+@@ -54,7 +54,7 @@ from typing import (
+ 
+ import anyio
+ import gradio_client.utils as client_utils
+-import httpx
++import httpx2
+ import orjson
+ from gradio_client.documentation import document
+ from gradio_client.exceptions import AppError
+@@ -636,10 +636,10 @@ def download_if_url(article: str) -> str:
+         return article
+ 
+     try:
+-        response = httpx.get(article, timeout=3)
+-        if response.status_code == httpx.codes.OK:  # pylint: disable=no-member
++        response = httpx2.get(article, timeout=3)
++        if response.status_code == httpx2.codes.OK:  # pylint: disable=no-member
+             article = response.text
+-    except (httpx.InvalidURL, httpx.RequestError, httpx.TimeoutException):
++    except (httpx2.InvalidURL, httpx2.RequestError, httpx2.TimeoutException):
+         pass
+ 
+     return article
+@@ -1030,10 +1030,10 @@ def append_unique_suffix(name: str, list_of_names: list[str]):
+ def validate_url(possible_url: str) -> bool:
+     headers = {"User-Agent": "gradio (https://gradio.app/; gradio-team@huggingface.co)"}
+     try:
+-        head_request = httpx.head(possible_url, headers=headers, follow_redirects=True)
++        head_request = httpx2.head(possible_url, headers=headers, follow_redirects=True)
+         # some URLs, such as AWS S3 presigned URLs, return a 405 or a 403 for HEAD requests
+         if head_request.status_code in (403, 405):
+-            return httpx.get(
++            return httpx2.get(
+                 possible_url, headers=headers, follow_redirects=True
+             ).is_success
+         return head_request.is_success
+diff --git a/gradio/workflow.py b/gradio/workflow.py
+index 30a5a04..6615d6e 100644
+--- a/gradio/workflow.py
++++ b/gradio/workflow.py
+@@ -25,7 +25,7 @@ from concurrent.futures import ThreadPoolExecutor
+ from typing import TYPE_CHECKING, Optional, TypedDict, Union, get_type_hints
+ 
+ import anyio
+-import httpx
++import httpx2
+ from gradio_client import Client, handle_file
+ from gradio_client import utils as client_utils
+ from huggingface_hub import HfApi
+@@ -49,11 +49,11 @@ from gradio.workflow_provider_shims import call_with_recovery
+ if TYPE_CHECKING:
+     from gradio.workflow_api import WorkflowEndpointManager
+ 
+-_HF_CLIENT = httpx.Client(
++_HF_CLIENT = httpx2.Client(
+     base_url="https://huggingface.co",
+     timeout=15,
+     headers={"User-Agent": "gradio-workflow"},
+-    limits=httpx.Limits(max_keepalive_connections=8, max_connections=16),
++    limits=httpx2.Limits(max_keepalive_connections=8, max_connections=16),
+ )
+ _SEARCH_POOL = ThreadPoolExecutor(max_workers=4, thread_name_prefix="hf-search")
+ 
+@@ -1254,7 +1254,7 @@ def call_model(
+ 
+         if task == "depth-estimation":
+             headers = {"Authorization": f"Bearer {hf_token}"} if hf_token else {}
+-            resp = httpx.post(
++            resp = httpx2.post(
+                 f"https://api-inference.huggingface.co/models/{model_id}",
+                 headers=headers,
+                 json={"inputs": _sendable_ref(a0)},
+@@ -1289,7 +1289,7 @@ def call_model(
+         a1_missing = a1 is None or a1 == ""
+         payload = _resolve(a0) if a1_missing else [_resolve(a0), _resolve(a1)]
+         headers = {"Authorization": f"Bearer {hf_token}"} if hf_token else {}
+-        fallback_resp = httpx.post(
++        fallback_resp = httpx2.post(
+             f"https://api-inference.huggingface.co/models/{model_id}",
+             headers=headers,
+             json={"inputs": payload},
+diff --git a/requirements.txt b/requirements.txt
+index 7f2970d..76677e9 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -5,7 +5,7 @@ fastapi>=0.115.2,<1.0
+ groovy~=0.1
+ gradio_client==2.7.2
+ hf-gradio>=0.4.1,<1.0
+-httpx>=0.24.1,<1.0
++httpx2>=2.0.0,<3.0
+ huggingface_hub>=1.16.0,<3.0
+ Jinja2<4.0
+ markupsafe>=2.0,<4.0
+@@ -18,7 +18,7 @@ pydantic>=2.0,<=3.0
+ python-multipart>=0.0.18,<1.0 # required for fastapi forms.
+ pydub<1.0
+ pyyaml>=5.0,<7.0
+-safehttpx>=0.1.7,<0.2.0
++safehttpx>=0.2.0,<0.3.0
+ semantic_version~=2.0
+ starlette>=1.0.1,<2.0
+ tomlkit>=0.12.0,<0.15.0
+diff --git a/test/test_analytics.py b/test/test_analytics.py
+index 249e7ce..13b482a 100644
+--- a/test/test_analytics.py
++++ b/test/test_analytics.py
+@@ -9,7 +9,7 @@ os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
+ 
+ 
+ class TestAnalytics:
+-    @patch("httpx.get")
++    @patch("httpx2.get")
+     def test_should_warn_with_unable_to_parse(self, mock_get, monkeypatch):
+         monkeypatch.setenv("GRADIO_ANALYTICS_ENABLED", "True")
+         mock_get.side_effect = json.decoder.JSONDecodeError("Expecting value", "", 0)  # type: ignore
+diff --git a/test/test_external.py b/test/test_external.py
+index 4c18198..243ca2b 100644
+--- a/test/test_external.py
++++ b/test/test_external.py
+@@ -6,7 +6,7 @@ from pathlib import Path
+ from typing import cast
+ from unittest.mock import MagicMock, patch
+ 
+-import httpx
++import httpx2
+ import huggingface_hub
+ import pytest
+ 
+@@ -275,7 +275,7 @@ def test_get_tabular_examples_replaces_nan_with_str_nan():
+     mock_response.status_code = 200
+     mock_response.text = textwrap.dedent(readme)
+ 
+-    with patch("gradio.external.httpx.get", return_value=mock_response):
++    with patch("gradio.external.httpx2.get", return_value=mock_response):
+         examples = get_tabular_examples("foo-model")
+         assert examples["measurement_2"] == [14.206, 15.094, "NaN"]
+ 
+@@ -482,11 +482,11 @@ def test_format_conversation_replays_remote_text_files_as_text(monkeypatch):
+ 
+     def fake_get(url, *args, **kwargs):
+         assert url == "https://example.com/files/notes.txt"
+-        return httpx.Response(
+-            200, text="remote notes", request=httpx.Request("GET", url)
++        return httpx2.Response(
++            200, text="remote notes", request=httpx2.Request("GET", url)
+         )
+ 
+-    monkeypatch.setattr(httpx, "get", fake_get)
++    monkeypatch.setattr(httpx2, "get", fake_get)
+ 
+     history = [
+         {
+diff --git a/test/test_external_utils.py b/test/test_external_utils.py
+index 67b5383..37f3d7c 100644
+--- a/test/test_external_utils.py
++++ b/test/test_external_utils.py
+@@ -103,7 +103,7 @@ def test_create_endpoint_fn_docstring():
+     assert "petId" in doc
+ 
+ 
+-@patch("httpx.get")
++@patch("httpx2.get")
+ def test_create_endpoint_fn_with_auth_token(mock_get):
+     mock_response = MagicMock()
+     mock_response.status_code = 200
+@@ -134,7 +134,7 @@ def test_create_endpoint_fn_with_auth_token(mock_get):
+ 
+ 
+ def test_create_endpoint_fn_without_auth_token():
+-    with patch("httpx.get") as mock_get:
++    with patch("httpx2.get") as mock_get:
+         mock_response = MagicMock()
+         mock_response.status_code = 200
+         mock_response.json.return_value = {"result": "success"}
+diff --git a/test/test_history.py b/test/test_history.py
+index cc6197f..5be6548 100644
+--- a/test/test_history.py
++++ b/test/test_history.py
+@@ -17,7 +17,7 @@ from contextlib import contextmanager
+ from dataclasses import dataclass
+ from unittest.mock import AsyncMock, MagicMock, patch
+ 
+-import httpx
++import httpx2
+ import pytest
+ from fastapi.testclient import TestClient
+ 
+@@ -485,7 +485,7 @@ class TestServerSideRecording:
+             with (
+                 patch("gradio.history.resolve_token", return_value="tok"),
+                 patch("gradio.history.HfApi", return_value=hub),
+-                httpx.Client(base_url=local_url, timeout=30) as client,
++                httpx2.Client(base_url=local_url, timeout=30) as client,
+             ):
+                 with open("test/test_files/audio_sample.wav", "rb") as f:
+                     (path,) = client.post(
+@@ -606,7 +606,7 @@ class TestServerSideRecording:
+         ):
+             _, local_url, _ = demo.launch(prevent_thread_lock=True)
+             try:
+-                with httpx.Client(base_url=local_url, timeout=30) as client:
++                with httpx2.Client(base_url=local_url, timeout=30) as client:
+ 
+                     def join(text, session_hash, headers=None):
+                         body = {
+@@ -674,7 +674,7 @@ class TestServerSideRecording:
+         ):
+             _, local_url, _ = demo.launch(prevent_thread_lock=True)
+             try:
+-                with httpx.Client(base_url=local_url, timeout=30) as client:
++                with httpx2.Client(base_url=local_url, timeout=30) as client:
+ 
+                     def join(text, trigger_id):
+                         body = {
+diff --git a/test/test_image_utils.py b/test/test_image_utils.py
+index 2889d2f..f85baa0 100644
+--- a/test/test_image_utils.py
++++ b/test/test_image_utils.py
+@@ -22,7 +22,7 @@ def test_extract_svg_content_from_url(monkeypatch):
+         return MockResponse()
+ 
+     # extract_svg_content now routes through the SSRF-protected helper rather
+-    # than calling httpx.get directly, so patch that instead.
++    # than calling httpx2.get directly, so patch that instead.
+     monkeypatch.setattr("gradio.processing_utils.async_ssrf_protected_get", mock_get)
+     svg_content = extract_svg_content("https://example.com/test.svg")
+     assert svg_content == "<svg>mock svg content</svg>"
+diff --git a/test/test_interfaces.py b/test/test_interfaces.py
+index 1933cb1..07f62ae 100644
+--- a/test/test_interfaces.py
++++ b/test/test_interfaces.py
+@@ -5,7 +5,7 @@ from functools import partial
+ from string import capwords
+ from unittest.mock import MagicMock, patch
+ 
+-import httpx
++import httpx2
+ import pytest
+ 
+ import gradio
+@@ -32,11 +32,11 @@ class TestInterface:
+     def test_close(self):
+         io = Interface(lambda input: None, "textbox", "label")
+         _, local_url, _ = io.launch(prevent_thread_lock=True)
+-        response = httpx.get(local_url)
++        response = httpx2.get(local_url)
+         assert response.status_code == 200
+         io.close()
+         with pytest.raises(Exception):
+-            response = httpx.get(local_url)
++            response = httpx2.get(local_url)
+ 
+     def test_close_all(self):
+         interface = Interface(lambda input: None, "textbox", "label")
+diff --git a/test/test_node_proxy.py b/test/test_node_proxy.py
+index 3e17f15..0eab1ea 100644
+--- a/test/test_node_proxy.py
++++ b/test/test_node_proxy.py
+@@ -4,7 +4,7 @@ import shutil
+ from pathlib import Path
+ from typing import Any
+ 
+-import httpx
++import httpx2
+ import pytest
+ from fastapi.testclient import TestClient
+ 
+@@ -142,7 +142,7 @@ class TestStaticWorkerPool:
+         try:
+             pool.start()
+             for port in [17860, 17861]:
+-                resp = httpx.get(f"http://127.0.0.1:{port}/health", timeout=5)
++                resp = httpx2.get(f"http://127.0.0.1:{port}/health", timeout=5)
+                 assert resp.status_code == 200
+                 assert resp.json() == {"status": "ok"}
+         finally:
+@@ -182,7 +182,7 @@ class TestStaticWorkerPool:
+         try:
+             pool.start()
+             for port in [17880, 17881]:
+-                resp = httpx.post(
++                resp = httpx2.post(
+                     f"http://127.0.0.1:{port}/gradio_api/upload",
+                     files={"files": ("test.txt", b"hello", "text/plain")},
+                     timeout=5,
+@@ -314,7 +314,7 @@ class TestNodeProxyStartupOrdering:
+                         ("127.0.0.1", node_port), timeout=0.1
+                     ):
+                         try:
+-                            resp = httpx.get(
++                            resp = httpx2.get(
+                                 f"http://127.0.0.1:{node_port}/config",
+                                 timeout=0.5,
+                             )
+@@ -327,7 +327,7 @@ class TestNodeProxyStartupOrdering:
+                                     py_started.is_set()
+                                 )
+                                 return
+-                        except httpx.HTTPError:
++                        except httpx2.HTTPError:
+                             pass
+                 except OSError:
+                     pass
+diff --git a/test/test_processing_utils.py b/test/test_processing_utils.py
+index 82d60bc..4aab38d 100644
+--- a/test/test_processing_utils.py
++++ b/test/test_processing_utils.py
+@@ -10,7 +10,7 @@ from contextlib import contextmanager
+ from pathlib import Path
+ from unittest.mock import MagicMock, patch
+ 
+-import httpx
++import httpx2
+ import numpy as np
+ import pytest
+ from gradio_client.client import Endpoint
+@@ -1154,8 +1154,8 @@ async def test_async_get_private_request_fail():
+ 
+ @pytest.mark.asyncio
+ async def test_async_get_redirect_without_location_returns_response(monkeypatch):
+-    expected = httpx.Response(
+-        302, request=httpx.Request("GET", "https://example.com/image.png")
++    expected = httpx2.Response(
++        302, request=httpx2.Request("GET", "https://example.com/image.png")
+     )
+ 
+     async def mock_get(*args, **kwargs):
+diff --git a/test/test_queueing.py b/test/test_queueing.py
+index c871397..9f1d443 100644
+--- a/test/test_queueing.py
++++ b/test/test_queueing.py
+@@ -5,7 +5,7 @@ import time
+ from unittest.mock import patch
+ 
+ import gradio_client as grc
+-import httpx
++import httpx2
+ import pytest
+ from fastapi.testclient import TestClient
+ 
+@@ -258,7 +258,7 @@ def test_ending_a_stream_does_not_rerun_its_last_chunk(end):
+     _, local_url, _ = demo.launch(prevent_thread_lock=True)
+     # A real client rather than TestClient, which would set the event's
+     # asyncio signal from another thread and cannot drop an endless response
+-    client = httpx.Client(base_url=local_url.rstrip("/") + API_PREFIX, timeout=10)
++    client = httpx2.Client(base_url=local_url.rstrip("/") + API_PREFIX, timeout=10)
+     try:
+         r = client.post(
+             "/queue/join",
+diff --git a/test/test_routes.py b/test/test_routes.py
+index 6c5e692..e0e8e23 100644
+--- a/test/test_routes.py
++++ b/test/test_routes.py
+@@ -20,7 +20,7 @@ from urllib.parse import parse_qs, unquote, urlparse
+ 
+ import gradio_client as grc
+ import gradio_client.utils as client_utils
+-import httpx
++import httpx2
+ import numpy as np
+ import pandas as pd
+ import pytest
+@@ -943,8 +943,8 @@ class TestRoutes:
+         gr.set_static_paths(paths=[path])
+         with gr.Blocks() as demo:
+             pass
+-        async with httpx.AsyncClient(
+-            transport=httpx.ASGITransport(app=demo.app), base_url="http://test"
++        async with httpx2.AsyncClient(
++            transport=httpx2.ASGITransport(app=demo.app), base_url="http://test"
+         ) as client:
+             response = await asyncio.wait_for(
+                 client.get(
+@@ -975,8 +975,8 @@ class TestRoutes:
+         gr.set_static_paths(paths=[path])
+         with gr.Blocks() as demo:
+             pass
+-        async with httpx.AsyncClient(
+-            transport=httpx.ASGITransport(app=demo.app), base_url="http://test"
++        async with httpx2.AsyncClient(
++            transport=httpx2.ASGITransport(app=demo.app), base_url="http://test"
+         ) as client:
+             response = await asyncio.wait_for(
+                 client.get(
+@@ -1675,7 +1675,7 @@ class TestRoutes:
+ 
+         _, local_url, _ = demo.launch(prevent_thread_lock=True)
+         try:
+-            with httpx.Client(base_url=local_url, timeout=30) as client:
++            with httpx2.Client(base_url=local_url, timeout=30) as client:
+                 join = client.post(
+                     f"{API_PREFIX}/queue/join",
+                     json={"data": [], "fn_index": 0, "session_hash": "s"},
+@@ -1717,7 +1717,7 @@ class TestRoutes:
+ 
+         _, local_url, _ = demo.launch(prevent_thread_lock=True)
+         try:
+-            with httpx.Client(base_url=local_url, timeout=30) as client:
++            with httpx2.Client(base_url=local_url, timeout=30) as client:
+                 join = client.post(
+                     f"{API_PREFIX}/queue/join",
+                     json={"data": [], "fn_index": 0, "session_hash": "s"},
+@@ -3139,12 +3139,12 @@ def test_attacker_cannot_change_root_in_config(
+     def attacker(url):
+         """Simulates the attacker sending a request with a malicious header."""
+         for _ in range(max_attempts):
+-            httpx.get(url + "config", headers={"X-Forwarded-Host": "evil"})
++            httpx2.get(url + "config", headers={"X-Forwarded-Host": "evil"})
+ 
+     def victim(url, results):
+         """Simulates the victim making a normal request and checking the response."""
+         for _ in range(max_attempts):
+-            res = httpx.get(url)
++            res = httpx2.get(url)
+             config = json.loads(
+                 res.text.split("window.gradio_config =", 1)[1].split(";</script>", 1)[0]
+             )
+@@ -3341,19 +3341,19 @@ def test_get_api_call_path_generic_call(server, path, expected):
+             {},
+             ("localhost", 7860),
+             "/gradio_api/predict",
+-            httpx.URL("http://localhost:7860"),
++            httpx2.URL("http://localhost:7860"),
+         ),
+         (
+             {"x-forwarded-host": "example.com"},
+             ("localhost", 7860),
+             "/gradio_api/predict",
+-            httpx.URL("http://example.com"),
++            httpx2.URL("http://example.com"),
+         ),
+         (
+             {"x-forwarded-host": "example.com", "x-forwarded-proto": "https"},
+             ("localhost", 7860),
+             "/gradio_api/predict",
+-            httpx.URL("https://example.com"),
++            httpx2.URL("https://example.com"),
+         ),
+         (
+             {
+@@ -3362,7 +3362,7 @@ def test_get_api_call_path_generic_call(server, path, expected):
+             },
+             ("localhost", 7860),
+             "/gradio_api/predict",
+-            httpx.URL("https://example.com"),
++            httpx2.URL("https://example.com"),
+         ),
+     ],
+ )
+diff --git a/test/test_theme_sharing.py b/test/test_theme_sharing.py
+index 6373aae..9b4020e 100644
+--- a/test/test_theme_sharing.py
++++ b/test/test_theme_sharing.py
+@@ -1,7 +1,7 @@
+ import tempfile
+ from unittest.mock import patch
+ 
+-import httpx
++import httpx2
+ import huggingface_hub
+ import pytest
+ from huggingface_hub.hf_api import SpaceInfo
+@@ -341,7 +341,7 @@ class TestThemeUploadDownload:
+     def test_first_upload_no_version(self, mock_1):
+         mock_1.whoami.return_value = {"name": "freddyaboulton"}
+ 
+-        mock_1.HfApi().space_info.side_effect = httpx.HTTPError("Foo")  # type: ignore
++        mock_1.HfApi().space_info.side_effect = httpx2.HTTPError("Foo")  # type: ignore
+ 
+         gr.themes.Monochrome().push_to_hub(repo_name="does_not_exist")
+         repo_call_args = mock_1.HfApi().create_commit.call_args_list[0][1]
+diff --git a/test/test_workflow.py b/test/test_workflow.py
+index d31fb1e..0b026dd 100644
+--- a/test/test_workflow.py
++++ b/test/test_workflow.py
+@@ -737,7 +737,7 @@ class TestCallModel:
+ 
+         with (
+             patch("huggingface_hub.InferenceClient"),
+-            patch("gradio.workflow.httpx.post", return_value=response) as post,
++            patch("gradio.workflow.httpx2.post", return_value=response) as post,
+         ):
+             call_model(
+                 [
