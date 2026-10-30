@@ -5,5 +5,5 @@ github = "PowerShell/vscode-powershell"
 prefix = "v"
 use_latest_release = true
 include_prereleases = true
-from_pattern = '^(.*)-preview$'
+from_pattern = "^(.*)-preview$"
 to_pattern = '\1preview'
