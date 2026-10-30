@@ -1,6 +1,6 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-hardener
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
@@ -48,6 +48,12 @@ makedepends=(
     'librsvg'
     'rust'
     'cargo'
+    # Arch's rust package carries only the host target, and build() compiles
+    # for two more: the CLI for x86_64-unknown-linux-musl and the frontend for
+    # wasm32-unknown-unknown. rustup provides both names, so a rustup
+    # toolchain satisfies them, but only `rustup target add` installs them.
+    'rust-musl'
+    'rust-wasm'
     'trunk'
     'pkg-config'
 )
@@ -63,9 +69,9 @@ optdepends=(
 # which is what docs/guide/installation.md promises for every packaging.
 backup=('etc/linux-hardener/config.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-# sha256 of the v1.8.2 source tarball - regenerate once the tag is pushed:
+# sha256 of the v1.9.1 source tarball - regenerate once the tag is pushed:
 #   updpkgsums  &&  makepkg --printsrcinfo > .SRCINFO
-sha256sums=('7b1a3cdb63b27326d83776af5ce56955ba934e45d8552ad7afb564644247b17a')
+sha256sums=('8d0f1f8798964144b1c178d147a1c87ff17f9a47f5b64df75dac03bee962ef68')
 
 build() {
     cd "$pkgname-$pkgver"
