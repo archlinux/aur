@@ -142,7 +142,10 @@ check() {
     src/Compilers/CSharp/Test/Symbol/Microsoft.CodeAnalysis.CSharp.Symbol.UnitTests.csproj; do
     # Without the official versions, some tests expect the version of development builds (42.42.42.42)
     dotnet test "$_project" --configuration Release -p:RepositoryCommit="$_commit" -p:RepositoryUrl="$url" \
-      --framework "net$_dotnetsdkver" --filter "$(IFS='&'; echo "${_filter[*]}")"
+      --framework "net$_dotnetsdkver" --filter "$(
+        IFS='&'
+        echo "${_filter[*]}"
+      )"
   done
 }
 
