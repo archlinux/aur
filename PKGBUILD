@@ -1,6 +1,6 @@
 # Maintainer: Peter Justin <peter.justin@outlook.com>
 pkgname=d2rloader
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Cross-platform Diablo 2 Resurrected Loader written in Python/Qt"
 arch=('any')
@@ -25,7 +25,7 @@ conflicts=("d2rloader")
 makedepends=('python-hatch' 'python-installer')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sh4nks/d2rloader/archive/v${pkgver}.tar.gz")
-sha256sums=('8ceb44b376fd9c5bf3894dd40704d7a77e6a1e194d5125a793aab50835d20683')
+sha256sums=('154383378fec3f57dd80cf3864c6e84c3baac41fd3b9f9dabfb3ae97f1cc8d50')
 
 prepare() {
   cd "$pkgname-$pkgver"
