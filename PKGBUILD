@@ -3,7 +3,7 @@
 pkgname=ear-native
 pkgver=1.2
 pkgrel=1
-pkgdesc="Native desktop client for Sony WH/WF headphones"
+pkgdesc="Native desktop client for Nothing headphones"
 arch=('x86_64')
 url="https://github.com/dest4590/ear-native"
 license=('MIT')
