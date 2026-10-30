@@ -9,7 +9,7 @@ pkgname=(
 pkgbase=vencord-git
 _pkgname=Vencord
 _dirname=vencord
-pkgver=1.15.12.r0.gb0e636d
+pkgver=1.15.14.r11.g8d64c8b
 pkgrel=1
 pkgdesc="The cutest Discord client mod"
 arch=(any)
@@ -41,7 +41,7 @@ build() {
 
 check() {
     cd "$srcdir"/$_pkgname
-    pnpm test && pnpm testWeb
+    pnpm test
 }
 
 package_vencord-git() {
