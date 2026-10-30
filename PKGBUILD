@@ -7,12 +7,12 @@
 # Bitwarden (PM and SM), Proton Pass, KeePassXC, GNOME Keyring, and custom WASM plugins. It includes
 # an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
 #
-# The release workflow renders this file by substituting 0.0.37dev3.
+# The release workflow renders this file by substituting 0.0.37dev29.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-git
-pkgver=0.0.37dev3
+pkgver=0.0.37dev29
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
@@ -126,15 +126,6 @@ prepare() {
 }
 
 build() {
-    # Build native binaries (rosecd, rosec, rosec-prompt, rosec-pam-unlock)
-    cd "${srcdir}/${pkgname}"
-    cargo build --release --locked --bin rosecd --bin rosec --bin rosec-prompt --bin rosec-pam-unlock 2>/dev/null || \
-    cargo build --release         --bin rosecd --bin rosec --bin rosec-prompt --bin rosec-pam-unlock
-
-    # Build PAM module (C, no Rust deps — tiny .so for libpam)
-    cd "${srcdir}/${pkgname}/contrib/pam"
-    make
-
     # Build WASM providers
     cd "${srcdir}/${pkgname}/rosec-bitwarden-pm"
     cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
@@ -156,6 +147,21 @@ build() {
     cd "${srcdir}/${pkgname}/rosec-protonpass"
     cargo build --target wasm32-wasip1 --release --locked
 
+    # Bind the host to the exact installed bytes; no private key or global
+    # wasm_verify=disabled setting is needed for this source-built package.
+    cd "${srcdir}/${pkgname}"
+    local bundles=() crate wasm
+    for crate in rosec-bitwarden-pm rosec-bitwarden-sm rosec-gnome-keyring rosec-keepassxc-file rosec-protonpass; do
+        wasm="${crate//-/_}.wasm"
+        bundles+=(--bundle "${crate}/target/wasm32-wasip1/release/${wasm}"
+            "${crate}/${wasm}.policy.toml" "/usr/lib/rosec/providers/${wasm}")
+    done
+    python contrib/packaged-providers.py "${bundles[@]}" > "${srcdir}/packaged-providers.json"
+    export ROSEC_PACKAGED_PROVIDERS="${srcdir}/packaged-providers.json"
+    cargo build --release --locked --bin rosecd --bin rosec --bin rosec-prompt --bin rosec-pam-unlock
+
+    make -C contrib/pam
+
     cd "${srcdir}/${pkgname}"
     python contrib/package-protonpass.py --version "${pkgver}" \
         --output "${srcdir}/protonpass-materials" --notices-only
@@ -163,8 +169,8 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname}"
-    cargo test --release --locked --workspace 2>/dev/null || \
-    cargo test --release          --workspace
+    export ROSEC_PACKAGED_PROVIDERS="${srcdir}/packaged-providers.json"
+    cargo test --release --locked --workspace
 }
 
 package() {
@@ -190,9 +196,9 @@ package() {
     # WASM providers — built from source, bundled in the single package.
     # Each provider also installs its .wasm.policy.toml sidecar, which is
     # mandatory under all wasm_verify modes (disabled mode only skips the
-    # cryptographic check, not the declarative policy). No .minisig is
-    # shipped: source builds aren't signed, so users of rosec-git must set
-    # wasm_verify = "disabled" in their config.
+    # cryptographic check, not the declarative policy). The host embeds hashes
+    # of these exact bytes and install paths; wasm_verify stays required.
+    # Do not transform WASM/policy files after generating the manifest.
     install -Dm644 rosec-bitwarden-pm/target/wasm32-wasip1/release/rosec_bitwarden_pm.wasm \
         "${pkgdir}/usr/lib/rosec/providers/rosec_bitwarden_pm.wasm"
     install -Dm644 rosec-bitwarden-pm/rosec_bitwarden_pm.wasm.policy.toml \
