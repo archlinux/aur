@@ -1,12 +1,14 @@
-# Maintainer: “0xReki” <mail@0xreki.de>
-# Contributor: “0xReki” <mail@0xreki.de>
+# Maintainer: Thai „RPGReki“ Chung <rpgreki@reki.wtf>
+# Contributor: Thai „RPGReki“ Chung <rpgreki@reki.wtf>
 # Contributor: hardfalcon <?>
+# Contributor: potatoe <?>
+
 _pkgname=libnfc
 pkgname="${_pkgname}-git"
-pkgver=1.7.1.r191.g216145f
+pkgver=1.8.0.r79.g3fa0751
 pkgrel=1
 pkgdesc='Platform independent Near Field Communication (NFC) library'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://nfc-tools.org/"
 license=('LGPL3')
 depends=('pcsclite' 'libusb-compat')
@@ -24,10 +26,7 @@ pkgver() {
 
 prepare() {
     cd ${srcdir}/${_pkgname}
-    #Hotfixing Bug
-    if [ ! -e README-Windows.txt ]; then
-        ln -s README-Windows.{md,txt}
-    fi
+
     ./make_release.sh
     #autoreconf -vis
     ./configure --prefix /usr --enable-doc --sysconfdir=/etc
@@ -36,10 +35,12 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pkgname}
+
     make
 }
 
 package() {
     cd ${srcdir}/${_pkgname}
+
     make DESTDIR=${pkgdir} install
 }
