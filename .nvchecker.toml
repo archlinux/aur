@@ -1,0 +1,6 @@
+# The latest PowerShell Standard 5 release on nuget.org (upstream doesn't tag), the repository's
+# master is at 7.0.0-preview.1
+[dotnet-powershellstandard-library]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/powershellstandard.library/index.json"
+filter = '.versions | map(select(startswith("5.") and (contains("-") | not))) | last'

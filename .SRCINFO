@@ -1,0 +1,20 @@
+pkgbase = dotnet-powershellstandard-library
+	pkgdesc = Reference assembly for PowerShell modules that run on Windows PowerShell 5.1 and PowerShell 7 (NuGet package)
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://github.com/PowerShell/PowerShellStandard
+	arch = any
+	license = MIT
+	checkdepends = powershell
+	checkdepends = powershell-pester-4
+	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-source-build-reference-packages
+	makedepends = git
+	source = git+https://github.com/PowerShell/PowerShellStandard.git#commit=b69d5e6a5107287a5981db515bae4d5631278f76
+	source = invoke-tests.ps1
+	sha512sums = e06ea3440792c4c7ad1cffa48cfff9f11434edc88344b200b1f4aa828d2fd0a81e5ff57f9b20f22838e74cec8997f23a88c559adc07ca355443b37e5fe3b447d
+	sha512sums = c031d359563d2551e48e61d4373450c2047492465ec3becee39c7279c2c14a59ba5c80eaf5b005090ad84529e6a1816d991a57eb5b9333ae29b71b7b8f9a09df
+	b2sums = 88d59ba95cf513d89e59dab0a1e7869c2dd7f28e8073160335689c5f685325be210039875504f992778a00fef531b6fc00d8b2744e6ff8b3ab5c4289e15433c1
+	b2sums = 55f0889ec1ddc893f155f9bf972d606d28b4b2620cd489a59698cdcfad3fc4ccb40499cb1133cbdb48ad2d298c88f4809d6281090364eace573c54a9ab6eccf4
+
+pkgname = dotnet-powershellstandard-library
