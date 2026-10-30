@@ -1,0 +1,19 @@
+pkgbase = python-quickjs-ng
+	pkgdesc = Thin Python wrapper of the quickjs-ng JavaScript engine.
+	pkgver = 0.17.0.2
+	pkgrel = 1
+	url = https://github.com/genotrance/quickjs-ng
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = glibc
+	source = https://files.pythonhosted.org/packages/d6/a4/611b1c2e3a505dd66cc03fb6e5963f0550a09ef2bd7c51243a9237d64db8/quickjs_ng-0.17.0.2.tar.gz
+	sha256sums = 43d2e48272208721a7aaea8e3f02d4b9318f12ef20cc4f5421b59d9a470706ef
+
+pkgname = python-quickjs-ng
