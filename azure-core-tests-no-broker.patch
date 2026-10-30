@@ -1,0 +1,52 @@
+diff --git a/sdk/core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj b/sdk/core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj
+index dc5c22b..92c1ab1 100644
+--- a/sdk/core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj
++++ b/sdk/core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj
+@@ -4,7 +4,7 @@
+     <IncludeOperationsSharedSource>true</IncludeOperationsSharedSource>
+   </PropertyGroup>
+   <ItemGroup>
+-    <PackageReference Include="Azure.Identity.Broker" />
++    <ProjectReference Include="..\..\Azure.Core\src\Azure.Core.csproj" />
+     <PackageReference Include="Newtonsoft.Json" />
+     <PackageReference Include="NUnit" />
+     <PackageReference Include="NUnit3TestAdapter" />
+diff --git a/sdk/core/Azure.Core.TestFramework/src/TestEnvironment.cs b/sdk/core/Azure.Core.TestFramework/src/TestEnvironment.cs
+index 2f43844..08b793a 100644
+--- a/sdk/core/Azure.Core.TestFramework/src/TestEnvironment.cs
++++ b/sdk/core/Azure.Core.TestFramework/src/TestEnvironment.cs
+@@ -15,7 +15,6 @@
+ using System.Threading.Tasks;
+ using Azure.Core.Pipeline;
+ using Azure.Identity;
+-using Azure.Identity.Broker;
+ using NUnit.Framework;
+ 
+ namespace Azure.Core.TestFramework
+@@ -262,26 +261,6 @@ public virtual TokenCredential Credential
+         /// <returns>A <see cref="TokenCredential"/> for local developer authentication.</returns>
+         protected virtual TokenCredential CreateDeveloperCredential()
+         {
+-            const string AzureTestTenantId = "70a036f6-8e4d-4615-bad6-149c02e7720d";
+-
+-            try
+-            {
+-                var brokerOptions = new InteractiveBrowserCredentialBrokerOptions(IntPtr.Zero)
+-                {
+-                    TenantId = AzureTestTenantId,
+-                    UseDefaultBrokerAccount = true,
+-                    TokenCachePersistenceOptions = new TokenCachePersistenceOptions()
+-                };
+-
+-                return new ChainedTokenCredential(
+-                    new InteractiveBrowserCredential(brokerOptions),
+-                    new VisualStudioCodeCredential());
+-            }
+-            catch
+-            {
+-                // Broker not available on this platform, fall through to DefaultAzureCredential
+-            }
+-
+             return new DefaultAzureCredential(
+                 new DefaultAzureCredentialOptions
+                 {
