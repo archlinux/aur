@@ -1,7 +1,7 @@
 # Maintainer: Borys Kharchenko <arximus88@gmail.com>
 
 pkgname=figma-linux-next
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Unofficial Figma desktop app for Linux with native Wayland support and GPU acceleration"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   "figma-linux-next-launcher.sh"
 )
 sha256sums=(
-  '00de3dfd53af577dc4ebaf5047a0060b27c5719dcdcb16740ea045ac7de47a94'
+  'ae5bac9088be364b90817690f17477dcd9b26c477e2ade4a4f6c2f79d352d657'
   'SKIP'
   'SKIP'
 )
