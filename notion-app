@@ -1,0 +1,66 @@
+#!/usr/bin/bash
+# Launcher for the repacked Notion desktop app.
+#
+# Notion ships no Linux build; this runs the repacked bundle on Arch's
+# system Electron (per the Electron package guidelines), so Electron's
+# security updates reach the app without repacking it.
+
+APP_DIR=/usr/lib/notion-app
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notion-flags.conf"
+
+# User flags, one per line, '#' comments ignored. Read into an array so a
+# flag containing a space survives, and so an empty file passes nothing.
+USER_FLAGS=()
+if [[ -r "$CONFIG" ]]; then
+  while IFS= read -r _line; do
+    [[ -z "${_line//[[:space:]]/}" || "$_line" == \#* ]] && continue
+    USER_FLAGS+=("$_line")
+  done < "$CONFIG"
+fi
+
+# Electron refuses to start as root with its sandbox enabled, and Notion's
+# bundle is not setuid, so drop the sandbox in that case only.
+SANDBOX=()
+if [[ ${EUID} -eq 0 && ${ELECTRON_RUN_AS_NODE:-0} != 1 ]]; then
+  SANDBOX=(--no-sandbox)
+fi
+
+# --- pick a display protocol that exists ----------------------------------
+# Notion is a repack of the Windows build, so it inherits Chromium's X11
+# preference: with no DISPLAY it asks for X11 and dies with
+# "Missing X server" before it can log anything, which shows up as an
+# endless loading spinner. Force the platform that actually exists.
+PLATFORM_FLAGS=()
+if [[ -n ${WAYLAND_DISPLAY:-} && -z ${DISPLAY:-} ]]; then
+  PLATFORM_FLAGS=(--ozone-platform=wayland)
+elif [[ -n ${WAYLAND_DISPLAY:-} && -n ${DISPLAY:-} ]]; then
+  # Both exist. Let Chromium decide, but never let it pick X11-only.
+  PLATFORM_FLAGS=(--ozone-platform-hint=auto)
+fi
+
+# --- clear a stale single-instance lock ----------------------------------
+# Electron takes a SingletonLock in the user-data dir. If a previous
+# instance was SIGKILLed (a build check, a crash, a `kill -9` from a
+# script), the lock file survives and every later launch hands its window
+# to the dead process: the app exits in about a second with status 0 and
+# the user never gets a window. That is the endless-spinner symptom.
+USER_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/Notion"
+if [[ -e "$USER_DATA/SingletonLock" ]]; then
+  # The symlink target is "<hostname>-<pid>". Only the trailing digits are
+  # the pid, so require that shape before deciding anything: an empty or
+  # malformed target is treated as stale, and a well-formed one is only
+  # stale if /proc/<pid> is absent.
+  _owner=""
+  [[ -L "$USER_DATA/SingletonLock" ]] && _owner=$(readlink "$USER_DATA/SingletonLock")
+  _pid=""
+  if [[ "$_owner" =~ -([0-9]+)$ ]]; then
+    _pid=${BASH_REMATCH[1]}
+  fi
+  if [[ -z "$_pid" || ! -d "/proc/$_pid" ]]; then
+    rm -f "$USER_DATA/SingletonLock" "$USER_DATA/SingletonCookie" \
+          "$USER_DATA/SingletonSocket"
+  fi
+fi
+
+cd "$APP_DIR" || exit 1
+exec electron43 "${SANDBOX[@]}" "${PLATFORM_FLAGS[@]}" "$APP_DIR/app.asar" "${USER_FLAGS[@]}" "$@"

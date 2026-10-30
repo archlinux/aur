@@ -1,0 +1,19 @@
+# Colored makepkg-like notes, so the post_install hints are readable.
+_note() {
+  printf "${_blue}==>${_yellow} NOTE:${_bold} %s${_all_off}\n" "$1"
+}
+
+_all_off="$(tput sgr0)"
+_bold="${_all_off}$(tput bold)"
+_blue="${_bold}$(tput setaf 4)"
+_yellow="${_bold}$(tput setaf 3)"
+
+post_install() {
+  _note "Custom Electron flags go in: ~/.config/notion-flags.conf"
+  _note "The launcher is called: notion-app"
+  _note "Quit the app fully with Ctrl+Q; the tray icon does not quit it."
+}
+
+post_upgrade() {
+  post_install
+}

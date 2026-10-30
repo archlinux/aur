@@ -1,0 +1,13 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.log
+.probe*.js
+.probeapp/
+.stage/
+.watchapp/
+.watch.js
+.inspect_cdp.py
+.diags_*.py
+.tabprobe.js
+.netprobe.js
