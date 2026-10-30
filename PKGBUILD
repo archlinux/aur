@@ -7,8 +7,8 @@
 # unchanged. It needs a licence key from https://getsolco.com.
 
 pkgname=solco-bin
-_tag=v1.0.0-beta.2
-pkgver=1.0.0beta.2
+_tag=v1.0.0-beta.3
+pkgver=1.0.0beta.3
 pkgrel=1
 pkgdesc='Prep studio for DJs: grids, keys, tags, smart playlists and USB exports for CDJs (private beta, needs a licence key)'
 arch=('x86_64' 'aarch64')
@@ -40,10 +40,10 @@ optdepends=(
 provides=('solco')
 conflicts=('solco')
 options=('!debug' '!strip')
-source_x86_64=("solco-${_tag}-amd64.deb::https://github.com/crmne/solco-releases/releases/download/${_tag}/solco_1.0.0.beta.2_amd64.deb")
-source_aarch64=("solco-${_tag}-arm64.deb::https://github.com/crmne/solco-releases/releases/download/${_tag}/solco_1.0.0.beta.2_arm64.deb")
-sha256sums_x86_64=('95ffa6a343d2c1beb4311ba4b449188f2a2e71ae2caee0ef2c90d7f346c8ab0d')
-sha256sums_aarch64=('e09ccf11277fd7832aa7d2b0eae3ffdf45dbfa805ea1aeee73d125b214eb4789')
+source_x86_64=("solco-${_tag}-amd64.deb::https://github.com/crmne/solco-releases/releases/download/${_tag}/solco_1.0.0.beta.3_amd64.deb")
+source_aarch64=("solco-${_tag}-arm64.deb::https://github.com/crmne/solco-releases/releases/download/${_tag}/solco_1.0.0.beta.3_arm64.deb")
+sha256sums_x86_64=('19cfd39031a81556a863fb89569f3bdfd668e2dc343e6df24d874294d21c0090')
+sha256sums_aarch64=('bae26f0c6a332129dbdb4dfa82dc8007f7ddd2470b99c7fef41db0f8c6de161e')
 
 package() {
   bsdtar -xf data.tar.* -C "${pkgdir}"
