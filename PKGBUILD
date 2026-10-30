@@ -103,6 +103,7 @@ checkdepends=(
   iputils       # Needed for ping, which is used in a lot of places
   lttng-ust2.12 # Used for CoreCLR tracing, adds to reproducibility here
   openssh       # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
+  powershell-pester-4 # The test framework, build.psm1 asks for Pester 4
   procps-ng     # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
   xclip         # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
 )
@@ -153,7 +154,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
             '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
             '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
-            '355d5bdb418cf2f9b7f19c9a4433fc350aca62e707669b9cb2b6661d9a12828e60158b8f58a8600e9566c09750f0c47c4144ec20af8681c8aba87a8718f227f5')
+            'eec686855a3a215d947e2f3f40708c3fb3d005df0e8eba2e963f062f3b4f381cd1b0fbd2f4296dd52a84e965c37382edf85db13db6130b9fb96a5980830b2b79')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
         '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
         'ce0b02fbdcb1b179f2b04cc230ac2c720563f33f09cb6787e706056638ea7c105cd4c35b4d8dc240cb08191107fe5d0053b9060705b9e4fb1da44e50763e0032'
@@ -176,7 +177,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
         '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
         'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
-        '84ab1ef0c546607fa509e4c71ab8528d5a6ff8b120a0dca14ccd7ec0ae39706cbb6c0e0cb65360dd14b74bb225b393c85d70d813602d1877efa4d720cc193374')
+        'ea868e62c1f4fbe6734993b4b02b56ddeb0a17ed1d103e6704d7a60e25a30f722617016aed9aa20b1e8708045a6eb65faf9d1b40339d122166552cf0402249d8')
 
 # Sets up the environment shared by prepare(), build() and check()
 _dotnet_env() {

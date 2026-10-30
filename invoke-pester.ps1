@@ -3,14 +3,12 @@
 # StrictMode and $ErrorActionPreference aren't changed, as they'd leak into the tests.
 
 $repository = $PWD.ProviderPath
-$buildModules = New-Item -ItemType Directory -Path (Join-Path $repository build-modules) -Force
 
-# Save the Pester version build.psm1 asks for
+# Pester comes from powershell-pester-4, in the version build.psm1 asks for. The PowerShell being
+# tested has no powershell.config.json yet, which would add /usr/share/powershell/Modules.
 $saveCommand = "$((Get-Content (Join-Path $repository build.psm1)) -match 'Save-Module -Name Pester')"
 $pesterArgs = @{
-    Name       = 'Pester'
-    Path       = $buildModules.FullName
-    Repository = 'PSGallery'
+    Name = 'Pester'
 }
 foreach ($option in 'MaximumVersion', 'MinimumVersion') {
     $match = [regex]::Match($saveCommand, "-$option\s+(?<version>[\d\.]+)")
@@ -18,15 +16,14 @@ foreach ($option in 'MaximumVersion', 'MinimumVersion') {
         $pesterArgs[$option] = $match.Groups['version'].Value
     }
 }
-Save-Module @pesterArgs -ErrorAction Stop
 
 $env:PSModulePath = @(
-    $buildModules.FullName
     Join-Path $repository test/tools/Modules
     $env:PSModulePath
+    '/usr/share/powershell/Modules'
 ) -join [System.IO.Path]::PathSeparator
 
-Import-Module Pester -ErrorAction Stop
+Import-Module @pesterArgs -ErrorAction Stop
 Invoke-Pester -Show Header, Failed, Summary -EnableExit `
     -OutputFormat NUnitXml -OutputFile (Join-Path $repository pester-tests.xml) `
     -ExcludeTag Slow, RequireSudoOnUnix `
