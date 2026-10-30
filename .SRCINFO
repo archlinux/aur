@@ -1,0 +1,22 @@
+pkgbase = atto-editor-git
+	pkgdesc = Small Emacs-like terminal editor by Hugh Barney
+	pkgver = r115.g0b2c5bb
+	pkgrel = 1
+	url = https://github.com/hughbarney/atto
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Public-Domain
+	makedepends = git
+	depends = glibc
+	depends = ncurses
+	provides = atto-editor=r115.g0b2c5bb
+	conflicts = atto
+	conflicts = atto-editor
+	conflicts = atto-netbsd-git
+	options = !debug
+	source = git+https://github.com/hughbarney/atto.git#branch=master
+	source = atto.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = atto-editor-git
