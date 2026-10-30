@@ -1,0 +1,20 @@
+pkgbase = anna-git
+	pkgdesc = anna's archive cli
+	pkgver = 0.2.0rc4
+	pkgrel = 1
+	url = https://github.com/meurz/annas-archive-cli
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python-beautifulsoup4
+	depends = python-click
+	depends = python-httpx
+	depends = python-socksio
+	source = git+https://github.com/meurz/annas-archive-cli.git
+	sha256sums = SKIP
+
+pkgname = anna-git
