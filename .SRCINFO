@@ -1,6 +1,6 @@
 pkgbase = hegn-git
 	pkgdesc = Cloud Hypervisor sandbox manager and TUI for coding agents (git version)
-	pkgver = 0.1.0.r127.g82b962f
+	pkgver = 0.1.0.r131.g8976c4e
 	pkgrel = 1
 	url = https://github.com/Henriklmao/hegn
 	install = hegn.install
