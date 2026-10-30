@@ -1,7 +1,7 @@
 # Maintainer: Snoopey
 pkgname=meetily
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Local meeting transcription and summaries (CPU build)'
 arch=('x86_64')
 url='https://github.com/Zackriya-Solutions/meetily'
@@ -29,6 +29,10 @@ prepare() {
   cd "meetily-$pkgver"
   patch -Np1 -i "$srcdir/arch.patch"
   install -Dm644 "$srcdir/SourceSans3VF-Upright.ttf" frontend/src/app/fonts/SourceSans3VF-Upright.ttf
+  # Keep Git and other build tools inside the package sandbox.
+  export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
+  export HOME="$srcdir/.home" XDG_CONFIG_HOME="$srcdir/.config"
+  install -dm700 "$HOME" "$XDG_CONFIG_HOME"
   export XDG_CACHE_HOME="$srcdir/.cache" npm_config_cache="$srcdir/.cache/npm"
   export PNPM_HOME="$srcdir/.pnpm-home" CARGO_HOME="$srcdir/.cargo"
   export XDG_RUNTIME_DIR="$srcdir/.runtime"
@@ -44,6 +48,10 @@ prepare() {
 
 build() {
   cd "meetily-$pkgver"
+  # Keep Git and other build tools inside the package sandbox.
+  export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
+  export HOME="$srcdir/.home" XDG_CONFIG_HOME="$srcdir/.config"
+  install -dm700 "$HOME" "$XDG_CONFIG_HOME"
   export XDG_CACHE_HOME="$srcdir/.cache" npm_config_cache="$srcdir/.cache/npm"
   export PNPM_HOME="$srcdir/.pnpm-home" CARGO_HOME="$srcdir/.cargo"
   export XDG_RUNTIME_DIR="$srcdir/.runtime"
