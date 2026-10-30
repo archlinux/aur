@@ -10,7 +10,7 @@ url="https://github.com/iv-org/invidious"
 license=('AGPL-3.0-only')
 # Not all deps are explicitly listed on invidious website,
 # but resulting binary is somehow linked against them
-depends=('gc' 'gcc-libs' 'glibc' 'icu' 'libevent' 'libxml2' 'libyaml' 'openssl' 'pcre' 'sqlite' 'xz' 'zlib' 'librsvg' 'tzdata')
+depends=('gc' 'gcc-libs' 'glibc' 'icu' 'libevent' 'libxml2' 'libyaml' 'openssl' 'pcre' 'sqlite' 'xz' 'zlib' 'librsvg' 'tzdata' 'invidious-companion-git')
 makedepends=('crystal' 'shards' 'git')
 optdepends=('postgresql: Database, not needed if remote')
 conflicts=('invidious-git')
