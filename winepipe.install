@@ -1,0 +1,14 @@
+post_install() {
+  cat <<'EOF'
+==> WinePipe is installed into Wine's library directory.
+==> Register it once in each Wine prefix that should use it:
+==>     WINEPREFIX=~/.wine winepipe-register
+==> (or use "Register" in WinePipe Settings), then pick "WinePipe" as the
+==> ASIO device in your application.
+EOF
+}
+
+post_upgrade() {
+  # Prefixes keep a copy of the PE DLLs; re-registering refreshes them.
+  echo "==> Re-run winepipe-register in your prefixes to update their copy of the driver."
+}

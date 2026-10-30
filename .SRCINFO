@@ -1,0 +1,25 @@
+pkgbase = winepipe
+	pkgdesc = PipeWire-native ASIO driver for Wine (no JACK), with a COSMIC settings app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mrquantumoff/winepipe
+	install = winepipe.install
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = rustup
+	makedepends = mingw-w64-gcc
+	depends = wine
+	depends = libpipewire
+	depends = glibc
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = libx11
+	options = !strip
+	options = !lto
+	options = !debug
+	source = winepipe-1.0.0.tar.gz::https://github.com/mrquantumoff/winepipe/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7df10b42b34e3e1178cb0a07e86e9aab27e96b212b7bdf1e3699cdc566de2ad3
+
+pkgname = winepipe
