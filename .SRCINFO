@@ -1,5 +1,5 @@
 pkgbase = coolercontrol
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
@@ -16,16 +16,16 @@ pkgbase = coolercontrol
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.1.0/downloads/packages/coolercontrol-5.1.0.tar.gz
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.1.0/downloads/packages/coolercontrold-vendor-5.1.0.tar.gz
-	sha256sums = 739e0be15de99830515d973bf3fdfc7f339f694cf1cc934540336d3883373b65
-	sha256sums = e510facacca774497635007ba8b115f2dcb5a46d014d96a0ceb4abafe642abe3
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.1.1/downloads/packages/coolercontrol-5.1.1.tar.gz
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.1.1/downloads/packages/coolercontrold-vendor-5.1.1.tar.gz
+	sha256sums = d171c2cbe191763f21c1e6c35e880c7d111dceb53ea02017f7048cca1b64f859
+	sha256sums = 51cc6c6126934d2623a4abf897e1a8e826fb2062a4d9a4bde0fae317d98d6442
 
 pkgname = coolercontrol
 	pkgdesc = A program to monitor and control your cooling devices. This package contains the desktop application. (official package)
 	depends = qt6-webengine
 	depends = hicolor-icon-theme
-	depends = coolercontrold=5.1.0-1
+	depends = coolercontrold=5.1.1-1
 
 pkgname = coolercontrold
 	pkgdesc = A program to monitor and control your cooling devices. This package contains the service daemon. (official package)
