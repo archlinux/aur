@@ -2,7 +2,7 @@
 
 pkgname=browser-use-cli
 _pyname=browser_use
-pkgver=0.13.11
+pkgver=0.13.14
 pkgrel=1
 pkgdesc='CLI for browser automation with AI agents'
 arch=(any)
@@ -22,6 +22,7 @@ depends=(
   python-google-auth
   python-google-auth-oauthlib
   python-httpx
+  python-idna
   python-markdownify
   python-openai
   python-pillow
@@ -66,14 +67,14 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz"
   "https://files.pythonhosted.org/packages/source/b/bubus/bubus-1.5.6.tar.gz"
   "https://files.pythonhosted.org/packages/source/c/cdp_use/cdp_use-1.4.5.tar.gz"
-  "https://files.pythonhosted.org/packages/source/b/browser_use_sdk/browser_use_sdk-3.4.2.tar.gz"
+  "https://files.pythonhosted.org/packages/source/b/browser_use_sdk/browser_use_sdk-3.12.1.tar.gz"
   "https://files.pythonhosted.org/packages/source/b/browser_harness/browser_harness-0.1.13.tar.gz"
   "https://files.pythonhosted.org/packages/source/f/fetch_use/fetch_use-0.4.0.tar.gz"
 )
-sha256sums=('abec8573ebc9f8801b688c38b5988d90bb030d1448b8760f37f85f68a0ed7812'
+sha256sums=('9bb2f3d7ea215bf67b415c8e6e546413a3712ac5ea775b223b452189f4582d9d'
             '1a5456f0a576e86613a7bd66e819891b677778320b6e291094e339b0d9df2e0d'
             '0da3a32df46336a03ff5a22bc6bc442cd7d2f2d50a118fd4856f29d37f6d26a0'
-            'be050bc803b31ec4e9f23dfd71d9dc5f1160d7dec0b962327915caf743a10208'
+            '94c2a870e5ec5072b21661a6f4fecbf106dabe1c40e8790c6702081c52f39d2f'
             '284dc547a042c309feafd9a9f4a74b2a8651b7963ea3ac6cb2f2d64889f6a8f3'
             '9511987d4907ec6dac501e21d66946d10098f66b5d21bc2aba4189cd81ba189a')
 
