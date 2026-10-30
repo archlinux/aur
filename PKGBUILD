@@ -16,8 +16,8 @@
 
 pkgname=codex-desktop-linux
 # Copied from nix/upstream-linux-packages.json; prepare() asserts they agree.
-_appver=26.1023.51421
-pkgver=26.1023.51421
+_appver=26.1027.30824
+pkgver=26.1027.30824
 pkgrel=1
 pkgdesc="Codex Desktop for Linux, distsystem soft-fork (official Linux package pinned, no auto-updater)"
 arch=('x86_64')
@@ -93,7 +93,7 @@ source=(
     "$_debfile::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/$_debfile"
 )
 sha256sums=('SKIP'
-            '4484dc2b54fc0978beb23b8d8d717494e4e0b4fbeab0a876739105e50b44de5a')
+            '4e139a44f7c917a643f2dd014ad32298dd30aec6d324d323524b190f7667684c')
 # install.sh runs dpkg-deb on the payload itself; let it own the extraction.
 noextract=("$_debfile")
 

@@ -1,6 +1,6 @@
 pkgbase = codex-desktop-linux
 	pkgdesc = Codex Desktop for Linux, distsystem soft-fork (official Linux package pinned, no auto-updater)
-	pkgver = 26.1023.51421
+	pkgver = 26.1027.30824
 	pkgrel = 1
 	url = https://github.com/distsystem/codex-desktop-linux
 	install = codex-desktop-linux.install
@@ -60,12 +60,12 @@ pkgbase = codex-desktop-linux
 	optdepends = espeak-ng: offline TTS fallback for Read Aloud
 	provides = codex-desktop
 	conflicts = codex-desktop
-	noextract = chatgpt_26.1023.51421_amd64.deb
+	noextract = chatgpt_26.1027.30824_amd64.deb
 	options = !debug
 	options = !strip
 	source = codex-desktop-linux::git+https://github.com/distsystem/codex-desktop-linux.git#branch=main
-	source = chatgpt_26.1023.51421_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.1023.51421_amd64.deb
+	source = chatgpt_26.1027.30824_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.1027.30824_amd64.deb
 	sha256sums = SKIP
-	sha256sums = 4484dc2b54fc0978beb23b8d8d717494e4e0b4fbeab0a876739105e50b44de5a
+	sha256sums = 4e139a44f7c917a643f2dd014ad32298dd30aec6d324d323524b190f7667684c
 
 pkgname = codex-desktop-linux
