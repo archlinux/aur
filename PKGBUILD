@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=realistic-mouse-jiggler
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Cross-platform desktop mouse jiggler with realistic motion, tray controls, and global bindings"
 arch=('x86_64')
 url="https://github.com/visorcraft/realistic-mouse-jiggler"
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef9f4bf88904df00c0d1cf9701ebd6d3d251a75185e3ba72fce514fa1a9b8a3e')
+sha256sums=('918b5047c5fb576bb37f0e4ebbca13608264fec8ca984cae492cddf0b41802a1')
 
 prepare() {
   cd "$pkgname-$pkgver"
