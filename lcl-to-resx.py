@@ -66,7 +66,9 @@ def main():
                 with target.open("w", encoding="utf-8") as file:
                     file.write(RESX_HEADER)
                     for key, value in strings:
-                        data = ET.Element("data", name=key, attrib={"xml:space": "preserve"})
+                        data = ET.Element(
+                            "data", name=key, attrib={"xml:space": "preserve"}
+                        )
                         ET.SubElement(data, "value").text = value
                         file.write("  " + ET.tostring(data, encoding="unicode") + "\n")
                     file.write("</root>\n")
