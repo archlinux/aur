@@ -1,0 +1,21 @@
+pkgbase = rusbmux
+	pkgdesc = A usbmuxd replacement in pure Rust
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/abdubanna/rusbmux
+	install = rusbmux.install
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	depends = libgcc
+	provides = rusbmux
+	provides = usbmuxd
+	conflicts = rusbmux
+	conflicts = usbmuxd
+	options = !lto
+	source = rusbmux::git+https://github.com/abdubanna/rusbmux.git#tag=v0.2.1
+	sha256sums = 9ecf99582d0ea9b2c39b69c32d4066c4b6747cfd00dcaa41614050de56a30caf
+
+pkgname = rusbmux
