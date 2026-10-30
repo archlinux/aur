@@ -1,4 +1,4 @@
-# Maintainer: CPT_Dawn <dev@cptdawn.dev>
+# Maintainer: CPT_Dawn <ping@cptdawn.dev>
 #
 # Tracks Linuwu-Sense main. See docs/adr/0002-own-linuwu-sense-dkms-git.md.
 _pkgname=linuwu-sense
