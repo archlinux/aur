@@ -23,7 +23,7 @@ makedepends=(
     'nvm'
     'pnpm'
     'git'
-    'rust'
+    'rustup'
     'librsvg'
     'patchelf'
 )
