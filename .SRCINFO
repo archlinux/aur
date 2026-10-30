@@ -1,7 +1,7 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework
 	pkgver = 7.6.9
-	pkgrel = 17
+	pkgrel = 18
 	url = https://microsoft.com/PowerShell
 	install = powershell.install
 	arch = x86_64
@@ -48,6 +48,7 @@ pkgbase = powershell
 	optdepends = xclip: Clipboard functionality
 	optdepends = powershell-dsc: PowerShell Desired State Configuration v3 support
 	optdepends = powershell-editor-services: Language server and debug adapter for PowerShell editor support
+	optdepends = powershell-mmi: Microsoft.Management.Infrastructure for modules built against PowerShell with it, e.g. PSScriptAnalyzer from the PowerShell Gallery
 	options = !debug
 	backup = etc/powershell.config.json
 	source = git+https://github.com/PowerShell/PowerShell.git#tag=v7.6.9

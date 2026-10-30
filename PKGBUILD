@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=17
+pkgrel=18
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -71,7 +71,8 @@ backup=('etc/powershell.config.json')
 optdepends=('openssh: PowerShell Remoting over ssh'
   'xclip: Clipboard functionality'
   'powershell-dsc: PowerShell Desired State Configuration v3 support'
-  'powershell-editor-services: Language server and debug adapter for PowerShell editor support')
+  'powershell-editor-services: Language server and debug adapter for PowerShell editor support'
+  'powershell-mmi: Microsoft.Management.Infrastructure for modules built against PowerShell with it, e.g. PSScriptAnalyzer from the PowerShell Gallery')
 makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
   # Libraries built from source, see _nuget_feeds()
