@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=markdown-tools-git
-pkgver=0.17.15.r1.g028b85622
+pkgver=17.15.7.r1.ge852fb07b
 pkgrel=1
 pkgdesc='Qt tools for work with Markdown (Editor/Viewer/Converter) with deep KDE integration'
 arch=('any')
