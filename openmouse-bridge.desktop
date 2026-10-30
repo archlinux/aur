@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenMouse Bridge
+Comment=System tray companion for the OpenMouse control panel
+Exec=openmouse-bridge
+Icon=io.openmouse.bridge
+Terminal=false
+Categories=Settings;HardwareSettings;Utility;
+Keywords=mouse;DPI;polling;gaming;OpenMouse;
+SingleMainWindow=true
+StartupWMClass=openmouse-bridge

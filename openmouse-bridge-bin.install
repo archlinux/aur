@@ -1,0 +1,17 @@
+_reload() {
+  modprobe uinput 2>/dev/null || true
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --subsystem-match=hidraw --action=change 2>/dev/null || true
+  udevadm trigger --subsystem-match=misc --sysname-match=uinput --action=change 2>/dev/null || true
+}
+
+post_install() {
+  _reload
+  echo ">>> Unplug and replug your mouse (or reboot) so the hidraw udev rule applies."
+  echo ">>> Start OpenMouse Bridge from your launcher, then open https://control.openmouse.app"
+  echo ">>> Bridge's in-app updater is disabled; update by rebuilding this package from the AUR."
+}
+
+post_upgrade() {
+  _reload
+}
