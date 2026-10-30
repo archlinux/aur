@@ -1,6 +1,6 @@
 pkgbase = prismlauncher-offline-git
 	pkgdesc = Prism Launcher fork with offline account support enabled (git version)
-	pkgver = 11.1.1.1
+	pkgver = 11.1.1.1.r0.g98660283a
 	pkgrel = 1
 	url = https://github.com/Vendetta1871/PrismLauncher-offline
 	arch = x86_64

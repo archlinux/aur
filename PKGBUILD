@@ -1,7 +1,7 @@
 # Maintainer: Vendetta1871 <conqueror.v.v.v.v.v@gmail.com>
 
 pkgname=prismlauncher-offline-git
-pkgver=11.1.1.1
+pkgver=11.1.1.1.r0.g98660283a
 pkgrel=1
 pkgdesc="Prism Launcher fork with offline account support enabled (git version)"
 arch=('x86_64')
