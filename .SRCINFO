@@ -1,6 +1,6 @@
 pkgbase = nextendo-citron-bin
 	pkgdesc = Nintendo Switch emulator (Citron nightly build from NextendoNetwork)
-	pkgver = 20261029.r2f36977b8
+	pkgver = 20261030.r4a0907181
 	pkgrel = 1
 	url = https://github.com/NextendoNetwork/citron-nextendo
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = nextendo-citron-bin
 	conflicts = citron-neo-git
 	conflicts = citron-neo-nightly-bin
 	options = !strip
-	source_x86_64 = nextendo-citron-bin-2f36977b8-x86_64.tar.zst::https://github.com/NextendoNetwork/citron-nextendo/releases/download/nightly-linux/citron_nightly-2f36977b8-linux-x86_64-use-nopgo.tar.zst
-	sha256sums_x86_64 = 054c86093ffd907cfd392bfec96c919f833c82865cee7902260464d3c58992f1
-	source_aarch64 = nextendo-citron-bin-2f36977b8-aarch64.tar.zst::https://github.com/NextendoNetwork/citron-nextendo/releases/download/nightly-linux/citron_nightly-2f36977b8-linux-aarch64-use-nopgo.tar.zst
-	sha256sums_aarch64 = eda341318940e5c38b173dde7196d5e6a52b4b90f2d0ce295bcea5518051c829
+	source_x86_64 = nextendo-citron-bin-4a0907181-x86_64.tar.zst::https://github.com/NextendoNetwork/citron-nextendo/releases/download/nightly-linux/citron_nightly-4a0907181-linux-x86_64-use-nopgo.tar.zst
+	sha256sums_x86_64 = f1880a9b83a43310bfec800bba97367a0dda4cba627f2be80ec1e0b9c0a8bc14
+	source_aarch64 = nextendo-citron-bin-4a0907181-aarch64.tar.zst::https://github.com/NextendoNetwork/citron-nextendo/releases/download/nightly-linux/citron_nightly-4a0907181-linux-aarch64-use-nopgo.tar.zst
+	sha256sums_aarch64 = 1b043fb12d0e8d2fcf987f3c2e6c57297ebee95385e0ba6486b18bf59bdac7bc
 
 pkgname = nextendo-citron-bin
