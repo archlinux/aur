@@ -1,6 +1,6 @@
 # Maintainer: killab33z <killab33z @ hispagatos-dot-org>
 pkgname=usenet_reborn
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A terminal‑based (TUI) NNTP (Usenet) client written in Rust."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://git.sr.ht/~rek2/usenet_reborn"
 license=(GPL-3.0-only)
 makedepends=('cargo')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('588a841ce30cdbdcfd36ddb045092f8c61577ba3e31642394ee8f96ab5f2dcdd8a21c2ebe19ba26deab6d106999b4abace75761c5556a497dac6b45ef11829ab')
+sha512sums=('0fd87dfa3c6dbac4594701350424d807e73de7ea26dd7babbd31a71e0a15bedb190e2ab79966b680ba390681919fc9e10ed135b892757521466c5a3c42ab2af2')
 options=(!debug !lto)
 
 # https://wiki.archlinux.org/title/Rust_package_guidelines
@@ -37,6 +37,6 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/$pkgname" configs/config.toml
   install -Dm644 -t "$pkgdir/usr/share/$pkgname" configs/subscriptions
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
 
