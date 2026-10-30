@@ -2,11 +2,11 @@
 
 _pkgbase=conflux
 pkgname="$_pkgbase-git"
-pkgver=1.0.0.r0.g2c7bd74
+pkgver=1.1.0.r21.ge09831c
 pkgrel=1
 pkgdesc='Background file-sync daemon syncing local directories to multiple remotes'
 arch=('x86_64' 'aarch64')
-url='https://github.com/SelfRef/conflux'
+url='https://github.com/AperteDev/conflux'
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'openssl' 'zlib')
 makedepends=('cargo' 'git')
@@ -14,7 +14,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 options=('!lto')
 backup=('etc/conflux/config.toml')
-source=("$_pkgbase::git+https://github.com/SelfRef/conflux.git")
+source=("$_pkgbase::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -38,16 +38,12 @@ build() {
 check() {
 	cd "$_pkgbase"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --workspace
+	# The daemon's crates only: the GTK app is a package of its own.
+	cargo test --frozen
 }
 
 package() {
 	cd "$_pkgbase"
-	install -Dm0755 "target/release/$_pkgbase" "$pkgdir/usr/bin/$_pkgbase"
-	install -Dm0644 config.example.toml "$pkgdir/etc/conflux/config.toml"
-	install -Dm0644 systemd/conflux.user.service "$pkgdir/usr/lib/systemd/user/conflux.service"
-	install -Dm0644 systemd/conflux@.user.service "$pkgdir/usr/lib/systemd/user/conflux@.service"
-	install -Dm0644 systemd/conflux.system.service "$pkgdir/usr/lib/systemd/system/conflux.service"
-	install -Dm0644 systemd/conflux@.system.service "$pkgdir/usr/lib/systemd/system/conflux@.service"
-	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	make install-cli DESTDIR="$pkgdir"
+	mv "$pkgdir/usr/share/licenses/$_pkgbase" "$pkgdir/usr/share/licenses/$pkgname"
 }
