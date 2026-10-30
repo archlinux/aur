@@ -21,9 +21,9 @@ _vmrcommit="4099f83977f4d29604a9aeb971fb0a7bc1d5f699"
 source=("git+https://github.com/JamesNK/Newtonsoft.Json.git#tag=$pkgver"
   "$_nugetid.snk::https://raw.githubusercontent.com/dotnet/dotnet/$_vmrcommit/prereqs/keys/$_nugetid.snk")
 sha512sums=('6773243e2746c67f4e22d64bdc59d07a168e2796a641e9d97b8040be40d79c05e9b20c207eda37f88bbb7f0b1d1439857e7b2383d902afa74cf1891d432a4c84'
-            '8f0c4e63db6fd02a07d1db79a33813f6790380273f9db5a6a3193054bca742d873a138bfc8e4ec1f5486ce143dd4aa5e2534d4ba3caa5cb1dfbca4be38450ef4')
+  '8f0c4e63db6fd02a07d1db79a33813f6790380273f9db5a6a3193054bca742d873a138bfc8e4ec1f5486ce143dd4aa5e2534d4ba3caa5cb1dfbca4be38450ef4')
 b2sums=('c1807d526f5cad588137b145d83cf803e92b44d4fe46be0dee00d2b66d1ad4a027c7674caa1e49a47eb915f4c0b51814381df385b0f234e1cfa9ed25e8397b14'
-        'a80f1e89f7e3728a308f74f080794fa5df388c818b8901aca0ccde825c21528fc19f04c20666315b5c26bf104dc64b75402dfc1b8487aaaf23705a3dfe221cbf')
+  'a80f1e89f7e3728a308f74f080794fa5df388c818b8901aca0ccde825c21528fc19f04c20666315b5c26bf104dc64b75402dfc1b8487aaaf23705a3dfe221cbf')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
@@ -89,7 +89,10 @@ check() {
   # There's no test build for net10.0, run the one for net8.0 on the current runtime
   DOTNET_ROLL_FORWARD=Major dotnet test Src/Newtonsoft.Json.Tests/Newtonsoft.Json.Tests.csproj \
     "${_build_arguments[@]}" -p:LibraryFrameworks=net6.0 -p:TestFrameworks=net8.0 \
-    --filter "$(IFS='&'; echo "${_filter[*]}")"
+    --filter "$(
+      IFS='&'
+      echo "${_filter[*]}"
+    )"
 }
 
 package() {
