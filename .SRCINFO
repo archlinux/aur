@@ -1,6 +1,6 @@
 pkgbase = morphe-desktop
 	pkgdesc = Tool for patching Android apps using Morphe Desktop (CLI & GUI)
-	pkgver = 1.19.1
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://morphe.software
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = morphe-desktop
 	depends = java-runtime>=21
 	optdepends = android-tools: for installing patched APKs via ADB
 	conflicts = morphe-cli
-	noextract = morphe-desktop-1.19.1.jar
+	noextract = morphe-desktop-1.20.0.jar
 	options = !debug
-	source = morphe-desktop-1.19.1.jar::https://github.com/MorpheApp/morphe-desktop/releases/download/v1.19.1/morphe-desktop-1.19.1-all.jar
-	source = morphe-logo-1.19.1.png::https://raw.githubusercontent.com/MorpheApp/morphe-desktop/v1.19.1/src/main/resources/morphe_logo.png
-	source = NOTICE-1.19.1::https://raw.githubusercontent.com/MorpheApp/morphe-desktop/v1.19.1/NOTICE
-	sha256sums = a51472252cd63b2eac635dbb5a154ff918bfc15268da89679feb3d760230c573
+	source = morphe-desktop-1.20.0.jar::https://github.com/MorpheApp/morphe-desktop/releases/download/v1.20.0/morphe-desktop-1.20.0-all.jar
+	source = morphe-logo-1.20.0.png::https://raw.githubusercontent.com/MorpheApp/morphe-desktop/v1.20.0/src/main/resources/morphe_logo.png
+	source = NOTICE-1.20.0::https://raw.githubusercontent.com/MorpheApp/morphe-desktop/v1.20.0/NOTICE
+	sha256sums = 679f579b3ad743ac0ca697ef71e57430d00be59411b04494afd1845c43fb79f0
 	sha256sums = cbfcb7b7a8274e8da1b9fbb4ac9655f4322a720ca9efbe02f42a9ea53ffdb30d
 	sha256sums = bdcf92e9b5ebd1f18ed6862539e017d132c50b7115e4e4e9c9a41ac31e2b22f7
 
