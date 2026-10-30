@@ -1,7 +1,7 @@
 pkgbase = mts-linkchats
 	pkgdesc = MTS Linkchats desktop application based on Electron and React
 	pkgver = 0.91.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mts-link.ru
 	arch = x86_64
 	license = custom:proprietary

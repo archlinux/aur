@@ -2,7 +2,7 @@
 
 pkgname='mts-linkchats'
 pkgver=0.91.0
-pkgrel=1
+pkgrel=2
 pkgdesc='MTS Linkchats desktop application based on Electron and React'
 arch=('x86_64')
 license=('custom:proprietary')
@@ -15,13 +15,14 @@ provides=("${pkgname}")
 
 package() {
   _pkgname="${pkgname/mts-/''}"
+  _binary_name="mtslink"
 
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -r "${srcdir}/${_pkgname}-desktop-${pkgver}-linux/"* "${pkgdir}/opt/${pkgname}"
-  sed -i "s|/opt/LinkChats|/opt/${pkgname}|" "${pkgdir}/opt/${pkgname}/${_pkgname}"
+  sed -i "s|/opt/LinkChats|/opt/${pkgname}|" "${pkgdir}/opt/${pkgname}/${_binary_name}"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/${_binary_name}" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
