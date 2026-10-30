@@ -1,0 +1,15 @@
+pkgbase = hunspell-sk-git
+	pkgdesc = Slovak dictionary for Hunspell (git version)
+	pkgver = 2.4.9.r0.gee4ffc3
+	pkgrel = 1
+	url = https://github.com/sk-spell/hunspell-sk
+	arch = any
+	license = GPL-2.0-only OR LGPL-2.1-only OR MPL-1.1
+	makedepends = git
+	optdepends = hunspell: Hunspell spell checking library and program
+	provides = hunspell-sk
+	conflicts = hunspell-sk
+	source = git+https://github.com/sk-spell/hunspell-sk.git
+	sha512sums = SKIP
+
+pkgname = hunspell-sk-git
