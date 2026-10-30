@@ -1,5 +1,5 @@
 pkgname=profuse-git
-pkgver=r7.a9b59ca
+pkgver=0.1.1.r0.gc568e2c
 pkgrel=1
 pkgdesc="Proton Drive FUSE client for Linux — mounts your Proton Drive as a local filesystem"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/profuse"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+      git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {

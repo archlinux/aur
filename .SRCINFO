@@ -1,6 +1,6 @@
 pkgbase = profuse-git
 	pkgdesc = Proton Drive FUSE client for Linux — mounts your Proton Drive as a local filesystem
-	pkgver = r7.a9b59ca
+	pkgver = 0.1.1.r0.gc568e2c
 	pkgrel = 1
 	url = https://github.com/nearwood/profuse
 	arch = x86_64
