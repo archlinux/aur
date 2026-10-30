@@ -1,0 +1,7 @@
+[mandrel-bin]
+source = "github"
+github = "graalvm/mandrel"
+use_max_release = true
+include_regex = '^mandrel-[\d.]+-Final$'
+from_pattern = 'mandrel-([\d.]+)-Final'
+to_pattern = '\1'

@@ -1,6 +1,6 @@
 pkgbase = mandrel-bin
 	pkgdesc = Downstream distribution of GraalVM CE serving as the native-image builder for Quarkus
-	pkgver = 25.0.4.1
+	pkgver = 25.0.5.0
 	pkgrel = 1
 	url = https://github.com/graalvm/mandrel
 	install = install_mandrel.sh
@@ -28,9 +28,9 @@ pkgbase = mandrel-bin
 	options = staticlibs
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-25.0.4.1-Final/mandrel-java25-linux-amd64-25.0.4.1-Final.tar.gz
-	sha256sums_x86_64 = e47ff6bfe6a8dbb482fdc65c9a49fc6f3ba2fa61ef3cc8fb6229a88989054c31
-	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-25.0.4.1-Final/mandrel-java25-linux-aarch64-25.0.4.1-Final.tar.gz
-	sha256sums_aarch64 = 86033db0337ba64694a1f3680b991b671ba26d192f26fd525e39b714847fbf20
+	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-25.0.5.0-Final/mandrel-java25-linux-amd64-25.0.5.0-Final.tar.gz
+	sha256sums_x86_64 = 2436bb98b96b2cf439e218dfa3df53978588bc23c6e9f2cfed6a408db189951d
+	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-25.0.5.0-Final/mandrel-java25-linux-aarch64-25.0.5.0-Final.tar.gz
+	sha256sums_aarch64 = 293608bcf2d0f78fa13e675238b74d91b417152a19eee55317e3246696a5ef75
 
 pkgname = mandrel-bin
