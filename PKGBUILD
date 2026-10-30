@@ -2,7 +2,7 @@
 
 _uuid=vibecheck@selfref.dev
 pkgname=gnome-shell-extension-vibecheck-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="GNOME Shell extension showing remaining Claude plan usage in the top bar and on a desktop card"
 arch=('any')
@@ -14,7 +14,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/$_uuid.shell-extension.zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('34052569e6ea77e878c870ad2d4f98532380195b56e7ceb517cec7c5b2499ccc')
+sha256sums=('1dcc330775a171411428345ccb39bad888d112320e40782e6063caf3902c07da')
 
 package() {
 	local _dest="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
