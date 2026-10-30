@@ -1,0 +1,24 @@
+pkgbase = litefin
+	pkgdesc = Jellyfin & Emby Client for Smart TVs and Desktop
+	pkgver = 2.0.20
+	pkgrel = 1
+	url = https://github.com/MoazSalem/litefin
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	makedepends = webkit2gtk-4.1
+	makedepends = gtk3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = glibc
+	optdepends = jellyfin-server: Media server to connect to
+	options = !debug
+	source = git+https://github.com/MoazSalem/litefin.git#tag=v2.0.20
+	sha256sums = SKIP
+
+pkgname = litefin
