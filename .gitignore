@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!xodus-nexus
+!xodus-nexus.desktop
+!xodus-nexus.install
