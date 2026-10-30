@@ -21,6 +21,13 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null or choose proper variable to enable them
 
+### Compiler launcher
+# auto picks sccache when its binary is on PATH, otherwise ccache; "sccache" or
+# "ccache" forces one. The two never wrap the same compile because sccache keeps
+# its own cache.
+: "${_cc_launcher:=auto}"
+: "${_make_jobs:=}"   # make -j value; empty means automatic (nproc plus distributed cpus)
+
 ### Selecting CachyOS config
 : "${_cachy_config:=yes}"
 
@@ -56,10 +63,26 @@
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-: "${_localmodcfg:=no}"
+#
+# On by default: the module set is the one tracked next to this file in
+# modules.pc1 (this workstation's loaded and hardware-resolved modules), plus
+# modules.always, the crash-capture and debugging modules that are only loaded
+# after something goes wrong and so never show up in an lsmod snapshot (ramoops,
+# netconsole, EDAC). Set to "no" to build every module, which a machine with
+# different hardware needs.
+: "${_localmodcfg:=yes}"
 
-# Path to the list of used modules
-: "${_localmodcfg_path:="$XDG_DATA_HOME/modprobed-db/modprobed.db"}"
+# Path to the list of used modules. Empty uses the tracked modules.pc1; point it
+# at a modprobed-db database to use that instead. modules.always is appended
+# either way.
+: "${_localmodcfg_path:=}"
+
+# Build BTF for every module (CONFIG_DEBUG_INFO_BTF_MODULES). "no" skips one pahole
+# run per module, so BPF programs cannot use BTF for module types or kfuncs.
+# vmlinux keeps its own BTF, which is what tracing and CO-RE programs read.
+# yes - keep the config's setting
+# no  - turn it off
+: "${_btf_modules:=no}"
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
@@ -130,7 +153,7 @@
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 # "thin-dist: Similar to thin, but uses a distributed model rather than in-process: https://discourse.llvm.org/t/rfc-distributed-thinlto-build-for-kernel/85934"
 # "none: disable LTO
-: "${_use_llvm_lto:=thin}"
+: "${_use_llvm_lto:=thin-dist}"
 
 # Use suffix -lto only when requested by the user
 # yes - enable -lto suffix
@@ -241,11 +264,11 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.3
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=4
+_tagrel=1
 # Pinned to match the distro package's pkgrel (linux-cachyos 7.1.5-1) rather
 # than tracking upstream's PKGBUILD pkgrel. This fork exists to be compared
 # against the stock kernel, so the version string should differ ONLY by the
@@ -267,7 +290,7 @@ _tagrel=4
 # 7.3.0-2 -> 7.3.0-3). It is also kept at least one above the previous build at
 # the same kernel version, so a rebuild always installs as a new version
 # instead of reinstalling over the running kernel's module tree.
-pkgrel=7
+pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -317,6 +340,8 @@ _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"{,.asc}
     "config"
+    "modules.pc1"
+    "modules.always"
     # No out-of-tree XFS patches any more: the crash investigation is finished
     # and the v3 diagnostics series (v3-0002, -0003, -0004, -0006) is dropped.
     # Its fix, args->total in xfs_parent.c, landed upstream between 7.2.6 and
@@ -415,7 +440,121 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 _die() { error "$@" ; exit 1; }
 
+# Print the effective compiler launcher: sccache or ccache.
+_launcher_select() {
+    case "$_cc_launcher" in
+        auto)
+            if command -v sccache >/dev/null 2>&1; then echo sccache; else echo ccache; fi ;;
+        sccache)
+            command -v sccache >/dev/null 2>&1 \
+                || _die "_cc_launcher=sccache but no sccache binary is on PATH. Accepted values: auto, sccache, ccache."
+            echo sccache ;;
+        ccache) echo ccache ;;
+        *) _die "The value '$_cc_launcher' is invalid for _cc_launcher. Accepted values: auto, sccache, ccache." ;;
+    esac
+}
+
+# For sccache: drop the ccache masquerade dirs from PATH (sccache keeps its own
+# cache, so the two must not wrap one compile) and prefix the compiler.
+_launcher_setup() {
+    local launcher cc path_entry new_path="" i found=no
+    launcher="$(_launcher_select)" || exit 1
+    if [ "$launcher" = sccache ]; then
+        local -a path_parts
+        IFS=: read -ra path_parts <<< "$PATH"
+        for path_entry in "${path_parts[@]}"; do
+            [ "$path_entry" = /usr/lib/ccache/bin ] && continue
+            new_path="${new_path:+$new_path:}$path_entry"
+        done
+        PATH="$new_path"
+        if _is_lto_kernel; then
+            cc=clang
+            for i in "${!BUILD_FLAGS[@]}"; do
+                if [ "${BUILD_FLAGS[$i]}" = "CC=clang" ]; then
+                    BUILD_FLAGS[i]="CC=sccache /usr/bin/clang"; found=yes
+                fi
+            done
+            [ "$found" = yes ] || BUILD_FLAGS+=("CC=sccache /usr/bin/clang")
+        else
+            cc=gcc
+            BUILD_FLAGS+=("CC=sccache /usr/bin/gcc")
+        fi
+    else
+        cc=$(_is_lto_kernel && echo clang || echo gcc)
+    fi
+    _launcher_effective="$launcher"
+    msg2 "Compiler launcher: $launcher (compiler: $cc)"
+}
+
+# Print "<servers> <cpus>" from the sccache-dist scheduler, or "0 0" when the
+# launcher is not sccache, distribution is disabled, or the query fails. The
+# aggregate fields precede any per-server list, so the first match is the total.
+_dist_probe() {
+    local status servers cpus
+    if [ "${_launcher_effective:-}" != sccache ]; then echo "0 0"; return 0; fi
+    status="$(timeout 30 sccache --dist-status 2>/dev/null)" || { echo "0 0"; return 0; }
+    servers="$(grep -o '"num_servers":[0-9]*' <<< "$status" | head -n1 | cut -d: -f2)" || true
+    cpus="$(grep -o '"num_cpus":[0-9]*' <<< "$status" | head -n1 | cut -d: -f2)" || true
+    if [ -z "$servers" ] || [ -z "$cpus" ]; then echo "0 0"; return 0; fi
+    echo "$servers $cpus"
+}
+
+# Record whether this build distributes, and pin the CPU target when it does:
+# -march=native is evaluated on whichever host compiles, and zen4 is the fleet floor.
+_dist_decide() {
+    local servers cpus
+    read -r servers cpus <<< "$(_dist_probe)"
+    mkdir -p "$srcdir"
+    if [ "${servers:-0}" -ge 1 ]; then
+        echo "dist $servers $cpus" > "$srcdir/.dist-decision"
+        if [ -z "$_processor_opt" ]; then
+            _processor_opt=zen4
+            msg2 "Distributed build: pinning _processor_opt=zen4 (pc2 is Zen 4 and -march=native is evaluated on whichever host compiles; zen4 is the fleet floor)"
+        fi
+    else
+        echo "local 0 0" > "$srcdir/.dist-decision"
+    fi
+}
+
+# Settle launcher and job count for build(). A configure-time "local" decision
+# with servers now visible means the config was not pinned for distribution, so
+# fall back to ccache rather than ship non-pinned objects to other hosts.
+_build_plan() {
+    local mode=local servers=0 cpus=0 psrv=0 pcpus=0 i
+    local -a kept=()
+    if [ -f "$srcdir/.dist-decision" ]; then
+        read -r mode servers cpus < "$srcdir/.dist-decision" || true
+    fi
+    if [ "$mode" = local ] && [ "${_launcher_effective:-}" = sccache ]; then
+        read -r psrv pcpus <<< "$(_dist_probe)"
+        if [ "${psrv:-0}" -ge 1 ]; then
+            warning "Scheduler now reports $psrv server(s) but prepare() decided local (no zen4 pin); building with ccache instead"
+            PATH="/usr/lib/ccache/bin:$PATH"
+            for i in "${!BUILD_FLAGS[@]}"; do
+                case "${BUILD_FLAGS[$i]}" in
+                    "CC=sccache /usr/bin/clang") kept+=("CC=clang") ;;
+                    "CC=sccache /usr/bin/gcc") ;;
+                    *) kept+=("${BUILD_FLAGS[$i]}") ;;
+                esac
+            done
+            BUILD_FLAGS=("${kept[@]}")
+            _launcher_effective=ccache
+        fi
+    fi
+    _dist_servers="${servers:-0}"
+    _dist_cpus="${cpus:-0}"
+    if [ -n "$_make_jobs" ]; then
+        _jobs="$_make_jobs"
+    elif [ "$mode" = dist ]; then
+        _jobs=$(( $(nproc) + _dist_cpus ))
+    else
+        _jobs="$(nproc)"
+    fi
+}
+
 prepare() {
+    _launcher_setup
+    _dist_decide
     cd "$_srcname"
 
     echo "Setting version..."
@@ -564,6 +703,26 @@ prepare() {
     echo "Disabling zswap by default..."
     scripts/config -d ZSWAP_DEFAULT_ON -d ZSWAP_SHRINKER_DEFAULT_ON
 
+    # Per-module BTF costs one pahole run for every module, which is a large part
+    # of the module-link phase. vmlinux keeps its own BTF either way.
+    if [ "$_btf_modules" = no ]; then
+        echo "Disabling BTF for modules..."
+        scripts/config -d DEBUG_INFO_BTF_MODULES
+    fi
+
+    # The config ships with the EFI pstore backend compiled in but disabled, so no
+    # oops or panic log survives a reset unless the command line says
+    # efi_pstore.pstore_disable=0. This kernel is run to catch crashes, so enable it.
+    echo "Enabling the EFI pstore backend by default..."
+    scripts/config -d EFI_VARS_PSTORE_DEFAULT_DISABLE
+
+    # The base config predates the AMD Promontory 21 chipset temperature sensor and has
+    # it off, and localmodconfig keeps a listed module only when the config already
+    # enables it, so listing prom21_xhci in modules.always cannot turn it on by itself.
+    # Enable it here, before localmodconfig runs. USB_XHCI_PCI_PROM21 follows by default.
+    echo "Enabling the AMD Promontory 21 temperature sensor..."
+    scripts/config -m SENSORS_PROM21_XHCI
+
     ### CI-only stuff
     if _is_ci_build; then
         echo "Detected build inside CI"
@@ -637,11 +796,14 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ "$_localmodcfg" = "yes" ]; then
-        if [ -e "$_localmodcfg_path" ]; then
+        local _modlist="${_localmodcfg_path:-$srcdir/modules.pc1}"
+        if [ -e "$_modlist" ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make "${BUILD_FLAGS[@]}" LSMOD="${_localmodcfg_path}" localmodconfig
+            # localmodconfig reads one file, so the always-kept modules are merged in.
+            cat "$_modlist" "$srcdir/modules.always" > "$srcdir/modules.merged"
+            make "${BUILD_FLAGS[@]}" LSMOD="$srcdir/modules.merged" localmodconfig
         else
-            _die "No modprobed.db data found"
+            _die "No module list found at $_modlist"
         fi
     fi
 
@@ -689,8 +851,13 @@ _sign_modules() {
 }
 
 build() {
+    _launcher_setup
+    _build_plan
     cd "$_srcname"
-    make "${BUILD_FLAGS[@]}" -j"$(nproc)" all
+    msg2 "Build: launcher=${_launcher_effective} jobs=${_jobs} servers=${_dist_servers} cpus=${_dist_cpus}"
+    [ "${_launcher_effective}" != sccache ] || sccache --zero-stats || true
+    make "${BUILD_FLAGS[@]}" -j"${_jobs}" all
+    [ "${_launcher_effective}" != sccache ] || sccache --show-stats || true
 
     if ! _is_ci_build; then
         make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
@@ -969,8 +1136,10 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('d90b9a609d930cf596022050014ef75e11f3b9378fb51be7763743bc15b10d31caa8d48c59149ed2aea28853aae1ec6d7e68a8ce441b1bd014c9897cbeb8dba5'
+b2sums=('b744477e1202ae7c63020645fdd923625da6edd2bde61d01d9c7755e6d9628fc3fb00e615261f02a5c503d5c890cb9f8e1e9f068aea7ed01fda45b2d64e7216a'
         'SKIP'
         'ec368517f0f5bbe7d61e2e82f5d6e19262d2c1739f3322691c973eb75d17d23db8d10c73c07aa38f419278acc2287f63ba1c09496dda97c77368e4470eb8db81'
+        '4103183a51f761fcc79e38dd6c48560a1bc7e7bd952bdaa5c2fbe0bf5e1ed593f896c00cfa2ce031ce720654c2078ecdb37d6c586417c75db7356569f44cb850'
+        '53f20cc88bb417dce11f26be6e09e83c5c071d56ea9300e7a7520814ed0b52c1a56dcd55077228ba1bdf9bd200a53c971cbc1fbd65a7e6cbfa7a1fb8e0e4521b'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
         '04cca5d4811dce379776c124469cb69f5275e7eaa61401da9e23077d0d60d4d06b85b646292b6db4639541d70b4283f732b102c1168d6d29e16f8cccc695e205')
