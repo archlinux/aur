@@ -1,17 +1,19 @@
 pkgbase = electron-file-manager-bin
-	pkgdesc = A fast, keyboard-friendly file manager for Linux, built with Electron and native GIO bindings.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.5
+	pkgdesc = A fast, keyboard-friendly file manager for Linux, built with Electron and native GIO bindings.
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Michael-Vanderford/electron-file-manager
 	arch = x86_64
 	license = LGPL-2.1-or-later
-	depends = electron41
+	depends = electron44
 	optdepends = sshfs: for SSHFS network mounts
-	provides = electron-file-manager=2.0.5
+	provides = electron-file-manager=2.1.0
 	conflicts = electron-file-manager
-	source = electron-file-manager-2.0.5.deb::https://github.com/Michael-Vanderford/electron-file-manager/releases/download/electron-file-manager-v2.0.5/electron-file-manager_2.0.5_amd64.deb
+	source = electron-file-manager-2.1.0.deb::https://github.com/Michael-Vanderford/electron-file-manager/releases/download/electron-file-manager-v2.1.0/electron-file-manager_2.1.0_amd64.deb
+	source = electron-file-manager.js
 	source = electron-file-manager.sh
-	sha256sums = 3261e2da1a01c3fb654de3226e73ed03140b8cac8a87578895e4410098d7c5a1
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 428707e129c72c30e347a4b20b47d0d92cf4ee5ed06f9f7b80346a0500c11668
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
 
 pkgname = electron-file-manager-bin
