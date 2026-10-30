@@ -1,6 +1,6 @@
 pkgbase = cudatext-gtk2-bin
 	pkgdesc = Cross-platform text editor, written in Lazarus
-	pkgver = 1.237.3.0
+	pkgver = 1.238.0.0
 	pkgrel = 1
 	url = https://cudatext.github.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cudatext-gtk2-bin
 	provides = cudatext
 	conflicts = cudatext
 	options = !strip
-	source = https://sourceforge.net/projects/cudatext/files/release/1.237.3.0/cudatext_1.237.3.0-1_gtk2_amd64.deb
-	sha256sums = d614d7210680f8e1f8146653b4390377860b289d05e15fbd8f7e8a244a502e81
+	source = https://sourceforge.net/projects/cudatext/files/release/1.238.0.0/cudatext_1.238.0.0-1_gtk2_amd64.deb
+	sha256sums = 0f53e0bbd1d71247d97510eff85644e1839258e392f8cb79a0dca36deaaa6548
 
 pkgname = cudatext-gtk2-bin
