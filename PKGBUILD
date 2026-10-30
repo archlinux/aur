@@ -12,7 +12,7 @@
 # v0.5.0 is the first release carrying the rename (v0.4.0 still ships the old
 # filenames, so this package cannot be built against it).
 pkgname=pipewire-control-center
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 # NB the AUR rejects a pkgdesc over 255 characters ("pkgdesc field too long",
 # hook declined) — the first push of this package hit exactly that at 275. Keep
@@ -31,12 +31,15 @@ license=('GPL-3.0-or-later')
 depends=('pipewire' 'wireplumber' 'pipewire-pulse' 'gtk4' 'libadwaita'
          'python' 'python-gobject' 'python-cairo' 'python-numpy'
          'python-soundfile')
+# Shown by `pacman -Qc pipewire-control-center`: what changed in each AUR
+# release, plus what to know when upgrading. Keep it in step with pkgver.
+changelog=$pkgname.changelog
 optdepends=('noise-suppression-for-voice: RNNoise noise-cancelling mic template'
             'lsp-plugins-ladspa: extra LADSPA plugins for chains and effect racks'
             'lsp-plugins-lv2: extra LV2 plugins for effect racks'
             'carla: bridge VST3/CLAP plugins into the graph via the patchbay')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41e686e063287e4cfb71c0a8ef7a3735bf6af52753ab55a0a5cce76cc1fcf54b')
+sha256sums=('335d01817baa33227e25179c83bbb1d4ffe6e5da6b48f99416a997c8cdeb7d59')
 
 package() {
   cd "PipeWireController-$pkgver"

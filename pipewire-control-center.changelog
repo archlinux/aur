@@ -1,0 +1,39 @@
+pipewire-control-center: what changed in each AUR release, newest first.
+Every change in full: https://github.com/knightinfected/PipeWireController/blob/main/CHANGELOG.md
+
+0.6.2-1 (2026-10-29)
+  The Equalizer, Devices and Patchbay redesigned, Preferences with start at
+  login, a balance and a volume for every channel, and 17 bug fixes.
+
+  - Equalizer: drag the curve and hear it as you drag, then compare the
+    edit with the saved curve, or with no EQ, at matched loudness.
+  - Devices: every device in one list, with the selected one beside it:
+    what plays into it, where it goes, and its settings.
+  - Patchbay: connect whole devices or channel ranges in one go, arrange
+    the graph by signal flow, search and zoom. Video is hidden by default.
+  - A balance and a volume for each channel on every output, input and app.
+  - Preferences (the gear at the bottom of the sidebar, or Ctrl+,): start
+    at login, start minimized in the background, light or dark.
+  - The window goes down to 360 pixels wide, for tiling window managers.
+  - Fixed, among others: saving an equalizer sent the apps playing through
+    it to the speakers; a sound card showed 100 % after a profile switch;
+    the Surround speaker test could play on the wrong speakers.
+
+  When you upgrade:
+  - Advanced settings are now shown by default, and the sidebar's Advanced
+    switch is gone. To hide them, use Preferences → General.
+  - Your equalizers keep working as they are. The first edit moves one to
+    the new live engine; if you then go back to 0.6.1, its low cut, high
+    cut and notch bands turn into plain bells.
+  - Start at login uses your desktop's autostart. Hyprland and Sway don't
+    run it unless they were started with uwsm (or dex runs it), so
+    Preferences → Startup shows the line to add to your config instead.
+
+0.6.1-1 (2026-10-08)
+  A .deb for Debian 13 and Ubuntu 26.04, channel maps for any device, and
+  fixes for virtual surround that came out far too loud and filter chains
+  that would not start.
+
+0.6.0-1 (2026-08-26)
+  The dashboard is rebuilt: two views instead of five tabs, pinned
+  favourites, and the app now ships its own icons.

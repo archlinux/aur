@@ -1,8 +1,9 @@
 pkgbase = pipewire-control-center
 	pkgdesc = GTK4/libadwaita control center for PipeWire — signal paths routing apps through effect chains to any output, parametric equalizer, live meters, mic cleanup, patchbay, monitoring, virtual devices, filter chains, HRIR surround, drop-in configs
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/knightinfected/PipeWireController
+	changelog = pipewire-control-center.changelog
 	arch = any
 	license = GPL-3.0-or-later
 	depends = pipewire
@@ -19,7 +20,7 @@ pkgbase = pipewire-control-center
 	optdepends = lsp-plugins-ladspa: extra LADSPA plugins for chains and effect racks
 	optdepends = lsp-plugins-lv2: extra LV2 plugins for effect racks
 	optdepends = carla: bridge VST3/CLAP plugins into the graph via the patchbay
-	source = pipewire-control-center-0.6.1.tar.gz::https://github.com/knightinfected/PipeWireController/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 41e686e063287e4cfb71c0a8ef7a3735bf6af52753ab55a0a5cce76cc1fcf54b
+	source = pipewire-control-center-0.6.2.tar.gz::https://github.com/knightinfected/PipeWireController/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = 335d01817baa33227e25179c83bbb1d4ffe6e5da6b48f99416a997c8cdeb7d59
 
 pkgname = pipewire-control-center
