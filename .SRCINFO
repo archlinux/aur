@@ -1,6 +1,6 @@
 pkgbase = mise-bin
 	pkgdesc = dev tools, env vars, task runner
-	pkgver = 2026.10.22
+	pkgver = 2026.10.23
 	pkgrel = 1
 	url = https://github.com/jdx/mise
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = mise-bin
 	conflicts = rtx
 	replaces = rtx
 	options = !debug
-	source_x86_64 = https://github.com/jdx/mise/releases/download/v2026.10.22/mise-v2026.10.22-linux-x64.tar.xz
-	sha256sums_x86_64 = bffb3ebf26278cff97df6dbb70634f6ab4aabc3d1e7f8c1e787bbb8c7acca93e
-	source_aarch64 = https://github.com/jdx/mise/releases/download/v2026.10.22/mise-v2026.10.22-linux-arm64.tar.xz
-	sha256sums_aarch64 = 41fe0cebb7839943061ddeb68556737a7802cd5670ee7ce02f1857a11bdd6fd2
+	source_x86_64 = https://github.com/jdx/mise/releases/download/v2026.10.23/mise-v2026.10.23-linux-x64.tar.xz
+	sha256sums_x86_64 = 19b43f33d81e3977e5a0ecf027ed01ed5f1f31af182ee9ca9cba492dad4d4b8e
+	source_aarch64 = https://github.com/jdx/mise/releases/download/v2026.10.23/mise-v2026.10.23-linux-arm64.tar.xz
+	sha256sums_aarch64 = 2fc250d93b50a9bd7c5069f08f794d32c1aa3ba49cc6e0834eb0b2fe0be224c1
 
 pkgname = mise-bin
