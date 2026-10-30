@@ -26,9 +26,9 @@ source=("$_nugetid.$pkgver.nupkg::https://api.nuget.org/v3-flatcontainer/${_nuge
   "LICENSE-$_mmicommit::https://raw.githubusercontent.com/PowerShell/MMI/$_mmicommit/LICENSE")
 noextract=("$_nugetid.$pkgver.nupkg")
 sha512sums=('d8ae69c763aa128703ff2a159ff804fab46e22a4088759fc7017e1deda1227703caa72003dd20d2528b97b84f975e655e68a7afbe6100d9d63ee3490272580b7'
-            '7e1ffcc72def4f29168cc76548669481d96a75efb72f1fc11031261cf2981baee101b33016e12645f39c46ca1df1459eceb36d0175c4fc9508133ac6794c78d7')
+  '7e1ffcc72def4f29168cc76548669481d96a75efb72f1fc11031261cf2981baee101b33016e12645f39c46ca1df1459eceb36d0175c4fc9508133ac6794c78d7')
 b2sums=('bf6f4bd7d51ebbf0cce6ef4ea8bc0a3a5f84ab3a98fa2cff1c86ae70dc60bdcba2dd6398c163d02524a1e9ef226b05c41e2f515f57c583bdb44be53ceeb6f6c6'
-        '4a1ade89d01202c542792e88640f2e2cf73f010b7f735113cfd4e21958c9cf75c5bd6160f07c3458e3b54fc40a5473567b0c965937add36ce97b07a6df1c57f3')
+  '4a1ade89d01202c542792e88640f2e2cf73f010b7f735113cfd4e21958c9cf75c5bd6160f07c3458e3b54fc40a5473567b0c965937add36ce97b07a6df1c57f3')
 
 package() {
   local _pshome=/usr/lib/powershell-7
