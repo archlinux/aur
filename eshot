@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-exec /opt/eshot/EShot.AppImage "$@"
+# The package installs the extracted AppImage, so EShot runs from a stable
+# path instead of a new /tmp/.mount_* directory on every launch.
+exec /opt/eshot/AppRun "$@"
