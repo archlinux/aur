@@ -1,4 +1,4 @@
-# Maintainer: CPT-Dawn <dev@cptdawn.dev>
+# Maintainer: CPT-Dawn <ping@cptdawn.dev>
 pkgname=lucent
 _reponame=Lucent
 pkgver=2.0.1
