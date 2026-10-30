@@ -1,6 +1,6 @@
 # Maintainer: rugbedbugg <yes.par781@gmail.com>
 pkgname=ly-lock
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Wayland lock screen that looks and behaves like the ly display manager"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 )
 backup=('etc/pam.d/ly-lock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76fe7fbc5edabe5f885d2bbc37d721b0e460c71751e30ed74db2a34c8ba60777')
+sha256sums=('0d4043dfcf41513a1d203b309525362fe7f7f95c93722f89afe5679918d49802')
 
 build() {
   cd "$pkgname-$pkgver"
