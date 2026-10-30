@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
 _pkgname='Mogan STEM'
-pkgver=2026.3.5
+pkgver=2026.3.8
 pkgrel=1
 pkgdesc="Mogan STEM Suite (based on GNU TeXmacs): Enjoy exploring science and technology!"
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-debian13-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5de3dbd258af169d503aad47b00d00cb7b05e5c349afc1197d6d3d7c8039bc5c'
+sha256sums=('32ef14686cc7bcfade0ad5adbd471cbc34894b67849d81e8e8cb002c034028f9'
             'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
 prepare() {
     sed -i -e "
