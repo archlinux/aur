@@ -1,14 +1,14 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-desktop-git
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent (development version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/chatwithwork-desktop"
 license=('MIT OR Apache-2.0')
 install="${pkgname}.install"
-depends=('alsa-lib' 'libpipewire' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'dbus')
-makedepends=('git' 'cargo' 'pkgconf' 'cmake' 'clang')
+depends=('alsa-lib' 'libpipewire' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'dbus' 'bubblewrap' 'slirp4netns' 'util-linux' 'iptables-nft')
+makedepends=('git' 'cargo' 'pkgconf' 'cmake' 'clang' 'python' 'npm')
 optdepends=('org.freedesktop.secrets: store the device key in your keyring'
             'xdg-desktop-portal: native folder picker'
             'sane: scan with a USB scanner'
@@ -16,7 +16,7 @@ optdepends=('org.freedesktop.secrets: store the device key in your keyring'
             'systemd: start the agent now and at login with cww daemon install')
 provides=('cww' 'cww-app' 'chatwithwork-desktop')
 conflicts=('cww' 'chatwithwork-desktop' 'chatwithwork-desktop-bin')
-options=('!debug' '!lto')
+options=('!debug' '!lto' '!strip')
 source=("${pkgname}::git+https://github.com/crmne/chatwithwork-desktop.git")
 sha256sums=('SKIP')
 
@@ -37,6 +37,10 @@ build() {
   export CARGO_TARGET_DIR=target
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/"
   cargo build --frozen --release --workspace
+  python browser/engine/scripts/package.py stage --replace \
+    --target "$(rustc -vV | sed -n 's/host: //p')" \
+    --app-version "$(sed -n 's/^version = "\(.*\)"$/\1/p' Cargo.toml | head -n 1)" \
+    --output browser-engine --cache "${srcdir}/node-runtime-cache"
 }
 
 check() {
@@ -48,6 +52,8 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}"
+  install -dm755 "${pkgdir}/usr/lib/chatwithwork"
+  cp -R browser-engine "${pkgdir}/usr/lib/chatwithwork/"
   install -Dm755 target/release/cww "${pkgdir}/usr/bin/cww"
   install -Dm755 target/release/cww-app "${pkgdir}/usr/bin/cww-app"
   install -Dm644 packaging/linux/cww-app.desktop "${pkgdir}/usr/share/applications/cww-app.desktop"
