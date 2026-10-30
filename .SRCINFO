@@ -1,6 +1,6 @@
 pkgbase = ely-table-bin
 	pkgdesc = ElyTable, part of Ely Office - spreadsheet editor (prebuilt upstream package)
-	pkgver = 0.1.9
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/ELY-Open-Source/ElyOffice
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = ely-table-bin
 	conflicts = ely-table
 	options = !strip
 	options = !debug
-	source = LICENSE::https://github.com/ELY-Open-Source/ElyOffice/raw/v0.1.9/LICENSE
+	source = LICENSE::https://github.com/ELY-Open-Source/ElyOffice/raw/v0.1.13/LICENSE
 	sha256sums = 6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1
-	source_x86_64 = ely-table-0.1.9-1-x86_64.pkg.tar.zst::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.9/ely-table-0.1.9-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 0d9115b1658bbb864fc273ff298ad52524393570ebe21df6a7698cc99d37196b
+	source_x86_64 = ely-table-0.1.13-1-x86_64.pkg.tar.zst::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.13/ely-table-0.1.13-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = c88ae213d9f3241553ed3c0f2fab4bbb5299d6ccaf616aecdd0803d39944bd25
 
 pkgname = ely-table-bin
