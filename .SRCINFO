@@ -1,7 +1,7 @@
 pkgbase = litefin
 	pkgdesc = Jellyfin & Emby Client for Smart TVs and Desktop
 	pkgver = 2.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MoazSalem/litefin
 	arch = x86_64
 	license = MPL-2.0

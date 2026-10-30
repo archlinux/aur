@@ -3,7 +3,7 @@
 
 pkgname=litefin
 pkgver=2.0.20  # Update to match the release tag/commit count
-pkgrel=1
+pkgrel=2
 pkgdesc="Jellyfin & Emby Client for Smart TVs and Desktop"
 arch=('x86_64')
 url="https://github.com/MoazSalem/litefin"
