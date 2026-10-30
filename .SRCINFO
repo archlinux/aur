@@ -1,0 +1,15 @@
+pkgbase = dotnet-gherkin-5
+	pkgdesc = Parser for the Gherkin language of Cucumber, Gherkin (NuGet package, version 5)
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/cucumber/gherkin-dotnet
+	arch = any
+	license = MIT
+	checkdepends = jq
+	makedepends = dotnet-newtonsoft-json
+	makedepends = dotnet-sdk-10.0
+	source = gherkin-dotnet-55ab34d45dcd8249349704335c2aa2f90839fae3.tar.gz::https://github.com/cucumber/gherkin-dotnet/archive/55ab34d45dcd8249349704335c2aa2f90839fae3.tar.gz
+	sha512sums = 923d3c712104941ed3b8d79c7d728df472611fc34a7877d405c50660519bf7a06de0f44782680f50c3f9b4ed231a590b63745808e78498481fc9c04398decd62
+	b2sums = 09724099044d2430fd257dfa7c196cc112a0b18c75538a48ae1bb7a1428abcb9d3b2c64968c26f98d2a48a7828f1355e4e4c4c31ea47b1f32326fec93f297180
+
+pkgname = dotnet-gherkin-5
