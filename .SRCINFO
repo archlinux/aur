@@ -1,6 +1,6 @@
 pkgbase = kitty-tune-bin
 	pkgdesc = SoundCloud and YouTube music player (upstream binary)
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/alan7383/KittyTuneDesktop
 	arch = x86_64
@@ -30,17 +30,17 @@ pkgbase = kitty-tune-bin
 	depends = libxtst
 	depends = xdg-utils
 	depends = zlib
-	provides = kitty-tune=1.4.6
+	provides = kitty-tune=1.4.7
 	conflicts = kitty-tune
-	noextract = kitty-tune-bin-1.4.6-x86_64.deb
-	noextract = kitty-tune-bin-1.4.6-aarch64.deb
+	noextract = kitty-tune-bin-1.4.7-x86_64.deb
+	noextract = kitty-tune-bin-1.4.7-aarch64.deb
 	options = !strip
 	options = !debug
-	source = kitty-tune-bin-1.4.6-README.md::https://raw.githubusercontent.com/alan7383/KittyTuneDesktop/v1.4.6/README.md
-	sha256sums = 5c356f2ac730627a806211333bd45d93431cd221c6e70b81983804dd17ef7a59
-	source_x86_64 = kitty-tune-bin-1.4.6-x86_64.deb::https://github.com/alan7383/KittyTuneDesktop/releases/download/v1.4.6/kitty-tune_1.4.6_amd64.deb
-	sha256sums_x86_64 = 3acc7d8523d8011c763760ccae6cfe6aa1c79c91aca3ca4511772833d3229496
-	source_aarch64 = kitty-tune-bin-1.4.6-aarch64.deb::https://github.com/alan7383/KittyTuneDesktop/releases/download/v1.4.6/kitty-tune_1.4.6_arm64.deb
-	sha256sums_aarch64 = 98846c64db3f1e051445a05da71bb92d9285952304c865fe3d46d5a1213c34bd
+	source = kitty-tune-bin-1.4.7-README.md::https://raw.githubusercontent.com/alan7383/KittyTuneDesktop/v1.4.7/README.md
+	sha256sums = 59d603d62096d091e86ac9fe7e5b25ffd338a2dc47f5117817c1db1179343a42
+	source_x86_64 = kitty-tune-bin-1.4.7-x86_64.deb::https://github.com/alan7383/KittyTuneDesktop/releases/download/v1.4.7/kitty-tune_1.4.7_amd64.deb
+	sha256sums_x86_64 = ea2f1dad21ff14999dbc70216d689905bde042019e7934a27a10954dd70900f1
+	source_aarch64 = kitty-tune-bin-1.4.7-aarch64.deb::https://github.com/alan7383/KittyTuneDesktop/releases/download/v1.4.7/kitty-tune_1.4.7_arm64.deb
+	sha256sums_aarch64 = 24c48b7c836b1218ab5c4907b112f9ca461c09a088a2d70fdec7ccd0db419a46
 
 pkgname = kitty-tune-bin
