@@ -1,6 +1,6 @@
 # Maintainer: itzlassejlv <hello@lassejlv.dk>
 pkgname=arego
-_version=0.1.11
+_version=0.1.12
 pkgver=${_version//-/_}
 pkgrel=1
 pkgdesc="Design with HTML and CSS on a native canvas"
@@ -14,7 +14,7 @@ optdepends=('vulkan-driver: GPU rendering (mesa provides one)'
             'org.freedesktop.secrets: remember your key (gnome-keyring, kwallet, keepassxc)')
 options=('!strip' '!debug')
 source=("Arego-$_version-linux-x86_64.tar.gz::https://releases.arego.design/v$_version/Arego-$_version-linux-x86_64.tar.gz")
-sha256sums=('084e5e8883fc6b26b73ae7a2def057e92de31ac1a4f1b9ed537c120f3b0faa76')
+sha256sums=('c52b2efe8da9418383578f85fc53acf5dfcbd3d7005fbdb287a758c56824a509')
 
 package() {
     cd "Arego-$_version-linux-x86_64"
