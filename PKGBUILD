@@ -5,7 +5,7 @@
 
 _pkgname="flow"
 pkgname="$_pkgname-bin"
-pkgver=0.337.0
+pkgver=0.338.0
 pkgrel=1
 pkgdesc="A static type checker for JavaScript"
 
@@ -25,10 +25,10 @@ source=(
 	"$pkgname-$pkgver-LICENSE::https://github.com/facebook/$_pkgname/raw/v$pkgver/LICENSE"
 )
 b2sums=('31a3133c70ea57e8fd8025add5701b9be627020d4f82655e7911853b33e3197eb53893fd119348112839d877a8d668aedfa15c7bb214de8f573b8453f69c4cc3'
-        '4865812410cff0f232a87be80e8b6cd632aaefbfd097e8c20bbfd7171ab0ee8ef7e094eb75b482c109e2be898775a7bea9e62a217d78596ca456dfaefb2b404c'
+        '54c3c678ae1da11abaa4ee7584de7c8d0bd3cdce999117ee8f9ee83a25dd51df2c76563dbe8846993fdde135c8cc012db9615b81a6a3562e6817beb7e4692851'
         '20291e21101540292f47589798cc1264fd5fc496b556ccdb1264381ff093a6be8677270fa7b3d342a42d78758b1f2d41fb4a759d3a590c41cefd0b375b8d8b70')
-b2sums_x86_64=('7b9829371f3621f6af5d0fa7b518f5eec2cbcfad91be852a0a1bf8eec4e1835bcbf6c9864a78b80caf8d317cf3cc09998572c3a99627a0873fdefccfc096d2e8')
-b2sums_aarch64=('3d3e97a7f52f254e9c841ed30446f54e6c1cd294f7a57047e53d711c6d1e34ddcffa90a6c02edbacc22b167b57dfae54917f803ccd5915283fd4bc4cafd14139')
+b2sums_x86_64=('33e481162da9a2625a67164152c3bf783e3b9ea21efee7fee82347348a8ff520960c185be2c1ee85021a4b1f6c22cbdccc3697419005972d62909bb3eb5e68e2')
+b2sums_aarch64=('ed9b4651764953cc48a7a0f20fac834048b64bbe58dc54b7843adc5e0eea23a4c1aae6af63cb04e346edf41dd890de3bf77ffcc231c6aece89c7ae4ba5e01405')
 
 check() {
 	_checkoutput="$("$srcdir/$_pkgname/$_pkgname" --version)"
