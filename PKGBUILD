@@ -7,7 +7,7 @@
 pkgbase=droidcam
 pkgname=(droidcam v4l2loopback-dc-dkms)
 _name=droidcam-linux-client
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 epoch=1
 pkgdesc="A tool to turn your phone/tablet into a wireless/usb webcam"
@@ -20,7 +20,7 @@ optdepends=('android-tools: for Android USB connection'
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "dkms.conf"
         "${pkgbase}.conf")
-sha256sums=('2850f52d1d779e037f833fdf68518c31a88981d0897743ebdb9a2c8492e8033f'
+sha256sums=('77f40eae703ab91e65d81959521b600a2b11e508fc295efd5986f08c1acd1cdb'
             '20de9d14877732f2f75c21bdd4c335c71dcaeccab4ce348c6c0a210f622ceed2'
             '1d4b3ff98b4af9de77a24d1b6fad6e004deadf1f157eb800aa878ba1e7693dac')
 
