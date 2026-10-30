@@ -1,6 +1,6 @@
 pkgbase = linksy-bin
 	pkgdesc = Your devices, connected: direct file/clipboard/screen/camera sharing between Linux and Android, no cloud
-	pkgver = 0.9.17
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/LinkSy-mg/linksy-releases
 	install = linksy-bin.install
@@ -20,7 +20,7 @@ pkgbase = linksy-bin
 	depends = xdg-desktop-portal
 	optdepends = v4l2loopback-dkms: phone camera as webcam device
 	optdepends = v4l2loopback-utils: manage the loopback camera device
-	provides = linksy=0.9.17
+	provides = linksy=0.10.1
 	conflicts = linksy
 	options = !strip
 	options = !emptydirs
