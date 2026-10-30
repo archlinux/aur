@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
@@ -43,6 +43,11 @@ package() {
   cp package.json "${pkgdir}/opt/${pkgname}/"
   cp tsconfig.json "${pkgdir}/opt/${pkgname}/" 2>/dev/null || true
   cp -r node_modules "${pkgdir}/opt/${pkgname}/"
+  # node_modules/@cogpit/* are workspace links into packages/; ship their targets.
+  install -dm755 "${pkgdir}/opt/${pkgname}/packages"
+  for link in node_modules/@cogpit/*; do
+    [ -L "$link" ] && cp -r "packages/$(basename "$(readlink "$link")")" "${pkgdir}/opt/${pkgname}/packages/"
+  done
 
   # Install systemd user unit
   install -Dm644 aur/cogpit-server.service \
