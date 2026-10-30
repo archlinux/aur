@@ -1,6 +1,6 @@
 # Maintainer: undefined-ux <undefined_1@outlook.com>
 pkgname=rustconn-bin
-pkgver=0.24.1
+pkgver=0.24.2
 pkgrel=1
 pkgdesc='Modern GTK4 connection manager for SSH, RDP, VNC and SPICE (prebuilt)'
 arch=('x86_64')
@@ -66,7 +66,7 @@ source=(
 )
 noextract=("$_deb")
 sha256sums=(
-  'd001a0a1cb66701816bfc9d20b223988f7f1ca70f84a6fa76adb980cdf3e79aa'
+  'bb716e2cdef5c9b4ed4e6158772e27772b614a33e40fe5d66be95ee68d4b693f'
   '6752641f8272fae15901cc4de4052514e846821fbeba797baa8d81850d508cda'
   'e833e539337e3a348f21a6757f015bfc7994df0789771880550350f0d04c45f0'
 )
