@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-sycl
 	pkgdesc = llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI. Please read the README on Codeberg before use.
-	pkgver = v0.7.0
+	pkgver = v0.8.0
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	install = llama.cpp-sycl.install
@@ -43,7 +43,7 @@ pkgbase = llama.cpp-sycl
 	conflicts = intel-oneapi-basekit-2025
 	options = !strip
 	options = !buildflags
-	source = llama.cpp-v0.7.0.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 55d67acf3ad2ad747a9bbeb75f9f0e173dbcc0d1753a471038a90c819421c5e1
+	source = llama.cpp-v0.8.0.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 51b1e025d7b12e83fa55736e65bc254acd9d23e49f546be7531368fef82210ee
 
 pkgname = llama.cpp-sycl
