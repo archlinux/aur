@@ -1,7 +1,7 @@
 # Maintainer: onlymash <fiepi.dev@gmail.com>
 pkgname=wavetune-git
 _pkgname=wavetune
-pkgver=r20.g27aa04a
+pkgver=r24.gc3a9917
 pkgrel=1
 pkgdesc="Unofficial wireless headset control center for Linux (git version)"
 arch=('x86_64' 'aarch64')
@@ -63,7 +63,8 @@ check() {
     export XDG_CACHE_HOME="$srcdir/.cache"
     export XDG_CONFIG_HOME="$srcdir/.config"
     export XDG_DATA_HOME="$srcdir/.local/share"
-    cargo test --frozen --all-features
+    # Run headless unit/protocol tests, skipping interactive UI tests that require a display server
+    cargo test --frozen --all-features -- --skip ui::
 }
 
 package() {
