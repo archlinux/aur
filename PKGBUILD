@@ -3,7 +3,7 @@
 # `markview-bin` packages the prebuilt archive from the same release. Both
 # install the same files, so they conflict with each other.
 pkgname=markview
-pkgver=0.1.6
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='A fast, native Markdown reader with publication-quality typography.'
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
 	'markview.mime.xml'
 )
 sha256sums=(
-	'8292040c7292d188181701c5b71e619a17038ad3677b9e4e0693c1dfcf80d6ee'
+	'ba04bdc676d0eb345dad864f0a09fb2c663b37db3ff6fd08e689dba25cfa11df'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
 
@@ -85,5 +85,7 @@ package() {
 		"$pkgdir/usr/share/doc/$pkgname/Noto-OFL.txt"
 	install -Dm644 licenses/Lucide-ISC.txt \
 		"$pkgdir/usr/share/doc/$pkgname/Lucide-ISC.txt"
+	install -Dm644 licenses/RobotoFlex-OFL.txt \
+		"$pkgdir/usr/share/doc/$pkgname/RobotoFlex-OFL.txt"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
