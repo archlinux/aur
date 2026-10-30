@@ -1,6 +1,6 @@
 pkgbase = gzjam
 	pkgdesc = A simple, intuitive and useful DJ application.
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/GemZombie/GZJam
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gzjam
 	makedepends = dotnet-host
 	makedepends = dotnet-sdk
 	depends = dotnet-runtime
-	source = gzjam-0.9.7.zip::https://github.com/GemZombie/GZJam/archive/refs/tags/v0.9.7.zip
+	source = gzjam-0.9.8.zip::https://github.com/GemZombie/GZJam/archive/refs/tags/v0.9.8.zip
 	source = gzjam.desktop
-	sha256sums = 870a9d6353d0cb1ea7be8cf3f0f48b9524a7c28c44ac44dd658baffbb73222d4
+	sha256sums = bfc56266e8d5879a382ad78c4d8911958c91af1d1af25ced3b783cc46fbbe84c
 	sha256sums = 98807df6f3aba3208db1a31c1a5b8fa8d44b918419d505ca1f843a9b861802da
-	b2sums = 06cac420951dbce347b5fc97025b6f0e3a46f3dc1b13426dbf9008ccbd875ddfff79846860396a4ac642e5c6d2d935ca9dedde408a700c47a99359f4119a680e
+	b2sums = 5bd683c881c70ec83a381d4339453b7e9e52b366c58ba6488a5c70976c7308beb35473e7ab84afd333d2bf7c2c6f328efed4ae59d14077c33275df2396e62559
 	b2sums = fcf8074ec46ab584775457a230da5d92c7caa0cea0accf7626b8bebc6bd6e78897f431953dd30025bc92d2aec50da5b842266adc767b4ecfbe2d0d99c19fda29
 
 pkgname = gzjam
