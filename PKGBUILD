@@ -1,19 +1,20 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
-license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Apache-2.0')
+license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Apache-2.0' 'CC0-1.0')
 depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
-         'fontconfig' 'libx11' 'libice' 'libsm' 'glib2')
+         'fontconfig' 'libx11' 'libice' 'libsm' 'glib2' 'libsndfile')
 makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf' 'python' 'cargo')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin'
             'gdk-pixbuf2: SVG application icons in the UI'
-            'librsvg: SVG application icons in the UI')
+            'librsvg: SVG application icons in the UI'
+            'xorg-xprop: focused application on X11 desktops')
 install=openxlr.install
 backup=('etc/chromium/native-messaging-hosts/com.emaspa.openxlr.browser.json'
         'etc/opt/chrome/native-messaging-hosts/com.emaspa.openxlr.browser.json')
@@ -33,7 +34,7 @@ _dfver=0.5.6
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
         "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
 noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
-sha256sums=('9e64b0be11428f9c5a9b313cadcfbd6e1f3dabbcbfc2da77a1943cdef46bea3f'
+sha256sums=('001903fc58c7c62af39d8d8f482a18811b44e2cd50f3a852c4f9ef101ac44589'
             'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
 
 # DeepFilterNet's noise removal is a Rust library linked into the native
@@ -99,6 +100,11 @@ WRAP
     "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/52-openxlr-mk1-capture-hold.conf"
   install -Dm644 packaging/53-openxlr-wave3-capture-hold.conf \
     "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/53-openxlr-wave3-capture-hold.conf"
+  install -Dm644 packaging/55-openxlr-wave3-mk2-playback.conf \
+    "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/55-openxlr-wave3-mk2-playback.conf"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/openxlr-focus@emaspa.github.com"
+  install -m644 packaging/gnome/openxlr-focus@emaspa.github.com/* \
+    "$pkgdir/usr/share/gnome-shell/extensions/openxlr-focus@emaspa.github.com/"
 
   # The reference unit points into a source checkout; the package runs the wrapper.
   sed 's|^ExecStart=.*|ExecStart=/usr/bin/openxlr-daemon|' packaging/openxlr-daemon.service |
@@ -138,6 +144,7 @@ WRAP
   install -Dm644 native/deepfilter/libdf/LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/deepfilter/LICENSE-APACHE"
   install -Dm644 native/clap/LICENSE "$pkgdir/usr/share/licenses/$pkgname/clap/LICENSE"
   install -Dm644 native/vst3/LICENSE "$pkgdir/usr/share/licenses/$pkgname/vst3/LICENSE"
+  install -Dm644 packaging/starter-sounds/CREDITS "$pkgdir/usr/share/licenses/$pkgname/starter-sounds/CREDITS"
 
   # Record every packaged path for openxlr doctor. Runs last, after the
   # whole payload is in place.
