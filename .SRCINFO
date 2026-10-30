@@ -1,6 +1,6 @@
 pkgbase = magpie-cli-bin
 	pkgdesc = Terminal build of magpie: pick every AI coding agent's model without GUI dependencies
-	pkgver = 0.1.2238
+	pkgver = 0.1.2277
 	pkgrel = 1
 	url = https://usemagpie.ai
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = magpie-cli-bin
 	conflicts = magpie-cli
 	options = !strip
 	options = !debug
-	source = magpie-0.1.2238-LICENSE::https://raw.githubusercontent.com/yetone/magpie/v0.1.2238/LICENSE
+	source = magpie-0.1.2277-LICENSE::https://raw.githubusercontent.com/yetone/magpie/v0.1.2277/LICENSE
 	sha256sums = 79d2c8444715d4bc453ec4f8a0aaf2051a4c1ee5ac08f5bd2e5848aef87c7572
-	source_x86_64 = magpie-cli-0.1.2238-amd64::https://github.com/yetone/magpie-releases/releases/download/v0.1.2238/magpie-cli-linux-amd64
-	sha256sums_x86_64 = 68d3b77ebeaea5cea9066cd8db55ea01acf7755ac160e4cef08ed8acf3956136
-	source_aarch64 = magpie-cli-0.1.2238-arm64::https://github.com/yetone/magpie-releases/releases/download/v0.1.2238/magpie-cli-linux-arm64
-	sha256sums_aarch64 = e8155d65971ea3297f6afabaeb5b9a765420a95062d9424ecc782f2e2e6c8e5f
+	source_x86_64 = magpie-cli-0.1.2277-amd64::https://github.com/yetone/magpie-releases/releases/download/v0.1.2277/magpie-cli-linux-amd64
+	sha256sums_x86_64 = 60755663931c5eba7fcf0ab910606a07ee57a9cd2cb277d0c7c3678807191544
+	source_aarch64 = magpie-cli-0.1.2277-arm64::https://github.com/yetone/magpie-releases/releases/download/v0.1.2277/magpie-cli-linux-arm64
+	sha256sums_aarch64 = 2deb155e4014755436aff5fce582331364251a4363dbfbe1df7be3f4ca5e3416
 
 pkgname = magpie-cli-bin
