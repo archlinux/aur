@@ -1,0 +1,19 @@
+pkgbase = tsuzuri
+	pkgdesc = Block-based notebook for the terminal with plain Markdown files and Vim editing
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/jaisuriya-11/tsuzuri
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = wl-clipboard: clipboard access on Wayland
+	optdepends = xclip: clipboard access on X11
+	optdepends = xdg-utils: open links
+	optdepends = zenity: file picker for attachments
+	optdepends = kdialog: file picker for attachments
+	source = tsuzuri-0.3.1.tar.gz::https://github.com/jaisuriya-11/tsuzuri/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 1b1b9cf58e70a3e74d84eda68976213eaf1a2db8f43e08658f136057ab8bbe04
+
+pkgname = tsuzuri
