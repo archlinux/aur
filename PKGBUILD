@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=13
+pkgrel=14
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -71,10 +71,14 @@ optdepends=('openssh: PowerShell Remoting over ssh'
 makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
   # Libraries built from source, see _nuget_feeds()
+  dotnet-azure-core
+  dotnet-azure-identity
   dotnet-jsonschema-net-7
   dotnet-markdig
+  dotnet-microsoft-identity-client
   dotnet-newtonsoft-json
   dotnet-roslyn
+  dotnet-system-clientmodel
   dotnet-system-data-sqlclient
   dotnet-system-io-ports-native
   dotnet-wcf
