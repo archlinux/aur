@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-interface-libraries
-pkgver=6.8.0
+pkgver=6.8.0.1
 pkgrel=1
 pkgdesc='SonicDE library and runtime components'
 arch=('x86_64')
@@ -47,7 +47,7 @@ conflicts=(
 replaces=('plasma-framework')
 groups=('sonicde')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e26155f7bb20a61662c3866f20f640f30c75bc8d72a53bcd5895b283e77c5aed')
+sha256sums=('fbe21ba114af62b024045dd62fa461e1d904c1ad97b3a47bb559f84fea0ba41c')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
