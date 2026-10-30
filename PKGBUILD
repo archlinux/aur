@@ -387,6 +387,7 @@ prepare() {
   # Get-Help keeps loading the help file it found first, even after Update-Help installed help that
   # takes precedence or the UI culture changed, as the full path stays in the HelpFile of the command
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28274
+  # Upstream fix: https://github.com/PowerShell/PowerShell/pull/28294
   patch -Np1 -i "$srcdir/help-cache-reset.patch"
 
   # System.Drawing.Common only supports Windows since .NET 6, see
