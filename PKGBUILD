@@ -20,7 +20,7 @@ _phpbase="56"
 _suffix=""
 pkgver="5.6.40"
 pkgbase_rc=""
-pkgrel="14"
+pkgrel="15"
 pkgbase="php56"
 pkgdesc="PHP 5.6.40 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -134,6 +134,7 @@ source=(
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "libxml-pear-php-8.0.patch"
     "libxml-attribute-php-8.0.patch"
+    "php56-cve-2026-109618-109619.patch"
     "php-libxml.patch"
     "libxml-21200-php-5.6.patch"
     "scanf-php-5.6.patch"
@@ -220,6 +221,7 @@ arch=(
 _patches=(
     "libxml-pear-php-8.0.patch"
     "libxml-attribute-php-8.0.patch"
+    "php56-cve-2026-109618-109619.patch"
     "php-libxml.patch"
     "libxml-21200-php-5.6.patch"
     "scanf-php-5.6.patch"
@@ -495,7 +497,7 @@ prepare() {
 
     for patch_name in "${_patches[@]}"; do
         echo "[PATCH] Applying source patch ${patch_name}";
-        patch -p1 -i "../${patch_name}"
+        patch -Np1 -i "../${patch_name}"
     done
     ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
@@ -523,7 +525,7 @@ _build_sapi() {
 
     pushd "build-${_sapi}"
      ./configure ${_phpconfig} ${_commands}
-    patch -p1 -i "${srcdir}/make-tests.patch"
+    patch -Np1 -i "${srcdir}/make-tests.patch"
     if (($_sapi != "cli")); then
         make clean
     elif ((_phpbase < 82)); then
@@ -1433,7 +1435,6 @@ package_php56-mcrypt() {
 ###############################################################################
 # PHP Zend modules: opcache/jit
 ###############################################################################
-
 # Opcache
 package_php56-opcache() {
     pkgdesc="opcache zend module for php56"
@@ -1527,6 +1528,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
             'b5a6b99214dce395a058f40bffee50511adaf58ee84ee6fbb7ca7bdc3c07cb3c'
             'a3265052b148d6b77883b07482aa0ffd23672c9ca08265ba02904dfaad24d3bd'
+            'abcb401aef115604f5ccedce32581872e6a993069ae74eae255f0706faea026c'
             'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
             '5e3ae7a783e6b1a31081be1e54089e6676445072ecf81496bdf01bad4c8ccb05'
             '378f19eccf4d65c39e03eb2382e4d8286b22c28d91e1dcdbd62f4efa4dcc152b'
