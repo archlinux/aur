@@ -12,13 +12,13 @@ arch=(
 url="https://trezor.io/trezor-suite"
 _ghurl="https://github.com/trezor/trezor-suite"
 license=('LicenseRef-T-RSL')
+options=('!strip')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
     "${pkgname%-bin}-appimage"
     "trezor-udev"
 )
-replaces=()
 depends=(
     "electron${_electronversion}"
 )
@@ -27,11 +27,12 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
+options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 sha256sums_aarch64=('3d861f5db246a11dc957afe811dc811c776e56e49cbf7c350aeae76f501f7999')
 sha256sums_x86_64=('413b1a6fc4b36ef6c767b04df480b6a1fa0d190236e433f7568aac2993ffcb61')
 _get_app_dir() {
@@ -72,7 +73,7 @@ package() {
         _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    [ ! -f "/usr/lib/udev/rules.d/51-trezor.rules" ] && install -Dm644 "$(_get_app_dir)/resources/bin/udev/51-trezor.rules" -t "${pkgdir}/usr/lib/udev/rules.d"
+    install -Dm644 "$(_get_app_dir)/resources/bin/udev/51-trezor.rules" -t "${pkgdir}/usr/lib/udev/rules.d"
     install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }

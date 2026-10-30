@@ -2,7 +2,7 @@
 set -e
 export _APPDIR="/usr/lib/@appname@"
 export CHROME_DESKTOP="@appname@.desktop"
-export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 if [[ -f "${_APPDIR}/app.asar" ]]; then
 	_RUNNAME="${_APPDIR}/app.asar"
 elif [[ -d "${_APPDIR}/app" ]]; then
