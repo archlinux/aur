@@ -4,13 +4,13 @@
 #
 # This PKGBUILD installs the pre-built Bitwarden Password Manager WASM
 # provider for rosec from the GitHub release.
-# The release workflow renders this file by substituting 0.0.36 and
-# ce5072d1369fc21793009399966eb58a2f3a3a6873552d1dcbff45627ec06806 before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.37 and
+# eff2b0729430832b5fd895d6d2779324c14f162222d83e11a3d71679aff74857 before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-provider-bitwarden-pm-bin
-pkgver=0.0.36
+pkgver=0.0.37
 pkgrel=1
 pkgdesc="Bitwarden Password Manager provider for rosec (sync, SSH keys) (prebuilt)"
 arch=('any')
@@ -25,7 +25,7 @@ conflicts=('rosec-provider-bitwarden-pm')
 source=(
     "rosec-provider-bitwarden-pm-${pkgver}.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-provider-bitwarden-pm-${pkgver}.wasm.tar.gz"
 )
-sha256sums=('ce5072d1369fc21793009399966eb58a2f3a3a6873552d1dcbff45627ec06806')
+sha256sums=('eff2b0729430832b5fd895d6d2779324c14f162222d83e11a3d71679aff74857')
 
 package() {
     install -Dm644 "${srcdir}/rosec_bitwarden_pm.wasm" \
