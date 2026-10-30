@@ -1,6 +1,6 @@
 pkgbase = moonfin-bin
     pkgdesc = Jellyfin & Emby media client for Linux (binary release)
-    pkgver = 2.8.0
+    pkgver = 3.0.0
     pkgrel = 1
     url = https://github.com/Moonfin-Client/Moonfin-Core
     arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = moonfin-bin
     depends = xdg-user-dirs
     provides = moonfin
     conflicts = moonfin
-    source = moonfin-bin-2.8.0.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/2.8.0/Moonfin_Linux_v2.8.0.tar.gz
-    sha256sums = af407ce8312457a76e3560151018389f7818a1614660d7b8d0698ff3cc233d84
+    source = moonfin-bin-3.0.0.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/3.0.0/Moonfin_Linux_v3.0.0.tar.gz
+    sha256sums = 36aad348e2ccbae834ddb2c8160158424605a4ebfcc1f55a8ab3474ddc9cc5f3
 
 pkgname = moonfin-bin
