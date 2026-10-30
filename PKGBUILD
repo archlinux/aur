@@ -28,9 +28,9 @@ source=("json-everything::git+$url.git#commit=$_commit"
   # The official test suite, a submodule
   "git+https://github.com/json-schema-org/JSON-Schema-Test-Suite.git")
 sha512sums=('fe263e1a8bd8c2b0ce93755ed0799082477d0dc5846ecc0bed639511b8dcafd84e763e95fdb915d8529a04ecdc69cf22b89965bc198cf1da733dff6dabaf5e1b'
-            'SKIP')
+  'SKIP')
 b2sums=('decbc256fbb5e6c5d4acdbadeb6b333dceb0d121c69d2834bed75749b29f75b71046dd8b8d102cb66e901b2da5a8a5c955c8eec4a42ce0ecfb8e7cedc71d3c0a'
-        'SKIP')
+  'SKIP')
 
 # Restores Humanizer.Core from the system feed, everything else from nuget.org
 _nuget_config() {
