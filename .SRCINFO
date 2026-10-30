@@ -1,6 +1,6 @@
 pkgbase = ely-show-bin
 	pkgdesc = ElyShow, part of Ely Office - presentation editor (prebuilt upstream package)
-	pkgver = 0.1.9
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/ELY-Open-Source/ElyOffice
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = ely-show-bin
 	conflicts = ely-show
 	options = !strip
 	options = !debug
-	source = LICENSE::https://github.com/ELY-Open-Source/ElyOffice/raw/v0.1.9/LICENSE
+	source = LICENSE::https://github.com/ELY-Open-Source/ElyOffice/raw/v0.1.13/LICENSE
 	sha256sums = 6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1
-	source_x86_64 = ely-show-0.1.9-1-x86_64.pkg.tar.zst::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.9/ely-show-0.1.9-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 12c5d8bf178b277e0faa72ba8ec23711ec47b763401b8fa59c29608fd606ca8f
+	source_x86_64 = ely-show-0.1.13-1-x86_64.pkg.tar.zst::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.13/ely-show-0.1.13-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 026d9b2e98561df306fb98a9c3521427e8c25f3a2047d50c71aa5899b3c0a729
 
 pkgname = ely-show-bin
