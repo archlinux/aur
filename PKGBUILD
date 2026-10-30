@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _dfver=0.5.6
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
         "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
 noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
-sha256sums=('24510ec32ab09aafa353bcf7ed06d2617e9707b266dd2207048b323708d46750'
+sha256sums=('f16dccdecf92857340f7c8ceb4af16613a4c3b8a099556a636899efba9627e48'
             'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
 
 # DeepFilterNet's noise removal is a Rust library linked into the native
@@ -142,6 +142,8 @@ WRAP
   install -Dm644 native/rnnoise/COPYING "$pkgdir/usr/share/licenses/$pkgname/rnnoise/COPYING"
   install -Dm644 native/deepfilter/libdf/LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/deepfilter/LICENSE-MIT"
   install -Dm644 native/deepfilter/libdf/LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/deepfilter/LICENSE-APACHE"
+  install -Dm644 native/signalsmith/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/signalsmith/stretch/LICENSE.txt"
+  install -Dm644 native/signalsmith/signalsmith-linear/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/signalsmith/linear/LICENSE.txt"
   install -Dm644 native/clap/LICENSE "$pkgdir/usr/share/licenses/$pkgname/clap/LICENSE"
   install -Dm644 native/vst3/LICENSE "$pkgdir/usr/share/licenses/$pkgname/vst3/LICENSE"
   install -Dm644 packaging/starter-sounds/CREDITS "$pkgdir/usr/share/licenses/$pkgname/starter-sounds/CREDITS"
