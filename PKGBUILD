@@ -1,4 +1,14 @@
 # Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
+# Contributor: NourEddine Y.
+# Contributor: Oskar Gerlciz Kowalczuk
+# Contributor: StaticNullException <aurcontact@teto.party>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Jaroslaw Swierczynski <swiergot@juvepoland.com>
+# Contributor: Michal Hybner <dta081@gmail.com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Gavin Luo <lunt.luo@gmail.com>
+
 pkgbase=zen-browser-i18n
 pkgver=1.23b
 pkgrel=1
