@@ -3,7 +3,7 @@
 
 _name=dr14_t.meter
 pkgname=dr14_tmeter
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Compute the DR14 dynamic range value of audio files"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=('python-matplotlib: plotting options'
             'python-mutagen: --tag option')
 conflicts=(python-dr14_tmeter)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('695f50aeb408ebc7af1a8ee4e40cc37648f09037304d489629b2b4d5e29e45c8')
+sha256sums=('125733b8dc99ec48beaa57293efb23dd937a7bf8342be7cccbd61ca6f33ff56b')
 
 build() {
   cd "$_name-$pkgver"
@@ -27,4 +27,5 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md dr14_algorithm.md
+  install -Dm644 man/dr14_tmeter.1 "$pkgdir/usr/share/man/man1/dr14_tmeter.1"
 }
