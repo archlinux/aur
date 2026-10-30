@@ -347,14 +347,19 @@ prepare() {
   # backported to 7.6, so drop this patch with 7.7
   patch -Np1 -i "$srcdir/psmodulepath-combined-paths.patch"
 
-  # CIM (Microsoft.Management.Infrastructure, MMI) is only usable on Windows and isn't open source,
-  # although its NuGet package claims MIT:
-  # - The PowerShell team says "MMI.dll is not Open Source (and no plans to be OSS)", see
-  #   https://github.com/PowerShell/PowerShell/issues/8397. The repository the package links to,
-  #   PowerShell/MMI, has been archived since 2024.
-  # - Its Microsoft.Management.Infrastructure.Runtime.Win package comes under the Microsoft Software
-  #   License Terms instead, which only allow using it with PowerShell and forbid redistributing it, see
-  #   https://github.com/PowerShell/PowerShell/issues/28027 and #20798
+  # CIM (Microsoft.Management.Infrastructure, MMI) is only usable on Windows, and only free on Linux:
+  # - On Windows, MMI 3.0 (Microsoft.Management.Infrastructure.Runtime.Win) isn't open source. The
+  #   PowerShell team said "MMI.dll is not Open Source (and no plans to be OSS)" in
+  #   https://github.com/PowerShell/PowerShell/issues/8397. The package comes under the Microsoft
+  #   Software License Terms, although it links to an MIT project: they allow using it "solely for use
+  #   with Microsoft PowerShell" and forbid distributing it or providing it as a hosted solution, see
+  #   https://github.com/PowerShell/PowerShell/issues/28027 and #20798. NuGet restores it on every
+  #   platform, so all source builds of PowerShell download it.
+  # - On Linux and macOS, Microsoft.Management.Infrastructure.Runtime.Unix (MIT) has MMI 2.0, built
+  #   from PowerShell/MMI. Its last change is from 2019, and the repository is archived. It needs the OMI
+  #   client library (libmi), which PowerShell doesn't ship, so CIM fails on Linux anyway.
+  # - Debian's request for packaging PowerShell (https://bugs.debian.org/834756) names MMI among the
+  #   non-free parts that keep it out of Debian main since 2018.
   # So the patch makes it optional with a build property, UseMmi=false (see _dotnet_env), which leaves
   # out everything that needs it: CIM, the CIM type adapter and DSC's MOF support. Built normally,
   # nothing changes. ArgumentToConfigurationDataTransformationAttribute doesn't use CIM and scripts use it
