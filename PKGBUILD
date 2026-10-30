@@ -24,9 +24,9 @@ _messagepackcommit="a718919a6b01ca8bb883f579b3cc78f8cc219a81"
 source=("Nerdbank.Streams-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "MessagePack-CSharp-$_messagepackcommit.tar.gz::https://github.com/AArnott/MessagePack-CSharp/archive/$_messagepackcommit.tar.gz")
 sha512sums=('fff5fdff9affeb9172611082a857effbe234158a0e64ca97d5fcf99a31ca742fa76a53d8e400a0539e581a841f2373ec66bcf70ef8d994cb3390d91cc48dc832'
-            '94707a0f85e6fdb7c14be2d73e150ecd499846a795a316ca2534ee793877c3cc903f983790a7985668e5905700099f26692ba99b45ebb3d3556d18b7215701db')
+  '94707a0f85e6fdb7c14be2d73e150ecd499846a795a316ca2534ee793877c3cc903f983790a7985668e5905700099f26692ba99b45ebb3d3556d18b7215701db')
 b2sums=('40555daef5ebad0070a1dbb62a172509ce2cf6274853368638cf03bc00dd4a4f8e6eb2edca4b839a8d526a2e298e6feaceb3c8419330b0515c704a0fb1bc234e'
-        '7f2cda90be668caed1410eaa5c7df29ca3eea644fac278f6740b47ec0116f10e6bd3478f391ced4ad9671897d27196fa49c8a7cf910b464b712292c9fc629fd5')
+  '7f2cda90be668caed1410eaa5c7df29ca3eea644fac278f6740b47ec0116f10e6bd3478f391ced4ad9671897d27196fa49c8a7cf910b464b712292c9fc629fd5')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
