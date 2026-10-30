@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: pika02
 
 pkgname=opencode-studio
 pkgver=2.5.1
