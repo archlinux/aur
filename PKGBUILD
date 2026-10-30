@@ -3,7 +3,7 @@
 
 pkgname=sonic-vault
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SonicDE applet and services for creating encrypted vaults'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-vault'
