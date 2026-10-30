@@ -1,20 +1,19 @@
 pkgbase = slack-desktop-wayland-jetm
-	pkgdesc = Slack Desktop (Beta) for Linux, launched as a native Wayland client on the system Electron package
-	pkgver = 4.52.182
+	pkgdesc = Slack Desktop (Beta) for Linux, launched as a native Wayland client
+	pkgver = 4.53.276
 	pkgrel = 1
 	url = https://slack.com/downloads
 	arch = x86_64
 	license = LicenseRef-Slack
-	depends = electron44
-	depends = glibc
-	depends = libstdc++
-	depends = libx11
-	depends = libxkbfile
+	depends = gtk3
+	depends = libsecret
+	depends = libxss
+	depends = nss
+	depends = xdg-utils
 	depends = libnotify
 	depends = libpipewire
-	depends = libsecret
 	depends = xdg-desktop-portal
-	depends = xdg-utils
+	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = org.freedesktop.secrets: keyring password store
 	optdepends = pipewire: PipeWire daemon, required for screen sharing
 	optdepends = xdg-desktop-portal-gnome: portal backend for GNOME
@@ -23,14 +22,14 @@ pkgbase = slack-desktop-wayland-jetm
 	optdepends = xdg-desktop-portal-kde: portal backend for KDE
 	optdepends = xdg-desktop-portal-lxqt: portal backend for LXQt
 	optdepends = xdg-desktop-portal-wlr: portal backend for wlroots compositors
-	provides = slack-desktop=4.52.182
+	provides = slack-desktop=4.53.276
 	conflicts = slack-desktop
 	conflicts = slack-desktop-wayland
 	conflicts = slack-electron
 	replaces = slack-desktop-wayland
-	noextract = slack-desktop-4.52.182-amd64.deb
+	noextract = slack-desktop-4.53.276-amd64.deb
 	options = !strip
-	source = https://downloads.slack-edge.com/desktop-releases/linux/x64/4.52.182/slack-desktop-4.52.182-amd64.deb
-	b2sums = 8abb915e90418e88d27d21ce567b9f5f78afd0b474c1f974f360cd2e11ca5bfe6f69ecf9ece9ca8859033f44c86bcb0daeb22c8556b353645862e2cc4b94c797
+	source = https://downloads.slack-edge.com/desktop-releases/linux/x64/4.53.276/slack-desktop-4.53.276-amd64.deb
+	b2sums = 153e908075e45f00c7ecbbfffb8289260989bf6ac2978e324726339bdcbb83d7d748f81eb8b91d77cea4fd44a8e79e18390860cb3779e218cee91aa263ca5c60
 
 pkgname = slack-desktop-wayland-jetm
