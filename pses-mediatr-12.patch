@@ -1,0 +1,30 @@
+diff --git a/src/PowerShellEditorServices/Services/Extension/Handlers/IInvokeExtensionCommandHandler.cs b/src/PowerShellEditorServices/Services/Extension/Handlers/IInvokeExtensionCommandHandler.cs
+index fb0ac500..9d2e34a8 100644
+--- a/src/PowerShellEditorServices/Services/Extension/Handlers/IInvokeExtensionCommandHandler.cs
++++ b/src/PowerShellEditorServices/Services/Extension/Handlers/IInvokeExtensionCommandHandler.cs
+@@ -10,7 +10,7 @@ namespace Microsoft.PowerShell.EditorServices.Services.Extension
+     [Serial, Method("powerShell/invokeExtensionCommand")]
+     internal interface IInvokeExtensionCommandHandler : IJsonRpcNotificationHandler<InvokeExtensionCommandParams> { }
+ 
+-    internal class InvokeExtensionCommandParams : IRequest
++    internal class InvokeExtensionCommandParams : IRequest<Unit>
+     {
+         public string Name { get; set; }
+ 
+diff --git a/test/PowerShellEditorServices.Test/Refactoring/PrepareRenameHandlerTests.cs b/test/PowerShellEditorServices.Test/Refactoring/PrepareRenameHandlerTests.cs
+index b95b735c..8e1dc30a 100644
+--- a/test/PowerShellEditorServices.Test/Refactoring/PrepareRenameHandlerTests.cs
++++ b/test/PowerShellEditorServices.Test/Refactoring/PrepareRenameHandlerTests.cs
+@@ -158,10 +158,10 @@ public class FakeLspSendMessageRequestFacade(string title) : ILanguageServerFaca
+     public IDisposable Register(Action<ILanguageServerRegistry> registryAction) => throw new NotImplementedException();
+     public void SendNotification(string method) => throw new NotImplementedException();
+     public void SendNotification<T>(string method, T @params) => throw new NotImplementedException();
+-    public void SendNotification(IRequest request) => throw new NotImplementedException();
++    public void SendNotification(IRequest<Unit> request) => throw new NotImplementedException();
+     public IResponseRouterReturns SendRequest(string method) => throw new NotImplementedException();
+     public IResponseRouterReturns SendRequest<T>(string method, T @params) => throw new NotImplementedException();
+-    public bool TryGetRequest(long id, out string method, out TaskCompletionSource<JToken> pendingTask) => throw new NotImplementedException();
++    public bool TryGetRequest(object id, out string? method, out TaskCompletionSource<JToken>? pendingTask) => throw new NotImplementedException();
+ }
+ 
+ public class EmptyConfiguration : ConfigurationRoot, ILanguageServerConfiguration, IScopedConfiguration

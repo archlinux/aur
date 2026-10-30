@@ -1,17 +1,48 @@
 pkgbase = powershell-editor-services
 	pkgdesc = A common platform for PowerShell development support in any editor or application
 	pkgver = 4.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/PowerShell/PowerShellEditorServices
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
+	makedepends = dotnet-mediatr-12
+	makedepends = dotnet-nerdbank-streams
+	makedepends = dotnet-newtonsoft-json
+	makedepends = dotnet-omnisharp-extensions
+	makedepends = dotnet-pluralize-net
 	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-system-reactive
+	makedepends = dotnet-vs-threading
+	makedepends = dotnet-vs-validation
 	makedepends = git
 	depends = powershell
 	depends = dotnet-runtime-10.0
 	options = !debug
 	source = git+https://github.com/PowerShell/PowerShellEditorServices.git#tag=v4.7.0
+	source = git+https://github.com/PowerShell/PSScriptAnalyzer.git#tag=1.25.0
+	source = git+https://github.com/PowerShell/platyPS.git#tag=0.14.2
+	source = git+https://github.com/aaubry/YamlDotNet.git#tag=v5.0.0
+	source = pssa-cim-windows-only.patch
+	source = pses-mediatr-12.patch
+	source = build-help.ps1
+	source = crossgen2-pack.targets
 	sha512sums = c9408c3462334a6fd6f78ae793b8483dd550ad3918cac969bf78a6e1d753820ece6d57536770eb929ce029c8dc644d770b3ec84c417af8f04da212b366a948ac
+	sha512sums = 5815b257a2169f99cf346d783ffb38656e128a27dc57ba9606a98b8ad480b1e797fabbdb50545dfc141928da556bb52122938b5a84e3bad27a1552ca175b1139
+	sha512sums = db7d147644d74081c49d8ea2700138e56f5deecf390f7ad704ce6decf0dc4f1719fce2c3325c778d32c6f9d80f46c0dce3ee49942cf6ff9e72a2d30715eb149f
+	sha512sums = d93763f7840a6f9fa4d20fc38a08d8f39c71d3a8603019ec4733c2b42b085829a4e3a82b6c9ab7ca09c615737f632057749884fa2884c2adcba0799c15e6dc9f
+	sha512sums = 133f038fd06dd264b231ffd8eb173e9ac45bf3121777df6c2d90a27a51b382de11d160b9dac1b538ed524e36887a203f5af02fed8780658bec675532c06464a1
+	sha512sums = d51cfddaf4242e53a37c78391e821c87c8c844099a5186d394385b44fbe1230bbac482bf8e4995b8a880df93311496693f6429a0f0adefa071e338660366e95f
+	sha512sums = f9ff895f834a45ba83181de172114b9db5e0ee23d41a0685f975381a575aca3ef85e06f65fee2f212d499fa8cb890b2defa4321c22e32e76da318b9f5670017c
+	sha512sums = 340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981
 	b2sums = 94bbeb6af2cef3feed161759ff732370ef34929235220c5b827263493dfe405de1afe56032738367aeb0160defa8fa3012d77d7fd676d14576b2699f38e2b5fd
+	b2sums = 39b8c4f12570cda16d38f7083939665c3a176dbab86a83c399b8f0d35b8b1c855bf787a3e581790466cd761a74ffe37992ed4fa88f3fbe0d717f18642c28a749
+	b2sums = 561dfa14710bcea1e4326d79d30f1a78a71550bd03a573e915b3d8d931a51ca74b5ad5bb4cb65fac1f4e9d1965330515a4a322f4459a6464e12c500a1479215f
+	b2sums = a06533f981bb46bf2627833a0263be3ec6dc33380a1da573fb44c1a62304f4ea4791221f1c8cc99d0e91d2c3a9f2b55826ebcbe675c5008af3757d6826ed5568
+	b2sums = 8a1781bc94cb602b54d490725035e86abe4309b272fbccd3db4ba4fbcb90415910bb73821b07b0502f77bbbbb6e09b77c8b2c8fa27e6000eded061c649d250a2
+	b2sums = ecc233f3555243a9f5e1d2acd6e309441dba1f86b02252af0dc7c52baca32bb16780940f12fa693a6fe76da81e4557c5fd74a2f51c7d13a79fd4c3bf9b84293e
+	b2sums = 216c25e61acacc59927c5745ce68eb97018c8b4f879c9c23c8c539335ddcaee2ac8f60fd049cf8f25aeee7523b3309adccc740ab91f3dbb468289134b57608f0
+	b2sums = 3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b
+	makedepends_x86_64 = dotnet-source-built-artifacts-10.0
 
 pkgname = powershell-editor-services

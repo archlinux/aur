@@ -1,0 +1,80 @@
+diff --git a/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Collection/PlatformInformationCollector.cs b/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Collection/PlatformInformationCollector.cs
+index 26aa0ee..b2f1ee4 100644
+--- a/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Collection/PlatformInformationCollector.cs
++++ b/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Collection/PlatformInformationCollector.cs
+@@ -10,7 +10,9 @@ using System.Linq;
+ using System.Runtime.InteropServices;
+ using System.Text;
+ using System.Text.RegularExpressions;
++#if CIM
+ using Microsoft.Management.Infrastructure;
++#endif
+ using Microsoft.PowerShell.CrossCompatibility.Data;
+ using Microsoft.PowerShell.CrossCompatibility.Utility;
+ using Microsoft.Win32;
+@@ -425,6 +427,10 @@ namespace Microsoft.PowerShell.CrossCompatibility.Collection
+ 
+         private static Win32OSCimInfo GetWin32OperatingSystemInfo()
+         {
++#if !CIM
++            // CIM is only supported on Windows
++            return null;
++#else
+             try
+             {
+                 // Creating the session with null here prevents use of the network layer
+@@ -447,6 +453,7 @@ namespace Microsoft.PowerShell.CrossCompatibility.Collection
+             {
+                 return null;
+             }
++#endif
+         }
+ 
+         private static string Dequote(string s)
+diff --git a/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Microsoft.PowerShell.CrossCompatibility.csproj b/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Microsoft.PowerShell.CrossCompatibility.csproj
+index c4667a9..e2e39bb 100644
+--- a/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Microsoft.PowerShell.CrossCompatibility.csproj
++++ b/PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Microsoft.PowerShell.CrossCompatibility.csproj
+@@ -10,10 +10,15 @@
+     <DefineConstants>$(DefineConstants);CoreCLR</DefineConstants>
+   </PropertyGroup>
+ 
++  <PropertyGroup Condition="'$(TargetFramework)' == 'net462' or $([MSBuild]::IsOSPlatform('Windows'))">
++    <DefineConstants>$(DefineConstants);CIM</DefineConstants>
++  </PropertyGroup>
++
+   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+     <PackageReference Include="Newtonsoft.Json" />
+     <PackageReference Include="Microsoft.Win32.Registry" />
+-    <PackageReference Include="Microsoft.Management.Infrastructure" />
++    <!-- CIM is only supported on Windows -->
++    <PackageReference Include="Microsoft.Management.Infrastructure" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+     <PackageReference Include="PowerShellStandard.Library" />
+   </ItemGroup>
+ 
+diff --git a/Rules/Rules.csproj b/Rules/Rules.csproj
+index 7641bb0..0c6292d 100644
+--- a/Rules/Rules.csproj
++++ b/Rules/Rules.csproj
+@@ -19,7 +19,8 @@
+   <ItemGroup Condition=" '$(TargetFramework)' == 'net8' ">
+     <PackageReference Include="Newtonsoft.Json" />
+     <PackageReference Include="System.Reflection.TypeExtensions" />
+-    <PackageReference Include="Microsoft.Management.Infrastructure" />
++    <!-- CIM is only supported on Windows -->
++    <PackageReference Include="Microsoft.Management.Infrastructure" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+     <PackageReference Include="Pluralize.NET" />
+   </ItemGroup>
+ 
+@@ -29,6 +30,11 @@
+     <Reference Include="System.Data.Entity.Design" />
+   </ItemGroup>
+ 
++  <ItemGroup Condition="!$([MSBuild]::IsOSPlatform('Windows'))">
++    <!-- Needs the DSC class cache of PowerShell, which is built on CIM -->
++    <Compile Remove="UseIdenticalMandatoryParametersDSC.cs" />
++  </ItemGroup>
++
+   <PropertyGroup Condition=" '$(TargetFramework)' == 'net462' ">
+     <DebugType>portable</DebugType>
+   </PropertyGroup>

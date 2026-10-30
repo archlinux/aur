@@ -3,6 +3,8 @@ version = 1
 [[annotations]]
 path = [
   "PKGBUILD",
+  "build-help.ps1",
+  "crossgen2-pack.targets",
   "README.md",
   ".SRCINFO",
   ".nvchecker.toml",
@@ -11,3 +13,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+  "pssa-cim-windows-only.patch",
+  "pses-mediatr-12.patch",
+]
+SPDX-FileCopyrightText = "Microsoft Corporation"
+SPDX-License-Identifier = "MIT"
