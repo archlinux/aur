@@ -21,6 +21,8 @@ path = [
   "*.desktop",
   "*.hook",
   "*.module",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
