@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Meetily
+Comment=Local meeting transcription and summaries
+Exec=meetily
+Icon=meetily
+Terminal=false
+Categories=AudioVideo;Audio;Office;
+StartupWMClass=meetily
