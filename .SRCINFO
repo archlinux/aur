@@ -1,6 +1,6 @@
 pkgbase = gofarsi-bin
-	pkgdesc = Free Persian the Go programming language book
-	pkgver = v2026.02.22_071121_683c119a6
+	pkgdesc = Free Persian book on the Go programming language
+	pkgver = 2026.02.22_071121_683c119a6
 	pkgrel = 1
 	url = https://github.com/GoFarsi/book
 	arch = x86_64
@@ -9,7 +9,10 @@ pkgbase = gofarsi-bin
 	provides = gofarsi
 	provides = gofarsi-book
 	conflicts = gofarsi-book
-	source = book_2026.02.22-071121-683c119a6_linux_amd64.deb::https://github.com/GoFarsi/book/releases/download/v2026.02.22-071121-683c119a6/book_2026.02.22-071121-683c119a6_linux_amd64.deb
-	sha256sums = 833c09f220c40914c08e00f2a375fc8ebae9d2a9bc495e498e9a57e66928f027
+	options = !debug
+	source_x86_64 = gofarsi-bin-2026.02.22_071121_683c119a6-x86_64.deb::https://github.com/GoFarsi/book/releases/download/v2026.02.22-071121-683c119a6/book_2026.02.22-071121-683c119a6_linux_amd64.deb
+	sha256sums_x86_64 = 833c09f220c40914c08e00f2a375fc8ebae9d2a9bc495e498e9a57e66928f027
+	source_aarch64 = gofarsi-bin-2026.02.22_071121_683c119a6-aarch64.deb::https://github.com/GoFarsi/book/releases/download/v2026.02.22-071121-683c119a6/book_2026.02.22-071121-683c119a6_linux_arm64.deb
+	sha256sums_aarch64 = 953eb73298293be6e2a3a19f57830abc576dfb08539bef5cca4b4ce86665d3d2
 
 pkgname = gofarsi-bin
