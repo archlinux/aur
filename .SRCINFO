@@ -1,7 +1,7 @@
 pkgbase = prx
 	pkgdesc = Safe proxy routing manager that keeps inbound connections (e.g. SSH) alive
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://src.panahifar.ir/ahp/prx
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,8 @@ pkgbase = prx
 	depends = systemd
 	optdepends = sing-box: default proxy engine (TUN mode)
 	optdepends = polkit: run privileged actions through pkexec without sudo
-	provides = prx
+	options = !strip
+	options = !debug
 	source = prx-0.1.0.tar.gz::https://src.panahifar.ir/ahp/prx/archive/v0.1.0.tar.gz
 	sha256sums = 681f7f51880d74001a78dba3d7d3191da20136473e74263269b26be904afd44e
 

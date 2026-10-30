@@ -2,7 +2,7 @@
 
 pkgname=prx
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Safe proxy routing manager that keeps inbound connections (e.g. SSH) alive"
 arch=('x86_64' 'aarch64')
 url="https://src.panahifar.ir/ahp/prx"
@@ -13,7 +13,7 @@ optdepends=(
   'polkit: run privileged actions through pkexec without sudo'
 )
 makedepends=('go')
-provides=('prx')
+options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('681f7f51880d74001a78dba3d7d3191da20136473e74263269b26be904afd44e')
 
