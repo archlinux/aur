@@ -1,6 +1,6 @@
 pkgbase = halley-lift
 	pkgdesc = Search and action launcher for the Halley Wayland compositor
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/halley-lift
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = halley-lift
 	depends = fontconfig
 	optdepends = halley: the Halley compositor this launcher controls via IPC
 	options = !debug
-	source = halley-lift-0.3.0.tar.gz::https://github.com/saltnpepper97/halley-lift/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 11108c58c715d468c3a9ba67c9b929b9efa4069f12a3ddb7d1594590afa6b219
+	source = halley-lift-0.4.0.tar.gz::https://github.com/saltnpepper97/halley-lift/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 43e83383d7c45514c8adaa0c98148bc4a58f87b738f5de96cda98ee8b06c301c
 
 pkgname = halley-lift

@@ -3,7 +3,7 @@
 # Standalone Lift release; versioned independently of the Halley compositor.
 
 pkgname=halley-lift
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Search and action launcher for the Halley Wayland compositor"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'rust' 'pkgconf')
 optdepends=('halley: the Halley compositor this launcher controls via IPC')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('11108c58c715d468c3a9ba67c9b929b9efa4069f12a3ddb7d1594590afa6b219')
+sha256sums=('43e83383d7c45514c8adaa0c98148bc4a58f87b738f5de96cda98ee8b06c301c')
 
 _srcdir="$pkgname-$pkgver"
 
