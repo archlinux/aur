@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.27.1
+pkgver=1.27.2
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
@@ -11,7 +11,7 @@ provides=('openmodelica-omc')
 makedepends=('gcc-fortran' 'cmake' 'boost' 'java-environment' 'qt6-tools')
 options=('!lto')
 source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-v${pkgver}-src-with-submodules.zip")
-sha256sums=('4e41ad73b11e47bab5dac54aa83c6bb4edc4a37188ebd93433dee1c02cc17227')
+sha256sums=('b724e7deba511d888c29f7e150abb2865522cdf9bb39d2ed84c653cbdffd20e6')
 
 prepare() {
   cd "OpenModelica-v${pkgver}"

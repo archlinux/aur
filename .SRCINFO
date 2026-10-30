@@ -1,6 +1,6 @@
 pkgbase = openmodelica
 	pkgdesc = Open-source Modelica-based modeling and simulation environment
-	pkgver = 1.27.1
+	pkgver = 1.27.2
 	pkgrel = 1
 	url = https://www.openmodelica.org
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = openmodelica
 	depends = zip
 	provides = openmodelica-omc
 	options = !lto
-	source = https://github.com/OpenModelica/OpenModelica/releases/download/v1.27.1/OpenModelica-v1.27.1-src-with-submodules.zip
-	sha256sums = 4e41ad73b11e47bab5dac54aa83c6bb4edc4a37188ebd93433dee1c02cc17227
+	source = https://github.com/OpenModelica/OpenModelica/releases/download/v1.27.2/OpenModelica-v1.27.2-src-with-submodules.zip
+	sha256sums = b724e7deba511d888c29f7e150abb2865522cdf9bb39d2ed84c653cbdffd20e6
 
 pkgname = openmodelica
