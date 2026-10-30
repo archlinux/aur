@@ -19,27 +19,27 @@ b2sums=('b44ed57edc860cc7cdc2f9a3751172e836ae76cb4b3ef3017db37d54492dd976589a7c0
 backup=("etc/ergochat/dnsbl-config.yaml")
 
 build() {
-    export GOPATH="$srcdir/gopath"
-    cd "${srcdir}/$_upstream_pkgname" || exit
+  export GOPATH="$srcdir/gopath"
+  cd "${srcdir}/$_upstream_pkgname" || exit
 
-    GIT_COMMIT="$(git rev-parse HEAD)" # 2>/dev/null)"
+  GIT_COMMIT="$(git rev-parse HEAD)" # 2>/dev/null)"
 
-    export CGO_CPPFLAGS="$CPPFLAGS"
-    export CGO_CFLAGS="$CFLAGS"
-    export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
 
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=vendor \
-        -modcacherw \
-        -ldflags "-X main.commit=${GIT_COMMIT} -compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" \
-        -v \
-        .
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=vendor \
+    -modcacherw \
+    -ldflags "-X main.commit=${GIT_COMMIT} -compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" \
+    -v \
+    .
 }
 
 package() {
-    cd "$srcdir/$_upstream_pkgname" || exit
-    install -Dm755 oragono-dnsbl "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 config.yaml "$pkgdir/etc/ergochat/dnsbl-config.yaml"
+  cd "$srcdir/$_upstream_pkgname" || exit
+  install -Dm755 oragono-dnsbl "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 config.yaml "$pkgdir/etc/ergochat/dnsbl-config.yaml"
 }
