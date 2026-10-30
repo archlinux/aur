@@ -1,7 +1,7 @@
 pkgbase = xdm-app
 	pkgdesc = Fast, resumable download accelerator and video downloader with HLS/DASH support
 	pkgver = 9.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xtremedownloadmanager.com/
 	arch = x86_64
 	arch = aarch64
@@ -23,6 +23,7 @@ pkgbase = xdm-app
 	optdepends = gtk3: native GTK file chooser dialogs
 	optdepends = alsa-lib: sound notifications
 	conflicts = xdm-app-bin
+	conflicts = xdman-bin
 	conflicts = xdman
 	conflicts = xdman_gtk
 	replaces = xdman

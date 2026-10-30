@@ -34,7 +34,7 @@
 
 pkgname=xdm-app
 pkgver=9.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, resumable download accelerator and video downloader with HLS/DASH support'
 arch=('x86_64' 'aarch64')
 url='https://xtremedownloadmanager.com/'
@@ -47,7 +47,10 @@ optdepends=(
   'alsa-lib: sound notifications'
 )
 makedepends=('maven' 'zip' 'unzip' 'binutils')
-conflicts=('xdm-app-bin' 'xdman' 'xdman_gtk')
+# xdman-bin repackages the same upstream 9.x app image into the same /opt/xdm-app
+# (it installs /usr/bin/xdm-app and /usr/bin/xdman), so more than one of these can
+# never be installed at once.
+conflicts=('xdm-app-bin' 'xdman-bin' 'xdman' 'xdman_gtk')
 replaces=('xdman' 'xdman_gtk')
 options=('!strip' '!debug')
 
