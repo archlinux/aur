@@ -1,0 +1,2 @@
+#!/bin/sh
+h5cc "$@" | sed '/Extra libraries/s/;/ /g'

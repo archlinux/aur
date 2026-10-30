@@ -26,6 +26,8 @@ pkgbase = gwyddion-no-python2
 	provides = gwyddion
 	conflicts = gwyddion
 	source = https://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.71.tar.xz
+	source = h5cc-fix
 	sha256sums = 2df721befccbe4d5ee2ba564b32e69341f8ce1de637e2045838a09a2d46b5dba
+	sha256sums = 48d271be55b9a86f6d1e0f1a94e7e1ab7004fbdf0bcd36fc2d0dbd32353177a2
 
 pkgname = gwyddion-no-python2

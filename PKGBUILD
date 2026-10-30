@@ -23,8 +23,9 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'hdf5: import of Ergo data files')
 provides=('gwyddion')
 conflicts=('gwyddion')
-source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$_pkgname-$pkgver.tar.xz)
-sha256sums=('2df721befccbe4d5ee2ba564b32e69341f8ce1de637e2045838a09a2d46b5dba')
+source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$_pkgname-$pkgver.tar.xz h5cc-fix)
+sha256sums=('2df721befccbe4d5ee2ba564b32e69341f8ce1de637e2045838a09a2d46b5dba'
+            '48d271be55b9a86f6d1e0f1a94e7e1ab7004fbdf0bcd36fc2d0dbd32353177a2')
 
 build() {
   cd $_pkgname-$pkgver
@@ -33,7 +34,7 @@ build() {
   export CPPFLAGS="-I/usr/include/minizip ${CPPFLAGS}"
   export CFLAGS="-I/usr/include/minizip ${CFLAGS}"
 
-  ./configure --prefix=/usr --sysconfdir=/etc \
+  H5CC=../../h5cc-fix ./configure --prefix=/usr --sysconfdir=/etc \
               --localstatedir=/var --libexecdir=/usr/lib --with-minizip \
               --with-python=no --enable-pygwy=no
   make
