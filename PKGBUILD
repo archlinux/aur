@@ -1,15 +1,15 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 pkgname=katiecad-git
 _pkgname=katiecad
-pkgver=0.2.2.r0.g0000000
+pkgver=1.1.1.r0.g0000000
 pkgrel=1
-pkgdesc="Lightweight CAD drawing tool (Python/Tkinter) with DXF/DWG support"
+pkgdesc="Open-source electrical CAD with full 2D CAD and simple 3D modelling (Python/Tkinter)"
 arch=('any')
 url="https://github.com/Merecete/KatieCAD"
 license=('MIT')
-depends=('python' 'tk' 'python-pillow' 'python-ezdxf')
+depends=('python' 'tk' 'python-pillow' 'python-ezdxf' 'python-pypdf')
 optdepends=(
-  'python-ezdwg: extended DWG import (pip: python -m pip install ezdwg)'
+  'python-ezdwg: extended DWG import (not packaged for Arch; pip install ezdwg)'
   'oda-file-converter: DWG conversion via ODA File Converter'
   'libredwg: DWG conversion via dwg2dxf'
 )
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/KatieCAD"
-  ver=$(python -c 'from katiecad_manifest import VERSION; print(VERSION)' 2>/dev/null || echo "0.2.2")
+  ver=$(python -c 'from katiecad.manifest import VERSION; print(VERSION)' 2>/dev/null || echo "1.1.1")
   printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -34,22 +34,24 @@ package() {
   install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
   install -d "$pkgdir/usr/share/metainfo"
 
-  install -m644 KatieCAD.py katiecad_*.py requirements.txt README.md "$pkgdir/usr/share/katiecad/"
+  # Program: package + entry point + data folders (resolved relative
+  # to the program folder, see katiecad/model/blocks.py symbol_ordner()).
+  install -m644 main.py "$pkgdir/usr/share/katiecad/"
+  cp -r katiecad "$pkgdir/usr/share/katiecad/"
+  for d in symbols title_blocks report_templates; do
+    [[ -d "$d" ]] && cp -r "$d" "$pkgdir/usr/share/katiecad/"
+  done
+  [[ -d docs ]] && cp -r docs "$pkgdir/usr/share/katiecad/"
+  install -m644 requirements.txt README.md "$pkgdir/usr/share/katiecad/"
 
-  # Launcher: prefer the wrapper shipped in packaging/ (after upstream
-  # merges the installers PR), otherwise generate an equivalent one.
-  if [[ -f packaging/katiecad ]]; then
-    install -m755 packaging/katiecad "$pkgdir/usr/bin/katiecad"
-  else
-    cat > "$pkgdir/usr/bin/katiecad" <<'EOF'
+  cat > "$pkgdir/usr/bin/katiecad" <<'EOF'
 #!/bin/sh
 set -e
-exec python3 /usr/share/katiecad/KatieCAD.py "$@"
+exec python3 /usr/share/katiecad/main.py "$@"
 EOF
-    chmod 0755 "$pkgdir/usr/bin/katiecad"
-  fi
+  chmod 0755 "$pkgdir/usr/bin/katiecad"
 
-  # Desktop entry: same fallback logic.
+  # Desktop entry: prefer shipped one, otherwise generate it.
   if [[ -f packaging/katiecad.desktop ]]; then
     install -m644 packaging/katiecad.desktop "$pkgdir/usr/share/applications/katiecad.desktop"
   else
@@ -58,8 +60,8 @@ EOF
 Version=1.0
 Type=Application
 Name=KatieCAD
-GenericName=CAD Drawing Tool
-Comment=Lightweight CAD drawing tool with DXF/DWG support
+GenericName=Electrical CAD
+Comment=Open-source electrical CAD with 2D CAD and 3D modelling
 Exec=katiecad %F
 Icon=katiecad
 Terminal=false
