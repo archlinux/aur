@@ -1,0 +1,8 @@
+post_install() {
+  cat <<'EOF'
+==> To enable zsh-claude-code, add this to your ~/.zshrc:
+      source /usr/share/zsh/plugins/zsh-claude-code/zsh-claude-code.plugin.zsh
+==> It requires the `claude` CLI on $PATH, logged in via `claude login`
+    or with ANTHROPIC_API_KEY set.
+EOF
+}

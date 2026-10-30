@@ -1,0 +1,17 @@
+pkgbase = zsh-claude-code-git
+	pkgdesc = Claude-powered helpers for zsh: ask, explain, and natural-language-to-command widgets
+	pkgver = 0.1.1.r7.g6aaa34f
+	pkgrel = 1
+	url = https://github.com/matheus-poli/zsh-claude-code
+	install = zsh-claude-code-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	optdepends = claude-code: the claude CLI the plugin wraps (any install method on $PATH works)
+	provides = zsh-claude-code
+	conflicts = zsh-claude-code
+	source = git+https://github.com/matheus-poli/zsh-claude-code.git
+	sha256sums = SKIP
+
+pkgname = zsh-claude-code-git
