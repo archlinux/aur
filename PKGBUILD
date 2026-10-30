@@ -50,8 +50,6 @@ prepare() {
 package() {
   cd squashfs-root
 
-  # The client only needs <prefix>/bin and <prefix>/share/cinnabar. Leaving AppRun out keeps its
-  # updater from treating this as an AppDir it may replace, so pacman stays the sole owner.
   install -d "$pkgdir/opt/$_pkgname"
   cp -r usr/bin usr/share "$pkgdir/opt/$_pkgname/"
 
