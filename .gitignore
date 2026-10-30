@@ -19,3 +19,7 @@ src/
 # End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
 
 powershell-dsc/
+
+# PowerShell tests downloaded by makepkg
+dsc.profileresource.Tests.ps1
+psprofile_*.dsc.yaml

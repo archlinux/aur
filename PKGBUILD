@@ -13,24 +13,44 @@ depends=(glibc libgcc bash)
 # PowerShell before 7.6.9-3 crashes when started from pwsh, which the PowerShell adapter does
 optdepends=('powershell>=7.6.9-3: PowerShell adapter and resources')
 makedepends=(git cargo tree-sitter-cli nodejs protobuf 'powershell>=7.6.9-3')
+checkdepends=(powershell-pester-4)
 # Upstream created the v3.3.0 tag from main (3.4.0-preview.1) instead of the release commit
 # on release/v3.3, which the published release was built from
 _commit="ea572fa755dbd49fb52339043409fbd50a625600"
+# PowerShell's test of its DSC resource for profiles, which needs dsc and so is run here instead of
+# in the powershell package
+_pwshver=7.6.9
+_pwshtests="https://raw.githubusercontent.com/PowerShell/PowerShell/v$_pwshver/test/powershell/dsc"
 source=("$pkgname::git+$url#commit=$_commit"
   "dsc-build.ps1"
   "dsc-test.ps1"
+  "dsc-profile-test.ps1"
   "dsc-install.ps1"
-  "osinfo-rolling-release.patch")
+  "osinfo-rolling-release.patch"
+  "$_pwshtests/dsc.profileresource.Tests.ps1"
+  "$_pwshtests/psprofile_currentuser_allhosts.dsc.yaml"
+  "$_pwshtests/psprofile_currentuser_currenthost.dsc.yaml"
+  "$_pwshtests/psprofile_export.dsc.yaml")
 sha512sums=('4a52d6505cc110c2b14a0609994d3a30c6bc2a1cca8bd01e7eed76eca5c8d41ad25e991b7763b0ff5a94ec4bbb7d1a724818625336939b37649bc302fd2bafb1'
   '32354322f14010d8a8bdb69edaa3858b1f6a395b88f83eeb9fdf97e5c6cb90210551fd6997e74b5bfc620c28f9fdeb9e2ded0950bcb8109a478f960bde6da71c'
   '42ac292c0153c023f331c8e625eabe7b47fc4a3994339efdacaa907284bfb94d93110a249e0f626f055580ef31267fd94bc762d627d1bc23132e7d8f402e7e10'
+  '09892272b6a2e254a02b16fe886f10d38e0393613eeeb815fa709e0adf9c012d51371432a6b2107c46ee42137b6b8c00ad4ad186b7e4f18d5bb4807838226415'
   '3d9f086aa6bcd667fdcb9db5aaf121385b916fd335d42449b87b41aec293187c6a53804cb2ccddb85a370c0941460cff1f3eb762fb729cf5b7017f21d936e0c3'
-  'bf7f14353e8012043e5e323ad984729ce8c163a7b02c53f9ba3a0a90b3acbf8162370114cd2ae4cc1d725a72f9f3930d044c7a3cd29c3e9efb19116cf24dff57')
+  'bf7f14353e8012043e5e323ad984729ce8c163a7b02c53f9ba3a0a90b3acbf8162370114cd2ae4cc1d725a72f9f3930d044c7a3cd29c3e9efb19116cf24dff57'
+  'e135b85886f7f1e96cd115b60dbaed947257720283c4db93da5f9dd5de0a09b0e238a6fbc8d6058adbd04e25abded3c7ea55b7ba76dfeec82d3f026e371a8b2b'
+  '30bce0c6ed3ebacaf246112c7cfa3ce225fb32c860aff6a6de00e8ac2864590d7c54c663c2ca6e1e119615ad83e54e441a6b5c77065b3690252239c77f8398c9'
+  '3ced6c483d068986e248312085e6241922139bfee10c718a8a0d883ed62dc4e37bf2d0ab9046b79b991fe2867bdcbdefd33a6353f4302ab9a3479fc78b610df4'
+  '9fb2d467b065223115d22b7c8def7b5655b94a9ffccd4759c6e3bf702454b5b375a22775ea2fbf0424fedfa3f9d7eedd3f641f86409fa188a04234e263762cb4')
 b2sums=('6b85f40d3aa0cdc98a3ca6fc64542be38ea62b69b08a5cb7ab666e810fa81882834799394755e7c5b2fb473e7ae275f63e2f0f53e19a862f467cde57a4231bd3'
   'be83f1a08333a654d54d2744c3c270c89ea031c4e79ab8f8a1b22646c6d5350cd8638d20e24745e4f27054e178bdd6720b1bf1c8e25d0fdc28a90e1bedd501f9'
   'b9847257dd67b82122397627bb2a09ed405349489da53ebc13367ac69b8003b919fb2f7ba1727f10d97096a9d8b0308021dfbf1918a6dd979444a8bc8286bffb'
+  'ec2b170b1e54b10de1deed49e54684c8437b658765cce345c34f0f966fca0cd329ed70a7cd6d829ee6ea2b92186126aeb1a913923e07c79b9f447662c2353277'
   '261e33f2beacfaa4e54a5401c33301d0b20a43b3f6d1676b48384d386809332b38d5eb3d49453e40778bb9959803ce042d22adaccf87ac6c1d94ec5e9c6586ef'
-  '3ac05a07200e7099e6f880dfb9a52091adaa5c26f062869962b554b72a028e8ed6853c06832837caba03944eef094cd100b3a54d87e46a8e5d37bfbc0b8ae5d9')
+  '3ac05a07200e7099e6f880dfb9a52091adaa5c26f062869962b554b72a028e8ed6853c06832837caba03944eef094cd100b3a54d87e46a8e5d37bfbc0b8ae5d9'
+  'e87a47ed617760747b1c44a9253cbd2f01f6603d9f64647910932111f696a443799b3d4fb10f97e0902e3fd477a1b2909e060c50a8f823b5b1b3fee36f6e4370'
+  'dc5d32d6e4e498a034e3acdd78b88bf638a7a44ef5f4ff0c2bc9e00ec6a743bc7844bc3bdee10de56872f774eadd22468a1368d3c9b71dff8577350f9d1f0e6d'
+  '484c0bbc4dd4bb5c6a20be4a0c73f91c3574c92247040ee61b5b2e17db8b180f7e2af5f0e467587e64fafce5a8de58e04659cef365bcb738dbdb5595dec90b8e'
+  '4052ddb2f7675b6c94fcffc29fe5c6ed3a4538604b1588e76f5808ab1024ffc45bdeb3e719f62fad08478932635339c28a0f56e0e033452025c7c55105f873f9')
 options=('!lto' '!debug')
 
 prepare() {
@@ -74,6 +94,8 @@ check() {
 
   cd "$srcdir" || exit
   pwsh -NoProfile -NonInteractive -File dsc-test.ps1 -SourcePath "$srcdir/$pkgname" -ModulePath "$srcdir/test-modules"
+  pwsh -NoProfile -NonInteractive -File dsc-profile-test.ps1 -DscRoot "$srcdir/$pkgname/bin/release" \
+    -TestPath "$srcdir/dsc.profileresource.Tests.ps1"
 }
 
 package() {

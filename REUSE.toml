@@ -5,6 +5,7 @@ path = [
   "PKGBUILD",
   "dsc-build.ps1",
   "dsc-test.ps1",
+  "dsc-profile-test.ps1",
   "dsc-install.ps1",
   "README.md",
   ".SRCINFO",
