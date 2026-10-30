@@ -1,0 +1,4 @@
+[powershell-mmi-bin]
+source = "jq"
+url = "https://api.nuget.org/v3-flatcontainer/microsoft.management.infrastructure.runtime.unix/index.json"
+filter = '.versions | map(select(contains("-") | not)) | last'

@@ -1,0 +1,19 @@
+pkgbase = powershell-mmi-bin
+	pkgdesc = Microsoft.Management.Infrastructure (MMI) for PowerShell, Microsoft's build
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://www.nuget.org/packages/Microsoft.Management.Infrastructure.Runtime.Unix
+	arch = any
+	license = MIT
+	depends = powershell
+	provides = powershell-mmi
+	conflicts = powershell-mmi
+	noextract = Microsoft.Management.Infrastructure.Runtime.Unix.3.0.0.nupkg
+	source = Microsoft.Management.Infrastructure.Runtime.Unix.3.0.0.nupkg::https://api.nuget.org/v3-flatcontainer/microsoft.management.infrastructure.runtime.unix/3.0.0/microsoft.management.infrastructure.runtime.unix.3.0.0.nupkg
+	source = LICENSE-cf32fc695b32c2eae848b693395c09222fe1d2ae::https://raw.githubusercontent.com/PowerShell/MMI/cf32fc695b32c2eae848b693395c09222fe1d2ae/LICENSE
+	sha512sums = d8ae69c763aa128703ff2a159ff804fab46e22a4088759fc7017e1deda1227703caa72003dd20d2528b97b84f975e655e68a7afbe6100d9d63ee3490272580b7
+	sha512sums = 7e1ffcc72def4f29168cc76548669481d96a75efb72f1fc11031261cf2981baee101b33016e12645f39c46ca1df1459eceb36d0175c4fc9508133ac6794c78d7
+	b2sums = bf6f4bd7d51ebbf0cce6ef4ea8bc0a3a5f84ab3a98fa2cff1c86ae70dc60bdcba2dd6398c163d02524a1e9ef226b05c41e2f515f57c583bdb44be53ceeb6f6c6
+	b2sums = 4a1ade89d01202c542792e88640f2e2cf73f010b7f735113cfd4e21958c9cf75c5bd6160f07c3458e3b54fc40a5473567b0c965937add36ce97b07a6df1c57f3
+
+pkgname = powershell-mmi-bin
