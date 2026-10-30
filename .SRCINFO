@@ -1,12 +1,12 @@
 pkgbase = obs-aitum-multistream-bin
 	pkgdesc = OBS Studio plugin to multistream by aitum
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aitum/obs-aitum-multistream
 	arch = x86_64
 	groups = obs-aitum-plugins
 	license = GPL2
-	depends = obs-studio>=30.0.0
+	depends = obs-studio>=33.0.0
 	provides = obs-aitum-multistream
 	conflicts = obs-aitum-multistream
 	conflicts = obs-plugin-aitum-multistream-git

@@ -3,13 +3,13 @@ _pluginname=aitum-multistream
 _gitname=obs-${_pluginname}
 pkgname=obs-${_pluginname}-bin
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS Studio plugin to multistream by aitum"
 arch=('x86_64')
 url="https://github.com/Aitum/obs-aitum-multistream"
 license=('GPL2')
 groups=('obs-aitum-plugins')
-depends=('obs-studio>=30.0.0')
+depends=('obs-studio>=33.0.0')
 provides=("obs-${_pluginname}")
 conflicts=("${_gitname}" "obs-plugin-${_pluginname}-git")
 source=("${url}/releases/download/${pkgver}/${_pluginname}-linux-gnu.deb")
