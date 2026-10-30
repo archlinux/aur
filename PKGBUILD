@@ -13,7 +13,7 @@ export DOTNET_SYSTEM_NET_DISABLEIPV6
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.3.308
+pkgver=1.3.351
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/projects/Ryubing"
