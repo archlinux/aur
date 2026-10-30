@@ -1252,6 +1252,27 @@ index 3fafbbf8f8..e2d5223ee9 100644
 +    <DefineConstants>$(DefineConstants);MMI</DefineConstants>
 +  </PropertyGroup>
  </Project>
+diff --git a/test/powershell/Host/Startup.Tests.ps1 b/test/powershell/Host/Startup.Tests.ps1
+index 35c22fefe5..45fb857746 100644
+--- a/test/powershell/Host/Startup.Tests.ps1
++++ b/test/powershell/Host/Startup.Tests.ps1
+@@ -76,6 +76,16 @@ Describe "Validate start of console host" -Tag CI {
+             )
+         }
+ 
++        # Builds without MMI (-p:UseMmi=false, see PowerShell.Common.props) don't load it, nor
++        # netstandard.dll unless Application Insights, the other .NET Standard assembly, is loaded
++        $referencedAssemblies = [psobject].Assembly.GetReferencedAssemblies().Name
++        if ($referencedAssemblies -notcontains 'Microsoft.Management.Infrastructure') {
++            $allowedAssemblies = $allowedAssemblies -ne 'Microsoft.Management.Infrastructure.dll'
++            if ($referencedAssemblies -notcontains 'Microsoft.ApplicationInsights') {
++                $allowedAssemblies = $allowedAssemblies -ne 'netstandard.dll'
++            }
++        }
++
+         if ($IsWindows) {
+             $profileDataFile = Join-Path $env:LOCALAPPDATA "Microsoft\PowerShell\StartupProfileData-NonInteractive"
+         } else {
 diff --git a/test/powershell/Language/Parser/TypeAccelerator.Tests.ps1 b/test/powershell/Language/Parser/TypeAccelerator.Tests.ps1
 index 99925600f6..b0b50fd482 100644
 --- a/test/powershell/Language/Parser/TypeAccelerator.Tests.ps1

@@ -97,6 +97,27 @@ index fbb7f58828..d9ba568a61 100644
 +    }
 +#endif
  }
+diff --git a/test/powershell/Host/Startup.Tests.ps1 b/test/powershell/Host/Startup.Tests.ps1
+index 35c22fefe5..9ea7f2fe87 100644
+--- a/test/powershell/Host/Startup.Tests.ps1
++++ b/test/powershell/Host/Startup.Tests.ps1
+@@ -60,6 +60,16 @@ Describe "Validate start of console host" -Tag CI {
+             'System.Xml.ReaderWriter.dll'
+         )
+ 
++        # Builds without telemetry (-p:UseTelemetry=false, see PowerShell.Common.props) don't load
++        # Application Insights, nor netstandard.dll unless MMI, the other .NET Standard assembly, is loaded
++        $referencedAssemblies = [psobject].Assembly.GetReferencedAssemblies().Name
++        if ($referencedAssemblies -notcontains 'Microsoft.ApplicationInsights') {
++            $allowedAssemblies = $allowedAssemblies -ne 'Microsoft.ApplicationInsights.dll'
++            if ($referencedAssemblies -notcontains 'Microsoft.Management.Infrastructure') {
++                $allowedAssemblies = $allowedAssemblies -ne 'netstandard.dll'
++            }
++        }
++
+         if ($IsWindows) {
+             $allowedAssemblies += @(
+                 'Microsoft.PowerShell.CoreCLR.Eventing.dll'
 diff --git a/test/powershell/engine/Basic/Telemetry.Tests.ps1 b/test/powershell/engine/Basic/Telemetry.Tests.ps1
 index 0da08316a5..79d3c0eefe 100644
 --- a/test/powershell/engine/Basic/Telemetry.Tests.ps1
