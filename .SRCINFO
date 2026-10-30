@@ -1,6 +1,6 @@
 pkgbase = nemo-speech-cuda-bin
 	pkgdesc = Native speech recognition, synthesis, and translation with CUDA support
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/NeMo-Speech.cpp
 	arch = x86_64
@@ -16,14 +16,14 @@ pkgbase = nemo-speech-cuda-bin
 	optdepends = alsa-lib: microphone capture through ALSA
 	optdepends = libpulse: microphone capture through PulseAudio
 	optdepends = jack: microphone capture through JACK
-	provides = nemo-speech=0.2.0
+	provides = nemo-speech=0.3.0
 	conflicts = nemo-speech
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/v0.2.0/nemo-speech-0.2.0-linux-x86_64-cuda.tar.gz
+	source_x86_64 = https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/v0.3.0/nemo-speech-0.3.0-linux-x86_64-cuda.tar.gz
 	depends_x86_64 = nvidia-utils
-	sha256sums_x86_64 = aef573fcc6c2c759401d2ed03e5ca9e401ed23b0e38cb852d917080c1e2d4515
-	source_aarch64 = https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/v0.2.0/nemo-speech-0.2.0-linux-aarch64-cuda12.tar.gz
-	sha256sums_aarch64 = 634c622ac77f6fea89ef605c62d684e1f7c45f0c0026be570151481b5ab2379a
+	sha256sums_x86_64 = eca00a1f67d3ca200ddba11dd71c4f3d67e044cc0939d17d073978e40b995917
+	source_aarch64 = https://github.com/NVIDIA/NeMo-Speech.cpp/releases/download/v0.3.0/nemo-speech-0.3.0-linux-aarch64-cuda12.tar.gz
+	sha256sums_aarch64 = 8bc2b18589f6493373af1163ecd937cc6eba91b0305c585c6b898cd3b8a47028
 
 pkgname = nemo-speech-cuda-bin
