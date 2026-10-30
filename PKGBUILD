@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=4.8.1
+pkgver=4.9.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Transparent chat overlay for streamers. Twitch, YouTube, and Kick in one window."
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "modifiers_linux.go"
 )
-sha256sums=('a1073d6833bd261ae9712a2590efbcf761591b3adc7e6238c22f8a9eb6268c94'
+sha256sums=('a1de9e2788ea271949669cc2b8aca0f08a87f4426a777e9247002a1adbab96ca'
             '131035c2816a154359af542ff002e53f48419311e6ab083eb9f944a5e2f0d24c')
 _get_project_dir() {
 	local d
@@ -40,12 +40,25 @@ _ensure_local_nvm() {
 	nvm install "${_nodeversion}"
 	nvm use "${_nodeversion}"
 }
-_set_build_env() {
-	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export ELECTRON_BUILDER_OFFLINE=true
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+_set_go_build_env() {
+	export HOME="${srcdir}/.home"
+	export GOPATH="${HOME}/go"
+	export GOCACHE="${HOME}/go-build"
+	export GOENV="${HOME}/go/env"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOTOOLCHAIN=local
+	export GOWORK=off
+	mkdir -p "${HOME}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
+	: > "${GOENV}"
+	export PATH="${GOPATH}/bin:${PATH}"
+}
+_set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -75,21 +88,6 @@ _set_build_env() {
 		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
 			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
-    export GOPATH="${HOME}/go"
-	export GOCACHE="${HOME}/go-build"
-	export GOENV="${HOME}/go/env"
-	export XDG_CONFIG_HOME="${HOME}/.config"
-	export XDG_CACHE_HOME="${HOME}/.cache"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	export GOTOOLCHAIN=local
-	export GOWORK=off
-    export PATH="${PATH}:$(go env GOPATH)/bin"
-	mkdir -p "${HOME}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
-	: > "${GOENV}"
 }
 prepare() {
     cd "$(_get_project_dir)"
@@ -100,7 +98,8 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
     _ensure_local_nvm
-    _set_build_env
+    _set_pnpm_build_env
+	_set_go_build_env
     cp "${srcdir}/modifiers_linux.go" internal/hotkey/modifiers_linux.go
     go install github.com/wailsapp/wails/v3/cmd/wails3@latest
     cd "$(_get_project_dir)/frontend"
@@ -110,7 +109,8 @@ prepare() {
 build() {
 	cd "$(_get_project_dir)/build"
     _ensure_local_nvm
-    _set_build_env
+    _set_pnpm_build_env
+	_set_go_build_env
     go mod tidy
     wails3 generate bindings -f '-tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1"' -clean=true -ts
     cd "$(_get_project_dir)/frontend"
