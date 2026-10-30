@@ -1,7 +1,7 @@
 pkgbase = reasonance-bin
 	pkgdesc = Accessible IDE over agentic CLIs: chat, preview and voice instead of a terminal (prebuilt binary)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/RSNNC/reasonance-build
 	arch = x86_64
@@ -23,6 +23,6 @@ pkgbase = reasonance-bin
 	options = !strip
 	options = !debug
 	source = reasonance-1.0.0-linux-x86_64.tar.gz::https://github.com/RSNNC/reasonance-build/releases/download/v1.0.0/reasonance-1.0.0-linux-x86_64.tar.gz
-	sha256sums = 88a4c2a106f6e8633d021b16b4fdc181d8bed4bde6b3f090f3a531a5336ea751
+	sha256sums = c4af5c2a8ec61eaa3ba155be58cb5fcadbf089b10e39c3eaad5dbc5e48a1e5ec
 
 pkgname = reasonance-bin

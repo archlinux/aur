@@ -7,7 +7,7 @@
 
 pkgname=reasonance-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 # Il vecchio Reasonance (TNASRLSB/reasonance) su AUR era arrivato alla 3.2.x: senza `epoch` pacman
 # vedrebbe la 1.0.0 come più vecchia e non la proporrebbe mai a chi ha il pacchetto.
 epoch=1
@@ -35,7 +35,7 @@ conflicts=('reasonance')
 # Il binario arriva già ridotto all'osso dalla release: niente strip né pacchetto di debug.
 options=('!strip' '!debug')
 source=("reasonance-${pkgver}-linux-x86_64.tar.gz::https://github.com/RSNNC/reasonance-build/releases/download/v${pkgver}/reasonance-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('88a4c2a106f6e8633d021b16b4fdc181d8bed4bde6b3f090f3a531a5336ea751')
+sha256sums=('c4af5c2a8ec61eaa3ba155be58cb5fcadbf089b10e39c3eaad5dbc5e48a1e5ec')
 
 package() {
 	cd "reasonance-${pkgver}-linux-x86_64"
