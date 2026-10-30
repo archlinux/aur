@@ -3,7 +3,7 @@ pkgname=mqtt5-explorer-bin
 _pkgname='MQTT5 Explorer'
 pkgver=2.0.1
 _electronversion=44
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple yet feature-rich client to visualize data of any MQTT broker."
 arch=('x86_64')
 url="https://flathub.org/apps/io.github.Omniaevo.mqtt5-explorer"
@@ -16,10 +16,12 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('fb6acca7019f3478b1e440c5a4ff3c9b411519258fab6b7438a28ba7f09f7e0f'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -36,20 +38,16 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    rm -rf "${srcdir}/squashfs-root"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Video;/Video;AudioVideo;/g" "$(_get_app_dir)/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
