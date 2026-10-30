@@ -1,0 +1,5 @@
+[termilly-bin]
+source = "github"
+github = "termilly/termilly"
+use_latest_release = true
+prefix = "v"

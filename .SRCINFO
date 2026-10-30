@@ -1,0 +1,27 @@
+pkgbase = termilly-bin
+	pkgdesc = A terminal that keeps your agents, servers and projects in view
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/termilly/termilly
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = glib2
+	depends = gtk3
+	depends = bash
+	depends = libnotify
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	provides = termilly
+	conflicts = termilly
+	options = !strip
+	source = README-1.4.0.md::https://raw.githubusercontent.com/termilly/termilly/v1.4.0/README.md
+	source = LICENSE-1.4.0::https://raw.githubusercontent.com/termilly/termilly/v1.4.0/LICENSE
+	sha256sums = a2d4fc31e35605ad647e8991bdf7b5b786b05b9367fe17a0d03a88504b457087
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = termilly-x86_64-1.4.0.deb::https://github.com/termilly/termilly/releases/download/v1.4.0/termilly_1.4.0_amd64.deb
+	sha256sums_x86_64 = 2d78771bfb9e5dfd18ebc3aa3e38e7c75d0bda92dc7d867ff5a3c8a4e92fc80d
+
+pkgname = termilly-bin
