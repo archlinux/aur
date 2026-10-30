@@ -3,7 +3,7 @@
 _pkgauthor=eugenioenko
 _pkgname=autentico
 pkgname=${_pkgname}-bin
-pkgver=3.0.0
+pkgver=3.1.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A self-hosted OpenID Connect Identity Provider"
@@ -36,9 +36,9 @@ sha256sums=('d72a03a5318ad54abf104d5217695d8a876476a7ceb7946de93c4ca038a3a227'
             '2fe44e290ffa0c42b980b57b390ad064bb44d9c9aad9638484202dea422398dd'
             '3b79f7d6ba8815fe1ca808ce1f58156413b39d56651008aa7a6f02102202846f'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '4ed667a893932b1e87e82a06f30c8891361e8084dd58135d83fd8f21835ba49f')
-sha256sums_x86_64=('9bbc148a056747b2f8b2daed4768149cf6e557b1881d1514c022275f74596259')
-sha256sums_aarch64=('c0252311e1ea9c84c8c0c4bf6cddb4d7443851d09fced873de6f2a7798dd13e8')
+            'efd90294cbba0787620cb451b6be595e1316c644a70a8cf5139e81eb95c631cc')
+sha256sums_x86_64=('978e95a6de48beed599c6c8b1359323793db7c71a69aca75b09be87eb5d30298')
+sha256sums_aarch64=('9b7eb43b2d806b2c0fc90f2c3dfd2f8cbdb88ae62b0f465d261f643828ff83bc')
 
 
 package() {
