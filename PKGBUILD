@@ -1,22 +1,21 @@
 pkgname=pocketbase-bin
-pkgver=0.40.6
+pkgver=0.41.1
 pkgrel=1
 pkgdesc='Open Source realtime backend in 1 file'
 arch=(x86_64 aarch64 armv7h)
 url='https://pocketbase.io'
-license=('MIT')
-provides=('pocketbase')
-conflicts=('pocketbase')
-depends=('glibc')
-_src='https://github.com/pocketbase/pocketbase'
-source_x86_64=("$_src/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_amd64.zip")
-source_aarch64=("$_src/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_arm64.zip")
-source_armv7h=("$_src/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_armv7.zip")
-sha256sums_x86_64=('0e1f609158ed945f809f8a02ae012aa0427129c66ebb63c1aee76f2c0309373f')
-sha256sums_aarch64=('d22c66ceb67ca92b7d767f36d826e848a276bcfa3c197ead20bf87c42208984f')
-sha256sums_armv7h=('33f1145b80531df8ecca8f6d90387f6f661e1169e313689fbb070d5ee21621c0')
+license=(MIT)
+provides=(pocketbase)
+conflicts=(pocketbase)
+_src='https://ganigeorgiev.com/meta/pocketbase/pocketbase/download'
+source_x86_64=("${_src}/v${pkgver}/pocketbase_${pkgver}_linux_amd64.zip")
+source_aarch64=("${_src}/v${pkgver}/pocketbase_${pkgver}_linux_arm64.zip")
+source_armv7h=("${_src}/v${pkgver}/pocketbase_${pkgver}_linux_armv7.zip")
+sha256sums_x86_64=('7504ec99a85fe405fc9941b4d94bdea20733b53707c8251b66fd0daa1444347e')
+sha256sums_aarch64=('341a249f97f4ff1ba8dfff81d357eb281cd346fbddae8b6ea43193f0647e036d')
+sha256sums_armv7h=('c04fd7d05323efdb0c7a55e46e4aa0e8f69203b10604d17e350b30c6e5528ec9')
 package() {
-  install -Dm755 pocketbase -t "$pkgdir/usr/bin"
-  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$_pkgname"
-  install -Dm644 CHANGELOG.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm755 pocketbase -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
