@@ -1,17 +1,18 @@
 pkgbase = gitside-bin
 	pkgdesc = VS Code-inspired source control panel for the terminal
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://dev-bhaskar8.github.io/gitside/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = git
+	depends = dbus
 	provides = gitside
 	conflicts = gitside
-	source_x86_64 = gitside-0.1.0-x86_64.tar.xz::https://github.com/dev-bhaskar8/gitside/releases/download/v0.1.0/gitside-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = cab285432d5176e8d1976cf3af7f78b154ca06a497b0b72a6c18fb208b0d2bd1
-	source_aarch64 = gitside-0.1.0-aarch64.tar.xz::https://github.com/dev-bhaskar8/gitside/releases/download/v0.1.0/gitside-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 65454189e1e0d28f4779751249a29b43303a5066f0ec4663a1c12de247567edf
+	source_x86_64 = gitside-0.2.0-x86_64.tar.xz::https://github.com/dev-bhaskar8/gitside/releases/download/v0.2.0/gitside-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = b101146385c6353cbfc5fdc9d93451e2770e5979a5fc9fc5c0a6395683fca117
+	source_aarch64 = gitside-0.2.0-aarch64.tar.xz::https://github.com/dev-bhaskar8/gitside/releases/download/v0.2.0/gitside-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = a33562afd7a84ed63f279438ef37d839a3c9fc3b3146c6ecf6a549670f84bd5a
 
 pkgname = gitside-bin
