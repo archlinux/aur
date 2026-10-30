@@ -1,6 +1,6 @@
 # Maintainer: Ваше Имя <you@example.com>
 pkgname=icon-theme-toolkit
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Toolkit for creating and editing Linux icon themes"
 arch=('any')
