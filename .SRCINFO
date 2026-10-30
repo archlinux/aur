@@ -1,6 +1,6 @@
 pkgbase = ldap-user-manager
 	pkgdesc = A PHP web-based interface for LDAP user account management and self-service password change
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/wheelybird/ldap-user-manager
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = ldap-user-manager
 	optdepends = openldap: LDAP server
 	options = !strip
 	backup = etc/webapps/ldap-user-manager/config.env.php
-	source = ldap-user-manager-2.2.1.tar.gz::https://github.com/wheelybird/luminary/archive/refs/tags/v2.2.1.tar.gz
+	source = ldap-user-manager-2.2.2.tar.gz::https://github.com/wheelybird/luminary/archive/refs/tags/v2.2.2.tar.gz
 	source = config.env.php
-	sha256sums = 689132fd536dff34fc5dd3473c41e1e64f0ade48fca76e5b17d1672f58f89e42
+	sha256sums = f31f35f783cf8c6f1f7f0b44032f64abed9f3cc2b67e799b831981c8f789bf7f
 	sha256sums = f38f5fb62435791422dadca7bf683dc12fe2d482f9594a13a6d33df00b72cf28
 
 pkgname = ldap-user-manager
