@@ -2,16 +2,16 @@
 # Stamped by tools/aur.sh at a release, which fills the placeholders.
 
 pkgname=arch-os-manager
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Update, maintain and repair Arch Linux from one place'
 arch=('x86_64')
 url='https://github.com/murkl/arch-os-manager'
 # The program, then Fira Code and the Nerd Fonts symbols it carries.
 license=('GPL-3.0-or-later' 'OFL-1.1' 'MIT')
-# checkupdates needs fakeroot, which pacman-contrib only suggests, and a terminal finds the
-# icons in ttf-nerd-fonts-symbols.
-depends=('glibc' 'libgcc' 'sudo' 'pacman-contrib' 'fakeroot' 'ttf-nerd-fonts-symbols')
+# checkupdates needs fakeroot, which pacman-contrib only suggests, config updates need
+# diffutils, which base lacks, and a terminal finds the icons in ttf-nerd-fonts-symbols.
+depends=('glibc' 'libgcc' 'sudo' 'pacman-contrib' 'fakeroot' 'diffutils' 'ttf-nerd-fonts-symbols')
 makedepends=('cargo')
 optdepends=(
     'paru: builds and updates packages from the AUR'
@@ -26,7 +26,7 @@ provides=('system-manager')
 conflicts=('system-manager')
 install=arch-os-manager.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bf2fb7d18fc8c83694a43a48135458c1d8d89828fcb9e4b9a5a9655e9c9d37b1')
+sha256sums=('8812fd02fe34e0409d27454f93c02ba808ef68eb471040a93f5d7e5bd1b6ff8e')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
