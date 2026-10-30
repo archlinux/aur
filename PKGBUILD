@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=webdav
-pkgver=5.17.2
+pkgver=5.17.3
 pkgrel=1
 pkgdesc='Standalone WebDAV server'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         'webdav.service'
         'webdav.sysusers'
         'webdav.tmpfiles')
-sha256sums=('d4d84822f0ceb5255cf7b360e33218b3ff2f0e54c2167c39a392565561a11f96'
+sha256sums=('326b3ceac4dfe8980b6afc6592076afc2a5b753c8586e615e5f5f13af3147e2c'
             'd178253eaf9dee6faad783ec9a1d61c0babca6ddced3216ee81957e05873b201'
             'f775c6ec0eb47472b7d7a13a10508b5aedf2fa7a92aeb4a8492484e64dd64b56'
             '2e6ceac8a2cbdd85ceb6ebbb7cae7d1ad00b14fc8a7e131da9c7ef573f3246e0'
