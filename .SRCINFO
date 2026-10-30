@@ -1,7 +1,7 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
 	pkgver = 0.9.157
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rootapp.com
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -54,6 +54,7 @@ pkgbase = rootapp-bin
 	optdepends = xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops
 	optdepends = xdg-desktop-portal-kde: file-picker and screen-share backend on KDE Plasma
 	optdepends = xdg-desktop-portal-wlr: screen-share backend on wlroots compositors
+	optdepends = pipewire: PipeWire daemon that feeds the portal ScreenCast capture
 	optdepends = pipewire-pulse: PulseAudio-compatible server for voice and audio devices
 	optdepends = gamemode: GameMode daemon for performance mode during calls and streams
 	optdepends = vlc-plugin-ffmpeg: video and stream playback through LibVLC
@@ -65,5 +66,6 @@ pkgbase = rootapp-bin
 	source = Root-0.9.157-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
 	source = LICENSE
 	sha256sums = 573f7bbb18ae5ebe9ae8bfcbda4ce93c35f404c9066c62bb716eb5d3115ba2cb
+	sha256sums = 8826596bcd18e3b9019b7bc065a0d22429e7447b2940c64ce500c22c7746a93e
 
 pkgname = rootapp-bin
