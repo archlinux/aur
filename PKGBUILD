@@ -5,7 +5,7 @@
 
 pkgname=sonic-file-search-ui
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A dedicated search application for SonicDE'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-file-search-ui'
