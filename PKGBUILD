@@ -3,7 +3,7 @@
 pkgname=xodus-nexus-bin
 _pkgname=xodus-nexus
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 _appimage="Xodus-Nexus-${pkgver}-x86_64.AppImage"
 pkgdesc='Xbox-inspired launcher for Microsoft Store PC games on Linux, built on Xodus'
 arch=(x86_64)
@@ -13,6 +13,9 @@ depends=(alsa-lib gtk3 nss xdg-utils)
 optdepends=(
   'org.freedesktop.secrets: keep the Xbox account signed in'
   'steam: Add to Steam integration'
+  'python-gobject: Nexus Overlay'
+  'webkit2gtk-4.1: Nexus Overlay'
+  'gtk-layer-shell: Nexus Overlay on Wayland'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
