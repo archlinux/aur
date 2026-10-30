@@ -1,0 +1,38 @@
+pkgbase = libfprint-betterlife-347d-git
+	pkgdesc = libfprint-2 with native Blestech Betterlife 347d:0302 (MOC) and 347d:0304 (MOH) USB fingerprint sensor support
+	pkgver = 1.94.10.r1.g1b644d7
+	pkgrel = 1
+	url = https://github.com/arqueon/betterlife-347d-libfprint
+	arch = x86_64
+	arch = aarch64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libgudev
+	depends = libgusb
+	depends = libusb
+	depends = opencv
+	depends = openssl
+	depends = pixman
+	optdepends = fprintd: D-Bus daemon and PAM module for fingerprint authentication
+	optdepends = python-gobject: for betterlife-fprintd multi-reader enrollment and PAM status CLI
+	provides = libfprint=1.94.10.r1.g1b644d7
+	provides = libfprint-2.so
+	provides = libfprint-betterlife-347d
+	provides = libfprint-cs9711
+	conflicts = libfprint
+	conflicts = libfprint-cs9711-rebase-git
+	source = libfprint-CS9711::git+https://github.com/archeYR/libfprint-CS9711.git#branch=cs9711-rebase
+	source = betterlife-347d-libfprint::git+https://github.com/arqueon/betterlife-347d-libfprint.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libfprint-betterlife-347d-git
