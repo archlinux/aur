@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_zig=anyzig
+_zig=zig
 pkgname="zine"
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Fast, Scalable, Flexible Static Site Generator (SSG)"
 arch=(
@@ -18,15 +18,15 @@ depends=(
   'glibc'
 )
 makedepends=(
-  'anyzig'
+  # 'anyzig'
   'git'
-  # 'zig'
+  'zig>=0.17'
 )
 _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
 )
-b2sums=('6025cd420991dd05db995143e4fb26ea2e79c52a9952fffc210e768be7f9192bb8a61be6640f488cfcfc06c10565ee4328fe1deb093e8fe726fb64f8e700db55')
+b2sums=('51c158991a3982f20a5ca0af634ab271c8f0dea1172ec7962d1e16a9caca954ccb55bf22dd11dd08bbc0323eef3fcbc2a923fdffd9959f040dc8e67e0ac61ea1')
 
 build() {
   local zig_options=(
