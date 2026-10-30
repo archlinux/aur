@@ -1,6 +1,6 @@
 # Maintainer: Vyrnexis <315210836+Vyrnexis@users.noreply.github.com>
 pkgname=inkpane-git
-pkgver=r42.97f641b
+pkgver=0.1.0.r0.g3e4d8e9
 pkgrel=1
 pkgdesc="Draw on your screen through a transparent Wayland overlay (layer-shell)"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd Inkpane
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  # The last release tag plus the commits since: 0.1.0.r3.g1a2b3c4
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
