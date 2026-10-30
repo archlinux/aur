@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve-studio-aacfix
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design. Studio edition with AAC audio decode restored (resolve-aacfix), requires license key or license dongle.
-	pkgver = 21.1.1
-	pkgrel = 2
+	pkgver = 21.1.2
+	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve-studio-aacfix.install
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = davinci-resolve-studio-aacfix
 	depends = luajit
 	depends = libc++
 	depends = libc++abi
-	provides = davinci-resolve-studio=21.1.1
+	provides = davinci-resolve-studio=21.1.2
 	conflicts = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio
@@ -46,7 +46,7 @@ pkgbase = davinci-resolve-studio-aacfix
 	options = !strip
 	options = !debug
 	options = !lto
-	source = file://DaVinci_Resolve_Studio_21.1.1_Linux.zip
+	source = file://DaVinci_Resolve_Studio_21.1.2_Linux.zip
 	source = davinci-control-panels-setup.sh
 	source = resolve-aacfix-0.1.1.tar.gz::https://github.com/josephg/resolve-aacfix/archive/refs/tags/v0.1.1.tar.gz
 	source = e9patch::git+https://github.com/GJDuck/e9patch.git#commit=682ab1f7f0480aa45edf1fd94457e5ee2dd01043
@@ -54,7 +54,7 @@ pkgbase = davinci-resolve-studio-aacfix
 	source = https://ffmpeg.org/releases/ffmpeg-6.0.1.tar.xz.asc
 	source = resolve-aacfix-gate1-register.patch
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
-	sha256sums = d4f87af1a28a283bba7d824684402b7447f922e5b8f68d56d131732ea12790a5
+	sha256sums = 60f7754d84fdce64860ae5f1824213f12f4a6cc2cc94342eda6b10198e7542eb
 	sha256sums = f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8
 	sha256sums = d09e4d046d964c80ba58b51e8fc253f1102af229dd3bd28d83197736e505d981
 	sha256sums = 1384cf1df809ae4429cf42ce55cefc081766a6baa5c51537dd9ef083ccebbe13

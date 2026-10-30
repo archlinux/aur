@@ -19,8 +19,8 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio-aacfix
-pkgver=21.1.1
-pkgrel=2
+pkgver=21.1.2
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition with AAC audio decode restored (resolve-aacfix), requires license key or license dongle.'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -53,7 +53,7 @@ source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "https://ffmpeg.org/releases/ffmpeg-${_ffmpeg_ver}.tar.xz"{,.asc}
         "resolve-aacfix-gate1-register.patch")
 # The ffmpeg tarball sum below is a placeholder: run `updpkgsums` once.
-sha256sums=('d4f87af1a28a283bba7d824684402b7447f922e5b8f68d56d131732ea12790a5'
+sha256sums=('60f7754d84fdce64860ae5f1824213f12f4a6cc2cc94342eda6b10198e7542eb'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8'
             'd09e4d046d964c80ba58b51e8fc253f1102af229dd3bd28d83197736e505d981'
             '1384cf1df809ae4429cf42ce55cefc081766a6baa5c51537dd9ef083ccebbe13'
@@ -116,8 +116,12 @@ prepare() {
   do
     _patchelf_paths[${_index}]="/opt/${_pkgname}/${_patchelf_paths[${_index}]}"
   done
+  # CEF's chrome-sandbox (new in 21.1.2) only needs libc, and patchelf can't
+  # grow it ("cannot normalize PT_NOTE segment: non-contiguous SHT_NOTE
+  # sections"), which aborted prepare().  Leave it as shipped.
   while IFS= read -r -d '' _file; do
     [[ -f "${_file}" && $(od -t x1 -N 4 "${_file}") == *"7f 45 4c 46"* ]] || continue
+    [[ "${_file}" == */ChromiumEmbeddedFramework/chrome-sandbox ]] && continue
     patchelf --set-rpath "$(IFS=":"; echo "${_patchelf_paths[*]}:\$ORIGIN")" "${_file}"
   done < <(find "squashfs-root" -type f -size -32M -print0)
 
