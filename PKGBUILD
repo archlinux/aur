@@ -25,10 +25,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-arm32-v7a.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-32.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-64.tar.gz")
-sha256sums_aarch64=('8c28cbfa56c079a701176a28d300cb3db57c2abfc214e0060fade6be0e5ce06a')
-sha256sums_armv7h=('691bfb78d22bb46695745f591d9d44e8074e56c1dde81c315056ac42b01e12bb')
-sha256sums_i686=('f5f2b47e0835b8ffe71a7214f6fa1ad9dda7af91724ffaa569338d0aaaded024')
-sha256sums_x86_64=('c850933332965fd06df3bcbe4b6c8bfb72f8bf1e923eadd165e56992397d048e')
+sha256sums_aarch64=('2720fb07a43e69e14e62d8aa264d09c609aa9a18d5ee466f7f9866a17dd38509')
+sha256sums_armv7h=('3862074e7db1eac628b17a35cf42c74fef24ec6a111627554e47ec70a13a9ca8')
+sha256sums_i686=('18e7df77018ecff0a4647518d0b185769714f12689f6c6c1699026ccca3d59cf')
+sha256sums_x86_64=('4983e72129500b392733fc005bee73074db4e1b10d37ed3fab392ac0af02df4c')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/README"* -t "${pkgdir}/usr/share/docs/${pkgname%-bin}"
