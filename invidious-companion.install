@@ -1,0 +1,6 @@
+post_install() {
+    echo -e "\033[1;34mINFO\033[0m\033[1m: Final steps to have a working companion instance:"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Create a 16 char key in /etc/invidious-companion.conf\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * To run, systemctl start invidious-companion\033[0m"
+}
+

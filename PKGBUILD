@@ -17,11 +17,13 @@ makedepends=('git')
 source=(
     "git+https://github.com/iv-org/invidious-companion"
     "invidious-companion.config"
+    "invidious-companion.install"
 )
 
 sha512sums=(
     'SKIP'
     '9c2ff2046f3563933e8b6fb54d14e17c046454ca7a21f2134924352e4191e93a81e597ebab18964d8a8a748ba7bf5714a9c37cbf46eeb433cfb95b6a27e9099d'
+    '1dbfea4befbcfe63ad952c6634e12ca48d353ce31ca842c506835b1789a017ca75a883828cc193c5eb5d873df529daacd0c3b1d8e9297a78283f4eb3601be553'
 )
 
 pkgver() {
@@ -46,4 +48,5 @@ package() {
     cp "invidious_companion" "${pkgdir}/usr/lib/invidious/"
     install -Dm 644 "$srcdir/invidious-companion.config" "$pkgdir/etc/invidious-companion.conf"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install=invidious-companion.install
 }
