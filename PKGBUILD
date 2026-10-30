@@ -11,7 +11,7 @@
 
 pkgname=xdm-app-bin
 pkgver=9.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, resumable download accelerator and video downloader with HLS/DASH support'
 arch=('x86_64' 'aarch64')
 url='https://xtremedownloadmanager.com/'
@@ -23,7 +23,9 @@ optdepends=(
   'gtk3: native GTK file chooser dialogs'
   'alsa-lib: sound notifications'
 )
-conflicts=('xdm-app' 'xdman' 'xdman_gtk')
+# xdm-app (source build of the same 9.x image) and xdman-bin (9.x repackaged from
+# the Fedora RPM by another maintainer) own the same /opt/xdm-app files.
+conflicts=('xdm-app' 'xdman-bin' 'xdman' 'xdman_gtk')
 replaces=('xdman' 'xdman_gtk')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/subhra74/xdm/releases/download/$pkgver/xdm-app-$pkgver-linux-x64.tar.gz")
