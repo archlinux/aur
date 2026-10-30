@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "pi-ext-powerline-footer": {
-      "version": "0.21.0",
-      "gitref": "refs/tags/v0.21.0",
-      "url": "https://github.com/nicobailon/pi-powerline-footer/releases/tag/v0.21.0"
+      "version": "0.22.0",
+      "gitref": "refs/tags/v0.22.0",
+      "url": "https://github.com/nicobailon/pi-powerline-footer/releases/tag/v0.22.0"
     }
   }
 }
