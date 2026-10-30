@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.157
-pkgrel=3
+pkgrel=4
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -53,8 +53,9 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-# optdepends: D-Bus probes in dbus-monitor --session, the LibVLC P/Invoke table and the
-# chromium WebRTCPipeWireCapturer command line (2026-10-30).
+# optdepends: portal calls seen in dbus-monitor --session, the LibVLC P/Invoke table and the
+# chromium WebRTCPipeWireCapturer flag; the payload has no org.freedesktop.GameMode string and
+# no libgamemode, so gamemode is not listed (2026-10-30).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
@@ -63,7 +64,6 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-hyprland: window and region screen share plus portal global shortcuts on Hyprland'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
-            'gamemode: GameMode daemon for performance mode during calls and streams'
             'vlc-plugin-ffmpeg: video and stream playback through LibVLC'
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio')
 options=('!strip' '!debug')
