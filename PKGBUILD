@@ -2,7 +2,7 @@
 
 pkgname=supercompress
 _npmname=supercompress-proxy
-pkgver=0.5.38
+pkgver=0.5.40
 pkgrel=1
 pkgdesc='Local proxy that compresses LLM context for coding agents (Claude Code, Codex, Cursor, ...)'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs>=18')
 makedepends=('npm')
 optdepends=('bun: TUI mode (supercompress tui)')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('ee1576d156e55cd1e8888c1833374054ceaebee314b43ac17e4609c1d837d586')
+sha256sums=('1b7cabfe1b5199f360abee1608e485294da9818567b1887d38019dae91225026')
 
 package() {
   cd package
