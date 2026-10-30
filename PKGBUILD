@@ -1,5 +1,5 @@
 pkgname=lcm-git
-pkgver=20241030.r1482.8489dde
+pkgver=20261030.r1602.8361043
 pkgrel=1
 pkgdesc="Lightweight Communications and Marshalling"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,12 +13,12 @@ optdepends=(
 	'ttf-dejavu: support for lcm-spy and other GUI tools'
 )
 makedepends=(cmake java-environment)
-source=($pkgname-$pkgver::git+https://github.com/lcm-proj/lcm.git)
+source=($pkgname::git+https://github.com/lcm-proj/lcm.git)
 
 sha512sums=(SKIP)
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 
   printf "%s.r%s.%s" \
     "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
@@ -27,7 +27,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	mkdir -p built
 	cd built
 	cmake -DLCM_ENABLE_JAVA=On -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -35,11 +35,11 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver/built"
+	cd "$srcdir/$pkgname/built"
 	CTEST_OUTPUT_ON_FAILURE=1 make -k test
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/built"
+	cd "$srcdir/$pkgname/built"
 	make DESTDIR="$pkgdir/" install
 }
