@@ -1,12 +1,15 @@
 pkgbase = boltbrowser
-	pkgdesc = BoltBrowser - lightweight CLI browser for BoltDB
+	pkgdesc = Lightweight CLI browser for BoltDB files
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/br0xen/boltbrowser
 	arch = x86_64
-	arch = aarch64
-	license = GPL3
-	source = https://github.com/br0xen/boltbrowser/releases/download/2.2/boltbrowser.linux64
-	sha256sums = 7747926b067bbb8bdf3bbc25102ffe98b1ad4fee9d237f61b32f2e0800cd55d9
+	arch = armv7h
+	license = GPL-3.0-only
+	options = !debug
+	source_x86_64 = boltbrowser-2.2-x86_64::https://github.com/br0xen/boltbrowser/releases/download/2.2/boltbrowser.linux64
+	sha256sums_x86_64 = 7747926b067bbb8bdf3bbc25102ffe98b1ad4fee9d237f61b32f2e0800cd55d9
+	source_armv7h = boltbrowser-2.2-armv7h::https://github.com/br0xen/boltbrowser/releases/download/2.2/boltbrowser.linuxarm
+	sha256sums_armv7h = 4be06b2d37c02107469b6538a4e5275762e2afe029bfb08e17b39186e9b032eb
 
 pkgname = boltbrowser
