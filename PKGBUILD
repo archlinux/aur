@@ -1,7 +1,7 @@
 # Maintainer: sphekes <sphekes@qq.com>
 
 pkgname=artcraft-launcher-appimage
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Install, update and launch the Craft App Suite (AppImage)'
 arch=('x86_64' 'aarch64')
@@ -53,9 +53,9 @@ source=(
   "${_archive}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=('fb90a2e1b07057d5817e363a339fe691c99414230782f57a0c6edc94db1f6cac'
-            '56fb93abc52165f38a47f60084508690a88c9376155ced98b68746cdf9b73413')
-sha256sums_x86_64=('7936019f32df44995ff9c28127e255f0f55623cb9d8295de91dc3398bdf431ad')
-sha256sums_aarch64=('250786f9459c13e1d169812e388b536d940b39e78cdfcb87f27024f01b474767')
+            '776a6084c044adacf7d2b9b53fc2878327ad68c6ee98f8fb387bfa1336870e7a')
+sha256sums_x86_64=('2c7f3f9c73dd944531df073ea6e800cff5ba9d533d00ff1f0015470ef17412ad')
+sha256sums_aarch64=('03f41265b68f22cefa7fbb7de2e3c635fd2a15592c846c466af99acce3666cb1')
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_name}-${pkgver}-linux-x86_64.AppImage"
 )
