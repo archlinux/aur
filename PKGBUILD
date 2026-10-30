@@ -5,6 +5,7 @@ _github_path="github.com/iv-org/invidious-companion"
 _go_pkg_path="src/${_github_path}"
 pkgver=release.master.127.gfcb0456
 pkgrel=1
+options=(!strip !debug)
 arch=('x86_64' 'aarch64')
 pkgdesc='Companion app for invidious'
 url='https://github.com/iv-org/invidious-companion'
@@ -35,6 +36,7 @@ package() {
     cd $srcdir/invidious-companion
     install -Dm644 "invidious-companion.service" "${pkgdir}/usr/lib/systemd/system/invidious-companion.service"
 
-    install -Dm755 "invidious_companion" "${pkgdir}/usr/bin/invidious-companion"
+    mkdir -p "${pkgdir}/usr/lib/invidious"
+    cp "invidious_companion" "${pkgdir}/usr/lib/invidious/"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
