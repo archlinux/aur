@@ -1,0 +1,13 @@
+--- a/scripts/gnome_indicator_test.py
++++ b/scripts/gnome_indicator_test.py
+@@ -232,7 +232,9 @@
+                 self.assertEqual(self.acknowledgement(client), b'shown')
+                 self.assertEqual(self.acknowledgement(client), b'shown')
+                 self.assertEqual(self.count('hide'), 2, self.events)
+-                self.assertEqual(self.count('show'), 1, self.events)
++                # The unlocked capture can resume after the second reply.
++                self.assertEqual([event for event, _ in self.events[:5]],
++                                 ['hide', 'reply', 'show', 'hide', 'reply'])
+ 
+         def test_lock_without_begin_hides_until_the_last_capture_releases(self):
+             with self.client() as first:
