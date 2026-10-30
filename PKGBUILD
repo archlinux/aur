@@ -26,12 +26,11 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
-
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	mkdir -p built
 	cd built
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -DLCM_ENABLE_JAVA=On -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
