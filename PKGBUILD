@@ -36,7 +36,7 @@ optdepends=(
 provides=(grexa-cli)
 options=(!lto)
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('006b93acf366f69a3edcc6f8d90f80a479f480e188e2aab0387fecb6e5ad2e49')
+sha256sums=('335f8d139fd2aab6e797e5b58ad714c4274551e7dac0e77f1ea404013951ec84')
 validpgpkeys=('198BC500E85FE8B2C24227B90526453161165CE5')
 
 prepare() {
