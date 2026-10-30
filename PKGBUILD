@@ -1,7 +1,7 @@
 # Maintainer: Snoopey
 pkgname=meetily-cuda
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Local meeting transcription and summaries (NVIDIA CUDA build)'
 arch=('x86_64')
 url='https://github.com/Zackriya-Solutions/meetily'
@@ -26,10 +26,32 @@ sha256sums=('66f06a1c4b60334d1c6d62c5f97bc5e847df33e98240ef125be01bacb7274b88'
 _features=(--features cuda)
 _helper_features=(--features cuda)
 
+_cuda_architectures() {
+  local capabilities=''
+  if capabilities=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader 2>/dev/null); then
+    capabilities=$(sed -nE 's/^[[:space:]]*([0-9]+)\.([0-9]+)[[:space:]]*$/\1\2/p' <<< "$capabilities")
+  else
+    capabilities=''
+  fi
+  # Sandboxed and headless builders cannot query a GPU; expand the toolkit targets explicitly.
+  if [[ -z $capabilities ]]; then
+    capabilities=$(nvcc --list-gpu-arch | sed -nE 's/^compute_([0-9]+)$/\1/p')
+  fi
+  if [[ -z $capabilities ]]; then
+    printf '%s\n' 'Could not determine supported CUDA targets; set CMAKE_CUDA_ARCHITECTURES explicitly.' >&2
+    return 1
+  fi
+  sort -nu <<< "$capabilities" | paste -sd ';'
+}
+
 prepare() {
   cd "meetily-$pkgver"
   patch -Np1 -i "$srcdir/arch.patch"
   install -Dm644 "$srcdir/SourceSans3VF-Upright.ttf" frontend/src/app/fonts/SourceSans3VF-Upright.ttf
+  # Keep Git and other build tools inside the package sandbox.
+  export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
+  export HOME="$srcdir/.home" XDG_CONFIG_HOME="$srcdir/.config"
+  install -dm700 "$HOME" "$XDG_CONFIG_HOME"
   export XDG_CACHE_HOME="$srcdir/.cache" npm_config_cache="$srcdir/.cache/npm"
   export PNPM_HOME="$srcdir/.pnpm-home" CARGO_HOME="$srcdir/.cargo"
   export XDG_RUNTIME_DIR="$srcdir/.runtime"
@@ -45,6 +67,10 @@ prepare() {
 
 build() {
   cd "meetily-$pkgver"
+  # Keep Git and other build tools inside the package sandbox.
+  export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
+  export HOME="$srcdir/.home" XDG_CONFIG_HOME="$srcdir/.config"
+  install -dm700 "$HOME" "$XDG_CONFIG_HOME"
   export XDG_CACHE_HOME="$srcdir/.cache" npm_config_cache="$srcdir/.cache/npm"
   export PNPM_HOME="$srcdir/.pnpm-home" CARGO_HOME="$srcdir/.cargo"
   export XDG_RUNTIME_DIR="$srcdir/.runtime"
@@ -55,13 +81,16 @@ build() {
   # Fetch and verify the pinned ONNX library through makepkg, before compilation.
   export ORT_LIB_LOCATION="$srcdir/onnxruntime/lib"
   export CARGO_TARGET_DIR="$srcdir/target"
-  # Native detection lets llama.cpp select Blackwell's required architecture-specific instructions.
-  export CMAKE_CUDA_ARCHITECTURES="${CMAKE_CUDA_ARCHITECTURES:-native}"
+  export CUDA_PATH=/opt/cuda
+  export PATH="/opt/cuda/bin:$PATH"
+  # Explicit targets let llama.cpp select Blackwell's architecture-specific instructions.
+  if [[ -z ${CMAKE_CUDA_ARCHITECTURES:-} ]]; then
+    CMAKE_CUDA_ARCHITECTURES=$(_cuda_architectures) || return
+  fi
+  export CMAKE_CUDA_ARCHITECTURES
   # Recent CCCL releases require an explicit iterator header.
   export CMAKE_CUDA_FLAGS="${CMAKE_CUDA_FLAGS:-} --pre-include=cuda/iterator"
   export CMAKE_CUDA_STANDARD=17 CMAKE_CXX_STANDARD=17
-  export CUDA_PATH=/opt/cuda
-  export PATH="/opt/cuda/bin:$PATH"
   cargo build --locked --release -p llama-helper "${_helper_features[@]}"
   install -m755 "$CARGO_TARGET_DIR/release/llama-helper" frontend/src-tauri/binaries/llama-helper-x86_64-unknown-linux-gnu
   cd frontend
