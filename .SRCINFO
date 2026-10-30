@@ -1,6 +1,6 @@
 pkgbase = elyterminal-bin
 	pkgdesc = A GPU-accelerated terminal emulator built on GPUI
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ELY-Open-Source/ELYTerminal
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = elyterminal-bin
 	conflicts = elyterminal
 	options = !strip
 	options = !debug
-	source_x86_64 = ELYTerminal-0.1.9-linux-x86_64.tar.gz::https://github.com/ELY-Open-Source/ELYTerminal/releases/download/v0.1.9/ELYTerminal-0.1.9-linux-x86_64.tar.gz
-	sha256sums_x86_64 = b15db90e576bbac97ec2db85b8f45db7d003b43df888436971b3029078602f8f
+	source_x86_64 = ELYTerminal-0.2.0-linux-x86_64.tar.gz::https://github.com/ELY-Open-Source/ELYTerminal/releases/download/v0.2.0/ELYTerminal-0.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 040b702f22fe6d4aacc0d3106757fde9030e5f0a806b7b9c668963d43d628797
 
 pkgname = elyterminal-bin
