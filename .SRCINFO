@@ -1,7 +1,7 @@
 pkgbase = sonic-theme-sdk
 	pkgdesc = Applications useful for SonicDE development
 	pkgver = 6.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-theme-sdk
 	arch = x86_64
 	groups = sonicde

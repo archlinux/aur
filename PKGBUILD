@@ -3,7 +3,7 @@
 
 pkgname=sonic-theme-sdk
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Applications useful for SonicDE development'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-theme-sdk'
