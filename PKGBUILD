@@ -10,59 +10,34 @@ license=('LicenseRef-custom')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${pkgname%-bin}" "${_pkgname}")
 depends=(
-    'qt5-base'
-    'qt5-multimedia'
-    'qt5-webengine'
-    'qt5-svg'
-    'qt5-serialport'
-    'qt5-speech'
-    'qt5-websockets'
-    'qt5-webchannel'
     'nss'
     'alsa-lib'
     'libdrm'
     'mesa'
     'harfbuzz'
-    'libthai'
     'fontconfig'
     'libx11'
     'libxcb'
-    'libxext'
-    'libxrender'
-    'libxfixes'
-    'libxcursor'
-    'libxi'
-    'libxrandr'
-    'libxss'
-    'libxtst'
-    'libxau'
-    'libxdmcp'
     'glib2'
     'zlib'
-    'bzip2'
-    'libpng'
-    'libjpeg-turbo'
-    'freetype2'
-    'libglvnd'
-    'libpulse'
-    'libdbus'
-    'libxkbcommon'
-    'curl'
-    'icu'
-    'libxml2'
+    'gdk-pixbuf2'
+    'pipewire-jack'
+    'libusb'
+    'fribidi'
+    'pango'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::https://static.eudic.net/pkg/${_pkgname}.AppImage?v=${pkgver}"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::https://static.eudic.net/pkg/${_pkgname}.AppImage"
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7839456abede4b8a47cacf2d3fcf24ce25c4296e305f9618920bd83cc21c83a6'
             '89862f4074e530896863738bf9d49c03c8d0cd0f6a543d4ccc1cdc53e8f83a24'
-            'f8da4fa48422d34fd5e2f8e1e87c9f52b66a7308a88855c39ae03599209dcbaf')
+            '201a36e0ee0aa94382edf92857d19862c819bb0878f367cdbbf23f2785223031')
 pkgver() {
     cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -71,23 +46,10 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    rm -rf "${srcdir}/squashfs-root"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     grep "X-AppImage-Version" "${srcdir}/squashfs-root/default.desktop" | sed "s/X-AppImage-Version=//g" > "${srcdir}/.pkgver"
-    _libdir="${srcdir}/squashfs-root/lib"
-    find "${_libdir}" -maxdepth 1 -name "libQt5*.so*" -delete
-    find "${_libdir}" -maxdepth 1 -regex ".*/lib\(X11\|Xau\|Xdmcp\|Xext\|Xrender\|Xfixes\|Xcursor\|Xi\|Xrandr\|Xss\|Xtst\|xcb\).*\.so.*" -delete
-    find "${_libdir}" -maxdepth 1 -regex ".*/lib\(GL\|EGL\|drm\|gbm\|wayland\).*\.so.*" -delete
-    find "${_libdir}" -maxdepth 1 -regex ".*/lib\(asound\|pulse\).*\.so.*" -delete
-    find "${_libdir}" -maxdepth 1 -regex ".*/lib\(ssl\|crypto\|nss3\|nssutil3\|smime3\|nspr4\|plds4\|plc4\).*\.so.*" -delete
-    find "${_libdir}" -maxdepth 1 -regex ".*/lib\(z\|bz2\).*\.so.*" -delete
-    find "${_libdir}" -maxdepth 1 -regex ".*/lib\(fontconfig\|freetype\|harfbuzz\|thai\|datrie\|xkbcommon\).*\.so.*" -delete
-    find "${_libdir}" -maxdepth 1 -regex ".*/lib\(glib-2.0\|dbus-1\|icu\|xml2\|curl\|stdc\+\+\|gcc_s\).*\.so.*" -delete
     sed -i -e "
         s/\/usr\/share\/${_pkgname}\/AppRun/env QT_AUTO_SCREEN_SCALE_FACTOR=1 QT_IM_MODULE=fcitx QT_QPA_PLATFORM=\"xcb\" ${pkgname%-bin}/g
         s/Icon=com.eusoft.${_pkgname}/Icon=${pkgname%-bin}/g
