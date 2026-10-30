@@ -1,0 +1,21 @@
+pkgbase = python-matscipy
+	pkgdesc = Generic Python materials science tools for plasticity, fracture mechanics, and more
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/libAtoms/matscipy
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = meson
+	makedepends = meson-python
+	makedepends = ninja
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-ase
+	depends = python-packaging
+	source = matscipy-1.3.1.tar.gz::https://files.pythonhosted.org/packages/e7/dd/4088a5e52e91c81a94fa7d92b03cfb75803371ccfe3283e128b33c74a992/matscipy-1.3.1.tar.gz
+	sha256sums = b66296fff34d63f36bbc5c23e307808c8060202016e779bf2d3fa762d8050258
+
+pkgname = python-matscipy
