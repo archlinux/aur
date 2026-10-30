@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=16
+pkgrel=17
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -128,7 +128,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/ThreadJob.git#commit=$_threadjobcommit"
   "git+https://github.com/rjmholt/SelfSignedCertificate.git#commit=$_selfsignedcertificatecommit"
   "psmodulepath-combined-paths.patch"
-  "cim-windows-only.patch"
+  "mmi-optional.patch"
   "system-drawing-windows-only.patch"
   "oneget-user-temp-folder.patch"
   "oneget-net10.patch"
@@ -139,7 +139,10 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "crossgen2-pack.targets"
   "update-help.ps1"
   "psresourceget-test.ps1"
-  "invoke-pester.ps1")
+  "invoke-pester.ps1"
+  "update-pwsh-deps.ps1"
+  "update-pwsh-deps"
+  "powershell-deps.hook")
 sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
             '673e931ea136511fa2c638035334a7ea1800aafb1d4100d94cf0adf1086888f765a3d92f9f294060c5f088eab4d4c12c2d70cc5dc5a4ec4f56b80f26d16cc644'
             '326b55c2eff49b21b427812c394afd000ef3e5b4da86dca087fb897e39e423be3b5c105e087f79da5dc39b0b268a9c0876f198ab67b845f31ee765caa4694aac'
@@ -153,7 +156,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42'
             'c0d1d0ec47a8b0ed4d6e2a09a7040ba6244ceb615c76be21a42950cb8ac28a410811541ccdcf8eefff0c993a70d16ab5cb539d15168703c0f75598f02caa4e4c'
             '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
-            '41320b237cc3f15fdd11aeea70a4cb1fd90b3e9986302e5bbab5d4226000aef392907a6702ded762f93169b5e776af6596637205e79ea551d821329361c0081e'
+            '6dca6f3e167dc2404615a2e5f7b150fc9a5434bd78945cd3faaa3d647b73ca9699c403d111098a2229f9568cdc2809c4a5b55045fc80a30da5acf8e2bf92db9e'
             'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
             '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
             'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
@@ -164,7 +167,10 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
             '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
             '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
-            'eec686855a3a215d947e2f3f40708c3fb3d005df0e8eba2e963f062f3b4f381cd1b0fbd2f4296dd52a84e965c37382edf85db13db6130b9fb96a5980830b2b79')
+            'eec686855a3a215d947e2f3f40708c3fb3d005df0e8eba2e963f062f3b4f381cd1b0fbd2f4296dd52a84e965c37382edf85db13db6130b9fb96a5980830b2b79'
+            '501e304575a23c12d2e8466de14b51d1b4d25d72a64c633ea9170a6d64ef65df38fb542e1f42c6ffdaa5a55dbbfbca2327ff5c81b77cc6019fda717dbef68351'
+            '60fb8c07223a2662a362e03e70b9fb4d60b5ee9ea7eb995a6d9957b6989e34c3101c9750fcad65fa9c063bdba3e8ac2f4e52d95b16edabccf392cb567d8f0513'
+            '1afffe7e4797188f0ac2378f6032db5d0ffdeca12d5804250b62e0a946a65e7dab7a7d6c9674dedeebfb3e0501360b549e4d333841d0da6662c266b4589bdba0')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
         '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
         'ce0b02fbdcb1b179f2b04cc230ac2c720563f33f09cb6787e706056638ea7c105cd4c35b4d8dc240cb08191107fe5d0053b9060705b9e4fb1da44e50763e0032'
@@ -178,7 +184,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         'c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170'
         '98633062c100df742f1a932f227d874a95f87ea061eece500bf0a925bbabd4aeafab74a60c21ec715522d9dfc959ffc28ca1a82d747355ed8a1e512bd05e4b50'
         'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
-        '98a61cba01da84fb7037b906251a3d2f752cb3f5f440b0920a573d399001f92fba3936fdb1b1af4a46520713c69afd10ce4460d1f98af4c86604e4dbe503bb98'
+        'a35d008a212ec7001392be5d46658f338ba96abe8e4c79d0a85519ec6d6f52ace2f53a956fa9b9c1ea495f5ba4d1d84eeed9a47b4c4e6b7196c97df30ce3dc35'
         'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
         '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
         'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
@@ -189,7 +195,10 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
         '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
         'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
-        'ea868e62c1f4fbe6734993b4b02b56ddeb0a17ed1d103e6704d7a60e25a30f722617016aed9aa20b1e8708045a6eb65faf9d1b40339d122166552cf0402249d8')
+        'ea868e62c1f4fbe6734993b4b02b56ddeb0a17ed1d103e6704d7a60e25a30f722617016aed9aa20b1e8708045a6eb65faf9d1b40339d122166552cf0402249d8'
+        'f46fcb1d242979be39dbd14c6e5dc8c04ede57ed2de52a74e56bf18ce3c6b5985351d70ec0e291ed3ccec1655ebee4da931c88680c7ef60dec4797d78f015833'
+        'ba82d782e0aa5960800ad61c5070acff4fd4f6ee3d70423868839ff95f87209a090c65ca27004bd85146913f9f080b603b2989b8516d7e66e7a6f4a05d846d21'
+        '3134c64cb38acb323df88be7634d95981c0c46d01d86912c1bb9d9c4ff3da42573299f365368d6d3fb8ebafdf0624203315ae90eb8da79ca33c736abca51f8e1')
 
 # Sets up the environment shared by prepare(), build() and check()
 _dotnet_env() {
@@ -199,6 +208,9 @@ _dotnet_env() {
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
+  # Without Microsoft.Management.Infrastructure, see mmi-optional.patch in prepare(). MSBuild takes
+  # environment variables as properties, so this applies to every build, test tools and tests included.
+  export UseMmi=false
   # RID of the .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's build
   _rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
 }
@@ -337,10 +349,13 @@ prepare() {
   # - Its Microsoft.Management.Infrastructure.Runtime.Win package comes under the Microsoft Software
   #   License Terms instead, which only allow using it with PowerShell and forbid redistributing it, see
   #   https://github.com/PowerShell/PowerShell/issues/28027 and #20798
-  # So put it behind #if !UNIX like upstream does for WMI and ADSI and don't ship it. The DSC support
-  # built on it goes, too, but ArgumentToConfigurationDataTransformationAttribute doesn't use CIM and
-  # scripts use it to read .psd1 files, so it moves out of CimDSCParser.cs into its own file.
-  patch -Np1 -i "$srcdir/cim-windows-only.patch"
+  # So the patch makes it optional with a build property, UseMmi=false (see _dotnet_env), which leaves
+  # out everything that needs it: CIM, the CIM type adapter and DSC's MOF support. Built normally,
+  # nothing changes. ArgumentToConfigurationDataTransformationAttribute doesn't use CIM and scripts use it
+  # to read .psd1 files, so it moves out of CimDSCParser.cs into its own file. A stub of DscClassCache
+  # stays for modules built against PowerShell with MMI, e.g. PSScriptAnalyzer from the PowerShell
+  # Gallery.
+  patch -Np1 -i "$srcdir/mmi-optional.patch"
 
   # System.Drawing.Common only supports Windows since .NET 6, see
   # https://learn.microsoft.com/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only
@@ -680,6 +695,17 @@ EOF
   ln -s "/etc/powershell.config.json" "$pkgdir/usr/lib/$pkgname-$_pkgnum/powershell.config.json"
 
   install -dm755 "$pkgdir/usr/share/powershell/Modules"
+
+  # The .NET host only loads the assemblies pwsh.deps.json lists, so it's written by a pacman hook from
+  # the one PowerShell is built with and fragments other packages install in deps.d, e.g. for
+  # Microsoft.Management.Infrastructure, which PowerShell is built without (see prepare()).
+  # The base stays in $PSHOME, as the host looks for the listed assemblies next to the deps.json.
+  mv "$pkgdir/usr/lib/$pkgname-$_pkgnum/pwsh.deps.json" "$pkgdir/usr/lib/$pkgname-$_pkgnum/pwsh.base.deps.json"
+  install -dm755 "$pkgdir/usr/share/powershell/deps.d"
+  install -Dm644 -t "$pkgdir/usr/share/powershell" "$srcdir/update-pwsh-deps.ps1"
+  install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks" "$srcdir/powershell-deps.hook"
+  install -Dm755 -t "$pkgdir/usr/share/libalpm/scripts" "$srcdir/update-pwsh-deps"
+  sed -i "s|@PSHOME@|/usr/lib/$pkgname-$_pkgnum|g" "$pkgdir/usr/share/libalpm/scripts/update-pwsh-deps"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }

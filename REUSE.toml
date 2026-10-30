@@ -8,6 +8,8 @@ path = [
     "crossgen2-pack.targets",
     "update-help.ps1",
     "invoke-pester.ps1",
+    "update-pwsh-deps.ps1",
+    "update-pwsh-deps",
     "psresourceget-test.ps1",
     "nuget-modules.config",
     "README.md",
@@ -32,7 +34,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "psmodulepath-combined-paths.patch",
-    "cim-windows-only.patch",
+    "mmi-optional.patch",
     "system-drawing-windows-only.patch",
 ]
 SPDX-FileCopyrightText = "PowerShell contributors"

@@ -1,0 +1,9 @@
+#!/bin/sh
+# Writes the pwsh.deps.json of PowerShell from the one it's built with and the fragments other packages
+# install, see update-pwsh-deps.ps1. pwsh runs with the deps.json it's built with, so a broken generated
+# one can't get in the way.
+exec /usr/bin/dotnet exec --depsfile @PSHOME@/pwsh.base.deps.json \
+  --runtimeconfig @PSHOME@/pwsh.runtimeconfig.json @PSHOME@/pwsh.dll \
+  -NoProfile -NonInteractive -File /usr/share/powershell/update-pwsh-deps.ps1 \
+  -BaseDepsPath @PSHOME@/pwsh.base.deps.json -FragmentPath /usr/share/powershell/deps.d \
+  -OutputPath @PSHOME@/pwsh.deps.json

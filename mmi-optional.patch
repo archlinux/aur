@@ -1,13 +1,30 @@
+diff --git a/PowerShell.Common.props b/PowerShell.Common.props
+index c82b473c09..73f1557374 100644
+--- a/PowerShell.Common.props
++++ b/PowerShell.Common.props
+@@ -171,6 +171,12 @@
+     <DefineConstants>$(DefineConstants);UNIX</DefineConstants>
+   </PropertyGroup>
+ 
++  <!-- Microsoft.Management.Infrastructure (MMI), which CIM, the CIM type adapter and DSC's MOF support
++       build on, isn't open source. Building with -p:UseMmi=false leaves it out, and with it these features. -->
++  <PropertyGroup Condition=" '$(UseMmi)' != 'false' ">
++    <DefineConstants>$(DefineConstants);MMI</DefineConstants>
++  </PropertyGroup>
++
+   <!-- Define all OS, debug configuration properties -->
+   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+     <DebugType>portable</DebugType>
 diff --git a/src/Microsoft.PowerShell.Commands.Management/Microsoft.PowerShell.Commands.Management.csproj b/src/Microsoft.PowerShell.Commands.Management/Microsoft.PowerShell.Commands.Management.csproj
-index deb49a35e7..927b6439a2 100644
+index deb49a35e7..29d12025f1 100644
 --- a/src/Microsoft.PowerShell.Commands.Management/Microsoft.PowerShell.Commands.Management.csproj
 +++ b/src/Microsoft.PowerShell.Commands.Management/Microsoft.PowerShell.Commands.Management.csproj
 @@ -16,6 +16,12 @@
      <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.14" />
    </ItemGroup>
  
-+  <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
-+    <!-- CIM is only supported on Windows -->
++  <ItemGroup Condition=" '$(UseMmi)' == 'false' ">
++    <!-- CIM needs Microsoft.Management.Infrastructure, see PowerShell.Common.props -->
 +    <Compile Remove="cimSupport\cmdletization\cim\**\*.cs" />
 +    <Compile Remove="commands\management\CIMHelper.cs" />
 +  </ItemGroup>
@@ -16,14 +33,14 @@ index deb49a35e7..927b6439a2 100644
      <EmbeddedResource Update="resources\*\*.resx">
        <ManifestResourceName>$(RootNamespace).resources.%(Filename)</ManifestResourceName>
 diff --git a/src/Microsoft.PowerShell.Commands.Management/commands/management/Process.cs b/src/Microsoft.PowerShell.Commands.Management/commands/management/Process.cs
-index 2e07a945a0..552ccf5a0d 100644
+index 2e07a945a0..64157687ce 100644
 --- a/src/Microsoft.PowerShell.Commands.Management/commands/management/Process.cs
 +++ b/src/Microsoft.PowerShell.Commands.Management/commands/management/Process.cs
 @@ -19,7 +19,9 @@ using System.Runtime.Serialization;
  using System.Security.Principal;
  using System.Text;
  using System.Threading;
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  using Microsoft.PowerShell.Commands.Internal;
@@ -33,7 +50,7 @@ index 2e07a945a0..552ccf5a0d 100644
                          }
                      }
  
-+#if !UNIX
++#if MMI
                      // If the process is svchost stop all the dependent services before killing process
                      if (string.Equals(SafeGetProcessName(process), "SVCHOST", StringComparison.OrdinalIgnoreCase))
                      {
@@ -47,7 +64,7 @@ index 2e07a945a0..552ccf5a0d 100644
              return false;
          }
  
-+#if !UNIX
++#if MMI
          /// <summary>
          /// Stop the service that depends on the process and its child services.
          /// </summary>
@@ -63,8 +80,8 @@ index 2e07a945a0..552ccf5a0d 100644
          /// </summary>
          private void AttachDebuggerToProcess(Process process)
          {
-+#if UNIX
-+            // Attaching the debugger is done through CIM, which is only supported on Windows
++#if !MMI
++            // Attaching the debugger is done through CIM, which needs Microsoft.Management.Infrastructure
 +            WriteNonTerminatingError(
 +                process, new PlatformNotSupportedException(), ProcessResources.CouldNotDebugProcess,
 +                "CouldNotDebugProcess", ErrorCategory.NotImplemented);
@@ -175,8 +192,55 @@ index 6160577beb..8ddb90f370 100644
      /// <summary>
      /// <para>
      /// Represents a communication channel to a CIM server.
+diff --git a/src/System.Management.Automation/DscSupport/DscClassCacheStub.cs b/src/System.Management.Automation/DscSupport/DscClassCacheStub.cs
+new file mode 100644
+index 0000000000..b7dd989c33
+--- /dev/null
++++ b/src/System.Management.Automation/DscSupport/DscClassCacheStub.cs
+@@ -0,0 +1,41 @@
++// Copyright (c) Microsoft Corporation.
++// Licensed under the MIT License.
++
++using System;
++using System.Collections.Generic;
++using System.Collections.ObjectModel;
++
++namespace Microsoft.PowerShell.DesiredStateConfiguration.Internal
++{
++    /// <summary>
++    /// Stands in for the DSC class cache when PowerShell is built without Microsoft.Management.Infrastructure
++    /// (see PowerShell.Common.props), which the cache needs for the classes of DSC resources. Modules built
++    /// against System.Management.Automation with MMI may still refer to it, e.g. PSScriptAnalyzer looks up its
++    /// ImportClasses method and handles it not being there.
++    /// </summary>
++    public static class DscClassCache
++    {
++        /// <summary>
++        /// Initializes the cache, which has no classes without MMI.
++        /// </summary>
++        public static void Initialize()
++        {
++        }
++
++        /// <summary>
++        /// Initializes the cache, which has no classes without MMI.
++        /// </summary>
++        /// <param name="errors">Collection of any errors encountered while initializing the cache.</param>
++        /// <param name="modulePathList">List of module paths to search for DSC resources.</param>
++        public static void Initialize(Collection<Exception> errors, List<string> modulePathList)
++        {
++        }
++
++        /// <summary>
++        /// Clears the cache, which has no classes without MMI.
++        /// </summary>
++        public static void ClearCache()
++        {
++        }
++    }
++}
 diff --git a/src/System.Management.Automation/System.Management.Automation.csproj b/src/System.Management.Automation/System.Management.Automation.csproj
-index ed4db4c81f..597913386a 100644
+index ed4db4c81f..f93681da9d 100644
 --- a/src/System.Management.Automation/System.Management.Automation.csproj
 +++ b/src/System.Management.Automation/System.Management.Automation.csproj
 @@ -42,7 +42,6 @@
@@ -187,30 +251,33 @@ index ed4db4c81f..597913386a 100644
      <PackageReference Include="Microsoft.PowerShell.Native" Version="700.0.2" />
      <!-- Signing APIs -->
    <PackageReference Include="Microsoft.Security.Extensions" Version="1.4.0" />
-@@ -58,7 +57,14 @@
+@@ -58,6 +57,17 @@
      <EmbeddedResource Include="cimSupport\cmdletization\xml\cmdlets-over-objects.xsd" LogicalName="cmdlets-over-objects.xsd" />
    </ItemGroup>
  
-+  <ItemGroup Condition=" '$(IsWindows)' == 'true' ">
-+    <!-- CIM is only supported on Windows -->
++  <!-- See PowerShell.Common.props -->
++  <ItemGroup Condition=" '$(UseMmi)' != 'false' ">
 +    <PackageReference Include="Microsoft.Management.Infrastructure" Version="3.0.0" />
++    <Compile Remove="DscSupport\DscClassCacheStub.cs" />
++  </ItemGroup>
++
++  <ItemGroup Condition=" '$(UseMmi)' == 'false' ">
++    <Compile Remove="cimSupport\other\ciminstancetypeadapter.cs" />
++    <Compile Remove="DscSupport\CimDSCParser.cs" />
 +  </ItemGroup>
 +
    <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
-+    <Compile Remove="cimSupport\other\ciminstancetypeadapter.cs" />
-+    <Compile Remove="DscSupport\CimDSCParser.cs" />
      <Compile Remove="engine\COM\**\*.cs" />
      <Compile Remove="engine\ComInterop\**\*.cs" />
-     <Compile Remove="engine\ExtraAdapter.cs" />
 diff --git a/src/System.Management.Automation/engine/CommandCompletion/CompletionAnalysis.cs b/src/System.Management.Automation/engine/CommandCompletion/CompletionAnalysis.cs
-index 42a60ab7e0..ca03e83075 100644
+index 42a60ab7e0..896e3c2953 100644
 --- a/src/System.Management.Automation/engine/CommandCompletion/CompletionAnalysis.cs
 +++ b/src/System.Management.Automation/engine/CommandCompletion/CompletionAnalysis.cs
 @@ -2049,10 +2049,12 @@ namespace System.Management.Automation
                      {
                          usageString = dscSubsystem.GetDSCResourceUsageString(keyword);
                      }
-+#if !UNIX
++#if MMI
                      else
                      {
                          usageString = Microsoft.PowerShell.DesiredStateConfiguration.Internal.DscClassCache.GetDSCResourceUsageString(keyword);
@@ -220,19 +287,19 @@ index 42a60ab7e0..ca03e83075 100644
                      results ??= new List<CompletionResult>();
  
 diff --git a/src/System.Management.Automation/engine/CommandCompletion/CompletionCompleters.cs b/src/System.Management.Automation/engine/CommandCompletion/CompletionCompleters.cs
-index e0104805d0..0ccd6877d7 100644
+index e0104805d0..9a7e6e15eb 100644
 --- a/src/System.Management.Automation/engine/CommandCompletion/CompletionCompleters.cs
 +++ b/src/System.Management.Automation/engine/CommandCompletion/CompletionCompleters.cs
 @@ -21,10 +21,14 @@ using System.Text;
  using System.Text.RegularExpressions;
  using System.Threading;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
  using Microsoft.Management.Infrastructure.Options;
 +#endif
  using Microsoft.PowerShell;
-+#if !UNIX
++#if MMI
  using Microsoft.PowerShell.Cim;
 +#endif
  using Microsoft.PowerShell.Commands;
@@ -242,7 +309,7 @@ index e0104805d0..0ccd6877d7 100644
                          break;
                      }
  
-+#if !UNIX
++#if MMI
                  case "Get-CimClass":
                  case "Get-CimInstance":
                  case "Get-CimAssociatedInstance":
@@ -258,7 +325,7 @@ index e0104805d0..0ccd6877d7 100644
              }
          }
  
-+#if !UNIX
++#if MMI
          private static void NativeCompletionCimCommands(
              string parameter,
              Dictionary<string, AstParameterArgumentPair> boundArguments,
@@ -274,7 +341,7 @@ index e0104805d0..0ccd6877d7 100644
                  getToolTip = psMemberInfo.ToString;
              }
  
-+#if !UNIX
++#if MMI
              var cimProperty = member as CimPropertyDeclaration;
              if (cimProperty != null)
              {
@@ -290,7 +357,7 @@ index e0104805d0..0ccd6877d7 100644
              results.Add(new CompletionResult(completionText, memberName, completionResultType, getToolTip()));
          }
  
-+#if !UNIX
++#if MMI
          private static string GetCimPropertyToString(CimPropertyDeclaration cimProperty)
          {
              string type;
@@ -306,7 +373,7 @@ index e0104805d0..0ccd6877d7 100644
              return member is PropertyInfo
                     || member is FieldInfo
                     || member is PSPropertyInfo
-+#if !UNIX
++#if MMI
                     || member is CimPropertyDeclaration
 +#endif
                     || member is PropertyMemberAst;
@@ -316,7 +383,7 @@ index e0104805d0..0ccd6877d7 100644
                                      return GetSpecialHashTableKeyMembers(excludedKeys, wordToComplete, "Expression", "FormatString");
                                  case "Format-Custom":
                                      return GetSpecialHashTableKeyMembers(excludedKeys, wordToComplete, "Expression", "Depth");
-+#if !UNIX
++#if MMI
                                  case "Set-CimInstance":
                                  case "New-CimInstance":
                                      results = new List<CompletionResult>();
@@ -332,7 +399,7 @@ index e0104805d0..0ccd6877d7 100644
                          }
                      }
  
-+#if !UNIX
++#if MMI
                      if (parameterName.Equals("Arguments", StringComparison.OrdinalIgnoreCase))
                      {
                          if (!hashtableIsNested)
@@ -345,14 +412,14 @@ index e0104805d0..0ccd6877d7 100644
                      IEnumerable<PSTypeName> inferredTypes;
                      if (hashtableIsNested)
 diff --git a/src/System.Management.Automation/engine/LanguagePrimitives.cs b/src/System.Management.Automation/engine/LanguagePrimitives.cs
-index 6644223d7c..cbeec00ba6 100644
+index 6644223d7c..e5a8dacd08 100644
 --- a/src/System.Management.Automation/engine/LanguagePrimitives.cs
 +++ b/src/System.Management.Automation/engine/LanguagePrimitives.cs
 @@ -2792,6 +2792,7 @@ namespace System.Management.Automation
              }
          }
  
-+#if !UNIX
++#if MMI
          private static Microsoft.Management.Infrastructure.CimSession ConvertStringToCimSession(object valueToConvert,
                                                    Type resultType,
                                                    bool recursion,
@@ -368,7 +435,7 @@ index 6644223d7c..cbeec00ba6 100644
              // after discussing this with Jason, we decided that for now we only want to support string->CimSession conversion
              // and we don't want to add a Parse-like conversion based on a static Create method
  
-+#if !UNIX
++#if MMI
              if (fromType == typeof(string) && toType == typeof(Microsoft.Management.Infrastructure.CimSession))
              {
                  return LanguagePrimitives.ConvertStringToCimSession;
@@ -378,14 +445,14 @@ index 6644223d7c..cbeec00ba6 100644
              return null;
          }
 diff --git a/src/System.Management.Automation/engine/Modules/GetModuleCommand.cs b/src/System.Management.Automation/engine/Modules/GetModuleCommand.cs
-index ca48c5c698..6f4604fd2f 100644
+index ca48c5c698..8fada5f73c 100644
 --- a/src/System.Management.Automation/engine/Modules/GetModuleCommand.cs
 +++ b/src/System.Management.Automation/engine/Modules/GetModuleCommand.cs
 @@ -14,7 +14,9 @@ using System.Management.Automation.Language;
  using System.Management.Automation.Runspaces;
  using System.Threading;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  
@@ -395,7 +462,7 @@ index ca48c5c698..6f4604fd2f 100644
          [Parameter(ParameterSetName = ParameterSet_Loaded, ValueFromPipeline = true, Position = 0)]
          [Parameter(ParameterSetName = ParameterSet_AvailableLocally, ValueFromPipeline = true, Position = 0)]
          [Parameter(ParameterSetName = ParameterSet_AvailableInPsrpSession, ValueFromPipeline = true, Position = 0)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_AvailableInCimSession, ValueFromPipeline = true, Position = 0)]
 +#endif
          [ValidateNotNullOrEmpty]
@@ -405,7 +472,7 @@ index ca48c5c698..6f4604fd2f 100644
          [Parameter(ParameterSetName = ParameterSet_Loaded, ValueFromPipelineByPropertyName = true)]
          [Parameter(ParameterSetName = ParameterSet_AvailableLocally, ValueFromPipelineByPropertyName = true)]
          [Parameter(ParameterSetName = ParameterSet_AvailableInPsrpSession, ValueFromPipelineByPropertyName = true)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_AvailableInCimSession, ValueFromPipelineByPropertyName = true)]
 +#endif
          [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays",
@@ -415,7 +482,7 @@ index ca48c5c698..6f4604fd2f 100644
          /// </summary>
          [Parameter(ParameterSetName = ParameterSet_AvailableLocally, Mandatory = true)]
          [Parameter(ParameterSetName = ParameterSet_AvailableInPsrpSession)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_AvailableInCimSession)]
 +#endif
          public SwitchParameter ListAvailable { get; set; }
@@ -425,7 +492,7 @@ index ca48c5c698..6f4604fd2f 100644
          /// </summary>
          [Parameter(ParameterSetName = ParameterSet_AvailableLocally)]
          [Parameter(ParameterSetName = ParameterSet_AvailableInPsrpSession)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_AvailableInCimSession)]
 +#endif
          public SwitchParameter SkipEditionCheck
@@ -435,7 +502,7 @@ index ca48c5c698..6f4604fd2f 100644
          /// </summary>
          [Parameter(ParameterSetName = ParameterSet_AvailableLocally)]
          [Parameter(ParameterSetName = ParameterSet_AvailableInPsrpSession)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_AvailableInCimSession)]
 +#endif
          public SwitchParameter Refresh { get; set; }
@@ -445,7 +512,7 @@ index ca48c5c698..6f4604fd2f 100644
          [ValidateNotNull]
          public PSSession PSSession { get; set; }
  
-+#if !UNIX
++#if MMI
          /// <summary>
          /// If specified, then Get-Module will attempt to discover PS-CIM modules on a remote computer using the specified session.
          /// </summary>
@@ -461,7 +528,7 @@ index ca48c5c698..6f4604fd2f 100644
              }
          }
  
-+#if !UNIX
++#if MMI
          private static PSModuleInfo GetModuleInfoForRemoteModuleWithoutManifest(RemoteDiscoveryHelper.CimModule cimModule)
          {
              return new PSModuleInfo(cimModule.ModuleName, null, null);
@@ -477,7 +544,7 @@ index ca48c5c698..6f4604fd2f 100644
  
                  GetAvailableViaPsrpSession(names, moduleSpecTable, this.PSSession);
              }
-+#if !UNIX
++#if MMI
              else if (ParameterSetName.Equals(ParameterSet_AvailableInCimSession, StringComparison.OrdinalIgnoreCase))
              {
                  AssertListAvailableMode();
@@ -493,7 +560,7 @@ index ca48c5c698..6f4604fd2f 100644
              }
          }
  
-+#if !UNIX
++#if MMI
          private void GetAvailableViaCimSession(IEnumerable<string> names, IDictionary<string, ModuleSpecification> moduleSpecTable,
                                                 CimSession cimSession, Uri resourceUri, string cimNamespace)
          {
@@ -506,14 +573,14 @@ index ca48c5c698..6f4604fd2f 100644
          private void GetAvailableViaPsrpSession(string[] names, IDictionary<string, ModuleSpecification> moduleSpecTable, PSSession session)
          {
 diff --git a/src/System.Management.Automation/engine/Modules/ImportModuleCommand.cs b/src/System.Management.Automation/engine/Modules/ImportModuleCommand.cs
-index 15e8bfe6a9..4639c02bf6 100644
+index 15e8bfe6a9..50360300ce 100644
 --- a/src/System.Management.Automation/engine/Modules/ImportModuleCommand.cs
 +++ b/src/System.Management.Automation/engine/Modules/ImportModuleCommand.cs
 @@ -18,7 +18,9 @@ using System.Reflection;
  using System.Security;
  using System.Threading;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  using Microsoft.PowerShell.Cmdletization;
@@ -523,7 +590,7 @@ index 15e8bfe6a9..4639c02bf6 100644
          /// </summary>
          [Parameter(ParameterSetName = ParameterSet_Name, Mandatory = true, ValueFromPipeline = true, Position = 0)]
          [Parameter(ParameterSetName = ParameterSet_ViaPsrpSession, Mandatory = true, ValueFromPipeline = true, Position = 0)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_ViaCimSession, Mandatory = true, ValueFromPipeline = true, Position = 0)]
 +#endif
          [Parameter(ParameterSetName = ParameterSet_ViaWinCompat, Mandatory = true, ValueFromPipeline = true, Position = 0)]
@@ -533,7 +600,7 @@ index 15e8bfe6a9..4639c02bf6 100644
          [Parameter(ParameterSetName = ParameterSet_ModuleInfo)]
          [Parameter(ParameterSetName = ParameterSet_Assembly)]
          [Parameter(ParameterSetName = ParameterSet_ViaPsrpSession)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_ViaCimSession)]
 +#endif
          [Parameter(ParameterSetName = ParameterSet_FQName_ViaPsrpSession)]
@@ -543,7 +610,7 @@ index 15e8bfe6a9..4639c02bf6 100644
          /// </summary>
          [Parameter(ParameterSetName = ParameterSet_Name)]
          [Parameter(ParameterSetName = ParameterSet_ViaPsrpSession)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_ViaCimSession)]
 +#endif
          [Parameter(ParameterSetName = ParameterSet_ViaWinCompat)]
@@ -553,7 +620,7 @@ index 15e8bfe6a9..4639c02bf6 100644
          /// </summary>
          [Parameter(ParameterSetName = ParameterSet_Name)]
          [Parameter(ParameterSetName = ParameterSet_ViaPsrpSession)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_ViaCimSession)]
 +#endif
          [Parameter(ParameterSetName = ParameterSet_ViaWinCompat)]
@@ -563,7 +630,7 @@ index 15e8bfe6a9..4639c02bf6 100644
          /// </summary>
          [Parameter(ParameterSetName = ParameterSet_Name)]
          [Parameter(ParameterSetName = ParameterSet_ViaPsrpSession)]
-+#if !UNIX
++#if MMI
          [Parameter(ParameterSetName = ParameterSet_ViaCimSession)]
 +#endif
          [Parameter(ParameterSetName = ParameterSet_ViaWinCompat)]
@@ -573,7 +640,7 @@ index 15e8bfe6a9..4639c02bf6 100644
              base.BaseDisableNameChecking = false;
          }
  
-+#if !UNIX
++#if MMI
          /// <summary>
          /// If specified, then Import-Module will attempt to import PS-CIM modules from a remote computer using the specified session.
          /// </summary>
@@ -589,7 +656,7 @@ index 15e8bfe6a9..4639c02bf6 100644
  
          #endregion PSSession parameterset
  
-+#if !UNIX
++#if MMI
          #region CimSession parameterset
  
          private static bool IsNonEmptyManifestField(Hashtable manifestData, string key)
@@ -605,7 +672,7 @@ index 15e8bfe6a9..4639c02bf6 100644
                              SetModuleBaseForEngineModules(module.Name, this.Context);
                          },
  
-+#if !UNIX
++#if MMI
                          cimSessionAction: (cimSession, resourceUri, cimNamespace) => ImportModule_RemotelyViaCimSession(
                              importModuleOptions,
                              new string[] { module.Name },
@@ -620,7 +687,7 @@ index 15e8bfe6a9..4639c02bf6 100644
              {
                  ImportModule_RemotelyViaPsrpSession(importModuleOptions, this.Name, null, this.PSSession);
              }
-+#if !UNIX
++#if MMI
              else if (this.ParameterSetName.Equals(ParameterSet_ViaCimSession, StringComparison.OrdinalIgnoreCase))
              {
                  ImportModule_RemotelyViaCimSession(importModuleOptions, this.Name, this.CimSession, this.CimResourceUri, this.CimNamespace);
@@ -630,14 +697,14 @@ index 15e8bfe6a9..4639c02bf6 100644
              {
                  foreach (var modulespec in FullyQualifiedName)
 diff --git a/src/System.Management.Automation/engine/Modules/RemoteDiscoveryHelper.cs b/src/System.Management.Automation/engine/Modules/RemoteDiscoveryHelper.cs
-index 18e1254152..ba87de73eb 100644
+index 18e1254152..d3e67d4d8e 100644
 --- a/src/System.Management.Automation/engine/Modules/RemoteDiscoveryHelper.cs
 +++ b/src/System.Management.Automation/engine/Modules/RemoteDiscoveryHelper.cs
 @@ -16,8 +16,10 @@ using System.Text.RegularExpressions;
  using System.Threading;
  using System.Xml;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
  using Microsoft.Management.Infrastructure.Options;
 +#endif
@@ -648,7 +715,7 @@ index 18e1254152..ba87de73eb 100644
              return errorRecord;
          }
  
-+#if !UNIX
++#if MMI
          private const string DiscoveryProviderNotFoundErrorId = "DiscoveryProviderNotFound";
  
          private static ErrorRecord GetErrorRecordForRemoteDiscoveryProvider(Exception innerException)
@@ -664,7 +731,7 @@ index 18e1254152..ba87de73eb 100644
  
          #endregion PSRP
  
-+#if !UNIX
++#if MMI
          #region CIM
  
          private const string DiscoveryProviderNamespace = "root/Microsoft/Windows/Powershellv3";
@@ -680,7 +747,7 @@ index 18e1254152..ba87de73eb 100644
              return modulePath;
          }
  
-+#if !UNIX
++#if MMI
          internal static void AssociatePSModuleInfoWithSession(PSModuleInfo moduleInfo, CimSession cimSession, Uri resourceUri, string cimNamespace)
          {
              AssociatePSModuleInfoWithSession(moduleInfo, (object)new Tuple<CimSession, Uri, string>(cimSession, resourceUri, cimNamespace));
@@ -693,7 +760,7 @@ index 18e1254152..ba87de73eb 100644
          internal static void DispatchModuleInfoProcessing(
              PSModuleInfo moduleInfo,
              Action localAction,
-+#if !UNIX
++#if MMI
              Action<CimSession, Uri, string> cimSessionAction,
 +#endif
              Action<PSSession> psSessionAction)
@@ -703,7 +770,7 @@ index 18e1254152..ba87de73eb 100644
                  return;
              }
  
-+#if !UNIX
++#if MMI
              Tuple<CimSession, Uri, string> cimSessionInfo = weaklyTypeSession as Tuple<CimSession, Uri, string>;
              if (cimSessionInfo != null)
              {
@@ -715,14 +782,14 @@ index 18e1254152..ba87de73eb 100644
              PSSession psSession = weaklyTypeSession as PSSession;
              if (psSession != null)
 diff --git a/src/System.Management.Automation/engine/MshObject.cs b/src/System.Management.Automation/engine/MshObject.cs
-index 8303058759..7895a730e3 100644
+index 8303058759..9326bf553f 100644
 --- a/src/System.Management.Automation/engine/MshObject.cs
 +++ b/src/System.Management.Automation/engine/MshObject.cs
 @@ -23,7 +23,9 @@ using System.Runtime.Serialization;
  using System.Text;
  using System.Xml;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  #if !UNIX
@@ -743,7 +810,7 @@ index 8303058759..7895a730e3 100644
          private static readonly AdapterSet s_mshMemberSetAdapter = new AdapterSet(new PSMemberSetAdapter(), null);
          private static readonly AdapterSet s_mshObjectAdapter = new AdapterSet(new PSObjectAdapter(), null);
  
-+#if !UNIX
++#if MMI
          private static readonly PSObject.AdapterSet s_cimInstanceAdapter =
              new PSObject.AdapterSet(new ThirdPartyAdapter(typeof(Microsoft.Management.Infrastructure.CimInstance),
                                                            new Microsoft.PowerShell.Cim.CimInstanceAdapter()),
@@ -754,14 +821,14 @@ index 8303058759..7895a730e3 100644
          private static readonly AdapterSet s_managementClassAdapter = new AdapterSet(new ManagementClassApdapter(), DotNetInstanceAdapter);
          private static readonly AdapterSet s_directoryEntryAdapter = new AdapterSet(new DirectoryEntryAdapter(), DotNetInstanceAdapter);
 diff --git a/src/System.Management.Automation/engine/NativeCommandProcessor.cs b/src/System.Management.Automation/engine/NativeCommandProcessor.cs
-index 11aaff1535..66d488c9d8 100644
+index 11aaff1535..319c277fe4 100644
 --- a/src/System.Management.Automation/engine/NativeCommandProcessor.cs
 +++ b/src/System.Management.Automation/engine/NativeCommandProcessor.cs
 @@ -1343,9 +1343,11 @@ namespace System.Management.Automation
                  catch (InvalidOperationException)
                  {
                  }
-+#if !UNIX
++#if MMI
                  catch (Microsoft.Management.Infrastructure.CimException)
                  {
                  }
@@ -770,28 +837,28 @@ index 11aaff1535..66d488c9d8 100644
          }
  
 diff --git a/src/System.Management.Automation/engine/hostifaces/Command.cs b/src/System.Management.Automation/engine/hostifaces/Command.cs
-index 3de339ff11..72ce4748b1 100644
+index 3de339ff11..d5156b4b91 100644
 --- a/src/System.Management.Automation/engine/hostifaces/Command.cs
 +++ b/src/System.Management.Automation/engine/hostifaces/Command.cs
 @@ -5,7 +5,9 @@ using System.Collections.Generic;
  using System.Collections.ObjectModel;
  using System.Management.Automation.Internal;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  
  using Dbg = System.Management.Automation.Diagnostics;
  
 diff --git a/src/System.Management.Automation/engine/hostifaces/PSDataCollection.cs b/src/System.Management.Automation/engine/hostifaces/PSDataCollection.cs
-index eb1a796d0e..7d7b4d1f91 100644
+index eb1a796d0e..bce3d59b4e 100644
 --- a/src/System.Management.Automation/engine/hostifaces/PSDataCollection.cs
 +++ b/src/System.Management.Automation/engine/hostifaces/PSDataCollection.cs
 @@ -1666,11 +1666,13 @@ namespace System.Management.Automation
                  return true;
              }
  
-+#if !UNIX
++#if MMI
              // Check if it's a CIM type
              if (baseObject is Microsoft.Management.Infrastructure.CimInstance)
              {
@@ -802,42 +869,42 @@ index eb1a796d0e..7d7b4d1f91 100644
              // Check if it's got "Deserialized" in its type name
              if (result.TypeNames[0].StartsWith("Deserialized", StringComparison.OrdinalIgnoreCase))
 diff --git a/src/System.Management.Automation/engine/hostifaces/Parameter.cs b/src/System.Management.Automation/engine/hostifaces/Parameter.cs
-index 8511d13c05..a930ebeda1 100644
+index 8511d13c05..a75c1da814 100644
 --- a/src/System.Management.Automation/engine/hostifaces/Parameter.cs
 +++ b/src/System.Management.Automation/engine/hostifaces/Parameter.cs
 @@ -3,7 +3,9 @@
  
  using System.Management.Automation.Language;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  
  namespace System.Management.Automation.Runspaces
  {
 diff --git a/src/System.Management.Automation/engine/hostifaces/PowerShell.cs b/src/System.Management.Automation/engine/hostifaces/PowerShell.cs
-index 7d29ffa522..0487ff6ddb 100644
+index 7d29ffa522..419392d98e 100644
 --- a/src/System.Management.Automation/engine/hostifaces/PowerShell.cs
 +++ b/src/System.Management.Automation/engine/hostifaces/PowerShell.cs
 @@ -16,7 +16,9 @@ using System.Runtime.Serialization;
  using System.Threading;
  using System.Threading.Tasks;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  using Microsoft.PowerShell.Telemetry;
  
  using Dbg = System.Management.Automation.Diagnostics;
 diff --git a/src/System.Management.Automation/engine/parser/Parser.cs b/src/System.Management.Automation/engine/parser/Parser.cs
-index 1592d2e7e7..20df010a16 100644
+index 1592d2e7e7..69359dff3d 100644
 --- a/src/System.Management.Automation/engine/parser/Parser.cs
 +++ b/src/System.Management.Automation/engine/parser/Parser.cs
 @@ -15,7 +15,9 @@ using System.Management.Automation.Subsystem.DSC;
  using System.Reflection;
  using System.Runtime.CompilerServices;
  using System.Threading.Tasks;
-+#if !UNIX
++#if MMI
  using Dsc = Microsoft.PowerShell.DesiredStateConfiguration.Internal;
 +#endif
  
@@ -847,7 +914,7 @@ index 1592d2e7e7..20df010a16 100644
                              {
                                  dscSubsystem.LoadDefaultKeywords(CIMKeywordErrors);
                              }
-+#if !UNIX
++#if MMI
                              else
                              {
                                  Dsc.DscClassCache.LoadDefaultCimKeywords(CIMKeywordErrors);
@@ -860,7 +927,7 @@ index 1592d2e7e7..20df010a16 100644
                      {
                          dscSubsystem.ClearCache();
                      }
-+#if !UNIX
++#if MMI
                      else
                      {
                          Dsc.DscClassCache.ClearCache();
@@ -870,14 +937,14 @@ index 1592d2e7e7..20df010a16 100644
                      System.Management.Automation.Language.DynamicKeyword.Reset();
                  }
 diff --git a/src/System.Management.Automation/engine/parser/SemanticChecks.cs b/src/System.Management.Automation/engine/parser/SemanticChecks.cs
-index 4a2a3bb626..754dfda695 100644
+index 4a2a3bb626..c611db79ed 100644
 --- a/src/System.Management.Automation/engine/parser/SemanticChecks.cs
 +++ b/src/System.Management.Automation/engine/parser/SemanticChecks.cs
 @@ -14,7 +14,9 @@ using Microsoft.PowerShell;
  using System.Management.Automation.Security;
  using System.Management.Automation.Subsystem;
  using System.Management.Automation.Subsystem.DSC;
-+#if !UNIX
++#if MMI
  using Microsoft.PowerShell.DesiredStateConfiguration.Internal;
 +#endif
  
@@ -887,7 +954,7 @@ index 4a2a3bb626..754dfda695 100644
                  Diagnostics.Assert(nameAst != null, "nameAst should never be null");
                  var extentText = nameAst.Extent.Text.Trim();
                  ICrossPlatformDsc dscSubsystem = SubsystemManager.GetSubsystem<ICrossPlatformDsc>();
-+#if UNIX
++#if !MMI
 +                var extentTextIsASystemResourceName = dscSubsystem != null && dscSubsystem.IsSystemResourceName(extentText);
 +#else
                  var extentTextIsASystemResourceName = (dscSubsystem != null) ? dscSubsystem.IsSystemResourceName(extentText) : DscClassCache.SystemResourceNames.Contains(extentText);
@@ -896,14 +963,14 @@ index 4a2a3bb626..754dfda695 100644
                  {
                      if (configAst.ConfigurationType == ConfigurationType.Meta && !dynamicKeywordStatementAst.Keyword.IsMetaDSCResource())
 diff --git a/src/System.Management.Automation/engine/parser/TypeInferenceVisitor.cs b/src/System.Management.Automation/engine/parser/TypeInferenceVisitor.cs
-index a7744ac641..655a4c3cee 100644
+index a7744ac641..119dd92404 100644
 --- a/src/System.Management.Automation/engine/parser/TypeInferenceVisitor.cs
 +++ b/src/System.Management.Automation/engine/parser/TypeInferenceVisitor.cs
 @@ -13,8 +13,10 @@ using System.Text.RegularExpressions;
  
  using Microsoft.PowerShell.Commands;
  
-+#if !UNIX
++#if MMI
  using CimClass = Microsoft.Management.Infrastructure.CimClass;
  using CimInstance = Microsoft.Management.Infrastructure.CimInstance;
 +#endif
@@ -914,7 +981,7 @@ index a7744ac641..655a4c3cee 100644
  
          internal void AddMembersByInferredTypeCimType(PSTypeName typename, List<object> results, Func<object, bool> filterToCall)
          {
-+#if !UNIX
++#if MMI
              if (ParseCimCommandsTypeName(typename, out var cimNamespace, out var className))
              {
                  var powerShellExecutionHelper = Helper;
@@ -939,7 +1006,7 @@ index a7744ac641..655a4c3cee 100644
                      inferredTypes.Add(newObjectType);
                  }
              }
-+#if !UNIX
++#if MMI
              else if (
                  cmdletInfo.ImplementingType.FullName.EqualsOrdinalIgnoreCase("Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand") ||
                  cmdletInfo.ImplementingType.FullName.EqualsOrdinalIgnoreCase("Microsoft.Management.Infrastructure.CimCmdlets.NewCimInstanceCommand"))
@@ -955,7 +1022,7 @@ index a7744ac641..655a4c3cee 100644
              return inferredTypes;
          }
  
-+#if !UNIX
++#if MMI
          private static void InferTypesFromCimCommand(PseudoBindingInfo pseudoBinding, List<PSTypeName> inferredTypes)
          {
              string pseudoboundNamespace =
@@ -968,14 +1035,14 @@ index a7744ac641..655a4c3cee 100644
          private void InferTypesFromForeachCommand(PseudoBindingInfo pseudoBinding, CommandAst commandAst, List<PSTypeName> inferredTypes)
          {
 diff --git a/src/System.Management.Automation/engine/parser/TypeResolver.cs b/src/System.Management.Automation/engine/parser/TypeResolver.cs
-index 72258a4f45..d90b7b5f41 100644
+index 72258a4f45..8096768f98 100644
 --- a/src/System.Management.Automation/engine/parser/TypeResolver.cs
 +++ b/src/System.Management.Automation/engine/parser/TypeResolver.cs
 @@ -23,7 +23,9 @@ using System.Security.Cryptography.X509Certificates;
  using System.Text.RegularExpressions;
  using System.Xml;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
 +#endif
  using Microsoft.PowerShell.Commands;
@@ -985,7 +1052,7 @@ index 72258a4f45..d90b7b5f41 100644
                      { typeof(int),                                         new[] { "int", "int32" } },
                      { typeof(Int16),                                       new[] { "short", "int16" } },
                      { typeof(long),                                        new[] { "long", "int64" } },
-+#if !UNIX
++#if MMI
                      { typeof(CimInstance),                                 new[] { "ciminstance" } },
                      { typeof(CimClass),                                    new[] { "cimclass" } },
                      { typeof(Microsoft.Management.Infrastructure.CimType), new[] { "cimtype" } },
@@ -998,21 +1065,21 @@ index 72258a4f45..d90b7b5f41 100644
                      { typeof(X509Certificate),                             new[] { "X509Certificate" } },
                      { typeof(X500DistinguishedName),                       new[] { "X500DistinguishedName" } },
                      { typeof(XmlDocument),                                 new[] { "xml" } },
-+#if !UNIX
++#if MMI
                      { typeof(CimSession),                                  new[] { "CimSession" } },
 +#endif
                      { typeof(MailAddress),                                 new[] { "mailaddress" } },
                      { typeof(SemanticVersion),                             new[] { "semver" } },
  #if !UNIX
 diff --git a/src/System.Management.Automation/engine/parser/tokenizer.cs b/src/System.Management.Automation/engine/parser/tokenizer.cs
-index e2aed94cc9..0e7b0cf532 100644
+index e2aed94cc9..0a7af081e8 100644
 --- a/src/System.Management.Automation/engine/parser/tokenizer.cs
 +++ b/src/System.Management.Automation/engine/parser/tokenizer.cs
 @@ -14,7 +14,9 @@ using System.Text;
  using Microsoft.PowerShell.Commands;
  using System.Management.Automation.Subsystem;
  using System.Management.Automation.Subsystem.DSC;
-+#if !UNIX
++#if MMI
  using Microsoft.PowerShell.DesiredStateConfiguration.Internal;
 +#endif
  
@@ -1022,7 +1089,7 @@ index e2aed94cc9..0e7b0cf532 100644
                  {
                      dscSubsystem.IsDefaultModuleNameForMetaConfigResource(implementingModule);
                  }
-+#if !UNIX
++#if MMI
                  else
                  {
                      return implementingModule.Equals(DscClassCache.DefaultModuleInfoForMetaConfigResource.Item1, StringComparison.OrdinalIgnoreCase);
@@ -1032,14 +1099,14 @@ index e2aed94cc9..0e7b0cf532 100644
  
              return false;
 diff --git a/src/System.Management.Automation/engine/serialization.cs b/src/System.Management.Automation/engine/serialization.cs
-index 3cffd998d4..410d02690f 100644
+index 3cffd998d4..b3b977198b 100644
 --- a/src/System.Management.Automation/engine/serialization.cs
 +++ b/src/System.Management.Automation/engine/serialization.cs
 @@ -22,8 +22,10 @@ using System.Security;
  using System.Text;
  using System.Xml;
  
-+#if !UNIX
++#if MMI
  using Microsoft.Management.Infrastructure;
  using Microsoft.Management.Infrastructure.Serialization;
 +#endif
@@ -1050,12 +1117,12 @@ index 3cffd998d4..410d02690f 100644
          internal readonly PSRemotingCryptoHelper cryptoHelper;
  
          internal static readonly int MaxItemsInCimClassCache = 100;
-+#if !UNIX
++#if MMI
          internal readonly CimClassDeserializationCache<CimClassSerializationId> cimClassSerializationIdCache = new CimClassDeserializationCache<CimClassSerializationId>();
 +#endif
      }
  
-+#if !UNIX
++#if MMI
      internal class CimClassDeserializationCache<TKey>
      {
          private readonly Dictionary<TKey, CimClass> _cimClassIdToClass = new Dictionary<TKey, CimClass>();
@@ -1071,7 +1138,7 @@ index 3cffd998d4..410d02690f 100644
              bool isInformationalRecord = false;
              bool isEnum = false;
              bool isPSObject = false;
-+#if !UNIX
++#if MMI
              bool isCimInstance = false;
 +#endif
  
@@ -1079,7 +1146,7 @@ index 3cffd998d4..410d02690f 100644
              {
                  do // false loop
                  {
-+#if !UNIX
++#if MMI
                      CimInstance cimInstance = mshSource.ImmediateBaseObject as CimInstance;
                      if (cimInstance != null)
                      {
@@ -1094,7 +1161,7 @@ index 3cffd998d4..410d02690f 100644
                  WritePSObjectProperties(mshSource, depth, specificPropertiesToSerialize);
              }
  
-+#if !UNIX
++#if MMI
              if (isCimInstance)
              {
                  CimInstance cimInstance = mshSource.ImmediateBaseObject as CimInstance;
@@ -1107,7 +1174,7 @@ index 3cffd998d4..410d02690f 100644
              _writer.WriteEndElement();
          }
  
-+#if !UNIX
++#if MMI
          private static readonly Lazy<CimSerializer> s_cimSerializer = new Lazy<CimSerializer>(CimSerializer.Create);
  
          private void PrepareCimInstanceForSerialization(PSObject psObject, CimInstance cimInstance)
@@ -1123,7 +1190,7 @@ index 3cffd998d4..410d02690f 100644
                  return depth;
              }
  
-+#if !UNIX
++#if MMI
              if (pso.BaseObject is CimInstance)
              {
                  return 1;
@@ -1136,7 +1203,7 @@ index 3cffd998d4..410d02690f 100644
                      typeof(UInt32),
                      typeof(UInt64),
                      typeof(object),
-+#if !UNIX
++#if MMI
                      typeof(CimInstance)
 +#endif
                  }
@@ -1146,7 +1213,7 @@ index 3cffd998d4..410d02690f 100644
          internal const string CimHashCodeProperty = "Hash";
          internal const string CimMiXmlProperty = "MiXml";
  
-+#if !UNIX
++#if MMI
          private static bool RehydrateCimInstanceProperty(
              CimInstance cimInstance,
              PSPropertyInfo deserializedProperty,
@@ -1162,7 +1229,7 @@ index 3cffd998d4..410d02690f 100644
                  if (!isKnownPrimitiveType)
                  {
                      PSObject mshSource = PSObject.AsPSObject(result);
-+#if !UNIX
++#if MMI
                      if (Deserializer.IsDeserializedInstanceOfType(mshSource, typeof(CimInstance)))
                      {
                          return RehydrateCimInstance(mshSource);
@@ -1171,8 +1238,22 @@ index 3cffd998d4..410d02690f 100644
  
                      // Convert deserialized object to a user-defined type (specified in a types.ps1xml file)
                      Type targetType = mshSource.GetTargetTypeForDeserialization(_typeTable);
+diff --git a/test/Test.Common.props b/test/Test.Common.props
+index 3fafbbf8f8..e2d5223ee9 100644
+--- a/test/Test.Common.props
++++ b/test/Test.Common.props
+@@ -27,4 +27,9 @@
+   <PropertyGroup Condition=" '$(IsWindows)' != 'true' ">
+     <DefineConstants>$(DefineConstants);UNIX</DefineConstants>
+   </PropertyGroup>
++
++  <!-- See PowerShell.Common.props -->
++  <PropertyGroup Condition=" '$(UseMmi)' != 'false' ">
++    <DefineConstants>$(DefineConstants);MMI</DefineConstants>
++  </PropertyGroup>
+ </Project>
 diff --git a/test/powershell/Language/Parser/TypeAccelerator.Tests.ps1 b/test/powershell/Language/Parser/TypeAccelerator.Tests.ps1
-index 99925600f6..c4ea92c435 100644
+index 99925600f6..b0b50fd482 100644
 --- a/test/powershell/Language/Parser/TypeAccelerator.Tests.ps1
 +++ b/test/powershell/Language/Parser/TypeAccelerator.Tests.ps1
 @@ -122,22 +122,6 @@ Describe "Type accelerators" -Tags "CI" {
@@ -1209,19 +1290,16 @@ index 99925600f6..c4ea92c435 100644
                  @{
                      Accelerator = 'mailaddress'
                      Type        = [System.Net.Mail.MailAddress]
-@@ -418,13 +398,34 @@ Describe "Type accelerators" -Tags "CI" {
+@@ -416,13 +396,42 @@ Describe "Type accelerators" -Tags "CI" {
+                 }
+             )
  
-             if ( !$IsWindows )
-             {
--                $totalAccelerators = 102
-+                # CIM is only supported on Windows
-+                $totalAccelerators = 97
-             }
-             else
-             {
-                 $totalAccelerators = 107
- 
-                 $extraFullPSAcceleratorTestCases = @(
++            # PowerShell built without Microsoft.Management.Infrastructure (see PowerShell.Common.props) has no
++            # CIM type accelerators
++            $hasMmi = $null -ne [psobject].Assembly.GetType('Microsoft.PowerShell.Cim.CimInstanceAdapter')
++            if ( $hasMmi )
++            {
++                $cimAcceleratorTestCases = @(
 +                    @{
 +                        Accelerator = 'ciminstance'
 +                        Type        = [Microsoft.Management.Infrastructure.CimInstance]
@@ -1242,46 +1320,73 @@ index 99925600f6..c4ea92c435 100644
 +                        Accelerator = 'CimSession'
 +                        Type        = [Microsoft.Management.Infrastructure.CimSession]
 +                    }
++                )
++            }
++
+             if ( !$IsWindows )
+             {
+-                $totalAccelerators = 102
++                $totalAccelerators = 97 + $cimAcceleratorTestCases.Count
+             }
+             else
+             {
+-                $totalAccelerators = 107
++                $totalAccelerators = 102 + $cimAcceleratorTestCases.Count
+ 
+                 $extraFullPSAcceleratorTestCases = @(
                      @{
-                         Accelerator = 'adsi'
-                         Type        = [System.DirectoryServices.DirectoryEntry]
+@@ -458,6 +467,11 @@ Describe "Type accelerators" -Tags "CI" {
+             $TypeAcceleratorsType::Get[$Accelerator] | Should -Be ($Type)
+         }
+ 
++        It 'Should have a type accelerator for CIM type: <Accelerator>' -Skip:(!$hasMmi) -TestCases $cimAcceleratorTestCases {
++            param($Accelerator, $Type)
++            $TypeAcceleratorsType::Get[$Accelerator] | Should -Be ($Type)
++        }
++
+         It 'Should have a type accelerator for non-dotnet-core type: <Accelerator>' -Skip:(!$IsWindows) -TestCases $extraFullPSAcceleratorTestCases {
+             param($Accelerator, $Type)
+             $TypeAcceleratorsType::Get[$Accelerator] | Should -Be ($Type)
 diff --git a/test/powershell/Modules/Microsoft.PowerShell.Utility/typedata.tests.ps1 b/test/powershell/Modules/Microsoft.PowerShell.Utility/typedata.tests.ps1
-index bd0d096188..59c2a37c64 100644
+index bd0d096188..3a1b73536b 100644
 --- a/test/powershell/Modules/Microsoft.PowerShell.Utility/typedata.tests.ps1
 +++ b/test/powershell/Modules/Microsoft.PowerShell.Utility/typedata.tests.ps1
-@@ -43,7 +43,8 @@ Describe "TestData cmdlets" -Tags "CI" {
+@@ -43,7 +43,9 @@ Describe "TestData cmdlets" -Tags "CI" {
              $script:ps = $null
          }
  
 -        It "TypeAdapter parameter" {
-+        # CIM is only supported on Windows
-+        It "TypeAdapter parameter" -Skip:(!$IsWindows) {
++        # PowerShell built without Microsoft.Management.Infrastructure (see PowerShell.Common.props) has no CIM
++        # type adapter
++        It "TypeAdapter parameter" -Skip:($null -eq [psobject].Assembly.GetType('Microsoft.PowerShell.Cim.CimInstanceAdapter')) {
              $type = $ps.AddScript(@"
  Update-TypeData -TypeName Void -TypeAdapter Microsoft.PowerShell.Cim.CimInstanceAdapter
  Get-TypeData System.Void
 diff --git a/test/powershell/engine/Basic/StandardLibraryTypes.Tests.ps1 b/test/powershell/engine/Basic/StandardLibraryTypes.Tests.ps1
-index 8aed31c3f4..1334a940b6 100644
+index 8aed31c3f4..52ebae8729 100644
 --- a/test/powershell/engine/Basic/StandardLibraryTypes.Tests.ps1
 +++ b/test/powershell/engine/Basic/StandardLibraryTypes.Tests.ps1
-@@ -55,7 +55,8 @@ Describe "Types referenced by PowerShell Standard should not be missing"  -Tags
+@@ -55,7 +55,10 @@ Describe "Types referenced by PowerShell Standard should not be missing"  -Tags
              "IsSignatureType",
              "IsVisible"
  
 -        $tests = Import-Csv $assets | ForEach-Object {
-+        # CIM is only supported on Windows
-+        $tests = Import-Csv $assets | Where-Object { $IsWindows -or $_.FullName -ne 'Microsoft.PowerShell.Cim.CimInstanceAdapter' } | ForEach-Object {
++        # PowerShell built without Microsoft.Management.Infrastructure (see PowerShell.Common.props) has no CIM
++        # type adapter
++        $hasMmi = $null -ne [psobject].Assembly.GetType('Microsoft.PowerShell.Cim.CimInstanceAdapter')
++        $tests = Import-Csv $assets | Where-Object { $hasMmi -or $_.FullName -ne 'Microsoft.PowerShell.Cim.CimInstanceAdapter' } | ForEach-Object {
              @{ FullName = $_.FullName; TypeMetaData = $_ }
          }
      }
 diff --git a/test/xUnit/csharp/test_PSObject.cs b/test/xUnit/csharp/test_PSObject.cs
-index 1888d45045..a961469d29 100644
+index 1888d45045..7cf8b54d31 100644
 --- a/test/xUnit/csharp/test_PSObject.cs
 +++ b/test/xUnit/csharp/test_PSObject.cs
 @@ -12,7 +12,9 @@ namespace PSTests.Parallel
      using System.Management.Automation.Runspaces;
      using System.Xml;
  
-+#if !UNIX
++#if MMI
      using Microsoft.Management.Infrastructure;
 +#endif
  
@@ -1291,7 +1396,7 @@ index 1888d45045..a961469d29 100644
              Assert.Equal("attr", member.Name);
          }
  
-+#if !UNIX
++#if MMI
          [SkippableFact]
          public static void TestCimInstanceProperty()
          {
@@ -1303,7 +1408,7 @@ index 1888d45045..a961469d29 100644
      }
  }
 diff --git a/test/xUnit/xUnit.tests.csproj b/test/xUnit/xUnit.tests.csproj
-index a9dd99d08c..c86438062a 100644
+index a9dd99d08c..78ae3aaaf2 100644
 --- a/test/xUnit/xUnit.tests.csproj
 +++ b/test/xUnit/xUnit.tests.csproj
 @@ -19,7 +19,7 @@
@@ -1311,7 +1416,7 @@ index a9dd99d08c..c86438062a 100644
      <ProjectReference Include="../../src/Microsoft.PowerShell.Commands.Diagnostics/Microsoft.PowerShell.Commands.Diagnostics.csproj" />
      <ProjectReference Include="../../src/Microsoft.WSMan.Management/Microsoft.WSMan.Management.csproj" />
 -    <ProjectReference Include="../../src/Microsoft.Management.Infrastructure.CimCmdlets/Microsoft.Management.Infrastructure.CimCmdlets.csproj" />
-+    <ProjectReference Include="../../src/Microsoft.Management.Infrastructure.CimCmdlets/Microsoft.Management.Infrastructure.CimCmdlets.csproj" Condition=" '$(IsWindows)' == 'true' " />
++    <ProjectReference Include="../../src/Microsoft.Management.Infrastructure.CimCmdlets/Microsoft.Management.Infrastructure.CimCmdlets.csproj" Condition=" '$(UseMmi)' != 'false' " />
    </ItemGroup>
  
    <ItemGroup>

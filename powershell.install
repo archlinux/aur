@@ -11,4 +11,6 @@ post_upgrade() {
 
 pre_remove() {
 	sed -i -r '/^(\/usr)?\/bin\/pwsh$/d' etc/shells
+	# Written by the powershell-deps hook, which can't run anymore once PowerShell is removed
+	rm -f usr/lib/powershell-7/pwsh.deps.json
 }

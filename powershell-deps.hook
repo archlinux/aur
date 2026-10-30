@@ -1,0 +1,18 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/powershell-7/pwsh.base.deps.json
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/share/powershell/deps.d/*.json
+
+[Action]
+Description = Updating the dependencies of PowerShell...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/update-pwsh-deps
+Depends = powershell
