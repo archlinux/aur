@@ -2,7 +2,7 @@
 
 pkgname=gridcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.0.r607.ga1c8454
+pkgver=0.13.0.r241.g68a4b1a
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
@@ -31,9 +31,10 @@ _srcenv() {
 		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -fno-lto'
 }
 
 _icons=(512 256 128 64 48 32 16)
