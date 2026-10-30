@@ -1,0 +1,22 @@
+pkgbase = gigactl-git
+	pkgdesc = Fan and RGB keyboard backlight control for Gigabyte G5/G6 gaming laptops
+	pkgver = 1.0.r71.g79ad2d5
+	pkgrel = 1
+	url = https://github.com
+	install = gigactl.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	depends = dbus
+	depends = nbfc-linux
+	provides = gigactl
+	conflicts = gigactl
+	source = gigactl-git::git+https://github.com/smairio/gigactl
+	sha256sums = SKIP
+
+pkgname = gigactl-git

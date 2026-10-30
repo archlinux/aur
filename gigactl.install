@@ -1,0 +1,8 @@
+post_install() {
+    echo "Installation complete!" >&2
+    systemctl enable --now gigactl
+}
+
+post_upgrade() {
+    post_install
+}
