@@ -1,5 +1,5 @@
 pkgname=ezoo-download-bin
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A fast, modern open-source alternative to Internet Download Manager (IDM) for Linux (prebuilt .deb)"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = ezoo-download-bin
 	pkgdesc = A fast, modern open-source alternative to Internet Download Manager (IDM) for Linux (prebuilt .deb)
-	pkgver = 1.0.7
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kerlif/ezoo-download
 	arch = x86_64
