@@ -2,7 +2,7 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=65.7.0
+pkgver=65.8.0
 pkgrel=1
 _tarver=7.5.22
 pkgdesc='Command-line interface for Vercel'
@@ -20,7 +20,7 @@ conflicts=('vercel')
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('478633169415dc96d8f98cfb77d1236c681a128dacc4925368f4257db2203f66')
+sha256sums=('9a7691a65ccfef18d3b55f57cdf67c6835fb2e0479f5cdae1563ee11f5bfeb6a')
 
 package() {
     local _stagedir="${srcdir}/${_pkgname}-${pkgver}-stage"
@@ -62,6 +62,9 @@ package() {
     # npm install may seed an etc/ directory with build-time paths inside
     # the prefix; it is not useful at runtime.
     rm -rf "${pkgdir}/usr/etc"
+    # Drop musl prebuilds (Arch is glibc): e.g. @koromix/koffi-linux-x64/musl_x64.
+    find "${pkgdir}/usr/lib/node_modules/vercel" -name '*.musl.node' -delete
+    find "${pkgdir}/usr/lib/node_modules/vercel" -depth -type d -name '*musl*' -exec rm -rf {} +
 
     # Install the upstream LICENSE (Apache-2.0) explicitly. The tarball is
     # kept un-extracted by `noextract` above, so pull it out on demand.
