@@ -1,0 +1,32 @@
+pkgbase = biliup-git
+	pkgdesc = Automatic livestream recording and Bilibili video uploader
+	pkgver = 1.3.4.r7.gc2a8f41
+	pkgrel = 1
+	url = https://github.com/biliup/biliup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	license = OFL-1.1
+	makedepends = git
+	makedepends = nodejs>=20.9
+	makedepends = npm
+	makedepends = rust
+	depends = ffmpeg
+	depends = gcc-libs
+	provides = biliup
+	conflicts = biliup
+	conflicts = biliup-rs-bin
+	options = !lto
+	source = biliup::git+https://github.com/biliup/biliup.git#branch=master
+	source = NotoSansSC-Regular.otf::https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf
+	source = NotoEmoji.ttf::https://raw.githubusercontent.com/google/fonts/47d54ca1ebb14fd864695f1d39dc734f39017c33/ofl/notoemoji/NotoEmoji%5Bwght%5D.ttf
+	source = NotoSansCJK-OFL.txt::https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/LICENSE
+	source = NotoEmoji-OFL.txt::https://raw.githubusercontent.com/google/fonts/47d54ca1ebb14fd864695f1d39dc734f39017c33/ofl/notoemoji/OFL.txt
+	sha256sums = SKIP
+	sha256sums = 2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b
+	sha256sums = de6c18832938afc99caf132b39d6a30a19bac7f2e812e28db2535b4608d27551
+	sha256sums = 6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2
+	sha256sums = 500bb1ccf43df7bbb522112f9133a52b16e1c35e809632f5d8609b179152de5b
+
+pkgname = biliup-git
