@@ -5,7 +5,7 @@
 # SRS is an independent project, not affiliated with SIV or its author.
 
 pkgname=srs-sysinfo
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Linux system information viewer inspired by SIV64X (independent, not affiliated with SIV): GTK3 GUI, 558 report items, user guide, CPU and GPU burn-in, benchmarks"
 arch=('x86_64')
@@ -16,7 +16,9 @@ optdepends=(
   'libayatana-appindicator: system tray icon (like the SIV Icon Tray)'
   'polkit: srs-root helper for root-only data (one pkexec prompt)'
   'dmidecode: SMBIOS details and serials (via srs-root)'
-  'i2c-tools: DIMM SPD decode with decode-dimms (via srs-root)'
+  'i2c-tools: DIMM SPD decode with decode-dimms, and the opt-in DIMM PMIC voltages (via srs-root)'
+  'ryzen_smu-dkms-git: AMD live memory timings, clocks and SoC voltages (Memory Timings; AUR)'
+  'acpi_call-dkms: Tools > ACPI method evaluation (for experts)'
   'smartmontools: SMART attributes (via srs-root)'
   'nvme-cli: NVMe SMART log (via srs-root)'
   'pciutils: PCI config space (via srs-root) and srs-sysreport'
@@ -36,7 +38,7 @@ optdepends=(
   'zstd: zstd rows of the Everyday Work benchmark (loaded at run time)'
   'lz4: lz4 rows of the Everyday Work benchmark (loaded at run time)'
   'xz: xz rows of the Everyday Work benchmark (loaded at run time)'
-  'curl: libcurl for the optional internet speed test of the Network benchmark (loaded at run time)'
+  'curl: libcurl for the optional internet speed test of the Network benchmark (loaded at run time); the curl command for Update hardware lists (or wget)'
   "vulkan-icd-loader: the GPU benchmarks (Vulkan loader, loaded at run time; plus your GPU's Vulkan driver)"
   'rocm-hip-runtime: ROCm / HIP back end of GPU Burnin and the GPU Compute comparison (loaded at run time; hipblas for the library rows)'
   'opencl-icd-loader: OpenCL back end of GPU Burnin and the GPU Compute comparison (loaded at run time; plus an OpenCL driver)'
@@ -45,7 +47,7 @@ optdepends=(
   'cuda: NVIDIA runtime compiler (libnvrtc) for SRS CUDA kernels, only a fallback since 2.3 (not needed with ZLUDA; may remove ZLUDA); can be installed later from Options'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('615ad101b0708227886f0b67412b7354da6f95ae020f4b6345e84af1d8e7bbde')
+sha256sums=('9218598e5808e2bcd25003a566c70a6d3ed10c26f327b682381bfa14c14c567b')
 
 build() {
   cd "$pkgname-$pkgver"
