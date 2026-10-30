@@ -2,7 +2,7 @@
 
 _pkgname=llama.cpp-cuda
 pkgname=${_pkgname}-aidock-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Prebuilt llama.cpp with CUDA 12.8 support (from ai-dock CI)'
 arch=(x86_64 aarch64)
@@ -29,11 +29,11 @@ source_aarch64=(llama.cpp-$pkgver-cuda-12.8-arm64.tar.gz::https://github.com/ai-
                 nccl_2.26.2-1+cuda12.8_aarch64.txz::https://developer.download.nvidia.com/compute/redist/nccl/v2.26.2/nccl_2.26.2-1+cuda12.8_aarch64.txz)
 sha256sums=('fe82a992d2a88e45746b062aea4d03912da24cde707446cef1f8fd08e38a05ad'
             '94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d')
-sha256sums_x86_64=('64ed0880c8c4dc4de93526402b550f8ea4d8e26bb54740c219ad2aa69ef87635'
+sha256sums_x86_64=('3720c93df5f3cc246838c4cbdf342db5021d51b17445370f1db2ecc4c973a076'
                    '8d566b5fe745c46842dc16945cf36686227536decd2302c372be86da37faca68'
                    '21718957c2cf000bacd69d36c95708a2319199e39e056f8b4f0f68e3b9f323bb'
                    '669434a7a2e4f6f99d6969f0a4de7bf12a26d3873bbbd84f1a7bd05e1cd6e45e')
-sha256sums_aarch64=('d7489f911129f027aa62d699aee4ddc8d65d9d1774420e6bebd19f18d59b4539'
+sha256sums_aarch64=('30413699595329bb6a4d5735d475ad7223559feaa9feeb8a6af33a5039e15d92'
                     '9e54c6686b193efa9642e7f6609ce78b064c5d576946478bcff4c024e1acdea7'
                     '429803c0ea8aec1db0050f7bfd807d519e22c9bf223c19000d6018d930741028'
                     '250a1bb323df4565bf6936dbacf6c20022deaf841c41b3a5c38c7963a9665050')
