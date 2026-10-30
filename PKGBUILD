@@ -2,7 +2,7 @@
 
 pkgname=merman-bin
 _pkgname=merman
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Mermaid.js, but headless, in Rust (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ source_x86_64=("merman-cli-${pkgver}-x86_64.tar.xz::${_release}/merman-cli-x86_6
                "merman-lsp-${pkgver}-x86_64.tar.xz::${_release}/merman-lsp-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("merman-cli-${pkgver}-aarch64.tar.xz::${_release}/merman-cli-aarch64-unknown-linux-gnu.tar.xz"
                 "merman-lsp-${pkgver}-aarch64.tar.xz::${_release}/merman-lsp-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('7e33156646127bcd7794e7fd36cf76a7d19b501f77f945a186b98394a3451c55'
-                   '740ecbd11ee880982279ea12e3e757a0d191e0d9c7aa2896f8e0845272e31f5a')
-sha256sums_aarch64=('d412ca2786a36b9625e65794586d23100b30544c187af21c5a40ec0e9c522328'
-                    'b8a6b55a55d5df1fb2739ef8bfafc2dcddc5692aa1380a9db85f4576174b3d8f')
+sha256sums_x86_64=('e93dbf741319190d53107c4277b373d357dcdad3f4f7e50f114a51c9b682109b'
+                   '6be41a75fcd4acde7aa133b23ce0110ea39703a9791acbb0643f05d062bd25aa')
+sha256sums_aarch64=('afea2472d232d0642b430f1db03a8d216925fbad04144348c2fe0838069c7f54'
+                    'a4e1c25c71875463ed89c38844f24343c34a13d64e9f8ce01c125e1f14181b67')
 
 package() {
   local cli="merman-cli-${CARCH}-unknown-linux-gnu"
