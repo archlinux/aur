@@ -6,7 +6,7 @@
 #   YUNTING_REPO="git+file://$(git rev-parse --show-toplevel)" makepkg -si
 pkgname=yunting
 pkgver=0.6.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Native KDE client for NetEase Cloud Music (Qt 6 / Kirigami)'
 arch=(x86_64 aarch64)
 url='https://github.com/nephelesound/yunting'

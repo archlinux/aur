@@ -1,7 +1,7 @@
 pkgbase = yunting
 	pkgdesc = Native KDE client for NetEase Cloud Music (Qt 6 / Kirigami)
 	pkgver = 0.6.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nephelesound/yunting
 	arch = x86_64
 	arch = aarch64
