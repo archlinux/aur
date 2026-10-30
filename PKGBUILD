@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
 _pkgname='Angular Electron'
-pkgver=8.7.0
+pkgver=8.8.0
 _pkgver=12.0.0
 _electronversion=23
 pkgrel=1
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c9344adbe5386b0c5e76da60183148d9bfb684d179b1795153714e4cf78e9c4d'
+sha256sums=('5001c632d3b86f3901ba20f021c8153b7f18f3163bc329c9b84fcfee733726db'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
