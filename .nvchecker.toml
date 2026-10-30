@@ -1,0 +1,5 @@
+[glab-tui-bin]
+source = "github"
+github = "rcieri/glab-tui"
+use_latest_release = true
+prefix = "v"

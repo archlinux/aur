@@ -1,0 +1,23 @@
+pkgbase = glab-tui-bin
+	pkgdesc = A terminal user interface (TUI) for GitLab/GitHub, built on top of glab/gh.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/rcieri/glab-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = github-cli
+	depends = glab
+	provides = glab-tui
+	conflicts = glab-tui
+	options = !strip
+	source = README-0.9.4.md::https://raw.githubusercontent.com/rcieri/glab-tui/v0.9.4/README.md
+	source = LICENSE-0.9.4::https://raw.githubusercontent.com/rcieri/glab-tui/v0.9.4/LICENSE.md
+	sha256sums = 87ed787cda31d905bdcbb6d87f6d003d8bbbab4ef7a8a80d49f9247cedb3c286
+	sha256sums = 2c646a32a456e9806f205883e28aaaef78bc308ddad1f7e15ab9874753bbe203
+	source_x86_64 = glab-tui-x86_64-0.9.4.tgz::https://github.com/rcieri/glab-tui/releases/download/v0.9.4/glab-tui-linux-amd64-musl.tar.gz
+	sha256sums_x86_64 = 17883105ad64bbff7e7c21db5f50b7bf605e99b72eb9e4fa605b6c8e09fb4e23
+	source_aarch64 = glab-tui-aarch64-0.9.4.tgz::https://github.com/rcieri/glab-tui/releases/download/v0.9.4/glab-tui-linux-arm64-musl.tar.gz
+	sha256sums_aarch64 = 4c47372e2db53df956f199e9e400a271d3e8dc55a56d1a468e4c6116dbd11911
+
+pkgname = glab-tui-bin
