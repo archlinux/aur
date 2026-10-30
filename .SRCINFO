@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-gnome-clipboard-git
+	pkgdesc = GNOME Shell extension for clipboard history
+	pkgver = 70.r152.g5ab1787
+	pkgrel = 1
+	url = https://github.com/foss-desk/gnome-clipboard
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = typescript
+	makedepends = gettext
+	depends = gnome-shell
+	source = gnome-shell-extension-gnome-clipboard-git-5ab17870607ffa2430b0817720a50ac75d01b17a.tar.gz::https://github.com/foss-desk/gnome-clipboard/archive/5ab17870607ffa2430b0817720a50ac75d01b17a.tar.gz
+	sha256sums = 930ac0897d2b4d41d54343f12e4e581cec62b6c89b55dc088f21a8eb60e9c182
+
+pkgname = gnome-shell-extension-gnome-clipboard-git
