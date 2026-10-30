@@ -1,4 +1,4 @@
-# Maintainer: fantasyzhjk <fantasyzhjk at aur dot archlinux dot org>
+# Maintainer: fantasyzhjk
 # Upstream: https://github.com/osuplusplus/OPP
 
 pkgname=opp-git
