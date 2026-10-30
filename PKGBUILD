@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=codon-bin
-pkgver=0.20.4
+pkgver=0.20.5
 pkgrel=1
 pkgdesc='High-performance, zero-overhead, extensible Python compiler using LLVM'
 arch=(x86_64)
@@ -39,7 +39,7 @@ package() {
 }
 
 b2sums=('751dc54eea16f18c88976bd30436c24dce3d2d03aa0e6c2ef323a4393738ef01c79739fc2c5073bdacd7f5282aa0c7b38af575209de9458085c10abcda571a81'
-        '279b4e122c41badf87659ff6fc386fb8833766f79a84107140e04956e4be8ea6ea9c7bb6a6547dfd1d9c5e8583e19261c97d2e7fd61c02abefde44e1bb00ff1e'
+        '41379dbc81f69275b73fcd17b4eb5e59179cb1d965dd064747c3fa53db52a30746669e2ccfefacb7ba2bea78d4040383bd5fed04b4da4db0d0b4f4a148c1f7ea'
         '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85'
         'c9a8ac98fdeebacd0584bd89cb449b43400296c11c1c8a7dea2ebdd469000451e11d8daf42b9bbbe322eb016bd7e5d338b94f0e72594e6fccd0aaf329a14edc6')
 
