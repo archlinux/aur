@@ -7,10 +7,14 @@ $ErrorActionPreference = 'Stop'
 
 # Runs dotnet with the given arguments and throws if it fails.
 function Invoke-Dotnet {
+    param(
+        [Parameter(Mandatory)] [string[]] $ArgumentList
+    )
+
     # Send the output to the host, so it does not end up in return values
-    & dotnet @args | Out-Host
+    & dotnet @ArgumentList | Out-Host
     if ($LASTEXITCODE -ne 0) {
-        throw "'dotnet $args' failed with exit code $LASTEXITCODE"
+        throw "'dotnet $ArgumentList' failed with exit code $LASTEXITCODE"
     }
 }
 
@@ -27,10 +31,9 @@ function Publish-ModuleProject {
     )
 
     $frameworkArgs = if ($Framework) { '--framework', $Framework } else { @() }
-    Invoke-Dotnet restore $Path --configfile $NuGetConfig
-    # MSBuild properties need quoting, PowerShell would split them at the colon otherwise
-    Invoke-Dotnet publish $Path --no-restore --configuration Release --output $OutputPath @frameworkArgs `
-        '-p:TreatWarningsAsErrors=false' '-p:EnableNETAnalyzers=false'
+    Invoke-Dotnet -ArgumentList 'restore', $Path, '--configfile', $NuGetConfig
+    Invoke-Dotnet -ArgumentList (@('publish', $Path, '--no-restore', '--configuration', 'Release', '--output', $OutputPath) +
+        $frameworkArgs + @('-p:TreatWarningsAsErrors=false', '-p:EnableNETAnalyzers=false'))
     $OutputPath
 }
 
@@ -46,18 +49,34 @@ function Save-ProjectXml([xml] $Xml) {
 }
 
 # Replace the NuGet configurations of a repository, which often point to internal feeds
-function Set-RepositoryNuGetConfig([string] $SourcePath, [string] $NuGetConfig) {
+function Set-RepositoryNuGetConfig {
+    [CmdletBinding(SupportsShouldProcess)]
+    param(
+        [Parameter(Mandatory)] [string] $SourcePath,
+        [Parameter(Mandatory)] [string] $NuGetConfig
+    )
+
     $configs = Get-ChildItem -Recurse -File -Path $SourcePath | Where-Object Name -EQ 'nuget.config'
     foreach ($config in $configs) {
-        Copy-Item -LiteralPath $NuGetConfig -Destination $config.FullName -Force
+        if ($PSCmdlet.ShouldProcess($config.FullName, "Replace with $NuGetConfig")) {
+            Copy-Item -LiteralPath $NuGetConfig -Destination $config.FullName -Force
+        }
     }
 }
 
-function New-ModuleFolder([string] $Path) {
-    if (Test-Path -LiteralPath $Path) {
-        Remove-Item -LiteralPath $Path -Recurse -Force
+# Creates an empty module folder, replacing the one of an earlier build
+function New-ModuleFolder {
+    [CmdletBinding(SupportsShouldProcess)]
+    param(
+        [Parameter(Mandatory)] [string] $Path
+    )
+
+    if ($PSCmdlet.ShouldProcess($Path, 'Create empty module folder')) {
+        if (Test-Path -LiteralPath $Path) {
+            Remove-Item -LiteralPath $Path -Recurse -Force
+        }
+        $null = New-Item -ItemType Directory -Path $Path
     }
-    $null = New-Item -ItemType Directory -Path $Path
 }
 
 <#
