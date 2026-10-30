@@ -1,6 +1,6 @@
 pkgbase = winepipe
 	pkgdesc = PipeWire-native ASIO driver for Wine (no JACK), with a COSMIC settings app
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/mrquantumoff/winepipe
 	install = winepipe.install
@@ -19,7 +19,7 @@ pkgbase = winepipe
 	options = !strip
 	options = !lto
 	options = !debug
-	source = winepipe-1.0.1.tar.gz::https://github.com/mrquantumoff/winepipe/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 57d189a32a040a7e80781e49426a70a807552d36a1d73270a7bd705f85ac6e9b
+	source = winepipe-1.0.2.tar.gz::https://github.com/mrquantumoff/winepipe/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = c731a50a1cfd1dea2a3e37ebb38561581a8be0f758ccff090539966f4c9b3a56
 
 pkgname = winepipe
