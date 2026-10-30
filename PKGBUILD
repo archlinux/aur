@@ -2,7 +2,7 @@
 
 pkgname=effectcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.14.0.r6.g9a51a05
+pkgver=0.18.0.r1272.g3d28511
 pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
@@ -33,6 +33,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }

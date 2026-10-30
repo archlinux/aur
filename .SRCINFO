@@ -1,6 +1,6 @@
 pkgbase = effectcraft-git
 	pkgdesc = vibe coded clean-room reimplementation of Adobe After Effects (Git HEAD)
-	pkgver = 0.14.0.r6.g9a51a05
+	pkgver = 0.18.0.r1272.g3d28511
 	pkgrel = 1
 	url = https://getartcraft.com/apps/effectcraft
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = effectcraft-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	provides = effectcraft=0.14.0.r6.g9a51a05
+	provides = effectcraft=0.18.0.r1272.g3d28511
 	conflicts = effectcraft
 	source = git+https://github.com/storytold/effectcraft.git
 	sha256sums = SKIP
