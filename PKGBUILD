@@ -6,7 +6,7 @@ pkgbase=xorg-server-phoenix
 pkgname=('xorg-server-phoenix' 'xorg-server-xephyr-phoenix' 'xorg-server-xvfb-phoenix' 'xorg-server-xnest-phoenix'
          'xorg-server-common-phoenix' 'xorg-server-devel-phoenix' 'xorg-server-src-phoenix')
 pkgver=26.1.99.1
-pkgrel=7
+pkgrel=8
 _commit=33c481a79ee8972d22b763dbf662fb05a9518b64
 _srcname=xserver-${_commit}
 _upstreamname=xorg-server
@@ -38,18 +38,10 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
 source=(${_upstreamname}-${_commit}.tar.gz::https://github.com/dec05eba/xserver/archive/${_commit}.tar.gz
         xvfb-run # with updates from FC master
         xvfb-run.1
-        0001-Revert_damage_Unlink_a_damage_from_the_list_it_was_actually.patch
 )
 sha512sums=('f4bb23f45b34885d2293e558b64b70345a9c9b7dab925e8f82a296a1fc5afd818f17d2376be7ee5bbef4c19db5fd5903729d61826a7af3bb2befc56537fde5aa'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
-            'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
-            '5b749d10a968ba37b6ff59a459e80e6799e750d00f4b043b93033f9deb152cbb3fbb49cab7b2be2bc650ecf7fad5b4f0bbdaa80f40da017f074ee436d59ae4c3')
-
-prepare() {
-  cd ${_srcname}
-  # fix ABI breakage
-  patch -Np1 -i ../0001-Revert_damage_Unlink_a_damage_from_the_list_it_was_actually.patch
-}
+            'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
