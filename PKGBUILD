@@ -8,7 +8,7 @@
 
 pkgname=sonic-workspace
 pkgver=6.8.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='SonicDE workspace components'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-workspace'
