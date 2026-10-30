@@ -1,7 +1,7 @@
 # Maintainer: Snoopey
 pkgname=meetily-cuda
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Local meeting transcription and summaries (NVIDIA CUDA build)'
 arch=('x86_64')
 url='https://github.com/Zackriya-Solutions/meetily'
@@ -55,7 +55,8 @@ build() {
   # Fetch and verify the pinned ONNX library through makepkg, before compilation.
   export ORT_LIB_LOCATION="$srcdir/onnxruntime/lib"
   export CARGO_TARGET_DIR="$srcdir/target"
-  export CMAKE_CUDA_ARCHITECTURES="${CMAKE_CUDA_ARCHITECTURES:-all-major}"
+  # Native detection lets llama.cpp select Blackwell's required architecture-specific instructions.
+  export CMAKE_CUDA_ARCHITECTURES="${CMAKE_CUDA_ARCHITECTURES:-native}"
   # Recent CCCL releases require an explicit iterator header.
   export CMAKE_CUDA_FLAGS="${CMAKE_CUDA_FLAGS:-} --pre-include=cuda/iterator"
   export CMAKE_CUDA_STANDARD=17 CMAKE_CXX_STANDARD=17
