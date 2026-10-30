@@ -7,6 +7,8 @@ path = [
   ".SRCINFO",
   ".nvchecker.toml",
   ".gitignore",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
