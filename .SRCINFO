@@ -1,20 +1,22 @@
 pkgbase = python-pdftext
 	pkgdesc = Extract structured text from PDFs quickly
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datalab-to/pdftext
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pymupdf
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
-	depends = python>=3.10
+	depends = python
 	depends = python-click>=8.1.8
 	depends = python-numpy>=1.24
 	depends = python-pydantic>=2.7.1
 	depends = python-pydantic-settings>=2.2.1
 	depends = python-pypdfium2>=5.10.1
-	source = pdftext-0.7.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pdftext/pdftext-0.7.1.tar.gz
-	sha256sums = 7484add28d48d8c04aab0076769f2d626454233de95de00c7b348cb6398045bd
+	source = pdftext-0.7.1.tar.gz::https://github.com/datalab-to/pdftext/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = c2d657ae0ca18ae2fa9509ecc5dd8fa4d5ddb0a7c6ee2d02dd724028647a56ee
 
 pkgname = python-pdftext
