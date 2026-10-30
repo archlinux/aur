@@ -2,13 +2,13 @@
 
 pkgname=ario-fonts
 pkgver=2.0.1
-pkgrel=1
-pkgdesc="An English-Arabic font"
-url="https://github.com/MohamadDarvishi/Ario/"
+pkgrel=2
+pkgdesc="English-Arabic font"
+url="https://github.com/MohamadDarvishi/Ario"
 arch=('any')
-license=('OFL')
-provides=('ario' 'ario-fonts')
-source=("https://github.com/MohamadDarvishi/Ario/archive/refs/tags/${pkgver}.tar.gz")
+license=('OFL-1.1')
+provides=('ario')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('82bd98404268441982a7b8a12778ee46236f0ce2fe347ae3a18b58e300b55276')
 
 package() {
