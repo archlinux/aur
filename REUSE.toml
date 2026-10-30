@@ -2,31 +2,33 @@ version = 1
 
 [[annotations]]
 path = [
-    "PKGBUILD",
-    "README.md",
-    "keys/**",
-    ".SRCINFO",
-    ".gitignore",
-    ".nvchecker.toml",
-    "*.install",
-    "*.sysusers",
-    "*sysusers.conf",
-    "*.tmpfiles",
-    "*tmpfiles.conf",
-    "*.logrotate",
-    "*.pam",
-    "*.service",
-    "*.socket",
-    "*.timer",
-    "*.desktop",
-    "*.hook",
+  "PKGBUILD",
+  "README.md",
+  "keys/**",
+  ".SRCINFO",
+  ".gitignore",
+  ".nvchecker.toml",
+  "*.install",
+  "*.sysusers",
+  "*sysusers.conf",
+  "*.tmpfiles",
+  "*tmpfiles.conf",
+  "*.logrotate",
+  "*.pam",
+  "*.service",
+  "*.socket",
+  "*.timer",
+  "*.desktop",
+  "*.hook",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "pygls2-compile-fix.patch",
+  "pygls2-compile-fix.patch",
 ]
 SPDX-FileCopyrightText = "nginx-language-server contributors"
 SPDX-License-Identifier = "GPL-3.0-only"
