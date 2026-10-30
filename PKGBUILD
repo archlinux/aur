@@ -5,7 +5,7 @@
 
 pkgname=sonic-screen
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SonicDE screen management software'
 arch=('x86_64')
 url='https://github.com/Sonic-DE/sonic-screen'
