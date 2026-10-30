@@ -6,13 +6,16 @@ pkgname=${_pkgname}-bin
 pkgver=2.15.0
 pkgrel=1
 pkgdesc='A practical cross-platform command-line tool for safely batch renaming files/directories via regular expression'
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
-depends=('glibc')
-conflicts=("${_pkgname}")
+
+conflicts=("${pkgname%-bin}")
 provides=("${_pkgname}")
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md")

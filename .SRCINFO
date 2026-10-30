@@ -7,7 +7,6 @@ pkgbase = brename-bin
 	arch = i686
 	arch = aarch64
 	license = MIT
-	depends = glibc
 	provides = brename
 	conflicts = brename
 	source = LICENSE-2.15.0::https://raw.githubusercontent.com/shenwei356/brename/v2.15.0/LICENSE
