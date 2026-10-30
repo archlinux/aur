@@ -1,5 +1,5 @@
 pkgname=lcm
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Lightweight Communications and Marshalling"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,8 +12,8 @@ optdepends=(
 )
 makedepends=(cmake java-environment)
 source=(https://github.com/lcm-proj/lcm/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=(
-3da9739a03769e609d44a93ae0f6790a604ca05c93639860bdc67843738452894582ca5eccabc3ade61afe519f40d3147f6bf2fe6ec5abcb03c8dd74dd22fb9c
+sha256sums=(
+f7e693d50e229e37de00387ac8ab9228e16559dd57bddd155c4b5ca1c233834e
 )
 
 
@@ -21,7 +21,7 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	mkdir -p built
 	cd built
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -DLCM_ENABLE_JAVA=On -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
