@@ -1,7 +1,7 @@
 pkgbase = flashalizer
 	pkgdesc = GUI to make .swf files
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/colin-i/flashalizer
 	arch = any
 	license = 0BSD

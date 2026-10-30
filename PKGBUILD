@@ -2,7 +2,7 @@
 pkgname=flashalizer
 pkgver=1.6
 _rel_at_source=0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI to make .swf files"
 arch=('any')
 url="https://github.com/colin-i/${pkgname}"
@@ -27,7 +27,12 @@ prepare() {
 
 build() {
 	_tag
-	ant build
+	mkdir libs
+	ln -s /usr/share/java/jna/jna.jar libs/jna.jar
+	ln -s /usr/share/java/jna/jna-platform.jar libs/jna-platform.jar
+	ln -s /usr/share/java/javassist.jar libs/javassist.jar
+	printf 'Main-Class: flashalizer\nClass-Path: jna/jna.jar jna/jna-platform.jar javassist.jar\n' > MANIFEST.MF
+	ant -Djava.lib="$PWD/libs" build
 }
 
 package() {
