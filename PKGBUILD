@@ -4,7 +4,7 @@
 
 pkgname=hunspell-sk
 pkgver=2.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak dictionary for Hunspell"
 arch=('any')
 url="https://github.com/sk-spell/hunspell-sk"
@@ -22,6 +22,9 @@ package() {
 
   install -d -m755 "$pkgdir"/usr/share/doc/hunspell-sk
   install -m644 doc/{AUTHORS,Copyright,Flagy*} "$pkgdir"/usr/share/doc/hunspell-sk/
+
+  install -d -m755 "$pkgdir"/usr/share/licenses/hunspell-sk
+  install -m644 doc/{GPL,LGPL,MPL} "$pkgdir"/usr/share/licenses/hunspell-sk/
 
   install -d -m755 "$pkgdir"/usr/share/myspell/dicts
   ln -s /usr/share/hunspell/sk_SK.dic "$pkgdir"/usr/share/myspell/dicts/sk_SK.dic
