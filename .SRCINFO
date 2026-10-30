@@ -1,14 +1,16 @@
 pkgbase = pacman-tmpfs
-	pkgdesc = Wrapper for pacman, yay, paru using tmpfs for caches.
-	pkgver = 2026.10.25
+	pkgdesc = Wrapper for pacman, yay, paru using tmpfs for caches and auto cleaning.
+	pkgver = 2026.10.31
 	pkgrel = 1
-	url = tip://_See_PKGBUILD_for_usage_
-	install = pacman-tmpfs.install.sh
+	url = https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=pacman-tmpfs
+	install = install.sh
 	arch = any
 	license = GPL
 	depends = pacman
 	optdepends = yay: Yet another yogurt. Pacman wrapper and AUR helper written in go.
-	optdepends = paru-git: Feature packed AUR helper
+	optdepends = paru: Feature packed AUR helper
 	options = !debug
+	source = pacman-tmpfs.sh
+	sha256sums = f5c92d7daeaf29aea97d42ebb26e3db333678bcf74b772f91d3ac10adbe7caf9
 
 pkgname = pacman-tmpfs
