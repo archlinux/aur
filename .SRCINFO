@@ -1,6 +1,6 @@
 pkgbase = qqtui-bin
 	pkgdesc = Terminal frontend using the native Linux QQ service
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/w568w/qqtui
 	arch = x86_64
@@ -15,17 +15,17 @@ pkgbase = qqtui-bin
 	depends = xorg-xkbcomp
 	depends = tigervnc
 	depends = novnc
-	depends = linuxqq=5:3.2.34_53644
+	depends = linuxqq=5:3.2.35_54395
 	optdepends = kitty: inline images and animations
 	optdepends = noto-fonts-cjk: Chinese text in the terminal and QQ login page
 	optdepends = firefox: browser for first login (other graphical browsers also work)
 	optdepends = wl-clipboard: Wayland clipboard
 	optdepends = xclip: X11 clipboard
 	optdepends = xdg-utils: open files and links in external applications
-	provides = qqtui=0.1.4
+	provides = qqtui=0.1.5
 	conflicts = qqtui
 	options = !strip
-	source = https://github.com/w568w/qqtui/releases/download/v0.1.4/qqtui-0.1.4-linux-x86_64.tar.gz
-	sha256sums = ca203efaf51244c8e94729e3766a4835150d75a97740cb422cbcf049ee023ad0
+	source = https://github.com/w568w/qqtui/releases/download/v0.1.5/qqtui-0.1.5-linux-x86_64.tar.gz
+	sha256sums = 1bdc59f91c3173eee53d700943b6e242dd67bf351c94250969114eac4d380547
 
 pkgname = qqtui-bin

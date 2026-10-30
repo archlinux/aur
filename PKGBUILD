@@ -1,7 +1,7 @@
 # Maintainer: w568w <w568w at outlook dot com>
 
 pkgname=qqtui-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal frontend using the native Linux QQ service'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/w568w/qqtui'
 license=('MPL-2.0')
 depends=('glibc' 'libgcc' 'sqlite>=3.51.2' 'systemd' 'dbus' 'xorg-server-xvfb'
          'xorg-xauth' 'xorg-xkbcomp' 'tigervnc' 'novnc'
-         'linuxqq=5:3.2.34_53644')
+         'linuxqq=5:3.2.35_54395')
 optdepends=('kitty: inline images and animations'
             'noto-fonts-cjk: Chinese text in the terminal and QQ login page'
             'firefox: browser for first login (other graphical browsers also work)'
@@ -20,7 +20,7 @@ provides=("qqtui=$pkgver")
 conflicts=('qqtui')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/qqtui-$pkgver-linux-$CARCH.tar.gz")
-sha256sums=('ca203efaf51244c8e94729e3766a4835150d75a97740cb422cbcf049ee023ad0')
+sha256sums=('1bdc59f91c3173eee53d700943b6e242dd67bf351c94250969114eac4d380547')
 
 package() {
   cd "qqtui-$pkgver-linux-$CARCH"
