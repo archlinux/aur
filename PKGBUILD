@@ -18,7 +18,9 @@ makedepends=(
   'dotnet-newtonsoft-json'
   'dotnet-omnisharp-extensions'
   'dotnet-pluralize-net'
+  'dotnet-powershellstandard-library'
   'dotnet-sdk-'"$_dotnetsdkver"
+  'dotnet-source-build-reference-packages'
   'dotnet-system-reactive'
   'dotnet-vs-threading'
   'dotnet-vs-validation'
@@ -100,6 +102,9 @@ _nupkg_info() {
 # - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*).
 #   References to them (also central package versions) are set to the installed version with the same
 #   major version, or the newest installed one if there's none.
+# - dotnet-source-build-reference-packages, the reference packages PSScriptAnalyzer's
+#   CrossCompatibility (.NET Standard 2.0) compiles against. Only these, as some reference packages
+#   have reference assemblies in lib/, which must not end up in applications.
 # - nuget.org for everything else
 # With "tests" as $2, the runtime packages come from nuget.org instead, as the PowerShell SDK the
 # tests run on (from nuget.org) may need newer ones.
@@ -147,10 +152,18 @@ _nuget_feeds() {
     <clear />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
     <add key="dotnet-packages" value="$_systemfeed" />
+    <add key="dotnet-source-build-reference-packages" value="/usr/share/dotnet/source-build-reference-packages" />
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
   <packageSourceMapping>
     <clear />
+    <packageSource key="dotnet-source-build-reference-packages">
+EOF
+    printf '      <package pattern="%s" />\n' NETStandard.Library Microsoft.NETCore.Platforms Microsoft.CSharp \
+      Microsoft.Win32.Registry System.Buffers System.Memory System.Numerics.Vectors \
+      System.Runtime.CompilerServices.Unsafe System.Security.AccessControl System.Security.Principal.Windows
+    cat <<EOF
+    </packageSource>
 EOF
     if ((${#_localpackages[@]})); then
       echo '    <packageSource key="dotnet-source-built">'
