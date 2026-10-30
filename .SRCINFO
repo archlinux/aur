@@ -1,6 +1,6 @@
 pkgbase = tapeback-cuda
 	pkgdesc = CUDA 12 cuBLAS/cuDNN runtime for GPU-accelerated transcription in tapeback
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/yastcher/tapeback
 	install = tapeback-cuda.install
