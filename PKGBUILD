@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.6.59
+pkgver=0.6.61
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -23,6 +23,12 @@ makedepends=(
     'pkgconf'
     'git'
 )
+# Since 0.6.61 file dialogs go through the XDG desktop portal (rfd's
+# xdg-portal backend) and fall back to zenity when no portal answers.
+optdepends=(
+    'xdg-desktop-portal: file dialogs (with a FileChooser backend such as xdg-desktop-portal-gtk)'
+    'zenity: file dialogs when no desktop portal is available'
+)
 provides=("$pkgname")
 conflicts=("$pkgname-bin")
 # makepkg's global LTO option injects -flto=auto / -C linker-plugin-lto, which
@@ -32,7 +38,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d055beb5eaa640724d92c9eefe385fa745b149cd777e0fa17d5c6c1087d22ea')
+sha256sums=('2ff7aa523b27f25813f80e49da10d8745a05bf0a207c8bc0b6f42f4b44a1ada2')
 
 # rustup provides an unversioned "rust" package, so check the actual toolchain.
 _check_rust_version() {

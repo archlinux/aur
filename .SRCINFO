@@ -1,6 +1,6 @@
 pkgbase = dbx
 	pkgdesc = Open-source database management tool (Tauri-based)
-	pkgver = 0.6.59
+	pkgver = 0.6.61
 	pkgrel = 1
 	url = https://github.com/t8y2/dbx
 	arch = x86_64
@@ -17,11 +17,13 @@ pkgbase = dbx
 	depends = unixodbc
 	depends = openssl
 	depends = hicolor-icon-theme
+	optdepends = xdg-desktop-portal: file dialogs (with a FileChooser backend such as xdg-desktop-portal-gtk)
+	optdepends = zenity: file dialogs when no desktop portal is available
 	provides = dbx
 	conflicts = dbx-bin
 	options = !lto
 	options = !debug
-	source = dbx-0.6.59.tar.gz::https://github.com/t8y2/dbx/archive/refs/tags/v0.6.59.tar.gz
-	sha256sums = 2d055beb5eaa640724d92c9eefe385fa745b149cd777e0fa17d5c6c1087d22ea
+	source = dbx-0.6.61.tar.gz::https://github.com/t8y2/dbx/archive/refs/tags/v0.6.61.tar.gz
+	sha256sums = 2ff7aa523b27f25813f80e49da10d8745a05bf0a207c8bc0b6f42f4b44a1ada2
 
 pkgname = dbx
