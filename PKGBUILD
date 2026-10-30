@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=atto-netbsd-git
 pkgver=20261030065351.gbf6cefce
-pkgrel=1
+pkgrel=2
 pkgdesc='Small Emacs-like terminal editor from NetBSD'
 arch=('x86_64' 'aarch64')
 url='https://github.com/NetBSD/src/tree/trunk/usr.bin/atto'
@@ -10,6 +10,7 @@ depends=('glibc>=2.38' 'ncurses')
 makedepends=('git')
 # The unrelated AUR Nano wallet also installs /usr/bin/atto.
 conflicts=('atto')
+options=(!debug)
 source=('LICENSE')
 sha256sums=('SKIP')
 
