@@ -1,10 +1,9 @@
 # Maintainer: Selim Bucher <me@selim.one>
 pkgname=ni-wine
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
-pkgdesc="Native Instruments software under Wine — setup, launch, and product management"
-# The package ships a 32-bit Windows DLL (built from source in build()),
-# so it is no longer arch-independent.
+pkgdesc="Native Instruments software under Wine: setup, launch and product management"
+# ships a 32-bit Windows DLL built in build(), so not arch-independent
 arch=('x86_64')
 url="https://github.com/selimbucher/native-instruments"
 license=('MIT')
@@ -13,24 +12,27 @@ depends=('python' 'wine>=11' 'winetricks' 'cabextract' '7zip' 'msitools'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
              'mingw-w64-gcc')
+checkdepends=('python-pytest')
 optdepends=('wine-staging: recommended Wine build for Native Instruments'
             'xdotool: repositions off-screen windows on X11 desktops'
             'yad: nicer-looking setup progress dialog')
-# Pinned upstream commit for this release. GitHub's auto-generated archive tarballs are
-# not byte-stable (the v2.1.3 tarball was regenerated with a different
-# compression envelope in Aug 2026, breaking the recorded sha256), so we fetch
-# via git and pin the commit hash instead.
-_commit=6e1a45c4f8f13deef2db198087537e7f05c81c82
+# pinned to the release commit: GitHub's archive tarballs are not byte-stable
+# (v2.1.3's was regenerated in Aug 2026 with a different sha256)
+_commit=e8bc3c4d733bded38d14e5cc7f6601c56c568b36
 source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  # The msi shim (shim/README.md): a forwarding msi.dll for the Kontakt
-  # installer, cross-compiled here rather than shipped as a binary.
+  # the Kontakt installer msi shim (shim/README.md), built here, no binary shipped
   make -C shim CC=i686-w64-mingw32-gcc
   cp shim/msi_shim32.dll src/ni_wine/data/msi_shim32.dll
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+  python -m pytest
 }
 
 package() {
