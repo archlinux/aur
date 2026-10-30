@@ -3,7 +3,7 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop
-pkgver=4.52.182
+pkgver=4.53.276
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!debug')
 source=("https://downloads.slack-edge.com/desktop-releases/linux/x64/${pkgver}/${pkgname}-${pkgver}-amd64.deb"
         "${pkgname}.patch")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
-b2sums=('8abb915e90418e88d27d21ce567b9f5f78afd0b474c1f974f360cd2e11ca5bfe6f69ecf9ece9ca8859033f44c86bcb0daeb22c8556b353645862e2cc4b94c797'
+b2sums=('153e908075e45f00c7ecbbfffb8289260989bf6ac2978e324726339bdcbb83d7d748f81eb8b91d77cea4fd44a8e79e18390860cb3779e218cee91aa263ca5c60'
         '103447636acd7ac2789d7d89008483a2077d862a51a64427a66c51e64dc9eac588de187f13df2778ccb7b24110a36c259b33c0074ff69c9bab3f89283a1efaf1')
 
 package() {
