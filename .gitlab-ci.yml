@@ -1,0 +1,5 @@
+---
+include:
+  - project: archlinux/ci-template
+    file: build_package.yml
+
