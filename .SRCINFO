@@ -1,0 +1,19 @@
+pkgbase = python-gvp
+	pkgdesc = Geometric Vector Perceptrons: rotation-equivariant GNN for learning from biomolecular structure
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/drorlab/gvp-pytorch
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytorch
+	depends = python-torch-geometric
+	depends = python-tqdm
+	optdepends = python-biopython: protein structure data loading
+	source = gvp-pytorch-0.1.0.tar.gz::https://github.com/drorlab/gvp-pytorch/archive/refs/heads/main.tar.gz
+	sha256sums = e0a9763397ff7bfb822e814f5841d5c6be38fc6cb7594a7bd6b9d53a87532141
+
+pkgname = python-gvp
