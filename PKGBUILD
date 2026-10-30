@@ -31,9 +31,11 @@ options=('!lto' '!strip')
 _opus_ver=0.4.0
 # Upstream builds with a pinned nightly; this package builds on stable (plus
 # RUSTC_BOOTSTRAP=1 for the crate-level feature gates), so it needs a stable
-# release that ships every library API upstream calls. 1.98 stabilized
-# Option/Result::map_or_default, first used in 18.7.0.
-_rust_min=1.98.0
+# release that ships every library API upstream calls. 1.99 stabilized
+# fs::set_times{,_nofollow}, Box::{into,from}_non_null,
+# String::from_utf8_lossy_owned and Vec::from_parts, first used in 18.14.0
+# (pi-builtins also declares rust-version = "1.99.0").
+_rust_min=1.99.0
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/v${pkgver}.tar.gz"
     "https://static.crates.io/crates/opus/opus-${_opus_ver}.crate"
