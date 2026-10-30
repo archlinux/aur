@@ -1,24 +1,11 @@
-# Maintainer: ivanmara
-# Contributor: ivanmara
-pkgname=gentoo-color-bash # on 2025-05-04 size: 2190
-pkgver=2026.10.20
-#_id=b39e66dce51adbe2ccef98dbd7e321c6c2e6b835
-pkgrel=1
+# Maintainer: @ivanquanta
 
-pkgdesc='Gentoo color terminal and bash command prompt. Looks very nice.'
-arch=('any')
-url='https://www.gentoo.org'
-license=('GPL')
-optdepends=('bash: Shell needed to make use of this package')
-options=('!debug')
-#source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color-r2.bash?id=${_id}")
-source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color-r2.bash")
-sha256sums=('189766ac49f48880ce2507971fc3d8e15449976042d938bf6c6ad77e73793958')
-install=${pkgname}.install.sh
-
+#---- usage info -----------------------------------------------------------------------------
 IFS= read -r -d '' _usage << 'EOF'
 
     # USAGE:
+    #    quick tip: copy/paste all this green block to terminal and run it as sudo user.
+
     # after install package, you can enable it in two steps
 
     # step 1. system integration (run once, copy/paste block)
@@ -34,7 +21,29 @@ IFS= read -r -d '' _usage << 'EOF'
 
     # Now you can add (if needed) you own ~/.dir_colors or /etc/DIR_COLORS for perfect ls.
     # See arch wiki or github for examples.
+    #
 EOF
+#---------------------------------------------------------------------------------------------
+
+pkgname=gentoo-color-bash # on 2025-05-04 size: 2190
+pkgver=2026.10.31
+#_id=b39e66dce51adbe2ccef98dbd7e321c6c2e6b835
+pkgrel=1
+
+pkgdesc='Gentoo color terminal and bash command prompt. Looks very nice.'
+arch=('any')
+url='https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=gentoo-color-bash'
+license=('GPL')
+optdepends=('bash: Shell needed to make use of this package')
+options=('!debug')
+install=${pkgname}.install.sh
+
+#source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color-r2.bash?id=${_id}")
+source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color-r2.bash")
+sha256sums=('189766ac49f48880ce2507971fc3d8e15449976042d938bf6c6ad77e73793958')
+
+
+echo -n "${_usage}" > /tmp/gentoo-color-bash_usage.txt
 
 package() {
 
