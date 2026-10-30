@@ -73,7 +73,10 @@ check() {
   # Tests change global configuration (EnumHumanizeWithCustomDescriptionPropertyNamesTests), which
   # makes others fail randomly when run in parallel.
   DOTNET_ROLL_FORWARD=Major dotnet test src/Humanizer.Tests/Humanizer.Tests.csproj "${_build_arguments[@]}" \
-    --framework net6.0 --filter "$(IFS='&'; echo "${_filter[*]}")" -- xUnit.ParallelizeTestCollections=false
+    --framework net6.0 --filter "$(
+      IFS='&'
+      echo "${_filter[*]}"
+    )" -- xUnit.ParallelizeTestCollections=false
 }
 
 package() {
