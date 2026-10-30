@@ -154,7 +154,10 @@ check() {
   # and expect the invariant culture and UTC like on upstream's CI.
   TZ=UTC LC_ALL=C.UTF-8 DOTNET_ROLL_FORWARD=Major \
     dotnet test tests/Microsoft.Identity.Test.Unit/Microsoft.Identity.Test.Unit.csproj \
-    "${_build_arguments[@]}" --filter "$(IFS='&'; echo "${_filter[*]}")"
+    "${_build_arguments[@]}" --filter "$(
+      IFS='&'
+      echo "${_filter[*]}"
+    )"
 }
 
 package() {
