@@ -1,0 +1,5 @@
+[brename]
+source = "github"
+github = "shenwei356/brename"
+use_latest_release = true
+prefix = "v"
