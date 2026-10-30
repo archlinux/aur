@@ -1,8 +1,8 @@
 # Maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=python-unyt
 _module_name=unyt
-pkgver=3.1.0
-pkgrel=4
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="A package for handling numpy arrays with units."
 arch=(any)
 url="https://pypi.org/project/unyt/"
@@ -15,10 +15,8 @@ source=(
     "https://pypi.io/packages/source/u/${_module_name}/${_module_name}-${pkgver}.tar.gz"
     'flit-core-4.patch'
 )
-sha256sums=(
-    '771582a87f1e521c9b62f7ca269b1965c0f77b479f7a063a51e8cef8b4cae51d'
-    '35b2ccfcf95fff0bdddc2e3e4c6eca2254d2acf17d6792851b9ce7ee7ae0296a'
-)
+sha256sums=('066c7c39219f63cb3024548f3977cf080edf2c4a6991f0508bfb6247e3fbc842'
+            '35b2ccfcf95fff0bdddc2e3e4c6eca2254d2acf17d6792851b9ce7ee7ae0296a')
 
 prepare() {
     cd "${srcdir}/${_module_name}-$pkgver"
