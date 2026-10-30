@@ -11,6 +11,7 @@ pkgbase = ngraph-gtk
 	depends = gtksourceview5
 	depends = vulkan-icd-loader
 	depends = ruby
+	depends = minizip
 	optdepends = ttf-liberation: alternative to Times, Arial, and Courier
 	options = !makeflags
 	source = https://github.com/htrb/ngraph-gtk/releases/download/v6.10.00/ngraph-gtk-6.10.00.tar.gz
