@@ -2,8 +2,8 @@
 pkgname=zdotool-git
 _pkgname=zdotool
 pkgver=r1.g0000000  # replaced by pkgver()
-pkgrel=1
-pkgdesc="C++ port of ydotool: inject keyboard and mouse input through uinput"
+pkgrel=2
+pkgdesc="Linux command-line automation tool that injects input through uinput"
 arch=('x86_64')
 url="https://github.com/Monjaris/zdotool"
 license=('AGPL-3.0-only')

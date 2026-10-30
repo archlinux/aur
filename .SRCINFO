@@ -1,7 +1,7 @@
 pkgbase = zdotool-git
-	pkgdesc = C++ port of ydotool: inject keyboard and mouse input through uinput
+	pkgdesc = Linux command-line automation tool that injects input through uinput
 	pkgver = r1.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Monjaris/zdotool
 	arch = x86_64
 	license = AGPL-3.0-only
