@@ -1,11 +1,11 @@
 # Maintainer: gimgiwer <gimgiwer@gmail.com>
 pkgname=swiftify-bin
-pkgver=0.21.0
+pkgver=0.24.5
 pkgrel=1
 pkgdesc="A Spotify player for the desktop, built with Qt Quick and a Rust core (precompiled binary)"
 arch=('x86_64')
 url="https://github.com/swiftify-org/swiftify"
-license=('custom')
+license=('GPL-3.0-or-later')
 depends=(
     'alsa-lib'
     'libpulse'
@@ -20,7 +20,7 @@ optdepends=(
 provides=('swiftify')
 conflicts=('swiftify')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/swiftify-org/swiftify/releases/download/v${pkgver}/swiftify-${pkgver}-linux-${CARCH}.tar.gz")
-sha256sums=('d6f52cd90cd058940975f0829eaf9c6de3ba361ab6cd82f2de3ce84e61823926')
+sha256sums=('2fffb45f7dd61abe0dda91086e27947ba46bf6780f5eed51f958d1d6e059a9c9')
 
 package() {
     cd "swiftify-${pkgver}-linux-${CARCH}"
@@ -43,7 +43,11 @@ package() {
         fi
     done
 
-    # Font license
+    # Licenses
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    if [ -d "share/licenses/swiftify" ]; then
+        install -Dm644 share/licenses/swiftify/* "${pkgdir}/usr/share/licenses/${pkgname}/"
+    fi
     if [ -f "share/swiftify/fonts/GoogleSansFlex-OFL.txt" ]; then
         install -Dm644 share/swiftify/fonts/GoogleSansFlex-OFL.txt             "${pkgdir}/usr/share/licenses/${pkgname}/GoogleSansFlex-OFL.txt"
     fi
