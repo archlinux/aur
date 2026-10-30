@@ -1,6 +1,6 @@
 pkgbase = mf-cli
 	pkgdesc = CLI tool and seamless kernel module for Arturia MiniFuse 1/2/4
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/nolight132/mf-cli
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mf-cli
 	depends = libusb
 	depends = systemd-libs
 	depends = dkms
-	source = mf-cli-0.2.6.tar.gz::https://github.com/nolight132/mf-cli/archive/v0.2.6.tar.gz
+	source = mf-cli-0.2.7.tar.gz::https://github.com/nolight132/mf-cli/archive/v0.2.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = mf-cli

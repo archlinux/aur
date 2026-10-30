@@ -1,7 +1,7 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 # Contributor: sleebu <contact@sleebu.dev>
 pkgname=mf-cli
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="CLI tool and seamless kernel module for Arturia MiniFuse 1/2/4"
 arch=('x86_64')
