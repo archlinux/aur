@@ -92,7 +92,6 @@ build() {
 		-S "$_pkg" \
 		-G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DEXPERIMENTAL=ON \
 		-DOFFLINE_DOCS=OFF \
 		-DUSE_QT6=ON \
