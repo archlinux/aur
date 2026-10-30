@@ -21,6 +21,8 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
+options=('!strip')
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")

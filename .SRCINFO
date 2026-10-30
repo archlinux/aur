@@ -8,6 +8,7 @@ pkgbase = proc-bin
 	license = MIT
 	provides = proc
 	conflicts = proc
+	options = !strip
 	source = LICENSE-2.0.2::https://raw.githubusercontent.com/yazeed/proc-cli/v2.0.2/LICENSE
 	source = README-2.0.2.md::https://raw.githubusercontent.com/yazeed/proc-cli/v2.0.2/README.md
 	sha256sums = c7f9eb97a593a88e42431614564bf73d3b2177ffbc959a63cfe62856b4a10d1e
