@@ -1,6 +1,6 @@
 pkgbase = inkpane-git
 	pkgdesc = Draw on your screen through a transparent Wayland overlay (layer-shell)
-	pkgver = 0.1.0.r1.ge8972e9
+	pkgver = 0.2.0.r0.gb5df965
 	pkgrel = 1
 	url = https://github.com/Vyrnexis/Inkpane
 	arch = x86_64
