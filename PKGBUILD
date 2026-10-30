@@ -2,8 +2,8 @@
 
 pkgname=deckcraft-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.0.r14.g128cb0b
-pkgrel=2
+pkgver=0.12.0.r5.g3a4e30e
+pkgrel=1
 url="https://getartcraft.com/apps/$_pkgname"
 _url="https://github.com/storytold/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft PowerPoint (Git HEAD)'
@@ -33,6 +33,7 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
