@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=19
+pkgrel=20
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -38,7 +38,9 @@ _dotnetsdkver="10.0"
 # PowerShell-Native has no tag for the version PowerShell uses (700.0.2), it was published from this commit
 _psnativecommit="f24d5494b373de20ec3e3d2fdc7c3fc98af1f9f1"
 # The modules PowerShell bundles (src/Modules/PSGalleryModules.csproj) are built from source as well.
-# Upstream didn't tag most of their releases, so these are the commits used:
+# Most of their releases aren't tagged, so these are commits:
+_psresourcegetver="1.2.0"
+_psreadlinever="2.4.5"
 # - PowerShellGet 2.2.5: last commit (2.2.5.1) of the archived PowerShellGetv2 repository
 _psgetcommit="3b38eec8742d6b6f26cf0f010e0dd95691ed5ade"
 # - PackageManagement 1.4.8.1: release commit, later ones drop .NET Core support
@@ -49,14 +51,12 @@ _archivecommit="87428e309898a728fb0287eab31b5cd214ceb9ba"
 _threadjobcommit="21d19c867ef05d22fe70aa39e45ab0c479a930e0"
 # - Microsoft.PowerShell.Pager 1.0.0, a dependency of PSReadLine: last commit of the archived repository
 _pagercommit="965675f549dfa074eb02a47ca6d6e07d0ee7771f"
-# Microsoft.PowerShell.MarkdownRender 7.2.1: last commit of its repository
+# Microsoft.PowerShell.MarkdownRender 7.2.1, which Microsoft.PowerShell.Commands.Utility uses: last commit
+# of its repository
 _markdownrendercommit="c216c18b1fb275aec0a3e84094bd0e1a4c5da685"
-# The module the tests use from the PowerShell Gallery (test/tools/Modules/PSGalleryTestModules.csproj),
-# SelfSignedCertificate 0.0.4: last commit of the archived repository, which fixes the validity
-# period for time zones (DateTimeOffset) after the release
+# SelfSignedCertificate 0.0.4, a module the tests use (test/tools/Modules/PSGalleryTestModules.csproj):
+# last commit of the archived repository, which fixes the validity period for time zones after the release
 _selfsignedcertificatecommit="5f720d3d5b28c2cb2e9b33296cfd802ec6f1a668"
-_psresourcegetver="1.2.0"
-_psreadlinever="2.4.5"
 depends=(
   dotnet-runtime-"$_dotnetsdkver"
   glibc
@@ -92,7 +92,6 @@ makedepends=(
   cmake
   gtest
   git
-  rsync
   ruby-ronn-ng
 )
 # Arch Linux ARM has no .NET packages, there it's Microsoft's build from the AUR (dotnet-core-bin)
@@ -108,9 +107,8 @@ checkdepends=(
   grep                # Used widely in tests
   inetutils           # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
   iputils             # Needed for ping, which is used in a lot of places
-  lttng-ust2.12       # Used for CoreCLR tracing, adds to reproducibility here
   openssh             # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
-  powershell-pester-4 # The test framework, build.psm1 asks for Pester 4
+  powershell-pester-4 # The tests are written for Pester 4
   procps-ng           # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
   xclip               # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
 )
@@ -131,6 +129,8 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "psmodulepath-combined-paths.patch"
   "mmi-optional.patch"
   "telemetry-optional.patch"
+  "test-json-list-output.patch"
+  "help-cache-reset.patch"
   "system-drawing-windows-only.patch"
   "oneget-user-temp-folder.patch"
   "oneget-net10.patch"
@@ -160,19 +160,21 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
   'c510ec133160d0f8aafc3ac37e3db7a2854f7e0bb67d22a287fa5ffbf9f3e205ed2a73a04413cf7f412290062b814cdbefb8445991447454db1dc27e71d78ba9'
   '01cc421451dda2428b3a62fa6476c87bb00b79277098dd3f02ee0095da7fe706565a5c4e449dd4b43e5b5651bb929a685e74a139c0f30fa122fbfa36d79e734c'
+  'cf70b41d0ee4b4282f38e9277b743b2749a0e728cb43123304f6218ee48a026e9bc26493ccb23b50991f453188a29559e6fea799a11c4701fe7719d8ec18e485'
+  '50912ff845d107ca0b3b3401b8253289bb8ee00f06191e657a37b2e49dd48fa56b1cf1f1d7d63cf54b123e1d88e2fc9b7f13341fd5d9c0609ccc579a86057fef'
   'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
   '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
   'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
   '7f0df1c1eadfc39f7075cf6de7b1d2b99959042b2a3ee1cc0158ead26128ae8086463c563178b22c325c965352d5d756d2b02abf1137ad91b116fd753aeed8b6'
   '7753cb1b8d4b865ac3b08f4d17a9f848c138e14539fc6b4b377900f6be2714f74964f34e215184c900348cd7fa54e0f71238d63fa3ccb11b605ff5fc744b0708'
   '6f71c4733bc60224e17b0ac213717fe7a6f6c7ce248ed1af48c67fedf20beb3129debde682131335478cad3a18943c2bfd6977483c0147cfa5da756015bad3e3'
-  'b61fe0c4421f82fdd4f13f92ea7e623412a3fc677bbac8abacdcbdf7d7e7e39fae6b839970e8287c6b1cb4162cc38c4acc2fe13072a822c643dc976fdf9882bd'
+  '8cba4f7a00a928c3f3d3e408a6ba92c7d685b085a080ae3a3d2baaad0baabbf9f848298ae04c0444c1b0f5eaac035d3931d7cf7b3984adb50c5375d1ff2867d1'
   '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
   '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
   '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
-  'eec686855a3a215d947e2f3f40708c3fb3d005df0e8eba2e963f062f3b4f381cd1b0fbd2f4296dd52a84e965c37382edf85db13db6130b9fb96a5980830b2b79'
+  'a2ff070cd4c4ddc71dd79a8db5bafc59afa3ffb2e2ad77a0a8ae5f02a0026e26b8467688351848e2fd95fa98e07922e957fbd987ca019b3494ae680374ed9f65'
   '501e304575a23c12d2e8466de14b51d1b4d25d72a64c633ea9170a6d64ef65df38fb542e1f42c6ffdaa5a55dbbfbca2327ff5c81b77cc6019fda717dbef68351'
-  '60fb8c07223a2662a362e03e70b9fb4d60b5ee9ea7eb995a6d9957b6989e34c3101c9750fcad65fa9c063bdba3e8ac2f4e52d95b16edabccf392cb567d8f0513'
+  '1a6acc32f7cecbf0e32f540870cc1d19c5f6fa59a24334eab51c41245b6b039ae0b2f17ab644d9229291626a9887611e442815f916fd8fdd2193ab558762307b'
   '1afffe7e4797188f0ac2378f6032db5d0ffdeca12d5804250b62e0a946a65e7dab7a7d6c9674dedeebfb3e0501360b549e4d333841d0da6662c266b4589bdba0')
 b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
   '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
@@ -189,19 +191,21 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
   'b742e9e0de7a0e4ce3e077f01481328ee8245aecc144aade29f284560668ac551415d7228b88bdc31e9c8d4fd970bb0b1b1467772bd17802a21dfc21d078c5e9'
   '8f3bf0c3fb85e458d24a4ae11b24cc8c881c4c579d4fead5248557ca1a65a91e40d291d2d457cf8a2187540ccbaf1e8495e616256da1d829245067cfb62ef6c5'
+  'afc912b63c9211373fbcfeec519631c84dd034a48832de4e7973d788bbd7a7af08935de6da2cbd10031e8755d1f02ab4bd3ba62d3f382b0cb3a3d2a10a897cf4'
+  'b44a43b3cb575264177a75e720b5ace94c1a79c2b1b9793885ff06e0b27dfae11f1d5397712eb58a14fe9cadb69c593eca0cd9fddbd9ad1432842347211bea67'
   'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
   '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
   'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
   '93382f5100b58b1cf763054c4a839546f4c7cc8a141cf11d34ddf3b01a7c7e6663630e5ad32df32f69ff84c1d50073ce6c43ef3e4a7a934bbe6b344156e5c54e'
   'db691d49fc99d2d844d4f9fc0af456565a5c8102340f5b9d001029f3d7b95a7762ab612ac45824b97961b26109549ff9527070c44838966c0c8bbc485bf0f3d0'
   '96044937ac7fe10134d938516a4da2cc69e71faaee3f84e58dc42a900a500e5de04989f5d762e8efaff9ac5e2c893e713176caafb8724f53bdc8a403a719bd76'
-  'c62c280f86cb8f11b8f4f7c33ef6412c62c1d928b975908c2b8ee2d403f1a7720417f4514f8bdeecfb823fc7f259b38bfe99bddb1f76688608f061cc7ce40f1f'
+  '4ecf2980d30ed76ee0ec3d7d8709fb4bd8330e89d9489b9fc127b6d9e69efd0f9345d7ba56a8228b4f96412e4a627d5ba88af5354f6b73177339b3c865cc28f6'
   '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
   '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
   'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
-  'ea868e62c1f4fbe6734993b4b02b56ddeb0a17ed1d103e6704d7a60e25a30f722617016aed9aa20b1e8708045a6eb65faf9d1b40339d122166552cf0402249d8'
+  'dea8952d7ec96d2b6840f6daee5cb9e33c4f807734c444e696a40598d0f71a3fb2095b6c5622cc86e339c1e8aa586043dddd71d51a92378ed941e926270ac4c3'
   'f46fcb1d242979be39dbd14c6e5dc8c04ede57ed2de52a74e56bf18ce3c6b5985351d70ec0e291ed3ccec1655ebee4da931c88680c7ef60dec4797d78f015833'
-  'ba82d782e0aa5960800ad61c5070acff4fd4f6ee3d70423868839ff95f87209a090c65ca27004bd85146913f9f080b603b2989b8516d7e66e7a6f4a05d846d21'
+  'a235ac1c91dbe0ea0f0fc89189028250753c0a4104b2779f26b66fa8f239e5bd580b83ed5c8a5e0b0d9ee2afef42ce9c8f6d10ea2d206c0c3694b63e44e76838'
   '3134c64cb38acb323df88be7634d95981c0c46d01d86912c1bb9d9c4ff3da42573299f365368d6d3fb8ebafdf0624203315ae90eb8da79ca33c736abca51f8e1')
 
 # Sets up the environment shared by prepare(), build() and check()
@@ -335,7 +339,8 @@ prepare() {
   # making it unusable for everyone but the first user running it
   # Upstream discussion: https://github.com/PowerShell/PowerShell/issues/15330
   patch -Np1 -i "$srcdir/oneget-user-temp-folder.patch"
-  # Builds for .NET 10 instead of .NET Standard 2.0, see Build-PackageManagementModule
+  # Builds for .NET 10 instead of .NET Standard 2.0, see Build-PackageManagementModule in
+  # powershell-modules.psm1
   patch -Np1 -i "$srcdir/oneget-net10.patch"
 
   cd "$srcdir"/PowerShell || exit
@@ -374,6 +379,16 @@ prepare() {
   # Built normally, nothing changes. The telemetry tests are skipped in builds without telemetry.
   patch -Np1 -i "$srcdir/telemetry-optional.patch"
 
+  # Test-Json only reports the first error since 7.6.7, e.g. nothing for invalid array items
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28218
+  # Upstream fix: https://github.com/PowerShell/PowerShell/pull/28273, in 7.6.10
+  patch -Np1 -i "$srcdir/test-json-list-output.patch"
+
+  # Get-Help keeps loading the help file it found first, even after Update-Help installed help that
+  # takes precedence or the UI culture changed, as the full path stays in the HelpFile of the command
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28274
+  patch -Np1 -i "$srcdir/help-cache-reset.patch"
+
   # System.Drawing.Common only supports Windows since .NET 6, see
   # https://learn.microsoft.com/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only
   # (the switch to enable it elsewhere is gone since .NET 7). It's only used by Out-Printer, which is
@@ -405,8 +420,7 @@ prepare() {
   sed -i -E 's|<PackageReference Include="Microsoft.PowerShell.MarkdownRender" Version="[^"]+" />|<ProjectReference Include="../Microsoft.PowerShell.MarkdownRender/Microsoft.PowerShell.MarkdownRender.csproj" />|' \
     "$_utility"
 
-  ## Switch-PSNugetConfig(). Its PowerShell Gallery feeds for src/Modules and test/tools/Modules
-  ## aren't needed, the modules are built from source.
+  # Packages come from the system where possible, see _nuget_feeds()
   _nuget_feeds "$_runtimever"
 
   # Packages from the system feed may satisfy a dependency with a newer version than its minimum
@@ -415,15 +429,16 @@ prepare() {
   sed -i 's|<TreatWarningsAsErrors>true</TreatWarningsAsErrors>|&\n    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1603</WarningsNotAsErrors>|' \
     PowerShell.Common.props test/Test.Common.props
 
-  # There's no point to run analyzers in a PKGBUILD
+  # There's no point to run analyzers in a PKGBUILD, see RunAnalyzersDuringBuild in build() as well
   sed -i -e '/PackageReference/d' Analyzers.props
 
   # libpsl-native is built from PowerShell-Native and put next to pwsh in build()
   sed -i -e '/"Microsoft.PowerShell.Native"/d' src/System.Management.Automation/System.Management.Automation.csproj
 
-  # Next we convert quite a bit to framework refs
-  # This doesn't change anything really about the binaries that are generated
-  # but saves over a gigabyte of unnecessary NuGet downloads.
+  # Every project is built for .NET $_dotnetsdkver and $_rid only. References to packages of assemblies
+  # .NET itself has become framework references, and runtime packages of other platforms are dropped,
+  # so they aren't downloaded. The source generator PSVersionInfoGenerator targets .NET Standard 2.0,
+  # whose System.* packages are part of .NET.
   local _csproj _packref _packname
   while read -r _csproj; do
     sed -i -E -e 's/netstandard2\.0/net'"$_dotnetsdkver"'/' \
@@ -450,10 +465,9 @@ prepare() {
   find . -type f -name "*.csproj" -exec sed -i -E \
     's|(<PackageReference Include="[^"]+" Version=")'"${_dotnetsdkver//./\\.}"'\.[0-9]{1,3}"|\1'"$_runtimever"'"|' {} +
 
-  # Replicating build.psm1:Start-PSBuild()
-  ## Restore-PSPackage()
-  dotnet restore "src/TypeCatalogGen" --runtime "$_rid" -p:SDKToUse=Microsoft.NET.Sdk
-  dotnet restore "src/ResGen" --runtime "$_rid" -p:SDKToUse=Microsoft.NET.Sdk
+  # The code generators build() runs
+  dotnet restore "src/TypeCatalogGen" --runtime "$_rid"
+  dotnet restore "src/ResGen" --runtime "$_rid"
 
   # PSResourceGet only targets .NET Framework, so it came with the .NET Framework builds of its
   # dependencies, all prebuilt from nuget.org. It's built for .NET instead, against NuGet.Client 7 and
@@ -472,15 +486,15 @@ build() {
 
   _dotnet_env
 
-  ## Start-ResGen()
-  # ResGen runs much faster if built with optimisations
+  # The classes of the resources (ResGen). It runs much faster if built with optimisations.
   cd "$srcdir"/PowerShell/src/ResGen || exit
   dotnet run \
     -c Release \
     -f "net$_dotnetsdkver" \
     -r "$_rid"
 
-  ## Start-TypeGen()
+  # The type catalog of System.Management.Automation, from the assemblies of Microsoft.PowerShell.SDK
+  # (TypeCatalogGen)
   local _inc_file="$srcdir/PowerShell/src/TypeCatalogGen/powershell_${_rid}.inc"
   cd "$srcdir"/PowerShell/src/Microsoft.PowerShell.SDK || exit
   dotnet build \
@@ -506,12 +520,8 @@ build() {
     --runtime "$_rid"
     --no-self-contained
     -p:ReleaseTag="$pkgver"
+    # Framework-dependent, with ReadyToRun (PowerShell.Common.props)
     "-p:AppDeployment=FxDependentDeployment"
-    "-p:SDKToUse=Microsoft.NET.Sdk"
-    "-p:IsWindows=false"
-    "-p:GenerateFullPaths=true"
-    "-p:ErrorOnDuplicatePublishOutputFiles=false"
-    "-p:UseAppHost=true"
     "-p:RunAnalyzersDuringBuild=false"
     # Use the source-built crossgen2 for ReadyToRun, see crossgen2-pack.targets
     "-p:CustomAfterMicrosoftCommonTargets=$srcdir/crossgen2-pack.targets"
@@ -524,25 +534,24 @@ build() {
   # libpsl-native, built from PowerShell-Native
   install -Dm755 "$srcdir"/PowerShell-Native/src/powershell-unix/libpsl-native.so -t "$_publish_path"
 
-  # Publish Reference Assemblies
+  # Add-Type compiles against the reference assemblies of .NET in $PSHOME/ref
   mkdir -p "$_publish_path/ref"
   grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;$//' | xargs -d '\n' cp -t "$_publish_path/ref"
 
-  ## Restore-PSModuleToBuild()
-  # Instead of downloading the modules from the PowerShell Gallery, they're built from source
-  # with the PowerShell we just built
-  # Their assemblies are compiled to ReadyToRun with the crossgen2 the publish above used
+  # The bundled modules, built from source with the PowerShell just built. Their assemblies are compiled
+  # to ReadyToRun with the crossgen2 the publish above used.
   local _crossgen2=("$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_rid"/*/tools/crossgen2)
   "$_publish_path"/pwsh -NoProfile -NonInteractive -File "$srcdir/build-modules.ps1" \
     -SourcePath "$srcdir" -OutputPath "$_publish_path/Modules" -Crossgen2Path "${_crossgen2[0]}"
 
-  ## Build manpage
-  # We have to build this, since the pregenerated file (that is also included in their official RPMs)
-  # is outdated and especially missing all body content of the man page.
-  # See https://github.com/PowerShell/PowerShell/issues/21086
-  # The tags in the markdown don't have their < > escaped either, which causes breakage.
+  # The man page
+  # The checked-in pwsh.1 ends in the synopsis at -WindowStyle: Ronn took the placeholder <style> for an
+  # HTML style element and dropped what follows. Renaming the placeholder and regenerating the page
+  # fixes it, and once a release has the regenerated pwsh.1, ruby-ronn-ng isn't needed anymore.
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/21086
+  # Upstream fix: https://github.com/PowerShell/PowerShell/pull/28293
   cd "$srcdir"/PowerShell/assets/manpage || exit
-  sed -i -e 's/>/\\>/g' -e 's/</\\</g' pwsh.1.ronn
+  sed -i 's/<style>/<windowStyle>/' pwsh.1.ronn
   ronn -r "pwsh.1.ronn"
 
   # Install the help of the modules into the publish folder, see update-help.ps1
@@ -572,28 +581,22 @@ check() {
   export LD_LIBRARY_PATH="$srcdir/PowerShell-Native/src/powershell-unix${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 
   cd test/powershell || exit
-  # In Pester 4.x, deleting tests is unfortunately the only fine grained option
-  # to disable tests.
+  # Pester 4 can't leave out single tests from the outside, so they're skipped in their files, or whole
+  # files removed.
 
-  # These tests use Pesters TestDrive in a way that it doesn't work on Linux
+  # "Validate Get-Item ResolvedTarget property" changes to TestDrive:/TestDir, which only the previous
+  # Describe creates, as each Describe gets an empty TestDrive. The tests then create their links in the
+  # current directory, the repository.
   # shellcheck disable=SC2016
   sed -i -e 's/TestDrive:/$TestDrive/g' \
     -e '/Push-Location $rootDir/iNew-Item -ItemType "Directory" -Path $TestDrive -Name TestDir -Force' \
     Modules/Microsoft.PowerShell.Management/FileSystemProviderExtended.Tests.ps1
 
-  # TEMPORARY: Test-Json is broken on PowerShell 7.6.7+
-  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28218
-  # A fix seems to queued for the next release.
-  rm Modules/Microsoft.PowerShell.Utility/Test-Json.Tests.ps1
-
-  # Test is broken due to a logic error not considering timezone aliases
+  # The test looks up the first time zone by its name, which fails when an alias of it comes first
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27502
-  rm Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
-
-  # The tests delete help files from $PSHOME, and some only pass when run on their own, as tests
-  # that ran earlier in the same session change which help content Get-Help finds
-  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28274
-  rm engine/Help/HelpSystem.Tests.ps1
+  # Upstream fix: https://github.com/PowerShell/PowerShell/pull/27525, in 7.7
+  sed -i 's/It "Call Get-TimeZone using Name param and singe item"/& -Skip/' \
+    Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
 
   # Test requires DSCv3 (https://github.com/PowerShell/DSC), which isn't part of PowerShell. The
   # powershell-dsc package runs it in its check() instead, against the installed PowerShell.
@@ -601,7 +604,7 @@ check() {
 
   cd ../.. || exit
 
-  ## Restore-PSPester()
+  # The tools the tests use
   dotnet publish \
     --configuration Release \
     --no-self-contained \
@@ -621,7 +624,7 @@ check() {
       test/tools/"$_project"
   done
 
-  # Fix a NU1510 warning that would otherwise pop
+  # Microsoft.CSharp is part of .NET, and the warning about the needless reference (NU1510) is an error
   sed -i '/Microsoft.CSharp/d' test/tools/NamedPipeConnection/src/code/Microsoft.PowerShell.NamedPipeConnection.csproj
   dotnet publish \
     --configuration Release \
@@ -633,10 +636,13 @@ check() {
   cp test/tools/NamedPipeConnection/src/Microsoft.PowerShell.NamedPipeConnection.psd1 \
     test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection
 
-  # Some tests change $PSHOME, so they run with a copy of the publish folder package() installs
+  # Some tests change $PSHOME, so they run with a copy of the publish folder package() installs. pwsh
+  # reads the powershell.config.json package() adds on startup, which Host/Startup.Tests.ps1 expects.
+  # Its module path would bring in the installed PowerShell's modules, so the copy gets an empty one.
   local _test_pshome="$srcdir/test-pshome"
   rm -rf "$_test_pshome"
   cp -a "$_publish_path" "$_test_pshome"
+  echo '{}' >"$_test_pshome/powershell.config.json"
 
   # Add the test tools and pwsh to path
   export PATH="$_test_pshome:$PWD/bin${PATH:+:${PATH}}"
@@ -656,7 +662,7 @@ check() {
   # Not -NonInteractive, some tests rely on prompts
   pwsh -NoProfile -File "$srcdir/invoke-pester.ps1"
 
-  ## Start-PSxUnit
+  # The xUnit tests
   dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r "$_rid" --test-adapter-path:.
 }
 
@@ -697,11 +703,10 @@ package() {
 
   local _pkgnum=${pkgver:0:1}
 
+  # Without debug symbols and the maps of ReadyToRun
   install -dm755 "$pkgdir/usr/lib/$pkgname-$_pkgnum"
-  rsync -aqP \
-    -f '- *.r2rmap' \
-    -f '- *.pdb' \
-    "$_publish_path/." "$pkgdir/usr/lib/$pkgname-$_pkgnum/"
+  cp -a "$_publish_path/." "$pkgdir/usr/lib/$pkgname-$_pkgnum/"
+  find "$pkgdir/usr/lib/$pkgname-$_pkgnum" \( -name '*.pdb' -o -name '*.r2rmap' \) -delete
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/$pkgname-$_pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
@@ -726,8 +731,11 @@ EOF
   # The .NET host only loads the assemblies pwsh.deps.json lists, so it's written by a pacman hook from
   # the one PowerShell is built with and fragments other packages install in deps.d, e.g. for
   # Microsoft.Management.Infrastructure, which PowerShell is built without (see prepare()).
-  # The base stays in $PSHOME, as the host looks for the listed assemblies next to the deps.json.
+  # It's generated state, so it's written to /var/lib/powershell, and $PSHOME/pwsh.deps.json links to
+  # it. The host still looks for the listed assemblies in $PSHOME.
   mv "$pkgdir/usr/lib/$pkgname-$_pkgnum/pwsh.deps.json" "$pkgdir/usr/lib/$pkgname-$_pkgnum/pwsh.base.deps.json"
+  install -dm755 "$pkgdir/var/lib/powershell"
+  ln -s /var/lib/powershell/pwsh.deps.json "$pkgdir/usr/lib/$pkgname-$_pkgnum/pwsh.deps.json"
   install -dm755 "$pkgdir/usr/share/powershell/deps.d"
   install -Dm644 -t "$pkgdir/usr/share/powershell" "$srcdir/update-pwsh-deps.ps1"
   install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks" "$srcdir/powershell-deps.hook"

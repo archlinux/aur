@@ -1,5 +1,5 @@
 # Builds the modules PowerShell bundles (src/Modules/PSGalleryModules.csproj) from source,
-# instead of downloading them from the PowerShell Gallery like build.psm1:Restore-PSModuleToBuild() does.
+# instead of downloading them from the PowerShell Gallery.
 param(
     # The folder containing the module sources and the helpers, i.e. $srcdir
     [Parameter(Mandatory)] [string] $SourcePath,

@@ -1,4 +1,4 @@
-# Runs the Pester tests of PowerShell, replicating build.psm1:Restore-PSPester() and Start-PSPester().
+# Runs the Pester tests of PowerShell with the tags of its CI.
 # It has to be run with the PowerShell being tested, from the root of its repository.
 # StrictMode and $ErrorActionPreference aren't changed, as they'd leak into the tests.
 

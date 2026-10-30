@@ -1,0 +1,23 @@
+From af43aa96f0c4aed783cb805e568de47a2596e0d9 Mon Sep 17 00:00:00 2001
+From: Anam Navied <anam.naviyou@gmail.com>
+Date: Wed, 28 Oct 2026 16:08:00 -0400
+Subject: [PATCH] Ensure all errors are returned for `Test-Json` with List
+ output format (#28273)
+
+---
+ .../commands/utility/TestJsonCommand.cs                         | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Microsoft.PowerShell.Commands.Utility/commands/utility/TestJsonCommand.cs b/src/Microsoft.PowerShell.Commands.Utility/commands/utility/TestJsonCommand.cs
+index a506284addd..c3ec373dbb2 100644
+--- a/src/Microsoft.PowerShell.Commands.Utility/commands/utility/TestJsonCommand.cs
++++ b/src/Microsoft.PowerShell.Commands.Utility/commands/utility/TestJsonCommand.cs
+@@ -140,7 +140,7 @@ public string LiteralPath
+         /// </summary>
+         protected override void BeginProcessing()
+         {
+-            _evaluationOptions = new EvaluationOptions { OutputFormat = OutputFormat.Hierarchical };
++            _evaluationOptions = new EvaluationOptions { OutputFormat = OutputFormat.List };
+ 
+             if (FetchExternalReference)
+             {

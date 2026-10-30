@@ -38,6 +38,8 @@ path = [
   "psmodulepath-combined-paths.patch",
   "mmi-optional.patch",
   "telemetry-optional.patch",
+  "test-json-list-output.patch",
+  "help-cache-reset.patch",
   "system-drawing-windows-only.patch",
 ]
 SPDX-FileCopyrightText = "PowerShell contributors"
