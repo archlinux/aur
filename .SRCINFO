@@ -1,6 +1,6 @@
 pkgbase = onionshare-cli
 	pkgdesc = Share files, host websites, and chat with friends using Tor (CLI version)
-	pkgver = 2.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/onionshare/onionshare/tree/main/cli
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = onionshare-cli
 	depends = python-waitress
 	depends = python-werkzeug
 	depends = tor
-	source = onionshare-cli-2.7.tar.gz::https://files.pythonhosted.org/packages/source/o/onionshare_cli/onionshare_cli-2.7.tar.gz
-	sha256sums = 55cfbafc163c079436baa4a0e23d18d54dcfd6469341d4e0e5e2e2f967ac80c0
+	source = onionshare-cli-2.7.1.tar.gz::https://files.pythonhosted.org/packages/source/o/onionshare_cli/onionshare_cli-2.7.1.tar.gz
+	sha256sums = d3fa13434bddcd56afea4ce613acb561b174ad23dca63a575c6380dc73a48feb
 
 pkgname = onionshare-cli
