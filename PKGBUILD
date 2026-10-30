@@ -635,7 +635,31 @@ _resolve_options() {
     echo "Error: FIX_WEIGHTS='$FIX_WEIGHTS' must be true or false."; exit 1
   fi
 
-  # ── Size-specific tracking ─────────────────────────────────────────────────
+  # ── Apple's trak table: keep it or take it out ─────────────────────────────
+  # Asked before the STAT option below, because the answer decides whether that
+  # option means anything at all.
+  if [[ "$_interactive" == true && -z "${STRIP_TRAK:-}" ]]; then
+    echo ""
+    echo "  Apple's 'trak' table is size-specific tracking, and Linux programs"
+    echo "  disagree about it: GTK and Chromium apply it as written, Firefox"
+    echo "  applies it about five times too strongly (+20% line width at 13px)."
+    echo "  Removing it makes all three agree within 1%; body text then sits at"
+    echo "  the design widths, ~10% tighter than Apple's tracking makes it."
+    echo "  See the header for the measurements."
+    _ask_yn "Remove the trak table (recommended)" y
+    [[ "$_yn" =~ ^[yY]$ ]] && STRIP_TRAK=true || STRIP_TRAK=false
+  fi
+  STRIP_TRAK="${STRIP_TRAK:-true}"
+  if [[ "$STRIP_TRAK" != true && "$STRIP_TRAK" != false ]]; then
+    echo "Error: STRIP_TRAK='$STRIP_TRAK' must be true or false."; exit 1
+  fi
+  if [[ "$STRIP_TRAK" == true ]]; then
+    # STAT is only ever added so that HarfBuzz picks the tracking up; there is
+    # nothing left to pick up once the table is gone, so do not ask about it.
+    TRACKING=false
+  fi
+
+  # ── Size-specific tracking (STAT) ──────────────────────────────────────────
   if [[ "$_interactive" == true && -z "${TRACKING:-}" ]]; then
     echo ""
     _ask_yn "Enable Apple's size-specific tracking (adds a STAT table)" y
@@ -645,27 +669,10 @@ _resolve_options() {
   if [[ "$TRACKING" != true && "$TRACKING" != false ]]; then
     echo "Error: TRACKING='$TRACKING' must be true or false."; exit 1
   fi
-
-  # ── Apple's trak table: keep it or take it out ─────────────────────────────
-  if [[ "$_interactive" == true && -z "${STRIP_TRAK:-}" ]]; then
-    echo ""
-    echo "  Apple's 'trak' table is size-specific tracking. Linux programs"
-    echo "  disagree about it: GTK ignores it, Chromium applies it as written,"
-    echo "  Firefox applies it about five times too strongly (+20% line width"
-    echo "  at 13px). Removing it changes nothing in GTK and makes the browsers"
-    echo "  agree. See the header for the measurements."
-    _ask_yn "Remove the trak table (recommended)" y
-    [[ "$_yn" =~ ^[yY]$ ]] && STRIP_TRAK=true || STRIP_TRAK=false
-  fi
-  STRIP_TRAK="${STRIP_TRAK:-true}"
-  if [[ "$STRIP_TRAK" != true && "$STRIP_TRAK" != false ]]; then
-    echo "Error: STRIP_TRAK='$STRIP_TRAK' must be true or false."; exit 1
-  fi
   if [[ "$STRIP_TRAK" == true && "$TRACKING" == true ]]; then
-    # STAT was added only so that HarfBuzz would pick the tracking up; there is
-    # nothing left to pick up once the table is gone.
-    echo "==> STRIP_TRAK=true: turning TRACKING off (STAT exists only for trak)."
-    TRACKING=false
+    echo "Error: STRIP_TRAK=true and TRACKING=true contradict each other"
+    echo "       (one removes the trak table, the other exposes it). Pick one."
+    exit 1
   fi
 
   # gasp default + validation (used by both engines, but only meaningful for TTF)
