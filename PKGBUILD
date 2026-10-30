@@ -99,7 +99,15 @@ build() {
 		-DUSE_BUILTIN_OPENCSG=ON \
 		-DENABLE_PYTHON=ON \
 		-Wno-dev
-	cmake --build build --parallel $(expr $(nproc) / 2)
+
+	# If the build machine has MAKEFLAGS in makepkg.conf set to something with
+	# -j in it, the user probably knows better than we do how many CPUs they can
+	# use to compile. Else, pick a better default than make's built-in -j1.
+	if [[ "$MAKEFLAGS" = *-j* ]]; then
+		cmake --build build
+	else
+		cmake --build build --parallel $(expr $(nproc) / 2)
+	fi
 }
 
 check() {
