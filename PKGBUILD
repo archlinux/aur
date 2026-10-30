@@ -7,12 +7,12 @@
 # Bitwarden (PM and SM), Proton Pass, KeePassXC, GNOME Keyring, and custom WASM plugins. It includes
 # an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
 #
-# The release workflow renders this file by substituting 0.0.37dev29.
+# The release workflow renders this file by substituting 0.0.37dev41.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-git
-pkgver=0.0.37dev29
+pkgver=0.0.37dev41
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
@@ -125,27 +125,23 @@ prepare() {
     cargo fetch --locked
 }
 
-build() {
-    # Build WASM providers
-    cd "${srcdir}/${pkgname}/rosec-bitwarden-pm"
-    cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
-    cargo build --target wasm32-wasip1 --release
-
-    cd "${srcdir}/${pkgname}/rosec-bitwarden-sm"
-    cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
-    cargo build --target wasm32-wasip1 --release
-
-    cd "${srcdir}/${pkgname}/rosec-gnome-keyring"
-    cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
-    cargo build --target wasm32-wasip1 --release
-
-    cd "${srcdir}/${pkgname}/rosec-keepassxc-file"
-    cargo build --target wasm32-wasip1 --release --locked 2>/dev/null || \
-    cargo build --target wasm32-wasip1 --release
-
-    # Production guest only; never enable the test-http fixture feature.
-    cd "${srcdir}/${pkgname}/rosec-protonpass"
+# makepkg's CPU tuning applies to native binaries, not portable WASM guests.
+# A subshell keeps the original flags intact for subsequent native/PAM builds.
+_build_wasm() (
+    export RUSTFLAGS= CARGO_ENCODED_RUSTFLAGS=
+    export CFLAGS= CXXFLAGS= CPPFLAGS= LDFLAGS=
     cargo build --target wasm32-wasip1 --release --locked
+)
+
+build() {
+    # Production guests only; never enable the test-http fixture feature.
+    local crate
+    for crate in rosec-bitwarden-pm rosec-bitwarden-sm rosec-gnome-keyring rosec-keepassxc-file rosec-protonpass; do
+        (
+            cd "${srcdir}/${pkgname}/${crate}"
+            _build_wasm
+        ) || return
+    done
 
     # Bind the host to the exact installed bytes; no private key or global
     # wasm_verify=disabled setting is needed for this source-built package.
