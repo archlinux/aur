@@ -5,7 +5,7 @@
 _ghrepo="mrquantumoff/audioclock"
 
 pkgname=audioclock-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Inspect and manage PipeWire and WirePlumber audio clock and format settings (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ conflicts=('audioclock')
 _rel="https://github.com/${_ghrepo}/releases/download/v${pkgver}"
 source_x86_64=("${_rel}/audioclock_${pkgver}-1_amd64.deb")
 source_aarch64=("${_rel}/audioclock_${pkgver}-1_arm64.deb")
-sha256sums_x86_64=('0e8a63075b404e811c0b4f7686c94e32e1d2d1683178908f70c08ec466daa691')
-sha256sums_aarch64=('c0dd619adc671a1e8c719c157f4f525c027e7238b182d35ce71012367038ca37')
+sha256sums_x86_64=('cc1782774ad28bcbf3883758c02e2f417b792683bbb5afb54d83b944c4140686')
+sha256sums_aarch64=('2cd07cc4ddefe5ab9a3846d5e1e0837aa1073992373a7086d10c95bd203c81b7')
 
 package() {
     cd "$srcdir"
