@@ -1,14 +1,14 @@
 # Maintainer: x70b1
 pkgname=('hyprland-plugin-hy3')
-pkgver='0.56.2'
-pkgrel=3.1
+pkgver='0.57.0'
+pkgrel=1.1
 pkgdesc='A Hyprland plugin for i3 like tiling'
 arch=('x86_64')
 url='https://github.com/outfoxxed/hy3'
 license=('GPL3')
-depends=("hyprland>=0.56.0" "hyprland<0.57.0")
+depends=("hyprland>=0.57.0" "hyprland<0.58.0")
 makedepends=('git' 'cmake' 'hyprland')
-source=("${pkgname}::git+${url}.git#commit=42b7ed8fd9aefd3f36e5f617afd5071245c67853")
+source=("${pkgname}::git+${url}.git#commit=4c0199b42967b3511e3520b75cfa1f6411fb7e87")
 sha256sums=('SKIP')
 
 build() {
@@ -22,4 +22,3 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hyprland-plugin-hy3/LICENSE"
 }
-
