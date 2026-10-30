@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Cross-platform TUI for inspecting the USB device tree"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('a315eeeb559911fffb1c2a17b6ebd418143168c888db5d3b737b05d8c34b3486')
+sha256sums=('09631627589b43ac2e93f6d2a1cf6a10e490f62a159396f35b6871180ad03617')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/" || exit
