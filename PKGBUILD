@@ -2,7 +2,7 @@
 
 _pkgname=zimtohrli
 pkgname=$_pkgname-git
-pkgver=0.2.1.r46.67c28b1
+pkgver=0.2.1.r51.bca3c9c
 pkgrel=1
 pkgdesc='A psychoacoustic perceptual metric for audio compression'
 arch=(x86_64)
@@ -26,6 +26,7 @@ makedepends=(
   clang
   xxd
   ninja
+  git
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -38,9 +39,11 @@ pkgver() {
 }
 
 prepare() {
-  sed -i '/CMAKE_CXX_CLANG_TIDY/d' "$_pkgname/CMakeLists.txt"
+  cd "$_pkgname"
+  git -c protocol.file.allow=always submodule update --init --recursive
+  sed -i '/CMAKE_CXX_CLANG_TIDY/d' CMakeLists.txt
   echo "add_compile_options(-Wno-c2y-extensions -Wno-error=c2y-extensions)" \
-    >>"$_pkgname/CMakeLists.txt"
+    >>CMakeLists.txt
 }
 
 build() {
