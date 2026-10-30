@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=laptop-livecam
-pkgver=7.0.47
+pkgver=7.0.48
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livec
         "laptop-livecam.install"
         "$_model::https://github.com/thefangeddeity/laptop-livecam/releases/download/$_model_tag/$_model")
 noextract=("$_model")
-sha256sums=('d6193fef889b1cbed443e3d6badb36b183804a169e7edc43f820cfb846cc8d25'
+sha256sums=('b792db259021e2c98f4d55c0416ccc35fe78d7fb39679994c5417a7a5d5917bd'
             '1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c'
             'b2bc52f40e8e1c532427d5bde3575a5d5b571b739fab2c6df443733ed1589cbd')
 

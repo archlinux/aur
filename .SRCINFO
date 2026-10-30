@@ -1,6 +1,6 @@
 pkgbase = laptop-livecam
 	pkgdesc = Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features
-	pkgver = 7.0.47
+	pkgver = 7.0.48
 	pkgrel = 1
 	url = https://github.com/thefangeddeity/laptop-livecam
 	install = laptop-livecam.install
@@ -25,10 +25,10 @@ pkgbase = laptop-livecam
 	conflicts = hls-livecam-server
 	replaces = hls-livecam-server
 	noextract = yolov8n.onnx
-	source = laptop-livecam-7.0.47.tar.gz::https://github.com/thefangeddeity/laptop-livecam/archive/refs/tags/v7.0.47.tar.gz
+	source = laptop-livecam-7.0.48.tar.gz::https://github.com/thefangeddeity/laptop-livecam/archive/refs/tags/v7.0.48.tar.gz
 	source = laptop-livecam.install
 	source = yolov8n.onnx::https://github.com/thefangeddeity/laptop-livecam/releases/download/models-v1/yolov8n.onnx
-	sha256sums = d6193fef889b1cbed443e3d6badb36b183804a169e7edc43f820cfb846cc8d25
+	sha256sums = b792db259021e2c98f4d55c0416ccc35fe78d7fb39679994c5417a7a5d5917bd
 	sha256sums = 1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c
 	sha256sums = b2bc52f40e8e1c532427d5bde3575a5d5b571b739fab2c6df443733ed1589cbd
 
