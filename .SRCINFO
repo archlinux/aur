@@ -1,6 +1,6 @@
 pkgbase = mihomo-smart-bin
 	pkgdesc = The universal proxy platform.
-	pkgver = 1.19.34.alpha.smart.r4831.g4624551
+	pkgver = 1.19.34.alpha.smart.r4842.g77af480
 	pkgrel = 1
 	url = https://wiki.metacubex.one/
 	install = mihomo-smart-bin.install
@@ -11,13 +11,13 @@ pkgbase = mihomo-smart-bin
 	provides = clash-meta
 	conflicts = mihomo
 	conflicts = clash-meta
-	noextract = mihomo-4624551.pkg.tar.zst
+	noextract = mihomo-77af480.pkg.tar.zst
 	options = !strip
 	options = !debug
 	backup = etc/mihomo/config.yaml
-	source = mihomo-4624551.pkg.tar.zst::https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-v3-alpha-smart-4624551.pkg.tar.zst
+	source = mihomo-77af480.pkg.tar.zst::https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-v3-alpha-smart-77af480.pkg.tar.zst
 	source = Model.bin::https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
-	sha256sums = 4cb24fcdde56b0471f0948abcdc82489fe20e57164d618fca7a850438cb80ce6
+	sha256sums = ff4e667bb11e2172ffd2fe46ba9cfad225ba2574b70fef7ad1b13d28e9159a93
 	sha256sums = 832920df1290454710dd04aa4c7d4b5324edfd7816a7c9ad2272708b5d5a13a8
 
 pkgname = mihomo-smart-bin

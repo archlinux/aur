@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=mihomo-smart-bin
-pkgver=1.19.34.alpha.smart.r4831.g4624551
-pkgrel=1
+pkgver='1.19.34.alpha.smart.r4842.g77af480'
+pkgrel='1'
 pkgdesc='The universal proxy platform.'
 arch=('x86_64')
 url='https://wiki.metacubex.one/'
@@ -16,9 +16,9 @@ backup=('etc/mihomo/config.yaml')
 options=('!strip' '!debug')
 install=mihomo-smart-bin.install
 
-_commit=4624551
+_commit='77af480'
 # SHA256 of the upstream binary package archive.
-_binary_sha256='4cb24fcdde56b0471f0948abcdc82489fe20e57164d618fca7a850438cb80ce6'
+_binary_sha256='ff4e667bb11e2172ffd2fe46ba9cfad225ba2574b70fef7ad1b13d28e9159a93'
 _model_sha256='832920df1290454710dd04aa4c7d4b5324edfd7816a7c9ad2272708b5d5a13a8'
 
 source=(
