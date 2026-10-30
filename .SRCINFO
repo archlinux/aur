@@ -1,7 +1,7 @@
 pkgbase = sonic-welcome-center
 	pkgdesc = A friendly onboarding wizard for SonicDE
 	pkgver = 6.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-welcome-center
 	arch = x86_64
 	groups = sonicde
