@@ -5,10 +5,9 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-pkgver=50.0.0.0
+pkgver=51.0.1.0
 # curl -s https://nwjs.io/versions.json | jq -r 'limit(1; .versions[] | select(.components.chromium | startswith("137.")) | .version)'
 # strings src/opt/slimjet/slimjet | grep -Eo '^Chrome/([0-9]+(\.[0-9]+)+)' | head -n 1
-_libffmpegver=0.107.0
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt version)"
 arch=('x86_64')
@@ -36,6 +35,8 @@ optdepends=(
 )
 makedepends=(
     'jq'
+    'curl'
+    'wget'
 )
 options=(
     '!emptydirs'
@@ -44,20 +45,24 @@ options=(
 source=(
     "${pkgname}-${pkgver}.deb::${_dlurl}/release/${pkgname}_amd64.deb"
     #"${pkgname}-${pkgver}.deb::${url}/release/${pkgname}_amd64.deb"
-    "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('402eb81ca4e856eaceff69df3c20d9fb4d6519c98b17bbe17de9a92e89e3a594'
-            '8f92b1afc9deda5d896d73af02c26896e2a8877ae05aec6a5fe2fcc34fb59179')
-_get_versions() {
+sha256sums=('SKIP')
+pkgver() {
+	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
+}
+_get_ffmpeg() {
     _slimjetver="$(strings ${srcdir}/opt/${pkgname}/${pkgname} | grep -oP 'Chrome/\K[0-9]+' | head -n 1)"
     _slimjetver="${_slimjetver}."
     _ffmpegver="$(curl -s https://nwjs.io/versions.json | jq -r --arg v "${_slimjetver}" 'limit(1; .versions[] | select(.components.chromium | startswith($v))).version // empty')"
     echo -e "The chromium version of ${pkgname} is: \033[1;31m${_slimjetver}\033[0m"
     echo -e "So the ffmpeg version should be: \033[1;31m${_ffmpegver}\033[0m"
+    wget -c "${_libffmpegverurl}/releases/download/${_ffmpegver#v}/${_ffmpegver#v}-linux-x64.zip" -O "${srcdir}/libffmpeg.zip"
+    bsdtar -xf "${srcdir}/libffmpeg.zip"
 }
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
+    sed -n 's/^Version:[[:space:]]*//p' "${srcdir}/control" > "${srcdir}/.pkgver"
     sed -i -e "
         s/\/usr\/bin\/${_pkgname}/${_pkgname}/g
         s/Icon=${_pkgname}/Icon=${pkgname}/g
@@ -66,11 +71,11 @@ prepare() {
     chmod 0755 "${srcdir}/opt/${pkgname}/${pkgname}-sandbox"
     sed -i "s/opt\/${pkgname}/usr\/lib\/${pkgname}/g" "${srcdir}/usr/share/gnome-control-center/default-apps/${pkgname}.xml"
     sed -i "s/opt\/${pkgname}/usr\/lib\/${pkgname}/g" "${srcdir}/usr/share/menu/${pkgname}.menu"
-    _get_versions
+    _get_ffmpeg
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname}" "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/opt/${pkgname}" "${pkgdir}/usr/lib"
     ln -sf "/usr/lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
