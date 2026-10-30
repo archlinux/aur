@@ -5,6 +5,7 @@ pkgbase = kns
 	url = https://github.com/blendle/kns.git
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = fzf
 	depends = which
 	source = git+https://github.com/blendle/kns.git#commit=4fb3e0cd12295bd6380b3e5d34598f96156dd56d
