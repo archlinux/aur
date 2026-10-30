@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=webdav-bin
-pkgver=5.17.2
+pkgver=5.17.3
 pkgrel=1
 pkgdesc='Standalone WebDAV server (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'i686')
@@ -24,11 +24,11 @@ sha256sums=('d178253eaf9dee6faad783ec9a1d61c0babca6ddced3216ee81957e05873b201'
             'f775c6ec0eb47472b7d7a13a10508b5aedf2fa7a92aeb4a8492484e64dd64b56'
             '2e6ceac8a2cbdd85ceb6ebbb7cae7d1ad00b14fc8a7e131da9c7ef573f3246e0'
             'f236c800ceb469bbb5fe003866f51881f07637ad940a39bf375804e725996642')
-sha256sums_x86_64=('4166a2cc2999def4d280a6b03ff148193d4de848fbba927a54b94be69dcf2edf')
-sha256sums_aarch64=('6723c54c579ff9d368ce8445a9471cb8267aa3432c6467c09471a5fbd5052991')
-sha256sums_armv7h=('215f38fc317047c8b0d6d2cc59b332d15ed792c0ce9f77dc569e32556bbc0c47')
-sha256sums_armv6h=('2c14f656eaed6b7fedc9647ec0c9393261685a12448e9a66e6133ef1dd2f8efd')
-sha256sums_i686=('508d0081bba0e5b2e3ba0019f5426993b0902c5c1c94feaf73bef6623638de20')
+sha256sums_x86_64=('a992c55638e00e345ebf1b065f1f70b04450905868327c0bc1c6ea1822ba4cbe')
+sha256sums_aarch64=('62ffe5798ece015d51a181348edff188807467a76e9bf6eac696932833f88b58')
+sha256sums_armv7h=('b3efa5910058795729f82252f21e23aad0fc31f4f6220caf0367603c058fa08a')
+sha256sums_armv6h=('8733eccc78df85a0925610a4d9e82c772e12057c1678c10f12b929ac01f4bb46')
+sha256sums_i686=('a3db6d66226b7ce0f08188ed410d9de6ace3d64117a3f52cb20c83790902e91a')
 
 build() {
   for shell in bash fish zsh; do
