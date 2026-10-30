@@ -167,7 +167,10 @@ check() {
   # Only the build for Unix and the newest .NET, the test runner doesn't support .NET 6 anymore. The
   # newer analyzers of the .NET 10 SDK warn about the test tools, which is an error upstream.
   DOTNET_ROLL_FORWARD=Major dotnet test "src/$_nugetid/tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}" \
-    -p:TargetFrameworks=net8.0-unix -p:TreatWarningsAsErrors=false --filter "$(IFS='&'; echo "${_filter[*]}")"
+    -p:TargetFrameworks=net8.0-unix -p:TreatWarningsAsErrors=false --filter "$(
+      IFS='&'
+      echo "${_filter[*]}"
+    )"
 }
 
 package() {
