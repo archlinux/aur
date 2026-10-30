@@ -7,8 +7,8 @@
 # a thin wrapper around the bundled AppRun. Nothing is compiled here, so
 # strip/debug are disabled: the shipped ELF objects are the upstream binaries.
 pkgname=lrdp-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='LRDP (Lightweight Remote Desktop Protocol) RDP client with embedded FreeRDP'
 arch=('x86_64')
 url='https://github.com/lucinhu/LRDP'
@@ -43,7 +43,7 @@ depends=(
 optdepends=('mesa: OpenGL 渲染驱动（Intel/AMD 显卡或软件渲染）')
 options=('!strip' '!debug')
 
-_tag='v0.2.0-preview.1'
+_tag='v0.3.0-preview.1'
 _appimage="lrdp-${pkgver}-linux-x64.AppImage"
 _branding_url="https://raw.githubusercontent.com/lucinhu/LRDP/${_tag}/assets/branding"
 
@@ -56,7 +56,7 @@ source=(
   "${_branding_url}/lrdp.svg"
 )
 sha256sums=(
-  'e616045bc4081cc34a0e4876fc4ecfa80d397079dd8da430d39880a2a8c98350'
+  'f7351fa861d05131aef5303587ed6946abf02551070226a465fa5cfe3227c099'
   '5617da4b294101e0e55805a4489172581a4d4cdf595a810010437749b1e057b1'
   '4396d238ffa92035f63afbd80cccc3d0bc8fad7d725aa3be7a9d496cf8cc0e6c'
   '18c443db3143b9dff0ccc272d42e337e8d07d1cd465d36ac1a9fed1337fd5621'
