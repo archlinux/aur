@@ -1,6 +1,6 @@
 # DeepSeek Harness Desktop 的 Arch Linux 二进制包
 
-将[上游 v0.25.1](https://github.com/dsh-tauri/deepseek-harness-desktop/releases/tag/v0.25.1)
+将[上游 v0.25.2](https://github.com/dsh-tauri/deepseek-harness-desktop/releases/tag/v0.25.2)
 的普通 Linux `.deb` 重打包为 `dsh-tauri-desktop-bin`，仅支持 `x86_64`。
 下载文件均固定版本并校验 SHA-256，程序、插件资源和图标沿用上游内容。
 桌面入口补充 `%u`，使 `dsh://` 链接参数能传给程序。
