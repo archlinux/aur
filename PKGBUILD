@@ -1,6 +1,6 @@
 # Maintainer: keemcophoff
 pkgname=apm-git
-pkgver=0.33.0.r0.g18c4c43c9
+pkgver=0.35.0.r1.g292004325
 pkgrel=1
 pkgdesc='Agent Package Manager (microsoft/apm) built from git with a placement perf patch'
 arch=('any')
@@ -34,7 +34,7 @@ conflicts=('apm')
 source=("$pkgname::git+$url.git"
         '0001-perf-compile-placement.patch')
 sha256sums=('SKIP'
-            '694e0c8ee3f19d828d13216af53daf9cdebf4caae589bc1e3684660b521a0923')
+            '1ed40cd75fc05f8256bfc2adf8b73d04fbd96099e579e9bee002f2bf1417b00d')
 
 pkgver() {
   cd "$pkgname"
