@@ -1,9 +1,8 @@
 # Maintainer: qubeck <qubeck [AT] disroot [DOT] org>
 
 pkgname=libpdfium
-pkgver=155.0.8059.84
-pkgrel=2
-_pdfium_rev=39f0ed4a657e53ed743a16d10d77dec086a08e03
+pkgver=156.0.8078.79
+pkgrel=1
 pkgdesc='PDF rendering/manipulation library from Chromium'
 arch=(x86_64)
 url='https://pdfium.googlesource.com/pdfium/'
@@ -37,11 +36,13 @@ options=('!lto')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}-lite.tar.xz"
         'compiler-rt-adjust-paths.patch'
         'increase-fortify-level.patch'
-        'chromium-153-hermetic-python.patch')
-sha256sums=('2063834f528029ad02a6a3de6d229c3e8b19bc43864be397944cbda18d7ee680'
+        'chromium-153-hermetic-python.patch'
+        'chromium-156-revert-gn-check-includes.patch')
+sha256sums=('d9e8b637dbdd3a1cccb4966e81a66e3f3c4c29f5ce9732a70f5a4f949cd03923'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49')
+            'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49'
+            'c666f9b009d3a2c737501d714689677e6d474982695966651fe7cdbcbc6e5815')
 
 # Chromium unbundle shims relevant to pdfium's dependency closure
 # (see build/linux/unbundle/replace_gn_files.py; abseil is deliberately absent).
@@ -78,13 +79,6 @@ fi
 prepare() {
   cd "chromium-${pkgver}"
 
-  # Sanity: this must be the pdfium revision Chromium pins for this tag.
-  # (The tarball has no .git; compare against the DEPS file instead.)
-  if ! grep -q "'pdfium_revision': '${_pdfium_rev}'" DEPS; then
-    echo "DEPS does not pin pdfium ${_pdfium_rev}; update _pdfium_rev" >&2
-    return 1
-  fi
-
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
@@ -95,36 +89,14 @@ prepare() {
   # https://github.com/ungoogled-software/ungoogled-chromium/pull/3946
   patch -Np1 -i ../chromium-153-hermetic-python.patch
 
+  patch -Np1 -i ../chromium-156-revert-gn-check-includes.patch
+
   # Unbundle fast_float
   mkdir -p pdfium/third_party/fast_float/src/include
   ln -sf /usr/include/fast_float pdfium/third_party/fast_float/src/include/fast_float
 
   mkdir -p third_party/rust-toolchain/bin
   ln -sf /usr/bin/rustc third_party/rust-toolchain/bin/
-
-  # gclient normally generates this; some tarballs lack it. It defines
-  # build_with_chromium, which build_overrides/build.gni depends on.
-  if [[ ! -e build/config/gclient_args.gni ]]; then
-    cat > build/config/gclient_args.gni <<'EOF'
-build_with_chromium = true
-checkout_android = false
-checkout_android_prebuilts_build_tools = false
-checkout_clang_coverage_tools = false
-checkout_copybara = false
-checkout_fuchsia = false
-checkout_glic_e2e_tests = false
-checkout_ios_webkit = false
-checkout_mutter = false
-checkout_openxr = false
-checkout_src_internal = false
-checkout_src_internal_infra = false
-checkout_clusterfuzz_data = false
-checkout_google_benchmark = false
-generate_location_tags = false
-cros_boards = ""
-cros_boards_with_qemu_images = ""
-EOF
-  fi
 
   # Upstream only defines component("pdfium") (static/source_set unless
   # is_component_build=true, which would also split abseil, icu, ... into
