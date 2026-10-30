@@ -1,6 +1,6 @@
 pkgbase = dccstatusline
 	pkgdesc = Fast, themeable status line for Claude Code, in pure C with zero dependencies
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/gshearer/dccstatusline
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dccstatusline
 	license = MIT
 	makedepends = meson
 	depends = glibc
-	source = dccstatusline-0.0.4.tar.gz::https://github.com/gshearer/dccstatusline/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = bd22f6dd603a65c03328b135df99f89338bf8c73008343634550a784c0ce7126
+	source = dccstatusline-0.0.5.tar.gz::https://github.com/gshearer/dccstatusline/archive/refs/tags/v0.0.5.tar.gz
+	sha256sums = 5030cda4a66ba45f4711237b0a015afeab05f21e9a4f6a844cd5d792b9890bd4
 
 pkgname = dccstatusline

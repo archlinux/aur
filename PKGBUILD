@@ -1,7 +1,7 @@
 # Maintainer: George Shearer <george at shearer dot tech>
 
 pkgname=dccstatusline
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Fast, themeable status line for Claude Code, in pure C with zero dependencies'
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(meson)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bd22f6dd603a65c03328b135df99f89338bf8c73008343634550a784c0ce7126')
+sha256sums=('5030cda4a66ba45f4711237b0a015afeab05f21e9a4f6a844cd5d792b9890bd4')
 
 # werror stays upstream's dev and CI contract; a warning a future gcc invents
 # must not fail a user's build.
