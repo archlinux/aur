@@ -1,6 +1,6 @@
 # Maintainer: hyperpuncher
 pkgname=nemo-speech-cpu-nightly-bin
-pkgver=20261028.203448
+pkgver=20261030.094904
 pkgrel=1
 _release=nightly
 pkgdesc='Native speech recognition, synthesis, and translation with CPU support (nightly)'
@@ -25,8 +25,8 @@ conflicts=('nemo-speech')
 options=('!strip' '!debug')
 source_x86_64=("nemo-speech-${pkgver}-linux-x86_64-cpu.tar.gz::${url}/releases/download/${_release}/nemo-speech-${_release}-linux-x86_64-cpu.tar.gz")
 source_aarch64=("nemo-speech-${pkgver}-linux-aarch64-cpu.tar.gz::${url}/releases/download/${_release}/nemo-speech-${_release}-linux-aarch64-cpu.tar.gz")
-sha256sums_x86_64=('12b9c8f0f0280731c0a5d47eef1f1380499b688038c872661ff9cd935d27a974')
-sha256sums_aarch64=('a2b196af8b5f56e9d01ec362f8ff8ce8f6effb82726f6f280d37428de8491d1c')
+sha256sums_x86_64=('f8b37f25c642f40bbf09b8ad444471ea43f2c6ad674cb6aaa86c66160d81b64f')
+sha256sums_aarch64=('0a2d309657a48c95681289337800c132c038ac36422fa677222ca63d486db2e4')
 
 package() {
 	# Keep the upstream layout and private libraries together for relative RPATHs.
