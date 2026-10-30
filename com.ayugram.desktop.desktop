@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=AstraGram
+Comment=Customizable Telegram desktop client
+TryExec=astragram-desktop
+Exec=astragram-desktop -- %U
+Icon=com.ayugram.desktop
+Terminal=false
+StartupWMClass=AstraGram
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+MimeType=x-scheme-handler/tg;x-scheme-handler/tonsite;x-scheme-handler/ton;
+Keywords=tg;chat;im;messaging;messenger;telegram;
+Actions=quit;
+DBusActivatable=false
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true
+X-GNOME-SingleWindow=true
+
+[Desktop Action quit]
+Exec=astragram-desktop -quit
+Name=Quit AstraGram
+Icon=application-exit

@@ -1,0 +1,9 @@
+/src/
+/pkg/
+/*.pkg.tar.*
+/AstraGram-v*-linux-*.zip
+/astragram-*.svg
+/LICENSE-*
+/original-logs-*/
+/original-logs-*.tar.gz
+/UPSTREAM-BUG.md

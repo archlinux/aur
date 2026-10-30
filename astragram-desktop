@@ -1,0 +1,3 @@
+#!/bin/bash
+export DESKTOPINTEGRATION=1
+exec /opt/astragram-desktop/AstraGram "$@"
