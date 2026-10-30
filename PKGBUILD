@@ -2,7 +2,10 @@
 
 _pkgname='caelestia-shell-plugins'
 pkgname="$_pkgname-git"
-pkgver=2.5.0.r147.gbdb304f
+# Placeholder only: pkgver() derives the real version from git describe at build time, so this
+# line does not need to change on every push. Same shape as caelestia-shell-git and
+# midnight-shell-git.
+pkgver=2.5.0.r152.gae0ce45
 pkgrel=1
 pkgdesc='Caelestia Shell with the plugin system (git)'
 arch=('x86_64' 'aarch64')
