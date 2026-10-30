@@ -29,7 +29,7 @@ optdepends=(
   'danser: 本地回放渲染后端'
   'tosu: 游戏内覆盖数据源（经 pkexec 提权启动）'
   'osu-lazer: osu! lazer 客户端'
-  'osu-wine: Wine 下的 osu! Stable 客户端'
+  'osu: Wine 下的 osu! Stable 客户端'
 )
 provides=(opp)
 conflicts=(opp)
