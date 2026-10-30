@@ -1,0 +1,28 @@
+pkgbase = llama-cpp-x64v4
+	pkgdesc = LLM inference in C/C++ (x86-64-v4 optimized)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ggml-org/llama.cpp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = npm
+	depends = ggml
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl
+	provides = llama-cpp
+	conflicts = llama-cpp
+	replaces = llama-cpp-rocm
+	replaces = llama-cpp-vulkan
+	source = git+https://github.com/ggml-org/llama.cpp.git#tag=v0.6.0
+	source = llama-server-system.service
+	source = llama-server-user.service
+	b2sums = e62f131cbf9fbaa223ba86753a80b1212d912d839ee5cf62970f7696f769f687b2fc0319da4e8b74e60348dcfac3a0ef700f4ac62901f053b6b6a176e4af13ef
+	b2sums = d9bada4b57b8d748030617465946841dfd966caee8e20b25af072de51e223ceacc6a3aca2dbfab7d513a03b2e70674a3b115885796f9feb8d3676bd1585df40d
+	b2sums = 0d9f7e1e645eda76683f6da67a4ddcb43e8fc7d0b892c548783239525e635f8f168d758024060e32fcf816892875311bf53342ad33038917c0139281a1f6fef6
+
+pkgname = llama-cpp-x64v4
