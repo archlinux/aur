@@ -1,0 +1,24 @@
+pkgbase = python-mp-api
+	pkgdesc = Materials Project API client for accessing materials data
+	pkgver = 0.47.0
+	pkgrel = 1
+	url = https://github.com/materialsproject/api
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-pymatgen
+	depends = python-emmet-core
+	depends = python-monty
+	depends = python-requests
+	depends = python-boto3
+	depends = python-pyarrow
+	depends = python-orjson
+	depends = python-rich
+	source = api-0.47.0.tar.gz::https://github.com/materialsproject/api/archive/refs/tags/v0.47.0.tar.gz
+	sha256sums = 4d37894a198113fab93761a07e24439e64c86dbec471d078ab2a24d8696b1dfa
+
+pkgname = python-mp-api
