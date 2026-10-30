@@ -2,12 +2,12 @@
 pkgname=flashalizer
 pkgver=1.6
 _rel_at_source=0
-pkgrel=0
+pkgrel=1
 pkgdesc="GUI to make .swf files"
 arch=('any')
 url="https://github.com/colin-i/${pkgname}"
 license=('0BSD')
-depends=('java-runtime' 'jna' 'jna-platform' 'javassist-bin' 'actionswf')
+depends=('java-runtime' 'jna-bin' 'javassist-bin' 'actionswf')
 makedepends=('ant') #java-runtime and java-environment are provided by jdk-openjdk, required by ant
 source=("${pkgname}-${pkgver}-${_rel_at_source}.tar.gz::https://github.com/colin-i/${pkgname}/archive/${pkgname}-${pkgver}-${_rel_at_source}.tar.gz")
 sha256sums=('bec8c3cd2c8184c6364c79676f5929addb8a4ae20ec3da0bb672c66be74a115d')
