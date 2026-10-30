@@ -1,4 +1,4 @@
-# Maintainer: CPT-Dawn <dawnsp0456@gmail.com>
+# Maintainer: CPT-Dawn <ping@cptdawn.dev>
 pkgname=zenith-bar
 _reponame=Zenith
 pkgver=1.2.0
