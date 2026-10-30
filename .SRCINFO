@@ -1,0 +1,39 @@
+pkgbase = rustdesk-kde-wayland-bin
+	pkgdesc = RustDesk remote desktop, with resolution change support on KDE Plasma Wayland
+	pkgver = 1.5.0.kde1
+	pkgrel = 1
+	url = https://github.com/edoaurahman/rustdesk
+	install = rustdesk.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = xdotool
+	depends = libxcb
+	depends = libxfixes
+	depends = libpulse
+	depends = libva
+	depends = libvdpau
+	depends = pam
+	depends = gst-plugins-base
+	depends = gst-plugin-pipewire
+	depends = libvpx
+	depends = libyuv
+	depends = aom
+	depends = opus
+	optdepends = libkscreen: resolution change on KDE Wayland (kscreen-doctor)
+	optdepends = libappindicator-gtk3: tray icon
+	optdepends = libayatana-appindicator: tray icon
+	provides = rustdesk=1.5.0
+	provides = rustdesk-bin=1.5.0
+	conflicts = rustdesk
+	conflicts = rustdesk-bin
+	noextract = librustdesk-1.5.0-kde-wayland.1.so
+	options = !strip
+	options = !lto
+	options = !debug
+	source = rustdesk-1.5.0-x86_64.pkg.tar.zst::https://github.com/rustdesk/rustdesk/releases/download/1.5.0/rustdesk-1.5.0-0-x86_64.pkg.tar.zst
+	source = librustdesk-1.5.0-kde-wayland.1.so::https://github.com/edoaurahman/rustdesk/releases/download/1.5.0-kde-wayland.1/librustdesk-1.5.0-kde-wayland.1-x86_64.so
+	sha256sums = e920621899aeaa18c6e7e23b2b565615e7dc957dc987494795ca7a94c3108d7d
+	sha256sums = fa16b7ef1e37801e9129b1f3fdfcbbd03b9f22f5116c9e274d63aca17b93a833
+
+pkgname = rustdesk-kde-wayland-bin
