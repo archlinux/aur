@@ -1,7 +1,7 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp-git
 pkgver=6.0.0.r283.gb3f8dfe
-pkgrel=2
+pkgrel=3
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)"
 arch=('any')
 url="https://github.com/bethington/ghidra-mcp"
@@ -159,8 +159,15 @@ build() {
     fi
   done
 
+  # Use -Dmaven.test.skip=true, not just -DskipTests: skipTests only skips
+  # test execution, but test sources still get compiled. Upstream's tests
+  # regularly reference Ghidra internals that ghidra-git removes without a
+  # deprecation cycle (e.g. ProjectPathsGhidraTest uses
+  # ghidra.program.database.DataTypeArchiveDB / DataTypeArchiveContentHandler,
+  # both removed from ghidra-git), which would break every build even though
+  # the tests are never run here and the artifacts don't include them.
   msg2 "Building project..."
-  mvn clean package assembly:single -DskipTests -Dmaven.repo.local="$srcdir/.m2"
+  mvn clean package assembly:single -Dmaven.test.skip=true -Dmaven.repo.local="$srcdir/.m2"
 }
 
 package() {
