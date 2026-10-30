@@ -1,8 +1,8 @@
 pkgbase = conflux
 	pkgdesc = Background file-sync daemon syncing local directories to multiple remotes
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://github.com/SelfRef/conflux
+	pkgrel = 2
+	url = https://github.com/AperteDev/conflux
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -16,7 +16,7 @@ pkgbase = conflux
 	conflicts = conflux
 	options = !lto
 	backup = etc/conflux/config.toml
-	source = conflux::git+https://github.com/SelfRef/conflux.git#tag=v1.1.0
+	source = conflux::git+https://github.com/AperteDev/conflux.git#tag=v1.1.0
 	sha256sums = dfcdb23d452c46e4a8edcfa699185375fc90b5ba3817187238ba8f0d59c840e3
 
 pkgname = conflux
