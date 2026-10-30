@@ -1,0 +1,26 @@
+pkgbase = powershell-mmi
+	pkgdesc = Microsoft.Management.Infrastructure (MMI) for PowerShell, built from its open source code
+	pkgver = 2.0.0preview1
+	pkgrel = 1
+	url = https://github.com/PowerShell/MMI
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = powershell
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	depends = powershell
+	provides = powershell-mmi-bin
+	conflicts = powershell-mmi-bin
+	source = git+https://github.com/PowerShell/MMI.git#commit=cf32fc695b32c2eae848b693395c09222fe1d2ae
+	source = crossgen2-pack.targets
+	source = check-assembly.ps1
+	sha512sums = 51abd78f1d72f8c12bc8ee39bd311fa5fc3f1696d45ba25c4ba654103359a986c01e487783059b64ec0f6bf48386077fb4c2dd60a22fca076330acf5e17cd8f5
+	sha512sums = 340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981
+	sha512sums = 2fe10d7b7a687eb8d80280086b33953b12b377e66d0f937e18d0967692a95fb3463480a788d700765dce640f60e8564348184e120a4e0ed45a4dceb8c9e8a12b
+	b2sums = 826bc5cd8b212060820ad4eb800de18986ee4fb776e693049cd7e11e88234bccb28e360006a026ac0239b26a13727cdeefedcf30c8201265cf735504330257d1
+	b2sums = 3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b
+	b2sums = a25a1f97ac5fd6974bc6806430b65e98113ea1d752aa83c0e31502218fafbe64cb026e4a74436889ad6b33085f35afe7ae0b71a3be0c38b99fda811ee64ca23d
+	makedepends_x86_64 = dotnet-source-built-artifacts-10.0
+
+pkgname = powershell-mmi

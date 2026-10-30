@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = [
+  "PKGBUILD",
+  "crossgen2-pack.targets",
+  "check-assembly.ps1",
+  ".SRCINFO",
+  ".nvchecker.toml",
+  ".gitignore",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"

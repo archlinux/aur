@@ -1,0 +1,5 @@
+# The repository is archived, the package is built from its last commit
+[powershell-mmi]
+source = "git"
+git = "https://github.com/PowerShell/MMI.git"
+use_commit = true
