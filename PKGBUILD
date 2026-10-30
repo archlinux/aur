@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=squawk-bin
-pkgver=2.70.0
+pkgver=2.71.0
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("squawk::https://github.com/sbdchd/squawk/releases/download/v${pk
 source_aarch64=("squawk::https://github.com/sbdchd/squawk/releases/download/v${pkgver}/squawk-linux-musl-arm64")
 sha256sums=('23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3'
             'a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2')
-sha256sums_x86_64=('e403ec140fbd15d653763ed0e271a76ae512ad6f523f1b3168f134fdfe92c1dd')
-sha256sums_aarch64=('e403ec140fbd15d653763ed0e271a76ae512ad6f523f1b3168f134fdfe92c1dd')
+sha256sums_x86_64=('cf542e159fb3a94e5fd31d8b5282a31334df8205c6d7993afe286e9133fdff3e')
+sha256sums_aarch64=('cf542e159fb3a94e5fd31d8b5282a31334df8205c6d7993afe286e9133fdff3e')
 
 package() {
     install -Dm755 "${srcdir}/squawk" "${pkgdir}/usr/bin/squawk"
