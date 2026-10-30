@@ -2,12 +2,12 @@
 
 pkgname=unixel-fonts
 pkgver=1.0
-pkgrel=1
-pkgdesc="An English-Arabic Pixel font"
+pkgrel=2
+pkgdesc="English-Arabic pixel font"
 arch=('any')
 url="https://github.com/MDarvishi5124/Unixel"
-license=('OFL')
-provides=('unixel' 'unixel-fonts')
+license=('OFL-1.1')
+provides=('unixel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('a68feb3adad37bd708bb4bbebaa3e72111ecd20140dda585df025f7d35915d4f')
 
