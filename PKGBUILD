@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -44,8 +44,8 @@ optdepends=(
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar")
-# SHA-256 of the reproducible v1.4.0 source archive.
-sha256sums=('369fe93b26855bcb29da8f0aef35a6061d0aded150c5c7c25b3572f184a666e9')
+# SHA-256 of the reproducible v1.4.1 source archive.
+sha256sums=('77e38f88e4f19c422e0488b9f0536aa4608ed3122dcabdbbfe47967a8d76ee64')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
@@ -59,14 +59,6 @@ prepare() {
     -e 's|(root / "libexec").mkdir()|(root / "lib/lurviko").mkdir(parents=True)|' \
     -e 's|root / "libexec/lurviko-access-helper"|root / "lib/lurviko/lurviko-access-helper"|' \
     "Lurviko-${pkgver}/tests/run-properties-tests.py"
-
-  # Some runners still assume an in-source build directory.
-  # Use the same external build override as the other packaging test runners.
-  sed -i \
-    's|build = repo / "build"|build = Path(os.environ.get("LURVIKO_TEST_BUILD_DIR", str(repo / "build"))).resolve()|' \
-    "Lurviko-${pkgver}/tests/run-columns-tests.py" \
-    "Lurviko-${pkgver}/tests/run-search-tests.py" \
-    "Lurviko-${pkgver}/tests/run-thumbnail-tests.py"
 }
 
 build() {
