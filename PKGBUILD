@@ -4,12 +4,12 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.83.2.614.gc60d70aa6
+pkgver=2.86.2.121.ga152ca5b4
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
 license=('GPL3')
-makedepends=('libpng' 'git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua54' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson')
+makedepends=('libpng' 'git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua54' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson' 'vulkan-headers' 'shaderc')
 options=(!strip)
 source=('git+https://github.com/etlegacy/etlegacy.git')
 sha512sums=('SKIP')
@@ -51,6 +51,7 @@ build() {
         "-D FEATURE_AUTOUPDATE=0"
         "-D FEATURE_OMNIBOT=1"
         "-D INSTALL_OMNIBOT=0"
+        "-D FEATURE_RENDERER_VULKAN=1"
     )
 
     cmake ${cmakeopts[@]} .
@@ -60,6 +61,7 @@ build() {
 package_etlegacy-git() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine)"
     depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua54' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson')
+    optdepends=('vulkan-icd-loader: Vulkan renderer')
     provides=('etlegacy')
     conflicts=('etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
