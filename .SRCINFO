@@ -1,0 +1,14 @@
+pkgbase = dotnet-source-build-reference-packages
+	pkgdesc = Reference, targeting and text-only NuGet packages of .NET's source build (SBRP), e.g. NETStandard.Library
+	pkgver = 10.0.113
+	pkgrel = 1
+	url = https://github.com/dotnet/source-build-assets
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-source-built-artifacts-10.0
+	source = source-build-assets-a13f85878bf40ed4c57f997b82cbdade521826d3.tar.gz::https://github.com/dotnet/source-build-assets/archive/a13f85878bf40ed4c57f997b82cbdade521826d3.tar.gz
+	sha512sums = e0401152c8710f551d33865e0126172bd1a9f508e8b5f32536eaf190bc0f6bb9a182ccc5f431e1b9efc685ae7073a6015d97471a3bd70404bb5a3aab68fca129
+	b2sums = c8fbe8aa05b9a6b6721b61c2e091e3017296c92e4e6344a6afb1cc4d171bf5b3a6617d8835acb6c044dbf884de96b6eeaf45eb4b298010906e0e6aa41d1f924b
+
+pkgname = dotnet-source-build-reference-packages

@@ -1,0 +1,7 @@
+# The version of the source-built .NET SDK of Arch Linux, as the packages are taken from its sources
+[dotnet-source-build-reference-packages]
+source = "archpkg"
+archpkg = "dotnet-sdk-10.0"
+strip_release = true
+from_pattern = '^(\d+\.\d+)\.\d+\.sdk(\d+)$'
+to_pattern = '\1.\2'
