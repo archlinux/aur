@@ -1,6 +1,6 @@
 # Maintainer: Vyrnexis <315210836+Vyrnexis@users.noreply.github.com>
 pkgname=inkpane-git
-pkgver=0.1.0.r0.g3e4d8e9
+pkgver=0.1.0.r1.ge8972e9
 pkgrel=1
 pkgdesc="Draw on your screen through a transparent Wayland overlay (layer-shell)"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,8 @@ pkgver() {
 
 build() {
   cd Inkpane
-  local flags=(-d:release --opt:size --passC:-flto --passL:-flto
+  # -s strips at link time, so the size does not depend on the AUR helper stripping.
+  local flags=(-d:release --opt:size --passC:-flto --passL:-flto --passL:-s
     --noNimblePath --path:"$srcdir/sdl3-nim/src")
   nim c "${flags[@]}" --nimcache:"$srcdir/nimcache" --out:inkpane src/inkpane.nim
   nim c "${flags[@]}" --nimcache:"$srcdir/nimcache-mcp" --out:inkpane-mcp src/inkpane_mcp.nim
