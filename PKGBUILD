@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru-bin
-pkgver=7.6.1
+pkgver=7.6.2
 _electronversion=41
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab.(Prebuilt version.Use system-wide electron)"
@@ -15,17 +15,21 @@ depends=(
 )
 optdepends=(
     'mecab'
+    'yt-dlp'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-24.04-amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/hockyy/miteiru/v${pkgver}/LICENSE.md"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('211cd046ef493bc34379302a078f3abc84351857a299d3e4dbbbdf6471a7a46d'
+sha256sums=('a63418b4104f2963dd30e325de080cd74e1e0578906e57523dc8154bb2f53283'
             '32b8056672bc415bbd3829a9a737d776795f6b73af61ce0934107ed81ee8a7a0'
-            'cebedc3391cbab6d43f37fbf3a87ddaad16597cb5ea487a4d55b1f478d810082')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" -print 2>/dev/null | while read f; do [ -d "${f%/*}/resources" ] && echo "${f%/*}" && break; done
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _check_electron_version() {
 	local _v=$(strings "$(find "$(_get_app_dir)" -maxdepth 1 -type f \
@@ -39,21 +43,18 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    local _app_dir="$(_get_app_dir)"
-    find "${_app_dir}/resources/app.asar.unpacked/node_modules" -type d \
+    find "$(_get_app_dir)/resources/app.asar.unpacked/node_modules" -type d \
         \( -name "android-*" -o -name "linux-arm*" -o -name "darwin-*" -o -name "win32-*" \) \
         -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir="$(_get_app_dir)"
-	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
