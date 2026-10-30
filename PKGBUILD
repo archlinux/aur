@@ -1,6 +1,6 @@
 # Maintainer: HexRebel (AUR: rebellen) <200467570+HexRebel@users.noreply.github.com>
 pkgname=mascot
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Shimeji-style desktop mascots for Wayland that you can talk to (a chat bubble for local or hosted language models)"
 arch=('x86_64')
@@ -17,7 +17,12 @@ source=("$pkgname::git+https://github.com/HexRebel/mascot.git#tag=v$pkgver"
         "json.h::git+https://github.com/sheredom/json.h.git"
         "qoi::git+https://github.com/phoboslab/qoi.git"
         "py-qoi::git+https://github.com/mathpn/py-qoi.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+# The tag's checksum (makepkg -g after tagging, pacman 6.1 or newer): a tag moved
+# later does not build. The others only give the submodules, which Mascot pins
+sha256sums=('2f66e9319bbad23e559a8f1dc4b1a0debcd8d5bb3822b4a0ad7ddc98e9e74556'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
     cd "$pkgname"

@@ -1,6 +1,6 @@
 pkgbase = mascot
 	pkgdesc = Shimeji-style desktop mascots for Wayland that you can talk to (a chat bubble for local or hosted language models)
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/HexRebel/mascot
 	install = mascot.install
@@ -21,11 +21,11 @@ pkgbase = mascot
 	optdepends = curl: keep a local model loaded while the bubble is open
 	optdepends = ttf-nerd-fonts-symbols: the icons in the chat bubble
 	optdepends = xdg-utils: mascot prototypes poses opens its page in the browser
-	source = mascot::git+https://github.com/HexRebel/mascot.git#tag=v0.8.0
+	source = mascot::git+https://github.com/HexRebel/mascot.git#tag=v0.8.1
 	source = json.h::git+https://github.com/sheredom/json.h.git
 	source = qoi::git+https://github.com/phoboslab/qoi.git
 	source = py-qoi::git+https://github.com/mathpn/py-qoi.git
-	sha256sums = SKIP
+	sha256sums = 2f66e9319bbad23e559a8f1dc4b1a0debcd8d5bb3822b4a0ad7ddc98e9e74556
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
