@@ -3,7 +3,7 @@
 
 # Maintainer: nyrda <nyrda@keymasq.tools>
 pkgname=keymasq
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Input remapper for keyboards, mice, and game controllers, with layered profiles and macros"
 arch=(
@@ -37,8 +37,8 @@ makedepends=(
     'python-installer'
 )
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.21.0.tar.gz")
-sha256sums=('24365fdf55156f34c224816d7b26bcb89c0738685f7906167fdd9570be19dbde')
+source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.21.1.tar.gz")
+sha256sums=('562396e50032640e14eb6667414f327e6a3ac3745ac4f1ea9f67deb1db42b4f7')
 
 
 build() {
