@@ -20,7 +20,7 @@ _phpbase="80"
 _suffix=""
 pkgver="8.0.30"
 pkgbase_rc=""
-pkgrel="5"
+pkgrel="6"
 pkgbase="php80"
 pkgdesc="PHP 8.0.30 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -130,6 +130,7 @@ source=(
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "libxml-pear-php-8.0.patch"
     "libxml-attribute-php-8.0.patch"
+    "php80-cve-2026-109618-109619.patch"
     "php-libxml.patch"
     "libxml-21200-php-8.0.patch"
     "icu-74-php-7.4.patch"
@@ -203,6 +204,7 @@ arch=(
 _patches=(
     "libxml-pear-php-8.0.patch"
     "libxml-attribute-php-8.0.patch"
+    "php80-cve-2026-109618-109619.patch"
     "php-libxml.patch"
     "libxml-21200-php-8.0.patch"
     "icu-74-php-7.4.patch"
@@ -461,7 +463,7 @@ prepare() {
 
     for patch_name in "${_patches[@]}"; do
         echo "[PATCH] Applying source patch ${patch_name}";
-        patch -p1 -i "../${patch_name}"
+        patch -Np1 -i "../${patch_name}"
     done
     ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
@@ -489,7 +491,7 @@ _build_sapi() {
 
     pushd "build-${_sapi}"
      ./configure ${_phpconfig} ${_commands}
-    patch -p1 -i "${srcdir}/make-tests.patch"
+    patch -Np1 -i "${srcdir}/make-tests.patch"
     if (($_sapi != "cli")); then
         make clean
     elif ((_phpbase < 82)); then
@@ -1399,7 +1401,6 @@ package_php80-mcrypt() {
 ###############################################################################
 # PHP Zend modules: opcache/jit
 ###############################################################################
-
 # Opcache
 package_php80-opcache() {
     pkgdesc="opcache zend module for php80"
@@ -1493,6 +1494,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '216ab305737a5d392107112d618a755dc5df42058226f1670e9db90e77d777d9'
             'b5a6b99214dce395a058f40bffee50511adaf58ee84ee6fbb7ca7bdc3c07cb3c'
             'a3265052b148d6b77883b07482aa0ffd23672c9ca08265ba02904dfaad24d3bd'
+            '534478c973cef6f493605b7af907f639a364912ee92c24598ddae44c3bc72d1c'
             'e757f84d2d72ea39259450c32f3a83c72262da4294152ae3e9fbc0cada622bba'
             '69feec54fce25351b3c2a431a6e3b608ef11287b54f2289412f46106a17feb73'
             'eed71f5568665ad4353d83b696abf0e52c8202c6df7b32923595ac1969e2b5fe'
