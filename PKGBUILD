@@ -18,4 +18,3 @@ package() {
   cd "$pkgname" || exit
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
