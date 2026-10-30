@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=14
+pkgrel=15
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -51,6 +51,10 @@ _threadjobcommit="21d19c867ef05d22fe70aa39e45ab0c479a930e0"
 _pagercommit="965675f549dfa074eb02a47ca6d6e07d0ee7771f"
 # Microsoft.PowerShell.MarkdownRender 7.2.1: last commit of its repository
 _markdownrendercommit="c216c18b1fb275aec0a3e84094bd0e1a4c5da685"
+# The module the tests use from the PowerShell Gallery (test/tools/Modules/PSGalleryTestModules.csproj),
+# SelfSignedCertificate 0.0.4: last commit of the archived repository, which fixes the validity
+# period for time zones (DateTimeOffset) after the release
+_selfsignedcertificatecommit="5f720d3d5b28c2cb2e9b33296cfd802ec6f1a668"
 _psresourcegetver="1.2.0"
 _psreadlinever="2.4.5"
 depends=(
@@ -120,6 +124,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/Pager.git#commit=$_pagercommit"
   "git+https://github.com/PowerShell/MarkdownRender.git#commit=$_markdownrendercommit"
   "git+https://github.com/PowerShell/ThreadJob.git#commit=$_threadjobcommit"
+  "git+https://github.com/rjmholt/SelfSignedCertificate.git#commit=$_selfsignedcertificatecommit"
   "psmodulepath-combined-paths.patch"
   "cim-windows-only.patch"
   "system-drawing-windows-only.patch"
@@ -143,13 +148,14 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '177593575d59629bb9f8020a52205c9617170b3212033ab21787d8739ac3af3d283b706ee607f29d6473415cee9ed5a8d23a4d53e90d52360a72f796f9b1bda8'
             'f5527cf012bd495bc54107e446448b12895d78c0f1653ec29b9dc1110d028cdc36feef7dbc281ae70aae14b735156024ccaac3f3049f7cf4a7555116eaf3eef6'
             '50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42'
+            'c0d1d0ec47a8b0ed4d6e2a09a7040ba6244ceb615c76be21a42950cb8ac28a410811541ccdcf8eefff0c993a70d16ab5cb539d15168703c0f75598f02caa4e4c'
             '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
             '41320b237cc3f15fdd11aeea70a4cb1fd90b3e9986302e5bbab5d4226000aef392907a6702ded762f93169b5e776af6596637205e79ea551d821329361c0081e'
             'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
             '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
             '7f0df1c1eadfc39f7075cf6de7b1d2b99959042b2a3ee1cc0158ead26128ae8086463c563178b22c325c965352d5d756d2b02abf1137ad91b116fd753aeed8b6'
             '2a183bbbdbc42f55328f462bed4fce0752291395ae91c263e11e921c312f94d0c99b2180fce1e4f98e9e33af68fe83d8138217abe4a995fc7a52f442f20b7422'
-            'eea6a9cfa8b9add45149d343229c706ba939432dc65a4a00f26261d26827a96dd884124eadfcec10f5d419e96d5db9e91a8185da9c006c07b753a03b1e55523c'
+            '97b213983fe8aebc201ab590464080590f025ffb4fa5057b6fd4bfc33c27f1f29c1eef9dbda84306163040a15ecc8e34e9c39a6eb5ff4490f87c2c33c20d990b'
             '8c4500687639119bd01d307ab108061214ff4fed7650ca06f65fc6c03f800b23ae0c12591ebe06e06628f237345d5ec7ad669ffd636467b39b5b80b2e8ab264a'
             '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
             '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
@@ -166,13 +172,14 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '83ae40c17c7c8f2f201049f81def4081262077f90e703cc2e7dcbb52f777b4476053a87861d572f9b24da0977496f15e148b1130c14951854f5b9fb60d2c9962'
         '63222fc3995a2090c72804bcdb4f9389f0aea2d05c780698dae0648e53b512236e3c91c3bbe0777df9330c45bb40ab2cf080b4bf9403064f069657ee522ddec3'
         'c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170'
+        '98633062c100df742f1a932f227d874a95f87ea061eece500bf0a925bbabd4aeafab74a60c21ec715522d9dfc959ffc28ca1a82d747355ed8a1e512bd05e4b50'
         'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
         '98a61cba01da84fb7037b906251a3d2f752cb3f5f440b0920a573d399001f92fba3936fdb1b1af4a46520713c69afd10ce4460d1f98af4c86604e4dbe503bb98'
         'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
         '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
         '93382f5100b58b1cf763054c4a839546f4c7cc8a141cf11d34ddf3b01a7c7e6663630e5ad32df32f69ff84c1d50073ce6c43ef3e4a7a934bbe6b344156e5c54e'
         '8f501e2b35ebba03da6cdec49a2055640bba8a8fcedbdefc5c29b7c307217c4feeda08f20406cca3224a4f2761ca8cab786aaea63fdb0e8e9ac42e6745897490'
-        'f151f284fbf529e02d77f4801992b6e02608baedcecd1761b48acb2f8526ef094b950a1cafdd907a7ec5e31dc84f9273781a6951636c800a888e9be239586661'
+        '8772c7761316ebfe2dc837c78149f10349d5be346ab4e7e1b70d913bee98eb037a7af0f50bfb9e5356281c0ad82a2fa37eb9b8eec2427ceed788f3365f12fecb'
         'f7dd9d0abade3c2fa2a49236f367c6ddc0ee6601efc58b0eddfee0c06c0122642df587a6ed5e71d291c511a86712dd91a11f10146d15e3bdaedeb0bc45fdf5bd'
         '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
         '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
@@ -359,14 +366,9 @@ prepare() {
   sed -i -E 's|<PackageReference Include="Microsoft.PowerShell.MarkdownRender" Version="[^"]+" />|<ProjectReference Include="../Microsoft.PowerShell.MarkdownRender/Microsoft.PowerShell.MarkdownRender.csproj" />|' \
     "$_utility"
 
-  ## Switch-PSNugetConfig()
+  ## Switch-PSNugetConfig(). Its PowerShell Gallery feeds for src/Modules and test/tools/Modules
+  ## aren't needed, the modules are built from source.
   _nuget_feeds "$_runtimever"
-  sed -i -e 's|<add key="powershell".*$|<add key="psgallery" value="https://www.powershellgallery.com/api/v2/" />|g' \
-    src/Modules/nuget.config \
-    test/tools/Modules/nuget.config
-  sed -i -e 's|</configuration>|  <packageSourceMapping>\n    <clear />\n  </packageSourceMapping>\n</configuration>|' \
-    src/Modules/nuget.config \
-    test/tools/Modules/nuget.config
 
   # Packages from the system feed may satisfy a dependency with a newer version than its minimum
   # (e.g. Json.More.Net 2.2.0 for JsonPointer.Net's >= 2.1.1), keep that a warning
@@ -435,23 +437,6 @@ prepare() {
     NuGet.Commands NuGet.Common NuGet.Configuration NuGet.Credentials NuGet.DependencyResolver.Core \
     NuGet.Frameworks NuGet.LibraryModel NuGet.Packaging NuGet.ProjectModel NuGet.Protocol NuGet.Versioning \
     Microsoft.IdentityModel.Abstractions
-}
-
-# Copies the packages referenced by a project ($1) from the NuGet cache into a module folder ($2)
-_copymodules() {
-  local _packref
-  mkdir -p "$2"
-  while read -r _packref; do
-    [[ "$_packref" =~ Include=\"([^\"]+)\"\ +Version=\"([^\"]*)\" ]] || continue
-    rsync -aq \
-      -f '- *.nupkg' \
-      -f '- *.nupkg.metadata' \
-      -f '- *.nupkg.sha512' \
-      -f '- *.nuspec' \
-      -f '- System.Runtime.InteropServices.RuntimeInformation.dll' \
-      -f '- fullclr' \
-      "$NUGET_PACKAGES/${BASH_REMATCH[1],,}/${BASH_REMATCH[2]}/." "$2/${BASH_REMATCH[1]}/"
-  done < <(grep PackageReference "$1")
 }
 
 build() {
@@ -638,9 +623,8 @@ check() {
   # Add the test tools and pwsh to path
   export PATH="$_test_pshome:$PWD/bin${PATH:+:${PATH}}"
 
-  # Restore the required modules for the tests
-  dotnet restore test/tools/Modules/PSGalleryTestModules.csproj
-  _copymodules "test/tools/Modules/PSGalleryTestModules.csproj" "$PWD/test/tools/Modules"
+  # The modules the tests use from the PowerShell Gallery (PSGalleryTestModules.csproj), from source
+  cp -r "$srcdir/SelfSignedCertificate/SelfSignedCertificate" test/tools/Modules/
 
   # Some tests are locale dependent, so we need to ensure the en-US locale is being used.
   export LANG=en_US.UTF-8

@@ -125,10 +125,30 @@ function Build-PSReadLineModule {
     $null = $pagerReference.ParentNode.ReplaceChild($projectReference, $pagerReference)
     Save-ProjectXml $xml
 
+    # The Polyfiller for PowerShell 7 only forwards the prediction types to System.Management.Automation.
+    # It's compiled against the one of the PowerShell being built instead of the package of PowerShell
+    # 7.2, which brings prebuilt packages like System.Drawing.Common along, so it targets that .NET.
     $polyfill = Join-Path $SourcePath 'Polyfill/Polyfill.csproj'
+    $polyfillFramework = "net$([Environment]::Version.Major).0"
+    $xml = Get-ProjectXml $polyfill
+    $frameworks = $xml.SelectSingleNode('//TargetFrameworks')
+    $frameworks.InnerText = $frameworks.InnerText -replace 'net6\.0', $polyfillFramework
+    $smaReference = $xml.SelectSingleNode('//PackageReference[@Include="System.Management.Automation"]')
+    $smaReference.ParentNode.SetAttribute('Condition', "'`$(TargetFramework)' == '$polyfillFramework'")
+    $reference = $xml.CreateElement('Reference')
+    $reference.SetAttribute('Include', 'System.Management.Automation')
+    $hintPath = $xml.CreateElement('HintPath')
+    $hintPath.InnerText = Join-Path $PSHOME 'System.Management.Automation.dll'
+    $private = $xml.CreateElement('Private')
+    $private.InnerText = 'false'
+    $null = $reference.AppendChild($hintPath)
+    $null = $reference.AppendChild($private)
+    $null = $smaReference.ParentNode.ReplaceChild($reference, $smaReference)
+    Save-ProjectXml $xml
+
     $polyfillNetstd = Publish-ModuleProject -Path $polyfill -NuGetConfig $NuGetConfig -Framework netstandard2.0 `
         -OutputPath (Join-Path $SourcePath 'publish/polyfill-netstd')
-    $polyfillNet6 = Publish-ModuleProject -Path $polyfill -NuGetConfig $NuGetConfig -Framework net6.0 `
+    $polyfillNet6 = Publish-ModuleProject -Path $polyfill -NuGetConfig $NuGetConfig -Framework $polyfillFramework `
         -OutputPath (Join-Path $SourcePath 'publish/polyfill-net6plus')
     $publish = Publish-ModuleProject -Path $project -NuGetConfig $NuGetConfig -OutputPath (Join-Path $SourcePath 'publish/psreadline')
 
