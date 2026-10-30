@@ -1,7 +1,7 @@
 pkgbase = meetily-vulkan
 	pkgdesc = Local meeting transcription and summaries (AMD, Intel and NVIDIA Vulkan build)
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zackriya-Solutions/meetily
 	arch = x86_64
 	license = MIT
