@@ -1,6 +1,6 @@
 pkgbase = cryptomator-bin
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
-	pkgver = 1.19.5
+	pkgver = 1.19.6
 	pkgrel = 1
 	url = https://cryptomator.org/
 	arch = x86_64
@@ -26,13 +26,13 @@ pkgbase = cryptomator-bin
 	sha256sums = 6286d0a409389bc3542ccad53552f85ec5d05422e0c855342304194fd36ccdba
 	sha256sums = 0f815a749d2299ef68b1662e0d5532de96b6b66b5b31cc6aa98a8ae913ccf8be
 	sha256sums = 78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad
-	source_x86_64 = cryptomator-1.19.5-1-x86_64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/1.19.5/cryptomator-1.19.5-x86_64.AppImage
-	source_x86_64 = cryptomator-1.19.5-1-x86_64.AppImage.asc::https://github.com/cryptomator/cryptomator/releases/download/1.19.5/cryptomator-1.19.5-x86_64.AppImage.asc
-	sha256sums_x86_64 = a4e7b885bc3ee6c65e5e0b95d15088567ed97670ce19c517e20cb091ec2931a3
+	source_x86_64 = cryptomator-1.19.6-1-x86_64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/1.19.6/cryptomator-1.19.6-x86_64.AppImage
+	source_x86_64 = cryptomator-1.19.6-1-x86_64.AppImage.asc::https://github.com/cryptomator/cryptomator/releases/download/1.19.6/cryptomator-1.19.6-x86_64.AppImage.asc
+	sha256sums_x86_64 = a6167f6ab3c5f161b31726b94bcf0abcb7f78c857b16e485adeb8e5096b74acd
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = cryptomator-1.19.5-1-aarch64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/1.19.5/cryptomator-1.19.5-aarch64.AppImage
-	source_aarch64 = cryptomator-1.19.5-1-aarch64.AppImage.asc::https://github.com/cryptomator/cryptomator/releases/download/1.19.5/cryptomator-1.19.5-aarch64.AppImage.asc
-	sha256sums_aarch64 = 760bd64d85e956f1c0a5528e8b3e179a178074807415d44206d9c9a01161b19d
+	source_aarch64 = cryptomator-1.19.6-1-aarch64.AppImage::https://github.com/cryptomator/cryptomator/releases/download/1.19.6/cryptomator-1.19.6-aarch64.AppImage
+	source_aarch64 = cryptomator-1.19.6-1-aarch64.AppImage.asc::https://github.com/cryptomator/cryptomator/releases/download/1.19.6/cryptomator-1.19.6-aarch64.AppImage.asc
+	sha256sums_aarch64 = 2bc13b968b32c5d3ab5d45087abb9ab4ef01b5584560c17511c956c4c681f82e
 	sha256sums_aarch64 = SKIP
 
 pkgname = cryptomator-bin
