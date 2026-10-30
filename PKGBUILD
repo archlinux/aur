@@ -1,6 +1,6 @@
 # Maintainer: eddi <support@heyjunior.ai>
 pkgname=junior-desktop
-pkgver=3.1.73
+pkgver=3.1.74
 pkgrel=1
 pkgdesc="The desktop app for Junior"
 arch=('x86_64')
@@ -26,7 +26,7 @@ _source_name="${pkgname}_${pkgver}_amd64"
 source=(
   "${_source_name}.deb::https://github.com/Andrew-AI-JR/Desktop-Releases/releases/download/v${pkgver}/${_source_name}.deb"
 )
-sha256sums=('e982b43e800f1fec026634215e78e53ea3672ccdd1805b9f7e4ee2cf3c9ce9b9')
+sha256sums=('db2b43baf06a6708f87529be46e4dd5cb6545e1a610d981d02e9410ce63fe8fc')
 
 prepare() {
   bsdtar -xf "${_source_name}.deb"
