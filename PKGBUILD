@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=zccache
-pkgver=1.15.9
+pkgver=1.15.10
 pkgrel=1
 pkgdesc='compiler cache for C/C++/Rust; drop in replacement for sccache and ccache'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(glibc
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
-sha256sums=('7fa9cf730194b131ecd9c606000c33fa6b9e8e3ae613489c22adb217f3dc0318')
+sha256sums=('ef9f51b995e6b3fe1bb5e0b102cce2867d8669ccf841550463aa43f17080eb53')
 
 _srcenv() {
 	cd "$_archive"
