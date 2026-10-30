@@ -1,0 +1,15 @@
+pkgbase = icon-theme-toolkit
+	pkgdesc = Toolkit for creating and editing Linux icon themes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nestoris/icon-theme-toolkit
+	arch = any
+	license = MIT
+	depends = gjs
+	depends = gtk3
+	depends = gdk-pixbuf2
+	optdepends = icoutils: поддержка импорта/экспорта ICO
+	source = icon-theme-toolkit-1.0.tar.gz::https://github.com/nestoris/icon-theme-toolkit/archive/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = icon-theme-toolkit
