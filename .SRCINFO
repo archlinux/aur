@@ -1,6 +1,6 @@
 pkgbase = corganizer
-	pkgdesc = A blazing fast, memory-safe CLI tool to automatically organize your cluttered files
-	pkgver = 1.1.0
+	pkgdesc = A blazing fast CLI tool to automatically organize your cluttered files
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/zedxihan/corganizer
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = corganizer
 	depends = glibc
 	provides = corganizer
 	conflicts = corganizer-git
-	source = https://github.com/zedxihan/corganizer/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = a70785de45394a4cf547fc45d4941644858146f2037cac4af278e8b95ca0ba95
+	source = https://github.com/zedxihan/corganizer/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 365d5d0eb183a6971380011e7c23576069aa06a397b0a6ef2cd800c58c1059e5
 
 pkgname = corganizer
