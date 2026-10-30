@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OPP
+Comment=An all-in-one osu! toolkit
+Exec=opp %U
+Icon=opp
+Terminal=false
+Type=Application
+Categories=Game;Utility;
+MimeType=x-scheme-handler/opp;
+StartupWMClass=opp
