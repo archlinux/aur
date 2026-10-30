@@ -1,0 +1,161 @@
+diff --git a/PowerShell.Common.props b/PowerShell.Common.props
+index c82b473c09..754bc728a3 100644
+--- a/PowerShell.Common.props
++++ b/PowerShell.Common.props
+@@ -166,6 +166,12 @@
+     <IsWindows Condition="'$(IsWindows)' == 'true' or ('$(IsWindows)' == '' and '$(OS)' == 'Windows_NT')">true</IsWindows>
+   </PropertyGroup>
+ 
++  <!-- Telemetry (Microsoft.ApplicationInsights, see utils/Telemetry.cs in System.Management.Automation).
++       Building with -p:UseTelemetry=false leaves it out, so the build never sends telemetry. -->
++  <PropertyGroup Condition=" '$(UseTelemetry)' != 'false' ">
++    <DefineConstants>$(DefineConstants);TELEMETRY</DefineConstants>
++  </PropertyGroup>
++
+   <!-- Define non-windows, all configuration properties -->
+   <PropertyGroup Condition=" '$(IsWindows)' != 'true' ">
+     <DefineConstants>$(DefineConstants);UNIX</DefineConstants>
+diff --git a/src/System.Management.Automation/System.Management.Automation.csproj b/src/System.Management.Automation/System.Management.Automation.csproj
+index ed4db4c81f..7ee4f6eda5 100644
+--- a/src/System.Management.Automation/System.Management.Automation.csproj
++++ b/src/System.Management.Automation/System.Management.Automation.csproj
+@@ -30,7 +30,7 @@
+     <!-- the following package(s) are from https://github.com/JamesNK/Newtonsoft.Json -->
+     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+     <!-- the Application Insights package -->
+-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
++    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" Condition=" '$(UseTelemetry)' != 'false' " />
+     <!-- the following package(s) are from https://github.com/dotnet/corefx -->
+     <PackageReference Include="Microsoft.Win32.Registry.AccessControl" Version="10.0.14" />
+     <PackageReference Include="System.CodeDom" Version="10.0.14" />
+diff --git a/src/System.Management.Automation/utils/Telemetry.cs b/src/System.Management.Automation/utils/Telemetry.cs
+index fbb7f58828..d9ba568a61 100644
+--- a/src/System.Management.Automation/utils/Telemetry.cs
++++ b/src/System.Management.Automation/utils/Telemetry.cs
+@@ -10,11 +10,13 @@ using System.Management.Automation;
+ using System.Runtime.InteropServices;
+ using System.Threading;
+ 
++#if TELEMETRY
+ using Microsoft.ApplicationInsights;
+ using Microsoft.ApplicationInsights.Metrics;
+ using Microsoft.ApplicationInsights.Channel;
+ using Microsoft.ApplicationInsights.Extensibility;
+ using Microsoft.ApplicationInsights.Extensibility.Implementation;
++#endif
+ 
+ namespace Microsoft.PowerShell.Telemetry
+ {
+@@ -91,6 +93,7 @@ namespace Microsoft.PowerShell.Telemetry
+         FeatureUse,
+     }
+ 
++#if TELEMETRY
+     /// <summary>
+     /// Set up the telemetry initializer to mask the platform specific names.
+     /// </summary>
+@@ -1032,4 +1035,42 @@ namespace Microsoft.PowerShell.Telemetry
+             return id;
+         }
+     }
++#else
++    /// <summary>
++    /// This build of PowerShell doesn't include telemetry (see UseTelemetry in PowerShell.Common.props),
++    /// so nothing is ever sent and no identifier is created.
++    /// </summary>
++    public static class ApplicationInsightsTelemetry
++    {
++        // The string for SubsystemRegistration
++        internal const string s_subsystemRegistration = "Subsystem.Registration";
++
++        /// <summary>Gets a value indicating whether telemetry can be sent, which is never the case.</summary>
++        public static bool CanSendTelemetry => false;
++
++        internal static void SendModuleTelemetryMetric(TelemetryType telemetryType, PSModuleInfo moduleInfo)
++        {
++        }
++
++        internal static void SendModuleTelemetryMetric(TelemetryType telemetryType, string moduleName)
++        {
++        }
++
++        internal static void SendTelemetryMetric(TelemetryType metricId, string data, double value = 1.0)
++        {
++        }
++
++        internal static void SendUseTelemetry(string featureName, string detail, double value = 1.0)
++        {
++        }
++
++        internal static void SendExperimentalUseData(string featureName, string detail)
++        {
++        }
++
++        internal static void SendPSCoreStartupTelemetry(string mode, double parametersUsed)
++        {
++        }
++    }
++#endif
+ }
+diff --git a/test/powershell/engine/Basic/Telemetry.Tests.ps1 b/test/powershell/engine/Basic/Telemetry.Tests.ps1
+index 0da08316a5..79d3c0eefe 100644
+--- a/test/powershell/engine/Basic/Telemetry.Tests.ps1
++++ b/test/powershell/engine/Basic/Telemetry.Tests.ps1
+@@ -36,11 +36,16 @@ function Get-OSTelemetryLevel {
+     return 1
+ }
+ 
++# Builds with -p:UseTelemetry=false (see PowerShell.Common.props) don't include telemetry
++function Test-TelemetryBuiltIn {
++    [psobject].Assembly.GetReferencedAssemblies().Name -contains 'Microsoft.ApplicationInsights'
++}
++
+ Describe "Telemetry for shell startup" -Tag CI {
+     BeforeAll {
+-        $skipTelemetryTests = $false
++        $skipTelemetryTests = -not (Test-TelemetryBuiltIn)
+ 
+-        if ($IsWindows) {
++        if ($IsWindows -and -not $skipTelemetryTests) {
+             ## Skip telemetry tests if the OS telemetry level is less than 2 (Enhanced) -- PS telemetry is disabled in this case.
+             $osTelemetryLevel = Get-OSTelemetryLevel
+             $skipTelemetryTests = $osTelemetryLevel -lt 2
+@@ -190,3 +195,38 @@ Describe "Telemetry for shell startup" -Tag CI {
+         }
+     }
+ }
++
++Describe "Builds without telemetry" -Tag CI {
++    BeforeAll {
++        $skipTests = Test-TelemetryBuiltIn
++        if ($skipTests) {
++            $originalDefaultParameterValues = $PSDefaultParameterValues.Clone()
++            $PSDefaultParameterValues["it:skip"] = $true
++            return
++        }
++
++        $PWSH = (Get-Process -Id $PID).MainModule.FileName
++        $telemetrySet = Test-Path -Path env:POWERSHELL_TELEMETRY_OPTOUT
++        $SendingTelemetry = $env:POWERSHELL_TELEMETRY_OPTOUT
++    }
++
++    AfterAll {
++        if ($skipTests) {
++            $global:PSDefaultParameterValues = $originalDefaultParameterValues
++            return
++        }
++
++        if ( $telemetrySet ) {
++            $env:POWERSHELL_TELEMETRY_OPTOUT = $SendingTelemetry
++        }
++        else {
++            Remove-Item env:POWERSHELL_TELEMETRY_OPTOUT -ErrorAction SilentlyContinue
++        }
++    }
++
++    It "Should not send telemetry even when opted in" {
++        $env:POWERSHELL_TELEMETRY_OPTOUT = "no"
++        $result = & $PWSH -NoProfile -Command '[Microsoft.PowerShell.Telemetry.ApplicationInsightsTelemetry]::CanSendTelemetry'
++        $result | Should -Be "False"
++    }
++}

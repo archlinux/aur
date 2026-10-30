@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=18
+pkgrel=19
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -130,6 +130,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/rjmholt/SelfSignedCertificate.git#commit=$_selfsignedcertificatecommit"
   "psmodulepath-combined-paths.patch"
   "mmi-optional.patch"
+  "telemetry-optional.patch"
   "system-drawing-windows-only.patch"
   "oneget-user-temp-folder.patch"
   "oneget-net10.patch"
@@ -158,6 +159,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   'c0d1d0ec47a8b0ed4d6e2a09a7040ba6244ceb615c76be21a42950cb8ac28a410811541ccdcf8eefff0c993a70d16ab5cb539d15168703c0f75598f02caa4e4c'
   '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
   '6dca6f3e167dc2404615a2e5f7b150fc9a5434bd78945cd3faaa3d647b73ca9699c403d111098a2229f9568cdc2809c4a5b55045fc80a30da5acf8e2bf92db9e'
+  'af8199c5fd34c408265f36b387f5bbb28b1935e14309f7763ffad0554db5564bb703263ba25f376209b6ce54bfb4bb00b2c349e957fc542d47054500bdca259a'
   'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
   '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
   'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
@@ -186,6 +188,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '98633062c100df742f1a932f227d874a95f87ea061eece500bf0a925bbabd4aeafab74a60c21ec715522d9dfc959ffc28ca1a82d747355ed8a1e512bd05e4b50'
   'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
   'a35d008a212ec7001392be5d46658f338ba96abe8e4c79d0a85519ec6d6f52ace2f53a956fa9b9c1ea495f5ba4d1d84eeed9a47b4c4e6b7196c97df30ce3dc35'
+  'a4b031faec3e1f116a62063b00acce066f852663f109228106679a337f782fc92a4b4d5708a858c9bc100479f69f7b853e73934b98a7592ba82f3b8f61360d45'
   'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
   '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
   'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
@@ -212,6 +215,8 @@ _dotnet_env() {
   # Without Microsoft.Management.Infrastructure, see mmi-optional.patch in prepare(). MSBuild takes
   # environment variables as properties, so this applies to every build, test tools and tests included.
   export UseMmi=false
+  # Without telemetry, see telemetry-optional.patch in prepare()
+  export UseTelemetry=false
   # RID of the .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's build
   _rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
 }
@@ -358,6 +363,12 @@ prepare() {
   # Gallery.
   patch -Np1 -i "$srcdir/mmi-optional.patch"
 
+  # PowerShell sends telemetry with Application Insights unless POWERSHELL_TELEMETRY_OPTOUT is set. The
+  # patch adds a build property, UseTelemetry=false (see _dotnet_env), which builds an empty version of
+  # ApplicationInsightsTelemetry with the same members instead, without Microsoft.ApplicationInsights.
+  # Built normally, nothing changes. The telemetry tests are skipped in builds without telemetry.
+  patch -Np1 -i "$srcdir/telemetry-optional.patch"
+
   # System.Drawing.Common only supports Windows since .NET 6, see
   # https://learn.microsoft.com/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only
   # (the switch to enable it elsewhere is gone since .NET 7). It's only used by Out-Printer, which is
@@ -401,18 +412,6 @@ prepare() {
 
   # There's no point to run analyzers in a PKGBUILD
   sed -i -e '/PackageReference/d' Analyzers.props
-
-  # Remove Telemetry entirely from the code
-  # The sed hack deletes any line calling ApplicationInsightsTelemetry call, as well as any using statements
-  # for Microsoft.PowerShell.Telemetry. The calls have no side effects, so can simply be removed from the code.
-  # Doing so allows us to exclude Telemetry.cs and Microsoft.ApplicationInsights from the build entirely
-  find src -type f -name "*.cs" -exec sed -i -E \
-    -e '/ApplicationInsightsTelemetry\.\w+\([^)]*$/,/\)/d' \
-    -e '/ApplicationInsightsTelemetry/d' \
-    -e '/Microsoft.PowerShell.Telemetry/d' {} \;
-  sed -i -e '/Microsoft.ApplicationInsights/d' \
-    -e 's|^</Project>|  <ItemGroup>\n    <Compile Remove="utils/Telemetry.cs" />\n  </ItemGroup>\n</Project>|' \
-    src/System.Management.Automation/System.Management.Automation.csproj
 
   # libpsl-native is built from PowerShell-Native and put next to pwsh in build()
   sed -i -e '/"Microsoft.PowerShell.Native"/d' src/System.Management.Automation/System.Management.Automation.csproj
@@ -599,9 +598,6 @@ check() {
   # For an fxdependent Release build, it has the wrong list of files
   # and it will be inconsistent. This only makes sense in the context of their CI.
   rm Host/Startup.Tests.ps1
-
-  # Our build does not include telemetry, so the associated tests fail of course.
-  rm engine/Basic/Telemetry.Tests.ps1
 
   cd ../.. || exit
 
