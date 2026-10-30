@@ -1,6 +1,6 @@
 pkgbase = yetease-music-bin
 	pkgdesc = A fast, clean third-party NetEase Cloud Music client — Rust core × Flutter UI (Linux-first)
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/Gloridust/YetEaseMusic
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = yetease-music-bin
 	depends = ca-certificates
 	provides = yetease-music
 	conflicts = yetease-music
-	noextract = yetease-music_0.2.9_amd64.deb
+	noextract = yetease-music_0.2.10_amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = yetease-music_0.2.9_amd64.deb::https://github.com/Gloridust/YetEaseMusic/releases/download/v0.2.9/yetease-music_0.2.9_amd64.deb
-	sha256sums_x86_64 = 7a38bf44d2b74409093ad6fbb8d40837353f1babde355752478b3ed7c106d5b6
+	source_x86_64 = yetease-music_0.2.10_amd64.deb::https://github.com/Gloridust/YetEaseMusic/releases/download/v0.2.10/yetease-music_0.2.10_amd64.deb
+	sha256sums_x86_64 = 433be37561c6c45b26c89c24a8193d3ec62bd6d9a337b3c6ce7328a08a397516
 
 pkgname = yetease-music-bin
