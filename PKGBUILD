@@ -2,7 +2,7 @@
 
 pkgname=hax
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist, terminal-native coding agent written in C"
 arch=("x86_64" "aarch64")
 url="https://github.com/OleksandrChekhovskyi/hax"
@@ -22,7 +22,7 @@ sha256sums=("b1f90f87f87630c89292b141eaa8d000a54e0b3fd5214180d0cf92299bf55827")
 
 build() {
     arch-meson "$pkgname-$pkgver" build
-    meson compile -C build hax
+    meson compile -C build hax man
 }
 
 check() {
