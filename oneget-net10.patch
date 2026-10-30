@@ -1,0 +1,262 @@
+diff --git a/src/Microsoft.PackageManagement/Implementation/EnumerableRequestObject.cs b/src/Microsoft.PackageManagement/Implementation/EnumerableRequestObject.cs
+index ad5fb24..584389a 100644
+--- a/src/Microsoft.PackageManagement/Implementation/EnumerableRequestObject.cs
++++ b/src/Microsoft.PackageManagement/Implementation/EnumerableRequestObject.cs
+@@ -21,7 +21,7 @@ namespace Microsoft.PackageManagement.Internal.Implementation {
+     using Utility.Async;
+     using Utility.Collections;
+ 
+-    internal class EnumerableRequestObject<T> : RequestObject, IAsyncEnumerable<T> {
++    internal class EnumerableRequestObject<T> : RequestObject, Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<T> {
+         protected readonly BlockingCollection<T> Results = new BlockingCollection<T>();
+ 
+         internal EnumerableRequestObject(ProviderBase provider, IHostApi request, Action<RequestObject> action)
+diff --git a/src/Microsoft.PackageManagement/Implementation/PackageProvider.cs b/src/Microsoft.PackageManagement/Implementation/PackageProvider.cs
+index e8b085a..4dcafa1 100644
+--- a/src/Microsoft.PackageManagement/Implementation/PackageProvider.cs
++++ b/src/Microsoft.PackageManagement/Implementation/PackageProvider.cs
+@@ -47,15 +47,15 @@ public override string ProviderName {
+ 
+         // Friendly APIs
+ 
+-        public IAsyncEnumerable<PackageSource> AddPackageSource(string name, string location, bool trusted, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<PackageSource> AddPackageSource(string name, string location, bool trusted, IHostApi requestObject) {
+             return new PackageSourceRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.AddPackageSource(name, location, trusted, request));
+         }
+ 
+-        public IAsyncEnumerable<PackageSource> RemovePackageSource(string name, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<PackageSource> RemovePackageSource(string name, IHostApi requestObject) {
+             return new PackageSourceRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.RemovePackageSource(name, request));
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> FindPackageByUri(Uri uri, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> FindPackageByUri(Uri uri, IHostApi requestObject) {
+             if (!IsSupportedScheme(uri)) {
+                 return new EmptyAsyncEnumerable<SoftwareIdentity>();
+             }
+@@ -63,14 +63,14 @@ public IAsyncEnumerable<SoftwareIdentity> FindPackageByUri(Uri uri, IHostApi req
+             return new SoftwareIdentityRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.FindPackageByUri(uri, 0, request), Constants.PackageStatus.Available);
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> FindPackageByFile(string filename,  IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> FindPackageByFile(string filename,  IHostApi requestObject) {
+             if (!IsSupportedFile(filename)) {
+                 return new EmptyAsyncEnumerable<SoftwareIdentity>();
+             }
+             return new SoftwareIdentityRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.FindPackageByFile(filename, 0, request), Constants.PackageStatus.Available);
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> FindPackages(string[] names, string requiredVersion, string minimumVersion, string maximumVersion, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> FindPackages(string[] names, string requiredVersion, string minimumVersion, string maximumVersion, IHostApi requestObject) {
+             if (requestObject == null) {
+                 throw new ArgumentNullException("requestObject");
+             }
+@@ -94,7 +94,7 @@ public IAsyncEnumerable<SoftwareIdentity> FindPackages(string[] names, string re
+             }, Constants.PackageStatus.Available);
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> FindPackagesByUris(Uri[] uris, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> FindPackagesByUris(Uri[] uris, IHostApi requestObject) {
+             if (requestObject == null) {
+                 throw new ArgumentNullException("requestObject");
+             }
+@@ -118,7 +118,7 @@ public IAsyncEnumerable<SoftwareIdentity> FindPackagesByUris(Uri[] uris, IHostAp
+             }, Constants.PackageStatus.Available);
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> FindPackagesByFiles(string[] filenames, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> FindPackagesByFiles(string[] filenames, IHostApi requestObject) {
+             if (requestObject == null) {
+                 throw new ArgumentNullException("requestObject");
+             }
+@@ -142,7 +142,7 @@ public IAsyncEnumerable<SoftwareIdentity> FindPackagesByFiles(string[] filenames
+             }, Constants.PackageStatus.Available);
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> FindPackage(string name, string requiredVersion, string minimumVersion, string maximumVersion, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> FindPackage(string name, string requiredVersion, string minimumVersion, string maximumVersion, IHostApi requestObject) {
+             if (requestObject != null)
+             {
+                 requestObject.Debug(String.Format(System.Globalization.CultureInfo.CurrentCulture, "PackageProvider::FindPackage with name {0}", name));
+@@ -150,7 +150,7 @@ public IAsyncEnumerable<SoftwareIdentity> FindPackage(string name, string requir
+             return new SoftwareIdentityRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.FindPackage(name, requiredVersion, minimumVersion, maximumVersion,0, request), Constants.PackageStatus.Available);
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> GetInstalledPackages(string name, string requiredVersion, string minimumVersion, string maximumVersion, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> GetInstalledPackages(string name, string requiredVersion, string minimumVersion, string maximumVersion, IHostApi requestObject) {
+             return new SoftwareIdentityRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.GetInstalledPackages(name, requiredVersion, minimumVersion, maximumVersion, request), Constants.PackageStatus.Installed);
+         }
+ 
+@@ -168,7 +168,7 @@ public SoftwareIdentity GetPackageDetails(SoftwareIdentity softwareIdentity, IHo
+             return softwareIdentity;
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> InstallPackage(SoftwareIdentity softwareIdentity, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> InstallPackage(SoftwareIdentity softwareIdentity, IHostApi requestObject) {
+             if (requestObject == null) {
+                 throw new ArgumentNullException("requestObject");
+             }
+@@ -192,15 +192,15 @@ public IAsyncEnumerable<SoftwareIdentity> InstallPackage(SoftwareIdentity softwa
+             return new SoftwareIdentityRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.InstallPackage(softwareIdentity.FastPackageReference, request), Constants.PackageStatus.Installed);
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> UninstallPackage(SoftwareIdentity softwareIdentity, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> UninstallPackage(SoftwareIdentity softwareIdentity, IHostApi requestObject) {
+             return new SoftwareIdentityRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.UninstallPackage(softwareIdentity.FastPackageReference, request), Constants.PackageStatus.Uninstalled);
+         }
+ 
+-        public IAsyncEnumerable<PackageSource> ResolvePackageSources(IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<PackageSource> ResolvePackageSources(IHostApi requestObject) {
+             return new PackageSourceRequestObject(this, requestObject ?? new object().As<IHostApi>(), request => Provider.ResolvePackageSources(request));
+         }
+ 
+-        public IAsyncEnumerable<SoftwareIdentity> DownloadPackage(SoftwareIdentity softwareIdentity, string destinationFilename, IHostApi requestObject)
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<SoftwareIdentity> DownloadPackage(SoftwareIdentity softwareIdentity, string destinationFilename, IHostApi requestObject)
+         {
+             if (requestObject == null) {
+                 throw new ArgumentNullException("requestObject");
+diff --git a/src/Microsoft.PackageManagement/Implementation/ProviderBase.cs b/src/Microsoft.PackageManagement/Implementation/ProviderBase.cs
+index 8e3bdcd..00ef90c 100644
+--- a/src/Microsoft.PackageManagement/Implementation/ProviderBase.cs
++++ b/src/Microsoft.PackageManagement/Implementation/ProviderBase.cs
+@@ -205,7 +205,7 @@ public IAsyncValue<Dictionary<string, List<string>>> GetFeatures(IHostApi reques
+             return new DictionaryRequestObject(this, requestObject, request => Provider.GetFeatures(request));
+         }
+ 
+-        public IAsyncEnumerable<DynamicOption> GetDynamicOptions(OptionCategory category, IHostApi requestObject) {
++        public Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<DynamicOption> GetDynamicOptions(OptionCategory category, IHostApi requestObject) {
+             requestObject = requestObject ?? new object().As<IHostApi>();
+ 
+             return new DynamicOptionRequestObject(this, requestObject, request => Provider.GetDynamicOptions(category.ToString(), request), category);
+diff --git a/src/Microsoft.PackageManagement/Utility/Async/EmptyAsyncEnumerable.cs b/src/Microsoft.PackageManagement/Utility/Async/EmptyAsyncEnumerable.cs
+index c70dd49..dd18e5e 100644
+--- a/src/Microsoft.PackageManagement/Utility/Async/EmptyAsyncEnumerable.cs
++++ b/src/Microsoft.PackageManagement/Utility/Async/EmptyAsyncEnumerable.cs
+@@ -19,7 +19,7 @@ namespace Microsoft.PackageManagement.Internal.Utility.Async {
+     using System.Linq;
+     using System.Threading;
+ 
+-    public class EmptyAsyncEnumerable<T> : IAsyncEnumerable<T> {
++    public class EmptyAsyncEnumerable<T> : Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<T> {
+         private static readonly ManualResetEventSlim _completed = new ManualResetEventSlim(true);
+ 
+         public void Dispose() {
+diff --git a/src/Microsoft.PackageManagement/Utility/Plugin/DynamicInterface.cs b/src/Microsoft.PackageManagement/Utility/Plugin/DynamicInterface.cs
+index 36adb83..f76a93b 100644
+--- a/src/Microsoft.PackageManagement/Utility/Plugin/DynamicInterface.cs
++++ b/src/Microsoft.PackageManagement/Utility/Plugin/DynamicInterface.cs
+@@ -264,7 +264,7 @@ private static object CreateProxy(Type tInterface, params object[] instances) {
+                 });
+             }).ToArray();
+ 
+-            var instanceMethods = new OrderedDictionary<Type, List<MethodInfo, MethodInfo>>();
++            var instanceMethods = new Microsoft.PackageManagement.Internal.Utility.Collections.OrderedDictionary<Type, List<MethodInfo, MethodInfo>>();
+             var delegateMethods = new List<Delegate, MethodInfo>();
+             var stubMethods = new List<MethodInfo>();
+             var usedInstances = new List<Type, object>();
+diff --git a/src/Microsoft.PackageManagement/Utility/Plugin/DynamicType.cs b/src/Microsoft.PackageManagement/Utility/Plugin/DynamicType.cs
+index 9b6d797..35737c7 100644
+--- a/src/Microsoft.PackageManagement/Utility/Plugin/DynamicType.cs
++++ b/src/Microsoft.PackageManagement/Utility/Plugin/DynamicType.cs
+@@ -43,7 +43,7 @@ internal class DynamicType {
+         private Type _type;
+         private MethodInfo OnUnhandledException;
+ 
+-        internal static object Create(Type tInterface, OrderedDictionary<Type, List<MethodInfo, MethodInfo>> instanceMethods, List<Delegate, MethodInfo> delegateMethods, List<MethodInfo> stubMethods, List<Type, object> usedInstances) {
++        internal static object Create(Type tInterface, Microsoft.PackageManagement.Internal.Utility.Collections.OrderedDictionary<Type, List<MethodInfo, MethodInfo>> instanceMethods, List<Delegate, MethodInfo> delegateMethods, List<MethodInfo> stubMethods, List<Type, object> usedInstances) {
+             // now we can calculate the key based on the content of the *Methods collections
+             var key = tInterface.GetTypeInfo().Assembly.FullName + "::" + tInterface.Name + ":::" + instanceMethods.Keys.Select(each => each.GetTypeInfo().Assembly.FullName + "." + each.FullName + "." + instanceMethods[each].Select(mi => mi.Value.ToSignatureString()).JoinWithComma()).JoinWith(";\r\n") +
+                       "::" + delegateMethods.Select(each => each.GetType().FullName).JoinWith(";\r\n") +
+@@ -53,7 +53,7 @@ internal static object Create(Type tInterface, OrderedDictionary<Type, List<Meth
+             return _proxyClassDefinitions.GetOrAdd(key, () => new DynamicType(tInterface, instanceMethods, delegateMethods, stubMethods)).CreateInstance(usedInstances, delegateMethods);
+         }
+ 
+-        private DynamicType(Type interfaceType, OrderedDictionary<Type, List<MethodInfo, MethodInfo>> methods, List<Delegate, MethodInfo> delegates, List<MethodInfo> stubs) {
++        private DynamicType(Type interfaceType, Microsoft.PackageManagement.Internal.Utility.Collections.OrderedDictionary<Type, List<MethodInfo, MethodInfo>> methods, List<Delegate, MethodInfo> delegates, List<MethodInfo> stubs) {
+             var counter = 0;
+ 
+             _dynamicType = DefineDynamicType(interfaceType);
+diff --git a/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletBase.cs b/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletBase.cs
+index ee967c6..dfb2473 100644
+--- a/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletBase.cs
++++ b/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletBase.cs
+@@ -93,7 +93,7 @@ protected void ValidateVersion(string version) {
+ 
+         protected bool ShouldSelectAllProviders { get; set; }
+ 
+-        protected bool WaitForActivity<T>(IEnumerable<IAsyncEnumerable<T>> enumerables) {
++        protected bool WaitForActivity<T>(IEnumerable<Microsoft.PackageManagement.Internal.Utility.Async.IAsyncEnumerable<T>> enumerables) {
+             var handles = enumerables.Select(each => each.Ready).ConcatSingleItem(CancellationEvent.Token.WaitHandle).ToArray();
+             if (handles.Length > 1) {
+                 if (handles.Length <= 64)
+diff --git a/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletWithSearchAndSource.cs b/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletWithSearchAndSource.cs
+index e3be0a3..87ecc65 100644
+--- a/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletWithSearchAndSource.cs
++++ b/src/Microsoft.PowerShell.PackageManagement/Cmdlets/CmdletWithSearchAndSource.cs
+@@ -40,7 +40,7 @@ namespace Microsoft.PowerShell.PackageManagement.Cmdlets {
+     using FilesystemExtensions = Microsoft.PackageManagement.Internal.Utility.Extensions.FilesystemExtensions;
+ 
+     public abstract class CmdletWithSearchAndSource : CmdletWithSearch {
+-        internal readonly OrderedDictionary<string, List<SoftwareIdentity>> _resultsPerName = new OrderedDictionary<string, List<SoftwareIdentity>>();
++        internal readonly Microsoft.PackageManagement.Internal.Utility.Collections.OrderedDictionary<string, List<SoftwareIdentity>> _resultsPerName = new Microsoft.PackageManagement.Internal.Utility.Collections.OrderedDictionary<string, List<SoftwareIdentity>>();
+         protected List<PackageProvider> _providersNotFindingAnything = new List<PackageProvider>();
+ #if CORECLR
+         internal static readonly string[] ProviderFilters = new[] { "Packagemanagement", "Provider", "PSEdition_Core" };
+diff --git a/src/build.ps1 b/src/build.ps1
+index 871a2c2..7ad5d26 100644
+--- a/src/build.ps1
++++ b/src/build.ps1
+@@ -2,6 +2,10 @@
+     [ValidateSet("net452", "netstandard2.0", "all")]
+     [string]$Framework = "netstandard2.0",
+ 
++    # The framework the .NET (Core) build targets. PackageManagement.psm1 loads it from
++    # coreclr/netstandard2.0 nevertheless.
++    [string]$TargetFramework = "netstandard2.0",
++
+     [ValidateSet("Debug", "Release")]
+     [string]$Configuration = "Debug",
+ 	
+@@ -69,6 +73,7 @@ if ($Framework -eq "all")
+ 
+ foreach ($currentFramework in $frameworks)
+ {
++    $buildFramework = if ($currentFramework -eq "netstandard2.0") { $TargetFramework } else { $currentFramework }
+     $solutionPath = Split-Path $MyInvocation.InvocationName
+     $solutionDir = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($solutionPath)
+ 
+@@ -99,8 +104,8 @@ foreach ($currentFramework in $frameworks)
+             )
+     }
+ 
+-    $itemsToCopyBinaries = $assemblyNames | % { "$solutionDir\$_\bin\$Configuration\$currentFramework\$_.dll" }
+-    $itemsToCopyPdbs = $assemblyNames | % { "$solutionDir\$_\bin\$Configuration\$currentFramework\$_.pdb" }
++    $itemsToCopyBinaries = $assemblyNames | % { "$solutionDir\$_\bin\$Configuration\$buildFramework\$_.dll" }
++    $itemsToCopyPdbs = $assemblyNames | % { "$solutionDir\$_\bin\$Configuration\$buildFramework\$_.pdb" }
+ 
+     $itemsToCopyCommon = @("$solutionDir\Microsoft.PowerShell.PackageManagement\PackageManagement.psd1",
+                         "$solutionDir\Microsoft.PowerShell.PackageManagement\PackageManagement.psm1",
+@@ -146,8 +151,8 @@ foreach ($currentFramework in $frameworks)
+ 				$env:EMBEDPROVIDERMANIFEST = ''
+ 			}
+             dotnet restore
+-            dotnet build --framework $currentFramework --configuration $Configuration
+-            dotnet publish --framework $currentFramework --configuration $Configuration
++            dotnet build --framework $buildFramework --configuration $Configuration
++            dotnet publish --framework $buildFramework --configuration $Configuration
+             Pop-Location
+         }
+     }
+@@ -157,10 +162,10 @@ foreach ($currentFramework in $frameworks)
+ 
+ 
+     CopyToDestinationDir $itemsToCopyCommon $destinationDir
+-    if (-not (CopyBinariesToDestinationDir $assemblyNames $destinationDirBinaries $currentFramework $Configuration '.dll' $solutionDir)) {
++    if (-not (CopyBinariesToDestinationDir $assemblyNames $destinationDirBinaries $buildFramework $Configuration '.dll' $solutionDir)) {
+         throw 'Build failed'
+     }
+-    CopyBinariesToDestinationDir $assemblyNames $destinationDirBinaries $currentFramework $Configuration '.pdb' $solutionDir
++    CopyBinariesToDestinationDir $assemblyNames $destinationDirBinaries $buildFramework $Configuration '.pdb' $solutionDir
+     CopyToDestinationDir $dscResourceItemsCommon $destinationDirDscResourcesBase
+     CopyToDestinationDir $dscResourceItemsPackage (Join-Path -Path $destinationDirDscResourcesBase -ChildPath "MSFT_PackageManagement")
+     CopyToDestinationDir $dscResourceItemsPackageSource (Join-Path -Path $destinationDirDscResourcesBase -ChildPath "MSFT_PackageManagementSource")

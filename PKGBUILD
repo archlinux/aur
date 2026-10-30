@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=15
+pkgrel=16
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -81,7 +81,9 @@ makedepends=(
   dotnet-markdig
   dotnet-microsoft-identity-client
   dotnet-newtonsoft-json
+  dotnet-powershellstandard-library
   dotnet-roslyn
+  dotnet-source-build-reference-packages # The reference packages the modules compile against, see nuget-modules.config
   dotnet-system-clientmodel
   dotnet-system-data-sqlclient
   dotnet-system-io-ports-native
@@ -129,6 +131,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "cim-windows-only.patch"
   "system-drawing-windows-only.patch"
   "oneget-user-temp-folder.patch"
+  "oneget-net10.patch"
   "psresourceget-net10.patch"
   "nuget-modules.config"
   "powershell-modules.psm1"
@@ -153,10 +156,11 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
             '41320b237cc3f15fdd11aeea70a4cb1fd90b3e9986302e5bbab5d4226000aef392907a6702ded762f93169b5e776af6596637205e79ea551d821329361c0081e'
             'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
             '08a87bb665198854dc4e805f35760bca536177800ae448518c5edd63d314d6d909d53ae52f37c6cca523c9b6c4de9b0b7f952a2313a58eb5d8718ee96b818f39'
+            'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
             '7f0df1c1eadfc39f7075cf6de7b1d2b99959042b2a3ee1cc0158ead26128ae8086463c563178b22c325c965352d5d756d2b02abf1137ad91b116fd753aeed8b6'
-            '2a183bbbdbc42f55328f462bed4fce0752291395ae91c263e11e921c312f94d0c99b2180fce1e4f98e9e33af68fe83d8138217abe4a995fc7a52f442f20b7422'
-            '97b213983fe8aebc201ab590464080590f025ffb4fa5057b6fd4bfc33c27f1f29c1eef9dbda84306163040a15ecc8e34e9c39a6eb5ff4490f87c2c33c20d990b'
-            '8c4500687639119bd01d307ab108061214ff4fed7650ca06f65fc6c03f800b23ae0c12591ebe06e06628f237345d5ec7ad669ffd636467b39b5b80b2e8ab264a'
+            '7753cb1b8d4b865ac3b08f4d17a9f848c138e14539fc6b4b377900f6be2714f74964f34e215184c900348cd7fa54e0f71238d63fa3ccb11b605ff5fc744b0708'
+            '22717e4af76d3f639160d49ac66ed1d5d24fb7273f09f7efce9eb70476f1d1dd6217ecb9aabdede8236a55eb6d5f90807b97f339ca5266fa65576e1a54bb2165'
+            'b61fe0c4421f82fdd4f13f92ea7e623412a3fc677bbac8abacdcbdf7d7e7e39fae6b839970e8287c6b1cb4162cc38c4acc2fe13072a822c643dc976fdf9882bd'
             '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
             '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
             '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
@@ -177,10 +181,11 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
         '98a61cba01da84fb7037b906251a3d2f752cb3f5f440b0920a573d399001f92fba3936fdb1b1af4a46520713c69afd10ce4460d1f98af4c86604e4dbe503bb98'
         'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
         '3b1eeadb8ed1ec03de7f4675b7d3a36bb4f5174b3cc956c2c88c490b538ffc88624a69608e3391f0316024b915ed400d3ee33de63cba1ac8d351a125a2d93efa'
+        'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
         '93382f5100b58b1cf763054c4a839546f4c7cc8a141cf11d34ddf3b01a7c7e6663630e5ad32df32f69ff84c1d50073ce6c43ef3e4a7a934bbe6b344156e5c54e'
-        '8f501e2b35ebba03da6cdec49a2055640bba8a8fcedbdefc5c29b7c307217c4feeda08f20406cca3224a4f2761ca8cab786aaea63fdb0e8e9ac42e6745897490'
-        '8772c7761316ebfe2dc837c78149f10349d5be346ab4e7e1b70d913bee98eb037a7af0f50bfb9e5356281c0ad82a2fa37eb9b8eec2427ceed788f3365f12fecb'
-        'f7dd9d0abade3c2fa2a49236f367c6ddc0ee6601efc58b0eddfee0c06c0122642df587a6ed5e71d291c511a86712dd91a11f10146d15e3bdaedeb0bc45fdf5bd'
+        'db691d49fc99d2d844d4f9fc0af456565a5c8102340f5b9d001029f3d7b95a7762ab612ac45824b97961b26109549ff9527070c44838966c0c8bbc485bf0f3d0'
+        'a21171e54952ced4bff42891abfb8ede20a1d2e96f954ff4dc591b43edcfe3f5a46d222c2e71d99820d96d19d816ffa968cc28c52d646e56ae92592d2d11d53a'
+        'c62c280f86cb8f11b8f4f7c33ef6412c62c1d928b975908c2b8ee2d403f1a7720417f4514f8bdeecfb823fc7f259b38bfe99bddb1f76688608f061cc7ce40f1f'
         '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
         '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
         'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
@@ -312,6 +317,8 @@ prepare() {
   # making it unusable for everyone but the first user running it
   # Upstream discussion: https://github.com/PowerShell/PowerShell/issues/15330
   patch -Np1 -i "$srcdir/oneget-user-temp-folder.patch"
+  # Builds for .NET 10 instead of .NET Standard 2.0, see Build-PackageManagementModule
+  patch -Np1 -i "$srcdir/oneget-net10.patch"
 
   cd "$srcdir"/PowerShell || exit
 

@@ -13,7 +13,7 @@ Set-StrictMode -Version 3.0
 $ErrorActionPreference = 'Stop'
 
 Import-Module (Join-Path $SourcePath powershell-modules.psm1)
-# The modules are built with nuget.org only, they don't need to match the .NET runtime
+# The modules only compile against reference packages, which don't need to match the .NET runtime
 $nugetConfig = Join-Path $SourcePath nuget-modules.config
 
 Build-PowerShellGetModule -SourcePath (Join-Path $SourcePath PowerShellGetv2) -OutputPath $OutputPath

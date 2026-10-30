@@ -288,7 +288,7 @@ function Build-PowerShellGetModule {
 
 <#
 .SYNOPSIS
-PackageManagement (OneGet), built with src/build.ps1 of its repository for .NET Core (netstandard2.0).
+PackageManagement (OneGet), built with src/build.ps1 of its repository for the .NET PowerShell runs on.
 #>
 function Build-PackageManagementModule {
     param(
@@ -300,30 +300,49 @@ function Build-PackageManagementModule {
     Set-RepositoryNuGetConfig -SourcePath $SourcePath -NuGetConfig $NuGetConfig
     $src = Join-Path $SourcePath 'src'
 
-    # Only the netstandard2.0 build is used by PowerShell 7. It was compiled against
-    # System.Management.Automation 1.0.0-alpha9 from a long gone feed, so use the PowerShell Standard
-    # reference assemblies instead, which cover exactly the API available on all editions.
+    # Only the build for .NET (Core) is used by PowerShell 7. Instead of netstandard2.0, it targets the
+    # .NET of the PowerShell being built and is compiled against its System.Management.Automation (instead
+    # of 1.0.0-alpha9 from a long gone feed), so the packages it compiled against (reference assemblies,
+    # Microsoft.CSharp) are part of .NET and PowerShell. See oneget-net10.patch for the source changes.
+    $framework = "net$([Environment]::Version.Major).0"
     foreach ($project in Get-ChildItem -Recurse -File -Path $src -Filter '*.csproj') {
         $xml = Get-ProjectXml $project.FullName
         $frameworks = $xml.SelectSingleNode('//TargetFrameworks')
         if (-not $frameworks -or $frameworks.InnerText -notmatch 'netstandard2\.0') {
             continue
         }
-        $frameworks.InnerText = 'netstandard2.0'
-        foreach ($reference in @($xml.SelectNodes('//PackageReference[@Include="System.Management.Automation"]'))) {
-            $reference.SetAttribute('Include', 'PowerShellStandard.Library')
-            $reference.SetAttribute('Version', '5.1.0')
-            $reference.SetAttribute('PrivateAssets', 'all')
-            # These used to come in with the old System.Management.Automation package.
-            # They're part of the runtime of PowerShell 7, so they're only needed for compiling.
-            foreach ($package in @{ 'Microsoft.Win32.Registry' = '4.7.0'; 'System.Reflection.Emit' = '4.7.0'; 'System.Reflection.Emit.Lightweight' = '4.7.0' }.GetEnumerator()) {
-                $dependency = $xml.CreateElement('PackageReference')
-                $dependency.SetAttribute('Include', $package.Key)
-                $dependency.SetAttribute('Version', $package.Value)
-                $dependency.SetAttribute('PrivateAssets', 'all')
-                $null = $reference.ParentNode.AppendChild($dependency)
-            }
+        $frameworks.InnerText = $framework
+        foreach ($node in @($xml.SelectNodes('//*[@Condition]'))) {
+            $node.SetAttribute('Condition', $node.GetAttribute('Condition').Replace("'netstandard2.0'", "'$framework'"))
         }
+        # The runtime identifiers are Windows ones, only needed for restoring the .NET Framework build
+        foreach ($node in @($xml.SelectNodes('//RuntimeIdentifiers'))) {
+            $null = $node.ParentNode.RemoveChild($node)
+        }
+        $packages = '@Include="System.Management.Automation" or @Include="PowerShellStandard.Library" or @Include="Microsoft.CSharp"'
+        foreach ($node in @($xml.SelectNodes("//PackageReference[$packages]"))) {
+            $null = $node.ParentNode.RemoveChild($node)
+        }
+        # Like Publish-ModuleProject: the analyzers of newer .NET versions (e.g. for Windows-only APIs)
+        # aren't errors
+        $propertyGroup = $xml.CreateElement('PropertyGroup')
+        foreach ($property in @{ TreatWarningsAsErrors = 'false'; EnableNETAnalyzers = 'false' }.GetEnumerator()) {
+            $element = $xml.CreateElement($property.Key)
+            $element.InnerText = $property.Value
+            $null = $propertyGroup.AppendChild($element)
+        }
+        $null = $xml.DocumentElement.AppendChild($propertyGroup)
+        $itemGroup = $xml.CreateElement('ItemGroup')
+        $reference = $xml.CreateElement('Reference')
+        $reference.SetAttribute('Include', 'System.Management.Automation')
+        $hintPath = $xml.CreateElement('HintPath')
+        $hintPath.InnerText = Join-Path $PSHOME 'System.Management.Automation.dll'
+        $private = $xml.CreateElement('Private')
+        $private.InnerText = 'false'
+        $null = $reference.AppendChild($hintPath)
+        $null = $reference.AppendChild($private)
+        $null = $itemGroup.AppendChild($reference)
+        $null = $xml.DocumentElement.AppendChild($itemGroup)
         Save-ProjectXml $xml
     }
 
@@ -338,7 +357,7 @@ function Build-PackageManagementModule {
 
     Push-Location -LiteralPath $src
     try {
-        & ./build.ps1 -Framework netstandard2.0 -Configuration Release
+        & ./build.ps1 -Framework netstandard2.0 -TargetFramework $framework -Configuration Release
     }
     finally {
         Pop-Location
