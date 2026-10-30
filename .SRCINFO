@@ -1,6 +1,6 @@
 pkgbase = backupthing-bin
 	pkgdesc = Compress phone photos and videos to AVIF/AV1 and back them up to Proton Drive
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/tashilapathum/backupthing
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = backupthing-bin
 	optdepends = waybar: status bar module (snippet in /usr/share/backupthing/waybar)
 	provides = backupthing
 	conflicts = backupthing
-	source = https://github.com/tashilapathum/backupthing/releases/download/v0.3.0/backupthing-0.3.0.tar.gz
-	sha256sums = 4aa13a5aca0e41e950437bbcc253928e6c10f048b3183be821fe3bff1824e90b
+	source = https://github.com/tashilapathum/backupthing/releases/download/v0.3.1/backupthing-0.3.1.tar.gz
+	sha256sums = 641251284f49b0898529597fc945c57be004214a374c0cd27066231f2fcc1adf
 
 pkgname = backupthing-bin
