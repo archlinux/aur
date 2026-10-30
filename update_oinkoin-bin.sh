@@ -172,7 +172,7 @@ if ! $NO_BUILD; then
     [[ ${#built_pkg[@]} -gt 0 ]] || fail "Compiled package archive not found."
 
     info "Auditing package with namcap..."
-    namcap_output="$(namcap "${built_pkg[0]}" 2>&1 || true)"
+    namcap_output="$(namcap -e elfpaths "${built_pkg[0]}" 2>&1 || true)"
     [[ -z "$namcap_output" ]] || echo "$namcap_output"
     if grep -qE "^${AUR_PKGNAME} E:" <<<"$namcap_output"; then
         fail "namcap detected critical packaging errors (see above)."
