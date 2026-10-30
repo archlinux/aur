@@ -2,7 +2,7 @@
 pkgname=utools-bin
 _pkgname=uTools
 # 更新日志 https://www.u-tools.cn/docs/guide/changelog.html
-pkgver=7.8.0
+pkgver=8.0.1
 _electronversion=22
 pkgrel=1
 pkgdesc="uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
