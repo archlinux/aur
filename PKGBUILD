@@ -1,16 +1,20 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: taotieren <admin@taotieren.com>
 
-_Name="FFPyPlayer"
-_name="${_Name,,}"
-pkgname="python-${_name}"
-pkgver=4.5.3
+_pypiname="ffpyplayer"
+pkgname="python-${_pypiname,,}"
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="A Cython implementation of an FFmpeg based player"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://matham.github.io/ffpyplayer/"
-_url="https://github.com/matham/${_name}"
-license=('LGPL-3.0-only')
+_url="https://github.com/matham/ffpyplayer"
+license=(
+  'LGPL-3.0-only'
+)
 depends=(
   'ffmpeg4.4'
   'glibc'
@@ -19,7 +23,7 @@ depends=(
   # 'sdl2_mixer'
 )
 makedepends=(
-  'cython'
+  'cython>=3.1.8'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -29,8 +33,10 @@ makedepends=(
 #   'python-pytest'
 # )
 _pkgsrc="${_url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('413866ca00fad53f36de07362ca884dea54e55da2372293d2042888c68bd3eae')
+source=(
+  "python-${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=('89d29596fd6574b12e638b85669e0a59f7e063c2bab5a71040034b5e789791ff')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -60,11 +66,11 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  rm -rf "${pkgdir}/${site_packages}/${_name}/tests"
+  rm -rf "${pkgdir}/${site_packages}/${_pypiname}/tests"
 
-  install -vDm644 "README.rst" "${pkgdir}/usr/share/doc/${_name}/README.rst"
+  install -vDm644 "README.rst" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vs "${site_packages}/${_pkgsrc}.dist-info/licenses/COPYING" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vs "${site_packages}/${_pypiname}-${pkgver}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
