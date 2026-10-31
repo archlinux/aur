@@ -1,0 +1,20 @@
+pkgbase = terraprism-git
+	pkgdesc = Terminal UI for viewing Terraform and OpenTofu plans (git version)
+	pkgver = 0.13.0.r0.g8acf2ff
+	pkgrel = 1
+	url = https://github.com/CaptShanks/terraprism
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = terraform: plan, apply and state modes
+	optdepends = opentofu: plan, apply and state modes with tofu
+	provides = terraprism
+	conflicts = terraprism
+	options = !debug
+	source = terraprism::git+https://github.com/CaptShanks/terraprism.git
+	sha256sums = SKIP
+
+pkgname = terraprism-git

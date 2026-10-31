@@ -1,0 +1,6 @@
+src/
+pkg/
+terraprism/
+*.pkg.tar*
+*.tar.gz
+*.log
