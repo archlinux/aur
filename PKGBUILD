@@ -1,7 +1,7 @@
 # Maintainer: Simon <simon at gamersi dot at>
 pkgname=lrcget-bin
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 options=(!debug)
 pkgdesc="Utility for mass-downloading LRC synced lyrics for your offline music library."
 arch=('x86_64')
@@ -16,10 +16,11 @@ b2sums=('SKIP')
 package() {
   tar -xz -f data.tar.gz -C "$pkgdir"
   # refer to https://github.com/tauri-apps/tauri/issues/9750
-  sed -i 's|Exec=LRCGET|Exec=lrcget|' "$pkgdir"/usr/share/applications/LRCGET.desktop
+  install -d "$pkgdir"/usr/lib/lrcget
+  mv "$pkgdir"/usr/bin/lrcget "$pkgdir"/usr/lib/lrcget/lrcget
   cat > "$pkgdir"/usr/bin/lrcget << 'EOF'
 #!/bin/bash
-WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 LRCGET
+WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 exec /usr/lib/lrcget/lrcget "$@"
 EOF
   chmod +x "$pkgdir"/usr/bin/lrcget
 }
