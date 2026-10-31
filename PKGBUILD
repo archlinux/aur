@@ -2,10 +2,10 @@
 # Stable Pivra 0.1.0 release package for Arch Linux.
 # Immutable upstream commit and SHA-256 are pinned in this PKGBUILD.
 pkgname=pivra
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 options=('!debug')
-pkgdesc='Native GNOME JPEG/PNG image viewer'
+pkgdesc="Native GNOME photo, animation and video viewer"
 arch=('x86_64')
 url='https://github.com/onbeskarakterli/Pivra'
 license=('GPL-3.0-only')
@@ -16,15 +16,16 @@ depends=('gtk4>=4.16' 'libadwaita>=1.2' 'glib2' 'gdk-pixbuf2'
 makedepends=('cargo' 'pkgconf' 'python>=3.11')
 checkdepends=('desktop-file-utils')
 _target="${CARCH}-unknown-linux-gnu"
-_release_commit='18b9bc2e021aeeeb02dc42198db4522a67ed9e1b'
+_release_commit=66eb795515fb05b5bdf14ac522cd55579d426b2f
 source=("pivra-$pkgver.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/$_release_commit.tar.gz"
         'collect-licenses.py')
-sha256sums=('f8a31e5569ead7ae90b4a292c108ddfd77a45bc59327d2af10e88dc6d459cbf9' 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
+sha256sums=('40f9b76cf6bc641f950b80f661edf582a8ace2aabf51f2b88e72d8f9cb806863' 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
 
 prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_TARGET_DIR="$srcdir/Pivra-$_release_commit/target"
   cd "$srcdir/Pivra-$_release_commit" || return 1
+  cargo generate-lockfile || return 1
   cargo fetch --locked || return 1
 }
 
