@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.27.99.67082.g6860883e18
+pkgver=1.29.0.67480.gdc4b008677
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,13 +13,13 @@ url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'MIT' 'custom')
 depends=('curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'gst-plugins-base-libs' 'lua52' 'libgl' 'libinput'
-         'libpulse' 'libsndfile' 'libspectre' 'libraw' 'librsvg' 'libwebp'
-         'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
+         'libpulse' 'libpipewire' 'libsndfile' 'libspectre' 'libraw' 'librsvg' 'libwebp'
+         'libxtst' 'libxpresent' 'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'poppler' 'openjpeg2' 'libjpeg-turbo'
          'libpng' 'libtiff' 'giflib' 'lz4' 'zlib' 'systemd-libs' 'openssl'
          'glibc' 'libutil-linux' 'dbus'
          'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
-         'wayland' 'libxkbcommon-x11' 'pulse-native-provider')
+         'wayland' 'libxkbcommon-x11' 'pulse-native-provider' 'libjxl' 'libheif' 'libavif')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'procps-ng' 'ccache' 'wayland-protocols')
 optdepends=('gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-good: Video and thumbnail codecs'
@@ -66,8 +66,9 @@ build() {
     -Dfb=true \
     -Ddrm=true \
     -Dwl=true \
+    -Dxpresent=true \
+    -Devas-loaders-disabler=json \
     -Dnetwork-backend=connman \
-    -Dlua-interpreter=lua \
     -Dbindings= \
     -Dbuild-examples=false \
     -Dbuild-tests=false \
