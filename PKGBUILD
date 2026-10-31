@@ -1,57 +1,27 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r157.2666b93
+pkgver=r158.e01ffa2
 pkgrel=1
-pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
-# Not 'any': the KWin plugins (workspace sharing, and the protocols other shells
+pkgdesc="A bare KWin Wayland session to run any shell on (Dux, digit, Quickshell configs), with Hyprland-style workspaces"
+# Not 'any': the KWin plugins (workspace sharing, and the protocols shells
 # use) are compiled against the installed KWin, so this package has to be
 # rebuilt when KWin is updated.
 arch=('x86_64')
 url="https://github.com/mahirsn/mmsimpulse"
 license=('GPL-3.0-or-later')
-# Any KWin 6 satisfies this: the stock `kwin` package, or a fork such as
-# The compositor is used as installed and never rebuilt. python-dbus and
-# python-gobject are the KWin bridge; the rest are what the session and shell
-# scripts call.
-# imagemagick, wl-clipboard, libnotify and spectacle are hard dependencies
-# rather than optional ones: without them the screen snip captures nothing,
-# crops nothing, copies nothing and reports nothing, which looks like a broken
-# feature rather than a missing package. spectacle is there because stock KWin
-# only lets callers with a declared desktop entry use its screenshot service.
-# qt6-websockets is a QML module the overlay loads: without it the whole
-# overlay fails to load, not just the OBS widget that talks to OBS through it.
-depends=('kwin' 'kglobalacceld' 'quickshell' 'xdg-desktop-portal-kde'
-         'python' 'python-dbus' 'python-gobject' 'rsync' 'git' 'jq' 'systemd'
-         'imagemagick' 'wl-clipboard' 'wl-clip-persist' 'libnotify' 'spectacle'
-         'qt6-websockets')
+# Any KWin 6 satisfies this. python-dbus and python-gobject are the KWin
+# bridge; the rest are what the session scripts call.
+depends=('kwin' 'kglobalacceld' 'xdg-desktop-portal-kde'
+         'python' 'python-dbus' 'python-gobject' 'systemd'
+         'wl-clipboard' 'wl-clip-persist')
 optdepends=(
+  'quickshell: Quickshell-based shells such as Dux'
   'powerdevil: idle timeouts, DPMS, suspend and brightness'
   'upower: battery status'
   'kdeplasma-addons: task switcher layouts, without which Alt+Tab draws nothing'
-  'kitty: the terminal the launcher and widgets open by default'
+  'kitty: the terminal on Meta+Return'
   'cliphist: clipboard history'
-  'matugen: colours generated from the wallpaper'
-  'mpvpaper: video and gif wallpapers'
-  'linux-wallpaperengine: Wallpaper Engine scenes from the Steam workshop'
-  'ffmpeg: stills for video wallpapers, which is what their colours come from'
-  'brightnessctl: laptop backlight control'
-  'ddcutil: external monitor brightness over DDC/CI'
-  'playerctl: media keys and player control'
-  'tesseract: text recognition on a snipped region'
-  'wf-recorder: screen recording'
-  'gpu-screen-recorder: instant replay in the overlay, saved with Alt+F10'
-  'mangohud: the FPS limiter in the overlay'
-  'bc: arithmetic in the theming scripts'
   'breeze: the default cursor theme, which KWin warns about when absent'
-  'illogical-impulse-basic: the widget set this shell is built on'
-  'illogical-impulse-audio: audio widgets and OSDs'
-  'illogical-impulse-backlight: brightness control'
-  'illogical-impulse-fonts-themes: Material Symbols and the shell fonts'
-  'illogical-impulse-portal: file pickers and screen sharing'
-  'illogical-impulse-python: colour generation for the theming scripts'
-  'illogical-impulse-screencapture: region screenshot and recording'
-  'ydotool: cursor warping, which KWin exposes no D-Bus call for'
-  'supergfxctl: the AMD/NVIDIA display switch in the bar, on ASUS laptops with a GPU MUX'
 )
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland-protocols' 'wlr-protocols')
 provides=('mmsimpulse')
@@ -84,17 +54,17 @@ package() {
   sed 's|@BIN@|/usr/bin|' session/mmsimpulse.desktop \
     | install -Dm644 /dev/stdin "$pkgdir/usr/share/wayland-sessions/mmsimpulse.desktop"
 
-  # The per-user half — the shell config, the bridge, the shortcuts — is
+  # The per-user half — the bridge, the profiles, the shortcuts — is
   # assembled in $HOME and cannot be built here, so the package ships the
   # tooling and `mmsimpulse-install` does that part once.
   install -d "$pkgdir/usr/share/mmsimpulse"
-  cp -a bin kwin-script overlay profiles session shortcuts install.sh README.md \
+  cp -a bin kwin-script profiles session shortcuts install.sh README.md \
         "$pkgdir/usr/share/mmsimpulse/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/mmsimpulse-install" <<'WRAPPER'
 #!/bin/sh
 # Sets up mmsimpulse for the current user. Safe to re-run: it is also how you
-# pick up an updated base skin or a new release of this package.
+# pick up a new release of this package.
 exec /usr/share/mmsimpulse/install.sh "$@"
 WRAPPER
 
