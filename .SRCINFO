@@ -13,7 +13,6 @@ pkgbase = dnslookup-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	makedepends = gcc
 	depends = glibc
 	provides = dnslookup
 	conflicts = dnslookup
