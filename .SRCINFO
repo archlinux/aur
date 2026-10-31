@@ -1,0 +1,17 @@
+pkgbase = glimpse-pager
+	pkgdesc = A terminal pager for files and streams
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/araaha/glimpse
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	conflicts = glimpse-pager-bin
+	conflicts = glimpse
+	provides = glimpse-pager
+	
+	source = glimpse-pager_0.1.0.tar.gz::https://github.com/araaha/glimpse/releases/download/v0.1.0/glimpse-0.1.0.tar.gz
+	sha256sums = ac6b9690edba73b8102303a225ab4d3fa59d2c80081b9c4d448a419cd47b2279
+	
+pkgname = glimpse-pager
