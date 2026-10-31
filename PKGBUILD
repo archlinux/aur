@@ -3,7 +3,7 @@
 # Immutable upstream commit and SHA-256 are pinned in this PKGBUILD.
 pkgname=pivra
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 options=('!debug')
 pkgdesc="Native GNOME photo, animation and video viewer"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("pivra-$pkgver.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/
 sha256sums=('508038b04764edaaa9522aa9053f705038603d390a2769c2a0b4084de3650e6e' 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
 
 prepare() {
-  export CARGO_HOME="$srcdir/cargo-home"
-  export CARGO_TARGET_DIR="$srcdir/Pivra-$_release_commit/target"
+  export CARGO_HOME="$startdir/.pivra-cache/cargo-home"
+  export CARGO_TARGET_DIR="$startdir/.pivra-cache/cargo-target"
   cd "$srcdir/Pivra-$_release_commit" || return 1
   cargo generate-lockfile || return 1
   cargo fetch --locked || return 1
@@ -31,9 +31,9 @@ prepare() {
 
 build() {
   export PIVRA_DISTRIBUTION_BUILD=1
-  export CARGO_HOME="$srcdir/cargo-home"
+  export CARGO_HOME="$startdir/.pivra-cache/cargo-home"
   export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--remap-path-prefix=$srcdir=/usr/src/debug/pivra"
-  export CARGO_TARGET_DIR="$srcdir/Pivra-$_release_commit/target"
+  export CARGO_TARGET_DIR="$startdir/.pivra-cache/cargo-target"
   cd "$srcdir/Pivra-$_release_commit" || return 1
   pkg-config --atleast-version=4.16 gtk4 || return 1
   pkg-config --atleast-version=1.2 libadwaita-1 || return 1
@@ -58,14 +58,14 @@ build() {
     native/thumbnail_factory.c -o "$srcdir/build/pivra-thumbnail-factory" \
     "${ldflags[@]}" "${pkg_libs[@]}" || return 1
   cargo build --release --locked --offline --target "$_target" --bin pivra || return 1
-  python - "target/$_target/release/pivra" <<'PY' || return 1
+  python - "$startdir/.pivra-cache/cargo-target/$_target/release/pivra" <<'PY' || return 1
 import pathlib
 import sys
 if b'/out/pivra-thumbnail-factory' in pathlib.Path(sys.argv[1]).read_bytes():
     sys.exit('FAIL: viewer embeds a Cargo OUT_DIR thumbnail-helper path')
 PY
   test -x "$srcdir/build/pivra-thumbnail-factory" || return 1
-  readelf -d "target/$_target/release/pivra" > "$srcdir/build/pivra.dynamic" || return 1
+  readelf -d "$startdir/.pivra-cache/cargo-target/$_target/release/pivra" > "$srcdir/build/pivra.dynamic" || return 1
   grep -F 'liblcms2.so.2' "$srcdir/build/pivra.dynamic" >/dev/null || return 1
   grep -F 'libseccomp.so.2' "$srcdir/build/pivra.dynamic" >/dev/null || return 1
   cargo metadata --locked --offline --format-version 1 > "$srcdir/build/metadata.json" || return 1
@@ -76,8 +76,8 @@ PY
 
 check() {
   export PIVRA_DISTRIBUTION_BUILD=1
-  export CARGO_HOME="$srcdir/cargo-home"
-  export CARGO_TARGET_DIR="$srcdir/Pivra-$_release_commit/target"
+  export CARGO_HOME="$startdir/.pivra-cache/cargo-home"
+  export CARGO_TARGET_DIR="$startdir/.pivra-cache/cargo-target"
   cd "$srcdir/Pivra-$_release_commit" || return 1
   CARGO_INCREMENTAL=0 cargo test --locked --offline --target "$_target" || return 1
   cargo check --locked --offline --target "$_target" || return 1
@@ -86,7 +86,7 @@ check() {
 
 package() {
   cd "$srcdir/Pivra-$_release_commit" || return 1
-  install -Dm755 "target/$_target/release/pivra" "$pkgdir/usr/bin/pivra" || return 1
+  install -Dm755 "$startdir/.pivra-cache/cargo-target/$_target/release/pivra" "$pkgdir/usr/bin/pivra" || return 1
   install -Dm755 "$srcdir/build/pivra-thumbnail-factory" "$pkgdir/usr/bin/pivra-thumbnail-factory" || return 1
   install -Dm644 data/io.github.onbeskarakterli.Pivra.desktop \
     "$pkgdir/usr/share/applications/io.github.onbeskarakterli.Pivra.desktop" || return 1
