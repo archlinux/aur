@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+appdir=$(CDPATH= cd -- "$(dirname -- "$(readlink -f -- "$0")")" && pwd)
+# CEF startup settings are mutable, while the mounted AppImage is read-only.
+runtime=$(mktemp -d "${TMPDIR:-/tmp}/boxbox-appimage.XXXXXXXX")
+trap 'rm -rf -- "$runtime"' EXIT
+cp -a --reflink=auto "$appdir/BoxBox" "$runtime/BoxBox"
+chmod -R u+w "$runtime/BoxBox"
+"$runtime/BoxBox/bin/launcher" "$@" &
+child=$!
+trap 'kill -TERM "$child" 2>/dev/null || true' INT TERM
+status=0
+wait "$child" || status=$?
+# A trapped signal interrupts wait; keep the runtime until the launcher exits.
+if kill -0 "$child" 2>/dev/null; then
+  wait "$child" || status=$?
+fi
+exit "$status"

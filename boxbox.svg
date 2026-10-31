@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="570" height="410" viewBox="0 0 570 410" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">BoxBox</title>
+  <desc id="desc">Two identical upright Box letter plates, one behind the other, sharing the same diagonal orientation.</desc>
+  <defs>
+    <mask id="server-cutouts" maskUnits="userSpaceOnUse" x="0" y="0" width="480" height="256">
+      <rect width="480" height="256" fill="white"/>
+      <rect x="80" y="68" width="40" height="28" rx="8" fill="black"/>
+      <rect x="80" y="160" width="64" height="28" rx="8" fill="black"/>
+      <circle cx="58" cy="82" r="6" fill="black"/>
+      <circle cx="58" cy="174" r="6" fill="black"/>
+    </mask>
+    <g id="box" fill="currentColor">
+      <g mask="url(#server-cutouts)">
+        <path d="M40 40H124a20 20 0 0 1 20 20V104a20 20 0 0 1-20 20H40Z"/>
+        <path d="M40 136H148a20 20 0 0 1 20 20V196a20 20 0 0 1-20 20H40Z"/>
+      </g>
+      <rect x="206" y="110" width="92" height="92" rx="26" fill="none" stroke="currentColor" stroke-width="28"/>
+      <circle cx="252" cy="156" r="9"/>
+      <path d="M348 110 428 202M428 110 348 202" fill="none" stroke="currentColor" stroke-width="28" stroke-linecap="round"/>
+    </g>
+    <g id="face" transform="matrix(.95 -.38 0 1 110 170)">
+      <use href="#box"/>
+    </g>
+    <g id="plate">
+      <g color="#205cad">
+        <use href="#face" x="-35" y="-20"/>
+        <use href="#face" x="-34.5625" y="-19.75"/>
+        <use href="#face" x="-34.125" y="-19.5"/>
+        <use href="#face" x="-33.6875" y="-19.25"/>
+        <use href="#face" x="-33.25" y="-19"/>
+        <use href="#face" x="-32.8125" y="-18.75"/>
+        <use href="#face" x="-32.375" y="-18.5"/>
+        <use href="#face" x="-31.9375" y="-18.25"/>
+        <use href="#face" x="-31.5" y="-18"/>
+        <use href="#face" x="-31.0625" y="-17.75"/>
+        <use href="#face" x="-30.625" y="-17.5"/>
+        <use href="#face" x="-30.1875" y="-17.25"/>
+        <use href="#face" x="-29.75" y="-17"/>
+        <use href="#face" x="-29.3125" y="-16.75"/>
+        <use href="#face" x="-28.875" y="-16.5"/>
+        <use href="#face" x="-28.4375" y="-16.25"/>
+        <use href="#face" x="-28" y="-16"/>
+        <use href="#face" x="-27.5625" y="-15.75"/>
+        <use href="#face" x="-27.125" y="-15.5"/>
+        <use href="#face" x="-26.6875" y="-15.25"/>
+        <use href="#face" x="-26.25" y="-15"/>
+        <use href="#face" x="-25.8125" y="-14.75"/>
+        <use href="#face" x="-25.375" y="-14.5"/>
+        <use href="#face" x="-24.9375" y="-14.25"/>
+        <use href="#face" x="-24.5" y="-14"/>
+        <use href="#face" x="-24.0625" y="-13.75"/>
+        <use href="#face" x="-23.625" y="-13.5"/>
+        <use href="#face" x="-23.1875" y="-13.25"/>
+        <use href="#face" x="-22.75" y="-13"/>
+        <use href="#face" x="-22.3125" y="-12.75"/>
+        <use href="#face" x="-21.875" y="-12.5"/>
+        <use href="#face" x="-21.4375" y="-12.25"/>
+        <use href="#face" x="-21" y="-12"/>
+        <use href="#face" x="-20.5625" y="-11.75"/>
+        <use href="#face" x="-20.125" y="-11.5"/>
+        <use href="#face" x="-19.6875" y="-11.25"/>
+        <use href="#face" x="-19.25" y="-11"/>
+        <use href="#face" x="-18.8125" y="-10.75"/>
+        <use href="#face" x="-18.375" y="-10.5"/>
+        <use href="#face" x="-17.9375" y="-10.25"/>
+        <use href="#face" x="-17.5" y="-10"/>
+        <use href="#face" x="-17.0625" y="-9.75"/>
+        <use href="#face" x="-16.625" y="-9.5"/>
+        <use href="#face" x="-16.1875" y="-9.25"/>
+        <use href="#face" x="-15.75" y="-9"/>
+        <use href="#face" x="-15.3125" y="-8.75"/>
+        <use href="#face" x="-14.875" y="-8.5"/>
+        <use href="#face" x="-14.4375" y="-8.25"/>
+        <use href="#face" x="-14" y="-8"/>
+        <use href="#face" x="-13.5625" y="-7.75"/>
+        <use href="#face" x="-13.125" y="-7.5"/>
+        <use href="#face" x="-12.6875" y="-7.25"/>
+        <use href="#face" x="-12.25" y="-7"/>
+        <use href="#face" x="-11.8125" y="-6.75"/>
+        <use href="#face" x="-11.375" y="-6.5"/>
+        <use href="#face" x="-10.9375" y="-6.25"/>
+        <use href="#face" x="-10.5" y="-6"/>
+        <use href="#face" x="-10.0625" y="-5.75"/>
+        <use href="#face" x="-9.625" y="-5.5"/>
+        <use href="#face" x="-9.1875" y="-5.25"/>
+        <use href="#face" x="-8.75" y="-5"/>
+        <use href="#face" x="-8.3125" y="-4.75"/>
+        <use href="#face" x="-7.875" y="-4.5"/>
+        <use href="#face" x="-7.4375" y="-4.25"/>
+        <use href="#face" x="-7" y="-4"/>
+        <use href="#face" x="-6.5625" y="-3.75"/>
+        <use href="#face" x="-6.125" y="-3.5"/>
+        <use href="#face" x="-5.6875" y="-3.25"/>
+        <use href="#face" x="-5.25" y="-3"/>
+        <use href="#face" x="-4.8125" y="-2.75"/>
+        <use href="#face" x="-4.375" y="-2.5"/>
+        <use href="#face" x="-3.9375" y="-2.25"/>
+        <use href="#face" x="-3.5" y="-2"/>
+        <use href="#face" x="-3.0625" y="-1.75"/>
+        <use href="#face" x="-2.625" y="-1.5"/>
+        <use href="#face" x="-2.1875" y="-1.25"/>
+        <use href="#face" x="-1.75" y="-1"/>
+        <use href="#face" x="-1.3125" y="-0.75"/>
+        <use href="#face" x="-0.875" y="-0.5"/>
+        <use href="#face" x="-0.4375" y="-0.25"/>
+      </g>
+      <use href="#face"/>
+    </g>
+  </defs>
+  <!-- Both plates use the same upright projection; only their depth positions differ. -->
+  <use href="#plate" x="-63" y="-36" color="#3278c9"/>
+  <use href="#plate" color="#4a9eff"/>
+</svg>

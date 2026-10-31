@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=BoxBox
+GenericName=File Manager
+Comment=Browse folders and manage files
+Exec=/usr/bin/boxbox %U
+Icon=io.boxbox.desktop
+Terminal=false
+Categories=Utility;FileManager;
+Keywords=files;folders;browser;manager;
+MimeType=inode/directory;x-scheme-handler/file;
+StartupNotify=true
+StartupWMClass=BoxBox
+X-BoxBox-Managed=true
