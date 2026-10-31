@@ -1,0 +1,14 @@
+pkgbase = alyafetch
+	pkgdesc = A minimal fetch utility written in POSIX shell with Nerd Font icons
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/asyx-creator/alyafetch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	depends = ttf-jetbrains-mono-nerd
+	source = alyafetch::git+https://github.com/asyx-creator/alyafetch.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = alyafetch
