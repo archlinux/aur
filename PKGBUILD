@@ -16,20 +16,13 @@ makedepends=(
   dotnet-source-build-reference-packages
   git
 )
-checkdepends=(
-  powershell
-  powershell-pester-4
-)
 # The commit of the 5.1.1 release ("release 5.1.1 - which adds an assembly for net452"), upstream
 # doesn't tag. The later commits only change documentation and the template, before master moves on to
 # PowerShell Standard 7.
 _commit="b69d5e6a5107287a5981db515bae4d5631278f76"
-source=("git+$url.git#commit=$_commit"
-  "invoke-tests.ps1")
-sha512sums=('e06ea3440792c4c7ad1cffa48cfff9f11434edc88344b200b1f4aa828d2fd0a81e5ff57f9b20f22838e74cec8997f23a88c559adc07ca355443b37e5fe3b447d'
-  'c031d359563d2551e48e61d4373450c2047492465ec3becee39c7279c2c14a59ba5c80eaf5b005090ad84529e6a1816d991a57eb5b9333ae29b71b7b8f9a09df')
-b2sums=('88d59ba95cf513d89e59dab0a1e7869c2dd7f28e8073160335689c5f685325be210039875504f992778a00fef531b6fc00d8b2744e6ff8b3ab5c4289e15433c1'
-  '55f0889ec1ddc893f155f9bf972d606d28b4b2620cd489a59698cdcfad3fc4ccb40499cb1133cbdb48ad2d298c88f4809d6281090364eace573c54a9ab6eccf4')
+source=("git+$url.git#commit=$_commit")
+sha512sums=('e06ea3440792c4c7ad1cffa48cfff9f11434edc88344b200b1f4aa828d2fd0a81e5ff57f9b20f22838e74cec8997f23a88c559adc07ca355443b37e5fe3b447d')
+b2sums=('88d59ba95cf513d89e59dab0a1e7869c2dd7f28e8073160335689c5f685325be210039875504f992778a00fef531b6fc00d8b2744e6ff8b3ab5c4289e15433c1')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
@@ -73,13 +66,6 @@ EOF
     -e 's|PowershellStandard.Library.nuspec|PowerShellStandard.Library.nuspec|' \
     src/5/System.Management.Automation-lib.csproj
   sed -i '/net452/d' src/5/PowerShellStandard.Library.nuspec
-
-  # The tests compare the types with the PowerShell running them, which no longer has some: PowerShell 7
-  # removed the workflow job proxies (PowerShell/PowerShell#10083, #9618), and powershell's
-  # cim-windows-only.patch the CIM type adapter
-  # shellcheck disable=SC2016
-  sed -i 's/-difference \$asmT /-difference ($asmT | Where-Object { $_ -notin @("System.Management.Automation.JobDataAddedEventArgs", "System.Management.Automation.PSChildJobProxy", "System.Management.Automation.PSJobProxy", "System.Management.Automation.Runspaces.PSSessionType", "Microsoft.PowerShell.Cim.CimInstanceAdapter") }) /' \
-    test/5/core/PSS5.Tests.ps1
 }
 
 build() {
@@ -88,11 +74,8 @@ build() {
   dotnet pack src/5/System.Management.Automation-lib.csproj "${_build_arguments[@]}" --output "$srcdir/nupkg"
 }
 
-check() {
-  _dotnet_env
-  # The tests of the release files (test/Build.Tests.ps1) list the .NET Framework build as well
-  HOME="$srcdir/home" pwsh -NoProfile -NonInteractive -File "$srcdir/invoke-tests.ps1" -Path "$srcdir/PowerShellStandard"
-}
+# No check(): the tests compare the library with the PowerShell running them, and powershell, which
+# needs this package to build, runs them in its check() instead
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
 # restored from a remote feed like nuget.org into $1, so no prebuilt binary slips in instead of one built
