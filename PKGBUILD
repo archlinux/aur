@@ -149,10 +149,14 @@ check() {
     'FullyQualifiedName!~CoreTests.EnvVariableContextTests.EnvVariableContextTest'
     # The file watcher raises two change events for touching a file on Linux (inotify)
     'FullyQualifiedName!~CacheExtension.FileIOWithRetriesTests.Touch_FiresEvent_Async'
+    # It expects an interactive session, which MSAL takes on Linux from DISPLAY, which the tests run
+    # without. Upstream ignores it in its official build (ONEBRANCH_BUILD) as well.
+    'FullyQualifiedName!~WebUITests.NetCoreWebUIFactoryTests.NetCoreFactory_System'
   )
   # The test runner targets .NET 8. The tests parse timestamps in the current culture and time zone,
-  # and expect the invariant culture and UTC like on upstream's CI.
-  TZ=UTC LC_ALL=C.UTF-8 DOTNET_ROLL_FORWARD=Major \
+  # and expect the invariant culture and UTC like on upstream's CI. They run without the display of a
+  # graphical session, so they behave the same whether one is there or not.
+  env -u DISPLAY -u WAYLAND_DISPLAY TZ=UTC LC_ALL=C.UTF-8 DOTNET_ROLL_FORWARD=Major \
     dotnet test tests/Microsoft.Identity.Test.Unit/Microsoft.Identity.Test.Unit.csproj \
     "${_build_arguments[@]}" --filter "$(
       IFS='&'
