@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}db-bin
 pkgdesc="An analytics database that puts JSON and relational tables on equal footing"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}.${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}.${_barch[1]}.tar.gz")
-sha256sums=('98d8ce207cd2c2fbcb2b6b20271ca9a00100ef807e1730c4e3e4b060a09e98a2'
-            '5fe9becd3d36c26e5f1788b45040953fc023b5e7dd823081d90b5c5f84ba70b2')
-sha256sums_x86_64=('2bbc1fab55be4124a4ffa253eba806590b73509935ac8740599a47caf9d3185d')
-sha256sums_aarch64=('81384df59e7ca8d2a59855e03040c58a7402539b75dc55e78de46bf68cb49257')
+sha256sums=('7ea248c198a3954cdcb9a99ba67a92e51400086e92204b2c027859b337cb3e3d'
+            '1e0caf90614141d28ec61f9003de6b2a55b9845c823dda571cb60a7842eeb451')
+sha256sums_x86_64=('41067ee343374c1b946500acdcb2e6e0f130cde7946d95bb38d73507957fce90')
+sha256sums_aarch64=('c775b96b1494e5decc935e517a3787d66e0b4458660a4537a0a6d09065aaefbb')
 
 
 package() {
