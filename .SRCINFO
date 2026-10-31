@@ -1,0 +1,13 @@
+pkgbase = treeport
+	pkgdesc = Read-only filename portability checks for directories, JSONL manifests, and ZIP entries; reports destination name collisions and path-length violations
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/rad1092/treeport
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = treeport-0.1.3.tar.gz::https://github.com/rad1092/treeport/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = a6d4859130775e1ecff520863e328b99fb93034cab12f40922411d07aa1165b7
+
+pkgname = treeport
