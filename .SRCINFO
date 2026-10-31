@@ -1,7 +1,7 @@
 pkgbase = pivra
 	pkgdesc = Native GNOME JPEG/PNG image viewer
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onbeskarakterli/Pivra
 	arch = x86_64
 	license = GPL-3.0-only
@@ -24,6 +24,7 @@ pkgbase = pivra
 	depends = glibc
 	depends = gcc-libs
 	depends = hicolor-icon-theme
+	options = !debug
 	source = pivra-0.1.0.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/18b9bc2e021aeeeb02dc42198db4522a67ed9e1b.tar.gz
 	source = collect-licenses.py
 	sha256sums = f8a31e5569ead7ae90b4a292c108ddfd77a45bc59327d2af10e88dc6d459cbf9

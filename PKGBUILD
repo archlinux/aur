@@ -3,7 +3,8 @@
 # Immutable upstream commit and SHA-256 are pinned in this PKGBUILD.
 pkgname=pivra
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
+options=('!debug')
 pkgdesc='Native GNOME JPEG/PNG image viewer'
 arch=('x86_64')
 url='https://github.com/onbeskarakterli/Pivra'
