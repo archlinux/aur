@@ -1,0 +1,54 @@
+--- a/azure/ai/documentintelligence/_client.py
++++ b/azure/ai/documentintelligence/_client.py
+@@ -8,7 +8,7 @@
+ 
+ from copy import deepcopy
+ from typing import Any, TYPE_CHECKING, Union
+-from typing_extensions import Self
++from typing import Self
+ 
+ from azure.core import PipelineClient
+ from azure.core.credentials import AzureKeyCredential
+--- a/azure/ai/documentintelligence/aio/_client.py
++++ b/azure/ai/documentintelligence/aio/_client.py
+@@ -8,7 +8,7 @@
+ 
+ from copy import deepcopy
+ from typing import Any, Awaitable, TYPE_CHECKING, Union
+-from typing_extensions import Self
++from typing import Self
+ 
+ from azure.core import AsyncPipelineClient
+ from azure.core.credentials import AzureKeyCredential
+--- a/azure/ai/documentintelligence/_model_base.py
++++ b/azure/ai/documentintelligence/_model_base.py
+@@ -21,7 +21,7 @@
+ from datetime import datetime, date, time, timedelta, timezone
+ from json import JSONEncoder
+ import xml.etree.ElementTree as ET
+-from typing_extensions import Self
++from typing import Self
+ import isodate
+ from azure.core.exceptions import DeserializationError
+ from azure.core import CaseInsensitiveEnumMeta
+--- a/setup.py
++++ b/setup.py
+@@ -42,9 +42,6 @@
+         "Programming Language :: Python",
+         "Programming Language :: Python :: 3 :: Only",
+         "Programming Language :: Python :: 3",
+-        "Programming Language :: Python :: 3.8",
+-        "Programming Language :: Python :: 3.9",
+-        "Programming Language :: Python :: 3.10",
+         "Programming Language :: Python :: 3.11",
+         "Programming Language :: Python :: 3.12",
+         "License :: OSI Approved :: MIT License",
+@@ -65,7 +62,6 @@
+     install_requires=[
+         "isodate>=0.6.1",
+         "azure-core>=1.30.0",
+-        "typing-extensions>=4.6.0",
+     ],
+-    python_requires=">=3.8",
++    python_requires=">=3.11",
+ )

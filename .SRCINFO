@@ -1,7 +1,7 @@
 pkgbase = python-azure-ai-documentintelligence
 	pkgdesc = Microsoft Azure AI Document Intelligence Client Library for Python
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any
 	license = MIT
@@ -9,11 +9,12 @@ pkgbase = python-azure-ai-documentintelligence
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.11
 	depends = python-isodate>=0.6.1
 	depends = python-azure-core>=1.30.0
-	depends = python-typing_extensions>=4.6.0
 	source = azure-sdk-for-python-azure-ai-documentintelligence_1.0.2.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/refs/tags/azure-ai-documentintelligence_1.0.2.tar.gz
+	source = use-stdlib-typing.patch
 	sha256sums = 2ef7568181c6c47cce53b50ccbc4e86d4fe8b444ea013c1471e92a02a9d89c9c
+	sha256sums = 21a44744c80126a5cb766fe13e066151f9f69d935175f27097cabfaa077b821a
 
 pkgname = python-azure-ai-documentintelligence
