@@ -1,6 +1,6 @@
 pkgbase = mygo-cloudmusic-bin
 	pkgdesc = MyGo 云音乐 - 第三方网易云音乐原生客户端
-	pkgver = 0.1.22
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://music.egoist.dev
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = mygo-cloudmusic-bin
 	conflicts = mygo-cloudmusic
 	options = !strip
 	options = !debug
-	source_x86_64 = mygo-cloudmusic_0.1.22_amd64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v0.1.22/mygo-cloudmusic_0.1.22_amd64.deb
-	sha256sums_x86_64 = 88cdfa05197e4a161b5cb2e2e57c477627b9360d83d152fdeda438ac8336b7d8
-	source_aarch64 = mygo-cloudmusic_0.1.22_arm64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v0.1.22/mygo-cloudmusic_0.1.22_arm64.deb
-	sha256sums_aarch64 = 1c71470c5a4783fc9dfd5992d6d4a7d20fb75f9762582819442f8eb3cb853781
+	source_x86_64 = mygo-cloudmusic_0.1.24_amd64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v0.1.24/mygo-cloudmusic_0.1.24_amd64.deb
+	sha256sums_x86_64 = 1a811919b0ab971cdb6286b16e5a781a019bf0a5d2f99f5ec21975886a3e7005
+	source_aarch64 = mygo-cloudmusic_0.1.24_arm64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v0.1.24/mygo-cloudmusic_0.1.24_arm64.deb
+	sha256sums_aarch64 = 781f1b1a1342dfe547dab79cea2561fe6b8cd88a59a100c492700c251c19cc88
 
 pkgname = mygo-cloudmusic-bin

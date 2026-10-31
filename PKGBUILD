@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=mygo-cloudmusic-bin
-pkgver=0.1.22
+pkgver=0.1.24
 pkgrel=1
 pkgdesc="MyGo 云音乐 - 第三方网易云音乐原生客户端"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('mygo-cloudmusic')
 options=('!strip' '!debug')
 source_x86_64=("mygo-cloudmusic_${pkgver}_amd64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v${pkgver}/mygo-cloudmusic_${pkgver}_amd64.deb")
 source_aarch64=("mygo-cloudmusic_${pkgver}_arm64.deb::https://github.com/egoist/mygo-cloudmusic/releases/download/v${pkgver}/mygo-cloudmusic_${pkgver}_arm64.deb")
-sha256sums_x86_64=('88cdfa05197e4a161b5cb2e2e57c477627b9360d83d152fdeda438ac8336b7d8')
-sha256sums_aarch64=('1c71470c5a4783fc9dfd5992d6d4a7d20fb75f9762582819442f8eb3cb853781')
+sha256sums_x86_64=('1a811919b0ab971cdb6286b16e5a781a019bf0a5d2f99f5ec21975886a3e7005')
+sha256sums_aarch64=('781f1b1a1342dfe547dab79cea2561fe6b8cd88a59a100c492700c251c19cc88')
 
 package() {
     local _deb_x86_64="mygo-cloudmusic_${pkgver}_amd64.deb"
