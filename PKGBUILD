@@ -1,11 +1,11 @@
 # Maintainer: eggfriedrice <eggfriedricew.g.o@gmail.com>
 
 # Prebuilt x86_64 release binaries from upstream's GitHub releases, built on the
-# GitHub ubuntu-latest runner with Zig 0.16.0 for the ghostty screen backend.
+# GitHub ubuntu-latest runner with Zig 0.17.0 for the ghostty screen backend.
 # They link only libc.so.6, libm.so.6 and libgcc_s.so.1 (no RPATH); any current
 # Arch glibc satisfies them. The efr-code package builds the same version from source.
 pkgname=efr-code-bin
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -27,7 +27,7 @@ _dist="${pkgname%-bin}-$pkgver-$CARCH-linux"
 source_x86_64=("$url/releases/download/v$pkgver/$_dist.tar.gz")
 # Filled in for each release by .github/workflows/aur.yml with the value that
 # upstream publishes in $_dist.tar.gz.sha256 next to the tarball.
-sha256sums_x86_64=('8fa626822bcc7c53fcd994a2500588cd57fc06f1d026409dc0bd4e160ba0f4fd')
+sha256sums_x86_64=('b1c7a6cadf9ceda77eb93c27f689620e28165fcaee29eb1c23eee5cb66f6035f')
 
 package() {
   cd "$_dist"

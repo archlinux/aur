@@ -1,6 +1,6 @@
 pkgbase = efr-code-bin
 	pkgdesc = Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/eggfriedrice24/eggfriedrice.code
 	install = efr-code.install
@@ -14,10 +14,10 @@ pkgbase = efr-code-bin
 	optdepends = git: project roots and the git facts of a turn
 	optdepends = xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)
 	optdepends = xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1
-	provides = efr-code=0.0.6
+	provides = efr-code=0.0.7
 	conflicts = efr-code
 	options = !debug
-	source_x86_64 = https://github.com/eggfriedrice24/eggfriedrice.code/releases/download/v0.0.6/efr-code-0.0.6-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 8fa626822bcc7c53fcd994a2500588cd57fc06f1d026409dc0bd4e160ba0f4fd
+	source_x86_64 = https://github.com/eggfriedrice24/eggfriedrice.code/releases/download/v0.0.7/efr-code-0.0.7-x86_64-linux.tar.gz
+	sha256sums_x86_64 = b1c7a6cadf9ceda77eb93c27f689620e28165fcaee29eb1c23eee5cb66f6035f
 
 pkgname = efr-code-bin
