@@ -2,7 +2,7 @@
 
 _pkgname="ziggy"
 pkgname="${_pkgname}-bin"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A data serialization language for expressing clear API messages, config files, etc"
 arch=(
@@ -33,8 +33,8 @@ source_x86_64=(
 )
 sha256sums=('915f459f7724f3d143be00714eecd6400e3401c95ae7c61d2f2f82b49ee0c431'
             'fce6401325da3777483f1567966de44f712d71bb5c7dcfc5cd15e292b968a7a2')
-sha256sums_aarch64=('52e758c3675c17d56f467dba03d7dc9144e4b62bd35bbe68cf78f9eb97ec90f8')
-sha256sums_x86_64=('1929fcf92d6f0bb5223cb9404c1c2de770a2ff256c7d85dd5e29e915f45e98d2')
+sha256sums_aarch64=('e186713c0b6c7448d4b7068cdfabb7b71c5db3f2d9deceb2a4ed613283ec7b79')
+sha256sums_x86_64=('9ba010da970818af4a607c0656aff9116711f150f5d324d2962a4216ce0b1282')
 
 package() {
   cd "${srcdir}"
