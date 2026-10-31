@@ -1,0 +1,5 @@
+[matlab-agentic-toolkit-installer]
+source = "github"
+github = "matlab/agentic-toolkit-installer"
+use_latest_release = true
+prefix = "v"

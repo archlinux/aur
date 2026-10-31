@@ -1,0 +1,16 @@
+pkgbase = matlab-agentic-toolkit-installer
+	pkgdesc = A unified installer for the MATLAB MCP Server, MATLAB Agentic Toolkit and Simulink Agentic Toolkit
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/matlab/agentic-toolkit-installer
+	arch = x86_64
+	license = custom
+	depends = matlab-release>=R2021a
+	source = matlab-agentic-toolkit-installer-0.3.0-README.md::https://github.com/matlab/agentic-toolkit-installer/raw/refs/tags/v0.3.0/README.md
+	source = matlab-agentic-toolkit-installer-0.3.0-LICENSE.md::https://github.com/matlab/agentic-toolkit-installer/raw/refs/tags/v0.3.0/LICENSE.md
+	sha256sums = 91c39591e1f54c8da7dcd8b6ce2bbafa33993c831843600292c5e8a8671c91af
+	sha256sums = 2eb513144e31cccd8a8130086d306cefeeb8cd8764246fb81b254a14ac337e99
+	source_x86_64 = matlab-agentic-toolkit-installer-0.3.0-x86_64::https://github.com/matlab/agentic-toolkit-installer/releases/download/v0.3.0/agentic-toolkit-installer-linux-x64
+	sha256sums_x86_64 = 521ab57d587273f6616f62aee679dcc3b8b16d23252193d98cb608c2f4fb1cd5
+
+pkgname = matlab-agentic-toolkit-installer
