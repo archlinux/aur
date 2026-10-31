@@ -1,0 +1,15 @@
+pkgbase = yaru-cursor-theme
+	pkgdesc = Yaru cursor theme from Ubuntu
+	pkgver = 26.10.3
+	pkgrel = 1
+	url = https://github.com/ubuntu/yaru
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = meson
+	makedepends = ninja
+	makedepends = sassc
+	makedepends = libsass
+	source = yaru-cursor-theme-26.10.3.tar.gz::https://github.com/ubuntu/yaru/archive/refs/tags/26.10.3.tar.gz
+	sha256sums = ac396932559dd1b515ee4d94d470093dfac407027d9609e756299df9e06c3f7b
+
+pkgname = yaru-cursor-theme
