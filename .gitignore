@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!LICENSE
+!keys/
+!keys/pgp/
+!keys/pgp/*.asc
