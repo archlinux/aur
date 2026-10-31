@@ -3,14 +3,15 @@
 
 _pkgname=obconf-qt
 pkgname=$_pkgname-git
-pkgver=0.13.0.80.g110ee85
-pkgrel=2
+pkgver=0.16.6.11.gc738c96
+pkgrel=1
 pkgdesc="Openbox configuration tool. Qt port of ObConf"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
-license=("GPL2")
-depends=("hicolor-icon-theme" "openbox" "qt5-x11extras")
-makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
+# See discussions about the license at https://github.com/lxqt/obconf-qt/issues/210
+license=("GPL-2.0-or-later")
+depends=("hicolor-icon-theme" "openbox" "qt6-base")
+makedepends=("git" "cmake" "qt6-tools" "lxqt-build-tools-git")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
