@@ -1,4 +1,5 @@
+# Listed stable versions from the NuGet search API: the flat container index includes unlisted ones
 [dotnet-roslyn]
 source = "jq"
-url = "https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp/index.json"
-filter = '.versions | map(select(contains("-") | not)) | last'
+url = "https://azuresearch-usnc.nuget.org/query?q=packageid:microsoft.codeanalysis.csharp&prerelease=false&semVerLevel=2.0.0"
+filter = ".data[0].versions | map(.version) | last"
