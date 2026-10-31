@@ -1,7 +1,7 @@
 pkgbase = tape16-bin
 	pkgdesc = Destructive tape-style 16-track DAW (X11-backed, XWayland on Wayland sessions)
 	pkgver = 0.9.530
-	pkgrel = 3
+	pkgrel = 4
 	url = https://emrmusicgroup.com/tape16/
 	install = tape16-bin.install
 	arch = x86_64
