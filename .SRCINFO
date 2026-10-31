@@ -1,0 +1,16 @@
+pkgbase = certfan
+	pkgdesc = Checks that every IP address behind a TLS hostname serves the same valid, not-about-to-expire certificate, with exit codes, JSON and Prometheus output
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://blackman99.github.io/certfan/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	source = certfan-0.3.0.tar.gz::https://github.com/Blackman99/certfan/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = e7bf3244eca44bfe44e32547dbed14a4d58d55dae655556d3f96bda13d0f46dc
+
+pkgname = certfan
