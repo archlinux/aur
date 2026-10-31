@@ -1,16 +1,16 @@
 # Maintainer: Mahfuz Shaikh <mah3uz at gmail dot com>
 
 pkgname=darwan
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Themes for the SDDM login screen and the Quickshell lockscreen, with a CLI, TUI and GUI'
 arch=('x86_64')
 url='https://github.com/mah3uz/darwan'
-license=('GPL-3.0-only')
+license=('GPL-3.0-only' 'LGPL-2.1-only OR LGPL-3.0-only')
 depends=(
   'gcc-libs'
   'glibc'
-  'mpvqt'
+  'mpv'
   'polkit'
   'qt6-5compat'
   'qt6-base'
@@ -31,7 +31,7 @@ optdepends=(
 # makepkg's -flto turns cxx-qt's C++ into GCC LTO objects that the Rust link can't resolve.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('33f07e0bd632007240c20de624d4db14e0c51fb557d18876251637e57a3ac393')
+sha256sums=('11887e70f2b8f1c0b934df396efb26679036a89cfc6ecf1c8352650c47eeedb9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -64,6 +64,8 @@ package() {
   install -Dm755 target/release/darwan-helper -t "$pkgdir/usr/lib/darwan"
   install -Dm755 target/plugin/qml/Darwan/libdarwanplugin.so -t "$pkgdir/usr/lib/darwan/qml/Darwan"
   install -Dm644 target/plugin/qml/Darwan/{qmldir,darwanplugin.qmltypes} -t "$pkgdir/usr/lib/darwan/qml/Darwan"
+  install -Dm755 target/plugin/qml/Darwan/Video/libdarwanvideoplugin.so -t "$pkgdir/usr/lib/darwan/qml/Darwan/Video"
+  install -Dm644 target/plugin/qml/Darwan/Video/{qmldir,darwanvideoplugin.qmltypes} -t "$pkgdir/usr/lib/darwan/qml/Darwan/Video"
   install -d "$pkgdir/usr/share/darwan"
   cp -r --no-preserve=ownership runtime themes "$pkgdir/usr/share/darwan/"
   install -Dm644 packaging/arch/org.darwan.policy -t "$pkgdir/usr/share/polkit-1/actions"
