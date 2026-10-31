@@ -1,6 +1,6 @@
 pkgbase = lssh
 	pkgdesc = Simple SSH server manager
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Lecer69/LSSH
 	arch = x86_64

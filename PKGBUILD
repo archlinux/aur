@@ -1,6 +1,6 @@
 # Maintainer: Lecer69 <https://github.com/Lecer69>
 pkgname=lssh
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Simple SSH server manager"
 arch=('x86_64')
