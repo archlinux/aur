@@ -14,7 +14,7 @@ conflicts=('maki-bin')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
             "${pkgname}-pr1287.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1287.patch")
 sha256sums=('d05cdacd78963fb490aa4ac7c0ed0494177176577d191460177ec6ee0d08eea3'
-            '40d359d5665a0860726e41a0e96ea77828c6f42a1f5ea6bbfe38575ccb95843a')
+            '3de8aeb4c5f2c6ff64cccd9adc5f63c558fb731f5aebf3f07af20a6e6ba47f18')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
