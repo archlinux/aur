@@ -1,18 +1,19 @@
 # Maintainer: Emiliano Gandini Outeda <emiliano.gandini@protonmail.com>
 
 pkgname=trustsight
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
 arch=('any')
 url='https://github.com/emiliano-go/trustsight'
 license=('MIT')
-# The python-pygit2 floor is a security floor, not a preference: pygit2 < 1.20
-# bundles libgit2 versions with the delta result-size allocation flaw.  Kept in
-# step with pyproject.toml by tests/test_pkgbuild.py.
+# The python-pygit2 floor is a security floor, not a preference: pygit2 < 1.20.1
+# bundles libgit2 versions with the delta result-size allocation flaw and the
+# libssh2 remote-path command injection (CVE-2026-5917).  Kept in step with
+# pyproject.toml by tests/test_pkgbuild.py.
 depends=(
   'python'
-  'python-pygit2>=1.20.0'
+  'python-pygit2>=1.20.1'
   'python-tldextract>=5.0'
   'python-rich>=13.0'
   'python-typer>=0.12'
@@ -45,8 +46,8 @@ validpgpkeys=('F759D6D49B0A395AB922414A5CC3B4C50D37E793')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig")
 
-sha256sums=('6aa843b66ba8d096b0b993932f13806192ef1ae7f5b86d6ff3347104209ad674'
-            'eaaf31b4efa3e2f2386f5f7d0b4442a160d6a47ca025b4d4c59c9134804aae72')
+sha256sums=('0ef0321b422775cb0df70f4f7bec3045fed0abf4ec9573f919f3a5d8cdfb93ee'
+            '50a7a4059cc11daa271699d947e9a265e0728a6d19972713b24659b40b24f87b')
 
 build() {
   cd "$pkgname-$pkgver"
