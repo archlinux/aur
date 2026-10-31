@@ -1,6 +1,6 @@
 pkgbase = tewi
 	pkgdesc = Text-based interface for BitTorrent clients (Transmission, qBittorrent, Deluge)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/anlar/tewi
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = tewi
 	depends = python-transmission-rpc
 	depends = python-geoip2fast
 	provides = tewi-torrent
-	source = https://files.pythonhosted.org/packages/source/t/tewi_torrent/tewi_torrent-3.0.0.tar.gz
-	sha256sums = 3d4f7ddf21d4e6979516fa32e8b17b0ad9bd55c9e06cf3493c43defa5cc29750
+	source = https://files.pythonhosted.org/packages/source/t/tewi_torrent/tewi_torrent-3.1.0.tar.gz
+	sha256sums = 6a47e513cd3d276ffdf11bac830069481601455a5768060fbfdce323d510d4b7
 
 pkgname = tewi
