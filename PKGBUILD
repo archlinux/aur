@@ -18,9 +18,10 @@ package() {
   echo -e '#!/bin/sh\nexec nvim -e "$@"'  > ex
   echo -e '#!/bin/sh\nexec nvim -R "$@"'  > view
   echo -e '#!/bin/sh\nexec nvim -d "$@"'  > vimdiff
+  echo -e '#!/bin/sh\nexec nvim --clean "$@"'  > vi
   chmod 755 *
 
-  for _link in edit vedit vi vim; do
+  for _link in edit vedit vim; do
     ln -s nvim $_link
   done
 }
