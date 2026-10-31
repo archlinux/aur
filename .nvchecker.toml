@@ -1,4 +1,6 @@
+# No tags, the package is built from the latest commit, versioned like a VCS package: r<number of
+# commits>.<short commit>. The commits API returns up to 100 commits per page, the repository has 8.
 [ergochat-dnsbl]
-source = "git"
-git = "https://github.com/ergochat/ergo-dnsbl.git"
-use_commit = true
+source = "jq"
+url = "https://api.github.com/repos/ergochat/ergo-dnsbl/commits?per_page=100"
+filter = '"r\(length).\(.[0].sha[0:7])"'
