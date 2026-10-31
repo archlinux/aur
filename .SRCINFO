@@ -1,6 +1,6 @@
 pkgbase = boomerangz-bin
 	pkgdesc = Property-driven ZFS snapshot and replication manager (prebuilt binary)
-	pkgver = 0.1.7
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/pdf/boomerangz
 	install = boomerangz.install
@@ -12,9 +12,9 @@ pkgbase = boomerangz-bin
 	provides = boomerangz
 	conflicts = boomerangz
 	backup = etc/boomerangz/config.toml
-	source_aarch64 = boomerangz-bin_0.1.7_aarch64.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.1.7/boomerangz-v0.1.7-linux-arm64.tar.gz
-	sha256sums_aarch64 = 3304d4d33b4b3805e275d1b7c51171ff7d66f41ef3a65509184c164cf1cdaf08
-	source_x86_64 = boomerangz-bin_0.1.7_x86_64.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.1.7/boomerangz-v0.1.7-linux-amd64.tar.gz
-	sha256sums_x86_64 = 13dbf939531e2f605503b84f21a7ff20d6376787a3ab4ae66222c7b860683a1f
+	source_aarch64 = boomerangz-bin_0.2.0_aarch64.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.2.0/boomerangz-v0.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7c29765e809c350c8b54a5efc564e57ad60320e224dc689996234dd394a66eaa
+	source_x86_64 = boomerangz-bin_0.2.0_x86_64.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.2.0/boomerangz-v0.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 0ea8f8d798af7bd4e5a8fa15da73d785ed63b1e3b8e392e0584ee6a9fc32e83c
 
 pkgname = boomerangz-bin
