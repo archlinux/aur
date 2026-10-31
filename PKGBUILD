@@ -1,11 +1,11 @@
-# Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
+# Maintainer: Scott <158021536+nathawatc@users.noreply.github.com>
 
 pkgname=howdy-next-git
-pkgver=3.4.2.r0.g06f8253
+pkgver=3.4.2.r42.g8385406
 pkgrel=1
 pkgdesc="Modern C++ reimplementation of Howdy facial authentication on Linux"
 arch=('x86_64')
-url="https://codeberg.org/nathawat/howdy-next"
+url="https://github.com/nathawatc/howdy-next"
 license=('GPL-3.0-or-later')
 depends=(
 	'acl'
@@ -51,7 +51,7 @@ pkgver() {
 	cd "$srcdir/howdy-next"
 
 	local description
-	if description=$(git describe --long --tags --abbrev=7 2>/dev/null); then
+	if description=$(git describe --long --tags --abbrev=7 2> /dev/null); then
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' <<< "$description"
 	else
 		printf 'r%s.%s' \
