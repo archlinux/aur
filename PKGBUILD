@@ -5,7 +5,7 @@ pkgver=1.1.2.2
 pkgrel=1
 pkgdesc='ALIENTEK ATK-Logic logic analyzer software (binary release)'
 arch=('x86_64')
-url='https://github.com/alientek-openedv/atk-logic'
+url='https://github.com/kellyiscute/atk-logic-bin'
 license=('GPL-3.0-or-later')
 depends=(
   'e2fsprogs'

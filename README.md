@@ -1,16 +1,26 @@
 # atk-logic-bin
 
+English | [简体中文](README.zh-CN.md)
+
 Arch Linux packaging for **ATK-Logic**, ALIENTEK's desktop software for their ATK logic analyzers. It captures and displays signals, measures timing, decodes protocols (built on libsigrokdecode), and exports captures to CSV.
 
 This repository has two jobs:
 
-- **Mirror.** The [Releases](https://github.com/kellyiscute/atk-logic-bin/releases) page hosts unmodified copies of ALIENTEK's official `.deb` builds. ALIENTEK doesn't publish a stable direct download URL, so the AUR package [`atk-logic-bin`](https://aur.archlinux.org/packages/atk-logic-bin) downloads from here.
+- **Mirror.** The [Releases](https://github.com/kellyiscute/atk-logic-bin/releases) page hosts unmodified copies of ALIENTEK's official `.deb` builds. The AUR package [`atk-logic-bin`](https://aur.archlinux.org/packages/atk-logic-bin) downloads from here.
 - **Packaging.** The `PKGBUILD` repackages that `.deb` for Arch Linux.
+
+## Why the fuck this mirror exists
+
+ATK-Logic is GPL-3.0-or-later. ALIENTEK says so in its own repo. Then they let that repo rot: [alientek-openedv/atk-logic](https://github.com/alientek-openedv/atk-logic) hasn't seen a single commit since May 2024. Meanwhile they keep pumping out new versions as closed, prebuilt binaries, and the only place to get them is fucking **pan.baidu.com**. That means a login wall, throttled downloads unless you pay for Baidu's VIP, and links that no PKGBUILD, CI system or sane human can use.
+
+Slapping "GPL" on a repo and then abandoning it while you ship binaries through a walled-garden file locker is bullshit. It's open source in name only, and it arguably breaks the GPL's requirement to provide the corresponding source. Fuck that.
+
+So here they are: the official `.deb`s, unmodified, checksummed and downloadable with a plain `curl`, the way it should have been from the start. ALIENTEK, if you're reading this: push your source and put the binaries on GitHub Releases, and this mirror can go away.
 
 ## Upstream
 
 - **Documentation and official downloads:** https://www.openedv.com/docs/tool/luojifenxiyi/DL16.html
-- **Original source code (GPL-3.0-or-later):** https://github.com/alientek-openedv/atk-logic
+- **Original (outdated) source code (GPL-3.0-or-later):** https://github.com/alientek-openedv/atk-logic
 
 I'm not affiliated with ALIENTEK. For questions about the software itself, see their documentation. Report packaging problems here or on the AUR page.
 
