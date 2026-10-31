@@ -1,7 +1,7 @@
 # Maintainer: Ivan Odnoorov <elcheshirecat at yandex dot ru>
 pkgname=ymusic-cli
 _repo=ymusic
-pkgver=3.6.3
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Terminal client for Yandex Music: My Wave, likes, stations (TUI)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('pipewire-pulse: share the sound card with other programs (without a
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1932497d147d27b79e0172e96d5e108a4aec2e31e23792593606946f8adb75f')
+sha256sums=('a387c96009a35130e7a16ae6dca5e23b297eb236cfc644021d7b2df9c49d0805')
 
 prepare() {
   cd "$_repo-$pkgver"
