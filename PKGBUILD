@@ -43,10 +43,10 @@ conflicts=('qmk')
 provides=('qmk')
 source=(
     'git+https://github.com/qmk/qmk_cli.git'
-    "50-qmk.rules_${_qmk_pkgver}::https://raw.githubusercontent.com/qmk/qmk_firmware/${_qmk_pkgver}/util/udev/50-qmk.rules"
+    "50-qmk.rules_${_qmk_pkgver}::https://raw.githubusercontent.com/qmk/qmk_udev/refs/heads/main/50-qmk.rules"
 )
 sha256sums=('SKIP'
-            '07bc92419d44862d6be491b9d7c2d78480800035b91fb8cd428a348b7e13aa70')
+            'cf87662b239c3a1ac4c6b6f2655873a9b7888e412b4b980d691da57ca336f0f4')
 
 pkgver() {
   cd "$_branch"
