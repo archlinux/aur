@@ -1,0 +1,16 @@
+pkgbase = flashtester
+	pkgdesc = Tests USB sticks, SD cards and other disks for fake capacity, data loss and speed, like h2testw plus a quick capacity probe. Runs on Windows, Linux and FreeBSD
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://flashtester.eu/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = wayland
+	optdepends = udisks2: automatic device detection
+	source = flashtester-0.4.0.tar.gz::https://github.com/Dissimilis/FlashTester/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = f54f1962dd5713f3485e0e2945e2550c0dfee0fb122ef6eab829acd12edced56
+
+pkgname = flashtester
