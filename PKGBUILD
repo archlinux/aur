@@ -3,7 +3,7 @@
 # Maintainer: Damien Flament <damien dot flament at zoho dot com>
 
 pkgname='tine-outliner-git'
-pkgver=0.7.3.r2.g9c1f92d
+pkgver=0.8.4.r1.g7dcd378
 pkgrel=1
 pkgdesc="A fast, local, Logseq-compatible outliner (latest git version)"
 url='https://tine.page/'
@@ -13,7 +13,7 @@ arch=('x86_64')
 makedepends=('git' 'rustup' 'npm')
 depends=('gtk3' 'gdk-pixbuf2' 'libgcc' 'libsoup3' 'webkit2gtk-4.1' 'dbus' 'libx11' 'glib2' 'cairo' 'hicolor-icon-theme')
 
-conficts=('tine-outliner' 'tine-outliner-bin')
+conflicts=('tine-outliner' 'tine-outliner-bin')
 provides=("tine-outliner=${pkgver}")
 
 source=("${pkgname}::git+https://github.com/martinkoutecky/tine.git")
