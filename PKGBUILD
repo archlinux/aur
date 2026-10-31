@@ -1,14 +1,15 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.158
-pkgrel=3
+pkgrel=4
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# depends: DT_NEEDED of the 18 shipped ELFs plus by-name dlopen probes, resolved in core+extra (2026-10-31).
+# depends: DT_NEEDED of the 18 shipped ELFs plus by-name dlopen probes, resolved in core+extra; ca-certificates-mozilla from the /etc/ssl/cert.pem and /etc/ssl/certs opens in strace (2026-10-31).
 depends=('alsa-lib'
          'at-spi2-core'
+         'ca-certificates-mozilla'
          'cairo'
          'dbus'
          'expat'
