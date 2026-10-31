@@ -1,6 +1,6 @@
 # Maintainer: Sohimaster
 pkgname=traur-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Trust scoring for AUR packages (prebuilt)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('git' 'pacman' 'gcc-libs' 'glibc')
 provides=('traur')
 conflicts=('traur')
 source=("$url/releases/download/v$pkgver/traur-$pkgver-x86_64.tar.gz")
-sha256sums=('cb76a4f0c48cab8abe57f064466284010d0ab81a834227a5d875259283072ffe')
+sha256sums=('756f52e9e42b75c9c8453ffa9d9066196050586462f7067cd8fe6447275efd01')
 
 package() {
     # The release tarball should preserve the exec bit; set it explicitly so a
