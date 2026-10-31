@@ -1,0 +1,10 @@
+# Makepkg build directories
+src/
+pkg/
+fprintd/
+
+# Built packages and logs
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.log

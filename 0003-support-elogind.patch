@@ -1,0 +1,25 @@
+--- a/meson.build
++++ b/meson.build
+@@ -75,7 +75,7 @@
+ polkit_gobject_dep = dependency('polkit-gobject-1', version: '>= 0.91')
+ dbus_dep = dependency('dbus-1', required: false)
+ dbus_glib_dep = dependency('dbus-glib-1')
+-libsystemd_dep = dependency('libsystemd', required: get_option('pam'))
++libsystemd_dep = dependency('libelogind', required: get_option('pam'))
+ pam_dep = cc.find_library('pam',
+     required: get_option('pam'),
+     has_headers: 'security/pam_modules.h',
+@@ -85,11 +85,11 @@
+ xsltproc = find_program('xsltproc', required: get_option('gtk_doc'))
+ 
+ # StateDirectory was introduced in systemd 235
+-systemd_dep = dependency('systemd', version: '>= 235')
++systemd_dep = dependency('systemd', version: '>= 235', required: false)
+ systemd_unit_dir = get_option('systemd_system_unit_dir')
+ 
+ if systemd_unit_dir == ''
+-    systemd_unit_dir = systemd_dep.get_pkgconfig_variable('systemdsystemunitdir')
++    systemd_unit_dir = datadir / 'systemd/system'
+ endif
+ 
+ dbus_service_dir = get_option('dbus_service_dir')

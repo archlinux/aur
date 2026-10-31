@@ -1,0 +1,37 @@
+pkgbase = fprintd-clients-git-elogind
+	pkgdesc = Fprintd without the daemon (debian/clients-only git branch) with elogind support
+	pkgver = 1.90.1.r2.g54e56d6
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/uunicorn/fprintd
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = meson
+	makedepends = pam_wrapper
+	makedepends = python-cairo
+	makedepends = python-dbus
+	makedepends = python-dbusmock
+	depends = dbus
+	depends = dbus-glib
+	depends = glib2
+	depends = glibc
+	depends = libfprint
+	depends = libelogind
+	depends = pam
+	depends = polkit
+	provides = fprintd-clients
+	provides = fprintd-clients-git
+	conflicts = fprintd
+	conflicts = fprintd-clients
+	conflicts = fprintd-clients-git
+	source = fprintd::git+https://gitlab.freedesktop.org/uunicorn/fprintd.git#commit=54e56d660bf9730f8abc8f2c6a358ef2fec675f2
+	source = 0001-disable-systemd-reactivated.diff
+	source = 0002-Remove-ignored-positional-arguments.patch
+	source = 0003-support-elogind.patch
+	sha256sums = SKIP
+	sha256sums = 05e537a783302f0b01984eee00368deb2bc846bfd16b8892a21aff79c9b7a6ab
+	sha256sums = 83458c77fd9b1c3022ed7230b92432a3edde00cc811a01e49b76c04629534b82
+	sha256sums = 5f188568b43dfa9f9c02786d05b8d91fd584ef263cd3871d9351ba9b5f9af1be
+
+pkgname = fprintd-clients-git-elogind
