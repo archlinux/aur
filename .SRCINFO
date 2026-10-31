@@ -1,6 +1,6 @@
 pkgbase = bbhost-desktop-bin
 	pkgdesc = Definitive Bloodborne PC Experience
-	pkgver = 0.2.21
+	pkgver = 0.2.22
 	pkgrel = 1
 	url = https://github.com/droogie/bbhost
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = bbhost-desktop-bin
 	depends = curl
 	depends = zlib
 	provides = bbhost
-	source = https://github.com/droogie/bbhost/releases/download/v0.2.21/bbhost-linux-v0.2.21.tar.gz
+	source = https://github.com/droogie/bbhost/releases/download/v0.2.22/bbhost-linux-v0.2.22.tar.gz
 	source = bbhost.png
-	sha256sums = fa40bdb00fc30bb2c2c21bc82a16ae38a65284981b09093d6123b9e963b8303f
+	sha256sums = 0ac810c3924cc11a2333ee148efc8c9a45831221aad06847f513d0356b24df19
 	sha256sums = 67816f5b2a1ce724baa48a49cf55b5119bd5108bfae8ad4441fa3d48b133b16f
 
 pkgname = bbhost-desktop-bin

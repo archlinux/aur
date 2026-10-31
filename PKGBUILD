@@ -1,7 +1,7 @@
 # Maintainer: Joomzie <tntecyu74 at mozmail dot com>
 pkgname=bbhost-desktop-bin
 _pkgname=bbhost
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 pkgdesc="Definitive Bloodborne PC Experience"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=("vulkan-icd-loader" "curl" "zlib")
 provides=('bbhost')
 source=("https://github.com/droogie/bbhost/releases/download/v${pkgver}/bbhost-linux-v${pkgver}.tar.gz"
         "bbhost.png")
-sha256sums=('fa40bdb00fc30bb2c2c21bc82a16ae38a65284981b09093d6123b9e963b8303f'
+sha256sums=('0ac810c3924cc11a2333ee148efc8c9a45831221aad06847f513d0356b24df19'
             '67816f5b2a1ce724baa48a49cf55b5119bd5108bfae8ad4441fa3d48b133b16f')
 
 prepare() {
@@ -20,6 +20,10 @@ prepare() {
     sed -i 's|log=logs/bbhost-$(date +%Y%m%d-%H%M%S).log|log=$HOME/.local/share/bbhost/data/logs/bbhost-$(date +%Y%m%d-%H%M%S).log|g' "${srcdir}/bbhost-linux-v${pkgver}/run-bbhost.sh"
     sed -i 's|ls -1t logs|ls -1t $HOME/.local/share/bbhost/data/logs|g' "${srcdir}/bbhost-linux-v${pkgver}/run-bbhost.sh"
     rmdir ${srcdir}/bbhost-linux-v${pkgver}/logs
+
+    # Remove superfluous plugins directory
+    # Plugins can be downloaded through th launcher, and are saved to $HOME/.config/bbhost
+    rm -rf ${srcdir}/bbhost-linux-v${pkgver}/plugins
 }
 
 package() {
