@@ -1,6 +1,6 @@
 pkgbase = xrat
 	pkgdesc = Rust CLI/TUI proxy manager for Xray-core, V2Ray-core, and sing-box
-	pkgver = 0.33.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/mhyrzt/xrat
 	install = xrat.install
@@ -15,7 +15,7 @@ pkgbase = xrat
 	optdepends = sing-box: sing-box preview and Hysteria2 managed runtime support
 	optdepends = v2ray: Alternative V2Ray managed runtime
 	options = !lto
-	source = xrat-0.33.0.tar.gz::https://github.com/mhyrzt/xrat/archive/refs/tags/v0.33.0.tar.gz
-	sha256sums = 0f9447dd29ad8cd9f6ee6419624c077d1483da41f7918c1ebedb57e8b0d61145
+	source = xrat-0.34.0.tar.gz::https://github.com/mhyrzt/xrat/archive/refs/tags/v0.34.0.tar.gz
+	sha256sums = 6448bf6db9de122831253bcc680b6616e3f25ac83b7b01dbd81250611b72c347
 
 pkgname = xrat
