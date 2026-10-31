@@ -1,0 +1,13 @@
+post_install() {
+    echo ":: The SSC plugin takes the aptx slot of PipeWire (same file name). aptx will no longer work while it is installed."
+    echo ":: Restart WirePlumber and reconnect the earbuds: systemctl --user restart wireplumber"
+    echo ":: After a PipeWire upgrade rebuild this package (the plugin uses PipeWire's private codec interface)."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ":: To get the aptx plugin back run: pacman -S pipewire-audio  (then restart WirePlumber)"
+}

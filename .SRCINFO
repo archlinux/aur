@@ -1,0 +1,24 @@
+pkgbase = ssc-codec-git
+	pkgdesc = Samsung Scalable/Seamless Codec (SSC) A2DP codec for PipeWire (Galaxy Buds), replaces the aptx plugin
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/lori28167/SamsungSeamlessCodec-linux
+	install = ssc-codec.install
+	arch = x86_64
+	license = GPL-3.0-or-later AND BSD-3-Clause
+	makedepends = git
+	makedepends = meson
+	makedepends = pipewire
+	depends = pipewire-audio
+	depends = bluez-libs
+	provides = ssc-codec
+	conflicts = ssc-codec
+	options = !debug
+	source = git+https://github.com/lori28167/SamsungSeamlessCodec-linux.git
+	source = ssc-codec.hook
+	source = ssc-codec-activate
+	sha256sums = SKIP
+	sha256sums = 7e0fb8b158dd2bf548030593e5610fd41c3fc701becf33d7a599aadb249a24c4
+	sha256sums = 00cffeefd9b4bfa2121be8b0ad6b4455ed380839e603226b3ab42d529e41361d
+
+pkgname = ssc-codec-git

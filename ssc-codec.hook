@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# pipewire-audio ships libspa-codec-bluez5-aptx.so, the slot the SSC plugin uses: put ours back after every upgrade of either package
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = pipewire-audio
+Target = ssc-codec-git
+
+[Action]
+Description = Activating the SSC codec plugin (replaces the aptx plugin)...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/ssc-codec-activate

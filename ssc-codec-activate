@@ -1,0 +1,11 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copy the SSC plugin over the aptx plugin of pipewire-audio. The aptx plugin comes back by reinstalling pipewire-audio.
+set -e
+src=/usr/lib/ssc-codec/libspa-codec-bluez5-aptx.so
+dst=/usr/lib/spa-0.2/bluez5/libspa-codec-bluez5-aptx.so
+[ -f "$src" ] || exit 0
+[ -d "${dst%/*}" ] || exit 0
+if cmp -s "$src" "$dst"; then exit 0; fi
+install -m755 "$src" "$dst"
+echo "SSC codec plugin installed over the aptx plugin; restart WirePlumber: systemctl --user restart wireplumber"
