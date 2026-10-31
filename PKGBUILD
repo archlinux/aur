@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=dotnet-markdig
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Fast, powerful, CommonMark compliant, extensible Markdown processor for .NET (NuGet packages)"
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=(
   git
 )
 source=("git+$url.git#tag=$pkgver")
-sha512sums=('25a1e3b7985b0bc8246bd325e8945af9ccfce63a9e7d79c2dc4d11f4f619e52848637a71b6a0b57dce2ebaebc52333af6fe1240ddbb6a38223af9100a517f63c')
-b2sums=('4b065e921c8f9fc29e0a3fa64dea863fa4ba9b6d6ce6138e565a8d949a30b9fea1569c0571d1a6af53fb74cc779ddc60366342ec47bc7c4f36b181af2eb59d7d')
+sha512sums=('7d7b7f3a70d3728ee622ebcd0b70688f9f75ff8eb8acd2955d6fde713e8c5667bc0ce844db50072a698f82e48102129362ff703d65fa20f3bc0877eb1cd78ae6')
+b2sums=('02c70f99d35eb9dd7bd76e34d8c22cffe3858ca2814ba9a6346493ae6e77b6de1985c4e7183d23ae246e60744eab5c8119b775c7497c123bc599a5c1842b1d39')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
