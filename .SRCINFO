@@ -1,6 +1,6 @@
 pkgbase = gitlogue-bin
 	pkgdesc = A cinematic Git commit replay tool for the terminal
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/unhappychoice/gitlogue
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = gitlogue-bin
 	depends = git
 	provides = gitlogue
 	conflicts = gitlogue
-	source = README-0.12.1.md::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.12.1/README.md
-	source = LICENSE-0.12.1::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.12.1/LICENSE
+	source = README-0.12.2.md::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.12.2/README.md
+	source = LICENSE-0.12.2::https://raw.githubusercontent.com/unhappychoice/gitlogue/v0.12.2/LICENSE
 	sha256sums = 309df86ecce0bbb435db28983f1e9facdd37f2b9b021a3bd275d2a2b347209d6
 	sha256sums = 8f7d4feb676b3700f48611aa9a3c8e444b7877593efb52fc90235577f3148cc9
-	source_x86_64 = gitlogue-x86_64-0.12.1.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.12.1/gitlogue-v0.12.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c3b51d4c6dd1d84d32eeaf0ecc5bb281bd3a48b300dc64028e5561b5748971c3
-	source_aarch64 = gitlogue-aarch64-0.12.1.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.12.1/gitlogue-v0.12.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 49559a53a52d6a19f526af6588ac623b823e33a00ebaa50be41db88bdd602cee
+	source_x86_64 = gitlogue-x86_64-0.12.2.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.12.2/gitlogue-v0.12.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b9953fa76141ae02be9c57d788b7a55a8e97fd7e92f74cfe896d2851987f9a08
+	source_aarch64 = gitlogue-aarch64-0.12.2.tgz::https://github.com/unhappychoice/gitlogue/releases/download/v0.12.2/gitlogue-v0.12.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a9b167db703dc43e0fa7d809aaef183f13ebc583b05ad1b5cd238aa3d2acd799
 
 pkgname = gitlogue-bin
