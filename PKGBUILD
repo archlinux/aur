@@ -1,40 +1,71 @@
-# Maintainer: onbeskarakterli <onbeskarakterli@gmail.com>
-# Stable Pivra 0.1.0 release package for Arch Linux.
-# Immutable upstream commit and SHA-256 are pinned in this PKGBUILD.
+# TEMPLATE ONLY: approved release source and checksum are required for each release.
+# Source/checksum approval is required before even metadata generation proceeds.
 pkgname=pivra
-pkgver=0.2.1
-pkgrel=3
-options=('!debug')
-pkgdesc="Native GNOME photo, animation and video viewer"
+pkgver=0.2.3
+pkgrel=1
+pkgdesc='Native GNOME photo, animation and video viewer'
 arch=('x86_64')
 url='https://github.com/onbeskarakterli/Pivra'
 license=('GPL-3.0-only')
-# Dependencies and native build validated for the v0.1.0 Arch release.
+# GNOME4/glycin and toolkit evidence includes user-reported Arch validation.
+# Remaining provider ownership is still open: see README.md.
 depends=('gtk4>=4.16' 'libadwaita>=1.2' 'glib2' 'gdk-pixbuf2'
          'gnome-desktop-4' 'glycin' 'bubblewrap' 'libseccomp' 'lcms2'
          'fontconfig' 'cairo' 'graphene' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('cargo' 'pkgconf' 'python>=3.11')
 checkdepends=('desktop-file-utils')
-_target="${CARCH}-unknown-linux-gnu"
-_release_commit=17486b8b0714f2e49be3bc4b24613192b6f21755
-source=("pivra-$pkgver.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/$_release_commit.tar.gz"
-        'collect-licenses.py')
-sha256sums=('508038b04764edaaa9522aa9053f705038603d390a2769c2a0b4084de3650e6e' 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
+_target='x86_64-unknown-linux-gnu'
+_recipe_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+# Per-recipe persistent Cargo caches survive makepkg --cleanbuild.
+# Cargo validates compiler options, lockfile and dependency fingerprints.
+_cache_dir="$_recipe_dir/.pivra-cache"
+_cache_setup() {
+  if [[ -L "$_cache_dir" || ( -e "$_cache_dir" && ! -d "$_cache_dir" ) ]]; then
+    printf 'ERROR: unsafe Cargo cache path: %s\n' "$_cache_dir" >&2
+    return 1
+  fi
+  (umask 077; mkdir -p "$_cache_dir/cargo-home" "$_cache_dir/cargo-target") || return 1
+  export CARGO_HOME="$_cache_dir/cargo-home"
+  export CARGO_TARGET_DIR="$_cache_dir/cargo-target"
+}
+
+
+release_commit=''
+release_url=''
+release_sha256=''
+if [[ ! -r "$_recipe_dir/release-source.conf" ]]; then
+  printf '%s\n' 'BLOCKED: approved release-source.conf is missing; this is not a publishable AUR recipe.' >&2
+  return 1 2>/dev/null || exit 1
+fi
+# Trusted packaging configuration, never downloaded or derived from moving dev.
+# shellcheck source=/dev/null
+source "$_recipe_dir/release-source.conf"
+if [[ ! $release_commit =~ ^[0-9a-f]{40}$ || ! $release_sha256 =~ ^[0-9a-f]{64}$ ||
+      $release_url != "https://github.com/onbeskarakterli/Pivra/archive/$release_commit.tar.gz" ]]; then
+  printf '%s\n' 'BLOCKED: approved immutable commit URL and real archive SHA-256 are required.' >&2
+  return 1 2>/dev/null || exit 1
+fi
+source=("pivra-$pkgver.tar.gz::$release_url" 'collect-licenses.py')
+sha256sums=("$release_sha256" 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
 
 prepare() {
-  export CARGO_HOME="$startdir/.pivra-cache/cargo-home"
-  export CARGO_TARGET_DIR="$startdir/.pivra-cache/cargo-target"
-  cd "$srcdir/Pivra-$_release_commit" || return 1
-  cargo generate-lockfile || return 1
+  _cache_setup || return 1
+  cd "$srcdir/Pivra-$release_commit" || return 1
+  # Do not publish a package whose declared version differs from the pinned source.
+  local source_version
+  source_version=$(python -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("Cargo.toml").read_text())["package"]["version"])') || return 1
+  if [[ "$source_version" != "$pkgver" ]]; then
+    printf 'ERROR: PKGBUILD version %s does not match Cargo.toml version %s\n' "$pkgver" "$source_version" >&2
+    return 1
+  fi
   cargo fetch --locked || return 1
 }
 
 build() {
   export PIVRA_DISTRIBUTION_BUILD=1
-  export CARGO_HOME="$startdir/.pivra-cache/cargo-home"
+  _cache_setup || return 1
   export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--remap-path-prefix=$srcdir=/usr/src/debug/pivra"
-  export CARGO_TARGET_DIR="$startdir/.pivra-cache/cargo-target"
-  cd "$srcdir/Pivra-$_release_commit" || return 1
+  cd "$srcdir/Pivra-$release_commit" || return 1
   pkg-config --atleast-version=4.16 gtk4 || return 1
   pkg-config --atleast-version=1.2 libadwaita-1 || return 1
   pkg-config --exists gnome-desktop-4 gio-2.0 gobject-2.0 gdk-pixbuf-2.0 lcms2 libseccomp || return 1
@@ -58,14 +89,14 @@ build() {
     native/thumbnail_factory.c -o "$srcdir/build/pivra-thumbnail-factory" \
     "${ldflags[@]}" "${pkg_libs[@]}" || return 1
   cargo build --release --locked --offline --target "$_target" --bin pivra || return 1
-  python - "$startdir/.pivra-cache/cargo-target/$_target/release/pivra" <<'PY' || return 1
+  python - "$CARGO_TARGET_DIR/$_target/release/pivra" <<'PY' || return 1
 import pathlib
 import sys
 if b'/out/pivra-thumbnail-factory' in pathlib.Path(sys.argv[1]).read_bytes():
     sys.exit('FAIL: viewer embeds a Cargo OUT_DIR thumbnail-helper path')
 PY
   test -x "$srcdir/build/pivra-thumbnail-factory" || return 1
-  readelf -d "$startdir/.pivra-cache/cargo-target/$_target/release/pivra" > "$srcdir/build/pivra.dynamic" || return 1
+  readelf -d "$CARGO_TARGET_DIR/$_target/release/pivra" > "$srcdir/build/pivra.dynamic" || return 1
   grep -F 'liblcms2.so.2' "$srcdir/build/pivra.dynamic" >/dev/null || return 1
   grep -F 'libseccomp.so.2' "$srcdir/build/pivra.dynamic" >/dev/null || return 1
   cargo metadata --locked --offline --format-version 1 > "$srcdir/build/metadata.json" || return 1
@@ -76,17 +107,16 @@ PY
 
 check() {
   export PIVRA_DISTRIBUTION_BUILD=1
-  export CARGO_HOME="$startdir/.pivra-cache/cargo-home"
-  export CARGO_TARGET_DIR="$startdir/.pivra-cache/cargo-target"
-  cd "$srcdir/Pivra-$_release_commit" || return 1
+  _cache_setup || return 1
+  cd "$srcdir/Pivra-$release_commit" || return 1
   CARGO_INCREMENTAL=0 cargo test --release --locked --offline --target "$_target" || return 1
-  # Preserve download and release caches; discard test/check artifacts.
   desktop-file-validate data/io.github.onbeskarakterli.Pivra.desktop || return 1
 }
 
 package() {
-  cd "$srcdir/Pivra-$_release_commit" || return 1
-  install -Dm755 "$startdir/.pivra-cache/cargo-target/$_target/release/pivra" "$pkgdir/usr/bin/pivra" || return 1
+  _cache_setup || return 1
+  cd "$srcdir/Pivra-$release_commit" || return 1
+  install -Dm755 "$CARGO_TARGET_DIR/$_target/release/pivra" "$pkgdir/usr/bin/pivra" || return 1
   install -Dm755 "$srcdir/build/pivra-thumbnail-factory" "$pkgdir/usr/bin/pivra-thumbnail-factory" || return 1
   install -Dm644 data/io.github.onbeskarakterli.Pivra.desktop \
     "$pkgdir/usr/share/applications/io.github.onbeskarakterli.Pivra.desktop" || return 1
@@ -106,12 +136,14 @@ package() {
     "$pkgdir/usr/share/doc/pivra/corresponding-source/crates/" || return 1
   install -Dm644 "$srcdir/pivra-$pkgver.tar.gz" \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/pivra-$pkgver.tar.gz" || return 1
-  install -Dm644 "${BASH_SOURCE[0]}" \
+  install -Dm644 "$_recipe_dir/PKGBUILD" \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/PKGBUILD" || return 1
+  install -Dm644 "$_recipe_dir/release-source.conf" \
+    "$pkgdir/usr/share/doc/pivra/corresponding-source/release-source.conf" || return 1
   install -Dm644 "$srcdir/collect-licenses.py" \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/collect-licenses.py" || return 1
   local doc
-  for doc in PIVRA_V0.1_RELEASE_NOTES.md PIVRA_V0.1_DEPENDENCY_LICENSE_AUDIT.md; do
+  for doc in PIVRA_V0.2.1_RELEASE_NOTES.md; do
     install -Dm644 "docs/releases/$doc" "$pkgdir/usr/share/doc/pivra/$doc" || return 1
   done
 }
