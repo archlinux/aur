@@ -1,6 +1,6 @@
 # Maintainer: gimgiwer <gimgiwer@gmail.com>
 pkgname=swiftify-git
-pkgver=0.24.5.r0.g9a4f259
+pkgver=0.24.6.r0.g58b808b
 pkgrel=1
 pkgdesc="A Spotify player for Wayland, in Material 3 after end4 (git master)"
 arch=('x86_64' 'aarch64')
