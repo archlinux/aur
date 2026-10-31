@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mailcraft
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 url="https://github.com/UCS-Care-Group/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Microsoft Outlook'
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('734ed5b48cb1974afd6722017748986bdc66416cd3060f6aeafc5c62d64de4d5')
+sha256sums=('6b5cc25fa34224b5822481dd4615bf252469be36e95b977663f564fd108256f2')
 
 _srcenv() {
 	cd "$_archive"
