@@ -1,0 +1,18 @@
+pkgbase = python-wheelripe
+	pkgdesc = Before you move to a new Python (3.15, free-threaded 3.15t), find every locked dependency with no wheel for it on your platforms and the smallest bump that fixes each. CLI, GitHub Action, MCP
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://blackman99.github.io/wheelripe/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-packaging
+	source = wheelripe-0.1.0.tar.gz::https://github.com/Blackman99/wheelripe/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6f9cf5fb01ea1c0455f67f17b8e2e873e59cf3978b5142cc57e0c7405f9c609e
+
+pkgname = python-wheelripe
