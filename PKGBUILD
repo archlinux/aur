@@ -8,8 +8,8 @@ pkgname=powershell-powershellget-v3
 # as /usr/share/powershell/Modules is searched before $PSHOME/Modules, so Install-Module and friends run on
 # PSResourceGet. Remove the package to go back to the bundled v2. It's two script files, no build needed.
 _modulever=3.0.23
-# There are no releases or tags, so this is the last commit of the master branch, 3.0.23-beta23. If a
-# stable 3.0.23 is ever released, it sorts older than this (verchecks), so bump with an epoch then.
+# There are no releases or tags, so this is the last commit of the master branch, 3.0.23-beta23. pacman
+# sorts 3.0.23beta23 before 3.0.23, so a stable release would upgrade it without an epoch.
 pkgver=3.0.23beta23
 pkgrel=1
 _commit=a2dac8e74603f7c9eec4a54c5e23459531751b0d

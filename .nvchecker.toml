@@ -1,5 +1,8 @@
+# No releases or tags: the module version and pre-release tag from the manifest on the master branch,
+# like pkgver (3.0.23beta23), or only the version once it's no pre-release anymore
 [powershell-powershellget-v3]
-# No releases or tags; track the module version in the manifest on the master branch
 source = "regex"
 url = "https://raw.githubusercontent.com/PowerShell/PowerShellGet/master/src/PowerShellGet.psd1"
-regex = "ModuleVersion = '([\\d.]+)'"
+regex = "ModuleVersion = '[\\d.]+'(?:[\\s\\S]*?Prerelease = '\\w+')?"
+from_pattern = "ModuleVersion = '([\\d.]+)'(?:[\\s\\S]*Prerelease = '(\\w+)')?"
+to_pattern = '\1\2'
