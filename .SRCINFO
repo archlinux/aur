@@ -1,0 +1,17 @@
+pkgbase = tokenleft
+	pkgdesc = Show remaining Claude, Codex and Cursor usage
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/cesarferreira/tokenleft
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = tokenleft
+	conflicts = tokenleft
+	source = tokenleft-0.1.1.crate::https://crates.io/api/v1/crates/tokenleft/0.1.1/download
+	sha256sums = 8f9469c6150267b31ca2fbe37b0ea09889c598211053a38a6efd5d32d94e7213
+
+pkgname = tokenleft
