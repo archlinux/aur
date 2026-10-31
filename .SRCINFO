@@ -1,19 +1,19 @@
 pkgbase = immich-desktop
 	pkgdesc = Unofficial native Qt desktop client for Immich
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/hdmain/immich-desktop
 	arch = x86_64
 	license = MIT
+	checkdepends = python
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = qt6-tools
 	depends = hicolor-icon-theme
 	depends = qt6-imageformats
 	depends = qt6-multimedia
 	depends = qt6-svg
-	source = immich-desktop-0.2.3.tar.gz::https://github.com/hdmain/immich-desktop/archive/refs/tags/v0.2.3.tar.gz
-	source = packaging-options.patch
-	sha256sums = a44196bab2492aafa9fa1c6718b006ac8e0e327b94ab086a23514ca00b148946
-	sha256sums = b8a44b31ee7bb7653356565459b1c9dc6d122c494f497dc9181a921f3ac951d8
+	source = immich-desktop-0.2.4.tar.gz::https://github.com/hdmain/immich-desktop/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = c3d5d8749ba78885c2760decd35a910539c53ed5f8d197aaac8dd823bf07b0db
 
 pkgname = immich-desktop
