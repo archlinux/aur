@@ -3,7 +3,7 @@
 # Immutable upstream commit and SHA-256 are pinned in this PKGBUILD.
 pkgname=pivra
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 options=('!debug')
 pkgdesc="Native GNOME photo, animation and video viewer"
 arch=('x86_64')
@@ -79,8 +79,8 @@ check() {
   export CARGO_HOME="$startdir/.pivra-cache/cargo-home"
   export CARGO_TARGET_DIR="$startdir/.pivra-cache/cargo-target"
   cd "$srcdir/Pivra-$_release_commit" || return 1
-  CARGO_INCREMENTAL=0 cargo test --locked --offline --target "$_target" || return 1
-  cargo check --locked --offline --target "$_target" || return 1
+  CARGO_INCREMENTAL=0 cargo test --release --locked --offline --target "$_target" || return 1
+  # Preserve download and release caches; discard test/check artifacts.
   desktop-file-validate data/io.github.onbeskarakterli.Pivra.desktop || return 1
 }
 

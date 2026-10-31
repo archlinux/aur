@@ -1,7 +1,7 @@
 pkgbase = pivra
 	pkgdesc = Native GNOME photo, animation and video viewer
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/onbeskarakterli/Pivra
 	arch = x86_64
 	license = GPL-3.0-only
