@@ -1,0 +1,15 @@
+pkgbase = gostc
+	pkgdesc = frp-based NAT traversal management client
+	pkgver = 2.0.11
+	pkgrel = 1
+	url = https://github.com/SianHH/gostc-open
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = gostc-2.0.11.tar.gz::https://github.com/SianHH/gostc-open/archive/refs/tags/v2.0.11.tar.gz
+	sha256sums = 941d1bd9e76480afa6b2abd373582252e2d530fbed654b2f843a824637e81a71
+
+pkgname = gostc
