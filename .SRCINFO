@@ -1,0 +1,18 @@
+pkgbase = vte-console-git
+	pkgdesc = Wayland-native dropdown terminal (GTK4 + VTE + gtk4-layer-shell)
+	pkgver = 1.0.0rc1.r0.g9454abc
+	pkgrel = 1
+	url = https://gitlab.w00tserver.org/tflori/vte-console
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gtk4
+	depends = vte4
+	depends = gtk4-layer-shell
+	depends = python-gobject
+	provides = vte-console
+	conflicts = vte-console
+	source = vte-console-git::git+https://gitlab.w00tserver.org/tflori/vte-console.git
+	sha256sums = SKIP
+
+pkgname = vte-console-git

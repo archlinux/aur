@@ -1,0 +1,6 @@
+# makepkg build artifacts
+/src/
+/pkg/
+/vte-console-git/
+*.pkg.tar.*
+*.log
