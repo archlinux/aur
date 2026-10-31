@@ -27,7 +27,7 @@ makedepends=(
 )
 checkdepends=('ttf-dejavu')
 source=("https://files.pythonhosted.org/packages/source/k/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('d8183030b44576bdb099b33a52452884f5ea50e29a6ad4b86dd1f97c0efad149')
+sha256sums=('df84a856f14072128fc2b19e7864a3be1c5f37805c784089887ddee73d865f0d')
 
 build() {
   cd "${_pkgname//-/_}-$pkgver"
