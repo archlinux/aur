@@ -1,0 +1,17 @@
+pkgbase = python-csv-quality-gate
+	pkgdesc = Checks CSV files for missing columns, empty cells, and duplicate values using configurable profiles, with line-number evidence and pass/warn/fail exit codes
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/roli-lpci/csv-quality-gate
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = csv-quality-gate-0.3.1.tar.gz::https://github.com/roli-lpci/csv-quality-gate/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 3fd75f7fbea824494128e2d73fcefa88f7be92fa9ecfa5ab335160e23dd0ae73
+
+pkgname = python-csv-quality-gate
