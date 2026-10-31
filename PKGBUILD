@@ -6,7 +6,7 @@ _appname=git-tree
 pkgname=${_appname}-bin
 pkgdesc="Local-first visual Git client for macOS, Windows and Linux"
 
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/Git-Tree-Linux.deb")
-sha256sums_x86_64=('979d5b19aa1db06059323c1408594d71f9328e8e02cb1670c872257b1a25365f')
+sha256sums_x86_64=('17373968d7706fef47cd194b7dada3bb8e4920b9e0765b72d859df739c8ff98d')
 
 
 package() {
