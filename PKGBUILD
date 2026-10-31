@@ -1,11 +1,13 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=mousr-git
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Keyboard-driven mouse control for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/toxdes/mousr"
 license=('MIT')
+provides=("mousr=${pkgver}")
+conflicts=('mousr')
 depends=('wayland' 'libxkbcommon')
 makedepends=('git' 'rust' 'pkgconf')
 source=('git+https://github.com/toxdes/mousr.git')
