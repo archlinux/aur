@@ -1,6 +1,6 @@
 pkgbase = ionix-quickshell-git
 	pkgdesc = Ionix Quickshell desktop shell — bar, popouts and OSD (git)
-	pkgver = r50.b2cd2f9
+	pkgver = r51.043506d
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionix-quickshell
 	arch = any
@@ -29,6 +29,7 @@ pkgbase = ionix-quickshell-git
 	optdepends = nm-connection-editor: advanced network settings from the network popout
 	optdepends = hyprland: workspace, window and blur integration
 	optdepends = hyprlock: fallback when the Quickshell lock screen (ionix-lock) cannot lock
+	optdepends = hypridle: lock the screen when idle (ionix-idle)
 	optdepends = qt6-multimedia-ffmpeg: video backgrounds on the lock screen
 	optdepends = fprintd: fingerprint unlock on the lock screen
 	optdepends = greetd: log in through ionix-greeter (the lock screen with a username field)

@@ -5,7 +5,7 @@ _pkgname=ionix-quickshell
 # Placeholder: aur-publish.sh patches this to the real r<count>.<hash> before
 # generating .SRCINFO. Keep it in the r-scheme — a bare 0.1.0 would sort *newer*
 # than every r-version if it ever reached the AUR unpatched.
-pkgver=r50.b2cd2f9
+pkgver=r51.043506d
 pkgrel=1
 pkgdesc="Ionix Quickshell desktop shell — bar, popouts and OSD (git)"
 arch=('any')
@@ -42,6 +42,7 @@ optdepends=(
     'nm-connection-editor: advanced network settings from the network popout'
     'hyprland: workspace, window and blur integration'
     'hyprlock: fallback when the Quickshell lock screen (ionix-lock) cannot lock'
+    'hypridle: lock the screen when idle (ionix-idle)'
     'qt6-multimedia-ffmpeg: video backgrounds on the lock screen'
     'fprintd: fingerprint unlock on the lock screen'
     'greetd: log in through ionix-greeter (the lock screen with a username field)'
