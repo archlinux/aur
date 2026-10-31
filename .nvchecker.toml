@@ -1,4 +1,5 @@
+# Listed stable versions from the NuGet search API: the flat container index includes unlisted ones
 [dotnet-vs-threading]
 source = "jq"
-url = "https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.threading.only/index.json"
-filter = '.versions | map(select(contains("-") | not)) | last'
+url = "https://azuresearch-usnc.nuget.org/query?q=packageid:microsoft.visualstudio.threading.only&prerelease=false&semVerLevel=2.0.0"
+filter = ".data[0].versions | map(.version) | last"
