@@ -2,7 +2,7 @@
 
 pkgbase=wyc
 pkgname=wyc
-pkgver=8.0.21
+pkgver=8.0.24
 pkgrel=1
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
@@ -30,8 +30,8 @@ sha256sums=('93c8aa4f7cf2252396dc8de9b7288345867dc30bac36a52174037d506f742062'
             '02517bed1a977b4ad8edc04282300760049f32f97e648da96d86198080ce2d9c'
             '1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523'
             '138f00be0f1c0a8b2a16728e0f146d837f009ae18aeff3c7bee1c08a9fb37e2f')
-sha256sums_x86_64=('60bc1a0e36d3d8b7a583f08cd33e09a8d32ff448e88fc162ced64ae469405ee3')
-sha256sums_aarch64=('2ae04177bcd867bd6d0e91c5e884ad7926996289c7f9bf6eb7bb3f284b68efc4')
+sha256sums_x86_64=('1b08a28b587a5ae330381f61e7c971faa613ff2774838b88663041cde80c8f5c')
+sha256sums_aarch64=('1998ab577bbbf955c2a39c761f70c171be54b37e63581b9cab1b3461d4c7af34')
 noextract=(
     "${pkgname}-clent-linux-x64-${pkgver}.tar.gz"
     "${pkgname}-clent-linux-arm64-${pkgver}.tar.gz"
