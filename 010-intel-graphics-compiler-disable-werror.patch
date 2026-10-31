@@ -1,6 +1,6 @@
 --- a/IGC/CMakeLists.txt
-+++ b/IGC/CMakeLists.txt
-@@ -530,7 +530,7 @@ if(MSVC)
++++ a/IGC/CMakeLists.txt
+@@ -574,7 +574,7 @@ if(MSVC)
        GROUP NAME Optimization       "/O[d12x]"
        GROUP NAME RuntimeLibrary     "/M[TD]d?"
        GROUP NAME Rtti               "/GR-?"
@@ -9,7 +9,7 @@
  
        ALIAS AdditionalOptions          "/w14062" "/Wv:18"
        ALIAS CallingConvCdecl           "/Gd"
-@@ -560,8 +560,8 @@ if(MSVC)
+@@ -604,8 +604,8 @@ if(MSVC)
        ALIAS RtMultiThreadedSharedDebug "/MDd"
        ALIAS RttiDisabled               "/GR-"
        ALIAS RttiEnabled                "/GR"
@@ -20,7 +20,7 @@
        ALIAS UninitializedVarWarning    "/w14701"
        ALIAS UnreferencedVariable       "/w14189"
        ALIAS WholeProgramOptimization   "/GL"
-@@ -578,7 +578,7 @@ elseif(_igc_compiler_is_gnu)
+@@ -622,7 +622,7 @@ elseif(_igc_compiler_is_gnu)
        GROUP NAME Exceptions         "-f(no-)?exceptions"
        GROUP NAME Optimization       "-O[0-3sg]?"
        GROUP NAME Rtti               "-f(no-)?rtti"
@@ -29,7 +29,7 @@
  
        ALIAS AdditionalOptions
        ALIAS CallingConvCdecl
-@@ -608,8 +608,8 @@ elseif(_igc_compiler_is_gnu)
+@@ -652,8 +652,8 @@ elseif(_igc_compiler_is_gnu)
        ALIAS RtMultiThreadedSharedDebug
        ALIAS RttiDisabled               "-fno-rtti"
        ALIAS RttiEnabled                "-frtti"
@@ -40,7 +40,7 @@
        ALIAS UnreferencedVariable
        ALIAS UninitializedVarWarning
        ALIAS WholeProgramOptimization
-@@ -638,7 +638,7 @@ elseif(_igc_compiler_is_clang)
+@@ -690,7 +690,7 @@ elseif(_igc_compiler_is_clang)
        GROUP NAME Exceptions         "-f(no-)?exceptions"
        GROUP NAME Optimization       "-O([0-3]?|fast|s|z)?"
        GROUP NAME Rtti               "-f(no-)?rtti"
@@ -49,7 +49,7 @@
  
        ALIAS AdditionalOptions
        ALIAS CallingConvCdecl
-@@ -668,8 +668,8 @@ elseif(_igc_compiler_is_clang)
+@@ -720,8 +720,8 @@ elseif(_igc_compiler_is_clang)
        ALIAS RtMultiThreadedSharedDebug
        ALIAS RttiDisabled               "-fno-rtti"
        ALIAS RttiEnabled                Rtti REMOVE_GROUP
@@ -60,7 +60,7 @@
        ALIAS UnreferencedVariable
        ALIAS UninitializedVarWarning
        ALIAS WholeProgramOptimization
-@@ -710,8 +710,8 @@ else()
+@@ -762,8 +762,8 @@ else()
        ALIAS RtMultiThreadedSharedDebug
        ALIAS RttiDisabled
        ALIAS RttiEnabled
@@ -71,7 +71,7 @@
        ALIAS UnreferencedVariable
        ALIAS UninitializedVarWarning
        ALIAS WholeProgramOptimization
-@@ -812,7 +812,7 @@ foreach(_compilerFlagName IN ITEMS "CMAKE_CXX_FLAGS" "CMAKE_C_FLAGS")
+@@ -864,7 +864,7 @@ foreach(_compilerFlagName IN ITEMS "CMAK
          ExceptionsEnabled
          MultiProcessorCompilation
          DeadCodeEliminate

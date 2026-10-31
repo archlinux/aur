@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-git
 	pkgdesc = Intel Graphics Compiler for OpenCL (git version)
-	pkgver = 2.31.0.r51.gcea91bb38
+	pkgver = 2.43.2.r55.gce0f67536
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -18,16 +18,16 @@ pkgbase = intel-graphics-compiler-git
 	depends = zlib
 	depends = zstd
 	provides = intel-graphics-compiler
-	provides = intel-opencl-clang=16
+	provides = intel-opencl-clang=22.1
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
 	options = !emptydirs
 	options = !lto
 	source = git+https://github.com/intel/intel-graphics-compiler.git
 	source = git+https://github.com/intel/vc-intrinsics.git
-	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_160
-	source = git+https://github.com/intel/opencl-clang.git#branch=ocl-open-160
-	source = git+https://github.com/llvm/llvm-project.git#tag=llvmorg-16.0.6
+	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_220
+	source = git+https://github.com/intel/opencl-clang.git#branch=ocl-open-220
+	source = git+https://github.com/llvm/llvm-project.git#tag=llvmorg-22.1.8
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#branch=main
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#branch=main
 	source = 010-intel-graphics-compiler-disable-werror.patch
@@ -35,9 +35,9 @@ pkgbase = intel-graphics-compiler-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b47ada280614670a467f80e9f8c67542050983f238f2f4b3fa17682855faf9bf
+	sha256sums = 22acb48afcad5f242c5d3fb4da5686d6e0db60b9ac600eb23bb32dc4135ac596
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7e203588b0ff790a471c2113077b11477ddac0d12bbe60443d32e34170cb0bdb
+	sha256sums = eee95b457f08b7d36c82f1f8f9510ac31cfe7d0feec04072f7930ae66b649974
 
 pkgname = intel-graphics-compiler-git
