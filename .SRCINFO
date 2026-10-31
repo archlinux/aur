@@ -9,6 +9,7 @@ pkgbase = sunshine-virt-display-git
 	makedepends = rsync
 	depends = python
 	depends = python-jeepney
+	depends = sunshine
 	source = sunshine_virt_display::git+https://github.com/frostplexx/sunshine_virt_display.git
 	sha256sums = SKIP
 
