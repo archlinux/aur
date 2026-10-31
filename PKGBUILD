@@ -1,16 +1,17 @@
-# Maintainer: xiota
+# Maintainer: detiam <dehe_tian at outlook dot com>
+# Contributor: xiota
 # Contributor: Michał Kopeć <michal (at) nozomi.space>
 # Contributor: Tomasz Pakuła <tomasz.pakula.oficjalny (at) gmail.com>
 
 ## options
-: ${_build_debug:=false}
+: "${_build_debug:=false}"
 
 _pkgname="xone"
-pkgname="xone-dkms"
+pkgname="xone-dkms-trigger-rumble-hack"
 pkgver=0.5.8
-pkgrel=2
-pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
-url="https://github.com/dlundqvist/xone"
+pkgrel=1
+pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers (with trigger rumble hack)'
+url="https://github.com/detiam/xone"
 license=('GPL-2.0-or-later')
 arch=('any')
 
@@ -22,9 +23,11 @@ makedepends=(
   'git'
 )
 
+provides=("$_pkgname-dkms")
+conflicts=("$_pkgname-dkms")
 _pkgsrc="dlundqvist.xone"
-source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('7ba61ccf2ddb508d6adb30906d3d57dc0ce1bc64a6d1a41796eb94a8584ea63b')
+source=("$_pkgsrc::git+$url.git#commit=1d89d27e8d105d23fa7d051784d8972084945474")
+sha256sums=('029248eefe1020d300b6b117bbdd48e1382f89b4a161607362a3f49c5a174366')
 
 package() {
   # set module version
@@ -39,5 +42,8 @@ package() {
   cp -a "$_pkgsrc"/* "$pkgdir/usr/src/$_pkgname-$pkgver/"
 
   # blacklist xpad module
-  install -Dm644 "$_pkgsrc/install/modprobe.conf" "$pkgdir/usr/lib/modprobe.d/xone-blacklist.conf"
+  install -Dm644 "$_pkgsrc/install/modprobe.conf" "$pkgdir/usr/lib/modprobe.d/$pkgname.conf"
+
+  # enable trigger rumble hack default
+  echo "options xone_gip_gamepad trigger_rumble_mode=3" >> "$pkgdir/usr/lib/modprobe.d/$pkgname.conf"
 }
