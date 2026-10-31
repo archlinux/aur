@@ -2,7 +2,7 @@
 
 _pkg=pyodoo
 pkgname=python-${_pkg}
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Interact with Odoo servers using XML-RPC"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-xlrd: Support for SqlExcelQuery'
             'python-awaitable: Support for asynchronous requests')
 options=(!emptydirs)
 source=("${_pkg}-${pkgver}.tar.gz"::"https://github.com/muflone/${_pkg}/archive/${pkgver}/${pkgver}.tar.gz")
-sha256sums=('d08dc8b0cbaf9ee9292cd26d231ea111822f3aa944256dc49a0a33462bc629de')
+sha256sums=('69252ac53cf0f826508b0777319912b7c6f45955016718aa6595c328298658ab')
 
 build() {
   cd "${_pkg}-${pkgver}"
@@ -24,8 +24,8 @@ build() {
 
 check() {
   cd "${_pkg}-${pkgver}"
-  # Disable tests as demo.odoo.com XML-RPC seems unavailable
-  # PYTHONPATH='.' pytest -v --color=yes tests
+  # Disable XML-RPC/JSON-RPC tests as on demo.odoo.com they're unavailable
+  PYTHONPATH='.' pytest -v -k TestCasesWebRpc --color=yes tests
 }
 
 package() {
