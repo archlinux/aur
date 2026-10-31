@@ -1,6 +1,6 @@
 pkgbase = hyprfm-git
 	pkgdesc = A lightweight Qt6/QML file manager for Hyprland
-	pkgver = r654.g9412ffc
+	pkgver = r665.gfdf866f
 	pkgrel = 1
 	url = https://github.com/soyeb-jim285/hyprfm
 	arch = x86_64
