@@ -1,7 +1,7 @@
 # Maintainer: hosua <joshortiga777@gmail.com>
 pkgname=claws-bin
 _pkgname=claws
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="k9s-inspired TUI for AWS resource management with vim-style navigation (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-amd64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-arm64.tar.gz")
-sha256sums_x86_64=('a93869757952301c7b3f545bd851d596e7b3e91b1296bd9acac8cfc3551b9200')
-sha256sums_aarch64=('5ade6d0023651543932cea3269753cca2190fd8e4a6f5f7a3ec0ba78405b871e')
+sha256sums_x86_64=('c89ed8cf8e1a9e6ad64eaef539dc789b749b467c63bf7530bfd46bdbc497f70b')
+sha256sums_aarch64=('dd16b1f9e437e01d6228b736a16746e0ddd637b1b68ff9ad229d62396d6713bd')
 options=('!strip' '!debug')
 
 package() {

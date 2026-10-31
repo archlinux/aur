@@ -1,6 +1,6 @@
 pkgbase = claws-bin
 	pkgdesc = k9s-inspired TUI for AWS resource management with vim-style navigation (prebuilt binary)
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/clawscli/claws
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = claws-bin
 	conflicts = claws
 	options = !strip
 	options = !debug
-	source_x86_64 = claws-0.18.0-x86_64.tar.gz::https://github.com/clawscli/claws/releases/download/v0.18.0/claws-linux-amd64.tar.gz
-	sha256sums_x86_64 = a93869757952301c7b3f545bd851d596e7b3e91b1296bd9acac8cfc3551b9200
-	source_aarch64 = claws-0.18.0-aarch64.tar.gz::https://github.com/clawscli/claws/releases/download/v0.18.0/claws-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5ade6d0023651543932cea3269753cca2190fd8e4a6f5f7a3ec0ba78405b871e
+	source_x86_64 = claws-0.18.1-x86_64.tar.gz::https://github.com/clawscli/claws/releases/download/v0.18.1/claws-linux-amd64.tar.gz
+	sha256sums_x86_64 = c89ed8cf8e1a9e6ad64eaef539dc789b749b467c63bf7530bfd46bdbc497f70b
+	source_aarch64 = claws-0.18.1-aarch64.tar.gz::https://github.com/clawscli/claws/releases/download/v0.18.1/claws-linux-arm64.tar.gz
+	sha256sums_aarch64 = dd16b1f9e437e01d6228b736a16746e0ddd637b1b68ff9ad229d62396d6713bd
 
 pkgname = claws-bin
