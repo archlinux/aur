@@ -1,7 +1,7 @@
 pkgbase = cef-vaapi
 	pkgdesc = Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)
 	pkgver = 154.0.34
-	pkgrel = 3
+	pkgrel = 4
 	url = https://chromiumembedded.github.io/cef
 	arch = x86_64
 	license = BSD-3-Clause
@@ -44,6 +44,7 @@ pkgbase = cef-vaapi
 	depends = pango
 	depends = systemd-libs
 	depends = libva
+	depends = vulkan-icd-loader
 	depends = fontconfig
 	depends = brotli
 	depends = libjpeg-turbo
@@ -63,7 +64,6 @@ pkgbase = cef-vaapi
 	optdepends = libva-mesa-driver: VAAPI driver for AMD GPUs
 	optdepends = intel-media-driver: VAAPI driver for modern Intel GPUs
 	optdepends = libva-utils: VAAPI diagnostics such as vainfo
-	optdepends = vulkan-icd-loader: Vulkan rendering and hardware WebGPU
 	provides = cef=154.0.34
 	conflicts = cef
 	options = !lto
