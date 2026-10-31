@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 pkgname=crowdsec-nginx-bouncer
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://github.com/crowdsecurity/cs-nginx-bouncer"
@@ -31,8 +31,8 @@ install=cs-nginx-bouncer.install
 source=(
   "$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}.tgz"
 )
-sha512sums=('f6f9d1a771bb47d33efcea73dde78b937f403031e963bbfdd13e2a59b8b13756da462d08635a0fd5c039530bc16812a400171954dc0f8b5b24e4f76d07f3e2d3')
-b2sums=('b3d63660ecf9281f5a5d8f29a9edda4cd02cd8fcae7002eccac1498b9b4ffc9b770a6c7d6eb8804ad6d6d61839190badba1ba8d8ab104c99d3e166ffb2b49ff3')
+sha512sums=('9b2672e88fdfff63fc6f50051c0260ceebe2b2bf05d7bb471102fc48bc14e5f18ce9ce73626d3a14b600c88c13da43401f98e104feb31a5390deb24c0daae022')
+b2sums=('610007c64fc4c6d9d068f45fb29e11c77ed285e8db95bb5a808589ab87bfcfa1138155705a99949d4fbd8479c62a92d17fc04410b13d64ee81c645ac0e37fad3')
 
 prepare() {
   cd "$pkgname-v$pkgver" || exit
