@@ -1,0 +1,26 @@
+pkgbase = xteink-unlocker-bin
+	pkgdesc = Install CrossPoint Reader on USB-locked Xteink devices via their own OTA update mechanism
+	pkgver = 0.2.42
+	pkgrel = 1
+	url = https://crosspointreader.com
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = libayatana-appindicator
+	depends = polkit
+	depends = networkmanager
+	depends = dnsmasq
+	depends = procps-ng
+	depends = hicolor-icon-theme
+	optdepends = polkit-gnome: graphical polkit agent, needed if your session does not run one
+	provides = xteink-unlocker
+	conflicts = xteink-unlocker
+	noextract = XteinkUnlocker_0.2.42_linux-x86_64.deb
+	options = !strip
+	options = !debug
+	source = https://unlocker-releases.crosspointreader.com/v0.2.42/XteinkUnlocker_0.2.42_linux-x86_64.deb
+	sha256sums = 5afdc3bd426c9475248b31fc80e143875b7158da5aaa26a1260a5f68c2c4472b
+
+pkgname = xteink-unlocker-bin
