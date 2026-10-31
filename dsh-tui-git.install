@@ -1,67 +1,65 @@
-# dsh-tui-git.install — profile wiring for the VCS package.
+# dsh-tui-git.install — profile wiring for the VCS package (file: tarball).
 #
-# Why a .install hook at all: the packaged launcher is the *global* copy. Its
-# thin-shell role only delegates to $DSH_HOME/profiles/dsh-tui, so installing
-# files into /usr is not enough to make master code run -- the profile has to
-# point at /usr/lib/dsh-tui. This hook does that with dsh's own plugin manager,
-# which is the supported way to change a profile's dependencies (it resolves the
-# profile, records the dependency, registers the bundle in
-# dsh.profile.bundles and keeps a pnpm lockfile consistent).
+# What installing files into /usr cannot do by itself: `dst` runs the launcher's
+# global *thin shell* copy (/usr/lib/dsh-tui/bin/dsh-tui.js), which only locates
+# the profile copy under $DSH_HOME/profiles/dsh-tui and delegates to it. So the
+# profile has to carry the packaged build, and the supported way to change a
+# profile's dependencies is dsh's own plugin manager (it resolves the profile,
+# records the dependency, registers the bundle in dsh.profile.bundles and keeps
+# the profile's pnpm lockfile consistent):
 #
-# The link is a `link:` dependency, i.e. the profile copy *is* the packaged
-# tree. bin/dsh-tui.js compares the realpath of its own directory with the
-# profile entry and, when they are the same, runs the full application instead
-# of delegating to itself. `dsh-tui --version` then reports "(profile)" with
-# 0.17.0 and `dsh-tui doctor` shows the /usr/lib/dsh-tui copy.
+#   dsh plugin --profile dsh-tui add file:/usr/share/dsh-tui/dsh-tui-<ver>.tgz
+#
+# The payload is the npm tarball upstream's release pipeline publishes, so the
+# profile pnpm installs it exactly like a registry release: its 30 runtime
+# dependencies come from the registry, its bundled @dsh-std/* packages come
+# from inside the tarball, and its 39 @deepseek-ai/* peerDependencies are left
+# to the *running harness* — dsh's process-local module resolution maps those
+# bare names onto the installed dsh 0.2.1-rc.x packages, which is why the tree
+# must live inside the profile rather than be linked out of /usr.
+#
+# Consequently `dsh-tui --version` reports "(profile)" with the packaged
+# version, and what runs is the master build that this package shipped.
 #
 # ─── Modes ────────────────────────────────────────────────────────────────────
-# Set with /etc/dsh-tui-git.conf (one line, e.g. `mode = link-accept-risk`) or
-# the environment variable DSH_TUI_GIT_PROFILE_MODE. The env form only works
-# when the hook is run by hand (e.g. `pacman -S --overwrite ...` reinstall or
-# `source dsh-tui-git.install; post_install`), because pacman does not carry the
-# user's environment into the transaction.
+# Set with /etc/dsh-tui-git.conf (one line, e.g. `mode = bin`) or the
+# environment variable DSH_TUI_GIT_PROFILE_MODE. The env form only works when
+# the hook is run by hand, because pacman does not carry the invoking user's
+# environment into the transaction.
 #
-#   auto (default)     dsh plugin add link:/usr/lib/dsh-tui, gated by dsh's own
-#                      plugin compatibility check. If -- and only if -- the gate
-#                      refuses because the *published* package's peer range is
-#                      older than the running dsh (see the note below), retry
-#                      once after granting dsh's exact-version exemption, so the
-#                      package actually runs the code it was built from. Both the
-#                      refusal and the grant are printed; dsh prints its own
-#                      risk warning as well.
-#   link               Strictly the gated attempt. If dsh refuses, nothing is
-#                      changed and the hook prints the two ways forward.
-#   link-accept-risk   Grant the exact-version exemption up front (name@version +
-#                      running dsh version, --accept-risk), then add the link.
-#   bin (or none)      Do not touch the profile. The first `dsh-tui` run then
-#                      bootstraps the profile from the npm registry exactly like
-#                      dsh-tui-bin does. This is the "thin shell only" mode the
-#                      PKGBUILD header describes; the installed /usr/lib/dsh-tui
-#                      tree is then only a local candidate the launcher ignores.
+#   auto (default)     dsh plugin add file:<our tarball>. dsh's compatibility
+#                      gate is satisfied by the tarball's own manifest: the
+#                      master tree already declares the 0.2.1-rc.2/rc.3/rc.4/rc.5
+#                      peers (published 0.17.0 stops at rc.3, which is why the
+#                      registry spec would need an exemption and this one does
+#                      not). If a future harness line falls outside the tree's
+#                      ranges the hook reports the refusal and explains the
+#                      escape hatch instead of forcing anything.
+#   accept-risk        Grant dsh's exact-version exemption for the packaged
+#                      version on the running dsh (--accept-risk) and then add
+#                      the tarball. Only for a dsh newer than the tree's peer
+#                      ranges; dsh prints its own risk warning.
+#   bin (or none)      Do not touch the profile. `dst` then bootstraps the
+#                      profile from the npm registry on first run — release
+#                      behaviour, i.e. exactly dsh-tui-bin, without uninstalling
+#                      this package.
 #
-# ─── Why the gate rejects a *newer* master tree on an older dsh ───────────────
-# dsh's plugin manager validates a `link:` add against the compatibility
-# metadata of the *published* package of that name, not against the linked
-# directory. Published 0.17.0 lists DSH 0.2.1-rc.3 as its newest supported line,
-# so on dsh 0.2.1-rc.4 the add is refused with `incompatible-version` even though
-# the master tree being linked declares 0.2.1-rc.4/rc.5 peers in its own
-# package.json. The two honest exits are (a) update deepseek-harness to a line
-# the plugin lists, or (b) grant the exact-version exemption and accept the
-# risk -- upstream's own launcher does not have a third one either.
+# ─── Install-time network ────────────────────────────────────────────────────
+# The profile install is a pnpm install, so this hook needs the network to
+# resolve the tarball's dependencies (same nature as dsh-tui-bin's npm install;
+# a warm pnpm store usually means a handful of packages).
 #
 # ─── Safety ───────────────────────────────────────────────────────────────────
 # * Runs the profile mutation as the target user, never as root, and passes HOME
 #   explicitly: pacman's environment would otherwise resolve $HOME to /root and
 #   write a profile into root's home. Without SUDO_USER the first regular uid is
 #   used (same heuristic as dsh-tui-bin).
-# * No network install of the plugin itself: `link:` never resolves the package
-#   from a registry. pnpm may still need the network to satisfy the rest of that
-#   user's profile dependencies; every failure is reported and swallowed so a
-#   profile problem can never abort a pacman transaction.
-# * No temporary files in the user's home beyond what dsh/pnpm create for the
-#   profile they already own.
-# * Removing this package leaves the profile with a dependency on a directory
-#   that no longer exists; pre_remove() says exactly how to converge.
+# * Best effort: every failure (offline, proxy, an unrelated broken profile
+#   dependency) is reported and swallowed, then the exact rerun command is
+#   printed — a profile problem can never abort a pacman transaction. The hook
+#   is idempotent, so `pacman -S dsh-tui-git` or the printed command retries it.
+# * Removing this package leaves the profile depending on a tarball path that no
+#   longer exists; pre_remove() says exactly how to converge.
 #
 # Everything here is best-effort and idempotent: an empty host (no regular
 # users, no dsh, no profile) installs cleanly and prints what was skipped.
@@ -83,92 +81,100 @@ _dsh_tui_git_user() {
   printf '%s' "$user"
 }
 
+# The packaged version, as the plugin manager sees it: the tarball is an npm
+# package of @deepseek-harness-tui/dsh-tui, whose version is 0.17.0 (the pkgver
+# in this package only adds the commit count). The thin launcher copy in
+# /usr/lib/dsh-tui carries the same unmodified package.json.
 _dsh_tui_git_version() {
   node -p "require('/usr/lib/dsh-tui/package.json').version" 2>/dev/null | tr -d '\r\n'
 }
 
+# The tarball to install. pkgrel is part of the file name on purpose (see the
+# PKGBUILD header): a rebuild must change the profile's file: specifier.
+_dsh_tui_git_tarball() {
+  local f
+  for f in $(ls -1t /usr/share/dsh-tui/dsh-tui-*.tgz 2>/dev/null); do
+    printf '%s' "$f"
+    return 0
+  done
+  return 1
+}
+
 # Grant dsh's exact-version exemption for the packaged version on the running
-# dsh. Only reached in link-accept-risk mode.
+# dsh. Only reached in accept-risk mode.
 _dsh_tui_git_allow_version() {
   local user="$1" home="$2" ver="$3" dshver
   dshver=$(runuser -u "$user" -- env HOME="$home" /usr/bin/dsh --version 2>/dev/null | tail -n1 | tr -d '\r\n')
-  [ -n "$dshver" ] || { printf ':: dsh-tui-git: cannot read the installed dsh version; skipping exemption grant.\n'; return 1; }
+  [ -n "$dshver" ] || { printf ':: dsh-tui-git: cannot read the installed dsh version; skipping the exemption grant.\n'; return 1; }
   printf ':: dsh-tui-git: granting the exact-version exemption for @deepseek-harness-tui/dsh-tui@%s on dsh %s.\n' "$ver" "$dshver"
   runuser -u "$user" -- env HOME="$home" /usr/bin/dsh plugin --profile dsh-tui allow-version \
     "@deepseek-harness-tui/dsh-tui@$ver" --dsh-version "$dshver" --accept-risk
 }
 
 _dsh_tui_git_sync() {
-  local mode user home ver
-
-  [ -f /usr/lib/dsh-tui/package.json ] || {
-    printf ':: dsh-tui-git: /usr/lib/dsh-tui is missing; nothing to link.\n'
-    return 0
-  }
+  local mode user home ver tarball
 
   mode=$(_dsh_tui_git_mode)
   case "$mode" in
-    auto | link | link-accept-risk) ;;
+    auto | accept-risk) ;;
     bin | none | thin)
       printf ':: dsh-tui-git: profile mode "%s" -- leaving $DSH_HOME/profiles/dsh-tui untouched.\n' "$mode"
       printf ':: dsh-tui-git: the first dsh-tui run bootstraps the profile from the npm registry (dsh-tui-bin behaviour).\n'
       return 0
       ;;
     *)
-      printf ':: dsh-tui-git: unknown profile mode "%s"; treating it as "link".\n' "$mode"
-      mode=link
+      printf ':: dsh-tui-git: unknown profile mode "%s"; treating it as "auto".\n' "$mode"
+      mode=auto
       ;;
   esac
 
+  if ! tarball=$(_dsh_tui_git_tarball); then
+    printf ':: dsh-tui-git: /usr/share/dsh-tui/dsh-tui-*.tgz is missing; nothing to install into the profile.\n'
+    return 0
+  fi
+
   user=$(_dsh_tui_git_user)
   if [ -z "$user" ]; then
-    printf ':: dsh-tui-git: no regular user found; run `dsh plugin --profile dsh-tui add link:/usr/lib/dsh-tui` as yourself.\n'
+    printf ':: dsh-tui-git: no regular user found; run `dsh plugin --profile dsh-tui add file:%s` as yourself.\n' "$tarball"
     return 0
   fi
   home=$(getent passwd "$user" | cut -d: -f6)
   if [ -z "$home" ] || [ ! -d "$home" ]; then
-    printf ':: dsh-tui-git: cannot resolve the home directory of "%s"; skipping the profile link.\n' "$user"
+    printf ':: dsh-tui-git: cannot resolve the home directory of "%s"; skipping the profile install.\n' "$user"
     return 0
   fi
   if [ ! -x /usr/bin/dsh ]; then
-    printf ':: dsh-tui-git: /usr/bin/dsh is missing (it comes from deepseek-harness); skipping the profile link.\n'
+    printf ':: dsh-tui-git: /usr/bin/dsh is missing (it comes from deepseek-harness); skipping the profile install.\n'
     return 0
   fi
 
   ver=$(_dsh_tui_git_version)
-  printf ':: dsh-tui-git: linking %s profile "dsh-tui" (%s) at /usr/lib/dsh-tui for user "%s".\n' \
-    "$user" "$ver" "$user"
+  printf ':: dsh-tui-git: installing the packaged master build into the dsh profile "dsh-tui" of user "%s" (%s).\n' \
+    "$user" "$ver"
+  printf ':: dsh-tui-git: spec: file:%s\n' "$tarball"
 
-  if [ "$mode" = link-accept-risk ]; then
+  if [ "$mode" = accept-risk ]; then
     _dsh_tui_git_allow_version "$user" "$home" "$ver" || true
   fi
 
   # `timeout` cannot wrap a shell function, so the runuser call stays inline.
-  if timeout 600 runuser -u "$user" -- env HOME="$home" /usr/bin/dsh plugin --profile dsh-tui add "link:/usr/lib/dsh-tui"; then
-    printf ':: dsh-tui-git: profile linked. Verify with: runuser -u %s -- dsh-tui --version   (expect "(profile)")\n' "$user"
+  # The profile install is a pnpm install of the tarball's dependency tree.
+  if timeout 900 runuser -u "$user" -- env HOME="$home" /usr/bin/dsh plugin --profile dsh-tui add "file:$tarball"; then
+    printf ':: dsh-tui-git: profile updated. Verify with: runuser -u %s -- dst --version   (expect "(profile)" and %s)\n' \
+      "$user" "$ver"
     return 0
   fi
 
-  if [ "$mode" = auto ]; then
-    printf '%s\n' \
-      ":: dsh-tui-git: the gated link was refused; retrying with dsh's exact-version exemption" \
-      ":: dsh-tui-git: for @deepseek-harness-tui/dsh-tui@$ver on the running dsh (accept-risk)." \
-      ":: dsh-tui-git: set mode=link in /etc/dsh-tui-git.conf to keep the strict gate instead."
-    _dsh_tui_git_allow_version "$user" "$home" "$ver" || true
-    if timeout 600 runuser -u "$user" -- env HOME="$home" /usr/bin/dsh plugin --profile dsh-tui add "link:/usr/lib/dsh-tui"; then
-      printf ':: dsh-tui-git: profile linked with an exact-version exemption. Verify with: runuser -u %s -- dsh-tui --version   (expect "(profile)")\n' "$user"
-      return 0
-    fi
-  fi
-
   printf '%s\n' \
-    ":: dsh-tui-git: the profile link did NOT happen (details above; the plugin manager rolls back)." \
-    ":: dsh-tui-git: dsh only allows this when the running harness is in the plugin's published peer range." \
-    ":: dsh-tui-git: either upgrade deepseek-harness, or accept the exact-version risk and retry:" \
-    "::   runuser -u $user -- dsh plugin --profile dsh-tui allow-version @deepseek-harness-tui/dsh-tui@$ver --dsh-version <dsh --version> --accept-risk" \
-    "::   runuser -u $user -- dsh plugin --profile dsh-tui add link:/usr/lib/dsh-tui" \
-    ":: dsh-tui-git: or re-run this hook with mode=link-accept-risk (see /etc/dsh-tui-git.conf)." \
-    ":: dsh-tui-git: meanwhile \`dsh-tui\` still runs the profile it already had (release behaviour)."
+    ":: dsh-tui-git: the profile install did NOT complete; the plugin manager rolls back and the profile keeps" \
+    ":: dsh-tui-git: whatever it had. Common causes: no network / proxy for pnpm, or an unrelated broken" \
+    ":: dsh-tui-git: dependency of that profile. Retry the install yourself with:" \
+    ":: dsh-tui-git:   runuser -u $user -- dsh plugin --profile dsh-tui add file:$tarball" \
+    ":: dsh-tui-git: If dsh refused with \"incompatible-version\", the running harness is newer than this" \
+    ":: dsh-tui-git: tree's declared @deepseek-ai/* peers. Either upgrade deepseek-harness later, or accept" \
+    ":: dsh-tui-git: the exact-version risk explicitly (see /etc/dsh-tui-git.conf, mode = accept-risk):" \
+    ":: dsh-tui-git:   runuser -u $user -- dsh plugin --profile dsh-tui allow-version @deepseek-harness-tui/dsh-tui@$ver --dsh-version <dsh --version> --accept-risk" \
+    ":: dsh-tui-git: meanwhile \`dst\` still runs the profile it already had."
   return 0
 }
 
@@ -181,14 +187,16 @@ post_upgrade() {
 }
 
 pre_remove() {
-  local user home
+  local user tarball
   user=$(_dsh_tui_git_user)
   [ -n "$user" ] || return 0
+  tarball=$(_dsh_tui_git_tarball) || tarball=/usr/share/dsh-tui/dsh-tui-<version>.tgz
   printf '%s\n' \
-    ":: dsh-tui-git: the dsh profile \"dsh-tui\" of user \"$user\" still depends on link:/usr/lib/dsh-tui," \
-    "::   which this package is about to delete. The launcher falls back to its bootstrap path, so to" \
-    "::   converge manually either install a release plugin again:" \
+    ":: dsh-tui-git: the dsh profile \"dsh-tui\" of user \"$user\" still depends on file:$tarball," \
+    "::   which this package is about to delete. \`dst\` keeps working with the copy pnpm already" \
+    "::   extracted, but the next profile install would fail. To converge manually either install" \
+    "::   the release plugin again:" \
     "::     runuser -u $user -- dsh plugin --profile dsh-tui add @deepseek-harness-tui/dsh-tui@<version>" \
-    "::   or remove the dangling entry:" \
+    "::   or remove the entry:" \
     "::     runuser -u $user -- dsh plugin --profile dsh-tui remove @deepseek-harness-tui/dsh-tui"
 }

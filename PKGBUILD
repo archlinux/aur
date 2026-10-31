@@ -9,38 +9,96 @@
 # develops on main and only tags every few releases: HEAD is currently 7 commits
 # past v0.17.0 (1798 commits in total), including the DSH 0.2.1-rc.5 adapter
 # changes that no published tarball contains yet. That is the reason this package
-# exists.
+# exists. dsh-tui-bin and this package install the same /usr/bin names, provide
+# the same capability and therefore conflict; only one of them may own the
+# profile dependency.
 #
-# ─── How the launcher works, and why this package does not ship a "thin shell" ───
+# ─── Design: ship the release pipeline's tarball, not a /usr tree ────────────
 #
-# bin/dsh-tui.js is a dual-role launcher. The copy that `npm i -g` puts on PATH
-# is a *thin shell*: it locates the real copy in $DSH_HOME/profiles/dsh-tui and
-# delegates every invocation to it. `dsh-tui update` installs that profile copy
-# from the npm registry. Shipping only the thin shell therefore reproduces the
-# behaviour of a plain npm install of the latest release -- a package called
-# "-git" that silently runs release code. This package installs the built master
-# tree to /usr/lib/dsh-tui and links the dsh profile at it (see the .install
-# file), so the profile copy *is* the packaged tree and `(profile)` in
-# `dsh-tui --version` proves master is running. The launcher detects that the
-# profile entry resolves to its own directory (realpath comparison) and skips
-# delegation instead of looping; that is what makes the link approach safe.
-# The .install hook is switchable (/etc/dsh-tui-git.conf): `auto` (default) links
-# the profile, granting dsh's narrow exact-version exemption only when dsh's
-# gate refuses on stale published metadata; `link` keeps the strict gate;
-# `link-accept-risk` grants up front; `bin` skips the profile entirely and is
-# then exactly the thin-shell package for people who want release behaviour.
+# The payload is exactly what upstream publishes: `npm pack` of the compiled
+# repository root, i.e. package.json "files" plus the eight bundledDependencies
+# (@dsh-std/* and @dsh-tui-vendor/mathjax-tex-svg, built from the vendor/
+# submodules). It is installed as
 #
-# ─── Build chain (mirrors .github/workflows/publish.yml) ───
+#     /usr/share/dsh-tui/dsh-tui-<pkgver>-<pkgrel>.tgz
+#
+# and the .install hook adds it to the user's dsh profile as a *file:* plugin:
+#
+#     dsh plugin --profile dsh-tui add file:/usr/share/dsh-tui/dsh-tui-....tgz
+#
+# The profile's own pnpm then installs that tarball under
+# $DSH_HOME/profiles/dsh-tui/node_modules/@deepseek-harness-tui/dsh-tui exactly
+# like an npm release, resolving its 30 runtime dependencies from the registry.
+# Its 39 @deepseek-ai/* peerDependencies are not installed into the profile at
+# all: when the app runs, dsh's own process-local module resolution maps those
+# bare names onto the running harness installation (dsh 0.2.1-rc.4 ships 306 of
+# them under /usr/lib/node_modules/@deepseek-ai/dsh/node_modules). That is why
+# the tree must live *inside* the profile and must not be linked from /usr.
+#
+# The previous pkgrel shipped the compiled tree at /usr/lib/dsh-tui and linked
+# the profile at it (`add link:/usr/lib/dsh-tui`). That cannot work: ESM
+# resolution for /usr/lib/dsh-tui/lib/... walks /usr/lib/dsh-tui/node_modules,
+# /usr/lib/node_modules, ... and none of them contains the @deepseek-ai/*
+# packages, while the `link:` install had also pruned the profile's own copies.
+# `dst` died with ERR_MODULE_NOT_FOUND on @deepseek-ai/dsh-session-persistence-jsonl
+# (imported by lib/types/dsh-adapter/migrate/index.js). Corollary, and the rule
+# this package now follows: the full application tree is never installed outside
+# $DSH_HOME.
+#
+# /usr/lib/dsh-tui therefore only holds the launcher's *global (thin shell)*
+# role: bin/dsh-tui.js + package.json. That copy is what /usr/bin/dst and
+# /usr/bin/dsh-tui point at; it looks up the profile copy and delegates every
+# invocation to it (`dst --version` prints `(profile)`), so the code that runs
+# is always the packaged profile tree, never a /usr copy and never a registry
+# release. The launcher is written for exactly this split (its bootstrap path is
+# what `npm i -g` uses), so no file of it is patched.
+#
+# ─── Build-time network and disk ────────────────────────────────────────────
+#
+# The build is not sandboxed from the network, same as the release pipeline:
+#   * `git submodule update` fetches vendor/dsh-std from GitHub;
+#   * `pnpm install --frozen-lockfile` fetches the whole dev tree (the DSH
+#     0.2.1-rc.x stack, TypeScript, tsdown, ...) -- roughly 1 GiB on a cold
+#     store. A warm pnpm store (pnpm_config_store_dir, override the variable to
+#     reuse one) turns the install into a hard-link pass of ~40 s.
+# The resulting package is ~19 MB: the 18.6 MB npm tarball plus the launcher.
+#
+# ─── Install-time network (pacman hook) ─────────────────────────────────────
+#
+# The profile install is a pnpm install, so *installing this package* needs the
+# network: pnpm resolves the tarball's dependencies from the configured
+# registry. This is the same nature as dsh-tui-bin (npm install at install
+# time). The hook is best effort by design: a failure (offline, proxy, broken
+# unrelated profile dependency) never aborts the pacman transaction, it prints
+# the exact command to rerun. A rerun of `pacman -S dsh-tui-git` or of that
+# command is enough, the hook is idempotent.
+#
+# The tarball's file name carries pkgrel on purpose: the profile's dependency
+# specifier is the file path, and pnpm only re-resolves a file: dependency when
+# its specifier changes. Same pkgver with a new pkgrel (a rebuild) must still
+# refresh the profile.
+#
+# ─── dsh compatibility gate: why the tarball and not the registry ────────────
+#
+# `dsh plugin add` refuses a plugin whose declared @deepseek-ai/* peer ranges do
+# not include the running harness. For a registry spec dsh validates the
+# *published* manifest: published 0.17.0 tops out at dsh 0.2.1-rc.3, so on
+# 0.2.1-rc.4 it is refused with `incompatible-version` unless the user grants an
+# exact-version exemption first. This package needs no exemption: the tarball is
+# our compiled master manifest, which already lists 0.2.1-rc.2/rc.3/rc.4/rc.5
+# (and 0.2.0-rc.x) -- the profile install passes the gate on its own. If a
+# future dsh line is newer than the tree's ranges, the hook reports the refusal
+# and offers the explicit `allow-version` (mode = accept-risk) escape hatch.
+#
+# ─── Build chain (mirrors .github/workflows/publish.yml) ────────────────────
 #   pnpm install --frozen-lockfile   # root `prepare` already runs the compile
 #   pnpm compile                     # build-vendor -> clean -> tsc -> settings
-# The pnpm-lock.yaml is authoritative (frozen) and the build is not sandboxed
-# from the network: `pnpm install` fetches the full dev tree (the DSH 0.2.1-rc.5
-# stack, TypeScript, tsx, tsdown for the vendored dsh-std) from the registry and
-# `git submodule update` fetches vendor/dsh-std from GitHub. Total download is
-# roughly 0.9-1.1 GiB. Nothing but the runtime closure is installed into the
-# package (see build()).
+#   pnpm verify:package              # upstream tarball gate (files/files list)
+#   node scripts/with-publish-manifest.mjs npm pack --ignore-scripts
+# `pnpm verify:build` (the release job's runtime gate) is deliberately not run:
+# it is a full test suite, not a packaging check.
 #
-# ─── vendor/dsh-std is a submodule, and building without it cannot work ───
+# ─── vendor/dsh-std is a submodule, and building without it cannot work ────
 # .gitmodules pins vendor/dsh-std -> https://github.com/T-Auto/dsh-std.git
 # (currently 614dfa1ac168db79fcf4577cf0ebb34e2e3b944b). Upstream's publish
 # workflow comments that a checkout without it produces dangling workspace
@@ -48,7 +106,18 @@
 # submodule commit is fixed by the superproject tree, so the checkout stays
 # reproducible even though it is fetched at build time.
 #
-# ─── pnpm version ───
+# ─── Why npm packs, and why the manifest wrapper ───────────────────────────
+# @dsh-std/* are *workspace* packages used as bundleDependencies; the repo
+# depends on them as `workspace:*`, which a published manifest cannot carry and
+# which pnpm refuses to pack under its isolated linker. scripts/with-publish-
+# manifest.mjs (upstream's own publish wrapper) rewrites those entries to exact
+# optionalDependencies for the duration of the npm command and restores the
+# manifest afterwards, so npm packs the physical copies out of
+# node_modules/@dsh-std/* (symlinks into vendor/dsh-std/packages/*) into the
+# tarball. --ignore-scripts matches `npm publish --ignore-scripts` in
+# publish.yml: lib/ is already built above.
+#
+# ─── pnpm version ───────────────────────────────────────────────────────────
 # package.json pins packageManager: pnpm@11.21.0. Arch ships pnpm 12.x and the
 # /etc/npmrc-driven global prefix (/usr/local/lib/pnpm-global) is not writable
 # during a build, which makes pnpm's package-manager self-management abort the
@@ -63,26 +132,32 @@
 
 pkgname=dsh-tui-git
 pkgver=0.17.0.r1798.g83fcf89
-pkgrel=1
+pkgrel=2
 pkgdesc='Claude Code style fullscreen TUI launcher for DeepSeek Harness (dsh), built from the main branch'
-arch=('x86_64')
+# No compiled artifact of our own ships (the payload is a portable npm tarball
+# of JavaScript plus assets, and the launcher is JS), so the package is 'any'.
+# The arch-specific pieces of the closure (sharp, sixel, ...) are optional
+# dependencies that the profile's pnpm fetches for the user's own platform.
+arch=('any')
 url='https://github.com/ccch1mneyyy/dsh-TUI'
 license=('MIT')
-# Same runtime deps as dsh-tui-bin: the harness provides /usr/bin/dsh, node runs
-# the launcher, pnpm is what the profile's plugin installs are driven with.
+# Same runtime deps as dsh-tui-bin: the harness provides /usr/bin/dsh (and the
+# @deepseek-ai/* packages the app resolves at runtime), node runs the launcher,
+# pnpm is what the profile's plugin installs are driven with.
 depends=('deepseek-harness' 'nodejs' 'pnpm')
 # git: VCS source + submodule; npm: the root `prepare` script shells out to
-# `npm run compile`. nodejs/pnpm are not repeated here -- they are already
-# runtime dependencies and makepkg installs depends for the build too.
+# `npm run compile`, and the payload is produced by `npm pack`.
+# nodejs/pnpm are not repeated here -- they are already runtime dependencies and
+# makepkg installs depends for the build too.
 makedepends=('git' 'npm')
 install="$pkgname.install"
-# The payload is JavaScript plus the sharp/node native addons inside node_modules;
-# stripping is pointless there and debug symbols do not exist.
+# The payload is an npm tarball plus the launcher JS; stripping is pointless
+# there, and the tarball has to stay byte-identical to be a valid npm artifact.
 options=('!strip' '!debug')
 provides=('dsh-tui')
 # dsh-tui-bin installs the same launcher and the same /usr/bin names; dsh-tui is
 # the base name both provide, dsh-git is the convention used by the sibling
-# harness packages. Only one of them may own the profile link.
+# harness packages. Only one of them may own the profile dependency.
 conflicts=('dsh-tui' 'dsh-tui-bin' 'dsh-git')
 
 source=("$pkgname::git+https://github.com/ccch1mneyyy/dsh-TUI.git#branch=main")
@@ -122,9 +197,7 @@ build() {
   export pnpm_config_manage_package_manager_versions=false
 
   # CI recipe. The root `prepare` script runs the compile as part of this
-  # install; the explicit `pnpm compile` afterwards is what publish.yml does and
-  # keeps the packaged lib/ identical to the published one (build-vendor is
-  # stamp-cached, so the second pass only re-runs clean + tsc + settings).
+  # install; the explicit `pnpm compile` afterwards is what publish.yml does.
   pnpm install --frozen-lockfile
   pnpm compile
 
@@ -133,72 +206,53 @@ build() {
   test -f lib/types/dsh-adapter/invariant.js
   test -f lib/settings.json
 
-  # Runtime dependency closure only. A full `pnpm install` leaves ~770 MiB of
-  # devDependencies (the whole @deepseek-ai/dsh-* dev tree, TypeScript, tsdown)
-  # in node_modules/.pnpm; installing the production graph from scratch brings
-  # that to ~62 MiB and drops the dev-only peers that pnpm auto-installs for the
-  # root project. --ignore-scripts keeps `prepare` (and therefore the compile)
-  # from running again in this pruned tree.
-  rm -rf node_modules
-  pnpm install --frozen-lockfile --prod --ignore-scripts
+  # Upstream's tarball gate: every manifest entry point, the packaged preset,
+  # the user guide, the first-party feed, and no CLI test fixtures.
+  pnpm verify:package
+
+  # The tarball the release pipeline publishes. npm, not pnpm: see the header.
+  node scripts/with-publish-manifest.mjs npm pack --ignore-scripts
+
+  local _tgz
+  _tgz=$(ls -1 deepseek-harness-tui-dsh-tui-*.tgz)
+  [ -n "$_tgz" ] || { error "npm pack produced no tarball"; return 1; }
+  # Fail the build instead of shipping a payload that cannot start: the runtime
+  # entry points must be in the tarball and all eight bundled workspace
+  # packages must have been dereferenced into node_modules/. A missing bundle is
+  # exactly the kind of "packed fine, dies at runtime" payload this package must
+  # never publish again.
+  local _f
+  for _f in package/lib/types/index.js package/lib/types/dsh-adapter/invariant.js \
+    package/lib/settings.json package/bin/dsh-tui.js package/package.json \
+    package/cordis.yml package/cordis.patch.yml package/tui-profile/feed/first-party.json; do
+    tar -tzf "$_tgz" "$_f" > /dev/null || { error "tarball is missing $_f"; return 1; }
+  done
+  local _bundled
+  _bundled=$(tar -tzf "$_tgz" |
+    grep -cE '^package/node_modules/(@dsh-std/[a-z]+|@dsh-tui-vendor/mathjax-tex-svg)/package\.json$')
+  [ "$_bundled" -eq 8 ] || { error "tarball carries $_bundled/8 bundled packages"; return 1; }
 }
 
 package() {
   cd "$pkgname"
 
-  # /usr/lib/dsh-tui is deliberately not an npm global prefix: it is an
-  # application payload with its own node_modules, and the dsh profile links
-  # this directory. The relative layout of node_modules/ and vendor/ has to be
-  # preserved byte-for-byte in structure: pnpm's symlinks inside node_modules
-  # resolve as ../../vendor/... and node's resolver walks back up through them.
-  install -d "$pkgdir/usr/lib/dsh-tui"
+  local _tgz
+  _tgz=$(ls -1 deepseek-harness-tui-dsh-tui-*.tgz)
+  [ -n "$_tgz" ] || { error "npm pack produced no tarball"; return 1; }
 
-  # What `npm publish` ships (the "files" list in package.json) plus the
-  # files npm always includes. src/, docs/, scripts/ and the test fixtures are
-  # build-time only.
-  cp -a bin cli lib assets locale presets guide tui-profile \
-    cordis.yml cordis.patch.yml package.json README.md \
-    "$pkgdir/usr/lib/dsh-tui/"
+  # The one artifact the profile installs. pkgrel is part of the name so an
+  # upgrade always changes the profile's file: specifier (see the header).
+  install -Dm644 "$_tgz" \
+    "$pkgdir/usr/share/dsh-tui/dsh-tui-$pkgver-$pkgrel.tgz"
 
-  # Built workspace packages. node_modules/@dsh-std/* and
-  # node_modules/@dsh-tui-vendor/* are symlinks into vendor/, so the target
-  # directories must ship; vendor/dsh-std/node_modules (the nested build tree,
-  # ~119 MiB) is not needed at runtime.
-  install -d "$pkgdir/usr/lib/dsh-tui/vendor/dsh-std"
-  cp -a vendor/dsh-std/packages "$pkgdir/usr/lib/dsh-tui/vendor/dsh-std/"
-  cp -a vendor/mathjax-tex-svg "$pkgdir/usr/lib/dsh-tui/vendor/"
-
-  # The workspace packages carry pnpm's build-time node_modules (links into the
-  # dev store that the nested vendor/ build created). Runtime never reads them:
-  # the bundled @dsh-std/* packages import their siblings by walking up to
-  # /usr/lib/dsh-tui/node_modules, and peers come from the dsh host. Shipping
-  # them would only add dangling links, so drop them.
-  find "$pkgdir/usr/lib/dsh-tui/vendor" -type d -name node_modules -prune -exec rm -rf {} +
-
-  # Production dependency tree (pnpm isolated linker: .pnpm store + relative
-  # symlinks, portable as a whole).
-  cp -a node_modules "$pkgdir/usr/lib/dsh-tui/"
-
-  # pnpm bookkeeping that points at $srcdir; meaningless (and misleading) once
-  # the tree lives in /usr.
-  rm -f "$pkgdir/usr/lib/dsh-tui/node_modules/.modules.yaml" \
-    "$pkgdir/usr/lib/dsh-tui/node_modules/.pnpm-workspace-state-v1.json"
-  rm -rf "$pkgdir/usr/lib/dsh-tui/node_modules/.pnpm-task-run-state-v1" \
-    "$pkgdir/usr/lib/dsh-tui/node_modules/.cache"
-
-  # Any link left dangling after the pruning above (pnpm hoisting bookkeeping
-  # for dev-only packages) is dead weight in a package; remove it so
-  # `pacman -Qkk` stays clean. The empty directories that pnpm's bookkeeping
-  # leaves behind go with it (namcap flags empty dirs).
-  find "$pkgdir/usr/lib/dsh-tui" -xtype l -delete
-  find "$pkgdir/usr/lib/dsh-tui" -depth -type d -empty -delete
-
-  # cp -a preserves the build-time modes, and pnpm creates a few directories as
-  # 0777. The payload is root-owned data read by node; normalise it (executable
-  # bits survive: the launcher scripts in bin/ and the .bin shims keep them).
-  find "$pkgdir/usr/lib/dsh-tui" -type d -exec chmod 755 {} +
-  find "$pkgdir/usr/lib/dsh-tui" -type f ! -perm /u+x -exec chmod 644 {} +
-  find "$pkgdir/usr/lib/dsh-tui" -type f -perm /u+x -exec chmod 755 {} +
+  # Global copy on PATH: the launcher's thin-shell role, and nothing else. It
+  # reads its own package.json (name/version) and delegates to
+  # $DSH_HOME/profiles/dsh-tui/node_modules/@deepseek-harness-tui/dsh-tui.
+  # Shipping the application tree here would put lib/ back on the plain-node
+  # ESM path outside the profile, which is what used to crash (see the header).
+  install -d "$pkgdir/usr/lib/dsh-tui/bin"
+  install -m755 bin/dsh-tui.js "$pkgdir/usr/lib/dsh-tui/bin/dsh-tui.js"
+  install -m644 package.json LICENSE README.md "$pkgdir/usr/lib/dsh-tui/"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD_PARTY_LICENSES "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES"
