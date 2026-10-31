@@ -1,0 +1,17 @@
+pkgbase = goquark-git
+	pkgdesc = Unofficial Quark Drive CLI/TUI/MCP client (git version)
+	pkgver = 1.2.0.r0.g0cbc221
+	pkgrel = 1
+	url = https://github.com/ButterFuture/GoQuark
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go>=1.26
+	provides = goquark=1.2.0.r0.g0cbc221
+	conflicts = goquark
+	options = !lto
+	source = goquark-git::git+https://github.com/ButterFuture/GoQuark.git
+	sha256sums = SKIP
+
+pkgname = goquark-git
