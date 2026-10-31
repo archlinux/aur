@@ -3,7 +3,7 @@
 
 pkgname=electrum-abc-bin
 pkgdesc='Lightweight eCash wallet'
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 url='https://bitcoinabc.org/electrum'
 arch=('x86_64')
@@ -14,7 +14,7 @@ validpgpkeys=(D77BFAEDC2C0AD61D9D5DC32B838D022AFCF71C9 # Pierre K <pierrekn@gmai
 _appimage="ElectrumABC-${pkgver}-${arch}.AppImage"
 _pkgbin=electrum-abc
 source_x86_64=("https://github.com/Bitcoin-ABC/ElectrumABC/releases/download/${pkgver}/${_appimage}")
-sha256sums_x86_64=('3e1b22424d23ede0b7f33872af3425ef46edaaac26305373a0cc034656cd39e3')
+sha256sums_x86_64=('60a0488cb17eeef479a06d48433aaeac72f2d717ff5bfc3b9b854da8ed526d4c')
 
 package() {
     # Extract files
