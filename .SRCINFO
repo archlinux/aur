@@ -1,6 +1,6 @@
 pkgbase = at1ass-shell-git
 	pkgdesc = Config-first Quickshell desktop shell for Hyprland
-	pkgver = 0.1.0.r7.g5a6344fb
+	pkgver = 0.1.0.r15.g06ae513f
 	pkgrel = 1
 	url = https://github.com/At1ass/shell
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = at1ass-shell-git
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = python
-	makedepends = qt6-base>=6.8
-	makedepends = qt6-declarative>=6.8
+	makedepends = qt6-base>=6.10
+	makedepends = qt6-declarative>=6.10
 	makedepends = libical>=4.0
 	makedepends = libqalculate
 	makedepends = lm_sensors
@@ -26,11 +26,11 @@ pkgbase = at1ass-shell-git
 pkgname = at1ass-shell-git
 	pkgdesc = Config-first desktop shell for Hyprland
 	arch = any
-	depends = at1ass-shell-plugins-git=0.1.0.r7.g5a6344fb
+	depends = at1ass-shell-plugins-git=0.1.0.r15.g06ae513f
 	depends = quickshell>=0.3.2
 	depends = hyprland>=0.56
-	depends = qt6-base>=6.8
-	depends = qt6-declarative>=6.8
+	depends = qt6-base>=6.10
+	depends = qt6-declarative>=6.10
 	depends = qt6-wayland
 	depends = qt6-svg
 	depends = app2unit
@@ -76,10 +76,10 @@ pkgname = at1ass-shell-git
 	optdepends = hyprsunset: night-light temperature control
 	optdepends = curl: remote wallpaper downloads
 	optdepends = qt6-imageformats: additional wallpaper and image codecs
-	optdepends = hypridle: idle locking and suspend integration
+	optdepends = hypridle: Caffeine idle inhibition, idle locking and suspend integration
 	optdepends = vdirsyncer: external CalDAV synchronization
 	optdepends = uwsm: optional graphical-session and environment management
-	provides = at1ass-shell=0.1.0.r7.g5a6344fb
+	provides = at1ass-shell=0.1.0.r15.g06ae513f
 	conflicts = at1ass-shell
 
 pkgname = at1ass-shell-plugins-git
@@ -90,27 +90,27 @@ pkgname = at1ass-shell-plugins-git
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = qt6-base
-	depends = qt6-declarative
+	depends = qt6-base>=6.10
+	depends = qt6-declarative>=6.10
 	depends = libical>=4.0
 	depends = libqalculate
 	depends = lm_sensors
 	depends = glib2
 	depends = libsecret
 	optdepends = nvidia-utils: NVIDIA GPU statistics through optional dynamically loaded NVML
-	provides = at1ass-shell-plugins=0.1.0.r7.g5a6344fb
+	provides = at1ass-shell-plugins=0.1.0.r15.g06ae513f
 	conflicts = at1ass-shell-plugins
 
 pkgname = at1ass-shell-greeter-git
 	pkgdesc = Optional greetd greeter for the at1ass desktop shell
 	arch = any
-	depends = at1ass-shell-plugins-git=0.1.0.r7.g5a6344fb
+	depends = at1ass-shell-plugins-git=0.1.0.r15.g06ae513f
 	depends = quickshell>=0.3.2
 	depends = hyprland>=0.57
 	depends = greetd
 	depends = bash
-	depends = qt6-base>=6.8
-	depends = qt6-declarative>=6.8
+	depends = qt6-base>=6.10
+	depends = qt6-declarative>=6.10
 	depends = qt6-wayland
 	depends = qt6-svg
 	depends = systemd
@@ -120,7 +120,7 @@ pkgname = at1ass-shell-greeter-git
 	optdepends = accountsservice: selected-user avatar from the system account service
 	optdepends = greetd-regreet: fallback if the Quickshell greeter fails
 	optdepends = upower: optional battery status in the greeter
-	provides = at1ass-shell-greeter=0.1.0.r7.g5a6344fb
+	provides = at1ass-shell-greeter=0.1.0.r15.g06ae513f
 	conflicts = at1ass-shell-greeter
 	backup = etc/greetd/greeter.json
 	backup = etc/greetd/hyprland-greeter.lua

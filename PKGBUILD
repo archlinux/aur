@@ -2,14 +2,14 @@
 # Public source by default. tools/build-arch.sh builds a committed local checkout.
 pkgbase=at1ass-shell-git
 pkgname=(at1ass-shell-git at1ass-shell-plugins-git at1ass-shell-greeter-git)
-pkgver=0.1.0.r7.g5a6344fb
+pkgver=0.1.0.r15.g06ae513f
 pkgrel=1
 pkgdesc='Config-first Quickshell desktop shell for Hyprland'
 arch=(x86_64)
 url='https://github.com/At1ass/shell'
 license=('GPL-3.0-or-later')
 # All split-package runtime libraries are also needed when building from scratch.
-makedepends=(git cmake ninja pkgconf python 'qt6-base>=6.8' 'qt6-declarative>=6.8'
+makedepends=(git cmake ninja pkgconf python 'qt6-base>=6.10' 'qt6-declarative>=6.10'
              'libical>=4.0' libqalculate lm_sensors rapidfuzz-cpp glib2 libsecret)
 _submodule=src/plugins/external/material-color-utilities
 _mcu_commit=07b2c68508039e178bcf1317ad0cf0af4c36be0f
@@ -45,7 +45,7 @@ package_at1ass-shell-git() {
     pkgdesc='Config-first desktop shell for Hyprland'
     arch=(any)
     depends=("at1ass-shell-plugins-git=${pkgver}" 'quickshell>=0.3.2' 'hyprland>=0.56'
-             'qt6-base>=6.8' 'qt6-declarative>=6.8' qt6-wayland qt6-svg app2unit xdg-terminal-exec
+             'qt6-base>=6.10' 'qt6-declarative>=6.10' qt6-wayland qt6-svg app2unit xdg-terminal-exec
              bash coreutils findutils gawk grep sed glib2 systemd pam util-linux which hicolor-icon-theme
              ttf-roboto ttf-dejavu ttf-material-symbols-variable)
     optdepends=(
@@ -75,7 +75,7 @@ package_at1ass-shell-git() {
         'hyprsunset: night-light temperature control'
         'curl: remote wallpaper downloads'
         'qt6-imageformats: additional wallpaper and image codecs'
-        'hypridle: idle locking and suspend integration'
+        'hypridle: Caffeine idle inhibition, idle locking and suspend integration'
         'vdirsyncer: external CalDAV synchronization'
         'uwsm: optional graphical-session and environment management'
     )
@@ -93,7 +93,7 @@ package_at1ass-shell-git() {
 
 package_at1ass-shell-plugins-git() {
     pkgdesc='Native QML modules for the at1ass desktop shell'
-    depends=(glibc libgcc libstdc++ qt6-base qt6-declarative
+    depends=(glibc libgcc libstdc++ 'qt6-base>=6.10' 'qt6-declarative>=6.10'
              'libical>=4.0' libqalculate lm_sensors glib2 libsecret)
     license=('GPL-3.0-or-later' 'Apache-2.0' 'MIT')
     optdepends=('nvidia-utils: NVIDIA GPU statistics through optional dynamically loaded NVML')
@@ -111,7 +111,7 @@ package_at1ass-shell-greeter-git() {
     arch=(any)
     pkgdesc='Optional greetd greeter for the at1ass desktop shell'
     depends=("at1ass-shell-plugins-git=${pkgver}" 'quickshell>=0.3.2' 'hyprland>=0.57'
-             greetd bash 'qt6-base>=6.8' 'qt6-declarative>=6.8' qt6-wayland qt6-svg systemd
+             greetd bash 'qt6-base>=6.10' 'qt6-declarative>=6.10' qt6-wayland qt6-svg systemd
              ttf-roboto ttf-dejavu ttf-material-symbols-variable)
     optdepends=('accountsservice: selected-user avatar from the system account service'
                 'greetd-regreet: fallback if the Quickshell greeter fails'
