@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=ATK-Logic
+Name[zh_CN]=ATK-Logic
+Comment=ATK-Logic protocol analyzer
+Exec=atk-logic
+Icon=atk-logic
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development;Electronics;
+StartupWMClass=ATK-LogicView
+MimeType=application/atkdl;
