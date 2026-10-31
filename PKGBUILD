@@ -81,7 +81,7 @@ EOF
 prepare() {
   # Arcade is part of the source-built .NET of Arch Linux (dotnet-source-built-artifacts), which
   # Arch Linux ARM doesn't have. It can't be a makedepends of an arch=any package, so it's used when
-  # it's installed, and Arcade comes from dotnet-eng otherwise.
+  # it's installed, and comes from dotnet-eng where it isn't (Arch Linux ARM).
   mkdir -p nuget-local
   local _artifacts _arcade
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
@@ -93,6 +93,13 @@ prepare() {
     _arcade="${_arcade##*/Microsoft.DotNet.Arcade.Sdk.}"
     echo "${_arcade%.nupkg}" >arcade-version
   done
+  # The Arcade on dotnet-eng targets an unreleased .NET SDK and won't load on the released one (MSB4062,
+  # Microsoft.Build.Framework.IMultiThreadableTask), so x86_64 requires the source-built artifacts
+  # rather than falling back to it.
+  if [[ "$CARCH" == x86_64 && ! -f "$srcdir/arcade-version" ]]; then
+    echo 'dotnet-roslyn needs dotnet-source-built-artifacts on x86_64' >&2
+    exit 1
+  fi
 
   cd "roslyn-$_commit" || exit
   # Upstream's NuGet.config, which has all of Microsoft's feeds the tests need
