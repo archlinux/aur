@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=9.1.r128097.g46f23be8b1
+pkgver=9.1.r128247.g11ef8d60d6
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.5'
@@ -110,7 +110,7 @@ depends=(
     'srt'
     'svt-av1'
     'svt-hevc'
-    'svt-jpeg-xs-git'
+    'svt-jpeg-xs'
     'svt-vp9'
     'tesseract'
     'twolame'
@@ -178,11 +178,11 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
 sha256sums=('SKIP'
             'SKIP'
             'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
-            '13132f22a475acd811a5610ffab08d6156d992b40dad0ddcacd8a76a9e8cdd74'
+            'bf222066441afd11473dc755a6dcaacfa78a7b0a1f3bcb95d36ce54fc95f96e2'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            'bb16c7022349600f672f42e60c1133ce9a5956ef25dd81273f9ff1444c0eb7e7'
+            'b55beed25b9377e0c9c9727e19307f219c6d750094ac37a38887309e26e4b116'
             '141981e5596b6f7031825f117036fe152121c255ea3be7b3baf8871a87f64599'
-            'd8c3e8b8d107eda4ef7c921bc20a9250d8c9aed47e4602c1d57e479bffb25bd2'
+            '15d4ed10bfcb6a5f9bc1c22db2ba549c246082b48dfa907ae9fcf6451e243d65'
             'c39addf190d25d1182c5c5658677f77ee7c1ae542969b2004441c62a425d324b'
             '2c846c629ad129ae8ce50791de4f1d390714db6d6420a35406b83b9b44999d4a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
