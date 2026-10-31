@@ -2,9 +2,9 @@
 pkgname=neoarch-git
 pkgver=3.2.0.r0.g0000000
 pkgrel=1
-pkgdesc="NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)"
+pkgdesc="NeoArch Package Manager for Arch Linux (beta channel for dev builds; use 'neoarch' for stable)"
 arch=('any')
-url="https://github.com/neoarch712/Neoarch"
+url="https://github.com/sanjayadanushka712/Neoarch"
 license=('GPL-3.0-or-later')
 # Core runtime — the app cannot work without these
 depends=('python-pyqt6' 'python-requests' 'python-keyring' 'python-defusedxml' 'qt6-svg' 'git')
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
 install=neoarch-git.install
-source=("git+https://github.com/neoarch712/Neoarch.git#branch=dev")
+source=("git+https://github.com/sanjayadanushka712/Neoarch.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -50,8 +50,12 @@ package() {
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/packaging/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
   sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   sed -i 's|Icon=.*|Icon=neoarch|' "$pkgdir/usr/share/applications/neoarch.desktop"
-  # Install icon
+  # Install icon — PNG fallback for every desktop, optional scalable SVG
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/app/icon.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
+  if [[ -f "$pkgdir/opt/neoarch/Neoarch/assets/icons/NeoarchLogo.svg" ]]; then
+    install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/NeoarchLogo.svg" \
+      "$pkgdir/usr/share/icons/hicolor/scalable/apps/neoarch.svg"
+  fi
   # Install license
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
