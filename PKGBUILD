@@ -2,7 +2,7 @@
 # Ely Office desktop apps. Named *-app-bin because the standard ely-*-bin
 # names are already taken on AUR by another maintainer.
 pkgname=ely-tree-app-bin
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="ElyTree - file tree and document organizer from the Ely Office suite"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('ely-tree' 'ely-tree-bin')
 
 options=('!strip' '!debug')
 source_x86_64=("ely-tree_${pkgver}-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v${pkgver}/ely-tree_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('aeba13a49de0edc50e5e160e05fcacbd8e9df783238fb2c9074b781d26ffcc72')
+sha256sums_x86_64=('e6065d58698a0c1317b7dabc6e7898ee3ec2b603b70c7b8a9fbf76724635db90')
 
 package() {
     local _deb="ely-tree_${pkgver}-1_amd64.deb"
