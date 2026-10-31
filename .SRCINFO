@@ -1,6 +1,6 @@
 pkgbase = craft-launcher-bin
 	pkgdesc = The Craft App Launcher (prebuilt binary)
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/storytold/craft-launcher
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = craft-launcher-bin
 	conflicts = craft-launcher
 	conflicts = artcraft-launcher
 	options = !strip
-	source_x86_64 = artcraft-launcher-0.10.0-linux-x86_64.tar.gz::https://github.com/storytold/craft-launcher/releases/download/v0.10.0/artcraft-launcher-0.10.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 0fe6f6a59e594a9d3f599db41aac79f38013a0bf2943f8fdddf825626c425837
-	source_aarch64 = artcraft-launcher-0.10.0-linux-aarch64.tar.gz::https://github.com/storytold/craft-launcher/releases/download/v0.10.0/artcraft-launcher-0.10.0-linux-aarch64.tar.gz
+	source_x86_64 = artcraft-launcher-0.11.1-linux-x86_64.tar.gz::https://github.com/storytold/craft-launcher/releases/download/v0.11.1/artcraft-launcher-0.11.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d41b886bb458917a81a58646545ca903f5e601c543bd8be42b3a2d93aa8c648a
+	source_aarch64 = artcraft-launcher-0.11.1-linux-aarch64.tar.gz::https://github.com/storytold/craft-launcher/releases/download/v0.11.1/artcraft-launcher-0.11.1-linux-aarch64.tar.gz
 	depends_aarch64 = libxcb
 	optdepends_aarch64 = vulkan-icd-loader: GPU-accelerated rendering
-	sha256sums_aarch64 = 09a3084679090f0c72a2f3a9aac23bfe255f2591237508e636fa8d8c2b5a8633
+	sha256sums_aarch64 = 3e248cb79017297e4b50f67ea97aff83dc87e712b3fb3d1d25b1516a18ee7d73
 
 pkgname = craft-launcher-bin
