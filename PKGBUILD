@@ -16,7 +16,8 @@ makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
   git
 )
-# 2.x is what JsonPointer.Net 5.x (dotnet-jsonpointer-net-5) needs
+# 2.x is what JsonPointer.Net 5.x (dotnet-jsonpointer-net-5) needs. The commit the package was
+# published from (tag v2.14.1).
 _commit="3ebc38de585fc641a04b0e78ed69468453b0f8a1"
 source=("git+$url.git#commit=$_commit")
 sha512sums=('1862b1d133f47bc4fdc28d00783d388853468e733c06aa2cf5c5a7dd2c4e4cbb5d8421901dc33037b2c8bcdcd4b87f1359dd9999a041a5b4f5594219cd66e640')
