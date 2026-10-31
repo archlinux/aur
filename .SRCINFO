@@ -1,0 +1,18 @@
+pkgbase = libernull
+	pkgdesc = Minimal markup-based typesetting system for authors/writers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/javy/libernull
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = util-linux-libs
+	depends = libundr
+	depends = libzip
+	depends = libepub
+	provides = libernull
+	conflicts = libernull
+	source = libernull::git+https://codeberg.org/javy/libernull.git#tag=0.1.0
+	sha512sums = 5eb0d04a0fe9911fea491861e775c8f20c803af4cdbf1ae09d8ee4c71863f7ef778997604418e65007474d65347e5bfc55cbcf9573891e27d86f3e39320103cb
+
+pkgname = libernull
