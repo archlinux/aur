@@ -1,6 +1,6 @@
 pkgbase = memerist-git
 	pkgdesc = VCS package for memerist
-	pkgver = 2.5.0.r9.gefc487d
+	pkgver = 2.6.0.r1.g5804736
 	pkgrel = 1
 	url = https://github.com/vani-tty1/memerist
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = memerist-git
 	depends = libpng
 	provides = memerist
 	conflicts = memerist
-	source = memerist::git+https://github.com/vani-tty1/memerist.git#branch=unstable
+	source = memerist::git+https://github.com/vani-tty1/memerist.git#branch=main
 	b2sums = SKIP
 
 pkgname = memerist-git

@@ -1,6 +1,6 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=memerist-git
-pkgver=2.5.0.r9.gefc487d
+pkgver=2.6.0.r1.g5804736
 pkgrel=1
 pkgdesc="VCS package for memerist"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
   'meson'
   'ninja'
 )
-source=("${pkgname%-git}::git+${url}.git#branch=unstable")
+source=("${pkgname%-git}::git+${url}.git#branch=main")
 b2sums=('SKIP')
 
 pkgver() {
