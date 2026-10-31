@@ -1,6 +1,6 @@
 # Maintainer: Robert O'Neill <robertdoneill@gmail.com>
 pkgname=visipass-bin
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Password manager for coding agents: they find, use and save secrets without seeing them"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ provides=('visipass')
 conflicts=('visipass')
 source_x86_64=("$url/releases/download/v$pkgver/visipass-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/visipass-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('b45ef3c1c342cfca5e2806f4f6df98dc962e6bf7772271b0c4c67ea8fc5d2df0')
-sha256sums_aarch64=('a3e5ac65dcd43f01f37204210beaed3fe9c726316698002a450fc454c4b9f019')
+sha256sums_x86_64=('03cb2af5c97454192c5bafc2b19475fdc1b77026b8664ac7980eee4a894c28ff')
+sha256sums_aarch64=('9b5bc298820bec921968814fda78eabc865e1a46ae1a37315c371f34f2da8ac9')
 
 package() {
   cd "visipass-$pkgver-linux-$CARCH"
