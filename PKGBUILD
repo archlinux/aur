@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 
 pkgname=dotnet-system-io-ports-native
-pkgver=10.0.13
+pkgver=10.0.14
 pkgrel=1
 pkgdesc="Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,9 @@ makedepends=(
 checkdepends=(python)
 options=('!debug')
 # The runtime commit of the .NET release, from src/source-manifest.json of the dotnet/dotnet commit the
-# 10.0.13 packages were published from (4099f83977f4d29604a9aeb971fb0a7bc1d5f699). The library isn't
-# part of the source-built .NET of Arch Linux, so it's built for its version here.
+# 10.0.14 packages were published from (0427b9abbead3fa64c6655eb4290c537397131fa); the same commit as
+# 10.0.13, 10.0.14 brought no runtime changes. The library isn't part of the source-built .NET of Arch
+# Linux, so it's built for its version here.
 _commit="6aa72daa24f66c01c3d7b6a32519e9d21396deec"
 # The tarball of the commit, only the native sources are used
 source=("runtime-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
