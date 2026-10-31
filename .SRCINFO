@@ -1,6 +1,6 @@
 pkgbase = gitcomet-bin
 	pkgdesc = Fast, resource-efficient Git GUI written in Rust
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://gitcomet.dev/
 	arch = x86_64
@@ -25,15 +25,15 @@ pkgbase = gitcomet-bin
 	optdepends = xdg-desktop-portal: file pickers and desktop settings
 	optdepends = noto-fonts-cjk: CJK font coverage
 	optdepends = noto-fonts-emoji: emoji font coverage
-	provides = gitcomet=0.3.2
+	provides = gitcomet=0.3.3
 	conflicts = gitcomet
 	options = !strip
 	options = !debug
-	source = gitcomet-source-v0.3.2.tar.gz::https://github.com/Auto-Explore/GitComet/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 532972b3b54dd827d4619c401e5d01af8f8a39e1d5bee9a50830b9da71091fec
-	source_x86_64 = https://github.com/Auto-Explore/GitComet/releases/download/v0.3.2/gitcomet-v0.3.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 827dd53d5cfcaec440e81c5795d2575e610f9f5fc5f449523f569b88c2cdcfff
-	source_aarch64 = https://github.com/Auto-Explore/GitComet/releases/download/v0.3.2/gitcomet-v0.3.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8897d5a3fc327dc8803de71d9002f2623b859a38eaac8d9b36199d82f9e442c6
+	source = gitcomet-source-v0.3.3.tar.gz::https://github.com/Auto-Explore/GitComet/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 8de6de52df03dcd8f3dd752cbfe2bf2cf1c8c1c2effcda22052c23c8af18a32b
+	source_x86_64 = https://github.com/Auto-Explore/GitComet/releases/download/v0.3.3/gitcomet-v0.3.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b1ac7fb07f033eaa3cf1dfd310097c0777cc31f5ae8cfb5d6d8a02fc3a21ddf2
+	source_aarch64 = https://github.com/Auto-Explore/GitComet/releases/download/v0.3.3/gitcomet-v0.3.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = b95a9e75ae4be751bc09ba398c60937c49f3777a36365241cd086b7a47b74b33
 
 pkgname = gitcomet-bin
