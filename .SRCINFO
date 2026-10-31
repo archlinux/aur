@@ -1,0 +1,18 @@
+pkgbase = python-whoosh-compat
+	pkgdesc = Whoosh query-language parser emitting programmatic tantivy queries
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/stumpylog/whoosh-compat
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-dateutil>=2.8
+	optdepends = python-tantivy: Tantivy query emitter
+	source = whoosh-compat-v0.3.0.tar.gz::https://github.com/stumpylog/whoosh-compat/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = b6f7df8dc86eaf373d8bebbca607031f16e156e143975c7c5a12f7d093d729bf
+
+pkgname = python-whoosh-compat
