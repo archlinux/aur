@@ -24,7 +24,6 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'pkgconf'
 )
 optdepends=(
   'hyprland: native Hyprland backend (hyprctl)'

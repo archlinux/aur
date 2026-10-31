@@ -6,7 +6,6 @@ pkgbase = uu-remote-linux
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	makedepends = pkgconf
 	depends = ffmpeg
 	depends = glib2
 	depends = glibc
