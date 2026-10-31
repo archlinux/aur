@@ -1,21 +1,21 @@
 pkgbase = revanced-cli-bin
 	pkgdesc = Command line application as an alternative to the ReVanced Manager
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/revanced/revanced-cli
 	install = revanced-cli.install
 	arch = any
-	license = GPL3
-	depends = java-environment>=17
-	depends = revanced-patches
+	license = GPL-3.0-or-later
+	depends = java-runtime-headless>=11
 	optdepends = revanced-integrations: Add support for some integrations
+	optdepends = android-tools: if you want to install the patched APK file on your device (so probably yes)
 	provides = revanced-cli
 	conflicts = revanced-cli
-	source = https://github.com/revanced/revanced-cli/releases/download/v6.0.0/revanced-cli-6.0.0-all.jar
+	source = revanced-cli.jar::https://github.com/revanced/revanced-cli/releases/download/v6.0.0/revanced-cli-6.0.0-all.jar
 	source = https://github.com/revanced/revanced-cli/raw/v6.0.0/LICENSE
-	source = revanced-cli.sh
+	source = revanced-cli-bin.sh
 	sha256sums = c25549bc17d59d2eb94fa5f86e60e9b77a02772ca88f7050f8f1276f923a9958
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = 966cb49d9de2c2081b1bc5af00babe3a8c7735320f248ff1a8c1c8c7cc775502
+	sha256sums = 54fee6650e017f950dc16a3835c62350bb2679e866d7594d5decff122aeeb7c3
 
 pkgname = revanced-cli-bin
