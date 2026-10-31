@@ -1,0 +1,15 @@
+# pacman keeps the permission bits of directories that already exist and only
+# warns on mismatch, so upgrades from the first release (directories 0700)
+# need this post-install fix.
+
+_fix_dir_perms() {
+  find /opt/pokebonk -type d -exec chmod 755 '{}' +
+}
+
+post_install() {
+  _fix_dir_perms
+}
+
+post_upgrade() {
+  _fix_dir_perms
+}

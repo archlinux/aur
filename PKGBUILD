@@ -2,7 +2,7 @@
 
 pkgname=pokebonk
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop client for PokéBonk, a 3D survival fan-game'
 arch=('x86_64')
 url='https://pokebonk.com'
@@ -43,6 +43,7 @@ optdepends=(
   'libappindicator-gtk3: system tray icon support'
 )
 options=('!strip' '!lto')
+install=pokebonk.install
 source=(
   "PokeBonk-${pkgver}-linux-x86_64.AppImage::https://github.com/CharcherGit/pokebonk-app/releases/download/v${pkgver}/PokeBonk-${pkgver}-linux-x86_64.AppImage"
 )
