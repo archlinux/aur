@@ -1,11 +1,13 @@
 # Maintainer: Novaturiente
 # Prebuilt WebKitGTK 6.0 for novabrowser-webkit: PGO + x86-64-v3 + ThinLTO, no
-# introspection/docs, plus the colour-filter patch (dark mode keeps dark parts dark).
+# introspection/docs, plus novabrowser patches: colour filter (dark mode keeps dark parts dark),
+# the webkitglib/2.54 branch fixes since 2.54.2 (security), a fix for a Skia self-deadlock that
+# froze pages under memory pressure, and upstream f311092c0d (AcceleratedSurface timer abort).
 # Build recipe and patch: https://github.com/Novaturiente/novabrowser-webkit/tree/master/spikes/wk-build
 # Upstream source: https://webkitgtk.org/releases/webkitgtk-$pkgver.tar.xz
 pkgname=webkitgtk-6.0-nova-bin
 pkgver=2.54.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Web content engine for GTK 4 (PGO + x86-64-v3 + ThinLTO build with novabrowser patches, prebuilt)"
 url="https://github.com/Novaturiente/novabrowser-webkit"
 arch=(x86_64)
@@ -25,7 +27,7 @@ conflicts=(webkitgtk-6.0 webkitgtk-6.0-nova)
 options=(!strip !debug)
 _tag=webkitgtk-6.0-nova-$pkgver-$pkgrel
 source=("$_tag-x86_64.tar.zst::$url/releases/download/$_tag/$_tag-x86_64.tar.zst")
-sha256sums=('8997e67b48d294ba6b161a91e3f1be7a1d94dca4a40f2fbbc4843c075d534aa0')
+sha256sums=('5a2e6c5e803117b047af7aba9552dc512042abbc52607c2a782d5a252aaab411')
 
 prepare() {
   /lib/ld-linux-x86-64.so.2 --help 2>/dev/null | grep -q 'x86-64-v3 (supported' || {
