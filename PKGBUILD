@@ -12,14 +12,17 @@ depends=('gcc-libs' 'glibc' 'zlib')
 optdepends=('rtk: for reduced token consumption')
 conflicts=('maki-bin')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-            "${pkgname}-pr1287.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1287.patch")
+            "${pkgname}-pr1287.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1287.patch"
+            "${pkgname}-pr1444.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1444.patch")
 sha256sums=('d05cdacd78963fb490aa4ac7c0ed0494177176577d191460177ec6ee0d08eea3'
-            '3de8aeb4c5f2c6ff64cccd9adc5f63c558fb731f5aebf3f07af20a6e6ba47f18')
+            '3de8aeb4c5f2c6ff64cccd9adc5f63c558fb731f5aebf3f07af20a6e6ba47f18'
+            '4f0b2d9ae430d4fb174a073ac8347fe513413b6790d60fd771b4c260fbcb5214')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/${pkgname}-pr1287.patch"
+    patch -Np1 -i "${srcdir}/${pkgname}-pr1444.patch"
     cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 

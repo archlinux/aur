@@ -14,7 +14,9 @@ pkgbase = maki
 	conflicts = maki-bin
 	source = maki-v0.7.0.tar.gz::https://github.com/tontinton/maki/archive/refs/tags/v0.7.0.tar.gz
 	source = maki-pr1287.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1287.patch
+	source = maki-pr1444.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1444.patch
 	sha256sums = d05cdacd78963fb490aa4ac7c0ed0494177176577d191460177ec6ee0d08eea3
 	sha256sums = 3de8aeb4c5f2c6ff64cccd9adc5f63c558fb731f5aebf3f07af20a6e6ba47f18
+	sha256sums = 4f0b2d9ae430d4fb174a073ac8347fe513413b6790d60fd771b4c260fbcb5214
 
 pkgname = maki
