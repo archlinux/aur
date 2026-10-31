@@ -3,14 +3,14 @@
 # Builds efr from the GitHub tag tarball, with the ghostty screen backend. The
 # efr-code-bin package installs the prebuilt release of the same version.
 #
-# The ghostty screen needs a build of libghostty-vt by Zig 0.16.0 exactly
-# (docs/ghostty-pin.md). The Zig of the Arch repositories moves on to 0.17 and
-# later, so this package does not use it: it downloads the official Zig 0.16.0
+# The ghostty screen needs a build of libghostty-vt by Zig 0.17.0 exactly
+# (docs/ghostty-pin.md). The Zig of the Arch repositories moves on to 0.18 and
+# later, so this package does not use it: it downloads the official Zig 0.17.0
 # build from ziglang.org, pinned by its checksum, and uses it only for the
 # build. The ghostty source is the commit that the libghostty-vt pin names.
 # All downloads happen in the sources and in prepare(); build() needs no network.
 pkgname=efr-code
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -18,8 +18,8 @@ url='https://github.com/eggfriedrice24/eggfriedrice.code'
 license=('MIT')
 depends=('glibc' 'libgcc' 'zsh')
 makedepends=('cargo')
-# The scope tests of check() run git.
-checkdepends=('git')
+# check() runs the tests with nextest, as CI does; the scope tests run git.
+checkdepends=('cargo-nextest' 'git')
 optdepends=('bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)'
             'fzf: the live search picker of ,resume (0.46 or newer)'
             'git: project roots and the git facts of a turn'
@@ -32,8 +32,8 @@ install=efr-code.install
 options=('!lto')
 # The ghostty commit of the libghostty-vt pin, and the Zig release it needs.
 # Change them together with docs/ghostty-pin.md.
-_ghostty=22d13172cde98a0a4dda05d3d6a3fcb0dd8ed018
-_zig=0.16.0
+_ghostty=521cf2c5d30bd48028ca61546c64e7913764073d
+_zig=0.17.0
 _src="eggfriedrice.code-$pkgver"
 _zigdir="zig-$CARCH-linux-$_zig"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -43,10 +43,10 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 # the tag tarball. The other two are pinned: the ghostty archive of the commit,
 # and the Zig tarball whose SHA-256 ziglang.org publishes in
 # https://ziglang.org/download/index.json
-# (70e49664a74374b48b51e6f3fdfbf437f6395d42509050588bd49abe52ba3d00).
-b2sums=('7f4ce6861b2f032ecdf91cb656c20dc388a4c468983bd6368555a85306f11b1f2e60eae8326c9d3d56dd4fa2a46e7c06c8a9d88955942ed72b310fd3b25ff1fd'
-        '04e7fc2104a5e6bccbe5b189f5dcc4e3abf0a80410764f6ae44fcd042ca952250df08f6e60631653b00b7202dd1d906ca6033ad66a2ecb1cfa2935496120daef'
-        '77f476c241e6be49e8e71a98276261bdc8cc0bb90aca277f2d81413fe373d94c442df5277cf4cd0893b986b4c6c2a6f8b2061c9305fe8445883316899ff67958')
+# (1cbe9df9f27e6b78d14ccbca43b6703a404ef79ef1c463de901d7f088d4e2026).
+b2sums=('51cf56a003fc7b958e055a8b69e079a3aee77e180eeb92e306e5639ffbc7749291eacf55bb4ee39bf45cfa73855e90f86ee9f909bfe376e5b253bbce96bcb4fa'
+        '693dc989777edf1bd0bd7280bd393a93c5910409b8b9df3e57b2938954eb64b2c3d8d8e686657cbca2608ea592b8a39caabedff345ecb027033616e7c50ad692'
+        '384b04872c92132ffeaee2c5201dff61ea10e00e8b3d42c6745246f79b847e54b05262ff89cd850d30e32957a82cb1b15722511e9535db6e9126912b182a3a61')
 
 # Keep debug info in the binaries so makepkg can split it into the -debug package.
 export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
@@ -68,13 +68,14 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 
-  # The Zig packages of the ghostty build. Zig 0.16 fetches them into zig-pkg/ of
+  # The Zig packages of the ghostty build. Zig 0.17 fetches them into zig-pkg/ of
   # the ghostty source, where build() finds them. A lazy package is fetched only
   # when the build asks for it, and --help asks for the ones of these options, so
   # they must stay the options that libghostty-vt-sys's build.rs passes at the
-  # pinned rev; zig build --fetch=all would fetch about 550 MB instead of 20 MB.
+  # pinned rev; zig build --fetch=all would fetch about 550 MB instead of 30 MB.
+  # Zig 0.17 has no --global-cache-dir for zig build; the variable sets it.
   cd "$srcdir/ghostty-$_ghostty"
-  "$srcdir/$_zigdir/zig" build --global-cache-dir "$srcdir/zig-global-cache" \
+  ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache" "$srcdir/$_zigdir/zig" build \
     -Demit-lib-vt=true -Doptimize=ReleaseFast -Dcpu=baseline \
     -Demit-xcframework=false -Dapp-runtime=none --help > /dev/null
 }
@@ -108,7 +109,8 @@ check() {
   export CARGO_TARGET_DIR=target
   # The leaf crates of the justfile, as `just test-leaf` runs them. The other tests
   # need a real zsh session, bubblewrap and a kernel sandbox, which a build chroot
-  # does not have.
+  # does not have. nextest runs each test in a process of its own, as the tests
+  # expect: some of them install a log subscriber for their thread only.
   local crate crates args=()
   read -ra crates <<<"$(sed -nE 's/^leaf_crates := "(.*)"$/\1/p' justfile)"
   if (( ${#crates[@]} == 0 )); then
@@ -119,7 +121,7 @@ check() {
     args+=(-p "$crate")
   done
   _drop_cflags_optimization
-  INSTA_UPDATE=no cargo test --frozen "${args[@]}" --lib --tests
+  INSTA_UPDATE=no cargo nextest run --frozen "${args[@]}" --lib --tests
 }
 
 package() {
