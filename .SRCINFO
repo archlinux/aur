@@ -1,0 +1,31 @@
+pkgbase = atvv
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/YangtseSu/atvv-linux
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = rust
+	makedepends = gtk4
+	makedepends = libadwaita
+	makedepends = bluez
+	options = !debug
+	source = atvv-linux-0.1.0.tar::https://github.com/YangtseSu/atvv-linux/releases/download/v0.1.0/atvv-linux-0.1.0.tar
+	sha256sums = 98ee8ebd4daec368db8687c2e81c35c6ae252fd5c65b3f0c06a46e9e20c39d17
+
+pkgname = atvv
+	pkgdesc = Bluetooth voice remote userspace stack
+	depends = pipewire
+	depends = bluez
+	depends = dbus
+	conflicts = atvv-git
+
+pkgname = atvv-gui
+	pkgdesc = GTK4/libadwaita configuration app for ATVV remotes
+	depends = gtk4
+	depends = libadwaita
+	depends = librsvg
+	depends = atvv=0.1.0
+	conflicts = atvv-gui-git
