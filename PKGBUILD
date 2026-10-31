@@ -2,7 +2,7 @@
 
 pkgname=clauth-bin
 _pkgname=clauth
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Claude Code multi-account manager and usage monitor with auto-switch (prebuilt binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 source=("LICENSE-$_pkgname-$pkgver::https://raw.githubusercontent.com/uwuclxdy/$_pkgname/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/uwuclxdy/$_pkgname/releases/download/v$pkgver/$_pkgname-linux-x86_64")
 sha256sums=('cdda746ab9906de0e39936a41b1eabf9dd2c8790715c14b4ea5285abbcfec17f')
-sha256sums_x86_64=('8a1e04bfc84c69dabae70b5370dc4034603e5b33b2beb62f516d19b24f77cc7c')
+sha256sums_x86_64=('74c0b1630a2e1a93f5bffffa7a3bcbd31740306892cf21a4c969133e26e38d18')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"
