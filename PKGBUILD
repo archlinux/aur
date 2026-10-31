@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=apache-spark
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A unified analytics engine for large-scale data processing"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://dlcdn.apache.org/spark/spark-$pkgver/spark-$pkgver-bin-hadoop3.
   'apache-spark.sh'
   'apache-spark-master.service'
   'apache-spark-worker@.service')
-sha256sums=('8766fd9132079ddf3f0b54a51796d05bf442871c62a51374ca9e18d345bb2bd6'
+sha256sums=('48f4eb55fe42758b3aff52c027b310479c7afe96205eddff3869cd951fa02505'
             '0cc82baad4d878d4e2bc5864a00b99d38f2906781ea47ee6282546788e797049'
             'de54c025ca8ce34a7b4fd95ec7b8d5dec44582787a0bd8da09232f26e2182c9a'
             '47e6c154daecf7631ac9a33fe53a76888070c823c4381fcbde8d98377e586505')
