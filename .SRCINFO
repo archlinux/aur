@@ -1,6 +1,6 @@
 pkgbase = proc-bin
 	pkgdesc = Semantic CLI tool for process management. Target by port, PID, name or path.
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/yazeed/proc-cli
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = proc-bin
 	provides = proc
 	conflicts = proc
 	options = !strip
-	source = LICENSE-2.1.0::https://raw.githubusercontent.com/yazeed/proc-cli/v2.1.0/LICENSE
-	source = README-2.1.0.md::https://raw.githubusercontent.com/yazeed/proc-cli/v2.1.0/README.md
+	source = LICENSE-2.1.1::https://raw.githubusercontent.com/yazeed/proc-cli/v2.1.1/LICENSE
+	source = README-2.1.1.md::https://raw.githubusercontent.com/yazeed/proc-cli/v2.1.1/README.md
 	sha256sums = c7f9eb97a593a88e42431614564bf73d3b2177ffbc959a63cfe62856b4a10d1e
 	sha256sums = f0c5ad7ddd5ce560b9ecf5a507d148fabfea00fe280dc661aa0c15587b6f88da
-	source_x86_64 = proc-cli-x86_64-2.1.0.tgz::https://github.com/yazeed/proc-cli/releases/download/v2.1.0/proc-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 26ef33d706950b19fca3ca6cce542a131ac1df1e7259ff33184116e9899684ed
-	source_aarch64 = proc-cli-aarch64-2.1.0.tgz::https://github.com/yazeed/proc-cli/releases/download/v2.1.0/proc-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 4a014238dbe254714927d9b0c60be66a3773f522428f2d527255a88823371f67
+	source_x86_64 = proc-cli-x86_64-2.1.1.tgz::https://github.com/yazeed/proc-cli/releases/download/v2.1.1/proc-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8ff7a59beb67c9cbe29f3a1203f8965e359bf62e0cabfd987a2df4a173d319c8
+	source_aarch64 = proc-cli-aarch64-2.1.1.tgz::https://github.com/yazeed/proc-cli/releases/download/v2.1.1/proc-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 3fcf34ce2b9362f87d49ad82148db6719b78396cffe93ce0153d82a604bba989
 
 pkgname = proc-bin
