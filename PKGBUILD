@@ -2,7 +2,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=kometa
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='A powerful tool designed to give you complete control over your Plex media libraries.'
 url='https://kometa.wiki'
@@ -44,7 +44,7 @@ source=(
   'kometa.tmpfiles'
 )
         
-sha256sums=('9b91a616c2d3f6eee00651d76a87b5c4a92a686aae35bbc71e7b803ea123ace7'
+sha256sums=('c138f53aa30a3f40eb3d5f6419dec1809c0bca6a057dbca8f3eeda874bfb34bb'
             '5cc9f70c2a594e27f23eca4af7d23eedfa58cc44a9849d0cee91fe887aafb24e'
             'aff68f18a53e34c9778da238a2143e30dacb72d9009a219f3e5eb45cf1735e20'
             '1d81571ea9be45f2d53aa21c920b93b6fdb1c9b17c6f9490ca94b1676ae27e13')
