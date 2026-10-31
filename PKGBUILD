@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=nginx-mainline-mod-vts
-pkgver=0.2.5
+pkgver=0.2.7
 pkgrel=1
 _modname=nginx-module-vts
 pkgdesc='Nginx virtual host traffic status module (module for mainline nginx)'
@@ -11,7 +11,7 @@ makedepends=(nginx-mainline-src)
 url='https://github.com/vozlt/nginx-module-vts'
 license=(BSD-2-Clause)
 source=("$_modname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('4d887365d30c83832f5aaaea7220218d7ba36f58f98ad10ef5e0c40b9baf3e91c26d3ead05d92e38707b5d680ad65bf6aca54926fa3ce44b7dea511e26ad83d1')
+b2sums=('a43f178f3351141fe97c6c9e55bd29d2dbc4a1816de0ca4b67b7ad128e81b7afe60dfe361c3e0079d4d602b5c89fe28ba63d2440c4767120caf8ff22a0796b9a')
 
 build() {
   cp -r /usr/src/nginx .
