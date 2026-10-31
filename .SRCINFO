@@ -1,0 +1,25 @@
+pkgbase = escargot-native-bin
+	pkgdesc = Native Linux client for MSN Messenger 7.5 on the Escargot network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mafuzyk/escargot-native
+	arch = x86_64
+	license = custom:CC-BY-NC-4.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libsecret
+	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	optdepends = pipewire: notification sounds
+	provides = escargot-native
+	conflicts = escargot-native
+	conflicts = escargot-native-git
+	options = !strip
+	options = !debug
+	source = escargot-native-0.1.0-x86_64.tar.gz::https://github.com/mafuzyk/escargot-native/releases/download/v0.1.0/escargot-native-0.1.0-x86_64.tar.gz
+	sha256sums = ebfd9ec8964045c0aa51772a7083646ef7ab48cdb8025a744e14ea7f2db6363b
+
+pkgname = escargot-native-bin
