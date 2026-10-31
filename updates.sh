@@ -58,7 +58,8 @@ sed -i "s/^pkgrel=.*/pkgrel='${_prelnew}'/" PKGBUILD
 
 echo "Updating checksums for PKGBUILD(s)..."
 updpkgsums
-find *.PKGBUILD 2>/dev/null | parallel updpkgsums {}
+# one at a time: variants share archives and parallel downloads corrupt them
+for _p in *.PKGBUILD; do updpkgsums "$_p"; done
 
 echo "Creating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
@@ -77,7 +78,7 @@ echo "GitHub tag: ${_tag_ver}"
 # gitignored build byproducts, so this never touches tracked files.
 echo
 echo "Pruning old release archives (keeping v${pkgver}${_rc})..."
-for _f in skywire-v*.tar.gz; do
+for _f in skywire-v*.tar.[gx]z; do
 	[[ -e $_f ]] || continue
 	case "$_f" in
 		skywire-v${pkgver}${_rc}-*) : ;; # current version — keep
@@ -98,9 +99,9 @@ echo "git push"
 _yaydir="$HOME/.cache/yay/skywire-bin"
 if [[ -d $_yaydir ]]; then
 	{
-		cp -f skywire-v${pkgver}${_rc}-*.tar.gz "$_yaydir"/ 2>/dev/null
-		find "$_yaydir" -maxdepth 1 -name 'skywire-v*.tar.gz' \
-			! -name "skywire-v${pkgver}${_rc}-*.tar.gz" -delete 2>/dev/null
+		cp -f skywire-v${pkgver}${_rc}-*.tar.[gx]z "$_yaydir"/ 2>/dev/null
+		find "$_yaydir" -maxdepth 1 -name 'skywire-v*.tar.[gx]z' \
+			! -name "skywire-v${pkgver}${_rc}-*.tar.[gx]z" -delete 2>/dev/null
 		echo "Synced current archives into $_yaydir (old ones pruned)."
 	} || true
 fi

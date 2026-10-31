@@ -46,12 +46,12 @@ sha256sums=('40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             'c78f1404b73181334da4c7bf973f757967f70f5353fa41c970167af3d56ba09f'
             '60cd97d7ff821f793de68f38aad4468fc83fcddf31449397227d16a746cc8a92'
             '2f1511abbd2b42f4bfebf2a872295de5992fe98d81163ac9ab7744d61608af5e'
-            '3c41de6f093a14a13ab84357665fc7aa0aeba428c46b0a6ffdb2ceda646c233e'
-            'df4fc24f00df2eec1bee0d57e20a0dae0926a9f8de608207d781512a5bda6612'
-            'b57e450f0e1b096cd64cd82ed7c8f1955e17f9d7a9a993b333db5449f1d9b3a5'
-            '154a49cca171be2fb1293c8a991208d97e52f3ad2ca48d902606a2a1acf657ef'
-            'da85d14a2a05c6f549c59dad10e69300a459e504ddb25f64efaebe09a5c6e700'
-            '112f0c44aa75564019d9182cf89571c1016935bc47419a1a909a21ca3edd566e')
+            'f9b74eb34d125b42784a9c7d4d83fca887c373b78cd94d8efaae60f09ce9b9af'
+            'b195d7fb7757689e778768b1e7f6872434217976e4900674e13ac6fcc5e0febd'
+            '54a8581995f5164c069f8295312077b2659a3c9dd96939b742e38e473ea34b31'
+            'd0ca24ef2cd8ea17c611e1642591946731a94f4e6596e6b4da0e462d96ba6586'
+            'd56edee13c5f9d8ed136275f9809bf960371f516728dcfc3ff70b952e6b35130'
+            '57e6a3affc3ea8f328a2d937513693c54dc346dd3ff74625b24b215ccad2e0bf')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -66,6 +66,7 @@ build() {
     echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
     echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
     echo "Provides: ${_pkgname}" >> ${srcdir}/${_pkgarch}.control
+    [[ -n ${_debconflicts} ]] && echo "Conflicts: ${_debconflicts}" >> ${srcdir}/${_pkgarch}.control
     echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
     echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
   done
@@ -100,7 +101,7 @@ if [[ ${_pkgarch} == "i386" ]] ; then
   local _pkgarch1="386"
 fi
 
-local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}.tar.xz"
+local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}${_archsuffix}.tar.xz"
 [[ -f "${srcdir}/${_pkgname}" ]] && rm -rf "${srcdir}/${_pkgname}" || true
 #[[ -d "${srcdir}/apps" ]] && rm -rf "${srcdir}/apps" || true
 [[ -d "${pkgdir}/test" ]] && rm -rf "${pkgdir}/test" || true
