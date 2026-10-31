@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=signboard-appimage
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="A local-first kanban app that writes Markdown files (AppImage)"
 url="https://github.com/cdevroe/signboard"
@@ -15,10 +15,10 @@ license=("MIT")
 
 source_x86_64=("signboard-appimage-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/signboard_${pkgver}_linux_x86_64.AppImage" "signboard.png::https://raw.githubusercontent.com/cdevroe/signboard/main/build/icons/512x512.png" "signboard.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/signboard/signboard.desktop")
 source_aarch64=("signboard-appimage-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/signboard_${pkgver}_linux_arm64.AppImage" "signboard.png::https://raw.githubusercontent.com/cdevroe/signboard/main/build/icons/512x512.png" "signboard.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/signboard/signboard.desktop")
-sha256sums_x86_64=('dab8fd5308007319508f4214e750e9b85d7120dfa0d1ef28a132646e2a1a7813'
+sha256sums_x86_64=('cd41573b42022aa24b64987c76ccd61550e4d68d14a8369974db0192cd1b72d1'
                    '798a7a47642b751b600bf50f20badf41eec6280b90fd1e16fb3924537f7c1836'
                    'c9c504cabbf47ad1c214d605890777be8399fef4f669c36d31b7e57a82dd9873')
-sha256sums_aarch64=('691cd25145b675ccb699270ac9902ed2a9854a13dd021bb532d231d7ef2cecf5'
+sha256sums_aarch64=('20f036b07822af1d8f69b2fb856aee3d524f0c51906131ad41567b08dd2a3b26'
                     '798a7a47642b751b600bf50f20badf41eec6280b90fd1e16fb3924537f7c1836'
                     'c9c504cabbf47ad1c214d605890777be8399fef4f669c36d31b7e57a82dd9873')
 
