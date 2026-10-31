@@ -11,7 +11,7 @@
 
 pkgname=karere-custom-css
 pkgver=4.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Karere with optional custom.css live reload"
 arch=('x86_64')
 url="https://github.com/riccardomarotti/karere"
@@ -24,7 +24,7 @@ _cef_ver="152.0.6"
 _cef_chromium="152.0.7977.83"
 _cef_hash="g708dc14"
 _cef_dir="cef_binary_${_cef_ver}+${_cef_hash}+chromium-${_cef_chromium}_linux64_minimal"
-_commit="d2c76e34fdae95fa619d53d4e35028a1f7613f9e"
+_commit="36d8181792c47ece615d8acbcba96a3f2ae0f601"
 
 # libcef.so runtime libraries (readelf -d)
 depends=(
