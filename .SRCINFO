@@ -1,0 +1,17 @@
+pkgbase = legenda-git
+	pkgdesc = GTK 4 subtitle search and downloader
+	pkgver = 2.0.3.6.r1.gbf5a268
+	pkgrel = 1
+	url = https://github.com/desenrolado-s/Subtitle-Downloader
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gtk4
+	depends = python-gobject
+	depends = python-keyring
+	provides = legenda=2.0.3.6.r1.gbf5a268
+	conflicts = legenda
+	source = git+https://github.com/desenrolado-s/Subtitle-Downloader.git#branch=main
+	sha256sums = SKIP
+
+pkgname = legenda-git
