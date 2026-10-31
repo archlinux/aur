@@ -1,6 +1,6 @@
 pkgbase = herdr-app-desktop-bin
 	pkgdesc = Native desktop workspace for terminals and coding agents that keep running (prebuilt)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://herdr.dev
 	arch = x86_64
@@ -16,14 +16,14 @@ pkgbase = herdr-app-desktop-bin
 	depends = vulkan-icd-loader
 	depends = wayland
 	optdepends = hc-bin: herdr-core background server (the app offers to fetch it on first run)
-	provides = herdr-app=0.1.9
+	provides = herdr-app=0.1.10
 	conflicts = herdr-app-bin
 	conflicts = herdr-app
 	options = !strip
 	options = !debug
-	source_x86_64 = herdr-app-desktop-bin-0.1.9-x86_64.tar.gz::https://releases.herdr.dev/app/0.1.9/herdr-app-linux-x86_64.tar.gz
-	sha256sums_x86_64 = da6f7b40f6c416c5b4def8dbcf8b76677d02be4f4b45d06a4d658766850e0b45
-	source_aarch64 = herdr-app-desktop-bin-0.1.9-aarch64.tar.gz::https://releases.herdr.dev/app/0.1.9/herdr-app-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 336df9a7fec259b14a0df63058b45f9e22c617305d123ae3f9713486af067b5e
+	source_x86_64 = herdr-app-desktop-bin-0.1.10-x86_64.tar.gz::https://releases.herdr.dev/app/0.1.10/herdr-app-linux-x86_64.tar.gz
+	sha256sums_x86_64 = adef0feab129c84d8de4d95179629bf297e76822d30e0d5e69c262ad232ce33a
+	source_aarch64 = herdr-app-desktop-bin-0.1.10-aarch64.tar.gz::https://releases.herdr.dev/app/0.1.10/herdr-app-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 34756580d50a7169ae86ac0345065dd809fc0cdd100763f0124222245072d79b
 
 pkgname = herdr-app-desktop-bin
