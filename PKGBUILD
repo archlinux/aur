@@ -5,11 +5,10 @@
 # Contributor: Michał Kopeć <michal.kopec@3mdeb.com>
 _projectname='dolphin'
 _mainpkgname="$_projectname-emu"
-_noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
-pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2606.r121.g774200dcf4'
+pkgname=("$pkgbase" "$_toolpkgname-git")
+pkgver='2609.r133.g1f30867901'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -18,16 +17,16 @@ url="https://$_mainpkgname.org"
 license=('GPL-2.0-or-later')
 depends=(
 	# Based on the repo package
-	'bluez-libs' 'bzip2' 'curl' 'enet' 'ffmpeg' 'fmt' 'glibc' 'glslang'
-	'hidapi' 'libgcc' 'libgl' 'libspng' 'libstdc++' 'libusb' 'libx11' 'libxi'
-	'libxrandr' 'lz4' 'lzo' 'pugixml' 'sdl3' 'sfml' 'speexdsp' 'systemd-libs'
-	'xxhash' 'xz' 'zlib' 'zlib-ng' 'zstd'
+	'alsa-lib' 'bluez-libs' 'bzip2' 'curl' 'enet' 'ffmpeg' 'fmt' 'glibc'
+	'glslang' 'hidapi' 'libevdev' 'libgcc' 'libgl' 'libpulse' 'libspng'
+	'libstdc++' 'libusb' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'pugixml'
+	'qt6-base' 'sdl3' 'sfml' 'speexdsp' 'systemd-libs' 'xxhash' 'xz' 'zlib'
+	'zlib-ng' 'zstd'
 	# Additional dependencies to replace vendored deps
 	'cubeb' 'libiconv' 'llvm' 'minizip-ng'
 )
 makedepends=(
-	'alsa-lib' 'cmake' 'git' 'libevdev' 'libpulse' 'miniupnpc' 'ninja' 'python'
-	'qt6-base' 'qt6-svg' 'vulkan-headers'
+	'cmake' 'git' 'miniupnpc' 'ninja' 'python' 'qt6-svg' 'vulkan-headers'
 )
 checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
@@ -122,7 +121,7 @@ check() {
 	ninja unittests
 
 	# Verify that the basic functionality works
-	_checkoutput="$(QT_QPA_PLATFORM='offscreen' "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version)"
+	_checkoutput="$(QT_QPA_PLATFORM='offscreen' "$srcdir/$_sourcedirectory/build/Binaries/$_mainpkgname" --version)"
 	printf '%s\n' "$_checkoutput"
 	printf '%s\n' "$_checkoutput" | grep -q -E "^${_projectname^}( \[.+\])? ${_checkversion}(-dirty)?(-ICC)?$"
 }
@@ -130,8 +129,7 @@ check() {
 package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
 	depends+=(
-		'alsa-lib' 'hicolor-icon-theme' 'libevdev' 'libpulse' 'miniupnpc'
-		'qt6-base' 'qt6-svg'
+		'hicolor-icon-theme' 'miniupnpc' 'qt6-svg'
 	)
 	provides=("$_mainpkgname")
 	conflicts=("$_mainpkgname")
@@ -141,29 +139,11 @@ package_dolphin-emu-git() {
 	install -Dm644 'Data/51-usb-device.rules' "$pkgdir/usr/lib/udev/rules.d/51-usb-device.rules"
 	install -Dm644 'build/Flatpak/org.DolphinEmu.dolphin-emu.metainfo.xml' "$pkgdir/usr/share/metainfo/org.DolphinEmu.dolphin-emu.metainfo.xml"
 
-	rm -rf "$pkgdir/usr/bin/$_noguipkgname"
 	rm -rf "$pkgdir/usr/bin/$_projectname-tool"
-	rm -rf "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
-}
-
-package_dolphin-emu-nogui-git() {
-	pkgdesc="$pkgdesc - no GUI$_pkgdescappend"
-	depends+=("$_mainpkgname")
-	optdepends=()
-	provides=("$_noguipkgname" "$_mainpkgname-cli")
-	conflicts=("$_noguipkgname" "$_mainpkgname-cli")
-
-	cd "$srcdir/$_sourcedirectory/"
-	install -Dm755 "build/Binaries/$_noguipkgname" "$pkgdir/usr/bin/$_noguipkgname"
-	ln -sf "/usr/bin/$_noguipkgname" "$pkgdir/usr/bin/$_mainpkgname-cli"
-	install -Dm644 "Data/$_noguipkgname.6" "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
 }
 
 package_dolphin-emu-tool-git() {
 	pkgdesc="$pkgdesc - CLI-based utility for functions such as managing disc images$_pkgdescappend"
-	depends+=(
-		'alsa-lib' 'libevdev' 'libpulse' 'qt6-base'
-	)
 	provides=("$_toolpkgname")
 	conflicts=("$_toolpkgname")
 
