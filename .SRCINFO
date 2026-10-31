@@ -1,0 +1,18 @@
+pkgbase = python-httpx-oauth
+	pkgdesc = Async OAuth client using HTTPX
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/frankie567/httpx-oauth
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-regex-commit
+	depends = python
+	depends = python-httpx>=0.18
+	source = httpx-oauth-v0.17.0.tar.gz::https://github.com/frankie567/httpx-oauth/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = 4806b00f74a98ec6a281566e77452045b8588949e8ec9f0c782275d75ac5b650
+
+pkgname = python-httpx-oauth
