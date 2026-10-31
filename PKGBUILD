@@ -1,7 +1,7 @@
 # Maintainer: Pink Pixel <admin@pinkpixel.dev>
 pkgname=flikka
 _npmname=@pinkpixel/flikka
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Screen recorder and video editor for AI agents on Linux: record browsers, terminals and desktops, then edit, narrate and render from the CLI'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://registry.npmjs.org/${_npmname}/-/${pkgname}-${pkgver}.tgz"
         'flikka.desktop'
         'flikka.png')
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('64e653223bd59e455fc8c92946057f90888fa960ea77df7a9493b16418bdb0a0'
+sha256sums=('18efec0101f90c7052fc53436442b13e31bb995744b0a2caabfe08f544c61312'
             '3b37f8674b8ff59d756a557a90d119c0f9ff2b97a0d14e483c4bb917f3d34d82'
             'cccf5481d81f8ce7c58e4888518d6e063b68df349049046c6d71601c6d19d7f5')
 
