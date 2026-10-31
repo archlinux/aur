@@ -12,7 +12,7 @@
 pkgbase=gnubg
 pkgname=('gnubg' 'gnubg-gtk3')
 pkgver=1.08.003
-pkgrel=3
+pkgrel=4
 pkgdesc="World class backgammon application"
 arch=('x86_64')
 url="https://www.gnu.org/software/gnubg/"

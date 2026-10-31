@@ -1,7 +1,7 @@
 pkgbase = gnubg
 	pkgdesc = World class backgammon application
 	pkgver = 1.08.003
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnu.org/software/gnubg/
 	arch = x86_64
 	license = GPL-3.0-or-later
