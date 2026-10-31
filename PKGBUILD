@@ -3,16 +3,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gauche-git
-pkgver=0.9.13.r15303
+pkgver=0.9.16_pre3.r17523
 pkgrel=1
-epoch=7
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
 url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
 # gauche only needed if this is the first build of gauche-git,
 # afterwards gauche-git will provide gauche
-depends=('mbedtls' 'gdbm' 'libatomic_ops' 'slib')
+depends=('mbedtls3' 'gdbm' 'libatomic_ops' 'slib')
 makedepends=('bash' 'git' 'gauche')
 provides=('gauche')
 conflicts=('gauche')
