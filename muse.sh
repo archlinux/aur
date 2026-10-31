@@ -75,25 +75,6 @@ if [[ "${1:-}" == "stats" ]]; then
       ;;
   esac
 fi
-
-if [[ "${1:-}" == "import" ]]; then
-  # No native `import` CLI subcommand exists (import is a TUI skill and the
-  # native Claude/Codex continuation lives in skills, not argv), so every
-  # `muse import ...` form belongs to the helper. If Meta ever ships a
-  # native `import` verb, this block needs revisiting.
-  shift
-  IMPORT_HELPER="${PREFIX}/lib/muse/muse-import"
-  if [[ ! -x "${IMPORT_HELPER}" ]]; then
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    if [[ -x "${SCRIPT_DIR}/../lib/muse/muse-import" ]]; then
-      IMPORT_HELPER="${SCRIPT_DIR}/../lib/muse/muse-import"
-    elif [[ -x "${SCRIPT_DIR}/muse-import" ]]; then
-      IMPORT_HELPER="${SCRIPT_DIR}/muse-import"
-    fi
-  fi
-  exec "${IMPORT_HELPER}" "$@"
-fi
-
 # On Termux / Android, static Linux binaries (musl) trigger SIGSYS (signal 31)
 # due to Android zygote seccomp blocking newer syscalls (such as openat2).
 # We run under proot to virtualize syscalls and provide a standard Linux VFS hierarchy.
