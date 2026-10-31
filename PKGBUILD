@@ -111,7 +111,7 @@ _nuget_mapping() {
 prepare() {
   # Arcade is part of the source-built .NET of Arch Linux (dotnet-source-built-artifacts), which
   # Arch Linux ARM doesn't have. It can't be a makedepends of an arch=any package, so it's used when
-  # it's installed, and comes from upstream's feeds otherwise.
+  # it's installed, and comes from upstream's feeds where it isn't (Arch Linux ARM).
   mkdir -p nuget-local
   local _artifacts _nupkg _version
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
@@ -123,6 +123,13 @@ prepare() {
     _version="${_nupkg##*/Microsoft.DotNet.Arcade.Sdk.}"
     echo "${_version%.nupkg}" >arcade-version
   done
+  # The Arcade on dotnet-eng targets an unreleased .NET SDK and won't load on the released one (MSB4062,
+  # Microsoft.Build.Framework.IMultiThreadableTask), so x86_64 requires the source-built artifacts
+  # rather than falling back to it.
+  if [[ "$CARCH" == x86_64 && ! -f "$srcdir/arcade-version" ]]; then
+    echo 'dotnet-system-data-sqlclient needs dotnet-source-built-artifacts on x86_64' >&2
+    exit 1
+  fi
 
   # Upstream builds with the .NET 8 SDK. dotnet only works outside the repository until its
   # global.json is updated.
