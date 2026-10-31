@@ -10,7 +10,7 @@ depends=('python-cryptography' 'python-requests' 'ffmpeg' 'python-yaml')
 optdepends=('python-pysocks: proxy support')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'perl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/spaam/svtplay-dl/archive/$pkgver.tar.gz")
-sha256sums=('d383740208733c8dc89588b0c39974e907173ee60b00858dce77056d80603954')
+sha256sums=('47f5386fbc22edc320649abb205e56af4319dbeaccea0f030218af8c111c4934')
 
 build() {
 
