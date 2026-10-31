@@ -14,8 +14,8 @@ makedepends=(
   dotnet-sdk-"$_dotnetsdkver"
   jq
 )
-# The commit the packages were published from, and the official build of them, see the file version
-# 10.100.26.51601 of their assemblies (Arcade encodes the date and build number in it)
+# The commit the packages were published from (tag v10.1.0-rtm), and the official build of them, see
+# the file version 10.100.26.51601 of their assemblies (Arcade encodes the date and build number in it)
 _commit="12702d51d9758687726bc4056729aeb58fbbf717"
 _officialbuildid="20261016.1"
 _packages=(
