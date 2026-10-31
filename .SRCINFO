@@ -1,6 +1,6 @@
 pkgbase = tubetui-bin
 	pkgdesc = YouTube — and your own videos and music — in the terminal
-	pkgver = 0.8.5
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/polblancoo/tubetui
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = tubetui-bin
 	provides = tubetui
 	conflicts = tubetui
 	options = !strip
-	source = LICENSE-0.8.5::https://raw.githubusercontent.com/polblancoo/tubetui/v0.8.5/LICENSE
+	source = LICENSE-0.8.7::https://raw.githubusercontent.com/polblancoo/tubetui/v0.8.7/LICENSE
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	source_x86_64 = tubetui-x86_64-0.8.5.tgz::https://github.com/polblancoo/tubetui/releases/download/v0.8.5/tubetui-x86_64-linux.tar.gz
-	sha256sums_x86_64 = affee3fb673fb7880645de101de9ef4dc030d427b7db03bcd0764022e99efdd5
+	source_x86_64 = tubetui-x86_64-0.8.7.tgz::https://github.com/polblancoo/tubetui/releases/download/v0.8.7/tubetui-x86_64-linux.tar.gz
+	sha256sums_x86_64 = f355475336d7c5fb7e7caa12b3e17ae52c969cace575cb6b3013565d9d8ee770
 
 pkgname = tubetui-bin
