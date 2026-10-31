@@ -3,9 +3,9 @@
 
 pkgname=ffmpeg-full
 pkgver=9.0.2
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.9.4'
+_whispercpp_ver='1.9.5'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -109,7 +109,7 @@ depends=(
     'srt'
     'svt-av1'
     'svt-hevc'
-    'svt-jpeg-xs-git'
+    'svt-jpeg-xs'
     'svt-vp9'
     'tesseract'
     'twolame'
@@ -177,7 +177,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
 sha256sums=('8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e'
             'SKIP'
             'SKIP'
-            '57e280cee375ab02425b806ad5146b99f6eb9357e3c2b31357c8a6af2e2e44ae'
+            'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
             'e6fdcb8446b0a0c0967f125d2de5084a5bdb418a1a6608f808cff2c97fc9bd6a'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             'cc80568f7dab2094f4f3bede6d0f068f217161f924915b067b0d287cf53b0849'
