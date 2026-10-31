@@ -1,0 +1,14 @@
+# Upgrading from Zenith 1.x: the binary was renamed and the config format is
+# new, so an autostart line that runs `zenith` silently stops working. Say so.
+post_upgrade() {
+  if [[ "$(vercmp "$2" 2.0.0)" -lt 0 ]]; then
+    cat <<'EOF'
+==> Zenith 2 is a clean break from 1.x:
+    - The binary is now `zenith-bar`. Change `exec-once = zenith` (or your
+      compositor's equivalent) to `exec-once = zenith-bar`.
+    - The config moved to ~/.config/zenith-bar/config.toml in a new format.
+      `zenith-bar init --preset classic` gives you the 1.x layout.
+    Guide: https://github.com/CPT-Dawn/Zenith/blob/main/docs/migrating-from-v1.md
+EOF
+  fi
+}
