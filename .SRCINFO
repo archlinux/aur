@@ -1,0 +1,17 @@
+pkgbase = dbdiff
+	pkgdesc = Compare database schemas, detect schema drift, and generate migration SQL, with JSON output and a CI mode
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/rekurt/dbdiff.git
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	optdepends = postgresql: comparación contra bases PostgreSQL
+	optdepends = mysql: comparación contra bases MySQL
+	source = dbdiff-0.2.2.tar.gz::https://github.com/rekurt/dbdiff/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 85a3f04a36b7832ff9a48fd064f5a7c1d0dc6005ee64594ba76bb6251f68f537
+
+pkgname = dbdiff
