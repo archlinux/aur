@@ -13,8 +13,9 @@ optdepends=('libfido2: WebAuthn / Passkey / FIDO2 security key support')
 provides=('omawarden' 'omawarden-bin')
 conflicts=('omawarden' 'omawarden-bin')
 options=('!lto')
-source=("omarchy-bitwarden::git+https://github.com/icyleaf/omarchy-bitwarden.git#branch=develop")
-sha256sums=('SKIP')
+install='omawarden-policy.install'
+source=("omarchy-bitwarden::git+https://github.com/icyleaf/omarchy-bitwarden.git#branch=develop" "omawarden-policy.install")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/omarchy-bitwarden"
@@ -33,4 +34,5 @@ package() {
     cd "${srcdir}/omarchy-bitwarden"
     install -Dm755 omawarden/target/release/omawarden "${pkgdir}/usr/bin/omawarden"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 packaging/org.omarchy.plugin.icyleaf.omarchy-bitwarden.policy "${pkgdir}/usr/share/polkit-1/actions/org.omarchy.plugin.icyleaf.omarchy-bitwarden.policy"
 }

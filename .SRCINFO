@@ -3,6 +3,7 @@ pkgbase = omawarden-git
 	pkgver = 0.8.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/icyleaf/omarchy-bitwarden
+	install = omawarden-policy.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -17,6 +18,8 @@ pkgbase = omawarden-git
 	conflicts = omawarden-bin
 	options = !lto
 	source = omarchy-bitwarden::git+https://github.com/icyleaf/omarchy-bitwarden.git#branch=develop
+	source = omawarden-policy.install
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = omawarden-git
