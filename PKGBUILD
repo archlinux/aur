@@ -1,20 +1,26 @@
 # Maintainer: Joidy App <https://github.com/Axel-DaMage/joidy>
 pkgname=joidy
-pkgver=1.1.0_beta.5
-_tag=1.1.0-beta.5
+pkgver=1.1.0_beta.6
+_tag=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Personal knowledge management with gamification"
 arch=('any')
 url="https://joidy-web.vercel.app"
 license=('GPL3')
 depends=('docker')
-source=("https://github.com/Axel-DaMage/joidy/archive/v${_tag}.tar.gz")
-sha256sums=('8bb50c15ef2ffa3d36985e62ccb2f738da9b29fcfa72c173b18c49c8a60efb84')
+install=joidy.install
+source=("https://github.com/Axel-DaMage/joidy/archive/v${_tag}.tar.gz"
+        "joidy.install")
+sha256sums=('SKIP' 'SKIP')
 
 package() {
   cd "${srcdir}/joidy-${_tag}"
   install -Dm755 scripts/joidy.sh "${pkgdir}/usr/bin/joidy"
   install -Dm644 docker-compose.yml "${pkgdir}/usr/share/joidy/docker-compose.yml"
   install -Dm644 .env.example "${pkgdir}/usr/share/joidy/.env.example"
+  # Backup sidecar scripts — docker-compose.yml bind-mounts ./scripts read-only
+  # into the `backup` service.
+  install -Dm755 scripts/db_backup.sh "${pkgdir}/usr/share/joidy/scripts/db_backup.sh"
+  install -Dm755 scripts/db_backup_loop.sh "${pkgdir}/usr/share/joidy/scripts/db_backup_loop.sh"
   install -Dm644 /dev/stdin "${pkgdir}/etc/joidy/path" <<<"/usr/share/joidy"
 }
