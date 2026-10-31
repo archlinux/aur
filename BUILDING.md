@@ -2,7 +2,8 @@
 
 ### Check For Updates
 
-- [upstream](https://www.keepalived.org/download.html)
+- [upstream](https://www.keepalived.org/download/)
+
 
 ### Process
 

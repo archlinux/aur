@@ -8,11 +8,11 @@
 
 pkgname=keepalived-openrc
 _pkgname=keepalived
-pkgver="2.3.4"
-pkgrel="8"
+pkgver="2.4.3"
+pkgrel="9"
 pkgdesc="keepalived bundled as an openrc based service"
 arch=("x86_64")
-url='https://gitlab.com/drad/keepalived'
+url='https://codeberg.org/dradux/keepalived-openrc'
 license=('GPL3')
 depends=(openrc)
 makedepends=('gcc' 'openssl' 'libnl' 'net-snmp')
@@ -20,7 +20,7 @@ makedepends=('gcc' 'openssl' 'libnl' 'net-snmp')
 install=keepalived.install
 #changelog=CHANGELOG.md
 source=("$_pkgname-$pkgver.tar.gz::https://www.keepalived.org/software/$_pkgname-$pkgver.tar.gz")
-md5sums=('622b09f4502ada4c6d20ef1c29205f77')
+md5sums=('5a5c30d3275c380c8cf1a2df67ebbc3c')
 
 build() {
     cd "$_pkgname-$pkgver"

@@ -1,8 +1,8 @@
 pkgbase = keepalived-openrc
 	pkgdesc = keepalived bundled as an openrc based service
-	pkgver = 2.3.4
-	pkgrel = 8
-	url = https://gitlab.com/drad/keepalived
+	pkgver = 2.4.3
+	pkgrel = 9
+	url = https://codeberg.org/dradux/keepalived-openrc
 	install = keepalived.install
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = keepalived-openrc
 	makedepends = libnl
 	makedepends = net-snmp
 	depends = openrc
-	source = keepalived-2.3.4.tar.gz::https://www.keepalived.org/software/keepalived-2.3.4.tar.gz
-	md5sums = 622b09f4502ada4c6d20ef1c29205f77
+	source = keepalived-2.4.3.tar.gz::https://www.keepalived.org/software/keepalived-2.4.3.tar.gz
+	md5sums = 5a5c30d3275c380c8cf1a2df67ebbc3c
 
 pkgname = keepalived-openrc

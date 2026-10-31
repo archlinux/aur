@@ -2,6 +2,8 @@
 
 A build of keepalived for openrc deployment - nothing fancy, nothing special.
 
+This package is available on the [AUR](https://aur.archlinux.org/packages/keepalived-openrc).
+
 
 ### Install
 
@@ -18,7 +20,7 @@ mkdir /home/build \
 ```
 3. Now you can clone and build:
 ```
-git clone https://gitlab.com/drad/keepalived.git \
+git clone https://codeberg.org/dradux/keepalived-openrc.git \
   && cd keepalived \
   && sudo -u nobody makepkg -c \
   && ls -lh keepalived*.zst
@@ -27,7 +29,7 @@ git clone https://gitlab.com/drad/keepalived.git \
 
 Optionally, you can installed the usual AUR way:
 ```
-git clone https://gitlab.com/drad/keepalived.git \
+git clone https://codeberg.org/dradux/keepalived-openrc.git \
   && cd keepalived \
   && makepkg -sirc
 ```
