@@ -5,7 +5,7 @@ pkgname=flclashx-git
 _pkgname=FlClashX
 _desktop_file=com.follow.clashx.desktop
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="[Pre-release] Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free."
 arch=(
     'aarch64'
@@ -24,8 +24,8 @@ source=("${pkgname%-git}.sh")
 source_aarch64=("${pkgname%-git}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}-pre.${pkgrel}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-git}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}-pre.${pkgrel}/${_pkgname}-linux-amd64.deb")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('d3118081512c49811f767b38f7a388e864ddd4bbcf6b8b96738e08b53ab4c110')
-sha256sums_x86_64=('c07d35075e94565f3b12daf31c1e6763be77dba53bda29fbda008620a89ae1ec')
+sha256sums_aarch64=('c7c6aa5e85f4e10a062deb8488eed041a25da155e885168d75c9a056de88e53c')
+sha256sums_x86_64=('92ca2f2bb0c4fb2386da19e3b223c67ad4d7505cbf54520956adf3d936fa1395')
 prepare() {
     sed -i -e "
       s/@appname@/${pkgname%-git}/g
