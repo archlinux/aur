@@ -1,0 +1,18 @@
+pkgbase = python-slimbook
+	pkgdesc = Python binding for libslimbook (Slimbook hardware API)
+	pkgver = 1.27.0
+	pkgrel = 1
+	url = https://github.com/Slimbook-Team/python-slimbook
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = libslimbook
+	source = python-slimbook::git+https://github.com/Slimbook-Team/python-slimbook.git#tag=1.27.0
+	sha256sums = SKIP
+
+pkgname = python-slimbook
