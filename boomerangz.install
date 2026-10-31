@@ -4,8 +4,19 @@ post_install() {
 	grep -qxF "$shell_path" /etc/shells || printf '%s\n' "$shell_path" >>/etc/shells
 }
 
+# Versions whose upgrade needs operator action. An upgrade from before one of
+# them prints where its notes are.
+action_versions=(0.2.0)
+
 post_upgrade() {
 	post_install
+	local version
+	for version in "${action_versions[@]}"; do
+		if (($(vercmp "$2" "$version") < 0 && $(vercmp "$1" "$version") >= 0)); then
+			printf '==> boomerangz %s needs action before the daemon runs again:\n' "$version"
+			printf '    https://boomerangz.org/operations/upgrading#v%s\n' "${version//./-}"
+		fi
+	done
 }
 
 post_remove() {
