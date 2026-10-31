@@ -1,7 +1,7 @@
 # Maintainer: dhor <dhor@toxic.net.pl>
 
 pkgname=calibraw
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="CalibRaw is a fast, non-destructive, GPU-accelerated RAW photo editor"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Duecki1/CalibRaw/archive/re
 	"CalibRawIcon.png"
 	"calibraw.desktop"
 	)
-sha256sums=('62069fb48c1ea2968d6ce5533652f96c9079008f74eeb8ccf8c63211a2daa9c5'
+sha256sums=('3d78c31093a588ef0edf4c46022b5153977a91a92eb79860cd5ee1a4180e4d7b'
             '83a6cd9b48d31d911d1e360b1a21d730b2c73d181b65978d9b311731ef4490d9'
             '34866ea9492e71788b89367ee08e49b62b019268ebb64e1f919aea0e1cacbf85')
 
