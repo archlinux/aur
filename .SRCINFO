@@ -1,6 +1,6 @@
 pkgbase = cheatmaster-bin
 	pkgdesc = Memory scanner that works out how a game stores a number: find it, freeze it, keep it across restarts
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Cheatmaster
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = cheatmaster-bin
 	optdepends = libsecret: keep the GitHub backup sign-in in the desktop keyring
 	provides = cheatmaster
 	conflicts = cheatmaster
-	noextract = Cheatmaster-0.0.5-linux-x64.tar.gz
+	noextract = Cheatmaster-0.0.6-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/Cheatmaster/releases/download/v0.0.5/Cheatmaster-0.0.5-linux-x64.tar.gz
-	sha256sums = d7e8ff5b3f3e69fb4b01bd3957ae05f7183723e9f9788f42878bb541637fcf99
+	source = https://github.com/codingncaffeine/Cheatmaster/releases/download/v0.0.6/Cheatmaster-0.0.6-linux-x64.tar.gz
+	sha256sums = 9d0d534f68bc07c27c755fd212ddbb86ef4c6443d699dca66495de9cbc1e6ff7
 
 pkgname = cheatmaster-bin

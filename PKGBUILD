@@ -3,7 +3,7 @@
 # Submit by pushing this and the generated .SRCINFO (makepkg --printsrcinfo > .SRCINFO) to
 #   ssh://aur@aur.archlinux.org/cheatmaster-bin.git
 pkgname=cheatmaster-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Memory scanner that works out how a game stores a number: find it, freeze it, keep it across restarts"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('polkit: the one-click "Allow memory access" for games not started f
             'libsecret: keep the GitHub backup sign-in in the desktop keyring')
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/Cheatmaster-$pkgver-linux-x64.tar.gz")
-sha256sums=('d7e8ff5b3f3e69fb4b01bd3957ae05f7183723e9f9788f42878bb541637fcf99')
+sha256sums=('9d0d534f68bc07c27c755fd212ddbb86ef4c6443d699dca66495de9cbc1e6ff7')
 noextract=("Cheatmaster-$pkgver-linux-x64.tar.gz")
 
 prepare() {
