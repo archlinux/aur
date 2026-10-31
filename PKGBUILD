@@ -3,7 +3,7 @@
 pkgname=squirrel-disk
 _pkgname=squirreldisk
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, cross-platform disk usage analyzer with an animated sunburst (native Rust rewrite)'
 arch=('x86_64')
 url='https://github.com/adileo/squirreldisk'
@@ -14,12 +14,17 @@ depends=(
   'hicolor-icon-theme'
   'libgcc'
   'libglvnd'
-  'libx11'
   'libxkbcommon'
-  'wayland'
 )
 makedepends=('cargo')
 optdepends=(
+  'wayland: Wayland session support'
+  'libx11: X11 session support'
+  'libxcb: X11 session support'
+  'libxcursor: X11 session support'
+  'libxi: X11 session support'
+  'libxrender: X11 session support'
+  'libxkbcommon-x11: X11 session support'
   'rclone: scan cloud storage and SSH servers'
   'xdg-desktop-portal: native file dialogs'
 )
