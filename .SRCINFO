@@ -1,7 +1,7 @@
 pkgbase = one-kvm-bin
 	pkgdesc = Open and lightweight IP-KVM solution for BIOS-level remote management (prebuilt)
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mofeng-git/One-KVM
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,9 @@ pkgbase = one-kvm-bin
 	depends = systemd-libs
 	optdepends = bluez: Bluetooth HID keyboard/mouse support
 	optdepends = ttyd: integrated web terminal
+	optdepends = easytier-core: P2P VPN mesh networking
+	optdepends = frpc: NAT traversal / port forwarding
+	optdepends = gostc: frp-based NAT traversal management
 	provides = one-kvm=0.2.8
 	conflicts = one-kvm
 	noextract = one-kvm_0.2.8_amd64.deb
