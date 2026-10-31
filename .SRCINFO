@@ -1,0 +1,21 @@
+pkgbase = rxcom
+	pkgdesc = X11 compositor with a full-desktop zoom
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/crazyboycjr/rxcom
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = shaderc
+	depends = glibc
+	depends = libgcc
+	depends = libxcb
+	optdepends = libglvnd: the experimental GL presenter
+	optdepends = libx11: the experimental GL presenter
+	optdepends = vulkan-icd-loader: the experimental Vulkan presenter
+	options = !lto
+	options = !debug
+	source = rxcom-0.3.0.tar.gz::https://github.com/crazyboycjr/rxcom/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = rxcom
