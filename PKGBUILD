@@ -7,7 +7,7 @@ _bins=(${_appname%era} ${_appname}-server)
 pkgname=${_appname}-bin
 pkgdesc="Self-hosted file and note sharing that cleans up after itself"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -38,10 +38,10 @@ sha256sums=('4808aa59a70bec6258b19893dfc69cdd8f18cd973d183934297e179d2fe813d7'
             'f154f981d00348c50e7ee65b53b7056e3bbea764adafc31c0bd85c2db66966ee'
             '42ff3305b6746b97ec2f168efbb2d83e092da8657df7d6b57b0dd6315f3ddd57'
             '07e1e84a873387fd758aabd84d3f199ce7247e866c3ca82e37abcc82f9271e31')
-sha256sums_x86_64=('1fbfe47ae2fdfba367a7df2f5b8b464cb7fdbe8f2f427bfe533104198508ab43'
-                   'a4663d2623b1345df634f0b24b7c785b06954cc6d3f30048c406da60aa68f1f6')
-sha256sums_aarch64=('530c2e475a079babdb0137ea5fc5bd57b7d38bcbded39b9427ee6e1a6aff2ace'
-                    '56d9e60011e7cae3050f3d7ac32e2b160784da1bd6bd2b9a2272e5b6436ca9d4')
+sha256sums_x86_64=('0c2bf6c2267c19e8adb83932fc4bab1a87b7924d1ab28c439902606be3916467'
+                   '0f5dcc6dec531fe9a6ea6e6ef81bd634bc293ec9c67ebf35fce8a00f57bccd8c')
+sha256sums_aarch64=('58686fe10af127db0b002310b212f5fbf2655669715ba5390e000977373dbacd'
+                    '611ed22e14214208da297282205588bb43f66fed859571aeab9ef22d21110ee9')
 
 
 prepare() {
