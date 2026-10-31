@@ -57,6 +57,11 @@ _markdownrendercommit="c216c18b1fb275aec0a3e84094bd0e1a4c5da685"
 # SelfSignedCertificate 0.0.4, a module the tests use (test/tools/Modules/PSGalleryTestModules.csproj):
 # last commit of the archived repository, which fixes the validity period for time zones after the release
 _selfsignedcertificatecommit="5f720d3d5b28c2cb2e9b33296cfd802ec6f1a668"
+# Pester 4.10.1, which the tests are written for: the latest 4.x, which build.psm1 saves
+_pesterver="4.10.1"
+# The tests of PowerShell Standard 5.1.1 (dotnet-powershellstandard-library), which check the reference
+# assembly the modules compile against with this PowerShell: release commit, upstream doesn't tag
+_psstdcommit="b69d5e6a5107287a5981db515bae4d5631278f76"
 depends=(
   dotnet-runtime-"$_dotnetsdkver"
   glibc
@@ -102,16 +107,16 @@ checkdepends=(
   # ASP.NET is needed for test/tools/WebListener
   aspnet-targeting-pack-"$_dotnetsdkver"
   aspnet-runtime-"$_dotnetsdkver"
-  bash                # Needed for various tests, e.g. test/powershell/Language/Scripting/NativeExecution/NativeLinuxCommands.Tests.ps1
-  expect              # Needed for test/powershell/Host/Read-Host.Tests.ps1
-  glibc-locales       # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
-  grep                # Used widely in tests
-  inetutils           # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
-  iputils             # Needed for ping, which is used in a lot of places
-  openssh             # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
-  powershell-pester-4 # The tests are written for Pester 4
-  procps-ng           # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
-  xclip               # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
+  bash             # Needed for various tests, e.g. test/powershell/Language/Scripting/NativeExecution/NativeLinuxCommands.Tests.ps1
+  dotnet-gherkin-5 # The Gherkin parser of Pester 4, which the tests are written for
+  expect           # Needed for test/powershell/Host/Read-Host.Tests.ps1
+  glibc-locales    # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
+  grep             # Used widely in tests
+  inetutils        # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
+  iputils          # Needed for ping, which is used in a lot of places
+  openssh          # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
+  procps-ng        # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
+  xclip            # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
 )
 install=powershell.install
 
@@ -127,6 +132,8 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/MarkdownRender.git#commit=$_markdownrendercommit"
   "git+https://github.com/PowerShell/ThreadJob.git#commit=$_threadjobcommit"
   "git+https://github.com/rjmholt/SelfSignedCertificate.git#commit=$_selfsignedcertificatecommit"
+  "Pester-$_pesterver.tar.gz::https://github.com/pester/Pester/archive/$_pesterver.tar.gz"
+  "git+https://github.com/PowerShell/PowerShellStandard.git#commit=$_psstdcommit"
   "psmodulepath-combined-paths.patch"
   "mmi-optional.patch"
   "telemetry-optional.patch"
@@ -158,6 +165,8 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   'f5527cf012bd495bc54107e446448b12895d78c0f1653ec29b9dc1110d028cdc36feef7dbc281ae70aae14b735156024ccaac3f3049f7cf4a7555116eaf3eef6'
   '50088e4e83b25a8211f35d29e844f69d1a03598d347d82179fb1228cabd6a1f158db5e23c6d9ce91a91cf2721f8e36e9572e30ee71e2e2c731181ae31678eb42'
   'c0d1d0ec47a8b0ed4d6e2a09a7040ba6244ceb615c76be21a42950cb8ac28a410811541ccdcf8eefff0c993a70d16ab5cb539d15168703c0f75598f02caa4e4c'
+  '1ca27ad9507547b04a9a6cb51bced6533312acff8a117ea10ac8843f2c25becda30b91c0c5e75693aa7870619238dfae3c86820e4ac04243cc42f7da8b0c37ca'
+  'e06ea3440792c4c7ad1cffa48cfff9f11434edc88344b200b1f4aa828d2fd0a81e5ff57f9b20f22838e74cec8997f23a88c559adc07ca355443b37e5fe3b447d'
   '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
   'c510ec133160d0f8aafc3ac37e3db7a2854f7e0bb67d22a287fa5ffbf9f3e205ed2a73a04413cf7f412290062b814cdbefb8445991447454db1dc27e71d78ba9'
   '01cc421451dda2428b3a62fa6476c87bb00b79277098dd3f02ee0095da7fe706565a5c4e449dd4b43e5b5651bb929a685e74a139c0f30fa122fbfa36d79e734c'
@@ -173,7 +182,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
   '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
   '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
-  'a2ff070cd4c4ddc71dd79a8db5bafc59afa3ffb2e2ad77a0a8ae5f02a0026e26b8467688351848e2fd95fa98e07922e957fbd987ca019b3494ae680374ed9f65'
+  '6597b1b3bddbb72bb96535df0ec1ab3963cd1b7e6cfb3dc42f00b3d3cc3bbf3921b3b88500727eed5434e267c7f17ae1b2542da4e28052a4adb26f8f061f8944'
   '501e304575a23c12d2e8466de14b51d1b4d25d72a64c633ea9170a6d64ef65df38fb542e1f42c6ffdaa5a55dbbfbca2327ff5c81b77cc6019fda717dbef68351'
   '1a6acc32f7cecbf0e32f540870cc1d19c5f6fa59a24334eab51c41245b6b039ae0b2f17ab644d9229291626a9887611e442815f916fd8fdd2193ab558762307b'
   '1afffe7e4797188f0ac2378f6032db5d0ffdeca12d5804250b62e0a946a65e7dab7a7d6c9674dedeebfb3e0501360b549e4d333841d0da6662c266b4589bdba0')
@@ -189,6 +198,8 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '63222fc3995a2090c72804bcdb4f9389f0aea2d05c780698dae0648e53b512236e3c91c3bbe0777df9330c45bb40ab2cf080b4bf9403064f069657ee522ddec3'
   'c1320ee0c713c7230e4fa914aa7e8618f124ab26c1bb7acbd92eafff3f70676c1451d7367204062b86316e594e596c55d8d5dad36a99cd68eeba907a5d979170'
   '98633062c100df742f1a932f227d874a95f87ea061eece500bf0a925bbabd4aeafab74a60c21ec715522d9dfc959ffc28ca1a82d747355ed8a1e512bd05e4b50'
+  '7533a4ed44964bcb3878e8a968c86cce9eb6e77a663bf08dee0acbc4ad66d144e76153a5865e008747bb24cfd43f82b6ec5b49748773f6e4109f2a81bcc4dfb8'
+  '88d59ba95cf513d89e59dab0a1e7869c2dd7f28e8073160335689c5f685325be210039875504f992778a00fef531b6fc00d8b2744e6ff8b3ab5c4289e15433c1'
   'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
   'b742e9e0de7a0e4ce3e077f01481328ee8245aecc144aade29f284560668ac551415d7228b88bdc31e9c8d4fd970bb0b1b1467772bd17802a21dfc21d078c5e9'
   '8f3bf0c3fb85e458d24a4ae11b24cc8c881c4c579d4fead5248557ca1a65a91e40d291d2d457cf8a2187540ccbaf1e8495e616256da1d829245067cfb62ef6c5'
@@ -204,7 +215,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
   '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
   'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
-  'dea8952d7ec96d2b6840f6daee5cb9e33c4f807734c444e696a40598d0f71a3fb2095b6c5622cc86e339c1e8aa586043dddd71d51a92378ed941e926270ac4c3'
+  '756cd1dbdcbf3239612c11af56f04e665cbc8bdb221369ac7912ede9fe27f2f5141e84fe84460ebe94d774803c60c63d3d72fc87848b2dea0795764952570b19'
   'f46fcb1d242979be39dbd14c6e5dc8c04ede57ed2de52a74e56bf18ce3c6b5985351d70ec0e291ed3ccec1655ebee4da931c88680c7ef60dec4797d78f015833'
   'a235ac1c91dbe0ea0f0fc89189028250753c0a4104b2779f26b66fa8f239e5bd580b83ed5c8a5e0b0d9ee2afef42ce9c8f6d10ea2d206c0c3694b63e44e76838'
   '3134c64cb38acb323df88be7634d95981c0c46d01d86912c1bb9d9c4ff3da42573299f365368d6d3fb8ebafdf0624203315ae90eb8da79ca33c736abca51f8e1')
@@ -663,6 +674,19 @@ check() {
   # The modules the tests use from the PowerShell Gallery (PSGalleryTestModules.csproj), from source
   cp -r "$srcdir/SelfSignedCertificate/SelfSignedCertificate" test/tools/Modules/
 
+  # Pester from source as well, which build.psm1 saves from the PowerShell Gallery, rather than
+  # powershell-pester-4, which needs powershell to build. The Gherkin parser comes from
+  # dotnet-gherkin-5 instead of the prebuilt one, as in powershell-pester-4, and the build tools with
+  # nuget.exe aren't needed.
+  local _pester="$srcdir/test-modules/Pester/$_pesterver"
+  rm -rf "$srcdir/test-modules"
+  mkdir -p "${_pester%/*}"
+  cp -r "$srcdir/Pester-$_pesterver" "$_pester"
+  rm -r "$_pester/lib/Gherkin/core" "$_pester/lib/Gherkin/legacy" "$_pester/vendor"
+  mkdir "$_pester/lib/Gherkin/core"
+  bsdtar -xOf /usr/share/dotnet/nuget-packages/Gherkin.5.1.0.nupkg lib/netstandard2.0/Gherkin.dll \
+    >"$_pester/lib/Gherkin/core/Gherkin.dll"
+
   # Some tests are locale dependent, so we need to ensure the en-US locale is being used.
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
@@ -672,8 +696,34 @@ check() {
   rm -rf "$srcdir/psresourceget-test"
   pwsh -NoProfile -NonInteractive -File "$srcdir/psresourceget-test.ps1" -WorkPath "$srcdir/psresourceget-test"
 
+  # The tests of PowerShell Standard are run here, as dotnet-powershellstandard-library would need
+  # powershell for them, which needs it to build. They check the packaged reference assembly with this
+  # PowerShell, instead of building it again: a cmdlet compiled against it runs, and it has no types
+  # this PowerShell lacks. PowerShell 7 removed the workflow job proxies (PowerShell/PowerShell#10083,
+  # #9618), and the CIM type adapter is only there with MMI (mmi-optional.patch).
+  local _psstd="$srcdir/PowerShellStandard" _psstdver
+  local _psstdpkg=(/usr/share/dotnet/nuget-packages/PowerShellStandard.Library.*.nupkg)
+  _psstdver=${_psstdpkg[0]##*/PowerShellStandard.Library.}
+  _psstdver=${_psstdver%.nupkg}
+  rm -rf "$_psstd/src/5/bin"
+  mkdir -p "$_psstd/src/5/bin/Release/netstandard2.0"
+  bsdtar -xOf "${_psstdpkg[0]}" lib/netstandard2.0/System.Management.Automation.dll \
+    >"$_psstd/src/5/bin/Release/netstandard2.0/System.Management.Automation.dll"
+  sed -i "s|<ProjectReference Include=\"../../../src/5/System.Management.Automation-lib.csproj\" />|<PackageReference Include=\"PowerShellStandard.Library\" Version=\"$_psstdver\" />|" \
+    "$_psstd/test/5/core/PSStandard.csproj"
+  cp "$srcdir/nuget-modules.config" "$_psstd/test/5/core/nuget.config"
+  # shellcheck disable=SC2016
+  sed -i 's/-difference \$asmT /-difference ($asmT | Where-Object { $_ -notin @("System.Management.Automation.JobDataAddedEventArgs", "System.Management.Automation.PSChildJobProxy", "System.Management.Automation.PSJobProxy", "System.Management.Automation.Runspaces.PSSessionType", "Microsoft.PowerShell.Cim.CimInstanceAdapter") }) /' \
+    "$_psstd/test/5/core/PSS5.Tests.ps1"
+  # The tests find the library through git, so they run in the repository
+  (
+    cd "$_psstd/test/5/core" || exit
+    pwsh -NoProfile -NonInteractive -File "$srcdir/invoke-pester.ps1" \
+      -Repository "$srcdir/PowerShell" -ModulePath "$srcdir/test-modules" -Script "$PWD"
+  )
+
   # Not -NonInteractive, some tests rely on prompts
-  pwsh -NoProfile -File "$srcdir/invoke-pester.ps1"
+  pwsh -NoProfile -File "$srcdir/invoke-pester.ps1" -Repository "$PWD" -ModulePath "$srcdir/test-modules"
 
   # The xUnit tests
   dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r "$_rid" --test-adapter-path:.
