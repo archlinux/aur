@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Find out why your Linux PC froze, crashed or shut down"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('3bb784ca9aa37f587193668fffbfaba7497dd5123691e19234f8101a7f316a4a')
-sha256sums_aarch64=('4dc50a2cdc1121cb59aa935383d6d60fd18fd44d83dfce522a81a5abdcf83bbd')
+sha256sums_x86_64=('994edc19a10c04cebc999dcb20c7e6ec7b04c8d87d2dcd657eb4f371790ac3f9')
+sha256sums_aarch64=('614e89584da6d46b5ce12aeb95d2fd4b449452eec4f87801f739ef165255d865')
 
 
 package() {
