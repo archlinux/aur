@@ -1,6 +1,6 @@
 # Maintainer: gimgiwer <gimgiwer@gmail.com>
 pkgname=swiftify
-pkgver=0.24.5
+pkgver=0.24.6
 pkgrel=1
 pkgdesc="A Spotify player for Wayland, in Material 3 after end4"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ optdepends=(
 )
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/swiftify-org/swiftify/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e0fdbf4b99794cc3f97e38c493405dc62b69b25d8fcbbf43d5cab7b1c57aa92d')
+sha256sums=('a6eccc379ebf77dc5e603374046f2c19963e97d2a74b6f870fcc6c5a642793ae')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" -G Ninja         -DCMAKE_BUILD_TYPE=Release         -DCMAKE_INSTALL_PREFIX=/usr         -DBUILD_TESTING=OFF

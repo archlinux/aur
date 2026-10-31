@@ -1,6 +1,6 @@
 pkgbase = swiftify
 	pkgdesc = A Spotify player for Wayland, in Material 3 after end4
-	pkgver = 0.24.5
+	pkgver = 0.24.6
 	pkgrel = 1
 	url = https://github.com/swiftify-org/swiftify
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = swiftify
 	optdepends = ttf-material-symbols-variable-git: icon font, if not bundled
 	optdepends = xdg-desktop-portal: native file picker for cover photos
 	options = !lto
-	source = swiftify-0.24.5.tar.gz::https://github.com/swiftify-org/swiftify/archive/refs/tags/v0.24.5.tar.gz
-	sha256sums = e0fdbf4b99794cc3f97e38c493405dc62b69b25d8fcbbf43d5cab7b1c57aa92d
+	source = swiftify-0.24.6.tar.gz::https://github.com/swiftify-org/swiftify/archive/refs/tags/v0.24.6.tar.gz
+	sha256sums = a6eccc379ebf77dc5e603374046f2c19963e97d2a74b6f870fcc6c5a642793ae
 
 pkgname = swiftify
