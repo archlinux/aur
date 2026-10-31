@@ -1,6 +1,6 @@
 pkgbase = glimpse-desktop-bin
 	pkgdesc = Desktop shell suite for Wayland compositors: panel, wallpaper, lock screen and night light
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/alex-oleshkevich/glimpse
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = glimpse-desktop-bin
 	backup = etc/xdg-desktop-portal/glimpse-portals.conf
 	backup = etc/xdg-desktop-portal/niri-portals.conf
 	backup = etc/xdg-desktop-portal/hyprland-portals.conf
-	source_x86_64 = glimpse-0.16.1-x86_64.tar.zst::https://github.com/alex-oleshkevich/glimpse/releases/download/v0.16.1/glimpse-0.16.1-x86_64.tar.zst
-	b2sums_x86_64 = 39fc7ac64614fbc9c4151b028400c03e5cf5d248cd1ffd1c59d8c16c97ebdf35f34c22a164d34dea09b45767478f7d2b4b0e9a4a77262c151d6957527e0e64e0
+	source_x86_64 = glimpse-0.17.0-x86_64.tar.zst::https://github.com/alex-oleshkevich/glimpse/releases/download/v0.17.0/glimpse-0.17.0-x86_64.tar.zst
+	b2sums_x86_64 = 9711409b786b8dfee8e218ca4043c174dcfd5ee7eda1f263585f10337e6b34f8ddfc1637fc8715a5b5acce87025d71f64dace2ae00aabab0547888858f140fb8
 
 pkgname = glimpse-desktop-bin
