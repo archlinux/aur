@@ -1,6 +1,6 @@
 pkgbase = epoch-app-bin
 	pkgdesc = Archivo personal de la web: guarda el HTML de una página para volver a verla como estaba
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/PC0staS/epoch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = epoch-app-bin
 	depends = glibc
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	source = epoch_1.0.3_amd64.deb::https://github.com/PC0staS/epoch/releases/download/v1.0.3/epoch_1.0.3_amd64.deb
-	sha256sums = c41559c40b9f7837a24681b7d7e898dace18be7f2c36df6a5c34ae69cca0bbeb
+	source = epoch_1.0.4_amd64.deb::https://github.com/PC0staS/epoch/releases/download/v1.0.4/epoch_1.0.4_amd64.deb
+	sha256sums = 343850d3783d8319920ee509181b0fcc73a23bfbe574ab40ab85931f289a4b5d
 
 pkgname = epoch-app-bin
