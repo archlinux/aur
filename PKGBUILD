@@ -1,19 +1,19 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="Single-column Fediverse client for desktop "
 arch=('x86_64')
 url="https://whalebird.social"
 license=('GPL-3.0')
-depends=('electron39>=39.0.0' 'electron39<40.0.0')
-makedepends=('yarn' 'tar' 'nodejs>=22.0.0' 'node-gyp' 'git')
+depends=('electron44>=44.0.0' 'electron44<45.0.0')
+makedepends=('yarn' 'tar' 'nodejs>=24.0.0' 'node-gyp' 'git')
 provides=('whalebird')
 conflicts=('whalebird-bin' 'whalebird-desktop-git')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
         whalebird.desktop
         electron-builder.yml)
-md5sums=('5fe7ebfba895bd1f655555e281085ae6'
+md5sums=('94f36d7f38d1d4163c9dd8e61c136ffc'
          '6ab525c54c6e91871d0d6f05a76f5289'
          '480286196dc0614fd14b0d906c00b228')
 
@@ -21,7 +21,7 @@ prepare() {
   cd "whalebird-desktop-${pkgver}"
   rm -f electron-builder.yml
   rm .tool-versions
-  _electronVersion="$(</usr/lib/electron39/version)"
+  _electronVersion="$(</usr/lib/electron44/version)"
   yarn up "electron@$_electronVersion"
 }
 
@@ -29,7 +29,7 @@ build() {
   cp electron-builder.yml "whalebird-desktop-${pkgver}"/electron-builder.yml
   cd "whalebird-desktop-${pkgver}"
   yarn exec nextron build --no-pack
-  yarn exec electron-builder --linux --dir --config electron-builder.yml -c.electronDist=/usr/lib/electron37 -c.electronVersion="$_electronVersion"
+  yarn exec electron-builder --linux --dir --config electron-builder.yml -c.electronDist=/usr/lib/electron44 -c.electronVersion="$_electronVersion"
 }
 
 package() {
