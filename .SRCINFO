@@ -1,0 +1,17 @@
+pkgbase = python-blastradius
+	pkgdesc = Shows what breaks before you change a Python function: callers with file:line, transitive dependents and affected tests, using a local call graph
+	pkgver = 0.1.0+r4.ee88d07
+	pkgrel = 1
+	url = https://github.com/enhanciar/blastradius
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = blastradius-0.1.0+r4.ee88d07.tar.gz::https://github.com/enhanciar/blastradius/archive/ee88d07e0705cef6cbda4c6d687e4bf18fb1eca3.tar.gz
+	sha256sums = 6de507881b04d623844a87f335aade2c85aaa1c25cec57356427fb07820b2ad9
+
+pkgname = python-blastradius
