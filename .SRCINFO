@@ -1,6 +1,6 @@
 pkgbase = ccstatus
 	pkgdesc = Customizable status line formatter for Claude Code CLI
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/moond4rk/ccstatus
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ccstatus
 	optdepends = git: git branch, changes and worktree widgets
 	conflicts = ccstatus-bin
 	options = !debug
-	source = ccstatus-0.3.1.tar.gz::https://github.com/moond4rk/ccstatus/archive/v0.3.1.tar.gz
-	sha256sums = 482ece06c5416f5e1e757601e1cec3cb1687e9c930aa487701fc26940e502f13
+	source = ccstatus-0.4.0.tar.gz::https://github.com/moond4rk/ccstatus/archive/v0.4.0.tar.gz
+	sha256sums = 7ee5407f3bbf4aef805f9da5db3421b74070c11b03fadfe549dd84df8260842e
 
 pkgname = ccstatus
