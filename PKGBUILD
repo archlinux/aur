@@ -760,13 +760,16 @@ check() {
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
 # restored from a remote feed like nuget.org into $1, so no prebuilt binary slips in instead of one built
-# from source
+# from source. The packs of .NET itself (DotnetPlatform: runtime packs, which $PSHOME/ref is copied from,
+# and the like) are left out: where there's no source-built .NET, like on Arch Linux ARM, they come from
+# nuget.org as Microsoft's build of the .NET PowerShell runs on.
 _check_prebuilt() {
   local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0
   local _binaries=(-type f '(' -name '*.dll' -o -name '*.exe' -o -name '*.so' -o -name '*.so.*' -o -name '*.dylib' ')')
   local -A _prebuilt=()
   while IFS= read -r -d '' _metadata; do
     grep -qE '"source": *"https?://' "$_metadata" || continue
+    grep -qs '<packageType name="DotnetPlatform"' "${_metadata%/*}"/*.nuspec && continue
     while IFS= read -r -d '' _file; do
       _prebuilt[$(sha256sum <"$_file")]="${_file#"$1"/}"
     done < <(find "${_metadata%/*}" "${_binaries[@]}" -print0)
