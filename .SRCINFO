@@ -1,20 +1,25 @@
 pkgbase = zerodds
 	pkgdesc = Pure-Rust OMG Data Distribution Service implementation (built from source)
-	pkgver = 1.0.0_rc.6
+	pkgver = 1.0.0_rc.7
 	pkgrel = 1
 	url = https://zerodds.org
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = rust>=1.88
-	makedepends = cargo
-	makedepends = git
-	makedepends = pkg-config
+	makedepends = rust
+	makedepends = clang
+	makedepends = cmake
+	makedepends = dpkg
+	makedepends = pkgconf
 	makedepends = openssl
 	depends = glibc
 	depends = gcc-libs
+	provides = zerodds
+	conflicts = zerodds-bin
 	options = !lto
-	source = zerodds-1.0.0_rc.6.tar.gz::https://github.com/zero-objects/zero-dds/archive/refs/tags/v1.0.0-rc.6.tar.gz
-	sha256sums = SKIP
+	options = !debug
+	options = staticlibs
+	source = zerodds-1.0.0_rc.7.tar.gz::https://github.com/zero-objects/zero-dds/archive/refs/tags/v1.0.0-rc.7.tar.gz
+	sha256sums = a630791f71b35854a96587fc20f1d347451ae5e0d228dccada82dab18ca3bd7e
 
 pkgname = zerodds
