@@ -1,0 +1,16 @@
+pkgbase = freelance-time-cli
+	pkgdesc = Track billable hours per project from the command line. Zero dependencies, local JSON file, no cloud account
+	pkgver = 1.0.0+r19.b8b2254
+	pkgrel = 1
+	url = https://github.com/kleogeos/freelance-time-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = freelance-time-cli-1.0.0+r19.b8b2254.tar.gz::https://github.com/kleogeos/freelance-time-cli/archive/b8b22544e43afa6ea6be34a18e7f434471c137ea.tar.gz
+	sha256sums = 84c9eb82b7b0579725abacd4541951d468d647960a9ab2234094443c503ace23
+
+pkgname = freelance-time-cli
