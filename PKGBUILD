@@ -9,16 +9,18 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git-asan
-pkgver=0.26.99.25007.g044149406
+pkgver=0.28.0.25373.g28b243b81
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs' 'libexif'
-         'xorg-server-xwayland' 'bluez' 'pulse-native-provider' 'connman' 'bc')
+         'xorg-server-xwayland' 'bluez' 'libpipewire' 'pulse-native-provider' 'connman' 'bc')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'ccache' 'wayland-protocols')
 optdepends=('gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
+            'connman: network connection manager module'
+            'networkmanager: network connection manager module'
             'geoclue2: needed for geolocation module'
             'packagekit: needed for packagekit module'
             'ddcutil: from AUR needed for desktop monitor backlight etc. controls')
