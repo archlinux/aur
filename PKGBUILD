@@ -1,4 +1,4 @@
-# Maintainer: João F. (BeyondMagic) <koetemagie at gmail dot com>
+# Maintainer: João F. (BeyondMagic) <beyondmagic@mail.ru>
 # Contributor: Mark Collins <tera_1225 hat hotmail ðot com>
 # Contributor: j.r <j.r@jugendhacker.de>
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
