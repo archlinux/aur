@@ -16,7 +16,7 @@ _cef_commit=14c5a089e8452874cb1a556dc3fde26ed2d87723
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
 _chromium_ver=154.0.8037.154
 _system_clang=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
 provides=("cef=$pkgver")  # provides="cef=$pkgver"
 conflicts=('cef')  # conflicts='cef'
@@ -39,6 +39,7 @@ depends=(
   'pango'
   'systemd-libs'
   'libva'
+  'vulkan-icd-loader'
 )
 optdepends=(
   'libva-mesa-driver: VAAPI driver for AMD GPUs'
@@ -579,6 +580,11 @@ package() {
   cp -r Release/* "$pkgdir/usr/lib/cef/"
   install -Dvm4755 Release/chrome-sandbox "$pkgdir/usr/lib/cef/chrome-sandbox"
   cp -r Resources/* "$pkgdir/usr/lib/cef/"
+
+  # Use the system Vulkan loader. A second bundled loader breaks Dawn's
+  # WebGPU device when the host already loaded the system one (e.g. GTK4),
+  # leaving only the SwiftShader software adapter.
+  rm -f "$pkgdir/usr/lib/cef/libvulkan.so.1"
 
   # Headers
   install -d "$pkgdir/usr/include/cef"
