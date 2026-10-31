@@ -1,7 +1,7 @@
 # Maintainer: bnema <b@bnema.dev>
 pkgname=cef-vaapi-bin
 pkgver=154.0.34
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium Embedded Framework with VAAPI and proprietary codecs enabled (binary distribution)"
 arch=('x86_64')
 url="https://chromiumembedded.github.io/cef"
@@ -28,9 +28,10 @@ optdepends=(
   'libva-mesa-driver: VAAPI driver for AMD GPUs'
   'intel-media-driver: VAAPI driver for modern Intel GPUs'
   'libva-utils: VAAPI diagnostics such as vainfo'
+  'vulkan-icd-loader: Vulkan rendering and hardware WebGPU'
 )
 source=("cef-vaapi-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/bnema/cef-vaapi/releases/download/cef-vaapi-v${pkgver}-${pkgrel}/cef-vaapi-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('401b43626019532a408f3a92434be501b9dd474ac280eee0dcc559e14277118d')
+sha256sums=('69ccae05c20a44d5d092787881b0e26f0cad0fd365f6a7c2dc86d03195f08951')
 
 package() {
   bsdtar -xpf "${srcdir}/cef-vaapi-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
