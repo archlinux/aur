@@ -1,0 +1,29 @@
+pkgbase = efr-code-git
+	pkgdesc = Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state (main branch)
+	pkgver = 0.0.6.r2250.g8bb1c161
+	pkgrel = 1
+	url = https://github.com/eggfriedrice24/eggfriedrice.code
+	install = efr-code.install
+	arch = x86_64
+	license = MIT
+	checkdepends = cargo-nextest
+	checkdepends = git
+	makedepends = cargo
+	makedepends = git
+	makedepends = minisign
+	depends = glibc
+	depends = libgcc
+	depends = zsh
+	optdepends = bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)
+	optdepends = fzf: the live search picker of ,resume (0.46 or newer)
+	optdepends = git: project roots and the git facts of a turn
+	optdepends = xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)
+	optdepends = xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1
+	provides = efr-code=0.0.6
+	conflicts = efr-code
+	conflicts = efr-code-bin
+	options = !lto
+	source = efr-code-git::git+https://github.com/eggfriedrice24/eggfriedrice.code.git#branch=main
+	b2sums = SKIP
+
+pkgname = efr-code-git
