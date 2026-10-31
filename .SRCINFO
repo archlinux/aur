@@ -1,0 +1,18 @@
+pkgbase = python-django-cachalot
+	pkgdesc = Caches your Django ORM queries and automatically invalidates them.
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://github.com/noripyt/django-cachalot
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django<6.2
+	depends = python-django>=4.2
+	source = django-cachalot-v2.9.1.tar.gz::https://github.com/noripyt/django-cachalot/archive/refs/tags/v2.9.1.tar.gz
+	sha256sums = a6786e5d8a14e2a070151f45b6911fe4f4ae4e2f174c00d9d831f72ccb5958be
+
+pkgname = python-django-cachalot
