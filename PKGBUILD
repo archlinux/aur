@@ -1,10 +1,11 @@
 pkgname=ahaha-git
 pkgver=r183.77082be
-pkgrel=1
+pkgrel=2
 pkgdesc="ANSI HTML Adapter fork with reverse HTML-to-ANSI conversion"
 arch=('x86_64')
 url="https://github.com/haturatu/ahaha"
 license=('LGPL-2.0-or-later' 'MPL-1.1')
+depends=('glibc')
 makedepends=('git')
 provides=('ahaha')
 conflicts=('ahaha')
