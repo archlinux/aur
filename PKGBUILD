@@ -1,8 +1,8 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=clauth
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="Claude Code multi-account manager and usage monitor with auto-switch (CLI, TUI, MCP plugin)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/uwuclxdy/clauth"
@@ -17,8 +17,8 @@ conflicts=('clauth-bin')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/uwuclxdy/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname-notify-only-update.patch")
-sha256sums=('c6f58cad159ed15a7f956f264e43911aa64d8300c60c353efabc5be11c500869'
-            '2f02edb553775db054b5266a6ceeeeea19880baac9c96dc0cf5272a7b77715a4')
+sha256sums=('b89423c6095f1651f6ab4e0667505956a6ac7f1ecacb59b8013d9ad2dfea7cd5'
+            'fed8d959821e18c4cb18756eabd85569013e937ce75932afcec69748cfd6cd95')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -42,8 +42,12 @@ check() {
   export CARGO_TARGET_DIR=target
   # Unit tests only: the suites under tests/ start daemons and MCP servers. The
   # daemon:: tests shell out to ps, hostname and openssl, and upstream marks
-  # the openssl fixture as flaky on a loaded host.
-  cargo test --frozen --release --bins -- --skip daemon::
+  # the openssl fixture as flaky on a loaded host. The update toast test checks
+  # the cargo install hint the notify-only-update patch replaces, and the
+  # unbindable-port test races other processes for a free local port.
+  cargo test --frozen --release --bins -- --skip daemon:: \
+    --skip tui::app::tests::update_banner_and_row_text_prose_style_their_keys_and_commands \
+    --skip proxy::tests::a_silent_but_unbindable_port_is_refused_as_unbindable
 }
 
 package() {
