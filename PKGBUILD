@@ -6,7 +6,7 @@ _appname=archman
 pkgname=${_appname}
 pkgdesc="All available pacman options combined into one interactive script"
 
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ makedepends=('cargo')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b6f7d89e8339d06437ce56d2c2242d5af01ef266586f8fd0b28998646a228cd7')
+sha256sums=('eb2a90cb3bfcbb81acc7b73494356d13860a76940c6bd54a893fc77f4664496c')
 
 
 prepare() {
