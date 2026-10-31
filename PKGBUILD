@@ -12,7 +12,7 @@ _appname=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Linux kernel observability in your terminal"
 
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -33,7 +33,7 @@ install="${_appname}.install"
 options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('76be2a644191bddcba96e9b4c576223f60fd9e6de368d6047c193cfda7934202')
+sha256sums=('e432e768edad9769eab5eff8187dc9cee1422f58a58a6bd87c6e2b1b0d82c72d')
 
 prepare() {
   cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1

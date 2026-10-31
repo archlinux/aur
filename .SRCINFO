@@ -1,6 +1,6 @@
 pkgbase = kernwatch
 	pkgdesc = Linux kernel observability in your terminal
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/matthart1983/kernwatch
 	install = kernwatch.install
@@ -17,7 +17,7 @@ pkgbase = kernwatch
 	provides = kernwatch
 	options = !lto
 	options = !strip
-	source = kernwatch-0.5.0.crate::https://crates.io/api/v1/crates/kernwatch/0.5.0/download
-	sha256sums = 76be2a644191bddcba96e9b4c576223f60fd9e6de368d6047c193cfda7934202
+	source = kernwatch-0.5.1.crate::https://crates.io/api/v1/crates/kernwatch/0.5.1/download
+	sha256sums = e432e768edad9769eab5eff8187dc9cee1422f58a58a6bd87c6e2b1b0d82c72d
 
 pkgname = kernwatch
