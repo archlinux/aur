@@ -1,8 +1,11 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
+# Rendered on every stable release from aur/sonora-bin/PKGBUILD in github.com/sonorahq/sonora by
+# its release workflow, which overwrites any change made in the AUR repository.
+
 pkgname=sonora-bin
 _pkgname=sonora
-pkgver=0.45.0
+pkgver=0.46.0
 pkgrel=1
 pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
@@ -22,9 +25,9 @@ options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('c7d13fd32e178026147be65cf057de86ce20694cccf551410596a2ff25c6f654')
-sha256sums_x86_64=('91f12b9e5ab3b3de6e1a0bebd865c2f87a63a11035a826d761d213365f3cc700')
-sha256sums_aarch64=('a31cee499e7e14d4f4c695804ed4a667431fa3d0836b2167f2d60b0232a22e44')
+sha256sums=('4d789a2c4d9f50ec024408ea7fa9836494d37b2e31aa0d03ec59586c92de6590')
+sha256sums_x86_64=('9b83ac51cd7aa01759dd431a64386b0f3c1d3003d98886f8e936cc583d467a83')
+sha256sums_aarch64=('2493d2843dcb75971d49698865fb7e13e2a6c96d25b17b8815fcdf4ce572cd11')
 
 package() {
   cd "${_pkgname}-${pkgver}"
