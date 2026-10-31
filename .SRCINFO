@@ -1,7 +1,7 @@
 pkgbase = bbhost-desktop-bin
 	pkgdesc = Definitive Bloodborne PC Experience
 	pkgver = 0.2.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/droogie/bbhost
 	arch = x86_64
 	license = GPL3

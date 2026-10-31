@@ -2,7 +2,7 @@
 pkgname=bbhost-desktop-bin
 _pkgname=bbhost
 pkgver=0.2.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Definitive Bloodborne PC Experience"
 arch=('x86_64')
 url="https://github.com/droogie/bbhost"
@@ -21,9 +21,11 @@ prepare() {
     sed -i 's|ls -1t logs|ls -1t $HOME/.local/share/bbhost/data/logs|g' "${srcdir}/bbhost-linux-v${pkgver}/run-bbhost.sh"
     rmdir ${srcdir}/bbhost-linux-v${pkgver}/logs
 
-    # Remove superfluous plugins directory
-    # Plugins can be downloaded through th launcher, and are saved to $HOME/.config/bbhost
+    # Remove superfluous plugins directory, and other unneeded files
+    # Plugins can be downloaded through the launcher, and are saved to $HOME/.config/bbhost
     rm -rf ${srcdir}/bbhost-linux-v${pkgver}/plugins
+    rm ${srcdir}/bbhost-linux-v${pkgver}/bbhost.example.toml
+    rm ${srcdir}/bbhost-linux-v${pkgver}/README-linux.txt
 }
 
 package() {
