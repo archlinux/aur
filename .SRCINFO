@@ -1,0 +1,37 @@
+pkgbase = tape24-bin
+	pkgdesc = Destructive tape-style 24-track DAW (X11-backed, XWayland on Wayland sessions)
+	pkgver = 0.9.530
+	pkgrel = 1
+	url = https://emrmusicgroup.com/tape24/
+	install = tape24-bin.install
+	arch = x86_64
+	groups = pro-audio
+	license = LicenseRef-proprietary
+	makedepends = unzip
+	depends = hicolor-icon-theme
+	depends = bash
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = alsa-lib
+	depends = curl
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	depends = libjack.so=0-64
+	optdepends = wireplumber: recommended audio session manager
+	optdepends = xorg-xwayland: XWayland for plugin editors and Wayland sessions
+	optdepends = realtime-privileges: realtime scheduling for low latency
+	optdepends = xdg-desktop-portal: portal integration
+	optdepends = yabridge: Windows VST via Wine
+	optdepends = wine: Windows VST host support
+	provides = tape24
+	conflicts = tape24
+	conflicts = tape24-wayland-bin
+	conflicts = tape24-x11-bin
+	options = !strip
+	options = !debug
+	source = TAPE-24-v0.9.530-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-24-Public-Releases/releases/download/0.9.530/TAPE-24-v0.9.530-Linux-Release.zip
+	sha256sums = a26389a633aa08cde080e030a88d35e0c2f45dada878f6fea88055b32f7eed38
+
+pkgname = tape24-bin
