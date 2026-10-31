@@ -1,0 +1,15 @@
+pkgbase = git-barber
+	pkgdesc = A CLI and TUI for cleaning up merged Git branches, including squash and rebase merges
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rekurt/git-barber.git
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = git
+	source = git-barber-0.3.0.tar.gz::https://github.com/rekurt/git-barber/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = f4ddf3dadc27b65b3553ac186fae6f9fb9c26da9d3ea247ce61ec5db250ebba8
+
+pkgname = git-barber
