@@ -1,14 +1,14 @@
 pkgbase = chromium-extension-web-store
 	pkgdesc = chromium web store extension (for ungoogled-chromium)
-	pkgver = 1.5.5.3
+	pkgver = 1.5.5.4
 	pkgrel = 1
 	url = https://github.com/NeverDecaf/chromium-web-store
 	install = chromium-extension-web-store.install
 	arch = any
 	license = MIT
 	optdepends = ungoogled-chromium
-	noextract = chromium-extension-web-store-1.5.5.3.crx
-	source = chromium-extension-web-store-1.5.5.3.crx::https://github.com/NeverDecaf/chromium-web-store/releases/download/v1.5.5.3/Chromium.Web.Store.crx
-	sha256sums = 326443baec3d204b1358eba6aa025cf6bd930c08a0b98f6784e7a3236528445b
+	noextract = chromium-extension-web-store-1.5.5.4.crx
+	source = chromium-extension-web-store-1.5.5.4.crx::https://github.com/NeverDecaf/chromium-web-store/releases/download/v1.5.5.4/Chromium.Web.Store.crx
+	sha256sums = 63c075b4a25b11af2c536dad191946e8d9547f92d5b6c257b2ce4138d2996f32
 
 pkgname = chromium-extension-web-store
