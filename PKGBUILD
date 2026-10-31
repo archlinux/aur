@@ -49,6 +49,8 @@ sha256sums=('d7c32956b97654340f64f532177bc255c27d448382495f16a364986bbad03188'
 prepare() {
   for ((i = ${#_pkgsrc[@]} - 1; i >= 0; i--)); do
     pushd "${_pkgsrc[i]}" > /dev/null
+    # upstream Cargo.lock lags behind the workspace version bump
+    cargo update --workspace
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     popd > /dev/null
   done
