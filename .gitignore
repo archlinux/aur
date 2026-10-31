@@ -1,0 +1,13 @@
+# makepkg working directories and artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.pkg.tar.zst
+
+# VCS source clone (makepkg extracts the git source next to the PKGBUILD when
+# building with a bare `makepkg -f` in this directory)
+dsh-tui-git/
+
+# Local-only notes; the AUR repo carries PKGBUILD, .SRCINFO and the .install
+# hook only.
+README.md
