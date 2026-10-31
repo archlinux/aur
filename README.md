@@ -29,7 +29,7 @@ all at scale 1.0: the built-in 2240×1400 14" panel (~190 dpi), an ASUS MB16AMT
 | environment | **no** `FREETYPE_PROPERTIES` stem-darkening tweak | It does not affect TrueType bytecode hinting at all |
 | Firefox `user.js` / about:config | `gfx.text.subpixel-position.force-enabled = true` | At hintmedium Firefox rounds glyph advances and turns off subpixel positioning (§9) |
 | build | default `HINT_PRESET=balanced`, not `natural` | `natural` glues i/j dots and diaereses at 10–12 px (§8) |
-| build | default `STRIP_TRAK=true` | Removes Apple's `trak` table, which every program applies differently and Firefox applies 2–5× too strongly (§11) |
+| build | default `STRIP_TRAK=true`, `TRAK_BAKE=13` | Removes Apple's `trak` table, which every program applies differently and Firefox applies 2–5× too strongly, and bakes its 13 pt tracking into the advances so spacing is the same everywhere (§11) |
 
 Apply it:
 
@@ -335,6 +335,20 @@ All three agree within 1 %, and Firefox no longer differs from the rest of the
 desktop. The cost is that GTK also stops applying Apple's tracking, so text is
 about 10 % tighter at 13 px than it used to be (and slightly wider at 17 pt and
 above in SF Pro Text, whose tracking is negative there).
+
+**Baking the tracking back in (`TRAK_BAKE`, default 13, since pkgrel 8).**
+Stripping alone leaves GTK and Chromium without the tracking they used to
+apply, so body text was ~10 % tighter everywhere, not just in Firefox.
+`strip_trak.py --bake 13` reads the normal track (0.0) of the table at 13 pt,
+interpolating between the table's sizes, and adds it to every advance in `hmtx`
+before deleting the table. SF Pro Rounded Regular gets +80 units/glyph (a
+61-character sentence at 13 px goes from 335 px to 366 px), SF Pro Text −12
+(382 → 378 px; Apple tightens Text at 13 pt). Every program reads `hmtx` the
+same way, so Firefox, Chromium and GTK agree again, now at Apple's body-text
+spacing. The cost: the value is one constant for all sizes, where the table
+shrinks with size (Rounded: 80 at 13 pt, 24 at 32 pt), so headings are looser
+than Apple sets them. `TRAK_BAKE=0` gives the plain design widths; variable
+fonts are left untouched. Pick the size body text is read at.
 
 `STRIP_TRAK=false` keeps Apple's behaviour, and then `TRACKING=true` (also
 available as its own build option) is what makes it reachable: HarfBuzz applies
