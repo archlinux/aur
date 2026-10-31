@@ -1,0 +1,9 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -32,6 +32,5 @@
+ dependencies = [
+     "ollama>=0.3.1",
+     "llama-index-core>=0.13.0,<0.15",
+-    "pytest-asyncio",
+ ]
+ 
