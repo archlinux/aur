@@ -17,7 +17,7 @@ IFS= read -r -d '' _usage << 'EOF'
 
     # step 2. for every exist user after login run once (copy/paste block)
     cp -n ~/.bashrc{,.default.bak}
-    echo 'source /usr/share/gentoo-color-bash/10-gentoo-color.bash 2>/dev/null' | sudo tee -a ~/.bashrc
+    echo 'source /usr/share/gentoo-color-bash/10-gentoo-color.bash 2>/dev/null' | tee -a ~/.bashrc
 
     # Now you can add (if needed) you own ~/.dir_colors or /etc/DIR_COLORS for perfect ls.
     # See arch wiki or github for examples.
@@ -26,7 +26,7 @@ EOF
 #---------------------------------------------------------------------------------------------
 
 pkgname=gentoo-color-bash
-pkgver=2026.11.02          # 10-gentoo-color-r2.bash 2025-05-04 size: 2190
+pkgver=2026.11.03          # 10-gentoo-color-r2.bash 2025-05-04 size: 2190
 #_id=b39e66dce51adbe2ccef98dbd7e321c6c2e6b835
 pkgrel=1
 
