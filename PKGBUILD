@@ -3,9 +3,9 @@
 
 pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
-pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
-pkgver=250
-pkgrel=3
+pkgdesc="MounRiver Studio Linux 平台全功能版本，内置芯片工程模板，集成工程新建、代码编辑、编译、调试、下载模块以及嵌入式开发辅助工具"
+pkgver=300
+pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-commercial')
@@ -20,7 +20,6 @@ depends=(
     dbus
     expat
     glib2
-    glibc
     gmp
     gtk3
     hidapi
@@ -55,7 +54,8 @@ depends=(
     zlib
 )
 makedepends=('tar' 'jq' 'curl')
-optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
+optdepends=(
+    'ch34x-dkms-git: CH341SER driver with fixed bug'
     'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
     'spi-ch341-usb-dkms: SPI/GPIO driver for CH341'
     'ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A'
@@ -80,8 +80,8 @@ prepare() {
     msg "Querying MounRiver API for the latest Linux version..."
     local _info_json=$(curl -s "https://api.mounriver.com/mountriver/api/version/fetchRecent2?swType=2&osType=LINUX&lang=en")
 
-    local _soft_id=$(echo "${_info_json}" | jq -r '.result[0].upgradeRelationBoList[] | select(.softFileType == 1) | .softReId')
-    local _filename=$(echo "${_info_json}" | jq -r '.result[0].upgradeRelationBoList[] | select(.softFileType == 1) | .softFileName')
+    local _soft_id=$(echo "${_info_json}" | jq -r '.result[0].upgradeRelationBoList[] | select(.softFileType == 2) | .softReId')
+    local _filename=$(echo "${_info_json}" | jq -r '.result[0].upgradeRelationBoList[] | select(.softFileType == 2) | .softFileName')
     local _api_version=$(echo "${_info_json}" | jq -r '.result[0].version')
 
     if [[ "${_soft_id}" == "null" || -z "${_soft_id}" ]]; then
@@ -107,41 +107,35 @@ prepare() {
         msg "File ${_filename} already exists, skipping download."
     fi
 
-    # Cleanup old extraction
-    local _old_dir=$(find . -maxdepth 1 -mindepth 1 -type d -print -quit)
-    if [ -n "$_old_dir" ]; then
-        rm -rf "$_old_dir"
-    fi
-
+    # The upstream artifact is a Debian package; unpack its payload.
     msg "Extracting ${_filename}..."
-    tar -xf "${_filename}"
+    case "${_filename}" in
+        *.deb)
+            ar x "${_filename}"
+            tar -xf data.tar.*
+            rm -f debian-binary control.tar.* data.tar.*
+            ;;
+        *)
+            tar -xf "${_filename}"
+            ;;
+    esac
 }
 
 package() {
-    cd "${srcdir}/"
-
-    local _extracted_dir=$(find . -maxdepth 1 -mindepth 1 -type d -print -quit)
-    if [[ -z "${_extracted_dir}" ]]; then
-        error "Extracted directory not found!"
-        return 1
-    fi
-
-    msg "Installing from: ${_extracted_dir}"
-
-    mkdir -p "${pkgdir}/usr/share"
-    cp -r "${_extracted_dir}" "${pkgdir}/usr/share/MRS2"
+    cd "${srcdir}"
+    mv  usr ${pkgdir}/
 
     msg "Fixing permissions..."
-    find "${pkgdir}/usr/share/MRS2" -type d -exec chmod 755 {} \;
-    find "${pkgdir}/usr/share/MRS2" -perm 600 -exec chmod 644 {} \;
+    find "${pkgdir}/usr/share/" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/usr/share/" -perm 600 -exec chmod 644 {} \;
 
-    cd "${pkgdir}/usr/share/MRS2"
+    cd "${pkgdir}/usr/share/MRS3"
     if [ -d "beforeinstall" ]; then
         msg "Installing udev rules..."
         sed -i 's|plugdev|uucp|g' beforeinstall/50-wch.rules
         sed -i 's|plugdev|uucp|g' beforeinstall/60-openocd.rules
-        install -Dm0644 "beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-mrs2.rules"
-        install -Dm0644 "beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-mrs2.rules"
+        install -Dm0644 "beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-mrs3.rules"
+        install -Dm0644 "beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-mrs3.rules"
 
         install -Dm0755 "beforeinstall/load.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 
@@ -155,41 +149,42 @@ package() {
         sed -i 's|plugdev|uucp|g' ${_res_path}/60-openocd.rules
     fi
 
-    msg "Generating Desktop Entry..."
-    local _icon_src="MRS-linux-x64/resources/app/resources/linux/code.png"
+    msg "Install mounriver-studio completions to bash zsh..."
+    local _icon_src="MRS-linux-x64/resources/resources/completions"
     if [ -f "${_icon_src}" ]; then
-        install -Dm644 "${_icon_src}" "${pkgdir}/usr/share/pixmaps/MounRiverStudio2.png"
+        install -Dm644 "${_icon_src}/bash/mounriver-studio 3" -t "${pkgdir}/usr/share/bash-completion/completions/"
+        install -Dm644 "${_icon_src}/zsh/_mounriver-studio 3" -t "${pkgdir}/usr/share/zsh/site-functions/"
     fi
 
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/mounriverstudio.desktop" <<EOF
-[Desktop Entry]
-Type=Application
-Name=MounRiver Studio Ⅱ
-Exec=/usr/bin/${pkgname%-bin} %F
-Icon=MounRiverStudio2
-MimeType=application/x-mrs-project;
-Comment=MounRiver Stduio Ⅱ is a free integrated development environment for embedded MCU.
-Categories=TextEditor;Development;IDE;
-EOF
-
+    local _tool_path="/usr/share/MRS3/MRS-linux-x64/resources/app/resources/linux/components/WCH"
     msg "Creating OpenOCD wrappers..."
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-mrs2-arm" <<EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-mrs3-arm" <<EOF
 #!/bin/env bash
-exec /usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/OpenOCD/OpenOCD/bin/openocd -f /usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/OpenOCD/OpenOCD/bin/wch-arm.cfg "\$@"
+exec ${_tool_path}/OpenOCD/OpenOCD/bin/openocd -f ${_tool_path}/OpenOCD/OpenOCD/bin/wch-arm.cfg "\$@"
 
 EOF
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-mrs2-riscv" <<EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-mrs3-riscv" <<EOF
 #!/bin/env bash
-exec /usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/OpenOCD/OpenOCD/bin/openocd -f /usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/OpenOCD/OpenOCD/bin/wch-riscv.cfg "\$@"
+exec ${_tool_path}/OpenOCD/OpenOCD/bin/openocd -f ${_tool_path}/OpenOCD/OpenOCD/bin/wch-riscv.cfg "\$@"
+
+EOF
+
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-mrs3-dual-core" <<EOF
+#!/bin/env bash
+exec ${_tool_path}/OpenOCD/OpenOCD/bin/openocd -f ${_tool_path}/OpenOCD/OpenOCD/bin/dual-core.cfg "\$@"
 
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
 #!/bin/sh
-[ -d '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC12/bin/' ] && append_path '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC12/bin/'
+[ -d '${_tool_path}/Toolchain/arm-none-eabi-gcc/bin/' ] && append_path '${_tool_path}/Toolchain/arm-none-eabi-gcc/bin/'
 
-[ -d '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/' ] && append_path '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/'
+[ -d '${_tool_path}/Toolchain/RISC-V Embedded GCC15/bin/' ] && append_path '${_tool_path}/Toolchain/RISC-V Embedded GCC15/bin/'
+
+[ -d '${_tool_path}/Toolchain/RISC-V Embedded GCC12/bin/' ] && append_path '${_tool_path}/Toolchain/RISC-V Embedded GCC12/bin/'
+
+[ -d '${_tool_path}/Toolchain/RISC-V Embedded GCC/bin/' ] && append_path '${_tool_path}/Toolchain/RISC-V Embedded GCC/bin/'
 
 export PATH
 EOF
