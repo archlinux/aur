@@ -2,11 +2,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=open-quickshare-bin
+_pkgname="${pkgname%-bin}"
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete Quick Share implementation for Linux with Bluetooth LE and Wi-Fi Direct"
 arch=('x86_64')
-url="https://github.com/ignotusbucius/open-quickshare"
+url="https://github.com/ignotusbucius/${_pkgname}"
 license=('GPL-3.0-only')
 
 depends=(
@@ -24,7 +25,6 @@ optdepends=(
 )
 
 provides=(
-  'r-quick-share'
   'rquickshare'
 )
 
@@ -32,13 +32,12 @@ conflicts=(
   'r-quick-share'
   'r-quick-share-bin'
   'rquickshare'
+  'open-quickshare'
 )
 
 options=('!debug')
 
-source=(
-  "$url/releases/download/v$pkgver/open-quickshare_${pkgver}_x86_64.deb"
-)
+source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_x86_64.deb")
 
 sha256sums=('85c0f86b1b024cabfb27c77dc7eeda2abc49542bf9cc4f58484187af4e18301b')
 
