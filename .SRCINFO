@@ -1,6 +1,6 @@
 pkgbase = zeal-git
 	pkgdesc = Offline documentation browser
-	pkgver = 0.9.1.r1.ga716f6c1
+	pkgver = 0.9.2.r1.g0af4daa2
 	pkgrel = 1
 	url = https://zealdocs.org/
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = zeal-git
 	depends = sqlite
 	depends = tomlplusplus
 	depends = xcb-util-keysyms
+	depends = zlib
 	provides = zeal
 	conflicts = zeal
 	source = zeal::git+https://github.com/zealdocs/zeal#branch=main

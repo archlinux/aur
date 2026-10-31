@@ -3,7 +3,7 @@
 _appname=zeal
 
 pkgname=${_appname}-git
-pkgver=0.9.1.r1.ga716f6c1
+pkgver=0.9.2.r1.g0af4daa2
 pkgrel=1
 pkgdesc='Offline documentation browser'
 arch=(aarch64 i686 x86_64)
@@ -25,6 +25,7 @@ depends=(
   sqlite
   tomlplusplus
   xcb-util-keysyms
+  zlib
 )
 makedepends=(
   cmake
