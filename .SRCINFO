@@ -1,6 +1,6 @@
 pkgbase = swiftify-bin
 	pkgdesc = A Spotify player for the desktop, built with Qt Quick and a Rust core (precompiled binary)
-	pkgver = 0.24.5
+	pkgver = 0.24.6
 	pkgrel = 1
 	url = https://github.com/swiftify-org/swiftify
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = swiftify-bin
 	optdepends = xdg-desktop-portal: native file picker for cover photos
 	provides = swiftify
 	conflicts = swiftify
-	source = swiftify-bin-0.24.5.tar.gz::https://github.com/swiftify-org/swiftify/releases/download/v0.24.5/swiftify-0.24.5-linux-x86_64.tar.gz
-	sha256sums = 2fffb45f7dd61abe0dda91086e27947ba46bf6780f5eed51f958d1d6e059a9c9
+	source = swiftify-bin-0.24.6.tar.gz::https://github.com/swiftify-org/swiftify/releases/download/v0.24.6/swiftify-0.24.6-linux-x86_64.tar.gz
+	sha256sums = 91e447ad344f78b94412a2f2d49f0b8ad6425a276edd127449b4bfc12a09eb7f
 
 pkgname = swiftify-bin
