@@ -1,0 +1,25 @@
+# shellcheck shell=bash
+post_install() {
+  # The les11-monitor user is created declaratively by systemd-sysusers
+  # (via /usr/lib/sysusers.d/les11-mc-dx-overtemp-shutdown.conf), and its
+  # uucp membership is granted at runtime by SupplementaryGroups= in the unit.
+  # The default config ships at /etc/les11-mc-dx-overtemp-shutdown/config.toml.
+
+  # Deliberately NOT enabled/started here: the user reviews the config and
+  # opts in themselves.
+  printf '%s\n' \
+    '  les11-mc-dx-overtemp-shutdown installed.' \
+    '  Edit /etc/les11-mc-dx-overtemp-shutdown/config.toml, then enable:' \
+    '    systemctl enable --now les11-mc-dx-overtemp-shutdown.service'
+}
+
+post_update() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+post_remove() {
+  systemctl disable les11-mc-dx-overtemp-shutdown.service >/dev/null 2>&1 || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  # NOTE: the les11-monitor user is sysusers-managed and intentionally left
+  # in place on removal (it may be shared / re-created by a reinstall).
+}

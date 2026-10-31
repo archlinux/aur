@@ -1,0 +1,36 @@
+[Unit]
+Description=LES11-MC-Dx over-temperature shutdown monitor
+After=multi-user.target
+
+[Service]
+Type=simple
+User=les11-monitor
+Group=les11-monitor
+# Serial nodes are root:uucp (0620); grant the group at runtime instead of
+# mutating the user database (the user itself is created by the .sysusers file).
+SupplementaryGroups=uucp
+ExecStart=/usr/bin/les11-mc-dx-overtemp-shutdown -c /etc/les11-mc-dx-overtemp-shutdown/config.toml
+
+# Restart if it crashes, but back off so a wedged port does not spin.
+Restart=on-failure
+RestartSec=10s
+
+# The shutdown command (systemctl poweroff) runs via the shipped polkit rule;
+# the process itself never needs elevated privileges.
+NoNewPrivileges=true
+
+# Hardening. NOTE: PrivateDevices is intentionally left off so the dedicated
+# user can open the /dev/ttyUSB* serial nodes.
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

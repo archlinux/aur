@@ -1,0 +1,4 @@
+# Dedicated, unprivileged service user for the LES11-MC-Dx over-temp monitor.
+# Created declaratively by systemd-sysusers (idempotent; no manual useradd).
+# UID auto-assigned, no login shell, home set to a non-existent path.
+u les11-monitor - "LES11-MC-Dx over-temperature shutdown monitor" /nonexistent -

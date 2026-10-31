@@ -1,0 +1,9 @@
+version = 1
+SPDX-PackageDownloadLocation = "https://www.lesminer.com/productinfo/180794.html"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 lucaszhou007"
+SPDX-License-Identifier = "0BSD"
+SPDX-FileComment = "Packaged for the Arch Linux User Repository (AUR)."

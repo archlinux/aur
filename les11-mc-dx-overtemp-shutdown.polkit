@@ -1,0 +1,9 @@
+// Authorize ONLY the les11-monitor service user to power the machine off, so
+// the over-temperature monitor can run `systemctl poweroff` without a password
+// and without a broad sudoers entry. Adjust the username if you changed it.
+polkit.addRule(function(action, subject) {
+    if (action.id === "org.freedesktop.systemd1.poweroff" &&
+        subject.user === "les11-monitor") {
+        return polkit.Result.YES;
+    }
+});

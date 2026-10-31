@@ -1,0 +1,47 @@
+# /etc/les11-mc-dx-overtemp-shutdown/config.toml
+# LES11-MC-Dx over-temperature shutdown monitor configuration.
+# This is the shipped default config; edit it in place. On upgrade, pacman will
+# keep your edits and ask before replacing a modified file.
+
+# Global threshold in degrees Celsius. Any watched channel above this value,
+# for `hold_readings` consecutive polls, triggers the shutdown command.
+max_temp_c = 60.0
+
+# Consecutive over-temperature polls required before acting. Debounces against
+# transient spikes. Each poll happens every `poll_interval_s`.
+hold_readings = 3
+
+# Seconds between polls.
+poll_interval_s = 10
+
+# Command executed to shut the system down. The les11-monitor service user is
+# authorized to run it through the shipped polkit rule
+# (/etc/polkit-1/rules.d/50-les11-mc-dx-overtemp-shutdown.rules). Override only
+# if you use a different shutdown mechanism.
+shutdown_command = "systemctl poweroff"
+
+# Devices to watch. "auto" = every CH340 (vendor 1a86) USB-serial adapter,
+# i.e. genuine LES11-MC-Dx probes. Or pin explicit paths:
+#   devices = ["/dev/ttyUSB0", "/dev/ttyUSB1"]
+devices = ["auto"]
+
+# Modbus settings shared by every device in the list (factory defaults).
+baud = 9600
+addr = 1
+channels = 6
+
+# Channels to skip (1-based). Unused probes report 0x7FFF (missing); list them
+# here so they are ignored (and not waited on for a serial timeout each poll).
+# This package ships a 1-to-3 unit's default: A1-A3 populated, A4-A6 empty.
+# For other wiring, set the empty channels here.
+ignore_channels = [4, 5, 6]
+
+# If true, a missing/faulted probe (0x7FFF) is treated as an over-temp fault
+# and can trigger a shutdown. Leave false (default) so a disconnected probe
+# only logs a warning and never halts the system.
+fail_on_missing = false
+
+# Logging verbosity: debug | info | warning | error. At info (default) each poll
+# prints one "readings: A1=.. A2=.." heartbeat line per device, plus warnings and
+# the over-temp critical. Set to "warning" to keep the journal quiet.
+log_level = "info"
