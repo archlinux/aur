@@ -1,0 +1,18 @@
+pkgbase = bsu
+	pkgdesc = Blaad's System Utilities
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Blaadick/BSU
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = glib2
+	depends = libsecret
+	source = bsu-0.1.0.tar.gz::https://github.com/Blaadick/BSU/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = dc5fe167f49a592dafdda7dbf0c6230398cd77eb97fdce38b54aa0340818849c331792a77e935030a3e290334cbc1e730a56a7d12f364a9fe10d176373805ec6
+
+pkgname = bsu
