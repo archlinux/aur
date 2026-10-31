@@ -1,0 +1,17 @@
+pkgbase = halofetch
+	pkgdesc = System information fetch with centered logos, panels and a live monitor
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/mafuzyk/halofetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = curl: download updates from GitHub releases
+	optdepends = tar: extract updates from GitHub releases
+	optdepends = wireless_tools: show the Wi-Fi network name
+	source = halofetch-3.1.0.tar.gz::https://github.com/mafuzyk/halofetch/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = a19c047eb12a93df0476f700ab081761821bba5bdd5a1291199f573cf8ca0d98
+
+pkgname = halofetch
