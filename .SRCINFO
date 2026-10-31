@@ -1,6 +1,6 @@
 pkgbase = ecapture-bin
 	pkgdesc = Capturing SSL/TLS plaintext without a CA certificate using eBPF. (Binary package from GitHub Releases)
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://ecapture.cc/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ecapture-bin
 	license = Apache-2.0
 	provides = ecapture
 	conflicts = ecapture
-	source_x86_64 = https://github.com/gojue/ecapture/releases/download/v2.9.0/ecapture-v2.9.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 311aab0a64e1156901cdf682cac6c8c80cf686b0c0bca18bac353ef84ae5bb53
-	source_aarch64 = https://github.com/gojue/ecapture/releases/download/v2.9.0/ecapture-v2.9.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 626e13e9e02723f8bdd0a87d07642e95a4f007b17edb8554dac2f57bf72e5862
+	source_x86_64 = https://github.com/gojue/ecapture/releases/download/v2.9.1/ecapture-v2.9.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 07fd3ad9db48b3747aa131ab807b4ab0430bb534b738ce3a6ed22d57e57d6164
+	source_aarch64 = https://github.com/gojue/ecapture/releases/download/v2.9.1/ecapture-v2.9.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = e34a415d1858cb141524452d621450bfa4266ea148cb72a4ac1ec8b226d5713d
 
 pkgname = ecapture-bin
