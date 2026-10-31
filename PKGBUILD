@@ -31,6 +31,7 @@ conflicts=("$pkgname-bin")
 # part of MMI for Linux and macOS, whose API matches Microsoft's Runtime.Unix package
 # (powershell-mmi-bin). The OMI client library (libmi) it calls isn't included, Microsoft's packages of
 # PowerShell for Linux don't have it either, so CIM operations fail with or without this package.
+# No .nvchecker.toml: the repository is archived, so it can't change anymore.
 _commit="cf32fc695b32c2eae848b693395c09222fe1d2ae"
 source=("git+$url.git#commit=$_commit"
   "crossgen2-pack.targets"

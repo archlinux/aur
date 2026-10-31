@@ -6,7 +6,6 @@ path = [
   "crossgen2-pack.targets",
   "check-assembly.ps1",
   ".SRCINFO",
-  ".nvchecker.toml",
   ".gitignore",
   ".editorconfig",
   ".pre-commit-config.yaml",
