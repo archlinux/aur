@@ -1,4 +1,5 @@
 # Maintainer: Scott <158021536+nathawatc@users.noreply.github.com>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=howdy-next-git
 pkgver=3.4.2.r42.g8385406
