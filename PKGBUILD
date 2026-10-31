@@ -61,6 +61,9 @@ prepare() {
   # would read data at offset 16 instead of 8 and segfault in CVode
   sed -i "s/from ctypes import c_double, c_int64,/from ctypes import c_double, c_int64, c_int32,/" src/fmpy/sundials/sundials_types.py
   sed -i "s/^sunindextype = c_int64$/sunindextype = c_int32/" src/fmpy/sundials/sundials_types.py
+
+  # fix version string
+  sed -i "s|0.3.31|0.3.32|g" pyproject.toml src/fmpy/__init__.py
 }
 
 build() {
