@@ -1,6 +1,6 @@
 pkgbase = pritingo
-	pkgdesc = Print on Canon PIXMA E400-series printers one page per job, with guided two-sided printing
-	pkgver = 0.1.1
+	pkgdesc = Print on Canon PIXMA E400-series printers one page per job, with guided two-sided printing, and scan to PDF
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/talhacaglar/pritingo
 	arch = x86_64
@@ -18,7 +18,8 @@ pkgbase = pritingo
 	depends = cnijfilter-e400series
 	optdepends = libreoffice: open Word, Excel, PowerPoint and LibreOffice files
 	optdepends = libcanberra: sounds when the fronts or the whole job are done
-	source = pritingo-0.1.1.tar.gz::https://github.com/talhacaglar/pritingo/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 83545a91f7d23c148b2ed8f676155d111845bceb60f9c1a8b4ffd0e9e398b8e8
+	optdepends = sane: scan from the printer's glass to a PDF or a copy
+	source = pritingo-0.2.0.tar.gz::https://github.com/talhacaglar/pritingo/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 93ab6ea14cf66c2b08094a4b939cea9c03d353cd33900e394a9d0c7742a48ea1
 
 pkgname = pritingo
