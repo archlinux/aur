@@ -2,13 +2,13 @@
 
 _pkgname=obsidian-headless
 pkgname=${_pkgname}-bin
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Headless client for Obsidian services"
 arch=('x86_64' 'aarch64')
 url="https://www.npmjs.com/package/${_pkgname}"
 license=('custom:UNLICENSED')
-depends=('gcc-libs' 'nodejs>=22')
+depends=('gcc-libs' 'nodejs-lts-jod')
 makedepends=('node-gyp' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -32,7 +32,7 @@ noextract=(
   "bindings-${_bindings_ver}.tgz"
   "file-uri-to-path-${_file_uri_to_path_ver}.tgz"
 )
-sha256sums=('9b8e1ad3917a65d53c5ab74d06acf5ec8d941e3b02bd9bd5d035d6800e533198'
+sha256sums=('ef75298ed3a356dcb2a4de98c6efe10b2ac64b00556007118b6ac70535e73156'
             'ebf0ed75a7a59dbcb3b24bbd014ef49d9f15bc328e4adcbf516f2a8fadfa2835'
             '5849703c500e0f324eb01340d8bda1f9ec48fc37bb7be9712eb0dd52aad92f6c'
             'd77781178c5bd89a91b1f6c5556acd511b1b5927eb13e2ad8189cac29eeb0907'
