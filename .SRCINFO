@@ -1,6 +1,6 @@
 pkgbase = whisrs-bin
 	pkgdesc = Linux-first voice-to-text dictation tool, written in Rust (prebuilt binary)
-	pkgver = 0.1.32
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/y0sif/whisrs
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = whisrs-bin
 	depends = gcc-libs
 	depends = alsa-lib
 	depends = libxkbcommon
-	provides = whisrs=0.1.32
+	provides = whisrs=0.2.0
 	conflicts = whisrs
 	conflicts = whisrs-git
-	source_x86_64 = whisrs-bin-0.1.32-x86_64.tar.gz::https://github.com/y0sif/whisrs/releases/download/v0.1.32/whisrs-linux-x86_64.tar.gz
-	sha256sums_x86_64 = bf98cd631ec04c40ef0083503eefd9f31399d74340213eb498a4bfa2fb97aa03
-	source_aarch64 = whisrs-bin-0.1.32-aarch64.tar.gz::https://github.com/y0sif/whisrs/releases/download/v0.1.32/whisrs-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 1907ecdcc3663d58697138d2372d8d6bf2d8eff27f75a5a83e0f7e45d57d7250
+	source_x86_64 = whisrs-bin-0.2.0-x86_64.tar.gz::https://github.com/y0sif/whisrs/releases/download/v0.2.0/whisrs-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 819c66f570fb12af16915ff928a61bbc06bf136b42b9fcfcddebe7f3fb3f6f03
+	source_aarch64 = whisrs-bin-0.2.0-aarch64.tar.gz::https://github.com/y0sif/whisrs/releases/download/v0.2.0/whisrs-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f6f53c4bb6e2eb35aa5ab7e920e01df5ac3065eab253777434cc1ebe274912df
 
 pkgname = whisrs-bin
