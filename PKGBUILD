@@ -2,7 +2,7 @@
 
 pkgname=strdust-bin
 _pkgname=strdust
-pkgver=1.0.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Tandem repeat genotyper for long reads"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "https://github.com/wdecoster/STRdust/releases/download/v${pkgver}/STRdust-linux"
   "https://raw.githubusercontent.com/wdecoster/STRdust/v${pkgver}/LICENSE"
 )
-sha256sums=('fe9b13d74a7bd4090ed0216d876afb05f6a922b2b378b3ff5536adf9afaa997f'
+sha256sums=('b3d874bbbb8dc5a75ef0623cc78379fff18acbd00972054abb41132eeedc901f'
             'dbf91161de2ff4681a888eb7f7e4ba23da1fbf8e3071ff7a011686a9102278b3')
 
 package() {

@@ -1,17 +1,17 @@
 pkgbase = strdust-bin
 	pkgdesc = Tandem repeat genotyper for long reads
-	pkgver = 1.0.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/wdecoster/STRdust
 	arch = x86_64
 	license = MIT
-	provides = strdust=1.0.0
+	provides = strdust=1.3.0
 	conflicts = strdust
 	options = !strip
 	options = !debug
-	source = https://github.com/wdecoster/STRdust/releases/download/v1.0.0/STRdust-linux
-	source = https://raw.githubusercontent.com/wdecoster/STRdust/v1.0.0/LICENSE
-	sha256sums = fe9b13d74a7bd4090ed0216d876afb05f6a922b2b378b3ff5536adf9afaa997f
+	source = https://github.com/wdecoster/STRdust/releases/download/v1.3.0/STRdust-linux
+	source = https://raw.githubusercontent.com/wdecoster/STRdust/v1.3.0/LICENSE
+	sha256sums = b3d874bbbb8dc5a75ef0623cc78379fff18acbd00972054abb41132eeedc901f
 	sha256sums = dbf91161de2ff4681a888eb7f7e4ba23da1fbf8e3071ff7a011686a9102278b3
 
 pkgname = strdust-bin
