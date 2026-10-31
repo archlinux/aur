@@ -1,18 +1,20 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=mousr-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Keyboard-driven mouse control for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/toxdes/mousr"
 license=('MIT')
 depends=('wayland' 'libxkbcommon')
+provides=("mousr=${pkgver}")
+conflicts=(mousr)
 
 source_x86_64=("mousr-${pkgver}-x86_64.tar.gz::https://packages.toxdes.com/releases/mousr_${pkgver}_amd64.tar.gz")
-sha256sums_x86_64=('d08cf477895675abd71c2c176d31d2b7dc175bb133ab9fd3bd8e73b7e6f9759f')
+sha256sums_x86_64=('a4dcea5ce926280a4f349991fc5918f42cbe7ec2490e2305e7fc1c2d23dd9982')
 
 source_aarch64=("mousr-${pkgver}-aarch64.tar.gz::https://packages.toxdes.com/releases/mousr_${pkgver}_arm64.tar.gz")
-sha256sums_aarch64=('14d2d0810a0821e656879104731509140fc5158513c2249859cf757b093f8d7b')
+sha256sums_aarch64=('0f8895e89a564d7cfcdbd646413be0196a57b17423ce85edbe563da43c1c9fc0')
 
 package() {
   bsdtar -xf "${srcdir}/mousr-${pkgver}-${CARCH}.tar.gz" -C "${pkgdir}"
