@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Flikka
+GenericName=Screen Recorder & Video Editor
+Comment=Screen recorder and video editor for AI agents on Linux
+Exec=/usr/bin/flikka app panel
+Icon=flikka
+Terminal=false
+Categories=AudioVideo;Video;Recorder;AudioVideoEditing;
+Keywords=screen;recorder;video;hyperframes;flikka;
+StartupNotify=true
