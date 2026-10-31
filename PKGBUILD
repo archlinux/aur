@@ -1,27 +1,36 @@
 # Maintainer: Laythe <laythedev@gmail.com>
 pkgname=blkar
 pkgver=7.2.7
-pkgrel=2
-epoch=
+pkgrel=3
 pkgdesc="Multithreaded archiver offering bit rot protection and sector level recoverability"
 arch=('x86_64')
 url="https://github.com/darrenldl/blockyarchive"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
-checkdepends=('cargo')
-source=("https://github.com/darrenldl/blockyarchive/archive/v${pkgver}.tar.gz")
-sha256sums=('807d4ad9fca8afe13bbd7020ecf9102298d59d839b1a8fccd8693799a8edfc9b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/darrenldl/blockyarchive/archive/v${pkgver}.tar.gz"
+        'Cargo.lock')
+sha256sums=('807d4ad9fca8afe13bbd7020ecf9102298d59d839b1a8fccd8693799a8edfc9b'
+            '4a0dcf1639d932e59948d3c04914f04404a6be81afb821bb86983c7e65851cd4')
+
+prepare() {
+  cd "blockyarchive-$pkgver"
+  cp ../Cargo.lock .
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
 
 build() {
   cd "blockyarchive-$pkgver"
-  cargo update -p lexical-core
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --frozen
 }
 
 check() {
   cd "blockyarchive-$pkgver"
-  cargo test --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --release --frozen
 }
 
 package() {
