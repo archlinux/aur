@@ -1,0 +1,21 @@
+pkgbase = openrig-git
+	pkgdesc = Guitar multi-effects pedalboard.
+	pkgver = r103.dbb2761
+	pkgrel = 1
+	url = https://github.com/Siryu6/openrig
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	depends = pipewire-jack
+	depends = lilv
+	provides = openrig
+	conflicts = openrig
+	source = git+https://github.com/Siryu6/openrig.git
+	source = openrig.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openrig-git
