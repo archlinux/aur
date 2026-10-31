@@ -1,6 +1,6 @@
 # Maintainer: GSET Team <https://github.com/Crazygiscool/GSETLang>
 pkgname=gset
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Generic Syntax Extension Tool - write in any language syntax, compile to any language"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Crazygiscool/GSETLang/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('36aa06bfb2b09f3cbb6602bc38d14c09311e7066a39b2938bd652c62a9a7134f')
+sha256sums=('95b1609c9eef71612cafcffb80fe83c5f6d86f598d4c4869ff97e46b31845209')
 
 build() {
   # GitHub's codeload tarball for a tag archives to "GSETLang-<ver>"
