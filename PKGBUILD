@@ -2,9 +2,9 @@
 
 pkgname=g0v0-robin
 _pkgname=${pkgname%-bin}
-pkgver=2026.1022.1
+pkgver=2026.1101.0
 _pkgtag=v${pkgver}-g0v0
-pkgrel=2
+pkgrel=1
 pkgdesc="g0v0! -- free and open rhythm experience! (Robin pre-release channel)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
@@ -27,7 +27,7 @@ source=(
   "g0v0-uri-handler.desktop"
   "g0v0"
 )
-sha256sums=('7db2b2c90c203c3d2dab656f1951e85122a9002db9b8d829b5e7ee52e1ea54a8'
+sha256sums=('d437427fe693ab96ebd5aac3872e37a6d6e6598c631a1933133ee527b2c85ae5'
             'c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '96276add86bd921e64255ce7e5487599dbe13e6e48e96a6af1a58cc99c187648'
             '26ecc3e357b03798cd8cc4ada4348d9e8eef1f3c725f8176e3b9533185c0bd0a'
