@@ -1,6 +1,6 @@
 pkgbase = upgrade
 	pkgdesc = Automate system upgrades
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/dnut/upgrade
 	install = upgrade.install
@@ -18,7 +18,7 @@ pkgbase = upgrade
 	optdepends = flatpak: upgrade flatpak packages
 	options = !strip
 	options = !debug
-	source = upgrade-0.4.0::git+https://github.com/dnut/upgrade#tag=v0.4.0
+	source = upgrade-0.4.1::git+https://github.com/dnut/upgrade#tag=v0.4.1
 	sha256sums = SKIP
 
 pkgname = upgrade

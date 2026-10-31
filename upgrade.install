@@ -1,9 +1,13 @@
 post_install() {
+    # polkit checks passwords through this socket, which installing polkit only starts at boot
+    systemctl start polkit-agent-helper.socket
     printf '\nTo enable automatic upgrades, run:\n'
     printf '  sudo systemctl enable --now upgrade.timer\n\n'
 }
 
 post_upgrade() {
+    # polkit is only a dependency starting at 0.4.0, so an upgrade can install it too
+    systemctl start polkit-agent-helper.socket
     if (( $(vercmp "$2" 0.4.0) < 0 )); then
         # pacman renames a changed upgrade.conf to .pacsave, since the package no longer ships it
         if [[ -e /etc/upgrade.conf.pacsave && ! -e /etc/upgrade.toml ]]; then
