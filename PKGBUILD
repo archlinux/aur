@@ -2,7 +2,7 @@
 
 pkgname=ksud
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='KernelSU userspace cli'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://kernelsu.org/'
@@ -10,24 +10,24 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo')
 _srcname='KernelSU'
 source=("$_srcname-$pkgver.tar.gz::https://github.com/tiann/$_srcname/archive/v$pkgver.tar.gz"
-        "aarch64-android12-5.10_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android12-5.10_kernelsu.ko"
-        "aarch64-android13-5.10_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android13-5.10_kernelsu.ko"
-        "aarch64-android13-5.15_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android13-5.15_kernelsu.ko"
-        "aarch64-android14-5.15_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android14-5.15_kernelsu.ko"
-        "aarch64-android14-6.1_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android14-6.1_kernelsu.ko"
-        "aarch64-android15-6.6_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android15-6.6_kernelsu.ko"
-        "aarch64-android16-6.12_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android16-6.12_kernelsu.ko"
-        "aarch64-android17-6.18_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android17-6.18_kernelsu.ko"
-        "x86_64-android12-5.10_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android12-5.10_kernelsu.ko"
-        "x86_64-android13-5.10_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android13-5.10_kernelsu.ko"
-        "x86_64-android13-5.15_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android13-5.15_kernelsu.ko"
-        "x86_64-android14-5.15_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android14-5.15_kernelsu.ko"
-        "x86_64-android14-6.1_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android14-6.1_kernelsu.ko"
-        "x86_64-android15-6.6_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android15-6.6_kernelsu.ko"
-        "x86_64-android16-6.12_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android16-6.12_kernelsu.ko"
-        "x86_64-android17-6.18_kernelsu.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android17-6.18_kernelsu.ko"
-        "ksuinit-aarch64::https://github.com/tiann/$_srcname/releases/download/v$pkgver/ksuinit-aarch64"
-        "ksuinit-x86_64::https://github.com/tiann/$_srcname/releases/download/v$pkgver/ksuinit-x86_64"
+        "aarch64-android12-5.10_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android12-5.10_kernelsu.ko"
+        "aarch64-android13-5.10_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android13-5.10_kernelsu.ko"
+        "aarch64-android13-5.15_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android13-5.15_kernelsu.ko"
+        "aarch64-android14-5.15_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android14-5.15_kernelsu.ko"
+        "aarch64-android14-6.1_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android14-6.1_kernelsu.ko"
+        "aarch64-android15-6.6_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android15-6.6_kernelsu.ko"
+        "aarch64-android16-6.12_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android16-6.12_kernelsu.ko"
+        "aarch64-android17-6.18_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-aarch64-android17-6.18_kernelsu.ko"
+        "x86_64-android12-5.10_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android12-5.10_kernelsu.ko"
+        "x86_64-android13-5.10_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android13-5.10_kernelsu.ko"
+        "x86_64-android13-5.15_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android13-5.15_kernelsu.ko"
+        "x86_64-android14-5.15_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android14-5.15_kernelsu.ko"
+        "x86_64-android14-6.1_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android14-6.1_kernelsu.ko"
+        "x86_64-android15-6.6_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android15-6.6_kernelsu.ko"
+        "x86_64-android16-6.12_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android16-6.12_kernelsu.ko"
+        "x86_64-android17-6.18_kernelsu_$pkgver.ko::https://github.com/tiann/$_srcname/releases/download/v$pkgver/lkm-x86_64-android17-6.18_kernelsu.ko"
+        "ksuinit-aarch64_$pkgver::https://github.com/tiann/$_srcname/releases/download/v$pkgver/ksuinit-aarch64"
+        "ksuinit-x86_64_$pkgver::https://github.com/tiann/$_srcname/releases/download/v$pkgver/ksuinit-x86_64"
 )
 sha512sums=('106ed5542e8525b2f30769058fff544c17723ff63d3d3e379339375fba1f50d14a7966fab1e5ea36e20b17d3c21fd90ad45fc95470148377c4ad4190d9892887'
             '068ed947add2b58a985d29376eaf1231be535dfe3ac298e6182cd811b42b13cca28849e7c4ec918b7a2a45e73cd26ad6be15909a792b682c84da536ebf913994'
@@ -59,6 +59,7 @@ prepare() {
 
     for ko in "$srcdir"/*.ko; do
         _ko=${ko##*/}
+        _ko=${_ko%_$pkgver.ko}
     
         case $_ko in
         aarch64-*)
@@ -80,6 +81,7 @@ prepare() {
     
     for ksuinit in "$srcdir"/ksuinit-*; do
         _ksuinit=${ksuinit##*/}
+        _ksuinit=${_ksuinit%_$pkgver}
     
         case $_ksuinit in
         ksuinit-aarch64)
