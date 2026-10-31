@@ -1,6 +1,6 @@
 pkgbase = tine-outliner-bin
 	pkgdesc = A fast, local, Logseq-compatible outliner (prebuilt release)
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://tine.page/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = tine-outliner-bin
 	depends = hicolor-icon-theme
 	conflicts = tine-outliner
 	conflicts = tine-outliner-git
-	source_x86_64 = https://github.com/martinkoutecky/tine/releases/download/v0.8.1/Tine_0.8.1_amd64.deb
-	sha256sums_x86_64 = 96e69e0aeaf889e7d4bd868c6ee0823875c7456b40be2a5d48aaf00e3232f5dd
-	source_aarch64 = https://github.com/martinkoutecky/tine/releases/download/v0.8.1/Tine_0.8.1_arm64.deb
-	sha256sums_aarch64 = e6e18464e27977a167cd1271cb77f0bad0996a4e04b9e12336a454a220c39c24
+	source_x86_64 = https://github.com/martinkoutecky/tine/releases/download/v0.8.3/Tine_0.8.3_amd64.deb
+	sha256sums_x86_64 = fc1192b5d3d0e528b63a63fc9ae64026703be9fa643f3200b7a9597be52e1650
+	source_aarch64 = https://github.com/martinkoutecky/tine/releases/download/v0.8.3/Tine_0.8.3_arm64.deb
+	sha256sums_aarch64 = 069a3e899cf5fcff9b2410222c17a07f5b95b77ca9e65498b9a18db66edc26dc
 
 pkgname = tine-outliner-bin
