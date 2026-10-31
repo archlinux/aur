@@ -1,4 +1,5 @@
-# Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
+# Contributor: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=plasma-smart-video-wallpaper-reborn
 pkgname=plasma6-wallpapers-smart-video-wallpaper-reborn-git
 pkgver=2.16.0.r1.ge31379a
