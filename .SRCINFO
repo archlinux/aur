@@ -1,6 +1,6 @@
 pkgbase = linsync
 	pkgdesc = Linux-native visual file and folder comparison built on Rust and Qt 6
-	pkgver = 1.16.3
+	pkgver = 1.16.4
 	pkgrel = 1
 	url = https://github.com/visorcraft/LinSync
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = linsync
 	conflicts = linsync-bin
 	conflicts = linsync-git
 	options = !lto
-	source = linsync-1.16.3.tar.gz::https://github.com/visorcraft/LinSync/archive/refs/tags/v1.16.3.tar.gz
-	sha256sums = 84d6a45f552555b55ab0f4c00dc38ac21070731c8a627f47dd82c11304291fcc
+	source = linsync-1.16.4.tar.gz::https://github.com/visorcraft/LinSync/archive/refs/tags/v1.16.4.tar.gz
+	sha256sums = 609de7c8d726db2735572c29a51a7edf51dc31852858294cc2f5ef211648be5b
 
 pkgname = linsync
