@@ -1,0 +1,3 @@
+[ufw-manager-tui]
+source = "cratesio"
+cratesio = "ufw-manager-tui"

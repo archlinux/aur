@@ -1,0 +1,16 @@
+pkgbase = ufw-manager-tui
+	pkgdesc = A friendly terminal UI for managing ufw firewall rules without getting locked out
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ernos/ufw-manager-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = ufw-manager-tui
+	options = !lto
+	options = !strip
+	source = ufw-manager-tui-0.1.4.crate::https://crates.io/api/v1/crates/ufw-manager-tui/0.1.4/download
+	sha256sums = 642372014297d5d4ea31363c123b72e4c4428fa77035a64061525d563c892ab6
+
+pkgname = ufw-manager-tui
