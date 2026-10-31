@@ -336,6 +336,17 @@ EOF
 prepare() {
   _dotnet_env
 
+  # makepkg reuses $srcdir unless it's run with -C: it resets the files of the git checkouts, but keeps
+  # untracked ones and the changes in submodules, e.g. the files the patches add, which fail to apply
+  # again, and the NuGet packages restored by the last build, which NuGet uses whichever feed they came
+  # from. Start from the same state as in a new $srcdir.
+  local _checkout
+  for _checkout in "$srcdir"/*/.git; do
+    git -C "${_checkout%/.git}" clean -dffxq
+  done
+  git -C "$srcdir"/oneget submodule foreach --quiet 'git checkout --force --quiet && git clean -dffxq'
+  rm -rf "$srcdir"/{nuget-local,dotnet-home,build-psl-native}
+
   # libpsl-native is built from source instead of using the prebuilt Microsoft.PowerShell.Native package
   cd "$srcdir"/PowerShell-Native/src/libpsl-native || exit
   # Arch already sets _FORTIFY_SOURCE=3 and we don't want new compiler warnings to break the build
