@@ -3,23 +3,23 @@
 pkgname=dux-shell-git
 _pkgname=dux-shell
 _binname=dms
-pkgver=2.0.0.r43.gb7be4a3
+pkgver=2.0.0.r181.g387750b
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO (git)'
 arch=(x86_64 aarch64)
 url="https://github.com/duxlabs-dev/$_pkgname"
 license=(MIT)
-depends=(dgop
-         quickshell
+depends=(quickshell
          accountsservice)
-optdepends=('cava: Audio visualizer'
+optdepends=('dux-gop: System monitoring backend for the process list and resource widgets'
+            'cava: Audio visualizer'
             'i2c-tools: External monitor brightness control'
             'matugen: Dynamic wallpaper-based theming'
             'qt6-multimedia: Sound effect support'
             'power-profiles-daemon: Set power profile'
             'qt6ct: Qt6 application theming'
             'cups-pk-helper: Printer Management'
-            'dms-greeter: Dux Shell login screen for greetd')
+            'dux-greeter: Dux Shell login screen for greetd')
 makedepends=(git
              go
              make)
