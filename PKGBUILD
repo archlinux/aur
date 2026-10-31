@@ -2,8 +2,8 @@
 
 pkgname=fluxzy-bin
 _pkgname=fluxzy
-pkgver=1.39.50.33872
-pkgrel=2
+pkgver=1.39.52.38106
+pkgrel=1
 pkgdesc="Fully streamed MITM proxy to intercept, record and alter HTTP/1.1, H2, WebSocket and gRPC traffic (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/haga-rak/fluxzy.core"
@@ -24,8 +24,8 @@ source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/fluxzy-cli-$pkgver-linux-arm64.tar.gz")
 noextract=("$pkgname-$pkgver-$CARCH.tar.gz")
 sha256sums=('7c1472911e95d77d49e02160933d8222fa187cac3599476f1c7d11983585445d')
-sha256sums_x86_64=('ccdc580eb5fd01bbe07ec5a5196ee80b72043b61c6d7288f057dcf73d4c04717')
-sha256sums_aarch64=('59e1c515607e00574f17f31e6c741f5ef2e7316e247d9b4e95ab5ed98c61cb24')
+sha256sums_x86_64=('09a65751d4fe3443b01cc2b24831ab38b6ed44beedaaa949eba423571e5c6dbd')
+sha256sums_aarch64=('19afcc573abe6276e51f4aa9656456b03ed450e4e595fa29bfee0c9cca5adabf')
 
 prepare() {
   rm -rf "$_pkgname"
