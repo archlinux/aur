@@ -1,7 +1,7 @@
 # Maintainer: Glucy2 <glucy-2@outlook.com>
 
 pkgname=xmtr
-pkgver="0.3.2"
+pkgver="0.3.4"
 pkgrel="1"
 pkgdesc="Concurrent traceroute built on trippy that publishes routes, trace several targets at once and see every hop on a map."
 arch=(
@@ -31,7 +31,7 @@ options=('!lto')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('246f66f58c643dad42fe9dd0c9a2d26bf10068e830b7d646cc1604868a2622a7')
+sha256sums=('d3ab6259edd7d52aea6e30c1ad26cd7fd5f68b7d0f61852de1eb32fd55bc179d')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
