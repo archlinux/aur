@@ -14,11 +14,11 @@ pkgbase = archium-bin
 	source = COMPLETIONS-1.10.4.bash::https://github.com/keircn/archium/blob/v1.10.4/completions/archium.bash
 	source = COMPLETIONS-1.10.4.zsh::https://github.com/keircn/archium/blob/v1.10.4/completions/archium.zsh
 	source = COMPLETIONS-1.10.4.fish::https://github.com/keircn/archium/blob/v1.10.4/completions/archium.fish
-	sha256sums = 5658b713add980d64e9caa95a7b3b7c5c2caedd5e54d38cae1cc98ed3db9a2ab
-	sha256sums = bafa36688616d176b4a00006a922780f246fbdd8da330c9394f026ab5c78604e
-	sha256sums = 5676b6d48d04bef5971070dfeb74c966c3ea79521b3fb19e522e781c7e8cc1cd
-	sha256sums = e349123a95f975bf8861e28effcc8325c15cdece9c8b3aebdc8df26f05678cb0
-	sha256sums = 5af791ae656c94244d4df467a08a068b0e9a68f0cb67aa9d9faee5816ef7fe1c
+	sha256sums = b86d94d6054949ade5efc5fc6cd86c3a4c9d5bbc252d421ba724a57f4e96a20a
+	sha256sums = 4b87656e01414e74b0b965ea13434af2e21807a1420743ae43186fd691e3c2c3
+	sha256sums = 466903e5b1ec1dbb4756213cc2a2def559b4276a9bcb1b8f72ec12dc48771919
+	sha256sums = e69053cfab4f89f5faf0e649689eb7f581a63ad341a4ce505a30a147c21a127d
+	sha256sums = 3562affe093e8dda253e9a35988bddc03cfc1707b536d3a8818c5eee59be6404
 	source_x86_64 = https://github.com/keircn/archium/releases/download/v1.10.4/archium-1.10.4.tar.gz
 	sha256sums_x86_64 = 253dcecfd6e0a234c0586c24b178f49b9a2077d117ba4fac7ba46f44f0f4576f
 
