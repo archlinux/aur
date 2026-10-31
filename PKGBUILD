@@ -19,6 +19,11 @@ makedepends=(
 # The commit of src/source-build-assets in the VMR (dotnet/dotnet, src/source-manifest.json) of the
 # tag v$pkgver. The repository was renamed from source-build-reference-packages.
 _commit="a13f85878bf40ed4c57f997b82cbdade521826d3"
+# Where ./aur commits reads it from on upgrade, the package isn't on NuGet
+_commit_lookup() {
+  curl -fsSL "https://raw.githubusercontent.com/dotnet/dotnet/v$pkgver/src/source-manifest.json" |
+    jq -r '.repositories[] | select(.path == "source-build-assets") | .commitSha'
+}
 source=("source-build-assets-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('e0401152c8710f551d33865e0126172bd1a9f508e8b5f32536eaf190bc0f6bb9a182ccc5f431e1b9efc685ae7073a6015d97471a3bd70404bb5a3aab68fca129')
 b2sums=('c8fbe8aa05b9a6b6721b61c2e091e3017296c92e4e6344a6afb1cc4d171bf5b3a6617d8835acb6c044dbf884de96b6eeaf45eb4b298010906e0e6aa41d1f924b')
