@@ -2,7 +2,7 @@
 # Stable Pivra 0.1.0 release package for Arch Linux.
 # Immutable upstream commit and SHA-256 are pinned in this PKGBUILD.
 pkgname=pivra
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 options=('!debug')
 pkgdesc="Native GNOME photo, animation and video viewer"
@@ -16,10 +16,10 @@ depends=('gtk4>=4.16' 'libadwaita>=1.2' 'glib2' 'gdk-pixbuf2'
 makedepends=('cargo' 'pkgconf' 'python>=3.11')
 checkdepends=('desktop-file-utils')
 _target="${CARCH}-unknown-linux-gnu"
-_release_commit=66eb795515fb05b5bdf14ac522cd55579d426b2f
+_release_commit=17486b8b0714f2e49be3bc4b24613192b6f21755
 source=("pivra-$pkgver.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/$_release_commit.tar.gz"
         'collect-licenses.py')
-sha256sums=('40f9b76cf6bc641f950b80f661edf582a8ace2aabf51f2b88e72d8f9cb806863' 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
+sha256sums=('508038b04764edaaa9522aa9053f705038603d390a2769c2a0b4084de3650e6e' 'e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201')
 
 prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
@@ -32,6 +32,7 @@ prepare() {
 build() {
   export PIVRA_DISTRIBUTION_BUILD=1
   export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--remap-path-prefix=$srcdir=/usr/src/debug/pivra"
   export CARGO_TARGET_DIR="$srcdir/Pivra-$_release_commit/target"
   cd "$srcdir/Pivra-$_release_commit" || return 1
   pkg-config --atleast-version=4.16 gtk4 || return 1

@@ -1,6 +1,6 @@
 pkgbase = pivra
 	pkgdesc = Native GNOME photo, animation and video viewer
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/onbeskarakterli/Pivra
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = pivra
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	options = !debug
-	source = pivra-0.2.0.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/66eb795515fb05b5bdf14ac522cd55579d426b2f.tar.gz
+	source = pivra-0.2.1.tar.gz::https://github.com/onbeskarakterli/Pivra/archive/17486b8b0714f2e49be3bc4b24613192b6f21755.tar.gz
 	source = collect-licenses.py
-	sha256sums = 40f9b76cf6bc641f950b80f661edf582a8ace2aabf51f2b88e72d8f9cb806863
+	sha256sums = 508038b04764edaaa9522aa9053f705038603d390a2769c2a0b4084de3650e6e
 	sha256sums = e0bad72c99f4629b0668f59450e53a75022ea746efe57191ab8da34fb5cf1201
 
 pkgname = pivra
