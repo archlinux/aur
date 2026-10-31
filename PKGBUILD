@@ -2,7 +2,7 @@
 
 pkgauthor="yurijmikhalevich"
 pkgname="rclip"
-pkgver=4.0.8
+pkgver=4.0.9
 pkgrel=1
 pkgdesc="AI-Powered Semantic Photo Search for the Command Line"
 
@@ -25,7 +25,7 @@ optdepends=('python-coremltools')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7b3a2704991e83d2f25c6b2b180bebbb8f871968651f9eebd54f3ea48d2c7021')
+sha256sums=('f1cedc9a65182be3ca5a9be4d7ff459f4626473e220f3b7eee5952039a879b2d')
 
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/" || exit
