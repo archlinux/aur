@@ -1,0 +1,8 @@
+# AUR repos only carry the package recipe — ignore everything else.
+/*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+# uncomment when adding one of these:
+# !README.md
+# !.nvchecker.toml

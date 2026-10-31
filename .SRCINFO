@@ -1,0 +1,16 @@
+pkgbase = revda-next
+	pkgdesc = Danmaku live & video player for Linux (pure-Go rewrite of Revda)
+	pkgver = 5.8.0
+	pkgrel = 1
+	url = https://github.com/xmengnet/Revda-Next
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = go
+	depends = mpv
+	depends = ffmpeg
+	conflicts = revda
+	conflicts = revda-git
+	source = revda-next-5.8.0.tar.gz::https://github.com/xmengnet/Revda-Next/archive/refs/tags/v5.8.0.tar.gz
+	sha256sums = 8332a659945ca9bc1e9c6dbff1a4cbb0b6aa56b45983fc0f61f7856b073438ea
+
+pkgname = revda-next
