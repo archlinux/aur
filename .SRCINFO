@@ -1,12 +1,13 @@
 pkgbase = ght-git
 	pkgdesc = CLI to fetch and print HTML page titles
 	pkgver = r49.bdc427f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haturatu/ght
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	optdepends = xclip: clipboard support on X11
 	optdepends = wl-clipboard: clipboard support on Wayland
 	provides = ght

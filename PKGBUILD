@@ -1,10 +1,11 @@
 pkgname=ght-git
 pkgver=r49.bdc427f
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI to fetch and print HTML page titles"
 arch=('x86_64')
 url="https://github.com/haturatu/ght"
 license=('BSD-3-Clause')
+depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('xclip: clipboard support on X11' 'wl-clipboard: clipboard support on Wayland')
 provides=('ght')
