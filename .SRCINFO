@@ -6,6 +6,7 @@ pkgbase = lufux-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = gettext
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
