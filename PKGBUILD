@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='tuios-sketch-bin'
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Draw Mermaid diagrams in the terminal, or as SVG or PNG'
 url='https://tuios.dev/'
@@ -12,10 +12,10 @@ provides=('sketch')
 conflicts=('sketch')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/sketch_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('73bf4dbf1780c8ac5ed9b78deb429f9f60866593d4782ec7b83fb833a78f0e22')
+sha256sums_aarch64=('6e500cb6d0979a8287e1d379e65d34f2aa031da9a7e8cfeeb2aab18b41306c78')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/sketch_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a3f37d569be11f92d91432120bea2e53cbe7ccb55f07627670e7f3b29e0c6c2f')
+sha256sums_x86_64=('85cfe0a417fee0e51fbc0b75c6d56dfba690a77e5ea24024e23a89c3ca8bccdb')
 
 package() {
   install -Dm755 "./sketch" "${pkgdir}/usr/bin/sketch"
