@@ -6,7 +6,7 @@
 # stable tag before pushing the result to the AUR.
 
 pkgname=encounty-bin
-pkgver=0.33.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="Free, open-source auto shiny counter for Pokémon shiny hunting."
 arch=('x86_64' 'aarch64')
@@ -36,9 +36,9 @@ source_aarch64=("encounty-${pkgver}-aarch64.AppImage::${_release}/Encounty-arm64
 
 sha256sums=('91bc7bdf7bb85591c1618423208666d5e7892ae5a80270309a84f0d5b460628d'
             '2efee26e64e58be598aa54eee9165776fc89d9768581e2711a54f78319465158'
-            'd1556afe799054529fb312b017a93709c1b44a67c93e8366debae42d998564cf')
-sha256sums_x86_64=('2264841cdc9ff6ab31241d0e5f69f09694755f3879732a34faec9ded165d191b')
-sha256sums_aarch64=('9b93498a2f71d03d80710c1ec2460888d5106adf491b3c9c8080e5f305e4d5fd')
+            'da7140c89f543b40f705535c808e60e6ac17b8036a24449cb31846baadaf05fb')
+sha256sums_x86_64=('294d7d835e199f300889cb2b380ec600a48f738a353a29967be16bbb310abf96')
+sha256sums_aarch64=('b28db59620fa910acdd9d0b447aadf966ab18a9eb29b1f632c54735e92a5d8fd')
 
 package() {
   # The AppImage is self-contained, so it lives in /opt and gets reached through
