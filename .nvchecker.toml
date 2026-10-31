@@ -1,5 +1,6 @@
+# Listed stable versions from the NuGet search API: the flat container index includes unlisted ones
 # Releases of the same major version from nuget.org, see the PKGBUILD for why newer ones aren't packaged here
 [dotnet-jsonschema-net-7]
 source = "jq"
-url = "https://api.nuget.org/v3-flatcontainer/jsonschema.net/index.json"
-filter = '.versions | map(select(startswith("7.") and (contains("-") | not))) | last'
+url = "https://azuresearch-usnc.nuget.org/query?q=packageid:jsonschema.net&prerelease=false&semVerLevel=2.0.0"
+filter = '.data[0].versions | map(.version) | map(select(startswith("7."))) | last'
