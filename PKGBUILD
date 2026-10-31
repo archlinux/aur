@@ -1,20 +1,19 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="fritzbox-tools"
 pkgver="0.48"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Manage FRITZ!Box devices via command line."
 url="https://mengelke.de/Projekte/FritzBox-Tools"
 license=("GPL-3.0-only")
-install="$pkgname.download"
-source=("fb_tools-$pkgver.txz::$url;fb_tools.txz")
+source=("fb_tools-$pkgver.txz::$url;fb_tools.txz" "$pkgname.download")
 _versionInfo="$(curl -sS "$url;fb_tools.md5")"
-md5sums=("$(grep -oP "\S+(?= \*fb_tools.txz)" <<< "$_versionInfo")")
+md5sums=("$(grep -oP "\S+(?= \*fb_tools.txz)" <<< "$_versionInfo")" "da683a8393707ed62756dc3c569ba5c4")
 arch=("any")
 backup=("opt/$pkgname/fb_config.json")
 depends=("php>=4.4")
 makedepends=("curl" "coreutils" "xxd" "bash")
 provides=("$pkgname=$pkgver")
-DLAGENTS=("https::./$pkgname.download %u %o")
+DLAGENTS=("https::$startdir/$pkgname.download %u %o")
 
 pkgver()
 {

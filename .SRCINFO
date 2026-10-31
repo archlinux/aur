@@ -1,9 +1,8 @@
 pkgbase = fritzbox-tools
 	pkgdesc = Manage FRITZ!Box devices via command line.
 	pkgver = 0.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mengelke.de/Projekte/FritzBox-Tools
-	install = fritzbox-tools.download
 	arch = any
 	license = GPL-3.0-only
 	makedepends = curl
@@ -14,6 +13,8 @@ pkgbase = fritzbox-tools
 	provides = fritzbox-tools=0.48
 	backup = opt/fritzbox-tools/fb_config.json
 	source = fb_tools-0.48.txz::https://mengelke.de/Projekte/FritzBox-Tools;fb_tools.txz
+	source = fritzbox-tools.download
 	md5sums = e0113b1ecd19ad9ebf282f0c5e07b630
+	md5sums = da683a8393707ed62756dc3c569ba5c4
 
 pkgname = fritzbox-tools
