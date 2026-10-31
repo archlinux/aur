@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!antares-circuit.sh
+!icon-*.png
+!antares-circuit.desktop
+
