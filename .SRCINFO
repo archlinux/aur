@@ -1,0 +1,14 @@
+pkgbase = prt
+	pkgdesc = A terminal UI for monitoring network ports, inspecting owning processes, and managing SSH tunnels on macOS and Linux
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/rekurt/prt.git
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	source = prt-0.6.1.tar.gz::https://github.com/rekurt/prt/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = bb04456e12f52235a791c0ef25585cb9d025bfa237c4a78d095dc8c2e74e5ac5
+
+pkgname = prt
