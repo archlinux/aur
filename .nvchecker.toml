@@ -1,9 +1,9 @@
-# Including the pre-releases, which bundle the latest PowerShell Editor Services
+# Including the pre-releases, which bundle the latest PowerShell Editor Services. The highest tag
+# rather than the latest release, as releases including pre-releases need a GitHub token.
 [vscode-powershell]
 source = "github"
 github = "PowerShell/vscode-powershell"
 prefix = "v"
-use_latest_release = true
-include_prereleases = true
+use_max_tag = true
 from_pattern = "^(.*)-preview$"
 to_pattern = '\1preview'
