@@ -3,7 +3,7 @@
 Arch Linux `PKGBUILD` that builds **Liveside**, a Twitch chat client for
 viewers, moderators and broadcasters, with a GTK 4 window, a terminal
 frontend and a daemon
-([foxkyong/liveside](https://github.com/foxkyong/liveside),
+([FoxKyong/liveside](https://github.com/FoxKyong/liveside),
 [liveside.jifox.net](https://liveside.jifox.net)).
 
 This is the package published in the AUR as
@@ -35,7 +35,7 @@ yay -S liveside
 Or from this repository:
 
 ```bash
-git clone https://github.com/foxkyong/aur-liveside.git
+git clone https://github.com/FoxKyong/aur-liveside.git
 cd aur-liveside
 makepkg -si
 ```

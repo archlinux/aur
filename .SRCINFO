@@ -1,6 +1,6 @@
 pkgbase = liveside
 	pkgdesc = Twitch chat client with a window, a terminal frontend and a daemon
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://liveside.jifox.net
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = liveside
 	optdepends = streamlink: watching the stream from the window or the terminal
 	optdepends = python: the example bot
 	options = !lto
-	source = liveside-0.9.0.tar.gz::https://github.com/foxkyong/liveside/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = f14d33f61410d2b94828b0b07f81e6f29d65d70a8a2c8241619badc7e1c8c679
+	source = liveside-0.10.0.tar.gz::https://github.com/FoxKyong/liveside/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 30d0f3551c7d6d0f4bf92fc79137ecf838ffa3653391fdbdbb7b1d5a2219e569
 
 pkgname = liveside
