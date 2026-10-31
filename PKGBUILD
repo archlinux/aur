@@ -1,7 +1,7 @@
 # Maintainer: Loong <xiaoyueban@nmgjg.com.cn>
 
 pkgname=cloudreve-client
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Desktop sync client for Cloudreve (Linux/macOS fork of the official Windows client)"
 arch=('x86_64')
@@ -11,10 +11,8 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme' 
 makedepends=('cargo' 'nodejs' 'npm' 'pkgconf')
 # Mixed Rust/C/C++ (bundled C deps): GCC LTO breaks rustc's lld link (Arch wiki)
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'fix-wayland-positioner.patch')
-sha256sums=('352325d6f9a1f21b73611fd3463ae16d74fd45d26824f4cb14686e5bb015189f'
-            '058885c8daeca4573a74be69c89fb3bcba63c374116609d676f11314cb67805b')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a101ac503cbd76a0c3a9b0331e91c70f94052baea4284f81acb8d1c4b3b69724')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -24,9 +22,6 @@ prepare() {
 
   # Upstream build scripts assume yarn; use npm instead
   sed -i 's/yarn run/npm run/g' src-tauri/tauri.conf.json
-
-  # Wayland tray crash fix merged upstream as #9 (ships in the next release)
-  patch -Np1 -i "$srcdir/fix-wayland-positioner.patch"
 
   # Root package.json so `npm run build` resolves wherever the tauri CLI
   # runs the beforeBuildCommand from
@@ -45,6 +40,10 @@ EOF
   npm --prefix ui install --no-audit --no-fund
   npm install --no-audit --no-fund --prefix . '@tauri-apps/cli@2'
   cargo fetch --locked --manifest-path src-tauri/Cargo.toml
+
+  # Match upstream release.yml: source archives keep the previous version fields.
+  sed -i -E 's/("version"[[:space:]]*:[[:space:]]*)"[^"]+"/\1"'"$pkgver"'"/' src-tauri/tauri.conf.json
+  sed -i -E '/^\[workspace\.package\]/,/^\[/{s/^version = "[^"]+"/version = "'"$pkgver"'"/;}' Cargo.toml
 }
 
 build() {
