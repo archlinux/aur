@@ -3,7 +3,7 @@
 
 _zig=anyzig
 pkgname="ziggy"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A data serialization language for expressing clear API messages, config files, etc"
 arch=(
@@ -22,14 +22,13 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('bae2d1a390e7b0d989aa74bdf809e73123d29631575a1dd60a20bce7c36e40f8a095a5f0578e073b70f9ebeb5578250cb4aa54a10ffd553bd8324fc93f0f40e7')
+b2sums=('d15433e0356b36cde6b24ca2613463a9bbdbf85ac8a52996b8e714de43745eac53b3a4b5dfcb53b4f1c0e5d0bccda1fd65960b588c29ded60bcb801327c0989b')
            
 build() {
   local zig_options=(
     --summary all
     --prefix /usr
     --search-prefix /usr
-    --global-cache-dir "${srcdir}/zig-global-cache"
     # --system "${srcdir}/zig-global-cache/p"
     --verbose
     -Dtarget=native-linux.6.15-gnu.2.42
@@ -47,7 +46,6 @@ build() {
 #     --summary all
 #     --prefix /usr
 #     --search-prefix /usr
-#     --global-cache-dir "${srcdir}/zig-global-cache"
 #     # --system "${srcdir}/zig-global-cache/p"
 #     --verbose
 #     -Dtarget=native-linux.6.15-gnu.2.42
