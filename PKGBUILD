@@ -6,7 +6,7 @@ _appname=${_pkgname%-cli}
 pkgname=${_appname}
 pkgdesc="Semantic CLI tool for process management. Target by port, PID, name or path."
 
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,7 +24,7 @@ provides=("${_appname}")
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('90e80c5c20fb352b68f655db4aab723b35f75f4505db58309246bf7097ebc142')
+sha256sums=('4f5d4df58ba92bb97b4554599f3dd64f3fe684d2c773c077168ceb5e434b13bf')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}" || exit
