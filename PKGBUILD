@@ -1,6 +1,6 @@
 # Maintainer: hikari <me@metantesan.com>
 pkgname=mitsuzo-bin
-pkgver=0.12.10
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Encrypted, self-hostable handoff for secrets and short-lived files (CLI, prebuilt binary)'
 arch=('x86_64' 'aarch64')
