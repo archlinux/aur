@@ -21,12 +21,12 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
     "COMPLETIONS-${pkgver}.zsh::${_urlraw}/completions/archium.zsh"
     "COMPLETIONS-${pkgver}.fish::${_urlraw}/completions/archium.fish")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b86d94d6054949ade5efc5fc6cd86c3a4c9d5bbc252d421ba724a57f4e96a20a'
-            '4b87656e01414e74b0b965ea13434af2e21807a1420743ae43186fd691e3c2c3'
-            '466903e5b1ec1dbb4756213cc2a2def559b4276a9bcb1b8f72ec12dc48771919'
-            'e69053cfab4f89f5faf0e649689eb7f581a63ad341a4ce505a30a147c21a127d'
-            '3562affe093e8dda253e9a35988bddc03cfc1707b536d3a8818c5eee59be6404')
-sha256sums_x86_64=('253dcecfd6e0a234c0586c24b178f49b9a2077d117ba4fac7ba46f44f0f4576f')
+b2sums=('39c6266b6449e4c065b472db8e284f3f7e936f076bfd16ced1c122c4dddbd5bebc193398f20ba7f069cfa884cd9fe6abe4b43d632c0ff4e6c3c42a276c514ad9'
+        'c2f4cbb7b1e65ec0057aa024da71e2002007593e132bde49e42c8650bb69cd98afc3a061f9fd6ff4caa574769fde9fbab5e663a207830b24b24fba69c9a2ee32'
+        '14a2675bf1c83aa2463cf735907816a7683c82cf678fa1c709e0abbbfd9767e15fea7c8281e45f7d6698b9f02eaf51f6c9ebe3ff8502b084ecbb95267c4e4084'
+        'e42d881cd563fa0630bf108d15ec3bbedb98a710a6713db0e85d7fd0140f7a342c6918896a0c396e0f24e4b90724e9b6e891c453422245edd558a65777871a8d'
+        '16840a718a77e8956813ddfb4c6a284a2d565c357df8961287615964f5cf1a94eafd627fde1bbbec2c6df081a27a4e0a28951a23668fcec056830ebbaae7d233')
+b2sums_x86_64=('de6fd24c0e26143fb482c5a640901c04faa4ac2e38ee74e6220691d11fff98ae0e037c9aaff9a7fa7c9f9bef5ba8ef96651d66655f7035cfbd6300effc174b02')
 
 prepare() {
     cd "${srcdir}/" || exit
