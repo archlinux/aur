@@ -1,6 +1,6 @@
 pkgbase = opentubex-nightly-bin
 	pkgdesc = A private desktop YouTube client, nightly channel
-	pkgver = 0.37.1.nightly.2559
+	pkgver = 0.37.2
 	pkgrel = 1
 	epoch = 1
 	url = https://opentubex.org
@@ -14,9 +14,9 @@ pkgbase = opentubex-nightly-bin
 	conflicts = opentubex
 	options = !strip
 	options = staticlibs
-	source_x86_64 = opentubex-nightly-bin-0.37.1.nightly.2559-amd64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.1-nightly-2559/opentubex_0.37.1-nightly-2559_amd64.deb
-	sha256sums_x86_64 = 0153b37276a91f46ed2c12a206e5c416f50a685465a3d84a35c84b4cc604e888
-	source_aarch64 = opentubex-nightly-bin-0.37.1.nightly.2559-arm64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.1-nightly-2559/opentubex_0.37.1-nightly-2559_arm64.deb
-	sha256sums_aarch64 = 68ab9b433c7b090d7adf840701169894120a091a9502c789867d18da367e19ac
+	source_x86_64 = opentubex-nightly-bin-0.37.2-amd64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.2-beta/opentubex_0.37.2_beta_amd64.deb
+	sha256sums_x86_64 = 65bdb7a07c982078e66c9d2ef15dd39eeef6c5a6aaa1a45cf4999e4f1659064f
+	source_aarch64 = opentubex-nightly-bin-0.37.2-arm64.deb::https://github.com/OpenTubeX/OpenTubeX/releases/download/v0.37.2-beta/opentubex_0.37.2_beta_arm64.deb
+	sha256sums_aarch64 = 0eef9d3a229556696fe8ed98e19f2d8278b22febf5c26d5ebe9b08f162bdb973
 
 pkgname = opentubex-nightly-bin
