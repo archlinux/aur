@@ -1,6 +1,6 @@
 pkgbase = euro-office-lite-bin
 	pkgdesc = Lightweight desktop office suite built on Tauri v2 and Euro-Office editors. No cloud, no telemetry.
-	pkgver = 0.17.40
+	pkgver = 0.17.44
 	pkgrel = 1
 	url = https://github.com/delmarguillen/euro-office-lite
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = euro-office-lite-bin
 	conflicts = euro-office-lite
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = euro-office-lite-bin-0.17.40.deb::https://github.com/delmarguillen/euro-office-lite/releases/download/v0.17.40-alpha/Euro-Office-Lite_0.17.40-alpha_amd64.deb
+	source_x86_64 = euro-office-lite-bin-0.17.44.deb::https://github.com/delmarguillen/euro-office-lite/releases/download/v0.17.44-alpha/Euro-Office-Lite_0.17.44-alpha_amd64.deb
 	source_x86_64 = LICENSE::https://raw.githubusercontent.com/delmarguillen/euro-office-lite/refs/heads/main/LICENSE
-	b2sums_x86_64 = 7f25f5c607263c2d8cc6f41339e40ab72f90524028865b64e02b75d4b30834f034301f996a885c70bdddba3fd739eb17b71211186403264464dcf01baad36821
+	b2sums_x86_64 = de8c4a4050808d580df8f61a143156d7f329c551494cc02bbd07f27e423b60843624db667451dfab4730a26f8fb12fe4d0eb3317a19fcd3011b3660cc8ca5ddd
 	b2sums_x86_64 = 25ff89b638fae6a63641f5196157086bdcb76c6f1d4c49470551a3cfd131951d2b7c40c48a9380fa4569b725e43e57e85d48df4a56abf9a119ddcd1b11d2a897
 
 pkgname = euro-office-lite-bin
