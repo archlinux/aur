@@ -2,3 +2,5 @@
 source = "git"
 git = "https://github.com/crowdsecurity/cs-nginx-bouncer.git"
 prefix = "v"
+# Without release candidates like v1.2.4-rc1
+exclude_regex = ".*-.*"
