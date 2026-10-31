@@ -1,6 +1,6 @@
 pkgbase = soapy-malahit-rr-git
 	pkgdesc = SoapySDR module for Malahit RR SDR receiver
-	pkgver = r74.8538d46
+	pkgver = r78.a412040
 	pkgrel = 1
 	url = https://github.com/luarvique/SoapyMalahitRR
 	arch = x86_64

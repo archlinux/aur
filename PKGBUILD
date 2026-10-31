@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=soapy-malahit-rr-git
 _pkgname=SoapyMalahitRR
-pkgver=r74.8538d46
+pkgver=r78.a412040
 pkgrel=1
 pkgdesc="SoapySDR module for Malahit RR SDR receiver"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -34,7 +34,8 @@ package() {
     DESTDIR="${pkgdir}" cmake --install build
 
     # Install firmware file
-    install -Dm644 malahit-fw/malahit-r1-fw-111.bin "${pkgdir}/usr/share/malahit/malahit-r1-fw-111.bin"
+    # firmware blob is renamed upstream from time to time (-111 -> -112 on 2026-09-29): do not pin the name
+    install -Dm644 malahit-fw/malahit-r1-fw-*.bin -t "${pkgdir}/usr/share/malahit/"
 
     # Install systemd service
     install -Dm644 malahit-id/malahit-id.service "${pkgdir}/usr/lib/systemd/system/malahit-id.service"
