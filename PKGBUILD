@@ -8,7 +8,7 @@ pkgname=easypostman-bin
 pkgver=6.2.9
 pkgrel=1
 pkgdesc='An open-source API debugging and stress testing tool inspired by Postman and JMeter'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url='https://github.com/lakernote/easy-postman'
 license=('Apache-2.0')
 depends=(
@@ -33,26 +33,12 @@ provides=('easypostman')
 conflicts=('easypostman')
 options=('!strip' '!debug')
 
-if [[ $CARCH == 'x86_64' ]]; then
-  _debarch='amd64'
-else
-  _debarch='arm64'
-fi
-
-source_x86_64=(
+source=(
   "${url}/releases/download/v${pkgver}/EasyPostman-${pkgver}-linux-amd64.deb"
   "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
-source_aarch64=(
-  "${url}/releases/download/v${pkgver}/EasyPostman-${pkgver}-linux-arm64.deb"
-  "LICENSE::${url}/raw/v${pkgver}/LICENSE"
-)
-sha256sums_x86_64=(
+sha256sums=(
   'e0c20b5ee9b0f46a1f81c62020cb92190c46b95014d9e19ce389f758baaeb000'
-  'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-)
-sha256sums_aarch64=(
-  'f9d45d39cb96e067453e217bd7a0d4431aa2901a6807aba5e809aba988f770e5'
   'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
 )
 
@@ -61,7 +47,7 @@ prepare() {
 
   # Unpack the Debian archive: control.tar.zst holds the maintainer scripts,
   # data.tar.zst holds the /opt/easypostman tree.
-  bsdtar -xf "EasyPostman-${pkgver}-linux-${_debarch}.deb" data.tar.zst
+  bsdtar -xf "EasyPostman-${pkgver}-linux-amd64.deb" data.tar.zst
   bsdtar -xf data.tar.zst
 
   # Upstream ships a 192x192 icon inside the application jar; the .deb only
