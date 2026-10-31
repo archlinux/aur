@@ -115,7 +115,8 @@ _runtimepackages=(
 prepare() {
   # Arcade and the runtime packages are part of the source-built .NET of Arch Linux
   # (dotnet-source-built-artifacts), which Arch Linux ARM doesn't have. It can't be a makedepends of an
-  # arch=any package, so it's used when it's installed, and they come from upstream's feeds otherwise.
+  # arch=any package, so it's used when it's installed, and they come from upstream's feeds where it
+  # isn't (Arch Linux ARM).
   mkdir -p nuget-local
   local _artifacts _nupkg _package
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
@@ -133,6 +134,13 @@ prepare() {
     _package="${_nupkg##*/System.ServiceModel.Syndication.}"
     echo "${_package%.nupkg}" >syndication-version
   done
+  # The Arcade on dotnet-eng targets an unreleased .NET SDK and won't load on the released one (MSB4062,
+  # Microsoft.Build.Framework.IMultiThreadableTask), so x86_64 requires the source-built artifacts
+  # rather than falling back to it.
+  if [[ "$CARCH" == x86_64 && ! -f "$srcdir/arcade-version" ]]; then
+    echo 'dotnet-wcf needs dotnet-source-built-artifacts on x86_64' >&2
+    exit 1
+  fi
 
   # Upstream builds with a preview of the next .NET SDK, the libraries target .NET 10 though.
   # dotnet only works outside the repository until its global.json is updated.
