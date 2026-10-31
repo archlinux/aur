@@ -3,7 +3,7 @@
 pkgname=one-kvm-bin
 pkgver=0.2.8
 _tag=261001
-pkgrel=2
+pkgrel=3
 pkgdesc='Open and lightweight IP-KVM solution for BIOS-level remote management (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/mofeng-git/One-KVM'
@@ -28,6 +28,8 @@ optdepends=(
   'easytier-core: P2P VPN mesh networking'
   'frpc: NAT traversal / port forwarding'
   'gostc: frp-based NAT traversal management'
+  'xz: create Ventoy mass-storage USB drives'
+  'networkmanager: USB OTG virtual NIC bridging'
 )
 optdepends_x86_64=(
   'intel-media-driver: Intel VA-API hardware encoding (Gen 8+)'
