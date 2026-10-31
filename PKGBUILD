@@ -2,13 +2,13 @@
 #Maintainer: Manojavya
 
 pkgname=optomizer
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 # Haha lol this kinda cringe tbh.
 pkgdesc="Optomizer the optimization tool for power users"
 arch=('any')
 url="https://github.com/manojavya/Optomizer"
-license=('MIT')
+license=('GNU GPL3.0')
 depends=('jdk21-openjdk')
 makedepends=('git')
 source=("git+https://github.com/manojavya/Optomizer.git")
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 package() {
     cd Optomizer/
 
-    install -Dm644 Optomizer_v3-4-0.jar \
+    install -Dm644 Optomizer_V3.5.0.jar \
         "$pkgdir/usr/share/optomizer/Optomizer.jar"
 
     install -Dm755 /dev/stdin \
