@@ -1,0 +1,16 @@
+pkgbase = libslimbook
+	pkgdesc = Slimbook core library, slimbookctl CLI and settings load/store service
+	pkgver = 1.28.1
+	pkgrel = 1
+	url = https://github.com/Slimbook-Team/libslimbook
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	source = libslimbook::git+https://github.com/Slimbook-Team/libslimbook.git#tag=1.28.1
+	sha256sums = SKIP
+
+pkgname = libslimbook
