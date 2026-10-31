@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=enroll
 _app_id="org.cosmic_utils.$pkgname"
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="GUI application for fingerprint management designed for COSMIC DE."
 arch=('x86_64' 'aarch64')
@@ -25,15 +25,12 @@ checkdepends=(
   'desktop-file-utils'
 )
 source=("git+https://github.com/cosmic-utils/enroll.git#tag=v$pkgver")
-sha256sums=('ee39c72cfe2a35635e1f023712dcec8a5197bf959be4a3c001321c8c4b684ea7')
+sha256sums=('3229158a42725c2bb945608c2193845f432fd6759049881890157ee57418a772')
 
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
-
-  # Correct appid
-  sed -i "s/org.cosmic_utils.Enroll/${_app_id}/g" justfile
 
   # Use metainfo instead of deprecated appdata
   sed -i 's/appdata/metainfo/g' justfile
