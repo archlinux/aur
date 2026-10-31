@@ -17,7 +17,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-src"
-  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false TARGET_ARCH=amd64 ZLIB_W32=/usr/x86_64-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes -j$(nproc)
+  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false TARGET_ARCH=amd64 ZLIB_W32=/usr/x86_64-w64-mingw32/ NSIS_MAX_STRLEN=8192 NSIS_CONFIG_LOG=yes
 }
 
 package() {
