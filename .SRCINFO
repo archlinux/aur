@@ -1,13 +1,14 @@
 pkgbase = darwan-bin
 	pkgdesc = Themes for the SDDM login screen and the Quickshell lockscreen, with a CLI, TUI and GUI (prebuilt)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/mah3uz/darwan
 	arch = x86_64
 	license = GPL-3.0-only
+	license = LGPL-2.1-only OR LGPL-3.0-only
 	depends = gcc-libs
 	depends = glibc
-	depends = mpvqt
+	depends = mpv
 	depends = polkit
 	depends = qt6-5compat
 	depends = qt6-base
@@ -25,7 +26,7 @@ pkgbase = darwan-bin
 	conflicts = darwan
 	options = !strip
 	options = !debug
-	source = https://github.com/mah3uz/darwan/releases/download/v0.6.0/darwan-0.6.0-x86_64.pkg.tar.zst
-	sha256sums = 71a8181b6aa767df5ecbf16026298b62cadf33a629a48a50d2a1067bf9fe222b
+	source = https://github.com/mah3uz/darwan/releases/download/v0.6.1/darwan-0.6.1-x86_64.pkg.tar.zst
+	sha256sums = 109eb6a644b3ec55ccc1a11039405a148b7921633d75917802ffcbbe4478e3e8
 
 pkgname = darwan-bin
