@@ -12,7 +12,7 @@
 # version, so bump pkgver with theirs. Change it in
 # packaging/arch/omdrop-owl-bin in https://github.com/t4t5/owly.
 pkgname=omdrop-owl-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="AirDrop radio backend for Omdrop on non-Broadcom Wi-Fi, on Owly (prebuilt)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ install="${pkgname}.install"
 _tarball="omdrop-owl-${pkgver}-x86_64.tar.gz"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_tarball}")
 noextract=("${_tarball}")
-sha256sums_x86_64=('1df4ea4a208f0fa1ddf35bc61383e779de20fdcaaa2957a2777cff9b09efe91c')
+sha256sums_x86_64=('9f423ead888b9b340a2b4e349e2cde8eb61c963f1e9fa324cf812a09b020f69b')
 
 # Unpacked here rather than by makepkg, so that the files are root's, as
 # the tarball has them, and not the builder's.
