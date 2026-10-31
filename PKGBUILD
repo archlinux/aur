@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="YouTube — and your own videos and music — in the terminal"
 
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -17,7 +17,7 @@ _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 url=${_ghurl}
 
-license=('Apache-2.0' 'MIT')
+license=('AGPL-3.0')
 
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
@@ -26,12 +26,10 @@ depends=('glibc' 'libgcc')
 
 options=('!strip')
 
-source=("LICENSE-MIT-${pkgver}::${_ghurlraw}/LICENSE-MIT"
-		"LICENSE-APACHE-${pkgver}::${_ghurlraw}/LICENSE-APACHE")
+source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('0c632fdaad3edd3af2d4f47dc50581d0bdd45e09f72a9a6e7876b5c6615b9c9b'
-            'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('5f1bff7a6972fa934c56f9259567b9b3d96552ded75cc6f613063f3e9fa0c528')
+sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
+sha256sums_x86_64=('affee3fb673fb7880645de101de9ef4dc030d427b7db03bcd0764022e99efdd5')
 
 
 package() {
@@ -41,6 +39,5 @@ package() {
 
 	install -Dm644 "${_appname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-MIT-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-	install -Dm644 "LICENSE-APACHE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
