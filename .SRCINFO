@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-sycl-bin
 	pkgdesc = llama.cpp upstream prebuilt binaries with the SYCL backend
-	pkgver = b11552
+	pkgver = b12024
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -19,14 +19,14 @@ pkgbase = llama.cpp-sycl-bin
 	depends = level-zero-loader
 	depends = ocl-icd
 	provides = llama.cpp-sycl
-	noextract = llama-b11552-sycl-fp16.tar.gz
+	noextract = llama-b12024-sycl-fp16.tar.gz
 	noextract = intel-oneapi-dnnl-2026.0-2026.0.2-40_amd64.deb
 	options = !strip
 	options = !debug
-	source = llama-b11552-sycl-fp16.tar.gz::https://github.com/ggml-org/llama.cpp/releases/download/b11552/llama-b11552-bin-ubuntu-sycl-fp16-x64.tar.gz
+	source = llama-b12024-sycl-fp16.tar.gz::https://github.com/ggml-org/llama.cpp/releases/download/b12024/llama-b12024-bin-ubuntu-sycl-fp16-x64.tar.gz
 	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dnnl-2026.0-2026.0.2-40_amd64.deb
 	source = llama-sycl
-	sha256sums = 76858e41ede0423716cc788e20c1b564912989ec00524d926e7851f452d4b1b3
+	sha256sums = e91866025e7800ed4cea50ed9d213969ba45b35c87e089d2bb306854200a1562
 	sha256sums = 4b0f7e23415a695f204f8080328977225759534158d813c2225403f8851433e8
 	sha256sums = SKIP
 

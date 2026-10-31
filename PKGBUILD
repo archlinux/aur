@@ -3,7 +3,7 @@
 # Repackages the official upstream SYCL FP16 binaries and the oneDNN runtime
 # they need. The launcher loads the installed split oneAPI runtime environment.
 pkgname=llama.cpp-sycl-bin
-pkgver=b11552
+pkgver=b12024
 pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the SYCL backend'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
 )
 noextract=("${_llamasrc}" "${_onednnfile}")
 sha256sums=(
-  '76858e41ede0423716cc788e20c1b564912989ec00524d926e7851f452d4b1b3'
+  'e91866025e7800ed4cea50ed9d213969ba45b35c87e089d2bb306854200a1562'
   '4b0f7e23415a695f204f8080328977225759534158d813c2225403f8851433e8'
   'SKIP'
 )
