@@ -1,0 +1,14 @@
+pkgbase = halofetch-bin
+	pkgdesc = System information fetch with centered logos, panels and a live monitor
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/mafuzyk/halofetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	optdepends = wireless_tools: show the Wi-Fi network name
+	provides = halofetch
+	conflicts = halofetch
+	source = https://github.com/mafuzyk/halofetch/releases/download/v3.1.0/halofetch-v3.1.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 3ca4f337df3499ca42c4de4941a13f70d78201ca0519172734f97a061abbb163
+
+pkgname = halofetch-bin
