@@ -2,9 +2,9 @@
 
 pkgname=g0v0-robin-bin
 _pkgname=${pkgname%-bin}
-pkgver=2026.1022.1
+pkgver=2026.1101.0
 _pkgtag=v${pkgver}-g0v0
-pkgrel=2
+pkgrel=1
 pkgdesc="g0v0! -- free and open rhythm experience! (Robin pre-release channel)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
@@ -37,8 +37,8 @@ sha256sums=('c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '26ecc3e357b03798cd8cc4ada4348d9e8eef1f3c725f8176e3b9533185c0bd0a'
             'dfbe774cb090a23f4000859dd9bb6c79717e20d091737893b915a55db5b4965a'
             '437545915242c3284ed8da47e125d37f63b416e3edff8c9bf4ce7d79a007bd59')
-sha256sums_x86_64=('da91491dcc5979e8f79156f11cfa92ed90ceee66b5763a882633ee0db44cc809')
-sha256sums_aarch64=('04b801ef0de88b679dcf5141a075cd5219c2531454345f51dfd971bb894d07e8')
+sha256sums_x86_64=('14452694e7f225e72f1aa740530d4b8a92b12d4dfa2cfa514b97afdea96fa65f')
+sha256sums_aarch64=('c7a3d727d11c3844318663e9da05f3133138bb8b90cc68e37358540c6c090062')
 
 package() {
   cd "$srcdir"
