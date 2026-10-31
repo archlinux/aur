@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=edithere-bin
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc='Screenshot annotation and visual feedback tool (prebuilt binary)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'NOTICE'
 )
 sha256sums=(
-  '4496775d32e9a76ef4d37a7c69cdf8e363b5a67047a456b6184ea10ee02ca915'
+  '3259fe0b76ec834df8d5f4df8190bb5ee5df12e8c79be1df3b481c1a06d39663'
   'ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8'
   '8d29c679a40ae2af03703948916a1284da69dd13d15e5561c0a496c2c6ff6367'
 )
