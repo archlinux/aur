@@ -10,7 +10,7 @@
 # verified. pacman owns the binary, so `tephro-server admin upgrade` refuses
 # to swap it and names the package command instead.
 pkgname=tephro-server-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Self-hosted group chat server: text, voice, video and screen sharing in one binary (release build)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source=('tephro-server.service' 'tephro-server@.service' 'tephro-server.sysusers
 source_x86_64=("tephro-${pkgver}-linux-amd64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv${pkgver}/downloads/tephro-${pkgver}-linux-amd64")
 source_aarch64=("tephro-${pkgver}-linux-arm64::https://gitlab.com/encenillo/tephro/-/releases/server%2Fv${pkgver}/downloads/tephro-${pkgver}-linux-arm64")
 sha256sums=('3ebba40ea53fcb7a071c46e2f176732fcde797d596b15520ad93278438bc0c26' 'dcf28b77b8404f020330827acf5c827f610a816d3d2189d1af584b896028d045' 'cd0cfdf2590d83d352a028e6ad1bf9c7bcddfabc43bce665d74ba4b2b3dcbde7' 'd2058578c4b27880a4fd6cedfe3956e9591c7afd240e11f8c78b55b4f3ceb57e')
-sha256sums_x86_64=('2a110beda09de0c5f75009df52296e6ee66ed5f76e38b5be08d22f5f76a82954')
-sha256sums_aarch64=('f0cabb040afbec8eb28bd957c22f73028a68367bd3227ea310c38f7f137e39bb')
+sha256sums_x86_64=('b1d78f22a64e8f20443b9a6006641289b597f43829dcc8c92525a7038a7018bd')
+sha256sums_aarch64=('e2a80ac4930f60e02798bfd08989ef432bb89c3a3cb11b9b527ef11417b88290')
 
 package() {
   local goarch=amd64
