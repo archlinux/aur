@@ -1,36 +1,33 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=svt-jpeg-xs
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='An implementation of the JPEG XS (ISO/IEC 21122) codec'
 arch=('x86_64')
 url='https://github.com/OpenVisualCloud/SVT-JPEG-XS/'
 license=('BSD-2-Clause-Patent')
-depends=('glibc')
-makedepends=('cmake' 'yasm')
+depends=(
+    'glibc')
+makedepends=(
+    'cmake'
+    'yasm')
 source=("https://github.com/OpenVisualCloud/SVT-JPEG-XS/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-svt-jpeg-xs-remove-werror.patch')
-sha256sums=('ff5dfb3b98348a39049da4fd3062d3391cbadec4c4b61825a9f3435ca671effa'
-            '27e8899b11dc3466d9b060571b51d38524e1cfc89f7552e7c8ada3d1a3035dbc')
+sha256sums=('ae04de9afe2c086a15da85ff7473ec1db127c380081c11c8860f958e8454f0ff'
+            'cd095dfd29cc2bdc5ca5e0bb21decad57793c1f17ac4dc5739473c1a4eb8b05c')
 
 prepare() {
     patch -d "SVT-JPEG-XS-${pkgver}" -Np1 -i "${srcdir}/010-svt-jpeg-xs-remove-werror.patch"
 }
 
 build() {
-    # fix warning: "_FORTIFY_SOURCE" redefined
-    # note: upstream forces _FORTIFY_SOURCE=2
-    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
-    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
-    
     cmake -B build -S "SVT-JPEG-XS-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DNATIVE:BOOL='OFF' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
