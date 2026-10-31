@@ -1,0 +1,5 @@
+pkg
+src
+agent-desktop-*
+LICENSE-*
+*.tar.zst
