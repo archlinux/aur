@@ -1,6 +1,6 @@
 pkgbase = context-git
 	pkgdesc = Standalone CLI and MCP server for deterministic repository context (git version)
-	pkgver = 1.0.0.r421.g87e67ee
+	pkgver = 1.0.0.r422.g5754592
 	pkgrel = 2
 	url = https://github.com/timmo001/context
 	arch = x86_64
