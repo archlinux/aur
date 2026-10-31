@@ -1,14 +1,18 @@
 pkgbase = borgrestore
-	pkgdesc = Puts the system in exactly the same state as it is in a Borg snapshot.
-	pkgver = 0.3
-	pkgrel = 0.3
+	pkgdesc = Puts the system in exactly the same state as it is in a Borg snapshot
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/solisinvictum/borgrestore
 	arch = any
-	depends = git
+	license = GPL-3.0-only
+	depends = bash
 	depends = borg
-	depends = python-llfuse
+	depends = python-pyfuse3
 	depends = rsync
+	depends = util-linux
 	optdepends = vorta: a nice Borg GUI
-	source = git+https://github.com/solisinvictum/borgrestore.git
-	sha512sums = SKIP
+	backup = etc/borgrestore/borgrestore.conf
+	source = borgrestore-0.4.tar.gz::https://github.com/solisinvictum/borgrestore/archive/refs/tags/v0.4.tar.gz
+	sha256sums = f1b334db3842e8f2830036f48e0c150ca142c38c7308960596558036966aff7d
 
 pkgname = borgrestore
