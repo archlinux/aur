@@ -1,6 +1,6 @@
 post_upgrade() {
-  echo "==> IMPORTANT: Fenrir configuration update needed"
-  echo "    The settings file format has changed."
-  echo "    Please replace /etc/fenrirscreenreader/settings/settings.conf with /etc/fenrirscreenreader/settings/settings.conf"
-  echo "    You will need to configure fenrir to restore your settings after doing this."
+  echo "==> Fenrir now uses Go and TOML configuration."
+  echo "    Review /etc/fenrirscreenreader/settings/settings.toml before restarting."
+  echo "    Python settings.conf files are not read or converted by this version."
+  echo "    Speech Dispatcher is the default speech driver; configure it or a hardware driver."
 }
