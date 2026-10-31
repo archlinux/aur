@@ -1,0 +1,21 @@
+pkgbase = wailsmaxima
+	pkgdesc = Symbolic and numerical Computer Algebra System workstation for Maxima (wxMaxima compatible)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chrisfair/wailsmaxima
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = maxima
+	depends = hicolor-icon-theme
+	optdepends = gnuplot: external plotting backend for Maxima
+	optdepends = texlive-basic: compile exported LaTeX (.tex) notebooks
+	source = wailsmaxima-1.0.0-1.tar.gz::https://github.com/chrisfair/wailsmaxima/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 01acccc346916a5d6a17f1d954be4bd6c98276e21e6b4882e55ab7ffe82fc88e
+
+pkgname = wailsmaxima
