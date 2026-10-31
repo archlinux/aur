@@ -9,11 +9,7 @@ url="https://github.com/mafuzyk/halofetch"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-optdepends=(
-  'curl: download updates from GitHub releases'
-  'tar: extract updates from GitHub releases'
-  'wireless_tools: show the Wi-Fi network name'
-)
+optdepends=('wireless_tools: show the Wi-Fi network name')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a19c047eb12a93df0476f700ab081761821bba5bdd5a1291199f573cf8ca0d98')
 
