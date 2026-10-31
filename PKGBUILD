@@ -1,5 +1,5 @@
 pkgname=tts-helper
-pkgver=6.7.0
+pkgver=6.8.0
 pkgrel=2
 pkgdesc="An application to help streamers manage TTS events."
 arch=('x86_64' 'aarch64')
