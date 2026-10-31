@@ -1,0 +1,21 @@
+pkgbase = bsu-git
+	pkgdesc = Blaad's System Utilities (latest commit from master)
+	pkgver = 0.1.0.r0.g2430ff9
+	pkgrel = 1
+	url = https://github.com/Blaadick/BSU
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = glib2
+	depends = libsecret
+	provides = bsu
+	conflicts = bsu
+	source = bsu::git+https://github.com/Blaadick/BSU.git
+	sha512sums = SKIP
+
+pkgname = bsu-git
