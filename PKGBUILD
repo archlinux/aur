@@ -136,6 +136,10 @@ check() {
     # The broker is the Web Account Manager of Windows
     'FullyQualifiedName!~BrokerTests.RuntimeBrokerTests.'
     'FullyQualifiedName!~BrokerTests.BrokerTests.BrokerGetAccountsWithBrokerInstalledTestAsync'
+    # It loads the broker's native library on Linux (msalruntime, prebuilt in
+    # Microsoft.Identity.Client.NativeInterop), which needs webkit2gtk-4.1, and MSAL throws by design
+    # when it can't be loaded (wam_runtime_init_failed)
+    'FullyQualifiedName!~AppConfigTests.PublicClientApplicationBuilderTests.IsBrokerAvailable_net8'
     # They expect Windows line endings in the serialized JSON
     'FullyQualifiedName!~CacheSerializationTests.TestAppMetadata_Supports_AdditionalFields'
     'FullyQualifiedName!~CacheSerializationTests.TestMsalNet2XCacheSerializationInterop'
