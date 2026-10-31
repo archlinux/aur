@@ -1,6 +1,6 @@
 pkgbase = gentoo-color-bash
-	pkgdesc = Gentoo color terminal and bash command prompt. Looks very nice.
-	pkgver = 2026.10.31
+	pkgdesc = Gentoo color command prompt and shell environment for modern terminal emulators.
+	pkgver = 2026.11.02
 	pkgrel = 1
 	url = https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=gentoo-color-bash
 	install = gentoo-color-bash.install.sh
@@ -8,7 +8,7 @@ pkgbase = gentoo-color-bash
 	license = GPL
 	optdepends = bash: Shell needed to make use of this package
 	options = !debug
-	source = gentoo-color-bash-2026.10.31::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color-r2.bash
+	source = gentoo-color-bash-2026.11.02::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color-r2.bash
 	sha256sums = 189766ac49f48880ce2507971fc3d8e15449976042d938bf6c6ad77e73793958
 
 pkgname = gentoo-color-bash
