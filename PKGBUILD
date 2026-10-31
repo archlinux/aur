@@ -3,7 +3,7 @@
 pkgname=python-khali-git
 _pkgname=khali
 pkgver=1.0.0.r32.1ef7cd6
-pkgrel=1
+pkgrel=2
 pkgdesc="Uses khal, vdirsyncer and at to sync calendars and set alarms."
 arch=('any')
 url="https://codeberg.org/dhruva_sambrani/khali"
@@ -43,7 +43,6 @@ package() {
     depends=(
       'khal'
       'vdirsyncer'
-      'at'
       'libnotify')
     
     cd "${_pkgname}"
