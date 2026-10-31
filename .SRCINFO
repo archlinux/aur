@@ -1,6 +1,6 @@
 pkgbase = efl-git-asan
 	pkgdesc = Enlightenment Foundation Libraries - Development version - Asan debug build
-	pkgver = 1.27.99.67082.g6860883e18
+	pkgver = 1.29.0.67480.gdc4b008677
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -33,11 +33,14 @@ pkgbase = efl-git-asan
 	depends = libgl
 	depends = libinput
 	depends = libpulse
+	depends = libpipewire
 	depends = libsndfile
 	depends = libspectre
 	depends = libraw
 	depends = librsvg
 	depends = libwebp
+	depends = libxtst
+	depends = libxpresent
 	depends = libxcomposite
 	depends = libxcursor
 	depends = libxinerama
@@ -66,17 +69,20 @@ pkgbase = efl-git-asan
 	depends = wayland
 	depends = libxkbcommon-x11
 	depends = pulse-native-provider
+	depends = libjxl
+	depends = libheif
+	depends = libavif
 	optdepends = gst-plugins-base: Video and thumbnail codecs
 	optdepends = gst-plugins-good: Video and thumbnail codecs
 	optdepends = gst-plugins-bad: Video and thumbnail codecs
 	optdepends = gst-plugins-ugly: Video and thumbnail codecs
 	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
 	optdepends = libreoffice: Office document thumbnails
-	provides = efl=1.27.99.67082.g6860883e18
-	provides = efl-git=1.27.99.67082.g6860883e18
-	provides = elementary=1.27.99.67082.g6860883e18
-	provides = elementary-git=1.27.99.67082.g6860883e18
-	provides = evas_generic_loaders=1.27.99.67082.g6860883e18
+	provides = efl=1.29.0.67480.gdc4b008677
+	provides = efl-git=1.29.0.67480.gdc4b008677
+	provides = elementary=1.29.0.67480.gdc4b008677
+	provides = elementary-git=1.29.0.67480.gdc4b008677
+	provides = evas_generic_loaders=1.29.0.67480.gdc4b008677
 	conflicts = efl
 	conflicts = efl-git
 	conflicts = elementary
