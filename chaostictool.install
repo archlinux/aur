@@ -1,0 +1,24 @@
+## ChaosticTool pacman scriptlet: notify (never auto-remove) on package removal.
+## The external security tools ChaosticTool installs at runtime are not owned by
+## this package; point the user at the manifest-driven uninstaller instead.
+
+pre_remove() {
+    MANIFEST=/var/lib/chaostictool/manifest
+    if [ -f "$MANIFEST" ]; then
+        count=$(grep -cvE '^[[:space:]]*(#|$)' "$MANIFEST" 2>/dev/null || true)
+        [ -n "$count" ] || count=0
+        if [ "$count" -gt 0 ]; then
+            # Short names of the recorded items (last path or field component), 8 at most.
+            names=$(grep -E '^(pkg|go|cargo|pipx|pip|gem|file|symlink):' "$MANIFEST" 2>/dev/null | sed 's/.*[:/]//' | grep -v '^$' | LC_ALL=C sort -u || true)
+            shown=$(printf '%s\n' "$names" | head -n 8 | tr '\n' ' ')
+            [ "$(printf '%s\n' "$names" | grep -c .)" -gt 8 ] && shown="$shown..."
+            echo "ChaosticTool recorded $count installed item(s) in $MANIFEST:"
+            echo "    $shown"
+            echo "Removing this package does NOT remove those external tools, repository"
+            echo "entries or system edits; it also removes the chaostictool-uninstall command."
+            echo "The manifest is kept. To remove the recorded items, either reinstall"
+            echo "ChaosticTool and run 'sudo chaostictool-uninstall' (preview: --dry-run),"
+            echo "or run 'sudo ./uninstall.sh' from a source checkout."
+        fi
+    fi
+}
