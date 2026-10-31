@@ -1,6 +1,6 @@
 # Maintainer: monsoon <29970829+monsoon235@users.noreply.github.com>
 pkgname=llama.cpp-vulkan-bin
-pkgver=b11577
+pkgver=b12024
 pkgrel=1
 pkgdesc='llama.cpp upstream prebuilt binaries with the Vulkan backend'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('llama.cpp')
 conflicts=('llama.cpp')
 options=('!strip' '!debug')
 source=("https://github.com/ggml-org/llama.cpp/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-vulkan-x64.tar.gz")
-sha256sums=('553be23740d5ae2523801c0ffdc427acaf4a02b73311a857af94ed2077f73577')
+sha256sums=('4148fac07cca21f43846edf047d8e87bf610a19d1b9e3a3bc2838188fd727b11')
 
 package() {
     local upstream="$srcdir/llama-$pkgver" executable
