@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=3.50.0.0.3.pre.r92302.a682eb33099
+pkgver=3.50.0.0.3.pre.r92324.ee8b48245d7
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
