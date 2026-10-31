@@ -1,0 +1,21 @@
+pkgbase = python-tantivy
+	pkgdesc = Official Python bindings for the Tantivy search engine
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://github.com/quickwit-oss/tantivy-py
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-maturin<2.0
+	makedepends = python-maturin>=1.9.3
+	makedepends = rust
+	depends = python
+	depends = glibc
+	depends = libgcc
+	source = tantivy-py-0.27.0.tar.gz::https://github.com/quickwit-oss/tantivy-py/archive/refs/tags/0.27.0.tar.gz
+	sha256sums = fc90d88dadd2de6fe7d0772588e0e694f158316ef872ac1abee06ed2f4b4fff4
+
+pkgname = python-tantivy
