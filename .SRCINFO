@@ -1,6 +1,6 @@
 pkgbase = ryu
 	pkgdesc = Collection of Qt6 QML plugins for ryu..
-	pkgver = 0.0.36
+	pkgver = 0.0.37
 	pkgrel = 1
 	url = https://github.com/Happilli/ryu
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ryu
 	depends = cliphist
 	depends = wl-clipboard
 	depends = pipewire
-	source = ryu-0.0.36.tar.gz::https://github.com/Happilli/ryu/archive/refs/tags/v0.0.36.tar.gz
-	sha256sums = bdbe5dedabd84de3010386d3f4c4772ca095560efae9a93905223d6cb8aea36a
+	source = ryu-0.0.37.tar.gz::https://github.com/Happilli/ryu/archive/refs/tags/v0.0.37.tar.gz
+	sha256sums = 2b418cf6a6935d61ec21b80c06f8f2acab65a6ed75438c9e6bbbffc912221cd1
 
 pkgname = ryu
