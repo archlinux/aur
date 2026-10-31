@@ -5,7 +5,7 @@
 
 pkgname=swift-bin
 pkgver=6.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
 url="https://www.swift.org/"
@@ -52,5 +52,5 @@ package() {
   find_elf_only -exec "${patchelf[@]}" {} \;
 
   install -dm755 "${pkgdir}/etc/ld.so.conf.d"
-  echo '${_swift_root}/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
+  echo "${_swift_root}/lib/swift/linux" >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
 }
