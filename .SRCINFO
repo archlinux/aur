@@ -1,0 +1,19 @@
+pkgbase = python-llama-index-llms-ollama
+	pkgdesc = llama-index llms ollama integration
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/run-llama/llama_index
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-ollama>=0.5.3
+	depends = python-llama-index-core<0.15
+	depends = python-llama-index-core>=0.14.5
+	source = llama_index-v0.14.25.tar.gz::https://github.com/run-llama/llama_index/archive/refs/tags/v0.14.25.tar.gz
+	sha256sums = 52f0b6a4408e2efb8244172bc6beda9ca50f1ac35cdf8a0ee9c7103901b92a4b
+
+pkgname = python-llama-index-llms-ollama
