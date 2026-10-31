@@ -1,5 +1,6 @@
-# The package is built from the latest commit, upstream hasn't released the fixes since 1.0.2
+# The package is built from the latest commit, upstream hasn't released the fixes since 1.0.2. Its
+# version is the one in the project file, which changes with releases on master.
 [dotnet-pluralize-net]
-source = "git"
-git = "https://github.com/sarathkcm/Pluralize.NET.git"
-use_commit = true
+source = "regex"
+url = "https://raw.githubusercontent.com/sarathkcm/Pluralize.NET/master/Pluralize.NET/Pluralize.NET.csproj"
+regex = "<Version>([^<]+)</Version>"
