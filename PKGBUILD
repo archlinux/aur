@@ -1,15 +1,16 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Tomas Storck <storcktomas@gmail.com>
 # Contributor: Tom Richards <tom@tomrichards.net>
 
-pkgname=neovim-symlinks
-pkgver=5
+pkgname=ex-vi-vim-compat
+pkgver=1
 pkgrel=1
 pkgdesc='Runs neovim if vi or vim is called'
 arch=('any')
 depends=('neovim' 'sh')
 provides=('vim' 'vi')
-conflicts=('vim' 'vi' 'vi-vim-symlink')
+conflicts=('vim' 'vi')
 
 package() {
   install -dm755 "$pkgdir/usr/bin/"
