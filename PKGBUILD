@@ -1,7 +1,7 @@
 # Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=plasma-smart-video-wallpaper-reborn
 pkgname=plasma6-wallpapers-smart-video-wallpaper-reborn-git
-pkgver=2.9.0.r24.g1fd9153
+pkgver=2.16.0.r1.ge31379a
 pkgrel=2
 pkgdesc="Smart KDE Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen"
 arch=('x86_64')
@@ -32,5 +32,9 @@ build() {
 package() {
   cd "${srcdir}/${_gitname}"
   DESTDIR="$pkgdir" cmake --install build
+  # kpackage_install_package() uses install(DIRECTORY) without
+  # USE_SOURCE_PERMISSIONS, so this helper lands as 644. The wallpaper spawns
+  # it at runtime; without the exec bit that path fails.
+  chmod 755 "$pkgdir/usr/share/plasma/wallpapers/luisbocanegra.smart.video.wallpaper.reborn/contents/ui/tools/gdbus_get_signal.sh"
   install -Dm644 "$srcdir/$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
 }
