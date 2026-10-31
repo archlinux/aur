@@ -1,0 +1,30 @@
+pkgbase = slimbook-service
+	pkgdesc = Slimbook service: performance-mode notifications, ppd/EC profile sync, touchpad lock
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = https://github.com/Slimbook-Team/slimbook_service
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gettext
+	depends = python
+	depends = python-slimbook
+	depends = libslimbook
+	depends = python-gobject
+	depends = python-dbus
+	depends = python-evdev
+	depends = python-pyzmq
+	depends = python-requests
+	depends = python-feedparser
+	depends = python-pyudev
+	depends = python-dateutil
+	depends = gtk4
+	depends = libadwaita
+	depends = libnotify
+	depends = adwaita-icon-theme
+	depends = power-profiles-daemon
+	optdepends = qc71-laptop-slimbook-dkms: EC performance mode, fans and fn-lock on QC71 models (e.g. EVO15)
+	source = slimbook-service::git+https://github.com/Slimbook-Team/slimbook_service.git#commit=2f6a2f67a40eb46962a3b1646059446f5a840ef6
+	sha256sums = SKIP
+
+pkgname = slimbook-service
