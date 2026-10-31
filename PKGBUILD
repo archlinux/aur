@@ -1,7 +1,7 @@
 # Maintainer: jarbowski <jarbowski@example.com>
 pkgname=tape16-bin
 pkgver=0.9.530
-pkgrel=1
+pkgrel=2
 pkgdesc="Destructive tape-style 16-track DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
 url="https://emrmusicgroup.com/tape16/"
