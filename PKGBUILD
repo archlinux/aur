@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Battery-drain triage TUI for Linux written in Rust"
 
-pkgver=0.1.22
+pkgver=0.1.24
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('68309cb7a19d171336ca3342620038fbd97d727ca727cdf8331061a6188c9316')
-sha256sums_x86_64=('ed1036b6f9b62b77da531ce8d3fbc692cf9339226a0c4124346ada434bf9c37a')
-sha256sums_aarch64=('4bc6c08535a47aff75715515d700c1a32490a3969569a320fb84eb6ae334f533')
+sha256sums=('20a2fc07e3b34203b5b4543a4492fae5a0d3f43fd595233a1bb9393fe506e500')
+sha256sums_x86_64=('04dc8a38cf2955ad40499a3f6f8ba95b4bbb046dcb524018c4ba89d69b2b2635')
+sha256sums_aarch64=('94ff02fafe01999cc78134b4ecfe5a11d3c3708bd2cbd2293639c422509d40f2')
 
 
 package() {
