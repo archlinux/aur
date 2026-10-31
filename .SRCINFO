@@ -1,0 +1,13 @@
+pkgbase = cloud-image-inspector
+	pkgdesc = Read qcow2 and raw cloud disk images without booting or mounting them: OS, login shells, sudo/doas, init system, sshd and cloud-init facts, plus ls/cat/export of files inside
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/virtainer/cloud-image-inspector
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	source = cloud-image-inspector-0.1.0.tar.gz::https://github.com/virtainer/cloud-image-inspector/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 28ac3ade6e4ef17d38b9b2be4171afdf84772fcc750187b6be34d7de64d6bbfc
+
+pkgname = cloud-image-inspector
