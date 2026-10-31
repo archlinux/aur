@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 # Copyright (C) 2024-2026 do-i and thumbgrid contributors
 # PKGBUILD template for thumbgrid-bin: installs the prebuilt full-featured
-# package (Qt6 / Exiv2 / OpenCV / mpv) uploaded to the GitHub release by
+# package (Qt6 / Exiv2 / mpv) uploaded to the GitHub release by
 # .github/workflows/arch-package.yml. No local compilation.
 #
 # scripts/publish-aur.sh replaces the @...@ fields in a temporary AUR clone,
@@ -10,33 +10,32 @@
 # versions and checksums deliberately do not live in this source repository.
 
 pkgname=thumbgrid-bin
-pkgver=2026.10.3
+pkgver=2026.10.5
 pkgrel=1
 # pkgrel of the upstream thumbgrid release asset being repackaged.
 _srcrel=1
-pkgdesc="Qt image viewer (fork of easymodo/qimgv), prebuilt binary release (exiv2/opencv/mpv)"
+pkgdesc="Qt image viewer (fork of easymodo/qimgv), prebuilt binary release (exiv2/mpv)"
 arch=('x86_64')
 url="https://github.com/do-i/thumbgrid"
 license=('GPL-3.0-only')
 depends=(
   'qt6-base'
-  'qt6-svg'
+  'qt6-svg>=6.12.0'  # CVE-2026-8168 (SVG recursion DoS)
   'qt6-imageformats'
   # kimageformats supplies the Qt plugin that decodes heif/heic (and avif, jxl,
   # raw). Its codec backends are dlopened, so Arch lists them as optdepends of
   # kimageformats - libheif has to be named here or heic silently stays
   # unreadable on a clean install.
   'kimageformats'
-  'libheif'
-  'exiv2'
-  'opencv'
+  'libheif>=1.23.2'  # CVE-2026-84383 (heap overflow)
+  'exiv2>=0.28.8'    # CVE-2026-25884, -27596, -27631
   'mpv'
 )
 provides=('thumbgrid')
 conflicts=('thumbgrid')
 options=('!strip' '!debug')
 source=("thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst::https://github.com/do-i/thumbgrid/releases/download/v$pkgver/thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst")
-sha256sums=('432209d2ec81a9a45a51de456d496f828486c66808f80b69066dd94ab9a4c7fa')
+sha256sums=('f37f0bb3fa3217ab18526d2fc00be420181eb79eb6417cd16ca249981fd785df')
 
 package() {
   # The download is itself a complete pacman package; unpack it as-is and
