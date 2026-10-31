@@ -36,8 +36,8 @@ Verify with `bsdtar -tf data.tar.*` on every update — if paths moved, the PKGB
 
 Collect the external `NEEDED` sonames of every ELF shipped in the deb:
 
-    cd usr/share/FlClash
-    for f in FlClash FlClashCore FlClashHelperService lib/*.so; do
+    cd usr/share/flclash-oixcloud
+    for f in flclash-oixcloud FlClashCore FlClashHelperService lib/*.so; do
         readelf -d "$f" | awk '/NEEDED/{print $5}'
     done | tr -d '[]' | sort -u
 
