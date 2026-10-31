@@ -1,6 +1,6 @@
 pkgbase = gridcraft
 	pkgdesc = vibe coded clean-room reimplementation of Microsoft Excel
-	pkgver = 0.13.0
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://getartcraft.com/apps/gridcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = gridcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/gridcraft/archive/refs/tags/v0.13.0/gridcraft-0.13.0.tar.gz
-	sha256sums = b33b6ab1f9032b0ccf6fbbe281affa618a325bf54030fa0d017a7fc1bf2f8251
+	source = https://github.com/storytold/gridcraft/archive/refs/tags/v0.14.2/gridcraft-0.14.2.tar.gz
+	sha256sums = 118303ad98d99767c08415733a052f9d9c01ec24f5d052f3c6bbac64e1e27c36
 
 pkgname = gridcraft
 	depends = glibc
