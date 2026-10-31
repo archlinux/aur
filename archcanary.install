@@ -53,3 +53,8 @@ post_install() {
 post_upgrade() {
   post_install
 }
+
+post_remove() {
+  # The opt-in pacman hook is a user copy that package removal doesn't track.
+  rm -f /etc/pacman.d/hooks/archcanary.hook
+}

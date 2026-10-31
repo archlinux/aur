@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.42
+pkgver=0.1.43
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -23,7 +23,7 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/package_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5d9e72ea82168e9adccbf19bbdff2f405b7327aa019ec6c2b79ab828d0b26739')
+sha256sums=('ca527cfc9682fcc33e2d3b954554cebbd5a8367dccb57fda793da5b0a8dad72a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -82,6 +82,11 @@ package() {
   # `archcanary --doctor`.
   install -Dm644 configs/yay-init.lua \
     "$pkgdir/usr/lib/archcanary/yay-init.lua"
+
+  # pacman PreTransaction hook — opt-in template + script, never placed in
+  # /usr/share/libalpm/hooks (copy to /etc/pacman.d/hooks yourself; see --doctor).
+  install -Dm755 lib/archcanary-alpm-hook "$pkgdir/usr/lib/archcanary/alpm-hook"
+  install -Dm644 configs/archcanary.hook  "$pkgdir/usr/lib/archcanary/archcanary.hook"
 
   # Polkit policy (authorises root-helper via pkexec)
   install -Dm644 configs/org.archcanary.policy \
