@@ -28,7 +28,7 @@
 
 pkgname=powershell
 pkgver=7.6.9
-pkgrel=22
+pkgrel=23
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64' 'aarch64')
 url='https://microsoft.com/PowerShell'
@@ -74,7 +74,8 @@ depends=(
 )
 backup=('etc/powershell.config.json')
 optdepends=('openssh: PowerShell Remoting over ssh'
-  'xclip: Clipboard functionality'
+  'wl-clipboard: Clipboard functionality on Wayland'
+  'xclip: Clipboard functionality on X11, or on Wayland through Xwayland'
   'powershell-dsc: PowerShell Desired State Configuration v3 support'
   'powershell-editor-services: Language server and debug adapter for PowerShell editor support'
   'powershell-mmi: Microsoft.Management.Infrastructure for modules built against PowerShell with it, e.g. PSScriptAnalyzer from the PowerShell Gallery'
@@ -139,6 +140,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "telemetry-optional.patch"
   "test-json-list-output.patch"
   "help-cache-reset.patch"
+  "wayland-clipboard.patch"
   "system-drawing-windows-only.patch"
   "oneget-user-temp-folder.patch"
   "oneget-net10.patch"
@@ -172,6 +174,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '01cc421451dda2428b3a62fa6476c87bb00b79277098dd3f02ee0095da7fe706565a5c4e449dd4b43e5b5651bb929a685e74a139c0f30fa122fbfa36d79e734c'
   'cf70b41d0ee4b4282f38e9277b743b2749a0e728cb43123304f6218ee48a026e9bc26493ccb23b50991f453188a29559e6fea799a11c4701fe7719d8ec18e485'
   '50912ff845d107ca0b3b3401b8253289bb8ee00f06191e657a37b2e49dd48fa56b1cf1f1d7d63cf54b123e1d88e2fc9b7f13341fd5d9c0609ccc579a86057fef'
+  '3f82a01dd2077f29e067cfa449f88172a7a78b4318d1fd0ffbe7f23043134b654dc574500353e57b2c508b9c044b63660bb1fa3156704c072b098855126cf556'
   'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
   '9a08f25fceaf92c01dc178d4e54f41342de24be4710c0c57decc4cb80cf8a73cf73301d4eb23a7815d953a7e6ac16b92f1da3604833f373d6ef6904ab7b0e1ac'
   'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
@@ -205,6 +208,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '8f3bf0c3fb85e458d24a4ae11b24cc8c881c4c579d4fead5248557ca1a65a91e40d291d2d457cf8a2187540ccbaf1e8495e616256da1d829245067cfb62ef6c5'
   'afc912b63c9211373fbcfeec519631c84dd034a48832de4e7973d788bbd7a7af08935de6da2cbd10031e8755d1f02ab4bd3ba62d3f382b0cb3a3d2a10a897cf4'
   'b44a43b3cb575264177a75e720b5ace94c1a79c2b1b9793885ff06e0b27dfae11f1d5397712eb58a14fe9cadb69c593eca0cd9fddbd9ad1432842347211bea67'
+  '48a060b49e1f1e4266896c5fbfe12b57348bb2efafc82ca7fe8b77f397cd6b5806d03029d41da0bba626f56499a58c8125dc4d121e4cfbe24126ff406a1dd404'
   'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
   '07d61a4c195a13807f11655f479d71f8f3b668ed6cfd81f130caf879fa48f13dca4c98955826e6257fcc94acb2771250e622aa9523247a8012d8274a2a1de87b'
   'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
@@ -401,6 +405,14 @@ prepare() {
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28274
   # Upstream fix: https://github.com/PowerShell/PowerShell/pull/28294
   patch -Np1 -i "$srcdir/help-cache-reset.patch"
+
+  # Get-Clipboard and Set-Clipboard only use xclip, which on Wayland only reaches the clipboard through
+  # Xwayland: text copied in Wayland apps isn't there, Get-Clipboard returns older text instead. This
+  # uses wl-clipboard on Wayland where it's installed, xclip otherwise.
+  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/17561
+  # Upstream PR: https://github.com/PowerShell/PowerShell/pull/24049, which adds a variable to configure
+  # the tools as well; this is only the detection and the use of wl-clipboard
+  patch -Np1 -i "$srcdir/wayland-clipboard.patch"
 
   # System.Drawing.Common only supports Windows since .NET 6, see
   # https://learn.microsoft.com/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only
