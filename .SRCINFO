@@ -1,0 +1,25 @@
+pkgbase = python-turbohtml
+	pkgdesc = A fast, fully typed HTML toolkit for Python, powered by a C-accelerated core.
+	pkgver = 1.15.4
+	pkgrel = 1
+	url = https://github.com/tox-dev/turbohtml
+	arch = x86_64
+	arch = aarch64
+	license = MIT AND Apache-2.0 AND BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = meson>=1.12.1
+	makedepends = meson-python>=0.22.1
+	makedepends = ninja>=1.13.2
+	makedepends = patchelf>=0.11
+	makedepends = meson
+	makedepends = meson-python
+	makedepends = ninja
+	makedepends = patchelf
+	depends = python
+	depends = glibc
+	source = turbohtml-1.15.4.tar.gz::https://github.com/tox-dev/turbohtml/archive/refs/tags/1.15.4.tar.gz
+	sha256sums = ab59990b7ad453d2c75bf707d5f0111e8652d71ac4f476bdc40fb970243ed681
+
+pkgname = python-turbohtml
