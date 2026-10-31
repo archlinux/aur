@@ -1,0 +1,21 @@
+pkgbase = python-llama-index-embeddings-ollama
+	pkgdesc = llama-index embeddings ollama integration
+	pkgver = 0.10.0
+	pkgrel = 2
+	url = https://github.com/run-llama/llama_index
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-ollama>=0.3.1
+	depends = python-llama-index-core<0.15
+	depends = python-llama-index-core>=0.13.0
+	source = llama_index-v0.14.25.tar.gz::https://github.com/run-llama/llama_index/archive/refs/tags/v0.14.25.tar.gz
+	source = remove-pytest-asyncio-dependency.patch
+	sha256sums = 52f0b6a4408e2efb8244172bc6beda9ca50f1ac35cdf8a0ee9c7103901b92a4b
+	sha256sums = 4ecf00a716c4ac017a7aa28fe9df2cc19f2e549330736292b4460679ed5d65a3
+
+pkgname = python-llama-index-embeddings-ollama
