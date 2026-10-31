@@ -1,14 +1,14 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
-# Render 0.0.37 and b240bb4989e0a769ef5a27afe55de7be3a8b765434108ccf046e29cb2903a6ad from the signed release.
+# Render 0.0.38 and 0e8cda665a55c9bf86120d253c3b07bc0303db5538f8b2f29a3864bcce70e032 from the signed release.
 pkgname=rosec-provider-protonpass-bin
-pkgver=0.0.37
+pkgver=0.0.38
 pkgrel=1
 pkgdesc="Proton Pass read-only provider for rosec (prebuilt)"
 arch=('any')
 url="https://github.com/jmylchreest/rosec"
 license=('GPL-3.0-or-later')
 depends=(
-    'rosec>=0.0.37'
+    'rosec>=0.0.38'
 )
 provides=('rosec-provider-protonpass')
 conflicts=('rosec-provider-protonpass')
@@ -16,7 +16,7 @@ conflicts=('rosec-provider-protonpass')
 source=(
     "rosec-provider-protonpass-${pkgver}.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-provider-protonpass-${pkgver}.wasm.tar.gz"
 )
-sha256sums=('b240bb4989e0a769ef5a27afe55de7be3a8b765434108ccf046e29cb2903a6ad')
+sha256sums=('0e8cda665a55c9bf86120d253c3b07bc0303db5538f8b2f29a3864bcce70e032')
 
 package() {
     install -Dm644 "${srcdir}/rosec_protonpass.wasm" \
