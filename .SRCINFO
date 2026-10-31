@@ -1,0 +1,27 @@
+pkgbase = squirrel-disk
+	pkgdesc = Fast, cross-platform disk usage analyzer with an animated sunburst (native Rust rewrite)
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/adileo/squirreldisk
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libx11
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = rclone: scan cloud storage and SSH servers
+	optdepends = xdg-desktop-portal: native file dialogs
+	provides = squirreldisk
+	conflicts = squirrel-disk-bin
+	conflicts = squirreldisk
+	conflicts = squirreldisk-bin
+	options = !lto
+	source = squirrel-disk-2.6.1.tar.gz::https://github.com/adileo/squirreldisk/archive/refs/tags/v2.6.1.tar.gz
+	sha256sums = 6a9f1dc9e831a86a4290499c551188483a759b501205ee10c26a6bd1a38a061f
+
+pkgname = squirrel-disk
