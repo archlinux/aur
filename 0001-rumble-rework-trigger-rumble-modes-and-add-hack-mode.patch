@@ -1,0 +1,204 @@
+From fb4a5b16805b8f8b0794f3ab19328874b0b2d797 Mon Sep 17 00:00:00 2001
+From: detiam <dehe_tian@outlook.com>
+Date: Sat, 24 Oct 2026 16:45:23 +0800
+Subject: [PATCH] rumble: rework trigger rumble modes and add hack mode
+
+Rework trigger_rumble_mode to 0: disable, 1: reserved, 2: pressure, and
+3: hack, defaulting to disable. Add the direction 0x8000 hack used by
+xone: FF_RUMBLE effects with that direction drive the trigger motors
+while the main motor pair stays latched, so both can rumble at the same
+time.
+
+Allow the hack direction in effect uploads for hack mode, and stop
+setting the NO_TRIGGER_RUMBLE quirk for the disable mode so the mode can
+be changed at runtime. Update the configuration documentation.
+---
+ docs/CONFIGURATION.md            | 13 ++---
+ hid-xpadneo/src/xpadneo/rumble.c | 84 +++++++++++++++++++++++---------
+ 2 files changed, 69 insertions(+), 28 deletions(-)
+
+diff --git a/docs/CONFIGURATION.md b/docs/CONFIGURATION.md
+index bfff2f3..4756014 100644
+--- a/docs/CONFIGURATION.md
++++ b/docs/CONFIGURATION.md
+@@ -11,9 +11,10 @@ files in `/sys/module/hid_xpadneo/parameters`:
+   - `0` enables standard behavior to be compatible with `joydev` expectations
+   - `1` enables raw passthrough of axis values without dead zones for high-precision use with modern Wine/Proton or other games implementing circular deadzones
+ - `trigger_rumble_mode` (default `0`)
+-  - `0` rumbles triggers by pressure and current rumble effect
+-  - `1` reserved/unsupported since v0.10, identical to `0`
+-  - `2` disables trigger rumble
++  - `0` disables trigger rumble
++  - `1` enables trigger rumble when the kernel implements it properly (reserved, currently behaves like `0`)
++  - `2` rumbles triggers by pressure and current rumble effect
++  - `3` enables the compatibility hack: FF_RUMBLE effects with direction `0x8000` drive the trigger motors
+ - `rumble_attenuation` (default `0,0`)
+   - Attenuation the strength of the force feedback
+   - `0` (none, full rumble) to `100` (max, no rumble)
+@@ -22,7 +23,7 @@ files in `/sys/module/hid_xpadneo/parameters`:
+   - Example 1: `0,100` turns trigger rumble off, `100,0` or `100` turn all rumble off
+   - Example 2: `50,50` makes 50% rumble overall, and 25% for the triggers (50% of 50% = 25%)
+   - Example 3: `50` makes 50% rumble overall (main and triggers)
+-  - Trigger-only rumble is not possible
++  - Trigger-only rumble is possible in mode `3` by sending an effect with direction `0x8000`
+ - `quirks` (default empty)
+   - Let's you adjust the quirk mode of your controller
+   - Comma separated list of `address:flags` pairs (use `+flags` or `-flags` to change flags instead)
+@@ -56,7 +57,7 @@ that works:
+ ### Example
+ 
+ To disable trigger rumbling temporarily, run
+-`echo 2 | sudo tee /sys/module/hid_xpadneo/parameters/trigger_rumble_mode`
++`echo 0 | sudo tee /sys/module/hid_xpadneo/parameters/trigger_rumble_mode`
+ 
+ To make the setting permanent and applied at loading time, try
+-`echo "options hid_xpadneo trigger_rumble_mode=2" | sudo tee /etc/modprobe.d/99-xpadneo-bluetooth.conf`
++`echo "options hid_xpadneo trigger_rumble_mode=0" | sudo tee /etc/modprobe.d/99-xpadneo-bluetooth.conf`
+diff --git a/hid-xpadneo/src/xpadneo/rumble.c b/hid-xpadneo/src/xpadneo/rumble.c
+index 1cf185f..b308a46 100644
+--- a/hid-xpadneo/src/xpadneo/rumble.c
++++ b/hid-xpadneo/src/xpadneo/rumble.c
+@@ -15,14 +15,16 @@
+ #include "xpadneo.h"
+ #include "helpers.h"
+ 
+-/* module parameter "trigger_rumble_mode" */
+-#define PARAM_TRIGGER_RUMBLE_PRESSURE 0
+-#define PARAM_TRIGGER_RUMBLE_RESERVED 1
+-#define PARAM_TRIGGER_RUMBLE_DISABLE  2
++/* Trigger rumble modes, exported as the trigger_rumble_mode module parameter */
++#define PARAM_TRIGGER_RUMBLE_DISABLE  0
++#define PARAM_TRIGGER_RUMBLE_ENABLE   1 /* reserved for a proper trigger rumble implementation */
++#define PARAM_TRIGGER_RUMBLE_PRESSURE 2 /* derive the trigger motors from trigger pressure and main rumble */
++#define PARAM_TRIGGER_RUMBLE_HACK     3 /* direction 0x8000 selects the trigger motors */
+ 
+-static u8 param_trigger_rumble_mode;
++static u8 param_trigger_rumble_mode = PARAM_TRIGGER_RUMBLE_DISABLE;
+ module_param_named(trigger_rumble_mode, param_trigger_rumble_mode, byte, 0644);
+-MODULE_PARM_DESC(trigger_rumble_mode, "(u8) Trigger rumble mode. 0: pressure, 2: disable.");
++MODULE_PARM_DESC(trigger_rumble_mode,
++		 "(u8) Trigger rumble mode. 0: disable, 1: enable (reserved), 2: pressure, 3: hack (direction 0x8000).");
+ 
+ static u8 param_rumble_attenuation[2];
+ module_param_array_named(rumble_attenuation, param_rumble_attenuation, byte, NULL, 0644);
+@@ -85,8 +87,10 @@ reschedule:
+ 		if (unlikely(!xpadneo_rumble_streaming_get(xdata)))
+ 			goto check_pending;
+ 
+-		if (unlikely(xdata->quirks & XPADNEO_QUIRK_NO_TRIGGER_RUMBLE)) {
+-			/* do not send these bits if not supported */
++		if (unlikely(xdata->quirks & XPADNEO_QUIRK_NO_TRIGGER_RUMBLE) ||
++		    (param_trigger_rumble_mode != PARAM_TRIGGER_RUMBLE_PRESSURE &&
++		     param_trigger_rumble_mode != PARAM_TRIGGER_RUMBLE_HACK)) {
++			/* do not send these bits if not supported or disabled */
+ 			r->data.enable &= ~XBOX_RUMBLE_TRIGGERS;
+ 		} else {
+ 			/* trigger motors */
+@@ -186,18 +190,48 @@ static int rumble_playback(struct input_dev *dev, int effect_id, int value)
+ 	percent_TRIGGERS = clamp(percent_TRIGGERS, 0, 100);
+ 	percent_TRIGGERS = percent_TRIGGERS * percent_MAIN / 100;
+ 
++	if (param_trigger_rumble_mode == PARAM_TRIGGER_RUMBLE_HACK) {
++		/*
++		 * HACK: direction 0x8000 selects the trigger motors. Keep the
++		 * other motor pair latched so main and trigger rumble can be
++		 * active at the same time.
++		 */
++		scoped_guard(spinlock_irqsave, &xdata->rumble.lock) {
++			if (effect->direction == 0x8000) {
++				xdata->rumble.data.magnitude_left =
++					calculate_magnitude(strong, percent_TRIGGERS);
++				xdata->rumble.data.magnitude_right =
++					calculate_magnitude(weak, percent_TRIGGERS);
++			} else {
++				xdata->rumble.data.magnitude_strong =
++					calculate_magnitude(strong, percent_MAIN);
++				xdata->rumble.data.magnitude_weak =
++					calculate_magnitude(weak, percent_MAIN);
++			}
++
++			/* schedule writing a rumble report to the controller */
++			if (!queue_work(rumble_wq, &xdata->rumble.worker)) {
++				/* the worker is still waiting on the hardware */
++				smp_store_release(&xdata->rumble.pending, true);
++				hid_notice_once(hdev, "throttled rumble reprogramming\n");
++			}
++		}
++
++		return 0;
++	}
++
+ 	switch (param_trigger_rumble_mode) {
+-	case PARAM_TRIGGER_RUMBLE_DISABLE:
+-		fraction_MAIN = percent_MAIN;
+-		fraction_TL = 0;
+-		fraction_TR = 0;
+-		break;
+ 	case PARAM_TRIGGER_RUMBLE_PRESSURE:
+-	default:
+ 		fraction_MAIN = percent_MAIN;
+ 		fraction_TL = (xdata->last_abs_z * percent_TRIGGERS + 511) / 1023;
+ 		fraction_TR = (xdata->last_abs_rz * percent_TRIGGERS + 511) / 1023;
+ 		break;
++	default:
++		/* disable, enable (reserved), and invalid values */
++		fraction_MAIN = percent_MAIN;
++		fraction_TL = 0;
++		fraction_TR = 0;
++		break;
+ 	}
+ 
+ 	/*
+@@ -332,7 +366,8 @@ static void rumble_welcome(const struct xpadneo_devdata *xdata)
+ 	pck.data.enable = XBOX_RUMBLE_STRONG;
+ 	rumble_test("strong motor", xdata, pck);
+ 
+-	if (!(xdata->quirks & XPADNEO_QUIRK_NO_TRIGGER_RUMBLE)) {
++	if (!(xdata->quirks & XPADNEO_QUIRK_NO_TRIGGER_RUMBLE) &&
++	    param_trigger_rumble_mode >= PARAM_TRIGGER_RUMBLE_PRESSURE) {
+ 		pck.data.enable = XBOX_RUMBLE_TRIGGERS;
+ 		rumble_test("trigger motors", xdata, pck);
+ 	}
+@@ -373,8 +408,13 @@ static int ff_upload_effect(struct input_dev *dev, struct ff_effect *effect, str
+ 		type_name = "FF_DAMPER";
+ 		break;
+ 	case FF_RUMBLE:
+-		/* only force effects should have a direction */
+-		if (unlikely(effect->direction))
++		/*
++		 * Only force effects should have a direction, except for the
++		 * direction 0x8000 that selects the trigger motors in hack mode.
++		 */
++		if (unlikely(effect->direction &&
++			     !(param_trigger_rumble_mode == PARAM_TRIGGER_RUMBLE_HACK &&
++			       effect->direction == 0x8000)))
+ 			hid_warn_once(hdev, "%s unexpected direction %d for non-force effect\n",
+ 				      __func__, effect->direction);
+ 
+@@ -430,9 +470,6 @@ int xpadneo_rumble_init(struct hid_device *hdev)
+ 	if (xdata->rumble.output_report_dmabuf == NULL)
+ 		return -ENOMEM;
+ 
+-	if (param_trigger_rumble_mode == PARAM_TRIGGER_RUMBLE_DISABLE)
+-		xdata->quirks |= XPADNEO_QUIRK_NO_TRIGGER_RUMBLE;
+-
+ 	/* set capabilities */
+ 	input_set_capability(gamepad, EV_FF, FF_RUMBLE);
+ 	ret = input_ff_create(gamepad, FF_MAX_EFFECTS);
+@@ -455,8 +492,11 @@ int xpadneo_rumble_init(struct hid_device *hdev)
+ 
+ int xpadneo_rumble_init_workqueue(void)
+ {
+-	if (param_trigger_rumble_mode == 1)
+-		pr_warn("hid-xpadneo trigger_rumble_mode=1 is unknown, defaulting to 0\n");
++	if (param_trigger_rumble_mode > PARAM_TRIGGER_RUMBLE_HACK) {
++		pr_warn("hid-xpadneo: invalid trigger_rumble_mode=%u, using disable\n",
++			param_trigger_rumble_mode);
++		param_trigger_rumble_mode = PARAM_TRIGGER_RUMBLE_DISABLE;
++	}
+ 
+ 	rumble_wq = alloc_ordered_workqueue("xpadneo/rumbled", WQ_HIGHPRI);
+ 	if (rumble_wq)
+-- 
+2.53.0
+

@@ -1,6 +1,6 @@
-pkgbase = xpadneo-dkms
-	pkgdesc = Advanced Linux Driver for Xbox One Wireless Gamepad
-	pkgver = 0.10.5
+pkgbase = xpadneo-dkms-trigger-rumble-hack
+	pkgdesc = Advanced Linux Driver for Xbox One Wireless Gamepad (with trigger rumble hack)
+	pkgver = 0.11.pre
 	pkgrel = 1
 	url = https://github.com/atar-axis/xpadneo
 	arch = any
@@ -8,10 +8,14 @@ pkgbase = xpadneo-dkms
 	checkdepends = dkms
 	checkdepends = fakeroot
 	checkdepends = LINUX-HEADERS
-	source = xpadneo-v0.10.5.tar.gz::https://github.com/atar-axis/xpadneo/archive/v0.10.5.tar.gz
-	b2sums = b980c98a92c64dafd459ac98783d2cc2bf4a4af2fef6e72dc89adac0bf304c1c6a1449a40639b4dc75d0ae4733d4d98f6a28d70d992d07053514a04862ddcb25
+	source = xpadneo::git+https://github.com/atar-axis/xpadneo.git#commit=39625746fff63c997eeb53fe3a6fc1a3de08702e
+	source = 0001-rumble-rework-trigger-rumble-modes-and-add-hack-mode.patch
+	b2sums = 68ba38fd564f2c2ca2b5a1915c4c626b6089c8a12bf9775e17e2c6a52d595c87cd886dab46f3d03b57bde8e6acdfe4fde59af7ae7111cdf399cf716997c3cc96
+	b2sums = 35c6d0253f6509c1166aca1a24df8e9d3b95cb727b7ac72f2122e83fbb65799c7e53145fd5b6742a3388a45e4c808a85aad2982b6ab20ce89cc147733e144af8
 
-pkgname = xpadneo-dkms
+pkgname = xpadneo-dkms-trigger-rumble-hack
 	depends = dkms
 	depends = bluez
 	depends = bluez-utils
+	provides = xpadneo-dkms
+	conflicts = xpadneo-dkms

@@ -1,4 +1,5 @@
-# Maintainer: marmis <tiagodepalves@gmail.com>
+# Maintainer: detiam <dehe_tian at outlook dot com>
+# Contributor: marmis <tiagodepalves@gmail.com>
 # Contributor: Benzy
 # Contributor: Kudlaty
 # Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
@@ -6,20 +7,35 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Yangtse Su <i@yangtse.me>
 
-pkgname=xpadneo-dkms
-pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
-pkgver=0.10.5
+pkgname=xpadneo-dkms-trigger-rumble-hack
+pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad (with trigger rumble hack)'
+pkgver=0.11.pre
 pkgrel=1
 url='https://github.com/atar-axis/xpadneo'
 arch=(any)
 license=('GPL-2.0-only AND GPL-3.0-or-later')
 checkdepends=('dkms' 'fakeroot' 'LINUX-HEADERS')
-source=("xpadneo-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('b980c98a92c64dafd459ac98783d2cc2bf4a4af2fef6e72dc89adac0bf304c1c6a1449a40639b4dc75d0ae4733d4d98f6a28d70d992d07053514a04862ddcb25')
+source=(
+  "xpadneo::git+${url}.git#commit=39625746fff63c997eeb53fe3a6fc1a3de08702e"
+  "0001-rumble-rework-trigger-rumble-modes-and-add-hack-mode.patch"
+)
+b2sums=('68ba38fd564f2c2ca2b5a1915c4c626b6089c8a12bf9775e17e2c6a52d595c87cd886dab46f3d03b57bde8e6acdfe4fde59af7ae7111cdf399cf716997c3cc96'
+        '35c6d0253f6509c1166aca1a24df8e9d3b95cb727b7ac72f2122e83fbb65799c7e53145fd5b6742a3388a45e4c808a85aad2982b6ab20ce89cc147733e144af8')
+
+prepare() {
+  cd "xpadneo"
+
+  # Apply patches
+  for patch in "${srcdir}"/0001-*.patch; do
+    echo "Applying patch: ${patch}"
+    patch -p1 < "${patch}"
+  done
+}
 
 build() {
-  cd "xpadneo-${pkgver}"
+  cd "xpadneo"
 
+  echo "${pkgver}" > VERSION
   make build
 }
 
@@ -43,14 +59,16 @@ check() {
     -k "${kver}"
   )
 
-  fakeroot dkms "${dkms_options[@]}" add "xpadneo-${pkgver}/hid-xpadneo"
-  fakeroot dkms "${dkms_options[@]}" build "hid-xpadneo/v${pkgver}"
+  fakeroot dkms "${dkms_options[@]}" add "xpadneo/hid-xpadneo"
+  fakeroot dkms "${dkms_options[@]}" build "hid-xpadneo/${pkgver}"
 }
 
 package() {
   depends=('dkms' 'bluez' 'bluez-utils')
+  provides=("xpadneo-dkms")
+  conflicts=("xpadneo-dkms")
 
-  cd "xpadneo-${pkgver}"
+  cd "xpadneo"
 
   # Add modprobe and udev files
   make PREFIX="${pkgdir}" ETC_PREFIX='/usr/lib' install
@@ -60,7 +78,7 @@ package() {
   install -vD -t "${license_dir}/" -m644 LICENSE.md LICENSES/*.txt
 
   # DKMS files
-  local target_dir="${pkgdir}/usr/src/hid-xpadneo-v${pkgver}"
+  local target_dir="${pkgdir}/usr/src/hid-xpadneo-${pkgver}"
   install -vD -t "${target_dir}" -m644 hid-xpadneo/{Makefile,dkms.conf}
   install -vD -t "${target_dir}" -m755 hid-xpadneo/dkms.post_{install,remove}
 
@@ -68,4 +86,7 @@ package() {
   cd hid-xpadneo
   find src/ -type f -not -name '.*' -not -name 'AGENTS.md' \
     -exec install -vD -m644 {} -T "${target_dir}/{}" \;
+
+  # enable trigger rumble hack default
+  echo "options hid-xpadneo trigger_rumble_mode=3" >> "${pkgdir}/usr/lib/modprobe.d/xpadneo.conf"
 }
