@@ -1,7 +1,7 @@
 # Maintainer: Ketchup901 <ketchup901@riseup.net>
 
 pkgname=ngpost-hydro74000
-pkgver=5.6
+pkgver=5.7
 pkgrel=1
 pkgdesc="Command line and GUI Usenet poster - Hydro74000 fork"
 arch=('any')
@@ -31,7 +31,7 @@ makedepends=(
     'qtkeychain-qt6'
 )
 source=("ngPost-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7ca6e1d2bc1a43c8241bfd93136e811ffb598c77de52be75c16fe82f576ce7a6')
+sha256sums=('1a0decba81ea087bba703f981e1155e483c7973fb94a1050086dc22cb7ebb4c1')
 
 build() {
     cd ngPost-$pkgver/src
