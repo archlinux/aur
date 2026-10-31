@@ -1,0 +1,14 @@
+pkgbase = dockdu
+	pkgdesc = Read-only report of where Docker disk space went: container log files, build cache shared with images and storage per Compose project
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/maximilianfeix/dockdu
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = docker
+	source = dockdu-0.5.0.tar.gz::https://github.com/maximilianfeix/dockdu/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 665c4ed0a8c5448bc34b3e5889e2318e0c4b4484ac694ae3082e74950e120078
+
+pkgname = dockdu
