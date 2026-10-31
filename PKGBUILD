@@ -9,7 +9,7 @@ license=('MIT')
 provides=('neco')
 conflicts=('neco')
 depends=('glibc' 'gcc-libs')
-makedepends=('git' 'gcc')
+makedepends=('git')
 source=("$pkgname"::"git+${url}")
 sha256sums=('SKIP')
 
