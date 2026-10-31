@@ -1,0 +1,15 @@
+--- a/atk_decoder.c
++++ b/atk_decoder.c
+@@ -201,10 +201,12 @@
+ {
+     char new_path[1024]; 
+ 
++#ifdef _WIN32
+     _decoder_setenv("PYTHONHOME",path, 1);
+ 
+     sprintf(new_path, "%s%s", path, "/atk_python");
+     _decoder_setenv("PYTHONPATH",new_path, 1);
++#endif
+ 
+     srd_info("PYTHONHOME : %s", getenv("PYTHONHOME")); 
+     srd_info("PYTHONPATH : %s", getenv("PYTHONPATH")); 

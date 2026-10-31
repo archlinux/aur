@@ -1,0 +1,2 @@
+# ALIENTEK ATK-Logic analyzer: give the logged-in user access to the device
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="ffcc", TAG+="uaccess"

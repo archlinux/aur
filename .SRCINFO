@@ -1,0 +1,39 @@
+pkgbase = atk-logic
+	pkgdesc = ALIENTEK logic analyzer software (ATK-Logic)
+	pkgver = 1.0.6.6
+	pkgrel = 1
+	url = https://github.com/alientek-openedv/atk-logic
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	makedepends = libtool
+	makedepends = pkgconf
+	makedepends = qt5-tools
+	depends = glib2
+	depends = libusb
+	depends = libx11
+	depends = python
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-x11extras
+	source = atk-logic::git+https://github.com/alientek-openedv/atk-logic.git#commit=0dff562d24436def2bec3791684f1911997b9e35
+	source = atk_libsigrokdecode::git+https://github.com/alientek-openedv/atk_libsigrokdecode.git#commit=783fec96047f5859c2122ac79123a6929a35f75f
+	source = atk-decoder-system-python.patch
+	source = QBreakpadHandler.h
+	source = atk-logic.sh
+	source = atk-logic.desktop
+	source = 60-atk-logic.rules
+	sha256sums = ccb243057539d77c286204f80665e23c9888bd8c363e1da2f4df388e4fe905d9
+	sha256sums = 2aef4fc1a30ef0de093095d6977b02cf47b571db51de5d4142cf99d321d30fc2
+	sha256sums = d0e57dc382865bdc73662cc7faae666f2b8a9ffe50e201648022ce6aedacee0f
+	sha256sums = 4cfdaf954b45227f0468b8008116fd27e2e32f5749fd50c7ce4768a218db0436
+	sha256sums = e31bfb946cbb159496fd5ac2971a29f1940657f09b827a813c9ec77536b285f2
+	sha256sums = 80ae6d3187e096118bbe15789647a11342fcc46a6d52b9ff29ead950e0fa455f
+	sha256sums = 2778b3e5a2489b385850fbfe13aa2b9bae4947002ee07b141dbd9364cabbeb31
+
+pkgname = atk-logic
