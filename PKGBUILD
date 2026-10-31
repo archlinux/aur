@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.272
+pkgver=5.10.273
 pkgrel=1
 pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
@@ -36,8 +36,8 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 md5sums=('753adc474bf799d569dec4f165ed92c3'
          'SKIP'
-         'a0dfd89536858165681732d5178422ad'
-         '73307d1e2f6a0a44eb465bb32ed0a387'
+         'eef7011f85044f49d35f815d40dc7456'
+         '4ccdf3a8ed9c45dbee7ae51054c3f7e7'
          'd31360693fb06a0d69c1f126350baa6d'
          'c1f10e50f7ca23d07ae83ae6252854d5'
          'd15820a808c3cc159e6e5916a8c05e8f'
@@ -46,8 +46,8 @@ md5sums=('753adc474bf799d569dec4f165ed92c3'
          '6140c1a5cd25145548ed5867d13ee7d9')
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '8cca64b75d7d0a224925a5ba0e652454cbbdc719d74fa01b681c46b7c21ac13f'
-            'f343736197e6959bc8381147b49a91e2c94cad40b46084b1bbc496f645f14dfc'
+            '876f73cd8fdb8f1698a9af7191aab85ac029b5f29a9b708017d20f9ca4fe72cd'
+            '95ecfbd4505251a6293f9253817267faa26f0b58755491730f00b2bb3217352d'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
             '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
             '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
