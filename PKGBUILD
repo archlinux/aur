@@ -17,7 +17,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --abbrev=7 | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  (
+    set -o pipefail
+    git describe --long --abbrev=7 | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+      || printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare(){
