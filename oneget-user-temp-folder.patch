@@ -1,3 +1,19 @@
+diff --git a/src/Microsoft.PackageManagement.CoreProviders/Bootstrap/BootstrapRequest.cs b/src/Microsoft.PackageManagement.CoreProviders/Bootstrap/BootstrapRequest.cs
+index f7626ec..f12ea30 100644
+--- a/src/Microsoft.PackageManagement.CoreProviders/Bootstrap/BootstrapRequest.cs
++++ b/src/Microsoft.PackageManagement.CoreProviders/Bootstrap/BootstrapRequest.cs
+@@ -700,8 +700,9 @@ public static string GetTempFileFullPath(string filePath) {
+             if (string.IsNullOrWhiteSpace(filePath)) {
+                 return filePath;
+             }
+-            // get a temp location
+-            var file = Path.Combine(Path.GetTempPath(), Path.GetFileName(filePath));
++            // Keep the file name, but put it in PackageManagement's per-user temp folder (see
++            // FilesystemExtensions) instead of the shared Path.GetTempPath() (/tmp on Unix)
++            var file = Path.Combine(FilesystemExtensions.TempPath, Path.GetFileName(filePath));
+ 
+             if (System.IO.File.Exists(file)) {
+                 //if exists already, delete it
 diff --git a/src/Microsoft.PackageManagement/Utility/Extensions/FilesystemExtensions.cs b/src/Microsoft.PackageManagement/Utility/Extensions/FilesystemExtensions.cs
 index c1eee02..069c518 100644
 --- a/src/Microsoft.PackageManagement/Utility/Extensions/FilesystemExtensions.cs
