@@ -1,7 +1,7 @@
 # Maintainer: mafuzyk <247084418+mafuzyk@users.noreply.github.com>
 pkgname=escargot-native-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Linux client for MSN Messenger 7.5 on the Escargot network'
 arch=('x86_64')
 url='https://github.com/mafuzyk/escargot-native'
@@ -14,14 +14,13 @@ provides=('escargot-native')
 conflicts=('escargot-native' 'escargot-native-git')
 options=('!strip' '!debug')
 source=("escargot-native-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/escargot-native-$pkgver-x86_64.tar.gz")
-sha256sums=('ebfd9ec8964045c0aa51772a7083646ef7ab48cdb8025a744e14ea7f2db6363b')
+sha256sums=('0c2c11cc65841303e32cf7279df3f0e723650129bc0a0fafd878e85f9bd1e195')
 
 package() {
     cd "$srcdir/escargot-native-$pkgver"
 
     install -Dm755 escargot-native "$pkgdir/usr/bin/escargot-native"
     install -Dm755 escargot-webview "$pkgdir/usr/bin/escargot-webview"
-    install -Dm755 msn2 "$pkgdir/usr/bin/msn2"
     ln -s escargot-native "$pkgdir/usr/bin/msn"
 
     install -d "$pkgdir/usr/share/escargot-native"
@@ -31,8 +30,6 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/escargot-native.png"
     install -Dm644 escargot-native.desktop \
         "$pkgdir/usr/share/applications/escargot-native.desktop"
-    install -Dm644 escargot-native-secondary.desktop \
-        "$pkgdir/usr/share/applications/escargot-native-secondary.desktop"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 LICENSE-Wine-Tahoma.txt \
