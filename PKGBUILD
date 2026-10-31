@@ -1,11 +1,13 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=vylk-git
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Lightweight, low-resource single-binary markdown notes editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/toxdes/vylk"
 license=('MIT')
+provides=("vylk=${pkgver}")
+conflicts=('vylk')
 depends=()
 makedepends=('git' 'go')
 source=('git+https://github.com/toxdes/vylk.git')
