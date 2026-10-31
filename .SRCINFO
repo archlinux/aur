@@ -1,14 +1,19 @@
 pkgbase = vidoas
 	pkgdesc = Safely edit the doas.conf file (like visudo for doas)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/solisinvictum/vidoas
 	arch = any
 	license = GPL-3.0-only
+	source = vidoas-1.2.0.tar.gz::https://github.com/solisinvictum/vidoas/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 93013feb77c43a075365cbe2fb6d5920a995106630417c0fe34f171873cd1c03
+
+pkgname = vidoas
 	depends = bash
 	depends = opendoas
 	depends = util-linux
-	source = vidoas-1.1.0.tar.gz::https://github.com/solisinvictum/vidoas/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 47b20a49659fb0a6506521b106f649b3e0d716f344b659b0debd6b8c7610f347
 
-pkgname = vidoas
+pkgname = vidoas-visudo
+	pkgdesc = A visudo symlink for using vidoas as a drop-in replacement (for systems without sudo)
+	depends = vidoas
+	conflicts = sudo>=1
