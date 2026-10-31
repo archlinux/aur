@@ -1,0 +1,192 @@
+From fd9ccf511ce69d216c1179e0345f9045347a3276 Mon Sep 17 00:00:00 2001
+From: detiam <dehe_tian@outlook.com>
+Date: Sat, 24 Oct 2026 16:46:28 +0800
+Subject: [PATCH] joystick: enable the trigger rumble hack only for mode 3
+
+Enable the Linux trigger rumble hack only when the device driver exposes
+a trigger_rumble_mode module parameter and reports 3, meaning the
+direction 0x8000 hack is available. Modes 0 (disable), 1 (reserved),
+2 (pressure), missing parameters, and drivers without the parameter keep
+returning SDL_Unsupported, so games fall back to main motor rumble.
+---
+ src/joystick/linux/SDL_sysjoystick.c   | 113 +++++++++++++++++++++----
+ src/joystick/linux/SDL_sysjoystick_c.h |   1 +
+ 2 files changed, 97 insertions(+), 17 deletions(-)
+
+diff --git a/src/joystick/linux/SDL_sysjoystick.c b/src/joystick/linux/SDL_sysjoystick.c
+index ede0d5e..e8deea4 100644
+--- a/src/joystick/linux/SDL_sysjoystick.c
++++ b/src/joystick/linux/SDL_sysjoystick.c
+@@ -1222,6 +1222,44 @@ static bool GuessIfAxesAreDigitalHat(struct input_absinfo *absinfo_x, struct inp
+     return false;
+ }
+ 
++// Trigger rumble is a driver feature, not something that can be derived from
++// the device type. Drivers that implement it expose a trigger_rumble_mode
++// module parameter: 0 disables trigger rumble, 1 is reserved for a proper
++// implementation, 2 derives it from the trigger pressure, and 3 enables the
++// compatibility hack where an FF_RUMBLE effect with direction 0x8000 drives
++// the trigger motors. Only the hack is supported here, so require mode 3.
++// This parameter is used by xone and xpadneo.
++static bool LINUX_JoystickHasTriggerRumble(SDL_Joystick *joystick)
++{
++    SDL_joylist_item *item = joystick->hwdata->item;
++    char path[256];
++    char value[16];
++    const char *node;
++    ssize_t len;
++    int fd;
++
++    if (!item || !item->path) {
++        return false;
++    }
++
++    node = SDL_strrchr(item->path, '/');
++    node = node ? node + 1 : item->path;
++    SDL_snprintf(path, sizeof(path),
++                 "/sys/class/input/%s/device/device/driver/module/parameters/trigger_rumble_mode",
++                 node);
++    fd = open(path, O_RDONLY | O_CLOEXEC);
++    if (fd < 0) {
++        return false;
++    }
++    len = read(fd, value, sizeof(value) - 1);
++    close(fd);
++    if (len <= 0) {
++        return false;
++    }
++    value[len] = '\0';
++    return SDL_atoi(value) == 3;
++}
++
+ static void ConfigJoystick(SDL_Joystick *joystick, int fd, int fd_sensor)
+ {
+     int i, t;
+@@ -1467,6 +1505,7 @@ static void ConfigJoystick(SDL_Joystick *joystick, int fd, int fd_sensor)
+     if (ioctl(fd, EVIOCGBIT(EV_FF, sizeof(ffbit)), ffbit) >= 0) {
+         if (test_bit(FF_RUMBLE, ffbit)) {
+             joystick->hwdata->ff_rumble = true;
++            joystick->hwdata->ff_trigger_rumble = LINUX_JoystickHasTriggerRumble(joystick);
+         }
+         if (test_bit(FF_SINE, ffbit)) {
+             joystick->hwdata->ff_sine = true;
+@@ -1636,20 +1675,53 @@ static bool LINUX_JoystickOpen(SDL_Joystick *joystick, int device_index)
+     if (joystick->hwdata->ff_rumble || joystick->hwdata->ff_sine) {
+         SDL_SetBooleanProperty(SDL_GetJoystickProperties(joystick), SDL_PROP_JOYSTICK_CAP_RUMBLE_BOOLEAN, true);
+     }
++    if (joystick->hwdata->ff_trigger_rumble) {
++        // The driver reports trigger_rumble_mode == 3, so the direction
++        // 0x8000 hack for the trigger motors is available
++        SDL_SetBooleanProperty(SDL_GetJoystickProperties(joystick), SDL_PROP_JOYSTICK_CAP_TRIGGER_RUMBLE_BOOLEAN, true);
++    }
+     return true;
+ }
+ 
+-static bool LINUX_JoystickRumble(SDL_Joystick *joystick, Uint16 low_frequency_rumble, Uint16 high_frequency_rumble)
++/* Uploads and starts the effect described by joystick->hwdata->effect.
++   The Linux backend has a single effect slot, which is shared by regular and
++   trigger rumble. */
++static bool LINUX_JoystickStartEffect(SDL_Joystick *joystick)
+ {
+     struct input_event event;
+ 
+     SDL_AssertJoysticksLocked();
+ 
++    if (ioctl(joystick->hwdata->fd, EVIOCSFF, &joystick->hwdata->effect) < 0) {
++        // The kernel may have lost this effect, try to allocate a new one
++        joystick->hwdata->effect.id = -1;
++        if (ioctl(joystick->hwdata->fd, EVIOCSFF, &joystick->hwdata->effect) < 0) {
++            return SDL_SetError("Couldn't update rumble effect: %s", strerror(errno));
++        }
++    }
++
++    SDL_zero(event);
++    event.type = EV_FF;
++    event.code = joystick->hwdata->effect.id;
++    event.value = 1;
++    if (write(joystick->hwdata->fd, &event, sizeof(event)) < 0) {
++        return SDL_SetError("Couldn't start rumble effect: %s", strerror(errno));
++    }
++    return true;
++}
++
++static bool LINUX_JoystickRumble(SDL_Joystick *joystick, Uint16 low_frequency_rumble, Uint16 high_frequency_rumble)
++{
++    SDL_AssertJoysticksLocked();
++
+     if (joystick->hwdata->ff_rumble) {
+         struct ff_effect *effect = &joystick->hwdata->effect;
+ 
+         effect->type = FF_RUMBLE;
+         effect->replay.length = SDL_MAX_RUMBLE_DURATION_MS;
++        // Trigger rumble uses direction 0x8000 to select the trigger motors,
++        // so regular rumble must clear it on the shared effect
++        effect->direction = 0x0000;
+         effect->u.rumble.strong_magnitude = low_frequency_rumble;
+         effect->u.rumble.weak_magnitude = high_frequency_rumble;
+     } else if (joystick->hwdata->ff_sine) {
+@@ -1665,26 +1737,33 @@ static bool LINUX_JoystickRumble(SDL_Joystick *joystick, Uint16 low_frequency_ru
+         return SDL_Unsupported();
+     }
+ 
+-    if (ioctl(joystick->hwdata->fd, EVIOCSFF, &joystick->hwdata->effect) < 0) {
+-        // The kernel may have lost this effect, try to allocate a new one
+-        joystick->hwdata->effect.id = -1;
+-        if (ioctl(joystick->hwdata->fd, EVIOCSFF, &joystick->hwdata->effect) < 0) {
+-            return SDL_SetError("Couldn't update rumble effect: %s", strerror(errno));
+-        }
+-    }
+-
+-    event.type = EV_FF;
+-    event.code = joystick->hwdata->effect.id;
+-    event.value = 1;
+-    if (write(joystick->hwdata->fd, &event, sizeof(event)) < 0) {
+-        return SDL_SetError("Couldn't start rumble effect: %s", strerror(errno));
+-    }
+-    return true;
++    return LINUX_JoystickStartEffect(joystick);
+ }
+ 
+ static bool LINUX_JoystickRumbleTriggers(SDL_Joystick *joystick, Uint16 left_rumble, Uint16 right_rumble)
+ {
+-    return SDL_Unsupported();
++    struct ff_effect *effect;
++
++    SDL_AssertJoysticksLocked();
++
++    if (!joystick->hwdata->ff_trigger_rumble) {
++        return SDL_Unsupported();
++    }
++
++    effect = &joystick->hwdata->effect;
++    effect->type = FF_RUMBLE;
++    effect->replay.length = SDL_MAX_RUMBLE_DURATION_MS;
++    // Hack mode (trigger_rumble_mode == 3): FF_RUMBLE effects with
++    // direction 0x8000 drive the left/right trigger motors
++    effect->direction = 0x8000;
++    // xone uses ff-memless, which folds the direction back to 0 when all of
++    // the magnitudes are zero and then treats a stop request as a main motor
++    // effect, leaving the triggers running. Send 1 instead: it keeps the
++    // direction, but scales down to 0 in the drivers' 8 bit rumble value.
++    effect->u.rumble.strong_magnitude = left_rumble ? left_rumble : 1;
++    effect->u.rumble.weak_magnitude = right_rumble ? right_rumble : 1;
++
++    return LINUX_JoystickStartEffect(joystick);
+ }
+ 
+ static bool LINUX_JoystickSetLED(SDL_Joystick *joystick, Uint8 red, Uint8 green, Uint8 blue)
+diff --git a/src/joystick/linux/SDL_sysjoystick_c.h b/src/joystick/linux/SDL_sysjoystick_c.h
+index d149948..eb5c88f 100644
+--- a/src/joystick/linux/SDL_sysjoystick_c.h
++++ b/src/joystick/linux/SDL_sysjoystick_c.h
+@@ -40,6 +40,7 @@ struct joystick_hwdata
+ 
+     bool ff_rumble;
+     bool ff_sine;
++    bool ff_trigger_rumble;
+     struct ff_effect effect;
+     Uint32 effect_expiration;
+ 
+-- 
+2.53.0
+
