@@ -1,0 +1,16 @@
+pkgbase = goresym-bin
+	pkgdesc = Go symbol recovery tool
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://github.com/mandiant/GoReSym
+	arch = x86_64
+	license = MIT
+	provides = goresym
+	conflicts = goresym
+	options = !debug
+	source = goresym-3.4.1.zip::https://github.com/mandiant/GoReSym/releases/download/v3.4.1/GoReSym-linux.zip
+	source = LICENSE-3.4.1::https://github.com/mandiant/GoReSym/raw/v3.4.1/LICENSE
+	sha256sums = a557124857f95a589f8ce3525119c2d18c7c7fc7c4225c92ff94e3effb38748d
+	sha256sums = d7341d45c966aa10eba9d7f31bedb95db370acaf928fcaafdaa51ad29a0217b0
+
+pkgname = goresym-bin
