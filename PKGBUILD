@@ -174,8 +174,12 @@ build() {
   # assemblies from nuget.org. The assemblies are public signed with Microsoft's key, giving them the
   # same strong names as upstream's.
   _nuget_config "nuget.org=https://api.nuget.org/v3/index.json"
+  # The changelog verification (eng/Directory.Build.Common.targets) runs pwsh on Verify-ChangeLog.ps1
+  # during pack. pwsh isn't there when powershell isn't installed, e.g. a clean chroot, and it can't be
+  # a checkdepend: powershell builds against this package. The check doesn't affect the built assembly,
+  # so PowerShellExe is pointed at true to skip it.
   dotnet pack "sdk/core/$_nugetid/src/$_nugetid.csproj" "${_build_arguments[@]}" \
-    -p:OfficialBuildId="$_officialbuildid" --output "$srcdir/nupkg"
+    -p:OfficialBuildId="$_officialbuildid" -p:PowerShellExe=/usr/bin/true --output "$srcdir/nupkg"
 }
 
 check() {
