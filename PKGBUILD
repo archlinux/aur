@@ -2,7 +2,7 @@
 
 _pkgname=remmina-plugin-ultraviewer
 pkgname="${_pkgname}-git"
-pkgver=0.2.1.r0.g939bf27
+pkgver=0.2.2.r0.gd9efeab
 pkgrel=1
 pkgdesc="UltraViewer remote desktop protocol plugin for Remmina"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
     'zstd'
     'libjpeg-turbo'
     'libpulse'
+    'webkit2gtk-4.1'
 )
 makedepends=(
     'git'

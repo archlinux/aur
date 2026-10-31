@@ -1,6 +1,6 @@
 pkgbase = remmina-plugin-ultraviewer-git
 	pkgdesc = UltraViewer remote desktop protocol plugin for Remmina
-	pkgver = 0.2.1.r0.g939bf27
+	pkgver = 0.2.2.r0.gd9efeab
 	pkgrel = 1
 	url = https://github.com/hmtheboy154/remmina-plugin-ultraviewer
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = remmina-plugin-ultraviewer-git
 	depends = zstd
 	depends = libjpeg-turbo
 	depends = libpulse
+	depends = webkit2gtk-4.1
 	provides = remmina-plugin-ultraviewer
 	conflicts = remmina-plugin-ultraviewer
 	source = remmina-plugin-ultraviewer::git+https://github.com/hmtheboy154/remmina-plugin-ultraviewer.git#branch=main
