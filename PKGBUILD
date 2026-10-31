@@ -3,7 +3,7 @@
 _Name="Lerc"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Limited Error Raster Compression library"
 arch=(
@@ -33,8 +33,8 @@ source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   "${_pkgsrc}-all.zip::${url}/releases/download/v${pkgver}/bin.zip"
 )
-sha256sums=('a1fb593ed1fcb5b38800caf3c4454f872745202e961d00d745e53d81447e17c9'
-            '3b3e97c45409c94379cfcd01cac1bea375dbf971ab1aa5b64c85f2b82b804c3a')
+sha256sums=('28d74992e0bc0f13ecdda1dd9ca3b40b1a87009369b9ec5a599853f6f311fee7'
+            '8afec44ed9ebd5667ac1194e4da9de02edea283bad556ae7d1082bd50601f4c0')
 
 prepare() {
   cd "${srcdir}"
