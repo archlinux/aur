@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library (nemanjan00 fork: one fork with upstream plus pending hardware support: DSLogic U3Pro16/32, Sipeed SLogic, Saleae Logic Pro, Rigol MHO900 and more)"
 url="https://github.com/nemanjan00/libsigrok"
 license=('GPL-3.0-or-later')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 
 depends=(
   'bluez-libs'

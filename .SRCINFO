@@ -4,6 +4,7 @@ pkgbase = libsigrok-nemanjan00-git
 	pkgrel = 1
 	url = https://github.com/nemanjan00/libsigrok
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = autoconf-archive
 	makedepends = cmake
