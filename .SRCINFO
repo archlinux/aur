@@ -1,0 +1,13 @@
+pkgbase = expose
+	pkgdesc = A single-binary, zero-signup alternative to ngrok to expose localhost to the internet
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://kernelshard.github.io/expose/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = expose-0.5.4.tar.gz::https://github.com/kernelshard/expose/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = 579af3d2282537a621f82f6a0254904b99f3d21dba1fe360eac6570a8bdaefb8
+
+pkgname = expose
