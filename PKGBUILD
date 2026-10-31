@@ -5,8 +5,8 @@
 # Contributor: kearneyBack <191615342 at qq dot com>
 
 pkgname=baidunetdisk-bin
-pkgver=8.7.0
-pkgrel=2
+pkgver=8.9.7
+pkgrel=1
 pkgdesc='Baidu Netdisk - a cloud storage client (Linux Version)'
 arch=('x86_64')
 url='https://pan.baidu.com'
@@ -29,7 +29,7 @@ source_x86_64=(
 )
 
 sha256sums=('c371a9c6edb4c55e0d6d1918f82ba4a559e4076960bc956f1576b0c19de2109c')
-sha256sums_x86_64=('ec71c2ad1151609fd0d8b86d95184c0b457d6db5aa18861e0b15fc23ccfe01f7')
+sha256sums_x86_64=('6c0a5df4fe90f7f1aa5e07e9a7044e3e4d1b6ccaa7beabdc1f7f9cc25fa3b31c')
 
 _extract_deb() {
   local deb="$1" dest="$2" data
