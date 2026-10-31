@@ -1,6 +1,6 @@
 pkgbase = lceda-bin
 	pkgdesc = 免费、强大、易用的在线电路设计软件
-	pkgver = 6.5.51
+	pkgver = 6.5.61
 	pkgrel = 1
 	url = https://lceda.cn/page/download
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = lceda-bin
 	depends = libxss
 	provides = lceda
 	conflicts = lceda
-	source = lceda-6.5.51.zip::https://image.lceda.cn/files/lceda-linux-x64-6.5.51.zip
+	source = lceda-6.5.61.zip::https://image.lceda.cn/files/lceda-linux-x64-6.5.61.zip
 	source = LICENSE
-	sha256sums = 3aa29ca84b96d3841e73d9b18d6008af3d0dfe3422d9e7802a367bf24bcf4951
+	sha256sums = 078694860aabbc59a4206a33de137b1b6e5259c174d7b0d27c86996a49a319d0
 	sha256sums = 9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5
 
 pkgname = lceda-bin
