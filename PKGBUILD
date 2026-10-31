@@ -39,4 +39,6 @@ package_deskwaifu-ocr-bin() {
   provides=("deskwaifu-ocr=$pkgver")
   conflicts=('deskwaifu-ocr')
   bsdtar -xpf "$srcdir/$_ocr" -C "$pkgdir" usr
+  # The upstream component uses the un-suffixed name for its license directory.
+  mv "$pkgdir/usr/share/licenses/deskwaifu-ocr" "$pkgdir/usr/share/licenses/$pkgname"
 }
