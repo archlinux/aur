@@ -1,14 +1,22 @@
 # Runs Pester tests with Pester 4: PowerShell's own with the tags of its CI, or the given ones.
 # It has to be run with the PowerShell being tested.
 # StrictMode and $ErrorActionPreference aren't changed, as they'd leak into the tests.
+# It's no advanced script ([Parameter()], [CmdletBinding()]): pwsh -File runs it in the global scope,
+# where an advanced script's own preference variables would replace the global ones. They lack the
+# type conversion of the global ones, which ActionPreference.Tests.ps1 relies on after re-creating
+# $ErrorActionPreference.
 param(
     # The PowerShell repository
-    [Parameter(Mandatory)] [string] $Repository,
+    [string] $Repository,
     # The modules folder Pester is in (Pester/<version>), see check()
-    [Parameter(Mandatory)] [string] $ModulePath,
+    [string] $ModulePath,
     # Other tests to run instead of PowerShell's, all of them rather than the ones its CI runs
     [string] $Script
 )
+
+if (-not $Repository -or -not $ModulePath) {
+    throw 'Usage: invoke-pester.ps1 -Repository <PowerShell repository> -ModulePath <modules folder> [-Script <tests>]'
+}
 
 # Pester in the version build.psm1 asks for, from the given folder. The PowerShell being tested has
 # no powershell.config.json yet, which would add /usr/share/powershell/Modules.

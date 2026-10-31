@@ -185,7 +185,7 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
   '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
   '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
-  '6597b1b3bddbb72bb96535df0ec1ab3963cd1b7e6cfb3dc42f00b3d3cc3bbf3921b3b88500727eed5434e267c7f17ae1b2542da4e28052a4adb26f8f061f8944'
+  '1f4c1a2aeb19b0ed83142fb55e6ca938ecac3ec8f5a7095f85e000eef79729f48719ea83c04e8c2aafdbcbafa7faddd1b67555107e850094506346470b1c15c7'
   '501e304575a23c12d2e8466de14b51d1b4d25d72a64c633ea9170a6d64ef65df38fb542e1f42c6ffdaa5a55dbbfbca2327ff5c81b77cc6019fda717dbef68351'
   '1a6acc32f7cecbf0e32f540870cc1d19c5f6fa59a24334eab51c41245b6b039ae0b2f17ab644d9229291626a9887611e442815f916fd8fdd2193ab558762307b'
   '1afffe7e4797188f0ac2378f6032db5d0ffdeca12d5804250b62e0a946a65e7dab7a7d6c9674dedeebfb3e0501360b549e4d333841d0da6662c266b4589bdba0')
@@ -219,7 +219,7 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
   '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
   'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
-  '756cd1dbdcbf3239612c11af56f04e665cbc8bdb221369ac7912ede9fe27f2f5141e84fe84460ebe94d774803c60c63d3d72fc87848b2dea0795764952570b19'
+  '956db6619cedbdf41d36a8d28e35035c0414cd81a08bd077c0b9097c122e8d8870cbc7d30d43654e2575853a338169fd1042633ff45c92d0cf0ce100147125ea'
   'f46fcb1d242979be39dbd14c6e5dc8c04ede57ed2de52a74e56bf18ce3c6b5985351d70ec0e291ed3ccec1655ebee4da931c88680c7ef60dec4797d78f015833'
   'a235ac1c91dbe0ea0f0fc89189028250753c0a4104b2779f26b66fa8f239e5bd580b83ed5c8a5e0b0d9ee2afef42ce9c8f6d10ea2d206c0c3694b63e44e76838'
   '3134c64cb38acb323df88be7634d95981c0c46d01d86912c1bb9d9c4ff3da42573299f365368d6d3fb8ebafdf0624203315ae90eb8da79ca33c736abca51f8e1')
@@ -641,9 +641,13 @@ check() {
   sed -i 's/It "Call Get-TimeZone using Name param and singe item"/& -Skip/' \
     Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
 
-  # The test writes its assembly to /tmp rather than the temp folder
+  # The tests write to /tmp rather than the temp folder, with fixed names that fail when another user's
+  # build left them there: ParameterBinding its assembly, Get-Process a script
   sed -i "s@\$tempDir = '/tmp'@\$tempDir = [System.IO.Path]::GetTempPath()@" \
     engine/ParameterBinding/ParameterBinding.Tests.ps1
+  # shellcheck disable=SC2016
+  sed -i 's@/tmp/\$commandName@"$([System.IO.Path]::GetTempPath())$commandName"@g' \
+    Modules/Microsoft.PowerShell.Management/Get-Process.Tests.ps1
 
   # Test requires DSCv3 (https://github.com/PowerShell/DSC), which isn't part of PowerShell. The
   # powershell-dsc package runs it in its check() instead, against the installed PowerShell.
