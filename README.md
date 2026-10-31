@@ -23,6 +23,6 @@ Run packaging tools only inside the authorized build VM.
 
 ## Release source
 
-The package builds the published v0.2.0 GitHub tag archive and verifies its
-SHA-256 checksum. The packaging recipe follows the v0.2.0 tag, including its
+The package builds the published v0.2.1 GitHub tag archive and verifies its
+SHA-256 checksum. The packaging recipe follows the v0.2.1 tag, including its
 exact Qt 6.12.0 dependency pins.
