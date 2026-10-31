@@ -1,6 +1,6 @@
 pkgbase = monstar-git
 	pkgdesc = Development version of the Linux-native Wayland terminal built on Ghostty terminal core
-	pkgver = 1.0.1.r124.g203e101
+	pkgver = 1.0.1.r125.gcbabc5d
 	pkgrel = 1
 	url = https://github.com/rockorager/monstar
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = monstar-git
 	makedepends = git
 	makedepends = ncurses
 	makedepends = wayland-protocols>=1.49
-	makedepends = zig>=0.16.0
+	makedepends = zig>=0.17.0
 	depends = dbus
 	depends = fontconfig
 	depends = freetype2

@@ -1,6 +1,6 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar-git
-pkgver=1.0.1.r124.g203e101
+pkgver=1.0.1.r125.gcbabc5d
 pkgrel=1
 pkgdesc='Development version of the Linux-native Wayland terminal built on Ghostty terminal core'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   'git'
   'ncurses'
   'wayland-protocols>=1.49'
-  'zig>=0.16.0'
+  'zig>=0.17.0'
 )
 optdepends=(
   'noto-fonts-emoji: emoji support'
@@ -51,7 +51,7 @@ build() {
   DESTDIR="$srcdir/monstar-build" zig build \
     --prefix /usr \
     --build-id=sha1 \
-    -Doptimize=ReleaseFast \
+    -Doptimize=fast \
     -Dcpu=baseline
 }
 
