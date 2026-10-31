@@ -5,7 +5,7 @@
 
 pkgname=browseros-neo-bin
 _pkgname=browserclaw
-pkgver=0.51.2.3
+pkgver=0.52.0
 pkgrel=1
 pkgdesc="BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)"
 arch=('x86_64')
