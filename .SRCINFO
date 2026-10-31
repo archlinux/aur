@@ -1,14 +1,16 @@
 pkgbase = glesha-bin
 	pkgdesc = Encrypted archives and indexed cloud backups
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/toxdes/glesha
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = glesha-0.5.1-x86_64.tar.gz::https://packages.toxdes.com/glesha/releases/glesha_0.5.1_amd64.tar.gz
-	sha256sums_x86_64 = df7f5da4a9caa5fd7a6f89e621e90fb2303bd86927f23a30206f942378621d63
-	source_aarch64 = glesha-0.5.1-aarch64.tar.gz::https://packages.toxdes.com/glesha/releases/glesha_0.5.1_arm64.tar.gz
-	sha256sums_aarch64 = 2694de73e6f04b6220d58b851829e30d81c419b06ccd9cd1feb5638843b753ca
+	provides = glesha=0.5.2
+	conflicts = glesha
+	source_x86_64 = glesha-0.5.2-x86_64.tar.gz::https://packages.toxdes.com/glesha/releases/glesha_0.5.2_amd64.tar.gz
+	sha256sums_x86_64 = 18f47cd32e2affd41421e4ea91ef0b4ac6bc4c9dbae0532ac756f865268f3a76
+	source_aarch64 = glesha-0.5.2-aarch64.tar.gz::https://packages.toxdes.com/glesha/releases/glesha_0.5.2_arm64.tar.gz
+	sha256sums_aarch64 = 3f5d85ab4e8b8f95b78393b6e88858c8584f81af9f1c6d5d3eeea40bf3d7e922
 
 pkgname = glesha-bin
