@@ -39,16 +39,18 @@ check() {
 
 package() {
 	cd "$_pkgbase"
+	# From 1.2.0 on, the Makefile installs the binary, man pages, units, system
+	# user, starter config and license.
+	if [ -f Makefile ]; then
+		make install-cli DESTDIR="$pkgdir"
+		return
+	fi
 	install -Dm0755 "target/release/$_pkgbase" "$pkgdir/usr/bin/$_pkgbase"
 	install -Dm0644 config.example.toml "$pkgdir/etc/conflux/config.toml"
 	install -Dm0644 systemd/conflux.user.service "$pkgdir/usr/lib/systemd/user/conflux.service"
 	install -Dm0644 systemd/conflux@.user.service "$pkgdir/usr/lib/systemd/user/conflux@.service"
 	install -Dm0644 systemd/conflux.system.service "$pkgdir/usr/lib/systemd/system/conflux.service"
 	install -Dm0644 systemd/conflux@.system.service "$pkgdir/usr/lib/systemd/system/conflux@.service"
-	# The system daemon's user, from 1.2.0 on. Then `make install-cli` installs all of this.
-	if [ -f systemd/conflux.sysusers ]; then
-		install -Dm0644 systemd/conflux.sysusers "$pkgdir/usr/lib/sysusers.d/conflux.conf"
-	fi
 	install -Dm0644 config.example.toml "$pkgdir/usr/share/doc/conflux/config.example.toml"
 	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
