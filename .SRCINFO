@@ -1,14 +1,19 @@
-pkgbase = cs-script
+pkgbase = cs-script-bin
 	pkgdesc = Run C# sources like scripts
-	pkgver = 4.12.0.0
-	pkgrel = 2
+	pkgver = 4.14.13.0
+	pkgrel = 1
 	url = https://github.com/oleg-shilo/cs-script
 	arch = any
 	license = MIT
-	depends = dotnet-sdk-10.0-bin
+	depends = sh
+	depends = dotnet-sdk-bin
 	provides = cs-script
 	conflicts = cs-script
-	source = https://github.com/oleg-shilo/cs-script/releases/download/v4.12.0.0/cs-script.linux.v4.12.0.0.7z
-	sha256sums = c040af9256dd28c1cfab5277b486b7323eaf0f1d59ad4213b4699e44a1108880
+	source = https://github.com/oleg-shilo/cs-script/releases/download/v4.14.13.0/cs-script.linux.v4.14.13.0.7z
+	source = https://github.com/oleg-shilo/cs-script/blob/v4.14.13.0/LICENSE
+	source = css.sh
+	sha256sums = bfc1bbf5ec30abf4ee9dbc9201725f1c1f71bc547ac1dda3c5dc0213c29cc51c
+	sha256sums = 928781de12798316d5a103fb32bcb6db8074e7fa937c6a651adc48377d6e62d8
+	sha256sums = bf92629b6f0e1c9c3a9e217339354301493300603da54af0488d8905f5154859
 
-pkgname = cs-script
+pkgname = cs-script-bin

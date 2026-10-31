@@ -1,4 +1,6 @@
-*.tar*
-*.7z
-src
-pkg
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!css.sh
+
