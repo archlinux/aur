@@ -15,10 +15,10 @@ makedepends=('crystal' 'shards' 'git')
 optdepends=('postgresql: Database, not needed if remote')
 conflicts=('invidious-git')
 backup=('etc/invidious.yml')
-source_x86_64=(https://github.com/iv-org/invidious/archive/refs/tags/v$pkgver.tar.gz
+source=(https://github.com/iv-org/invidious/archive/refs/tags/v$pkgver.tar.gz
 	"invidious.sysusers"
 )
-sha512sums_x86_64=(
+sha512sums=(
 	 4ac401f7641df65dcd28b71ad59c144f4aedec43871bb351d0042c8ebc5bc575566538d1b225a366f1460d83e50875c0f7cab0ec312e5026ad213be88efe4fd7
          3264d23c374ce3fa59e2c97c0db5c9a4ce860ebaf44c21e83922054d1da60415cb8a41e8fa24111204f30f11ac44cc7ba6e27f229d81f9d6ab1381867e03c1d6
  )
