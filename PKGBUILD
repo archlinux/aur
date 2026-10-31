@@ -6,17 +6,17 @@
 
 pkgname=chromium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
-pkgver=4.10.3050.0
-_release_id=bywu6vkyg6gmcthxdaetzfkptm
-_file_id=aduyhcxcs7a2znuo6ss5tffn5jpa
+pkgver=4.10.3112.0
+_release_id=acqexsh26ysyu3zxeotqtsp63idq
+_file_id=ad7kyx4q7wx7xknykmkbonbbmnwq
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url='https://www.widevine.com/'
 license=('custom')
 options=('!strip')
-source=("https://www.google.com/dl/release2/chrome_component/${_release_id}_${pkgver}/oimompecagnajdejgnnjijobebaeigek_${pkgver}_linux_${_file_id}.crx3")
-sha256sums=('b70d887771d663018f46b1072b14320bd8b9a763641ef0317bd979cbad443e88')
+source=("https://www.google.com/dl/release2/chrome_component/${_release_id}_${pkgver}/oimompecagnajdejgnnjijobebaeigek_${pkgver}_linux64_${_file_id}.crx3")
+sha256sums=('1bf1f200dcccd461b2d029d000d0fcf800f0571c932db31467b9d5d301e0a98f')
 
 package() {
   depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
