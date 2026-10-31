@@ -3,7 +3,7 @@
 pkgname=mitos-editor-bin
 _pkgname=mitos
 _debrev=1
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A fast and minimal modal text editor'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MPL-2.0')
 depends=('gcc-libs' 'glibc')
 options=(!strip !debug)
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-${_debrev}_amd64.deb")
-sha256sums=('503059168c7a26e76c6220205be8fcb83a3df61410e42b0f41562c1050dfcfde')
+sha256sums=('feca0fb680c1e53713573dd737a234cd215a5e3a4eeb0223c8a209bc9ae77320')
 
 build() {
   mkdir -p "$srcdir/deb/data"
