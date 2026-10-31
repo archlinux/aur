@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
-pkgver=0.9.157
-pkgrel=4
+pkgver=0.9.158
+pkgrel=2
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -68,10 +68,9 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio')
 options=('!strip' '!debug')
 
-source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage"
-        'LICENSE')
-sha256sums=('573f7bbb18ae5ebe9ae8bfcbda4ce93c35f404c9066c62bb716eb5d3115ba2cb'
-            '8826596bcd18e3b9019b7bc065a0d22429e7447b2940c64ce500c22c7746a93e')
+# single source: the aur.yml updater rewrites sha256sums to one hash (2026-10-31).
+source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
+sha256sums=('37679572ce8c0a6f4838c74ae0eafd2edc943d5e90fa36807fdb3a1dab48cc74')
 prepare() {
     chmod +x "${srcdir}/Root-${pkgver}-x86_64.AppImage"
     "${srcdir}/Root-${pkgver}-x86_64.AppImage" --appimage-extract
@@ -125,7 +124,16 @@ WRAPPER_EOF
     fi
     chmod 755 "${pkgdir}/usr/bin/rootapp"
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'EOF'
+Copyright 2026 RootApp
+
+The Root desktop application is proprietary software. Redistribution of the
+application itself is not permitted; this package repacks the upstream binary
+for installation convenience.
+
+Upstream: https://www.rootapp.com
+EOF
 
     install -Dm644 "${srcdir}/squashfs-root/Root.png" "${pkgdir}/usr/share/pixmaps/rootapp.png"
     install -Dm644 "${srcdir}/squashfs-root/Root.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/rootapp.png"
