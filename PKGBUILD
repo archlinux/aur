@@ -14,7 +14,7 @@ arch=("x86_64")
 provides=("bettertimer")
 conflicts=("bettertimer")
 source=("https://github.com/clorine-software/bettertimer/releases/download/v$pkgver/bettertimer-$pkgver-x86_64.tar.gz")
-sha256sums=("83c46a95edaae73f720e7eebc09e2d384fee4ad87c26b86907f1f7968a8ba814")
+sha256sums=("b4a4565eb5edd7e13e9dae888026b1a54a51fcd2f30ab8e8bfaf8f14dff8936d")
 
 package() {
     install -Dm755 bettertimer -t "$pkgdir/usr/bin"
