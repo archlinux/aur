@@ -1,0 +1,21 @@
+pkgbase = vanyavpn-appimage
+	pkgdesc = VanyaVPN — VPN-клиент
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://vanyavpn.com
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = vanyavpn
+	conflicts = vanyavpn
+	noextract = VanyaVPN.AppImage
+	options = !strip
+	source = VanyaVPN.AppImage::https://storage.googleapis.com/vanyavpn/apps/VanyaVPN.AppImage
+	source = vanyavpn.desktop
+	source = VanyaVPN.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vanyavpn-appimage
