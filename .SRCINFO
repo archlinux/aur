@@ -1,5 +1,5 @@
 pkgbase = xf86-input-libinput-phoenix
-	pkgdesc = Generic input driver for the X.Org server based on libinput
+	pkgdesc = Generic input driver for the X.Org server based on libinput (phoenix fork)
 	pkgver = 1.5.0
 	pkgrel = 2
 	url = http://xorg.freedesktop.org/
