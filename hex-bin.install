@@ -1,0 +1,5 @@
+post_install() {
+  echo 'Open Hex from your launcher or run `hex`; the first run downloads a speech model.'
+  echo 'Start Hex at login: systemctl --user enable hex.service'
+  echo 'Updates come from pacman; Hex never replaces this package itself.'
+}

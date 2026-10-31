@@ -1,0 +1,19 @@
+[Unit]
+Description=Hex background dictation
+PartOf=graphical-session.target
+After=graphical-session.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=notify
+NotifyAccess=main
+ExecStart=/usr/bin/hex service
+EnvironmentFile=-%h/.local/share/hex/session.env
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=30
+UMask=0077
+
+[Install]
+WantedBy=graphical-session.target

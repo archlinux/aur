@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Hex
+Comment=Local voice dictation
+Exec=/usr/bin/hex
+Icon=audio-input-microphone
+Terminal=false
+Categories=Utility;Accessibility;
+StartupNotify=true
+Actions=quit;
+
+[Desktop Action quit]
+Name=Quit Hex
+Exec=/usr/bin/hex quit
