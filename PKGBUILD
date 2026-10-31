@@ -3,8 +3,8 @@
 pkgbase='zl-limiter'
 pkgname=('zl-limiter-vst3' 'zl-limiter-lv2' 'zl-limiter')
 pkgver='0.0.1'
-pkgrel=1
-pkgdesc='Dynamic spectrum equalizer audio plugin'
+pkgrel=2
+pkgdesc='Mastering limiter plugin'
 arch=('x86_64' 'aarch64')
 url='https://zl-audio.github.io/plugins/zllimiter/'
 license=('AGPL-3.0-only')

@@ -1,7 +1,7 @@
 pkgbase = zl-limiter
-	pkgdesc = Dynamic spectrum equalizer audio plugin
+	pkgdesc = Mastering limiter plugin
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zl-audio.github.io/plugins/zllimiter/
 	arch = x86_64
 	arch = aarch64
@@ -29,19 +29,19 @@ pkgbase = zl-limiter
 	sha256sums = a42f50c1cdc19ecf047f5e97c92750b863d35dd69a9006e2727ed2508645bd7e
 
 pkgname = zl-limiter-vst3
-	pkgdesc = Dynamic spectrum equalizer audio plugin (VST3 version)
+	pkgdesc = Mastering limiter plugin (VST3 version)
 	groups = pro-audio
 	groups = zl-audio
 	groups = vst3-plugins
 
 pkgname = zl-limiter-lv2
-	pkgdesc = Dynamic spectrum equalizer audio plugin (LV2 version)
+	pkgdesc = Mastering limiter plugin (LV2 version)
 	groups = pro-audio
 	groups = zl-audio
 	groups = lv2-plugins
 
 pkgname = zl-limiter
-	pkgdesc = Dynamic spectrum equalizer audio plugin (metapackage that requires all plugin formats)
+	pkgdesc = Mastering limiter plugin (metapackage that requires all plugin formats)
 	depends = alsa-lib
 	depends = fontconfig
 	depends = freetype2
