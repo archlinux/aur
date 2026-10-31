@@ -1,0 +1,16 @@
+pkgbase = freelance-invoice-cli
+	pkgdesc = Generate a clean HTML invoice from a JSON file. Zero dependencies
+	pkgver = 1.0.0+r31.07e93ff
+	pkgrel = 1
+	url = https://github.com/kleogeos/freelance-invoice-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = freelance-invoice-cli-1.0.0+r31.07e93ff.tar.gz::https://github.com/kleogeos/freelance-invoice-cli/archive/07e93ffc4243f284a43d2121252f2b586f007503.tar.gz
+	sha256sums = 5243c43784ba4a7ce01a7d29e885eb060edf964444ea3cebd2ac2b072aac18e3
+
+pkgname = freelance-invoice-cli
