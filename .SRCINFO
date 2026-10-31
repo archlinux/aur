@@ -1,0 +1,17 @@
+pkgbase = python-django-treenode
+	pkgdesc = probably the best abstract model/admin for your tree based stuff.
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://github.com/fabiocaccamo/django-treenode
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	source = django-treenode-0.25.0.tar.gz::https://github.com/fabiocaccamo/django-treenode/archive/refs/tags/0.25.0.tar.gz
+	sha256sums = ba3e0d3c25c296a09d5e5d63d6d66154cea676b8fb27ccf436b7011deadaef0b
+
+pkgname = python-django-treenode
