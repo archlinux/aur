@@ -1,6 +1,6 @@
 # Maintainer: Talha Caglar <talhacaglarr@proton.me>
 pkgname=pritingo
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Print on Canon PIXMA E400-series printers one page per job, with guided two-sided printing, and scan to PDF'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('libreoffice: open Word, Excel, PowerPoint and LibreOffice files'
             'libcanberra: sounds when the fronts or the whole job are done'
             'sane: scan from the printer'\''s glass to a PDF or a copy')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('93ab6ea14cf66c2b08094a4b939cea9c03d353cd33900e394a9d0c7742a48ea1')
+sha256sums=('8e4ef2341345fa712aaa1b77283fcb8ee70c9270293c35b1495c5e47c805b433')
 
 build() {
   cd "$pkgname-$pkgver"
