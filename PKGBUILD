@@ -10,7 +10,7 @@ _cuda_arch=
 pkgbase=whisrs
 pkgname=(whisrs whisrs-cuda whisrs-vulkan)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-first voice-to-text dictation tool, written in Rust'
 arch=(x86_64)
 url='https://github.com/y0sif/whisrs'
@@ -19,11 +19,14 @@ depends=(gcc-libs alsa-lib libxkbcommon)
 makedepends=(cargo clang cmake cuda vulkan-headers vulkan-icd-loader shaderc)
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  152a496.patch::https://github.com/y0sif/whisrs/commit/152a49628a7014e30419abb8af88f6ca83e8f4de.patch
 )
-sha256sums=('27dee0b876bef8dd1ad7f73c4bbc9e5816d73d47c63d7f97dbbb19beef811575')
+sha256sums=('27dee0b876bef8dd1ad7f73c4bbc9e5816d73d47c63d7f97dbbb19beef811575'
+            'e39b0a5c31543f719ad8a230ac93d038711194faf3835d57761ab4dda677decd')
 
 prepare() {
   cd $pkgbase-$pkgver
+  patch -p1 -i ../152a496.patch
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
