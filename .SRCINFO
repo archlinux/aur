@@ -27,6 +27,6 @@ pkgbase = sonora
 	optdepends = webkit2gtk-4.1: sign in to YouTube Music through a browser window
 	options = !lto
 	source = https://github.com/sonorahq/sonora/archive/refs/tags/v0.46.0/sonora-0.46.0.tar.gz
-	sha256sums = 0502394784924903a9d91c95d4f01fdf96ebe6b72757191e53fb0bbe848dbd23
+	sha256sums = 4d789a2c4d9f50ec024408ea7fa9836494d37b2e31aa0d03ec59586c92de6590
 
 pkgname = sonora
