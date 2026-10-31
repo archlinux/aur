@@ -1,0 +1,12 @@
+diff --git a/internal/runner/runner.go b/internal/runner/runner.go
+index 9cef599..23c8e05 100644
+--- a/internal/runner/runner.go
++++ b/internal/runner/runner.go
+@@ -1363,6 +1363,7 @@ func resolveValidatorBinary() (string, error) {
+ 	candidates = append(candidates,
+ 		"/usr/local/libexec/bpfcompat/bpfcompat-validator",
+ 		"/usr/libexec/bpfcompat/bpfcompat-validator",
++		"/usr/lib/bpfcompat/bpfcompat-validator",
+ 		"validator/c-libbpf/bin/bpfcompat-validator",
+ 	)
+ 	var lastErr error

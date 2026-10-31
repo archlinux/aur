@@ -1,0 +1,45 @@
+# Optional: let non-root users run the guest-side validator.
+#
+# This kernel has unprivileged_bpf_disabled=2, so loading a BPF program requires
+# CAP_BPF — root is only one way to hold it. File capabilities let an
+# unprivileged user invoke the validator directly:
+#
+#   sudo setcap cap_bpf,cap_perfmon,cap_net_admin,cap_net_raw+ep \
+#       /usr/lib/bpfcompat/bpfcompat-validator
+#
+# It is deliberately NOT applied here, for two reasons:
+#   * cap_bpf + cap_net_admin would let any local user load arbitrary BPF objects
+#     and reconfigure network interfaces. That is an admin decision, not something
+#     a package should grant silently.
+#   * pacman does not preserve security.capability: the file is replaced on every
+#     upgrade and the capabilities are lost, so it has to be re-applied anyway.
+#
+# Undo: sudo setcap -r /usr/lib/bpfcompat/bpfcompat-validator
+
+_message() {
+    cat <<'EOF'
+
+==> bpfcompat installed
+      CLI        : /usr/bin/bpfcompat  (static, no runtime deps)
+      validator  : /usr/lib/bpfcompat/bpfcompat-validator  (auto-discovered)
+      matrices   : /usr/share/bpfcompat/matrices/
+
+==> `bpfcompat test` drives real VMs: it needs QEMU (/dev/kvm) — package
+    qemu-system-x86 — and optionally virtme-ng (vng) or firecracker.
+
+==> To run the validator without sudo (unprivileged_bpf_disabled=2, so CAP_BPF
+    is required):
+      sudo setcap cap_bpf,cap_perfmon,cap_net_admin,cap_net_raw+ep \
+          /usr/lib/bpfcompat/bpfcompat-validator
+    NOTE: pacman does not keep file capabilities — re-run after every upgrade.
+    Undo: sudo setcap -r /usr/lib/bpfcompat/bpfcompat-validator
+EOF
+}
+
+post_install() {
+    _message
+}
+
+post_upgrade() {
+    _message
+}
