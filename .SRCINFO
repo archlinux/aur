@@ -1,6 +1,6 @@
 pkgbase = kemulatornnmod-bin
 	pkgdesc = Emulator for j2me, CLDC, MIDP applications and games
-	pkgver = 2.21.4
+	pkgver = 2.22
 	pkgrel = 1
 	url = https://nnproject.cc/kem/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = kemulatornnmod-bin
 	optdepends = wget: for Intellij IDEA integration
 	optdepends = proguard: for Intellij IDEA integration
 	optdepends = intellij-idea-community-edition: compatible Intellij IDEA package
-	source = pkg_2.21.4.zip::https://github.com/shinovon/KEmulator/releases/download/v2.21.4/kemnnx64.v2.21.4.zip
+	source = pkg_2.22.zip::https://github.com/shinovon/KEmulator/releases/download/v2.22/kemnnx64.v2.22.zip
 	source = icon.png
-	sha256sums = 56d552cbb9ec590ed9f9eff5c7835a71fd75f8889d24830322a30d2974071641
+	sha256sums = f9a5a442014d43f1d9d2c51243795680d99fd91e49c300712ac6bd0823ed8e5e
 	sha256sums = b6215676e6550a4472bbabe238ad55daaa52a7efe0f7475de58a109755f470ab
 
 pkgname = kemulatornnmod-bin

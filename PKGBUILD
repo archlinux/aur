@@ -1,6 +1,6 @@
 # Maintainer: Ansel Hayashi <Telegram: @sym_ansel>
 pkgname=kemulatornnmod-bin
-pkgver=2.21.4
+pkgver=2.22
 pkgrel=1
 pkgdesc="Emulator for j2me, CLDC, MIDP applications and games"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('vlc-cli: for MMAPI/JSR135 support'
 	'intellij-idea-community-edition: compatible Intellij IDEA package')
 source=(pkg_${pkgver}.zip::"https://github.com/shinovon/KEmulator/releases/download/v${pkgver}/kemnnx64.v${pkgver}.zip"
     "icon.png")
-sha256sums=('56d552cbb9ec590ed9f9eff5c7835a71fd75f8889d24830322a30d2974071641'
+sha256sums=('f9a5a442014d43f1d9d2c51243795680d99fd91e49c300712ac6bd0823ed8e5e'
 	'b6215676e6550a4472bbabe238ad55daaa52a7efe0f7475de58a109755f470ab')
 
 prepare() {
@@ -35,7 +35,6 @@ prepare() {
 	rm *aarch64*
 	rm *armhf*
 	rm *-x86.jar
-	rm *.dylib
 	rm libjinput-linux.so
 }
 
