@@ -4,7 +4,7 @@
 pkgname=open-quickshare-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.15.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete Quick Share implementation for Linux with Bluetooth LE and Wi-Fi Direct"
 arch=('x86_64')
 url="https://github.com/ignotusbucius/${_pkgname}"
@@ -25,14 +25,15 @@ optdepends=(
 )
 
 provides=(
+  "$_pkgname"
+  'r-quick-share'
   'rquickshare'
 )
 
 conflicts=(
+  "$_pkgname"
   'r-quick-share'
-  'r-quick-share-bin'
   'rquickshare'
-  'open-quickshare'
 )
 
 options=('!debug')
