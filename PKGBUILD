@@ -10,7 +10,7 @@
 # Contributor: Gavin Luo <lunt.luo@gmail.com>
 
 pkgbase=zen-browser-i18n
-pkgver=1.23b
+pkgver=1.24b
 pkgrel=1
 
 _languages=(
@@ -101,7 +101,7 @@ source=(
   '0004-Use-wasm32-wasip1-target.patch'
   'Use-Zen-langpack-EID.patch'
 )
-sha256sums=('c2a2f7853f939f1a5f510c885d450564e5bcf6957453c1ff3adb0ea595b872aa'
+sha256sums=('a3a3fa0adbccc15711878f9947046b4278460b950264d9f80374c4a959d5640e'
             '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
             '90ee92d93beeeeb8d0838f51312d9a2ece17631cdf0a2d2fdc96a5e6be898018')
 
