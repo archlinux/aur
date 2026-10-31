@@ -1,7 +1,7 @@
 pkgbase = python-django-axes
 	pkgdesc = Keep track of failed login attempts in Django-powered sites
-	pkgver = 8.3.2
-	pkgrel = 2
+	pkgver = 9.0.0
+	pkgrel = 1
 	url = https://github.com/jazzband/django-axes
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-django-axes
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-django
-	source = https://github.com/jazzband/django-axes/archive/refs/tags/8.3.2.tar.gz
-	sha256sums = 40c697a86020f866e5086f41142cd9fb6effadd78faa4389468ebfcc9150ed2c
+	source = https://github.com/jazzband/django-axes/archive/refs/tags/9.0.0.tar.gz
+	sha256sums = e99ca4b6d1531eb4baf8c5315008d799e2cf5e40a96d01f6205307842fd5a746
 
 pkgname = python-django-axes
