@@ -68,10 +68,16 @@ check() {
   # The Electron /usr/bin/code runs Code - OSS with
   local _electron
   _electron=$(sed -n -E 's/^name=(electron[0-9]+).*/\1/p' /usr/bin/code)
-  # Without npm test, whose pretest would replace the release build with a debug build. With the
-  # user's data of Code - OSS in $srcdir.
-  HOME="$srcdir/home" CODE_ELECTRON="/usr/lib/$_electron/electron" \
+  # A temp folder of their own: .vscode-test.mjs puts the user data dir of Code - OSS there (vscp),
+  # which fails when another user's build left it in /tmp. It stays in /tmp rather than $srcdir, as
+  # the user data dir holds the IPC socket of Code - OSS, whose path can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  # Without npm test, whose pretest would replace the release build with a debug build. With a home
+  # in $srcdir.
+  HOME="$srcdir/home" TMPDIR="$_test_tmp" CODE_ELECTRON="/usr/lib/$_electron/electron" \
     xvfb-run --auto-servernum npx vscode-test
+  rm -rf "${_test_tmp:?}"
 }
 
 # Installs the files of the extension package (.vscodeignore) as a built-in extension into the
