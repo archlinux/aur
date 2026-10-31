@@ -1,7 +1,7 @@
 pkgbase = reasonance-bin
 	pkgdesc = Accessible IDE over agentic CLIs: chat, preview and voice instead of a terminal (prebuilt binary)
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/RSNNC/reasonance-build
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = reasonance-bin
 	depends = gdk-pixbuf2
 	depends = dbus
 	depends = alsa-lib
+	depends = gst-plugins-good
 	depends = speech-dispatcher
 	depends = gcc-libs
 	depends = glibc

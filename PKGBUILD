@@ -7,7 +7,7 @@
 
 pkgname=reasonance-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 # Il vecchio Reasonance (TNASRLSB/reasonance) su AUR era arrivato alla 3.2.x: senza `epoch` pacman
 # vedrebbe la 1.0.0 come più vecchia e non la proporrebbe mai a chi ha il pacchetto.
 epoch=1
@@ -25,6 +25,10 @@ depends=(
 	'gdk-pixbuf2'
 	'dbus'
 	'alsa-lib'
+	# I suoni di stato: la webview suona attraverso GStreamer, e il pezzo che manda l'audio
+	# all'uscita (`autoaudiosink`) sta qui. Per `webkit2gtk-4.1` è solo facoltativo: senza, l'app
+	# diceva «Failed to start the audio device» (EndeavourOS, 31/10/2026).
+	'gst-plugins-good'
 	'speech-dispatcher'
 	'gcc-libs'
 	'glibc'
