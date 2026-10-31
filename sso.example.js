@@ -20,7 +20,7 @@ module.exports = {
 			url: "https://<keycloakserver/realms/<realm>",
 			client_id: "cryptpad",
 			client_secret: "<clientsecret>",
-			// jwt_alg: 'RS256', // (deprecated)
+			jwt_alg: "RS256", // (deprecated)
 			id_token_alg: "PS256", // (optional)
 			userinfo_token_alg: "PS256", // (optional)
 			username_scope: "profile", // (optional)
@@ -46,7 +46,7 @@ module.exports = {
 			url: 'https://accounts.google.com',
 			client_id: "{your_client_id}",
 			client_secret: "{your_client_secret}",
-			jwt_alg: 'RS256' (optional)
+			jwt_alg: 'RS256' // (optional)
 		},
 		// Sample SAML Configuration
 		{
