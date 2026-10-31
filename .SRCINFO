@@ -1,0 +1,14 @@
+pkgbase = bencher
+	pkgdesc = Continuous benchmarking platform: catch performance regressions in CI
+	pkgver = 0.3.18
+	pkgrel = 1
+	url = https://bencher.dev
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	source = bencher-0.3.18.tar.gz::https://github.com/bencherdev/bencher/archive/refs/tags/v0.3.18.tar.gz
+	sha256sums = 0c682ae98fd1f36c0e257fd023bbe7d8540d38e86216723dba2f5b4635af7150
+
+pkgname = bencher
