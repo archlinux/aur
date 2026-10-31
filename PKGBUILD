@@ -2,7 +2,7 @@
 
 pkgname=squawker-vpn-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='TryHackMe Squawker VPN Client'
 arch=('x86_64' 'aarch64')
 url='https://tryhackme.com'
@@ -19,10 +19,10 @@ depends=(
 provides=('squawker-vpn')
 conflicts=('squawker-vpn')
 
-source_x86_64=("${pkgname}-${arch}-${pkgver}.deb"::https://squawker-vpn.vm.tryhackme.com/latest/squawker-vpn_${pkgver}_amd64.deb)
+source_x86_64=("${pkgname}-x86_64-${pkgver}.deb"::https://squawker-vpn.vm.tryhackme.com/latest/squawker-vpn_${pkgver}_amd64.deb)
 sha256sums_x86_64=('38a00ceac379b2cbfbc87bd103d96ee8214fc3b5a7dc52210e28af13deab188c')
 
-source_aarch64=("${pkgname}-${arch}-${pkgver}.deb"::https://squawker-vpn.vm.tryhackme.com/latest/squawker-vpn_${pkgver}_arm64.deb)
+source_aarch64=("${pkgname}-aarch64-${pkgver}.deb"::https://squawker-vpn.vm.tryhackme.com/latest/squawker-vpn_${pkgver}_arm64.deb)
 sha256sums_aarch64=('32494cfae221503912f9222a447e49e93fe272c2269a3e7ad9af58016a1c21a3')
 
 install="${pkgname}.install"
@@ -30,7 +30,7 @@ install="${pkgname}.install"
 prepare() {
     cd "${srcdir}" || return 1
 
-    ar x "${pkgname}-${arch}-${pkgver}.deb" || return 1
+    ar x "${pkgname}-${CARCH}-${pkgver}.deb" || return 1
 
     if ! compgen -G "${srcdir}/data.tar.*" > /dev/null; then
         printf 'ERROR: no data.tar archive found in the Debian package\n' >&2
