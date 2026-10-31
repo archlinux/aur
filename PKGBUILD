@@ -1,6 +1,6 @@
 # Maintainer: wanger <310779211wym@gmail.com>
 pkgname=mineral
-pkgver=0.5.10
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A multi-source TUI music player in Rust — ratatui frontend, pluggable channel backends, real streaming playback with lyrics & spectrum."
 arch=('x86_64')
@@ -8,13 +8,13 @@ url="https://github.com/10knamesmore/Mineral"
 license=('MIT')
 options=(!lto !debug)
 depends=('alsa-lib' 'openssl' 'zlib' 'gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake' 'nasm')
 # 同版本重打包(hotfix)的 patch 列表。仓库里恒为空,不要手工填:
 # aur-publish 工作流按 dispatch 输入的 commit SHA 现场生成 patch 并注入此数组,
 # release.yml 正式发版渲染时强制清空(新 tag 已含修复,残留 patch 会二次 apply 失败)。
 _patches=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "${_patches[@]}")
-sha256sums=('16fef6087225714c940d491ebb7ec267ecc741e162827c991f9a950c7218b6d8')
+sha256sums=('773cafc9bf92bc8a56c0c28994e3a51d495675b480811c294c036c06b888ed10')
 
 prepare() {
     cd "Mineral-$pkgver"
