@@ -2,8 +2,8 @@
 
 pkgname=opence-bin
 _pkgname=opence
-pkgver=334
-_commit=c507cb26b6ea7e89c7669fb7c911e27b80d5d779
+pkgver=335
+_commit=da8d455623cf50002e6a798b1980068fd3ca0292
 pkgrel=1
 pkgdesc='Halo: Combat Evolved ported from the Xbox decompilation (needs your own Xbox disc image)'
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("halo-linux-release-$pkgver.zip::$url/releases/download/build-$pkgver/ha
         "opence-icon-512-$pkgver.png::$_raw/port/assets/icon/opence-icon.png"
         'opence.sh'
         'opence.desktop')
-sha256sums=('da34aac519122b1e1895d6d8a0dfd9c57a0ff8a4d8409b1dadfdccb55efc955a'
+sha256sums=('07ad783ec766dcdd9418d969d5d76961974471e0792eb35aaf95373a2fe673ce'
             'c9b790a724949b40eeb86f7d1e6cbd9338ec29798e3cb9076e34e124ee4b2fcf'
             '800572a2fdb7ad2521522b2a0a11d31f13f8dd9183a4314ff0849209f8732509'
             '4bfa804c3d8ee9d382cf05d5446d2fc6b01b40d2a047b1b76d897c96f9a8c74d'
