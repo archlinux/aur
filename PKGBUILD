@@ -1,7 +1,7 @@
 # Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=mygo-cloudmusic
-pkgver=0.1.20
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='MyGo 云音乐 - 第三方网易云音乐原生客户端'
 arch=('x86_64' 'aarch64')

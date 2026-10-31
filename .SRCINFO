@@ -1,6 +1,6 @@
 pkgbase = mygo-cloudmusic
 	pkgdesc = MyGo 云音乐 - 第三方网易云音乐原生客户端
-	pkgver = 0.1.20
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://music.egoist.dev
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = mygo-cloudmusic
 	optdepends = libpulse: PulseAudio 音频输出
 	optdepends = alsa-lib: ALSA 音频输出（PulseAudio 不可用时）
 	options = !debug
-	source = git+https://github.com/egoist/mygo-cloudmusic.git#tag=v0.1.20
+	source = git+https://github.com/egoist/mygo-cloudmusic.git#tag=v0.1.22
 	sha256sums = SKIP
 
 pkgname = mygo-cloudmusic
