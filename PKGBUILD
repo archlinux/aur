@@ -10,7 +10,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="A friendly terminal UI for managing ufw firewall rules without getting locked out"
 
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('642372014297d5d4ea31363c123b72e4c4428fa77035a64061525d563c892ab6')
+sha256sums=('62f9751753ededdaef7994b5ea035898b84bde7f1e2d57898da431c4feaa6f6d')
 
 
 build() {
