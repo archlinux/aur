@@ -1,0 +1,14 @@
+pkgbase = drainready
+	pkgdesc = Predicts whether kubectl drain will finish on a node by checking PodDisruptionBudgets before you cordon; names the blocking budget and why
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://blackman99.github.io/drainready/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = kubectl
+	source = drainready-0.2.0.tar.gz::https://github.com/Blackman99/drainready/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c2f5f246eeca5d93cdcd45120a80a746f97a4f9e956ae22a67458c2e71b85173
+
+pkgname = drainready
