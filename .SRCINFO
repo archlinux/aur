@@ -1,6 +1,6 @@
 pkgbase = halofetch
 	pkgdesc = System information fetch with centered logos, panels and a live monitor
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/mafuzyk/halofetch
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = halofetch
 	depends = gcc-libs
 	depends = glibc
 	optdepends = wireless_tools: show the Wi-Fi network name
-	source = halofetch-3.1.0.tar.gz::https://github.com/mafuzyk/halofetch/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = a19c047eb12a93df0476f700ab081761821bba5bdd5a1291199f573cf8ca0d98
+	source = halofetch-3.1.1.tar.gz::https://github.com/mafuzyk/halofetch/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = 90e7d5368a4a5d79ae2e071b070c506829320f25d794a7d69b0f65ce88adeaed
 
 pkgname = halofetch
