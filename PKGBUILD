@@ -1,4 +1,5 @@
-# Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
+# Contributor: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=kurve
 pkgname=plasma6-applets-kurve-git
 pkgver=1.1.0.r9.g6b832f2
