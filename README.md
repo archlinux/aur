@@ -69,3 +69,7 @@ The AUR only accepts the `master` branch.
 Liveside is licensed under **GPL-3.0-or-later** (see `LICENSE` in the
 upstream repository). This repository contains only the packaging recipe;
 the source code is downloaded from GitHub during the build.
+
+The packaging files here (`PKGBUILD`, `.SRCINFO`, this README) are under
+the **0BSD** license (see `LICENSE`), as the AUR submission guidelines
+recommend for package sources.
