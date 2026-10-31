@@ -1,6 +1,6 @@
 pkgbase = chilpa-bin
 	pkgdesc = Native music player with local libraries and extensible sources
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://chilpa.app
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = chilpa-bin
 	conflicts = chilpa
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/vicrodh/chilpa/releases/download/v0.1.0/chilpa-0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 0902e505a88292711549e79c080c03aec3dfae101feddc8b00c8e1bbcb152b4f
-	source_aarch64 = https://github.com/vicrodh/chilpa/releases/download/v0.1.0/chilpa-0.1.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 85385b52188668912a17bcfa2d13ea71abeef4fe486fe180dc08ab12a867d701
+	source_x86_64 = https://github.com/vicrodh/chilpa/releases/download/v0.1.1/chilpa-0.1.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 63aa3ef8ad28510ec5fe629dac8e324ceeebf37ca36017b4acdf7dde59e1a8d3
+	source_aarch64 = https://github.com/vicrodh/chilpa/releases/download/v0.1.1/chilpa-0.1.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bcf74f4053bde10ab8b87a5e9b66e68c205803ace0d4f22db91318763dde8fed
 
 pkgname = chilpa-bin
