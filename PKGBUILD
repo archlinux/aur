@@ -1,16 +1,17 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='isd-git'
+pkgdesc='Interactive TUI for systemd units (development version)'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.5.1.r2.gd7fa6f9
-pkgrel=4
-pkgdesc='Interactive TUI for systemd units (development version)'
-arch=('any')
+pkgver=0.6.3.r0.gda51e79
+pkgrel=1
 url='https://github.com/isd-project/isd'
-license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+arch=('any')
+license=('GPL-3.0-or-later')
 makedepends=(
   'git'
   'python-build'
@@ -22,7 +23,7 @@ makedepends=(
 )
 depends=(
   'hicolor-icon-theme'  # needed for hicolor theme hierarchy
-  'python>=3.11'
+  'python'
   'python-pfzy'
   'python-pydantic-settings'
   'python-textual'
@@ -30,16 +31,17 @@ depends=(
   'python-xdg-base-dirs'
   'systemd'
 )
-source=("git+$url.git")
 provides=("$_pkgname"{,-tui})
 conflicts=("${provides[@]}")
+options=('!strip')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_srcname"
 
   git describe --tags --long \
-  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -53,7 +55,9 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  cd "$pkgdir/usr/share/doc" && ln -sr "$pkgname" "$_pkgname"
 }
 
 # eof
