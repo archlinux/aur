@@ -2,5 +2,5 @@
 
 set -eu
 
-./make-info
+makepkg --printsrcinfo > .SRCINFO
 git add .SRCINFO
