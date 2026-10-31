@@ -2,7 +2,7 @@
 # Public source by default. tools/build-arch.sh builds a committed local checkout.
 pkgbase=at1ass-shell-git
 pkgname=(at1ass-shell-git at1ass-shell-plugins-git at1ass-shell-greeter-git)
-pkgver=0.1.0.r2.g612d52e2
+pkgver=0.1.0.r7.g5a6344fb
 pkgrel=1
 pkgdesc='Config-first Quickshell desktop shell for Hyprland'
 arch=(x86_64)
@@ -110,7 +110,7 @@ package_at1ass-shell-plugins-git() {
 package_at1ass-shell-greeter-git() {
     arch=(any)
     pkgdesc='Optional greetd greeter for the at1ass desktop shell'
-    depends=("at1ass-shell-plugins-git=${pkgver}" 'quickshell>=0.3.2' 'hyprland>=0.56'
+    depends=("at1ass-shell-plugins-git=${pkgver}" 'quickshell>=0.3.2' 'hyprland>=0.57'
              greetd bash 'qt6-base>=6.8' 'qt6-declarative>=6.8' qt6-wayland qt6-svg systemd
              ttf-roboto ttf-dejavu ttf-material-symbols-variable)
     optdepends=('accountsservice: selected-user avatar from the system account service'
@@ -118,7 +118,7 @@ package_at1ass-shell-greeter-git() {
                 'upower: optional battery status in the greeter')
     provides=("at1ass-shell-greeter=${pkgver}")
     conflicts=(at1ass-shell-greeter)
-    backup=(etc/greetd/greeter.json etc/greetd/hyprland-greeter.conf)
+    backup=(etc/greetd/greeter.json etc/greetd/hyprland-greeter.lua etc/greetd/hyprland-greeter.conf)
     local src=shell/src/features/greeter
     local dest="$pkgdir/usr/share/at1ass-shell/greeter"
     install -d "$dest"
@@ -126,6 +126,7 @@ package_at1ass-shell-greeter-git() {
         "$src"/{shell.qml,GreeterSurface.qml,qmldir,components,config,ui} "$dest/"
     install -Dm644 "$src/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 shell/packaging/arch/greeter.json "$pkgdir/etc/greetd/greeter.json"
+    install -Dm644 shell/packaging/arch/hyprland-greeter.lua "$pkgdir/etc/greetd/hyprland-greeter.lua"
     install -Dm644 shell/packaging/arch/hyprland-greeter.conf "$pkgdir/etc/greetd/hyprland-greeter.conf"
     install -Dm644 shell/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
