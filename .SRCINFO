@@ -1,7 +1,7 @@
 pkgbase = pokebonk
 	pkgdesc = Desktop client for PokéBonk, a 3D survival fan-game
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pokebonk.com
 	arch = x86_64
 	license = LicenseRef-Proprietary
