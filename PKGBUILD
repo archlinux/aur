@@ -1,12 +1,12 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.158
-pkgrel=2
+pkgrel=3
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# depends: DT_NEEDED of all 18 ELFs plus by-name dlopen probes, resolved in core+extra (2026-10-30).
+# depends: DT_NEEDED of the 18 shipped ELFs plus by-name dlopen probes, resolved in core+extra (2026-10-31).
 depends=('alsa-lib'
          'at-spi2-core'
          'cairo'
@@ -53,9 +53,7 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-# optdepends: portal calls seen in dbus-monitor --session, the LibVLC P/Invoke table and the
-# chromium WebRTCPipeWireCapturer flag; the payload has no org.freedesktop.GameMode string and
-# no libgamemode, so gamemode is not listed (2026-10-30).
+# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
@@ -64,6 +62,7 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-hyprland: window and region screen share plus portal global shortcuts on Hyprland'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
+            'dunst: org.freedesktop.Notifications daemon for sessions without one'
             'vlc-plugin-ffmpeg: video and stream playback through LibVLC'
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio')
 options=('!strip' '!debug')
@@ -96,8 +95,7 @@ package() {
     fi
 
     install -dm755 "${pkgdir}/usr/bin"
-    # Payload mkdirs "Root Communications", "Sentry" and ".sentry-native" beside its exe and
-    # exits 0 when that fails, so it needs a user-writable runtime dir (strace, 2026-10-29).
+    # Payload mkdirs "Root Communications", "Sentry" and ".sentry-native" beside its exe, so it needs a user-writable runtime dir (strace, 2026-10-29).
     cat > "${pkgdir}/usr/bin/rootapp" <<'WRAPPER_EOF'
 #!/bin/sh
 set -eu
