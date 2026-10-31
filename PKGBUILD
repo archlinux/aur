@@ -574,6 +574,13 @@ check() {
   export XDG_STATE_HOME="$HOME/.local/state"
   export TZ=UTC
   mkdir -p "$XDG_CONFIG_HOME/powershell" "$HOME/Documents"
+  # A temp folder of their own as well: some tests write files with fixed names there, like
+  # WebListener's ServerCert.pfx, which fail when another user's build left them in /tmp. It stays in
+  # /tmp rather than $srcdir, as PowerShell's named pipes (Enter-PSHostProcess) are sockets in it,
+  # whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
 
   ctest --test-dir build-psl-native --output-on-failure
 
@@ -599,6 +606,10 @@ check() {
   # Upstream fix: https://github.com/PowerShell/PowerShell/pull/27525, in 7.7
   sed -i 's/It "Call Get-TimeZone using Name param and singe item"/& -Skip/' \
     Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
+
+  # The test writes its assembly to /tmp rather than the temp folder
+  sed -i "s@\$tempDir = '/tmp'@\$tempDir = [System.IO.Path]::GetTempPath()@" \
+    engine/ParameterBinding/ParameterBinding.Tests.ps1
 
   # Test requires DSCv3 (https://github.com/PowerShell/DSC), which isn't part of PowerShell. The
   # powershell-dsc package runs it in its check() instead, against the installed PowerShell.
@@ -666,6 +677,8 @@ check() {
 
   # The xUnit tests
   dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r "$_rid" --test-adapter-path:.
+
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
