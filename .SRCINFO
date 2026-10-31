@@ -1,0 +1,19 @@
+pkgbase = sharky-shell-git
+	pkgdesc = Unix-first interactive shell written in Rust
+	pkgver = 2.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/mafuzyk/sharky-shell
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	provides = sharky
+	provides = sharky-shell
+	conflicts = sharky
+	conflicts = sharky-shell
+	source = git+https://github.com/mafuzyk/sharky-shell.git
+	sha256sums = SKIP
+
+pkgname = sharky-shell-git
