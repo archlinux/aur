@@ -2,7 +2,7 @@
 
 pkgname=obs-plugin-vertical-canvas-git
 _pkgname=obs-vertical-canvas
-pkgver=1.2.1.r4.g392729a
+pkgver=1.6.7
 pkgrel=1
 pkgdesc='OBS Studio plugin to record in vertical canvas by aitum.'
 arch=('x86_64')
@@ -17,6 +17,7 @@ makedepends=(
 	'make'
 	'gcc'
 	'git'
+    'simde'
 )
 provides=('obs-plugin-vertical-canvas')
 conflicts=()
@@ -37,10 +38,10 @@ build() {
 
 package() {
 	_prjdir="${srcdir}/${_pkgname}"
-	install -D -m755 "${_prjdir}/build/rundir/RelWithDebInfo/obs-plugins/64bit/vertical-canvas.so" "${pkgdir}/usr/lib/obs-plugins/vertical-canvas.so"
+	install -D -m755 "${_prjdir}/build/rundir/RelWithDebInfo/vertical-canvas.so" "${pkgdir}/usr/lib/obs-plugins/vertical-canvas.so"
 	install -D -m644 "${_prjdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/obs/obs-plugins/vertical-canvas"
-	cp -r "${_prjdir}/build/rundir/RelWithDebInfo/data/obs-plugins/vertical-canvas/data/locale" "${pkgdir}/usr/share/obs/obs-plugins/vertical-canvas/locale"
-	cp -r "${_prjdir}/build/rundir/RelWithDebInfo/data/obs-plugins/vertical-canvas/data/images" "${pkgdir}/usr/share/obs/obs-plugins/vertical-canvas/images"
+	cp -r "${_prjdir}/data/locale" "${pkgdir}/usr/share/obs/obs-plugins/vertical-canvas/locale"
+	cp -r "${_prjdir}/data/images" "${pkgdir}/usr/share/obs/obs-plugins/vertical-canvas/images"
 }
 
