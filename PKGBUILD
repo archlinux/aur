@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-paulice
 pkgname=python-${_pkgname}
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Embedding spacetime Pauli checks into Clifford circuits"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(
     python-numpy
     python-qiskit
-    python-qiskit-aer
+    python-samplomatic
 )
 makedepends=(
     git
@@ -20,10 +20,11 @@ makedepends=(
 )
 checkdepends=(
     python-pytest
+    python-qiskit-aer
     python-qiskit-ibm-runtime
 )
 source=($_pkgname::git+https://github.com/Qiskit/$_pkgname#tag=$pkgver)
-b2sums=('b82b294922cade06e10f6de968522e2fc48d36dd7fc1e933032b3a03f171691ccf912aaa03e28e1f3f5a602f169fc167261ede5e9ae194f97c1774fc9c8e214b')
+b2sums=('b2b1aeed3b273b2a18a18835b6124ad1812ef4f7a1b58bd10508f1e62b1fddee384f16ac8e17bd22656a1f38e80002dacb8b26fe7eb46948c0fc4d2129f85bb7')
 
 build() {
     cd $_pkgname
