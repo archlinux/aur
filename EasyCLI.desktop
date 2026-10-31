@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=EasyCLIProxyAPI
+Comment=Desktop console for CLIProxyAPI
+Exec=easycli
+Icon=easycli
+Terminal=false
+Categories=Network;Utility;
