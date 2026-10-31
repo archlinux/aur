@@ -1,0 +1,20 @@
+pkgbase = kando-kwin-integration
+	pkgdesc = A small KWin plugin required for Kando on Wayland.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/kando-menu/kwin-integration
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	makedepends = vulkan-headers
+	depends = kwin>=6.8
+	depends = kwin<6.9
+	depends = kcoreaddons
+	depends = qt6-base
+	source = kando-kwin-integration-0.4.1.tar.gz::https://github.com/kando-menu/kwin-integration/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = a6aac91de6858d4426ccf39a0fc58fa6de113172be8d520a463abbbccfc4b7e2
+
+pkgname = kando-kwin-integration
