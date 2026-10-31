@@ -1,0 +1,4 @@
+[silverbullet-cli]
+source = "github"
+github = "silverbulletmd/silverbullet"
+use_max_tag = true

@@ -1,0 +1,16 @@
+pkgbase = silverbullet-cli
+	pkgdesc = Official command-line client for SilverBullet
+	pkgver = 2.12.1
+	pkgrel = 1
+	url = https://github.com/silverbulletmd/silverbullet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	optdepends = xdg-utils: open URLs from the CLI
+	source = silverbullet-cli-2.12.1.tar.gz::https://github.com/silverbulletmd/silverbullet/archive/refs/tags/2.12.1.tar.gz
+	sha256sums = d263988e8ad048bf1d1338d038e3a1bfd80c80844297186d726cafbe3f8a35e5
+
+pkgname = silverbullet-cli
