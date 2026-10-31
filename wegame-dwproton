@@ -204,6 +204,8 @@ is_confirmed_failure_status() {
 
 
 classify_update() {
+    local -a payload_entries=()
+
     if [[ ! -e "$update_payload" && ! -L "$update_payload" ]]; then
         [[ ! -e "$update_status" && ! -L "$update_status" ]] && return 1
         is_known_tgp_status && return 1
@@ -216,6 +218,13 @@ classify_update() {
     fi
 
     if is_known_tgp_status; then
+        [[ -r "$update_payload" && -x "$update_payload" ]] || return 2
+        shopt -s nullglob dotglob
+        payload_entries=("$update_payload"/*)
+        shopt -u nullglob dotglob
+        # An empty staging directory must not block independent component recovery.
+        ((${#payload_entries[@]} == 0)) && return 1
+
         [[ -f "$update_payload/wegame.exe" &&
            ! -L "$update_payload/wegame.exe" ]] || return 2
         return 3

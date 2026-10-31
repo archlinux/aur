@@ -90,11 +90,18 @@ Before applying files, the launcher moves the update payload and status into a t
 
 The same recovery path handles confirmed component-update failures under `multi_group/<version>/<slot>/update_files`. Version and slot names must be numeric; the traversed directories must be non-symlink directories; every payload entry must be a regular file or directory without symbolic links; and the sibling `update.tmp` must contain the exact confirmed failure markers. Component payloads receive independent backups before their files are applied to the WeGame installation root.
 
-A strict status-only `update.tmp` produced by a normal WeGame exit is accepted only when it contains the observed `[tgp]` schema, unique expected fields, `CheckUpdateType=0` or `CheckUpdateType=1`, a valid GUID, and no update payload. Unknown keys, duplicate fields, malformed values, unobserved update types, or partial states still fail closed.
+A strict `update.tmp` produced by a normal WeGame exit is accepted only when it contains the observed `[tgp]` schema, unique expected fields, `CheckUpdateType=0` or `CheckUpdateType=1`, a valid GUID, and either no `wegame_update` directory or an empty regular directory. An empty staging directory and its status are preserved and do not block confirmed component recovery. Hidden entries count as pending content; nonempty payloads without a regular `wegame.exe`, unknown keys, duplicate fields, malformed values, unobserved update types, or partial states still fail closed.
 
 When the same strict `[tgp]` status accompanies a regular `wegame_update` directory with a regular `wegame.exe`, the payload is still managed by Tencent's updater. The launcher lets WeGame process it instead of copying unconfirmed files or creating a recovery backup. `--recover-update` reports this state without changing it; if WeGame leaves it pending, start WeGame again.
 
 This operation copies Tencent's own downloaded update payload without modifying Tencent binaries. It remains an unsupported compatibility workaround.
+
+### Empty staging directories and successive updates
+
+The observed startup failure combined an empty root `wegame_update` directory and a valid `[tgp]` status (`CheckUpdateType=1`, `ExitOpSource=102`) with a confirmed failed component update under `multi_group/6.6.2/1/update_files`. The earlier classifier required `wegame.exe` whenever the staging directory existed, so it rejected this state before independent component recovery could run. An empty directory is now treated as having no root payload, not as permission to recover an unconfirmed update.
+
+Tencent updates can arrive in successive stages. During verification, the client reached its store UI on `6.7.0.10150` and subsequently staged `6.7.1.10221`. A visible main window therefore does not prove that no further update is pending. Install the updated integration package before resuming the client; if WeGame closes while processing an update, let the launcher finish and start it again to continue. Leave `update.tmp` and the staging directories intact so Tencent's updater and confirmed-failure recovery can process them.
+
 
 ## Development
 
