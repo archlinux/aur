@@ -1,74 +1,56 @@
-# Maintainer: Alex Reinking alex_reinking@berkeley.edu
+# Maintainer: Alex Reinking <alex.reinking@gmail.com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 _base=halide
 pkgname=${_base}-bin
-pkgver=21.0.0
+pkgver=22.0.0.post3
 pkgrel=1
-_noise="b629c80de18f1534ec71fddd8b567aa7027a0876"
 pkgdesc="A language for fast and portable data-parallel computation"
 url="https://github.com/${_base}/${_base/h/H}"
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 license=(MIT)
+depends=('glibc' 'libgcc' 'libstdc++' 'bash')
 conflicts=("${_base}")
-provides=("${_base}")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-x86-64-linux-${_noise}.tar.gz")
-source_i686=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-x86-32-linux-${_noise}.tar.gz")
-source_armv7h=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-arm-32-linux-${_noise}.tar.gz")
-source_aarch64=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-arm-64-linux-${_noise}.tar.gz")
+provides=("${_base}=${pkgver}")
+options=('!strip' '!debug')
 
-sha512sums_x86_64=('361918b7f7cb67229dc4436a9db6b41790b274fffa861a31ad17e3c73298bc6bff7fc7524c00af492c2758a6231e8a02e3b42f060e7ac24822e26011e8bd0034')
-sha512sums_i686=('547353d5899d4cc5b9847c445c5b9d157c2df1a719c34e1c4ccfdf4f5029e7ad9645173e82fb78070e88a876670f941beb0de662d8409d3634e25c8d45e4fc70')
-sha512sums_armv7h=('3557827de0ab06281aeac76eecf4b6492fd8c5c08ff807d72f358bc4a4db37e612040b61405cb2478f6c5a64b4f6507d3b5e35c22dec103bec65ea35cb0b1cc5')
-sha512sums_aarch64=('6c5eb62191ce449b6db062cbd70a44951468cb74f34223d96c33bf453ba8cf3e85b572fa2ad619f62797aa6c01f6973f9017e1b313cd9479e7e075eff75e7479')
+# Since Halide 22, the prebuilt C++ SDK (libHalide, autoschedulers, headers,
+# CMake packages) is published to PyPI as the Python-independent halide-bin wheel.
+_wheel="https://files.pythonhosted.org/packages/py3/h/${pkgname}/${pkgname/-/_}-${pkgver}-py3-none"
+source_x86_64=("${_wheel}-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl")
+source_aarch64=("${_wheel}-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl")
+noextract=("${source_x86_64[@]##*/}" "${source_aarch64[@]##*/}")
 
-if [[ "$CARCH" == "x86_64" ]]; then _tar_arch='x86-64'; fi
-if [[ "$CARCH" == "i686" ]]; then _tar_arch='x86-32'; fi
-if [[ "$CARCH" == "armv7h" ]]; then _tar_arch='arm-32'; fi
-if [[ "$CARCH" == "aarch64" ]]; then _tar_arch='arm-64'; fi
+sha256sums_x86_64=('80aa46f63157e7946ee3ef1eb5f5aae6e2a275f0919a2652858fb53e1ee2b5f9')
+sha256sums_aarch64=('7405d9c7d4934d8b97703aac903b7d4631724cd0be8448c37257a858bd89b0bf')
+
+prepare() {
+  rm -rf "${srcdir}/wheel"
+  mkdir "${srcdir}/wheel"
+  bsdtar -xf "${srcdir}/${pkgname/-/_}-${pkgver}"-*.whl -C "${srcdir}/wheel" "${_base}"
+
+  # The wheel uses lib64/ and share/tools/; Arch uses lib/ and keeps the
+  # tools where earlier versions of this package put them.
+  cd "${srcdir}/wheel/${_base}"
+  sed -i -e 's|/lib64/|/lib/|g' -e 's|/share/tools|/share/Halide/tools|g' lib64/cmake/*/*.cmake
+}
 
 package() {
-  cd "${_base/h/H}-${pkgver}-${_tar_arch}-linux"
+  cd "${srcdir}/wheel/${_base}"
 
-  # Instal binaries
-  for i in bin/*; do
-    install -Dvm755 "${i}" -t "${pkgdir}/usr/bin"
+  install -Dvm755 bin/gengen -t "${pkgdir}/usr/bin"
+  install -Dvm644 include/*.h -t "${pkgdir}/usr/include"
+  install -Dvm755 lib64/lib*.so -t "${pkgdir}/usr/lib"
+  install -Dvm644 lib64/libHalide_GenGen.a -t "${pkgdir}/usr/lib"
+
+  for i in lib64/cmake/*/; do
+    install -Dvm644 "${i}"* -t "${pkgdir}/usr/lib/cmake/$(basename "${i}")"
   done
 
-  # Install headers
-  for i in include/*.h; do
-    install -Dvm644 "${i}" -t "${pkgdir}/usr/include"
-  done
+  install -Dvm644 share/tools/* -t "${pkgdir}/usr/share/Halide/tools"
+  chmod 755 "${pkgdir}"/usr/share/Halide/tools/*.sh
 
-  for i in lib/lib*; do
-    install -Dvm755 "${i}" -t "${pkgdir}/usr/lib"
-  done
-
-  # Set read permissions
-  chmod 644 "${pkgdir}/usr/lib/libHalide.a"
-
-  # For test later
-  # ln -s /usr/lib/libHalide.so ${pkgdir}/usr/lib/libHalide.so.16
-  # ln -s /usr/lib/libHalide.so.15 ${pkgdir}/usr/lib/libHalide.so.16.0.0
-
-  # Install cmake functions
-  for i in lib/cmake/Halide/*.cmake; do
-    install -Dvm644 "${i}" -t "${pkgdir}/usr/lib/cmake/Halide"
-  done
-
-  # Install cmake functions
-  for i in lib/cmake/HalideHelpers/*.cmake; do
-    install -Dvm644 "${i}" -t "${pkgdir}/usr/lib/cmake/HalideHelpers"
-  done
-
-  for i in share/Halide/tools/*; do
-    install -Dvm644 "${i}" -t "${pkgdir}/usr/share/Halide/tools"
-  done
-
-  # Set execution permissions
-  chmod 755 "${pkgdir}/usr/share/Halide/tools/adams2019_autotune_loop.sh"
-
-  for i in share/doc/Halide/*.md; do
-    install -Dvm644 "${i}" -t "${pkgdir}/usr/share/doc/Halide"
-  done
+  install -dm755 "${pkgdir}/usr/share/doc/Halide"
+  cp -r share/doc/Halide/. "${pkgdir}/usr/share/doc/Halide"
+  install -Dvm644 share/doc/Halide/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
