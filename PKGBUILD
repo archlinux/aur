@@ -8,7 +8,7 @@
 # comes from the release's SHA256SUMS after its OpenPGP signature verified.
 # depends= matches client/deploy/pacman/PKGBUILD, where the list is explained.
 pkgname=tephro-client-bin
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Self-hosted group chat client: text, voice, video and screen sharing (release build)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ conflicts=('tephro-client')
 options=('!strip' '!debug')
 install=tephro-client.install
 source=("tephro-client_${pkgver}_amd64.deb::https://gitlab.com/encenillo/tephro/-/releases/client%2Fv${pkgver}/downloads/tephro-client_${pkgver}_amd64.deb")
-sha256sums=('330064a16276fb380c4eb826f8048e2f7c0590a390d0e8ddb619520da1d03560')
+sha256sums=('159c596f98689aae81a2bad5234f55440cebfb0f5d61c8a98b51f40d1dc9964a')
 
 package() {
   bsdtar --no-same-owner -xf data.tar.xz -C "$pkgdir" ./opt ./usr/share/applications ./usr/share/icons
