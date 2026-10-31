@@ -1,0 +1,15 @@
+pkgbase = v10-un-pack-git
+	pkgdesc = Research Unix Version 10 of the pack and unpack commands
+	pkgver = r3.9157b1b
+	pkgrel = 1
+	url = https://github.com/arnoldrobbins/V10-pack-unpack
+	arch = i686
+	arch = x86_64
+	license = Caldera
+	makedepends = git
+	provides = v10-un-pack
+	conflicts = v10-un-pack
+	source = v10-un-pack-git::git+https://github.com/arnoldrobbins/V10-pack-unpack
+	sha256sums = SKIP
+
+pkgname = v10-un-pack-git
