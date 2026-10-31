@@ -1,7 +1,7 @@
 # Maintainer: jarbowski <jarbowski@example.com>
 pkgname=tape16-bin
 pkgver=0.9.530
-pkgrel=2
+pkgrel=3
 pkgdesc="Destructive tape-style 16-track DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
 url="https://emrmusicgroup.com/tape16/"
@@ -68,7 +68,7 @@ package() {
 set -u
 
 APP_DIR=/usr/lib/tape16
-APP_BIN="$APP_DIR/TAPE-16"
+APP_BIN="$APP_DIR/TAPE 16"
 SHARE_DIR=/usr/share/tape16
 
 # Detect session
