@@ -3,7 +3,7 @@
 
 _pkgname=qdrant
 pkgname="${_pkgname}-bin"
-pkgver=1.19.1 # renovate: datasource=github-releases depName=qdrant/qdrant versioning=semver-coerced extractVersion=^v?(?<version>.*)$
+pkgver=1.20.0 # renovate: datasource=github-releases depName=qdrant/qdrant versioning=semver-coerced extractVersion=^v?(?<version>.*)$
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'glibc')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/qdrant/qdrant/releases/download/v${pkgver}/qdrant_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('858dda511c5c05bb5ceb19d7f79669c1e13a64390df205eee6f33b929a0a9a84')
+sha256sums_x86_64=('b5487dd5d1db53442c0b4b24f8d3ed5a22226b8fd4d293b1d620a86329a66f6a')
 
 package() {
   tar -xf data.tar.xz
