@@ -1,0 +1,51 @@
+pkgbase = deskwaifu-bin
+	pkgdesc = DeskWaifu application and all default plugins
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ad2248/DeskWaifu
+	arch = x86_64
+	license = LicenseRef-Live2D-Open-Software
+	license = LicenseRef-Live2D-Proprietary
+	license = BSD-3-Clause
+	license = MIT
+	license = Unlicense
+	noextract = upstream-deskwaifu-bin-0.1.0-1-x86_64.pkg.tar.zst
+	noextract = upstream-deskwaifu-ocr-bin-0.1.0-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = upstream-deskwaifu-bin-0.1.0-1-x86_64.pkg.tar.zst::https://github.com/ad2248/DeskWaifu/releases/download/0.1.0/deskwaifu-bin-0.1.0-1-x86_64.pkg.tar.zst
+	source = upstream-deskwaifu-ocr-bin-0.1.0-1-x86_64.pkg.tar.zst::https://github.com/ad2248/DeskWaifu/releases/download/0.1.0/deskwaifu-ocr-bin-0.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = c39ac0952fe61e641954d347cb7bd76a8a545db944970fa880c62b5b00460958
+	sha256sums = d9fb518cfa17a40e080792ef4e6da57d2104201c0643dde6bd8cdbf4bde413b8
+
+pkgname = deskwaifu-bin
+	depends = glibc
+	depends = gcc-libs
+	depends = wayland
+	depends = libglvnd
+	depends = systemd-libs
+	depends = qt6-base>=6.5
+	depends = qt6-wayland>=6.5
+	depends = qt6-scxml>=6.5
+	depends = qt6-websockets>=6.5
+	depends = qt6-multimedia>=6.5
+	depends = layer-shell-qt>=6.6
+	depends = bash
+	depends = python
+	depends = psmisc
+	optdepends = deskwaifu-ocr-bin: optional native OCR helper (models provisioned separately)
+	provides = deskwaifu=0.1.0
+	conflicts = deskwaifu
+
+pkgname = deskwaifu-ocr-bin
+	pkgdesc = DeskWaifu native OCR helper and ONNX Runtime CPU runtime (no models or dictionaries)
+	license = MIT
+	license = Apache-2.0
+	depends = deskwaifu-bin=0.1.0-1
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base>=6.5
+	depends = opencv
+	depends = yaml-cpp
+	provides = deskwaifu-ocr=0.1.0
+	conflicts = deskwaifu-ocr
