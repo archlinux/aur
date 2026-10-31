@@ -1,6 +1,6 @@
 pkgbase = typeshi
 	pkgdesc = A typing application
-	pkgver = 0.1.22
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://github.com/RyuZinOh/typeshi-mirror
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = typeshi
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-shadertools
-	source = typeshi-0.1.22.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/archive/refs/tags/v0.1.22.tar.gz
+	source = typeshi-0.1.23.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/archive/refs/tags/v0.1.23.tar.gz
 	source = ryu-200007fb1be91a9a3eb4cc642733865d3f74f447.tar.gz::https://github.com/Happilli/ryu/archive/200007fb1be91a9a3eb4cc642733865d3f74f447.tar.gz
-	sha256sums = 7f9c87424adba20f4ab6a623b3194dafb3bd57cc5cf79ca0ede1b65a1a33b27d
+	sha256sums = 83f56613699bd59285a4e13b795ccc86398dd85267d54f2b48ec428d59aaa8eb
 	sha256sums = f2a61e2899c966488cf35409faeefd293271e6f694825ad710d61c402c7b29c2
 
 pkgname = typeshi
