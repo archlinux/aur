@@ -5,7 +5,7 @@
 # pkgrel and sha256sums for every release; change the template there, not on the AUR.
 
 pkgname=ultra-9000
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Agent harness with native Alacritty terminals in a Tauri/Svelte interface'
 arch=('x86_64')
@@ -40,7 +40,7 @@ makedepends=('bun' 'cargo')
 # instead of a separate -debug package.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cab9b2f260fc260d6bc24b0d964fa2d75665b8ce38553b83f8d905b804ade0dc')
+sha256sums=('ccffc284142f5f746dc2654573de805c3d86e027193fabd910b562f79bb5d61b')
 
 prepare() {
   cd "ultra_9000-$pkgver"
