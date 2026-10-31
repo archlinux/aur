@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-git
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -36,6 +36,18 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
+  # Cargo.toml's rust-version is the oldest compiler that builds Spotifast.
+  # Check it before fetching, so an older stable fails at once and says how
+  # to update, rather than after every crate has downloaded.
+  local need have
+  need=$(sed -n 's/^rust-version = "\(.*\)"$/\1/p' Cargo.toml)
+  have=$(rustc --version 2>/dev/null | cut -d' ' -f2)
+  if [[ -n "${need}" && -n "${have}" && "$(vercmp "${have}" "${need}")" -lt 0 ]]; then
+    error "Spotifast needs Rust ${need} or newer, but rustc is ${have}."
+    plain "With rustup, run: rustup update stable"
+    plain "With Arch's rust package, update the system: pacman -Syu"
+    return 1
+  fi
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
