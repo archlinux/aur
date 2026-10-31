@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=matchlock
-pkgver=0.2.17
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Lightweight Firecracker micro-VM sandbox for running AI agents securely"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('go')
 options=('!debug')
 install=matchlock.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jingkaihe/matchlock/archive/v$pkgver.tar.gz")
-sha256sums=('14c90611b745cbd7900336357b2a5b2413a87dca1a456db0cfcaf2dc8e14cdf9')
+sha256sums=('2637ae712cb75e63b8c83b15daa00bc5f05dc48925ccc3ed9ad78e737fed0472')
 
 build() {
   cd "$pkgname-$pkgver"
