@@ -1,0 +1,13 @@
+pkgbase = code-buster
+	pkgdesc = Deterministic, offline static analysis for repository structure, dependencies, dead code, duplication, complexity, security, and maintainability across 18 languages
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://toolbunker.dev/codebuster/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = code-buster-0.12.0.tar.gz::https://github.com/tool-bunker/code-buster/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = 192a60f2a6e5bb026bcf8a073c8e60ed1a352c9c2eb864eecc54acac8de028d9
+
+pkgname = code-buster
