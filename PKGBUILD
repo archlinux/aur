@@ -2,8 +2,8 @@
 
 _npmname=agent-skill-manager
 pkgname=asm
-pkgver=2.23.0
-pkgrel=2
+pkgver=2.24.0
+pkgrel=1
 pkgdesc="Universal CLI/TUI for managing AI coding agent skills across 17+ platforms"
 arch=('any')
 url="https://github.com/luongnv89/asm"
@@ -15,8 +15,8 @@ conflicts=('agent-skill-manager')
 # Upstream's lockfile pins the runtime tree; npm ci checks every entry's integrity hash.
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         "package-lock-$pkgname-$pkgver.json::https://raw.githubusercontent.com/luongnv89/asm/v$pkgver/package-lock.json")
-sha1sums=('3fd06276de54ef43c93a3022a9845ef69b5ceeea'
-          'cdd8e4961b8b6dd4af2dc135624064affa6dbb16')
+sha1sums=('21d753c2179ac2d5cea2dfcf2f0f65c182a2207e'
+          'df3b033a4a21eadd1778c2674913f14dfbaea279')
 
 prepare() {
   cp "$srcdir/package-lock-$pkgname-$pkgver.json" "$srcdir/package/package-lock.json"
