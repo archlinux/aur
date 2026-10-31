@@ -1,6 +1,6 @@
 pkgbase = xmclauncher-bin
 	pkgdesc = X Minecraft Launcher - A modern, open-source Minecraft Launcher (repackaged from the official .pacman artifact)
-	pkgver = 0.72.0
+	pkgver = 0.73.0
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = xmclauncher-bin
 	conflicts = xmcl-launcher
 	options = !strip
 	options = !debug
-	source_x86_64 = xmcl-0.72.0-x64.pacman::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.72.0/xmcl-0.72.0-x64.pacman
-	sha256sums_x86_64 = 826c84a2465392506dbaf9daa7b969ea77f59dc888a30aeb69ca0724d5e4c64a
+	source_x86_64 = xmcl-0.73.0-x64.pacman::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.73.0/xmcl-0.73.0-x64.pacman
+	sha256sums_x86_64 = 13d31b59e8cc16d00b18d9496f9cb239c80965b98694973548daf7b1de2d20d2
 
 pkgname = xmclauncher-bin
