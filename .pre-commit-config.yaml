@@ -125,6 +125,30 @@ repos:
           Line, Severity, RuleName, Message -AutoSize -Wrap | Out-String -Width 200; exit [int][bool]$results'
         types: [powershell]
 
+      # After the formatters, which change sources like scripts and patches as well. The checksums come
+      # from .SRCINFO, which the srcinfo hook keeps up to date; remote sources aren't checked.
+      - id: checksums
+        name: local sources match their checksums
+        language: system
+        entry: >-
+          bash -c 'declare -A dirs; for file; do dir=$(dirname "$file");
+          while [[ ! -f "$dir/PKGBUILD" && "$dir" != . && "$dir" != / ]]; do dir=$(dirname "$dir"); done;
+          [[ -f "$dir/PKGBUILD" && -f "$dir/.SRCINFO" ]] && dirs[$dir]=1; done; status=0;
+          for dir in "${!dirs[@]}"; do declare -A src=() sha=() b2=() count=();
+          while read -r key _ value; do kind=${key%%_*}; arch=${key#"$kind"}; case "$kind" in
+          source | sha512sums | b2sums) index=${count[$kind$arch]:-0}; count[$kind$arch]=$((index + 1));
+          case "$kind" in source) src[$arch,$index]=$value ;; sha512sums) sha[$arch,$index]=$value ;;
+          b2sums) b2[$arch,$index]=$value ;; esac ;; esac; done <"$dir/.SRCINFO";
+          for entry in "${!src[@]}"; do name=${src[$entry]}; [[ "$name" == *://* ]] && continue;
+          name=${name##*::}; [[ -f "$dir/$name" ]] || continue;
+          if [[ "${sha[$entry]-SKIP}" != SKIP && "${sha[$entry]}" != "$(sha512sum <"$dir/$name" | cut -d" " -f1)" ]] ||
+          [[ "${b2[$entry]-SKIP}" != SKIP && "${b2[$entry]}" != "$(b2sum <"$dir/$name" | cut -d" " -f1)" ]]; then
+          echo "$dir/$name does not match its checksums: updpkgsums, then shfmt the PKGBUILD"; status=1; fi;
+          done; done; exit "$status"' --
+        types: [file]
+        # All files at once, so each package is checked and reported once
+        require_serial: true
+
       # The formatters take care of the indentation of the languages they know, the indent size of
       # e.g. comments or embedded XML is up to the author. License texts stay as they are.
       - id: editorconfig-checker
