@@ -115,13 +115,14 @@ repos:
         entry: rumdl check --config 'MD013.paragraphs = false'
         types: [markdown]
 
+      # Errors stop pwsh, which otherwise exits with 0 without PSScriptAnalyzer or when it fails on a file
       - id: psscriptanalyzer
         name: PSScriptAnalyzer (powershell-editor-services)
         language: system
         entry: >-
-          pwsh -NoProfile -NonInteractive -CommandWithArgs '$results = foreach ($path in $args) {
-          Invoke-ScriptAnalyzer -Path $path }; $results | Format-Table ScriptName, Line, Severity, RuleName,
-          Message -AutoSize -Wrap | Out-String -Width 200; exit [int][bool]$results'
+          pwsh -NoProfile -NonInteractive -CommandWithArgs '$ErrorActionPreference = "Stop"; $results =
+          foreach ($path in $args) { Invoke-ScriptAnalyzer -Path $path }; $results | Format-Table ScriptName,
+          Line, Severity, RuleName, Message -AutoSize -Wrap | Out-String -Width 200; exit [int][bool]$results'
         types: [powershell]
 
       # The formatters take care of the indentation of the languages they know, the indent size of
