@@ -1,0 +1,5 @@
+[powershell-powershellget-v3]
+# No releases or tags; track the module version in the manifest on the master branch
+source = "regex"
+url = "https://raw.githubusercontent.com/PowerShell/PowerShellGet/master/src/PowerShellGet.psd1"
+regex = "ModuleVersion = '([\\d.]+)'"

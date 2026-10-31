@@ -1,0 +1,13 @@
+pkgbase = powershell-powershellget-v3
+	pkgdesc = PowerShellGet v3, the compatibility module mapping PowerShellGet 2.x cmdlets onto PSResourceGet
+	pkgver = 3.0.23beta23
+	pkgrel = 1
+	url = https://github.com/PowerShell/PowerShellGet
+	arch = any
+	license = MIT
+	depends = powershell
+	source = powershell-powershellget-v3-3.0.23beta23.tar.gz::https://github.com/PowerShell/PowerShellGet/archive/a2dac8e74603f7c9eec4a54c5e23459531751b0d.tar.gz
+	sha512sums = d1e93ac69b31ea1094a0145f5117995b70b671ab791e67b17b2797272cec30bd111ef0383ece0547886ef21914526f6437d6caed39b4425404dd020abd979ce7
+	b2sums = 4a218634e6a08384826f51246cdd4f71be9642069281a14719602a7b0b5ce9f1c32550f47315a4b78607ee2e6d80c176ea3eda367640ba8dcf6258b7c158a14c
+
+pkgname = powershell-powershellget-v3
