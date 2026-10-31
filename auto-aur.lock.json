@@ -1,5 +1,5 @@
 {
-  "pkgver": "0.11.5",
+  "pkgver": "0.12.3",
   "pkgrel": 1,
-  "fingerprint": "canary|2026-10-10T17:18:03Z|2131dd0173717b292cb065d0749feee778ea592c|your-szu-life_android_arm64_0.11.5-release.apk:39960411:2026-10-25T17:27:37Z|your-szu-life_android_arm64_0.11.5-release.apk.gz:38701714:2026-10-25T17:27:39Z|your-szu-life_linux_x64_0.11.5-release.AppImage:116054520:2026-10-25T17:27:44Z|your-szu-life_linux_x64_0.11.5-release.deb:39750560:2026-10-25T17:27:48Z|your-szu-life_windows_x64_0.11.5-release.msi:35528704:2026-10-25T17:27:50Z"
+  "fingerprint": "canary|2026-10-10T17:18:03Z|b32aed134fe78ef9c55407af0e94cd9efa6eb445|your-szu-life_android_arm64_0.12.3-release.apk:40657167:2026-10-30T17:11:49Z|your-szu-life_android_arm64_0.12.3-release.apk.gz:39388075:2026-10-30T17:11:51Z|your-szu-life_linux_x64_0.12.3-release.AppImage:116623864:2026-10-30T17:11:56Z|your-szu-life_linux_x64_0.12.3-release.deb:40491240:2026-10-30T17:12:00Z|your-szu-life_windows_x64_0.12.3-release.msi:36257792:2026-10-30T17:12:02Z"
 }
