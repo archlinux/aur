@@ -1,3 +1,4 @@
+# Maintainer: Vasiliy <ldzkeymylp@gmail.com>
 pkgname=osu-radio-git
 pkgver=0.1.0alpha.r55.g3cf6e1c
 pkgrel=1
