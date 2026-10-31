@@ -1,6 +1,6 @@
 # Maintainer: Furkan Kerim Karademir <fkerimk26@proton.me>
 pkgname=bebisfetch
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A lightweight, colorful, and fast system information tool written in C#."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('dotnet-sdk' 'clang' 'zlib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23497c41d8bf24ee14d788bc43a775c178dac542b438e1cdf9a0ec9e155b7d35')
+sha256sums=('b8c104b4b9dcbfa3612ee8850bf2f2caedab23310f6386b0176b115543f262f1')
 
 prepare() {
     cd "$pkgname-$pkgver"
