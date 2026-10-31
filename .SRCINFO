@@ -1,6 +1,6 @@
 pkgbase = python-ibonds
 	pkgdesc = Library to calculate the current value of a Series I Savings Bond (I Bond)
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/sarvjeets/ibonds
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-ibonds
 	depends = python
 	depends = python-pyyaml
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/i/ibonds/ibonds-1.0.9.tar.gz
-	sha256sums = 9100dbe0657287d3e282e6de8ed8eee55c4ccdd068d9fb7ce8fe9b6998e3f68b
+	source = https://files.pythonhosted.org/packages/source/i/ibonds/ibonds-1.0.10.tar.gz
+	sha256sums = 89c9af2bf8139fcc21e864e312e0157b5b34918552ce418194fe5fb8528d350c
 
 pkgname = python-ibonds
