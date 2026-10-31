@@ -1,6 +1,6 @@
 # Maintainer: wearzdk <hi@wearzdk.me>
 pkgname=nahimic-linux
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Nahimic speaker effects and equalizer for supported Linux laptops'
 arch=('x86_64')
@@ -31,5 +31,5 @@ build() {
 package() {
     make -C "$srcdir/$pkgname" DESTDIR="$pkgdir" install
     install -d "$pkgdir/usr/share/nahimic-linux"
-    cp -r "$srcdir/runtime/vendor" "$srcdir/runtime/factory" "$pkgdir/usr/share/nahimic-linux/"
+    cp -r "$srcdir/runtime/vendor" "$srcdir/runtime/factory" "$srcdir/runtime/vendor-apo3" "$srcdir/runtime/factory-apo3" "$pkgdir/usr/share/nahimic-linux/"
 }
