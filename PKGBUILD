@@ -1,7 +1,7 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander
-pkgver=7.9.2
-pkgrel=4
+pkgver=7.9.3
+pkgrel=1
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
@@ -15,7 +15,7 @@ optdepends=(
     'parted: GPT partition layout for Windows live USB creation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('a38333e16a0256d66e1b3ffafa5f0dd0')
+md5sums=('df30e412f97b746409d4490a77247872')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make
