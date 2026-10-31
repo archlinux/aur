@@ -1,0 +1,11 @@
+# Gate for check_for_updates_maintained.sh: this package's .nvchecker.toml
+# deliberately tracks libarchive's own upstream releases directly (see
+# that file's own comment), which can run ahead of Arch's official
+# core/libarchive package. This file lets the update-check script hold
+# off flagging UPD until Arch's own libarchive has caught up to the
+# same version we'd be bumping to -- see memory/libarchive-static.md's
+# 2026-10-31 entry (and the 2026-10-15 entry) for the incident that
+# motivated this.
+[gate]
+source = "archpkg"
+archpkg = "libarchive"
