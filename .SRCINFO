@@ -1,0 +1,25 @@
+pkgbase = open-quickshare-bin
+	pkgdesc = Complete Quick Share implementation for Linux with Bluetooth LE and Wi-Fi Direct
+	pkgver = 0.15.2
+	pkgrel = 1
+	url = https://github.com/ignotusbucius/open-quickshare
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	depends = bluez
+	depends = networkmanager
+	optdepends = wpa_supplicant: Wi-Fi Direct support with a compatible NetworkManager backend
+	optdepends = bluez-utils: Bluetooth troubleshooting utilities
+	provides = r-quick-share
+	provides = rquickshare
+	conflicts = r-quick-share
+	conflicts = r-quick-share-bin
+	conflicts = rquickshare
+	options = !debug
+	source = https://github.com/ignotusbucius/open-quickshare/releases/download/v0.15.2/open-quickshare_0.15.2_x86_64.deb
+	sha256sums = 85c0f86b1b024cabfb27c77dc7eeda2abc49542bf9cc4f58484187af4e18301b
+
+pkgname = open-quickshare-bin
