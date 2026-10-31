@@ -1,16 +1,16 @@
 pkgbase = icebath-bin
 	pkgdesc = Tiling agentic harness and netrunner toolkit
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://icebath.app
 	license = MIT
 	conflicts = icebath
 	provides = icebath
 	arch = aarch64
-	source_aarch64 = icebath-bin_1.0.11_aarch64.tar.gz::https://github.com/nickheyer/icebath/releases/download/v1.0.11/icebath_1.0.11_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2b1acc55a642a2ba65d2420428f5e5344aa92299922e85ac01a6e6cf45827dc9
+	source_aarch64 = icebath-bin_1.0.12_aarch64.tar.gz::https://github.com/nickheyer/icebath/releases/download/v1.0.12/icebath_1.0.12_linux_arm64.tar.gz
+	sha256sums_aarch64 = 93bc52e8d36347bc3da1bfe5ec1a011630893fd7232ac35a173a485ea1f90df6
 	arch = x86_64
-	source_x86_64 = icebath-bin_1.0.11_x86_64.tar.gz::https://github.com/nickheyer/icebath/releases/download/v1.0.11/icebath_1.0.11_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9f9b1adc18f433026247e69b7150c20e277f9bd1cb83ef472d40f22e323cc190
+	source_x86_64 = icebath-bin_1.0.12_x86_64.tar.gz::https://github.com/nickheyer/icebath/releases/download/v1.0.12/icebath_1.0.12_linux_amd64.tar.gz
+	sha256sums_x86_64 = ce15d1c5589fd54fe4940e62b14f9b9ca46a9ef222699ee307f1b6ddf548007d
 	
 pkgname = icebath-bin
