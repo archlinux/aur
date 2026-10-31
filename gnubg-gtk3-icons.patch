@@ -1,0 +1,40 @@
+--- a/src/gnubg-gtk3/gtkgame.c
++++ b/src/gnubg-gtk3/gtkgame.c
+@@ -4796,6 +4796,7 @@
+     g_free(sz);
+ 
+     fX = gtk_init_check(argc, argv);
++    gtk_icon_theme_prepend_search_path(gtk_icon_theme_get_default(), "/usr/share/gnubg-gtk3/icons");
+     if (!fX)
+         return;
+ 
+--- a/src/gnubg-gtk3/gtktoolbar.c
++++ b/src/gnubg-gtk3/gtktoolbar.c
+@@ -381,6 +381,7 @@
+     toolbarwidget *ptw = (toolbarwidget *) g_malloc(sizeof(toolbarwidget));
+ 
+     pwtb = gtk_ui_manager_get_widget(puim, "/MainToolBar");
++    gtk_widget_set_name(pwtb, "gnubg-toolbar");
+     g_object_set_data_full(G_OBJECT(pwtb), "toolbarwidget", ptw, g_free);
+     gtk_toolbar_set_style(GTK_TOOLBAR(pwtb), GTK_TOOLBAR_BOTH);
+ 
+--- a/src/gnubg-gtk3/gnubg.css
++++ b/src/gnubg-gtk3/gnubg.css
+@@ -137,3 +137,17 @@
+ progressbar {
+     padding: 10px;
+ }
++
++/*
++ * Fixed dark background for the main toolbar, so its icons (gnubg's own
++ * bundled ones and anything still resolved via the system icon theme)
++ * stay legible regardless of the user's active GTK/icon theme - see
++ * gtk_widget_set_name(pwtb, "gnubg-toolbar") in gtktoolbar.c.
++ */
++#gnubg-toolbar {
++    background-color: #363636;
++}
++
++#gnubg-toolbar label {
++    color: #e0e0e0;
++}
