@@ -47,6 +47,11 @@ prepare() {
   sed -i 's|<TargetFrameworks>netstandard1.0;|<TargetFrameworks>|' src/Humanizer/Humanizer.csproj
   sed -i -e '/<group targetFramework="netstandard1.0">/,/<\/group>/d' -e '/bin\\Release\\netstandard1.0/d' \
     NuSpecs/Humanizer.Core.nuspec
+  # Tests change global configuration (EnumHumanizeWithCustomDescriptionPropertyNamesTests, the date
+  # strategy in DateHumanize), which makes others fail randomly when run in parallel. The runner
+  # ignores the setting as a RunSettings argument, so it goes into its configuration.
+  sed -i 's/"parallelizeAssembly": true/&,\n    "parallelizeTestCollections": false/' \
+    src/Humanizer.Tests/xunit.runner.json
 }
 
 build() {
@@ -70,13 +75,11 @@ check() {
     'FullyQualifiedName!=Humanizer.Tests.Localisation.fr.Bytes.ByteSizeExtensionsTests.HumanizesBytes'
   )
   # There's no test build for net10.0, run the one for net6.0 on the current runtime.
-  # Tests change global configuration (EnumHumanizeWithCustomDescriptionPropertyNamesTests), which
-  # makes others fail randomly when run in parallel.
   DOTNET_ROLL_FORWARD=Major dotnet test src/Humanizer.Tests/Humanizer.Tests.csproj "${_build_arguments[@]}" \
     --framework net6.0 --filter "$(
       IFS='&'
       echo "${_filter[*]}"
-    )" -- xUnit.ParallelizeTestCollections=false
+    )"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
