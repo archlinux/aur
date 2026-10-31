@@ -1,6 +1,6 @@
 pkgbase = brscan-skey
 	pkgdesc = Brother scan-key-tool
-	pkgver = 0.3.5_0
+	pkgver = 0.3.6_0
 	pkgrel = 1
 	url = http://support.brother.com/
 	install = brscan-skey.install
@@ -17,9 +17,9 @@ pkgbase = brscan-skey
 	b2sums = 834ef59d223b4ce5b34bd7257ced5660b820964869254b82b22dcb7d50a79bf452fd0677de037a013ffd780bfc39f8290e58652e056b67a35eaf524adf25653c
 	b2sums = 771fdb9cd7a45bf697b6e4ca3faa2299767226ebac1d0e0a6f5a90bd51b374f1f4ea90dc1c9211e166b1c40a2bcce5402ac267bb5f8db8d762e4b6500bd1d3a2
 	b2sums = 4bbfcab517ff0b2ee48aba4be84fcbe36ef26c4232563fa9fb1915c9c4b76785d38954b51f68792613bf109d3217833176070869ef5be0c312cf4b1db263d91f
-	source_i686 = http://download.brother.com/welcome/dlf006649/brscan-skey-0.3.5-0.i386.rpm
-	b2sums_i686 = 78055f0bef1d733b1c943470fa3083ecd0a422c88151103b5346da4ba431e192f23195a0cde614d8eb601741f644f5ff0eea973e4b08087ae4e564ab1ba392a9
-	source_x86_64 = http://download.brother.com/welcome/dlf006650/brscan-skey-0.3.5-0.x86_64.rpm
-	b2sums_x86_64 = 22498692f345da364d116b026314a7a9d29916102b571604435918fda80dfc624754bd1bd8e50c2d246cb5649ffc7850a3579aa2063cb5c44948d3f505c521df
+	source_i686 = http://download.brother.com/welcome/dlf006649/brscan-skey-0.3.6-0.i386.rpm
+	b2sums_i686 = b37ef573f0f134e0e8595908b39be4739d635d1d6a4efb8858ffa0c2dc4dc48b3d92513b68c036145961fef183bbb5a12ea99dbe7a15e490d5534c81e86967da
+	source_x86_64 = http://download.brother.com/welcome/dlf006650/brscan-skey-0.3.6-0.x86_64.rpm
+	b2sums_x86_64 = ab34ef3af6c01155a4019e73eb47916bcb7b25a3577f1c392fa812cc7c022d9cf1d98a8b3c5551c6ece9d19dfd709ad94c4fa079af924edff6028f5576b2e14e
 
 pkgname = brscan-skey
