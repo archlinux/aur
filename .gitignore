@@ -1,0 +1,5 @@
+# makepkg artifacts — never commit these to the AUR repository
+src/
+pkg/
+*.pkg.tar.*
+*.deb
