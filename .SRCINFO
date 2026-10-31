@@ -1,6 +1,6 @@
 pkgbase = nexo-client
 	pkgdesc = Native Minecraft launcher — no webview, no bundled runtime
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Lokifisch/nexo-client
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = nexo-client
 	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
 	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
 	options = !lto
-	source = nexo-client-0.8.0.tar.gz::https://github.com/Lokifisch/nexo-client/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 6a95e23c1ba6e880d982c506457bd25be6cbe072764e0ac90d34fb1151821f71
+	source = nexo-client-0.9.0.tar.gz::https://github.com/Lokifisch/nexo-client/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 1d7d13c38fb384b9108dd2871749777222a7e718cf1b6b059a46d6d54558e9a9
 
 pkgname = nexo-client
