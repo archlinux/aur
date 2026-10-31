@@ -1,13 +1,13 @@
 pkgbase = jarmemu
 	pkgdesc = Simple ARMv7 simulator written in Java, intended for educational purpose
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dwightstudio.fr/jarmemu
 	arch = any
 	license = GPL-3
 	depends = java-runtime>=21
 	source = https://github.com/Dwight-Studio/JArmEmu/releases/download/v1.1.6/JArmEmu-1.1.6.zip
-	sha256sums = ca39901b64cf4c123162b98e0435d7b87ee35bf606a403a2510c2902833e11f9
+	sha256sums = 6c43d30ec11f6ae5a44bf6ec9d796d73ad39ca41b16a33fd1d7c086f0cee6a09
 
 pkgname = jarmemu
 	depends = java-runtime>=21
