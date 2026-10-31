@@ -1,0 +1,13 @@
+pkgbase = bettertimer-bin
+	pkgdesc = 'sleep' with progress and notifications, written in rust
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/clorine-software/bettertimer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = bettertimer
+	conflicts = bettertimer
+	source = https://github.com/clorine-software/bettertimer/releases/download/v1.1.1/bettertimer-1.1.1-x86_64.tar.gz
+	sha256sums = 83c46a95edaae73f720e7eebc09e2d384fee4ad87c26b86907f1f7968a8ba814
+
+pkgname = bettertimer-bin
