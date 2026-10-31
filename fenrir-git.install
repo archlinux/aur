@@ -1,5 +1,6 @@
 post_upgrade() {
-  echo "==> IMPORTANT: Fenrir configuration update needed"
-  echo "    A setting name has changed. Please check /etc/fenrirscreenreader/settings/settings.conf"
-  echo "    and replace all occurrences of 'suspendingscreen' with 'ignorescreen'."
+  echo "==> Fenrir now uses Go and TOML configuration."
+  echo "    Review /etc/fenrirscreenreader/settings/settings.toml before restarting."
+  echo "    Python settings.conf files are not read or converted by this version."
+  echo "    Speech Dispatcher is the default speech driver; configure it or a hardware driver."
 }

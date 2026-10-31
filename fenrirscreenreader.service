@@ -1,0 +1,10 @@
+[Unit]
+Description=Fenrir console screen reader
+After=sound.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fenrir -f
+
+[Install]
+WantedBy=multi-user.target

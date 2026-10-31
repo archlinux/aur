@@ -1,42 +1,93 @@
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
 # Contributor: Chrys <chrys@linux-a11y.org>
 
+# makepkg supplies these variables and reads the package metadata.
+# shellcheck disable=SC2034,SC2154
+
 _gitname='fenrir'
 pkgname="${_gitname}-git"
-pkgver=r3322.4672592d
-pkgrel=1
+pkgver=r3639.95712078
+pkgrel=2
 epoch=1
-pkgdesc='A user space console screen reader written in python3'
-arch=('any')
+pkgdesc='A user space console screen reader written in Go'
+arch=('x86_64' 'aarch64')
 url="https://git.stormux.org/storm/fenrir"
-license=('LGPL')
-depends=('espeak-ng' 'gst-plugins-base' 'gst-plugins-good' 'gstreamer' 'python' 'python-gobject' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte' 'python-pyxdg' 'python-setproctitle' 'python-pyenchant' 'python-pexpect')
+license=('GPL-3.0-or-later')
+depends=('glibc' 'alsa-lib' 'libevdev' 'libx11' 'libvterm')
 optdepends=(
-  'socat: Control running Fenrir screenreader'
-  'sox: The default sound driver'
-  'xclip: for copy to X session clipboard'
-  'python-xlib: X11 terminal input mode with fenrir -x'
-  'speech-dispatcher: TTS support')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
+  'python: Codex message bridge'
+  'speech-dispatcher: Default speech driver'
+  'pulseaudio: PulseAudio sound server'
+  'pipewire-pulse: PulseAudio-compatible sound server'
+  'enchant: Spell checking (also requires a language dictionary)'
+  'libusb: DECtalk USB speech synthesizer'
+  'socat: Control running Fenrir screen reader'
+  'xclip: X clipboard synchronization')
+makedepends=('git' 'go>=1.27.2' 'pkgconf')
 provides=('fenrir')
 conflicts=('fenrir')
-backup=('etc/fenrirscreenreader/settings/settings.conf')
-source=("git+https://git.stormux.org/storm/${_gitname}.git")
+backup=(
+  'etc/fenrirscreenreader/settings/settings.toml'
+  'etc/fenrirscreenreader/keyboard/desktop.toml'
+  'etc/fenrirscreenreader/keyboard/laptop.toml'
+  'etc/fenrirscreenreader/punctuation/de.toml'
+  'etc/fenrirscreenreader/punctuation/default.toml'
+  'etc/fenrirscreenreader/punctuation/en.toml'
+  'etc/fenrirscreenreader/punctuation/es.toml'
+  'etc/fenrirscreenreader/punctuation/fr.toml'
+  'etc/fenrirscreenreader/punctuation/pl.toml'
+  'etc/fenrirscreenreader/punctuation/rhvoice-en.toml')
+source=("git+https://git.stormux.org/storm/${_gitname}.git"
+        'fenrirscreenreader.service')
 install=fenrir-git.install
-sha512sums=('SKIP')
+sha512sums=('SKIP'
+            '129a2cf74d986297cc6d65a09e010a4410e31b1598ea4f714f7b185c74c5c40b252cf5e2bb55a5a02a8bac154d4a93dc5c34326f2fdf4bea885da0025e670697')
 
 pkgver()
 {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$_gitname" || return
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build()
+{
+  cd "$srcdir/$_gitname" || return
+  export CGO_ENABLED=1
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOCACHE="$srcdir/go-build"
+  export GOMODCACHE="$srcdir/go-mod"
+  # Allow makepkg -c to remove downloaded modules after packaging.
+  go build -trimpath -buildmode=pie -mod=readonly -modcacherw \
+    -ldflags "-linkmode=external" \
+    -o fenrir ./cmd/fenrir
+}
+
+check()
+{
+  cd "$srcdir/$_gitname" || return
+  ./fenrir --config config/settings/settings.toml --check-config
 }
 
 package()
 {
-  cd "$srcdir/$_gitname"
-  python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
-  install -d "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 autostart/systemd/Arch/fenrir.service "$pkgdir/usr/lib/systemd/system/fenrirscreenreader.service"
+  cd "$srcdir/$_gitname" || return
+  install -Dm755 fenrir "$pkgdir/usr/bin/fenrir"
+  install -Dm644 config/settings/settings.toml \
+    "$pkgdir/etc/fenrirscreenreader/settings/settings.toml"
+  install -Dm644 config/keyboard/*.toml -t "$pkgdir/etc/fenrirscreenreader/keyboard/"
+  install -Dm644 config/punctuation/*.toml -t "$pkgdir/etc/fenrirscreenreader/punctuation/"
+  install -d "$pkgdir/usr/share/sounds/fenrirscreenreader"
+  cp -r config/sound/. "$pkgdir/usr/share/sounds/fenrirscreenreader/"
+  install -Dm755 config/scripts/* -t "$pkgdir/usr/share/fenrirscreenreader/scripts/"
+  install -Dm755 tools/*.sh tools/*.py -t "$pkgdir/usr/share/fenrirscreenreader/tools/"
+  install -Dm644 docs/fenrir.1 "$pkgdir/usr/share/man/man1/fenrir.1"
+  install -Dm644 README.md CREDITS docs/user.md docs/user.txt \
+    -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 "$srcdir/fenrirscreenreader.service" \
+    "$pkgdir/usr/lib/systemd/system/fenrirscreenreader.service"
 }
 
 # vim: set ts=2 sw=2 et:
