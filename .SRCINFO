@@ -1,6 +1,6 @@
 pkgbase = librepaper-bin
 	pkgdesc = A free collaborative writing, editing, and commenting platform
-	pkgver = 0.0.61
+	pkgver = 0.0.62
 	pkgrel = 1
 	url = https://github.com/LibrePaper/librepaper
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = librepaper-bin
 	depends = at-spi2-core
 	depends = dbus
 	depends = hicolor-icon-theme
-	provides = librepaper=0.0.61
+	provides = librepaper=0.0.62
 	conflicts = librepaper
 	options = !debug
 	options = !strip
-	source = LICENSE-0.0.61::https://raw.githubusercontent.com/LibrePaper/librepaper/v0.0.61/LICENSE
+	source = LICENSE-0.0.62::https://raw.githubusercontent.com/LibrePaper/librepaper/v0.0.62/LICENSE
 	sha256sums = 24e8fce6a0afd334944a8982e1f388dab3e208beb33acaecc4a490819918add0
-	source_x86_64 = librepaper-bin-0.0.61-x86_64.deb::https://github.com/LibrePaper/librepaper/releases/download/v0.0.61/librepaper_0.0.61_amd64.deb
-	sha256sums_x86_64 = daec9d39cd7dce01c3a8503437f48bf2c063104ea5c68dd5e1701b6e44ad1b05
+	source_x86_64 = librepaper-bin-0.0.62-x86_64.deb::https://github.com/LibrePaper/librepaper/releases/download/v0.0.62/librepaper_0.0.62_amd64.deb
+	sha256sums_x86_64 = f8ee466ad8e38d272264fddd4cbbe3d86e46d6ba28a03fdbb95b1d53839bcd78
 
 pkgname = librepaper-bin
