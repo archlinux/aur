@@ -5,7 +5,7 @@
 # pkgrel and sha256sums for every release; change the template there, not on the AUR.
 
 pkgname=ultra-9000
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Agent harness with native Alacritty terminals in a Tauri/Svelte interface'
 arch=('x86_64')
@@ -13,6 +13,7 @@ url='https://github.com/yasen-pavlov/ultra_9000'
 license=('MIT OR Apache-2.0')
 # Every library the binary links directly, plus librsvg, libxkbcommon, mesa (EGL) and
 # wayland, which it loads at runtime (namcap reports those four as possibly unneeded).
+# xdg-utils supplies the desktop opener for file links and the config directory.
 depends=(
   'cairo'
   'dbus'
@@ -31,6 +32,7 @@ depends=(
   'pango'
   'wayland'
   'webkit2gtk-4.1'
+  'xdg-utils'
 )
 makedepends=('bun' 'cargo')
 # !lto: makepkg's C LTO flags do not mix with rustc-linked objects of the -sys crates.
@@ -38,7 +40,7 @@ makedepends=('bun' 'cargo')
 # instead of a separate -debug package.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7f4db09a27d8f85bb7ca6d7d485adc00315d53b3b05bbd767c6c282faac1dc6f')
+sha256sums=('cab9b2f260fc260d6bc24b0d964fa2d75665b8ce38553b83f8d905b804ade0dc')
 
 prepare() {
   cd "ultra_9000-$pkgver"
