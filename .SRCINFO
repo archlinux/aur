@@ -1,0 +1,15 @@
+pkgbase = keploy
+	pkgdesc = Record real API traffic and replay it as regression tests with auto-generated dependency mocks
+	pkgver = 3.6.162
+	pkgrel = 1
+	url = https://keploy.io
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	optdepends = docker: ejecutar aplicaciones en contenedores
+	optdepends = bpf: instrumentación EBPF para mocks
+	source = keploy-3.6.162.tar.gz::https://github.com/keploy/keploy/archive/refs/tags/v3.6.162.tar.gz
+	sha256sums = e7b769413d5127266c1cd4eb0c0931dfb1615d6869afed524f7d5b7ebea13233
+
+pkgname = keploy
