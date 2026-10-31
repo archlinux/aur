@@ -1,0 +1,15 @@
+pkgbase = les11-mc-dx-temperature-reader
+	pkgdesc = Read the LES11-MC-Dx USB temperature sensor over Modbus RTU
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.lesminer.com/productinfo/180794.html
+	arch = any
+	license = 0BSD
+	depends = python
+	depends = python-pyserial
+	source = les11-mc-dx-reader.py
+	source = LICENSE
+	b2sums = b4bed81e8ae601bc490666aaa35b3ca9cf724ce4bc9b3cbb7add1e033810f6d11be9740d1f675fc9b601d075e6546d15c776407e8b566540c693fe83a309d199
+	b2sums = a58bbb51ab7667a799cdc0b3e2229f06484483761351456acb8d08b7ef85c18286016287ad9e7da3f44658472e6f2567173a992ba3f310c1e90a138ab858a9f7
+
+pkgname = les11-mc-dx-temperature-reader
