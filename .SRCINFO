@@ -1,6 +1,6 @@
 pkgbase = xorg-server-phoenix
 	pkgver = 26.1.99.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/dec05eba/xserver
 	arch = x86_64
 	groups = xorg
@@ -50,10 +50,10 @@ pkgbase = xorg-server-phoenix
 	makedepends = systemd
 	makedepends = meson
 	makedepends = git
-	source = xorg-server-50fdddb8081ba2e2c2983e15e270d2cd242452fa.tar.gz::https://github.com/dec05eba/xserver/archive/50fdddb8081ba2e2c2983e15e270d2cd242452fa.tar.gz
+	source = xorg-server-f1b662d2df04e620e26c232d95f255693caa0c23.tar.gz::https://github.com/dec05eba/xserver/archive/f1b662d2df04e620e26c232d95f255693caa0c23.tar.gz
 	source = xvfb-run
 	source = xvfb-run.1
-	sha512sums = 9de75c5fa2ec8dde821c45a280d6cd51d044615b348ee9283bc750a8e6505e1cfa92198c5f92c7df772f6dd32adf3a0790965bbd1fb5456002eb8ee3ed0936d5
+	sha512sums = ee55830987860cb78e9c6c71cb435c0b9431ee9a455c9e0b451d90bc631f31717167de62de1ddf9bd29f5d0489eaedf106100b6a70d275bbbf3d3b73a7de9141
 	sha512sums = 672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49
 	sha512sums = de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22
 
@@ -92,7 +92,7 @@ pkgname = xorg-server-phoenix
 	replaces = xf86-video-modesetting
 
 pkgname = xorg-server-xephyr-phoenix
-	pkgdesc = A nested X server that runs as an X application
+	pkgdesc = A nested X server that runs as an X application (Xorg server phoenix fork)
 	depends = libxfont2
 	depends = libgl
 	depends = libepoxy
@@ -116,7 +116,7 @@ pkgname = xorg-server-xephyr-phoenix
 	conflicts = xorg-server-xephyr
 
 pkgname = xorg-server-xvfb-phoenix
-	pkgdesc = Virtual framebuffer X server
+	pkgdesc = Virtual framebuffer X server (Xorg server phoenix fork)
 	license = MIT
 	license = GPL-2.0-only
 	depends = libxfont2
@@ -136,7 +136,7 @@ pkgname = xorg-server-xvfb-phoenix
 	conflicts = xorg-server-xvfb
 
 pkgname = xorg-server-xnest-phoenix
-	pkgdesc = A nested X server that runs as an X application
+	pkgdesc = A nested X server that runs as an X application (Xorg server phoenix fork)
 	depends = libxfont2
 	depends = libunwind
 	depends = libxext
@@ -153,7 +153,7 @@ pkgname = xorg-server-xnest-phoenix
 	conflicts = xorg-server-xnest
 
 pkgname = xorg-server-common-phoenix
-	pkgdesc = Xorg server common files
+	pkgdesc = Xorg server common files (phoenix fork)
 	depends = xkeyboard-config
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
@@ -161,7 +161,7 @@ pkgname = xorg-server-common-phoenix
 	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-phoenix
-	pkgdesc = Development files for the X.Org X server
+	pkgdesc = Development files for the X.Org X server (phoenix fork)
 	depends = xorgproto
 	depends = mesa
 	depends = libpciaccess
@@ -171,6 +171,6 @@ pkgname = xorg-server-devel-phoenix
 	conflicts = xorg-server-devel
 
 pkgname = xorg-server-src-phoenix
-	pkgdesc = Source files of the X.Org X server
+	pkgdesc = Source files of the X.Org X server (phoenix fork)
 	provides = xorg-server-src=26.1.99.1
 	conflicts = xorg-server-src

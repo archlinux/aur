@@ -6,8 +6,8 @@ pkgbase=xorg-server-phoenix
 pkgname=('xorg-server-phoenix' 'xorg-server-xephyr-phoenix' 'xorg-server-xvfb-phoenix' 'xorg-server-xnest-phoenix'
          'xorg-server-common-phoenix' 'xorg-server-devel-phoenix' 'xorg-server-src-phoenix')
 pkgver=26.1.99.1
-pkgrel=10
-_commit=50fdddb8081ba2e2c2983e15e270d2cd242452fa
+pkgrel=11
+_commit=f1b662d2df04e620e26c232d95f255693caa0c23
 _srcname=xserver-${_commit}
 _upstreamname=xorg-server
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(${_upstreamname}-${_commit}.tar.gz::https://github.com/dec05eba/xserver/
         xvfb-run # with updates from FC master
         xvfb-run.1
 )
-sha512sums=('9de75c5fa2ec8dde821c45a280d6cd51d044615b348ee9283bc750a8e6505e1cfa92198c5f92c7df772f6dd32adf3a0790965bbd1fb5456002eb8ee3ed0936d5'
+sha512sums=('ee55830987860cb78e9c6c71cb435c0b9431ee9a455c9e0b451d90bc631f31717167de62de1ddf9bd29f5d0489eaedf106100b6a70d275bbbf3d3b73a7de9141'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
@@ -99,7 +99,7 @@ _install() {
 }
 
 package_xorg-server-common-phoenix() {
-  pkgdesc="Xorg server common files"
+  pkgdesc="Xorg server common files (phoenix fork)"
   provides=("xorg-server-common=${pkgver}")
   conflicts=('xorg-server-common')
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
@@ -141,7 +141,7 @@ package_xorg-server-phoenix() {
 }
 
 package_xorg-server-xephyr-phoenix() {
-  pkgdesc="A nested X server that runs as an X application"
+  pkgdesc="A nested X server that runs as an X application (Xorg server phoenix fork)"
   provides=("xorg-server-xephyr=${pkgver}")
   conflicts=('xorg-server-xephyr')
   depends=(libxfont2 libgl libepoxy libunwind systemd-libs pixman xorg-server-common
@@ -157,7 +157,7 @@ package_xorg-server-xephyr-phoenix() {
 }
 
 package_xorg-server-xvfb-phoenix() {
-  pkgdesc="Virtual framebuffer X server"
+  pkgdesc="Virtual framebuffer X server (Xorg server phoenix fork)"
   provides=("xorg-server-xvfb=${pkgver}")
   conflicts=('xorg-server-xvfb')
   # xvfb-run is GPLv2, rest is MIT
@@ -177,7 +177,7 @@ package_xorg-server-xvfb-phoenix() {
 }
 
 package_xorg-server-xnest-phoenix() {
-  pkgdesc="A nested X server that runs as an X application"
+  pkgdesc="A nested X server that runs as an X application (Xorg server phoenix fork)"
   provides=("xorg-server-xnest=${pkgver}")
   conflicts=('xorg-server-xnest')
   depends=(libxfont2 libunwind libxext pixman xorg-server-common nettle
@@ -192,7 +192,7 @@ package_xorg-server-xnest-phoenix() {
 }
 
 package_xorg-server-devel-phoenix() {
-  pkgdesc="Development files for the X.Org X server"
+  pkgdesc="Development files for the X.Org X server (phoenix fork)"
   provides=("xorg-server-devel=${pkgver}")
   conflicts=('xorg-server-devel')
   depends=('xorgproto' 'mesa' 'libpciaccess' 'pixman'
@@ -211,7 +211,7 @@ package_xorg-server-devel-phoenix() {
 }
 
 package_xorg-server-src-phoenix() {
-  pkgdesc="Source files of the X.Org X server"
+  pkgdesc="Source files of the X.Org X server (phoenix fork)"
   provides=("xorg-server-src=${pkgver}")
   conflicts=('xorg-server-src')
 
