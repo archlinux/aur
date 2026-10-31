@@ -1,0 +1,13 @@
+pkgbase = whyd
+	pkgdesc = Diagnose why your Linux system froze, crashed or shut down
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/vmaltarello/whyd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	source = whyd-0.2.0.tar.gz::https://github.com/vmaltarello/whyd/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 95b05bc7895f626473b9807c4e39ba789bec9a36b649b7a4981615875816cfb1
+
+pkgname = whyd
