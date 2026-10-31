@@ -5,11 +5,11 @@
 
 _pkgname=baidunetdisk
 pkgname=${_pkgname}-electron
-pkgver=8.9.6
+pkgver=8.9.7
 pkgrel=1
 pkgdesc="Baidu Nedisk - a cloud storage client (Linux Version). Run with system electron."
 arch=('x86_64')
-depends=('gtkmm' 'electron26' 'libatomic')
+depends=('gtkmm' 'electron22' 'libatomic')
 makedepends=('asar' 'patchelf')
 provides=("baidunetdisk")
 conflicts=("baidunetdisk")
@@ -21,15 +21,15 @@ source=("0001-baidunetdisk-bin-desktop-file.patch"
         "baidunetdisk-main.js"
         "https://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('17bda6036e07916971257f25731130fb1b760b80798fa13273db39268ab9f28c'
-            '93d8ff804233f0b8957e5c38f2993e5c646b9afb3427bafaed13b7d7ef2263c6'
+            '1985035bf0bde478f3d638819f638eab8244d5f2abd85adb9602729b4d7fddf2'
             '73494c86a0484f2ea7d5cbac7c00752367796413bec2980ba295ecdab8fc9afb'
-            'ae6b20a2b2fd84313e1da722dfe14e39d5b446649b46db600f83b25caf7541e2')
+            '6c0a5df4fe90f7f1aa5e07e9a7044e3e4d1b6ccaa7beabdc1f7f9cc25fa3b31c')
 
 prepare() {
     bsdtar -xpf "data.tar.bz2"
     patch -d "usr" -p1 < "0001-baidunetdisk-bin-desktop-file.patch"
 
-    # Koffi 2.8.8's executable-stack flag prevents dlopen with current glibc.
+    # Clear any executable-stack flag on the external Koffi copy.
     asar extract-file "opt/${_pkgname}/resources/app.asar" node_modules/koffi/build/koffi/linux_x64/koffi.node
     patchelf --clear-execstack koffi.node
 }
