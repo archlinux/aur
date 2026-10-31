@@ -36,7 +36,7 @@ provides=('sushi')
 conflicts=('sushi' 'nemo-preview')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9d70218369d8d0da12733107b3866f1b5295292128a024f61b84a3698cdca84d')
 
 prepare() {
   cd "$pkgname-$pkgver"
