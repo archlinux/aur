@@ -6,8 +6,8 @@ pkgbase=xorg-server-phoenix
 pkgname=('xorg-server-phoenix' 'xorg-server-xephyr-phoenix' 'xorg-server-xvfb-phoenix' 'xorg-server-xnest-phoenix'
          'xorg-server-common-phoenix' 'xorg-server-devel-phoenix' 'xorg-server-src-phoenix')
 pkgver=26.1.99.1
-pkgrel=11
-_commit=f1b662d2df04e620e26c232d95f255693caa0c23
+pkgrel=12
+_commit=68f1991e95ecb1b92d9aedb6a3dbf9c0204257ef
 _srcname=xserver-${_commit}
 _upstreamname=xorg-server
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(${_upstreamname}-${_commit}.tar.gz::https://github.com/dec05eba/xserver/
         xvfb-run # with updates from FC master
         xvfb-run.1
 )
-sha512sums=('ee55830987860cb78e9c6c71cb435c0b9431ee9a455c9e0b451d90bc631f31717167de62de1ddf9bd29f5d0489eaedf106100b6a70d275bbbf3d3b73a7de9141'
+sha512sums=('81d5daf5ff1dd20ba1d988448ef16a7b7d7a28a2245f7d08a47dc965631ddeae1b0bf9d23786e931270d4b94f849a749fc8e342a2923f7fbc08911b4a10a3f21'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
