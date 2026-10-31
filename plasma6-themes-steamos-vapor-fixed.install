@@ -1,17 +1,19 @@
 post_install() {
   printf '%s\n' \
     '' \
-    'Vapor / VGUI2 libadwaita setup:' \
-    '  In KDE System Settings > Colors & Themes > Application Style, select' \
-    '  Vapor, Vapor-dark or VGUI2Classic as the GNOME/GTK theme and click Apply.' \
-    '  Save your work, then log out of KDE Plasma and log back in to activate' \
-    '  the matching libadwaita colors. Repeat after changing GTK themes.' \
+    'Finish setting up your Vapor or VGUI2 theme:' \
     '' \
-    '  To apply without logging out, run as your normal user:' \
-    '    vapor-libadwaita auto' \
-    '  Then fully close and reopen GTK 4/libadwaita applications.' \
-    '  A previous explicit disable is preserved; use vapor-libadwaita enable' \
-    '  if you want to re-enable it.' \
+    '  1. Open System Settings > Colors & Themes > Application Style.' \
+    '  2. Open GNOME/GTK Application Style. This controls the appearance' \
+    '     of applications that use a separate theme setting.' \
+    '  3. Choose Vapor to match Vapor, or VGUI2Classic to match VGUI2,' \
+    '     then click Apply.' \
+    '  4. Save your work and close your applications.' \
+    '  5. Open the application menu, choose Log Out, then log back in.' \
+    '' \
+    '  Logging out lets supported applications load the matching colors.' \
+    '  Do this again whenever you switch between Vapor and VGUI2.' \
+    '  If your preferred theme is already selected, start at step 4.' \
     ''
 }
 

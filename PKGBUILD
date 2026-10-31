@@ -3,7 +3,7 @@
 pkgname=plasma6-themes-steamos-vapor-fixed
 _reponame=steamos-vapor-plasma-6.8
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SteamOS Vapor and VGUI themes for KDE Plasma, fixed for Plasma 6.8, with GTK 3/4, native libadwaita, Konsole, Alacritty and kitty colors"
 arch=('any')
 url="https://github.com/orlfman/$_reponame"
