@@ -1,4 +1,4 @@
-["archium-bin"]
+[archium-bin]
 source = "github"
 github = "keircn/archium"
 use_latest_release = true
