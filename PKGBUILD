@@ -1,4 +1,5 @@
-# Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# Maintainer: RiverOnVenus <aur@zhui.dev>
+# Contributor: Jiachen Yang <farseerfc@gmail.com>
 
 pkgname=pacvis-git
 _pkgname=pacvis
