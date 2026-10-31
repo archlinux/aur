@@ -39,12 +39,12 @@ depends=(
   'pango'
   'systemd-libs'
   'libva'
-  'vulkan-icd-loader'
 )
 optdepends=(
   'libva-mesa-driver: VAAPI driver for AMD GPUs'
   'intel-media-driver: VAAPI driver for modern Intel GPUs'
   'libva-utils: VAAPI diagnostics such as vainfo'
+  'vulkan-icd-loader: Vulkan rendering and hardware WebGPU'
 )
 
 makedepends=(
