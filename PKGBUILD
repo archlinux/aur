@@ -7,13 +7,13 @@ _nugetid=Humanizer.Core
 pkgver=2.14.1
 pkgrel=2
 pkgdesc="Turns strings, type names, enum fields and dates into a human friendly format, 2.x (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/Humanizr/Humanizer'
-license=('MIT')
+license=(MIT)
 provides=("dotnet-humanizer-core=$pkgver")
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 # 2.x is what JsonPointer.Net 5.x (dotnet-jsonpointer-net-5) needs. The commit the package was
