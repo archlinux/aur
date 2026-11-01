@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 # Co-maintainer: robertfoster
 pkgname=rayfish-bin
-pkgver=0.5.12
+pkgver=0.5.13
 pkgrel=1
 pkgdesc="P2P mesh VPN powered by iroh"
 arch=(x86_64 aarch64)
@@ -15,10 +15,10 @@ source_x86_64=("rayfish-$CARCH-$pkgver.sha256::https://github.com/rayfish/rayfis
 source_aarch64=("rayfish-aarch64-$pkgver.sha256::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-aarch64.sha256"
 "rayfish-aarch64-$pkgver::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-aarch64")
 b2sums=('ea64e603735076c542af3d9c61520709df834f4255ee2da6bf05a66285a2b1bfdcd2f3a2c0ed98053f0f77f21b8df9fee116fc686778fc3f68e76d7e73f70737')
-b2sums_x86_64=('bd6de5edcd98f15e67129023f25ef393f2260c08979426c6a673740b4687b6320897a163d980a917999ed25473a62a665d6803117070caf6dd3ea72cdadba8c1'
-               '51fcc3f2d5cc159cf6a50b6a3ef9a410c9466a9b61ba8f627862ad31800a4822614c8f864249f593e97f26c98ec3c8218bb7ca5d5294ba4f0d414277a75fb265')
-b2sums_aarch64=('05a08b91f3e53f2ac3606675d428f329e7b9eb8ca9d68c33354abb496a37cf9e91cfa925d3a8994e6152481df2f3f06644cc72ed02dba0e08c93939ca687d902'
-                '6ad18a7d97df6a5934b572ffa76d2868ff06a5f424ffe9a49ac4440359f5fbc1436e71aa08a4dee8a06eb2f7c19eb26f49c44cf36d8a6cab080e4a89949d4ff0')
+b2sums_x86_64=('fc8228dd05d7a03b0096ecc55cffb4230129e257ffa2bb6816d567c43d7ec9b164afad5940fb51b9f112558f3bf12f245ae83371c431c39f1eaab4880a7c3a26'
+               'f9f7d17c95fbefc662fec624a3fb98dca216e01a302c55fc54f27ea429cbe88768db89c2e3ba3c44124ba394dfd0b3231f36bf1a906bb8a391e7fe72fddc68c5')
+b2sums_aarch64=('4a8ab65cedb70158b8ce210b969ea8cc75a7c4632cf425f99deb3be63dd4ab41e63493b6c0d855e89b8f6a128078928eed7535f769d41f888d106b2ba93bc968'
+                '52eafa64519c099809b8f03f4b95868c73427f4dee902470c076f79bd07f30f722381f6843df36d220fa5af49df5439830fcf662358903f8ce30fff19b8b14ba')
 
 package() {
   install -Dm755 "rayfish-$CARCH-$pkgver" "$pkgdir/usr/bin/ray"
