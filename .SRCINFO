@@ -1,7 +1,7 @@
 pkgbase = perl-javascript-quickjs
 	pkgdesc = Run JavaScript via QuickJS in Perl
 	pkgver = 0.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/JavaScript::QuickJS
 	arch = x86_64
 	license = Artistic-1.0-Perl

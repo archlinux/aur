@@ -2,7 +2,7 @@
 _pkgname=JavaScript-QuickJS
 pkgname=perl-javascript-quickjs
 pkgver=0.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Run JavaScript via QuickJS in Perl"
 arch=('x86_64')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
