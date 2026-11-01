@@ -2,7 +2,7 @@
 
 pkgname=serena
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful MCP server for coding, providing semantic retrieval and editing capabilities. The IDE for your agent."
 arch=(any)
 url="https://github.com/oraios/serena"
@@ -20,7 +20,7 @@ depends=(
     "python-jinja"
     "python-joblib"
     "python-lsprotocol"
-    "python-mcp>=2.2.0"
+    "python-mcp>=2.3.0"
     "python-oslex"
     "python-overrides"
     "python-pathspec"
