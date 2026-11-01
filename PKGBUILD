@@ -1,43 +1,49 @@
+# shellcheck shell=bash disable=SC2034,SC2154
+
 # Maintainer: Damien Flament <damien.flament at gmx dot com>
 
-_repository='libdxfrw'
 pkgname=libdxfrw-git
-pkgver=v0.5.10.r73.g3431cc6
+pkgver=LC2.2.0.r29.gd68fb1e
 pkgrel=1
 pkgdesc="C++ library to read/write DXF files in binary and ASCII form and to read DWG files from r14 to v2015."
-arch=('x86_64')
 url="http://sourceforge.net/projects/libdxfrw"
 license=('GPL')
 
-depends=()
+arch=('x86_64')
 makedepends=('git' 'cmake')
-provides=('libdxfrw')
+depends=()
+
 conflicts=('libdxfrw')
+provides=("libdxfrw=${pkgver}")
 
-source=("git+https://github.com/LibreCAD/$_repository.git")
-md5sums=('SKIP')
+source=("${pkgname}::git+https://github.com/LibreCAD/libdxfrw.git")
+sha256sums=('SKIP')
 
-pkgver() {
-    cd "$_repository" || return
+function pkgver
+{
+    cd "$pkgname" || return
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+function prepare
+{
     cmake -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
-        -S "$_repository" \
+        -S "$pkgname" \
         -B build \
         -DCMAKE_BUILD_TYPE=Release
 }
 
-build() {
+function build
+{
     cd build || return
 
-    make
+    make all
 }
 
-package() {
+function package
+{
     cd build || return
 
     make install DESTDIR="$pkgdir"
