@@ -12,7 +12,7 @@ url='https://www.newtonsoft.com/json'
 license=('MIT')
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   git
 )
 # The release key isn't public, so the assemblies are public signed with the public key from .NET's

@@ -5,7 +5,7 @@ pkgbase = dotnet-newtonsoft-json
 	url = https://www.newtonsoft.com/json
 	arch = any
 	license = MIT
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-build-deps-10.0
 	makedepends = git
 	source = git+https://github.com/JamesNK/Newtonsoft.Json.git#tag=13.0.4
 	source = Newtonsoft.Json.snk::https://raw.githubusercontent.com/dotnet/dotnet/4099f83977f4d29604a9aeb971fb0a7bc1d5f699/prereqs/keys/Newtonsoft.Json.snk
