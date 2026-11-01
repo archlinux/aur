@@ -1,6 +1,6 @@
 pkgbase = qobine
 	pkgdesc = High resolution audio player backed by Qobuz. Formaly known as qobuz-player
-	pkgver = 2026.10.27
+	pkgver = 2026.10.31
 	pkgrel = 1
 	url = https://github.com/SofusA/qobine
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = qobine
 	conflicts = qobine-git
 	replaces = qobuz-player
 	options = !lto
-	source = qobine-2026-10-27.tar.gz::https://github.com/SofusA/qobine/archive/refs/tags/v2026-10-27.tar.gz
-	sha256sums = 9c8145da3c56d9b1c33ed4d6033b27e564babd1065b4070f519957d13eff518d
+	source = qobine-2026-10-31.tar.gz::https://github.com/SofusA/qobine/archive/refs/tags/v2026-10-31.tar.gz
+	sha256sums = ebb552dcd1e467873062d4a486fb0fe45f648b3ec279df36d60d6d34b807b8c3
 
 pkgname = qobine
