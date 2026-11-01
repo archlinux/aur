@@ -1,23 +1,22 @@
 pkgbase = python-qiime2
-	pkgdesc = the QIIME 2 framework
-	pkgver = 2020.8.0.dev0
+	pkgdesc = QIIME 2 compatibility API and command line interface
+	pkgver = 2026.10.0
 	pkgrel = 1
-	url = https://qiime2.org
-	arch = x86_64
-	license = BSD
+	url = https://github.com/qiime2/q2
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-versioningit
+	makedepends = python-wheel
 	depends = python
-	depends = python-yaml
-	depends = python-decorator
-	depends = python-tzlocal
-	depends = python-dateutil
-	depends = python-pyparsing
-	depends = python-pyparsing
-	depends = python-pandas
-	depends = python-bibtexparser
-	depends = python-networkx
-	source = https://github.com/qiime2/qiime2/archive/2020.8.0.dev0.tar.gz
-	sha256sums = 76560682412d4da250fd641bc3c5c54e48c9ed2ad2c69bf686c19b3be1b0541a
+	depends = python-rachis>=2026.10.0
+	depends = rachis-cli>=2026.10.0
+	depends = python-click
+	conflicts = python-q2cli
+	source = python-qiime2-2026.10.0.tar.gz::https://github.com/qiime2/q2/archive/3e6b00f6fc52c65f7826ea718e5e9b9ebeb3f847.tar.gz
+	sha256sums = 2d93c0b48e4aaf3b6139e8e841b4400299fbd46c42f3a80b104fcbcffd65b134
 
 pkgname = python-qiime2
-
