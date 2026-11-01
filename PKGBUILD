@@ -61,8 +61,22 @@ _dotnet_env() {
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
-  # RID of the .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's build
-  _rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+  # RID of the .NET SDK, the build host: arch-x64 for the source-built .NET of Arch, linux-arm64 for
+  # Microsoft's build. The RID the assemblies are published for follows the package architecture
+  # ($CARCH): the host's on a native build, Microsoft's portable linux-<arch> one on a cross build (an
+  # x86_64 host building for aarch64), whose runtime pack comes from nuget.org. The SDK compiles with
+  # the crossgen2 of the host either way.
+  _host_rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+  local _arch
+  case "$CARCH" in
+    x86_64) _arch=x64 ;;
+    aarch64) _arch=arm64 ;;
+  esac
+  if [[ "$_host_rid" == *-"$_arch" ]]; then
+    _rid="$_host_rid"
+  else
+    _rid="linux-$_arch"
+  fi
   _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([[:digit:]\.]+) .*/\1/")
 
   # Framework-dependent ReadyToRun images, see crossgen2-pack.targets. Code style isn't checked, the
@@ -353,6 +367,12 @@ build() {
 
 check() {
   _dotnet_env
+  # The ReadyToRun images of a cross build ($CARCH differs from the build host) are for another
+  # architecture, run the tests natively on the target instead
+  if [[ "$_rid" != "$_host_rid" ]]; then
+    echo 'powershell-editor-services: skipping the tests on a cross build; run them natively on the target' >&2
+    return 0
+  fi
   cd "$srcdir"/PowerShellEditorServices || exit
   # The tests install help for Microsoft.PowerShell.Archive for the current user, see the
   # SetupHelpForTests task of PowerShellEditorServices.build.ps1
