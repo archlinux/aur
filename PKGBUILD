@@ -1,7 +1,6 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-opentimestamps"
-_name="opentimestamps"
 pkgver=0.5.0
 pkgrel=1
 pkgdesc="Python3 library for creating and verifying OpenTimestamps proofs"
@@ -11,16 +10,16 @@ license=("LGPL-3.0-or-later")
 depends=("python" "python-bitcoinlib" "python-pycryptodomex")
 optdepends=("python-gitpython: timestamp git commits")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('c38e20e3970b821273c827a14365d3f8542aad390f26f340091daf10d4d2e428')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/python-opentimestamps-v$pkgver.tar.gz")
+sha256sums=('71da89eb68cdb0eb67f3ee932b6d743ca14c43648911b04551b04afdbcb1c703')
 
 build(){
- cd "${_name//-/_}-$pkgver"
+ cd "python-opentimestamps-python-opentimestamps-v$pkgver"
  python -m build --wheel --no-isolation
 }
 
 package(){
- cd "${_name//-/_}-$pkgver"
+ cd "python-opentimestamps-python-opentimestamps-v$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
  install -D -m 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
