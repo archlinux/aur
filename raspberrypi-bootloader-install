@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Check lineup is valid
+LINEUP="${1:-}"
+if [[ -z "$LINEUP" ]] || { [[ "$LINEUP" != "legacy" ]] && [[ "$LINEUP" != "rpi4" ]]; }; then
+    echo "Usage: $0 <board lineup: legacy|rpi4>"
+    exit 1
+fi
+
+# Check that firmware exists on the fs
+SRC="/usr/lib/raspberrypi/${LINEUP}/boot"
+if [[ ! -d "$SRC" ]]; then
+    echo "raspberrypi-bootloader-install: $SRC is missing"
+    exit 2
+fi
+
+# Find install location
+MOUNTPOINT=""
+for MNT in /boot /boot/efi /efi; do
+    if [[ "$(findmnt -no FSTYPE --mountpoint "$MNT" 2>/dev/null)" != "vfat" ]]; then
+        continue
+    fi
+    if [[ -n "$MOUNTPOINT" ]]; then
+        echo "raspberrypi-bootloader-install: several FAT partitions found"
+        exit 3
+    fi
+    MOUNTPOINT="$MNT"
+done
+if [[ -z "$MOUNTPOINT" ]]; then
+    echo "raspberrypi-bootloader-install: no FAT partition found at /boot, /boot/efi or /efi"
+    exit 4
+fi
+
+# Installation
+# As FAT filesystems don't have atomic operations, make it as robust as
+# possible by copying all the files as .new and then renaming them to overwrite
+# the old files. It should be a little better than just overwriting the file
+# which could lead to half-written files on a power outage.
+
+# shellcheck disable=SC2064
+trap "rm -f '$MOUNTPOINT'/*.new" EXIT
+
+# Copy as .new
+for FILE in "$SRC"/*; do
+    NAME="${FILE##*/}"
+    cp -f "$FILE" "$MOUNTPOINT/$NAME.new"
+    sync "$MOUNTPOINT/$NAME.new"
+done
+
+# Rename to final path
+for FILE in "$SRC"/*; do
+    NAME="${FILE##*/}"
+    mv -f "$MOUNTPOINT/$NAME.new" "$MOUNTPOINT/$NAME"
+done
+
+sync

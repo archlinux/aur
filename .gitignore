@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!PKGBUILD
+!raspberrypi-bootloader-install
+!raspberrypi-bootloader-install.hook.in

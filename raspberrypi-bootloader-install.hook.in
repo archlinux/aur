@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = raspberrypi-bootloader-@lineup@
+
+[Action]
+Description = Updating Raspberry Pi (@lineup@) bootloader on the boot partition...
+When = PostTransaction
+Depends = raspberrypi-bootloader-common
+Exec = /usr/share/libalpm/scripts/raspberrypi-bootloader-install @lineup@
