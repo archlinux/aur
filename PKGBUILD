@@ -9,9 +9,9 @@
 
 pkgname=uboot-rockchip-rk3566-powkiddy-x55
 pkgver=2026.10
-pkgrel=1
+pkgrel=2
 pkgdesc="U-Boot for the Powkiddy X55 handheld (rockchip rk3566 based)"
-arch=('x86_64' 'aarch64') # Should work on riscv64 too
+arch=(any)
 url="https://github.com/u-boot/u-boot"
 license=('(GPL-2.0-or-later OR BSD-3-Clause) AND LicenseRef-scancode-rockchip-proprietary-2023')
 makedepends=('git' 'python3' 'python-pyelftools' 'python-setuptools' 'swig')
