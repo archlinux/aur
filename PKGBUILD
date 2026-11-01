@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A terminal tool for encrypting, decrypting, compressing and extracting files and directories"
 
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums=('420e4794531d2757bf3b71df438517f5a766755c9d0a62a49afd8d991a291c34'
+sha256sums=('8c7b018be8a81e0dfd34a39d38cfa89c634b17e190d44b1569c8cf0b72ddf26b'
             '569fbda2ba6c629a5afac7f2ae5af3b5e8579c395e226c4ab144838d61f13557')
-sha256sums_x86_64=('9a98a8c8ed9da30232d56573ff2dd2019217eb18d6b13ec0c21278e05c029002')
-sha256sums_aarch64=('ce5671c2496d122c6ad9b718ed3f8d8296ec2c0b289d92c0cd23d5b545e07602')
+sha256sums_x86_64=('efc664a379460c2746727f5daacaa6b63759621ebdd58d5ee39a14640ed9645c')
+sha256sums_aarch64=('ed3857ab0f7fae3be24a82102f82647125cbb8957450a2028208cbf51ec0bb22')
 
 
 case ${CARCH} in
