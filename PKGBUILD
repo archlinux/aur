@@ -4,15 +4,14 @@ _rawname=py65
 _pkgbase="python-${_rawname}"
 pkgname="${_pkgbase}-git"
 pkgver=1.2.0.r12.gf857233
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulate 6502-based microcomputer systems in Python (bleeding-edge version)"
 arch=('any')
 url="https://github.com/mnaberez/${_rawname}"
 license=('BSD-3-Clause')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-provides=("${_rawname}=$pkgver")
-conflicts=("${_rawname}")
+conflicts=("${_pkgbase}")
 
 source=("git+${url}.git")
 sha256sums=('SKIP')
