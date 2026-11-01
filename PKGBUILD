@@ -12,7 +12,7 @@ _tinyfiledialogs_commit=2681e426ddaebc8e2764a7823b4b9d69564d1684
 _asio_commit=01b4e87c04abd4daec58e40463bcdc150085b269
 
 pkgname=vimix
-pkgver=0.9.1a
+pkgver=0.9.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Live video editor"
@@ -32,7 +32,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive
         "stb-${_stb_commit}.tar.gz::https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz"
         "tinyfiledialogs::git+https://git.code.sf.net/p/tinyfiledialogs/code#commit=${_tinyfiledialogs_commit}"
         "asio-${_asio_commit}.tar.gz::https://github.com/chriskohlhoff/asio/archive/${_asio_commit}.tar.gz")
-b2sums=('c75966bb5b2294fe49fb0e37795b45e1dfd49a93f194f6e39a2b40eb3319dc2a226f65ee1621e79fc03c587cb0b5145507b9a411d589133482c937002d1d1011'
+b2sums=('ad931568006858cfef171c89b6d6edb5cd58728d03c1adea21e0776f14ca4bfa10db38e27fd65bc5d37b29cb53c2f5b780a49bad558c6e62ff0094cbf876506d'
         'SKIP'
         'SKIP'
         'SKIP'

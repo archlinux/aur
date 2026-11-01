@@ -1,6 +1,6 @@
 pkgbase = vimix
 	pkgdesc = Live video editor
-	pkgver = 0.9.1a
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://brunoherbelin.github.io/vimix/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = vimix
 	depends = icu
 	depends = tinyxml2
 	options = !debug
-	source = vimix-0.9.1a.tar.gz::https://github.com/brunoherbelin/vimix/archive/refs/tags/0.9.1a.tar.gz
+	source = vimix-0.9.3.tar.gz::https://github.com/brunoherbelin/vimix/archive/refs/tags/0.9.3.tar.gz
 	source = dirent-c885633e126a3a949ec0497273ec13e2c03e862c.tar.gz::https://github.com/tronkko/dirent/archive/c885633e126a3a949ec0497273ec13e2c03e862c.tar.gz
 	source = ImGuiColorTextEdit-0a88824f7de8d0bd11d8419066caa7d3469395c4.tar.gz::https://github.com/BalazsJako/ImGuiColorTextEdit/archive/0a88824f7de8d0bd11d8419066caa7d3469395c4.tar.gz
 	source = glm-da9a21d7e3a2a3a32354a7d9da362d5738b113b6.tar.gz::https://github.com/g-truc/glm/archive/da9a21d7e3a2a3a32354a7d9da362d5738b113b6.tar.gz
@@ -29,7 +29,7 @@ pkgbase = vimix
 	source = stb-f1c79c02822848a9bed4315b12c8c8f3761e1296.tar.gz::https://github.com/nothings/stb/archive/f1c79c02822848a9bed4315b12c8c8f3761e1296.tar.gz
 	source = tinyfiledialogs::git+https://git.code.sf.net/p/tinyfiledialogs/code#commit=2681e426ddaebc8e2764a7823b4b9d69564d1684
 	source = asio-01b4e87c04abd4daec58e40463bcdc150085b269.tar.gz::https://github.com/chriskohlhoff/asio/archive/01b4e87c04abd4daec58e40463bcdc150085b269.tar.gz
-	b2sums = c75966bb5b2294fe49fb0e37795b45e1dfd49a93f194f6e39a2b40eb3319dc2a226f65ee1621e79fc03c587cb0b5145507b9a411d589133482c937002d1d1011
+	b2sums = ad931568006858cfef171c89b6d6edb5cd58728d03c1adea21e0776f14ca4bfa10db38e27fd65bc5d37b29cb53c2f5b780a49bad558c6e62ff0094cbf876506d
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
