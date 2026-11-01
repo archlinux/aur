@@ -8,17 +8,17 @@ pkgrel=6
 pkgdesc='A common platform for PowerShell development support in any editor or application'
 url="https://github.com/PowerShell/PowerShellEditorServices"
 # The assemblies are compiled to ReadyToRun images for the architecture
-arch=('x86_64' 'aarch64')
-license=('MIT')
+arch=(x86_64 aarch64)
+license=(MIT)
 _dotnetsdkver='10.0'
-depends=('powershell' 'dotnet-runtime-'"$_dotnetsdkver")
+depends=(powershell "dotnet-runtime-$_dotnetsdkver")
 # The packages of .NET itself come from the .NET dotnet-build-deps-10.0 chooses, the libraries from
 # powershell-editor-services-build-deps (built from source) or nuget.org
 # (powershell-editor-services-build-deps-bin), see _nuget_feeds()
 makedepends=(
-  'dotnet-build-deps-'"$_dotnetsdkver"
-  'git'
-  'powershell-editor-services-build-deps'
+  "dotnet-build-deps-$_dotnetsdkver"
+  git
+  powershell-editor-services-build-deps
 )
 # PSScriptAnalyzer, which the editor services bundle (RestorePsesModules in
 # PowerShellEditorServices.build.ps1). PSReadLine isn't bundled, PowerShell already has it.
@@ -36,7 +36,7 @@ source=("git+$url.git#tag=v$pkgver"
   "pses-mediatr-12.patch"
   "build-help.ps1"
   "crossgen2-pack.targets")
-options=('!debug')
+options=(!debug)
 sha512sums=('c9408c3462334a6fd6f78ae793b8483dd550ad3918cac969bf78a6e1d753820ece6d57536770eb929ce029c8dc644d770b3ec84c417af8f04da212b366a948ac'
   '5815b257a2169f99cf346d783ffb38656e128a27dc57ba9606a98b8ad480b1e797fabbdb50545dfc141928da556bb52122938b5a84e3bad27a1552ca175b1139'
   'db7d147644d74081c49d8ea2700138e56f5deecf390f7ad704ce6decf0dc4f1719fce2c3325c778d32c6f9d80f46c0dce3ee49942cf6ff9e72a2d30715eb149f'
