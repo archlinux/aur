@@ -1,0 +1,18 @@
+--- a/q2_taxa/_barplot_visualizer/src/classes/sampleManager.svelte.ts
++++ b/q2_taxa/_barplot_visualizer/src/classes/sampleManager.svelte.ts
+@@ -39,13 +39,13 @@
+     async parseFeatureTable(filepath: string) {
+         let tableLines = await csv(filepath);
+ 
+-        const featureHeader = tableLines.shift();
++        const featureHeader = tableLines.columns;
+ 
+         for (let row of tableLines) {
+             const sampleID = row.sampleID;
+             const sample = new Sample(sampleID);
+ 
+-            for (let featureID in featureHeader) {
++            for (const featureID of featureHeader) {
+                 if (featureID == "sampleID") {
+                     continue;
+                 }
