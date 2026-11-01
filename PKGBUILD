@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A spaced-repetition Anki alternative with superpowers"
 
-pkgver=0.5.4
+pkgver=0.5.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('95df674fcf2c77115cceaf7f923bb34054514c12e2db43bfac0d07e82a4da675'
+sha256sums=('87a67e1435e8c08b85b4d98a6cf78ba3272abc9620b949fbc05241c0851e7388'
             'a4cb9fe432afc1ad1290710b62536121b89035aa00c5074c04a316243e9cc83a')
-sha256sums_x86_64=('928b8aa5ab61c992d31708310f4f26a54f6d354fc29722e8565bbf31880ab34a')
+sha256sums_x86_64=('60af6a41cdb47b07e4c153d5d3f8e020e4313e48ac26dc2bbf08b0bd0c98f746')
 
 
 package() {
