@@ -1,11 +1,17 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.5.7 ➙ 6.7.0,
-              : 2026-09-29 ➙ 2026-10-10
+ Tags         : 6.6.0 ➙ 6.8.0
+              : 2026-10-03 ➙ 2026-11-01
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-10-10   : 6.7.0,
+ 2026-11-01   : 6.8.0
+              - **6.8.0**
+            
+                * Update manual on using sd-boot with Arch kernels
+                * Add a couple more defensive memory checks for find_boot_mounts.
+
+ 2026-10-10   : 6.7.0, origin/master
               - 6.6.1 : Update man page for sd-boot-find-boot-mounts
 
  2026-10-03   : 6.6.0
@@ -18,7 +24,3 @@
  2026-09-29   ⋯
               - minor doc tweaks
               - more doc updates
-
- 2026-09-29   : 6.5.7
-              - release 6.5.7
-              - doc typos
