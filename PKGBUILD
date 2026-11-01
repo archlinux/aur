@@ -6,7 +6,7 @@
 
 _pkgname="shadps4"
 pkgname="$_pkgname"
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 url="https://github.com/shadps4-emu/shadPS4"
@@ -29,7 +29,6 @@ depends=(
   'libuuid.so'       # util-linux-libs
   'libxxhash.so'     # xxhash
   'libz.so'          # zlib
-  'libzarchive.so'   # zarchive
   'miniz'
   'pugixml'
   'sdl3'
@@ -59,7 +58,7 @@ options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v.$pkgver")
-sha256sums=('49c1474aa327b294c24ea935c495961a2e98b9109307456b2a67865463a72972')
+sha256sums=('fc76ff7bcde804e6706ee98ef850efc3d9a8e20f8b532557931de48534034c82')
 
 prepare() {
   cd "$_pkgsrc"
@@ -83,15 +82,12 @@ prepare() {
   git rm -r externals/toml11
   git rm -r externals/vulkan-headers
   git rm -r externals/xxhash
-  git rm -r externals/zarchive
   git rm -r externals/zlib-ng
   git rm -r externals/zstd
   git submodule update --init --recursive --depth 1
 
-  # add missing header
-  sed -i -e '1i #include <cstring>' \
-    src/video_core/amdgpu/regs.cpp \
-    src/video_core/amdgpu/resource.h
+  # force vendored
+  sed -e '/find_package(ZArchive/d' -i CMakeLists.txt
 
   # allow any version
   sed -E -e '/find_package/s&(glslang) \S+ (CONFIG)&\1 \2&' -i CMakeLists.txt
@@ -121,7 +117,7 @@ build() {
 
   # no longer buildable with pure v1
   export CFLAGS+=" -msse4.1 -DNDEBUG"
-  export CXXFLAGS+=" -msse4.1 -DNDEBUG -DFMT_DEPRECATED_HEAVY_CORE"
+  export CXXFLAGS+=" -msse4.1 -DNDEBUG"
 
   local _cmake_options=(
     -B build
