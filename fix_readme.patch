@@ -1,0 +1,70 @@
+--- README.md	2006-07-23 22:21:28.000000000 -0300
++++ README.md	2026-11-01 15:16:36.801505987 -0300
+@@ -1,6 +1,6 @@
+ <div align="center">
+ 
+-# peek (`bash-peek`)
++# bash-peek
+ 
+ **Interactive TUI debugger, line-level profiler, and time-travel inspector for Bash scripts.**
+ 
+@@ -15,18 +15,14 @@
+ 
+ Debugging a 2,000-line Bash script usually means littering the file with `echo "HERE"` or turning on `set -x` and watching thousands of lines of unreadable trace scroll past your terminal. `bashdb` exists, but stepping through complex scripts in a raw CLI prompt without live variable diffs or stack visibility gets painful fast.
+ 
+-**`peek`** wraps your script in an isolated `DEBUG` trap harness and connects it to a Rust `ratatui` interface over anonymous UNIX FIFOs and kernel file locks. You get live local and environment state inspection, per-line execution timing, reverse step history, interactive TTY handoff, and dry-run command skipping—without touching a single line of the target script.
+-
+-<p align="center">
+-  <img src="docs/screenshot.png" alt="peek TUI running neofetch.sh" width="100%">
+-</p>
++**`bash-peek`** wraps your script in an isolated `DEBUG` trap harness and connects it to a Rust `ratatui` interface over anonymous UNIX FIFOs and kernel file locks. You get live local and environment state inspection, per-line execution timing, reverse step history, interactive TTY handoff, and dry-run command skipping—without touching a single line of the target script.
+ 
+ ## ▸ Features
+ 
+-* **Zero-Modification Attach:** Run `peek ./deploy.sh --arg1 val` directly. `$0` (`BASH_ARGV0`), `$@`, `$SECONDS`, `PIPESTATUS`, `shopt` options (`nocasematch`, `extdebug`), and `set -euo pipefail` semantics are preserved transparently without leaking harness internals into the variable or call-stack panes.
++* **Zero-Modification Attach:** Run `bash-peek ./deploy.sh --arg1 val` directly. `$0` (`BASH_ARGV0`), `$@`, `$SECONDS`, `PIPESTATUS`, `shopt` options (`nocasematch`, `extdebug`), and `set -euo pipefail` semantics are preserved transparently without leaking harness internals into the variable or call-stack panes.
+ * **In-Bash Fast Path:** Breakpoint matching, call-stack depth checks (`next` / `out`), error traps (`$? != 0`), and conditional expressions are evaluated natively inside the Bash hook before serializing state over the FIFO. Loops run at near-native speed until a trap condition hits.
+ * **Subshell & Pipeline Stepping (`flock`):** Step directly into `$(...)` command substitutions and pipeline subshells (`s` to step into child shells, `n` to step over). Concurrent subshell frames are serialized via kernel file locks (`flock`) to prevent FIFO interleaving or deadlocks.
+-* **Fullscreen & Interactive TTY Handoff (`tcsetpgrp`):** When the target script invokes an interactive terminal program (`vim`, `nvim`, `nano`, `fzf`, `dialog`, `whiptail`, `less`, `htop`, `ssh`)—or when you press `T` (`Shift+t`) on any command—`peek` cleanly suspends the TUI, transfers foreground `/dev/tty` process-group ownership to the child without triggering `SIGTTOU`/`SIGTTIN`, and restores the debugger layout as soon as the utility exits.
++* **Fullscreen & Interactive TTY Handoff (`tcsetpgrp`):** When the target script invokes an interactive terminal program (`vim`, `nvim`, `nano`, `fzf`, `dialog`, `whiptail`, `less`, `htop`, `ssh`)—or when you press `T` (`Shift+t`) on any command—`bash-peek` cleanly suspends the TUI, transfers foreground `/dev/tty` process-group ownership to the child without triggering `SIGTTOU`/`SIGTTIN`, and restores the debugger layout as soon as the utility exits.
+ * **Time-Travel Ring Buffer:** Scrub backward and forward (`[` / `]`) through the last 256 execution frames to see how variables, exit codes, and call stacks evolved prior to a failure.
+ * **Line Latency Heatmap:** Cumulative execution time (`µs` / `ms` / `s`) is tracked per source line right in the editor gutter to spot slow subshells or external binaries immediately.
+ * **Command Skipping (`extdebug`):** On a line with a destructive command (`rm`, `curl -X POST`, `kubectl delete`)? Hit `S` (`Shift+s`) to intercept and skip executing that statement via Bash's `extdebug` return hook.
+@@ -48,7 +44,7 @@
+ git clone https://github.com/monji024/peek.git
+ cd peek
+ cargo build --release
+-sudo install -Dm755 target/release/peek /usr/local/bin/peek
++sudo install -Dm755 target/release/peek /usr/local/bin/bash-peek
+ ```
+ 
+ > **Note:** Requires **Bash 4.1+** (for dynamic file descriptor allocation `{fd}>` and `$BASHPID`) and `flock` (part of `util-linux` on Linux). Linux distributions include these by default; on macOS, ensure Homebrew's `bash` is first in your `$PATH`.
+@@ -57,17 +53,17 @@
+ 
+ ```bash
+ # Start debugging a script paused at the first executable statement
+-peek ./script.sh
++bash-peek ./script.sh
+ 
+ # Pass arguments through to the target script ($1, $2, ...)
+-peek ./deploy.sh --env staging --force
++bash-peek ./deploy.sh --env staging --force
+ 
+ # Pre-configure line breakpoints and automatically pause whenever $? != 0
+-peek -b 45,120 -e ./backup.sh
++bash-peek -b 45,120 -e ./backup.sh
+ ```
+ 
+ ```text
+-Usage: peek [OPTIONS] <SCRIPT> [ARGS]...
++Usage: bash-peek [OPTIONS] <SCRIPT> [ARGS]...
+ 
+ Arguments:
+   <SCRIPT>   Target Bash script to debug
+@@ -132,4 +128,4 @@
+ 
+ ## ▸ License
+ 
+-[MIT License](LICENSE).
+\ No newline at end of file
++[MIT License](LICENSE).

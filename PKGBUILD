@@ -27,13 +27,15 @@ depends=('glibc' 'libgcc')
 
 options=('!lto' '!strip')
 
-source=("${pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('0a2fbf02d62518aece04b86538b7fdec0911c74d419559f2db4f74f90a92c15b')
+source=("${pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download"
+		"fix_readme.patch")
+sha256sums=('0a2fbf02d62518aece04b86538b7fdec0911c74d419559f2db4f74f90a92c15b'
+            '11b19c79ed526efaf9483a651e8031b51767257c538291276011f07e104887e5')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
 
-	sed -E "s/(${_pkgsuffix}-)?${_pkgname}/${pkgname}/g" -i "README.md"
+	patch README.md ../fix_readme.patch
 
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
