@@ -143,6 +143,12 @@ check() {
   for _test in TooDeepObjectInitializer TooDeepObjectInitializerAsExpression TooDeepObjectInitializerAsStatement; do
     _filter+=("FullyQualifiedName!=Microsoft.CodeAnalysis.CSharp.UnitTests.ParserErrorMessageTests.$_test")
   done
+  # A temp folder of their own: the tests keep their files in /tmp/RoslynTests, which fails when
+  # another user's build left it there. It stays in /tmp rather than $srcdir, as MSBuild's named pipes
+  # are sockets in it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   local _project
   for _project in src/Compilers/Core/CodeAnalysisTest/Microsoft.CodeAnalysis.UnitTests.csproj \
     src/Compilers/CSharp/Test/Syntax/Microsoft.CodeAnalysis.CSharp.Syntax.UnitTests.csproj \
@@ -155,6 +161,7 @@ check() {
         echo "${_filter[*]}"
       )"
   done
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
