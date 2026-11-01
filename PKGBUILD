@@ -4,7 +4,7 @@ _rawname="SMB3-Foundry"
 _pkgbase="smb3-foundry"
 pkgname="${_pkgbase}-git"
 pkgver=1.6.r66.gd907aafd
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Super Mario Bros. 3 level editor (development version)"
 arch=('x86_64')
 url="https://github.com/mchlnix/${_rawname}"
@@ -31,7 +31,6 @@ makedepends=(
   'rust'
   'maturin'
   'python-installer'
-  'icoutils'
 )
 
 source=(

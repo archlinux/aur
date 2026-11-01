@@ -1,7 +1,7 @@
 pkgbase = smb3-foundry-git
 	pkgdesc = A modern Super Mario Bros. 3 level editor (development version)
 	pkgver = 1.6.r66.gd907aafd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mchlnix/SMB3-Foundry
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,7 +9,6 @@ pkgbase = smb3-foundry-git
 	makedepends = rust
 	makedepends = maturin
 	makedepends = python-installer
-	makedepends = icoutils
 	depends = sh
 	depends = python
 	depends = python-pytest
