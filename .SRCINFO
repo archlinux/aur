@@ -1,6 +1,6 @@
 pkgbase = gh-eco
 	pkgdesc = 🦎 gh cli extension to explore the ecosystem
-	pkgver = 0.1.8
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jrnxf/gh-eco
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gh-eco
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/jrnxf/gh-eco.git#commit=b97936a11fa1b09111152d0325dc12f8917fcb3a
+	source = git+https://github.com/jrnxf/gh-eco.git#commit=799034998200897a6055c4a230282d862303fa47
 	sha256sums = SKIP
 
 pkgname = gh-eco
