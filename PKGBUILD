@@ -3,8 +3,8 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=sharpemu-bin
-pkgver=0.0.6_mono
-pkgrel=2
+pkgver=0.0.7_pulse
+pkgrel=1
 pkgdesc="Experimental PlayStation 5 emulator (prebuilt)"
 arch=('x86_64')
 url="https://github.com/sharpemu/sharpemu"
@@ -25,7 +25,7 @@ options=('!strip')
 _upver="${pkgver//_/-}"
 noextract=("sharpemu-${_upver}-linux-x64.tar.gz")
 source_x86_64=("https://github.com/sharpemu/sharpemu/releases/download/v${_upver}/sharpemu-${_upver}-linux-x64.tar.gz")
-sha256sums_x86_64=('dc7edfaa983bb40c6f4022faa2ca2eb4c6f831f8b297f10d2e3c132099137f57')
+sha256sums_x86_64=('38d7507a57e891a5763e23fc68c72172d2395931f8f64f59fc522ed4ed3d761e')
 
 package() {
   # extracted straight into pkgdir so new files in future upstream archives
