@@ -1,7 +1,7 @@
 pkgbase = lib32-vkbasalt-overlay
 	pkgdesc = Vulkan post-processing layer with in-game ImGui overlay (32-bit)
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/Boux/vkBasalt_overlay
 	arch = x86_64
 	license = zlib
@@ -14,7 +14,6 @@ pkgbase = lib32-vkbasalt-overlay
 	depends = lib32-gcc-libs
 	depends = lib32-libx11
 	depends = lib32-libxi
-	optdepends = dxvk-async-git: для перевода DirectX в Vulkan под Wine (требуется для работы оверлея)
 	provides = lib32-vkbasalt-overlay
 	options = !libtool
 	source = lib32-vkbasalt-overlay-0.1.2.tar.gz::https://github.com/Boux/vkBasalt_overlay/archive/refs/tags/v0.1.2.tar.gz
