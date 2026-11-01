@@ -5,7 +5,7 @@
 pkgname=dotnet-newtonsoft-json
 _nugetid=Newtonsoft.Json
 pkgver=13.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Popular high-performance JSON framework for .NET (NuGet package)"
 arch=('any')
 url='https://www.newtonsoft.com/json'
@@ -127,7 +127,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 Newtonsoft.Json/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"

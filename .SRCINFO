@@ -1,7 +1,7 @@
 pkgbase = dotnet-newtonsoft-json
 	pkgdesc = Popular high-performance JSON framework for .NET (NuGet package)
 	pkgver = 13.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.newtonsoft.com/json
 	arch = any
 	license = MIT
