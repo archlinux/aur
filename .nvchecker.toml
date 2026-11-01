@@ -1,0 +1,5 @@
+[network-monitor-bin]
+source = "github"
+github = "grigio/network-monitor"
+use_latest_release = true
+prefix = "v"

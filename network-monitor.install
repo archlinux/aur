@@ -1,0 +1,12 @@
+post_install() {
+    echo "Setting CAP_BPF & CAP_SYS_ADMIN & CAP_PERFMON capabilities on /usr/bin/network-monitor and /usr/bin/nmt"
+
+    setcap 'cap_bpf,cap_net_admin,cap_perfmon+eip' usr/bin/network-monitor
+    setcap 'cap_bpf,cap_net_admin,cap_perfmon+eip' usr/bin/nmt
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:
