@@ -1,6 +1,6 @@
 pkgbase = open-idea-bin
 	pkgdesc = An open-source IDE inspired by IntelliJ IDEA, rebuilt in Rust
-	pkgver = 0.1.32
+	pkgver = 0.1.33
 	pkgrel = 1
 	url = https://github.com/l0ng-ai/openidea
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = open-idea-bin
 	conflicts = open-idea
 	options = !strip
 	options = !debug
-	source_x86_64 = OpenIDEA_0.1.32_amd64.deb::https://github.com/l0ng-ai/openidea/releases/download/v0.1.32/OpenIDEA_0.1.32_amd64.deb
-	sha256sums_x86_64 = 725df385238e345376c508ad6100007b11870785d56588747d6f0e91f42b5bd6
+	source_x86_64 = OpenIDEA_0.1.33_amd64.deb::https://github.com/l0ng-ai/openidea/releases/download/v0.1.33/OpenIDEA_0.1.33_amd64.deb
+	sha256sums_x86_64 = 2b254cc1bd4f20e65302e3b6a579cc19ebf170aa790185f8e77e8fd53f0a06eb
 
 pkgname = open-idea-bin
