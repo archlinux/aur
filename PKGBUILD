@@ -7,12 +7,12 @@ _nugetid=Nerdbank.Streams
 pkgver=2.14.411
 pkgrel=2
 pkgdesc="Streams for full duplex in-proc communication, wrap a WebSocket, split a stream into multiple channels, Nerdbank.Streams (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/dotnet/Nerdbank.Streams'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   dotnet-vs-threading
   dotnet-vs-validation
   jq
