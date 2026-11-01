@@ -2,7 +2,7 @@
 
 pkgname=particle-cli
 pkgdesc='CLI tool for the Particle hardware platform'
-pkgver=3.52.3
+pkgver=3.52.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.particle.io/'
@@ -17,10 +17,10 @@ source=("https://registry.npmjs.org/$pkgname/-/${pkgname}-${pkgver}.tgz"
         "${pkgname}-${pkgver}-npm-shrinkwrap.json::https://raw.githubusercontent.com/particle-iot/particle-cli/v${pkgver}/npm-shrinkwrap.json")
 noextract=(${pkgname}-${pkgver}.tgz)
 options=(!debug !strip)
-sha256sums=('f103037f16fde6ca4a270eab2110c57516e59a1f5eee4e15f82d1fa8bb8c147e'
-            '8d05a2fa40ce34587d3b9ec360540e8b66a8cc6712af4ffa3332bc8949b7f96f')
-b2sums=('4caf5a053a22f9bf1cf5af85493563bd9339dd2b9c44afb170ddf1788a0307f9c79b050f82e41aa5733664dcfb6e977ed2c10e5014d283131d5f6f2d6dee7e3d'
-        '9f6c7446651e0053aeacd4feafaaa9c1202915579162f3293cf7859c17f99d4cb46533d0a0d5b0f4a0c3e100b7e3013ef4ac2672787a82d9a1015ff51971b7ab')
+sha256sums=('615ada51720b1343285faf670fb928a0313563726ea286ad2b01b34fdfacf3cd'
+            'e04b40c9729b038132a8e421cd2b109ad957fba677ef95da88a8fb43146b3daa')
+b2sums=('51992ee28acf227ce72d14ae892e88c00a57a26d92223eec381e09aeef1d743a68223d6ac3034bf32b3efb14c8b63aab2968794c6043fda7c863ef88e7e0e3d1'
+        '0178e2c4d8175ebcf9a64dd07fb931fece41795490a7f5be742d79c6be8929d866bed9a9f706535a59c5ab5ddb75595735d125194855b841390d1a19095b86fd')
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}"
