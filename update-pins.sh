@@ -8,11 +8,16 @@
 #   _pbs_sha256                      (PBS_RELEASE, PYTHON_VERSION, PYTHON_PINS)
 #   _node_version, _node_sha256      apps/desktop/scripts/fetch-node.sh
 #
-# Needs curl.
+# then the checksums of the two git sources, which upstream doesn't publish:
+#
+#   _src_sha256, _harness_sha256     makepkg -g (a git archive of the pinned
+#                                    tag and commit; clones them if needed)
+#
+# Needs curl and makepkg.
 set -euo pipefail
 
 cd "$(dirname "$0")"
-for cmd in curl; do
+for cmd in curl makepkg; do
     command -v "$cmd" >/dev/null || { echo "update-pins: $cmd is required" >&2; exit 1; }
 done
 
@@ -52,14 +57,28 @@ fetch_node=$(upstream apps/desktop/scripts/fetch-node.sh)
 node_version=$(sed -n 's/^NODE_VERSION="\${STRATA_NODE_VERSION:-\([0-9.]*\)}"$/\1/p' <<<"$fetch_node")
 node_sha256=$(sed -n 's/^ *linux-x64) *echo "\([0-9a-f]\{64\}\)".*/\1/p' <<<"$fetch_node")
 
-for var in harness_commit pbs_release python_version pbs_sha256 node_version node_sha256; do
-    [ -n "${!var}" ] || { echo "update-pins: could not read ${var}" >&2; exit 1; }
+# write _<name>=<value> into PKGBUILD, printing what changed
+set_pin() {
+    local var=$1 value=$2 old
+    [ -n "$value" ] || { echo "update-pins: could not read ${var}" >&2; exit 1; }
     old=$(awk -F= -v k="_${var}" '$1 == k { print $2 }' PKGBUILD)
     [ -n "$old" ] || { echo "update-pins: _${var}= not found in PKGBUILD" >&2; exit 1; }
-    if [ "$old" = "${!var}" ]; then
-        printf '  %-16s %s\n' "_${var}" "${!var}"
+    if [ "$old" = "$value" ]; then
+        printf '  %-16s %s\n' "_${var}" "$value"
     else
-        printf '  %-16s %s -> %s\n' "_${var}" "$old" "${!var}"
-        sed -i "s|^_${var}=.*|_${var}=${!var}|" PKGBUILD
+        printf '  %-16s %s -> %s\n' "_${var}" "$old" "$value"
+        sed -i "s|^_${var}=.*|_${var}=${value}|" PKGBUILD
     fi
+}
+
+for var in harness_commit pbs_release python_version pbs_sha256 node_version node_sha256; do
+    set_pin "$var" "${!var}"
 done
+
+# makepkg -g hashes every source in source order; the git sources are the
+# first two, and are hashed at the tag and commit written above
+echo "==> Hashing the git sources"
+mapfile -t sums < <(makepkg -g 2>/dev/null | grep -o '[0-9a-f]\{64\}')
+[ "${#sums[@]}" -ge 2 ] || { echo "update-pins: makepkg -g gave no checksums" >&2; exit 1; }
+set_pin src_sha256 "${sums[0]}"
+set_pin harness_sha256 "${sums[1]}"
