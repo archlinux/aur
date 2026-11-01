@@ -1,0 +1,20 @@
+pkgbase = debugger-cli
+	pkgdesc = LLM-friendly debugger CLI using the Debug Adapter Protocol
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/akiselev/debugger-cli
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = bzip2
+	depends = xz
+	provides = debugger
+	options = !lto
+	options = !strip
+	source = debugger-cli-0.1.3.crate::https://crates.io/api/v1/crates/debugger-cli/0.1.3/download
+	sha256sums = 82a043245b7bca76f23bcb4f37f1ca166daa6840a6d1ae812b3934159dac67f8
+
+pkgname = debugger-cli

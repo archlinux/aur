@@ -1,0 +1,3 @@
+[debugger-cli]
+source = "cratesio"
+cratesio = "debugger-cli"
