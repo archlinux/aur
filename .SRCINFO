@@ -1,0 +1,29 @@
+pkgbase = kinectcam-git
+	pkgdesc = Expose Xbox One Kinect RGB, infrared and metric depth as Linux cameras
+	pkgver = 0.2.0.r1.gd9bd42c
+	pkgrel = 1
+	url = https://git.crimsonnet.org/CrimsonHawk/kinectcam
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = openssh
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	depends = libfreenect2
+	depends = v4l2loopback-utils
+	depends = V4L2LOOPBACK-MODULE
+	depends = systemd
+	depends = kmod
+	depends = gawk
+	depends = bash
+	optdepends = v4l-utils: camera diagnostics
+	optdepends = howdy: infrared facial authentication
+	provides = kinectcam
+	conflicts = kinectcam
+	options = !debug
+	source = kinectcam::git+https://git.crimsonnet.org/CrimsonHawk/kinectcam.git#branch=master
+	sha256sums = SKIP
+
+pkgname = kinectcam-git
