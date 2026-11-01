@@ -1,7 +1,7 @@
 pkgbase = voxd-bin
 	pkgdesc = Voice-typing/dictation app for Linux using local speech-to-text processing (pre-built binary)
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jakovius/voxd
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,8 @@
 # Maintainer: Luca Steccanella <steccas at pm dot me>
 pkgname=voxd-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
+_upstreamrel=1
 pkgdesc="Voice-typing/dictation app for Linux using local speech-to-text processing (pre-built binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jakovius/voxd"
@@ -35,10 +36,10 @@ optdepends=(
 provides=('voxd')
 conflicts=('voxd' 'voxd-git')
 source_x86_64=(
-    "voxd-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/jakovius/voxd/releases/download/v${pkgver}/voxd-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
+    "voxd-${pkgver}-${_upstreamrel}-x86_64.pkg.tar.zst::https://github.com/jakovius/voxd/releases/download/v${pkgver}/voxd-${pkgver}-${_upstreamrel}-x86_64.pkg.tar.zst"
 )
 source_aarch64=(
-    "voxd-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst::https://github.com/jakovius/voxd/releases/download/v${pkgver}/voxd-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst"
+    "voxd-${pkgver}-${_upstreamrel}-aarch64.pkg.tar.zst::https://github.com/jakovius/voxd/releases/download/v${pkgver}/voxd-${pkgver}-${_upstreamrel}-aarch64.pkg.tar.zst"
 )
 sha256sums_x86_64=('f926644d84d10ed1a7abfc92afca9759ca6daad0fc92857093dfb915b7475ae4')
 sha256sums_aarch64=('037e75c864f9f2df59dd996fa41905cec7a72f9d5c1b6e39b2d3350dcabc6d4c')
@@ -46,8 +47,16 @@ sha256sums_aarch64=('037e75c864f9f2df59dd996fa41905cec7a72f9d5c1b6e39b2d3350dcab
 package() {
     # Extract the pre-built package, excluding metadata files
     if [[ "$CARCH" == "x86_64" ]]; then
-        tar -xf "$srcdir/voxd-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude='.INSTALL' --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.BUILDINFO'
+        tar -xf "$srcdir/voxd-${pkgver}-${_upstreamrel}-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude='.INSTALL' --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.BUILDINFO'
     elif [[ "$CARCH" == "aarch64" ]]; then
-        tar -xf "$srcdir/voxd-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst" -C "$pkgdir" --exclude='.INSTALL' --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.BUILDINFO'
+        tar -xf "$srcdir/voxd-${pkgver}-${_upstreamrel}-aarch64.pkg.tar.zst" -C "$pkgdir" --exclude='.INSTALL' --exclude='.MTREE' --exclude='.PKGINFO' --exclude='.BUILDINFO'
+    fi
+
+    # Upstream wrapper whitelists Python 3.9-3.13 and bails out on Arch's 3.14+.
+    # All deps are system packages, so accept any 3.x >= 3.9.
+    sed -i 's/3\.9|3\.10|3\.11|3\.12|3\.13)/3.9|3.[1-9][0-9])/g' "$pkgdir/usr/bin/voxd"
+    if grep -q '3\.12|3\.13)' "$pkgdir/usr/bin/voxd"; then
+        echo "Error: Python version patch for /usr/bin/voxd did not apply" >&2
+        return 1
     fi
 }
