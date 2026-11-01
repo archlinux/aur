@@ -4,7 +4,7 @@
 
 pkgname=koboldcpp-cuda
 pkgver=1.124
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -63,8 +63,10 @@ package() {
         install -Dm644 "$i" "$pkgdir/usr/share/koboldcpp/$i"
     done
 
-    for i in {LICENSE,MIT_LICENSE_GGML_SDCPP_LLAMACPP_ONLY}.md; do
-        install -Dm644 "$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
+    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+
+    for i in src/LLAMACPP_LICENSE ggml/src/GGML_LICENSE otherarch/{acestep/ACESTEP_LICENSE,audiocpp/upstream/AUDIOCPP_LICENSE,qwen3tts/QWEN3TTS_LICENSE,sdcpp/SDCPP_LICENSE,ttscpp/TTSCPP_LICENSE}; do
+        install -Dm644 "$i" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "$i")"
     done
 
     # Compile Python scripts
