@@ -1,0 +1,16 @@
+pkgbase = dux-shell-plugin-hass-git
+	pkgdesc = Home Assistant monitoring and management plugin for Dux Shell.
+	pkgver = r71.bd95ce0
+	pkgrel = 1
+	url = https://github.com/xxyangyoulin/dms-plugin-hass
+	install = dux-shell-plugins.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dux-shell
+	provides = dux-shell-plugin-hass
+	replaces = dms-shell-plugin-hass-git
+	source = dux-plugin-hass::git+https://github.com/xxyangyoulin/dms-plugin-hass.git
+	sha256sums = SKIP
+
+pkgname = dux-shell-plugin-hass-git
