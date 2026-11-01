@@ -7,9 +7,9 @@ _nugetid=JsonPointer.Net
 pkgver=5.3.1
 pkgrel=2
 pkgdesc="JSON Pointer built on System.Text.Json, 5.x (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/json-everything/json-everything'
-license=('MIT')
+license=(MIT)
 provides=("dotnet-jsonpointer-net=$pkgver")
 # Dependencies of the NuGet package
 depends=(
@@ -18,7 +18,7 @@ depends=(
 )
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 # 5.x is the last version line published under the MIT license alone, later releases on nuget.org come
