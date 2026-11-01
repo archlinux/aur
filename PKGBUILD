@@ -97,10 +97,17 @@ build() {
 check() {
   _dotnet_env
   cd "vs-validation-$_commit" || exit
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   # The tests need packages from the feed upstream uses, which mirrors nuget.org
   _nuget_config "$(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' nuget.config.upstream)"
   # The test runner targets .NET 8
   DOTNET_ROLL_FORWARD=Major dotnet test "test/$_nugetid.Tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}"
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
