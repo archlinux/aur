@@ -5,7 +5,7 @@
 pkgname=dotnet-jsonpointer-net-5
 _nugetid=JsonPointer.Net
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON Pointer built on System.Text.Json, 5.x (NuGet package)"
 arch=('any')
 url='https://github.com/json-everything/json-everything'
@@ -37,7 +37,7 @@ _nuget_config() {
 <configuration>
   <packageSources>
     <clear />
-    <add key="dotnet-packages" value="/usr/share/dotnet/nuget-packages" />
+    <add key="dotnet-packages" value="/usr/share/nuget/packages" />
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
   <packageSourceMapping>
@@ -116,7 +116,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 json-everything/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"

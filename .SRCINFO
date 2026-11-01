@@ -1,7 +1,7 @@
 pkgbase = dotnet-jsonpointer-net-5
 	pkgdesc = JSON Pointer built on System.Text.Json, 5.x (NuGet package)
 	pkgver = 5.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/json-everything/json-everything
 	arch = any
 	license = MIT
