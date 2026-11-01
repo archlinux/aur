@@ -98,14 +98,16 @@ build() {
   _dotnet_env
   cd "source-build-assets-$_commit" || exit
   # Only from the source-built artifacts, nothing is downloaded. ILAsm builds the targeting packs, in
-  # the version and for the RID of the source-built .NET.
+  # the version and for the RID of the source-built .NET, ILDAsm in the same version (upstream pins the
+  # .NET it was released with, which may be older than the one in the repositories).
   _nuget_config
   local _ilasmver
   _ilasmver=$(find "$srcdir/nuget-local" -name "runtime.$_rid.Microsoft.NETCore.ILAsm.*.nupkg" -printf '%f\n' |
     sed -E "s/^runtime\.$_rid\.Microsoft\.NETCore\.ILAsm\.(.*)\.nupkg$/\1/")
   ./build.sh --ci --configuration Release \
     -p:MicrosoftNetCoreIlasmPackageRuntimeId="$_rid" \
-    -p:MicrosoftNETCoreILAsmVersion="$_ilasmver"
+    -p:MicrosoftNETCoreILAsmVersion="$_ilasmver" \
+    -p:MicrosoftNETCoreILDAsmVersion="$_ilasmver"
 }
 
 check() {
