@@ -75,6 +75,12 @@ build() {
 check() {
   _dotnet_env
   cd Newtonsoft.Json || exit
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   # The tests assume Windows, i.e. CRLF line endings (TraceWriter and BufferErroringWithInvalidSize),
   # c:\ being an absolute path (Issue1619) and Windows' culture data (NewZealandCulture)
   local _test _filter=()
@@ -93,6 +99,7 @@ check() {
       IFS='&'
       echo "${_filter[*]}"
     )"
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
