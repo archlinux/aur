@@ -1,6 +1,6 @@
 pkgbase = qc71-laptop-lapac71-dkms-git
 	pkgdesc = QC71 laptop platform driver with LAPAC71G/H battery, keyboard RGB and fan support (DKMS)
-	pkgver = r83.54a5299
+	pkgver = r85.01e23a3
 	pkgrel = 1
 	url = https://github.com/PaveLiArcH/qc71_laptop
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = qc71-laptop-lapac71-dkms-git
 	depends = dkms
 	optdepends = linux-headers: build for the linux kernel
 	optdepends = linux-lts-headers: build for the linux-lts kernel
-	provides = qc71-laptop-dkms=r83.54a5299
-	provides = qc71_laptop=r83.54a5299
+	optdepends = lapac71g-lapac71h-keyboard-gnome-git: GNOME 51 keyboard RGB color picker for LAPAC71G/H
+	provides = qc71-laptop-dkms=r85.01e23a3
+	provides = qc71_laptop=r85.01e23a3
 	conflicts = qc71-laptop-dkms
 	conflicts = qc71-laptop-dkms-git
 	conflicts = qc71_laptop

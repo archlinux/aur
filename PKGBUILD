@@ -3,7 +3,7 @@
 
 _modname=qc71_laptop
 pkgname=qc71-laptop-lapac71-dkms-git
-pkgver=r83.54a5299
+pkgver=r85.01e23a3
 pkgrel=1
 pkgdesc='QC71 laptop platform driver with LAPAC71G/H battery, keyboard RGB and fan support (DKMS)'
 arch=('x86_64')
@@ -12,7 +12,8 @@ license=('GPL-2.0-only')
 depends=('dkms')
 makedepends=('git')
 optdepends=('linux-headers: build for the linux kernel'
-            'linux-lts-headers: build for the linux-lts kernel')
+            'linux-lts-headers: build for the linux-lts kernel'
+            'lapac71g-lapac71h-keyboard-gnome-git: GNOME 51 keyboard RGB color picker for LAPAC71G/H')
 provides=("qc71-laptop-dkms=${pkgver}" "${_modname}=${pkgver}")
 conflicts=('qc71-laptop-dkms' 'qc71-laptop-dkms-git' "${_modname}")
 options=('!strip' '!debug' '!lto')
