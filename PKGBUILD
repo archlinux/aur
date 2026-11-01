@@ -7,12 +7,12 @@ _nugetid=Microsoft.VisualStudio.Validation
 pkgver=17.13.22
 pkgrel=2
 pkgdesc="Common input validation and state verification utility methods, Microsoft.VisualStudio.Validation (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/microsoft/vs-validation'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   jq
   python
 )
