@@ -1,5 +1,5 @@
 # Maintainer: Felipe BF <fprgw32 at gmail dot com>
-# Maintainer: Juanjo Gutierrez <juanjo at gutierrezdequevedo dot com>
+# Contributor: Juanjo Gutierrez <juanjo at gutierrezdequevedo dot com>
 
 pkgname=ucsim
 pkgver=0.9.12
