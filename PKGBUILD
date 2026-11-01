@@ -43,9 +43,22 @@ _dotnet_env() {
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
-  # RID of the .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's build
-  _rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+  # RID of the .NET SDK, the build host crossgen2 runs on: arch-x64 for the source-built .NET of Arch,
+  # linux-arm64 for Microsoft's build
+  _host_rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
   _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([[:digit:]\.]+) .*/\1/")
+  # The architecture and RID Gherkin.dll is compiled for follow the package architecture ($CARCH), like
+  # powershell's: the host's RID on a native build, Microsoft's portable linux-<arch> one from nuget.org
+  # on a cross build (an x86_64 host building for aarch64), which has no source-built .NET for the target
+  case "$CARCH" in
+    x86_64) _arch=x64 ;;
+    aarch64) _arch=arm64 ;;
+  esac
+  if [[ "$_host_rid" == *-"$_arch" ]]; then
+    _rid="$_host_rid"
+  else
+    _rid="linux-$_arch"
+  fi
 }
 
 prepare() {
@@ -70,13 +83,16 @@ build() {
   _dotnet_env
   # The crossgen2 of the .NET runtime, which the SDK gets for a project published with ReadyToRun: from
   # the source-built artifacts with dotnet-build-deps-10.0 (see crossgen2-pack.targets), Microsoft's
-  # build from nuget.org with dotnet-build-deps-10.0-bin
+  # build from nuget.org with dotnet-build-deps-10.0-bin. A cross build has the runtime pack of the
+  # target from nuget.org, the artifacts only have the host's.
   mkdir -p crossgen2 nuget-local
-  local _artifacts
+  local _artifacts _packs=("Microsoft.NETCore.App.Crossgen2.$_host_rid.*.nupkg")
+  if [[ "$_rid" == "$_host_rid" ]]; then
+    _packs+=("Microsoft.NETCore.App.Runtime.$_rid.*.nupkg")
+  fi
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
     [[ -f "$_artifacts" ]] || continue
-    bsdtar -xf "$_artifacts" -C nuget-local "Microsoft.NETCore.App.Crossgen2.$_rid.*.nupkg" \
-      "Microsoft.NETCore.App.Runtime.$_rid.*.nupkg"
+    bsdtar -xf "$_artifacts" -C nuget-local "${_packs[@]}"
   done
   cd crossgen2 || exit
   cat >nuget.config <<EOF
@@ -104,19 +120,29 @@ EOF
   cd "$srcdir" || exit
 
   # Like powershell's Invoke-ReadyToRunCompiler: against the .NET runtime and PowerShell, which
-  # provides Newtonsoft.Json
-  local _arch
-  case "$CARCH" in
-    x86_64) _arch=x64 ;;
-    aarch64) _arch=arm64 ;;
-  esac
-  "$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_rid/$_runtimever/tools/crossgen2" "Pester-$pkgver/lib/Gherkin/core/Gherkin.dll" --out Gherkin.dll \
-    --targetos linux --targetarch "$_arch" -O \
-    -r "/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever/*.dll" -r '/usr/lib/powershell-7/*.dll'
+  # provides Newtonsoft.Json. A cross build compiles against the runtime pack of the target, which has
+  # System.Private.CoreLib in native/.
+  local _runtime=("/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever/*.dll")
+  if [[ "$_rid" != "$_host_rid" ]]; then
+    _runtime=("$NUGET_PACKAGES/microsoft.netcore.app.runtime.$_rid/$_runtimever/runtimes/$_rid/"{lib/"net$_dotnetsdkver",native}/'*.dll')
+  fi
+  local _reference _references=()
+  for _reference in "${_runtime[@]}" '/usr/lib/powershell-7/*.dll'; do
+    _references+=(-r "$_reference")
+  done
+  "$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_host_rid/$_runtimever/tools/crossgen2" "Pester-$pkgver/lib/Gherkin/core/Gherkin.dll" --out Gherkin.dll \
+    --targetos linux --targetarch "$_arch" -O "${_references[@]}"
   mv Gherkin.dll "Pester-$pkgver/lib/Gherkin/core/Gherkin.dll"
 }
 
 check() {
+  _dotnet_env
+  # Gherkin.dll of a cross build ($CARCH differs from the build host) is for another architecture, run
+  # the tests natively on the target instead
+  if [[ "$_rid" != "$_host_rid" ]]; then
+    echo 'powershell-pester-4: skipping the tests on a cross build; run them natively on the target' >&2
+    return 0
+  fi
   # With the user's PowerShell data in $srcdir
   HOME="$srcdir/home" pwsh -NoProfile -NonInteractive -File "$srcdir/invoke-tests.ps1" -Path "$srcdir/Pester-$pkgver"
 }
