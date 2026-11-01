@@ -1,0 +1,13 @@
+--- a/q2_feature_table/_summarize/_visualizer.py
++++ b/q2_feature_table/_summarize/_visualizer.py
+@@ -155,6 +155,10 @@
+     css = os.path.join(TEMPLATES, 'tabulate_seqs_assets', 'datatables.min.css')
+     os.mkdir(os.path.join(output_dir, 'css'))
+     shutil.copy(css, os.path.join(output_dir, 'css', 'datatables.min.css'))
++    shutil.copytree(
++        os.path.join(TEMPLATES, 'tabulate_seqs_assets', 'third-party-licenses'),
++        os.path.join(output_dir, 'third-party-licenses')
++    )
+ 
+ 
+ def is_numeric(metadata: qiime2.metadata):
