@@ -1,6 +1,7 @@
-*.pkg.tar.zst
-*.log
-*.jar
-src
-pkg
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.desktop
+!*.png
 
