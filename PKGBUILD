@@ -93,9 +93,8 @@ prepare() {
     _arcade="${_arcade##*/Microsoft.DotNet.Arcade.Sdk.}"
     echo "${_arcade%.nupkg}" >arcade-version
   done
-  # The Arcade on dotnet-eng targets an unreleased .NET SDK and won't load on the released one (MSB4062,
-  # Microsoft.Build.Framework.IMultiThreadableTask), so x86_64 requires the source-built artifacts
-  # rather than falling back to it.
+  # x86_64 has the source-built artifacts, so it requires them rather than falling back to Microsoft's
+  # prebuilt Arcade
   if [[ "$CARCH" == x86_64 && ! -f "$srcdir/arcade-version" ]]; then
     echo 'dotnet-roslyn needs dotnet-source-built-artifacts on x86_64' >&2
     exit 1
