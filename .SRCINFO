@@ -1,0 +1,19 @@
+pkgbase = python-py65-git
+	pkgdesc = Emulate 6502-based microcomputer systems in Python (bleeding-edge version)
+	pkgver = 1.2.0.r12.gf857233
+	pkgrel = 1
+	url = https://github.com/mnaberez/py65
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = py65=1.2.0.r12.gf857233
+	conflicts = py65
+	source = git+https://github.com/mnaberez/py65.git
+	sha256sums = SKIP
+
+pkgname = python-py65-git
