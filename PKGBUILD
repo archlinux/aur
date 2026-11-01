@@ -5,7 +5,7 @@
 pkgname=dotnet-nerdbank-streams
 _nugetid=Nerdbank.Streams
 pkgver=2.14.411
-pkgrel=1
+pkgrel=2
 pkgdesc="Streams for full duplex in-proc communication, wrap a WebSocket, split a stream into multiple channels, Nerdbank.Streams (NuGet package)"
 arch=('any')
 url='https://github.com/dotnet/Nerdbank.Streams'
@@ -78,7 +78,7 @@ _nuget_config() {
 <configuration>
   <packageSources>
     <clear />
-    <add key="dotnet-system" value="/usr/share/dotnet/nuget-packages" />
+    <add key="dotnet-system" value="/usr/share/nuget/packages" />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
     <add key="${1%%=*}" value="${1#*=}" />
   </packageSources>
@@ -181,7 +181,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "Nerdbank.Streams-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
