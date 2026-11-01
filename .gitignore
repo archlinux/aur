@@ -1,0 +1,6 @@
+kwi/
+pkg/
+src/
+test/
+
+kwi*.pkg.tar.zst
