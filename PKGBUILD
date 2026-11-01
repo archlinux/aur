@@ -69,7 +69,7 @@ prepare() {
   # PowerShell (legacy) isn't needed, as PowerShell loads the one for .NET (core).
   rm -r lib/Gherkin/core lib/Gherkin/legacy vendor
   mkdir lib/Gherkin/core
-  bsdtar -xOf "/usr/share/dotnet/nuget-packages/Gherkin.5.1.0.nupkg" lib/netstandard2.0/Gherkin.dll \
+  bsdtar -xOf "/usr/share/nuget/packages/Gherkin.5.1.0.nupkg" lib/netstandard2.0/Gherkin.dll \
     >lib/Gherkin/core/Gherkin.dll
 
   # The archive has CRLF line endings (.gitattributes), the patches from git LF
