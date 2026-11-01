@@ -1,6 +1,6 @@
 pkgbase = magic-context-dashboard-bin
-	pkgdesc = Dashboard for Magic Context (Tauri App)
-	pkgver = 0.10.0
+	pkgdesc = Dashboard for Magic Context
+	pkgver = 0.20.23
 	pkgrel = 1
 	url = https://github.com/cortexkit/magic-context
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = magic-context-dashboard-bin
 	depends = libappindicator-gtk3
 	provides = magic-context-dashboard
 	conflicts = magic-context-dashboard
-	noextract = magic-context-dashboard-0.10.0.deb
+	noextract = magic-context-dashboard-0.20.23.deb
 	options = !strip
-	source = magic-context-dashboard-0.10.0.deb::https://github.com/cortexkit/magic-context/releases/download/dashboard-v0.10.0/magic-context-dashboard-linux-x64.deb
-	source = LICENSE::https://raw.githubusercontent.com/cortexkit/magic-context/master/LICENSE
-	sha256sums = 14683838cd50aedf579e007651d0bdc5b44f089bfe82a92fd042fdb81fb6a799
-	sha256sums = 0e3d1aa1cbe4aec50224fc6c91eb898d42949d6ff84fe515f9e2bb0663f5d483
+	source = magic-context-dashboard-0.20.23.deb::https://github.com/cortexkit/magic-context/releases/download/dashboard-v0.20.23/magic-context-dashboard-linux-x64.deb
+	source = LICENSE::https://raw.githubusercontent.com/cortexkit/magic-context/dashboard-v0.20.23/LICENSE
+	sha256sums = cde1434af17f73c2e76f55f99a7a5d202a34e0a5d0386b127f5c1bee7f3d3672
+	sha256sums = 66d8947518a0b3efefa01a1615249f6e2d99b9308379628dafb0abcabc8b128a
 
 pkgname = magic-context-dashboard-bin

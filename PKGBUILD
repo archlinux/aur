@@ -1,8 +1,9 @@
-# Maintainer: Keithsel <keithsel@disroot.org>
+# Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
+# Contributor: Keithsel <keithsel@disroot.org>
 
 pkgname=magic-context-dashboard-bin
 _pkgname=magic-context-dashboard
-pkgver=0.10.0
+pkgver=0.20.23
 pkgrel=1
 pkgdesc="Dashboard for Magic Context"
 arch=('x86_64')
@@ -13,9 +14,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/cortexkit/magic-context/releases/download/dashboard-v${pkgver}/magic-context-dashboard-linux-x64.deb"
-        "LICENSE::https://raw.githubusercontent.com/cortexkit/magic-context/master/LICENSE")
-sha256sums=('14683838cd50aedf579e007651d0bdc5b44f089bfe82a92fd042fdb81fb6a799'
-            '0e3d1aa1cbe4aec50224fc6c91eb898d42949d6ff84fe515f9e2bb0663f5d483')
+        "LICENSE::https://raw.githubusercontent.com/cortexkit/magic-context/dashboard-v${pkgver}/LICENSE")
+sha256sums=('cde1434af17f73c2e76f55f99a7a5d202a34e0a5d0386b127f5c1bee7f3d3672'
+            '66d8947518a0b3efefa01a1615249f6e2d99b9308379628dafb0abcabc8b128a')
 noextract=("${_pkgname}-${pkgver}.deb")
 
 package() {
