@@ -5,7 +5,7 @@ pkgbase = dotnet-jsonschema-net-7
 	url = https://github.com/json-everything/json-everything
 	arch = any
 	license = MIT
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-build-deps-10.0
 	makedepends = git
 	depends = dotnet-jsonpointer-net-5
 	provides = dotnet-jsonschema-net=7.4.0

@@ -15,7 +15,7 @@ provides=("dotnet-jsonschema-net=$pkgver")
 depends=(dotnet-jsonpointer-net-5)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   git
 )
 # 7.x is the last version line published under the MIT license alone, later releases on nuget.org come
