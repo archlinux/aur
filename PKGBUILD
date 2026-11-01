@@ -11,9 +11,9 @@ pkgname=powershell-editor-services-build-deps
 pkgver=1
 pkgrel=1
 pkgdesc="Libraries the PowerShell editor services build against, built from source (meta package)"
-arch=('any')
+arch=(any)
 url='https://github.com/PowerShell/PowerShellEditorServices'
-license=('0BSD')
+license=(0BSD)
 depends=(
   # PSScriptAnalyzer
   dotnet-newtonsoft-json
