@@ -16,11 +16,8 @@ depends=(
   powershell
 )
 makedepends=(
+  dotnet-build-deps-"$_dotnetsdkver"
   dotnet-gherkin-5
-  dotnet-sdk-"$_dotnetsdkver"
-)
-makedepends_x86_64=(
-  dotnet-source-built-artifacts-"$_dotnetsdkver"
 )
 # Pester 5 isn't compatible with tests written for Pester 4, like PowerShell's own, which ask for
 # version 4 (Save-Module -Name Pester -MaximumVersion 4.99 in build.psm1). That's the latest stable
@@ -71,8 +68,9 @@ prepare() {
 
 build() {
   _dotnet_env
-  # The crossgen2 of the .NET runtime, from the source-built artifacts where they're available, which
-  # the SDK gets for a project published with ReadyToRun (see crossgen2-pack.targets)
+  # The crossgen2 of the .NET runtime, which the SDK gets for a project published with ReadyToRun: from
+  # the source-built artifacts with dotnet-build-deps-10.0 (see crossgen2-pack.targets), Microsoft's
+  # build from nuget.org with dotnet-build-deps-10.0-bin
   mkdir -p crossgen2 nuget-local
   local _artifacts
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do

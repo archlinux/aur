@@ -6,8 +6,8 @@ pkgbase = powershell-pester-4
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	makedepends = dotnet-build-deps-10.0
 	makedepends = dotnet-gherkin-5
-	makedepends = dotnet-sdk-10.0
 	depends = powershell
 	source = Pester-4.10.1.tar.gz::https://github.com/pester/Pester/archive/4.10.1.tar.gz
 	source = pester-failure-lines-core.patch
@@ -24,6 +24,5 @@ pkgbase = powershell-pester-4
 	b2sums = 8ee8bc3bbe9a512f1b49c65d0d9a33412deef83ad1ca3145c9edd59097f49034befa7bd5756520375ef1f074011cb33897daefd60017459fb5fe04973f8988c6
 	b2sums = 3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b
 	b2sums = 70d2e695a116fb5d4fecf52bf79f16f4c6c7db64c0244ce04b5de0a185f1ef7c77b5c71f892199f7e531936b8d51f619ac5469cbfc8a31089d5a6861ec7beed5
-	makedepends_x86_64 = dotnet-source-built-artifacts-10.0
 
 pkgname = powershell-pester-4
