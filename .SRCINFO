@@ -1,0 +1,32 @@
+pkgbase = q2-sample-classifier
+	pkgdesc = QIIME 2 classification and regression of biological samples
+	pkgver = 2026.10.0
+	pkgrel = 1
+	url = https://github.com/qiime2/q2-sample-classifier
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-versioningit
+	makedepends = python-wheel
+	depends = python
+	depends = python-qiime2>=2026.10.0
+	depends = python-q2-types>=2026.10.0
+	depends = q2-feature-table>=2026.10.0
+	depends = python-q2templates>=2026.10.0
+	depends = python-biom-format
+	depends = python-scikit-bio
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-scikit-learn
+	depends = python-matplotlib
+	depends = python-seaborn
+	optdepends = python-fastcluster: accelerated hierarchical clustering of large heatmaps
+	source = q2-sample-classifier-2026.10.0.tar.gz::https://github.com/qiime2/q2-sample-classifier/archive/efd06401d7e817f510a7a34efd436848d990574d.tar.gz
+	sha256sums = 1e20769d24d394aecdc4517772caffb96da31d018d10c68ed7747250f81aec7f
+
+pkgname = q2-sample-classifier
