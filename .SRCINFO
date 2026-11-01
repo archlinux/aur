@@ -1,0 +1,24 @@
+pkgbase = fava-portfolio-returns
+	pkgdesc = Show portfolio returns in Fava
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/andreasgerstmayr/fava-portfolio-returns
+	arch = any
+	license = GPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-wheel
+	depends = beancount
+	depends = fava
+	depends = python
+	depends = python-dateutil
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-protobuf
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/f/fava_portfolio_returns/fava_portfolio_returns-2.7.0.tar.gz
+	sha256sums = a3719fc2121011a8943964e77cd5fd2dedd1122bbec3e38b3b00f2020fae66c6
+
+pkgname = fava-portfolio-returns
