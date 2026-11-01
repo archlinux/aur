@@ -1,11 +1,11 @@
 # Maintainer: Ceaser Larry <ceaser.larry@gmail.com>
 pkgname=beads-viewer-bin
 pkgver=0.25.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Graph-aware TUI for the Beads issue tracker: PageRank, critical path, kanban, dependency DAG visualization, and robot-mode JSON API"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Dicklesworthstone/beads_viewer"
-license=('LicenseRef-MIT-OpenAI-Anthropic-Rider')
+license=('MIT-OpenAI-Anthropic-Rider')
 provides=('beads-viewer')
 conflicts=('beads-viewer')
 source=("https://raw.githubusercontent.com/Dicklesworthstone/beads_viewer/v${pkgver}/LICENSE")

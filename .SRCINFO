@@ -1,11 +1,11 @@
 pkgbase = beads-viewer-bin
 	pkgdesc = Graph-aware TUI for the Beads issue tracker: PageRank, critical path, kanban, dependency DAG visualization, and robot-mode JSON API
 	pkgver = 0.25.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dicklesworthstone/beads_viewer
 	arch = x86_64
 	arch = aarch64
-	license = LicenseRef-MIT-OpenAI-Anthropic-Rider
+	license = MIT-OpenAI-Anthropic-Rider
 	provides = beads-viewer
 	conflicts = beads-viewer
 	source = https://raw.githubusercontent.com/Dicklesworthstone/beads_viewer/v0.25.2/LICENSE
