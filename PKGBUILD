@@ -5,7 +5,7 @@
 pkgname=dotnet-mediatr-12
 pkgver=12.5.0
 _contractsver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple mediator implementation in .NET, MediatR 12 and MediatR.Contracts (NuGet packages)"
 arch=('any')
 url='https://github.com/jbogard/MediatR'
@@ -167,7 +167,7 @@ _check_prebuilt() {
 
 package() {
   install -Dm644 "$srcdir/nupkg/MediatR.$pkgver.nupkg" "$srcdir/nupkg/MediatR.Contracts.$_contractsver.nupkg" \
-    -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+    -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "MediatR-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"

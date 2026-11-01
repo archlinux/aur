@@ -1,7 +1,7 @@
 pkgbase = dotnet-mediatr-12
 	pkgdesc = Simple mediator implementation in .NET, MediatR 12 and MediatR.Contracts (NuGet packages)
 	pkgver = 12.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jbogard/MediatR
 	arch = any
 	license = Apache-2.0
