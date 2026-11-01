@@ -1,7 +1,8 @@
 pkgbase = twos-appimage
 	pkgdesc = A simple and beautiful way to capture your thoughts, organize your life, and get things done.
 	pkgver = 1.21.3
-	pkgrel = 1
+	pkgrel = 2
+	epoch = 1
 	url = https://twosapp.com/
 	arch = x86_64
 	license = unset

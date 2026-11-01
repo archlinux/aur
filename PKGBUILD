@@ -2,7 +2,8 @@
 pkgname=twos
 pkgbase=twos-appimage
 pkgver=1.21.3
-pkgrel=1
+pkgrel=2
+epoch=1
 pkgdesc='A simple and beautiful way to capture your thoughts, organize your life, and get things done.'
 arch=('x86_64')
 url='https://twosapp.com/'
