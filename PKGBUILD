@@ -7,8 +7,11 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/MaaAssistantArknights/maa-cli"
 license=('AGPL-3.0-only')
 depends=('gcc-libs' 'libgit2' 'openssl' 'zip')
-makedepends=('cargo')
-optdepends=('maa-assistant-arknights: for preinstalled maa core')
+makedepends=('cargo' 'git')
+optdepends=(
+  'maa-assistant-arknights: for preinstalled maa core'
+  'git: alternative git backend'
+)
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('37bb15f5b0eaf018bebcbb6e9172d726')
 sha256sums=('c1a0a6ff6fd83c2aa8a6c66cc6b6afe9d877c6eecb9004905172ae0741b698eb')
