@@ -8,18 +8,18 @@ pkgname=cryptpad
 pkgver=2026.10.0
 pkgrel=3
 pkgdesc="Realtime collaborative visual editor with zero knowledge server"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url="https://github.com/$pkgname/$pkgname"
 license=(AGPL-3.0-only)
 depends=(glibc nodejs)
 makedepends=(npm git unzip)
-optdepends=("nginx: HTTP server providing TLS"
+optdepends=('nginx: HTTP server providing TLS'
   "certbot: Let's Encrypt – automatically receive and install X.509 certificates to enable TLS"
   "certbot-nginx: Nginx plugin for Let's Encrypt client"
-  "cryptpad-sso: SSO plugin for Cryptpad")
-conflicts=("cryptpad-sso<1.0.0")
-backup=(etc/webapps/"$pkgname"/config.js
-  etc/nginx/sites-available/"$pkgname".conf)
+  'cryptpad-sso: SSO plugin for Cryptpad')
+conflicts=('cryptpad-sso<1.0.0')
+backup=("etc/webapps/$pkgname/config.js"
+  "etc/nginx/sites-available/$pkgname.conf")
 options=(!strip !debug) # The only ELF files are upstream's sodium-native prebuilds
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
   "$pkgname.service"
