@@ -1,12 +1,12 @@
 pkgbase = pypy3-flit-core
 	pkgdesc = A PEP 517 build backend for packages using Flit
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/pypa/flit/tree/main/flit_core
 	arch = any
 	license = BSD-3-Clause
 	depends = pypy3
-	source = flit-4.1.0.tar.gz::https://github.com/pypa/flit/archive/4.1.0.tar.gz
-	sha512sums = e31f86cb595f6749867da1173f56b9c2563fcb9c3c38cdbc637a511992e7b462f7627571aad3ef1da5cc6c6574448dc69cfeb9a37d3ed7a6ce5537e90dcb5fb9
+	source = flit-4.2.0.tar.gz::https://github.com/pypa/flit/archive/4.2.0.tar.gz
+	sha512sums = 1d01e3bc2c5cd40b24b5a4deffe7af081899a1555c7351f1d806c0805f25f1c34610ddd5c80dd46feb2d9be28bad5681812c5a74dd382bfa19781fa56feb59ed
 
 pkgname = pypy3-flit-core
