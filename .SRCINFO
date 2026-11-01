@@ -20,6 +20,7 @@ pkgbase = slive
 	depends = libva
 	depends = libxv
 	depends = patchelf
+	depends = libsecret
 	source = v1.8.15.tar.gz::https://github.com/SlotSun/dart_simple_live/archive/refs/tags/v1.8.15.tar.gz
 	sha256sums = SKIP
 
