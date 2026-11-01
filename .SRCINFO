@@ -21,7 +21,7 @@ pkgbase = electric-eye
 	options = !debug
 	backup = etc/electric-eye/allowlist.conf
 	backup = etc/electric-eye/config.toml
-	source = electric-eye-0.1.0.tar.gz::https://github.com/jamesmcm/electric-eye/releases/download/v0.1.0/electric-eye-0.1.0-r2.tar.gz
-	sha256sums = 50597bf68483f9e5fae76aafcfc4926639be562772d8f46d5d64d82e1016d02d
+	source = electric-eye-0.1.0.tar.gz::https://github.com/jamesmcm/electric-eye/releases/download/v0.1.0/electric-eye-0.1.0-r3.tar.gz
+	sha256sums = 0c75934f8b913f2cea3711001eb1978bf3de90d3502e85f161de9b9dc123f072
 
 pkgname = electric-eye
