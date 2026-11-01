@@ -3,6 +3,8 @@
 param(
     # The DSC repository, which has to be built already
     [Parameter(Mandatory)] [string] $SourcePath,
+    # The Rust target it was built for (upstream's names), current for the build host
+    [string] $Architecture = 'current',
     # The folder to install DSC to
     [Parameter(Mandatory)] [string] $Destination
 )
@@ -14,7 +16,7 @@ Set-Location -LiteralPath $SourcePath
 Import-Module ./helpers.build.psm1
 
 $buildData = Import-DscBuildData -RefreshProjects
-$bin = (Get-ArtifactDirectoryPath -Release).Bin
+$bin = (Get-ArtifactDirectoryPath -Release -Architecture $Architecture).Bin
 
 $null = New-Item -ItemType Directory -Path $Destination -Force
 foreach ($file in $buildData.PackageFiles.Linux) {
