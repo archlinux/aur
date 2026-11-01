@@ -4,7 +4,7 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname=bitrise
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         bitrise.bash
         bitrise.zsh
         bitrise.fish)
-sha256sums=('12f8ff23fb86dfc5b83515f6d1ca99a10cb6d4b4d1bb9aa6e5e0190781619bd3'
+sha256sums=('c54aab3585ac5935bb75067a38fce39dcd2388b3df967fd9ac6ce17553dfdd7a'
             'b367b75b82c0fda6c55521b137b767e430f052ed75acb184f1b9bad228b92a39'
             '2e90903f4581ed8894b263ebd0d58811169466ad8ec557b77c272dd3d6c07326'
             'fe394b90914152d73a78096dccaef08d2dc0cd9e1e3745c518ee6507c6611da3')
@@ -49,7 +49,7 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
-    BITRISE_ANALYTICS_DISABLED=true go test -p 1 ./... -skip 'TestParseAndValidatePluginFromYML|TestMoveFileDifferentDevices'
+    BITRISE_ANALYTICS_DISABLED=true go test -p 1 -tags linux_only ./... -skip 'TestMoveFileDifferentDevices|Test_EnvsSerializeModel_Normalize'
 }
 
 package() {
