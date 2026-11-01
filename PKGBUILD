@@ -6,12 +6,12 @@ pkgname=dotnet-roslyn
 pkgver=5.9.0
 pkgrel=3
 pkgdesc="The .NET Compiler Platform for C#, Microsoft.CodeAnalysis.Common and .CSharp (NuGet packages)"
-arch=('any')
+arch=(any)
 url='https://github.com/dotnet/roslyn'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
 )
 # The commit the packages were published from (release/insiders), and the official build of them, see
 # the file version 5.900.26.35703 of their assemblies (Arcade encodes the date and build number in it)
