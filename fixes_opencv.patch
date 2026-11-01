@@ -3,7 +3,7 @@
 @@ -522,7 +522,7 @@
  # can't reach it; the default opts its Boost lookup into BoostConfig (CMP0167).
  set(CMAKE_POLICY_DEFAULT_CMP0167 NEW)
- find_package(CGAL REQUIRED)
+ find_package(CGAL 6.2 REQUIRED)
 -find_package(OpenCV REQUIRED core)
 +find_package(OpenCV REQUIRED core imgproc imgcodecs)
  find_package(assimp REQUIRED)

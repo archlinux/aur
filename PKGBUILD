@@ -1,16 +1,17 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.5.0.r30599.ccd6086
+pkgver=2.5.0.r32952.95a2732
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/OrcaSlicer/OrcaSlicer"
 license=('AGPL-3.0-only')
-depends=('assimp' 'bash' 'cairo' 'curl' 'dbus' 'expat' 'draco' 'ffmpeg' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'glfw' 'gmp' 'gspell' 'gstreamer'
-         'gst-plugins-bad-libs' 'gtk3' 'hicolor-icon-theme' 'icu' 'imath' 'libgcc' 'libpng' 'libglvnd' 'libjpeg-turbo'  'libspnav'
-         'libstdc++' 'libx11' 'libxkbcommon' 'mesa' 'mesa-utils' 'mpfr' 'nlopt' 'onetbb' 'opencascade' 'opencv' 'openssl' 'openvdb'
-         'pango' 'python' "uv" 'wayland' 'webkit2gtk-4.1' 'zlib' 'libnoise')
+depends=('assimp' 'bash' 'cairo' 'curl' 'dbus' 'draco' 'expat' 'ffmpeg' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'glfw' 'gmp' 'gspell' 
+         'gst-plugins-bad-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'icu' 'imath' 'libdatachannel' 'libgcc' 'libglvnd' 'libjpeg-turbo'
+         'libnoise' 'libpng' 'libspnav' 'libstdc++' 'libx11' 'libxkbcommon' 'mesa' 'mesa-utils' 'mpfr' 'nlopt' 'opencascade' 'opencv'
+         'onetbb' 'openssl' 'openvdb' 'pango' 'python' 'python-matplotlib' 'python-numpy' 'python-shapely' 'python-trimesh' 'qhull' 'uv'
+         'wayland' 'webkit2gtk-4.1' 'zlib')
 makedepends=('cereal' 'cgal' 'cmake' 'eigen' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'libmspack' 'm4' 'ninja'
              'opencsg' 'pkgconf' 'python-numpy' 'superlu' 'wayland-protocols')
 optdepends=('nvidia-utils: for querying driver version')
@@ -20,23 +21,21 @@ conflicts=('orca-slicer')
 source=($pkgname::git+https://github.com/OrcaSlicer/OrcaSlicer.git
         orca-slicer-wrapper.sh
         fixes_boost.patch
-        fixes_cgal.patch
         fixes_igl.patch
         fixes_libnoise.patch
-        fixes_occt.patch
         fixes_opencv.patch
         fixes_python.patch
+        fixes_qhull.patch
         remove_bundled_libs_from_CMakeLists.patch)
 b2sums=('SKIP'
         '25eb7be624db4074fc5840a6904187f9bbf3f8ed96b14430f7fdc8bcc9ebb0ce9ad033fbe1fde51a905baf8f87693ebc33b4c82a9200f561e7b593e5bffab02f'
-        '12a27356e6bc1e85070cf3a4da5ade557e69bfeb2d0ab0e4caeda438671331406e9e4157256c7ff55c8844091772762cd219dfb34e207e5c985381439e691af4'
-        '26631ec9426eee4dc1367f59684b0dc7ced73b1d269e299df94dd2f81c04a0d2e804af86ec2d660256e3d8536bdea91400429ab9c708a150abdb3315850268f6'
+        'e1fd371a17b0e37e9bff77dffa5750ae38f4dcbf215b803564a3ce590bb6782001b045377e268461102dc73fa7a210413cc8db7df05267758676d67e64cba45e'
         'd6837b59b4e209eac9042644d5ed55cf63080e4662e3314b9fc21e9cf8484f2a86ee52690547c51f09935aecb8aab370939dc6d15ab7b50c871a3a17bfe66ebb'
-        '0c65b83acd74496f531aa064179aa40ee61feea2d73012ca38b7d6acd0ccd973978a639a9ddb75f8a9e512ebbc7c86caa5d501c15bf77cb121a8ef40d1f405ad'
-        '996435df556705192dccb35b011f4c27de798cac9b5c684679a13c20cbda02aa24680f2eddb34f820cf99c1f5dfc70333083fac92cb2c97dd65f8606a2119d25'
-        '749e1ba78594c95140b2bc5e08f5b9962845f99b10bc7f0136ebf812b2bd3f0d83774031ead017aca4a913b8422171ff67c48897077014078f6187e11f0da0b3'
-        '09c87046657ff620d213152ef77b0bc8a21bda8ddfe154aacaa0611ce6424e51132899c1a058f7cfe84f528ce9e7d7c20b04d0c35bb19460c4e82d4ad625fc63'
-        'ce62d9648e8ef69f0506c4d5b7260d8d5b44b94e783c2a0a0f154ca73e904e8758bb009f6a85dea95b5930a2ebca538edcf2d9fcf61e015a905ad262d211fd69')
+        'fe9e3e8d55480f6b1b6644e66b027efa48d8f04da5657f10d64b44f4fb443efe7d349de37e10da0f78d592eb9dd613785a8de7778931ac3ed54ea7748496266f'
+        '4744568a2f2d8225360177f8acb4b5aebf2cb4fd4cbd31d78dea545fe72fbd647821d2366b159ba49650b44b605bc223bbf95f81777f912366d2fe1cbfc5a849'
+        'ce8a8d4542b31054f6664595cafaecf9ebb4f5470c3639eaa50cb2c50ffc39639860fe16be833df4ed6c4565b294e6601ca7aaf747ac97995e9aac35fa8440e7'
+        '029f30d3328ead1ed8784f11529b0132739b74712400de88200e6f1e42de6f1802b45ba6cdb37dbed60baa0a5440e3c8f5ec459006bf3fc8d54974283bcec9d2'
+        '793fc3cbf42d3ce14d5036a5ba885c513aca49679f1591b9386f92ad7c5825c5632dbaba51e598fd161160f24f6b5747b78539227048779208dd85da7f27f474')
 
 pkgver() {
   cd $pkgname
@@ -50,18 +49,17 @@ prepare() {
   cd $pkgname
 
   # list of bundled packages to drop
-  for _pkg in Assimp Blosc Boost Cereal CGAL CURL Draco Eigen EXPAT FFMPEG FREETYPE GLFW GLEW GMP JPEG libnoise MPFR NLopt OCCT OpenCSG OpenCV OpenEXR OpenSSL OpenVDB PNG python3 Qhull TBB ZLIB; do
+  for _pkg in Assimp Blosc Boost Cereal CGAL CURL DataChannel Draco Eigen EXPAT FFMPEG FREETYPE GLFW GLEW GMP JPEG libnoise MPFR NLopt OpenCSG OpenCV OpenEXR OpenSSL OpenVDB PNG python3 Qhull TBB ZLIB; do
     sed -i -e "s/dep_${_pkg}/\"\"/" -e "s|include(${_pkg}/${_pkg}.cmake)||" deps/CMakeLists.txt
   done
 
-  patch -Np1 -i "${srcdir}"/fixes_occt.patch
   patch -Np1 -i "${srcdir}"/fixes_opencv.patch
   patch -Np1 -i "${srcdir}"/fixes_libnoise.patch
   patch -Np1 -i "${srcdir}"/fixes_igl.patch
-  patch -Np1 -i "${srcdir}"/fixes_cgal.patch
   patch -Np1 -i "${srcdir}"/fixes_boost.patch
   patch -Np1 -i "${srcdir}"/fixes_python.patch
-  patch -Np1 -i "${srcdir}"/remove_bundled_libs_from_CMakeLists.patch  # UV libav/ffmpeg
+  patch -Np1 -i "${srcdir}"/fixes_qhull.patch
+  patch -Np1 -i "${srcdir}"/remove_bundled_libs_from_CMakeLists.patch  # libav/ffmpeg
 }
 
 build() {
@@ -99,6 +97,7 @@ build() {
     -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
     -DOpenVDB_openvdb_LIBRARY=/usr/lib/libopenvdb.so \
     -DOpenVDB_INCLUDE_DIR=/usr/include \
+    -DORCA_BUNDLED_UV_EXECUTABLE=/usr/bin/uv \
     -DSLIC3R_STATIC=1 \
     -DORCA_TOOLS=1 \
     -DSLIC3R_FHS=1 \

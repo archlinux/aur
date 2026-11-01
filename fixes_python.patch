@@ -10,7 +10,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
  # Auto-download uv if not provided by the user.
 @@ -879,8 +879,8 @@
 -set(_bundled_python_version "3.12.13")
-+set(_bundled_python_version "3.14.7")
++set(_bundled_python_version "3.14.9")
 -set(_bundled_python_abi "312")
 +set(_bundled_python_abi "314")
  string(REGEX REPLACE "^([0-9]+\\.[0-9]+)\\..*$" "\\1" _bundled_python_version_short "${_bundled_python_version}")
@@ -30,44 +30,34 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
      COMPONENTS Interpreter Development.Embed
  )
  
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -321,21 +321,21 @@
-         COMMAND ln -sfn "${SLIC3R_RESOURCES_DIR}" "${BIN_RESOURCES_DIR}"
-         COMMENT "Symlinking the resources directory into the build tree"
-         VERBATIM)
--    add_custom_command(TARGET OrcaSlicer POST_BUILD
--        COMMAND ${CMAKE_COMMAND} -E rm -rf "${BIN_DIR}/python"
--        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_PREFIX_PATH}/libpython" "${BIN_DIR}/python"
--        COMMENT "Copying Python runtime into the build tree"
--        VERBATIM)
-+    # add_custom_command(TARGET OrcaSlicer POST_BUILD
-+    #     COMMAND ${CMAKE_COMMAND} -E rm -rf "${BIN_DIR}/python"
-+    #     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_PREFIX_PATH}/libpython" "${BIN_DIR}/python"
-+    #     COMMENT "Copying Python runtime into the build tree"
-+    #     VERBATIM)
-     # Stage uv next to the binary for the build-tree/.app flows, which never
-     # run install() -- see the layout map above; lookup is bundled_uv_path().
--    if(ORCA_BUNDLED_UV_EXECUTABLE AND EXISTS "${ORCA_BUNDLED_UV_EXECUTABLE}")
--        add_custom_command(TARGET OrcaSlicer POST_BUILD
--            COMMAND ${CMAKE_COMMAND} -E make_directory "${BIN_DIR}/tools/uv"
--            COMMAND ${CMAKE_COMMAND} -E copy_if_different "${ORCA_BUNDLED_UV_EXECUTABLE}" "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
--            COMMAND chmod +x "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
--            COMMENT "Copying bundled uv into the build tree"
--            VERBATIM)
--    endif()
-+    # if(ORCA_BUNDLED_UV_EXECUTABLE AND EXISTS "${ORCA_BUNDLED_UV_EXECUTABLE}")
-+    #     add_custom_command(TARGET OrcaSlicer POST_BUILD
-+    #         COMMAND ${CMAKE_COMMAND} -E make_directory "${BIN_DIR}/tools/uv"
-+    #         COMMAND ${CMAKE_COMMAND} -E copy_if_different "${ORCA_BUNDLED_UV_EXECUTABLE}" "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
-+    #         COMMAND chmod +x "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
-+    #         COMMENT "Copying bundled uv into the build tree"
-+    #         VERBATIM)
-+    # endif()
- endif ()
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -150,3 +150,3 @@
  
- # Slic3r binary install target. Default build type is release in case no CMAKE_BUILD_TYPE is provided.
+-if(NOT ORCA_BUNDLED_UV_EXECUTABLE)
++if(FALSE)
+     if(NOT EXISTS "${ORCA_UV_BINARY}")
+@@ -701,3 +701,3 @@
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "./resources")
+-    if(ORCA_BUNDLED_UV_EXECUTABLE)
++    if(FALSE)
+         install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "./resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
+@@ -722,3 +722,3 @@
+     )
+-    if(ORCA_BUNDLED_UV_EXECUTABLE)
++    if(FALSE)
+         # A Flatpak build finds uv at this exact path, installed by the orca_deps
+@@ -740,3 +740,3 @@
+     # install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/OrcaSlicer.app/Contents/resources")
+-    if(ORCA_BUNDLED_UV_EXECUTABLE)
++    if(FALSE)
+         install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${CMAKE_INSTALL_PREFIX}/OrcaSlicer.app/Contents/Resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
+@@ -745,3 +745,3 @@
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
+-    if(ORCA_BUNDLED_UV_EXECUTABLE)
++    if(FALSE)
+         install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
 --- a/src/slic3r/plugin/PythonInterpreter.cpp
 +++ b/src/slic3r/plugin/PythonInterpreter.cpp
 @@ -161,8 +161,8 @@
@@ -99,3 +89,42 @@ diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
  
          // Set Python home - this is the prefix where Python libraries are located
          PyConfig config;
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -360,21 +360,21 @@
+         COMMAND ln -sfn "${SLIC3R_RESOURCES_DIR}" "${BIN_RESOURCES_DIR}"
+         COMMENT "Symlinking the resources directory into the build tree"
+         VERBATIM)
+-    add_custom_command(TARGET OrcaSlicer POST_BUILD
+-        COMMAND ${CMAKE_COMMAND} -E rm -rf "${BIN_DIR}/python"
+-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_PREFIX_PATH}/libpython" "${BIN_DIR}/python"
+-        COMMENT "Copying Python runtime into the build tree"
+-        VERBATIM)
+-    # Stage uv next to the binary for the build-tree/.app flows, which never
+-    # run install() -- see the layout map above; lookup is bundled_uv_path().
+-    if(ORCA_BUNDLED_UV_EXECUTABLE AND EXISTS "${ORCA_BUNDLED_UV_EXECUTABLE}")
+-        add_custom_command(TARGET OrcaSlicer POST_BUILD
+-            COMMAND ${CMAKE_COMMAND} -E make_directory "${BIN_DIR}/tools/uv"
+-            COMMAND ${CMAKE_COMMAND} -E copy_if_different "${ORCA_BUNDLED_UV_EXECUTABLE}" "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
+-            COMMAND chmod +x "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
+-            COMMENT "Copying bundled uv into the build tree"
+-            VERBATIM)
+-    endif()
++    # add_custom_command(TARGET OrcaSlicer POST_BUILD
++    #     COMMAND ${CMAKE_COMMAND} -E rm -rf "${BIN_DIR}/python"
++    #     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_PREFIX_PATH}/libpython" "${BIN_DIR}/python"
++    #     COMMENT "Copying Python runtime into the build tree"
++    #     VERBATIM)
++    # # Stage uv next to the binary for the build-tree/.app flows, which never
++    # # run install() -- see the layout map above; lookup is bundled_uv_path().
++    # if(ORCA_BUNDLED_UV_EXECUTABLE AND EXISTS "${ORCA_BUNDLED_UV_EXECUTABLE}")
++    #     add_custom_command(TARGET OrcaSlicer POST_BUILD
++    #         COMMAND ${CMAKE_COMMAND} -E make_directory "${BIN_DIR}/tools/uv"
++    #         COMMAND ${CMAKE_COMMAND} -E copy_if_different "${ORCA_BUNDLED_UV_EXECUTABLE}" "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
++    #         COMMAND chmod +x "${BIN_DIR}/tools/uv/${ORCA_BUNDLED_UV_FILENAME}"
++    #         COMMENT "Copying bundled uv into the build tree"
++    #         VERBATIM)
++    # endif()
+ endif ()
+ 
+ # Slic3r binary install target. Default build type is release in case no CMAKE_BUILD_TYPE is provided.
