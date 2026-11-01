@@ -1,6 +1,6 @@
 pkgbase = python-numdifftools
 	pkgdesc = Solve automatic numerical differentiation problems in one or more variables
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/pbrod/numdifftools
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-numdifftools
 	makedepends = python-pdm-backend
 	makedepends = python-wheel
 	depends = python-scipy
-	source = numdifftools-0.11.1.tar.gz::https://github.com/pbrod/numdifftools/archive/v0.11.1.tar.gz
-	sha512sums = 42a5889216b2437720499bb689de5def76eb8f17f578c907115b179662d6e69e9350e25f72151f5667e5ba2e268d379de74ae036151fe7aa718bb995bbde536c
+	source = numdifftools-0.11.2.tar.gz::https://github.com/pbrod/numdifftools/archive/v0.11.2.tar.gz
+	sha512sums = fa9a3b5ed3dd1baccc45bf03503dde5cb0d3455db4b1b6c5bce88cf1fadc4b3c1ffa6a27653bf9a37285c6aa72a89b6ae3b0cc0a572477ba4da8111eefe766c7
 
 pkgname = python-numdifftools
