@@ -2,7 +2,7 @@
 
 pkgname=python-pyreadr
 _name=${pkgname#python-}
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc='Reads/writes R RData and Rds files into/from pandas data frames'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "fix_pkg_warning.patch")
-sha256sums=('99bc8d9438ee5a90a8412d53d5bdd7b7c8413f381dd00ddb79f341ee4d852923'
+sha256sums=('b0f0da98b61633968ddc944d717266208b39912e4f6ee1fc5017b22c37acebd7'
             '75390cc82d6778116edcebae97f29c24a8c42a938427de00bf9b2dd7d4a22a53')
 
 prepare() {
