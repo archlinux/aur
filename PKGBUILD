@@ -18,7 +18,7 @@ depends=(
 )
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   git
 )
 # 5.x is the last version line published under the MIT license alone, later releases on nuget.org come
