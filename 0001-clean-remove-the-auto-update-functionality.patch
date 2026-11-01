@@ -1,19 +1,19 @@
-From 4a1f124411e67c8440170c17d223b71f52a41f5d Mon Sep 17 00:00:00 2001
+From a07d36188aff40345a31ab4811802c3a6541e58b Mon Sep 17 00:00:00 2001
 From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 Date: Wed, 28 Oct 2026 19:26:07 +0300
-Subject: [PATCH 1/2] clean: remove the auto update functionality
+Subject: [PATCH 1/3] clean: remove the auto update functionality
 
 ---
  main.js             |  13 +--
  preload.js          |   5 -
- renderer/app.js     |  41 +--------
+ renderer/app.js     |  41 +-------
  renderer/index.html |   1 -
- update.js           | 219 --------------------------------------------
- 5 files changed, 2 insertions(+), 277 deletions(-)
+ update.js           | 224 --------------------------------------------
+ 5 files changed, 2 insertions(+), 282 deletions(-)
  delete mode 100644 update.js
 
 diff --git a/main.js b/main.js
-index ae493a6..9a98746 100644
+index 9e2b2cc..017aece 100644
 --- a/main.js
 +++ b/main.js
 @@ -5,7 +5,6 @@ const path = require('node:path');
@@ -24,7 +24,7 @@ index ae493a6..9a98746 100644
  // The header's star button: the project's page, and its star count on GitHub, asked at most once every
  // ten minutes (null when it can't be had). (Kept out of update.js: a change there only shows at the next
  // update.)
-@@ -368,17 +367,7 @@ function setUpIpc() {
+@@ -492,17 +491,7 @@ function setUpIpc() {
      return on;
    });
    ipcMain.handle('app:version', () => app.getVersion());
@@ -44,10 +44,10 @@ index ae493a6..9a98746 100644
    ipcMain.handle('repo:stars', () => repoStars().catch(() => null));
    ipcMain.handle('repo:open', () => shell.openExternal(REPO_PAGE));
 diff --git a/preload.js b/preload.js
-index 13192c5..5da0807 100644
+index 0a3c3f4..e976b9e 100644
 --- a/preload.js
 +++ b/preload.js
-@@ -33,12 +33,7 @@ contextBridge.exposeInMainWorld('nc', {
+@@ -37,12 +37,7 @@ contextBridge.exposeInMainWorld('nc', {
    saveSong: (name, midi, code) => ipcRenderer.invoke('song:save', name, midi, code),
    // Drop clips (J): a finished clip, whole, into Videos\Toaster.
    saveClip: (buf, ext) => ipcRenderer.invoke('clip:save', buf, ext),
@@ -61,27 +61,27 @@ index 13192c5..5da0807 100644
    stars: () => ipcRenderer.invoke('repo:stars'),
    openRepo: () => ipcRenderer.invoke('repo:open'),
 diff --git a/renderer/app.js b/renderer/app.js
-index 3e30ff5..1313576 100644
+index 1f65447..3c7b31d 100644
 --- a/renderer/app.js
 +++ b/renderer/app.js
-@@ -140,7 +140,6 @@ const state = {
-   sceneryTheme: false, // the scenery in the theme's two colours rather than its own (A while it's on)
+@@ -170,7 +170,6 @@ const state = {
    sceneryScene: 'auto', // and its scene (A too): auto (a new one each song), or one by name
+   spaghettiKind: 'snakes', // the spaghetti's noodles (A while it's on): SPAGHETTI_KINDS
    calm: false, // fewer flashes (the help's setting; on at first if Windows' animations are off)
 -  updates: true, // look for a newer Toaster when it starts (the help's setting)
-   radio: '', // the radio's address, as last played
-   seenVersion: '', // the version last opened, to tell what's new after an update
-   firstRun: false, // nothing saved yet: this is the first time Toaster has opened
-@@ -154,7 +153,7 @@ let col = { bg: [5, 29, 181], fg: [255, 255, 255], ink: [2, 11, 69] };
+   mirror: true, // the camera mirrored, as a selfie view is; off, as the camera sees it (the help's setting; see camview.js)
+   playerBar: true, // the player bar along the bottom (the help's setting; see player.js)
+   playerRec: false, // and in a recording, which leaves it out unless this is on (the help's setting too)
+@@ -194,7 +193,7 @@ let col = { bg: [5, 29, 181], fg: [255, 255, 255], ink: [2, 11, 69] };
  
  // The look you picked (background and its strength, blocks, orb, card, glass, theme, drop effect)
  // is remembered between launches. The camera always starts off.
--const SAVED = ['keys', 'codeHidden', 'crt', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'updates', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'radio', 'seenVersion'];
-+const SAVED = ['keys', 'codeHidden', 'crt', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'radio', 'seenVersion'];
+-const SAVED = ['hintsDone', 'keys', 'codeHidden', 'beatHidden', 'crt', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'updates', 'mirror', 'playerBar', 'playerRec', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'spaghettiKind', 'radio', 'seenVersion', 'userScenes', 'radioStations', 'queueRepeat', 'queueShuffle', 'queueResume', 'recentAlbums'];
++const SAVED = ['hintsDone', 'keys', 'codeHidden', 'beatHidden', 'crt', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'mirror', 'playerBar', 'playerRec', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'spaghettiKind', 'radio', 'seenVersion', 'userScenes', 'radioStations', 'queueRepeat', 'queueShuffle', 'queueResume', 'recentAlbums'];
  function loadSettings() {
    let saved = {};
    try {
-@@ -803,43 +802,6 @@ function setCalm(on) {
+@@ -1112,18 +1111,6 @@ function setCalm(on) {
  }
  $('calm').addEventListener('change', (e) => setCalm(e.target.checked));
  
@@ -96,6 +96,14 @@ index 3e30ff5..1313576 100644
 -  saveSettings();
 -}
 -$('updates').addEventListener('change', (e) => setUpdates(e.target.checked));
+-
+ // Mirror the camera: the help's checkbox, and Ctrl+K's "camera: mirrored" and "camera: not mirrored". On
+ // (as it always was), the camera is shown as a mirror shows you; off, as the camera sees it, for pointing
+ // it at your gear. The camera layer, the ASCII camera, the dots, the voxels, big eyes, the cut-out, the
+@@ -1153,31 +1140,6 @@ function setPlayerRec(on) {
+ }
+ $('playerbar').addEventListener('change', (e) => setPlayerBar(e.target.checked));
+ $('playerrec').addEventListener('change', (e) => setPlayerRec(e.target.checked));
 -async function offerUpdate(u) {
 -  if (!state.updates || !window.nc?.updateCheck) return;
 -  u ||= await window.nc.updateCheck().catch(() => null);
@@ -121,36 +129,35 @@ index 3e30ff5..1313576 100644
 -  });
 -}
 -window.nc?.onUpdateProgress?.((p) => flashStatus(`downloading the update ${Math.round(p * 100)}%`));
--
+ 
  // What's new (news.js): after an update, once, a box with what came in since the version last
  // opened, each with its key (the first time Toaster opens, the welcome note instead); "Show in
- // help" opens the help at its top, where the last few versions' are kept. Not over a recording or
-@@ -1835,7 +1797,6 @@ setGlass(state.glass);
- setCodeHidden(state.codeHidden);
+@@ -2505,7 +2467,6 @@ setGlass(state.glass);
+ setCodeHidden(state.codeHidden, state.beatHidden);
  setCrt(state.crt);
  setCalm(state.calm);
 -setUpdates(state.updates);
- setTimeout(() => offerUpdate(), 8000);
- applyCard();
- // the first time Toaster opens, a word on where to start (it's already listening to the PC)
+ setMirror(state.mirror);
+ setPlayerBar(state.playerBar);
+ setPlayerRec(state.playerRec);
 diff --git a/renderer/index.html b/renderer/index.html
-index bb9edb0..569fc10 100644
+index 851b35c..3fa1391 100644
 --- a/renderer/index.html
 +++ b/renderer/index.html
-@@ -118,7 +118,6 @@
+@@ -121,7 +121,6 @@
    <p>Toaster listens to whatever your <span class="os-win">PC</span><span class="os-mac">Mac</span> plays and writes it out as Strudel code, live: the drums on a 16-step grid, the tempo, bass, chords, key and lead line. A new song starts a fresh page. It's a reconstruction for show, not an exact transcription; steady beats work best.</p>
    <p>When the kick comes back after a break, the backgrounds answer the drop, and the drop effect, if you've picked one with <kbd data-k="dropfx">B</kbd>, takes over the screen. The camera features run on this <span class="os-win">PC</span><span class="os-mac">Mac</span>; nothing is uploaded. Your picks are remembered, except the camera, which always starts off.</p>
    <label class="calm"><input type="checkbox" id="calm" /><span><b>Fewer flashes</b>: no full-screen flashes, hard cuts or colour flashes. On from the start if <span class="os-win">Windows' "Show animations" is off</span><span class="os-mac">the Mac's Reduce motion setting is on</span>.</span></label>
 -  <label class="calm"><input type="checkbox" id="updates" /><span><b>Updates</b>: when it starts, Toaster asks GitHub whether there's a newer version, and offers it if there is. Nothing else is sent.</span></label>
-   <table>
-     <tr class="sec"><th colspan="2">look</th></tr>
-     <tr data-act="visual"><td>V</td><td>background: spectrum, tunnel, spiral, pitch wheel, warp, cuts, worlds, chrome, spectrogram, scenery, rain, scope, fire, off</td></tr>
+   <label class="calm"><input type="checkbox" id="mirror" /><span><b>Mirror the camera</b>: on, as a mirror shows you; off, as the camera sees it, for pointing it at your gear.</span></label>
+   <label class="calm"><input type="checkbox" id="playerbar" /><span><b>Player bar</b>: a slim bar along the bottom with the song, a progress bar and play, pause and skip where the source has them (a file, the radio and the demo; Music and Spotify on a Mac; the media keys on Windows), and the tempo, key and bar. <kbd data-k="hide">H</kbd> hides it with the footer; with the code hidden (<kbd data-k="code">Z</kbd>) it shows at the bottom edge.</span></label>
+   <label class="calm"><input type="checkbox" id="playerrec" /><span><b>Player bar in recordings</b>: off, a recording leaves the bar out, as it does the header and footer; on, it's in the video.</span></label>
 diff --git a/update.js b/update.js
 deleted file mode 100644
-index 359ff50..0000000
+index e9b01b4..0000000
 --- a/update.js
 +++ /dev/null
-@@ -1,219 +0,0 @@
+@@ -1,224 +0,0 @@
 -// Updates from GitHub (main process). When Toaster starts, the page asks (unless you turned it
 -// off in the help): the latest release of the repo is looked up, and a newer version is offered
 -// to the page, which asks you. With your yes, on Windows, in a copy unzipped somewhere it can
@@ -318,15 +325,20 @@ index 359ff50..0000000
 -// What it did goes in toaster-update.log in the temp folder.
 -const SWAP = `Set-Content -LiteralPath $Log -Value ("update to " + $Fresh + " started " + (Get-Date -Format s))
 -function Note($what) { Add-Content -LiteralPath $Log -Value ((Get-Date -Format HH:mm:ss) + " " + $what) }
--function Open { Start-Process -FilePath (Join-Path $App $Exe) -WorkingDirectory $App }
--function Same($a, $b) { (Get-FileHash -LiteralPath $a).Hash -eq (Get-FileHash -LiteralPath $b).Hash }
+-# (a start that fails is noted, never thrown: inside a catch, a throw here skipped the exit 1 after it)
+-function Open { try { Start-Process -FilePath (Join-Path $App $Exe) -WorkingDirectory $App -ErrorAction Stop } catch { Note ("it couldn't be started: " + $_) } }
+-# (hashed with .NET: Get-FileHash lives in a script module, which Windows PowerShell started from PowerShell 7 can't load)
+-function Hash($p) { $s = [System.IO.File]::Open($p, 'Open', 'Read', 'ReadWrite'); try { [System.BitConverter]::ToString([System.Security.Cryptography.SHA256]::Create().ComputeHash($s)) } finally { $s.Close() } }
+-function Same($a, $b) { (Hash $a) -eq (Hash $b) }
 -function Put($from, $to) {
 -  $bytes = [System.IO.File]::ReadAllBytes($from)
 -  $s = [System.IO.File]::Open($to, 'OpenOrCreate', 'Write', 'ReadWrite')
 -  try { $s.SetLength(0); $s.Write($bytes, 0, $bytes.Length) } finally { $s.Close() }
 -}
 -function InPlace {
--  $files = @(Get-ChildItem -LiteralPath $Fresh -Recurse -File | ForEach-Object { $_.FullName.Substring($Fresh.Length) })
+-  # (.NET keeps $Fresh exactly as given, so every path starts with it: Get-ChildItem can report a folder given by its
+-  # short 8.3 name, like RUNNER~1, under its long one, runneradmin, and the relative paths came out a few letters off)
+-  $files = @([System.IO.Directory]::EnumerateFiles($Fresh, '*', 'AllDirectories') | ForEach-Object { $_.Substring($Fresh.Length) })
 -  foreach ($r in $files) { if (Test-Path -LiteralPath ($App + $r)) { $s = [System.IO.File]::Open($App + $r, 'Open', 'ReadWrite', 'ReadWrite'); $s.Close() } }
 -  foreach ($r in $files) {
 -    if (Test-Path -LiteralPath ($App + $r)) { $null = New-Item -ItemType Directory -Force -Path (Split-Path ($Old + $r)); [System.IO.File]::Copy($App + $r, $Old + $r, $true) }
