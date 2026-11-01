@@ -1,0 +1,5 @@
+[ampl-mp]
+source = "github"
+github = "ampl/mp"
+use_latest_release = "true"
+prefix = "v"
