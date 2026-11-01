@@ -1,7 +1,7 @@
 # Maintainer: Shisones <shisones745@proton.me>
 
 pkgname=waka
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A front-end for libalpm, inspired by nala"
 url="https://github.com/Shisones/Waka"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'pacman')
 optdepends=('curl: for waka fetch')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('95c105d7c5b172cad91de1ffb695d21759e6b4aed867e6ba5e4edb8a8aa5bbf3')
+sha256sums=('bb440a195dd6e50276d80134cddfa9239a0ee2e7c2b881ad0d07cb40105e225d')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -37,5 +37,5 @@ check() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
-    install -Dm644 License "$pkgdir/usr/share/licenses/$pkgname/License"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
