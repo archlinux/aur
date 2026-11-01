@@ -1,8 +1,8 @@
 pkgbase = kinectcam-git
 	pkgdesc = Expose Xbox One Kinect RGB, infrared and metric depth as Linux cameras
-	pkgver = 0.2.0.r1.gd9bd42c
+	pkgver = 0.2.0.r4.g47c550c
 	pkgrel = 1
-	url = https://git.crimsonnet.org/CrimsonHawk/kinectcam
+	url = https://github.com/Crimson-Hawk/kinectcam
 	arch = x86_64
 	license = GPL-3.0-only
 	checkdepends = openssh
@@ -23,7 +23,7 @@ pkgbase = kinectcam-git
 	provides = kinectcam
 	conflicts = kinectcam
 	options = !debug
-	source = kinectcam::git+https://git.crimsonnet.org/CrimsonHawk/kinectcam.git#branch=master
+	source = kinectcam::git+https://github.com/Crimson-Hawk/kinectcam.git#branch=master
 	sha256sums = SKIP
 
 pkgname = kinectcam-git
