@@ -1,28 +1,31 @@
+# Maintainer: Felipe BF <fprgw32 at gmail dot com>
 # Maintainer: Juanjo Gutierrez <juanjo at gutierrezdequevedo dot com>
+
 pkgname=ucsim
-_basename=uCsim
-pkgver=0.7.4
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="Software simulator for microcontrollers"
 arch=('x86_64' 'aarch64')
 url="http://mazsola.iit.uni-miskolc.hu/~drdani/embedded/ucsim/"
-license=('GPL2')
-depends=()
-source=("http://mazsola.iit.uni-miskolc.hu/ucsim/download/v0.7.x/${pkgname}_${pkgver}_orig.tar.gz")
-sha256sums=('bbf5152149ad1ecf8d9024791357e40f5a3585366b0d99c701078a676ca1f974')
-makedepends=('flex' 'bison' 'gcc' 'make')
+license=('GPL-2.0-or-later')
+depends=('libgcc' 'ncurses' 'libstdc++' 'glibc')
+makedepends=('git' 'flex' 'bison' 'gcc' 'make')
+
+source=("git+https://github.com/danieldrotos/${pkgname}.git#tag=${pkgname}-${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     ./configure --prefix="/usr"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     make DESTDIR="$pkgdir/" install
 }
+
