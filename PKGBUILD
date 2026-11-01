@@ -3,7 +3,7 @@
 pkgname=texlive-emo
 _pkgname=emo
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emoji support for all LaTeX engines"
 arch=('any')
 url="https://github.com/apparebit/emo"
@@ -39,8 +39,8 @@ package() {
   cp -a emo-graphics/. "$texmf/emo-graphics/"
 
   install -Dm644 README.md \
-      "$pkgdir/usr/share/doc/$pkgname/README.md"
+      "$pkgdir/usr/local/share/doc/$pkgname/README.md"
 
   install -Dm644 emo.pdf \
-      "$pkgdir/usr/share/doc/$pkgname/emo.pdf"
+      "$pkgdir/usr/local/share/doc/$pkgname/emo.pdf"
 }
