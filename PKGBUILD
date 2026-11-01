@@ -4,7 +4,7 @@ pkgname="mingw-w64-bsu"
 pkgdesc="Blaad's System Utilities (mingw-w64)"
 url="https://github.com/Blaadick/BSU"
 license=("GPL-3.0-or-later")
-pkgver="0.1.0"
+pkgver="0.1.1"
 pkgrel=1
 arch=("any")
 depends=(
@@ -17,7 +17,7 @@ makedepends=(
 )
 options=("!strip" "!buildflags" "staticlibs")
 source=("bsu-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("SKIP")
+sha512sums=("1f626792a5a87e0586f944a8985339377abda7bdbda205f1bfe43005eaae49ebccaf049a3476bc945ca393182e8037649c5e65fe3fde9b5f8a0c1ecbf98f15c9")
 
 _architectures=("i686-w64-mingw32" "x86_64-w64-mingw32")
 

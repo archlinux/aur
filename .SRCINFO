@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-bsu
 	pkgdesc = Blaad's System Utilities (mingw-w64)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Blaadick/BSU
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-bsu
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = bsu-0.1.0.tar.gz::https://github.com/Blaadick/BSU/archive/refs/tags/v0.1.0.tar.gz
-	sha512sums = SKIP
+	source = bsu-0.1.1.tar.gz::https://github.com/Blaadick/BSU/archive/refs/tags/v0.1.1.tar.gz
+	sha512sums = 1f626792a5a87e0586f944a8985339377abda7bdbda205f1bfe43005eaae49ebccaf049a3476bc945ca393182e8037649c5e65fe3fde9b5f8a0c1ecbf98f15c9
 
 pkgname = mingw-w64-bsu
