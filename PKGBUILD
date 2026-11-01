@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=b4-bin
-pkgver=1.87.0
+pkgver=1.89.1
 pkgrel=1
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
@@ -28,14 +28,14 @@ source_ppc64=("${pkgname}-${pkgver}-ppc64.tar.gz::${_baseurl}/b4-linux-ppc64.tar
 source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${_baseurl}/b4-linux-ppc64le.tar.gz")
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${_baseurl}/b4-linux-s390x.tar.gz")
 
-sha256sums_x86_64=('05bc665654fcb554cc65fc9cc47d4edd3f78030613ab976537a43900dbf79ac5')
-sha256sums_i686=('fffbdda8ae98953f1791309012c5841bef062ea39a11a2ac77889a9a27899758')
-sha256sums_aarch64=('10a16d3fab4773bec6c9a59120a23c375397245d33284b15d59f826891c53b5a')
-sha256sums_riscv64=('770eedbd4d23a7745d8ba0315ae05fa1b441f0b0646ab4146287a6b631c19539')
-sha256sums_loong64=('db9ae4d8e317e291f06c16edffec7dd6c76d85a1f53eba0a760d806c1dee9d1c')
-sha256sums_ppc64=('3a821e68b028256d0f2bbd75786f986bf14e2186ff9e987b7910ebd6f0f26be9')
-sha256sums_ppc64le=('d8e0dbd73ece03d20813e12b5de8d93694a5094dc135f1135f65127f5e5e2cf0')
-sha256sums_s390x=('fab475565d450a4a07d09a731d15d217aaea73b1f61710b4d74054d1ada6e1a8')
+sha256sums_x86_64=('c797bda228b141900fd119a3b5947b8e7af110ddc2866827e2817d0b42f9da79')
+sha256sums_i686=('be07fd2b09311d7444a5280ed15424c8a4f0b55fffb38855784294ac7bcf722a')
+sha256sums_aarch64=('2ff430285bde50a575331175329e2cd103e3eaf8772ab06b7dc21ea373271691')
+sha256sums_riscv64=('72bda05c1abee1bf3914fb02910066c854b0bf8236e01d97a60a9521f292f346')
+sha256sums_loong64=('9becb71c385860ac2c97b671668fb2d633afbed4758751e53a4d8ad8dbf9a15b')
+sha256sums_ppc64=('02ce5b50266c9dc2e1e0a795e284ff0fbd02f002900ff8c57c2a566c3573e7e8')
+sha256sums_ppc64le=('adeb4b6a52622a8fc9f0f467b061860851d07c9383963b2313df36b195968e9a')
+sha256sums_s390x=('3fd3452d559a5019e7e57fa1a011aa6eca2052799184dc57b4b0bb8f905428d9')
 
 backup=('etc/b4/b4.json')
 
