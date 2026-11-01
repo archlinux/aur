@@ -4,8 +4,8 @@
 
 pkgname=dotnet-source-build-reference-packages
 # The version of the source-built .NET SDK whose sources (the VMR) the commit is taken from
-pkgver=10.0.113
-pkgrel=2
+pkgver=10.0.114
+pkgrel=1
 pkgdesc="Reference, targeting and text-only NuGet packages of .NET's source build (SBRP), e.g. NETStandard.Library"
 arch=('any')
 url='https://github.com/dotnet/source-build-assets'
