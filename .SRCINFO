@@ -1,0 +1,24 @@
+pkgbase = crest-player-git
+	pkgdesc = Terminal music player with YouTube streaming, synchronized lyrics, and ASCII video
+	pkgver = 0.1.0.r83.g11ab314
+	pkgrel = 1
+	url = https://github.com/ArvalCode/crest-player
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = brotli
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = yt-dlp
+	depends = zlib
+	depends = zstd
+	provides = crest-player
+	conflicts = crest-player
+	source = crest-player::git+https://github.com/ArvalCode/crest-player.git
+	b2sums = SKIP
+
+pkgname = crest-player-git
