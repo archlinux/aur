@@ -7,15 +7,15 @@ _nugetid=JsonSchema.Net
 pkgver=7.4.0
 pkgrel=2
 pkgdesc="JSON Schema built on System.Text.Json, 7.x (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/json-everything/json-everything'
-license=('MIT')
+license=(MIT)
 provides=("dotnet-jsonschema-net=$pkgver")
 # Dependencies of the NuGet package
 depends=(dotnet-jsonpointer-net-5)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 # 7.x is the last version line published under the MIT license alone, later releases on nuget.org come
