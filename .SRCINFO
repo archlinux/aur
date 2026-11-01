@@ -1,0 +1,17 @@
+pkgbase = kio-stl-thumbnailer
+	pkgdesc = STL thumbnails for Dolphin/KIO (software-rendered, no GL)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/winiciuscota/kio-stl-thumbnailer
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kio
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	source = kio-stl-thumbnailer-1.0.tar.gz::https://github.com/winiciuscota/kio-stl-thumbnailer/archive/v1.0.tar.gz
+	sha256sums = 67d804f792e61b44b1ab1dee7ce94715bd9c94cf3e3caf9956662576b3e74d5d
+
+pkgname = kio-stl-thumbnailer
