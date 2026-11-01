@@ -57,8 +57,8 @@ options=('!lto' '!debug')
 # aarch64) needs the Rust standard library of the target (e.g. rust-aarch64-gnu), the binutils for
 # $CARCH (e.g. aarch64-linux-gnu-binutils) and a root file system for $CARCH with base-devel in
 # ROOTFS_DIR, like dotnet-system-io-ports-native: clang and lld compile the grammars and link against
-# its C library and GCC. The C code of build scripts is for the build host, without the target's flags
-# of the makepkg configuration for $CARCH.
+# its C library and GCC. The C code for the build host (build scripts, grammars) is built without the
+# target's flags of the makepkg configuration for $CARCH.
 _cargo_env() {
   export RUSTUP_TOOLCHAIN=stable
   _target=host-tuple _architecture=current
@@ -73,6 +73,10 @@ _cargo_env() {
   export "CARGO_TARGET_${_triple^^}_LINKER=clang"
   RUSTFLAGS+=" -C link-arg=--target=$_target -C link-arg=--sysroot=$ROOTFS_DIR -C link-arg=-fuse-ld=lld"
   export RUSTFLAGS HOST_CFLAGS=-O2 HOST_CXXFLAGS=-O2
+  # The C flags of makepkg only for the target's C code: the build compiles the grammars for the build
+  # host as well (tree-sitter generate --build), which takes CFLAGS and not HOST_CFLAGS
+  export "CFLAGS_$_triple=$CFLAGS" "CXXFLAGS_$_triple=$CXXFLAGS"
+  unset CFLAGS CXXFLAGS
 }
 
 prepare() {
