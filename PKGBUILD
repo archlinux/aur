@@ -5,11 +5,11 @@ pkgname=tcos-pkcs11
 pkgver=1.20.1
 pkgrel=2
 pkgdesc="PKCS#11 driver for TeleSec TCOS smartcards"
-arch=('x86_64')
+arch=(x86_64)
 url="https://www.telesec.de/de/service/downloads/produkte-und-loesungen"
-license=('LicenseRef-EULA')
+license=(LicenseRef-EULA)
 install=$pkgname.install
-depends=('glibc' 'libgcc' 'libstdc++' 'pcsclite')
+depends=(glibc libgcc libstdc++ pcsclite)
 source=("https://www.telesec.de/assets/downloads/SecureElements-Smartcards/PKCS11-SDK/libpkcs11tcos_Linux_PCSC_${pkgver//./-}_x86x64.zip"
   "https://www.telesec.de/assets/downloads/SecureElements-Smartcards/Nutzungsbedingungen-TCOS-Treiber-und-Managementsoftware.pdf"
   "p11tcos-netkey.module")
