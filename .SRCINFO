@@ -1,13 +1,12 @@
 pkgbase = xattrvi
 	pkgdesc = An editor for a file's extended attributes in the user-namespace
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 2
 	url = https://github.com/cherti/xattrvi
 	arch = any
 	license = GPL3
 	depends = python
-	source = https://github.com/cherti/xattrvi/archive/v1.0.tar.gz
-	sha256sums = 7c1ae937a2f43c9fb2f2c01f05e3b8871604d5f904ed7fdd7ffd467a5c11a06b
+	source = https://github.com/cherti/xattrvi/archive/v1.1.tar.gz
+	sha256sums = cf14e8d7c26898cf5b0e4d825160a612fb6c5840d2a976a467a02350a53f67ea
 
 pkgname = xattrvi
-

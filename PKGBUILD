@@ -1,7 +1,7 @@
 # Maintainer: Jonas Große Sundrup/cherti aur@letopolis.de
 
 pkgname=xattrvi
-pkgver=1.0
+pkgver=1.1
 pkgrel=2
 pkgdesc="An editor for a file's extended attributes in the user-namespace"
 arch=(any)
@@ -19,17 +19,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/cherti/xattrvi/archive/v1.0.tar.gz")
+source=("https://github.com/cherti/xattrvi/archive/v1.1.tar.gz")
 noextract=()
-sha256sums=("7c1ae937a2f43c9fb2f2c01f05e3b8871604d5f904ed7fdd7ffd467a5c11a06b")
+sha256sums=("cf14e8d7c26898cf5b0e4d825160a612fb6c5840d2a976a467a02350a53f67ea")
 validpgpkeys=()
 
 package() {
 	cd "$pkgname-$pkgver"
 
-	mkdir -p $pkgdir/usr/bin
-	cp xattrvi $pkgdir/usr/bin/xattrvi
+	install -D xattrvi $pkgdir/usr/bin/xattrvi
+	install -D xattrcat $pkgdir/usr/bin/xattrcat
 
-	mkdir -p $pkgdir/usr/share/man/man1
-	cp doc/xattrvi.1 $pkgdir/usr/share/man/man1/xattrvi.1
+	install -Dm 644 doc/xattrvi.1 $pkgdir/usr/share/man/man1/xattrvi.1
 }
