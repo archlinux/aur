@@ -110,6 +110,12 @@ check() {
     echo 'powershell-dsc: skipping the tests on a cross build; run them natively on the target' >&2
     return 0
   fi
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   export CARGO_NET_OFFLINE=true
   # Run the tests with a home of their own, so they neither see the profiles, modules and configs
   # of the user building the package, nor leave their own files behind in the user's home.
@@ -128,6 +134,7 @@ check() {
   pwsh -NoProfile -NonInteractive -File dsc-test.ps1 -SourcePath "$srcdir/$pkgname" -ModulePath "$srcdir/test-modules"
   pwsh -NoProfile -NonInteractive -File dsc-profile-test.ps1 -DscRoot "$srcdir/$pkgname/bin/release" \
     -TestPath "$srcdir/dsc.profileresource.Tests.ps1"
+  rm -rf "${_test_tmp:?}"
 }
 
 package() {
