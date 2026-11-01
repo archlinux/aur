@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=rioxarray
 pkgname=python-${_base}
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="geospatial xarray extension powered by rasterio"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-packaging python-rasterio python-xarray python-pyproj)
 makedepends=(python-build python-installer python-setuptools python-wheel) # python-sphinx-click python-nbsphinx pandoc-cli
 checkdepends=(python-pytest python-dask)                                   # python-netcdf4 python-h5py-openmpi | python-gdal
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('22b319afc76d6621ed30d78fece5f8e7ca6ed3dccd1548d60e4cfc29c38d79212abf510708b772c17c1283837b4caa31d8b03882770c6771f8091d2d4caaded3')
+sha512sums=('c9f526ec4ebed25e75b04cfe134b7861fc04110f90013d070ae539a667b1bd9ce3e48201530dc812743a5d65d103781cf1938ec5a08329790fa3aaba7efc2ae0')
 
 build() {
   cd ${_base}-${pkgver}
