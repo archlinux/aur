@@ -19,6 +19,8 @@ makedepends=(
   dotnet-build-deps-"$_dotnetsdkver"
   dotnet-gherkin-5
 )
+# hostname, which the tests of the test result files compare the machine name with
+checkdepends=(inetutils)
 # Pester 5 isn't compatible with tests written for Pester 4, like PowerShell's own, which ask for
 # version 4 (Save-Module -Name Pester -MaximumVersion 4.99 in build.psm1). That's the latest stable
 # release, 4.10.1, as Save-Module skips prereleases like 4.10.2-beta1.
