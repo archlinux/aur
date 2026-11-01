@@ -2,8 +2,8 @@
 +++ b/pyproject.toml
 @@ -1,5 +1,5 @@
  [build-system]
--requires = ["flit_core >=3.11,<4"]
-+requires = ["flit_core >=3.11"]
+-requires = ["flit_core>=3.11,<5"]
++requires = ["flit_core>=3.11"]
  build-backend = "flit_core.buildapi"
  
  [project]
