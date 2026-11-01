@@ -3,7 +3,7 @@
 
 pkgname=artcraft-launcher-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Install, update and launch the Craft App Suite (prebuilt binary)'
 arch=(x86_64 aarch64)
@@ -13,6 +13,7 @@ depends=(gcc-libs
          glibc
          hicolor-icon-theme
          libxkbcommon
+         libxkbcommon-x11
          vulkan-icd-loader)
 optdepends=('alsa-lib: sound support'
             'pipewire-alsa: audio playback and recording via PipeWire'
@@ -33,8 +34,8 @@ options=(!strip !debug)
 _archive="$_pkgname-$pkgver-linux"
 source_x86_64=("$url/releases/download/v$pkgver/$_archive-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_archive-aarch64.tar.gz")
-sha256sums_x86_64=('392476515090a48e07f28ce33ade5143096411fd34cea84e1cc6c0019775efb5')
-sha256sums_aarch64=('22b1188c744030f16d9e17c24d46b554ba87576f651c641d9d6aac55ea1233f9')
+sha256sums_x86_64=('3af4b6a1f752b4efb12602ada9964445731fa440659224a83e8aa5a7b5d4fff2')
+sha256sums_aarch64=('e5af5e12c1ed36453d4e73b8dd502ab7e170a877c92f0d0657fbfe256f17cfdc')
 
 package() {
 	cd "$_archive-$CARCH"

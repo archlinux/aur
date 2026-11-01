@@ -1,6 +1,6 @@
 pkgbase = artcraft-launcher-bin
 	pkgdesc = Install, update and launch the Craft App Suite (prebuilt binary)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/storytold/craft-launcher
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = artcraft-launcher-bin
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libxkbcommon
+	depends = libxkbcommon-x11
 	depends = vulkan-icd-loader
 	optdepends = alsa-lib: sound support
 	optdepends = pipewire-alsa: audio playback and recording via PipeWire
@@ -24,15 +25,15 @@ pkgbase = artcraft-launcher-bin
 	optdepends = vulkan-driver: GPU rendering through Vulkan
 	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
 	optdepends = cups: printing support
-	provides = artcraft-launcher=0.12.0
+	provides = artcraft-launcher=0.13.0
 	conflicts = artcraft-launcher
 	conflicts = artcraft-launcher-git
 	conflicts = artcraft-launcher-appimage
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/storytold/craft-launcher/releases/download/v0.12.0/artcraft-launcher-0.12.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 392476515090a48e07f28ce33ade5143096411fd34cea84e1cc6c0019775efb5
-	source_aarch64 = https://github.com/storytold/craft-launcher/releases/download/v0.12.0/artcraft-launcher-0.12.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 22b1188c744030f16d9e17c24d46b554ba87576f651c641d9d6aac55ea1233f9
+	source_x86_64 = https://github.com/storytold/craft-launcher/releases/download/v0.13.0/artcraft-launcher-0.13.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3af4b6a1f752b4efb12602ada9964445731fa440659224a83e8aa5a7b5d4fff2
+	source_aarch64 = https://github.com/storytold/craft-launcher/releases/download/v0.13.0/artcraft-launcher-0.13.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e5af5e12c1ed36453d4e73b8dd502ab7e170a877c92f0d0657fbfe256f17cfdc
 
 pkgname = artcraft-launcher-bin
