@@ -1,6 +1,6 @@
 pkgbase = python-portalocker
 	pkgdesc = Easy, portable file locking API.
-	pkgver = 4.4.0
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://github.com/WoLpH/portalocker
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-portalocker
 	makedepends = python-wheel
 	depends = python
 	optdepends = python-redis: redis lock support
-	source = https://files.pythonhosted.org/packages/source/p/portalocker/portalocker-4.4.0.tar.gz
-	sha256sums = 90c0df939d4ffba121f8e925bbf98ecea8b9381718666ab871a226938d2b63b2
+	source = https://files.pythonhosted.org/packages/source/p/portalocker/portalocker-4.4.2.tar.gz
+	sha256sums = 7ac85bb2aa3c7873bf2ac72586fc6154afa4671ac786994a16617a6b7ccb3e5e
 
 pkgname = python-portalocker
