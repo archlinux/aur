@@ -8,7 +8,7 @@
 +try:
 +    from skbio.stats.distance import PairwiseMatrixError
 +except ImportError:
-+    # scikit-bio < 0.7 uses this name for the same matrix validation errors.
++    # scikit-bio 0.6 uses the earlier name for these validation errors.
 +    from skbio.stats.distance import DissimilarityMatrixError as PairwiseMatrixError
  
  import qiime2.plugin.model as model
@@ -28,3 +28,36 @@
  
  
  class TestFormats(TestPluginBase):
+@@ -65,7 +69,7 @@
+         format = LSMatFormat(filepath, mode='r')
+ 
+         with self.assertRaisesRegex(ValidationError,
+-                                    'could not be read') as error:
++                                    'could not be read|could not convert string to float') as error:
+             format.validate()
+ 
+         self.assertIsInstance(error.exception.__cause__.__cause__, ValueError)
+--- a/q2_types/feature_data/_objects.py
++++ b/q2_types/feature_data/_objects.py
+@@ -8,7 +8,9 @@
+ 
+ import collections
+ 
+-from skbio.sequence import DNA, GrammaredSequence, NucleotideMixin
++from skbio.sequence import DNA, GrammaredSequence, NucleotideMixin, Sequence
++from skbio.io import io_registry
++from skbio.io.format.fasta import fasta
+ from skbio.util import classproperty
+ 
+ 
+@@ -99,3 +101,10 @@
+         raise TypeError(
+             'Different gap characters have different semantics in `LinkedDNA`.'
+         )
++
++
++# Older registries do not inherit the generic Sequence writer for subclasses.
++if io_registry.get_writer('fasta', LinkedDNA) is None:
++    @fasta.writer(LinkedDNA)
++    def _linked_dna_to_fasta(obj, fh, **kwargs):
++        io_registry.get_writer('fasta', Sequence)(obj, fh, **kwargs)

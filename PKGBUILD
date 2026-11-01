@@ -15,7 +15,7 @@ _commit=34e88d9334a5d9c9a51908e5ae9d21d66cf8959f
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
         'scikit-bio-0.6.patch')
 sha256sums=('02659e650a5b235b940dc0bd38b014d470ca5df9c6bb6cba33b296b8dca2e4be'
-            'a06293e47dc6bdfd8c34dcf8cb5a26de2dea991948063ba2337e347a87552368')
+            '80a605a6c1ce64c764cc6a84673c47e15689bac97868255d8570edb292d8a8c0')
 
 prepare() {
   cd "q2-types-$_commit"
