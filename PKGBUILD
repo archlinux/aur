@@ -607,8 +607,10 @@ _build_psl_native() {
       echo "powershell: a cross build needs ROOTFS_DIR set to a $CARCH root file system" >&2
       exit 1
     fi
+    # Programs, e.g. make, from the build host, not the root file system, whose programs are for $CARCH
     _args=(
       -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR="$CARCH" -DCMAKE_SYSROOT="$ROOTFS_DIR"
+      -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER
       -DCMAKE_C_COMPILER=clang -DCMAKE_C_COMPILER_TARGET="$_triple"
       -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_COMPILER_TARGET="$_triple"
       -DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=lld -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=lld
