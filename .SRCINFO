@@ -14,6 +14,7 @@ pkgbase = powershell
 	checkdepends = glibc-locales
 	checkdepends = grep
 	checkdepends = inetutils
+	checkdepends = less
 	checkdepends = iputils
 	checkdepends = openssh
 	checkdepends = procps-ng

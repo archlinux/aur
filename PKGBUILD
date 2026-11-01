@@ -101,6 +101,7 @@ checkdepends=(
   glibc-locales # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
   grep          # Used widely in tests
   inetutils     # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
+  less          # Needed for test/powershell/engine/Help/HelpSystem.Tests.ps1, the help function pages with it
   iputils       # Needed for ping, which is used in a lot of places
   openssh       # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
   procps-ng     # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
