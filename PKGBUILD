@@ -13,7 +13,7 @@ license=('MIT')
 _dotnetsdkver="10.0"
 makedepends=(
   dotnet-newtonsoft-json
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
 )
 checkdepends=(
   jq
