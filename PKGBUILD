@@ -1,13 +1,15 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 pkgname=python-text2num
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parse and transcribe numbers expressed as natural language words'
 arch=(x86_64)
 url='https://github.com/allo-media/text2num'
 license=(MIT)
 depends=(glibc libgcc python)
 makedepends=(rust python-build python-installer 'python-maturin>=1.7' 'python-maturin<2')
+# Preserve the wheel's native extension bytes and its matching RECORD entry.
+options=(!strip)
 _commit=5007cc125e85f9c9954015be572072952549b6f9
 source=("text2num-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('032b08292e93f8689c618f35513d28df1d86bcf7b879f1a5f8ba4290e35e41bc')
