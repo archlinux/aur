@@ -1,39 +1,53 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Smoolak <smoolak@gmail.com>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-q2-types
-_pkgname=q2-types
-pkgver=2021.2.0.dev0
+pkgver=2026.10.0
 pkgrel=1
-pkgdesc="Definitions of common QIIME 2 types."
-arch=('x86_64')
-url="https://qiime2.org"
-license=('BSD')
-depends=(
-python
-python-qiime2
-python-biom-format
-python-scikit-bio
-python-h5py
-python-pandas
-python-ijson
-)
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/qiime2/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ec0cbd2cdc20ee2dd9922b5cf40c66d52a637a14982c74ee8d3f022053db994c')
+pkgdesc='Common QIIME 2 semantic types and data formats'
+arch=(any)
+url=https://github.com/qiime2/q2-types
+license=(BSD-3-Clause)
+depends=('python' 'python-qiime2>=2026.10.0' 'python-biom-format' 'python-scikit-bio' 'python-h5py' 'python-pandas' 'python-ijson' 'python-numpy' 'python-scipy' 'python-yaml' 'python-pyhmmer' 'python-frictionless' 'samtools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versioningit' 'python-wheel')
+checkdepends=('python-pytest')
+_commit=34e88d9334a5d9c9a51908e5ae9d21d66cf8959f
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('02659e650a5b235b940dc0bd38b014d470ca5df9c6bb6cba33b296b8dca2e4be')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd "q2-types-$_commit"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py test
+  python -m venv --system-site-packages --without-pip "$srcdir/check-env"
+  "$srcdir/check-env/bin/python" -m installer "q2-types-$_commit"/dist/*.whl
+  MPLBACKEND=Agg "$srcdir/check-env/bin/python" -I - --import-mode=importlib -v \
+    "q2-types-$_commit/q2_types" --junitxml="$srcdir/pytest-results.xml" <<'PYTEST'
+from pathlib import Path
+import sys
+import pytest
+import q2_types
+
+installed = Path(q2_types.__file__).resolve().parent
+assert installed.is_relative_to(Path(sys.prefix).resolve()), installed
+status = pytest.main(sys.argv[1:])
+for name, module in tuple(sys.modules.items()):
+    if name != 'q2_types' and not name.startswith('q2_types.'):
+        continue
+    origin = getattr(module, '__file__', None)
+    if origin is None or 'tests' in name.split('.')[1:]:
+        continue
+    path = Path(origin).resolve()
+    assert path.is_relative_to(installed), (name, path)
+print('Installed runtime origin check passed:', installed)
+raise SystemExit(status)
+PYTEST
 }
 
-package(){
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+package() {
+  cd "q2-types-$_commit"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:ts=2:sw=2:et:
