@@ -5,7 +5,7 @@
 pkgname=dotnet-source-build-reference-packages
 # The version of the source-built .NET SDK whose sources (the VMR) the commit is taken from
 pkgver=10.0.113
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference, targeting and text-only NuGet packages of .NET's source build (SBRP), e.g. NETStandard.Library"
 arch=('any')
 url='https://github.com/dotnet/source-build-assets'
@@ -159,7 +159,7 @@ package() {
   # System.Collections.Immutable), which must not end up in applications, so consumers map only the
   # packages they compile against to this feed
   install -Dm644 artifacts/packages/Release/{ReferenceOnly,Shipping}/*.nupkg \
-    -t "$pkgdir/usr/share/dotnet/source-build-reference-packages/"
+    -t "$pkgdir/usr/share/nuget/dotnet-$_dotnetsdkver/reference-packages/"
   install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
