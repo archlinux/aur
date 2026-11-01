@@ -17,7 +17,7 @@ makedepends=('go' 'git')
 _pkgsrc=Malody-Mallow
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "maly.service")
-sha256sums=('07570a3cc240b6b1f41d03389640254b9ef33d51bcace54ade84abe1256c09ce'
+sha256sums=('da64cee2ba5bb5aa7270d08db8dd8db11c73ea2cf065d4582cd2a4f4c53962e2'
             'cbcd9c2804135080db7d938ea839b985e41583e1849522fe5379b5b92b22c96a')
 
 prepare() {
