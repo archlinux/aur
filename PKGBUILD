@@ -6,7 +6,7 @@
 
 _base=ceed
 pkgname=(lib${_base} python-${_base})
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Code for Efficient Extensible Discretizations"
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(BSD-2-Clause)
 url="https://github.com/${_base}/lib${_base}"
 makedepends=(gcc-fortran python-cffi python-build python-installer python-setuptools python-wheel git)
 source=("lib${_base}::git+${url}#tag=v${pkgver}?signed")
-sha512sums=('e1a3a7ed2e9a588ad4c1d3cd3e97e28d365b30bba25069929e51de16782d11e23ed401c67814bffefcff0b4ea2d3885b940920d892cfc02f401479bd1c56ee0a')
+sha512sums=('1a747d1c0d00a4a9ee6d6838ba7540d12644ac7fa5c30609ca5f347541a18da8abc8e930759fe7f4ca35eeb78d319127e1ca325c24b85854a53e0b4f59128275')
 validpgpkeys=('BA543CE09D732BE604D53F6FCA6D4A3B32D335A0') # Jed Brown <jed@jedbrown.org>
 
 prepare() {

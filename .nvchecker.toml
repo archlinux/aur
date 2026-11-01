@@ -1,0 +1,5 @@
+[libceed]
+source = "github"
+github = "ceed/libceed"
+use_max_tag = "true"
+prefix = "v"
