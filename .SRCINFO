@@ -1,0 +1,39 @@
+pkgbase = q2-quality-control
+	pkgdesc = QIIME 2 quality control of feature and sequence data
+	pkgver = 2026.10.0
+	pkgrel = 1
+	url = https://github.com/qiime2/q2-quality-control
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-scikit-bio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-versioningit
+	makedepends = python-wheel
+	depends = python
+	depends = python-qiime2>=2026.10.0
+	depends = python-q2-types>=2026.10.0
+	depends = python-q2templates>=2026.10.0
+	depends = q2-feature-table>=2026.10.0
+	depends = q2-taxa>=2026.10.0
+	depends = python-biom-format
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-seaborn
+	depends = blast+
+	depends = vsearch
+	depends = samtools
+	depends = bowtie2
+	depends = gfatools
+	depends = wget
+	depends = unzip
+	optdepends = r-decontam: identify contaminant sequences with decontam
+	optdepends = r-optparse: run the decontam command-line helper
+	source = q2-quality-control-2026.10.0.tar.gz::https://github.com/qiime2/q2-quality-control/archive/eec116d4593a0cc4e1f992ecddd99ab5d808fb9b.tar.gz
+	sha256sums = b568ba7e2bd0799318318b1c985cd8a509ce34c34bdac17a2d93d9f6d6b1497c
+
+pkgname = q2-quality-control
