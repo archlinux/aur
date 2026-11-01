@@ -7,7 +7,7 @@ _pkgname=gojq
 pkgname=${_pkgname}-bin
 pkgdesc="Pure Go implementation of jq"
 
-pkgver=0.12.19
+pkgver=0.12.20
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,8 +25,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('bdfaf9acbe088973c549dadbf299c06dc9a84f1ca38c731ca04a08a901077f64')
-sha256sums_aarch64=('b22794b4bebad11c42af52550bda317c5cd7ee79aaa729eb6ec91a63f623d8b5')
+sha256sums_x86_64=('92ce2328ce3099532d2b23abfa25a348ecdc48caa584d821feab563f7df4a856')
+sha256sums_aarch64=('14384db99511f57f0dcb35c7b825f8afd5407f9c203631aad4dd163af1856c35')
 
 
 case ${CARCH} in
