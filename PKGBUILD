@@ -909,7 +909,11 @@ _check_prebuilt() {
   local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0 _dotnetbin=false _libsbin=false
   local _binaries=(-type f '(' -name '*.dll' -o -name '*.exe' -o -name '*.so' -o -name '*.so.*' -o -name '*.dylib' ')')
   local -A _prebuilt=()
-  if pacman -T dotnet-build-deps-"$_dotnetsdkver"-bin >/dev/null; then _dotnetbin=true; fi
+  # .NET's packages from nuget.org with dotnet-build-deps-10.0-bin, and for the target of a cross build
+  # ($CARCH differs from the build host), which has no source-built .NET
+  if pacman -T dotnet-build-deps-"$_dotnetsdkver"-bin >/dev/null || [[ "$(uname -m)" != "$CARCH" ]]; then
+    _dotnetbin=true
+  fi
   if pacman -T powershell-build-deps-bin >/dev/null; then _libsbin=true; fi
   while IFS= read -r -d '' _metadata; do
     grep -qE '"source": *"https?://' "$_metadata" || continue
