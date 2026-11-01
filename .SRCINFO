@@ -1,0 +1,20 @@
+pkgbase = posirc
+	pkgdesc = Small C99 IRC client with verified TLS, a Unicode terminal UI and Unix pipes
+	pkgver = 0.3.1beta2
+	pkgrel = 1
+	url = https://github.com/vash909/POSIRC
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = riscv64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = ncurses
+	depends = openssl
+	depends = ca-certificates
+	source = https://github.com/vash909/POSIRC/releases/download/v0.3.1-beta.2/posirc-0.3.1-beta.2-source.tar.gz
+	sha256sums = 4f71268a37b800b7d128cb00ebf034236d433aaed14990ecebb69efb818fc6a0
+
+pkgname = posirc
