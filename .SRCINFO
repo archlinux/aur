@@ -1,6 +1,6 @@
 pkgbase = pcw-cli
 	pkgdesc = Command-line client for ProxyCoreWrapper
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/ProxyCoreWrapper/cli
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pcw-cli
 	depends = glibc
 	depends = pcw-backend
 	options = !debug
-	source = git+https://github.com/ProxyCoreWrapper/cli.git#tag=v0.1.0
+	source = git+https://github.com/ProxyCoreWrapper/cli.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = pcw-cli

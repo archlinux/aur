@@ -1,5 +1,5 @@
 pkgname=pcw-cli
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Command-line client for ProxyCoreWrapper"
 url='https://github.com/ProxyCoreWrapper/cli'
