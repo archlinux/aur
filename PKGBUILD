@@ -1,7 +1,7 @@
 # Maintainer: Nico Ungruhe <nico@planet-express.org>
 
 pkgname="kwi"
-pkgrel=1
+pkgrel=2
 pkgver=0.1.0
 pkgdesc="Modern and fast terminal for KDE Plasma and other desktops"
 arch=("any")
@@ -13,9 +13,13 @@ license=('GPL-2.0-only OR GPL-3.0-only OR LicenseRef-scancode-kde-accepted-gpl'
     'CC0-1.0'
     'BSD-2-Clause'
 )
+makedepends=('cmake' 'extra-cmake-modules' 'ninja'
     'kirigami' 'kirigami-addons' 'kirigami-app-components'
-    'ninja')
-depends=('qt6-base')
+    'appstream' 'git')
+depends=('qt6-base'
+    'kwindowsystem' 'kwidgetsaddons' 'kguiaddons' 'kdbusaddons' 'ki18n'
+    'knotifications' 'kcoreaddons' 'kconfig' 'kpty' 'kconfigwidgets' 'kio'
+    'ghostty')
 provides=('kwi')
 source=("kwi::git+https://invent.kde.org/utilities/kwi")
 sha512sums=('SKIP')
