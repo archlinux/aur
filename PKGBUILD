@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A project and dependency manager for let-go. Fetch dependencies, run, build and test your app."
 
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('875ad8ccb947a9aab8efb121683bb0d556a8db86e67085a73a149fe22d0ddb74'
+sha256sums=('14f2bfac920eb05f262b904d260bfc13c31c8db308f24cf98d5bc17fcff94a92'
             '26ef0a9d298ba973d0b9bd3956e1f76e9d3c520f442e95917212e44905b1df94')
-sha256sums_x86_64=('f3006d8d3371480b9852b5f373980611a11e87ffe0d30a8f867046eb70d958be')
-sha256sums_aarch64=('cbff445d161ca7c759ea76fd324039fbb8410a801f92122b71c16602aeff211e')
+sha256sums_x86_64=('2ff69700feacc26cd05659a190b3a600bae50770b21ec7a6c451413be3e028b3')
+sha256sums_aarch64=('28fad94ba4ff68bbc43a137139ae113c3d88c92401c1c6f422d5c3226c16cfac')
 
 
 package() {
