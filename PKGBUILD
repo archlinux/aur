@@ -1,7 +1,6 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="fava-dashboards"
-_name="fava-dashboards"
 pkgver=2.0.2
 pkgrel=1
 pkgdesc="Custom Dashboards for Beancount in Fava"
@@ -9,17 +8,22 @@ arch=("any")
 url="https://github.com/andreasgerstmayr/fava-dashboards"
 license=("MIT")
 depends=("beanquery" "fava" "python" "python-flask" "python-yaml")
-makedepends=("python-build" "python-installer" "python-hatchling" "python-hatch-vcs" "python-wheel")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('01aa4ed537280017605edf2a7c094f36ceabc2cdcf794ba8a7e110a3cd5d4aa6')
+makedepends=("esbuild" "npm" "python-build" "python-hatch-vcs" "python-hatchling" "python-installer" "python-wheel")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5845994b01c33daf482f1412e84581b9ed4fee4e7651eb2dfc7cf1e04caba348')
 
 build(){
- cd "${_name//-/_}-$pkgver"
+ cd "$pkgname-$pkgver/frontend"
+ # install scripts are blocked by npm, bundle with the system esbuild instead
+ npm ci --ignore-scripts
+ esbuild src/extension.ts --bundle --format=esm --loader:.css=file --outfile=../src/fava_dashboards/FavaDashboards.js --minify
+ cd ..
+ export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
  python -m build --wheel --no-isolation
 }
 
 package(){
- cd "${_name//-/_}-$pkgver"
+ cd "$pkgname-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
  install -D -m 644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
