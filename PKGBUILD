@@ -50,9 +50,16 @@ build() {
 check() {
   _dotnet_env
   cd json-everything || exit
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   # There's no test build for net10.0, run the one for net9.0 on the current runtime
   DOTNET_ROLL_FORWARD=Major dotnet test src/Json.More.Tests/Json.More.Tests.csproj --configuration Release \
     --framework net9.0
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
