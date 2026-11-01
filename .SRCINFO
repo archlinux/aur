@@ -1,6 +1,6 @@
 pkgbase = soundcraft
 	pkgdesc = vibe coded clean-room reimplementation of Avid Pro Tools
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/soundcraft
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = soundcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/soundcraft/archive/refs/tags/v0.15.0/soundcraft-0.15.0.tar.gz
-	sha256sums = 90e7420d0bf00d2159667c429075f39391ee623ffbc866dc9b0a13e535606be3
+	source = https://github.com/storytold/soundcraft/archive/refs/tags/v0.16.0/soundcraft-0.16.0.tar.gz
+	sha256sums = 15048385f07d0a6976e17eb1c665067724855e65f9b9a458a53b052585f1b4d4
 
 pkgname = soundcraft
 	depends = alsa-lib
