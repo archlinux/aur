@@ -2,7 +2,7 @@
 # Contributor: Aseem Athale <athaleaseem@gmail.com>
 
 pkgname=python-weaviate-client
-pkgver=4.24.0
+pkgver=4.24.1
 pkgrel=1
 _commit=4c4599f5
 pkgdesc='A python native client for easy interaction with a Weaviate instance.'

@@ -1,6 +1,6 @@
 pkgbase = python-weaviate-client
 	pkgdesc = A python native client for easy interaction with a Weaviate instance.
-	pkgver = 4.24.0
+	pkgver = 4.24.1
 	pkgrel = 1
 	url = https://github.com/weaviate/weaviate-python-client
 	arch = any
