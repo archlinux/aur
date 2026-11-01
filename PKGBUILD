@@ -2,7 +2,7 @@
 
 pkgname=shlink-web-client-bin
 _pkgname=shlink-web-client
-pkgver=4.8.1
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="A ReactJS-based progressive web application for Shlink"
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 provides=('shlink-web-client')
 conflicts=('shlink-web-client')
 source=("https://github.com/shlinkio/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_dist.zip")
-b2sums=('d9f336f02809cd849d055aade21663f2f38e27d744b4cde38591fa01a32eede478b067e125a25c1500e2c8460d69c5c719ecda04f2758ad412165e59945d3791')
+b2sums=('a098164e1bfa72f1416a939401ed41c0c7f530af929dbb5f8f48692226f5930a3b1248cf22716be1f4657fcc36dcb98bb47cecb5c51b1101a03e78cc698644ac')
 
 package() {
     install -dm755 "${pkgdir}/usr/share/webapps/${_pkgname}"
