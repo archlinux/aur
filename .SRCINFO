@@ -1,0 +1,14 @@
+pkgbase = plasma6-applets-ha-pages
+	pkgdesc = KDE Plasma 6 widget showing Home Assistant dashboard sections as pages, read live from Lovelace
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/winiciuscota/plasma-ha-pages
+	arch = any
+	license = GPL-3.0-or-later
+	depends = plasma-workspace
+	depends = qt6-websockets
+	depends = kwallet
+	source = plasma-ha-pages-1.0.0.tar.gz::https://github.com/winiciuscota/plasma-ha-pages/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 4dd4551154351bfa6b6d8e056231061a73f7d2a3c4ba2364b50953aeb4754854
+
+pkgname = plasma6-applets-ha-pages
