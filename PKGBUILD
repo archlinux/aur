@@ -7,19 +7,19 @@ _nugetid=Azure.Core
 pkgver=1.64.0
 pkgrel=2
 pkgdesc="Shared primitives, abstractions and helpers for .NET Azure SDK client libraries, Azure.Core (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/Azure/azure-sdk-for-net'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   dotnet-microsoft-identity-client
   dotnet-system-clientmodel
   git
   jq
 )
 # Azure's test proxy, which the tests start, is an ASP.NET Core application
-checkdepends=(aspnet-runtime-"$_dotnetsdkver")
+checkdepends=("aspnet-runtime-$_dotnetsdkver")
 # The commit the package was published from (tag Azure.Core_1.64.0), and the official build of it,
 # see the file version 1.6400.26.52605 of its assemblies (encoding the date and build number)
 _commit="254a1b693af968afee40958e77d0762b44a1b13c"
