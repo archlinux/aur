@@ -3,7 +3,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 
 pkgname=sharky-shell-bin
-pkgver=3.5.1
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Unix-first interactive shell written in Rust (prebuilt binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "LICENSE::$url/raw/v$pkgver/LICENSE"
 )
 sha256sums=(
-  'abe32b650fa84e729483fb97af18b234a8d474c186811b8e310ac2af374076fa'
+  '5f2d02a7135a24367c3a71d87a4617d6846ef56fda7d7715e363b2d6831d7e33'
   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
 
