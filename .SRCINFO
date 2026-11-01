@@ -1,6 +1,6 @@
 pkgbase = tuxtalk-appimage
 	pkgdesc = Voice dictation for Linux: hold a key, talk, and your words are typed for you
-	pkgver = 0.18.2
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://tuxtalk.app/
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = tuxtalk-appimage
 	replaces = talktype-appimage
 	options = !strip
 	install = tuxtalk-appimage.install
-	noextract = TuxTalk-v0.18.2-x86_64.AppImage
-	source = TuxTalk-v0.18.2-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v0.18.2/TuxTalk-v0.18.2-x86_64.AppImage
+	noextract = TuxTalk-v0.19.0-x86_64.AppImage
+	source = TuxTalk-v0.19.0-x86_64.AppImage::https://github.com/ronb1964/TuxTalk/releases/download/v0.19.0/TuxTalk-v0.19.0-x86_64.AppImage
 	source = tuxtalk.desktop
-	sha256sums = 8cd0e2b2924af19a19c91883beea80933232888b406185158ec968d7f4ede01c
+	sha256sums = f05f2cae3ccac65318a60eddae16dac21164b7a2bc683a7642405e08cd841739
 	sha256sums = SKIP
 
 pkgname = tuxtalk-appimage
