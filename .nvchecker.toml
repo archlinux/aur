@@ -1,0 +1,4 @@
+[mechvibes]
+source = "git"
+git = "https://github.com/hainguyents13/mechvibes.git"
+prefix = "v"

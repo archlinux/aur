@@ -1,29 +1,56 @@
-# Maintainer: justanoobcoder <syaorancode@gmail.com>
-
-_github_user="hainguyents13"
-_github_repo="mechvibes"
+# Maintainer:
+# Contributor: justanoobcoder <syaorancode@gmail.com>
 
 pkgname=mechvibes
-pkgver=2.3.6
+pkgver=3.4.0
 pkgrel=1
-pkgdesc="Play mechanical keyboard sounds as you type."
+pkgdesc="A modern mechanical keyboard sound simulator with customizable soundpacks"
 arch=('x86_64')
-url="https://mechvibes.com"
+url="https://mechvibes.com/"
 license=('MIT')
-depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'nspr' 'nss' 'pango' 'util-linux-libs' 'xdg-utils')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-#source=("https://github.com/${_github_user}/${_github_repo}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
-source=("https://github.com/${_github_user}/${_github_repo}/releases/download/v${pkgver}/${pkgname}_${pkgver}_hotfix_amd64.deb")
-md5sums=('015bc37bffc02b1d5d72ff337962de39')
+depends=('alsa-lib'
+         'bzip2'
+         'cairo'
+         'gdk-pixbuf2'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'libgcc'
+         'libsoup3'
+         'libx11'
+         'libxtst'
+         'openssl'
+         'wayland'
+         'webkit2gtk-4.1'
+         'xdotool'
+         'xz'
+         'zstd')
+makedepends=('cargo')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hainguyents13/mechvibes/archive/v${pkgver}.tar.gz")
+sha256sums=('f2456e183d3692fdb416833436f618b3b83d61849730f0f2e9bbca308799d68f')
+
+ prepare() {
+    cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target host-tuple
+}
+
+ build() {
+    cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    export ZSTD_SYS_USE_PKG_CONFIG=1
+    cargo build --frozen --release --all-features
+}
 
 package() {
-
-    # Extract package data
-    tar xf data.tar.xz -C "${pkgdir}"
-    # Install Icon
-    for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
-        install -Dm644 "$pkgdir"/usr/share/icons/hicolor/0x0/apps/"$pkgname".png \
-            "$pkgdir"/usr/share/icons/hicolor/"$i"/apps/"$pkgname".png
-    done
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/lib/${pkgname}" "${pkgdir}/usr/share/${pkgname}"
+    cp -r assets "${pkgdir}/usr/lib/${pkgname}"
+    cp -r soundpacks "${pkgdir}/usr/share/${pkgname}"
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 assets/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "packaging/linux/${pkgname}.xml" -t "${pkgdir}/usr/share/mime/packages"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
