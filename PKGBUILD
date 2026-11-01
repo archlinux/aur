@@ -7,12 +7,12 @@ _nugetid=System.Reactive
 pkgver=7.0.0
 pkgrel=2
 pkgdesc="Reactive Extensions (Rx) for .NET, System.Reactive (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/dotnet/reactive'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   perl
 )
 # The commit the package was published from (tag rxnet-v7.0.0)
