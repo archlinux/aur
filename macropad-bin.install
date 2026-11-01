@@ -1,0 +1,9 @@
+post_install() {
+    udevadm control --reload 2>/dev/null || true
+    udevadm trigger --subsystem-match=hidraw 2>/dev/null || true
+    echo ">> If your macropad was already plugged in and MacroPad can't find it, replug it once."
+}
+
+post_upgrade() {
+    post_install
+}
