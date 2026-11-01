@@ -1,8 +1,8 @@
 diff --git a/cli/tray.py b/cli/tray.py
-index a282cfb..349971c 100755
+index caf3ff8..fb0d5c6 100755
 --- a/cli/tray.py
 +++ b/cli/tray.py
-@@ -272,7 +272,7 @@ class TaskbarPanel:
+@@ -328,7 +328,7 @@ class TaskbarPanel:
              subprocess.run(["xdg-open", path])
  
      def _open_logs(self):
@@ -12,11 +12,11 @@ index a282cfb..349971c 100755
              try:
                  self.open_location(log_file_path)
 diff --git a/core/application.py b/core/application.py
-index 0424ca0..4934e0a 100755
+index c433b83..7429e7a 100755
 --- a/core/application.py
 +++ b/core/application.py
-@@ -39,17 +39,17 @@ class Application:
-     ):
+@@ -44,17 +44,17 @@ class Application:
+         self.update_checker = UpdateChecker(self.get_version_update_status)
          try:
              self.log_file_path = os.path.join(
 -                get_program_files_directory(), log_file_path
@@ -36,7 +36,7 @@ index 0424ca0..4934e0a 100755
                  )
  
              self.config = Config(
-@@ -86,7 +86,7 @@ class Application:
+@@ -94,7 +94,7 @@ class Application:
                  sys.exit(0)
          elif PLATFORM == MACOS or PLATFORM.startswith(LINUX):
              if PLATFORM == MACOS:
@@ -46,10 +46,10 @@ index 0424ca0..4934e0a 100755
                      try:
                          os.makedirs(app_dir)
 diff --git a/core/constants.py b/core/constants.py
-index 78c357a..084c50d 100755
+index c1c4b7f..f76d25a 100755
 --- a/core/constants.py
 +++ b/core/constants.py
-@@ -260,3 +260,9 @@ def get_downloads_folder():
+@@ -267,3 +267,9 @@ def get_downloads_folder():
      - Linux: /home/<Username>/Downloads
      """
      return os.path.join(get_user_home_directory(), "Downloads")
@@ -60,10 +60,10 @@ index 78c357a..084c50d 100755
 +    """
 +    return os.path.join(get_user_home_directory(), ".clipcascade")
 diff --git a/gui/tray.py b/gui/tray.py
-index d16a25a..fda102c 100755
+index 7ea7c37..8fa4bef 100755
 --- a/gui/tray.py
 +++ b/gui/tray.py
-@@ -294,7 +294,7 @@ class TaskbarPanel:
+@@ -470,7 +470,7 @@ class TaskbarPanel:
              subprocess.run(["xdg-open", path])
  
      def _open_logs(self, icon, item):
@@ -72,9 +72,9 @@ index d16a25a..fda102c 100755
          if os.path.exists(log_file_path):
              try:
                  self.open_location(log_file_path)
-@@ -352,16 +352,16 @@ class TaskbarPanel:
+@@ -608,15 +608,15 @@ class TaskbarPanel:
                      return
-             except RuntimeError as re:
+             except (RuntimeError, tk.TclError) as error:
                  target_directory = os.path.join(
 -                    get_program_files_directory(), "downloads"
 +                    get_user_data_directory(), "downloads"
@@ -82,13 +82,12 @@ index d16a25a..fda102c 100755
                  if not os.path.exists(target_directory):
                      os.makedirs(target_directory)
                  logging.error(
-                     f"A runtime error occurred while starting filedialog to select a directory. Error: {re}.\n"
+                     f"Failed to open the download directory picker. Error: {error}.\n"
 -                    + f"Setting the default location to the program directory '{target_directory}'."
 +                    + f"Setting the default location to the config directory '{target_directory}'."
                  )
-                 CustomDialog(
--                    f"ClipCascade 📥: Saving files to the program directory '{target_directory}'.",
-+                    f"ClipCascade 📥: Saving files to the config directory '{target_directory}'.",
-                     msg_type="info",
-                     timeout=5000,
-                 ).mainloop()
+-                message = f"ClipCascade 📥: Saving files to the program directory '{target_directory}'."
++                message = f"ClipCascade 📥: Saving files to the config directory '{target_directory}'."
+                 if PLATFORM == WINDOWS:
+                     NotificationManager(self.config).notify(
+                         "ClipCascade: Download location", message, preference=None,

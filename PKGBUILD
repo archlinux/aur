@@ -1,6 +1,6 @@
 # Maintainer: Seunghun Kim <seunghunkim at proton dot me>
 pkgname=clipcascade-bin
-pkgver=3.3.1
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Sync clipboard across multiple devices"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
     'python-websocket-client'
     'python-xxhash'
     'python-pyfiglet'
+    'python-prompt_toolkit'
     'python-beautifulsoup4'
     'python-aiortc'
 )
@@ -36,11 +37,11 @@ source=(
     "clipcascade.sh"
     "fix-write-path.patch"
 )
-sha256sums=('dbf0a651edca944cd948c0eca45a0eef3b906585ad68c71fd7994db98163e4d1'
+sha256sums=('947c56f66f679a9b096d06dcd352ab46f485578e5e268c94d6efe61488f429a0'
             'b6bd10b3ea41fa8643947f3735256fb77b9d6e852736df61b13b0cb803d25d1e'
             '93e8a6c01a9454dc3bff053e46d44792a4d56687f94a24f534003d8a8dd77e4e'
             '7bf24291bf2b9ca51782c328ad37b35faea5b27c33f0bb1e6ef71c6744b4702d'
-            '0337b1aa9c917077a7cec4db22d6930893ad052fb99347bb880daf7247e8b8fd')
+            'd6538f6ff962fd95bd2444a64cbd7ce5cdd442c914a0918bc5a5ccdcd39a58e6')
 
 prepare() {
     cd "${srcdir}/ClipCascade"
