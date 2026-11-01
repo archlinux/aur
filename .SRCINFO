@@ -1,7 +1,8 @@
 pkgbase = osu-radio-git
 	pkgdesc = Desktop music player for local osu! libraries (development version)
-	pkgver = 0.1.0alpha.r55.g3cf6e1c
+	pkgver = 0.r5
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/Jayko321/osu-radio
 	arch = x86_64
 	license = MIT
@@ -29,7 +30,7 @@ pkgbase = osu-radio-git
 	conflicts = osu-radio-bin
 	options = !lto
 	options = !debug
-	source = osu-radio::git+https://github.com/Jayko321/osu-radio.git#branch=main
+	source = osu-radio::git+https://github.com/Jayko321/osu-radio.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = osu-radio-git

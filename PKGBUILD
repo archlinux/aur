@@ -1,6 +1,6 @@
-# Maintainer: Vasiliy <ldzkeymylp@gmail.com>
+epoch=1
 pkgname=osu-radio-git
-pkgver=0.1.0alpha.r55.g3cf6e1c
+pkgver=0.r5
 pkgrel=1
 pkgdesc='Desktop music player for local osu! libraries (development version)'
 arch=('x86_64')
@@ -12,13 +12,10 @@ optdepends=('osu: osu!stable library' 'osu-lazer-bin: osu!lazer library')
 provides=('osu-radio')
 conflicts=('osu-radio' 'osu-radio-bin')
 options=('!lto' '!debug')
-source=("osu-radio::git+$url.git#branch=main")
+source=("osu-radio::git+$url.git#branch=dev")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/osu-radio"
-  printf '0.1.0alpha.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+
 
 build() {
   cd "$srcdir/osu-radio"
