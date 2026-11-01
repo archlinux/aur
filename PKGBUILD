@@ -6,12 +6,12 @@ pkgname=dotnet-microsoft-identity-client
 pkgver=4.92.0
 pkgrel=2
 pkgdesc="Microsoft Authentication Library for .NET (MSAL.NET), Microsoft.Identity.Client and its extensions (NuGet packages)"
-arch=('any')
+arch=(any)
 url='https://github.com/AzureAD/microsoft-authentication-library-for-dotnet'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
 )
 # The commit the packages were published from
 _commit="2465fc31fa2b481b68660670e2becfd3fba7c631"
