@@ -1,7 +1,7 @@
 pkgbase = dotnet-gherkin-5
 	pkgdesc = Parser for the Gherkin language of Cucumber, Gherkin (NuGet package, version 5)
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cucumber/gherkin-dotnet
 	arch = any
 	license = MIT

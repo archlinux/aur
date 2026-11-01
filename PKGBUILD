@@ -5,7 +5,7 @@
 pkgname=dotnet-gherkin-5
 _nugetid=Gherkin
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for the Gherkin language of Cucumber, Gherkin (NuGet package, version 5)"
 arch=('any')
 url='https://github.com/cucumber/gherkin-dotnet'
@@ -54,7 +54,7 @@ prepare() {
 <configuration>
   <packageSources>
     <clear />
-    <add key="dotnet-system" value="/usr/share/dotnet/nuget-packages" />
+    <add key="dotnet-system" value="/usr/share/nuget/packages" />
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
   <packageSourceMapping>
@@ -156,7 +156,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "gherkin-dotnet-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
