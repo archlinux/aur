@@ -1,7 +1,7 @@
 pkgbase = dotnet-system-io-ports-native
 	pkgdesc = Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)
 	pkgver = 10.0.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dotnet/runtime
 	arch = x86_64
 	arch = aarch64

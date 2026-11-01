@@ -5,7 +5,7 @@
 pkgbase=dotnet-system-io-ports-native
 pkgname=(dotnet-system-io-ports-native dotnet-system-io-ports-native-debug)
 pkgver=10.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/dotnet/runtime'
@@ -140,8 +140,9 @@ check() {
 }
 
 package_dotnet-system-io-ports-native() {
+  # With the packages of the .NET build it belongs to, apart from libraries built from other sources
   install -Dm644 "$srcdir/nupkg/runtime.linux-$(_arch).runtime.native.System.IO.Ports.$pkgver.nupkg" \
-    -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+    -t "$pkgdir/usr/share/nuget/dotnet-$_dotnetsdkver/packages/"
   install -Dm644 "runtime-$_commit/LICENSE.TXT" -t "$pkgdir/usr/share/licenses/$pkgbase/"
 }
 
