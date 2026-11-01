@@ -1,0 +1,26 @@
+post_install() {
+    cat <<'TEXT'
+==> greetd now runs gpui-greeter, set up in /etc/gpui-greeter/config.toml.
+==> Copy the wallpapers for the Frost look:
+      sudo gpui-greeter sync-wallpapers ~/Pictures/Wallpapers
+==> Or show Bing's picture of the day: gpui-greeter settings, Wallpaper,
+    Bing. Its pictures gather in /usr/local/share/gpui-greeter/bing4k,
+    fetched by the login screen and by gpui-greeter-bing.timer, which the
+    settings turn on with Bing.
+==> Make greetd the display manager from the next boot, and go back:
+      sudo gpui-greeter-switch greetd
+      sudo gpui-greeter-switch lightdm
+==> Run one display manager at a time: starting greetd while another
+    display manager's session runs can end that session. To switch at
+    once, log out, then on a text console run:
+      sudo systemctl stop lightdm && sudo systemctl start greetd
+==> The session greetd starts runs on VT 1: Ctrl+Alt+F1 returns to it
+    from a text console. Stopping or restarting greetd ends it.
+==> Design themes of your own with an agent: see "Theme folders" in
+    /usr/share/doc/gpui-greeter/README.md
+==> Lock a running X session with the same looks: gpui-greeter lock, on
+    a key of the window manager's, and once the screen has blanked with
+    gpui-greeter lock --when-idle 30 & in ~/.xinitrc; see "Lock screen"
+    in the README.
+TEXT
+}
