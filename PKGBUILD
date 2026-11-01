@@ -1,8 +1,8 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=onon
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.11.3
+pkgrel=1
 pkgdesc="A quiet reader for the keyboard, built on MuPDF and configured with Lua"
 arch=('x86_64')
 url="https://github.com/Aethar01/onon"
@@ -11,7 +11,7 @@ depends=('sdl3' 'libmupdf' 'gtk3')
 makedepends=('go' 'pkgconf')
 conflicts=('onon-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4b7293ec43175736514e0ee29c4abc4a8877489885ac3e6a08b72b729fe83994')
+sha256sums=('b890a1a4ea026777633aea072e0ff880f7599e727e4a32d76574fdd3c4706bf5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -28,7 +28,7 @@ build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -ldflags "-linkmode=external -X onon/internal/config.Version=$pkgver" -o onon .
+	go build -ldflags "-linkmode=external -X onon/internal/config.Version=$pkgver -X onon/internal/config.InstallMethod=aur" -o onon .
 }
 
 package() {
