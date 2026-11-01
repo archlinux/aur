@@ -3,10 +3,10 @@
 _pkgauthor=yazeed
 _pkgname=proc-cli
 _appname=${_pkgname%-cli}
-pkgname=${_appname}
+pkgname=${_pkgname}
 pkgdesc="Semantic CLI tool for process management. Target by port, PID, name or path."
 
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -20,11 +20,12 @@ license=('MIT')
 
 makedepends=('cargo')
 provides=("${_appname}")
+replaces=("${pkgname%-cli}")
 
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4f5d4df58ba92bb97b4554599f3dd64f3fe684d2c773c077168ceb5e434b13bf')
+sha256sums=('9eeda9695cd83e4ebdc1c873c464c094e57da37581979a977822640df62cd856')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}" || exit
@@ -42,7 +43,7 @@ build() {
 package() {
 	cd "${_pkgname}-${pkgver}" || exit
 
-	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
