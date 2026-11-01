@@ -1,7 +1,7 @@
 # Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager-bin
 pkgdesc='A mod manager for the Valve game Deadlock (binary)'
-_pkgver=2.2.0
+_pkgver=2.3.0
 pkgver=${_pkgver}
 pkgrel=1
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip')
 source=("deadlock-modmanager-${pkgver}.deb::https://github.com/deadlock-mod-manager/deadlock-mod-manager/releases/download/v${_pkgver}/Deadlock.Mod.Manager_${_pkgver}_amd64.deb"
         "deadlock-modmanager-${pkgver}.desktop::https://raw.githubusercontent.com/deadlock-mod-manager/deadlock-mod-manager/v${_pkgver}/distribution/aur/deadlock-modmanager.desktop"
         "dev.stormix.deadlock-mod-manager-${pkgver}.metainfo.xml::https://raw.githubusercontent.com/deadlock-mod-manager/deadlock-mod-manager/v${_pkgver}/apps/desktop/src-tauri/dev.stormix.deadlock-mod-manager.metainfo.xml")
-sha256sums=('16cd1175ae50c33fc40f340d676d8521ceae1c57cd2dc51940b58b5c63735916'
+sha256sums=('2cfe40a6ef57ebb306a78e7458dad6c7d2021ce7753631f8d8985e8691591f94'
             '74f91f52da072e31df1dd9df8e7339aa6328e8f6ed11e9b565858c6b9fab0740'
             '9972534fb418587adc14ec23c231f60c0082bc317072c5ae69a6e1e48018a7c5')
 
