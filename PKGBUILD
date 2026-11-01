@@ -5,7 +5,7 @@
 pkgname=dotnet-pluralize-net
 _nugetid=Pluralize.NET
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Pluralize or singularize any English word, Pluralize.NET (NuGet package)"
 arch=('any')
 url='https://github.com/sarathkcm/Pluralize.NET'
@@ -88,7 +88,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "Pluralize.NET-$_commit/LICENCE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   _check_prebuilt "$srcdir/nuget"
