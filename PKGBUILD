@@ -9,7 +9,10 @@
 # conflict. It ships nothing.
 _dotnetver=10.0
 pkgname=dotnet-build-deps-$_dotnetver-bin
-pkgver=1
+# The version of Microsoft's .NET SDK (dotnet-sdk-bin) like dotnet-build-deps-10.0 has the one of the
+# source-built SDK: the runtime version and the SDK's feature band and patch. The SDK is pinned to
+# exactly that release, so the version provided is the one installed.
+pkgver=10.0.14.sdk403
 pkgrel=1
 pkgdesc="Build dependencies of the .NET packages from Microsoft's build of .NET $_dotnetver and nuget.org (meta package)"
 arch=(x86_64 aarch64)
@@ -17,7 +20,7 @@ url='https://dotnet.microsoft.com/'
 license=(0BSD)
 # Microsoft's build of the current .NET; the packages for older .NET versions have the version in the
 # name (e.g. dotnet-sdk-9.0-bin)
-depends=(dotnet-sdk-bin)
+depends=("dotnet-sdk-bin=$pkgver")
 provides=("dotnet-build-deps-$_dotnetver=$pkgver")
 conflicts=(
   "dotnet-build-deps-$_dotnetver"

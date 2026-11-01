@@ -1,0 +1,5 @@
+# The version of Microsoft's .NET SDK in the AUR, which this package is pinned to
+["dotnet-build-deps-10.0-bin"]
+source = "aur"
+aur = "dotnet-sdk-bin"
+strip_release = true
