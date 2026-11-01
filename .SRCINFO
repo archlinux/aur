@@ -1,7 +1,7 @@
 pkgbase = python-sphn
 	pkgdesc = Rust-backed Python audio decoding, resampling and Opus streaming
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kyutai-labs/sphn
 	arch = x86_64
 	license = MIT OR Apache-2.0

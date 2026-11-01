@@ -2,7 +2,7 @@
 
 pkgname=python-sphn
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust-backed Python audio decoding, resampling and Opus streaming"
 arch=('x86_64')
 url="https://github.com/kyutai-labs/sphn"
@@ -20,7 +20,7 @@ sha256sums=('39439dedcc3603702c390734185b6bf3e9c041a665105fa4b04d7ea27ae3365c'
 prepare() {
     cd "sphn-$_commit"
     cp "$srcdir/Cargo.lock" Cargo.lock
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked
 }
 
 build() {
