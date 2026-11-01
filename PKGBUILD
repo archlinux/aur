@@ -81,43 +81,30 @@ optdepends=('openssh: PowerShell Remoting over ssh'
   'powershell-mmi: Microsoft.Management.Infrastructure for modules built against PowerShell with it, e.g. PSScriptAnalyzer from the PowerShell Gallery'
   'powershell-powershellget-v3: PowerShellGet v3, which runs Install-Module and friends on PSResourceGet instead of the bundled v2')
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
-  # Libraries built from source, see _nuget_feeds()
-  dotnet-azure-core
-  dotnet-azure-identity
-  dotnet-jsonschema-net-7
-  dotnet-markdig
-  dotnet-microsoft-identity-client
-  dotnet-newtonsoft-json
-  dotnet-powershellstandard-library
-  dotnet-roslyn
-  dotnet-source-build-reference-packages # The reference packages the modules compile against, see nuget-modules.config
-  dotnet-system-clientmodel
-  dotnet-system-data-sqlclient
-  dotnet-system-io-ports-native
-  dotnet-wcf
+  # The packages of .NET itself come from the .NET dotnet-build-deps-10.0 chooses: the source-built
+  # .NET of Arch Linux, or Microsoft's build (dotnet-build-deps-10.0-bin, e.g. on Arch Linux ARM,
+  # which has no .NET packages). The libraries come from powershell-build-deps, built from source,
+  # or nuget.org (powershell-build-deps-bin). See _nuget_feeds() and _nuget_modules_config().
+  dotnet-build-deps-"$_dotnetsdkver"
+  powershell-build-deps
   cmake
   gtest
   git
   ruby-ronn-ng
 )
-# Arch Linux ARM has no .NET packages, there it's Microsoft's build from the AUR (dotnet-core-bin)
-# and the runtime packs come from nuget.org
-makedepends_x86_64=(dotnet-source-built-artifacts-"$_dotnetsdkver")
 checkdepends=(
   # ASP.NET is needed for test/tools/WebListener
   aspnet-targeting-pack-"$_dotnetsdkver"
   aspnet-runtime-"$_dotnetsdkver"
-  bash             # Needed for various tests, e.g. test/powershell/Language/Scripting/NativeExecution/NativeLinuxCommands.Tests.ps1
-  dotnet-gherkin-5 # The Gherkin parser of Pester 4, which the tests are written for
-  expect           # Needed for test/powershell/Host/Read-Host.Tests.ps1
-  glibc-locales    # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
-  grep             # Used widely in tests
-  inetutils        # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
-  iputils          # Needed for ping, which is used in a lot of places
-  openssh          # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
-  procps-ng        # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
-  xclip            # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
+  bash          # Needed for various tests, e.g. test/powershell/Language/Scripting/NativeExecution/NativeLinuxCommands.Tests.ps1
+  expect        # Needed for test/powershell/Host/Read-Host.Tests.ps1
+  glibc-locales # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
+  grep          # Used widely in tests
+  inetutils     # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
+  iputils       # Needed for ping, which is used in a lot of places
+  openssh       # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
+  procps-ng     # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
+  xclip         # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
 )
 install=powershell.install
 
@@ -145,7 +132,6 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "oneget-user-temp-folder.patch"
   "oneget-net10.patch"
   "psresourceget-net10.patch"
-  "nuget-modules.config"
   "powershell-modules.psm1"
   "build-modules.ps1"
   "crossgen2-pack.targets"
@@ -179,7 +165,6 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '9a08f25fceaf92c01dc178d4e54f41342de24be4710c0c57decc4cb80cf8a73cf73301d4eb23a7815d953a7e6ac16b92f1da3604833f373d6ef6904ab7b0e1ac'
   'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
   '7f0df1c1eadfc39f7075cf6de7b1d2b99959042b2a3ee1cc0158ead26128ae8086463c563178b22c325c965352d5d756d2b02abf1137ad91b116fd753aeed8b6'
-  '7753cb1b8d4b865ac3b08f4d17a9f848c138e14539fc6b4b377900f6be2714f74964f34e215184c900348cd7fa54e0f71238d63fa3ccb11b605ff5fc744b0708'
   '96676f88faa330b5de88f28885cf505ef983260b94d4c0e2734b41818944a2ac8a0c239971b88df1441021bbcff00965484beae78f415df8dee71782f1a0300a'
   '6a5e7eb8d5d4be05a490938052f029343bbc58582ba29f3b5d0e4edc4991f8c47c48ea01f79ff19772bda184886cd5f57aa1a47b2d416b42cf3e0882ccfee42b'
   '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
@@ -213,7 +198,6 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '07d61a4c195a13807f11655f479d71f8f3b668ed6cfd81f130caf879fa48f13dca4c98955826e6257fcc94acb2771250e622aa9523247a8012d8274a2a1de87b'
   'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
   '93382f5100b58b1cf763054c4a839546f4c7cc8a141cf11d34ddf3b01a7c7e6663630e5ad32df32f69ff84c1d50073ce6c43ef3e4a7a934bbe6b344156e5c54e'
-  'db691d49fc99d2d844d4f9fc0af456565a5c8102340f5b9d001029f3d7b95a7762ab612ac45824b97961b26109549ff9527070c44838966c0c8bbc485bf0f3d0'
   'a1a50088ccba24c160307f0fd3690d6eb72975e4afb5dcd7360590feb298efb49baa42b4dab9c170eb59c199aa216c9092a12b7c5693f391f28343445ace8a38'
   'faa8529d128d330db32fc507fdc1b81a66b529f40252c113e0a4b3a175fabd8112aa5c1a549ea8e806d5997cf2d8e63bfd7a5ecc51975fa0af828597728b6862'
   '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
@@ -276,11 +260,14 @@ _nupkg_info() {
 # - dotnet-source-built-artifacts, the packages of the source-built .NET, so they exactly match the .NET
 #   we're building and running with ($1 is its runtime version). This includes the runtime, apphost and
 #   crossgen packs. Other packages from there that aren't versioned like the runtime can be given as
-#   further arguments; references to them are set to the version there. Arch Linux ARM has no
-#   source-built .NET.
-# - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*).
-#   References to them are set to the installed version with the same major version, or the newest
-#   installed one if there's none, so a newer major version installed alongside doesn't break the build.
+#   further arguments; references to them are set to the version there. With
+#   dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch Linux ARM), there are none, and they
+#   come from nuget.org.
+# - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*,
+#   powershell-build-deps). References to them are set to the installed version with the same major
+#   version, or the newest installed one if there's none, so a newer major version installed alongside
+#   doesn't break the build. With powershell-build-deps-bin, the ones that aren't installed come from
+#   nuget.org, in the versions upstream references.
 # - nuget.org for everything else
 _nuget_feeds() {
   local _systemfeed=/usr/share/dotnet/nuget-packages
@@ -329,7 +316,13 @@ _nuget_feeds() {
   <packageSources>
     <clear />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
-    <add key="dotnet-packages" value="$_systemfeed" />
+EOF
+    # NuGet fails on local feeds that don't exist, as the system feed may not with the -bin variants of
+    # the build dependencies
+    if ((${#_systempackages[@]})); then
+      echo "    <add key=\"dotnet-packages\" value=\"$_systemfeed\" />"
+    fi
+    cat <<EOF
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
   <packageSourceMapping>
@@ -353,6 +346,57 @@ EOF
 </configuration>
 EOF
   } >nuget.config
+}
+
+# Prints the package source mapping of the feed $1 for the package patterns $2...
+_nuget_mapping() {
+  echo "    <packageSource key=\"$1\">"
+  shift
+  printf '      <package pattern="%s" />\n' "$@"
+  echo '    </packageSource>'
+}
+
+# Writes the nuget.config of the modules (build-modules.ps1) and of the tests of PowerShell Standard.
+# They only compile against reference packages, which don't need to match the .NET runtime: PowerShell
+# Standard (dotnet-powershellstandard-library, part of powershell-build-deps) and the reference packages
+# of .NET's source build (dotnet-source-build-reference-packages, part of dotnet-build-deps-10.0),
+# or the originals from nuget.org with the -bin variants.
+_nuget_modules_config() {
+  local _psstdpkg=(/usr/share/dotnet/nuget-packages/PowerShellStandard.Library.*.nupkg)
+  local _referencedir=/usr/share/dotnet/source-build-reference-packages
+  local _psstdfeed=nuget.org _referencefeed=nuget.org
+  local -A _urls=(
+    ["dotnet-packages"]=/usr/share/dotnet/nuget-packages
+    ["dotnet-source-build-reference-packages"]="$_referencedir"
+    ["nuget.org"]=https://api.nuget.org/v3/index.json
+  )
+  if [[ -f "${_psstdpkg[0]}" ]]; then _psstdfeed=dotnet-packages; fi
+  if [[ -d "$_referencedir" ]]; then _referencefeed=dotnet-source-build-reference-packages; fi
+  {
+    cat <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+EOF
+    printf '    <add key="%s" value="%s" />\n' "$_psstdfeed" "${_urls[$_psstdfeed]}"
+    if [[ "$_referencefeed" != "$_psstdfeed" ]]; then
+      printf '    <add key="%s" value="%s" />\n' "$_referencefeed" "${_urls[$_referencefeed]}"
+    fi
+    cat <<EOF
+  </packageSources>
+  <packageSourceMapping>
+    <clear />
+EOF
+    if [[ "$_referencefeed" == "$_psstdfeed" ]]; then
+      _nuget_mapping "$_psstdfeed" PowerShellStandard.Library NETStandard.Library Microsoft.NETCore.Platforms Microsoft.CSharp
+    else
+      _nuget_mapping "$_psstdfeed" PowerShellStandard.Library
+      _nuget_mapping "$_referencefeed" NETStandard.Library Microsoft.NETCore.Platforms Microsoft.CSharp
+    fi
+    echo '  </packageSourceMapping>'
+    echo '</configuration>'
+  } >"$srcdir/nuget-modules.config"
 }
 
 prepare() {
@@ -478,8 +522,9 @@ prepare() {
   sed -i -E 's|<PackageReference Include="Microsoft.PowerShell.MarkdownRender" Version="[^"]+" />|<ProjectReference Include="../Microsoft.PowerShell.MarkdownRender/Microsoft.PowerShell.MarkdownRender.csproj" />|' \
     "$_utility"
 
-  # Packages come from the system where possible, see _nuget_feeds()
+  # Packages come from the system where possible, see _nuget_feeds() and _nuget_modules_config()
   _nuget_feeds "$_runtimever"
+  _nuget_modules_config
 
   # Packages from the system feed may satisfy a dependency with a newer version than its minimum
   # (e.g. Json.More.Net 2.2.0 for JsonPointer.Net's >= 2.1.1), keep that a warning
@@ -745,16 +790,20 @@ check() {
 
   # Pester from source as well, which build.psm1 saves from the PowerShell Gallery, rather than
   # powershell-pester-4, which needs powershell to build. The Gherkin parser comes from
-  # dotnet-gherkin-5 instead of the prebuilt one, as in powershell-pester-4, and the build tools with
-  # nuget.exe aren't needed.
+  # dotnet-gherkin-5 (part of powershell-build-deps) instead of the prebuilt one, as in
+  # powershell-pester-4; with powershell-build-deps-bin, it's Pester's own. The build tools with
+  # nuget.exe and the parser for Windows PowerShell aren't needed.
   local _pester="$srcdir/test-modules/Pester/$_pesterver"
+  local _gherkin=/usr/share/dotnet/nuget-packages/Gherkin.5.1.0.nupkg
   rm -rf "$srcdir/test-modules"
   mkdir -p "${_pester%/*}"
   cp -r "$srcdir/Pester-$_pesterver" "$_pester"
-  rm -r "$_pester/lib/Gherkin/core" "$_pester/lib/Gherkin/legacy" "$_pester/vendor"
-  mkdir "$_pester/lib/Gherkin/core"
-  bsdtar -xOf /usr/share/dotnet/nuget-packages/Gherkin.5.1.0.nupkg lib/netstandard2.0/Gherkin.dll \
-    >"$_pester/lib/Gherkin/core/Gherkin.dll"
+  rm -r "$_pester/lib/Gherkin/legacy" "$_pester/vendor"
+  if [[ -f "$_gherkin" ]]; then
+    rm -r "$_pester/lib/Gherkin/core"
+    mkdir "$_pester/lib/Gherkin/core"
+    bsdtar -xOf "$_gherkin" lib/netstandard2.0/Gherkin.dll >"$_pester/lib/Gherkin/core/Gherkin.dll"
+  fi
 
   # Some tests are locale dependent, so we need to ensure the en-US locale is being used.
   export LANG=en_US.UTF-8
@@ -772,8 +821,12 @@ check() {
   # #9618), and the CIM type adapter is only there with MMI (mmi-optional.patch).
   local _psstd="$srcdir/PowerShellStandard" _psstdver
   local _psstdpkg=(/usr/share/dotnet/nuget-packages/PowerShellStandard.Library.*.nupkg)
-  _psstdver=${_psstdpkg[0]##*/PowerShellStandard.Library.}
-  _psstdver=${_psstdver%.nupkg}
+  # With powershell-build-deps-bin, the one from nuget.org the modules were built against (some
+  # restore the 7.0.0 preview as well)
+  if [[ ! -f "${_psstdpkg[0]}" ]]; then
+    _psstdpkg=("$NUGET_PACKAGES"/powershellstandard.library/5.*/powershellstandard.library.5.*.nupkg)
+  fi
+  read -r _ _psstdver < <(_nupkg_info "${_psstdpkg[0]}")
   rm -rf "$_psstd/src/5/bin"
   mkdir -p "$_psstd/src/5/bin/Release/netstandard2.0"
   bsdtar -xOf "${_psstdpkg[0]}" lib/netstandard2.0/System.Management.Automation.dll \
@@ -802,16 +855,25 @@ check() {
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
 # restored from a remote feed like nuget.org into $1, so no prebuilt binary slips in instead of one built
-# from source. The packs of .NET itself (DotnetPlatform: runtime packs, which $PSHOME/ref is copied from,
-# and the like) are left out: where there's no source-built .NET, like on Arch Linux ARM, they come from
-# nuget.org as Microsoft's build of the .NET PowerShell runs on.
+# from source. Left out are the packages that come from nuget.org by choice: Microsoft's packages of
+# .NET itself (built by the VMR, dotnet/dotnet) with dotnet-build-deps-10.0-bin, the other libraries
+# with powershell-build-deps-bin. The packs of .NET itself (DotnetPlatform: runtime packs, which
+# $PSHOME/ref is copied from, and the like) always are: a cross build gets the ones of its target from
+# nuget.org, as Microsoft's build of the .NET PowerShell runs on there.
 _check_prebuilt() {
-  local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0
+  local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0 _dotnetbin=false _libsbin=false
   local _binaries=(-type f '(' -name '*.dll' -o -name '*.exe' -o -name '*.so' -o -name '*.so.*' -o -name '*.dylib' ')')
   local -A _prebuilt=()
+  if pacman -T dotnet-build-deps-"$_dotnetsdkver"-bin >/dev/null; then _dotnetbin=true; fi
+  if pacman -T powershell-build-deps-bin >/dev/null; then _libsbin=true; fi
   while IFS= read -r -d '' _metadata; do
     grep -qE '"source": *"https?://' "$_metadata" || continue
     grep -qs '<packageType name="DotnetPlatform"' "${_metadata%/*}"/*.nuspec && continue
+    if grep -qs '<repository [^>]*url="https://github.com/dotnet/dotnet"' "${_metadata%/*}"/*.nuspec; then
+      [[ "$_dotnetbin" == true ]] && continue
+    else
+      [[ "$_libsbin" == true ]] && continue
+    fi
     while IFS= read -r -d '' _file; do
       _prebuilt[$(sha256sum <"$_file")]="${_file#"$1"/}"
     done < <(find "${_metadata%/*}" "${_binaries[@]}" -print0)

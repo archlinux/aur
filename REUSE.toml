@@ -11,7 +11,6 @@ path = [
   "update-pwsh-deps.ps1",
   "update-pwsh-deps",
   "psresourceget-test.ps1",
-  "nuget-modules.config",
   "README.md",
   "keys/**",
   ".SRCINFO",
