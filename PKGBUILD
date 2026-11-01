@@ -261,17 +261,18 @@ _nupkg_info() {
 # - dotnet-source-built-artifacts, the packages of the source-built .NET, so they exactly match the .NET
 #   we're building and running with ($1 is its runtime version). This includes the runtime, apphost and
 #   crossgen packs. Other packages from there that aren't versioned like the runtime can be given as
-#   further arguments; references to them are set to the version there. With
-#   dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch Linux ARM), there are none, and they
-#   come from nuget.org.
-# - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*,
+#   further arguments; references to them are set to the version there. Together with them, the
+#   packages built from the same sources by their own packages, in /usr/share/nuget/dotnet-10.0/packages
+#   (dotnet-system-io-ports-native). With dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch
+#   Linux ARM), there are none, and they come from nuget.org.
+# - /usr/share/nuget/packages, libraries built from source by their own packages (dotnet-*,
 #   powershell-build-deps). References to them are set to the installed version with the same major
 #   version, or the newest installed one if there's none, so a newer major version installed alongside
 #   doesn't break the build. With powershell-build-deps-bin, the ones that aren't installed come from
 #   nuget.org, in the versions upstream references.
 # - nuget.org for everything else
 _nuget_feeds() {
-  local _systemfeed=/usr/share/dotnet/nuget-packages
+  local _systemfeed=/usr/share/nuget/packages
   local _systempackages=() _localpackages=() _nupkg _id _version _artifacts _csproj _reference
   local -A _systemversions=()
   for _nupkg in "$_systemfeed"/*.nupkg; do
@@ -295,6 +296,10 @@ _nuget_feeds() {
     for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
       [[ -f "$_artifacts" ]] || continue
       bsdtar -xf "$_artifacts" -C "$srcdir/nuget-local" '*.nupkg'
+    done
+    for _nupkg in "/usr/share/nuget/dotnet-$_dotnetsdkver/packages"/*.nupkg; do
+      [[ -f "$_nupkg" ]] || continue
+      cp "$_nupkg" "$srcdir/nuget-local/"
     done
   fi
   for _nupkg in "$srcdir"/nuget-local/*.nupkg; do
@@ -363,11 +368,11 @@ _nuget_mapping() {
 # of .NET's source build (dotnet-source-build-reference-packages, part of dotnet-build-deps-10.0),
 # or the originals from nuget.org with the -bin variants.
 _nuget_modules_config() {
-  local _psstdpkg=(/usr/share/dotnet/nuget-packages/PowerShellStandard.Library.*.nupkg)
-  local _referencedir=/usr/share/dotnet/source-build-reference-packages
+  local _psstdpkg=(/usr/share/nuget/packages/PowerShellStandard.Library.*.nupkg)
+  local _referencedir="/usr/share/nuget/dotnet-$_dotnetsdkver/reference-packages"
   local _psstdfeed=nuget.org _referencefeed=nuget.org
   local -A _urls=(
-    ["dotnet-packages"]=/usr/share/dotnet/nuget-packages
+    ["dotnet-packages"]=/usr/share/nuget/packages
     ["dotnet-source-build-reference-packages"]="$_referencedir"
     ["nuget.org"]=https://api.nuget.org/v3/index.json
   )
@@ -832,7 +837,7 @@ check() {
   # powershell-pester-4; with powershell-build-deps-bin, it's Pester's own. The build tools with
   # nuget.exe and the parser for Windows PowerShell aren't needed.
   local _pester="$srcdir/test-modules/Pester/$_pesterver"
-  local _gherkin=/usr/share/dotnet/nuget-packages/Gherkin.5.1.0.nupkg
+  local _gherkin=/usr/share/nuget/packages/Gherkin.5.1.0.nupkg
   rm -rf "$srcdir/test-modules"
   mkdir -p "${_pester%/*}"
   cp -r "$srcdir/Pester-$_pesterver" "$_pester"
@@ -858,7 +863,7 @@ check() {
   # this PowerShell lacks. PowerShell 7 removed the workflow job proxies (PowerShell/PowerShell#10083,
   # #9618), and the CIM type adapter is only there with MMI (mmi-optional.patch).
   local _psstd="$srcdir/PowerShellStandard" _psstdver
-  local _psstdpkg=(/usr/share/dotnet/nuget-packages/PowerShellStandard.Library.*.nupkg)
+  local _psstdpkg=(/usr/share/nuget/packages/PowerShellStandard.Library.*.nupkg)
   # With powershell-build-deps-bin, the one from nuget.org the modules were built against (some
   # restore the 7.0.0 preview as well)
   if [[ ! -f "${_psstdpkg[0]}" ]]; then
