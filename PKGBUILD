@@ -4,7 +4,7 @@
 
 pkgname=dotnet-markdig
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, powerful, CommonMark compliant, extensible Markdown processor for .NET (NuGet packages)"
 arch=('any')
 url='https://github.com/xoofx/markdig'
@@ -96,7 +96,7 @@ _check_prebuilt() {
 
 package() {
   install -Dm644 "$srcdir"/nupkg/{Markdig,Markdig.Signed}."$pkgver".nupkg \
-    -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+    -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 markdig/license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"

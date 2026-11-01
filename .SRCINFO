@@ -1,7 +1,7 @@
 pkgbase = dotnet-markdig
 	pkgdesc = Fast, powerful, CommonMark compliant, extensible Markdown processor for .NET (NuGet packages)
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xoofx/markdig
 	arch = any
 	license = BSD-2-Clause
