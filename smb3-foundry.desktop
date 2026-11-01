@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=SMB3 Foundry
+Comment=A modern Super Mario Bros. 3 level editor
+Exec=smb3-foundry
+Icon=smb3-foundry
+Terminal=false
+StartupNotify=false
+Categories=Games;
