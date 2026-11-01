@@ -7,12 +7,12 @@ pkgver=12.5.0
 _contractsver=2.0.1
 pkgrel=2
 pkgdesc="Simple mediator implementation in .NET, MediatR 12 and MediatR.Contracts (NuGet packages)"
-arch=('any')
+arch=(any)
 url='https://github.com/jbogard/MediatR'
-license=('Apache-2.0')
+license=(Apache-2.0)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
 )
 # MediatR 13 and later come under the Reciprocal Public License or a commercial license instead of
 # Apache 2.0, so this packages the last release of MediatR 12.
