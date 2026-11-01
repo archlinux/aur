@@ -1,0 +1,17 @@
+pkgbase = python-py65
+	pkgdesc = Emulate 6502-based microcomputer systems in Python
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mnaberez/py65
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	conflicts = python-py65-git
+	source = py65-1.2.0.tar.gz::https://github.com/mnaberez/py65/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = bd84a61f71bcb64c033114657c77bb62a0265244c8f3d2b4b8d37e30ee18bf6d
+
+pkgname = python-py65
