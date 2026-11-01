@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=pake-cli
-pkgver=3.17.6
+pkgver=3.17.8
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('c27a837c4dcb3232975aa485d2ff43ea8f8cb422bfc3b3a83a7435cba4e1c6debc5ec635481edc6062a767b83feae96ae1d3a721533c9f9a828da98af0b627c9')
+b2sums=('a2aced73dc54dcb9e5ccf8e9654820498df0dcd58a0d79ec85321f8fa7ec6be8058951b55cf406bb2149f3bafc01bb07f7d86e1dbcd08ee5787676a017c81845')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
