@@ -1,5 +1,5 @@
 pkgname=termius-deb
-pkgver=10.2.1
+pkgver=10.3.0
 pkgrel=1
 pkgdesc='Desktop SSH Client'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}-amd64.deb::https://deb.termius.com/pool/main/t/termius-app/termius-app_${pkgver}_amd64.deb"
         'termius.desktop'
         'tos.html')
-sha256sums=('e24024d7d13c39bed9a9dfd97d8cb8718cd275ce0ccc9d3e084b6726f5b53078'
+sha256sums=('ab94e18e55db196ad396c0c25bf4181d3c6a6e1240a1b48ed3daa375a504e018'
             'd97e5258351d06107a0d0816542841d1d61609c0308a5074695dc5c5de0a6268'
             '51978a30942b337918e18690f9c93dc28eb06d54eafc21bb6b29e6ef428083cb')
 
