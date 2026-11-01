@@ -13,8 +13,8 @@ _pkgname="${pkgname}"
 __pkgname=konform
 : ${_ffsrcvername:=153.6.0esr}
 : ${_ffbuild:=2}
-: ${_lwrelver:=100}
-: ${_l10n_commit=3ae91662ee285b44f21ef31b9cae722d132e28ea}
+: ${_lwrelver:=101}
+: ${_l10n_commit=1e95d1c5f519c3fbde715345ae7beb56a2c79077}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
   _srcver="${_ffsrcver}"
@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -147,16 +147,17 @@ source=(
   "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
   "${__pkgname}.desktop"
   "default192x192.png"
+  "entrypoint.sh"
   "security-state--intermediates-${_tag}.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
 )
 noextract=("security-state--intermediates-${_tag}.zip")
-sha256sums=('69d6ee5a599ba169f25337fba14d9fa7fd66b0590dc77e16d002fc8a7acaf845'
+sha256sums=('6cc2d4299596e589a2f63961a413b1ec33a7f9f22b0ae97ed6532b0250f5b6de'
             '91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25'
             'SKIP'
-            '9b522f126c7eaa4798ad548d2aac1c154bd19281ddf6e76526b19d11961a1c8f'
+            '5cda6675c1d51c6b16395a6be861f980968ed884a404d68d465e8fea87009ef5'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
-            'ab91a4abb6c9aaf116346f6b7d0cc2f5e396829d877aaea18ac218e678d347de')
+            '35f7aa8e133eb1afaba6ace59d516d3b60e66fe20e7adc90eb31c522737fc03f')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -438,14 +439,11 @@ END
   install -Dvm644 ${srcdir}/$__pkgname.desktop \
     "$pkgdir/usr/share/applications/$__pkgname.desktop"
 
-  # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
-#!/bin/sh
-exec /usr/lib/${__pkgname}/${__pkgname} "\$@"
-END
-
   # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1553771
+  install -Dvm755 "${srcdir}/entrypoint.sh" "$pkgdir/usr/lib/$__pkgname/${__pkgname}"
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "${pkgdir}/usr/bin/${__pkgname}" "${pkgdir}/usr/lib/${__pkgname}/${__pkgname}-bin"
+  ln -srfv "${pkgdir}/usr/lib/${__pkgname}/${__pkgname}" "${pkgdir}/usr/bin/${__pkgname}"
   ln -s "${__pkgname}" "${pkgdir}/usr/bin/${_pkgname}" || true
 }
