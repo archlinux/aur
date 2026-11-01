@@ -1,0 +1,24 @@
+pkgbase = python-whisper-normalizer
+	pkgdesc = Multilingual text normalization for speech recognition and synthesis
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kurianbenoy/whisper_normalizer
+	arch = any
+	license = MIT
+	checkdepends = python-num2words
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=64
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-more-itertools
+	depends = python-regex
+	depends = python-indic-numtowords
+	depends = python-text2num
+	optdepends = python-num2words: spell out numbers in text-to-speech mode
+	source = whisper-normalizer-1.0.0.tar.gz::https://github.com/kurianbenoy/whisper_normalizer/archive/3b432f6bdb1ad8179a34e84a8ce4087eb9d7ab02.tar.gz
+	source = check-notebooks.py
+	sha256sums = cbb3c8ecb6ce18f6591e980ad79175ab4f79f60419d2827e2c487e680ea44fdc
+	sha256sums = b9df1508f202a9316e0bcda8c80d137a355ebbab979e69f142af62d1654620a3
+
+pkgname = python-whisper-normalizer
