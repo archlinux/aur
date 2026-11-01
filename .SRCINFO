@@ -1,6 +1,6 @@
 pkgbase = wlr-layout-ui
 	pkgdesc = GUI to configure your screens
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/fdev31/wlr-layout-ui
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = wlr-layout-ui
 	optdepends = wlr-randr: To apply the configuration on other wlroots systems
 	optdepends = hyprland: To apply the configuration on Hyprland (recommended)
 	optdepends = xorg-xrandr: To apply the configuration on X11
-	source = wlr-layout-ui-2.1.0.tar.gz::https://github.com/fdev31/wlr-layout-ui/archive/refs/tags/2.1.0.tar.gz
-	sha256sums = b1fddda6ef876d0f2ffc485b9e1c7f945058b96da93b852a593fa69b7b4a39d5
+	source = wlr-layout-ui-2.2.0.tar.gz::https://github.com/fdev31/wlr-layout-ui/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = bdd8f538823a28044275c6082136a67940e2cb45274532643b4cd60eb93c7e1c
 
 pkgname = wlr-layout-ui

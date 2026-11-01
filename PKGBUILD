@@ -1,6 +1,6 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=wlr-layout-ui
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="GUI to configure your screens"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('wlr-randr: To apply the configuration on other wlroots systems'
             'hyprland: To apply the configuration on Hyprland (recommended)'
             'xorg-xrandr: To apply the configuration on X11')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b1fddda6ef876d0f2ffc485b9e1c7f945058b96da93b852a593fa69b7b4a39d5')
+sha256sums=('bdd8f538823a28044275c6082136a67940e2cb45274532643b4cd60eb93c7e1c')
 
 build() {
 	cd "$pkgname-$pkgver"
