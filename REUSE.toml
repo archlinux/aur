@@ -19,6 +19,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
   "pssa-cim-windows-only.patch",
+  "pssa-exported-function-race.patch",
   "pses-mediatr-12.patch",
 ]
 SPDX-FileCopyrightText = "Microsoft Corporation"

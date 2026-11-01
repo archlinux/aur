@@ -1,0 +1,67 @@
+diff --git a/Engine/Helper.cs b/Engine/Helper.cs
+index a162bfb..4829626 100644
+--- a/Engine/Helper.cs
++++ b/Engine/Helper.cs
+@@ -10,6 +10,7 @@ using System.Globalization;
+ using System.IO;
+ using System.Linq;
+ using System.Management.Automation;
++using System.Management.Automation.Internal;
+ using System.Management.Automation.Language;
+ using System.Management.Automation.Runspaces;
+ 
+@@ -402,15 +403,14 @@ namespace Microsoft.Windows.PowerShell.ScriptAnalyzer
+             IEnumerable<Ast> cmdAsts = ast.FindAll(item => item is CommandAst
+                 && exportFunctionsCmdlet.Contains((item as CommandAst).GetCommandName(), StringComparer.OrdinalIgnoreCase), true);
+ 
+-            CommandInfo exportMM = Helper.Instance.GetCommandInfo("export-modulemember", CommandTypes.Cmdlet);
++            // Export-ModuleMember has no dynamic parameters, so its parameters are taken from the static
++            // metadata of the cmdlet. CommandInfo.ResolveParameter() would use the runspace the cached
++            // CommandInfo comes from, which races with the other rules running in parallel.
++            List<ParameterMetadata> exportMMParams = ParameterMetadata.GetParameterMetadata(typeof(Microsoft.PowerShell.Commands.ExportModuleMemberCommand)).Values
++                .Concat(ParameterMetadata.GetParameterMetadata(typeof(CommonParameters)).Values).ToList();
+ 
+             // switch parameters
+-            IEnumerable<ParameterMetadata> switchParams = (exportMM != null) ? exportMM.Parameters.Values.Where<ParameterMetadata>(pm => pm.SwitchParameter) : Enumerable.Empty<ParameterMetadata>();
+-
+-            if (exportMM == null)
+-            {
+-                return exportedFunctions;
+-            }
++            IEnumerable<ParameterMetadata> switchParams = exportMMParams.Where<ParameterMetadata>(pm => pm.SwitchParameter);
+ 
+             foreach (CommandAst cmdAst in cmdAsts)
+             {
+@@ -429,7 +429,7 @@ namespace Microsoft.Windows.PowerShell.ScriptAnalyzer
+                     if (ceAst is CommandParameterAst)
+                     {
+                         var paramAst = ceAst as CommandParameterAst;
+-                        var param = exportMM.ResolveParameter(paramAst.ParameterName);
++                        var param = ResolveParameter(exportMMParams, paramAst.ParameterName);
+ 
+                         if (param == null)
+                         {
+@@ -489,6 +489,23 @@ namespace Microsoft.Windows.PowerShell.ScriptAnalyzer
+             return exportedFunctions;
+         }
+ 
++        /// <summary>
++        /// Resolves a parameter name like PowerShell does: the name or an alias of a parameter, or else a
++        /// prefix of only one of them. Returns null if there's no such parameter.
++        /// </summary>
++        private static ParameterMetadata ResolveParameter(IEnumerable<ParameterMetadata> parameters, string name)
++        {
++            ParameterMetadata[] matches = parameters.Where(pm => string.Equals(pm.Name, name, StringComparison.OrdinalIgnoreCase)
++                || pm.Aliases.Contains(name, StringComparer.OrdinalIgnoreCase)).ToArray();
++            if (matches.Length == 0)
++            {
++                matches = parameters.Where(pm => pm.Name.StartsWith(name, StringComparison.OrdinalIgnoreCase)
++                    || pm.Aliases.Any(alias => alias.StartsWith(name, StringComparison.OrdinalIgnoreCase))).ToArray();
++            }
++
++            return matches.Length == 1 ? matches[0] : null;
++        }
++
+         /// <summary>
+         /// Given a filePath. Returns true if it is a powershell help file
+         /// </summary>
