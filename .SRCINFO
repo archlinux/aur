@@ -1,16 +1,25 @@
 pkgbase = perl-unicode-utf8
 	pkgdesc = Encoding and decoding of UTF-8 encoding form
-	pkgver = 0.62
-	pkgrel = 2
-	url = https://metacpan.org/release/Unicode-UTF8
+	pkgver = 0.75
+	pkgrel = 1
+	url = https://metacpan.org/dist/Unicode-UTF8
 	arch = x86_64
-	license = GPL
-	license = PerlArtistic
-	checkdepends = perl-test-fatal
-	depends = perl
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-encode>=1.9801
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-fatal>=0.006
+	checkdepends = perl-test-simple
+	makedepends = perl-devel-ppport
+	makedepends = perl-extutils-cbuilder
+	makedepends = perl-extutils-makemaker
+	depends = perl-carp
+	depends = perl-exporter
+	depends = perl-xsloader
+	depends = perl>=5.8.1
+	optdepends = perl-cpan-meta>=2.120900
 	options = !emptydirs
-	options = purge
-	source = https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Unicode-UTF8-0.62.tar.gz
-	sha512sums = 056026ac2ee4c101de5ea6017db59f875121dba8fd23ab5c2ae525effb8cf864e8a1c24588bb2a027792e27568742fc75bd5765694027b110afef867a4b982e0
+	source = https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Unicode-UTF8-0.75.tar.gz
+	sha256sums = 55a990d3f939dca56e38d7070c53b413b513f701bff36ded0dd32f9840ccad53
 
 pkgname = perl-unicode-utf8
