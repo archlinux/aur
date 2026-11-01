@@ -3,7 +3,7 @@ pkgname=whatsapp-tui-git
 _pkgname=whatsapp-tui
 pkgver=r57.dbcf006
 pkgrel=1
-pkgdesc="WhatsApp in the terminal, vim-style: fast, runs in the background, with a VS Code palette, lists, notes and local AI"
+pkgdesc="WhatsApp in the terminal, vim-style: fast, runs in the background, with a VS Code palette, lists and notes"
 arch=('x86_64' 'aarch64')
 url="https://sambuaneesh.github.io/whatsapp-tui/"
 license=('MIT')
@@ -17,7 +17,6 @@ optdepends=(
   'wl-clipboard: copy and paste on Wayland'
   'xclip: copy and paste on X11'
   'libnotify: desktop notifications'
-  'ollama: search by meaning and the local AI (embeddinggemma, qwen3:4b)'
 )
 provides=('whatsapp-tui')
 conflicts=('whatsapp-tui')

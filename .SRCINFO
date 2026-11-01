@@ -1,5 +1,5 @@
 pkgbase = whatsapp-tui-git
-	pkgdesc = WhatsApp in the terminal, vim-style: fast, runs in the background, with a VS Code palette, lists, notes and local AI
+	pkgdesc = WhatsApp in the terminal, vim-style: fast, runs in the background, with a VS Code palette, lists and notes
 	pkgver = r57.dbcf006
 	pkgrel = 1
 	url = https://sambuaneesh.github.io/whatsapp-tui/
@@ -16,7 +16,6 @@ pkgbase = whatsapp-tui-git
 	optdepends = wl-clipboard: copy and paste on Wayland
 	optdepends = xclip: copy and paste on X11
 	optdepends = libnotify: desktop notifications
-	optdepends = ollama: search by meaning and the local AI (embeddinggemma, qwen3:4b)
 	provides = whatsapp-tui
 	conflicts = whatsapp-tui
 	source = whatsapp-tui::git+https://github.com/sambuaneesh/whatsapp-tui.git
