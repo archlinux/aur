@@ -1,7 +1,7 @@
 # Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
-_pkgver=2.2.0
+_pkgver=2.3.0
 pkgver=${_pkgver}
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
          'gst-plugins-good' 'glibc' 'libgcc' 'libstdc++' 'dbus')
 conflicts=('deadlock-modmanager-bin' 'deadlock-modmanager-git')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/deadlock-mod-manager/deadlock-mod-manager/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('978d25303532e685ce1bb7d15c69ccd644b0e4c0982a6539798c4a4b29016a54')
+sha256sums=('540ffc60e442027976ae2f0ea7f882b2647173fcb610ea77e31a6e1198e09544')
 
 prepare() {
     cd "${srcdir}/deadlock-mod-manager-${_pkgver}/apps/desktop"
