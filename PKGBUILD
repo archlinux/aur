@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust
 pkgname=("$_obs_studio-rust" "$_obs_studio-rust-plugin-browser")
-pkgver=0.1.0beta.20261028
+pkgver=0.1.0beta.20261101
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "${pkgbase}-obs-browser::git+$url/obs-browser.git"
   "${pkgbase}-obs-websocket::git+$url/obs-websocket.git"
 )
-sha256sums=('6e0e4663a2eebf65560aeab7c0bfaecf40a9c4d7b9c94d940314aab3406f2c80'
+sha256sums=('bc8196fe7bf6ab79b319ee87f80a57816b01e58586179fc88ddeace62d322dd6'
             'SKIP'
             'SKIP'
             'SKIP')
