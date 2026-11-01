@@ -1,6 +1,6 @@
 pkgbase = python-skimpy
 	pkgdesc = A light weight tool for creating summary statistics from dataframes
-	pkgver = 0.0.21
+	pkgver = 0.0.22
 	pkgrel = 1
 	url = https://github.com/aeturrell/skimpy
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-skimpy
 	depends = python-pyarrow
 	depends = python-duckdb
 	optdepends = python-polars: for polars data frame support
-	source = skimpy-0.0.21.tar.gz::https://github.com/aeturrell/skimpy/archive/v0.0.21.tar.gz
-	sha512sums = faab346d089d3f406037c37e97e4036750d6ca1bba2dff09b42c4f673e16056f935f5f48de0801a6eb3e8f97ca5508e762757daff79e3a79636eab02fcde0016
+	source = skimpy-0.0.22.tar.gz::https://github.com/aeturrell/skimpy/archive/v0.0.22.tar.gz
+	sha512sums = c6cd3613e0e751b1458f6184c4bad9a74446297e527436b4b5e51ca412f407ea901897786c8aa2f6e6120a5e2522b4a3874cbf49fdbd3173da83de88c7ca916f
 
 pkgname = python-skimpy
