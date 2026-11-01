@@ -129,21 +129,10 @@ prepare() {
 
   # Upstream builds with a newer feature band of the .NET SDK, which isn't needed. dotnet only works
   # outside the repository until its global.json is updated.
-  local _sdkver _runtimever _pinned
+  local _sdkver
   _sdkver=$(dotnet --version)
-  _runtimever=$(dotnet --list-runtimes |
-    sed -n -E 's/^Microsoft\.NETCore\.App ('"${_dotnetsdkver//./\\.}"'\.[^ ]+) .*/\1/p' | sort -V | tail -1)
 
   cd "azure-sdk-for-net-$_commit" || exit
-  # Microsoft's runtime packages in the version of its installed runtime, as the source-built ones come
-  # in the version of the artifacts, instead of the servicing version of .NET upstream pins them to at
-  # this commit (as the version of System.Text.Json, and of others in properties), which differs
-  # between the Azure packages: System.ClientModel needs newer ones than the tests of Azure.Identity pin
-  if [[ ! -f "$srcdir/runtime-packages" ]]; then
-    _pinned=$(sed -n -E 's/.*<PackageVersion Include="System\.Text\.Json" Version="('"${_dotnetsdkver//./\\.}"'\.[0-9]+)".*/\1/p' \
-      eng/centralpackagemanagement/Directory.Packages.props)
-    [[ -z "$_pinned" ]] || sed -i -E 's/([">])'"${_pinned//./\\.}"'(["<])/\1'"$_runtimever"'\2/g' eng/centralpackagemanagement/*.props
-  fi
   # Upstream's NuGet.Config, which has the feed the tests need
   mv NuGet.Config NuGet.Config.upstream
   jq --arg sdk "$_sdkver" '.sdk.version = $sdk | .sdk.rollForward = "latestPatch"' global.json >global.json.new
@@ -174,8 +163,22 @@ check() {
   local _feed
   _feed=$(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' NuGet.Config.upstream)
   # Microsoft's packages from nuget.org, as upstream's feed only has the versions upstream's builds
-  # saved there, not e.g. the ones of the installed runtime (see prepare())
+  # saved there, not e.g. the ones of the installed runtime (see below)
   _nuget_config "$_feed" 'Microsoft.AspNetCore.*' 'Microsoft.Bcl.*' 'Microsoft.Extensions.*' 'System.*'
+  # The tests take Microsoft's runtime packages in the version of its installed runtime, as the
+  # source-built ones come in the version of the artifacts, instead of the servicing version of .NET
+  # upstream pins them to at this commit (as the version of System.Text.Json, and of others in
+  # properties). It differs between the Azure packages: System.ClientModel needs newer ones than the
+  # tests of Azure.Identity pin. The package itself is built on upstream's pins, like with the
+  # artifacts.
+  if [[ ! -f "$srcdir/runtime-packages" ]]; then
+    local _runtimever _pinned
+    _runtimever=$(dotnet --list-runtimes |
+      sed -n -E 's/^Microsoft\.NETCore\.App ('"${_dotnetsdkver//./\\.}"'\.[^ ]+) .*/\1/p' | sort -V | tail -1)
+    _pinned=$(sed -n -E 's/.*<PackageVersion Include="System\.Text\.Json" Version="('"${_dotnetsdkver//./\\.}"'\.[0-9]+)".*/\1/p' \
+      eng/centralpackagemanagement/Directory.Packages.props)
+    [[ -z "$_pinned" ]] || sed -i -E 's/([">])'"${_pinned//./\\.}"'(["<])/\1'"$_runtimever"'\2/g' eng/centralpackagemanagement/*.props
+  fi
   # Only on the .NET runtime that's installed, the tests target older ones, too
   dotnet test "sdk/core/$_nugetid/tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}" --framework net10.0
 }
