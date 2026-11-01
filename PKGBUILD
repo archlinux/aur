@@ -1,7 +1,7 @@
 # Maintainer: bnema <b@bnema.dev>
 pkgname=cef-vaapi-bin
 pkgver=154.0.34
-pkgrel=5
+pkgrel=2
 pkgdesc="Chromium Embedded Framework with VAAPI and proprietary codecs enabled (binary distribution)"
 arch=('x86_64')
 url="https://chromiumembedded.github.io/cef"
@@ -33,7 +33,7 @@ optdepends=(
   'libva-utils: VAAPI diagnostics such as vainfo'
 )
 source=("cef-vaapi-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/bnema/cef-vaapi/releases/download/cef-vaapi-v${pkgver}-${pkgrel}/cef-vaapi-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('0b34a09c7be5016a3557fd0248303388c9c4235f53ad5079ce8f53f913daef80')
+sha256sums=('401b43626019532a408f3a92434be501b9dd474ac280eee0dcc559e14277118d')
 
 package() {
   bsdtar -xpf "${srcdir}/cef-vaapi-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
