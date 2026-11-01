@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=filmcraft
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('7fb0bfef6dc50dc9c2281d0a3fff67df43f4cf5c1e5c2c94eb447b25cf783fb2')
+sha256sums=('eac7deaf130bd48650b20d1ab860e94605932301e2473dd786ae842a0e33521b')
 
 _srcenv() {
 	cd "$_archive"
