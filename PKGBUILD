@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=eidos-lite-bin
-pkgver=0.29.0
+pkgver=0.29.6
 pkgrel=1
 pkgdesc="A single-file relational spreadsheet for you and your agent, built on standard SQLite"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('AGPL-3.0-or-later')
 depends=('glib2' 'cairo' 'gtk3' 'hicolor-icon-theme')
 _src="https://github.com/mayneyao/eidos"
 source=("$_src/releases/download/lite-v$pkgver/Eidos.Lite-$pkgver-linux-amd64.deb")
-b2sums=('908e22c0157560938c4b85aecc08f825c0b8b21294d45ed74c5372df907386fec1aef3a0deacae099ab22f692edc41f78f660030ef1ad31f4af80e48e16550ec')
+b2sums=('47ee7e196ad74c2ab3e5dae53cb13d4e52d7ee506903496eefe27fa65cba53f46334e8185f483d1a6ad260daab705ffac3a30574a0a976b71d9a0f82ad0db2f7')
 
 package(){
   tar -xf data.tar.xz -C "$pkgdir"
