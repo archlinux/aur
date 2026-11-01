@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=whitelist-bypass-creator-bin
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="WhitelistBypass Creator — bypass platform restrictions"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 depends=('fuse2')
 makedepends=('squashfs-tools')
 source=("WhitelistBypass.Creator-${pkgver}-x86_64.AppImage::https://github.com/kulikov0/whitelist-bypass/releases/download/v${pkgver}/WhitelistBypass.Creator-${pkgver}-x86_64.AppImage")
-sha256sums=('ed2d4bf28211711513ecea9f27b59d553888bd7472685a4b88c7c7ec9a3131ca')
+sha256sums=('7dafb4417337c5aa7b9e53ae3a02e5e59a67fffd4f468e4968312849c7cc3d69')
 
 prepare() {
     cp -L "${srcdir}/WhitelistBypass.Creator-${pkgver}-x86_64.AppImage" "${srcdir}/real-appimage"
