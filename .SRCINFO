@@ -3,15 +3,17 @@ pkgbase = q2-feature-classifier
 	pkgver = 2026.10.0
 	pkgrel = 1
 	url = https://github.com/qiime2/q2-feature-classifier
-	arch = any
+	arch = x86_64
 	license = BSD-3-Clause
 	checkdepends = python-pytest
+	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-versioningit
 	makedepends = python-wheel
 	depends = python
+	depends = glibc
 	depends = python-qiime2>=2026.10.0
 	depends = python-q2-types>=2026.10.0
 	depends = python-biom-format
@@ -27,6 +29,18 @@ pkgbase = q2-feature-classifier
 	depends = q2-quality-control>=2026.10.0
 	depends = q2-taxa>=2026.10.0
 	source = q2-feature-classifier-2026.10.0.tar.gz::https://github.com/qiime2/q2-feature-classifier/archive/559c0251bf4a7c3fe7e9cc7267207cc39059c784.tar.gz
+	source = scikit-bio-alignment.pyx::https://raw.githubusercontent.com/scikit-bio/scikit-bio/efd210ecdc034c2a33a0d91acf024f7de1281a14/skbio/alignment/_cutils.pyx
+	source = scikit-bio-LICENSE.txt::https://raw.githubusercontent.com/scikit-bio/scikit-bio/efd210ecdc034c2a33a0d91acf024f7de1281a14/LICENSE.txt
+	source = primer-alignment-compat.patch
+	source = primer_alignment.py
+	source = prepare-alignment.py
+	source = setup-alignment.py
 	sha256sums = fdebb27ae186b0f5e2ae240f1130e6c28d1c3f58b30f883f8b65bebf6fd62046
+	sha256sums = e14c462e9cb183ea20be43c9ba757c57a2733864ceb142b9855450ca238fcdd0
+	sha256sums = bd113b93ac18e79ccf11a3f69eb3047d8af6a10bb9e9215c49af4b27301c0bd6
+	sha256sums = dc9d7395ec96e0dfc21c19563bc39fe3fc3d473fa0d360869537e5a1e34ffd5d
+	sha256sums = 764a7922c16062286b6fab5e4f5a0e736987524912fb80ffcca5228ad6d908ea
+	sha256sums = da5ebecf1c55f4afb160d526fd639d46fb8f27d13061546dc0675bc11f818954
+	sha256sums = ae39fc69fce8c9157fc5ef3c2dc778f0e888000c1a5ec0d23d32e8988e8becc2
 
 pkgname = q2-feature-classifier

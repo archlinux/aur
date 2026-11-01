@@ -1,0 +1,29 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,6 +19,7 @@
+ 
+ [build-system]
+ requires = [
++    "Cython",
+     "setuptools",
+     "versioningit",
+     "wheel"
+--- a/q2_feature_classifier/_cutter.py
++++ b/q2_feature_classifier/_cutter.py
+@@ -160,6 +160,16 @@
+     if reverse:
+         primer = primer.reverse_complement()
+ 
++    if not hasattr(skbio.alignment, 'pair_align_nucl'):
++        from ._primer_alignment import align_primer
++
++        _, primer_start, primer_end, aligned_primer, aligned_target = \
++            align_primer(primer, target, substitution_matrix)
++        match_percent = _match_percent(aligned_primer, aligned_target)
++        amplicon_pos = primer_start if reverse else primer_end
++        return _AlignResult(amplicon_pos, match_percent,
++                            primer_start, primer_end)
++
+     aln = skbio.alignment.pair_align_nucl(
+         primer, target, mode='global', sub_score=substitution_matrix,
+         free_ends=[True, True, False, False], trim_ends=True)
