@@ -1,21 +1,21 @@
 # Maintainer: AmetistYT <ametist0yt@gmail.com>
 pkgname=soundpaaad-bin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Sound pad with virtual microphone support for Linux"
+pkgdesc="Soundpad alternative with PipeWire virtual mic & global hotkeys (Rust + egui)"
 arch=('x86_64')
-url="https://github.com/AmetistYT/soundpaad"
+url="https://github.com/ametistik1337/soundpaad"
 license=('MIT')
-depends=('gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'pipewire-pulse' 'openssl')
+depends=('pipewire-pulse' 'libpulse' 'openssl')
 optdepends=('pulseaudio: PulseAudio server (alternative to PipeWire)')
-provides=('soundpaad')
-conflicts=('soundpaad')
-source=("soundpaad-${pkgver}::https://github.com/AmetistYT/soundpaad/releases/download/v${pkgver}/soundpaad"
+provides=('soundpaad' 'soundpad')
+conflicts=('soundpaad' 'soundpad')
+source=("soundpaad-${pkgver}::https://github.com/ametistik1337/soundpaad/releases/download/v${pkgver}/soundpaad"
         "com.soundpaad.app.desktop"
         "com.soundpaad.app.svg")
-sha256sums=('16ba7dfb8213eabf6c838c9b98d2a3c1afe20f239c8e7c06f4689384a6ea8c47'
-            '8359701edad14fde483728eb275dee9b7c8052e4b9a4d470af150b805dec1926'
-            '711a600b092364e9b787243d9c234b9e44582cba7a6261b79f305a0323e08785')
+sha256sums=('668df2c35e4abf155d544fd89df6c0734f3e7aaf1a79ebb99c0dc443e6575271'
+            '71ed0753bd4a074ef9ea75587925b46573d15688a538255553ecf414d91b6ad5'
+            'd356082e45c55f2e48f59821f280cf9799cbcb8238de0afe54ff296e2cb3e238')
 
 package() {
     install -Dm755 "soundpaad-${pkgver}" "${pkgdir}/usr/bin/soundpaad"
