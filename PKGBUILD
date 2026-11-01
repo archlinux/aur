@@ -1,6 +1,5 @@
-# Maintainer: Vasiliy <ldzkeymylp@gmail.com>
 pkgname=osu-radio-bin
-pkgver=0.1.0alpha.2
+pkgver=0.1.0prealpha.3
 pkgrel=1
 pkgdesc='Desktop music player for local osu! libraries (binary release)'
 arch=('x86_64')
@@ -11,10 +10,11 @@ optdepends=('osu: osu!stable library' 'osu-lazer-bin: osu!lazer library')
 provides=('osu-radio')
 conflicts=('osu-radio' 'osu-radio-git')
 options=('!strip' '!debug')
-_version=0.1.0-alpha
+_version=0.1.0-alpha.3
 _archive="osu-radio-${_version}-arch-x86_64"
-source=("${_archive}.tar.gz::$url/releases/download/0.1.0-alpha.2/${_archive}.tar.gz")
-sha256sums=('7cc13ec6b9d7f585ba95672f6b867caf33c6eb0f82bdbde8296de80c741d13c1')
+source=("${_archive}.tar.gz::$url/releases/download/v${_version}/${_archive}.tar.gz")
+# T09 replaces this deliberately invalid digest with the final release asset SHA-256.
+sha256sums=('3f1a3b01d12944e02d661d74894eec3e5a768d4bfce1cdc3bd20b7784e58a7d9')
 
 package() {
   install -d "$pkgdir/usr"

@@ -1,6 +1,6 @@
 pkgbase = osu-radio-bin
 	pkgdesc = Desktop music player for local osu! libraries (binary release)
-	pkgver = 0.1.0alpha.2
+	pkgver = 0.1.0prealpha.3
 	pkgrel = 1
 	url = https://github.com/Jayko321/osu-radio
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = osu-radio-bin
 	conflicts = osu-radio-git
 	options = !strip
 	options = !debug
-	source = osu-radio-0.1.0-alpha-arch-x86_64.tar.gz::https://github.com/Jayko321/osu-radio/releases/download/0.1.0-alpha.2/osu-radio-0.1.0-alpha-arch-x86_64.tar.gz
-	sha256sums = 7cc13ec6b9d7f585ba95672f6b867caf33c6eb0f82bdbde8296de80c741d13c1
+	source = osu-radio-0.1.0-alpha.3-arch-x86_64.tar.gz::https://github.com/Jayko321/osu-radio/releases/download/v0.1.0-alpha.3/osu-radio-0.1.0-alpha.3-arch-x86_64.tar.gz
+	sha256sums = 3f1a3b01d12944e02d661d74894eec3e5a768d4bfce1cdc3bd20b7784e58a7d9
 
 pkgname = osu-radio-bin
