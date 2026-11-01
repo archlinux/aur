@@ -1,14 +1,15 @@
 pkgbase = zilf-bin
 	pkgdesc = A set of tools for working with the ZIL interactive fiction language, including a compiler, assembler, disassembler, and game library.
-	pkgver = 0.9.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://foss.heptapod.net/zilf/zilf
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
+	depends = glibc
 	provides = zilf
 	conflicts = zilf
 	options = !strip
-	source = https://storage.googleapis.com/zilf-releases/0.9/zilf-0.9.0-linux-x64.tar.gz
-	md5sums = 6e9697774bfb20f1b3768e6dff98b720
+	source = https://storage.googleapis.com/zilf-releases/0.11.1/packages/zilf-0.11.1-linux-x64.tar.gz
+	sha256sums = a3628b2d465b770f7fc67702ab60a200126a33d51dafacd954e1f13323ece9d2
 
 pkgname = zilf-bin
