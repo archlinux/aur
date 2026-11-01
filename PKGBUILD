@@ -5,7 +5,7 @@ _pkgname="network-monitor"
 _pkgauthor="grigio"
 pkgname="${_pkgname}-bin"
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A real-time network connection monitoring tool built with Rust and GTK4, displaying active connections with live I/O statistics in a modern graphical interface"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 arch=("x86_64")
@@ -13,6 +13,7 @@ license=("GPL-3.0")
 depends=("pango" "gtk4" "libadwaita")
 provides=("${_pkgname}" "nmt")
 install="${_pkgname}.install"
+options=("!strip")
 source=("LAUNCHER-${pkgver}.desktop::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/${_pkgname}.desktop"
         "ICON-${pkgver}.svg::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/icons/${_pkgname}.svg"
         "README-${pkgver}.md::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/README.md"
@@ -23,7 +24,6 @@ b2sums=('fc4dc7ccbfb5d44c1b6630f3dd0c03aee9b57982ac574d4553171cdad0690a0f9defdc0
         '35aa06a1c503317525f1fae60c1e07e5997f2c3ad8c191342f03a21b49efa8a9ed432f3acad41664c7231c4da27f332412a8a2a4ef784e7bc026442b188c44ee'
         '67c8e3658e200572eff17163b6e4fa7115cf7b90c1944819a4cf2a68016914802aab5819c48bdad8e2ff8dfc29091fb6558faa032a5cca7221115b63b81a09a4')
 b2sums_x86_64=('202bb42b30f9bf4001a94e99f569e3890d697bdbb1e9c62073fe93c012d85660a7f31d2f537851ba5b46c87ee4ff1375af359aef7064e463ca49981f766e50ca')
-options=("!strip")
 
 package() {
     install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin/"

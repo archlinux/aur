@@ -1,7 +1,7 @@
 pkgbase = network-monitor-bin
 	pkgdesc = A real-time network connection monitoring tool built with Rust and GTK4, displaying active connections with live I/O statistics in a modern graphical interface
 	pkgver = 0.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grigio/network-monitor
 	install = network-monitor.install
 	arch = x86_64
