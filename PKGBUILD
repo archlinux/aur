@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=centrifugo-git
-pkgver=r2004.ffae6f2
+pkgver=r2008.0609e35
 pkgrel=1
 pkgdesc='Scalable real-time messaging server (git version)'
 arch=('x86_64' 'aarch64')
