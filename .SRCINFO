@@ -1,0 +1,17 @@
+pkgbase = libmmd-cpp
+	pkgdesc = C++20 library for MMD PMX, VMD, animation and physics
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/haturatu/libmmd
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = bullet
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	source = libmmd-0.3.2.tar.gz::https://github.com/haturatu/libmmd/releases/download/v0.3.2/libmmd-0.3.2.tar.gz
+	sha256sums = c08badc119c274396335af11cf44858e328580a36b35be26566c5b9770e55500
+
+pkgname = libmmd-cpp
