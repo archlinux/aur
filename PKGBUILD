@@ -23,7 +23,7 @@ optdepends=('libglvnd: the experimental GL presenter'
 makedepends=('cargo' 'shaderc')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('41fcb9c9a0ab00947e90a88fa1a20f8e1fefcacc8e41f3ecc75338b394f22d07')
 
 prepare() {
   cd "$pkgname-$pkgver"
