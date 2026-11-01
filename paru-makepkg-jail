@@ -1,0 +1,90 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+die() {
+    printf 'paru-makepkg-jail: %s\n' "$*" >&2
+    exit 1
+}
+
+# Find makepkg-jail beside this script, including after packaging.
+self=$(readlink -f -- "${BASH_SOURCE[0]}")
+jail="$(dirname -- "$self")/makepkg-jail"
+[[ -x "$jail" ]] || die "Missing executable: $jail"
+
+work=$(pwd -P)
+case "$work" in
+    *$'\n'*) die "Workspace paths containing newlines are unsupported." ;;
+esac
+
+# Support the exact invocations observed from your installed paru.
+# Unknown invocations fail rather than guessing their network needs.
+mode=
+
+if (( $# == 1 )); then
+    case "$1" in
+        --printsrcinfo) mode=metadata ;;
+        --packagelist)  mode=packagelist ;;
+    esac
+
+elif (( $# == 2 )); then
+    if [[ "$1" == -ofA && "$2" == -C ]]; then
+        mode=online
+    fi
+
+elif (( $# == 3 )); then
+    if [[ "$1" == --verifysource &&
+          "$2" == -Af &&
+          "$3" == -Cc ]]; then
+        mode=online
+    fi
+
+elif (( $# == 5 )); then
+    if [[ "$1" == -feA &&
+          "$2" == --noconfirm &&
+          "$3" == --noprepare &&
+          "$4" == --holdver &&
+          "$5" == -c ]]; then
+        mode=build
+    fi
+fi
+
+case "$mode" in
+    online)
+        exec "$jail" --online "$@"
+        ;;
+
+    metadata|build)
+        exec "$jail" "$@"
+        ;;
+
+    packagelist)
+        # Keep diagnostics on stderr. Validate all paths before emitting
+        # anything, then translate sandbox paths to host workspace paths.
+        paths=$("$jail" "$@")
+        [[ -n "$paths" ]] || die "makepkg returned an empty package list."
+
+        translated=()
+        while IFS= read -r path; do
+            [[ "$path" == /work/* ]] ||
+                die "Unexpected package path: $path"
+
+            filename=${path#/work/}
+            [[ -n "$filename" &&
+               "$filename" != */* &&
+               "$filename" != "." &&
+               "$filename" != ".." ]] ||
+                die "Package path is not a direct workspace child: $path"
+
+            translated+=("$work/$filename")
+        done <<< "$paths"
+
+        printf '%s\n' "${translated[@]}"
+        ;;
+
+    *)
+        printf 'paru-makepkg-jail: unsupported makepkg invocation:' >&2
+        printf ' %q' "$@" >&2
+        printf '\n' >&2
+        exit 64
+        ;;
+esac

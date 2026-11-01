@@ -1,0 +1,218 @@
+#!/usr/bin/bash
+set -euo pipefail
+umask 077
+
+die() {
+    printf 'makepkg-jail: %s\n' "$*" >&2
+    exit 1
+}
+
+(( EUID != 0 )) || die "Run as your normal user, not root."
+
+online=0
+if [[ "${1:-}" == --online ]]; then
+    online=1
+    shift
+fi
+
+work=$(pwd -P)
+[[ -f "$work/PKGBUILD" ]] || die "No PKGBUILD in the current directory."
+
+home_real=$(realpath -e -- "$HOME")
+case "$work" in
+    /|"$home_real"|/usr|/usr/*|/etc|/etc/*|/root|/root/*|/proc|/proc/*|/sys|/sys/*|/dev|/dev/*)
+        die "Use a dedicated package directory."
+        ;;
+esac
+
+data="${XDG_DATA_HOME:-$HOME/.local/share}/makepkg-jail"
+state="${XDG_CACHE_HOME:-$HOME/.cache}/makepkg-jail-v2"
+
+mkdir -p -- "$state"
+state=$(realpath -e -- "$state")
+
+case "$state/" in
+    "$work/"*) die "The workspace must not contain the sandbox state directory." ;;
+esac
+
+filter="/usr/lib/makepkg-jail/seccomp.bpf"
+[[ -s "$filter" && -r "$filter" ]] ||
+    die "Required seccomp filter is missing: $filter"
+
+key=$(printf '%s' "$work" | sha256sum)
+key=${key%% *}
+
+private_home="$state/homes/$key"
+mkdir -p -- "$private_home" "$state/runs"
+
+run=$(mktemp -d "$state/runs/run.XXXXXXXX")
+trap 'rm -rf -- "$run"' EXIT
+
+mkdir -p "$run/etc" "$run/tmp" "$run/vartmp" "$run/gnupg"
+
+printf 'root:x:0:0:root:/root:/usr/bin/bash\nbuilder:x:%s:%s:builder:/home/build:/usr/bin/bash\n' \
+    "$(id -u)" "$(id -g)" > "$run/etc/passwd"
+
+printf 'root:x:0:\nbuilder:x:%s:\n' "$(id -g)" > "$run/etc/group"
+printf 'passwd: files\ngroup: files\nhosts: files dns\n' > "$run/etc/nsswitch.conf"
+printf '127.0.0.1 localhost\n::1 localhost\n' > "$run/etc/hosts"
+
+cat > "$run/etc/jail-makepkg.conf" <<'EOF'
+source /etc/makepkg.conf
+unset BUILDDIR
+PKGDEST=/work
+SRCDEST=/work
+SRCPKGDEST=/work
+LOGDEST=/work
+BUILDENV=(!distcc color check !sign)
+EOF
+
+if [[ -d "$data/gnupg" ]]; then
+    /usr/bin/gpg --no-options --homedir "$data/gnupg" \
+        --batch --export > "$run/public-keys.gpg"
+
+    if [[ -s "$run/public-keys.gpg" ]]; then
+        /usr/bin/gpg --no-options --homedir "$run/gnupg" \
+            --batch --import "$run/public-keys.gpg"
+    fi
+fi
+
+# Pacman's repository verification keyring is separate from source-signing keys.
+# Copy only public keys and trust data, never private keys, sockets or config.
+pacman_keys=/etc/pacman.d/gnupg
+mkdir -p "$run/pacman-gnupg" "$run/etc/pacman.d/gnupg"
+
+have_public_keys=0
+for name in pubring.gpg pubring.kbx trustdb.gpg; do
+    if [[ -e "$pacman_keys/$name" ]]; then
+        [[ -r "$pacman_keys/$name" ]] ||
+            die "Cannot read pacman's public verification file: $pacman_keys/$name"
+
+        cp -- "$pacman_keys/$name" "$run/pacman-gnupg/$name"
+
+        case "$name" in
+            pubring.gpg|pubring.kbx) have_public_keys=1 ;;
+        esac
+    fi
+done
+
+(( have_public_keys )) ||
+    die "No supported public keyring found in $pacman_keys"
+
+[[ -r "$run/pacman-gnupg/trustdb.gpg" ]] ||
+    die "Pacman's public trust database is missing or unreadable"
+
+args=(
+    --unshare-all
+    --unshare-user
+    --disable-userns
+    --die-with-parent
+    --new-session
+    --cap-drop ALL
+    --clearenv
+    --setenv PATH /usr/bin
+    --setenv HOME /home/build
+    --setenv USER builder
+    --setenv LOGNAME builder
+    --setenv LANG C.UTF-8
+    --setenv TERM "${TERM:-dumb}"
+    --setenv TMPDIR /tmp
+    --setenv GNUPGHOME /gnupg
+    --setenv XDG_CONFIG_HOME /home/build/.config
+    --setenv XDG_CACHE_HOME /home/build/.cache
+    --ro-bind /usr /usr
+    --symlink usr/bin /bin
+    --symlink usr/bin /sbin
+    --symlink usr/lib /lib
+    --symlink usr/lib /lib64
+    --ro-bind "$run/etc" /etc
+    --bind "$run/pacman-gnupg" /etc/pacman.d/gnupg
+    --dir /run
+    --dir /root
+    --proc /proc
+    --dev /dev
+    --bind "$work" /work
+    --bind "$private_home" /home/build
+    --bind "$run/tmp" /tmp
+    --bind "$run/vartmp" /var/tmp
+    --bind "$run/gnupg" /gnupg
+    --ro-bind /var/lib/pacman/local /var/lib/pacman/local
+    --ro-bind /var/lib/pacman/sync /var/lib/pacman/sync
+    --chdir /work
+)
+
+# Create mount targets in the staging directory before bubblewrap mounts
+# that directory read-only. Subsequent read-only mounts cover these targets.
+for path in \
+    /etc/makepkg.conf \
+    /etc/makepkg.conf.d \
+    /etc/pacman.conf \
+    /etc/pacman.d/mirrorlist \
+    /etc/pacman.d/*mirrorlist \
+    /etc/apparmor/parser.conf \
+    /etc/apparmor.d/abi \
+    /etc/apparmor.d/tunables \
+    /etc/apparmor.d/abstractions \
+    /etc/ld.so.cache \
+    /etc/localtime \
+    /etc/ssl/certs \
+    /etc/ca-certificates/extracted
+do
+    if [[ -e "$path" ]]; then
+        target="$run/etc/${path#/etc/}"
+
+        if [[ -d "$path" ]]; then
+            mkdir -p -- "$target"
+        else
+            mkdir -p -- "$(dirname -- "$target")"
+            touch -- "$target"
+        fi
+
+        args+=(--ro-bind "$path" "$path")
+    fi
+done
+
+if (( online )); then
+    args+=(--share-net)
+
+    if [[ -r /etc/resolv.conf ]]; then
+        touch -- "$run/etc/resolv.conf"
+        args+=(--ro-bind /etc/resolv.conf /etc/resolv.conf)
+    fi
+fi
+
+
+exec 3<"$filter"
+args+=(--seccomp 3)
+
+# Relay both output streams without handing the host terminal directly
+# to sandboxed programs. Keep stdout and stderr separate for callers
+# such as paru that parse makepkg's stdout.
+#
+# Wait for both relays before exiting, and preserve the build status.
+# Anonymous pipes preserve separate stdout/stderr without exposing
+# the host terminal or named FIFO paths to sandboxed processes.
+exec {out_fd}> >(/usr/bin/cat)
+out_pid=$!
+
+exec {err_fd}> >(/usr/bin/cat >&2)
+err_pid=$!
+
+status=0
+/usr/bin/bwrap "${args[@]}" -- \
+    /usr/bin/aa-exec -p '/usr/bin/bwrap//&makepkg-jail-build' -- \
+    /usr/bin/makepkg --config /etc/jail-makepkg.conf "$@" \
+    </dev/null >&"$out_fd" 2>&"$err_fd" || status=$?
+
+# Close our pipe writers before waiting for the readers to finish.
+exec {out_fd}>&-
+exec {err_fd}>&-
+
+relay_status=0
+wait "$out_pid" || relay_status=$?
+wait "$err_pid" || relay_status=$?
+
+if (( status != 0 )); then
+    exit "$status"
+fi
+exit "$relay_status"

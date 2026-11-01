@@ -1,0 +1,31 @@
+post_install() {
+    cat <<'EOF'
+==> Build profile installed: /etc/apparmor.d/makepkg-jail-build
+    Load it with:
+      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
+
+    Requires the matching, administrator-managed bubblewrap setup profile.
+    Reference: /usr/share/makepkg-jail/profiles/usr.bin.bwrap
+    Do not blindly overwrite an existing bubblewrap profile.
+
+    After testing, set in paru.conf under [bin]:
+      Makepkg = /usr/bin/paru-makepkg-jail
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+==> Check for /etc/apparmor.d/makepkg-jail-build.pacnew.
+    After merging any changes, reload the build profile:
+      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
+    The global bubblewrap policy and paru.conf were not changed.
+EOF
+}
+
+post_remove() {
+    cat <<'EOF'
+==> Remove the paru.conf Makepkg override for paru-makepkg-jail.
+    Loaded AppArmor policy is not automatically unloaded.
+    The administrator-managed global bubblewrap profile was retained.
+EOF
+}
