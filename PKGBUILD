@@ -1,14 +1,17 @@
 # Maintainer: Tomasz Kalisiak <tomasz.kalisiak@rhythmgame.eu>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=1.3.18.r3.g2e7a9b35e
-pkgrel=2
+pkgver=1.3.18.r52.g2922ecbf8
+pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
 url="https://github.com/Bobini1/RhythmGame"
 license=(GPL-3.0-only)
+# Keep makepkg's GCC LTO flags out of Rust's native dependencies.
+# CMake still enables LTO for RhythmGame itself.
+options=(!lto)
 depends=(
-  qt6-base
+  'qt6-base>=6.10'
   qt6-declarative
   qt6-multimedia
   qt6-svg
@@ -60,10 +63,12 @@ source=(
   "${_pkgname}::git+https://github.com/Bobini1/RhythmGame.git"
   "vcpkg::git+https://github.com/microsoft/vcpkg.git"
   "vcpkg.json"
+  "x64-linux-arch.cmake"
 )
 sha256sums=('SKIP'
             'SKIP'
-            'f091398a474bba833a9ab0773f70e5bd410c5d37741563872babb5c97628932e')
+            'f091398a474bba833a9ab0773f70e5bd410c5d37741563872babb5c97628932e'
+            'eea0058ba134127f03c054a8dc5df7cce92ab7d9981fbbf00cce6ce92ec7134c')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -94,6 +99,9 @@ build() {
     -DRhythmGame_USE_BACKBEAT=ON \
     -DVCPKG_FEATURE_FLAGS=manifests \
     -DVCPKG_OVERLAY_PORTS="${srcdir}/${_pkgname}/vcpkgOverlayPorts" \
+    -DVCPKG_OVERLAY_TRIPLETS="${srcdir}" \
+    -DVCPKG_TARGET_TRIPLET=x64-linux-arch \
+    -DVCPKG_HOST_TRIPLET=x64-linux-arch \
     -DCMAKE_CXX_STANDARD=23 \
     -DUSE_SYSTEM_LIBRARIES=ON \
     -Wno-dev \
