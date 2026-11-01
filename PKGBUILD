@@ -1,8 +1,9 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Kim Scarborough <kim@scarborough.kim>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=lib32-libarchive
 _name="${pkgname#lib32-}"
-pkgver=3.8.9
+pkgver=3.8.10
 pkgrel=1
 pkgdesc="Multi-format archive and compression library - 32bit"
 arch=(x86_64)
@@ -30,7 +31,7 @@ makedepends=(
 )
 provides=(libarchive.so)
 source=($_name::git+$_url.git?signed#tag=v$pkgver)
-sha256sums=('033f8b22a755d01f87a79a5723ce4faed4d3772ab703f739c26ce32c6b1da0fd')
+sha256sums=('85b5e4f75184468a4c4f043b2ec772e2d6715e89a6c9d3196f02e39dc1a977bb')
 validpgpkeys=('DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B'  # Martin Matuska <martin@matuska.org>
               '659C84C0E23EA1FA97E0B58CC040B508D63D2B36') # Martin Matuska <mm@FreeBSD.org>
 
