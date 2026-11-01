@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=SMB3 Scribe
+Comment=The overworld editor companion of SMB3 Foundry
+Exec=smb3-scribe
+Icon=smb3-scribe
+Terminal=false
+StartupNotify=false
+Categories=Games;

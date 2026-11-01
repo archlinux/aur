@@ -1,0 +1,35 @@
+pkgbase = smb3-foundry
+	pkgdesc = A modern Super Mario Bros. 3 level editor
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/mchlnix/SMB3-Foundry
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = sh
+	depends = python
+	depends = python-pytest
+	depends = python-hypothesis
+	depends = pyside6
+	depends = python-qdarkstyle
+	depends = python-py65
+	depends = hicolor-icon-theme
+	provides = smb3-foundry
+	provides = smb3-scribe
+	conflicts = smb3-foundry-git
+	source = git+https://github.com/mchlnix/SMB3-Foundry.git#tag=1.6
+	source = smb3-foundry.sh
+	source = smb3-scribe.sh
+	source = smb3-foundry.desktop
+	source = smb3-scribe.desktop
+	source = foundry-icons.tar.gz
+	source = scribe-icons.tar.gz
+	b2sums = SKIP
+	b2sums = 2032b07037ba80c60d154ac92a380a19ed53cf1b8f312f4a8b896ac3ac6a98eb377d6062f6551830900c4a3fdbd608e75cb1a3d561fdd0c3dc6ef1dd9776fe31
+	b2sums = f3159c38269e17e1222ce219e2b42752f48adb79670073322f63bd1ecff10940154efad759ae04c8fa707c7cc0bf10f0ff2dcb93829545000f71dbc728cb9c17
+	b2sums = 7f5033b30e8cf91b6d1652139a450c2aeee4a93a30a5d0f69f93bcc235d941e7b532e0eb84edfb22583af2c7bc1d318565145e8f55dd10a3b076c4330ced7a12
+	b2sums = b93fc5e7953837b8466087c097b7f2fb9e63e714b3da437be53517b57ee519a93d50fca0706ab730c95fbd285982e3e8c9eb7f2f4b739323d04770612ec1850f
+	b2sums = 3ecb70bea39dd51848399acab843ad50c4dfb1b5bb3b630e543b777c943e9d07f994224036ba245bafeb3cb4028293e6734901b9300f690fc4d36e10364e250e
+	b2sums = a00917fcd714cac3a064c919bd70404bd90d3dd4399262ff0fd1714b77d5ca2652b6616930f269f2a3f599be20bb50a909773d50f7ee93eaa15a04c95bad0ec2
+
+pkgname = smb3-foundry
