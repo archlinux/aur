@@ -1,0 +1,115 @@
+--- /dev/null
++++ b/pkg/runtimeconfig/service_health_defaults_test.go
+@@ -0,0 +1,95 @@
++package runtimeconfig
++
++import "testing"
++
++func TestServiceHealthDefaultsRespectExplicitConfiguration(t *testing.T) {
++	t.Parallel()
++
++	const (
++		serviceListenAddr = "127.0.0.1:0"
++		serviceURLFile    = "/run/tunnel-client-alpha/health.url"
++	)
++
++	for _, tc := range []struct {
++		name        string
++		service     bool
++		yaml        string
++		envAddr     string
++		envURLFile  string
++		flagAddr    string
++		flagURLFile string
++		wantAddr    string
++		wantURLFile string
++	}{
++		{
++			name: "original defaults", wantAddr: defaultHealthListenAddr,
++		},
++		{
++			name: "service defaults", service: true,
++			wantAddr: serviceListenAddr, wantURLFile: serviceURLFile,
++		},
++		{
++			name: "yaml overrides service defaults", service: true,
++			yaml:     "health:\n  listen_addr: 127.0.0.1:9011\n  url_file: /var/lib/tunnel-client-alpha/explicit.url\n",
++			wantAddr: "127.0.0.1:9011", wantURLFile: "/var/lib/tunnel-client-alpha/explicit.url",
++		},
++		{
++			name: "yaml address keeps service URL default", service: true,
++			yaml:     "health:\n  listen_addr: 127.0.0.1:9011\n",
++			wantAddr: "127.0.0.1:9011", wantURLFile: serviceURLFile,
++		},
++		{
++			name: "environment overrides yaml and service", service: true,
++			yaml:    "health:\n  listen_addr: 127.0.0.1:9011\n  url_file: /tmp/yaml.url\n",
++			envAddr: "127.0.0.1:9022", envURLFile: "/tmp/environment.url",
++			wantAddr: "127.0.0.1:9022", wantURLFile: "/tmp/environment.url",
++		},
++		{
++			name: "flags override environment yaml and service", service: true,
++			yaml:    "health:\n  listen_addr: 127.0.0.1:9011\n  url_file: /tmp/yaml.url\n",
++			envAddr: "127.0.0.1:9022", envURLFile: "/tmp/environment.url",
++			flagAddr: "127.0.0.1:9033", flagURLFile: "/tmp/flag.url",
++			wantAddr: "127.0.0.1:9033", wantURLFile: "/tmp/flag.url",
++		},
++	} {
++		t.Run(tc.name, func(t *testing.T) {
++			t.Parallel()
++
++			args := make([]string, 0, 3)
++			if tc.yaml != "" {
++				args = append(args, "--config", writeRuntimeConfig(t, tc.yaml))
++			}
++			if tc.flagAddr != "" {
++				args = append(args, "--health.listen-addr", tc.flagAddr)
++			}
++			if tc.flagURLFile != "" {
++				args = append(args, "--health.url-file", tc.flagURLFile)
++			}
++
++			env := map[string]string{
++				"CONTROL_PLANE_TUNNEL_ID": testTunnelID,
++				"CONTROL_PLANE_API_KEY":   testAPIKey,
++				"MCP_COMMAND":             "echo",
++			}
++			if tc.service {
++				env["TUNNEL_CLIENT_DEFAULT_HEALTH_LISTEN_ADDR"] = serviceListenAddr
++				env["TUNNEL_CLIENT_DEFAULT_HEALTH_URL_FILE"] = serviceURLFile
++			}
++			if tc.envAddr != "" {
++				env["HEALTH_LISTEN_ADDR"] = tc.envAddr
++			}
++			if tc.envURLFile != "" {
++				env["HEALTH_URL_FILE"] = tc.envURLFile
++			}
++
++			cfg, err := LoadFromFlagSet(runtimeFlagSet(t, FlavorRuntime, args...), lookupEnvMap(env))
++			if err != nil {
++				t.Fatal(err)
++			}
++			if cfg.Health.ListenAddr != tc.wantAddr || cfg.Health.URLFile != tc.wantURLFile {
++				t.Fatalf("health config = %+v, want listen=%q url_file=%q",
++					cfg.Health, tc.wantAddr, tc.wantURLFile)
++			}
++		})
++	}
++}
+--- a/pkg/runtimeconfig/config.go
++++ b/pkg/runtimeconfig/config.go
+@@ -1886,11 +1886,13 @@
+ 	}
+ 	listenAddr := firstSet(
+ 		getValue(fs, "health.listen-addr"),
+-		envOrDefault(lookupEnv, "HEALTH_LISTEN_ADDR", defaultHealthListenAddr),
++		envOrDefault(lookupEnv, "HEALTH_LISTEN_ADDR", ""),
++		envOrDefault(lookupEnv, "TUNNEL_CLIENT_DEFAULT_HEALTH_LISTEN_ADDR", defaultHealthListenAddr),
+ 	)
+ 	urlFile := firstSet(
+ 		getValue(fs, "health.url-file"),
+ 		envOrDefault(lookupEnv, "HEALTH_URL_FILE", ""),
++		envOrDefault(lookupEnv, "TUNNEL_CLIENT_DEFAULT_HEALTH_URL_FILE", ""),
+ 	)
+ 	unixSocket := firstSet(
+ 		getValue(fs, "health.unix-socket"),

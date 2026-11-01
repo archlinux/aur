@@ -7,8 +7,14 @@ Wants=network-online.target
 [Service]
 Type=simple
 DynamicUser=yes
+# Explicit HEALTH_* and profile settings take precedence over these defaults.
+# Generated example profiles set port 8080; change it for concurrent instances.
+Environment=TUNNEL_CLIENT_DEFAULT_HEALTH_LISTEN_ADDR=127.0.0.1:0
+Environment=TUNNEL_CLIENT_DEFAULT_HEALTH_URL_FILE=/run/tunnel-client-%i/health.url
 EnvironmentFile=-/etc/tunnel-client/%i.env
-ExecStart=/usr/bin/tunnel-client run --profile-file /etc/tunnel-client/%i.yaml
+LoadCredential=%i.yaml:/etc/tunnel-client/%i.yaml
+ImportCredential=tunnel-client.%i.*:secret.
+ExecStart=/usr/bin/tunnel-client run --profile-file ${CREDENTIALS_DIRECTORY}/%i.yaml
 Restart=on-failure
 RestartSec=5s
 KillMode=mixed
@@ -30,8 +36,9 @@ RestrictRealtime=yes
 # This keeps the service on the native syscall ABI. If you ever need a 32-bit
 # MCP server, clear it in a systemd override with: SystemCallArchitectures=
 SystemCallArchitectures=native
-StateDirectory=tunnel-client
-WorkingDirectory=/var/lib/tunnel-client
+StateDirectory=tunnel-client-%i
+RuntimeDirectory=tunnel-client-%i
+WorkingDirectory=/var/lib/tunnel-client-%i
 
 [Install]
 WantedBy=multi-user.target

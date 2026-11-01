@@ -1,6 +1,6 @@
 pkgbase = tunnel-client
 	pkgdesc = Connect private MCP servers to OpenAI-hosted products through a secure tunnel
-	pkgver = 0.0.16
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://github.com/openai/tunnel-client
 	arch = x86_64
@@ -9,14 +9,18 @@ pkgbase = tunnel-client
 	license = BSD-3-Clause
 	license = MIT
 	makedepends = go>=1.27.0
+	makedepends = nodejs
+	makedepends = pnpm>=11.25.0
 	depends = ca-certificates
 	optdepends = cloudflared: supervise a Cloudflare Tunnel when configured
 	optdepends = xdg-utils: open the embedded web UI in the default browser
-	source = tunnel-client-0.0.16.tar.gz::https://github.com/openai/tunnel-client/archive/refs/tags/v0.0.16.tar.gz
+	source = tunnel-client-0.0.19.tar.gz::https://github.com/openai/tunnel-client/archive/refs/tags/v0.0.19.tar.gz
 	source = svelte-4.2.20-LICENSE.md::https://raw.githubusercontent.com/sveltejs/svelte/svelte@4.2.20/LICENSE.md
 	source = tunnel-client@.service
-	b2sums = 89bbace706967fbb0bb58190be260708855a0ce4f14b926c24a7a22c96884e6866934b52bd6ba857ac1cdd2d0a9b7edf0c268bdd3199346837b581b9216d511e
+	source = service-health-defaults.patch
+	b2sums = 9bf68a3f0ca6df25f5cba1748451ecc5974c06d078241ba180bae45b6b8bec6036eb8e185eb476581488d88c62e30aa1f3fe873f1f3e9fee0deeb628913c65f3
 	b2sums = 953b77952d37d30851e8613b956924210f09f673f9e31e71cdffdb93d6e4c348192a4410415e9b8e87274c19ac97fe7faabd3326ff89b2a8334d120493a21d83
-	b2sums = c205139c8a247f7e6c2bf44e30bf2a8ddc93d9cfd053ce6dc1a65b0dc37d445f8d831bfdb927b6bee6122d748bbb77b3403c03da76e0dea1909d8cb560d5c66a
+	b2sums = b42dfcec888344f8400fd23c4f3be9046a4cdf4c22924ace08a453b68920dc972bb55ab4cfe0ee02773b36b525083151000cf6e3c4cdb74ef0d44714e19eb1c1
+	b2sums = 523c11d4fba576f33208fbb3880ecaecd6c9b8c265645e5444e0d3663a631e6cdc30802d01256d7eef95f8f91a7e981b87173530e2d0fdc8b0463d6da07a1b1a
 
 pkgname = tunnel-client
