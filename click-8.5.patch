@@ -1,0 +1,103 @@
+--- a/rachis_cli/click/option.py
++++ b/rachis_cli/click/option.py
+@@ -19,6 +19,7 @@
+                  metadata, metavar, default=NoDefault, description=None,
+                  **attrs):
+         import rachis_cli.util
++        self.q2_is_bool_flag = is_bool_flag
+ 
+         if metadata is not None:
+             prefix = 'm'
+@@ -72,7 +73,6 @@
+             self.multiple = to_add_multiple
+ 
+         # put things back the way they _should_ be after evading __DEBUG__
+-        self.is_bool_flag = is_bool_flag
+         self.type = click_type
+ 
+         # attrs we will use elsewhere
+@@ -81,6 +81,11 @@
+         self.q2_name = name
+         self.q2_ast = ast
+         self.q2_metadata = metadata
++
++    @property
++    def is_bool_flag(self):
++        # QIIME boolean flags use QIIME2Type rather than Click's BoolParamType.
++        return self.q2_is_bool_flag
+ 
+     @property
+     def meta_help(self):
+@@ -139,9 +144,9 @@
+     def get_help_record(self, ctx):
+         record = super().get_help_record(ctx)
+         if self.is_bool_flag:
+-            metavar = self.make_metavar()
++            metavar = self.make_metavar(ctx)
+             if metavar:
+-                record = (record[0] + ' ' + self.make_metavar(), record[1])
++                record = (record[0] + ' ' + self.make_metavar(ctx), record[1])
+         elif self.q2_metadata == 'column':
+             opts = (record[0], self.q2_extra_opts[0] + ' COLUMN ')
+             record = (opts, record[1])
+--- a/rachis_cli/click/command.py
++++ b/rachis_cli/click/command.py
+@@ -60,6 +60,11 @@
+                     value, args = param.handle_parse_result(ctx, opts, args)
+                 except click.ClickException as e:
+                     errors.append(e)
++
++            # Match Click's parser: never expose the missing-value sentinel.
++            for name, value in ctx.params.items():
++                if value is click.core.UNSET:
++                    ctx.params[name] = None
+ 
+             if args and not ctx.allow_extra_args and not ctx.resilient_parsing:
+                 errors.append(click.UsageError(
+--- a/rachis_cli/tests/test_dev.py
++++ b/rachis_cli/tests/test_dev.py
+@@ -31,7 +31,7 @@
+     def setUp(self):
+         get_dummy_plugin()
+         self.parser = configparser.ConfigParser()
+-        self.runner = CliRunner(mix_stderr=False)
++        self.runner = CliRunner()
+         self.tempdir = tempfile.mkdtemp(prefix='rachis-cli-test-temp-')
+         self.generated_config = os.path.join(self.tempdir, 'generated-theme')
+ 
+--- a/rachis_cli/click/type.py
++++ b/rachis_cli/click/type.py
+@@ -184,11 +184,11 @@
+ 
+     @property
+     def name(self):
+-        return self.get_metavar('')
++        return self.get_metavar(param=None, ctx=None)
+ 
+     def get_type_repr(self, param):
+         return self.type_repr
+ 
+-    def get_missing_message(self, param):
++    def get_missing_message(self, param, ctx):
+         if self.is_output:
+             return '("--output-dir" may also be used)'
+--- a/rachis_cli/tests/test_cache_cli.py
++++ b/rachis_cli/tests/test_cache_cli.py
+@@ -969,7 +969,7 @@
+         )
+ 
+         self.assertEqual(result.exit_code, 1)
+-        self.assertIn('No such option: --parallel', result.output)
++        self.assertIn("No such option '--parallel'.", result.output)
+ 
+         config_path = get_data_path('mapping_config.toml')
+ 
+@@ -981,7 +981,7 @@
+         )
+ 
+         self.assertEqual(result.exit_code, 1)
+-        self.assertIn('No such option: --parallel-config', result.output)
++        self.assertIn("No such option '--parallel-config'.", result.output)
+ 
+     def test_no_cache_arg(self):
+         art_path = os.path.join(self.tempdir, 'art:1.qza')

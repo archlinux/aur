@@ -1,0 +1,55 @@
+pkgbase = rachis-cli
+	pkgdesc = Command line interface and artifact viewer for the Rachis framework
+	pkgver = 2026.10.0
+	pkgrel = 1
+	url = https://github.com/rachis-org/rachis-cli
+	arch = any
+	license = BSD-3-Clause
+	license = MIT
+	license = Zlib
+	license = AGPL-3.0-or-later
+	license = CC-BY-SA-3.0
+	checkdepends = python-pytest
+	checkdepends = python-selenium
+	checkdepends = chromium
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-versioningit
+	makedepends = python-wheel
+	makedepends = nodejs
+	makedepends = npm
+	depends = python
+	depends = python-rachis>=2026.10.0
+	depends = python-q2templates>=2026.10.0
+	depends = python-click>=8.5
+	depends = python-tomlkit
+	depends = python-setuptools
+	optdepends = python-pytest: run the shipped CLI test suite
+	optdepends = xdg-utils: open artifact views in the default desktop browser
+	source = rachis-cli-2026.10.0.tar.gz::https://github.com/rachis-org/rachis-cli/archive/2602df0bed35d79c418b2fa8e4a2561337097f18.tar.gz
+	source = q2view-5ee9aee6564e94c2d84ed41e10429fe2ed344b1a.tar.gz::https://github.com/qiime2/q2view/archive/5ee9aee6564e94c2d84ed41e10429fe2ed344b1a.tar.gz
+	source = resolve-ef9e9dae6ccced153292eead6dfbc040ae680a95.tar.gz::https://codeload.github.com/tapjs/resolve/tar.gz/ef9e9dae6ccced153292eead6dfbc040ae680a95
+	source = package-lock.json
+	source = click-8.5.patch
+	source = q2view-runtime-modules.js
+	source = q2view-vite.config.ts
+	source = copy-viewer-licenses.py
+	source = citeproc-73bc1b44bc7d54d0bfec4e070fd27f5efe024ff9.tar.gz::https://codeload.github.com/Juris-M/citeproc-js/tar.gz/73bc1b44bc7d54d0bfec4e070fd27f5efe024ff9
+	source = MIT.txt::https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt
+	source = AGPL-3.0-or-later.txt::https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/AGPL-3.0-or-later.txt
+	source = CC-BY-SA-3.0.txt::https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/CC-BY-SA-3.0.txt
+	sha256sums = f09eba1a708d9235a33d65d5e6ab7cb06d5e555606a44e687f9564f00971c406
+	sha256sums = 12eaa8b859da996f3783eb2ec03ba1e1a55a9449cc521daf9aeec65819c36423
+	sha256sums = a83cdd3bb9b3abd07365e4320e237d589292b2690c070624126828dd3a062528
+	sha256sums = aeac463eec3598be0895558572f50b05e38e8fac150d4dd5e95484dcc5d81c95
+	sha256sums = 069de1c054d7e0000883ef8f0b8e369d7fd8da62db6e957f473bd5bf65463870
+	sha256sums = bd88877adbf2eb48829dbb9e5b134e63a0e26257c3cc46f21d8e0d4e7f2a26dc
+	sha256sums = fd702e735ab7bdbff8792b8c51ae489f511ffd5aafa4f7bffdd3f6be6fcf8186
+	sha256sums = a9f63ffc309106dc8a571268f2d4869f77a6cc939def88240b41b5f7f6a8b65f
+	sha256sums = da00c73384be59e634dbbab912345f0199fae2913f501aa9d08eef7ee1d8abd4
+	sha256sums = b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5
+	sha256sums = d8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee
+	sha256sums = 3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f
+
+pkgname = rachis-cli
