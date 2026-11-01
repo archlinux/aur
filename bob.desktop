@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Battles of Brass
+Comment=Battles of Brass, a game inspired by Spirits of Steel, made in java!
+Exec=bob
+Icon=bob
+Terminal=false
+Categories=Game;StrategyGame;

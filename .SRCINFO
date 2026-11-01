@@ -1,0 +1,23 @@
+pkgbase = battles-of-brass-git
+	pkgdesc = Battles of Brass, a game inspired by Spirits of Steel, made in java! (git version)
+	pkgver = 1.0.r38.4d2284b
+	pkgrel = 1
+	url = https://github.com/BattlesOfBrass/BOB
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = gradle
+	makedepends = jdk21-openjdk
+	depends = java-runtime>=21
+	provides = battles-of-brass
+	conflicts = battles-of-brass
+	source = battles-of-brass::git+https://github.com/BattlesOfBrass/BOB.git
+	source = battles-of-brass-assets::git+https://github.com/BattlesOfBrass/assets.git
+	source = bob.sh
+	source = bob.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d994af5ecddd8327bb721d41585908db1cadc2486a959706d76b6ed455be7a64
+	sha256sums = f3a629d5fde3b39df40db2c64d9b57814502748d7a5f2146c11eb8801338afd0
+
+pkgname = battles-of-brass-git
