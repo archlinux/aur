@@ -7,15 +7,15 @@ pkgver=2.0.0preview1
 pkgrel=1
 pkgdesc="Microsoft.Management.Infrastructure (MMI) for PowerShell, built from its open source code"
 # The assembly is compiled to a ReadyToRun image for the architecture
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://github.com/PowerShell/MMI'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 depends=(
   powershell
 )
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 checkdepends=(
