@@ -1,0 +1,4 @@
+[chatblade]
+source = "git"
+git = "https://github.com/npiv/chatblade.git"
+prefix = "v"
