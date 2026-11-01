@@ -1,7 +1,7 @@
 # Maintainer: pantarune
 
 pkgname=niri-screenshare
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Portal backend for niri implementing ScreenCast (prebuilt binary)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/pantarune/niri-screenshare"
 license=('GPL3')
 depends=('xdg-desktop-portal' 'pipewire' 'niri' 'gtk4' 'libadwaita')
 source=("niri-screenshare-v${pkgver}-linux-x86_64.tar.gz::https://github.com/pantarune/niri-screenshare/releases/download/v${pkgver}/niri-screenshare-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('8a2a9ca52073ae1d9f6ec20a5a30eb05e8e012e3509a750421de47abf978863c')
+sha256sums=('708814e710a9ce460498eaa54588f75f72b49b7ad10485181121258b0101834f')
 
 package() {
   install -Dm755 "$srcdir/niri-screenshare" "$pkgdir/usr/lib/niri-screenshare"
