@@ -1,6 +1,6 @@
 # Maintainer: CPT-Dawn <ping@cptdawn.dev>
 pkgname=vellum
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Featherweight wallpaper manager for Wayland: a tiny daemon, CLI and TUI"
 arch=('x86_64' 'aarch64')
@@ -8,11 +8,11 @@ url="https://github.com/CPT-Dawn/Vellum"
 license=('MIT OR Apache-2.0')
 depends=('glibc' 'libgcc')
 makedepends=('cargo')
-conflicts=('vellum-git')
-_tag=v2.0.0
-_srcdir=Vellum-2.0.0
+conflicts=('vellum-bin' 'vellum-git')
+_tag=v2.0.1
+_srcdir=Vellum-2.0.1
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('4eded0e1e6f63489512e94d10b313fb35415cabf6f009952103a91ebc6b049c1')
+sha256sums=('4297c78abb7fcc8dcbd7277f9356096dd4a8088f1e992d97d70f4f71c3abcbf1')
 
 prepare() {
   cd "$_srcdir"
