@@ -12,7 +12,7 @@ export FVM_CACHE_PATH
 
 _pkgname="fluffychat"
 pkgname="$_pkgname-color-emoji"
-pkgver=2.11.3
+pkgver=2.11.4
 pkgrel=1
 pkgdesc="The cutest instant messenger in the [matrix] (with color emoji fallback)"
 url="https://github.com/krille-chan/fluffychat"
@@ -55,7 +55,7 @@ source=(
   '0000-fix-wayland-gtk-csd.patch'
   '0001-color-emoji-fallback.patch'
 )
-sha256sums=('a14c282daf2ddbe20713fdbcc3c5978cefa3e4d80bbe60bef4a32dcee3b59fdc'
+sha256sums=('7c3d38afdf2cf04b575ad33e8c158f3e78dffdf7b0d75776f1e4da2e588f6da1'
             '04a373c2c25a9be1617ab1ccb19da48ae379ff392bb59a3938bcdec00ab82230'
             'b35ccd4fdf32109ecbfd4979828a4b21ee66d38b67c1175c7ebe7ca90f2ecd1f')
 
