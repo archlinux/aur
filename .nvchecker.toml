@@ -1,0 +1,5 @@
+[forgelink-bin]
+source = "github"
+github = "dpassen/forgelink"
+use_latest_release = true
+prefix = "v"

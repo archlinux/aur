@@ -1,0 +1,24 @@
+pkgbase = forgelink-bin
+	pkgdesc = CLI for generating shareable URLs to files in hosted git repositories
+	pkgver = 0.3.13
+	pkgrel = 1
+	url = https://github.com/dpassen/forgelink
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = git
+	provides = forgelink
+	conflicts = forgelink
+	options = !strip
+	source = README-0.3.13.md::https://raw.githubusercontent.com/dpassen/forgelink/v0.3.13/README.md
+	source = LICENSE-MIT-0.3.13::https://raw.githubusercontent.com/dpassen/forgelink/v0.3.13/LICENSE-MIT
+	source = LICENSE-APACHE-0.3.13::https://raw.githubusercontent.com/dpassen/forgelink/v0.3.13/LICENSE-APACHE
+	sha256sums = c139983ba9f5eca5b32fb3ec82c47c8e975217d12c91374fe39bb45152fd7050
+	sha256sums = 2e3c1c45ed89c6fda62e5aaf3c384e0f81914fc36f544c3d0b464f4780056258
+	sha256sums = 4585d5ebf5a02fa94dc591f0e9f2d2506dd115018cb83791352baa7b714f041b
+	source_x86_64 = forgelink-x86_64-0.3.13.tgz::https://github.com/dpassen/forgelink/releases/download/v0.3.13/forgelink-v0.3.13-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 5760e4373db7b1196d64040537ccc3daa999b8117a5c3c176fbb0adf049c7baf
+
+pkgname = forgelink-bin
