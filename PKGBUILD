@@ -18,24 +18,24 @@ pkgrel=1
 _runtimever=${pkgver%.sdk*}
 _sdkver=$_dotnetver.${pkgver##*.sdk}
 pkgdesc="Build dependencies of the .NET packages from the source-built .NET $_dotnetver of Arch Linux (meta package)"
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/dotnet/dotnet'
-license=('0BSD')
+license=(0BSD)
 depends=(
-  dotnet-sdk-"$_dotnetver=$pkgver"
-  dotnet-source-built-artifacts-"$_dotnetver=$pkgver"
+  "dotnet-sdk-$_dotnetver=$pkgver"
+  "dotnet-source-built-artifacts-$_dotnetver=$pkgver"
   # The packages the source-built artifacts lack, built from the same sources: the reference packages
   # are versioned like the SDK, the native library like the runtime
-  dotnet-source-build-reference-packages="$_sdkver"
-  dotnet-system-io-ports-native="$_runtimever"
+  "dotnet-source-build-reference-packages=$_sdkver"
+  "dotnet-system-io-ports-native=$_runtimever"
 )
 # Microsoft's build, which provides dotnet-sdk-$_dotnetver and dotnet-runtime-$_dotnetver as well.
 # The packages for older .NET versions have the version in the name.
 conflicts=(
   dotnet-runtime-bin
-  dotnet-runtime-"$_dotnetver"-bin
+  "dotnet-runtime-$_dotnetver-bin"
   dotnet-sdk-bin
-  dotnet-sdk-"$_dotnetver"-bin
+  "dotnet-sdk-$_dotnetver-bin"
 )
 source=("LICENSE")
 sha512sums=('a33658d9271e5c537ccd41bf540b463ad2a5eca4a060c80486ff42a736f0aa042d10436e7177c34d792177cb11285243dee1f31c4df54fb0bfaabbc306406930')
