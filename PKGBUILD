@@ -1,7 +1,7 @@
 # Maintainer: mafuzyk <mafuzyk@gmail.com>
 
 pkgname=halofetch
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="System information fetch with centered logos, panels and a live monitor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 optdepends=('wireless_tools: show the Wi-Fi network name')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('90e7d5368a4a5d79ae2e071b070c506829320f25d794a7d69b0f65ce88adeaed')
+sha256sums=('32731f04bba23fcf065e26526aa3cab9ec629c271b60e0fbbd1b6061284367c2')
 
 prepare() {
   cd "$pkgname-$pkgver"
