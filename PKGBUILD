@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 # Arch ships onnxruntime 1.24+ but SPLIT into onnxruntime-cpu / -cuda / -rocm,
 # each Provides=onnxruntime. Depend on the virtual 'onnxruntime' so any variant
 # the user has satisfies it (no conflict); a fresh install prompts to pick one,
-# choose onnxruntime-cpu unless you want GPU execution providers.
+# choose onnxruntime-cpu.
 depends=('onnxruntime' 'tpm2-tss' 'pam' 'polkit' 'dbus')
 # clang: v4l2-sys-mit generates its V4L2 bindings with bindgen, which needs
 # libclang at build time; without it makepkg fails on a clean system.
