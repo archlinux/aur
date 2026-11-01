@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=wlib-bin
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Modern Linux game manager for F95Zone"
 arch=('x86_64')
@@ -33,13 +33,13 @@ conflicts=('wlib')
 options=('!strip')
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/kirin-3/wLib/releases/download/v0.4.3/wLib-v0.4.3-linux-x86_64.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/kirin-3/wLib/releases/download/v0.4.4/wLib-v0.4.4-linux-x86_64.tar.gz"
 )
-sha256sums=('e0846c55a64412e2c24b98b58cddd65b1409088a66626957eeb4238ac0f3257a')
+sha256sums=('807f0b5bae421491a84b749c3219888221b7cd2ea0fc4e3e31205d301132fec9')
 
 package() {
   install -dm755 "${pkgdir}/opt/wlib"
-  cp -a "${srcdir}/wLib-v0.4.3-linux-x86_64/." "${pkgdir}/opt/wlib/"
+  cp -a "${srcdir}/wLib-v0.4.4-linux-x86_64/." "${pkgdir}/opt/wlib/"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/wlib/wlib "${pkgdir}/usr/bin/wlib"
