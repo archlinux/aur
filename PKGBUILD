@@ -7,14 +7,14 @@ pkgname=dotnet-source-build-reference-packages
 pkgver=10.0.114
 pkgrel=1
 pkgdesc="Reference, targeting and text-only NuGet packages of .NET's source build (SBRP), e.g. NETStandard.Library"
-arch=('any')
+arch=(any)
 url='https://github.com/dotnet/source-build-assets'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 # Arcade, the MSBuild SDKs and ILAsm come from the source-built .NET
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
-  dotnet-source-built-artifacts-"$_dotnetsdkver"
+  "dotnet-sdk-$_dotnetsdkver"
+  "dotnet-source-built-artifacts-$_dotnetsdkver"
 )
 # The commit of src/source-build-assets in the VMR (dotnet/dotnet, src/source-manifest.json) of the
 # tag v$pkgver. The repository was renamed from source-build-reference-packages.
