@@ -4,7 +4,7 @@
 
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
-pkgver=5.1.3.r0.gb60de6c
+pkgver=5.1.3.r0.g295a6f8
 pkgrel=1
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
@@ -13,11 +13,11 @@ url="https://github.com/univrsal/${_pkgname}"
 license=('GPL-2.0-only')
 depends=('obs-studio' 'libxtst' 'libxkbfile' 'sdl2' 'qt6-base' 'libxt' 'libstdc++' 'libgcc' 'libxrandr')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland-protocols' 'patchelf' 'simde')
-_commit='b60de6c92eaf136015a1130b416adf1d97d8c09e'
+_commit='295a6f835b45133facde3773b36882963e0cbd64'
 source=(
 	"git+https://github.com/univrsal/${_pkgname}.git#commit=${_commit}"
 	"$pkgname-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git")
-sha256sums=('7daf9b6535c17644095a7fd34843ceee467a95f0ab19024cd4ab5f1a4b31d484'
+sha256sums=('1a0a5060f9bedf38175d38a0ee2b2bf08521a873ed8720ca2e9575c0706c9e35'
             'SKIP')
 
 _srcdir="${_pkgname}"
