@@ -18,6 +18,11 @@ makedepends=(
 # the file version 10.100.26.51601 of their assemblies (Arcade encodes the date and build number in it)
 _commit="12702d51d9758687726bc4056729aeb58fbbf717"
 _officialbuildid="20261016.1"
+# Arcade from dotnet-eng where the source-built artifacts are missing (Arch Linux ARM): the .NET 10
+# servicing one the VMR builds .NET with (global.json of dotnet/dotnet v10.0.114). Upstream's (a 12.0
+# beta) targets an unreleased .NET SDK and won't load on the released one (MSB4062,
+# Microsoft.Build.Framework.IMultiThreadableTask). It also sets the version of XliffTasks.
+_servicingarcadever="10.0.0-beta.26422.108"
 _packages=(
   System.ServiceModel.Primitives
   System.ServiceModel.NetFramingBase
@@ -134,9 +139,8 @@ prepare() {
     _package="${_nupkg##*/System.ServiceModel.Syndication.}"
     echo "${_package%.nupkg}" >syndication-version
   done
-  # The Arcade on dotnet-eng targets an unreleased .NET SDK and won't load on the released one (MSB4062,
-  # Microsoft.Build.Framework.IMultiThreadableTask), so x86_64 requires the source-built artifacts
-  # rather than falling back to it.
+  # x86_64 has the source-built artifacts, so it requires them rather than falling back to Microsoft's
+  # prebuilt packages
   if [[ "$CARCH" == x86_64 && ! -f "$srcdir/arcade-version" ]]; then
     echo 'dotnet-wcf needs dotnet-source-built-artifacts on x86_64' >&2
     exit 1
@@ -144,14 +148,13 @@ prepare() {
 
   # Upstream builds with a preview of the next .NET SDK, the libraries target .NET 10 though.
   # dotnet only works outside the repository until its global.json is updated.
-  local _sdkver _arcadever
+  local _sdkver _arcadever="$_servicingarcadever"
   _sdkver=$(dotnet --version)
+  [[ -f "$srcdir/arcade-version" ]] && _arcadever=$(<"$srcdir/arcade-version")
 
   cd "wcf-$_commit" || exit
   # Upstream's NuGet.config, which has the feeds the tests need
   mv NuGet.config NuGet.config.upstream
-  _arcadever=$(jq -r '."msbuild-sdks"."Microsoft.DotNet.Arcade.Sdk"' global.json)
-  [[ -f "$srcdir/arcade-version" ]] && _arcadever=$(<"$srcdir/arcade-version")
   jq --arg sdk "$_sdkver" --arg arcade "$_arcadever" \
     '.sdk.version = $sdk | .tools.dotnet = $sdk | ."msbuild-sdks"."Microsoft.DotNet.Arcade.Sdk" = $arcade' \
     global.json >global.json.new
