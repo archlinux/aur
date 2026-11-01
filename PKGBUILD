@@ -13,13 +13,16 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versi
 checkdepends=('python-pytest')
 _commit=efd06401d7e817f510a7a34efd436848d990574d
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
-        'sparse-vectorizer-compat.patch')
+        'sparse-vectorizer-compat.patch'
+        'gradient-boosting-sparse-expectation.patch')
 sha256sums=('1e20769d24d394aecdc4517772caffb96da31d018d10c68ed7747250f81aec7f'
-            '728a39bc48b17bfff3f93b4da538a0cddc5167dcaf6d0a566e7e51f62b767b10')
+            '728a39bc48b17bfff3f93b4da538a0cddc5167dcaf6d0a566e7e51f62b767b10'
+            '7eb412562c9737e2a049bef5cc8f1ba223c6ec4d96bd27d886288705299068e5')
 
 prepare() {
   cd "q2-sample-classifier-$_commit"
   patch -Np1 -i "$srcdir/sparse-vectorizer-compat.patch"
+  patch -Np1 -i "$srcdir/gradient-boosting-sparse-expectation.patch"
 }
 
 build() {

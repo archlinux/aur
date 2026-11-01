@@ -1,0 +1,12 @@
+--- a/q2_sample_classifier/tests/test_estimators.py
++++ b/q2_sample_classifier/tests/test_estimators.py
+@@ -578,7 +578,8 @@
+ seeded_results = {
+     'RandomForestClassifier': 0.63636363636363635,
+     'ExtraTreesClassifier': 0.454545454545,
+-    'GradientBoostingClassifier': 0.272727272727,
++    # Current scikit-learn sparse-training reference: 2/11.
++    'GradientBoostingClassifier': 0.181818181818,
+     'AdaBoostClassifier[DecisionTree]': 0.272727272727,
+     'AdaBoostClassifier[ExtraTrees]': 0.272727272727,
+     'LinearSVC': 0.818182,
