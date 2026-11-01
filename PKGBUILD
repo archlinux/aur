@@ -7,6 +7,8 @@ pkgdesc='QIIME 2 taxonomic classification of biological sequences'
 arch=(x86_64)
 url=https://github.com/qiime2/q2-feature-classifier
 license=(BSD-3-Clause)
+# Keep the extension byte-identical to its wheel RECORD entry.
+options=('!strip')
 depends=('python' 'glibc' 'python-qiime2>=2026.10.0' 'python-q2-types>=2026.10.0' 'python-biom-format' 'python-scikit-bio' 'python-joblib' 'python-numpy' 'python-pandas' 'python-scipy' 'python-scikit-learn' 'vsearch' 'blast+' 'q2-feature-table>=2026.10.0' 'q2-quality-control>=2026.10.0' 'q2-taxa>=2026.10.0')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-versioningit' 'python-wheel')
 checkdepends=('python-pytest')

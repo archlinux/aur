@@ -28,6 +28,7 @@ pkgbase = q2-feature-classifier
 	depends = q2-feature-table>=2026.10.0
 	depends = q2-quality-control>=2026.10.0
 	depends = q2-taxa>=2026.10.0
+	options = !strip
 	source = q2-feature-classifier-2026.10.0.tar.gz::https://github.com/qiime2/q2-feature-classifier/archive/559c0251bf4a7c3fe7e9cc7267207cc39059c784.tar.gz
 	source = scikit-bio-alignment.pyx::https://raw.githubusercontent.com/scikit-bio/scikit-bio/efd210ecdc034c2a33a0d91acf024f7de1281a14/skbio/alignment/_cutils.pyx
 	source = scikit-bio-LICENSE.txt::https://raw.githubusercontent.com/scikit-bio/scikit-bio/efd210ecdc034c2a33a0d91acf024f7de1281a14/LICENSE.txt
