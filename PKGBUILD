@@ -11,9 +11,9 @@ pkgname=powershell-build-deps
 pkgver=1
 pkgrel=1
 pkgdesc="Libraries PowerShell builds against, built from source (meta package)"
-arch=('any')
+arch=(any)
 url='https://github.com/PowerShell/PowerShell'
-license=('0BSD')
+license=(0BSD)
 depends=(
   dotnet-azure-core
   dotnet-azure-identity
