@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
-WINEDEBUG=-all wine /usr/share/lunar-magic/Lunar\ Magic.exe "$@"
+exec env WINEDEBUG=-all wine "/usr/share/lunar-magic/Lunar Magic.exe" "$@"
+

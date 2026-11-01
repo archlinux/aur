@@ -1,1 +1,8 @@
 *
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!lunar-magic
+!lunar-magic.desktop
+!lunar-magic.png
+
