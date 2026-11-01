@@ -16,7 +16,7 @@ _cef_commit=14c5a089e8452874cb1a556dc3fde26ed2d87723
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
 _chromium_ver=154.0.8037.154
 _system_clang=1
-pkgrel=2
+pkgrel=6
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
 provides=("cef=$pkgver")  # provides="cef=$pkgver"
 conflicts=('cef')  # conflicts='cef'
@@ -39,6 +39,7 @@ depends=(
   'pango'
   'systemd-libs'
   'libva'
+  'vulkan-icd-loader'
 )
 optdepends=(
   'libva-mesa-driver: VAAPI driver for AMD GPUs'
@@ -92,6 +93,7 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
   chromium-154-crubit.patch
   chromium-154-remove-private_verification_tokens.patch
   chromium-154-build-with-wasm-rollup.patch
+  chromium-154-fallback-linux-ui-portal-color-scheme.patch
   compiler-rt-adjust-paths.patch
   increase-fortify-level.patch
   glibc-2.42-baud-rate-fix.patch
@@ -119,6 +121,7 @@ sha256sums=('07b64494ed68d975aa61d36ff27fd2217ad01fced4a6de8ae22f51ebb6083201'
             'a82147f07982d49b0744c53c5fc038d4de1ef7d9a828b6280abbb49462b623eb'
             '0cc5f7c7ccf0927c0bbfdb9e797dc5b1f4c9f021e8a01d943121d3ee4e6416bf'
             'cfef4a4eeed2272b3101131af6c1bb63c7932a715c36634a1e027f770634e013'
+            '387946ce712fc239a71a2cfb6c5cc2d83e92e64aa12659e2b7a8ef8bf4c25708'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0'
@@ -325,6 +328,10 @@ prepare() {
   patch -Np1 -i ../chromium-154-remove-private_verification_tokens.patch
 
   patch -Np1 -i ../chromium-154-build-with-wasm-rollup.patch
+
+  # use_gtk/use_qt are disabled, so FallbackLinuxUi receives the portal color
+  # scheme; make it reach web content (prefers-color-scheme), crbug.com/536445418
+  patch -Np1 -i ../chromium-154-fallback-linux-ui-portal-color-scheme.patch
 
   # CEF: Remove sysroot requirement for non-x64 builds
   patch -Np1 -i ../cef-no-sysroot.patch
@@ -579,6 +586,12 @@ package() {
   cp -r Release/* "$pkgdir/usr/lib/cef/"
   install -Dvm4755 Release/chrome-sandbox "$pkgdir/usr/lib/cef/chrome-sandbox"
   cp -r Resources/* "$pkgdir/usr/lib/cef/"
+
+  # Point CEF at the system Vulkan loader. ANGLE only searches libcef.so's
+  # directory for libvulkan, so the file must exist there. A second bundled
+  # loader breaks Dawn's WebGPU device when the host already loaded the
+  # system one (e.g. GTK4), leaving only the SwiftShader software adapter.
+  ln -sf /usr/lib/libvulkan.so.1 "$pkgdir/usr/lib/cef/libvulkan.so.1"
 
   # Headers
   install -d "$pkgdir/usr/include/cef"

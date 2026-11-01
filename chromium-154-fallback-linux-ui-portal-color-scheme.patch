@@ -1,0 +1,81 @@
+Route the xdg-desktop-portal color scheme to web content in FallbackLinuxUi.
+
+Chromium 154 stopped writing the portal color scheme straight into NativeTheme
+(crbug.com/536445418) and routes it through LinuxUiTheme::SetColorScheme() into
+each toolkit's OsSettingsProvider. FallbackLinuxUi, used when GTK and Qt are
+disabled, implemented SetColorScheme() as a no-op, so prefers-color-scheme
+stayed light. Give it a minimal OsSettingsProvider fed by the portal.
+
+--- a/ui/linux/fallback_linux_ui.h
++++ b/ui/linux/fallback_linux_ui.h
+@@ -5,10 +5,12 @@
+ #ifndef UI_LINUX_FALLBACK_LINUX_UI_H_
+ #define UI_LINUX_FALLBACK_LINUX_UI_H_
+ 
++#include <memory>
+ #include <optional>
+ 
+ #include "ui/gfx/font_render_params.h"
+ #include "ui/linux/linux_ui.h"
++#include "ui/native_theme/os_settings_provider.h"
+ 
+ namespace ui {
+ 
+@@ -74,8 +76,20 @@
+                                                   bool maximized) override;
+ 
+  private:
++  // Supplies the xdg-desktop-portal color scheme to web content, like the GTK
++  // and Qt toolkits do.
++  class PortalOsSettingsProvider : public ui::OsSettingsProvider {
++   public:
++    ui::NativeTheme::PreferredColorScheme PreferredColorScheme() const override;
++    void SetColorScheme(std::optional<bool> prefer_dark);
++
++   private:
++    std::optional<bool> prefer_dark_;
++  };
++
+   std::optional<gfx::FontRenderParams> default_font_render_params_;
+   bool theme_is_dark_ = false;
++  std::unique_ptr<PortalOsSettingsProvider> os_settings_provider_;
+ };
+ 
+ }  // namespace ui
+--- a/ui/linux/fallback_linux_ui.cc
++++ b/ui/linux/fallback_linux_ui.cc
+@@ -125,7 +125,33 @@
+   theme_is_dark_ = dark;
+ }
+ 
+-void FallbackLinuxUi::SetColorScheme(std::optional<bool> prefer_dark) {}
++void FallbackLinuxUi::SetColorScheme(std::optional<bool> prefer_dark) {
++  if (!os_settings_provider_) {
++    if (!prefer_dark) {
++      return;
++    }
++    os_settings_provider_ = std::make_unique<PortalOsSettingsProvider>();
++  }
++  os_settings_provider_->SetColorScheme(prefer_dark);
++}
++
++ui::NativeTheme::PreferredColorScheme
++FallbackLinuxUi::PortalOsSettingsProvider::PreferredColorScheme() const {
++  if (prefer_dark_) {
++    return *prefer_dark_ ? ui::NativeTheme::PreferredColorScheme::kDark
++                         : ui::NativeTheme::PreferredColorScheme::kLight;
++  }
++  return OsSettingsProvider::PreferredColorScheme();
++}
++
++void FallbackLinuxUi::PortalOsSettingsProvider::SetColorScheme(
++    std::optional<bool> prefer_dark) {
++  if (prefer_dark_ == prefer_dark) {
++    return;
++  }
++  prefer_dark_ = prefer_dark;
++  NotifyOnSettingsChanged();
++}
+ 
+ void FallbackLinuxUi::SetAccentColor(std::optional<SkColor> accent_color) {}
+ 
