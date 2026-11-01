@@ -5,7 +5,7 @@
 pkgname=dotnet-powershellstandard-library
 _nugetid=PowerShellStandard.Library
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference assembly for PowerShell modules that run on Windows PowerShell 5.1 and PowerShell 7 (NuGet package)"
 arch=('any')
 url='https://github.com/PowerShell/PowerShellStandard'
@@ -44,7 +44,7 @@ prepare() {
   # dotnet-build-deps-10.0 chooses: the reference packages of .NET's source build
   # (dotnet-source-build-reference-packages) with dotnet-build-deps-10.0, Microsoft's originals from
   # nuget.org with dotnet-build-deps-10.0-bin
-  local _feed=/usr/share/dotnet/source-build-reference-packages
+  local _feed="/usr/share/nuget/dotnet-$_dotnetsdkver/reference-packages"
   [[ -d "$_feed" ]] || _feed=https://api.nuget.org/v3/index.json
   cat >nuget.config <<EOF
 <?xml version="1.0" encoding="utf-8"?>
@@ -113,7 +113,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 PowerShellStandard/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"

@@ -1,7 +1,7 @@
 pkgbase = dotnet-powershellstandard-library
 	pkgdesc = Reference assembly for PowerShell modules that run on Windows PowerShell 5.1 and PowerShell 7 (NuGet package)
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PowerShell/PowerShellStandard
 	arch = any
 	license = MIT
