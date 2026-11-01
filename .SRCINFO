@@ -1,7 +1,7 @@
 pkgbase = dotnet-vs-threading
 	pkgdesc = Async synchronization primitives, async collections, TPL and dataflow extensions, Microsoft.VisualStudio.Threading.Only (NuGet package)
 	pkgver = 18.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vs-threading
 	arch = any
 	license = MIT
