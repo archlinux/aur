@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mello <andrew@88plug.com>
 pkgname=k3d-gpu
-pkgver=0.1.83
+pkgver=0.1.84
 pkgrel=1
 pkgdesc="Bootstrap GPU-ready k3d clusters: launcher + NVIDIA device plugin manifest for k3s on Docker"
 arch=('any')
@@ -54,6 +54,11 @@ package() {
     install -Dm644 share/agent-sandbox.yml      "$pkgdir/usr/share/k3d-gpu/agent-sandbox.yml"
     install -Dm644 share/agent-sandbox-k3d.yml  "$pkgdir/usr/share/k3d-gpu/agent-sandbox-k3d.yml"
     install -Dm644 share/model-share.yml        "$pkgdir/usr/share/k3d-gpu/model-share.yml"
+    # k3d-gpu eas, its overlay's patch drafts and eat-check.sh, in the repo's integrations/ layout.
+    install -d "$pkgdir/usr/share/k3d-gpu/integrations"
+    cp -r integrations/eas "$pkgdir/usr/share/k3d-gpu/integrations/eas"
+    install -Dm644 -t "$pkgdir/usr/share/k3d-gpu/integrations/eat/upstream/patches" integrations/eat/upstream/patches/*.patch
+    install -Dm755 integrations/eat/eat-check.sh "$pkgdir/usr/share/k3d-gpu/integrations/eat/eat-check.sh"
     install -Dm644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE.md    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
