@@ -1,0 +1,19 @@
+pkgbase = python-rjieba
+	pkgdesc = Fast Chinese text segmentation with jieba-rs Python bindings
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/messense/rjieba-py
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = rust
+	depends = python
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = python-rjieba-0.2.2.tar.gz::https://github.com/messense/rjieba-py/archive/8cc8808dbae251afc50a88f11ba8143283a6c6b1.tar.gz
+	sha256sums = ed593aeca6208584d0ee60d1b3078ad1614d40b210f0b22191e49eb3698322df
+
+pkgname = python-rjieba
