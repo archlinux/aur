@@ -1,0 +1,22 @@
+pkgbase = python-q2templates
+	pkgdesc = HTML templates and interactive reports for QIIME 2 visualizations
+	pkgver = 2026.10.0
+	pkgrel = 1
+	url = https://github.com/qiime2/q2templates
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-versioningit
+	makedepends = python-wheel
+	makedepends = nodejs
+	makedepends = npm
+	depends = python
+	depends = python-jinja
+	depends = python-pandas
+	source = python-q2templates-2026.10.0.tar.gz::https://github.com/qiime2/q2templates/archive/59d47eb8072d70f9e6f984dff4f052620a62a91e.tar.gz
+	sha256sums = abd54379f9c422e2e9a65460a339511f725c8b33570ccad376a30534ebee8682
+
+pkgname = python-q2templates
