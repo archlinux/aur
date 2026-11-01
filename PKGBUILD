@@ -2,7 +2,7 @@
 # Contributor: ArkFlame Studios <maintainers@arkflame.dev>
 
 pkgname=flamewm-bin
-pkgver=0.1.2b
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Fast Rust X11 window manager and desktop session, with a preliminary Wayland compositor'
 arch=('x86_64')
@@ -86,12 +86,15 @@ source=(
   "flamewm-${pkgver}-amd64.deb::https://github.com/ArkFlame/flamewm/releases/download/${pkgver}/flamewm_${_debver}_amd64.deb"
   "flamewm-lock.pam::https://raw.githubusercontent.com/ArkFlame/flamewm/${pkgver}/packaging/arch/flamewm-lock.pam"
 )
-sha256sums=('c436546d075421f3ac2cf741aaf6367905f4a8c1c53ecf12ff81039b86053bf0'
+sha256sums=('cebeb4a8938020578b3d99b9f9eeff4709cd1ee9a84b8f9a68a4bfdc8da07f0c'
             '2f9b7a7a8a8583ed40969240ee7d0d42ffba4a44b69a7d241bd60634795a8e84')
 
 package() {
-  bsdtar -xf "${srcdir}/flamewm-${pkgver}-amd64.deb" data.tar.zst
-  bsdtar -xf data.tar.zst -C "${pkgdir}"
+  # The .deb's data member is named after its compression, which upstream
+  # changes between releases, so the members are extracted whole and the payload
+  # is matched by prefix.
+  bsdtar -xf "${srcdir}/flamewm-${pkgver}-amd64.deb"
+  bsdtar -xf data.tar.* -C "${pkgdir}"
 
   # The .deb stores directories 0775 and data files 0664; Arch expects 0755 and
   # 0644, and pacman -Qkk reports every group-writable directory as altered.
