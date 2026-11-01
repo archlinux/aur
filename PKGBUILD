@@ -51,7 +51,7 @@ b2sums=('6b85f40d3aa0cdc98a3ca6fc64542be38ea62b69b08a5cb7ab666e810fa818828347993
   'dc5d32d6e4e498a034e3acdd78b88bf638a7a44ef5f4ff0c2bc9e00ec6a743bc7844bc3bdee10de56872f774eadd22468a1368d3c9b71dff8577350f9d1f0e6d'
   '484c0bbc4dd4bb5c6a20be4a0c73f91c3574c92247040ee61b5b2e17db8b180f7e2af5f0e467587e64fafce5a8de58e04659cef365bcb738dbdb5595dec90b8e'
   '4052ddb2f7675b6c94fcffc29fe5c6ed3a4538604b1588e76f5808ab1024ffc45bdeb3e719f62fad08478932635339c28a0f56e0e033452025c7c55105f873f9')
-options=('!lto' '!debug')
+options=(!lto !debug)
 
 # Sets up cargo for the package architecture ($CARCH). A cross build (an x86_64 host building for
 # aarch64) needs the Rust standard library of the target (e.g. rust-aarch64-gnu), the binutils for
