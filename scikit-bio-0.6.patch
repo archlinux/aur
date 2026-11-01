@@ -1,0 +1,30 @@
+--- a/q2_types/distance_matrix/_formats.py
++++ b/q2_types/distance_matrix/_formats.py
+@@ -8,7 +8,11 @@
+ 
+ import skbio
+ from skbio.io import FileFormatError
+-from skbio.stats.distance import PairwiseMatrixError
++try:
++    from skbio.stats.distance import PairwiseMatrixError
++except ImportError:
++    # scikit-bio < 0.7 uses this name for the same matrix validation errors.
++    from skbio.stats.distance import DissimilarityMatrixError as PairwiseMatrixError
+ 
+ import qiime2.plugin.model as model
+ from qiime2.plugin import ValidationError
+--- a/q2_types/distance_matrix/tests/test_formats.py
++++ b/q2_types/distance_matrix/tests/test_formats.py
+@@ -14,7 +14,11 @@
+ from qiime2.plugin.testing import TestPluginBase
+ from qiime2.plugin import ValidationError
+ from skbio.io import FileFormatError
+-from skbio.stats.distance import DistanceMatrixError, PairwiseMatrixError
++from skbio.stats.distance import DistanceMatrixError
++try:
++    from skbio.stats.distance import PairwiseMatrixError
++except ImportError:
++    from skbio.stats.distance import DissimilarityMatrixError as PairwiseMatrixError
+ 
+ 
+ class TestFormats(TestPluginBase):

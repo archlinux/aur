@@ -12,8 +12,15 @@ depends=('python' 'python-qiime2>=2026.10.0' 'python-biom-format' 'python-scikit
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versioningit' 'python-wheel')
 checkdepends=('python-pytest')
 _commit=34e88d9334a5d9c9a51908e5ae9d21d66cf8959f
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('02659e650a5b235b940dc0bd38b014d470ca5df9c6bb6cba33b296b8dca2e4be')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
+        'scikit-bio-0.6.patch')
+sha256sums=('02659e650a5b235b940dc0bd38b014d470ca5df9c6bb6cba33b296b8dca2e4be'
+            'a06293e47dc6bdfd8c34dcf8cb5a26de2dea991948063ba2337e347a87552368')
+
+prepare() {
+  cd "q2-types-$_commit"
+  patch -Np1 -i "$srcdir/scikit-bio-0.6.patch"
+}
 
 build() {
   cd "q2-types-$_commit"
@@ -24,7 +31,7 @@ check() {
   python -m venv --system-site-packages --without-pip "$srcdir/check-env"
   "$srcdir/check-env/bin/python" -m installer "q2-types-$_commit"/dist/*.whl
   MPLBACKEND=Agg "$srcdir/check-env/bin/python" -I - --import-mode=importlib -v \
-    "q2-types-$_commit/q2_types" --junitxml="$srcdir/pytest-results.xml" <<'PYTEST'
+    --pyargs q2_types --junitxml="$srcdir/pytest-results.xml" <<'PYTEST'
 from pathlib import Path
 import sys
 import pytest

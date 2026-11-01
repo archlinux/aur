@@ -25,6 +25,8 @@ pkgbase = python-q2-types
 	depends = python-frictionless
 	depends = samtools
 	source = python-q2-types-2026.10.0.tar.gz::https://github.com/qiime2/q2-types/archive/34e88d9334a5d9c9a51908e5ae9d21d66cf8959f.tar.gz
+	source = scikit-bio-0.6.patch
 	sha256sums = 02659e650a5b235b940dc0bd38b014d470ca5df9c6bb6cba33b296b8dca2e4be
+	sha256sums = a06293e47dc6bdfd8c34dcf8cb5a26de2dea991948063ba2337e347a87552368
 
 pkgname = python-q2-types
