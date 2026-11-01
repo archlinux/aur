@@ -1,0 +1,62 @@
+--- a/q2_quality_control/_utilities.py
++++ b/q2_quality_control/_utilities.py
+@@ -206,6 +206,11 @@
+                 reg_results = [np.nan] * 5
+             else:
+                 reg_results = linregress(exp_vector, obs_vector)
++                if len(exp_vector) == len(obs_vector) == 2:
++                    # Two points leave no residual degrees of freedom.
++                    # Roundoff can make SciPy return inf instead of nan for
++                    # stderr. Preserve its fit, but report undefined inference.
++                    reg_results = [*reg_results[:3], np.nan, np.nan]
+             result.extend(reg_results)
+             # compute Bray-Curtis dissimilarity
+             result.append(braycurtis(exp_vector, obs_vector))
+--- a/q2_quality_control/tests/test_quality_control.py
++++ b/q2_quality_control/tests/test_quality_control.py
+@@ -14,6 +14,7 @@
+ from qiime2.plugin.testing import TestPluginBase
+ from q2_types.feature_data import DNAFASTAFormat
+ import pandas.testing as pdt
++from scipy.stats import linregress
+ from q2_quality_control.quality_control import (
+     exclude_seqs, evaluate_composition, evaluate_seqs, evaluate_taxonomy)
+ from q2_quality_control._utilities import (
+@@ -592,6 +593,37 @@
+                                       'HMPMockV1.2.Staggered1',
+                                       'HMPMockV1.2.Staggered2'], name='id')))
+ 
++    def test_two_point_regression_inference_roundoff(self):
++        # This exact fixture gives r just below one and infinite stderr with
++        # SciPy 1.18.1. Inference is undefined with two observations either way.
++        sample = 'HMPMockV1.1.Even1'
++        result, vectors = _compute_per_level_accuracy(
++            self.exp.loc[[sample]], self.obs.loc[[sample]], None, depth=1)
++        self.assertEqual(len(vectors[1]['exp']), 2)
++        self.assertEqual(len(vectors[1]['obs']), 2)
++        reference = linregress(vectors[1]['exp'], vectors[1]['obs'])
++        npt.assert_array_equal(
++            result.loc[0, ['Slope', 'Intercept', 'r-value']].to_numpy(float),
++            reference[:3])
++        self.assertTrue(np.isnan(
++            result.loc[0, ['P value', 'Std Err']].to_numpy(float)).all())
++
++    def test_three_point_regression_inference_unchanged(self):
++        columns = ['k__A', 'k__B', 'k__C']
++        expected = pd.DataFrame([[0.1, 0.3, 0.6]],
++                                index=['sample'], columns=columns)
++        observed = pd.DataFrame([[0.2, 0.25, 0.55]],
++                                index=['sample'], columns=columns)
++        result, vectors = _compute_per_level_accuracy(
++            expected, observed, None, depth=1)
++        self.assertEqual(len(vectors[1]['exp']), 3)
++        self.assertEqual(len(vectors[1]['obs']), 3)
++        reference = linregress(vectors[1]['exp'], vectors[1]['obs'])
++        npt.assert_array_equal(
++            result.loc[0, ['Slope', 'Intercept', 'r-value',
++                           'P value', 'Std Err']].to_numpy(float), reference)
++        self.assertTrue(np.isfinite(reference).all())
++
+     def test_evaluate_composition_mockrobiota(self):
+         res = _evaluate_composition(
+             self.exp, self.obs, depth=7, palette='Set1',

@@ -12,15 +12,19 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versi
 checkdepends=('python-pytest' 'python-scikit-bio')
 _commit=eec116d4593a0cc4e1f992ecddd99ab5d808fb9b
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
-        'two-point-regression-fixture.patch')
+        'two-point-regression-fixture.patch'
+        'two-point-regression-inference.patch')
 sha256sums=('b568ba7e2bd0799318318b1c985cd8a509ce34c34bdac17a2d93d9f6d6b1497c'
-            '80f4d93cf070f8f1f1624876957a24f1e3df7d18af61a813fcf6e791736b7946')
+            '80f4d93cf070f8f1f1624876957a24f1e3df7d18af61a813fcf6e791736b7946'
+            'a038343a365e1d7258dd7329b93b8131c58e9a5d7fb3cd3a4ab57820c1080163')
 optdepends=('r-decontam: identify contaminant sequences with decontam' 'r-optparse: run the decontam command-line helper')
 prepare() {
   cd "q2-quality-control-$_commit"
   # SciPy gh-24742 corrects undefined inference for two observations.
   # Update only the golden p-values and standard errors, retaining all assertions.
   patch -Np1 -i "$srcdir/two-point-regression-fixture.patch"
+  # Normalize undefined two-point inference despite floating-point roundoff.
+  patch -Np1 -i "$srcdir/two-point-regression-inference.patch"
 }
 
 build() {
