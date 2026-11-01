@@ -108,9 +108,11 @@ _nupkg_info() {
 # Packages are taken from:
 # - dotnet-source-built-artifacts, the packages of the source-built .NET, so they exactly match the .NET
 #   we're building and running with ($1 is its runtime version). This includes the runtime and crossgen
-#   packs. With dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch Linux ARM), there are
-#   none, and they come from nuget.org.
-# - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*,
+#   packs. Together with them, the packages built from the same sources by their own packages, in
+#   /usr/share/nuget/dotnet-10.0/packages (dotnet-system-io-ports-native). With
+#   dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch Linux ARM), there are none, and they
+#   come from nuget.org.
+# - /usr/share/nuget/packages, libraries built from source by their own packages (dotnet-*,
 #   powershell-editor-services-build-deps). References to them (also central package versions) are set
 #   to the installed version with the same major version, or the newest installed one if there's none.
 #   With powershell-editor-services-build-deps-bin, the ones that aren't installed come from nuget.org.
@@ -122,13 +124,12 @@ _nupkg_info() {
 # With "tests" as $2, the runtime packages come from nuget.org instead, as the PowerShell SDK the
 # tests run on (from nuget.org) may need newer ones.
 _nuget_feeds() {
-  local _systemfeed=/usr/share/dotnet/nuget-packages _referencefeed=/usr/share/dotnet/source-build-reference-packages
+  local _systemfeed=/usr/share/nuget/packages _referencefeed="/usr/share/nuget/dotnet-$_dotnetsdkver/reference-packages"
   local _systempackages=() _localpackages=() _nupkg _id _version _artifacts _file _reference
   local -A _systemversions=()
   for _nupkg in "$_systemfeed"/*.nupkg; do
     [[ -f "$_nupkg" ]] || continue
     read -r _id _version < <(_nupkg_info "$_nupkg")
-    [[ "${2-}" == tests && "$_version" == "$_dotnetsdkver".* ]] && continue
     [[ -v "_systemversions[$_id]" ]] || _systempackages+=("$_id")
     _systemversions[$_id]+="$_version"$'\n'
   done
@@ -148,6 +149,10 @@ _nuget_feeds() {
     for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
       [[ -f "$_artifacts" ]] || continue
       bsdtar -xf "$_artifacts" -C "$srcdir/nuget-local" '*.nupkg'
+    done
+    for _nupkg in "/usr/share/nuget/dotnet-$_dotnetsdkver/packages"/*.nupkg; do
+      [[ -f "$_nupkg" ]] || continue
+      cp "$_nupkg" "$srcdir/nuget-local/"
     done
   fi
   for _nupkg in "$srcdir"/nuget-local/*.nupkg; do
@@ -256,7 +261,7 @@ prepare() {
   # OmniSharp 0.19.11 (dotnet-omnisharp-extensions) is built with MediatR 12, where IRequest isn't
   # IRequest<Unit> anymore. With powershell-editor-services-build-deps-bin, upstream's 0.19.9 with
   # MediatR 8 comes from nuget.org.
-  local _omnisharp=(/usr/share/dotnet/nuget-packages/OmniSharp.Extensions.JsonRpc.*.nupkg)
+  local _omnisharp=(/usr/share/nuget/packages/OmniSharp.Extensions.JsonRpc.*.nupkg)
   if [[ -f "${_omnisharp[0]}" ]]; then
     patch -Np1 -i "$srcdir/pses-mediatr-12.patch"
   fi
