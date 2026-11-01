@@ -2,7 +2,7 @@
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 
 pkgname=ccl
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="A Common Lisp implementation."
 arch=("x86_64")
@@ -11,14 +11,8 @@ url="http://ccl.clozure.com"
 license=("Apache")
 provides=("common-lisp" "ccl")
 conflicts=("ccl-bin" "ccl-git")
-source=("https://github.com/Clozure/ccl/releases/download/v${pkgver}/ccl-${pkgver}-linuxx86.tar.gz"
-        "method.patch")
-sha256sums=('70069ee74c6f0685df83eb6224ce22f3e7919e17b233476c784e440d60e26bf1'
-            'f565300c8cd80776d197fbe503864f22ecd2d7ee172880edac7f237cd7b23864')
-
-prepare() {
-  patch --directory="$srcdir/$pkgname" --forward --strip=1 --input=../method.patch
-}
+source=("https://github.com/Clozure/ccl/releases/download/v${pkgver}/ccl-${pkgver}-linuxx86.tar.gz")
+sha256sums=('96fff67c53b56dc67acc06e92ff1774b73401564650669c95e7c63f1200a4f5d')
 
 build() {
   cd "$srcdir/$pkgname/lisp-kernel/linuxx8664"
