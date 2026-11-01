@@ -13,11 +13,12 @@ license=('MIT')
 _dotnetsdkver='10.0'
 depends=('powershell' 'dotnet-runtime-'"$_dotnetsdkver")
 # The packages of .NET itself come from the .NET dotnet-build-deps-10.0 chooses, the libraries from
-# powershell-build-deps (built from source) or nuget.org (powershell-build-deps-bin), see _nuget_feeds()
+# powershell-editor-services-build-deps (built from source) or nuget.org
+# (powershell-editor-services-build-deps-bin), see _nuget_feeds()
 makedepends=(
   'dotnet-build-deps-'"$_dotnetsdkver"
   'git'
-  'powershell-build-deps'
+  'powershell-editor-services-build-deps'
 )
 # PSScriptAnalyzer, which the editor services bundle (RestorePsesModules in
 # PowerShellEditorServices.build.ps1). PSReadLine isn't bundled, PowerShell already has it.
@@ -110,9 +111,9 @@ _nupkg_info() {
 #   packs. With dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch Linux ARM), there are
 #   none, and they come from nuget.org.
 # - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*,
-#   powershell-build-deps). References to them (also central package versions) are set to the installed
-#   version with the same major version, or the newest installed one if there's none. With
-#   powershell-build-deps-bin, the ones that aren't installed come from nuget.org.
+#   powershell-editor-services-build-deps). References to them (also central package versions) are set
+#   to the installed version with the same major version, or the newest installed one if there's none.
+#   With powershell-editor-services-build-deps-bin, the ones that aren't installed come from nuget.org.
 # - dotnet-source-build-reference-packages (part of dotnet-build-deps-10.0), the reference packages
 #   PSScriptAnalyzer's CrossCompatibility (.NET Standard 2.0) compiles against. Only these, as some
 #   reference packages have reference assemblies in lib/, which must not end up in applications.
@@ -253,8 +254,8 @@ prepare() {
   ## PowerShellEditorServices
   cd "$srcdir"/PowerShellEditorServices || exit
   # OmniSharp 0.19.11 (dotnet-omnisharp-extensions) is built with MediatR 12, where IRequest isn't
-  # IRequest<Unit> anymore. With powershell-build-deps-bin, upstream's 0.19.9 with MediatR 8 comes
-  # from nuget.org.
+  # IRequest<Unit> anymore. With powershell-editor-services-build-deps-bin, upstream's 0.19.9 with
+  # MediatR 8 comes from nuget.org.
   local _omnisharp=(/usr/share/dotnet/nuget-packages/OmniSharp.Extensions.JsonRpc.*.nupkg)
   if [[ -f "${_omnisharp[0]}" ]]; then
     patch -Np1 -i "$srcdir/pses-mediatr-12.patch"
@@ -415,13 +416,13 @@ check() {
 # restored from a remote feed like nuget.org into $1, so no prebuilt binary slips in instead of one built
 # from source. Left out are the packages that come from nuget.org by choice: Microsoft's packages of .NET
 # itself (built by the VMR, dotnet/dotnet) with dotnet-build-deps-10.0-bin, the other libraries with
-# powershell-build-deps-bin.
+# powershell-editor-services-build-deps-bin.
 _check_prebuilt() {
   local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0 _dotnetbin=false _libsbin=false
   local _binaries=(-type f '(' -name '*.dll' -o -name '*.exe' -o -name '*.so' -o -name '*.so.*' -o -name '*.dylib' ')')
   local -A _prebuilt=()
   if pacman -T dotnet-build-deps-"$_dotnetsdkver"-bin >/dev/null; then _dotnetbin=true; fi
-  if pacman -T powershell-build-deps-bin >/dev/null; then _libsbin=true; fi
+  if pacman -T powershell-editor-services-build-deps-bin >/dev/null; then _libsbin=true; fi
   while IFS= read -r -d '' _metadata; do
     grep -qE '"source": *"https?://' "$_metadata" || continue
     if grep -qs '<repository [^>]*url="https://github.com/dotnet/dotnet"' "${_metadata%/*}"/*.nuspec; then
