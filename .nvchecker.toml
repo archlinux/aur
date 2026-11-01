@@ -1,0 +1,3 @@
+[perl-unicode-utf8]
+source = "cpan"
+cpan = "Unicode-UTF8"
