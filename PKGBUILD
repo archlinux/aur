@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r160.1ee9391
+pkgver=r161.85655b7
 pkgrel=1
 pkgdesc="A bare KWin Wayland session to run any shell on (Dux, digit, Quickshell configs), with Hyprland-style workspaces"
 # Not 'any': the KWin plugins (workspace sharing, and the protocols shells
@@ -16,6 +16,7 @@ depends=('kwin' 'kglobalacceld' 'xdg-desktop-portal-kde'
          'wl-clipboard' 'wl-clip-persist')
 optdepends=(
   'quickshell: Quickshell-based shells such as Dux'
+  'lua: the keys from a Hyprland Lua config'
   'powerdevil: idle timeouts, DPMS, suspend and brightness'
   'upower: battery status'
   'kdeplasma-addons: task switcher layouts, without which Alt+Tab draws nothing'
