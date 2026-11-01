@@ -4,7 +4,7 @@
 
 pkgname=dotnet-roslyn
 pkgver=5.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The .NET Compiler Platform for C#, Microsoft.CodeAnalysis.Common and .CSharp (NuGet packages)"
 arch=('any')
 url='https://github.com/dotnet/roslyn'
@@ -190,7 +190,7 @@ _check_prebuilt() {
 
 package() {
   install -Dm644 "$srcdir"/nupkg/Microsoft.CodeAnalysis.{Common,CSharp}."$pkgver".nupkg \
-    -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+    -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "roslyn-$_commit/License.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
