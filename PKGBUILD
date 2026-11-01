@@ -1,7 +1,7 @@
 _pkgname=roam-research
 pkgname=roam-research
 pkgver=0.0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="A note-taking tool for networked thought"
 arch=('any')
 url="https://roamresearch.com/"
@@ -24,7 +24,7 @@ package() {
 	cd "$srcdir"
 
 	# Making paths work with a space is error-prone, so let's replace with a simpler kebab-case directory
-	sed -i "s/\/opt\/Roam Research/\/opt\/$_pkgname/" usr/share/applications/roam-research.desktop
+	sed -i "s/\/opt\/Roam Research/\/opt\/$_pkgname/" usr/share/applications/com.roam-research.desktop-app.desktop
 
 	# Install all the things
 	install -d "$pkgdir"/{opt/$_pkgname,usr/share,usr/bin}
