@@ -45,21 +45,38 @@ _dotnet_env() {
   export DOTNET_CLI_HOME="$srcdir/dotnet-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
-  # RID of the .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's build
-  _rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+  # RID of the .NET SDK, the build host crossgen2 runs on: arch-x64 for the source-built .NET of Arch,
+  # linux-arm64 for Microsoft's build
+  _host_rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+  # The RID the assembly is compiled for follows the package architecture ($CARCH), like powershell's:
+  # the host's on a native build, Microsoft's portable linux-<arch> one from nuget.org on a cross build
+  # (an x86_64 host building for aarch64), which has no source-built .NET for the target
+  local _arch
+  case "$CARCH" in
+    x86_64) _arch=x64 ;;
+    aarch64) _arch=arm64 ;;
+  esac
+  if [[ "$_host_rid" == *-"$_arch" ]]; then
+    _rid="$_host_rid"
+  else
+    _rid="linux-$_arch"
+  fi
 }
 
 prepare() {
   _dotnet_env
   # The runtime and crossgen2 packs for ReadyToRun come from the .NET dotnet-build-deps-10.0
   # chooses: the source-built artifacts with dotnet-build-deps-10.0 (see crossgen2-pack.targets),
-  # Microsoft's build from nuget.org with dotnet-build-deps-10.0-bin
+  # Microsoft's build from nuget.org with dotnet-build-deps-10.0-bin. A cross build has the runtime pack
+  # of the target from nuget.org, the artifacts only have the host's.
   mkdir -p nuget-local
-  local _artifacts
+  local _artifacts _packs=("Microsoft.NETCore.App.Crossgen2.$_host_rid.*.nupkg")
+  if [[ "$_rid" == "$_host_rid" ]]; then
+    _packs+=("Microsoft.NETCore.App.Runtime.$_rid.*.nupkg")
+  fi
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
     [[ -f "$_artifacts" ]] || continue
-    bsdtar -xf "$_artifacts" -C nuget-local "Microsoft.NETCore.App.Crossgen2.$_rid.*.nupkg" \
-      "Microsoft.NETCore.App.Runtime.$_rid.*.nupkg"
+    bsdtar -xf "$_artifacts" -C nuget-local "${_packs[@]}"
   done
 
   cd MMI || exit
@@ -99,6 +116,13 @@ build() {
 }
 
 check() {
+  _dotnet_env
+  # The assembly of a cross build ($CARCH differs from the build host) is for another architecture,
+  # check it natively on the target instead
+  if [[ "$_rid" != "$_host_rid" ]]; then
+    echo 'powershell-mmi: skipping the check on a cross build; run it natively on the target' >&2
+    return 0
+  fi
   # The tests need the OMI server and client library (test.sh), so the assembly is only checked to
   # load with the identity and API PowerShell and modules expect
   HOME="$srcdir/home" pwsh -NoProfile -NonInteractive -File "$srcdir/check-assembly.ps1" \
