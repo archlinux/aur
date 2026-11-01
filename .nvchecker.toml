@@ -1,4 +1,4 @@
-[proc-bin]
+[proc-cli-bin]
 source = "github"
 github = "yazeed/proc-cli"
 use_latest_release = true

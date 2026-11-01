@@ -3,10 +3,10 @@
 _pkgauthor=yazeed
 _pkgname=proc-cli
 _appname=${_pkgname%-cli}
-pkgname=${_appname}-bin
+pkgname=${_pkgname}-bin
 pkgdesc="Semantic CLI tool for process management. Target by port, PID, name or path."
 
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -20,6 +20,7 @@ license=('MIT')
 
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
+replaces=("${pkgname//-cli-/-}")
 
 options=('!strip')
 
@@ -28,9 +29,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('c7f9eb97a593a88e42431614564bf73d3b2177ffbc959a63cfe62856b4a10d1e'
-            'f0c5ad7ddd5ce560b9ecf5a507d148fabfea00fe280dc661aa0c15587b6f88da')
-sha256sums_x86_64=('8ff7a59beb67c9cbe29f3a1203f8965e359bf62e0cabfd987a2df4a173d319c8')
-sha256sums_aarch64=('3fcf34ce2b9362f87d49ad82148db6719b78396cffe93ce0153d82a604bba989')
+            '43b9bf79de8d1a9d304313b8da9a328d85c7a68beafadbdaa1cdf587001c0f18')
+sha256sums_x86_64=('988a768507474284c04b93c0af7091cded972507d91b816903a52db9c1f9c57a')
+sha256sums_aarch64=('bcd62a45d61245ebacca5cbd6b3663e7823a5912798ba153f52c71373c089b15')
 
 
 case ${CARCH} in
