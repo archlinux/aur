@@ -1,0 +1,11 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -32,7 +32,7 @@
+ requires-python = ">=3.10,<4.0"
+ readme = "README.md"
+ license = "MIT"
+-dependencies = ["llama-index-embeddings-openai>=0.6.0,<0.7"]
++dependencies = ["llama-index-embeddings-openai>=0.6.0,<0.8"]
+ 
+ [tool.codespell]
+ check-filenames = true
