@@ -1,13 +1,17 @@
-pkgbase = asar-git
+pkgbase = snes-asar-git
 	pkgdesc = SNES assembler for applying patches to existing ROMs or creating new ROMs from scratch
-	pkgver = v1.81.r171.g634d6ba
-	pkgrel = 2
+	pkgver = 1.91.r16.g5fd539c
+	pkgrel = 1
 	url = https://github.com/RPGHacker/asar
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	conflicts = snes-asar
 	source = git+https://github.com/RPGHacker/asar.git
 	md5sums = SKIP
 
-pkgname = asar-git
+pkgname = snes-asar-git
