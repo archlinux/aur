@@ -2,7 +2,7 @@
 _pkgname=Object-Pad
 pkgname=perl-object-pad
 pkgver=0.825
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple syntax for lexical field-based objects"
 arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')

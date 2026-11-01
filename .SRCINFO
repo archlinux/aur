@@ -1,7 +1,7 @@
 pkgbase = perl-object-pad
 	pkgdesc = a simple syntax for lexical field-based objects
 	pkgver = 0.825
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Object::Pad
 	arch = any
 	license = Artistic-1.0-Perl
