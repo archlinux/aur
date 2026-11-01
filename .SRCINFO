@@ -1,17 +1,23 @@
 pkgbase = perl-time-moment
-	pkgdesc = Encoding and decoding of UTF-8 encoding form
-	pkgver = 0.44
-	pkgrel = 2
-	url = https://metacpan.org/release/Time-Moment
+	pkgdesc = Represents a date and time of day with an offset from UTC
+	pkgver = 0.46
+	pkgrel = 1
+	url = https://metacpan.org/dist/Time-Moment
 	arch = x86_64
-	license = GPL
-	license = PerlArtistic
-	checkdepends = perl-test-number-delta
-	depends = perl
-	depends = perl-test-requires
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-extutils-parsexs>=3.18
+	makedepends = perl-module-install
+	makedepends = perl-test-fatal>=0.006
+	makedepends = perl-test-number-delta>=1.06
+	makedepends = perl-test-requires
+	makedepends = perl-test-simple
+	depends = perl-carp
+	depends = perl-time-hires
+	depends = perl-xsloader>=0.02
+	depends = perl>=5.8.1
 	options = !emptydirs
-	options = purge
-	source = https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Time-Moment-0.44.tar.gz
-	sha512sums = 637e33f7e6874185ddaa592e309737c0871e2651efacce03213a168002908a81f18be913e1df2709d9246f2a1dcb8eb1ed445365974542b0c6bcb5082867153e
+	source = https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Time-Moment-0.46.tar.gz
+	sha256sums = e1ec4c0b8bac451490f60ddb21b6e4849db49febb681e1cb04737e2d2731e5ad
 
 pkgname = perl-time-moment

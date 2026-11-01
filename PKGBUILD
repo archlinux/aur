@@ -1,38 +1,59 @@
-# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Sean Anderson <seanga2@gmail.com>
+
+_author=CHANSEN
 _dist=Time-Moment
-pkgname=perl-time-moment
-pkgver=0.44
-pkgrel=2
-pkgdesc="Encoding and decoding of UTF-8 encoding form"
-arch=(x86_64)
-url="https://metacpan.org/release/$_dist"
-license=('GPL' 'PerlArtistic')
+pkgname=perl-${_dist@L}
+pkgver=0.46
+pkgrel=1
+pkgdesc='Represents a date and time of day with an offset from UTC'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
-	perl
-	perl-test-requires
+    'perl-carp'
+    'perl-time-hires'
+    'perl-xsloader>=0.02'
+    'perl>=5.8.1'
 )
-checkdepends=(perl-test-number-delta)
-options=(!emptydirs purge)
-source=("https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/$_dist-$pkgver.tar.gz")
-sha512sums=('637e33f7e6874185ddaa592e309737c0871e2651efacce03213a168002908a81f18be913e1df2709d9246f2a1dcb8eb1ed445365974542b0c6bcb5082867153e')
+makedepends=(
+    'perl-extutils-makemaker>=6.59'
+    'perl-extutils-parsexs>=3.18'
+    'perl-module-install'
+    'perl-test-fatal>=0.006'
+    'perl-test-number-delta>=1.06'
+    'perl-test-requires'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('e1ec4c0b8bac451490f60ddb21b6e4849db49febb681e1cb04737e2d2731e5ad')
 
-build() {
-	cd "$srcdir/$_dist-$pkgver"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-	/usr/bin/perl Makefile.PL
-	make
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-check() {
-	cd "$srcdir/$_dist-$pkgver"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1
-	make test
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-package() {
-	cd "$srcdir/$_dist-$pkgver"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
