@@ -1,17 +1,18 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-desktop
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/chatwithwork-desktop"
-license=('MIT OR Apache-2.0')
+license=('GPL-3.0-only')
 install="${pkgname}.install"
 depends=('alsa-lib' 'libpipewire' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'dbus' 'bubblewrap' 'slirp4netns' 'util-linux' 'iptables-nft')
 makedepends=('cargo' 'pkgconf' 'cmake' 'clang' 'python' 'npm')
 optdepends=('org.freedesktop.secrets: store the device key in your keyring'
             'xdg-desktop-portal: native folder picker'
             'sane: scan with a USB scanner'
+            'cups: print with your printers'
             'tesseract: make scans searchable (with tesseract-data-<language>)'
             'systemd: start the agent now and at login with cww daemon install')
 provides=('cww' 'cww-app')
@@ -22,7 +23,7 @@ conflicts=('cww' 'chatwithwork-desktop-bin' 'chatwithwork-desktop-git')
 # empty.
 options=('!debug' '!lto' '!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/chatwithwork-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3e9737b67789ad5866ead71c81650036d4e99b3c2ffe0644b7e83f4799877527')
+sha256sums=('30d7aeae42efdb2d1fcc53de3bb7f0480ac442eb57b54a30080a24b50f9ca691')
 
 prepare() {
   cd "${srcdir}/chatwithwork-desktop-${pkgver}"
@@ -59,5 +60,5 @@ package() {
   install -Dm644 app/assets/mark.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cww-app.svg"
   install -Dm644 packaging/systemd/cww.service "${pkgdir}/usr/lib/systemd/user/cww.service"
   install -Dm644 README.md PROTOCOL.md SECURITY.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
