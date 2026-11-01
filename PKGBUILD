@@ -12,7 +12,7 @@ url='https://github.com/microsoft/vs-validation'
 license=('MIT')
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   jq
   python
 )
