@@ -1,7 +1,7 @@
 # Maintainer: Ateles
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=termtastic-git
-pkgver=1.0.0.alpha5.r6.g5ec99e2
+pkgver=1.0.0.alpha5.r17.g01e8897
 pkgrel=1
 pkgdesc='Feature-rich handmade Meshtastic console client'
 arch=('x86_64' 'aarch64')
