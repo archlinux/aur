@@ -1,45 +1,52 @@
 # Maintainer: CPT-Dawn <ping@cptdawn.dev>
 pkgname=vellum
-_reponame=Vellum
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Wayland wallpaper stack with daemon and TUI"
-arch=('x86_64')
+pkgdesc="Featherweight wallpaper manager for Wayland: a tiny daemon, CLI and TUI"
+arch=('x86_64' 'aarch64')
 url="https://github.com/CPT-Dawn/Vellum"
-license=('GPL3')
-makedepends=('cargo' 'pkgconf')
-provides=("vellum")
-conflicts=("vellum-git")
-install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CPT-Dawn/Vellum/archive/refs/tags/v1.1.0.tar.gz")
-sha256sums=('81c3e38444f68f8c7fc9e12972f5e4ed1e03cdfb244efd7f2536ac7771b7623f')
+license=('MIT OR Apache-2.0')
+depends=('glibc' 'libgcc')
+makedepends=('cargo')
+conflicts=('vellum-git')
+_tag=v2.0.0
+_srcdir=Vellum-2.0.0
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
+sha256sums=('4eded0e1e6f63489512e94d10b313fb35415cabf6f009952103a91ebc6b049c1')
 
 prepare() {
-  cd "${_reponame}-${pkgver}"
-  export CARGO_HOME="${srcdir}/cargo-home"
-  cargo fetch --locked
+  cd "$_srcdir"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${_reponame}-${pkgver}"
-  export CARGO_HOME="${srcdir}/cargo-home"
-  export CARGO_TARGET_DIR="${srcdir}/target"
-  cargo build --release --frozen --locked --workspace --bins
+  cd "$_srcdir"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --workspace
+  bash packaging/gen-docs.sh target/release/vellum target/dist
+}
+
+check() {
+  cd "$_srcdir"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  # Unit tests only: the integration suites drive a headless Sway.
+  cargo test --frozen --release --workspace --lib --bins
 }
 
 package() {
-  cd "${_reponame}-${pkgver}"
+  cd "$_srcdir"
+  install -Dm755 target/release/vellum target/release/vellumd -t "$pkgdir/usr/bin"
+  install -Dm644 packaging/systemd/vellumd.service -t "$pkgdir/usr/lib/systemd/user"
 
-  install -Dm755 "${srcdir}/target/release/vellum" "${pkgdir}/usr/bin/vellum"
-  install -Dm755 "${srcdir}/target/release/vellum-daemon" "${pkgdir}/usr/bin/vellum-daemon"
+  install -Dm644 target/dist/completions/vellum.bash \
+    "$pkgdir/usr/share/bash-completion/completions/vellum"
+  install -Dm644 target/dist/completions/_vellum -t "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm644 target/dist/completions/vellum.fish -t "$pkgdir/usr/share/fish/vendor_completions.d"
+  install -Dm644 target/dist/man/*.1 -t "$pkgdir/usr/share/man/man1"
 
-  install -Dm644 packaging/systemd/user/vellum-daemon.service \
-    "${pkgdir}/usr/lib/systemd/user/vellum-daemon.service"
-
-  # Ship the autostart desktop entry as an example so it stays opt-in.
-  install -Dm644 packaging/autostart/vellum.desktop \
-    "${pkgdir}/usr/share/doc/${pkgname}/examples/vellum.desktop"
-
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
