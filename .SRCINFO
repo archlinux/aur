@@ -5,6 +5,7 @@ pkgbase = python-beancount-import
 	url = https://github.com/jbms/beancount-import
 	arch = any
 	license = GPL-2.0-only
+	makedepends = esbuild
 	makedepends = npm
 	makedepends = python-build
 	makedepends = python-installer

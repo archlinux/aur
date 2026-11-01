@@ -24,13 +24,22 @@ depends=("beancount"
          "python-tornado"
          "python-typing_extensions"
          "python-watchdog")
-makedepends=("npm" "python-build" "python-installer" "python-setuptools" "python-setuptools-scm" "python-wheel")
-# PyPI only has a wheel, the frontend is bundled from the GitHub sources
+makedepends=("esbuild" "npm" "python-build" "python-installer" "python-setuptools" "python-setuptools-scm" "python-wheel")
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a7249d5feeb3ff3dba498336cf5778535029f28ad148f2ab5d5731dd9d867af3')
 
-build(){
+prepare(){
  cd "$_name-$pkgver"
+ # the frontend is bundled in build(), setup.py would bundle it again with npm's esbuild
+ sed -i 's/self.skip_rebuild = False/self.skip_rebuild = True/' setup.py
+}
+
+build(){
+ cd "$_name-$pkgver/frontend"
+ # install scripts are blocked by npm, bundle with the system esbuild instead
+ npm ci --ignore-scripts
+ esbuild --bundle app.tsx --sourcemap --minify --outdir=../beancount_import/frontend_dist --define:global=window "--define:process.env.NODE_ENV='production'"
+ cd ..
  export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
  python -m build --wheel --no-isolation
 }
@@ -38,4 +47,5 @@ build(){
 package(){
  cd "$_name-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
+ install -D -m 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
