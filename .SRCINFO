@@ -4,10 +4,10 @@ pkgbase = raspberrypi-bootloader
 	pkgrel = 2
 	url = https://github.com/raspberrypi/firmware
 	arch = any
-	license = custom
+	license = LicenseRef-Broadcom
 	conflicts = raspberrypi-bootloader
 	options = !strip
-	source = https://github.com/raspberrypi/firmware/archive/refs/tags/1.20260915.tar.gz
+	source = raspberrypi-bootloader-1.20260915.tar.gz::https://github.com/raspberrypi/firmware/archive/refs/tags/1.20260915.tar.gz
 	source = raspberrypi-bootloader-install
 	source = raspberrypi-bootloader-install.hook.in
 	sha256sums = 58751354e5c8289d3660511958e8c7869de010f6719d8e1859820391058a337c
@@ -16,6 +16,8 @@ pkgbase = raspberrypi-bootloader
 
 pkgname = raspberrypi-bootloader-common
 	pkgdesc = Bootloader files for Raspberry Pi (shared installer script)
+	license = 0BSD
+	depends = bash
 
 pkgname = raspberrypi-bootloader-legacy
 	pkgdesc = Bootloader files for Raspberry Pi (1/2/3, Zero & Zero 2)

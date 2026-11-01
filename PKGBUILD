@@ -1,3 +1,5 @@
+# Maintainer: Fermín Olaiz <fermin@olaiz.net>
+
 # Bootloader for the raspberry pi SBCs (fw between the GPU ROM-kernel).
 # Split package by board lineup to avoid clutter.
 # Installed by a libalpm hook.
@@ -14,11 +16,11 @@ pkgrel=2
 pkgdesc="Bootloader files for Raspberry Pi"
 arch=(any)
 url="https://github.com/raspberrypi/firmware"
-license=(custom)
+license=(LicenseRef-Broadcom)
 conflicts=(raspberrypi-bootloader)
 options=(!strip)
 source=(
-    "https://github.com/raspberrypi/firmware/archive/refs/tags/$pkgver.tar.gz"
+    "${pkgbase}-${pkgver}.tar.gz::https://github.com/raspberrypi/firmware/archive/refs/tags/$pkgver.tar.gz"
     raspberrypi-bootloader-install
     raspberrypi-bootloader-install.hook.in
 )
@@ -28,6 +30,8 @@ sha256sums=('58751354e5c8289d3660511958e8c7869de010f6719d8e1859820391058a337c'
 
 package_raspberrypi-bootloader-common() {
     pkgdesc+=" (shared installer script)"
+    license=(0BSD)
+    depends=(bash)
     install -Dm755 -t "$pkgdir/usr/share/libalpm/scripts/" "$srcdir/raspberrypi-bootloader-install"
 }
 
