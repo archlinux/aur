@@ -1,6 +1,6 @@
 pkgbase = rosemary
 	pkgdesc = Compatibility layer and high level emulator hybrid for running macOS applications
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/microlift/rosemary
 	arch = x86_64
@@ -17,8 +17,10 @@ pkgbase = rosemary
 	optdepends = vulkan-icd-loader: Metal support
 	optdepends = glib-networking: WebView support
 	optdepends = webkitgtk-6.0: WebView support
+	provides = rosemary=0.5.0
+	conflicts = rosemary
 	options = !lto
-	source = rosemary-0.4.1.tar.gz::https://github.com/microlift/rosemary/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = f15a47a834a3ec4bb611bb7b06fe4f6a42714201bfc2ec0079a1f28636545050
+	source = rosemary-0.5.0.tar.gz::https://github.com/microlift/rosemary/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = f096e8f7d1c5dbccff4f3cab559fb505db4c8c59775b3d0c65a10deb9005dd71
 
 pkgname = rosemary

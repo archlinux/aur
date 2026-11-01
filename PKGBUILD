@@ -1,7 +1,7 @@
 # Maintainer: Floofy <FloofyIV9@proton.me>
 
 pkgname=rosemary
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Compatibility layer and high level emulator hybrid for running macOS applications"
 arch=(x86_64)
@@ -27,7 +27,7 @@ provides=("$pkgname=${pkgver%%.3*}")
 conflicts=("$pkgname")
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f15a47a834a3ec4bb611bb7b06fe4f6a42714201bfc2ec0079a1f28636545050')
+sha256sums=('f096e8f7d1c5dbccff4f3cab559fb505db4c8c59775b3d0c65a10deb9005dd71')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
