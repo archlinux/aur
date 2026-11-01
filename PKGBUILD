@@ -7,13 +7,13 @@ _nugetid=Json.More.Net
 pkgver=2.2.0
 pkgrel=2
 pkgdesc="Extended functionality for System.Text.Json, 2.x (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/json-everything/json-everything'
-license=('MIT')
+license=(MIT)
 provides=("dotnet-json-more-net=$pkgver")
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 # 2.x is the last version line published under the MIT license alone, later releases on nuget.org come
