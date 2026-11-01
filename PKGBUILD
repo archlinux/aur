@@ -4,7 +4,7 @@
 
 pkgname=dotnet-microsoft-identity-client
 pkgver=4.92.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Authentication Library for .NET (MSAL.NET), Microsoft.Identity.Client and its extensions (NuGet packages)"
 arch=('any')
 url='https://github.com/AzureAD/microsoft-authentication-library-for-dotnet'
@@ -202,7 +202,7 @@ _check_prebuilt() {
 package() {
   local _package
   for _package in "${_packages[@]}"; do
-    install -Dm644 "$srcdir/nupkg/$_package.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+    install -Dm644 "$srcdir/nupkg/$_package.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   done
   install -Dm644 "microsoft-authentication-library-for-dotnet-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 

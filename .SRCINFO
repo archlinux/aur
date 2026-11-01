@@ -1,7 +1,7 @@
 pkgbase = dotnet-microsoft-identity-client
 	pkgdesc = Microsoft Authentication Library for .NET (MSAL.NET), Microsoft.Identity.Client and its extensions (NuGet packages)
 	pkgver = 4.92.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
 	arch = any
 	license = MIT
