@@ -4,18 +4,18 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20261004
+pkgver=20261101
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
 license=(BSD-2-Clause)
-depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-positioning ttf-liberation)
-makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
+depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-positioning ttf-liberation vulkan-icd-loader wayland xcb-util-wm)
+makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip vulkan-headers zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=20e815a4df3d6b721b3ea185ad39d2627d71963a" # 2026-10-04
-  "git+https://github.com/microsoft/vcpkg.git#commit=7f3781e19cc7d4e4882a4caec01668c6f7b5c163" # 2026-08-27 (vcpkg.json:builtin-baseline)
+  "git+$url#commit=c665272d1c977d8ac20f33236cb8018e2ee4770e" # 2026-11-01
+  "git+https://github.com/microsoft/vcpkg.git#commit=20ceb8adbf0504d4b0d5e4058a32f9d4fc896391" # 2026-10-14 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
   "gcc-build.patch"
@@ -23,9 +23,9 @@ source=(
 sha256sums=(
   'SKIP'
   'SKIP'
-  '8d4c2c434fe2af69f4e7c868a8e1dac3f7c8d562c15f96030f71754d5e60d1fe'
+  '1324da902a0296918acc06647120553ca824b4dae84810829d3707faa15e88b4'
   '6181578991719a46beaf1440385e3ae3a569d860a14b45570cda7650f061141c'
-  '067e5f7d4b47233cdb0fafcbee74d8668818e82fb67bffe90223607918c51625'
+  '4065634ed192973510df368f9148a19fbf4f2ebd1d7681c53163fa6f70f0412d'
 )
 
 prepare() {
