@@ -1,7 +1,7 @@
 pkgbase = dsh-tui-git
 	pkgdesc = Claude Code style fullscreen TUI launcher for DeepSeek Harness (dsh), built from the main branch
-	pkgver = 0.17.0.r1798.g83fcf89
-	pkgrel = 2
+	pkgver = 0.18.0.r1809.g2701218
+	pkgrel = 1
 	url = https://github.com/ccch1mneyyy/dsh-TUI
 	install = dsh-tui-git.install
 	arch = any

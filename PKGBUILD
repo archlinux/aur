@@ -131,8 +131,8 @@
 # `corepack pnpm@11.21.0` -- no other change is required.
 
 pkgname=dsh-tui-git
-pkgver=0.17.0.r1798.g83fcf89
-pkgrel=2
+pkgver=0.18.0.r1809.g2701218
+pkgrel=1
 pkgdesc='Claude Code style fullscreen TUI launcher for DeepSeek Harness (dsh), built from the main branch'
 # No compiled artifact of our own ships (the payload is a portable npm tarball
 # of JavaScript plus assets, and the launcher is JS), so the package is 'any'.
