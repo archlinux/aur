@@ -15,7 +15,7 @@ checkdepends=(cargo-nextest)
 source=("$pkgname::git+$url#tag=v$pkgver")
 sha512sums=('434069c91bc970471ec174de0ab8d97a0b73ea4c89df2c31752d2a159a5c022acc9bb82d7be4c7867897353e38c9bd1e82f59f02bfe963713312ecd814f185a8')
 b2sums=('b00896c1e02eb99e8b0c26baecb431054ae9c864a7d4495fa635ad3027d93a7b94c47896cda16efe71d9de838b52192d59c2deff8cf1706cc8e854d6df62fb3d')
-options=('!lto')
+options=(!lto)
 
 prepare() {
   cd "$pkgname" || exit
