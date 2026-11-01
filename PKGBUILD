@@ -53,7 +53,14 @@ build() {
 check() {
   _dotnet_env
   cd "Pluralize.NET-$_commit" || exit
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   dotnet test "$_nugetid.Tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}"
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
