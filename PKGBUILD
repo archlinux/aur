@@ -6,12 +6,12 @@ pkgname=dotnet-omnisharp-extensions
 pkgver=0.19.11
 pkgrel=2
 pkgdesc="Language Server Protocol and Debug Adapter Protocol for .NET, OmniSharp.Extensions.* (NuGet packages)"
-arch=('any')
+arch=(any)
 url='https://github.com/OmniSharp/csharp-language-server-protocol'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   dotnet-mediatr-12
   dotnet-nerdbank-streams
   dotnet-newtonsoft-json
