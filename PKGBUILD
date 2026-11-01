@@ -2,7 +2,7 @@
 
 pkgname=python-sphn
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust-backed Python audio decoding, resampling and Opus streaming"
 arch=('x86_64')
 url="https://github.com/kyutai-labs/sphn"
@@ -11,7 +11,7 @@ _commit=760a9464a3a2b9772e75ee11f42ac51146406dc1
 depends=('python' 'python-numpy' 'gcc-libs' 'glibc' 'opus')
 makedepends=('python-installer' 'python-maturin' 'rust' 'cmake' 'pkgconf')
 checkdepends=('ffmpeg')
-options=('!lto')
+options=('!lto' '!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
         'Cargo.lock')
 sha256sums=('39439dedcc3603702c390734185b6bf3e9c041a665105fa4b04d7ea27ae3365c'
