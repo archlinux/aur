@@ -1,22 +1,13 @@
-pkgbase = swig
-	pkgdesc = Generate scripting interfaces to C/C++ code
+pkgbase = swig4.4
+	pkgdesc = Generate scripting interfaces to C/C++ code (pinned to the last release supporting Python 2 bindings)
 	pkgver = 4.4.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.swig.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = LicenseRef-BSD-Arizona
 	license = LicenseRef-BSD-Chicago
 	license = LicenseRef-BSD-Utah-California
-	checkdepends = ruby
-	checkdepends = python
-	checkdepends = java-environment
-	checkdepends = tcl
-	checkdepends = php
-	checkdepends = lua
-	checkdepends = r
-	checkdepends = go
-	checkdepends = boost
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
@@ -25,4 +16,4 @@ pkgbase = swig
 	source = git+https://github.com/swig/swig#tag=v4.4.0
 	sha512sums = eed3eb9b8c769661e039718982a17c2a39907023085ec2e7f957664456a8816c376756278cc2667ce73818fe986f26d4479819c7f0d50e43fa5dea012d742c90
 
-pkgname = swig
+pkgname = swig4.4
