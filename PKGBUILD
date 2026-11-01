@@ -1,7 +1,7 @@
 # Maintainer: tassiovirginio <tassiovirginio@gmail.com>
 
 pkgname=strata-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A fast, keyboard-first file manager for Linux'
 arch=('x86_64' 'aarch64')
@@ -37,15 +37,11 @@ optdepends=(
 source_x86_64=(
   "https://github.com/lgse/strata/releases/download/v${pkgver}/strata-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_x86_64=(
-  'cb2927cfbf85eafef1faa5316303df9ce51831c7a370204f8a068bd83c690793'
-)
+sha256sums_x86_64=('e0552e0772fcded13a82884747b28f0b32220a32931cda6e55f83575bbe50734')
+sha256sums_aarch64=('d6d8e41e1e00df7702e9a1a2624c3b8ee11b638a3a6db48f5ae2ef4db1188d4a')
 
 source_aarch64=(
   "https://github.com/lgse/strata/releases/download/v${pkgver}/strata-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
-)
-sha256sums_aarch64=(
-  '2fe608b27ccf537adc0672a610bb25ef75db20034e365a41f2552f4f43f4940e'
 )
 
 
