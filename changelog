@@ -1,3 +1,13 @@
+2026-10-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.11.7-1:
+    Added support for steam://run format in selected commands that already accepted steam://launch before (@JustArchi #3627).
+    Added support for additional swagger annotations: default, uniqueItems, propertyNames and x-key-type (@JustArchi, JustArchiNET/ASF-ui#1767).
+    Implemented additional bulletproofing in trading logic - this accounts for edge cases not possible to reach in practice (@JustArchi).
+    Fixed missing x-security-critical swagger annotation for SteamLogin and SteamParentalCode (@JustArchi, JustArchiNET/ASF-ui#1767).
+    Fixed possible race condition during relog procedure that could cause ASF to crash (@JustArchi, @ezhevita).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-10-14 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.10.6-1:
     Adapted to dotnet/docs#56396 breaking change (@JustArchi).
