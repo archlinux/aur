@@ -12,21 +12,13 @@ arch=('x86_64' 'aarch64')
 license=('MIT')
 _dotnetsdkver='10.0'
 depends=('powershell' 'dotnet-runtime-'"$_dotnetsdkver")
+# The packages of .NET itself come from the .NET dotnet-build-deps-10.0 chooses, the libraries from
+# powershell-build-deps (built from source) or nuget.org (powershell-build-deps-bin), see _nuget_feeds()
 makedepends=(
-  'dotnet-mediatr-12'
-  'dotnet-nerdbank-streams'
-  'dotnet-newtonsoft-json'
-  'dotnet-omnisharp-extensions'
-  'dotnet-pluralize-net'
-  'dotnet-powershellstandard-library'
-  'dotnet-sdk-'"$_dotnetsdkver"
-  'dotnet-source-build-reference-packages'
-  'dotnet-system-reactive'
-  'dotnet-vs-threading'
-  'dotnet-vs-validation'
+  'dotnet-build-deps-'"$_dotnetsdkver"
   'git'
+  'powershell-build-deps'
 )
-makedepends_x86_64=('dotnet-source-built-artifacts-'"$_dotnetsdkver")
 # PSScriptAnalyzer, which the editor services bundle (RestorePsesModules in
 # PowerShellEditorServices.build.ps1). PSReadLine isn't bundled, PowerShell already has it.
 _pssaver=1.25.0
@@ -101,18 +93,21 @@ _nupkg_info() {
 # Packages are taken from:
 # - dotnet-source-built-artifacts, the packages of the source-built .NET, so they exactly match the .NET
 #   we're building and running with ($1 is its runtime version). This includes the runtime and crossgen
-#   packs. Arch Linux ARM has no source-built .NET.
-# - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*).
-#   References to them (also central package versions) are set to the installed version with the same
-#   major version, or the newest installed one if there's none.
-# - dotnet-source-build-reference-packages, the reference packages PSScriptAnalyzer's
-#   CrossCompatibility (.NET Standard 2.0) compiles against. Only these, as some reference packages
-#   have reference assemblies in lib/, which must not end up in applications.
+#   packs. With dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch Linux ARM), there are
+#   none, and they come from nuget.org.
+# - /usr/share/dotnet/nuget-packages, libraries built from source by their own packages (dotnet-*,
+#   powershell-build-deps). References to them (also central package versions) are set to the installed
+#   version with the same major version, or the newest installed one if there's none. With
+#   powershell-build-deps-bin, the ones that aren't installed come from nuget.org.
+# - dotnet-source-build-reference-packages (part of dotnet-build-deps-10.0), the reference packages
+#   PSScriptAnalyzer's CrossCompatibility (.NET Standard 2.0) compiles against. Only these, as some
+#   reference packages have reference assemblies in lib/, which must not end up in applications.
+#   Microsoft's originals from nuget.org with dotnet-build-deps-10.0-bin.
 # - nuget.org for everything else
 # With "tests" as $2, the runtime packages come from nuget.org instead, as the PowerShell SDK the
 # tests run on (from nuget.org) may need newer ones.
 _nuget_feeds() {
-  local _systemfeed=/usr/share/dotnet/nuget-packages
+  local _systemfeed=/usr/share/dotnet/nuget-packages _referencefeed=/usr/share/dotnet/source-build-reference-packages
   local _systempackages=() _localpackages=() _nupkg _id _version _artifacts _file _reference
   local -A _systemversions=()
   for _nupkg in "$_systemfeed"/*.nupkg; do
@@ -147,6 +142,8 @@ _nuget_feeds() {
     [[ "$_version" == "$1" ]] && _localpackages+=("$_id")
   done
 
+  # NuGet fails on local feeds that don't exist, so the system feed and the reference packages are only
+  # added with packages in them, which the -bin variants of the build dependencies leave out
   {
     cat <<EOF
 <?xml version="1.0" encoding="utf-8"?>
@@ -154,20 +151,26 @@ _nuget_feeds() {
   <packageSources>
     <clear />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
-    <add key="dotnet-packages" value="$_systemfeed" />
-    <add key="dotnet-source-build-reference-packages" value="/usr/share/dotnet/source-build-reference-packages" />
+EOF
+    if ((${#_systempackages[@]})); then
+      echo "    <add key=\"dotnet-packages\" value=\"$_systemfeed\" />"
+    fi
+    if [[ -d "$_referencefeed" ]]; then
+      echo "    <add key=\"dotnet-source-build-reference-packages\" value=\"$_referencefeed\" />"
+    fi
+    cat <<EOF
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
   <packageSourceMapping>
     <clear />
-    <packageSource key="dotnet-source-build-reference-packages">
 EOF
-    printf '      <package pattern="%s" />\n' NETStandard.Library Microsoft.NETCore.Platforms Microsoft.CSharp \
-      Microsoft.Win32.Registry System.Buffers System.Memory System.Numerics.Vectors \
-      System.Runtime.CompilerServices.Unsafe System.Security.AccessControl System.Security.Principal.Windows
-    cat <<EOF
-    </packageSource>
-EOF
+    if [[ -d "$_referencefeed" ]]; then
+      echo '    <packageSource key="dotnet-source-build-reference-packages">'
+      printf '      <package pattern="%s" />\n' NETStandard.Library Microsoft.NETCore.Platforms Microsoft.CSharp \
+        Microsoft.Win32.Registry System.Buffers System.Memory System.Numerics.Vectors \
+        System.Runtime.CompilerServices.Unsafe System.Security.AccessControl System.Security.Principal.Windows
+      echo '    </packageSource>'
+    fi
     if ((${#_localpackages[@]})); then
       echo '    <packageSource key="dotnet-source-built">'
       printf '      <package pattern="%s" />\n' "${_localpackages[@]}"
@@ -235,8 +238,13 @@ prepare() {
 
   ## PowerShellEditorServices
   cd "$srcdir"/PowerShellEditorServices || exit
-  # OmniSharp 0.19.11 is built with MediatR 12, where IRequest isn't IRequest<Unit> anymore
-  patch -Np1 -i "$srcdir/pses-mediatr-12.patch"
+  # OmniSharp 0.19.11 (dotnet-omnisharp-extensions) is built with MediatR 12, where IRequest isn't
+  # IRequest<Unit> anymore. With powershell-build-deps-bin, upstream's 0.19.9 with MediatR 8 comes
+  # from nuget.org.
+  local _omnisharp=(/usr/share/dotnet/nuget-packages/OmniSharp.Extensions.JsonRpc.*.nupkg)
+  if [[ -f "${_omnisharp[0]}" ]]; then
+    patch -Np1 -i "$srcdir/pses-mediatr-12.patch"
+  fi
   rm global.json
   # Build for the installed .NET only, upstream builds for .NET Standard, .NET 8 and .NET Framework
   find src test -type f -name "*.csproj" -exec sed -i -E \
@@ -385,13 +393,22 @@ check() {
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
 # restored from a remote feed like nuget.org into $1, so no prebuilt binary slips in instead of one built
-# from source
+# from source. Left out are the packages that come from nuget.org by choice: Microsoft's packages of .NET
+# itself (built by the VMR, dotnet/dotnet) with dotnet-build-deps-10.0-bin, the other libraries with
+# powershell-build-deps-bin.
 _check_prebuilt() {
-  local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0
+  local _extracted="$srcdir/check-prebuilt" _metadata _file _hash _found=0 _dotnetbin=false _libsbin=false
   local _binaries=(-type f '(' -name '*.dll' -o -name '*.exe' -o -name '*.so' -o -name '*.so.*' -o -name '*.dylib' ')')
   local -A _prebuilt=()
+  if pacman -T dotnet-build-deps-"$_dotnetsdkver"-bin >/dev/null; then _dotnetbin=true; fi
+  if pacman -T powershell-build-deps-bin >/dev/null; then _libsbin=true; fi
   while IFS= read -r -d '' _metadata; do
     grep -qE '"source": *"https?://' "$_metadata" || continue
+    if grep -qs '<repository [^>]*url="https://github.com/dotnet/dotnet"' "${_metadata%/*}"/*.nuspec; then
+      [[ "$_dotnetbin" == true ]] && continue
+    else
+      [[ "$_libsbin" == true ]] && continue
+    fi
     while IFS= read -r -d '' _file; do
       _prebuilt[$(sha256sum <"$_file")]="${_file#"$1"/}"
     done < <(find "${_metadata%/*}" "${_binaries[@]}" -print0)
