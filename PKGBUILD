@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=3
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -157,6 +157,7 @@ sha256sums=('6cc2d4299596e589a2f63961a413b1ec33a7f9f22b0ae97ed6532b0250f5b6de'
             '5cda6675c1d51c6b16395a6be861f980968ed884a404d68d465e8fea87009ef5'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
+            'c683b93bcb843da6de51ee49dd163c6eb9889f27988357aba3ca8766abd76f2e'
             '35f7aa8e133eb1afaba6ace59d516d3b60e66fe20e7adc90eb31c522737fc03f')
 
 validpgpkeys=(
