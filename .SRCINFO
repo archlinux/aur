@@ -7,7 +7,7 @@ pkgbase = powershell-mmi
 	arch = aarch64
 	license = MIT
 	checkdepends = powershell
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-build-deps-10.0
 	makedepends = git
 	depends = powershell
 	provides = powershell-mmi-bin
@@ -21,6 +21,5 @@ pkgbase = powershell-mmi
 	b2sums = 826bc5cd8b212060820ad4eb800de18986ee4fb776e693049cd7e11e88234bccb28e360006a026ac0239b26a13727cdeefedcf30c8201265cf735504330257d1
 	b2sums = 3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b
 	b2sums = a25a1f97ac5fd6974bc6806430b65e98113ea1d752aa83c0e31502218fafbe64cb026e4a74436889ad6b33085f35afe7ae0b71a3be0c38b99fda811ee64ca23d
-	makedepends_x86_64 = dotnet-source-built-artifacts-10.0
 
 pkgname = powershell-mmi

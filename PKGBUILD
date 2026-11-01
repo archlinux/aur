@@ -15,11 +15,8 @@ depends=(
   powershell
 )
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   git
-)
-makedepends_x86_64=(
-  dotnet-source-built-artifacts-"$_dotnetsdkver"
 )
 checkdepends=(
   powershell
@@ -54,8 +51,9 @@ _dotnet_env() {
 
 prepare() {
   _dotnet_env
-  # The runtime and crossgen2 packs for ReadyToRun come from the source-built .NET where it's
-  # installed (see crossgen2-pack.targets), nuget.org otherwise
+  # The runtime and crossgen2 packs for ReadyToRun come from the .NET dotnet-build-deps-10.0
+  # chooses: the source-built artifacts with dotnet-build-deps-10.0 (see crossgen2-pack.targets),
+  # Microsoft's build from nuget.org with dotnet-build-deps-10.0-bin
   mkdir -p nuget-local
   local _artifacts
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
