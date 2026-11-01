@@ -1,6 +1,6 @@
 pkgbase = lapac71g-lapac71h-keyboard-gnome-git
 	pkgdesc = GNOME Quick Settings keyboard RGB control for Intel NUC X15 LAPAC71G/LAPAC71H
-	pkgver = r84.72d5706
+	pkgver = r85.01e23a3
 	pkgrel = 1
 	url = https://github.com/PaveLiArcH/qc71_laptop
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = lapac71g-lapac71h-keyboard-gnome-git
 	depends = libadwaita>=1.5
 	depends = polkit
 	depends = gnome-shell>=1:51
-	optdepends = qc71-laptop-lapac71-dkms-git: LAPAC71G/H keyboard LED driver
+	depends = qc71-laptop-lapac71-dkms-git
 	provides = lapac71g-lapac71h-keyboard-gnome
 	provides = qc71-keyboard-gnome
 	conflicts = lapac71g-lapac71h-keyboard-gnome
