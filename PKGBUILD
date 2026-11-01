@@ -1,6 +1,6 @@
 # Maintainer: Tino Gohl <tuvbunn2@googlemail.com>
 pkgname=jgrep-bin
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="grep for JSON with jq-style filter expressions (prebuilt binary)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('jgrep')
 # reason). Disable it here too.
 options=('!debug')
 source=("https://github.com/subnix-work/jgrep-tinox/releases/download/v${pkgver}/jgrep-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('54c8f0e1560fb4c0249302e1b66495fb1c4097d7009e8bdba1af650bd826a0b5')
+sha256sums=('64ee0853f3adb3109cb9db7341a25d38d1645f12fa03d350eb4a79b4b8677f14')
 
 package() {
   cd "$srcdir"
