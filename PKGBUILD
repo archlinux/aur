@@ -2,7 +2,7 @@
 
 pkgname=python-rjieba
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast Chinese text segmentation with jieba-rs Python bindings"
 arch=('x86_64')
 url="https://github.com/messense/rjieba-py"
@@ -11,7 +11,7 @@ _commit=8cc8808dbae251afc50a88f11ba8143283a6c6b1
 depends=('python' 'gcc-libs' 'glibc')
 makedepends=('python-installer' 'python-maturin' 'rust')
 checkdepends=('python-pytest')
-options=('!lto')
+options=('!lto' '!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('ed593aeca6208584d0ee60d1b3078ad1614d40b210f0b22191e49eb3698322df')
 
