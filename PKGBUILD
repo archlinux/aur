@@ -8,15 +8,15 @@ pkgver=4.10.1
 pkgrel=1
 pkgdesc="Test and mock framework for PowerShell, Pester (version 4)"
 # Gherkin.dll is compiled to a ReadyToRun image for the architecture
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://github.com/pester/Pester'
-license=('Apache-2.0')
+license=(Apache-2.0)
 _dotnetsdkver="10.0"
 depends=(
   powershell
 )
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   dotnet-gherkin-5
 )
 # hostname, which the tests of the test result files compare the machine name with
