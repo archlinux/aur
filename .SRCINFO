@@ -1,0 +1,25 @@
+pkgbase = python-sphn
+	pkgdesc = Rust-backed Python audio decoding, resampling and Opus streaming
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kyutai-labs/sphn
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	checkdepends = ffmpeg
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = rust
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = python
+	depends = python-numpy
+	depends = gcc-libs
+	depends = glibc
+	depends = opus
+	options = !lto
+	source = python-sphn-0.2.1.tar.gz::https://github.com/kyutai-labs/sphn/archive/760a9464a3a2b9772e75ee11f42ac51146406dc1.tar.gz
+	source = Cargo.lock
+	sha256sums = 39439dedcc3603702c390734185b6bf3e9c041a665105fa4b04d7ea27ae3365c
+	sha256sums = a39258e1700488465fea49fd43bc1695d15c9d7d1f56227b208e29c9bd65b447
+
+pkgname = python-sphn
