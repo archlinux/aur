@@ -1,0 +1,23 @@
+pkgbase = kunsplash-wallpapers
+	pkgdesc = Unofficial Plasma 6 widget and daemon that sets your wallpaper from Unsplash
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ChoiWheatley/kunsplash-wallpapers
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = kirigami
+	depends = libplasma
+	depends = plasma-workspace
+	depends = qt6-declarative
+	depends = kconfig
+	depends = libkscreen
+	depends = xdg-user-dirs
+	options = !lto
+	source = kunsplash-wallpapers-0.1.0.tar.gz::https://github.com/ChoiWheatley/kunsplash-wallpapers/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3e9f73f911951baae2fd9f3a40a67f6bce5fe99a672d202e983f6cd8b7721f4c
+
+pkgname = kunsplash-wallpapers
