@@ -24,7 +24,7 @@ depends=(
     'perl-file-copy-recursive'
     'perl-file-pushd'
     'perl-file-which'
-    'perl-http-tinyish>=0.12'              # Package is flagged out-of-date on 2026-05-25.
+    'perl-http-tinyish>=0.12'
     'perl-ipc-run3'
     'perl-module-cpanfile'
     'perl-module-cpmfile>=v1.0.0'
