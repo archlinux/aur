@@ -1,4 +1,16 @@
 #!/usr/bin/bash
+# makepkg-jail: run makepkg inside bubblewrap under an enforcing AppArmor
+# build profile.
+#
+# A plain build is split automatically, the same way paru does it:
+#   1. fetch: download sources, run prepare() and pkgver()   (network on)
+#   2. build: build(), check(), package()                    (network off)
+# --online keeps the network on for one whole run; --offline keeps it off.
+# Single-phase calls (-o, -e, --verifysource, --printsrcinfo, ...) run once.
+#
+# -s, -i and -r are handled by this wrapper on the host: dependencies and
+# built packages are installed by pacman outside the sandbox, never by code
+# from the PKGBUILD.
 set -euo pipefail
 umask 077
 
@@ -9,12 +21,141 @@ die() {
 
 (( EUID != 0 )) || die "Run as your normal user, not root."
 
-online=0
-if [[ "${1:-}" == --online ]]; then
-    online=1
-    shift
+self=$(readlink -f -- "${BASH_SOURCE[0]}")
+
+# --- Option parsing -----------------------------------------------------
+# Wrapper options are removed from the makepkg arguments. Grouped short
+# options such as -fsri are split. Scanning a group stops at -p or -D,
+# whose argument may follow directly.
+net_mode=auto
+want_deps=0
+want_install=0
+want_rmdeps=0
+nocheck=0
+noconfirm=0
+asdeps=0
+needed=0
+fetch=0         # downloads sources or runs prepare(): -o -g -S --verifysource
+noextract=0     # -e: reuses the existing source tree
+query=0         # metadata only: --printsrcinfo --packagelist
+clean_before=0  # -C: only applies to the fetch phase
+clean_after=0   # -c: only applies to the build phase
+
+pass=()
+skip_next=0
+end_opts=0
+for arg in "$@"; do
+    if (( skip_next || end_opts )); then
+        pass+=("$arg")
+        skip_next=0
+        continue
+    fi
+
+    case "$arg" in
+        --)
+            end_opts=1
+            pass+=("$arg")
+            ;;
+        --online)     net_mode=online ;;
+        --offline)    net_mode=offline ;;
+        --syncdeps)   want_deps=1 ;;
+        --install)    want_install=1 ;;
+        --rmdeps)     want_rmdeps=1 ;;
+        --asdeps)     asdeps=1 ;;
+        --needed)     needed=1 ;;
+        --clean)      clean_after=1 ;;
+        --cleanbuild) clean_before=1 ;;
+        --nocheck)
+            nocheck=1
+            pass+=("$arg")
+            ;;
+        --noconfirm)
+            noconfirm=1
+            pass+=("$arg")
+            ;;
+        --nobuild|--geninteg|--verifysource|--source|--allsource)
+            fetch=1
+            pass+=("$arg")
+            ;;
+        --noextract)
+            noextract=1
+            pass+=("$arg")
+            ;;
+        --printsrcinfo|--packagelist)
+            query=1
+            pass+=("$arg")
+            ;;
+        --config|--dir|--key)
+            skip_next=1
+            pass+=("$arg")
+            ;;
+        --*)
+            pass+=("$arg")
+            ;;
+        -?*)
+            opts=${arg#-}
+            kept=
+            while [[ -n "$opts" ]]; do
+                c=${opts:0:1}
+                opts=${opts:1}
+                case "$c" in
+                    s) want_deps=1 ;;
+                    i) want_install=1 ;;
+                    r) want_rmdeps=1 ;;
+                    c) clean_after=1 ;;
+                    C) clean_before=1 ;;
+                    o|g|S)
+                        fetch=1
+                        kept+="$c"
+                        ;;
+                    e)
+                        noextract=1
+                        kept+="$c"
+                        ;;
+                    p|D)
+                        kept+="$c$opts"
+                        if [[ -z "$opts" ]]; then
+                            skip_next=1
+                        fi
+                        opts=
+                        ;;
+                    *) kept+="$c" ;;
+                esac
+            done
+            if [[ -n "$kept" ]]; then
+                pass+=("-$kept")
+            fi
+            ;;
+        *)
+            pass+=("$arg")
+            ;;
+    esac
+done
+
+# A plain build is split unless --online/--offline or a single-phase
+# option was given.
+split=0
+if [[ "$net_mode" == auto ]] && (( ! query && ! fetch && ! noextract )); then
+    split=1
 fi
 
+case "$net_mode" in
+    online)  online=1 ;;
+    offline) online=0 ;;
+    *)
+        if (( fetch && ! noextract )); then
+            online=1
+        else
+            online=0
+        fi
+        ;;
+esac
+
+if (( want_install && (query || (fetch && ! noextract)) )); then
+    die "-i needs a build; it cannot be combined with this option."
+fi
+
+# --- Workspace checks ---------------------------------------------------
 work=$(pwd -P)
 [[ -f "$work/PKGBUILD" ]] || die "No PKGBUILD in the current directory."
 
@@ -25,39 +166,46 @@ case "$work" in
         ;;
 esac
 
-data="${XDG_DATA_HOME:-$HOME/.local/share}/makepkg-jail"
-state="${XDG_CACHE_HOME:-$HOME/.cache}/makepkg-jail-v2"
+# --- Sandbox run --------------------------------------------------------
+# run_jail NET MAKEPKG_ARGS...   (NET: 1 = network on, 0 = off)
+run_jail() {
+    local net=$1
+    shift
 
-mkdir -p -- "$state"
-state=$(realpath -e -- "$state")
+    local data state key private_home target path name
+    data="${XDG_DATA_HOME:-$HOME/.local/share}/makepkg-jail"
+    state="${XDG_CACHE_HOME:-$HOME/.cache}/makepkg-jail-v2"
 
-case "$state/" in
-    "$work/"*) die "The workspace must not contain the sandbox state directory." ;;
-esac
+    mkdir -p -- "$state"
+    state=$(realpath -e -- "$state")
 
-filter="/usr/lib/makepkg-jail/seccomp.bpf"
-[[ -s "$filter" && -r "$filter" ]] ||
-    die "Required seccomp filter is missing: $filter"
+    case "$state/" in
+        "$work/"*) die "The workspace must not contain the sandbox state directory." ;;
+    esac
 
-key=$(printf '%s' "$work" | sha256sum)
-key=${key%% *}
+    filter="/usr/lib/makepkg-jail/seccomp.bpf"
+    [[ -s "$filter" && -r "$filter" ]] ||
+        die "Required seccomp filter is missing: $filter"
 
-private_home="$state/homes/$key"
-mkdir -p -- "$private_home" "$state/runs"
+    key=$(printf '%s' "$work" | sha256sum)
+    key=${key%% *}
 
-run=$(mktemp -d "$state/runs/run.XXXXXXXX")
-trap 'rm -rf -- "$run"' EXIT
+    private_home="$state/homes/$key"
+    mkdir -p -- "$private_home" "$state/runs"
 
-mkdir -p "$run/etc" "$run/tmp" "$run/vartmp" "$run/gnupg"
+    run=$(mktemp -d "$state/runs/run.XXXXXXXX")
+    trap 'rm -rf -- "$run"' EXIT
 
-printf 'root:x:0:0:root:/root:/usr/bin/bash\nbuilder:x:%s:%s:builder:/home/build:/usr/bin/bash\n' \
-    "$(id -u)" "$(id -g)" > "$run/etc/passwd"
+    mkdir -p "$run/etc" "$run/tmp" "$run/vartmp" "$run/gnupg"
 
-printf 'root:x:0:\nbuilder:x:%s:\n' "$(id -g)" > "$run/etc/group"
-printf 'passwd: files\ngroup: files\nhosts: files dns\n' > "$run/etc/nsswitch.conf"
-printf '127.0.0.1 localhost\n::1 localhost\n' > "$run/etc/hosts"
+    printf 'root:x:0:0:root:/root:/usr/bin/bash\nbuilder:x:%s:%s:builder:/home/build:/usr/bin/bash\n' \
+        "$(id -u)" "$(id -g)" > "$run/etc/passwd"
 
-cat > "$run/etc/jail-makepkg.conf" <<'EOF'
+    printf 'root:x:0:\nbuilder:x:%s:\n' "$(id -g)" > "$run/etc/group"
+    printf 'passwd: files\ngroup: files\nhosts: files dns\n' > "$run/etc/nsswitch.conf"
+    printf '127.0.0.1 localhost\n::1 localhost\n' > "$run/etc/hosts"
+
+    cat > "$run/etc/jail-makepkg.conf" <<'EOF'
 source /etc/makepkg.conf
 unset BUILDDIR
 PKGDEST=/work
@@ -67,152 +215,248 @@ LOGDEST=/work
 BUILDENV=(!distcc color check !sign)
 EOF
 
-if [[ -d "$data/gnupg" ]]; then
-    /usr/bin/gpg --no-options --homedir "$data/gnupg" \
-        --batch --export > "$run/public-keys.gpg"
+    # Source-signature keys: export public keys only into a disposable keyring.
+    if [[ -d "$data/gnupg" ]]; then
+        /usr/bin/gpg --no-options --homedir "$data/gnupg" \
+            --batch --export > "$run/public-keys.gpg"
 
-    if [[ -s "$run/public-keys.gpg" ]]; then
-        /usr/bin/gpg --no-options --homedir "$run/gnupg" \
-            --batch --import "$run/public-keys.gpg"
-    fi
-fi
-
-# Pacman's repository verification keyring is separate from source-signing keys.
-# Copy only public keys and trust data, never private keys, sockets or config.
-pacman_keys=/etc/pacman.d/gnupg
-mkdir -p "$run/pacman-gnupg" "$run/etc/pacman.d/gnupg"
-
-have_public_keys=0
-for name in pubring.gpg pubring.kbx trustdb.gpg; do
-    if [[ -e "$pacman_keys/$name" ]]; then
-        [[ -r "$pacman_keys/$name" ]] ||
-            die "Cannot read pacman's public verification file: $pacman_keys/$name"
-
-        cp -- "$pacman_keys/$name" "$run/pacman-gnupg/$name"
-
-        case "$name" in
-            pubring.gpg|pubring.kbx) have_public_keys=1 ;;
-        esac
-    fi
-done
-
-(( have_public_keys )) ||
-    die "No supported public keyring found in $pacman_keys"
-
-[[ -r "$run/pacman-gnupg/trustdb.gpg" ]] ||
-    die "Pacman's public trust database is missing or unreadable"
-
-args=(
-    --unshare-all
-    --unshare-user
-    --disable-userns
-    --die-with-parent
-    --new-session
-    --cap-drop ALL
-    --clearenv
-    --setenv PATH /usr/bin
-    --setenv HOME /home/build
-    --setenv USER builder
-    --setenv LOGNAME builder
-    --setenv LANG C.UTF-8
-    --setenv TERM "${TERM:-dumb}"
-    --setenv TMPDIR /tmp
-    --setenv GNUPGHOME /gnupg
-    --setenv XDG_CONFIG_HOME /home/build/.config
-    --setenv XDG_CACHE_HOME /home/build/.cache
-    --ro-bind /usr /usr
-    --symlink usr/bin /bin
-    --symlink usr/bin /sbin
-    --symlink usr/lib /lib
-    --symlink usr/lib /lib64
-    --ro-bind "$run/etc" /etc
-    --bind "$run/pacman-gnupg" /etc/pacman.d/gnupg
-    --dir /run
-    --dir /root
-    --proc /proc
-    --dev /dev
-    --bind "$work" /work
-    --bind "$private_home" /home/build
-    --bind "$run/tmp" /tmp
-    --bind "$run/vartmp" /var/tmp
-    --bind "$run/gnupg" /gnupg
-    --ro-bind /var/lib/pacman/local /var/lib/pacman/local
-    --ro-bind /var/lib/pacman/sync /var/lib/pacman/sync
-    --chdir /work
-)
-
-# Create mount targets in the staging directory before bubblewrap mounts
-# that directory read-only. Subsequent read-only mounts cover these targets.
-for path in \
-    /etc/makepkg.conf \
-    /etc/makepkg.conf.d \
-    /etc/pacman.conf \
-    /etc/pacman.d/mirrorlist \
-    /etc/pacman.d/*mirrorlist \
-    /etc/apparmor/parser.conf \
-    /etc/apparmor.d/abi \
-    /etc/apparmor.d/tunables \
-    /etc/apparmor.d/abstractions \
-    /etc/ld.so.cache \
-    /etc/localtime \
-    /etc/ssl/certs \
-    /etc/ca-certificates/extracted
-do
-    if [[ -e "$path" ]]; then
-        target="$run/etc/${path#/etc/}"
-
-        if [[ -d "$path" ]]; then
-            mkdir -p -- "$target"
-        else
-            mkdir -p -- "$(dirname -- "$target")"
-            touch -- "$target"
+        if [[ -s "$run/public-keys.gpg" ]]; then
+            /usr/bin/gpg --no-options --homedir "$run/gnupg" \
+                --batch --import "$run/public-keys.gpg"
         fi
-
-        args+=(--ro-bind "$path" "$path")
     fi
-done
 
-if (( online )); then
-    args+=(--share-net)
+    # Pacman's repository verification keyring is separate from source-signing
+    # keys. Copy only public keys and trust data, never private keys or config.
+    local pacman_keys=/etc/pacman.d/gnupg
+    mkdir -p "$run/pacman-gnupg" "$run/etc/pacman.d/gnupg"
 
-    if [[ -r /etc/resolv.conf ]]; then
-        touch -- "$run/etc/resolv.conf"
-        args+=(--ro-bind /etc/resolv.conf /etc/resolv.conf)
+    local have_public_keys=0
+    for name in pubring.gpg pubring.kbx trustdb.gpg; do
+        if [[ -e "$pacman_keys/$name" ]]; then
+            [[ -r "$pacman_keys/$name" ]] ||
+                die "Cannot read pacman's public verification file: $pacman_keys/$name"
+
+            cp -- "$pacman_keys/$name" "$run/pacman-gnupg/$name"
+
+            case "$name" in
+                pubring.gpg|pubring.kbx) have_public_keys=1 ;;
+            esac
+        fi
+    done
+
+    (( have_public_keys )) ||
+        die "No supported public keyring found in $pacman_keys"
+
+    [[ -r "$run/pacman-gnupg/trustdb.gpg" ]] ||
+        die "Pacman's public trust database is missing or unreadable"
+
+    local -a args=(
+        --unshare-all
+        --unshare-user
+        --disable-userns
+        --die-with-parent
+        --new-session
+        --cap-drop ALL
+        --clearenv
+        --setenv PATH /usr/bin
+        --setenv HOME /home/build
+        --setenv USER builder
+        --setenv LOGNAME builder
+        --setenv LANG C.UTF-8
+        --setenv TERM "${TERM:-dumb}"
+        --setenv TMPDIR /tmp
+        --setenv GNUPGHOME /gnupg
+        --setenv XDG_CONFIG_HOME /home/build/.config
+        --setenv XDG_CACHE_HOME /home/build/.cache
+        --ro-bind /usr /usr
+        --symlink usr/bin /bin
+        --symlink usr/bin /sbin
+        --symlink usr/lib /lib
+        --symlink usr/lib /lib64
+        --ro-bind "$run/etc" /etc
+        --bind "$run/pacman-gnupg" /etc/pacman.d/gnupg
+        --dir /run
+        --dir /root
+        --proc /proc
+        --dev /dev
+        --bind "$work" /work
+        --bind "$private_home" /home/build
+        --bind "$run/tmp" /tmp
+        --bind "$run/vartmp" /var/tmp
+        --bind "$run/gnupg" /gnupg
+        --ro-bind /var/lib/pacman/local /var/lib/pacman/local
+        --ro-bind /var/lib/pacman/sync /var/lib/pacman/sync
+        --chdir /work
+    )
+
+    # Create mount targets in the staging directory before bubblewrap mounts
+    # it read-only. The read-only mounts below then cover these targets.
+    for path in \
+        /etc/makepkg.conf \
+        /etc/makepkg.conf.d \
+        /etc/pacman.conf \
+        /etc/pacman.d/mirrorlist \
+        /etc/pacman.d/*mirrorlist \
+        /etc/apparmor/parser.conf \
+        /etc/apparmor.d/abi \
+        /etc/apparmor.d/tunables \
+        /etc/apparmor.d/abstractions \
+        /etc/ld.so.cache \
+        /etc/localtime \
+        /etc/ssl/certs \
+        /etc/ca-certificates/extracted
+    do
+        if [[ -e "$path" ]]; then
+            target="$run/etc/${path#/etc/}"
+
+            if [[ -d "$path" ]]; then
+                mkdir -p -- "$target"
+            else
+                mkdir -p -- "$(dirname -- "$target")"
+                touch -- "$target"
+            fi
+
+            args+=(--ro-bind "$path" "$path")
+        fi
+    done
+
+    if (( net )); then
+        args+=(--share-net)
+
+        if [[ -r /etc/resolv.conf ]]; then
+            touch -- "$run/etc/resolv.conf"
+            args+=(--ro-bind /etc/resolv.conf /etc/resolv.conf)
+        fi
+    fi
+
+    exec 3<"$filter"
+    args+=(--seccomp 3)
+
+    # Relay stdout and stderr through anonymous pipes, keeping them separate
+    # (paru parses stdout) without exposing the host terminal to the sandbox.
+    exec {out_fd}> >(/usr/bin/cat)
+    local out_pid=$!
+
+    exec {err_fd}> >(/usr/bin/cat >&2)
+    local err_pid=$!
+
+    local status=0
+    /usr/bin/bwrap "${args[@]}" -- \
+        /usr/bin/aa-exec -p '/usr/bin/bwrap//&makepkg-jail-build' -- \
+        /usr/bin/makepkg --config /etc/jail-makepkg.conf "$@" \
+        </dev/null 1>&"$out_fd" 2>&"$err_fd" || status=$?
+
+    # Close our pipe writers before waiting for the readers to finish.
+    exec {out_fd}>&-
+    exec {err_fd}>&-
+
+    local relay_status=0
+    wait "$out_pid" || relay_status=$?
+    wait "$err_pid" || relay_status=$?
+
+    (( status == 0 )) || return "$status"
+    return "$relay_status"
+}
+
+# --- -s: install missing repo dependencies on the host -----------------
+installed_deps=()
+if (( want_deps )); then
+    # Metadata is generated inside the sandbox; only validated dependency
+    # strings ever reach pacman.
+    srcinfo=$("$self" --offline --printsrcinfo) ||
+        die "Could not read package metadata."
+
+    carch=$(uname -m)
+    fields="depends|makedepends|depends_$carch|makedepends_$carch"
+    if (( ! nocheck )); then
+        fields+="|checkdepends|checkdepends_$carch"
+    fi
+    field_re="^[[:space:]]*($fields) = (.*)$"
+    dep_re='^[[:alnum:]@_+][[:alnum:]@._+-]*((<|<=|=|>=|>)[[:alnum:]._+:~-]+)?$'
+
+    deps=()
+    while IFS= read -r line; do
+        [[ "$line" =~ $field_re ]] || continue
+        dep=${BASH_REMATCH[2]}
+        [[ "$dep" =~ $dep_re ]] ||
+            die "Refusing unexpected dependency string: $dep"
+        deps+=("$dep")
+    done <<< "$srcinfo"
+
+    missing=()
+    if (( ${#deps[@]} )); then
+        mapfile -t missing < <(pacman -T -- "${deps[@]}" || true)
+    fi
+
+    if (( ${#missing[@]} )); then
+        printf 'makepkg-jail: installing missing dependencies outside the sandbox:\n' >&2
+        printf '  %s\n' "${missing[@]}" >&2
+
+        before=$(pacman -Qq | sort)
+
+        pacopts=(--asdeps --needed)
+        if (( noconfirm )); then
+            pacopts+=(--noconfirm)
+        fi
+        sudo pacman -S "${pacopts[@]}" -- "${missing[@]}" ||
+            die "Dependency installation failed. AUR dependencies must be built first."
+
+        mapfile -t installed_deps < <(
+            comm -13 <(printf '%s\n' "$before") <(pacman -Qq | sort)
+        )
     fi
 fi
 
+# --- Build --------------------------------------------------------------
+if (( split )); then
+    fetch_args=(--nobuild)
+    build_args=(--noextract --noprepare --holdver)
+    if (( clean_before )); then fetch_args+=(--cleanbuild); fi
+    if (( clean_after )); then build_args+=(--clean); fi
 
-exec 3<"$filter"
-args+=(--seccomp 3)
+    "$self" --online "${fetch_args[@]}" "${pass[@]}"
+    "$self" --offline "${build_args[@]}" "${pass[@]}"
+else
+    single=()
+    if (( clean_before )); then single+=(--cleanbuild); fi
+    if (( clean_after )); then single+=(--clean); fi
 
-# Relay both output streams without handing the host terminal directly
-# to sandboxed programs. Keep stdout and stderr separate for callers
-# such as paru that parse makepkg's stdout.
-#
-# Wait for both relays before exiting, and preserve the build status.
-# Anonymous pipes preserve separate stdout/stderr without exposing
-# the host terminal or named FIFO paths to sandboxed processes.
-exec {out_fd}> >(/usr/bin/cat)
-out_pid=$!
-
-exec {err_fd}> >(/usr/bin/cat >&2)
-err_pid=$!
-
-status=0
-/usr/bin/bwrap "${args[@]}" -- \
-    /usr/bin/aa-exec -p '/usr/bin/bwrap//&makepkg-jail-build' -- \
-    /usr/bin/makepkg --config /etc/jail-makepkg.conf "$@" \
-    </dev/null >&"$out_fd" 2>&"$err_fd" || status=$?
-
-# Close our pipe writers before waiting for the readers to finish.
-exec {out_fd}>&-
-exec {err_fd}>&-
-
-relay_status=0
-wait "$out_pid" || relay_status=$?
-wait "$err_pid" || relay_status=$?
-
-if (( status != 0 )); then
-    exit "$status"
+    run_jail "$online" "${single[@]}" "${pass[@]}"
 fi
-exit "$relay_status"
+
+# --- -i: install the built packages on the host -------------------------
+if (( want_install )); then
+    list=$("$self" --offline --packagelist) ||
+        die "Could not list built packages."
+
+    pkgs=()
+    while IFS= read -r path; do
+        [[ "$path" == /work/* ]] ||
+            die "Unexpected package path: $path"
+        name=${path#/work/}
+        [[ -n "$name" && "$name" != */* && "$name" != .* ]] ||
+            die "Package path is not a direct workspace child: $path"
+        if [[ -f "$work/$name" ]]; then
+            pkgs+=("$work/$name")
+        fi
+    done <<< "$list"
+
+    (( ${#pkgs[@]} )) || die "No built packages found to install."
+
+    upopts=()
+    if (( asdeps )); then upopts+=(--asdeps); fi
+    if (( needed )); then upopts+=(--needed); fi
+    if (( noconfirm )); then upopts+=(--noconfirm); fi
+
+    sudo pacman -U "${upopts[@]}" -- "${pkgs[@]}"
+fi
+
+# --- -r: remove dependencies installed by -s, after a successful build --
+if (( want_rmdeps && ${#installed_deps[@]} )); then
+    rmopts=()
+    if (( noconfirm )); then rmopts+=(--noconfirm); fi
+    sudo pacman -Rnu "${rmopts[@]}" -- "${installed_deps[@]}"
+fi
+
+exit 0
