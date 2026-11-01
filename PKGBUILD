@@ -4,8 +4,8 @@
 
 _pkgname='mail-parser'
 pkgname="python-${_pkgname}"
-pkgver=4.6.4
-pkgrel=3
+pkgver=4.10.0
+pkgrel=1
 pkgdesc='Email parsing library for extracting structured data from raw messages'
 arch=('any')
 url="https://github.com/SpamScope/${_pkgname}"
@@ -34,7 +34,7 @@ source=(
 	'hatchling-unrestrict.patch'
 )
 b2sums=(
-	'1c09ca1d5b13f1e8bcd86bf5f99ce7e999f5e82812cc595a993215c53190881e43a02e7f0b494bb87ac00d9ef8442697cb8df9231aa35c769d7a0ae1ae040a8d'
+	'b0194b2cc46b42105010e5b6e7f44209ef67deb0b4fced133c44c6b1efc2300f9c58d2522206fdb8fac5d05bc881c355393d53fa331d7f8893ad734a269566f2'
 	'bcf6dd1763e0747613dea6cb293866fef3f0f196d3b2c5b617ba53a01192ad62c8935a1b4f84fcd5bd197f311d1f0089388c96ca4e79d821be6c73ba3e6f7547'
 )
 
