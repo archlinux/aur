@@ -1,7 +1,7 @@
 # Maintainer: Adam <adam@atlas-sw.com>
 pkgname=kraken-workbench-bin
 _name=kraken
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Reverse-engineering workbench on Ghidra's decompiler: analyse, patch and rewrite binaries, with an AI assistant"
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=('kraken-workbench')
 conflicts=('kraken-workbench')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/${_name}-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('6d1d23c49b814b34d131bd205bf9cc4e8b94fde4bb9be0ad7142d405a51a2797')
+sha256sums_x86_64=('a347db6e2607f58e0f5e07fb14e13a3f5263e3f8f6413557bdaf89d4078f7c27')
 
 package() {
   cd "${_name}-${pkgver}-${CARCH}-unknown-linux-gnu"
