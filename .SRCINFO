@@ -1,0 +1,20 @@
+pkgbase = lazybw-bin
+	pkgdesc = A keyboard-first terminal UI for the Bitwarden vault (static binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SyscallBrain/lazybw
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazybw
+	conflicts = lazybw
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/SyscallBrain/lazybw/releases/download/v1.0.0/lazybw-1.0.0-x86_64-unknown-linux-musl.tar.gz
+	depends_x86_64 = bitwarden-cli
+	sha256sums_x86_64 = 14451d69504a9bc12ab2fe77dae6d9adcde4de0fb4967bf545361692ad144a9d
+	source_aarch64 = https://github.com/SyscallBrain/lazybw/releases/download/v1.0.0/lazybw-1.0.0-aarch64-unknown-linux-musl.tar.gz
+	optdepends_aarch64 = bitwarden-cli: the Bitwarden CLI that lazybw drives (or npm i -g @bitwarden/cli)
+	sha256sums_aarch64 = 77f2fcc7592ef338b0fcf75df50ffdaf1e1b6001a671ecec3a3c7cae78d468ef
+
+pkgname = lazybw-bin
