@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=kio-s3-git
-pkgver=r512.3d37741
-pkgrel=2
+pkgver=r513.e631628
+pkgrel=1
 pkgdesc="KIO worker for Amazon S3 and compatible storage (git version)"
 arch=('x86_64')
 url="https://invent.kde.org/network/kio-s3"
