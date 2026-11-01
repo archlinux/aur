@@ -1,7 +1,7 @@
 pkgbase = dotnet-jsonschema-net-7
 	pkgdesc = JSON Schema built on System.Text.Json, 7.x (NuGet package)
 	pkgver = 7.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/json-everything/json-everything
 	arch = any
 	license = MIT
