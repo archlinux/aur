@@ -1,7 +1,7 @@
 pkgbase = machctrl-bin
 	pkgdesc = Hardware monitor and optimizer for Linux — CPU, GPU, RAM, fans, temperature and system tuning (prebuilt)
 	pkgver = 3.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/araujo791/MachCtrl-GTK4
 	install = machctrl.install
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = machctrl-bin
 	replaces = machctrl-electron
 	backup = etc/sudoers.d/machctrl
 	source = machctrl-3.0.0.tar.gz::https://github.com/araujo791/MachCtrl-GTK4/releases/download/v3.0.0/machctrl-3.0.0-x86_64.tar.gz
-	sha256sums = 237dddad202e96be1f63c7cf9592dd9803f18442f20f8c7d32239980f922db7f
+	sha256sums = a43ed4a4f808967bc738c650a992e776e605ac6382985e3c6e6bda8e56493944
 
 pkgname = machctrl-bin

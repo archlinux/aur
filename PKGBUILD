@@ -1,7 +1,7 @@
 # Maintainer: araujo791 <https://github.com/araujo791>
 pkgname=machctrl-bin
 pkgver=3.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Hardware monitor and optimizer for Linux — CPU, GPU, RAM, fans, temperature and system tuning (prebuilt)"
 arch=('x86_64')
 url="https://github.com/araujo791/MachCtrl-GTK4"
@@ -27,7 +27,7 @@ backup=('etc/sudoers.d/machctrl')
 
 # Binarios pre-compilados da release fixa (tag v$pkgver).
 source=("machctrl-$pkgver.tar.gz::https://github.com/araujo791/MachCtrl-GTK4/releases/download/v$pkgver/machctrl-$pkgver-x86_64.tar.gz")
-sha256sums=('237dddad202e96be1f63c7cf9592dd9803f18442f20f8c7d32239980f922db7f')
+sha256sums=('a43ed4a4f808967bc738c650a992e776e605ac6382985e3c6e6bda8e56493944')
 
 package() {
     # O tarball da release extrai numa subpasta machctrl-<ver>-x86_64/
