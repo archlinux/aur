@@ -1,16 +1,24 @@
 pkgbase = sim65
 	pkgdesc = 65c02 simulation system
-	pkgver = 1
-	pkgrel = 2
+	pkgver = 2021.03
+	pkgrel = 1
+	epoch = 1
 	url = http://www.wsxyz.net/sim65/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = wxgtk
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = wxwidgets-common
+	depends = wxwidgets-gtk3
 	source = http://www.wsxyz.net/sim65/sim65.tar.gz
-	source = wx3.patch
-	md5sums = b83a86302e55763e280638676715c391
-	md5sums = ba0b33c3e37c1c8a7d80ab135b7bdeb8
+	source = ull-typing.patch
+	source = macro-typos.patch
+	source = printf-overflows.patch
+	sha256sums = 06dc7f414ac4817fe5248b405fa3af6587588db0ca821990268660b52751220b
+	sha256sums = 7a8451710982b0cc3cd80b2e828304a509ba91a326dd28a6c8c322836e982d5b
+	sha256sums = 3d602d76fe922c78a384fa36f12256095c3f90e6c5511f35f8de25c32fbeb701
+	sha256sums = 35c39fc9ef7d9af4cc90baa939a36e8159ca8053285be75dbc55f51a24e10652
 
 pkgname = sim65
-

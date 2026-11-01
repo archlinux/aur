@@ -1,0 +1,13 @@
+diff --git a/DisasmWindow.h b/DisasmWindow.h
+index 9109ddf..7dc1b60 100644
+--- a/DisasmWindow.h
++++ b/DisasmWindow.h
+@@ -4,7 +4,7 @@
+ //
+ 
+ #ifndef INCLUDED_DISASMWINDOW_H
+-#define INCLUDED_DISASMINDOW_H
++#define INCLUDED_DISASMWINDOW_H
+ 
+ #include "wx/wx.h"
+ #include "Memory.h"

@@ -1,0 +1,13 @@
+diff --git a/Acia6551Frame.cpp b/Acia6551Frame.cpp
+index ad643ce..a1401d9 100644
+--- a/Acia6551Frame.cpp
++++ b/Acia6551Frame.cpp
+@@ -193,7 +193,7 @@ void Acia6551Frame::OnClose (wxCloseEvent& event)
+ 
+ void Acia6551Frame::SetParams ()
+ {
+-  char txt[40];
++  char txt[60];
+   char pchar[] = "NOEMS";
+ 
+   if (txsbs & 1)
