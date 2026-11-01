@@ -13,7 +13,7 @@ license=('MIT')
 provides=("dotnet-humanizer-core=$pkgver")
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   git
 )
 # 2.x is what JsonPointer.Net 5.x (dotnet-jsonpointer-net-5) needs. The commit the package was

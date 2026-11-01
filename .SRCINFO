@@ -5,7 +5,7 @@ pkgbase = dotnet-humanizer-core-2
 	url = https://github.com/Humanizr/Humanizer
 	arch = any
 	license = MIT
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-build-deps-10.0
 	makedepends = git
 	provides = dotnet-humanizer-core=2.14.1
 	source = git+https://github.com/Humanizr/Humanizer.git#commit=3ebc38de585fc641a04b0e78ed69468453b0f8a1
