@@ -1,0 +1,14 @@
+#!/bin/sh
+# Modern, desktop-agnostic check using XDG portals instead of gsettings
+COLOR_SCHEME=$(dbus-send --print-reply=literal --dest=org.freedesktop.portal.Desktop \
+    /org/freedesktop/portal/desktop org.freedesktop.portal.Settings.Read \
+    string:"org.freedesktop.appearance" string:"color-scheme" 2>/dev/null)
+
+if echo "$COLOR_SCHEME" | grep -q "uint32 1"; then
+    export GTK_THEME="Adwaita:dark"
+else
+    export GTK_THEME="Adwaita"
+fi
+
+exec gnubg "$@"
+
