@@ -1,0 +1,19 @@
+pkgbase = steam-redeemer-bin
+	pkgdesc = Bulk-redeem Humble Bundle Steam keys with ownership detection (prebuilt binary)
+	pkgver = 2026.08.17.2
+	pkgrel = 1
+	url = https://github.com/castanley/humble-steam-redeem
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = glibc
+	depends = zlib
+	provides = steam-redeemer
+	conflicts = steam-redeemer
+	options = !strip
+	options = !debug
+	source = steam-redeemer.sh
+	sha256sums = 24c8a01d390472b959dcac62693ab98738ef44a01112ce2a384b0327e5d85dd0
+	source_x86_64 = steam-redeemer-2026.08.17.2::https://github.com/castanley/humble-steam-redeem/releases/download/v2026.08.17.2/steam-redeemer-linux
+	sha256sums_x86_64 = 481ac74a14b684606a9ef9545b541d715f086c2be21000f35072ddb5f68bc604
+
+pkgname = steam-redeemer-bin
