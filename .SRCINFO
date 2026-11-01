@@ -1,6 +1,6 @@
 pkgbase = koral-bin
 	pkgdesc = A Rust terminal with native sharky shell support
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/mafuzyk/koral
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = koral-bin
 	provides = koral
 	conflicts = koral
 	options = !debug
-	source = koral-1.0.1.tar.gz::https://github.com/mafuzyk/koral/releases/download/v1.0.1/koral-x86_64-linux.tar.gz
-	sha256sums = 1e76e07b9dd05ed6ddb02afccf2c7567988b2c5af5fe011359555565ae40a1a8
+	source = koral-1.0.2.tar.gz::https://github.com/mafuzyk/koral/releases/download/v1.0.2/koral-x86_64-linux.tar.gz
+	sha256sums = bf1c126ac5fa5c39ee9fa7f6532e2008ddb11ff139df2511c6048fcc2345b266
 
 pkgname = koral-bin
