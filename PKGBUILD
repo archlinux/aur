@@ -1,6 +1,6 @@
 # Maintainer: Kamil Piwowarski <kapiwko@gmail.com>
 pkgname=meteo-pl
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='ICM weather forecasts, interactive meteograms and a Plasma 6 widget'
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ source=("https://github.com/kapiwko/meteo-pl/releases/download/v${pkgver}/meteo-
         "meteo-pl-${pkgver}-SHA256SUMS::https://github.com/kapiwko/meteo-pl/releases/download/v${pkgver}/SHA256SUMS"
         "meteo-pl-${pkgver}-SHA256SUMS.asc::https://github.com/kapiwko/meteo-pl/releases/download/v${pkgver}/SHA256SUMS.asc"
         'valijson-5eac4b66.tar.gz::https://codeload.github.com/tristanpenman/valijson/tar.gz/5eac4b66f20b2c189ae40281c29e71cf39a958ec')
-sha256sums=('d542b05a4ab2eb6adfece48f3d50ed26c9be00b37d6dfc00bdf5bddf0c623814'
-            'c5ffe770b3f581177782705cf3a3848f61d7483ccea4640953c5a9c196968045'
-            '56068c8369eca007aeb2b0a8d94aaba8ab0e249091121b1f80360ee79e386d93'
+sha256sums=('d8e679fe5bf0e596f8c7982718c1cf6637f2a01f26f1c7e0343124f65a7fd81e'
+            '0c9e4295e9547acfc312afb614d4b9c0ed85031d1e1e4cda0a2579e6c6a03006'
+            'b5794706e0bc326e6984b827b3bd1f2d319af9a793ffee4c00471fb5f9a7b26c'
             '8b68741da04708c806d07a5a5fd181d3fb801aa161d7f65f45d7a3cc1b0c98ee')
 validpgpkeys=('1C0C43EF3001F658C11971D1A4A884E5B7A2A8A1')
 
