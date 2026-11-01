@@ -6,7 +6,7 @@ post_install() {
 
 # Versions whose upgrade needs operator action. An upgrade from before one of
 # them prints where its notes are.
-action_versions=(0.2.0)
+action_versions=(0.2.0 0.3.0)
 
 post_upgrade() {
 	post_install
