@@ -2,7 +2,7 @@
 # Public source by default. tools/build-arch.sh builds a committed local checkout.
 pkgbase=at1ass-shell-git
 pkgname=(at1ass-shell-git at1ass-shell-plugins-git at1ass-shell-greeter-git)
-pkgver=0.1.0.r19.g2454a62d
+pkgver=0.1.0.r20.g7c7203ba
 pkgrel=1
 pkgdesc='Config-first Quickshell desktop shell for Hyprland'
 arch=(x86_64)
