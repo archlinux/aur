@@ -55,6 +55,9 @@ for relative, item in sorted(packages.items()):
         assert notices, ('Missing upstream notice', relative)
         for notice in notices:
             shutil.copyfile(notice, destination / notice.name)
+    if metadata['name'] == 'tailwindcss':
+        assert '@tailwind base;' in (root / 'src/app.css').read_text()
+        shutil.copyfile(package / 'lib/css/LICENSE', destination / 'preflight-LICENSE')
     if metadata['name'] == 'pako':
         # The zlib-derived files retain additional original notices in source.
         shutil.copytree(package / 'lib/zlib', destination / 'zlib-source', dirs_exist_ok=True)
