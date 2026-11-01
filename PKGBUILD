@@ -13,9 +13,9 @@ pkgname=(
 pkgver=2026.1.2preview
 pkgrel=1
 pkgdesc="PowerShell extension for Visual Studio Code, using powershell-editor-services"
-arch=('any')
+arch=(any)
 url='https://github.com/PowerShell/vscode-powershell'
-license=('MIT')
+license=(MIT)
 # The extension of the version that bundles PowerShell Editor Services 4.7.0, which upstream
 # released together
 depends=(
