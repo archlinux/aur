@@ -1,0 +1,19 @@
+pkgbase = python-text2num
+	pkgdesc = Parse and transcribe numbers expressed as natural language words
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/allo-media/text2num
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin>=1.7
+	makedepends = python-maturin<2
+	depends = glibc
+	depends = libgcc
+	depends = python
+	source = text2num-3.1.0.tar.gz::https://github.com/allo-media/text2num/archive/5007cc125e85f9c9954015be572072952549b6f9.tar.gz
+	sha256sums = 032b08292e93f8689c618f35513d28df1d86bcf7b879f1a5f8ba4290e35e41bc
+
+pkgname = python-text2num
