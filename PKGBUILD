@@ -8,12 +8,12 @@ _project=Microsoft.VisualStudio.Threading
 pkgver=18.12.1
 pkgrel=2
 pkgdesc="Async synchronization primitives, async collections, TPL and dataflow extensions, Microsoft.VisualStudio.Threading.Only (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/microsoft/vs-threading'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   dotnet-vs-validation
   jq
   python
