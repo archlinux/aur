@@ -11,7 +11,7 @@ url='https://github.com/dotnet/roslyn'
 license=('MIT')
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
 )
 # The commit the packages were published from (release/insiders), and the official build of them, see
 # the file version 5.900.26.35703 of their assemblies (Arcade encodes the date and build number in it)
@@ -79,9 +79,9 @@ EOF
 }
 
 prepare() {
-  # Arcade is part of the source-built .NET of Arch Linux (dotnet-source-built-artifacts), which
-  # Arch Linux ARM doesn't have. It can't be a makedepends of an arch=any package, so it's used when
-  # it's installed, and comes from dotnet-eng where it isn't (Arch Linux ARM).
+  # Arcade comes from the .NET dotnet-build-deps-10.0 chooses: the source-built artifacts of Arch
+  # Linux (dotnet-source-built-artifacts) with dotnet-build-deps-10.0, Microsoft's dotnet-eng feed
+  # with dotnet-build-deps-10.0-bin.
   mkdir -p nuget-local
   local _artifacts _arcade
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
@@ -93,12 +93,6 @@ prepare() {
     _arcade="${_arcade##*/Microsoft.DotNet.Arcade.Sdk.}"
     echo "${_arcade%.nupkg}" >arcade-version
   done
-  # x86_64 has the source-built artifacts, so it requires them rather than falling back to Microsoft's
-  # prebuilt Arcade
-  if [[ "$CARCH" == x86_64 && ! -f "$srcdir/arcade-version" ]]; then
-    echo 'dotnet-roslyn needs dotnet-source-built-artifacts on x86_64' >&2
-    exit 1
-  fi
 
   cd "roslyn-$_commit" || exit
   # Upstream's NuGet.config, which has all of Microsoft's feeds the tests need
