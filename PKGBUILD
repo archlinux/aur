@@ -1,4 +1,5 @@
-# Maintainer: tassiovirginio <tassiovirginio@gmail.com>
+# Maintainer: tiziodcaio <dbas.so@poul.org>
+# Contributor: tassiovirginio <tassiovirginio@gmail.com>
 
 pkgname=strata-bin
 pkgver=1.1.1
