@@ -180,8 +180,8 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
   '7f0df1c1eadfc39f7075cf6de7b1d2b99959042b2a3ee1cc0158ead26128ae8086463c563178b22c325c965352d5d756d2b02abf1137ad91b116fd753aeed8b6'
   '7753cb1b8d4b865ac3b08f4d17a9f848c138e14539fc6b4b377900f6be2714f74964f34e215184c900348cd7fa54e0f71238d63fa3ccb11b605ff5fc744b0708'
-  '6f71c4733bc60224e17b0ac213717fe7a6f6c7ce248ed1af48c67fedf20beb3129debde682131335478cad3a18943c2bfd6977483c0147cfa5da756015bad3e3'
-  '8cba4f7a00a928c3f3d3e408a6ba92c7d685b085a080ae3a3d2baaad0baabbf9f848298ae04c0444c1b0f5eaac035d3931d7cf7b3984adb50c5375d1ff2867d1'
+  '96676f88faa330b5de88f28885cf505ef983260b94d4c0e2734b41818944a2ac8a0c239971b88df1441021bbcff00965484beae78f415df8dee71782f1a0300a'
+  '6a5e7eb8d5d4be05a490938052f029343bbc58582ba29f3b5d0e4edc4991f8c47c48ea01f79ff19772bda184886cd5f57aa1a47b2d416b42cf3e0882ccfee42b'
   '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
   '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
   '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
@@ -214,8 +214,8 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
   '93382f5100b58b1cf763054c4a839546f4c7cc8a141cf11d34ddf3b01a7c7e6663630e5ad32df32f69ff84c1d50073ce6c43ef3e4a7a934bbe6b344156e5c54e'
   'db691d49fc99d2d844d4f9fc0af456565a5c8102340f5b9d001029f3d7b95a7762ab612ac45824b97961b26109549ff9527070c44838966c0c8bbc485bf0f3d0'
-  '96044937ac7fe10134d938516a4da2cc69e71faaee3f84e58dc42a900a500e5de04989f5d762e8efaff9ac5e2c893e713176caafb8724f53bdc8a403a719bd76'
-  '4ecf2980d30ed76ee0ec3d7d8709fb4bd8330e89d9489b9fc127b6d9e69efd0f9345d7ba56a8228b4f96412e4a627d5ba88af5354f6b73177339b3c865cc28f6'
+  'a1a50088ccba24c160307f0fd3690d6eb72975e4afb5dcd7360590feb298efb49baa42b4dab9c170eb59c199aa216c9092a12b7c5693f391f28343445ace8a38'
+  'faa8529d128d330db32fc507fdc1b81a66b529f40252c113e0a4b3a175fabd8112aa5c1a549ea8e806d5997cf2d8e63bfd7a5ecc51975fa0af828597728b6862'
   '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
   '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
   'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
@@ -237,8 +237,30 @@ _dotnet_env() {
   export UseMmi=false
   # Without telemetry, see telemetry-optional.patch in prepare()
   export UseTelemetry=false
-  # RID of the .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's build
-  _rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+  # RID of the running .NET SDK: arch-x64 for the source-built .NET of Arch, linux-arm64 for Microsoft's
+  # build. The code generators (ResGen, TypeCatalogGen) and crossgen2 run on it, the build host.
+  _host_rid=$(dotnet --info | sed -n -E 's/^ *RID: *//p')
+  # The architecture and RID PowerShell is built for. They follow the package architecture ($CARCH), so an
+  # x86_64 host can cross-build for aarch64. A native build (the host's architecture is $CARCH) targets the
+  # host RID: the source-built .NET of Arch on x86_64, Microsoft's build on Arch Linux ARM. A cross build
+  # has no source-built .NET for the target, so its runtime and crossgen packs are Microsoft's portable
+  # linux-<arch> ones from nuget.org, the same build Arch Linux ARM runs natively.
+  case "$CARCH" in
+    x86_64) _target_arch=x64 ;;
+    aarch64) _target_arch=arm64 ;;
+  esac
+  if [[ "$_host_rid" == *-"$_target_arch" ]]; then
+    _rid="$_host_rid"
+  else
+    _rid="linux-$_target_arch"
+  fi
+  # The RuntimeIdentifiers of the projects: the target RID, plus the host RID on a cross build so the code
+  # generators still build and run on the host.
+  if [[ "$_rid" == "$_host_rid" ]]; then
+    _rids="$_rid"
+  else
+    _rids="$_host_rid;$_rid"
+  fi
 }
 
 # Prints the ID and version of a NuGet package ($1)
@@ -478,7 +500,7 @@ prepare() {
   local _csproj _packref _packname
   while read -r _csproj; do
     sed -i -E -e 's/netstandard2\.0/net'"$_dotnetsdkver"'/' \
-      -e 's|(RuntimeIdentifiers>)[^<]*|\1'"$_rid"'|' "$_csproj"
+      -e 's|(RuntimeIdentifiers>)[^<]*|\1'"$_rids"'|' "$_csproj"
     if [[ "$_csproj" == */PSVersionInfoGenerator.csproj ]]; then
       sed -i -e '/<PackageReference Include="System/d' "$_csproj"
     fi
@@ -501,9 +523,9 @@ prepare() {
   find . -type f -name "*.csproj" -exec sed -i -E \
     's|(<PackageReference Include="[^"]+" Version=")'"${_dotnetsdkver//./\\.}"'\.[0-9]{1,3}"|\1'"$_runtimever"'"|' {} +
 
-  # The code generators build() runs
-  dotnet restore "src/TypeCatalogGen" --runtime "$_rid"
-  dotnet restore "src/ResGen" --runtime "$_rid"
+  # The code generators build() runs, on the build host
+  dotnet restore "src/TypeCatalogGen" --runtime "$_host_rid"
+  dotnet restore "src/ResGen" --runtime "$_host_rid"
 
   # PSResourceGet only targets .NET Framework, so it came with the .NET Framework builds of its
   # dependencies, all prebuilt from nuget.org. It's built for .NET instead, against NuGet.Client 7 and
@@ -517,17 +539,27 @@ prepare() {
 }
 
 build() {
+  _dotnet_env
+
+  # A cross build ($CARCH differs from the build host) gets the right target RID and runtime packs below,
+  # but two steps aren't cross-capable yet: libpsl-native is built with cmake for the build host, and the
+  # bundled modules and help are produced by running the PowerShell just built, which on a cross build is
+  # the target architecture and can't run here (it needs a host-architecture pwsh). Until those are wired
+  # up, cross builds stop here; a native aarch64 build, e.g. under QEMU, works.
+  if [[ "$_rid" != "$_host_rid" ]]; then
+    echo 'powershell: cross-building is not fully wired up yet (libpsl-native cmake target, host pwsh for the modules and help)' >&2
+    exit 1
+  fi
+
   cmake -S PowerShell-Native/src/libpsl-native -B build-psl-native -DCMAKE_BUILD_TYPE=Release
   cmake --build build-psl-native
-
-  _dotnet_env
 
   # The classes of the resources (ResGen). It runs much faster if built with optimisations.
   cd "$srcdir"/PowerShell/src/ResGen || exit
   dotnet run \
     -c Release \
     -f "net$_dotnetsdkver" \
-    -r "$_rid"
+    -r "$_host_rid"
 
   # The type catalog of System.Management.Automation, from the assemblies of Microsoft.PowerShell.SDK
   # (TypeCatalogGen)
@@ -546,7 +578,7 @@ build() {
   dotnet run \
     -c Release \
     -f "net$_dotnetsdkver" \
-    -r "$_rid" \
+    -r "$_host_rid" \
     ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs \
     "$_inc_file"
 
@@ -574,11 +606,13 @@ build() {
   mkdir -p "$_publish_path/ref"
   grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;$//' | xargs -d '\n' cp -t "$_publish_path/ref"
 
-  # The bundled modules, built from source with the PowerShell just built. Their assemblies are compiled
-  # to ReadyToRun with the crossgen2 the publish above used.
-  local _crossgen2=("$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_rid"/*/tools/crossgen2)
+  # The bundled modules, built from source with the PowerShell just built. Their assemblies are
+  # architecture-neutral IL, compiled to ReadyToRun for the target with the host's crossgen2 (which the
+  # publish above restored), targeting $_target_arch so a cross build produces the target's images.
+  local _crossgen2=("$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_host_rid"/*/tools/crossgen2)
   "$_publish_path"/pwsh -NoProfile -NonInteractive -File "$srcdir/build-modules.ps1" \
-    -SourcePath "$srcdir" -OutputPath "$_publish_path/Modules" -Crossgen2Path "${_crossgen2[0]}"
+    -SourcePath "$srcdir" -OutputPath "$_publish_path/Modules" -Crossgen2Path "${_crossgen2[0]}" \
+    -TargetArch "$_target_arch"
 
   # The man page
   # The checked-in pwsh.1 ends in the synopsis at -WindowStyle: Ronn took the placeholder <style> for an
@@ -595,6 +629,14 @@ build() {
 }
 
 check() {
+  # The tests run the PowerShell that was built, which on a cross build ($CARCH differs from the build
+  # host) targets another architecture and can't run here. Run them natively on the target instead, e.g.
+  # the native aarch64 build.
+  if [[ "$(uname -m)" != "$CARCH" ]]; then
+    echo 'powershell: skipping the test suite on a cross build; run it natively on the target architecture' >&2
+    return 0
+  fi
+
   # Run the tests with a home of their own, so they neither see the profiles, modules and configs
   # of the user building the package, nor leave their own files behind in the user's home.
   # Some tests expect the config folder of PowerShell to exist already, and Get-ChildItem.Tests.ps1

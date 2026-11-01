@@ -397,7 +397,10 @@ function Invoke-ReadyToRunCompiler {
     param(
         # The Modules folder of the PowerShell being built
         [Parameter(Mandatory)] [string] $ModulePath,
-        [Parameter(Mandatory)] [string] $Crossgen2Path
+        [Parameter(Mandatory)] [string] $Crossgen2Path,
+        # The architecture to compile the images for, e.g. x64 or arm64. Defaults to the one the running
+        # PowerShell reports, which differs from the target on a cross build.
+        [string] $TargetArch
     )
 
     # Assemblies the runtime or PowerShell itself provide are loaded from there instead of the module,
@@ -405,8 +408,13 @@ function Invoke-ReadyToRunCompiler {
     $platformAssemblies = @(Get-PlatformAssembly)
     $platformNames = [System.Collections.Generic.HashSet[string]]::new([string[]] $platformAssemblies.BaseName, [StringComparer]::OrdinalIgnoreCase)
 
-    # The images are for the architecture PowerShell runs on, e.g. x64 or arm64
-    $targetArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
+    # The images are for the target architecture, e.g. x64 or arm64, the one PowerShell runs on unless a
+    # cross build passes another
+    $targetArch = if ($TargetArch) {
+        $TargetArch
+    } else {
+        [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
+    }
 
     foreach ($module in Get-ChildItem -Directory -Path $ModulePath) {
         # PSReadLine's netstd Polyfiller is only loaded by Windows PowerShell, PowerShell 7 uses net6plus

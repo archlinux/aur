@@ -6,7 +6,9 @@ param(
     # The Modules folder of the PowerShell being built
     [Parameter(Mandatory)] [string] $OutputPath,
     # crossgen2 of the source-built .NET, to compile the module assemblies to ReadyToRun
-    [Parameter(Mandatory)] [string] $Crossgen2Path
+    [Parameter(Mandatory)] [string] $Crossgen2Path,
+    # The architecture to compile the ReadyToRun images for, e.g. x64 or arm64
+    [string] $TargetArch
 )
 
 Set-StrictMode -Version 3.0
@@ -26,4 +28,4 @@ Build-PSReadLineModule -SourcePath (Join-Path $SourcePath PSReadLine) -PagerSour
     -OutputPath $OutputPath -NuGetConfig $nugetConfig
 Build-ThreadJobModule -SourcePath (Join-Path $SourcePath ThreadJob) -OutputPath $OutputPath -NuGetConfig $nugetConfig
 
-Invoke-ReadyToRunCompiler -ModulePath $OutputPath -Crossgen2Path $Crossgen2Path
+Invoke-ReadyToRunCompiler -ModulePath $OutputPath -Crossgen2Path $Crossgen2Path -TargetArch $TargetArch
