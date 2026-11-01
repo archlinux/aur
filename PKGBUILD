@@ -1,10 +1,10 @@
 # Maintainer: Kherim Willems <aur@kher.im>
-# Co-maintainer: Tércio Martins
+# Co-maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=python-types-pyserial
 _pkgname=types_pyserial
-_hashblake='a2b20d74759b5b40827b38f144be6e188fe117d592c218c98347d7aa4966193c'
-pkgver=3.5.0.20260519
+_hashblake='73543e46467007f7d5d9f37965c3aed5be4ee09bbb9b9233058c8e4ef4e0d953'
+pkgver=3.5.0.20261030
 pkgrel=1
 pkgdesc="Typing stubs for pyserial"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-typing_extensions')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/${_hashblake:0:2}/${_hashblake:2:2}/${_hashblake:4}/${_pkgname}-${pkgver}.tar.gz"
         "grep-return-type.patch")
-sha256sums=('0d6452781871f9af7b8598e24faa5f75d4ad50848a6fb301b4ae30b0e6ec3765'
+sha256sums=('121ba5a8020063f1e0722417502f7f35b6b589b343045284eba94cc7cf43435f'
             '1101e12d68179e99636f5dcb2f73c99dc1d2c7b466365d0e6f2f08edc181e66e')
 
 prepare() {
