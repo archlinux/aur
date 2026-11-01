@@ -2,7 +2,7 @@
 
 _pkgname=servo-fetch
 pkgname="${_pkgname}-bin"
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Self-contained browser engine that fetches, renders, and extracts web content as Markdown, JSON, or screenshots"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e54da0281ccd52041a2984472b03fa5f0615e11c9998e3dbb5773416e4e9c524')
-sha256sums_aarch64=('a9ae881363c9790dfc49934d6bd01ed9c003a505086193edf3f2d7e0bde627be')
+sha256sums_x86_64=('7a4dfff421045c7b9278cb6e58f850b43976ead292be72cb04b27af3918a115e')
+sha256sums_aarch64=('a2417d984b7735c1fdef13875ccb7665a9514ebeab29efccbbb298c24ee04c6c')
 options=('!debug')
 
 package() {
