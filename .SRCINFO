@@ -1,16 +1,28 @@
 pkgbase = secure-eye
 	pkgdesc = Face authentication for Linux
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/vhrabar/SecureEye
-	install = secure-eye.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-only
 	license = MIT
-	makedepends = meson>=0.64
+	makedepends = meson>=1.7
 	makedepends = ninja
 	makedepends = pkgconf
+	makedepends = python
+	makedepends = pam
+	makedepends = libevdev
+	makedepends = libinih
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	source = secure-eye-0.3.0.tar.gz::https://github.com/vhrabar/SecureEye/archive/v0.3.0.tar.gz
+	source = secure-eye.install
+	sha256sums = 37b8179e0eca16938b88ef8e39b03923da615884c242ab6ad901b7f9858226bb
+	sha256sums = f07bfc5fd27d2e649eebafbccaaefe1be5cce3606363df9a74c7700098476d8f
+
+pkgname = secure-eye
+	install = secure-eye.install
 	depends = pam
 	depends = libevdev
 	depends = libinih
@@ -24,6 +36,7 @@ pkgbase = secure-eye
 	depends = python-dlib
 	depends = v4l-utils
 	depends = systemd
+	optdepends = secure-eye-gui: app to enroll face models, test recognition and edit the configuration
 	optdepends = python-sounddevice: audio device enumeration for the mediapipe backend
 	optdepends = ffmpeg: ffmpeg camera capture backend
 	optdepends = python-ffmpeg-python: ffmpeg camera capture backend
@@ -35,10 +48,17 @@ pkgbase = secure-eye
 	replaces = libpam-secureeye
 	replaces = secureeye-authd
 	backup = etc/secureEye/config.ini
-	source = secure-eye-0.2.1.tar.gz::https://github.com/vhrabar/SecureEye/archive/v0.2.1.tar.gz
-	source = secure-eye.install
-	sha256sums = 55fa0ae85713296bb4098e1671c94dfbb17f091ad8baafa5cbd55071251885ac
-	sha256sums = f07bfc5fd27d2e649eebafbccaaefe1be5cce3606363df9a74c7700098476d8f
 	depends_x86_64 = python-mediapipe
 
-pkgname = secure-eye
+pkgname = secure-eye-gui
+	pkgdesc = Face authentication for Linux - management app
+	license = GPL-2.0-only
+	depends = secure-eye=0.3.0
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	optdepends = qqc2-desktop-style: native KDE look
+	optdepends = breeze-icons: icons
+	optdepends = polkit: saving the configuration and switching face login
