@@ -7,12 +7,12 @@ _nugetid=Newtonsoft.Json
 pkgver=13.0.4
 pkgrel=2
 pkgdesc="Popular high-performance JSON framework for .NET (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://www.newtonsoft.com/json'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 # The release key isn't public, so the assemblies are public signed with the public key from .NET's
