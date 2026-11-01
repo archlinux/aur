@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=tonepush
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Editor and tone library for Line 6 HX pedals and the StompStation PRO"
 arch=('x86_64' 'aarch64')
@@ -21,11 +21,23 @@ replaces=('stompchain' 'stompchain-git')
 # this.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/tonepush/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9c8fa30c15e455ee5b21eaf624df6bf40d5b6c526dc4b37eab4e84ebfa04dd59')
+sha256sums=('873dd018e75299a81f04aed666a2e68e6bf526bfa29500d1c6da2ac2ac51067a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
+  # The editor's rust-version is the oldest compiler that builds TonePush.
+  # Check it before fetching, so an older stable fails at once and says how
+  # to update, rather than after every crate has downloaded.
+  local need have
+  need=$(sed -n 's/^rust-version = "\(.*\)"$/\1/p' crates/tonepush-gui/Cargo.toml)
+  have=$(rustc --version 2>/dev/null | cut -d' ' -f2)
+  if [[ -n "${need}" && -n "${have}" && "$(vercmp "${have}" "${need}")" -lt 0 ]]; then
+    error "TonePush needs Rust ${need} or newer, but rustc is ${have}."
+    plain "With rustup, run: rustup update stable"
+    plain "With Arch's rust package, update the system: pacman -Syu"
+    return 1
+  fi
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
