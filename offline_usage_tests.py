@@ -25,8 +25,8 @@ _FILES = {
     '/metadata': ('moving-pictures-metadata.tsv',
                   '9dbfbedd90776d77c431faa914d81b0d6299fff10c364216dbcd5c6df5382cc9',
                   'text/tab-separated-values'),
-    '/html': ('qiime2-docs-2024.10.html',
-              '35cdebbbee8effb16b4d7eaf53ad3d5405e2e81516fdce5bbf074653304e8a7e',
+    '/html': ('invalid-metadata.html',
+              '3349e20cc6c76279718a6370ee30ebe311afc5531b0e61f1f682f55dafa37366',
               'text/html'),
 }
 
