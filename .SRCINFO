@@ -1,6 +1,6 @@
 pkgbase = sdr-for-linux
 	pkgdesc = Modern GTK4 SDR application for HPSDR / ANAN transceivers (piHPSDR engine, WDSP)
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/OK1BR/sdr-for-linux
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sdr-for-linux
 	depends = zlib
 	depends = libpipewire
 	depends = libwebsockets
-	source = sdr-for-linux-0.5.2.tar.gz::https://github.com/OK1BR/sdr-for-linux/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = 7903a5bcd0a5a29c61bf3c559cfa03a67cf1a91a62bc785ac455f9f3e435a149
+	source = sdr-for-linux-0.6.0.tar.gz::https://github.com/OK1BR/sdr-for-linux/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = bed4fb3252770d28f5f6e965c0bdeafeb1ba615aa2d8616eb8a5caa07ce56501
 
 pkgname = sdr-for-linux
