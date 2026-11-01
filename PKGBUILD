@@ -14,7 +14,7 @@ install=electric-eye.install
 options=('!strip' '!debug')
 backup=('etc/electric-eye/allowlist.conf' 'etc/electric-eye/config.toml')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4f9e31b12199f2d5ec810438e48f082f9e33c2014a99ee41889545dbd0cb4db7')
+sha256sums=('43368de1546c5c3ca7272a0c248ffccabf94cbcfeaa60a6b9ebe4d351cf96348')
 
 build() {
   cd "$pkgname-$pkgver"
