@@ -12,17 +12,17 @@ pkgname=dotnet-build-deps-$_dotnetver-bin
 pkgver=1
 pkgrel=1
 pkgdesc="Build dependencies of the .NET packages from Microsoft's build of .NET $_dotnetver and nuget.org (meta package)"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://dotnet.microsoft.com/'
-license=('0BSD')
+license=(0BSD)
 # Microsoft's build of the current .NET; the packages for older .NET versions have the version in the
 # name (e.g. dotnet-sdk-9.0-bin)
 depends=(dotnet-sdk-bin)
 provides=("dotnet-build-deps-$_dotnetver=$pkgver")
 conflicts=(
-  dotnet-build-deps-"$_dotnetver"
+  "dotnet-build-deps-$_dotnetver"
   dotnet-source-build-reference-packages
-  dotnet-source-built-artifacts-"$_dotnetver"
+  "dotnet-source-built-artifacts-$_dotnetver"
   dotnet-system-io-ports-native
 )
 source=("LICENSE")
