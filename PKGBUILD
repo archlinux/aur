@@ -3,7 +3,7 @@
 # prebuilt AppImage from the v0.6.0 GitHub release.
 pkgname=wifi-heatmapper-bin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Measure Wi-Fi signal strength and throughput and draw heat maps on a floor plan (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/hnykda/wifi-heatmapper"
@@ -28,8 +28,10 @@ package() {
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/wifi-heatmapper"
 
     # Extract desktop file and icons from inside the AppImage.
+    # makepkg downloads sources with mode 0644, so make it runnable first.
     # Note: the top-level "WiFi Heatmapper.desktop" is a symlink; the real
     # file lives under usr/share/applications/, so extract that path.
+    chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract "usr/share/applications/*.desktop" > /dev/null
     for _size in 32x32 128x128 256x256@2; do
         ./"${_appimage}" --appimage-extract "usr/share/icons/hicolor/${_size}/apps/wifi-heatmapper.png" > /dev/null
