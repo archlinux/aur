@@ -1,0 +1,91 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: OpenAI <noreply@openai.com>
+Date: Sat, 24 Oct 2026 03:35:00 +0000
+Subject: [PATCH] x11: Sync XI2 scroll valuators on pointer enter
+
+When a pointer enters an SDL window, XI2 scroll valuators may have changed
+while the pointer was outside the window. Invalidating the cached values
+causes SDL to discard the first scroll event after entering the window.
+Query the current device valuators instead and use them as the new baseline,
+matching the approach used by Qt's XCB backend.
+
+Querying XIAllDevices keeps this to one XIQueryDevice request per enter and
+also initializes scroll-device state if it has not yet been cached.
+
+---
+ src/video/x11/SDL_x11xinput2.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
+
+diff --git a/src/video/x11/SDL_x11xinput2.c b/src/video/x11/SDL_x11xinput2.c
+--- a/src/video/x11/SDL_x11xinput2.c
++++ b/src/video/x11/SDL_x11xinput2.c
+@@ -536,3 +536,58 @@ static SDL_XInput2DeviceInfo *xinput2_get_device_info(SDL_VideoData *videodata,
+     return devinfo;
+ }
++
++#ifdef SDL_VIDEO_DRIVER_X11_XINPUT2_SUPPORTS_SCROLLINFO
++static void xinput2_update_scroll_valuators(SDL_VideoData *videodata)
++{
++    int num_devices = 0;
++    XIDeviceInfo *devices = X11_XIQueryDevice(videodata->display, XIAllDevices, &num_devices);
++    if (!devices) {
++        return;
++    }
++
++    for (int i = 0; i < num_devices; ++i) {
++        XIDeviceInfo *device = &devices[i];
++        SDL_XInput2DeviceInfo *devinfo = xinput2_get_cached_device_info(device->deviceid);
++
++        if (!devinfo) {
++            bool has_scroll_info = false;
++            for (int j = 0; j < device->num_classes; ++j) {
++                if (device->classes[j]->type == XIScrollClass) {
++                    has_scroll_info = true;
++                    break;
++                }
++            }
++            if (!has_scroll_info) {
++                continue;
++            }
++
++            devinfo = (SDL_XInput2DeviceInfo *)SDL_calloc(1, sizeof(*devinfo));
++            if (!devinfo) {
++                continue;
++            }
++            xinput2_update_device_info(devinfo, device->classes, device->num_classes);
++            devinfo->device_id = device->deviceid;
++            devinfo->next = xinput2_device_info;
++            xinput2_device_info = devinfo;
++        }
++
++        for (int j = 0; j < device->num_classes; ++j) {
++            if (device->classes[j]->type != XIValuatorClass) {
++                continue;
++            }
++
++            const XIValuatorClassInfo *valuator = (const XIValuatorClassInfo *)device->classes[j];
++            for (int k = 0; k < devinfo->scroll.scroll_info_count; ++k) {
++                SDL_XInput2ScrollInfo *scroll_info = &devinfo->scroll.scroll_info[k];
++                if (scroll_info->number == valuator->number) {
++                    scroll_info->prev_value = valuator->value;
++                    scroll_info->prev_value_valid = true;
++                }
++            }
++        }
++    }
++
++    X11_XIFreeDeviceInfo(devices);
++}
++#endif // SDL_VIDEO_DRIVER_X11_XINPUT2_SUPPORTS_SCROLLINFO
+ #endif
+@@ -728,4 +783,9 @@ void X11_HandleXinput2Event(SDL_VideoDevice *_this, XGenericEventCookie *cookie)
+     case XI_Enter:
+     {
+         xinput2_reset_device_valuators();
++#ifdef SDL_VIDEO_DRIVER_X11_XINPUT2_SUPPORTS_SCROLLINFO
++        if (xinput2_scrolling_supported) {
++            xinput2_update_scroll_valuators(videodata);
++        }
++#endif
+     } break;
+*** End Patch

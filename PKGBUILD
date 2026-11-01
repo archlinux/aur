@@ -4,7 +4,7 @@
 _pkgname=sdl3
 pkgname=sdl3-trigger-rumble-hack
 pkgver=3.4.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3) (with trigger rumble hack)"
 arch=('x86_64')
 url="https://www.libsdl.org"
@@ -52,9 +52,11 @@ conflicts=("$_pkgname")
 source=(
   "https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz"
   "0001-joystick-enable-the-trigger-rumble-hack-only-for-mod.patch"
+  "0001-SDL3-xinput2-scroll-enter-baseline.patch"
 )
 sha512sums=('e59df7c19af3ce567e89b987aaf7852ea680beb52acd97dff0fad0688b20a8e0724a4ce33c655a88095d25dadba0e5615c95297ae6327bec149c902ffd2eb15b'
-            '7dc8b5f1de359a8deb28de6f443d6fc41bc46ee237bc23a7e7af359087cb33850ce07bfa3001bebc011c5cfad48af04dc14dc3c71757443640bcc672e41ea869')
+            '7dc8b5f1de359a8deb28de6f443d6fc41bc46ee237bc23a7e7af359087cb33850ce07bfa3001bebc011c5cfad48af04dc14dc3c71757443640bcc672e41ea869'
+            '4b764d9d26b6ee94fb69d8a0bef13479305b7c5a28e47dc56e167ca9af2607ae346b1a991d3415675c19a41be9d1b9111524510a859a71f5e26caa3ad6433695')
 
 prepare() {
   cd "SDL3-${pkgver}"

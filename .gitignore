@@ -1,0 +1,15 @@
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+!LICENSE
+!LICENSES
+!LICENSES/*
+!REUSE.toml
+# actual package
+!PKGBUILD
+!.SRCINFO
+# patch and PGP keys
+!*.patch
+!keys/
+!keys/**
