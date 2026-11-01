@@ -7,12 +7,12 @@ _nugetid=System.Data.SqlClient
 pkgver=4.9.1
 pkgrel=3
 pkgdesc="The legacy SQL Server data provider for .NET, System.Data.SqlClient (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/dotnet/maintenance-packages'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   jq
 )
 # The commit the package was published from, and the official build of it, see the file version
