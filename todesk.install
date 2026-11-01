@@ -1,4 +1,42 @@
+# 4.9.8.1 起上游新增 /opt/todesk/lib，内置 xcb / pipewire 兜底库。
+# 与上游 deb postinst 同逻辑：系统已有同名库就忽略，缺才在 bin/ 建软链
+# （ToDesk 的 RPATH 是 $ORIGIN，即 /opt/todesk/bin）。
+_todesk_bundled_libs=(
+  libxcb-keysyms.so.1
+  libxcb-icccm.so.4
+  libxcb-xkb.so.1
+  libxcb-util.so.1
+  libpipewire-0.3.so.0
+)
+
+_todesk_link_bundled_libs() {
+  local lib dest
+  for lib in "${_todesk_bundled_libs[@]}"; do
+    dest="/opt/todesk/bin/${lib}"
+    [ -r "/opt/todesk/lib/${lib}" ] || continue
+    if ldconfig -p 2>/dev/null | awk -v n="${lib}" \
+        '$1 == n && $NF !~ /^\/opt\/todesk\// { f = 1 } END { exit !f }'; then
+      continue
+    fi
+    if [ ! -e "${dest}" ] && [ ! -L "${dest}" ]; then
+      ln -s "../lib/${lib}" "${dest}"
+    fi
+  done
+}
+
+_todesk_unlink_bundled_libs() {
+  local lib dest
+  for lib in "${_todesk_bundled_libs[@]}"; do
+    dest="/opt/todesk/bin/${lib}"
+    if [ -L "${dest}" ] && [ "$(readlink "${dest}")" = "../lib/${lib}" ]; then
+      rm -f -- "${dest}"
+    fi
+  done
+}
+
 post_install() {
+  _todesk_link_bundled_libs
+
   systemctl daemon-reload
   if systemctl -q is-active todeskd.service ;then
     systemctl restart todeskd.service
@@ -25,4 +63,8 @@ post_install() {
 
 post_upgrade() {
   post_install
+}
+
+pre_remove() {
+  _todesk_unlink_bundled_libs
 }
