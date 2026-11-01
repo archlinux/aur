@@ -1,7 +1,7 @@
 # Maintainer: SchemaSmith Contributors <support@schemasmith.com>
 # Version and the two linux tarball SHA-256s are filled in by packaging/aur/render.sh at release time.
 pkgname=schemasmith-bin
-pkgver=2.7.3
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='State-based database schema deployment for SQL Server, PostgreSQL, MySQL and MariaDB (CLI tools)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("SchemaSmith-${pkgver}-linux-x64.tar.gz::${url}/releases/download
 source_aarch64=("SchemaSmith-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/SchemaSmith-${pkgver}-linux-arm64.tar.gz")
 source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 sha256sums=('SKIP')
-sha256sums_x86_64=('8d79e5545c4435ac04c23c9e16829ce87e8c15bc11865fdbf6bb1d3948f3d0d0')
-sha256sums_aarch64=('9d39d6d272113063547cff384d2538534a688ed6b5cc22fc9af9f207a7ba4653')
+sha256sums_x86_64=('8e0771166d97229ce0dd9a4ab64ca078e3bc09487ef54777693c1f8ab5088f4d')
+sha256sums_aarch64=('9c041eec8d5f0df6fd1168d495389444429edf2fedee757b9805fd28b1e9a9c2')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/schemasmith" "${pkgdir}/usr/bin"

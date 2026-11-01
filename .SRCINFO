@@ -1,6 +1,6 @@
 pkgbase = schemasmith-bin
 	pkgdesc = State-based database schema deployment for SQL Server, PostgreSQL, MySQL and MariaDB (CLI tools)
-	pkgver = 2.7.3
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/Schema-Smith/SchemaSmith
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = schemasmith-bin
 	conflicts = schemasmith
 	options = !strip
 	options = !debug
-	source = LICENSE-2.7.3::https://github.com/Schema-Smith/SchemaSmith/raw/v2.7.3/LICENSE
+	source = LICENSE-2.8.0::https://github.com/Schema-Smith/SchemaSmith/raw/v2.8.0/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = SchemaSmith-2.7.3-linux-x64.tar.gz::https://github.com/Schema-Smith/SchemaSmith/releases/download/v2.7.3/SchemaSmith-2.7.3-linux-x64.tar.gz
-	sha256sums_x86_64 = 8d79e5545c4435ac04c23c9e16829ce87e8c15bc11865fdbf6bb1d3948f3d0d0
-	source_aarch64 = SchemaSmith-2.7.3-linux-arm64.tar.gz::https://github.com/Schema-Smith/SchemaSmith/releases/download/v2.7.3/SchemaSmith-2.7.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 9d39d6d272113063547cff384d2538534a688ed6b5cc22fc9af9f207a7ba4653
+	source_x86_64 = SchemaSmith-2.8.0-linux-x64.tar.gz::https://github.com/Schema-Smith/SchemaSmith/releases/download/v2.8.0/SchemaSmith-2.8.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 8e0771166d97229ce0dd9a4ab64ca078e3bc09487ef54777693c1f8ab5088f4d
+	source_aarch64 = SchemaSmith-2.8.0-linux-arm64.tar.gz::https://github.com/Schema-Smith/SchemaSmith/releases/download/v2.8.0/SchemaSmith-2.8.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9c041eec8d5f0df6fd1168d495389444429edf2fedee757b9805fd28b1e9a9c2
 
 pkgname = schemasmith-bin
