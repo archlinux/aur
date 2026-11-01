@@ -5,7 +5,7 @@
 pkgname=dotnet-azure-core
 _nugetid=Azure.Core
 pkgver=1.64.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared primitives, abstractions and helpers for .NET Azure SDK client libraries, Azure.Core (NuGet package)"
 arch=('any')
 url='https://github.com/Azure/azure-sdk-for-net'
@@ -104,7 +104,7 @@ _nuget_config() {
 <configuration>
   <packageSources>
     <clear />
-    <add key="dotnet-system" value="/usr/share/dotnet/nuget-packages" />
+    <add key="dotnet-system" value="/usr/share/nuget/packages" />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
     <add key="${1%%=*}" value="${1#*=}" />
   </packageSources>
@@ -237,7 +237,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "azure-sdk-for-net-$_commit/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"

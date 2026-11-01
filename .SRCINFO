@@ -1,7 +1,7 @@
 pkgbase = dotnet-azure-core
 	pkgdesc = Shared primitives, abstractions and helpers for .NET Azure SDK client libraries, Azure.Core (NuGet package)
 	pkgver = 1.64.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-net
 	arch = any
 	license = MIT
