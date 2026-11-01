@@ -1,7 +1,7 @@
 pkgbase = dotnet-system-clientmodel
 	pkgdesc = Building blocks for .NET clients that call cloud services, System.ClientModel (NuGet package)
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-net
 	arch = any
 	license = MIT

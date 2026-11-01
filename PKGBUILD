@@ -5,7 +5,7 @@
 pkgname=dotnet-system-clientmodel
 _nugetid=System.ClientModel
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for .NET clients that call cloud services, System.ClientModel (NuGet package)"
 arch=('any')
 url='https://github.com/Azure/azure-sdk-for-net'
@@ -188,7 +188,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "azure-sdk-for-net-$_commit/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
