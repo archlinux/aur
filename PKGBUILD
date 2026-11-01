@@ -6,7 +6,7 @@
 
 pkgname=cryptpad
 pkgver=2026.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Realtime collaborative visual editor with zero knowledge server"
 arch=(x86_64 aarch64)
 url="https://github.com/$pkgname/$pkgname"
@@ -19,20 +19,25 @@ optdepends=('nginx: HTTP server providing TLS'
   'cryptpad-sso: SSO plugin for Cryptpad')
 conflicts=('cryptpad-sso<1.0.0')
 backup=("etc/webapps/$pkgname/config.js"
+  "etc/webapps/$pkgname/infra.js"
   "etc/nginx/sites-available/$pkgname.conf")
 options=(!strip !debug) # The only ELF files are upstream's sodium-native prebuilds
+install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
   "$pkgname.service"
   "$pkgname.sysusers"
-  "$pkgname.tmpfiles")
+  "$pkgname.tmpfiles"
+  migrate-infra.js)
 sha512sums=('1e20a1aae956984f9329ad87d59cefe435615f8ab00fa50b35e30736051fe12f4b2e944045e258362a19a281b0517e7fddd27814f0a9e233fe1fea7e321afd2e'
   '79bc9c4c95ae339e3aece7e198fd20f7998fa67b757814abd6b04a15066188725190b88411068a185819c531ea361528de19aa210a26673237ec5d21f006e8f4'
   'cf7151157eb09f91ec01aa5bb638e427302d5f51d0cf41cd4aabcedd87bf5acb359f9d1491bb05d228c4fde8f8ee91b6e0bd1cb9ca901ecb285da0ac84519c49'
-  '6cf9e737155077e5880170688a61fee0a4cc4e2624d4f4a6d948bf77cdeb46c21c4c6e9c34ecd3ee79f5a175ec36f9440b0f1ef5a5def7b6603d0a23c5e2a6b6')
+  '6cf9e737155077e5880170688a61fee0a4cc4e2624d4f4a6d948bf77cdeb46c21c4c6e9c34ecd3ee79f5a175ec36f9440b0f1ef5a5def7b6603d0a23c5e2a6b6'
+  '7023d99f190a677305fca653daf9561073bf51cb48b4100a18e971d39f62dd0cfd8b23a5bea2bcd6f1939e456ae3b49c4ded4dfcb018ad1a0e46c182bc93f2a6')
 b2sums=('ef2d9b8d343a4e7d0269f3309c5e1210921abbe959ef34ea0b7e087ee526fe8d63eb3b825d3f04a4d457e658fbf6df2cfb4cc1ad45bb64c01179a8aba4703dc5'
   '38e879d30176188516b31101f7e0ea6a29d22fbc7c702cbbbf58673e8c2301d817f895db6914aa90e6416cbcc7ade4054506eb20ac154964f176a8114a307cd2'
   'd7f3bf88683288759ab6b0fc12c26d74563779b3fcc073c6e91f5e12ab6ce1167d1d5c5645956ba1f534445b67ef9eaa758e56b6fb3fa8206c61725f4507392e'
-  '6126d51f7d84f07102082d5c65c483665e2fe52968b5d62d9c1bcacbc447f8b5eb02356f5b9c536f92b0b69f850d4320a94d511e1a2a6bcc87a0668fcea32db5')
+  '6126d51f7d84f07102082d5c65c483665e2fe52968b5d62d9c1bcacbc447f8b5eb02356f5b9c536f92b0b69f850d4320a94d511e1a2a6bcc87a0668fcea32db5'
+  'dbe7ac2e3ae6533965ecf71bb0020fe3172cfe9e79ee94fc1abd8c89924243da094516787294ccbb2151a3f7abd5e727813b029fe1d9ae3b19bad441a62d9f91')
 
 build() {
   cd "$pkgname-$pkgver" || exit
@@ -73,6 +78,12 @@ package() {
     -e "s|logToStdout: false|logToStdout: true|" \
     -i config/config.example.js
   install -Dm 644 config/config.example.js "${pkgdir}/etc/webapps/$pkgname/config.js"
+  # The addresses, ports and nodes of the server, split from config.js in 2026.10.0. Without it,
+  # CryptPad loads infra.example.js from the config folder instead, which isn't installed. On upgrades
+  # from older packages, migrate-infra.js moves the settings of config.js to it while it's still the
+  # example (see cryptpad.install).
+  install -Dm 644 config/infra.example.js "${pkgdir}/etc/webapps/$pkgname/infra.js"
+  install -Dm 644 -t "$pkgdir/usr/lib/$pkgname" config/infra.example.js "$srcdir/migrate-infra.js"
 
   # Nginx config
   sed -Ee "s|^( *root  *)/.*|\1/usr/share/webapps/$pkgname/www;|" \

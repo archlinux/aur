@@ -1,0 +1,12 @@
+post_upgrade() {
+  # CryptPad 2026.10.0 split its configuration, the package ships infra.js since 2026.10.0-4
+  if (($(vercmp "$2" 2026.10.0-4) < 0)); then
+    node /usr/lib/cryptpad/migrate-infra.js /etc/webapps/cryptpad /usr/lib/cryptpad/infra.example.js
+    cat <<'MSG'
+CryptPad's addresses and ports are configured in /etc/webapps/cryptpad/infra.js now, and no longer
+taken from config.js. If nginx proxies /cryptpad_websocket to port 3003 (or websocketPort), proxy it
+to public.httpPort instead, like /etc/nginx/sites-available/cryptpad.conf does. Then restart
+cryptpad.service.
+MSG
+  fi
+}
