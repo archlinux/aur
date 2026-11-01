@@ -3,7 +3,7 @@
 _pkgname=Text-Layout
 pkgname=perl-text-layout
 pkgver=0.045
-pkgrel=2
+pkgrel=3
 pkgdesc="Pango style markup formatting"
 arch=('any')
 license=('Artistic-2.0')
