@@ -1,4 +1,4 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Darkstalker Kaathe <primordial dot serpent dot darkstalker dot kaathe at proton dot me>
 # Contributor: Richard Quirk
 
 pkgname=cmake-lint
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Check for coding style issues in CMake files"
 arch=(any)
 url="https://github.com/cmake-lint/cmake-lint"
-license=(Apache-2.0)
+license=("Apache-2.0")
 depends=(python)
 makedepends=(
   python-build
@@ -33,9 +33,10 @@ check() {
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  local site_packages
+  site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest --override-ini="addopts="
+  python -m pytest --override-ini="addopts="
 }
 
 package() {
