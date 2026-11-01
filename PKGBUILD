@@ -1,13 +1,13 @@
 # Maintainer: Dmitriy Geels <dmitriy dot geels at gmail dot com>
 pkgname=python-tantivy
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Python bindings for the Tantivy search engine'
 arch=(x86_64 aarch64)
 url="https://github.com/quickwit-oss/tantivy-py"
 license=(MIT)
-depends=(python glibc libgcc)
-makedepends=(python-build python-installer python-wheel 'python-maturin<2.0' 'python-maturin>=1.9.3' rust)
+depends=(python glibc libgcc zstd)
+makedepends=(python-build python-installer python-wheel 'python-maturin<2.0' 'python-maturin>=1.9.3' rust pkgconf)
 _ref=0.27.0
 _builddir=tantivy-py-0.27.0
 source=("tantivy-py-0.27.0.tar.gz::https://github.com/quickwit-oss/tantivy-py/archive/refs/tags/$_ref.tar.gz")
@@ -23,6 +23,8 @@ build(){
  cd "$srcdir/$_builddir"
  export CARGO_HOME="$srcdir/cargo-home"
  export CARGO_NET_OFFLINE=true
+ # Link zstd-sys against the system library rather than bundled Zstandard.
+ export ZSTD_SYS_USE_PKG_CONFIG=1
  export MATURIN_PEP517_ARGS="--locked --offline"
  python -m build --wheel --no-isolation
 }
