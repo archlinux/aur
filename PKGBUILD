@@ -7,12 +7,12 @@ _nugetid=Pluralize.NET
 pkgver=1.0.13
 pkgrel=2
 pkgdesc="Pluralize or singularize any English word, Pluralize.NET (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/sarathkcm/Pluralize.NET'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
 )
 # The latest commit. Upstream hasn't published a release since 1.0.2, the later commits fix rules and
 # version the library as 1.0.13.
