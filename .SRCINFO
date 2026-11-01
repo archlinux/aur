@@ -1,7 +1,7 @@
 pkgbase = python-lerobot
 	pkgdesc = State-of-the-art machine learning for real-world robotics
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/lerobot
 	arch = any
 	license = Apache-2.0
@@ -29,7 +29,7 @@ pkgbase = python-lerobot
 	depends = python-safetensors>=0.4.3
 	depends = python-setuptools>=71.0.0
 	depends = python-termcolor>=2.4.0
-	depends = python-torchvision>=0.22.0
+	depends = python-torchvision
 	depends = python-tqdm>=4.66.0
 	depends = python-yaml
 	optdepends = ffmpeg: video encoding and dataset conversion
@@ -65,6 +65,10 @@ pkgbase = python-lerobot
 	optdepends = python-torchdiffeq: WallX policy
 	optdepends = python-transformers: transformer-based policies and tokenizers
 	optdepends = python-wandb: experiment tracking during training
+	conflicts = python-torchvision<0.22.0
+	conflicts = python-torchvision-cuda<0.22.0
+	conflicts = python-torchvision-cuda12.9<0.22.0
+	conflicts = python-torchvision-git<0.22.0
 	source = python-lerobot::git+https://github.com/huggingface/lerobot.git#tag=v0.6.1
 	source = arch-rolling-dependencies.patch
 	sha256sums = SKIP

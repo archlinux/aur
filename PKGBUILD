@@ -3,7 +3,7 @@
 pkgname=python-lerobot
 _pkgname=lerobot
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 _commit=7e241bd630a3719a56157a497ce5d08f244784f1
 pkgdesc="State-of-the-art machine learning for real-world robotics"
 arch=('any')
@@ -25,9 +25,17 @@ depends=(
     'python-safetensors>=0.4.3'
     'python-setuptools>=71.0.0'
     'python-termcolor>=2.4.0'
-    'python-torchvision>=0.22.0'
+    'python-torchvision'
     'python-tqdm>=4.66.0'
     'python-yaml'
+)
+# CUDA variants provide the shared capability without a version. Keep the
+# upstream minimum by rejecting older concrete providers, including VCS builds.
+conflicts=(
+    'python-torchvision<0.22.0'
+    'python-torchvision-cuda<0.22.0'
+    'python-torchvision-cuda12.9<0.22.0'
+    'python-torchvision-git<0.22.0'
 )
 makedepends=(
     'git'
