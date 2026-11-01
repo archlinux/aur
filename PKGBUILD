@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Lahav <j.lahav@gmail.com>
 
 pkgname=owbox
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('xorg-xwayland: X applications'
             'xdg-desktop-portal-gtk: file choosers and other portals'
             'python-gobject: owbox Settings'
             'gtk4: owbox Settings'
-            'foot: a terminal emulator for the default menu'
+            'foot: a terminal emulator (or any other, set TERMINAL)'
             'grim: screenshots (Print Screen)'
             'slurp: screenshots of an area'
             'wl-clipboard: screenshots copied to the clipboard'
@@ -34,7 +34,7 @@ optdepends=('xorg-xwayland: X applications'
 backup=('etc/xdg/owbox/rc.xml' 'etc/xdg/owbox/menu.xml'
         'etc/xdg/owbox/autostart' 'etc/xdg/owbox/environment')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c251754a8e551750880c35a0f67ec3c9a2c020f2105aa8169163116b7449434d')
+sha256sums=('cd27c81d1855a44ef4321dbe261e94f127d87159a86b5335ce9ec6af11afb841')
 
 build() {
   arch-meson "$pkgname-$pkgver" "$pkgname-$pkgver/build"

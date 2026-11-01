@@ -1,6 +1,6 @@
 pkgbase = owbox
 	pkgdesc = Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/SoleSoul/owbox
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = owbox
 	optdepends = xdg-desktop-portal-gtk: file choosers and other portals
 	optdepends = python-gobject: owbox Settings
 	optdepends = gtk4: owbox Settings
-	optdepends = foot: a terminal emulator for the default menu
+	optdepends = foot: a terminal emulator (or any other, set TERMINAL)
 	optdepends = grim: screenshots (Print Screen)
 	optdepends = slurp: screenshots of an area
 	optdepends = wl-clipboard: screenshots copied to the clipboard
@@ -47,7 +47,7 @@ pkgbase = owbox
 	backup = etc/xdg/owbox/menu.xml
 	backup = etc/xdg/owbox/autostart
 	backup = etc/xdg/owbox/environment
-	source = owbox-0.5.0.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = c251754a8e551750880c35a0f67ec3c9a2c020f2105aa8169163116b7449434d
+	source = owbox-0.6.0.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = cd27c81d1855a44ef4321dbe261e94f127d87159a86b5335ce9ec6af11afb841
 
 pkgname = owbox
