@@ -1,7 +1,7 @@
 pkgbase = zl-splitter
 	pkgdesc = Sidechain and oversample capable splitter plugin by ZL Audio
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://zl-audio.github.io/plugins/zlsplitter/
 	arch = x86_64
 	groups = zl-audio
