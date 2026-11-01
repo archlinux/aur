@@ -1,6 +1,6 @@
 pkgbase = owbox
 	pkgdesc = Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/SoleSoul/owbox
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = owbox
 	checkdepends = foot
 	checkdepends = grim
 	checkdepends = python-cairo
+	checkdepends = python-gobject
 	makedepends = meson
 	makedepends = wayland-protocols
 	depends = wlroots0.20
@@ -47,7 +48,7 @@ pkgbase = owbox
 	backup = etc/xdg/owbox/menu.xml
 	backup = etc/xdg/owbox/autostart
 	backup = etc/xdg/owbox/environment
-	source = owbox-0.6.0.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = cd27c81d1855a44ef4321dbe261e94f127d87159a86b5335ce9ec6af11afb841
+	source = owbox-0.7.0.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = a1053d869f868cbe6f45359aa27323fec8eaf8a6c9e62a321f2d276b8568cfd8
 
 pkgname = owbox

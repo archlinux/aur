@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Lahav <j.lahav@gmail.com>
 
 pkgname=owbox
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 depends=('wlroots0.20' 'libinput' 'libxkbcommon' 'pixman' 'glib2' 'libxml2'
          'pango' 'cairo' 'librsvg' 'libsfdo' 'xcb-util-wm' 'wayland')
 makedepends=('meson' 'wayland-protocols')
-checkdepends=('foot' 'grim' 'python-cairo')
+checkdepends=('foot' 'grim' 'python-cairo' 'python-gobject')
 optdepends=('xorg-xwayland: X applications'
             'xdg-desktop-portal-wlr: screenshots and screen sharing'
             'wireplumber: screen sharing (connects the streams)'
@@ -34,7 +34,7 @@ optdepends=('xorg-xwayland: X applications'
 backup=('etc/xdg/owbox/rc.xml' 'etc/xdg/owbox/menu.xml'
         'etc/xdg/owbox/autostart' 'etc/xdg/owbox/environment')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd27c81d1855a44ef4321dbe261e94f127d87159a86b5335ce9ec6af11afb841')
+sha256sums=('a1053d869f868cbe6f45359aa27323fec8eaf8a6c9e62a321f2d276b8568cfd8')
 
 build() {
   arch-meson "$pkgname-$pkgver" "$pkgname-$pkgver/build"
