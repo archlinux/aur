@@ -7,12 +7,12 @@ _nugetid=System.ClientModel
 pkgver=1.16.0
 pkgrel=2
 pkgdesc="Building blocks for .NET clients that call cloud services, System.ClientModel (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/Azure/azure-sdk-for-net'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   jq
 )
 # The commit the package was published from (tag System.ClientModel_1.16.0), and the official build
