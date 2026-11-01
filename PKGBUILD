@@ -6,9 +6,9 @@ pkgname=cryptpad-sso
 pkgver=1.0.0
 pkgrel=5
 pkgdesc="SSO plugin for Cryptpad"
-arch=('any')
+arch=(any)
 url="https://github.com/cryptpad/sso"
-license=('AGPL-3.0-or-later')
+license=(AGPL-3.0-or-later)
 depends=('cryptpad>=2026.9.0')
 backup=(etc/webapps/cryptpad/sso.js)
 options=(!strip !debug)
