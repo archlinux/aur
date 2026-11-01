@@ -5,8 +5,8 @@
 _author=ETHER
 _dist=B-Utils
 pkgname=perl-${_dist@L}
-pkgver=0.27
-pkgrel=6
+pkgver=0.28
+pkgrel=1
 pkgdesc='Helper functions for op tree manipulation'
 arch=('x86_64')
 url=https://metacpan.org/dist/$_dist
@@ -22,9 +22,15 @@ makedepends=(
     'perl-extutils-depends>=0.301'
     'perl-test-simple'
 )
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-pathtools'
+    'perl-test-simple'
+)
+optdepends=('perl-cpan-meta>=2.120900')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('f97f53f6a3050109aa414feeb184cad101812d41760e952b5d84993f6685ffea')
+sha256sums=('04c002fd75a3365e217ae4a8cc265d0be8061e83ca5b5eea49359f08983531c6')
 
 build()
 {
