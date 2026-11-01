@@ -1,12 +1,13 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=colibri-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny local inference engine for large MoE models (prebuilt)'
 arch=('x86_64')
 url='https://github.com/JustVugg/colibri'
 license=('Apache-2.0')
 depends=('python' 'gcc-libs')
+makedepends=('npm')
 optdepends=(
     'python-numpy: image/audio features and converters'
     'python-pillow: multimodal image input'
@@ -16,8 +17,17 @@ provides=('colibri')
 conflicts=('colibri')
 source=(
     "https://github.com/JustVugg/colibri/releases/download/v${pkgver}/colibri-v${pkgver}-linux-x86_64.tar.gz"
+    # Release tarball ships an empty web/dist, so build the `coli web` dashboard from source
+    "colibri-src-${pkgver}.tar.gz::https://github.com/JustVugg/colibri/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d54b4c57c12417fc9e784b649249ac1aa3480eec44ece2777d4cbc639a25e66a')
+sha256sums=('d54b4c57c12417fc9e784b649249ac1aa3480eec44ece2777d4cbc639a25e66a'
+            '040077036d6c6183e99281e1a7304d195e60b6b0984c7deb53f027819d2a5bc4')
+
+build() {
+    cd "${srcdir}/colibri-${pkgver}/web"
+    npm ci --no-audit --no-fund --cache "${srcdir}/npm-cache"
+    npm run build
+}
 
 package() {
     local libexec="${pkgdir}/usr/libexec/colibri"
@@ -28,7 +38,10 @@ package() {
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Launcher on PATH; engines and support files under libexec (upstream layout).
-    install -Dm755 "${srcdir}/coli" "${pkgdir}/usr/bin/coli"
+    # coli resolves web/dist and ui/ relative to its real path, so keep it in
+    # libexec next to the engines and symlink it onto PATH.
+    install -Dm755 "${srcdir}/coli" "${libexec}/coli"
+    ln -s ../libexec/colibri/coli "${pkgdir}/usr/bin/coli"
 
     install -Dm755 "${srcdir}/colibri" "${libexec}/colibri"
     install -Dm755 "${srcdir}/gliner_decide" "${libexec}/gliner_decide"
@@ -65,7 +78,10 @@ package() {
     # Vulkan SPIR-V shaders shipped next to the engines in the upstream tarball
     install -dm755 "${libexec}/shaders"
     install -Dm644 "${srcdir}/shaders/"* "${libexec}/shaders/"
-    cp -a "${srcdir}/web/dist/." "${libexec}/web/dist/"
+    cp -a "${srcdir}/colibri-${pkgver}/web/dist/." "${libexec}/web/dist/"
+    # `coli ui` chat frontend
+    install -dm755 "${libexec}/ui"
+    install -Dm644 "${srcdir}/ui/"* "${libexec}/ui/"
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
