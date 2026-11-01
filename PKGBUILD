@@ -17,7 +17,7 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.11.2
+pkgver=1.12.0
 _realver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='A identity management service and clients.'
@@ -29,7 +29,7 @@ arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo systemd clang tpm2-tss lld)
 options=(!buildflags)
-sha256sums=('a8ed31203e5f8c036b9cb261c85ddac19291bc6ca16981495495cd9621c56529')
+sha256sums=('3ebcb3869184a33ae12e06932f81269fd3e0b3b14e32fd66f1176a1c6194a03c')
 
 
 build () {
@@ -47,7 +47,6 @@ build () {
 }
 
 package_kanidm () {
-  conflicts=("$_basename-git")
   depends=(
 	"kanidm-server=${pkgver}"
 	"kanidm-clients=${pkgver}"
@@ -56,8 +55,6 @@ package_kanidm () {
 }
 
 package_kanidm-clients () {
-  conflicts=("$_basename-clients-git")
-  provides=("$_basename-clients")
   depends=("libgit2")
   pkgdesc='kanidm client to interact with kanidm identity management server.'
   backup=("etc/kanidm/config")
@@ -76,8 +73,6 @@ package_kanidm-clients () {
 }
 
 package_kanidm-server () {
-  conflicts=("$_basename-server-git")
-  provides=("$_basename-server")
   depends=("libgit2")
   pkgdesc='kanidm server for idendity management, supports RADIUS, ssh key management.'
   backup=("etc/kanidm/server.toml")
@@ -103,8 +98,6 @@ package_kanidm-server () {
 }
 
 package_kanidm-unixd-clients () {
-  conflicts=("$_basename-unixd-clients-git")
-  provides=("$_basename-unixd-clients")
   depends=("tpm2-tss")
   pkgdesc='kanidm localhost resolver to resolve posix identities to a kanidm instance.'
   backup=("etc/kanidm/unixd")
