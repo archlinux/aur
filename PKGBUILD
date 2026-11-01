@@ -5,7 +5,7 @@
 pkgname=dotnet-vs-validation
 _nugetid=Microsoft.VisualStudio.Validation
 pkgver=17.13.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Common input validation and state verification utility methods, Microsoft.VisualStudio.Validation (NuGet package)"
 arch=('any')
 url='https://github.com/microsoft/vs-validation'
@@ -135,7 +135,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "vs-validation-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"

@@ -1,7 +1,7 @@
 pkgbase = dotnet-vs-validation
 	pkgdesc = Common input validation and state verification utility methods, Microsoft.VisualStudio.Validation (NuGet package)
 	pkgver = 17.13.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vs-validation
 	arch = any
 	license = MIT
