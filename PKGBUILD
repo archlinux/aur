@@ -3,7 +3,7 @@
 
 _pkgname="slackdump"
 pkgname="${_pkgname}-bin"
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 pkgdesc="Save your private and public Slack messages, threads, files, and users locally"
 arch=('aarch64' 'i686' 'x86_64')
@@ -15,7 +15,7 @@ _pkgsrc="${_pkgname}-${pkgver}"
 case "${CARCH}" in
   aarch64)
     source=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums=('177dac8fcdd4bd48779f76bb135abf8ab93cc9845d37365735f8a0371bc3004b')
+sha256sums=('a29e7b12cda6f508636a959ca24ec64e913a41bb17d38495b128f0e679482869')
     ;;
   i686)
     source=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
