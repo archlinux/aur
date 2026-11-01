@@ -2,9 +2,10 @@
 # shellcheck disable=SC2034,SC2154
 # shellcheck shell=bash
 
-pkgname=dotnet-system-io-ports-native
+pkgbase=dotnet-system-io-ports-native
+pkgname=(dotnet-system-io-ports-native dotnet-system-io-ports-native-debug)
 pkgver=10.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/dotnet/runtime'
@@ -17,6 +18,9 @@ makedepends=(
   lld
 )
 checkdepends=(python)
+# The library only ends up in $pkgdir inside the NuGet package, where makepkg can't strip it or split off its
+# debug information, so its debug package would be empty. The runtime's build does both itself, and
+# dotnet-system-io-ports-native-debug ships the debug information (see package_*-debug()).
 options=('!debug')
 # The runtime commit of the .NET release, from src/source-manifest.json of the dotnet/dotnet commit the
 # 10.0.14 packages were published from (0427b9abbead3fa64c6655eb4290c537397131fa); the same commit as
@@ -42,6 +46,20 @@ _arch() {
     x86_64) echo x64 ;;
     aarch64) echo arm64 ;;
   esac
+}
+
+# The configuration of the runtime's native build, and the build folder of the library in it (relative to
+# $srcdir)
+_outconfig() {
+  echo "net$_dotnetsdkver-linux-Release-$(_arch)"
+}
+_objdir() {
+  echo "runtime-$_commit/artifacts/obj/native/$(_outconfig)/System.IO.Ports.Native"
+}
+
+# Where the debug package has the sources, as in makepkg's debug packages
+_dbgsrcdir() {
+  echo "${DBGSRCDIR:-/usr/src/debug}/$pkgbase"
 }
 
 prepare() {
@@ -79,15 +97,31 @@ EOF
 
 build() {
   cd "runtime-$_commit" || exit
-  # Configure the runtime's native libraries like upstream, but only build this one
-  local _outconfig
-  _outconfig="net$_dotnetsdkver-linux-Release-$(_arch)"
-  ./src/native/libs/build-native.sh -release -arch "$(_arch)" -outconfig "$_outconfig" -configureonly
-  cmake --build "artifacts/obj/native/$_outconfig" --target System.IO.Ports.Native
-  install -Dm755 "artifacts/obj/native/$_outconfig/System.IO.Ports.Native/libSystem.IO.Ports.Native.so" \
-    -t "$srcdir/nupkg-src/"
-  # makepkg doesn't strip what ends up in the NuGet package
-  strip --strip-unneeded "$srcdir/nupkg-src/libSystem.IO.Ports.Native.so"
+  # Configure the runtime's native libraries like upstream, but only build this one. After linking, the
+  # build splits the debug information off into libSystem.IO.Ports.Native.so.dbg and strips the library
+  # (with llvm-objcopy, from llvm, a dependency of clang).
+  local _crossargs=()
+  # A cross build ($CARCH differs from the build host) compiles with clang against the C library and GCC of
+  # a root file system for $CARCH with base-devel, e.g. the Arch Linux ARM one of the native aarch64 build,
+  # which the runtime's cross toolchain (eng/common/cross/toolchain.cmake) takes from ROOTFS_DIR. Its
+  # default GNU triple is Debian's (aarch64-linux-gnu), TOOLCHAIN overrides it. The build takes CFLAGS, so
+  # makepkg needs a configuration for $CARCH (e.g. makepkg --config), as for setting $CARCH.
+  if [[ "$(uname -m)" != "$CARCH" ]]; then
+    if [[ ! -d "${ROOTFS_DIR:-}" ]]; then
+      echo "dotnet-system-io-ports-native: a cross build needs ROOTFS_DIR set to a $CARCH root file system" >&2
+      exit 1
+    fi
+    if [[ -z "${TOOLCHAIN:-}" && -d "$ROOTFS_DIR/usr/lib/gcc/$CARCH-unknown-linux-gnu" ]]; then
+      export TOOLCHAIN="$CARCH-unknown-linux-gnu"
+    fi
+    _crossargs=(-cross)
+  fi
+  # The debug information refers to the sources where the debug package has them, like makepkg does with
+  # its debug option, which also keeps the build directory out of the library (and its build ID)
+  CFLAGS+=" -ffile-prefix-map=$srcdir=$(_dbgsrcdir)"
+  ./src/native/libs/build-native.sh -release -arch "$(_arch)" -outconfig "$(_outconfig)" -configureonly "${_crossargs[@]}"
+  cmake --build "artifacts/obj/native/$(_outconfig)" --target System.IO.Ports.Native
+  install -Dm755 "$srcdir/$(_objdir)/libSystem.IO.Ports.Native.so" -t "$srcdir/nupkg-src/"
 
   cd "$srcdir/nupkg-src" || exit
   DOTNET_CLI_HOME="$srcdir/dotnet-home" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1 NUGET_PACKAGES="$srcdir/nuget" \
@@ -95,12 +129,37 @@ build() {
 }
 
 check() {
+  # The test loads the library, which on a cross build is for another architecture and can't run here.
+  # Run it natively on the target instead.
+  if [[ "$(uname -m)" != "$CARCH" ]]; then
+    echo 'dotnet-system-io-ports-native: skipping the test on a cross build; run it natively on the target' >&2
+    return 0
+  fi
   # The tests of System.IO.Ports need serial ports, drive a pseudo-terminal with the library instead
   python -I check-serial.py "$srcdir/nupkg-src/libSystem.IO.Ports.Native.so"
 }
 
-package() {
+package_dotnet-system-io-ports-native() {
   install -Dm644 "$srcdir/nupkg/runtime.linux-$(_arch).runtime.native.System.IO.Ports.$pkgver.nupkg" \
     -t "$pkgdir/usr/share/dotnet/nuget-packages/"
-  install -Dm644 "runtime-$_commit/LICENSE.TXT" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "runtime-$_commit/LICENSE.TXT" -t "$pkgdir/usr/share/licenses/$pkgbase/"
+}
+
+# The debug information of the library, under its build ID, where debuggers find it for every copy of the
+# library: the one in the NuGet package, and the ones applications ship, e.g. in $PSHOME of powershell
+package_dotnet-system-io-ports-native-debug() {
+  pkgdesc="Detached debugging symbols for dotnet-system-io-ports-native"
+  # makepkg would strip the debug information itself
+  options=('!strip')
+  local _dbg _buildid _file
+  _dbg="$(_objdir)/libSystem.IO.Ports.Native.so.dbg"
+  _buildid=$(LANG=C readelf -n "$_dbg" | sed -n '/Build ID/ { s/.*: //p; q; }')
+  install -Dm644 "$_dbg" "$pkgdir/usr/lib/debug/.build-id/${_buildid:0:2}/${_buildid:2}.debug"
+  # The sources it refers to, which build() mapped to $(_dbgsrcdir); the list is relative to that
+  while IFS= read -r -d '' _file; do
+    if [[ -f "$srcdir/$_file" ]]; then
+      install -Dm644 "$srcdir/$_file" "$pkgdir$(_dbgsrcdir)/$_file"
+    fi
+  done < <(LANG=C debugedit --no-recompute-build-id --base-dir "$(_dbgsrcdir)" --list-file /dev/stdout "$_dbg" | sort -zu)
+  install -Dm644 "runtime-$_commit/LICENSE.TXT" -t "$pkgdir/usr/share/licenses/$pkgbase-debug/"
 }
