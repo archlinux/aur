@@ -1,14 +1,14 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
-_author=MSTROUT
+_author=ETHER
 _dist=Web-Simple
 pkgname=perl-${_dist@L}
-pkgver=0.033
+pkgver=0.035
 pkgrel=1
 pkgdesc='A quick and easy way to build simple web applications'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$pkgver
+url=https://metacpan.org/dist/$_dist
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-encode'
@@ -25,11 +25,20 @@ depends=(
 makedepends=('perl-extutils-makemaker')
 checkdepends=(
     'perl-data-dumper-concise>=2.020'
+    'perl-io-stringy'
+
+    # https://github.com/p5sagit/Web-Simple/issues/1
+    'perl-test-needs'
+
     'perl-test-simple'
+)
+optdepends=(
+    'perl-devel-cycle'
+    'perl-http-request-ascgi'
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('dd9d610885579a1ad6eed02b9b2d590ae2c9614c92fd32aa3c7dc4ae0dd062d5')
+sha256sums=('9b7cea77a2cb09e88a78f450a4f21458a62e71e4696e7bdf2a1181694fbea21c')
 
 build()
 {
