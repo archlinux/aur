@@ -10,7 +10,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Search and download torrents via the CLI"
 
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('a758f02763326021589c5126d79584f8f67b77aed183a6a0a086be4f6c99a91f')
+sha256sums=('573f21de040f7ff5a0c9c8f1e3d12b6b2f0000b7b6d6817c60725f1bffe3da72')
 
 
 build() {
