@@ -2,7 +2,7 @@
 _base=py-modelrunner
 pkgname=python-${_base}
 pkgdesc="Python classes for organizing (HPC) simulations"
-pkgver=0.20.1
+pkgver=0.20.3
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
@@ -15,7 +15,7 @@ optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-yaml: for stores data in a YAML'
   'python-zarr: for stores data in a Zarr')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('cdbfb6f80d47e1d0be41f39f6a26f5ba5cc57687c511d95a23290be9b1f8950eedb416044377eef8c4a865dbd13cfb8be0d4f26b6e4300a274e5dbdab3cdf3a4')
+sha512sums=('566aaca56eea430a5f04d41885ce6eb27205d4e10616aee4e6b1432c6356a267e4b3341d56d90591e59c0eac58028238d4a3febc74ce8d08b924aea2f5b0df2a')
 
 build() {
   cd ${_base}-${pkgver}
