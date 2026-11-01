@@ -6,11 +6,11 @@ pkgname=ltex-ls-plus
 pkgver=18.7.0
 pkgrel=2
 pkgdesc="Language server for LanguageTool with support for LaTeX, Markdown, and others"
-arch=('any')
+arch=(any)
 url="https://github.com/ltex-plus/ltex-ls-plus"
-license=('MPL-2.0')
-depends=('java-runtime>=21' 'bash')
-makedepends=('maven')
+license=(MPL-2.0)
+depends=('java-runtime>=21' bash)
+makedepends=(maven)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('45989e544f717448954fbf96c185a4f0cabc7e4555fd629c4dce7b0bcee94b3d4e7f8a2a0bda7f2164d53c2d9cce7a0d125cf35cff49a30b90be3e9514458ba1')
 b2sums=('4125c5000f0d3913fa9a58686aeddc5223a1b62088ce8cbfa6db49b9d277c393a67f8d5a1437fd164551de62becbb023b534a2248fe132492df29c991669c4d6')
