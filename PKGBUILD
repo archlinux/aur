@@ -1,7 +1,7 @@
 # Maintainer: aubree.wtf <https://aubree.wtf/>
 pkgname=quadrahq-git
 _name=Quadra
-pkgver=0.37.4.r1.g1e561fd
+pkgver=0.41.2.r1.g37fdc8e
 pkgrel=2
 pkgdesc="Run the macOS Roblox client on Linux through Darling"
 arch=('x86_64')
