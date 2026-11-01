@@ -1,6 +1,6 @@
 pkgbase = twos-appimage
 	pkgdesc = A simple and beautiful way to capture your thoughts, organize your life, and get things done.
-	pkgver = 1.20.6
+	pkgver = 1.21.3
 	pkgrel = 1
 	url = https://twosapp.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = twos-appimage
 	depends = nss
 	depends = dbus-glib
 	depends = libdbusmenu-gtk2
-	source = https://www.twosapp.com/api/desktop/updates/Twos-1.20.6.AppImage
-	sha256sums = f1b4d02ad93dde3577d735f4324e9d178c34a84caff80120436fa56748aa5bdd
+	source = https://www.twosapp.com/api/desktop/updates/Twos-1.21.3.AppImage
+	sha256sums = a973d53d5807ce45700bb0b20cdcb0dfae0de6cb9baf2ebd8dbd675e867eecc2
 
 pkgname = twos
