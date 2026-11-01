@@ -5,7 +5,7 @@
 pkgname=dotnet-system-reactive
 _nugetid=System.Reactive
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reactive Extensions (Rx) for .NET, System.Reactive (NuGet package)"
 arch=('any')
 url='https://github.com/dotnet/reactive'
@@ -120,7 +120,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "reactive-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
