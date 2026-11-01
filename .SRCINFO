@@ -1,6 +1,6 @@
 pkgbase = chartdb
 	pkgdesc = Database diagrams editor to visualize and design a DB with a single query
-	pkgver = 1.20.1
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/chartdb/chartdb
 	install = chartdb.install
@@ -9,9 +9,9 @@ pkgbase = chartdb
 	makedepends = npm
 	makedepends = git
 	optdepends = nginx: for serving the application
-	source = chartdb-1.20.1.tar.gz::https://github.com/chartdb/chartdb/archive/refs/tags/v1.20.1.tar.gz
+	source = chartdb-1.21.0.tar.gz::https://github.com/chartdb/chartdb/archive/refs/tags/v1.21.0.tar.gz
 	source = chartdb.conf.example
-	sha256sums = 8e854d6ac2f65f526be2f748373c9150cce4502cc8c49085cde40fa7a167eb0c
+	sha256sums = 2ba4b774c078b38218c7d0405cdc3976fcd853a5b74eae89cc862a6d69c9d3ea
 	sha256sums = 01d4b1e700bbd87d5ca5a78809e0f2211dbcc4bd1e573e4835b6a3bd7da3c886
 
 pkgname = chartdb
