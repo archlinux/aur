@@ -1,6 +1,6 @@
 pkgbase = chaostictool
 	pkgdesc = Terminal and desktop interfaces for authorized security testing
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Chaos-Tic/Chaostic-Tool
 	install = chaostictool.install
@@ -17,12 +17,13 @@ pkgbase = chaostictool
 	depends = python-py7zr
 	depends = python-pyte
 	depends = python-keyring
-	provides = chaostictool-desktop=2.1.1
+	optdepends = python-cryptography: encrypted API-key file store
+	provides = chaostictool-desktop=2.2.0
 	conflicts = chaostictool-desktop
 	conflicts = chaostictool-cli
 	replaces = chaostictool-desktop
 	replaces = chaostictool-cli
-	source = chaostictool-2.1.1.tar.gz::https://github.com/Chaos-Tic/Chaostic-Tool/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = 0b815de8f8eca0de5c56fa7bc6ef16a26973d05ee5e9f05ad3f4c642420a1165
+	source = chaostictool-2.2.0.tar.gz::https://github.com/Chaos-Tic/Chaostic-Tool/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = d7ed2d4eeb04cf138b556e8a46f7de35876fec43fce07fe975ebb00f3b2d87f6
 
 pkgname = chaostictool
