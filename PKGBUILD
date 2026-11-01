@@ -3,10 +3,10 @@
 _author="Johan Vromans"
 pkgname=perl-app-packager
 pkgver=1.440
-pkgrel=2
+pkgrel=3
 pkgdesc="Abstraction for Packagers"
 arch=('any')
-license=('unknown')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
 depends=()
 url='https://metacpan.org/release/App-Packager'
