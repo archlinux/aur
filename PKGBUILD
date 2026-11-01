@@ -1,18 +1,23 @@
 # Maintainer: Its-Alex <me@itsalex.fr>
 pkgname=gp-tray
-pkgver=1.2.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="GlobalProtect VPN system-tray indicator for gpclient with multi-portal switching, desktop alerts and a systemd user service"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Its-Alex/gp-tray"
 license=('MIT')
 install=gp-tray.install
-depends=('python' 'python-gobject' 'gtk3' 'libayatana-appindicator' 'libnotify'
-         'polkit' 'globalprotect-openconnect' 'hicolor-icon-theme'
+depends=('polkit' 'globalprotect-openconnect' 'hicolor-icon-theme'
          'iproute2' 'systemd' 'xdg-utils')
+makedepends=('rust' 'cargo')
 optdepends=('gnome-shell-extension-appindicator: tray icon on vanilla GNOME Shell')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5efc4279c8e4b40d80df3d2b21535da8a5a8da2e583188be97bb956ad7ade48d')
+sha256sums=('065edd9d34c21825194747c22e1462e117a9e775627b33f0fca3f37c6e73eb98')
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked
+}
 
 package() {
   cd "$pkgname-$pkgver"
