@@ -1,0 +1,14 @@
+pkgbase = libcoraza
+	pkgdesc = OWASP Coraza C connector
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/corazawaf/libcoraza
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = libcoraza-1.8.0.tar.gz::https://github.com/corazawaf/libcoraza/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = f303f65d3bbd97e90aef5c26d2251949f4a8c7a4d8615a2d78c87455b0fa148c
+
+pkgname = libcoraza
