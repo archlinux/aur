@@ -10,7 +10,7 @@ _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
 pkgver=1.0.168
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.ta
         "discord_modules-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_modules/1/full.distro"
         "discord_spellcheck-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_spellcheck/1/full.distro"
         "discord_dispatch-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_dispatch/1/full.distro"
-        "discord_cloudsync-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_cloudsync/1/full.distro"
+        "discord_ndi-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_ndi/1/full.distro"
         "discord_sysimg-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_sysimg/1/full.distro")
 sha512sums=('33ff24e65e2f1daaf7b1047ad663cee79cb1b1819b9a6d6507e08b55ab6efd423d4c3ee23f7b07ea00f909affef7c0b7826dc502ab3f800cbf6d7ed3955d8d09'
             '2590151db4404a9ecbae2c45269c74f5ea26479967de5bc0b221a9143f4efeeeda9e335c23cf1f982680ab4fd895dcf3fd5731bd230908b3b2568eee0ec223ec'
@@ -65,7 +65,7 @@ sha512sums=('33ff24e65e2f1daaf7b1047ad663cee79cb1b1819b9a6d6507e08b55ab6efd423d4
             'cd35b680c0bd5ca7ee74014b2696156af2c53d39c23ae49e20f7d97fb6d012778110808c6fe9c4eceb4f0fcf3276a5b52fdcbdba93e1138dae67d42fc9c08464'
             'cb4ef01ee9f203324902d49716c5f2a9e069c6ffaef8702574f2edf49f73e2251d83bfc19c49d9642453239b16bbb83f676a5e1fd5ab4dbe87cea4caf769bb1a'
             '8acaeeda97dc025ca8782364cde16397d4db870290dcbe954cf94ae8f9ba67ec26b4ab020bf2255de64d559b2a8f653ed47a75e6cd1835deb0f89dfdb28d7cf0'
-            'ccdf8145b5647e82b827b501bb6b577f1288dd23dadedf51cf2401b8b2cd000ac5fcb8c00d0c93dde5dc4f49b624a75d10873597d67b58bcf53707c4f40f130b'
+            'c3405234f82a03190e782073c559c93e3e4cef07972d1163ff553b56421df5545aa93abf50042535c661118d961000ea3d698fa7435bdd9030b8b2a868a06a6a'
             '160edd27d3c7710fc05a7fb5d9c4be8ad369a2485e77b5a17b1a3c29a4a8d829619e79036dce547c99e69e0c4ad3212e8c1f3ee36fe3a1f50938eaf6b7c73a95')
 
 # Skip "LICENSE.html" and "OSS-LICENSES.html" files hashes as they are unstable
