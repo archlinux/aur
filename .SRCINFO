@@ -1,0 +1,17 @@
+pkgbase = recomplauncher-bin
+	pkgdesc = Recompiled games, native on PC.
+	pkgver = 0.90.0
+	pkgrel = 1
+	url = https://recomplauncher.com
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = wget
+	depends = unzip
+	optdepends = zenity: Information/Error message UI
+	source = RecompLauncher.desktop
+	source = https://github.com/elripalda/RecompLauncher/releases/download/v0.90.0-beta.6/RecompLauncher_0.90.0-beta.6_amd64.AppImage
+	sha256sums = 3e775eee4f97fccac2bc634e042ecd0337ff487c49f20a00d758adb9a06e57cd
+	sha256sums = db4ee615c4c27f184ae8fab3159c8798526f5759d45ab7c483c67938507ee244
+
+pkgname = recomplauncher-bin
