@@ -2,8 +2,8 @@
 
 _pkgbase=conflux
 pkgname="$_pkgbase"
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Background file-sync daemon syncing local directories to multiple remotes'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AperteDev/conflux'
@@ -15,7 +15,7 @@ conflicts=("$_pkgbase")
 options=('!lto')
 backup=('etc/conflux/config.toml')
 source=("$_pkgbase::git+$url.git#tag=v$pkgver")
-sha256sums=('dfcdb23d452c46e4a8edcfa699185375fc90b5ba3817187238ba8f0d59c840e3')
+sha256sums=('ee503fa9dc9f93b8785d4390a7d9657d6ae5abf037a12757a565cdf142d878bc')
 
 prepare() {
 	cd "$_pkgbase"
