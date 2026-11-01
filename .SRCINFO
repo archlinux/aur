@@ -1,6 +1,6 @@
 pkgbase = gazelle-installer
 	pkgdesc = Customizable GUI installer ported from MX Linux and antiX
-	pkgver = 26.09.1
+	pkgver = 26.10mx25
 	pkgrel = 1
 	url = https://github.com/gazelle-installer
 	arch = x86_64
@@ -8,19 +8,21 @@ pkgbase = gazelle-installer
 	license = Apache
 	makedepends = cmake>=3.31
 	makedepends = ninja>=1.12
+	makedepends = ncurses
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-svg
 	depends = dosfstools
 	depends = gptfdisk
 	depends = grub
+	depends = ncurses
 	depends = os-prober
 	depends = parted
 	optdepends = gparted: graphical partition manager
 	optdepends = partitionmanager: KDE partition manager
 	optdepends = cryptsetup: LUKS encryption support
 	options = !emptydirs
-	source = https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.09.1.tar.gz
-	sha256sums = 2aa3b141ce4cb4b9956aa1abe35f5f868d814d548cea70b5b607aad992d7ac99
+	source = https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.10mx25.tar.gz
+	sha256sums = 6656c1db33a6fdfa4d1643be6b86b0cbc538a1a68cde1acd3951a82371628499
 
 pkgname = gazelle-installer
