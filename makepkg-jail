@@ -11,12 +11,26 @@
 # -s, -i and -r are handled by this wrapper on the host: dependencies and
 # built packages are installed by pacman outside the sandbox, never by code
 # from the PKGBUILD.
+#
+# Pre-fetch hooks: executables in /etc/makepkg-jail/pre-fetch.d and
+# ~/.config/makepkg-jail/pre-fetch.d run sandboxed, in name order, before
+# the first network-enabled phase. Exit 0 continues; anything else asks you.
 set -euo pipefail
 umask 077
 
 die() {
     printf 'makepkg-jail: %s\n' "$*" >&2
     exit 1
+}
+
+# ask PROMPT: asks on the terminal, outside the sandbox. Returns 0 only for
+# an explicit y/Y. Without a terminal, returns 1.
+ask() {
+    local reply
+    if ! { printf '%s ' "$1" >/dev/tty && read -r reply </dev/tty; } 2>/dev/null; then
+        return 1
+    fi
+    [[ "$reply" =~ ^[Yy]$ ]]
 }
 
 (( EUID != 0 )) || die "Run as your normal user, not root."
@@ -166,35 +180,45 @@ case "$work" in
         ;;
 esac
 
+# --- Shared state -------------------------------------------------------
+data="${XDG_DATA_HOME:-$HOME/.local/share}/makepkg-jail"
+state="${XDG_CACHE_HOME:-$HOME/.cache}/makepkg-jail-v2"
+
+mkdir -p -- "$state"
+state=$(realpath -e -- "$state")
+
+case "$state/" in
+    "$work/"*) die "The workspace must not contain the sandbox state directory." ;;
+esac
+
+filter="/usr/lib/makepkg-jail/seccomp.bpf"
+[[ -s "$filter" && -r "$filter" ]] ||
+    die "Required seccomp filter is missing: $filter"
+
+key=$(printf '%s' "$work" | sha256sum)
+key=${key%% *}
+
+private_home="$state/homes/$key"
+mkdir -p -- "$private_home" "$state/runs"
+
+cleanup_dirs=()
+trap 'rm -rf -- "${cleanup_dirs[@]}"' EXIT
+
 # --- Sandbox run --------------------------------------------------------
-# run_jail NET MAKEPKG_ARGS...   (NET: 1 = network on, 0 = off)
-run_jail() {
-    local net=$1
-    shift
+# run_sandboxed NET RO_WORK HOME COMMAND...
+#   NET:     1 = network on, 0 = off
+#   RO_WORK: 1 = workspace read-only, 0 = writable
+#   HOME:    host directory mounted as /home/build
+# Extra bubblewrap arguments can be set in the global array jail_extra.
+jail_extra=()
 
-    local data state key private_home target path name
-    data="${XDG_DATA_HOME:-$HOME/.local/share}/makepkg-jail"
-    state="${XDG_CACHE_HOME:-$HOME/.cache}/makepkg-jail-v2"
+run_sandboxed() {
+    local net=$1 ro_work=$2 sandbox_home=$3
+    shift 3
 
-    mkdir -p -- "$state"
-    state=$(realpath -e -- "$state")
-
-    case "$state/" in
-        "$work/"*) die "The workspace must not contain the sandbox state directory." ;;
-    esac
-
-    filter="/usr/lib/makepkg-jail/seccomp.bpf"
-    [[ -s "$filter" && -r "$filter" ]] ||
-        die "Required seccomp filter is missing: $filter"
-
-    key=$(printf '%s' "$work" | sha256sum)
-    key=${key%% *}
-
-    private_home="$state/homes/$key"
-    mkdir -p -- "$private_home" "$state/runs"
-
+    local run target path name
     run=$(mktemp -d "$state/runs/run.XXXXXXXX")
-    trap 'rm -rf -- "$run"' EXIT
+    cleanup_dirs+=("$run")
 
     mkdir -p "$run/etc" "$run/tmp" "$run/vartmp" "$run/gnupg"
 
@@ -280,8 +304,7 @@ EOF
         --dir /root
         --proc /proc
         --dev /dev
-        --bind "$work" /work
-        --bind "$private_home" /home/build
+        --bind "$sandbox_home" /home/build
         --bind "$run/tmp" /tmp
         --bind "$run/vartmp" /var/tmp
         --bind "$run/gnupg" /gnupg
@@ -289,6 +312,12 @@ EOF
         --ro-bind /var/lib/pacman/sync /var/lib/pacman/sync
         --chdir /work
     )
+
+    if (( ro_work )); then
+        args+=(--ro-bind "$work" /work)
+    else
+        args+=(--bind "$work" /work)
+    fi
 
     # Create mount targets in the staging directory before bubblewrap mounts
     # it read-only. The read-only mounts below then cover these targets.
@@ -330,11 +359,15 @@ EOF
         fi
     fi
 
+    # Caller-supplied mounts and environment, applied last.
+    args+=("${jail_extra[@]}")
+
     exec 3<"$filter"
     args+=(--seccomp 3)
 
     # Relay stdout and stderr through anonymous pipes, keeping them separate
     # (paru parses stdout) without exposing the host terminal to the sandbox.
+    local out_fd err_fd
     exec {out_fd}> >(/usr/bin/cat)
     local out_pid=$!
 
@@ -343,8 +376,7 @@ EOF
 
     local status=0
     /usr/bin/bwrap "${args[@]}" -- \
-        /usr/bin/aa-exec -p '/usr/bin/bwrap//&makepkg-jail-build' -- \
-        /usr/bin/makepkg --config /etc/jail-makepkg.conf "$@" \
+        /usr/bin/aa-exec -p '/usr/bin/bwrap//&makepkg-jail-build' -- "$@" \
         </dev/null 1>&"$out_fd" 2>&"$err_fd" || status=$?
 
     # Close our pipe writers before waiting for the readers to finish.
@@ -358,6 +390,119 @@ EOF
     (( status == 0 )) || return "$status"
     return "$relay_status"
 }
+
+# --- Pre-fetch hooks ----------------------------------------------------
+# Each hook runs sandboxed with network on, the workspace read-only at
+# /work (also passed as $1), MAKEPKG_JAIL_PKGBASE set, and a persistent
+# private home of its own. A hook may ask for read-only access to host
+# configuration with lines such as:
+#   # makepkg-jail-ro-home: .config/sometool
+# (paths relative to your home; mounted only if they exist).
+hook_dirs=(
+    /etc/makepkg-jail/pre-fetch.d
+    "${XDG_CONFIG_HOME:-$HOME/.config}/makepkg-jail/pre-fetch.d"
+)
+
+run_prefetch_hooks() {
+    local -a hooks=()
+    local dir hook
+
+    for dir in "${hook_dirs[@]}"; do
+        if [[ ! -d "$dir" ]]; then
+            continue
+        fi
+        for hook in "$dir"/*; do
+            case "${hook##*/}" in
+                .*|*~|*.pacnew|*.pacsave|*.pacorig) continue ;;
+            esac
+            if [[ -f "$hook" && -x "$hook" ]]; then
+                hooks+=("$hook")
+            fi
+        done
+    done
+
+    if (( ${#hooks[@]} == 0 )); then
+        return 0
+    fi
+
+    # Run once per recipe: paru calls makepkg online twice (--verifysource,
+    # then -o). The stamp covers the recipe files and the hook list.
+    local digest stamp
+    stamp="$state/hooks/$key"
+
+    digest=$(
+        {
+            printf '%s\n' "${hooks[@]}"
+            cat -- "$work/PKGBUILD"
+            find "$work" -maxdepth 1 -type f -name '*.install' -print0 |
+                sort -z | xargs -0r cat --
+        } | sha256sum
+    )
+    digest=${digest%% *}
+
+    if [[ -r "$stamp" && "$(<"$stamp")" == "$digest" ]]; then
+        return 0
+    fi
+
+    # Package base from metadata generated inside the sandbox.
+    local srcinfo line pkgbase=
+    srcinfo=$("$self" --offline --printsrcinfo) ||
+        die "Could not read package metadata for hooks."
+    while IFS= read -r line; do
+        if [[ "$line" == "pkgbase = "* ]]; then
+            pkgbase=${line#pkgbase = }
+            break
+        fi
+    done <<< "$srcinfo"
+
+    [[ "$pkgbase" =~ ^[[:alnum:]@_+][[:alnum:]@._+-]*$ ]] ||
+        die "Unexpected pkgbase in package metadata: ${pkgbase:-<none>}"
+
+    local name real hook_home rel rc
+    for hook in "${hooks[@]}"; do
+        name=${hook##*/}
+        [[ "$name" =~ ^[[:alnum:]._-]+$ ]] ||
+            die "Unsupported hook file name: $name"
+
+        real=$(readlink -f -- "$hook")
+        hook_home="$state/hook-homes/$name"
+        mkdir -p -- "$hook_home"
+
+        jail_extra=(
+            --ro-bind "$real" /home/build/.makepkg-jail-hook
+            --setenv MAKEPKG_JAIL_PKGBASE "$pkgbase"
+            --setenv MAKEPKG_JAIL_WORKDIR /work
+        )
+
+        while IFS= read -r rel; do
+            case "/$rel/" in
+                */../*|*/./*|//*) die "Hook $name: invalid path: $rel" ;;
+            esac
+            jail_extra+=(--ro-bind-try "$HOME/$rel" "/home/build/$rel")
+        done < <(sed -n 's/^# makepkg-jail-ro-home:[[:space:]]*\([^[:space:]]\+\)[[:space:]]*$/\1/p' "$real")
+
+        printf '==> makepkg-jail: running hook %s (sandboxed)\n' "$name" >&2
+        rc=0
+        run_sandboxed 1 1 "$hook_home" /home/build/.makepkg-jail-hook /work >&2 || rc=$?
+        jail_extra=()
+
+        if (( rc != 0 )); then
+            if (( noconfirm )); then
+                die "Hook $name reported a problem (exit $rc); stopping because of --noconfirm."
+            fi
+            ask "==> Hook $name reported a problem (exit $rc). Continue anyway? [y/N]" ||
+                die "Stopped after hook $name."
+        fi
+    done
+
+    mkdir -p -- "$state/hooks"
+    printf '%s\n' "$digest" > "$stamp"
+}
+
+# Hooks run before anything goes online, and before -s installs anything.
+if (( split || online )); then
+    run_prefetch_hooks
+fi
 
 # --- -s: install missing repo dependencies on the host -----------------
 installed_deps=()
@@ -422,7 +567,8 @@ else
     if (( clean_before )); then single+=(--cleanbuild); fi
     if (( clean_after )); then single+=(--clean); fi
 
-    run_jail "$online" "${single[@]}" "${pass[@]}"
+    run_sandboxed "$online" 0 "$private_home" \
+        /usr/bin/makepkg --config /etc/jail-makepkg.conf "${single[@]}" "${pass[@]}"
 fi
 
 # --- -i: install the built packages on the host -------------------------

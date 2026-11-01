@@ -4,8 +4,10 @@ pkgrel=1
 pkgdesc='Local bubblewrap makepkg sandbox with AppArmor and a restricted paru adapter'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
+
 depends=(
     'apparmor'
+    'base-devel'
     'bash'
     'bubblewrap'
     'coreutils'
@@ -14,15 +16,18 @@ depends=(
     'util-linux'
 )
 
+optdepends=(
+    'paru: use the paru-makepkg-jail adapter'
+    'traur: pre-fetch trust scan hook'
+)
+
 makedepends=(
     'python'
     'python-libseccomp'
-    'shellcheck'
 )
 
-optdepends=(
-    'base-devel: standard Arch package build tools'
-    'paru: use the paru-makepkg-jail adapter'
+checkdepends=(
+    'shellcheck'
 )
 
 install=makepkg-jail-local.install
@@ -40,15 +45,17 @@ source=(
     'makepkg-jail'
     'paru-makepkg-jail'
     'gen-seccomp.py'
+    'hook-traur'
     'bwrap.profile'
     'build.profile'
 )
 
 # Local development placeholders. Replace with real hashes before
 # distributing the package, or use updpkgsums before building.
-sha256sums=('2165a7c30f196ce554c3e28cb99b2c850bf7e13543b3efaf260a645da575c1cd'
+sha256sums=('7a9f3f03e7045d2e00ffc55b472964ab6e96e1e4d634adecc9947d6893a2495b'
             'ab7166fce9de9085ec89bdcb4747493f28a3dfb094d701b205751e954b020582'
             'ecf24a3118060612c6a38c26a038acbe6a7e5c8531bcb65837ec7d17e3d8ecbf'
+            '4336aa8db4b217342dac97d80ad0a8e80fc2db581cba1c39f74c1f781eb5e20f'
             '5b33033b0e1190d6b77666e6b76b858c1b4f5df854ffb2bc8e83f2a3c3f80e32'
             '44a4836379763312e7a81e8b9100230d60c6dbdb90fce1a2ac965fcf8d8a01a3')
 
@@ -114,6 +121,10 @@ package() {
     # Retain the generator as readable source; it is not run at runtime.
     install -Dm644 gen-seccomp.py \
         "$pkgdir/usr/share/makepkg-jail/gen-seccomp.py"
+
+    install -Dm755 hook-traur \
+        "$pkgdir/usr/share/makepkg-jail/hooks/traur"
+    install -dm755 "$pkgdir/etc/makepkg-jail/pre-fetch.d"
 
     # Package-owned build policy, installed in the standard location.
     install -Dm644 build.profile \

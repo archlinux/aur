@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+# makepkg-jail pre-fetch hook: traur trust scan.
+#
+# Runs inside the makepkg-jail sandbox with network on, the package
+# directory read-only at $1, and a private persistent home of its own.
+# Exit 0 continues; anything else makes makepkg-jail ask you.
+#
+# Enable with:
+#   sudo ln -s /usr/share/makepkg-jail/hooks/traur /etc/makepkg-jail/pre-fetch.d/50-traur
+#
+# traur allow/ignore settings made on the host are shown read-only here
+# if traur keeps them in this location:
+# makepkg-jail-ro-home: .config/traur
+set -euo pipefail
+
+workdir=${1:?}
+pkgbase=${MAKEPKG_JAIL_PKGBASE:?}
+
+if ! command -v traur >/dev/null 2>&1; then
+    printf 'traur hook: traur is not installed.\n'
+    exit 1
+fi
+
+# The verdict comes from the JSON tier, as in traur's own wrapper.
+# A failed scan produces no tier.
+json=$(traur scan --dir "$workdir" --json 2>/dev/null) || true
+tier=$(sed -n 's/.*"tier"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/;T;p;q' <<< "$json")
+score=$(sed -n 's/.*"score"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/;T;p;q' <<< "$json")
+reason=$(sed -n 's/.*"reason"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/;T;p;q' <<< "$json")
+
+printf '==> traur: %s: %s (trust: %s/100)\n' \
+    "$pkgbase" "${tier:-no verdict}" "${score:-?}"
+
+if [[ "$tier" == Trusted ]]; then
+    exit 0
+fi
+
+if [[ -z "$tier" || "$tier" == Unknown ]]; then
+    printf '    traur could not conclude%s. This is not a verdict either way.\n' \
+        "${reason:+: $reason}"
+fi
+exit 1
