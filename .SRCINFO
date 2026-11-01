@@ -1,7 +1,7 @@
 pkgbase = dotnet-omnisharp-extensions
 	pkgdesc = Language Server Protocol and Debug Adapter Protocol for .NET, OmniSharp.Extensions.* (NuGet packages)
 	pkgver = 0.19.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OmniSharp/csharp-language-server-protocol
 	arch = any
 	license = MIT

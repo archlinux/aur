@@ -4,7 +4,7 @@
 
 pkgname=dotnet-omnisharp-extensions
 pkgver=0.19.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server Protocol and Debug Adapter Protocol for .NET, OmniSharp.Extensions.* (NuGet packages)"
 arch=('any')
 url='https://github.com/OmniSharp/csharp-language-server-protocol'
@@ -97,7 +97,7 @@ _nuget_config() {
 <configuration>
   <packageSources>
     <clear />
-    <add key="dotnet-system" value="/usr/share/dotnet/nuget-packages" />
+    <add key="dotnet-system" value="/usr/share/nuget/packages" />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
     <add key="${1%%=*}" value="${1#*=}" />
   </packageSources>
@@ -203,7 +203,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/"*".$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/"*".$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "csharp-language-server-protocol-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
