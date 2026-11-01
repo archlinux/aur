@@ -1,0 +1,23 @@
+post_install() {
+  _emono_update_maps
+}
+
+post_upgrade() {
+  _emono_update_maps
+}
+
+pre_remove() {
+  if command -v updmap-sys >/dev/null 2>&1; then
+    updmap-sys --disable Map=emono.map || true
+  fi
+}
+
+_emono_update_maps() {
+  if command -v mktexlsr >/dev/null 2>&1; then
+    mktexlsr
+  fi
+
+  if command -v updmap-sys >/dev/null 2>&1; then
+    updmap-sys --enable Map=emono.map
+  fi
+}
