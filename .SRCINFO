@@ -5,7 +5,7 @@ pkgbase = dotnet-json-more-net-2
 	url = https://github.com/json-everything/json-everything
 	arch = any
 	license = MIT
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-build-deps-10.0
 	makedepends = git
 	provides = dotnet-json-more-net=2.2.0
 	source = json-everything::git+https://github.com/json-everything/json-everything.git#commit=f53d4d27eeed6a73d377bf4188175f0b8a46f856
