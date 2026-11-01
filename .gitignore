@@ -1,3 +1,5 @@
 gxfp5130-linux.tar.gz
 src/
 pkg/
+*.pkg.tar.zst
+*.part

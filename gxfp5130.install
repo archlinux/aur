@@ -1,7 +1,16 @@
 post_install() {
-  dkms add -m gxfp -v "$1" 2>/dev/null || true
-  dkms build -m gxfp -v "$1" && dkms install -m gxfp -v "$1"
-  modprobe gxfp 2>/dev/null || true
+  # pacman 传给 .install 的版本带 pkgrel（如 0.2.0-1），而 DKMS 的源码目录是
+  # /usr/src/gxfp-<pkgver>，所以这里必须去掉 -pkgrel 再用。
+  local _ver="${1%-*}"
+  # 升级时旧模块可能仍加载着：先停 fprintd 并卸载，再由 dkms 构建/安装新版本。
+  systemctl stop fprintd 2>/dev/null || true
+  rmmod gxfp 2>/dev/null || true
+  dkms add -m gxfp -v "$_ver" 2>/dev/null || true
+  if dkms build -m gxfp -v "$_ver" && dkms install -m gxfp -v "$_ver"; then
+    # dkms install 只刷新它自己的树；显式 depmod 一次，保证紧接着的 modprobe 一定能解析到新模块。
+    depmod -a 2>/dev/null || true
+    modprobe gxfp 2>/dev/null || true
+  fi
   systemctl try-restart fprintd 2>/dev/null || true
   echo
   echo "GXFP5130 指纹栈已安装。下一步："
@@ -9,11 +18,14 @@ post_install() {
   echo "  2) 录入指纹: fprintd-enroll"
   echo "  3) PAM 指纹/密码二选一: 见 /etc/pam.d 说明 (pam_fprintd sufficient)"
   echo "  4) 若装有系统 libfprint: sudo pacman -Rdd libfprint 后再装 libfprint-gxfp"
+  echo "  5) v0.2.0 起改了指纹匹配算法：升级后旧录入可能匹配不上，必要时"
+  echo "     fprintd-delete \$USER && fprintd-enroll 重新录入"
 }
 post_upgrade() {
-  dkms remove -m gxfp -v "$1" --all 2>/dev/null || true
+  # pacman 对 post_upgrade 传（新版本, 旧版本），两者都带 pkgrel；先移除旧版本的 DKMS 注册。
+  dkms remove -m gxfp -v "${2%-*}" --all 2>/dev/null || true
   post_install "$1"
 }
 pre_remove() {
-  dkms remove -m gxfp -v "$1" --all 2>/dev/null || true
+  dkms remove -m gxfp -v "${1%-*}" --all 2>/dev/null || true
 }
