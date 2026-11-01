@@ -4,14 +4,14 @@ set -euo pipefail
 # Check lineup is valid
 LINEUP="${1:-}"
 if [[ -z "$LINEUP" ]] || { [[ "$LINEUP" != "legacy" ]] && [[ "$LINEUP" != "rpi4" ]]; }; then
-    echo "Usage: $0 <board lineup: legacy|rpi4>"
+    echo "Usage: $0 <board lineup: legacy|rpi4>" >&2
     exit 1
 fi
 
 # Check that firmware exists on the fs
 SRC="/usr/lib/raspberrypi/${LINEUP}/boot"
 if [[ ! -d "$SRC" ]]; then
-    echo "raspberrypi-bootloader-install: $SRC is missing"
+    echo "raspberrypi-bootloader-install: $SRC is missing" >&2
     exit 2
 fi
 
@@ -22,13 +22,13 @@ for MNT in /boot /boot/efi /efi; do
         continue
     fi
     if [[ -n "$MOUNTPOINT" ]]; then
-        echo "raspberrypi-bootloader-install: several FAT partitions found"
+        echo "raspberrypi-bootloader-install: several FAT partitions found" >&2
         exit 3
     fi
     MOUNTPOINT="$MNT"
 done
 if [[ -z "$MOUNTPOINT" ]]; then
-    echo "raspberrypi-bootloader-install: no FAT partition found at /boot, /boot/efi or /efi"
+    echo "raspberrypi-bootloader-install: no FAT partition found at /boot, /boot/efi or /efi" >&2
     exit 4
 fi
 

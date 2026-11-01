@@ -23,7 +23,7 @@ source=(
     raspberrypi-bootloader-install.hook.in
 )
 sha256sums=('58751354e5c8289d3660511958e8c7869de010f6719d8e1859820391058a337c'
-            'fcf38a1aebcc5bfca4ace70073b1bf71bc6b463a2e441cfe8314a57c2a9acd73'
+            '0ba7644ff014ebb61f242c6757c977dedd65fbad8e0b870e4a06dda9b0297b72'
             '428026db5507f95dfb92b8d1e3b0cc6dd6c92ed9989106461b03a157a1a7c004')
 
 package_raspberrypi-bootloader-common() {
