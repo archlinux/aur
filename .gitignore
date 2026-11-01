@@ -1,0 +1,7 @@
+strata-app-src/
+strata-app-harness/
+cpython-*.tar.gz
+node-v*.tar.gz
+strata-app-*.pkg.tar.zst
+pkg/
+src/

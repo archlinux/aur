@@ -1,0 +1,14 @@
+--- a/apps/desktop/src-tauri/src/updater.rs
++++ b/apps/desktop/src-tauri/src/updater.rs
+@@ -58,6 +58,11 @@
+ }
+ 
+ fn updater_for(app: &AppHandle) -> Result<tauri_plugin_updater::Updater, String> {
++    // Arch Linux package: pacman owns the install, and the plugin's Linux fallback would try to
++    // replace /usr/bin/strata-desktop with the release AppImage
++    if true {
++        return Err("This copy of Strata is installed by pacman. Update it through the AUR package strata-app.".into());
++    }
+     match endpoint_override() {
+         Some(url) => {
+             let url: tauri::Url = url.parse().map_err(|e| format!("bad update endpoint: {e}"))?;
