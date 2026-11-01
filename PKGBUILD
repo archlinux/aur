@@ -6,11 +6,11 @@
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
 pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (development version)'
-pkgver=2.5.1.r5.g7f41e418
+pkgver=2.6.0.r26.g336f165d
 pkgrel=1
 url='https://github.com/flanglet/kanzi-cpp'
 arch=('aarch64' 'x86_64')
-license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
+license=('Apache-2.0')
 makedepends=('cmake' 'git')
 depends=('glibc' 'libgcc' 'libstdc++')
 provides=('kanzi' 'libkanzi.so')
@@ -66,7 +66,7 @@ package() {
   done
 
   cd "$pkgdir/usr/share/doc" \
-  && ln -fs "$pkgname" "$_pkgname"
+    && ln -fs "$pkgname" "$_pkgname"
 }
 
 # eof
