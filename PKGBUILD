@@ -146,10 +146,21 @@ prepare() {
 
   # Upstream builds with a newer feature band of the .NET SDK, which isn't needed. dotnet only works
   # outside the repository until its global.json is updated.
-  local _sdkver
+  local _sdkver _runtimever _package
   _sdkver=$(dotnet --version)
+  _runtimever=$(dotnet --list-runtimes |
+    sed -n -E 's/^Microsoft\.NETCore\.App ('"${_dotnetsdkver//./\\.}"'\.[^ ]+) .*/\1/p' | sort -V | tail -1)
 
   cd "azure-sdk-for-net-$_commit" || exit
+  # Microsoft's runtime packages in the version of its installed runtime, as the source-built ones come
+  # in the version of the artifacts, instead of the versions upstream pins at this commit, which differ
+  # between the Azure packages (System.ClientModel needs newer ones than the tests of Azure.Identity pin)
+  if [[ ! -f "$srcdir/runtime-packages" ]]; then
+    for _package in "${_runtimepackages[@]}"; do
+      sed -i -E 's#(<PackageVersion Include="'"${_package//./\\.}"'" Version=")'"${_dotnetsdkver//./\\.}"'\.[^"]*"#\1'"$_runtimever"'"#' \
+        eng/centralpackagemanagement/Directory.Packages.props
+    done
+  fi
   # Upstream's NuGet.Config, which has the feed the tests need
   mv NuGet.Config NuGet.Config.upstream
   jq --arg sdk "$_sdkver" '.sdk.version = $sdk | .sdk.rollForward = "latestPatch"' global.json >global.json.new
