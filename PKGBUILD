@@ -3,7 +3,7 @@
 # Contributor: u/Astros_virus5372
 
 pkgname=sony-device-center
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Open-source Sony headphone/earbud companion: GUI, sonyd daemon and sonyctl CLI over a reverse-engineered Bluetooth protocol"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'ninja' 'gcc' 'glfw-x11' 'libgl')
 # empty, so pin it here and drop it into Client/imgui in prepare().
 source=("https://github.com/marconvcm/sony-device-center/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/ocornut/imgui/archive/b62bfd6b06de958e4630b715225b7e8409bfd0f9.tar.gz")
-sha256sums=('b67423b45c0bd94c60d628d2a3bb21b842980fdea6a4730367edab229347ab90'
+sha256sums=('2fd98594ba646663ef63fae89fd5263ac6e89dbe2f1971fc50145ca85abb429d'
           '27d396d30d18391f6b805d0633b633c8644cdb15cd069c2baabfaefb86702cac')
 
 prepare() {
