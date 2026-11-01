@@ -12,8 +12,7 @@ url='https://github.com/PowerShell/PowerShellStandard'
 license=('MIT')
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
-  dotnet-source-build-reference-packages
+  dotnet-build-deps-"$_dotnetsdkver"
   git
 )
 # The commit of the 5.1.1 release ("release 5.1.1 - which adds an assembly for net452"), upstream
@@ -41,13 +40,18 @@ _dotnet_env() {
 
 prepare() {
   cd PowerShellStandard || exit
-  # NETStandard.Library and the System.* reference packages come from dotnet-source-build-reference-packages
+  # NETStandard.Library and the System.* reference packages come from the .NET
+  # dotnet-build-deps-10.0 chooses: the reference packages of .NET's source build
+  # (dotnet-source-build-reference-packages) with dotnet-build-deps-10.0, Microsoft's originals from
+  # nuget.org with dotnet-build-deps-10.0-bin
+  local _feed=/usr/share/dotnet/source-build-reference-packages
+  [[ -d "$_feed" ]] || _feed=https://api.nuget.org/v3/index.json
   cat >nuget.config <<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <packageSources>
     <clear />
-    <add key="dotnet-source-build-reference-packages" value="/usr/share/dotnet/source-build-reference-packages" />
+    <add key="dotnet-reference-packages" value="$_feed" />
   </packageSources>
 </configuration>
 EOF
