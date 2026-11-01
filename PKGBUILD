@@ -12,7 +12,7 @@ url='https://github.com/Azure/azure-sdk-for-net'
 license=('MIT')
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   jq
 )
 # The commit the package was published from (tag System.ClientModel_1.16.0), and the official build
@@ -105,9 +105,9 @@ EOF
 }
 
 prepare() {
-  # The runtime packages are part of the source-built .NET of Arch Linux
-  # (dotnet-source-built-artifacts), which Arch Linux ARM doesn't have. It can't be a makedepends of
-  # an arch=any package, so it's used when it's installed, and they come from nuget.org otherwise.
+  # The runtime packages come from the .NET dotnet-build-deps-10.0 chooses, so the build never mixes
+  # two builds of .NET: the source-built artifacts of Arch Linux (dotnet-source-built-artifacts)
+  # with dotnet-build-deps-10.0, Microsoft's build from nuget.org with dotnet-build-deps-10.0-bin.
   mkdir -p nuget-local
   local _artifacts
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
