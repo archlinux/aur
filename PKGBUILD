@@ -30,10 +30,10 @@ pkgname=powershell
 pkgver=7.6.9
 pkgrel=23
 pkgdesc="A cross-platform automation and configuration tool/framework"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://microsoft.com/PowerShell'
-license=('MIT')
-options=('!debug')
+license=(MIT)
+options=(!debug)
 _dotnetsdkver="10.0"
 # PowerShell-Native has no tag for the version PowerShell uses (700.0.2), it was published from this commit
 _psnativecommit="f24d5494b373de20ec3e3d2fdc7c3fc98af1f9f1"
@@ -63,7 +63,7 @@ _pesterver="4.10.1"
 # assembly the modules compile against with this PowerShell: release commit, upstream doesn't tag
 _psstdcommit="b69d5e6a5107287a5981db515bae4d5631278f76"
 depends=(
-  dotnet-runtime-"$_dotnetsdkver"
+  "dotnet-runtime-$_dotnetsdkver"
   glibc
   libgcc
   libstdc++
@@ -72,7 +72,7 @@ depends=(
   # PowerShell relies on this for its invoke logic, c.f. src/System.Management.Automation/namespaces/FileSystemProvider.cs
   xdg-utils
 )
-backup=('etc/powershell.config.json')
+backup=(etc/powershell.config.json)
 optdepends=('openssh: PowerShell Remoting over ssh'
   'wl-clipboard: Clipboard functionality on Wayland'
   'xclip: Clipboard functionality on X11, or on Wayland through Xwayland'
@@ -85,7 +85,7 @@ makedepends=(
   # .NET of Arch Linux, or Microsoft's build (dotnet-build-deps-10.0-bin, e.g. on Arch Linux ARM,
   # which has no .NET packages). The libraries come from powershell-build-deps, built from source,
   # or nuget.org (powershell-build-deps-bin). See _nuget_feeds() and _nuget_modules_config().
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   powershell-build-deps
   cmake
   gtest
@@ -94,8 +94,8 @@ makedepends=(
 )
 checkdepends=(
   # ASP.NET is needed for test/tools/WebListener
-  aspnet-targeting-pack-"$_dotnetsdkver"
-  aspnet-runtime-"$_dotnetsdkver"
+  "aspnet-targeting-pack-$_dotnetsdkver"
+  "aspnet-runtime-$_dotnetsdkver"
   bash          # Needed for various tests, e.g. test/powershell/Language/Scripting/NativeExecution/NativeLinuxCommands.Tests.ps1
   expect        # Needed for test/powershell/Host/Read-Host.Tests.ps1
   glibc-locales # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
