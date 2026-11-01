@@ -1,6 +1,6 @@
 pkgbase = pitchfork-bin
 	pkgdesc = Daemons with DX
-	pkgver = 2.32.4
+	pkgver = 2.33.0
 	pkgrel = 1
 	url = https://github.com/jdx/pitchfork
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = pitchfork-bin
 	depends = gcc-libs
 	provides = pitchfork
 	conflicts = pitchfork
-	source = LICENSE-2.32.4::https://raw.githubusercontent.com/jdx/pitchfork/v2.32.4/LICENSE
-	source = README-2.32.4.md::https://raw.githubusercontent.com/jdx/pitchfork/v2.32.4/README.md
+	source = LICENSE-2.33.0::https://raw.githubusercontent.com/jdx/pitchfork/v2.33.0/LICENSE
+	source = README-2.33.0.md::https://raw.githubusercontent.com/jdx/pitchfork/v2.33.0/README.md
 	sha256sums = 5ba5d69f83674602525196efe44114e546cf3440d363603961076e52b9647a5a
 	sha256sums = 1efc32f14e38eb6b4968cb87de1e34e4d686b27db966584ff1d0725294e0f1d1
-	source_x86_64 = pitchfork-x86_64-2.32.4.tar.gz::https://github.com/jdx/pitchfork/releases/download/v2.32.4/pitchfork-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bc5fa8716baa0538c9b581b9dd64f14be078e64090abee925c501fb925700527
-	source_aarch64 = pitchfork-aarch64-2.32.4.tar.gz::https://github.com/jdx/pitchfork/releases/download/v2.32.4/pitchfork-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9c39cdb1bfb06d78494696809fbc1518de583d487c73b8e6fc300084e1f5b10d
+	source_x86_64 = pitchfork-x86_64-2.33.0.tar.gz::https://github.com/jdx/pitchfork/releases/download/v2.33.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a82f3daa0a0cdfb05629e5d7e18e1bbac757d17e57d80edb0179eb167555b99c
+	source_aarch64 = pitchfork-aarch64-2.33.0.tar.gz::https://github.com/jdx/pitchfork/releases/download/v2.33.0/pitchfork-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c1fbba24580a7ea662b9b13cf2958f7943586cba2efc3bca2ba44d333e4d2d6a
 
 pkgname = pitchfork-bin
