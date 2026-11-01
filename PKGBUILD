@@ -11,17 +11,17 @@ url='https://github.com/dotnet/wcf'
 license=('MIT')
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  dotnet-build-deps-"$_dotnetsdkver"
   jq
 )
 # The commit the packages were published from (tag v10.1.0-rtm), and the official build of them, see
 # the file version 10.100.26.51601 of their assemblies (Arcade encodes the date and build number in it)
 _commit="12702d51d9758687726bc4056729aeb58fbbf717"
 _officialbuildid="20261016.1"
-# Arcade from dotnet-eng where the source-built artifacts are missing (Arch Linux ARM): the .NET 10
-# servicing one the VMR builds .NET with (global.json of dotnet/dotnet v10.0.114). Upstream's (a 12.0
-# beta) targets an unreleased .NET SDK and won't load on the released one (MSB4062,
-# Microsoft.Build.Framework.IMultiThreadableTask). It also sets the version of XliffTasks.
+# Arcade from dotnet-eng with dotnet-build-deps-10.0-bin (Microsoft's .NET, e.g. on Arch Linux ARM):
+# the .NET 10 servicing one the VMR builds .NET with (global.json of dotnet/dotnet v10.0.114).
+# Upstream's (a 12.0 beta) targets an unreleased .NET SDK and won't load on the released one
+# (MSB4062, Microsoft.Build.Framework.IMultiThreadableTask). It also sets the version of XliffTasks.
 _servicingarcadever="10.0.0-beta.26422.108"
 _packages=(
   System.ServiceModel.Primitives
@@ -118,10 +118,10 @@ _runtimepackages=(
 )
 
 prepare() {
-  # Arcade and the runtime packages are part of the source-built .NET of Arch Linux
-  # (dotnet-source-built-artifacts), which Arch Linux ARM doesn't have. It can't be a makedepends of an
-  # arch=any package, so it's used when it's installed, and they come from upstream's feeds where it
-  # isn't (Arch Linux ARM).
+  # Arcade and the runtime packages come from the .NET dotnet-build-deps-10.0 chooses, so the build
+  # never mixes two builds of .NET: the source-built artifacts of Arch Linux
+  # (dotnet-source-built-artifacts) with dotnet-build-deps-10.0, Microsoft's dotnet-eng feed and
+  # nuget.org with dotnet-build-deps-10.0-bin.
   mkdir -p nuget-local
   local _artifacts _nupkg _package
   for _artifacts in /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz; do
@@ -139,12 +139,6 @@ prepare() {
     _package="${_nupkg##*/System.ServiceModel.Syndication.}"
     echo "${_package%.nupkg}" >syndication-version
   done
-  # x86_64 has the source-built artifacts, so it requires them rather than falling back to Microsoft's
-  # prebuilt packages
-  if [[ "$CARCH" == x86_64 && ! -f "$srcdir/arcade-version" ]]; then
-    echo 'dotnet-wcf needs dotnet-source-built-artifacts on x86_64' >&2
-    exit 1
-  fi
 
   # Upstream builds with a preview of the next .NET SDK, the libraries target .NET 10 though.
   # dotnet only works outside the repository until its global.json is updated.
