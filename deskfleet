@@ -1,0 +1,5 @@
+#!/bin/sh
+# SPDX-License-Identifier: 0BSD
+unset APPIMAGE
+export DESKFLEET_LAUNCHER=/usr/bin/deskfleet
+exec /opt/deskfleet/deskfleet "$@"

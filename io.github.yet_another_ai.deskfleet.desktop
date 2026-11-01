@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: 0BSD
+[Desktop Entry]
+Name=DeskFleet
+Comment=Manage a team's AI agents and working environments across machines
+Exec=deskfleet %U
+Terminal=false
+Type=Application
+Icon=io.github.yet_another_ai.deskfleet
+StartupWMClass=io.github.yet_another_ai.deskfleet
+Categories=Development;
