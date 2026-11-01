@@ -4,7 +4,7 @@
 
 pkgname=dotnet-wcf
 pkgver=10.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WCF client libraries for .NET, System.ServiceModel.* and System.Web.Services.Description (NuGet packages)"
 arch=('any')
 url='https://github.com/dotnet/wcf'
@@ -23,11 +23,15 @@ _officialbuildid="20261016.1"
 # Upstream's (a 12.0 beta) targets an unreleased .NET SDK and won't load on the released one
 # (MSB4062, Microsoft.Build.Framework.IMultiThreadableTask). It also sets the version of XliffTasks.
 _servicingarcadever="10.0.0-beta.26422.108"
+# The packages of the release, apart from System.ServiceModel.Federation, which needs
+# Microsoft.IdentityModel (not packaged from source yet). dotnet-svcutil is released on its own.
 _packages=(
   System.ServiceModel.Primitives
   System.ServiceModel.NetFramingBase
   System.ServiceModel.Http
   System.ServiceModel.NetTcp
+  System.ServiceModel.NetNamedPipe
+  System.ServiceModel.UnixDomainSocket
   System.Web.Services.Description
 )
 source=("wcf-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
@@ -178,9 +182,11 @@ check() {
   mapfile -t _feeds < <(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' NuGet.config.upstream)
   _nuget_config "${_feeds[@]}" "nuget.org=https://api.nuget.org/v3/index.json"
   # The unit tests. The scenario tests need WCF's test service running, which upstream starts with
-  # Windows scripts.
+  # Windows scripts. Those of NetNamedPipe only run on Windows (Condition(Is_Windows)), so they're all
+  # skipped here.
   local _package
-  for _package in System.ServiceModel.Primitives System.ServiceModel.Http System.ServiceModel.NetTcp; do
+  for _package in System.ServiceModel.Primitives System.ServiceModel.Http System.ServiceModel.NetTcp \
+    System.ServiceModel.NetNamedPipe System.ServiceModel.UnixDomainSocket; do
     dotnet test "src/$_package/tests/$_package.Tests.csproj" "${_build_arguments[@]}"
   done
 }
