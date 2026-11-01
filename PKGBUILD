@@ -165,10 +165,10 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '9a08f25fceaf92c01dc178d4e54f41342de24be4710c0c57decc4cb80cf8a73cf73301d4eb23a7815d953a7e6ac16b92f1da3604833f373d6ef6904ab7b0e1ac'
   'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
   '7f0df1c1eadfc39f7075cf6de7b1d2b99959042b2a3ee1cc0158ead26128ae8086463c563178b22c325c965352d5d756d2b02abf1137ad91b116fd753aeed8b6'
-  '96676f88faa330b5de88f28885cf505ef983260b94d4c0e2734b41818944a2ac8a0c239971b88df1441021bbcff00965484beae78f415df8dee71782f1a0300a'
-  '6a5e7eb8d5d4be05a490938052f029343bbc58582ba29f3b5d0e4edc4991f8c47c48ea01f79ff19772bda184886cd5f57aa1a47b2d416b42cf3e0882ccfee42b'
+  '330a83bbd7bf6f6f7c048fabc506724fbce3a4abb2579b7ae1ef528eea194d9424ce7d6419fab28f7c7a3b46a1f2fc65fd7ecaefe3413fee31961b4a6f068ede'
+  'f48a6fb7a90ce1af85f0e7587b0d38ec614e81ce58fe32534ec8c7eb3aef1b34d31d9fceb8935cc8f526e3ec12a5ea3c9d768497a52d3be4e9a12f51b717708a'
   '340bfd8bcb4548a6b70954d1d17b5c402c47285979c3f2eae27ff8d3fd0547b54ddf934f41e4a777825a8cc9fc674589760b2f701db11a10c7e17f0af2cf3981'
-  '0e04d0b5323e634bcd4ff00535241cf0bb29d5de3771e4820f469ed42f6a7f1bbf7159ecacfcbb8f4b8512fe995ec89bea16ae4a3116ef9342c59d0791ab8cca'
+  '45bdb2ed53bf8e1efbab058af09756cc9bdfaac57e993372f5c44b5533f3344e0b22d824ee33489fbcdef20115f7ff9f7be75ede72d343573f5a5d4d98fcace1'
   '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
   '1f4c1a2aeb19b0ed83142fb55e6ca938ecac3ec8f5a7095f85e000eef79729f48719ea83c04e8c2aafdbcbafa7faddd1b67555107e850094506346470b1c15c7'
   '501e304575a23c12d2e8466de14b51d1b4d25d72a64c633ea9170a6d64ef65df38fb542e1f42c6ffdaa5a55dbbfbca2327ff5c81b77cc6019fda717dbef68351'
@@ -198,10 +198,10 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   '07d61a4c195a13807f11655f479d71f8f3b668ed6cfd81f130caf879fa48f13dca4c98955826e6257fcc94acb2771250e622aa9523247a8012d8274a2a1de87b'
   'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
   '93382f5100b58b1cf763054c4a839546f4c7cc8a141cf11d34ddf3b01a7c7e6663630e5ad32df32f69ff84c1d50073ce6c43ef3e4a7a934bbe6b344156e5c54e'
-  'a1a50088ccba24c160307f0fd3690d6eb72975e4afb5dcd7360590feb298efb49baa42b4dab9c170eb59c199aa216c9092a12b7c5693f391f28343445ace8a38'
-  'faa8529d128d330db32fc507fdc1b81a66b529f40252c113e0a4b3a175fabd8112aa5c1a549ea8e806d5997cf2d8e63bfd7a5ecc51975fa0af828597728b6862'
+  '82d9f12d92c5c08e634bfea36f8d3cafc5db4a3c13acd6b99242453855ffaa1df192dafea7facbbc972a32c8d2a1db876457a626359403e3d51c4ab8c3bccc81'
+  '6e2f143d782bbe68b049586ba2639d3c466ebda80443ad7df05ccef4a569229a1d14b115c5209d5e0b859c49b816a21b6a24a2a83ed5530b9b0b82c86b20ba2c'
   '3493eecfb50819af971399abe1e62782ccf28500559d222822bddb91ddac6bf191d7e20abf01dfbcb99f7c51df9356061c8f1687a10700228e7d1f77308e873b'
-  '54df0df67181f7b2f49e02f5b9e57faf02446ab9eadc79c5e2aee8ec2bdb52f9e9d99971e311ba6a37682936bb6f8db265f92432410e2ec51a4df39df48374b7'
+  'bf5b456dcba9893b269fd0cff4d577aedb10c75d18000fb101e479c9b8851e0118ed3f55d9e004fc062cd3062474a8155d5aa0750213fada0b6ccfc1827d1153'
   'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
   '956db6619cedbdf41d36a8d28e35035c0414cd81a08bd077c0b9097c122e8d8870cbc7d30d43654e2575853a338169fd1042633ff45c92d0cf0ce100147125ea'
   'f46fcb1d242979be39dbd14c6e5dc8c04ede57ed2de52a74e56bf18ce3c6b5985351d70ec0e291ed3ccec1655ebee4da931c88680c7ef60dec4797d78f015833'
@@ -583,21 +583,49 @@ prepare() {
     Microsoft.IdentityModel.Abstractions
 }
 
+# Builds libpsl-native from PowerShell-Native into PowerShell-Native/src/powershell-unix, for $CARCH. A
+# cross build ($CARCH differs from the build host) compiles with clang and lld against the C library and
+# GCC of a root file system for $CARCH in ROOTFS_DIR, like dotnet-system-io-ports-native. With "host",
+# it's built for the build host instead, for the PowerShell a cross build runs (see build()).
+_build_psl_native() {
+  local _builddir=build-psl-native _args=() _triple="$CARCH-unknown-linux-gnu"
+  if [[ "${1:-}" == host ]]; then
+    # Not packaged, so without the flags of makepkg, which are for $CARCH
+    CFLAGS='' CXXFLAGS='' LDFLAGS='' cmake -S PowerShell-Native/src/libpsl-native -B build-psl-native-host \
+      -DCMAKE_BUILD_TYPE=Release
+    cmake --build build-psl-native-host
+    return
+  fi
+  if [[ "$(uname -m)" != "$CARCH" ]]; then
+    if [[ ! -d "${ROOTFS_DIR:-}" ]]; then
+      echo "powershell: a cross build needs ROOTFS_DIR set to a $CARCH root file system" >&2
+      exit 1
+    fi
+    _args=(
+      -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR="$CARCH" -DCMAKE_SYSROOT="$ROOTFS_DIR"
+      -DCMAKE_C_COMPILER=clang -DCMAKE_C_COMPILER_TARGET="$_triple"
+      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_COMPILER_TARGET="$_triple"
+      -DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=lld -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=lld
+    )
+  fi
+  cmake -S PowerShell-Native/src/libpsl-native -B "$_builddir" -DCMAKE_BUILD_TYPE=Release "${_args[@]}"
+  cmake --build "$_builddir"
+}
+
 build() {
   _dotnet_env
 
-  # A cross build ($CARCH differs from the build host) gets the right target RID and runtime packs below,
-  # but two steps aren't cross-capable yet: libpsl-native is built with cmake for the build host, and the
-  # bundled modules and help are produced by running the PowerShell just built, which on a cross build is
-  # the target architecture and can't run here (it needs a host-architecture pwsh). Until those are wired
-  # up, cross builds stop here; a native aarch64 build, e.g. under QEMU, works.
+  # A cross build ($CARCH differs from the build host) needs a PowerShell for the build host as well: the
+  # bundled modules and the help are produced by running PowerShell, and the one being built is for
+  # another architecture. It's published to $srcdir/host-pwsh below, with a libpsl-native for the host,
+  # which goes to the same folder as the one for $CARCH, so it's built and set aside first.
+  local _pwsh="$_publish_path/pwsh" _modulesargs=()
   if [[ "$_rid" != "$_host_rid" ]]; then
-    echo 'powershell: cross-building is not fully wired up yet (libpsl-native cmake target, host pwsh for the modules and help)' >&2
-    exit 1
+    _build_psl_native host
+    install -Dm755 PowerShell-Native/src/powershell-unix/libpsl-native.so -t "$srcdir/host-pwsh"
+    _pwsh="$srcdir/host-pwsh/pwsh"
   fi
-
-  cmake -S PowerShell-Native/src/libpsl-native -B build-psl-native -DCMAKE_BUILD_TYPE=Release
-  cmake --build build-psl-native
+  _build_psl_native
 
   # The classes of the resources (ResGen). It runs much faster if built with optimisations.
   cd "$srcdir"/PowerShell/src/ResGen || exit
@@ -630,7 +658,6 @@ build() {
   local _build_arguments=(
     --configuration Release
     --framework "net$_dotnetsdkver"
-    --runtime "$_rid"
     --no-self-contained
     -p:ReleaseTag="$pkgver"
     # Framework-dependent, with ReadyToRun (PowerShell.Common.props)
@@ -642,6 +669,7 @@ build() {
 
   cd "$srcdir"/PowerShell/src/powershell-unix || exit
   dotnet publish "${_build_arguments[@]}" \
+    --runtime "$_rid" \
     --output "$_publish_path"
 
   # libpsl-native, built from PowerShell-Native
@@ -651,13 +679,22 @@ build() {
   mkdir -p "$_publish_path/ref"
   grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;$//' | xargs -d '\n' cp -t "$_publish_path/ref"
 
-  # The bundled modules, built from source with the PowerShell just built. Their assemblies are
-  # architecture-neutral IL, compiled to ReadyToRun for the target with the host's crossgen2 (which the
-  # publish above restored), targeting $_target_arch so a cross build produces the target's images.
+  # The PowerShell for the build host of a cross build, without ReadyToRun, as it only runs here
+  if [[ "$_rid" != "$_host_rid" ]]; then
+    dotnet publish "${_build_arguments[@]}" --runtime "$_host_rid" -p:PublishReadyToRun=false \
+      --output "$srcdir/host-pwsh"
+    # The images are compiled against the runtime they run on, the one of the target
+    local _runtime=("$NUGET_PACKAGES/microsoft.netcore.app.runtime.$_rid"/*)
+    _modulesargs=(-RuntimePath "${_runtime[0]}")
+  fi
+
+  # The bundled modules, built from source with PowerShell. Their assemblies are architecture-neutral
+  # IL, compiled to ReadyToRun for the target with the host's crossgen2 (which the publish above
+  # restored), targeting $_target_arch so a cross build produces the target's images.
   local _crossgen2=("$NUGET_PACKAGES/microsoft.netcore.app.crossgen2.$_host_rid"/*/tools/crossgen2)
-  "$_publish_path"/pwsh -NoProfile -NonInteractive -File "$srcdir/build-modules.ps1" \
+  "$_pwsh" -NoProfile -NonInteractive -File "$srcdir/build-modules.ps1" \
     -SourcePath "$srcdir" -OutputPath "$_publish_path/Modules" -Crossgen2Path "${_crossgen2[0]}" \
-    -TargetArch "$_target_arch"
+    -TargetArch "$_target_arch" -PowerShellHome "$_publish_path" "${_modulesargs[@]}"
 
   # The man page
   # The checked-in pwsh.1 ends in the synopsis at -WindowStyle: Ronn took the placeholder <style> for an
@@ -670,7 +707,7 @@ build() {
   ronn -r "pwsh.1.ronn"
 
   # Install the help of the modules into the publish folder, see update-help.ps1
-  "$_publish_path"/pwsh -NoProfile -NonInteractive -File "$srcdir/update-help.ps1"
+  "$_pwsh" -NoProfile -NonInteractive -File "$srcdir/update-help.ps1" -PowerShellHome "$_publish_path"
 }
 
 check() {

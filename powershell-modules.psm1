@@ -220,12 +220,20 @@ function Get-ScriptArrayValue {
 
 <#
 .SYNOPSIS
-Return the assemblies of the .NET runtime and of $PSHOME (the PowerShell running this), which modules
-load from there instead of their own copies.
+Return the assemblies of the .NET runtime and of $PSHOME, which modules load from there instead of their
+own copies: of the ones running this, unless a cross build passes the ones of the target.
 #>
 function Get-PlatformAssembly {
-    Get-ChildItem -File -Path ([System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()) -Filter '*.dll'
-    Get-ChildItem -File -Path $PSHOME -Filter '*.dll'
+    param(
+        # The folder of the runtime, or of a runtime pack (Microsoft.NETCore.App.Runtime.<RID>), which
+        # has System.Private.CoreLib in a folder of its own
+        [string] $RuntimePath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory(),
+        # $PSHOME of the PowerShell the modules are for
+        [string] $PowerShellHome = $PSHOME
+    )
+
+    Get-ChildItem -File -Recurse -Path $RuntimePath -Filter '*.dll'
+    Get-ChildItem -File -Path $PowerShellHome -Filter '*.dll'
 }
 
 <#
@@ -400,12 +408,16 @@ function Invoke-ReadyToRunCompiler {
         [Parameter(Mandatory)] [string] $Crossgen2Path,
         # The architecture to compile the images for, e.g. x64 or arm64. Defaults to the one the running
         # PowerShell reports, which differs from the target on a cross build.
-        [string] $TargetArch
+        [string] $TargetArch,
+        # The runtime and $PSHOME the images are compiled against, see Get-PlatformAssembly. A cross
+        # build passes the target's.
+        [string] $RuntimePath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory(),
+        [string] $PowerShellHome = $PSHOME
     )
 
     # Assemblies the runtime or PowerShell itself provide are loaded from there instead of the module,
     # so the module's copies are neither compiled nor used as references
-    $platformAssemblies = @(Get-PlatformAssembly)
+    $platformAssemblies = @(Get-PlatformAssembly -RuntimePath $RuntimePath -PowerShellHome $PowerShellHome)
     $platformNames = [System.Collections.Generic.HashSet[string]]::new([string[]] $platformAssemblies.BaseName, [StringComparer]::OrdinalIgnoreCase)
 
     # The images are for the target architecture, e.g. x64 or arm64, the one PowerShell runs on unless a

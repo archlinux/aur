@@ -8,7 +8,11 @@ param(
     # crossgen2 of the source-built .NET, to compile the module assemblies to ReadyToRun
     [Parameter(Mandatory)] [string] $Crossgen2Path,
     # The architecture to compile the ReadyToRun images for, e.g. x64 or arm64
-    [string] $TargetArch
+    [string] $TargetArch,
+    # The runtime (or runtime pack) and $PSHOME of the PowerShell being built, which the images are
+    # compiled against. The running ones by default, a cross build passes the target's.
+    [string] $RuntimePath = [System.Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory(),
+    [string] $PowerShellHome = $PSHOME
 )
 
 Set-StrictMode -Version 3.0
@@ -28,4 +32,5 @@ Build-PSReadLineModule -SourcePath (Join-Path $SourcePath PSReadLine) -PagerSour
     -OutputPath $OutputPath -NuGetConfig $nugetConfig
 Build-ThreadJobModule -SourcePath (Join-Path $SourcePath ThreadJob) -OutputPath $OutputPath -NuGetConfig $nugetConfig
 
-Invoke-ReadyToRunCompiler -ModulePath $OutputPath -Crossgen2Path $Crossgen2Path -TargetArch $TargetArch
+Invoke-ReadyToRunCompiler -ModulePath $OutputPath -Crossgen2Path $Crossgen2Path -TargetArch $TargetArch `
+    -RuntimePath $RuntimePath -PowerShellHome $PowerShellHome
