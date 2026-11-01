@@ -1,13 +1,13 @@
 # Maintainer: Dmitriy Geels <dmitriy dot geels at gmail dot com>
 pkgname=python-turbohtml
 pkgver=1.15.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast, fully typed HTML toolkit for Python, powered by a C-accelerated core.'
 arch=(x86_64 aarch64)
 url="https://github.com/tox-dev/turbohtml"
 license=('MIT AND Apache-2.0 AND BSD-3-Clause')
 depends=(python glibc)
-makedepends=('meson-python>=0.22.1' 'python-ninja>=1.13.2' 'python-patchelf>=0.11')
+makedepends=('meson-python>=0.22.1' 'python-ninja>=1.13' 'python-patchelf>=0.11')
 _ref=1.15.4
 _builddir=turbohtml-1.15.4
 source=("turbohtml-1.15.4.tar.gz::https://github.com/tox-dev/turbohtml/archive/refs/tags/$_ref.tar.gz")
