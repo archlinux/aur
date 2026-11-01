@@ -1,6 +1,6 @@
 pkgbase = perl-attean
 	pkgdesc = A Semantic Web Framework
-	pkgver = 0.039
+	pkgver = 0.040
 	pkgrel = 1
 	url = https://metacpan.org/dist/Attean
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = perl-attean
 	depends = perl-exporter-tiny>=1
 	depends = perl-file-slurp
 	depends = perl-http-negotiate
-	depends = perl-iri>=0.005
+	depends = perl-iri>=0.015
 	depends = perl-json
 	depends = perl-libwww
 	depends = perl-math-cartesian-product>=1.008
@@ -46,7 +46,7 @@ pkgbase = perl-attean
 	depends = perl-xml-sax
 	depends = perl>=5.14.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/Attean-0.039.tar.gz
-	sha256sums = 572d0559a5ced6e12226399057c15e9e1736a3cdc09dff00becf216a5d40eba9
+	source = https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/Attean-0.040.tar.gz
+	sha256sums = bfca4b1e49e62e1528d741f633167afee7a9089ec4ad655d629ac42ab2a97173
 
 pkgname = perl-attean
