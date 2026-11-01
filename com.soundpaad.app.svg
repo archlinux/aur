@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Base frame: Kinetix squircle, Monokai panel #1E1F1C, subpixel 1px line #49483E -->
+  <rect x="0.5" y="0.5" width="127" height="127" rx="28" fill="#1E1F1C" stroke="#49483E" stroke-width="1"/>
+  
+  <!-- 3x3 Tactile Pad Matrix (Monokai cards #272822, stroke #49483E, r=4) -->
+  <!-- Row 0 -->
+  <rect x="16.5" y="16.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  <rect x="50.5" y="16.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  <rect x="84.5" y="16.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  
+  <!-- Row 1 -->
+  <rect x="16.5" y="50.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  
+  <!-- Center Active Pad (Row 1, Col 1) - Monokai Active with Orange #FD971F outline -->
+  <rect x="50.5" y="50.5" width="27" height="27" rx="4" fill="#3E3D32" stroke="#FD971F" stroke-width="1"/>
+  
+  <rect x="84.5" y="50.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  
+  <!-- Row 2 -->
+  <rect x="16.5" y="84.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  <rect x="50.5" y="84.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  <rect x="84.5" y="84.5" width="27" height="27" rx="4" fill="#272822" stroke="#49483E" stroke-width="1"/>
+  
+  <!-- Inactive tactile markers (subpixel 1.5px dots, line #49483E) -->
+  <circle cx="30" cy="30" r="1.5" fill="#49483E"/>
+  <circle cx="64" cy="30" r="1.5" fill="#49483E"/>
+  <circle cx="98" cy="30" r="1.5" fill="#49483E"/>
+  <circle cx="30" cy="64" r="1.5" fill="#49483E"/>
+  <circle cx="98" cy="64" r="1.5" fill="#49483E"/>
+  <circle cx="30" cy="98" r="1.5" fill="#49483E"/>
+  <circle cx="64" cy="98" r="1.5" fill="#49483E"/>
+  <circle cx="98" cy="98" r="1.5" fill="#49483E"/>
+  
+  <!-- Monokai Active Impulse (Green #A6E22E) & Microphone Route (Orange #FD971F) -->
+  <!-- Flanking acoustic soundwave impulse bars (Monokai Green #A6E22E) -->
+  <line x1="53.5" y1="61" x2="53.5" y2="66" stroke="#A6E22E" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="56.5" y1="58.5" x2="56.5" y2="68.5" stroke="#A6E22E" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="71.5" y1="58.5" x2="71.5" y2="68.5" stroke="#A6E22E" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="74.5" y1="61" x2="74.5" y2="66" stroke="#A6E22E" stroke-width="1.8" stroke-linecap="round"/>
+  
+  <!-- Central Microphone Capsule (Monokai Orange #FD971F) -->
+  <rect x="61" y="55.5" width="6" height="10" rx="3" fill="#FD971F"/>
+  
+  <!-- Microphone U-cradle (Monokai Orange #FD971F) -->
+  <path d="M 58.5 61.5 C 58.5 68 69.5 68 69.5 61.5" fill="none" stroke="#FD971F" stroke-width="1.6" stroke-linecap="round"/>
+  
+  <!-- Microphone route stem & base (Monokai Yellow #E6DB74) -->
+  <line x1="64" y1="68" x2="64" y2="72.5" stroke="#E6DB74" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="60.5" y1="72.5" x2="67.5" y2="72.5" stroke="#E6DB74" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

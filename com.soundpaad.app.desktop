@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.5
+Name=SoundPad
+GenericName=Sound Pad
+GenericName[ru]=Саундпад
+Comment=Sound pad with virtual microphone support
+Comment[ru]=Саундпад с поддержкой виртуального микрофона
+Exec=soundpaad
+Icon=com.soundpaad.app
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Player;Recorder;
+Keywords=sound;pad;soundpad;microphone;virtual;audio;soundboard;
+Keywords[ru]=звук;пэд;саундпад;саундпэд;soundpad;микрофон;виртуальный;аудио;
+StartupNotify=true
+X-AppVersion=0.2.0

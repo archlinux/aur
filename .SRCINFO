@@ -1,0 +1,25 @@
+pkgbase = soundpad-bin
+	pkgdesc = Soundpad alternative with PipeWire virtual mic & global hotkeys (Rust + egui)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ametistik1337/soundpaad
+	arch = x86_64
+	license = MIT
+	depends = pipewire-pulse
+	depends = libpulse
+	depends = openssl
+	optdepends = pulseaudio: PulseAudio server (alternative to PipeWire)
+	provides = soundpad
+	provides = soundpaad
+	provides = soundpaaad-bin
+	conflicts = soundpad
+	conflicts = soundpaad
+	conflicts = soundpaaad-bin
+	source = soundpad-0.2.0::https://github.com/ametistik1337/soundpaad/releases/download/v0.2.0/soundpaad
+	source = com.soundpaad.app.desktop
+	source = com.soundpaad.app.svg
+	sha256sums = 668df2c35e4abf155d544fd89df6c0734f3e7aaf1a79ebb99c0dc443e6575271
+	sha256sums = 71ed0753bd4a074ef9ea75587925b46573d15688a538255553ecf414d91b6ad5
+	sha256sums = d356082e45c55f2e48f59821f280cf9799cbcb8238de0afe54ff296e2cb3e238
+
+pkgname = soundpad-bin
