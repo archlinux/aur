@@ -9,9 +9,9 @@ pkgdesc="Terminal I/O logger"
 arch=(x86_64)
 url="https://scribery.github.io/tlog/"
 install="$pkgname.install"
-license=('GPL-2.0-or-later')
+license=(GPL-2.0-or-later)
 depends=(curl json-c libutempter)
-backup=("etc/tlog/tlog-play.conf" "etc/tlog/tlog-rec.conf" "etc/tlog/tlog-rec-session.conf")
+backup=(etc/tlog/tlog-play.conf etc/tlog/tlog-rec.conf etc/tlog/tlog-rec-session.conf)
 source=("https://github.com/Scribery/tlog/releases/download/v$pkgver/tlog-$pkgver.tar.gz"
   "rec-pointer-type-fix.patch"
   "tlog.sysusers"
