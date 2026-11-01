@@ -1,7 +1,7 @@
 # Maintainer: Calagopus <contact@calagopus.com>
 pkgname=calagopus-panel-bin
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Web panel for managing game servers'
 arch=('x86_64' 'aarch64' 'powerpc64le' 'riscv64')
 url='https://calagopus.com'
