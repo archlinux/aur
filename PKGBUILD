@@ -4,7 +4,7 @@
 
 pkgname=dotnet-wcf
 pkgver=10.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="WCF client libraries for .NET, System.ServiceModel.* and System.Web.Services.Description (NuGet packages)"
 arch=('any')
 url='https://github.com/dotnet/wcf'
@@ -225,7 +225,7 @@ _check_prebuilt() {
 package() {
   local _package
   for _package in "${_packages[@]}"; do
-    install -Dm644 "$srcdir/nupkg/$_package.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+    install -Dm644 "$srcdir/nupkg/$_package.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   done
   install -Dm644 "wcf-$_commit/LICENSE.TXT" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
