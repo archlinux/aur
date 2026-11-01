@@ -10,8 +10,10 @@
 # keeps the build independent of raw.githubusercontent.com.
 
 pkgname=xdm-app-bin
-pkgver=9.0.8
-pkgrel=2
+pkgver=9.0.9
+pkgrel=1
+# Upstream switched to v-prefixed release tags at 9.0.9 (9.0.8 was untagged).
+_tag=v$pkgver
 pkgdesc='Fast, resumable download accelerator and video downloader with HLS/DASH support'
 arch=('x86_64' 'aarch64')
 url='https://xtremedownloadmanager.com/'
@@ -28,10 +30,10 @@ optdepends=(
 conflicts=('xdm-app' 'xdman-bin' 'xdman' 'xdman_gtk')
 replaces=('xdman' 'xdman_gtk')
 options=('!strip' '!debug')
-source_x86_64=("https://github.com/subhra74/xdm/releases/download/$pkgver/xdm-app-$pkgver-linux-x64.tar.gz")
-source_aarch64=("https://github.com/subhra74/xdm/releases/download/$pkgver/xdm-app-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('ad48ca3a7813ef3b75d668847587b77b8b105d383e8ed8ab04b1f7c7c6902ea7')
-sha256sums_aarch64=('f85b9be8bfad4458d10d59e43d1a8a55623aa16d4b877301cc771d885cc23832')
+source_x86_64=("https://github.com/subhra74/xdm/releases/download/$_tag/xdm-app-$pkgver-linux-x64.tar.gz")
+source_aarch64=("https://github.com/subhra74/xdm/releases/download/$_tag/xdm-app-$pkgver-linux-arm64.tar.gz")
+sha256sums_x86_64=('e9083d90f83375c5377f21b0328edf96fea665955545869394b150330807c538')
+sha256sums_aarch64=('0f3727cea3e539e65ff83005d550682867300e4324574c7270e09b3b1c9d9ac5')
 
 package() {
   install -dm755 "$pkgdir/opt" "$pkgdir/usr/bin" \

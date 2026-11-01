@@ -1,7 +1,7 @@
 pkgbase = xdm-app-bin
 	pkgdesc = Fast, resumable download accelerator and video downloader with HLS/DASH support
-	pkgver = 9.0.8
-	pkgrel = 2
+	pkgver = 9.0.9
+	pkgrel = 1
 	url = https://xtremedownloadmanager.com/
 	arch = x86_64
 	arch = aarch64
@@ -26,9 +26,9 @@ pkgbase = xdm-app-bin
 	replaces = xdman_gtk
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/subhra74/xdm/releases/download/9.0.8/xdm-app-9.0.8-linux-x64.tar.gz
-	sha256sums_x86_64 = ad48ca3a7813ef3b75d668847587b77b8b105d383e8ed8ab04b1f7c7c6902ea7
-	source_aarch64 = https://github.com/subhra74/xdm/releases/download/9.0.8/xdm-app-9.0.8-linux-arm64.tar.gz
-	sha256sums_aarch64 = f85b9be8bfad4458d10d59e43d1a8a55623aa16d4b877301cc771d885cc23832
+	source_x86_64 = https://github.com/subhra74/xdm/releases/download/v9.0.9/xdm-app-9.0.9-linux-x64.tar.gz
+	sha256sums_x86_64 = e9083d90f83375c5377f21b0328edf96fea665955545869394b150330807c538
+	source_aarch64 = https://github.com/subhra74/xdm/releases/download/v9.0.9/xdm-app-9.0.9-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0f3727cea3e539e65ff83005d550682867300e4324574c7270e09b3b1c9d9ac5
 
 pkgname = xdm-app-bin
