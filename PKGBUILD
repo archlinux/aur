@@ -7,13 +7,13 @@ _nugetid=Gherkin
 pkgver=5.1.0
 pkgrel=2
 pkgdesc="Parser for the Gherkin language of Cucumber, Gherkin (NuGet package, version 5)"
-arch=('any')
+arch=(any)
 url='https://github.com/cucumber/gherkin-dotnet'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
   dotnet-newtonsoft-json
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
 )
 checkdepends=(
   jq
