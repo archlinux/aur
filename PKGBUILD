@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=tun2proxy-bin
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Tunnel (TUN) interface for SOCKS and HTTP proxies — prebuilt binary"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -18,10 +18,10 @@ source_aarch64=("tun2proxy-aarch64.zip::https://github.com/tun2proxy/tun2proxy/r
 source_i686=("tun2proxy-i686.zip::https://github.com/tun2proxy/tun2proxy/releases/download/v${pkgver}/tun2proxy-i686-unknown-linux-musl.zip")
 source_armv7h=("tun2proxy-armv7h.zip::https://github.com/tun2proxy/tun2proxy/releases/download/v${pkgver}/tun2proxy-armv7-unknown-linux-musleabihf.zip")
 source=("LICENSE::https://raw.githubusercontent.com/tun2proxy/tun2proxy/master/LICENSE")
-sha256sums_x86_64=('1bbf9d1994d0fd4889a7d4b0950af7ee7b1488940e769fc1a1d74f386f9cee92')
-sha256sums_aarch64=('8dca73e3945b931882467cfcadc2a82018ece78a28f25d6d4d1e7613c266b493')
-sha256sums_i686=('7f2996d7805ae1b3d3afdc87961b48507e6209ccc8dd1c8ef5cce63d35a7a9b1')
-sha256sums_armv7h=('4c48f91a814e6cf63a80417757af7c94c2a21b2b41201b978199cd21432b8d85')
+sha256sums_x86_64=('b6c4c68cb5e639f779665295286797cdc6f01c506452bc629a17288e210f77d4')
+sha256sums_aarch64=('e9d7aaa265ccb4f8fa12c1e6438debee6a20abc36175e304bbf3b7197c63fb33')
+sha256sums_i686=('8e92a1a34430468b47a84907f723f45051cd949c90c2109c5ff334a55de72902')
+sha256sums_armv7h=('0faf2384052bc6202e0a2b37f4b4c78cb5c0549aa0f99411d5b84cc2ed575053')
 sha256sums=('8cddc80ccbbb14a8a3d7fee1fc1795d7fcd647f4c7063ad95246f9ff24b407c7')
 
 package() {
