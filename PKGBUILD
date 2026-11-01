@@ -19,6 +19,8 @@ makedepends=(
   git
   jq
 )
+# Azure's test proxy, which the tests start, is an ASP.NET Core application
+checkdepends=(aspnet-runtime-"$_dotnetsdkver")
 # The commit the package was published from (tag Azure.Identity_1.21.0), and the official build of
 # it, see the file version 1.2100.26.21009 of its assemblies (encoding the date and build number)
 _commit="f7400e4471111bf7f2154834022786119acbdd77"
