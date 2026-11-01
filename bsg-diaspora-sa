@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
-. /etc/bsg-diaspora-sa/bsg-diaspora-sa.conf
-. ~/.config/bsg-diaspora-sa/bsg-diaspora-sa.conf
+[ -f /etc/bsg-diaspora-sa/bsg-diaspora-sa.conf ] && . /etc/bsg-diaspora-sa/bsg-diaspora-sa.conf
+[ -f ~/.config/bsg-diaspora-sa/bsg-diaspora-sa.conf ] && . ~/.config/bsg-diaspora-sa/bsg-diaspora-sa.conf
+
+# The engine's SDL 1.2 GLX path crashes on current Mesa (GLXBadContextTag at the
+# first buffer swap); EGL via SDL2 avoids it.
+export SDL_VIDEO_X11_FORCE_EGL="${SDL_VIDEO_X11_FORCE_EGL:-1}"
+
+# Diaspora only ships the hi-res ("2_") interface set, so the engine's 640x480
+# fallback dies with 'Could not load in ChoosePilot-m'. Override with FS2_RES.
+FS2_RES="${FS2_RES:-1024x768}"
+
 cd /opt/bsg-diaspora-sa
-/opt/bsg-diaspora-sa/fs2_open_diaspora "$@" "$FS2OPTS" || /opt/bsg-diaspora-sa/fs2_open_diaspora "$@" "$FS2OPTS"
+exec /opt/bsg-diaspora-sa/fs2_open_diaspora -32bit -res "$FS2_RES" "$@" $FS2OPTS
