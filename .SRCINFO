@@ -34,6 +34,8 @@ pkgbase = q2-quality-control
 	optdepends = r-decontam: identify contaminant sequences with decontam
 	optdepends = r-optparse: run the decontam command-line helper
 	source = q2-quality-control-2026.10.0.tar.gz::https://github.com/qiime2/q2-quality-control/archive/eec116d4593a0cc4e1f992ecddd99ab5d808fb9b.tar.gz
+	source = two-point-regression-fixture.patch
 	sha256sums = b568ba7e2bd0799318318b1c985cd8a509ce34c34bdac17a2d93d9f6d6b1497c
+	sha256sums = 80f4d93cf070f8f1f1624876957a24f1e3df7d18af61a813fcf6e791736b7946
 
 pkgname = q2-quality-control
