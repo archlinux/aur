@@ -1,7 +1,7 @@
 pkgbase = dotnet-azure-identity
 	pkgdesc = Microsoft Entra ID token authentication for the Azure SDK for .NET, Azure.Identity (NuGet package)
 	pkgver = 1.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-net
 	arch = any
 	license = MIT
