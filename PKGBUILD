@@ -58,6 +58,7 @@ declare -Ag _gccs=(
   ['R2025a']='8 9 10 11 12 13'
   ['R2025b']='8 9 10 11 12 13'
   ['R2026a']='8 9 10 11 12 13'
+  # ['R2026b']='8 9 10 11 12 13' # TODO
 )
 
 declare -Ag _gcc_fortrans=(
@@ -106,7 +107,19 @@ declare -Ag _gcc_fortrans=(
   ['R2025a']='10'
   ['R2025b']='10'
   ['R2026a']='10'
+  # ['R2026b']='10' # TODO
 )
+
+prepare() {
+  if [[ ! -v _gccs[${pkgver}] ]]; then
+    echo " -> ERROR: Maintainer, please update _gccs"
+    exit 1
+  fi
+  if [[ ! -v _gcc_fortrans[${pkgver}] ]]; then
+    echo " -> ERROR: Maintainer, please update _gcc_fortrans"
+    exit 1
+  fi
+}
 
 for _release in "${!_gccs[@]}"; do
   for _gcc in ${_gccs[${_release}]}; do
