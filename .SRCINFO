@@ -1,0 +1,16 @@
+pkgbase = python-indic-numtowords
+	pkgdesc = Convert numbers to words in Indian languages and English
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/AI4Bharat/indic-numtowords
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = indic-numtowords-1.0.2.tar.gz::https://github.com/AI4Bharat/indic-numtowords/archive/8ab6d4472ffd5be34b1bd6a2acfec9b669f51ef0.tar.gz
+	sha256sums = 448f8b029a398e96f158ce829a22ec227bd677167352d3d470658d7be52b6c40
+
+pkgname = python-indic-numtowords
