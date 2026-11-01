@@ -4,7 +4,7 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=7.3.1
+pkgver=7.3.3
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
 pkgrel=1
@@ -97,7 +97,7 @@ source=(
   https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
   0001-kde-theme-injection-fix.patch
 )
-sha512sums=('da4d47678692a01acf8b84ce66a8530897853b2b94c9e77b40a3d179fd1657a08b9fd6cfc6999490cf77f0dbb9bae39e774374b391d0a85cf3318429bcd2a0bb'
+sha512sums=('3e76971f5ac1c8b4f29c867cf2a6e52f5eb71e479533daaaef26ba8bf53c10c6dd0abc09bb99ec213582546a50fa5306b2bcad023e85024979ebf04603c48540'
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
             '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
