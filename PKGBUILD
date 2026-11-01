@@ -2,7 +2,7 @@
 
 _pkgbase=todav
 pkgname="$_pkgbase-bin"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source_x86_64=("$_pkgbase-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgbase-$pkgver-x86_64.tar.gz")
 noextract=("$_pkgbase-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('e65382dc0a08499d4ae72714efcf649fa4fe610e0ecb6a3ae937afa44def3aeb')
+sha256sums_x86_64=('a23d2444bdcd3cf2fe5eb1b1acacef828ff4e7a21c202dc229aa3f1aa2817e2c')
 
 package() {
 	bsdtar -xf "$_pkgbase-$pkgver-x86_64.tar.gz" -C "$pkgdir" --no-same-owner
