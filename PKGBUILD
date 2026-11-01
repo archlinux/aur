@@ -1,21 +1,22 @@
 # Maintainer: japama <9z4jprfo@duck.com>
-# Contributor: japama <9z4jprfo@duck.com> 29/06/2022
+# Contributor: japama <9z4jprfo@duck.com> 01/11/2026
 
 pkgname=devolo-dlan-cockpit
 pkgver=5.2.0.185
-pkgrel=2.4
+pkgrel=2.5
+
 
 _name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
-url="https://www.devolo.com/support/downloads/download/devolo-cockpit.html"
+url="https://www.devolo.de/de/software-downloads/cockpit"
 license=('nonfree')
 depends=( 'lib32-gtk2' 'lib32-curl' 'lib32-libxt' 'lib32-libxslt' 'lib32-nss' )
-makedepends=( 'gcc' 'lib32-glibc' 'lib32-gcc-libs' )
 
 if [ "${CARCH}" = "x86_64" ]; then
   _arch="amd64"
+  makedepends=( 'gcc' 'lib32-glibc' 'lib32-gcc-libs' )
 else
   _arch="i386" 
 fi 
@@ -43,6 +44,7 @@ build() {
   # Charge le shim uniquement pour le processus dlancockpit (1re commande du pipeline)
   sed -i 's|^/opt/devolo/dlancockpit/bin/dlancockpit |LD_PRELOAD=/opt/devolo/dlancockpit/bin/libxmlshim.so &|' "${srcdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh"
   grep -q 'LD_PRELOAD=' "${srcdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh" || { echo "ERREUR : LD_PRELOAD non inséré dans dlancockpit-run.sh"; return 1; }
+
 }
 
 package() {
@@ -51,7 +53,9 @@ package() {
   printf "<?xml version="1.0" encoding="utf-8"?>\n<data_collection><allowed>2</allowed></data_collection>" > "${srcdir}/config.xml"
   install -Dm644 "${srcdir}/config.xml" "${pkgdir}/var/lib/devolonetsvc/config.xml"  
   install -Dm644 "${srcdir}/devolonetsvc.service" "${pkgdir}/usr/lib/systemd/system/devolonetsvc.service"
-  install -Dm755 "${srcdir}/libxmlshim.so" "${pkgdir}/opt/devolo/dlancockpit/bin/libxmlshim.so"
+  if [ "${CARCH}" = "x86_64" ]; then
+    install -Dm755 "${srcdir}/libxmlshim.so" "${pkgdir}/opt/devolo/dlancockpit/bin/libxmlshim.so"
+  fi
 }
 
 sha256sums=('976099b5aa4785edc9ceabb6246abe724b78d2e717d1906eb91bf137f585a1e6'

@@ -1,8 +1,8 @@
 pkgbase = devolo-dlan-cockpit
 	pkgdesc = Display and configure settings of your devolo device
 	pkgver = 5.2.0.185
-	pkgrel = 2.4
-	url = https://www.devolo.com/support/downloads/download/devolo-cockpit.html
+	pkgrel = 2.5
+	url = https://www.devolo.de/de/software-downloads/cockpit
 	install = devolo-dlan-cockpit.install
 	arch = i686
 	arch = x86_64
