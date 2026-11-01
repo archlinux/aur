@@ -6,9 +6,9 @@ DLAGENTS=('http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-a
 
 _pkgauthor=monji024
 _pkgname=peek
-_pkgsuffix=bash
-_cratename=${_pkgsuffix}-${_pkgname}
-_appname=${_pkgsuffix}-${_pkgname}
+_pkgprefix=bash
+_cratename=${_pkgprefix}-${_pkgname}
+_appname=${_pkgprefix}-${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Interactive TUI debugger, line profiler, and time-travel inspector for Bash scripts"
 
