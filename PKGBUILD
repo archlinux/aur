@@ -72,7 +72,8 @@ _runtimepackages=(
 )
 
 # Writes NuGet.config with the feed $1 (as key=url) for everything but the runtime packages, which
-# are taken from the source-built artifacts if prepare() found them there
+# are taken from the source-built artifacts if prepare() found them there.
+# The package patterns $2... come from nuget.org instead.
 _nuget_config() {
   local _package
   {
@@ -83,10 +84,20 @@ _nuget_config() {
     <clear />
     <add key="dotnet-source-built" value="$srcdir/nuget-local" />
     <add key="${1%%=*}" value="${1#*=}" />
+EOF
+    if (($# > 1)); then
+      echo '    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />'
+    fi
+    cat <<EOF
   </packageSources>
   <packageSourceMapping>
     <clear />
 EOF
+    if (($# > 1)); then
+      echo '    <packageSource key="nuget.org">'
+      printf '      <package pattern="%s" />\n' "${@:2}"
+      echo '    </packageSource>'
+    fi
     if [[ -f "$srcdir/runtime-packages" ]]; then
       echo '    <packageSource key="dotnet-source-built">'
       for _package in "${_runtimepackages[@]}"; do
@@ -162,7 +173,9 @@ check() {
   # The tests need packages from the feed upstream uses, which mirrors nuget.org
   local _feed
   _feed=$(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' NuGet.Config.upstream)
-  _nuget_config "$_feed"
+  # Microsoft's packages from nuget.org, as upstream's feed only has the versions upstream's builds
+  # saved there, not e.g. the ones of the installed runtime (see prepare())
+  _nuget_config "$_feed" 'Microsoft.AspNetCore.*' 'Microsoft.Bcl.*' 'Microsoft.Extensions.*' 'System.*'
   # Only on the .NET runtime that's installed, the tests target older ones, too
   dotnet test "sdk/core/$_nugetid/tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}" --framework net10.0
 }
