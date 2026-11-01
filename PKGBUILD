@@ -3,23 +3,23 @@
 # pushed version tag, resets pkgrel to 1, verifies the resulting source, and
 # builds it before push.
 pkgname=sway-title-animator
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Animated Unicode titlebars for Sway"
 arch=('x86_64' 'aarch64')
-url="https://github.com/marang/sway-title-animator"
+url="https://automation.izoone.com/releases/sway-title-animator"
 license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.10')
 options=('!debug')
-source=("sway-title-animator-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e231bb1f9218177d69bfc0e1e9948f3c922f4562a1aa8238c3cf4ded78db368')
+source=("sway-title-animator-$pkgver.tar.gz::$url/v$pkgver/sway-title-animator-7597ad2be20b3c98a263e78e3dbf9307b409267e.tar.gz")
+sha256sums=('b2a81cd9135aac0b21913c96f842bcb669f3f7c11eb39ef059330770fb322628')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid=)
 
 build() {
-  cd "sway-title-animator-$pkgver"
+  cd "sway-title-animator-7597ad2be20b3c98a263e78e3dbf9307b409267e"
   if [[ -d cmd/sway-session ]]; then
     printf '%s\n' 'This animator-only recipe requires split source (v0.10.0 or newer).' 'Use the released v0.9.3 recipe for the combined package, or wait for the v0.10.0 metadata sync.' >&2
     return 1
@@ -32,7 +32,7 @@ build() {
 }
 
 check() {
-  cd "sway-title-animator-$pkgver"
+  cd "sway-title-animator-7597ad2be20b3c98a263e78e3dbf9307b409267e"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -41,7 +41,7 @@ check() {
 }
 
 package() {
-  cd "sway-title-animator-$pkgver"
+  cd "sway-title-animator-7597ad2be20b3c98a263e78e3dbf9307b409267e"
   install -Dm755 sway-title-animator "$pkgdir/usr/bin/sway-title-animator"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
