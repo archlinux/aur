@@ -7,7 +7,16 @@ import os
 pkt_name = sys.argv[1]
 operation = sys.argv[2]
 
-product_path = "/usr/share/devin-desktop/resources/app/product.json"
+# devin-desktop moved from /usr/share to /opt in 3.11.238; keep the old path as fallback.
+PRODUCT_CANDIDATES = (
+    "/opt/devin-desktop/resources/app/product.json",
+    "/usr/share/devin-desktop/resources/app/product.json",
+)
+product_path = next((p for p in PRODUCT_CANDIDATES if os.path.isfile(p)), None)
+if product_path is None:
+    print("%s: product.json not found (looked in: %s), skipping"
+          % (pkt_name, ", ".join(PRODUCT_CANDIDATES)), file=sys.stderr)
+    sys.exit(0)
 patch_path = "/usr/share/%s/patch.json" % pkt_name
 cache_path = "/usr/share/%s/cache.json" % pkt_name
 
