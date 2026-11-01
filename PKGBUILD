@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=mqtt-alive-daemon
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Reports machine aliveness and custom command checks to Home Assistant via MQTT"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('systemd: run as a system service')
 conflicts=('mqtt-alive-daemon-git')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('468bc2ab301f5e132deb65d4d02090f232272af68507be7c0fdeb0cb6f707f69')
+sha256sums=('9812866fee0a081423a50a18665a4bfaab6cac8e6c3842dbbf945f4688190372')
 
 build() {
   cd "${pkgname}-${pkgver}"
