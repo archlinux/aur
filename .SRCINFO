@@ -1,0 +1,29 @@
+pkgbase = memdoor-bin
+	pkgdesc = Coding and automation agent in a single CLI binary (prebuilt binaries)
+	pkgver = 1.769.0
+	pkgrel = 1
+	url = https://github.com/guregodevo/memdoor
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = bash
+	depends = ca-certificates
+	optdepends = git: Git workspaces and worktrees
+	optdepends = openssh: remote gateways over SSH
+	optdepends = xdg-utils: open browser authentication links
+	provides = memdoor=1.769.0
+	conflicts = memdoor
+	options = !strip
+	options = !debug
+	source = LICENSE-1.769.0::https://raw.githubusercontent.com/guregodevo/memdoor/v1.769.0/LICENSE
+	source = NOTICE-1.769.0::https://raw.githubusercontent.com/guregodevo/memdoor/v1.769.0/NOTICE
+	source = GETTING_STARTED-1.769.0.md::https://raw.githubusercontent.com/guregodevo/memdoor/v1.769.0/GETTING_STARTED.md
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	sha256sums = f09a06aa6e7d3cd22d83a34f99246d11edfe33ee3800742ac9b79ab1d32c0746
+	sha256sums = e92b3ac5a879351d118acff96a823450e31824f1b5e54d90739aec2dedc63e2f
+	source_x86_64 = memdoor-1.769.0-linux-x86_64::https://github.com/guregodevo/memdoor/releases/download/v1.769.0/memdoor-linux-amd64
+	sha256sums_x86_64 = 5387889ed40298ca4b9f7bccb6c020d9ca31c640598ceafa5a5f90bdb3d802ab
+	source_aarch64 = memdoor-1.769.0-linux-aarch64::https://github.com/guregodevo/memdoor/releases/download/v1.769.0/memdoor-linux-arm64
+	sha256sums_aarch64 = 700a4572249d691139b55a639540415e4419ddc336f96e9554fe4b05729ddaff
+
+pkgname = memdoor-bin
