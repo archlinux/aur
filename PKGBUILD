@@ -4,7 +4,7 @@
 # checksum and pushes this to the AUR. Installs the app under /opt/macropad with a "package-managed" marker, so it
 # never updates itself and tells you to update through pacman instead.
 pkgname=macropad-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Program MINI_KEYBOARD macropads and use their keys for Home Assistant, Bragi audio and profiles"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=macropad-bin.install
 # The single-file binary carries a bundle that stripping would break.
 options=('!strip' '!debug')
 source=("https://github.com/NickMarcha/MacroPad/releases/download/v${pkgver}/MacroPad-${pkgver}-linux-x64.tar.gz")
-sha256sums=('0d86c9d4ca6317ac14d4b6e4fb54b94fcb44df4b3ec37a4112dbe5685eebf677')
+sha256sums=('a35a562055b612460ebe6c3d302561f03d68643647c54338fafc28c3f83cd3bc')
 
 package() {
     local dir="MacroPad-${pkgver}-linux-x64"
