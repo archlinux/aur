@@ -7,12 +7,12 @@ _nugetid=Microsoft.Management.Infrastructure.Runtime.Unix
 pkgver=3.0.0
 pkgrel=1
 pkgdesc="Microsoft.Management.Infrastructure (MMI) for PowerShell, Microsoft's build"
-arch=('any')
+arch=(any)
 url='https://www.nuget.org/packages/Microsoft.Management.Infrastructure.Runtime.Unix'
 # The license the NuGet package declares. Its sources aren't published: the repository it links to has
 # the code of version 2.0.0-preview.1 (powershell-mmi), whose API the assembly has, and its SBOM makes
 # no assertion about the license.
-license=('MIT')
+license=(MIT)
 depends=(
   powershell
 )
