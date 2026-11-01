@@ -1,0 +1,8 @@
+post_install() {
+  systemd-sysusers /usr/lib/sysusers.d/electric-eye.conf 2>/dev/null || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+  post_install
+}

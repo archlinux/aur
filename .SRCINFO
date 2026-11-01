@@ -1,0 +1,22 @@
+pkgbase = electric-eye-bin
+	pkgdesc = Prebuilt electric-eye read-only Linux activity monitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jamesmcm/electric-eye
+	install = electric-eye.install
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = sqlite
+	depends = systemd-libs
+	depends = pacman
+	provides = electric-eye
+	conflicts = electric-eye
+	options = !strip
+	options = !debug
+	backup = etc/electric-eye/allowlist.conf
+	backup = etc/electric-eye/config.toml
+	source = electric-eye-bin-0.1.0-x86_64.tar.gz::https://github.com/jamesmcm/electric-eye/releases/download/v0.1.0/electric-eye-0.1.0-x86_64-bin-r2.tar.gz
+	sha256sums = 34463afa3b027371b6b97c8c589d91b531a52fc0a08eef2926fbf93d0e777be2
+
+pkgname = electric-eye-bin
