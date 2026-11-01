@@ -118,20 +118,20 @@ prepare() {
 
   # Upstream builds with a newer feature band of the .NET SDK, which isn't needed. dotnet only works
   # outside the repository until its global.json is updated.
-  local _sdkver _runtimever _package
+  local _sdkver _runtimever _pinned
   _sdkver=$(dotnet --version)
   _runtimever=$(dotnet --list-runtimes |
     sed -n -E 's/^Microsoft\.NETCore\.App ('"${_dotnetsdkver//./\\.}"'\.[^ ]+) .*/\1/p' | sort -V | tail -1)
 
   cd "azure-sdk-for-net-$_commit" || exit
   # Microsoft's runtime packages in the version of its installed runtime, as the source-built ones come
-  # in the version of the artifacts, instead of the versions upstream pins at this commit, which differ
-  # between the Azure packages (System.ClientModel needs newer ones than the tests of Azure.Identity pin)
+  # in the version of the artifacts, instead of the servicing version of .NET upstream pins them to at
+  # this commit (as the version of System.Text.Json, and of others in properties), which differs
+  # between the Azure packages: System.ClientModel needs newer ones than the tests of Azure.Identity pin
   if [[ ! -f "$srcdir/runtime-packages" ]]; then
-    for _package in "${_runtimepackages[@]}"; do
-      sed -i -E 's#(<PackageVersion Include="'"${_package//./\\.}"'" Version=")'"${_dotnetsdkver//./\\.}"'\.[^"]*"#\1'"$_runtimever"'"#' \
-        eng/centralpackagemanagement/Directory.Packages.props
-    done
+    _pinned=$(sed -n -E 's/.*<PackageVersion Include="System\.Text\.Json" Version="('"${_dotnetsdkver//./\\.}"'\.[0-9]+)".*/\1/p' \
+      eng/centralpackagemanagement/Directory.Packages.props)
+    [[ -z "$_pinned" ]] || sed -i -E 's/([">])'"${_pinned//./\\.}"'(["<])/\1'"$_runtimever"'\2/g' eng/centralpackagemanagement/*.props
   fi
   # Upstream's NuGet.Config, which has the feed the tests need
   mv NuGet.Config NuGet.Config.upstream
