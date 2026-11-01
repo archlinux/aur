@@ -6,12 +6,12 @@ pkgname=dotnet-wcf
 pkgver=10.1.0
 pkgrel=4
 pkgdesc="WCF client libraries for .NET, System.ServiceModel.* and System.Web.Services.Description (NuGet packages)"
-arch=('any')
+arch=(any)
 url='https://github.com/dotnet/wcf'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   jq
 )
 # The commit the packages were published from (tag v10.1.0-rtm), and the official build of them, see
