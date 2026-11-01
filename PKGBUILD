@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=figcraft
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('e8a88d97c8d3c385dbc1429a09d5c8ed3fcce870f0d5b8db21b690a8eb545d78')
+sha256sums=('8f5fd2338195692adb168a0a7f2a96f59822751a3ac286e7aceedc87309ffc24')
 
 _srcenv() {
 	cd "$_archive"
