@@ -1,0 +1,19 @@
+pkgbase = kwi
+	pkgdesc = Modern and fast terminal for KDE Plasma and other desktops
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://invent.kde.org/utilities/kwi
+	arch = any
+	license = GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kirigami
+	makedepends = kirigami-addons
+	makedepends = kirigami-app-components
+	makedepends = ninja
+	depends = qt6-base
+	provides = kwi
+	source = kwi::git+https://invent.kde.org/utilities/kwi
+	sha512sums = SKIP
+
+pkgname = kwi
