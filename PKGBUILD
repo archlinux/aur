@@ -6,8 +6,8 @@ pkgbase=xorg-server-phoenix
 pkgname=('xorg-server-phoenix' 'xorg-server-xephyr-phoenix' 'xorg-server-xvfb-phoenix' 'xorg-server-xnest-phoenix'
          'xorg-server-common-phoenix' 'xorg-server-devel-phoenix' 'xorg-server-src-phoenix')
 pkgver=26.1.99.1
-pkgrel=13
-_commit=565048c5b4f4bc25fbccb38ab0018e5d70c4169d
+pkgrel=14
+_commit=6f822773c287ff31e015f4a5b17502d20ff7dfe2
 _srcname=xserver-${_commit}
 _upstreamname=xorg-server
 arch=('x86_64')
@@ -34,12 +34,12 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
+             'libxshmfence' 'libunwind' 'systemd' 'libcap' 'meson' 'git')
 source=(${_upstreamname}-${_commit}.tar.gz::https://github.com/dec05eba/xserver/archive/${_commit}.tar.gz
         xvfb-run # with updates from FC master
         xvfb-run.1
 )
-sha512sums=('ea93c49d1f15e0ea0cf776012ad560a016d6150801e9c3d23b6ad3d9662652133f8e24f0cfe380df038776e15a97078ae40cad05babc52eef8dcdd644d1aa59e'
+sha512sums=('c288e6db22698ecfd226a117275393d5cd64a8276647c4dfc3b3badfabe1db467049478265c0fd6b682b464cad9a11d8d21f452009c4036225e1ea61fc882973'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
@@ -117,7 +117,7 @@ package_xorg-server-phoenix() {
   depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
            dbus libgl xf86-input-libinput-phoenix nettle
            libxdmcp sh glibc libxau systemd-libs libtirpc
-           libpciaccess libdrm libxshmfence libxcvt) # FS#52949
+           libpciaccess libdrm libxshmfence libxcvt libcap) # FS#52949
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
   provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=28.0' 'X-ABI-XINPUT_VERSION=26.0' 'X-ABI-EXTENSION_VERSION=11.0' 'x-server')

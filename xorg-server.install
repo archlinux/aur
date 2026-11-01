@@ -1,10 +1,9 @@
-post_upgrade() {
-  if (( $(vercmp $2 1.16.0-3) < 0 )); then
-    post_install
-  fi
+_set_cap_sys_nice() {
+  setcap cap_sys_nice+ep /usr/lib/Xorg ||
+    echo ">>> Could not give Xorg CAP_SYS_NICE, its GPU work will use normal priority."
 }
 
-post_install() {
+_rootless_message() {
   cat <<MSG
 >>> xorg-server has now the ability to run without root rights with
     the help of systemd-logind. xserver will fail to run if not launched
@@ -16,3 +15,14 @@ post_install() {
 MSG
 }
 
+post_upgrade() {
+  _set_cap_sys_nice
+  if (( $(vercmp $2 1.16.0-3) < 0 )); then
+    _rootless_message
+  fi
+}
+
+post_install() {
+  _set_cap_sys_nice
+  _rootless_message
+}
