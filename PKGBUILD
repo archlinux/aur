@@ -1,7 +1,7 @@
 # Maintainer: mafuzyk <mafuzyk@gmail.com>
 
 pkgname=koral-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Rust terminal with native sharky shell support"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('koral')
 conflicts=('koral')
 options=('!debug')
 source=("koral-$pkgver.tar.gz::$url/releases/download/v$pkgver/koral-x86_64-linux.tar.gz")
-sha256sums=('66cd48fe2dc8d3c95d8ab91e03e3d09f8c7b40a7a05d0f86f0a16d9246568902')
+sha256sums=('1e76e07b9dd05ed6ddb02afccf2c7567988b2c5af5fe011359555565ae40a1a8')
 
 package() {
   install -Dm755 koral "$pkgdir/usr/bin/koral"
