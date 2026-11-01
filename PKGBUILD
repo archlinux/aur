@@ -7,12 +7,12 @@
 # to /usr/share. What a user changes lives in ~/.config/zenworks.
 
 pkgname=zenworks
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 PACKAGER="Zenworks Delphi"
 # the source's tag: $pkgver, or a hotfix's own (0.1.9-2) for a pkgrel that
 # brings new source rather than a recipe fix alone — release.sh sets it
-_tag=0.1.9-2
+_tag=$pkgver
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
 url="https://github.com/kbuckleys/Zenworks"
@@ -82,7 +82,7 @@ conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('f2ab5ba428714477a565a00eff42b99d65d06ca680b874ac17420584564d90f6')
+sha256sums=('ef3c19c107e3e34ea830afa2c6d75311c785a6b6c63a1a25243618875e0a37a5')
 
 package() {
   # the tarball's directory is named after the repository, as GitHub has
