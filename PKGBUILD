@@ -2,7 +2,7 @@
 
 pkgname=python-rjieba
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast Chinese text segmentation with jieba-rs Python bindings"
 arch=('x86_64')
 url="https://github.com/messense/rjieba-py"
@@ -17,7 +17,7 @@ sha256sums=('ed593aeca6208584d0ee60d1b3078ad1614d40b210f0b22191e49eb3698322df')
 
 prepare() {
     cd "rjieba-py-$_commit"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked
 }
 
 build() {

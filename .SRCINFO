@@ -1,7 +1,7 @@
 pkgbase = python-rjieba
 	pkgdesc = Fast Chinese text segmentation with jieba-rs Python bindings
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/messense/rjieba-py
 	arch = x86_64
 	license = MIT
