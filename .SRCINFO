@@ -1,14 +1,14 @@
 pkgbase = bsg-diaspora-sa
 	pkgdesc = Diaspora: Shattered Armistice is a single and multiplayer space fighter combat game set in the reimagined Battlestar Galactica universe.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://diaspora.hard-light.net/
 	install = bsg-diaspora-sa.install
 	arch = i686
 	arch = x86_64
 	license = CCPL
 	license = custom:fs2_open
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = libtheora
 	depends = libvorbis
@@ -34,4 +34,3 @@ pkgbase = bsg-diaspora-sa
 	md5sums = 3ff26bc4a7d14af7b3b8fcb32ff0f367
 
 pkgname = bsg-diaspora-sa
-

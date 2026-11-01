@@ -18,12 +18,12 @@
 
 pkgname=bsg-diaspora-sa
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Diaspora: Shattered Armistice is a single and multiplayer space fighter combat game set in the reimagined Battlestar Galactica universe."
 url="http://diaspora.hard-light.net/"
 arch=('i686' 'x86_64')
 license=('CCPL' 'custom:fs2_open')
-depends=('libjpeg' 'libpng' 'libtheora' 'libvorbis' 'lua51' 'mesa' 'openal' 'sdl' 'jansson' 'wxlauncher')
+depends=('libjpeg-turbo' 'libpng' 'libtheora' 'libvorbis' 'lua51' 'mesa' 'openal' 'sdl' 'jansson' 'wxlauncher')
 # optdepends=('wxlauncher: a launcher for fs2_open-based games')
 install=bsg-diaspora-sa.install
 source=('http://diaspora.fs2downloads.com/Diaspora_R1_Linux.tar.lzma'
