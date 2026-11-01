@@ -27,7 +27,7 @@ options=('!debug')
 # 10.0.13, 10.0.14 brought no runtime changes. The library isn't part of the source-built .NET of Arch
 # Linux, so it's built for its version here.
 _commit="6aa72daa24f66c01c3d7b6a32519e9d21396deec"
-# Where ./aur commits reads it from on upgrade, the native pack carries no repository commit on NuGet
+# Where ./aur-packages commits reads it from on upgrade, the native pack carries no repository commit on NuGet
 _commit_lookup() {
   curl -fsSL "https://raw.githubusercontent.com/dotnet/dotnet/v$pkgver/src/source-manifest.json" |
     jq -r '.repositories[] | select(.path == "runtime") | .commitSha'
