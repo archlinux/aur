@@ -50,7 +50,7 @@ help: ## Show this help message
 .PHONY: clean
 clean: ## Clean the current workspace
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old package files${CC_END}"
-	rm -rf *.pkg.tar.{xz,zst} *.zip *.deb ${use_pkgname}-*
+	rm -rf *.pkg.tar.{xz,zst} *.tar.gz *.zip *.deb ${use_pkgname}-*
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old working directories${CC_END}"
 	rm -rf ./pkg ./src
 
