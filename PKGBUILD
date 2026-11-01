@@ -1,28 +1,54 @@
-# Maintainer: Gokberk Yaltirakli <aur at gkbrk dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Gokberk Yaltirakli <aur at gkbrk dot com>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='hourglass'
-pkgver=3.1.0
+_gitauthor=sgpthomas
+_gitname=hourglass
+_appname=${_gitname}
+pkgname=${_appname}
+pkgdesc="Simple clock application that provides stopwatches, alarms, and timers"
+
+pkgver=3.1.3
 pkgrel=1
-pkgdesc='Simple clock application that provides stopwatches, alarms, and timers'
-arch=('x86_64')
-url='https://github.com/sgpthomas/hourglass'
-license=('GPL3')
-depends=('gtk4' 'libgee' 'granite7' 'libportal-gtk4')
-makedepends=('meson' 'vala')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b58104bc983a329ca0036d7df974828f7fd4659ac425e33d02de8c46a2c571d9')
+_gitversion=${pkgver}
+
+arch=('x86_64' 'aarch64')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
+license=('GPL-3.0')
+
+depends=('gtk4' 'dconf' 'libgee' 'granite7' 'libportal' 'libportal-gtk4')
+makedepends=('meson' 'ninja' 'vala')
+provides=("${_appname}")
+
+options=('!strip')
+
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('9a3b3e4d1729b68e3480c5879ba487fcea2b3d147cba68640c0e38d1224bcbe7')
+
 
 build () {
-    cd "${pkgname}-${pkgver}"
-    meson build --prefix=/usr
-    cd build
-    ninja
+	cd "${pkgname}-${pkgver}"
+
+	meson build --prefix="/usr"
+
+	cd build
+	ninja
 }
 
 package () {
-    cd "${pkgname}-${pkgver}"
-    cd build
-    DESTDIR="${pkgdir}" ninja install
-    cp "${pkgdir}/usr/bin/com.github.sgpthomas.hourglass" "${pkgdir}/usr/bin/hourglass"
+	cd "${pkgname}-${pkgver}"
+
+	cd build
+	DESTDIR="${pkgdir}" ninja install
+	cd ..
+
+	ln -sf "/usr/bin/com.github.${_gitauthor}.${_gitname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

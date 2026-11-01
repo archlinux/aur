@@ -1,0 +1,5 @@
+[hourglass]
+source = "github"
+github = "sgpthomas/hourglass"
+use_latest_release = true
+prefix = ""
