@@ -1,0 +1,18 @@
+pkgbase = gill
+	pkgdesc = Run the bash lines fish cannot, and keep bash's state between them
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sachesi/gill
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = tmux
+	makedepends = cargo
+	depends = bash>=5.0
+	depends = fish>=4.0
+	depends = glibc
+	depends = libgcc
+	source = gill-0.1.0.tar.gz::https://github.com/sachesi/gill/archive/v0.1.0/gill-0.1.0.tar.gz
+	sha256sums = 3a680b2a0fc6da9126d0e8aa0fb1b93aec12a3a263fa4560c32bc97ed47bcb01
+
+pkgname = gill
