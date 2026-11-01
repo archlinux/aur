@@ -1,0 +1,24 @@
+pkgbase = conflux-gtk-bin
+	pkgdesc = GNOME app to set up and watch conflux syncs
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/AperteDev/conflux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = conflux
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = libadwaita>=1:1.7
+	depends = openssl
+	depends = polkit
+	depends = zlib
+	optdepends = libsecret: keep the remotes' passwords in the keyring
+	provides = conflux-gtk
+	conflicts = conflux-gtk
+	noextract = conflux-gtk-2.0.0-x86_64.tar.gz
+	source = conflux-gtk-2.0.0-x86_64.tar.gz::https://github.com/AperteDev/conflux/releases/download/v2.0.0/conflux-gtk-2.0.0-x86_64.tar.gz
+	sha256sums = 1ee3980d56882c11e13e48c7fa8ab88d2189ff8a2bdafc7fdab7cc8293c04eeb
+
+pkgname = conflux-gtk-bin
