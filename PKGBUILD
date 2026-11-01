@@ -2,7 +2,7 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
@@ -16,8 +16,15 @@ depends=('basedpyright' 'esptool' 'hicolor-icon-theme' 'mypy' \
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-birdseye: Debug support with Birdseye'
             'python-pgzero: Run code made with Pygame Zero')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('7ab21e5605397f2e7e8a0e34559a1c1c55bba377890c5be90fe6da37cc08bff8403d54152b92a7bf43ce1ff79f4598db6fc890cb08dc491750bae8713fbec5e3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+#source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/${pkgname}/${pkgname}/tar.gz/refs/tags/v${pkgver}")
+b2sums=('1fe512ac5547cb24876377eefaab6465b9ef5ba3ef5a5c3aa6159468cc52a28acd4829943841e8ca2180eb558baa1de2c72ef89d4f5850800760186279194f83')
+
+prepare() {
+  # Build the package with the current version of python-uv-build
+  sed -i '/uv_build/ s/,<0.12.0//' \
+         "${srcdir}/${pkgname}-${pkgver}/pyproject.toml"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
