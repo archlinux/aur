@@ -3,7 +3,7 @@
 # Contributor: Dominic Meiser [git at msrd0 dot de]
 
 pkgname=cargo-diet
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo manifests'
 url='https://github.com/the-lean-crate/cargo-diet'
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(glibc libgcc libgcc_s.so)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ae9581925a93704624dd9934710d979d2d947b7feeb07fa02571f57d6183749e3f19fcdb746edeaafbd6b38f2fec33ab6273e989f31fcaa89cf321dde3a35f13')
+sha512sums=('04a6b6f3d59fb15b8ae9a72b543261251c6511b15df7de1c32ffc7b95afd782c9c10c0137fd48c579bd9b139fe57b962b214662cbe780a49bb7b7356aa717170')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=(aarch64 i686 x86_64)
