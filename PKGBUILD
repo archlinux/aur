@@ -5,7 +5,7 @@
 pkgname=dotnet-system-data-sqlclient
 _nugetid=System.Data.SqlClient
 pkgver=4.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The legacy SQL Server data provider for .NET, System.Data.SqlClient (NuGet package)"
 arch=('any')
 url='https://github.com/dotnet/maintenance-packages'
@@ -205,7 +205,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 "maintenance-packages-$_commit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
