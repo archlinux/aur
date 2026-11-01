@@ -1,6 +1,6 @@
 pkgbase = xcompmgr-zoom
 	pkgdesc = Composite window effect manager for X.org, with full-desktop zoom
-	pkgver = 1.1.10.zoom1
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/crazyboycjr/xcompmgr-zoom
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = xcompmgr-zoom
 	depends = libxext
 	depends = libxfixes
 	depends = libxrender
-	provides = xcompmgr
+	provides = xcompmgr=1.1.10
 	conflicts = xcompmgr
-	source = xcompmgr-zoom-1.1.10.zoom1.tar.gz::https://github.com/crazyboycjr/xcompmgr-zoom/archive/refs/tags/v1.1.10-zoom1.tar.gz
-	sha256sums = SKIP
+	source = xcompmgr-zoom-1.1.10.tar.gz::https://github.com/crazyboycjr/xcompmgr-zoom/archive/refs/tags/v1.1.10.tar.gz
+	sha256sums = aaf89b1a2671244560eaa543a4c85b2008c6696c1cab05a31c22514434df75af
 
 pkgname = xcompmgr-zoom
