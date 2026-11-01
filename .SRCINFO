@@ -1,7 +1,7 @@
 pkgbase = calagopus-panel-aio-bin
 	pkgdesc = Panel, all-in-one variant with bundled dependencies
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://calagopus.com
 	arch = x86_64
 	arch = aarch64
