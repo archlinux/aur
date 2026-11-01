@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=asl
 pkgname=ampl-${_base}
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="AMPL Solver Library"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(openmp)
 makedepends=(cmake git)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0510794489dd9e8404c4b5240ffabbca5a1a6112678c80443421f040893edbd23925b3c8fa7e3e4a9e41aeb2d7555fa747aa2070e7b1bd31da177c7aa8969211')
+sha512sums=('cd4092f6ff4852ecefbbc803bf0c23cc86529fddd8159084c7a45ebf3a542c24f497d8c0457e7fac8aa21b192b0ab3eca1ab9517e68832e028e052ed25a9ed22')
 
 build() {
   cmake \
