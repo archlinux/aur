@@ -7,13 +7,20 @@ pkgdesc='QIIME 2 classification and regression of biological samples'
 arch=(any)
 url=https://github.com/qiime2/q2-sample-classifier
 license=(BSD-3-Clause)
-depends=('python' 'python-qiime2>=2026.10.0' 'python-q2-types>=2026.10.0' 'q2-feature-table>=2026.10.0' 'python-q2templates>=2026.10.0' 'python-biom-format' 'python-scikit-bio' 'python-joblib' 'python-numpy' 'python-pandas' 'python-scipy' 'python-scikit-learn' 'python-matplotlib' 'python-seaborn')
+depends=('python' 'python-qiime2>=2026.10.0' 'python-q2-types>=2026.10.0' 'q2-feature-table>=2026.10.0' 'python-q2templates>=2026.10.0' 'python-biom-format' 'python-scikit-bio' 'python-joblib' 'python-numpy' 'python-pandas' 'python-scipy>=1.15' 'python-scikit-learn' 'python-matplotlib' 'python-seaborn')
 optdepends=('python-fastcluster: accelerated hierarchical clustering of large heatmaps')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versioningit' 'python-wheel')
 checkdepends=('python-pytest')
 _commit=efd06401d7e817f510a7a34efd436848d990574d
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('1e20769d24d394aecdc4517772caffb96da31d018d10c68ed7747250f81aec7f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
+        'sparse-vectorizer-compat.patch')
+sha256sums=('1e20769d24d394aecdc4517772caffb96da31d018d10c68ed7747250f81aec7f'
+            '728a39bc48b17bfff3f93b4da538a0cddc5167dcaf6d0a566e7e51f62b767b10')
+
+prepare() {
+  cd "q2-sample-classifier-$_commit"
+  patch -Np1 -i "$srcdir/sparse-vectorizer-compat.patch"
+}
 
 build() {
   cd "q2-sample-classifier-$_commit"

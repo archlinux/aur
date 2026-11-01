@@ -1,0 +1,377 @@
+--- a/q2_sample_classifier/utilities.py
++++ b/q2_sample_classifier/utilities.py
+@@ -13,7 +13,7 @@
+     train_test_split, RandomizedSearchCV, KFold, StratifiedKFold)
+ from sklearn.metrics import accuracy_score
+ from sklearn.feature_selection import RFECV
+-from sklearn.feature_extraction import DictVectorizer
++from sklearn.feature_extraction import DictVectorizer as _SklearnDictVectorizer
+ from sklearn.ensemble import (RandomForestRegressor, RandomForestClassifier,
+                               ExtraTreesClassifier, ExtraTreesRegressor,
+                               AdaBoostClassifier, GradientBoostingClassifier,
+@@ -33,7 +33,7 @@
+ import numpy as np
+ import matplotlib.pyplot as plt
+ import importlib
+-from scipy.sparse import issparse
++from scipy.sparse import issparse, safely_cast_index_arrays
+ from scipy.stats import randint
+ import biom
+ import re
+@@ -64,6 +64,26 @@
+ 
+ 
+ TEMPLATES = importlib.resources.files('q2_sample_classifier') / 'assets'
++
++
++def _compact_sparse_indices(matrix):
++    # Some estimators require 32-bit sparse indices even when DictVectorizer
++    # returns a sparse array with 64-bit indices. Preserve larger matrices.
++    if (issparse(matrix) and matrix.format in {'csr', 'csc'}
++            and max(*matrix.shape, matrix.nnz) <= np.iinfo(np.int32).max):
++        matrix.indices, matrix.indptr = safely_cast_index_arrays(
++            matrix, np.int32)
++    return matrix
++
++
++class DictVectorizer(_SklearnDictVectorizer):
++    "Keep compact sparse output compatible with all supported estimators."
++
++    def fit_transform(self, X, y=None):
++        return _compact_sparse_indices(super().fit_transform(X, y))
++
++    def transform(self, X):
++        return _compact_sparse_indices(super().transform(X))
+ 
+ 
+ def _extract_features(feature_data):
+--- a/q2_sample_classifier/classify.py
++++ b/q2_sample_classifier/classify.py
+@@ -9,7 +9,7 @@
+ import numpy as np
+ from sklearn.ensemble import IsolationForest
+ from sklearn.metrics import mean_squared_error, accuracy_score
+-from sklearn.feature_extraction import DictVectorizer
++from q2_sample_classifier.utilities import DictVectorizer
+ from sklearn.model_selection import KFold
+ from sklearn.neighbors import KNeighborsClassifier
+ from sklearn.pipeline import Pipeline
+--- a/q2_sample_classifier/tests/test_utilities.py
++++ b/q2_sample_classifier/tests/test_utilities.py
+@@ -9,7 +9,7 @@
+ import biom
+ import numpy as np
+ from sklearn.svm import LinearSVC
+-from sklearn.feature_extraction import DictVectorizer
++from q2_sample_classifier.utilities import DictVectorizer
+ from sklearn.pipeline import Pipeline
+ from sklearn.ensemble import RandomForestClassifier
+ import pandas.testing as pdt
+--- a/q2_sample_classifier/tests/test_estimators.py
++++ b/q2_sample_classifier/tests/test_estimators.py
+@@ -15,7 +15,7 @@
+ from sklearn.metrics import mean_squared_error, accuracy_score
+ from sklearn.ensemble import AdaBoostClassifier
+ from sklearn.tree import DecisionTreeClassifier, ExtraTreeClassifier
+-from sklearn.feature_extraction import DictVectorizer
++from q2_sample_classifier.utilities import DictVectorizer
+ from sklearn.pipeline import Pipeline
+ import skbio
+ 
+@@ -240,22 +240,23 @@
+                            'AdaBoostClassifier[DecisionTree]',
+                            'AdaBoostClassifier[ExtraTrees]', 'LinearSVC',
+                            'SVC', 'KNeighborsClassifier']:
+-            table_fp = self.get_data_path('chardonnay.table.qza')
+-            table = qiime2.Artifact.load(table_fp)
+-            res = sample_classifier.actions.classify_samples(
+-                table=table, metadata=self.mdc_chard_fp,
+-                test_size=0.5, cv=1, n_estimators=10, n_jobs=1,
+-                estimator=classifier, random_state=123,
+-                parameter_tuning=False, optimize_feature_selection=False,
+-                missing_samples='ignore')
+-            pred = res[2].view(pd.Series)
+-            pred, truth = _match_series_or_die(
+-                pred, self.mdc_chard_fp.to_series(), 'ignore')
+-            accuracy = accuracy_score(truth, pred)
+-            self.assertAlmostEqual(
+-                accuracy, seeded_results[classifier], places=4,
+-                msg='Accuracy of %s classifier was %f, but expected %f' % (
+-                    classifier, accuracy, seeded_results[classifier]))
++            with self.subTest(classifier=classifier):
++                table_fp = self.get_data_path('chardonnay.table.qza')
++                table = qiime2.Artifact.load(table_fp)
++                res = sample_classifier.actions.classify_samples(
++                    table=table, metadata=self.mdc_chard_fp,
++                    test_size=0.5, cv=1, n_estimators=10, n_jobs=1,
++                    estimator=classifier, random_state=123,
++                    parameter_tuning=False, optimize_feature_selection=False,
++                    missing_samples='ignore')
++                pred = res[2].view(pd.Series)
++                pred, truth = _match_series_or_die(
++                    pred, self.mdc_chard_fp.to_series(), 'ignore')
++                accuracy = accuracy_score(truth, pred)
++                self.assertAlmostEqual(
++                    accuracy, seeded_results[classifier], places=4,
++                    msg='Accuracy of %s classifier was %f, but expected %f' % (
++                        classifier, accuracy, seeded_results[classifier]))
+ 
+     # test if training classifier with pipeline classify_samples raises
+     # warning when test_size = 0.0
+@@ -364,31 +365,32 @@
+                           'AdaBoostRegressor[ExtraTrees]', 'Lasso', 'Ridge',
+                           'ElasticNet', 'KNeighborsRegressor', 'LinearSVR',
+                           'SVR']:
+-            table_fp = self.get_data_path('ecam-table-maturity.qza')
+-            table = qiime2.Artifact.load(table_fp)
+-            res = sample_classifier.actions.regress_samples(
+-                table=table, metadata=self.mdc_ecam_fp,
+-                test_size=0.5, cv=1, n_estimators=10, n_jobs=1,
+-                estimator=regressor, random_state=123,
+-                parameter_tuning=False, optimize_feature_selection=False,
+-                missing_samples='ignore', stratify=True)
+-            pred = res[2].view(pd.Series)
+-            pred, truth = _match_series_or_die(
+-                pred, self.mdc_ecam_fp.to_series(), 'ignore')
+-            accuracy = mean_squared_error(truth, pred)
+-            # TODO: Remove this conditional when
+-            # https://github.com/qiime2/q2-sample-classifier/issues/193 is
+-            # closed
+-            if regressor == 'Ridge':
+-                self.assertAlmostEqual(
+-                    accuracy, seeded_results[regressor], places=0,
+-                    msg='Accuracy of %s regressor was %f, but expected %f' % (
+-                        regressor, accuracy, seeded_results[regressor]))
+-            else:
+-                self.assertAlmostEqual(
+-                    accuracy, seeded_results[regressor], places=4,
+-                    msg='Accuracy of %s regressor was %f, but expected %f' % (
+-                        regressor, accuracy, seeded_results[regressor]))
++            with self.subTest(regressor=regressor):
++                table_fp = self.get_data_path('ecam-table-maturity.qza')
++                table = qiime2.Artifact.load(table_fp)
++                res = sample_classifier.actions.regress_samples(
++                    table=table, metadata=self.mdc_ecam_fp,
++                    test_size=0.5, cv=1, n_estimators=10, n_jobs=1,
++                    estimator=regressor, random_state=123,
++                    parameter_tuning=False, optimize_feature_selection=False,
++                    missing_samples='ignore', stratify=True)
++                pred = res[2].view(pd.Series)
++                pred, truth = _match_series_or_die(
++                    pred, self.mdc_ecam_fp.to_series(), 'ignore')
++                accuracy = mean_squared_error(truth, pred)
++                # TODO: Remove this conditional when
++                # https://github.com/qiime2/q2-sample-classifier/issues/193 is
++                # closed
++                if regressor == 'Ridge':
++                    self.assertAlmostEqual(
++                        accuracy, seeded_results[regressor], places=0,
++                        msg='Accuracy of %s regressor was %f, but expected %f' % (
++                            regressor, accuracy, seeded_results[regressor]))
++                else:
++                    self.assertAlmostEqual(
++                        accuracy, seeded_results[regressor], places=4,
++                        msg='Accuracy of %s regressor was %f, but expected %f' % (
++                            regressor, accuracy, seeded_results[regressor]))
+ 
+     # test adaboost base estimator trainer
+     def test_train_adaboost_decision_tree(self):
+@@ -479,37 +481,38 @@
+                            'AdaBoostClassifier[DecisionTree]',
+                            'AdaBoostClassifier[ExtraTrees]', 'LinearSVC',
+                            'SVC', 'KNeighborsClassifier']:
+-            estimator, importances = fit_classifier(
+-                self.table_chard_fp, self.mdc_chard_fp, random_state=123,
+-                n_estimators=2, estimator=classifier, n_jobs=1,
+-                missing_samples='ignore')
+-            pred, prob = predict_classification(self.table_chard_fp, estimator)
+-            exp = self.mdc_chard_fp.to_series().reindex(pred.index).dropna()
+-            # reindex both pred and exp because not all samples present in pred
+-            # are present in the metadata! (hence missing_samples='ignore')
+-            sample_ids = pred.index.intersection(exp.index)
+-            pred = pred.loc[sample_ids]
+-            exp = exp.loc[sample_ids]
+-            # verify predictions:
+-            # test that expected number of correct results is achieved (these
+-            # are mostly quite high as we would expect (total n=21))
+-            correct_results = np.sum(pred == exp)
+-            self.assertEqual(
+-                correct_results, seeded_predict_results[classifier],
+-                msg='Accuracy of %s classifier was %f, but expected %f' % (
+-                    classifier, correct_results,
+-                    seeded_predict_results[classifier]))
+-            # verify probabilities
+-            # test whether all are in correct range (0 to 1)
+-            ls_pred_classes = prob.columns.tolist()
+-            ls_correct_range = [col for col in ls_pred_classes if
+-                                prob[col].between(
+-                                    0, 1, inclusive="both").all()]
+-            self.assertEqual(len(ls_correct_range), prob.shape[1],
+-                             msg='Predicted probabilities of class {}'
+-                             'are not in range [0,1]'.format(
+-                [col for col in ls_pred_classes
+-                 if col not in ls_correct_range]))
++            with self.subTest(classifier=classifier):
++                estimator, importances = fit_classifier(
++                    self.table_chard_fp, self.mdc_chard_fp, random_state=123,
++                    n_estimators=2, estimator=classifier, n_jobs=1,
++                    missing_samples='ignore')
++                pred, prob = predict_classification(self.table_chard_fp, estimator)
++                exp = self.mdc_chard_fp.to_series().reindex(pred.index).dropna()
++                # reindex both pred and exp because not all samples present in pred
++                # are present in the metadata! (hence missing_samples='ignore')
++                sample_ids = pred.index.intersection(exp.index)
++                pred = pred.loc[sample_ids]
++                exp = exp.loc[sample_ids]
++                # verify predictions:
++                # test that expected number of correct results is achieved (these
++                # are mostly quite high as we would expect (total n=21))
++                correct_results = np.sum(pred == exp)
++                self.assertEqual(
++                    correct_results, seeded_predict_results[classifier],
++                    msg='Accuracy of %s classifier was %f, but expected %f' % (
++                        classifier, correct_results,
++                        seeded_predict_results[classifier]))
++                # verify probabilities
++                # test whether all are in correct range (0 to 1)
++                ls_pred_classes = prob.columns.tolist()
++                ls_correct_range = [col for col in ls_pred_classes if
++                                    prob[col].between(
++                                        0, 1, inclusive="both").all()]
++                self.assertEqual(len(ls_correct_range), prob.shape[1],
++                                 msg='Predicted probabilities of class {}'
++                                 'are not in range [0,1]'.format(
++                    [col for col in ls_pred_classes
++                     if col not in ls_correct_range]))
+ 
+     def test_predict_regressions(self):
+         for regressor in ['RandomForestRegressor', 'ExtraTreesRegressor',
+@@ -518,33 +521,34 @@
+                           'AdaBoostRegressor[ExtraTrees]',
+                           'Lasso', 'Ridge', 'ElasticNet',
+                           'KNeighborsRegressor', 'SVR', 'LinearSVR']:
+-            estimator, importances = fit_regressor(
+-                self.table_ecam_fp, self.mdc_ecam_fp, random_state=123,
+-                n_estimators=2, estimator=regressor, n_jobs=1,
+-                missing_samples='ignore')
+-            pred = predict_regression(self.table_ecam_fp, estimator)
+-            exp = self.mdc_ecam_fp.to_series()
+-            # reindex both pred and exp because not all samples present in pred
+-            # are present in the metadata! (hence missing_samples='ignore')
+-            sample_ids = pred.index.intersection(exp.index)
+-            pred = pred.loc[sample_ids]
+-            exp = exp.loc[sample_ids]
+-            # test that expected MSE is achieved (these are mostly quite high
+-            # as we would expect)
+-            mse = mean_squared_error(exp, pred)
+-            # TODO: Remove this conditional when
+-            # https://github.com/qiime2/q2-sample-classifier/issues/193 is
+-            # closed
+-            if regressor == 'Ridge':
+-                self.assertAlmostEqual(
+-                    mse, seeded_predict_results[regressor], places=4,
+-                    msg='Accuracy of %s regressor was %f, but expected %f' % (
+-                        regressor, mse, seeded_predict_results[regressor]))
+-            else:
+-                self.assertAlmostEqual(
+-                    mse, seeded_predict_results[regressor],
+-                    msg='Accuracy of %s regressor was %f, but expected %f' % (
+-                        regressor, mse, seeded_predict_results[regressor]))
++            with self.subTest(regressor=regressor):
++                estimator, importances = fit_regressor(
++                    self.table_ecam_fp, self.mdc_ecam_fp, random_state=123,
++                    n_estimators=2, estimator=regressor, n_jobs=1,
++                    missing_samples='ignore')
++                pred = predict_regression(self.table_ecam_fp, estimator)
++                exp = self.mdc_ecam_fp.to_series()
++                # reindex both pred and exp because not all samples present in pred
++                # are present in the metadata! (hence missing_samples='ignore')
++                sample_ids = pred.index.intersection(exp.index)
++                pred = pred.loc[sample_ids]
++                exp = exp.loc[sample_ids]
++                # test that expected MSE is achieved (these are mostly quite high
++                # as we would expect)
++                mse = mean_squared_error(exp, pred)
++                # TODO: Remove this conditional when
++                # https://github.com/qiime2/q2-sample-classifier/issues/193 is
++                # closed
++                if regressor == 'Ridge':
++                    self.assertAlmostEqual(
++                        mse, seeded_predict_results[regressor], places=4,
++                        msg='Accuracy of %s regressor was %f, but expected %f' % (
++                            regressor, mse, seeded_predict_results[regressor]))
++                else:
++                    self.assertAlmostEqual(
++                        mse, seeded_predict_results[regressor],
++                        msg='Accuracy of %s regressor was %f, but expected %f' % (
++                            regressor, mse, seeded_predict_results[regressor]))
+ 
+     # make sure predict still works when features are given in a different
+     # order from training set.
+--- /dev/null
++++ b/q2_sample_classifier/tests/test_vectorizer_compat.py
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: BSD-3-Clause
++import pickle
++import unittest
++
++import numpy as np
++from numpy.testing import assert_array_equal
++from scipy.sparse import csr_array
++from sklearn.base import clone
++from sklearn.feature_extraction import DictVectorizer as SklearnDictVectorizer
++
++from q2_sample_classifier.utilities import (
++    DictVectorizer, _compact_sparse_indices)
++
++
++class VectorizerCompatibilityTests(unittest.TestCase):
++    samples = [{'a': 1, 'category': 'first'},
++               {'b': 2, 'category': 'second'}]
++
++    def test_sparse_values_features_and_transform(self):
++        expected = SklearnDictVectorizer()
++        vectorizer = DictVectorizer()
++        result = vectorizer.fit_transform(iter(self.samples))
++        assert_array_equal(result.toarray(),
++                           expected.fit_transform(self.samples).toarray())
++        assert_array_equal(vectorizer.get_feature_names_out(),
++                           expected.get_feature_names_out())
++        transformed = vectorizer.transform([{'a': 3, 'unknown': 4}])
++        assert_array_equal(transformed.toarray(),
++                           expected.transform([{'a': 3, 'unknown': 4}]).toarray())
++        for matrix in [result, transformed]:
++            self.assertEqual(matrix.indices.dtype, np.dtype('int32'))
++            self.assertEqual(matrix.indptr.dtype, np.dtype('int32'))
++
++    def test_clone_fit_and_pickle(self):
++        original = DictVectorizer(dtype=np.float32, separator=':', sort=False)
++        vectorizer = clone(original)
++        self.assertIs(type(vectorizer), DictVectorizer)
++        self.assertEqual(vectorizer.get_params(), original.get_params())
++        self.assertIs(vectorizer.fit(self.samples), vectorizer)
++        restored = pickle.loads(pickle.dumps(vectorizer))
++        assert_array_equal(restored.transform(self.samples).toarray(),
++                           vectorizer.transform(self.samples).toarray())
++        self.assertEqual(restored.transform(self.samples).dtype, np.float32)
++        self.assertEqual(restored.transform(self.samples).indices.dtype,
++                         np.dtype('int32'))
++
++    def test_dense_output(self):
++        vectorizer = DictVectorizer(sparse=False, sort=False)
++        expected = SklearnDictVectorizer(sparse=False, sort=False)
++        result = vectorizer.fit_transform(self.samples)
++        self.assertIsInstance(result, np.ndarray)
++        assert_array_equal(result, expected.fit_transform(self.samples))
++        assert_array_equal(vectorizer.transform(self.samples),
++                           expected.transform(self.samples))
++
++    def test_large_sparse_shape_is_preserved(self):
++        column = np.iinfo(np.int32).max + 1
++        matrix = csr_array(([2.0], ([0], [column])),
++                           shape=(1, column + 1))
++        self.assertIs(_compact_sparse_indices(matrix), matrix)
++        self.assertEqual(matrix.indices.dtype, np.dtype('int64'))
++        self.assertEqual(matrix.shape, (1, column + 1))
++        assert_array_equal(matrix.indices, [column])
++        assert_array_equal(matrix.data, [2.0])
