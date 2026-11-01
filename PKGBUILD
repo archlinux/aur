@@ -2,7 +2,7 @@
 _pkgname=HarfBuzz-Shaper
 pkgname=perl-harfbuzz-shaper
 pkgver=0.033
-pkgrel=1
+pkgrel=2
 pkgdesc="Use HarfBuzz for text shaping"
 arch=('x86_64')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')

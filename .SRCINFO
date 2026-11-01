@@ -1,7 +1,7 @@
 pkgbase = perl-harfbuzz-shaper
 	pkgdesc = Use HarfBuzz for text shaping
 	pkgver = 0.033
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/HarfBuzz::Shaper
 	arch = x86_64
 	license = Artistic-1.0-Perl
