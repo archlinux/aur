@@ -6,12 +6,12 @@ pkgname=dotnet-markdig
 pkgver=1.5.1
 pkgrel=2
 pkgdesc="Fast, powerful, CommonMark compliant, extensible Markdown processor for .NET (NuGet packages)"
-arch=('any')
+arch=(any)
 url='https://github.com/xoofx/markdig'
-license=('BSD-2-Clause')
+license=(BSD-2-Clause)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 source=("git+$url.git#tag=$pkgver")
