@@ -5,16 +5,16 @@
 # must never reach the AUR.
 pkgname=sway-session
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 _commit=f8e795a91eac55b1b47d3d6b673e9024e1f8cf46
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
-url="https://github.com/marang/sway-session"
+url="https://automation.izoone.com/releases/sway-session"
 license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.10')
 options=('!debug')
-source=("sway-session-$pkgver.tar.gz::$url/archive/f8e795a91eac55b1b47d3d6b673e9024e1f8cf46.tar.gz")
+source=("sway-session-$pkgver.tar.gz::$url/v$pkgver/sway-session-f8e795a91eac55b1b47d3d6b673e9024e1f8cf46.tar.gz")
 sha256sums=('2b82eff9974fa13794f10b01246bf06541cb722c4d251b1100a79263a3a7941f')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
