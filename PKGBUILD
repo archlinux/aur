@@ -7,12 +7,12 @@ pkgname=(dotnet-system-io-ports-native dotnet-system-io-ports-native-debug)
 pkgver=10.0.14
 pkgrel=3
 pkgdesc="Native library of System.IO.Ports for .NET on Linux, runtime.linux-*.runtime.native.System.IO.Ports (NuGet package)"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://github.com/dotnet/runtime'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-sdk-"$_dotnetsdkver"
+  "dotnet-sdk-$_dotnetsdkver"
   clang
   cmake
   lld
@@ -21,7 +21,7 @@ checkdepends=(python)
 # The library only ends up in $pkgdir inside the NuGet package, where makepkg can't strip it or split off its
 # debug information, so its debug package would be empty. The runtime's build does both itself, and
 # dotnet-system-io-ports-native-debug ships the debug information (see package_*-debug()).
-options=('!debug')
+options=(!debug)
 # The runtime commit of the .NET release, from src/source-manifest.json of the dotnet/dotnet commit the
 # 10.0.14 packages were published from (0427b9abbead3fa64c6655eb4290c537397131fa); the same commit as
 # 10.0.13, 10.0.14 brought no runtime changes. The library isn't part of the source-built .NET of Arch
@@ -151,7 +151,7 @@ package_dotnet-system-io-ports-native() {
 package_dotnet-system-io-ports-native-debug() {
   pkgdesc="Detached debugging symbols for dotnet-system-io-ports-native"
   # makepkg would strip the debug information itself
-  options=('!strip')
+  options=(!strip)
   local _dbg _buildid _file
   _dbg="$(_objdir)/libSystem.IO.Ports.Native.so.dbg"
   _buildid=$(LANG=C readelf -n "$_dbg" | sed -n '/Build ID/ { s/.*: //p; q; }')
