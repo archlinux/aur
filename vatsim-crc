@@ -28,16 +28,21 @@ mkdir -p $WINEPREFIX
 hash umu-run
 UMU_AVAIL=$?
 
-if [ $UMU_AVAIL -eq 0 ] ; then
+if [ $UMU_AVAIL -eq 0 ] && [[ ! -v USE_WINE ]]; then
   # Proton version
   export GAMEID=vatsim-crc
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
-    rm $WINEPREFIX/.installed*
 
     if [[ ! -v PROTONPATH ]]; then
-      if [ -d "/usr/share/steam/compatibilitytools.d/proton-ge-custom" ] ; then
-        export PROTONPATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
-      fi
+#      if [ -d "/usr/share/steam/compatibilitytools.d/proton-ge-custom" ] ; then
+#        export PROTONPATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
+#      fi
+      export PROTONPATH="UMU-Proton"
+    else
+      cd $WINEPREFIX
+      PREV_INSTALLED=$(find . -iname ".installed*")
+      source $PREV_INSTALLED
+      rm $PREV_INSTALLED
     fi
 
     if [[ -v PROTONPATH ]]; then
