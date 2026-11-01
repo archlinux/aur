@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Space Bunny Free.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=qlinux-device-manager-appimage
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Device manager and hardware information viewer for Linux (bundled AppImage)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 options=('!strip' '!debug')
 depends=('fuse2')
 source=("QLinuxDeviceManager-$pkgver-Linux-AppImage-x86_64.zip::https://github.com/birdie-github/QLinuxDeviceManager/releases/download/v$pkgver/QLinuxDeviceManager-$pkgver-Linux-AppImage-x86_64.zip")
-sha256sums=('fce45aae388f8aa3660abed4992111206b12eba562ea911d37686219551518b6')
+sha256sums=('147dd66d78b3a4b2a61551cac1da8eaade170dc5b412d403472e7479376ae8b1')
 
 package() {
     # makepkg unpacks the zip into $srcdir
