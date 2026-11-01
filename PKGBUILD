@@ -8,7 +8,7 @@
 # sets pkgver, the release service's linux-x64 and linux-arm64 file URLs, and
 # the checksums for each release.
 pkgname=hex-bin
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Hex voice dictation app by Anomaly: hold a key, speak, and it types (Linux beta; not the hex dump tool)'
 arch=('x86_64' 'aarch64')
@@ -31,23 +31,31 @@ optdepends=(
 options=('!strip' '!debug')
 install=hex-bin.install
 source=(
-  'hex.desktop'
+  'anomaly.hex.desktop'
   'hex.service'
   'LICENSE'
+  'anomaly.hex-16.png' 'anomaly.hex-24.png' 'anomaly.hex-32.png' 'anomaly.hex-48.png'
+  'anomaly.hex-64.png' 'anomaly.hex-128.png' 'anomaly.hex-256.png' 'anomaly.hex-512.png'
 )
-source_x86_64=("hex-${pkgver}-linux-x64::https://anoma.ly/release/hex/files/5541eb3fdf971813ce72a9ada04f43ea09ebb90f9545fabca648adc9b4e3349c/hex")
-source_aarch64=("hex-${pkgver}-linux-arm64::https://anoma.ly/release/hex/files/f43a7a3b4c6d432599f830aceaaae957b13b57bc60b6a6655a4d88ddd6a66d4a/hex")
-sha256sums=('4c633c0cc9c32a22601bf7d62e4f924505b008017c89b8a7a0830792010de8b9'
+source_x86_64=("hex-${pkgver}-linux-x64::https://anoma.ly/release/hex/files/4e433bdbb8669af5fdeeecb2751871d5ad8b3d08ef7fc2df23a19c6f701d3dd0/hex")
+source_aarch64=("hex-${pkgver}-linux-arm64::https://anoma.ly/release/hex/files/9a81779a1731253013e44614c7dc1b379e82b0c2825592b4b010e334d39baa5d/hex")
+sha256sums=('8451e8be59f7aed50229fe7d9736196c305302b66ff0def2f21e002c85dfaa1a'
             '7b7f3baa337f53b46574e4ea16d98f45c066ddcfc9cfd13bc255f5d4ce628652'
-            '0c267f186f600c6f4d9d229d1792861361f2c433cfb23054fece61f227006344')
-sha256sums_x86_64=('5541eb3fdf971813ce72a9ada04f43ea09ebb90f9545fabca648adc9b4e3349c')
-sha256sums_aarch64=('f43a7a3b4c6d432599f830aceaaae957b13b57bc60b6a6655a4d88ddd6a66d4a')
+            '0c267f186f600c6f4d9d229d1792861361f2c433cfb23054fece61f227006344'
+            '9edade6f7fa4b57630cc0998b45fb93ca87de53bf113c3994b1faf6f48ca0e73' '50f9a1d6c901084580343ac2280552be7840d2121d4e384eaf4a123f51c5b893' '9eed258adaea95b40c231b7106a5c7717364450bb9ff8581ca9854317a2b1ca8' '4e40a9abd77580b8990b690f338aff50107a0c4382bf0397b6986afe80a6200f' 'f6a8f2075290cbfb0c3ec455b71aaae3893726ec69d957de209869e1f03600c0' '02f6dd00cadaf344b22f1be1d26d3afb59eebaa6bc94da442bf4f81b0579454b' 'c6715346520daf5d991760d3b2016d014e48329fc31af7b621e807a895df2194' 'bbb18f2474a4d5343b401353bc223e18394a0a386616aba3485b140c2313aaa8')
+sha256sums_x86_64=('4e433bdbb8669af5fdeeecb2751871d5ad8b3d08ef7fc2df23a19c6f701d3dd0')
+sha256sums_aarch64=('9a81779a1731253013e44614c7dc1b379e82b0c2825592b4b010e334d39baa5d')
 
 package() {
   local target=x64
   [ "$CARCH" = aarch64 ] && target=arm64
   install -Dm755 "hex-${pkgver}-linux-${target}" "$pkgdir/usr/bin/hex"
-  install -Dm644 hex.desktop "$pkgdir/usr/share/applications/hex.desktop"
+  install -Dm644 anomaly.hex.desktop "$pkgdir/usr/share/applications/anomaly.hex.desktop"
+  local size
+  for size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "anomaly.hex-$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/anomaly.hex.png"
+  done
   install -Dm644 hex.service "$pkgdir/usr/lib/systemd/user/hex.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

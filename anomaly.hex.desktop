@@ -3,10 +3,11 @@ Type=Application
 Name=Hex
 Comment=Local voice dictation
 Exec=/usr/bin/hex
-Icon=audio-input-microphone
+Icon=anomaly.hex
 Terminal=false
 Categories=Utility;Accessibility;
 StartupNotify=true
+StartupWMClass=anomaly.hex
 Actions=quit;
 
 [Desktop Action quit]
