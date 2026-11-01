@@ -379,6 +379,12 @@ check() {
     echo 'powershell-editor-services: skipping the tests on a cross build; run them natively on the target' >&2
     return 0
   fi
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   cd "$srcdir"/PowerShellEditorServices || exit
   # The tests install help for Microsoft.PowerShell.Archive for the current user, see the
   # SetupHelpForTests task of PowerShellEditorServices.build.ps1
@@ -415,6 +421,7 @@ check() {
   dotnet restore test/PowerShellEditorServices.Test/PowerShellEditorServices.Test.csproj --force
   dotnet test test/PowerShellEditorServices.Test/PowerShellEditorServices.Test.csproj --no-restore \
     --configuration Release -p:EnforceCodeStyleInBuild=false -p:TreatWarningsAsErrors=false
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
