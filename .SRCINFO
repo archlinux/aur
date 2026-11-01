@@ -1,0 +1,27 @@
+pkgbase = electric-eye
+	pkgdesc = Explain what applications are doing with eBPF-based Linux activity monitoring
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jamesmcm/electric-eye
+	install = electric-eye.install
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = clang
+	makedepends = llvm
+	makedepends = lld
+	makedepends = bpf-linker
+	makedepends = pkgconf
+	makedepends = systemd
+	depends = gcc-libs
+	depends = sqlite
+	depends = systemd-libs
+	depends = pacman
+	options = !strip
+	options = !debug
+	backup = etc/electric-eye/allowlist.conf
+	backup = etc/electric-eye/config.toml
+	source = electric-eye-0.1.0.tar.gz::https://github.com/jamesmcm/electric-eye/releases/download/v0.1.0/electric-eye-0.1.0.tar.gz
+	sha256sums = 4f9e31b12199f2d5ec810438e48f082f9e33c2014a99ee41889545dbd0cb4db7
+
+pkgname = electric-eye
