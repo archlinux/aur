@@ -1,0 +1,17 @@
+pkgbase = python-django-recaptcha
+	pkgdesc = Django reCAPTCHA form field/widget integration app
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/django-recaptcha/django-recaptcha
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-django
+	source = https://files.pythonhosted.org/packages/source/d/django_recaptcha/django_recaptcha-4.1.0.tar.gz
+	sha256sums = 73097b958733f65b729d4e4630c51fc2bf147aca6f026017d18898dfc25cb4c5
+
+pkgname = python-django-recaptcha
