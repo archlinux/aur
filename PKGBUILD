@@ -6,8 +6,13 @@ pkgver=0.1.0
 pkgdesc="Modern and fast terminal for KDE Plasma and other desktops"
 arch=("any")
 url="https://invent.kde.org/utilities/${pkgname}"
-license=('GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL')
-makedepends=('cmake' 'extra-cmake-modules'
+license=('GPL-2.0-only OR GPL-3.0-only OR LicenseRef-scancode-kde-accepted-gpl'
+    'LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-scancode-kde-accepted-lgpl'
+    'GPL-2.0-or-later'
+    'LGPL-2.0-or-later'
+    'CC0-1.0'
+    'BSD-2-Clause'
+)
     'kirigami' 'kirigami-addons' 'kirigami-app-components'
     'ninja')
 depends=('qt6-base')
