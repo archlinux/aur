@@ -13,6 +13,7 @@ pkgbase = powershell
 	checkdepends = expect
 	checkdepends = glibc-locales
 	checkdepends = grep
+	checkdepends = groff
 	checkdepends = inetutils
 	checkdepends = less
 	checkdepends = iputils

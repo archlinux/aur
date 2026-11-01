@@ -100,6 +100,7 @@ checkdepends=(
   expect        # Needed for test/powershell/Host/Read-Host.Tests.ps1
   glibc-locales # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
   grep          # Used widely in tests
+  groff         # Checks the generated man page
   inetutils     # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
   less          # Needed for test/powershell/engine/Help/HelpSystem.Tests.ps1, the help function pages with it
   iputils       # Needed for ping, which is used in a lot of places
@@ -719,6 +720,22 @@ build() {
 }
 
 check() {
+  # The man page generated in build(): no warnings from groff, and every section of the Ronn source in
+  # it. groff doesn't warn about what Ronn drops, the checked-in pwsh.1 of
+  # https://github.com/PowerShell/PowerShell/issues/21086 ends in the synopsis without a warning.
+  local _manpage="$srcdir/PowerShell/assets/manpage" _warnings _section
+  _warnings=$(groff -man -ww -z "$_manpage/pwsh.1" 2>&1)
+  if [[ -n "$_warnings" ]]; then
+    printf '%s\n' "$_warnings" >&2
+    return 1
+  fi
+  while IFS= read -r _section; do
+    if ! grep -qxF ".SH \"$_section\"" "$_manpage/pwsh.1"; then
+      echo "pwsh.1 lacks the section $_section of pwsh.1.ronn" >&2
+      return 1
+    fi
+  done < <(sed -n 's/^## //p' "$_manpage/pwsh.1.ronn")
+
   # The tests run the PowerShell that was built, which on a cross build ($CARCH differs from the build
   # host) targets another architecture and can't run here. Run them natively on the target instead, e.g.
   # the native aarch64 build.
