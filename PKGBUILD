@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ofdrw
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Open Fixed layout Document Reader And Writer Libary(OFD-RW) provider developers to generate ofd document and edit it."
 arch=(any)
 url="https://github.com/ofdrw/ofdrw"
@@ -24,7 +24,7 @@ backup=()
 # options=()
 # install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('16357c36be44d2fe840d3b0ce759dd4c79d0da225da09b159404b6aaf2fe0410')
+sha256sums=('df8c0f65a290dbcfec89f9a6df5d076bd824360582b5912e94f5771e26921ae3')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
