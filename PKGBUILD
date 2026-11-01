@@ -2,7 +2,7 @@
 
 pkgbase=computer-use-linux
 pkgname=('computer-use-linux' 'gnome-shell-extension-computer-use-linux')
-pkgver=0.7.35
+pkgver=0.7.36
 pkgrel=1
 pkgdesc="Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 checkdepends=('dbus' 'python-gobject')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'gnome-indicator-test.patch')
-sha256sums=('cf302fc2c04970562d28f8e2dd7fc2d71c94674a9ab7b3d12385ce9c78c03796'
+sha256sums=('f20d7ac0c4fe37e6448e07675f1d9034cf3241ae2911ca77bfce9554b2db74c4'
             '3ee3fdbc16683dff37f012ae0f2a73954db3da3c67a226a1ee3776a811e1bf0d')
 
 _uuid=computer-use-linux@avifenesh.dev
