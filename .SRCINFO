@@ -1,0 +1,18 @@
+pkgbase = python-utmos-pytorch
+	pkgdesc = Fairseq-free PyTorch implementation of UTMOS speech quality prediction
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Blinorot/utmos-pytorch
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=69
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch>=2.2.0
+	depends = python-huggingface-hub>=0.20
+	source = utmos-pytorch-0.1.0.tar.gz::https://github.com/Blinorot/utmos-pytorch/archive/fad24d9b173153353c8e276b5b6780c8a9e319b8.tar.gz
+	sha256sums = 4a4b586ab77907639473257a0148b9377765682a2bf9a0b4e53f2f6e9d890faf
+
+pkgname = python-utmos-pytorch
