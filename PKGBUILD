@@ -7,20 +7,20 @@ _nugetid=Azure.Identity
 pkgver=1.21.0
 pkgrel=2
 pkgdesc="Microsoft Entra ID token authentication for the Azure SDK for .NET, Azure.Identity (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/Azure/azure-sdk-for-net'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
   dotnet-azure-core
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   dotnet-microsoft-identity-client
   dotnet-system-clientmodel
   git
   jq
 )
 # Azure's test proxy, which the tests start, is an ASP.NET Core application
-checkdepends=(aspnet-runtime-"$_dotnetsdkver")
+checkdepends=("aspnet-runtime-$_dotnetsdkver")
 # The commit the package was published from (tag Azure.Identity_1.21.0), and the official build of
 # it, see the file version 1.2100.26.21009 of its assemblies (encoding the date and build number)
 _commit="f7400e4471111bf7f2154834022786119acbdd77"
