@@ -1,14 +1,16 @@
 pkgbase = libfprint-gxfp
 	pkgdesc = libfprint with Goodix GXFP5130 eSPI support (SIGFM matching)
 	pkgver = 1.94.5
-	pkgrel = 2
-	url = https://github.com/Han-Haocheng/libfprint
+	pkgrel = 3
+	url = https://github.com/Metrohan/gxfp5130-linux
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = meson
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = pkgconf
+	makedepends = doctest
+	makedepends = glib2-devel
 	depends = gxfp5130
 	depends = mbedtls3
 	depends = glib2
@@ -20,7 +22,7 @@ pkgbase = libfprint-gxfp
 	provides = libfprint-2.so=2-64
 	conflicts = libfprint
 	options = !debug
-	source = libfprint-63b63f3.tar.gz::https://codeload.github.com/Han-Haocheng/libfprint/tar.gz/63b63f3290e990ba8b997f1dece36e8e9f5f5949
-	sha256sums = 49067935844bba384012fa3d9cb50fc9c0f02aacd402fd3ca22f32298b7be119
+	source = libfprint-gxfp.tar.gz::https://github.com/Metrohan/gxfp5130-linux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 264a0e04a9128e7c9e7c089be50fc12602f9beb453897c22957d288561ab7b8f
 
 pkgname = libfprint-gxfp
