@@ -3,7 +3,7 @@
 pkgbase='zl-equalizer'
 pkgname=('zl-equalizer-vst3' 'zl-equalizer-lv2' 'zl-equalizer')
 groups=('zl-audio' 'pro-audio')
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
@@ -13,20 +13,27 @@ license=('AGPL-3.0')
 depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libpng' 'brotli' 'alsa-lib')
 makedepends=('git' 'cmake' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
 
+_jucehash="e66b82515320d92a2224651f8ecc1c888a8ec3d8"
+
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
-		"git+https://github.com/ZL-Audio/JUCE#tag=176e410"
-		"git+https://github.com/ZL-Audio/zldsp_fft.git#tag=0215d7e")
-sha256sums=('abaebb176e0a125bf79ab1b73b01643db3378bbf1c0144f4ef35df7788535064'
-            'ac62a6e5d36059845cf2ad61b1004b5e2b358604d303894c8ea237269c0d22bd'
-            '471edb86c89d5dc9fd60cb75e2768bfe86b34f7c072f0c9dd5f4c4f18b2e5671')
+		"https://github.com/ZL-Audio/JUCE/archive/${_jucehash}.zip"
+		"git+https://github.com/ZL-Audio/zldsp_fft.git#tag=b741fb7")
+sha256sums=('c342214e24b9221ddc088c63e5fed392eb4d46e4ee6631c03cbea99d58bda7e8'
+            '6a4189e1f3fc77ca9ff067966690f7a17ffaaee605e6711074fa6b72ef144cfd'
+            '121d7bfe65321c7d0e8f55522470c13263ea24717b657fc57313de20ca266ff1')
 
 prepare() {
+	cd "${srcdir}"
+
 	cd ZLEqualizer
 
+	# upstream broke cloneing from github so we manually download and place
 	git submodule init
-	git config submodule."JUCE".url "${srcdir}/JUCE"
+	#git config submodule."JUCE".url "${srcdir}/JUCE"
 	git config submodule."zldsp_fft".url "${srcdir}/zldsp_fft"
-	git -c protocol.file.allow=always submodule update JUCE zldsp_fft
+	git -c protocol.file.allow=always submodule update zldsp_fft #JUCE
+
+	cp -f -r -T "${srcdir}/JUCE-${_jucehash}" JUCE
 
 	# Use system libraries
 	sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
