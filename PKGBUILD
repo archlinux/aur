@@ -5,7 +5,7 @@
 _author=SKAJI
 _dist=App-cpm
 pkgname=perl-${_dist@L}
-pkgver=v1.1.5
+pkgver=v1.1.6
 pkgrel=1
 epoch=1
 pkgdesc='a fast CPAN module installer'
@@ -24,7 +24,7 @@ depends=(
     'perl-file-copy-recursive'
     'perl-file-pushd'
     'perl-file-which'
-    'perl-http-tinyish>=0.12'
+    'perl-http-tinyish>=0.12'              # Package is flagged out-of-date on 2026-05-25.
     'perl-ipc-run3'
     'perl-module-cpanfile'
     'perl-module-cpmfile>=v1.0.0'
@@ -38,7 +38,7 @@ makedepends=('perl-module-build-tiny>=0.053')
 optdepends=('perl-carton')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('bdb75f82f7d4a8a90971c674a980eefc95577196ebde2a2799b9ad37445f9912')
+sha256sums=('c78f0ce4bb7770fff95334956bfd63a9cab537d4cca4bdb1d1844990ad601fa8')
 
 build()
 {
