@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pysmartthings
-pkgver=4.0.3
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A Python library for interacting with the SmartThings cloud API"
 arch=(any)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(python python-aiohttp python-yarl python-mashumaro python-orjson)
 makedepends=(python-build python-hatchling python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('be76fc5f000a758b6636d6c6b9a5ec59719e6174eb5685569486b2580e08e381')
+sha256sums=('9c1964e47b08286ae27064fe0930c2c30bcf31bec5bca3daae7188b53a51f43a')
 
 build() {
     cd "pysmartthings-$pkgver"
