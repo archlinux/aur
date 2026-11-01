@@ -94,9 +94,17 @@ prepare() {
     echo "${_arcade%.nupkg}" >arcade-version
   done
 
+  # Upstream pins the SDK it was released with (rollForward: patch), which doesn't accept the installed
+  # one of another feature band (e.g. Microsoft's 10.0.4xx with dotnet-build-deps-10.0-bin). dotnet
+  # only works outside the repository until its global.json is updated.
+  local _sdkver
+  _sdkver=$(dotnet --version)
+
   cd "roslyn-$_commit" || exit
   # Upstream's NuGet.config, which has all of Microsoft's feeds the tests need
   mv NuGet.config NuGet.config.upstream
+  sed -i -E -e '/"sdk": \{/,/\}/s|("version": ")[^"]*"|\1'"$_sdkver"'"|' \
+    -e 's|("dotnet": ")[^"]*"|\1'"$_sdkver"'"|' global.json
   if [[ -f "$srcdir/arcade-version" ]]; then
     sed -i -E 's|("Microsoft.DotNet.Arcade.Sdk": ")[^"]*"|\1'"$(<"$srcdir/arcade-version")"'"|' global.json
   fi
