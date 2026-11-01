@@ -1,25 +1,24 @@
 # Maintainer: Satyam Jha <satyam_jha at zohomail dot in>
-#Past Contributor: Daniel Alejandro <dalejan051@gmail.com>
+# Contributor: Daniel Alejandro <dalejan051@gmail.com>
 
 pkgname=simpmusic-bin
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A simple free music player app based on YouTube Music"
 arch=('x86_64')
 url="https://github.com/maxrave-dev/SimpMusic"
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' )
-depends=('hicolor-icon-theme' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad' 'yt-dlp')
+depends=('fuse2' 'hicolor-icon-theme' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad' 'yt-dlp')
 options=('!strip')
 provides=('simpmusic')
 conflicts=('simpmusic')
 _appimage="SimpMusic-x86_64.AppImage"
-source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('59906ee00c7c903e7f04757bc0560a0d92f65541d67ef307327c88b0a2768447')
+source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appimage}")
+sha256sums=('5b3b826c1f49875a85dc4af6818940c67a8cacbaaebdf63522ba684b232987c8')
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract > /dev/null
+    chmod +x "${pkgname}-${pkgver}.AppImage"
+    ./"${pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 
 build() {
@@ -31,7 +30,7 @@ build() {
 }
 
 package() {
-    install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 squashfs-root/simpmusic.desktop "${pkgdir}/usr/share/applications/com-maxrave-simpmusic-MainKt.desktop"
     install -Dm644 squashfs-root/simpmusic.png "${pkgdir}/usr/share/pixmaps/simpmusic.png"
 
