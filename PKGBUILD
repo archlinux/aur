@@ -18,6 +18,8 @@ makedepends=(
   git
   jq
 )
+# Azure's test proxy, which the tests start, is an ASP.NET Core application
+checkdepends=(aspnet-runtime-"$_dotnetsdkver")
 # The commit the package was published from (tag Azure.Core_1.64.0), and the official build of it,
 # see the file version 1.6400.26.52605 of its assemblies (encoding the date and build number)
 _commit="254a1b693af968afee40958e77d0762b44a1b13c"
