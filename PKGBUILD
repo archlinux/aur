@@ -9,15 +9,15 @@ pkgname="${_pkgname}-native-git"
 pkgver=r9.dee199a
 pkgrel=2
 pkgdesc="KGet extension native handler"
-arch=('any')
+arch=(any)
 url="https://github.com/Takios/download-with-kget"
-license=('MPL-2.0')
+license=(MPL-2.0)
 depends=(
-  'python'
-  'python-pydbus'
-  'kget'
+  python
+  python-pydbus
+  kget
 )
-makedepends=('git' 'jq')
+makedepends=(git jq)
 provides=("$_pkgname")
 source=("git+https://github.com/Takios/download-with-kget")
 sha512sums=('SKIP')
