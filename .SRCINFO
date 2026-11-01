@@ -1,0 +1,35 @@
+pkgbase = libfprint-fpc-disum
+	pkgdesc = libfprint with FPC Disum 10a5:9201 fingerprint sensor support
+	pkgver = 1.94.100_fpc1
+	pkgrel = 1
+	url = https://github.com/lingdiansr/fpc-disum-driver
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	checkdepends = cairo
+	checkdepends = umockdev
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = json-glib
+	makedepends = meson
+	makedepends = python
+	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = systemd
+	depends = glib2
+	depends = glibc
+	depends = libgcc
+	depends = libgudev
+	depends = libgusb
+	depends = libusb
+	depends = openssl
+	depends = opencv
+	depends = pixman
+	provides = libfprint=1.94.100
+	provides = libfprint-2.so
+	conflicts = libfprint
+	source = libfprint-fpc-disum-1.94.100_fpc1.tar.gz::https://github.com/lingdiansr/fpc-disum-driver/archive/refs/tags/v1.94.100-fpc1.tar.gz
+	sha256sums = 614bf5a9c432643609f50fa997b7d06679a8473dce77e15da54e59ea0486bcfe
+
+pkgname = libfprint-fpc-disum
