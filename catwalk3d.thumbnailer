@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=catwalk
+Exec=timeout 30 catwalk --size %s --transparent --output %o %i
+MimeType=model/stl;model/x.stl-ascii;model/x.stl-binary;application/sla;model/3mf;model/step;

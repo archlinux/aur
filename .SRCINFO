@@ -1,0 +1,25 @@
+pkgbase = catwalk3d
+	pkgdesc = Headless 3D model thumbnails rendered on the CPU, entirely in Rust
+	pkgver = 2.4.2
+	pkgrel = 2
+	url = https://github.com/cmeister2/catwalk3d
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	options = !debug
+	source = catwalk3d-2.4.2.tar.gz::https://static.crates.io/crates/catwalk3d/catwalk3d-2.4.2.crate
+	source = catwalk3d.thumbnailer
+	sha256sums = a50dce4378f267a5407235ff648d8b4261ed4bb4e6a6e56ae6d979c5f6b95a2f
+	sha256sums = 08ce99bbe5e6cd70607d71d45a79c6d511cd4e5d9123b2dbd3d50e3634e637bd
+
+pkgname = catwalk3d
+	depends = glibc
+	depends = gcc-libs
+
+pkgname = catwalk3d-thumbnailer
+	pkgdesc = Desktop thumbnailer for STL, 3MF and STEP models using catwalk3d
+	arch = any
+	depends = catwalk3d
+	conflicts = stl-thumb
