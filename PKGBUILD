@@ -7,12 +7,12 @@ _nugetid=PowerShellStandard.Library
 pkgver=5.1.1
 pkgrel=2
 pkgdesc="Reference assembly for PowerShell modules that run on Windows PowerShell 5.1 and PowerShell 7 (NuGet package)"
-arch=('any')
+arch=(any)
 url='https://github.com/PowerShell/PowerShellStandard'
-license=('MIT')
+license=(MIT)
 _dotnetsdkver="10.0"
 makedepends=(
-  dotnet-build-deps-"$_dotnetsdkver"
+  "dotnet-build-deps-$_dotnetsdkver"
   git
 )
 # The commit of the 5.1.1 release ("release 5.1.1 - which adds an assembly for net452"), upstream
