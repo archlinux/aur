@@ -1,8 +1,8 @@
 # Maintainer: bencevarga <bence@varga.bio>
-# Upstream tag: v0.1.45-poly.5 (pkgver cannot contain a hyphen, so - becomes .)
+# Upstream tag: v0.1.45-poly.7 (pkgver cannot contain a hyphen, so - becomes .)
 
 pkgname=polystrata
-pkgver=0.1.45.poly.5
+pkgver=0.1.45.poly.7
 pkgrel=1
 pkgdesc='Run large AI models on your own PC: Qwen3.8-Flash-Next, GLM 5.3 Flash, DeepSeek V4 Flash and more, on NVIDIA or AMD GPUs'
 arch=('any')
@@ -16,10 +16,10 @@ optdepends=(
 	'rocm-hip-sdk: AMD GPU engine through a system ROCm 7 in /opt/rocm (otherwise ROCm is downloaded into the venv on first start)'
 )
 install=polystrata.install
-_tag="v0.1.45-poly.5"
+_tag="v0.1.45-poly.7"
 source=("https://github.com/VecSzn/PolyStrata/archive/refs/tags/$_tag.tar.gz"
         'polystrata.sh')
-sha256sums=('5f4c4a1771223e0693db184918a01cbb3be76659dea84ceb15adc1c09357cb9c'
+sha256sums=('6b2be643f38a9e11b00d64fdcac19cf4dba358fc1247b6ae24f7a7cb79c1c752'
             '5b13f46009a8baa3e4b5e85e63f44dcf8399f9fec9dd7b5a3ff59843f0a57c66')
 
 # The release asset is the Windows engine; on Linux upstream installs by
@@ -37,7 +37,7 @@ package() {
 	install -Dm755 "$srcdir/polystrata-launcher.sh" "$pkgdir/usr/bin/polystrata"
 	install -Dm755 "$srcdir/polystrata-launcher.sh" "$pkgdir/usr/bin/polystrata-update"
 	mkdir -p "$pkgdir/opt/polystrata"
-	cp -a "$srcdir/PolyStrata-0.1.45-poly.5/." "$pkgdir/opt/polystrata/"
-	install -Dm644 "$srcdir/PolyStrata-0.1.45-poly.5/LICENSE" \
+	cp -a "$srcdir/PolyStrata-0.1.45-poly.7/." "$pkgdir/opt/polystrata/"
+	install -Dm644 "$srcdir/PolyStrata-0.1.45-poly.7/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
