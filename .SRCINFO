@@ -1,0 +1,23 @@
+pkgbase = ffmpeg-dektec-bin
+	pkgdesc = FFmpeg with DekTec SDI, DVB-ASI and SMPTE ST 2110 devices (prebuilt DekTec Linux release)
+	pkgver = 9.0.2_dektec12
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/dektec-com/ffmpeg-dektec
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = BSD-3-Clause
+	license = MIT
+	license = Apache-2.0
+	license = Zlib
+	license = curl
+	depends = dektec-drivers-dkms
+	depends = glibc
+	depends = sdl2
+	provides = ffmpeg-dektec
+	conflicts = ffmpeg-dektec
+	options = !debug
+	source = ffmpeg-dektec-bin-n9.0.2-dektec12-linux64.tar.xz::https://github.com/dektec-com/ffmpeg-dektec/releases/download/n9.0.2-dektec12/ffmpeg-dektec-n9.0.2-dektec12-linux64.tar.xz
+	sha256sums = e9dfbb770280eb3a443276ae9583433295e26f1e7f5c3afaf67aa281b9a5efbe
+
+pkgname = ffmpeg-dektec-bin
