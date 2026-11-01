@@ -1,7 +1,7 @@
 pkgbase = oleafly
 	pkgdesc = a local-first AI assisted research workspace for scientific writing & publishing
-	pkgver = 0.4.7
-	pkgrel = 2
+	pkgver = 0.4.9
+	pkgrel = 1
 	url = https://oleafly.com
 	arch = x86_64
 	license = MIT
@@ -25,8 +25,8 @@ pkgbase = oleafly
 	depends = tinymist
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = https://github.com/Oleafly/Oleafly/archive/refs/tags/v0.4.7/Oleafly-0.4.7.tar.gz
-	sha256sums = 257226a11f521ab7881992f16c8005e8c7969b9ff58f2b4154f5d829012d5176
+	source = https://github.com/Oleafly/Oleafly/archive/refs/tags/v0.4.9/Oleafly-0.4.9.tar.gz
+	sha256sums = a8f3f71b830a2adeb634180f2d229439e69c82e9f90caf12b492e463d39efb72
 
 pkgname = oleafly
 	depends = biber

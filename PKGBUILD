@@ -2,8 +2,8 @@
 
 pkgname=oleafly
 _pkgname=${pkgname^}
-pkgver=0.4.7
-pkgrel=2
+pkgver=0.4.9
+pkgrel=1
 url="https://$pkgname.com"
 _url="https://github.com/$_pkgname/$_pkgname"
 pkgdesc='a local-first AI assisted research workspace for scientific writing & publishing'
@@ -31,7 +31,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$_pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('257226a11f521ab7881992f16c8005e8c7969b9ff58f2b4154f5d829012d5176')
+sha256sums=('a8f3f71b830a2adeb634180f2d229439e69c82e9f90caf12b492e463d39efb72')
 
 _srcenv() {
 	cd "$_archive"
