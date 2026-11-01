@@ -5,6 +5,7 @@ path = [
   "PKGBUILD",
   ".SRCINFO",
   ".gitignore",
+  ".nvchecker.toml",
   ".editorconfig",
   ".pre-commit-config.yaml",
 ]

@@ -10,18 +10,24 @@
 # The name has the .NET version, as the packages build with that SDK.
 _dotnetver=10.0
 pkgname=dotnet-build-deps-$_dotnetver
-pkgver=1
+# The version of the source-built .NET of Arch Linux (dotnet-sdk-10.0): the runtime version and the
+# SDK's feature band and patch. The packages built from the VMR are pinned to exactly that release, so
+# the build never mixes packages of two VMR releases.
+pkgver=10.0.14.sdk114
 pkgrel=1
+_runtimever=${pkgver%.sdk*}
+_sdkver=$_dotnetver.${pkgver##*.sdk}
 pkgdesc="Build dependencies of the .NET packages from the source-built .NET $_dotnetver of Arch Linux (meta package)"
 arch=('x86_64')
 url='https://github.com/dotnet/dotnet'
 license=('0BSD')
 depends=(
-  dotnet-sdk-"$_dotnetver"
-  dotnet-source-built-artifacts-"$_dotnetver"
-  # The packages the source-built artifacts lack, built from the same sources
-  dotnet-source-build-reference-packages
-  dotnet-system-io-ports-native
+  dotnet-sdk-"$_dotnetver=$pkgver"
+  dotnet-source-built-artifacts-"$_dotnetver=$pkgver"
+  # The packages the source-built artifacts lack, built from the same sources: the reference packages
+  # are versioned like the SDK, the native library like the runtime
+  dotnet-source-build-reference-packages="$_sdkver"
+  dotnet-system-io-ports-native="$_runtimever"
 )
 # Microsoft's build, which provides dotnet-sdk-$_dotnetver and dotnet-runtime-$_dotnetver as well.
 # The packages for older .NET versions have the version in the name.

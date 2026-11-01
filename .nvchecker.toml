@@ -1,0 +1,6 @@
+# The version of the source-built .NET SDK of Arch Linux, which the packages built from the VMR are
+# pinned to
+[dotnet-build-deps-10.0]
+source = "archpkg"
+archpkg = "dotnet-sdk-10.0"
+strip_release = true
