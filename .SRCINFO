@@ -1,6 +1,6 @@
 pkgbase = git-cc
 	pkgdesc = a git extension to help write conventional commits
-	pkgver = 0.2.6
+	pkgver = 0.2.8_rc0
 	pkgrel = 1
 	url = https://github.com/Skalt/git-cc
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = git-cc
 	depends = glibc
 	provides = git-cc
 	options = !debug
-	source = git-cc-0.2.6.tar.gz::https://github.com/Skalt/git-cc/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 91888a0adb2bc6c4e26b3a95fff239732bec109d8dbe5a04cad81716eb63f15b
+	source = git-cc-0.2.8-rc0.tar.gz::https://github.com/Skalt/git-cc/archive/refs/tags/v0.2.8-rc0.tar.gz
+	sha256sums = 6db74983bdc26719620c3f5b2f1ce28a0c354582a4b3858f49a811445a544e8e
 
 pkgname = git-cc
