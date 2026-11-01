@@ -5,7 +5,7 @@ pkgbase = dotnet-markdig
 	url = https://github.com/xoofx/markdig
 	arch = any
 	license = BSD-2-Clause
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-build-deps-10.0
 	makedepends = git
 	source = git+https://github.com/xoofx/markdig.git#tag=1.5.1
 	sha512sums = 7d7b7f3a70d3728ee622ebcd0b70688f9f75ff8eb8acd2955d6fde713e8c5667bc0ce844db50072a698f82e48102129362ff703d65fa20f3bc0877eb1cd78ae6
