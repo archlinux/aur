@@ -1,6 +1,6 @@
 pkgbase = macropad-bin
 	pkgdesc = Program MINI_KEYBOARD macropads and use their keys for Home Assistant, Bragi audio and profiles
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/NickMarcha/MacroPad
 	install = macropad-bin.install
@@ -23,7 +23,7 @@ pkgbase = macropad-bin
 	conflicts = macropad
 	options = !strip
 	options = !debug
-	source = https://github.com/NickMarcha/MacroPad/releases/download/v0.7.2/MacroPad-0.7.2-linux-x64.tar.gz
-	sha256sums = 6ecd42bdd5d21bb8c6adea809d83683e41f5e91a02217ed0edeb5e977692ff13
+	source = https://github.com/NickMarcha/MacroPad/releases/download/v0.8.0/MacroPad-0.8.0-linux-x64.tar.gz
+	sha256sums = 0d86c9d4ca6317ac14d4b6e4fb54b94fcb44df4b3ec37a4112dbe5685eebf677
 
 pkgname = macropad-bin
