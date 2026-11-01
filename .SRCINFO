@@ -1,7 +1,7 @@
 pkgbase = nouveau-utils
 	pkgdesc = Userspace dynamic frequency governor, CLI management tool, and interactive TUI for Nouveau
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = https://github.com/Twilight0/nouveau-utils
 	arch = any
 	license = GPL-2.0-only
@@ -10,7 +10,7 @@ pkgbase = nouveau-utils
 	optdepends = nouveau-cachyos-lts-v2: prebuilt reclocking module for linux-cachyos-lts-v2
 	provides = nouveau-utils
 	backup = etc/nouveau-dynclockd.conf
-	source = nouveau-utils-2.2.3.tar.gz::https://github.com/Twilight0/nouveau-utils/archive/refs/tags/v2.2.3.tar.gz
-	sha256sums = 71b22e4337d63f76ccf16c587d1111b2a7352641887e187107daa17bfc6109d5
+	source = nouveau-utils-2.2.4.tar.gz::https://github.com/Twilight0/nouveau-utils/archive/refs/tags/v2.2.4.tar.gz
+	sha256sums = 565765c98fe68c88a81783d672454ab97712437939b9ae761827e3b03cb60b1a
 
 pkgname = nouveau-utils
