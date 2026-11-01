@@ -1,6 +1,6 @@
 pkgbase = qlinux-device-manager
 	pkgdesc = Device manager and hardware information viewer for Linux, inspired by Windows Device Manager
-	pkgver = 1.3.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/birdie-github/QLinuxDeviceManager
 	arch = x86_64
@@ -12,11 +12,12 @@ pkgbase = qlinux-device-manager
 	depends = libv4l
 	depends = xcb-util
 	depends = wayland
+	depends = libpulse
 	optdepends = qt6-base-dbus: cached UDisks2 storage metadata
 	optdepends = kmod: installed-module metadata and fallback driver names
 	optdepends = libdisplay-info: monitor EDID decoding
 	optdepends = qt6-tools: additional translation catalogs
-	source = qlinux-device-manager-1.3.0.tar.gz::https://github.com/birdie-github/QLinuxDeviceManager/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = e7c9ebac38d0578d8e114d408e030a5fffaae29561128be4a274a7c93af7f51e
+	source = qlinux-device-manager-2.0.0.tar.gz::https://github.com/birdie-github/QLinuxDeviceManager/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 0108726fd5dca59d7e217ee71e536eba8c69e5dbd822b81fc4ae92df64ea96b4
 
 pkgname = qlinux-device-manager
