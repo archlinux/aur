@@ -1,0 +1,61 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+# Override download agent to bypass strict user-agent blocking
+DLAGENTS=('http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u'
+          'https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u')
+
+_pkgauthor=monji024
+_pkgname=peek
+_pkgsuffix=bash
+_cratename=${_pkgsuffix}-${_pkgname}
+_appname=${_pkgsuffix}-${_pkgname}
+pkgname=${_cratename}
+pkgdesc="Interactive TUI debugger, line profiler, and time-travel inspector for Bash scripts"
+
+pkgver=1.0.0
+pkgrel=1
+_pkgvername=${pkgver}
+
+arch=('x86_64')
+license=('MIT')
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+
+provides=("${_appname}")
+
+makedepends=('cargo')
+depends=('glibc' 'libgcc')
+
+options=('!lto' '!strip')
+
+source=("${pkgname}-${pkgver}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
+sha256sums=('0a2fbf02d62518aece04b86538b7fdec0911c74d419559f2db4f74f90a92c15b')
+
+prepare() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	sed -E "s/(${_pkgsuffix}-)?${_pkgname}/${pkgname}/g" -i "README.md"
+
+	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
+
+build() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
+}
+
+check() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	export CARGO_TARGET_DIR=target
+	cargo test --frozen --release
+}
+
+package() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
