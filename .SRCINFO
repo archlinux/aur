@@ -1,6 +1,6 @@
 pkgbase = hottyterm-bin
-	pkgdesc = A fork of Ghostty with native hotty 0.5 (HTML over the TTY)
-	pkgver = 26.10.31.r183.0d86a8c
+	pkgdesc = A fork of Ghostty with native hotty 0.6 (HTML over the TTY)
+	pkgver = 26.11.01.r195.8f8cc90
 	pkgrel = 1
 	url = https://github.com/neuroplastio/hottyterm
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = hottyterm-bin
 	conflicts = hottyterm
 	options = !strip
 	options = !debug
-	source_x86_64 = hottyterm-26.10.31-dev.0d86a8c-linux-x86_64.tar.gz::https://github.com/neuroplastio/hottyterm/releases/download/26.10.31-dev.0d86a8c/hottyterm-26.10.31-dev.0d86a8c-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 5443d3465fefa292e6bb36f8c7723288f547f482b3b065b4f476971286075d49
+	source_x86_64 = hottyterm-26.11.01-dev.8f8cc90-linux-x86_64.tar.gz::https://github.com/neuroplastio/hottyterm/releases/download/26.11.01-dev.8f8cc90/hottyterm-26.11.01-dev.8f8cc90-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 949d9cff0060b9d400c16e959fb142259a9999960ad8c1ec93a40e5cdae54eb6
 
 pkgname = hottyterm-bin
