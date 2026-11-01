@@ -6,18 +6,18 @@ pkgname=crowdsec-nginx-bouncer
 pkgver=1.2.3
 pkgrel=1
 pkgdesc="CrowdSec bouncer for Nginx"
-arch=('any')
+arch=(any)
 url="https://github.com/crowdsecurity/cs-nginx-bouncer"
-license=('MIT')
-replaces=('cs-nginx-bouncer')
-provides=('cs-nginx-bouncer')
-conflicts=('cs-nginx-bouncer')
+license=(MIT)
+replaces=(cs-nginx-bouncer)
+provides=(cs-nginx-bouncer)
+conflicts=(cs-nginx-bouncer)
 depends=(
-  'crowdsec'
-  'gettext' # envsubst in the install script
-  'lua51-cjson'
-  'lua-resty-http'
-  'lua-resty-string'
+  crowdsec
+  gettext # envsubst in the install script
+  lua51-cjson
+  lua-resty-http
+  lua-resty-string
 )
 optdepends=('luajit-openresty: OpenResty optimised luajit'
   'nginx-mainline-mod-lua: Support for nginx-mainline'
