@@ -8,7 +8,7 @@
 # the dmg is notarized and everything is signed, so a tag existing is NOT enough — push to the
 # AUR only once the release is public, or every user's makepkg gets a 404.
 pkgname=pgpony-bin
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="OpenPGP on the desktop - encrypt, decrypt, sign, verify, manage keys (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -36,8 +36,8 @@ source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/norsehorse-de
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/norsehorse-dev/PGPonyDesktop/releases/download/v$pkgver/PGPony-linux-aarch64.tar.gz")
 sha256sums=('91f9803d60a09b6e61527feb80a80d1c0b2f5807130906fe275d4edf1da23e7e'
             '8fa9b7b80a7061f68a96d9516c8b02ea56e7a2333410d64695c9b7eb4acb8c77')
-sha256sums_x86_64=('ad3fbd960603417872f7a902d9b267ff0d6c809f031b84c51bbaa91ab7afca91')
-sha256sums_aarch64=('eeb467ef8c44b314f34bfb9bdde28592c088f6bb50caacca48edfcc7ce935827')
+sha256sums_x86_64=('83a3a4791adad6e4482111ca6722f5bab4a4d4cf99bb52c548fad257407cf344')
+sha256sums_aarch64=('398d8850dd4f54e45fc0c2173d802bdded4d4f62d9ead34b382db25a0a6f0ddb')
 
 package() {
   install -dm755 "$pkgdir/opt/pgpony"
