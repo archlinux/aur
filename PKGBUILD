@@ -3,8 +3,8 @@
 # Maintainer: Ranjith Hegde <mayafluxcollective@proton.me>
 
 pkgname=mayaflux-dev-bin
-pkgver=0.5.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="MayaFlux development build - A modern C++ framework for real-time graphics and audio"
 arch=('x86_64')
 url="https://github.com/MayaFlux/MayaFlux"

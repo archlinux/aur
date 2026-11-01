@@ -1,7 +1,7 @@
 pkgbase = mayaflux-dev-bin
 	pkgdesc = MayaFlux development build - A modern C++ framework for real-time graphics and audio
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/MayaFlux/MayaFlux
 	install = mayaflux-dev-bin.install
 	arch = x86_64
@@ -46,12 +46,12 @@ pkgbase = mayaflux-dev-bin
 	optdepends = doxygen: for documentation generation
 	optdepends = vulkan-extra-layers: additional Vulkan layers
 	optdepends = vulkan-extra-tools: additional Vulkan tools
-	provides = mayaflux=0.5.0
+	provides = mayaflux=1.0.0
 	conflicts = mayaflux
 	conflicts = mayaflux-bin
-	noextract = MayaFlux-0.5.0-dev-linux-arch.tar.gz
-	source = MayaFlux-0.5.0-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v0.5.0-dev/MayaFlux-0.5.0-dev-linux-arch.tar.gz
-	source = MayaFlux-0.5.0-dev-linux-arch.tar.gz.sha256::https://github.com/MayaFlux/MayaFlux/releases/download/v0.5.0-dev/MayaFlux-0.5.0-dev-linux-arch.tar.gz.sha256
+	noextract = MayaFlux-1.0.0-dev-linux-arch.tar.gz
+	source = MayaFlux-1.0.0-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v1.0.0-dev/MayaFlux-1.0.0-dev-linux-arch.tar.gz
+	source = MayaFlux-1.0.0-dev-linux-arch.tar.gz.sha256::https://github.com/MayaFlux/MayaFlux/releases/download/v1.0.0-dev/MayaFlux-1.0.0-dev-linux-arch.tar.gz.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 
