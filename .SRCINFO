@@ -1,0 +1,18 @@
+pkgbase = texlive-emo-git
+	pkgdesc = Emoji support for all LaTeX engines (development version)
+	pkgver = 0.4.r85.g0000000
+	pkgrel = 1
+	url = https://github.com/apparebit/emo
+	arch = any
+	license = LPPL-1.3c
+	license = Apache-2.0
+	license = Unicode-3.0
+	license = OFL-1.1
+	makedepends = git
+	depends = texlive-latexrecommended
+	provides = texlive-emo
+	conflicts = texlive-emo
+	source = emo::git+https://github.com/apparebit/emo.git#branch=boss
+	sha256sums = SKIP
+
+pkgname = texlive-emo-git
