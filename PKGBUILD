@@ -122,6 +122,12 @@ build() {
 check() {
   _dotnet_env
   cd "microsoft-authentication-library-for-dotnet-$_commit" || exit
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   # Tests of features and behaviour that only exist on Windows, which upstream doesn't run elsewhere:
   local _filter=(
     # Managed identity with mTLS proof of possession, which needs Windows CNG keys (KeyGuard), see
@@ -166,6 +172,7 @@ check() {
       IFS='&'
       echo "${_filter[*]}"
     )"
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
