@@ -33,8 +33,10 @@
 # Dependency, description and desktop metadata match the published xdm-app-bin.
 
 pkgname=xdm-app
-pkgver=9.0.8
-pkgrel=2
+pkgver=9.0.9
+pkgrel=1
+# Upstream switched to v-prefixed release tags at 9.0.9 (9.0.8 was untagged).
+_tag=v$pkgver
 pkgdesc='Fast, resumable download accelerator and video downloader with HLS/DASH support'
 arch=('x86_64' 'aarch64')
 url='https://xtremedownloadmanager.com/'
@@ -54,10 +56,10 @@ conflicts=('xdm-app-bin' 'xdman-bin' 'xdman' 'xdman_gtk')
 replaces=('xdman' 'xdman_gtk')
 options=('!strip' '!debug')
 
-# Common source: the 9.0.8 tag. Renamed because the archive's own file name
-# would be 9.0.8.tar.gz; it unpacks to $srcdir/xdm-9.0.8.
-source=("xdm-$pkgver.tar.gz::https://github.com/subhra74/xdm/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('236967d717238616c6c252760b48ff382d1c6f5b83d4cffca5f992260e1f7d3a')
+# Common source: the 9.0.9 tag. Renamed because the archive's own file name
+# would be v9.0.9.tar.gz; it unpacks to $srcdir/xdm-9.0.9.
+source=("xdm-$pkgver.tar.gz::https://github.com/subhra74/xdm/archive/refs/tags/$_tag.tar.gz")
+sha256sums=('5c3c956e8545568802511f00e313c291de352757f83dbc3a669c389697869ee1')
 
 # The pinned build JDK (packaging/jdk.properties: jbr.version=25.0.4.1,
 # jbr.build=b635.70). Checksums are the SHA-512s JetBrains publishes next to
