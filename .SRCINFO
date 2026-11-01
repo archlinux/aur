@@ -33,7 +33,7 @@ pkgbase = mark-shot-bin
 	options = !strip
 	source_x86_64 = https://github.com/jswysnemc/mark-shot/releases/download/v0.1.62/mark-shot-bin-0.1.62-1-x86_64.pkg.tar.zst
 	depends_x86_64 = layer-shell-qt
-	sha256sums_x86_64 = 5239c0949677b5e99b800fd1973502ff25d8b9509b002b738e924b308dc61b63
+	sha256sums_x86_64 = f7f1dfd27002caccb9705237115dc4998fc83d47747f2286c609e1afa6358e82
 	source_aarch64 = https://github.com/jswysnemc/mark-shot/releases/download/v0.1.62/mark-shot-bin-0.1.62-1-aarch64.pkg.tar.zst
 	sha256sums_aarch64 = 6f3b17ab6df66a3ae7db779bf8fa23f617c65fcc614f04ae6128ac81ecfbc48f
 
