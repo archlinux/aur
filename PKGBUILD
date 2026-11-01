@@ -124,6 +124,12 @@ build() {
 check() {
   _dotnet_env
   cd "MediatR-$_commit" || exit
+  # A temp folder of their own, so files with fixed names that another user's build left in /tmp
+  # can't get in the way. It stays in /tmp rather than $srcdir, as .NET's named pipes are sockets in
+  # it, whose paths can't be longer than 108 bytes.
+  local _test_tmp
+  _test_tmp=$(mktemp -d)
+  export TMPDIR="$_test_tmp"
   # Lamar, which the tests use, needs the runtime packages of .NET 8 from nuget.org, so MediatR is
   # restored (NuGet doesn't notice the changed package source mapping) and built again against them
   _nuget_config "nuget.org=https://api.nuget.org/v3/index.json" tests
@@ -132,6 +138,7 @@ check() {
   # The test runner targets .NET 8
   DOTNET_ROLL_FORWARD=Major dotnet test test/MediatR.Tests/MediatR.Tests.csproj "${_build_arguments[@]}" \
     "${_mediatr_arguments[@]}" --no-build
+  rm -rf "${_test_tmp:?}"
 }
 
 # Fails if a binary in $pkgdir, also inside the .nupkg files there, is identical to one of the packages
