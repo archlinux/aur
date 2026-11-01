@@ -1,0 +1,34 @@
+pkgbase = qimgv-gtk-bin
+	pkgdesc = Fast and easy to use image viewer, GTK 3 rewrite of qimgv with JPEG XL, AVIF, HEIF, APNG and RAW support (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/qimgv-gtk
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = glib2
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libwebp
+	depends = libjxl
+	depends = libavif
+	depends = libheif
+	depends = libraw
+	depends = exiv2
+	depends = giflib
+	depends = zlib
+	provides = qimgv-gtk=0.1.0
+	provides = qimgv
+	conflicts = qimgv-gtk
+	conflicts = qimgv
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/TheElevatedOne/qimgv-gtk/releases/download/0.1.0/qimgv-gtk-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6e9d4231dc679b83913246be7ee11f41d525e17e79595871f49ea9dc75ea5460
+
+pkgname = qimgv-gtk-bin
