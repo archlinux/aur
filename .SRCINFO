@@ -1,7 +1,7 @@
 pkgbase = dotnet-json-more-net-2
 	pkgdesc = Extended functionality for System.Text.Json, 2.x (NuGet package)
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/json-everything/json-everything
 	arch = any
 	license = MIT

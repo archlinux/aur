@@ -5,7 +5,7 @@
 pkgname=dotnet-json-more-net-2
 _nugetid=Json.More.Net
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extended functionality for System.Text.Json, 2.x (NuGet package)"
 arch=('any')
 url='https://github.com/json-everything/json-everything'
@@ -87,7 +87,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 json-everything/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
