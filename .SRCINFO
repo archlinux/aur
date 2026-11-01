@@ -1,0 +1,14 @@
+pkgbase = cfnrain
+	pkgdesc = A development workflow tool for working with AWS CloudFormation
+	pkgver = 1.25.4
+	pkgrel = 1
+	url = https://github.com/awesome-foundation/cfnrain
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	provides = rain
+	source = cfnrain-1.25.4.tar.gz::https://github.com/awesome-foundation/cfnrain/archive/refs/tags/v1.25.4.tar.gz
+	sha512sums = 2177007e75c8ab40b86e3a48404ff98d1cc3dd8ac2b0e21f0e663040ca481fdab45de8df59145cd3e06756b802dc03f8e8eea4df5b7f94147b4aac4aa8471c95
+	b2sums = 8989a8d1ce6ce45f53a466605041d6c74f541ebfcc3f2441b66cf18694b6e12f971769a6f25dc3102c0cb4a4ba5ff006ab2487508e064e1f0b19258125cf116d
+
+pkgname = cfnrain
