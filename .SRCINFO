@@ -1,0 +1,21 @@
+pkgbase = vkbasalt-overlay
+	pkgdesc = Vulkan post-processing layer with in-game ImGui overlay
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Boux/vkBasalt_overlay
+	arch = x86_64
+	license = Zlib
+	makedepends = meson
+	makedepends = ninja
+	makedepends = glslang
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
+	depends = gcc-libs
+	depends = libx11
+	depends = libxi
+	optdepends = lib32-vkbasalt-overlay: 32-bit library for native 32-bit Vulkan apps
+	options = !libtool
+	source = vkbasalt-overlay-0.1.2.tar.gz::https://github.com/Boux/vkBasalt_overlay/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = dcaba2e47d4a1956d9ff892ac95e1f76ac0e55a806c6119a94ab591c04b1b03c
+
+pkgname = vkbasalt-overlay
