@@ -33,7 +33,11 @@ magen() {
 }
 
 post_install() {
-    yello "${yello}Major Release 2.0.0:${all_off} https://github.com/alex-courtis/way-displays/wiki/Version-2.0.0-Changes"
+    yello "1.15.0"
+    blue  " Bug Fixes:"
+	plain "  ${magenta}fix:${all_off} ignore stale pid files when starting the server by ${cyan}@jolars${all_off} in ${green}#287${all_off}"
+	plain "  ${magenta}fix:${all_off} add missing libgen.h include in src/yaml/unmarshal.c by ${cyan}@Human0d${all_off} in ${green}#288${all_off}"
+	plain "  ${magenta}ci:${all_off} include-what-you-use 0.26->0.27 by ${cyan}@alex-courtis${all_off} in ${green}#289${all_off}"
 }
 
 post_upgrade() {
