@@ -1,0 +1,17 @@
+pkgbase = bibabo-bilanz-bin
+	pkgdesc = Buchhaltung für eine kleine GmbH: SKR04, Bilanz und GuV, ELSTER-Vorbereitung, Jahresabschluss
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://kairollmann.de/bibabobilanz
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = bibabo-bilanz
+	conflicts = bibabo-bilanz
+	options = !strip
+	source = https://kairollmann.de/bibabobilanz/releases/1.0.0/Bibabo-Bilanz_1.0.0_amd64.tar.gz
+	sha256sums = 911e947038d79a20c85a10bde04fdeb770dc363c083d94c3c5b5df25bc02cdac
+
+pkgname = bibabo-bilanz-bin
