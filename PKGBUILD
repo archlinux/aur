@@ -16,7 +16,7 @@ _cef_commit=14c5a089e8452874cb1a556dc3fde26ed2d87723
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
 _chromium_ver=154.0.8037.154
 _system_clang=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
 provides=("cef=$pkgver")  # provides="cef=$pkgver"
 conflicts=('cef')  # conflicts='cef'
