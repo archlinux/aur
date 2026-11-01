@@ -1,0 +1,11 @@
+--- a/frictionless/vendors/wkt/parser.py
++++ b/frictionless/vendors/wkt/parser.py
+@@ -14,7 +14,7 @@
+ import sys
+ 
+ from tatsu.buffering import Buffer
+-from tatsu.infos import ParserConfig
++from tatsu.parserconfig import ParserConfig
+ from tatsu.parsing import Parser, isname, leftrec, nomemo, tatsumasu  # noqa
+ from tatsu.util import generic_main, re  # noqa
+ 
