@@ -1,7 +1,7 @@
 pkgbase = dotnet-humanizer-core-2
 	pkgdesc = Turns strings, type names, enum fields and dates into a human friendly format, 2.x (NuGet package)
 	pkgver = 2.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Humanizr/Humanizer
 	arch = any
 	license = MIT

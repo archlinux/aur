@@ -5,7 +5,7 @@
 pkgname=dotnet-humanizer-core-2
 _nugetid=Humanizer.Core
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Turns strings, type names, enum fields and dates into a human friendly format, 2.x (NuGet package)"
 arch=('any')
 url='https://github.com/Humanizr/Humanizer'
@@ -115,7 +115,7 @@ _check_prebuilt() {
 }
 
 package() {
-  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/dotnet/nuget-packages/"
+  install -Dm644 "$srcdir/nupkg/$_nugetid.$pkgver.nupkg" -t "$pkgdir/usr/share/nuget/packages/"
   install -Dm644 Humanizer/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _check_prebuilt "$srcdir/nuget"
