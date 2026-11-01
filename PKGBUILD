@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r89547.a6b208bcddd
+pkgver=r91739.c665272d1c9
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -16,7 +16,6 @@ depends=(
   curl
   fast_float
   ffmpeg
-  fmt
   harfbuzz
   icu
   libavif
@@ -36,8 +35,10 @@ depends=(
   simdutf
   sqlite
   ttf-liberation
+  wayland
   woff2
   mimalloc
+  xcb-util-wm
   
   angle # AUR
   cpptrace # AUR
@@ -62,13 +63,13 @@ pkgver() {
 }
 
 prepare() {
-  sed -e '/march=/d' -i ladybird/Meta/CMake/compile_options.cmake
+  sed -e '/march=/d' -e '/-Ctarget-cpu=native/d' -i ladybird/Meta/CMake/compile_options.cmake
   sed -e 's/78\.3 EXACT/78.3/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
   sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Meta/CMake/check_for_dependencies.cmake
   sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Libraries/LibGfx/ImageFormats/GIFLoader.cpp
   sed -e 's/mi_heap_get_default/mi_heap_main/' -i ladybird/AK/kmalloc.cpp
   sed -e 's/\(lib[a-z]*\)-ladybird)/\1)/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
-  sed -e '79i add_cxx_compile_options(-Wno-restrict)' -i ladybird/Meta/CMake/compile_options.cmake
+  sed -e '/^add_cxx_compile_options(-Werror)$/i add_cxx_compile_options(-Wno-restrict)' -i ladybird/Meta/CMake/compile_options.cmake
 }
 
 build() {
