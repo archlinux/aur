@@ -1,5 +1,5 @@
 pkgname=mingw-w64-onetbb
-pkgver=2023.1.0
+pkgver=2023.2.0
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -9,7 +9,7 @@ arch=('any')
 url='https://oneapi-src.github.io/oneTBB/'
 license=('Apache')
 source=(https://github.com/oneapi-src/oneTBB/archive/v$pkgver.tar.gz)
-sha256sums=('191288b52e1e6b17198000b64d77d194bb65e791be46ebc606e9b091781e2070')
+sha256sums=('80cb62e62defeee67ea1885a6f72d97ac81404f8fde9cded62fb51524808a30c')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
@@ -20,7 +20,7 @@ prepare () {
 build() {
   cd "$srcdir"/oneTBB-${pkgver}
   for _arch in ${_architectures}; do
-    CXXFLAGS="-U_GLIBCXX_ASSERTIONS" ${_arch}-cmake -DTBB_TEST=OFF -B build-${_arch} .
+    CXXFLAGS="-U_GLIBCXX_ASSERTIONS" ${_arch}-cmake -DTBB_TEST=OFF -DTCM_BUILD=OFF -B build-${_arch} .
     cmake --build build-${_arch}
   done
 }
