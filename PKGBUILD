@@ -2,7 +2,7 @@
 # Auto-updated by the release workflow in ractive/hoppy.
 pkgname=hoppy-bin
 _bin=hoppy
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="CLI for bunny.net cloud and edge services"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ url="https://github.com/ractive/hoppy"
 license=('MIT')
 provides=("$_bin")
 conflicts=("$_bin")
-source_x86_64=("https://github.com/ractive/hoppy/releases/download/v${pkgver}/hoppy-v0.9.0-x86_64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('2731d763612bb2389093b2623bf15d5c4c7d703461fdb1eae969be7b34fb3d16')
-source_aarch64=("https://github.com/ractive/hoppy/releases/download/v${pkgver}/hoppy-v0.9.0-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_aarch64=('1a08e7df07cc7182c7b7474c902f446621fdae0c9656d7b7e4911a57dd7efe9b')
+source_x86_64=("https://github.com/ractive/hoppy/releases/download/v${pkgver}/hoppy-v0.10.0-x86_64-unknown-linux-musl.tar.gz")
+sha256sums_x86_64=('b071df6f6f044b81ea8cd144ad2905b85d62168bbfc1ca048fe25fd437441e58')
+source_aarch64=("https://github.com/ractive/hoppy/releases/download/v${pkgver}/hoppy-v0.10.0-aarch64-unknown-linux-musl.tar.gz")
+sha256sums_aarch64=('ca14ad92f8efff132c15fb296a4bbbffd7e06185582e6cf331f30e30becb406f')
 
 package() {
   install -Dm755 "$_bin" "$pkgdir/usr/bin/$_bin"
