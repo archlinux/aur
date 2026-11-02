@@ -19,9 +19,22 @@ build() {
   make
 }
 
+check() {
+  cd "${pkgname}-${pkgname}_${pkgver//./_}"
+  local data="${srcdir}/pgdata" run="${srcdir}/pgrun" rc=0
+  rm -rf "${data}" "${run}"
+  mkdir "${run}"
+  initdb -D "${data}" -E UTF8 --no-locale -A trust > /dev/null
+  # A local socket only, and the plugin loaded from the build directory
+  pg_ctl -D "${data}" -l "${srcdir}/postgres.log" -w start \
+    -o "-c listen_addresses='' -k ${run} -c wal_level=logical -c output_plugin_libraries=wal2json -c dynamic_library_path='${PWD}:\$libdir'"
+  PGHOST="${run}" make installcheck || rc=$?
+  pg_ctl -D "${data}" -m fast stop
+  return "${rc}"
+}
+
 package() {
   cd "${pkgname}-${pkgname}_${pkgver//./_}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
