@@ -1,8 +1,8 @@
 # Maintainer: Omansh Krishn <omansh@duck.com>
 
 pkgname=saturn-bin
-pkgver=3.0.14
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Cross-platform deezer client made in Flutter"
 arch=('x86_64')
 url="https://github.com/Sheathed/Saturn"
@@ -14,7 +14,7 @@ conflicts=('saturn-git')
 
 source=( "${url}/releases/download/v${pkgver}/saturn-${pkgver}-linux.deb" )
 
-sha256sums=('85eb5d70c5059368fb9374304aaf1b70b144a0ddb38d37d9dcc0b454ce85fa65')
+sha256sums=('edfd2af044d2f34db8f8f8625b74f0ada6cf84c73bd637677fa8abc81ace8a59')
 
 package() {
 	cd "${srcdir}"
