@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.3.1
+pkgver=1.3.2
 _electronversion=45
 pkgrel=1
 pkgdesc="Desktop app for Jasper Knowledge Management."
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dbf85b85026f45a24c58d0d3c100930cb4f35728603c8001fea4892875b3e1e3'
+sha256sums=('623bb64b34b8ae861f7d776931bd5c51fd384e573ca7e2383c80c923e2ba318f'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
