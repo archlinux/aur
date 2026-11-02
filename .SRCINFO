@@ -1,0 +1,29 @@
+pkgbase = perl-punk
+	pkgdesc = a MVC web framework
+	pkgver = 0.68
+	pkgrel = 1
+	url = https://metacpan.org/release/Punk
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-apophis>=0.05
+	depends = perl-dbix-loop>=0.07
+	depends = perl-fetch>=0.12
+	depends = perl-file-raw>=0.18
+	depends = perl-file-raw-json>=0.06
+	depends = perl-file-raw-xml>=0.03
+	depends = perl-frozen>=0.08
+	depends = perl-hyperman>=0.64
+	depends = perl-json-schema-fast>=0.05
+	depends = perl-markdown-simple>=0.21
+	depends = perl-open-api>=0.14
+	depends = perl-search-trigram>=0.03
+	depends = perl-template-stencil>=0.10
+	depends = perl-yaml-libyaml>=0
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Punk-0.68.tar.gz
+	md5sums = 3a9bb22d2573ededdb573a9fcbcc1d59
+	sha512sums = 36c56627cb772ad9dccb560f30d5bb5005a3630a9aff91b9ffd5c68572fda6505b10170d42f06cc5225df79faee0290cd2658ffed764b45cc511c36a0970a0f0
+
+pkgname = perl-punk
