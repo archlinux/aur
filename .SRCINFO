@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux-electron-bin
 	pkgdesc = Unofficial Microsoft Teams for Linux client.
-	pkgver = 2.28.0
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = https://ismaelmartinez.github.io/teams-for-linux/
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = teams-for-linux-electron-bin
 	license = GPL-3.0-or-later
 	depends = electron44
 	depends = nodejs
-	provides = teams-for-linux-electron=2.28.0
+	provides = teams-for-linux-electron=2.29.0
 	conflicts = teams-for-linux
 	conflicts = teams-for-linux-wayland-hook
 	conflicts = teams-for-linux-git
@@ -17,10 +17,10 @@ pkgbase = teams-for-linux-electron-bin
 	source = teams-for-linux-electron.js
 	source = teams-for-linux-electron.sh
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
-	source_aarch64 = teams-for-linux-electron-2.28.0-aarch64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.28.0/teams-for-linux-2.28.0.aarch64.rpm
-	sha256sums_aarch64 = ae0443c8e40205800c95963dada122383ce673f08cb7f428bd7041b269daef4e
-	source_x86_64 = teams-for-linux-electron-2.28.0-x86_64.rpm::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.28.0/teams-for-linux-2.28.0.x86_64.rpm
-	sha256sums_x86_64 = 22e7e496caa5cd255b7d98278e9a3a2f7f136e886abcb3ac0baa1e0474fe4598
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	source_aarch64 = teams-for-linux-electron-2.29.0-aarch64.deb::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.29.0/teams-for-linux_2.29.0_arm64.deb
+	sha256sums_aarch64 = 37659a35fa9c9ba21ca8de9163ed995cca50aacb2becb528cf15a832c7a20069
+	source_x86_64 = teams-for-linux-electron-2.29.0-x86_64.deb::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.29.0/teams-for-linux_2.29.0_amd64.deb
+	sha256sums_x86_64 = be156274cc3a04f3cdc7c98fd939855dd8fe945418e0aba4257c45fbc1c777d6
 
 pkgname = teams-for-linux-electron-bin
