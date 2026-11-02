@@ -7,7 +7,7 @@ pkgver=1.11.0
 pkgrel=1
 pkgdesc="Host companion that lets the MoonDeck Steam Deck plugin control Steam and the PC"
 arch=('x86_64')
-url="https://github.com/FrogTheFrog/moondeck-buddy"
+url="https://github.com/MoonDeckTeam/moondeck-buddy"
 # MIT: glaze, a header-only JSON library compiled into both binaries
 license=('LGPL-3.0-only' 'MIT')
 depends=('glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'procps-ng'
@@ -21,8 +21,8 @@ conflicts=('moondeckbuddy-appimage')
 # see pkg.sh.
 _keys_commit="9d1cc7356181f6f6c0aa2a5e92ad7174f09fa539"
 _glaze_commit="d78832c82289c61a9315bfbc35332cec9f4e93ca"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FrogTheFrog/moondeck-buddy/archive/refs/tags/v${pkgver}.tar.gz"
-        "moondeck-keys-${_keys_commit}.tar.gz::https://github.com/FrogTheFrog/moondeck-keys/archive/${_keys_commit}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MoonDeckTeam/moondeck-buddy/archive/refs/tags/v${pkgver}.tar.gz"
+        "moondeck-keys-${_keys_commit}.tar.gz::https://github.com/MoonDeckTeam/moondeck-keys/archive/${_keys_commit}.tar.gz"
         "glaze-${_glaze_commit}.tar.gz::https://github.com/stephenberry/glaze/archive/${_glaze_commit}.tar.gz")
 sha256sums=('e602e08ed5a4dabd1452c37f87aaf50fc43a32bce0cf48aa621ec645375a64e9' '80438b7cec54f89e3b03ad4bf1bf46edd36a8438e5ebcdb5333ecacd45aba7cc' '72e88f46a96e3cd014fb26af644c540a11811407fb1332fb0a4e068ceec5ba3f')
 
