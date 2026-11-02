@@ -1,5 +1,5 @@
 pkgbase = atvv
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/YangtseSu/atvv-linux
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = atvv
 	makedepends = libadwaita
 	makedepends = bluez
 	options = !debug
-	source = atvv-linux-0.3.0.tar::https://github.com/YangtseSu/atvv-linux/releases/download/v0.3.0/atvv-linux-0.3.0.tar
-	sha256sums = e1a7227a25d858b3cdb7d1aa34e16571d94e9b73ceab469ab685bed68f863cdf
+	source = atvv-linux-0.3.1.tar::https://github.com/YangtseSu/atvv-linux/releases/download/v0.3.1/atvv-linux-0.3.1.tar
+	sha256sums = 938ac765b2da74f278542106b297cdcab8f4f2be1817d7a7ed62033a31661bea
 
 pkgname = atvv
 	pkgdesc = Bluetooth voice remote userspace stack
@@ -27,5 +27,5 @@ pkgname = atvv-gui
 	depends = gtk4
 	depends = libadwaita
 	depends = librsvg
-	depends = atvv=0.3.0
+	depends = atvv=0.3.1
 	conflicts = atvv-gui-git
