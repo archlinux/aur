@@ -28,7 +28,7 @@ loadDefaults() {
 
 loadSavedEnvs() {
   PREV_INSTALLED=$(find $WINEPREFIX -iname ".installed.*")
-  if [[ ! -f $PREV_INSTALLED ]]; then
+  if [[ -f $PREV_INSTALLED ]]; then
     source $PREV_INSTALLED
     echo "Loaded saved environment from $PREV_INSTALLED"
   fi
