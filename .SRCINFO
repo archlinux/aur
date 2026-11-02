@@ -1,7 +1,7 @@
 pkgbase = makepkg-jail-local
 	pkgdesc = Local bubblewrap makepkg sandbox with AppArmor and a restricted paru adapter
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	install = makepkg-jail-local.install
 	arch = x86_64
 	license = GPL-3.0-or-later

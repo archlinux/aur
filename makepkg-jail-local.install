@@ -1,27 +1,13 @@
 post_install() {
     cat <<'EOF'
-==> Profiles installed:
-      /etc/apparmor.d/makepkg-jail-build
-      /etc/apparmor.d/makepkg-jail-setup
-    Load them with:
+==> makepkg-jail-local installed.
+    Load both AppArmor profiles:
       sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-setup
       sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
 
-    Replacement is not complete until the old global profile is removed:
-      sudo apparmor_parser -R /etc/apparmor.d/usr.bin.bwrap
-      sudo rm -f /etc/apparmor.d/usr.bin.bwrap
-      if aa-exec -p '/usr/bin/bwrap' -- true 2>/dev/null; then
-        echo "ERROR: old /usr/bin/bwrap profile still loaded" >&2
-        exit 1
-      fi
-    Then reload and verify after reboot:
-      aa-exec -p makepkg-jail-setup -- cat /proc/self/attr/apparmor/current
-      # expect: makepkg-jail-setup (enforce)
-
-    Known limitation: setup needs bare mount/pivot_root for disconnected
-    paths during namespace construction (applies only during setup, not build).
-
-    -s/-i/-r need passwordless sudo pacman; otherwise makepkg-jail fails fast.
+    To enable the traur pre-build scan hook:
+      sudo ln -s /usr/share/makepkg-jail/hooks/traur \
+        /etc/makepkg-jail/pre-fetch.d/50-traur
 
     After testing, set in paru.conf under [bin]:
       Makepkg = /usr/bin/paru-makepkg-jail
@@ -30,19 +16,18 @@ EOF
 
 post_upgrade() {
     cat <<'EOF'
-==> Check for /etc/apparmor.d/makepkg-jail-*.pacnew.
-    After merging any changes, reload both profiles:
+==> makepkg-jail-local upgraded.
+    Check for /etc/apparmor.d/makepkg-jail-*.pacnew, then reload profiles:
       sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-setup
       sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
-    Ensure old /etc/apparmor.d/usr.bin.bwrap is removed/disabled.
-    The global bubblewrap policy and paru.conf were not changed automatically.
 EOF
 }
 
 post_remove() {
     cat <<'EOF'
 ==> Remove the paru.conf Makepkg override for paru-makepkg-jail.
-    Loaded AppArmor policy is not automatically unloaded.
-    Remove /etc/apparmor.d/makepkg-jail-setup and -build if no longer needed.
+    Loaded AppArmor profiles are not unloaded automatically.
+    Remove the traur hook symlink if present:
+      sudo rm -f /etc/makepkg-jail/pre-fetch.d/50-traur
 EOF
 }
