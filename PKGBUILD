@@ -1,7 +1,7 @@
 # Maintainer: Eric Bakker <musqz at mf dot com>
 pkgname=quickbox-qt
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="Qt6/PySide6 GUI front-end for quickemu"
 arch=('any')
 url="https://github.com/musqz/quickbox-qt"
@@ -23,7 +23,7 @@ optdepends=(
 conflicts=('quickbox')
 provides=('quickbox')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a76643c351f614d527dceb244c2cf7abf787247c820b955633cba9880f2f55f5')
+sha256sums=('ca019c1516eb79d2c1f0dbaa15d66d3ea8f7241bcf388b3ecc8f8e1c8674f3a5')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
