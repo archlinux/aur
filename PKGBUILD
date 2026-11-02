@@ -1,7 +1,7 @@
 # Maintainer: arch-lsf <liangshengfeng@star-net.cn>
 
 pkgname=openidea-bin
-pkgver=0.1.27
+pkgver=0.1.33
 pkgrel=1
 pkgdesc="Open-source IntelliJ IDEA-style IDE rebuilt in Rust"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 # icons included), so the release artifact is used as-is.
 source=("OpenIDEA-${pkgver}-1.x86_64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v${pkgver}/OpenIDEA-${pkgver}-1.x86_64.rpm"
         "LICENSE")
-sha256sums=('572204a70461f0ff958690a23903bf6fd910d6cbd72c36fac90644fc7554f723'
+sha256sums=('ddafddcdd4271fc31fabeaefe619b281eaa3515c5788a2dbb77b345fdb344643'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
