@@ -74,6 +74,8 @@ package_raspberrypi-bootloader-common() {
 package_raspberrypi-bootloader-legacy() {
     pkgdesc+=" (1/2/3, Zero & Zero 2)"
     depends=(raspberrypi-bootloader-common)
+    # Side note: ALARM dropped the 1. at the beginning so this will eventually conflict on migration
+    provides=(raspberrypi-bootloader)
 
     install -Dm644 "$srcdir/LICENCE.broadcom" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     for file in start{,_cd,_x,_db}.elf fixup{,_cd,_x,_db}.dat bootcode.bin; do
@@ -87,6 +89,7 @@ package_raspberrypi-bootloader-legacy() {
 package_raspberrypi-bootloader-rpi4() {
     pkgdesc+=" (4 only)"
     depends=(raspberrypi-bootloader-common)
+    provides=(raspberrypi-bootloader)
 
     install -Dm644 "$srcdir/LICENCE.broadcom" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     for file in start4{,cd,db,x}.elf fixup4{,cd,db,x}.dat; do

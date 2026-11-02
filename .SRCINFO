@@ -56,7 +56,9 @@ pkgname = raspberrypi-bootloader-common
 pkgname = raspberrypi-bootloader-legacy
 	pkgdesc = Bootloader files for Raspberry Pi (1/2/3, Zero & Zero 2)
 	depends = raspberrypi-bootloader-common
+	provides = raspberrypi-bootloader
 
 pkgname = raspberrypi-bootloader-rpi4
 	pkgdesc = Bootloader files for Raspberry Pi (4 only)
 	depends = raspberrypi-bootloader-common
+	provides = raspberrypi-bootloader
