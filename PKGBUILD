@@ -1,7 +1,7 @@
 # Maintainer: Carlos Galindo < arch -at- cgj _dot_ es >
 # Contributor: Tomáš Mládek <t@mldk.cz>
 pkgname=pdfbooklet
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="Utility to convert a PDF into a booklet, reordering pages."
 arch=('any')
@@ -16,7 +16,7 @@ depends=("python3"
 	 "gobject-introspection-runtime")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TomasResquin/PdfBooklet/archive/v$pkgver.tar.gz")
-sha256sums=('98166426890380114b99dd0f4da752b99c6151264f0875de7698149dbf3d0d1f')
+sha256sums=('078aa5848149e3b6f35d1af8489b3e34c5da656dea70a0bec9ad63945823dd64')
 
 build() {
 	cd PdfBooklet-$pkgver
