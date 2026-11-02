@@ -5,21 +5,21 @@ _name=${pkgname#python-}
 pkgdesc="Python library for network analysis that uses contraction hierarchies."
 url="https://oturns.github.io/pandarm/"
 
-pkgver=0.0.5
-pkgrel=2
+pkgver=0.0.7.post1
+pkgrel=1
 
 arch=("x86_64")
 license=("AGPL-3.0-only")
 
 makedepends=(
-    #"clang"
+    "nanobind"
     "python-build"
     "python-installer"
+    "python-scikit-build-core"
     "python-setuptools-scm"
     "python-wheel"
 )
 depends=(
-    "cython"
     "python"
     "python-geopandas"
     "python-narwhals"
@@ -37,8 +37,8 @@ checkdepends=(
     "python-pytest-cov"
 )
 
-source=( "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("deacb24ab390c46d3cdfa779d72041451534d601fc7f7e8741b4493cb4bdfaa9b011cca22a5d1d5c3452b3b5aa2352bf6c42414985b6eb7da27e8af541b46880")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=("40c1d699fd83d5bab4eb48805888afc6a1cc2549e88f963eb98bd28094f9d471aedc6ac74e78c676ca28f6164c003208ce54cb414ac4a9b6ca607a5bb389714d")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
