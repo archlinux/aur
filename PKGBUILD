@@ -3,8 +3,8 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=mdbook-git
-pkgver=0.4.12.r0.ge6629cd7
-pkgrel=2
+pkgver=0.5.4.r132.gebb4f09
+pkgrel=1
 pkgdesc="Create book from markdown files, like Gitbook but implemented in Rust (git version)"
 url="https://github.com/rust-lang/mdBook"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd mdBook
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
