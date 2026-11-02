@@ -1,4 +1,4 @@
-# Maintainer  : George Eleftheriou <eleftg>
+# Maintainer  : Ateles
 # Contributor : George Eleftheriou <eleftg>
  
 pkgname=rtl-entropy-git
@@ -22,6 +22,8 @@ pkgver() {
 
 prepare() {
     [ ! -d build ] && mkdir build
+    sed -i 's/char\* manufacturer\[256\], product\[256\], serial\[256\];/char manufacturer[256], product[256], serial[256];/' \
+        master/src/rtl_entropy.c
 }
 
 build() {
@@ -33,6 +35,7 @@ build() {
         -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
         -DCMAKE_MODULE_LINKER_FLAGS="${LDFLAGS}" \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_INSTALL_PREFIX="/usr"
 
     make
