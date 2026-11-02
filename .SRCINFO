@@ -1,12 +1,13 @@
 pkgbase = openaside-bin
 	pkgdesc = OpenAside - AI-powered browser built on patched Chromium
-	pkgver = 0.0.45
+	pkgver = 0.0.46
 	pkgrel = 1
 	url = https://github.com/minpeter/openaside
 	arch = x86_64
 	license = UNLICENSED
 	depends = alsa-lib
 	depends = at-spi2-core
+	depends = bubblewrap
 	depends = cairo
 	depends = dbus
 	depends = expat
@@ -29,7 +30,6 @@ pkgbase = openaside-bin
 	depends = pango
 	depends = systemd-libs
 	optdepends = xorg-server-xvfb: run the browser when no X display is available
-	optdepends = bubblewrap: sandbox agent shell commands when ASIDE_ENABLE_BWRAP_SANDBOX=1
 	optdepends = libpulse: PulseAudio/PipeWire audio output (ALSA is used otherwise)
 	optdepends = pciutils: GPU detection for hardware acceleration
 	optdepends = qt5-base: Qt 5 UI integration
@@ -43,7 +43,7 @@ pkgbase = openaside-bin
 	conflicts = openaside
 	options = !strip
 	options = !debug
-	source = openaside-bin-0.0.45.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@0.0.45/openaside-0.0.45-linux-x64.tar.gz
-	sha256sums = 97f612865ae2b118bea9924ade468b875b6719755f0260f15b2481fa9b6cda4a
+	source = openaside-bin-0.0.46.tar.gz::https://github.com/minpeter/openaside-releases/releases/download/openaside@0.0.46/openaside-0.0.46-linux-x64.tar.gz
+	sha256sums = 4efb1ba679f9a1d6be33c3f47734fe25c99195ab40afe76aa65a85bb9870d8f7
 
 pkgname = openaside-bin
