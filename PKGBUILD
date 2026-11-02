@@ -4,7 +4,7 @@ pkgname="kwi"
 pkgrel=4
 pkgver=0.1.0
 pkgdesc="Modern and fast terminal for KDE Plasma and other desktops"
-arch=("any")
+arch=('x86_64')
 url="https://invent.kde.org/utilities/${pkgname}"
 license=('GPL-2.0-only OR GPL-3.0-only OR LicenseRef-scancode-kde-accepted-gpl'
     'LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-scancode-kde-accepted-lgpl'
