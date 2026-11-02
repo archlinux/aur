@@ -11,7 +11,7 @@ pkgbase = envman-git
 	depends = glibc
 	provides = envman=2.5.1
 	conflicts = envman
-	source = envman::git+https://github.com/bitrise-io/envman.git
+	source = envman::git+https://github.com/bitrise-io/envman
 	sha256sums = SKIP
 
 pkgname = envman-git

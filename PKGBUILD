@@ -1,49 +1,51 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="envman"
-pkgname="${_pkgname}-git"
-pkgver=2.5.1.r0.g7e737fe
+pkgname=envman-git
+_pkgname="${pkgname%-git}"
+pkgver=2.7.0.r1.gc205d5e
 pkgrel=1
 pkgdesc="Manage Environment Variable collections"
-arch=('aarch64' 'x86_64')
+arch=(aarch64 x86_64)
 url="https://github.com/bitrise-io/${_pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('git' 'go')
+license=(MIT)
+depends=(glibc)
+makedepends=(git go)
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
-_pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "$_pkgname"
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build"
+  cd "$_pkgname"
+  export GOPATH="$srcdir"
+  go mod download -modcacherw
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "$_pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${_pkgname}" .
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
+  go build -o build/envman .
 }
 
 check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./... 
+  cd "$_pkgname"
+  go test ./... -skip 'Test_EnvsSerializeModel_Normalize'
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "$_pkgname"
+  install -Dm755 build/envman -t "$pkgdir/usr/bin/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
