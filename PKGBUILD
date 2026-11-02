@@ -2,7 +2,7 @@
 # Built by packaging/linux/build-package.sh arch, which sets pkgver from
 # Cargo.toml. For the AUR, replace SKIP with the release tarball's checksum.
 pkgname=lorenz
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Local file conversion with radial wheels'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
     'vulkan-headers: automatic KWin extension rebuild on KWin updates'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2f1ff76701a4bb1e41b63c804aff7930a491c3f1370a68d8ed502ac8564f9f46')
+sha256sums=('47fbd85b545f3e9e0fbbe0a7de261687806e1e11abe9b92fc91de9592092a162')
 
 build() {
     cd "Lorenz-$pkgver"

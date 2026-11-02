@@ -1,6 +1,6 @@
 pkgbase = lorenz
 	pkgdesc = Local file conversion with radial wheels
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/Chaos-Tic/Lorenz
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = lorenz
 	optdepends = kwin: KDE Plasma Wayland drag gesture
 	optdepends = extra-cmake-modules: automatic KWin extension rebuild on KWin updates
 	optdepends = vulkan-headers: automatic KWin extension rebuild on KWin updates
-	source = lorenz-1.2.1.tar.gz::https://github.com/Chaos-Tic/Lorenz/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 2f1ff76701a4bb1e41b63c804aff7930a491c3f1370a68d8ed502ac8564f9f46
+	source = lorenz-1.2.2.tar.gz::https://github.com/Chaos-Tic/Lorenz/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = 47fbd85b545f3e9e0fbbe0a7de261687806e1e11abe9b92fc91de9592092a162
 
 pkgname = lorenz
