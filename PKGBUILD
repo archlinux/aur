@@ -1,6 +1,6 @@
 # Maintainer: Ваше Имя <you@example.com>
 pkgname=icon-theme-toolkit
-pkgver=1.0.2
+pkgver=1.0.2.1
 pkgrel=1
 pkgdesc="Toolkit for creating and editing Linux icon themes"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('gjs' 'gtk3' 'gdk-pixbuf2')
 optdepends=('icoutils: support of importing/exporting ICO')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3186292e9ca25c9b7e0989d69514c002bf348a298c4edb9c986b9c5dec25308e')
+sha256sums=('22ea1a62abec9c732a2c1356a98dbf2e9f6e0a754f9b371f77b676d49becfa0a')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
