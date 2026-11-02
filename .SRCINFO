@@ -1,6 +1,6 @@
 pkgbase = pikr-bin
 	pkgdesc = Vim-modal application launcher — rofi replacement. (binary release)
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://pikr.kryptic.sh/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = pikr-bin
 	optdepends = libxcb: the X11 fallback
 	optdepends = libxkbcommon-x11: keymaps under the X11 fallback
 	optdepends = xcb-util-cursor: themed pointer cursors under the X11 fallback
-	provides = pikr=0.9.6
+	provides = pikr=0.9.7
 	conflicts = pikr
-	source_x86_64 = pikr-v0.9.6-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.9.6/pikr-v0.9.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5159a047ca349b806a4403cbcc918c3ebd01982f22790105d1c13d27d3226589
+	source_x86_64 = pikr-v0.9.7-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.9.7/pikr-v0.9.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 79c77e9558ab71da7111677f338a63611c75f5a07afd4e29f6e7363337009482
 
 pkgname = pikr-bin
