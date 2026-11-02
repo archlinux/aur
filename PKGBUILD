@@ -2,26 +2,26 @@
 # Maintainer: Snowdream Tech <snowdreamtech@qq.com>
 
 pkgname='unigo-bin'
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc='Snowdream Tech AI IDE Template is an enterprise-grade, foundational template designed for multi-AI IDE collaboration.'
+pkgdesc='UniGo is a fast, flexible, and enterprise-grade Golang CLI application and foundational template.'
 url='https://github.com/snowdreamtech/unigo'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('unigo')
 conflicts=('unigo')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c588369cce2199afdba9c9b880bd1879a2efad5f9a6ebdd786b14ce5b0835bfa')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('f1fc007de7bf0e4656ac0f4aeb678b133778f653da2946af527b590c60a56099')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_armv7.tar.gz")
-sha256sums_armv7h=('f9eed37bdf96ae826e3a295c7156597ae08ec87f4e668c8dba6bd6b177465e9b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_${pkgver}_linux_armv7.tar.gz")
+sha256sums_armv7h=('a5fd46de5c1bd65baf519df522ebbc8a647c1b981193c8aa2c79dae2a9bafc80')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_i386.tar.gz")
-sha256sums_i686=('23e44dd4633b9bd99a49207e85169e19b70f30e2357a1acbe8f93299fe5b6354')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_${pkgver}_linux_386.tar.gz")
+sha256sums_i686=('bb2f5e55d044bb17a6b82000ce704cd9a20449c7438ccd8b62060e66c853b14c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c22d73b83427e0ee23166ddf780537b4586e48c2f9a01a6c37366f6da3405b20')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('25caf8eb900d8c390e067a0e62d7492c942aac621f9e9150ad37fb66f3e8ffba')
 
 package() {
   # bin
