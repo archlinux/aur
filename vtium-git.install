@@ -6,8 +6,9 @@
 
 _vtium_enable() {
   cat <<'EOF'
-==> vtium runs on a VT only where you turn it on. For VT 3, with no one
-    logged in there, from another VT or over ssh:
+==> vtium runs on a VT only where you turn it on, and you always name the VT:
+    vtium@tty3.service, never vtium@.service alone, which systemctl refuses.
+    For VT 3, with no one logged in there, from another VT or over ssh:
       sudo systemctl disable getty@tty3.service
       sudo systemctl enable vtium@tty3.service
       sudo systemctl start vtium@tty3.service
@@ -63,10 +64,15 @@ post_remove() {
   # The links that enabling vtium@ttyN made outlive the package and now point
   # at nothing; this names each one and changes nothing.
   local l vt left='' getty=''
-  for l in /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
+  # A template link autovt@.service -> vtium@.service makes logind start
+  # vtium on every VT; no step of vtium's makes it, but name it if it is
+  # there.
+  for l in /etc/systemd/system/autovt@.service /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
     [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] || continue
     left+="      sudo rm $l"$'\n'
     case $l in
+    */autovt@.service)
+      getty+="      sudo systemctl preset getty@.service      # the getty's own autovt@.service again"$'\n' ;;
     */autovt@*)
       vt=${l##*@}
       getty+="      sudo systemctl enable --now getty@${vt%.service}.service"$'\n' ;;
