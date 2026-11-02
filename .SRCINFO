@@ -1,7 +1,7 @@
 pkgbase = playit-bin
 	pkgdesc = Tool to make your locally running game server public (Binary Version)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://playit.gg
 	install = playit-bin.install
 	arch = x86_64
