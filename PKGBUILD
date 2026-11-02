@@ -4,7 +4,9 @@ pkgbase=alimama-agile
 pkgname=({ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlimamaAgileVF
 pkgver=1.0
-pkgrel=4
+pkgrel=5
+# fonts.alibabadesign.com has enabled Referer anti-hotlinking; a Referer from the same domain is required to download files.
+DLAGENTS=('https::/usr/bin/curl -fLC - --referer https://fonts.alibabadesign.com/ -o %o %u')
 pkgdesc="A typeface for creating alimama agile viet in text.阿里妈妈灵动体——Alimama agile是一款西文四轴可变字体。这款字体包含了字重、字宽、倾斜、衬线四款可变方式，英文大小写共52个；常用标点符号共68个，总计120个字符。"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/more"
@@ -13,12 +15,12 @@ source=(
     "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "LICENSE"
 )
-sha256sums=('16b618ba8c4fb3e23feca2fe2b9bdca653968f5a1c1c63aba2f98b831467c967'
+sha256sums=('4d3a6e3c0e958da623460f28e022bf23cd3401c96f59a08d7ef34123637a211f'
             'e3721ebffb491642f5dfbcecdedbcd4558c0f5ff2d051eba90d7b652975351bf')
 function _package {
     local _pkgname=$1
     local ext="${_pkgname%%-*}"
-    cd "${srcdir}/${_fontname}"
+    cd "${srcdir}"
     local fonts=("${_fontname}-Thin.${ext}")
     local installdir="${ext^^}"
     # Prepare destination directory
