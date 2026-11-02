@@ -45,6 +45,7 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=(
+    'python-httpx'
     'python-pandas'
     'python-pyarrow'
     'python-pytest'
