@@ -1,0 +1,16 @@
+pkgbase = perl-template-stencil
+	pkgdesc = a fast template engine
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://metacpan.org/release/Template-Stencil
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-eshu>=0.13
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Template-Stencil-0.13.tar.gz
+	md5sums = 20998cd63a448319e601966c6278b5f8
+	sha512sums = d9555a15b1f82217f569db163c070a6a5b90c186589d74ff6381e8aaa9bda9604eff7c5ed24cbdad448a380c8d701795c40b87b59e368a8089d0b299c291f70f
+
+pkgname = perl-template-stencil
