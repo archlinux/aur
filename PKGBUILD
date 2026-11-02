@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.245
+pkgver=1.4.246
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -61,7 +61,7 @@ _electronmajor=43
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=1c6ac8c3c4d2c3dec2cb5966d225ca2a0e0471d3
+_commit=55ccff19ad4cd8ba28b6f3d2be798c1e626a2c2c
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -81,7 +81,7 @@ source_x86_64=(
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
-sha256sums=('64b96989289dd5ace5501f461238a68e4f3a6407443d2087de7d1838fc345439'
+sha256sums=('e8d55bd31d15baa5e48d0a8613f52babde369caa6c328b9a97381d9e0971aec4'
             'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -367,6 +367,11 @@ package() {
   local resources="${unpacked[0]}/resources"
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -a "$resources/." "$pkgdir/usr/lib/$pkgname/"
+  # electron-builder's Linux output can omit unpacked authoring resources;
+  # install the checked-in declarative plugin files explicitly for Node-mode CLI commands.
+  install -d "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/resources/plugins"
+  cp -a resources/plugins/declarative resources/plugins/types \
+    "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/resources/plugins/"
   chmod -R go-w "$pkgdir/usr/lib/$pkgname"
 
   # System Electron and the Arch package own updates; this marker is only for
