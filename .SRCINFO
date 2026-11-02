@@ -6,8 +6,10 @@ pkgbase = wal2json
 	install = wal2json.install
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = clang
 	makedepends = llvm
-	depends = postgresql>=9.4
+	depends = glibc
+	depends = postgresql
 	source = wal2json-2.7.tar.gz::https://github.com/eulerto/wal2json/archive/refs/tags/wal2json_2_7.tar.gz
 	source = wal2json.install
 	sha256sums = e6c12d02dc32e4d610dce33ee52ea85a54e12a563e79c4844508b6c061ff07a1

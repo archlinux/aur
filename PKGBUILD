@@ -8,8 +8,8 @@ pkgdesc="Output plugin for logical decoding PostgreSQL WAL's"
 arch=('x86_64')
 url="https://github.com/eulerto/wal2json"
 license=('BSD-3-Clause')
-depends=('postgresql>=9.4')
-makedepends=('llvm')
+depends=('glibc' 'postgresql')
+makedepends=('clang' 'llvm')
 install="wal2json.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgname}_${pkgver//./_}.tar.gz"
         "wal2json.install")
