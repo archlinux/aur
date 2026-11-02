@@ -1,7 +1,7 @@
 # Maintainer: Justin Dickey <justin.dickey.eg@gmail.com>
 
 pkgname=goplaying-git
-pkgver=r126.b691812
+pkgver=r130.e6e3c04
 pkgrel=1
 pkgdesc="Now Playing TUI written in Go"
 arch=('x86_64')
