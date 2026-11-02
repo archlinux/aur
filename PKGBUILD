@@ -12,12 +12,11 @@ pkgname=(
     raspberrypi-bootloader-rpi4
 )
 pkgver=1.20260915
-pkgrel=3
+pkgrel=4
 pkgdesc="Bootloader files for Raspberry Pi"
 arch=(any)
 url="https://github.com/raspberrypi/firmware"
 license=(LicenseRef-Broadcom)
-conflicts=(raspberrypi-bootloader)
 options=(!strip)
 source=(
     raspberrypi-bootloader-install
