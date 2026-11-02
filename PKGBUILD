@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opal-player-bin
 _pkgname=Opal
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Plays relaxing music in the background.(Prebuilt version)"
 arch=('x86_64')
@@ -21,19 +21,15 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0122b84069b120d101fae005fd345521680537b6185f84b1384a3527ec8f6e54'
-            'a86afff929bb2d4bb886e0619f6743a02d9e9470c8f1643f0e9db2eb7defbf2d')
+sha256sums=('786e78bf685eb6e48d7c4037a3482de7fe5154a82a57e9eed08ba0686e733501'
+            '92457ec25ef4808eb5481279d86c801e9d9bc15cfbb167b5ef68a54e13b44839')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bi}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
+    rm -rf "${srcdir}/squashfs-root"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin} %U/g
@@ -44,7 +40,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/usr/"{bin,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${_pkgname}.appdata.xml" "${pkgdir}/usr/share/icons/metainfo/${pkgname%-bin}.appdata.xml"
