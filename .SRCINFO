@@ -1,6 +1,6 @@
 pkgbase = p4lang-bmv2
 	pkgdesc = P4 reference software switch
-	pkgver = 1.15.7
+	pkgver = 1.15.8
 	pkgrel = 1
 	url = https://github.com/p4lang/behavioral-model
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = p4lang-bmv2
 	depends = python
 	depends = python-thrift
 	depends = thrift
-	source = p4lang-bmv2-1.15.7::https://github.com/p4lang/behavioral-model/archive/refs/tags/1.15.7.tar.gz
-	sha512sums = 1833a15c63ea0e64f878233a6426f32014cffe8898c1956bb13c63b1a1a825bd473340b60ae2050ed883cffb61497b301fd6b537b15a1a3372d551387508b6ee
+	source = p4lang-bmv2-1.15.8::https://github.com/p4lang/behavioral-model/archive/refs/tags/1.15.8.tar.gz
+	sha512sums = dee65c7de1c9867dd1a9aec5eb124803c6b9ef605be8b7631b4560069bab23231e5eb820fd42b135294e7bda1caf41bce5e2bcadcac6dddf99ee3c5126b1aea7
 
 pkgname = p4lang-bmv2
