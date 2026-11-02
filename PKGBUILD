@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.18.12
+pkgver=1.18.13
 pkgrel=1
 _nodeversion=26
-_electronversion=44
+_electronversion=45
 pkgdesc="Modern material design for Invidious."
 arch=('x86_64')
 url="https://materialio.us"
@@ -18,7 +18,7 @@ makedepends=(
 checkdepends=('appstream')
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('76c0713d73db67629163b991fcf9d7b4ce4b43aca60584ee73672f53a5151237'
+sha256sums=('33d97dcd5329762f89b1f5efbd309370e43c3503d3c2cb9e87487d667d0280a8'
             'ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed')
 
 _ensure_local_nvm() {
@@ -68,7 +68,7 @@ build() {
 
 check() {
   cd "Materialious-$pkgver/$pkgname/electron"
-  appstreamcli validate --no-net "$pkgname.metainfo.xml" || :
+  appstreamcli validate --no-net "$pkgname.metainfo.xml"
   desktop-file-validate "$pkgname.desktop"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = materialious
 	pkgdesc = Modern material design for Invidious.
-	pkgver = 1.18.12
+	pkgver = 1.18.13
 	pkgrel = 1
 	url = https://materialio.us
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = materialious
 	makedepends = desktop-file-utils
 	makedepends = nvm
 	makedepends = python
-	depends = electron44
-	source = Materialious-1.18.12.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/1.18.12.tar.gz
+	depends = electron45
+	source = Materialious-1.18.13.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/1.18.13.tar.gz
 	source = materialious.sh
-	sha256sums = 76c0713d73db67629163b991fcf9d7b4ce4b43aca60584ee73672f53a5151237
+	sha256sums = 33d97dcd5329762f89b1f5efbd309370e43c3503d3c2cb9e87487d667d0280a8
 	sha256sums = ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed
 
 pkgname = materialious
