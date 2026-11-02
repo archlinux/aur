@@ -6,6 +6,7 @@ pkgbase = xkb-editor
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
+	makedepends = pyside6-tools-wrappers
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
