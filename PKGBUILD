@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
-pkgver=0.0.0.r2226.g7992b0b
+pkgver=1.0.0.r14.g7e00deb
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -67,10 +67,8 @@ prepare() {
 
 pkgver() {
   cd "$pkgbase"
-  # Tag last commit befor fork, waiting for what official tags will look like
-  git tag $pkgbase-v0.0.0 e7f0b0d43c538f5d108aa4cbea473d57b3012a1a ||:
-  git describe --long --abbrev=7 --tags --match="$pkgbase-v*" |
-    sed 's/^.*-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 --tags --match="$_obs_studio-rust-v*" |
+    sed 's/^.*-v//;s/-\(alpha\|beta\|rc\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
