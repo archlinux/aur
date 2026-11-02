@@ -23,6 +23,8 @@ makedepends=(
 # The commit the packages were published from (tag v0.19.11). OmniSharp.Extensions.JsonRpc.Generators
 # 0.19.11 was published from an earlier commit, only CI and dependency versions changed since.
 _commit="a601a66c59e570d297e83987aff79038c5449724"
+# The assertions of the tests, see prepare()
+_awesomeassertionsver=9.6.0
 source=("csharp-language-server-protocol-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha512sums=('cc3e223c5dc2e0096495722e485a296c790cd88a5e55b6990e8e0ab5acfef14ae13ae499616a2e8ccc488f81ac9efaaa5e21961bd5c464d28ba11fc0e5faacfc')
 b2sums=('bc564390c993b2cd14c38c909ae485846214569130d604c6242b5e28af9c62c7954496156373fde793e4cfbfbdd0737c013deab0ba464d0f1bfbbe686246e30e')
@@ -148,6 +150,13 @@ prepare() {
     src/JsonRpc.Generators/JsonRpc.Generators.csproj
   # MediatR 12.5 passes a CancellationToken to RequestHandlerDelegate, which some tests don't take
   sed -i 's/, () => Task\.FromResult(/, _ => Task.FromResult(/' test/Lsp.Tests/Matchers/ResolveCommandMatcherTests.cs
+  # The tests use AwesomeAssertions instead of FluentAssertions, which is free only for non-commercial
+  # use since version 8 (Xceed's license), so building the package with the tests needs no license.
+  # AwesomeAssertions is the fork of its Apache-2.0 code, with the same API in its own namespace.
+  sed -i "s|Include=\"FluentAssertions\" Version=\"[^\"]*\"|Include=\"AwesomeAssertions\" Version=\"$_awesomeassertionsver\"|" \
+    Directory.Packages.props
+  sed -i 's|Include="FluentAssertions"|Include="AwesomeAssertions"|' test/Directory.Build.targets
+  find test -name '*.cs' -exec sed -i 's/\bFluentAssertions\([.;]\)/AwesomeAssertions\1/g' {} +
   _nuget_config "nuget.org=https://api.nuget.org/v3/index.json"
 }
 
