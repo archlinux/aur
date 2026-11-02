@@ -7,7 +7,7 @@
 
 _pkgbase=veeam
 pkgname=${_pkgbase}-6
-pkgver=6.3.2.1405
+pkgver=6.3.2.1501
 pkgrel=1
 pkgdesc="Veeam Agent for Linux (v6)"
 arch=(x86_64)
@@ -19,8 +19,8 @@ conflicts=(veeam veeam-nosnap)
 options=(!strip)
 source=("https://repository.veeam.com/backup/linux/agent/rpm/el/10/x86_64/veeam-$pkgver-1.el10.x86_64.rpm"
         "https://repository.veeam.com/backup/linux/agent/rpm/el/10/x86_64/veeam-libs-$pkgver-1.x86_64.rpm")
-sha256sums=('78d11f935331c543c542f381787de676b6e4ffacb1422e9e01a1f0070caf2064'
-            '5bc470c3810505901aaacb041aa3ed34d1b9a67c9770c960bd49ade8a2729093')
+sha256sums=('89b246bcfc5291db717f9453196651dddc91cf70e5c89b4de8dc909f3204c23c'
+            '0b07370918f7a5cc5ff85bfb94c8867eaef97f950f7f0f51837e23952ede221a')
 noextract=("veeam-$pkgver-1.el10.x86_64.rpm"
            "veeam-libs-$pkgver-1.x86_64.rpm")
 backup=('etc/veeam/veeam.ini'
