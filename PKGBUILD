@@ -8,7 +8,7 @@
 # publishing starts.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.21.0
+_version=0.22.0
 pkgname=wikistow-cli-bin
 pkgver=${_version//-/}
 pkgrel=1
@@ -28,8 +28,8 @@ source=("LICENSE-$_version::$_download/LICENSE")
 source_x86_64=("wikistow-$_version-x86_64::$_download/wikistow-linux-x64")
 source_aarch64=("wikistow-$_version-aarch64::$_download/wikistow-linux-arm64")
 sha256sums=('49e9b16003c5e96891265ca2f912087102de955704eda32482dfe2c4b8fbafd6')
-sha256sums_x86_64=('5f543fdc4a6218b2f6d7929180e76162cd5a9639d7c262f5406009b8b5be1be3')
-sha256sums_aarch64=('7ac35ddabfe5e5f315653331b5df862a3cc33744814815e71d3700c3c205d2ef')
+sha256sums_x86_64=('291913cad08e72ce852c4dce7ad855b0fdc4bf21abde764ad1e44594f76785cf')
+sha256sums_aarch64=('7d797b784ca65422505e629291cfa9a1680c347bc98a8328351e85ac4b3deba0')
 
 package() {
     install -Dm755 "wikistow-$_version-$CARCH" "$pkgdir/usr/bin/wikistow"
