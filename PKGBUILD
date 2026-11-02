@@ -28,7 +28,7 @@ optdepends=(
 )
 provides=('mimick')
 conflicts=('mimick')
-source=("${pkgname}::git+ssh://git@github.com/spivanatalie64/mimick.git")
+source=("${pkgname}::git+https://github.com/spivanatalie64/mimick.git")
 sha256sums=('SKIP')
 
 pkgver() {

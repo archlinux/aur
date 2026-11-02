@@ -20,7 +20,7 @@ pkgbase = mimick-git
 	optdepends = libnotify: notifications
 	provides = mimick
 	conflicts = mimick
-	source = mimick-git::git+ssh://git@github.com/spivanatalie64/mimick.git
+	source = mimick-git::git+https://github.com/spivanatalie64/mimick.git
 	sha256sums = SKIP
 
 pkgname = mimick-git
