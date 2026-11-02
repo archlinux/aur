@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=halley
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70c0b5ba02a4e83a8ac22e4e910c5b516045ed407c4034721e987b5c324f1d17')
+sha256sums=('0db6a7636d2edd9b36121b5afd2e98f1190952efc8a441bdd477dadb10358225')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -72,6 +72,12 @@ package() {
 
   install -Dm644 "packaging/systemd-user/halley-shutdown.target" \
     "$pkgdir/usr/lib/systemd/user/halley-shutdown.target"
+
+  # Keep GUI portal activation inside the graphical session.
+  for portal in xdg-desktop-portal xdg-desktop-portal-gtk; do
+    install -Dm644 "packaging/systemd-user/$portal.service.d/halley-session.conf" \
+      "$pkgdir/usr/lib/systemd/user/$portal.service.d/halley-session.conf"
+  done
 
   install -Dm644 "LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
