@@ -1,6 +1,6 @@
 # Maintainer: Mike Krüger <mkrueger@posteo.de>
 pkgname=game-cheetah
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="High-performance memory scanner/editor and game trainer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libxcb' 'libxkbcommon' 'wayland' 'libgl' 'fontconfig' 'freetype
 # rustup provides rust without a version; check the active compiler in prepare().
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('50238fd3fce54a85552cbe8e45f9ddb4bc0558dc157eea36206357f9bbd97262')
+sha256sums=('46448b52854df62f6bb1a62d23853edb44dd2d290b9fcdae39f8529b3eb26133')
 
 prepare() {
     local rust_version
