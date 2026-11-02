@@ -1,6 +1,6 @@
 # Maintainer: Johan Larsson <johan@jolars.co>
 pkgname=badness-bin
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="A language server, formatter, and linter for LaTeX"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('badness')
 options=(!strip)
 source_x86_64=("badness-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/badness-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("badness-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/badness-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('c08f375793dab0f7351eb7860235f98aab3f0665c9fc17b3058c9990ad4ce287')
-sha256sums_aarch64=('08f4eac04f50f7df4b41ef512e24f2be7b05533276e5fac792e4b62b839a9749')
+sha256sums_x86_64=('cf23e622018d5af05872ce6dfe477d5bf920bcf61cab8cb8d04ddcf6a4d932d7')
+sha256sums_aarch64=('546cb6daa4b4dbd1bf6c8b887277900f22f59d199a2c13f324bde786af4b7fac')
 
 package() {
     install -Dm755 badness "$pkgdir/usr/bin/badness"
