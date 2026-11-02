@@ -1,0 +1,7 @@
+# The tags of Metamod:Source's stable branch, 1.12: each build is tagged, <version>.<build>. The SDKs
+# come from the hl2sdk package.
+[metamod-source]
+source = "git"
+git = "https://github.com/alliedmodders/metamod-source.git"
+use_max_tag = true
+include_regex = '1\.12\.\d+\.\d+'

@@ -1,0 +1,39 @@
+pkgbase = metamod-source
+	pkgdesc = Metamod:Source, the plugin loader of SourceMod, for Source engine game servers, for the games of hl2sdk with Linux servers (the addons folder of a server)
+	pkgver = 1.12.0.1229
+	pkgrel = 1
+	url = https://www.metamodsource.net
+	arch = x86_64
+	license = Zlib
+	makedepends = ambuild
+	makedepends = clang
+	makedepends = git
+	makedepends = hl2sdk
+	makedepends = python
+	source = git+https://github.com/alliedmodders/metamod-source.git#tag=1.12.0.1229
+	source = git+https://github.com/alliedmodders/amtl.git
+	source = git+https://github.com/alliedmodders/hl2sdk-manifests.git
+	source = source-sdk.txt
+	sha512sums = b0cd1b9fae5f7e6e463775748a5cf9b3c1ded6f9a5442e1d27af175cea664cc96fbff41ffab4782ce684528e7e4a26ae680cf896b3c3475b23485295cd2bb60c
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3
+	b2sums = e9bd2d1442d3cca1df7a42394d07d3117de790f1ce72651c579da12b9f6fbaaba12ece78b13a069ecc168436edaf9b00adb5e2acb86da63e4c2457c11115d5bf
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600
+
+pkgname = metamod-source
+	pkgdesc = Metamod:Source, the plugin loader of SourceMod, for Source engine game servers, for the games of hl2sdk with Linux servers (the addons folder of a server)
+	license = Zlib
+	license = LicenseRef-Source-SDK
+	depends = gcc-libs
+	depends = glibc
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+
+pkgname = metamod-source-src
+	pkgdesc = Metamod:Source's sources the metamod-source package is built from, for building SourceMod and plugins or extensions against it (--mms-path=/usr/src/metamod-source)
+	arch = any
+	license = Zlib
+	license = BSD-3-Clause
