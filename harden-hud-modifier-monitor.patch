@@ -1,0 +1,20 @@
+diff --git a/apps/desktop/scripts/build-hud-modifier-monitor.mjs b/apps/desktop/scripts/build-hud-modifier-monitor.mjs
+index db316ea2..d1c61d0a 100644
+--- a/apps/desktop/scripts/build-hud-modifier-monitor.mjs
++++ b/apps/desktop/scripts/build-hud-modifier-monitor.mjs
+@@ -81,6 +81,7 @@ export function buildHudModifierMonitor({
+       execFileSync(
+         process.env.CC || 'cc',
+         [
++          ...(process.env.CFLAGS?.trim().split(/\s+/).filter(Boolean) ?? []),
+           '-std=gnu11',
+           '-O2',
+           '-Wall',
+@@ -88,6 +89,7 @@ export function buildHudModifierMonitor({
+           nativeSource('hud-modifier-monitor-x11.c'),
+           '-o',
+           staging,
++          ...(process.env.LDFLAGS?.trim().split(/\s+/).filter(Boolean) ?? []),
+           '-lX11', '-lXi'
+         ],
+         { stdio: 'pipe', timeout: 120_000 }

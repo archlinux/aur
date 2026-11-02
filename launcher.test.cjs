@@ -7,7 +7,7 @@ const { test } = require('node:test')
 
 const launcher = fs.readFileSync(process.env.HERMES_LAUNCHER_PATH || path.join(__dirname, 'hermes-desktop'), 'utf8')
 
-function runLauncher(t, browsers = [], override) {
+function runLauncher(t, browsers = []) {
   const home = fs.mkdtempSync(path.join(os.tmpdir(), 'hermes-launcher-test-'))
   t.after(() => fs.rmSync(home, { recursive: true, force: true }))
   const bin = path.join(home, 'bin')
@@ -18,8 +18,11 @@ function runLauncher(t, browsers = [], override) {
   }
   fs.writeFileSync(path.join(home, '.config', 'hermes-desktop-flags.conf'),
     '# comment\n\n  --disable-vulkan  \n--flag=two words\n--literal=$(touch should-not-exist)\n')
-  const env = { HOME: home, PATH: bin }
-  if (override !== undefined) env.AGENT_BROWSER_EXECUTABLE_PATH = override
+  // A runtime of its own: the build container has no /usr/bin/hermes, whose
+  // absence the launcher reports on stderr.
+  const hermes = path.join(bin, 'hermes')
+  fs.writeFileSync(hermes, '#!/bin/sh\nexit 0\n', { mode: 0o755 })
+  const env = { HOME: home, PATH: bin, HERMES_DESKTOP_HERMES: hermes }
   // Replace only the final process launch, so tests exercise the real wrapper
   // without starting Electron or touching the user's home.
   const result = spawnSync('/bin/bash', ['-c', `
@@ -49,41 +52,20 @@ test('package-managed launcher pins the hermes-agent CLI and leaves the agent tr
   assert.equal(values[2], '')
 })
 
-test('explicit browser path is not replaced by automatic detection', t => {
-  const result = runLauncher(t, ['google-chrome-stable', 'chromium'], '/custom/browser with spaces')
-  assert.equal(result.values[0], '/custom/browser with spaces')
-})
-
-test('Chrome stable is preferred to Chrome and Chromium', t => {
-  const result = runLauncher(t, ['chromium', 'google-chrome', 'google-chrome-stable'])
-  assert.equal(result.values[0], path.join(result.bin, 'google-chrome-stable'))
-})
-
-test('Chrome command is used when its stable alias is absent', t => {
-  const result = runLauncher(t, ['chromium', 'google-chrome'])
-  assert.equal(result.values[0], path.join(result.bin, 'google-chrome'))
-})
-
-test('Chromium is used when Chrome is absent', t => {
-  const result = runLauncher(t, ['chromium'])
-  assert.equal(result.values[0], path.join(result.bin, 'chromium'))
-})
-
-test('an empty override still allows browser detection', t => {
-  const result = runLauncher(t, ['chromium'], '')
-  assert.equal(result.values[0], path.join(result.bin, 'chromium'))
-})
-
-test('without a browser the desktop still launches and prints an install hint', t => {
-  const result = runLauncher(t)
+test('the launcher exports no browser, even with browsers on PATH', t => {
+  const result = runLauncher(t, ['google-chrome-stable', 'google-chrome', 'chromium'])
   assert.equal(result.values[0], '')
-  assert.equal(result.values[1], '/usr/bin/electron44')
-  assert.match(result.stderr, /chromium/i)
-  assert.match(result.stderr, /AGENT_BROWSER_EXECUTABLE_PATH/)
+  assert.equal(result.stderr, '')
 })
 
-test('browser selection preserves literal Electron flags and desktop arguments', t => {
-  const result = runLauncher(t, ['chromium'])
+test('without a browser the desktop launches without a hint', t => {
+  const result = runLauncher(t)
+  assert.equal(result.values[1], '/usr/bin/electron44')
+  assert.equal(result.stderr, '')
+})
+
+test('the launcher keeps Electron flags and desktop arguments literal', t => {
+  const result = runLauncher(t)
   assert.deepEqual(result.values.slice(1), [
     '/usr/bin/electron44', '--disable-vulkan', '--flag=two words',
     '--literal=$(touch should-not-exist)',

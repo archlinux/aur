@@ -6,11 +6,22 @@
  const IS_PACKAGED = app.isPackaged || Boolean(process.env.HERMES_DESKTOP_IS_PACKAGED)
 +const PACKAGE_MANAGED_RUNTIME = process.env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME === '1'
 +const PACKAGE_MANAGED_UPDATE_MESSAGE =
-+  'This Hermes runtime is managed by the hermes-agent system package. Update hermes-agent and hermes-agent-desktop with your AUR helper; the desktop app will not install or modify an agent tree.'
++  'This Hermes runtime is managed by the hermes-agent system package. Update hermes-agent (or hermes-agent-bin) and the desktop app with your AUR helper; the desktop app will not install or modify an agent tree.'
  const IS_MAC = process.platform === 'darwin'
  const IS_WINDOWS = process.platform === 'win32'
  const IS_WSL = isWslEnvironment()
-@@ -4397,6 +4400,14 @@
+@@ -3651,6 +3654,10 @@
+  * production path to the checkout arms.
+  */
+ function resolveCheckoutUpdateStrategy(): CheckoutStrategy {
++  if (PACKAGE_MANAGED_RUNTIME) {
++    throw new Error(PACKAGE_MANAGED_UPDATE_MESSAGE)
++  }
++
+   return createCheckoutStrategy({
+     hermesHome: HERMES_HOME,
+     isWindows: IS_WINDOWS,
+@@ -4397,6 +4404,14 @@
  // Detection (checkUpdates / commit changelog / "N behind") stays in the UI;
  // only this apply action changed.
  async function applyUpdates(): Promise<UpdaterApplyResultWire> {
@@ -25,14 +36,14 @@
    return updateOperation.apply(async (): Promise<UpdaterApplyResultWire> => {
      updateInFlight = true
      let handedOff: boolean = false
-@@ -5137,6 +5148,17 @@
+@@ -5137,6 +5152,17 @@
    }
  
    if (backend.kind === 'bootstrap-needed') {
 +    if (PACKAGE_MANAGED_RUNTIME) {
 +      rememberLog('[bootstrap] REFUSING installer: package-managed runtime uses hermes-agent; will not write an agent tree')
 +      const packagedError: Error & { isBootstrapFailure?: boolean } = new Error(
-+        'Hermes Agent is provided by the hermes-agent system package. Install or update hermes-agent with your AUR helper. This app will not download or write a runtime under the agent tree.'
++        'Hermes Agent is provided by the hermes-agent system package. Install hermes-agent (or hermes-agent-bin) with your AUR helper. This app will not download or write a runtime under the agent tree.'
 +      )
 +
 +      packagedError.isBootstrapFailure = true
@@ -43,7 +54,7 @@
      rememberLog('[bootstrap] no Hermes install found; starting first-launch bootstrap')
  
      if (await handOffWindowsBootstrapRecovery('bootstrap-needed')) {
-@@ -17232,14 +17254,24 @@
+@@ -17232,14 +17258,24 @@
  
  ipcMain.handle(
    'hermes:updates:check',
@@ -70,3 +81,14 @@
  )
  
  ipcMain.handle('hermes:updates:apply', async (_event, payload) =>
+@@ -17252,6 +17288,10 @@
+ 
+ // About ▸ Updates channel selector; source checkouts only (packages bake their channel).
+ ipcMain.handle('hermes:updates:channel:set', async (_event, name: unknown): Promise<UpdaterStatusWire> => {
++  if (PACKAGE_MANAGED_RUNTIME) {
++    throw new Error(PACKAGE_MANAGED_UPDATE_MESSAGE)
++  }
++
+   assertSourceUpdateChannel(INSTALL_STAMP)
+ 
+   return resolveCheckoutUpdateStrategy().check({ force: true, setChannel: sourceChannelName(name) })
