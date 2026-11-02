@@ -2,7 +2,7 @@
 # Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 pkgname=fuzzynote-bin
 _shortname=fzn
-pkgver=0.47.4
+pkgver=0.47.5
 pkgrel=1
 pkgdesc='Terminal-based, hyper-fast, CRDT-backed, collaborative note-taking tool'
 arch=(
@@ -15,8 +15,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_shortname}-aarch64-unknown-linux-musl.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_shortname}-x86_64-unknown-linux-musl.tar.gz ")
-sha256sums_aarch64=('c57e7b0d7ce45a00fea73fefd17e2c5105a7bfe7d4f38b8f0317050649bbcdfc')
-sha256sums_x86_64=('41b7c079b4cf3874ad4954c0977b7108328fc2af046c66ec3b1fda5b6009021b')
+sha256sums_aarch64=('e0446ac592add3adbe3ab01af088e64b98b3a4b9e6382472d82a7d3954edffe0')
+sha256sums_x86_64=('a65428337a6c9dc819fb0410c01d2759caa964f399bde19f6dec7ceb29a85683')
 package() {
   install -Dm755 "${srcdir}/${_shortname}-${CARCH}-unknown-linux-musl/${_shortname}" -t "${pkgdir}/usr/bin"
   install -Dm644 "${srcdir}/${_shortname}-${CARCH}-unknown-linux-musl/README.md" -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
