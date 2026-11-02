@@ -1,7 +1,7 @@
 # Maintainer: Niklas Schönberg <niklas@foonly.dev>
 
 pkgname=foonver
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A lightweight CLI utility for automated Semantic Versioning (SemVer) management."
 url="https://github.com/foonly/${pkgname}"
@@ -13,7 +13,7 @@ depends=("git")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!debug !lto)
-sha256sums=('e9e94b0e2714efa8c154c4db206f5659ac5a2beeea146c946f083d625fef29c0')
+sha256sums=('3d0bca94f79db67ec3da31ed09bfa46e33f88a988661ca3eafc33a2b0d1d6fc9')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
