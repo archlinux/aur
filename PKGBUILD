@@ -2,7 +2,7 @@
 # Automatically updated by GitHub Actions
 
 pkgname=fluxdown-cli-bin
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="FluxDown CLI - 命令行客户端，管理 FluxDown App / Server 的下载任务（musl 静态链接）"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!strip')
 
 source_x86_64=("FluxDown-CLI-${pkgver}-linux-x64.tar.gz::https://github.com/zerx-lab/FluxDown/releases/download/v${pkgver}/FluxDown-CLI-${pkgver}-linux-x64.tar.gz")
 source_aarch64=("FluxDown-CLI-${pkgver}-linux-arm64.tar.gz::https://github.com/zerx-lab/FluxDown/releases/download/v${pkgver}/FluxDown-CLI-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('d512758a4534a94bef9e4267c9eac01e09249a15d65c80b9783b05f8472fb6ca')
-sha256sums_aarch64=('022c916236ae280718eb6e36030fd7fb61177f07b48f3ff8e4fdae896b9f74af')
+sha256sums_x86_64=('bf14889da11ae65a9c5585b37636285236deaef23063fcf8af6abf0c57c8c94d')
+sha256sums_aarch64=('0b3daae10386d0d5f7b281aea8fd105f35ef830dd174a239c5b8c62be9b17c50')
 
 package() {
     local _platform
