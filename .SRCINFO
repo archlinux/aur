@@ -1,7 +1,7 @@
 pkgbase = fenrir
 	pkgdesc = A user space console screen reader written in Go
 	pkgver = 2026.10.31
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://git.stormux.org/storm/fenrir
 	install = fenrir.install
@@ -38,6 +38,6 @@ pkgbase = fenrir
 	source = git+https://git.stormux.org/storm/fenrir.git#tag=2026.10.31
 	source = fenrirscreenreader.service
 	sha512sums = SKIP
-	sha512sums = 129a2cf74d986297cc6d65a09e010a4410e31b1598ea4f714f7b185c74c5c40b252cf5e2bb55a5a02a8bac154d4a93dc5c34326f2fdf4bea885da0025e670697
+	sha512sums = f5fa96eae68d84c60a71d30a82a5bfd40b81c4d0f67c84e660f4a465e796e94a607de0c0cd1be2c9fc19a576a96495e94b8350b60be201ece8047767d0e55984
 
 pkgname = fenrir
