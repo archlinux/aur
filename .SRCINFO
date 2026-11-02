@@ -1,11 +1,19 @@
 pkgbase = stikk-bin
-	pkgdesc = A placeholder package for stikk-bin
-	pkgver = 0.0.0
+	pkgdesc = A terminal UI for the prikk version control system (prebuilt, statically linked)
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/stikk
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
-	source = stikk-bin-0.0.0.tar.gz::https://github.com/prikk-vcs/stikk/archive/refs/tags/0.0.0.tar.gz
-	sha256sums = DUMMY-FOR-INITIALIZATION
+	depends = prikk>=0.28
+	provides = stikk=0.20.0
+	conflicts = stikk
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/prikk-vcs/stikk/releases/download/0.20.0/stikk-0.20.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 2a9967cfce3c29e2aa4d3604c92f69f6839932ea35bfecca6d9badfc6553340c
+	source_aarch64 = https://github.com/prikk-vcs/stikk/releases/download/0.20.0/stikk-0.20.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = a3439314c1fccb95d3e0a74a8a9043c393046feccaf3fdafb3003d18c3d0e505
 
 pkgname = stikk-bin
