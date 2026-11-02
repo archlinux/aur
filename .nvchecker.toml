@@ -1,3 +1,4 @@
 [atoms]
 source = "git"
 git = "https://github.com/AtomsDevs/Atoms.git"
+prefix = "v"
