@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=ry
-pkgver=0.11.0 # renovate: datasource=github-tags depName=sims1253/ry
+pkgver=0.12.0 # renovate: datasource=github-releases depName=sims1253/ry
 pkgrel=1
 pkgdesc="A fast static checker for the R language, written in Rust"
 url="https://github.com/sims1253/ry"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('dc08a23f4c4cc61c92535e4e9a60f862654fec54ec3c12b902589a0b463d7124d6167b3465a92916e98f99fd0c74ab23595af1c5f3c42fd41253b3fb0bf6eff5')
+sha512sums=('5a0b091b776944bb6b7352d082907f0248aa92f053ab108039be1f88805da2110883cdee44acf6c318957ad99fdae365adbde0be1f232681d1af109149ced3e0')
