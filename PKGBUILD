@@ -1,4 +1,6 @@
-# Maintainer: zjuyk <ownbyzjuyk@gmail.com>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: zjuyk <ownbyzjuyk@gmail.com>
+
 pkgname=mdbook-toc
 pkgver=0.14.2
 pkgrel=1
