@@ -1,7 +1,7 @@
 pkgbase = gnubg-gtk3
 	pkgdesc = GNU Backgammon (GTK3 GUI)
 	pkgver = 1.08.003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gnu.org
 	arch = x86_64
 	license = GPL-3.0-or-later

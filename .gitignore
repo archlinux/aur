@@ -1,7 +1,7 @@
 *
 
 !PKGBUILD
-!.SCRINFO
+!.SRCINFO
 !gnubg.desktop
 !gnubg-wrapper
 !.nvchecker.toml

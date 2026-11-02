@@ -8,7 +8,7 @@
 
 pkgname=gnubg-gtk3
 pkgver=1.08.003
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Backgammon (GTK3 GUI)"
 arch=('x86_64')
 url="https://gnu.org"
@@ -51,5 +51,8 @@ package() {
 
   install -Dm644 "$srcdir"/gnubg.desktop \
     "$pkgdir"/usr/share/applications/gnubg.desktop
+
+  install -Dm755 "$srcdir"/gnubg-wrapper \
+    "$pkgdir"/usr/bin/gnubg-wrapper
 }
 
