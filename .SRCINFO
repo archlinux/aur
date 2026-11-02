@@ -1,0 +1,37 @@
+pkgbase = strata-files
+	pkgdesc = A fast, keyboard-first file manager for Linux
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://stratafiles.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = quickjs-ng
+	depends = bubblewrap
+	depends = desktop-file-utils
+	depends = ffmpeg
+	depends = ffmpegthumbnailer
+	depends = fontconfig
+	depends = glibc>=2.39
+	depends = gst-libav
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gtk4
+	depends = gtksourceview5
+	depends = gvfs
+	depends = poppler-glib
+	depends = unrar
+	depends = xdg-utils
+	optdepends = gvfs-smb: SMB network share support
+	optdepends = imagemagick: additional image preview support
+	optdepends = libraw: camera RAW preview support
+	optdepends = dcraw: camera RAW preview support
+	optdepends = xdg-desktop-portal: use Strata for Open/Save file chooser dialogs
+	optdepends = udiskie: unlock encrypted volumes with Strata
+	options = !lto
+	source = https://github.com/lgse/strata/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 1a65e931a53cc83182d7b7138b8fd5f5697387f31e5f104f6671e245107a9665
+
+pkgname = strata-files
