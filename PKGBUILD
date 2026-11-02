@@ -4,7 +4,7 @@
 pkgname=wal2json
 pkgver=2.7
 pkgrel=1
-pkgdesc="Output plugin for logical decoding PostgreSQL WAL's"
+pkgdesc="JSON output plugin for changeset extraction"
 arch=('x86_64')
 url="https://github.com/eulerto/wal2json"
 license=('BSD-3-Clause')
