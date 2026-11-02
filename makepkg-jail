@@ -189,12 +189,6 @@ case "$work/" in
         ;;
 esac
 
-# -s/-i/-r require sudo pacman on the host. Fail fast when passwordless
-# sudo is unavailable (e.g. aa-load-jail-only policy).
-if (( want_deps || want_install || want_rmdeps )); then
-    sudo -n -l -- pacman >/dev/null 2>&1 || die "-s/-i/-r need passwordless sudo pacman (unsupported under current sudo policy)."
-fi
-
 # --- Shared state -------------------------------------------------------
 data="${XDG_DATA_HOME:-$HOME/.local/share}/makepkg-jail"
 state="${XDG_CACHE_HOME:-$HOME/.cache}/makepkg-jail-v2"
