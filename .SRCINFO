@@ -1,6 +1,6 @@
 pkgbase = python-phonemizer
 	pkgdesc = Simple text to phones converter for multiple languages
-	pkgver = 3.4.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://pypi.org/project/phonemizer
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-phonemizer
 	conflicts = python-phonemizer
 	options = !strip
 	options = !debug
-	source = phonemizer-3.4.1.tar.gz::https://files.pythonhosted.org/packages/source/p/phonemizer/phonemizer-3.4.1.tar.gz
-	sha256sums = 1ae40e4ec0854d6a885afc5c02c89e23c9b5a8a32754a40f8129bc516a7b67f4
+	source = phonemizer-3.5.0.tar.gz::https://files.pythonhosted.org/packages/source/p/phonemizer/phonemizer-3.5.0.tar.gz
+	sha256sums = 3f7ab07e30cbd631bd5701b296c9d10421f59937db29a9030edcd1fe1524b059
 
 pkgname = python-phonemizer
