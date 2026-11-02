@@ -10,11 +10,9 @@ url="https://github.com/eulerto/wal2json"
 license=('BSD-3-Clause')
 depends=('glibc' 'postgresql')
 makedepends=('clang' 'llvm')
-install="wal2json.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgname}_${pkgver//./_}.tar.gz"
-        "wal2json.install")
-sha256sums=('e6c12d02dc32e4d610dce33ee52ea85a54e12a563e79c4844508b6c061ff07a1'
-            '4dcef8c4e2c6badb3c68af16235632b042e867cbef0beecac4734acb53f7915c')
+install=wal2json.install
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgname}_${pkgver//./_}.tar.gz")
+sha256sums=('e6c12d02dc32e4d610dce33ee52ea85a54e12a563e79c4844508b6c061ff07a1')
 
 build() {
   cd "${pkgname}-${pkgname}_${pkgver//./_}"
