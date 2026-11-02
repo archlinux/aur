@@ -4,7 +4,7 @@
 
 _pkgver=v2026.11.1
 pkgver="${_pkgver#v}"
-pkgrel=1
+pkgrel=2
 
 _pkgname=sourcepp
 pkgname="python-${_pkgname}"
@@ -18,7 +18,7 @@ depends=(
 	'python>=3.10' 'python<=3.15'
 )
 
-makedepends=('git' 'cmake' 'python-build' 'python-scikit-build-core' 'nanobind' 'python-installer')
+makedepends=('git' 'cmake' 'make' 'python-build' 'python-scikit-build-core' 'nanobind' 'python-installer')
 
 source=("git+${url}#tag=${_pkgver}")
 sha256sums=('45bfe3d2d057a4aaa095e997137c03ad493978dcb0bf107a49718c1999640477')
