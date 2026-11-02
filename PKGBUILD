@@ -1,7 +1,7 @@
 # Maintainer: pxlwh <pxlwh@aur>
 pkgname=booru-viewer-git
 _pkgname=booru-viewer
-pkgver=0.3.5.r0.gc955365
+pkgver=0.3.5.r0.gc343c7e
 pkgrel=1
 pkgdesc="Local booru image browser with Qt6 GUI (Danbooru, Gelbooru, e621, and more)"
 arch=('any')
