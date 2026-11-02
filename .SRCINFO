@@ -1,6 +1,6 @@
 pkgbase = nitromta-bin
 	pkgdesc = Self-hosted mail delivery engine that speaks the Amazon SES v2 API
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://nitromta.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nitromta-bin
 	depends = glibc
 	provides = nitromta
 	conflicts = nitromta
-	source_x86_64 = https://github.com/nitrosend/nitromta/releases/download/v0.1.4/nitromta-0.1.4-x86_64-linux.tar.gz
-	sha256sums_x86_64 = d72947f0147639585c255f00caccca9b9f69419d962d3d92915d62f2ed4880ae
-	source_aarch64 = https://github.com/nitrosend/nitromta/releases/download/v0.1.4/nitromta-0.1.4-aarch64-linux.tar.gz
-	sha256sums_aarch64 = f11175d439391395a978d222fcb64cb7d3cc616c6f7823c2f817e61c179a5310
+	source_x86_64 = https://github.com/nitrosend/nitromta/releases/download/v0.1.5/nitromta-0.1.5-x86_64-linux.tar.gz
+	sha256sums_x86_64 = e59f8c139aedf9bb501ccd594c230b4316d7568431dfbde290c90de6e9f34441
+	source_aarch64 = https://github.com/nitrosend/nitromta/releases/download/v0.1.5/nitromta-0.1.5-aarch64-linux.tar.gz
+	sha256sums_aarch64 = c7e2fd1487977345a0d7219beb2cb7e7f3fbd410878e14d91a2900cd53e1178b
 
 pkgname = nitromta-bin
