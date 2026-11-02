@@ -20,33 +20,43 @@ esac
 # Unknown invocations fail rather than guessing their network needs.
 mode=
 
-if (( $# == 1 )); then
-    case "$1" in
-        --printsrcinfo) mode=metadata ;;
-        --packagelist)  mode=packagelist ;;
-    esac
+case "${1:-}" in
+    --printsrcinfo|--packagelist)
+        query_option=$1
 
-elif (( $# == 2 )); then
-    if [[ "$1" == -ofA && "$2" == -C ]]; then
-        mode=online
-    fi
+        for arg in "${@:2}"; do
+            case "$arg" in
+                --ignorearch|-A) ;;
+                *)
+                    die "Unsupported modifier for $query_option: $arg"
+                    ;;
+            esac
+        done
 
-elif (( $# == 3 )); then
-    if [[ "$1" == --verifysource &&
-          "$2" == -Af &&
-          "$3" == -Cc ]]; then
-        mode=online
-    fi
+        case "$query_option" in
+            --printsrcinfo) mode=metadata ;;
+            --packagelist)  mode=packagelist ;;
+        esac
+        ;;
 
-elif (( $# == 5 )); then
-    if [[ "$1" == -feA &&
-          "$2" == --noconfirm &&
-          "$3" == --noprepare &&
-          "$4" == --holdver &&
-          "$5" == -c ]]; then
-        mode=build
-    fi
-fi
+    --verifysource)
+        if (( $# == 3 )) &&
+            [[ "$2" == -Af && "$3" == -Cc ]]; then
+            mode=verify
+        fi ;;
+    -ofA)
+        if (( $# == 2 )) && [[ "$2" == -C ]]; then
+            mode=online
+        fi ;;
+    -feA)
+        if (( $# == 5 )) &&
+            [[ "$2" == --noconfirm &&
+               "$3" == --noprepare &&
+               "$4" == --holdver &&
+               "$5" == -c ]]; then
+            mode=build
+        fi ;;
+esac
 
 case "$mode" in
     online)
