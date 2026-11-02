@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-browser
-pkgver=2.9.8
+pkgver=2.9.9
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'nodejs' 'pnpm')
 options=('!strip' '!emptydirs')
-source=("v2.9.8.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v2.9.8.tar.gz")
-sha256sums=('88f0d724f6b39a377d97e3d635a4a39458b11b7b028aa9c834bd4497c4081edf')
-_builddir="$pkgname-2.9.8"
+source=("v2.9.9.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v2.9.9.tar.gz")
+sha256sums=('15f7dac80ad6be0cd3a1130241b36cda708395d9df5acff7281139c31f267f2f')
+_builddir="$pkgname-2.9.9"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
     pnpm install --frozen-lockfile
