@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: files-on-demand FUSE mount, CLI, GTK4 app and tray"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!lto')
 # Stops the running daemon before removal, so the mount stops mirroring deletes.
 install=proton-drive.install
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9b16b1027816a379d6a11c6396d779f751a6f94becaa16b17439420f561d13d')
+sha256sums=('542c534976e335cde6658de127e1eefffade9057d5332fd33457bc371c7a2737')
 
 _srcname="proton-drive-linux-$pkgver"
 
