@@ -1,61 +1,76 @@
-opentubex (0.37.2) stable; urgency=medium
+opentubex (0.37.3) stable; urgency=medium
 
-  [ Improvements ]
-  * The update prompt and store listings now leave out changes that only affect
-    other platforms.
-  * Mono Audio plays both audio channels in both ears, for videos whose sound
-    only comes out of one side of your headphones. Turn it on in Player
-    settings, or enable Show Mono Audio Toggle to switch it from the player
-    menu.
-  * The preferred video codec setting in Advanced settings is now available on
-    every device, and its tooltip explains how AV1, VP9 and H.264 differ in data
-    use, battery use and resolution.
-  * Comments from channels you're subscribed to now show a person-with-checkmark
-    badge instead of the OpenTubeX logo, and the badge also appears when using
-    Invidious.
-  * Options in the player's captions menu now opens a Style page for the font,
-    text color and opacity, size, background color and opacity, edge style, and
-    position. Player settings offer the same options and stay in sync, but
-    vertical position and edge color are no longer available.
-  * Videos in the built-in player start loading up to a second sooner.
+  [ Highlights ]
+  * Focus settings have a new Digital Wellbeing tab with a grayscale mode, daily
+    watch time and Shorts limits, break reminders, and a bedtime reminder that
+    can silence upload notifications.
+
+  [ More improvements ]
+  * The Playlists icon in the navigation, tabs, and page headings is now
+    outlined to match the other navigation icons.
+  * When a package manager installed OpenTubeX, the update prompt now shows its
+    update command with a Copy button instead of a link to the website.
+  * Subscription groups can now have an icon, shown beside the group's name in
+    the group tabs and the subscribe button's group list.
+  * You can now choose how many search history entries and suggestions the
+    search bar shows before its list scrolls, from 5 to 50, in Appearance
+    settings.
+  * Chapters now have a loop button that repeats the chapter with A-B repeat.
+    Press it again to stop.
+  * You can keep the window open when you close its last tab. Turn off "Close
+    window when closing the last tab" in General settings, and a new tab opens
+    in its place.
+  * Follow creators from other platforms through RSS and Atom feeds, for example
+    from an RSSHub instance, in an optional RSS tab on the Subscriptions page.
+    Turn it on in the subscription settings.
+  * YouTube playlists, including saved ones, now have the "Search for Videos"
+    field. Searching loads the rest of the playlist so the results cover every
+    video.
+  * The actions below a video stay in one row of evenly sized buttons on narrow
+    screens, and the actions that don't fit move to a More options menu.
+  * Caption font size and background opacity have sliders again, in the captions
+    menu next to common values and in the settings. Font sizes go from 50% to
+    400% and opacities from 0% to 100%, both in 5% steps.
+  * Caption settings show color swatches, and the sample caption previews each
+    option as you hover over or move through it.
+  * Place each player control on the control bar, in the player menu, or
+    nowhere, and reorder the player menu. Resolution, playback speed, audio
+    tracks, loop, screenshot and chapters can now go on the control bar, and you
+    can hide any player menu entry, such as ambient mode, the sleep timer or
+    captions.
+  * Screenshots can be saved as JPEG XL. The format picker now lists legacy and
+    modern formats separately.
+  * When the video actions below the player share a narrow row, the download
+    button now sits at the end, after the More button.
+  * Afrikaans, Esperanto, and Urdu are now available as display languages.
+  * The Distraction Free settings category is now called Focus, and every
+    settings category describes what it contains more accurately.
 
   [ Fixed bugs ]
-  * Twitch VODs list all of their qualities in the quality menu again, instead
-    of only the one that's playing, and start in your default quality even when
-    that's the source quality.
-  * Ending a SponsorBlock segment at the end of a video no longer fills in an
-    end time past the video's length.
-  * Videos from sites such as Dailymotion no longer fail with "Cannot read
-    properties of null (reading 'includes')" right after they start loading.
-  * Paused videos no longer repeat the server countdown and reload when YouTube
-    stops sending media after the first minute.
-  * Dropdown menus, tooltips, and other popups in Firefox now open next to their
-    button on scrolled pages instead of somewhere else on the screen.
-  * Seeking during playback no longer plays a split second of audio at the new
-    position twice.
-  * When the tabs in the top or bottom tab bar overflow, they now sit centered
-    in the bar with equal space above and below, instead of hugging one edge.
-  * Buttons such as Cancel in pop-up messages are now readable with light
-    themes.
-  * A horizontal scrollbar no longer flashes when a Short returns from the mini
-    player.
-  * Creating or editing a subscription group opens quickly even with many
-    subscriptions, and the scrollbar no longer jumps while scrolling through its
-    channels.
-  * Videos in the built-in player stop buffering after about a minute much less
-    often.
-  * When YouTube blocks a video for signed-out users because it features minors,
-    the error message now says so instead of only suggesting an IP block.
-  * Copying a playlist or adding several videos to a playlist at once no longer
-    fails when a video has collaborators.
-  * Downloaded videos no longer get stuck loading until you seek when "Buffer
-    Before Playing" is set above 0, for example with the Smooth Playback
-    buffering preset.
-  * The hint for videos that need cookies now points to Settings → Advanced →
-    External Software → yt-dlp Cookies.
-  * Videos in the queue now sit centered in their rows, with even spacing and
-    thumbnails aligned to the drag handles, even beside long titles.
-  * Verified and official artist badges now stay beside the end of long channel
-    names instead of wrapping onto a line of their own.
+  * Dropdown menus, tooltips, and color pickers in the settings window now open
+    next to their button in Firefox instead of off to the side.
+  * Captions keep one size at font sizes other than 100%, instead of growing
+    word by word and spilling past their background.
+  * Video lengths past 24 hours now include days, such as 1:01:01:01, matching
+    the player.
+  * The tab bar now scrolls to the active tab when the app opens, when you
+    switch tabs with the keyboard, and when you open a new tab, so the active
+    tab stays visible.
+  * Tooltips now stay where they open instead of following the pointer, and
+    appear centered below buttons and navigation items.
+  * The reminder button on upcoming videos is filled with the accent color again
+    while a reminder is set, so it's easy to tell on from off.
+  * The audio track menu no longer resets while a video plays, so dragging its
+    scrollbar keeps scrolling.
+  * Menus no longer end with an empty separator line, for example the More menu
+    of a YouTube playlist.
+  * The player menu in the Customize interface preview now looks like the real
+    one, with centered tiles, and shows a list when the grid layout is turned
+    off.
+  * Channel About pages now show links whose address leaves out https://.
+  * The default playback speed is now rounded to two decimal places, so changing
+    the speed step no longer leaves values such as 1.1500000000000001.
+  * When using Invidious, the arrow keys now reach the About tab on channel
+    pages.
 
- -- OpenTubeX contributors <info@opentubex.org>  Sat, 31 Oct 2026 00:58:16 +0000
+ -- OpenTubeX contributors <info@opentubex.org>  Mon, 02 Nov 2026 02:50:16 +0000
