@@ -4,7 +4,9 @@ pkgbase=alibabasans-fonts
 _fontname=AlibabaSans
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 pkgver=1.0
-pkgrel=5
+pkgrel=6
+# fonts.alibabadesign.com has enabled Referer anti-hotlinking; a Referer from the same domain is required to download files.
+DLAGENTS=('https::/usr/bin/curl -fLC - --referer https://fonts.alibabadesign.com/ -o %o %u')
 pkgdesc="A typeface for creating alibaba sans viet in text.阿里巴巴普惠体拉丁,172语种,6字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
