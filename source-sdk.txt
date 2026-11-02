@@ -1,0 +1,32 @@
+The Source SDKs of the games Metamod:Source and SourceMod support
+(https://github.com/alliedmodders/hl2sdk, a branch per game), with their tier1,
+mathlib and interfaces libraries built from the SDKs' sources.
+
+The Source SDK is Copyright (c) 1996-2013, Valve Corporation, all rights
+reserved, and is licensed under the terms Valve distributes it under for the
+development of mods and plugins for Source engine games. The SDKs' branches
+carry no license text of their own.
+
+The SDKs also contain third-party code, under its own licenses, whose texts
+this package includes:
+
+- Protocol Buffers 2.5.0 (csgo, blade) and 3.2.0 (mcv), BSD-3-Clause: their
+  sources in common/, and the libprotobuf.a libraries this package builds from
+  the releases (protobuf-2.5.0.txt, protobuf-3.2.0.txt)
+- snappy, Copyright 2005 Google Inc., BSD-3-Clause: in tier1 of bms, css, dods,
+  hl2dm, pvkii, sdk2013 and tf2, and in the tier1 libraries of sdk2013 and bms
+  (snappy.txt)
+- zlib 1.2.5's headers, Copyright (C) 1995-2010 Jean-loup Gailly and Mark
+  Adler, Zlib: public/zlib of css, dods, hl2dm, pvkii and tf2 (zlib.txt)
+- libjpeg 6b's and 8's headers, Copyright (C) 1991-1998 Thomas G. Lane and
+  (8) 2002-2009 Guido Vollbeding, IJG: public/jpeglib of every SDK (the
+  READMEs of the releases, libjpeg-6b.txt and libjpeg-8.txt)
+- XZip and XUnzip, Lucian Wischik's and Valve's changes of Info-ZIP's code,
+  Info-ZIP: public/ of every SDK (info-zip.txt)
+- The LZMA SDK, by Igor Pavlov, public domain: utils/lzma of css, dods, hl2dm,
+  pvkii, sdk2013 and tf2, and the tier1 library of sdk2013
+
+Other headers in public/ come from other vendors with no license of their own
+(S3's nvtc.h, ATI's and AMD's ATI_Compress.h and amd3dx.h, NVIDIA's in togl,
+Microsoft's afxmem_override.cpp, RAD's Bink headers, the Steamworks SDK's
+headers): they're part of the SDK as Valve distributes it, under its terms.
