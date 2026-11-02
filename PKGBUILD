@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
     cd mdBook
     mkdir -p completions/
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
