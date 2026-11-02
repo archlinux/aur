@@ -1,7 +1,7 @@
 # Maintainer: xTom <packages@xtom.com>
 # Maintainer: Xiufeng Guo <i@m.ac>
 pkgname=rdap-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="RDAP (Registration Data Access Protocol) client and API server - prebuilt binary"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ backup=('etc/default/rdap')
 options=('!strip' '!debug')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/rdap_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/rdap_${pkgver}_arm64.deb")
-sha256sums_x86_64=('40a5d932c77f33f85966c4eb0b3ec2e62c0571eddaa115bda99524d79678798d')
-sha256sums_aarch64=('44c303592a2f4531f4b28ef0244efc12e08b9700741de4d08f7db35ed52e5959')
+sha256sums_x86_64=('3fe2a40f161002d464a3e586a7fc8c2f9a580c012caa76bb6fe9b715e876dfbf')
+sha256sums_aarch64=('70ca23c890386a3fbcb45eb48c11586cee858610be04e5886c45ecb757d5e1d4')
 
 package() {
     cd "$srcdir"

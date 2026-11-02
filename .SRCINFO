@@ -1,6 +1,6 @@
 pkgbase = rdap-bin
 	pkgdesc = RDAP (Registration Data Access Protocol) client and API server - prebuilt binary
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/xtomcom/rdap
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rdap-bin
 	options = !strip
 	options = !debug
 	backup = etc/default/rdap
-	source_x86_64 = rdap-bin-1.1.0-x86_64.deb::https://github.com/xtomcom/rdap/releases/download/v1.1.0/rdap_1.1.0_amd64.deb
-	sha256sums_x86_64 = 40a5d932c77f33f85966c4eb0b3ec2e62c0571eddaa115bda99524d79678798d
-	source_aarch64 = rdap-bin-1.1.0-aarch64.deb::https://github.com/xtomcom/rdap/releases/download/v1.1.0/rdap_1.1.0_arm64.deb
-	sha256sums_aarch64 = 44c303592a2f4531f4b28ef0244efc12e08b9700741de4d08f7db35ed52e5959
+	source_x86_64 = rdap-bin-1.1.1-x86_64.deb::https://github.com/xtomcom/rdap/releases/download/v1.1.1/rdap_1.1.1_amd64.deb
+	sha256sums_x86_64 = 3fe2a40f161002d464a3e586a7fc8c2f9a580c012caa76bb6fe9b715e876dfbf
+	source_aarch64 = rdap-bin-1.1.1-aarch64.deb::https://github.com/xtomcom/rdap/releases/download/v1.1.1/rdap_1.1.1_arm64.deb
+	sha256sums_aarch64 = 70ca23c890386a3fbcb45eb48c11586cee858610be04e5886c45ecb757d5e1d4
 
 pkgname = rdap-bin
