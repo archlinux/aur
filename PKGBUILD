@@ -1,33 +1,28 @@
 # Maintainer: tomsh <tomsh@disroot.org>
 pkgname=yamep
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="YAMEP - Yet Another Markdown Editor in Python"
+pkgdesc="Yet Another Markdown Editor & Preview"
 arch=('any')
-url="https://codeberg.org/tomsh/yamep"
-license=('MIT')
-depends=('python' 'pyside6' 'python-markdown' 'python-platformdirs' 'python-pymdown-extensions')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tomsh/yamep/archive/${pkgver}.tar.gz"
-        "yamep.desktop")
-sha256sums=('0422f08b2a1aa49c2fee9c4119f99ae7f88a9e722c63157c3f049022c0b442ab'
-            'c2d21877504fbb883c44772b430234c64f02cdcf771a9e52f44a83e6786c39a1')
+url="https://github.com/itstomsh/yamep"
+license=('GPL-3.0-or-later')
+depends=('python' 'pyside6' 'qt6-webengine' 'python-markdown' 'python-platformdirs' 'python-pymdown-extensions')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/itstomsh/yamep/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2dd8d71fb1fcb313ac20bb5706859f1914fbc960b5fce86ef53641c648ef4c78')
 
 build() {
-    cd "$srcdir/${pkgname}"
-    python setup.py build
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
-    python setup.py install --root="$pkgdir/" --optimize=1
-
-    # Install desktop file
-    install -Dm644 "$srcdir/yamep.desktop" "$pkgdir/usr/share/applications/yamep.desktop"
-
-    # Install icon
-    install -Dm644 "$srcdir/yamep/yamep/resources/yamep.png" "$pkgdir/usr/share/pixmaps/yamep.png"
-
-    # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 flatpak/io.github.itstomsh.yamep.desktop \
+        "$pkgdir/usr/share/applications/io.github.itstomsh.yamep.desktop"
+    install -Dm644 flatpak/io.github.itstomsh.yamep.png \
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/io.github.itstomsh.yamep.png"
+    install -Dm644 flatpak/io.github.itstomsh.yamep.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/io.github.itstomsh.yamep.metainfo.xml"
 }
