@@ -122,7 +122,8 @@ steps:
       - ls -la /tmp/portfolio_screenshot.png
       # Upload screenshot to imgage hoster
       - echo "Uploading screenshot..."
-      - curl -F'file=@/tmp/portfolio_screenshot.png' -Fexpires=72  https://0x0.st || true
+      #- curl -F'file=@/tmp/portfolio_screenshot.png' -Fexpires=72  https://0x0.st || true
+      - curl -sS -F 'file=@/tmp/portfolio_screenshot.png' https://beacon.host/v1/upload || true
       # Verify screenshot is not just black/empty (indicates GUI failure)
       - echo "Verifying screenshot quality..."
       - |
