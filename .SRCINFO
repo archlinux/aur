@@ -1,6 +1,6 @@
 pkgbase = pcb-rnd-svn
 	pkgdesc = free/open source, flexible, modular Printed Circuit Board editor
-	pkgver = r40561
+	pkgver = r40562
 	pkgrel = 1
 	url = http://www.repo.hu/projects/pcb-rnd/
 	arch = x86_64
