@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mechrevo Console
+Name[zh_CN]=机械革命控制中心
+Comment=Device readings, capability inspection and diagnostic export
+Comment[zh_CN]=查看设备读数、控制能力与导出诊断信息
+Exec=/usr/bin/mechrevo-console-gui
+TryExec=/usr/bin/mechrevo-console-gui
+Icon=computer
+Terminal=false
+StartupWMClass=best.lmm.mechrevo-console
+Categories=System;Monitor;
+Keywords=Mechrevo;Hardware;Temperature;Fan;Diagnostics;
+Keywords[zh_CN]=机械革命;硬件;温度;风扇;诊断;
