@@ -8,7 +8,7 @@ _gitname='crabber'
 _giturl="https://github.com/auf-gg/${_gitname}"
 
 pkgname=crabber-git
-pkgver=0.4.1.r0.gb9fae4f
+pkgver=0.4.2.r0.gd5ffc27
 pkgrel=1
 pkgdesc='XMPP messenger built on GPUI (git version)'
 arch=('x86_64')
