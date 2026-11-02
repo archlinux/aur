@@ -1,6 +1,6 @@
 pkgbase = krema
 	pkgdesc = A lightweight dock for KDE Plasma 6 — spiritual successor to Latte Dock
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://krema.bhyoo.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = krema
 	makedepends = extra-cmake-modules>=6.0
 	makedepends = gcc>=14
 	makedepends = qt6-shadertools
-	depends = qt6-base>=6.8
+	makedepends = qt6-base
 	depends = qt6-declarative>=6.8
 	depends = qt6-wayland
 	depends = qt6-quick3d>=6.8
@@ -36,7 +36,32 @@ pkgbase = krema
 	depends = kpipewire
 	depends = pipewire
 	depends = wayland>=1.22
-	source = krema-0.12.0.tar.gz::https://github.com/isac322/krema/releases/download/v0.12.0/krema-0.12.0.tar.gz
-	sha256sums = 44cb0256fe832a2ebe27de6801b50a26953affa76313179f303c84977c7cea4d
+	source = krema-0.13.0.tar.gz::https://github.com/isac322/krema/releases/download/v0.13.0/krema-0.13.0.tar.gz
+	sha256sums = 213ddf7198d430cddc4ac110bcb8d5f0413b60f0414e3cf39492dd25a57af07d
 
 pkgname = krema
+	depends = qt6-declarative>=6.8
+	depends = qt6-wayland
+	depends = qt6-quick3d>=6.8
+	depends = kwindowsystem>=6.0
+	depends = kconfig>=6.0
+	depends = kcoreaddons>=6.0
+	depends = kdbusaddons>=6.0
+	depends = ki18n>=6.0
+	depends = kglobalaccel>=6.0
+	depends = kcolorscheme>=6.0
+	depends = kiconthemes>=6.0
+	depends = kcrash>=6.0
+	depends = kxmlgui>=6.0
+	depends = kservice>=6.0
+	depends = kio>=6.0
+	depends = kjobwidgets>=6.0
+	depends = kirigami>=6.0
+	depends = kirigami-addons
+	depends = layer-shell-qt>=6.0
+	depends = plasma-workspace
+	depends = kpipewire
+	depends = pipewire
+	depends = wayland>=1.22
+	depends = qt6-base>=.
+	depends = qt6-base<.1

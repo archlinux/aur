@@ -2,14 +2,13 @@
 # SPDX-FileCopyrightText: 2026 Krema Contributors
 
 pkgname=krema
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A lightweight dock for KDE Plasma 6 — spiritual successor to Latte Dock'
 arch=('x86_64' 'aarch64')
 url='https://krema.bhyoo.com/'
 license=('GPL-3.0-or-later' 'MIT-CMU')
 depends=(
-    'qt6-base>=6.8'
     'qt6-declarative>=6.8'
     'qt6-wayland'
     'qt6-quick3d>=6.8'
@@ -40,9 +39,10 @@ makedepends=(
     'extra-cmake-modules>=6.0'
     'gcc>=14'
     'qt6-shadertools'
+    'qt6-base'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/isac322/krema/releases/download/v0.12.0/krema-0.12.0.tar.gz")
-sha256sums=('44cb0256fe832a2ebe27de6801b50a26953affa76313179f303c84977c7cea4d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/isac322/krema/releases/download/v0.13.0/krema-0.13.0.tar.gz")
+sha256sums=('213ddf7198d430cddc4ac110bcb8d5f0413b60f0414e3cf39492dd25a57af07d')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
@@ -55,6 +55,23 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    # Qt private/QPA APIs have no ABI guarantee across minor releases despite
+    # unchanged SONAMEs; rebuild krema after Qt upgrades.
+    local qt_version qt_epoch
+    local qt_major qt_minor
+    qt_version=$(pacman -Q qt6-base | awk '{print $2}')
+    qt_epoch=
+    case $qt_version in
+        *:*) qt_epoch=${qt_version%%:*}:; qt_version=${qt_version#*:};;
+    esac
+    qt_version=${qt_version%%-*}
+    qt_major=${qt_version%%.*}
+    qt_minor=${qt_version#*.}
+    qt_minor=${qt_minor%%.*}
+    depends+=(
+        "qt6-base>=${qt_epoch}${qt_major}.${qt_minor}"
+        "qt6-base<${qt_epoch}${qt_major}.$((qt_minor + 1))"
+    )
     # MIT-CMU is not one of Arch's common licenses, so its text must ship.
     install -Dm644 "$pkgname-$pkgver/LICENSES/MIT-CMU.txt" \
         "$pkgdir/usr/share/licenses/$pkgname/MIT-CMU.txt"
