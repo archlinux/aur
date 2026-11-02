@@ -1,0 +1,6 @@
+post_upgrade() {
+  if [ "$(vercmp "$2" 1.9.0)" -lt 0 ] && [ -f /etc/sngrep/sngreprc.pacsave ]; then
+    echo "  sngrep-bin 1.9.0 installs the config as /etc/sngreprc."
+    echo "  Your edited /etc/sngrep/sngreprc is now /etc/sngrep/sngreprc.pacsave."
+  fi
+}
