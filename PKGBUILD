@@ -8,7 +8,7 @@
 pkgname=horneroctl-bin
 _reltag=horneroctl-v0.2.0-preview37
 pkgver=0.2.0_preview37
-pkgrel=1
+pkgrel=2
 pkgdesc='HorneroOS system CLI (native binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/HorneroOS/hornero'
@@ -20,6 +20,12 @@ optdepends=(
   'minisign: verify signed HorneroOS community plugin registry indexes'
   'hornero-shell: validate community plugin packages with the Shell-owned contract checker'
 )
+# Release public key as a declared local source: AUR snapshot tarballs
+# only include declared sources, so every install path receives it.
+# Import once: gpg --import hornero-release.pub.asc (fingerprint must
+# match validpgpkeys). Helpers may also fetch it from keyservers.
+source=('hornero-release.pub.asc')
+sha256sums=('4f18f92773a924e71b1af2045be932f7bc8fa16dcff6266d5c37cf1114605afb')
 source_x86_64=(
   "horneroctl-${pkgver}::https://github.com/HorneroOS/hornero/releases/download/${_reltag}/horneroctl-linux-x86_64"
   "horneroctl-${pkgver}.asc::https://github.com/HorneroOS/hornero/releases/download/${_reltag}/horneroctl-linux-x86_64.asc"
