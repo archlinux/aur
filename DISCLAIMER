@@ -1,0 +1,43 @@
+妙手（CatPaw 国内版）Linux 移植说明
+=====================================
+
+1. 本包不是上游官方发布物。上游只提供 macOS（darwin-x64）安装包；本包在构建时
+   把它转换为 Linux Electron 应用，安装到 /opt/catpaw-cn。
+
+2. 以下内容来自上游官方或官方组件：
+   - 应用代码 app.asar（仅重写 asar 头以登记 Linux 原生模块，负载逐字节不变）
+   - Electron 42.11.2 官方 Linux 构建
+   - Node.js 24.18.0 与 CPython 3.12.13 官方 Linux 运行时
+   - 官方 Linux 预编译包：better-sqlite3、sharp（含 libvips）、@napi-rs/canvas、
+     koffi、@wecom/cli、ffmpeg
+   - 使用官方源码与 Electron 头文件在本地编译：node-pty、bufferutil、
+     utf-8-validate（未修改上游源码）
+
+3. 已知限制：
+   - 仅支持 x86_64。
+   - 上游的 resources/native/xlsx-sidecar 只有 Mach-O 版本，本包不安装；
+     任何依赖该侧车的 Excel 功能（例如 .xlsx/.xls 表格的解析、预览与转换）
+     在 Linux 不可用，其它文档能力不受影响。
+   - 应用首次运行时会从 PyPI / npm 下载各 Skill 的依赖（这是上游行为），
+     需要联网；系统工具（LibreOffice、Poppler、Pandoc、Tesseract、qpdf）
+     通过 PKGBUILD 的 optdepends 提供。
+
+4. 国内版与国际版使用不同的产品名、应用标识与数据目录，可同时安装：
+   - 国内版：产品名 / WM class = catpaw-moon，appId = com.catx.catpaw，
+     数据目录 ~/.meituan-catpaw
+   - 国际版：产品名 / WM class = catpaw-overseas，appId =
+     com.catx.catpaw.overseas，数据目录 ~/.catpaw-overseas
+   桌面文件与图标均按各自的 WM class 命名，因此桌面与 Dash 会显示为两个
+   独立条目，不会合并。为避免两版争抢 x-scheme-handler/catpaw-app，本包的
+   桌面文件不注册 URL scheme；需要深链时请自行用 xdg-mime 指定默认处理程序。
+
+5. 启动器始终使用 --no-sandbox。Electron 自带的 chrome-sandbox 只有在
+   安装为 root:root 且 setuid 4755 时才有效，AUR 包无法保证这一点，因此
+   本包不安装该文件。代价是渲染进程失去 OS 级沙箱隔离；请只在可信工作区
+   使用，不要在不可信网页或来源不明的 Skill 下处理敏感数据。
+
+6. 内置 ffmpeg 为上游 @ffmpeg-installer 4.1.0 附带的 Linux 静态构建（2018），
+   仅用于本地音视频转换；本包未替换为系统 ffmpeg。
+
+7. 上游 DMG 未附带终端用户许可协议（EULA）。本包只按非官方移植方式分发
+   上游二进制，使用者仍需自行遵守妙手的服务条款与隐私政策。

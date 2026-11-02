@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=妙手
+Name[zh_CN]=妙手
+GenericName=AI Agent
+Comment=妙手 AI Agent（国内版，非官方 Linux 移植）
+Exec=/usr/bin/catpaw-cn
+Icon=catpaw-moon
+Terminal=false
+Categories=Utility;
+StartupNotify=true
+StartupWMClass=catpaw-moon
