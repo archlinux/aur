@@ -1,0 +1,55 @@
+pkgbase = voicestudio-git
+	pkgdesc = Local AI voice studio: cloning, speech, dubbing and transcription (development sources)
+	pkgver = 0.5.7.r6387.g1a29929
+	pkgrel = 1
+	url = https://voicestudio.sh
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = bun>=1.4.2
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = nodejs>=22.12
+	makedepends = npm
+	makedepends = pkgconf
+	makedepends = rust
+	makedepends = shaderc
+	makedepends = spirv-headers
+	makedepends = uv
+	makedepends = vulkan-headers
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = libdrm
+	depends = libnotify
+	depends = libsecret
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxfixes
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	depends = nspr
+	depends = nss
+	depends = openssl
+	depends = util-linux-libs
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = xdg-utils
+	depends = xdotool
+	optdepends = libappindicator-gtk3: tray integration on compatible desktops
+	optdepends = xdg-desktop-portal: native file dialogs and desktop integration
+	provides = voicestudio=0.5.7.r6387.g1a29929
+	conflicts = voicestudio
+	options = !strip
+	options = !debug
+	options = !lto
+	source = voicestudio::git+https://github.com/debpalash/VoiceStudio.git#branch=main
+	sha256sums = SKIP
+
+pkgname = voicestudio-git
