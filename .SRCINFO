@@ -1,0 +1,23 @@
+pkgbase = solace
+	pkgdesc = Sol Anachronistic Computer Emulation: a Sol-20 computer emulator
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://www.sol20.org/solace.html
+	arch = i686
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = sh
+	depends = wine
+	depends = hicolor-icon-theme
+	source = https://www.sol20.org/solace/solace3_2.zip
+	source = LICENSE
+	source = solace.sh
+	source = solace.desktop
+	source = solace-icons.tar.gz
+	sha256sums = 45461d9a3ff7e9b17fffe9a5b66d49c3d06c6282da405fd0d5138a2424953a1d
+	sha256sums = 6597162eeb6bfe57e163bf86338de1f29e07a69df6c5dcbe29a39812f82969bb
+	sha256sums = 30cc75efff32854bbc8c7858b13dfa617aa69af6aac71b017760401279b7f978
+	sha256sums = dce4dc9d6d0403a3b32cf2481ae08b90c2bd52cb70ad9bad843c1b2f1ef6cc86
+	sha256sums = c72708c84094771caf288f0de6b4b1c8f9180dfd149431cc50facb9b21d3df62
+
+pkgname = solace

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Solace
+Comment=Sol Anachronistic Computer Emulation: a Sol-20 computer emulator
+Exec=solace
+Icon=solace
+Terminal=false
+StartupNotify=false
+Categories=Wine;Emulators;

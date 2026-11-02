@@ -1,0 +1,14 @@
+LICENSE:
+
+    If you want to take pieces of code out of Solace, feel free.  If you
+    take large parts of code, I'd like to be given a bit of credit for my
+    work; including it in a comment in the code itself would be nice.
+    Please drop me a line if you make use of my code; I'd get a kick out
+    of knowing that somebody found it useful.
+
+    Should you feel motivated to improve Solace in a major way, or even a
+    minor way, that you think would be of interest to the three other
+    Solace users in the world, please let me know and I'll integrate your
+    change (if I also think it is useful to a larger audience) to the
+    "official" Solace.
+

@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!solace.sh
+!solace.desktop
+!solace-icons.tar.gz
+
