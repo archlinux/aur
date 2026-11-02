@@ -1,7 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Notify Ctrl <notify-ctrl@qq.com>
+# SPDX-License-Identifier: BSD-2-Clause
+
 # Maintainer: Notify Ctrl <notify-ctrl@qq.com>
+
 pkgname=ktabletop-git
 _pkgname=ktabletop
-pkgver=r283.d316e71
+pkgver=r319.753a752
 pkgrel=1
 pkgdesc="A boardgame platform based on Qt/QML and KDE Frameworks, using Lua for scripting"
 arch=('x86_64' 'aarch64')
@@ -12,6 +16,7 @@ depends=(
     'libgit2'
     'openssl'
     'spdlog'
+    'zlib'
     'qt6-base'
     'qt6-declarative'
     'kirigami'
@@ -20,6 +25,7 @@ depends=(
     'kconfig'
     'ki18n'
     'kcolorscheme'
+    'qtkeychain-qt6'
 )
 makedepends=(
     'cmake'
