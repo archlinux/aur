@@ -1,19 +1,20 @@
 pkgbase = pcb-rnd-svn
 	pkgdesc = free/open source, flexible, modular Printed Circuit Board editor
-	pkgver = r35263
+	pkgver = r40561
 	pkgrel = 1
 	url = http://www.repo.hu/projects/pcb-rnd/
-	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = LGPL-2.0-or-later
 	makedepends = subversion
-	depends = librnd3
+	depends = sh
+	depends = librnd4
 	depends = libxml2
 	optdepends = gd: gd based exports and pixmap imports (png, gif, jpeg)
 	optdepends = freetype2: import_ttf plugin
 	optdepends = fungw
 	provides = pcb-rnd
+	conflicts = pcb-rnd
 	source = svn://svn.repo.hu/pcb-rnd/trunk
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pcb-rnd-svn

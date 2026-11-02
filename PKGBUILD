@@ -1,20 +1,29 @@
-# Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: CuVoodoo <pcb-rnd@cuvoodoo.info>
 # Contributor: Kyle Keen <keenerd@gmail.com?>
+
 pkgname=pcb-rnd-svn
-pkgver=r35263
+pkgver=r40561
 pkgrel=1
 pkgdesc="free/open source, flexible, modular Printed Circuit Board editor"
 url="http://www.repo.hu/projects/pcb-rnd/"
-arch=('i686' 'x86_64')
-license=('GPL2')
-depends=('librnd3' 'libxml2')
-optdepends=('gd: gd based exports and pixmap imports (png, gif, jpeg)'
-            'freetype2: import_ttf plugin'
-            'fungw')
+arch=($CARCH)
+license=('LGPL-2.0-or-later')
+depends=(
+  'sh'
+  'librnd4' 
+  'libxml2'
+)
+optdepends=(
+  'gd: gd based exports and pixmap imports (png, gif, jpeg)'
+  'freetype2: import_ttf plugin'
+  'fungw'
+)
 makedepends=('subversion')
-provides=('pcb-rnd')
+provides=(${pkgname%-svn})
+conflicts=(${pkgname%-svn})
 source=("svn://svn.repo.hu/pcb-rnd/trunk")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/trunk/"
