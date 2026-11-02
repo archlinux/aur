@@ -7,7 +7,7 @@
 _gitname='fenrir'
 pkgname="${_gitname}-git"
 pkgver=r3639.95712078
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A user space console screen reader written in Go'
 arch=('x86_64' 'aarch64')
@@ -41,7 +41,7 @@ source=("git+https://git.stormux.org/storm/${_gitname}.git"
         'fenrirscreenreader.service')
 install=fenrir-git.install
 sha512sums=('SKIP'
-            '129a2cf74d986297cc6d65a09e010a4410e31b1598ea4f714f7b185c74c5c40b252cf5e2bb55a5a02a8bac154d4a93dc5c34326f2fdf4bea885da0025e670697')
+            'f5fa96eae68d84c60a71d30a82a5bfd40b81c4d0f67c84e660f4a465e796e94a607de0c0cd1be2c9fc19a576a96495e94b8350b60be201ece8047767d0e55984')
 
 pkgver()
 {

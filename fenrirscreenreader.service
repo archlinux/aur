@@ -3,8 +3,9 @@ Description=Fenrir console screen reader
 After=sound.target
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/fenrir -f
+# The launcher exits after the first screen capture and keyboard poll.
+Type=forking
+ExecStart=/usr/bin/fenrir
 
 [Install]
 WantedBy=multi-user.target
