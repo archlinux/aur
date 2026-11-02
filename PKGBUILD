@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "$srcdir/Zournal"
-  zig build -Doptimize=ReleaseFast
+  zig build -Doptimize=ReleaseSafe
 }
 
 package() {
