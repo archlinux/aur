@@ -1,0 +1,3 @@
+[python-selenium-bin]
+source = "pypi"
+pypi = "selenium"

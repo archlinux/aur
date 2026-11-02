@@ -1,8 +1,9 @@
-# Maintainer: Diego Garcia <diego.garcia.cr at gmail.com>
-# Maintained at https://github.com/AmmoniumX/python-selenium-bin, feel free to submit patches
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Diego Garcia <diego.garcia.cr at gmail.com>
 
 pkgname=python-selenium-bin
-pkgver=4.35.0
+_pkgname=selenium
+pkgver=4.52.0
 pkgrel=1
 pkgdesc="Python language bindings for Selenium WebDriver (build from wheel)"
 arch=(x86_64)
@@ -25,14 +26,13 @@ makedepends=(python-installer)
 conflicts=(python-selenium)
 provides=(python-selenium)
 options=(!lto)
-source=(
-  "https://files.pythonhosted.org/packages/17/ef/d0e033e1b3f19a0325ce03863b68d709780908381135fc0f9436dea76a7b/selenium-${pkgver}-py3-none-any.whl"
-
-)
-sha256sums=(
-  "90bb6c6091fa55805785cf1660fa1e2176220475ccdb466190f654ef8eef6114"
-)
+source=("https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-${pkgver}-py3-none-any.whl")
+sha256sums=('caa2860d486f71cdeb21fee3248c2f604bba590120dfb4d3d18c4d7cf97c6f1f')
 
 package() {
   python -m installer --destdir="${pkgdir}" "selenium-${pkgver}-py3-none-any.whl"
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  cp selenium/webdriver/remote/*.js "${pkgdir}/${site_packages}/selenium/webdriver/remote"
+  cp selenium/webdriver/common/*.js "${pkgdir}/${site_packages}/selenium/webdriver/common"
 }
