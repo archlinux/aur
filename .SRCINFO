@@ -1,6 +1,6 @@
 pkgbase = numr-desktop-bin
 	pkgdesc = Desktop app for the numr text calculator: variables, units, currencies, live rates
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/nasedkinpv/numr-desktop
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = numr-desktop-bin
 	provides = numr-desktop
 	conflicts = numr-desktop
 	conflicts = numr-desktop-git
-	source = LICENSE-0.9.1::https://github.com/nasedkinpv/numr-desktop/raw/v0.9.1/LICENSE
+	source = LICENSE-0.9.2::https://github.com/nasedkinpv/numr-desktop/raw/v0.9.2/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = numr-desktop-bin-0.9.1-amd64.deb::https://github.com/nasedkinpv/numr-desktop/releases/download/v0.9.1/numr_0.9.1_amd64.deb
-	sha256sums_x86_64 = 4c2a35fc1141bd83a0ca190978eec20efa640d3a7e5f329eb3784c32be86d0d4
-	source_aarch64 = numr-desktop-bin-0.9.1-arm64.deb::https://github.com/nasedkinpv/numr-desktop/releases/download/v0.9.1/numr_0.9.1_arm64.deb
-	sha256sums_aarch64 = d42c98922c18c2e76c73e9d8d898d3d2856f66a08d460b59f412b4c7d179d053
+	source_x86_64 = numr-desktop-bin-0.9.2-amd64.deb::https://github.com/nasedkinpv/numr-desktop/releases/download/v0.9.2/numr_0.9.2_amd64.deb
+	sha256sums_x86_64 = 555a28dc54fd76971e8eda81ffe2941c4cf6421821becb775121fb85c8b87461
+	source_aarch64 = numr-desktop-bin-0.9.2-arm64.deb::https://github.com/nasedkinpv/numr-desktop/releases/download/v0.9.2/numr_0.9.2_arm64.deb
+	sha256sums_aarch64 = c24725b41e8d1a68dd335320b8937cf3d41babe4d8f73b1646492a0c1a8a7144
 
 pkgname = numr-desktop-bin
