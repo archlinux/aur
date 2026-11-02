@@ -1,0 +1,12 @@
+# Build directories
+src/
+pkg/
+
+# Downloaded sources and built packages
+*.tar.gz
+nova-client-*-LICENSE
+*.pkg.tar*
+*.log
+
+# Local helper scripts
+update.sh

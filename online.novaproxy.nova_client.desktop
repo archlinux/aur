@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Nova
+GenericName=Proxy Client
+GenericName[fa]=کلاینت پراکسی
+Comment=Nova proxy and VPN client
+Comment[fa]=کلاینت پراکسی و VPN نوا
+Exec=nova-client %u
+Icon=nova-client
+Terminal=false
+StartupNotify=true
+Categories=Network;
+Keywords=proxy;vpn;vless;sing-box;xray;
+Keywords[fa]=پراکسی;فیلترشکن;وی‌پی‌ان;
+StartupWMClass=online.novaproxy.nova_client
+MimeType=x-scheme-handler/vless;x-scheme-handler/vmess;x-scheme-handler/trojan;x-scheme-handler/ss;x-scheme-handler/hysteria2;
