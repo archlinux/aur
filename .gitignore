@@ -1,3 +1,5 @@
-hcxlabtool/
+/hcxlabtool/
+/src/
+/pkg/
 *.log
 *.tar.*
