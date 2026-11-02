@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=rayfish
-pkgver=0.5.13 # renovate: datasource=github-tags depName=rayfish/rayfish
+pkgver=0.5.14 # renovate: datasource=github-tags depName=rayfish/rayfish
 pkgrel=1
 pkgdesc="P2P mesh VPN powered by iroh"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a75985cb7c43268f5c5e232953592ebb7539f079c136f2dee6199e64b9ba378f')
+sha256sums=('edb7432b9ac5fbec3e4c1d72216d099acbfee9fc4a5c608232606a11a758584d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
