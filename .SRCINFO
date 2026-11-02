@@ -1,6 +1,6 @@
 pkgbase = amp-desktop-bin
 	pkgdesc = Amp, the frontier coding agent, as a desktop app
-	pkgver = 0.1.29893921
+	pkgver = 0.1.29894161
 	pkgrel = 1
 	url = https://ampcode.com
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = amp-desktop-bin
 	depends = xdg-utils
 	provides = amp-desktop
 	conflicts = amp-desktop
-	noextract = amp-desktop-0.1.29893921-x86_64.deb
-	noextract = amp-desktop-0.1.29893921-aarch64.deb
+	noextract = amp-desktop-0.1.29894161-x86_64.deb
+	noextract = amp-desktop-0.1.29894161-aarch64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = amp-desktop-0.1.29893921-x86_64.deb::https://static.ampcode.com/linux/0.1.29893921/amp-desktop-0.1.29893921-amd64.deb
-	sha256sums_x86_64 = 3323f8dba14ff61ec247eeb3459dd9b80550ccf210306e4e525f907bdb3018df
-	source_aarch64 = amp-desktop-0.1.29893921-aarch64.deb::https://static.ampcode.com/linux/0.1.29893921/amp-desktop-0.1.29893921-arm64.deb
-	sha256sums_aarch64 = 56286a8e3fc0e1c59265346f5a7f6ce9b9376dd7766ebc30f7f06caf6ddba0e8
+	source_x86_64 = amp-desktop-0.1.29894161-x86_64.deb::https://static.ampcode.com/linux/0.1.29894161/amp-desktop-0.1.29894161-amd64.deb
+	sha256sums_x86_64 = 99f304924807a8724652ddf7be46d236e18371e757e155bda8b37ec39201cf75
+	source_aarch64 = amp-desktop-0.1.29894161-aarch64.deb::https://static.ampcode.com/linux/0.1.29894161/amp-desktop-0.1.29894161-arm64.deb
+	sha256sums_aarch64 = ffbdea0b1b0ceb43172d2750ca18dd3b607aa0289b5c6a45673004598fb87fd0
 
 pkgname = amp-desktop-bin
