@@ -3,7 +3,7 @@
 # Upstream ships an AppImage only. This unpacks that AppImage so pacman owns
 # every file and the app cannot replace itself underneath the package.
 pkgname=thinkwatch-lite-bin
-pkgver=2026.10.34
+pkgver=2026.11.0
 pkgrel=1
 pkgdesc="A local gateway for Claude Code, Codex and other AI clients"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('e2fsprogs' 'expat' 'fontconfig' 'freetype2' 'fribidi' 'harfbuzz'
 _asset="ThinkWatch-Lite-$pkgver-linux-x86_64.AppImage"
 source=("$_asset::https://github.com/ThinkWatchProject/ThinkWatch-Lite/releases/download/v$pkgver/$_asset"
         "LICENSE::https://raw.githubusercontent.com/ThinkWatchProject/ThinkWatch-Lite/v$pkgver/LICENSE")
-sha256sums=('ee1c1a111902e1bdca8f351f066ace3d8bc58545dc188624d187bad3fd27d829'
+sha256sums=('69d386206e936f34a078da8d823a81010740f3c303313b90ebd9bf6774285f81'
             '7252131fc6a9010e307564a50152aeae79c6bde89665b3e4b3f2aca9591749dd')
 
 build() {

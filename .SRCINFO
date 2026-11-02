@@ -1,6 +1,6 @@
 pkgbase = thinkwatch-lite-bin
 	pkgdesc = A local gateway for Claude Code, Codex and other AI clients
-	pkgver = 2026.10.34
+	pkgver = 2026.11.0
 	pkgrel = 1
 	url = https://github.com/ThinkWatchProject/ThinkWatch-Lite
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = thinkwatch-lite-bin
 	depends = wayland
 	depends = zlib
 	options = !debug
-	source = ThinkWatch-Lite-2026.10.34-linux-x86_64.AppImage::https://github.com/ThinkWatchProject/ThinkWatch-Lite/releases/download/v2026.10.34/ThinkWatch-Lite-2026.10.34-linux-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/ThinkWatchProject/ThinkWatch-Lite/v2026.10.34/LICENSE
-	sha256sums = ee1c1a111902e1bdca8f351f066ace3d8bc58545dc188624d187bad3fd27d829
+	source = ThinkWatch-Lite-2026.11.0-linux-x86_64.AppImage::https://github.com/ThinkWatchProject/ThinkWatch-Lite/releases/download/v2026.11.0/ThinkWatch-Lite-2026.11.0-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/ThinkWatchProject/ThinkWatch-Lite/v2026.11.0/LICENSE
+	sha256sums = 69d386206e936f34a078da8d823a81010740f3c303313b90ebd9bf6774285f81
 	sha256sums = 7252131fc6a9010e307564a50152aeae79c6bde89665b3e4b3f2aca9591749dd
 
 pkgname = thinkwatch-lite-bin
