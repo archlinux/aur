@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=prek-git
-pkgver=0.5.3.r13.gd97dc32b
+pkgver=0.5.9.r16.gc88a1ccc
 pkgrel=1
 pkgdesc="A framework to run git hooks"
 arch=('i686' 'x86_64')
@@ -23,6 +23,8 @@ prepare() {
       --manifest-path "crates/prek/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "crates/prek/Cargo.toml"
 }
 
