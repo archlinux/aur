@@ -11,15 +11,12 @@ makedepends=('git' 'cmake' 'ninja' 'gcc')
 options=(!strip)
 provides=('mangayomi')
 conflicts=('mangayomi' 'mangayomi-bin' 'mangayomi-git')
-
 source=(
   "https://github.com/kodjodevf/mangayomi/releases/download/v${pkgver}/Mangayomi-v${pkgver}-linux.zip"
-  "flutter_qjs::git+https://github.com/ekibun/flutter_qjs.git"
-)
+  "flutter_qjs::git+https://github.com/ekibun/flutter_qjs.git")
 sha256sums=(
   'SKIP'
-  'SKIP'
-)
+  'SKIP')
 
 prepare() {
   cd "$srcdir/flutter_qjs"
@@ -31,20 +28,20 @@ prepare() {
   echo 'extern "C" __attribute__((visibility("default"))) void flutter_qjs_plugin_register_with_registrar(void* registrar) {}' >> cxx/ffi.cpp
 
   # 2. CMAKE SNELLO:
+  # Creiamo la cartella linux prima di scrivere il CMakeLists.txt
+  mkdir -p linux
+
   # Rimuoviamo PkgConfig e GTK. Compiliamo unicamente QuickJS e l'esportazione FFI.
   cat <<'EOF' > linux/CMakeLists.txt
 cmake_minimum_required(VERSION 3.10)
 project(flutter_qjs_plugin LANGUAGES C CXX)
-
 include_directories(
   ../cxx
   ../cxx/quickjs
 )
-
 # Flag di compatibilità applicati solo al codice C
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-int-conversion -Wno-discarded-qualifiers")
 add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default)
-
 set(QUICKJS_SOURCES
   ../cxx/quickjs/quickjs.c
   ../cxx/quickjs/libregexp.c
@@ -52,16 +49,13 @@ set(QUICKJS_SOURCES
   ../cxx/quickjs/cutils.c
   ../cxx/quickjs/libbf.c
 )
-
 set(FFI_SOURCES
   ../cxx/ffi.cpp
 )
-
 add_library(flutter_qjs_plugin SHARED
   ${QUICKJS_SOURCES}
   ${FFI_SOURCES}
 )
-
 target_link_libraries(flutter_qjs_plugin PRIVATE -lm -ldl -lpthread)
 EOF
 }
