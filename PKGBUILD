@@ -6,8 +6,8 @@
 
 _name="arabic-reshaper"
 pkgname="python-${_name}"
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Reconstruct Arabic sentences to be used in applications that do not support Arabic"
 arch=('any')
 url="https://github.com/mpcabd/${pkgname}"
@@ -18,7 +18,7 @@ checkdepends=('python-pytest' 'python-pytest-cov')
 optdepends=('python-fonttools>=4: TTF support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz")
-sha256sums=('eb1b9df3b5aaf3e8c1a454aad9f7754a062c2f2d134d972209b801db933caa7c')
+sha256sums=('8262ed8f26aeca7fc937ea1d9638fa4ab16ab6e8fa3a34d949f6f39560d5455f')
 
 latestver() {
   curl -fsSL "https://pypi.org/pypi/${_name}/json" |
