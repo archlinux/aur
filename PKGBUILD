@@ -1,23 +1,24 @@
 # Maintainer: Markus <github@marang.dev>
 pkgname=bootrecov
-pkgver=0.4.17
+pkgver=0.4.18
 pkgrel=1
 pkgdesc='TUI/CLI helper for /boot recovery snapshots and bootloader fallback entries'
 arch=('x86_64' 'aarch64')
-url='https://github.com/marang/bootrecov'
+url="https://automation.izoone.com/releases/bootrecov"
 license=('MIT')
 depends=('rclone' 'grub' 'squashfs-tools' 'file')
-makedepends=('go')
+makedepends=('go>=1.26.10')
 options=('!debug')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dd6a0ee1c000eb58af17298a5036b66efd413b662ae19eb753a88b37240ac5a6')
+_commit=596fe93567a12b4f29ee1bdffbcf36cdea6bae8c
+source=("bootrecov-$pkgver.tar.gz::$url/v$pkgver/bootrecov-596fe93567a12b4f29ee1bdffbcf36cdea6bae8c.tar.gz")
+sha256sums=('4c42371cfe9629bc89bdcf10c900aacf6b9100138160335e8a8072db1951fe31')
 
 _export_go_build_env() {
   export GOPATH="${srcdir}/gopath"
   export GOMODCACHE="${GOPATH}/pkg/mod"
   export GOCACHE="${srcdir}/gocache"
-  export GOFLAGS="-modcacherw"
+  export GOFLAGS="-modcacherw -p=1"
 }
 
 _make_go_caches_writable() {
@@ -29,24 +30,27 @@ _make_go_caches_writable() {
   fi
 }
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+_go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
+_go_ldflags=(-s -w -buildid=)
+
+build() {
+  cd "bootrecov-596fe93567a12b4f29ee1bdffbcf36cdea6bae8c"
   _export_go_build_env
   trap _make_go_caches_writable EXIT
-  go mod download
+  CGO_ENABLED=0 go build "${_go_build_flags[@]}" -ldflags="${_go_ldflags[*]}" -o bootrecov ./cmd/bootrecov
   _make_go_caches_writable
 }
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+check() {
+  cd "bootrecov-596fe93567a12b4f29ee1bdffbcf36cdea6bae8c"
   _export_go_build_env
   trap _make_go_caches_writable EXIT
-  go build -trimpath -mod=readonly -ldflags "-s -w" -o bootrecov ./cmd/bootrecov
+  CGO_ENABLED=0 go test "${_go_build_flags[@]}" -count=1 ./...
   _make_go_caches_writable
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "bootrecov-596fe93567a12b4f29ee1bdffbcf36cdea6bae8c"
   install -Dm755 bootrecov "${pkgdir}/usr/bin/bootrecov"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
