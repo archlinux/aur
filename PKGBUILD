@@ -21,6 +21,11 @@ makedepends=(
   'meson'
   'ninja'
   'blueprint-compiler'
+  'clang'
+  'llvm'
+  'libheif'
+  'cmake'
+  'base-devel'
 )
 optdepends=(
   'libsecret: keyring integration'
@@ -34,6 +39,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+check() {
+  cd "$srcdir/$pkgname"
+  cargo test --release --locked --workspace 2>&1 | tail -30
 }
 
 build() {
