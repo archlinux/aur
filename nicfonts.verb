@@ -4,11 +4,6 @@ load_nicfonts() {
     w_register_font_replacement "Courier New" "Cascadia Code"
     w_register_font_replacement "Courier New Bold" "Cascadia Code"
 
-    w_register_font_replacement "Tahoma" "Noto Sans CJK SC"
-    w_register_font_replacement "Tahoma Bold" "Noto Sans CJK SC"
-    w_register_font_replacement "Segoe" "Noto Sans CJK SC"
-    w_register_font_replacement "Segoe UI" "Noto Sans CJK SC"
-
     w_register_font_replacement "Dengxian" "Noto Sans CJK SC"
     w_register_font_replacement "FangSong" "Noto Sans CJK SC"
     w_register_font_replacement "KaiTi" "Noto Sans CJK SC"

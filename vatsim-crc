@@ -60,9 +60,9 @@ protonUpdate() {
     umu-run "/opt/rpc-bridge/bridge.exe" --install
   fi
 
-  umu-run winetricks arial 
+  umu-run winetricks arial tahoma 
   if [[ $1 == "msfonts" ]] ; then
-    umu-run winetricks tahoma courier
+    umu-run winetricks courier
   else
     umu-run winetricks /opt/vatsim-crc/nicfonts.verb
   fi

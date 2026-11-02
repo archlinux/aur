@@ -25,11 +25,11 @@ source=(crc-setup-${__realpkgver}.exe::"$(curl -s https://crc.virtualnas.net/Lat
         "vatsim-crc.desktop" "segmdl2.verb" "webview2.verb" "nicfonts.verb")
 
 sha256sums=('c23d4d55ec3bc8455c373978194c99ba74a45c093bf16039c5237b37b9d318ff'
-            '5bbf14fb0b2c6aee3ec491f7886d53ae841b5b9ea1f4abf02b90c38503c734ac'
+            '744b4e21f640d3173d7dbf3b3f794a01cfbbf2d0f1657f6ab917a600e08b5f66'
             '1ebb426abfff168706256df00a93661e2a97f2ec095c87906934538ae25a9926'
             'ea73951541c4f66e65c7ea6c7e2349f6e93ac4f6988516308b3a2522d4751c74'
             '4d70f0de1ce7105b21808ecb890993c05333f51a24b2b11bfa000b5abf2f129e'
-            '3639985a7186489e371b31aa3aebfb60ae9876f93e08a828cc115ba284886890')
+            '1af4261d4e9102fc558390eda71338ac98aae8032e93edaa75411ae06f8a25bf')
 
 pkgver() {
   curl -s https://crc.virtualnas.net/LatestVersion.json | jq -r '.version'
