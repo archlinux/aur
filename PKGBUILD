@@ -2,7 +2,7 @@
 # Maintainer: nickheyer
 
 pkgname='nebu'
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Model storage, inference runtime management, and API gateway'
 url='https://github.com/nickheyer/nebu'
