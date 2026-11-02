@@ -1,7 +1,7 @@
 pkgbase = finch-agent-bin
 	pkgdesc = Finch Agent - lightweight desktop AI agent with cross-session memory, skills and mini tools (official deb repack, Linux beta)
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://finchwork.app
 	arch = x86_64
 	license = LicenseRef-Proprietary

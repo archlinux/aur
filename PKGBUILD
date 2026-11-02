@@ -2,7 +2,7 @@
 
 pkgname=finch-agent-bin
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Finch Agent - lightweight desktop AI agent with cross-session memory, skills and mini tools (official deb repack, Linux beta)"
 arch=('x86_64')
 url="https://finchwork.app"
@@ -21,4 +21,10 @@ package() {
 	# Electron's SUID sandbox helper: upstream ships it non-SUID (kernel user
 	# namespaces); 4755 covers userns-less kernels, matching maka-nightly-bin here.
 	chmod 4755 "${pkgdir}/opt/Finch/chrome-sandbox"
+
+	# Electron defaults to X11 (XWayland), where fractional scaling renders at
+	# 1x and the compositor upscales -> blurry CJK text at 1.25x. The hint is a
+	# no-op on X11-only sessions.
+	sed -i 's|^Exec=/opt/Finch/Finch |Exec=/opt/Finch/Finch --ozone-platform-hint=auto |' \
+		"${pkgdir}/usr/share/applications/Finch.desktop"
 }
