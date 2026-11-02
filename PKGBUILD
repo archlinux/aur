@@ -2,7 +2,7 @@
 
 pkgname=recoil16ctl
 _srcname=recoil16ctl
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Control tool for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): charge modes, battery health, lightbar, power profiles, Fn/Super lock, screen rotation, NVIDIA GPU power and offload, battery draw"
 arch=('x86_64')
@@ -18,7 +18,7 @@ install=recoil16ctl.install
 # recoil16ctl is built stripped (Cargo.toml profile), so a -debug package would be empty
 options=('!debug')
 source=("$_srcname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be9f6952b78b0e1048cf0471bc63986bab0dd93e0907bae70e449c3fad2a166e')
+sha256sums=('86759e4ea490f8575535987dd2a127df262e1208b0a64ff2d4bce0a21d142abd')
 
 prepare() {
   cd "$_srcname-$pkgver" || return
