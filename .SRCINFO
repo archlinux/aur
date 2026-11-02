@@ -1,0 +1,17 @@
+pkgbase = perl-open-api
+	pkgdesc = OpenAPI 2.0, 3.0 and 3.1 server and client
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://metacpan.org/release/Open-API
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-file-raw-json>=0.07
+	depends = perl-json-schema-fast>=0.09
+	depends = perl>=5.8.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Open-API-0.15.tar.gz
+	md5sums = ce8c1666069d2533fe002409c582d3d2
+	sha512sums = fc7884e3e91c2eae61242a9740efa2f2b9f2f9dca508e76fe27dca60f81ee21da8105484fe19e7e2d297ebcce7d0015f1281605ee3dbea0817083d8ca0f582d4
+
+pkgname = perl-open-api
