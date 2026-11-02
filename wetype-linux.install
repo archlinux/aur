@@ -1,0 +1,13 @@
+# Pacman runs this as root after the package files are already gone. It only
+# prints what is left behind: per-user state lives in the user's home, and a
+# root scriptlet must not touch it or the user's systemd session.
+post_remove() {
+  cat <<'EOF'
+WeType was removed. Per-user state is kept on purpose:
+
+  systemctl --user disable --now wetype-daemon   # if you enabled the service
+  rm -rf ~/.local/state/wetype
+  rm -f ~/.config/fcitx5/conf/wetype.conf
+  fcitx5 -r -d
+EOF
+}

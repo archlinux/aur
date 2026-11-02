@@ -1,0 +1,23 @@
+pkgbase = wetype-linux
+	pkgdesc = WeType (微信输入法) engine for Fcitx5, running the Windows engine under Wine
+	pkgver = 0.1.0+wetype3.0.2.22
+	pkgrel = 1
+	url = https://github.com/Aliorpse/wetype-linux
+	install = wetype-linux.install
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = mingw-w64-gcc
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = 7zip
+	makedepends = git
+	makedepends = protobuf
+	depends = fcitx5
+	depends = wine
+	depends = hicolor-icon-theme
+	source = git+https://github.com/Aliorpse/wetype-linux.git#tag=v0.1.0+wetype3.0.2.22
+	sha256sums = SKIP
+
+pkgname = wetype-linux
