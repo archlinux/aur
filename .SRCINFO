@@ -1,0 +1,25 @@
+pkgbase = xound
+	pkgdesc = PipeWire audio control: equalizer, noise suppression, mic monitor, soundboard, patchbay and device controls
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/xaprier/Xound
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libpulse
+	depends = pipewire
+	depends = pipewire-pulse
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	optdepends = ffmpeg: play every sound format on the soundboard
+	optdepends = noise-suppression-for-voice: RNNoise noise suppression
+	source = xound-2.0.0.tar.gz::https://github.com/xaprier/Xound/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = de56a1e1f0456319a42bbb54a0aec9675fa25b08d46eb62ea8f7c23e00d768d3
+
+pkgname = xound
