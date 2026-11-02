@@ -4,7 +4,9 @@ pkgbase=alibabasans-tc-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaSansTC
 pkgver=1.0
-pkgrel=6
+pkgrel=7
+# fonts.alibabadesign.com has enabled Referer anti-hotlinking; a Referer from the same domain is required to download files.
+DLAGENTS=('https::/usr/bin/curl -fLC - --referer https://fonts.alibabadesign.com/ -o %o %u')
 pkgdesc="A typeface for creating alibaba sans tc in text.阿里巴巴普惠体繁体中文(Big5)4字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
