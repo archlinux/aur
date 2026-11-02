@@ -1,0 +1,15 @@
+pkgbase = rose-pine-swaync-git
+	pkgdesc = Soho vibes for SwayNotificationCenter
+	pkgver = r9.d506efe
+	pkgrel = 1
+	url = https://github.com/rose-pine/swaync
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = swaync
+	provides = rose-pine-swaync
+	conflicts = rose-pine-swaync
+	source = swaync::git+https://github.com/rose-pine/swaync.git
+	sha256sums = SKIP
+
+pkgname = rose-pine-swaync-git
