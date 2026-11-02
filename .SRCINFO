@@ -1,0 +1,25 @@
+pkgbase = sourcemod-smjansson
+	pkgdesc = SMJansson, a JSON extension of SourceMod (in the addons folder of sourcemod)
+	pkgver = 2.6.0.1.r36.gb811b33
+	pkgrel = 1
+	url = https://github.com/davenonymous/SMJansson
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LicenseRef-SourceMod-exception
+	checkdepends = sourcemod-scripting
+	makedepends = ambuild
+	makedepends = clang
+	makedepends = python
+	makedepends = sourcemod-src
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-jansson
+	depends = sourcemod
+	source = SMJansson-b811b3341254fff6756d66fbc6c928ee6e701a32.tar.gz::https://github.com/davenonymous/SMJansson/archive/b811b3341254fff6756d66fbc6c928ee6e701a32.tar.gz
+	source = smjansson-system-jansson.patch
+	sha512sums = 36e8b5db06dea90a205c3ad3266dd9d41ba19f5dba86be1e79506829432153245e3499bff7e97c74e6103a32bde949bf976059528f35e40b01f7ea8a082d1028
+	sha512sums = 197ac4ed92556f931cca36fad74b005b2b1f5a8a06a7b414224352965ae91b7864f57beab9981e087597bda15ce51ddbaac63657755dc18cdb78583e7d4885fe
+	b2sums = a5a6f5a53710c299caf381684d07a4f7a8eb6f92c8eaffcfd3d9dc84a76f87898b207abfd94586b61049a7d3b34c18bb93e7b28e684d5487641309584498bca4
+	b2sums = a1c6dc75875581de11a91e2a9f1005f923af556b89fb622882e9e663e61d0a7ae1fe019cc4a86b9aeb491bfdebaaba259e972f22d120caadccb0431bef3fde36
+
+pkgname = sourcemod-smjansson

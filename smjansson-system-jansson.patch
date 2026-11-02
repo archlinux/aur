@@ -1,0 +1,150 @@
+diff --git a/AMBuildScript b/AMBuildScript
+index 32e476d..3727cfd 100644
+--- a/AMBuildScript
++++ b/AMBuildScript
+@@ -95,13 +95,15 @@ class ExtensionConfig(object):
+ 
+   def detectSDKs(self):
+     sdk_list = [s for s in builder.options.sdks.split(',') if s]
+-    SdkHelpers.sdk_filter = self.shouldIncludeSdk
+-    SdkHelpers.find_sdk_path = self.findSdkPath
+-    SdkHelpers.findSdks(builder, self.all_targets, sdk_list)
+-
+-    self.sdks = SdkHelpers.sdks
+-    self.sdk_manifests = SdkHelpers.sdk_manifests
+-    self.sdk_targets = SdkHelpers.sdk_targets
++    # The extension (AMBuilder) uses no SDK: none with --sdks=
++    if sdk_list:
++      SdkHelpers.sdk_filter = self.shouldIncludeSdk
++      SdkHelpers.find_sdk_path = self.findSdkPath
++      SdkHelpers.findSdks(builder, self.all_targets, sdk_list)
++
++      self.sdks = SdkHelpers.sdks
++      self.sdk_manifests = SdkHelpers.sdk_manifests
++      self.sdk_targets = SdkHelpers.sdk_targets
+ 
+     if builder.options.mms_path:
+       self.mms_root = builder.options.mms_path
+diff --git a/AMBuilder b/AMBuilder
+index 8d98620..8bc4223 100644
+--- a/AMBuilder
++++ b/AMBuilder
+@@ -3,52 +3,26 @@ import os
+ 
+ projectName = 'smjansson'
+ 
++# A plain extension, smjansson.ext.so like upstream's release, as it uses neither Metamod:Source nor
++# an SDK; against the system's jansson instead of the bundled 2.6, and without SourceMod's asm and
++# libudis86, which it doesn't use and SourceMod no longer has
+ for cxx in builder.targets:
+-  for sdk_name in Extension.sdks:
+-    sdk = Extension.sdks[sdk_name]
++  binary = Extension.ExtLibrary(builder, cxx, projectName + '.ext')
+ 
+-    if not cxx.target.arch in sdk['platforms'][cxx.target.platform]:
+-      continue
++  binary.compiler.defines += [
++    'HAVE_STRING_H',
++    'SOURCEMOD_BUILD'
++  ]
+ 
+-    binary = Extension.HL2Library(builder, cxx, projectName + ".ext." + sdk['extension'], sdk)
++  if cxx.target.platform == 'linux':
++    binary.compiler.postlink += ['-ljansson', '-lpthread', '-lrt']
+ 
+-    binary.compiler.defines += [
+-      'HAVE_STRING_H',
+-      'SOURCEMOD_BUILD'
+-    ]
++  if binary.compiler.family == 'gcc' or binary.compiler.family == 'clang':
++    binary.compiler.cxxflags += ['-fno-rtti']
+ 
+-    if cxx.target.platform == 'linux':
+-      cxx.postlink += ['-lpthread', '-lrt']
+-    elif cxx.target.platform == 'mac':
+-      cxx.cflags += ['-Wno-deprecated-declarations']
+-      cxx.postlink += ['-framework', 'CoreServices']
++  binary.sources += [
++    'extension.cpp',
++    os.path.join(Extension.sm_root, 'public', 'smsdk_ext.cpp'),
++  ]
+ 
+-    if cxx.family == 'gcc' or cxx.family == 'clang':
+-      cxx.cxxflags += ['-fno-rtti']
+-    elif cxx.family == 'msvc':
+-      cxx.cxxflags += ['/GR-']
+-
+-    binary.sources += [
+-      'extension.cpp',
+-      os.path.join(Extension.jansson_root, 'src', 'dump.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'error.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'hashtable.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'hashtable_seed.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'load.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'memory.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'pack_unpack.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'strbuffer.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'strconv.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'utf.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'value.c'),
+-      os.path.join(Extension.sm_root, 'public', 'smsdk_ext.cpp'),
+-      os.path.join(Extension.sm_root, 'public', 'asm', 'asm.c'),
+-      os.path.join(Extension.sm_root, 'public', 'libudis86', 'decode.c'),
+-      os.path.join(Extension.sm_root, 'public', 'libudis86', 'itab.c'),
+-      os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-att.c'),
+-      os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-intel.c'),
+-      os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn.c'),
+-      os.path.join(Extension.sm_root, 'public', 'libudis86', 'udis86.c'),
+-    ]
+-
+-    Extension.extensions += [builder.Add(binary)]
++  Extension.extensions += [builder.Add(binary)]
+diff --git a/configure.py b/configure.py
+index 6fb4c78..0543c8a 100644
+--- a/configure.py
++++ b/configure.py
+@@ -34,7 +34,7 @@ parser.options.add_argument('--enable-optimize', action='store_const', const='1'
+                        help='Enable optimization')
+ parser.options.add_argument('-s', '--sdks', default='all', dest='sdks',
+                        help='Build against specified SDKs; valid args are "all", "present", or '
+-                            'comma-delimited list of engine names (default: %default)')
++                            'comma-delimited list of engine names (default: %(default)s)')
+ parser.options.add_argument('--targets', type=str, dest='targets', default=None,
+ 		                      help="Override the target architecture (use commas to separate multiple targets).")
+ 
+diff --git a/extension.cpp b/extension.cpp
+index 64a876e..bf7cb10 100644
+--- a/extension.cpp
++++ b/extension.cpp
+@@ -30,7 +30,7 @@
+  */
+ 
+ #include "extension.h"
+-#include "jansson/src/jansson.h"
++#include <jansson.h>
+ #include <string.h>
+ /**
+  * @file extension.cpp
+diff --git a/pawn/scripting/include/test.inc b/pawn/scripting/include/test.inc
+index 4b26cb1..ddc0035 100644
+--- a/pawn/scripting/include/test.inc
++++ b/pawn/scripting/include/test.inc
+@@ -1,3 +1,5 @@
++#include <regex>
++
+ stock bool Test_SetFilename(StringMap hTest, const char[] value) {
+ 	return hTest.SetString("filename", value);
+ }
+diff --git a/sdk/smsdk_config.h b/sdk/smsdk_config.h
+index 7317bcd..5203d58 100644
+--- a/sdk/smsdk_config.h
++++ b/sdk/smsdk_config.h
+@@ -32,7 +32,7 @@
+ #ifndef _INCLUDE_SOURCEMOD_EXTENSION_CONFIG_H_
+ #define _INCLUDE_SOURCEMOD_EXTENSION_CONFIG_H_
+ 
+-#include "jansson/src/jansson.h"
++#include <jansson.h>
+ /**
+  * @file smsdk_config.h
+  * @brief Contains macros for configuring basic extension information.

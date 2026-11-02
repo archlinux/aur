@@ -1,0 +1,7 @@
+# The latest commit, versioned like the PKGBUILD: the compare API counts the commits since the
+# first one (one more is the number of commits) and lists up to 250 of them, the last being the
+# newest.
+[sourcemod-smjansson]
+source = "jq"
+url = "https://api.github.com/repos/davenonymous/SMJansson/compare/696ff83a688ba9e855d9bcf1920fdc92ec7860a2...master"
+filter = '"2.6.0.1.r\(.ahead_by + 1).g\(.commits[-1].sha[0:7])"'
