@@ -2,28 +2,25 @@
 # same for the vtium and vtium-git packages. Nothing here starts, stops,
 # restarts, enables or disables a unit: a restart hangs up every session on
 # that VT, so a new build takes effect at each VT's next start, and which
-# VTs run vtium is the user's choice (ADR-1500 D3, D5).
+# VTs run vtium is the user's choice, made with vtium console (ADR-1500 D3,
+# D5, D7).
 
 _vtium_enable() {
   cat <<'EOF'
-==> vtium runs on a VT only where you turn it on, and you always name the VT:
-    vtium@tty3.service, never vtium@.service alone, which systemctl refuses.
-    For VT 3, with no one logged in there, from another VT or over ssh:
-      sudo systemctl disable getty@tty3.service
-      sudo systemctl enable vtium@tty3.service
-      sudo systemctl start vtium@tty3.service
-    vtium then runs on VT 3 in place of its getty, at every boot, and starting
-    it stops the getty or the kmscon console there first. Enabling it links
-    autovt@tty3 to vtium@, so logind starts vtium there. Ctrl-Alt-F3 shows it.
-    To give VT 3 back, log out there, then:
-      sudo systemctl disable --now vtium@tty3.service
-      sudo rm /etc/systemd/system/autovt@tty3.service
-      sudo systemctl enable --now getty@tty3.service
-    disable leaves the autovt@tty3 link that enable made, so it goes by hand.
-    Where kmscon served VT 3, give it back to kmscon in place of the getty:
-      sudo systemctl enable --now kmsconvt@tty3.service
-    To run vtium on every VT, on a machine with no kmscon, follow "vtium on
-    every VT" in the README: https://github.com/vtium/vtium-arch#vtium-on-every-vt
+==> vtium runs on no VT until you turn it on, the same as the kmscon package.
+    vtium console gives vtium a VT, or every VT, and takes them back:
+      vtium console status
+      sudo vtium console enable 3
+      sudo vtium console enable --all
+    enable --all is for a machine that runs no kmscon. vtium console starts
+    nothing: it changes which console starts on a VT next time, and prints
+    the command that starts vtium there now, which ends every session on that
+    VT. It refuses a VT that kmscon, a display manager or a graphical session
+    holds. To give VTs back, before you remove vtium too:
+      sudo vtium console disable 3
+      sudo vtium console disable --all
+    To share VTs with kmscon, or to move from kmscon to vtium, read the README:
+      https://github.com/vtium/vtium-arch#sharing-vts-with-kmscon
 EOF
 }
 
@@ -65,11 +62,11 @@ pre_remove() {
 }
 
 post_remove() {
-  # The links that enabling vtium@ttyN made outlive the package and now point
-  # at nothing; this names each one and changes nothing.
-  local l vt left='' getty=''
-  # A template link autovt@.service -> vtium@.service is the README's "vtium
-  # on every VT" step, made by hand; it goes the way the README undoes it.
+  # The links that vtium console made, or that were made by hand, outlive the
+  # package and now point at nothing; this names each one and changes
+  # nothing. vtium console disable --all, run before the removal, gives each
+  # back as it was.
+  local l vt left='' getty='' records=/var/lib/vtium/console
   for l in /etc/systemd/system/autovt@.service /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
     [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] || continue
     left+="      sudo rm $l"$'\n'
@@ -90,4 +87,9 @@ post_remove() {
   printf '%s\n' "      sudo systemctl daemon-reload"
   printf '%s\n' "    Where kmscon served a VT, enable kmsconvt@ttyN.service there in place of"
   printf '%s\n' "    its getty."
+  if [ -n "$(ls -A "$records" 2>/dev/null)" ]; then
+    printf '%s\n' "    Or put back exactly what vtium console recorded in $records:"
+    printf '%s\n' "    install vtium again, run sudo vtium console disable --all, then remove it."
+  fi
+  printf '%s\n' "    Next time, run sudo vtium console disable --all before pacman -R vtium."
 }
