@@ -1,23 +1,27 @@
 # Maintainer: Siiire <siiire@pm.me>
 pkgname=jellium-desktop-bin
 pkgver=0.r1156.1b73a13
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="A desktop client for Jellyfin"
+pkgdesc="An unofficial desktop client for Jellyfin"
 arch=('x86_64')
 url="https://github.com/andrewrabert/jellium-desktop"
 license=('GPL-2.0-only')
-depends=('hicolor-icon-theme')
+depends=('glibc' 'gcc-libs' 'hicolor-icon-theme')
 provides=('jellyfin-desktop' 'jellium-desktop')
-conflicts=('jellyfin-desktop' 'jellyfin-media-player' 'jellyfin-desktop-bin' 'jellyfin-desktop-git' 'jellyfin-desktop-cef-git' 'jellium-desktop' 'jellyfin-desktop-git-bin' 'jellium-desktop-git')
+conflicts=('jellyfin-desktop' 'jellyfin-media-player' 'jellium-desktop')
 options=('!strip')
-source=("linux-appimage-${CARCH}.zip::https://nightly.link/andrewrabert/jellium-desktop/workflows/build-linux-appimage/main/linux-appimage-${CARCH}.zip")
+source=("${pkgname}-${pkgver}-${CARCH}.zip::https://nightly.link/andrewrabert/jellium-desktop/workflows/build-linux-appimage/main/linux-appimage-${CARCH}.zip")
 sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir"
+    rm -rf squashfs-root
     chmod +x *.AppImage
     ./*.AppImage --appimage-extract
+
+    # Normalize broken 700 directory permissions from upstream AppImage
+    chmod -R u+rwX,go+rX,go-w "${srcdir}/squashfs-root"
 }
 
 package() {
@@ -31,11 +35,13 @@ package() {
     ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/jellyfin-desktop"
 
     _desktop=$(find "${pkgdir}/opt/${pkgname}" -maxdepth 1 -name "*.desktop" -print -quit)
-    install -Dm644 "$_desktop" "${pkgdir}/usr/share/applications/jellium-desktop.desktop"
-    sed -i "s|^Exec=[^ ]*|Exec=/usr/bin/jellium-desktop|g" "${pkgdir}/usr/share/applications/jellium-desktop.desktop"
+    _desktop_name=$(basename "$_desktop")
+    install -Dm644 "$_desktop" "${pkgdir}/usr/share/applications/${_desktop_name}"
+    sed -i "s|^Exec=[^ ]*|Exec=/usr/bin/jellium-desktop|g" "${pkgdir}/usr/share/applications/${_desktop_name}"
 
     if [ -d "${pkgdir}/opt/${pkgname}/usr/share/icons" ]; then
         install -d "${pkgdir}/usr/share/icons"
         cp -a "${pkgdir}/opt/${pkgname}/usr/share/icons/"* "${pkgdir}/usr/share/icons/"
+        rm -rf "${pkgdir}/opt/${pkgname}/usr/share/icons"
     fi
 }
