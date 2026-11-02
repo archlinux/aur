@@ -1,0 +1,15 @@
+pkgbase = perl-tie-orderedhash
+	pkgdesc = Ordered Hashes with a public C ABI
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://metacpan.org/release/Tie-OrderedHash
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Tie-OrderedHash-1.00.tar.gz
+	md5sums = 31ee3c5e9932a2b3f00b6b360f4a70e9
+	sha512sums = 8bf9c4c136dcdd3463eaf7e62dc6b73e81d2f0eea803226307f0d9e90fbeb807aeac70d25c41d8364ff5d5729df3a123642e4a36a62558e09b38135c26b9e8e9
+
+pkgname = perl-tie-orderedhash
