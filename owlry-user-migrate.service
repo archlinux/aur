@@ -1,0 +1,12 @@
+[Unit]
+Description=Owlry automatic socket migration (Issue #24)
+# No dependency on owlry.socket: the helper itself stops and restarts that
+# unit, and a Requires/After relationship would cancel this job's activation.
+ConditionPathExists=/usr/lib/owlry/user-migrate.sh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /usr/lib/owlry/user-migrate.sh
+RemainAfterExit=no
+TimeoutStartSec=100s
+TimeoutStopSec=5s

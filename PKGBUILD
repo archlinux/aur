@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Lightweight Wayland application launcher — UI, daemon, and providers in one binary"
 arch=('x86_64')
@@ -10,6 +10,10 @@ depends=(
     'gcc-libs'
     'gtk4'
     'gtk4-layer-shell'
+    'bash'
+    'coreutils'
+    'util-linux'
+    'systemd'
 )
 makedepends=('cargo')
 optdepends=(
@@ -88,8 +92,24 @@ provides=(
 
 install=owlry.install
 
-source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
-b2sums=('d63a839961eeade28a782ee05e68059d9c373d56f15a1dc9591168458ba0a072f965d1e78d325914038b859ba2ceec18431726350cb02a4cc08289a27cd28ccb')
+source=(
+    "$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/387892ebb19e49604e74745a549ae0d0bfdaaf96.tar.gz"
+    "owlry-user-migrate-run.sh"
+    "owlry-user-migrate.sh"
+    "owlry-user-migrate.hook"
+    "owlry-user-migrate.service"
+    "README.md"
+    "upgrading.md"
+)
+b2sums=(
+    'adae411bf29e99d56e9636cea0e0d7604595468368abf371c9b388330bfbd71c2916f38c670200206a63309b89fd4a3dd49b6ce3f2b698b5ed44982a51aa1a8b'
+    'c578b5e62b9e4e361b8b46ad56b75af4abf711a3cc5d29a223f99baaf97a0f730db85dc15132d4b84846155914b11dc19560d5b89937eb2831ce927a5f2674a1'
+    'b3b31c5ef7f02659e4d7fb5a3f0da4210af3eed2b4f4c8a60a83634d3dec7f56d22a5967bbdef79a07e6e567820266d0ec7df8013b5de60ffd4ce64e4d2e5655'
+    '020f2e3171bc51ae8547c143c1207da4f6708665ec40960d4ab8fbaea3ff237296895f63f7422e3984c17466d5ee6b048c492218f1bd40c87c81b602cf218465'
+    'b43c4ad151bf2ecd6a4255813bc4046c3d69e5115748da2389d5f24ae926d28353744a064fa6ad204f61dda78df3b79662dba10e540a008ff00885b2fc893f9c'
+    '1568892982cd8a912fbaea3596484ce4ef55a8a1b0db13774796b66512216276093883754edfd5e898e9b7682f3db02f5b923872fec1cb713ce51546d8449478'
+    '07a4ce5fd8bf3f62efe902f4acec35bd88311552c84f95ac5f27de89f6dc49e8f32c5d42e212fa12aec20e2da52ef91b4ef451923fb063fe198db79dad09b0f1'
+)
 
 prepare() {
     cd "owlry"
@@ -134,8 +154,19 @@ package() {
     install -Dm644 systemd/owlry.service "$pkgdir/usr/lib/systemd/user/owlry.service"
     install -Dm644 systemd/owlry.socket "$pkgdir/usr/lib/systemd/user/owlry.socket"
 
+    # Owlry Issue 24 automatic socket migration artifacts.
+    install -Dm755 "$srcdir/owlry-user-migrate-run.sh" \
+        "$pkgdir/usr/share/libalpm/hooks/owlry-user-migrate-run.sh"
+    install -Dm644 "$srcdir/owlry-user-migrate.hook" \
+        "$pkgdir/usr/share/libalpm/hooks/owlry-user-migrate.hook"
+    install -Dm755 "$srcdir/owlry-user-migrate.sh" \
+        "$pkgdir/usr/lib/owlry/user-migrate.sh"
+    install -Dm644 "$srcdir/owlry-user-migrate.service" \
+        "$pkgdir/usr/lib/systemd/user/owlry-user-migrate.service"
+
     # Documentation + example configuration.
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "$srcdir/upgrading.md" "$pkgdir/usr/share/doc/$pkgname/docs/upgrading.md"
     install -Dm644 data/owlry.example.lua "$pkgdir/usr/share/doc/$pkgname/owlry.example.lua"
     install -Dm644 data/config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
     install -Dm644 data/style.example.css "$pkgdir/usr/share/doc/$pkgname/style.example.css"

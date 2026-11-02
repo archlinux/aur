@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = usr/lib/systemd/user/owlry.service
+
+[Action]
+When = PostTransaction
+Exec = /usr/share/libalpm/hooks/owlry-user-migrate-run.sh

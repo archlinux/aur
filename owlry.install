@@ -26,9 +26,17 @@ EOF
         *)
             cat <<'EOF'
 
-  Restart the running user daemon after an upgrade so the UI and daemon use
-  the same IPC activation schema:
+  Active packaged sockets are migrated automatically when the running daemon
+  uses an older executable. Healthy sockets and deliberately inactive units
+  are left alone. Check pacman output for migration failures.
+
+  If migration was interrupted, retry as the affected user:
+      systemctl --user start owlry-user-migrate.service
+
+  If you use only owlry.service without socket activation, restart it yourself:
       systemctl --user restart owlry.service
+
+  For a manually started daemon, stop the old process and start it again.
 
 EOF
             ;;
