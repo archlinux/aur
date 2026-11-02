@@ -1,6 +1,6 @@
 pkgbase = rox-player-bin
 	pkgdesc = Fast, composable music player written in rust (foobar2000 for the current year) (prebuilt binary)
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://github.com/zealsprince/rox
 	arch = x86_64
@@ -21,13 +21,13 @@ pkgbase = rox-player-bin
 	optdepends = nvidia-utils: Vulkan support for Nvidia graphics
 	optdepends = libglvnd: OpenGL/EGL for the Milkdrop visualizer
 	optdepends = noto-fonts-cjk: fast drawing of Japanese, Chinese and Korean text
-	provides = rox-player=1.33.0
+	provides = rox-player=1.34.0
 	provides = rox
 	conflicts = rox-player
 	conflicts = rox-player-git
 	options = !strip
 	options = !debug
-	source = rox-player-bin-1.33.0.tar.gz::https://github.com/zealsprince/rox/releases/download/v1.33.0/rox-v1.33.0-linux-x86_64.tar.gz
-	sha256sums = 49cf779ddfc82ebd1d7f87229ae66e675240666ae4a8b3f9b35bbc0bc62ac275
+	source = rox-player-bin-1.34.0.tar.gz::https://github.com/zealsprince/rox/releases/download/v1.34.0/rox-v1.34.0-linux-x86_64.tar.gz
+	sha256sums = bd3d617128a647b7421284d9a6356fde8431a1e895612b8eb88b97851f10efcd
 
 pkgname = rox-player-bin
