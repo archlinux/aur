@@ -1,7 +1,7 @@
 # Maintainer: Nico Ungruhe <nico@planet-express.org>
 
 pkgname="kwi"
-pkgrel=4
+pkgrel=5
 pkgver=0.1.0
 pkgdesc="Modern and fast terminal for KDE Plasma and other desktops"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('qt6-base' 'qt6-declarative'
     'kirigami' 'kirigami-addons' 'kirigami-app-components'
     'ghostty')
 provides=('kwi')
-source=("kwi::git+https://invent.kde.org/utilities/kwi")
+source=("kwi::git+https://invent.kde.org/utilities/kwi#commit=e54b0ee792e20b1376b4781bb54dcf866513cb35")
 sha512sums=('SKIP')
 
 pkgver() {

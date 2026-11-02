@@ -1,7 +1,7 @@
 pkgbase = kwi
 	pkgdesc = Modern and fast terminal for KDE Plasma and other desktops
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://invent.kde.org/utilities/kwi
 	arch = x86_64
 	license = GPL-2.0-only OR GPL-3.0-only OR LicenseRef-scancode-kde-accepted-gpl
@@ -37,7 +37,7 @@ pkgbase = kwi
 	depends = kirigami-app-components
 	depends = ghostty
 	provides = kwi
-	source = kwi::git+https://invent.kde.org/utilities/kwi
+	source = kwi::git+https://invent.kde.org/utilities/kwi#commit=e54b0ee792e20b1376b4781bb54dcf866513cb35
 	sha512sums = SKIP
 
 pkgname = kwi
