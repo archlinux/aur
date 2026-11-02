@@ -7,7 +7,7 @@
 # to /usr/share. What a user changes lives in ~/.config/zenworks.
 
 pkgname=zenworks
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 PACKAGER="Zenworks Delphi"
 # the source's tag: $pkgver, or a hotfix's own (0.1.9-2) for a pkgrel that
@@ -82,7 +82,7 @@ conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('ecc89bc3bd209778f981d46b208ed75e21d00351b6cae9dbcae1b5a6535fac25')
+sha256sums=('cf5a5c999b1336676e63b573e9647c6c6ebc8089619b0e60200cf8dd10014657')
 
 package() {
   # the tarball's directory is named after the repository, as GitHub has
