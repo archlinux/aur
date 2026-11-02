@@ -9,8 +9,8 @@ pkgbase = vgshell-git
 	makedepends = git
 	depends = greetd
 	depends = glibc
-	depends = vgshell-quickshell>=0.3.2.r7.g2b4501a-3
-	depends = hyprland>=0.56
+	depends = vgshell-quickshell>=0.3.2.r7.g2b4501a-4
+	depends = hyprland>=0.57.0
 	depends = bash
 	depends = coreutils
 	depends = util-linux
@@ -32,7 +32,6 @@ pkgbase = vgshell-git
 	depends = gpu-screen-recorder
 	depends = grim
 	depends = gum
-	depends = hyprpicker
 	depends = imagemagick
 	depends = iproute2
 	depends = less
@@ -90,6 +89,7 @@ pkgbase = vgshell-git
 	optdepends = xorg-xinit: startx, for X11 sessions on the login screen
 	optdepends = polkit: pkexec, so applications can ask for administrator access
 	optdepends = tailscale: the Tailscale plugin
+	optdepends = openssh: Connect in terminal in the Tailscale plugin
 	optdepends = nm-connection-editor: adds and changes VPN profiles in NetworkManager
 	optdepends = networkmanager-openvpn: connects and imports OpenVPN profiles in the VPN plugin
 	optdepends = cups: lpstat and ipptool, which list your printers and their changes in the Printers plugin
