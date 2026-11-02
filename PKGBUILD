@@ -22,9 +22,9 @@ optdepends=(
 )
 # Release public key as a declared local source: AUR snapshot tarballs
 # only include declared sources, so every install path receives it.
-# Import once: gpg --import hornero-release.pub.asc (fingerprint must
+# Import once: gpg --import hornero-release.pub (fingerprint must
 # match validpgpkeys). Helpers may also fetch it from keyservers.
-source=('hornero-release.pub.asc')
+source=('hornero-release.pub')
 sha256sums=('4f18f92773a924e71b1af2045be932f7bc8fa16dcff6266d5c37cf1114605afb')
 source_x86_64=(
   "horneroctl-${pkgver}::https://github.com/HorneroOS/hornero/releases/download/${_reltag}/horneroctl-linux-x86_64"
