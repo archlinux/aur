@@ -3,7 +3,7 @@
 # Maintainer:  max.bra <max dot bra at alice dot it>
 
 pkgname=ipscan
-pkgver=3.12.0
+pkgver=3.12.1
 pkgrel=1
 pkgdesc='Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(ipscan ipscan.desktop build.gradle.patch \
 sha512sums=('e2caf62412c35a7a29128d0ae176aca1e4a45cf81e44b76e4bb23ad1c0633fa8833d674d7d514942a170ab54223b6c4a93ab458f2736107e7bbe9a5e806a7c5e'
             'c17db5e4ac90af8675e9ac2a8e77f1322beb8bacb578a288bcfbf8da67270004ec40314b2793ea8ed8eeeeb64f9c03b3f80694e38c55be9d213486b825689a0f'
             '8ec4aae1b2226af984e58acd20ddc7d78268ab53a1f39cb6c85143741638727cf94794597bb9755483968c5f93e37cc96c33c61527529c074782f9447914399a'
-            '1949c471c25e94ea596041a897763a31bcf9a03e093d349a415633cfb5a73f4a2ce0ace37e0c46f06802cbdedacd58afb37a8b0015125cf4ff302ae81429661e')
+            '60726ed74bbcee8a52af7efa443d9f96f40cf157844b32615df7bee6a05583641410e9f2ed7d2ada6eb6824d9041ed9f6f14d386b5ef589a0a4d7114270a4bec')
 
 # prefer jdk21, otherwise the system default JDK
 _javahome() {
