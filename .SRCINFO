@@ -7,7 +7,6 @@ pkgbase = staind-bin
 	arch = aarch64
 	license = GPL-3.0
 	provides = staind
-	provides = staindd
 	conflicts = staind
 	options = !strip
 	source_x86_64 = staind-x86_64-1.0.0.tgz::https://github.com/erietz/staind/releases/download/v1.0.0/staind-linux-x86_64.tar.gz
