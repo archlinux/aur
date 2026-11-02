@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(
   git
-  pyside6-tools-wrappers # for building translations
+  qt6-tools # for building translations
   python-build
   python-installer
   python-setuptools
