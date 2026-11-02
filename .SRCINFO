@@ -1,0 +1,26 @@
+pkgbase = mimick-git
+	pkgdesc = Unofficial Immich desktop client for Linux (GTK4/libadwaita)
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/nicx17/mimick
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = meson
+	makedepends = ninja
+	makedepends = blueprint-compiler
+	depends = gtk4
+	depends = libadwaita
+	depends = libshumate
+	depends = hicolor-icon-theme
+	optdepends = libsecret: keyring integration
+	optdepends = libnotify: notifications
+	provides = mimick
+	conflicts = mimick
+	source = mimick-git::git+ssh://git@github.com/nicx17/mimick.git
+	sha256sums = SKIP
+
+pkgname = mimick-git
