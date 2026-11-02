@@ -2,7 +2,7 @@
 
 pkgname=clock-tui-bin
 _pkgname=clock-tui
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A terminal clock app with clock, timer, stopwatch, countdown, and clock widgets (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_x86_64=('ad0841730be216c151e2302f7c0145c12e210ba3a67e49f0ab1bee973f0807d0')
-sha256sums_aarch64=('583a4834dada91c1d284bb47a5b3d0fe5975b23f07e4d9239e4cb69e3aa02801')
+sha256sums_x86_64=('8e607de226477bf3bf6cbe95be39a181028c8636965ceda8eb63c73887f6b57a')
+sha256sums_aarch64=('c0e0f8e3f0eda839667a980907c4a5e35708820bd84682393eeb7cfa1d9acf3f')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                 "tclock"
