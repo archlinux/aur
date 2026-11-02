@@ -1,0 +1,18 @@
+post_install() {
+    cat <<'EOF'
+ukibuild installed.
+
+Next steps:
+  1. Edit /etc/ukibuild.conf (all settings are optional).
+  2. Preview:  sudo ukibuild build --all --dry-run --verbose
+  3. Build:    sudo ukibuild build --all
+  4. Enable automatic rebuilds:
+       sudo systemctl enable --now ukibuild.path
+
+The pacman hook is installed but only runs after kernel/systemd/ucode updates.
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
