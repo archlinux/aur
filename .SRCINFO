@@ -1,6 +1,6 @@
 pkgbase = linksy
 	pkgdesc = Your phone and your Linux computer, working as one: files, clipboard, screens, webcam
-	pkgver = 0.9.8
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://github.com/LinkSy-mg/linksy-desktop
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = linksy
 	makedepends = qt6-declarative
 	options = !debug
 	options = !lto
-	source = linksy-0.9.8.tar.gz::https://github.com/LinkSy-mg/linksy-desktop/archive/refs/tags/v0.9.8.tar.gz
-	sha256sums = 312f3c26c32d7c06bfa72da766bbb2f345d21d34ba3f4c69f88454526ff92dcf
+	source = linksy-0.11.4.tar.gz::https://github.com/LinkSy-mg/linksy-desktop/archive/refs/tags/v0.11.4.tar.gz
+	sha256sums = b46f60099fc692545b2a9f614c42b961342be4730de92ebbf9d8a0c29aa14406
 
 pkgname = linksy-common
 	pkgdesc = Your devices, connected: the service and tools both Linksy apps share
@@ -35,11 +35,13 @@ pkgname = linksy-common
 	optdepends = wl-clipboard: shared clipboard while the window is not focused
 	optdepends = v4l2loopback-dkms: the phone as a webcam in every app
 	optdepends = v4l2loopback-utils: the phone as a webcam in every app
+	optdepends = mokutil: the webcam driver with Secure Boot on
+	optdepends = python-nautilus: Send with Linksy in GNOME Files
 	conflicts = linksy<0.8.4
 
 pkgname = linksy
 	pkgdesc = Your phone and your Linux computer, working as one (GTK app, for GNOME and most desktops)
-	depends = linksy-common=0.9.8
+	depends = linksy-common=0.11.4
 	depends = gtk4
 	depends = libadwaita
 	depends = gst-plugin-gtk4
@@ -47,7 +49,7 @@ pkgname = linksy
 
 pkgname = linksy-qt
 	pkgdesc = Your phone and your Linux computer, working as one (Qt app, for KDE Plasma)
-	depends = linksy-common=0.9.8
+	depends = linksy-common=0.11.4
 	depends = gstreamer
 	depends = qt6-base
 	depends = qt6-declarative

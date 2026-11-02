@@ -1,12 +1,12 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
 # Contributor: Dokja620 <revanamike620@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 # Based on upstream packaging/aur/PKGBUILD.
 # One build, three packages, as Transmission splits its apps: linksy-common (the service and
 # tools), linksy (the GTK app) and linksy-qt (the Qt app, for KDE Plasma).
 pkgbase=linksy
 pkgname=(linksy-common linksy linksy-qt)
-pkgver=0.9.8
+pkgver=0.11.4
 pkgrel=1
 pkgdesc='Your phone and your Linux computer, working as one: files, clipboard, screens, webcam'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('AGPL-3.0-or-later')
 options=(!debug !lto)
 makedepends=('cargo' 'lld' 'gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'qt6-base' 'qt6-declarative')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('312f3c26c32d7c06bfa72da766bbb2f345d21d34ba3f4c69f88454526ff92dcf')
+sha256sums=('b46f60099fc692545b2a9f614c42b961342be4730de92ebbf9d8a0c29aa14406')
 
 prepare() {
   cd linksy-desktop-$pkgver
@@ -64,7 +64,9 @@ package_linksy-common() {
               'gst-plugins-ugly: H.264 encoding with x264'
               'wl-clipboard: shared clipboard while the window is not focused'
               'v4l2loopback-dkms: the phone as a webcam in every app'
-              'v4l2loopback-utils: the phone as a webcam in every app')
+              'v4l2loopback-utils: the phone as a webcam in every app'
+              'mokutil: the webcam driver with Secure Boot on'
+              'python-nautilus: Send with Linksy in GNOME Files')
   # Before 0.8.4, one linksy package held everything
   conflicts=('linksy<0.8.4')
   cd linksy-desktop-$pkgver
@@ -81,6 +83,9 @@ package_linksy-common() {
   install -Dm644 data/linksy.firewalld.xml "$pkgdir/usr/lib/firewalld/services/linksy.xml"
   sed 's|^Exec=linksy-app|Exec=linksy-open|' data/mg.diary.linksy.Linksy.desktop | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/mg.diary.linksy.Linksy.desktop"
   install -Dm644 data/mg.diary.linksy.Linksy.metainfo.xml "$pkgdir/usr/share/metainfo/mg.diary.linksy.Linksy.metainfo.xml"
+  install -Dm644 data/linksy-send.desktop "$pkgdir/usr/share/kio/servicemenus/linksy-send.desktop"
+  install -Dm644 data/linksy-thunar.desktop "$pkgdir/usr/share/Thunar/sendto/linksy.desktop"
+  install -Dm644 data/nautilus/linksy.py "$pkgdir/usr/share/nautilus-python/extensions/linksy.py"
   install -Dm644 data/icons/mg.diary.linksy.Linksy.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/mg.diary.linksy.Linksy.svg"
   install -Dm644 data/icons/mg.diary.linksy.Linksy-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/mg.diary.linksy.Linksy-symbolic.svg"
   install -Dm644 data/icons/mg.diary.linksy.Linksy-tray-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/mg.diary.linksy.Linksy-tray-symbolic.svg"
