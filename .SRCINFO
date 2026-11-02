@@ -1,0 +1,32 @@
+pkgbase = synergy-dragon-alpha-bin
+	pkgdesc = Share a single mouse and keyboard between multiple computers
+	pkgver = 3.9.1
+	pkgrel = 1
+	url = https://symless.com/synergy
+	arch = x86_64
+	license = unknown
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libei
+	depends = libgcc
+	depends = libsoup3
+	depends = libstdc++
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxinerama
+	depends = libxkbcommon
+	depends = libxkbfile
+	depends = libxrandr
+	depends = libxtst
+	depends = openssl
+	depends = qt6-base>=6.12
+	depends = webkit2gtk-4.1
+	conflicts = synergy-dragon-alpha-bin
+	options = !strip
+	source=("page.html::https://email.mg.symless.com/c/eJxMjj1PwzAUAH-Ns1HZ7zn-GDw0gggJECBRqXSzXqw2JbEj2xTCr0d0Yry75QYHPgjTBCe0EdAqbXRzcgSDIkNGWC-EFzRwoFaRJm81tzo0owMOiisB3CJyvbHEEbHVEAhRKmSSz8dNWecplLKhNDeTO9W6FIZbBj2D_l-7Ugz5uDLo_TIy6If0Fafkhz9BFEph2Nf0ESLDW3l4PEO8ed6_bA_nRcLr2hHa9odqd6fu3_P-8-nte_fQiXbXZHcJMWWDRgKT3Gdf8xivQxcHvwEAAP__hk5M-A")
+	sha256sums=('SKIP')
+
+pkgname = synergy-dragon-alpha-bin

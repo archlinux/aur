@@ -1,0 +1,425 @@
+function post_install() {
+#!/bin/sh
+set -e
+
+# A package transaction shows scriptlet output to whoever is installing, so the
+# commands that chatter are told not to. Errors are unaffected and still print.
+# Export SYNERGY_DRAGON_DEBUG for the package manager to get it all back, along
+# with a trace of what ran:
+#     SYNERGY_DRAGON_DEBUG=1 dnf install ./synergy-dragon.rpm
+if [ -n "${SYNERGY_DRAGON_DEBUG:-}" ]; then
+	set -x
+	quiet=
+else
+	quiet=--quiet
+fi
+
+account=synergy-dragon
+state=/var/lib/synergy-dragon
+
+# The service runs as its own account rather than as root. Sharing input needs
+# a desktop session, not a computer's full authority, and the session agent is
+# what has one. Without the account the unit cannot start at all, so a failure
+# here has to stop the install rather than leave a service nobody can run.
+if ! getent group "$account" >/dev/null 2>&1; then
+	groupadd --system "$account"
+fi
+if ! getent passwd "$account" >/dev/null 2>&1; then
+	nologin=/usr/sbin/nologin
+	[ -x "$nologin" ] || nologin=/sbin/nologin
+	[ -x "$nologin" ] || nologin=/bin/false
+	useradd --system --gid "$account" --home-dir "$state" --no-create-home \
+		--shell "$nologin" --comment "Synergy Dragon Alpha" "$account"
+fi
+
+if [ -w /var/lib ]; then
+	/usr/lib/synergy-dragon/synergy-dragon-service seed
+
+	# systemd's state directory hands the tree over on its own, but only from the
+	# version that supports it, so this is what an upgrade from a root-owned
+	# install relies on.
+	mkdir -p "$state"
+	exec 9<"$state/apply.lock"
+	flock -w 30 9 || {
+		echo "Could not wait for the running service to finish with the versions it keeps" >&2
+		exit 1
+	}
+	chown -R "$account:$account" "$state"
+
+	# Everyone signed in runs the app and the session agent out of the versions
+	# tree, so it stays readable whichever writer created it.
+	chmod 0755 "$state"
+	if [ -d "$state/versions" ]; then
+		chmod 0755 "$state/versions"
+		find "$state/versions" -mindepth 1 -maxdepth 1 -type d -exec chmod 0755 {} +
+	fi
+
+	exec 9<&-
+fi
+
+# "enable --now" starts a stopped unit but leaves a running one on its old
+# binary, so an upgrade would not take effect until the machine rebooted.
+if command -v systemctl >/dev/null 2>&1; then
+	systemctl daemon-reload || true
+	systemctl $quiet preset synergy-dragon.service || true
+	if [ -d /run/systemd/system ] && systemctl $quiet is-enabled synergy-dragon.service; then
+		systemctl reset-failed synergy-dragon.service || true
+		systemctl restart synergy-dragon.service || true
+	fi
+	# The preset says the session agent is on by default; this is what makes
+	# that true on the distributions that never apply presets.
+	systemctl $quiet --global preset synergy-dragon-agent.service || true
+fi
+
+# Enabling only decides what happens at the next sign in, and a desktop target
+# that has already been reached does not pull in a unit added after it, so
+# anyone signed in right now would have nothing sharing until they signed out
+# and back in. Sessions that are not graphical are skipped: the agent has
+# nothing to attach core to in those.
+if command -v loginctl >/dev/null 2>&1 && command -v systemctl >/dev/null 2>&1 &&
+	systemctl $quiet --global is-enabled synergy-dragon-agent.service; then
+	loginctl list-sessions --no-legend 2>/dev/null | awk '{print $1}' |
+		while read -r session; do
+			case "$(loginctl show-session "$session" -p Type --value 2>/dev/null)" in
+			x11 | wayland) ;;
+			*) continue ;;
+			esac
+			user=$(loginctl show-session "$session" -p Name --value 2>/dev/null)
+			[ -n "$user" ] || continue
+			# A user's own unit definition wins over the packaged one, and
+			# their session manager may be wedged, so neither of these may hold
+			# the package transaction open.
+			timeout 15 systemctl $quiet --user --machine="$user@.host" \
+				daemon-reload || true
+
+			# Restart rather than start: an upgrade leaves the previous agent
+			# running its old binary, and starting an already-running unit
+			# would quietly leave it there.
+			timeout 15 systemctl $quiet --user --machine="$user@.host" \
+				--no-block restart synergy-dragon-agent.service || true
+		done
+fi
+
+if command -v update-desktop-database >/dev/null 2>&1; then
+	update-desktop-database $quiet /usr/share/applications || true
+fi
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+	gtk-update-icon-cache $quiet -f -t /usr/share/icons/hicolor || true
+fi
+
+}
+
+function post_remove() {
+#!/bin/sh
+set -e
+
+# A package transaction shows scriptlet output to whoever is removing, so the
+# commands that chatter are told not to. Errors are unaffected and still print.
+# Export SYNERGY_DRAGON_DEBUG for the package manager to get it all back, along
+# with a trace of what ran:
+#     SYNERGY_DRAGON_DEBUG=1 dnf remove synergy-dragon
+if [ -n "${SYNERGY_DRAGON_DEBUG:-}" ]; then
+	set -x
+	quiet=
+else
+	quiet=--quiet
+fi
+
+if command -v systemctl >/dev/null 2>&1; then
+	systemctl daemon-reload || true
+fi
+
+# What each account keeps that is worthless once the product is gone: its logs,
+# the window it left open, the settings and key pair the agent minted for core,
+# and the startup entry the app wrote for the tray, which would otherwise name a
+# program that no longer exists at every sign in.
+per_user_paths="
+.config/synergy-dragon
+.cache/synergy-dragon
+.config/autostart/synergy-dragon-tray.desktop
+"
+
+# The web view keeps the theme, and the layout of every named profile, which the
+# backend never sees. That is somebody's work rather than our leftovers, so it
+# survives a removal and goes only when the whole product is asked for.
+per_user_purge_paths="
+.local/share/synergy-dragon-gui
+"
+
+remove_user_state() {
+	home=$1
+	owner=$2
+	for relative in $3; do
+		path="$home/$relative"
+		if [ ! -e "$path" ] || [ -L "$path" ]; then
+			continue
+		fi
+		# A home directory belongs to somebody who is not root, and a path that
+		# leads somewhere they do not own is not ours to delete.
+		if [ "$(stat -c %u "$path" 2>/dev/null)" != "$owner" ]; then
+			continue
+		fi
+		rm -rf "$path"
+	done
+}
+
+# The removal runs as the machine rather than as anybody, so what people keep in
+# their own homes has to be gone looking for. Only the accounts this computer
+# knows about are reached, which is what a home directory on it means.
+remove_all_user_state() {
+	paths=$1
+	getent passwd | while IFS=: read -r _ _ uid _ _ home _; do
+		case "$uid" in
+		'' | *[!0-9]*) continue ;;
+		esac
+		[ "$uid" -ge 1000 ] || continue
+		[ "$uid" -lt 65534 ] || continue
+		case "$home" in
+		'' | /) continue ;;
+		esac
+		[ -d "$home" ] || continue
+		remove_user_state "$home" "$uid" "$paths"
+	done
+}
+
+# Each package manager names this argument its own way, and pacman passes the
+# version being removed, so the reliable test is for the handful of words that
+# mean an upgrade rather than for the many that mean a removal.
+case "$1" in
+upgrade | failed-upgrade | abort-install | abort-upgrade | disappear | 1) ;;
+*)
+	if command -v selinuxenabled >/dev/null 2>&1 && selinuxenabled &&
+		command -v semanage >/dev/null 2>&1; then
+		semanage fcontext -d -t bin_t '/var/lib/synergy-dragon/versions(/.*)?' >/dev/null 2>&1 || true
+	fi
+	rm -rf /var/lib/synergy-dragon/versions /var/lib/synergy-dragon/staging \
+		/var/lib/synergy-dragon/logs
+	rm -f /var/lib/synergy-dragon/current /var/lib/synergy-dragon/apply.lock \
+		/var/lib/synergy-dragon/seeded-package
+
+	remove_all_user_state "$per_user_paths"
+
+	# What is left behind is this computer's identity in the cluster: its
+	# certificates, its enrolled profiles and its databases. Removing those
+	# would make reinstalling look like a new computer and need every other one
+	# to accept it again, so they stay. A dpkg purge takes them, and because rpm
+	# and pacman have no such idea, so does asking for one directly:
+	#     SYNERGY_DRAGON_PURGE=1 dnf remove synergy-dragon
+	if [ "$1" = purge ] || [ -n "${SYNERGY_DRAGON_PURGE:-}" ]; then
+		remove_all_user_state "$per_user_purge_paths"
+		rm -rf /var/lib/synergy-dragon
+	fi
+	;;
+esac
+
+if command -v update-desktop-database >/dev/null 2>&1; then
+	update-desktop-database $quiet /usr/share/applications || true
+fi
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+	gtk-update-icon-cache $quiet -f -t /usr/share/icons/hicolor || true
+fi
+
+}
+
+function post_upgrade() {
+#!/bin/sh
+set -e
+
+# A package transaction shows scriptlet output to whoever is installing, so the
+# commands that chatter are told not to. Errors are unaffected and still print.
+# Export SYNERGY_DRAGON_DEBUG for the package manager to get it all back, along
+# with a trace of what ran:
+#     SYNERGY_DRAGON_DEBUG=1 dnf install ./synergy-dragon.rpm
+if [ -n "${SYNERGY_DRAGON_DEBUG:-}" ]; then
+	set -x
+	quiet=
+else
+	quiet=--quiet
+fi
+
+account=synergy-dragon
+state=/var/lib/synergy-dragon
+
+# The service runs as its own account rather than as root. Sharing input needs
+# a desktop session, not a computer's full authority, and the session agent is
+# what has one. Without the account the unit cannot start at all, so a failure
+# here has to stop the install rather than leave a service nobody can run.
+if ! getent group "$account" >/dev/null 2>&1; then
+	groupadd --system "$account"
+fi
+if ! getent passwd "$account" >/dev/null 2>&1; then
+	nologin=/usr/sbin/nologin
+	[ -x "$nologin" ] || nologin=/sbin/nologin
+	[ -x "$nologin" ] || nologin=/bin/false
+	useradd --system --gid "$account" --home-dir "$state" --no-create-home \
+		--shell "$nologin" --comment "Synergy Dragon Alpha" "$account"
+fi
+
+if [ -w /var/lib ]; then
+	/usr/lib/synergy-dragon/synergy-dragon-service seed
+
+	# systemd's state directory hands the tree over on its own, but only from the
+	# version that supports it, so this is what an upgrade from a root-owned
+	# install relies on.
+	mkdir -p "$state"
+	exec 9<"$state/apply.lock"
+	flock -w 30 9 || {
+		echo "Could not wait for the running service to finish with the versions it keeps" >&2
+		exit 1
+	}
+	chown -R "$account:$account" "$state"
+
+	# Everyone signed in runs the app and the session agent out of the versions
+	# tree, so it stays readable whichever writer created it.
+	chmod 0755 "$state"
+	if [ -d "$state/versions" ]; then
+		chmod 0755 "$state/versions"
+		find "$state/versions" -mindepth 1 -maxdepth 1 -type d -exec chmod 0755 {} +
+	fi
+
+	exec 9<&-
+fi
+
+# "enable --now" starts a stopped unit but leaves a running one on its old
+# binary, so an upgrade would not take effect until the machine rebooted.
+if command -v systemctl >/dev/null 2>&1; then
+	systemctl daemon-reload || true
+	systemctl $quiet preset synergy-dragon.service || true
+	if [ -d /run/systemd/system ] && systemctl $quiet is-enabled synergy-dragon.service; then
+		systemctl reset-failed synergy-dragon.service || true
+		systemctl restart synergy-dragon.service || true
+	fi
+	# The preset says the session agent is on by default; this is what makes
+	# that true on the distributions that never apply presets.
+	systemctl $quiet --global preset synergy-dragon-agent.service || true
+fi
+
+# Enabling only decides what happens at the next sign in, and a desktop target
+# that has already been reached does not pull in a unit added after it, so
+# anyone signed in right now would have nothing sharing until they signed out
+# and back in. Sessions that are not graphical are skipped: the agent has
+# nothing to attach core to in those.
+if command -v loginctl >/dev/null 2>&1 && command -v systemctl >/dev/null 2>&1 &&
+	systemctl $quiet --global is-enabled synergy-dragon-agent.service; then
+	loginctl list-sessions --no-legend 2>/dev/null | awk '{print $1}' |
+		while read -r session; do
+			case "$(loginctl show-session "$session" -p Type --value 2>/dev/null)" in
+			x11 | wayland) ;;
+			*) continue ;;
+			esac
+			user=$(loginctl show-session "$session" -p Name --value 2>/dev/null)
+			[ -n "$user" ] || continue
+			# A user's own unit definition wins over the packaged one, and
+			# their session manager may be wedged, so neither of these may hold
+			# the package transaction open.
+			timeout 15 systemctl $quiet --user --machine="$user@.host" \
+				daemon-reload || true
+
+			# Restart rather than start: an upgrade leaves the previous agent
+			# running its old binary, and starting an already-running unit
+			# would quietly leave it there.
+			timeout 15 systemctl $quiet --user --machine="$user@.host" \
+				--no-block restart synergy-dragon-agent.service || true
+		done
+fi
+
+if command -v update-desktop-database >/dev/null 2>&1; then
+	update-desktop-database $quiet /usr/share/applications || true
+fi
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+	gtk-update-icon-cache $quiet -f -t /usr/share/icons/hicolor || true
+fi
+
+}
+
+function pre_remove() {
+#!/bin/sh
+set -e
+
+# A package transaction shows scriptlet output to whoever is removing, so the
+# commands that chatter are told not to. Errors are unaffected and still print.
+# Export SYNERGY_DRAGON_DEBUG for the package manager to get it all back, along
+# with a trace of what ran:
+#     SYNERGY_DRAGON_DEBUG=1 dnf remove synergy-dragon
+if [ -n "${SYNERGY_DRAGON_DEBUG:-}" ]; then
+	set -x
+	quiet=
+else
+	quiet=--quiet
+fi
+
+# Matching is by path and never by name. A development tree runs binaries with
+# exactly these names, and killing those because somebody removed the package
+# would be a bug of its own.
+stop_under() {
+	pids=
+	for proc in /proc/[0-9]*; do
+		target=$(readlink "$proc/exe" 2>/dev/null) || continue
+		case "$target" in
+		"$1"/*) pids="$pids ${proc#/proc/}" ;;
+		esac
+	done
+	[ -n "$pids" ] || return 0
+
+	for pid in $pids; do
+		kill -TERM "$pid" 2>/dev/null || true
+	done
+
+	waited=0
+	while [ "$waited" -lt 5 ]; do
+		running=
+		for pid in $pids; do
+			if kill -0 "$pid" 2>/dev/null; then
+				running=yes
+				break
+			fi
+		done
+		[ -n "$running" ] || return 0
+		sleep 1
+		waited=$((waited + 1))
+	done
+
+	for pid in $pids; do
+		kill -KILL "$pid" 2>/dev/null || true
+	done
+}
+
+# Each package manager names this argument its own way, and pacman passes the
+# version being removed, so the reliable test is for the handful of words that
+# mean an upgrade rather than for the many that mean a removal.
+case "$1" in
+upgrade | deconfigure | failed-upgrade | 1) ;;
+*)
+	if command -v systemctl >/dev/null 2>&1; then
+		systemctl $quiet disable --now synergy-dragon.service || true
+		systemctl $quiet --global disable synergy-dragon-agent.service || true
+	fi
+
+	# Disabling only decides what happens at the next sign in. A session agent
+	# already running would carry on holding core with its own binary deleted,
+	# and it would keep hold of its name, so installing again could not start a
+	# replacement.
+	if command -v loginctl >/dev/null 2>&1 && command -v systemctl >/dev/null 2>&1; then
+		loginctl list-sessions --no-legend 2>/dev/null | awk '{print $1}' |
+			while read -r session; do
+				user=$(loginctl show-session "$session" -p Name --value 2>/dev/null)
+				[ -n "$user" ] || continue
+				timeout 15 systemctl $quiet --user --machine="$user@.host" \
+					stop synergy-dragon-agent.service || true
+			done
+	fi
+
+	# The service manager reaches the service and the agent, and nothing else.
+	# The app, the tray, and the agent on a desktop that starts it from the
+	# autostart entry instead of a unit all run as the signed-in person, and
+	# would carry on with their binaries deleted: an icon for a product that is
+	# gone, and a tray that keeps rewriting a startup entry pointing at nothing.
+	# The service goes first, above, because killing it invites the service
+	# manager to start a fresh one.
+	stop_under /usr/lib/synergy-dragon
+	stop_under /var/lib/synergy-dragon/versions
+	;;
+esac
+
+}
+
