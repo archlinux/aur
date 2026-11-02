@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Extensible control center for GNOME"
 arch=('x86_64')
@@ -19,6 +19,10 @@ makedepends=(
   'meson'
   'vala'
 )
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=(
   'gnome-tuner-gdm: GNOME Display Manager settings'
   'gnome-tuner-glts: GNOME Legacy Theme Switcher config settings'
@@ -28,7 +32,7 @@ optdepends=(
 )
 provides=('libtuner-1.so')
 source=("git+https://altlinux.space/alt-gnome/tuner.git#tag=$pkgver")
-sha256sums=('e8517d57fdc41ba00d61795802f093c828f0ad13a5f176583d9b1fb872946e96')
+sha256sums=('0479f8b93f17543151e6ff195834903b0540169787203ad6eee505aa2babf43e')
 
 build() {
   arch-meson tuner build
