@@ -1,12 +1,27 @@
 post_install() {
     cat <<'EOF'
-==> Build profile installed: /etc/apparmor.d/makepkg-jail-build
-    Load it with:
+==> Profiles installed:
+      /etc/apparmor.d/makepkg-jail-build
+      /etc/apparmor.d/makepkg-jail-setup
+    Load them with:
+      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-setup
       sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
 
-    Requires the matching, administrator-managed bubblewrap setup profile.
-    Reference: /usr/share/makepkg-jail/profiles/usr.bin.bwrap
-    Do not blindly overwrite an existing bubblewrap profile.
+    Replacement is not complete until the old global profile is removed:
+      sudo apparmor_parser -R /etc/apparmor.d/usr.bin.bwrap
+      sudo rm -f /etc/apparmor.d/usr.bin.bwrap
+      if aa-exec -p '/usr/bin/bwrap' -- true 2>/dev/null; then
+        echo "ERROR: old /usr/bin/bwrap profile still loaded" >&2
+        exit 1
+      fi
+    Then reload and verify after reboot:
+      aa-exec -p makepkg-jail-setup -- cat /proc/self/attr/apparmor/current
+      # expect: makepkg-jail-setup (enforce)
+
+    Known limitation: setup needs bare mount/pivot_root for disconnected
+    paths during namespace construction (applies only during setup, not build).
+
+    -s/-i/-r need passwordless sudo pacman; otherwise makepkg-jail fails fast.
 
     After testing, set in paru.conf under [bin]:
       Makepkg = /usr/bin/paru-makepkg-jail
@@ -15,10 +30,12 @@ EOF
 
 post_upgrade() {
     cat <<'EOF'
-==> Check for /etc/apparmor.d/makepkg-jail-build.pacnew.
-    After merging any changes, reload the build profile:
+==> Check for /etc/apparmor.d/makepkg-jail-*.pacnew.
+    After merging any changes, reload both profiles:
+      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-setup
       sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
-    The global bubblewrap policy and paru.conf were not changed.
+    Ensure old /etc/apparmor.d/usr.bin.bwrap is removed/disabled.
+    The global bubblewrap policy and paru.conf were not changed automatically.
 EOF
 }
 
@@ -26,6 +43,6 @@ post_remove() {
     cat <<'EOF'
 ==> Remove the paru.conf Makepkg override for paru-makepkg-jail.
     Loaded AppArmor policy is not automatically unloaded.
-    The administrator-managed global bubblewrap profile was retained.
+    Remove /etc/apparmor.d/makepkg-jail-setup and -build if no longer needed.
 EOF
 }

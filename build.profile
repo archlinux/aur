@@ -1,7 +1,8 @@
 #include <tunables/global>
 
 profile makepkg-jail-build {
-    signal (send, receive) peer="/usr/bin/bwrap//&makepkg-jail-build",
+    signal (send, receive) peer="makepkg-jail-build//&makepkg-jail-setup",
+    signal (send, receive) peer="makepkg-jail-setup//&makepkg-jail-build",
 
     # Read the explicitly mounted toolchain and configuration.
     /usr/ r,
@@ -53,7 +54,7 @@ profile makepkg-jail-build {
     # Used by compilers, fakeroot and subprocess management.
     signal (send, receive) peer=makepkg-jail-build,
     signal (receive) peer=unconfined,
-    signal (receive) peer=/usr/bin/bwrap,
+    signal (receive) peer=makepkg-jail-setup,
 
     # The wrapper's network namespace controls online versus offline.
     network,

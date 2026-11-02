@@ -10,7 +10,8 @@
 #
 # -s, -i and -r are handled by this wrapper on the host: dependencies and
 # built packages are installed by pacman outside the sandbox, never by code
-# from the PKGBUILD.
+# from the PKGBUILD. They need passwordless sudo pacman; otherwise this
+# wrapper fails fast (unsupported under aa-load-jail-only sudo policy).
 #
 # Pre-fetch hooks: executables in /etc/makepkg-jail/pre-fetch.d and
 # ~/.config/makepkg-jail/pre-fetch.d run sandboxed, in name order, before
@@ -179,6 +180,20 @@ case "$work" in
         die "Use a dedicated package directory."
         ;;
 esac
+
+# Do not bind sensitive host paths to /work: setup denies are content-only
+# and bare mount could otherwise expose them via rename/bind.
+case "$work/" in
+    "$home_real/.ssh/"*|"$home_real/.gnupg/"*|"$home_real/.aws/"*|"$home_real/.cargo/"*|"$home_real/.config/"*|"$home_real/.local/"*|"$home_real/.mozilla/"*|"$home_real/.docker/"*|"$home_real/.thunderbird/"*|"$home_real/.pki/"*|"$home_real/.password-store/"*|/home/|/run/user/*)
+        die "Use a dedicated package directory (sensitive path)."
+        ;;
+esac
+
+# -s/-i/-r require sudo pacman on the host. Fail fast when passwordless
+# sudo is unavailable (e.g. aa-load-jail-only policy).
+if (( want_deps || want_install || want_rmdeps )); then
+    sudo -n -l -- pacman >/dev/null 2>&1 || die "-s/-i/-r need passwordless sudo pacman (unsupported under current sudo policy)."
+fi
 
 # --- Shared state -------------------------------------------------------
 data="${XDG_DATA_HOME:-$HOME/.local/share}/makepkg-jail"
@@ -375,8 +390,8 @@ EOF
     local err_pid=$!
 
     local status=0
-    /usr/bin/bwrap "${args[@]}" -- \
-        /usr/bin/aa-exec -p '/usr/bin/bwrap//&makepkg-jail-build' -- "$@" \
+    /usr/bin/aa-exec -p makepkg-jail-setup -- /usr/bin/bwrap "${args[@]}" -- \
+        /usr/bin/aa-exec -p 'makepkg-jail-setup//&makepkg-jail-build' -- "$@" \
         </dev/null 1>&"$out_fd" 2>&"$err_fd" || status=$?
 
     # Close our pipe writers before waiting for the readers to finish.

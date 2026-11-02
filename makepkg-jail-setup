@@ -1,0 +1,82 @@
+#include <tunables/global>
+
+profile makepkg-jail-setup flags=(enforce,attach_disconnected) {
+  #include <abstractions/base>
+
+  change_profile -> "makepkg-jail-build//&makepkg-jail-setup",
+  change_profile -> "makepkg-jail-setup//&makepkg-jail-build",
+  userns,
+
+  mount,
+  umount,
+  remount,
+  pivot_root,
+
+  capability sys_admin,
+  capability sys_chroot,
+  capability setuid,
+  capability setgid,
+  capability net_admin,
+  capability setpcap,
+  capability sys_ptrace,
+  capability sys_resource,
+
+  signal (send, receive) peer=makepkg-jail-build//&makepkg-jail-setup,
+  signal (send, receive) peer=makepkg-jail-setup//&makepkg-jail-build,
+
+  @{PROC}/@{pid}/uid_map rw,
+  @{PROC}/@{pid}/gid_map rw,
+  @{PROC}/@{pid}/setgroups rw,
+  @{PROC}/sys/user/max_user_namespaces rw,
+
+  / r,
+  /tmp/ rw,
+  /tmp/** rwklmix,
+  /proc/ rw,
+  /dev/tty rw,
+  /dev/ptmx rw,
+  /dev/pts/ r,
+  /dev/pts/** rw,
+  /newroot/ rw,
+  /newroot/** rw,
+  /oldroot/ rw,
+  /oldroot/** rw,
+  /usr/ r,
+  /usr/** mr,
+  /usr/** ix,
+  /** r,
+
+  /work/ rw,
+  /work/** rwklmix,
+  /home/ r,
+  /home/build/ rw,
+  /home/build/** rwklmix,
+  /var/tmp/ rw,
+  /var/tmp/** rwklmix,
+  /gnupg/ rw,
+  /gnupg/** rwk,
+  /etc/pacman.d/gnupg/ rw,
+  /etc/pacman.d/gnupg/** rwk,
+
+  deny /usr/** w,
+  deny /boot/** w,
+  deny /var/lib/** w,
+  deny @{HOME}/.ssh/ rw,
+  deny @{HOME}/.ssh/** rw,
+  deny @{HOME}/.gnupg/private-keys-v1.d/ rw,
+  deny @{HOME}/.gnupg/private-keys-v1.d/** rw,
+  deny @{HOME}/.config/gh/ rw,
+  deny @{HOME}/.config/gh/** rw,
+  deny @{HOME}/.aws/ rw,
+  deny @{HOME}/.aws/** rw,
+  deny @{HOME}/.cargo/ rw,
+  deny @{HOME}/.cargo/credentials.toml rw,
+  deny /usr/bin/sudo x,
+  deny /usr/bin/su x,
+
+  @{HOME}/.cache/makepkg-jail-v2/** rw,
+
+  /usr/bin/** ix,
+  /bin/** ix,
+  /{usr/,}lib/** ix,
+}
