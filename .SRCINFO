@@ -1,6 +1,6 @@
 pkgbase = handy-bin
 	pkgdesc = A free, open source, and extensible speech-to-text application that works completely offline
-	pkgver = 0.9.8
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://handy.computer/
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = handy-bin
 	optdepends = kwtype-git: KDE Plasma virtual input support
 	provides = handy
 	conflicts = handy
-	source = handy-bin-0.9.8.deb::https://github.com/cjpais/Handy/releases/download/v0.9.8/Handy_0.9.8_amd64.deb
-	source = LICENSE_0.9.8::https://raw.githubusercontent.com/cjpais/Handy/refs/tags/v0.9.8/LICENSE
-	b2sums = 9fc90aa25f9db869791272688f36dd06bb20d4f4fbed3fe9572e40dcdb3673a160d730042916c64f6f9965489fdfa5a1533aadfc421c798f0f49b2c2b1e8258a
+	source = handy-bin-0.10.0.deb::https://github.com/cjpais/Handy/releases/download/v0.10.0/Handy_0.10.0_amd64.deb
+	source = LICENSE_0.10.0::https://raw.githubusercontent.com/cjpais/Handy/refs/tags/v0.10.0/LICENSE
+	b2sums = 89c31dd9a969fdbd6cb6accf282af98391371cd6756e1a5f1b0b301089a02752a77684c3a8373456cc3f9ede6e340d3be3d277bffe0b44cbdde36609da8cec30
 	b2sums = 48678eca5b87a0b59038c8b343d84073207bca4390ad40ac81f2f96dc553cc66453f0f6331749d4686aa7153875bdaf2e08b2adf2bef023ee6044518955a7950
 
 pkgname = handy-bin
