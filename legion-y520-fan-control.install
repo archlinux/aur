@@ -1,0 +1,14 @@
+post_install() {
+  echo ":: Fan servisini baslatmak icin:"
+  echo "     sudo systemctl enable --now legion-fan-control.service"
+  echo ":: Arayuz: uygulama menusunden 'Legion Y520 Fan Kontrol' ya da 'legion-fan-control'"
+  echo ":: Ctrl+Alt+F kisayolu oturumu kapatip actiktan sonra etkin olur"
+}
+
+post_upgrade() {
+  systemctl try-restart legion-fan-control.service 2>/dev/null || true
+}
+
+pre_remove() {
+  systemctl disable --now legion-fan-control.service 2>/dev/null || true
+}

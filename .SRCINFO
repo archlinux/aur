@@ -1,0 +1,24 @@
+pkgbase = legion-y520-fan-control-git
+	pkgdesc = Extreme Cooling, automatic fan mode and gaming tools for Lenovo Legion Y520-15IKBN
+	pkgver = 2.7.1.r19.g0701acb
+	pkgrel = 1
+	url = https://github.com/fatih5228/LegionFanControl
+	install = legion-y520-fan-control.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = python-dbus
+	depends = python-gobject
+	depends = glib2
+	depends = acpi_call
+	depends = dmidecode
+	depends = pciutils
+	optdepends = nvidia-utils: GPU temperature (nvidia-smi)
+	provides = legion-fan-control
+	conflicts = legion-fan-control
+	source = git+https://github.com/fatih5228/LegionFanControl.git
+	sha256sums = SKIP
+
+pkgname = legion-y520-fan-control-git
