@@ -1,0 +1,19 @@
+pkgbase = sch-rnd-svn
+	pkgdesc = simple, modular, scriptable schematics editor
+	pkgver = r12509
+	pkgrel = 1
+	url = http://www.repo.hu/projects/sch-rnd/
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = subversion
+	depends = sh
+	depends = librnd4
+	depends = libxml2
+	optdepends = freetype2: import_ttf plugin
+	optdepends = fungw
+	provides = sch-rnd
+	conflicts = sch-rnd
+	source = svn://svn.repo.hu/sch-rnd/trunk
+	sha256sums = SKIP
+
+pkgname = sch-rnd-svn
