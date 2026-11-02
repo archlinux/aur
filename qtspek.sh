@@ -2,9 +2,9 @@
 set -o pipefail
 _APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
-_PKGVER="@pkgver@"
-export PATH="${_APPDIR}:${_APPDIR}/${_PKGVER}:${PATH}"
-export LD_LIBRARY_PATH="${_APPDIR}/lib:${_APPDIR}/${_PKGVER}:${LD_LIBRARY_PATH}"
-export QT_PLUGIN_PATH="${_APPDIR}/plugins:${_APPDIR}/${_PKGVER}/plugins:${QT_PLUGIN_PATH}"
+export PATH="${_APPDIR}${PATH:+:$PATH}"
+export LD_LIBRARY_PATH="${_APPDIR}:${_APPDIR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export QT_PLUGIN_PATH="${_APPDIR}/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}"
+export QML_IMPORT_PATH="${_APPDIR}/qml${QML_IMPORT_PATH:+:$QML_IMPORT_PATH}}"
 cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 exec "${_RUNNAME}" "$@" || exit $?

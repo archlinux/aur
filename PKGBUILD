@@ -2,7 +2,7 @@
 pkgname=qtspek-bin
 _pkgname=QtSpek
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based spectrum analyzer, modified from Spek.(Prebuilt version)基于Qt的频谱分析器，修改于Spek"
 arch=('x86_64')
 url="https://github.com/Greedysky/QtSpek"
@@ -24,23 +24,22 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fce816047f7c636279f8bee4d77a6f6899371bed52cbf34e4f339ab4f42976d1'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            '4d70d090ce2d42eb020e170ac032345c954ecc723da08c4fb8e50624eba16a43')
+sha256sums=('d9c4b856276f517e0003afa7608e683774daca83c673af316fb7fea52187c08e'
+            'dcc7757b1cbbf9ed0d52f6fb328950b7621906e0e2224ef0b7ee7c0acf23fa6e'
+            '07b2c5694dcf561766e2d75a9de1afc667190d387b33d12adc78d2388b962e2c')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-        s/@pkgver@/${pkgver}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/opt/${_pkgname}/deploy/share/metainfo/${pkgname%-bin}.metainfo.xml"
+    sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/opt/ttk/${_pkgname}/deploy/share/metainfo/${pkgname%-bin}.metainfo.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/opt/ttk/${_pkgname}/." "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/deploy/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/deploy/share/metainfo/${pkgname%-bin}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
+    install -Dm644 "${srcdir}/opt/ttk/${_pkgname}/deploy/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/opt/ttk/${_pkgname}/deploy/share/metainfo/${pkgname%-bin}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
 }
