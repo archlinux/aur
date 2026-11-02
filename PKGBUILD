@@ -1,6 +1,6 @@
 # Maintainer: Bujju (https://github.com/BujjuIsABee)
 pkgname=shimelinux
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="An unofficial Linux port of Shimeji-ee Desktop Pet"
 arch=(any)
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('libappindicator' 'java-runtime>=21')
 makedepends=('git' 'java-environment>=21' 'cargo' 'libxkbcommon' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BujjuIsABee/shimelinux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1d94aef26bc93aa0c8abb7559c22ea9dcc17e13080f9b61735a7d073c0673b67')
+sha256sums=('ccedfc015f1c6027da2e0e68033525fe636e66ae1004a6bd9c45aded60eba3ed')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
