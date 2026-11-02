@@ -1,4 +1,5 @@
-# Maintainer: eNV25 <env252525@gmail.com>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: eNV25 <env252525@gmail.com>
 
 pkgname=webtorrent-mpv-hook
 pkgver=1.4.6
