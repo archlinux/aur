@@ -1,11 +1,18 @@
 pkgbase = stikk
-	pkgdesc = A placeholder package for stikk
-	pkgver = 0.0.0
+	pkgdesc = A terminal UI for the prikk version control system
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/stikk
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
-	source = stikk-0.0.0.tar.gz::https://github.com/prikk-vcs/stikk/archive/refs/tags/0.0.0.tar.gz
-	sha256sums = DUMMY-FOR-INITIALIZATION
+	makedepends = cargo
+	depends = prikk>=0.28
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	options = !debug
+	source = stikk-0.20.0.tar.gz::https://static.crates.io/crates/stikk/stikk-0.20.0.crate
+	sha256sums = e92e9912bd6141a4c5cbf69447e8329f3e3086f9553ed74e35aa236ec57d6953
 
 pkgname = stikk
