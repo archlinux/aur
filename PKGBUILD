@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.95
-pkgrel=2
+pkgrel=3
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -28,7 +28,7 @@ prepare() {
   echo 'extern "C" __attribute__((visibility("default"))) void flutter_qjs_plugin_register_with_registrar(void* registrar) {}' >> cxx/ffi.cpp
 
   # 2. CMAKE SNELLO:
-  # Creiamo la cartella linux prima di scrivere il CMakeLists.txt
+  # Creiamo la cartella linux prima di scrivere il CMakeLists.txt all'interno
   mkdir -p linux
 
   # Rimuoviamo PkgConfig e GTK. Compiliamo unicamente QuickJS e l'esportazione FFI.
