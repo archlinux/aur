@@ -1,20 +1,24 @@
 # Maintainer: 12tae12 <https://aur.archlinux.org/account/12tae12>
 pkgname=cadoodle-bin
-pkgver=1.6.0
+pkgver=1.9.010
 pkgrel=1
 pkgdesc="Simple drag-and-drop CAD tool, local TinkerCAD alternative (AppImage)"
 arch=('x86_64')
 url="https://cadoodlecad.com"
 license=('CC0-1.0')
-depends=('fuse2' 'hicolor-icon-theme')
-options=('!strip')
+depends=('fuse2' 'hicolor-icon-theme' 'zlib')
+options=('!strip' '!debug')
 provides=('cadoodle')
 conflicts=('cadoodle')
 
-source=("cadoodle-${pkgver}.AppImage::https://github.com/CommonWealthRobotics/CaDoodle/releases/download/${pkgver}/CaDoodle-Linux-x86_64.AppImage"
-        "cadoodle.png::https://github.com/CommonWealthRobotics/CaDoodle/blob/main/SourceIcon.png?raw=true")
-sha256sums=('30fb769099a452e8316a6c911b79b4d3e49f2cc82633b1ed6af02b3635518e16'
-            'd88745a3b7269d255109c46ba1b5146ebc4c38b8e20ba5afa15400da4db46e9f')
+source=(
+    "cadoodle-${pkgver}.AppImage::https://github.com/CommonWealthRobotics/CaDoodle/releases/download/${pkgver}/CaDoodle-Linux-${CARCH}.AppImage"
+    "cadoodle.png::https://github.com/CommonWealthRobotics/CaDoodle/blob/main/SourceIcon.png?raw=true"
+)
+sha256sums=(
+    '33f7520cd94cb9b1984e9864615f86ffff8626df639e6716b7f0fc9a6d8678c3'
+    '0cbecec683a9c1dbd609e6468e47a3f2e67c5825e514afe30976a111cd212348'
+)
 
 package() {
     install -Dm755 "${srcdir}/cadoodle-${pkgver}.AppImage" \
