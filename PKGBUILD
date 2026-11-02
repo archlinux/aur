@@ -19,7 +19,7 @@ url=${_ghurl}
 
 license=('GPL-3.0')
 
-provides=("${_appname}")
+provides=("${_appname}"{,d})
 conflicts=("${pkgname%-bin}")
 
 options=('!strip')
