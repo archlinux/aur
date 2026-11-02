@@ -34,6 +34,16 @@ package() {
   fi
   install -Dm755 build/Release/node_datachannel.node -t "${ndc}/build/Release"
 
+  # Keep only the glibc prebuilds for this architecture
+  local plat
+  case "${CARCH}" in
+    x86_64) plat=linux-x64 ;;
+    aarch64) plat=linux-arm64 ;;
+  esac
+  find "${mod}/node_modules" -type d -path '*/prebuilds/*' -prune ! -name "${plat}" -exec rm -r {} +
+  find "${mod}/node_modules" -path '*/prebuilds/*' -name '*.musl.node' -delete
+  find "${mod}/node_modules" -type d -name prebuilds -empty -delete
+
   install -d "${pkgdir}/etc/mpv/scripts"
   ln -s "/usr/lib/node_modules/${pkgname}/build/webtorrent.js" "${pkgdir}/etc/mpv/scripts/webtorrent.js"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
