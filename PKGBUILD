@@ -3,6 +3,10 @@
 #---- usage info -----------------------------------------------------------------------------
 IFS= read -r -d '' _usage << 'EOF'
 
+    Package task:
+        Increase the speed of the package managers.
+        Increase the life of an ssd/nvme disks.
+
     USAGE:
     After installing pacman-tmpfs you can use your favourite package manager as usual
     with tmpfs caches and automatically cleaning. Autocompletion is also working. For example:
@@ -28,7 +32,7 @@ EOF
 #---------------------------------------------------------------------------------------------
 
 pkgname=pacman-tmpfs
-pkgver=2026.10.31
+pkgver=2026.11.02
 pkgrel=1
 
 pkgdesc='Wrapper for pacman, yay, paru using tmpfs for caches and auto cleaning.'
