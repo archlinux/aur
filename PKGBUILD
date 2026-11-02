@@ -6,7 +6,7 @@ _branch="develop"
 _commit=dd36105e8473be696abac2f19dfd2f7385cd6cc3
 pkgname="${_pkgname}-git"
 pkgver=1691.dd36105
-pkgrel=1
+pkgrel=2
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
 url="https://bugwarrior.readthedocs.io"
@@ -19,7 +19,7 @@ depends=('python'
          'python-dateutil' 'python-pytz'
          'python-pydantic' 'python-tomli'
          'python-six>=1.9.0' 'python-jinja>=2.7.2'
-         'python-dogpile.cache>=0.5.3' 'python-lockfile>=0.9.1'
+         'python-dogpile.cache>=0.5.3' 'python-filelock'
          'python-click')
 optdepends=('python-keyring: keyring support'
             'python-jira>=3.10: jira support'
@@ -33,13 +33,20 @@ optdepends=('python-keyring: keyring support'
 conflicts=( $_pkgname )
 provides=( $_pkgname )
 
-source=("$_pkgname::git+https://github.com/GothenburgBitFactory/$_pkgname.git#branch=$_branch")
-sha256sums=('SKIP')
-b2sums=('SKIP')
+source=("$_pkgname::git+https://github.com/GothenburgBitFactory/$_pkgname.git#branch=$_branch" 'bugwarrior-collect-worker-side-service-construction.patch')
+sha256sums=('SKIP'
+            'b3c6fee79062d7e3c127dfb1060db112ba52bfaa0c03946ffb967fb508d04387')
+b2sums=('SKIP'
+        'a8346f887d66614d4310c18c3973cbcf89006ba2df3e8b0ef7ac0790a3cc9b488c46575633e5f92b42e540d4c096d4f7378829bb95d1ed6a697f7541ad8a3681')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   echo $(git rev-list --count $_branch).$(git rev-parse --short $_branch)
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  patch -p1 < $srcdir/bugwarrior-collect-worker-side-service-construction.patch
 }
 
 build() {

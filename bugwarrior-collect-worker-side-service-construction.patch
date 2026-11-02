@@ -1,0 +1,82 @@
+diff --git a/bugwarrior/collect.py b/bugwarrior/collect.py
+index dc427b8..0835fea 100644
+--- a/bugwarrior/collect.py
++++ b/bugwarrior/collect.py
+@@ -12,7 +12,7 @@ from taskw.task import Task
+ from bugwarrior.config import get_service
+ 
+ if TYPE_CHECKING:
+-    from bugwarrior.config.validation import Config
++    from bugwarrior.config.validation import Config, MainSectionConfig, ServiceConfig
+     from bugwarrior.services import Issue, Service
+ 
+ log = logging.getLogger(__name__)
+@@ -40,15 +40,31 @@ def get_service_instances(conf: "Config") -> list["Service"]:
+     ]
+ 
+ 
+-def _aggregate_issues(service: "Service", queue: multiprocessing.Queue) -> None:
++def _aggregate_issues(
++    service_config: "ServiceConfig",
++    main_config: "MainSectionConfig",
++    queue: multiprocessing.Queue,
++) -> None:
+     """This worker function is separated out from the main
+     :func:`aggregate_issues` func only so that we can use multiprocessing
+     on it for speed reasons.
+-    """
++
++    The ``Service`` instance is constructed here, inside the worker
++    process, rather than in the parent and handed across the process
++    boundary. Building it in the parent and passing it as a
++    ``multiprocessing.Process`` argument requires pickling it (needed by
++    the "spawn"/"forkserver" start methods, which are the default on some
++    platforms), and some services attach live, unpicklable-in-spirit
++    state to themselves during construction (e.g. HTTP client sessions)
++    that doesn't survive a pickle/unpickle round trip intact. Building the
++    service fresh in the target process sidesteps that entirely, and only
++    requires the lightweight, plain-data config objects to be picklable.
++   """
+ 
+     start = time.time()
+-    target = service.config.target
++    target = service_config.target
+     try:
++        service = get_service(service_config.service)(service_config, main_config)
+         for issue in service.issues():
+             queue.put(issue)
+     except SystemExit as e:
+@@ -79,17 +95,18 @@ def aggregate_issues(
+ 
+     queue = multiprocessing.Queue()
+ 
+-    services = get_service_instances(conf)
++    service_configs = conf.service_configs
+ 
+-    log.info(f"Spawning {len(services)} workers.")
++    log.info("Spawning %i workers." % len(service_configs))
+ 
+     if debug:
+-        for service in services:
+-            _aggregate_issues(service, queue)
++        for service_config in service_configs:
++            _aggregate_issues(service_config, conf.main, queue)
+     else:
+-        for service in services:
++        for service_config in service_configs:
+             proc = multiprocessing.Process(
+-                target=_aggregate_issues, args=(service, queue)
++                target=_aggregate_issues,
++                args=(service_config, conf.main, queue),
+             )
+             proc.start()
+ 
+@@ -99,7 +116,7 @@ def aggregate_issues(
+             # and tell some of our workers some incomplete things.
+             time.sleep(1)
+ 
+-    currently_running = len(services)
++    currently_running = len(service_configs)
+     while currently_running > 0:
+         issue = queue.get(True)
+         try:
