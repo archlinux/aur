@@ -99,6 +99,10 @@ build() {
   _cargo_env
   # Everything was fetched in prepare()
   export CARGO_NET_OFFLINE=true
+  # The build copies dsc and the resources into bin/, which git doesn't track, so files of earlier
+  # builds stay there (e.g. resources of the v3.3.0 tag, which 3.3.0-1 was built from). dsc and the
+  # tests would find those as resources next to dsc.
+  rm -rf "${srcdir:?}/$pkgname/bin"
   pwsh -NoProfile -NonInteractive -File dsc-build.ps1 -SourcePath "$srcdir/$pkgname" -Architecture "$_architecture"
 }
 
