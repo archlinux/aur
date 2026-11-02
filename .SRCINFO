@@ -1,7 +1,7 @@
 pkgbase = les11-mc-dx-overtemp-shutdown
 	pkgdesc = Shut the system down when any LES11-MC-Dx USB temperature probe exceeds a configured maximum
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lesminer.com/productinfo/180794.html
 	install = les11-mc-dx-overtemp-shutdown.install
 	arch = any
