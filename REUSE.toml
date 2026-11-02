@@ -6,6 +6,11 @@ path = [
     ".SRCINFO",
     "LICENSE",
     "REUSE.toml",
+    "keep-venv-interpreter.patch",
+    "release-date-from-stamp.patch",
+    "system-browser-fallback.patch",
+    "system-tools.py",
+    "hermes_agent_env.py",
 ]
 SPDX-FileCopyrightText = "hermes-agent AUR contributors"
 SPDX-License-Identifier = "0BSD"

@@ -1,0 +1,62 @@
+Arch packages of Hermes (lazy installs off): browser_exec takes a system
+Chrome, Chromium or Brave from PATH, since pm then never fetches its own
+Chromium (upstream uses a system browser only where pm builds none).
+browser.executable_path and pm's installed Chromium still win.
+
+--- a/hermes_cli/browser_runtime.py
++++ b/hermes_cli/browser_runtime.py
+@@ -19,6 +19,9 @@
+ # Distribution command names for a system Chromium, used only where pm builds none for this target
+ # (Termux: `pkg install chromium` from x11-repo).
+ _SYSTEM_CHROMIUM_COMMANDS = ("chromium", "chromium-browser")
++# With lazy installs off (a distribution's package of Hermes) pm never fetches its Chromium on demand:
++# a browser from the distribution's packages stands in, Chrome before Chromium before Brave.
++_PACKAGED_SYSTEM_COMMANDS = ("google-chrome-stable", "google-chrome", "chromium", "chromium-browser", "brave")
+ 
+ 
+ def _configured_executable() -> str | None:
+@@ -48,10 +51,15 @@
+     return pm.get_package("chromium").missing_reason(pm.current_target()) is not None
+ 
+ 
+-def _system_executable() -> str | None:
++def _lazy_installs_off() -> bool:
++    """pm may not install on demand, so it never fetches its Chromium by itself."""
++    return not pm.lazy_installs_allowed()
++
++
++def _system_executable(names: tuple[str, ...] = _SYSTEM_CHROMIUM_COMMANDS) -> str | None:
+     from hermes_platform.resolver import locate_command
+ 
+-    for name in _SYSTEM_CHROMIUM_COMMANDS:
++    for name in names:
+         found = locate_command(name).command
+         if found:
+             return found[0]
+@@ -63,13 +71,16 @@
+ 
+     Order: ``browser.executable_path`` (skipped with ``allow_override=False``, for callers that need
+     pm's own build) -> pm's installed ``chromium`` -> the Docker image's baked path -> a system
+-    ``chromium`` / ``chromium-browser`` on PATH, only on targets pm builds no Chromium for (Termux).
++    ``chromium`` / ``chromium-browser`` on PATH, only on targets pm builds no Chromium for (Termux), or
++    a distribution's Chrome, Chromium or Brave while lazy installs are off.
+     """
+     if allow_override and (override := _configured_executable()):
+         return override
+     if found := _pm_executable() or _baked_executable():
+         return found
+-    return _system_executable() if _pm_has_no_chromium() else None
++    if _pm_has_no_chromium():
++        return _system_executable()
++    return _system_executable(_PACKAGED_SYSTEM_COMMANDS) if _lazy_installs_off() else None
+ 
+ 
+ def chromium_missing_hint() -> str:
+@@ -88,4 +99,7 @@
+     if _pm_has_no_chromium():
+         return ("No Chromium found: pm builds none for this platform. Install your distribution's "
+                 "chromium package, or set browser.executable_path.")
++    if _lazy_installs_off():
++        return ("No Chromium found: install your distribution's chromium (or Google Chrome or Brave), "
++                "run `hermes pm install chromium`, or set browser.executable_path.")
+     return "Chromium is not installed: run `hermes pm install chromium`."
