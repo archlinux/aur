@@ -2,7 +2,7 @@
 # Maintainer: bethropolis <bethropolis at gmail dot com>
 
 pkgname='podbox'
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Podman-native container environment manager'
 url='https://github.com/bethropolis/podbox'
@@ -14,7 +14,7 @@ depends=('podman')
 makedepends=('rustup')
 optdepends=('fish: default shell in prebuilt images' 'openssh: for SSH agent forwarding')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bethropolis/podbox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('897236beaa036705eb73865d436da44ccb6379d2497976fbdb09a360fb9d879c')
+sha256sums=('138c2cc6e29ffc0781e5b2f34ec25b93847d6322dc4029e508a1b4976584148c')
 prepare() {
   cd "$pkgname-$pkgver"
 
