@@ -1,6 +1,6 @@
 pkgbase = sharky-shell-git
 	pkgdesc = Unix-first interactive shell written in Rust
-	pkgver = 3.5.3.r127.g9d42b58
+	pkgver = 3.5.4.r132.ge9ac1e8
 	pkgrel = 1
 	url = https://github.com/mafuzyk/sharky-shell
 	arch = x86_64
