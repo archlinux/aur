@@ -1,7 +1,7 @@
 # Maintainer: Wensheng Tang <sp3478 at gmail dot com>
 
 pkgname=krdp-git
-pkgver=6.8.80.r797.g8ca5498
+pkgver=6.8.80.r807.gfed5280
 pkgrel=1
 pkgdesc='Library and server for the Remote Desktop Protocol'
 arch=(x86_64)

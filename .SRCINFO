@@ -1,6 +1,6 @@
 pkgbase = krdp-git
 	pkgdesc = Library and server for the Remote Desktop Protocol
-	pkgver = 6.8.80.r797.g8ca5498
+	pkgver = 6.8.80.r807.gfed5280
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/krdp
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = krdp-git
 	depends = qtkeychain-qt6
 	depends = systemd-libs
 	depends = wayland
-	provides = krdp=6.8.80.r797.g8ca5498
+	provides = krdp=6.8.80.r807.gfed5280
 	conflicts = krdp
 	source = krdp::git+https://invent.kde.org/plasma/krdp.git#branch=master
 	sha256sums = SKIP
