@@ -56,7 +56,7 @@ index 879b6e298..5da3b5f9e 100644
  
  Process::Process(QObject* parent): PostReloadHook(parent) {
  	QObject::connect(
-@@ -197,6 +201,28 @@ void Process::startProcessIfReady() {
+@@ -197,6 +201,30 @@ void Process::startProcessIfReady() {
  
  	this->process = new QProcess(this);
  
@@ -64,9 +64,11 @@ index 879b6e298..5da3b5f9e 100644
 +	auto status = group.check();
 +	auto groupId = group.groupId();
 +	auto parentPid = getpid();
-+	// Qt 6.7 runs this modifier after fork and before exec; its dedicated
-+	// failure API safely reports FailedToStart from the child to the parent.
-+	// https://doc.qt.io/qt-6.7/qprocess.html#setChildProcessModifier
++	// Qt's forkfd fork path waits for the parent before this modifier.
++	// UseVFork permits this syscall-only callback to arm lifetime first.
++	// The failure API writes a stack error to Qt's pipe and exits safely.
++	// https://doc.qt.io/qt-6/qprocess.html#setChildProcessModifier
++	this->process->setUnixProcessParameters(QProcess::UnixProcessFlag::UseVFork);
 +	this->process->setChildProcessModifier([process = this->process, status, groupId, parentPid] {
 +		if (status.operation != qs::io::ProcessGroupStatus::Ready)
 +			process->failChildProcessModifier(
@@ -85,7 +87,7 @@ index 879b6e298..5da3b5f9e 100644
  	// clang-format off
  	QObject::connect(this->process, &QProcess::started, this, &Process::onStarted);
  	QObject::connect(this->process, &QProcess::finished, this, &Process::onFinished);
-@@ -289,8 +315,8 @@ void Process::onFinished(qint32 exitCode, QProcess::ExitStatus exitStatus) {
+@@ -289,8 +317,8 @@ void Process::onFinished(qint32 exitCode, QProcess::ExitStatus exitStatus) {
  
  void Process::onErrorOccurred(QProcess::ProcessError error) {
  	if (error == QProcess::FailedToStart) { // other cases should be covered by other events
