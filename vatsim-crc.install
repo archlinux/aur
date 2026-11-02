@@ -1,14 +1,19 @@
 post_install() {
   update-desktop-database -q /usr/share/applications
-  printf "\n#--------------------------------------------------\n"
-  printf "# Rebuild the package when out-of-date.\n#\n"
-  printf "# Use \"vatsim-crc clean\" to clean up WINEPREFIX.\n#\n"
-  printf "# Personally, I recommend Proton over Wine:\n"
-  printf "# This package automatically detects umu-run and   \n"
-  printf "# proton-ge-custom-bin. You may specify custom     \n"
-  printf "# PROTONPATH on first run of each upgrade and it   \n"
-  printf "# will be saved for future use.\n" 
-  printf "#--------------------------------------------------\n\n"
+  printf "\n"
+  printf "####################################################\n"
+  printf "# 1. Rebuild the package when out-of-date.         #\n"
+  printf "#                                                  #\n"
+  printf '# 2. "vatsim-crc clean" to creates new WINEPREFIX. #\n'
+  printf "#                                                  #\n"
+  printf "# 3. It appears Wine does not work currently.      #\n"
+  printf "# Thus, it's recommended to install umu-launcher,  #\n"
+  printf "# then this package autodetects umu-run and uses   #\n"
+  printf "# UMU-Proton by default (which to me works best)   #\n"
+  printf "# You may specify custom PROTONPATH on first run,  #\n"
+  printf "# and they are save for future launches. If you    #\n"
+  printf "# prefer Wine over Proton, set USE_WINE=1          #\n"
+  printf "####################################################\n\n"
 }
 
 post_upgrade() {
@@ -18,3 +23,4 @@ post_upgrade() {
 post_remove() {
   post_install $1
 }
+

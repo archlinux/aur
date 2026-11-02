@@ -1,21 +1,113 @@
 #!/bin/bash
 
-winepfxSaved=$WINEPREFIX
 pwdSaved=$PWD
 progName="vatsim-crc"
-savedFiles=$HOME/.$progName
 
-CURRVER=$(LC_ALL=C pacman -Qi vatsim-crc | grep Version | awk '{print $3}')
-LATESTVER=$(curl -s https://crc.virtualnas.net/LatestVersion.json | jq -r '.version')
+checkVersions() {
+  CURRVER=$(LC_ALL=C pacman -Qi vatsim-crc | grep Version | awk '{print $3}')
+  LATESTVER=$(curl -s https://crc.virtualnas.net/LatestVersion.json | jq -r '.version')
+  if [[ $CURRVER != "$LATESTVER"* ]]; then
+    notify-send --app-name=$progName --icon=$progName "A new version of CRC is available." "A new version of CRC is available, please re-build the PKGBUILD."
+    exit 1
+  fi
+}
 
-if [[ $CURRVER != "$LATESTVER"* ]]; then
-  notify-send --app-name=$progName --icon=$progName "A new version of CRC is available." "A new version of CRC is available, please re-build the PKGBUILD."
-  exit 1
-fi
+loadDefaults() {
+  if [[ ! -v SAVES ]]; then
+    SAVES=$HOME/.$progName
+  fi
 
-mkdir -p $savedFiles
+  if [[ ! -v PROTONPATH ]]; then
+    export PROTONPATH="UMU-Proton"
+  fi
 
-export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
+  if [[ ! -v WINEPREFIX ]]; then
+    export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
+  fi
+}
+
+loadSavedEnvs() {
+  PREV_INSTALLED=$(find $WINEPREFIX -iname ".installed.*")
+  if [[ ! -f $PREV_INSTALLED ]]; then
+    source $PREV_INSTALLED
+    echo "Loaded saved environment from $PREV_INSTALLED"
+  fi
+}
+
+saveEnvs() {
+  rm "$WINEPREFIX/.installed.$CURRVER"
+  if [[ -v SAVES ]]; then
+    declare -p SAVES >> "$WINEPREFIX/.installed.$CURRVER"
+  fi
+  if [[ -v PROTONPATH ]]; then
+    declare -p PROTONPATH >> "$WINEPREFIX/.installed.$CURRVER"
+  fi
+  if [[ -v USE_WINE ]]; then
+    declare -p USE_WINE >> "$WINEPREFIX/.installed.$CURRVER"
+  fi
+}
+
+probeUMU() {
+  hash umu-run
+  UMU_AVAIL=$?
+}
+
+protonUpdate() {
+  notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
+  echo "PROTONPATH=$PROTONPATH"
+
+  ln -svf $SAVES $WINEPREFIX/drive_c/$progName
+  for i in $(ls /opt/$progName); do
+    ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
+  done
+  if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
+    umu-run "/opt/rpc-bridge/bridge.exe" --install
+  fi
+
+  umu-run winetricks arial 
+  if [[ $1 == "msfonts" ]] ; then
+    umu-run winetricks tahoma courier
+  else
+    umu-run winetricks /opt/vatsim-crc/nicfonts.verb
+  fi
+  umu-run winetricks /opt/vatsim-crc/segmdl2.verb 
+  umu-run winetricks webview2
+  umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
+
+  touch "$WINEPREFIX/.installed.$CURRVER"
+  saveEnvs
+  umu-run wineboot -e
+}
+
+wineUpdate() {
+  rm $WINEPREFIX/.installed*
+  wine wineboot -ru
+  notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
+  winetricks -q arial tahoma
+  if [[ $1 == "msfonts" ]] ; then
+    winetricks -q courier
+  else
+    winetricks -q /opt/vatsim-crc/nicfonts.verb
+  fi
+  winetricks -q /opt/vatsim-crc/segmdl2.verb /opt/vatsim-crc/webview2.verb
+  winetricks -q fontsmooth=rgb
+  wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
+  ln -svf $SAVES $WINEPREFIX/drive_c/$progName
+  for i in $(ls /opt/$progName); do
+    ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
+  done
+  if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
+    wine "/opt/rpc-bridge/bridge.exe" --install
+  fi
+  touch "$WINEPREFIX/.installed.$CURRVER"
+  wine wineboot -e
+}
+
+#### EXECUTIONS ####
+
+loadDefaults
+checkVersions
+
 
 if [[ $1 == "clean" ]] ; then
   rm -rf $WINEPREFIX
@@ -23,83 +115,32 @@ if [[ $1 == "clean" ]] ; then
 fi
 
 mkdir -p $WINEPREFIX
-
-## probe if umu-launcher
-hash umu-run
-UMU_AVAIL=$?
+loadSavedEnvs
+mkdir -p $SAVES
+probeUMU
 
 if [ $UMU_AVAIL -eq 0 ] && [[ ! -v USE_WINE ]]; then
   # Proton version
-  export GAMEID=vatsim-crc
+  export GAMEID=$progName
+  export UMU_NO_RUNTIME=1
+  export PROTONPATH
+  export WINEPREFIX
+
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
-
-    if [[ ! -v PROTONPATH ]]; then
-#      if [ -d "/usr/share/steam/compatibilitytools.d/proton-ge-custom" ] ; then
-#        export PROTONPATH="/usr/share/steam/compatibilitytools.d/proton-ge-custom"
-#      fi
-      export PROTONPATH="UMU-Proton"
-    else
-      cd $WINEPREFIX
-      PREV_INSTALLED=$(find . -iname ".installed*")
-      source $PREV_INSTALLED
-      rm $PREV_INSTALLED
-    fi
-
-    if [[ -v PROTONPATH ]]; then
-      declare -p PROTONPATH > "$WINEPREFIX/.installed.$CURRVER"
-    fi
-
-    notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
-    echo "PROTONPATH=$PROTONPATH"
-    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks arial tahoma
-    if [[ $1 == "msfonts" ]] ; then
-      GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks courier
-    else
-      GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks /opt/vatsim-crc/nicfonts.verb
-    fi
-    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks /opt/vatsim-crc/segmdl2.verb 
-    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run winetricks webview2
-    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
-    ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
-    for i in $(ls /opt/$progName); do
-      ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
-    done
-    if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
-      GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run "/opt/rpc-bridge/bridge.exe" --install
-    fi
-    touch "$WINEPREFIX/.installed.$CURRVER"
-    GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run wineboot -e
+    # needs update
+    find $WINEPREFIX -iname ".installed.*" -exec "rm" "{}" ";"
+    protonUpdate
   fi
 
   source "$WINEPREFIX/.installed.$CURRVER" # Load PROTONPATH
-  cd $savedFiles && GAMEID=vatsim-crc UMU_NO_RUNTIME=1 umu-run "C:\\${progName}\\Application\\CRC.exe" "$@"
+  cd $SAVES && umu-run "C:\\${progName}\\Application\\CRC.exe" "$@"
 else
   # Wine version
   if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
-    rm $WINEPREFIX/.installed*
-    wine wineboot -ru
-    notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
-    winetricks -q arial tahoma
-    if [[ $1 == "msfonts" ]] ; then
-      winetricks -q courier
-    else
-      winetricks -q /opt/vatsim-crc/nicfonts.verb
-    fi
-    winetricks -q /opt/vatsim-crc/segmdl2.verb /opt/vatsim-crc/webview2.verb
-    winetricks -q fontsmooth=rgb
-    wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
-    ln -svf $savedFiles $WINEPREFIX/drive_c/$progName
-    for i in $(ls /opt/$progName); do
-      ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
-    done
-    if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
-      wine "/opt/rpc-bridge/bridge.exe" --install
-    fi
-    touch "$WINEPREFIX/.installed.$CURRVER"
-    wine wineboot -e
+    wineUpdate
   fi
-
-  cd $savedFiles && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+  export WINEPREFIX
+  cd $SAVES && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
 fi
 
 cd $pwdSaved
