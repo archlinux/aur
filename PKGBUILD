@@ -6,7 +6,7 @@
 # Contributors: CodeImp
 
 pkgname=veeam-nosnap
-pkgver=13.1.1.4
+pkgver=13.1.2.11
 pkgrel=1
 pkgdesc="Nosnap Veeam Agent for Linux"
 arch=(x86_64)
@@ -18,8 +18,8 @@ conflicts=(veeam veeam-6)
 options=(!strip)
 source=("https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-nosnap-$pkgver-1.el10.x86_64.rpm"
         "https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-libs-$pkgver-1.x86_64.rpm")
-sha256sums=('03bc4b4710ec650ee03ce47bf303bd51125c0de464d8385142f9b9446e7afb67'
-            '90829a1d1dff15091245e1f672f40814006efdb46513631cbfe7dd804409b5c4')
+sha256sums=('f6ce0dad8c4c0fb5b2945ab305a70e9d469af69b8ac6449f3463df8d1b9e28cc'
+            'c6070bbc86474ff91b618b5444132278a0a37377cfe28f7b428e88af2d4bd9bc')
 noextract=("veeam-nosnap-$pkgver-1.el10.x86_64.rpm"
            "veeam-libs-$pkgver-1.x86_64.rpm")
 backup=('etc/veeam/veeam.ini'
