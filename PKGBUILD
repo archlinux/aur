@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-session
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64 aarch64)
@@ -43,6 +43,7 @@ makedepends=(
 optdepends=(
   'tde-ariadne: the file manager, which picks files for other programs too'
   'xorg-xwayland: X11 programs'
+  'wayvnc: reaching the desktop from another computer or a phone'
   'networkmanager: networks and Wi-Fi in the bar and the settings'
   'bluez: Bluetooth in the bar and the settings'
   'upower: the battery, and suspending sooner on it'
@@ -53,7 +54,7 @@ optdepends=(
   'brightnessctl: the keyboard light keys, where the keyboard does not change it itself'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa0c5c2eb728d3257cb75707d2214ae068c26c9c310ba87575a9842da9362123')
+sha256sums=('55af4d3700e62e8164346387fa8aab5d4d174055284a44e936e23cc915fffa2b')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
