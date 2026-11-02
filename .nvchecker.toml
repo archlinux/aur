@@ -2,6 +2,4 @@
 source = "git"
 git = "https://github.com/obs-rust/obs-studio.git"
 prefix = 'obs-studio-rust-v'
-include_regex = 'obs-studio-rust-v.*'
-from_pattern = "([\\.0-9]+)-(.*\\..*)"
-to_pattern = '\1\2'
+include_regex = 'obs-studio-rust-v\d+\.\d+\.\d+'
