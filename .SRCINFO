@@ -10,7 +10,7 @@ pkgbase = opldeck
 	makedepends = python-setuptools
 	depends = python>=3.11
 	depends = pyside6
-	depends = python-py7zr>=1.1.4
+	depends = python-py7zr
 	source = git+https://github.com/petru-sdev/opldeck.git#tag=v0.8.0
 	sha256sums = SKIP
 

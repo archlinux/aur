@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=(
   'python>=3.11'
   'pyside6'
-  'python-py7zr>=1.1.4'
+  'python-py7zr'
 )
 makedepends=(
   'python-build'
