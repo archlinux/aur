@@ -43,7 +43,19 @@ pkgver() {
 
 check() {
   cd "$srcdir/$pkgname"
-  cargo test --release --locked --workspace 2>&1 | tail -30
+  local log="$startdir/output.log"
+  echo "=== STABILITY TESTING LOG - $(date) ===" > "$log"
+  echo "--- Running cargo test --release --locked --workspace ---" >> "$log"
+  if ! cargo test --release --locked --workspace >> "$log" 2>&1; then
+    echo "" >> "$log"
+    echo "=== TESTS FAILED ===" >> "$log"
+    echo "Stability tests did not pass. See $log for full errors/warnings." >&2
+    echo "Full log written to: $log" >&2
+    exit 1
+  fi
+  echo "" >> "$log"
+  echo "=== ALL TESTS PASSED ===" >> "$log"
+  echo "Stability tests passed successfully. Full log at $log"
 }
 
 build() {
