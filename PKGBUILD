@@ -1,7 +1,7 @@
 # TEMPLATE ONLY: approved release source and checksum are required for each release.
 # Source/checksum approval is required before even metadata generation proceeds.
 pkgname=pivra
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Native GNOME photo, animation and video viewer'
 arch=('x86_64')
@@ -143,7 +143,7 @@ package() {
   install -Dm644 "$srcdir/collect-licenses.py" \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/collect-licenses.py" || return 1
   local doc
-  for doc in PIVRA_V0.2.1_RELEASE_NOTES.md; do
+  for doc in PIVRA_V0.2.4_RELEASE_NOTES.md; do
     install -Dm644 "docs/releases/$doc" "$pkgdir/usr/share/doc/pivra/$doc" || return 1
   done
 }
