@@ -1,8 +1,8 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=ez2lazer
-pkgver=2026.1023.0
-pkgrel=2
+pkgver=2026.1102.0
+pkgrel=1
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
 url="https://github.com/SK-la/Ez2Lazer"
@@ -17,13 +17,13 @@ depends=(
 provides=(ez2lazer)
 conflicts=(ez2lazer-bin ez2lazer-git)
 options=(!strip !debug)
-source=("Ez2Lazer-2026.1023.0.tar.gz::https://github.com/SK-la/Ez2Lazer/archive/2026.1023.0-ez2lazer.tar.gz"
+source=("Ez2Lazer-2026.1102.0.tar.gz::https://github.com/SK-la/Ez2Lazer/archive/2026.1102.0-ez2lazer.tar.gz"
   'icon.png'
   'https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md'
   'ez2lazer.desktop'
   'ez2lazer-uri-handler.desktop'
   'ez2lazer')
-sha256sums=('bf87aa794f4353b8dde83b1bb12bc72f4f3e5f905cd7500f9cfa052dd9e63a6f'
+sha256sums=('f2d9eb56bfb7b4925ff02722d1bb9fc9c04ddeeafd1855291d3b6576c5da5e45'
             'ae382d6f50b8a767ccb30f49925020b610805f5403b7a99cd331a4f7b720e8ac'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'c59ce9a6c90cfafb97c6a8f5f01c7a95191565c7169603c40fa785fc01e0b557'
