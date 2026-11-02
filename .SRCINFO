@@ -1,6 +1,6 @@
 pkgbase = d7vk
 	pkgdesc = Vulkan-based implementation of D3D7, 6, 5 and 3 for Linux / Wine, spun off from DXVK.
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/WinterSnowfall/d7vk
 	install = d7vk.install
@@ -14,7 +14,7 @@ pkgbase = d7vk
 	makedepends = git
 	makedepends = glslang
 	depends = bash
-	source = git+https://github.com/WinterSnowfall/d7vk.git#tag=v2.3
+	source = git+https://github.com/WinterSnowfall/d7vk.git#tag=v2.4
 	source = git+https://github.com/WinterSnowfall/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
@@ -23,7 +23,7 @@ pkgbase = d7vk
 	source = dxvk-extraopts.patch
 	source = setup_d7vk
 	source = setup_d7vk.sh
-	sha256sums = 9d3257efa39417bcadb635ce1662a579822a1d101ef00a7700a84fcd8d92f0e3
+	sha256sums = 68641b2ce1df4215dd5ebffb9e5d826a163693e33ddaaa62a485e3dd9b5dfd9a
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
