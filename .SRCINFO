@@ -1,10 +1,11 @@
 pkgbase = cryptpad-sso
 	pkgdesc = SSO plugin for Cryptpad
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/cryptpad/sso
 	arch = any
 	license = AGPL-3.0-or-later
+	makedepends = npm
 	depends = cryptpad>=2026.9.0
 	options = !strip
 	options = !debug
