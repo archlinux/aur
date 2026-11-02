@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsvd
-_pkgver=1.0.6
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc70b3952782a178c5b109f4351e1e3b')
-b2sums=('27d57a4eeccd4757c164f34c8f0dcdb92b02b0f0f2096b36a6306fbd87f729b958666ea9267e42365a31740e811ca5f36bcef84da3c3fc63dbb8185542c37225')
+md5sums=('9fbe5f89c66c1fc7a6e381c0dfe912ec')
+b2sums=('617c9028f5bd2e6552c3e59352ac198df9987050ab1d2991bcba8c19c63f7bda06539ca4f052ccfeeeef6eb46c583101fb047af2982cb397fed5bc9117b3749a')
 
 build() {
   mkdir build
