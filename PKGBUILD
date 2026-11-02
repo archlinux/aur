@@ -1,4 +1,5 @@
-# Maintainer: ProFfeSsoRr <evvsoft at gmail dot com>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: ProFfeSsoRr <evvsoft at gmail dot com>
 
 pkgname=wal2json
 pkgver=2_5
