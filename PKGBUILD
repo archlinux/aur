@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=universal-android-debloater
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
 source=("$pkgname-next-generation-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'uad-ng.desktop')
 conflicts=('universal-android-debloater-opengl')
-sha256sums=('5a7c5a789738b6705170aa71d54c070fdd235a1c925aa89aac1559e2ced00837'
+sha256sums=('08e975ff082126498ca18181024ea85c99fb874c2cd8e483ff58fbb6ee9fd368'
             '8d5d790fffd35101af340792d081f8f75b61b1579bc8f89acab818f03f1071ea')
 
 prepare() {
@@ -34,7 +34,9 @@ build() {
   export CARGO_TARGET_DIR=target
   export CARGO_PROFILE_RELEASE_LTO=true
   export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-  cargo build --frozen --release --no-default-features --features wgpu,no-self-update,img
+  cargo build --frozen --release -p uad-cli
+  cargo build --frozen --release -p uad-gui \
+    --no-default-features --features wgpu,no-self-update,img
 }
 
 package() {
