@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+  "PKGBUILD",
+  "README.md",
+  "keys/**",
+  ".SRCINFO",
+  ".gitignore",
+  ".nvchecker.toml",
+  "*.install",
+  "*.sysusers",
+  "*sysusers.conf",
+  "*.tmpfiles",
+  "*tmpfiles.conf",
+  "*.logrotate",
+  "*.pam",
+  "*.service",
+  "*.socket",
+  "*.timer",
+  "*.desktop",
+  "*.hook",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
+  "steamworks-sdk.txt",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "steamworks-sourcemod-1.12.patch"
+SPDX-FileCopyrightText = "Kyle Sanderson"
+SPDX-License-Identifier = "GPL-3.0-only"

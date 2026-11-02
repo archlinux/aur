@@ -1,0 +1,54 @@
+diff --git a/AMBuildScript b/AMBuildScript
+index db084e2..c164b17 100644
+--- a/AMBuildScript
++++ b/AMBuildScript
+@@ -18,6 +18,8 @@ WinLinuxMac = ['windows', 'linux', 'mac']
+ 
+ PossibleSDKs = {
+   'sdk2013': SDK('HL2SDK2013', '2.sdk2013', '9', 'SDK2013', WinLinuxMac, 'sdk2013'),
++  # Only for the Steamworks headers of its public/steam: the extension doesn't use the SDK otherwise
++  'csgo': SDK('HL2SDKCSGO', '2.csgo', '21', 'CSGO', WinLinuxMac, 'csgo'),
+ }
+ 
+ def ResolveEnvPath(env, folder):
+@@ -156,9 +158,14 @@ class SteamWorksConfig(object):
+         '-msse',
+         '-m32',
+       ]
++      # C++17, which SourceMod 1.12's headers need
+       cxx.cxxflags += [
+-          '-std=c++11',
++          '-std=c++17',
+       ]
++      # The part of -Wdelete-non-virtual-dtor (below) that newer clang has as a warning of its own;
++      # by family, as the vendor checks below don't match with AMBuild 2.2
++      if cxx.family == 'clang':
++        cxx.cxxflags += ['-Wno-delete-non-abstract-non-virtual-dtor']
+ 
+       have_gcc = cxx.vendor == 'gcc'
+       have_clang = cxx.vendor == 'clang'
+@@ -275,6 +282,10 @@ class SteamWorksConfig(object):
+       os.path.join(self.sm_root, 'public'),
+       os.path.join(self.sm_root, 'public', 'extensions'),
+       os.path.join(self.sm_root, 'public', 'sourcepawn'),
++      # Where SourceMod 1.12 has SourcePawn's and AMTL's headers
++      os.path.join(self.sm_root, 'sourcepawn', 'include'),
++      os.path.join(self.sm_root, 'public', 'amtl'),
++      os.path.join(self.sm_root, 'public', 'amtl', 'amtl'),
+     ]
+     return compiler
+ 	
+diff --git a/Extension/gsnatives.cpp b/Extension/gsnatives.cpp
+index 9c0db4c..c0470c5 100644
+--- a/Extension/gsnatives.cpp
++++ b/Extension/gsnatives.cpp
+@@ -199,7 +199,8 @@ static cell_t sm_ForceHeartbeat(IPluginContext *pContext, const cell_t *params)
+ 		return 0;
+ 	}
+ 
+-	pServer->ForceHeartbeat();
++	// Removed from the API since SteamGameServer013, as Steam no longer takes heartbeats from game
++	// servers (ForceMasterServerHeartbeat_DEPRECATED, protected): nothing to force
+ 	return 1;
+ }
+ 
