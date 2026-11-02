@@ -1,19 +1,24 @@
 pkgbase = lightpanda
 	pkgdesc = Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://lightpanda.io
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-only
-	makedepends = zig
+	makedepends = zig>=0.17.0
 	makedepends = rust
-	makedepends = cargo
 	makedepends = git
-	makedepends = python3
-	provides = lightpanda
+	depends = glibc
+	noextract = libc_v8_15.5.35.13_x86_64.a
+	noextract = libc_v8_15.5.35.13_aarch64.a
 	options = !debug
-	source = lightpanda_1.0.0.tar.gz::https://github.com/lightpanda-io/browser/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = eb2b08b65052598f92441cc0f86d783e474bda7e638d2fd6f5eaf1cc8c2ecc5d
+	options = !lto
+	source = lightpanda_1.0.2.tar.gz::https://github.com/lightpanda-io/browser/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 6a7a274acfdbf6d87b573d1a90029d2e17f71f718f78b03099d96d48f514d64e
+	source_x86_64 = libc_v8_15.5.35.13_x86_64.a::https://github.com/lightpanda-io/zig-v8-fork/releases/download/v0.5.9/libc_v8_15.5.35.13_linux_x86_64.a
+	sha256sums_x86_64 = eed0fa1a97d815e2f5000e7a29153d62e06ef92d2d80a024598701394e9322cb
+	source_aarch64 = libc_v8_15.5.35.13_aarch64.a::https://github.com/lightpanda-io/zig-v8-fork/releases/download/v0.5.9/libc_v8_15.5.35.13_linux_aarch64.a
+	sha256sums_aarch64 = 30edeb56ec8374364ccbb50965fc6671f3c95addf980b367d6bd4ef9d96cde34
 
 pkgname = lightpanda
