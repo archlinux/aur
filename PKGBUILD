@@ -3,7 +3,7 @@
 pkgname=isocast-git
 _pkgname=${pkgname%-git}
 pkgver=0.0.9.r31.g539c5cb
-pkgrel=1
+pkgrel=2
 url="https://$_pkgname.xyz"
 _url="https://github.com/R44VC0RP/$_pkgname"
 pkgdesc='OBS alternative that records every source as its own file (Git HEAD'
@@ -61,6 +61,6 @@ package() {
 	depends+=(libasound.so
 	          libgcc_s.so)
 	cd "$_pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,-ui}
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,d,-ui}
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
