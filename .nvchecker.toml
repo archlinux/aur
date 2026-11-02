@@ -1,0 +1,5 @@
+[omnidiff]
+source = "github"
+github = "ivankovic/omnidiff"
+prefix = "v"
+use_latest_release = true
