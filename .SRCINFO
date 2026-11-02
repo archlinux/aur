@@ -1,0 +1,22 @@
+pkgbase = jankk
+	pkgdesc = A GBA game launcher and emulator frontend built with Qt and mGBA
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Happilli/_jankk
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-multimedia-ffmpeg
+	depends = qt6-svg
+	depends = qt6-shadertools
+	depends = libmgba
+	source = jankk-0.1.2.tar.gz::https://github.com/Happilli/_jankk/archive/refs/tags/v0.1.2.tar.gz
+	source = ryu-200007fb1be91a9a3eb4cc642733865d3f74f447.tar.gz::https://github.com/Happilli/ryu/archive/200007fb1be91a9a3eb4cc642733865d3f74f447.tar.gz
+	sha256sums = 769bfb681ceef1c6c8e5927ceb060d496b01d3832d57dfc6ce78022ab3d455b7
+	sha256sums = f2a61e2899c966488cf35409faeefd293271e6f694825ad710d61c402c7b29c2
+
+pkgname = jankk
