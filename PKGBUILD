@@ -4,7 +4,7 @@
 pkgname=webtorrent-mpv-hook
 pkgver=1.4.7
 pkgrel=1
-pkgdesc="script that allows mpv to stream torrents"
+pkgdesc="Hook that allows mpv to stream torrents"
 arch=(x86_64 aarch64)
 url="https://github.com/mrxdst/webtorrent-mpv-hook"
 license=('Unlicense')
