@@ -1,0 +1,27 @@
+pkgbase = viper4linux-re-git
+	pkgdesc = Reverse-engineered ViPERDSP effects for PipeWire with a Qt6 interface (development VCS build)
+	pkgver = 1.0.0.r2.g2eb2aac
+	pkgrel = 1
+	url = https://github.com/username227/viper4linux-re
+	arch = x86_64
+	license = MIT
+	license = LicenseRef-ViPERDSP
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base
+	depends = pipewire
+	depends = ladspa
+	depends = python
+	provides = viper4linux-re
+	conflicts = viper4linux-re
+	conflicts = viper4linux
+	conflicts = viper4linux-git
+	source = viper4linux::git+https://github.com/username227/viper4linux-re.git
+	source = ViPERDSP::git+https://github.com/likelikeslike/ViPERDSP.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = viper4linux-re-git
