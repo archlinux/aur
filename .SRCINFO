@@ -1,0 +1,18 @@
+pkgbase = staind-bin
+	pkgdesc = A tiny Zig tool that colors stderr through a FIFO
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/erietz/staind
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = staind
+	provides = staindd
+	conflicts = staind
+	options = !strip
+	source_x86_64 = staind-x86_64-1.0.0.tgz::https://github.com/erietz/staind/releases/download/v1.0.0/staind-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2cc92552dd5770904aef0f4618dc55456860466bbdc1c54b43582cee78ebf02a
+	source_aarch64 = staind-aarch64-1.0.0.tgz::https://github.com/erietz/staind/releases/download/v1.0.0/staind-linux-aarch64.tar.gz
+	sha256sums_aarch64 = addd23d227d993911f79ddc640bff9e2733e48dc5d85355e62bd1aea8dce6404
+
+pkgname = staind-bin

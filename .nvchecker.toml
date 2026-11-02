@@ -1,0 +1,5 @@
+[staind-bin]
+source = "github"
+github = "erietz/staind"
+use_latest_release = true
+prefix = "v"
