@@ -1,0 +1,15 @@
+pkgbase = rose-pine-ironbar-git
+	pkgdesc = Rosé Pine theme for ironbar
+	pkgver = r1.5c8359d
+	pkgrel = 1
+	url = https://github.com/planktonzp/ironbar
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ironbar
+	provides = rose-pine-ironbar
+	conflicts = rose-pine-ironbar
+	source = rose-pine-ironbar::git+https://github.com/planktonzp/ironbar.git
+	sha256sums = SKIP
+
+pkgname = rose-pine-ironbar-git
