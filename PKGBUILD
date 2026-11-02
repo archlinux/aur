@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=slk
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 pkgdesc=' A blazingly fast Slack TUI '
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(
   go
 )
 source=(git+$url#tag=v$pkgver)
-b2sums=('20473c65d3dfe518eac3675325dd89c997885bea9fcbdd218b6c03b84a73cb864eb4d25c1fea770425feabc2e7967177043a024fabe057076c49f40b023b2bc4')
+b2sums=('4f5418eb73e1efdecb1582835c46c80b1a4de6faa29f035edbab4fd4d4f3e09fe7c4269cd369e695231e3633cae90f4b650efacfaca2927516aaac9b83c6b033')
 
 prepare(){
   cd ${pkgname}
