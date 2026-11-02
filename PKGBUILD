@@ -5,7 +5,7 @@
 
 pkgname=audacity-bin
 pkgver=4.0.1
-pkgrel=3
+pkgrel=1
 pkgdesc='Audio editor and recorder (Arch binaries of tagged Audacity GitHub releases, built on OBS)'
 arch=('x86_64')
 url='https://www.audacityteam.org/'
@@ -59,7 +59,7 @@ depends=(
   'zlib'
 )
 provides=("audacity=${pkgver}" 'lv2-host' 'vst3-host')
-conflicts=('audacity')
+conflicts=('audacity' 'audacity-git' 'audacity4-bin')
 
 # Preserve the already-built executables and do not create a debug package.
 options=('!strip' '!debug')
