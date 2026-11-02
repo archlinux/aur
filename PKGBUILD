@@ -1,0 +1,59 @@
+# Maintainer: Miguel Regueiro <miguelpr4242@gmail.com>
+
+pkgname=camilo
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Terminal camera app for Kitty'
+arch=('x86_64')
+url='https://github.com/MiguelRegueiro/camilo'
+license=('MIT')
+depends=(
+  'ffmpeg'
+  'gcc-libs'
+  'glibc'
+  'hicolor-icon-theme'
+)
+makedepends=('cargo')
+optdepends=('kitty: recommended terminal with graphics protocol support')
+conflicts=('camilo-bin')
+options=('!lto')
+source=("${pkgname}-${pkgver}.crate::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
+sha256sums=('b1ba9c01e4bcd8171f17c015be0fb448eb96f1b62f156eaef8476a5d6c9375fb')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}-${pkgver}"
+  cargo build --release --frozen
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  export CARGO_HOME="${srcdir}/cargo-home"
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+
+  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 README.md CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "packaging/linux/${pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  local size
+  for size in 48 128 256 512; do
+    install -Dm644 \
+      "packaging/linux/icons/hicolor/${size}x${size}/apps/${pkgname}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+  done
+}
