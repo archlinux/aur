@@ -5,7 +5,7 @@ pkgname=wal2json
 pkgver=2.7
 pkgrel=1
 pkgdesc="Output plugin for logical decoding PostgreSQL WAL's"
-arch=(i686 x86_64)
+arch=('x86_64')
 url="https://github.com/eulerto/wal2json"
 license=('BSD-3-Clause')
 depends=('postgresql>=9.4')
