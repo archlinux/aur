@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=git-archive-all
 pkgdesc='Wrapper for git-archive that archives a git superproject and its submodules'
-pkgver=1.23.1
+pkgver=1.24.0
 pkgrel=1
 url=https://github.com/Kentzo/git-archive-all
 license=(custom:MIT)
@@ -9,16 +9,16 @@ depends=(git)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 conflicts=(git-archive-all-git)
 arch=(any)
-source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('63699ab19e0862577e4296bf48160cddcdfeb9fdbf7fa4854769bf7c3faed617ce9af5312a3d119dff77ce354c783e480c70e2135bce076f6ed85f4a38e61f08')
+source=("${url}/releases/download/${pkgver}/${pkgname//-/_}-${pkgver}.tar.gz")
+b2sums=('3f97b0020b1fa28d4b2ba38d8b95511a384cb8a89130f5a5ee72754d95a411210b8e730b75c87f9579c616755becba6d3b06220a665e7953148998b0313524f0')
 
 build () {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname//-/_}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package () {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname//-/_}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
