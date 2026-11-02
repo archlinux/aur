@@ -1,0 +1,23 @@
+pkgbase = python-monotonic-align
+	pkgdesc = Cython monotonic alignment search with PyTorch tensor interfaces
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/resemble-ai/monotonic_align
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-pytorch
+	depends = glibc
+	options = !strip
+	source = monotonic_align-c6e5e6cb19882164027eb6e35118e841eed9298e.tar.gz::https://github.com/resemble-ai/monotonic_align/archive/c6e5e6cb19882164027eb6e35118e841eed9298e.tar.gz
+	source = check_alignment.py
+	sha256sums = c8b43fb1dffa08da65b9d45901e020139ec579234e249872b7f3b77dc801277a
+	sha256sums = 7f4abb6ee75d2875ed93b8d69f889d3ec4824479d0b75e5c5a41ec6997fc3bb7
+
+pkgname = python-monotonic-align
