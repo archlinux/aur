@@ -1,0 +1,18 @@
+pkgbase = rose-pine-gtk-theme-full-git
+	pkgdesc = A GTK theme with the Rose Pine colour palette. Includes Icons. (git version)
+	pkgver = 2.2.0.r6.g598be13
+	pkgrel = 1
+	url = https://github.com/rose-pine/gtk
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = rose-pine-gtk-theme-full=2.2.0.r6.g598be13
+	provides = rose-pine-gtk-theme=2.2.0.r6.g598be13
+	conflicts = rose-pine-gtk-theme-full
+	conflicts = rose-pine-gtk-theme
+	options = !strip
+	options = !debug
+	source = rose-pine-gtk-theme-full-git::git+https://github.com/rose-pine/gtk.git
+	sha256sums = SKIP
+
+pkgname = rose-pine-gtk-theme-full-git
