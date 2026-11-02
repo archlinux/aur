@@ -1,6 +1,6 @@
 pkgbase = python-yoctopuce
 	pkgdesc = Yoctopuce library for Python
-	pkgver = 2.1.16695
+	pkgver = 2.1.16772
 	pkgrel = 1
 	url = https://github.com/yoctopuce/yoctolib_python
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-yoctopuce
 	makedepends = python-wheel
 	depends = python
 	depends = yoctopuce
-	source = python-yoctopuce-2.1.16695.tar.gz::https://files.pythonhosted.org/packages/source/y/yoctopuce/yoctopuce-2.1.16695.tar.gz
-	sha256sums = 7cd4c15c9292df51534468481933d114727f65a85adfa73f6b32b1b06b317036
+	source = python-yoctopuce-2.1.16772.tar.gz::https://files.pythonhosted.org/packages/source/y/yoctopuce/yoctopuce-2.1.16772.tar.gz
+	sha256sums = 3370a6e6ea1e99455c705200c5bfafdeeaca6e23ffaf4be96aa08bb149836ae4
 
 pkgname = python-yoctopuce
