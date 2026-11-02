@@ -1,0 +1,17 @@
+pkgbase = perl-shared-arena
+	pkgdesc = memory two processes can both read, without a syscall
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://metacpan.org/release/Shared-Arena
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-frozen>=0.07
+	depends = perl-struct-codec>=0.05
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Shared-Arena-0.16.tar.gz
+	md5sums = e21e06a5700437bb9fb06c4f1c625cbb
+	sha512sums = d229804b4028712692177ba097518b504d48ce817ce40f67f5d41bb9507d00124a8a3d9671ac2e4b54f7b7e65765700616e7cf8a1e41d90825fa16c9c611c862
+
+pkgname = perl-shared-arena
