@@ -5,7 +5,7 @@ _pkgbase=blksnap
 _pkgname_nover=veeam${_pkgbase}
 _pkgname=veeam${_pkgbase}-6
 pkgname=${_pkgname}-dkms
-pkgver=6.3.2.1405
+pkgver=6.3.2.1501
 pkgrel=1
 pkgdesc="Veeam Agent for Linux kernel modules (v6, DKMS)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ conflicts=("${_pkgbase}" "veeam${_pkgbase}-dkms")
 source=("https://repository.veeam.com/backup/linux/agent/rpm/el/10/x86_64/blksnap-${pkgver}-1.noarch.rpm"
         'dkms.conf'
         'kernel-6.15.patch')
-sha256sums=('75ec47bffa67900943ae8fa19ad2f8d6edc34b2c3a701685f12faa59fbcb78ee'
+sha256sums=('3ecabec4d80660186e0288f224e2b46961262ff73ce8a9c7b58f199933c82a43'
             '21a182149740160df2d3475fad4142a08d8fc850e0234d32922472f7e4aa66fc'
             'a2b87570a72e1f965414825ef4256f0721f57b1dd430f4410bb9dcc8029ac930')
 
