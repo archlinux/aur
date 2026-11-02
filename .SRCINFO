@@ -1,6 +1,6 @@
 pkgbase = openxplorer-bin
 	pkgdesc = Windows File Explorer-inspired file manager for Linux
-	pkgver = 2.0.10
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://github.com/AKolenda/openxplorer
 	arch = any
@@ -18,11 +18,11 @@ pkgbase = openxplorer-bin
 	conflicts = openxplorer
 	conflicts = winspace
 	options = !strip
-	source = OpenXplorer-2.0.10.deb::https://github.com/AKolenda/openxplorer/releases/download/v2.0.10/openxplorer_2.0.10_all.deb
-	source = README-2.0.10.md::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.10/README.md
-	source = LICENSE-2.0.10::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.10/LICENSE
-	sha256sums = d8be251322c80b5ff4d7c2f68872624e66464d5c1cb2145c8f28e95fc8ff6ebf
-	sha256sums = 50a3787cf97d07b39b1952fae6855b4ee3d0f669058bf88f67d9b6b03d258451
+	source = OpenXplorer-2.0.11.deb::https://github.com/AKolenda/openxplorer/releases/download/v2.0.11/openxplorer_2.0.11_all.deb
+	source = README-2.0.11.md::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.11/README.md
+	source = LICENSE-2.0.11::https://raw.githubusercontent.com/AKolenda/openxplorer/v2.0.11/LICENSE
+	sha256sums = 1e852f9375034334b3f49bf98369293f670c5599c653457bdf48742a6dd1759d
+	sha256sums = 826691e1581992c2254bd799b023823e82f4c1fa8e3cabba746095d2c1b10a78
 	sha256sums = fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260
 
 pkgname = openxplorer-bin
