@@ -2,8 +2,8 @@
 
 pkgname=isocast-git
 _pkgname=${pkgname%-git}
-pkgver=0.0.8.r1.g74a13d2
-pkgrel=2
+pkgver=0.0.9.r31.g539c5cb
+pkgrel=1
 url="https://$_pkgname.xyz"
 _url="https://github.com/R44VC0RP/$_pkgname"
 pkgdesc='OBS alternative that records every source as its own file (Git HEAD'
@@ -12,8 +12,12 @@ license=(MIT Apache-2.0)
 depends=(alsa-lib
          fontconfig
          glibc # libc.so libm.so
-         libgcc)
+         gst-plugins-base-libs
+         libgcc
+         libpipewire)
 makedepends=(cargo
+             clang
+             cmake
              git)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
