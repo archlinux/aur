@@ -3,7 +3,7 @@
 pkgname=isocast-git
 _pkgname=${pkgname%-git}
 pkgver=0.0.9.r31.g539c5cb
-pkgrel=2
+pkgrel=3
 url="https://$_pkgname.xyz"
 _url="https://github.com/R44VC0RP/$_pkgname"
 pkgdesc='OBS alternative that records every source as its own file (Git HEAD'
@@ -14,7 +14,8 @@ depends=(alsa-lib
          glibc # libc.so libm.so
          gst-plugins-base-libs
          libgcc
-         libpipewire)
+         libpipewire
+         openh264)
 makedepends=(cargo
              clang
              cmake
