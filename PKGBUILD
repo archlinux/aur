@@ -10,26 +10,24 @@
 pkgname=xpadneo-dkms-trigger-rumble-hack
 pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad (with trigger rumble hack)'
 pkgver=0.11.pre
-pkgrel=1
-url='https://github.com/atar-axis/xpadneo'
+pkgrel=2
+url='https://github.com/detiam/xpadneo'
 arch=(any)
 license=('GPL-2.0-only AND GPL-3.0-or-later')
 checkdepends=('dkms' 'fakeroot' 'LINUX-HEADERS')
 source=(
-  "xpadneo::git+${url}.git#commit=39625746fff63c997eeb53fe3a6fc1a3de08702e"
-  "0001-rumble-rework-trigger-rumble-modes-and-add-hack-mode.patch"
+  "xpadneo::git+${url}.git#commit=359267f7d86c7a70c241f60569967a15dc58458a"
 )
-b2sums=('68ba38fd564f2c2ca2b5a1915c4c626b6089c8a12bf9775e17e2c6a52d595c87cd886dab46f3d03b57bde8e6acdfe4fde59af7ae7111cdf399cf716997c3cc96'
-        '35c6d0253f6509c1166aca1a24df8e9d3b95cb727b7ac72f2122e83fbb65799c7e53145fd5b6742a3388a45e4c808a85aad2982b6ab20ce89cc147733e144af8')
+b2sums=('320bb57fdd902d55b537d8ea1a787ececec5d8ba950abdb60940a64258ad2cc1f4211ecd9c955682762e4d0b08016176c522a30aa118bdb8847879076db3f204')
 
 prepare() {
   cd "xpadneo"
 
   # Apply patches
-  for patch in "${srcdir}"/0001-*.patch; do
-    echo "Applying patch: ${patch}"
-    patch -p1 < "${patch}"
-  done
+  #for patch in "${srcdir}"/0001-*.patch; do
+  #  echo "Applying patch: ${patch}"
+  #  patch -p1 < "${patch}"
+  #done
 }
 
 build() {
@@ -87,6 +85,8 @@ package() {
   find src/ -type f -not -name '.*' -not -name 'AGENTS.md' \
     -exec install -vD -m644 {} -T "${target_dir}/{}" \;
 
+  mkdir -p "${pkgdir}/usr/lib/modprobe.d"
+
   # enable trigger rumble hack default
-  echo "options hid-xpadneo trigger_rumble_mode=3" >> "${pkgdir}/usr/lib/modprobe.d/xpadneo.conf"
+  echo "options hid-xpadneo disable_deadzones=1 trigger_rumble_mode=3" > "${pkgdir}/usr/lib/modprobe.d/xpadneo.conf"
 }
