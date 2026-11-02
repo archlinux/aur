@@ -1,6 +1,6 @@
 pkgbase = goplaying-bin
 	pkgdesc = Now Playing TUI written in Go (binary release)
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/justinmdickey/goplaying
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = goplaying-bin
 	conflicts = goplaying-git
 	provides = goplaying
 	arch = aarch64
-	source_aarch64 = goplaying-bin_0.3.10_aarch64.tar.gz::https://github.com/justinmdickey/goplaying/releases/download/v0.3.10/goplaying_0.3.10_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 784ab9583817b7bec1d90a559d6e83c82d2133a6fb7b02c1d59c00376d9bea5d
+	source_aarch64 = goplaying-bin_0.3.11_aarch64.tar.gz::https://github.com/justinmdickey/goplaying/releases/download/v0.3.11/goplaying_0.3.11_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8ca28d0510a02b9a91a08318ddee8a626289e657cc043d036def230a22f88d48
 	arch = x86_64
-	source_x86_64 = goplaying-bin_0.3.10_x86_64.tar.gz::https://github.com/justinmdickey/goplaying/releases/download/v0.3.10/goplaying_0.3.10_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 42ccc9710bce08c4210d153b86e95147ab71b349e6e06e5149b2ed1eb0d22cbc
+	source_x86_64 = goplaying-bin_0.3.11_x86_64.tar.gz::https://github.com/justinmdickey/goplaying/releases/download/v0.3.11/goplaying_0.3.11_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 67a9cdb9d0ece39f0cb1e4e22b5ca973ea30d81d3d789f9a8a0f4253614b67b1
 	
 pkgname = goplaying-bin
