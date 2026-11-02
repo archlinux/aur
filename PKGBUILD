@@ -3,7 +3,7 @@
 
 pkgname=capsimage
 pkgver=5.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to access IPF and CTR files"
 arch=('x86_64')
 url="https://www.kryoflux.com/"
@@ -20,7 +20,11 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	
+
+	#CapsLibAll.h includes CommonTypes.h, but upstream never installs it
+	install -Dm644 SPStudio_Dev/Core/CommonTypes.h \
+		"${pkgdir}"/usr/include/CAPSImage/CommonTypes.h
+
 	#fix the symlink that errors our in the line above
 	ln -s libCAPSImage.so "${pkgdir}"/usr/lib/libcapsimage.so
 }

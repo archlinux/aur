@@ -1,7 +1,7 @@
 pkgbase = capsimage
 	pkgdesc = Library to access IPF and CTR files
 	pkgver = 5.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kryoflux.com/
 	arch = x86_64
 	license = custom:SPS License
