@@ -1,8 +1,8 @@
 pkgbase = anyzig
 	pkgdesc = One zig to rule them all
 	pkgver = 2026_10_23
-	pkgrel = 1
-	url = https://github.com/marler8997/anyzig
+	pkgrel = 2
+	url = https://marler8997.github.io/anyzig/
 	arch = aarch64
 	arch = armv7h
 	arch = i686
@@ -14,4 +14,13 @@ pkgbase = anyzig
 	source = https://github.com/marler8997/anyzig/archive/refs/tags/v2026_10_23/anyzig-2026_10_23.tar.gz
 	b2sums = 0c91b7a01aa687ef5a56b0575d18f4f7e2697591a31c3508dfe93f283b43e8b6eeb6e1cd108bf8cf4bba3b69a7d598b7617cff541f3ac9c3a208c4badafe6058
 
+pkgname = anyzig-common
+	pkgdesc = One zig to rule them all (common files)
+	arch = any
+	conflicts = anyzig<2026_10_23
+
 pkgname = anyzig
+	depends = anyzig-common>=2026_10_23-2
+
+pkgname = anyzls
+	depends = anyzig-common>=2026_10_23-2
