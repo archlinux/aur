@@ -1,0 +1,15 @@
+pkgbase = perl-frozen
+	pkgdesc = an immutable container that survives a fork
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/release/Frozen
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Frozen-0.09.tar.gz
+	md5sums = 2cf5f05f68735fdfdd720ac0daa48e2a
+	sha512sums = e22645a20dbdb5205f8bc40694cead7b9b19ba55d4510ca93539b1b10a3466ec7eaa66c01997a6d3867958e67d89ee08ad081da773eddd9c37308c275ad43af3
+
+pkgname = perl-frozen
