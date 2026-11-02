@@ -1,13 +1,13 @@
 pkgbase = openscad-ldraw
 	pkgdesc = The entire LDraw.org library as OpenSCAD files
-	pkgver = 2026.09
+	pkgver = 2026.10
 	pkgrel = 1
 	url = https://github.com/schiele/openscad-ldraw
 	arch = any
 	license = CC-BY-4.0
 	depends = openscad
 	options = !strip
-	source = https://github.com/schiele/openscad-ldraw/archive/refs/tags/v2026-09.tar.gz
-	sha256sums = 31e50eba124d0bfc5630907adc243bd59a3aeae537e7084dab3b18c047381c9f
+	source = https://github.com/schiele/openscad-ldraw/archive/refs/tags/v2026-10.tar.gz
+	sha256sums = 6992dc7c11881e4a01116792baf5d052c1d9c0746df805261c78091a221c06cd
 
 pkgname = openscad-ldraw
