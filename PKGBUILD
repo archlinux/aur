@@ -2,14 +2,15 @@
 
 _basename=ayagami
 pkgname="${_basename}-git"
-pkgver=0.1.0r0.0d1d7aa
+epoch=1
+pkgver=r121.0d1d7aa
 pkgrel=1
 pkgdesc="A 2D puppet model renderer compatible with Live2D (development version)"
 arch=('x86_64')
 url="https://github.com/AyagamiDev/${_basename}"
 license=('Apache-2.0 OR MIT')
 depends=('libgcc' 'glibc')
-makedepends=('git' 'cargo' 'yq')
+makedepends=('git' 'cargo')
 install="${_basename}.install"
 
 source=("${pkgname}::git+${url}.git#branch=main")
@@ -19,8 +20,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
 
   # No tags yet!
-  local projver=$(tomlq '.package.version' "${_basename}/Cargo.toml" | tr -d '"')
-  git describe --all --long | sed "s/\-/.r/;s/\-g/./;s|^heads/main.|$projver|"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
   # Tags in place
   # git describe --tags --long | sed "s/\-/.r/;s/\-g/./"
