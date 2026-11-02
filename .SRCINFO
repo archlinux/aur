@@ -1,7 +1,7 @@
 pkgbase = wps-office-kr-bin
 	pkgdesc = WPS Office Korean-patched build (prebuilt binary from GitHub Releases)
 	pkgver = 12.1.2.29183
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nahdd123uosackr/wps-office-kr
 	install = wps-office-kr-bin.install
 	arch = x86_64
@@ -42,8 +42,8 @@ pkgbase = wps-office-kr-bin
 	source = wps-office-kr-12.1.2.29183-1-x86_64.pkg.tar.zst::https://github.com/nahdd123uosackr/wps-office-kr/releases/download/v12.1.2.29183/wps-office-kr-12.1.2.29183-1-x86_64.pkg.tar.zst
 	source = wps-office-kr-mime-12.1.2.29183-1-any.pkg.tar.zst::https://github.com/nahdd123uosackr/wps-office-kr/releases/download/v12.1.2.29183/wps-office-kr-mime-12.1.2.29183-1-any.pkg.tar.zst
 	source = wps-office-kr-fonts-12.1.2.29183-1-any.pkg.tar.zst::https://github.com/nahdd123uosackr/wps-office-kr/releases/download/v12.1.2.29183/wps-office-kr-fonts-12.1.2.29183-1-any.pkg.tar.zst
-	sha256sums = 8d2ca44ef74a8ad4aeadc30dd708fc8cae0f0ade9499d64cecd178e7b5e7476c
-	sha256sums = 32a81fc1117182ea359106e24749a6ef1abe523582d1e97c9d75bd73a05f2edd
-	sha256sums = fccc753aee5d4b4139fb00fde69d7f0e6613506af07c9db1f680799dfe7cd7da
+	sha256sums = 354a239a3a14a7afb40fd172bfeabd16785381865b1e56f540fcb9c5bd6e9960
+	sha256sums = f2935c9ab05a92a24d8a0a5b798ac34a9e4c32b6582b29f533a46eb7563962e9
+	sha256sums = ca0885c92c909e754aff37837af8f569ac2999360dc28227b5bc1349b14b9965
 
 pkgname = wps-office-kr-bin

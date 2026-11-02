@@ -1,7 +1,7 @@
 # Maintainer: nahdd123 <nahdd123@gmail.com>
 pkgname=wps-office-kr-bin
 pkgver=12.1.2.29183
-pkgrel=1
+pkgrel=2
 pkgdesc='WPS Office Korean-patched build (prebuilt binary from GitHub Releases)'
 arch=('x86_64')
 url='https://github.com/nahdd123uosackr/wps-office-kr'
@@ -30,9 +30,9 @@ source=("${_pkgs[0]}::${_gh}/${_pkgs[0]}"
         "${_pkgs[1]}::${_gh}/${_pkgs[1]}"
         "${_pkgs[2]}::${_gh}/${_pkgs[2]}")
 sha256sums=(
-            '8d2ca44ef74a8ad4aeadc30dd708fc8cae0f0ade9499d64cecd178e7b5e7476c'
-            '32a81fc1117182ea359106e24749a6ef1abe523582d1e97c9d75bd73a05f2edd'
-            'fccc753aee5d4b4139fb00fde69d7f0e6613506af07c9db1f680799dfe7cd7da')
+            '354a239a3a14a7afb40fd172bfeabd16785381865b1e56f540fcb9c5bd6e9960'
+            'f2935c9ab05a92a24d8a0a5b798ac34a9e4c32b6582b29f533a46eb7563962e9'
+            'ca0885c92c909e754aff37837af8f569ac2999360dc28227b5bc1349b14b9965')
 
 package() {
   # 미리 빌드된 pacman 패키지들을 그대로 풀어 재패키징한다.
