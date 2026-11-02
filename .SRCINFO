@@ -1,7 +1,7 @@
 pkgbase = openfoam
 	pkgdesc = The open source CFD toolbox (www.openfoam.org)
 	pkgver = 14.20261008+a4867fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfoam.org
 	install = openfoam.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = openfoam
 	depends = boost
 	depends = zlib
 	depends = metis
-	depends = parmetis-git
+	depends = parmetis
 	depends = scotch
 	depends = zoltan
 	depends = openmpi

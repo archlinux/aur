@@ -14,7 +14,7 @@ _pkgver="${pkgver%%.*}"
 _subver_and_commit="${pkgver#*.}"
 _subver="${_subver_and_commit%+*}"
 _commit="${pkgver#*+}"
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (www.openfoam.org)"
 _distpkgbase=OpenFOAM
 _gitname="$_distpkgbase-$_pkgver"
@@ -30,7 +30,7 @@ depends=(
   boost
   zlib
   metis
-  parmetis-git
+  parmetis
   scotch
   zoltan
   openmpi
@@ -92,6 +92,11 @@ export METIS_TYPE=system
 export PARMETIS_TYPE=system
 export ZOLTAN_TYPE=system
 EOF
+
+  # wmkdep only understands -I; CMake emits -isystem, so convert for
+  # dependency generation (otherwise vtk/paraview headers are never tracked).
+  sed -i 's#CXX_INCLUDES)")#CXX_INCLUDES)" | sed "s/-isystem /-I/g")#' \
+    "${_distpkgbase}-${_pkgver}/applications/utilities/postProcessing/graphics/PVReaders/Allwmake"
 }
 
 build() {
@@ -134,6 +139,7 @@ package() {
 
   # Remove build artefacts
   rm -rf "$baseclean"/platforms/*/applications "$baseclean"/platforms/*/src
+  rm -f "$baseclean"/platforms/*/lib/*.o
 
   # Remove build metadata
   rm -rf "$baseclean/.git" "$baseclean/.arch_cache" \
