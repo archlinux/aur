@@ -1,6 +1,6 @@
 pkgbase = nebu-bin
 	pkgdesc = Model storage, inference runtime management, and API gateway
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/nickheyer/nebu
 	license = MIT
@@ -18,10 +18,10 @@ pkgbase = nebu-bin
 	conflicts = nebu
 	provides = nebu
 	arch = aarch64
-	source_aarch64 = https://github.com/nickheyer/nebu/releases/download/v0.5.1/nebu_0.5.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = c054096fe9a922168f8a0ef98d5b0af4e00cc8bf20c70c795456b2f384db8ead
+	source_aarch64 = https://github.com/nickheyer/nebu/releases/download/v0.5.2/nebu_0.5.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = fb91be4ae2a4d4e5f8ba22506a883e5d179457592dd38ef035d2564ff318075b
 	arch = x86_64
-	source_x86_64 = https://github.com/nickheyer/nebu/releases/download/v0.5.1/nebu_0.5.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9a37eda90e0b4f489a0be71ca2eb5bb7ae495f1adf38b0afa388d6c28e844f6b
+	source_x86_64 = https://github.com/nickheyer/nebu/releases/download/v0.5.2/nebu_0.5.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 87f98d7918de7b63bb1101750a5b3da146e4cc3aa5f0a6cee679112dccfd73c4
 	
 pkgname = nebu-bin
