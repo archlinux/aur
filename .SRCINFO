@@ -1,6 +1,6 @@
 pkgbase = python-envoy-server
 	pkgdesc = A Python wheel distribution of the Envoy server.
-	pkgver = 1.40.0
+	pkgver = 1.40.2
 	pkgrel = 1
 	url = https://github.com/curioswitch/py-envoy-server
 	arch = x86_64
@@ -12,19 +12,17 @@ pkgbase = python-envoy-server
 	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = git
 	depends = python
 	depends = glibc
 	provides = envoyproxy
 	conflicts = envoyproxy
 	conflicts = envoy
 	options = !strip
-	source = envoy-server::git+https://github.com/curioswitch/py-envoy-server.git#tag=v1.40.0
-	sha256sums = 292737aba482445181bd316fe02f40f4a421865b31b1f8b4772ddb758e326e3d
-	source_x86_64 = envoy::https://github.com/envoyproxy/envoy/releases/download/v1.40.0/envoy-1.40.0-linux-x86_64
-	sha256sums_x86_64 = 8aa137a7d00994ce43f613556f5a120709229f63bedb86eedde5ccbc402c2b80
-	source_aarch64 = envoy::https://github.com/envoyproxy/envoy/releases/download/v1.40.0/envoy-1.40.0-linux-aarch_64
-	sha256sums_aarch64 = 03cacc952561635c0b7d2a829291f341dadbebc32050475efbe7321b1bbe18c2
+	source = envoy-server-1.40.2.tar.gz::https://github.com/curioswitch/py-envoy-server/archive/refs/tags/v1.40.2.tar.gz
+	sha256sums = 397d3022ab4d0572f2330d5517054906287e6f21b561028d5ccf8efe347efaf6
+	source_x86_64 = envoy::https://github.com/envoyproxy/envoy/releases/download/v1.40.2/envoy-1.40.2-linux-x86_64
+	sha256sums_x86_64 = 1d64506e25c1844f146162ddb2ece7010fa4e784faddb40a079021491f1f03cc
+	source_aarch64 = envoy::https://github.com/envoyproxy/envoy/releases/download/v1.40.2/envoy-1.40.2-linux-aarch_64
+	sha256sums_aarch64 = b9d6d1e06dd5838a3506de9f4deebad3de9a2ce6cadb87cd76222ca286213baf
 
 pkgname = python-envoy-server
