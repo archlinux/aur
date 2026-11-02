@@ -1,7 +1,7 @@
 pkgbase = python-mistralai
 	pkgdesc = Python Client SDK for the Mistral AI API.
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.7.0
+	pkgrel = 1
 	url = https://github.com/mistralai/client-python
 	arch = any
 	license = MIT
@@ -46,7 +46,7 @@ pkgbase = python-mistralai
 	optdepends = python-cryptography: workflow_payload_encryption
 	optdepends = python-msgpack: workflow_payload_compression
 	optdepends = python-zstandard: workflow_payload_compression
-	source = https://github.com/mistralai/client-python/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = 6ca0a2de2d8683602afd2d6f67aec5a33eae82e4971d587e52f840740c97f99e
+	source = https://github.com/mistralai/client-python/archive/refs/tags/v3.7.0.tar.gz
+	sha256sums = 87e5ec373618bcb1d454051b8e33a82185b40896e202a3a4f83fa3782789737c
 
 pkgname = python-mistralai
