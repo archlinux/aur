@@ -2,7 +2,7 @@
 # Contributor: Bao Trinh <qubidt at gmail dot com>
 
 pkgname="neonmodem"
-pkgver=1.1.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A BBS-style command line client that supports Discourse, Lemmy, Lobsters and Hacker News as backends"
 arch=(
@@ -28,7 +28,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed"
 )
-sha256sums=('49b46d3f1c116b0926395fb3e760defba4c771a4d3bb245cdf0da260b2b137d0')
+sha256sums=('386e13dd1e4dd6428b332e9cc453ef3e347d63da1b8f748bbc037cd8d56f7b74')
 validpgpkeys=(
   '4D3899AF73E7F5FE9B39C822272ED814BF63261F' # marius@xn--gckvb8fzb.com <marius@xn--gckvb8fzb.com>
 )
