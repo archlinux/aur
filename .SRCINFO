@@ -1,6 +1,6 @@
 pkgbase = git-archive-all
 	pkgdesc = Wrapper for git-archive that archives a git superproject and its submodules
-	pkgver = 1.23.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://github.com/Kentzo/git-archive-all
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = git-archive-all
 	makedepends = python-setuptools
 	depends = git
 	conflicts = git-archive-all-git
-	source = https://github.com/Kentzo/git-archive-all/releases/download/1.23.1/git-archive-all-1.23.1.tar.gz
-	b2sums = 63699ab19e0862577e4296bf48160cddcdfeb9fdbf7fa4854769bf7c3faed617ce9af5312a3d119dff77ce354c783e480c70e2135bce076f6ed85f4a38e61f08
+	source = https://github.com/Kentzo/git-archive-all/releases/download/1.24.0/git_archive_all-1.24.0.tar.gz
+	b2sums = 3f97b0020b1fa28d4b2ba38d8b95511a384cb8a89130f5a5ee72754d95a411210b8e730b75c87f9579c616755becba6d3b06220a665e7953148998b0313524f0
 
 pkgname = git-archive-all
