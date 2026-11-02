@@ -3,6 +3,7 @@ pkgbase = python-slimbook
 	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://github.com/Slimbook-Team/python-slimbook
+	changelog = CHANGELOG
 	arch = any
 	license = LGPL-3.0-or-later
 	makedepends = git

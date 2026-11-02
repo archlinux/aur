@@ -7,6 +7,7 @@ pkgdesc="Python binding for libslimbook (Slimbook hardware API)"
 arch=('any')
 url="https://github.com/Slimbook-Team/python-slimbook"
 license=('LGPL-3.0-or-later')
+changelog=CHANGELOG
 depends=('python' 'libslimbook')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname::git+$url.git#tag=$pkgver")
