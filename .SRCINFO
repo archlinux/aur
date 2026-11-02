@@ -6,6 +6,9 @@ pkgbase = mdbook-toc
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = mdbook
 	source = mdbook-toc-0.15.4.tar.gz::https://github.com/badboy/mdbook-toc/archive/refs/tags/0.15.4.tar.gz
 	sha256sums = bdac90076df07368f91e8ed7d474ba5be3e887725baed1ef4e9bf3352a70c8cd
 
