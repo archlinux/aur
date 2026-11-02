@@ -1,8 +1,8 @@
 # Maintainer: Sean Snell <ssnell@lakecs.net>
 
 pkgname=obs-cmd
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A minimal OBS CLI for obs-websocket v5"
 arch=('x86_64')
 url="https://github.com/grigio/obs-cmd"
@@ -12,12 +12,10 @@ makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grigio/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 
 # Upstream tar.gz
-sha512sums=('8ed18325f22f379ee159c3f6eec1093f6b41918ccb95fe8796383c8aef707243eeec4dcf2c4f96123532af93e3d0b03512e22eba6a5c4119cfe4e2cf470f8cbd')
+sha512sums=('c00e8c71e53b052e35330246b7469c7bb5a8fa378c760cdf45eb9a3c30421b3d05e92954e6ce585e5235fa900c9c69a51ba2d7ea3c33d8e785733483be0d4e1e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  # Upstream v1.0.2 left the root package version at 1.0.1 in Cargo.lock.
-  sed -i '/^name = "obs-cmd"$/{n;s/^version = "1.0.1"$/version = "1.0.2"/;}' Cargo.lock
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
