@@ -1,6 +1,6 @@
 pkgbase = maretf
 	pkgdesc = A work in progress command-line utility to work with VTF files.
-	pkgver = 0.12.2
+	pkgver = 0.12.3
 	pkgrel = 1
 	url = https://github.com/craftablescience/MareTF
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = maretf
 	depends = libgcc
 	conflicts = vtf-thumbnailer
 	replaces = vtf-thumbnailer
-	source = maretf::git+https://github.com/craftablescience/MareTF.git#tag=v0.12.2
+	source = maretf::git+https://github.com/craftablescience/MareTF.git#tag=v0.12.3
 	source = git+https://github.com/craftablescience/cmake-helpers.git
 	source = git+https://github.com/craftablescience/sourcepp.git
 	source = git+https://github.com/p-ranav/argparse.git
@@ -24,7 +24,7 @@ pkgbase = maretf
 	source = git+https://github.com/SpartanJ/efsw.git
 	source = git+https://github.com/p-ranav/indicators.git
 	source = git+https://github.com/Tencent/rapidjson.git
-	sha256sums = 580b21580595c7380c91d9098bbb717f6edc42974f70528bc8ae8dc92f941a61
+	sha256sums = 34b8e5b1ca7663b0c62f9672fe7292161ab42eaba90def17586fca7f2dde5eb5
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
