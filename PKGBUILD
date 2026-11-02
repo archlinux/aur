@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=dojo
-pkgver=$PKGVER
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A tool to keep environment as code. Dojo helps to compile code and run other operations in Docker containers. Containerize your development and operations environment."
 arch=('x86_64')
