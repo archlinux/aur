@@ -7,10 +7,12 @@ pkgbase = webtorrent-mpv-hook
 	arch = aarch64
 	license = Unlicense
 	makedepends = npm
-	depends = nodejs
+	depends = glibc
 	depends = mpv
+	depends = nodejs
 	noextract = webtorrent-mpv-hook-1.4.7.tgz
 	source = https://registry.npmjs.org/webtorrent-mpv-hook/-/webtorrent-mpv-hook-1.4.7.tgz
 	sha256sums = a38530ef6623be4ee6eff99fbc82c3fcc2491099c59337e4715810531fc3dac1
+	depends_x86_64 = libstdc++
 
 pkgname = webtorrent-mpv-hook
