@@ -1,0 +1,22 @@
+pkgbase = il2cppdumper
+	pkgdesc = Unity IL2CPP metadata dumper
+	pkgver = 6.7.46.r1.g4741d46
+	pkgrel = 1
+	url = https://github.com/Perfare/Il2CppDumper
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dotnet-sdk-10.0
+	depends = dotnet-runtime-10.0
+	provides = il2cppdumper
+	conflicts = il2cpp-dumper-bin
+	options = !strip
+	options = !debug
+	source = git+https://github.com/Perfare/Il2CppDumper.git#commit=4741d46ba9cd6159c5d853eb9d6fc48b4bfa2b1a
+	source = 0001-change-sdk.patch
+	source = 0002-improve-cli-for-linux.patch
+	sha256sums = SKIP
+	sha256sums = a8ce33344ddc67e09a307bd0d2428dcabd0d7dcfe656e3d0d011a3972ddb33f9
+	sha256sums = 37a90f7db86a948c0c7108fa8b62ed3490cc8b4be58313183103c2550eb6f932
+
+pkgname = il2cppdumper

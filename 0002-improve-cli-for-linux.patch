@@ -1,0 +1,145 @@
+diff --git a/Il2CppDumper/Program.cs b/Il2CppDumper/Program.cs
+index e09ab83..09073df 100644
+--- a/Il2CppDumper/Program.cs
++++ b/Il2CppDumper/Program.cs
+@@ -1,8 +1,12 @@
+ ﻿using System;
++using System.Collections.Generic;
++using System.Globalization;
+ using System.IO;
+ using System.Linq;
++using System.Reflection;
+ using System.Runtime.InteropServices;
+ using System.Text.Json;
++using System.Text.RegularExpressions;
+ 
+ namespace Il2CppDumper
+ {
+@@ -13,7 +17,21 @@ namespace Il2CppDumper
+         [STAThread]
+         static void Main(string[] args)
+         {
+-            config = JsonSerializer.Deserialize<Config>(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"config.json"));
++            var cfgPath = Path.Combine(Directory.GetCurrentDirectory() + "il2cppdumper.json");
++            try
++            {
++                config = File.Exists(cfgPath)
++                ? JsonSerializer.Deserialize<Config>(File.ReadAllText(cfgPath))
++                : new Config();
++            }
++            catch (JsonException e)
++            {
++                Console.Error.WriteLine($"ERROR: bad config {cfgPath}: {e.Message}");
++                Environment.Exit(1);
++            }
++            // no "press any key" outside windows `--require-any-key` still turn it back on
++            config.RequireAnyKey &= RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
++            args = ApplyFlags(args);
+             string il2cppPath = null;
+             string metadataPath = null;
+             string outputDir = null;
+@@ -51,9 +69,14 @@ namespace Il2CppDumper
+                     {
+                         outputDir = Path.GetFullPath(arg) + Path.DirectorySeparatorChar;
+                     }
++                    else
++                    {
++                        Console.Error.WriteLine($"ERROR: path not found: {arg}");
++                        Environment.Exit(1);
++                    }
+                 }
+             }
+-            outputDir ??= AppDomain.CurrentDomain.BaseDirectory;
++            outputDir ??= Directory.GetCurrentDirectory()  + Path.DirectorySeparatorChar;
+             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+             {
+                 if (il2cppPath == null)
+@@ -111,9 +134,87 @@ namespace Il2CppDumper
+             }
+         }
+ 
++        static string Norm(string s) => s.Replace("-", "").ToLowerInvariant();
++
++        static bool IsNeg(PropertyInfo p) =>
++            p.PropertyType == typeof(bool) && p.Name.Length > 2 && p.Name.StartsWith("No") && char.IsUpper(p.Name[2]);
++
++        static string Kebab(string s) => Regex.Replace(s, "(?<!^)([A-Z])", "-$1").ToLowerInvariant().Replace("il2-cpp", "il2cpp");
++
++        static string[] ApplyFlags(string[] args)
++        {
++            var rest = new List<string>();
++            var props = typeof(Config).GetProperties();
++            for (var i = 0; i < args.Length; i++)
++            {
++                var a = args[i];
++                if (!a.StartsWith("--") || a == "--help") { rest.Add(a); continue; }
++                var body = a.Substring(2);
++                string value = null;
++                var eq = body.IndexOf('=');
++                if (eq >= 0) { value = body.Substring(eq + 1); body = body.Substring(0, eq); }
++
++                var negate = false;
++                var prop = props.FirstOrDefault(p => Norm(p.Name) == Norm(body));
++                if (prop == null && body.StartsWith("no-"))
++                {
++                    negate = true;
++                    prop = props.FirstOrDefault(p => Norm(p.Name) == Norm(body.Substring(3)));
++                }
++                if (prop == null)
++                {
++                    prop = props.FirstOrDefault(p => IsNeg(p) && Norm(p.Name.Substring(2)) == Norm(body));
++                    negate = prop != null;
++                }
++                if (prop == null)
++                {
++                    Console.Error.WriteLine($"ERROR: unknown option {a}");
++                    Environment.Exit(1);
++                }
++
++                try
++                {
++                    if (prop.PropertyType == typeof(bool))
++                    {
++                        var on = value == null || bool.Parse(value);
++                        prop.SetValue(config, negate ? !on : on);
++                    }
++                    else
++                    {
++                        if (value == null)
++                        {
++                            if (i + 1 >= args.Length) throw new ArgumentException("needs a value");
++                            value = args[++i];
++                        }
++                        prop.SetValue(config, Convert.ChangeType(value, prop.PropertyType, CultureInfo.InvariantCulture));
++                        if (prop.Name == "ForceVersion") config.ForceIl2CppVersion = true; // implied
++                    }
++                }
++                catch (Exception e)
++                {
++                    Console.Error.WriteLine($"ERROR: bad value for {a}: {e.Message}");
++                    Environment.Exit(1);
++                }
++            }
++            return rest.ToArray();
++        }
++
++
+         static void ShowHelp()
+         {
+-            Console.WriteLine($"usage: {AppDomain.CurrentDomain.FriendlyName} <executable-file> <global-metadata> <output-directory>");
++            Console.WriteLine($"usage: {AppDomain.CurrentDomain.FriendlyName} [options] <executable-file> <global-metadata> [output-directory]");
++            Console.WriteLine("options (override config: il2cppdumper.json):");
++            foreach (var p in typeof(Config).GetProperties())
++            {
++                var k = Kebab(p.Name);
++                if (p.PropertyType != typeof(bool))
++                    Console.WriteLine($"  --{k} <value>   (default: {p.GetValue(config)})");
++                else if (IsNeg(p))
++                    Console.WriteLine($"  --{k} | --{k.Substring(3)}  (default: {p.GetValue(config)})");
++                else
++                    Console.WriteLine($"  --{k} | --no-{k}  (default: {p.GetValue(config)})");
++
++            }
+         }
+ 
+         private static bool Init(string il2cppPath, string metadataPath, out Metadata metadata, out Il2Cpp il2Cpp)
