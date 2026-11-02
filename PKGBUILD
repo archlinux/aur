@@ -153,6 +153,7 @@ prepare() {
   # The tests use AwesomeAssertions instead of FluentAssertions, which is free only for non-commercial
   # use since version 8 (Xceed's license), so building the package with the tests needs no license.
   # AwesomeAssertions is the fork of its Apache-2.0 code, with the same API in its own namespace.
+  # Upstream: https://github.com/OmniSharp/csharp-language-server-protocol/pull/1855
   sed -i "s|Include=\"FluentAssertions\" Version=\"[^\"]*\"|Include=\"AwesomeAssertions\" Version=\"$_awesomeassertionsver\"|" \
     Directory.Packages.props
   sed -i 's|Include="FluentAssertions"|Include="AwesomeAssertions"|' test/Directory.Build.targets
