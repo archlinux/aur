@@ -3,7 +3,7 @@
 
 pkgname="coqui-tts"
 pkgver=0.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Deep learning for Text to Speech (hybrid venv)"
 arch=('any')
 url="https://github.com/idiap/coqui-ai-TTS"
@@ -29,8 +29,8 @@ depends=('python' 'uv'
          'python-matplotlib'
          'python-transformers'
          'python-huggingface-hub')
-source=('0001-replace-pyin-with-yin.patch')
-sha256sums=('e5d00022730c5cce0e5a5b0cba0f64159efc9d9fab8864d9bc00276a0c2d98c3')
+source=()
+sha256sums=()
 
 makedepends=('uv')
 
@@ -43,14 +43,10 @@ build() {
   # uv will install newer deps into the venv as needed.
   uv pip install 'coqui-tts==0.28.0'
 
-  _sp="venv/lib/python3.14/site-packages"
-
-  # Patch: librosa 0.11.0 removed pyin and magphase; use yin and np.abs
-  patch -Np1 -d "$_sp" < "$srcdir/0001-replace-pyin-with-yin.patch"
-
-  # Patch: transformers 5 removed isin_mps_friendly; PyTorch has torch.isin
-  sed -i 's/from transformers\.pytorch_utils import isin_mps_friendly as isin/isin = torch.isin/' \
-    "$_sp/TTS/tts/layers/tortoise/autoregressive.py"
+  # No patching needed as of 0.28.0: upstream now calls librosa.pyin() /
+  # librosa.magphase() directly (both still present in librosa 1.x), and
+  # replaced the private transformers isin_mps_friendly import with its own
+  # torch.isin wrapper.
 }
 
 package() {

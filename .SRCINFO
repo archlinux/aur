@@ -1,7 +1,7 @@
 pkgbase = coqui-tts
 	pkgdesc = Deep learning for Text to Speech (hybrid venv)
 	pkgver = 0.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/idiap/coqui-ai-TTS
 	arch = any
 	license = MPL-2.0
@@ -31,7 +31,5 @@ pkgbase = coqui-tts
 	conflicts = python-tts
 	replaces = python-tts
 	replaces = tts
-	source = 0001-replace-pyin-with-yin.patch
-	sha256sums = e5d00022730c5cce0e5a5b0cba0f64159efc9d9fab8864d9bc00276a0c2d98c3
 
 pkgname = coqui-tts
