@@ -1,0 +1,15 @@
+pkgbase = perl-struct-codec
+	pkgdesc = a Perl structure to bytes and back, with nothing lost
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/release/Struct-Codec
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Struct-Codec-0.10.tar.gz
+	md5sums = 0f70f6e27e33c00fb9781245d178890d
+	sha512sums = d6b0c4ba48d6200fc9a33f2c164036602b721ec0e67e7680c2267447bcfe9876089b39571a3c4a180803e5ac7da8e72485a59ffc582abfb69ba61902bbc2a28e
+
+pkgname = perl-struct-codec
