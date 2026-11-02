@@ -4,7 +4,7 @@
 _pkgbase=blksnap
 _pkgname=veeam${_pkgbase}
 pkgname=${_pkgname}-dkms
-pkgver=13.1.1.4
+pkgver=13.1.2.11
 pkgrel=1
 pkgdesc="Veeam Agent for Linux kernel modules (DKMS)"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(dkms)
 conflicts=("${_pkgbase}")
 source=("https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/blksnap-${pkgver}-1.noarch.rpm"
     'dkms.conf')
-sha256sums=('780d6cf653ae861370fcc0be6701f1d3dcd66ca6ba42d7146fa93cdf9ba72af4'
+sha256sums=('26a00a15f1c3c9ed0c341f04ecd56792d63ef8d2e2b9094374d2d1b4593521a5'
             '21a182149740160df2d3475fad4142a08d8fc850e0234d32922472f7e4aa66fc')
 
 package() {
