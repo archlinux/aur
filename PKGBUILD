@@ -93,6 +93,7 @@ prepare() {
   # pwsh expands wildcards in unquoted arguments of native commands outside Windows, so the adapter
   # filter Test* became the folder tests/ of the working directory: dsc rejected it, and the test,
   # which only checks the resources found, passed without any
+  # Upstream fix: https://github.com/PowerShell/DSC/pull/1784
   sed -i "s/ -a Test\* -o json/ -a 'Test*' -o json/" dsc/tests/dsc_args.tests.ps1
 
   _cargo_env
