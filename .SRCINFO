@@ -1,7 +1,7 @@
 pkgbase = fluffychat
 	pkgdesc = The cutest instant messenger in the [matrix]
 	pkgver = 2.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/krille-chan/fluffychat
 	arch = x86_64
 	arch = aarch64
@@ -18,6 +18,7 @@ pkgbase = fluffychat
 	depends = gtk3
 	depends = libpulse
 	depends = libsecret
+	depends = mpv
 	depends = openssl
 	depends = webkit2gtk-4.1
 	depends = xdg-user-dirs
