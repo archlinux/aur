@@ -1,6 +1,6 @@
 pkgbase = ccmux-bin
 	pkgdesc = 🔮 Track all your AI coding agents (Claude Code, Codex, Cursor, ...) in tmux and jump to the one that needs you
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/epilande/ccmux
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ccmux-bin
 	provides = ccmux
 	conflicts = ccmux
 	options = !strip
-	source = README-1.4.4.md::https://raw.githubusercontent.com/epilande/ccmux/v1.4.4/README.md
-	source = LICENSE-1.4.4::https://raw.githubusercontent.com/epilande/ccmux/v1.4.4/LICENSE
+	source = README-1.4.5.md::https://raw.githubusercontent.com/epilande/ccmux/v1.4.5/README.md
+	source = LICENSE-1.4.5::https://raw.githubusercontent.com/epilande/ccmux/v1.4.5/LICENSE
 	sha256sums = ff50afb3987726ca9bf66e4291eb14bbe61b24c43798a5fdff881d170809a006
 	sha256sums = 1ab02a35c31af7c45c695a5f0d24581f0c6a21102ab311d9f037e84ad3566569
-	source_x86_64 = ccmux-x86_64-1.4.4::https://github.com/epilande/ccmux/releases/download/v1.4.4/ccmux-linux-x64
-	sha256sums_x86_64 = 8e7a229b190ac678c44f968f54f4befc0818d0b96bac6673d7cb3483d2fdfbc7
+	source_x86_64 = ccmux-x86_64-1.4.5::https://github.com/epilande/ccmux/releases/download/v1.4.5/ccmux-linux-x64
+	sha256sums_x86_64 = f294d9241b9bbdde2777e1dbdbb8143bbf8607fac9b2bcdede5ce8506331d0b6
 
 pkgname = ccmux-bin
