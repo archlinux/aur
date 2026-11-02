@@ -1,6 +1,6 @@
 pkgbase = todav
 	pkgdesc = Tasks and calendar kept in your Nextcloud
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/AperteDev/todav
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = todav
 	optdepends = org.freedesktop.secrets: keep the passwords in the system keyring
 	optdepends = gnome-shell-extension-todav: tasks, month and agenda in the GNOME top bar
 	options = !lto
-	source = todav-2.4.1.tar.gz::https://github.com/AperteDev/todav/archive/refs/tags/v2.4.1.tar.gz
-	sha256sums = 3362020527e77c6b726c4294db1e0662057ee529a5a92f903230490c6f829e78
+	source = todav-2.4.2.tar.gz::https://github.com/AperteDev/todav/archive/refs/tags/v2.4.2.tar.gz
+	sha256sums = 34d8fb5842e06bf6fc3e693113f09a0b789dfdba8ff91993684f36c46e66db3e
 
 pkgname = todav
