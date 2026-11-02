@@ -1,0 +1,5 @@
+src/
+pkg/
+remmina/
+*.pkg.tar.zst
+*.pkg.tar.xz

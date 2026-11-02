@@ -1,0 +1,82 @@
+diff --git a/plugins/rdp/rdp_cliprdr.c b/plugins/rdp/rdp_cliprdr.c
+index aaefb80..a48a791 100644
+--- a/plugins/rdp/rdp_cliprdr.c
++++ b/plugins/rdp/rdp_cliprdr.c
+@@ -1261,6 +1261,8 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
+ 	GdkAtom *targets;
+ 	gboolean result = 0;
+ 	gboolean has_local_files = FALSE;
++	gboolean has_image = FALSE;
++	gboolean has_dib = FALSE;
+ 	gint loccount, srvcount;
+ 	gint formatId, i;
+ 	CLIPRDR_FORMAT *formats;
+@@ -1289,7 +1291,7 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
+ 	}
+ 	REMMINA_PLUGIN_DEBUG("gp=%p sending to server the following local clipboard content formats", gp);
+ 	if (result && loccount > 0) {
+-		formats = (CLIPRDR_FORMAT *)malloc((loccount + 1) * sizeof(CLIPRDR_FORMAT));
++		formats = (CLIPRDR_FORMAT *)malloc((loccount + 2) * sizeof(CLIPRDR_FORMAT));
+ 		srvcount = 0;
+ 		for (i = 0; i < loccount; i++) {
+ 			formatId = remmina_rdp_cliprdr_get_format_from_gdkatom(targets[i]);
+@@ -1305,9 +1307,24 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
+ 					formats[srvcount].formatName = "image/jpeg";
+ 				else
+ 					formats[srvcount].formatName = NULL;
++				if (formatId == CB_FORMAT_PNG || formatId == CB_FORMAT_JPEG)
++					has_image = TRUE;
++				else if (formatId == CF_DIB || formatId == CF_DIBV5) {
++					has_image = TRUE;
++					has_dib = TRUE;
++				}
+ 				srvcount++;
+ 			}
+ 		}
++		if (has_image && !has_dib) {
++			/* Windows applications request images as CF_DIB. Advertise it even
++			 * when the local clipboard only offers image/png or image/jpeg; the
++			 * image is converted to DIB when the server requests the data. */
++			REMMINA_PLUGIN_DEBUG("gp=%p: local clipboard has an image, announcing CF_DIB", gp);
++			formats[srvcount].formatId = CF_DIB;
++			formats[srvcount].formatName = NULL;
++			srvcount++;
++		}
+ 		if (has_local_files) {
+ #if FREERDP_VERSION_MAJOR >= 3
+ 			REMMINA_PLUGIN_DEBUG("gp=%p: local clipboard has files, announcing FileGroupDescriptorW", gp);
+@@ -1462,12 +1479,33 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
+ 			{
+ 				gchar *data;
+ 				gsize buffersize;
+-				if (gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "bmp", NULL, NULL) == FALSE){
++				GdkPixbuf *dib_image = image;
++
++				/* GdkPixbuf writes a 32-bit BITMAPV4HEADER when the image
++				 * has an alpha channel. Some servers and applications only
++				 * accept a plain 24-bit BITMAPINFOHEADER DIB, so composite
++				 * the image onto an opaque RGB pixbuf first. */
++				if (gdk_pixbuf_get_has_alpha(image)) {
++					gint width = gdk_pixbuf_get_width(image);
++					gint height = gdk_pixbuf_get_height(image);
++					dib_image = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, width, height);
++					if (dib_image) {
++						gdk_pixbuf_fill(dib_image, 0xFFFFFFFF);
++						gdk_pixbuf_composite(image, dib_image, 0, 0, width, height,
++						                     0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
++					}
++				}
++				if (!dib_image || gdk_pixbuf_save_to_buffer(dib_image, &data, &buffersize, "bmp", NULL, NULL) == FALSE){
++					if (dib_image && dib_image != image)
++						g_object_unref(dib_image);
++					g_object_unref(image);
+ 					break;
+ 				}
+ 				size = buffersize - 14;
+ 				outbuf = (UINT8 *)malloc(size);
+ 				memcpy(outbuf, data + 14, size);
++				if (dib_image != image)
++					g_object_unref(dib_image);
+ 				g_object_unref(image);
+ 				break;
+ 			}
