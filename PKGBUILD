@@ -1,10 +1,11 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Tejun Heo <tj@kernel.org>
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.4.r18.ge9cd670d9
-pkgrel=2
+pkgver=1.1.4.r208.gb19726e95
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
@@ -13,7 +14,6 @@ depends=(
   libelf
   libseccomp
   protobuf
-  scx-tools
   zlib
 )
 makedepends=(
@@ -25,12 +25,15 @@ makedepends=(
   llvm-libs
   rust-src
 )
-source=("git+https://github.com/sched-ext/scx")
-sha256sums=('SKIP')
+optdepends=(
+'scx-tools: scx_loader and scxctl - A DBUS Interface for Managing sched_ext Schedulers '
+)
 options=(!lto)
+backup=('etc/default/scx')
 provides=("scx-scheds=$pkgver")
 conflicts=("scx-scheds")
-replaces=('scx-cake')
+source=("git+https://github.com/sched-ext/scx")
+sha256sums=('SKIP')
 
 _backports=(
 )
@@ -84,7 +87,6 @@ build() {
      --exclude scx_mitosis \
      --exclude scx_nitosis \
      --exclude scx_characterize \
-     --exclude xtask \
      --exclude vmlinux_docify \
      --exclude scx_arena_selftests \
      --exclude scx_arena_libarena_selftests
@@ -95,6 +97,11 @@ package() {
 
   # Install all built executables (skip .so and .d files)
   find target/release \
-    -maxdepth 1 -type f -executable ! -name '*.so' \
+    -maxdepth 1 -type f -executable ! -name '*.so' ! -name 'xtask' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
+
+  # Runtime data via xtask: scx.service, /etc/default/scx,
+  # /usr/share/scx/catalog.json, the scxcli polkit policy.
+  # --source-dir keeps cargo out of package().
+  ./target/release/xtask install --source-dir . --destdir "$pkgdir"
 }
