@@ -1,6 +1,6 @@
 # Maintainer: Clément Foucher <cfoucher-pkg at outlook dot fr>
 pkgname=geteduroam
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Configure your Eduroam Wifi connection"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('go>=1.18'
              'make'
             )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/$pkgname/linux-app/archive/$pkgver.tar.gz")
-sha256sums=('5c5ec768ad1e602a3ac52e7d2526cc270b2a2eab70f1bda3c7f8c86f4897340a')
+sha256sums=('9e1b45de613b3fd497314296508594ec8fa20a33ebea4e6faf67402d27b44b4b')
 build() {
         mv "$srcdir/linux-app-$pkgver" "$srcdir/$pkgname-$pkgver"
         cd "$srcdir/$pkgname-$pkgver"
@@ -27,6 +27,7 @@ build() {
         export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
         make build-gui
+        make build-cli
         make build-notifcheck
 }
 package() {
@@ -34,6 +35,7 @@ package() {
 
         mkdir "$pkgdir/usr/bin"
         install "$srcdir/$pkgname-$pkgver/geteduroam-gui" "$pkgdir/usr/bin/"
+        install "$srcdir/$pkgname-$pkgver/geteduroam-cli" "$pkgdir/usr/bin/"
         install "$srcdir/$pkgname-$pkgver/geteduroam-notifcheck" "$pkgdir/usr/bin/"
 
         mkdir "$pkgdir/usr/lib"
