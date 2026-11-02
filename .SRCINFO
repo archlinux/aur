@@ -1,6 +1,6 @@
 pkgbase = chan-desktop
-	pkgdesc = Desktop terminal multiplexer and workspace manager
-	pkgver = 0.121.0
+	pkgdesc = Supercharged terminal emulator, desktop app
+	pkgver = 0.122.0
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = chan-desktop
 	depends = systemd
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
-	provides = chan=0.121.0
+	provides = chan=0.122.0
 	conflicts = chan
 	options = !lto
-	source = chan-0.121.0.tar.gz::https://github.com/fiorix/chan/archive/v0.121.0.tar.gz
-	sha256sums = b33bb57fd76787a91afe4f2292f5cb1e9a368f5f9c49e89f2f176e146d3581fb
+	source = chan-0.122.0.tar.gz::https://github.com/fiorix/chan/archive/v0.122.0.tar.gz
+	sha256sums = 7ee341d56bf56acf331bde416fc9043c57c67c182d66a0d12355ff9df07a5e20
 
 pkgname = chan-desktop
