@@ -2,7 +2,7 @@
 # The release workflow sets pkgver and publishes this file to the AUR on every
 # release tag, so the AUR version never falls behind the latest tag.
 pkgname=neferwl-git
-pkgver=0.13.0.r0.ge865f04
+pkgver=0.14.0.r0.g1785a8b
 pkgrel=1
 pkgdesc='A Wayland compositor that spends its frames on your apps, not on itself (git version)'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('AGPL-3.0-only')
 depends=('glibc' 'libinput' 'libxkbcommon' 'seatd' 'systemd-libs' 'vulkan-icd-loader'
 	'vulkan-driver' 'wayland' 'dbus' 'libcap')
 makedepends=('go>=2:1.27' 'git')
-optdepends=('xwayland-satellite>=0.7: X11 apps'
+optdepends=('xorg-xwayland: X11 apps (built-in window manager)'
 	'foot: default terminal'
 	'fuzzel: launcher'
 	'xdg-desktop-portal-gtk: file pickers and settings for apps'

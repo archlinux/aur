@@ -1,6 +1,6 @@
 pkgbase = neferwl-git
 	pkgdesc = A Wayland compositor that spends its frames on your apps, not on itself (git version)
-	pkgver = 0.13.0.r0.ge865f04
+	pkgver = 0.14.0.r0.g1785a8b
 	pkgrel = 1
 	url = https://git.bnema.dev/neferwl
 	install = neferwl.install
@@ -19,7 +19,7 @@ pkgbase = neferwl-git
 	depends = wayland
 	depends = dbus
 	depends = libcap
-	optdepends = xwayland-satellite>=0.7: X11 apps
+	optdepends = xorg-xwayland: X11 apps (built-in window manager)
 	optdepends = foot: default terminal
 	optdepends = fuzzel: launcher
 	optdepends = xdg-desktop-portal-gtk: file pickers and settings for apps
