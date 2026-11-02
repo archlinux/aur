@@ -1,0 +1,28 @@
+diff --git a/ambuild2/frontend/v2_2/cpp/detect.py b/ambuild2/frontend/v2_2/cpp/detect.py
+index da9b570..388bbbd 100644
+--- a/ambuild2/frontend/v2_2/cpp/detect.py
++++ b/ambuild2/frontend/v2_2/cpp/detect.py
+@@ -281,13 +281,16 @@ class CompilerLocator(object):
+                 env_data['props'] = util.BuildTupleFromDict(cxx.vendor.extra_props)
+             env_data = util.BuildTupleFromDict(env_data)
+ 
+-        return compiler.CliCompiler(cxx.vendor,
+-                                    System(self.target_.platform, cxx.arch, cxx.subarch,
+-                                           self.target_.abi),
+-                                    cc.argv,
+-                                    cxx.argv,
+-                                    options = self.gen_options_,
+-                                    env_data = env_data)
++        cli = compiler.CliCompiler(cxx.vendor,
++                                   System(self.target_.platform, cxx.arch, cxx.subarch,
++                                          self.target_.abi),
++                                   cc.argv,
++                                   cxx.argv,
++                                   options = self.gen_options_,
++                                   env_data = env_data)
++        # Like CFLAGS and CXXFLAGS, the linker flags of the environment
++        cli.linkflags += shlex.split(os.environ.get('LDFLAGS', ''))
++        return cli
+ 
+     def detect_msvc(self):
+         # If the caller has already configured the environment, we'll expect it to
