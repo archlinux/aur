@@ -3,13 +3,13 @@
 
 pkgname=strata-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, keyboard-first file manager for Linux'
 arch=('x86_64' 'aarch64')
 url='https://stratafiles.io/'
 license=('MIT')
-provides=('strata')
-conflicts=('strata')
+provides=('strata-files')
+conflicts=('strata-files')
 depends=(
   'bubblewrap'
   'desktop-file-utils'
