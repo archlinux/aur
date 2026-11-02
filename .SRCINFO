@@ -1,0 +1,32 @@
+pkgbase = explorenova-bin
+	pkgdesc = Terminal file manager: git-annotated tree, previews, fuzzy search, vim keys (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Novaturiente/explorenova
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = libgit2.so=1.9-64
+	depends = libonig.so=5-64
+	depends = tar
+	depends = gzip
+	depends = bzip2
+	depends = xz
+	depends = zstd
+	depends = unzip
+	optdepends = 7zip: extract .7z archives
+	optdepends = poppler: PDF preview (pdftoppm)
+	optdepends = libavif: AVIF image preview (avifdec)
+	optdepends = ffmpegthumbnailer: video thumbnail preview
+	optdepends = udiskie: devices modal mount/unmount/list
+	optdepends = gvfs-smb: SMB network shares (gio mount)
+	optdepends = unrar: extract .rar archives
+	optdepends = wl-clipboard: copy paths under Wayland (wl-copy)
+	optdepends = xclip: copy paths under X11
+	provides = explorenova
+	conflicts = explorenova
+	source = https://github.com/Novaturiente/explorenova/releases/download/v0.1.0/explorenova-0.1.0-x86_64-linux.tar.gz
+	sha256sums = 81d55b3cae55943cab594b8dcb636ded59ef6386ade7a9127e1f528cf29dc5c5
+
+pkgname = explorenova-bin
