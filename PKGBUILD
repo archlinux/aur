@@ -1,8 +1,8 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=pi
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "pi-ai-${pkgver}.tgz::https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-${pkgver}.tgz")
-sha256sums=('8c5b5affd3005dc9ca7f134f0feb0af907d6ab02ce9ed88c512fb2957d98b3f5'
-            'b40e2ba8bb6fc332908f8b96e837dc2d1fdfb45eb9cd382f5aed111462981e3c')
+sha256sums=('04d24541dc25fa620f56844bf845e41a2f18e7f8c853b69e4c9345eb37e934e6'
+            'e320fe7bd2b927782ba9a37d356fe5837f1aa96a46432610e1b3b9ccb748ea5c')
 
 prepare() {
   rm -rf "${srcdir}/${pkgname}-${pkgver}/packages/ai/src/providers/data"
@@ -50,7 +50,7 @@ package() {
   cp -a node_modules/. "$pkgdir/$mod_dir/node_modules/"
 
   local _pkg
-  for _pkg in ai agent tui telemetry chord coding-agent codemode mcp; do
+  for _pkg in ai agent tui telemetry chord coding-agent codemode mcp schema; do
     install -dm755 "$pkgdir/$mod_dir/packages/$_pkg"
     cp -a "packages/$_pkg/dist" "packages/$_pkg/package.json" "packages/$_pkg/README.md" \
       "$pkgdir/$mod_dir/packages/$_pkg/"
