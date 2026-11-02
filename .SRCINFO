@@ -1,6 +1,6 @@
 pkgbase = python-pyvistaqt
 	pkgdesc = Qt support for PyVista
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://github.com/pyvista/pyvistaqt
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pyvistaqt
 	depends = python
 	depends = python-pyvista
 	depends = python-qtpy
-	source = https://files.pythonhosted.org/packages/source/p/pyvistaqt/pyvistaqt-0.13.1.tar.gz
-	sha256sums = f5d06435381e7b2cb803a57682c7a0e4500de689b6da0c5679afe68fdeb81d98
+	source = https://files.pythonhosted.org/packages/source/p/pyvistaqt/pyvistaqt-0.13.2.tar.gz
+	sha256sums = 82aef38012e3110fbe9a3aa92feb8175142cbcee0ae167cd99068c697dce81e1
 
 pkgname = python-pyvistaqt
