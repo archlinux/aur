@@ -7,7 +7,7 @@ pkgname=(
   'python-ctranslate2'
 )
 pkgbase=ctranslate2
-pkgver=4.8.4
+pkgver=4.8.5
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git')
-sha256sums=('bc74a27b512b50768e66b68f657f0a86afd66f68b81b8c9d23c8aadc9e3c7673'
+sha256sums=('827b4c0706d0bb2a3e2df3602a6cb89d4b74d5dd1d139eca0fa0b6c7a49ed013'
             'SKIP'
             'SKIP'
             'SKIP'
