@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=100.0.11
+pkgver=100.0.12
 _tag=
 pkgrel=1
 
@@ -21,7 +21,7 @@ pkgdesc="Professional-grade cinematic Matrix rain renderer for serious terminal 
 # musl packages only (v3/v4), so the binary package tracks x86_64.
 arch=('x86_64')
 url="https://github.com/oxyzenQ/cosmostrix"
-license=('GPL3')
+license=('AGPL3')
 
 # The release binary is a fully static musl executable: no dynamic libc
 # or libgcc linkage, so glibc/gcc-libs are not runtime dependencies.
