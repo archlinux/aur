@@ -14,7 +14,7 @@ makedepends=('cargo' 'git')
 provides=('mdbook')
 conflicts=('mdbook')
 source=("git+${url}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd mdBook

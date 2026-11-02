@@ -13,6 +13,6 @@ pkgbase = mdbook-git
 	provides = mdbook
 	conflicts = mdbook
 	source = git+https://github.com/rust-lang/mdBook.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mdbook-git
