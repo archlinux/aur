@@ -15,4 +15,4 @@ if [[ " $@ " == *" --wayland "* ]]; then
 fi
 
 # Launch
-exec electron43 /usr/lib/pawtop/app.asar $PAWTOP_USER_FLAGS "$@"
+exec electron44 /usr/lib/pawtop/app.asar $PAWTOP_USER_FLAGS "$@"
