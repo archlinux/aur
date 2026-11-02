@@ -3,7 +3,7 @@
 # Contributor: Angelo Verlain  <hey@vixalien.com>
 
 pkgname=supabase-bin
-pkgver=2.122.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=(aarch64 x86_64)
@@ -14,14 +14,14 @@ provides=(supabase)
 conflicts=(supabase)
 options=(!strip)  # breaks Bun packaging
 
-source=("LICENSE.$pkgver::https://raw.githubusercontent.com/supabase/cli/refs/tags/v$pkgver/apps/cli-go/LICENSE")
+source=("LICENSE.$pkgver::https://raw.githubusercontent.com/supabase/cli/refs/tags/v$pkgver/LICENSE")
 sha256sums=("81f7d60afa4316010b1c0df8eb8f0c80b27586a86b72f1bde85e129bfd10d52a")
 
 source_x86_64=("$_url/releases/download/v$pkgver/supabase_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$_url/releases/download/v$pkgver/supabase_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=("59ed066847b98d7461c60e9109d40cab6b9756177ce06ebb05b51338519f5136")
-sha256sums_aarch64=("8980b46044aba0863f26a1b4134a498d2c74df0dadf24289bb4faa86729511cc")
+sha256sums_x86_64=("eeb61edcd59a4735fcb5e58596574f25d03d420efca779f43ddb307e1cc5c754")
+sha256sums_aarch64=("243474fb5b491a0df04682fc1941cc5519559a1178ae01c225c633eda2e8acb8")
 
 prepare() {
   cd "$srcdir"
@@ -39,7 +39,6 @@ build() {
 package() {
   cd "$srcdir"
   install -vDm755 supabase "$pkgdir/usr/bin/supabase"
-  install -vDm755 supabase-go "$pkgdir/usr/bin/supabase-go"
   install -vDm644 "LICENSE.$pkgver" "$pkgdir/usr/share/licenses/supabase-bin/LICENSE"
 
   cd completions
