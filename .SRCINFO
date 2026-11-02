@@ -1,0 +1,20 @@
+pkgbase = python-einops-exts
+	pkgdesc = Einops helpers for tensor lists, anonymous dimensions and PyTorch modules
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/lucidrains/einops-exts
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-einops>=0.4
+	depends = python-pytorch
+	source = einops-exts-0.0.4.tar.gz::https://github.com/lucidrains/einops-exts/archive/a61d8d5c0ba10b6d9386b924177f528799627924.tar.gz
+	source = packaging-check.py
+	sha256sums = a2263fb03533a75e80f6e22cf4e98357990acedc96c6d4e95bd2ea3b0fb49eac
+	sha256sums = 8835a5909ef812daeaf81df342a0d808c76c571b62eb70d372cd256b0d35d8b1
+
+pkgname = python-einops-exts
