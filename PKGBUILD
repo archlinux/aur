@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openshot-bin
 _pkgname=OpenShot
-pkgver=4.0.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="An award-winning free and open-source video editor,is dedicated to delivering high quality video editing and animation solutions to the world."
 arch=('x86_64')
@@ -163,19 +163,15 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cbeaaaf1de5afe8b3cdb55f50680e5d8f37ff0c2ea5052ddb012c01c9cca7a3f'
-            '7d7504c70b21dc426b9e5eaba5836a3f904dcf74459faea60355af86c9259714')
+sha256sums=('662d0c3cec67ddc90df6a8b0c723c0aac0d3bddf0c3c467eff562e818bb8c72f'
+            '40912f3657e52129985094b19047ac1d70451342b3933f736bedcd1a807c5e88')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}-qt/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
+    rm -rf "${srcdir}/squashfs-root"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/${pkgname%-bin}-qt-launch/${pkgname%-bin}/g

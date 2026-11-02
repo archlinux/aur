@@ -1,6 +1,6 @@
 pkgbase = openshot-bin
 	pkgdesc = An award-winning free and open-source video editor,is dedicated to delivering high quality video editing and animation solutions to the world.
-	pkgver = 4.0.1
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://www.openshot.org/
 	arch = x86_64
@@ -147,12 +147,12 @@ pkgbase = openshot-bin
 	optdepends = python-selinux: for SELinux support
 	optdepends = shine: for MP3 encoding
 	optdepends = slang: for slang library support
-	provides = openshot=4.0.1
+	provides = openshot=4.1.1
 	conflicts = openshot
 	options = !strip
-	source = openshot-4.0.1-x86_64.AppImage::https://github.com/OpenShot/openshot-qt/releases/download/v4.0.1/OpenShot-v4.0.1-x86_64.AppImage
+	source = openshot-4.1.1-x86_64.AppImage::https://github.com/OpenShot/openshot-qt/releases/download/v4.1.1/OpenShot-v4.1.1-x86_64.AppImage
 	source = openshot.sh
-	sha256sums = cbeaaaf1de5afe8b3cdb55f50680e5d8f37ff0c2ea5052ddb012c01c9cca7a3f
-	sha256sums = 7d7504c70b21dc426b9e5eaba5836a3f904dcf74459faea60355af86c9259714
+	sha256sums = 662d0c3cec67ddc90df6a8b0c723c0aac0d3bddf0c3c467eff562e818bb8c72f
+	sha256sums = 40912f3657e52129985094b19047ac1d70451342b3933f736bedcd1a807c5e88
 
 pkgname = openshot-bin
