@@ -18,7 +18,9 @@ EOF
 		cat <<'EOF'
 ==> python-mediapipe is x86_64 only. On this architecture set
       detector_backend = dlib
-    in /etc/secureEye/config.ini before first use.
+    in /etc/secureEye/config.ini and run
+      sudo secureEye fetch-models
+    before first use.
 EOF
 	fi
 }

@@ -2,7 +2,7 @@
 
 pkgbase=secure-eye
 pkgname=('secure-eye' 'secure-eye-gui')
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Face authentication for Linux"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ makedepends=(
 )
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz"
         'secure-eye.install')
-sha256sums=('6ec617362d9975f6185bc9b9f5f318d9e61468c60109b2fca40572cca799d3d0'
-            'f07bfc5fd27d2e649eebafbccaaefe1be5cce3606363df9a74c7700098476d8f')
+sha256sums=('c85c127d857119068e8a94d50220419fdb4ce7aa8cc733ecb1c33762d1ac83b8'
+            '0fd67104baa53d214df7ef54a03485a7dfc83a86dc52050a23e8cc697b3d4e18')
 
 _srcname="SecureEye-$pkgver"
 
