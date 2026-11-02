@@ -4,25 +4,24 @@
 # (archlinux container, non-root makepkg). The artifact is the finished Arch
 # package; this PKGBUILD only re-wraps it, nothing is compiled here.
 pkgname=hermes-agent-bin
-pkgver=0.22.5
-pkgrel=2
+pkgver=0.22.6
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation (prebuilt binary, CI-built)"
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
   'python>=3.14' 'python<3.15'
-  'nodejs' 'npm' 'uv>=0.13.5' 'ripgrep' 'ffmpeg'
-  # the libraries of pm's Chromium (`hermes pm install agent-browser`)
+  'nodejs>=26' 'npm' 'uv>=0.13.5' 'ripgrep' 'ffmpeg'
+  # the libraries of pm's Chromium (`hermes pm install chromium`)
   'nss' 'atk' 'at-spi2-core' 'cups' 'libdrm' 'libxkbcommon' 'mesa' 'pango'
   'cairo' 'alsa-lib' 'libxcomposite' 'libxdamage' 'libxrandr'
   'git' 'curl'
 )
 optdepends=(
-  'agent-browser: browser tools on a system browser (AUR)'
-  'chromium: system browser for the browser tools'
-  'google-chrome: system browser for the browser tools (AUR)'
-  'brave-bin: system browser for the browser tools (AUR)'
+  'chromium: system browser for browser_exec (browser.executable_path)'
+  'google-chrome: system browser for browser_exec (browser.executable_path, AUR)'
+  'brave-bin: system browser for browser_exec (browser.executable_path, AUR)'
 )
 conflicts=('hermes-agent')
 provides=("hermes-agent=${pkgver}")
@@ -35,7 +34,7 @@ options=('!debug' '!strip')
 _artifact="${pkgname}-${pkgver}-${pkgrel}-prebuilt.tar.zst"
 source=("${_artifact}::https://github.com/jabla/hermes-agent-bin/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_artifact}")
-sha256sums=('2cfefd7e768266cd272178c23d075421f6ae0368ba515f7babf500a72df151f9')
+sha256sums=('f2f9cc6ba3bbd597115d4060aac70a62e6af4a2cc4c446d4618455212a7cc1ba')
 
 # The downloaded source is itself a complete Arch package. Extract its whole
 # payload: the application in opt/hermes-agent/ and the launcher and license
