@@ -3,7 +3,7 @@
 # push-to-aur.sh replaces pkgver from the release tag before publication and
 # updpkgsums fills the checksum once that artifact is public.
 pkgname=opal-media-player-bin
-pkgver=0.8.8
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Play everything — media player, universal search, torrent streaming, local AI (official binary)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
     'python: voice helper scripts (STT/TTS servers)'
 )
 source=("https://github.com/debpalash/Opal/releases/download/v$pkgver/opal-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('91d362b73c1ded2a5c8cacce184623f16908381a29494a9d22c034c8a55cc7a8')
+sha256sums=('f6a23255b327059360708d165a65b4e9e6a1774240bba2b17783abd4c7d38ede')
 
 package() {
     cd "opal-$pkgver-linux-x86_64"
@@ -34,6 +34,7 @@ package() {
     # The binary's rpath includes $ORIGIN/../lib/opal, so the wrapper lib
     # resolves from /usr/lib/opal without ldconfig fiddling.
     install -Dm755 opal                       "$pkgdir/usr/bin/opal"
+    install -Dm755 opal-mcp                   "$pkgdir/usr/bin/opal-mcp"
     install -Dm755 libtorrent_wrapper.so      "$pkgdir/usr/lib/opal/libtorrent_wrapper.so"
     cp -r engines                             "$pkgdir/usr/lib/opal/engines"
     install -Dm755 scripts/camoufox_bridge.py "$pkgdir/usr/lib/opal/scripts/camoufox_bridge.py"
@@ -42,5 +43,6 @@ package() {
     install -Dm644 manga-sources-sfw.json     "$pkgdir/usr/lib/opal/manga-sources-sfw.json"
     install -Dm644 opal.desktop               "$pkgdir/usr/share/applications/opal.desktop"
     install -Dm644 opal.svg                   "$pkgdir/usr/share/icons/hicolor/scalable/apps/opal.svg"
+    install -Dm644 licenses/libwebp.txt "$pkgdir/usr/share/licenses/$pkgname/libwebp.txt"
     install -Dm644 LICENSE                    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
