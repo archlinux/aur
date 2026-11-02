@@ -1,12 +1,13 @@
 pkgbase = wtp
 	pkgdesc = A powerful Git worktree CLI tool with automated setup, branch tracking, and smart navigation
-	pkgver = 2.10.3
+	pkgver = 2.10.4
 	pkgrel = 1
 	url = https://github.com/satococoa/wtp
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/satococoa/wtp/archive/refs/tags/v2.10.3.tar.gz
-	sha256sums = cd3f0811214aa0544117bbf5a53646d083c7acc0ec118fd90ec3245c9b178f0a
+	source = https://github.com/satococoa/wtp/archive/refs/tags/v2.10.4.tar.gz
+	sha256sums = d5a48546aecbd7ace8151f5954419a1e083cd122b471c6880d13e9728460412f
+	b2sums = 62628d08afad26f8923e6b47e704382e1cf58256603ca968e44d318cd9046f120e86a02ca0c24ccf6781a73805f1c519ee4f7624fd8958516d37ebf6d2ab8d88
 
 pkgname = wtp
