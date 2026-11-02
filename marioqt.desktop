@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=MarioQT
+Comment=Playable Super Mario Bros NES-style Mario level editor
+Exec=marioqt
+Icon=marioqt
+Terminal=false
+StartupNotify=false
+Categories=Games;
+

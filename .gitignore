@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!marioqt.desktop
+!marioqt-icons.tar.gz
+

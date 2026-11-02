@@ -1,0 +1,23 @@
+pkgbase = marioqt-git
+	pkgdesc = Playable Super Mario Bros NES-style Mario level editor
+	pkgver = r149.3593fd2
+	pkgrel = 1
+	url = https://github.com/ColinTr/MarioQT
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libgcc
+	depends = glibc
+	depends = libstdc++
+	depends = libglvnd
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = hicolor-icon-theme
+	source = git+https://github.com/ColinTr/MarioQT.git#branch=master
+	source = marioqt.desktop
+	source = marioqt-icons.tar.gz
+	sha256sums = SKIP
+	sha256sums = 2a2398e78ef1a2d33415055fc19a282231e55c331602a25ace09eba9bd35bc15
+	sha256sums = 7b99d062bf5fddfbe9cce3ff929c3ada0939160a3591a1824e6129e063c5e57e
+
+pkgname = marioqt-git
