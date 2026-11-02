@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-wetypex
 pkgver=2.2.3.657
-pkgrel=15
+pkgrel=16
 pkgdesc="Native Linux compatibility layer for WeType on Fcitx5"
 arch=('x86_64')
 url="https://github.com/panxuc/fcitx5-wetypex"
@@ -40,7 +40,7 @@ source=(
     'https://curl.se/download/curl-8.22.0.tar.xz'
     'libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b'
 )
-sha256sums=("9112e697ee4704185d8dcea98ef9fb7d5cda3fc6b67021481abe98a13979bc10" "f7ef3ae8a22e521f289803fe93543eb64c329b58aa73a9e224dfd915a2a5f4f7" "SKIP") # first checksum is filled by the release workflow
+sha256sums=("4d5b375cdc7b59fc4274cb7faccd662d1c69c69d7be6a5aefe5e29be347a5b9e" "f7ef3ae8a22e521f289803fe93543eb64c329b58aa73a9e224dfd915a2a5f4f7" "SKIP") # first checksum is filled by the release workflow
 install=fcitx5-wetypex.install
 
 build() {
