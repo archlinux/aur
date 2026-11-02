@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkinitcpio-zerotier"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="mkinitcpio hook that initialises ZeroTier One to assist in the remote unlocking of encrypted partitions"
 url="https://gitlab.archlinux.org/alphajack/mkinitcpio-zerotier"
@@ -15,7 +15,7 @@ optdepends=("mkinitcpio-systemd-extras: network connectivity and SSH server (sys
             "mkinitcpio-utils: encryptssh hook for remote unlocking (busybox initrd)"
             "binutils: inspection of unified kernel images in check-initcpio-zerotier")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('e84283e55ec4b1189e45f56414a831f4080d86de0b320af41bd285b0a5364f6a7f422d005d13cea17958c7be64460d631c5984a8175550466da664c5e49e9db3')
+b2sums=('a4803d14f84ee500455f19b8400c55a64d32dcad7d3eaaba5713903c6992caba699f52e5833938fa6d659f87a1bcc9d2de35d582ab4530533e90be520448be33')
 backup=("var/lib/zerotier-one/initcpio/config.ini")
 install="$pkgname.install"
 
