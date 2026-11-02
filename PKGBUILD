@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal Git client with an image-rendered commit graph and GitHub PRs"
 
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums=('d1636253aadd81c35bada1e4dfe1542c39eaccf8aa133958503150d8a95fff02'
+sha256sums=('a1c74e574137200a4c826e17a55c8106c2000e386411ff9a145f0eb52b806e88'
             '99d61b26cd4453bbc03103277ebb8ff89f7854eade50dbf20ac68b86c1b2be05')
-sha256sums_x86_64=('761b7edd68ef31eabbe6f8f4946d6335d77cb80082f3a5d4a3b2efba6d080ee7')
-sha256sums_aarch64=('fcdf0d5db6167d1e2587ea3f5d0f2a7ab3f7ed48767d1777dca9bc8734751a8c')
+sha256sums_x86_64=('be1927d3cad5c3ab250618331197becaf628cb9c883e4536efd30b0b7ea5bcf8')
+sha256sums_aarch64=('8e324c924c26b6ccf26ab775c72fd12fc6363fe86a3c9efdc2ed073e6c6a070d')
 
 
 package() {
