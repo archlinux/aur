@@ -30,6 +30,12 @@ RAW_BASE="https://raw.githubusercontent.com/playit-cloud/playit-agent/${1}"
 curl --fail --location -o PKGBUILD "${RAW_BASE}/arch/bin/PKGBUILD" >&2
 curl --fail --location -o playit-bin.install "${RAW_BASE}/arch/bin/playit-bin.install" >&2
 
+# Include the release version in cached binary filenames and their package paths.
+sed -i -E \
+  -e 's/(playit(-cli)?-linux-[[:alnum:]_]+)::/\1-${pkgver}::/g' \
+  -e 's@\$\{srcdir\}/\$\{(cli_bin|daemon_bin)\}"@${srcdir}/${\1}-${pkgver}"@g' \
+  PKGBUILD
+
 updpkgsums >&2
 makepkg --printsrcinfo > .SRCINFO
 UPDATE

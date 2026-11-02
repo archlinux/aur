@@ -27,20 +27,20 @@ source=(
   "LICENSE.txt::${_raw_base}/LICENSE.txt"
 )
 source_x86_64=(
-  "playit-cli-linux-amd64::${_release_base}/playit-cli-linux-amd64"
-  "playit-linux-amd64::${_release_base}/playit-linux-amd64"
+  "playit-cli-linux-amd64-${pkgver}::${_release_base}/playit-cli-linux-amd64"
+  "playit-linux-amd64-${pkgver}::${_release_base}/playit-linux-amd64"
 )
 source_aarch64=(
-  "playit-cli-linux-aarch64::${_release_base}/playit-cli-linux-aarch64"
-  "playit-linux-aarch64::${_release_base}/playit-linux-aarch64"
+  "playit-cli-linux-aarch64-${pkgver}::${_release_base}/playit-cli-linux-aarch64"
+  "playit-linux-aarch64-${pkgver}::${_release_base}/playit-linux-aarch64"
 )
 source_armv7h=(
-  "playit-cli-linux-armv7::${_release_base}/playit-cli-linux-armv7"
-  "playit-linux-armv7::${_release_base}/playit-linux-armv7"
+  "playit-cli-linux-armv7-${pkgver}::${_release_base}/playit-cli-linux-armv7"
+  "playit-linux-armv7-${pkgver}::${_release_base}/playit-linux-armv7"
 )
 source_i686=(
-  "playit-cli-linux-i686::${_release_base}/playit-cli-linux-i686"
-  "playit-linux-i686::${_release_base}/playit-linux-i686"
+  "playit-cli-linux-i686-${pkgver}::${_release_base}/playit-cli-linux-i686"
+  "playit-linux-i686-${pkgver}::${_release_base}/playit-linux-i686"
 )
 
 sha256sums=('daa9b021f23bddaa04c29532088ab3f1967591bba11ed98eb8ced4d53e67858d'
@@ -85,8 +85,8 @@ package() {
       ;;
   esac
 
-  install -Dm0755 "${srcdir}/${cli_bin}" "${pkgdir}/opt/playit/agent"
-  install -Dm0755 "${srcdir}/${daemon_bin}" "${pkgdir}/opt/playit/playitd"
+  install -Dm0755 "${srcdir}/${cli_bin}-${pkgver}" "${pkgdir}/opt/playit/agent"
+  install -Dm0755 "${srcdir}/${daemon_bin}-${pkgver}" "${pkgdir}/opt/playit/playitd"
   install -Dm0755 "${srcdir}/playit" "${pkgdir}/opt/playit/playit"
 
   install -Dm0644 "${srcdir}/logrotate.conf" "${pkgdir}/etc/logrotate.d/playit"
