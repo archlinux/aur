@@ -1,0 +1,5 @@
+[open-quickshare-bin]
+source = "github"
+github = "ignotusbucius/open-quickshare"
+prefix = "v"
+use_max_tag = true
