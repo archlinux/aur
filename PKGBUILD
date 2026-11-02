@@ -33,7 +33,8 @@ package() {
     install -d "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${pkgdir}/opt/${_pkgname}/lib/Pdf_Metadata_Editor.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
-    # Fix .desktop file Exec and Icon
+    # Fix .desktop file Exec, Icon and Categories
     sed -i "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     sed -i "s|Icon=.*|Icon=${_pkgname}|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -i "s|Categories=.*|Categories=Office;|" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
