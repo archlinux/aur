@@ -4,7 +4,7 @@ _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
 _debname="com.${pkgname//-/}.Nuclear"
-pkgver=1.52.2
+pkgver=1.54.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -48,12 +48,7 @@ _get_project_dir() {
 _get_app_dir() {
 	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
 }
-_set_build_env() {
-	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export ELECTRON_BUILDER_OFFLINE=true
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+_set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -69,32 +64,38 @@ _set_build_env() {
 	export pnpm_config_update_notifier=false
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
-    export CARGO_HOME="${HOME}/.cargo"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _detected=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_detected="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_detected}" ]; then
+			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		fi
+	fi
+	local _ver="${_pnpmver:-${_detected}}"
+	if [ -n "${_ver}" ]; then
+		npm install -g "pnpm@${_ver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
+	fi
+}
+_set_rust_build_env() {
+	export HOME="${srcdir}/.home"
+	export CARGO_HOME="${HOME}/.cargo"
 	export CARGO_NET_GIT_FETCH_WITH_CLI=true
 	export CARGO_NET_RETRY=5
 	export CARGO_HTTP_MULTIPLEXING=false
 	export CARGO_INCREMENTAL=0
 	export CARGO_TERM_COLOR=never
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
-	mkdir -p "${HOME}" "${CARGO_HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
-	export PATH="${PNPM_HOME}:${PATH}"
-	local _pnpmver=""
-	local _pkgjson="$(_get_project_dir)/package.json"
-	if [ -f "${_pkgjson}" ]; then
-		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
-		if [ -z "${_pnpmver}" ]; then
-			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
-		fi
-	fi
-	if [ -n "${_pnpmver}" ]; then
-		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
-			--registry "${COREPACK_NPM_REGISTRY}"
-	fi
+	mkdir -p "${HOME}" "${CARGO_HOME}"
 }
 prepare() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_rust_build_env
+    _set_pnpm_build_env
     sed -i -e "
         s/Exec=nuclear-music-player/Exec=${pkgname}/g
         s/Icon=${_debname}/Icon=${pkgname}/g
@@ -113,7 +114,8 @@ prepare() {
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_rust_build_env
+    _set_pnpm_build_env
     export NODE_ENV=production
     for pkg in model website i18n themes hifi ui plugin-sdk storybook player; do
         msg2 "Building ${pkg}..."
