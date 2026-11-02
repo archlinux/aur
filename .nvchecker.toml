@@ -1,0 +1,7 @@
+# The latest commit, versioned like git describe from the last tag (see the PKGBUILD): the compare
+# API counts the commits since the tag and lists up to 250 of them, the last one being the newest.
+# A new tag needs the tag in the URL updated.
+[sourcemod-sourcebans-pp-discord-forward]
+source = "jq"
+url = "https://api.github.com/repos/sbpp/discord-forward/compare/v1.1.0...master"
+filter = '"1.1.0.r\(.ahead_by).g\(.commits[-1].sha[0:7])"'
