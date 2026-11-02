@@ -1,0 +1,15 @@
+pkgbase = git-ego-bin
+	pkgdesc = Your Git identity manager and automatic profile switcher.
+	pkgver = 0.2.4
+	pkgrel = 2
+	url = https://github.com/bgreenwell/git-ego
+	arch = x86_64
+	license = MIT
+	provides = git-ego
+	conflicts = git-ego
+	conflicts = gitego-bin
+	replaces = gitego-bin
+	source = gitego-0.2.4-x86_64.tar.gz::https://github.com/bgreenwell/git-ego/releases/download/v0.2.4/git-ego-v0.2.4-linux-x86_64.tar.gz
+	sha256sums = c4861fffc6944a7974d329adeba96c325fbb1532541a12386e260b906ae3364f
+
+pkgname = git-ego-bin
