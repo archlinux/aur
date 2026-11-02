@@ -5,7 +5,7 @@
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.4.11.r6.g488e649
+pkgver=3.4.12.r0.g97a8b9e
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -40,7 +40,7 @@ options=('!lto')
 sha256sums=('SKIP'
             'efc8a6cea79ed0203dcbadf17632b5341952a49704f99e3ea0ddc573b06748f4'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -71,12 +71,14 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_npm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -97,7 +99,8 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
     " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     export NODE_ENV=development
     npm install --ignore-scripts --prefer-offline --no-audit
@@ -108,7 +111,8 @@ prepare() {
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
     export NODE_ENV=production
     npm run tx @notesnook/web:build:desktop
     cd apps/desktop
