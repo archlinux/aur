@@ -51,7 +51,7 @@ source=(
     'makepkg-jail-setup'
 )
 
-sha256sums=('1757680a06682dfbe92920e3bde4a71cd3ab4286e9fe90f7c01a61cf09c4516c'
+sha256sums=('602a46f590e1c3337b4691d613c52f34a1116443b8cb7e0f0e52b31a87a9bc73'
             'a1af793a1f84ddb64bce6aeb6b6dcf2fac71f26c2d1a9acd534af79b329ef0b5'
             'ecf24a3118060612c6a38c26a038acbe6a7e5c8531bcb65837ec7d17e3d8ecbf'
             '4336aa8db4b217342dac97d80ad0a8e80fc2db581cba1c39f74c1f781eb5e20f'
