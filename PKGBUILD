@@ -2,7 +2,7 @@
 
 pkgname=recoil16-dkms
 _srcname=recoil16
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Drivers for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): keyboard backlight, lightbar, power profiles, charge modes, battery health, Copilot key"
 # x86_64: the DKMS sources build against the x86-only ACPI/WMI platform drivers (uniwill-laptop)
@@ -17,7 +17,7 @@ install=recoil16.install
 # no binaries in this package
 options=('!debug')
 source=("$_srcname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('baeec25271e3dc576b42ce4d7d91f299f9115b3c4a3a40d60d077c1a5a3d1c3c')
+sha256sums=('792f1f70c25e6ec942ed3fd28a8668666bab70b637e4e6cac7874d08b5841ea4')
 
 package() {
   cd "$_srcname-$pkgver" || return
