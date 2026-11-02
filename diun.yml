@@ -1,0 +1,95 @@
+# db:
+#   path: /var/lib/diun/diun.db
+
+# watch:
+#   workers: 10
+#   schedule: "0 */6 * * *"
+#   jitter: 30s
+#   firstCheckNotif: false
+#   runOnStartup: true
+
+# defaults:
+#   watchRepo: false
+#   notifyOn:
+#     - new
+#     - update
+#   sortTags: reverse
+
+# notif:
+#   amqp:
+#     host: localhost
+#     port: 5672
+#     username: guest
+#     password: guest
+#     queue: queue
+#   gotify:
+#     endpoint: http://gotify.foo.com
+#     token: Token123456
+#     priority: 1
+#     timeout: 10s
+#   mail:
+#     host: localhost
+#     port: 25
+#     ssl: false
+#     insecureSkipVerify: false
+#     from: diun@example.com
+#     to:
+#       - webmaster@example.com
+#       - me@example.com
+#   ntfy:
+#     endpoint: https://ntfy.sh
+#     topic: diun-acce65a0-b777-46f9-9a11-58c67d1579c4
+#     priority: 3
+#     timeout: 5s
+#   rocketchat:
+#     endpoint: http://rocket.foo.com:3000
+#     channel: "#general"
+#     userID: abcdEFGH012345678
+#     token: Token123456
+#     timeout: 10s
+#   script:
+#       cmd: "myprogram"
+#       args:
+#         - "--anarg"
+#         - "another"
+#   slack:
+#     webhookURL: https://hooks.slack.com/services/ABCD12EFG/HIJK34LMN/01234567890abcdefghij
+#   teams:
+#     webhookURL: https://outlook.office.com/webhook/ABCD12EFG/HIJK34LMN/01234567890abcdefghij
+#   telegram:
+#     token: aabbccdd:11223344
+#     chatIDs:
+#       - 123456789
+#       - 987654321
+#   webhook:
+#     endpoint: http://webhook.foo.com/sd54qad89azd5a
+#     method: GET
+#     headers:
+#       content-type: application/json
+#       authorization: Token123456
+#     timeout: 10s
+
+# regopts:
+#   - name: "myregistry"
+#     username: foo
+#     password: bar
+#     timeout: 20s
+#     insecureTLS: true
+#   - name: "docker.io"
+#     selector: image
+#     username: foo2
+#     password: bar2
+
+# providers:
+#   docker:
+#     watchStopped: true
+#   swarm:
+#     watchByDefault: true
+#   kubernetes:
+#     namespaces:
+#       - default
+#       - production
+#   file:
+#     directory: ./imagesdir
+#   nomad:
+#     watchByDefault: true
