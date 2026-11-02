@@ -2,8 +2,8 @@
 
 pkgname=ofdgo-git
 pkgver=r1065.9d20ecd
-pkgrel=1
-pkgdesc="Native cross-platform pure-Go OFD rendering and viewing tool"
+pkgrel=2
+pkgdesc="Native cross-platform pure-Go OFD / PDF rendering and viewing tool"
 arch=($CARCH)
 url="https://github.com/xiaoqidun/ofdgo"
 license=('Apache-2.0')
@@ -20,7 +20,7 @@ makedepends=(
     go
 )
 backup=()
-options=('!strip' '!debug')
+options=('!debug')
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -65,15 +65,15 @@ Type=Application
 Version=1.0
 Name=ofdgo
 Name[zh_CN]=ofdgo
-GenericName=OFD Document Viewer
-GenericName[zh_CN]=OFD 文档阅读器
-Comment=Native cross-platform pure-Go OFD rendering and viewing tool
-Comment[zh_CN]=原生跨平台纯 Go 语言 OFD 渲染与阅读工具
+GenericName=OFD / PDF Document Viewer
+GenericName[zh_CN]=OFD / PDF 文档阅读器
+Comment=Native cross-platform pure-Go OFD / PDF rendering and viewing tool
+Comment[zh_CN]=原生跨平台纯 Go 语言 OFD / PDF 渲染与阅读工具
 Exec=ofdgo %U
 Icon=ofdgo
 Terminal=false
 StartupNotify=true
 Categories=Office;Viewer;
-MimeType=application/ofd;
+MimeType=application/ofd;application/pdf;
 EOF
 }
