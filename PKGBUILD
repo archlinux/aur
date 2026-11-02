@@ -3,7 +3,7 @@
 
 pkgname=zl-compressor-bin
 _pkgname=ZL.Compressor
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Versatile dynamic range compressor audio plugin by ZL-Audio, featuring lookahead, sidechain"
 arch=('x86_64' 'aarch64')
@@ -21,10 +21,6 @@ depends=(
     'glibc'
 )
 
-# Package provides and conflicts
-provides=('zl-compressor')
-conflicts=('zl-compressor')
-
 # Build options - don't strip binaries to preserve plugin functionality
 options=(!strip)
 
@@ -38,8 +34,8 @@ source_aarch64=("${_pkgname}-${pkgver}-Linux.zip::https://github.com/ZL-Audio/ZL
 
 # SHA256 checksums for source integrity verification
 sha256sums=('a96fd9920a72e79720d41bcf32ccd58634194aa01ee82f246a72392015d626e9')
-sha256sums_x86_64=('07600e4f95272223c7405b3142778a89c59516e2b4912be281635aac8c793902')
-sha256sums_aarch64=('4ef0b09548e0dd62a49952202fac8b823d2f23f38e06a83fe546194d294b8270')
+sha256sums_x86_64=('00d7201fc9643f7b7c49d9791d1e5fc73528835a5dba40a3866fd4a274767ae6')
+sha256sums_aarch64=('772c0db9b65c340dab24b3942c8e962a268befbe0a1bb1bb9927f33a59b1ca45')
 
 # Architecture-specific checksums
 
