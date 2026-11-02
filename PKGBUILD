@@ -1,7 +1,7 @@
 # Maintainer: ynk
 pkgname=wb2api-git
 pkgver=1.13.0.r9.g6b31db6
-pkgrel=1
+pkgrel=2
 pkgdesc="workbuddy2api panel - Go API panel service (git, auto-follows upstream)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/linguo2625469/workbuddy2api-panel"

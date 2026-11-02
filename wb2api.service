@@ -17,7 +17,7 @@ NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
 PrivateTmp=true
-ReadWritePaths=/var/lib/wb2api
+ReadWritePaths=/var/lib/wb2api /etc/wb2api
 RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
 
 [Install]
