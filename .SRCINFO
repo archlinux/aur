@@ -1,0 +1,14 @@
+pkgbase = perl-file-raw
+	pkgdesc = File operations using direct system calls
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Raw
+	arch = any
+	license = Artistic-1.0
+	depends = perl>=5.8.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/File-Raw-0.19.tar.gz
+	md5sums = f60f6ebefd29390ad4c1a0700c29717e
+	sha512sums = 9ef274c3d42550b37cb648c2e1c02211992044f5efda2314706e56a8d1f8f58e2f732cb57429c1925219da0a02a32019b15e8616d1fd90195e4933b8c275a645
+
+pkgname = perl-file-raw
