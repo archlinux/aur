@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust
 pkgname=("$_obs_studio-rust" "$_obs_studio-rust-plugin-browser")
-pkgver=0.1.0beta.20261101
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -18,14 +18,14 @@ depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls3' 'rnnoise
 makedepends=('cef' 'cmake' 'libfdk-aac' 'x264' 'swig' 'sndio' 'nlohmann-json'
              'ffnvcodec-headers' 'websocketpp' 'asio' 'extra-cmake-modules'
              'git' 'rust')
-_tag="$_obs_studio-rust-v${pkgver/beta/-beta}"
+_tag="$_obs_studio-rust-v$pkgver"
 source=(
   "$pkgbase::git+$url/$_obs_studio.git#tag=$_tag"
   "${pkgbase}-libdshowcapture::git+$url/libdshowcapture.git"
   "${pkgbase}-obs-browser::git+$url/obs-browser.git"
   "${pkgbase}-obs-websocket::git+$url/obs-websocket.git"
 )
-sha256sums=('bc8196fe7bf6ab79b319ee87f80a57816b01e58586179fc88ddeace62d322dd6'
+sha256sums=('a39396c9606a0c78960308883339476cfe1afe037c4fd4fb28ca25beaccceefe'
             'SKIP'
             'SKIP'
             'SKIP')
