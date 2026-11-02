@@ -1,6 +1,6 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=miniflux-bin
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Minimalist and opinionated feed reader"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
@@ -25,11 +25,11 @@ sha256sums=('e5b7caf1de3e63ad1a290664cbde4d672fc1676ede8d8465baf78acd58a59803'
             '41fc7ee4e9f5567b8aa01f37fd8373a24b23248bd69ba3add909c9486379f12e'
             '6f2d286bd8b365abf4d345e53c9cb2b0852baf04627161f042d6d19561332fdd'
             'a371eddd79eb1dfe8aecde2bde7b55972b019c26d148ffba97b8d0a04677841d')
-sha256sums_x86_64=('33f43a73f0b2b0dfa1f6cb30dd37c9c4b04a8c61785239f9ead578683ea0c175')
-sha256sums_aarch64=('b9a2cbcb7dd26b0a4f27dda64c4b8e62899bd0ee106bf6e2c429b54a3ca669d1')
-sha256sums_armv7h=('953c8d8f72c89b355a424a060e5716673f56c9d3dcac1c0c59b0b55085091cbf')
-sha256sums_armv6h=('c2ef7a4514f0ae6b41b4d5d685b89c4e93fa444e90db1fed92a537413a38cd39')
-sha256sums_arm=('e7eb1f6dfbab2f9b6ae810bb1ec0ffdf67067284a4d5bb175a1b8ee317f55a43')
+sha256sums_x86_64=('19cddcf53c9a052ee5c1855b4204b53719f89a51143f69f1a264388e98e08cfd')
+sha256sums_aarch64=('7b6e457d4122c6afc269b38f57ebae5aef19e87a61bb3a1e4ba0f7c8fcd708d7')
+sha256sums_armv7h=('c5e32de2a98dd30da97c31121a0244ee0e8718a1d0012733746eb619e2103cb9')
+sha256sums_armv6h=('81641cc5dd8ebbe7026d9d987aaf2350e72d784bd3fee6e1fc80a215098a856f')
+sha256sums_arm=('cbd2dcc05d3ebcbfb79d4376111094ddb7bc2788d966dab000c75cdceade1984')
 
 package() {
   install -Dm755 "miniflux-${pkgver}-${CARCH}" "$pkgdir/usr/bin/miniflux"
