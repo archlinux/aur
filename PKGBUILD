@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _pkgname=dsp-guitar
 pkgname="go-${_pkgname}-bin"
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments."
 arch=(
@@ -27,7 +27,7 @@ source=(
 	"${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}.tar.gz"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('60057519e27ea7384cb23b5f8352d506ab07bfde003f23794d388aebeec38fcd'
+sha256sums=('f872ecd0a5f1cabd05e9cd8299712bed0e3adfbfd322e00da2f2d0e4ecb5ade7'
             '4d4d6d7600ec9260a0deae188b97774dc30771b26028d1a4127d7a58250e5b50')
 prepare() {
 	sed -i -e "
