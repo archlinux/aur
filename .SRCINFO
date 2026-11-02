@@ -6,6 +6,8 @@ pkgbase = sngrep-bin
 	install = sngrep-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
+	depends = bash
+	depends = coreutils
 	depends = ncurses
 	provides = sngrep=1.9.0
 	conflicts = sngrep
@@ -13,9 +15,11 @@ pkgbase = sngrep-bin
 	source = sngrep-1.9.0-README.md::https://github.com/irontec/sngrep/raw/refs/tags/v1.9.0/README
 	source = sngrep-1.9.0.man.8::https://github.com/irontec/sngrep/raw/refs/tags/v1.9.0/doc/sngrep.8
 	source = sngrep-1.9.0-sngreprc::https://github.com/irontec/sngrep/raw/refs/tags/v1.9.0/config/sngreprc
+	source = sngrep.sh
 	sha256sums = 6aab9564131a94f4d0cd03f93376010cb7ab66d0402d1c6aa2d5f82ed594d3ab
 	sha256sums = 2b3630e53485f63bc976776ecbcbd2e6f700c93ee38dca691a129e1986271ad9
 	sha256sums = 55312b67d560ad9e8685f53a637c976a1253acf767798aba05a091a5fe86f439
+	sha256sums = d1612085ffe73d5d02ed06e8835031ebf403b648eea78fe76a08a88741e1004b
 	source_x86_64 = sngrep-1.9.0-x86_64::https://packages.irontec.com/binaries/sngrep-static-amd64-linux-gnu-1.9.0
 	sha256sums_x86_64 = 83f7489d88113ee730cb30b1b4ad5e09dc4041fcf507b6da340957955e8358f9
 

@@ -3,3 +3,4 @@
 !.SRCINFO
 !.gitignore
 !sngrep-bin.install
+!sngrep.sh
