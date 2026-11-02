@@ -4,7 +4,9 @@ pkgbase=alibabasans-puhuiti2-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaPuHuiTi-2
 pkgver=2.0
-pkgrel=5
+pkgrel=6
+# fonts.alibabadesign.com has enabled Referer anti-hotlinking; a Referer from the same domain is required to download files.
+DLAGENTS=('https::/usr/bin/curl -fLC - --referer https://fonts.alibabadesign.com/ -o %o %u')
 pkgdesc="A typeface for creating alibaba sans puhuiti2 in text.阿里巴巴普惠体简体中文(2.0),9字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
