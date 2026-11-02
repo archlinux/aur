@@ -20,6 +20,8 @@ _vtium_enable() {
       sudo rm /etc/systemd/system/autovt@tty3.service
       sudo systemctl enable --now getty@tty3.service
     disable leaves the autovt@tty3 link that enable made, so it goes by hand.
+    Where kmscon served VT 3, give it back to kmscon in place of the getty:
+      sudo systemctl enable --now kmsconvt@tty3.service
     To run vtium on every VT, on a machine with no kmscon, follow "vtium on
     every VT" in the README: https://github.com/vtium/vtium-arch#vtium-on-every-vt
 EOF
@@ -86,4 +88,6 @@ post_remove() {
   printf '%s\n' "    its VT its getty again:"
   printf '%s' "$left"
   printf '%s\n' "      sudo systemctl daemon-reload"
+  printf '%s\n' "    Where kmscon served a VT, enable kmsconvt@ttyN.service there in place of"
+  printf '%s\n' "    its getty."
 }
