@@ -1,0 +1,16 @@
+pkgbase = goroute-bin
+	pkgdesc = Ultra-lightweight LLM gateway and multi-account router in Go (< 5MB RAM)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/ziuus/goroute
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = goroute
+	conflicts = goroute
+	source_x86_64 = goroute-bin-0.7.0-x86_64.tar.gz::https://github.com/ziuus/goroute/releases/download/v0.7.0/goroute_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = bfc7c593a2f2c485db31973b0342208f8d47f1c923966929313f98e080e9b719
+	source_aarch64 = goroute-bin-0.7.0-aarch64.tar.gz::https://github.com/ziuus/goroute/releases/download/v0.7.0/goroute_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2f1cebe6235e97edf6099f0ff812a727eb7428465c11973307649abcc84423ec
+
+pkgname = goroute-bin
