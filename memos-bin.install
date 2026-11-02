@@ -1,3 +1,12 @@
+post_upgrade() {
+  if [ "$(vercmp "$2" 26.10.0)" -lt 0 ]; then
+    echo "  memos 26.10 replaced the upload size and memo length settings with usage"
+    echo "  limits and did not carry the old values over: 8 KiB per memo and 32 MiB"
+    echo "  per file until changed under Settings > Usage limits. Upgrade notes:"
+    echo "  https://github.com/usememos/memos/releases/tag/26.10.0"
+  fi
+}
+
 post_remove() {
   echo "Note: system user 'memos' and /var/lib/memos were not removed."
   echo "Remove manually if no longer needed: userdel memos && rm -rf /var/lib/memos"
