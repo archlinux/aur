@@ -1,0 +1,6 @@
+# The releases of PostgreSQL 18. Upgrade with Arch's postgresql-libs, whose headers the 32-bit
+# library uses.
+[lib32-postgresql-libs]
+source = "regex"
+url = "https://ftp.postgresql.org/pub/source/"
+regex = 'v(18\.\d+)/'
