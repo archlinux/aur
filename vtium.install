@@ -1,19 +1,31 @@
-# Messages pacman shows after vtium-git is installed, upgraded or removed.
-# Nothing here starts, stops, restarts, enables or disables a unit: a restart
-# hangs up every session on that VT, so a new build takes effect at each VT's
-# next start, and which VTs run vtium is the user's choice.
+# Messages pacman shows after vtium is installed, upgraded or removed, the
+# same for the vtium and vtium-git packages. Nothing here starts, stops,
+# restarts, enables or disables a unit: a restart hangs up every session on
+# that VT, so a new build takes effect at each VT's next start, and which
+# VTs run vtium is the user's choice (ADR-1500 D3, D5).
 
 _vtium_enable() {
   cat <<'EOF'
-==> vtium runs on a VT only where you enable it. For VT 3:
-      sudo systemctl enable --now vtium@tty3.service
-    That starts vtium on VT 3 in place of its getty, at every boot, and links
-    autovt@tty3 to vtium@ so logind starts vtium there. Ctrl-Alt-F3 shows it.
-    To take VT 3 back, log out there, then:
+==> vtium runs on a VT only where you turn it on. For VT 3, with no one
+    logged in there, from another VT or over ssh:
+      sudo systemctl disable getty@tty3.service
+      sudo systemctl enable vtium@tty3.service
+      sudo systemctl start vtium@tty3.service
+    vtium then runs on VT 3 in place of its getty, at every boot, and starting
+    it stops the getty or the kmscon console there first. Enabling it links
+    autovt@tty3 to vtium@, so logind starts vtium there. Ctrl-Alt-F3 shows it.
+    To give VT 3 back, log out there, then:
       sudo systemctl disable --now vtium@tty3.service
       sudo rm /etc/systemd/system/autovt@tty3.service
+      sudo systemctl enable --now getty@tty3.service
     disable leaves the autovt@tty3 link that enable made, so it goes by hand.
 EOF
+}
+
+# The VTs whose vtium@ runs now, one name a line, or nothing.
+_vtium_running() {
+  systemctl list-units 'vtium@*' --state=running --plain --no-legend 2>/dev/null |
+    awk '$1 ~ /^vtium@tty[0-9]+\.service$/ { print $1 }'
 }
 
 post_install() {
@@ -21,27 +33,50 @@ post_install() {
 }
 
 post_upgrade() {
+  local running
+  running=$(_vtium_running)
   cat <<'EOF'
-==> vtium was upgraded, and no running vtium was restarted: a restart hangs up
+==> vtium was upgraded, and no running vtium was restarted: a restart ends
     every session on its VT. Each VT runs the new build from its next start,
-    at a reboot or when you restart it on purpose. For VT 3, after logging out
-    there:
+    at a reboot or when you restart it on purpose, from another VT or over
+    ssh, after logging out there, for VT 3:
       sudo systemctl restart vtium@tty3.service
 EOF
-  _vtium_enable
+  if [ -n "$running" ]; then
+    printf '%s\n' "    These still run the build they started with:"
+    # shellcheck disable=SC2086 # one unit name a word
+    printf '      %s\n' $running
+  fi
+}
+
+pre_remove() {
+  local running
+  running=$(_vtium_running)
+  [ -n "$running" ] || return 0
+  printf '%s\n' "==> vtium is being removed while these run; each keeps running from memory"
+  printf '%s\n' "    until it stops, and then its VT has no console unit:"
+  # shellcheck disable=SC2086 # one unit name a word
+  printf '      %s\n' $running
 }
 
 post_remove() {
   # The links that enabling vtium@ttyN made outlive the package and now point
   # at nothing; this names each one and changes nothing.
-  local l left=
+  local l vt left='' getty=''
   for l in /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
     [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] || continue
     left+="      sudo rm $l"$'\n'
+    case $l in
+    */autovt@*)
+      vt=${l##*@}
+      getty+="      sudo systemctl enable --now getty@${vt%.service}.service"$'\n' ;;
+    esac
   done
+  left+=$getty
   [ -n "$left" ] || return 0
   printf '%s\n' "==> vtium is removed, but these links to vtium@.service are left and point at"
-  printf '%s\n' "    nothing, so logind would start nothing on those VTs. Remove them:"
+  printf '%s\n' "    nothing, so logind would start nothing on those VTs. Remove each, and give"
+  printf '%s\n' "    its VT its getty again:"
   printf '%s' "$left"
   printf '%s\n' "      sudo systemctl daemon-reload"
 }

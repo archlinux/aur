@@ -1,16 +1,18 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 #
-# vtium built from a release tag, which the maintainer signs with the PGP
-# key in validpgpkeys; makepkg checks the tag's signature before it builds.
-# Import the key once: gpg --import keys/pgp/*.asc, or
+# vtium built from a release tag, as two packages, the console and its
+# terminfo entry (ADR-1500 D3). The maintainer signs the tag with the PGP
+# key in validpgpkeys, and makepkg checks the tag's signature before it
+# builds. Import the key once: gpg --import keys/pgp/*.asc, or
 # gpg --recv-keys 33F9B54FD2A4B6A4110749B3BA464FC9847A832A.
+# VTIUM_FEATURES in makepkg's environment names the console's features.
 #
 # pkgver is the tag without its v and without the hyphen before a
 # pre-release: v0.1.0-alpha.1 is 0.1.0alpha.1, which pacman sorts before
-# 0.1.0 (vercmp). build() and package() are the same as the vtium-git
-# package's.
+# 0.1.0 (vercmp).
 
-pkgname=vtium
+pkgbase=vtium
+pkgname=('vtium' 'vtium-terminfo')
 _tag=v0.1.0-alpha.1
 pkgver=0.1.0alpha.1
 pkgrel=1
@@ -18,15 +20,29 @@ pkgdesc='Terminal for the Linux console, drawn through KMS/DRM'
 arch=('x86_64')
 url='https://github.com/vtium/vtium'
 license=('MIT')
-depends=('glibc' 'libgcc' 'libxkbcommon' 'systemd-libs' 'kmscon-terminfo')
-makedepends=('cargo' 'git')
-optdepends=('kbd: console fonts, which vtium draws when no frit is set'
-            'systemd: the VT units vtium@.service and vtium-getty@.service')
+makedepends=('cargo' 'git' 'ncurses' 'libxkbcommon' 'systemd-libs')
 options=('!debug')
-install=vtium.install
 source=("vtium::git+https://github.com/vtium/vtium.git#tag=${_tag}?signed")
 sha256sums=('SKIP')
 validpgpkeys=('33F9B54FD2A4B6A4110749B3BA464FC9847A832A') # Aaron Bockelie <aaronsb@gmail.com>
+
+package_vtium() {
+  depends=('glibc' 'libgcc' 'libxkbcommon' 'systemd-libs' 'vtium-terminfo')
+  optdepends=('kbd: console fonts, which vtium draws when no frit is set'
+              'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
+  conflicts=('vtium-git')
+  install=vtium.install
+  _package_console
+}
+
+package_vtium-terminfo() {
+  arch=('any')
+  pkgdesc='The terminfo entry xterm-vtium, for sessions in vtium'
+  _package_terminfo
+}
+
+# Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
+# aur-publish refuses a package whose copy differs from the other's.
 
 prepare() {
   cd vtium
@@ -37,29 +53,42 @@ build() {
   cd vtium
   # vtium starts its glyph helper, and reads its frits, at paths fixed when
   # it is built (crates/vtium/src/helper.rs, crates/vtium/src/font.rs).
+  # VTIUM_REVISION is the package's version, so the journal's Revision line
+  # at start names what pacman -Q names (ADR-1500 D2).
   export VTIUM_VITRIFY=/usr/bin/vtium-vitrify VTIUM_FONT_FRITS=/etc/vtium/fonts
   export VTIUM_REVISION="$pkgver" CARGO_TARGET_DIR=target
   # The minspec profile, vtium's default build, with packed relative
   # relocations for the console alone, as vtium's Makefile builds it.
-  cargo rustc --frozen --profile minspec -p vtium --bin vtium -- -C link-arg=-Wl,-z,pack-relative-relocs
+  # VTIUM_FEATURES in makepkg's environment names other features, such as
+  # VTIUM_FEATURES='images logind'.
+  cargo rustc --frozen --profile minspec -p vtium --bin vtium \
+    ${VTIUM_FEATURES:+--features "$VTIUM_FEATURES"} -- -C link-arg=-Wl,-z,pack-relative-relocs
   cargo build --frozen --release -p vtium-vitrify
-  grep -qaF /usr/bin/vtium-vitrify target/minspec/vtium
+  grep -qaF "$VTIUM_REVISION" target/minspec/vtium || {
+    echo "target/minspec/vtium does not carry the revision $VTIUM_REVISION" >&2
+    return 1
+  }
 }
 
-package() {
+# The console, its helper, its units, its documentation and the license.
+_package_console() {
   cd vtium
   install -Dm755 target/minspec/vtium "$pkgdir/usr/bin/vtium"
   install -Dm755 target/release/vtium-vitrify "$pkgdir/usr/bin/vtium-vitrify"
 
   # vtium@.service and vtium-getty@.service are the shipped kmsconvt@ units
-  # under vtium's own names, as make vt-install makes them: the unit's name,
-  # and OnFailure= naming vtium-getty@. ExecStart= already runs
-  # /usr/bin/vtium, and every other line, Alias=autovt@.service included,
-  # stays as shipped. The kmscon package keeps the kmsconvt@ names.
+  # under vtium's own names, changed as vtium's tools/vt/units.sh changes
+  # them (ADR-1500 D3): OnFailure= names vtium-getty@; a Conflicts= and an
+  # After= line naming kmsconvt@%i.service go just above OnFailure=, so
+  # starting vtium on a VT stops the C reference's console there first;
+  # and DefaultInstance= goes, so enabling vtium@.service with no VT named
+  # links nothing. ExecStart= already runs /usr/bin/vtium, and every other
+  # line, Alias=autovt@.service included, stays as shipped. The kmscon
+  # package keeps the kmsconvt@ names.
   local src=crates/vtium/install units="$pkgdir/usr/lib/systemd/system"
   local rev; rev=$(git rev-parse --short=7 HEAD)
   [ "$(grep -c '^ExecStart=/usr/bin/vtium ' "$src/kmsconvt@.service")" = 1 ] &&
-    grep -qx 'OnFailure=kmsconvt-getty@%i\.service' "$src/kmsconvt@.service" || {
+    [ "$(grep -cx 'OnFailure=kmsconvt-getty@%i\.service' "$src/kmsconvt@.service")" = 1 ] || {
     echo "the shipped kmsconvt@.service changed shape: no one ExecStart=/usr/bin/vtium or OnFailure=kmsconvt-getty@%i.service line" >&2
     return 1
   }
@@ -67,7 +96,9 @@ package() {
   {
     printf '# Generated by the %s package from crates/vtium/install/kmsconvt@.service at %s. Changed from it:\n' "$pkgname" "$rev"
     printf '#   the name, vtium@\n#   the getty fallback, vtium-getty@\n'
-    sed 's/^OnFailure=kmsconvt-getty@%i\.service$/OnFailure=vtium-getty@%i.service/' "$src/kmsconvt@.service"
+    printf '#   Conflicts= and After= kmsconvt@%%i.service\n#   no DefaultInstance=\n'
+    sed -e 's/^OnFailure=kmsconvt-getty@%i\.service$/Conflicts=kmsconvt@%i.service\nAfter=kmsconvt@%i.service\nOnFailure=vtium-getty@%i.service/' \
+        -e '/^DefaultInstance=/d' "$src/kmsconvt@.service"
   } >"$units/vtium@.service"
   {
     printf '# Generated by the %s package from crates/vtium/install/kmsconvt-getty@.service at %s. Changed from it:\n' "$pkgname" "$rev"
@@ -75,16 +106,34 @@ package() {
     cat "$src/kmsconvt-getty@.service"
   } >"$units/vtium-getty@.service"
   chmod 644 "$units/vtium@.service" "$units/vtium-getty@.service"
-  ! grep -v '^[[:space:]]*\(#\|$\)' "$units/vtium@.service" "$units/vtium-getty@.service" | grep -q kmsconvt || {
-    echo "a generated unit still names kmsconvt" >&2
+  ! grep -h -v '^[[:space:]]*\(#\|$\)' "$units/vtium@.service" "$units/vtium-getty@.service" |
+    grep -v '^\(Conflicts\|After\)=kmsconvt@%i\.service$' | grep -q 'kmsconvt\|^DefaultInstance=' || {
+    echo "a generated unit still names kmsconvt or holds DefaultInstance=" >&2
     return 1
   }
 
-  # The C reference's packages own /etc/kmscon/kmscon.conf.example and the
-  # compiled terminfo entry kmscon, so the example and the entry's source go
-  # under vtium's own names.
+  # The C reference's package owns /etc/kmscon/kmscon.conf.example, so the
+  # example goes under vtium's own name.
   install -Dm644 "$src/kmscon.conf.example" "$pkgdir/usr/share/doc/vtium/kmscon.conf.example"
   install -Dm644 -t "$pkgdir/usr/share/doc/vtium/examples" "$src/examples/71-vtium-local.rules" "$src/examples/vtium.hwdb"
-  install -Dm644 "$src/kmscon.ti" "$pkgdir/usr/share/vtium/kmscon.ti"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+# vtium's terminfo entry, compiled under its name xterm-vtium, and the
+# license (ADR-1500 D3). No package ships an entry named kmscon: the
+# kmscon-terminfo package keeps that name.
+_package_terminfo() {
+  cd vtium
+  local ti=crates/vtium/install/xterm-vtium.ti
+  [ -f "$ti" ] || {
+    echo "the source has no $ti, so there is no xterm-vtium entry to package; vtium's main gains it with the work that names vtium TERM=xterm-vtium" >&2
+    return 1
+  }
+  install -dm755 "$pkgdir/usr/share/terminfo"
+  tic -x -e xterm-vtium -o "$pkgdir/usr/share/terminfo" "$ti"
+  [ -f "$pkgdir/usr/share/terminfo/x/xterm-vtium" ] || {
+    echo "tic did not compile xterm-vtium" >&2
+    return 1
+  }
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

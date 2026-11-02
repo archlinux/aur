@@ -3,21 +3,29 @@ pkgbase = vtium
 	pkgver = 0.1.0alpha.1
 	pkgrel = 1
 	url = https://github.com/vtium/vtium
-	install = vtium.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = glibc
-	depends = libgcc
-	depends = libxkbcommon
-	depends = systemd-libs
-	depends = kmscon-terminfo
-	optdepends = kbd: console fonts, which vtium draws when no frit is set
-	optdepends = systemd: the VT units vtium@.service and vtium-getty@.service
+	makedepends = ncurses
+	makedepends = libxkbcommon
+	makedepends = systemd-libs
 	options = !debug
 	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.1?signed
 	validpgpkeys = 33F9B54FD2A4B6A4110749B3BA464FC9847A832A
 	sha256sums = SKIP
 
 pkgname = vtium
+	install = vtium.install
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	depends = systemd-libs
+	depends = vtium-terminfo
+	optdepends = kbd: console fonts, which vtium draws when no frit is set
+	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
+	conflicts = vtium-git
+
+pkgname = vtium-terminfo
+	pkgdesc = The terminfo entry xterm-vtium, for sessions in vtium
+	arch = any
