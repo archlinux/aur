@@ -114,13 +114,6 @@
     <glob pattern="*.dbc"/>
     <glob pattern="*.DBC"/>
   </mime-type>
-  <mime-type type="application/x-dol">
-    <comment>GameCube/Wii Executable</comment>
-    <comment xml:lang="en_GB">GameCube/Wii Executable</comment>
-    <generic-icon name="application-x-gba-rom"/>
-    <glob pattern="*.dol"/>
-    <glob pattern="*.DOL"/>
-  </mime-type>
   <mime-type type="application/x-spectrum-scl">
     <comment>Sinclair TR-DOS Filesystem</comment>
     <comment xml:lang="en_GB">Sinclair TR-DOS Filesystem</comment>
@@ -130,5 +123,65 @@
     </magic>
     <glob pattern="*.scl"/>
     <glob pattern="*.SCL"/>
+  </mime-type>
+  <mime-type type="application/x-tflite">
+    <comment>TensorFlow Lite Model</comment>
+    <comment xml:lang="en_GB">TensorFlow Lite Model</comment>
+    <glob pattern="*.tflite"/>
+    <glob pattern="*.TFLITE"/>
+  </mime-type>
+  <mime-type type="application/x-generic-rom">
+    <comment>Generic ROM Image</comment>
+    <comment xml:lang="en_GB">Generic ROM Image</comment>
+    <glob pattern="*.rom"/>
+    <glob pattern="*.ROM"/>
+  </mime-type>
+  <mime-type type="application/x-generic-bin">
+    <comment>Generic Binary File</comment>
+    <comment xml:lang="en_GB">Generic Binary File</comment>
+    <glob pattern="*.bin"/>
+    <glob pattern="*.BIN"/>
+  </mime-type>
+  <mime-type type="application/x-click-create-proj">
+    <comment>Clickteam Click & Create Project</comment>
+    <comment xml:lang="en_GB">Clickteam Click & Create Project</comment>
+    <magic priority="60">
+      <match type="string" offset="0" value="PAME"/>
+    </magic>
+    <glob pattern="*.cca"/>
+    <glob pattern="*.CCA"/>
+  </mime-type>
+  <mime-type type="application/x-usb-flash">
+    <comment>Microcontroller Firmware</comment>
+    <comment xml:lang="en_GB">Microcontroller Firmware</comment>
+    <magic priority="60">
+      <match type="string" offset="0" value="UF2"/>
+    </magic>
+    <glob pattern="*.uf2"/>
+    <glob pattern="*.UF2"/>
+  </mime-type>
+  <mime-type type="application/x-clickteam">
+    <comment>Clickteam Fusion Project</comment>
+    <comment xml:lang="en_GB">Clickteam Fusion Project</comment>
+    <magic priority="60">
+      <match type="string" offset="0" value="MFU2"/>
+    </magic>
+    <glob pattern="*.mfa"/>
+    <glob pattern="*.MFA"/>
+  </mime-type>
+  <mime-type type="application/x-xna-xnb">
+    <comment>Compiled MonoGame/XNA Asset</comment>
+    <comment xml:lang="en_GB">Compiled MonoGame/XNA Asset</comment>
+    <magic priority="60">
+      <match type="string" offset="0" value="XNB"/>
+    </magic>
+    <glob pattern="*.xnb"/>
+    <glob pattern="*.XNB"/>
+  </mime-type>
+  <mime-type type="application/x-altera-qpf">
+    <comment>Altera Quartus Project</comment>
+    <comment xml:lang="en_GB">Altera Quartus Project</comment>
+    <glob pattern="*.qpf"/>
+    <glob pattern="*.QPF"/>
   </mime-type>
 </mime-info>
