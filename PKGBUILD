@@ -1,5 +1,5 @@
 pkgname=paintdotjs-bin
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='An open source general-purpose raster graphics editor program.'
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=(
 )
 source_x86_64=("paintdotjs-${pkgver}.AppImage::https://github.com/LabyStudio/paintdotjs/releases/download/v${pkgver}/paintdotjs-${pkgver}-linux-x86_64.AppImage")
 noextract=("paintdotjs-${pkgver}.AppImage")
-sha256sums=('44df4515a3cc2bf9643014f37517e9f1ce6d2c5dcc57aa5625a2d437fad5ce4c')
-sha256sums_x86_64=('1d219c18563d64e1aa02e113241971be3ab77e9edd97dfbb6fc06431e94cb1f6')
+sha256sums=('a707f62ab35a270ae8b238d1bd819db33de77ff08071f588d2577ee89f4f08a7')
+sha256sums_x86_64=('f36ebb64542efe44a385fb8aeb84c80e49bbd14bee5d9b60163874eaaeb7cd0e')
 
 package() {
   local project="paintdotjs-${pkgver}"
