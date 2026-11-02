@@ -1,195 +1,242 @@
-# Maintainer: Smoolak <smoolak [at] gmail.com>
+# Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-torch-tensorrt
 _pkgname=torch-tensorrt
-pkgver=2.12.0
-pkgrel=2
+pkgver=2.15.0rc3
+_upstreamver=2.15.0-rc3
+pkgrel=1
 pkgdesc="Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
-license=('BSD-3-Clause')
+license=('BSD-3-Clause' 'MIT')
 depends=(
-    'python'
-    'python-pytorch-cuda'
-    'python-numpy'
-    'python-packaging'
-    'python-typing_extensions'
+    'cuda>=13.4'
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'python>=3.11'
+    'python<3.15'
     'python-dllist'
-    'python-tensorrt'
-    'python-rich'
-    'python-nvidia-modelopt'
-    'python-torchvision'
-    'cuda'
-    'tensorrt'
+    'python-filelock>=4.0.10'
+    'python-numpy'
+    'python-packaging>=23.1'
+    'python-psutil'
+    'python-pytorch-cuda>=2.15'
+    'python-pytorch-cuda<2.16'
+    'python-sympy'
+    'python-tensorrt>=11.4.0'
+    'python-tensorrt<11.5'
+    'python-typing_extensions>=4.7'
+    'tensorrt>=11.4.0'
+    'tensorrt<11.5'
 )
 makedepends=(
+    'bazel>=8.4.2'
+    'bazel<10'
+    'cmake'
+    'fmt'
+    'gcc15'
+    'git'
+    'google-glog'
+    'nccl'
+    'pkgconf'
+    'pybind11>=2.6.2'
     'python-build'
+    'python-cffi>=1.15.1'
     'python-installer'
-    'python-wheel'
-    'python-setuptools'
-    'python-cffi'
-    'pybind11'
-    'python-ninja'
+    'ninja>=1.11'
+    'python-setuptools>=77'
+    'python-wheel>=0.40'
+    'python-yaml>=6'
+)
+checkdepends=(
+    'patchelf'
+    'python-pytest>=9.0.3'
+    'python-pytest-xdist>=3.6.1'
 )
 optdepends=(
-    'python-pydot: for engine visualization features'
-    'python-graphviz: for graph utilities'
-    'tensorrt-llm: for LLM inference support'
+    'python-executorch>=1.6.0.dev20261009: optional Python export integration (requires version <1.7)'
+    'python-graphviz: graph visualization utilities'
+    'python-nvidia-modelopt: model quantization integrations'
+    'python-pydot: engine visualization'
+    'python-rich: rich TensorRT builder progress display'
+    'python-timm: extended model tests and examples'
+    'python-torchvision: FX frontend and vision models'
+    'python-transformers: extended transformer model support'
+    'python-tensorrt-llm: LLM inference support'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v${pkgver}.tar.gz"
-        "fix-glog-0.7.patch")
-source_x86_64=("bazel-8.1.1::https://github.com/bazelbuild/bazel/releases/download/8.1.1/bazel-8.1.1-linux-x86_64")
-sha256sums=('7276b1098638e293da27a978046c2ac6ee455e8656a7692061fc19167e475e64'
-            '4a7413873885f73d7e3fa142308953225a6b3af4d0969707e75bfcadf046e9b8')
-sha256sums_x86_64=('a2a095d7006ea70bdfdbe90a71f99f957fee1212d4614cfcfdbe3aadae681def')
+# Preserve the wheel's RECORD hashes for native libraries.
+options=('!debug' '!strip')
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v$_upstreamver.tar.gz"
+    'arch-system-dependencies.patch'
+    'arch-runtime-compat.patch'
+    'fix-glog-0.7.patch'
+    'fix-trtengine-layout.patch'
+    'cpu-check.py'
+    '_runtime_cache_lock.py'
+    'runtime-cache-safe-lock.patch'
+    'test_runtime_cache_lock.py'
+    'filelock-MIT-LICENSE'
+    'arch-cpu-tests.patch'
+)
+sha256sums=(
+    '9cd469b08f60f2a0e93315cd3bed84b04f3e056dea92db78280989fa9cc3b6e8'
+    'c06b5bf89e1b5d07659922da6187477f2457df93f0a19851db0771c861387f9e'
+    'aebdf557caf8105d3def808b49e470c87edc5236d47a7ce3ed0c88537e1e40f4'
+    'e873d8f155e9bf0b0a9bb10d7569098c6830f8dec9d7b8a86f184d79a037f8e7'
+    '05b95713e42f909badf9e267ef25f25059cadb1d1b82b8b2cc2277afb2582ef0'
+    'e9742287e0ed9f24c68f7b2eccc8bedab9fcda7c7452d606605a66b60d46eff6'
+    'c8689415fef531cbb3a5fbc1ddd728a8fd4cbf1c6848934896bbad8267564858'
+    '7dc462cde4a6504e5cc055716cecf7d8405bd2d14076c4441657d6026a2aa707'
+    '43d699430132a75f7948bb9b0bf1babc9892d1b7868b9d2fe7d769f640fe4c50'
+    '608c89d5060ae9921adccf3236695bc654a9946e12323ef6c021dfa04e294d48'
+    'df64fd3666e8fc97f14238fb939fe43c9c35d489c30f6436d847d37096efdbed'
+)
 
 prepare() {
-    cd "TensorRT-${pkgver}"
+    cd "TensorRT-$_upstreamver"
 
-    # Apply patch for glog 0.7.x compatibility
-    patch -p1 < "${srcdir}/fix-glog-0.7.patch"
+    patch -Np1 -i "$srcdir/arch-system-dependencies.patch"
+    patch -Np1 -i "$srcdir/arch-runtime-compat.patch"
+    patch -Np1 -i "$srcdir/fix-glog-0.7.patch"
+    patch -Np1 -i "$srcdir/fix-trtengine-layout.patch"
+    # Apply the non-destructive lock backend only to RuntimeCache. The public
+    # filelock package and its other consumers retain their own implementation.
+    install -m644 "$srcdir/_runtime_cache_lock.py" py/torch_tensorrt/runtime/
+    patch -Np1 -i "$srcdir/runtime-cache-safe-lock.patch"
+    # Keep upstream CPU cases while matching Arch metadata and optional Python integrations.
+    patch -Np1 -i "$srcdir/arch-cpu-tests.patch"
 
-    # Fix pybind11 version requirement to work with system pybind11
-    sed -i 's/pybind11==2.6.2/pybind11>=2.6.2/' pyproject.toml
+    # The editor-only compile_commands generator uses native.py_binary,
+    # removed in Bazel 9. It is not an input to any packaged library target.
+    sed -i '/^load("@hedron_compile_commands/d; /^refresh_compile_commands(/,/^)/d' BUILD.bazel
 
-    # Make downloaded Bazel executable
-    chmod +x "${srcdir}/bazel-8.1.1"
+    # Bazel's local TensorRT repository expects Debian-style multiarch paths.
+    # Construct that layout entirely from the installed Arch package.
+    local _trt_local="$srcdir/TensorRT-$_upstreamver/tensorrt_local"
+    local _trt_arch="$CARCH-linux-gnu"
+    install -d \
+        "$_trt_local/include/$_trt_arch" \
+        "$_trt_local/lib/$_trt_arch"
 
-    # Create a bazel symlink that setup.py can find
-    ln -sf "${srcdir}/bazel-8.1.1" "${srcdir}/bazel"
+    shopt -s nullglob
+    local _trt_headers=(
+        /usr/include/NvInfer*.h
+        /usr/include/NvOnnx*.h
+    )
+    local _trt_libraries=(
+        /usr/lib/libnvinfer*.so*
+        /usr/lib/libnvonnxparser*.so*
+    )
+    ((${#_trt_headers[@]}))
+    ((${#_trt_libraries[@]}))
+    ln -s "${_trt_headers[@]}" "$_trt_local/include/$_trt_arch/"
+    ln -s "${_trt_libraries[@]}" "$_trt_local/lib/$_trt_arch/"
 
-    # TensorRT lib architecture path for x86_64
-    _trt_arch="x86_64-linux-gnu"
+    grep -q 'path = "__TENSORRT_LOCAL__"' MODULE.bazel
+    sed -i "s|__TENSORRT_LOCAL__|$_trt_local|" MODULE.bazel
+    ! grep -q '__TENSORRT_LOCAL__' MODULE.bazel
 
-    # Create a local directory structure that matches what Bazel's third_party/tensorrt/local/BUILD expects
-    mkdir -p "tensorrt_local/lib/${_trt_arch}"
-    mkdir -p "tensorrt_local/include/${_trt_arch}"
-
-    # Link system TensorRT libraries
-    ln -sf /usr/lib/libnvinfer*.so* "tensorrt_local/lib/${_trt_arch}/"
-    ln -sf /usr/lib/libnvparsers.so* "tensorrt_local/lib/${_trt_arch}/"
-    ln -sf /usr/lib/libnvonnxparser*.so* "tensorrt_local/lib/${_trt_arch}/"
-    ln -sf /usr/lib/libnvinfer_plugin*.so* "tensorrt_local/lib/${_trt_arch}/"
-
-    # Link system TensorRT headers
-    ln -sf /usr/include/NvInfer*.h "tensorrt_local/include/${_trt_arch}/"
-    ln -sf /usr/include/NvOnnx*.h "tensorrt_local/include/${_trt_arch}/"
-    ln -sf /usr/include/NvCaffeParser.h "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
-    ln -sf /usr/include/NvUffParser.h "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
-
-    # Modify MODULE.bazel to use system TensorRT instead of downloading it.
-    # Block positions shift between releases, so match by content (not line
-    # numbers): comment out the active http_archive(name="tensorrt") and
-    # uncomment the new_local_repository(name="tensorrt"), pointing it at the
-    # symlink tree created above. tensorrt_rtx blocks are left untouched.
-    python - "MODULE.bazel" "${srcdir}/TensorRT-${pkgver}/tensorrt_local" << 'PYEOF'
-import re, sys
-path, trt = sys.argv[1], sys.argv[2]
-src = open(path).read().splitlines(keepends=True)
-out, i = [], 0
-while i < len(src):
-    if src[i].strip() == 'http_archive(' and i+1 < len(src) \
-       and re.match(r'\s*name = "tensorrt",\s*$', src[i+1]):
-        while True:
-            out.append('#' + src[i]); end = src[i].strip() == ')'; i += 1
-            if end: break
-        continue
-    if src[i].lstrip('#').strip() == 'new_local_repository(' and i+1 < len(src) \
-       and 'name = "tensorrt"' in src[i+1]:
-        while True:
-            u = re.sub(r'^#\s?', '', src[i]).replace('path = "/usr/"', f'path = "{trt}"')
-            out.append(u); end = src[i].lstrip('#').strip() == ')'; i += 1
-            if end: break
-        continue
-    out.append(src[i]); i += 1
-open(path, 'w').writelines(out)
-PYEOF
-
-    # Also update CUDA path in MODULE.bazel to use /opt/cuda
-    sed -i 's|path = "/usr/local/cuda-13.0/"|path = "/opt/cuda/"|' MODULE.bazel
-
-    # Patch setup.py to use system TensorRT instead of querying Bazel
-    # This replaces the Bazel query lambdas with simple lambdas that return "/usr"
-    sed -i '/tensorrt_x86_64_external_dir = (/,/^    )$/c\    tensorrt_x86_64_external_dir = lambda: "/usr"' setup.py
-    sed -i '/tensorrt_rtx_external_dir = (/,/^    )$/c\    tensorrt_rtx_external_dir = lambda: "/usr"' setup.py
-    sed -i '/tensorrt_sbsa_external_dir = (/,/^    )$/c\    tensorrt_sbsa_external_dir = lambda: "/usr"' setup.py
-    sed -i '/tensorrt_jetpack_external_dir = (/,/^    )$/c\    tensorrt_jetpack_external_dir = lambda: "/usr"' setup.py
-
-    # glog 0.7 needs GLOG_USE_GLOG_EXPORT defined for every Bazel compile,
-    # including the one setup.py runs during the wheel build (which doesn't get
-    # our command-line --copt). Put it in .bazelrc so all invocations inherit it.
-    printf '\nbuild --copt=-DGLOG_USE_GLOG_EXPORT --host_copt=-DGLOG_USE_GLOG_EXPORT\n' >> .bazelrc
+    # Never allow an environment-provided Bazelisk wrapper to download a
+    # different Bazel binary; setup.py must resolve Arch's /usr/bin/bazel.
+    grep -q 'BAZEL_EXE = which("bazelisk")' setup.py
+    sed -i 's/BAZEL_EXE = which("bazelisk")/BAZEL_EXE = None/' setup.py
 }
 
 build() {
-    cd "TensorRT-${pkgver}"
+    cd "TensorRT-$_upstreamver"
 
-    # Set environment variables for CUDA and TensorRT
+    # setuptools passes absolute source paths to the extension compiler.  Keep
+    # those paths out of user-visible __FILE__ diagnostics in the installed
+    # binary, in addition to makepkg's normal debug-prefix sanitization.
+    CFLAGS+=" -ffile-prefix-map=$srcdir=."
+    CXXFLAGS+=" -ffile-prefix-map=$srcdir=."
+    export CFLAGS CXXFLAGS
+
+    export PATH="/opt/cuda/bin:$PATH"
     export CUDA_HOME=/opt/cuda
     export CUDACXX=/opt/cuda/bin/nvcc
+    export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
+    export CUDAHOSTCXX=/usr/bin/g++-15 NVCC_CCBIN=/usr/bin/g++-15
     export TENSORRT_DIR=/usr
-    export LD_LIBRARY_PATH=/usr/lib:${LD_LIBRARY_PATH}
-
-    # Use the specific Bazel version we downloaded
-    export PATH="${srcdir}:${PATH}"
-    export BAZEL_EXE="${srcdir}/bazel-8.1.1"
+    export TORCH_PATH
+    TORCH_PATH="$(python -c 'import os, torch; print(os.path.dirname(torch.__file__))')"
+    # Keep the default native ExecuTorch source build and full TorchScript frontend.
+    unset EXECUTORCH_ROOT PYTHON_ONLY NO_TORCHSCRIPT USE_TRT_RTX
+    unset TORCH_TENSORRT_EXECUTORCH_RUNTIME_VERSION TORCH_TENSORRT_EXECUTORCH_RUNTIME_CHANNEL
+    export RELEASE=1
+    export BUILD_VERSION="$pkgver"
     export USE_HOST_BAZEL=1
+    # Arch ships one current Bazel binary behind a multi-version wrapper.
+    # Upstream's .bazelversion pins 8.4.2, which the wrapper cannot find once
+    # the repositories move to Bazel 9; select the source-built system binary.
+    export USE_BAZEL_VERSION=latest
+    export XDG_CACHE_HOME="$srcdir/bazel-cache"
+    install -d "$XDG_CACHE_HOME"
 
-    # Set compilation mode to optimized
-    export COMPILATION_MODE=opt
-
-    # Fix glog 0.7 compilation issue - ensure GLOG_USE_GLOG_EXPORT is defined.
-    # Bazel ignores the shell CXXFLAGS, so the define must also be passed to its
-    # C++ compiles via --copt/--host_copt or glog/logging.h fails to compile
-    # (GLOG_EXPORT undefined -> "two or more data types").
-    export CXXFLAGS="${CXXFLAGS} -DGLOG_USE_GLOG_EXPORT"
-
-    # Keep Bazel's output base off the (quota'd / NFS) home cache by rooting it
-    # under $srcdir; otherwise it defaults to ~/.cache/bazel and can fail with
-    # "Disk quota exceeded" on networked homes.
-    export HOME="${srcdir}"
-
-    # First, build the C++ library with Bazel
-    "${srcdir}/bazel-8.1.1" --output_user_root="${srcdir}/.bazelroot" \
-        build //:libtorchtrt --compilation_mode=opt \
-        --copt=-DGLOG_USE_GLOG_EXPORT --host_copt=-DGLOG_USE_GLOG_EXPORT
-
-    # Extract libraries from the tarball built by Bazel
-    tar -xzf bazel-bin/libtorchtrt.tar.gz
-
-    # Copy the built libraries to the location expected by setup.py
-    mkdir -p py/torch_tensorrt/lib
-    cp -v torch_tensorrt/lib/*.so py/torch_tensorrt/lib/
-
-    # Build Python wheel using modern build system
+    # bdist_wheel invokes the complete optimized C++/CUDA Bazel build and then
+    # builds the CPython extension against the resulting libtorchtrt.
     python -m build --wheel --no-isolation
+
+    # Bazel copies ExecuTorch outputs into read-only owned directories. Restore
+    # directory permissions so normal makepkg cleanup and reinstall can remove
+    # this private source cache. Do not follow symlinks or modify file contents.
+    [[ -d "$XDG_CACHE_HOME" && ! -L "$XDG_CACHE_HOME" ]]
+    [[ "$(realpath -e -- "$XDG_CACHE_HOME")" == "$(realpath -e -- "$srcdir")/bazel-cache" ]]
+    find -P "$XDG_CACHE_HOME" -type d -exec chmod u+rwx {} +
 }
 
 check() {
-    cd "TensorRT-${pkgver}"
+    cd "TensorRT-$_upstreamver"
 
-    # Basic import test (may fail if CUDA/TensorRT not available during build)
-    local _pyver=$(python -c 'import sys; print(f"{sys.version_info[0]}{sys.version_info[1]}")')
-    PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${_pyver}:${PYTHONPATH}" \
-        python -c "import torch_tensorrt; print(torch_tensorrt.__version__)" || \
-        echo "Warning: Import test failed - this is expected if CUDA/TensorRT are not available"
+    local _site
+    _site="$(python -c 'import sysconfig; print(sysconfig.get_path("platlib"))')"
+    rm -rf "$srcdir/_check"
+    python -m installer --destdir="$srcdir/_check" dist/*.whl
+    # The repository root exposes tests.ci helpers, not the runtime under py/.
+    export PYTHONPATH="$srcdir/_check$_site:$PWD"
+    export TORCHTRT_CHECK_SITE="$srcdir/_check$_site"
+    export LD_LIBRARY_PATH="$srcdir/_check$_site/torch_tensorrt/lib:/usr/lib"
+    export CUDA_VISIBLE_DEVICES=
+    export RELEASE=1 BUILD_VERSION="$pkgver"
+
+    # Run the original CPU-capable suite against the installed wheel. Optional
+    # Python ExecuTorch tests retain upstream importorskip behavior. Only the
+    # six Git-index scans are omitted because release archives contain no .git.
+    python -P - <<'PYCHECK'
+import os
+from pathlib import Path
+import sys
+import pytest
+import torch_tensorrt
+site = Path(os.environ["TORCHTRT_CHECK_SITE"]).resolve()
+assert Path(torch_tensorrt.__file__).resolve().is_relative_to(site)
+args = ["-ra", "--import-mode=importlib", "-n=4",
+        "tests/py/core", "tests/py/dynamo/executorch",
+        "tests/py/dynamo/lowering/test_complex_rewrite.py",
+        "tests/py/ts/api/test_classes.py::TestInput", "tests/py/ts/api/test_logging.py"]
+for test in ("test_every_requirement_matches_the_pin", "test_every_source_commit_matches_the_pin",
+             "test_every_printed_install_instruction_names_the_nightly_channel",
+             "test_the_no_nightly_marker_only_exempts_main_wheel_installs",
+             "test_every_requirement_file_install_names_both_executorch_channels"):
+    args += ["--deselect", "tests/py/dynamo/executorch/test_executorch_pin.py::" + test]
+args += ["--deselect", "tests/py/dynamo/executorch/test_update_executorch_pin.py::test_write_pins_requires_a_separate_lock_refresh"]
+args.append(str(Path.cwd().parent / "test_runtime_cache_lock.py"))
+result = pytest.main(args)
+for name, module in list(sys.modules.items()):
+    if name.startswith("torch_tensorrt") and getattr(module, "__file__", None):
+        assert Path(module.__file__).resolve().is_relative_to(site), (name, module.__file__)
+raise SystemExit(result)
+PYCHECK
+    python -P "$srcdir/cpu-check.py"
 }
 
 package() {
-    cd "TensorRT-${pkgver}"
+    cd "TensorRT-$_upstreamver"
 
-    # Install the package using modern installer
     python -m installer --destdir="$pkgdir" dist/*.whl
-
-    # Install license
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    # Install documentation
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-    # Install C++ headers if built
-    if [ -d "py/torch_tensorrt/include" ]; then
-        install -dm755 "${pkgdir}/usr/include"
-        cp -r py/torch_tensorrt/include "${pkgdir}/usr/include/torch_tensorrt"
-    fi
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/filelock-MIT-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/filelock-MIT-LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

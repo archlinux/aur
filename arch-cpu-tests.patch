@@ -1,0 +1,96 @@
+--- a/tests/py/dynamo/executorch/test_artifact_guard.py
++++ b/tests/py/dynamo/executorch/test_artifact_guard.py
+@@ -603,6 +603,7 @@
+                     tools["c++"],
+                     "-shared",
+                     "-fPIC",
++                    "-Wl,-z,nopack-relative-relocs",
+                     str(cpp),
+                     "-o",
+                     str(runtime_dir / name),
+@@ -633,6 +634,7 @@
+     (tmp_path / "main.cpp").write_text("int main() { return 0; }\n")
+     (tmp_path / "CMakeLists.txt").write_text(
+         "cmake_minimum_required(VERSION 3.28)\nproject(guard_fixture LANGUAGES CXX)\n"
++        'add_link_options("LINKER:-z,nopack-relative-relocs")\n'
+         "add_subdirectory(native)\n"
+         "add_executable(consumer main.cpp)\n"
+         'target_link_options(consumer PRIVATE "LINKER:--as-needed")\n'
+--- a/tests/py/dynamo/executorch/test_shared_runtime_workflow.py
++++ b/tests/py/dynamo/executorch/test_shared_runtime_workflow.py
+@@ -93,27 +93,27 @@
+         ),
+         (
+             {"platform_machine": "x86_64", "sys_platform": "linux"},
+-            {"tensorrt-cu13", "tensorrt-cu13-bindings", "tensorrt-cu13-libs"},
++            {"tensorrt"},
+         ),
+         (
+             {"platform_machine": "AMD64", "sys_platform": "win32"},
+-            {"tensorrt-cu13", "tensorrt-cu13-bindings", "tensorrt-cu13-libs"},
++            {"tensorrt"},
+         ),
+         (
+-            # Windows on Arm reports an Arm machine but is not SBSA, and takes the
+-            # CUDA 13 packages like every other Windows build.
++            # Retain the upstream Windows-on-Arm environment case while checking
++            # that Arch system dependency metadata is independent of the host.
+             {"platform_machine": "aarch64", "sys_platform": "win32"},
+-            {"tensorrt-cu13", "tensorrt-cu13-bindings", "tensorrt-cu13-libs"},
++            {"tensorrt"},
+         ),
+     ],
+ )
+ def test_tensorrt_markers_select_one_package_per_machine(environment, expected):
+-    """setup.py names every TensorRT package; the markers decide which ones install.
+-
+-    The names used to be chosen by an `if` on the building machine, which is why a
+-    uv.lock written on one architecture was stale on the other. Now that the choice
+-    happens at install time, these markers are what keeps each machine correct.
++    """Arch uses one system TensorRT distribution, independent of PyPI markers.
++
++    Keep the four upstream environment cases and verify that the installed wheel
++    declares the same bounded system dependency as the patched source metadata.
+     """
++    from importlib.metadata import requires, version
+     source = ast.parse((ROOT / "setup.py").read_text())
+     wanted = {"get_tensorrt_requirements", "SBSA_MARKER", "NON_SBSA_MARKER"}
+     body = [
+@@ -128,10 +128,16 @@
+     scope = {}
+     exec(compile(ast.Module(body=body, type_ignores=[]), "<markers>", "exec"), scope)
+     requirements = [Requirement(r) for r in scope["get_tensorrt_requirements"]()]
+-    # Every requirement carries a marker, so none of them installs everywhere.
+-    assert all(r.marker is not None for r in requirements)
+-    chosen = {r.name for r in requirements if r.marker.evaluate(dict(environment))}
++    assert len(requirements) == 1
++    assert requirements[0].name == "tensorrt"
++    assert requirements[0].marker is None
++    assert requirements[0].specifier == Requirement("tensorrt>=11.4.0,<11.5").specifier
++    chosen = {r.name for r in requirements if r.marker is None or r.marker.evaluate(dict(environment))}
+     assert chosen == expected
++    installed = [Requirement(r) for r in requires("torch_tensorrt")
++                 if Requirement(r).name == "tensorrt"]
++    assert installed == requirements
++    assert installed[0].specifier.contains(version("tensorrt"), prereleases=True)
+ 
+ 
+ @pytest.mark.parametrize("arch", ["x86_64", "aarch64"])
+--- a/tests/py/dynamo/executorch/test_edge_cases.py
++++ b/tests/py/dynamo/executorch/test_edge_cases.py
+@@ -35,6 +35,7 @@
+ def test_save_as_executorch_uses_public_lowering_and_persists_data(
+     monkeypatch, tmp_path
+ ):
++    pytest.importorskip("executorch.exir")
+     import torch_tensorrt.executorch as executorch_api
+     from executorch.exir import ExecutorchBackendConfig
+ 
+@@ -94,6 +95,7 @@
+ )
+ @pytest.mark.parametrize("option", ["partitioners", "compile_specs"])
+ def test_save_as_executorch_rejects_per_method_mapping(monkeypatch, tmp_path, option):
++    pytest.importorskip("executorch.exir")
+     import torch_tensorrt.executorch as executorch_api
+ 
+     export = MagicMock()

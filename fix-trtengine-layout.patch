@@ -1,0 +1,243 @@
+From: Torch-TensorRT upstream contributors
+Subject: [PATCH] Keep TRTEngine layout consistent across native build systems
+
+Backport the runtime changes from upstream PR4940 at commits
+ af523d12bb2771638233b87bc24f2e4878ad6712
+ aa04389a1e1c1e91a75e42a76c7ef00289e5b809
+https://github.com/pytorch/TensorRT/pull/4940
+
+Add the unchanged focused subprocess regression from PR4960 at
+ 00907d5b84309a4b9e39c5522edfd672e4d7da1c
+https://github.com/pytorch/TensorRT/pull/4960
+
+The layout correction covers allocation and inline member access across _C
+and libtorchtrt. The factory-only runtime change from PR4960 is not included.
+Keep the existing ResNet integration test unchanged, including its upstream
+skip, rather than introduce a pretrained-model download into this backport.
+The added regression exercises the same backend without external fixtures.
+Existing upstream copyright and BSD-3-Clause notices remain intact.
+
+diff --git a/core/runtime/BUILD b/core/runtime/BUILD
+--- a/core/runtime/BUILD
++++ b/core/runtime/BUILD
+@@ -149,20 +149,9 @@
+         "TensorRTBindingNames.h",
+         "runtime.h",
+     ],
+-    defines = if_torch_nccl(["USE_C10D_NCCL"]) + if_torch_nccl2(["TORCHTRT_HAS_PROCESS_GROUP_NCCL2"]) + select({
+-        # nvinfer1::IRuntimeConfig (and the matching ICudaEngine::createRuntimeConfig
+-        # / createExecutionContext(IRuntimeConfig*) overloads) was introduced in
+-        # TensorRT 10.11. The TensorRT shipped with the Jetpack l4t-r36.4 toolchain
+-        # (@tensorrt_l4t) predates 10.11 and does not export this type. Every other
+-        # configuration here (RTX, SBSA, Windows, default x86_64 Linux) is on a
+-        # TensorRT >= 10.11 bundle, so it gets the macro.
+-        #
+-        # Gate every IRuntimeConfig-using site in core/runtime with
+-        # `#ifdef TRT_HAS_IRUNTIME_CONFIG`; the Jetpack path falls back to the
+-        # legacy createExecutionContext() no-arg overload.
+-        ":jetpack": [],
+-        "//conditions:default": ["TRT_HAS_IRUNTIME_CONFIG"],
+-    }),
++    # Whether TensorRT has nvinfer1::IRuntimeConfig is decided from its version
++    # macros in TRTRuntimeConfig.h (TORCHTRT_HAS_IRUNTIME_CONFIG()), not here.
++    defines = if_torch_nccl(["USE_C10D_NCCL"]) + if_torch_nccl2(["TORCHTRT_HAS_PROCESS_GROUP_NCCL2"]),
+     linkopts = [
+         "-lstdc++fs",
+     ],
+diff --git a/core/runtime/TRTEngine.h b/core/runtime/TRTEngine.h
+--- a/core/runtime/TRTEngine.h
++++ b/core/runtime/TRTEngine.h
+@@ -51,6 +51,12 @@
+ // Full TRT NCCL collectives support requires both:
+ // 1. PyTorch built with NCCL (USE_C10D_NCCL defined via Bazel)
+ // 2. A TensorRT exposing the native collectives API (TRT_HAS_NATIVE_NCCL above)
++//
++// These macros and TORCHTRT_HAS_IRUNTIME_CONFIG() may gate code, but not data
++// members. Code built outside Bazel does not get Bazel's defines, such as
++// USE_C10D_NCCL: torch_tensorrt._C, built by setuptools, allocates TRTEngine
++// objects that libtorchtrt's constructor initializes, so both must see the same
++// layout.
+ #if defined(USE_C10D_NCCL) && defined(TRT_HAS_NATIVE_NCCL)
+ #define ENABLE_TRT_NCCL_COLLECTIVES 1
+ #endif
+@@ -402,7 +408,6 @@
+ 
+ #ifdef ENABLE_TRT_NCCL_COLLECTIVES
+   const bool _native_nccl_support = true; // Support value that is mostly here to back the torchbind hooks
+-  bool nccl_initialized = false; // guards lazy one-shot NCCL setup in execute_engine
+ 
+   // Resolve ProcessGroup via group_name, fetch the NCCL comm from PyTorch,
+   // and bind it to exec_ctx.  Returns true on success.  Returns false (without
+@@ -419,6 +424,10 @@
+ #else
+   const bool _native_nccl_support = false;
+ #endif
++  // Declared in every build, so that the layout does not depend on
++  // ENABLE_TRT_NCCL_COLLECTIVES (see the note above its definition). Only used
++  // when it is defined.
++  bool nccl_initialized = false; // guards lazy one-shot NCCL setup in execute_engine
+ 
+   // TODO: Implement a call method
+   // c10::List<at::Tensor> Run(c10::List<at::Tensor> inputs);
+diff --git a/core/runtime/TRTRuntimeConfig.cpp b/core/runtime/TRTRuntimeConfig.cpp
+--- a/core/runtime/TRTRuntimeConfig.cpp
++++ b/core/runtime/TRTRuntimeConfig.cpp
+@@ -28,7 +28,7 @@
+ }
+ 
+ void TRTRuntimeConfig::ensure_initialized(TORCHTRT_UNUSED nvinfer1::ICudaEngine* cuda_engine) {
+-#ifdef TRT_HAS_IRUNTIME_CONFIG
++#if TORCHTRT_HAS_IRUNTIME_CONFIG()
+   if (!config) {
+     TORCHTRT_CHECK(cuda_engine != nullptr, "Cannot initialize TRTRuntimeConfig without a live ICudaEngine");
+     config = make_trt(cuda_engine->createRuntimeConfig());
+@@ -74,11 +74,11 @@
+     LOG_DEBUG("CUDA graph strategy set to " << settings_.cuda_graph_strategy.to_string());
+   }
+ #endif
+-#endif // TRT_HAS_IRUNTIME_CONFIG
++#endif // TORCHTRT_HAS_IRUNTIME_CONFIG()
+ }
+ 
+ void TRTRuntimeConfig::reset() {
+-#ifdef TRT_HAS_IRUNTIME_CONFIG
++#if TORCHTRT_HAS_IRUNTIME_CONFIG()
+   config.reset();
+ #endif
+ }
+@@ -87,7 +87,7 @@
+     nvinfer1::ICudaEngine* cuda_engine,
+     nvinfer1::ExecutionContextAllocationStrategy allocation_strategy) {
+   ensure_initialized(cuda_engine);
+-#ifdef TRT_HAS_IRUNTIME_CONFIG
++#if TORCHTRT_HAS_IRUNTIME_CONFIG()
+   config->setExecutionContextAllocationStrategy(allocation_strategy);
+   return make_trt(cuda_engine->createExecutionContext(config.get()));
+ #else
+@@ -129,7 +129,7 @@
+ 
+ std::ostream& operator<<(std::ostream& os, const TRTRuntimeConfig& cfg) {
+   os << "TRTRuntimeConfig{settings=" << cfg.settings().to_str();
+-#ifdef TRT_HAS_IRUNTIME_CONFIG
++#if TORCHTRT_HAS_IRUNTIME_CONFIG()
+   os << ", config=" << (cfg.config ? "live" : "null");
+ #endif
+   os << "}";
+diff --git a/core/runtime/TRTRuntimeConfig.h b/core/runtime/TRTRuntimeConfig.h
+--- a/core/runtime/TRTRuntimeConfig.h
++++ b/core/runtime/TRTRuntimeConfig.h
+@@ -12,7 +12,31 @@
+ #include <utility>
+ 
+ #include "NvInfer.h"
++#include "NvInferVersion.h"
+ #include "core/runtime/RuntimeSettings.h"
++
++// nvinfer1::IRuntimeConfig, with ICudaEngine::createRuntimeConfig() and
++// createExecutionContext(IRuntimeConfig*), is in TensorRT 10.11 and later and in
++// TensorRT-RTX since 1.0. Decide from TensorRT's own version macros, so that all
++// code built against the same TensorRT agrees, whether built by Bazel or not.
++// TensorRT-RTX defines NV_TENSORRT_MAJOR as TRT_MAJOR_RTX, so test it first.
++// Test with `#if TORCHTRT_HAS_IRUNTIME_CONFIG()`: where this header is missing,
++// that fails to compile instead of reading as false, as `#ifdef` would.
++#if defined(TRT_MAJOR_RTX)
++#define TORCHTRT_HAS_IRUNTIME_CONFIG() 1
++#elif NV_TENSORRT_MAJOR > 10 || (NV_TENSORRT_MAJOR == 10 && NV_TENSORRT_MINOR >= 11)
++#define TORCHTRT_HAS_IRUNTIME_CONFIG() 1
++#else
++#define TORCHTRT_HAS_IRUNTIME_CONFIG() 0
++#endif
++
++#if !TORCHTRT_HAS_IRUNTIME_CONFIG()
++// Declared only where TensorRT lacks it, so that a later TensorRT may redefine
++// it (as an alias, say) without conflicting. See TRTRuntimeConfig::config.
++namespace nvinfer1 {
++class IRuntimeConfig;
++} // namespace nvinfer1
++#endif
+ 
+ namespace torch_tensorrt {
+ namespace core {
+@@ -56,10 +80,10 @@
+       nvinfer1::IExecutionContext* exec_ctx,
+       cudaStream_t stream) const;
+ 
+-#ifdef TRT_HAS_IRUNTIME_CONFIG
+-  // Lazy-constructed live config. `nullptr` until first `ensure_initialized`.
++  // Lazy-constructed live config. `nullptr` until first `ensure_initialized`,
++  // and always when TORCHTRT_HAS_IRUNTIME_CONFIG() is 0. Declared in every
++  // build, so that TRTEngine's layout does not depend on it (see TRTEngine.h).
+   std::shared_ptr<nvinfer1::IRuntimeConfig> config;
+-#endif
+ 
+  private:
+   RuntimeSettings settings_;
+diff --git a/tests/py/ts/api/test_to_backend_factory.py b/tests/py/ts/api/test_to_backend_factory.py
+new file mode 100644
+--- /dev/null
++++ b/tests/py/ts/api/test_to_backend_factory.py
+@@ -0,0 +1,64 @@
++# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++# SPDX-License-Identifier: BSD-3-Clause
++
++import gc
++import subprocess
++import sys
++import unittest
++from pathlib import Path
++
++import torch
++import torch_tensorrt as torchtrt
++
++
++class AffineRelu(torch.nn.Module):
++    def __init__(self):
++        super().__init__()
++        self.register_buffer("bias", torch.arange(8, dtype=torch.float32))
++
++    def forward(self, x):
++        return torch.relu(x * 2 + self.bias)
++
++
++@torch.no_grad()
++def _compile_and_run():
++    model = AffineRelu().eval().cuda()
++    scripted = torch.jit.script(model)
++    spec = {
++        "forward": torchtrt.ts.TensorRTCompileSpec(
++            inputs=[torchtrt.Input((2, 8), dtype=torch.float32)],
++            enabled_precisions={torch.float32},
++            disable_tf32=True,
++        )
++    }
++    lowered = torch._C._jit_to_backend("tensorrt", scripted, spec)
++    for offset in (0.0, -4.0):
++        sample = torch.randn(2, 8, device="cuda") + offset
++        torch.testing.assert_close(lowered(sample), model(sample))
++    torch.cuda.synchronize()
++    return lowered
++
++
++@unittest.skipIf(
++    not torchtrt.ENABLED_FEATURES.torchscript_frontend,
++    "TorchScript frontend is unavailable",
++)
++@unittest.skipIf(not torch.cuda.is_available(), "CUDA is unavailable")
++class TestToBackendFactory(unittest.TestCase):
++    def test_engine_execution_and_teardown(self):
++        # A child process also catches heap corruption during interpreter shutdown.
++        result = subprocess.run(
++            [sys.executable, str(Path(__file__).resolve())],
++            capture_output=True,
++            text=True,
++            timeout=300,
++        )
++        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
++
++
++if __name__ == "__main__":
++    for _ in range(2):
++        lowered = _compile_and_run()
++        del lowered
++        gc.collect()
++    lowered = _compile_and_run()

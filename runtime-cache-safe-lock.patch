@@ -1,0 +1,20 @@
+--- a/py/torch_tensorrt/runtime/_runtime_cache.py
++++ b/py/torch_tensorrt/runtime/_runtime_cache.py
+@@ -331,7 +331,7 @@
+             return
+         if not os.path.exists(target):
+             return  # first run; nothing to load
+-        from filelock import FileLock
++        from ._runtime_cache_lock import RuntimeCacheFileLock as FileLock
+ 
+         with FileLock(target + ".lock").acquire(timeout=_FILELOCK_TIMEOUT_S):
+             with open(target, "rb") as f:
+@@ -348,7 +348,7 @@
+         target = path if path is not None else self.path
+         if not target:
+             return
+-        from filelock import FileLock
++        from ._runtime_cache_lock import RuntimeCacheFileLock as FileLock
+ 
+         parent = os.path.dirname(target)
+         if parent:

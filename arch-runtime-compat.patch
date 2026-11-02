@@ -1,0 +1,22 @@
+--- a/toolchains/torch_nccl/defs.bzl
++++ b/toolchains/torch_nccl/defs.bzl
+@@ -7,7 +7,7 @@
+     """Find nccl.h from the pip nvidia-nccl package co-installed with torch."""
+ 
+     # pip's nvidia-nccl package installs nccl.h at <site-packages>/nvidia/nccl/include/
+-    candidate = torch_path + "/../nvidia/nccl/include"
++    candidate = "/usr/include"
+     result = repository_ctx.execute(["test", "-f", candidate + "/nccl.h"])
+     if result.return_code == 0:
+         return candidate
+--- a/py/torch_tensorrt/_Device.py
++++ b/py/torch_tensorrt/_Device.py
+@@ -137,7 +137,7 @@
+             return cls(gpu_id=d.index)
+ 
+         elif d is None:
+-            return cls(gpu_id=torch.cuda.current_device())
++            return cls._current_device()
+ 
+         else:
+             return cls(d)

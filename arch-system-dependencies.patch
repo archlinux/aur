@@ -1,0 +1,130 @@
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -3,7 +3,7 @@
+ 
+ module(
+     name = "torch_tensorrt",
+-    version = "2.15.0a0",
++    version = "2.15.0-rc3",
+     repo_name = "org_pytorch_tensorrt",
+ )
+ 
+@@ -17,11 +17,8 @@
+ cc_configure = use_extension("@rules_cc//cc:extensions.bzl", "cc_configure_extension")
+ use_repo(cc_configure, "local_config_cc")
+ 
+-python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+-python.toolchain(
+-    ignore_root_user_error = True,
+-    python_version = "3.11",
+-)
++# Use Arch's interpreter rather than downloading a separate Python runtime.
++register_toolchains("@rules_python//python/runtime_env_toolchains:all")
+ 
+ bazel_dep(name = "rules_pkg", version = "1.0.1")
+ git_override(
+@@ -82,7 +79,7 @@
+ new_local_repository(
+     name = "cuda",
+     build_file = "@//third_party/cuda:BUILD",
+-    path = "/usr/local/cuda-13.4/",
++    path = "/opt/cuda/",
+ )
+ 
+ # for Jetson
+@@ -198,14 +195,10 @@
+ # Either place them in the distdir directory in third_party and use the --distdir flag
+ # or modify the urls to "file:///<PATH TO ARCHIVE>/<ARCHIVE NAME>"
+ 
+-http_archive(
++new_local_repository(
+     name = "tensorrt",
+-    build_file = "@//third_party/tensorrt/archive:BUILD",
+-    strip_prefix = "TensorRT-11.4.0.106",
+-    type = "tar.zst",
+-    urls = [
+-        "https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/11.4.0/tars/TensorRT-Enterprise-11.4.0.106-Linux-x86_64-cuda-13.4-Release-external.tar.zst",
+-    ],
++    path = "__TENSORRT_LOCAL__",
++    build_file = "@//third_party/tensorrt/local:BUILD",
+ )
+ 
+ http_archive(
+--- a/.bazelrc
++++ b/.bazelrc
+@@ -26,6 +26,14 @@
+ build:linux --cxxopt="-std=c++20"
+ build:linux --cxxopt="-fdiagnostics-color=always"
+ 
++# Use Arch tools and the system glog exported-symbol annotations.
++build:linux --copt=-DGLOG_USE_GLOG_EXPORT
++build:linux --host_copt=-DGLOG_USE_GLOG_EXPORT
++build:linux --extra_toolchains=@rules_foreign_cc//toolchains:preinstalled_cmake_toolchain
++build:linux --extra_toolchains=@rules_foreign_cc//toolchains:preinstalled_ninja_toolchain
++build:linux --extra_toolchains=@rules_foreign_cc//toolchains:preinstalled_make_toolchain
++build:linux --extra_toolchains=@rules_foreign_cc//toolchains:preinstalled_pkgconfig_toolchain
++
+ build:windows --cxxopt="/GS-" --cxxopt="/std:c++20" --cxxopt="/permissive-"
+ build:windows --cxxopt="/wd4244" --cxxopt="/wd4267" --cxxopt="/wd4819"
+ build:windows --cxxopt="/utf-8"
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -6,11 +6,10 @@
+     "setuptools>=77.0.0",
+     "packaging>=23.1",
+     "wheel>=0.40.0",
+-    "ninja>=1.11.0",
+     "pyyaml>=6.0",
+     "cffi>=1.15.1",
+     "torch>=2.15.0,<2.16.0",
+-    "pybind11==2.6.2",
++    "pybind11>=2.6.2",
+ ]
+ build-backend = "setuptools.build_meta"
+ 
+--- a/setup.py
++++ b/setup.py
+@@ -895,7 +895,7 @@
+                     dir_path + "torch_tensorrt/include",
+                     dir_path + "/../",
+                     dir_path + "/../cpp/include",
+-                    "/usr/local/cuda",
++                    "/opt/cuda",
+                 ]
+                 + (
+                     [
+@@ -1039,14 +1039,8 @@
+ 
+ 
+ def get_tensorrt_requirements():
+-    # TensorRT does not build wheels for Tegra, so SBSA takes the plain `tensorrt`
+-    # package from the tarball install; everywhere else takes the CUDA 13 trio.
+-    return [
+-        f"tensorrt>=11.4.0,<11.5.0; {SBSA_MARKER}",
+-        f"tensorrt-cu13>=11.4.0,<11.5.0; {NON_SBSA_MARKER}",
+-        f"tensorrt-cu13-bindings>=11.4.0,<11.5.0; {NON_SBSA_MARKER}",
+-        f"tensorrt-cu13-libs>=11.4.0,<11.5.0; {NON_SBSA_MARKER}",
+-    ]
++    # Arch packages provide the Python bindings and native CUDA libraries together.
++    return ["tensorrt>=11.4.0,<11.5.0"]
+ 
+ 
+ def get_sbsa_requirements(base_requirements):
+@@ -1100,7 +1094,7 @@
+     base_requirements = [
+         "packaging>=23",
+         "typing-extensions>=4.7.0",
+-        "filelock>=4.2.1",
++        "filelock>=4.0.10",
+         "dllist",
+         "psutil",
+     ]
+--- a/py/requirements.txt
++++ b/py/requirements.txt
+@@ -6,5 +6,5 @@
+ --extra-index-url https://pypi.ngc.nvidia.com
+ pyyaml
+ dllist
+-filelock>=4.2.1
++filelock>=4.0.10
+ setuptools
