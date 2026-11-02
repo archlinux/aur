@@ -1,0 +1,23 @@
+pkgbase = perl-fetch
+	pkgdesc = HTTP/3, HTTP/2 and HTTP/1.1 Future-based user agent
+	pkgver = 0.29
+	pkgrel = 1
+	url = https://metacpan.org/release/Fetch
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = libnghttp2>=1.70.0
+	depends = libnghttp3>=1.18.0
+	depends = libngtcp2>=1.25.0
+	depends = libngtcp2>=1.25.0
+	depends = liburing>=2.15
+	depends = openssl>=4.1.0
+	depends = openssl>=4.1.0
+	depends = perl>=5.8.3
+	depends = perl-file-raw-json>=0.05
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Fetch-0.29.tar.gz
+	md5sums = c89808c48da15fb4764bfb85b78a0a15
+	sha512sums = 233f048f6975623fc868380e7b0ce2d82ebed89303edf42263c4fa2a43ad9a56e7660157152e522ef32b26b3a5a809b363c7106630bd2bb539b020be6b73cdaf
+
+pkgname = perl-fetch
