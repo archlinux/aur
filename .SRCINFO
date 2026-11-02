@@ -1,0 +1,15 @@
+pkgbase = perl-search-trigram
+	pkgdesc = Trigram inverted index search with Dice coefficient scoring
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/Search-Trigram
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Search-Trigram-0.03.tar.gz
+	md5sums = 59acb629f8d901e09cff1bc072fa0048
+	sha512sums = 653c66ec2445cae4975146eaae1a810411b20bbdc9c19e56b36566165bb299969dbc0e6cfedd34cad4b44c887913300a6f5a6d8f447e876f9f273d8f50eb0994
+
+pkgname = perl-search-trigram
