@@ -1,23 +1,24 @@
-# Maintainer: Margret Riegert <margret at eowyn net>
 # Maintainer: taotieren <admin@taotieren.com>
+# Contributor: Margret Riegert <margret at eowyn net>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=openfpgaloader-git
-pkgver=1.1.1.r168.gf6a678b
+pkgver=1.2.0.r22.g5927f92
 pkgrel=1
 pkgdesc="Universal utility for programming FPGA"
 arch=($CARCH)
 url="https://github.com/trabucayre/openFPGALoader"
 license=('Apache-2.0')
 depends=(
-  'libftdi'
-  'libgcc_s.so'
-  'libstdc++.so'
-  'libhidapi-libusb.so'
-  'libgpiod'
-  'libudev.so'
-  'libusb'
-  'libz.so'
+  libftdi
+  libftdi-compat
+  hidapi libhidapi-libusb.so
+  systemd-libs libudev.so
+  libusb
+  zlib
+  glibc
+  libgcc libgcc_s.so
+  libstdc++ libstdc++.so
 )
 makedepends=(
   'cmake'
@@ -46,7 +47,6 @@ pkgver() {
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
-  sed -i 's|MODE="664", GROUP="plugdev"|MODE="666, GROUP="uucp"|g' "${srcdir}/${pkgname}"/99-openfpgaloader.rules
 }
 
 build() {
@@ -60,6 +60,8 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DENABLE_UDEV=True \
     -DENABLE_CMSISDAP=True \
+    -DENABLE_LIBGPIOD=True \
+    -DENABLE_REMOTEBITBANG=True \
     -Wno-author \
     -Bbuild \
     -GNinja
@@ -73,8 +75,8 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
-  install -Dm 0644 "${srcdir}/${pkgname}"/99-openfpgaloader.rules "$pkgdir"/usr/lib/udev/rules.d/99-openfpgaloader.rules
-  install -dm0755 ${pkgdir}/usr/share/doc/${pkgname}
+  install -vDm0644 "${srcdir}/${pkgname}"/70-openfpgaloader.rules -t "$pkgdir"/usr/lib/udev/rules.d/
+  install -vdm0755 ${pkgdir}/usr/share/doc/${pkgname}
   cp -r "${srcdir}"/${pkgbase}/doc/_build/html "${pkgdir}/usr/share/doc/${pkgname}/"
 
   chown root:root "${pkgdir}/usr/share/doc/${pkgname}/"
