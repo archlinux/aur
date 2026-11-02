@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -45,8 +45,8 @@ optdepends=(
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar")
-# SHA-256 of the reproducible v1.5.0 source archive.
-sha256sums=('2428aedcb01ca97e5d430c7b7c60cd03193e3afb86a8e997c58533ea682d1d52')
+# SHA-256 of the reproducible v1.5.1 source archive.
+sha256sums=('0be6afcb989ea7807b417b8b699c4f63f8833002387e234ac422354758219e0d')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
