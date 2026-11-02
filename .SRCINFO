@@ -1,6 +1,6 @@
 pkgbase = hyprwallselector-git
 	pkgdesc = Independent image and video wallpaper carousel for Hyprland
-	pkgver = 0.1.0.r13.gace98bb
+	pkgver = 0.2.0.r14.ga583416
 	pkgrel = 1
 	url = https://github.com/MaksSuRitik/hyprwallselector
 	arch = x86_64
@@ -23,6 +23,9 @@ pkgbase = hyprwallselector-git
 	depends = systemd-libs
 	depends = gcc-libs
 	depends = glibc
+	optdepends = caelestia-shell: native Caelestia or compatible MiDnight wallpaper renderer
+	optdepends = caelestia-cli: Caelestia/MiDnight wallpaper and theme control
+	optdepends = linux-wallpaperengine: optional Wallpaper Engine projects with MiDnight
 	optdepends = dms-shell: DMS palette and lock-screen synchronization
 	optdepends = hyprland: compositor, display state and fullscreen detection
 	optdepends = qt6-imageformats: additional image formats
