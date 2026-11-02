@@ -15,6 +15,7 @@ pkgbase = veeam-6
 	conflicts = veeam-nosnap
 	noextract = veeam-6.3.2.1405-1.el10.x86_64.rpm
 	noextract = veeam-libs-6.3.2.1405-1.x86_64.rpm
+	options = !strip
 	backup = etc/veeam/veeam.ini
 	backup = usr/share/veeam/lpb_scheme.sql
 	backup = usr/share/veeam/db_upgrade.sql
