@@ -3,7 +3,7 @@
 pkgname=pizauth-git
 _pkgname="${pkgname%-git}"
 pkgver=1.1.0.r0.g8d38f95
-pkgrel=1
+pkgrel=2
 pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/ltratt/${_pkgname}"
