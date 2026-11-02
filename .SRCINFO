@@ -1,7 +1,7 @@
 pkgbase = halley-git
 	pkgdesc = Spatial Wayland compositor built around infinite workspace navigation
 	pkgver = r1507.47f8333
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saltnpepper97/halley
 	arch = x86_64
 	license = GPL-3.0-only
