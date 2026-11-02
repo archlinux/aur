@@ -10,5 +10,8 @@ Plasma System Settings > Default Applications > File Manager, or run:
 For D-Bus "Show in folder" activation, optionally enable the user service:
   install -Dm644 /usr/share/Lurviko/dbus-1/services/org.freedesktop.FileManager1.service "${XDG_DATA_HOME:-$HOME/.local/share}/dbus-1/services/org.freedesktop.FileManager1.service"
 Then log out and back in. Existing g-File settings migrate on first launch.
+
+Optional Samba folder sharing requires server/usershare setup and a Samba login.
+See /usr/share/doc/lurviko/docs/network-sharing.md for setup instructions.
 EOF
 }

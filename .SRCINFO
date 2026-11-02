@@ -1,6 +1,6 @@
 pkgbase = lurviko
 	pkgdesc = Qt Quick file manager with media libraries, cloud storage and an encrypted vault
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/G-grbz/Lurviko
 	install = lurviko.install
@@ -40,7 +40,8 @@ pkgbase = lurviko
 	depends = openssl>=3.2
 	depends = ffmpeg
 	depends = hicolor-icon-theme
-	optdepends = git: local repository status badges
+	optdepends = git: repository management, synchronization and status badges
+	optdepends = samba: authenticated folder sharing in Properties
 	optdepends = python-cryptography: standalone vault recovery tool
 	optdepends = qt6-wayland: Wayland desktop sessions
 	optdepends = qt6-imageformats: additional image formats
@@ -59,7 +60,7 @@ pkgbase = lurviko
 	optdepends = kio-extras: additional network and filesystem protocols
 	optdepends = kio-admin: authenticated administrator locations
 	optdepends = polkit: administrator authentication for file ownership and permissions
-	source = Lurviko-1.4.1-1.tar::https://github.com/G-grbz/Lurviko/releases/download/v1.4.1/Lurviko-1.4.1.tar
-	sha256sums = 77e38f88e4f19c422e0488b9f0536aa4608ed3122dcabdbbfe47967a8d76ee64
+	source = Lurviko-1.5.0-1.tar::https://github.com/G-grbz/Lurviko/releases/download/v1.5.0/Lurviko-1.5.0.tar
+	sha256sums = 2428aedcb01ca97e5d430c7b7c60cd03193e3afb86a8e997c58533ea682d1d52
 
 pkgname = lurviko
