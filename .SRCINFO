@@ -1,0 +1,31 @@
+pkgbase = pi-gui
+	pkgdesc = Electron GUI app for the pi coding agent runtime
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/minghinmatthewlam/pi-gui
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs>=22
+	makedepends = pnpm
+	makedepends = make
+	makedepends = gcc
+	makedepends = g++
+	makedepends = python
+	depends = gtk3
+	depends = nss
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = at-spi2-core
+	depends = e2fsprogs
+	depends = libsecret
+	depends = mesa
+	depends = xdg-utils
+	depends = alsa-lib
+	depends = libcups
+	provides = pi-gui
+	conflicts = pi-gui-bin
+	source = pi-gui-1.0.1.tar.gz::https://github.com/minghinmatthewlam/pi-gui/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 920e110e7876821458fcc2ec3c3cfcaca0486acd5d8bf97c6093860b2b65edb2
+
+pkgname = pi-gui
