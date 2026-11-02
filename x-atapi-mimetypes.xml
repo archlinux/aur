@@ -143,8 +143,8 @@
     <glob pattern="*.BIN"/>
   </mime-type>
   <mime-type type="application/x-click-create-proj">
-    <comment>Clickteam Click & Create Project</comment>
-    <comment xml:lang="en_GB">Clickteam Click & Create Project</comment>
+    <comment>Clickteam Click &amp; Create Project</comment>
+    <comment xml:lang="en_GB">Clickteam Click &amp; Create Project</comment>
     <magic priority="60">
       <match type="string" offset="0" value="PAME"/>
     </magic>
