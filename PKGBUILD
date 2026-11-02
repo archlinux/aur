@@ -1,6 +1,6 @@
 # Maintainer: MaksSuRitik <https://github.com/MaksSuRitik>
 pkgname=hyprwallselector-git
-pkgver=0.2.0.r14.ga583416
+pkgver=0.2.1.r15.ge25b7a3
 pkgrel=1
 pkgdesc='Independent image and video wallpaper carousel for Hyprland'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/MaksSuRitik/hyprwallselector.git')
 sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/hyprwallselector"
-  printf '0.2.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '0.2.1.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
   cmake -S "$srcdir/hyprwallselector" -B build -G Ninja \
