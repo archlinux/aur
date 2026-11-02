@@ -1,7 +1,7 @@
 pkgbase = python-torch-tensorrt
 	pkgdesc = Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform
 	pkgver = 2.15.0rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/TensorRT
 	arch = x86_64
 	license = BSD-3-Clause
@@ -16,6 +16,7 @@ pkgbase = python-torch-tensorrt
 	makedepends = gcc15
 	makedepends = git
 	makedepends = google-glog
+	makedepends = jdk21-openjdk
 	makedepends = nccl
 	makedepends = pkgconf
 	makedepends = pybind11>=2.6.2

@@ -4,7 +4,7 @@ pkgname=python-torch-tensorrt
 _pkgname=torch-tensorrt
 pkgver=2.15.0rc3
 _upstreamver=2.15.0-rc3
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
@@ -38,6 +38,7 @@ makedepends=(
     'gcc15'
     'git'
     'google-glog'
+    'jdk21-openjdk'
     'nccl'
     'pkgconf'
     'pybind11>=2.6.2'
@@ -142,6 +143,10 @@ prepare() {
     # different Bazel binary; setup.py must resolve Arch's /usr/bin/bazel.
     grep -q 'BAZEL_EXE = which("bazelisk")' setup.py
     sed -i 's/BAZEL_EXE = which("bazelisk")/BAZEL_EXE = None/' setup.py
+
+    # ExecuTorch enables an installed ccache even when Bazel makes its cache
+    # read-only. Disable caching within Bazel actions for this build.
+    printf '\nbuild:linux --action_env=CCACHE_DISABLE=1\n' >> .bazelrc
 }
 
 build() {
@@ -155,6 +160,8 @@ build() {
     export CFLAGS CXXFLAGS
 
     export PATH="/opt/cuda/bin:$PATH"
+    # Select the declared JDK without changing the system Java default.
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     export CUDA_HOME=/opt/cuda
     export CUDACXX=/opt/cuda/bin/nvcc
     export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
