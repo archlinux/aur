@@ -8,7 +8,7 @@
 # /var/lib/zotero-pdf2zh/app 再运行（详见 runtime-sync 里的注释）。
 
 pkgname=zotero-pdf2zh
-pkgver=4.1.7
+pkgver=4.1.8
 pkgrel=1
 pkgdesc='Local translation server for the Zotero PDF2zh plugin (pdf2zh / pdf2zh_next)'
 arch=('any')
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/guaguastandup/zotero-pdf2zh
         'zotero-pdf2zh.sysusers'
         'zotero-pdf2zh.tmpfiles'
         'runtime-sync')
-sha256sums=('251af9cbf8fb4868f7db6277bee17889f048d941d66f8250466524cc1e995b6f'
+sha256sums=('893fb159fb1144b8422fcbc4cbc6567c297b3492aced9bfd42522da623d8ef97'
             '999069cd75912175337876386f19c7e76018af583016751f8f1b32111e6051c8'
             '9fd26ede77a329564c28d4e195bac0089a3b968c7dd0472ed660e6a92613d1aa'
             '8e7c4f78c646faa853089c36af1d3b3c7c2e47b31c31b6f8ea211045f62bc69f'
