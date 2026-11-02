@@ -40,11 +40,14 @@
 # 依赖锁定在仓库的 package-lock.json（resolved 指向 npmmirror，公开镜像全球可访问），
 # 直接按 lockfile 安装即可。注意：不要用 replace-registry-host=always 强改 registry，
 # 否则 file: 本地依赖的路径会被误改写成 registry URL 导致 404。
+#
+# 中国大陆加速：_geo_is_cn 通过 https://api.ip.sb/geoip 的 country_code 判断地区，
+# 命中 CN 时切换 npm（registry.npmmirror.com）与 Electron 预编译包（npmmirror）
 
 
 pkgname=dsh-desktop-git
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.13.1
+pkgrel=1
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
@@ -94,6 +97,30 @@ conflicts=('dsh-desktop')
 # Electron/Chromium 二进制不能被 strip，否则可能无法启动
 options=('!strip')
 
+# ── 区域自适应镜像（见文件头说明）─────────────────────────────────────────────
+_geo_cache="${XDG_CACHE_HOME:-$HOME/.cache}/dsh-desktop-git-geo"
+_geo_is_cn() {
+  [[ ${DSH_NO_MIRROR:-0} == 1 ]] && return 1
+  [[ ${DSH_FORCE_CN:-0} == 1 ]] && return 0
+  local cc=''
+  if [[ -s $_geo_cache ]] && (( $(stat -c %Y "$_geo_cache" 2>/dev/null || echo 0) > $(date +%s) - 86400 )); then
+    cc=$(<"$_geo_cache")
+  else
+    # api.ip.sb 对没有 User-Agent 的请求返回 403，必须带浏览器 UA
+    cc=$(curl -fsS --max-time 5 -A 'Mozilla/5.0' https://api.ip.sb/geoip 2>/dev/null \
+      | sed -n 's/.*"country_code"[[:space:]]*:[[:space:]]*"\([A-Za-z]*\)".*/\1/p' | head -1)
+    if [[ -n $cc ]]; then
+      ( mkdir -p "${_geo_cache%/*}" && printf '%s' "$cc" >"$_geo_cache" ) 2>/dev/null || true
+    fi
+  fi
+  [[ $cc == CN ]]
+}
+
+if _geo_is_cn; then
+  export ELECTRON_MIRROR="${ELECTRON_MIRROR:-https://npmmirror.com/mirrors/electron/}"
+  export npm_config_registry="${npm_config_registry:-https://registry.npmmirror.com}"
+fi
+
 source=("$pkgname::git+https://github.com/dataelement/dsh-desktop.git"
         'dsh-desktop.desktop'
         'dsh-linux-after-pack.cjs'
@@ -137,6 +164,7 @@ build() {
   export npm_config_audit=false
   export npm_config_fund=false
 
+  # Electron / npm 的镜像由文件头的 _geo_is_cn 按地区统一设置
   npm ci
 
   # 上游 CI 在打包前用 release tag 覆盖 package.json 版本（仓库内固定为旧号），
