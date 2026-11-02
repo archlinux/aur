@@ -5,7 +5,7 @@
 pkgname=mdbook-git
 pkgver=0.4.12.r0.ge6629cd7
 pkgrel=2
-pkgdesc="Create book from markdown files, like Gitbook but implemented in Rust"
+pkgdesc="Create book from markdown files, like Gitbook but implemented in Rust (git version)"
 url="https://github.com/rust-lang/mdBook"
 arch=('x86_64' 'aarch64')
 license=('MPL-2.0')
