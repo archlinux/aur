@@ -11,7 +11,7 @@
 # Gear Lever never intercept execution.
 
 pkgname=synara-beta
-pkgver=1.0.9_beta.1
+pkgver=1.1.1_beta.1
 pkgrel=1
 pkgdesc="Minimal desktop GUI for coding agents (beta channel)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/Emanuele-web04/synara/v${_upstream_ver}/LICENSE"
 )
 sha256sums=(
-  '3ba0ae1421642a4f08fa1f73a9fefb694ca4e36a0670f96ccd8ab9993a64ad32'
+  '4a9f36e2bd078db71001f2e2573f1a4b1c48c4cf45980f49ad0e87ce914637a7'
   'c9bc19ef9bbcf3768f9006c855d1aa50aa19882c192939f36bba25bc9b3740e9'
   '426cd0c3bacd826957099cb20609c6aeb62445c8203b515924b998623a646fad'
   '305724dd050ca7ded99c662de813d755bc4ec3887c4543a37159c6662ca36d1b'
