@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2164
 
-_pkgver=v2026.9.11
+_pkgver=v2026.11.1
 pkgver="${_pkgver#v}"
 pkgrel=1
 
@@ -15,13 +15,13 @@ url='https://github.com/craftablescience/sourcepp'
 license=('MIT')
 
 depends=(
-	'python>=3.9' 'python<4.0.0'
+	'python>=3.10' 'python<=3.15'
 )
 
 makedepends=('git' 'cmake' 'python-build' 'python-scikit-build-core' 'nanobind' 'python-installer')
 
 source=("git+${url}#tag=${_pkgver}")
-sha256sums=('6eb11c8ea42c224e8f6a17f9fbfeee73660b1b099b5d6f791734edadd89d748d')
+sha256sums=('45bfe3d2d057a4aaa095e997137c03ad493978dcb0bf107a49718c1999640477')
 
 build() {
 	cd "${_pkgname}"
