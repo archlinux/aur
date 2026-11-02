@@ -1,7 +1,7 @@
 pkgbase = orangcalc-bin
 	pkgdesc = Orange Calculator
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oranges.lt
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,11 @@ pkgbase = orangcalc-bin
 	options = !strip
 	source = https://github.com/Orang-Studio/OrangCalc/releases/download/4.0-Lin/release.tar.gz
 	source = LICENSE
+	source = orangcalc.desktop
+	source = orange.png
 	sha256sums = b8075964c45ab0b8a3cf365f83fb7ba14737cf3bde8f971ef92187e111f7e62e
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = d25ffa0c197e61ae6ac5db4ea93a4ece3c9eedbdcd8da21a5f91e35bf6eac7ab
+	sha256sums = ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968
 
 pkgname = orangcalc-bin

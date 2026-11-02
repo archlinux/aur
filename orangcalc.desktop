@@ -1,13 +1,11 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
 Name=OrangCalc
+GenericName=Calculator
+GenericName[lt]=Skaičiuotuvas
+Comment=Orange Calculator
 Exec=orangcalc
-Icon=oranglauncher
+Icon=orangcalc
 Terminal=false
-Categories=Office;
-Name[en_US]=OrangCalc
-Version=2.0
-GenericName[lt]=OrangCalc
-GenericName[en]=OrangCalc
-GenericName=OrangCalc
+Categories=Utility;Calculator;
+Keywords=calculator;math;orange;
