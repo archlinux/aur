@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OpenIDEA
+Comment=An open-source IDE inspired by IntelliJ IDEA
+Exec=openidea
+Icon=openidea
+Terminal=false
+Categories=Development;
+StartupWMClass=openidea
