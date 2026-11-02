@@ -2,7 +2,7 @@
 # Contributor: CuVoodoo <pcb-rnd@cuvoodoo.info>
 
 pkgname=sch-rnd
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="simple, modular, scriptable schematics editor"
 url="http://www.repo.hu/projects/sch-rnd/"
@@ -20,7 +20,7 @@ optdepends=(
 provides=(${pkgname})
 conflicts=(${pkgname})
 source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('c1079174618cf2a052ca0762e6ecbd73539b2efba5a8aa9ec2cdcde0229093fd')
+sha256sums=('e993d06a3208d37aacb97aaa868e4cfbe649a5587c6aa86f6f6dd00f2f8c4648')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"

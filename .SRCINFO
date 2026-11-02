@@ -1,6 +1,6 @@
 pkgbase = sch-rnd
 	pkgdesc = simple, modular, scriptable schematics editor
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = http://www.repo.hu/projects/sch-rnd/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sch-rnd
 	optdepends = fungw
 	provides = sch-rnd
 	conflicts = sch-rnd
-	source = http://www.repo.hu/projects/sch-rnd/releases/sch-rnd-1.0.11.tar.gz
-	sha256sums = c1079174618cf2a052ca0762e6ecbd73539b2efba5a8aa9ec2cdcde0229093fd
+	source = http://www.repo.hu/projects/sch-rnd/releases/sch-rnd-1.0.12.tar.gz
+	sha256sums = e993d06a3208d37aacb97aaa868e4cfbe649a5587c6aa86f6f6dd00f2f8c4648
 
 pkgname = sch-rnd
