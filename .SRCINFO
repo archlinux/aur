@@ -1,6 +1,6 @@
 pkgbase = open-cad-studio-bin
 	pkgdesc = A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering (precompiled)
-	pkgver = 2026.43
+	pkgver = 2026.44
 	pkgrel = 1
 	url = https://github.com/HakanSeven12/OpenCADStudio
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = open-cad-studio-bin
 	provides = open-cad-studio
 	conflicts = open-cad-studio
 	options = !debug
-	source = https://github.com/tubbywrestler/open-cad-studio-bin/releases/download/2026.43-1/open-cad-studio-2026.43-1-x86_64.pkg.tar.zst
-	sha256sums = 3336f05ec413f92ac0dcd0c9c6feaec23772d174be42df24febaec4a8a39294d
+	source = https://github.com/tubbywrestler/open-cad-studio-bin/releases/download/2026.44-1/open-cad-studio-2026.44-1-x86_64.pkg.tar.zst
+	sha256sums = 033bed6465bdb8548b39f455658e2b49b0cf7cb9dfa0b78b0ec10599e0136c7a
 
 pkgname = open-cad-studio-bin
