@@ -8,6 +8,7 @@ pkgdesc="Slimbook QC71 EC platform driver (generic_slimbook branch, DKMS)"
 arch=('x86_64')
 url="https://github.com/Slimbook-Team/qc71_laptop"
 license=('GPL-2.0-or-later')
+changelog=CHANGELOG
 depends=('dkms')
 makedepends=('git')
 provides=('qc71_laptop')

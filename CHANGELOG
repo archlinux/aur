@@ -1,0 +1,5 @@
+qc71-laptop-slimbook-dkms 1.3.3-1
+  - Initial release, built from upstream tag 1.3.3 (generic_slimbook branch).
+  - Provide qc71_laptop and conflict with qc71-laptop-dkms-git and
+    qc71-laptop-slimbook-dkms-git.
+  - Ship our own dkms.conf without the deprecated CLEAN directive.
