@@ -3,7 +3,7 @@
 
 pkgname=jcodemunch-mcp
 _pkgname=jcodemunch_mcp
-pkgver=1.108.406
+pkgver=1.108.407
 pkgrel=1
 pkgdesc="Token-efficient MCP server for source code exploration via tree-sitter AST parsing"
 arch=(x86_64 aarch64)
@@ -62,7 +62,7 @@ source=(
   tree_sitter_fsharp-0.3.12.tar.gz::https://files.pythonhosted.org/packages/source/t/tree-sitter-fsharp/tree_sitter_fsharp-0.3.12.tar.gz
   check-installed.py
 )
-sha256sums=('251fb193c18a082896c0ee328f847f3caaab75c3190336c7b271ec67b85cb066'
+sha256sums=('2318a049156829efdf8958c53c0a18a98282b3bf47f4067a95917707f307ed9a'
             'e02de7f798b232c1e373066d83d8fa0c801c539bf25cc423b2b2383080f17e1c'
             '445414625fce5c295faa505bb11bacece661ab6f4028d57c935db57820b7a3e4'
             'fe43c158555da46723b28b52e058ad444195afd1db3ca7720c59a254544e9c20'
