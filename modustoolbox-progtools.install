@@ -1,13 +1,23 @@
-post_install() {
-    echo "Running post-install/upgrade script..."
-
-    # Define product location as the parent to resources folder
-    PRODUCT_HOME="/opt/ModusToolboxProgtools-1.9"
-
-    # Find and install udev rules scripts 
-    find "${PRODUCT_HOME}" -type f -name "install_rules.sh" -executable -exec sed -i '/\bsudo service udev restart\b/s/^/# /' {} \; -exec {} \;
-}
-
 post_upgrade() {
-    post_install
+    local expected name rule checksum
+    # Old packages copied these rules outside pacman's file ownership.
+    while read -r expected name; do
+        rule="/etc/udev/rules.d/$name"
+        if [[ -f "$rule" && ! -L "$rule" ]]; then
+            checksum=$(sha256sum -- "$rule")
+            if [[ "$checksum" == "$expected "* ]]; then
+                rm -- "$rule"
+            else
+                printf 'ModusToolbox: preserved customized rule %s; review it before reconnecting probes.\n' "$rule"
+            fi
+        elif [[ -e "$rule" || -L "$rule" ]]; then
+            printf 'ModusToolbox: preserved non-regular rule %s; review it before reconnecting probes.\n' "$rule"
+        fi
+    done <<'RULES'
+6354b202cc06220a913f25a20995ecbd087f6e358f5f3db3496a8665a5df079f 67-mtb-tty.rules
+8de30300260113d7516cb509c450e17152c432e68c05b87a3f38d166bf0eb3d9 57-cypress_programmer.rules
+a7f58504d7fcd1411a2aef87aaf4dd3ce453a6298736a8276f6990ae3dbc5864 70-wiced-JTAG.rules
+751937c036f8ef7ed3b45b24af9e0f321206a516d8e2b902970dde30d9e6b139 60-openocd.rules
+8f14ef44c6b3811c9db885f387fcfc08b0993e64f6e3807c8052483817e0889a 66-wiced-JTAG.rules
+RULES
 }
