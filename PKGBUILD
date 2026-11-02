@@ -1,7 +1,7 @@
 # Maintainer: fr0stb1rd <fr0stb1rd@proton.me>
 pkgname=ruvio-bin
 _name=ruvio
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Rust key-value server speaking RESP2 (Redis-compatible), prebuilt binaries'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=("${_name}-${pkgver}-linux-arm64.tar.gz::${_rel}/${_name}-${pkgve
 sha256sums=('7edf8e9feb904d38698570af31e9d15045a44db30b6ba8c2ddcd080b0b4244f3'
             'a725acd34d0218a74128582afee86c26c4da2a2e37442c00e918df5d06623e02'
             '1b4cee9fa4f43fb71fa3e72bd284dc14146febb68a4fc490428c21a925d3195e')
-sha256sums_x86_64=('c07e7345f68b702659c1720453145ce185e23975e25d889c264e0e6353c2c227')
-sha256sums_aarch64=('ea205da19eb564f80352d37922f93553f0800662744ef3e465114b015e4e4cd8')
+sha256sums_x86_64=('400cec7a2a003a6cda810bc2bf4405e57f6654afa161cae815908c2d1d76280a')
+sha256sums_aarch64=('f7d0fe9730947cba959e95b97ce5ababc5b2fe111804f472702192cb694f54ad')
 
 package() {
   case "$CARCH" in
