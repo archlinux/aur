@@ -7,7 +7,7 @@
 _productVariant=Germany
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=2
+pkgrel=1
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -24,6 +24,7 @@ _scriptTailMd5sums[8.0]=e53bd9e7beabb2eb1c6857bea61ccdde
 _scriptTailMd5sums[8.0a]=6efd0d054bdaf2ab91f1cd606cd98233
 _scriptTailMd5sums[8.1]=7fd862218f56b5382680a7d2f9006268
 _scriptTailMd5sums[8.1a]=d11ac711b0859d242fe9064c2c63deee
+_scriptTailMd5sums[8.2]=87660c7dbdbf9cd4039d663ec065b213
 
 # locale, key account, original name, latest tested version, (optional) replacement name
 # to generate parameters (and _scriptTailMd5sum) from a downloaded setup file, run:
@@ -37,7 +38,7 @@ _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.5)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
 _prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 8.0.3 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
-_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 8.1.3)
+_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 8.2.1)
 _prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 7.3.3)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
