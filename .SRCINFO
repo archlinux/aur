@@ -1,12 +1,12 @@
 pkgbase = blender-plugin-ucupaint
 	pkgdesc = Blender addon to manage texture layers for Eevee and Cycles renderer
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://extensions.blender.org/add-ons/ucupaint/
 	arch = any
 	license = GPL-3.0-only
 	depends = blender
-	source = https://github.com/ucupumar/ucupaint/releases/download/3.0.0/ucupaint-no-auto-update-3.0.0.zip
-	sha256sums = 1d96d610517bc2af68b8f1ecccbb5ee088ebbc8b1ad49056e0ec438e916c5bb6
+	source = https://github.com/ucupumar/ucupaint/releases/download/3.0.1/ucupaint-no-auto-update-3.0.1.zip
+	sha256sums = 880f3961ea7682897580f9060ff5530f5922bd4c74bedf72bafa906096afba0f
 
 pkgname = blender-plugin-ucupaint
