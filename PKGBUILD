@@ -18,12 +18,12 @@ sha256sums=('e6c12d02dc32e4d610dce33ee52ea85a54e12a563e79c4844508b6c061ff07a1'
 
 build() {
   cd "${pkgname}-${pkgname}_${pkgver//./_}"
-  USE_PGXS=1 make
+  make
 }
 
 package() {
   cd "${pkgname}-${pkgname}_${pkgver//./_}"
-  USE_PGXS=1 make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
