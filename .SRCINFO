@@ -1,6 +1,6 @@
 pkgbase = magicterm-bin
 	pkgdesc = Cross-platform SSH/SFTP client with E2E encryption
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/D3FVLT/MagicTerm
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = magicterm-bin
 	provides = magicterm
 	conflicts = magicterm
 	options = !strip
-	source = magicterm-bin-0.6.0.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v0.6.0/MagicTerm-0.6.0-x86_64.AppImage
-	sha256sums = aee757465fcae63cb09fe8d3e100e94804b8217c26efbd7d1f63ee5c568ce516
+	source = magicterm-bin-0.7.0.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v0.7.0/MagicTerm-0.7.0-x86_64.AppImage
+	sha256sums = 476296fe993cd2c427ec7b83d6c2c0efac7921aeedadcc094d5fd79fe7ce2ba9
 
 pkgname = magicterm-bin
