@@ -1,0 +1,23 @@
+pkgbase = bnetctl-git
+	pkgdesc = CLI to install, manage, and run Battle.net on Linux via Wine (git version)
+	pkgver = 1.1.0.r0.g16b1719
+	pkgrel = 1
+	url = https://git.bnema.dev/bnetctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=2:1.26.0
+	makedepends = git
+	optdepends = wine-staging: Wine runtime (>= 11.19 for Wayland)
+	optdepends = wine: alternative Wine runtime
+	optdepends = wine-cachyos-opt: fallback Wine runtime
+	optdepends = dxvk-mingw-git: Direct3D 8/9/10/11 translation to Vulkan
+	optdepends = vkd3d-proton-mingw-git: Direct3D 12 translation to Vulkan
+	optdepends = icoutils: Battle.net icon for the .desktop entry
+	provides = bnetctl
+	conflicts = bnetctl
+	conflicts = bnetctl-bin
+	source = git+https://git.bnema.dev/bnetctl.git
+	sha256sums = SKIP
+
+pkgname = bnetctl-git
