@@ -13,14 +13,19 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('bdac90076df07368f91e8ed7d474ba5be3e887725baed1ef4e9bf3352a70c8cd')
 
+prepare() {
+	cd "$pkgname-$pkgver"
+	cargo fetch --locked --target host-tuple
+}
+
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release
+	cargo build --frozen --release
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	cargo test --release
+	cargo test --frozen --release
 }
 
 package() {
