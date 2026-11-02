@@ -2,7 +2,7 @@
 
 pkgname=learnharness-bin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent harness for adaptive teaching, practice, and a knowledge graph"
 arch=('x86_64')
 url="https://learnharness.ai/"
@@ -64,13 +64,14 @@ package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}"
 
   # Arch is glibc-only; drop any bundled musl build (upstream shipped it in
-  # 0.3.7 and removed it in 0.4.1, so this stays as a guard) and the
-  # non-English Electron locales from this English-only application.
+  # 0.3.7 and removed it in 0.4.1, so this stays as a guard).
   rm -rf \
     "${standalone}/node_modules/@img/sharp-linuxmusl-x64" \
     "${standalone}/node_modules/@img/sharp-libvips-linuxmusl-x64"
-  find "${pkgdir}/opt/LearnHarness/locales" -type f \
-    ! -name 'en-US.pak' ! -name 'en-GB.pak' -delete
+
+  # Electron locales ship intact on purpose: they are only ~1.9 MB compressed,
+  # and Chromium's own UI (context menus, dialogs, PDF viewer) follows the user's
+  # language. Never prune them -- a missing en-US.pak is a hard startup failure.
 
   # Pacman owns upgrades. Patch the shell so it does not download or attempt to
   # install upstream Debian packages, then remove the now-unused update feed.
