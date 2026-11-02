@@ -1,9 +1,9 @@
 # Maintainer: puddings233 <puddings233 at outlook dot com>
 #
-_build_hash='g8218e29-178'
+_build_hash='g1d342ff-179'
 pkgname='hachimi-world-bin'
-pkgver='1.5.0'
-pkgrel=3
+pkgver='1.6.0'
+pkgrel=4
 pkgdesc='A community-driven open-source meme culture music community, bin version.'
 arch=('x86_64')
 depends=('hicolor-icon-theme')
@@ -14,7 +14,7 @@ source=(
   "hachimi_world.desktop"
 )
 sha256sums=(
-  'a4f3d1b65dfd38d646c02123ea8dac0c7f48bc21031438ff3bfe85ce48bf28d2'
+  '14eb2a8069870447ee3371b8c5cbf2ee1400cfb38d15100bcbb534132c9259a5'
   '6b0f18a105b54197adfd13cc762c93485d538ec2fcc5830cdc1f1b4ee493efc9'
 )
 
