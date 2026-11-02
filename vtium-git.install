@@ -1,0 +1,47 @@
+# Messages pacman shows after vtium-git is installed, upgraded or removed.
+# Nothing here starts, stops, restarts, enables or disables a unit: a restart
+# hangs up every session on that VT, so a new build takes effect at each VT's
+# next start, and which VTs run vtium is the user's choice.
+
+_vtium_enable() {
+  cat <<'EOF'
+==> vtium runs on a VT only where you enable it. For VT 3:
+      sudo systemctl enable --now vtium@tty3.service
+    That starts vtium on VT 3 in place of its getty, at every boot, and links
+    autovt@tty3 to vtium@ so logind starts vtium there. Ctrl-Alt-F3 shows it.
+    To take VT 3 back, log out there, then:
+      sudo systemctl disable --now vtium@tty3.service
+      sudo rm /etc/systemd/system/autovt@tty3.service
+    disable leaves the autovt@tty3 link that enable made, so it goes by hand.
+EOF
+}
+
+post_install() {
+  _vtium_enable
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> vtium was upgraded, and no running vtium was restarted: a restart hangs up
+    every session on its VT. Each VT runs the new build from its next start,
+    at a reboot or when you restart it on purpose. For VT 3, after logging out
+    there:
+      sudo systemctl restart vtium@tty3.service
+EOF
+  _vtium_enable
+}
+
+post_remove() {
+  # The links that enabling vtium@ttyN made outlive the package and now point
+  # at nothing; this names each one and changes nothing.
+  local l left=
+  for l in /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
+    [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] || continue
+    left+="      sudo rm $l"$'\n'
+  done
+  [ -n "$left" ] || return 0
+  printf '%s\n' "==> vtium is removed, but these links to vtium@.service are left and point at"
+  printf '%s\n' "    nothing, so logind would start nothing on those VTs. Remove them:"
+  printf '%s' "$left"
+  printf '%s\n' "      sudo systemctl daemon-reload"
+}
