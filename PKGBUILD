@@ -1,7 +1,7 @@
 # Maintainer: xTom <packages@xtom.com>
 # Maintainer: Xiufeng Guo <i@m.ac>
 pkgname=rdap
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="RDAP (Registration Data Access Protocol) client and API server"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ backup=('etc/default/rdap')
 makedepends=('cargo' 'cmake')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xtomcom/rdap/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('de751363b9bd5df31fbf3b12e64daf7d9283858e0888a713a172dda6804b6c3c')
+sha256sums=('8346ff09e6c7b88030523fb410153451de06c7ae1bd023c3122ea819047f647c')
 
 prepare() {
     cd "$pkgname-$pkgver"
