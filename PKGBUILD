@@ -2,7 +2,7 @@
 # riptide-browser: built from the release tag, against the CEF build its cef crate pins.
 # The versions and checksum are updated at each release.
 pkgname=riptide-browser
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 _cef=156.0.15+gcf671c0+chromium-156.0.8078.80
 pkgdesc="Keyboard-driven web browser with vim-like bindings, built on CEF"
