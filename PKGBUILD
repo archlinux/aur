@@ -46,6 +46,4 @@ package() {
 
   install -d "${pkgdir}/etc/mpv/scripts"
   ln -s "/usr/lib/node_modules/${pkgname}/build/webtorrent.js" "${pkgdir}/etc/mpv/scripts/webtorrent.js"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/usr/lib/node_modules/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
