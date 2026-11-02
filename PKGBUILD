@@ -4,7 +4,7 @@
 # Contributor:  Jan de Groot <jan@archlinux.org>
 
 pkgname=cinnamon-desktop-git
-pkgver=6.7.6.unstable.r3.g3f88858
+pkgver=6.8.0.r0.g4f797bc
 pkgrel=1
 pkgdesc="Library with common API for various Cinnamon modules"
 arch=('i686' 'x86_64')
