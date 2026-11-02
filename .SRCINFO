@@ -1,6 +1,6 @@
 pkgbase = emaki
 	pkgdesc = An agentic development environment
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/alkaline-software/emaki
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = emaki
 	conflicts = emaki-bin
 	options = !lto
 	options = !debug
-	source = emaki-0.4.2.tar.gz::https://github.com/alkaline-software/emaki/archive/v0.4.2.tar.gz
-	sha512sums = f3dd171df624de1d485942a5490818453da0af5aa9b206383a32edd65c53c8b1023f781cf575543be16320cdebad120f13bf82c85485ea3be391870cfe9ef4d4
+	source = emaki-0.4.3.tar.gz::https://github.com/alkaline-software/emaki/archive/v0.4.3.tar.gz
+	sha512sums = 6e9dfa43fd97869654e92d2ba4af06c2258d7cf5b94eee193cd4782b47ac47b1344d3d497c545287a66eed5123063ed3c14b76b766d69cbbe9e1028e0acc4c86
 
 pkgname = emaki
