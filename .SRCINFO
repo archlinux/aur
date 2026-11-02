@@ -1,7 +1,7 @@
 pkgbase = chromium-extension-locals-git
 	pkgdesc = Chromium (MV3) extension that serves popular JS libraries, styles and fonts from a local copy instead of CDNs; learns from usage. Loaded unpacked
 	pkgver = r0.0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaou-piou/locals
 	install = locals.install
 	arch = any

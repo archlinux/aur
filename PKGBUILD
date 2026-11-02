@@ -3,7 +3,7 @@
 pkgname=chromium-extension-locals-git
 _pkgname=locals
 pkgver=r0.0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='Chromium (MV3) extension that serves popular JS libraries, styles and fonts from a local copy instead of CDNs; learns from usage. Loaded unpacked'
 arch=('any')
 url='https://github.com/gaou-piou/locals'
@@ -54,12 +54,12 @@ check() {
 
 package() {
   cd "$_pkgname"
-  install -d "$pkgdir/usr/share/$_pkgname"
-  cp -r dist/. "$pkgdir/usr/share/$_pkgname/"
+  install -d "$pkgdir/usr/share/$pkgname"
+  cp -r dist/. "$pkgdir/usr/share/$pkgname/"
   # Chromium writes _metadata/ into every unpacked extension it loads
-  rm -rf "$pkgdir/usr/share/$_pkgname/_metadata"
-  find "$pkgdir/usr/share/$_pkgname" -type d -exec chmod 755 {} +
-  find "$pkgdir/usr/share/$_pkgname" -type f -exec chmod 644 {} +
+  rm -rf "$pkgdir/usr/share/$pkgname/_metadata"
+  find "$pkgdir/usr/share/$pkgname" -type d -exec chmod 755 {} +
+  find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} +
   install -Dm755 packaging/aur/locals-install "$pkgdir/usr/bin/locals-install"
   install -Dm755 packaging/aur/locals-learn.cjs "$pkgdir/usr/bin/locals-learn"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

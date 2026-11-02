@@ -1,7 +1,7 @@
 post_install() {
   cat <<MSG
 ==> locals is an unpacked extension. Chromium writes into an unpacked extension's folder,
-    so it cannot be loaded from the read-only /usr/share/locals. Make a user copy first:
+    so it cannot be loaded from the read-only /usr/share/chromium-extension-locals-git. Make a user copy first:
       1. run:  locals-install        (prints the folder, ~/.local/share/locals)
       2. open chrome://extensions (or brave://extensions) and turn on "Developer mode"
       3. "Load unpacked" and pick that folder
