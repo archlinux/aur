@@ -1,6 +1,6 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 pkgname=gemini-web2api-go-bin
-pkgver=4.26.0
+pkgver=4.27.0
 pkgrel=1
 pkgdesc="Self-hosted OpenAI-compatible proxy for the Gemini web app (no API key needed), prebuilt binary"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_aarch64=(
     "gemini-web2api-go::https://github.com/zexadev/gemini-web2api-go/releases/download/v${pkgver}/gemini-web2api-go_v${pkgver}_linux_arm64"
 )
 
-sha256sums_x86_64=('2c0c4cb73989a34ca76a9e75c79e0e8684c6d7abc58231c65ef1eca4c411be81')
-sha256sums_aarch64=('5518a5f055e025b118d327b361f8c9f81df319132ed5e064eea191bbe129a50a')
+sha256sums_x86_64=('5320ff87c6158b648c074b9ae6c700a75b672c8f7119b62e6f22b034e970cfca')
+sha256sums_aarch64=('66392aa8c67151ead0f5e2baa1f686e97754f8cc54b856e3605ae1e26633af01')
 
 source=(
     "gemini-web2api-go.service"
