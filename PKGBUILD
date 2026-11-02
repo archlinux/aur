@@ -1,7 +1,7 @@
 # Maintainer: Karthik Jayakumar <valliyilkarthik@gmail.com>
 
 pkgname=qsc-cli
-pkgver=1.28.3
+pkgver=1.32.1
 pkgrel=1
 pkgdesc="Qualcomm Software Center CLI, with QIK and the QSC desktop app"
 arch=('x86_64')
@@ -64,7 +64,7 @@ source=("$pkgname-$pkgver.deb::https://softwarecenter.qualcomm.com/api/download/
         LICENSE.Qualcomm
         $pkgname.tmpfiles)
 noextract=("$pkgname-$pkgver.deb")
-sha256sums=('b53377df60621c9660a42f1e91f0b3d1453002a59c43cbd9976cacadc6dfa95b'
+sha256sums=('eb74ccc4bf1978d8c888db3b94bc48dafd3d20050bb3b5748aff673f94422d3a'
             '5a3947b37a2f86749407785914abca3d1befcecb3a45d3767e2e41cdcb33af8c'
             'deb6336a82682c896075aa383ba0cb7bd99c3318624c96ad9eaf67f4ce38295b')
 
@@ -72,11 +72,18 @@ _bin=/opt/qcom/softwarecenter/bin
 _deps=/opt/qcom/tools-common/libs/system-deps  # RUNPATH of the bundled libs
 
 # Replace one exact byte string with another of the same length, so offsets
-# inside single-file executables stay valid
+# inside single-file executables stay valid. @ stands for a minified JS name,
+# which changes between releases; it must be the same name at every @.
 _patch_bytes() {
   perl -0777 -pi -e '
-    BEGIN { ($o, $n) = splice @ARGV, 0, 2; length($o) == length($n) or die "length mismatch\n" }
-    ($c = s/\Q$o\E/$n/g) == 1 or die "expected 1 match, found " . ($c || 0) . "\n";
+    BEGIN {
+      ($o, $n) = splice @ARGV, 0, 2;
+      length($o) == length($n) && $o =~ tr/@// == $n =~ tr/@// or die "length mismatch\n";
+      ($re = quotemeta $o) =~ s/\\\@/(?<id>[\\w\$]+)/;
+      $re =~ s/\\\@/\\k<id>/g;
+    }
+    ($c = s/$re/my $id = $+{id}; $n =~ s{\@}{$id}gr/ge) == 1
+      or die "expected 1 match, found " . ($c || 0) . "\n";
   ' "$2" "$3" "$1"
 }
 
@@ -98,10 +105,11 @@ prepare() {
   # (even --version) and the desktop app's server throw at startup. Fall back to
   # "", which makes them leave the host OS filter out of backend queries.
   # qsc-cli is a Node SEA binary, so its embedded JS is patched in place; the
-  # shorter quote-stripping regex makes room for the fallback.
+  # shorter quote-stripping regex makes room for the fallback. @ is the parsed
+  # os-release map.
   _patch_bytes qsc-cli/qsc-cli \
-    'distribution:t.get("NAME").replace(/^"|"$/g,""),version:t.get("VERSION_ID").replace(/^"|"$/g,"")' \
-    'distribution:t.get("NAME").replace(/"/g,""),version:(t.get("VERSION_ID")||"").replace(/"/g,"")  '
+    'distribution:@.get("NAME").replace(/^"|"$/g,""),version:@.get("VERSION_ID").replace(/^"|"$/g,"")' \
+    'distribution:@.get("NAME").replace(/"/g,""),version:(@.get("VERSION_ID")||"").replace(/"/g,"")  '
   sed -i 's/osReleaseInfoMap\.get("VERSION_ID")\.replace/(osReleaseInfoMap.get("VERSION_ID") || "").replace/' \
     resources/app/dist/start-server.js
   if grep -q 'version: osReleaseInfoMap\.get("VERSION_ID")' resources/app/dist/start-server.js; then
@@ -109,16 +117,21 @@ prepare() {
     return 1
   fi
 
-  # qik's RUNPATH starts with /tmp/qikv3sfx, where any local user could plant
-  # libraries that load when qik runs as root. Drop it; the shorter RUNPATH is
-  # rewritten in place, which keeps the .NET single-file bundle intact.
-  local _size
-  _size=$(stat -c %s qik/qik)
-  patchelf --set-rpath /opt/qcom/tools-common/libs/openssl3.0.0:$_deps/ qik/qik
-  if [[ $(stat -c %s qik/qik) != "$_size" ]]; then
-    error "patchelf resized qik"
-    return 1
-  fi
+  # qik's RUNPATH starts with /tmp/qikv3sfx, and that of libTokenManager.so,
+  # which qik loads, ends with the build machine's /home/.../.conan2 cache:
+  # places a local user could plant libraries that load when qik runs as root.
+  # Keep only the /opt/qcom entries; the shorter RUNPATH is rewritten in place,
+  # which keeps qik's .NET single-file bundle intact.
+  local _f _rpath _size
+  for _f in qik/qik qik/libTokenManager.so; do
+    _rpath=$(patchelf --print-rpath "$_f" | tr : '\n' | grep '^/opt/qcom/' | paste -sd :)
+    _size=$(stat -c %s "$_f")
+    patchelf --set-rpath "$_rpath" "$_f"
+    if [[ $(stat -c %s "$_f") != "$_size" ]]; then
+      error "patchelf resized $_f"
+      return 1
+    fi
+  done
 }
 
 build() {

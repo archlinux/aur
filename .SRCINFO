@@ -1,6 +1,6 @@
 pkgbase = qsc-cli
 	pkgdesc = Qualcomm Software Center CLI, with QIK and the QSC desktop app
-	pkgver = 1.28.3
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://softwarecenter.qualcomm.com/
 	install = qsc-cli.install
@@ -56,13 +56,13 @@ pkgbase = qsc-cli
 	optdepends = unzip: unpacking downloaded builds
 	conflicts = qualcomm-software-center
 	conflicts = qualcommsoftwarecenter
-	noextract = qsc-cli-1.28.3.deb
+	noextract = qsc-cli-1.32.1.deb
 	options = !strip
 	options = !debug
-	source = qsc-cli-1.28.3.deb::https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcomm_Software_Center/Linux/Debian/1.28.3/QualcommSoftwareCenter1.28.3.Linux-x86.deb
+	source = qsc-cli-1.32.1.deb::https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcomm_Software_Center/Linux/Debian/1.32.1/QualcommSoftwareCenter1.32.1.Linux-x86.deb
 	source = LICENSE.Qualcomm
 	source = qsc-cli.tmpfiles
-	sha256sums = b53377df60621c9660a42f1e91f0b3d1453002a59c43cbd9976cacadc6dfa95b
+	sha256sums = eb74ccc4bf1978d8c888db3b94bc48dafd3d20050bb3b5748aff673f94422d3a
 	sha256sums = 5a3947b37a2f86749407785914abca3d1befcecb3a45d3767e2e41cdcb33af8c
 	sha256sums = deb6336a82682c896075aa383ba0cb7bd99c3318624c96ad9eaf67f4ce38295b
 
