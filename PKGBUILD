@@ -1,10 +1,11 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 # Repackages the official self-contained build (PyInstaller bundle:
 # its own Python + numpy/scipy/pyrtlsdrlib + web UI in /opt/falconsdr),
-# so no Python packaging is involved on the Arch side. RTL-SDR only;
-# SoapySDR hardware needs a source install (see upstream README).
+# so no Python packaging is involved on the Arch side. RTL-SDR plus
+# HackRF/Airspy via bundled native libs (no SoapySDR); other SoapySDR
+# hardware needs a source install (see upstream README).
 pkgname=falconsdr
-pkgver=0.9.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Wideband SDR ATC/radio scanner - records only the transmissions it stops on"
 arch=('x86_64')
@@ -15,7 +16,7 @@ optdepends=('ffmpeg: MP3 recording output (system binary preferred, bundled fall
 conflicts=('smartscanatc')
 provides=('falconsdr')
 source=("https://github.com/rafafunt/FalconSDR/releases/download/v${pkgver}/falconsdr_${pkgver}_amd64.deb")
-sha256sums=('36842975a8de0835b69753b0030bc63397692f0d8bd762ec7c966c639d63d0a5')
+sha256sums=('4b7c3b6cb1364b404324a13b403ca1d35356c7e82355fb38efea5dbc9001a7dd')
 
 package() {
   # .deb = ar archive (debian-binary, control.tar.*, data.tar.*); bsdtar
