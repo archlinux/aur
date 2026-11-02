@@ -2,7 +2,7 @@
 
 pkgname=drmcru-bin
 _pkgname=drmcru
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Linux DRM/KMS custom resolution and EDID override utility"
 arch=('x86_64')
@@ -15,11 +15,12 @@ optdepends=(
   'polkit: pkexec authentication for automatic Apply/Uninstall'
   'mkinitcpio: initramfs integration for automatic Apply/Uninstall'
   'limine: supported bootloader for automatic Apply/Uninstall'
-  'limine-mkinitcpio: Limine entry regeneration on Omarchy-style systems'
+  'limine-mkinitcpio: supported Limine integration for automatic Apply/Uninstall'
+  'binutils: inspect UKI command lines before automatic Apply/Uninstall'
 )
 options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-musl")
-sha256sums_x86_64=('8975328c9f3da1d2e2f349dc893ea9f1261e6312e4d3d58e3de6078e8f7ab61f')
+sha256sums_x86_64=('29f9882ead6828e657b3b339eb5b14f148ddc88c659793e55e7a66f4b1145798')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
