@@ -1,6 +1,6 @@
 pkgbase = nova-bin
 	pkgdesc = A GPU-accelerated terminal emulator
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/pmqueiroz/nova
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nova-bin
 	depends = libgl
 	provides = nova
 	conflicts = nova
-	source_x86_64 = https://github.com/pmqueiroz/nova/releases/download/v1.1.1/nova_1.1.1_x86_64.AppImage
-	sha256sums_x86_64 = 597219ea45f6542ede7230d636b462c32ff385c95d13ac4ad33edb6d797c9f75
+	source_x86_64 = https://github.com/pmqueiroz/nova/releases/download/v1.2.0/nova_1.2.0_x86_64.AppImage
+	sha256sums_x86_64 = e52cd32321abec632b0e9ea1d8afd3b5a9814bd8fe355fde0eb408b4a040367f
 
 pkgname = nova-bin
