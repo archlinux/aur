@@ -1,12 +1,13 @@
 pkgbase = sngrep-bin
-	pkgdesc = A tool for displaying SIP call message flows from a terminal
+	pkgdesc = A tool for displaying SIP call message flows from a terminal (prebuilt)
 	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/irontec/sngrep
 	install = sngrep-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	provides = sngrep
+	depends = ncurses
+	provides = sngrep=1.9.0
 	conflicts = sngrep
 	backup = etc/sngreprc
 	source = sngrep-1.9.0-README.md::https://github.com/irontec/sngrep/raw/refs/tags/v1.9.0/README

@@ -5,11 +5,12 @@ _pkgname="sngrep"
 pkgname="${_pkgname}-bin"
 pkgver=1.9.0
 pkgrel=1
-pkgdesc="A tool for displaying SIP call message flows from a terminal"
+pkgdesc="A tool for displaying SIP call message flows from a terminal (prebuilt)"
 arch=('x86_64')
 url="https://github.com/irontec/${_pkgname}"
 license=('GPL-3.0-or-later')
-provides=("${_pkgname}")
+depends=('ncurses')
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}rc")
 install="${pkgname}.install"
