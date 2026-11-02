@@ -1,0 +1,18 @@
+pkgbase = liquid-glass-git
+	pkgdesc = Physical liquid glass & optical lensing UI engine for Linux & Wayland (WGPU + WGSL)
+	pkgver = 0.1.0.r54.gc12f6a8
+	pkgrel = 1
+	url = https://github.com/ziuus/liquid-glass
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = vulkan-icd-loader
+	depends = wayland
+	provides = liquid-glass
+	conflicts = liquid-glass
+	source = git+https://github.com/ziuus/liquid-glass.git
+	sha256sums = SKIP
+
+pkgname = liquid-glass-git
