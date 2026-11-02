@@ -3,7 +3,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=mdbook-git
-pkgver=0.5.4.r132.gebb4f09
+pkgver=0.5.4.r134.g7fb5bc8
 pkgrel=1
 pkgdesc="Create book from markdown files, like Gitbook but implemented in Rust (git version)"
 url="https://github.com/rust-lang/mdBook"
