@@ -1,7 +1,7 @@
 # Maintainer: lucaszhou007 <lucaszhou007@163.com>
 pkgname=les11-mc-dx-overtemp-shutdown
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shut the system down when any LES11-MC-Dx USB temperature probe exceeds a configured maximum"
 arch=('any')
 license=('0BSD')

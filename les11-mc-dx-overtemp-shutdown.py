@@ -137,13 +137,12 @@ def main():
     level = getattr(logging, str(cfg["log_level"]).upper(), logging.INFO)
     logging.basicConfig(level=level, format="%(asctime)s %(levelname)s %(message)s")
 
-    devices = resolve_devices(cfg["devices"])
     max_t = float(cfg["max_temp_c"])
     hold = int(cfg["hold_readings"])
     ignore = set(cfg["ignore_channels"])
     action = shlex.split(str(cfg["shutdown_command"]))
-    log.info("config=%s devices=%s max_temp_c=%.1f hold_readings=%d action=%s dry_run=%s",
-             args.config, devices, max_t, hold, cfg["shutdown_command"], args.dry_run)
+    log.info("config=%s max_temp_c=%.1f hold_readings=%d action=%s dry_run=%s",
+             args.config, max_t, hold, cfg["shutdown_command"], args.dry_run)
 
     consecutive = {}          # (device, channel) -> run length above threshold
     triggered = set()         # (device, channel) already acted on
@@ -165,6 +164,19 @@ def main():
         last_shutdown = time.monotonic()
 
     while True:
+        # Re-resolve devices every cycle: the /dev/ttyUSB* number is NOT stable
+        # across reboots or USB re-enumeration, so re-key off the CH340 USB
+        # vendor id freshly each time and keep running if the probe is momentarily
+        # absent (the post-reboot window before it finishes enumerating, a re-plug,
+        # or a reset that re-registers it under a new number).
+        try:
+            devices = resolve_devices(cfg["devices"])
+        except SystemExit as exc:
+            if args.once:
+                raise
+            log.warning("%s; retrying in %.0fs", exc, max(cfg["poll_interval_s"], 1.0))
+            time.sleep(max(cfg["poll_interval_s"], 1.0))
+            continue
         for device in devices:
             try:
                 port = serial.Serial(device, int(cfg["baud"]), timeout=1)
