@@ -1,6 +1,6 @@
 pkgname=axonhub-bin
-_realver="1.0.0-beta11"
-pkgver="1.0.0_beta11"
+_realver="1.0.0-beta12"
+pkgver="1.0.0_beta12"
 pkgrel=1
 pkgdesc='Open-source AI Gateway — Use any SDK to call 100+ LLMs. Built-in failover, load balancing, cost control and end-to-end tracing.'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ _triple_aarch64="linux_arm64"
 source_x86_64=("axonhub-${_realver}-linux_amd64.zip::https://github.com/looplj/axonhub/releases/download/v${_realver}/axonhub_${_realver}_linux_amd64.zip")
 source_aarch64=("axonhub-${_realver}-linux_arm64.zip::https://github.com/looplj/axonhub/releases/download/v${_realver}/axonhub_${_realver}_linux_arm64.zip")
 
-sha256sums_x86_64=('f4bc60c868d794d476e5854eb6352ca1eaf284fd031c529feb60b14e4eaf81c4')
-sha256sums_aarch64=('aa302891e14e557a3abe41cb6b3cc99126d4829699d1fe16c898e961aa682df8')
+sha256sums_x86_64=('c8fc15e61fb95314b7106a43d9d14cce314fefbbb7848b042892db94ac834d4a')
+sha256sums_aarch64=('8b21b387cb785d0c45fd4d153e711c6a80892d414e5f342101feb688aea589a4')
 
 package() {
   local _triple
