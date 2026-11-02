@@ -2,7 +2,7 @@
 
 pkgname=dsh-tauri-desktop-bin
 # 跟随上游稳定版升级，打包发行号从 1 重新开始。
-pkgver=0.25.2
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Native desktop application for DeepSeek Harness (official binary)'
 arch=('x86_64')
@@ -10,6 +10,23 @@ url='https://github.com/dsh-tauri/deepseek-harness-desktop'
 # 上游的附加条款限制商业二次开发，不能仅标注为 MIT。
 license=('LicenseRef-MIT-with-additional-terms')
 depends=(
+  # 0.30.0 内置 Electron，补齐其 ELF 直接依赖，避免仅宿主程序能够启动。
+  'alsa-lib'
+  'at-spi2-core'
+  'expat'
+  'libcups'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
+  'systemd-libs'
   'ca-certificates'
   'cairo'
   'dbus'
@@ -34,7 +51,7 @@ optdepends=(
   'git: Git integration and workspace operations'
   'xdg-desktop-portal: Native directory selection (requires a desktop-specific backend)'
 )
-# Electron 版是不同应用，仅声明与 Tauri 源码包等价；两者命令路径仍有冲突。
+# 0.30.0 改用 Electron，但保留原包身份；独立旧版仍因命令路径冲突而互斥。
 provides=("dsh-tauri-desktop=${pkgver}")
 conflicts=('dsh-tauri-desktop' 'deepseek-harness-desktop')
 # 保留上游二进制，避免再次剥离符号或生成无用的调试包。
@@ -49,7 +66,7 @@ sha256sums=(
 )
 source_x86_64=("${url}/releases/download/v${pkgver}/Deepseek.Harness.Desktop_${pkgver}_amd64.deb")
 # 使用当前 GitHub 发布资产公布的 SHA-256 校验预编译包。
-sha256sums_x86_64=('a0b5fbe43d158262d74e88b3d6113074d4e8de78fe39ea7c8d825ca7788bbdb3')
+sha256sums_x86_64=('1374b016b19edde4bb072adb893a27e5d1db1263f0466fd0ccf10ca2227cfdbc')
 
 # 安装官方 deb 的完整资源树，补全协议入口并收录上游许可。
 package() {
