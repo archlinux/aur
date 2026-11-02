@@ -1,0 +1,12 @@
+pkgbase = fsshield
+	pkgdesc = Limit a new process's access to the filesystem
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/fsshield
+	arch = any
+	license = custom:ISC
+	depends = libsimple
+	source = fsshield-1.0.tar.gz::https://codeberg.org/maandree/fsshield/archive/1.0.tar.gz
+	sha256sums = ce3fb7d74dd2028b0ee6284fbf55a883e347b96f6a2b974e434cf49f667904b3
+
+pkgname = fsshield
