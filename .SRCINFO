@@ -1,11 +1,20 @@
 pkgbase = brygge
-	pkgdesc = A placeholder package for brygge
-	pkgver = 0.0.0
+	pkgdesc = A VCS history to IR converter (Git, Mercurial, Subversion, CVS), built from source
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/brygge
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
-	source = brygge-0.0.0.tar.gz::https://github.com/prikk-vcs/brygge/archive/refs/tags/0.0.0.tar.gz
-	sha256sums = DUMMY-FOR-INITIALIZATION
+	checkdepends = git
+	checkdepends = mercurial
+	checkdepends = subversion
+	checkdepends = cvs
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	optdepends = subversion: decode a local SVN repository (dump files need nothing)
+	source = brygge-0.7.0.tar.gz::https://github.com/prikk-vcs/brygge/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = 912698a94be394213503ba9b896c54d059ac8f5fa8eab2a36eaef0b48bcde685
 
 pkgname = brygge
