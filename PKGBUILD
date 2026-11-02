@@ -1,4 +1,5 @@
 # Maintainer: agony <27015 at riseup dot net>
+
 pkgname=kio-s3-git
 pkgver=r513.e631628
 pkgrel=1
@@ -16,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd kio-s3
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
