@@ -1,6 +1,6 @@
 pkgbase = appmenu-gtk-module-wayland
 	pkgdesc = GTK3 global menu on plasma wayland.
-	pkgver = 26.11.02
+	pkgver = 26.11.03
 	pkgrel = 1
 	url = https://github.com/guiodic/appmenu-gtk-module-wayland
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = appmenu-gtk-module-wayland
 	makedepends = cmake
 	depends = libdbusmenu-gtk3
 	optdepends = kwayland
-	source = https://github.com/guiodic/appmenu-gtk-module-wayland/archive/refs/tags/26.11.02.tar.gz
-	sha256sums = e130147d6c1cacd46ef533ea97b1f5f5cc1133716e8e5d90881da62819ba58b0
+	source = https://github.com/guiodic/appmenu-gtk-module-wayland/archive/refs/tags/26.11.03.tar.gz
+	sha256sums = a3bd503489fb017dc77602d391ce64392dbb13c9ae19db6f7f8fd3dd0350b577
 
 pkgname = appmenu-gtk-module-wayland
