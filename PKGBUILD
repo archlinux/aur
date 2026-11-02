@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.245
+pkgver=1.4.246
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
@@ -35,9 +35,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
-sha256sums_aarch64=('5310f38e02329b1fa9ccf08cd310ef67606988e8f675741bd7087039afde2623')
-sha256sums_x86_64=('ec8dfadf046ed1dda8eae4488a748f85137aef5842bb626d93b0003a3aa6197d')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+sha256sums_aarch64=('7fdbf8ea4d3a11e2144222cdbe0b2470a54287b9645e5448fb415f27a5e1341c')
+sha256sums_x86_64=('50c157e73ce3e123a591125a81938c6e1460719c5c50796d379b445b04767065')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -49,6 +49,17 @@ _check_electron_version() {
 	[[ -z "$_v" ]] && { echo -e "\033[1;33mNote: Could not check version.\033[0m"; return; }
 	(( _v == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
+}
+_install_icons() {
+	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
+	while IFS= read -r -d '' _icon; do
+		_ext="${_icon##*.}"
+		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
+		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
+		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
+		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
+		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
+	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
 }
 prepare() {
     sed -i -e "
@@ -74,12 +85,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-		_extension="${_i##*.}"
-		_icon_path="${_i#*share/icons/}"
-		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-	done
+    _install_icons
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
