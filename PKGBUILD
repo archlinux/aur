@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
-pkgver=2026.10.2
+pkgver=2026.10.3
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ depends=(
   'libnss_nis'
   'nss'
 )
+makedepends=('desktop-file-utils')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
@@ -24,8 +25,8 @@ source_x86_64=("https://github.com/bitwarden/clients/releases/download/desktop-v
 source_aarch64=("https://github.com/bitwarden/clients/releases/download/desktop-v$pkgver/${pkgname%-bin}_${pkgver}_arm64.tar.gz")
 noextract=("${pkgname%-bin}_${pkgver}_arm64.tar.gz")
 sha256sums=('685a3279ba62b5ea90ec279b57644da747c4a83dcb67fd41bac3c25420dbb642')
-sha256sums_x86_64=('72c9ff6c45b8c8d803a4e4102f2884d6f579f329801a8953921c118737d92bc0')
-sha256sums_aarch64=('ea6e243acfcabb085f6cb339608f6eb40d2e74f62b9ea1b7bac08b93e0586ee4')
+sha256sums_x86_64=('4b393534053de502b2a7b2e730a1774fa811352e10b5ecae67d1ba3a7301c89d')
+sha256sums_aarch64=('c692b01d510de3a08cef50a082551eaddbab22a0dabf5762ccf7a13ddbc6cd25')
 
 package() {
   if [ "${CARCH}" == "aarch64" ]; then
