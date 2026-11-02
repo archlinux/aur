@@ -1,7 +1,7 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
 pkgver=0.17.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kvunoff/whoisthat"
@@ -13,6 +13,8 @@ optdepends=(
     'polkit: pkexec-based capability setup from the TUI'
     'xray: system Xray-core binary (managed runtime used automatically if absent)'
 )
+# The prebuilt package installs the same files; never allow both.
+conflicts=('whoisthat-bin')
 install=whoisthat.install
 # ring (pulled in by rustls/ureq) ships precompiled assembly archives. Arch's
 # makepkg injects -flto=auto into CFLAGS/CXXFLAGS/LDFLAGS for the `lto` option;
