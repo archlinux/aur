@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=memos-bin
-pkgver=0.31.0
-pkgrel=2
+pkgver=26.11.0
+pkgrel=1
 pkgdesc="Privacy-first, lightweight note-taking service (prebuilt)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/usememos/memos"
@@ -10,10 +10,10 @@ provides=('memos')
 conflicts=('memos' 'memos-git')
 install=$pkgname.install
 backup=('etc/memos.conf')
-source_x86_64=("https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_arm64.tar.gz")
-source_armv7h=("https://github.com/usememos/memos/releases/download/v${pkgver}/memos_${pkgver}_linux_armv7.tar.gz")
-source=("memos-${pkgver}-LICENSE::https://raw.githubusercontent.com/usememos/memos/v${pkgver}/LICENSE"
+source_x86_64=("https://github.com/usememos/memos/releases/download/${pkgver}/memos_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/usememos/memos/releases/download/${pkgver}/memos_${pkgver}_linux_arm64.tar.gz")
+source_armv7h=("https://github.com/usememos/memos/releases/download/${pkgver}/memos_${pkgver}_linux_armv7.tar.gz")
+source=("memos-${pkgver}-LICENSE::https://raw.githubusercontent.com/usememos/memos/${pkgver}/LICENSE"
         "memos.service"
         "memos-sysusers.conf"
         "memos-tmpfiles.conf"
@@ -23,9 +23,9 @@ sha256sums=('dadc85262cec40d1344736b57da50814194ff721ab98012c09cd9d35c4b8582a'
             'eaf0d053c5673176c730085493db4d63b15e212e101fc02c9f9236f8f91abf20'
             'ed17b9db8aadd8518a3da01e45b5445a819bdb0f7ccd8bc1acc9f52cc02964fc'
             '0e0b2a4e83ecb837055a59ee19c869586b2c74abeaa3b7a43fff95c19bd34e4d')
-sha256sums_x86_64=('d99bf9de5e947cd41f7f1ae59e1e97d9af933d1bcc2d1316b3ab1ffe0a69e5c0')
-sha256sums_aarch64=('97489ad1dd669cf63cda411f670ad0c5669148562a27364cb9e54e7ee79e9d4b')
-sha256sums_armv7h=('5bf0c71d9e85914532a3bbc59e5a9b2dc481bd75bf777f5aef3ace9cbaa4b436')
+sha256sums_x86_64=('38b81c2bd1859555f4f7f277756541fd1ca332c94bbbee443626ace42d7b4061')
+sha256sums_aarch64=('1575ed41ce1f668a2e70b50f73c95d2f1b04605db83d4529b8914358b394145e')
+sha256sums_armv7h=('be0514dabd5b4ef311c85d1e918602d9f4b34bd7d50505b5593e411c2e2dd68a')
 
 package() {
   install -Dm755 memos "$pkgdir/usr/bin/memos"
