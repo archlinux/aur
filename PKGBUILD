@@ -4,7 +4,7 @@
 pkgname=nbdkit-git
 _pkgname=nbdkit
 pkgver=r4338.87172574
-pkgrel=2
+pkgrel=3
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
@@ -24,9 +24,6 @@ optdepends=(
   'curl'
   'libguestfs'
   'libssh'
-
-  'libtorrent-rasterbar: for libtorrent support'
-  'boost: for libtorrent support'
 
   'libselinux'
 )
@@ -53,12 +50,10 @@ build() {
 
   autoreconf -i
 
-  # libtorrent requires boost as a build dependency
-  if ! pacman -Qi boost >/dev/null 2>&1; then
-    LIBTORRENT_ARGS=--disable-torrent
-  fi
-
-  ./configure --prefix=/usr --sbindir=/usr/bin $LIBTORRENT_ARGS
+  # The torrent plugin does not build with libtorrent-rasterbar 2.1
+  # (int -> libtorrent::file_index_t), so it is disabled until fixed upstream:
+  # https://gitlab.com/nbdkit/nbdkit/-/work_items/33
+  ./configure --prefix=/usr --sbindir=/usr/bin --disable-torrent
   make
 }
 

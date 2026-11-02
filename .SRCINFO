@@ -1,7 +1,7 @@
 pkgbase = nbdkit-git
 	pkgdesc = NBD server toolkit
 	pkgver = r4338.87172574
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/nbdkit/nbdkit/
 	arch = x86_64
 	license = custom: BSD
@@ -19,8 +19,6 @@ pkgbase = nbdkit-git
 	optdepends = curl
 	optdepends = libguestfs
 	optdepends = libssh
-	optdepends = libtorrent-rasterbar: for libtorrent support
-	optdepends = boost: for libtorrent support
 	optdepends = libselinux
 	provides = nbdkit-git
 	conflicts = nbdkit
