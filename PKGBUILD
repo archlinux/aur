@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=halley
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0db6a7636d2edd9b36121b5afd2e98f1190952efc8a441bdd477dadb10358225')
+sha256sums=('c498741052c6283d20f08da3f402a76b9855e34985cbb084cf6b8d90be61a99f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
