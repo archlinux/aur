@@ -1,6 +1,6 @@
 pkgbase = python-xknx
 	pkgdesc = An Asynchronous Library for the KNX protocol
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/XKNX/xknx
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-xknx
 	depends = python-cryptography>=35.0.0
 	depends = python-ifaddr>=0.1.7
 	optdepends = python-typing_extensions: required for Python < 3.13
-	source = python-xknx-4.0.0.tar.gz::https://github.com/XKNX/xknx/archive/refs/tags/4.0.0.tar.gz
-	sha256sums = d968548f9dd0a820535905e3ccbb7b37ada76fefc3109920f8fde05bba2b1f6a
+	source = python-xknx-4.1.0.tar.gz::https://github.com/XKNX/xknx/archive/refs/tags/4.1.0.tar.gz
+	sha256sums = 83db49f8747c9255724986be8c42c8faa4938f26231bed14384ee95ef963f227
 
 pkgname = python-xknx
