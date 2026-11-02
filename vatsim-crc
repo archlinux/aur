@@ -56,10 +56,6 @@ protonUpdate() {
   notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
   echo "PROTONPATH=$PROTONPATH"
 
-  ln -svf $SAVES $WINEPREFIX/drive_c/$progName
-  for i in $(ls /opt/$progName); do
-    ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
-  done
   if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
     umu-run "/opt/rpc-bridge/bridge.exe" --install
   fi
@@ -73,6 +69,11 @@ protonUpdate() {
   umu-run winetricks /opt/vatsim-crc/segmdl2.verb 
   umu-run winetricks webview2
   umu-run reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
+
+  ln -svf $SAVES $WINEPREFIX/drive_c/$progName
+  for i in $(ls /opt/$progName); do
+    ln -svf /opt/$progName/$i $WINEPREFIX/drive_c/$progName/
+  done
 
   touch "$WINEPREFIX/.installed.$CURRVER"
   saveEnvs
