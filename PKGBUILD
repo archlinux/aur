@@ -8,6 +8,7 @@ pkgdesc="Slimbook service: performance-mode notifications, ppd/EC profile sync, 
 arch=('any')
 url="https://github.com/Slimbook-Team/slimbook_service"
 license=('GPL-3.0-or-later')
+changelog=CHANGELOG
 depends=('python' 'python-slimbook' 'libslimbook' 'python-gobject' 'python-dbus' 'python-evdev'
          'python-pyzmq' 'python-requests' 'python-feedparser' 'python-pyudev' 'python-dateutil'
          'gtk4' 'libadwaita' 'libnotify' 'adwaita-icon-theme' 'power-profiles-daemon')

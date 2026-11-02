@@ -1,0 +1,4 @@
+slimbook-service 1.0.16-1
+  - Initial release, built from upstream commit 2f6a2f6 (the 1.0.16 Debian
+    release without debian/). Upstream has no tags.
+  - Add optdepends on qc71-laptop-slimbook-dkms.
