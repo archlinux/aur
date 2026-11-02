@@ -8,7 +8,7 @@
 # The portal retains its own version; it does not inherit the compositor version.
 
 pkgname=xdg-desktop-portal-halley
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Native xdg-desktop-portal ScreenCast and Screenshot backend for the Halley compositor"
 arch=('x86_64')
@@ -18,10 +18,10 @@ depends=('pipewire' 'xdg-desktop-portal' 'mesa' 'libdrm')
 makedepends=('cargo' 'rust' 'pkgconf')
 optdepends=('halley: the Halley compositor this portal backend captures from')
 options=('!debug' '!lto')
-# Halley v0.8.0 contains halley-portal v0.2.1.
-_tag="v0.8.0"
+# Halley v0.9.0 contains halley-portal v0.3.0.
+_tag="v0.9.0"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('70c0b5ba02a4e83a8ac22e4e910c5b516045ed407c4034721e987b5c324f1d17')
+sha256sums=('0db6a7636d2edd9b36121b5afd2e98f1190952efc8a441bdd477dadb10358225')
 
 # GitHub strips the v prefix in the release archive directory.
 _srcdir="halley-${_tag#v}"
