@@ -1,0 +1,8 @@
+Metamod:Source and SourceMod are built against the Source SDKs of the games they
+support (https://github.com/alliedmodders/hl2sdk, a branch per game, from the
+hl2sdk package), and link their tier1, mathlib and interfaces libraries, built
+from the SDKs' sources, into their game binaries.
+
+The Source SDK is Copyright (c) 1996-2013, Valve Corporation, all rights
+reserved, and is licensed under the terms Valve distributes it under for the
+development of mods and plugins for Source engine games.

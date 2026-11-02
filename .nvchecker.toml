@@ -1,0 +1,6 @@
+# The tags of SourceMod's stable branch, 1.12: each build is tagged, <version>.<build>
+[sourcemod]
+source = "git"
+git = "https://github.com/alliedmodders/sourcemod.git"
+use_max_tag = true
+include_regex = '1\.12\.\d+\.\d+'

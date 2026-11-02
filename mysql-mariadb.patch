@@ -1,0 +1,40 @@
+diff --git a/extensions/mysql/AMBuilder b/extensions/mysql/AMBuilder
+index d017f684..407a6ede 100644
+--- a/extensions/mysql/AMBuilder
++++ b/extensions/mysql/AMBuilder
+@@ -6,7 +6,8 @@ if SM.mysql_root:
+     arch = cxx.target.arch
+     binary = SM.ExtLibrary(builder, cxx, 'dbi.mysql.ext')
+     binary.compiler.cxxincludes += [
+-      os.path.join(SM.mysql_root[arch], 'include'),
++      # MariaDB Connector/C's headers (mariadb_config --include)
++      os.path.join(SM.mysql_root[arch], 'include', 'mysql'),
+       os.path.join(SM.mms_root, 'core', 'sourcehook')
+     ]
+     if binary.compiler.family == 'gcc' or binary.compiler.family == 'clang':
+@@ -15,9 +16,9 @@ if SM.mysql_root:
+       binary.compiler.cxxflags += ['/GR-']
+ 
+     if binary.compiler.target.platform == 'linux' or binary.compiler.target.platform == 'mac':
++      # MariaDB Connector/C as a shared library (mariadb_config --libs) instead of MySQL 5.5's static one
+       binary.compiler.postlink += [
+-        os.path.join(SM.mysql_root[arch], 'lib', 'libmysqlclient_r.a'),
+-        '-lz',
++        '-lmariadb',
+         '-lpthread',
+         '-lm',
+       ]
+diff --git a/extensions/mysql/mysql/MyDriver.h b/extensions/mysql/mysql/MyDriver.h
+index 86c9dfa6..5737095a 100644
+--- a/extensions/mysql/mysql/MyDriver.h
++++ b/extensions/mysql/mysql/MyDriver.h
+@@ -39,8 +39,7 @@
+ #include <WinSock2.h>
+ #endif
+ 
+-#include <my_global.h>
+-#include <my_sys.h>
++// MariaDB Connector/C has only mysql.h for clients, MySQL 5.5's internal headers aren't needed
+ #include <mysql.h>
+ 
+ // On macOS, the MySQL includes define min/max.

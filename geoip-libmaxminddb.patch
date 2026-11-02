@@ -1,0 +1,29 @@
+diff --git a/extensions/geoip/AMBuilder b/extensions/geoip/AMBuilder
+index 964cc27..2a275f9 100644
+--- a/extensions/geoip/AMBuilder
++++ b/extensions/geoip/AMBuilder
+@@ -14,8 +14,22 @@ for cxx in builder.targets:
+     'extension.cpp',
+     'geoip_util.cpp',
+     '../../public/smsdk_ext.cpp',
+-    'data-pool.c',
+-    'maxminddb.c',
+   ]
+ 
++  # On Linux, the system's libmaxminddb; elsewhere the bundled one
++  if binary.compiler.target.platform == 'linux':
++    binary.compiler.postlink += ['-lmaxminddb']
++    # The system's maxminddb_config.h is the 64-bit library's, with an unsigned __int128, which x86
++    # doesn't have: the 32-bit library is built with a byte array
++    if binary.compiler.target.arch == 'x86':
++      binary.compiler.defines += [
++        'MMDB_UINT128_USING_MODE=0',
++        'MMDB_UINT128_IS_BYTE_ARRAY=1',
++      ]
++  else:
++    binary.sources += [
++      'data-pool.c',
++      'maxminddb.c',
++    ]
++
+   SM.extensions += [builder.Add(binary)]

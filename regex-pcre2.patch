@@ -1,0 +1,688 @@
+diff --git a/extensions/regex/AMBuilder b/extensions/regex/AMBuilder
+index 0aa9b77..7ba49df 100644
+--- a/extensions/regex/AMBuilder
++++ b/extensions/regex/AMBuilder
+@@ -11,23 +11,23 @@ for cxx in builder.targets:
+   elif binary.compiler.family == 'msvc':
+     binary.compiler.cxxflags += ['/GR-']
+ 
++  # PCRE2's 8-bit library, static from lib_<platform> (see README.md), or the system's on Linux
+   arch = binary.compiler.target.arch
+-  if binary.compiler.target.platform == 'linux':
+-    if arch == 'x86':
+-      path = os.path.join(builder.sourcePath, 'extensions', 'regex', 'lib_linux', 'libpcre.a')
+-    elif arch == 'x86_64':
+-      path = os.path.join(builder.sourcePath, 'extensions', 'regex', 'lib_linux64', 'libpcre.a')
+-  elif binary.compiler.target.platform == 'windows':
+-    if arch == 'x86':
+-      path = os.path.join(builder.sourcePath, 'extensions', 'regex', 'lib_win', 'pcre.lib')
+-    elif arch == 'x86_64':
+-      path = os.path.join(builder.sourcePath, 'extensions', 'regex', 'lib_win64', 'pcre.lib')
+-  elif binary.compiler.target.platform == 'mac':
+-    if arch == 'x86':
+-      path = os.path.join(builder.sourcePath, 'extensions', 'regex', 'lib_darwin', 'libpcre.a')
+-    elif arch == 'x86_64':
+-      path = os.path.join(builder.sourcePath, 'extensions', 'regex', 'lib_darwin64', 'libpcre.a')
+-  binary.compiler.postlink += [path]
++  platform = binary.compiler.target.platform
++  if platform == 'windows':
++    libdir, lib = 'lib_win64' if arch == 'x86_64' else 'lib_win', 'pcre2-8-static.lib'
++  else:
++    libdir = {'linux': 'lib_linux', 'mac': 'lib_darwin'}[platform] + ('64' if arch == 'x86_64' else '')
++    lib = 'libpcre2-8.a'
++  path = os.path.join(builder.sourcePath, 'extensions', 'regex', libdir, lib)
++  if os.path.exists(path):
++    binary.compiler.defines += ['PCRE2_STATIC']
++    binary.compiler.cxxincludes += [os.path.join(builder.sourcePath, 'extensions', 'regex', libdir)]
++    binary.compiler.postlink += [path]
++  elif platform == 'linux':
++    binary.compiler.postlink += ['-lpcre2-8']
++  else:
++    raise Exception('PCRE2 not found: ' + path)
+ 
+   binary.sources += [
+     'extension.cpp',
+diff --git a/extensions/regex/CRegEx.cpp b/extensions/regex/CRegEx.cpp
+index 06a50dc..368cb5c 100644
+--- a/extensions/regex/CRegEx.cpp
++++ b/extensions/regex/CRegEx.cpp
+@@ -29,11 +29,9 @@
+  * Version: $Id$
+  */
+ 
+-#define PCRE_STATIC
+-
+-#include "pcre.h"
+ #include "CRegEx.h"
+ #include "extension.h"
++#include "posix_map.h"
+ 
+ RegEx::RegEx()
+ {
+@@ -41,6 +39,8 @@ RegEx::RegEx()
+ 	mErrorCode = 0;
+ 	mError = nullptr;
+ 	re = nullptr;
++	mMatchData = nullptr;
++	mMatchOptions = 0;
+ 	mFree = true;
+ 	subject = nullptr;
+ 	mMatchCount = 0;
+@@ -52,8 +52,12 @@ void RegEx::Clear ()
+ 	mErrorCode = 0;
+ 	mError = nullptr;
+ 	if (re)
+-		pcre_free(re);
++		pcre2_code_free(re);
+ 	re = nullptr;
++	if (mMatchData)
++		pcre2_match_data_free(mMatchData);
++	mMatchData = nullptr;
++	mMatchOptions = 0;
+ 	mFree = true;
+ 	if (subject)
+ 		free(subject);
+@@ -81,19 +85,88 @@ int RegEx::Compile(const char *pattern, int iFlags)
+ {
+ 	if (!mFree)
+ 		Clear();
+-		
+-	re = pcre_compile2(pattern, iFlags, &mErrorCode, &mError, &mErrorOffset, nullptr);
++
++	/* The flags are PCRE's (regex.inc): translate them to PCRE2's options */
++	PcreOptions options;
++	if (!TranslatePcreFlags(static_cast<uint32_t>(iFlags), options))
++	{
++		mErrorCode = REG_INVARG;
++		mErrorOffset = 0;
++		mError = "unknown or unsupported option bit(s) set";
++		return 0;
++	}
++
++	pcre2_compile_context *ctx = pcre2_compile_context_create(nullptr);
++	if (ctx == nullptr)
++	{
++		mErrorCode = REG_ESPACE;
++		mErrorOffset = 0;
++		mError = "failed to get memory";
++		return 0;
++	}
++	if (options.newline)
++		pcre2_set_newline(ctx, options.newline);
++	if (options.bsr)
++		pcre2_set_bsr(ctx, options.bsr);
++
++	int errorcode;
++	PCRE2_SIZE erroroffset;
++	re = pcre2_compile(reinterpret_cast<PCRE2_SPTR>(pattern), PCRE2_ZERO_TERMINATED, options.compile, &errorcode, &erroroffset, ctx);
++	/* Without PCRE_EXTRA, PCRE took an unknown escape as the literal character, which PCRE2 rejects:
++	   compile it again taking them literally. Only then, and not with a \ at the end of the pattern,
++	   which PCRE2 would take literally too, while PCRE rejected it (with the same posix error) */
++	size_t len = strlen(pattern), backslashes = 0;
++	while (backslashes < len && pattern[len - backslashes - 1] == '\\')
++		backslashes++;
++	if (re == nullptr && errorcode == PCRE2_ERROR_UNKNOWN_ESCAPE && options.unknownEscapeIsLiteral && backslashes % 2 == 0)
++	{
++		pcre2_set_compile_extra_options(ctx, PCRE2_EXTRA_BAD_ESCAPE_IS_LITERAL);
++		re = pcre2_compile(reinterpret_cast<PCRE2_SPTR>(pattern), PCRE2_ZERO_TERMINATED, options.compile, &errorcode, &erroroffset, ctx);
++	}
++	pcre2_compile_context_free(ctx);
+ 
+ 	if (re == nullptr)
+ 	{
++		/* PCRE2's error message, with the POSIX error code like PCRE's */
++		pcre2_get_error_message(errorcode, reinterpret_cast<PCRE2_UCHAR *>(mErrorBuffer), sizeof(mErrorBuffer));
++		mError = mErrorBuffer;
++		mErrorCode = PosixCompileError(errorcode);
++		mErrorOffset = static_cast<int>(erroroffset);
++		return 0;
++	}
++
++	/* As many pairs as PCRE's ovector of MAX_CAPTURES ints held (the last third was workspace) */
++	mMatchData = pcre2_match_data_create(MAX_MATCHES, nullptr);
++	if (mMatchData == nullptr)
++	{
++		pcre2_code_free(re);
++		re = nullptr;
++		mErrorCode = REG_ESPACE;
++		mError = "failed to get memory";
+ 		return 0;
+ 	}
++	mMatchOptions = options.match;
+ 
+ 	mFree = false;
+ 
+ 	return 1;
+ }
+ 
++/* Runs one match and copies the offsets into the match like PCRE's ovector, unset groups as -1 */
++bool RegEx::MatchAt(size_t len, size_t offset, RegexMatch &match, int &rc)
++{
++	rc = pcre2_match(re, reinterpret_cast<PCRE2_SPTR>(subject), len, offset, mMatchOptions, mMatchData, nullptr);
++	if (rc < 0)
++		return false;
++
++	PCRE2_SIZE *ovector = pcre2_get_ovector_pointer(mMatchData);
++	for (int i = 0; i < 2 * MAX_MATCHES; i++)
++		match.mVector[i] = ovector[i] == PCRE2_UNSET ? -1 : static_cast<int>(ovector[i]);
++	match.mSubStringCount = rc;
++
++	return true;
++}
++
+ int RegEx::Match(const char *const str, const size_t offset)
+ {
+ 	int rc = 0;
+@@ -106,20 +179,17 @@ int RegEx::Match(const char *const str, const size_t offset)
+ 	//save str
+ 	subject = strdup(str);
+ 
+-	rc = pcre_exec(re, nullptr, subject, strlen(subject), offset, 0, mMatches[0].mVector, MAX_CAPTURES);
+-
+-	if (rc < 0)
++	if (!MatchAt(strlen(subject), offset, mMatches[0], rc))
+ 	{
+-		if (rc == PCRE_ERROR_NOMATCH)
++		if (rc == PCRE2_ERROR_NOMATCH)
+ 		{
+ 			return 0;
+ 		} else {
+-			mErrorCode = rc;
++			mErrorCode = PcreMatchError(rc);
+ 			return -1;
+ 		}
+ 	}
+ 
+-	mMatches[0].mSubStringCount = rc;
+ 	mMatchCount = 1;
+ 
+ 	return 1;
+@@ -141,22 +211,21 @@ int RegEx::MatchAll(const char *str)
+ 	size_t offset = 0;
+ 	unsigned int matches = 0;
+ 
+-	while (matches < MAX_MATCHES && offset < len && (rc = pcre_exec(re, 0, subject, len, offset, 0, mMatches[matches].mVector, MAX_CAPTURES)) >= 0)
++	while (matches < MAX_MATCHES && offset < len && MatchAt(len, offset, mMatches[matches], rc))
+ 	{
+ 		offset = mMatches[matches].mVector[1];
+-		mMatches[matches].mSubStringCount = rc;
+ 
+ 		matches++;
+ 	}
+ 
+-	if (rc < PCRE_ERROR_NOMATCH || (rc == PCRE_ERROR_NOMATCH && matches == 0))
++	if (rc < PCRE2_ERROR_NOMATCH || (rc == PCRE2_ERROR_NOMATCH && matches == 0))
+ 	{
+-		if (rc == PCRE_ERROR_NOMATCH)
++		if (rc == PCRE2_ERROR_NOMATCH)
+ 		{
+ 			return 0;
+ 		}
+ 		else {
+-			mErrorCode = rc;
++			mErrorCode = PcreMatchError(rc);
+ 			return -1;
+ 		}
+ 	}
+diff --git a/extensions/regex/CRegEx.h b/extensions/regex/CRegEx.h
+index 8a08857..bb908ab 100644
+--- a/extensions/regex/CRegEx.h
++++ b/extensions/regex/CRegEx.h
+@@ -33,6 +33,9 @@
+ #ifndef _INCLUDE_CREGEX_H
+ #define _INCLUDE_CREGEX_H
+ 
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
++
+ #define MAX_MATCHES 20
+ #define MAX_CAPTURES MAX_MATCHES*3
+ 
+@@ -62,9 +65,14 @@ public:
+ 	int mMatchCount;
+ 	RegexMatch mMatches[MAX_MATCHES];
+ private:
+-	pcre *re;
++	bool MatchAt(size_t len, size_t offset, RegexMatch &match, int &rc);
++
++	pcre2_code *re;
++	pcre2_match_data *mMatchData;
++	uint32_t mMatchOptions;
+ 	bool mFree;
+ 	char *subject;
++	char mErrorBuffer[256];
+ };
+ 
+ #endif //_INCLUDE_CREGEX_H
+diff --git a/extensions/regex/README.md b/extensions/regex/README.md
+index 5c3ba18..56d8455 100644
+--- a/extensions/regex/README.md
++++ b/extensions/regex/README.md
+@@ -1,24 +1,30 @@
+-# PCRE Build Instructions
+-As of writing, we're using pcre v8.44
++# PCRE2 Build Instructions
++As of writing, we're using PCRE2 10.49
+ 
+-https://ftp.pcre.org/pub/pcre/
++https://github.com/PCRE2Project/pcre2/releases
++
++The extension links the static 8-bit library, `libpcre2-8.a` (`pcre2-8-static.lib` on Windows),
++from `lib_<platform>` (`lib_linux`, `lib_linux64`, `lib_darwin`, `lib_darwin64`, `lib_win`,
++`lib_win64`), with `pcre2.h` next to it. Without it, on Linux, it links the system's
++`libpcre2-8`.
++
++The flags and error codes of `regex.inc` are PCRE's (PCRE 1); `posix_map.h` translates them.
+ 
+ ## Windows
+-We build with the MinSizeForRelease VS configuration using the target architecture you want. This is how both win libs are built. The following settings were selected in the CMAKE configuration
+-![AenKaUByp0](https://user-images.githubusercontent.com/11095737/87211804-10db1200-c2d0-11ea-85d9-ede4ba177de1.png)
++Configure with CMake for the target architecture, then build the Release configuration:
+ 
+-In the PCRE project, go to C/C++ configuration properties and select the Runtime Library to be Multi-threaded (`/MT`) instead of Multi-threaded DLL (`/MD`)
++`cmake -B build -A <Win32|x64> -DPCRE2_SUPPORT_JIT=ON -DPCRE2_STATIC_RUNTIME=ON -DBUILD_SHARED_LIBS=OFF`
+ 
+ ## Mac
+ For x86 or x86_64 add -m32 or -m64 to `CFLAGS`
+ 
+ `export CFLAGS='-mmacosx-version-min=10.7'`
+ 
+-`./configure --enable-unicode-properties --enable-jit --disable-shared --enable-utf && make`
++`./configure --enable-jit --disable-shared && make`
+ 
+ ## Linux
+ For x86 or x86_64 add -m32 or -m64 to `CFLAGS`
+ 
+ `export CFLAGS='-Wa,-mrelax-relocations=no -fPIC'`
+ 
+-`./configure --enable-unicode-properties --enable-jit --disable-shared --enable-utf && make`
++`./configure --enable-jit --disable-shared && make`
+diff --git a/extensions/regex/extension.cpp b/extensions/regex/extension.cpp
+index 0483dba..f8e8fe3 100644
+--- a/extensions/regex/extension.cpp
++++ b/extensions/regex/extension.cpp
+@@ -32,8 +32,6 @@
+ #include <sourcemod_version.h>
+ #include "extension.h"
+ #include <sh_string.h>
+-#include "pcre.h"
+-#include "posix_map.h"
+ #include "CRegEx.h"
+ using namespace SourceHook;
+ 
+@@ -86,8 +84,8 @@ static cell_t CompileRegex(IPluginContext *pCtx, const cell_t *params)
+ 		cell_t *eError;
+ 		pCtx->LocalToPhysAddr(params[5], &eError);
+ 		const char *err = x->mError;
+-		// Convert error code to posix error code but use pcre's error string since it is more detailed.
+-		*eError = pcre_posix_compile_error_map[x->mErrorCode];
++		// The posix error code (see posix_map.h), with pcre's error string since it is more detailed.
++		*eError = x->mErrorCode;
+ 		pCtx->StringToLocal(params[3], params[4], err ? err:"unknown");
+ 		delete x;
+ 		return 0;
+diff --git a/extensions/regex/posix_map.h b/extensions/regex/posix_map.h
+index 42d3669..1eabbb4 100644
+--- a/extensions/regex/posix_map.h
++++ b/extensions/regex/posix_map.h
+@@ -1,10 +1,14 @@
+ #pragma once
+ 
+ /*
+-	Maps pcre_compile2 error codes to posix error codes.
+-	From pcreposix.c and pcreposix.h
++	Translates between the PCRE (PCRE 1) API of regex.inc, whose flags and error codes plugins
++	use, and PCRE2: the compile flags to PCRE2's options, pcre2_compile's errors to posix error
++	codes, and pcre2_match's errors to PCRE's.
++	The posix codes and their mapping from pcre2posix.c and pcre2posix.h (PCRE2 10.49).
+ */
+ 
++#include <stdint.h>
++
+ // posix error codes
+ enum {
+ 	REG_ASSERT = 1,  /* internal error ? */
+@@ -28,9 +32,9 @@ enum {
+ 	//REG_NOMATCH      /* match failed */
+ };
+ 
+-// pcre compile error -> posix compile error
+-const int pcre_posix_compile_error_map[] = {
+-	0,           /* no error */
++// pcre2_compile error (COMPILE_ERROR_BASE + n) -> posix compile error, as pcre2posix.c's regcomp
++static const int pcre2_posix_compile_error_map[] = {
++	0,           /* No error */
+ 	REG_EESCAPE, /* \ at end of pattern */
+ 	REG_EESCAPE, /* \c at end of pattern */
+ 	REG_EESCAPE, /* unrecognized character follows \ */
+@@ -42,95 +46,230 @@ const int pcre_posix_compile_error_map[] = {
+ 	REG_ERANGE,  /* range out of order in character class */
+ 	REG_BADRPT,  /* nothing to repeat */
+ 	/* 10 */
+-	REG_BADRPT,  /* operand of unlimited repeat could match the empty string */
+ 	REG_ASSERT,  /* internal error: unexpected repeat */
+-	REG_BADPAT,  /* unrecognized character after (? */
++	REG_BADPAT,  /* unrecognized character after (? or (?- */
+ 	REG_BADPAT,  /* POSIX named classes are supported only within a class */
++	REG_BADPAT,  /* POSIX collating elements are not supported */
+ 	REG_EPAREN,  /* missing ) */
+ 	/* 15 */
+ 	REG_ESUBREG, /* reference to non-existent subpattern */
+-	REG_INVARG,  /* erroffset passed as NULL */
+-	REG_INVARG,  /* unknown option bit(s) set */
+-	REG_EPAREN,  /* missing ) after comment */
++	REG_INVARG,  /* pattern passed as NULL */
++	REG_INVARG,  /* unknown compile-time option bit(s) */
++	REG_EPAREN,  /* missing ) after (?# comment */
+ 	REG_ESIZE,   /* parentheses nested too deeply */
+ 	/* 20 */
+ 	REG_ESIZE,   /* regular expression too large */
+ 	REG_ESPACE,  /* failed to get memory */
+-	REG_EPAREN,  /* unmatched parentheses */
+-	REG_ASSERT,  /* internal error: code overflow */
+-	REG_BADPAT,  /* unrecognized character after (?< */
+-	/* 25 */
+-	REG_BADPAT,  /* lookbehind assertion is not fixed length */
+-	REG_BADPAT,  /* malformed number or name after (?( */
+-	REG_BADPAT,  /* conditional group contains more than two branches */
+-	REG_BADPAT,  /* assertion expected after (?( */
+-	REG_BADPAT,  /* (?R or (?[+-]digits must be followed by ) */
+-	/* 30 */
+-	REG_ECTYPE,  /* unknown POSIX class name */
+-	REG_BADPAT,  /* POSIX collating elements are not supported */
+-	REG_INVARG,  /* this version of PCRE is not compiled with PCRE_UTF8 support */
+-	REG_BADPAT,  /* spare error */
+-	REG_BADPAT,  /* character value in \x{} or \o{} is too large */
+-	/* 35 */
+-	REG_BADPAT,  /* invalid condition (?(0) */
+-	REG_BADPAT,  /* \C not allowed in lookbehind assertion */
+-	REG_EESCAPE, /* PCRE does not support \L, \l, \N, \U, or \u */
+-	REG_BADPAT,  /* number after (?C is > 255 */
+-	REG_BADPAT,  /* closing ) for (?C expected */
+-	/* 40 */
+-	REG_BADPAT,  /* recursive call could loop indefinitely */
+-	REG_BADPAT,  /* unrecognized character after (?P */
+-	REG_BADPAT,  /* syntax error in subpattern name (missing terminator) */
+-	REG_BADPAT,  /* two named subpatterns have the same name */
+-	REG_BADPAT,  /* invalid UTF-8 string */
+-	/* 45 */
+-	REG_BADPAT,  /* support for \P, \p, and \X has not been compiled */
+-	REG_BADPAT,  /* malformed \P or \p sequence */
+-	REG_BADPAT,  /* unknown property name after \P or \p */
+-	REG_BADPAT,  /* subpattern name is too long (maximum 32 characters) */
+-	REG_BADPAT,  /* too many named subpatterns (maximum 10,000) */
+-	/* 50 */
+-	REG_BADPAT,  /* repeated subpattern is too long */
+-	REG_BADPAT,  /* octal value is greater than \377 (not in UTF-8 mode) */
+-	REG_BADPAT,  /* internal error: overran compiling workspace */
+-	REG_BADPAT,  /* internal error: previously-checked referenced subpattern not found */
+-	REG_BADPAT,  /* DEFINE group contains more than one branch */
+-	/* 55 */
+-	REG_BADPAT,  /* repeating a DEFINE group is not allowed */
+-	REG_INVARG,  /* inconsistent NEWLINE options */
+-	REG_BADPAT,  /* \g is not followed followed by an (optionally braced) non-zero number */
+-	REG_BADPAT,  /* a numbered reference must not be zero */
+-	REG_BADPAT,  /* an argument is not allowed for (*ACCEPT), (*FAIL), or (*COMMIT) */
+-	/* 60 */
+-	REG_BADPAT,  /* (*VERB) not recognized */
+-	REG_BADPAT,  /* number is too big */
+-	REG_BADPAT,  /* subpattern name expected */
+-	REG_BADPAT,  /* digit expected after (?+ */
+-	REG_BADPAT,  /* ] is an invalid data character in JavaScript compatibility mode */
+-	/* 65 */
+-	REG_BADPAT,  /* different names for subpatterns of the same number are not allowed */
+-	REG_BADPAT,  /* (*MARK) must have an argument */
+-	REG_INVARG,  /* this version of PCRE is not compiled with PCRE_UCP support */
+-	REG_BADPAT,  /* \c must be followed by an ASCII character */
+-	REG_BADPAT,  /* \k is not followed by a braced, angle-bracketed, or quoted name */
+-	/* 70 */
+-	REG_BADPAT,  /* internal error: unknown opcode in find_fixedlength() */
+-	REG_BADPAT,  /* \N is not supported in a class */
+-	REG_BADPAT,  /* too many forward references */
+-	REG_BADPAT,  /* disallowed UTF-8/16/32 code point (>= 0xd800 && <= 0xdfff) */
+-	REG_BADPAT,  /* invalid UTF-16 string (should not occur) */
+-	/* 75 */
+-	REG_BADPAT,  /* overlong MARK name */
+-	REG_BADPAT,  /* character value in \u.... sequence is too large */
+-	REG_BADPAT,  /* invalid UTF-32 string (should not occur) */
+-	REG_BADPAT,  /* setting UTF is disabled by the application */
+-	REG_BADPAT,  /* non-hex character in \\x{} (closing brace missing?) */
+-	/* 80 */
+-	REG_BADPAT,  /* non-octal character in \o{} (closing brace missing?) */
+-	REG_BADPAT,  /* missing opening brace after \o */
+-	REG_BADPAT,  /* parentheses too deeply nested */
+-	REG_BADPAT,  /* invalid range in character class */
+-	REG_BADPAT,  /* group name must start with a non-digit */
+-	/* 85 */
+-	REG_BADPAT   /* parentheses too deeply nested (stack check) */
+-};
+\ No newline at end of file
++	REG_EPAREN,  /* unmatched closing parenthesis */
++	REG_ASSERT   /* internal error: code overflow */
++};
++
++// The other errors that aren't REG_BADPAT: pairs of n and the posix error
++static const int pcre2_posix_compile_error_pairs[] = {
++	30, REG_ECTYPE,  /* unknown POSIX class name */
++	32, REG_INVARG,  /* this version of PCRE2 does not have Unicode support */
++	37, REG_EESCAPE, /* PCRE2 does not support \L, \l, \N{name}, \U, or \u */
++	56, REG_INVARG,  /* internal error: unknown newline setting */
++	92, REG_INVARG,  /* invalid option bits with PCRE2_LITERAL */
++	98, REG_EESCAPE, /* missing digit after \0 in NO_BS0 mode */
++	99, REG_EESCAPE, /* \K in lookaround */
++	102, REG_EESCAPE /* \ddd octal > \377 in PYTHON_OCTAL mode */
++};
++
++// PCRE2's compile errors start here (COMPILE_ERROR_BASE of pcre2_internal.h)
++static const int pcre2_compile_error_base = 100;
++
++static inline int PosixCompileError(int errorcode)
++{
++	/* A negative value is a UTF error of the pattern */
++	if (errorcode < pcre2_compile_error_base)
++		return REG_BADPAT;
++	errorcode -= pcre2_compile_error_base;
++	if (errorcode < (int)(sizeof(pcre2_posix_compile_error_map) / sizeof(int)))
++		return pcre2_posix_compile_error_map[errorcode];
++	for (size_t i = 0; i < sizeof(pcre2_posix_compile_error_pairs) / sizeof(int); i += 2)
++		if (errorcode == pcre2_posix_compile_error_pairs[i])
++			return pcre2_posix_compile_error_pairs[i + 1];
++	return REG_BADPAT;
++}
++
++// PCRE's match errors, regex.inc's REGEX_ERROR_*
++enum {
++	PCRE_ERROR_NOMATCH = -1,
++	PCRE_ERROR_NULL = -2,
++	PCRE_ERROR_BADOPTION = -3,
++	PCRE_ERROR_BADMAGIC = -4,
++	PCRE_ERROR_NOMEMORY = -6,
++	PCRE_ERROR_NOSUBSTRING = -7,
++	PCRE_ERROR_MATCHLIMIT = -8,
++	PCRE_ERROR_CALLOUT = -9,
++	PCRE_ERROR_BADUTF8 = -10,
++	PCRE_ERROR_BADUTF8_OFFSET = -11,
++	PCRE_ERROR_PARTIAL = -12,
++	PCRE_ERROR_INTERNAL = -14,
++	PCRE_ERROR_DFA_UITEM = -16,
++	PCRE_ERROR_DFA_UCOND = -17,
++	PCRE_ERROR_DFA_WSSIZE = -19,
++	PCRE_ERROR_DFA_RECURSE = -20,
++	PCRE_ERROR_RECURSIONLIMIT = -21,
++	PCRE_ERROR_BADOFFSET = -24,
++	PCRE_ERROR_RECURSELOOP = -26,
++	PCRE_ERROR_JIT_STACKLIMIT = -27,
++	PCRE_ERROR_BADMODE = -28,
++	PCRE_ERROR_DFA_BADRESTART = -30,
++	PCRE_ERROR_JIT_BADOPTION = -31,
++};
++
++// pcre2_match error -> PCRE's
++static inline int PcreMatchError(int rc)
++{
++	/* PCRE2 tells the UTF-8 errors apart, PCRE's exec reported them all as BADUTF8 */
++	if (rc <= PCRE2_ERROR_UTF8_ERR1 && rc >= PCRE2_ERROR_UTF8_ERR21)
++		return PCRE_ERROR_BADUTF8;
++	switch (rc)
++	{
++	case PCRE2_ERROR_NOMATCH: return PCRE_ERROR_NOMATCH;
++	case PCRE2_ERROR_NULL: return PCRE_ERROR_NULL;
++	case PCRE2_ERROR_BADOPTION: return PCRE_ERROR_BADOPTION;
++	case PCRE2_ERROR_BADMAGIC: return PCRE_ERROR_BADMAGIC;
++	case PCRE2_ERROR_NOMEMORY: return PCRE_ERROR_NOMEMORY;
++	case PCRE2_ERROR_NOSUBSTRING: return PCRE_ERROR_NOSUBSTRING;
++	case PCRE2_ERROR_MATCHLIMIT: return PCRE_ERROR_MATCHLIMIT;
++	case PCRE2_ERROR_CALLOUT: return PCRE_ERROR_CALLOUT;
++	case PCRE2_ERROR_BADUTFOFFSET: return PCRE_ERROR_BADUTF8_OFFSET;
++	case PCRE2_ERROR_PARTIAL: return PCRE_ERROR_PARTIAL;
++	case PCRE2_ERROR_DFA_UITEM: return PCRE_ERROR_DFA_UITEM;
++	case PCRE2_ERROR_DFA_UCOND: return PCRE_ERROR_DFA_UCOND;
++	case PCRE2_ERROR_DFA_WSSIZE: return PCRE_ERROR_DFA_WSSIZE;
++	case PCRE2_ERROR_DFA_RECURSE: return PCRE_ERROR_DFA_RECURSE;
++	/* PCRE2 limits the depth and the heap where PCRE limited the recursion (the stack) */
++	case PCRE2_ERROR_DEPTHLIMIT: return PCRE_ERROR_RECURSIONLIMIT;
++	case PCRE2_ERROR_HEAPLIMIT: return PCRE_ERROR_RECURSIONLIMIT;
++	case PCRE2_ERROR_BADOFFSET: return PCRE_ERROR_BADOFFSET;
++	case PCRE2_ERROR_RECURSELOOP: return PCRE_ERROR_RECURSELOOP;
++	case PCRE2_ERROR_JIT_STACKLIMIT: return PCRE_ERROR_JIT_STACKLIMIT;
++	case PCRE2_ERROR_BADMODE: return PCRE_ERROR_BADMODE;
++	case PCRE2_ERROR_DFA_BADRESTART: return PCRE_ERROR_DFA_BADRESTART;
++	case PCRE2_ERROR_JIT_BADOPTION: return PCRE_ERROR_JIT_BADOPTION;
++	default: return PCRE_ERROR_INTERNAL;
++	}
++}
++
++// PCRE's option bits (pcre.h of PCRE 8.45), which regex.inc defines and plugins pass
++enum : uint32_t {
++	PCRE_CASELESS = 0x00000001,
++	PCRE_MULTILINE = 0x00000002,
++	PCRE_DOTALL = 0x00000004,
++	PCRE_EXTENDED = 0x00000008,
++	PCRE_ANCHORED = 0x00000010,
++	PCRE_DOLLAR_ENDONLY = 0x00000020,
++	PCRE_EXTRA = 0x00000040,
++	PCRE_NOTBOL = 0x00000080,
++	PCRE_NOTEOL = 0x00000100,
++	PCRE_UNGREEDY = 0x00000200,
++	PCRE_NOTEMPTY = 0x00000400,
++	PCRE_UTF8 = 0x00000800,
++	PCRE_NO_AUTO_CAPTURE = 0x00001000,
++	PCRE_NO_UTF8_CHECK = 0x00002000,
++	PCRE_AUTO_CALLOUT = 0x00004000,
++	PCRE_NEVER_UTF = 0x00010000,
++	PCRE_NO_AUTO_POSSESS = 0x00020000,
++	PCRE_FIRSTLINE = 0x00040000,
++	PCRE_DUPNAMES = 0x00080000,
++	PCRE_NEWLINE_MASK = 0x00700000,
++	PCRE_NEWLINE_CR = 0x00100000,
++	PCRE_NEWLINE_LF = 0x00200000,
++	PCRE_NEWLINE_CRLF = 0x00300000,
++	PCRE_NEWLINE_ANY = 0x00400000,
++	PCRE_NEWLINE_ANYCRLF = 0x00500000,
++	PCRE_BSR_ANYCRLF = 0x00800000,
++	PCRE_BSR_UNICODE = 0x01000000,
++	PCRE_JAVASCRIPT_COMPAT = 0x02000000,
++	PCRE_NO_START_OPTIMIZE = 0x04000000,
++	PCRE_NOTEMPTY_ATSTART = 0x10000000,
++	PCRE_UCP = 0x20000000,
++};
++
++struct PcreOptions
++{
++	uint32_t compile;
++	uint32_t match;
++	uint32_t newline;
++	uint32_t bsr;
++	bool unknownEscapeIsLiteral;
++};
++
++// PCRE's flags -> PCRE2's compile, extra and match options, newline and \R conventions. False for
++// bits that are no options (or PCRE's partial matching, whose results the natives don't handle).
++static inline bool TranslatePcreFlags(uint32_t flags, PcreOptions &options)
++{
++	static const struct { uint32_t pcre; uint32_t pcre2; } compile[] = {
++		{PCRE_CASELESS, PCRE2_CASELESS},
++		{PCRE_MULTILINE, PCRE2_MULTILINE},
++		{PCRE_DOTALL, PCRE2_DOTALL},
++		{PCRE_EXTENDED, PCRE2_EXTENDED},
++		{PCRE_ANCHORED, PCRE2_ANCHORED},
++		{PCRE_DOLLAR_ENDONLY, PCRE2_DOLLAR_ENDONLY},
++		{PCRE_UNGREEDY, PCRE2_UNGREEDY},
++		{PCRE_UTF8, PCRE2_UTF},
++		{PCRE_NO_AUTO_CAPTURE, PCRE2_NO_AUTO_CAPTURE},
++		{PCRE_NO_UTF8_CHECK, PCRE2_NO_UTF_CHECK},
++		{PCRE_AUTO_CALLOUT, PCRE2_AUTO_CALLOUT},
++		{PCRE_NEVER_UTF, PCRE2_NEVER_UTF},
++		{PCRE_NO_AUTO_POSSESS, PCRE2_NO_AUTO_POSSESS},
++		{PCRE_FIRSTLINE, PCRE2_FIRSTLINE},
++		{PCRE_DUPNAMES, PCRE2_DUPNAMES},
++		/* What PCRE2 replaced JavaScript compatibility with */
++		{PCRE_JAVASCRIPT_COMPAT, PCRE2_ALT_BSUX | PCRE2_ALLOW_EMPTY_CLASS | PCRE2_MATCH_UNSET_BACKREF},
++		{PCRE_NO_START_OPTIMIZE, PCRE2_NO_START_OPTIMIZE},
++		{PCRE_UCP, PCRE2_UCP},
++	};
++	/* PCRE only took these when matching; regex.inc documents PCRE_NOTEMPTY for compiling */
++	static const struct { uint32_t pcre; uint32_t pcre2; } match[] = {
++		{PCRE_NOTBOL, PCRE2_NOTBOL},
++		{PCRE_NOTEOL, PCRE2_NOTEOL},
++		{PCRE_NOTEMPTY, PCRE2_NOTEMPTY},
++		{PCRE_NOTEMPTY_ATSTART, PCRE2_NOTEMPTY_ATSTART},
++	};
++
++	options = PcreOptions();
++	uint32_t known = PCRE_EXTRA | PCRE_NEWLINE_MASK | PCRE_BSR_ANYCRLF | PCRE_BSR_UNICODE;
++	for (const auto &option : compile)
++	{
++		known |= option.pcre;
++		if (flags & option.pcre)
++			options.compile |= option.pcre2;
++	}
++	for (const auto &option : match)
++	{
++		known |= option.pcre;
++		if (flags & option.pcre)
++			options.match |= option.pcre2;
++	}
++	if (flags & ~known)
++		return false;
++
++	/* PCRE2 always rejects unknown escapes, as PCRE did with PCRE_EXTRA; without it, PCRE took them
++	   as the literal character (see RegEx::Compile) */
++	options.unknownEscapeIsLiteral = !(flags & PCRE_EXTRA);
++
++	switch (flags & PCRE_NEWLINE_MASK)
++	{
++	case 0: break;
++	case PCRE_NEWLINE_CR: options.newline = PCRE2_NEWLINE_CR; break;
++	case PCRE_NEWLINE_LF: options.newline = PCRE2_NEWLINE_LF; break;
++	case PCRE_NEWLINE_CRLF: options.newline = PCRE2_NEWLINE_CRLF; break;
++	case PCRE_NEWLINE_ANY: options.newline = PCRE2_NEWLINE_ANY; break;
++	case PCRE_NEWLINE_ANYCRLF: options.newline = PCRE2_NEWLINE_ANYCRLF; break;
++	default: return false;
++	}
++
++	if ((flags & PCRE_BSR_ANYCRLF) && (flags & PCRE_BSR_UNICODE))
++		return false;
++	if (flags & PCRE_BSR_ANYCRLF)
++		options.bsr = PCRE2_BSR_ANYCRLF;
++	if (flags & PCRE_BSR_UNICODE)
++		options.bsr = PCRE2_BSR_UNICODE;
++
++	return true;
++}
+diff --git a/plugins/include/regex.inc b/plugins/include/regex.inc
+index a62bbcb..c859e74 100644
+--- a/plugins/include/regex.inc
++++ b/plugins/include/regex.inc
+@@ -36,8 +36,9 @@
+ #define _regex_included
+ 
+ /**
+- * @section     Flags for compiling regex expressions.  These come directly from the
+- * pcre library and can be used in MatchRegex and CompileRegex.
++ * @section     Flags for compiling regex expressions.  These are the option bits of the
++ * pcre library (PCRE 1), which the extension translates for PCRE2, and can be used in MatchRegex
++ * and CompileRegex.
+  */
+ #define PCRE_CASELESS           0x00000001 /* Ignore Case */
+ #define PCRE_MULTILINE          0x00000002 /* Multilines (affects ^ and $ so that they match the start/end of a line rather than matching the start/end of the string). */

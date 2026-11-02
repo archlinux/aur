@@ -1,0 +1,65 @@
+diff --git a/sourcepawn/AMBuildScript b/sourcepawn/AMBuildScript
+index 2e1855e..bb1a224 100644
+--- a/sourcepawn/AMBuildScript
++++ b/sourcepawn/AMBuildScript
+@@ -367,6 +367,8 @@ class SourcePawn(object):
+             os.path.join(builder.currentSourcePath, 'third_party'),
+             self.amtl,
+         ]
++        if binary.compiler.target.platform != 'linux':
++            binary.compiler.includes += [os.path.join(builder.currentSourcePath, 'third_party', 'zlib')]
+ 
+         generated_headers = getattr(self.root, 'generated_headers', None)
+         if generated_headers:
+@@ -541,7 +543,11 @@ class SourcePawn(object):
+             return
+         self.zlib = {}
+         for cxx in self.root.targets:
+-            self.zlib[cxx.target.arch] = self.BuildForArch("third_party/zlib/AMBuilder", cxx)
++            # On Linux, the system's zlib; elsewhere the bundled one
++            if cxx.target.platform == 'linux':
++                self.zlib[cxx.target.arch] = '-lz'
++            else:
++                self.zlib[cxx.target.arch] = self.BuildForArch("third_party/zlib/AMBuilder", cxx)
+         self.included_zlib = True
+ 
+     def BuildForArch(self, scripts, cxx, extra_vars={}):
+diff --git a/sourcepawn/compiler/assembler.cpp b/sourcepawn/compiler/assembler.cpp
+index 5073941..f66f7cd 100644
+--- a/sourcepawn/compiler/assembler.cpp
++++ b/sourcepawn/compiler/assembler.cpp
+@@ -37,7 +37,7 @@
+ #include <smx/smx-v1-opcodes.h>
+ #include <smx/smx-v1.h>
+ #include <sp_vm_api.h>
+-#include <zlib/zlib.h>
++#include <zlib.h>
+ #include "assembler.h"
+ #include "compile-context.h"
+ #include "compile-options.h"
+diff --git a/sourcepawn/vm/api.cpp b/sourcepawn/vm/api.cpp
+index 752ddb3..adba07a 100644
+--- a/sourcepawn/vm/api.cpp
++++ b/sourcepawn/vm/api.cpp
+@@ -16,7 +16,7 @@
+ #include <assert.h>
+ #include "environment.h"
+ #include "api.h"
+-#include <zlib/zlib.h>
++#include <zlib.h>
+ #if defined __GNUC__
+ #include <unistd.h>
+ #endif
+diff --git a/sourcepawn/vm/smx-v1-image.cpp b/sourcepawn/vm/smx-v1-image.cpp
+index 83c5913..d4a0922 100644
+--- a/sourcepawn/vm/smx-v1-image.cpp
++++ b/sourcepawn/vm/smx-v1-image.cpp
+@@ -11,7 +11,7 @@
+ 
+ #include <amtl/am-string.h>
+ #include "smx-v1-image.h"
+-#include <zlib/zlib.h>
++#include <zlib.h>
+ #include "environment.h"
+ 
+ using namespace ke;

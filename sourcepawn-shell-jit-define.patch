@@ -1,0 +1,31 @@
+--- a/sourcepawn/AMBuildScript
++++ b/sourcepawn/AMBuildScript
+@@ -446,6 +446,7 @@
+         binary = self.root.Program(builder, 'spshell')
+ 
+         self.SetupBinForArch(binary, builder)
++        self.AddVmDefines(binary)
+ 
+         binary.sources = [
+             'vm/shell/shell.cpp',
+@@ -463,6 +464,7 @@
+         binary = self.root.Program(builder, 'verifier')
+ 
+         self.SetupBinForArch(binary, builder)
++        self.AddVmDefines(binary)
+ 
+         binary.sources = [
+             'tools/verifier/verifier.cpp',
+@@ -472,6 +474,12 @@
+ 
+         builder.Add(binary)
+ 
++    # Programs that include the VM's internal headers (vm/environment.h) need the defines the VM
++    # is built with (vm/AMBuilder), or its classes differ between them and the static library.
++    def AddVmDefines(self, binary):
++        if binary.compiler.target.arch == 'x86' and not binary.compiler.like('emscripten'):
++            binary.compiler.defines += ['SP_HAS_JIT']
++
+     def AddStaticLibraries(self, binary):
+         if binary.compiler.linker.like('gcc') and binary.compiler.target.platform == 'linux':
+             binary.compiler.linkflags += ['-Wl,--start-group']

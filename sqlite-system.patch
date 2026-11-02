@@ -1,0 +1,76 @@
+diff --git a/extensions/sqlite/AMBuilder b/extensions/sqlite/AMBuilder
+index b6f544f..d8ca1a9 100644
+--- a/extensions/sqlite/AMBuilder
++++ b/extensions/sqlite/AMBuilder
+@@ -11,16 +11,6 @@ for cxx in builder.targets:
+   elif binary.compiler.family == 'msvc':
+     binary.compiler.cxxflags += ['/GR-']
+ 
+-  binary.compiler.defines += [
+-    'SQLITE_OMIT_LOAD_EXTENSION',
+-    'SQLITE_THREADSAFE',
+-    'SQLITE_USE_URI',
+-    'SQLITE_ALLOW_URI_AUTHORITY',
+-    'SQLITE_ENABLE_MATH_FUNCTIONS',
+-  ]
+-  if binary.compiler.target.platform == 'linux':
+-    binary.compiler.postlink += ['-ldl', '-lpthread']
+-
+   binary.sources += [
+     '../../public/smsdk_ext.cpp',
+     'extension.cpp',
+@@ -28,8 +18,26 @@ for cxx in builder.targets:
+     'driver/SqDriver.cpp',
+     'driver/SqQuery.cpp',
+     'driver/SqResults.cpp',
+-    'sqlite-source/sqlite3.c'
+   ]
+ 
++  # On Linux, the system's SQLite (thread-safe, with the math functions; extensions can only be
++  # loaded through the C API, which the driver doesn't call); elsewhere the bundled amalgamation
++  if binary.compiler.target.platform == 'linux':
++    # By the file name of its ABI, as a library without a SONAME would be needed by the name of the
++    # development symlink, libsqlite3.so
++    binary.compiler.postlink += ['-l:libsqlite3.so.0']
++  else:
++    binary.compiler.includes += [
++      os.path.join(builder.currentSourcePath, 'sqlite-source'),
++    ]
++    binary.compiler.defines += [
++      'SQLITE_OMIT_LOAD_EXTENSION',
++      'SQLITE_THREADSAFE',
++      'SQLITE_USE_URI',
++      'SQLITE_ALLOW_URI_AUTHORITY',
++      'SQLITE_ENABLE_MATH_FUNCTIONS',
++    ]
++    binary.sources += ['sqlite-source/sqlite3.c']
++
+   SM.extensions += [builder.Add(binary)]
+ 
+diff --git a/extensions/sqlite/driver/SqDriver.cpp b/extensions/sqlite/driver/SqDriver.cpp
+index 3b4ffba..126a1cc 100644
+--- a/extensions/sqlite/driver/SqDriver.cpp
++++ b/extensions/sqlite/driver/SqDriver.cpp
+@@ -271,7 +271,8 @@ IDatabase *SqDriver::Connect(const DatabaseInfo *info, bool persistent, char *er
+ 
+ 	/* Try to open a new connection */
+ 	sqlite3 *sql;
+-	int err = sqlite3_open(fullpath, &sql);
++	/* URI filenames, which the bundled SQLite enables at build time (SQLITE_USE_URI) */
++	int err = sqlite3_open_v2(fullpath, &sql, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_URI, NULL);
+ 	if (err != SQLITE_OK)
+ 	{
+ 		strncopy(error, sqlite3_errmsg(sql), maxlength);
+diff --git a/extensions/sqlite/driver/SqDriver.h b/extensions/sqlite/driver/SqDriver.h
+index e41c9e7..d64294b 100644
+--- a/extensions/sqlite/driver/SqDriver.h
++++ b/extensions/sqlite/driver/SqDriver.h
+@@ -37,7 +37,7 @@
+ #include <sh_list.h>
+ #include <sh_string.h>
+ #include <mutex>
+-#include "sqlite-source/sqlite3.h"
++#include <sqlite3.h>
+ 
+ using namespace SourceMod;
+ using namespace SourceHook;
