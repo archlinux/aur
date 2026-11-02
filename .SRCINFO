@@ -1,0 +1,21 @@
+pkgbase = peek2
+	pkgdesc = Region screen recorder with audio, straight to the clipboard (Rust rewrite of Peek, no GTK)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/rotkonetworks/peek2
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = ffmpeg
+	depends = libpulse
+	optdepends = libnotify: notifications after saving
+	optdepends = xdg-utils: open clips and the recordings folder
+	optdepends = picom: translucent selection overlay (any compositor works)
+	optdepends = zenity: ask_save_location file dialog
+	source = peek2-0.2.1.tar.gz::https://github.com/rotkonetworks/peek2/archive/v0.2.1.tar.gz
+	sha256sums = 3fefe6c938d3a1ba18af8a59836969aded9cbcd9cd44bb49f3dda6202aae276e
+
+pkgname = peek2
