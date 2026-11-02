@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+==> SourceBans++: enable PHP's pdo_mysql and sodium extensions in /etc/php/php.ini, create a
+    MariaDB database and user for the panel, then run "sourcebans-pp setup" as root: it writes
+    /etc/webapps/sourcebans-pp/config.php, creates the tables and the first admin, and prints the
+    entry of SourceMod's databases.cfg. The web root is /usr/share/webapps/sourcebans-pp, see
+    /usr/share/doc/sourcebans-pp/nginx.conf.example. GeoIP flags need geoipupdate's GeoLite2
+    Country database.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> SourceBans++: run "sourcebans-pp upgrade" as root for the new version's database migrations.
+EOF
+}

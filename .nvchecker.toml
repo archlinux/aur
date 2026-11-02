@@ -1,0 +1,5 @@
+# The releases of SourceBans++: the panel and the plugins share the tag
+[sourcebans-pp]
+source = "github"
+github = "sbpp/sourcebans-pp"
+use_latest_release = true

@@ -1,0 +1,34 @@
+# SourceBans++ with nginx and PHP-FPM (php-fpm.service): a server block for /etc/nginx/nginx.conf
+# or an included file, with the server name, TLS and the PHP-FPM socket adapted. The access rules
+# are those of upstream's Apache configuration (docker/apache/sbpp-prod.conf).
+server {
+    listen 80;
+    server_name bans.example.com;
+    root /usr/share/webapps/sourcebans-pp;
+    index index.php;
+
+    # Uploaded demos (getdemo.php serves them), the panel's code and configuration, its caches and
+    # the GeoIP database are not for the web
+    location ~ ^/(demos|includes|configs|cache|templates_c|data)(/|$) {
+        deny all;
+    }
+    location ~ /\. {
+        deny all;
+    }
+    location ~* ^/config\.php {
+        deny all;
+    }
+
+    add_header X-Content-Type-Options nosniff always;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+}

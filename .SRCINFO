@@ -1,0 +1,46 @@
+pkgbase = sourcebans-pp
+	pkgdesc = SourceBans++, the admin, ban and communication management of SourceMod game servers
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://sbpp.github.io
+	arch = any
+	license = Elastic-2.0
+	license = GPL-3.0-only
+	checkdepends = mariadb
+	makedepends = composer
+	makedepends = git
+	makedepends = php
+	makedepends = php-sodium
+	makedepends = sourcemod
+	makedepends = sourcemod-scripting
+	source = git+https://github.com/sbpp/sourcebans-pp.git#tag=2.2.3
+	source = sourcebans-pp.php
+	source = nginx.conf.example
+	sha512sums = 9758c463719adfe1c3115f06026da6034a771814c5c8948547fdb228d86db29ad945b1131b555a35f1446210c8880663cd986d2b4a3f1f14152624344d6c1f85
+	sha512sums = b4368cfc69b78a727d31f586068aa65de35741171141ca145c5dcbdaa2d068261cc3f6564ac94a38fb1d94c40bdf2bdda98c4623cdf18e90b716d6b40f3a92bf
+	sha512sums = 227373db3705b82b2c44d2d2a0ed7916e35d3c40c2381ee67d0397e23bc1ff4796b6d049aeb6674c0e1e7b9323222e74c0fd90639ea8d6899a58932b05682b19
+	b2sums = 9e69911b790cc681f7b7a8790de16fd2a2bd092369b556eb8a5dd98149601fbbcc56604992291380528c7f4683d35d354603ea6e8e0d3e227a07a938a5efce05
+	b2sums = bb98ddf6ba5111995ac6128c9dc5d787099f4a250ff4ae29fa15b14c25132ed2bd110b47c459f9bd7453ac2da0dffb69966ef4f9b471944b06c083e704dfe2ee
+	b2sums = 03f7ce234493a51c3be8b3b5f5b35a287ccbc36f6fbda5b12fabc8bb5608221d9bedc31e291c1838dd4d92c8cf9a2c6df43b357e86313f75c82c20343af1d054
+
+pkgname = sourcebans-pp
+	pkgdesc = SourceBans++, the admin, ban and communication management of SourceMod game servers (web panel)
+	install = sourcebans-pp.install
+	license = Elastic-2.0
+	license = MIT
+	license = BSD-3-Clause
+	license = Apache-2.0
+	license = LGPL-3.0-or-later
+	license = LGPL-2.1-only
+	depends = php
+	depends = php-sodium
+	optdepends = mariadb: the database server
+	optdepends = php-fpm: a web server with PHP-FPM, like nginx
+	optdepends = geoipupdate: the GeoLite2 Country database of the country flags
+
+pkgname = sourcemod-sourcebans-pp
+	pkgdesc = SourceBans++, the admin, ban and communication management of SourceMod game servers (SourceMod plugins)
+	license = GPL-3.0-only
+	license = GPL-3.0-or-later
+	depends = sourcemod
+	optdepends = sourcemod-sourcebans-pp-discord-forward: for bans, comms and reports forwarded to Discord
