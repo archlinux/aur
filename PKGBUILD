@@ -3,7 +3,7 @@
 # Kalipso from the latest commit on main: for trying what is not released yet.
 
 pkgname=kalipso-git
-pkgver=0.1.r65.g725e62d
+pkgver=0.1.r67.g72fbc0a
 pkgrel=1
 pkgdesc='Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal (development version)'
 arch=('x86_64')
