@@ -1,6 +1,6 @@
 pkgbase = voicestudio-git
 	pkgdesc = Local AI voice studio: cloning, speech, dubbing and transcription (development sources)
-	pkgver = 0.5.7.r6387.g1a29929
+	pkgver = 0.5.7.r6389.g8ca40db
 	pkgrel = 1
 	url = https://voicestudio.sh
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = voicestudio-git
 	depends = xdotool
 	optdepends = libappindicator-gtk3: tray integration on compatible desktops
 	optdepends = xdg-desktop-portal: native file dialogs and desktop integration
-	provides = voicestudio=0.5.7.r6387.g1a29929
+	provides = voicestudio=0.5.7.r6389.g8ca40db
 	conflicts = voicestudio
 	options = !strip
 	options = !debug

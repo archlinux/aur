@@ -1,6 +1,6 @@
 # Maintainer: Palash Debnath <aur at palash dot dev>
 pkgname=voicestudio-git
-pkgver=0.5.7.r6387.g1a29929
+pkgver=0.5.7.r6389.g8ca40db
 pkgrel=1
 pkgdesc='Local AI voice studio: cloning, speech, dubbing and transcription (development sources)'
 arch=('x86_64')
@@ -90,7 +90,7 @@ EOF
   chmod 755 "$pkgdir/usr/bin/voicestudio"
 
   install -d "$pkgdir/usr/share/applications"
-  cat > "$pkgdir/usr/share/applications/voicestudio.desktop" <<'EOF'
+  cat > "$pkgdir/usr/share/applications/VoiceStudio.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=VoiceStudio
@@ -99,7 +99,7 @@ Exec=voicestudio %U
 Icon=voicestudio
 Terminal=false
 Categories=AudioVideo;Audio;
-StartupWMClass=voicestudio-electron
+StartupWMClass=VoiceStudio
 EOF
   install -Dm644 docs/logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/voicestudio.svg"
