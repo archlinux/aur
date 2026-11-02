@@ -6,7 +6,7 @@ pkgbase = wal2json
 	install = wal2json.install
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = llvm
 	depends = postgresql>=9.4
 	source = wal2json-2.7.tar.gz::https://github.com/eulerto/wal2json/archive/refs/tags/wal2json_2_7.tar.gz

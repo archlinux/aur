@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Output plugin for logical decoding PostgreSQL WAL's"
 arch=(i686 x86_64)
 url="https://github.com/eulerto/wal2json"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('postgresql>=9.4')
 makedepends=('llvm')
 install="wal2json.install"
@@ -24,6 +24,6 @@ build() {
 package() {
   cd "${pkgname}-${pkgname}_${pkgver//./_}"
   USE_PGXS=1 make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/wal2json/LICENSE
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
