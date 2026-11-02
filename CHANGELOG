@@ -1,0 +1,10 @@
+libslimbook 1.28.1-2
+  - Add optdepends for the tools used by slimbookctl report: usbutils,
+    efibootmgr, libinput-tools, xorg-xinput, dmidecode, pciutils, flatpak,
+    networkmanager.
+  - Add this changelog.
+
+libslimbook 1.28.1-1
+  - Initial release, built from upstream tag 1.28.1.
+  - Install helpers in /usr/lib/slimbook instead of /usr/libexec.
+  - Install slimbookctl without the setuid bit.

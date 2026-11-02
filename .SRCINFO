@@ -1,8 +1,9 @@
 pkgbase = libslimbook
 	pkgdesc = Slimbook core library, slimbookctl CLI and settings load/store service
 	pkgver = 1.28.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Slimbook-Team/libslimbook
+	changelog = CHANGELOG
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -10,6 +11,14 @@ pkgbase = libslimbook
 	depends = bash
 	depends = gcc-libs
 	depends = glibc
+	optdepends = usbutils: USB devices in slimbookctl report
+	optdepends = efibootmgr: UEFI boot entries in slimbookctl report
+	optdepends = libinput-tools: input device details in slimbookctl report
+	optdepends = xorg-xinput: X11 input devices in slimbookctl report
+	optdepends = dmidecode: DMI/SMBIOS tables in slimbookctl report
+	optdepends = pciutils: PCI devices in slimbookctl report
+	optdepends = flatpak: installed Flatpak apps in slimbookctl report
+	optdepends = networkmanager: Wi-Fi networks in slimbookctl report-full
 	source = libslimbook::git+https://github.com/Slimbook-Team/libslimbook.git#tag=1.28.1
 	sha256sums = SKIP
 
