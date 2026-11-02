@@ -1,6 +1,6 @@
 pkgbase = python-simp-sexp
 	pkgdesc = A simple S-expression parser
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://pypi.org/project/simp-sexp
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-simp-sexp
 	conflicts = python-simp-sexp
 	options = !strip
 	options = !debug
-	source = simp_sexp-0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/s/simp_sexp/simp_sexp-0.3.1.tar.gz
-	sha256sums = fe85fad291079ab5bca181c228282e25bc0df70741c0dee593a4216b87980b5a
+	source = simp_sexp-0.3.2.tar.gz::https://files.pythonhosted.org/packages/source/s/simp_sexp/simp_sexp-0.3.2.tar.gz
+	sha256sums = 5e8ee29e5b2ae2c77279cf0e76014ffae21a54b57b1315a07009e7d4f8e4120b
 
 pkgname = python-simp-sexp
