@@ -1,6 +1,6 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
-	pkgver = 21.0
+	pkgver = 22.0
 	pkgrel = 1
 	url = http://openmsx.org/
 	install = openmsx.install
@@ -21,7 +21,7 @@ pkgbase = openmsx
 	optdepends = libvorbis
 	provides = openmsx
 	conflicts = openmsx-git
-	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_21_0/openmsx-21.0.tar.gz
-	md5sums = b83bdf25802def751efd06ec1c124263
+	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_22_0/openmsx-22.0.tar.gz
+	md5sums = 7f5815e8a0d637ac49f21bbe9787efdc
 
 pkgname = openmsx

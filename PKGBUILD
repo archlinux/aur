@@ -2,7 +2,7 @@
 # Contributor: Tom < reztho at archlinux dot us >
 
 pkgname=openmsx
-pkgver=21.0
+pkgver=22.0
 pkgrel=1
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ install=${pkgname}.install
 provides=("openmsx")
 conflicts=("openmsx-git")
 source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('b83bdf25802def751efd06ec1c124263')
+md5sums=('7f5815e8a0d637ac49f21bbe9787efdc')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
