@@ -1,0 +1,17 @@
+pkgbase = perl-file-raw-json
+	pkgdesc = Fast JSON / JSONL plugin for File::Raw
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Raw-JSON
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-file-raw>=0.15
+	depends = perl-tie-orderedhash>=0.05
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/File-Raw-JSON-0.08.tar.gz
+	md5sums = f76ddcc918db9e62ef2a5c9fa396d1d6
+	sha512sums = 3aabadccb6b279b4ce17e23a53fcad4f8156f5f445440611375d084ee88c6f2d86439a5ac875428da8dd5f60a2e3b11d86ab8683c1b0fe427fff5b2280e20c94
+
+pkgname = perl-file-raw-json
