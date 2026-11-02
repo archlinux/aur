@@ -1,0 +1,23 @@
+pkgbase = fiji-latest-bin
+	pkgdesc = Fiji is an image processing package, a “batteries-included” distribution of ImageJ2, bundling a lot of plugins which facilitate scientific image analysis.
+	pkgver = 20261030.1817
+	pkgrel = 1
+	epoch = 2
+	url = http://fiji.sc/
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gendesk
+	depends = freetype2
+	depends = libnet
+	optdepends = ttf-lucida-fonts: fix font rendering, see https://aur.archlinux.org/packages/fiji-bin#comment-1014013
+	provides = fiji=20261030.1817
+	provides = fiji-bin=20261030.1817
+	conflicts = fiji
+	conflicts = fiji-bin
+	replaces = fiji-bin
+	options = !debug
+	options = !strip
+	source = fiji-latest-bin-20261030.1817.zip::https://downloads.imagej.net/fiji/archive/latest/20261030-1817/fiji-latest-linux64-jdk.zip
+	sha256sums = a1c7996c9ed811966f706223a4aac32283e77e5c683741be2e422d43cf86d133
+
+pkgname = fiji-latest-bin
