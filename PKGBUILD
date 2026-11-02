@@ -1,4 +1,5 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="sngrep"
 pkgname="${_pkgname}-bin"
