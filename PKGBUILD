@@ -2,7 +2,7 @@
 # Maintainer: Justin Dickey <justin.dickey.eg@gmail.com>
 
 pkgname='goplaying-bin'
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc='Now Playing TUI written in Go (binary release)'
 url='https://github.com/justinmdickey/goplaying'
@@ -13,10 +13,10 @@ conflicts=('goplaying' 'goplaying-git')
 depends=('playerctl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/justinmdickey/goplaying/releases/download/v${pkgver}/goplaying_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5a80648968a70db1133ad46e36e5bb4ef28da2b5d0ef45c701214b1fe25823ac')
+sha256sums_aarch64=('d06136b91210b5cc94ea2d77a65610515dfc9841a5d82b700595f19e7cf25629')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/justinmdickey/goplaying/releases/download/v${pkgver}/goplaying_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('5ab18677dbd061eb834ecc683bb525b6c44564a1e171891f4eb8f43cfa31767c')
+sha256sums_x86_64=('0f16606a4f68c88dfb834028132dc0b6726ed4bb1a6ce6daf314615389e9556f')
 
 package() {
   install -Dm755 "./goplaying" "${pkgdir}/usr/bin/goplaying"
