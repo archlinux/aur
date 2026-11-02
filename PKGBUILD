@@ -2,7 +2,7 @@
 _appname=ratssearch
 pkgname="${_appname//ss/s-s}-bin"
 _pkgname=RatsSearch
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/librats/rats-search/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b3e42cab41d599f8b8a708c5ecf375bc22cc7da6f0c973b0e1e76dc1413b1b41'
+sha256sums=('68360dae26040ffebbc8e1b0dc0da6d3030da7c6b812624d844a64ef2852db81'
             'fa6a25af037d88ee811669579da9674e5694611599600b11e691115054f6fe2f'
-            'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
+            '216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g

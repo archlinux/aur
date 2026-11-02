@@ -1,6 +1,6 @@
 pkgbase = rats-search-bin
 	pkgdesc = BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client.
-	pkgver = 2.3.5
+	pkgver = 2.3.6
 	pkgrel = 1
 	url = https://github.com/librats/rats-search
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = rats-search-bin
 	depends = libx11
 	depends = libgpg-error
 	depends = libglvnd
-	provides = rats-search=2.3.5
+	provides = rats-search=2.3.6
 	conflicts = rats-search
-	source = rats-search-2.3.5-x86_64.AppImage::https://github.com/librats/rats-search/releases/download/v2.3.5/RatsSearch-Linux-x64-v2.3.5.AppImage
-	source = LICENSE-2.3.5::https://raw.githubusercontent.com/librats/rats-search/v2.3.5/LICENSE
+	source = rats-search-2.3.6-x86_64.AppImage::https://github.com/librats/rats-search/releases/download/v2.3.6/RatsSearch-Linux-x64-v2.3.6.AppImage
+	source = LICENSE-2.3.6::https://raw.githubusercontent.com/librats/rats-search/v2.3.6/LICENSE
 	source = rats-search.sh
-	sha256sums = b3e42cab41d599f8b8a708c5ecf375bc22cc7da6f0c973b0e1e76dc1413b1b41
+	sha256sums = 68360dae26040ffebbc8e1b0dc0da6d3030da7c6b812624d844a64ef2852db81
 	sha256sums = fa6a25af037d88ee811669579da9674e5694611599600b11e691115054f6fe2f
-	sha256sums = b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863
+	sha256sums = 216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4
 
 pkgname = rats-search-bin
