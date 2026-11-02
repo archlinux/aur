@@ -2,7 +2,7 @@
 # Maintainer: Daniel Lee Harple <git@dlh.dev>
 
 pkgname='vedi'
-pkgver=2.5.5
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Pager for colored text; select with the keyboard and copy'
 url='https://github.com/dlh/vedi'
@@ -13,7 +13,7 @@ conflicts=('vedi')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/dlh/vedi/releases/download/v${pkgver}/vedi-${pkgver}.tar.gz")
-sha256sums=('10cd9251054b4ddc0245d5eca40f3d4a5663e4dba7917540ae686186a1d66330')
+sha256sums=('a27afc87477f9583e160582e4e4f76ae6954c8cdb1acef01cc124c472db8010d')
 prepare() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
@@ -28,6 +28,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 target/release/vedi "${pkgdir}/usr/bin/vedi"
+  install -Dm644 LICENSE-THIRD-PARTY "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-THIRD-PARTY"
   install -Dm644 vedi/man/vedi.1 "${pkgdir}/usr/share/man/man1/vedi.1"
   install -Dm644 vedi/completions/vedi.bash "${pkgdir}/usr/share/bash-completion/completions/vedi"
   install -Dm644 vedi/completions/_vedi "${pkgdir}/usr/share/zsh/site-functions/_vedi"
