@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=triproxy-bin
 _pkgname=TriProxy
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A modern multi-core proxy client: unified lifecycle management for Mihomo, sing-box and Xray."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'libappindicator'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64-full.deb")
-sha256sums=('54e882bfcff0b0473f5afcb3579278883c1d754f01f2ae28218bb9cb1126f595')
+sha256sums=('adb10e3a782e52c40e683172c2cf9f7ff96b086966cd866b1390d776ef893c54')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do

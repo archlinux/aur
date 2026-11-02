@@ -1,6 +1,6 @@
 pkgbase = triproxy-bin
 	pkgdesc = A modern multi-core proxy client: unified lifecycle management for Mihomo, sing-box and Xray.
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/luoqingciya/TriProxy
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = triproxy-bin
 	depends = webkit2gtk-4.1
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = triproxy=0.2.5
+	provides = triproxy=0.2.6
 	conflicts = triproxy
-	source = triproxy-0.2.5.deb::https://github.com/luoqingciya/TriProxy/releases/download/v0.2.5/TriProxy-0.2.5-linux-x64-full.deb
-	sha256sums = 54e882bfcff0b0473f5afcb3579278883c1d754f01f2ae28218bb9cb1126f595
+	source = triproxy-0.2.6.deb::https://github.com/luoqingciya/TriProxy/releases/download/v0.2.6/TriProxy-0.2.6-linux-x64-full.deb
+	sha256sums = adb10e3a782e52c40e683172c2cf9f7ff96b086966cd866b1390d776ef893c54
 
 pkgname = triproxy-bin
