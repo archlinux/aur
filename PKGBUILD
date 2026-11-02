@@ -3,7 +3,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=gh-eco
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="🦎 gh cli extension to explore the ecosystem"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/jrnxf/gh-eco"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='d2911e2493869afd73cb7673d61e6ccba2ba5e23'
+_commit='6012be878c015657a8afe440ac2b6d47a6c4129c'
 source=("git+https://github.com/jrnxf/gh-eco.git#commit=$_commit")
 sha256sums=('SKIP')
 
