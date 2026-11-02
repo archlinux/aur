@@ -1,0 +1,24 @@
+pkgbase = rive-cli-bin
+	pkgdesc = Command-line tools for creating, previewing, and publishing Rive graphics
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://rive.app/
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	depends = libglvnd
+	depends = libx11
+	depends = wayland
+	depends = libxkbcommon
+	optdepends = xdg-utils: open browser links for authentication
+	provides = rive-cli=1.8.0
+	conflicts = rive-cli
+	options = !strip
+	options = !debug
+	source = rive-cli-bin-1.8.0-linux-x64.tar.gz::https://releases.rive.app/cli/v1.8.0/rive-linux-x64.tar.gz
+	sha256sums = 9d67bdb77e33db2daa7ce80df51579212ff0cf55a9d6ae3696e4608a248847af
+
+pkgname = rive-cli-bin
