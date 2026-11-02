@@ -11,7 +11,5 @@ MSG
 }
 
 post_upgrade() {
-    # Nothing to migrate. A running VM keeps the QEMU it was started
-    # with until it is shut down and started again.
     :
 }

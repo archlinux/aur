@@ -1,6 +1,6 @@
 pkgbase = lsw-bin
 	pkgdesc = Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/acceleration3/linux-subsystem-windows
 	install = lsw-bin.install
@@ -70,7 +70,7 @@ pkgbase = lsw-bin
 	conflicts = lsw
 	options = !strip
 	options = !debug
-	source = https://github.com/acceleration3/linux-subsystem-windows/releases/download/v0.2.0/lsw-0.2.0-x86_64.tar.zst
-	sha256sums = 22f512802aace1ebde8f05856541676b70cf221ac5c7d922a112d3ea81bde073
+	source = https://github.com/acceleration3/linux-subsystem-windows/releases/download/v0.2.1/lsw-0.2.1-x86_64.tar.zst
+	sha256sums = 592fc4b06eb2fdf1c4410a38e7019d9473df0af4c26a154177210abc052a7593
 
 pkgname = lsw-bin
