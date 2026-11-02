@@ -3,7 +3,7 @@
 # Distinct from classic Fizick MVTools and from vapoursynth-plugin-mvtools.
 
 pkgname=avisynth-plugin-mvtools2-pinterf-bin
-pkgver=2.7.47
+pkgver=2.7.48
 pkgrel=1
 pkgdesc="AviSynth+ MVTools2 (pinterf) — prebuilt"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 # Arch tarball from this repo's mvtools2-pinterf-v$pkgver Release (not Ubuntu).
 _tarball="avisynth-plugin-mvtools2-pinterf-${pkgver}-linux-x86_64-arch.tar.zst"
 source=("${_tarball}::https://github.com/mysteryx93/AviSynth-Plugins-AUR/releases/download/mvtools2-pinterf-v${pkgver}/${_tarball}")
-sha256sums=('c0d41742dd3c335cfc1d2de1221d9c82768fe35c00d7b381caca2acdd9dbfaa3')
+sha256sums=('016d3495d50d891ea262911ae2a570015ba9a7dd4f2918537c9dc496d3502cc2')
 
 package() {
     install -dm755 "${pkgdir}/usr/lib/avisynth"
