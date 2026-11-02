@@ -2,7 +2,7 @@
 pkgname=icon-theme-toolkit
 pkgver=1.0.2.1
 pkgrel=1
-pkgdesc="Toolkit for creating and editing Linux icon themes"
+pkgdesc="Toolkit for editing Linux icon themes (comparer, editor, problem-fixer)"
 arch=('any')
 url="https://github.com/nestoris/icon-theme-toolkit"
 license=('GPLv3')

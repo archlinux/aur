@@ -1,5 +1,5 @@
 pkgbase = icon-theme-toolkit
-	pkgdesc = Toolkit for creating and editing Linux icon themes
+	pkgdesc = Toolkit for editing Linux icon themes (comparer, editor, problem-fixer)
 	pkgver = 1.0.2.1
 	pkgrel = 1
 	url = https://github.com/nestoris/icon-theme-toolkit
