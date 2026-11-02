@@ -1,0 +1,6 @@
+# The releases of libmaxminddb. Upgrade with Arch's libmaxminddb, whose headers the 32-bit library
+# uses.
+[lib32-libmaxminddb]
+source = "github"
+github = "maxmind/libmaxminddb"
+use_latest_release = true

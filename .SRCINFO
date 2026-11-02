@@ -1,0 +1,16 @@
+pkgbase = lib32-libmaxminddb
+	pkgdesc = MaxMindDB GeoIP2 database library (32-bit)
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = https://maxmind.github.io/libmaxminddb/
+	arch = x86_64
+	license = Apache-2.0
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = libmaxminddb
+	provides = libmaxminddb.so
+	source = https://github.com/maxmind/libmaxminddb/releases/download/1.14.1/libmaxminddb-1.14.1.tar.gz
+	sha512sums = d6e5f0e7fff896ac63525bcf01b06944388c6756889ac533dfaf416fd2e494953f31ede1a2352bdcf5018e2544b65eb3328a22f9233c50e01e0809a5bc6486cc
+	b2sums = 8ced4fe8162f603c734a35d86f01bec4a03c6d4bca0410572f3fa201d06cbf49c0459f25320697186c9c13a11616a3b3f64819ed1b3004bc3c9b15898696ac8c
+
+pkgname = lib32-libmaxminddb
