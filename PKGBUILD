@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=pyzx
 pkgname=python-$_name
-pkgver=0.10.7
+pkgver=0.10.8
 pkgrel=1
 pkgdesc="A library for quantum circuit rewriting and optimisation using the ZX-calculus"
 arch=(any)
@@ -13,7 +13,6 @@ depends=(
     python-numpy
     python-pyperclip
     python-tqdm
-    python-typing_extensions
 )
 makedepends=(
     python-build
@@ -32,7 +31,7 @@ optdepends=(
     "python-quimb: tensor networks support"
 )
 source=($_name-$pkgver.tar.gz::https://github.com/zxcalc/pyzx/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('ffa5bc651d5b122b2b45a4f9990ba6ebb9ff60b739036cf9a7a2bbec6387f8c6c33114711ee76cff6da610e4fa8fda67eeb88e08e5a3d36e2c22af86ebf4d7e7')
+b2sums=('7fe19b2c488649bbe3900daa04f803d1408b7e86241c443803bd237d44ba0ea85aff565dc9b06ee2bae51b0bdcd9382dcb898f8c1cda59c598c1893c865344fa')
 
 build() {
     cd $_name-$pkgver
