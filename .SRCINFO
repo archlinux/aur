@@ -1,0 +1,17 @@
+pkgbase = nlock-bin
+	pkgdesc = Make shell commands take turns: named locks with a queue for terminals, cron jobs, scripts and coding agents
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/erietz/nlock
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = nlock
+	conflicts = nlock
+	options = !strip
+	source_x86_64 = nlock-x86_64-0.1.9.tgz::https://github.com/erietz/nlock/releases/download/v0.1.9/nlock-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 76daf8fbabe85af893f81de2cf67c6dbb344cb8ccd5a3ee08b8e3df85dbc9cde
+	source_aarch64 = nlock-aarch64-0.1.9.tgz::https://github.com/erietz/nlock/releases/download/v0.1.9/nlock-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0b35554f31bafb961a58a7095a4b985263776079c02f63e13d1c85662de9f022
+
+pkgname = nlock-bin

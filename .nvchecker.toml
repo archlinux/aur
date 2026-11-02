@@ -1,0 +1,5 @@
+[nlock-bin]
+source = "github"
+github = "erietz/nlock"
+use_latest_release = true
+prefix = "v"
