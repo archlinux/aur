@@ -11,6 +11,7 @@ depends=(
   python
   pyside6
   kirigami
+  qqc2-desktop-style
   kitemmodels
   python-lark
   python-pydantic

@@ -14,6 +14,7 @@ pkgbase = xkb-editor
 	depends = python
 	depends = pyside6
 	depends = kirigami
+	depends = qqc2-desktop-style
 	depends = kitemmodels
 	depends = python-lark
 	depends = python-pydantic
