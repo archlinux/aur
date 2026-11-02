@@ -15,9 +15,10 @@ _vtium_enable() {
     enable --all is for a machine whose autovt@.service link does not name
     kmscon. vtium console starts nothing: it changes which console starts on
     a VT next time, and prints the command that starts vtium there now, which
-    ends every session on that VT. It refuses a VT that kmscon, a display
-    manager or a graphical session holds. To give VTs back, which you also do
-    before you remove vtium:
+    ends every session on that VT. enable 3 refuses a VT that kmscon, a
+    display manager or a graphical session holds, and enable --all passes
+    such a VT by and names it. To give VTs back, which you also do before you
+    remove vtium:
       sudo vtium console disable 3
       sudo vtium console disable --all
     To share VTs with kmscon, or to move from kmscon to vtium, read the README:
@@ -102,15 +103,18 @@ post_remove() {
   [ -n "$left" ] || return 0
   printf '%s\n' "==> vtium is removed, but these links to vtium@.service are left and point at"
   printf '%s\n' "    nothing, so logind would start nothing on those VTs. Remove each, and"
-  printf '%s\n' "    enable its VT's getty at boot again:"
+  printf '%s\n' "    enable its VT's getty at boot again. Where kmscon served a VT, skip that"
+  printf '%s\n' "    VT's add-wants line and link the VT to kmscon instead, as shown below:"
   printf '%s' "$left"
-  printf '%s\n' "    Where kmscon served a VT, link it to kmscon in place of its getty:"
+  printf '%s\n' "    The kmscon link, for a VT that kmscon served:"
   printf '%s\n' "      sudo ln -s /usr/lib/systemd/system/kmsconvt@.service \\"
   printf '%s\n' "        /etc/systemd/system/autovt@ttyN.service"
   printf '%s\n' "    Then reload systemd:"
   printf '%s\n' "      sudo systemctl daemon-reload"
-  printf '%s\n' "    Each getty starts at the next boot, or now with"
-  printf '%s\n' "    sudo systemctl start getty@ttyN.service."
+  printf '%s\n' "    Each getty starts at the next boot, or now, once vtium has stopped on its"
+  printf '%s\n' "    VT, with sudo systemctl start getty@ttyN.service. Started while vtium"
+  printf '%s\n' "    still runs there, the getty stops vtium, which ends every session on"
+  printf '%s\n' "    that VT."
   if [ -n "$(ls -A "$records" 2>/dev/null)" ]; then
     printf '%s\n' "    Or put back exactly what vtium console recorded in $records:"
     printf '%s\n' "    install vtium again, run sudo vtium console disable --all, then remove it."
