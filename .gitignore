@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!README.md
+!FEATURES.md
+!.SRCINFO
+!set_gasp.py
+!measure.py
+!make_features.py
