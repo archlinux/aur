@@ -2,7 +2,7 @@
 
 pkgname=libredj
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DJ software for Linux."
 arch=('x86_64')
 url="https://codeberg.org/OpenDJLab/LibreDJ"
@@ -14,8 +14,9 @@ sha256sums=('880a51c8f6b2be7af1c1e24725fc1bfee83a7520f4b9df826ff79ff7eed215f9')
 
 prepare() {
 	cd $pkgname
+	export RUSTUP_TOOLCHAIN=nightly
 	cargo update
-	cargo fetch --locked #--target host-tuple
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -28,7 +29,7 @@ build() {
 }
 
 package() {
-	install -Dm0755 "$srcdir/$pkgname/target/release/libredj" "$pkgdir/usr/bin/"
+	install -Dm0755 "$srcdir/$pkgname/target/release/gui" "$pkgdir/usr/bin/libredj"
 }
 
 # vim:set ts=2 sw=2

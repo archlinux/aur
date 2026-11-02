@@ -1,7 +1,7 @@
 pkgbase = libredj
 	pkgdesc = DJ software for Linux.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/OpenDJLab/LibreDJ
 	arch = x86_64
 	groups = pro-audio
