@@ -1,0 +1,23 @@
+pkgbase = viper4linux-re
+	pkgdesc = ViPERDSP audio effects for PipeWire with a Qt6 interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/username227/viper4linux-re
+	arch = x86_64
+	license = MIT
+	license = LicenseRef-ViPERDSP
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base
+	depends = pipewire
+	depends = ladspa
+	depends = python
+	conflicts = viper4linux-re-git
+	conflicts = viper4linux
+	conflicts = viper4linux-git
+	source = https://github.com/username227/viper4linux-re/releases/download/v1.0.0/viper4linux-re-1.0.0-unified-source.tar.xz
+	sha256sums = 5f22df6e4387bc73d80614c2a539e2fb668aa2a08a8a73c9db63ad8e49c5646d
+
+pkgname = viper4linux-re
