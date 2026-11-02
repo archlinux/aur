@@ -1,6 +1,6 @@
 pkgbase = vtium-git
 	pkgdesc = Terminal for the Linux console, drawn through KMS/DRM (git main)
-	pkgver = r1547.725c369
+	pkgver = r1866.16e66a2
 	pkgrel = 1
 	url = https://github.com/vtium/vtium
 	arch = x86_64
