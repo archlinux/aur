@@ -1,7 +1,7 @@
 pkgbase = emdash-bin
 	pkgdesc = Run multiple coding agents in parallel
 	pkgver = 1.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emdash.sh
 	arch = x86_64
 	license = Apache-2.0

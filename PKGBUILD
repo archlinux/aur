@@ -3,7 +3,7 @@
 
 pkgname=emdash-bin
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Run multiple coding agents in parallel"
 arch=('x86_64')
 url="https://emdash.sh"
@@ -40,5 +40,5 @@ package() {
   rm -rf "${pkgdir}/usr/share/doc"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s /opt/Emdash/emdash "${pkgdir}/usr/bin/emdash"
+  ln -s /opt/Emdash/Emdash "${pkgdir}/usr/bin/emdash"
 }
