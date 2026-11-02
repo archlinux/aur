@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=triproxy-bin
 _pkgname=TriProxy
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A modern multi-core proxy client: unified lifecycle management for Mihomo, sing-box and Xray."
 arch=('x86_64')
@@ -19,8 +19,8 @@ depends=(
     'xray'
     'sing-box'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64-full.deb")
-sha256sums=('48c118d53e06954bfaf54e0a44308f6a736967f74b393d6015480db01088819e')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64-lite.deb")
+sha256sums=('d789162e9773bfa46a9a287ee3cb94456893092e7e0cfad3ffb3f0d97b2ffddf')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
@@ -38,6 +38,7 @@ prepare() {
         s/Exec=${pkgname%-bin}-app/Exec=${pkgname%-bin}/g
         s/Icon=${pkgname%-bin}-app/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm755 -d "${srcdir}/usr/lib/${_pkgname}/cores"
     ln -sf "/usr/bin/mihomo" "${srcdir}/usr/lib/${_pkgname}/cores/xray"
     ln -sf "/usr/bin/xray" "${srcdir}/usr/lib/${_pkgname}/cores/xray"
     ln -sf "/usr/bin/sing-box" "${srcdir}/usr/lib/${_pkgname}/cores/sing-box"
