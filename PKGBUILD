@@ -16,6 +16,8 @@ sha256sums=('6a6f1b784ec1ec799256b03bb0f03891981919621a5455e7e01441dfae83ec32')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
+  # With rustup in place of the rust package, cargo needs a toolchain named.
+  export RUSTUP_TOOLCHAIN=stable
   python3 openxlr-packaging/build.py build \
     --source "$srcdir/${pkgname}-${pkgver}" \
     --output "$srcdir/build" \
