@@ -1,17 +1,17 @@
 # Maintainer: tirith contributors
 pkgname=tirith
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sheeki03/tirith'
 license=('AGPL-3.0-only')
-depends=('gcc-libs' 'sudo')
+depends=('gcc-libs')
 makedepends=('cargo' 'base-devel')
 options=(!lto)
 install=tirith.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('84e1fdc35e60d684ab932e73c342b71e27d575bc70defcec4989c36957153b0a')
+sha256sums=('bcde1306c0229dff305f9469ce1a47bc05f588342e77e901a6cfaa04e29a0ccb')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -38,12 +38,12 @@ package() {
   fi
 
   # Shell hooks
-  install -Dm644 "shell/tirith.sh" "$pkgdir/usr/share/tirith/shell/tirith.sh"
-  install -Dm644 "shell/lib/zsh-hook.zsh" "$pkgdir/usr/share/tirith/shell/lib/zsh-hook.zsh"
-  install -Dm644 "shell/lib/bash-hook.bash" "$pkgdir/usr/share/tirith/shell/lib/bash-hook.bash"
-  install -Dm644 "shell/lib/fish-hook.fish" "$pkgdir/usr/share/tirith/shell/lib/fish-hook.fish"
-  install -Dm644 "shell/lib/powershell-hook.ps1" "$pkgdir/usr/share/tirith/shell/lib/powershell-hook.ps1"
-  install -Dm644 "shell/lib/nushell-hook.nu" "$pkgdir/usr/share/tirith/shell/lib/nushell-hook.nu"
+  install -Dm644 "crates/tirith/assets/shell/tirith.sh" "$pkgdir/usr/share/tirith/shell/tirith.sh"
+  install -Dm644 "crates/tirith/assets/shell/lib/zsh-hook.zsh" "$pkgdir/usr/share/tirith/shell/lib/zsh-hook.zsh"
+  install -Dm644 "crates/tirith/assets/shell/lib/bash-hook.bash" "$pkgdir/usr/share/tirith/shell/lib/bash-hook.bash"
+  install -Dm644 "crates/tirith/assets/shell/lib/fish-hook.fish" "$pkgdir/usr/share/tirith/shell/lib/fish-hook.fish"
+  install -Dm644 "crates/tirith/assets/shell/lib/powershell-hook.ps1" "$pkgdir/usr/share/tirith/shell/lib/powershell-hook.ps1"
+  install -Dm644 "crates/tirith/assets/shell/lib/nushell-hook.nu" "$pkgdir/usr/share/tirith/shell/lib/nushell-hook.nu"
 
   # Completions
   install -Dm644 <(target/release/tirith completions bash) "$pkgdir/usr/share/bash-completion/completions/tirith"
