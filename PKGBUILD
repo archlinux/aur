@@ -2,14 +2,14 @@
 # Binary assets are produced by the main repository's Gitea release workflow.
 pkgbase=deskwaifu-bin
 pkgname=('deskwaifu-bin' 'deskwaifu-ocr-bin')
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='DeskWaifu application and all default plugins'
 arch=('x86_64')
 url='https://github.com/ad2248/DeskWaifu'
 license=('LicenseRef-Live2D-Open-Software' 'LicenseRef-Live2D-Proprietary' 'BSD-3-Clause' 'MIT' 'Unlicense')
 options=('!strip' '!debug')
-_tag=0.1.0
+_tag=0.2.0
 _upstream_pkgrel=1
 _main="upstream-deskwaifu-bin-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
 _ocr="upstream-deskwaifu-ocr-bin-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
@@ -19,8 +19,8 @@ source=(
 )
 noextract=("$_main" "$_ocr")
 sha256sums=(
-  'c39ac0952fe61e641954d347cb7bd76a8a545db944970fa880c62b5b00460958'
-  'd9fb518cfa17a40e080792ef4e6da57d2104201c0643dde6bd8cdbf4bde413b8'
+  '64f413bb3e267c1bbccb974406416fb4e0a300cdb56ea0c6ed028dcaa4d37b7a'
+  '5b82bb5efd6f46d6276284ac00a8f501bf29abf7ff652870806312bc512da5ba'
 )
 
 package_deskwaifu-bin() {
@@ -41,4 +41,6 @@ package_deskwaifu-ocr-bin() {
   bsdtar -xpf "$srcdir/$_ocr" -C "$pkgdir" usr
   # The upstream component uses the un-suffixed name for its license directory.
   mv "$pkgdir/usr/share/licenses/deskwaifu-ocr" "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$pkgdir/usr/share/licenses/$pkgname/onnxruntime/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
