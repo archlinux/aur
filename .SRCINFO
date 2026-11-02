@@ -1,7 +1,7 @@
 pkgbase = anyzig-bin
 	pkgdesc = One zig to rule them all
 	pkgver = 2026_10_23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://marler8997.github.io/anyzig/
 	arch = aarch64
 	arch = armv7h
@@ -12,8 +12,8 @@ pkgbase = anyzig-bin
 	license = MIT
 	provides = anyzig
 	conflicts = anyzig
-	source = anyzig-2026_10_23-README.md::https://marler8997.github.io/anyzig//raw/refs/tags/v2026_10_23/README.md
-	source = anyzig-2026_10_23-LICENSE::https://marler8997.github.io/anyzig//raw/refs/tags/v2026_10_23/LICENSE
+	source = anyzig-2026_10_23-README.md::https://github.com/marler8997/anyzig/raw/refs/tags/v2026_10_23/README.md
+	source = anyzig-2026_10_23-LICENSE::https://github.com/marler8997/anyzig/raw/refs/tags/v2026_10_23/LICENSE
 	sha256sums = 4cf0cb1eff9e991243f36225ece249760a47b7387e6e518afc873e6fdb01c364
 	sha256sums = 491fef2e3fe35219d5bd74c3b0d166d323e279678fca49bb48200348d04c769d
 	source_aarch64 = anyzig-2026_10_23-aarch64-linux.tar.gz::https://github.com/marler8997/anyzig/releases/download/v2026_10_23/anyzig-aarch64-linux.tar.gz
@@ -49,11 +49,11 @@ pkgname = anyzig-common-bin
 	conflicts = anyzig<2026_10_23
 
 pkgname = anyzig-bin
-	depends = anyzig-common-bin>=2026_10_23-2
+	depends = anyzig-common-bin>=2026_10_23-3
 	provides = anyzig=2026_10_23
 	conflicts = anyzig
 
 pkgname = anyzls-bin
-	depends = anyzig-common-bin>=2026_10_23-2
+	depends = anyzig-common-bin>=2026_10_23-3
 	provides = anyzls=2026_10_23
 	conflicts = anyzls

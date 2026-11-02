@@ -11,7 +11,7 @@ pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
 pkgver=2026_10_23
-pkgrel=2
+pkgrel=3
 pkgdesc="One zig to rule them all"
 arch=(
   'aarch64'
@@ -34,8 +34,8 @@ conflicts=(
 )
 _pkgsrc="${_url##*/}-${pkgver}"
 source=(
-  "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-  "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+  "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE"
 )
 source_aarch64=(
   "${_pkgname[1]}-${pkgver}-aarch64-linux.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname[1]}-aarch64-linux.tar.gz"
