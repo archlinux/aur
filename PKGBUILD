@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ptouch-rs
-pkgver=0.15.2
+pkgver=0.15.4
 pkgrel=1
 pkgdesc="Brother P-Touch label printer driver and tools for Linux"
 arch=($CARCH)
@@ -27,7 +27,7 @@ backup=()
 options=('!lto')
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('1195698694c67677ae885c4094a1199d4a2b433a5da561ac3ac08c0a3dc42c9f')
+sha256sums=('65d447d03d2f1cc407b2ebc7c82dd7a3a991dcb6ef78c36945526d67d95d91ea')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
