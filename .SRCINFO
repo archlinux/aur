@@ -1,0 +1,17 @@
+pkgbase = opldeck
+	pkgdesc = PS2 game library manager for Open PS2 Loader
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/petru-sdev/opldeck
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.11
+	depends = pyside6
+	depends = python-py7zr>=1.1.4
+	source = git+https://github.com/petru-sdev/opldeck.git#tag=v0.8.0
+	sha256sums = SKIP
+
+pkgname = opldeck
