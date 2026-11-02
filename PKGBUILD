@@ -3,7 +3,7 @@
 # push-to-aur.sh replaces pkgver from the release tag before publication and
 # updpkgsums fills the checksum once that tag is public.
 pkgname=opal-media-player
-pkgver=0.8.8
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Play everything — media player, universal search, torrent streaming, local AI, one native binary"
 arch=('x86_64')
@@ -18,8 +18,10 @@ depends=(
     'ffmpeg'
 )
 makedepends=(
-    'zig>=0.16.0'
+    'zig>=0.17.0'
     'gcc'
+    'pkgconf'
+    'libwebp'
 )
 optdepends=(
     'yt-dlp: YouTube playback and downloads'
@@ -28,7 +30,7 @@ optdepends=(
     'python: voice helper scripts (STT/TTS servers)'
 )
 source=("Opal-$pkgver.tar.gz::https://github.com/debpalash/Opal/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9e2d0572d8ff959b6e2759ab226711fa66a2f63ecf13083ffe435908033be7c2')
+sha256sums=('02860dbeb19c9f74a2443dff26c6af7bd5ea4066ee8a111f5ac3f75b9a00b7b5')
 
 build() {
     cd "Opal-$pkgver"
@@ -42,15 +44,26 @@ build() {
     # 2. The app. -fsys=sdl2 links the system SDL2 (Wayland support);
     #    the binary carries $ORIGIN/../lib/opal in its rpath, matching the
     #    install layout below. Pin x86_64_v2 so AUR builds stay portable.
-    zig build -Doptimize=ReleaseSafe -fsys=sdl2 -Dcpu=x86_64_v2
+    zig build -Doptimize=safe -fsys=sdl2 -Dcpu=x86_64_v2
 }
 
 package() {
     cd "Opal-$pkgver"
 
     install -Dm755 zig-out/bin/opal          "$pkgdir/usr/bin/opal"
+    install -Dm755 zig-out/bin/opal-mcp      "$pkgdir/usr/bin/opal-mcp"
     install -Dm755 libtorrent_wrapper.so     "$pkgdir/usr/lib/opal/libtorrent_wrapper.so"
+    # Runtime resources: main.zig's detectResourceRoot roots them at /usr/lib/opal
+    # (torrent search, browser scraper, Plugins page, Web Remote). Same layout as
+    # the -bin package and packaging/nfpm.yaml.
+    cp -r engines                            "$pkgdir/usr/lib/opal/engines"
+    install -Dm755 scripts/camoufox_bridge.py "$pkgdir/usr/lib/opal/scripts/camoufox_bridge.py"
+    cp -r web                                "$pkgdir/usr/lib/opal/web"
+    install -Dm644 assets/logo.svg           "$pkgdir/usr/lib/opal/web/icon.svg"
+    install -Dm644 data/plugins-manifest.json  "$pkgdir/usr/lib/opal/plugins-manifest.json"
+    install -Dm644 data/manga-sources-sfw.json "$pkgdir/usr/lib/opal/manga-sources-sfw.json"
     install -Dm644 packaging/opal.desktop    "$pkgdir/usr/share/applications/opal.desktop"
     install -Dm644 assets/logo.svg           "$pkgdir/usr/share/icons/hicolor/scalable/apps/opal.svg"
+    install -Dm644 docs/licenses/libwebp.txt "$pkgdir/usr/share/licenses/$pkgname/libwebp.txt"
     install -Dm644 LICENSE                   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
