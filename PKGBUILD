@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-air-bin
-pkgver=0.12.0 # renovate: datasource=github-tags depName=posit-dev/air
+pkgver=0.13.0 # renovate: datasource=github-releases depName=posit-dev/air
 pkgrel=1
 pkgdesc="An R language server and formatter"
 arch=('x86_64')
@@ -23,5 +23,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('d2b9452bfc44d55f0e61c2d8906ca3fbaac5e63f40726017acf8bad6bfd3ba37'
+sha256sums_x86_64=('3909b12870df0b6a44e3f40376cd59aca373791c0abedd02dcbda7b136e4573c'
                    '19713ea69a4231105033c381dc2145148d26eab51e0b7e458ef4e775db531863')
