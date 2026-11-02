@@ -2,23 +2,21 @@
 
 pkgname=simpmd-git
 pkgdesc="Full emulator of PMD85 (git)"
-pkgver=r55.f6c7da3
+pkgver=r63.cee3b6c
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://dsrg.mff.cuni.cz/~ceres/prj/SimPMD/"
-license=('apache')
-depends=('sdl' 'python' 'popt' 'doxygen')
+url="https://github.com/jose1711/simpmd"
+license=('Apache-2.0')
+depends=('sdl2' 'sdl2_ttf' 'gcc-libs')
+makedepends=('git')
 replaces=('simpmd-svn')
 source=("${pkgname}"::'git+https://github.com/jose1711/simpmd.git' 'simpmd.desktop')
 md5sums=('SKIP'
-         '547f49d0df09285a3881491e8c3469a2')
-
+         'SKIP')
 
 build() {
-  cd ${srcdir}/${pkgname}
-  make PMD_BUILD=RELEASE PMD_SHARE=/usr/share/simpmd/
-  chmod 755 data/monitors/M{1,2,2-Patched-Tape}
-  sed -i '1s/$/2/' bin/ptp2raw bin/mem2raw bin/rawinfo
+  cd "${srcdir}/${pkgname}"
+  make PMD_BUILD=RELEASE PMD_SHARE=/usr/share/simpmd/ PMD_STATEHOME=.local/share/simpmd
 }
 
 pkgver() {
@@ -27,17 +25,11 @@ pkgver() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
-  mkdir -p $pkgdir/usr/share/{doc/simpmd-${pkgver},simpmd}
-  install -Dm755 bin/simpmd $pkgdir/usr/bin/simpmd
-  install -Dm755 bin/ptp2raw $pkgdir/usr/bin/ptp2raw
-  install -Dm755 bin/mem2raw $pkgdir/usr/bin/mem2raw
-  install -Dm755 bin/rawinfo $pkgdir/usr/bin/rawinfo
-  rm Makefile
-  install -Dm644 * $pkgdir/usr/share/doc/simpmd-${pkgver} || true
-  cd ${srcdir}/${pkgname}/data
-  mv monitors/* .
-  rmdir monitors
-  cp -r . ${pkgdir}/usr/share/simpmd
-  install -Dm644 $srcdir/simpmd.desktop ${pkgdir}/usr/share/applications/simpmd.desktop
+  cd "${srcdir}/${pkgname}"
+  install -Dm755 bin/simpmd "${pkgdir}/usr/bin/simpmd"
+  make install-data PMD_SHARE="${pkgdir}/usr/share/simpmd/"
+  install -Dm644 README.md CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 doc/*.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "${srcdir}/simpmd.desktop" "${pkgdir}/usr/share/applications/simpmd.desktop"
 }

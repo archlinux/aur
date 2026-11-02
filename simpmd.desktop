@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=SimPMD
-Comment=PMD85 emulator
-Exec=simpmd --zoom=2
+Comment=PMD 85 emulator
+Exec=env PMD_SCALE=3 simpmd
 Categories=System;Emulator;
