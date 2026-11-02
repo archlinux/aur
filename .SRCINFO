@@ -1,6 +1,6 @@
 pkgbase = goplaying-git
 	pkgdesc = Now Playing TUI written in Go
-	pkgver = r120.c0ead32
+	pkgver = r123.8623e57
 	pkgrel = 1
 	url = https://github.com/justinmdickey/goplaying
 	arch = x86_64
