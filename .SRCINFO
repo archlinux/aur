@@ -1,21 +1,22 @@
 pkgbase = elfbsp
 	pkgdesc = Modern BSP tree builder for idTech1 games and source ports. Based on Andrew Apted's AJBSP.
-	pkgver = 1.2
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://elf-alchemist.github.io/elfbsp/
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = git
-	makedepends = glibc
-	makedepends = libgcc
-	makedepends = libstdc++
 	makedepends = cmake
-	makedepends = make
+	makedepends = git
+	depends = libstdc++
+	depends = glibc
+	depends = libgcc
 	provides = elfbsp
-	conflicts = elfbsp-bin
-	conflicts = elfbsp-nightly-bin
-	conflicts = elfbsp-git
-	source = https://github.com/elf-alchemist/elfbsp/archive/refs/tags/elfbsp_v1.2.tar.gz
-	sha256sums = 18849fdb845d7e5382bc9a69c1adcb0f49e151ffebed88437bbc90c912497997
+	conflicts = elfbsp
+	source = git+https://github.com/elf-alchemist/elfbsp.git#tag=elfbsp_v1.3.1
+	source = git+https://github.com/elf-alchemist/libscanner.git#commit=7655f74263471f440c41d08ad088cded215f07d9
+	source = git+https://github.com/zlib-ng/zlib-ng.git#commit=70ce6cefbbcff8233b724c5e3c41b95113f5dc5d
+	sha256sums = 5fd8932c09661a04e6e5c3b666b182b4775a4b339e8604b3f316a3fc90d33b7c
+	sha256sums = ffd3ba50c6ae453b4360d577294113a2be1c723daca9bb1e56ace7f913c01466
+	sha256sums = cf6c55095710a9133579b74d57fe5d239618fcb2b036a351e1fb767a3811c71f
 
 pkgname = elfbsp

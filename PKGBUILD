@@ -1,35 +1,49 @@
 # Maintainer: ORION MELAENO <midway64@proton.me>
-# I am a rookie at these, so please let me know if there's any issues or redundancies to fix.
+# Contributor: ORION MELAENO <midway64@proton.me>
 
 pkgname=elfbsp
-pkgver=1.2
+_pkgname=elfbsp
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Modern BSP tree builder for idTech1 games and source ports. Based on Andrew Apted's AJBSP."
 arch=('x86_64')
 url="https://elf-alchemist.github.io/elfbsp/"
 license=('GPL-2.0-or-later')
-depends=() # Don't know whether the dependencies should go here or at {makedepends}.
-makedepends=('git' 'glibc' 'libgcc' 'libstdc++' 'cmake' 'make')
+depends=('libstdc++' 'glibc' 'libgcc')
+makedepends=('cmake' 'git')
 provides=('elfbsp')
-conflicts=('elfbsp-bin' 'elfbsp-nightly-bin' 'elfbsp-git') # Future-proofing, if I or someone else ever do these.
-source=("https://github.com/elf-alchemist/elfbsp/archive/refs/tags/${pkgname}_v${pkgver}.tar.gz")
-sha256sums=('18849fdb845d7e5382bc9a69c1adcb0f49e151ffebed88437bbc90c912497997')
+conflicts=('elfbsp')
+source=("git+https://github.com/elf-alchemist/elfbsp.git#tag=${_pkgname}_v${pkgver}"
+        "git+https://github.com/elf-alchemist/libscanner.git#commit=7655f74263471f440c41d08ad088cded215f07d9"
+        "git+https://github.com/zlib-ng/zlib-ng.git#commit=70ce6cefbbcff8233b724c5e3c41b95113f5dc5d")
+sha256sums=('5fd8932c09661a04e6e5c3b666b182b4775a4b339e8604b3f316a3fc90d33b7c'
+            'ffd3ba50c6ae453b4360d577294113a2be1c723daca9bb1e56ace7f913c01466'
+            'cf6c55095710a9133579b74d57fe5d239618fcb2b036a351e1fb767a3811c71f')
 
-# Building with GCC (instead of Clang - as upstream prefers) since I struggle convincing CMake to read
-# the environment flags, as it just skips the Clang compiler and uses GCC nevertheless. (GCC is cool, anyway.)
-# Suggestions for this issue are welcome.
+prepare() {
+    cd "${_pkgname}"
+    git submodule init
+    git config submodule.library/scanner.url "${srcdir}/libscanner"
+    git config submodule.library/zlib-ng.url "${srcdir}/zlib-ng"
+    git -c protocol.file.allow=always submodule update
+}
+
+# Building with GCC (instead of Clang - as upstream prefers) since I struggle
+# convincing CMake to read the environment flags, as it just skips the Clang
+# compiler and uses GCC nevertheless. Suggestions for this issue are welcome.
+# (GCC is cool, anyway.)
 build() {
-	local cmake_options=(
-		-B build
-		-D CMAKE_INSTALL_PREFIX=/usr
-	)
-
-	cd "${srcdir}/elfbsp-elfbsp_v${pkgver}"
-	cmake "${cmake_options[@]}"
-	make all -C build
+    local cmake_options=(
+        -B build
+        -D CMAKE_BUILD_TYPE=MinSizeRel # Keep that size low, no debug for you.
+        -D CMAKE_INSTALL_PREFIX=/usr
+    )
+    cd "${_pkgname}"
+    cmake "${cmake_options[@]}"
+    make all -C build
 }
 
 package() {
-	cd "${srcdir}/elfbsp-elfbsp_v${pkgver}"
-	make DESTDIR="$pkgdir/" install -C build
+    cd "${_pkgname}"
+    make DESTDIR="$pkgdir/" install -C build
 }
