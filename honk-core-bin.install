@@ -1,3 +1,34 @@
+# honk changes host sysctls at startup (ip_forward, all.forwarding,
+# rmem_max/wmem_max, per-interface accept_ra/rp_filter) and never reverts them.
+# Those writes are runtime-only: the next boot restores the distribution
+# values, so the package does not track and undo them on removal.
+
+# A hard-killed honk-core leaves the fail-closed NFQUEUE table behind. A clean
+# stop removes it by itself; this is the crash fallback, and nft is optional.
+remove_nft_table() {
+  command -v nft >/dev/null 2>&1 || return 0
+  nft delete table inet honk_nfqueue 2>/dev/null || true
+}
+
+pre_remove() {
+  systemctl disable --now honk-core.service 2>/dev/null || true
+}
+
+post_remove() {
+  if pgrep -x honk-core >/dev/null 2>&1; then
+    echo "warning: honk-core is still running (started outside systemd);"
+    echo "warning: skipped nftables cleanup."
+    return 0
+  fi
+
+  remove_nft_table
+
+  echo "-------------------------------------------------------------------------"
+  echo "honk-core-bin removed. Runtime sysctl changes made by honk reset at the"
+  echo "next reboot. /var/lib/honk and the config under /etc/honk were kept."
+  echo "-------------------------------------------------------------------------"
+}
+
 post_install() {
 	echo "-------------------------------------------------------------------------"
 	echo "After installation, review /etc/honk/config.dae, then run"

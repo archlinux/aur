@@ -1,0 +1,9 @@
+[Trigger]
+Type = Path
+Operation = Upgrade
+Target = usr/lib/systemd/system/honk-core.service
+
+[Action]
+Description = Restarting honk-core...
+When = PostTransaction
+Exec = /usr/bin/systemctl try-restart honk-core.service

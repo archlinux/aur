@@ -2,13 +2,14 @@
 
 pkgname=honk-core-bin
 pkgver=0.1.0beta.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental eBPF transparent proxy engine (prebuilt release binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/daeuniverse/honk'
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'v2ray-geoip' 'v2ray-domain-list-community')
-optdepends=('bpftool: inspect loaded eBPF programs and pinned maps')
+optdepends=('bpftool: inspect loaded eBPF programs and pinned maps'
+            'nftables: remove the leftover NFQUEUE table after a crash')
 provides=('honk-core')
 conflicts=('honk-core')
 backup=('etc/honk/config.dae')
@@ -22,12 +23,14 @@ _dir_x86_64="honk-core-v${_upver}-x86_64-unknown-linux-gnu-full"
 _dir_aarch64="honk-core-v${_upver}-aarch64-unknown-linux-gnu-full"
 
 source=('honk-core.service'
+        'honk-core-restart.hook'
         'config.dae'
         'honk-modules.conf'
         "honk-config-example.dae::https://raw.githubusercontent.com/daeuniverse/honk/v${_upver}/example.dae")
 source_x86_64=("${_dir_x86_64}.tar.gz::${url}/releases/download/v${_upver}/${_dir_x86_64}.tar.gz")
 source_aarch64=("${_dir_aarch64}.tar.gz::${url}/releases/download/v${_upver}/${_dir_aarch64}.tar.gz")
 sha256sums=('3b72033008f377f8aad72833943458d0becdda1218ed900b5d369c824e20824d'
+            '3e396b1d043503717d661fb143b5537d9d5d4ae8ddb80dd3b7c37fde74ad89ea'
             '8e6791e762e9398a0ee8f910a637cc6d11e64e1729b20ce027ff77b9932c7830'
             'cba5c54fdc2ad776e8df3ac6094af3b6010554508925172b6e240a645630be13'
             '50d1ddbcc901d4e477f5e67ea2092ba364667dea24588929fbf9b2583035679b')
@@ -58,6 +61,8 @@ package() {
 
   install -Dm644 "${srcdir}/honk-core.service" \
     "${pkgdir}/usr/lib/systemd/system/honk-core.service"
+  install -Dm644 "${srcdir}/honk-core-restart.hook" \
+    "${pkgdir}/usr/share/libalpm/hooks/90-honk-core-restart.hook"
   install -Dm640 "${srcdir}/config.dae" "${pkgdir}/etc/honk/config.dae"
   install -Dm644 "${srcdir}/config.dae.example" "${pkgdir}/etc/honk/config.dae.example"
 
