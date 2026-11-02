@@ -1,11 +1,18 @@
+# shellcheck shell=bash
+# makepkg reads the annotated metadata variables after sourcing this recipe.
 # Maintainer: Music Player Contributors <https://github.com/selfAnnihilator/kaze>
 pkgname=kaze
-pkgver=2.0.3
+pkgver=2.0.4
+# shellcheck disable=SC2034
 pkgrel=1
+# shellcheck disable=SC2034
 pkgdesc="A calm, intelligent local music player"
+# shellcheck disable=SC2034
 arch=('x86_64')
 url="https://github.com/selfAnnihilator/kaze"
+# shellcheck disable=SC2034
 license=('MIT' 'Apache-2.0')
+# shellcheck disable=SC2034
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
@@ -15,6 +22,7 @@ depends=(
     'sqlite'
     'hicolor-icon-theme'
 )
+# shellcheck disable=SC2034
 makedepends=(
     # Select the concrete compiler/Cargo package on fresh systems. Existing
     # Arch rustup installations also provide rust; see INSTALL.md for setup.
@@ -22,13 +30,16 @@ makedepends=(
     'nodejs'
     'npm'
 )
+# shellcheck disable=SC2034
 options=(!lto)
+# shellcheck disable=SC2034
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "kaze.desktop"
 )
+# shellcheck disable=SC2034
 sha256sums=(
-    '72750173ecdac2cf0d7f0dc72622862b1b3b612a19bcd20fb80593f1e9bd86d0'
+    'a35c0c8681ec937128ca5e4ec948822e176f6dfb2093f3311d2bd65f32bc9ca1'
     'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c'
 )
 
@@ -66,22 +77,25 @@ prepare() {
 build() {
     # makepkg may run build in a different shell from prepare (also with --noextract).
     _ensure_rust_toolchain || return 1
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || return 1
     npm ci
     npm run build
     cargo build --release --locked --features tauri/custom-protocol
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || return 1
     local bin_dir="target/release"
     if [ ! -f "$bin_dir/kaze" ]; then
         bin_dir="src-tauri/target/release"
     fi
 
+    # makepkg supplies pkgdir and srcdir to package().
+    # shellcheck disable=SC2154
     install -Dm755 "$bin_dir/kaze" "$pkgdir/usr/bin/kaze"
     install -Dm755 "$bin_dir/music-player-cli" "$pkgdir/usr/bin/music-player-cli"
 
+    # shellcheck disable=SC2154
     install -Dm644 "$srcdir/kaze.desktop" "$pkgdir/usr/share/applications/kaze.desktop"
 
     install -Dm644 src-tauri/icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/kaze.png"
