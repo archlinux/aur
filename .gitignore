@@ -1,3 +1,4 @@
 *.exe
 pkg/
 src/
+*.pkg.tar*
