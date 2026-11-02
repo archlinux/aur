@@ -1,0 +1,25 @@
+pkgbase = keeper-bin
+	pkgdesc = Agent-first cleanup for Arch: stale worktrees, AUR clones, caches and agent leftovers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/cjber/keeper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	depends = pacman-contrib
+	optdepends = github-cli: prove a worktree finished from its merged pull request
+	optdepends = expac: size orphaned packages
+	optdepends = libnotify: desktop notifications for low disk and pending approvals
+	optdepends = uv: prune the uv cache
+	provides = keeper
+	conflicts = keeper
+	options = !strip
+	source = keeper-0.2.0.tar.gz::https://github.com/cjber/keeper/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 29e5658dd6d3aba2b7843a57c1b78c369fad415841b19fea5974d63a93210702
+	source_x86_64 = keeper-linux-x64-0.2.0::https://github.com/cjber/keeper/releases/download/v0.2.0/keeper-linux-x64
+	sha256sums_x86_64 = 12b273a2c7deaca952ca8b297dbd5af8a4b959776b6b8d1939fa366e4181ec80
+	source_aarch64 = keeper-linux-arm64-0.2.0::https://github.com/cjber/keeper/releases/download/v0.2.0/keeper-linux-arm64
+	sha256sums_aarch64 = 77d12510953632405577bafcfbad7ac680de87206f49ca817039066891a79a8f
+
+pkgname = keeper-bin
