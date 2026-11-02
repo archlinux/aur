@@ -1,6 +1,6 @@
 pkgbase = beagle-lib-opencl
 	pkgdesc = general purpose library for evaluating the likelihood of sequence evolution on trees (with opencl)
-	pkgver = 4.0.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/beagle-dev/beagle-lib
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = beagle-lib-opencl
 	conflicts = beagle-lib-all
 	conflicts = beagle-lib
 	conflicts = beagle-lib-cuda
-	source = https://github.com/beagle-dev/beagle-lib/archive/v4.0.1.tar.gz
-	sha512sums = 39476c791b0445d582f723b08bfd6d5e08a858961fce1b5240bc20687c3228e246b3c6a53dc85824a3121b2823a6fcf7b110325cac9e645014f00536755093ba
+	source = https://github.com/beagle-dev/beagle-lib/archive/v4.2.0.tar.gz
+	sha512sums = fa58af50fbf759c41366083bfd213e3326afe126431b5777794f02073a78939cc364d7560b319678c6bf4082d5fa5c1dbc4e4f6a196ce2e6c6ad7023f1217219
 
 pkgname = beagle-lib-opencl
