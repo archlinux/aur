@@ -2,8 +2,8 @@
 
 pkgname="neothesia"
 _pkgname="Neothesia"
-pkgver="0.5.0"
-pkgrel=1
+pkgver="0.5.1"
+pkgrel=0
 pkgdesc="Flashy Synthesia Like Software For Linux, Windows and MacOS"
 arch=("x86_64")
 url="https://polymeilex.github.io/Neothesia/"
@@ -11,12 +11,12 @@ license=("GPL")
 makedepends=("rust" "clang")
 depends=("ffmpeg")
 source=("https://github.com/PolyMeilex/Neothesia/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f631324b3662e48dd98ea4b1b92452bd3336327eadf94e3efd1102b020f03b38')
+sha256sums=('1fdfa9daa95778762205e40c392f089f248f03bbeda813c908b0f05585e7d6cb')
 
 prepare() {
-    cp ../ffmpeg-encoder.patch "$srcdir/"
+    # cp ../ffmpeg-encoder.patch "$srcdir/"
     cd "$srcdir/$_pkgname-$pkgver"
-    patch -Np1 -i ../ffmpeg-encoder.patch
+    # patch -Np1 -i ../ffmpeg-encoder.patch
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
