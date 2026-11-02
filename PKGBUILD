@@ -2,7 +2,7 @@
 # Contributor: Evgeniy Dobromliskiy <voltasar at gmail dot com>
 
 pkgname='se98-icon-theme-git'
-pkgver=0.2.15
+pkgver='0.2.17'
 pkgrel=1
 pkgdesc="Windows 98 Second Edition (Win98SE) inspired icon theme"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('gawk: for Win2K/Win98 toggling awk scripts'
 			'mawk: for Win2K/Win98 toggling awk scripts'
 			'chicago95-icon-theme-git: for some missing icons in SE98 theme')
 source=("git+https://github.com/nestoris/Win98SE.git")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
     cd Win98SE
