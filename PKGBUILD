@@ -1,13 +1,11 @@
 pkgname="recomplauncher-bin"
 pkgver=0.90.0
 betaver=9
-pkgrel=1
+pkgrel=2
 pkgdesc="Recompiled games, native on PC."
-arch=('x86_64' 'aarch64')
-url="https://recomplauncher.com"
-license=('custom')
-depends=('wget' 'unzip')
-optdepends=('zenity: Information/Error message UI')
+arch=('x86_64')
+url="https://github.com/elripalda/RecompStore"
+license=('GPL 3.0')
 
 source=("RecompLauncher.desktop" "https://github.com/elripalda/RecompLauncher/releases/download/v${pkgver}-beta.${betaver}/RecompLauncher_${pkgver}-beta.${betaver}_amd64.AppImage")
 sha256sums=('3e775eee4f97fccac2bc634e042ecd0337ff487c49f20a00d758adb9a06e57cd'
