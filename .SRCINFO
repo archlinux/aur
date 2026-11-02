@@ -1,6 +1,6 @@
 pkgbase = quaver-music-appimage
 	pkgdesc = Third-party QQ Music client built with Electron (AppImage)
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/Team-Quaver/quaver-music
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = quaver-music-appimage
 	conflicts = quaver-music-bin
 	options = !strip
 	options = !debug
-	source = Quaver-1.7.2-x86_64.AppImage::https://github.com/Team-Quaver/quaver-music/releases/download/v1.7.2/Quaver-1.7.2-x86_64.AppImage
-	sha256sums = 69f26230a40da93d8a43910784d125f9e7f3db50a82ded6d7f562b7cf564863f
+	source = Quaver-1.8.0-x86_64.AppImage::https://github.com/Team-Quaver/quaver-music/releases/download/v1.8.0/Quaver-1.8.0-x86_64.AppImage
+	sha256sums = 88044b1d9aa0d3c137f7785a7db987b23ea9b5c5bfca5aa0a2fd1881157e4f33
 
 pkgname = quaver-music-appimage
