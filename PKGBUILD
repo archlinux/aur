@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@lod.sh>
 
 pkgname=edgetx-companion
-pkgver=2.12.4
+pkgver=2.12.5
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/microsoft/uf2"
         "git+https://github.com/signal11/hidapi")
-b2sums=('27832af4bcd2c0db47438f5dcf5b4382bcad04b16f372f3dbbb167e623963900884fce5a49b2eef88bd013c1c2691cd2fc7d868745eb08a0ea0251fbd1780a8d'
+b2sums=('aa5a4e0d897ffafc7fd512def14e7726f4c821d0037778c6d20323c9cffd5f589acbe6ba1c8dfabba211030041184babc26191cecc442f08250a1ec32d5a33c5'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -70,14 +70,14 @@ build() {
 
   declare -a simulator_plugins=(x9lite x9lites x9d x9dp x9dp2019 x9e
                                 x7 x7access
-                                t8 t12 t12max tx12 tx12mk2 t15 t15pro t22 t16 t18 t20 t20v2
+                                t8 t12 t12max tx12 tx12mk2 t15 t15pro t15h7 t16 t18 t18h7 t20 t20v2 t22
                                 xlite xlites
                                 x10 x10express x12s
                                 zorro tx16s tx16smk3 tx15
-                                commando8 boxer pocket mt12 gx12 gx15
+                                commando8 boxer pocket mt12 gx12 gx15 h17
                                 tlite tpro tprov2 tpros bumblebee lr3pro t14
                                 nv14 el18 pl18 pl18ev pl18u st16 pa01
-                                f16 v12 v14 v16)
+                                f16 v12 v14 v15 v16)
 
   for plugin in "${simulator_plugins[@]}"
   do
