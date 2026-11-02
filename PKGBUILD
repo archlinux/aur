@@ -7,7 +7,7 @@ pkgdesc="A GBA game launcher and emulator frontend built with Qt and mGBA"
 arch=('x86_64')
 url="https://github.com/Happilli/_jankk"
 license=('GPL-3.0-only')
-depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia-ffmpeg' 'qt6-svg' 'qt6-shadertools' 'libmgba')
+depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia-ffmpeg' 'qt6-svg' 'qt6-shadertools' 'libmgba' 'lua')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/_jankk/archive/refs/tags/v$pkgver.tar.gz"
         "ryu-$_ryu_commit.tar.gz::https://github.com/Happilli/ryu/archive/$_ryu_commit.tar.gz")
