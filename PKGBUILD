@@ -5,7 +5,7 @@
 # PKGBUILD in pkg/arch of the source tree.
 pkgname=neosolve-daily-git
 _branch=daily-bugfix
-pkgver=3.2.r2400.g92ea25b3
+pkgver=3.3.r2471.g4551c494
 pkgrel=1
 pkgdesc="Parametric 2D/3D CAD: SolveSpace with fillet, chamfer, shell, loft and sweep"
 arch=('x86_64')
@@ -37,7 +37,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/neosolve"
-    printf "3.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.g%s" \
+        "$(sed -n '/^project(solvespace/,/)/s/^ *VERSION \([0-9.]*\).*/\1/p' CMakeLists.txt)" \
+        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
