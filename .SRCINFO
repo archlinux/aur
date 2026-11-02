@@ -1,6 +1,6 @@
 pkgbase = deskfleet-bin
 	pkgdesc = Manage a team's AI agents and working environments across machines
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/yet-another-ai/deskfleet
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = deskfleet-bin
 	optdepends = gst-plugin-va: remote desktop VA-API encoding with a compatible driver
 	optdepends = gst-plugin-pipewire: Wayland remote desktop capture
 	optdepends = xdg-desktop-portal: Wayland permissions with a compatible desktop portal backend
-	provides = deskfleet=0.5.3
+	provides = deskfleet=0.6.0
 	conflicts = deskfleet
 	options = !strip
 	options = !debug
@@ -53,12 +53,12 @@ pkgbase = deskfleet-bin
 	source = LICENSE.packaging
 	sha256sums = fb1059e06a46ad631c2b661a5d530e297d8ba67b53d0f813014e4a46148d9d7a
 	sha256sums = ed6d3c3f21b0f2e7addcad9b7f85faf90ae73cf86c262dac6778c059f9f37fdb
-	sha256sums = c452206b43e96f832ace9e7aa92b2dace6cb0c9220d07946796ce4464cb879bb
+	sha256sums = 4e0cede1b4c3a9c8395c0a2d908c74883966e4706ca296834844c1e88ce95201
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 	sha256sums = 2b3a66be0c474a6d1af484a17184ac3fd7091bef983744f48cbdabf05533aab8
-	source_x86_64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.5.3/deskfleet-0.5.3-linux-x64.tar.gz
-	sha256sums_x86_64 = 82bbb5d1be283424549f9541d8bf7f10f7b1a55b02092dee3a0fe8ca3cb67e5e
-	source_aarch64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.5.3/deskfleet-0.5.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = b4ff58617a1a42113165e8d787dc645c90a25fbdd791ab03150e517c22d575a4
+	source_x86_64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.6.0/deskfleet-0.6.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 7ccad1f79eec4805fccb0e441c1d1f9078011de9b587cb1605e199b4f7bf9a9e
+	source_aarch64 = https://github.com/yet-another-ai/deskfleet/releases/download/v0.6.0/deskfleet-0.6.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 24968f2e6aec9d2446bcce0768139b6f5758c8ca2dee676d1442dc664e1870d3
 
 pkgname = deskfleet-bin
