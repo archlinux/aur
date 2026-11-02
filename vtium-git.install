@@ -12,11 +12,12 @@ _vtium_enable() {
       vtium console status
       sudo vtium console enable 3
       sudo vtium console enable --all
-    enable --all is for a machine that runs no kmscon. vtium console starts
-    nothing: it changes which console starts on a VT next time, and prints
-    the command that starts vtium there now, which ends every session on that
-    VT. It refuses a VT that kmscon, a display manager or a graphical session
-    holds. To give VTs back, before you remove vtium too:
+    enable --all is for a machine whose autovt@.service link does not name
+    kmscon. vtium console starts nothing: it changes which console starts on
+    a VT next time, and prints the command that starts vtium there now, which
+    ends every session on that VT. It refuses a VT that kmscon, a display
+    manager or a graphical session holds. To give VTs back, which you also do
+    before you remove vtium:
       sudo vtium console disable 3
       sudo vtium console disable --all
     To share VTs with kmscon, or to move from kmscon to vtium, read the README:
@@ -51,42 +52,65 @@ EOF
   fi
 }
 
+# The links to vtium@.service under /etc/systemd/system, one path a line,
+# or nothing. Each outlives the package and then names a unit that is gone.
+_vtium_links() {
+  local l
+  for l in /etc/systemd/system/autovt@.service /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
+    [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] && printf '%s\n' "$l"
+  done
+  return 0
+}
+
 pre_remove() {
   local running
   running=$(_vtium_running)
   [ -n "$running" ] || return 0
   printf '%s\n' "==> vtium is being removed while these run; each keeps running from memory"
-  printf '%s\n' "    until it stops, and then its VT has no console unit:"
+  printf '%s\n' "    until it stops:"
   # shellcheck disable=SC2086 # one unit name a word
   printf '      %s\n' $running
+  printf '%s\n' "    sudo systemctl stop vtium@ttyN.service stops one, which ends every"
+  printf '%s\n' "    session on that VT."
+  if [ -n "$(_vtium_links)" ]; then
+    printf '%s\n' "    A VT whose link still names vtium@.service then has no console unit;"
+    printf '%s\n' "    pacman lists those links when the removal ends."
+  fi
 }
 
 post_remove() {
   # The links that vtium console made, or that were made by hand, outlive the
   # package and now point at nothing; this names each one and changes
   # nothing. vtium console disable --all, run before the removal, gives each
-  # back as it was.
+  # back as it was. A getty comes back through add-wants, which makes only
+  # its getty.target want: systemctl enable getty@ttyN.service would also
+  # link autovt@ttyN.service to the getty, and vtium console enable N refuses
+  # a VT whose own link names another console.
   local l vt left='' getty='' records=/var/lib/vtium/console
-  for l in /etc/systemd/system/autovt@.service /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
-    [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] || continue
+  while IFS= read -r l; do
+    [ -n "$l" ] || continue
     left+="      sudo rm $l"$'\n'
     case $l in
     */autovt@.service)
       getty+="      sudo systemctl preset getty@.service"$'\n' ;;
     */autovt@*)
       vt=${l##*@}
-      getty+="      sudo systemctl enable --now getty@${vt%.service}.service"$'\n' ;;
+      getty+="      sudo systemctl add-wants getty.target getty@${vt%.service}.service"$'\n' ;;
     esac
-  done
+  done <<<"$(_vtium_links)"
   left+=$getty
   [ -n "$left" ] || return 0
   printf '%s\n' "==> vtium is removed, but these links to vtium@.service are left and point at"
-  printf '%s\n' "    nothing, so logind would start nothing on those VTs. Remove each, and give"
-  printf '%s\n' "    its VT its getty again:"
+  printf '%s\n' "    nothing, so logind would start nothing on those VTs. Remove each, and"
+  printf '%s\n' "    enable its VT's getty at boot again:"
   printf '%s' "$left"
+  printf '%s\n' "    Where kmscon served a VT, link it to kmscon in place of its getty:"
+  printf '%s\n' "      sudo ln -s /usr/lib/systemd/system/kmsconvt@.service \\"
+  printf '%s\n' "        /etc/systemd/system/autovt@ttyN.service"
+  printf '%s\n' "    Then reload systemd:"
   printf '%s\n' "      sudo systemctl daemon-reload"
-  printf '%s\n' "    Where kmscon served a VT, enable kmsconvt@ttyN.service there in place of"
-  printf '%s\n' "    its getty."
+  printf '%s\n' "    Each getty starts at the next boot, or now with"
+  printf '%s\n' "    sudo systemctl start getty@ttyN.service."
   if [ -n "$(ls -A "$records" 2>/dev/null)" ]; then
     printf '%s\n' "    Or put back exactly what vtium console recorded in $records:"
     printf '%s\n' "    install vtium again, run sudo vtium console disable --all, then remove it."
