@@ -2,7 +2,7 @@
 
 pkgname=netron-with-mime-bin
 _pkgname=Netron
-pkgver=9.3.3
+pkgver=9.3.4
 _electronversion=44
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models (Prebuilt, system-wide electron, with MIME file associations)"
@@ -22,11 +22,11 @@ source=(
     "netron.sh"
     "netron-mime.xml"
 )
-source_x86_64=("netron-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/Netron-${pkgver}-x86_64.rpm")
+source_x86_64=("netron-${pkgver}-amd64.deb::${_ghurl}/releases/download/v${pkgver}/Netron-${pkgver}-amd64.deb")
 sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d'
             'b65f75c354a52e15610c45d5e92359ee7af2c919ff6af204badaa2ead7833e2b')
-sha256sums_x86_64=('30b445692cb70ab335f23714f66be034146160ccc435e65ebdd98d1366a2035c')
+sha256sums_x86_64=('9d8edc87fc05542fce7b5fd2689e91403e49440b1578cc522e34212723d1f90e')
 
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -56,6 +56,12 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/netron.sh"
+    # Extract data from deb package
+    if [ -f "${srcdir}/data.tar.xz" ]; then
+        bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}"
+    elif [ -f "${srcdir}/data.tar.zst" ]; then
+        bsdtar -xf "${srcdir}/data.tar.zst" -C "${srcdir}"
+    fi
     _check_electron_version
     # Fix desktop Exec path from /opt/Netron/ to /usr/bin/
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/netron.desktop"
