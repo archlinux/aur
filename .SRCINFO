@@ -1,8 +1,9 @@
 pkgbase = hornero-config
 	pkgdesc = HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)
-	pkgver = 0.3.15
+	pkgver = 0.3.17
 	pkgrel = 1
 	url = https://github.com/HorneroOS/config
+	install = hornero-config.install
 	arch = any
 	license = MIT
 	license = CC-BY-2.0
@@ -30,9 +31,23 @@ pkgbase = hornero-config
 	optdepends = copyq: clipboard defaults under /etc/xdg/copyq
 	optdepends = handlr: default-application handler under /etc/xdg/handlr
 	optdepends = qt6ct: Qt6 platform-theme defaults under /etc/xdg/qt6ct
+	optdepends = bluez: Bluetooth daemon (factory main.conf template under /usr/share/hornero/bluetooth)
+	optdepends = bluez-utils: bluetoothctl for Bluetooth diagnostics
+	optdepends = wireplumber: Bluetooth audio policy under /etc/wireplumber/wireplumber.conf.d
 	optdepends = papirus-icon-theme: Papirus-Dark factory icons
 	optdepends = ttf-material-symbols-variable: Material Symbols shell icon font
-	source = config::git+https://github.com/HorneroOS/config.git#commit=61145ab3620a6034d1d8f6df88dd667f79344b91
+	optdepends = ttf-cascadia-code-nerd: CaskaydiaCove NF factory monospace font
+	optdepends = noto-fonts-cjk: CJK fallback for the factory fontconfig aliases
+	optdepends = noto-fonts-emoji: emoji fallback for the factory fontconfig aliases
+	optdepends = zsh-autosuggestions: optional plugin sourced by the factory zshrc when installed
+	optdepends = zsh-syntax-highlighting: optional plugin sourced by the factory zshrc when installed
+	optdepends = gvfs: Thunar volume and trash integration
+	optdepends = tumbler: Thunar thumbnail service
+	optdepends = ffmpegthumbnailer: video thumbnails for Thunar via tumbler
+	optdepends = thunar-volman: removable-media handling for Thunar
+	optdepends = nm-connection-editor: NetworkManager connection editor
+	backup = etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf
+	source = config::git+https://github.com/HorneroOS/config.git#commit=42cefcc6974fa5ad0900e0e4de4bd0de5dee3963
 	sha256sums = SKIP
 
 pkgname = hornero-config

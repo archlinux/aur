@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.15
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -33,13 +33,28 @@ optdepends=(
   'copyq: clipboard defaults under /etc/xdg/copyq'
   'handlr: default-application handler under /etc/xdg/handlr'
   'qt6ct: Qt6 platform-theme defaults under /etc/xdg/qt6ct'
+  'bluez: Bluetooth daemon (factory main.conf template under /usr/share/hornero/bluetooth)'
+  'bluez-utils: bluetoothctl for Bluetooth diagnostics'
+  'wireplumber: Bluetooth audio policy under /etc/wireplumber/wireplumber.conf.d'
   'papirus-icon-theme: Papirus-Dark factory icons'
   'ttf-material-symbols-variable: Material Symbols shell icon font'
+  'ttf-cascadia-code-nerd: CaskaydiaCove NF factory monospace font'
+  'noto-fonts-cjk: CJK fallback for the factory fontconfig aliases'
+  'noto-fonts-emoji: emoji fallback for the factory fontconfig aliases'
+  'zsh-autosuggestions: optional plugin sourced by the factory zshrc when installed'
+  'zsh-syntax-highlighting: optional plugin sourced by the factory zshrc when installed'
+  'gvfs: Thunar volume and trash integration'
+  'tumbler: Thunar thumbnail service'
+  'ffmpegthumbnailer: video thumbnails for Thunar via tumbler'
+  'thunar-volman: removable-media handling for Thunar'
+  'nm-connection-editor: NetworkManager connection editor'
 )
 # Named "config" (not "$pkgname") so the checkout lands at
 # "${srcdir}/config", matching _hornero_repo_root() below and keeping
 # AUR chroot builds identical to local packaging/ builds.
-source=("config::git+https://github.com/HorneroOS/config.git#commit=61145ab3620a6034d1d8f6df88dd667f79344b91")
+install=hornero-config.install
+backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
+source=("config::git+https://github.com/HorneroOS/config.git#commit=42cefcc6974fa5ad0900e0e4de4bd0de5dee3963")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
@@ -114,6 +129,9 @@ package() {
     # not search /etc/xdg. Ghostty has no global config lookup, so its curated
     # config is seeded for newly created users below.
     [[ "$base" == alacritty || "$base" == ghostty ]] && continue
+    # WirePlumber reads /etc/wireplumber, not /etc/xdg/wireplumber; its
+    # staged user copy is installed once below at the system path.
+    [[ "$base" == wireplumber ]] && continue
     if [[ "$base" == systemd ]]; then
       # systemd owns /etc/xdg/systemd/user as a symlink to /etc/systemd/user.
       # Putting a directory at that XDG path makes pacman refuse the package.
@@ -155,6 +173,8 @@ package() {
   install -Dm644 "$stage/.zshrc" "$pkgdir/etc/skel/.zshrc"
   install -Dm644 "$stage/.config/environment.d/10-hornero-editor.conf" \
     "$pkgdir/etc/skel/.config/environment.d/10-hornero-editor.conf"
+  install -Dm644 "$stage/.config/environment.d/20-hornero-session.conf" \
+    "$pkgdir/etc/skel/.config/environment.d/20-hornero-session.conf"
 
   # Hyprland's factory config imports modules from the user's XDG config
   # directory. Seed new accounts with that complete profile so the first
@@ -171,6 +191,23 @@ package() {
   fi
   install -Dm644 "$stage/.config/niri/config.kdl" \
     "$pkgdir/etc/niri/config.kdl"
+
+  # Bluetooth audio policy: WirePlumber's system drop-in directory.
+  install -Dm644 "$stage/.config/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf" \
+    "$pkgdir/etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf"
+
+  # BlueZ factory template. Arch's bluez package owns
+  # /etc/bluetooth/main.conf, so this package must not ship that path;
+  # an admin installs the template there once (see the file header).
+  # The staged per-user copy under .config/hornero/bluetooth also lands
+  # in /etc/xdg/hornero/bluetooth via the generic loop above.
+  install -Dm644 "$repo_root/desktop/bluetooth/main.conf" \
+    "$pkgdir/usr/share/hornero/bluetooth/main.conf"
+
+  # Enable bluetooth.service through the systemd preset mechanism only
+  # (packaging/hornero-config.install runs `systemctl preset`).
+  install -Dm644 "$repo_root/desktop/systemd/90-hornero-bluetooth.preset" \
+    "$pkgdir/usr/lib/systemd/system-preset/90-hornero-bluetooth.preset"
 
   # Alacritty's documented system fallback uses /etc/alacritty. The user
   # config from materialize.sh stays XDG-aware for chezmoi installs.
@@ -267,11 +304,15 @@ package() {
   # Permissions mirror scripts/materialize.sh: dirs 755, files 644,
   # with executables restored for CLI adapters.
   find "$pkgdir/etc/xdg" "$pkgdir/etc/alacritty" "$pkgdir/etc/skel" \
-    "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+    "$pkgdir/etc/systemd/user" "$pkgdir/etc/wireplumber" \
+    "$pkgdir/usr/lib/systemd/system-preset" \
+    "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
     "$pkgdir/usr/share/ghostty/themes" \
     -type d -exec chmod 755 {} +
   find "$pkgdir/etc/xdg" "$pkgdir/etc/alacritty" "$pkgdir/etc/skel" \
-    "$pkgdir/etc/systemd/user" "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
+    "$pkgdir/etc/systemd/user" "$pkgdir/etc/wireplumber" \
+    "$pkgdir/usr/lib/systemd/system-preset" \
+    "$pkgdir/usr/share/hornero" "$pkgdir/usr/share/themes" \
     "$pkgdir/usr/share/ghostty/themes" \
     -type f -exec chmod 644 {} +
   chmod 755 "$pkgdir"/usr/share/hornero/bin/hornero-*
