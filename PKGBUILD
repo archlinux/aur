@@ -2,7 +2,7 @@
 # Actual maintainer: Raphaël Gallais-Pou <rgallaispou@gmail.com>
 pkgname=python-dt-schema
 _name=${pkgname#python-}
-pkgver=2026.06
+pkgver=2026.09
 pkgrel=1
 pkgdesc="Tooling for devicetree validation using YAML and jsonschema"
 arch=('any')
@@ -29,7 +29,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/devicetree-org/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('5a4bb497d8f45aeeaaa46ea08ea61e3afe5a1ee62dc8ee610dbcaa438e7ab43d7e942aeac1d7f5cdd02c6557711fa0afab651ef3b81042772f74ed5378b397d3')
+sha512sums=('2be2f5cc9d27635d53669a667348c2b33e6599a680e85f190bc1891af1ddd765bc1f0c25fb85cf91cc11cfa8c2873d2e89aab9a67eaa465b3223befbceb382b7')
 
 prepare() {
     cd "$_name-$pkgver"

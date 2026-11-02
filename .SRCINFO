@@ -1,6 +1,6 @@
 pkgbase = python-dt-schema
 	pkgdesc = Tooling for devicetree validation using YAML and jsonschema
-	pkgver = 2026.06
+	pkgver = 2026.09
 	pkgrel = 1
 	url = https://github.com/devicetree-org/dt-schema
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-dt-schema
 	depends = python-rfc3987
 	depends = python-jsonschema
 	options = !emptydirs
-	source = https://github.com/devicetree-org/dt-schema/archive/refs/tags/v2026.06.tar.gz
-	sha512sums = 5a4bb497d8f45aeeaaa46ea08ea61e3afe5a1ee62dc8ee610dbcaa438e7ab43d7e942aeac1d7f5cdd02c6557711fa0afab651ef3b81042772f74ed5378b397d3
+	source = https://github.com/devicetree-org/dt-schema/archive/refs/tags/v2026.09.tar.gz
+	sha512sums = 2be2f5cc9d27635d53669a667348c2b33e6599a680e85f190bc1891af1ddd765bc1f0c25fb85cf91cc11cfa8c2873d2e89aab9a67eaa465b3223befbceb382b7
 
 pkgname = python-dt-schema
