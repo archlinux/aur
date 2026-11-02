@@ -77,7 +77,7 @@ protonUpdate() {
 
   touch "$WINEPREFIX/.installed.$CURRVER"
   saveEnvs
-  umu-run wineboot -e
+  # umu-run wineboot -e
 }
 
 wineUpdate() {
@@ -137,7 +137,6 @@ if [ $UMU_AVAIL -eq 0 ] && [[ ! -v USE_WINE ]]; then
   source "$WINEPREFIX/.installed.$CURRVER" # Load PROTONPATH
   export PROTONPATH
   export WINEPREFIX
-  umu-run wineboot -e
   cd $SAVES && umu-run "C:\\${progName}\\Application\\CRC.exe" "$@"
 else
   # Wine version
