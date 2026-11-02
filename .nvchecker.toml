@@ -1,0 +1,7 @@
+# The latest commit, versioned like git describe from the commit that set MuCo_VERSION to 2.2.0 (see
+# the PKGBUILD), as upstream has no tags: the compare API counts the commits since then and lists up
+# to 250 of them, the last one being the newest. A new MuCo_VERSION needs its commit in the URL.
+[sourcemod-multicolors]
+source = "jq"
+url = "https://api.github.com/repos/Bara/Multi-Colors/compare/6db8884c0e3dee2a566d468bb5b1759ade58ddb9...master"
+filter = '"2.2.0.r\(.ahead_by).g\(.commits[-1].sha[0:7])"'
