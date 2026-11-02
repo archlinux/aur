@@ -1,6 +1,6 @@
 pkgname=mangayomi-linux
 pkgver=0.9.95
-pkgrel=3
+pkgrel=4
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt zip with auto-compiled QuickJS FFI fix)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
@@ -23,25 +23,25 @@ prepare() {
   git submodule update --init --recursive
 
   # 1. INIEZIONE DUMMY REGISTRAR:
-  # Inganniamo il motore Flutter fornendo la funzione di registrazione vuota che si aspetta,
-  # evitando così di dover scaricare il Flutter SDK solo per compilare del boilerplate.
   echo 'extern "C" __attribute__((visibility("default"))) void flutter_qjs_plugin_register_with_registrar(void* registrar) {}' >> cxx/ffi.cpp
 
-  # 2. CMAKE SNELLO:
-  # Creiamo la cartella linux prima di scrivere il CMakeLists.txt all'interno
+  # 2. CMAKE AGGIORNATO PER QUICKJS-NG:
   mkdir -p linux
 
-  # Rimuoviamo PkgConfig e GTK. Compiliamo unicamente QuickJS e l'esportazione FFI.
   cat <<'EOF' > linux/CMakeLists.txt
 cmake_minimum_required(VERSION 3.10)
 project(flutter_qjs_plugin LANGUAGES C CXX)
+
 include_directories(
   ../cxx
   ../cxx/quickjs
+  ../cxx/quickjs/include
 )
-# Flag di compatibilità applicati solo al codice C
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-int-conversion -Wno-discarded-qualifiers")
 add_compile_options(-DCONFIG_VERSION="2021-03-27" -D_GNU_SOURCE -DEXPORT -fvisibility=default)
+
+# quickjs-ng usa file sorgente nella root e nella cartella core/
 set(QUICKJS_SOURCES
   ../cxx/quickjs/quickjs.c
   ../cxx/quickjs/libregexp.c
@@ -49,13 +49,22 @@ set(QUICKJS_SOURCES
   ../cxx/quickjs/cutils.c
   ../cxx/quickjs/libbf.c
 )
+
+# Se alcuni file non sono nella root, cerchiamoli con glob o percorsi flessibili
+file(GLOB QUICKJS_CORE_SOURCES
+  ../cxx/quickjs/*.c
+  ../cxx/quickjs/src/*.c
+)
+
 set(FFI_SOURCES
   ../cxx/ffi.cpp
 )
+
 add_library(flutter_qjs_plugin SHARED
   ${QUICKJS_SOURCES}
   ${FFI_SOURCES}
 )
+
 target_link_libraries(flutter_qjs_plugin PRIVATE -lm -ldl -lpthread)
 EOF
 }
@@ -71,7 +80,6 @@ package() {
   install -d "$pkgdir/opt/mangayomi"
   cp -r "$srcdir/mangayomi" "$srcdir/data" "$srcdir/lib" "$pkgdir/opt/mangayomi/"
 
-  # Sovrascriviamo la libreria rotta dello zip con quella nativa, completa di simboli FFI e Registrar stub
   install -m755 "$srcdir/flutter_qjs/linux/build/libflutter_qjs_plugin.so" \
     "$pkgdir/opt/mangayomi/lib/libflutter_qjs_plugin.so"
 
