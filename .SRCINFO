@@ -1,0 +1,16 @@
+pkgbase = perl-horus
+	pkgdesc = XS UUID/GUID generator supporting all RFC 9562 versions
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://metacpan.org/release/Horus
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = glibc>=2.44+r50+g1848099f063e
+	depends = perl>=5.8.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Horus-1.00.tar.gz
+	md5sums = 80c00b735bd16108b6f5eb18d6ae91dc
+	sha512sums = 7d3cff3b8a9ace84cf3d08409daaedf45411f99837936d0681022a598d42aa2b0ec52d3e6ed440b955e8820e8747c0ddcf25454e8acdc646d16b7fe7f98c66b1
+
+pkgname = perl-horus
