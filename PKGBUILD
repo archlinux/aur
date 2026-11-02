@@ -12,7 +12,7 @@
 
 pkgbase=atvv
 pkgname=('atvv' 'atvv-gui')
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/YangtseSu/atvv-linux'
@@ -20,7 +20,7 @@ license=('GPL-3.0-or-later')
 makedepends=('clang' 'pkgconf' 'rust' 'gtk4' 'libadwaita' 'bluez')
 options=('!debug')
 source=("atvv-linux-$pkgver.tar::https://github.com/YangtseSu/atvv-linux/releases/download/v$pkgver/atvv-linux-$pkgver.tar")
-sha256sums=('13ff1278346eca8e601d574c7e83d604acba60d9474d5882bb1df04ecc0717dc')
+sha256sums=('e1a7227a25d858b3cdb7d1aa34e16571d94e9b73ceab469ab685bed68f863cdf')
 _source="atvv-linux-$pkgver"
 
 prepare() {
