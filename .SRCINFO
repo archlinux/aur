@@ -1,6 +1,6 @@
 pkgbase = data-peek
 	pkgdesc = A minimal, fast SQL client desktop application with AI-powered querying. Built for developers who want to quickly peek at their data without the bloat. Supports PostgreSQL, MySQL, and Microsoft SQL Server.
-	pkgver = 0.35.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://www.datapeek.dev/
 	arch = any
@@ -13,9 +13,11 @@ pkgbase = data-peek
 	makedepends = jq
 	depends = electron38
 	optdepends = ollama
-	source = data-peek-0.35.0.tar.gz::https://github.com/Rohithgilla12/data-peek/archive/refs/tags/v0.35.0.tar.gz
+	source = data-peek-0.36.0.tar.gz::https://github.com/Rohithgilla12/data-peek/archive/refs/tags/v0.36.0.tar.gz
+	source = data-peek.js
 	source = data-peek.sh
-	sha256sums = b734d84050a097bac95be14c9d84c585d5f2e7300dc027770a3ab391782aa890
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 869fa1f44979fd5acee96da2cf1210194661fd7daf3983d912554e141be5a11d
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 
 pkgname = data-peek

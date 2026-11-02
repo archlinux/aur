@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.35.0
+pkgver=0.36.0
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -26,10 +26,12 @@ optdepends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.sh"
+    "${pkgname}.js"
+	"${pkgname}.sh"
 )
-sha256sums=('b734d84050a097bac95be14c9d84c585d5f2e7300dc027770a3ab391782aa890'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+sha256sums=('869fa1f44979fd5acee96da2cf1210194661fd7daf3983d912554e141be5a11d'
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -54,12 +56,14 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -77,16 +81,17 @@ _set_build_env() {
 	export COREPACK_HOME="${HOME}/.corepack"
 	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
 	export PATH="${PNPM_HOME}:${PATH}"
-	local _pnpmver=""
+	local _detected=""
 	local _pkgjson="$(_get_project_dir)/package.json"
 	if [ -f "${_pkgjson}" ]; then
-		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
-		if [ -z "${_pnpmver}" ]; then
-			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		_detected="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_detected}" ]; then
+			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
 		fi
 	fi
-	if [ -n "${_pnpmver}" ]; then
-		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+	local _ver="${_pnpmver:-${_detected}}"
+	if [ -n "${_ver}" ]; then
+		npm install -g "pnpm@${_ver}" --prefix "${HOME}/.pnpm" \
 			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
 }
@@ -96,7 +101,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -104,7 +109,8 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+	_set_pnpm_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     find ./ -type f -name "pnpm-lock.yaml" -exec rm -rf {} +
     export NODE_ENV=development
@@ -113,7 +119,8 @@ prepare() {
 build() {
 	cd "$(_get_project_dir)/apps/desktop"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+	_set_pnpm_build_env
     export NODE_ENV=production
     pnpm exec electron-vite build
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
@@ -121,7 +128,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/bin/${pkgname}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "$(_get_project_dir)/apps/desktop/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
