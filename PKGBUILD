@@ -129,13 +129,16 @@ _package_console() {
     printf '#   its opening comment, which says what the unit does under its own name\n'
     cat <<'EOF'
 # vtium on one VT of seat0, in place of its getty. The instance is the VT's
-# name, as getty@.service's is, and the unit is enabled one VT at a time,
-# naming the VT:
-#   systemctl enable vtium@tty3.service
-# That also links autovt@tty3.service here, so logind starts vtium on that
-# VT. Enabling vtium@.service with no VT named fails and links nothing,
-# because its DefaultInstance= names no VT; running vtium on every VT that
-# logind spawns is a separate step, taken by hand.
+# name, as getty@.service's is. vtium console gives vtium one VT, or every
+# VT, and takes them back (ADR-1500 D7):
+#   vtium console enable 3
+#   vtium console enable --all
+#   vtium console disable 3
+#   vtium console disable --all
+# vtium console enable 3 enables vtium@tty3.service, which also links
+# autovt@tty3.service here, so logind starts vtium on that VT. Enabling
+# vtium@.service with no VT named fails and links nothing, because its
+# DefaultInstance= names no VT.
 # It conflicts with getty@ on the same VT. When vtium fails, its OnFailure=
 # starts vtium-getty@, which starts getty@ on the VT unless the head file's
 # policy is closed (ADR-1401 D9), and a Restart= line, where the unit has
