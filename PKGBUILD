@@ -8,7 +8,7 @@
 # why this package does not.
 
 pkgname=lsw-bin
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Linux Subsystem for Windows: Windows applications as native windows, from a KVM guest with a paravirtual GPU"
 arch=('x86_64')
@@ -27,8 +27,9 @@ depends=(
     # lsw-manager: Qt's public API only, so any Qt from the one it was
     # built against on (an older one refuses it, qt_version_tag).
     # remotewin: a Wayland client of its own, with no Qt - libwayland,
-    # xkbcommon for the keymap, libdrm for explicit sync, sd-bus
-    # (systemd-libs, below) for KWin.
+    # xkbcommon for the keymap, libdrm for explicit sync (and, in the
+    # manager, for the monitors' refresh rates), sd-bus (systemd-libs,
+    # below) for KWin.
     'qt6-base>=6.12' 'libvirt' 'libisofs' 'libvncserver' 'wimlib' 'hivex'
     'spdlog' 'fmt' 'zlib' 'wayland' 'libxkbcommon' 'libdrm'
     # accel-virt: the executor, QEMU and its modules
@@ -36,7 +37,7 @@ depends=(
     'glib2' 'pixman' 'gnutls' 'libpng' 'libjpeg-turbo' 'libsasl' 'snappy' 'lzo'
     'zstd' 'numactl' 'keyutils' 'libslirp' 'libbpf'
     'libelf' 'libcbor' 'systemd-libs' 'libseccomp' 'dtc' 'pam' 'fuse3'
-    'libaio' 'liburing' 'capstone'
+    'libaio' 'liburing' 'capstone' 'libusb'
     'glibc' 'libgcc' 'libstdc++'
     # At run time: the host GPU's Vulkan driver, the UEFI firmware the
     # guest boots, the disk tool, the install-media reader, downloads
@@ -53,6 +54,7 @@ optdepends=(
     'virtiofsd: shared folders between the host and the guest'
     'opencl-driver: OpenCL in the guest, run on the host GPU'
     'mesa: OpenGL in the guest on an AMD or Intel GPU (the host EGL driver)'
+    'polkit: the one password prompt that lets a USB device be passed to the guest'
 )
 install=lsw-bin.install
 # Stripped when the release was built (cmake --install --strip), and
@@ -60,7 +62,7 @@ install=lsw-bin.install
 # makepkg to strip, and a debug package would be empty.
 options=('!strip' '!debug')
 source=("https://github.com/acceleration3/linux-subsystem-windows/releases/download/v${pkgver}/lsw-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('b032ebe91766606f1afb1734bb8595f86704b663c264e5129b7dde9391a123de')
+sha256sums=('22f512802aace1ebde8f05856541676b70cf221ac5c7d922a112d3ea81bde073')
 
 package() {
     cp -a --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
