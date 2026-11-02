@@ -2,7 +2,7 @@
 
 pkgname=sipgate
 pkgdesc="sipgate App - Telephony desktop application for sipgate customers"
-pkgver=2.45.1
+pkgver=2.46.1
 _distfile="sipgate-${pkgver}-amd64.deb"
 pkgrel=1
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	"run-sipgate-desktop.sh"
 )
 noextract=("${_distfile}")
-b2sums=('91a5520ff5b54b65250b772660daa307eff6576d3ee9f7c6523a35f69d89578472504e0edf7ba776c9c44402c7c5e609d1bbb1322440ea24107c67d25997e965'
+b2sums=('b9038410659b717e7e7fb517dee3010de7f2a40f3341b731c540e7f0f1e68d22aed668e044cf02e11f849e8a5ea74cfa0830ccd410ec3f97400d46f9451450db'
         '44fae56c473ebe12addbdd38e59ba6a0fd933b271c0f23b35a5febe21f850177376dad83684914e5660d654129eb9059ef9291af5a8be88bc35fdc01199596dd')
 
 pkgver() {
