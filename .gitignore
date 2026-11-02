@@ -3,9 +3,6 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!LICENSE
 !LICENSES/
+!LICENSE
 !REUSE.toml
-!stump.service
-!stump.sysusers
-!stump.tmpfiles
