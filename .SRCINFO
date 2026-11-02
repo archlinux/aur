@@ -1,6 +1,6 @@
 pkgbase = nmrs
 	pkgdesc = NetworkManager client built on nmrs and gpui
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/freedesktop-rs/nmrs-gui
 	arch = x86_64
@@ -14,7 +14,8 @@ pkgbase = nmrs
 	depends = wayland
 	depends = vulkan-icd-loader
 	options = !lto
-	source = nmrs-2.0.0.tar.gz::https://github.com/freedesktop-rs/nmrs-gui/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = b6e3a0ccebfd1dbc0595f2b8306efc8a002f47834d9e24f549687be0bc02c72b
+	options = !debug
+	source = nmrs-2.0.1.tar.gz::https://github.com/freedesktop-rs/nmrs-gui/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 7c914d7de8b5ed9d3164e78f504e625d1e3453f0ed8efeaea4f761f677c90ee5
 
 pkgname = nmrs

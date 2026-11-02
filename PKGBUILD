@@ -1,6 +1,6 @@
 # Maintainer: Akrm Al-Hakimi <alhakimiakrmj@gmail.com>
 pkgname=nmrs
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="NetworkManager client built on nmrs and gpui"
 arch=('x86_64')
@@ -8,9 +8,9 @@ url="https://github.com/freedesktop-rs/nmrs-gui"
 license=('MIT')
 depends=('networkmanager' 'fontconfig' 'freetype2' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'vulkan-icd-loader')
 makedepends=('cargo')
-options=('!lto')
+options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b6e3a0ccebfd1dbc0595f2b8306efc8a002f47834d9e24f549687be0bc02c72b')
+sha256sums=('7c914d7de8b5ed9d3164e78f504e625d1e3453f0ed8efeaea4f761f677c90ee5')
 
 prepare() {
   cd "nmrs-gui-$pkgver"
