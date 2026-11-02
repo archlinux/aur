@@ -1,7 +1,7 @@
 # Maintainer: Nico Ungruhe <nico@planet-express.org>
 
 pkgname="kwi"
-pkgrel=3
+pkgrel=4
 pkgver=0.1.0
 pkgdesc="Modern and fast terminal for KDE Plasma and other desktops"
 arch=("any")
@@ -31,9 +31,15 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}"
-
-  cmake -B build -S "${pkgname}" --preset release
+    local cmake_options=(
+        -B build
+        -S "${pkgname}"
+        -G Ninja
+        -W no-author
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+    )
+    cmake "${cmake_options[@]}"
   cmake --build build
 }
 
