@@ -1,6 +1,6 @@
 # rustconn-bin
 
-Repackages the official RustConn 0.23.21 amd64 Debian release for Arch Linux.
+Repackages the official RustConn 0.24.4 amd64 Debian release for Arch Linux.
 The release's SHA-256 is pinned in `PKGBUILD`; no source compilation is needed.
 
 Includes `rustconn` and `rustconn-cli`, the upstream desktop entry, icons,
@@ -12,7 +12,7 @@ GTK 4.14+, libadwaita 1.5+ and VTE 0.76+; these minimum versions are declared.
 The two MIME definitions are copied unchanged from the upstream v0.23.21 tag,
 because the Debian package omits them despite declaring the file associations.
 
-Provides `rustconn=0.23.21` and explicitly conflicts with `rustconn` and
+Provides `rustconn=0.24.4` and explicitly conflicts with `rustconn` and
 `rustconn-appimage`. These variants install overlapping commands, desktop
 entries, icons, translations and file associations and cannot coexist.
 
