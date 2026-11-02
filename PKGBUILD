@@ -1,7 +1,7 @@
 # Maintainer: Sivasubramanian Ramanathan <sivasub987@gmail.com>
 
 pkgname=learnharness-bin
-pkgver=0.3.7
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Agent harness for adaptive teaching, practice, and a knowledge graph"
 arch=('x86_64')
@@ -42,6 +42,7 @@ depends=(
 )
 provides=('learnharness')
 conflicts=('learnharness')
+optdepends=('python: read the bundled learning-data skill from a shell')
 options=('!strip' '!debug')
 source=(
   "learnharness-${pkgver}.svg::https://raw.githubusercontent.com/amosblomqvist/learnharness/v${pkgver}/build/icon-flat.svg"
@@ -50,9 +51,9 @@ source=(
 source_x86_64=("learnharness-${pkgver}.deb::https://github.com/amosblomqvist/learnharness/releases/download/v${pkgver}/LearnHarness-${pkgver}-amd64.deb")
 sha256sums=(
   '6cf253fe5b5dcc88329faa24391249b996518ed6ba394980da945981b2981927'
-  '2fd7cbcc049d2af339f79d83df49cf852581b29793a58fab535fc449759017ad'
+  '93cc1a1cc84cc7abc0f3e42fa08947de7bc2e90baa343d632952198535c1bf7b'
 )
-sha256sums_x86_64=('0ccf2276043fc3ca4b969ea13c428992cc35165198473864bf6e86ee2c5178a7')
+sha256sums_x86_64=('fc09e7ac1f9a9ae26bd8adbec27913e41e014e2c0c5f6abbb0e2207cca671d26')
 
 package() {
   local resources="${pkgdir}/opt/LearnHarness/resources"
@@ -62,8 +63,9 @@ package() {
   bsdtar -xf "${srcdir}/learnharness-${pkgver}.deb" data.tar.xz
   bsdtar -xf data.tar.xz -C "${pkgdir}"
 
-  # Arch is glibc-only; remove the bundled musl build and non-English Electron
-  # locales from this English-only application.
+  # Arch is glibc-only; drop any bundled musl build (upstream shipped it in
+  # 0.3.7 and removed it in 0.4.1, so this stays as a guard) and the
+  # non-English Electron locales from this English-only application.
   rm -rf \
     "${standalone}/node_modules/@img/sharp-linuxmusl-x64" \
     "${standalone}/node_modules/@img/sharp-libvips-linuxmusl-x64"
