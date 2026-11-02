@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beam-wallet-bin
 _pkgname=Beam-Wallet
-pkgver=7.5.14493.5867
+pkgver=7.5.14548.5873
 pkgrel=1
 pkgdesc="Beam Desktop Wallet.(Prebuilt version)"
 arch=('x86_64')
@@ -22,20 +22,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/beam-${pkgver}/Linux-${_pkgname}-${pkgver}.zip"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('8970068fda20002647eb04ce939a3c5b984375f3a3b8b0e85d72f00f1ed9cd77'
-            'b6df01eb77c2642ad958acb1c2183fc9761f9dc71f070d0e34211d318a160b87')
+sha256sums=('9a887b78f1f04049d88949302aa4c0ad0aab9b12d0f009ceeb17798fd774c143'
+            '216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4')
 prepare() {
 	sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname//-/}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/Linux-${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.AppImage" ]; then
-        chmod +x "${srcdir}/Linux-${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
-    "${srcdir}/Linux-${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    rm -rf "${srcdir}/squashfs-root"
+    chmod +x "${srcdir}/"*.AppImage
+    "${srcdir}/"*.AppImage --appimage-extract > /dev/null
     sed -i -e "
         s/\/usr\/bin\/${_pkgname//-/}/${pkgname%-bin}/g
         s/Icon=${pkgname%-wallet-appimage}/Icon=${pkgname%-bin}/g
