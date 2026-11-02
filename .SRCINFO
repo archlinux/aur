@@ -1,13 +1,13 @@
 pkgbase = pkglog-elixir-bin
 	pkgdesc = Reports log of package updates
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/tranquil-tr0/pkglog-elixir
 	arch = x86_64
 	license = AGPL-3.0
 	depends = erlang-core
 	conflicts = pkglog
-	source = pkglog-elixir-bin-2.0.0::https://github.com/tranquil-tr0/pkglog-elixir/releases/download/v2.0.0/pkglog
-	sha256sums = 3fff1fccee668b940dfc5f97a16ab7937800619f69433b2acb72d4605affa679
+	source = pkglog-elixir-bin-2.1.0::https://github.com/tranquil-tr0/pkglog-elixir/releases/download/v2.1.0/pkglog
+	sha256sums = d4b55d9e4eee7ffef3c986a4bb7e25f29e61d44082553a64b7c2b48bc911196e
 
 pkgname = pkglog-elixir-bin
