@@ -1,0 +1,17 @@
+pkgbase = ayagami-git
+	pkgdesc = A 2D puppet model renderer compatible with Live2D (development version)
+	pkgver = 0.1.0r0.0d1d7aa
+	pkgrel = 1
+	url = https://github.com/AyagamiDev/ayagami
+	install = ayagami.install
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = yq
+	depends = libgcc
+	depends = glibc
+	source = ayagami-git::git+https://github.com/AyagamiDev/ayagami.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ayagami-git

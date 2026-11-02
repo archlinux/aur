@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "**************"
+  echo "* ATTENTION! *"
+  echo "**************"
+  echo ""
+  echo "  * This package does NOT bundle Rust libraries!"
+  echo "  * A demo called \"ayagami-demo\" is included. Run it by issuing in a terminal:"
+  echo ""
+  echo "      ayagami-demo"
+  echo ""
+}
+
