@@ -6,9 +6,9 @@
 # _reltag carries the real GitHub tag because pkgver must be
 # makepkg-safe (no hyphens), while tags use hyphens (v0.2.0-preview2).
 pkgname=horneroctl-bin
-_reltag=horneroctl-v0.2.0-preview37
-pkgver=0.2.0_preview37
-pkgrel=2
+_reltag=horneroctl-v0.2.0-preview38
+pkgver=0.2.0_preview38
+pkgrel=1
 pkgdesc='HorneroOS system CLI (native binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/HorneroOS/hornero'
@@ -20,10 +20,14 @@ optdepends=(
   'minisign: verify signed HorneroOS community plugin registry indexes'
   'hornero-shell: validate community plugin packages with the Shell-owned contract checker'
 )
-# Release public key as a declared local source: AUR snapshot tarballs
-# only include declared sources, so every install path receives it.
-# Import once: gpg --import hornero-release.pub (fingerprint must
-# match validpgpkeys). Helpers may also fetch it from keyservers.
+# The release public key ships AS A PACKAGE SOURCE on purpose: AUR
+# snapshot tarballs only include the PKGBUILD, .SRCINFO and declared
+# local sources, so this is the only shipped file every install path
+# (git clone, snapshot, AUR helper) is guaranteed to receive. Import it
+# once with `gpg --import hornero-release.pub` (helpers may also
+# fetch the same key from public keyservers); its fingerprint must
+# match validpgpkeys below. The stamp step refreshes this file and its
+# sha256 from packaging/keys/hornero-release.pub.asc at release time.
 source=('hornero-release.pub')
 sha256sums=('4f18f92773a924e71b1af2045be932f7bc8fa16dcff6266d5c37cf1114605afb')
 source_x86_64=(
@@ -36,9 +40,16 @@ source_aarch64=(
 )
 # Set to the committed release-key fingerprint by the release workflow.
 # An unstamped template intentionally cannot pass makepkg signature checks.
+# The same key ships next to this PKGBUILD in keys/pgp/<fingerprint>.asc
+# (the Arch source-package convention) and on public keyservers, so AUR
+# helpers and makepkg users can obtain it without trusting a keyserver
+# response blindly: the fingerprint below is the pinned trust anchor and
+# makepkg rejects any signature whose key does not match it. Never
+# weaken signature verification to work around a missing key; see
+# docs/RELEASE_SIGNING.md.
 validpgpkeys=('FCFBEE43925AB5429362278AE59EAB44AA2498DC')
-sha256sums_x86_64=('e2b79e925f1e81f4c140c525b94239372c88e9067a45f1e4ca744306289fbd71' 'be8f12282a11c94c83cf887834e4a9afb2fa86e558cd5f31bad3d6245e7c74d6')
-sha256sums_aarch64=('d19e1d53f733d92d9e83287dfafc4a21de69f713f0099d165741c5beed843505' '0a509d0987fdba08c7294579015f70b695af578e7e5cce5d5465fca032f4868b')
+sha256sums_x86_64=('7fb37ce9e9aad016a0d7bda7c4dd4ba395bdd5594e0ae53d39233100d659555d' '8f38114fb5bd8609273b54b19157b7cf1f406f4e07292c831c48d3577faff0e2')
+sha256sums_aarch64=('c01a5bc0f71f07f1ce9fd78ae595bb02aef81874f6ec3b50b6fc26bd67d2dea4' '102b4bd84cb40cdd5c50709f65b379c0ce04f889064d30ed6896f7b936e614cc')
 
 package() {
   install -Dm755 "${srcdir}/horneroctl-${pkgver}" "${pkgdir}/usr/bin/horneroctl"
