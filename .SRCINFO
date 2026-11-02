@@ -1,6 +1,6 @@
 pkgbase = layerbase-bin
 	pkgdesc = A beautiful GUI for managing all your local databases. Create, query, backup, and monitor PostgreSQL, MySQL, MongoDB, Redis, and more. No terminal required. (precompiled binary)
-	pkgver = 0.39.2
+	pkgver = 0.39.5
 	pkgrel = 1
 	url = https://layerbase.com
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = layerbase-bin
 	provides = layerbase
 	conflicts = layerbase
 	options = !strip
-	source_x86_64 = layerbase-0.39.2-amd64.deb::https://layerbase.com/api/download/linux?format=deb
-	sha256sums_x86_64 = 2911021df5c38b631f9b951c89d1c667c23958429287dbb3c9e5aa7b71b1b7a7
+	source_x86_64 = layerbase-0.39.5-amd64.deb::https://layerbase.com/api/download/linux?format=deb
+	sha256sums_x86_64 = 9e868dff7a9b7bf39bf87f5ccb1293bc0954e18e71e0f46251211e628f3c0d02
 
 pkgname = layerbase-bin
