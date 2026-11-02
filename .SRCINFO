@@ -1,13 +1,12 @@
 pkgbase = ofdgo-git
 	pkgdesc = Native cross-platform pure-Go OFD / PDF rendering and viewing tool
 	pkgver = r1065.9d20ecd
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/xiaoqidun/ofdgo
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	depends = glibc
 	depends = hicolor-icon-theme
 	provides = ofdgo
 	conflicts = ofdgo

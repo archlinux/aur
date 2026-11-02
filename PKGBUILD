@@ -2,7 +2,7 @@
 
 pkgname=ofdgo-git
 pkgver=r1065.9d20ecd
-pkgrel=2
+pkgrel=4
 pkgdesc="Native cross-platform pure-Go OFD / PDF rendering and viewing tool"
 arch=($CARCH)
 url="https://github.com/xiaoqidun/ofdgo"
@@ -11,7 +11,6 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=(
-    glibc
     hicolor-icon-theme
 )
 optdepends=()
@@ -57,7 +56,10 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     install -vDm0755 build/${pkgname%-git} -t ${pkgdir}/usr/bin/
+    install -vDm0644 assets/webui/ofdgo.png -t ${pkgdir}/usr/share/icons/hicolor/512x512/apps/
     install -vDm0644 assets/webui/ofdgo.svg -t ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
+    install -vDm0644 *.md -t ${pkgdir}/usr/share/doc/${pkgname}/
+    install -vDm0644 NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm0644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname%-git}.desktop <<EOF
 [Desktop Entry]
@@ -69,11 +71,21 @@ GenericName=OFD / PDF Document Viewer
 GenericName[zh_CN]=OFD / PDF 文档阅读器
 Comment=Native cross-platform pure-Go OFD / PDF rendering and viewing tool
 Comment[zh_CN]=原生跨平台纯 Go 语言 OFD / PDF 渲染与阅读工具
-Exec=ofdgo %U
+Exec=ofdgo %F
 Icon=ofdgo
 Terminal=false
 StartupNotify=true
 Categories=Office;Viewer;
 MimeType=application/ofd;application/pdf;
+EOF
+    install -vDm0644 /dev/stdin ${pkgdir}/usr/share/mime/packages/${pkgname%-git}.xml <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/ofd">
+    <comment>Open Fixed-layout Document</comment>
+    <comment xml:lang="zh_CN">OFD 文档</comment>
+    <glob pattern="*.ofd"/>
+  </mime-type>
+</mime-info>
 EOF
 }
