@@ -133,7 +133,11 @@ if [ $UMU_AVAIL -eq 0 ] && [[ ! -v USE_WINE ]]; then
     protonUpdate
   fi
 
+  ## should be optional though
   source "$WINEPREFIX/.installed.$CURRVER" # Load PROTONPATH
+  export PROTONPATH
+  export WINEPREFIX
+  umu-run wineboot -e
   cd $SAVES && umu-run "C:\\${progName}\\Application\\CRC.exe" "$@"
 else
   # Wine version
@@ -141,6 +145,7 @@ else
     wineUpdate
   fi
   export WINEPREFIX
+  wine wineboot -e
   cd $SAVES && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
 fi
 
