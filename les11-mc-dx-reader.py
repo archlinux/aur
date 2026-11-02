@@ -109,11 +109,15 @@ def main():
                         help="continuously poll, refreshing every SECONDS")
     args = parser.parse_args()
 
-    device = detect_device() if args.device in (None, "", "auto") else args.device
-    port = serial.Serial(device, args.baud, timeout=1)
-    print(f"device={device} baud={args.baud} addr={args.addr}", file=sys.stderr)
+    # "auto" (the default) re-keys off the CH340 USB vendor id every time, so the
+    # /dev/ttyUSB* number -- which is NOT stable across reboots or USB
+    # re-enumeration -- never matters for recognition.
+    auto = args.device in (None, "", "auto")
 
-    def poll():
+    def resolve_device():
+        return detect_device() if auto else args.device
+
+    def poll(port):
         rows = read_channels(port, args.addr, 0, args.count)
         print(f"{'CH':<4}{'reg':<8}{'raw':<8}{'temp(C)':<12}note")
         for reg, raw, temp, missing in rows:
@@ -126,16 +130,35 @@ def main():
 
     try:
         if args.loop > 0:
+            # Re-detect and re-open the port every cycle so a live USB
+            # re-enumeration (a CH340 reset that re-registers the probe under a
+            # new /dev/ttyUSB* number, a re-plug, or the post-reboot enumeration
+            # window) is picked up automatically instead of reading a stale node.
             while True:
                 os.system("clear")
-                poll()
+                try:
+                    device = resolve_device()
+                    port = serial.Serial(device, args.baud, timeout=1)
+                except serial.SerialException as exc:
+                    print(f"device: open failed: {exc}", file=sys.stderr)
+                    time.sleep(args.loop)
+                    continue
+                try:
+                    print(f"device={device} baud={args.baud} addr={args.addr}", file=sys.stderr)
+                    poll(port)
+                finally:
+                    port.close()
                 time.sleep(args.loop)
         else:
-            poll()
+            device = resolve_device()
+            port = serial.Serial(device, args.baud, timeout=1)
+            print(f"device={device} baud={args.baud} addr={args.addr}", file=sys.stderr)
+            try:
+                poll(port)
+            finally:
+                port.close()
     except KeyboardInterrupt:
         pass
-    finally:
-        port.close()
 
 
 if __name__ == "__main__":
