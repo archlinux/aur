@@ -1,0 +1,21 @@
+pkgbase = codjd
+	pkgdesc = codj daemon - music player and keyboard DJ engine (decks, cue, beatgrids, Soulseek) over D-Bus
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hitchho/codjd
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = clang
+	depends = pipewire
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	optdepends = codj: the terminal UI
+	options = !lto
+	source = codjd-0.2.0.tar.gz::https://github.com/hitchho/codjd/archive/v0.2.0.tar.gz
+	sha256sums = 056f07868a7da7e25b5c16fd5cd1c3dc02739807130e3f4b916ecb9c6a349b90
+
+pkgname = codjd
