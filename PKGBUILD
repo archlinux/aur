@@ -3,7 +3,7 @@
 # Contributor: Thorsten Liebig
 _base=openEMS
 pkgname=${_base,,}
-pkgver=0.0.36
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="free and open electromagnetic field solver using the FDTD method"
 arch=(i686 x86_64)
@@ -21,13 +21,13 @@ source=(${_base}-${pkgver}::git+https://github.com/thliebig/${_base}-Project.git
   github.com-thliebig-openems::git+https://github.com/thliebig/openEMS.git
   github.com-thliebig-fparser::git+https://github.com/thliebig/fparser.git
   github.com-thliebig-ctb::git+https://github.com/thliebig/CTB.git)
-sha512sums=('SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP')
+sha512sums=('7f1342c3614fac43c29b18ddb6400ab6204596c1cf6a55205fa2e1ba6f54354f017a825997c83a4b1e853bf88fccc7580ae08ac5d97dd4e80f22597f9cf7b826'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd ${_base}-${pkgver}

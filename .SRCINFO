@@ -1,6 +1,6 @@
 pkgbase = openems
 	pkgdesc = free and open electromagnetic field solver using the FDTD method
-	pkgver = 0.0.36
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://openEMS.de
 	arch = i686
@@ -35,14 +35,14 @@ pkgbase = openems
 	depends = adios2
 	depends = libharu
 	depends = gl2ps
-	source = openEMS-0.0.36::git+https://github.com/thliebig/openEMS-Project.git#tag=v0.0.36
+	source = openEMS-0.37.0::git+https://github.com/thliebig/openEMS-Project.git#tag=v0.37.0
 	source = github.com-thliebig-csxcad::git+https://github.com/thliebig/CSXCAD.git
 	source = github.com-thliebig-qcsxcad::git+https://github.com/thliebig/QCSXCAD.git
 	source = github.com-thliebig-appcsxcad::git+https://github.com/thliebig/AppCSXCAD.git
 	source = github.com-thliebig-openems::git+https://github.com/thliebig/openEMS.git
 	source = github.com-thliebig-fparser::git+https://github.com/thliebig/fparser.git
 	source = github.com-thliebig-ctb::git+https://github.com/thliebig/CTB.git
-	sha512sums = SKIP
+	sha512sums = 7f1342c3614fac43c29b18ddb6400ab6204596c1cf6a55205fa2e1ba6f54354f017a825997c83a4b1e853bf88fccc7580ae08ac5d97dd4e80f22597f9cf7b826
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
