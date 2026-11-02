@@ -1,0 +1,4 @@
+[sourcemod-advertisements]
+source = "github"
+github = "ErikMinekus/sm-advertisements"
+use_latest_release = true

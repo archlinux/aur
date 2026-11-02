@@ -1,0 +1,16 @@
+pkgbase = sourcemod-advertisements
+	pkgdesc = Advertisements, a SourceMod plugin displaying messages on game servers (in the addons folder of sourcemod)
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/ErikMinekus/sm-advertisements
+	arch = any
+	license = GPL-3.0-only
+	license = LicenseRef-SourceMod-exception
+	makedepends = git
+	makedepends = sourcemod-scripting
+	depends = sourcemod
+	source = git+https://github.com/ErikMinekus/sm-advertisements.git#tag=2.1.2
+	sha512sums = 0fa6625cf470f8510385707a28d6a162b497c3faf7d51ce4679ac728f827a073905742d58f7bf596603eb16385b6feb6f78ab1d74afc43ad10d29d804696cb05
+	b2sums = a305b4cf5b745c5ac65bfec891e94694fc5e5c7e4e3dc7b074ee37eddc0065e4e1a3e1d7c9cfd01b61c3d7a70b9269d0282a71b0b9b2f3982c399fa3569f4a66
+
+pkgname = sourcemod-advertisements
