@@ -1,6 +1,6 @@
 pkgbase = onekey-wallet-bin
 	pkgdesc = Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.
-	pkgver = 6.6.3
+	pkgver = 6.6.4
 	pkgrel = 1
 	url = https://onekey.so/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = onekey-wallet-bin
 	license = Apache-2.0
 	depends = electron44
 	depends = nodejs
-	provides = onekey-wallet=6.6.3
+	provides = onekey-wallet=6.6.4
 	conflicts = onekey-wallet
 	options = !strip
 	options = !emptydirs
 	source = onekey-wallet.js
 	source = onekey-wallet.sh
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
-	source_aarch64 = onekey-wallet-6.6.3-aarch64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v6.6.3/OneKey-Wallet-6.6.3-linux-arm64.AppImage
-	sha256sums_aarch64 = 113f9e73826677673bce9ad688b15cff972fbeb35b13f9025d0a9fa8064eeab7
-	source_x86_64 = onekey-wallet-6.6.3-x86_64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v6.6.3/OneKey-Wallet-6.6.3-linux-x86_64.AppImage
-	sha256sums_x86_64 = b8889f941ca2ecc0e81ae52ea15d32a7c627415840a7e8f741bcd2fb3cf2a125
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	source_aarch64 = onekey-wallet-6.6.4-aarch64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v6.6.4/OneKey-Wallet-6.6.4-linux-arm64.AppImage
+	sha256sums_aarch64 = bff74150f5fbdf0362d36487440abe980e452be775cf04dbceea154638c0cf8a
+	source_x86_64 = onekey-wallet-6.6.4-x86_64.AppImage::https://github.com/OneKeyHQ/app-monorepo/releases/download/v6.6.4/OneKey-Wallet-6.6.4-linux-x86_64.AppImage
+	sha256sums_x86_64 = e4f5c2c5028a07eab1d019bcc1c3a72d8afb1d1f198b66f6d2c2d220ab700ec6
 
 pkgname = onekey-wallet-bin
