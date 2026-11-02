@@ -1,22 +1,21 @@
 pkgbase = devo-bin
 	pkgdesc = Open-source, provider-agnostic coding agent that lives in your terminal
-	pkgver = 0.1.39
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/7df-lab/devo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = bash
-	depends = ripgrep
 	optdepends = git: inspect and work with Git repositories
 	optdepends = github-cli: interact with GitHub
 	optdepends = glab: interact with GitLab
 	provides = devo
 	conflicts = devo
 	options = !strip
-	source_x86_64 = devo-bin-0.1.39-x86_64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.39/devo-v0.1.39-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 1720ecf759abf0e4f480b5bd40dce1e13417bcdc459d522f347ebb545608cb81
-	source_aarch64 = devo-bin-0.1.39-aarch64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.39/devo-v0.1.39-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 54a5f049482f0d00b40a077de8c91c0a62d220f70a4ced61eee73d20b2ccb739
+	source_x86_64 = devo-bin-0.2.16-x86_64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.2.16/devo-tui-v0.2.16-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 0b4c59a1a4b22f35c932eaf5ef73d7fdb5a82bd7ea84ce70fefcb0e4bf3c06f2
+	source_aarch64 = devo-bin-0.2.16-aarch64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.2.16/devo-tui-v0.2.16-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = 5f8c114775cb2a714c7306395bc0b954df83b0413b1b27844709ca6b3b8c81f4
 
 pkgname = devo-bin
