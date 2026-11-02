@@ -1,4 +1,5 @@
-# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: Filipe Nascimento <flipee at tuta dot io>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=mdbook-git
