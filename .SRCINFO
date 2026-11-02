@@ -1,0 +1,18 @@
+pkgbase = perl-dbix-loop
+	pkgdesc = non-blocking DBI on your event loop
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/release/DBIx-Loop
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-dbd-sqlite>=0
+	depends = perl-dbi>=1.600
+	depends = perl-io-async>=0
+	depends = perl>=5.8.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/DBIx-Loop-0.09.tar.gz
+	md5sums = ac9ce8f684fcc298255f46b04ac9c636
+	sha512sums = ea2534d850df7767f413f5d9133cc94f06cf92e7a3baed9b297a4f0ee30c33263943b9b1ec1f2bc462446002d4adf4da18dfd7dfc55f7bb9b7437cd44263dca5
+
+pkgname = perl-dbix-loop
