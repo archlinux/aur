@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-ariadne
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A Nautilus-style file manager built with Qt 6'
 arch=(x86_64 aarch64)
@@ -23,6 +23,10 @@ makedepends=(
 )
 optdepends=(
   'udisks2: mounting and ejecting drives, unlocking encrypted ones'
+  'exfatprogs: formatting drives as exFAT'
+  'dosfstools: formatting drives as FAT'
+  'ntfs-3g: formatting drives as NTFS'
+  'btrfs-progs: formatting drives as Btrfs'
   'gvfs-mtp: phones and cameras'
   'gvfs-smb: Windows shares (gvfs itself covers SFTP, FTP and WebDAV)'
   'papers: PDF and comic book thumbnails'
@@ -35,7 +39,7 @@ optdepends=(
 )
 install=ariadne.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('35b7275448ac0680f80e7a80afb457514c0751b89e215235cee80e5b9212e0aa')
+sha256sums=('4759a210dd7e3fac301c9afeb33b9067c167d4b22537d9f5f7dc9c1647eff226')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
