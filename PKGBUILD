@@ -3,7 +3,7 @@
 
 pkgname=recoil16ctl-git
 _srcname=recoil16ctl
-pkgver=1.4.0.r1.g5a401b1
+pkgver=1.5.0.r1.g08bf238
 pkgrel=1
 pkgdesc="Control tool for the PCSpecialist Recoil 16 AMD (TUXEDO Stellaris 16 Gen7): charge modes, battery health, lightbar, power profiles, Fn/Super lock, screen rotation, NVIDIA GPU power and offload, battery draw"
 arch=('x86_64')
