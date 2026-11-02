@@ -2,7 +2,7 @@
 
 pkgname=oleafly
 _pkgname=${pkgname^}
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 url="https://$pkgname.com"
 _url="https://github.com/$_pkgname/$_pkgname"
@@ -31,7 +31,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$_pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('a8f3f71b830a2adeb634180f2d229439e69c82e9f90caf12b492e463d39efb72')
+sha256sums=('dd964ca87a7144dbc555f30f7dedc005db3865e090f05a85b94bab7b4b454a1d')
 
 _srcenv() {
 	cd "$_archive"
