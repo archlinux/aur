@@ -17,7 +17,7 @@ pkgbase = jankk
 	depends = lua
 	source = jankk-0.1.2.tar.gz::https://github.com/Happilli/_jankk/archive/refs/tags/v0.1.2.tar.gz
 	source = ryu-200007fb1be91a9a3eb4cc642733865d3f74f447.tar.gz::https://github.com/Happilli/ryu/archive/200007fb1be91a9a3eb4cc642733865d3f74f447.tar.gz
-	sha256sums = 769bfb681ceef1c6c8e5927ceb060d496b01d3832d57dfc6ce78022ab3d455b7
+	sha256sums = a082d6823a052e7ee78ef11b211b73510029d09b97fbffef63db5d2b70bffaee
 	sha256sums = f2a61e2899c966488cf35409faeefd293271e6f694825ad710d61c402c7b29c2
 
 pkgname = jankk

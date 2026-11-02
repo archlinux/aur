@@ -11,7 +11,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia-ffmpeg' 'qt6-svg' 'qt6-sha
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/_jankk/archive/refs/tags/v$pkgver.tar.gz"
         "ryu-$_ryu_commit.tar.gz::https://github.com/Happilli/ryu/archive/$_ryu_commit.tar.gz")
-sha256sums=('769bfb681ceef1c6c8e5927ceb060d496b01d3832d57dfc6ce78022ab3d455b7'
+sha256sums=('a082d6823a052e7ee78ef11b211b73510029d09b97fbffef63db5d2b70bffaee'
             'f2a61e2899c966488cf35409faeefd293271e6f694825ad710d61c402c7b29c2')
 
 prepare() {
