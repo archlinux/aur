@@ -1,0 +1,15 @@
+pkgbase = rose-pine-fcitx5-git
+	pkgdesc = Soho vibes for fcitx5
+	pkgver = r6.01c291b
+	pkgrel = 1
+	url = https://github.com/rose-pine/fcitx5
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fcitx5
+	provides = rose-pine-fcitx5
+	conflicts = rose-pine-fcitx5
+	source = fcitx5::git+https://github.com/rose-pine/fcitx5.git
+	sha256sums = SKIP
+
+pkgname = rose-pine-fcitx5-git
