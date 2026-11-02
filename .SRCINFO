@@ -1,0 +1,15 @@
+pkgbase = orbit-tui-bin
+	pkgdesc = Extensible 24/7 terminal workspace and autonomous AI agent cockpit in Rust
+	pkgver = 0.11.17
+	pkgrel = 1
+	url = https://orbit-tui.vercel.app
+	arch = x86_64
+	license = MIT
+	provides = orbit
+	provides = orbit-tui
+	conflicts = orbit
+	conflicts = orbit-tui
+	source_x86_64 = https://github.com/ziuus/orbit-tui/releases/download/v0.11.17/orbit-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2611f97030415da38c17feb451fade5442315864752f8630a2991c0f93b354fc
+
+pkgname = orbit-tui-bin
