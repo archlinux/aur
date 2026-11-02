@@ -1,3 +1,4 @@
+d /etc/wb2api 0775 root wb2api -
 d /var/lib/wb2api 0750 wb2api wb2api -
 d /var/lib/wb2api/auths 0750 wb2api wb2api -
 d /var/lib/wb2api/data 0750 wb2api wb2api -
