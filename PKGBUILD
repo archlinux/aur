@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animathio-bin
 _pkgname=AniMathIO
-pkgver=1.8.1
+pkgver=1.8.3
 _electronversion=44
 pkgrel=1
 pkgdesc="AniMathIO revolutionizes the creation of mathematical videos, tailored for educators, students, and professionals seeking to bring complex concepts to life."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('156a9c880bf3aa94794040be02f6b04cd0860a324d8f2e25d6c086037e068764'
+sha256sums=('3e514509a177fe3e8f5ad71907ff80303e93231ecc03de6a9b5c9b0e11fe21ca'
             '48f6289b2552d107a41350b2ee3339010373d1e0dd59834b4c7de5ecab96df72'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
