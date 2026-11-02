@@ -3,10 +3,10 @@
 
 _pkgname="sngrep"
 pkgname="${_pkgname}-bin"
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="A tool for displaying SIP call message flows from a terminal"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/irontec/${_pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('xxd')
@@ -18,20 +18,12 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
         "${_pkgsrc}.man.8::${url}/raw/refs/tags/v${pkgver}/doc/${_pkgname}.8"
         "${_pkgsrc}-${_pkgname}rc::${url}/raw/refs/tags/v${pkgver}/config/${_pkgname}rc")
-source_i686=("${_pkgsrc}-i686::https://packages.irontec.com/binaries/${_pkgname}-static-i386-linux-gnu-${pkgver}")
 source_x86_64=("${_pkgsrc}-x86_64::https://packages.irontec.com/binaries/${_pkgname}-static-amd64-linux-gnu-${pkgver}")
-md5sums=('c47c7c7383225ab55ff591cb59c41e6b'
-         'd32239bcb673463ab874e80d47fae504'
-         '3fd6ccca40ec9086a061ca221e5d375b'
-         '5650c8a266261a831642112138129566')
-md5sums_i686=('8f460d1e77e3f8578ab4d529f0d0d873')
-md5sums_x86_64=('354b230c6c426973cbd289c8bedfd914')
 sha256sums=('2b7814d3fca2e99e56c51b6ff2aa313ea6e9da6424804240aa8ad891fdfe0900'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903'
-            'e5cf742a5051339c33d8c91c1a8ec7fa9f06ba2fba34a90d81847073e2be7e29'
-            'e7eb8897f6facdaf67eb013b000f8f4443c86b19d29cb66aa8ad1b5e7ec2d633')
-sha256sums_i686=('744ac6185b988aedb2c60981197fcdd27afa474905b794a99cb7fb2a5151aa2a')
-sha256sums_x86_64=('89e3292e4a04d96d9f3ac74852b757019f5a4f76da991cc0493ab0261bd47c1c')
+            '2b3630e53485f63bc976776ecbcbd2e6f700c93ee38dca691a129e1986271ad9'
+            '55312b67d560ad9e8685f53a637c976a1253acf767798aba05a091a5fe86f439')
+sha256sums_x86_64=('83f7489d88113ee730cb30b1b4ad5e09dc4041fcf507b6da340957955e8358f9')
 
 # https://everydaywithlinux.blogspot.com/2012/11/patch-strings-in-binary-files-with-sed.html
 _patch_strings_in_file() {
