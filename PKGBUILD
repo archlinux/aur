@@ -21,11 +21,11 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-bin"
-pkgver='15.0.26'
+pkgver='16.0'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 license=(MPL-2.0)
 depends=('libxt' 'startup-notification' 'mime-types' 'dbus-glib'
 	'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
@@ -41,12 +41,12 @@ conflicts=("${_appname}")
 install="${_appname}.install"
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
-_tag_i686='linux-i686'
 _tag_x86_64='linux-x86_64'
+_tag_aarch64='linux-aarch64'
 _urlbase="https://archive.torproject.org/tor-package-archive/torbrowser/${pkgver}"
-_archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_tag_x86_64}" || echo -n "${_tag_i686}")
+_archstr=$([[ "${CARCH}" == 'aarch64' ]] && echo -n "${_tag_aarch64}" || echo -n "${_tag_x86_64}")
 
-# Syntax: _dist_checksum 'linux-i686'/'linux-x86_64'
+# Syntax: _dist_checksum 'linux-x86_64'/'linux-aarch64'
 _dist_checksum() {
 
 	(curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" || \
@@ -60,8 +60,8 @@ _sed_escape() {
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
 
-source_i686=("${_urlbase}/${_appname}-${_tag_i686}-${pkgver}.tar.xz"{,.asc})
 source_x86_64=("${_urlbase}/${_appname}-${_tag_x86_64}-${pkgver}.tar.xz"{,.asc})
+source_aarch64=("${_urlbase}/${_appname}-${_tag_aarch64}-${pkgver}.tar.xz"{,.asc})
 source=("${_appname}.desktop.in"
 	    "${_appname}.in"
 	    "${_appname}.png"
@@ -75,13 +75,13 @@ sha256sums=('604f5d7cc642d56c919b9d2b7b20a785db4acebf58520f41845347bd81e8ec73'
             '53754c8ff0ea01d8f79d3e725fa3516511faf1e53804c67dc8f573cdb39e35a3'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
-sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
-                 'SKIP')
 sha256sums_x86_64=("$(_dist_checksum "${_tag_x86_64}")"
                    'SKIP')
+sha256sums_aarch64=("$(_dist_checksum "${_tag_aarch64}")"
+                    'SKIP')
 
-noextract=("${_appname}-${_tag_i686}-${pkgver}.tar.xz"
-           "${_appname}-${_tag_x86_64}-${pkgver}.tar.xz")
+noextract=("${_appname}-${_tag_x86_64}-${pkgver}.tar.xz"
+           "${_appname}-${_tag_aarch64}-${pkgver}.tar.xz")
 
 package() {
 
