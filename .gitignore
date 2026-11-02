@@ -2,3 +2,4 @@
 !.SRCINFO
 !PKGBUILD
 
+!test-ssh-libssh-algos.patch

@@ -31,6 +31,7 @@ checkdepends=('qemu')
 makedepends=(git)
 source=(
   "${pkgname}::git+https://gitlab.com/nbdkit/nbdkit.git"
+  "test-ssh-libssh-algos.patch"
 )
 conflicts=($_pkgname)
 provides=($pkgname)
@@ -43,6 +44,10 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
 
+  # test-ssh.sh probes localhost with OpenSSH, but the plugin uses libssh,
+  # which lacks e.g. ML-DSA keys. Probe with libssh-supported algorithms
+  # only, so the test is skipped instead of failing on such hosts.
+  patch -Np1 -i "${srcdir}/test-ssh-libssh-algos.patch"
 }
 
 build() {
@@ -67,4 +72,5 @@ check() {
   cd "${srcdir}/${pkgname}"
   make check
 }
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '7adf5b1462a7488a0fbb2f6b26cf8801')

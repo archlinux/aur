@@ -23,6 +23,8 @@ pkgbase = nbdkit-git
 	provides = nbdkit-git
 	conflicts = nbdkit
 	source = nbdkit-git::git+https://gitlab.com/nbdkit/nbdkit.git
+	source = test-ssh-libssh-algos.patch
 	md5sums = SKIP
+	md5sums = 7adf5b1462a7488a0fbb2f6b26cf8801
 
 pkgname = nbdkit-git

@@ -1,0 +1,26 @@
+--- a/tests/test-ssh.sh
++++ b/tests/test-ssh.sh
+@@ -44,10 +44,21 @@
+ #
+ # Note this assumes that localhost is running an ssh server, but
+ # should skip if not.
++#
++# The plugin uses libssh, which supports fewer host key and public
++# key algorithms than OpenSSH (for example no ML-DSA keys such as
++# ssh-mldsa44-ed25519), so restrict the probe to algorithms that
++# libssh can use.  Otherwise OpenSSH succeeds and the test fails.
++libssh_algos=ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256
+ requires ssh -V
+-if ! ssh -o PreferredAuthentications=none,publickey -o StrictHostKeyChecking=no localhost echo </dev/null
++if ! ssh -o BatchMode=yes \
++         -o PreferredAuthentications=none,publickey \
++         -o StrictHostKeyChecking=no \
++         -o HostKeyAlgorithms=$libssh_algos \
++         -o PubkeyAcceptedAlgorithms=$libssh_algos \
++         localhost echo </dev/null
+ then
+-    echo "$0: passwordless/phraseless authentication to localhost not possible"
++    echo "$0: passwordless/phraseless authentication to localhost using algorithms supported by libssh not possible"
+     exit 77
+ fi
+ 
