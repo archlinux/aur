@@ -1,0 +1,25 @@
+pkgbase = numr-desktop-bin
+	pkgdesc = Desktop app for the numr text calculator: variables, units, currencies, live rates
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/nasedkinpv/numr-desktop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = gcc-libs
+	depends = glibc
+	provides = numr-desktop
+	conflicts = numr-desktop
+	conflicts = numr-desktop-git
+	source = LICENSE-0.9.1::https://github.com/nasedkinpv/numr-desktop/raw/v0.9.1/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = numr-desktop-bin-0.9.1-amd64.deb::https://github.com/nasedkinpv/numr-desktop/releases/download/v0.9.1/numr_0.9.1_amd64.deb
+	sha256sums_x86_64 = 4c2a35fc1141bd83a0ca190978eec20efa640d3a7e5f329eb3784c32be86d0d4
+	source_aarch64 = numr-desktop-bin-0.9.1-arm64.deb::https://github.com/nasedkinpv/numr-desktop/releases/download/v0.9.1/numr_0.9.1_arm64.deb
+	sha256sums_aarch64 = d42c98922c18c2e76c73e9d8d898d3d2856f66a08d460b59f412b4c7d179d053
+
+pkgname = numr-desktop-bin
