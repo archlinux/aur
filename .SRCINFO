@@ -1,0 +1,16 @@
+pkgbase = perl-apophis
+	pkgdesc = Content addressable storage with deterministic UUID v5 identifiers
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://metacpan.org/release/Apophis
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-horus>=0.04
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Apophis-1.00.tar.gz
+	md5sums = 1ecc22ac7767f616b4e71d32026dc4f1
+	sha512sums = 9fe4bc5dec4812e8465e88751fb9e4d786f19209dde910bec02248cdaebe9a31ed4eb21383cfea5a660961b22bd7b59dba59007eca12a13b952c8f541d242017
+
+pkgname = perl-apophis
