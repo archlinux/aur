@@ -1,6 +1,6 @@
 pkgbase = qthrone-bin
 	pkgdesc = Cross-platform GUI proxy utility (binary release)
-	pkgver = 1.9.6
+	pkgver = 1.9.7
 	pkgrel = 1
 	url = https://github.com/ttrroyy/qThrone
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = qthrone-bin
 	conflicts = qthrone
 	options = !strip
 	options = !debug
-	source = https://github.com/ttrroyy/qThrone/releases/download/v1.9.6/qThrone-1.9.6-arch-x86_64.pkg.tar.zst
-	sha256sums = 082db689e64fdcd2119e918b17d1c8c7422de4060346f56bfac355005214de88
+	source = https://github.com/ttrroyy/qThrone/releases/download/v1.9.7/qThrone-1.9.7-arch-x86_64.pkg.tar.zst
+	sha256sums = 3372c79c5e89a34a2267e06f09c388a833c875beceb693ea1ded2457bcee4447
 
 pkgname = qthrone-bin
