@@ -2,7 +2,7 @@
 # Maintainer: bnema <b at bnema dot dev>
 
 pkgname='neferwl-bin'
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A Wayland compositor that spends its frames on your apps, not on itself'
 url='https://git.bnema.dev/neferwl'
@@ -11,14 +11,14 @@ license=('AGPL-3.0-only')
 provides=('neferwl')
 conflicts=('neferwl' 'neferwl-git')
 depends=('glibc' 'libinput' 'libxkbcommon' 'seatd' 'systemd-libs' 'vulkan-icd-loader' 'vulkan-driver' 'wayland' 'dbus' 'libcap')
-optdepends=('xwayland-satellite>=0.7: X11 apps' 'foot: default terminal' 'fuzzel: launcher' 'xdg-desktop-portal-gtk: file pickers and settings for apps' 'xdg-desktop-portal-gnome: screen sharing and screenshots through the portal' 'pipewire: screen sharing streams' 'nefercap: screenshots and screen recording')
+optdepends=('xorg-xwayland: X11 apps (built-in window manager)' 'foot: default terminal' 'fuzzel: launcher' 'xdg-desktop-portal-gtk: file pickers and settings for apps' 'xdg-desktop-portal-gnome: screen sharing and screenshots through the portal' 'pipewire: screen sharing streams' 'nefercap: screenshots and screen recording')
 install=neferwl.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v${pkgver}/neferwl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ce4c6a69c0e00b67faab61246fe4dc4ee9c0c80c7bf66fa35236f8991cd5163b')
+sha256sums_aarch64=('b354d0cecab6fb057658a42ba62a92635beff3aa3105bd909d16e3fa0c8dbf69')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v${pkgver}/neferwl_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5c0631cf54a04037ae6a3997e52fdb2a8a959a8f14d7ce1dbda90b2ffbcf89a7')
+sha256sums_x86_64=('7893d61d2f3660f507d38494072b2ac5104e819feaaa6940c6af4e93a447396a')
 
 package() {
   install -Dm755 ./neferwl "${pkgdir}/usr/bin/neferwl"

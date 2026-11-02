@@ -1,6 +1,6 @@
 pkgbase = neferwl-bin
 	pkgdesc = A Wayland compositor that spends its frames on your apps, not on itself
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://git.bnema.dev/neferwl
 	install = neferwl.install
@@ -17,7 +17,7 @@ pkgbase = neferwl-bin
 	depends = wayland
 	depends = dbus
 	depends = libcap
-	optdepends = xwayland-satellite>=0.7: X11 apps
+	optdepends = xorg-xwayland: X11 apps (built-in window manager)
 	optdepends = foot: default terminal
 	optdepends = fuzzel: launcher
 	optdepends = xdg-desktop-portal-gtk: file pickers and settings for apps
@@ -27,9 +27,9 @@ pkgbase = neferwl-bin
 	provides = neferwl
 	conflicts = neferwl
 	conflicts = neferwl-git
-	source_aarch64 = neferwl-bin_0.13.0_aarch64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.13.0/neferwl_0.13.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = ce4c6a69c0e00b67faab61246fe4dc4ee9c0c80c7bf66fa35236f8991cd5163b
-	source_x86_64 = neferwl-bin_0.13.0_x86_64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.13.0/neferwl_0.13.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5c0631cf54a04037ae6a3997e52fdb2a8a959a8f14d7ce1dbda90b2ffbcf89a7
+	source_aarch64 = neferwl-bin_0.14.0_aarch64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.14.0/neferwl_0.14.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b354d0cecab6fb057658a42ba62a92635beff3aa3105bd909d16e3fa0c8dbf69
+	source_x86_64 = neferwl-bin_0.14.0_x86_64.tar.gz::https://git.bnema.dev/neferwl/releases/download/v0.14.0/neferwl_0.14.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7893d61d2f3660f507d38494072b2ac5104e819feaaa6940c6af4e93a447396a
 
 pkgname = neferwl-bin
