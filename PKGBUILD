@@ -1,7 +1,7 @@
 # Maintainer: doudou <951028382@qq.com>
 
 pkgname=easycliproxyapi-bin
-pkgver=0.3.66
+pkgver=0.3.67
 pkgrel=1
 pkgdesc='Cross-platform GUI desktop management client for CLIProxyAPI (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -45,8 +45,8 @@ sha256sums=('609a5432ce3ded66168c2017b3ece1442215de5925d9c3eea33940915d448cfe'
             '6b46832343f2db8f6c1513fead0ff47a7a3ec539efcecdbc478cdd218be1222e'
             '93ef8519c69bb9d8a9ddab07156a832a11fefd89680cc5db638cd34adce44c9d'
             '6bd5d3c4fb6a34c0b83e91acd53a52fb8fd1ae9e19ba55b23788ec1dc52dbac7')
-sha256sums_x86_64=('fd5829e2a32253db810770d0fbedbd42979bb9ed02a553e7bc63bb6a9eb824bb')
-sha256sums_aarch64=('7651ac2c28c76ded89322953ee3f5b9ffe27a0b65ba60b3624a29b9fae35dd31')
+sha256sums_x86_64=('125913d3fa091aff11bb2658c14c2e2d0faf476dd0b2d91df156fb23c67999ae')
+sha256sums_aarch64=('859f4236baaaf2ef22cf2bc6e76134f5dfe27190738c9455b758b4b65b1af106')
 
 _release_arch() {
   case "$CARCH" in
