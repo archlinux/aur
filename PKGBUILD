@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad
 _pkgname=Leavepad
-pkgver=2.10.5
+pkgver=2.10.6
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
 	"${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('ebf81ec4e49bf0216b040b5f33e41b095dd6d9c91a7d8df2852082eb74977301'
+sha256sums=('6abeed620d6602675f440fc0ce8e29fe590fc7aeca9e18da34277278f308b30e'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
