@@ -6,7 +6,7 @@
 # Contributor: gardar <aur@gardar.net>
 
 pkgname=joplin-server
-pkgver=3.7.18
+pkgver=3.7.22
 pkgrel=1
 pkgdesc="Joplin Server for self-hosting Joplin Notes"
 url="https://github.com/laurent22/joplin/tree/v${pkgver}/packages/server"
@@ -20,7 +20,7 @@ options=('!strip')
 source=(
 "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/refs/tags/v${pkgver}.tar.gz"
 'joplin-server.service' 'joplin-server.sysusers' 'joplin-server.tmpfiles' 'joplin-server.env')
-md5sums=('f4ff903fb05442c45004be8159324ed5'
+md5sums=('7ff80837de90599c36da0a3b89207af2'
          '8bf105dd516b2e7bd3a8f5e8b5e5551f'
          '08359a65347818382a243a206828f1fa'
          '2534609cd0b3b9cbc6239205e73c9505'
