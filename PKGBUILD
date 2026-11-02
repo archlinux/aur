@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nlnetlabs-krill
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="RPKI certificate authority and publication server"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 depends=('glibc' 'libgcc' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NLnetLabs/krill/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('71719e0a5ab2094ccc0e7f4b40849c9bf0c66ad868c609b0cb9ff63c1ad09c22')
+sha256sums=('c8b96a836f2c1aaa6063e85e937692bf00db774f8fdbac2586146e31764a7fbd')
 
 
 prepare() {
@@ -19,7 +19,9 @@ prepare() {
   if [ ! -f "Cargo.lock" ]; then
     cargo update
   fi
-  cargo fetch
+  cargo fetch \
+    --locked \
+    --target host-tuple
 }
 
 check() {
