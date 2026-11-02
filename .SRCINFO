@@ -1,11 +1,20 @@
 pkgbase = brygge-bin
-	pkgdesc = A placeholder package for brygge-bin
-	pkgver = 0.0.0
+	pkgdesc = A VCS history to IR converter (Git, Mercurial, Subversion, CVS), the release's attested binary
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/prikk-vcs/brygge
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
-	source = brygge-bin-0.0.0.tar.gz::https://github.com/prikk-vcs/brygge/archive/refs/tags/0.0.0.tar.gz
-	sha256sums = DUMMY-FOR-INITIALIZATION
+	depends = glibc
+	depends = gcc-libs
+	provides = brygge
+	conflicts = brygge
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/prikk-vcs/brygge/releases/download/0.7.0/brygge-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b6fc05d11d002f6a87496383f99b85b7ee90c252314ced2cdb68c5b923591175
+	source_aarch64 = https://github.com/prikk-vcs/brygge/releases/download/0.7.0/brygge-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7269dcc0b1d537628de9cd0fff8fdd2cb32d9def50b92b065a89d66ca6655227
 
 pkgname = brygge-bin
