@@ -2,7 +2,7 @@
 
 _pkgname=tde-session
 pkgname=tde-session-bin
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64)
@@ -38,6 +38,7 @@ depends=(
 optdepends=(
   'tde-ariadne: the file manager, which picks files for other programs too'
   'xorg-xwayland: X11 programs'
+  'wayvnc: reaching the desktop from another computer or a phone'
   'networkmanager: networks and Wi-Fi in the bar and the settings'
   'bluez: Bluetooth in the bar and the settings'
   'upower: the battery, and suspending sooner on it'
@@ -52,7 +53,7 @@ conflicts=("$_pkgname")
 # Built by the release workflow of the sources' repository, from the tag.
 source=("$_pkgname-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.zst")
 noextract=("$_pkgname-$pkgver-x86_64.tar.zst")
-sha256sums=('bf5d70fc08c5ab218c8048ea68af1f2dbba9cd5aa8d1e0e0376ebe95fc1d476f')
+sha256sums=('a8e9a0d61f6b9e92b0930430476e943129da124d39ff7c8287871d8a3f48f0af')
 
 package() {
   bsdtar -xf "$_pkgname-$pkgver-x86_64.tar.zst" -C "$pkgdir"
