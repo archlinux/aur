@@ -1,7 +1,7 @@
 # Maintainers: thadah
 pkgname="synergy-dragon-alpha-bin"
 pkgver="0.7.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('custom:Proprietary')
