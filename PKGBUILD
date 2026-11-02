@@ -2,7 +2,7 @@
 
 pkgname=qimgv-gtk-git
 _pkgname=qimgv-gtk
-pkgver=0.1.0_r0_gc09d4ba
+pkgver=0.1.0_r1_g46c9d5f
 pkgrel=1
 pkgdesc='Fast and easy to use image viewer, GTK 3 rewrite of qimgv with JPEG XL, AVIF, HEIF, APNG and RAW support (git version)'
 arch=('x86_64' 'aarch64')
