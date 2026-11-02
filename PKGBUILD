@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lemmy
-pkgver=0.19.20
+pkgver=0.19.21
 pkgrel=1
 pkgdesc='A link aggregator for the fediverse'
 arch=('x86_64')
@@ -22,9 +22,8 @@ optdepends=(
 )
 backup=('etc/lemmy/lemmy.hjson')
 options=('!lto')
-_commit='e9d49b7b49f4751b924263fdebfc1af2a387eda9'
 source=(
-  "$pkgname::git+https://github.com/LemmyNet/lemmy.git#commit=$_commit"
+  "$pkgname::git+https://github.com/LemmyNet/lemmy.git#tag=${pkgver}"
   'git+https://github.com/LemmyNet/lemmy-translations.git'
   'systemd.service'
   'sysusers.conf'
@@ -43,10 +42,6 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-
-  #new rust version patch
-  sed -i '/^[[:space:]]*use diesel::dsl::max;$/d' crates/federate/src/util.rs
-  sed -i 's/\.select(max(id))/\.select(diesel::dsl::max(id))/' crates/federate/src/util.rs
 
   # setup submodules
   git submodule init
