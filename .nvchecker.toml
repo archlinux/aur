@@ -1,3 +1,0 @@
-[webtorrent-mpv-hook]
-source = "npm"
-npm = "webtorrent-mpv-hook"
