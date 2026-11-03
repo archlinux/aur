@@ -2,7 +2,7 @@
 
 pkgname=pocketlink-git
 _pkgname=pocketlink
-pkgver=0.6.0.r0.g76b89c0
+pkgver=0.6.0.r20.g63ae743
 pkgrel=1
 pkgdesc='Lightweight phone companion for sway, niri & co: notifications, clipboard, files, media remote and calls'
 arch=('x86_64' 'aarch64')
@@ -66,6 +66,7 @@ package() {
   install -Dm644 $fm/pocketlink.thunar-sendto.desktop "$pkgdir/usr/share/Thunar/sendto/pocketlink.desktop"
   install -Dm644 $fm/pocketlink-send.nemo_action -t "$pkgdir/usr/share/nemo/actions/"
   install -Dm644 $fm/pocketlink-nautilus.py "$pkgdir/usr/share/nautilus-python/extensions/pocketlink.py"
+  install -Dm644 $fm/tandem-plugin.json "$pkgdir/usr/share/tandem-fm/plugins/pocketlink/plugin.json"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
