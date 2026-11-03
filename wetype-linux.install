@@ -1,11 +1,26 @@
-# Pacman runs this as root after the package files are already gone. It only
-# prints what is left behind: per-user state lives in the user's home, and a
-# root scriptlet must not touch it or the user's systemd session.
+# Pacman runs these as root. It must not touch a user's systemd session or
+# home directory: per-user state belongs to the user, so the scriptlets only
+# print what to run.
+post_install() {
+  cat <<'EOF'
+WeType installed. Enable the per-user service and restart Fcitx5:
+
+  systemctl --user daemon-reload
+  systemctl --user enable --now wetype-daemon
+  fcitx5 -r -d   # then add 微信输入法 to its input methods
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
 post_remove() {
   cat <<'EOF'
-WeType was removed. Per-user state is kept on purpose:
+WeType removed. Per-user state is kept on purpose:
 
   systemctl --user disable --now wetype-daemon   # if you enabled the service
+  systemctl --user daemon-reload
   rm -rf ~/.local/state/wetype
   rm -f ~/.config/fcitx5/conf/wetype.conf
   fcitx5 -r -d
