@@ -4,7 +4,7 @@
 
 pkgname=spicetify-cli-beta-bin
 _pkgname=spicetify-cli-beta
-pkgver=3.0.0_beta.19
+pkgver=3.0.0_rc.3
 pkgrel=1
 _tag="v${pkgver//_/-}"
 pkgdesc='Command-line tool to customize Spotify client (v3 beta, prebuilt)'
@@ -15,8 +15,8 @@ depends=('glibc' 'libgcc')
 conflicts=('spicetify-cli' 'spicetify')
 options=('!debug' '!strip')
 source=("${url}/releases/download/${_tag}/spicetify-${_tag#v}-linux-x86_64.tar.zst"
-        "LICENSE-MIT-${_tag}::https://raw.githubusercontent.com/spicetify/cli/${_tag}/rust/LICENSE")
-sha256sums=('0248f402fcd2e176ea301b836fdb453706107e8cc8c3e9564c25eb71b677b47e'
+  "LICENSE-MIT-${_tag}::https://raw.githubusercontent.com/spicetify/cli/${_tag}/rust/LICENSE")
+sha256sums=('d18e34e63b4bb4053ba0469841776dfbf0711e5da36eac1ab99b22487431eefa'
             'ef16fc852c03aa909cb55d3ae63d31f8b762abaccf0cb5144a149bf80ce5d701')
 
 check() {
