@@ -1,0 +1,19 @@
+pkgbase = python-flit-core3
+	pkgdesc = PEP 517 build backend for projects requiring Flit 3
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = https://github.com/pypa/flit
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-testpath
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.11
+	provides = python-flit-core=3.12.0
+	conflicts = python-flit-core
+	source = flit-3.12.0.tar.gz::https://github.com/pypa/flit/archive/refs/tags/3.12.0.tar.gz
+	sha256sums = c157ff92c01f4bb169182722ff76aadac113926b729215e91909021aa56e2ea3
+
+pkgname = python-flit-core3
