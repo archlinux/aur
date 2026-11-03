@@ -1,5 +1,5 @@
 pkgname=ti84-evo-linux
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unofficial udev rules and launcher for using TI Connect Evo with the TI-84 Evo"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('123e366227098881eee054b6427abe19612533eded3f01186cd14c85ebf70147')
+sha256sums=('00752b73064ccb19ccfa95648a223685c1acad969d0a69bcd36547e4957fa055')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"

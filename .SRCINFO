@@ -1,6 +1,6 @@
 pkgbase = ti84-evo-linux
 	pkgdesc = Unofficial udev rules and launcher for using TI Connect Evo with the TI-84 Evo
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/wheat32/ti84-evo-linux
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ti84-evo-linux
 	optdepends = chromium: browser to run TI Connect Evo in (any Chromium-based browser works)
 	optdepends = flatpak: run TI Connect Evo in a Flatpak browser
 	optdepends = xdg-utils: prefer the default browser when it is Chromium-based
-	source = ti84-evo-linux-1.0.0.tar.gz::https://github.com/wheat32/ti84-evo-linux/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 123e366227098881eee054b6427abe19612533eded3f01186cd14c85ebf70147
+	source = ti84-evo-linux-1.0.1.tar.gz::https://github.com/wheat32/ti84-evo-linux/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 00752b73064ccb19ccfa95648a223685c1acad969d0a69bcd36547e4957fa055
 
 pkgname = ti84-evo-linux
