@@ -1,40 +1,42 @@
 # Maintainer: Ondřej Svoboda <ondrej@svobodasoft.cz>
+
 pkgname=osdlyrics-git
-provides=(osdlyrics)
-conflicts=(osdlyrics osdlyrics-pedrohlc)
-pkgver=0.5.15
+_pkgname=osdlyrics
+pkgver=0.6.0.r0.g6c3bbf8
 pkgrel=1
 pkgdesc="Standalone lyrics fetcher/displayer (windowed and OSD mode). Supports MPRIS1/2 players, and MPD."
-arch=(i686 x86_64 arm64)
+arch=(x86_64 aarch64)
 url="https://github.com/osdlyrics/osdlyrics"
-license=(GPL3)
-depends=(dbus-glib desktop-file-utils gtk2 hicolor-icon-theme libnotify
-         python-{dbus,chardet,gobject,pycurl}
-         sqlite libappindicator-gtk2)
-makedepends=(intltool git)
-optdepends=('gobject-introspection-runtime: proxy detection in Gnome'
-            'python-mpd2: to interface with MPD')
-install=$provides.install
-source=("${provides}::git+https://github.com/osdlyrics/osdlyrics.git#branch=master")
-md5sums=(SKIP)
+license=(GPL-3.0-or-later)
+depends=(dbus-glib glib2 gtk3 hicolor-icon-theme libayatana-appindicator libnotify libx11
+         python python-{chardet,dbus,gobject,pycurl})
+makedepends=(git intltool)
+optdepends=('python-mpd2: to interface with MPD')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+sha256sums=(SKIP)
 
 pkgver() {
-    cd "$srcdir/$provides"
-    ./check-version.sh | sed 's/-g/.g/g;s/-/.r/g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build()
-{
-    cd "$srcdir/$provides"
-    ./autogen.sh
+prepare() {
+    cd "$_pkgname"
+    AUTOPOINT=intltoolize autoreconf -fi
+}
+
+build() {
+    cd "$_pkgname"
     ./configure \
-        --prefix=/usr PYTHON=/usr/bin/python \
-        --enable-appindicator=yes
+        --prefix=/usr \
+        --enable-appindicator=yes \
+        PYTHON=/usr/bin/python3
     make
 }
 
-package()
-{
-    cd "$srcdir/$provides"
+package() {
+    cd "$_pkgname"
     make DESTDIR="$pkgdir" install
 }
