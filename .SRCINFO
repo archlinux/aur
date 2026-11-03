@@ -1,0 +1,16 @@
+pkgbase = sysmon-tui
+	pkgdesc = Live terminal system monitor with an interactive process table
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Lightcode-Dev/sysmon
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	conflicts = sysmon
+	conflicts = sysmon-git
+	source = sysmon-1.0.0.tar.gz::https://github.com/Lightcode-Dev/sysmon/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e5c9d0daa3d2aef23a7b8a3f748330802c27839970ff26f95154248ea0afe52c
+
+pkgname = sysmon-tui
