@@ -1,0 +1,17 @@
+--- a/libs/community/langchain_community/chat_message_histories/sql.py
++++ b/libs/community/langchain_community/chat_message_histories/sql.py
+@@ -45,8 +45,12 @@
+ try:
+     from sqlalchemy.ext.asyncio import async_sessionmaker
+ except ImportError:
+-    # dummy for sqlalchemy < 2
+-    async_sessionmaker = type("async_sessionmaker", (type,), {})  # type: ignore[assignment,misc]
++    # SQLAlchemy 1.4 exposes AsyncSession through the regular session factory.
++    # Keep a distinct factory class for the existing sync/async type guards.
++    class async_sessionmaker(sessionmaker):  # type: ignore[no-redef]
++        def __init__(self, *args: Any, **kwargs: Any) -> None:
++            kwargs.setdefault("class_", AsyncSession)
++            super().__init__(*args, **kwargs)
+ 
+ logger = logging.getLogger(__name__)
+ 

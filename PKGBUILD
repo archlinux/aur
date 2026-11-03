@@ -6,7 +6,7 @@
 _pkgname=langchain-community
 pkgname="python-${_pkgname}"
 pkgver=0.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Community contributed LangChain integrations."
 arch=('any')
 url="https://github.com/langchain-ai/langchain/blob/master/libs/community"
@@ -30,8 +30,9 @@ depends=(
     'python-pydantic-settings<3'
     'python-requests>=2.32.5'
     'python-requests<3'
-    'python-sqlalchemy>=1.4'
-    'python-sqlalchemy<3'
+    # The official SQLAlchemy 1.4 variant provides this capability unversioned.
+    # Upstream wheel metadata and check() retain the supported >=1.4,<3 range.
+    'python-sqlalchemy'
     'python-tenacity>=8.1'
     'python-tenacity<10'
     'python-yaml>=5.3'
@@ -70,12 +71,14 @@ checkdepends=(
 )
 _archive="${_pkgname}-libs-community-v${pkgver}"
 source=(
+    'sqlalchemy-1.4-async.patch'
     "${pkgname}-${pkgver}.tar.gz::https://github.com/langchain-ai/langchain-community/archive/refs/tags/libs/community/v${pkgver}.tar.gz"
     'python-3.14-ast-constant-test.patch'
     'pytest-fixture-decorators.patch'
     'pytest-requires-markers.patch'
 )
 sha256sums=(
+    '923f70e60556cde9f668659c0bae8b7c4f7f66b9aaae8986a9966d67ce2e69f7'
     'e611bbf6985f8ff613cfb8d2d5cd47879116054bccc69b458c2fbe8f15ebfd6e'
     '0788b182b216f2b457f4f73a1ac9b6582dac314d06b645f1ddd578ee75705e8e'
     '8595464bd24786e3ed0e7d3a6efd0e67929a1fea8911931a9f513d706c7d8e4f'
@@ -84,6 +87,7 @@ sha256sums=(
 
 prepare() {
     cd "${_archive}"
+    patch -Np1 -i "$srcdir/sqlalchemy-1.4-async.patch"
     patch -Np1 -i "$srcdir/python-3.14-ast-constant-test.patch"
     # pytest 9 rejects marks on fixtures. Loader test functions are tests, not
     # fixtures; SQL tests already carry their own optional-dependency marks.
@@ -98,6 +102,11 @@ build() {
 }
 
 check() {
+    python - <<'PYVERSION'
+from importlib.metadata import version
+from packaging.version import Version
+assert Version("1.4") <= Version(version("SQLAlchemy")) < Version("3")
+PYVERSION
     cd "${_archive}/libs/community"
     local _site_packages
     _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"
