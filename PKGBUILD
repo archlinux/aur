@@ -4,7 +4,7 @@
 
 _pkgname=datalad
 pkgname=python-$_pkgname
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Keep code, data, containers under control with git and git-annex'
 arch=(any)
@@ -47,7 +47,7 @@ optdepends=('python-argcomplete: optional CLI completion'
             'python-pyperclip: clipboard manipulations')
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('dead2fe1af1e966ea4be3d3dd97ae326ce54dd8f4667ef0dbb89851b4980726b')
+sha256sums=('f14b00040df631ca1b8bf6cf349247b502a1f68c25a58c585a631e02d72f9a7f')
 
 build() {
 	cd "$_archive"
