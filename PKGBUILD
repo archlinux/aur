@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=isocast
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 url="https://$pkgname.xyz"
 _url="https://github.com/R44VC0RP/$pkgname"
@@ -20,7 +20,7 @@ makedepends=(cargo
              cmake)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('ae722dd3ccfa8e06eaccf028716b50977eb12cec902e0e35c63889c234a13bc9')
+sha256sums=('a6f2059a4f6d3541bec6bf0cee68473973bf8d81eb8deb64da56e1308c0098c4')
 
 _srcenv() {
 	cd "$_archive"
