@@ -1,6 +1,6 @@
 pkgbase = centrifugo-git
 	pkgdesc = Scalable real-time messaging server (git version)
-	pkgver = r2013.221b65b
+	pkgver = r2016.e21aeb5
 	pkgrel = 1
 	url = https://github.com/centrifugal/centrifugo
 	install = centrifugo.install
