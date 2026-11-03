@@ -1,9 +1,22 @@
 post_install() {
   _fix_sandbox
+  _offer_aur
 }
 
 post_upgrade() {
   _fix_sandbox
+}
+
+_offer_aur() {
+  # The AUR package shares this script and is the offer, so it says nothing.
+  compgen -G '/var/lib/pacman/local/tephro-client-bin-*' >/dev/null && return
+  echo
+  echo 'Tephro will not update by itself from this download.'
+  echo 'To get updates with your system updates, switch to the AUR package:'
+  echo '  yay -S tephro-client-bin'
+  echo 'It replaces this one; your chats and settings stay. New versions would'
+  echo 'come from the AUR and GitLab when you update, and install as root.'
+  echo
 }
 
 _fix_sandbox() {
