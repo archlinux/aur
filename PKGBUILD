@@ -13,8 +13,8 @@
 
 pkgbase=vtium
 pkgname=('vtium' 'vtium-terminfo')
-_tag=v0.1.0-alpha.1
-pkgver=0.1.0alpha.1
+_tag=v0.1.0-alpha.2
+pkgver=0.1.0alpha.2
 pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM'
 arch=('x86_64')
@@ -52,7 +52,7 @@ prepare() {
 # vtium's Makefile builds and stages every file the packages ship, so which
 # file goes where lives in vtium's tree (ADR-1500 D1, D3). Each call names
 # the same build: PREFIX=/usr, so the console starts its glyph helper at
-# /usr/bin/vtium-vitrify, the features that VTIUM_FEATURES in makepkg's
+# /usr/bin/vtium-config, the features that VTIUM_FEATURES in makepkg's
 # environment names, such as VTIUM_FEATURES='images logind', and --frozen,
 # because prepare() fetched the crates. So make install in package() finds
 # the build that build() made, and builds nothing again.
