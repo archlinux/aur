@@ -9,12 +9,12 @@
 #
 # _tag and pkgver are bumped by .github/workflows/publish-aur.yml when a release
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
-_tag=v1.4.0.5660
+_tag=v1.4.0.6062
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=6344cadcdab279a918a9cc4ce3db267b49dcec72
+_launcher_commit=6f07753ced0194e25fed3668cbc90f0f149b2370
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
-pkgver=1.4.0.5660
+pkgver=1.4.0.6062
 # rel 4: ship the pacman hook that reports a library break the soname
 # dependencies below cannot catch, and pick up the launcher fix that stops a
 # crash report carrying a log the failing run never wrote.
@@ -27,34 +27,13 @@ pkgver=1.4.0.5660
 # the breaking upgrade does not run for it. It has to already be installed.
 # Hence this: same engine tag, same pkgver, packaging only. Nothing here changes
 # the game; it puts the safety net in place before the fall.
-#
-# 1.4.0.5656 rel 2: make `yay -Syu` work. yay installs the split packages in
-# layers -- data and launcher first, as dependencies, the engine after -- and
-# the engine pinned both to its exact version-release. So the first layer of
-# every upgrade broke the still-installed engine's pin and pacman refused the
-# whole thing ("installing keeperfx-tux-data (1.4.0.5656-1) breaks dependency
-# 'keeperfx-tux-data=1.4.0.5652-2' required by keeperfx-tux"). The pins are
-# now >= pkgver, which the first layer satisfies, and the data and launcher
-# packages provide the exact versions earlier engines still ask for, so the
-# installs that are out there right now get across too. Also stops the build
-# directory being written into the launcher binary.
-# 1.4.0.5660 rel 2: the same engine with the launcher's newer alpha and two
-# wrapper fixes, published by hand from this branch (docs/releasing.md):
-# - launcher 6344cad: archives can no longer write outside their folder (a
-#   symlink chain in a Workshop item could reach $HOME), a corrupt download no
-#   longer crashes it, the pre-update save backup keeps every save, and
-#   PARCHMENT_MAP_FADE=ORIGINAL survives the settings dialog;
-# - opening the launcher first on a fresh install assembles the game directory
-#   (it found no engine, offered a ~400 MB reinstall and never offered to copy
-#   the Dungeon Keeper files), and a launcher that updated itself is no longer
-#   replaced by the packaged copy on every start.
-# The engine tag is unchanged, so saved games are untouched.
-# 1.4.0.5660 rel 3: the launcher repository's history was rewritten to correct
-# commit authorship, so rel 2's launcher commit (07ed641) is now 6344cad. Its
-# source tree is byte-identical; only the pin moves, so the package is the same.
-pkgrel=3
+# rel 2: pin the launcher to the commit the 1.4.0.5652 AppImage was built from.
+# rel 1 kept the previous stable's launcher pin, so it paired a month-newer
+# engine with a launcher lacking the RAR installer, the updater's engine stash
+# and the channel fixes.
+pkgrel=1
 arch=('x86_64')
-url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
+url="https://github.com/ForkedInTime/keeperfx-tux-edition"
 license=('GPL-2.0-or-later')
 # In a split package, only makedepends (and any pkgbase-level depends) are
 # installed to build with -- a depends= array inside package_*() is metadata for
@@ -67,7 +46,7 @@ makedepends=('git' 'python' 'curl' 'p7zip'
              # engine
              'sdl3' 'sdl3_mixer' 'sdl3_image'
              'ffmpeg' 'openal' 'luajit' 'libspng' 'minizip' 'zlib'
-             'libepoxy' 'miniupnpc' 'libnatpmp' 'openssl' 'zstd'
+             'miniupnpc' 'libnatpmp' 'openssl' 'zstd'
              # Qt launcher
              'cmake' 'ninja' 'qt6-base' 'qt6-tools')
 # !strip: this is an alpha -- usable backtraces in bug reports beat the saved MBs.
@@ -77,7 +56,7 @@ makedepends=('git' 'python' 'curl' 'p7zip'
 #         already forced a -march revert.
 options=('!strip' '!debug' '!lto')
 source=(
-  "keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-linux-alpha.git#tag=${_tag}"
+  "keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-tux-edition.git#tag=${_tag}"
   "keeperfx-tux-${pkgver}-full.7z::${url}/releases/download/${_tag}/keeperfx-linux-alpha-x86_64-full.7z"
   "keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=${_launcher_commit}"
   'keeperfx-tux.sh'
@@ -93,9 +72,9 @@ source=(
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
   'SKIP'
-  '78a76b436ba024fe115f3dade234fbcaa8f611f6c1ec3cf76d655ce0189f2215'
+  'cfe2789a9eaf1a5cfe19702a2ebfa81db4aa32ccb5eeed2b411ac2654ccabe7f'
   'SKIP'
-  'a90ad879a8281b66c08ec8b116b899e3b2976f77211f7055e5c8ee6d756a439f'
+  '0305aecda5ad58536d5fdb91d5029caabb361c4fbe8dfe25e3cb47d2380faaca'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'
   '504b74bdcd4fe3085bcd9f74e43e4cf67c562325d8f7c37fc1e5a04da745f960'
   'ee2fc0f5b3d81dd55efe7d2aef6c4d67d18baff794114e3d6e334171842601eb'
@@ -156,25 +135,40 @@ build() {
   # warning. Given through the environment so linux.mk's own += flags survive.
   export KFX_CFLAGS="-ffile-prefix-map=${srcdir}=/usr/src/${pkgbase}"
   export KFX_CXXFLAGS="-ffile-prefix-map=${srcdir}=/usr/src/${pkgbase}"
+  # build-number.sh keeps counting the team's commits now that the sync merges
+  # filtered snapshots (packaging/linux-only/README.md); tags from before it
+  # was added fall back to the plain count, which is what they were built with.
+  local _build_number
+  if [ -x packaging/linux-only/build-number.sh ]; then
+    _build_number="$(packaging/linux-only/build-number.sh)"
+  else
+    _build_number="$(git rev-list --count HEAD)"
+  fi
   make -f linux.mk \
-    BUILD_NUMBER="$(git rev-list --count HEAD)" \
+    BUILD_NUMBER="${_build_number}" \
     VER_SUFFIX="${_ver_suffix}" \
     -j"$(nproc)"
 
   # The UTF-8 fonts are required since upstream #4920 but linux.mk does not build
-  # them; the project's CI generates them from tools/fxfontmaker.
-  (
-    cd tools/fxfontmaker
-    local PY; PY=$(command -v python3 || command -v python)
-    "$PY" rescale_unifont_hex.py unifont-17.0.04.hex unifont12.hex
-    "$PY" bdf_to_hex.py wenquanyi_9pt.bdf wenquanyi.hex
-    "$PY" merge_hex.py unifont12.hex wenquanyi.hex merged12.hex
-    "$PY" unifont_hex_to_binary.py unifont-17.0.04.hex    font16.fxfont     16
-    "$PY" unifont_hex_to_binary.py unifont_jp-17.0.04.hex font16_JPN.fxfont 16
-    "$PY" unifont_hex_to_binary.py unifont_t-17.0.04.hex  font16_CHT.fxfont 16
-    "$PY" unifont_hex_to_binary.py merged12.hex           font12.fxfont     12
-    rm -f merged12.hex wenquanyi.hex unifont12.hex
-  )
+  # them; the project's CI generates them from tools/fxfontmaker. The recipe can
+  # point at a tag cut before make-fonts.sh existed (_tag here only moves when a
+  # stable is published), so fall back to the commands the script replaced,
+  # exactly as they were -- the same fallback build-flatpak.yml carries.
+  if [ -x packaging/ci/make-fonts.sh ]; then
+    packaging/ci/make-fonts.sh
+  else
+    ( cd tools/fxfontmaker
+      local PY
+      PY="$(command -v python3 || command -v python)"
+      "$PY" rescale_unifont_hex.py unifont-17.0.04.hex unifont12.hex
+      "$PY" bdf_to_hex.py wenquanyi_9pt.bdf wenquanyi.hex
+      "$PY" merge_hex.py unifont12.hex wenquanyi.hex merged12.hex
+      "$PY" unifont_hex_to_binary.py unifont-17.0.04.hex    font16.fxfont     16
+      "$PY" unifont_hex_to_binary.py unifont_jp-17.0.04.hex font16_JPN.fxfont 16
+      "$PY" unifont_hex_to_binary.py unifont_t-17.0.04.hex  font16_CHT.fxfont 16
+      "$PY" unifont_hex_to_binary.py merged12.hex           font12.fxfont     12
+      rm -f merged12.hex wenquanyi.hex unifont12.hex )
+  fi
 
   # The Qt launcher. CMake pulls bit7z and LIEF from GitHub via CPM at configure
   # time and builds them in-tree. Neither can come from the system:
@@ -218,7 +212,7 @@ package_keeperfx-tux() {
     # dependency ('libavformat.so=63-64'), so the next bump is refused by pacman
     # before it happens: an explicit rebuild prompt instead of a broken install.
     'libavformat.so' 'libavcodec.so' 'libswresample.so' 'libswscale.so'
-    'libavutil.so' 'libopenal.so' 'libspng.so' 'libz.so' 'libepoxy.so'
+    'libavutil.so' 'libopenal.so' 'libspng.so' 'libz.so'
     'libminiupnpc.so' 'libssl.so' 'libcrypto.so' 'libzstd.so'
     # These four ship no soname in provides= at all, so they can only be named
     # directly and stay exposed to the same failure. SDL3 holds its ABI at
@@ -232,7 +226,9 @@ package_keeperfx-tux() {
     # playable install rather than an engine with nothing to run.
     # ">=" and not "=": yay upgrades these two in a layer of their own BEFORE
     # the engine, against the engine that is still installed. An exact pin made
-    # pacman refuse that layer, and with it every `yay -Syu` (see rel 2 above).
+    # pacman refuse that layer, and with it every `yay -Syu` (2026-09-20:
+    # "installing keeperfx-tux-data (1.4.0.5656-1) breaks dependency
+    # 'keeperfx-tux-data=1.4.0.5652-2' required by keeperfx-tux").
     # `yay -Syu` upgrades all three together anyway, so they stay in step.
     "keeperfx-tux-data>=${pkgver}"
     # The launcher is the front door: it finds your Dungeon Keeper installation,

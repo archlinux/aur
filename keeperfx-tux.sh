@@ -56,13 +56,74 @@ _src_for() {
     fi
 }
 
+# Make way for the link to a packaged entry. The AppImage deploys its whole payload
+# into this same directory as real files, so a player who ran it before installing
+# the package already has a copy of every packaged file here. Those copies used to
+# count as the player's own and were never replaced: one install played the 1.4.0.6013
+# alpha on the AppImage's graphics from August (22 sprite sheets, fonts and textures)
+# and an August keeporig.cfg. The package's copy wins, as it does when the AppImage
+# updates itself. A byte-identical copy is replaced; anything else is moved aside,
+# never deleted. The player's own Dungeon Keeper files are never in the way: the
+# package ships none of them (REQUIRED_DATA, REQUIRED_SOUND below).
+#
+# Someone who alternates between the AppImage and the package gets the AppImage's
+# copies back on every switch, so a copy identical to one already moved aside on an
+# earlier run is not kept twice.
+#
+# Never fatal: it runs on every start, and a directory it cannot write to (an
+# AppImage run with sudo), a stash path that is not a directory, or a second
+# wrapper racing this one must not stop the game from starting. When it cannot
+# clear the way it returns 1, the old copy stays in use as it did before this
+# existed, and a count goes to stderr at the end.
+moved=0
+stuck=0
+STASH_ROOT="$GAMEDIR/.replaced-by-package"
+STASH=""
+_same_file() {
+    [ -f "$1" ] && [ -f "$2" ] &&
+        [ "$(stat -c %s "$1")" = "$(stat -Lc %s "$2")" ] &&
+        [ "$({ sha256sum < "$1"; } 2>/dev/null)" = "$({ sha256sum < "$2"; } 2>/dev/null)" ]
+}
+_clear_for_link() {
+    local target=$1 packaged=$2 rel old
+    if [ -L "$target" ] || [ ! -e "$target" ]; then
+        return 0
+    fi
+    rel=${target#"$GAMEDIR"/}
+    for old in "$packaged" "$STASH_ROOT"/*/"$rel"; do
+        if _same_file "$target" "$old"; then
+            rm -f "$target" 2>/dev/null
+            break
+        fi
+    done
+    if [ -e "$target" ] && [ ! -L "$target" ]; then
+        if [ -z "$STASH" ]; then
+            STASH="$STASH_ROOT/$(date +%Y%m%d-%H%M%S)"
+            mkdir -p "$STASH" 2>/dev/null &&
+                printf '%s\n' \
+                    "KeeperFX Tux Edition moved these here: an earlier install, usually the" \
+                    "AppImage, had left them in the game directory, where they hid the files" \
+                    "the package ships. The game no longer reads them. Delete this folder" \
+                    "whenever you like." > "$STASH/README.txt" 2>/dev/null
+        fi
+        mkdir -p "$STASH/$(dirname "$rel")" 2>/dev/null &&
+            mv -n "$target" "$STASH/$rel" 2>/dev/null &&
+            [ ! -e "$target" ] && [ ! -L "$target" ] &&
+            moved=$((moved + 1))
+    fi
+    if [ -e "$target" ] && [ ! -L "$target" ]; then
+        stuck=$((stuck + 1))
+        return 1
+    fi
+    return 0
+}
+
 mkdir -p "$GAMEDIR"/{save,scrshots}
 
 for d in "${RO_DIRS[@]}"; do
     src=$(_src_for "$d") || true
     [ -n "$src" ] || continue
-    # Only replace our own symlink; never delete a real directory the user made.
-    if [ -L "$GAMEDIR/$d" ] || [ ! -e "$GAMEDIR/$d" ]; then
+    if _clear_for_link "$GAMEDIR/$d" "$src"; then
         ln -sfn "$src" "$GAMEDIR/$d"
     fi
 done
@@ -79,7 +140,8 @@ for d in "${MERGE_DIRS[@]}"; do
     fi
     mkdir -p "$GAMEDIR/$d"
     # Link each packaged file individually so the user's own files can sit beside
-    # them. A real file already in place always wins and is left untouched.
+    # them. Whatever stands where a packaged file goes is an earlier install's copy
+    # and makes way (_clear_for_link).
     for f in "$src"/*; do
         [ -e "$f" ] || continue
         base=$(basename "$f")
@@ -97,7 +159,7 @@ for d in "${MERGE_DIRS[@]}"; do
                 continue
                 ;;
         esac
-        if [ -L "$target" ] || [ ! -e "$target" ]; then
+        if _clear_for_link "$target" "$f"; then
             ln -sfn "$f" "$target"
         fi
     done
@@ -109,6 +171,15 @@ for d in "${RW_DIRS[@]}"; do
     mkdir -p "$GAMEDIR/$d"
     cp -rn "$src/." "$GAMEDIR/$d/" 2>/dev/null || true
 done
+
+if [ "$moved" -gt 0 ]; then
+    echo "keeperfx-tux: moved $moved file(s) or folder(s) that an earlier install left in" \
+         "$GAMEDIR, and that differ from the packaged game, to $STASH" >&2
+fi
+if [ "$stuck" -gt 0 ]; then
+    echo "keeperfx-tux: $stuck file(s) or folder(s) in $GAMEDIR hide the packaged game's" \
+         "copies and could not be moved out of the way; the game keeps using them" >&2
+fi
 
 ln -sfn "$BINDIR/keeperfx" "$GAMEDIR/keeperfx"
 [ -e "$PREFIX/version.txt" ] && cp -f "$PREFIX/version.txt" "$GAMEDIR/version.txt"
