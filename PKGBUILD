@@ -1,7 +1,7 @@
 pkgname=fcitx5-areca-git
 _pkgname=fcitx5-areca
 _reponame=ArecaIME
-pkgver=r281.e586f36
+pkgver=r290.a76045e
 pkgrel=1
 pkgdesc='Areca Vietnamese input method for Fcitx5 using the Bamboo engine'
 arch=('x86_64')
@@ -9,6 +9,10 @@ url='https://github.com/xhkzeroone/ArecaIME'
 license=('MIT')
 depends=(
   'fcitx5'
+  'gtk4'
+  'python'
+  'python-gobject'
+  'gdk-pixbuf2'
   'libinput'
   'libei'
   'libportal'
