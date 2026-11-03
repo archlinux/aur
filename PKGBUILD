@@ -3,11 +3,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-compressed-tensors
 _pkgname=compressed-tensors
-pkgver=0.19.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="versatile and efficient way to store and manage compressed tensor data"
 arch=('any')
-url='https://github.com/neuralmagic/compressed-tensors'
+url='https://github.com/vllm-project/compressed-tensors'
 license=(Apache-2.0)
 depends=(
   python
@@ -32,38 +32,35 @@ checkdepends=(
   jupyter-nbconvert
   jupyter-nbformat
   python-accelerate
+  python-datasets
   python-pytest
 )
 optdepends=(
   'python-accelerate: interoperability with Accelerate model offloading'
 )
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/vllm-project/compressed-tensors/archive/refs/tags/${pkgver}.tar.gz"
   cpu-only-test-suite.patch
   initialize-qparams-deterministically.patch
 )
 sha256sums=(
-  'c1dfb1c10da6a7d4a516fc69a3c4754e6e62d7a395c5dc2ae10a4568255396e2'
-  'd1da8acf16a9eb8ef6dbaf04ff9ad5d9c9538ae5f2bad0a9bbadd58a248185a7'
-  'ea707e9f5fec80bc51d9ef6706c29103993d0089f88995c86d6f25acd6b04bb3'
+  'c63e8a4327d88b6209859a7ad9e56cfa84bcba9734936b837c8de329bffb24fa'
+  '06af8eb98ce30f1ba506fc6791118deff885483c3b29280656feb8ab95b62ac5'
+  'b045590c8352ee6ff2fa149c37506195fe7370d8289b1ff34dbbae186cd90ed5'
 )
 prepare(){
   cd $_pkgname-$pkgver
   sed -i -E 's|setuptools_scm[=<>]+[0-9.]+|setuptools_scm|' pyproject.toml
-  patch -Np1 -i "$srcdir/cpu-only-test-suite.patch"
+  patch -Np1 --fuzz=0 -i "$srcdir/cpu-only-test-suite.patch"
   # Calibration parameters must never inherit allocator garbage. In
   # particular, an uninitialized NaN makes two otherwise identical enabled
   # forwards compare unequal and can leak undefined values before calibration.
-  patch -Np1 -i "$srcdir/initialize-qparams-deterministically.patch"
-  # Keep the CPU sharded-MoE dispatch test collectible without a physical
-  # accelerator. Accelerator cases retain upstream's requires_gpu markers.
+  patch -Np1 --fuzz=0 -i "$srcdir/initialize-qparams-deterministically.patch"
+  # The upstream compression helper initializes CUDA tensors even for its
+  # cpu/meta-labelled parameters. Apply the existing hardware marker to its
+  # actual pytest entry points, keeping their assertions for the GPU suite.
   python - <<'PY'
 from pathlib import Path
-p = Path('tests/test_offload/test_dispatch.py')
-s = p.read_text()
-old = 'ACCELERATOR_TYPE = torch.accelerator.current_accelerator().type'
-assert s.count(old) == 1
-p.write_text(s.replace(old, '_accelerator = torch.accelerator.current_accelerator()\nACCELERATOR_TYPE = _accelerator.type if _accelerator is not None else "cuda"'))
 # The helper always initializes CUDA tensors, even for the cpu/meta-labelled
 # parameters. Pytest ignores marks on non-test helpers; place upstream's
 # existing GPU requirement on the three actual entry points instead.
