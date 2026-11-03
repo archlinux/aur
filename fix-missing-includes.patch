@@ -1,0 +1,11 @@
+diff --no-dereference -urpN a/gcc/json.h b/gcc/json.h
+--- a/gcc/json.h	2026-11-03 09:44:04.595925813 +0100
++++ b/gcc/json.h	2026-11-03 09:45:47.180716062 +0100
+@@ -21,6 +21,7 @@ along with GCC; see the file COPYING3.
+ #ifndef GCC_JSON_H
+ #define GCC_JSON_H
+ 
++#include <string>
+ #include "label-text.h"
+ 
+ /* Implementation of JSON, a lightweight data-interchange format.

@@ -1,7 +1,7 @@
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-ada,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,gcc-libs,libasan,libatomic,libga68,libgcc,libgccjit,libgcobol,libgfortran,libgm2,libgnat,libgo,libgomp,libgphobos,libitm,liblsan,libobjc,libquadmath,libstdc++,libtsan,libubsan,libvtv,lib32-gcc-libs,lto-dump}-snapshot)
-pkgver=17.0.0.snapshot20261025
-_pkgver=17-20261025
+pkgver=17.0.0.snapshot20261101
+_pkgver=17-20261101
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -23,7 +23,8 @@ source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
         c89
         c99
-        gcc-ada-repro.patch)
+        gcc-ada-repro.patch
+        fix-missing-includes.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
@@ -31,7 +32,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # Niels Möller <nisse@lysator.liu.se>
               A534BE3F83E241D918280AEB5831D11A0D4DB02A  # vincent@vinc17.net
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3) # Andres Enge <andreas.enge@inria.fr>
-sha256sums=('9b5a34c89e85becd292339f7c70931721b2d6ee5eb57a07c46b9c3295f1a3b83'
+sha256sums=('c8dca0d72cb9411b0a525fd2d660cfb5261caef68e47703f5d1a5bd95a1d40f7'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -41,7 +42,8 @@ sha256sums=('9b5a34c89e85becd292339f7c70931721b2d6ee5eb57a07c46b9c3295f1a3b83'
             'SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
+            '15d9b631352445872afc31af9b8c76ba194348a98b50892294967db275e88322')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${_pkgver} gcc
@@ -57,6 +59,7 @@ prepare() {
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
+  patch -Np1 -i ${srcdir}/fix-missing-includes.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
 }
