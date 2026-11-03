@@ -1,18 +1,18 @@
 pkgbase = beads-viewer-bin
 	pkgdesc = Graph-aware TUI for the Beads issue tracker: PageRank, critical path, kanban, dependency DAG visualization, and robot-mode JSON API
-	pkgver = 0.25.2
-	pkgrel = 3
+	pkgver = 0.26.0
+	pkgrel = 1
 	url = https://github.com/Dicklesworthstone/beads_viewer
 	arch = x86_64
 	arch = aarch64
 	license = MIT-OpenAI-Anthropic-Rider
 	provides = beads-viewer
 	conflicts = beads-viewer
-	source = https://raw.githubusercontent.com/Dicklesworthstone/beads_viewer/v0.25.2/LICENSE
+	source = https://raw.githubusercontent.com/Dicklesworthstone/beads_viewer/v0.26.0/LICENSE
 	sha256sums = 32a82e0a5754e72e51fae44b65a936c831c07376f21c90f5fb9e76897fcc3509
-	source_x86_64 = https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.25.2/bv_0.25.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4c269087af7a0ddef6825609cb4cdf7db0163624d26d7b02030c38c260b1e199
-	source_aarch64 = https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.25.2/bv_0.25.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = a57f64b89851adace4f9b954723972f08f29abb5080fc005b3bd0734b6f3ae0e
+	source_x86_64 = https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.26.0/bv_0.26.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e9f52cda29bb074b166e7c89a3af075fa506e29734085bc4b55348b8a4aab4f1
+	source_aarch64 = https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.26.0/bv_0.26.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1fa1c8234a4db6ad6c930ef8bfd8819784041ddb206c232d3103bd2f2a3f8a3f
 
 pkgname = beads-viewer-bin
