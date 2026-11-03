@@ -1,0 +1,2 @@
+d /etc/tinyice 0750 tinyice tinyice -
+d /var/lib/tinyice 0750 tinyice tinyice -

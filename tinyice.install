@@ -1,0 +1,7 @@
+post_install() {
+  echo "  The first start of tinyice.service writes /etc/tinyice/tinyice.json"
+  echo "  and prints a setup token to the journal: journalctl -u tinyice."
+  echo "  Enter the token at http://localhost:8000/setup."
+  echo "  The server listens on all addresses, on port 8000. Port 8081 serves"
+  echo "  metrics and pprof without authentication; keep it behind a firewall."
+}

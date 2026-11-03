@@ -1,0 +1,24 @@
+pkgbase = tinyice-bin
+	pkgdesc = Icecast-compatible streaming server for audio and video (prebuilt)
+	pkgver = 2.12.3
+	pkgrel = 1
+	url = https://github.com/DatanoiseTV/tinyice
+	install = tinyice.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tinyice=2.12.3
+	conflicts = tinyice
+	source = tinyice-2.12.3.service::https://raw.githubusercontent.com/DatanoiseTV/tinyice/v2.12.3/packaging/tinyice.service
+	source = tinyice.sysusers
+	source = tinyice.tmpfiles
+	sha256sums = f619529840a179e35f1a1466d044fed4e86e8183256dff4115cd5a0ccc14f4b0
+	sha256sums = 03ccb8a881692e4b49498999087a717b647620c3ce754ed8168376de2194663d
+	sha256sums = ce5c426ecc09f9c877320a2293a4b60b1bca0b84ee8242f527ab8f9abb85ab0b
+	source_x86_64 = tinyice-2.12.3-x86_64::https://github.com/DatanoiseTV/tinyice/releases/download/v2.12.3/tinyice-linux-amd64
+	depends_x86_64 = glibc
+	sha256sums_x86_64 = 1af54b9e1d4e6c71f89dfc50772215ccdbf9b006ec7be002e89488e6f9b003fb
+	source_aarch64 = tinyice-2.12.3-aarch64::https://github.com/DatanoiseTV/tinyice/releases/download/v2.12.3/tinyice-linux-arm64
+	sha256sums_aarch64 = c8f67cf32724cbf97ea73c27d3a3b7de09283ad0dbbf396abcaf8b61b8246a17
+
+pkgname = tinyice-bin
