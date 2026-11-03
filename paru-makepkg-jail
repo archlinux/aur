@@ -42,7 +42,7 @@ case "${1:-}" in
     --verifysource)
         if (( $# == 3 )) &&
             [[ "$2" == -Af && "$3" == -Cc ]]; then
-            mode=verify
+            mode=online
         fi ;;
     -ofA)
         if (( $# == 2 )) && [[ "$2" == -C ]]; then
