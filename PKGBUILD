@@ -6,8 +6,8 @@
 # it is the template.
 
 pkgname=kalipso-bin
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc='Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal (prebuilt)'
 arch=('x86_64')
 url='https://sansevieria-ou.github.io/kalipso/'
@@ -22,7 +22,7 @@ conflicts=('kalipso' 'kalipso-git')
 options=('!strip' '!debug')
 source=("https://github.com/SANSEVIERIA-OU/kalipso/releases/download/v$pkgver/kalipso-$pkgver-archlinux-x86_64.tar.zst")
 noextract=("kalipso-$pkgver-archlinux-x86_64.tar.zst")
-sha256sums=('99e0b32a0365f3a32c6c36e9912e8815e3eca4c1b5229dfd642634ac7f73b33f')
+sha256sums=('e06b0730edbd051c1dda928115246c17346afcf5959eebb408b71e0e871f5a71')
 
 package() {
   # The files are packed owned by root; makepkg records every file as root anyway.

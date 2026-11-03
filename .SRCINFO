@@ -1,7 +1,7 @@
 pkgbase = kalipso-bin
 	pkgdesc = Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal (prebuilt)
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://sansevieria-ou.github.io/kalipso/
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -19,10 +19,10 @@ pkgbase = kalipso-bin
 	provides = kalipso
 	conflicts = kalipso
 	conflicts = kalipso-git
-	noextract = kalipso-2.0-archlinux-x86_64.tar.zst
+	noextract = kalipso-2.1-archlinux-x86_64.tar.zst
 	options = !strip
 	options = !debug
-	source = https://github.com/SANSEVIERIA-OU/kalipso/releases/download/v2.0/kalipso-2.0-archlinux-x86_64.tar.zst
-	sha256sums = 99e0b32a0365f3a32c6c36e9912e8815e3eca4c1b5229dfd642634ac7f73b33f
+	source = https://github.com/SANSEVIERIA-OU/kalipso/releases/download/v2.1/kalipso-2.1-archlinux-x86_64.tar.zst
+	sha256sums = e06b0730edbd051c1dda928115246c17346afcf5959eebb408b71e0e871f5a71
 
 pkgname = kalipso-bin
