@@ -1,0 +1,17 @@
+pkgbase = ampscan
+	pkgdesc = Audit IPv4/IPv6 networks for ports exploitable in DDoS amplification attacks
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/gondimcodes/ampscan
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	conflicts = ampscan-bin
+	options = !lto
+	source = ampscan-1.5.0.tar.gz::https://github.com/gondimcodes/ampscan/archive/v1.5.0.tar.gz
+	sha256sums = 19c599f1c8b2958e75bb96821c2358722ac703ddfb080167b9ccd49fd0637a6e
+
+pkgname = ampscan
