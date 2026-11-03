@@ -1,5 +1,5 @@
 pkgname=mtg
-pkgver=2.2.8
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64' 'armv7h' 'aarch64') # possibly others?
@@ -14,7 +14,7 @@ source=(
   'mtg@.service'
   'example.toml'
 )
-sha256sums=('2c0c5624f0cb724c42084fd790d28a42d8cc0bfdcdcd59981894ed11977c4b1d'
+sha256sums=('a40b30734f3ca92aff8b7926f2ce59730eaa65f0a49bfc1e80a55275680ebcd1'
             '180d995169e400f79d28a2c126e2bbc0579db49680d0c7acc48f9963d0a09f22'
             '6ce35a0747812060cac222554dd760db34e4be246dc5b2eecf1de6b217630163')
 
