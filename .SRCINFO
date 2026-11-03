@@ -1,0 +1,17 @@
+pkgbase = dotnet-build-deps-11.0-bin
+	pkgdesc = Build dependencies of the .NET packages from Microsoft's build of .NET 11.0 and nuget.org (meta package)
+	pkgver = 11.0.0.sdk100rc3.26522.148
+	pkgrel = 1
+	url = https://dotnet.microsoft.com/
+	arch = x86_64
+	arch = aarch64
+	license = 0BSD
+	depends = dotnet-sdk-preview-bin=1:11.0.0.sdk100rc3.26522.148
+	provides = dotnet-build-deps-11.0=11.0.0.sdk100rc3.26522.148
+	conflicts = dotnet-build-deps-11.0
+	conflicts = dotnet-source-built-artifacts-11.0
+	source = LICENSE
+	sha512sums = a33658d9271e5c537ccd41bf540b463ad2a5eca4a060c80486ff42a736f0aa042d10436e7177c34d792177cb11285243dee1f31c4df54fb0bfaabbc306406930
+	b2sums = a29664104e1ee73ca0aee1d633e9095d92a57c92787f8d8740bdb7211ba3205782ed8677f539bdb8cae3dd75a3694be3132e185fa3fc4b3f401e1f88eb776101
+
+pkgname = dotnet-build-deps-11.0-bin

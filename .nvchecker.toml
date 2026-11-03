@@ -1,0 +1,7 @@
+# The version of Microsoft's .NET SDK in the AUR, which this package is pinned to, without its epoch
+["dotnet-build-deps-11.0-bin"]
+source = "aur"
+aur = "dotnet-sdk-preview-bin"
+strip_release = true
+from_pattern = '^\d+:(.*)$'
+to_pattern = '\1'
