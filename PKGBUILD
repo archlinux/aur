@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=craft-agents-bin
 pkgver=0.15.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Claude Code-like agent for Craft documents'
 url='https://github.com/lukilabs/craft-agents-oss'
 arch=(
@@ -31,14 +31,12 @@ options=(
 )
 source=(
     "$pkgname-$pkgver-x86_64.AppImage::https://github.com/lukilabs/craft-agents-oss/releases/download/v$pkgver/Craft-Agents-$pkgver-linux-x64.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/lukilabs/craft-agents-oss/v$pkgver/LICENSE"
     "NOTICE::https://raw.githubusercontent.com/lukilabs/craft-agents-oss/v$pkgver/NOTICE"
 )
 noextract=(
     "$pkgname-$pkgver-x86_64.AppImage"
 )
 sha256sums=('b2d50ea510b0e2d6506eb71a494de43643ca843a4d1d37a178e9dd4970498fe8'
-            '9a75ace1224f0f880ddfdd8442d14d5a0d865152c61a2fd363d8e2c351f94d2c'
             'caa334b760b4c7835957c91ac24c3d52e7abc7ac770050445027766b4ce4ce7f')
 
 package() {
@@ -78,6 +76,5 @@ EOF
         "$_appdir/usr/share/icons/hicolor/512x512/apps/@craft-agentelectron.png" \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/craft-agents.png"
 
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/NOTICE" "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 }
