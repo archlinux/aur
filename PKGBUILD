@@ -4,7 +4,7 @@
 pkgname=python-pettingzoo
 _name=${pkgname#python-}
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gymnasium for multi-agent reinforcement learning"
 arch=('any')
 url="https://pettingzoo.farama.org/"
@@ -14,9 +14,16 @@ depends=('python'
          'python-gymnasium>=1.0.0'
          'python-farama-notifications'
          'python-typing_extensions>=4.4.0'
-         # The official Arch python-pygame package provides the same pygame
-         # import/API used by upstream and satisfies the >=2.3 runtime bound.
-         'python-pygame>=2.3.0')
+         # pygame-ce provides the pygame API without a versioned capability.
+         # Keep the upstream minimum on concrete providers below.
+         'python-pygame'
+         # The public pygame-ce split recipe builds SDL3 without declaring
+         # SDL3_mixer. Supply its build headers and retained runtime library.
+         'sdl3_mixer')
+conflicts=('python-pygame<2.3.0'
+           'python-pygame-ce<2.3.0'
+           'python-pygame-ce-sdl3<2.3.0'
+           'python-pygame-git<2.3.0')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
 optdepends=('python-pybox2d>=2.3.5: required for the SISL environments'

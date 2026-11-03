@@ -1,7 +1,7 @@
 pkgbase = python-pettingzoo
 	pkgdesc = Gymnasium for multi-agent reinforcement learning
 	pkgver = 1.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pettingzoo.farama.org/
 	arch = any
 	license = MIT
@@ -15,7 +15,8 @@ pkgbase = python-pettingzoo
 	depends = python-gymnasium>=1.0.0
 	depends = python-farama-notifications
 	depends = python-typing_extensions>=4.4.0
-	depends = python-pygame>=2.3.0
+	depends = python-pygame
+	depends = sdl3_mixer
 	optdepends = python-pybox2d>=2.3.5: required for the SISL environments
 	optdepends = python-scipy>=1.4.1: required for the SISL environments
 	optdepends = python-pymunk>=6.2.0: required for the SISL and butterfly environments
@@ -24,6 +25,10 @@ pkgbase = python-pettingzoo
 	optdepends = python-rlcard>=1.0.5: required for the card game (classic) environments
 	optdepends = python-shimmy>=1.2.0: required for the OpenSpiel classic environments
 	optdepends = python-pytest>=8.0.0: required for the packaged environment API test helpers
+	conflicts = python-pygame<2.3.0
+	conflicts = python-pygame-ce<2.3.0
+	conflicts = python-pygame-ce-sdl3<2.3.0
+	conflicts = python-pygame-git<2.3.0
 	source = python-pettingzoo-1.27.0.tar.gz::https://github.com/Farama-Foundation/PettingZoo/archive/refs/tags/1.27.0.tar.gz
 	sha256sums = da691c5a4416c6a1664fa7f9c38babb6371923df14451e0bb05538cea55f88aa
 
