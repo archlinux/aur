@@ -33,7 +33,6 @@ Enable the release hooks in a fresh clone:
 
 ```bash
 git config core.hooksPath .githooks
-git config push.followTags true
 ```
 
 Release: bump `pkgver`, `_commit`, and `pkgrel` in `PKGBUILD`, then:
@@ -44,5 +43,9 @@ git add -A && git commit -S -m "Update to <version>"
 git push
 ```
 
-The hooks refresh `.SRCINFO` and tag `<version>`; `git push` carries the tag.
-Publish to the AUR with `git push origin main`.
+The hooks refresh `.SRCINFO` and tag `<version>`. Publish to the AUR with
+`git push origin master`.
+
+The AUR accepts only the `master` branch and rejects tags, so keep
+`push.followTags` off for the AUR remote and push release tags to a mirror
+instead (for example `git push <mirror> master --follow-tags`).
