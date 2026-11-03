@@ -1,7 +1,7 @@
 # Maintainer: Thulinma <jaron@vietors.com>
 pkgname=mistserver
 pkgdesc="The MistServer media server toolkit"
-pkgver=3.11.2
+pkgver=3.13
 pkgrel=1
 license=('Unlicense')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,11 +11,11 @@ url="https://mistserver.org"
 # It's built statically so it does not conflict with the system version of mbedtls (if any).
 # Similarly, libusrsctp has an AUR package available, but does not provide a pkgbuild file so the dependency check fails.
 # For this reason we built it as a static subproject as well, to prevent conflicts.
-# Finally - srt is a static subproject as well: we apply a patch to detect remote connection close properly, and this patch isn't upstream (yet)
+# Finally - srt is a static subproject as well: we apply a patch to detect remote connection close properly, and this patch isn't upstream (yet). It _can_ build with the unpatched upstream srt version as well, but that disables the corresponding functionality.
 depends=('libsrtp' 'librist')
 makedepends=('meson' 'git')
 source=("https://r.mistserver.org/dl/mistserver_sourceV${pkgver}.tar.gz")
-sha256sums=('4c38a34cef67bc635dd9343a0b493638510ce3fae97520d23654a9c13de8c7ba')
+sha256sums=('e8eaa5255f4c9e718d02026e684514d1e8694b5f2cf3ea1fb5bc9a13d067cbae')
 build() {
   cd "${srcdir}"
   meson setup build --buildtype release --prefix "${pkgdir}/usr" --force-fallback-for mbedtls,usrsctp,srt -DRELEASE="Generic_${CARCH}"
