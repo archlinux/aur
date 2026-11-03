@@ -1,9 +1,9 @@
 # Maintainer: LeafEvans <leafevans@foxmail.com>
 pkgname=go-fuck
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A blazingly fast reimplementation of thefuck in Go'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/leafevans/go-fuck'
 license=('MIT')
 makedepends=('go')
