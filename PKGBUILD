@@ -4,7 +4,7 @@ pkgname=relic-osaka-gtk-theme
 _repo=Osaka-GTK-Theme
 _commit=0faa853682a45868c9e08a5354a4761a187cf101
 _date=2025.10.23
-pkgver=2025.10.23.r9.95dc59b
+pkgver=2025.10.23.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
