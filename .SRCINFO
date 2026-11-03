@@ -1,6 +1,6 @@
 pkgbase = coder-bin
 	pkgdesc = Remote development environments on your infrastructure provisioned with Terraform
-	pkgver = 2.36.0
+	pkgver = 2.38.5
 	pkgrel = 1
 	url = https://coder.com
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = coder-bin
 	conflicts = coder-client
 	conflicts = coder-oss
 	conflicts = coder-oss-client
-	source_x86_64 = https://github.com/coder/coder/releases/download/v2.36.0/coder_2.36.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = c7d7053fc0ff9f99203a65ee6bc0312c5112a884289a5a265226a2dcf0ed572e
-	source_aarch64 = https://github.com/coder/coder/releases/download/v2.36.0/coder_2.36.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7a46837c1d4f131ab30ffd2880b77bf460177f2722c388e710e7cf4f9403b520
-	source_armv7h = https://github.com/coder/coder/releases/download/v2.36.0/coder_2.36.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 65f3ddde0a6576b904f6e7cdafe178a1bd48a4a0d3f9cceca88e78131384d28a
+	source_x86_64 = https://github.com/coder/coder/releases/download/v2.38.5/coder_2.38.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = f8e16e9d64258fa9b4d640e1f3899f8a76c064326f3ee495b798d7c2361b7ee7
+	source_aarch64 = https://github.com/coder/coder/releases/download/v2.38.5/coder_2.38.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 53aa17fab391751cfbf32f1165dd1828240bc3c5c23eb6cd62625b4e46fec4c2
+	source_armv7h = https://github.com/coder/coder/releases/download/v2.38.5/coder_2.38.5_linux_armv7.tar.gz
+	sha256sums_armv7h = 962c5af5e0319a330d1e29cd2f7268adcfe989bf9e586d6a3126b5760986ae98
 
 pkgname = coder-bin
