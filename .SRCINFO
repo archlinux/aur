@@ -1,0 +1,19 @@
+pkgbase = carapace-man-bin
+	pkgdesc = A multi-shell completion man companion
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/carapace-sh/carapace-man
+	license = MIT
+	conflicts = carapace-man
+	provides = carapace-man
+	arch = aarch64
+	source_aarch64 = carapace-man-bin_0.0.3_aarch64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.3/carapace-man_0.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = a51610b884f76ff5cf0e46a04e2e4867cee7f9528aecd181e642d45e3ae461f7
+	arch = i686
+	source_i686 = carapace-man-bin_0.0.3_i686.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.3/carapace-man_0.0.3_linux_386.tar.gz
+	sha256sums_i686 = 54eff5fb9e920eec589c93c241081233b1cb59def3f2c2b7ae90bc15714abf7c
+	arch = x86_64
+	source_x86_64 = carapace-man-bin_0.0.3_x86_64.tar.gz::https://github.com/carapace-sh/carapace-man/releases/download/v0.0.3/carapace-man_0.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7b0154c74ff41748491865db5e4ac816ed9f63286dcc6a2e2e7b84b44b8db5ce
+	
+pkgname = carapace-man-bin
