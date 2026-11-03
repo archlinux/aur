@@ -2,7 +2,7 @@
 
 pkgname=python-crewai-core
 _pkgname=crewai_core
-pkgver=1.15.22
+pkgver=1.15.34
 pkgrel=1
 pkgdesc="Shared utilities for CrewAI: version, paths, user-data, telemetry, printer"
 arch=('any')
@@ -15,12 +15,12 @@ depends=(
     'python-httpx>=0.28.1'
     'python-packaging>=23'
     'python-portalocker'
-    'python-pyjwt>=2.13'
+    'python-pyjwt>=2.15'
     'python-pydantic>=2.11.9'
     'python-rich>=13.7.1'
-    'python-opentelemetry-api>=1.42'
-    'python-opentelemetry-sdk>=1.42'
-    'python-opentelemetry-exporter-otlp-proto-http>=1.42'
+    'python-opentelemetry-api>=1.45.1'
+    'python-opentelemetry-sdk>=1.45.1'
+    'python-opentelemetry-exporter-otlp-proto-http>=1.45.1'
     'python-tomli>=2.0.2'
     'python-typing_extensions'
 )
@@ -32,25 +32,26 @@ makedepends=(
 )
 checkdepends=(
     'python-pytest'
+    'python-dotenv'
+    'python-requests'
 )
 optdepends=(
     'python-redis: distributed locking when REDIS_URL is configured'
 )
 _archive="crewAI-$pkgver"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('55ea10c17fd032d7e135c92d71b16af7a7e4bd3d33611f3c610d24550db143a5')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        'test_lock_store.py')
+sha256sums=('620adcd897459067187c89d6e11c5666ff4a9d00aa12d6b7cdb085f3863dab3c'
+            'cc1979d4babc95f3461490e30a82384039110fea6d0ccf4bc7c7ef3d36a8bbcb')
 
 prepare() {
     cd "$_archive/lib/crewai-core"
-    # Allow Python 3.14 (Arch ships 3.14); upstream caps at <3.14 for no code reason.
+    # Exercise Python 3.14 through the complete upstream core suite below.
     sed -i 's/requires-python = ">=3.10, <3.14"/requires-python = ">=3.10"/' pyproject.toml
     # Arch carries compatible newer releases; the upstream suite below exercises them.
     sed -i 's/pydantic>=2.11.9,<2.13/pydantic>=2.11.9,<3/' pyproject.toml
-    sed -i 's/portalocker~=2.7.0/portalocker>=2.7.0,<4/' pyproject.toml
+    sed -i 's/portalocker~=2.7.0/portalocker>=2.7.0,<5/' pyproject.toml
     sed -i 's/tomli~=2.0.2/tomli>=2.0.2,<3/' pyproject.toml
-    sed -i 's/opentelemetry-api~=1.42.0/opentelemetry-api>=1.42.0,<2/' pyproject.toml
-    sed -i 's/opentelemetry-sdk~=1.42.0/opentelemetry-sdk>=1.42.0,<2/' pyproject.toml
-    sed -i 's/opentelemetry-exporter-otlp-proto-http~=1.42.0/opentelemetry-exporter-otlp-proto-http>=1.42.0,<2/' pyproject.toml
 }
 
 build() {
@@ -67,14 +68,36 @@ check() {
     site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
     local staged="$srcdir/test-install$site_packages"
 
-    # The complete upstream crewai-core suite is offline and needs no plugins.
+    # All upstream core cases use the installed wheel, with source-only test helpers.
     cd "$srcdir"
-    PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
-        PYTHONPATH="$staged${PYTHONPATH:+:$PYTHONPATH}" \
-        python -m pytest -c /dev/null -p no:cacheprovider -v \
-        --basetemp="$pytest_tmp" \
-        --confcutdir="$_archive/lib/crewai-core/tests" \
-        "$_archive/lib/crewai-core/tests"
+    CREWAI_CORE_STAGED_ROOT="$srcdir/test-install" \
+    CREWAI_CORE_TESTS="$srcdir/$_archive/lib/crewai-core/tests" \
+    CREWAI_CORE_PYTEST_TMP="$pytest_tmp" \
+    CREWAI_CORE_LOCK_TEST="$srcdir/test_lock_store.py" \
+    PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONNOUSERSITE=1 \
+    PYTHONPATH="$staged" python -P - <<'PYTEST'
+import os
+from pathlib import Path
+import sys
+
+import crewai_core
+import pytest
+
+staged = Path(os.environ["CREWAI_CORE_STAGED_ROOT"]).resolve()
+assert Path(crewai_core.__file__).resolve().is_relative_to(staged)
+tests = os.environ["CREWAI_CORE_TESTS"]
+result = pytest.main([
+    "-c", "/dev/null", "-p", "no:cacheprovider", "-v", "--import-mode=importlib",
+    "--basetemp=" + os.environ["CREWAI_CORE_PYTEST_TMP"], "--confcutdir=" + tests, tests,
+    os.environ["CREWAI_CORE_LOCK_TEST"],
+])
+for name, module in tuple(sys.modules.items()):
+    if name == "crewai_core" or name.startswith("crewai_core."):
+        origin = getattr(module, "__file__", None)
+        if origin:
+            assert Path(origin).resolve().is_relative_to(staged), (name, origin)
+raise SystemExit(result)
+PYTEST
 
     # Exercise encrypted credential persistence and project-definition resolution
     # through the built wheel, not the source checkout.

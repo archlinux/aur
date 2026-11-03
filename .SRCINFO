@@ -1,11 +1,13 @@
 pkgbase = python-crewai-core
 	pkgdesc = Shared utilities for CrewAI: version, paths, user-data, telemetry, printer
-	pkgver = 1.15.22
+	pkgver = 1.15.34
 	pkgrel = 1
 	url = https://github.com/crewAIInc/crewAI
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-dotenv
+	checkdepends = python-requests
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
@@ -16,16 +18,18 @@ pkgbase = python-crewai-core
 	depends = python-httpx>=0.28.1
 	depends = python-packaging>=23
 	depends = python-portalocker
-	depends = python-pyjwt>=2.13
+	depends = python-pyjwt>=2.15
 	depends = python-pydantic>=2.11.9
 	depends = python-rich>=13.7.1
-	depends = python-opentelemetry-api>=1.42
-	depends = python-opentelemetry-sdk>=1.42
-	depends = python-opentelemetry-exporter-otlp-proto-http>=1.42
+	depends = python-opentelemetry-api>=1.45.1
+	depends = python-opentelemetry-sdk>=1.45.1
+	depends = python-opentelemetry-exporter-otlp-proto-http>=1.45.1
 	depends = python-tomli>=2.0.2
 	depends = python-typing_extensions
 	optdepends = python-redis: distributed locking when REDIS_URL is configured
-	source = python-crewai-core-1.15.22.tar.gz::https://github.com/crewAIInc/crewAI/archive/refs/tags/1.15.22.tar.gz
-	sha256sums = 55ea10c17fd032d7e135c92d71b16af7a7e4bd3d33611f3c610d24550db143a5
+	source = python-crewai-core-1.15.34.tar.gz::https://github.com/crewAIInc/crewAI/archive/refs/tags/1.15.34.tar.gz
+	source = test_lock_store.py
+	sha256sums = 620adcd897459067187c89d6e11c5666ff4a9d00aa12d6b7cdb085f3863dab3c
+	sha256sums = cc1979d4babc95f3461490e30a82384039110fea6d0ccf4bc7c7ef3d36a8bbcb
 
 pkgname = python-crewai-core
