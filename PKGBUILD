@@ -9,7 +9,7 @@
 
 pkgbase=skwir-git
 pkgname=(skwir-git skwir-mermaid-git skwir-mupdf-git)
-pkgver=0.2.0.r0.g083f928
+pkgver=0.3.0.r0.gb80ceb6
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
@@ -28,14 +28,14 @@ makedepends=(
 # makepkg's LTO compiles the C that crates build (MuPDF) into GCC's
 # intermediate code, which Rust's linker (lld) cannot read.
 options=('!lto')
-_pdfium=8086
+_pdfium=8125
 source=("skwir::git+$_repo.git")
 source_x86_64=("pdfium-linux-x64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-x64.tgz")
 source_aarch64=("pdfium-linux-arm64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-arm64.tgz")
 # PDFium's: as tools/package/pdfium.lock pins them.
 sha256sums=('SKIP')
-sha256sums_x86_64=('588577cf52dabc1a444988bac841920df54cc2f141801424de97ab04f4fbb935')
-sha256sums_aarch64=('e7e2fe4686925618330103cb167950aca5a84bb00fd977a41b86be59dd1480a2')
+sha256sums_x86_64=('e1c3ce6e270cb5e0c20816b379ad9f2c1309972697c505f508de92bf5e7d6659')
+sha256sums_aarch64=('8b8818f2ec57d1b213d952ca6d7f0ffeca9d0110487d0e20ad83ba918bc92efa')
 
 pkgver() {
   cd skwir
@@ -91,11 +91,24 @@ package_skwir-git() {
     'perl-image-exiftool: writing and removing pictures locations'
     'plocate: instant name searches over whole disks'
     'udisks2: unmounting volumes from the sidebar'
+    'sshfs: opening sftp:// addresses through your ssh'
+    'rclone: opening rclone remotes, s3:// and servers that ask a password'
+    'gvfs: opening smb://, dav://, ftp:// and other addresses through GVfs'
+    'gvfs-smb: Windows shares through GVfs'
+    'gvfs-mtp: phones over MTP'
+    'gvfs-gphoto2: cameras'
+    'gvfs-afc: iPhones'
+    'gvfs-nfs: NFS shares through GVfs'
+    'kio-fuse: smb://, dav:// and ftp:// through KIO on KDE Plasma'
+    'rsync: copies to and from sftp servers in batches'
+    'fuse3: rclone mounts, and phones KDE holds'
+    'avahi: servers nearby, a NAS or a Mac'
+    'wsdd: Windows PCs nearby'
   )
   # skwir's own, PDFium's, and the Poppler and DjVuLibre readers': a
   # program linking Poppler (GPL v2 or v3) or DjVuLibre (GPL v2 or later)
   # with code under Apache-2.0 is under the GPL v3 (ADR-042, ADR-061).
-  license=('Apache-2.0' 'BSD-3-Clause' 'GPL-3.0-only')
+  license=('Apache-2.0' 'BSD-3-Clause' 'GPL-3.0-only' 'LGPL-2.1-only')
   cd skwir
   install -Dm755 target/dist/skwir "$pkgdir/usr/bin/skwir"
   while read -r program; do
