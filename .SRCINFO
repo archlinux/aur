@@ -1,6 +1,6 @@
 pkgbase = pypy3-pip
 	pkgdesc = The PyPA recommended tool for installing Python packages
-	pkgver = 26.2.2
+	pkgver = 26.3
 	pkgrel = 1
 	url = https://pip.pypa.io
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pypy3-pip
 	makedepends = pypy3-installer
 	makedepends = pypy3-flit-core
 	depends = pypy3
-	source = https://pypi.org/packages/source/p/pip/pip-26.2.2.tar.gz
-	sha512sums = 82278769f49df3f1c0f60c8cceda25e879f0792cec91d55a252c697169688e0114628f2a18b7dcf266804c8645224fc42409b0d0f18625fa5d78d9603533bdcf
+	source = https://pypi.org/packages/source/p/pip/pip-26.3.tar.gz
+	sha512sums = 0acc2d13845f5ad164db491d26c00b0f9f30e211ea2d735ccd3017b67e1daa2d7c42f75376fcc5a061f2d0591bdd7b484a9f08cd063e5ce471e76cea659ff566
 
 pkgname = pypy3-pip
