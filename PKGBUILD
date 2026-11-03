@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=badness
-pkgver=0.28.0
-pkgrel=2
+pkgver=0.29.0
+pkgrel=1
 pkgdesc='A language server, formatter, and linter for LaTeX'
 arch=(x86_64)
 url="https://github.com/jolars/$pkgname"
@@ -12,7 +12,7 @@ depends=(glibc # glibc.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('a0c575b793d06e2a907b26f869386c00770498b95030e6f210034a8d9ee3bfd8')
+sha256sums=('da32a162d17ba8e9761e49e927ba4e7f29afbdb8a6a081162b1eaaaf51f7b1d3')
 
 _srcenv() {
 	cd "$_archive"
