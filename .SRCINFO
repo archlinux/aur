@@ -1,5 +1,5 @@
 pkgbase = moonfin
-	pkgdesc = Jellyfin & Emby media client for Linux
+	pkgdesc = Jellyfin & Emby media client for Linux. Use this package for non-systemd distros
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/Moonfin-Client/Moonfin-Core
