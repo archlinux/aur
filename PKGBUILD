@@ -7,7 +7,7 @@
 # release workflow (ticket 14) publishes a `cargo aur` tarball, this file's
 # fields already match cargo-aur's output layout.
 pkgname=voisu-bin
-pkgver=0.65.0
+pkgver=0.66.0
 pkgrel=1
 pkgdesc="Cloud-first Linux dictation for Wayland (prebuilt binaries)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ install="$pkgname.install"
 # level:
 #   voisu, voisu-daemon, voisu-overlay
 #   voisu.service, voisu-overlay.service
-#   voisu.desktop
+#   voisu.desktop, voisu.svg
 #   LICENSE
 #   ring/LICENSE
 #   ring/LICENSE-BoringSSL
@@ -52,7 +52,7 @@ install="$pkgname.install"
 # ring's tree must keep those UPSTREAM names and paths so the cross-references
 # inside ring's own LICENSE manifest resolve once installed.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v$pkgver/voisu-$pkgver-${CARCH}.tar.gz")
-sha256sums=('669b88f7413fe9acf44c5bbab475001f838054cafdf3ea6377c005a286b7c468')
+sha256sums=('158d7d116b2ff8fc66abef2d6e432cc66f73b0df26a3d55694dbd615a8bb08d6')
 
 package() {
     install -Dm755 voisu "$pkgdir/usr/bin/voisu"
@@ -66,6 +66,7 @@ package() {
     # Desktop entry makes a resolvable app_id (voisu) available to portal
     # backends that support it; the stable session token is the primary fix.
     install -Dm644 voisu.desktop "$pkgdir/usr/share/applications/voisu.desktop"
+    install -Dm644 voisu.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/voisu.svg"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
