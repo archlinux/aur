@@ -36,7 +36,7 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "resources/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -Dm644 "packaging/systemd/${pkgname}.packaged.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
   install -Dm644 "resources/example-config.toml" "${pkgdir}/usr/share/${pkgname}/examples/config.toml"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
