@@ -4,7 +4,7 @@ _zmver=1.002
 _gfcommit=92503f07b74eab956c1abf4956fbf46170716caa
 _nfver=3.5.1
 pkgver="${_zmver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Zen Maru Gothic (Google Fonts), a rounded Japanese gothic with Latin/Greek/Cyrillic, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)'
 arch=('any')
 url='https://fonts.google.com/specimen/Zen+Maru+Gothic'
@@ -38,8 +38,8 @@ sha256sums=('c4e6fa10ff517df37cb0c13038fe2813f3c47afe6577fa4a5573200e4508b2c1'
             '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             'bc5e884cfde3a2d284bb5a2601d94305601f3fbe5f887b7b54a8095686d720a1'
-            '5cf263dad8034b2b62f19199d08986848d16ae5cff91d5979e626328f4bb17fc'
-            '7e8d2d65b119093e81efb828748d163d390eb45bc4527d3f7544d294149cb1bd')
+            'c562a812ce7e1442eb2e1414d5a70cddde5e4ceb454d4b5fba68d45617431f81'
+            '442b36978d2ed5c9e555adef20e2ba70a3775e7e66e6a11b3a0bd2d8df5d0032')
 
 # ── What this package does ──────────────────────────────────────────────────
 #
@@ -105,6 +105,12 @@ sha256sums=('c4e6fa10ff517df37cb0c13038fe2813f3c47afe6577fa4a5573200e4508b2c1'
 #                 them (fontconfig fontfeatures only reaches pango). The font's
 #                 Latin features are tiny (FEATURES.md); make_features.py
 #                 refuses aalt/ordn. Note fwid/hwid/vert are CJK features.
+#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
+#                 (uncommented) in the <match> for family "Zen Maru Gothic" of
+#                 ${ZM_FONTS_CONF:-~/.config/fontconfig/fonts.conf}. Dropped with
+#                 a note: negated tags (-liga), tags the font lacks in GSUB, tags
+#                 HarfBuzz always applies (kern liga ccmp locl mark mkmk calt) and
+#                 the ones make_features.py refuses (aalt ordn dlig ...).
 #  FEATURE_FAMILY   "Name"  Install the result under this family instead.
 #
 #  Examples:
@@ -148,6 +154,45 @@ _ask_choice() {
   done
 }
 
+# Prints the bakeable tags active for family "Zen Maru Gothic" in the user's fonts.conf.
+_features_from_fontsconf() {
+  local _conf="${ZM_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+  if [[ ! -f "$_conf" ]]; then
+    echo "Error: $_conf not found (set ZM_FONTS_CONF)." >&2; return 1
+  fi
+  python - "$_conf" "$srcdir/ZenMaruGothic-Regular.ttf" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from fontTools.ttLib import TTFont
+conf, font = sys.argv[1:3]
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+gsub = {r.FeatureTag for r in TTFont(font, lazy=True)["GSUB"].table.FeatureList.FeatureRecord}
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() == "Zen Maru Gothic"
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            elif tag not in gsub: why = "not a GSUB feature of the font"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+}
+
 _prompt_options() {
   if [[ -t 0 ]]; then
     echo ""
@@ -175,9 +220,11 @@ _prompt_options() {
       echo "  into calt, which every program applies (see the header of this PKGBUILD)."
       _ask_choice "Bake features into calt" none \
         "none:leave the fonts as upstream ships them (default)" \
+        "fonts.conf:the features active for \"Zen Maru Gothic\" in ~/.config/fontconfig/fonts.conf" \
         "custom:type the tag list yourself"
       case $_choice in
         none)   FEATURE_DEFAULTS="" ;;
+        fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
         custom)
           echo "  Tags, comma or space separated (e.g. \"case,frac\"):"
           read -r -p "  > " _tags || _tags=""
@@ -202,6 +249,11 @@ _prompt_options() {
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
+  fi
+
+  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
+    FEATURE_DEFAULTS="$(_features_from_fontsconf)" || exit 1
+    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
   fi
 
   local _k

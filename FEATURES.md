@@ -63,6 +63,8 @@ GPOS: `kern mark mkmk`.
 
 - **Ψήσιμο:** `FEATURE_DEFAULTS=case` (ή `frac`) βάζει το feature στο `calt`
   ώστε να το εφαρμόζουν όλα τα προγράμματα. Δεν προτείνεται default για κανένα.
+- **Από το fonts.conf:** `FEATURE_DEFAULTS=fonts.conf` ψήνει όσα features είναι
+  ενεργά στο block της οικογένειας (παραλείπονται τα always-on και όσα δεν υπάρχουν).
 - **fontconfig `fontfeatures`:** φτάνει μόνο σε pango/GTK. Δες το block στο
   `~/.config/fontconfig/fonts.conf`.
 - **CSS:** `font-feature-settings: "frac", "sups", "case"`.

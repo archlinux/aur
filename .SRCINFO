@@ -1,7 +1,7 @@
 pkgbase = ttf-zen-maru-gothic-hinted
 	pkgdesc = Zen Maru Gothic (Google Fonts), a rounded Japanese gothic with Latin/Greek/Cyrillic, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)
 	pkgver = 1.002
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Zen+Maru+Gothic
 	arch = any
 	license = OFL-1.1
@@ -36,7 +36,7 @@ pkgbase = ttf-zen-maru-gothic-hinted
 	sha256sums = 200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e
 	sha256sums = 0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99
 	sha256sums = bc5e884cfde3a2d284bb5a2601d94305601f3fbe5f887b7b54a8095686d720a1
-	sha256sums = 5cf263dad8034b2b62f19199d08986848d16ae5cff91d5979e626328f4bb17fc
-	sha256sums = 7e8d2d65b119093e81efb828748d163d390eb45bc4527d3f7544d294149cb1bd
+	sha256sums = c562a812ce7e1442eb2e1414d5a70cddde5e4ceb454d4b5fba68d45617431f81
+	sha256sums = 442b36978d2ed5c9e555adef20e2ba70a3775e7e66e6a11b3a0bd2d8df5d0032
 
 pkgname = ttf-zen-maru-gothic-hinted
