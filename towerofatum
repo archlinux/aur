@@ -16,4 +16,13 @@ state="${XDG_STATE_HOME:-$HOME/.local/state}/towerofatum"
 mkdir -p "$state"
 # The last session's log stays as client-prev.log (the launcher does the same: Launcher/Core/GameStarter.cs).
 [ -f "$state/client.log" ] && mv -f "$state/client.log" "$state/client-prev.log"
-exec /opt/towerofatum/TowerOfAtum -logFile "$state/client.log" "$@"
+# The graphics API chosen in the game's Graphics menu (GraphicsApiChoice.cs; the launcher does the same in GameStarter.cs),
+# unless the arguments already name one: vulkan or opengl; anything else leaves Unity's order (OpenGL, then Vulkan).
+api=""
+case " $* " in *" -force-"*) ;; *)
+    case "$(cat "${XDG_CONFIG_HOME:-$HOME/.config}/unity3d/Tower of Atum/Tower of Atum/graphics-api" 2>/dev/null)" in
+        vulkan*) api="-force-vulkan" ;;
+        opengl*) api="-force-glcore" ;;
+    esac ;;
+esac
+exec /opt/towerofatum/TowerOfAtum -logFile "$state/client.log" $api "$@"
