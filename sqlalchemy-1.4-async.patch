@@ -1,0 +1,17 @@
+--- a/langchain_classic/indexes/_sql_record_manager.py
++++ b/langchain_classic/indexes/_sql_record_manager.py
+@@ -44,8 +44,12 @@
+ try:
+     from sqlalchemy.ext.asyncio import async_sessionmaker
+ except ImportError:
+-    # dummy for sqlalchemy < 2
+-    async_sessionmaker = type("async_sessionmaker", (type,), {})  # type: ignore[assignment,misc]
++    # SQLAlchemy 1.4 exposes AsyncSession through the regular session factory.
++    # Keep a distinct factory class for the existing sync/async type guards.
++    class async_sessionmaker(sessionmaker):  # type: ignore[no-redef]
++        def __init__(self, *args: Any, **kwargs: Any) -> None:
++            kwargs.setdefault("class_", AsyncSession)
++            super().__init__(*args, **kwargs)
+ 
+ Base = declarative_base()
+ 

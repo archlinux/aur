@@ -7,7 +7,7 @@ _pkgname=langchain-classic
 _pipname=${_pkgname//-/_}
 pkgname="python-${_pkgname}"
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Building applications with LLMs through composability (Legacy version)"
 arch=('any')
 url='https://github.com/langchain-ai/langchain/tree/master/libs/langchain'
@@ -20,7 +20,9 @@ depends=(
     'python-pydantic>=2.7.4'
     'python-yaml>=5.3'
     'python-requests>=2'
-    'python-sqlalchemy>=1.4'
+    # The official SQLAlchemy 1.4 variant provides this capability unversioned.
+    # Upstream wheel metadata and check() retain the supported >=1.4,<3 range.
+    'python-sqlalchemy'
 )
 makedepends=(
     'python-build'
@@ -60,16 +62,19 @@ optdepends=(
 # The "==" in the tag is URL-encoded as %3D%3D for the GitHub archive download.
 _archive="langchain-${_pkgname}-${pkgver}"
 source=(
+    'sqlalchemy-1.4-async.patch'
     "${pkgname}-${pkgver}.tar.gz::${url%/tree/*}/archive/refs/tags/${_pkgname}%3D%3D${pkgver}.tar.gz"
     'langchain-openai-1.3.5-test-compat.patch'
 )
 sha256sums=(
+    'e0fa595608997f95734dbc1a43b9de3cd745b27664f81fd7e92460ee3e754a29'
     '6c681b8a830ad99ae155fb527f31f0354508cea14f08073da9f38b748a775167'
     'c004dd50ab35c9bf2b51a9b31ee0389acf8f3f77061c716b14b0f3663694963b'
 )
 
 prepare() {
     cd "${_archive}/libs/langchain"
+    patch -Np1 -i "$srcdir/sqlalchemy-1.4-async.patch"
     patch -Np1 -i "$srcdir/langchain-openai-1.3.5-test-compat.patch"
 }
 
@@ -79,6 +84,11 @@ build() {
 }
 
 check() {
+    python - <<'PYVERSION'
+from importlib.metadata import version
+from packaging.version import Version
+assert Version("1.4") <= Version(version("SQLAlchemy")) < Version("3")
+PYVERSION
     cd "${_archive}/libs/langchain"
 
     local _checkdir="$srcdir/check-langchain-classic"
