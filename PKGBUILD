@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=mp4ff-git
-pkgver=r1311.e7525f4
+pkgver=r1318.4131c60
 pkgrel=1
 pkgdesc='Tools for parsing and manipulating MP4/ISOBMFF files (git version)'
 arch=('x86_64' 'aarch64')
