@@ -3,7 +3,7 @@
 
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -H User-Agent:Mozilla/5.0 -o %o %u')
 pkgname=hpklinux
-pkgver=4.20.58
+pkgver=4.20.59
 pkgrel=1
 pkgdesc='AudioScience HPI (ASIHPI) user space libraries and tools'
 arch=(aarch64 x86_64)
@@ -17,7 +17,7 @@ optdepends=('python: for python bindings'
             'python-docopt: for dab_data and dabtest scripts')
 source=("https://www.audioscience.com/internet/download/drivers/released/v${pkgver//./\/}/${pkgname}_$pkgver.tar.gz"
         'python.patch')
-sha256sums=('866268ac0206059822394582d1ba726fed77633aa7ebdf46a3594a71f70def6c'
+sha256sums=('db69df544d91052c7d97f02a95a2dbe0b3c1fb70894d262421b5ca93b535f50e'
             '922832e6c35ed4f55ad7de6138d9fe92fb6add684646471d0b9e616f96802cd7')
 
 prepare() {
