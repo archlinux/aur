@@ -20,7 +20,7 @@ Install the generated package with `pacman -U`.
 Start the application with `omofun`.
 
 The package runs the extracted application with the system Electron 40.
-The system Electron patch locates the tray icon in the application directory.
+The system Electron patch locates the tray icon and playback configuration in the application directory.
 Use the tray menu to exit the application. Closing the main window hides it.
 The download selector patch preserves the changes from the previous package.
 It uses code context instead of fixed line numbers.

@@ -2,7 +2,7 @@
 
 pkgname=omofun
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop anime streaming client repackaged to run with system Electron'
 arch=('x86_64')
 url='https://omofun.tv/'
@@ -16,7 +16,7 @@ source=("file://omofun-${pkgver}-setup.exe"
 noextract=("omofun-${pkgver}-setup.exe")
 sha256sums=('7f9a5423c07a8449d697667c4155c66e0eeabf177e30e74cd7d2781e3d724c5d'
             '2183f9ecf3f0fa24bc9f119dcbc12a7d5bf4e981927e4d063485bf7b5bfc3306'
-            'ba59532862d78b90bde3a1ec74055b5ca27725e7290d321ded27c2bef56c9b26')
+            '322f4af7a4cd086e785229426f29e3a3be76af132b040ac3be3497a035327194')
 
 prepare() {
   rm -rf "$srcdir/exe" "$srcdir/app"

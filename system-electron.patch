@@ -1,6 +1,15 @@
 --- out/main/index.js.orig
 +++ out/main/index.js
-@@ -18604,6 +18604,7 @@
+@@ -21192,7 +21192,7 @@
+     publicKey: new Uint8Array(),
+     configurationError: "客户端尚未配置播放规则验签信息"
+   };
+-  const path$12 = electron.app.isPackaged ? path.join(process.resourcesPath, "resources", "playback-client.json") : path.join(electron.app.getAppPath(), "resources", "playback-client.json");
++  const path$12 = path.join(electron.app.getAppPath(), "resources", "playback-client.json");
+   try {
+     const config = JSON.parse(node_fs.readFileSync(path$12, "utf8"));
+     if (typeof config.platform !== "string" || !["windows", "macos", "linux", "ios"].includes(config.platform.trim())) {
+@@ -22541,6 +22541,7 @@
  const grpcCertFile = "server.crt";
  function resolveAppIcon() {
    const candidates = electron.app.isPackaged ? [
