@@ -26,8 +26,8 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-amd64.deb")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            'fe033c7446c688abcb9a007d75f40eb9ca62756880cfde6be54fdf27a5bd94a8')
+sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 sha256sums_aarch64=('7a2a06ff7f15bf64ea96698e6fcd4ee6c148391dfbc248186d9efe00c44ca14a')
 sha256sums_x86_64=('0ee1ef224d9001910cd0d787e748137993d2259e6f512dadefdf273f06647126')
 _get_app_dir() {
