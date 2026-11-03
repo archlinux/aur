@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.5.0
+pkgver=4.5.1
 _nodeversion=24
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
@@ -31,7 +31,7 @@ makedepends=(
     'git'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dba095fbd28d5f901dff279aaeb1e4e377847cb0804140af89a7e21bc4442f3d')
+sha256sums=('20ab1afdfb64252625544689685a4fad844330f5537958631496c5795f141dbd')
 _get_project_dir() {
 	find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
 		while read -r tauri_dir; do
