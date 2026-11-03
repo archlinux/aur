@@ -2,7 +2,7 @@
 
 pkgbase=nixl
 pkgname=('nixl' 'python-nixl')
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='NVIDIA Inference Xfer Library: high-throughput, low-latency point-to-point data transfer for distributed inference'
 arch=('x86_64')
@@ -47,13 +47,17 @@ source=(
   'system-prometheus-cpp.patch'
   'test-harness-fixes.patch'
   'posix-operation-lifetime.patch'
+  'asio-post-compatibility.patch'
+  'gds-smoke-cli.patch'
 )
 sha256sums=(
-  '1dc9d1c070491ed8ed89942f14124c5d914b85be279cf694678203fd7a94c927'
+  '70f4ecf9fc10795bfad2eccd83f1c72ebd6e52e75cb6c64b2becdac0431fa050'
   '158cf152d25c632bdd6317a4fff6bda13fcfe3fc4bd37955c7b34477df694384'
   'bad9d6e32089cd06839be084cdd6135ffe0b7945d78ef53448c1f1e55a8f17af'
-  'c764f312c21ea983547f98171b12b6a0a59048d972fef8f9d8c876ebbd8762ed'
+  'f703808bc12e73aea8051440b35d83162b214fcbcaaa71c7f568221d515e6fd4'
   'bf31d44528faeaa13128b3768aa01ca54e39aa8898567620306566a530a4d5d9'
+  'a17e9820acaa9720c0ece2c32de0136448b9de779f3710d85274d17d1f996dde'
+  '5854a7499ace2d6fb9700836b0bf9b20b2f2e7bffcd80c07649afc54392b3d07'
 )
 
 prepare() {
@@ -68,11 +72,15 @@ prepare() {
   patch -Np1 -i "$srcdir/system-prometheus-cpp.patch"
 
   # Skip only unavailable io_uring syscalls and retain all AIO data checks.
-  # Give the full integration suite its required timeout. Upstream now fixes
-  # metadata teardown and no-argument GDS smoke handling itself.
+  # Give the full integration suite its required timeout.
   patch -Np1 -i "$srcdir/test-harness-fixes.patch"
   # Requests outlive the caller's operation argument; retain its value.
   patch -Np1 -i "$srcdir/posix-operation-lifetime.patch"
+  # Current Asio exposes post as a free function taking the execution context.
+  patch -Np1 --fuzz=0 -i "$srcdir/asio-post-compatibility.patch"
+  # Meson's no-argument GDS smoke entry points must return the smoke result.
+  # An unavailable backend is a skip, distinct from a successful data transfer.
+  patch -Np1 --fuzz=0 -i "$srcdir/gds-smoke-cli.patch"
 }
 
 build() {

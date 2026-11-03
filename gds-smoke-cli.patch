@@ -1,0 +1,46 @@
+--- a/test/unit/plugins/cuda_gds/nixl_gds_test.cpp
++++ b/test/unit/plugins/cuda_gds/nixl_gds_test.cpp
+@@ -210,6 +210,10 @@
+ 
+ int main(int argc, char *argv[])
+ {
++    // Meson invokes this executable without arguments for the path-mode smoke.
++    if (argc == 1) {
++        return runPathModeSmoke();
++    }
+     nixl_status_t               ret = NIXL_SUCCESS;
+     void                        **vram_addr = NULL;
+     void                        **dram_addr = NULL;
+--- a/test/unit/plugins/gds_mt/nixl_gds_mt_test.cpp
++++ b/test/unit/plugins/gds_mt/nixl_gds_mt_test.cpp
+@@ -233,6 +233,10 @@
+ 
+ int
+ main (int argc, char *argv[]) {
++    // Meson invokes this executable without arguments for the path-mode smoke.
++    if (argc == 1) {
++        return runPathModeSmoke();
++    }
+     nixl_status_t ret = NIXL_SUCCESS;
+     void **vram_addr = NULL;
+     void **dram_addr = NULL;
+--- a/test/unit/plugins/path_mode_common.h
++++ b/test/unit/plugins/path_mode_common.h
+@@ -145,7 +145,7 @@
+     return true;
+ }
+ 
+-// 0 on success or SKIP (backend unavailable), 1 on hard failure.
++// 0 on success, 77 on SKIP (backend unavailable), 1 on hard failure.
+ inline int
+ runPathModeSmoke(const char *agent_name,
+                  const char *backend_name,
+@@ -172,7 +172,7 @@
+         std::cout << "SKIP: " << backend_name << " createBackend failed" << std::endl;
+         std::remove(path_a.c_str());
+         std::remove(path_b.c_str());
+-        return 0;
++        return 77;
+     }
+ 
+     // Warm-up absorbs backends' lazy-init fds (e.g. libhf3fs's hf3fs_iorcreate) into baseline.

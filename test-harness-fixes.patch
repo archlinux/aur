@@ -20,23 +20,3 @@
          return 1;
      }
      io_uring_queue_exit(&probe_ring);
---- a/test/unit/plugins/posix/nixl_posix_aio_test.cpp
-+++ b/test/unit/plugins/posix/nixl_posix_aio_test.cpp
-@@ -364,6 +364,17 @@
-             AIO_CHECK(pread(test.fd, actual.data(), actual.size(), partial_io_offset) ==
-                       static_cast<ssize_t>(actual.size()));
-         }
-+        if (std::memcmp(actual.data(), expected.data(), block_size) != 0) {
-+            for (size_t i = 0; i < block_size; ++i) {
-+                if (actual[i] != expected[i]) {
-+                    std::cerr << "Partial I/O mismatch: read=" << read << " byte=" << i
-+                              << " actual=" << static_cast<unsigned>(static_cast<unsigned char>(actual[i]))
-+                              << " expected=" << static_cast<unsigned>(static_cast<unsigned char>(expected[i]))
-+                              << std::endl;
-+                    break;
-+                }
-+            }
-+        }
-         AIO_CHECK(std::memcmp(actual.data(), expected.data(), block_size) == 0);
-     }
-     for (const size_t file_size : {size_t{0}, block_size / 2}) {

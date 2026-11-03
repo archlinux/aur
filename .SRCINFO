@@ -1,6 +1,6 @@
 pkgbase = nixl
 	pkgdesc = NVIDIA Inference Xfer Library: high-throughput, low-latency point-to-point data transfer for distributed inference
-	pkgver = 1.5.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/ai-dynamo/nixl
 	arch = x86_64
@@ -32,16 +32,20 @@ pkgbase = nixl
 	depends = numactl
 	depends = tomlplusplus
 	depends = prometheus-cpp
-	source = nixl-1.5.0.tar.gz::https://github.com/ai-dynamo/nixl/archive/refs/tags/v1.5.0.tar.gz
+	source = nixl-1.5.2.tar.gz::https://github.com/ai-dynamo/nixl/archive/refs/tags/v1.5.2.tar.gz
 	source = missing-fstream.patch
 	source = system-prometheus-cpp.patch
 	source = test-harness-fixes.patch
 	source = posix-operation-lifetime.patch
-	sha256sums = 1dc9d1c070491ed8ed89942f14124c5d914b85be279cf694678203fd7a94c927
+	source = asio-post-compatibility.patch
+	source = gds-smoke-cli.patch
+	sha256sums = 70f4ecf9fc10795bfad2eccd83f1c72ebd6e52e75cb6c64b2becdac0431fa050
 	sha256sums = 158cf152d25c632bdd6317a4fff6bda13fcfe3fc4bd37955c7b34477df694384
 	sha256sums = bad9d6e32089cd06839be084cdd6135ffe0b7945d78ef53448c1f1e55a8f17af
-	sha256sums = c764f312c21ea983547f98171b12b6a0a59048d972fef8f9d8c876ebbd8762ed
+	sha256sums = f703808bc12e73aea8051440b35d83162b214fcbcaaa71c7f568221d515e6fd4
 	sha256sums = bf31d44528faeaa13128b3768aa01ca54e39aa8898567620306566a530a4d5d9
+	sha256sums = a17e9820acaa9720c0ece2c32de0136448b9de779f3710d85274d17d1f996dde
+	sha256sums = 5854a7499ace2d6fb9700836b0bf9b20b2f2e7bffcd80c07649afc54392b3d07
 
 pkgname = nixl
 
