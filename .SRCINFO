@@ -1,11 +1,15 @@
 pkgbase = fcitx5-areca-bin
 	pkgdesc = Areca Vietnamese input method for Fcitx5 using the Bamboo engine
-	pkgver = 8.3.0
+	pkgver = 8.3.2
 	pkgrel = 1
 	url = https://github.com/xhkzeroone/ArecaIME
 	arch = x86_64
 	license = MIT
 	depends = fcitx5
+	depends = gtk4
+	depends = python
+	depends = python-gobject
+	depends = gdk-pixbuf2
 	depends = libinput
 	depends = libei
 	depends = libportal
@@ -20,7 +24,7 @@ pkgbase = fcitx5-areca-bin
 	conflicts = fcitx5-areca-git
 	options = !debug
 	options = !strip
-	source = https://github.com/xhkzeroone/ArecaIME/releases/download/v8.3.0/fcitx5-areca-8.3.0-1-x86_64.pkg.tar.zst
-	sha256sums = d8c278c47de332ddd87685f768d2c51ad526f880dc56ed61c5abd02c6b57898e
+	source = https://github.com/xhkzeroone/ArecaIME/releases/download/v8.3.2/fcitx5-areca-8.3.2-1-x86_64.pkg.tar.zst
+	sha256sums = 1ab6a419b72071755b1449ae4366518b115554c0afc2495c9793d9339e93e9ee
 
 pkgname = fcitx5-areca-bin
