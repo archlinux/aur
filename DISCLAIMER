@@ -1,0 +1,35 @@
+CatPaw (国际版) Linux port — unofficial
+
+This package repackages the official CatPaw overseas macOS build
+(catpaw.20260929170804.dmg) into a Linux Electron application. It is not
+published or supported by CatPaw/Meituan.
+
+Differences from the upstream build:
+- Electron, Node.js, CPython, and native modules are replaced with official
+  Linux builds; node-pty, bufferutil, and utf-8-validate are compiled locally
+  against Electron headers. No network access happens during build.
+- The packaged @catpaw/agent-sdk CLI binary is replaced with the Linux build
+  published by the same upstream CLI project. If the international gateway
+  rejects it, report the issue instead of downgrading the package silently.
+- The macOS-only xlsx-sidecar binary is not installed. Spreadsheet-heavy
+  features that depend on it (Excel formula evaluation, sheet-to-image
+  rendering) are unavailable on Linux; opening, editing, and saving xlsx still
+  use the bundled JS implementation.
+- The app runs with --no-sandbox because the Arch package cannot carry the
+  upstream setuid helper in a portable way. Do not use it for untrusted content
+  if you require Chromium's sandbox.
+
+Identity isolation from the Chinese edition (catpaw-cn):
+- applicationName / WM class: catpaw-overseas
+- data directory: ~/.catpaw-overseas
+- appId: com.catx.catpaw.overseas
+- desktop file and icon: catpaw-overseas
+
+This package does not declare the catpaw-app URL scheme in its desktop entry.
+The application may still attempt to register itself at runtime; without a
+MimeType declaration that usually fails silently. Both editions can be
+installed side by side without a declared handler conflict.
+
+Upstream does not publish an EULA for this build. The repackaging scripts in
+this package are licensed under LICENSE.port-scripts; the bundled application
+remains subject to its upstream terms.

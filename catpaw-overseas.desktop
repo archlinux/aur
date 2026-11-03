@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=CatPaw
+Name[zh_CN]=CatPaw（国际版）
+GenericName=AI Agent
+Comment=CatPaw AI Agent（国际版，非官方 Linux 移植）
+Exec=/usr/bin/catpaw
+Icon=catpaw-overseas
+Terminal=false
+Categories=Utility;
+StartupNotify=true
+StartupWMClass=catpaw-overseas
