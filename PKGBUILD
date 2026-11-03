@@ -4,7 +4,7 @@ _gmver=1.102
 _gfcommit=a60a77e14f28abd4ef243a1b5dfc48df0cec5205
 _nfver=3.5.1
 pkgver="${_gmver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Geom (Google Fonts), a geometric sans with a wght axis and Greek, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://fonts.google.com/specimen/Geom'
@@ -34,8 +34,8 @@ sha256sums=('4509ad62e97c2e07c7fbc51180caba092b66fb2967e4de7dcba149ab3beb3b15'
             '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '3d45aadde50db7e27a9ff33a00de44dc8bada3f5cd6b9afb2e5344dc86efae1f'
-            'a802ddcf008a042ac2e2b0bf77c56769f61621dc5893fdb27f7e71c83fa74664'
-            '8eccb99941b863aa4070211dc2819cd829ad1b76ed1dead5e3f51eca22d9515c')
+            '38966014d2c0b913692adefbe95aa92167e8feacd3258519bfed722471c39cd3'
+            'd0cf8a2f4742af3c3ae67924967af5c5988103933af3858f80716d6bcf9a5da1')
 
 # ── What this package does ──────────────────────────────────────────────────
 #
@@ -106,6 +106,12 @@ sha256sums=('4509ad62e97c2e07c7fbc51180caba092b66fb2967e4de7dcba149ab3beb3b15'
 #                 already on in every shaper. make_features.py refuses
 #                 aalt/ordn/dlig. None is right for running text: frac and
 #                 sups fire inside ordinary words.
+#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
+#                 (uncommented) in the <match> for family "Geom" of
+#                 ${GM_FONTS_CONF:-~/.config/fontconfig/fonts.conf}. Dropped with
+#                 a note: negated tags (-liga), tags the font lacks in GSUB, tags
+#                 HarfBuzz always applies (kern liga ccmp locl mark mkmk calt) and
+#                 the ones make_features.py refuses (aalt ordn dlig ...).
 #  FEATURE_FAMILY   "Name"  Install the result under this family instead.
 #
 #  Examples:
@@ -149,6 +155,45 @@ _ask_choice() {
   done
 }
 
+# Prints the bakeable tags active for family "Geom" in the user's fonts.conf.
+_features_from_fontsconf() {
+  local _conf="${GM_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+  if [[ ! -f "$_conf" ]]; then
+    echo "Error: $_conf not found (set GM_FONTS_CONF)." >&2; return 1
+  fi
+  python - "$_conf" "$srcdir/GeomVF.ttf" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from fontTools.ttLib import TTFont
+conf, font = sys.argv[1:3]
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+gsub = {r.FeatureTag for r in TTFont(font, lazy=True)["GSUB"].table.FeatureList.FeatureRecord}
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() == "Geom"
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            elif tag not in gsub: why = "not a GSUB feature of the font"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+}
+
 _prompt_options() {
   if [[ -t 0 ]]; then
     echo ""
@@ -169,9 +214,11 @@ _prompt_options() {
       echo "  into calt, which every program applies (see the header of this PKGBUILD)."
       _ask_choice "Bake features into calt" none \
         "none:leave the fonts as upstream ships them (default)" \
+        "fonts.conf:the features active for \"Geom\" in ~/.config/fontconfig/fonts.conf" \
         "custom:type the tag list yourself"
       case $_choice in
         none)   FEATURE_DEFAULTS="" ;;
+        fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
         custom)
           echo "  Tags, comma or space separated (e.g. \"case,frac\"):"
           read -r -p "  > " _tags || _tags=""
@@ -196,6 +243,11 @@ _prompt_options() {
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
+  fi
+
+  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
+    FEATURE_DEFAULTS="$(_features_from_fontsconf)" || exit 1
+    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
   fi
 
   local _k
