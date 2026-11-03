@@ -26,10 +26,10 @@ source=("vs-validation-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "lcl-to-resx.py")
 sha512sums=('c3927f30bfa58d8ff777cc3b4fab257cf42c71782ed6fb0e3de850b643d5591a9def41ba7800da90af8b382f3a9ce94cf10ffd3f4b9c775c9ef5a2ce305f42e9'
   '98c02c09b9fed2ad77d8403efa5788053abb66a9c6c2cb8dd5d15ce49daf25e3a128b9b281fa2bc79e7cfc33adfbbfff6901b63fc9b882a890c13737892e71e1'
-  '1b70bc00f549a828208d65bba339e4b30a677cc02cb5d336c9a698b01aa0589c22c1cac7256e45b325039a0df94bc9efc7d99a6039cff4f7f36f90f721d72ae1')
+  'c55166dccaf9729657d5c6d639119d4bb3bc744a8e9f73f7beb7fed6fb3045ed0bf773f2ed59097ebffcc92bac1c25a933c60d1efba7cad1a5e49e90c2f5a4b4')
 b2sums=('3b5a3a05e017349eccf30484d1422c84a260f3e4ff7a6308dea96c86f6a911dd6bef78027aaceb96650744fab692b58ad9911d6ed376c565ab61b9d7c60097ae'
   'df52cdab9f311499106f30869455797a02345bf43fd01e942fbb0312228660c88122fba00188484cb03616dfa4b234a83e73f132377c94169f2a26da175ff2ee'
-  '2dd7539d81671b5d0bcf44245b41083f913492ade4ccfe7b37da972f559b048277983bf6835d535fd1924d01f73737498073682c517b12e0f38f2a38fa541355')
+  '8311ff8071a93b0fd5a8b095da0172a9817c577377007269273fe72aff8021c8fa233ad7087f40772760fff015d9827c1c13c6bf5878fba75b69f3c96b872d24')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
@@ -63,7 +63,7 @@ prepare() {
   jq 'del(.sdk)' global.json >global.json.new
   mv global.json.new global.json
   # Nerdbank.GitVersioning needs git (see _dotnet_env for the versions), and MicroBuild is Microsoft's
-  # internal signing and localization
+  # internal signing and localisation
   sed -i -E '/GlobalPackageReference Include="(Nerdbank.GitVersioning|Microsoft.VisualStudio.Internal.MicroBuild.VisualStudio)"/d' \
     Directory.Packages.props
   sed -i 's/ DependsOnTargets="GetBuildVersion"//' Directory.Build.props
