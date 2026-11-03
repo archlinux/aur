@@ -1,6 +1,6 @@
 pkgbase = paclens-bin
 	pkgdesc = A TUI-first pacman + AUR + Flatpak inspection and update tool for Arch Linux (prebuilt binary)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/plasmaDestroyer/paclens
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = paclens-bin
 	optdepends = paru: AUR update detection and updates (preferred)
 	optdepends = yay: AUR update detection and updates
 	optdepends = pikaur: AUR update detection and updates
-	provides = paclens=0.6.0
+	provides = paclens=0.6.1
 	conflicts = paclens
-	source = paclens-0.6.0.tar.gz::https://github.com/plasmaDestroyer/paclens/releases/download/v0.6.0/paclens-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 3417d1a655db47234865eec16e0571050114b76c578e14915032bec71734304f
+	source = paclens-0.6.1.tar.gz::https://github.com/plasmaDestroyer/paclens/releases/download/v0.6.1/paclens-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = c78920b8a7f529379f0a4864e84337a079bf065dbb6ae86da5480a4b87014f48
 
 pkgname = paclens-bin
