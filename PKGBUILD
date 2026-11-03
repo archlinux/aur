@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,8 @@ license=('MIT')
 install="${pkgname}.install"
 depends=('dbus' 'alsa-lib' 'libpipewire' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 makedepends=('cargo' 'cmake' 'clang')
+# The test suite uses ps where it cannot read a process any other way.
+checkdepends=('procps-ng')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
 conflicts=('spotifast-bin' 'spotifast-git')
@@ -17,7 +19,7 @@ conflicts=('spotifast-bin' 'spotifast-git')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spotifast-v${pkgver}-source.tar.gz")
-sha256sums=('5059d5826f01ad7eaddd2b4856ff28fc89f1143488fbaf194430cdd32f0105f3')
+sha256sums=('a49735b17319c25ef88e07f2f2653b03bf44fde63c6d8a737b12aa4c769d2e50')
 
 _source_dir() {
   printf '%s\n' "${srcdir}/spotifast-${pkgver}"
@@ -53,6 +55,8 @@ build() {
 }
 
 check() {
+  # The tests open many files at once; a lower hard limit is left as it is.
+  ulimit -n 4096 2>/dev/null || true
   cd "$(_source_dir)"
   export RUSTUP_TOOLCHAIN=stable
   # The demo feature carries the headless render test, which lays out every
