@@ -1,6 +1,6 @@
 pkgbase = oddity-bin
 	pkgdesc = Native Linux launcher for Neverness To Everness
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/LaT-SKY/Oddity
 	install = oddity-bin.install
@@ -31,7 +31,7 @@ pkgbase = oddity-bin
 	conflicts = oddity
 	options = !strip
 	options = !debug
-	source_x86_64 = oddity-0.1.1-linux-x86_64.tar.gz::https://github.com/LaT-SKY/Oddity/releases/download/oddity-v0.1.1/oddity-0.1.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 9f305696c555f01fc00d659bb1090b75025ebce662d11881d273ff0cdc786c65
+	source_x86_64 = oddity-0.1.2-linux-x86_64.tar.gz::https://github.com/LaT-SKY/Oddity/releases/download/oddity-v0.1.2/oddity-0.1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = d58c56ba3ceb2796611b16646f8100707ec5fc4a7516420a8607def12b5b0639
 
 pkgname = oddity-bin
