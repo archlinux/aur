@@ -1,0 +1,37 @@
+pkgbase = mothx-git
+	pkgdesc = 🚀 One Binary to Rule Them All — Your AI Coding Assistant in the Terminal
+	pkgver = 1.3.108.pre.1.r7.gb433fe0
+	pkgrel = 1
+	url = https://github.com/oschina/mothx
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = sh
+	depends = bubblewrap
+	depends = python
+	provides = mothx
+	conflicts = mothx
+	options = !debug
+	source = mothx-git::git+https://github.com/oschina/mothx.git
+	sha256sums = SKIP
+
+pkgname = mothx-git
+	provides = mothx
+	provides = vibecoding
+	conflicts = mothx
+	conflicts = vibecoding
+
+pkgname = python-mothx-installer-git
+	provides = python-mothx-installer
+	provides = mothx
+	provides = vibecoding
+	conflicts = python-mothx-installer
+	conflicts = mothx
+	conflicts = vibecoding
