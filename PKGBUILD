@@ -2,7 +2,7 @@
 
 _pkgname=klassy
 pkgname=klassy-bin
-pkgver=6.7.2
+pkgver=6.7.3
 pkgrel=1
 pkgdesc="Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop."
 arch=('x86_64')
@@ -22,7 +22,6 @@ depends=(
 	kguiaddons
 	ki18n
 	kiconthemes
-	kirigami
 	kwidgetsaddons
 	kwindowsystem
 	qt6-base

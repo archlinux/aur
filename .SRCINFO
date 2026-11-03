@@ -1,6 +1,6 @@
 pkgbase = klassy-bin
 	pkgdesc = Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.
-	pkgver = 6.7.2
+	pkgver = 6.7.3
 	pkgrel = 1
 	url = https://github.com/paulmcauley/klassy
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = klassy-bin
 	depends = kguiaddons
 	depends = ki18n
 	depends = kiconthemes
-	depends = kirigami
 	depends = kwidgetsaddons
 	depends = kwindowsystem
 	depends = qt6-base
@@ -28,8 +27,8 @@ pkgbase = klassy-bin
 	conflicts = klassy
 	replaces = classik
 	options = !debug
-	source = https://download.opensuse.org/repositories/home:/paulmcauley/Arch/x86_64/klassy-6.7.2-1-x86_64.pkg.tar.zst
-	source = LICENSE-6.7.2::https://raw.githubusercontent.com/paulmcauley/klassy/v6.7.2/LICENSES/MIT.txt
+	source = https://download.opensuse.org/repositories/home:/paulmcauley/Arch/x86_64/klassy-6.7.3-1-x86_64.pkg.tar.zst
+	source = LICENSE-6.7.3::https://raw.githubusercontent.com/paulmcauley/klassy/v6.7.3/LICENSES/MIT.txt
 	sha256sums = SKIP
 	sha256sums = SKIP
 
