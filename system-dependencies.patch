@@ -1,0 +1,29 @@
+--- a/python/pyproject.toml
++++ b/python/pyproject.toml
+@@ -10,7 +10,8 @@
+     "pyarrow>=16",
+     "pydantic>=2.7.4,<3",
+     "tqdm>=4.27.0",
+-    "lance-namespace>=0.13.0"
++    "typing-extensions>=4.0.0",
++    "lance-namespace>=0.13.0,<0.14"
+ ]
+ description = "lancedb"
+ authors = [{ name = "LanceDB Devs", email = "dev@lancedb.com" }]
+@@ -61,7 +62,7 @@
+     "pytest-asyncio>=0.21",
+     "duckdb>=0.9.0",
+     "pytz>=2023.3",
+-    "polars>=0.19, <=1.32.3",
++    "polars>=0.19, <2",
+     "pyarrow<25",
+     "pyarrow-stubs>=16.0",
+     "pylance==14.0.2",
+@@ -92,7 +93,6 @@
+     "InstructorEmbedding>=1.0.1",
+     "google-genai>=1.0.0",
+     "boto3>=1.28.57",
+-    "awscli>=1.44.38",
+     "botocore>=1.31.57",
+     'ibm-watsonx-ai>=1.1.2; python_version >= "3.10"',
+     "ollama>=0.3.0",

@@ -1,20 +1,17 @@
 pkgbase = python-lancedb
 	pkgdesc = Serverless, low-latency vector database for AI applications
-	pkgver = 0.40.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/lancedb/lancedb
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = python-datasets
-	checkdepends = python-duckdb
+	checkdepends = python-boto3
 	checkdepends = python-pandas
-	checkdepends = python-pillow
 	checkdepends = python-polars
-	checkdepends = python-pylance>=8
+	checkdepends = python-pylance>=14.0.2
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-socket
-	checkdepends = python-pytorch
 	makedepends = lz4
 	makedepends = python-build
 	makedepends = python-installer
@@ -35,12 +32,12 @@ pkgbase = python-lancedb
 	depends = python-pydantic<3
 	depends = python-tqdm>=4.27.0
 	depends = python-typing_extensions>=4.0.0
-	depends = python-lance-namespace>=0.12
+	depends = python-lance-namespace>=0.13
 	depends = python-lance-namespace<0.14
-	depends = python-lance-namespace-urllib3-client>=0.12
+	depends = python-lance-namespace-urllib3-client>=0.13
 	depends = python-lance-namespace-urllib3-client<0.14
 	depends = zstd
-	optdepends = python-pylance>=8: expose tables as Lance datasets and DataFusion providers
+	optdepends = python-pylance>=14.0.2: expose tables as Lance datasets and DataFusion providers
 	optdepends = python-datasets: Hugging Face Dataset and DatasetDict input
 	optdepends = python-pandas>=1.4: pandas DataFrame input and output
 	optdepends = python-polars>=0.19: Polars DataFrame input and output
@@ -56,24 +53,17 @@ pkgbase = python-lancedb
 	optdepends = python-huggingface-hub>=0.19.0: Hugging Face model downloads
 	optdepends = python-google-genai>=1.0.0: Gemini embeddings
 	optdepends = python-boto3>=1.28.57: Amazon Bedrock embeddings
-	optdepends = aws-cli>=1.44.38: AWS authentication helpers for Bedrock
+	optdepends = aws-cli: AWS authentication helpers for Bedrock
 	optdepends = python-ollama>=0.3.0: Ollama embeddings
 	optdepends = python-requests>=2.31.0: HTTP-backed embedding integrations
 	options = !debug
 	options = !lto
-	source = python-lancedb-0.40.0.tar.gz::https://github.com/lancedb/lancedb/archive/refs/tags/v0.40.0.tar.gz
-	source = typing-extensions-runtime.patch
-	source = lance-namespace-0.9.patch
-	source = offline-image-test.patch
-	source = polars-1.x-tests.patch
-	source = optional-transformers-test.patch
-	source = remote-dataloader-fixture.patch
-	sha256sums = bbb3ebb841e9971bf971a28fd80604b337f90a1e76e6e76e3b5a65d0c6e747f7
-	sha256sums = f86fde58f6a3c8e73c7442cd0f186cc89a1a46ecad8d34a9329a4824f16acc63
-	sha256sums = 7a99c9c4d594c6626145a94f01db0fb2e8132a9b1b6b362a4e98afb11e1656f3
-	sha256sums = ccf35839209d9560ac49075b9a901e8c5eb5ae0c44c6307638699bfd4a38ad50
-	sha256sums = e1bc2daf56514eaf19604d51cd7fce0b664a4f1834906f637430e3413ed20219
-	sha256sums = 6c7e206e537187776529d69a4b5ac2aeabc80e9750e9eec6a4cbbc1ddc0b5807
-	sha256sums = db313d405a83355ab9d5a3b760ccc08350f1df0a7499ef41401158cfa974c895
+	options = !strip
+	source = python-lancedb-0.41.0.tar.gz::https://github.com/lancedb/lancedb/archive/refs/tags/v0.41.0.tar.gz
+	source = system-dependencies.patch
+	source = lance-namespace-0.13.patch
+	sha256sums = 5e2820bedee7556af2a1194488784a517622cb7c4ead366704e95ea874739358
+	sha256sums = 7c1f3ab58374a036b54bb95ce036f119e48896d2fa4ecad41623dfdb4eef98ef
+	sha256sums = 8fa5b5e8e8aa0294c11be2d9168ef5883c594542b76e7190c682afb54692a959
 
 pkgname = python-lancedb

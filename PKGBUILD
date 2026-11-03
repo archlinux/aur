@@ -2,7 +2,7 @@
 
 pkgname=python-lancedb
 _pkgname=lancedb
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="Serverless, low-latency vector database for AI applications"
 arch=('x86_64')
@@ -20,9 +20,9 @@ depends=(
     'python-pydantic<3'
     'python-tqdm>=4.27.0'
     'python-typing_extensions>=4.0.0'
-    'python-lance-namespace>=0.12'
+    'python-lance-namespace>=0.13'
     'python-lance-namespace<0.14'
-    'python-lance-namespace-urllib3-client>=0.12'
+    'python-lance-namespace-urllib3-client>=0.13'
     'python-lance-namespace-urllib3-client<0.14'
     'zstd'
 )
@@ -38,19 +38,17 @@ makedepends=(
     'pkgconf'
 )
 checkdepends=(
-    'python-datasets'
-    'python-duckdb'
+    'python-boto3'
     'python-pandas'
-    'python-pillow'
     'python-polars'
-    'python-pylance>=8'
+    'python-pylance>=14.0.2'
     'python-pytest'
     'python-pytest-asyncio'
     'python-pytest-socket'
-    'python-pytorch'
 )
+
 optdepends=(
-    'python-pylance>=8: expose tables as Lance datasets and DataFusion providers'
+    'python-pylance>=14.0.2: expose tables as Lance datasets and DataFusion providers'
     'python-datasets: Hugging Face Dataset and DatasetDict input'
     'python-pandas>=1.4: pandas DataFrame input and output'
     'python-polars>=0.19: Polars DataFrame input and output'
@@ -66,40 +64,27 @@ optdepends=(
     'python-huggingface-hub>=0.19.0: Hugging Face model downloads'
     'python-google-genai>=1.0.0: Gemini embeddings'
     'python-boto3>=1.28.57: Amazon Bedrock embeddings'
-    'aws-cli>=1.44.38: AWS authentication helpers for Bedrock'
+    'aws-cli: AWS authentication helpers for Bedrock'
     'python-ollama>=0.3.0: Ollama embeddings'
     'python-requests>=2.31.0: HTTP-backed embedding integrations'
 )
-options=('!debug' '!lto')
+options=('!debug' '!lto' '!strip')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/lancedb/lancedb/archive/refs/tags/v$pkgver.tar.gz"
-    'typing-extensions-runtime.patch'
-    'lance-namespace-0.9.patch'
-    'offline-image-test.patch'
-    'polars-1.x-tests.patch'
-    'optional-transformers-test.patch'
-    'remote-dataloader-fixture.patch'
+    'system-dependencies.patch'
+    'lance-namespace-0.13.patch'
 )
 sha256sums=(
-    'bbb3ebb841e9971bf971a28fd80604b337f90a1e76e6e76e3b5a65d0c6e747f7'
-    'f86fde58f6a3c8e73c7442cd0f186cc89a1a46ecad8d34a9329a4824f16acc63'
-    '7a99c9c4d594c6626145a94f01db0fb2e8132a9b1b6b362a4e98afb11e1656f3'
-    'ccf35839209d9560ac49075b9a901e8c5eb5ae0c44c6307638699bfd4a38ad50'
-    'e1bc2daf56514eaf19604d51cd7fce0b664a4f1834906f637430e3413ed20219'
-    '6c7e206e537187776529d69a4b5ac2aeabc80e9750e9eec6a4cbbc1ddc0b5807'
-    'db313d405a83355ab9d5a3b760ccc08350f1df0a7499ef41401158cfa974c895'
+    '5e2820bedee7556af2a1194488784a517622cb7c4ead366704e95ea874739358'
+    '7c1f3ab58374a036b54bb95ce036f119e48896d2fa4ecad41623dfdb4eef98ef'
+    '8fa5b5e8e8aa0294c11be2d9168ef5883c594542b76e7190c682afb54692a959'
 )
 
 prepare() {
     cd "lancedb-$pkgver"
 
-    patch -Np1 -i "$srcdir/typing-extensions-runtime.patch"
-    patch -Np1 -i "$srcdir/lance-namespace-0.9.patch"
-    patch -Np1 -i "$srcdir/offline-image-test.patch"
-    patch -Np1 -i "$srcdir/polars-1.x-tests.patch"
-    patch -Np1 -i "$srcdir/optional-transformers-test.patch"
-    # Honor SQL case and aliased projections in the local remote-server fixture.
-    patch -Np1 -i "$srcdir/remote-dataloader-fixture.patch"
+    patch -Np1 -i "$srcdir/system-dependencies.patch"
+    patch -Np1 -i "$srcdir/lance-namespace-0.13.patch"
 
     # Use the system Rust toolchain and generic Arch compiler flags.
     rm -f rust-toolchain.toml python/rust-toolchain.toml
@@ -136,35 +121,39 @@ check() {
     # The wheel is complete; discard the very large Rust target before tests.
     rm -rf "$srcdir/cargo-target"
 
-    # The image retrieval test is patched to use a local HTTP server.
-    HOME="$srcdir/test-home" \
-    HF_HUB_OFFLINE=1 \
-    TRANSFORMERS_OFFLINE=1 \
-    AWS_EC2_METADATA_DISABLED=true \
-    AWS_REGION=us-east-1 \
-    AWS_DEFAULT_REGION=us-east-1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-        "$_test_venv/bin/python" -m pytest -vv \
-        -m 'not slow and not s3_test' \
-        --basetemp="$srcdir/pytest-tmp-tests" \
-        --disable-socket \
-        --allow-hosts=127.0.0.1,localhost \
-        --allow-unix-socket \
-        python/tests
+    # Exercise the installed wheel with upstream local database, table, query,
+    # index, FTS, SQL, schema and namespace cases. Hosted/S3 and slow cases keep
+    # their upstream marks. Optional model-inference suites need model assets.
+    LANCEDB_STAGED_ROOT="$_test_venv" \
+    LANCEDB_TEST_ROOT="$PWD/python/tests" \
+    LANCEDB_PYTEST_TMP="$srcdir/pytest-tmp-tests" \
+    HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 AWS_EC2_METADATA_DISABLED=true \
+    AWS_REGION=us-east-1 AWS_DEFAULT_REGION=us-east-1 \
+    PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$PWD/python/tests" \
+        "$_test_venv/bin/python" -P - <<'PYTEST'
+import os
+from pathlib import Path
+import sys
+import lancedb
+import pytest
 
-    # Exercise the one self-contained slow test; the other slow tests download
-    # models, contact hosted embedding APIs, or require unpackageable extras.
-    HOME="$srcdir/test-home" \
-    HF_HUB_OFFLINE=1 \
-    TRANSFORMERS_OFFLINE=1 \
-    AWS_EC2_METADATA_DISABLED=true \
-    PYTHONDONTWRITEBYTECODE=1 \
-        "$_test_venv/bin/python" -m pytest -vv \
-        --basetemp="$srcdir/pytest-tmp-slow" \
-        --disable-socket \
-        --allow-hosts=127.0.0.1,localhost \
-        --allow-unix-socket \
-        python/tests/test_embeddings.py::test_embedding_function_rate_limit
+staged = Path(os.environ["LANCEDB_STAGED_ROOT"]).resolve()
+assert Path(lancedb.__file__).resolve().is_relative_to(staged)
+tests = Path(os.environ["LANCEDB_TEST_ROOT"])
+selected = ["test_db.py", "test_table.py", "test_query.py", "test_index.py",
+            "test_fts.py", "test_sql.py", "test_pydantic.py", "test_namespace.py",
+            "test_namespace_integration.py", "test_io.py"]
+result = pytest.main(["-vv", "--import-mode=importlib", "-m", "not slow and not s3_test",
+    "--basetemp=" + os.environ["LANCEDB_PYTEST_TMP"], "--disable-socket",
+    "--allow-hosts=127.0.0.1,localhost", "--allow-unix-socket",
+    *[str(tests / name) for name in selected]])
+for name, module in tuple(sys.modules.items()):
+    if name == "lancedb" or name.startswith("lancedb."):
+        origin = getattr(module, "__file__", None)
+        if origin:
+            assert Path(origin).resolve().is_relative_to(staged), (name, origin)
+raise SystemExit(result)
+PYTEST
 
     HOME="$srcdir/test-home" \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -213,7 +202,7 @@ package() {
     for _sbom in \
         "$pkgdir"/usr/lib/python*/site-packages/*.dist-info/sboms/*.json; do
         sed -i \
-            "s#$srcdir/lancedb-$pkgver#https://github.com/lancedb/lancedb/tree/python-v$pkgver#g" \
+            "s#$srcdir/lancedb-$pkgver#https://github.com/lancedb/lancedb/tree/v$pkgver#g" \
             "$_sbom"
     done
 
