@@ -22,7 +22,7 @@
 # bar can simply not run mshell; the helpers stay useful on their own.
 
 pkgname=margo-git
-pkgver=r2591.904a1813
+pkgver=r2736.a57f8b7b
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -171,6 +171,7 @@ backup=(
   "etc/pam.d/mlogind"
   "etc/pam.d/mlogind-greeter"
   "etc/pam.d/mlogind-autologin"
+  "etc/pam.d/mlock"
   "etc/mlogind/xsetup.sh"
 )
 # Cargo profile already enables thin LTO; the outer makepkg LTO
@@ -194,6 +195,14 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/margo"
+  # With rustup (which provides `rust`/`cargo` too), build with the toolchain
+  # pinned in rust-toolchain.toml — the one CI builds, tests and lints with —
+  # installing it if it is missing. Arch's plain `rust` package ignores the
+  # pin and uses the system compiler.
+  if command -v rustup >/dev/null 2>&1; then
+    rustup toolchain install --profile minimal \
+      "$(sed -n 's/^channel = "\(.*\)"$/\1/p' rust-toolchain.toml)"
+  fi
   # Pre-fetch all dependencies so build() can run offline and
   # fails early if Cargo.lock has drifted from the workspace
   # manifest.
@@ -202,8 +211,6 @@ prepare() {
 
 build() {
   cd "$srcdir/margo"
-
-  export RUSTUP_TOOLCHAIN=stable
 
   # `--remap-path-prefix` rewrites the build dir to `/build` in
   # the embedded debug strings; otherwise pacman warns about a
@@ -664,6 +671,10 @@ package() {
   # a first-class logind session. Inert while [autologin] is unset.
   install -Dm644 "mlogind/extra/mlogind-autologin.pam" \
     "$pkgdir/etc/pam.d/mlogind-autologin"
+  # mlock's own PAM service: pam_unix only, so wrong passwords typed at
+  # the locked screen can't trip pam_faillock and lock the owner out.
+  install -Dm644 "mlock/extra/mlock.pam" \
+    "$pkgdir/etc/pam.d/mlock"
   install -Dm644 "mlogind/extra/mlogind.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/mlogind.conf"
   # Not on the greeter's own path (its power keys go through the root
@@ -715,7 +726,7 @@ package() {
 }
 
 # NOTE — manual one-time setup the package does NOT perform:
-#   (mlock authenticates against the system `login` PAM service and
+#   (mlock authenticates against /etc/pam.d/mlock, installed above, and
 #   mshell is auto-started by mshell.service + the first-run wizard,
 #   so neither needs setup.)
 #   • mlogind (TUI login manager) — config, PAM, and the systemd unit

@@ -1,6 +1,6 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)
-	pkgver = r2591.904a1813
+	pkgver = r2736.a57f8b7b
 	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
 	arch = x86_64
@@ -81,10 +81,10 @@ pkgbase = margo-git
 	optdepends = cliphist: mtm clip's clipboard-history backend
 	optdepends = gst-libav: mtune playback of AAC / M4A / ALAC / WMA and other ffmpeg-only codecs
 	optdepends = gst-plugins-bad: mtune playback of extra containers / codecs (M4A via faad, etc.)
-	provides = margo=r2591.904a1813
+	provides = margo=r2736.a57f8b7b
 	provides = wayland-compositor
-	provides = mshell=r2591.904a1813
-	provides = margo-mshell-git=r2591.904a1813
+	provides = mshell=r2736.a57f8b7b
+	provides = margo-mshell-git=r2736.a57f8b7b
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell
@@ -95,6 +95,7 @@ pkgbase = margo-git
 	backup = etc/pam.d/mlogind
 	backup = etc/pam.d/mlogind-greeter
 	backup = etc/pam.d/mlogind-autologin
+	backup = etc/pam.d/mlock
 	backup = etc/mlogind/xsetup.sh
 	source = git+https://github.com/kenanpelit/margo.git#branch=main
 	sha256sums = SKIP
