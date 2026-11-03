@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('intel-oneapi-tbb' 'hdf5' 'arrow' 'fontconfig' 'freetype2' 'libxcb' 'fftw')
 makedepends=('cmake' 'ninja' 'rust' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b140dfea1dedaf5b5bebbddbaedc215d68c19a7776d31bf2385fc692fc5d8869')
+sha256sums=('5bea6af0f0ecf08763281e6cd1c61521bba97d717aa9ef68b250a529bdb7f188')
 
 prepare() {
   cmake -B build -S "Correlation-${pkgver}" \
