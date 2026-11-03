@@ -1,0 +1,42 @@
+# pacman install script for tscsync (release)
+# package() never writes the ESP; activation is opt-in.
+
+post_install() {
+	cat <<'EOF'
+tscsync helpers and EFI blobs are under /usr.
+This does NOT install the UEFI driver or enable sync mode.
+
+Before first setup, remove any prior manual /usr/local + ESP install:
+  sudo /path/to/upstream/scripts/uninstall.sh
+  # or: sudo tscsync-uninstall  (if an older package setup was used)
+
+Activate (example for rEFInd):
+  sudo tscsync-setup --loader refind
+  sudo tscsync-set-mode sync
+
+Secure Boot: EFI signing differs by distro and key setup (sbctl, MOK,
+distribution keys, …). tscsync-setup may auto-sign when it finds a usable
+key. If auto-sign fails or warns, install unsigned and sign manually:
+
+  sudo tscsync-setup --loader refind --no-sign
+  # then sign the driver with your usual tool, e.g.:
+  #   sbctl sign -s "$(. /etc/tscsync.conf; echo "$DRIVER")"
+  #   # or: sbsign --key … --cert … --output "$DRIVER" "$DRIVER"
+  sudo tscsync-set-mode sync
+
+Status: tscsync-status
+Remove ESP/config only: sudo tscsync-uninstall
+Remove package files:     sudo pacman -R tscsync
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	cat <<'EOF'
+If you activated with tscsync-setup, run sudo tscsync-uninstall before or
+after removing the package so the ESP driver and /etc unit are cleared.
+EOF
+}

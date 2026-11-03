@@ -1,0 +1,166 @@
+diff -Naur tscsync-2.2.1/boot/tscsync-report.service.in tscsync-2.2.1-arch/boot/tscsync-report.service.in
+--- a/boot/tscsync-report.service.in	2026-11-03 17:04:08.000000000 +0100
++++ b/boot/tscsync-report.service.in	2026-11-03 17:19:03.088506738 +0100
+@@ -11,7 +11,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/local/libexec/tscsync-report
++ExecStart=/usr/lib/tscsync/tscsync-report
+ 
+ [Install]
+ WantedBy=multi-user.target system-update.target
+diff -Naur tscsync-2.2.1/scripts/install.sh tscsync-2.2.1-arch/scripts/install.sh
+--- a/scripts/install.sh	2026-11-03 17:04:08.000000000 +0100
++++ b/scripts/install.sh	2026-11-03 17:19:12.884817924 +0100
+@@ -4,7 +4,7 @@
+ # Reinstalling (for example after git pull) keeps the current mode, measure or
+ # sync with its options, unless tscsync was off; then it starts in measure.
+ #
+-# Usage: sudo scripts/install.sh [options]
++# Usage: sudo tscsync-setup [options]
+ #   --measure                start in measure mode even when reinstalling
+ #   --key FILE --cert FILE   Secure Boot signing key and certificate (PEM key,
+ #                            PEM or DER cert) enrolled as a MOK or in db
+@@ -16,7 +16,7 @@
+ #   --grub-dir DIR           GRUB config directory (holding grub.cfg)
+ #   --refind-dir DIR         rEFInd directory on the ESP (holding refind.conf)
+ #
+-# What it changes, all reversible with scripts/uninstall.sh:
++# What it changes, all reversible with tscsync-uninstall:
+ #   GRUB:          <ESP>/EFI/tscsync/tscsync.efi
+ #                  <grub-dir>/custom.cfg           sourced by grub.cfg (41_custom)
+ #                  grubenv: tscsync_enable=1 tscsync_mode=mode=measure tscsync_pending=0
+@@ -24,18 +24,19 @@
+ #                  <ESP>/EFI/tscsync/options       "mode=measure"
+ #   rEFInd:        <refind-dir>/drivers_x64/tscsyncx64.efi
+ #                  <ESP>/EFI/tscsync/options       "mode=measure exit=success"
+-#   all:          /usr/local/libexec/tscsync-report     clears the hang guard after boot
+-#                  /usr/local/bin/tscsync-status         status command
+-#                  /etc/systemd/system/tscsync-report.service
++#   all:          /etc/systemd/system/tscsync-report.service
+ #                    (RequiresMountsFor= set to the hang-guard filesystem:
+ #                     grubenv's mount for GRUB, or the ESP for drivers)
+ #                  /etc/tscsync.conf                     paths detected here
++# Helpers (tscsync-report, tscsync-status) and EFI blobs come from the package
++# under /usr; this script only activates ESP/config/unit.
+ # It does not modify grub.cfg, loader.conf, refind.conf, boot entries, the
+ # kernel command line, or firmware settings.
+ set -euo pipefail
+-cd "$(dirname "$0")/.."
++# Packaged layout: EFI blobs + templates live in DATADIR (override for tests).
++DATADIR=${TSCSYNC_DATADIR:-/usr/lib/tscsync}
+ 
+-die() { echo "install.sh: $*" >&2; exit 1; }
++die() { echo "tscsync-setup: $*" >&2; exit 1; }
+ note() { echo "== $*"; }
+ 
+ KEY= CERT= NOSIGN=0 ESP= GRUB_DIR= REFIND_DIR= LOADER= CUSTOM= RESET=0
+@@ -119,12 +120,12 @@
+ *) die "--loader must be grub, systemd-boot or refind" ;;
+ esac
+ [ -n "${OLD_LOADER:-}" ] && [ "$OLD_LOADER" != "$LOADER" ] &&
+-	die "tscsync is installed for $OLD_LOADER; run scripts/uninstall.sh first"
++	die "tscsync is installed for $OLD_LOADER; run tscsync-uninstall first"
+ note "boot loader: $LOADER"
+ 
+-EFI_BIN=build/tscsync.efi
+-[ "$LOADER" != grub ] && EFI_BIN=build/tscsync-driver.efi
+-[ -f "$EFI_BIN" ] || die "$EFI_BIN not built (run: make)"
++EFI_BIN=$DATADIR/tscsync.efi
++[ "$LOADER" != grub ] && EFI_BIN=$DATADIR/tscsync-driver.efi
++[ -f "$EFI_BIN" ] || die "$EFI_BIN missing (reinstall the tscsync package)"
+ if strings -el "$EFI_BIN" | grep -q 'TEST BUILD'; then
+ 	die "$EFI_BIN is the VM test build; rebuild with: make clean all"
+ fi
+@@ -286,12 +287,12 @@
+ 	[ -e "$GRUBENV" ] || "$EDITENV" "$GRUBENV" create
+ 	install -d "$ESP/EFI/tscsync"
+ 	install -m 0644 "$tmp/tscsync.efi" "$ESP/EFI/tscsync/tscsync.efi"
+-	sed "s/@ESP_UUID@/$ESP_UUID/" boot/custom.cfg.in >"$tmp/custom.cfg"
++	sed "s/@ESP_UUID@/$ESP_UUID/" "$DATADIR/custom.cfg.in" >"$tmp/custom.cfg"
+ 	command -v grub2-script-check >/dev/null && grub2-script-check "$tmp/custom.cfg"
+ 	command -v grub-script-check >/dev/null && grub-script-check "$tmp/custom.cfg"
+ 	install -m 0600 "$tmp/custom.cfg" "$CUSTOM"
+ 	cat >"$tmp/tscsync.conf" <<EOF
+-# Written by tscsync install.sh; read by the other tscsync scripts.
++# Written by tscsync-setup; read by the other tscsync scripts.
+ LOADER=grub
+ GRUB_DIR=$GRUB_DIR
+ GRUBENV=$GRUBENV
+@@ -311,7 +312,7 @@
+ 	printf '%s%s\n' "$MODE" "$EXIT_TOK" >"$STATE_DIR/options"
+ 	install -m 0644 "$tmp/tscsync.efi" "$DRIVER"
+ 	cat >"$tmp/tscsync.conf" <<EOF
+-# Written by tscsync install.sh; read by the other tscsync scripts.
++# Written by tscsync-setup; read by the other tscsync scripts.
+ LOADER=$LOADER
+ ESP=$ESP
+ ESP_UUID=$ESP_UUID
+@@ -320,8 +321,6 @@
+ EOF
+ fi
+ install -m 0644 "$tmp/tscsync.conf" /etc/tscsync.conf
+-install -D -m 0755 boot/tscsync-report /usr/local/libexec/tscsync-report
+-install -m 0755 scripts/tscsync-status /usr/local/bin/tscsync-status
+ # Hang guard lives on grubenv (GRUB) or EFI/tscsync on the ESP (drivers).
+ # Hardcoding /boot breaks installs whose ESP is /boot/efi or /efi.
+ if [ "$LOADER" = grub ]; then
+@@ -330,10 +329,9 @@
+ 	REQUIRES_MOUNTS=$(findmnt -no TARGET -T "$STATE_DIR")
+ fi
+ [ -n "$REQUIRES_MOUNTS" ] || die "cannot find the mount point for the hang guard"
+-sed "s|@REQUIRES_MOUNTS@|$REQUIRES_MOUNTS|" boot/tscsync-report.service.in >"$tmp/tscsync-report.service"
++sed "s|@REQUIRES_MOUNTS@|$REQUIRES_MOUNTS|" "$DATADIR/tscsync-report.service.in" >"$tmp/tscsync-report.service"
+ install -m 0644 "$tmp/tscsync-report.service" /etc/systemd/system/tscsync-report.service
+ command -v restorecon >/dev/null && restorecon -F ${CUSTOM:+"$CUSTOM"} /etc/tscsync.conf \
+-	/usr/local/libexec/tscsync-report /usr/local/bin/tscsync-status \
+ 	/etc/systemd/system/tscsync-report.service 2>/dev/null || true
+ systemctl daemon-reload
+ systemctl reenable tscsync-report.service
+@@ -362,5 +360,5 @@
+ Next:
+   1. Shut down fully, then power on.
+   2. Run: tscsync-status
+-  3. If it shows APs out of sync, switch to sync: sudo scripts/set-mode.sh sync
++  3. If it shows APs out of sync, switch to sync: sudo tscsync-set-mode sync
+ EOF
+diff -Naur tscsync-2.2.1/scripts/set-mode.sh tscsync-2.2.1-arch/scripts/set-mode.sh
+--- a/scripts/set-mode.sh	2026-11-03 17:04:08.000000000 +0100
++++ b/scripts/set-mode.sh	2026-11-03 17:19:03.088714620 +0100
+@@ -9,7 +9,7 @@
+ set -euo pipefail
+ 
+ [ "$(id -u)" = 0 ] || { echo "run with sudo" >&2; exit 1; }
+-[ -r /etc/tscsync.conf ] || { echo "tscsync is not installed (run scripts/install.sh)" >&2; exit 1; }
++[ -r /etc/tscsync.conf ] || { echo "tscsync is not installed (run tscsync-setup)" >&2; exit 1; }
+ # shellcheck source=/dev/null
+ . /etc/tscsync.conf
+ 
+diff -Naur tscsync-2.2.1/scripts/uninstall.sh tscsync-2.2.1-arch/scripts/uninstall.sh
+--- a/scripts/uninstall.sh	2026-11-03 17:04:08.000000000 +0100
++++ b/scripts/uninstall.sh	2026-11-03 17:19:03.088744316 +0100
+@@ -1,10 +1,11 @@
+ #!/usr/bin/bash
+ # SPDX-License-Identifier: MIT
+-# Remove everything install.sh added. Usage: sudo scripts/uninstall.sh
++# Remove ESP/conf/unit written by tscsync-setup. Usage: sudo tscsync-uninstall
++# Does not remove pacman-owned files under /usr (use pacman -R tscsync).
+ set -euo pipefail
+ 
+ [ "$(id -u)" = 0 ] || { echo "run with sudo" >&2; exit 1; }
+-[ -r /etc/tscsync.conf ] || { echo "tscsync is not installed" >&2; exit 1; }
++[ -r /etc/tscsync.conf ] || { echo "tscsync is not configured (nothing to uninstall)" >&2; exit 1; }
+ # shellcheck source=/dev/null
+ . /etc/tscsync.conf
+ 
+@@ -23,7 +24,6 @@
+ 	rm -rf "$ESP/EFI/tscsync"
+ fi
+ systemctl disable tscsync-report.service 2>/dev/null || true
+-rm -f /etc/systemd/system/tscsync-report.service /usr/local/libexec/tscsync-report \
+-	/usr/local/bin/tscsync-status /etc/tscsync.conf
++rm -f /etc/systemd/system/tscsync-report.service /etc/tscsync.conf
+ systemctl daemon-reload
+-echo "tscsync removed. The next boot is exactly as before installation."
++echo "tscsync ESP/config removed. Package files under /usr remain until: pacman -R tscsync"
