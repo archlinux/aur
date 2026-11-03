@@ -1,11 +1,12 @@
 # Maintainer: sudoskys <tururu02 at gmail dot com>
 # Contributor: ilovesusu (Joy Jasper) <0x73757375@gmail.com>
 # 云听的发行版包：按 pkgver 取对应的 git 标签构建，只装发布过的版本。发版时把 pkgver 改成新版本号。
-# 不在 AUR 上：用户按 README「安装」克隆仓库后在这里 makepkg -si。
+# 已发布在 AUR：https://aur.archlinux.org/packages/yunting
+# 克隆仓库后也可以直接在这里 makepkg -si。
 # 本地试打包这个仓库（标签要已存在）：
 #   YUNTING_REPO="git+file://$(git rev-parse --show-toplevel)" makepkg -si
 pkgname=yunting
-pkgver=0.6.31
+pkgver=0.6.32
 pkgrel=1
 pkgdesc='Native KDE client for NetEase Cloud Music (Qt 6 / Kirigami)'
 arch=(x86_64 aarch64)
