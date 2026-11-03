@@ -1,0 +1,165 @@
+# Checks of the AUR packages for pre-commit (https://pre-commit.com, the pre-commit package), run before
+# each commit after `pre-commit install`. Every package has a copy of this file (templates/package in
+# the repository of the packages), so it works on its own as well. The hooks use the tools of the Arch
+# Linux packages named in brackets, nothing is downloaded.
+repos:
+  - repo: local
+    hooks:
+      - id: no-downloads
+        name: no downloaded or built files
+        language: fail
+        entry: Downloaded and built files belong into .gitignore
+        files: \.(nupkg|vsix|zip|jar|tar|tgz|gz|bz2|xz|zst|deb|rpm|dll|exe|so)$
+
+      - id: srcinfo
+        name: .SRCINFO is up to date (pacman)
+        language: system
+        entry: >-
+          bash -c 'status=0; for pkgbuild; do dir=$(dirname "$pkgbuild");
+          if ! (cd "$dir" && makepkg --printsrcinfo | cmp -s - .SRCINFO); then
+          echo "$dir/.SRCINFO is out of date: makepkg --printsrcinfo > .SRCINFO"; status=1; fi;
+          done; exit "$status"' --
+        files: (^|/)PKGBUILD$
+
+      # PKGBUILDs and .install files are sourced by bash, scripts say their shell in the shebang
+      - id: shfmt-pacman
+        name: shfmt, PKGBUILD and .install (shfmt)
+        language: system
+        entry: shfmt --write
+        files: (^|/)PKGBUILD$|\.install$
+      - id: shfmt
+        name: shfmt (shfmt)
+        language: system
+        entry: shfmt --write
+        types: [shell]
+        exclude: (^|/)PKGBUILD$
+      - id: shellcheck-pacman
+        name: shellcheck, PKGBUILD and .install (shellcheck)
+        language: system
+        entry: shellcheck --shell=bash
+        files: (^|/)PKGBUILD$|\.install$
+      - id: shellcheck
+        name: shellcheck (shellcheck)
+        language: system
+        entry: shellcheck
+        types: [shell]
+        exclude: (^|/)PKGBUILD$
+      - id: shellharden-pacman
+        name: shellharden, PKGBUILD and .install (shellharden)
+        language: system
+        entry: shellharden --check
+        files: (^|/)PKGBUILD$|\.install$
+      - id: shellharden
+        name: shellharden (shellharden)
+        language: system
+        entry: shellharden --check
+        types: [shell]
+        exclude: (^|/)PKGBUILD$
+      # termux-language-server exits with 0 on findings and has false positives so far, so it only runs on
+      # request: pre-commit run --hook-stage manual termux-language-server
+      - id: termux-language-server
+        name: termux-language-server, PKGBUILD and .install (termux-language-server)
+        language: system
+        entry: >-
+          bash -c 'out=$(termux-language-server --check "$@" 2>&1); status=$?;
+          [[ -z "$out" ]] || { printf "%s\n" "$out"; status=1; }; exit "$status"' --
+        files: (^|/)PKGBUILD$|\.install$
+        stages: [manual]
+
+      - id: ruff-check
+        name: ruff check (ruff)
+        language: system
+        entry: ruff check --fix
+        types: [python]
+      - id: ruff-format
+        name: ruff format (ruff)
+        language: system
+        entry: ruff format
+        types: [python]
+
+      - id: biome
+        name: biome check (biome)
+        language: system
+        entry: biome check --write --no-errors-on-unmatched
+        types_or: [javascript, ts, json]
+
+      - id: tombi-format
+        name: tombi format (tombi)
+        language: system
+        entry: tombi format --offline
+        types: [toml]
+      - id: tombi-lint
+        name: tombi lint (tombi)
+        language: system
+        entry: tombi lint --offline
+        types: [toml]
+
+      # systemd-lsp exits with 0 on findings
+      - id: systemd-lsp
+        name: systemd-lsp (systemd-lsp)
+        language: system
+        entry: >-
+          bash -c 'out=$(systemd-lsp "$@" 2>&1); status=$?; printf "%s\n" "$out";
+          if grep -qE "(warning|error)" <<<"$out"; then status=1; fi; exit "$status"' --
+        files: \.(service|socket|timer|target|mount|automount|swap|path|slice|scope)$
+
+      # Paragraphs and list items may be long lines, one per item, instead of wrapped at 80 characters
+      - id: rumdl-fmt
+        name: rumdl fmt (rumdl)
+        language: system
+        entry: rumdl fmt --config 'MD013.paragraphs = false'
+        types: [markdown]
+      - id: rumdl-check
+        name: rumdl check (rumdl)
+        language: system
+        entry: rumdl check --config 'MD013.paragraphs = false'
+        types: [markdown]
+
+      # Errors stop pwsh, which otherwise exits with 0 without PSScriptAnalyzer or when it fails on a file
+      - id: psscriptanalyzer
+        name: PSScriptAnalyzer (powershell-editor-services)
+        language: system
+        entry: >-
+          pwsh -NoProfile -NonInteractive -CommandWithArgs '$ErrorActionPreference = "Stop"; $results =
+          foreach ($path in $args) { Invoke-ScriptAnalyzer -Path $path }; $results | Format-Table ScriptName,
+          Line, Severity, RuleName, Message -AutoSize -Wrap | Out-String -Width 200; exit [int][bool]$results'
+        types: [powershell]
+
+      # After the formatters, which change sources like scripts and patches as well. The checksums come
+      # from .SRCINFO, which the srcinfo hook keeps up to date; remote sources aren't checked.
+      - id: checksums
+        name: local sources match their checksums
+        language: system
+        entry: >-
+          bash -c 'declare -A dirs; for file; do dir=$(dirname "$file");
+          while [[ ! -f "$dir/PKGBUILD" && "$dir" != . && "$dir" != / ]]; do dir=$(dirname "$dir"); done;
+          [[ -f "$dir/PKGBUILD" && -f "$dir/.SRCINFO" ]] && dirs[$dir]=1; done; status=0;
+          for dir in "${!dirs[@]}"; do declare -A src=() sha=() b2=() count=();
+          while read -r key _ value; do kind=${key%%_*}; arch=${key#"$kind"}; case "$kind" in
+          source | sha512sums | b2sums) index=${count[$kind$arch]:-0}; count[$kind$arch]=$((index + 1));
+          case "$kind" in source) src[$arch,$index]=$value ;; sha512sums) sha[$arch,$index]=$value ;;
+          b2sums) b2[$arch,$index]=$value ;; esac ;; esac; done <"$dir/.SRCINFO";
+          for entry in "${!src[@]}"; do name=${src[$entry]}; [[ "$name" == *://* ]] && continue;
+          name=${name##*::}; [[ -f "$dir/$name" ]] || continue;
+          if [[ "${sha[$entry]-SKIP}" != SKIP && "${sha[$entry]}" != "$(sha512sum <"$dir/$name" | cut -d" " -f1)" ]] ||
+          [[ "${b2[$entry]-SKIP}" != SKIP && "${b2[$entry]}" != "$(b2sum <"$dir/$name" | cut -d" " -f1)" ]]; then
+          echo "$dir/$name does not match its checksums: updpkgsums, then shfmt the PKGBUILD"; status=1; fi;
+          done; done; exit "$status"' --
+        types: [file]
+        # All files at once, so each package is checked and reported once
+        require_serial: true
+
+      # The formatters take care of the indentation of the languages they know, the indent size of
+      # e.g. comments or embedded XML is up to the author. Licence texts stay as they are.
+      - id: editorconfig-checker
+        name: editorconfig-checker (editorconfig-checker)
+        language: system
+        entry: editorconfig-checker -disable-indent-size
+        types: [text]
+        exclude: (^|/)LICENSES/
+
+      - id: reuse
+        name: reuse lint-file (reuse)
+        language: system
+        entry: reuse lint-file
+        types: [file]

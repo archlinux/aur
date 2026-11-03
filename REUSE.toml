@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+  "PKGBUILD",
+  "README.md",
+  "keys/**",
+  ".SRCINFO",
+  ".gitignore",
+  ".nvchecker.toml",
+  "*.install",
+  "*.sysusers",
+  "*sysusers.conf",
+  "*.tmpfiles",
+  "*tmpfiles.conf",
+  "*.logrotate",
+  "*.pam",
+  "*.service",
+  "*.socket",
+  "*.timer",
+  "*.desktop",
+  "*.hook",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
+  "source-sdk.txt",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "loader-test-khook.patch"
+SPDX-FileCopyrightText = "AlliedModders LLC"
+SPDX-License-Identifier = "Zlib"

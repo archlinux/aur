@@ -1,0 +1,28 @@
+# Created by https://www.toptal.com/developers/gitignore/api/archlinuxpackages
+# Edit at https://www.toptal.com/developers/gitignore?templates=archlinuxpackages
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+# End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
+
+# Git sources
+metamod-source/
+amtl/
+hl2sdk-manifests/
+KHook/
+safetyhook/
+zydis/
+zycore-c/

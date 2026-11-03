@@ -1,0 +1,7 @@
+# The tags of Metamod:Source's development builds, from master (2.0 and later): each build is
+# tagged, <version>.<build>, and released as a prerelease. The SDKs come from the hl2sdk package.
+[metamod-source-dev]
+source = "git"
+git = "https://github.com/alliedmodders/metamod-source.git"
+use_max_tag = true
+include_regex = '([2-9]|\d{2,})\.\d+\.\d+\.\d+'
