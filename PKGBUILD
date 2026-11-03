@@ -2,7 +2,7 @@
 
 pkgname=faceform-wrap
 pkgver=2025.11.14
-pkgrel=1
+pkgrel=2
 # Opaque path component of the versioned download URL; updated with pkgver.
 _download_id=9f99598ca4cd3b373d0b26a450d9a47d
 pkgdesc='Topology transfer tool that fits a base mesh to 3D scans'
@@ -88,19 +88,21 @@ build() {
 package() {
   install -d "${pkgdir}/usr/lib/${pkgname}"
   cp -a --no-preserve=ownership "Faceform_Wrap_${pkgver}_Linux/." "${pkgdir}/usr/lib/${pkgname}/"
-  rm "${pkgdir}/usr/lib/${pkgname}/"{Wrap,WrapCmd}.sh
   chmod -R u=rwX,go=rX "${pkgdir}/usr/lib/${pkgname}"
 
-  # The embedded Python interpreter cannot locate its prefix on its own.
-  local launcher binary
-  install -d "${pkgdir}/usr/bin"
-  for launcher in "${pkgname}:Wrap" "${pkgname}-cmd:WrapCmd"; do
-    binary=${launcher#*:}
-    launcher=${launcher%%:*}
+  # Replace the vendor launchers, keeping their documented names. The embedded
+  # Python needs PYTHONHOME; the binaries already find bundled libraries through
+  # their $ORIGIN RPATH, so LD_LIBRARY_PATH (which leaked into child processes
+  # and included the working directory) is not set.
+  local binary
+  for binary in Wrap WrapCmd; do
     printf '#!/bin/sh\nexport PYTHONHOME=/usr/lib/%s\nexec /usr/lib/%s/%s "$@"\n' \
-      "${pkgname}" "${pkgname}" "${binary}" > "${pkgdir}/usr/bin/${launcher}"
-    chmod 755 "${pkgdir}/usr/bin/${launcher}"
+      "${pkgname}" "${pkgname}" "${binary}" > "${pkgdir}/usr/lib/${pkgname}/${binary}.sh"
+    chmod 755 "${pkgdir}/usr/lib/${pkgname}/${binary}.sh"
   done
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/${pkgname}/Wrap.sh" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/usr/lib/${pkgname}/WrapCmd.sh" "${pkgdir}/usr/bin/${pkgname}-cmd"
 
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
