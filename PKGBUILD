@@ -1,6 +1,6 @@
 # Maintainer: Gianluca Boiano <morf3089@gmail.com>
 pkgname=openartifact
-pkgver=0.17.0 # renovate: datasource=github-releases depName=openartifact/openartifact extractVersion=^v(?<version>\d.+)$
+pkgver=0.18.0 # renovate: datasource=github-releases depName=openartifact/openartifact extractVersion=^v(?<version>\d.+)$
 pkgrel=1
 pkgdesc="Free-as-in-freedom artifact repository manager (Maven, npm, PyPI, OCI, Helm, ...)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ conflicts=('openartifact-bin')
 backup=('etc/openartifact/openartifact.yaml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "openartifact.service")
-sha256sums=('475b88c72b109062dcd0ecdcc398eeacef3b5cf1b9be6cdd62520708786d33a7'
+sha256sums=('c3a4be5cbc507324c7d52f215f7045014af8a02893577ad5619e545047c23ec7'
             'bc1ec1cb88982f5c3bfc5a86505bcc8b87e6e83541609526b90b298ea2c473cb')
 
 build() {
@@ -25,6 +25,10 @@ build() {
   go build -ldflags "-s -w -X main.version=$pkgver" -o build/openartifact ./cmd/server
   go build -ldflags "-s -w" -o build/resetpw ./cmd/resetpw
   go build -ldflags "-s -w -X main.version=$pkgver" -o build/oa ./cmd/oa
+
+  for sh in bash zsh fish; do
+    build/oa completion "$sh" > "build/oa.$sh"
+  done
 }
 
 package() {
@@ -32,6 +36,9 @@ package() {
   install -Dm755 build/openartifact "$pkgdir/usr/bin/openartifact"
   install -Dm755 build/resetpw "$pkgdir/usr/bin/openartifact-resetpw"
   install -Dm755 build/oa "$pkgdir/usr/bin/oa"
+  install -Dm644 build/oa.bash "$pkgdir/usr/share/bash-completion/completions/oa"
+  install -Dm644 build/oa.zsh "$pkgdir/usr/share/zsh/site-functions/_oa"
+  install -Dm644 build/oa.fish "$pkgdir/usr/share/fish/vendor_completions.d/oa.fish"
   install -Dm644 openartifact.example.yaml "$pkgdir/etc/openartifact/openartifact.yaml"
   install -Dm644 .env.example "$pkgdir/usr/share/doc/$pkgname/env.example"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
