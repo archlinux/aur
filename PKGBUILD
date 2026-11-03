@@ -17,7 +17,7 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('123e366227098881eee054b6427abe19612533eded3f01186cd14c85ebf70147')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"

@@ -11,6 +11,6 @@ pkgbase = ti84-evo-linux
 	optdepends = flatpak: run TI Connect Evo in a Flatpak browser
 	optdepends = xdg-utils: prefer the default browser when it is Chromium-based
 	source = ti84-evo-linux-1.0.0.tar.gz::https://github.com/wheat32/ti84-evo-linux/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 123e366227098881eee054b6427abe19612533eded3f01186cd14c85ebf70147
 
 pkgname = ti84-evo-linux

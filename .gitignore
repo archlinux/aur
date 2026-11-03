@@ -1,0 +1,7 @@
+# Source tarball downloaded by updpkgsums and makepkg
+*.tar.gz
+
+# makepkg build output
+src/
+pkg/
+*.pkg.tar.zst
