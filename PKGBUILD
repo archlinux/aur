@@ -61,8 +61,8 @@ optdepends=(
 options=('!strip' '!debug')
 source_x86_64=("manggo_${pkgver}_amd64.deb::https://gitcode.com/Pylogmon/Manggo/releases/download/${pkgver}/manggo_${pkgver}_amd64.deb")
 sha256sums_x86_64=('08fce23d4159021f8f131875b1f83d825341f97ef355b84940e8286737159c19')
-source_aarch64=("manggo_${pkgver}_arm64.deb::https://gitcode.com/Pylogmon/Manggo/releases/download/${pkgver}/manggo_${pkgver}_arm64.deb")
 sha256sums_aarch64=('569ac80c37ea019b5762ba99166f16fc6360b992a899d766a9273e8d2c59273b')
+source_aarch64=("manggo_${pkgver}_arm64.deb::https://gitcode.com/Pylogmon/Manggo/releases/download/${pkgver}/manggo_${pkgver}_arm64.deb")
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
