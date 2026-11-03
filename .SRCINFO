@@ -1,0 +1,15 @@
+pkgbase = git-pages
+	pkgdesc = Scalable static site server for Git forges
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://codeberg.org/git-pages/git-pages
+	arch = x86_64
+	license = 0BSD
+	makedepends = go
+	depends = glibc
+	source = git-pages-0.10.1.tar.gz::https://codeberg.org/git-pages/git-pages/archive/v0.10.1.tar.gz
+	source = git-pages.service
+	sha256sums = 667b141c7865a416c790bdddeb545072bfd857b78fb7df4e85bdee4385bbc1f9
+	sha256sums = e44ad5aa362efce9454f88356fdddac9336dcacb6ef64f5e0efd8578d37e8003
+
+pkgname = git-pages

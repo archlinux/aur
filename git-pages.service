@@ -1,0 +1,18 @@
+[Unit]
+Description=git-pages static site server
+After=network-online.target
+Requires=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=git-pages -config /etc/git-pages/config.toml
+LoadCredential=secrets.toml:/etc/git-pages/secrets.toml
+DynamicUser=true
+StateDirectory=git-pages
+# Set WorkingDirectory to StateDirectory
+WorkingDirectory=%S/git-pages
+PrivateTmp=true
+Restart=on-failure
+RestartSec=5s
