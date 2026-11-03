@@ -14,7 +14,7 @@ _dotnetsdkver="10.0"
 makedepends=(
   "dotnet-build-deps-$_dotnetsdkver"
 )
-# MediatR 13 and later come under the Reciprocal Public License or a commercial license instead of
+# MediatR 13 and later come under the Reciprocal Public License or a commercial licence instead of
 # Apache 2.0, so this packages the last release of MediatR 12.
 # The commit it was published from (tag v12.5.0). MediatR.Contracts 2.0.1 was published from an
 # earlier commit, only its project file changed since.
