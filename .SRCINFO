@@ -1,6 +1,6 @@
 pkgbase = owbox
 	pkgdesc = Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/SoleSoul/owbox
 	arch = x86_64
@@ -43,12 +43,13 @@ pkgbase = owbox
 	optdepends = swaybg: a wallpaper
 	optdepends = waybar: the panels (see /usr/share/owbox/examples)
 	optdepends = fuzzel: the launcher tapping Super shows
+	optdepends = fcitx5: input methods
 	optdepends = openbox: more themes
 	backup = etc/xdg/owbox/rc.xml
 	backup = etc/xdg/owbox/menu.xml
 	backup = etc/xdg/owbox/autostart
 	backup = etc/xdg/owbox/environment
-	source = owbox-0.7.0.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = a1053d869f868cbe6f45359aa27323fec8eaf8a6c9e62a321f2d276b8568cfd8
+	source = owbox-0.8.0.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 057bccbbab7d370e20ea5f5dc60a2989b7ac55a0bd43c076eddac8a1e7e97d26
 
 pkgname = owbox
