@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-ecp5-nightly
-pkgver=20261102_nextpnr_0.11.1_85_ga2c64799
+pkgver=20261103_nextpnr_0.11.1_85_ga2c64799
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ecp5"
