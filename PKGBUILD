@@ -5,7 +5,7 @@
 pkgname=ta-lib
 _projectname=TA-Lib
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library providing common functions for the technical analysis of financial market data"
 arch=('x86_64')
 url="https://github.com/TA-Lib/ta-lib"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
     '28b1179b178a0db15f3dad0d846ef77f18eb06db5dfc5b5a8ca153a9ea5d84e6'
-    '13f42bb183695b0c9b2e7c7282c1b0f5ac83c990bef37515df0639667f72a327'
+    'a33e883898aa6ed78e7192bbd2d7f49659709691cff01f0ce7fc984db8a688dc'
 )
 
 build() {
