@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=FML Test Card Maker
+Comment=An application that allows to create test cards and more basic patterns from their individual elements (colour bars, frequency gratings, etc), rather than having to draw them manually with a graphics package.
+Exec=tcmaker
+Icon=tcmaker
+Terminal=false
+StartupNotify=false
+Categories=Wine;Graphic;
+

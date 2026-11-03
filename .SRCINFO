@@ -1,0 +1,26 @@
+pkgbase = fml-tcmaker
+	pkgdesc = FML Test Card Maker: An application that allows to create test cards and more basic patterns from their individual elements (colour bars, frequency gratings, etc), rather than having to draw them manually with a graphics package.
+	pkgver = 5.11
+	pkgrel = 1
+	url = https://web.archive.org/web/20160303165857/https://www.oodletuz.fsnet.co.uk/soft/tcmaker.htm
+	install = tcmaker.install
+	arch = i686
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = sh
+	depends = wine
+	depends = hicolor-icon-theme
+	source = tcmaker.zip::https://web.archive.org/web/20160303165857/https://www.oodletuz.fsnet.co.uk/soft/tcmaker.zip
+	source = tcmaker.sh
+	source = tcmaker-fonts-install.sh
+	source = tcmaker-fonts-uninstall.sh
+	source = tcmaker.desktop
+	source = tcmaker-icons.tar.gz
+	sha256sums = a3afca540f26a530f8a65c808e52a9531f425a04df5672297837a6c75a88d2c0
+	sha256sums = 3ffc972340cdeef0128803fe3e5422057b40468a952710c95b4c06e830850a04
+	sha256sums = 1a6167e800369a2c619cc53b8d0ee8cc710d468b3a8e9cc6430242141b82433e
+	sha256sums = 7066e3e6e3ae6858d9307a830c79d56d9af4c7f7f210eadceafb17d62beff8c0
+	sha256sums = b920bd04aa14134f4becf046975518e8810ec32be0f81b620f04317a7fccda40
+	sha256sums = ac36dfc5a416284b376cd43183527193ab433264f0d2a80765c1d85f7786bfc6
+
+pkgname = fml-tcmaker

@@ -1,0 +1,32 @@
+post_install() {
+  echo ""
+  echo "**************"
+  echo "* ATTENTION! *"
+  echo "**************"
+  echo ""
+  echo "To finish configuring this software, please run"
+  echo "the following command in a terminal:"
+  echo ""
+  echo "    tcmaker-fonts-install [WINEPREFIX]"
+  echo ""
+  echo "You can omit the WINEPREFIX argument if \$WINEPREFIX is set,"
+  echo "or if unset, if you accept the default \$HOME/.wine."
+  echo ""
+}
+
+pre_remove() {
+  echo ""
+  echo "**************"
+  echo "* ATTENTION! *"
+  echo "**************"
+  echo ""
+  echo "Before removing this package, please ensure all Wine"
+  echo "prefixes have had the following command run on each:"
+  echo ""
+  echo "    tcmaker-fonts-uninstall [WINEPREFIX]"
+  echo ""
+  echo "You can omit the WINEPREFIX argument if \$WINEPREFIX is set,"
+  echo "or if unset, if you accept the default \$HOME/.wine."
+  echo ""
+}
+

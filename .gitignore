@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!tcmaker.install
+!tcmaker*.sh
+!tcmaker.desktop
+!tcmaker-icons.tar.gz
+
