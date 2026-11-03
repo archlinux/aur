@@ -1,6 +1,6 @@
 pkgbase = wyc
 	pkgdesc = 网云穿最便捷的端口映射
-	pkgver = 8.0.24
+	pkgver = 8.0.25
 	pkgrel = 1
 	url = https://wangyunchuan.com
 	install = wyc.install
@@ -13,8 +13,8 @@ pkgbase = wyc
 	provides = wyc-bin
 	conflicts = wyc
 	conflicts = wyc-bin
-	noextract = wyc-clent-linux-x64-8.0.24.tar.gz
-	noextract = wyc-clent-linux-arm64-8.0.24.tar.gz
+	noextract = wyc-clent-linux-x64-8.0.25.tar.gz
+	noextract = wyc-clent-linux-arm64-8.0.25.tar.gz
 	options = !strip
 	options = !debug
 	backup = etc/wangyunchuan/config.json
@@ -26,9 +26,9 @@ pkgbase = wyc
 	sha256sums = 02517bed1a977b4ad8edc04282300760049f32f97e648da96d86198080ce2d9c
 	sha256sums = 1f64b0ebd17ccbf69024e62622816474800f07049a5a5bc85ede142a0ea77523
 	sha256sums = 138f00be0f1c0a8b2a16728e0f146d837f009ae18aeff3c7bee1c08a9fb37e2f
-	source_x86_64 = wyc-clent-linux-x64-8.0.24.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-x86_64-tar-gz?source=wyc_official
-	sha256sums_x86_64 = 1b08a28b587a5ae330381f61e7c971faa613ff2774838b88663041cde80c8f5c
-	source_aarch64 = wyc-clent-linux-arm64-8.0.24.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-arm64-tar-gz?source=wyc_official
-	sha256sums_aarch64 = 1998ab577bbbf955c2a39c761f70c171be54b37e63581b9cab1b3461d4c7af34
+	source_x86_64 = wyc-clent-linux-x64-8.0.25.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-x86_64-tar-gz?source=wyc_official
+	sha256sums_x86_64 = e515ba2ac5049659c7970756298178be2f7380a17ff837607c2cde43dff072c0
+	source_aarch64 = wyc-clent-linux-arm64-8.0.25.tar.gz::https://update.too1.net/d/wyc/stable/linux-service/linux-arm64-tar-gz?source=wyc_official
+	sha256sums_aarch64 = 19efae2fdd47cc1408ee22a083b4b1f0cbbec71f05c3f6a0aef9790c0b0c607b
 
 pkgname = wyc
