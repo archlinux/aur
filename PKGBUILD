@@ -1,8 +1,8 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-rachis
-pkgver=2026.10.0
-pkgrel=2
+pkgver=2026.10.1
+pkgrel=1
 pkgdesc='Extensible scientific analysis framework formerly known as QIIME 2'
 arch=(any)
 url=https://github.com/rachis-org/rachis
@@ -10,11 +10,11 @@ license=(BSD-3-Clause)
 depends=('python' 'python-bibtexparser1' 'python-dill' 'python-flufl-lock' 'python-networkx' 'python-numpy' 'python-pandas' 'python-parsl>=2026.0' 'python-platformdirs' 'python-psutil' 'python-dateutil' 'python-yaml' 'python-setuptools' 'python-tomlkit' 'python-tzlocal' 'python-lxml')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-versioningit' 'python-wheel')
 checkdepends=('python-pytest' 'python-tornado' 'jupyter-notebook')
-_commit=4c768c7aba1db4aa69ac2734a6dcfbb3b5ebf1ca
+_commit=7a34ccf0d3ea12df4604e805d2c12da3390609e2
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
         'moving-pictures-metadata.tsv::https://data.qiime2.org/2022.11/tutorials/moving-pictures/sample_metadata.tsv'
         offline_usage_tests.py)
-sha256sums=('600400937f074aa36ff75bef34318424d5e6afa06352d13c18cf5b35f8740f98'
+sha256sums=('c477b26c69bd44ea1740f8be70bab9199886a100f18ec489c4e2a3fdfaf50731'
             '9dbfbedd90776d77c431faa914d81b0d6299fff10c364216dbcd5c6df5382cc9'
             '8f2ecf9217aaac2342ae9823e138bd49c7798f9c6dc49443e7fb3b86f16e35e5')
 optdepends=('python-matplotlib: graph visualization' 'python-pytest: run the shipped framework test suite')
