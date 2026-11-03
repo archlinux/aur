@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
@@ -17,10 +17,10 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
 provides=('wingdrive')
 conflicts=('wingdrive')
 options=('!strip' '!debug')
-_upstream_version=2.3.0
-source=("WingDrive-2.3.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.3.0-x86_64.AppImage"
+_upstream_version=2.4.0
+source=("WingDrive-2.4.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.4.0-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('2fe1a798bf88252517cf7a3616d8f8b9d74684152161e9db804548d42b00f8f6' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('86a7933a48af8a5ef98f06a83dceb86228bb3c7a40c868f9d5957449d0da8d56' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -29,8 +29,8 @@ sha256sums=('2fe1a798bf88252517cf7a3616d8f8b9d74684152161e9db804548d42b00f8f6' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-2.3.0-x86_64.AppImage"
-  "./WingDrive-2.3.0-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-2.4.0-x86_64.AppImage"
+  "./WingDrive-2.4.0-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
@@ -82,6 +82,7 @@ DBUS
     cp -a squashfs-root/usr/share/icons/. "$pkgdir/usr/share/icons/"
   fi
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 squashfs-root/usr/lib/WingDrive/NOTICE.md "$pkgdir/usr/share/licenses/$pkgname/NOTICE.md"
+  install -Dm644 squashfs-root/usr/lib/WingDrive/NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+  install -Dm644 squashfs-root/usr/lib/WingDrive/CREDITS.md "$pkgdir/usr/share/licenses/$pkgname/CREDITS.md"
   cp -a squashfs-root/usr/lib/WingDrive/licenses/. "$pkgdir/usr/share/licenses/$pkgname/"
 }
