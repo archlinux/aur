@@ -6,7 +6,7 @@
 _module="diffusers"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.41.0
+pkgver=0.42.1
 pkgrel=1
 pkgdesc='Pretrained diffusion models for image and audio generation in PyTorch'
 url='https://github.com/huggingface/diffusers'
@@ -14,6 +14,7 @@ license=('Apache-2.0')
 arch=('any')
 groups=('huggingface')
 depends=(
+  'python'
   'python-filelock'
   'python-importlib-metadata'
   'python-huggingface-hub>=1:1.32'
@@ -57,16 +58,12 @@ checkdepends=(
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('a3420653e213514f984a32b0f62c79c7434ad63f776092724ed22c1570819833')
+sha256sums=('f1b2c0ddfb114c544b8a60d2fe2b14937fd9428620d4fe14081991a9ee3ad549')
 
 prepare() {
   cd "$_pkgsrc"
   sed -i '/License :: OSI Approved/d' setup.py
   sed -i 's/license=.*,/license="Apache-2.0",/' setup.py
-  # Trial Arch's Hub 2.x API with the retained scheduler suite and installed
-  # workflow; publication requires those compatibility gates to pass.
-  sed -i 's/huggingface-hub>=1.32.0,<2.0/huggingface-hub>=1.32.0,<3.0/' setup.py
-  python setup.py deps_table_update
 }
 
 build() {
@@ -83,7 +80,7 @@ check() {
   cp -a "$srcdir/$_pkgsrc/tests" "$_suite/"
   cd "$_suite"
 
-  # This is the largest dependency-self-contained upstream CPU shard. Optional
+  # Retain the upstream CPU scheduler suite. Optional
   # Flax cases use upstream skip decorators. The two deselected cases
   # unconditionally download a model from the Hugging Face Hub.
   HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 RUN_SLOW=no RUN_NIGHTLY=no \
