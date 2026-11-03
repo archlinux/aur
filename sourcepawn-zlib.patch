@@ -1,0 +1,56 @@
+diff --git a/sourcepawn/AMBuildScript b/sourcepawn/AMBuildScript
+index 8116f0c..0e0ad1e 100644
+--- a/sourcepawn/AMBuildScript
++++ b/sourcepawn/AMBuildScript
+@@ -579,7 +579,11 @@ class SourcePawn(object):
+             return
+         self.zlib = {}
+         for cxx in self.root.targets:
+-            self.zlib[cxx.target] = self.BuildForArch("third_party/zlib/AMBuilder", cxx)
++            # On Linux, the system's zlib; elsewhere the bundled one
++            if cxx.target.platform == 'linux':
++                self.zlib[cxx.target] = '-lz'
++            else:
++                self.zlib[cxx.target] = self.BuildForArch("third_party/zlib/AMBuilder", cxx)
+         self.included_zlib = True
+ 
+     def EnsureGTest(self):
+diff --git a/sourcepawn/compiler/assembler.cpp b/sourcepawn/compiler/assembler.cpp
+index c727649..1bc513b 100644
+--- a/sourcepawn/compiler/assembler.cpp
++++ b/sourcepawn/compiler/assembler.cpp
+@@ -21,7 +21,7 @@
+ #include <smx/smx-v2-opcodes.h>
+ #include <smx/smx-v1.h>
+ #include <sp_vm_api.h>
+-#include <zlib/zlib.h>
++#include <zlib.h>
+ #include "assembler.h"
+ #include "compile-context.h"
+ #include "compile-options.h"
+diff --git a/sourcepawn/legacy-compiler/assembler.cpp b/sourcepawn/legacy-compiler/assembler.cpp
+index 4429ca4..9cb029b 100644
+--- a/sourcepawn/legacy-compiler/assembler.cpp
++++ b/sourcepawn/legacy-compiler/assembler.cpp
+@@ -35,7 +35,7 @@
+ #include <smx/smx-v1-opcodes.h>
+ #include <smx/smx-v1.h>
+ #include <sp_vm_api.h>
+-#include <zlib/zlib.h>
++#include <zlib.h>
+ #include "assembler.h"
+ #include "compile-context.h"
+ #include "compile-options.h"
+diff --git a/sourcepawn/vm/smx-image.cpp b/sourcepawn/vm/smx-image.cpp
+index f6ab2c4..a33a46f 100644
+--- a/sourcepawn/vm/smx-image.cpp
++++ b/sourcepawn/vm/smx-image.cpp
+@@ -7,7 +7,7 @@
+ #include <utility>
+ 
+ #include <amtl/am-string.h>
+-#include <zlib/zlib.h>
++#include <zlib.h>
+ #include "environment.h"
+ #include "smx-image.h"
+ #include "utils/compact-encoding.h"

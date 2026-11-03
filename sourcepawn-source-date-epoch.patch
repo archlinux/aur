@@ -1,0 +1,27 @@
+--- a/sourcepawn/compiler/main.cpp
++++ b/sourcepawn/compiler/main.cpp
+@@ -288,8 +288,22 @@
+     time_t td;
+     struct tm* curtime;
+ 
+-    time(&td);
+-    curtime = localtime(&td);
++    // SOURCE_DATE_EPOCH (https://reproducible-builds.org/specs/source-date-epoch/) in UTC, like
++    // GCC and Clang, so that builds of a plugin are reproducible.
++    if (const char* epoch = getenv("SOURCE_DATE_EPOCH")) {
++        char* end;
++        errno = 0;
++        long long value = strtoll(epoch, &end, 10);
++        if (errno || end == epoch || *end || value < 0) {
++            fprintf(stderr, "SOURCE_DATE_EPOCH must be a non-negative integer: %s\n", epoch);
++            exit(1);
++        }
++        td = (time_t)value;
++        curtime = gmtime(&td);
++    } else {
++        time(&td);
++        curtime = localtime(&td);
++    }
+ 
+ #if defined __EMSCRIPTEN__
+     snprintf(date, sizeof(date), "\"%02d/%02d/%04d\"", curtime->tm_mon + 1, curtime->tm_mday,

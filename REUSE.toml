@@ -1,0 +1,58 @@
+version = 1
+
+[[annotations]]
+path = [
+  "PKGBUILD",
+  "README.md",
+  "keys/**",
+  ".SRCINFO",
+  ".gitignore",
+  ".nvchecker.toml",
+  "*.install",
+  "*.sysusers",
+  "*sysusers.conf",
+  "*.tmpfiles",
+  "*tmpfiles.conf",
+  "*.logrotate",
+  "*.pam",
+  "*.service",
+  "*.socket",
+  "*.timer",
+  "*.desktop",
+  "*.hook",
+  ".editorconfig",
+  ".pre-commit-config.yaml",
+  "source-sdk.txt",
+  "spcomp.sh",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+  "scripting-only.patch",
+  "mysql-mariadb.patch",
+  "mysql-tls-verify.patch",
+  "pgsql-libpq.patch",
+  "webternet-curl.patch",
+  "sqlite-system.patch",
+  "geoip-libmaxminddb.patch",
+  "sourcemod-delete-noexcept.patch",
+]
+SPDX-FileCopyrightText = "AlliedModders LLC"
+SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "regex-pcre2.patch"
+SPDX-FileCopyrightText = ["AlliedModders LLC", "University of Cambridge"]
+SPDX-License-Identifier = "GPL-3.0-only AND BSD-3-Clause"
+
+[[annotations]]
+path = "sourcepawn-zlib.patch"
+SPDX-FileCopyrightText = "AlliedModders LLC"
+SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = "sourcepawn-source-date-epoch.patch"
+SPDX-FileCopyrightText = ["ITB CompuPhase", "AlliedModders LLC"]
+SPDX-License-Identifier = "BSD-3-Clause"

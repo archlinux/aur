@@ -1,0 +1,34 @@
+--- a/public/smsdk_ext.cpp
++++ b/public/smsdk_ext.cpp
+@@ -483,12 +483,12 @@
+ 	return malloc(size);
+ }
+ 
+-void operator delete(void *ptr) 
++void operator delete(void *ptr) noexcept
+ {
+ 	free(ptr);
+ }
+ 
+-void operator delete[](void * ptr)
++void operator delete[](void * ptr) noexcept
+ {
+ 	free(ptr);
+ }
+--- a/core/logic/common_logic.cpp
++++ b/core/logic/common_logic.cpp
+@@ -278,12 +278,12 @@
+ 	return malloc(size);
+ }
+ 
+-void operator delete(void *ptr) 
++void operator delete(void *ptr) noexcept
+ {
+ 	free(ptr);
+ }
+ 
+-void operator delete[](void * ptr)
++void operator delete[](void * ptr) noexcept
+ {
+ 	free(ptr);
+ }

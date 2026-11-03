@@ -1,0 +1,40 @@
+diff --git a/extensions/mysql/AMBuilder b/extensions/mysql/AMBuilder
+index ba22d75..d77cb6a 100644
+--- a/extensions/mysql/AMBuilder
++++ b/extensions/mysql/AMBuilder
+@@ -6,7 +6,8 @@ if SM.mariadb_root:
+     arch = cxx.target.arch
+     binary = SM.ExtLibrary(builder, cxx, 'dbi.mysql.ext')
+     binary.compiler.cxxincludes += [
+-      os.path.join(SM.mariadb_root[arch], 'include', 'mariadb'),
++      # The system's MariaDB Connector/C headers (mariadb_config --include) on Linux
++      os.path.join(SM.mariadb_root[arch], 'include', 'mysql' if binary.compiler.target.platform == 'linux' else 'mariadb'),
+       os.path.join(SM.mms_root, 'core', 'sourcehook')
+     ]
+     if binary.compiler.family == 'gcc' or binary.compiler.family == 'clang':
+@@ -14,21 +15,17 @@ if SM.mariadb_root:
+     elif binary.compiler.family == 'msvc':
+       binary.compiler.cxxflags += ['/GR-']
+ 
+-    if binary.compiler.target.platform == 'linux' or binary.compiler.target.platform == 'mac':
++    if binary.compiler.target.platform == 'mac':
+       binary.compiler.postlink += [
+         os.path.join(SM.mariadb_root[arch], 'lib', 'libmariadbclient.a'),
+       ]
+     if binary.compiler.target.platform == 'linux':
++      # The system's MariaDB Connector/C as a shared library (mariadb_config --libs), with its own
++      # OpenSSL and zlib, instead of a static one with a static OpenSSL
+       binary.compiler.postlink += [
+-        '-Wl,-Bstatic',
+-        '-lssl',
+-        '-lcrypto',
+-        '-Wl,-Bdynamic',
+-        '-lz',
++        '-lmariadb',
+         '-lpthread',
+         '-lm',
+-        '-lrt',
+-        '-ldl',
+       ]
+     elif binary.compiler.target.platform == 'mac':
+       binary.compiler.postlink += ['-lz', '-lpthread', '-lm']

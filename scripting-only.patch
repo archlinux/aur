@@ -1,0 +1,30 @@
+diff --git a/AMBuildScript b/AMBuildScript
+index 7887649..bd779b5 100644
+--- a/AMBuildScript
++++ b/AMBuildScript
+@@ -172,6 +172,8 @@ class SMConfig(object):
+             allowed_archs += ['arm64']
+     else:
+         allowed_archs += ['x86']
++        if getattr(builder.options, 'scripting_only', False):
++            allowed_archs += ['arm64']
+ 
+     if not set(self.target_archs).issubset(allowed_archs):
+       raise Exception('Unknown target architecture: {0}'.format(self.target_archs))
+@@ -599,10 +601,12 @@ class SafetyHookShim(object):
+     self.all_targets = {}
+     self.libsafetyhook = {}
+ 
+-SafetyHook = SafetyHookShim()
+-SafetyHook.all_targets = SM.all_targets
+-builder.Build('public/safetyhook/AMBuilder', {'SafetyHook': SafetyHook })
+-SM.libsafetyhook = SafetyHook.libsafetyhook
++# Only the extensions use SafetyHook, which only supports x86 and x86_64
++if not getattr(builder.options, 'scripting_only', False):
++  SafetyHook = SafetyHookShim()
++  SafetyHook.all_targets = SM.all_targets
++  builder.Build('public/safetyhook/AMBuilder', {'SafetyHook': SafetyHook })
++  SM.libsafetyhook = SafetyHook.libsafetyhook
+ 
+ class SPRoot(object):
+   def __init__(self):

@@ -1,0 +1,68 @@
+diff --git a/configs/core.cfg b/configs/core.cfg
+index b86dc76..ed56918 100644
+--- a/configs/core.cfg
++++ b/configs/core.cfg
+@@ -89,9 +89,8 @@
+ 
+ 	/**
+ 	 * URL to use for retrieving update information.
+-	 * SSL is not yet supported.
+ 	 */
+-	"AutoUpdateURL"				"http://update.sourcemod.net/update/"
++	"AutoUpdateURL"				"https://update.sourcemod.net/update/"
+ 
+ 	/**
+ 	 * Whether to show debug spew.  
+diff --git a/extensions/curl/AMBuilder b/extensions/curl/AMBuilder
+index 7d6703a..9714fdf 100644
+--- a/extensions/curl/AMBuilder
++++ b/extensions/curl/AMBuilder
+@@ -1,18 +1,29 @@
+ # vim: set sts=2 ts=8 sw=2 tw=99 et ft=python : 
+ import os
+ 
+-libcurl = builder.Build('curl-src/lib/AMBuilder')
++# On Linux, the system's libcurl, with its TLS support; elsewhere the bundled curl 7.19, which has
++# none
++system_curl = any(cxx.target.platform == 'linux' for cxx in builder.targets)
++if not system_curl:
++  libcurl = builder.Build('curl-src/lib/AMBuilder')
+ for cxx in builder.targets:
+   binary = SM.ExtLibrary(builder, cxx, 'webternet.ext')
+-  binary.compiler.includes += [
+-    os.path.join(builder.sourcePath, 'extensions', 'curl', 'curl-src', 'include')
+-  ]
+-  binary.compiler.defines += ['CURL_STATICLIB']
++  if system_curl:
++    # The form API (curl_formadd, CURLOPT_HTTPPOST) is deprecated, not removed
++    binary.compiler.defines += ['CURL_DISABLE_DEPRECATION']
++  else:
++    binary.compiler.includes += [
++      os.path.join(builder.sourcePath, 'extensions', 'curl', 'curl-src', 'include')
++    ]
++    binary.compiler.defines += ['CURL_STATICLIB']
+   if binary.compiler.family == 'gcc' or binary.compiler.family == 'clang':
+     binary.compiler.cxxflags += ['-fno-rtti']
+   elif binary.compiler.family == 'msvc':
+     binary.compiler.cxxflags += ['/GR-']
+-  binary.compiler.postlink += [libcurl[binary.compiler.target.arch].binary]
++  if system_curl:
++    binary.compiler.postlink += ['-lcurl']
++  else:
++    binary.compiler.postlink += [libcurl[binary.compiler.target.arch].binary]
+   if binary.compiler.target.platform == 'linux':
+     binary.compiler.postlink += ['-lrt']
+   elif binary.compiler.target.platform == 'windows':
+diff --git a/extensions/updater/extension.cpp b/extensions/updater/extension.cpp
+index 3fd5f26..d963184 100644
+--- a/extensions/updater/extension.cpp
++++ b/extensions/updater/extension.cpp
+@@ -39,7 +39,7 @@
+ #include <list>
+ #include <string>
+ 
+-#define DEFAULT_UPDATE_URL			"http://www.sourcemod.net/update/"
++#define DEFAULT_UPDATE_URL			"https://www.sourcemod.net/update/"
+ 
+ SmUpdater g_Updater;		/**< Global singleton for extension's main interface */
+ SMEXT_LINK(&g_Updater);
