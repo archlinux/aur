@@ -3,7 +3,7 @@
 # Contributor: archlinuxbits <archlinuxbits at proton.me>
 
 : ${_snap_id:=nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV}
-: ${_snap_rev:=74}
+: ${_snap_rev:=75}
 
 : ${_use_system_electron:=false}
 
@@ -11,7 +11,7 @@ DLAGENTS=("${DLAGENTS[@]//curl/curl -L}") # for redirect
 
 _pkgname="tradingview"
 pkgname="$_pkgname"
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Charting platform for traders and investors'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
   "$_terms_of_use.html"::"https://www.tradingview.com/policies/"
 )
 sha256sums=(
-  '7c355bf31609e17b57434048217530da6b3451ab536dbae681bc0d47d706f670'
+  '0b5385d9699597fe2a51140301d9c3b8c1373683dfcd674088baf91c06bc7bbd'
   'SKIP'
 )
 
