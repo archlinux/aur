@@ -1,6 +1,6 @@
 pkgbase = libopenshot
 	pkgdesc = A video editing, animation, and playback library for C++, Python, and Ruby
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/OpenShot/libopenshot
 	arch = x86_64
@@ -18,22 +18,18 @@ pkgbase = libopenshot
 	depends = jsoncpp
 	depends = libgcc
 	depends = libgomp
-	depends = libopenshot-audio
+	depends = libopenshot-audio=1.0.2
 	depends = libpipewire
 	depends = libstdc++
-	depends = opencv4
+	depends = opencv
 	depends = protobuf
 	depends = python
 	depends = qt6-base
-	depends = qt6-svg
 	depends = resvg
 	depends = ruby
 	provides = libopenshot.so
-	source = libopenshot-1.0.1.tar.gz::https://github.com/OpenShot/libopenshot/archive/v1.0.1.tar.gz
-	source = ffmpeg7-codec-capabilities.patch::https://github.com/OpenShot/libopenshot/pull/1088.patch
-	sha512sums = f790797dccdf173efdfbc50e8dea6a6d23ffa64af2c1b460ebd070fdd955c0f5c5bece549c1ba7ad3299c2e44287fe87caaba523eae5af14ae77c850e7005ace
-	sha512sums = 850a2f6585f49163b1bb1469a4114f23f3c5f1dfbe16c177186329ddabbf8b8861808d9ff7b05d36672b93a1ad6f6566f09a20dec1f2f1e349c2c593b6cb17f6
-	b2sums = 5ad25cf34babd6297eca152fffd3943069223e0f4217e6b2dab76550461a63b070c365dac467c815c62c6aef0ff7177d9c46743fec661563822a875ec0819a11
-	b2sums = e382ffe72edbc048b1b22e3300c93f0448837c2ee42310508eb49d7eb01ec3176b86a5a91e841f6f428002fffd5cc560e203f874799e549b43df84582083a1f2
+	source = libopenshot-1.1.1.tar.gz::https://github.com/OpenShot/libopenshot/archive/v1.1.1.tar.gz
+	sha512sums = 502ef29d0bcbcadc38f57aab395ca6b3391fa577e4e47812438dc87ad3182b2cfa9812f20675f16d386c94a710fe48404af72dd7a15096f76d3fc3bd661ad950
+	b2sums = 5dbf12970635feb5efccca5015bfdd9bfa127dde8d26247dea247312948d799df577d06a2f0c96dc5427a7934f68804ea63ba7fb4384927cfd1623a98f3959a1
 
 pkgname = libopenshot
