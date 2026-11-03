@@ -1,0 +1,47 @@
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -237,7 +237,7 @@
+         let client = client.clone();
+         let headers = headers.clone();
+ 
+-        let stop = std::cmp::min(start + chunk_size - 1, length);
++        let stop = std::cmp::min(start + chunk_size - 1, length - 1);
+         let semaphore = semaphore.clone();
+         let parallel_failures_semaphore = parallel_failures_semaphore.clone();
+         handles.push(tokio::spawn(async move {
+@@ -269,7 +269,7 @@
+                 }
+             }
+             drop(permit);
+-            chunk.map_err(|e| PyException::new_err(format!("Downloading error {e}"))).and(Ok(stop - start))
++            chunk.map_err(|e| PyException::new_err(format!("Downloading error {e}"))).and(Ok(stop - start + 1))
+         }));
+     }
+ 
+@@ -421,7 +421,7 @@
+                             Error::Request(req) => PyException::new_err(format!("Error while sending chunk {req}")),
+                             Error::ToStrError(req) => PyException::new_err(format!("Response header contains non ASCII chars: {req}")),
+                         }
+-                    }).map(|chunk| (part_number, chunk, chunk_size))
++                    }).map(|(headers, bytes_transferred)| (part_number, headers, bytes_transferred))
+                 }));
+     }
+ 
+@@ -455,7 +455,7 @@
+     path: &str,
+     start: u64,
+     chunk_size: u64,
+-) -> Result<HashMap<String, String>, Error> {
++) -> Result<(HashMap<String, String>, u64), Error> {
+     let mut options = OpenOptions::new();
+     let mut file = options.read(true).open(path).await?;
+     let file_size = file.metadata().await?.len();
+@@ -478,7 +478,7 @@
+     for (name, value) in response.headers().into_iter() {
+         headers.insert(name.to_string(), value.to_str()?.to_owned());
+     }
+-    Ok(headers)
++    Ok((headers, bytes_transferred))
+ }
+ 
+ /// A Python module implemented in Rust.
