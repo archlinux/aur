@@ -5,7 +5,7 @@
 pkgbase=sourcebans-pp
 pkgname=(sourcebans-pp sourcemod-sourcebans-pp)
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SourceBans++, the admin, ban and communication management of SourceMod game servers"
 arch=(any)
 url="https://sbpp.github.io"
@@ -153,9 +153,19 @@ package_sourcebans-pp() {
   # the updater, which the panel refuses to run next to: they're sourcebans-pp's, outside the web root
   install -d "$_webroot" "$pkgdir/usr/share/$_name"
   cp -r --no-preserve=ownership "$_src"/web/. "$_webroot/"
-  rm -r "${_webroot:?}"/{tests,phpstan,bin,demos} \
-    "$_webroot"/{phpstan*.neon,phpstan*.php,phpunit.xml,package.json,package-lock.json} \
-    "$_webroot"/{composer.json,composer.lock,config.php.template}
+  rm -r "${_webroot:?}"/{tests,phpstan,bin,demos,includes/PHPStan} \
+    "$_webroot"/{.gitignore,phpstan*.neon,phpstan*.php,phpunit.xml,package.json,package-lock.json}
+  # Nor what the libraries ship besides their code and licences: documentation, tests, examples, the
+  # configuration of their development tools, the source of maxmind-db/reader's C extension. Then the
+  # autoloader is generated again, so it doesn't list the removed classes
+  find "$_webroot/includes/vendor" -mindepth 3 -maxdepth 3 ! -iname 'license*' \( -name '.*' \
+    -o -iname '*.md' -o -name '*.txt' -o -name '*.xml' -o -name '*.dist' -o -name '*.dist.php' \
+    -o -name '*.neon' -o -name '*.yml' -o -name '*.sh' -o -name Makefile -o -name 'composer.*' \
+    -o -iname test -o -iname tests -o -iname examples -o -name docs -o -name guides -o -name demo \
+    -o -name changelog -o -path '*/maxmind-db/reader/ext' \) -exec rm -r {} +
+  COMPOSER_HOME="$srcdir/composer" composer dump-autoload --working-dir="$_webroot" --no-dev \
+    --optimize --no-scripts --no-interaction
+  rm "$_webroot"/{composer.json,composer.lock,config.php.template}
   mv "$_webroot"/{install,updater} "$pkgdir/usr/share/$_name/"
   install -Dm755 "$srcdir/sourcebans-pp.php" "$pkgdir/usr/bin/sourcebans-pp"
 
