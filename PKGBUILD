@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=ugm
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A terminal based UNIX user and group browser"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a627102861486093d2a65249a5ca7d0fb6e16ae0844716713a37b34fe79a9169')
+sha256sums=('d705eee28fa6f7a2f57a35e2d555c0e476f119c502f8f83e4ab39b2df8407642')
 
 prepare(){
     cd "$pkgname-$pkgver"
