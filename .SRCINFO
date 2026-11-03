@@ -1,6 +1,6 @@
 pkgbase = git-tpl
 	pkgdesc = Git-native project templates
-	pkgver = 0.14.3
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/noirbizarre/git-tpl
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = git-tpl
 	conflicts = git-tpl-bin
 	options = !lto
 	options = !debug
-	source = git-tpl-0.14.3.tar.gz::https://github.com/noirbizarre/git-tpl/archive/0.14.3.tar.gz
-	sha256sums = 5ead65a6f4a965a6a6d912fb84761126f17fb96788f2fd16c9ba54de34b5ddd1
+	source = git-tpl-0.16.0.tar.gz::https://github.com/noirbizarre/git-tpl/archive/0.16.0.tar.gz
+	sha256sums = 0ba6a9f59a0bd16086b68f73b0bfc1058ce1cc14710f3c575e2439ad7cf2bf02
 
 pkgname = git-tpl
