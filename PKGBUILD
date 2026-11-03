@@ -4,7 +4,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=pittore-studio-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 # Upstream's own package release in the asset name, synced by pkg.sh. It only
 # moves when upstream repackages a version that has already shipped.
@@ -30,7 +30,7 @@ options=('!strip' '!debug')
 # Upstream installs no license text, so it comes from the matching tag.
 source=("${url}/releases/download/v${pkgver}/pittore-studio-${pkgver}-${_relver}-x86_64.pkg.tar.zst"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/Event-Horizon-desktop-environment/pittore-studio/v${pkgver}/LICENSE")
-sha256sums=('f6bf0bc14cd2397a107c98aaf33b231cfc599613823d21d6d5680f69e976ef7f' 'd98d3bc734ad2eaf3c334150c4adc04e272c46122a57678c5b8a05c0bc6b0594')
+sha256sums=('c551bdaba15dc9c2af2b060ae26bc43c48d77e27fd258a3726249a222ae07b29' 'd98d3bc734ad2eaf3c334150c4adc04e272c46122a57678c5b8a05c0bc6b0594')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
