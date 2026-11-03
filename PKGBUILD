@@ -18,7 +18,7 @@ makedepends=(
   "dotnet-build-deps-$_dotnetsdkver"
   git
 )
-# 7.x is the last version line published under the MIT license alone, later releases on nuget.org come
+# 7.x is the last version line published under the MIT licence alone, later releases on nuget.org come
 # with the Open Source Maintenance Fee EULA (OSMFEULA.txt in the repository). It's also what PowerShell
 # uses, its Test-Json doesn't build with the API of 8.x and later. 7.4.0 wasn't tagged, this is the
 # commit it was published from. JsonPointer.Net and Json.More.Net are built from this commit as well,
