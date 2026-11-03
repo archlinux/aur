@@ -13,7 +13,7 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # Snapshot shown on the AUR web page; makepkg recomputes it with pkgver() below. The publish step
 # replaces this line with the current `git describe` value.
-pkgver=1.6.0.alpha.8.r0.g3801abf
+pkgver=1.6.1.r1.g8dd3796
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
