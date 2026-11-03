@@ -4,12 +4,12 @@ pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=r13031.4842ee9e6
-pkgrel=3
+pkgrel=4
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://opentubex.org"
 license=('AGPL-3.0-or-later')
-depends=('electron43')
+depends=('electron44')
 optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; configurable later in Settings'
             'yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings')
 provides=("${pkgname%-git}")
@@ -20,7 +20,7 @@ source=("git+$_ghurl"
         opentubex.sh)
 sha256sums=('SKIP'
             '03448152a98649991bc6a1f1c74fa20fb43d729f5aa7d2a17d0b2074b22a08f2'
-            'aa19fec357ea16529f83e81f5097a46d61b1a8b0964f56961a794704d3208a80')
+            '6436422cf1dd8bd32bb2af550669aff232fc836e165ac995944b291c6c92d7a9')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -33,7 +33,7 @@ prepare() {
   sed -i 's/NIGHTLY_VERSION_PATTERN.test(version) && commit.length > 0/commit.length > 0/' \
     "$srcdir/$_pkgname/src/renderer/helpers/versionDisplay.js"
 
-  sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron43'," \
+  sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron44'," \
     "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
   sed -i "/Platform\\.LINUX\\.createTarget/s/\\[[^]]*\\]/['dir']/" \
     "$srcdir/$_pkgname/_scripts/build.mjs"
