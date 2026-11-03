@@ -1,7 +1,7 @@
 pkgbase = rclone-beta-bin
 	pkgdesc = Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. (Beta version)
 	pkgver = 1.76.0_beta.10701.9751d168b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beta.rclone.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = rclone-beta-bin
 	conflicts = rclone-git
 	conflicts = rclone-bin
 	options = !debug
+	source = rclone-1.76.0_beta.10701.9751d168b-COPYING::https://raw.githubusercontent.com/rclone/rclone/9751d168b/COPYING
+	b2sums = aa3374959b1ee491c635f4b2414b4848405d8ad931be6344c3effeba9c1557db0a7fe09f00c9a1c51281249994e0712f811e1c98dc9d13c45a541be9bcac804c
 	source_i686 = rclone-v1.76.0-beta.10701.9751d168b-linux-386.zip::https://beta.rclone.org/v1.76.0-beta.10701.9751d168b/rclone-v1.76.0-beta.10701.9751d168b-linux-386.zip
 	b2sums_i686 = 33efbe5d972cc7f52c23e1c53f95d8005213cbc7a8545812df67aac74c30efb6688773a3e36d6448f44b7fed0f1b0c37d6494a0b90a6123baf73498d848e1000
 	source_x86_64 = rclone-v1.76.0-beta.10701.9751d168b-linux-amd64.zip::https://beta.rclone.org/v1.76.0-beta.10701.9751d168b/rclone-v1.76.0-beta.10701.9751d168b-linux-amd64.zip

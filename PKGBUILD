@@ -4,9 +4,12 @@
 
 pkgname=rclone-beta-bin
 _srcname=rclone
-pkgrel=1
+pkgrel=2
 pkgver=1.76.0_beta.10701.9751d168b
 _upver=${pkgver//_/-}
+# The version string ends in the commit it was built from; the beta zips
+# carry no licence file, so it comes from that exact commit.
+_commit=${pkgver##*.}
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. (Beta version)"
 provides=('rclone')
 conflicts=('rclone' 'rclone-git' 'rclone-bin')
@@ -20,12 +23,14 @@ _arch='linux-386'
 [ "$CARCH" = 'armv6h' ] && _arch='linux-arm'
 [ "$CARCH" = 'armv7h' ] && _arch='linux-arm-v7'
 [ "$CARCH" = 'aarch64' ] && _arch='linux-arm64'
+source=("rclone-${pkgver}-COPYING::https://raw.githubusercontent.com/rclone/rclone/${_commit}/COPYING")
 source_i686=("rclone-v${_upver}-linux-386.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-386.zip")
 source_x86_64=("rclone-v${_upver}-linux-amd64.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-amd64.zip")
 source_armv6h=("rclone-v${_upver}-linux-arm.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm.zip")
 source_armv7h=("rclone-v${_upver}-linux-arm-v7.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm-v7.zip")
 source_aarch64=("rclone-v${_upver}-linux-arm64.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm64.zip")
 
+b2sums=('aa3374959b1ee491c635f4b2414b4848405d8ad931be6344c3effeba9c1557db0a7fe09f00c9a1c51281249994e0712f811e1c98dc9d13c45a541be9bcac804c')
 b2sums_i686=('33efbe5d972cc7f52c23e1c53f95d8005213cbc7a8545812df67aac74c30efb6688773a3e36d6448f44b7fed0f1b0c37d6494a0b90a6123baf73498d848e1000')
 b2sums_x86_64=('148e191dfbbfefe79d4aba712cdc5255f35ebd85335ce161842fdcf06a8033bb65aa47f3418045dbfb89d5ae20ae3529667b6d7526fa7fad691d4b10a100584e')
 b2sums_armv6h=('d7c50841ada5bd50d6f877b01d274bee7e09d07e94e3886cddf1070aa99259f8619bfa176eafe096875db60b03612f3142b1f9eb9f9e10c5372a3715f62054dc')
@@ -51,7 +56,8 @@ package() {
 
     install -Dm755 rclone "$pkgdir/usr/bin/rclone"
 
-    # install -Dm644 $srcdir/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "${srcdir}/rclone-${pkgver}-COPYING" \
+        "$pkgdir/usr/share/licenses/$pkgname/COPYING"
     install -Dm644 rclone.1 "$pkgdir/usr/share/man/man1/rclone.1"
     install -d "$pkgdir/usr/share/doc/$pkgname"
     install -t "$pkgdir/usr/share/doc/$pkgname" -m644 README.html README.txt
