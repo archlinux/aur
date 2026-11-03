@@ -1,6 +1,6 @@
 pkgbase = bakajiten-git
 	pkgdesc = Japanese dictionary with handwriting recognition
-	pkgver = 0.1.0.r6.g8f52fbe
+	pkgver = 0.2.0.r1.ge76ef8b
 	pkgrel = 1
 	url = https://github.com/bakatrouble/bakajiten
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = bakajiten-git
 	provides = bakajiten
 	conflicts = bakajiten
 	source = git+https://github.com/bakatrouble/bakajiten.git
+	source = git+https://github.com/bakatrouble/bakajiten-qt.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = bakajiten-git
