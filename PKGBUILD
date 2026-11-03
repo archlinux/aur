@@ -4,7 +4,7 @@ pkgname=relic-kanagawa-gtk-theme
 _repo=Kanagawa-GKT-Theme
 _commit=55ca4ba249eba21f861b9866b71ab41bb8930318
 _date=2025.10.23
-pkgver=2025.10.23.r9.95dc59b
+pkgver=2025.10.23.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
