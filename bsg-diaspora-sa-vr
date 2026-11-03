@@ -1,0 +1,29 @@
+#!/bin/sh
+# Battlestar Galactica: Diaspora on a modern FreeSpace Open engine.
+#   bsg-diaspora-sa-vr            flat screen
+#   bsg-diaspora-sa-vr --vr       VR through the active OpenXR runtime (WiVRn, Monado, SteamVR)
+# Extra engine options can follow. Per-user settings: ~/.config/bsg-diaspora-sa-vr/vr.env (VAR=value lines, see
+# https://github.com/winiciuscota/diaspora-vr-port#vr-settings). Pilots, settings and logs live in
+# ~/.local/share/HardLightProductions/FreeSpaceOpen.
+ROOT=/opt/bsg-diaspora-sa-vr
+CONF="${XDG_CONFIG_HOME:-$HOME/.config}/bsg-diaspora-sa-vr/vr.env"
+[ -f "$CONF" ] && { set -a; . "$CONF"; set +a; }
+cd "$ROOT/game" || exit 1
+if [ "$1" = "--vr" ]; then
+  shift
+  # VR needs an active OpenXR runtime (WiVRn, Monado or SteamVR): say so instead of starting a flat window
+  if [ -z "$XR_RUNTIME_JSON" ] && [ ! -e "${XDG_CONFIG_HOME:-$HOME/.config}/openxr/1/active_runtime.json" ] \
+     && [ ! -e /etc/xdg/openxr/1/active_runtime.json ]; then
+    msg="No OpenXR runtime is active. Start WiVRn, Monado or SteamVR (and set it as the active OpenXR runtime), then run again."
+    echo "bsg-diaspora-sa-vr: $msg" >&2
+    command -v notify-send >/dev/null && notify-send -a "Diaspora VR" "Diaspora VR" "$msg"
+    exit 1
+  fi
+  exec "$ROOT/engine/fs2_open" -mod diaspora_fixes -vr -vulkan -res "${DIASPORA_VR_RES:-1600x1800}" -no_unfocused_pause "$@"
+fi
+# flat screen: a window (DIASPORA_RES=WxH, default 1600x900; DIASPORA_FULLSCREEN=1 for borderless fullscreen).
+# OpenGL works everywhere; DIASPORA_RENDERER=vulkan switches.
+[ "${DIASPORA_RENDERER:-opengl}" = vulkan ] && set -- -vulkan "$@"
+if [ "${DIASPORA_FULLSCREEN:-0}" = 1 ]; then set -- -fullscreen_window "$@"; else set -- -window "$@"; fi
+export SDL_VIDEO_X11_FORCE_EGL=${SDL_VIDEO_X11_FORCE_EGL:-1}
+exec "$ROOT/engine/fs2_open" -mod diaspora_fixes -res "${DIASPORA_RES:-1600x900}" "$@"

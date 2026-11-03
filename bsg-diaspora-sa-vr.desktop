@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Battlestar Galactica: Diaspora
+Comment=Space combat in the Battlestar Galactica universe (modern FreeSpace Open engine)
+Exec=bsg-diaspora-sa-vr
+Icon=bsg-diaspora-sa-vr
+Type=Application
+Categories=Game;ActionGame;

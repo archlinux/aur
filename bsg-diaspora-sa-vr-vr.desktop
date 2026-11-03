@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Battlestar Galactica: Diaspora (VR)
+Comment=Diaspora in VR through the active OpenXR runtime (WiVRn, Monado, SteamVR)
+Exec=bsg-diaspora-sa-vr --vr
+Icon=bsg-diaspora-sa-vr
+Type=Application
+Categories=Game;ActionGame;
