@@ -5,8 +5,8 @@
 
 _appname=ledger-live-desktop
 pkgname=ledger-live
-_electron='electron43'
-pkgver=4.24.1
+_electron='electron45'
+pkgver=4.26.0
 pkgrel=1
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('ledger-udev' "${_electron}")
 makedepends=('node-gyp' 'python' 'pnpm' 'nvm' 'desktop-file-utils')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_appname}.sh")
-sha512sums=('e4d2a5959fb63bb975a231cc7734de45eed5a5d94afd7c52baab9498d70e636a87945cce7ba7d6ce9be42dcc067ce4cf980f8a8484a06aabeccc9c9f32989e0a'
+sha512sums=('3c941ee2166439e2a1b2c37c56daf460d99e456f379cfcc92acbd4b870f67bd7ea884f76a804943205776d8e8d6974fb52c59127039fa4b99ce0faa3e878b762'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
@@ -70,7 +70,7 @@ package() {
 
   install -Dm 644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_appname}.png"
   for i in 128 256 512 1024; do
-    install -Dm 644 "build/icons/icon@${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png"
+    install -Dm 644 "build/icons/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png"
   done
 
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
