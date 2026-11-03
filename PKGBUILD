@@ -3,8 +3,8 @@
 
 _plug=vszip
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=23.1.0
-pkgrel=2
+pkgver=24.0.0
+pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug}"
 arch=('x86_64')
 url='https://github.com/dnjulek/vapoursynth-zip'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('vapoursynth')
 makedepends=('zig')
 source=("https://github.com/dnjulek/vapoursynth-zip/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9b91a89d1ca75e6e5ee993880148b5a38c88bcec237b9691476aa0fd28aac111')
+sha256sums=('7054dde045c437b4f621397688177fca8fe542b2ada99767b337280a4ec8275a')
 
 build() {
 	cd "vapoursynth-zip-${pkgver}"
