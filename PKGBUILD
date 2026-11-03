@@ -154,7 +154,7 @@ prepare() {
   patch -Np1 -i "$srcdir/sourcepawn-source-date-epoch.patch"
   # spshell and the verifier, which include the VM's environment.h, with the VM's SP_HAS_JIT, so
   # that its Environment class is the same in them as in the VM library they link (GCC's LTO
-  # reports the ODR violation)
+  # reports the ODR violation). Upstream fixed it for 1.13 (alliedmodders/sourcepawn@bfdd959).
   patch -Np1 -i "$srcdir/sourcepawn-shell-jit-define.patch"
   # The replacement operator delete of extensions and logic.so declared noexcept, like the
   # standard's (implicitly so already; GCC warns about the different exception specifier)
