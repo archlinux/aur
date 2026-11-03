@@ -1,6 +1,6 @@
 pkgname=feather-wallet-bin
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="A free and open-source Monero desktop wallet."
 arch=('x86_64')
 url="https://featherwallet.org"
@@ -9,8 +9,8 @@ depends=()
 provides=('feather-wallet')
 conflicts=('featherwallet-bin' 'feather-wallet')
 source=("feather-${pkgver}-linux.zip::https://github.com/feather-wallet/feather/releases/download/${pkgver}/feather-${pkgver}-linux.zip" "feather-${pkgver}.tar.gz::https://github.com/feather-wallet/feather/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4779c57e9443f7755add3c2414447d1593ebe06998e39a9f765deab5bd64c466'
-            'ddc3ec08b7aac8ed2bbd6dce7a5541a04b7b873e5cc25a307c1f215c7a72356c')
+sha256sums=('f1d40d619664d9e6318c086b9015ee72bc69741ec86148ce2ea2ef75ef47feed'
+            'd9af11efeafa7099f5191051a02eadb9fea676f80e5c786f06d5eb291f38e343')
 noextract=("feather-${pkgver}-linux.zip")
 
 package() {
