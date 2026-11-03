@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.17.6
+pkgver=0.17.7
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ install=whoisthat.install
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v${pkgver}.tar.gz")
 # The "Publish to AUR" workflow pins the real released-tag digest.
-sha256sums=('0120b71517acb54ff71f1f6a8157ac983388413b2ad70dfa9bdef1c1ba54b0d6')
+sha256sums=('ca79a72cebadc757a1d62347223bf1afbb52e22de8e9e731f75370e61058bf1f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
