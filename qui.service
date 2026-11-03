@@ -9,6 +9,8 @@ Type=simple
 User=qui
 Group=qui
 Environment=HOME=/var/lib/qui
+Environment=QUI__CHECK_FOR_UPDATES=false
+Environment=QUI__DISABLE_SELF_UPDATE=true
 WorkingDirectory=/var/lib/qui
 ExecStart=/usr/bin/qui serve
 Restart=on-failure

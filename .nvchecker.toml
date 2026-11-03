@@ -1,0 +1,5 @@
+[qui]
+source = "github"
+github = "autobrr/qui"
+prefix = "v"
+use_latest_release = true
