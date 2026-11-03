@@ -12,6 +12,9 @@ url="https://maxmind.github.io/libmaxminddb/"
 license=(Apache-2.0)
 # libmaxminddb: the headers
 depends=(lib32-gcc-libs lib32-glibc libmaxminddb)
+# The Perl modules of the tests that run the tools and compile against the library, which skip
+# without them
+checkdepends=(perl-ipc-run perl-ipc-run3)
 provides=(libmaxminddb.so)
 source=("https://github.com/maxmind/libmaxminddb/releases/download/$pkgver/$_name-$pkgver.tar.gz")
 sha512sums=('d6e5f0e7fff896ac63525bcf01b06944388c6756889ac533dfaf416fd2e494953f31ede1a2352bdcf5018e2544b65eb3328a22f9233c50e01e0809a5bc6486cc')
@@ -27,6 +30,10 @@ build() {
 
 check() {
   cd "$_name-$pkgver" || exit
+  # The 32-bit compilers for the tests that compile programs against the library: without -m32
+  # they link 64-bit programs. compile_c++_t.pl runs $CXX as one word, so its -m32 goes into
+  # CXXFLAGS, decoder_limits_t.pl splits $CC.
+  export CC="gcc -m32" CXX=g++ CXXFLAGS="-m32 $CXXFLAGS"
   make check
 }
 
