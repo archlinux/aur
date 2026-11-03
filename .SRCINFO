@@ -1,0 +1,25 @@
+pkgbase = deepseek-harness-cli-git
+	pkgdesc = DeepSeek Harness CLI (dsh) and agent harness (git, builds on Linux without the macOS-only CUA provider)
+	pkgver = 0.2.2.alpha.3.r25588.g8bd0733
+	pkgrel = 1
+	url = https://github.com/deepseek-ai/deepseek-harness
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = pnpm
+	provides = deepseek-harness
+	conflicts = deepseek-harness
+	conflicts = deepseek-harness-bin
+	conflicts = deepseek-harness-git
+	options = !strip
+	source = git+https://github.com/deepseek-ai/deepseek-harness.git
+	source = aur-package.mjs
+	source = check-runtime.mjs
+	sha256sums = SKIP
+	sha256sums = dbeef3bba45b2ae022452db4245b7bcfd543fd63acd45b4b6666566bb232e1bc
+	sha256sums = a684df2d80ceecb8ae8342e2378d47a637f6a791751cd50adde650d4e461bea7
+
+pkgname = deepseek-harness-cli-git

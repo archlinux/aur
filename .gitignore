@@ -1,0 +1,5 @@
+/deepseek-harness/
+/src/
+/pkg/
+*.pkg.tar.*
+*.log

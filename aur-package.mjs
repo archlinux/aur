@@ -1,0 +1,105 @@
+/*
+ * Downstream runtime assembler for the Arch package.
+ *
+ * Upstream DSH owns its release artifacts and the definition of a runnable
+ * runtime profile. This adapter currently reconstructs that runtime from packed
+ * npm artifacts because upstream does not expose an authoritative
+ * runtime-assembly interface for downstream packagers.
+ *
+ * The manifest closure below is therefore a compatibility fallback, not the
+ * canonical definition of DSH runtime composition; configured plugins and
+ * other composition requirements may exist outside ordinary dependency
+ * closure.
+ *
+ * If upstream exposes authoritative runtime assembly, prefer consuming it and
+ * delete or shrink this logic. Arch metadata, filesystem layout, fakeroot
+ * handling, and validation of the final Arch artifact remain downstream.
+ *
+ * Registry optional dependencies are left to npm so OS/CPU selectors choose
+ * the appropriate native payload.
+ */
+
+import { execFileSync } from 'node:child_process'
+import { mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { relative, resolve } from 'node:path'
+
+const [srcdir] = process.argv.slice(2)
+const src = resolve(srcdir)
+const repo = resolve(src, 'deepseek-harness')
+const manifestOf = tarball => JSON.parse(
+  execFileSync('bsdtar', ['-xOf', tarball, 'package/package.json'], { encoding: 'utf8' }),
+)
+
+// Collect every workspace tarball packed by scripts/release/pack.ts.
+const packages = new Map()
+for (const dir of ['dist/aur-vendor', 'dist/aur-dsh']) {
+  for (const file of readdirSync(resolve(repo, dir)).filter(file => file.endsWith('.tgz'))) {
+    const full = resolve(repo, dir, file)
+    const manifest = manifestOf(full)
+    packages.set(manifest.name, { file: full, manifest })
+  }
+}
+
+// Downstream fallback for the absence of an upstream-owned runtime assembler;
+// dependency closure must not be treated as a complete model of DSH runtime
+// composition. Include packed optional dependencies here; leave registry
+// optionals to npm so OS/CPU selectors choose the native payload.
+//
+// Packed optionals end up as hard file: dependencies of npm-root, where npm
+// rejects an OS/CPU mismatch with EBADPLATFORM instead of skipping it (e.g.
+// @deepseek-ai/dsh-experimental-cua-macos). Apply npm's os/cpu selectors to
+// packed optionals here; required dependencies still fail loudly.
+const matchesSelector = (list, current) => {
+  if (!Array.isArray(list) || list.length === 0) return true
+  if (list.includes(`!${current}`)) return false
+  const allowed = list.filter(value => !value.startsWith('!'))
+  return allowed.length === 0 || allowed.includes(current)
+}
+const supportedHere = manifest =>
+  matchesSelector(manifest.os, process.platform) && matchesSelector(manifest.cpu, process.arch)
+
+const seen = new Set()
+function visit(name, optional = false) {
+  if (seen.has(name)) return
+  const entry = packages.get(name)
+  if (entry === undefined) return
+  if (optional && !supportedHere(entry.manifest)) return
+  seen.add(name)
+  for (const section of ['dependencies', 'optionalDependencies', 'peerDependencies']) {
+    for (const dependency of Object.keys(entry.manifest[section] ?? {})) {
+      visit(dependency, section === 'optionalDependencies')
+    }
+  }
+}
+visit('@deepseek-ai/dsh')
+const tarballs = [...seen].sort().map(name => packages.get(name).file)
+writeFileSync(resolve(src, 'runtime-tarballs.txt'), `${tarballs.join('\n')}\n`)
+
+// Re-materialize the closure as a flat, packable node_modules via npm.
+const npmRoot = resolve(src, 'npm-root')
+rmSync(npmRoot, { recursive: true, force: true })
+mkdirSync(npmRoot, { recursive: true })
+const dependencies = {}
+for (const tarball of tarballs) {
+  const name = manifestOf(tarball).name
+  dependencies[name] = `file:${relative(npmRoot, tarball).replaceAll('\\', '/')}`
+}
+const subprocessLocal = dependencies['@deepseek-ai/dsh-subprocess-local']
+if (subprocessLocal === undefined) throw new Error('runtime closure is missing @deepseek-ai/dsh-subprocess-local')
+writeFileSync(resolve(npmRoot, 'package.json'), `${JSON.stringify({
+  name: 'deepseek-harness-aur-build',
+  version: '0.0.0',
+  private: true,
+  dependencies,
+  allowScripts: {
+    // npm canonicalizes a local file tarball to its absolute path before
+    // matching allowScripts, so authorize the resolved identity rather than
+    // the file: spelling stored in the generated manifest.
+    [resolve(npmRoot, subprocessLocal.slice('file:'.length))]: true,
+    koffi: true,
+    'node-pty': true,
+    '@google/genai': false,
+    protobufjs: false,
+    'node-addon-require-builtin': false,
+  },
+}, null, 2)}\n`)
