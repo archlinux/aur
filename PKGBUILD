@@ -3,7 +3,7 @@
 pkgauthor="kunchenguid"
 pkgname="gnhf"
 pkgdesc="Before I go to bed, I tell my agents: good night, have fun"
-pkgver=0.1.51
+pkgver=0.1.52
 pkgrel=1
 
 _npmname=${pkgname}
@@ -23,7 +23,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('96c95091316b40e6a2eff15ae7b11e5ac6fe1e8c45fa310393482317906279d8fb8b4d25a3547eadfc48f48fcac4f915157fa2991e29a68609963c2fb3ab6297')
+b2sums=('65b90f001256c57296fc70d0b0936f768daff91420fe136c6be1541bd95eef3139684fb6054cb6c7c969322e612daed4faa05f9fd8a7d79e27afb0382b8e07fa')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
