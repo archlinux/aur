@@ -4,7 +4,7 @@ pkgname=relic-tokyonight-gtk-theme
 _repo=Tokyonight-GTK-Theme
 _commit=6c340e058e84c1975a038a8e5d1e384477225dc0
 _date=2025.10.23
-pkgver=2025.10.23.r9.95dc59b
+pkgver=2025.10.23.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
