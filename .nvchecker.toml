@@ -2,5 +2,6 @@
 source = "jq"
 url = "https://muon.build/releases/"
 filter = "keys[]"
+include_regex = 'v\d+\.\d+\.\d+'
 from_pattern = 'v([\d.]+)'
 to_pattern = '\1'
