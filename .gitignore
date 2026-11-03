@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.tar.gz
+/GeneralUser-GS.sf2
+/GeneralUser-GS-LICENSE.txt
