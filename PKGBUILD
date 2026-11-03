@@ -1,7 +1,7 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 
 pkgname=trae-ide
-pkgver=2.3.93439
+pkgver=2.3.99397
 pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance"
 arch=('x86_64' 'aarch64')
@@ -16,12 +16,12 @@ optdepends=('libappindicator-gtk3: System tray support'
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=("trae.sh" "trae.desktop")
-source_x86_64=("Trae-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.93439/linux/TRAE-linux-x64.tar.gz")
-source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.93439/linux/TRAE-linux-arm64.tar.gz")
+source_x86_64=("Trae-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.99397/linux/TRAE-linux-x64.tar.gz")
+source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.99397/linux/TRAE-linux-arm64.tar.gz")
 b2sums=('2331b0d37fff8478ea37cbf9e5c2e70a59631aae6efb44741fc6c1a8dce65557098e9dffa8c30148ef27432802bec3d1eda279021421e5d3f979e80900662726'
             '656c5d6bea6ef15185e0d8ee0181276f6de3bfae8e66a2c65772a5f1354727952dd020dca057246139a2bab8f4805057fa2db367a6ba0a1b90d9ffd7fcab8412')
-b2sums_x86_64=('bd22a253b100b0f062fe7bb96efd6afead437e1f78d18be9146c2cb0d2d87ab53b9dc689c7855410ac2ea2f9252d415d415e906614473a5895d713e6b230918b')
-b2sums_aarch64=('67e549814e5d9ecc5429eef63deead3ad8264b94debd635e5b3e3ed14c3d6c3a723117ba0eb72d5525aa1302369542d2bd1fd437685f2399ecedb6fd0ac5a20e')
+b2sums_x86_64=('06e8c24d6234aa5b964bf2481f94a356fd6e47323b3bacfbbf8f9e548e41963aaa48d8616cae3312fc63f3f65fe57803b09dc2b0dd886c2cc3c060f378d70364')
+b2sums_aarch64=('a280c851f0de3340444529c3c31d6c7c7e9b4b850bd8d3671b1d6a7d3038ce6eaf8a6cf28cf28ca785835753ebf906448e1d3022e2965a97bfef902c4ba17bbe')
 
 package() {
     install -d "${pkgdir}/opt/trae"
