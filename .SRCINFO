@@ -1,0 +1,15 @@
+pkgbase = blockcodec-bin
+	pkgdesc = Lossless audio codec with a SPARK-proved block decoder, per-block CRCs and fast seeking
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jbsco/codec-study
+	arch = x86_64
+	license = MIT
+	license = CC-BY-4.0
+	depends = glibc
+	provides = blockcodec
+	conflicts = blockcodec
+	source = blockcodec-0.1.0.tar.gz::https://github.com/Jbsco/codec-study/releases/download/v0.1.0/blockcodec-v0.1.0-linux-x86_64.tar.gz
+	sha256sums = aaffc189533d2862b0b7def49d31b3c7669b728b690b82fa37e8b110d6018e8f
+
+pkgname = blockcodec-bin
