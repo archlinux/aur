@@ -2,14 +2,14 @@
 
 pkgname=pixez-git
 _pkgname=pixez
-pkgver=0.9.109.r40.gb593440
+pkgver=0.9.113.r0.g29f1894
 pkgrel=1
 pkgdesc="Pixiv third-party client written in Flutter"
 arch=('x86_64')
 url="https://github.com/Notsfsssf/pixez-flutter"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'webkit2gtk-4.1')
-makedepends=('git' 'fvm' 'cargo' 'clang' 'cmake' 'ninja' 'patchelf')
+makedepends=('git' 'mise' 'clang' 'cmake' 'ninja' 'patchelf')
 options=('!lto')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -24,17 +24,16 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    find plugins -name ".fvmrc" -delete
-    fvm install
-    fvm flutter --disable-analytics
-    fvm flutter --no-version-check pub get
-    (cd plugins/rhttp/rhttp && fvm dart run build_runner build)
-    fvm dart run build_runner build
+    mise install flutter
+    mise exec -- flutter --disable-analytics
+    mise exec -- flutter --no-version-check pub get
+    (cd plugins/rhttp/rhttp && mise exec -- dart run build_runner build)
+    mise exec -- dart run build_runner build
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    fvm flutter build linux --release --no-pub
+    mise exec -- flutter build linux --release --no-pub
 }
 
 package() {
