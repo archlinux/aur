@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r161.85655b7
+pkgver=r167.6a1de5a
 pkgrel=1
 pkgdesc="A bare KWin Wayland session to run any shell on (Dux, digit, Quickshell configs), with Hyprland-style workspaces"
 # Not 'any': the KWin plugins (workspace sharing, and the protocols shells
