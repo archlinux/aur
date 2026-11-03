@@ -2,13 +2,15 @@
 
 pkgname=python-apache-tvm-ffi
 _pkgname=tvm-ffi
-pkgver=0.1.15.post0
+pkgver=0.1.15.post2
 _srcver=${pkgver/.post/-post}
 pkgrel=1
 pkgdesc="TVM Foreign Function Interface - core bindings for Apache TVM"
 arch=('x86_64')
 url="https://github.com/apache/tvm-ffi"
 license=('Apache-2.0')
+# Preserve the native wheel's installed RECORD hashes.
+options=('!strip')
 depends=(
     'python'
     'python-typing_extensions'
@@ -48,7 +50,7 @@ source=(
     'use-system-gtest.patch'
     'cxx20-json-test-literals.patch'
 )
-sha256sums=('c517a993bc858bb214dd9d5e4a6d207dc7894f93ace84e79ec7f4ebb23283d9d'
+sha256sums=('139e04a26310423a8d1c3d2b6546620d4f0c208fa6035f26059dc7eb30f70fb3'
             'SKIP'
             'SKIP'
             '382afb7a81168c122b4ae869d99a139d93919aa020dfb74ebc56f11c1bba1059'
