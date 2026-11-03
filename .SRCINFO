@@ -1,0 +1,20 @@
+pkgbase = glyph-ocr-bin
+	pkgdesc = Blazing-fast, minimal Wayland screen OCR & text sniper (precompiled binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sid-lakhani/glyph
+	arch = x86_64
+	license = MIT
+	depends = slurp
+	depends = grim
+	depends = wl-clipboard
+	optdepends = tesseract: Full OCR text recognition
+	optdepends = tesseract-data-eng: English OCR language training dataset
+	provides = glyph
+	provides = glyph-ocr
+	conflicts = glyph
+	conflicts = glyph-ocr
+	source = glyph-ocr-bin-0.1.0.tar.gz::https://github.com/sid-lakhani/glyph/releases/download/v0.1.0/glyph-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = glyph-ocr-bin
