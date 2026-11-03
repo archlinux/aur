@@ -2,12 +2,14 @@
 pkgname=lucent
 _reponame=Lucent
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The lightest notification daemon for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/CPT-Dawn/Lucent"
 license=('MIT')
 depends=('cairo' 'pango' 'glib2' 'dbus' 'libgcc' 'glibc')
+optdepends=('wireplumber: lucent osd volume and mic'
+            'brightnessctl: lucent osd brightness')
 makedepends=('cargo')
 provides=("lucent")
 source=("https://github.com/CPT-Dawn/Lucent/archive/refs/tags/v2.1.0.tar.gz")
