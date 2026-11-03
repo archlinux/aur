@@ -20,4 +20,4 @@ package() {
   install -Dm755 "target/release/taproot" "$pkgdir/usr/bin/taproot"
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('40a7897a606d718eb32d5a3453af1254a8b0c5790d851e97e88c8dbe686ae153')

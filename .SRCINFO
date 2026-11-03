@@ -7,6 +7,6 @@ pkgbase = omnidotdev-taproot
 	license = Apache-2.0
 	makedepends = cargo
 	source = https://github.com/omnidotdev/taproot/archive/v0.2.0.tar.gz
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 40a7897a606d718eb32d5a3453af1254a8b0c5790d851e97e88c8dbe686ae153
 
 pkgname = omnidotdev-taproot
