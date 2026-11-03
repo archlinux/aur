@@ -1,0 +1,22 @@
+post_install() {
+  echo ""
+  echo "**************"
+  echo "* ATTENTION! *"
+  echo "**************"
+  echo ""
+  echo "  -> There are two programs bundled in this package:"
+  echo "      * \"rusty-coco\", which runs the emulator."
+  echo "      * \"rusty-coco-demo\", which presents a demo."
+  echo ""
+  echo "     Please issue the respective command in a terminal"
+  echo "     to run either."
+  echo ""
+  echo "  -> \"rusty-coco\" requires the following ROM files:"
+  echo "      * /usr/share/rusty-coco/BASIC.ROM"
+  echo "      * /usr/share/rusty-coco/EXTBASIC.ROM"
+  echo ""
+  echo "     Please provide those files and make sure they are"
+  echo "     readable by the user launching \"rusty-coco\"."
+  echo ""
+}
+

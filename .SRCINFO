@@ -1,0 +1,20 @@
+pkgbase = rusty-coco-git
+	pkgdesc = TRS-80 Color Computer emulator written in Rust
+	pkgver = r8.9c07c1f
+	pkgrel = 1
+	url = https://github.com/gorsat/coco
+	install = rusty-coco.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = sh
+	depends = libgcc
+	depends = glibc
+	depends = alsa-lib
+	source = rusty-coco-git::git+https://github.com/gorsat/coco.git#branch=main
+	source = rusty-coco.template.sh
+	sha256sums = SKIP
+	sha256sums = 341e968e844d77d1f7d85f5926397fc52cdfcf65649ef07721194dfa9a7b4d3d
+
+pkgname = rusty-coco-git
