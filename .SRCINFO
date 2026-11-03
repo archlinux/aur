@@ -1,0 +1,21 @@
+pkgbase = goatcounter-git
+	pkgdesc = Open source web analytics platform
+	pkgver = 2.7.0.r127.gc031008
+	pkgrel = 1
+	url = https://github.com/arp242/goatcounter
+	arch = x86_64
+	license = 0BSD
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = goatcounter
+	conflicts = goatcounter
+	backup = etc/goatcounter/config.env
+	source = git+https://github.com/arp242/goatcounter.git
+	source = config.env
+	source = goatcounter.service
+	sha256sums = SKIP
+	sha256sums = 2a0eafad7ae06e78bc9b5260cc4644a959eec6b59495317c2a3b73e1feb61bd5
+	sha256sums = 2059df91b1f1e57e92e2e07ca374f100ce09f8319388065167129dace7c44c1c
+
+pkgname = goatcounter-git

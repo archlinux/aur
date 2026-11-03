@@ -1,0 +1,18 @@
+[Unit]
+Description=goatcounter web analytics server
+After=network-online.target
+Requires=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+EnvironmentFile=/etc/goatcounter/config.env
+ExecStart=goatcounter serve
+DynamicUser=true
+StateDirectory=goatcounter
+# Set WorkingDirectory to StateDirectory
+WorkingDirectory=%S/goatcounter
+PrivateTmp=true
+Restart=on-failure
+RestartSec=5s
