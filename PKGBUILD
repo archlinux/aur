@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="SMJansson, a JSON extension of SourceMod (in the addons folder of sourcemod)"
 arch=(x86_64)
 url="https://github.com/davenonymous/SMJansson"
-# The extension's code says GPL 3.0 with SourceMod's exceptions; the repository has no license file
+# The extension's code says GPL 3.0 with SourceMod's exceptions; the repository has no licence file
 license=(GPL-3.0-only LicenseRef-SourceMod-exception)
 depends=(lib32-gcc-libs lib32-glibc lib32-jansson sourcemod)
 # The sources of the installed SourceMod, which it's built against
@@ -69,6 +69,6 @@ package() {
   install -d "$pkgdir/usr/lib/sourcemod"
   cp -r --no-preserve=ownership "$srcdir/$_name-$_commit/build/package/addons" "$pkgdir/usr/lib/sourcemod/"
 
-  # SourceMod's license and exceptions, which the extension's code refers to
+  # SourceMod's licence and exceptions, which the extension's code refers to
   install -Dm644 /usr/src/sourcemod/licenses/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
