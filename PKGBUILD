@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.xz::https://clangen.io/api/v1/Update/Channels/
         "LICENSE.md::https://raw.githubusercontent.com/ClanGenOfficial/clangen/development/LICENSE.md"
         "clangen.desktop")
 sha256sums=('49cd5f5bbc2c353c0ea972a86bfcce979402e81d4f642b7937232a27c7baa7b3'
-            'b99c9caaaecff974ad46d6aa0a6f2d7fa36afe34bd357d016f16b13ebcc8ad9c'
+            '5372195da9bfb4735b33536b72b4c2a01debdd2a253add345d9dda89126f5422'
             '278435315554de27e45cb590d7ed4d628da1e880057e40b2f62599d65ff69841')
 options=('!strip')
 
