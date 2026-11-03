@@ -1,7 +1,7 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mingw-w64-raylib
-pkgver=6.0
-pkgrel=2
+pkgver=6.2
+pkgrel=1
 pkgdesc="Simple and easy to use game programming library (mingw-w64)"
 arch=(any)
 url="https://www.raylib.com"
@@ -19,12 +19,12 @@ source=(
 )
 noextract=()
 md5sums=(
-    348c40f55a39cf0503da701d2dd5d20b
-    083b8259551e0ca83687707c3fc9d118
+    c318142ba10e30ad3dea6376ec44ffa0
+    63ab44cc55c19f75dcbdd5845e90b487
 )
 sha256sums=(
-    2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b
-    416c8dce4d2f9df6c730559cdc620481a9c2e2e0be01b2b9276f8973dbb7f556
+    df7a13129b1bec9e73a6962efff170beba310ee6eab8f94cd000b7316b4db5ee
+    461f62912596474b13e86cf5aaa25a04c5b9fb15dc6732b00a1188a4145bbec2
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
