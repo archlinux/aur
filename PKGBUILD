@@ -6,7 +6,7 @@
 
 pkgname=chatterino2
 pkgver=2.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
@@ -26,7 +26,7 @@ source=("git+https://github.com/Chatterino/${pkgname}.git#tag=v${pkgver}"
         "git+https://github.com/pajlada/settings.git#tag=chatterino/2.5.5"
         "git+https://github.com/pajlada/signals.git#commit=chatterino/2.5.5"
         "git+https://github.com/pajlada/serialize.git#tag=chatterino/2.5.5"
-        "git+https://github.com/Neargye/magic_enum.git#tag=v0.9.8"
+        "git+https://github.com/Neargye/magic_enum.git#tag=v0.9.7" # v0.9.8 has breaking changes
         "git+https://github.com/mackron/miniaudio.git#tag=0.11.25"
         "git+https://github.com/ThePhD/sol2.git#tag=v3.5.0"
         "git+https://github.com/google/googletest.git#tag=v1.18.0"
@@ -42,7 +42,7 @@ sha256sums=('82634c968aa448a337dfee3f3660ba2353712732ecec2044c9103dfd17cd746c'
             '4ce5aadc3990c4fadec519d4ce9dc8ccf4c73e5dbbb9b135949c0ea6fb0c9c5e'
             '2b22dbc39f5b0946da63663afbfc93f60fbcc7a54e5f3078850e12127e1bcffc'
             '87078a66e951bc7926597df20b6c85a55d14a062b7d6ce1116573274c47a0588'
-            '8dfa5b66f0ff2fed07ba4b57a63f1942e449979065530f3a48b89c36f1170432'
+            '35e3ccee2fe02c2a666680aa00982e1d6593de440b8be04a04d399dd97c3e78c'
             '5c8e8abbc2a43f20324a8ae9280f4aba6ec0235923b54c99a6d1b1d999927333'
             'fbeaa53812eb9f0e1e0612da22b1f57ab429e715fd24ccf0c3892172082becd1'
             '080653414b45e6dbe93380c3a65a2c6a6cbf376f9dbc488587c78d73d1b05b77'
