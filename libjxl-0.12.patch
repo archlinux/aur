@@ -1,0 +1,29 @@
+From 5058c9d55e13c1c5047b1129f7c1f069d10a84a1 Mon Sep 17 00:00:00 2001
+From: Bartosz Taudul <wolf@nereid.pl>
+Date: Sat, 4 Jul 2026 17:35:32 +0200
+Subject: [PATCH] Tentative fix for libjxl 0.12.0.
+
+---
+ src/image/JxlLoader.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/image/JxlLoader.hpp b/src/image/JxlLoader.hpp
+index acbf5f7..9f0abdb 100644
+--- a/src/image/JxlLoader.hpp
++++ b/src/image/JxlLoader.hpp
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include <jxl/codestream_header.h>
++#include <jxl/decode.h>
+ #include <memory>
+ #include <stdint.h>
+ #include <vector>
+@@ -12,7 +13,6 @@ class Bitmap;
+ class BitmapHdr;
+ class FileBuffer;
+ class FileWrapper;
+-typedef struct JxlDecoderStruct JxlDecoder;
+ typedef void* cmsHPROFILE;
+ typedef void* cmsHTRANSFORM;
+ 

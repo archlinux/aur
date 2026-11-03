@@ -5,10 +5,12 @@
 # project to "moderncore" and now ships TWO viewers — `vv` (terminal, with
 # the Kitty graphics / sixel protocols) and `iv` (Wayland, HDR). Carries a
 # small patch adding missing <unistd.h>/<mutex> includes so it builds on
-# current toolchains (gcc 16 no longer pulls them in transitively).
+# current toolchains (gcc 16 no longer pulls them in transitively), and one
+# adapting to libjxl 0.12's renamed JxlDecoder struct (upstream 5058c9d,
+# backported; drop both on the next tagged release).
 pkgname=moderncore
 pkgver=20260308
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal (vv) and Wayland/HDR (mcore-iv) image viewers with broad codec support"
 arch=('x86_64')   # requires AVX2 + FMA (x86-64-v3)
 url="https://github.com/wolfpld/moderncore"
@@ -16,19 +18,23 @@ license=('BSD-3-Clause')
 depends=('cairo' 'lcms2' 'libexif' 'libheif' 'libjpeg-turbo' 'libjxl' 'lz4'
          'libpng' 'libraw' 'librsvg' 'libsixel' 'libtiff' 'libwebp' 'openexr'
          'pugixml' 'zlib' 'vulkan-icd-loader' 'wayland' 'libxkbcommon')
-makedepends=('cmake' 'ninja' 'python' 'shaderc' 'vulkan-headers' 'wayland-protocols' 'catch2')
+makedepends=('cmake' 'ninja' 'python' 'shaderc' 'vulkan-headers' 'vulkan-utility-libraries'
+             'wayland-protocols' 'catch2')
 optdepends=('poppler-glib: PDF viewing')
 # Both this package and our data viewer (AUR `vv`) install /usr/bin/vv; they
 # can't be co-installed. Declared so pacman reports it cleanly.
 conflicts=('vv')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfpld/moderncore/archive/refs/tags/$pkgver.tar.gz"
-        "gcc16-missing-includes.patch")
+        "gcc16-missing-includes.patch"
+        "libjxl-0.12.patch")
 sha256sums=('625ec1bdcf060aca95d3adc66ac13c09de7c5882589b5c8b0c4eb8b873529f73'
-            'a57987f8c4fa2d5ef307f435f6ca8c9d75a26250d651bee452b80c1aa56e2d0b')
+            'a57987f8c4fa2d5ef307f435f6ca8c9d75a26250d651bee452b80c1aa56e2d0b'
+            'a90eee083ec8782ea9f1c33caade074964fb3037c7f34443bebeb695e8f275fa')
 
 prepare() {
     cd "$pkgname-$pkgver"
     patch -p1 < "$srcdir/gcc16-missing-includes.patch"
+    patch -p1 < "$srcdir/libjxl-0.12.patch"
 }
 
 build() {
