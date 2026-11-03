@@ -1,7 +1,7 @@
 pkgbase = moderncore
-	pkgdesc = Terminal (vv) and Wayland/HDR (mcore-iv) image viewers with broad codec support
+	pkgdesc = Terminal (mcore-vv) and Wayland/HDR (mcore-iv) image viewers with broad codec support
 	pkgver = 20260308
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wolfpld/moderncore
 	arch = x86_64
 	license = BSD-3-Clause
@@ -33,7 +33,6 @@ pkgbase = moderncore
 	depends = wayland
 	depends = libxkbcommon
 	optdepends = poppler-glib: PDF viewing
-	conflicts = vv
 	source = moderncore-20260308.tar.gz::https://github.com/wolfpld/moderncore/archive/refs/tags/20260308.tar.gz
 	source = gcc16-missing-includes.patch
 	source = libjxl-0.12.patch

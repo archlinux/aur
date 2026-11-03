@@ -3,15 +3,17 @@
 #
 # Rehomes the abandoned, mis-named AUR `vv` package: upstream renamed the
 # project to "moderncore" and now ships TWO viewers — `vv` (terminal, with
-# the Kitty graphics / sixel protocols) and `iv` (Wayland, HDR). Carries a
+# the Kitty graphics / sixel protocols) and `iv` (Wayland, HDR), installed
+# here as `mcore-vv` and `mcore-iv` so they don't clash with AUR `vv` or
+# OpenImageIO. Carries a
 # small patch adding missing <unistd.h>/<mutex> includes so it builds on
 # current toolchains (gcc 16 no longer pulls them in transitively), and one
 # adapting to libjxl 0.12's renamed JxlDecoder struct (upstream 5058c9d,
 # backported; drop both on the next tagged release).
 pkgname=moderncore
 pkgver=20260308
-pkgrel=2
-pkgdesc="Terminal (vv) and Wayland/HDR (mcore-iv) image viewers with broad codec support"
+pkgrel=3
+pkgdesc="Terminal (mcore-vv) and Wayland/HDR (mcore-iv) image viewers with broad codec support"
 arch=('x86_64')   # requires AVX2 + FMA (x86-64-v3)
 url="https://github.com/wolfpld/moderncore"
 license=('BSD-3-Clause')
@@ -21,9 +23,6 @@ depends=('cairo' 'lcms2' 'libexif' 'libheif' 'libjpeg-turbo' 'libjxl' 'lz4'
 makedepends=('cmake' 'ninja' 'python' 'shaderc' 'vulkan-headers' 'vulkan-utility-libraries'
              'wayland-protocols' 'catch2')
 optdepends=('poppler-glib: PDF viewing')
-# Both this package and our data viewer (AUR `vv`) install /usr/bin/vv; they
-# can't be co-installed. Declared so pacman reports it cleanly.
-conflicts=('vv')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wolfpld/moderncore/archive/refs/tags/$pkgver.tar.gz"
         "gcc16-missing-includes.patch"
         "libjxl-0.12.patch")
@@ -56,6 +55,10 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
+
+    # The AUR `vv` package (a data/genomic file viewer) owns /usr/bin/vv.
+    # Install moderncore's terminal viewer as `mcore-vv` so the two coexist.
+    mv "$pkgdir/usr/bin/vv" "$pkgdir/usr/bin/mcore-vv"
 
     # OpenImageIO (pulled in by blender / usd / OSL) already owns
     # /usr/bin/iv. Install moderncore's Wayland viewer as `mcore-iv` so the
