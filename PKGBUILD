@@ -8,24 +8,33 @@ pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
-license=('custom: BSD')
-depends=()
+license=('BSD-3-Clause')
+depends=(
+  'glibc'
+  'gnutls'
+  'libbsd'
+  # Libraries linked by filters and plugins that are always built
+  'bzip2'
+  'e2fsprogs'
+  'libgcc'
+  'libstdc++'
+  'xz'
+  'zlib'
+  'zlib-ng'
+  'zstd'
+)
 optdepends=(
-  'lua'
-  'tcl'
-  'perl'
-  'rust'
-  'go'
-  'python'
-  'ocaml'
-
-  'libnbd'
-  'libvirt'
-  'curl'
-  'libguestfs'
-  'libssh'
-
-  'libselinux'
+  'curl: for the curl plugin'
+  'libnbd: for the nbd plugin'
+  'libssh: for the ssh plugin'
+  'libvirt: for the libvirt plugin'
+  'lua: for the lua plugin'
+  'perl: for the perl plugin'
+  'python: for the python, S3 and gcs plugins'
+  'python-boto3: for the S3 plugin'
+  'tcl: for the tcl plugin'
+  'go: for writing plugins in Go'
+  'rust: for writing plugins in Rust'
 )
 checkdepends=('qemu')
 makedepends=(git)
@@ -34,7 +43,7 @@ source=(
   "test-ssh-libssh-algos.patch"
 )
 conflicts=($_pkgname)
-provides=($pkgname)
+provides=("$_pkgname")
 
 pkgver() {
   cd "${pkgname}"
@@ -64,6 +73,9 @@ build() {
   # (int -> libtorrent::file_index_t), so it is disabled until fixed upstream:
   # https://gitlab.com/nbdkit/nbdkit/-/work_items/33
   ./configure --prefix=/usr --sbindir=/usr/bin --disable-torrent
+  # libtool puts -shared before LDFLAGS, which defeats -Wl,--as-needed and
+  # overlinks every plugin/filter against libz, libgnutls and libm.
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
@@ -77,5 +89,5 @@ check() {
   cd "${srcdir}/${pkgname}"
   make check
 }
-md5sums=('SKIP'
-         '7adf5b1462a7488a0fbb2f6b26cf8801')
+sha256sums=('SKIP'
+            'd4867774c73c3fc1039b9a0e8aa42f478bf6c3a55ba16205a993ecb97cb76bef')
