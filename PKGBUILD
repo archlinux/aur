@@ -7,7 +7,7 @@ _nugetid=Microsoft.VisualStudio.Threading.Only
 _project=Microsoft.VisualStudio.Threading
 pkgver=18.12.1
 pkgrel=2
-pkgdesc="Async synchronization primitives, async collections, TPL and dataflow extensions, Microsoft.VisualStudio.Threading.Only (NuGet package)"
+pkgdesc="Async synchronisation primitives, async collections, TPL and dataflow extensions, Microsoft.VisualStudio.Threading.Only (NuGet package)"
 arch=(any)
 url='https://github.com/microsoft/vs-threading'
 license=(MIT)
@@ -28,10 +28,10 @@ source=("vs-threading-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "lcl-to-resx.py")
 sha512sums=('d8e5bf92bb94d4a01e29c104f2f0d41330e7aa3413d8de981ddd73a0c4e10a394e7ed8b406dd01b981e5266a5fea6050ea036616c210ddcd4406adae824bb0c7'
   '98c02c09b9fed2ad77d8403efa5788053abb66a9c6c2cb8dd5d15ce49daf25e3a128b9b281fa2bc79e7cfc33adfbbfff6901b63fc9b882a890c13737892e71e1'
-  '1b70bc00f549a828208d65bba339e4b30a677cc02cb5d336c9a698b01aa0589c22c1cac7256e45b325039a0df94bc9efc7d99a6039cff4f7f36f90f721d72ae1')
+  'c55166dccaf9729657d5c6d639119d4bb3bc744a8e9f73f7beb7fed6fb3045ed0bf773f2ed59097ebffcc92bac1c25a933c60d1efba7cad1a5e49e90c2f5a4b4')
 b2sums=('b2f3c835c7b97159cb5b36c90cbbcd61ae4f0d3e930beb0e93e05431676e3f7aaea7a5a0f530b79f9a249f22302520be2405b886d6be932dea1af5923c936f6e'
   'df52cdab9f311499106f30869455797a02345bf43fd01e942fbb0312228660c88122fba00188484cb03616dfa4b234a83e73f132377c94169f2a26da175ff2ee'
-  '2dd7539d81671b5d0bcf44245b41083f913492ade4ccfe7b37da972f559b048277983bf6835d535fd1924d01f73737498073682c517b12e0f38f2a38fa541355')
+  '8311ff8071a93b0fd5a8b095da0172a9817c577377007269273fe72aff8021c8fa233ad7087f40772760fff015d9827c1c13c6bf5878fba75b69f3c96b872d24')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
@@ -126,7 +126,7 @@ prepare() {
   jq 'del(.sdk)' global.json >global.json.new
   mv global.json.new global.json
   # Nerdbank.GitVersioning needs git (see _dotnet_env for the versions), and MicroBuild is Microsoft's
-  # internal signing and localization
+  # internal signing and localisation
   sed -i -E '/GlobalPackageReference Include="(Nerdbank.GitVersioning|Microsoft.VisualStudio.Internal.MicroBuild.VisualStudio)"/d' \
     Directory.Packages.props
   sed -i 's/ DependsOnTargets="GetBuildVersion"//' Directory.Build.props

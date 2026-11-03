@@ -1,4 +1,4 @@
-"""Writes .resx files from the LocStudio translations (.lcl) of Microsoft's internal localization.
+"""Writes .resx files from the LocStudio translations (.lcl) of Microsoft's internal localisation.
 
 The official builds apply loc/lcl/<language>/<assembly>.lcl to the built assemblies. This writes the
 translations next to the source .resx files instead (Strings.resx -> Strings.de.resx), so the .NET SDK
