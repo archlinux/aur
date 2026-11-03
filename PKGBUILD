@@ -4,7 +4,7 @@ pkgname=relic-rosepine-gtk-theme
 _repo=Rose-Pine-GTK-Theme
 _commit=c4fdfa62a9eb6941a36b2cd5026fc64123aaa0dd
 _date=2025.10.23
-pkgver=2025.10.23.r9.95dc59b
+pkgver=2025.10.23.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
