@@ -31,6 +31,9 @@ user_settings = {
     #Enable automatic upgrading of AMD FidelityFX Super Resolution (FSR) to FSR4.
 #   "PROTON_FSR4_UPGRADE": "1",
 
+    # Enable multi frame gen
+#   "PROTON_MLFG_UPGRADE": "1",
+
     #Enable Wayland display output. Games running with native Vulkan and OpenGL may have problems. Required for HDR support
 #   "PROTON_ENABLE_WAYLAND": "1",
 
@@ -103,6 +106,10 @@ user_settings = {
 
     # Enable Translation Layer for DLSS to FSR
 #   "PROTON_USE_OPTISCALER": "1",
+
+    # Downloads current Nvidia Streamline, upgrades older dlss implementations
+#   "PROTON_STREAMLINE_UPGRADE": "1",
+
 
     ###### DXVK flags ######
 
