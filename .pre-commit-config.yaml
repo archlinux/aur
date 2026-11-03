@@ -150,7 +150,7 @@ repos:
         require_serial: true
 
       # The formatters take care of the indentation of the languages they know, the indent size of
-      # e.g. comments or embedded XML is up to the author. License texts stay as they are.
+      # e.g. comments or embedded XML is up to the author. Licence texts stay as they are.
       - id: editorconfig-checker
         name: editorconfig-checker (editorconfig-checker)
         language: system
