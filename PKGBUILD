@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 options=('!buildflags')
 depends=('bluez-libs' 'qt6-declarative' 'libxtst' 'qt6-tools' 'qt6-speech' 'qt6-5compat'
          'qt6-multimedia' 'libnotify' 'opencv')
-makedepends=('boost' 'cpp-mini' 'cmake')
+makedepends=('boost' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jmgr/${pkgname}/releases/download/v${pkgver}/actiona-${pkgver}-source-linux.tar.gz")
 sha256sums=('20bf5bf738cae3675707cbd18fd5d1c3babb53ddf3e63c60f507947ac397c721')
 
