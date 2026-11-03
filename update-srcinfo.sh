@@ -23,9 +23,9 @@ else
   git -C "$src" rev-parse --verify --quiet "$ref" >/dev/null || { echo "本地仓库没有 ref：$ref" >&2; exit 1; }
 fi
 
-tag="$(git -C "$src" describe --tags --abbrev=0 "$ref" 2>/dev/null || echo v0.0.0)"
-count="$(git -C "$src" rev-list --count "$ref")"
-hash="$(git -C "$src" rev-parse --short "$ref")"
+tag="$(git -C "$src" describe --tags --abbrev=0 "${ref}^{commit}" 2>/dev/null || echo v0.0.0)"
+count="$(git -C "$src" rev-list --count "${ref}^{commit}")"
+hash="$(git -C "$src" rev-parse --short "${ref}^{commit}")"
 ver="${tag#v}.r${count}.g${hash}"
 
 sed -i "s/^pkgver=.*/pkgver=${ver}/" PKGBUILD

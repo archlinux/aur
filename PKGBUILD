@@ -1,6 +1,6 @@
 # Maintainer: Sheyiyuan <sheyiyuantan90@qq.com>
 pkgname=zero-beat-git
-pkgver=0.5.1.r52.gd0c45a7
+pkgver=0.6.0.r72.gfa75985
 pkgrel=1
 pkgdesc="Terminal music player for NetEase Cloud Music and Bilibili (TUI)"
 arch=('x86_64' 'aarch64')
