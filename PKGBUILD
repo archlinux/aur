@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=fungw-svn
-pkgver=r828
+pkgver=r842
 pkgrel=4
 pkgdesc="tiny, portable library written in C (C89) that manages dynamic function calls across different programming languages"
 arch=($CARCH)
@@ -10,8 +10,7 @@ license=('LGPL-2.0-or-later')
 provides=(${pkgname%-svn})
 conflicts=(${pkgname%-svn})
 depends=(
-    glibc
-    #     genht
+    # genht
 )
 makedepends=(
     subversion
@@ -23,7 +22,7 @@ optdepends=(
     python
     duktape
     mujs
-    'libmawk>=1.0.3'
+    libmawk
 )
 source=("svn://svn.repo.hu/fungw/trunk")
 sha256sums=('SKIP')
