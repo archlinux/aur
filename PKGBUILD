@@ -4,7 +4,7 @@ _geover=1.010
 _geocommit=685f38d7c9e86b0c8530204c97ddcaf6558dd17b
 _nfver=3.5.1
 pkgver="${_geover}"
-pkgrel=7
+pkgrel=8
 pkgdesc='Geologica, a humanist-geometric sans with Sharp/Cursive/Slant/Weight axes, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/geologica'
@@ -36,7 +36,7 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             'cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1'
             'be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c'
-            '64de6e9f4d9d8c52aaa01a9064b9d26886e85324e30d8b406b8d5d7440338b59'
+            '26ca6fb7ec518025486ea28a059f7e6f37d2f6a10d0f7caaea3437323bc3a664'
             '1acf0491c2a831a87e1cb09e1a8151dabc02bdf80e33807c7b52ed07be2e5028')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -206,6 +206,13 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
 #  ── Features every app can see (not just pango) ───────────────────────────
 #
 #  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
+#                 (uncommented) in the <match> blocks for Geologica / Geologica UI of
+#                 ${GEO_FONTS_CONF:-~/.config/fontconfig/fonts.conf}. Dropped with a note:
+#                 negated tags (-liga), tags the font lacks in GSUB, tags HarfBuzz
+#                 always applies (kern liga ccmp locl mark mkmk calt) and the ones
+#                 make_features.py refuses (aalt ordn dlig ...). An empty result
+#                 bakes nothing.
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
@@ -298,6 +305,51 @@ _ask_choice() {
 
 # Called once, from prepare(): ask for whatever the environment has not set,
 # but only on a terminal, then save every set option to .build_opts.
+# Prints the bakeable tags active for Geologica / Geologica UI in the user's fonts.conf
+# (union over every family this package installs that has a <match> block).
+_features_from_fontsconf() {
+  local _conf="${GEO_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+  if [[ ! -f "$_conf" ]]; then
+    echo "Error: $_conf not found (set GEO_FONTS_CONF)." >&2; return 1
+  fi
+  python - "$_conf" "$srcdir/GeologicaVariable.ttf" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from fontTools.ttLib import TTFont
+conf, fonts = sys.argv[1], sys.argv[2:]
+families = ["Geologica", "Geologica UI"]
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+gsub = set()
+for path in fonts:
+    t = TTFont(path, lazy=True)
+    if "GSUB" in t:
+        gsub |= {r.FeatureTag for r in t["GSUB"].table.FeatureList.FeatureRecord}
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() in families
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            elif tag not in gsub: why = "not a GSUB feature of the font"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+}
+
 _prompt_options() {
   if [[ -t 0 ]]; then
     echo ""
@@ -333,10 +385,12 @@ _prompt_options() {
     echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
     _ask_choice "Bake features into calt" none \
       "none:leave the fonts as upstream ships them (default)" \
+      "fonts.conf:the features active for \"Geologica\" / \"Geologica UI\" in ~/.config/fontconfig/fonts.conf" \
       "cursive:ss01 - cursive a and g, the shape the CRSV axis draws" \
       "custom:type the tag list yourself"
     case $_choice in
       none)    FEATURE_DEFAULTS="" ;;
+      fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
       cursive) FEATURE_DEFAULTS="ss01" ;;
       custom)
         echo "  Tags, comma or space separated (e.g. \"ss01\"):"
@@ -370,6 +424,11 @@ _prompt_options() {
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
+  fi
+
+  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
+    FEATURE_DEFAULTS="$(_features_from_fontsconf)" || exit 1
+    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
   fi
 
   local _k
