@@ -12,7 +12,7 @@ MSG
   # Since 2026.10.0-5, /usr/share/webapps/cryptpad/customize links to /etc/webapps/cryptpad/customize
   if (($(vercmp "$2" 2026.10.0-5) < 0)); then
     cat <<'MSG'
-CryptPad's customizations (customize/, which overrides customize.dist/) go into
+CryptPad's customisations (customize/, which overrides customize.dist/) go into
 /etc/webapps/cryptpad/customize now, with application_config.js to start from. Then flush the cache
 in CryptPad's administration panel.
 MSG

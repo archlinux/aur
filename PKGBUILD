@@ -110,7 +110,7 @@ package() {
     -e "s|^( *)http2 on;|&\\n\\n\\1root /usr/share/webapps/$pkgname/www;|" \
     docs/example.nginx.conf | install -Dm 644 /dev/stdin "${pkgdir}/etc/nginx/sites-available/$pkgname.conf"
 
-  # Customizations: CryptPad serves the files of customize/ instead of those of customize.dist/, so
+  # Customisations: CryptPad serves the files of customize/ instead of those of customize.dist/, so
   # it's a link to /etc/webapps/cryptpad/customize, not a folder in /usr. application_config.js is
   # upstream's starting point for the settings of the web app.
   install -Dm 644 customize.dist/application_config.js -t "$pkgdir/etc/webapps/$pkgname/customize"
