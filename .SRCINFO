@@ -1,6 +1,6 @@
 pkgbase = atvv
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YangtseSu/atvv-linux
 	arch = x86_64
 	arch = aarch64

@@ -13,7 +13,7 @@
 pkgbase=atvv
 pkgname=('atvv' 'atvv-gui')
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url='https://github.com/YangtseSu/atvv-linux'
 license=('GPL-3.0-or-later')
@@ -69,16 +69,12 @@ package_atvv() {
   ./target/release/atvvctl completions fish \
     >"$pkgdir/usr/share/fish/vendor_completions.d/atvvctl.fish"
 
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 README.zh-CN.md "$pkgdir/usr/share/doc/$pkgname/README.zh-CN.md"
-  install -Dm644 docs/device-support.md \
-    "$pkgdir/usr/share/doc/$pkgname/docs/device-support.md"
-  install -Dm644 docs/device-support.zh-CN.md \
-    "$pkgdir/usr/share/doc/$pkgname/docs/device-support.zh-CN.md"
-  install -Dm644 docs/configuration.md \
-    "$pkgdir/usr/share/doc/$pkgname/docs/configuration.md"
-  install -Dm644 docs/configuration.zh-CN.md \
-    "$pkgdir/usr/share/doc/$pkgname/docs/configuration.zh-CN.md"
+  # The whole docs tree, not a hand-picked list: the guides cross-reference
+  # decisions/, plans/, research/ and acceptance/ and embed the screenshots
+  # beside them, so a subset ships dangling links and a missing gui.png, and
+  # would need editing on every upstream doc rename.
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  cp -r README.md README.zh-CN.md docs "$pkgdir/usr/share/doc/$pkgname/"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD-PARTY-NOTICES.md \
@@ -99,8 +95,10 @@ package_atvv-gui() {
   install -Dm644 packaging/gui/org.atvv.Config.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.atvv.Config.svg"
 
-  install -Dm644 docs/gui.md "$pkgdir/usr/share/doc/$pkgname/gui.md"
-  install -Dm644 docs/gui.zh-CN.md "$pkgdir/usr/share/doc/$pkgname/gui.zh-CN.md"
+  # No documentation here: docs/gui.md and its screenshots ship in atvv, which
+  # this package already requires, so the links resolve for either install
+  # order. The license text is repeated because the app is a separate binary
+  # and must carry its own copy.
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD-PARTY-NOTICES.md \
     "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-NOTICES.md"
