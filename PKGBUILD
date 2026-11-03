@@ -1,8 +1,8 @@
 # Maintainer: Anuraj Jit Saikia <rajasaikia1644@gmail.com>
 pkgname=voisu
-pkgver=0.68.0
+pkgver=0.69.0
 pkgrel=1
-pkgdesc="Cloud-first Linux dictation for Wayland (daemon, CLI, and optional Overlay)"
+pkgdesc="Voice dictation for Linux desktops (daemon, CLI, and optional Overlay)"
 arch=('x86_64')
 url="https://github.com/Anuraj-Dev/voisu"
 # Voisu itself is MIT. The voisu, voisu-daemon and voisu-overlay binaries
@@ -32,9 +32,6 @@ depends=('gtk4'
          'curl'
          'xdg-desktop-portal')
 makedepends=('cargo')
-# The workspace tests shell out to python3 (process.rs, system.rs) and spawn a
-# private dbus-daemon (tests/delivery.rs, tests/daemon_cli_lifecycle.rs).
-checkdepends=('python' 'dbus')
 optdepends=('libei: direct Delivery of the Transcript into the focused window'
             'xdg-desktop-portal-kde: portal backend for KDE Plasma'
             'xdg-desktop-portal-hyprland: portal backend for Hyprland')
@@ -58,7 +55,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/archive/re
         'LICENSE.ring-once_cell-APACHE'
         'LICENSE.ring-once_cell-MIT'
         'LICENSE.ring-fiat')
-sha256sums=('500d8d292aceff0f950a3ac80c43eb984b24986f57d850c44eeb0c22311741fb'
+sha256sums=('3d73cbbdee7252c40217cf26fe476ad80df845becf43059d35145e485de854f4'
             'b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a'
             '005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d'
             'f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f'
@@ -70,7 +67,7 @@ prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     # Fetch exactly the Cargo.lock-pinned dependencies (whole graph, including
-    # the feature-gated Overlay deps) so build()/check() run fully offline.
+    # the feature-gated Overlay deps) so build() runs fully offline.
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -84,12 +81,9 @@ build() {
     cargo build --frozen --release -p voisu-app --features overlay --bin voisu-overlay
 }
 
-check() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen --release --workspace
-}
+# No check(): CI (.github/workflows/ci.yml) runs the full workspace test suite
+# before every release, so rerunning it here only made each update slower to
+# build on users' machines.
 
 package() {
     cd "$pkgname-$pkgver"
