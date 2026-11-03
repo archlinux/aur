@@ -1,0 +1,19 @@
+pkgbase = aflow
+	pkgdesc = Automatic FLOW framework for autonomous materials discovery
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://materials.duke.edu/aflow.html
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = readline
+	options = !lto
+	source = aflow-4.1.0.tar.gz::https://github.com/aflow-org/aflow/archive/refs/tags/v4.1.tar.gz
+	sha256sums = e5e9ee76f57845bb30f7fb087b05bcf65feba1c7569a162f6b397999606f7d6e
+
+pkgname = aflow
