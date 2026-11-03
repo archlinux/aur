@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=pokebonk
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Desktop client for PokéBonk, a 3D survival fan-game'
 arch=('x86_64')
@@ -48,7 +48,7 @@ source=(
   "PokeBonk-${pkgver}-linux-x86_64.AppImage::https://github.com/CharcherGit/pokebonk-app/releases/download/v${pkgver}/PokeBonk-${pkgver}-linux-x86_64.AppImage"
 )
 sha256sums=(
-  '65ff8239b09738906ded84a6396f65e9e7cd8916935cc78b90a855277a488320'
+  '2d85e097bf69e64f455b3920addb752252e5ac666c9d67e0a796d132169ebced'
 )
 
 package() {
