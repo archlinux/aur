@@ -1,14 +1,13 @@
-# Maintainer: Claudia Pellegrino <clau@tiqua.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=funiculi
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc='Control your Denon AVR amplifier from the command line'
 arch=('any')
 url='https://github.com/claui/funiculi'
 license=('Apache-2.0')
 depends=(
-  'nmap'
   'pulseaudio-dlna-cygn'
   'python'
   'python-colorama'
@@ -16,19 +15,21 @@ depends=(
 )
 makedepends=(
   'python-build'
+  'python-hatch'
   'python-installer'
   'python-myst-parser'
-  'python-poetry-core'
   'python-sphinx'
+  'python-sphinx-autoapi'
   'python-wheel'
 )
+checkdepends=('python-pytest')
 options=('!debug' '!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/claui/funiculi/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('cd743fd555480b9797d2eaa71e0d98e09c07bb4012ae53e13983956bd5f8184b763a5f2844f81e93acf29c44f65b872e34493cd8ffbe2d229de3322990b64e63')
+sha512sums=('d951f98c6f71bb7182b420bf432250713e20c94f0835f4dd43126dc37dce107cb13ec1f45301a5cfeb8be02d7d557fb001b49123243ef03cc54c4ad98540123c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -37,6 +38,11 @@ build() {
 
   echo >&2 'Generating man page'
   sphinx-build -aqEW -b man doc/sphinx build/man
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m pytest
 }
 
 package() {
