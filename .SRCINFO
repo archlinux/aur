@@ -1,0 +1,32 @@
+pkgbase = python-mattertune
+	pkgdesc = Fine-tuning platform for atomistic foundation models (Fung Lab, Georgia Tech)
+	pkgver = 0.1.0.r441.fea9022
+	pkgrel = 1
+	url = https://github.com/Fung-Lab/MatterTune
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cython
+	makedepends = python-numpy
+	makedepends = git
+	depends = python>=3.10
+	depends = python-pytorch
+	depends = python-torchmetrics
+	depends = python-ase
+	depends = python-numpy
+	depends = python-rich
+	depends = python-pydantic>=2.13
+	optdepends = python-lightning: training framework (install via pip: pip install lightning)
+	optdepends = python-scikit-learn: normalizer utilities for training
+	optdepends = python-wandb: Weights and Biases experiment logging
+	optdepends = tensorboardx: TensorBoard experiment logging
+	optdepends = python-pymatgen: materials data IO and structure handling
+	optdepends = python-vesin: neighbor-list provider for some backbones
+	optdepends = python-matscipy: neighbor-list provider for some backbones
+	source = MatterTune::git+https://github.com/Fung-Lab/MatterTune.git
+	sha256sums = SKIP
+
+pkgname = python-mattertune
