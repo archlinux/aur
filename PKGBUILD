@@ -151,7 +151,7 @@ prepare() {
   # MediatR 12.5 passes a CancellationToken to RequestHandlerDelegate, which some tests don't take
   sed -i 's/, () => Task\.FromResult(/, _ => Task.FromResult(/' test/Lsp.Tests/Matchers/ResolveCommandMatcherTests.cs
   # The tests use AwesomeAssertions instead of FluentAssertions, which is free only for non-commercial
-  # use since version 8 (Xceed's license), so building the package with the tests needs no license.
+  # use since version 8 (Xceed's licence), so building the package with the tests needs no licence.
   # AwesomeAssertions is the fork of its Apache-2.0 code, with the same API in its own namespace.
   # Upstream: https://github.com/OmniSharp/csharp-language-server-protocol/pull/1855
   sed -i "s|Include=\"FluentAssertions\" Version=\"[^\"]*\"|Include=\"AwesomeAssertions\" Version=\"$_awesomeassertionsver\"|" \
