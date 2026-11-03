@@ -2,8 +2,8 @@
 
 pkgname=python-opentelemetry-exporter-prometheus
 _distname=opentelemetry-exporter-prometheus
-_release=1.45.1
-pkgver=0.66b1
+_release=1.45.2
+pkgver=0.66b2
 pkgrel=1
 pkgdesc='Prometheus metric exporter for OpenTelemetry'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/open-telemetry/opentelemetry-python'
 license=('Apache-2.0')
 depends=(
   'python-opentelemetry-api'
-  'python-opentelemetry-sdk'
+  'python-opentelemetry-sdk>=1.45.2'
   'python-prometheus_client')
 makedepends=(
   'python-build'
@@ -24,7 +24,7 @@ checkdepends=(
   'python-pytest'
   'python-wrapt')
 source=("$pkgname-$_release.tar.gz::$url/archive/refs/tags/v$_release.tar.gz")
-sha256sums=('7fa3279ff22ee1322ab9e92290d4b0547e19ce164ff3ebbbeb3fcdaf96f0f2a4')
+sha256sums=('6ce748d196e7cfbf2df5a31a88395b944321506bfec3af5351336e0ed2238f35')
 
 build() {
   cd "opentelemetry-python-$_release/exporter/$_distname"
