@@ -1,6 +1,6 @@
 pkgbase = tuxcharge-profile
 	pkgdesc = Set a TUXEDO laptop charging profile based on the connected Wi-Fi network
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Okazakee/tuxcharge-profile
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tuxcharge-profile
 	makedepends = rust
 	depends = networkmanager
 	optdepends = tuxedo-drivers-dkms: EC charging profile interface, required on TUXEDO hardware
-	source = tuxcharge-profile-0.2.0.tar.gz::https://github.com/Okazakee/tuxcharge-profile/archive/v0.2.0.tar.gz
-	sha256sums = 4d838251619d387b795bff03dd79809661b1e41f85a4c6e5b6522e3fbfed2668
+	source = tuxcharge-profile-0.2.1.tar.gz::https://github.com/Okazakee/tuxcharge-profile/archive/v0.2.1.tar.gz
+	sha256sums = d78d0cc7c6408063d4cc0b4304a06fac037f0b43bed71db2c2193895e143d3a6
 
 pkgname = tuxcharge-profile
