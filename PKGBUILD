@@ -3,7 +3,7 @@ pkgname=ttf-commissioner-hinted
 _commver=1.012
 _nfver=3.5.1
 pkgver="${_commver}"
-pkgrel=4
+pkgrel=5
 pkgdesc='Commissioner, a low-contrast humanist sans with Flare/Volume/Weight axes and a separate italic, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/kosbarts/Commissioner'
@@ -35,7 +35,7 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '373d859f527adcf80933f9741af0595e708f591bdde5f2f01896aebd7d488750'
             'f09f7f4a7dbcc2b18c1bafeae56c5611d995066f0b1cbcfe84bb9890edc66d4f'
-            '9dbe3d44aa0465e2c7da9a354b0135ff04327fe8524f2a430b486dc932711f53'
+            '18b2d89f189f58ce90e0e122b67bd95ae28c424b101a418bc274cffaa68a2fc4'
             '3f86a8d1100a69364b1035189143950de9c9963b217184048808ae29e88a6129')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -209,6 +209,13 @@ sha256sums=('63ce7044195585bc41476193be7be0312e07ec6685921eb141c6eabfb0aee3b6'
 #  ── Features every app can see (not just pango) ───────────────────────────
 #
 #  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
+#                 (uncommented) in the <match> blocks for Commissioner of
+#                 ${COMM_FONTS_CONF:-~/.config/fontconfig/fonts.conf}. Dropped with a note:
+#                 negated tags (-liga), tags the font lacks in GSUB, tags HarfBuzz
+#                 always applies (kern liga ccmp locl mark mkmk calt) and the ones
+#                 make_features.py refuses (aalt ordn dlig ...). An empty result
+#                 bakes nothing.
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
@@ -299,6 +306,51 @@ _ask_choice() {
 
 # Called once, from prepare(): ask for whatever the environment has not set,
 # but only on a terminal, then save every set option to .build_opts.
+# Prints the bakeable tags active for Commissioner in the user's fonts.conf
+# (union over every family this package installs that has a <match> block).
+_features_from_fontsconf() {
+  local _conf="${COMM_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+  if [[ ! -f "$_conf" ]]; then
+    echo "Error: $_conf not found (set COMM_FONTS_CONF)." >&2; return 1
+  fi
+  python - "$_conf" "$srcdir"/Commissioner-*.ttf <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from fontTools.ttLib import TTFont
+conf, fonts = sys.argv[1], sys.argv[2:]
+families = ["Commissioner"]
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+gsub = set()
+for path in fonts:
+    t = TTFont(path, lazy=True)
+    if "GSUB" in t:
+        gsub |= {r.FeatureTag for r in t["GSUB"].table.FeatureList.FeatureRecord}
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() in families
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            elif tag not in gsub: why = "not a GSUB feature of the font"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+}
+
 _prompt_options() {
   if [[ -t 0 ]]; then
     echo ""
@@ -334,10 +386,12 @@ _prompt_options() {
     echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
     _ask_choice "Bake features into calt" none \
       "none:leave the fonts as upstream ships them (default)" \
+      "fonts.conf:the features active for \"Commissioner\" in ~/.config/fontconfig/fonts.conf" \
       "barred:ss01 - the alternate G with a bar" \
       "custom:type the tag list yourself"
     case $_choice in
       none)    FEATURE_DEFAULTS="" ;;
+      fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
       barred)  FEATURE_DEFAULTS="ss01" ;;
       custom)
         echo "  Tags, comma or space separated (e.g. \"ss01\"):"
@@ -359,6 +413,11 @@ _prompt_options() {
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
+  fi
+
+  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
+    FEATURE_DEFAULTS="$(_features_from_fontsconf)" || exit 1
+    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
   fi
 
   local _k

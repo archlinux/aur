@@ -392,6 +392,13 @@ one of those features, which is what `make_features.py` does and what
 FEATURE_DEFAULTS=ss01 makepkg -si     # the alternate G with a bar, in every app
 ```
 
+`FEATURE_DEFAULTS=fonts.conf` bakes the features that are **active** (not commented out) in the
+`<match target="font">` blocks for `Commissioner` in `~/.config/fontconfig/fonts.conf` (another file:
+`COMM_FONTS_CONF`), so the one list drives both pango and every other app. Skipped, with a
+`note:` line: negated tags (`-liga`), tags the font has no GSUB lookups for, tags every
+shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones `make_features.py`
+refuses (`aalt ordn dlig ...`). If nothing is left, nothing is baked.
+
 `makepkg` asks for this during the build: Enter bakes nothing, so a plain build
 is unchanged. `FEATURE_FAMILY` is not prompted for on purpose - it renames every
 file to one family, which would merge the cuts a multi-family build installs -
