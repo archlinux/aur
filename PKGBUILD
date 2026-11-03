@@ -1,7 +1,7 @@
 # Maintainer: kabeuchi-bird <https://github.com/kabeuchi-bird>
 pkgname=kabekami-git
-pkgver=r125.69935d8
-pkgrel=5
+pkgver=r348.305dfae
+pkgrel=1
 pkgdesc="KDE Plasma wallpaper rotation daemon with multi-monitor support, online sources, and global shortcuts"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kabeuchi-bird/kabekami"
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'aadec7cb6e6bff5a008936578905beb8fbf18feb794b8decd3b3e8ad90023b27'
+    '9a58f75de615d561305d497427950ffd9a58a1d25ca82b957d27fb1be0f1b678'
     'df521c8ef87ca6bac10548d4d9d1867964c03fd096bce6812c3bbaa7bb132c95'
 )
 
@@ -65,6 +65,10 @@ package() {
     install -Dm644 config.ja.toml                   "$pkgdir/usr/share/doc/$pkgname/config.ja.toml"
     install -Dm644 "$srcdir/kabekami-config.desktop" \
         "$pkgdir/usr/share/applications/kabekami-config.desktop"
+    install -Dm644 assets/kabekami.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/kabekami.svg"
+    install -Dm644 assets/kabekami-symbolic.svg \
+        "$pkgdir/usr/share/icons/hicolor/symbolic/apps/kabekami-symbolic.svg"
 
     # UI 言語ファイル。ここに <言語コード>.toml を追加すると、再ビルドなしで
     # 言語が増える（英語と日本語はバイナリに埋め込み済みなので、これらは
