@@ -281,6 +281,13 @@ exactly one candidate:
 FEATURE_DEFAULTS=pnum makepkg -si     # proportional figures in every app
 ```
 
+`FEATURE_DEFAULTS=fonts.conf` bakes the features that are **active** (not commented out) in the
+`<match target="font">` blocks for `Roboto Flex` in `~/.config/fontconfig/fonts.conf` (another file:
+`FLEX_FONTS_CONF`), so the one list drives both pango and every other app. Skipped, with a
+`note:` line: negated tags (`-liga`), tags the font has no GSUB lookups for, tags every
+shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones `make_features.py`
+refuses (`aalt ordn dlig ...`). If nothing is left, nothing is baked.
+
 Roboto Flex ships **tabular figures** as its default: a column of numbers lines
 up, and `1111 0000 8888` is 14872 units wide where proportional figures make it
 13192 - the same number `font-feature-settings: "pnum" 1` gives in Chromium

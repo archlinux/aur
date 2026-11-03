@@ -3,7 +3,7 @@ pkgname=ttf-roboto-flex-hinted
 _flexver=3.200
 _nfver=3.5.1
 pkgver="${_flexver}"
-pkgrel=4
+pkgrel=5
 pkgdesc='Roboto Flex, the 13-axis variable Roboto, hinted with ttfautohint for FreeType, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/roboto-flex'
@@ -33,7 +33,7 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '7cafc2f26e6490e58987f13f2a4f25334f2b30a28f89741f1eaa5bf144e3f51c'
             '38abb99dc9daaa04f43441f3036baff81270f2636c52772fba72c7454c44e2f9'
-            'f4bd71980ee86291bcef2e1199734a068fb9c633f47087a016519487842eb863'
+            '54aad4174c93d28ea6a46eff30e3a1de25def085a13630acd780f42506ad761f'
             'ed3710d5143d2724a3e9ff0248738033eb4c5a43941767309abf535efb65d656')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -157,6 +157,13 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
 #  ── Features every app can see (not just pango) ───────────────────────────
 #
 #  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
+#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
+#                 (uncommented) in the <match> blocks for Roboto Flex of
+#                 ${FLEX_FONTS_CONF:-~/.config/fontconfig/fonts.conf}. Dropped with a note:
+#                 negated tags (-liga), tags the font lacks in GSUB, tags HarfBuzz
+#                 always applies (kern liga ccmp locl mark mkmk calt) and the ones
+#                 make_features.py refuses (aalt ordn dlig ...). An empty result
+#                 bakes nothing.
 #                 Bake these GSUB features into the font's 'calt' feature, so
 #                 that EVERY renderer applies them, not only pango. For the
 #                 reason, see the note at the bottom of this block.
@@ -247,6 +254,51 @@ _ask_choice() {
 
 # Called once, from prepare(): ask for whatever the environment has not set,
 # but only on a terminal, then save every set option to .build_opts.
+# Prints the bakeable tags active for Roboto Flex in the user's fonts.conf
+# (union over every family this package installs that has a <match> block).
+_features_from_fontsconf() {
+  local _conf="${FLEX_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+  if [[ ! -f "$_conf" ]]; then
+    echo "Error: $_conf not found (set FLEX_FONTS_CONF)." >&2; return 1
+  fi
+  python - "$_conf" "$srcdir"/roboto-flex-fonts/fonts/variable/*.ttf <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from fontTools.ttLib import TTFont
+conf, fonts = sys.argv[1], sys.argv[2:]
+families = ["Roboto Flex"]
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+gsub = set()
+for path in fonts:
+    t = TTFont(path, lazy=True)
+    if "GSUB" in t:
+        gsub |= {r.FeatureTag for r in t["GSUB"].table.FeatureList.FeatureRecord}
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() in families
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            elif tag not in gsub: why = "not a GSUB feature of the font"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+}
+
 _prompt_options() {
   if [[ -t 0 ]]; then
     echo ""
@@ -282,10 +334,12 @@ _prompt_options() {
     echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
     _ask_choice "Bake features into calt" none \
       "none:leave the fonts as upstream ships them (default)" \
+      "fonts.conf:the features active for \"Roboto Flex\" in ~/.config/fontconfig/fonts.conf" \
       "pnum:pnum - proportional figures instead of the tabular default" \
       "custom:type the tag list yourself"
     case $_choice in
       none)    FEATURE_DEFAULTS="" ;;
+      fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
       pnum)    FEATURE_DEFAULTS="pnum" ;;
       custom)
         echo "  Tags, comma or space separated (e.g. \"pnum\"):"
@@ -307,6 +361,11 @@ _prompt_options() {
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
+  fi
+
+  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
+    FEATURE_DEFAULTS="$(_features_from_fontsconf)" || exit 1
+    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
   fi
 
   local _k
