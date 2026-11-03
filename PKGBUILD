@@ -3,8 +3,8 @@
 pkgname=minecrauth-bin
 _name=${pkgname%-bin}
 _package="achetronic/minecrauth"
-pkgver=0.2.0
-pkgrel=5
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A self-hosted Yggdrasil authentication server for Minecraft Java Edition with skins and capes."
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_package}"
@@ -16,6 +16,7 @@ source_aarch64=("${_name}-${pkgver}_aarch64.tar.gz::${url}/releases/download/v${
 source=("${_name}-${pkgver}-config.example.yaml::https://raw.githubusercontent.com/${_package}/refs/tags/v${pkgver}/config.example.yaml"
 	"${_name}.service"
 	"${_name}.sysusers")
+#TODO: add checksums
 b2sums_x86_64=('SKIP')
 b2sums_aarch64=('SKIP')
 b2sums=('SKIP'
