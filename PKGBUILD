@@ -1,7 +1,7 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat-bin
 pkgver=0.17.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern terminal-based VPN client with Xray-core backend (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kvunoff/whoisthat"
@@ -20,8 +20,8 @@ options=(!strip !debug)
 source_x86_64=("whoisthat-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/whoisthat-linux-amd64.tar.gz")
 source_aarch64=("whoisthat-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/whoisthat-linux-arm64.tar.gz")
 # CI pins the checksums of the published release assets.
-sha256sums_x86_64=('5c4e5b1dac188a4a22e49ef64c135dc306c2956b4bb1a68e350effc7416d7a8e')
-sha256sums_aarch64=('4d39d2932156a372ce70a6831c037ce55d6b3bd73299246a527aace450b09e3f')
+sha256sums_x86_64=('a2364a629158bb020a5d89a593c2bca05bb7ceeef9a06f969397b1cc779c7738')
+sha256sums_aarch64=('c6b6c208ebfeb9b8e4b439164845cfe1e17ff4f379b87ac3c3360c925552d628')
 
 package() {
     local src
