@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 groups=('pro-audio')
 
 # OBS package release is independent of the AUR packaging release above.
-_obs_pkgrel=2
+_obs_pkgrel=1
 # Use the publishing origin: redirecting mirrors can retain an older rebuild.
 _obs_url='https://downloadcontent.opensuse.org/repositories/home:/somepaulo:/Audacity/Arch'
 _obs_archive="${pkgname}-${pkgver}-${_obs_pkgrel}-x86_64.pkg.tar.zst"

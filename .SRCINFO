@@ -50,10 +50,10 @@ pkgbase = audacity-bin
 	conflicts = audacity
 	conflicts = audacity-git
 	conflicts = audacity4-bin
-	noextract = obs-b6164cb6dd33-audacity-bin-4.0.2-2-x86_64.pkg.tar.zst
+	noextract = obs-b6164cb6dd33-audacity-bin-4.0.2-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source_x86_64 = obs-b6164cb6dd33-audacity-bin-4.0.2-2-x86_64.pkg.tar.zst::https://downloadcontent.opensuse.org/repositories/home:/somepaulo:/Audacity/Arch/x86_64/audacity-bin-4.0.2-2-x86_64.pkg.tar.zst
+	source_x86_64 = obs-b6164cb6dd33-audacity-bin-4.0.2-1-x86_64.pkg.tar.zst::https://downloadcontent.opensuse.org/repositories/home:/somepaulo:/Audacity/Arch/x86_64/audacity-bin-4.0.2-1-x86_64.pkg.tar.zst
 	sha256sums_x86_64 = b6164cb6dd3351d1118f0d7b9efed87554a85e15bcc366aeb19a6d4541a04301
 
 pkgname = audacity-bin
