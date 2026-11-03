@@ -1,12 +1,12 @@
 #Maintainer: Marco Martinelli <marco+t2sz@13byte.com>
 
 pkgname=t2sz
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="It compresses a file into a seekable zstd. If the file is a tar archive it compresses each file in the archive into an independent frame, hence the name: tar 2 seekable zstd."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/martinellimarco/t2sz"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('zstd')
 makedepends=('git' 'cmake')
 checkdepends=('zstd')
