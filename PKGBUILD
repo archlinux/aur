@@ -1,7 +1,7 @@
 # Maintainer: Ваше Имя <voltasar@gmail.com>
 
 pkgname=se98-wm-theme
-pkgver=1.82
+pkgver='1.82'
 pkgrel=1
 pkgdesc="Windows 98 Second Edition (Win98SE) inspired window manager theme for xfwm4, metacity, GTK2, GTK3, and GTK4"
 arch=('any')
