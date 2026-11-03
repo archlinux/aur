@@ -1,6 +1,6 @@
 pkgbase = basalt-inference-git
 	pkgdesc = Local inference engine for Qwen3.8-Flash-Next MoE packs (NVIDIA Blackwell, sm_120)
-	pkgver = 0.2.0.43.g2911d687
+	pkgver = 0.2.0.45.g83d76f90
 	pkgrel = 1
 	url = https://github.com/jesdga95/basalt
 	arch = x86_64

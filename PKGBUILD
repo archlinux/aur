@@ -64,6 +64,18 @@ prepare() {
 
 build() {
   cd "$srcdir/basalt"
+  # CUDA toolkit: name it, do not inherit it.  AUR helpers run makepkg through sudo, and sudo's
+  # env_reset + secure_path ("/usr/local/sbin:/usr/local/bin:/usr/bin") drop both CUDA_PATH and
+  # /opt/cuda/bin that /etc/profile.d/cuda.sh exports for login shells.  Arch installs CUDA to
+  # /opt/cuda and has no /usr/local/cuda - the one directory CMake force-prepends to its toolkit
+  # search - so configure then dies in project(): "Failed to find nvcc.  Compiler requires the CUDA
+  # toolkit.  Please set the CUDAToolkit_ROOT variable".  An explicit CUDAToolkit_ROOT or CUDA_PATH
+  # in the environment still wins over the /opt/cuda default.
+  local cuda_root="${CUDAToolkit_ROOT:-${CUDA_PATH:-/opt/cuda}}"
+  local cuda_compiler=()
+  [[ -x "$cuda_root/bin/nvcc" ]] && cuda_compiler=(-DCMAKE_CUDA_COMPILER="$cuda_root/bin/nvcc")
+  export CUDAToolkit_ROOT="$cuda_root"
+  export PATH="$cuda_root/bin:$PATH"
   # Arch's hardening puts -Wp,-D_GLIBCXX_ASSERTIONS in CXXFLAGS, and libstdc++ then checks every
   # vector::operator[].  The engine hits one on the serve path - Tokenizer::merge_piece forms
   # &sym_[count] in its shift (src/program/tokenizer/bpe.cpp:240), reported upstream as
@@ -90,6 +102,7 @@ build() {
     -DBASALT_SOURCE_DIR="$_prefix" \
     -DBASALT_ENGINE_BIN="$_prefix/bin/basalt" \
     -DCMAKE_CUDA_ARCHITECTURES=120 \
+    ${cuda_compiler[@]+"${cuda_compiler[@]}"} \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_TESTING=OFF \
     -DWERROR=OFF
