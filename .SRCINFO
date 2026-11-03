@@ -1,6 +1,6 @@
 pkgbase = crabber-bin
 	pkgdesc = XMPP messenger built on GPUI (release binaries)
-	pkgver = 0.4.4
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/auf-gg/crabber
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = crabber-bin
 	provides = crabber
 	conflicts = crabber
 	conflicts = crabber-git
-	source_x86_64 = https://github.com/auf-gg/crabber/releases/download/v0.4.4/crabber-0.4.4-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 2f4253b0a93a73451d9c33d86dbaeae5fb06e8798c7e64635b09fbd559b2b808
-	source_aarch64 = https://github.com/auf-gg/crabber/releases/download/v0.4.4/crabber-0.4.4-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 811755959d3699973f029bd1d21cc8f49f7abc25bac7be5a18d8fb12c2542ac6
+	source_x86_64 = https://github.com/auf-gg/crabber/releases/download/v0.5.0/crabber-0.5.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = c7a4cda182c34f4138edb5b28aa04ba9a77832fff082654bc8fb3c3634c7b487
+	source_aarch64 = https://github.com/auf-gg/crabber/releases/download/v0.5.0/crabber-0.5.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 7ac676799d11565e1b037c03f75f1fb9f777f14f8e47715d7fce852519dee909
 
 pkgname = crabber-bin
