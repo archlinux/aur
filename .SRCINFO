@@ -1,0 +1,16 @@
+pkgbase = perl-context-vars
+	pkgdesc = variables with context scope
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Context-Vars
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-hamt>=0.03
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/Context-Vars-0.05.tar.gz
+	md5sums = e7eb720214e3517c84b7d506515a24d2
+	sha512sums = be555ea381dd95208a8c6122e650d2f1a2f3efc7fb88599d14934fe0bb2c377ac1c9695bfbc2a71a20d500a67ffa7b72f41b19b2e9d26dc3c0d0c31b8f209566
+
+pkgname = perl-context-vars
