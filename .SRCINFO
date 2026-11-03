@@ -1,0 +1,24 @@
+pkgbase = goatak-setup-archbased
+	pkgdesc = Interactive first-time setup for the GoATAK server: CA and server certificates, config, users, service and ATAK connection package
+	pkgver = 20261103
+	pkgrel = 1
+	url = https://github.com/lukerb52/goatak-setup-archbased
+	arch = any
+	license = unknown
+	depends = bash
+	depends = goatak
+	depends = openssl
+	depends = curl
+	depends = iproute2
+	depends = procps-ng
+	depends = gawk
+	depends = zip
+	optdepends = sudo: run the steps that need root (or opendoas)
+	optdepends = opendoas: run the steps that need root (or sudo)
+	optdepends = ufw: open the TAK ports in ufw
+	optdepends = firewalld: open the TAK ports in firewalld
+	optdepends = inetutils: suggest the FQDN as the default hostname
+	source = goatak-setup-archbased-43e7c1fdd5eb77d4b5edf3012922fd71eb208723.tar.gz::https://github.com/lukerb52/goatak-setup-archbased/archive/43e7c1fdd5eb77d4b5edf3012922fd71eb208723.tar.gz
+	sha256sums = a1442892e4c84fdd0aaae7b691dd497f91ff090efef9a1aa60186480334fcca3
+
+pkgname = goatak-setup-archbased
