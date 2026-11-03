@@ -1,10 +1,12 @@
 pkgbase = python-unsloth-zoo
 	pkgdesc = Utility functions for Unsloth fine-tuning framework
-	pkgver = 2026.10.7
+	pkgver = 2026.11.1
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth-zoo
 	arch = any
 	license = LGPL-3.0-or-later
+	license = MIT
+	license = Apache-2.0
 	checkdepends = git
 	checkdepends = ipython
 	checkdepends = python-bitsandbytes
@@ -18,7 +20,7 @@ pkgbase = python-unsloth-zoo
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-pytorch>=2.4
-	depends = python-pytorch<2.15
+	depends = python-pytorch<2.16
 	depends = python-triton>=3
 	depends = python-numpy
 	depends = python-einops
@@ -49,6 +51,7 @@ pkgbase = python-unsloth-zoo
 	depends = python-tyro
 	depends = python-msgspec
 	depends = python-wheel>=0.42
+	depends = python-certifi>=2026.10.19
 	depends = python-requests
 	depends = python-safetensors
 	depends = python-torchvision
@@ -56,13 +59,13 @@ pkgbase = python-unsloth-zoo
 	optdepends = python-bitsandbytes: 4-bit/8-bit quantization and LoRA merging
 	optdepends = python-fastapi: diffusion-studio HTTP service
 	optdepends = uvicorn: diffusion-studio HTTP service
-	source = unsloth-zoo-2086b298d23778a18209b0004e81336660566215.tar.gz::https://github.com/unslothai/unsloth-zoo/archive/2086b298d23778a18209b0004e81336660566215.tar.gz
-	source = unsloth-7b577a921cc730d584679dd3ac070c12436e3a76.tar.gz::https://github.com/unslothai/unsloth/archive/7b577a921cc730d584679dd3ac070c12436e3a76.tar.gz
-	source = trl-import-utils-compat.patch
+	source = unsloth-zoo-f0e92d10c9ab2a02ee9ec3b4a54e2d63582edf1a.tar.gz::https://github.com/unslothai/unsloth-zoo/archive/f0e92d10c9ab2a02ee9ec3b4a54e2d63582edf1a.tar.gz
+	source = unsloth-bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b.tar.gz::https://github.com/unslothai/unsloth/archive/bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b.tar.gz
 	source = preserve-installed-triton.patch
-	sha256sums = 5cd1347f44ec1b331596d27fbbaec405789cbf3004e14afa55299180d238a7d9
-	sha256sums = 504c2246b50f1ebd85bbf425d01a0ff680a844a8f5e092264a6a56b35805e9a2
-	sha256sums = ddc0c8a0dddae64bdd1f94351b6d86682eae9774fa304a05a84bb6088709ac89
-	sha256sums = ace48f2fa70e1ac0d88e832587733dd6955eac7a3831a28a1a896f2b60ff62e8
+	source = arch-torchvision-pair.patch
+	sha256sums = a69ee405fcd5b8a10712a65890a69507212ffbec515058bfd5cf42b03200e5a4
+	sha256sums = 75b1902bcbb06d28111200d10af9ca1d8b1c968c6940d0a8a1263e67d7980792
+	sha256sums = 9cf5a611d5e2490dbd7e77726c8c4115202b675221392676682b8d25388eda69
+	sha256sums = 6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba
 
 pkgname = python-unsloth-zoo

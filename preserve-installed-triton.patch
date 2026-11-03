@@ -1,7 +1,7 @@
 --- a/unsloth_zoo/__init__.py
 +++ b/unsloth_zoo/__init__.py
-@@ -208,7 +208,10 @@
- # normal CUDA/CPU run _SKIP_GPU_INIT is False and the real modules are untouched.
+@@ -198,7 +198,10 @@
+ # hard ImportError; CUDA/CPU keeps real modules.
  if _SKIP_GPU_INIT:
      from unsloth_zoo.stubs.triton_stub import inject_into_sys_modules as _inject_triton
 -    _inject_triton()

@@ -3,23 +3,23 @@
 pkgname=python-unsloth-zoo
 _pkgname=unsloth_zoo
 _archive=unsloth-zoo
-pkgver=2026.10.7
+pkgver=2026.11.1
 # Upstream does not tag releases. This is the version-bump commit immediately
 # preceding the PyPI upload.
-_commit=2086b298d23778a18209b0004e81336660566215
-# Match the Unsloth 2026.10.7 source release used as the staged test companion.
-_unsloth_commit=7b577a921cc730d584679dd3ac070c12436e3a76
+_commit=f0e92d10c9ab2a02ee9ec3b4a54e2d63582edf1a
+# Match the Unsloth 2026.11.1 source release used as the staged test companion.
+_unsloth_commit=bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b
 _source="${_archive}-${_commit}"
 _unsloth_source="unsloth-${_unsloth_commit}"
 pkgrel=1
 pkgdesc="Utility functions for Unsloth fine-tuning framework"
 arch=('any')
 url="https://github.com/unslothai/unsloth-zoo"
-license=('LGPL-3.0-or-later')
+license=('LGPL-3.0-or-later' 'MIT' 'Apache-2.0')
 depends=(
     'python'
     'python-pytorch>=2.4'
-    'python-pytorch<2.15'
+    'python-pytorch<2.16'
     'python-triton>=3'
     'python-numpy'
     'python-einops'
@@ -52,6 +52,7 @@ depends=(
     'python-msgspec'
     'python-wheel>=0.42'
     # Imported directly by the vision, llama.cpp and model-saving helpers.
+    'python-certifi>=2026.10.19'
     'python-requests'
     'python-safetensors'
     'python-torchvision'
@@ -80,29 +81,30 @@ optdepends=(
 source=(
     "${_archive}-${_commit}.tar.gz::$url/archive/${_commit}.tar.gz"
     "unsloth-${_unsloth_commit}.tar.gz::https://github.com/unslothai/unsloth/archive/${_unsloth_commit}.tar.gz"
-    'trl-import-utils-compat.patch'
     'preserve-installed-triton.patch'
+    'arch-torchvision-pair.patch'
 )
-sha256sums=('5cd1347f44ec1b331596d27fbbaec405789cbf3004e14afa55299180d238a7d9'
-            '504c2246b50f1ebd85bbf425d01a0ff680a844a8f5e092264a6a56b35805e9a2'
-            'ddc0c8a0dddae64bdd1f94351b6d86682eae9774fa304a05a84bb6088709ac89'
-            'ace48f2fa70e1ac0d88e832587733dd6955eac7a3831a28a1a896f2b60ff62e8')
+sha256sums=('a69ee405fcd5b8a10712a65890a69507212ffbec515058bfd5cf42b03200e5a4'
+            '75b1902bcbb06d28111200d10af9ca1d8b1c968c6940d0a8a1263e67d7980792'
+            '9cf5a611d5e2490dbd7e77726c8c4115202b675221392676682b8d25388eda69'
+            '6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba')
 
 prepare() {
     cd "$_source"
     # Preserve the real Triton compiler for standalone GPU loss utilities.
     patch -Np1 --fuzz=0 -i "$srcdir/preserve-installed-triton.patch"
     # Use Arch's build backends while preserving the upstream minimums.
-    sed -i 's/setuptools==84.0.0/setuptools>=84.0.0/' pyproject.toml
-    sed -i 's/setuptools-scm==9.2.0/setuptools-scm>=9.2.0/' pyproject.toml
+    sed -i 's/setuptools==84.2.1/setuptools>=84.2.1/' pyproject.toml
+    sed -i 's/setuptools-scm==10.3.4/setuptools-scm>=10.3.4/' pyproject.toml
     # Validate Arch's Transformers 5.19 and Datasets 5 with the retained
     # CPU compatibility suite before widening these upstream ceilings.
     sed -i 's/<=5.17.0/<6/g; s/<5.0.0/<6/g' pyproject.toml
 
     cd "$srcdir/$_unsloth_source"
-    sed -i 's/setuptools==84.0.0/setuptools>=84.0.0/' pyproject.toml
+    sed -i 's/setuptools==84.1.0/setuptools>=84.1.0/' pyproject.toml
     sed -i 's/setuptools-scm==9.2.2/setuptools-scm>=9.2.2/' pyproject.toml
-    patch -Np1 -i "$srcdir/trl-import-utils-compat.patch"
+    patch -Np1 --fuzz=0 -i "$srcdir/arch-torchvision-pair.patch"
+    # Current Unsloth already coerces TRL availability tuples correctly.
 }
 
 build() {
@@ -139,12 +141,17 @@ check() {
     export XDG_CACHE_HOME="$test_home/cache"
     export PYTHONPATH="$staged"
 
-    cd "$_source"
+    # Collect copied upstream tests outside the checkout so Python loads the
+    # installed wheels. The upstream CPU harness remains unchanged.
+    rm -rf "$srcdir/test-run"
+    mkdir -p "$srcdir/test-run"
+    cp -a "$srcdir/$_source/tests" "$srcdir/test-run/"
+    cd "$srcdir/test-run"
 
     # Representative CPU checks for the changed PEFT, Transformers and TRL
     # interfaces, compiler rewriting and LoRA merging. CUDA execution, MLX
     # and live upstream/PyPI drift probes are outside this packaging check.
-    python -m pytest -q --tb=short --disable-socket \
+    python -P -m pytest -q --tb=short --disable-socket \
         --basetemp="$pytest_tmp/compat" \
         --allow-hosts=127.0.0.1,localhost,::1 \
         tests/test_upstream_import_fixes_drift.py \
@@ -154,7 +161,8 @@ check() {
         tests/test_peft_paramwrapper_layout_drift.py \
         tests/test_transformers_moe_structure_drift.py \
         tests/test_moe_merge_e2e_cpu.py \
-        --deselect tests/test_unsloth_zoo_lora_merge.py::test_active_merge_device_returns_string_on_cuda_host \
+        tests/test_torch215_inductor_workarounds.py \
+        --deselect tests/test_unsloth_zoo_lora_merge.py::test_active_merge_device_returns_string_on_gpu \
         --deselect tests/test_unsloth_zoo_lora_merge.py::test_merge_lora_moves_cpu_inputs_to_active_device
 
     # Exercise the installed wheel, not the checkout.
@@ -195,4 +203,12 @@ package() {
     cd "$_source"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Preserve original notices for the source-vendored FLA and vLLM kernels.
+    install -Dm644 unsloth_zoo/_vendored/NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+    for component in fla vllm; do
+        install -Dm644 "unsloth_zoo/_vendored/$component/LICENSE" \
+            "$pkgdir/usr/share/licenses/$pkgname/$component-LICENSE"
+        install -Dm644 "unsloth_zoo/_vendored/$component/MANIFEST" \
+            "$pkgdir/usr/share/licenses/$pkgname/$component-MANIFEST"
+    done
 }
