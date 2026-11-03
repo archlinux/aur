@@ -3,11 +3,11 @@
 # Kalipso from the latest commit on main: for trying what is not released yet.
 
 pkgname=kalipso-git
-pkgver=2.0.r102.gedfe946
+pkgver=2.0.r104.g77cd772
 pkgrel=1
 pkgdesc='Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal (development version)'
 arch=('x86_64')
-url='https://brianidavide.github.io/kalipso/'
+url='https://sansevieria-ou.github.io/kalipso/'
 license=('AGPL-3.0-or-later')
 # pipewire: pw-record captures the microphone.
 depends=('glibc' 'hicolor-icon-theme' 'libgcc' 'libpipewire' 'libstdc++' 'pipewire' 'qt6-base' 'qt6-svg')
@@ -17,7 +17,7 @@ optdepends=('plasma-workspace: the Plasma widget and the KWin script'
             'xdg-desktop-portal: reader colours from the window behind')
 provides=('kalipso')
 conflicts=('kalipso')
-source=('kalipso::git+https://github.com/brianidavide/kalipso.git')
+source=('kalipso::git+https://github.com/SANSEVIERIA-OU/kalipso.git')
 sha256sums=('SKIP')
 
 pkgver() {
