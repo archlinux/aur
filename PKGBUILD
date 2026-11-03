@@ -3,8 +3,8 @@
 _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
-_electron='electron43'
-pkgver=4.21.1.r0.g2ab0010
+_electron='electron45'
+pkgver=4.26.0.r0.g0662290
 pkgrel=1
 pkgdesc="Maintain your Ledger devices (git-main)"
 arch=('x86_64')
@@ -69,7 +69,7 @@ package() {
 
   install -Dm 644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_appname}.png"
   for i in 128 256 512 1024; do
-    install -Dm 644 "build/icons/icon@${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png"
+    install -Dm 644 "build/icons/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_appname}.png"
   done
 
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
