@@ -3,7 +3,7 @@
 _pkggit=dojo
 
 pkgname=dojo-bin
-pkgver=0.13.0
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="A tool to keep environment as code. Dojo helps to compile code and run other operations in Docker containers. Containerize your development and operations environment."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "https://raw.githubusercontent.com/kudulab/dojo/${pkgver}/LICENSE.txt"
   "https://github.com/kudulab/${_pkggit}/releases/download/${pkgver}/${_pkggit}_linux_amd64")
 sha256sums=('445d1c72f0f764bea0bdebad180d9dc2255b6078e88c09bdd3ef7a99ee90a4d4'
-            '874c9d8b3e55cfd05e56ea4f215c0eb5951e4b45f6dc7f2bbc8fea817894d910')
+            '702c9d5f66c4b87f4c950794794fa9fd7a1f1cefa045841805ccb2b8250d5364')
 
 package() {
   cd "${srcdir}"
