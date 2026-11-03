@@ -3,7 +3,7 @@
 pkgname=wfweb-appimage
 _appname=wfweb
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Headless wfview fork: control Icom transceivers from a web browser (AppImage release)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/adecarolis/wfweb'
@@ -22,7 +22,7 @@ prepare() {
     chmod +x "${_appimage}"
     # Pull only the desktop entry and icon out of the AppImage
     "./${_appimage}" --appimage-extract 'usr/share/applications/wfweb.desktop' >/dev/null
-    "./${_appimage}" --appimage-extract 'usr/share/icons/hicolor/scalable/apps/wfweb.svg' >/dev/null
+    "./${_appimage}" --appimage-extract 'usr/share/icons/hicolor/256x256/apps/wfweb.png' >/dev/null
     sed -i 's|^Exec=.*|Exec=/usr/bin/wfweb|' squashfs-root/usr/share/applications/wfweb.desktop
 }
 
@@ -33,8 +33,8 @@ package() {
 
     install -Dm644 squashfs-root/usr/share/applications/wfweb.desktop \
         "${pkgdir}/usr/share/applications/${_appname}.desktop"
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/scalable/apps/wfweb.svg \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg"
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/wfweb.png \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_appname}.png"
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

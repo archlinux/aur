@@ -1,7 +1,7 @@
 pkgbase = wfweb-appimage
 	pkgdesc = Headless wfview fork: control Icom transceivers from a web browser (AppImage release)
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adecarolis/wfweb
 	arch = x86_64
 	arch = aarch64
