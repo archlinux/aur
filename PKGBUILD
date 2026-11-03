@@ -2,7 +2,7 @@
 
 pkgname=faro-bin
 _pkgname=faro
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Terminal client for Signal, built for people who live in tmux (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source_x86_64=("$_pkgname-x86_64-unknown-linux-gnu-$pkgver.tar.xz::https://github.com/harababurel/faro/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("$_pkgname-aarch64-unknown-linux-gnu-$pkgver.tar.xz::https://github.com/harababurel/faro/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('597240363b451ac854c0db684a5bb71ecb35bbe0bc7264a0fcd92f5520d25e2f')
-sha256sums_aarch64=('ecc7f18dbc691fba0ad41b6d983aa0a4b5b7ded9619de7ba426dddc8c3fafdf8')
+sha256sums_x86_64=('6ccdb342862868e6f50ab8c60365393d2aa2c14b7c0ec0d513f55f9544d1d4c1')
+sha256sums_aarch64=('165932cbfa6755dcb5f12b20ff89d264bfe567e9eccce43f13b22e1161d4ba86')
 
 package() {
   local _dir="$_pkgname-$CARCH-unknown-linux-gnu"
