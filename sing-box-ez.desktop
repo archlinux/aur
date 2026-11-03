@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sing-box-ez
+Comment=GUI client for the sing-box proxy core
+Exec=sing-box-ez
+Icon=sing-box-ez
+Categories=Network;
+Terminal=false
+StartupWMClass=sing-box-ez

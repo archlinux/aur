@@ -1,0 +1,21 @@
+pkgbase = sing-box-ez-gui-bin
+	pkgdesc = GUI client for the sing-box proxy core (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/he11ah0und/sing-box-ez
+	arch = x86_64
+	license = GPL3
+	depends = webkitgtk-6.0
+	depends = gtk4
+	provides = sing-box-ez-gui
+	provides = sing-box-ez
+	conflicts = sing-box-ez-gui
+	conflicts = sing-box-ez
+	source = sing-box-ez-gui-bin-0.1.0::https://github.com/he11ah0und/sing-box-ez/releases/download/v0.1.0/sing-box-ez-amd64-linux-gcc-gui
+	source = sing-box-ez.desktop
+	source = appicon.png
+	sha256sums = f0cfcaecc8674c216df75a5e3c39cf90a7b2d26de6499f38d5f14ffc3e790d2b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sing-box-ez-gui-bin
