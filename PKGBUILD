@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=muon-meson
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="meson implementation in C"
 arch=(x86_64)
 url="https://muon.build"
 license=(GPL3)
 source=("$url/releases/v$pkgver/muon-v$pkgver.tar.gz")
-sha256sums=('3ba00aaf6b3b31dcdfd81cf2e6214cd0a424bbb7fdd200f462bbc78b4fa9219d')
+sha256sums=('956b5a74f7852ec4c57a11825dac79052da878da78f507bee1a0ef955053fbbb')
 depends=(pkgconf curl libarchive)
 makedepends=(ninja python-yaml scdoc)
 checkdepends=(git)
@@ -69,4 +69,7 @@ check() {
 package() {
   cd "muon-v$pkgver/build"
   DESTDIR="$pkgdir" ./muon install
+
+  # Meson also ships /usr/share/man/man3/meson-reference.3.gz, rename it.
+  mv -v "$pkgdir"/usr/share/man/man3/{,muon-}meson-reference.3
 }
