@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=IDA Professional
 Comment=The Interactive Disassembler
-Exec=/opt/ida-pro/ida
+Exec=/opt/ida-pro/ida %f
 Icon=ida-pro
 Terminal=false
 Type=Application
 Categories=Development
+MimeType=application/x-ida-idb;application/x-ida-i64;

@@ -1,7 +1,7 @@
 pkgbase = ida-pro
 	pkgdesc = Hex-Rays IDA Pro
 	pkgver = 9.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hex-rays.com/ida-pro
 	arch = x86_64
 	license = custom
@@ -16,7 +16,9 @@ pkgbase = ida-pro
 	options = !strip
 	source = file://ida-pro_95_x64linux.run
 	source = ida-pro.desktop
+	source = ida-pro.xml
 	sha256sums = f8bbc7904ab7ab1b864bbaa698374396d52afacd3c39403db6dff2d0cf355075
-	sha256sums = 662478dbcb939db8a36f89170246c2187b1086bff840dd96bd4d8f72eac3cad5
+	sha256sums = 8e5565769ca1729c9b3199b6bf32a3e3943281340bb7019cae7ff32c22531489
+	sha256sums = d6b8b1f78b89ba9949d675f40266f3b53335af1fde0610c99ef1aaa645abc7d7
 
 pkgname = ida-pro

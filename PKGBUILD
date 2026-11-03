@@ -9,7 +9,7 @@
 
 pkgver=9.5.0
 pkgname="ida-pro"
-pkgrel=1
+pkgrel=2
 pkgdesc="Hex-Rays IDA Pro"
 url="https://hex-rays.com/ida-pro"
 license=('custom')
@@ -27,10 +27,12 @@ options=('!strip')
 _installer='ida-pro_95_x64linux.run'
 
 source=("file://${_installer}"
-		"${pkgname}.desktop")
+		"${pkgname}.desktop"
+		"${pkgname}.xml")
 
 sha256sums=('f8bbc7904ab7ab1b864bbaa698374396d52afacd3c39403db6dff2d0cf355075'
-            '662478dbcb939db8a36f89170246c2187b1086bff840dd96bd4d8f72eac3cad5')
+            '8e5565769ca1729c9b3199b6bf32a3e3943281340bb7019cae7ff32c22531489'
+            'd6b8b1f78b89ba9949d675f40266f3b53335af1fde0610c99ef1aaa645abc7d7')
 
 arch=('x86_64')
 
@@ -62,6 +64,7 @@ package() {
 	rm "${pkgdir}"/opt/${pkgname}/{uninstall*,Uninstall*}
 
 	install "${srcdir}"/${pkgname}*.desktop "${pkgdir}"/usr/share/applications
+	install -Dm644 "${srcdir}/${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 	ln -s /opt/${pkgname}/appico.png "${pkgdir}"/usr/share/icons/${pkgname}.png
 	ln -s /opt/${pkgname}/license.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 	ln -s /opt/${pkgname}/ida "${pkgdir}"/usr/bin/ida
