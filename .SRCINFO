@@ -1,0 +1,26 @@
+pkgbase = kalipso
+	pkgdesc = Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://brianidavide.github.io/kalipso/
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = qt6-tools
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libpipewire
+	depends = libstdc++
+	depends = pipewire
+	depends = qt6-base
+	depends = qt6-svg
+	optdepends = plasma-workspace: the Plasma widget and the KWin script
+	optdepends = gnome-shell: the GNOME Shell extension
+	optdepends = xdg-desktop-portal: reader colours from the window behind
+	source = kalipso-2.0.tar.gz::https://github.com/brianidavide/kalipso/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 98c8e918e95e19d00ada3375c2c6075baf5b51bc0d3ebed6b8698b24923a92a3
+
+pkgname = kalipso
