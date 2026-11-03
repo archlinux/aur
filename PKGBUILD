@@ -1,11 +1,11 @@
 # Maintainer: adogecheems <adogecheems@outlook.com>
 #
-# AUR source-build package for the 2.0.x series. Read README.md in this
-# directory before submitting. The source is pinned to the v2.0.0 release tag.
+# AUR source-build package for the 2.1.x series. Read README.md in this
+# directory before submitting. The source is pinned to the v2.1.1 release tag.
 # The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
@@ -51,7 +51,7 @@ build() {
   rm -f locale/zh_CN/LC_MESSAGES/panasonic-posture-manager.mo
   rm -rf dist build src/*.egg-info
   make
-  python -m build --wheel --no-isolation
+  python3 -m build --wheel --no-isolation
 }
 
 check() {
@@ -73,7 +73,7 @@ package() {
   # installed file list is decided by python-installer (do not hard-code the
   # site-packages path or the Python version).
   for wheel in dist/*.whl; do
-    python -m installer --destdir="${pkgdir}" "${wheel}"
+    python3 -m installer --destdir="${pkgdir}" "${wheel}"
   done
 
   # GJS UI modules, posture illustrations and model profiles: data-only files
