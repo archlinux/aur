@@ -1,0 +1,13 @@
+pkgbase = paperless-db-postgresql
+	pkgdesc = PostgreSQL backend for paperless-ngx
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://docs.paperless-ngx.com/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = python-psycopg
+	depends = python-psycopg-pool
+	provides = paperless-db-backend
+
+pkgname = paperless-db-postgresql
