@@ -1,6 +1,6 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-screenrec-menu-git
-pkgver=r9.9138dc0
+pkgver=r10.fd387ea
 pkgrel=1
 pkgdesc="Wayland screen recording menu with dmenu and overlay box"
 arch=('any')
@@ -12,9 +12,13 @@ depends=(
     'bash' 'slurp' 'wl-clipboard' 'ffmpeg' 
     'python' 'gtk3' 'gtk-layer-shell' 'python-gobject' 'python-cairo'
 )
+# 至少需要装一个录屏后端；auto 模式按 gpu-screen-recorder > wl-screenrec > wf-recorder 选择
 optdepends=(
-    'wl-screenrec: Fast stream recording backend (Recommended)'
-    'wf-recorder: Stream recording backend (Fallback)'
+    'gpu-screen-recorder: Primary recording backend, capture and encode on the GPU (Recommended)'
+    'wl-screenrec: VAAPI recording backend (Fallback)'
+    'wf-recorder: FFmpeg recording backend, VAAPI or libx264 (Fallback)'
+    'jq: Output detection and refresh-rate lookup on niri/Hyprland/Sway'
+    'libpulse: pactl for listing audio sources'
     'fuzzel: Lightweight Wayland native menu UI (or rofi/wofi)'
     'libnotify: For desktop notifications'
     'gifsicle: Extra GIF re-compression after conversion (auto-detected)'
