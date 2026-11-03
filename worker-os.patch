@@ -1,0 +1,16 @@
+diff --git a/tests/sandbox/test_docker_removal_worker.py b/tests/sandbox/test_docker_removal_worker.py
+index da3d174..5e7c6be 100644
+--- a/tests/sandbox/test_docker_removal_worker.py
++++ b/tests/sandbox/test_docker_removal_worker.py
+@@ -35,6 +35,11 @@ worker_code = pytest.importorskip(
+ )
+ 
+ 
++@pytest.fixture(autouse=True)
++def _worker_os(monkeypatch: pytest.MonkeyPatch) -> None:
++    monkeypatch.setattr(worker_code, "os", SimpleNamespace(**vars(worker_code.os)))
++
++
+ @pytest.mark.asyncio
+ async def test_removal_preserves_protected_literal_backslash_tree(
+     service: Any, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
