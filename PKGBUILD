@@ -1,12 +1,12 @@
 # Maintainer: Jozef Gaal <preklady@mayday.sk>
 pkgname=pakchan
-pkgver=2.0.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="GTK4 package manager for Manjaro/Arch with real changelogs for Pacman, AUR, Flatpak, and Snap"
 arch=('any')
 url="https://github.com/dodog/pakchan"
 license=('MIT')
-depends=('python-gobject' 'gtk4' 'libadwaita>=1.5' 'pacman-contrib' 'polkit')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita>=1.5' 'pacman-contrib' 'polkit')
 optdepends=('yay: AUR install and update detection'
             'paru: AUR install and update detection (alternative to yay)'
             'git: AUR PKGBUILD review and git-based changelog fallback'
@@ -14,7 +14,7 @@ optdepends=('yay: AUR install and update detection'
             'snapd: Snap support'
             'vte4: embedded terminal for update output')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dodog/pakchan/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3ce9a64b149e3ef077b8b9539d8b313e29b8ba55e003b9f412a6015d6f551e74')
+sha256sums=('40cb747cf60b01204c6c7ff99656be622f49c9e85581ee20bb44b6394127c2b1')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
