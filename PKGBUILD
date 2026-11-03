@@ -2,7 +2,7 @@
 
 pkgname=gitee-lfs-multipart-uploader-git
 pkgver=1.0.4.r16.g0ad46f4
-pkgrel=4
+pkgrel=5
 pkgdesc="Gitee LFS high-speed object storage direct transfer tool"
 arch=($CARCH)
 url="https://gitee.com/oscstudio/gitee-lfs-multipart-uploader"
@@ -11,7 +11,6 @@ provides=(${pkgname%-git} multipart-transfer)
 conflicts=(${pkgname%-git} multipart-transfer)
 #replaces=(${pkgname})
 depends=(
-    glibc
     git
     git-lfs
 )

@@ -1,13 +1,12 @@
 pkgbase = gitee-lfs-multipart-uploader-git
 	pkgdesc = Gitee LFS high-speed object storage direct transfer tool
 	pkgver = 1.0.4.r16.g0ad46f4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitee.com/oscstudio/gitee-lfs-multipart-uploader
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	depends = glibc
 	depends = git
 	depends = git-lfs
 	optdepends = mcp-gitee: Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Gitee.
