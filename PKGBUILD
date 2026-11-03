@@ -1,8 +1,8 @@
 # Maintainer: soymadip
 pkgname=mpv-modernx
 _pkgname=ModernX
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="A fork of modernX (based on mpv-osc-modern), that aims to mirror the functionality of MPV's stock OSC while with a more modern-looking interface."
 arch=('any')
 url="https://github.com/zydezu/ModernX"
