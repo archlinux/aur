@@ -1,6 +1,6 @@
 pkgbase = pocketdesk
 	pkgdesc = Your Linux or Windows desktop on your Android phone: screen, input, clipboard, files and notifications over LAN, Tailscale or the internet
-	pkgver = 0.8.3
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/sreevarshan-xenoz/Pocketdesk
 	install = pocketdesk.install
@@ -27,7 +27,7 @@ pkgbase = pocketdesk
 	optdepends = playerctl: what is playing, and Play/Pause and skip from the phone
 	optdepends = tailscale: reaching the computer through a tailnet
 	options = !lto
-	source = pocketdesk-0.8.3.tar.gz::https://github.com/sreevarshan-xenoz/Pocketdesk/archive/refs/tags/v0.8.3.tar.gz
-	sha256sums = 62eb88ca09ef7b7be97f84af8a898f814ba56fe02fae924ac4a1cd2bcd16af5f
+	source = pocketdesk-0.9.0.tar.gz::https://github.com/sreevarshan-xenoz/Pocketdesk/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = a7374e01f466b7116f831f30b3133936a3ae81a4c75afbafbd15f27801acf64e
 
 pkgname = pocketdesk

@@ -1,6 +1,6 @@
 # Maintainer: xenoz <https://github.com/sreevarshan-xenoz>
 pkgname=pocketdesk
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Your Linux or Windows desktop on your Android phone: screen, input, clipboard, files and notifications over LAN, Tailscale or the internet"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=pocketdesk.install
 # link cannot read (undefined ring_core_* symbols).
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('62eb88ca09ef7b7be97f84af8a898f814ba56fe02fae924ac4a1cd2bcd16af5f')
+sha256sums=('a7374e01f466b7116f831f30b3133936a3ae81a4c75afbafbd15f27801acf64e')
 
 # GitHub names the unpacked folder after the repository, not the package.
 _src="Pocketdesk-${pkgver}"
@@ -39,7 +39,7 @@ build() {
   export CARGO_TARGET_DIR=target
   # Two builds, as the release does, so the server's zbus features are not
   # unified into the desktop app's.
-  cargo build --frozen --release --bin pocketdesk
+  cargo build --frozen --release --bin pocketdesk --bin pocketdesk-pam-ask
   cargo build --frozen --release -p pocketdesk-desktop --bin pocketdesk-app --bin pocketdesk-tray
 }
 
@@ -48,6 +48,9 @@ package() {
   for bin in pocketdesk pocketdesk-app pocketdesk-tray; do
     install -Dm755 "target/release/${bin}" "${pkgdir}/usr/bin/${bin}"
   done
+  # "Approve with my phone": PAM's helper, root's. Unused until the owner
+  # adds its line to /etc/pam.d; the package never touches PAM.
+  install -Dm755 target/release/pocketdesk-pam-ask "${pkgdir}/usr/lib/pocketdesk/pocketdesk-pam-ask"
   # Session-bound USER unit: each user can `systemctl --user enable --now
   # pocketdesk` from their desktop session.
   install -dm755 "${pkgdir}/usr/lib/systemd/user"
