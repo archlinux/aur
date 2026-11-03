@@ -2,8 +2,8 @@
 
 pkgname=isocast-git
 _pkgname=${pkgname%-git}
-pkgver=0.0.9.r31.g539c5cb
-pkgrel=3
+pkgver=0.0.10.r4.gbd1fc8e
+pkgrel=1
 url="https://$_pkgname.xyz"
 _url="https://github.com/R44VC0RP/$_pkgname"
 pkgdesc='OBS alternative that records every source as its own file (Git HEAD'
@@ -50,7 +50,7 @@ prepare() {
 pkgver() {
 	cd "$_pkgname"
 	git describe --long --tags --abbrev=7 --match="v*" HEAD |
-			sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
