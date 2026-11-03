@@ -5,7 +5,7 @@
 
 pkgname=claude-desktop-extra
 pkgver=4.4212.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -58,10 +58,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.4212.0-4/claude-desktop-4.4212.0-linux.tar.gz")
-sha256sums_x86_64=('8088f0ae468517821ecd1e64075b3606a0fc29cb2fe2b207a8f77d81c6efa4e0')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.4212.0-4/claude-desktop-4.4212.0-linux-aarch64.tar.gz")
-sha256sums_aarch64=('89166a2dae27ad103f49e8c53f8a3285f84221ad6777bcead6d3649a45902280')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.4212.0-5/claude-desktop-4.4212.0-linux.tar.gz")
+sha256sums_x86_64=('90f484e38765f53c748295ae2bd74794dc8b6fd9c96fb4d9228f9e90387786a8')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.4212.0-5/claude-desktop-4.4212.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('27263ff74b00ce03ae8f7fbf6f28bac0d399c3af4c303229dc0f647796bd7062')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -184,6 +184,21 @@ EOF
         return 1
     fi
     install -pDm644 "$_mime" "$pkgdir/usr/share/mime/packages/com.anthropic.Claude.xml"
+
+    # Opt-in TPM access (cloud Cowork / Dispatch Computer Use): the rule and its
+    # root helper stay disabled inside the tree; the helper's polkit action is a
+    # package file so pkexec shows our prompt. The .install hook does not touch them.
+    local _udev="$pkgdir/usr/lib/claude-desktop/resources/linux-udev"
+    local _policy=io.github.patrickjaja.claude-desktop-extra.tpm-access.policy
+    for _f in 70-claude-desktop-extra-tpm.rules cdb-tpm-access "$_policy"; do
+        if [ ! -f "$_udev/$_f" ]; then
+            echo "ERROR: resources/linux-udev/$_f missing from the tarball - rebuild it" >&2
+            return 1
+        fi
+    done
+    chmod 755 "$_udev" "$_udev/cdb-tpm-access"
+    chmod 644 "$_udev/70-claude-desktop-extra-tpm.rules" "$_udev/$_policy"
+    install -pDm644 "$_udev/$_policy" "$pkgdir/usr/share/polkit-1/actions/$_policy"
 
     # Upstream license notice (the official .deb's usr/share/doc copyright file,
     # placed at the tarball root by scripts/build-patched-tarball.sh).
