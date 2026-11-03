@@ -1,6 +1,6 @@
 pkgbase = mp4ff-git
 	pkgdesc = Tools for parsing and manipulating MP4/ISOBMFF files (git version)
-	pkgver = r1298.89ecfb2
+	pkgver = r1311.e7525f4
 	pkgrel = 1
 	url = https://github.com/Eyevinn/mp4ff
 	arch = x86_64
