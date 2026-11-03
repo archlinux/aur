@@ -4,7 +4,7 @@
 _pkgauthor=stashapp
 _pkgname=stash
 pkgname=${_pkgname}-bin
-pkgver=0.31.1
+pkgver=0.32.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="An organizer for your porn, written in Go"
@@ -36,10 +36,10 @@ sha256sums=('06ff18ccab55933fa568a05f280709de839d98979b6cf85217ffb252728b8840'
             '7aac9c11831133f271c52bc432bd68a3eeb48afa9f0affa0486e57a693abf862'
             '4f6add7bf6d1be8dc5df5f6117b7288a2c9d4ba97fd784bc05c197673353de85'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
-            'd0ee947830586d74546419df9d6dcf58fda73e9f47d9ceab236756ce8023256c')
-sha256sums_x86_64=('5f71391abc7cebafd5b92f7b3250962730c8be3e7f12f23fd98029878b2568c0')
-sha256sums_aarch64=('1e716314539ed40670b534758b5a5d3e14c0d7eb4e8c852fb0b64e41f5f67d35')
-sha256sums_armv7h=('3962da9a6154ceb8e9dbd5720fb57c9431fa6cd7668d26aae99f6431b06807b9')
+            '9919670b3e5813dcd1175cc0fe3cf0fcf5092aa8a2e17446b22d2d7d32eeeb98')
+sha256sums_x86_64=('3cdcedb72142eeade868074e21090c02e97565402725f172b616d1894b3df04f')
+sha256sums_aarch64=('046e2ee2854b93b2ef0018fffd1c25cb803aea9ed17b1525969995ae074d28fc')
+sha256sums_armv7h=('8d75af3b7f5e182fbdf147648fc86e4488cc62bf8039135960179d08465ad5c3')
 
 
 package() {
