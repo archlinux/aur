@@ -2,8 +2,8 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 
 pkgname="dbt-core"
-pkgver=2.0.8
-pkgrel=6
+pkgver=2.0.11
+pkgrel=1
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=("x86_64" "aarch64")
 url="https://www.getdbt.com/"
@@ -20,7 +20,7 @@ makedepends=("cargo"
              "python-wheel")
 options=("!lto")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('bac2b52d7ca01d476cad49fc61cf425413201228a0eed79df7e1c8a44cb917fe738f0f36fc2539ca9e202fc6dd0c1669f1f384fa4878ad90e41934977fe919d5')
+b2sums=('ab1abc6e4a0726ff2adb7ce1df07bfa59541fc509c8e3e97db94ec8f6ff1b89c631066c99ff0bb5c93065aef03a126913408d1f249acabc7cd0d567f3109816c')
 
 prepare(){
  cd "dbt-$pkgver"
