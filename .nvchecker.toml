@@ -1,4 +1,5 @@
 [git-archive-all]
 source = 'github'
 github = 'Kentzo/git-archive-all'
-use_latest_release = true
+use_max_release = true
+include_regex = '\d+\.\d+\.\d+'
