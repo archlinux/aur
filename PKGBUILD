@@ -4,7 +4,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=pittore-studio
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Layer-based photo editor for Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('cuda' 'hip-runtime-amd' 'meson' 'ninja' 'pkgconf')
 # against non-copyable protected symbol" on Qt6's staticMetaObject symbols
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('df5e251718e1e7bdb1b96d8096d62a5f63557c1db63b45f0b011bbbebd172768')
+sha256sums=('ff6a3d4d6770a44dedde287ddbabd76cf5784d786e6e809dcac4ba9daef23f68')
 
 build() {
   # The GPU target lists are upstream's own, from the build that produces the

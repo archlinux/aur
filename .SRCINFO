@@ -1,6 +1,6 @@
 pkgbase = pittore-studio
 	pkgdesc = Layer-based photo editor for Linux
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Event-Horizon-desktop-environment/pittore-studio
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = pittore-studio
 	depends = zstd
 	optdepends = hip-runtime-amd: AMD GPU compute backend (ROCm HIP runtime)
 	options = !lto
-	source = pittore-studio-0.1.6.tar.gz::https://github.com/Event-Horizon-desktop-environment/pittore-studio/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = df5e251718e1e7bdb1b96d8096d62a5f63557c1db63b45f0b011bbbebd172768
+	source = pittore-studio-0.1.7.tar.gz::https://github.com/Event-Horizon-desktop-environment/pittore-studio/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = ff6a3d4d6770a44dedde287ddbabd76cf5784d786e6e809dcac4ba9daef23f68
 
 pkgname = pittore-studio
