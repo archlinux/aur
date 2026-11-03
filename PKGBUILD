@@ -1,10 +1,10 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.11.2_3
+pkgver=2026.11.3_2
 pkgrel=1
 _npmver=${pkgver//_/-}
-_gitver=2026.11.2-3
+_gitver=2026.11.3-2
 pkgdesc='Opinionated coding agent CLI based on pi'
 arch=('x86_64' 'aarch64')
 url='https://github.com/code-yeongyu/senpi'
@@ -24,8 +24,19 @@ source=(
   "$pkgname-$_npmver-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v$_gitver/LICENSE"
 )
 noextract=("$pkgname-$_npmver.tgz")
-sha256sums=('75d17b379a9745fb33e533a8998367033b58c275eb3f1a7a31161a3cdf508a84'
+sha256sums=('8b8023e8c199cf3d8475cbc227277957e6a90036c6e7b37cb3f13e455ad2d0a0'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
+
+build() {
+  # Resolve dependencies before fakeroot; npm can stall in its interposed I/O.
+  rm -rf "$srcdir/npm-stage"
+  npm install -g \
+    --ignore-scripts \
+    --prefix "$srcdir/npm-stage" \
+    --cache "$srcdir/npm-cache" \
+    --no-audit --no-fund --loglevel=warn \
+    "$srcdir/$pkgname-$_npmver.tgz"
+}
 
 package() {
   local _target="$pkgdir/usr/lib/node_modules/@code-yeongyu/$pkgname"
@@ -35,12 +46,8 @@ package() {
     _native_arch=arm64
   fi
 
-  npm install -g \
-    --ignore-scripts \
-    --prefix "$pkgdir/usr" \
-    --cache "$srcdir/npm-cache" \
-    --no-audit --no-fund --loglevel=warn \
-    "$srcdir/$pkgname-$_npmver.tgz"
+  install -d "$pkgdir/usr"
+  cp -a "$srcdir/npm-stage/." "$pkgdir/usr/"
   rm -f "$pkgdir/usr/bin/pi"
   rm -rf "$pkgdir/usr/etc"
   # Keep only native helpers matching this Linux architecture.
