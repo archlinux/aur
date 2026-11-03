@@ -1,6 +1,6 @@
 # Maintainer: wayscriber maintainers <hyprarcher@proton.me>
 pkgname=wayscriber-configurator
-pkgver=0.9.28
+pkgver=0.9.29
 pkgrel=1
 pkgdesc='GUI configurator for wayscriber (GTK4/libadwaita)'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=(
     'wayscriber: integrate with the running daemon and CLI'
 )
 source=("wayscriber-$pkgver.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('580e0f5a61b185cb9fb6fc0470267c85210f23825b17c42f72700a208dee8e8a')
+sha256sums=('bf99791e46d6cdc3652776f1c93636ae0b17eff7ffc5afed3bf15187cc9d930b')
 
 prepare() {
     cd "wayscriber-$pkgver"
