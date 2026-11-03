@@ -1,6 +1,6 @@
 pkgbase = ears-stt-bin
 	pkgdesc = OpenAI-compatible speech-to-text server for ears, backed by whisper.cpp
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/dvjn/ears
 	install = ears-stt-bin.install
@@ -16,7 +16,7 @@ pkgbase = ears-stt-bin
 	provides = ears-stt
 	conflicts = ears-stt
 	options = !debug
-	source = https://github.com/dvjn/ears/releases/download/v0.2.1/ears-stt-0.2.1-x86_64.tar.gz
-	sha256sums = 1c09d6a48a34b03422dcd0671005f6d257542e5557dac5751f6535c2ddd58170
+	source = https://github.com/dvjn/ears/releases/download/v0.3.0/ears-stt-0.3.0-x86_64.tar.gz
+	sha256sums = 4d014232feb0421c9308ed5e416138a9fd1bc78b4541800f12c9da00820b66bc
 
 pkgname = ears-stt-bin
