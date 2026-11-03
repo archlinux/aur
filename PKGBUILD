@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Database TUI"
 
-pkgver=2026.10.3
+pkgver=2026.11.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('8c9ddbb233e510abba6620f8022dd1abde1f6b1f2d8ee911864ed6cc053ae1ad')
+sha256sums_x86_64=('3ced28accd0426931118f9e763bf973ca04740c638480cdcc409ac6cb423d17c')
 
 
 case ${CARCH} in
