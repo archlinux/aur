@@ -2,7 +2,7 @@
 # Contributor: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.119.0
+pkgver=1.144.0
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
@@ -42,9 +42,9 @@ optdepends=(
 makedepends=(
 	"git"
 	"npm"
-	"pnpm"
 	"python"
-	"nodejs-lts-jod"
+	"nodejs-lts-krypton"
+	"xorg-server-xvfb"
 )
 
 source=(
@@ -58,8 +58,8 @@ source=(
 sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
-	"9deb0da4eb9fb989e892a5743b99c50acc64dddcd33d2a8517d0a48eb12476dac3a8c5238fa40b64c6c3e89fa3cc399135ebf1f795f9029871cf61d25418e2c6"
-	"36c3ba2f04fb479968264ba65a952392dfa1792a0eb434b2f41ccc6eccce528d29749de00c37d802a1622064d22a2e6b2a01adb2b2c86f8007ee27094259a87b"
+	"b25f7bbaceea92a2f4e3d7aeee365e79c2c89db285eb604efe63015a678b52c9e0b1957c05ce60e21100787f15d20227f8cdda8d76f45a94746d0c422284990b"
+	"e34c4d40e4e2e23dc716122728ffb84ceeebf1b79ae0156f48f9ed78483925bbe6320a1ab3be21bd361c182f35bf3e665e1962d362989110edf6db8f22d81f09"
 	"6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd"
 )
 
@@ -95,8 +95,15 @@ prepare() {
 	# Replace product json
 	cp --update=all "../product.json" "."
 
-	# Add vsce-sign necessary for extensions' signature verification
-	pnpm add @vscode/vsce-sign @vscode/vsce-sign-linux-"${_vscode_arch}"
+	# Upstream ships the Copilot SDK from a prebuilt VSIX, so build/.moduleignore strips the
+	# copy that is packaged from the source tree. Keep it, otherwise packaging aborts in
+	# prepareBuiltInCopilotRipgrepShim with "Copilot SDK directory not found".
+	printf '!@github/copilot/package.json\n!@github/copilot/sdk/**\n!@github/copilot/tgrep/**\n' >> build/.moduleignore
+
+	# Add vsce-sign necessary for extensions' signature verification.
+	# As an optional dependency, npm skips the platform package when it does not exist for this arch.
+	npm pkg set "optionalDependencies.@vscode/vsce-sign=^2.1.0" \
+		"optionalDependencies.@vscode/vsce-sign-linux-${_vscode_arch}=2.0.6"
 
 	# Set the commit and build date
 	local _commit="$(git rev-parse HEAD)"
@@ -105,7 +112,7 @@ prepare() {
 
 	# Patch appdata and desktop file
 	sed -i 's|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
-    		s|@@NAME_SHORT@@|Code|g
+    		s|@@DESKTOP_NAME@@|code-oss|g
     		s|@@NAME_LONG@@|Code - OSS|g
     		s|@@NAME@@|code-oss|g
     		s|@@ICON@@|code|g
@@ -125,7 +132,12 @@ prepare() {
 
 	# upstream has a compatibility issue with npm but it doesn't affect packaging
 	# so remove the check
-	sed -i '/Please use npm version < 11.2.0./{n;d}' build/npm/preinstall.ts
+	sed -i '/Please use npm version < 13.0.0./{n;d}' build/npm/preinstall.ts
+
+	# Node appends the uid to the compile cache directory name when it is not run as
+	# root, so the tag directory is v24.22.0-x64-60e4fe36-1000 in a build chroot.
+	# Upstream only accepts the root naming and aborts the package step.
+	sed -i 's#-(arm64|x64)-\[0-9a-f\]{8}\$/;#-(arm64|x64)-[0-9a-f]{8}(-\\d+)?$/;#' build/lib/nodeCompileCache.ts
 }
 
 build() {
@@ -134,7 +146,13 @@ build() {
 
 	npm install --cpu="${_vscode_arch}"
 
-	npm run gulp vscode-linux-"${_vscode_arch}"-min
+	# npm blocks install scripts that are not listed in package.json allowScripts, and
+	# the @vscode/vsce-sign postinstall is what copies the signing binary into bin/.
+	node node_modules/@vscode/vsce-sign/src/postinstall.js
+
+	# 1.144 generates the Node.js compile cache by starting the packaged app, which
+	# opens a window and therefore needs a display. Upstream CI does the same under Xvfb.
+	xvfb-run -a npm run gulp vscode-linux-"${_vscode_arch}"-min
 
 }
 

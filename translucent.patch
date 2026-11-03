@@ -1,8 +1,9 @@
-diff -Naur a/src/main.ts b/src/main.ts
---- a/src/main.ts	2024-10-28 09:08:10.000000000 +0100
-+++ b/src/main.ts	2024-10-31 09:34:25.117872583 +0100
-@@ -298,6 +298,10 @@
- 		`FontMatchingCTMigration,${app.commandLine.getSwitchValue('disable-blink-features')}`;
+diff --git a/src/mainImpl.ts b/src/mainImpl.ts
+index c23a61b11a6..494b3438679 100644
+--- a/src/mainImpl.ts
++++ b/src/mainImpl.ts
+@@ -379,6 +379,10 @@ function configureCommandlineSwitchesSync(cliArgs: NativeParsedArgs) {
+ 		`FontMatchingCTMigration,StandardizedBrowserZoom,${app.commandLine.getSwitchValue('disable-blink-features')}`;
  	app.commandLine.appendSwitch('disable-blink-features', blinkFeaturesToDisable);
  
 +	// Enable visuals for transparent window
@@ -10,12 +11,13 @@ diff -Naur a/src/main.ts b/src/main.ts
 +	app.commandLine.appendSwitch('use-gl', 'desktop');
 +
  	// Support JS Flags
- 	const jsFlags = getJSFlags(cliArgs);
+ 	const jsFlags = getJSFlags(cliArgs, argvConfig);
  	if (jsFlags) {
-diff -Naur a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/browser/widget/diffEditor/style.css
---- a/src/vs/editor/browser/widget/diffEditor/style.css	2023-10-03 06:06:10.000000000 +0200
-+++ b/src/vs/editor/browser/widget/diffEditor/style.css	2023-10-04 21:27:43.122393566 +0200
-@@ -161,8 +161,8 @@
+diff --git a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/browser/widget/diffEditor/style.css
+index d3a7953afd5..45079794556 100644
+--- a/src/vs/editor/browser/widget/diffEditor/style.css
++++ b/src/vs/editor/browser/widget/diffEditor/style.css
+@@ -307,8 +307,8 @@
  }
  
  /* colors not externalized: using transparancy on background */
@@ -26,10 +28,11 @@ diff -Naur a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/b
  
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs		.scrollbar { background: rgba(0,0,0,0); }
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs-dark	.scrollbar { background: rgba(0,0,0,0); }
-diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/windows/electron-main/windows.ts
---- a/src/vs/platform/windows/electron-main/windows.ts	2024-07-31 13:26:36.000000000 +0200
-+++ b/src/vs/platform/windows/electron-main/windows.ts	2024-08-01 20:09:18.467692458 +0200
-@@ -124,6 +124,7 @@
+diff --git a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/windows/electron-main/windows.ts
+index fed0318cc1c..0793461b946 100644
+--- a/src/vs/platform/windows/electron-main/windows.ts
++++ b/src/vs/platform/windows/electron-main/windows.ts
+@@ -140,6 +140,7 @@ export function defaultBrowserWindowOptions(accessor: ServicesAccessor, windowSt
  	const windowSettings = configurationService.getValue<IWindowSettings | undefined>('window');
  
  	const options: electron.BrowserWindowConstructorOptions & { experimentalDarkMode: boolean; accentColor?: boolean | string } = {
@@ -37,11 +40,12 @@ diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/
  		backgroundColor: themeMainService.getBackgroundColor(),
  		minWidth: WindowMinimumSize.WIDTH,
  		minHeight: WindowMinimumSize.HEIGHT,
-diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
---- a/src/vs/workbench/common/theme.ts	2024-10-02 05:59:58.000000000 +0200
-+++ b/src/vs/workbench/common/theme.ts	2024-10-04 18:41:24.005864953 +0200
-@@ -7,21 +7,11 @@
- import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground, treeIndentGuidesStroke, errorForeground, listActiveSelectionBackground, listActiveSelectionForeground, editorForeground, toolbarHoverBackground, inputBorder, widgetBorder, scrollbarShadow } from '../../platform/theme/common/colorRegistry.js';
+diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
+index 9634bef5f72..30284a69d62 100644
+--- a/src/vs/workbench/common/theme.ts
++++ b/src/vs/workbench/common/theme.ts
+@@ -8,21 +8,11 @@ import { registerColor, editorBackground, contrastBorder, transparent, opaque, o
+ import { foreground } from '../../platform/theme/common/colors/baseColors.js';
  import { IColorTheme } from '../../platform/theme/common/themeService.js';
  import { Color } from '../../base/common/color.js';
 -import { ColorScheme } from '../../platform/theme/common/theme.js';
@@ -63,7 +67,7 @@ diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
  }
  
  // < --- Tabs --- >
-@@ -780,6 +770,13 @@
+@@ -913,6 +903,13 @@ export const NOTIFICATIONS_WARNING_ICON_FOREGROUND = registerColor('notification
  
  export const NOTIFICATIONS_INFO_ICON_FOREGROUND = registerColor('notificationsInfoIcon.foreground', editorInfoForeground, localize('notificationsInfoIconForeground', "The color used for the icon of info notifications. Notifications slide in from the bottom right of the window."));
  
@@ -77,12 +81,13 @@ diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
  export const WINDOW_ACTIVE_BORDER = registerColor('window.activeBorder', {
  	dark: null,
  	light: null,
-diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/workbench/contrib/splash/browser/partsSplash.ts
---- a/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2023-02-01 05:32:54.000000000 +0100
-+++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2023-02-03 08:41:45.193374826 +0100
-@@ -65,12 +65,17 @@
- 	private _savePartsSplash() {
- 		const theme = this._themeService.getColorTheme();
+diff --git a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/workbench/contrib/splash/browser/partsSplash.ts
+index 43cd923deb6..d54868213c3 100644
+--- a/src/vs/workbench/contrib/splash/browser/partsSplash.ts
++++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts
+@@ -74,12 +74,17 @@ export class PartsSplash {
+ 		const modernUIShellBackground = theme.getColor(themes.MODERN_UI_SHELL_BACKGROUND);
+ 		const modernUIInactiveShellBackground = theme.getColor(themes.MODERN_UI_INACTIVE_SHELL_BACKGROUND);
  
 +		const windowBackground = theme.getColor(themes.WINDOW_BACKGROUND) || Color.transparent;
 +		const background = windowBackground.isOpaque() ? windowBackground.transparent(0.99)
@@ -97,12 +102,13 @@ diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/wor
 -				background: Color.Format.CSS.formatHex(theme.getColor(editorBackground) || themes.WORKBENCH_BACKGROUND(theme)),
 +				background: Color.Format.CSS.formatRGBA(background),
  				editorBackground: theme.getColor(editorBackground)?.toString(),
- 				titleBarBackground: theme.getColor(themes.TITLE_BAR_ACTIVE_BACKGROUND)?.toString(),
- 				activityBarBackground: theme.getColor(themes.ACTIVITY_BAR_BACKGROUND)?.toString(),
-diff -Naur a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
---- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2024-10-28 09:08:10.000000000 +0100
-+++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts	2024-10-31 09:32:17.961287862 +0100
-@@ -186,6 +186,7 @@
+ 				titleBarBackground: theme.getColor(themes.TITLE_BAR_ACTIVE_BACKGROUND)?.makeOpaque(themes.WORKBENCH_BACKGROUND(theme)).toString(),
+ 				titleBarInactiveBackground: theme.getColor(themes.TITLE_BAR_INACTIVE_BACKGROUND)?.makeOpaque(themes.WORKBENCH_BACKGROUND(theme)).toString(),
+diff --git a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+index df53f3450a0..813f82028fb 100644
+--- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
++++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+@@ -245,6 +245,7 @@ export class XtermTerminal extends Disposable implements IXtermTerminal, IDetach
  
  		this.raw = this._register(new xtermCtor({
  			allowProposedApi: true,
