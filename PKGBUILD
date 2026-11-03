@@ -1,4 +1,4 @@
-# Maintainer: matthias.brandt@elpro.com
+# Maintainer: abandoned
 
 pkgname=asyncapi-cli-bin
 pkgver=6.2.0
