@@ -2,23 +2,22 @@
 
 # The one PKGBUILD for this package; everything Arch builds from it:
 #
-# - AUR: release.sh copies it, with mx-samba-config.install, into aur/ and
-#   fills in pkgver and the tag tarball's real checksum there.
-# - OBS: the _service extracts arch/* from main and download_files fetches the
-#   source= tarball below, since the build VMs have no network. makepkg on OBS
-#   does check sums, which is why the SKIP here stays: the tarball's checksum
-#   only exists once the tag has been pushed.
+# - OBS: the _service extracts arch/* and the Debian native tarball that
+#   release builds commit to debs/ from main. OBS build VMs have no network,
+#   and download_files never sees a PKGBUILD that obs_scm extracted, so
+#   source= must name a file the service already provides: that tarball.
+#   obs (fish) keeps pkgver and source= in step with debian/changelog.
+# - AUR: release.sh and release-aur copy it into aur/, point source= at the
+#   GitHub tag tarball with its real checksum and set _srcdir to the
+#   directory that tarball unpacks to.
 # - Local: "./build.sh --arch" builds the working tree from a git archive
-#   tarball named after source= below, so makepkg uses it instead of fetching.
-#
-# Keep pkgver in step with debian/changelog; release.sh refuses to tag a
-# version this file isn't at, because OBS fetches the tarball named here.
+#   tarball laid out like the debs/ one.
 #
 # Keep source= on one line with ${pkgver} in double quotes: OBS parses this
 # file itself and only expands plain variables.
 
 pkgname=mx-samba-config
-pkgver=26.09
+pkgver=26.11
 pkgrel=1
 pkgdesc="Samba configuration GUI tool"
 arch=('x86_64' 'i686')
@@ -27,11 +26,15 @@ license=('GPL3')
 depends=('samba' 'qt6-base' 'polkit' 'xdg-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 install=mx-samba-config.install
-source=("https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.09.tar.gz")
-sha256sums=('61b5d2ea36d85dec9d7c34bb50eb344f3e84c44a64516c1c50179ec0dede320a')
+source=("https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.11.tar.gz")
+sha256sums=('672bcba45fc84e70ffe6791d168624a399747f162a3bc94946a9412e255656af')
+
+# dpkg-source packed the debs/ tarball from a directory called "src"; the AUR
+# copy sets this to the "${pkgname}-${pkgver}" its tag tarball unpacks to
+_srcdir="mx-samba-config-26.11"
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_srcdir}"
 
     rm -rf build
 
@@ -46,7 +49,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_srcdir}"
 
     install -Dm755 build/mx-samba-config "${pkgdir}/usr/bin/mx-samba-config"
 
