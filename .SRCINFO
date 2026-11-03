@@ -1,6 +1,6 @@
 pkgbase = gotrust
 	pkgdesc = Tray app for Sangfor aTrust gateways with local SOCKS5 and HTTP proxies
-	pkgver = 0.3.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/YangtseSu/goTrust
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gotrust
 	depends = hicolor-icon-theme
 	conflicts = gotrust-git
 	options = !debug
-	source = gotrust-0.3.0.tar.gz::https://github.com/YangtseSu/goTrust/archive/v0.3.0.tar.gz
-	sha256sums = 519b6263b2522958a8c87433355d263b1f539fe3e4b730b2939339fef22e2607
+	source = gotrust-0.6.0.tar.gz::https://github.com/YangtseSu/goTrust/archive/v0.6.0.tar.gz
+	sha256sums = 712de8e90f119ef86e571b4aade9fe6b12bfe761c4caa5f1e607bf89d69b1dc0
 
 pkgname = gotrust

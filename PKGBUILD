@@ -1,7 +1,7 @@
 # Maintainer: Yangtse Su <yangtsesu at gmail dot com>
 
 pkgname=gotrust
-pkgver=0.3.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Tray app for Sangfor aTrust gateways with local SOCKS5 and HTTP proxies'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ options=('!debug')
 _srcdir="goTrust-$pkgver"
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('519b6263b2522958a8c87433355d263b1f539fe3e4b730b2939339fef22e2607')
+sha256sums=('712de8e90f119ef86e571b4aade9fe6b12bfe761c4caa5f1e607bf89d69b1dc0')
 
 prepare() {
   cd "$_srcdir"
