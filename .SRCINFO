@@ -1,6 +1,6 @@
 pkgbase = diun
 	pkgdesc = Receive notifications when an image is updated on a Docker registry.
-	pkgver = 4.33.0
+	pkgver = 4.33.1
 	pkgrel = 1
 	url = https://github.com/crazy-max/diun
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = diun
 	makedepends = gcc
 	provides = diun
 	conflicts = diun-bin
-	source = diun-4.33.0.tar.gz::https://github.com/crazy-max/diun/archive/v4.33.0.tar.gz
+	source = diun-4.33.1.tar.gz::https://github.com/crazy-max/diun/archive/v4.33.1.tar.gz
 	source = diun.service::https://gitlab.com/mapanare-labs/packages/archlinux/diun-bin/-/raw/main/diun.service
 	source = diun.yml::https://gitlab.com/mapanare-labs/packages/archlinux/diun-bin/-/raw/main/diun.yml
-	sha256sums = 0ced7713a2b82828a53fe0374a0fe30e983b87db2a469af28a9ebcb44d3990f0
+	sha256sums = 8062809a14fa5e587267e9cffe66f578b06a6c33ce83f8679d2bca4855b55488
 	sha256sums = 5c16f7ae5b023407a443fbf1d0d811d236c94d191aae1af426e9540d22df3fa7
 	sha256sums = 00436d3e95e446211f9ffbaa36e6b9bc27ffe054745f1a687c4c1c46f1d7da14
 
