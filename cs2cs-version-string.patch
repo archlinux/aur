@@ -1,0 +1,12 @@
+diff -ura package.orig/t/03-utilities.t package.new/t/03-utilities.t
+--- package.orig/t/03-utilities.t	2026-11-06 12:45:51.724970412 +1100
++++ package.new/t/03-utilities.t	2026-11-06 12:46:25.436240404 +1100
+@@ -12,7 +12,7 @@
+         && !which 'projinfo';
+     
+     my ($result, $stderr, $exit) = Alien::proj->run_utility ("cs2cs");
+-    like ($stderr, qr{Rel. \d\.\d\.\d, .+ \d{4}},
++    like ($stderr, qr{Rel. \d\.\d\.\d( \(.+\))?, .+ \d{4}},
+         'Got expected result from cs2cs utility');
+     diag '';
+     diag ("\nUtility results:\n" . $result);
