@@ -1,17 +1,20 @@
 pkgbase = treekei-bin
 	pkgdesc = A file tree with line counts
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/zihao-liu-qs/treekei
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	provides = treekei
 	conflicts = treekei
-	source = README-0.2.3.md::https://raw.githubusercontent.com/zihao-liu-qs/treekei/v0.2.3/README.md
-	source = LICENSE-0.2.3::https://raw.githubusercontent.com/zihao-liu-qs/treekei/v0.2.3/LICENSE
-	sha256sums = 8efea2ae58678497e5cad9aa8d02bf53c5864da1ff99d28458c1dc9a0ddaf037
+	source = README-0.2.4.md::https://raw.githubusercontent.com/zihao-liu-qs/treekei/v0.2.4/README.md
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/zihao-liu-qs/treekei/v0.2.4/LICENSE
+	sha256sums = cc348a1cc288f37fb4ada752cdd81a7c63c71802e0b7375dbdb5473a6935c3bc
 	sha256sums = 28260cf04b56c1359ae421c6222f2bfb1d67475d37e586c66e37b373b252d2ae
-	source_x86_64 = treekei-x86_64-0.2.3.tgz::https://github.com/zihao-liu-qs/treekei/releases/download/v0.2.3/treekei_linux_amd64.tar.gz
-	sha256sums_x86_64 = d8dcae7a65589ce9a08654b390735648eb3f3fe39b458530bcd78b1b1dd8ed8a
+	source_x86_64 = treekei-x86_64-0.2.4.tgz::https://github.com/zihao-liu-qs/treekei/releases/download/v0.2.4/treekei_0.2.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1cd075be2b4bde10b3eb487dc7a4f870c2e2dcc1e3268e28b1368ee935179c93
+	source_aarch64 = treekei-aarch64-0.2.4.tgz::https://github.com/zihao-liu-qs/treekei/releases/download/v0.2.4/treekei_0.2.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = ca8d78c37da302e2a564143e183fd5821a68c191bf2c70c714375844b95c7973
 
 pkgname = treekei-bin
