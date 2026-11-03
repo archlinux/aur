@@ -1,7 +1,7 @@
 # Maintainer: Siddhesh Lakhani <lakhani.siddhesh@gmail.com>
 pkgname=glyph-ocr-bin
 _pkgname=glyph
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Blazing-fast, minimal Wayland screen OCR & text sniper (precompiled binary)"
 arch=('x86_64')

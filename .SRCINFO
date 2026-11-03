@@ -1,6 +1,6 @@
 pkgbase = glyph-ocr-bin
 	pkgdesc = Blazing-fast, minimal Wayland screen OCR & text sniper (precompiled binary)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sid-lakhani/glyph
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = glyph-ocr-bin
 	provides = glyph-ocr
 	conflicts = glyph
 	conflicts = glyph-ocr
-	source = glyph-ocr-bin-0.1.0.tar.gz::https://github.com/sid-lakhani/glyph/releases/download/v0.1.0/glyph-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	source = glyph-ocr-bin-0.1.1.tar.gz::https://github.com/sid-lakhani/glyph/releases/download/v0.1.1/glyph-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 
 pkgname = glyph-ocr-bin
