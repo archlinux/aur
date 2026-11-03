@@ -1,6 +1,6 @@
 pkgbase = dbt-fusion-bin
 	pkgdesc = The next-generation engine for dbt
-	pkgver = 2.0.10
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://www.getdbt.com/product/fusion
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dbt-fusion-bin
 	license = custom
 	source = https://raw.githubusercontent.com/dbt-labs/dbt-fusion/refs/heads/main/LICENSES.md
 	b2sums = 02b4a21de1049ad3fb76f90c5b8d21b6db163fc5b0beefa770558594a92bb9c1b7aa60039ba675c5e57389d9525814397a6a563c8467fb8973a5d206df7b41c2
-	source_x86_64 = https://public.cdn.getdbt.com/fs/cli/fs-v2.0.10-x86_64-unknown-linux-gnu.tar.gz
-	b2sums_x86_64 = b50a6ffb5e3c99f556ca1235da0924f79e17bc3cb8ee08773662bc8a4b9bf343933ebcedc3b7c2a880be62523b193962c18fe24523c06198b3b17ed020da939a
-	source_aarch64 = https://public.cdn.getdbt.com/fs/cli/fs-v2.0.10-aarch64-unknown-linux-gnu.tar.gz
-	b2sums_aarch64 = 57762fed605c07a3dc47c8fbc60fca72941e7452bf3327937113b2651483e6d4560bee44a168db3832af881593ef3e8a0a2ee4d05865ff9b94ce080c77e120c5
+	source_x86_64 = https://public.cdn.getdbt.com/fs/cli/fs-v2.0.11-x86_64-unknown-linux-gnu.tar.gz
+	b2sums_x86_64 = f175f15e953147870c0260d4e64ecbf2c1f872a767cb54f6bd3ce8ea593e0bbb1fd678064a2a13885675ce7b695449345196fadd6c41a215a76645b99d5e2b90
+	source_aarch64 = https://public.cdn.getdbt.com/fs/cli/fs-v2.0.11-aarch64-unknown-linux-gnu.tar.gz
+	b2sums_aarch64 = 3c418b116236cb63cb14bc619dfa29edb2c94eacb8147edd28717a5f468c05d768da4229d91c06647bf4817ab07bb4f9ce1834642cb7868964b31fd2d42165d4
 
 pkgname = dbt-fusion-bin
