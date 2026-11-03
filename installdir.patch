@@ -1,0 +1,13 @@
+Binary files a/.git/index and b/.git/index differ
+diff -Npur a/protonup/api.py b/protonup/api.py
+--- a/protonup/api.py	2026-08-31 07:58:00.897887056 -0600
++++ b/protonup/api.py	2026-11-03 13:19:09.987874336 -0700
+@@ -116,7 +116,7 @@ def get_proton(version=None, yes=True, d
+             print('[ERROR] invalid tag / binary not found')
+         return False
+ 
+-    protondir = installdir + data['version']
++    protondir = installdir + data['version'] + "-x86_64"
+     checksum_dir = protondir + '/sha512sum'
+     source_checksum = requests.get(data['checksum']).text if 'checksum' in data else None
+     local_checksum = open(checksum_dir).read() if os.path.exists(checksum_dir) else None
