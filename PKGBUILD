@@ -1,21 +1,20 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
-pkgver=1.4.2
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/phucvinh57/biopass"
 license=('MIT')
-depends=('curl' 'fprintd' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-good' 'pam' 'libjpeg-turbo' 'libyaml')
+depends=('fprintd' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-good' 'pam' 'libjpeg-turbo' 'libyaml' 'libglvnd' 'polkit' 'tpm2-tss' 'libxcrypt-compat')
 makedepends=('patchelf')
 provides=('biopass')
 conflicts=('biopass')
 source_x86_64=("biopass_${pkgver}_amd64.deb::https://github.com/phucvinh57/biopass/releases/download/${pkgver}/biopass_${pkgver}_amd64.deb")
 source_aarch64=("biopass_${pkgver}_arm64.deb::https://github.com/phucvinh57/biopass/releases/download/${pkgver}/biopass_${pkgver}_arm64.deb")
-sha256sums_x86_64=('31830f085a5875eacdbfa24d92bb3e9ca111b5f27c72a6e1ab389e4c7aa4f5eb')
-sha256sums_aarch64=('76e643ddb008b0928357aeded746a207edb0da864925c9ee17f3ab137f131294')
+sha256sums_x86_64=('5925299338583667bf5beaffbd7f5c63269aaa1860d283a78468b56b422b9bec')
+sha256sums_aarch64=('6cf87a7353cfffc55ef6e12e8135277f3989745f1db13b4499075c9cbd24392d')
 options=(!strip !debug)
-backup=('etc/ld.so.conf.d/biopass.conf')
 install=biopass-bin.install
 
 prepare() {

@@ -38,6 +38,10 @@ post_install() {
   echo ">>>   auth [success=1 default=ignore] pam_unix.so nullok"
   echo ">>>   auth requisite pam_deny.so"
   echo ">>> "
+  echo ">>> To keep a saved keyring password in sync on password change, add after"
+  echo ">>> the 'password ... pam_unix.so' line:"
+  echo ">>>   password optional libbiopass_pam.so"
+  echo ">>> "
   echo ">>> For more details, see: https://github.com/phucvinh57/biopass/blob/main/docs/PAM.md"
   echo ""
 }
