@@ -1,6 +1,6 @@
 pkgbase = python-diffsynth
 	pkgdesc = Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team
-	pkgver = 2.1.12
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/modelscope/DiffSynth-Studio
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = python-diffsynth
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
+	makedepends = python-setuptools>=77
 	depends = python
-	depends = python-pytorch
+	depends = python-pytorch>=2.0
 	depends = python-torchvision
 	depends = python-transformers
 	depends = python-huggingface-hub
@@ -52,7 +52,7 @@ pkgbase = python-diffsynth
 	optdepends = python-comfy-kitchen: quantization kernels (quant extra)
 	optdepends = python-torchao>=0.16: TorchAO quantization (quant extra)
 	optdepends = python-tiktoken: Yue2 tokenization
-	source = git+https://github.com/modelscope/DiffSynth-Studio.git#commit=baac56f232efc200fed95c483171ca350a7f69d1
-	sha256sums = SKIP
+	source = python-diffsynth-543bf843411a32e1520301a5f8a09e2c0ae27a1d.tar.gz::https://github.com/modelscope/DiffSynth-Studio/archive/543bf843411a32e1520301a5f8a09e2c0ae27a1d.tar.gz
+	sha256sums = 8545685dc77b257397c1af6494a39a9188dede057e5ccc1951aa4fa16e060d4e
 
 pkgname = python-diffsynth

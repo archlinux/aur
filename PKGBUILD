@@ -2,7 +2,7 @@
 
 pkgname=python-diffsynth
 _pkgname=diffsynth
-pkgver=2.1.12
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Enjoy the magic of Diffusion models! Diffusion engine by the ModelScope team"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/modelscope/DiffSynth-Studio"
 license=('Apache-2.0')
 depends=(
     'python'
-    'python-pytorch'
+    'python-pytorch>=2.0'
     'python-torchvision'
     'python-transformers'
     'python-huggingface-hub'
@@ -40,7 +40,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
-    'python-setuptools'
+    'python-setuptools>=77'
 )
 optdepends=(
     'python-av: audio extra (av/torchaudio/torchcodec/librosa)'
@@ -62,10 +62,10 @@ optdepends=(
     'python-torchao>=0.16: TorchAO quantization (quant extra)'
     'python-tiktoken: Yue2 tokenization'
 )
-_commit=baac56f232efc200fed95c483171ca350a7f69d1
-_archive=DiffSynth-Studio
-source=("git+${url}.git#commit=${_commit}")
-sha256sums=('SKIP')
+_commit=543bf843411a32e1520301a5f8a09e2c0ae27a1d
+_archive="DiffSynth-Studio-${_commit}"
+source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha256sums=('8545685dc77b257397c1af6494a39a9188dede057e5ccc1951aa4fa16e060d4e')
 
 build() {
     cd "$srcdir/${_archive}"
@@ -74,12 +74,18 @@ build() {
 
 check() {
     cd "$srcdir/${_archive}"
+    local _check="$srcdir/diffsynth-check" _site
+    rm -rf "$_check"
+    python -m installer --destdir="$_check" dist/*.whl
+    _site="$_check$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"
+    cd "$srcdir"
     # Upstream's only "unit_test.py" is a seven-GPU orchestration script that
     # downloads and trains full diffusion models. Exercise its offline core
     # instead: data ingestion, image preprocessing, attention, and autograd.
     CUDA_VISIBLE_DEVICES='' DIFFSYNTH_ATTENTION_IMPLEMENTATION=torch \
-        PYTHONPATH="$PWD:$PYTHONPATH" python - <<'PY'
+        PYTHONPATH="$_site" DIFFSYNTH_CHECK_SITE="$_site" python -P - <<'PY'
 import json
+import os
 import tempfile
 from pathlib import Path
 
@@ -87,7 +93,9 @@ import torch
 import torch.nn.functional as F
 from PIL import Image
 
+import diffsynth
 from diffsynth import UnifiedDataset, attention_forward, gradient_checkpoint_forward
+assert Path(diffsynth.__file__).resolve().is_relative_to(Path(os.environ["DIFFSYNTH_CHECK_SITE"]).resolve())
 
 with tempfile.TemporaryDirectory() as directory:
     root = Path(directory)
