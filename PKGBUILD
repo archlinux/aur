@@ -1,6 +1,6 @@
 # Maintainer: LaT-SKY <miprota@163.com>
 pkgname=oddity-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Native Linux launcher for Neverness To Everness"
 arch=('x86_64')
@@ -35,9 +35,9 @@ provides=('oddity')
 conflicts=('oddity')
 options=('!strip' '!debug')
 install=oddity-bin.install
-_upstream=0.1.0
-source_x86_64=("oddity-0.1.0-linux-x86_64.tar.gz::https://github.com/LaT-SKY/Oddity/releases/download/oddity-v0.1.0/oddity-0.1.0-linux-x86_64.tar.gz")
-sha256sums_x86_64=('d5ec76e45495020dc66286716fea2e12bdd0a78d6e464c61818846bcea2941b4')
+_upstream=0.1.1
+source_x86_64=("oddity-0.1.1-linux-x86_64.tar.gz::https://github.com/LaT-SKY/Oddity/releases/download/oddity-v0.1.1/oddity-0.1.1-linux-x86_64.tar.gz")
+sha256sums_x86_64=('9f305696c555f01fc00d659bb1090b75025ebce662d11881d273ff0cdc786c65')
 
 package() {
   local dir="$srcdir/oddity-${_upstream}-linux-x86_64"
