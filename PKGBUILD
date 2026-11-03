@@ -5,7 +5,7 @@
 # Splitting them keeps a headless or minimal install small.
 pkgbase=appvol
 pkgname=('appvol' 'appvol-gui')
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 arch=('any')
 url="https://github.com/YaBulochka/appvol"
@@ -15,7 +15,7 @@ license=('MIT')
 # The upstream tree also carries packaging/PKGBUILD, which is kept in sync with
 # this file by hand.
 source=("$url/releases/download/v$pkgver/$pkgbase-$pkgver.tar.gz")
-sha256sums=('b8656a1328dfa8082850294263ddfef82efa4ada4cb8f84066d43243c98db710')
+sha256sums=('231bf22ef51d0d732eca77bf28749f2eeae4279a185a7f865cb78a45c3eef691')
 
 # $srcdir is only set once makepkg starts a package function, so the unpacked
 # tree can not be named at the top of the file.

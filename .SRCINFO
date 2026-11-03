@@ -1,11 +1,11 @@
 pkgbase = appvol
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/YaBulochka/appvol
 	arch = any
 	license = MIT
-	source = https://github.com/YaBulochka/appvol/releases/download/v0.7.2/appvol-0.7.2.tar.gz
-	sha256sums = b8656a1328dfa8082850294263ddfef82efa4ada4cb8f84066d43243c98db710
+	source = https://github.com/YaBulochka/appvol/releases/download/v0.7.3/appvol-0.7.3.tar.gz
+	sha256sums = 231bf22ef51d0d732eca77bf28749f2eeae4279a185a7f865cb78a45c3eef691
 
 pkgname = appvol
 	pkgdesc = Volume control for the audio streams of the focused window (KDE Plasma 6 on Wayland)
