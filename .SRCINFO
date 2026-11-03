@@ -1,5 +1,5 @@
 pkgbase = apate
-	pkgdesc = PrismML fork of llama.cpp with CUDA support to run Ternary Bonsai LLM models.
+	pkgdesc = Declarative any API prototyping/mocking server. Use TOML based DSL with Rhai scripting capabilities
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/rustrum/apate
