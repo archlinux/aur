@@ -4,7 +4,7 @@
 
 pkgname=deepseek-harness-cli-git
 pkgver=0.2.2.alpha.3.r25588.g8bd0733
-pkgrel=2
+pkgrel=3
 pkgdesc='DeepSeek Harness CLI (dsh) and agent harness (git, builds on Linux without the macOS-only CUA provider)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -38,6 +38,18 @@ prepare() {
 
 build() {
   cd "$srcdir/deepseek-harness"
+
+  # Upstream runs up to 12 build workers locally, which can exhaust RAM on a
+  # desktop (more so with BUILDDIR on tmpfs). Budget ~3 GiB of available
+  # memory per worker; DSH_GATE_CONCURRENCY from the environment still wins.
+  local _avail_gib _jobs
+  _avail_gib=$(awk '/^MemAvailable:/ { print int($2 / 1048576) }' /proc/meminfo)
+  _jobs=$(( _avail_gib / 3 ))
+  (( _jobs < 1 )) && _jobs=1
+  (( _jobs > $(nproc) )) && _jobs=$(nproc)
+  export DSH_GATE_CONCURRENCY="${DSH_GATE_CONCURRENCY:-$_jobs}"
+  echo "Building with DSH_GATE_CONCURRENCY=$DSH_GATE_CONCURRENCY (${_avail_gib} GiB available)"
+
   pnpm run build:official
 
   rm -rf dist/aur-dsh dist/aur-vendor
