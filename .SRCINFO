@@ -1,6 +1,6 @@
 pkgbase = mendeley-reference-manager
 	pkgdesc = Mendeley Reference Manager
-	pkgver = 2.150.0
+	pkgver = 2.151.0
 	pkgrel = 1
 	url = https://www.mendeley.com/download-reference-manager
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = mendeley-reference-manager
 	depends = pango
 	depends = systemd-libs
 	options = !strip
-	source = https://static.mendeley.com/bin/desktop/mendeley-reference-manager-2.150.0-x86_64.AppImage
-	sha256sums = 492bcbd86a6bb6d5b782860fe86e3baa6919c092f95c5d55bf6930877eb6c068
+	source = https://static.mendeley.com/bin/desktop/mendeley-reference-manager-2.151.0-x86_64.AppImage
+	sha256sums = 507e51d2c3f9753b0be63c90a5eea400f67d1b5a4f05ea6c1fdc215447435a33
 
 pkgname = mendeley-reference-manager

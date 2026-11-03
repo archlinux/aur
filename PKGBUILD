@@ -2,7 +2,7 @@
 # Contributor: Chiwan Park <chiwanpark@hotmail.com>
 
 pkgname=mendeley-reference-manager
-pkgver=2.150.0
+pkgver=2.151.0
 pkgrel=1
 pkgdesc="Mendeley Reference Manager"
 arch=('x86_64')
@@ -36,7 +36,7 @@ depends=('alsa-lib'
          'systemd-libs')
 options=('!strip')
 source=("https://static.mendeley.com/bin/desktop/${pkgname}-${pkgver}-x86_64.AppImage")
-sha256sums=('492bcbd86a6bb6d5b782860fe86e3baa6919c092f95c5d55bf6930877eb6c068')
+sha256sums=('507e51d2c3f9753b0be63c90a5eea400f67d1b5a4f05ea6c1fdc215447435a33')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}-${CARCH}.AppImage"
