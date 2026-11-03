@@ -4,7 +4,7 @@ pkgname=relic-catppuccin-gtk-theme
 _repo=Catppuccin-GTK-Theme
 _commit=a0f69cc33299dc97267c3507fe8a001aecc46b0f
 _date=2026.06.25
-pkgver=2026.06.25.r9.95dc59b
+pkgver=2026.06.25.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
