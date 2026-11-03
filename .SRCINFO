@@ -1,17 +1,17 @@
 pkgbase = bbsi
 	pkgdesc = Several scripts to facilitate some everyday tasks
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 0
 	url = https://gitlab.com/os-18/bbsi
 	arch = any
 	license = BSL-1.0
 	makedepends = make
 	depends = bash
-	depends = ffmpeg
 	depends = net-tools
+	depends = ffmpeg
 	depends = python-virtualenv
 	depends = python-pip
-	source = bbsi-0.5.2.tar.gz::https://gitlab.com/os-18/bbsi/-/archive/v0.5.2/bbsi-v0.5.2.tar.gz
-	sha256sums = 40af8371f07051b68cf428ba7ba9e323bf297920ba439e7695680d8026650ce9
+	source = bbsi-0.6.0.tar.gz::https://gitlab.com/os-18/bbsi/-/archive/v0.6.0/bbsi-v0.6.0.tar.gz
+	sha256sums = 0e0b94055efcdea3e4cf8f0eeb09679d2bcb2959b0307855def51e4059ce4351
 
 pkgname = bbsi
