@@ -1,6 +1,6 @@
 # Maintainer: nasedkinpv <nasedkinpv@users.noreply.github.com>
 pkgname=numr-desktop-bin
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Desktop app for the numr text calculator: variables, units, currencies, live rates"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ source=("LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver-amd64.deb::$url/releases/download/v$pkgver/numr_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver-arm64.deb::$url/releases/download/v$pkgver/numr_${pkgver}_arm64.deb")
 sha256sums=('SKIP')
-sha256sums_x86_64=('555a28dc54fd76971e8eda81ffe2941c4cf6421821becb775121fb85c8b87461')
-sha256sums_aarch64=('c24725b41e8d1a68dd335320b8937cf3d41babe4d8f73b1646492a0c1a8a7144')
+sha256sums_x86_64=('e347bb01177ff8bae77f1a1b0acdc800e279388e6ba1bf4f28a260996fd654dc')
+sha256sums_aarch64=('4587141aa801a912f9b537770bfc307658d5e9a9fd640485a5dd5c196f22655c')
 
 package() {
     # makepkg already unpacked the .deb; data.tar.gz holds the file tree.
