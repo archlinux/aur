@@ -4,13 +4,13 @@
 
 pkgname=motrix
 _pkgname=Motrix
-pkgver=2.0.1
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A full-featured download manager"
 arch=('x86_64')
 url="https://github.com/agalwood/Motrix"
 license=('MIT')
-# Upstream 2.0.1 targets Electron 45, but Arch currently packages Electron 44.
+# Upstream 2.2.1 targets Electron 45, but Arch currently packages Electron 44.
 # Switch electron44 and the launcher to electron45 as soon as it reaches the
 # repositories, then rebuild and rerun the native ABI and runtime checks.
 depends=(
@@ -40,7 +40,7 @@ source=(
     'motrix.desktop'
     'system-electron.patch'
 )
-sha256sums=('f59186d37f6111d21b0b0efc98d422a54ab2be29c75c9ac7c520d8a2c4fe5fb0'
+sha256sums=('a31ee6a5f8dbf89bfa4d08e35324ff5cf171702b4034fe0bd738c7a56fe11d49'
             '026c1c4ebd4451274c737f21e9636a3c2250e667ef5e9f21913f5b9a7181a67f'
             'ddc5858228ed3b4d6222cc0ec55c48f8caf0215b8f9d0b7ca9eb6ffb6e92f6fb'
             'd67f5b77882cfa5c0d28ebf69a85681efaa445469f2503b891b1def589f7d669')
