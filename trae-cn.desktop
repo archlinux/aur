@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Trae CN
+Comment=AI-powered IDE by ByteDance (Chinese Domestic Version)
+GenericName=Text Editor
+Exec=/usr/bin/trae-cn %F
+Icon=trae-cn
+Type=Application
+StartupNotify=true
+StartupWMClass=Trae-cn
+Categories=Development;IDE;TextEditor;
+MimeType=text/plain;inode/directory;
+Keywords=trae;ide;editor;code;
