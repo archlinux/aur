@@ -260,13 +260,13 @@ check() {
 }
 
 _package_amtl_license() {
-  # AMTL has no license file, its license is in each of its files
+  # AMTL has no licence file, its licence is in each of its files
   sed -n 3,28p "$srcdir/sourcemod/public/amtl/amtl/am-string.h" | sed 's|^// \?||' |
     install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/${FUNCNAME[1]#package_}/AMTL.txt"
 }
 
 _package_rsa_md_license() {
-  # The MD5 code of SourcePawn's VM and the updater extension, RSA's: its license is in the files
+  # The MD5 code of SourcePawn's VM and the updater extension, RSA's: its licence is in the files
   sed -n '/Copyright (C) 1991-2, RSA Data Security/,/documentation and\/or software\./p' \
     "$srcdir/sourcemod/sourcepawn/vm/md5/md5.cpp" |
     install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/${FUNCNAME[1]#package_}/RSA-MD.txt"
@@ -275,7 +275,7 @@ _package_rsa_md_license() {
 package_sourcemod-scripting() {
   pkgdesc="SourcePawn compiler (spcomp) and include files of SourceMod, for compiling SourceMod plugins"
   # The include files: GPL 3.0 with SourceMod's exceptions (licenses/LICENSE.txt), which aren't on
-  # SPDX's list. spcomp: the Pawn compiler (zlib license), SourcePawn (GPL 3.0 or later), AMTL (BSD
+  # SPDX's list. spcomp: the Pawn compiler (zlib licence), SourcePawn (GPL 3.0 or later), AMTL (BSD
   # 3-clause).
   license=(
     GPL-3.0-only
@@ -311,7 +311,7 @@ package_sourcemod() {
   arch=(x86_64)
   # SourceMod: GPL 3.0 with SourceMod's exceptions. SourcePawn (GPL 3.0 or later), AMTL and the
   # regex extension's error table of PCRE2 (BSD 3-clause), SourceHook of Metamod:Source and DHooks'
-  # DynamicHooks (zlib license), SafetyHook (Boost), Zydis, Zycore and core's alphanum comparison
+  # DynamicHooks (zlib licence), SafetyHook (Boost), Zydis, Zycore and core's alphanum comparison
   # (MIT), the MD5 code of SourcePawn's VM and the updater (RSA), the Source SDK's libraries
   # (source-sdk.txt).
   license=(
