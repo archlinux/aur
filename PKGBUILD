@@ -643,7 +643,7 @@ build() {
     -f "net$_dotnetsdkver" \
     -r "$_host_rid"
 
-  # The type catalog of System.Management.Automation, from the assemblies of Microsoft.PowerShell.SDK
+  # The type catalogue of System.Management.Automation, from the assemblies of Microsoft.PowerShell.SDK
   # (TypeCatalogGen)
   local _inc_file="$srcdir/PowerShell/src/TypeCatalogGen/powershell_${_rid}.inc"
   cd "$srcdir"/PowerShell/src/Microsoft.PowerShell.SDK || exit
