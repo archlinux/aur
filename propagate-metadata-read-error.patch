@@ -1,0 +1,15 @@
+--- a/pillow_heif/_pillow_heif.c
++++ b/pillow_heif/_pillow_heif.c
+@@ -1109,6 +1109,12 @@
+                 return PyErr_NoMemory();
+             }
+             error = heif_image_handle_get_metadata(self->handle, meta_ids[i], data);
++            if (check_error(error)) {
++                free(data);
++                Py_DECREF(meta_list);
++                free(meta_ids);
++                return NULL;
++            }
+             if (error.code == heif_error_Ok) {
+                 meta_item_info = PyDict_New();
+                 if (!meta_item_info) {

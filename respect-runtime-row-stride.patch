@@ -1,0 +1,19 @@
+--- a/tests/numpy_test.py
++++ b/tests/numpy_test.py
+@@ -76,4 +76,15 @@
+ def test_numpy_disable_stride_removal(img):
+     heif_file = pillow_heif.open_heif(img, convert_hdr_to_8bit=False, remove_stride=False)
+     heif_array = np.asarray(heif_file)
+-    assert heif_array.shape == (100, 64, 4 if heif_file.has_alpha else 3)
++    # libheif owns row alignment, which is not a fixed pixel width.
++    channels = 4 if heif_file.has_alpha else 3
++    itemsize = 1 if heif_file.info["bit_depth"] <= 8 else 2
++    assert heif_array.dtype == (np.uint8 if itemsize == 1 else np.uint16)
++    assert heif_file.stride % (channels * itemsize) == 0
++    assert heif_array.shape == (100, heif_file.stride // (channels * itemsize), channels)
++    assert heif_array.strides == (heif_file.stride, channels * itemsize, itemsize)
++    assert heif_array.shape[1] > heif_file.size[0] == 29
++    compact_file = pillow_heif.open_heif(img, convert_hdr_to_8bit=False, remove_stride=True)
++    compact_array = np.asarray(compact_file)
++    assert compact_array.shape == (100, 29, channels)
++    np.testing.assert_array_equal(heif_array[:, :29, :], compact_array)

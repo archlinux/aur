@@ -1,0 +1,16 @@
+--- a/tests/modes_test.py
++++ b/tests/modes_test.py
+@@ -114,7 +114,12 @@
+     buf = BytesIO()
+     for i in (rgb, rgb_stride, rgb_no16, rgb_no16_stride, bgr, bgr_stride, bgr_no16, bgr_no16_stride):
+         _ = from_bytes(i.mode, i.size, i.data, stride=i.stride)
+-        _.save(buf, chroma=444, quality=-1)
++        # RGB;16 stores expanded samples, not the source bit depth. Preserve
++        # that depth so this lossless modes/stride check does not encode a
++        # 12-bit fixture at the default 10-bit precision.
++        _.save(buf, chroma=444, quality=-1, bit_depth=im_info.info["bit_depth"])
++        encoded = open_heif(buf.getvalue(), convert_hdr_to_8bit=False)
++        assert encoded.info["bit_depth"] == im_info.info["bit_depth"]
+         compare_hashes([Image.open(buf), im_pillow], hash_size=24)
+ 
+ 

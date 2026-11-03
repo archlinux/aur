@@ -1,7 +1,7 @@
 pkgbase = python-pi-heif
 	pkgdesc = Python interface for libheif using the pi-heif namespace
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bigcat88/pillow_heif
 	arch = x86_64
 	license = BSD-3-Clause
@@ -14,10 +14,22 @@ pkgbase = python-pi-heif
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = glibc
 	depends = python
 	depends = python-pillow
-	depends = libheif>=1.19
+	depends = libheif
+	conflicts = libheif<1.19
+	conflicts = libheif-git<1.19
+	conflicts = libheif-highmem<1.19
+	conflicts = libheif-noglycin<1.19
+	options = !strip
 	source = python-pi-heif-1.4.0.tar.gz::https://github.com/bigcat88/pillow_heif/archive/refs/tags/v1.4.0.tar.gz
+	source = preserve-roundtrip-bit-depth.patch
+	source = respect-runtime-row-stride.patch
+	source = propagate-metadata-read-error.patch
 	sha256sums = 0fe5b31902295029579e7e178fd64bef906dcb3a7c47519714638c2ff50ea4e4
+	sha256sums = 32111d9039fecbc4b567e58ac0378cc8e09c415f6f6116ace9ffd87080317a07
+	sha256sums = 43a1f2606882eb2c0307a74e62cbb9dbf6a7de390773893a728f523e64e8c592
+	sha256sums = 72fdb0a0c2e402aa28282389ce1b67389496cff36d52dd7d96273f6d82656431
 
 pkgname = python-pi-heif

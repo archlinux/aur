@@ -3,15 +3,26 @@
 pkgname=python-pi-heif
 _pkgname=pillow_heif
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for libheif using the pi-heif namespace"
 arch=('x86_64')
 url="https://github.com/bigcat88/pillow_heif"
 license=('BSD-3-Clause')
+# Preserve the native wheel bytes recorded by Python package metadata.
+options=('!strip')
 depends=(
+  'glibc'
   'python'
   'python-pillow'
-  'libheif>=1.19'
+  'libheif'
+)
+# Alternative libheif providers expose an unversioned capability. Preserve
+# the required API floor for each known concrete provider.
+conflicts=(
+  'libheif<1.19'
+  'libheif-git<1.19'
+  'libheif-highmem<1.19'
+  'libheif-noglycin<1.19'
 )
 makedepends=(
   'python-build'
@@ -26,11 +37,21 @@ checkdepends=(
   'python-packaging'
   'python-pytest'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bigcat88/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0fe5b31902295029579e7e178fd64bef906dcb3a7c47519714638c2ff50ea4e4')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bigcat88/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+        'preserve-roundtrip-bit-depth.patch'
+        'respect-runtime-row-stride.patch'
+        'propagate-metadata-read-error.patch')
+sha256sums=('0fe5b31902295029579e7e178fd64bef906dcb3a7c47519714638c2ff50ea4e4'
+            '32111d9039fecbc4b567e58ac0378cc8e09c415f6f6116ace9ffd87080317a07'
+            '43a1f2606882eb2c0307a74e62cbb9dbf6a7de390773893a728f523e64e8c592'
+            '72fdb0a0c2e402aa28282389ce1b67389496cff36d52dd7d96273f6d82656431')
 
 prepare() {
   cd "$_pkgname-$pkgver"
+
+  patch -Np1 -i "$srcdir/preserve-roundtrip-bit-depth.patch"
+  patch -Np1 -i "$srcdir/respect-runtime-row-stride.patch"
+  patch -Np1 -i "$srcdir/propagate-metadata-read-error.patch"
 
   # Copy pi-heif config and transform to pi_heif
   # Remove pre-existing pi_heif dir so the transform rename succeeds
