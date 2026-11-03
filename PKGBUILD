@@ -3,8 +3,8 @@
 
 pkgname=nbdkit-git
 _pkgname=nbdkit
-pkgver=r4338.87172574
-pkgrel=3
+pkgver=r4859.42f73ac8
+pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
@@ -43,6 +43,11 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+
+  # Start from a clean tree. Build output from earlier runs survives in a
+  # reused $srcdir, e.g. a stale plugins/torrent/.libs/*.so that the plugin
+  # tests then try to load even though torrent is now disabled.
+  git clean -fdxq
 
   # test-ssh.sh probes localhost with OpenSSH, but the plugin uses libssh,
   # which lacks e.g. ML-DSA keys. Probe with libssh-supported algorithms
