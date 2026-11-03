@@ -9,7 +9,7 @@
 
 pkgauthor=arakiken
 pkgname=mlterm
-pkgver=3.9.5
+pkgver=3.9.6
 pkgrel=1
 pkgdesc="Multi Lingual TERMinal emulator on X"
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -19,11 +19,11 @@ depends=('gtk2' 'gtk3' 'm17n-lib' 'libutempter')
 makedepends=('intltool' 'librsvg' 'ncurses')
 options=(!libtool)
 source=(${url}/archive/${pkgver}.tar.gz ${pkgname}.desktop)
-md5sums=('075249c886f9ea9025dc75b378a54069'
+md5sums=('bb96d7b0a356b1a3c2f865c265940b2d'
          '90b831e025ce03a96b290d8df1ba377d')
-sha1sums=('e6cca6c058ad70bc01caac019dea8ae6b2949df3'
+sha1sums=('3eaea16f45e5e80e82dcad8305af68804f818e8a'
           '05f47be966a3ba923dbfe6f96b07c9d4b9a3d5e5')
-sha256sums=('7d28678aa90dade72cea4e1e5fffb5e4c343487d60ca36c88dc615134613af39'
+sha256sums=('96d91fa3e0742a0042f9c8eaced4033d6ab07e19b0b06c556c006f2911519cce'
             '5527b8b246ae27730f9eda3bd77344d8310e397d1353599041dca0f094bc86e8')
 
 build() {
