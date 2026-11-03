@@ -10,7 +10,7 @@ pkgver=2.0
 pkgrel=1
 pkgdesc='Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal (prebuilt)'
 arch=('x86_64')
-url='https://brianidavide.github.io/kalipso/'
+url='https://sansevieria-ou.github.io/kalipso/'
 license=('AGPL-3.0-or-later')
 # pipewire: pw-record captures the microphone.
 depends=('glibc' 'hicolor-icon-theme' 'libgcc' 'libpipewire' 'libstdc++' 'pipewire' 'qt6-base' 'qt6-svg')
@@ -20,7 +20,7 @@ optdepends=('plasma-workspace: the Plasma widget and the KWin script'
 provides=('kalipso')
 conflicts=('kalipso' 'kalipso-git')
 options=('!strip' '!debug')
-source=("https://github.com/brianidavide/kalipso/releases/download/v$pkgver/kalipso-$pkgver-archlinux-x86_64.tar.zst")
+source=("https://github.com/SANSEVIERIA-OU/kalipso/releases/download/v$pkgver/kalipso-$pkgver-archlinux-x86_64.tar.zst")
 noextract=("kalipso-$pkgver-archlinux-x86_64.tar.zst")
 sha256sums=('e533d2b9ee51ddfaf375e229128ba37f471ffbb042194e9b71e9ad96838d4353')
 
