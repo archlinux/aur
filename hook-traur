@@ -38,5 +38,11 @@ fi
 if [[ -z "$tier" || "$tier" == Unknown ]]; then
     printf '    traur could not conclude%s. This is not a verdict either way.\n' \
         "${reason:+: $reason}"
+    exit 1
 fi
+
+# Show traur's own report, so the signals behind the verdict are visible
+# before you decide. Only for display; the verdict above is what counts.
+printf '    Signals reported by traur:\n'
+traur scan --dir "$workdir" 2>&1 | sed 's/^/    /' || true
 exit 1
