@@ -3,7 +3,7 @@
 _pkgname=skl2onnx
 pkgname=python-skl2onnx
 pkgver=1.20.0
-pkgrel=14
+pkgrel=15
 pkgdesc='Convert scikit-learn models to ONNX'
 arch=('any')
 url='https://github.com/onnx/sklearn-onnx'
@@ -30,7 +30,7 @@ checkdepends=(
     'python-pytest'
     'python-pytest-xdist'
     'python-numpy'
-    'python-onnxruntime-cpu'
+    'python-onnxruntime'
     'python-jinja'
     'python-pandas'
 )
@@ -48,6 +48,7 @@ source=(
     'onnx-1.21-integer-tree-attributes.patch'
     'current-dependencies.patch'
     'onnxruntime-1.27-labels.patch'
+    'threshold-fixture-margin.patch'
 )
 sha256sums=(
     '80cfee91f8e545f2746c229855c5bf7c211aee374ad12b9584b6b64f38abfe1d'
@@ -59,6 +60,7 @@ sha256sums=(
     '97baba298c7dc4c4029bf3a51710d166424fabb104b120d5ea7fd0b736435955'
     '1581c51ff4c2955201d23e2616d0d6dc2df1b841e542ca1aa1e3e3343a6b8254'
     '6093d5e5468122c73da3264e64851e8f3d36a834cb81625b3376291ca3912adb'
+    'c7025879ecbe7aa9c59cf39f76708b8383a0c8ca62a720d3e8cf3b6814274750'
 )
 
 prepare() {
@@ -81,6 +83,7 @@ prepare() {
     patch -Np1 --fuzz=0 -i "$srcdir/onnx-1.21-integer-tree-attributes.patch"
     patch -Np1 --fuzz=0 -i "$srcdir/current-dependencies.patch"
     patch -Np1 --fuzz=0 -i "$srcdir/onnxruntime-1.27-labels.patch"
+    patch -Np1 --fuzz=0 -i "$srcdir/threshold-fixture-margin.patch"
 }
 
 build() {
@@ -116,8 +119,8 @@ except RuntimeError:
 PY
 
     cd "$_checkroot"
-    # Exercise every offline upstream test against the installed wheel. Arch
-    # now ships the CPU ONNX Runtime backend required by its inference checks.
+    # Exercise every offline upstream test against the installed wheel. The
+    # CPU execution provider is also available in CUDA-enabled ONNX Runtime.
     # The three exact TF-IDF nodes below unconditionally fetch the 20 Newsgroups
     # corpus from Figshare; no fixture or offline fallback is shipped upstream.
     LOCPATH="$_locale" LC_ALL=en_US.UTF-8 \

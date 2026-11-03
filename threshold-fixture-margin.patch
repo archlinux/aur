@@ -1,0 +1,28 @@
+--- a/tests/test_sklearn_tuned_threshold_classifier.py
++++ b/tests/test_sklearn_tuned_threshold_classifier.py
+@@ -154,7 +154,10 @@
+             X, y, stratify=y, random_state=42
+         )
+         classifier = RandomForestClassifier(random_state=0)
+-        model = FixedThresholdClassifier(classifier, threshold=np.float32(0.4)).fit(
++        # A forest probability of 0.4 is below float32(0.4) in sklearn's
++        # float64 output, but rounds onto that threshold in ONNX float32.
++        # Test the threshold operation away from this representation boundary.
++        model = FixedThresholdClassifier(classifier, threshold=np.float32(0.375)).fit(
+             X_train, y_train
+         )
+ 
+@@ -165,7 +168,12 @@
+         )
+ 
+         sess = rt.InferenceSession(model_onnx.SerializeToString())
+-        onnx_labels = sess.run(None, {"X": X_test.astype(np.float32)})[0]
++        onnx_labels, onnx_proba = sess.run(None, {"X": X_test.astype(np.float32)})
++        sklearn_proba = model.estimator_.predict_proba(X_test.astype(np.float32))
++        margin = np.min(np.abs(sklearn_proba[:, 1] - float(model.threshold)))
++        self.assertGreater(margin, 64 * np.finfo(np.float32).eps)
++        self.assertLess(np.max(np.abs(onnx_proba[:, 1] - sklearn_proba[:, 1])), margin)
++        np.testing.assert_allclose(onnx_proba, sklearn_proba, rtol=1e-5, atol=1e-6)
+         sklearn_labels = model.predict(X_test.astype(np.float32))
+ 
+         np.testing.assert_array_equal(onnx_labels, sklearn_labels)
