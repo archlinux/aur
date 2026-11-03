@@ -1,0 +1,17 @@
+pkgbase = open-bingyan-bin
+	pkgdesc = Bingyan platform CLI for agents and scripts
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/BingyanStudio/open-bingyan-bin
+	arch = x86_64
+	license = custom:Proprietary
+	optdepends = gnome-keyring: Store login credentials in the system keyring
+	optdepends = kwallet: Store login credentials in KWallet
+	options = !strip
+	options = !debug
+	source = LICENSE
+	sha256sums = 7251da0057daf0971adbc2a637697253e7a4c836dcbe94333392f0caba00eda1
+	source_x86_64 = bingyan_0.3.1_linux_x86_64.tar.gz::https://github.com/BingyanStudio/open-bingyan-bin/releases/download/v0.3.1/bingyan_0.3.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2614ad92cd57baf61fed71c10e02fac621e89f66287ad874933dd7b3944dcc0c
+
+pkgname = open-bingyan-bin
