@@ -1,0 +1,30 @@
+pkgbase = panasonic-posture-manager-bin
+	pkgdesc = Prebuilt posture management and screen orientation for convertible Linux 2-in-1 laptops
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/adogecheems/panasonic-posture-manager
+	install = panasonic-posture-manager-bin.install
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = gjs
+	depends = gtk4>=4.12
+	depends = libadwaita>=1.4
+	depends = python>=3.11
+	depends = python-gobject
+	depends = systemd
+	depends = polkit
+	depends = dbus
+	depends = iio-sensor-proxy
+	optdepends = gnome-shell: GNOME session notification server and desktop integration
+	optdepends = mutter: display rotation and orientation lock on GNOME Wayland
+	optdepends = gnome-settings-daemon: touchscreen orientation-lock GSettings schema on GNOME
+	optdepends = kscreen: display rotation and auto-rotate policy on Plasma 6.8+ (kscreenctl)
+	optdepends = libkscreen: display rotation and auto-rotate policy on Plasma 6.0-6.7 (kscreen-doctor)
+	provides = panasonic-posture-manager
+	conflicts = panasonic-posture-manager
+	options = !strip
+	options = !debug
+	source = panasonic-posture-manager-2.1.1-1-x86_64.pkg.tar.zst::https://github.com/adogecheems/panasonic-posture-manager/releases/download/v2.1.1/panasonic-posture-manager-2.1.1-1-x86_64.pkg.tar.zst
+	sha256sums = 3373872c593740c01e61409582a3852b60be442ba47b07c1c6a51b0ee8d2f883
+
+pkgname = panasonic-posture-manager-bin
