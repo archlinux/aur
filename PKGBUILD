@@ -1,6 +1,6 @@
 # Maintainer: Okazakee <okazakee@proton.me>
 pkgname=tuxcharge-profile
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Set a TUXEDO laptop charging profile based on the connected Wi-Fi network"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('networkmanager')
 makedepends=('rust')
 optdepends=('tuxedo-drivers-dkms: EC charging profile interface, required on TUXEDO hardware')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Okazakee/tuxcharge-profile/archive/v$pkgver.tar.gz")
-sha256sums=('5c5a82707c75e073c7cd068610af7641ac539f6700334ec577d08dde959d45c6')
+sha256sums=('4d838251619d387b795bff03dd79809661b1e41f85a4c6e5b6522e3fbfed2668')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
