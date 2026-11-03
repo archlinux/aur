@@ -1,6 +1,6 @@
 pkgbase = wyrwood-bin
 	pkgdesc = Filtered SSH-agent endpoints for containers
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/wyrd-company/wyrwood
 	install = wyrwood-bin.install
@@ -10,9 +10,9 @@ pkgbase = wyrwood-bin
 	provides = wyrwood
 	conflicts = wyrwood
 	options = !strip
-	source_x86_64 = wyrwood-bin-0.6.0-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.6.0/wyrwood_0.6.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = df50ed5dac4c5c0cdeffd304345a6c43ca2082119c359fcf8d71df6b1d29def2
-	source_aarch64 = wyrwood-bin-0.6.0-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.6.0/wyrwood_0.6.0_linux_aarch64.tar.gz
-	sha256sums_aarch64 = 79d17393f01fa8b897ec38ce8582f2c4c95392c7353488b425a53196abd8cd76
+	source_x86_64 = wyrwood-bin-0.6.1-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.6.1/wyrwood_0.6.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1652cb9b193693007a0e01e83a0e0084a181d0692e87e88d380d84cf430b38e0
+	source_aarch64 = wyrwood-bin-0.6.1-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.6.1/wyrwood_0.6.1_linux_aarch64.tar.gz
+	sha256sums_aarch64 = eb792fd945d536457a2ec78cdce3b682b56891e6733a1f43c1c13e6275848af0
 
 pkgname = wyrwood-bin
