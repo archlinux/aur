@@ -1,0 +1,6 @@
+type            = process
+command         = yggdrasil -useconffile /etc/yggdrasil.conf -user yggdrasil
+smooth-recovery = true
+logfile         = /var/log/dinit/yggdrasil.log
+depends-on      = network.target
+before          = login.target

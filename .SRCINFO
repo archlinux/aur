@@ -1,0 +1,14 @@
+pkgbase = yggdrasil-dinit
+	pkgdesc = Dinit script for Yggdrasil.
+	pkgver = 20261030
+	pkgrel = 1
+	url = https://yggdrasil-network.github.io/
+	arch = any
+	license = Unlicense
+	depends = yggdrasil
+	source = sysusers
+	source = service
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = yggdrasil-dinit
