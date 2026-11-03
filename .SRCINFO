@@ -1,6 +1,6 @@
 pkgbase = terrio-bin
 	pkgdesc = Pure-Rust geospatial raster and vector data I/O: the terrio command (prebuilt)
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://terrio.dev
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = terrio-bin
 	license = MPL-2.0
 	provides = terrio
 	conflicts = terrio
-	source_x86_64 = https://github.com/opengeos/terrio/releases/download/v0.6.1/terrio-cli-v0.6.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = a472a3e9a7fe4eec0168892989b2b368d8c474a9dbcf04599e90bec9437a42d7
-	source_aarch64 = https://github.com/opengeos/terrio/releases/download/v0.6.1/terrio-cli-v0.6.1-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 73bd4536093c12b21978336a1196fc2f3971a6820550b401d5fc2023f1d14558
+	source_x86_64 = https://github.com/opengeos/terrio/releases/download/v0.7.0/terrio-cli-v0.7.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = a85d920b71e7f566c3bebb8a7ec3b469174cfe69ebce6a6f0ba3c055ca5a0fc8
+	source_aarch64 = https://github.com/opengeos/terrio/releases/download/v0.7.0/terrio-cli-v0.7.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 46551aff2bfad27294c5347fb42f412a8bed8d5fc08106d3e400ba9fd8463900
 
 pkgname = terrio-bin
