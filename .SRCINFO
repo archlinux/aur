@@ -1,6 +1,6 @@
 pkgbase = cadcraft
 	pkgdesc = vibe coded clean-room reimplementation of Autodesk AutoCAD
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/cadcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = cadcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/cadcraft/archive/refs/tags/v0.16.0/cadcraft-0.16.0.tar.gz
-	sha256sums = 73f4696bcebc16e9a1ee41b24c7732e7be0ca8b3627276f584ab0b7f54cfd752
+	source = https://github.com/storytold/cadcraft/archive/refs/tags/v0.17.0/cadcraft-0.17.0.tar.gz
+	sha256sums = 370af1c04677c4fcde49c88485e526a1701f66dfd8650101b46c9c45b138b25b
 
 pkgname = cadcraft
 	depends = glibc
