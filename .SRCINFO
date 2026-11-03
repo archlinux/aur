@@ -1,0 +1,15 @@
+pkgbase = perl-hamt
+	pkgdesc = hash array mapped trie
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/HAMT
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/HAMT-0.03.tar.gz
+	md5sums = 1a00cd7b669ba754da0585d680dbbadd
+	sha512sums = 8906d45137fc6309afa63705c93948c1174343ec52136c4e44e8740dc9ba0f3efcc09f086379511b744232595b1c6ebf96d9c6d258f443d70cc2fa990921134c
+
+pkgname = perl-hamt
