@@ -4,7 +4,7 @@ pkgname=relic-everforest-gtk-theme
 _repo=Everforest-GTK-Theme
 _commit=9b8be4d6648ae9eaae3dd550105081f8c9054825
 _date=2025.10.23
-pkgver=2025.10.23.r9.95dc59b
+pkgver=2025.10.23.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
