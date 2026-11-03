@@ -3,7 +3,7 @@
 _pkgauthor=rasros
 _pkgname=lx
 pkgname=${_pkgname}-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A small CLI tool that converts selected files into clean, consistent Markdown-fenced blocks, making it easy to provide precise, repeatable context to LLMs"
@@ -20,8 +20,8 @@ conflicts=("${_pkgname}")
 #         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('0395ccb331d35c8db661c5661f5b77bafd403c39b4fe4b25a57f0efecf5e5272')
-sha256sums_aarch64=('d67cb6901aa853ee0201fe7a4d56db47ad8ec99efa261479580d5bded385e54b')
+sha256sums_x86_64=('56829387587b171d5d02926e70a26e57ba349278a8fb0e9622804345222bbe02')
+sha256sums_aarch64=('a0173f4f3ee16fbd900bdac6874b3e3ce092950ae9ba79d9927cfd9cf54e913a')
 
 case ${CARCH} in
   ${arch[0]})
