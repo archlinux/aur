@@ -1,3 +1,18 @@
+# install.sh and manual copies are invisible to pacman, and --overwrite can
+# bypass pacman's own file-conflict check. A file pacman already owns is an
+# upgrade/reinstall and must pass.
+pre_install() {
+    for bin in /usr/bin/whoisthat /usr/bin/whoisthat-core; do
+        [ -e "$bin" ] || continue
+        if ! pacman -Qo "$bin" >/dev/null 2>&1; then
+            echo ":: WhoisThat is already installed outside pacman (install.sh or a manual copy)." >&2
+            echo ":: Remove it first:" >&2
+            echo "::   curl -fsSL https://raw.githubusercontent.com/kvunoff/whoisthat/main/install.sh | sudo bash -s -- --uninstall" >&2
+            exit 1
+        fi
+    done
+}
+
 post_install() {
     setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core 2>/dev/null || {
         echo ":: WARNING: Could not set capabilities on whoisthat-core."

@@ -1,6 +1,6 @@
 pkgbase = whoisthat-bin
 	pkgdesc = Modern terminal-based VPN client with Xray-core backend (prebuilt binaries)
-	pkgver = 0.17.8
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/kvunoff/whoisthat
 	install = whoisthat-bin.install
@@ -18,9 +18,9 @@ pkgbase = whoisthat-bin
 	optdepends = xray: system Xray-core binary (managed runtime used automatically if absent)
 	options = !strip
 	options = !debug
-	source_x86_64 = whoisthat-0.17.8-linux-amd64.tar.gz::https://github.com/kvunoff/whoisthat/releases/download/v0.17.8/whoisthat-linux-amd64.tar.gz
-	sha256sums_x86_64 = 270175a5232bed588dfa438964a5a8b6e59b8b027beece2761843fab14f3b970
-	source_aarch64 = whoisthat-0.17.8-linux-arm64.tar.gz::https://github.com/kvunoff/whoisthat/releases/download/v0.17.8/whoisthat-linux-arm64.tar.gz
-	sha256sums_aarch64 = 846fe39e2ecc529e99be8ac436ce9144f2ed74a1fc0b1223069e84b20f547fb6
+	source_x86_64 = whoisthat-0.18.0-linux-amd64.tar.gz::https://github.com/kvunoff/whoisthat/releases/download/v0.18.0/whoisthat-linux-amd64.tar.gz
+	sha256sums_x86_64 = a2f976ccf455d75d85e9f962927e48e4a82e36d0ac699dd9d641eb2ddcf75b14
+	source_aarch64 = whoisthat-0.18.0-linux-arm64.tar.gz::https://github.com/kvunoff/whoisthat/releases/download/v0.18.0/whoisthat-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6ed12f5b3b25c55a3b0665560411f161138be0f2f23488006e9fbd241f6657b5
 
 pkgname = whoisthat-bin
