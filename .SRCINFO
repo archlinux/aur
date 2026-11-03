@@ -1,0 +1,12 @@
+pkgbase = omnidotdev-taproot
+	pkgdesc = Auto-generate a full GraphQL API from a PostgreSQL database
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://taproot.omni.dev
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	source = https://github.com/omnidotdev/taproot/archive/v0.2.0.tar.gz
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+pkgname = omnidotdev-taproot
