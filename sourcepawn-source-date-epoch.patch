@@ -1,22 +1,100 @@
+diff --git a/sourcepawn/compiler/lexer.cpp b/sourcepawn/compiler/lexer.cpp
+index f6fd71a..7fdd355 100644
+--- a/sourcepawn/compiler/lexer.cpp
++++ b/sourcepawn/compiler/lexer.cpp
+@@ -7,6 +7,7 @@
+ //
+ #include <assert.h>
+ #include <ctype.h>
++#include <errno.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <stdio.h>
+@@ -2453,6 +2454,21 @@ ishex(char c)
+     return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
+ }
+ 
++/*  ParseInt64
++ *
++ *  Parse a decimal integer that makes up all of "str", without overflow.
++ */
++std::optional<int64_t>
++ParseInt64(const char* str)
++{
++    char* endptr;
++    errno = 0;
++    int64_t value = std::strtoll(str, &endptr, 10);
++    if (errno == ERANGE || endptr == str || *endptr != '\0')
++        return {};
++    return value;
++}
++
+ /*  isoctal
+  *
+  *  Test if character "c" is an octal digit ("0".."7").
+diff --git a/sourcepawn/compiler/lexer.h b/sourcepawn/compiler/lexer.h
+index b745b0f..2802800 100644
+--- a/sourcepawn/compiler/lexer.h
++++ b/sourcepawn/compiler/lexer.h
+@@ -8,6 +8,7 @@
+ #pragma once
+ 
+ #include <filesystem>
++#include <optional>
+ 
+ #include <amtl/am-deque.h>
+ #include <amtl/am-hashtable.h>
+@@ -101,6 +102,7 @@ IsAssignOp(int token)
+ void litadd_str(const char* str, size_t len, std::vector<cell>* out);
+ int alphanum(char c);
+ int ishex(char c);
++std::optional<int64_t> ParseInt64(const char* str);
+ int isoctal(char c);
+ int getlabel(void);
+ std::string get_token_string(int tok_id);
+diff --git a/sourcepawn/compiler/main.cpp b/sourcepawn/compiler/main.cpp
+index 7cea903..73e4665 100644
 --- a/sourcepawn/compiler/main.cpp
 +++ b/sourcepawn/compiler/main.cpp
-@@ -288,8 +288,22 @@
+@@ -76,7 +76,7 @@ int pc_tag_string = 0;
+ int pc_tag_bool = 0;
+ 
+ static void setconfig(const char* root);
+-static void inst_datetime_defines(BuiltinGenerator& gen);
++static bool inst_datetime_defines(BuiltinGenerator& gen);
+ static void inst_binary_name(BuiltinGenerator& gen, const std::string& binfile);
+ 
+ enum {
+@@ -141,7 +141,8 @@ int RunCompiler(int argc, char** argv, CompileContext& cc) {
+ 
+     // Add builtin defines.
+     inst_binary_name(gen, cc.outfname());
+-    inst_datetime_defines(gen);
++    if (!inst_datetime_defines(gen))
++        goto cleanup;
+ 
+     gen.AddBuiltinConstants();
+     gen.AddDefaultInclude();
+@@ -280,14 +281,24 @@ static void inst_binary_name(BuiltinGenerator& gen, const std::string& binfile)
+     gen.AddDefine("__BINARY_NAME__", StringizePath(binfile_name.string()));
+ }
+ 
+-static void inst_datetime_defines(BuiltinGenerator& gen) {
++static bool inst_datetime_defines(BuiltinGenerator& gen) {
+     char date[64];
+     char ltime[64];
      time_t td;
      struct tm* curtime;
  
 -    time(&td);
 -    curtime = localtime(&td);
-+    // SOURCE_DATE_EPOCH (https://reproducible-builds.org/specs/source-date-epoch/) in UTC, like
-+    // GCC and Clang, so that builds of a plugin are reproducible.
 +    if (const char* epoch = getenv("SOURCE_DATE_EPOCH")) {
-+        char* end;
-+        errno = 0;
-+        long long value = strtoll(epoch, &end, 10);
-+        if (errno || end == epoch || *end || value < 0) {
-+            fprintf(stderr, "SOURCE_DATE_EPOCH must be a non-negative integer: %s\n", epoch);
-+            exit(1);
++        auto value = ParseInt64(epoch);
++        if (!value || *value < 0) {
++            report(490) << epoch;
++            return false;
 +        }
-+        td = (time_t)value;
++        td = (time_t)*value;
 +        curtime = gmtime(&td);
 +    } else {
 +        time(&td);
@@ -25,3 +103,41 @@
  
  #if defined __EMSCRIPTEN__
      snprintf(date, sizeof(date), "\"%02d/%02d/%04d\"", curtime->tm_mon + 1, curtime->tm_mday,
+@@ -301,6 +312,7 @@ static void inst_datetime_defines(BuiltinGenerator& gen) {
+ 
+     gen.AddDefine("__DATE__", date);
+     gen.AddDefine("__TIME__", ltime);
++    return true;
+ }
+ 
+ static fs::path GetProcessPath([[maybe_unused]] const char* root) {
+diff --git a/sourcepawn/compiler/messages.h b/sourcepawn/compiler/messages.h
+index 8902b47..90e7ed4 100644
+--- a/sourcepawn/compiler/messages.h
++++ b/sourcepawn/compiler/messages.h
+@@ -351,4 +351,5 @@ static const char* errmsg_ex[] = {
+     /*487*/ "stack-allocated arrays cannot be passed to dynamically sized arguments that are captured\n",
+     /*488*/ "floating-point literal is not allowed in preprocessor expression\n",
+     /*489*/ "closures that capture variables cannot be converted to legacy function types\n",
++    /*490*/ "SOURCE_DATE_EPOCH must be a non-negative integer, got \"%s\"\n",
+ };
+diff --git a/sourcepawn/compiler/parser.cpp b/sourcepawn/compiler/parser.cpp
+index 593aed5..a1dc673 100644
+--- a/sourcepawn/compiler/parser.cpp
++++ b/sourcepawn/compiler/parser.cpp
+@@ -1178,12 +1178,10 @@ Parser::constant()
+         case tNUMBER64:
+         {
+             const auto& atom = lexer_->current_token()->atom;
+-            char* endptr;
+-            errno = 0;
+-            int64_t value = std::strtoll(atom->chars(), &endptr, 10);
+-            if ((value == LLONG_MIN || value == LLONG_MAX) && errno == ERANGE)
++            auto value = ParseInt64(atom->chars());
++            if (!value)
+                 report(135);
+-            return new NumberExpr(pos, types_->type_int64(), value);
++            return new NumberExpr(pos, types_->type_int64(), value.value_or(0));
+         }
+         case tRATIONAL:
+             return new NumberExpr(pos, types_->type_float(), lexer_->current_token()->value());
