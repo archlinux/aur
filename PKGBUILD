@@ -3,9 +3,6 @@
 # Patched NVIDIA open kernel modules: consumer-GPU P2P over PCIe BAR1 / NVLink.
 # Fork: aikitoria/open-gpu-kernel-modules. It replaces nvidia-open-dkms.
 #
-# Release: tag this repository with the packaged upstream driver version, so
-# users can check out an exact release. The tag equals $pkgver, e.g.:
-#     git tag 615.78.08 && git push origin 615.78.08
 
 pkgname=nvidia-open-p2p-dkms
 pkgver=615.78.08

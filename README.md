@@ -35,9 +35,7 @@ Release: bump `pkgver`, `_commit`, and `pkgrel` in `PKGBUILD`, then:
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 git add -A && git commit -S -m "Update to <version>"
-git tag -s <version> -m "nvidia-open-p2p-dkms <version>"
 ```
 
 Publish to the AUR with `git push origin master`. The AUR accepts only the
-`master` branch and rejects tags, so push release tags to a mirror instead
-(for example `git push <mirror> master --follow-tags`).
+`master` branch and rejects tags.
