@@ -1,3 +1,8 @@
+libslimbook 1.28.1-3
+  - Install slimbookctl setuid root again, as upstream does. Without it,
+    slimbookctl run by a normal user (for example by slimbookindicator)
+    cannot read the serial number or the TDP, and cannot change settings.
+
 libslimbook 1.28.1-2
   - Add optdepends for the tools used by slimbookctl report: usbutils,
     efibootmgr, libinput-tools, xorg-xinput, dmidecode, pciutils, flatpak,

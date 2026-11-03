@@ -1,7 +1,7 @@
 pkgbase = libslimbook
 	pkgdesc = Slimbook core library, slimbookctl CLI and settings load/store service
 	pkgver = 1.28.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Slimbook-Team/libslimbook
 	changelog = CHANGELOG
 	arch = x86_64

@@ -2,7 +2,7 @@
 # libslimbook + slimbookctl, built from upstream tag 1.28.1.
 pkgname=libslimbook
 pkgver=1.28.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Slimbook core library, slimbookctl CLI and settings load/store service"
 arch=('x86_64')
 url="https://github.com/Slimbook-Team/libslimbook"
@@ -35,9 +35,6 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-
-  # upstream installs slimbookctl setuid root; the systemd service already runs as root
-  chmod 755 "$pkgdir/usr/bin/slimbookctl"
 
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
