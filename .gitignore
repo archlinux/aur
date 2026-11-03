@@ -1,0 +1,4 @@
+src/
+pkg/
+docan-gtk-bin-*.zip
+docan-gtk-bin-*.pkg.tar.zst
