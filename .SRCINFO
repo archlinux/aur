@@ -1,0 +1,15 @@
+pkgbase = claude-sessions-bin
+	pkgdesc = Fuzzy finder for every Claude Code session on this machine, continues the one you pick (prebuilt static binary)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/koenhendriks/claude-sessions
+	arch = x86_64
+	license = MIT
+	optdepends = claude-code: the Claude Code CLI that sessions are opened with
+	provides = claude-sessions
+	conflicts = claude-sessions
+	options = !debug
+	source = https://github.com/koenhendriks/claude-sessions/releases/download/v0.1.2/claude-sessions-0.1.2-x86_64-linux.tar.gz
+	sha256sums = 85e39783bc4d195ceb5484038fff1d5cfee42860704305bdd2c2e80c8e2c8e7d
+
+pkgname = claude-sessions-bin
