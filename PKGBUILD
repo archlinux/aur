@@ -67,14 +67,14 @@ check() {
 }
 
 _package_amtl_license() {
-  # AMTL has no license file, its license is in each of its files
+  # AMTL has no licence file, its licence is in each of its files
   sed -n 3,28p "$srcdir/$pkgbase/third_party/amtl/amtl/am-string.h" | sed 's|^// \?||' |
     install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/${FUNCNAME[1]#package_}/AMTL.txt"
 }
 
 package_metamod-source() {
   pkgdesc="Metamod:Source, the plugin loader of SourceMod, for Source engine game servers, for the games of hl2sdk with Linux servers (the addons folder of a server)"
-  # Metamod:Source (zlib license), the Source SDK's libraries it links (source-sdk.txt)
+  # Metamod:Source (zlib licence), the Source SDK's libraries it links (source-sdk.txt)
   license=(Zlib LicenseRef-Source-SDK)
   # The games' 32-bit and 64-bit servers
   depends=(gcc-libs glibc lib32-gcc-libs lib32-glibc)
@@ -95,7 +95,7 @@ package_metamod-source() {
 package_metamod-source-src() {
   pkgdesc="Metamod:Source's sources the metamod-source package is built from, for building SourceMod and plugins or extensions against it (--mms-path=/usr/src/metamod-source)"
   arch=(any)
-  # Metamod:Source (zlib license), AMTL (BSD 3-clause)
+  # Metamod:Source (zlib licence), AMTL (BSD 3-clause)
   license=(Zlib BSD-3-Clause)
 
   # The tree of the build with its submodules (AMTL, the SDK manifests), without the build and git's
