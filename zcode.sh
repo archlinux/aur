@@ -37,7 +37,7 @@ case "${XDG_CURRENT_DESKTOP}" in
 esac
 
 # 3. Memory usage optimization
-# Safe Chromium/Electron defaults that keep RAM usage in check (Electron 41 / Chromium 134+):
+# Safe Chromium/Electron defaults that keep RAM usage in check (Electron 44 / Chromium 152+):
 #   - PartitionAllocMemoryReclaimer: periodically returns freed allocator memory
 #     to the OS, preventing RSS from growing monotonically
 #   - IntensiveWakeUpThrottling: aggressively throttles timers in background views

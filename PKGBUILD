@@ -3,8 +3,8 @@
 pkgname=zcode-bin
 _pkgname=ZCode
 pkgver=3.17.2
-_electronversion=41
-pkgrel=1
+_electronversion=44
+pkgrel=2
 pkgdesc="ZCode - AI-powered code editor by ZAI"
 arch=('x86_64')
 url="https://zcode.z.ai/"
