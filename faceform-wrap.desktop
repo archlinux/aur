@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Faceform Wrap
+GenericName=3D Mesh Fitting
+Comment=Fit a base mesh topology to 3D scans
+Exec=faceform-wrap %f
+TryExec=faceform-wrap
+Icon=faceform-wrap
+Terminal=false
+Categories=Graphics;3DGraphics;
+StartupNotify=true
