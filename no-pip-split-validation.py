@@ -9,6 +9,7 @@ import textwrap
 import zipfile
 from email.parser import Parser
 from pathlib import Path
+from packaging.requirements import Requirement
 
 
 def wheel(root: Path, relative: str, prefix: str) -> Path:
@@ -83,7 +84,7 @@ def main() -> int:
     assert any(req.startswith("torch>=2.7.0;") for req in core_requirements)
     assert any(req.startswith("triton>=3.3;") for req in core_requirements)
     assert any(req == f"fla-core=={args.version}" for req in extension_requirements)
-    assert any(req == "transformers>=4.45.0" for req in extension_requirements)
+    assert any(Requirement(req).name == "transformers" and str(Requirement(req).specifier) == "<6,>=5.6.2" for req in extension_requirements)
 
     with tempfile.TemporaryDirectory(prefix="fla-arch-validation-") as temporary:
         tmp = Path(temporary)
