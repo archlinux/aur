@@ -4,7 +4,7 @@ pkgname=relic-vague-gtk-theme
 _repo=Vague-GTK-Theme
 _commit=a2e5b05f8bb0137cfb71c9fadd546888c0a7337a
 _date=2026.06.25
-pkgver=2026.06.25.r9.95dc59b
+pkgver=2026.06.25.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
