@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=rustgrid-bin
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="Native database GUI for SQL and Redis, built in Rust without WebView"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yisier/rustgrid"
@@ -16,10 +16,10 @@ conflicts=('rustgrid')
 options=('!strip' '!debug')
 source_x86_64=("RustGrid-${pkgver}-linux-x64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v${pkgver}/RustGrid-${pkgver}-linux-x64.tar.gz")
 source_aarch64=("RustGrid-${pkgver}-linux-arm64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v${pkgver}/RustGrid-${pkgver}-linux-arm64.tar.gz")
-source=("rustgrid-icon.png::https://raw.githubusercontent.com/yisier/rustgrid/v${pkgver}/crates/rustgrid-app/assets/logo.png")
+source=("rustgrid-icon.png::https://raw.githubusercontent.com/yisier/rustgrid/v0.1.6/crates/rustgrid-app/assets/logo.png")
 sha256sums=('e8c73449133ba38031be6d0b6c56b18f7333293794f9853000fba295eda67d34')
-sha256sums_x86_64=('aeb7b52b78a16fe0a653a96af8ba6821198feea9601234d81febaf41e35bf16e')
-sha256sums_aarch64=('36b4bce6ef4f2ede17a7c5e3233496ec0754c65d871df0b9b751b0411a06733e')
+sha256sums_x86_64=('3f0dbbd78cf639a45d627537379b2ba1c9d596ab2d063aafd028caaecebc49b0')
+sha256sums_aarch64=('935f93c89b53f163dee35a731cc232f47d06f1ca715c39a56746a70b63c403c6')
 
 package() {
     local _arch="x86_64"
