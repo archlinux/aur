@@ -3,7 +3,7 @@
 pkgname=python-pillow-avif-plugin
 _pkgname=pillow-avif-plugin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pillow plugin that adds avif support via libavif"
 arch=('x86_64')
 url="https://github.com/fdintino/pillow-avif-plugin"
@@ -22,6 +22,7 @@ makedepends=(
 checkdepends=(
   'python-pytest'
 )
+options=('!strip')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/fdintino/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
   'aom-3.14-test.patch'
