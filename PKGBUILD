@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=dojo
-pkgver=0.13.0
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="A tool to keep environment as code. Dojo helps to compile code and run other operations in Docker containers. Containerize your development and operations environment."
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('dojo')
 license=('Apache-2')
 makedepends=('go>=1.17' 'git' 'gzip' 'tar' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kudulab/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('40c0a96dcb54bd47ab4ab39a84ff0830bea704a50893b3fa683215a4daf2c93f')
+sha256sums=('fc2c5a43ad8f1110dc94298e27f68fb3c9d55e3977635b6a09a27b62088c74a0')
 
 build() {
 	cd "${pkgname}-${pkgver}"

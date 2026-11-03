@@ -1,6 +1,6 @@
 pkgbase = dojo
 	pkgdesc = A tool to keep environment as code. Dojo helps to compile code and run other operations in Docker containers. Containerize your development and operations environment.
-	pkgver = 0.13.0
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://github.com/kudulab/dojo
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = dojo
 	depends = docker-compose
 	provides = dojo
 	conflicts = dojo-bin
-	source = dojo-0.13.0.tar.gz::https://github.com/kudulab/dojo/archive/0.13.0.tar.gz
-	sha256sums = 40c0a96dcb54bd47ab4ab39a84ff0830bea704a50893b3fa683215a4daf2c93f
+	source = dojo-0.13.3.tar.gz::https://github.com/kudulab/dojo/archive/0.13.3.tar.gz
+	sha256sums = fc2c5a43ad8f1110dc94298e27f68fb3c9d55e3977635b6a09a27b62088c74a0
 
 pkgname = dojo
