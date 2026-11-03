@@ -326,8 +326,8 @@ package_sourcemod() {
     LicenseRef-Source-SDK
   )
   # The games' 32-bit and 64-bit servers: SourcePawn's zlib, and SQLite of clientprefs' default
-  # storage; bash for compile.sh. Metamod:Source of the same build as metamod-source-src, whose interfaces are versioned
-  # and stay compatible, like SourceMod's for extensions.
+  # storage; bash for compile.sh. Metamod:Source of the same build as metamod-source-src, whose
+  # interfaces are versioned and stay compatible, like SourceMod's for extensions.
   depends=(
     bash
     gcc-libs
