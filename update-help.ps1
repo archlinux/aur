@@ -24,7 +24,41 @@ $modules = @(
     (Get-ChildItem -Directory -Path $env:PSModulePath).Name
 )
 
-Update-Help -Module $modules -UICulture en-US -Scope AllUsers
+# The containers of the updatable help of modules whose HelpInfoUri doesn't lead to theirs. PSResourceGet's
+# fwlink (https://go.microsoft.com/fwlink/?linkid=2238183), also the HelpContentURI of its HelpInfo.xml on
+# the server since the help was published again on 2026-10-28, redirects to its documentation page now,
+# so Update-Help fails for it. Its help is taken from the container directly instead.
+# Upstream issue: https://github.com/PowerShell/PSResourceGet/issues/2078
+$helpContainers = @{
+    'Microsoft.PowerShell.PSResourceGet' = 'https://pshelpprod.z22.web.core.windows.net/powershellget-3.x/'
+}
+
+Update-Help -Module $modules -UICulture en-US -Scope AllUsers -ErrorAction SilentlyContinue -ErrorVariable helpErrors
+foreach ($helpError in $helpErrors) {
+    $failed = @($modules | Where-Object { $helpContainers.ContainsKey($_) -and $helpError.Exception.Message.Contains("'$_'") })
+    if (-not $failed) {
+        throw $helpError
+    }
+    foreach ($name in $failed) {
+        # What Update-Help installs: the cab of the help, <module>_<GUID>_en-US_HelpContent.cab, unpacked
+        # into the module's en-US folder, and next to the module the HelpInfo.xml with the version installed,
+        # which Update-Help saves with the line endings of the system
+        $module = Get-Module -ListAvailable -Name $name | Select-Object -First 1
+        $helpName = "$($name)_$($module.Guid)"
+        $helpInfo = Join-Path $module.ModuleBase "$($helpName)_HelpInfo.xml"
+        Invoke-WebRequest -Uri "$($helpContainers[$name])$($helpName)_HelpInfo.xml" -OutFile $helpInfo
+        $helpInfoText = [System.IO.File]::ReadAllText($helpInfo) -replace "`r`n", "`n"
+        [System.IO.File]::WriteAllText($helpInfo, $helpInfoText, [System.Text.UTF8Encoding]::new($true))
+        $cab = Join-Path ([System.IO.Path]::GetTempPath()) "$($helpName)_en-US_HelpContent.cab"
+        Invoke-WebRequest -Uri "$($helpContainers[$name])$(Split-Path -Leaf $cab)" -OutFile $cab
+        $helpDir = New-Item -ItemType Directory -Force -Path (Join-Path $module.ModuleBase en-US)
+        bsdtar -xf $cab -C $helpDir
+        if ($LASTEXITCODE -ne 0) {
+            throw "Unpacking the help of $name failed"
+        }
+        Remove-Item -LiteralPath $cab
+    }
+}
 
 # The help of Microsoft.PowerShell.Core goes into $PSHOME of the running PowerShell
 if ((Resolve-Path -LiteralPath $PowerShellHome).Path -ne (Resolve-Path -LiteralPath $PSHOME).Path) {
