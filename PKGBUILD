@@ -25,7 +25,7 @@ _prefix=/opt/$_ovname
 _venv=$_prefix/venv
 
 pkgname=openviking-bin
-pkgver=0.5.2.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Self-evolving context database for AI agents (upstream wheel with a private virtualenv)"
 arch=('x86_64' 'aarch64')
@@ -45,11 +45,11 @@ source=("$_ovname.service"
 sha256sums=('SKIP'
             'SKIP')
 
-source_x86_64=("${_ovname}-${pkgver}-cp310-abi3-manylinux_2_31_x86_64.whl::https://files.pythonhosted.org/packages/09/65/58244f9c4b17e5e0ab1930ad3fad9bb507cb89d7de9db394cf96df5a51e5/${_ovname}-${pkgver}-cp310-abi3-manylinux_2_31_x86_64.whl")
-sha256sums_x86_64=('e8b73abfca1ceb45c58a7f92b18e9929bb3ad611d3fd6142265abe7a534880cc')
+source_x86_64=("openviking-0.5.3-cp310-abi3-manylinux_2_31_x86_64.whl::https://files.pythonhosted.org/packages/eb/60/2f3f681bb09d04db23b78616be3c8815b8769bf9df82d4a34cd1bd2090fd/openviking-0.5.3-cp310-abi3-manylinux_2_31_x86_64.whl")
+sha256sums_x86_64=('e3b3d72a4d40c1d246d0547d74505ac677f924463205c85115601bd16e2002ae')
 
-source_aarch64=("${_ovname}-${pkgver}-cp310-abi3-manylinux_2_31_aarch64.whl::https://files.pythonhosted.org/packages/1e/82/d0221cd8655b5be003e2e6cb5584e35cb27f8e493560b05c151dba962388/${_ovname}-${pkgver}-cp310-abi3-manylinux_2_31_aarch64.whl")
-sha256sums_aarch64=('7af6731ee488be2d4ecd7698a7fec6ca6f854f115a3fd14b188569e2f58f1172')
+source_aarch64=("openviking-0.5.3-cp310-abi3-manylinux_2_31_aarch64.whl::https://files.pythonhosted.org/packages/bd/65/5e27d5e177db9685b8fc754a0e8ad9db9ec562487bd12eed3359f4c52341/openviking-0.5.3-cp310-abi3-manylinux_2_31_aarch64.whl")
+sha256sums_aarch64=('e2a2afb8a378ef1fd4b58aacf8b994753f3c893c3252c6a7eb13285591559cbc')
 
 build() {
     python -m venv --clear "$srcdir/venv"
