@@ -1,0 +1,16 @@
+pkgbase = tri7d-bin
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/SamiAhmed7777/tri7
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = tri7d
+	conflicts = tri7d
+	source = tri7d-bin-7.0.0.tar.gz::https://github.com/SamiAhmed7777/tri7/archive/refs/tags/v7.0.0.tar.gz
+	sha256sums = 3c1b1845d2b11e76a3a30624ceab3694f23c465cd7489944840e0a7604270a83
+pkgname = tri7d-bin
+	pkgdesc = Cryptographic Triangles (TRI) lightweight Rust daemon (tri7) - PoS staking, Tor + I2P, built-in explorer
