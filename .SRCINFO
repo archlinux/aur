@@ -1,0 +1,22 @@
+pkgbase = freerdp-aad-helper
+	pkgdesc = AAD (Entra ID) browser auth helpers for FreeRDP (webview and xdg-open), for Azure Virtual Desktop
+	pkgver = 3.33.0
+	pkgrel = 1
+	url = https://github.com/FreeRDP/FreeRDP
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = openssl
+	depends = freerdp
+	depends = webkit2gtk-4.1
+	depends = python
+	depends = xdg-utils
+	source = git+https://github.com/FreeRDP/FreeRDP#tag=3.33.0
+	source = git+https://github.com/akallabeth/webview#commit=2a0a1303c5e8c9c5b73fa9e461739042ebdabe6f
+	sha512sums = e83a99668463c8ba70d03fb9799f34e3a4eb3e2cb4af564c7ae0c47609d2fbf889a05c31f72037f6ee68307133cfeb97eef21f8085980124df7977ca4402fb21
+	sha512sums = f5b3fce27cdf53207613470ddb8d21931ddb0fa90d4db6170fe36c30fc408996f7451595ab56a7105c86bcbb208a27a7a710d1a4a0a445d2958ba107083d25c4
+
+pkgname = freerdp-aad-helper
