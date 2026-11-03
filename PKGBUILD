@@ -4,7 +4,7 @@ pkgname=relic-material-gtk-theme
 _repo=Material-GTK-Themes
 _commit=55f4639ad6a9128f885305a60d230c5842711259
 _date=2025.10.23
-pkgver=2025.10.23.r9.95dc59b
+pkgver=2025.10.23.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
