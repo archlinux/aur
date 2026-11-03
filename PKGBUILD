@@ -2,7 +2,7 @@
 # Contributor: alba4k <blaskoazzolaaaron[at]gmail.com>
 
 pkgname=fluxcast
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('857f0eb294bc3f4353aa5bf94ec060a0a5948fc5951825ede7f6ebebe9f013fc')
+sha256sums=('6097b4e0293904dc0af41d750a980df8405c8a3cf6df8eaef7b3e5ee623b2f5a')
 
 package() {
   cd "$pkgname-$pkgver"
