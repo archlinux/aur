@@ -1,0 +1,22 @@
+pkgbase = wikistow-cli-beta-bin
+	pkgdesc = Command-line client for your family's encrypted wiki, for people and their agents (beta channel)
+	pkgver = 0.23.0beta.1
+	pkgrel = 1
+	url = https://github.com/skint007/wikistow
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = libsecret: keep an agent's key in the keyring (agent enroll --secret-store)
+	provides = wikistow-cli
+	conflicts = wikistow-cli
+	options = !strip
+	options = !debug
+	source = LICENSE-0.23.0-beta.1::https://github.com/skint007/wikistow/releases/download/v0.23.0-beta.1/LICENSE
+	sha256sums = 49e9b16003c5e96891265ca2f912087102de955704eda32482dfe2c4b8fbafd6
+	source_x86_64 = wikistow-0.23.0-beta.1-x86_64::https://github.com/skint007/wikistow/releases/download/v0.23.0-beta.1/wikistow-linux-x64
+	sha256sums_x86_64 = e040c403268bda51819d4eab9646e8fb2e7850f945e6d5f9fdbcdb9544892829
+	source_aarch64 = wikistow-0.23.0-beta.1-aarch64::https://github.com/skint007/wikistow/releases/download/v0.23.0-beta.1/wikistow-linux-arm64
+	sha256sums_aarch64 = 95dc47ee87271f4e5b096d5653485411e28948c52c56e89d77d8114bb11d3010
+
+pkgname = wikistow-cli-beta-bin
