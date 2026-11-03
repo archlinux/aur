@@ -1,7 +1,7 @@
 pkgbase = ttf-google-sans-hinted
 	pkgdesc = Google Sans and Google Sans Display, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)
 	pkgver = 1.020
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flutter.googlesource.com/gallery-assets
 	arch = any
 	license = LicenseRef-Google-Sans
