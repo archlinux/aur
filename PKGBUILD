@@ -5,7 +5,7 @@ pkgname=plasma-drop
 pkgver=1.17.4
 pkgrel=1
 pkgdesc="KDE Plasma 6 dropdown app launcher for Wayland (Yakuake-style for any app)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/SkeLLLa/plasma-drop"
 license=('GPL-3.0-or-later')
 depends=('kwin' 'qt6-base')
@@ -16,7 +16,8 @@ sha256sums=('5c226902b0a10d9c3d006f52e4eaa34c1141cc945371f49ec5d2c801084447f9')
 prepare() {
   cd "${pkgname}-${pkgver}"
   export CARGO_HOME="${srcdir}/cargo-home"
-  cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
