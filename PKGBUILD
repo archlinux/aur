@@ -1,8 +1,7 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-crewai-cli
-_pkgname=crewai_cli
-pkgver=1.14.6
+pkgver=1.15.34
 pkgrel=1
 pkgdesc="CLI for CrewAI: scaffold, run, deploy and manage AI agent crews"
 arch=('any')
@@ -10,70 +9,95 @@ url="https://github.com/crewAIInc/crewAI"
 license=('MIT')
 depends=(
     'python'
-    'python-crewai-core'
-    'python-click'
-    'python-pydantic'
-    'python-pydantic-settings'
+    "python-crewai-core=$pkgver"
+    'python-click>=8.1.7'
+    'python-click<9'
+    'python-pydantic>=2.11.9'
+    'python-pydantic-settings>=2.14.2'
     'python-appdirs'
-    'python-cryptography'
-    'python-httpx'
-    'python-pyjwt'
-    'python-rich'
-    'python-tomli'
-    'python-tomli-w'
-    'python-packaging'
-    'python-dotenv'
-    'uv'
-    'python-textual'
-    'python-certifi'
+    'python-cryptography>=42'
+    'python-httpx>=0.28.1'
+    'python-pyjwt>=2.15'
+    'python-rich>=13.7.1'
+    'python-tomli>=2.0.2'
+    'python-tomli-w>=1.1'
+    'python-packaging>=23'
+    'python-dotenv>=1.2.2'
+    'uv>=0.13.4'
+    'python-textual>=7.5'
+    'python-certifi>=2026.10.18'
 )
-makedepends=(
-    'python-build'
-    'python-installer'
-    'python-hatchling'
-    'python-wheel'
-)
-source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/c/crewai-cli/${_pkgname}-${pkgver}.tar.gz"
-        "LICENSE::https://raw.githubusercontent.com/crewAIInc/crewAI/main/LICENSE")
-sha256sums=('f9d20bdd5aa48b41ff3a830794c3e5100b1bbf9555895b019d4b02984a986b91'
-            'febc00dc5a0557ca8afbcdc6d3896731dc42f4cecabd87e6c98326212f8dbf36')
+makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
+checkdepends=('python-pytest')
+_archive="crewAI-$pkgver"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('620adcd897459067187c89d6e11c5666ff4a9d00aa12d6b7cdb085f3863dab3c')
 
 prepare() {
-    cd "$_pkgname-$pkgver"
-    # Allow Python 3.14 (Arch ships 3.14); upstream caps at <3.14 for no code reason.
+    cd "$_archive/lib/cli"
+    # Exercise the installed CLI with Arch's Python 3.14 and newer Pydantic/Tomli.
     sed -i 's/requires-python = ">=3.10, <3.14"/requires-python = ">=3.10"/' pyproject.toml
-    # Relax overly strict version pins for Arch's rolling-release versions.
-    # pydantic: Arch ships 2.13.x which violates the upstream <2.13 cap; 2.13 is compatible.
     sed -i 's/pydantic>=2.11.9,<2.13/pydantic>=2.11.9,<3/' pyproject.toml
-    # Relax minor "~=" pins where Arch is newer than the implied upper bound.
-    sed -i 's/click~=8.1.7/click>=8.1.7,<9/' pyproject.toml
-    sed -i 's/pydantic-settings~=2.10.1/pydantic-settings>=2.10.1,<3/' pyproject.toml
-    sed -i 's/appdirs~=1.4.4/appdirs>=1.4.4/' pyproject.toml
-    sed -i 's/httpx~=0.28.1/httpx>=0.28.1/' pyproject.toml
-    sed -i 's/tomli~=2.0.2/tomli>=2.0.2/' pyproject.toml
-    sed -i 's/tomli-w~=1.1.0/tomli-w>=1.1.0/' pyproject.toml
-    sed -i 's/uv~=0.11.6/uv>=0.11.6,<0.12/' pyproject.toml
-    # crewai-core is pinned exactly to this release; that matches our sibling package.
+    sed -i 's/tomli~=2.0.2/tomli>=2.0.2,<3/' pyproject.toml
 }
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$_archive/lib/cli"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "$_pkgname-$pkgver"
-    rm -rf "$srcdir/test-install"
-    python -m installer --destdir="$srcdir/test-install" dist/*.whl
-    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    PYTHONPATH="$srcdir/test-install$site_packages:$PYTHONPATH" python -c "
+    cd "$_archive/lib/cli"
+    local staged="$srcdir/check-install"
+    rm -rf "$staged"
+    python -m installer --destdir="$staged" dist/*.whl
+    local site_packages
+    site_packages=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')
+    # Retain standalone CLI coverage for configuration, credentials, safe extraction,
+    # deployment validation, HTTP client behavior and version resolution.
+    CREWAI_CLI_STAGED_ROOT="$staged" CREWAI_DISABLE_TELEMETRY=true \
+    CREWAI_PLUS_URL=https://fake.crewai.com \
+    PYTHONNOUSERSITE=1 PYTHONPATH="$staged$site_packages" python -P - <<'PYTEST'
+import os
+from pathlib import Path
+import sys
+
 import crewai_cli
-print(f'crewai_cli {crewai_cli.__version__} imported successfully')
-"
+import pytest
+
+staged = Path(os.environ["CREWAI_CLI_STAGED_ROOT"]).resolve()
+assert Path(crewai_cli.__file__).resolve().is_relative_to(staged)
+selected = [
+    "deploy/test_archive.py", "deploy/test_validate.py", "skills/test_safe_extract.py",
+    "test_config.py", "test_constants.py", "test_input_prompt.py", "test_plus_api.py",
+    "test_settings_command.py", "test_token_manager.py", "test_version.py",
+]
+# Keep component fixtures and use the component project configuration.
+# The workspace root adds plugins and imports main crewai, which depends on
+# this CLI and is not a prerequisite of these component unit tests.
+# The standalone CLI delegates full JSON Crew validation to main crewai in
+# the user's project environment. These three tests exercise that optional
+# downstream package, which itself depends on this CLI. Keep them explicit
+# as deferred integration coverage, alongside all standalone CLI tests.
+main_integration = [
+    "test_valid_json_crew_project_passes",
+    "test_json_task_agent_mismatch_is_error",
+    "test_json_runtime_fields_are_deploy_errors",
+]
+result = pytest.main(["-c", "pyproject.toml", "-v", "--import-mode=importlib", "--confcutdir=tests",
+                     *["--deselect=tests/deploy/test_validate.py::" + n for n in main_integration],
+                     *["tests/" + p for p in selected]])
+for name, module in tuple(sys.modules.items()):
+    if name == "crewai_cli" or name.startswith("crewai_cli."):
+        origin = getattr(module, "__file__", None)
+        if origin:
+            assert Path(origin).resolve().is_relative_to(staged), (name, origin)
+raise SystemExit(result)
+PYTEST
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_archive/lib/cli"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$_archive/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
