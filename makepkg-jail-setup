@@ -69,7 +69,6 @@ profile makepkg-jail-setup flags=(enforce,attach_disconnected) {
   deny @{HOME}/.config/gh/** rw,
   deny @{HOME}/.aws/ rw,
   deny @{HOME}/.aws/** rw,
-  deny @{HOME}/.cargo/ rw,
   deny @{HOME}/.cargo/credentials.toml rw,
   deny /usr/bin/sudo x,
   deny /usr/bin/su x,
