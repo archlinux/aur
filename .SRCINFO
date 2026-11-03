@@ -1,6 +1,6 @@
 pkgbase = gitee-cli
 	pkgdesc = Gitee CLI is a tool which interact with gitee server seamlessly via terminal
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://gitee.com/oschina/gitee-cli
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gitee-cli
 	conflicts = gitee-cli
 	options = !strip
 	options = !debug
-	source = gitee-cli::git+https://gitee.com/oschina/gitee-cli.git#tag=v0.3.2
-	sha256sums = 99b7ffd12d5aaa2afe5a9bd936898efb835456db5786465ed73e336afd958f15
+	source = gitee-cli::git+https://gitee.com/oschina/gitee-cli.git#tag=v0.3.3
+	sha256sums = 36dfeddded07659bc7437a8d7d96bbfeccaf5cad98d1c66cc05cdaf446599a64
 
 pkgname = gitee-cli
