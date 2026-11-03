@@ -1,6 +1,6 @@
 pkgbase = spoti-bin
 	pkgdesc = lightweight native Spotify client
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/spoti
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = spoti-bin
 	optdepends = noto-fonts-cjk: CJK characters
 	optdepends = noto-fonts-emoji: color emoji
 	optdepends = org.freedesktop.secrets: save login credentials
-	provides = spoti=0.5.6
+	provides = spoti=0.5.7
 	conflicts = spoti
 	options = !strip
-	source_x86_64 = spoti-bin-0.5.6-linux-x64.tar.zst::https://github.com/hyperpuncher/spoti/releases/download/v0.5.6/spoti-linux-x64.tar.zst
-	sha256sums_x86_64 = d99e85389bd8eefa6f15bb2c12185d0006679b562b88bbb7f936a5efc905d9f9
-	source_aarch64 = spoti-bin-0.5.6-linux-arm64.tar.zst::https://github.com/hyperpuncher/spoti/releases/download/v0.5.6/spoti-linux-arm64.tar.zst
-	sha256sums_aarch64 = 25c484c74ed0ac091f1156a9863f342451677ff81022bc3695c2b1263bcbf1cd
+	source_x86_64 = spoti-bin-0.5.7-linux-x64.tar.zst::https://github.com/hyperpuncher/spoti/releases/download/v0.5.7/spoti-linux-x64.tar.zst
+	sha256sums_x86_64 = 545186d3cd0d4505ef032495135d7c6ca6d2014f9765ed706bf17b78cc737d86
+	source_aarch64 = spoti-bin-0.5.7-linux-arm64.tar.zst::https://github.com/hyperpuncher/spoti/releases/download/v0.5.7/spoti-linux-arm64.tar.zst
+	sha256sums_aarch64 = 50c14c86b2880513ab9b607a310753198bd1eead908a4d9f00307d3f53464dfd
 
 pkgname = spoti-bin
