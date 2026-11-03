@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.17.7
+pkgver=0.17.8
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ install=whoisthat.install
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v${pkgver}.tar.gz")
 # The "Publish to AUR" workflow pins the real released-tag digest.
-sha256sums=('ca79a72cebadc757a1d62347223bf1afbb52e22de8e9e731f75370e61058bf1f')
+sha256sums=('2144112bea59b4f228f0d6387418fd376887bcc852ff1edd505d10e816c2c34c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,4 +40,6 @@ package() {
     install -Dm755 target/release/whoisthat "${pkgdir}/usr/bin/whoisthat"
     install -Dm755 core/core/whoisthat-core  "${pkgdir}/usr/bin/whoisthat-core"
     install -Dm644 pkg/whoisthat.desktop     "${pkgdir}/usr/share/applications/whoisthat.desktop"
+    install -Dm644 pkg/whoisthat-url.desktop "${pkgdir}/usr/share/applications/whoisthat-url.desktop"
+    install -Dm644 docs/public/logo.svg      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/whoisthat.svg"
 }
