@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Dispatch
+Comment=Run GitHub Actions workflows in order
+Exec=dispatch-workflows
+Icon=dispatch-workflows
+Terminal=false
+Categories=Development;
+StartupWMClass=Dispatch
+StartupNotify=true

@@ -1,0 +1,26 @@
+pkgbase = dispatch-workflows-bin
+	pkgdesc = Desktop runner for sequential GitHub Actions workflows
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/dispatch-workflows
+	arch = x86_64
+	license = MIT
+	depends = ca-certificates
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	optdepends = github-cli: authenticate using gh auth login instead of a token
+	provides = dispatch-workflows=1.0.1
+	conflicts = dispatch-workflows
+	options = !strip
+	options = !debug
+	source = LICENSE
+	source = dispatch-workflows.desktop
+	sha256sums = a9e9f7748e5191da4c9ecddcf2f2807b7c0339b08438773cf67c8359419d3945
+	sha256sums = ad2fee919d27116fee70435a9da9f107fea549ba6c46b173f241d8a1369ba4b3
+	source_x86_64 = dispatch-workflows-bin-1.0.1.tar.zst::https://github.com/skorotkiewicz/dispatch-workflows/releases/download/v1.0.1/stable-linux-x64-Dispatch.tar.zst
+	sha256sums_x86_64 = b8840ec1bd384286e15b51ed0d70139e45f8bd4763ef7bf01e698b678a48307c
+
+pkgname = dispatch-workflows-bin
