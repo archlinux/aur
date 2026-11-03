@@ -1,7 +1,7 @@
 # Maintainer: bobo <https://aur.archlinux.org/account/bobosingle>
 
 pkgname=manis-bin
-pkgver=0.1.123
+pkgver=0.1.145
 pkgrel=1
 pkgdesc="NSH desktop workbench for policy-based proxy routing"
 arch=('x86_64')
@@ -32,7 +32,7 @@ _upstream_pkgrel=1
 source_x86_64=(
   "manis-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst::https://github.com/kaigedong/Manis/releases/download/build-${pkgver}/manis-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
 )
-sha256sums_x86_64=('816945bdc2b99f687c5e2423d834be294ca572d26ba81c3370d7920a365249fb')
+sha256sums_x86_64=('14610782fec678e7634ac86f24e43abd8ea06c16356d7a0ad8db47378f9773a6')
 
 package() {
   cp -a "${srcdir}/usr" "${pkgdir}/"
