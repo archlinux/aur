@@ -1,30 +1,31 @@
 pkgbase = python-flash-linear-attention
 	pkgdesc = Fast linear attention models and layers (high-level fla package)
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/fla-org/flash-linear-attention
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-triton
+	checkdepends = python-triton>=3.3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-einops
-	depends = python-fla-core=0.5.2
+	depends = python-fla-core=0.6.0
 	depends = python-packaging
-	depends = python-pytorch
-	depends = python-transformers
+	depends = python-pytorch>=2.7
+	depends = python-transformers>=5.6.2
+	depends = python-transformers<6
 	optdepends = python-tilelang: tilelang extra
 	optdepends = python-causal-conv1d: conv1d extra (causal-conv1d>=1.4.0)
 	optdepends = python-matplotlib: benchmark extra
 	optdepends = python-datasets: benchmark extra (datasets>=3.3.0)
 	optdepends = python-pytest: test extra
-	source = python-flash-linear-attention-0.5.2.tar.gz::https://github.com/fla-org/flash-linear-attention/archive/refs/tags/v0.5.2.tar.gz
+	source = python-flash-linear-attention-0.6.0.tar.gz::https://github.com/fla-org/flash-linear-attention/archive/refs/tags/v0.6.0.tar.gz
 	source = no-pip-split-validation.py
-	sha256sums = 7c3132c3d5999aea1888931417fa4525c1c1fbd6243a9d4ea71a125dd3e7a962
-	sha256sums = 296692f71b0d9c2085cd214aedb9f0754fd45416aed682390c00bae27336b5c0
+	sha256sums = 9d1bd45a0151561c05f41c4f09c9fbe41380c013f4102398db0ed53acea5c008
+	sha256sums = 72acc3da18c34853e19311511307cb17636e68aec812b5efeeb4b649d3d95c15
 
 pkgname = python-flash-linear-attention
