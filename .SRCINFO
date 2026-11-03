@@ -7,8 +7,9 @@ pkgbase = plasma-drop
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
+	depends = glibc
+	depends = libgcc
 	depends = kwin
-	depends = qt6-base
 	source = plasma-drop-1.17.4.tar.gz::https://github.com/SkeLLLa/plasma-drop/archive/v1.17.4.tar.gz
 	sha256sums = 5c226902b0a10d9c3d006f52e4eaa34c1141cc945371f49ec5d2c801084447f9
 
