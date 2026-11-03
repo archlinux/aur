@@ -1,7 +1,7 @@
 pkgbase = audacity-bin
 	pkgdesc = Audio editor and recorder (Arch binaries of tagged GitHub Audacity releases, built on OBS)
-	pkgver = 4.0.1
-	pkgrel = 2
+	pkgver = 4.0.2
+	pkgrel = 1
 	url = https://www.audacityteam.org/
 	arch = x86_64
 	groups = pro-audio
@@ -15,6 +15,7 @@ pkgbase = audacity-bin
 	depends = hicolor-icon-theme
 	depends = lame
 	depends = libgcc
+	depends = libid3tag
 	depends = libogg
 	depends = libpng
 	depends = libsbsms
@@ -43,16 +44,16 @@ pkgbase = audacity-bin
 	depends = wxwidgets-common
 	depends = zix
 	depends = zlib
-	provides = audacity=4.0.1
+	provides = audacity=4.0.2
 	provides = lv2-host
 	provides = vst3-host
 	conflicts = audacity
 	conflicts = audacity-git
 	conflicts = audacity4-bin
-	noextract = obs-da3d9347e86e-audacity-bin-4.0.1-2-x86_64.pkg.tar.zst
+	noextract = obs-b6164cb6dd33-audacity-bin-4.0.2-2-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source_x86_64 = obs-da3d9347e86e-audacity-bin-4.0.1-2-x86_64.pkg.tar.zst::https://downloadcontent.opensuse.org/repositories/home:/somepaulo:/Audacity/Arch/x86_64/audacity-bin-4.0.1-2-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = da3d9347e86e42909cf210aca276596f7fc9b13ecf70ba1a8f3a045b922cee1c
+	source_x86_64 = obs-b6164cb6dd33-audacity-bin-4.0.2-2-x86_64.pkg.tar.zst::https://downloadcontent.opensuse.org/repositories/home:/somepaulo:/Audacity/Arch/x86_64/audacity-bin-4.0.2-2-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = b6164cb6dd3351d1118f0d7b9efed87554a85e15bcc366aeb19a6d4541a04301
 
 pkgname = audacity-bin

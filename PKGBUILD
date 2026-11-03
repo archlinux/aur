@@ -4,8 +4,8 @@
 # This is an unofficial community build, not an upstream Audacity binary.
 
 pkgname=audacity-bin
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc='Audio editor and recorder (Arch binaries of tagged GitHub Audacity releases, built on OBS)'
 arch=('x86_64')
 url='https://www.audacityteam.org/'
@@ -17,7 +17,7 @@ _obs_pkgrel=2
 # Use the publishing origin: redirecting mirrors can retain an older rebuild.
 _obs_url='https://downloadcontent.opensuse.org/repositories/home:/somepaulo:/Audacity/Arch'
 _obs_archive="${pkgname}-${pkgver}-${_obs_pkgrel}-x86_64.pkg.tar.zst"
-_obs_sha256='da3d9347e86e42909cf210aca276596f7fc9b13ecf70ba1a8f3a045b922cee1c'
+_obs_sha256='b6164cb6dd3351d1118f0d7b9efed87554a85e15bcc366aeb19a6d4541a04301'
 # Distinguish both makepkg's output and cached copies of previous OBS rebuilds.
 _archive="obs-${_obs_sha256:0:12}-${_obs_archive}"
 
@@ -31,6 +31,7 @@ depends=(
   'hicolor-icon-theme'
   'lame'
   'libgcc'
+  'libid3tag'
   'libogg'
   'libpng'
   'libsbsms'
