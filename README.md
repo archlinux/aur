@@ -419,6 +419,22 @@ turns on for pango, so GTK, Chromium, Electron, Qt and LibreOffice then agree.
 colon — and the build gives it to every family that can draw it and quietly
 leaves SF Mono out, because that family cannot: see `_FEATURE_SKIP` below.
 
+Instead of typing the list you can take it from that file:
+
+```sh
+FEATURE_DEFAULTS=fonts.conf makepkg -si
+```
+
+The build reads the tags that are **active** (uncommented) in the `fontfeatures`
+of every `<match target="font">` for the selected Apple families (SF Pro, SF
+Compact, SF Mono, SF Arabic, New York and their Nerd Font names) in
+`~/.config/fontconfig/fonts.conf` (another file: `APPLE_FONTS_CONF`) and bakes
+the union. Skipped with a note: negated tags (`-calt`), the tags every shaper
+already applies (`kern liga ccmp locl calt mark mkmk`), the ones
+`make_features.py` refuses (`aalt ordn dlig salt hlig hist`) and, at bake time,
+the tags none of the built fonts has. `_FEATURE_SKIP` still applies, so `ss03`
+stays out of SF Mono.
+
 ### What the fonts actually have
 
 The `cvXX` names below are the fonts' own UI labels, read out of the name table

@@ -10,7 +10,7 @@ _nfver=3.5.1
 # families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -221,6 +221,21 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
 #                 is baked into every family that can draw it; SF Mono cannot,
 #                 so the build leaves it out there instead of failing. The
 #                 ss03 bullet below has the measurements.)
+#
+#                 FEATURE_DEFAULTS=fonts.conf takes the tags that are ACTIVE
+#                 (uncommented) in the fontfeatures of every <match
+#                 target="font"> in ${APPLE_FONTS_CONF:-~/.config/fontconfig/fonts.conf}
+#                 whose family belongs to a family this build installs (SF Pro,
+#                 SF Compact, SF Mono, SF Arabic, New York, and their Nerd Font
+#                 names). The tags of all those blocks are united and baked into
+#                 every font; _FEATURE_SKIP below still applies (ss03 stays out
+#                 of SF Mono). Dropped with a note: negated tags (-calt), tags
+#                 HarfBuzz always applies (kern liga ccmp locl mark mkmk calt)
+#                 and the ones make_features.py refuses (aalt ordn dlig salt
+#                 hlig hist). The Apple fonts are extracted only after the
+#                 options are resolved, so tags the fonts lack are filtered at
+#                 bake time instead (with a note): a tag no font has is dropped
+#                 rather than failing the build.
 #
 #                 THREE TRAPS, all measured on these fonts:
 #                 * ss03 means two different things. In SF Pro Text, SF Pro
@@ -540,6 +555,60 @@ _ask_choice() {
   done
 }
 
+# Prints the bakeable tags active in fonts.conf for the families this build
+# installs. $1 is an ERE tested against the family name of each <match>.
+# Tags the fonts lack in GSUB are filtered later, in _bake_features.
+_features_from_fontsconf() {
+  local _conf="${APPLE_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+  if [[ ! -f "$_conf" ]]; then
+    echo "Error: $_conf not found (set APPLE_FONTS_CONF)." >&2; return 1
+  fi
+  python - "$_conf" "$1" <<'PY'
+import re, sys
+import xml.etree.ElementTree as ET
+conf, fam_re = sys.argv[1:3]
+rx = re.compile(fam_re)
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and rx.search((t.findtext("string") or "").strip())
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+}
+
+# FEATURE_DEFAULTS=fonts.conf -> the tag list; sets FEATURE_FROM_CONF.
+_resolve_conf_features() {
+  [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]] || return 0
+  local -a _alt=()
+  [[ "$WANT_SF_PRO" == true ]]     && _alt+=('SF ?Pro')
+  [[ "$WANT_SF_COMPACT" == true ]] && _alt+=('SF ?Compact')
+  [[ "$WANT_SF_MONO" == true ]]    && _alt+=('SF ?Mono')
+  [[ "$WANT_SF_ARABIC" == true ]]  && _alt+=('SF ?Arabic')
+  [[ "$WANT_NY" == true ]]         && _alt+=('New ?York')
+  local _re="^($(IFS='|'; echo "${_alt[*]}"))"
+  FEATURE_DEFAULTS="$(_features_from_fontsconf "$_re")" || exit 1
+  FEATURE_FROM_CONF=true
+  echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
+}
+
 # Resolve every build option: prompt when interactive, otherwise fall back to
 # environment variables and defaults. Called from prepare() (so the answers are
 # known before pkgver() needs them) and re-read from disk by build().
@@ -786,11 +855,13 @@ _resolve_options() {
       "none:leave the fonts as Apple ships them (default)" \
       "text:ss06,cv07,case - slashed zero, one-storey a, raised punctuation" \
       "colon:text + ss03, centred colon - SF Mono is left alone" \
+      "fonts.conf:the features active for the selected Apple families in ~/.config/fontconfig/fonts.conf" \
       "custom:type the tag list yourself"
     case $_choice in
       none)  FEATURE_DEFAULTS="" ;;
       text)  FEATURE_DEFAULTS="ss06,cv07,case" ;;
       colon) FEATURE_DEFAULTS="ss06,cv07,case,ss03" ;;
+      fonts.conf) FEATURE_DEFAULTS="fonts.conf"; _resolve_conf_features ;;
       custom)
         echo "  Tags, comma or space separated (e.g. \"ss06,cv07,case\"):"
         read -r -p "  > " _tags || _tags=""
@@ -824,6 +895,8 @@ _resolve_options() {
     fi
   fi
   FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
+  FEATURE_FROM_CONF="${FEATURE_FROM_CONF:-false}"
+  _resolve_conf_features   # also covers FEATURE_DEFAULTS=fonts.conf from the environment
   FEATURE_FAMILY="${FEATURE_FAMILY:-}"
   for _v in ${FEATURE_DEFAULTS//,/ }; do
     if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
@@ -892,6 +965,7 @@ _resolve_options() {
     echo "HINT_TTFA_TABLE=$HINT_TTFA_TABLE"
     echo "GASP_MODE=$GASP_MODE"
     echo "FEATURE_DEFAULTS=$FEATURE_DEFAULTS"
+    echo "FEATURE_FROM_CONF=$FEATURE_FROM_CONF"
     echo "FEATURE_FAMILY=$FEATURE_FAMILY"
     echo "WANT_SF_PRO=$WANT_SF_PRO"
     echo "WANT_SF_COMPACT=$WANT_SF_COMPACT"
@@ -923,7 +997,7 @@ _load_options() {
       NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|STRIP_TRAK|TRAK_BAKE|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
-      FEATURE_DEFAULTS|FEATURE_FAMILY| \
+      FEATURE_DEFAULTS|FEATURE_FROM_CONF|FEATURE_FAMILY| \
       WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY| \
       SF_PRO_SUBS|SF_COMPACT_SUBS|NY_SUBS)
         printf -v "$_k" '%s' "$_v" ;;
@@ -968,6 +1042,31 @@ _bake_features() {
     echo "Error: FEATURE_DEFAULTS is set but $_src holds no fonts." >&2; exit 1
   fi
   rm -rf "$srcdir/featured"; mkdir -p "$srcdir/featured"
+  if [[ "${FEATURE_FROM_CONF:-false}" == true ]]; then
+    # Tags from fonts.conf were never checked against the fonts: drop the ones
+    # no font of this build has in GSUB (the others fail make_features.py).
+    FEATURE_DEFAULTS="$(python - "$FEATURE_DEFAULTS" "${_files[@]}" <<'PY'
+import sys
+from fontTools.ttLib import TTFont
+want = [t for t in sys.argv[1].split(",") if t]
+have = set()
+for path in sys.argv[2:]:
+    f = TTFont(path, lazy=True)
+    if "GSUB" in f:
+        have |= {r.FeatureTag for r in f["GSUB"].table.FeatureList.FeatureRecord}
+keep = []
+for t in want:
+    if t in have: keep.append(t)
+    else: print(f"  note: fonts.conf: '{t}' skipped (no font of this build has it in GSUB)", file=sys.stderr)
+print(",".join(keep))
+PY
+)"
+    if [[ -z "$FEATURE_DEFAULTS" ]]; then
+      echo "==> Nothing from fonts.conf can be baked into these fonts; installing them as built."
+      cp -p "${_files[@]}" "$srcdir/featured/"
+    fi
+  fi
+  if [[ -n "$FEATURE_DEFAULTS" ]]; then
   echo "==> Baking $FEATURE_DEFAULTS into calt..."
   # A tag that means something else in one family is dropped there and baked
   # into the rest (_FEATURE_SKIP): the build never fails because one family
@@ -978,6 +1077,7 @@ _bake_features() {
   done
   python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
     ${_skip[@]+"${_skip[@]}"} -o "$srcdir/featured" "${_files[@]}"
+  fi
 
   # FEATURE_FAMILY is a suffix here, one per family, and it has to be applied
   # even to the families that carry none of the requested tags (SF Mono has no
