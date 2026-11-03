@@ -1,0 +1,28 @@
+pkgbase = snippit-git
+	pkgdesc = Desktop clip-trimming tool with live multi-track audio mixing and lossless export (Tauri + React) (git version)
+	pkgver = 1.2.2.r4.gf6f438c
+	pkgrel = 1
+	url = https://github.com/mikilimj/Snippit
+	arch = x86_64
+	license = LicenseRef-proprietary
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = ffmpeg
+	depends = rclone
+	depends = gst-plugins-good
+	depends = gst-libav
+	depends = hicolor-icon-theme
+	provides = snippit
+	conflicts = snippit
+	conflicts = snippit-bin
+	options = !lto
+	source = snippit-git::git+https://github.com/mikilimj/Snippit.git#branch=main
+	source = snippit.desktop
+	sha256sums = SKIP
+	sha256sums = 9a05c74e25b18ccdcdc1dc89cb0471a73203780fccea90a061d4b771c95f97a0
+
+pkgname = snippit-git

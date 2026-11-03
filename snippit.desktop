@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Snippit
+Comment=Trim video clips with live multi-track audio mixing
+Exec=snippit
+Icon=snippit
+Terminal=false
+Categories=AudioVideo;Video;AudioVideoEditing;
+StartupWMClass=Snippit
