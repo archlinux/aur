@@ -3,7 +3,7 @@
 pkgname=perl-alien-proj
 _dist=Alien-proj
 pkgver=1.31
-pkgrel=1
+pkgrel=2
 pkgdesc='Compile the Proj library'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -16,9 +16,11 @@ depends=(
   proj
   perl
   perl-alien-build
+  perl-ffi-checklib
+)
+makedepends=(
   perl-alien-build-plugin-pkgconfig-ppwrapper
   perl-alien-sqlite
-  perl-ffi-checklib
   perl-file-find-rule
   perl-file-which
   perl-path-tiny
