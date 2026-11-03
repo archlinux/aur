@@ -2,19 +2,23 @@
 
 pkgname=python-pytorch-tokenizers
 _pkgname=tokenizers
-pkgver=1.5.0
+pkgver=1.6.0
+# Upstream release/1.6.0 and v1.6.0-rc2 point here. No final v1.6.0 tag exists.
+_commit=f54baeab00d5b664bfc4a977b884ff679fd3f15a
+_source_dir=$_pkgname-$_commit
 pkgrel=1
 pkgdesc='Common C++ and Python tokenizers for the PyTorch ecosystem'
 arch=('x86_64' 'aarch64')
 url='https://github.com/meta-pytorch/tokenizers'
 license=('BSD-3-Clause')
-options=('!debug')
+# Preserve native wheel bytes and their installed RECORD hashes.
+options=('!strip' '!debug')
 depends=(
   'abseil-cpp'
   'glibc'
   'libgcc'
   'libstdc++'
-  'python'
+  'python>=3.11'
   'python-sentencepiece'
   'python-tiktoken'
   'python-tokenizers'
@@ -25,7 +29,7 @@ makedepends=(
   'cmake'
   'ninja'
   'pkgconf'
-  'pybind11'
+  'pybind11>=3.1.0'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -39,10 +43,10 @@ optdepends=(
   'python-mistral-common: reference interoperability checks for Tekken tokenizers'
 )
 _json_commit=e6cafa573aac6ed9227f752a5371c0b3f436307d
-_pcre2_commit=2e03e323339ab692640626f02f8d8d6f95bff9c6
-_sljit_commit=98802d939be3f0ccc2c538d611ec4c728564e8cf
+_pcre2_commit=7978954dbd2efc6f2196869290553cf1871b4ce6
+_sljit_commit=de0259c7aaf36aa40cba8014f3fad3edde9307f9
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "json-$_json_commit.tar.gz::https://github.com/nlohmann/json/archive/$_json_commit.tar.gz"
   "pcre2-$_pcre2_commit.tar.gz::https://github.com/PCRE2Project/pcre2/archive/$_pcre2_commit.tar.gz"
   "sljit-$_sljit_commit.tar.gz::https://github.com/zherczeg/sljit/archive/$_sljit_commit.tar.gz"
@@ -52,18 +56,18 @@ source=(
   'test-system-libraries.patch'
 )
 sha256sums=(
-  '6ecd53de4d595f8072e66bfd58e6f4728237ac03bceee190dd07f80771d29837'
+  '78a5aabce9e8f478b95095ca22b7faa6e770fc69b349fb41cfb6e043ba64f7ab'
   '0b0fdb7f3065b1bd2c34a6faf369f8e4a19b60832298bab498456dd0a832a730'
-  'd2bab343b55525fdfe322db020720bd84afc8233d5d428165eec4135aad85761'
-  '5e91c146ab328fd915a03198d6b88a74a696e4ac17abedee34a90bea516e708a'
-  'de31ec275842ff39a2405a6d3d6461094f21baab7935c20945cdfac6b18bd54b'
-  'b419022b3e1e0b0632b2ae0107125efe36694660c595a072d5c1f37f3796cf57'
+  '694f0cd702ea5e1ac2862c75809db6ff22153333d4b1e768b2f9b36c17a2a065'
+  '256b50b4e96c806fd13fc9b630f6c1ba41b777e7cedfcf406651d062d8260611'
+  'fb6c706c0a728ac3cb9c5751335776d489533568286f7c8be7532452dc80c1ba'
+  '88af3b4cacb62c16028e278bd3c161ffd81634eb3a5dba8e03b29e4d96a826d6'
   'f20f96ce2964b22414555d0ad105495cea3bfce6c8f8f2c1192fd959d09510f2'
   'a6635d00306c4bfa25407dd8770cb95f05145d0291923798b24f38b666454fd2'
 )
 
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "$_source_dir"
 
   rm -rf \
     third-party/json \
@@ -82,13 +86,13 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_source_dir"
   export CMAKE_GENERATOR=Ninja
   python -m build --wheel --no-isolation
 }
 
 check() {
-  local _source_dir="$srcdir/$_pkgname-$pkgver"
+  local _source_dir="$srcdir/$_source_dir"
   local _cpp_build="$srcdir/cpp-tests"
   local _test_root="$srcdir/test-work"
   local _test_venv="$srcdir/test-venv"
@@ -111,7 +115,7 @@ check() {
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_source_dir"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

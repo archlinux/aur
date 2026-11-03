@@ -17,7 +17,7 @@ index 0f85394..8c1799d 100644
    "setuptools>=63",  # For building the pip package contents.
    "wheel",  # For building the pip package archive.
 -  "pytest",  # For running tests.
--  "pybind11",  # For building the pybind11 C++ extension.
+-  "pybind11>=3.1.0",  # For building the pybind11 C++ extension.
  ]
  build-backend = "setuptools.build_meta"
  
@@ -27,16 +27,16 @@ index 29af914..615982b 100644
 +++ b/setup.py
 @@ -174,16 +174,10 @@ setup(
      zip_safe=False,
-     python_requires=">=3.10",
+     python_requires=">=3.11",
      install_requires=[
--        "pybind11>=2.6.0",
+-        "pybind11>=3.1.0",
          "sentencepiece",
 -        "mistral-common",
          "tokenizers",
          "tiktoken",
      ],
 -    setup_requires=[
--        "pybind11>=2.6.0",
+-        "pybind11>=3.1.0",
 -        "cmake>=3.18",
 -    ],
      classifiers=[
