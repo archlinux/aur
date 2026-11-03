@@ -1,6 +1,6 @@
 # Maintainer: Victor Rodriguez <vicrodh@users.noreply.github.com>
 pkgname=chilpa-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Native music player with local libraries and extensible sources'
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ conflicts=('chilpa')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/vicrodh/chilpa/releases/download/v${pkgver}/chilpa-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/vicrodh/chilpa/releases/download/v${pkgver}/chilpa-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('63aa3ef8ad28510ec5fe629dac8e324ceeebf37ca36017b4acdf7dde59e1a8d3')
-sha256sums_aarch64=('bcf74f4053bde10ab8b87a5e9b66e68c205803ace0d4f22db91318763dde8fed')
+sha256sums_x86_64=('d8b32a40faf7fb6b7d099b05df32279bd4643adfd9661d97a2d45c34c141097a')
+sha256sums_aarch64=('918cac16fa46d4bb1a3691dca2b555c1a2b436bc37dc09cf0492a62115df28fc')
 
 package() {
   cd "chilpa-${pkgver}"
