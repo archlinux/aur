@@ -8,14 +8,14 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=4.0.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="An award-winning free and open-source video editor"
 arch=('any')
 url="https://www.openshot.org"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme'
-         'libopenshot'
+         'libopenshot=1.1.1'
          'python'
          'python-certifi'
          'python-defusedxml'
@@ -28,8 +28,8 @@ depends=('hicolor-icon-theme'
          'qt6-scxml')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v${pkgver}.tar.gz")
-sha512sums=('7e5aa98a8791b39a7ec7ce316db5ee10c8a7483c6f62e61474956ea926d028ff82247ea7adecce5171a13815ff11d3a74217ccbedf84be7c734a6a12511dc592')
-b2sums=('2c30267dea60af52abdfc7a7203ea2f3465715ffae86aef269325e2daf9d2b346d2fbc365b0a46fe14e67745d244eb922268d1379752498f1a56289a27d9f134')
+sha512sums=('087de5f96885d1d4c8e705ee013ec86d885db3e29716e890aa578266f5c93816bb74c4658293a23e8047585e9ec680c59dcce97462b0f6d881467319ed81aebb')
+b2sums=('273e5a6ceb512846ecf9efd7f3be6c82ec8daf164d25e32dda56cafd5d7339ff42ef39e11882668785e1af4ee44c80a767273dd19f51c1365c3e8c818b31937c')
 
 prepare() {
     cd "${pkgname}-qt-${pkgver}"
