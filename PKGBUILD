@@ -8,7 +8,7 @@ arch=('x86_64' )
 url="https://gaze.gundulabs.com"
 license=('GPL-3.0-or-later' )
 depends=()
-optdepends=('gaze' )
+optdepends=('gaze-bin' )
 # This wrapper installs the same files under the same names as gaze-hyprlock, so it has
 # to claim that name. Without it an AUR helper treats any other package called
 # gaze-hyprlock as an upgrade candidate and silently replaces this one.

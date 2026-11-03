@@ -6,7 +6,7 @@ pkgbase = gaze-hyprlock-bin
 	install = gaze-hyprlock-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	optdepends = gaze
+	optdepends = gaze-bin
 	provides = gaze-hyprlock=0.4.2-1
 	conflicts = gaze-hyprlock
 	backup = etc/pam.d/hyprlock-gaze
