@@ -1,15 +1,17 @@
 # DO NOT EDIT DIRECTLY: Managed by scripts/sync_metadata.go from app.config.json
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=planisphere-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Elite Dangerous expedition flight planner, fleet carrier router, and astrometric telemetry terminal"
 arch=('x86_64')
 url="https://github.com/amot-dev/planisphere"
 license=('GPL3')
 depends=('gtk3' 'webkit2gtk-4.1')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/v$pkgver/planisphere-v$pkgver-linux-amd64.tar.gz")
-sha256sums=('c00a679b1dd77bc20ebd87bdc8009edfd83ec212471e55954ab35c50821d8548')
+sha256sums=('97c1ef4f79eaf355e61b3c90b8a62278ce8a32d40ef98930ca720962973fa5b4')
 
 package() {
   cd "$srcdir"
