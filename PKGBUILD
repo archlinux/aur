@@ -3,7 +3,7 @@
 # Upstream is called gmid, but the official repositories already ship the
 # Gemini server under that name, hence the gmid-piano package name.
 pkgname=gmid-piano
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Falling-note piano roll, keyboard and chord/scale explorers with MIDI editing"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
   "GeneralUser-GS-LICENSE.txt::https://raw.githubusercontent.com/mrbumpy409/GeneralUser-GS/684543d5e5efaef08d02be50dcda8d552478fa60/documentation/LICENSE.txt"
 )
 sha256sums=(
-  'a0e082c6083a39488650dbabefc9b9518bd24105a873ed4dcc59cf24af29f70e'
+  '285d3fbea896c441e24ca6c6d5d718e1b781040be2bc60392928c342041006cc'
   '9575028c7a1f589f5770fccc8cff2734566af40cd26ed836944e9a5152688cfe'
   '7b32efefdf95ce38a043799f0659853ddc00fbaa14d8c50f0aca16b9b8b405be'
 )
