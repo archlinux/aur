@@ -1,0 +1,47 @@
+post_install() {
+  echo "[morpheflow] creating venv, installing deps and fetching morphe.jar (one-time)..."
+  _setup
+  systemd-sysusers morpheflow.conf 2>/dev/null || true
+  systemd-tmpfiles --create morpheflow.conf 2>/dev/null || true
+  systemctl daemon-reload 2>/dev/null || true
+  echo "[morpheflow] enable with: systemctl enable --now morpheflow  (dashboard: http://127.0.0.1:8080)"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  systemctl stop morpheflow 2>/dev/null || true
+  systemctl disable morpheflow 2>/dev/null || true
+  # /var/lib/morpheflow data is intentionally preserved
+}
+
+_setup() {
+  APP=/opt/morpheflow
+  VENV="$APP/.venv"
+  MORPHE_VERSION="${MORPHE_VERSION:-1.20.0}"
+  JAR_URL="https://github.com/MorpheApp/morphe-desktop/releases/download/v${MORPHE_VERSION}/morphe-desktop-${MORPHE_VERSION}-all.jar"
+
+  if ! id morpheflow >/dev/null 2>&1; then
+    useradd -r -d /opt/morpheflow -s /usr/bin/nologin morpheflow 2>/dev/null || true
+  fi
+
+  mkdir -p /var/lib/morpheflow/apps /var/lib/morpheflow/tools /var/log/morpheflow "$APP/apps" "$APP/tools"
+
+  if [ ! -x "$VENV/bin/python" ]; then
+    python -m venv "$VENV" || python -m venv --without-pip "$VENV"
+  fi
+  "$VENV/bin/pip" install --upgrade pip >/dev/null 2>&1 || true
+  if [ -f "$APP/requirements.txt" ]; then
+    "$VENV/bin/pip" install -r "$APP/requirements.txt" || echo "[morpheflow] WARNING: pip install failed, run '$VENV/bin/pip install -r $APP/requirements.txt' manually"
+  fi
+
+  if [ ! -s "$APP/tools/morphe.jar" ] && [ ! -s "$APP/tools/morphe-desktop-$MORPHE_VERSION-all.jar" ]; then
+    echo "[morpheflow] downloading morphe-desktop v${MORPHE_VERSION} ..."
+    curl -fsSL -o "$APP/tools/morphe-desktop-$MORPHE_VERSION-all.jar" "$JAR_URL" || echo "[morpheflow] WARNING: jar download failed"
+    [ -s "$APP/tools/morphe-desktop-$MORPHE_VERSION-all.jar" ] && ln -sf "morphe-desktop-$MORPHE_VERSION-all.jar" "$APP/tools/morphe.jar"
+  fi
+
+  chown -R morpheflow:morpheflow /var/lib/morpheflow /var/log/morpheflow "$APP/apps" "$APP/tools" "$VENV" 2>/dev/null || true
+}
