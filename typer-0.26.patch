@@ -1,8 +1,6 @@
-diff --git a/roboflow/cli/handlers/completion.py b/roboflow/cli/handlers/completion.py
-index 528df64..0abccad 100644
 --- a/roboflow/cli/handlers/completion.py
 +++ b/roboflow/cli/handlers/completion.py
-@@ -72,7 +72,7 @@ def install(
+@@ -72,7 +72,7 @@
  
      try:
          installed_shell, path = typer_install(shell=shell, prog_name="roboflow", complete_var="_ROBOFLOW_COMPLETE")

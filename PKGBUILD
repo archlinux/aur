@@ -2,11 +2,11 @@
 
 pkgname=python-roboflow
 _pkgname=roboflow
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Official Python package for working with the Roboflow API"
 arch=('any')
-url="https://github.com/roboflow/roboflow-python"
+url="https://github.com/roboflow-ai/roboflow-python"
 license=('Apache-2.0')
 depends=(
   'python'
@@ -34,9 +34,9 @@ depends=(
   'python-typer<0.28'
   'python-click>=8.0'
   'python-rich'
-  'python-pi-heif<2'
   'python-pillow-avif-plugin<2'
 )
+optdepends=('python-pillow-heif>=1.7.0: optional HEIC/HEIF image decoding')
 makedepends=(
   'python-build'
   'python-installer'
@@ -47,18 +47,18 @@ checkdepends=(
   'python-responses'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/roboflow/roboflow-python/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/roboflow-ai/roboflow-python/archive/refs/tags/v$pkgver.tar.gz"
   'relax-system-dependencies.patch'
   'typer-0.26.patch'
   'exclude-tests-package.patch'
   'offline-version-validation.patch'
 )
 sha256sums=(
-  'efa5b1ada9b0c9bab3f425a4406fe7c02eebe181d7dab22de3a2a90815b234e8'
+  '85d9b7b17a000fce3fc4076931f1817d00ec4b00b0890b2f85c77688ef95a8d0'
   'c87994f60859a4567300a7e3f5904e03ea6fcc5ab3c1cbaed4f431e59e4ad04b'
-  'edc9df623eca3a1d7aebcddb84f040c89a5f675cc163ade50179e509fe321a20'
-  'bfe799a95ae3530f0b561cf9b6a3a4ec23b124210d3e74b0004fb0e4d3af6605'
-  'a7e2142ef275e7799012e36b8fbe0be94c6ce2b69f6fcfc902f0844616f2b594'
+  'b6db43e463780e15788b24cf3fae6bc573e02480c1996a672b6653244c55255e'
+  '164f9cde4212275c3a4b6255d5b2750d337f61abd1014d2d17c0cbef481a5076'
+  '7245b12ff6dceb2906d8bf5635a95ce272ec3f41daea97ccbcdb1380b76f4cf2'
 )
 
 prepare() {
