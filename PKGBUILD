@@ -63,7 +63,7 @@ _pins_lookup() {
 _protobufvers=(2.5.0 3.2.0)
 source=("https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.bz2"
   "https://github.com/protocolbuffers/protobuf/releases/download/v3.2.0/protobuf-cpp-3.2.0.tar.gz"
-  # The READMEs of libjpeg 6b and 8, whose headers the SDKs have: the IJG license asks for them
+  # The READMEs of libjpeg 6b and 8, whose headers the SDKs have: the IJG licence asks for them
   # with the sources
   https://www.ijg.org/files/jpegsrc.v6b.tar.gz
   https://www.ijg.org/files/jpegsrc.v8.tar.gz
@@ -329,7 +329,7 @@ check() {
     }
   done <<<"$_libs"
 
-  # The license notices package() takes from the sources
+  # The licence notices package() takes from the sources
   if ! grep -q 'madler@' "$srcdir/hl2sdk-tf2/public/zlib/zlib.h" ||
     ! grep -q 'SUCH DAMAGE\.' "$srcdir/hl2sdk-sdk2013/tier1/snappy.cpp" ||
     ! grep -q 'own source and binary releases\.' "$srcdir/hl2sdk-sdk2013/public/XUnzip.cpp"; then
