@@ -1,6 +1,6 @@
 pkgbase = mnn
 	pkgdesc = Lightweight high-performance deep learning inference engine (CPU/Vulkan/OpenCL) with model converter and tools
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://github.com/alibaba/MNN
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = mnn
 	depends = ocl-icd
 	optdepends = vulkan-driver: Vulkan GPU backend at runtime
 	optdepends = opencl-driver: OpenCL GPU backend at runtime
-	source = mnn-3.6.1.tar.gz::https://github.com/alibaba/MNN/archive/refs/tags/3.6.1.tar.gz
+	source = mnn-3.6.2.tar.gz::https://github.com/alibaba/MNN/archive/refs/tags/3.6.2.tar.gz
 	source = dont-install-bundled-protobuf.patch
 	source = gcc16-strict-ansi.patch
-	sha256sums = 4b6065c4e2674318f5bf1dc75836ce4d30c17bfe598c4a1b11b7d0b2092b06e6
+	sha256sums = 3470ee82104c3c2b570ef581030e29956bb38f972c5f6cef51805ba8f41a40e5
 	sha256sums = cd5c3882fda8f96373d54fd1e942228a7d70335724073946a36a00319068df58
 	sha256sums = c0de4163291f15bd4729af165f2ccc47c61dd27742fa732001688a70ff941a71
 

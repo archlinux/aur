@@ -1,7 +1,7 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=mnn
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='Lightweight high-performance deep learning inference engine (CPU/Vulkan/OpenCL) with model converter and tools'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     'dont-install-bundled-protobuf.patch'
     'gcc16-strict-ansi.patch'
 )
-sha256sums=('4b6065c4e2674318f5bf1dc75836ce4d30c17bfe598c4a1b11b7d0b2092b06e6'
+sha256sums=('3470ee82104c3c2b570ef581030e29956bb38f972c5f6cef51805ba8f41a40e5'
             'cd5c3882fda8f96373d54fd1e942228a7d70335724073946a36a00319068df58'
             'c0de4163291f15bd4729af165f2ccc47c61dd27742fa732001688a70ff941a71')
 
