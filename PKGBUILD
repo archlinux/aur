@@ -9,9 +9,9 @@ pkgrel=1
 pkgdesc="Microsoft.Management.Infrastructure (MMI) for PowerShell, Microsoft's build"
 arch=(any)
 url='https://www.nuget.org/packages/Microsoft.Management.Infrastructure.Runtime.Unix'
-# The license the NuGet package declares. Its sources aren't published: the repository it links to has
+# The licence the NuGet package declares. Its sources aren't published: the repository it links to has
 # the code of version 2.0.0-preview.1 (powershell-mmi), whose API the assembly has, and its SBOM makes
-# no assertion about the license.
+# no assertion about the licence.
 license=(MIT)
 depends=(
   powershell
@@ -19,7 +19,7 @@ depends=(
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 # PowerShell is built without MMI. It's only needed by modules built against PowerShell with it, e.g.
-# PSScriptAnalyzer from the PowerShell Gallery. The package has no license text, MIT needs one, so it's
+# PSScriptAnalyzer from the PowerShell Gallery. The package has no licence text, MIT needs one, so it's
 # taken from the repository the package links to.
 _mmicommit="cf32fc695b32c2eae848b693395c09222fe1d2ae"
 source=("$_nugetid.$pkgver.nupkg::https://api.nuget.org/v3-flatcontainer/${_nugetid,,}/$pkgver/${_nugetid,,}.$pkgver.nupkg"
