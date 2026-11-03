@@ -4,7 +4,7 @@
 
 pkgname=gsad
 pkgver=27.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
 url="https://github.com/greenbone/gsad"
@@ -14,7 +14,6 @@ depends=(
     'gvmd'
     'gvm-libs'
     'gnutls'
-    'hiredis<1.4'
     'libgcrypt'
     'libmicrohttpd'
     'libglib-2.0.so'

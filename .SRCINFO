@@ -1,7 +1,7 @@
 pkgbase = gsad
 	pkgdesc = server talking to the Greenbone Vulnerability Management daemon (gvmd)
 	pkgver = 27.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gsad
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -11,7 +11,6 @@ pkgbase = gsad
 	depends = gvmd
 	depends = gvm-libs
 	depends = gnutls
-	depends = hiredis<1.4
 	depends = libgcrypt
 	depends = libmicrohttpd
 	depends = libglib-2.0.so
