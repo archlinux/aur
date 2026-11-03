@@ -1,10 +1,10 @@
 pkgbase = edith
 	pkgdesc = GTK4 native SFTP client for live remote file editing
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/mkay/edith
 	arch = any
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = npm
 	depends = python
@@ -15,7 +15,7 @@ pkgbase = edith
 	depends = python-paramiko
 	depends = python-keyring
 	depends = python-defusedxml
-	source = edith-0.9.0.tar.gz::https://github.com/mkay/edith/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 0e41f2cf106570e3c2d1cf767a7469667f02e57c6b2cb9956fc0ad702396843c
+	source = edith-0.10.0.tar.gz::https://github.com/mkay/edith/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 955d6d61ce6757ae1c29d521e1dd823a2cd3ea05ddec9cb8cbc7d21bd2070425
 
 pkgname = edith
