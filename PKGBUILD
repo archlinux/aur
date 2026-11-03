@@ -2,15 +2,20 @@
 
 pkgname=python-megatron-core
 _pkgname=Megatron-LM
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 _archive="$_pkgname-core_v$pkgver"
 pkgdesc='NVIDIA Megatron-Core: GPU-optimized building blocks for training transformer models at scale'
 arch=('x86_64')
+# Preserve hashes in the wheel RECORD for the compiled dataset helper.
+options=('!strip')
 url='https://github.com/NVIDIA/Megatron-LM'
 license=('Apache-2.0' 'BSD-3-Clause' 'MIT')
 depends=(
-    'python'
+    'glibc'
+    'libgcc'
+    'libstdc++'
+    'python>=3.12'
     'python-numpy'
     'python-packaging>=24.2'
     'python-pytorch>=2.6.0'
@@ -31,6 +36,7 @@ checkdepends=(
     'python-omegaconf'
     'python-pytest'
     'python-requests'
+    'tensorboard'
     'python-transformers'
 )
 optdepends=(
@@ -67,7 +73,7 @@ optdepends=(
     'python-wget: Hugging Face tokenizer downloads'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/core_v$pkgver.tar.gz")
-sha256sums=('4c16ccc2a0d4c1b6c96f59baaab99316ac3b39eca2ef960ddf4436a2962eb69a')
+sha256sums=('8025f7fdf46d6c1c46c5ed53d165df0372d126a738e8033ff47da17722ecb35e')
 
 build() {
     cd "$_archive"
@@ -88,6 +94,32 @@ check() {
     sed -i \
         's#data_path = Path("/opt/data")#data_path = Path(os.environ["MEGATRON_TEST_DATA"])#' \
         "$srcdir/test-run/tests/unit_tests/conftest.py"
+    # These argument-propagation cases do not execute attention kernels.
+    # DSv4 now defaults to cuDNN, which rejects CPU-only hosts before their
+    # configuration assertions. Select its documented PyTorch fallback only
+    # in these copied fixtures, keeping every test case and assertion intact.
+    python - "$srcdir/test-run/tests/unit_tests/test_argument_utils.py" <<'PYFIXTURE'
+from pathlib import Path
+import ast
+import sys
+p = Path(sys.argv[1])
+s = p.read_text()
+lines = s.splitlines(keepends=True)
+names = {
+    "test_dsv4_hybrid_arguments_reach_mla_config",
+    "test_dsv4_symbols_validate_variant_and_ratios",
+}
+nodes = [n for n in ast.walk(ast.parse(s))
+         if isinstance(n, ast.FunctionDef) and n.name in names]
+assert {n.name for n in nodes} == names
+for node in sorted(nodes, key=lambda n: n.lineno, reverse=True):
+    text = "".join(lines[node.lineno - 1:node.end_lineno])
+    old = "            'test_argument_utils.py',\n"
+    assert text.count(old) == 1
+    text = text.replace(old, old + "            '--dsa-kernel-backend',\n            'none',\n")
+    lines[node.lineno - 1:node.end_lineno] = [text]
+p.write_text("".join(lines))
+PYFIXTURE
     cd "$srcdir/test-run"
 
     # Upstream's complete unit runner launches eight CUDA workers with NCCL.

@@ -1,6 +1,6 @@
 pkgbase = python-megatron-core
 	pkgdesc = NVIDIA Megatron-Core: GPU-optimized building blocks for training transformer models at scale
-	pkgver = 0.19.2
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/Megatron-LM
 	arch = x86_64
@@ -12,12 +12,16 @@ pkgbase = python-megatron-core
 	checkdepends = python-omegaconf
 	checkdepends = python-pytest
 	checkdepends = python-requests
+	checkdepends = tensorboard
 	checkdepends = python-transformers
 	makedepends = pybind11
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = python>=3.12
 	depends = python-numpy
 	depends = python-packaging>=24.2
 	depends = python-pytorch>=2.6.0
@@ -56,7 +60,8 @@ pkgbase = python-megatron-core
 	optdepends = python-transformers: Hugging Face model and tokenizer interoperability
 	optdepends = python-wandb: experiment logging
 	optdepends = python-wget: Hugging Face tokenizer downloads
-	source = python-megatron-core-0.19.2.tar.gz::https://github.com/NVIDIA/Megatron-LM/archive/refs/tags/core_v0.19.2.tar.gz
-	sha256sums = 4c16ccc2a0d4c1b6c96f59baaab99316ac3b39eca2ef960ddf4436a2962eb69a
+	options = !strip
+	source = python-megatron-core-0.20.0.tar.gz::https://github.com/NVIDIA/Megatron-LM/archive/refs/tags/core_v0.20.0.tar.gz
+	sha256sums = 8025f7fdf46d6c1c46c5ed53d165df0372d126a738e8033ff47da17722ecb35e
 
 pkgname = python-megatron-core
