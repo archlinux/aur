@@ -1,4 +1,4 @@
-# Maintainer: Emiliano Gandini Outeda <emiliano.gandini@protonmail.com>
+# Maintainer: Emiliano Gandini Outeda <e@emiliano-go.com>
 
 pkgname=trustsight
 pkgver=0.26.0
