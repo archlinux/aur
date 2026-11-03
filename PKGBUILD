@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 
 pkgname=gitpulsar
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Fast, native Git client for GNOME (GTK4 + libadwaita)'
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ makedepends=('cargo')
 conflicts=('gitpulsar-appimage')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
         'system-libgit2.patch')
-sha256sums=('aad433bd05265ec3d6e3db633858428014d47df8a3f1d5927b0133efe31979cb'
+sha256sums=('88901be4467643ad543486b306b8582d0175b6fc19c9a73d0f11fd956fd4ccdc'
             '32c40a1471a9bed6dee02425f005281acdac8e73b0bd17524c62a50e7c270685')
 
 _appid=io.gitlab.ilshat_apps.gitpulsar

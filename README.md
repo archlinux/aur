@@ -40,4 +40,5 @@ package). The two conflict, so installing this one removes the AppImage.
 - `RUSTONIG_SYSTEM_LIBONIG=1` links syntect's regex engine to system
   `oniguruma`.
 - `git` is a runtime dependency: fetch, pull, push, bisect, archive and patch
-  operations call the `git` CLI.
+  operations call the `git` CLI, and since 1.5.0 so do blame and file history
+  (libgit2 is only their fallback).
