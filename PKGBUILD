@@ -6,7 +6,7 @@
 # Contributor: Artem Klevtsov <a.a.klevtsov@gmail.com>
 
 pkgname=lantern-bin
-pkgver=10.0.4
+pkgver=10.0.5
 pkgrel=1
 pkgdesc="Open-source VPN for speed, privacy, and censorship circumvention"
 arch=('x86_64')
@@ -37,7 +37,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
 source=("${pkgname%-bin}-${pkgver}.pkg.tar.zst::https://github.com/getlantern/lantern/releases/download/v${pkgver}/lantern-installer.pkg.tar.zst")
-sha256sums=('541610b45a996ec9eba4b4c540a4b5e29e6f5cd8f2e13284b28b6fe0c186a205')
+sha256sums=('3db3fb6d6db88d9d746fe09d1cb9cdaee31649cdfcad63516ccbe1bdbc3ca76f')
 
 package() {
     chrpath --replace /usr/lib/lantern/lib usr/lib/lantern/lib/*plugin.so
