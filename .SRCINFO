@@ -1,0 +1,24 @@
+pkgbase = key2touch-git
+	pkgdesc = Map keyboard keys to touchscreen input on Wayland desktops, made for playing on Waydroid
+	pkgver = r3.g37c35b6
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/key2touch
+	install = key2touch.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libadwaita
+	depends = python
+	depends = python-cairo
+	depends = python-evdev
+	depends = python-gobject
+	optdepends = waydroid: run Android games
+	provides = key2touch
+	conflicts = key2touch
+	options = !debug
+	source = key2touch::git+https://github.com/SHORiN-KiWATA/key2touch.git
+	sha256sums = SKIP
+
+pkgname = key2touch-git

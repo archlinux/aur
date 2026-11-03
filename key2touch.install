@@ -1,0 +1,11 @@
+post_install() {
+    modprobe uinput 2>/dev/null
+    udevadm trigger --name-match=uinput 2>/dev/null
+    echo ">> key2touch reads keyboards and creates a virtual touchscreen."
+    echo ">> Add yourself to the 'input' group, then log out and back in:"
+    echo ">>     sudo usermod -aG input \$USER"
+}
+
+post_upgrade() {
+    udevadm trigger --name-match=uinput 2>/dev/null
+}
