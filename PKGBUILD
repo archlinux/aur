@@ -2,7 +2,7 @@
 # https://github.com/hyperb1iss/hypercolor
 
 pkgname=hypercolor-bin
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Open-source RGB lighting orchestration engine for Linux'
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,8 @@ source_x86_64=("${_base_url}/hypercolor-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_base_url}/hypercolor-${pkgver}-linux-arm64.tar.gz")
 
 # Template placeholders are replaced by the release workflow.
-sha256sums_x86_64=('5122914a6ac1a88ef494b787761fdc730729307670d30dd23ec1cae75c945425')
-sha256sums_aarch64=('fd5ddfeac561793a7a6fa3ac2aef81cd93c18be3143baeb51d93ccd76cabe14e')
+sha256sums_x86_64=('6ffd46d98317c1a2782a718635c1540dad2e77ac455676e49cf82c3787f9824b')
+sha256sums_aarch64=('5a77e8b59ed9d89ddac9a534b41dd7e940e7c183471bebd7f76ef8797cf80756')
 
 package() {
   local _srcdir
