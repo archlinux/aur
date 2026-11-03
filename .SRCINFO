@@ -1,13 +1,13 @@
 pkgbase = btctl
 	pkgdesc = Bluetooth connection manager for fuzzel and other compatible launchers.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://codeberg.org/kupospelov/btctl.git
 	arch = any
 	license = MIT
 	depends = python-dbus
 	optdepends = fuzzel: launcher
-	source = https://codeberg.org/kupospelov/btctl/archive/0.1.tar.gz
-	sha256sums = 1f7e772873e5179b026cd7fe4c4ffa0c6816063ea07ea1f7987d42630690f783
+	source = https://codeberg.org/kupospelov/btctl/archive/0.2.tar.gz
+	sha256sums = 99015132e38fb966659ae29f434581d9f1b9e2e621dc8d547b2bf6ad2ec4999f
 
 pkgname = btctl

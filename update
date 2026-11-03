@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+makepkg --printsrcinfo >.SRCINFO
+git add PKGBUILD .SRCINFO
+git commit -m "New version"
