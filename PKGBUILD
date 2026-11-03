@@ -3,7 +3,7 @@ pkgname=etherpad-lite-bin
 pkgver=3.3.13
 # Debian revision of the upstream .deb asset for this pkgver.
 _debrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time collaborative editor for the web (upstream .deb build)"
 arch=('x86_64' 'aarch64')
 url="https://etherpad.org"
@@ -40,11 +40,19 @@ package() {
     # (admin/doc/ui dev UIs and the playwright test dep are excluded
     # from the production build); dangling links resolve to ENOENT
     # exactly like absent ones, so dropping them is behavior-neutral.
+    # pnpm records the same links twice, once per node_modules level.
     rm "${pkgdir}/opt/etherpad/node_modules/admin" \
        "${pkgdir}/opt/etherpad/node_modules/docs" \
        "${pkgdir}/opt/etherpad/node_modules/ui" \
+       "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/admin" \
+       "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/ui" \
+       "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/@etherpad/openapi-codegen" \
        "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/@playwright/test" \
        "${pkgdir}/opt/etherpad/src/node_modules/@playwright/test"
+
+    # Runtime state belongs to tmpfiles.d, which recreates these paths with
+    # the same 0750 modes; the .deb only ships them as empty directories.
+    rm -rf "${pkgdir}/var"
 
     # Upstream's postinst wiring, done declaratively instead:
     # settings.json lives in /etc, the runtime var tree in /var/lib

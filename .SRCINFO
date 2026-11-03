@@ -1,7 +1,7 @@
 pkgbase = etherpad-lite-bin
 	pkgdesc = Real-time collaborative editor for the web (upstream .deb build)
 	pkgver = 3.3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://etherpad.org
 	arch = x86_64
 	arch = aarch64
