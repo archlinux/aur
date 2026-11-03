@@ -3,7 +3,7 @@
 # Upstream is called gmid, but the official repositories already ship the
 # Gemini server under that name, hence the gmid-piano package name.
 pkgname=gmid-piano
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Falling-note piano roll, keyboard and chord/scale explorers with MIDI editing"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
   "GeneralUser-GS-LICENSE.txt::https://raw.githubusercontent.com/mrbumpy409/GeneralUser-GS/684543d5e5efaef08d02be50dcda8d552478fa60/documentation/LICENSE.txt"
 )
 sha256sums=(
-  '285d3fbea896c441e24ca6c6d5d718e1b781040be2bc60392928c342041006cc'
+  '344d8978c2d92810188c5f293f7ede06eabe5c939bf7dd9cb5c8fcca1bc4640c'
   '9575028c7a1f589f5770fccc8cff2734566af40cd26ed836944e9a5152688cfe'
   '7b32efefdf95ce38a043799f0659853ddc00fbaa14d8c50f0aca16b9b8b405be'
 )
@@ -58,18 +58,15 @@ export GMID_ASSETS=/usr/lib/$pkgname/assets
 exec /usr/lib/$pkgname/$pkgname "\$@"
 EOF
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
-[Desktop Entry]
-Type=Application
-Name=gmid
-GenericName=Piano Roll
-Comment=Falling-note piano roll with MIDI editing and chord/scale explorers
-Exec=$pkgname
-Terminal=false
-Categories=AudioVideo;Audio;Music;
-Keywords=piano;midi;music;chords;scales;
-StartupWMClass=gmid
-EOF
+  # Upstream desktop entry, with Exec pointing at the versioned package name.
+  install -Dm644 packaging/linux/gmid.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  sed -i "s/^Exec=gmid\$/Exec=$pkgname/" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  # Upstream ships the full hicolor set; gmid.png matches the Icon= entry.
+  for size in 16 32 48 64 128 256 512 1024; do
+    install -Dm644 "assets/icons/gmid-$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/gmid.png"
+  done
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD_PARTY_LICENSES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.md"
