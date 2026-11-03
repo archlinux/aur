@@ -1,18 +1,34 @@
 pkgbase = cutecosmic-git
 	pkgdesc = Qt platform theme for the COSMIC™ Desktop environment
-	pkgver = 0.2.0.r1.g5fa7c22
+	pkgver = 0.2.0.r7.ge83cbd2
 	pkgrel = 1
 	url = https://github.com/IgKh/cutecosmic
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = cmake
+	makedepends = corrosion
 	makedepends = git
+	depends = libgcc
+	depends = libstdc++
 	depends = qt6-base
 	depends = qt6-declarative
-	provides = cutecosmic
-	conflicts = cutecosmic
+	depends = union
 	source = git+https://github.com/IgKh/cutecosmic.git
 	sha256sums = SKIP
 
 pkgname = cutecosmic-git
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = cutecosmic-union-git: KDE Union plugin
+	provides = cutecosmic
+	conflicts = cutecosmic
+
+pkgname = cutecosmic-union-git
+	pkgdesc = CuteCosmic KDE Union plugin
+	depends = cutecosmic-git
+	depends = union
+	provides = cutecosmic-union
+	conflicts = cutecosmic-union
