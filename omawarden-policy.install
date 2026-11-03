@@ -1,0 +1,15 @@
+# Cleanup after the polkit action-id rename (ADR-0025): pacman drops a
+# vanished path only when the same package still owns it, so upgrades from
+# packages that shipped the old namespace, and manual installs, would
+# otherwise leave both action ids registered.
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  local old=/usr/share/polkit-1/actions/org.omarchy.bitwarden.policy
+  if [ -e "$old" ]; then
+    rm -f "$old"
+    echo "omawarden: removed obsolete polkit policy ${old}"
+  fi
+}
