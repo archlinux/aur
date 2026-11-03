@@ -1,6 +1,6 @@
 pkgbase = skwir-bin
 	pkgdesc = An augmented file manager, for humans and agents (the release build)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://skwir.org
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = skwir-bin
 	license = BSD-3-Clause
 	license = GPL-3.0-only
 	license = AGPL-3.0-or-later
+	license = LGPL-2.1-only
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -28,15 +29,28 @@ pkgbase = skwir-bin
 	optdepends = perl-image-exiftool: writing and removing pictures locations
 	optdepends = plocate: instant name searches over whole disks
 	optdepends = udisks2: unmounting volumes from the sidebar
-	provides = skwir=0.2.0
-	provides = skwir-mermaid=0.2.0
-	provides = skwir-mupdf=0.2.0
+	optdepends = sshfs: opening sftp:// addresses through your ssh
+	optdepends = rclone: opening rclone remotes, s3:// and servers that ask a password
+	optdepends = gvfs: opening smb://, dav://, ftp:// and other addresses through GVfs
+	optdepends = gvfs-smb: Windows shares through GVfs
+	optdepends = gvfs-mtp: phones over MTP
+	optdepends = gvfs-gphoto2: cameras
+	optdepends = gvfs-afc: iPhones
+	optdepends = gvfs-nfs: NFS shares through GVfs
+	optdepends = kio-fuse: smb://, dav:// and ftp:// through KIO on KDE Plasma
+	optdepends = rsync: copies to and from sftp servers in batches
+	optdepends = fuse3: rclone mounts, and phones KDE holds
+	optdepends = avahi: servers nearby, a NAS or a Mac
+	optdepends = wsdd: Windows PCs nearby
+	provides = skwir=0.3.0
+	provides = skwir-mermaid=0.3.0
+	provides = skwir-mupdf=0.3.0
 	conflicts = skwir
 	conflicts = skwir-mermaid
 	conflicts = skwir-mupdf
 	options = !strip
 	options = !debug
-	source = skwir-0.2.0-linux-x86_64.tar.gz::https://github.com/skwir-org/skwir/releases/download/v0.2.0/skwir-0.2.0-linux-x86_64.tar.gz
-	sha256sums = ce8c4233b770799e143f576abc08be0956a73e4e9f7a3cd3ba76d4650ded668f
+	source = skwir-0.3.0-linux-x86_64.tar.gz::https://github.com/skwir-org/skwir/releases/download/v0.3.0/skwir-0.3.0-linux-x86_64.tar.gz
+	sha256sums = e8d5bba324749d01bd96d04e8e48142a044e1c822db98ad5e868ca4ce3c4f31c
 
 pkgname = skwir-bin

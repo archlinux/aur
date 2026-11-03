@@ -8,7 +8,7 @@
 # Maintainer: venator <venator at tutamail dot com>
 
 pkgname=skwir-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (the release build)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ _repo='https://github.com/skwir-org/skwir'
 # skwir's own, PDFium's, the Poppler and DjVuLibre readers' (ADR-042,
 # ADR-061) and the MuPDF engine's (ADR-014). The libraries it carries keep
 # their notices in /opt/skwir/usr/share/doc.
-license=('Apache-2.0' 'BSD-3-Clause' 'GPL-3.0-only' 'AGPL-3.0-or-later')
+license=('Apache-2.0' 'BSD-3-Clause' 'GPL-3.0-only' 'AGPL-3.0-or-later' 'LGPL-2.1-only')
 # What the tarball leaves to the system (ADR-052): the C and C++
 # runtimes, the display's and the sound's libraries, a Vulkan driver, and
 # the font configuration its fontconfig reads.
@@ -34,6 +34,19 @@ optdepends=(
   'perl-image-exiftool: writing and removing pictures locations'
   'plocate: instant name searches over whole disks'
   'udisks2: unmounting volumes from the sidebar'
+  'sshfs: opening sftp:// addresses through your ssh'
+  'rclone: opening rclone remotes, s3:// and servers that ask a password'
+  'gvfs: opening smb://, dav://, ftp:// and other addresses through GVfs'
+  'gvfs-smb: Windows shares through GVfs'
+  'gvfs-mtp: phones over MTP'
+  'gvfs-gphoto2: cameras'
+  'gvfs-afc: iPhones'
+  'gvfs-nfs: NFS shares through GVfs'
+  'kio-fuse: smb://, dav:// and ftp:// through KIO on KDE Plasma'
+  'rsync: copies to and from sftp servers in batches'
+  'fuse3: rclone mounts, and phones KDE holds'
+  'avahi: servers nearby, a NAS or a Mac'
+  'wsdd: Windows PCs nearby'
 )
 provides=("skwir=$pkgver" "skwir-mermaid=$pkgver" "skwir-mupdf=$pkgver")
 conflicts=('skwir' 'skwir-mermaid' 'skwir-mupdf')
@@ -41,7 +54,7 @@ conflicts=('skwir' 'skwir-mermaid' 'skwir-mupdf')
 options=('!strip' '!debug')
 source=("skwir-$pkgver-linux-x86_64.tar.gz::$_repo/releases/download/v$pkgver/skwir-$pkgver-linux-x86_64.tar.gz")
 # Filled by aur-prepare with the release's.
-sha256sums=('ce8c4233b770799e143f576abc08be0956a73e4e9f7a3cd3ba76d4650ded668f')
+sha256sums=('e8d5bba324749d01bd96d04e8e48142a044e1c822db98ad5e868ca4ce3c4f31c')
 
 package() {
   install -d "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses"
