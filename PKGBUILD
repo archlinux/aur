@@ -6,7 +6,7 @@
 # exists; the release pins the tarball's sum.
 
 pkgname=vgshell
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Desktop shell for Hyprland, built on Quickshell'
 arch=('any')
@@ -15,8 +15,8 @@ license=('MIT AND OFL-1.1 AND ISC AND Apache-2.0 AND CC-BY-SA-4.0')
 depends=(
   'greetd'
   'glibc'
-  'vgshell-quickshell>=0.3.2.r7.g2b4501a-2'
-  'hyprland>=0.56'
+  'vgshell-quickshell>=0.3.2.r7.g2b4501a-4'
+  'hyprland>=0.57.0'
   'bash'
   'coreutils'
   'util-linux'
@@ -38,7 +38,6 @@ depends=(
   'gpu-screen-recorder'
   'grim'
   'gum'
-  'hyprpicker'
   'imagemagick'
   'iproute2'
   'less'
@@ -98,6 +97,7 @@ optdepends=(
   'xorg-xinit: startx, for X11 sessions on the login screen'
   'polkit: pkexec, so applications can ask for administrator access'
   'tailscale: the Tailscale plugin'
+  'openssh: Connect in terminal in the Tailscale plugin'
   'nm-connection-editor: adds and changes VPN profiles in NetworkManager'
   'networkmanager-openvpn: connects and imports OpenVPN profiles in the VPN plugin'
   'cups: lpstat and ipptool, which list your printers and their changes in the Printers plugin'
@@ -106,13 +106,14 @@ optdepends=(
   'imv: opens a saved screenshot from its Capture notification'
   'satty: edits a saved screenshot from its Capture notification'
   'mpv: plays a saved recording from its Capture notification'
+  'nautilus: shows a saved recording in its folder from its Capture notification'
   'google-chrome: opens a calendar day in a Google Chrome profile'
   'brave-bin: opens a calendar day in a Brave profile'
   'vivaldi: opens a calendar day in a Vivaldi profile'
   'microsoft-edge-stable-bin: opens a calendar day in a Microsoft Edge profile'
 )
 source=("vgshell-$pkgver.tar.gz::$url/releases/download/v$pkgver/vgshell-$pkgver.tar.gz")
-sha256sums=('1f568815ba80b91d3529774c9382027fe2c1f860dbaf9fa027ab085e54867d6f')
+sha256sums=('8adc9bd3b7ad549bcd05c2b920b23eca817baef525f8e4ea6ea411180b95981e')
 install=vgshell.install
 
 package() {
