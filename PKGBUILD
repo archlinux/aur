@@ -1,8 +1,8 @@
 # Maintainer: SmallClover <aur at clvr dot one>
 
 pkgname=plasma6-applets-kara
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="KDE Plasma Pager Applet"
 arch=('any')
 url="https://github.com/dhruv8sh/kara"
@@ -26,33 +26,20 @@ makedepends=(
 )
 
 source=(
-  "git+${url}.git"
-  'remove-x11-task-handling.patch'
-)
-sha256sums=(
-  'SKIP'
-  '2f81c1c785db00519ae576f201dc00d737bc61da4afcba97b11a1054ea7a5799'
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/dhruv8sh/kara/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-prepare() {
-  cd "$srcdir/kara"
-
-  git fetch --tags
-  git checkout --force "v${pkgver}"
-  git clean -fd
-
-  patch -Np1 -i "$srcdir/remove-x11-task-handling.patch"
-}
+sha256sums=('36fde84ad0f6a984f030b057cfa515cd0e0adc83ecaf50763a77cb2efee17aa2')
 
 build() {
-  cd "$srcdir/kara"
+  cd "$srcdir/kara-${pkgver}"
 
   cmake -B build -DCMAKE_BUILD_TYPE=Release
   cmake --build build
 }
 
 package() {
-  cd "$srcdir/kara"
+  cd "$srcdir/kara-${pkgver}"
 
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
