@@ -33,7 +33,7 @@ _ffsum="91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25"
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="${_icver%%-*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
@@ -380,6 +380,9 @@ END
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  # prevent empty ~/mozilla/icecat
+  sed -E -e '/imply_option/s&"(mozilla/icecat)"&".\1"&' -i browser/moz.configure
 )
 
 build() (
