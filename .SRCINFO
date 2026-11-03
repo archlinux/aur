@@ -1,7 +1,7 @@
 pkgbase = herdr-app-bin
 	pkgdesc = Native desktop workspace for terminals and coding agents that keep running
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://herdr.dev
 	arch = x86_64
 	arch = aarch64
@@ -20,8 +20,6 @@ pkgbase = herdr-app-bin
 	conflicts = herdr-app
 	options = !strip
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/herdrdev/herdr-app/master/LICENSE
-	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 	source_x86_64 = herdr-app-bin-0.1.12-x86_64.tar.gz::https://releases.herdr.dev/app/0.1.12/herdr-app-linux-x86_64.tar.gz
 	sha256sums_x86_64 = a265e6c925c487458406741ffa09d2fa0d3d4bd401a34ed8c01c336108e57c1f
 	source_aarch64 = herdr-app-bin-0.1.12-aarch64.tar.gz::https://releases.herdr.dev/app/0.1.12/herdr-app-linux-aarch64.tar.gz
