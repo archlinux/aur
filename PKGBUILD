@@ -5,7 +5,7 @@
 
 pkgbase=leftwm-git
 pkgname=(leftwm-nonsystemd-git leftwm-git)
-pkgver=0.5.4.r29.g89f09638
+pkgver=0.5.5.r0.gf0f163d4
 pkgrel=1
 pkgdesc="A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
@@ -67,4 +67,3 @@ package_leftwm-git() {
 	cd $pkgbase/target_systemd/release
 	_package
 }
-md5sums=('SKIP')
