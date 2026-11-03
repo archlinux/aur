@@ -1,11 +1,10 @@
 pkgbase = mihomo-smart-bin
-	pkgdesc = The universal proxy platform.
+	pkgdesc = Mihomo proxy kernel with the Smart policy group and the large LightGBM model (x86-64-v3)
 	pkgver = 1.19.34.alpha.smart.r4842.g77af480
 	pkgrel = 1
-	url = https://wiki.metacubex.one/
+	url = https://github.com/vernesong/mihomo
 	install = mihomo-smart-bin.install
 	arch = x86_64
-	groups = net
 	license = GPL-3.0-or-later
 	provides = mihomo
 	provides = clash-meta
@@ -16,7 +15,7 @@ pkgbase = mihomo-smart-bin
 	options = !debug
 	backup = etc/mihomo/config.yaml
 	source = mihomo-77af480.pkg.tar.zst::https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-v3-alpha-smart-77af480.pkg.tar.zst
-	source = Model.bin::https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
+	source = Model-large-1.19.34.alpha.smart.r4842.g77af480-1.bin::https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
 	sha256sums = ff4e667bb11e2172ffd2fe46ba9cfad225ba2574b70fef7ad1b13d28e9159a93
 	sha256sums = 832920df1290454710dd04aa4c7d4b5324edfd7816a7c9ad2272708b5d5a13a8
 
