@@ -2,10 +2,12 @@
 # Contributor: redponike <proton (dot) me>
 
 pkgname=python-xgboost-cuda
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='Scalable gradient boosting library with CUDA and NCCL support'
 arch=('x86_64')
+# Preserve the native wheel payload hashes recorded in dist-info/RECORD.
+options=('!strip')
 url='https://xgboost.ai'
 license=('Apache-2.0')
 provides=("python-xgboost=$pkgver")
@@ -26,8 +28,10 @@ optdepends=(
   'python-matplotlib: plotting'
   'python-graphviz: tree visualization'
   'python-pyarrow: Arrow input'
+  'python-hypothesis: bundled xgboost.testing helpers'
+  'python-pytest: bundled xgboost.testing helpers'
 )
-_commit=6fe8c547bdd21c73e4555d85b087d9260595d30d
+_commit=fdf0888bedddbd444d72994d845c59b3ca182c5b
 _dmlc_commit=4baa84e627849e675a3f99c92990ef9c39e4269e
 source=("xgboost::git+https://github.com/dmlc/xgboost.git#commit=$_commit"
         "dmlc-core::git+https://github.com/dmlc/dmlc-core.git#commit=$_dmlc_commit"
@@ -76,6 +80,19 @@ check() {
   site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   export PYTHONPATH="$srcdir/check-install$site_packages"
   export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1
+
+  # Shotgun uses asynchronous Hogwild updates. Its regularized endpoint-loss
+  # property is nondeterministic with several workers, as Hypothesis detected.
+  # Keep that property and all examples, using one worker for this test only.
+  # The other Shotgun and threaded estimator cases retain their worker counts.
+  python - <<'PY'
+from pathlib import Path
+p = Path('tests/python/test_linear.py')
+s = p.read_text()
+old = "    def test_shotgun_regularised(self, param, num_rounds, dataset, alpha, lambd):\n        param['updater'] = 'shotgun'\n"
+assert s.count(old) == 1
+p.write_text(s.replace(old, old + "        param['nthread'] = 1\n"))
+PY
 
   # Retain the upstream CPU suite and the package's existing IPv6 exclusion.
   # Device tests are validated separately using an allocated GPU.

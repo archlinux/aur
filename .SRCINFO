@@ -1,6 +1,6 @@
 pkgbase = python-xgboost-cuda
 	pkgdesc = Scalable gradient boosting library with CUDA and NCCL support
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://xgboost.ai
 	arch = x86_64
@@ -37,10 +37,13 @@ pkgbase = python-xgboost-cuda
 	optdepends = python-matplotlib: plotting
 	optdepends = python-graphviz: tree visualization
 	optdepends = python-pyarrow: Arrow input
-	provides = python-xgboost=3.4.1
+	optdepends = python-hypothesis: bundled xgboost.testing helpers
+	optdepends = python-pytest: bundled xgboost.testing helpers
+	provides = python-xgboost=3.4.2
 	conflicts = python-xgboost
 	conflicts = python-xgboost-git
-	source = xgboost::git+https://github.com/dmlc/xgboost.git#commit=6fe8c547bdd21c73e4555d85b087d9260595d30d
+	options = !strip
+	source = xgboost::git+https://github.com/dmlc/xgboost.git#commit=fdf0888bedddbd444d72994d845c59b3ca182c5b
 	source = dmlc-core::git+https://github.com/dmlc/dmlc-core.git#commit=4baa84e627849e675a3f99c92990ef9c39e4269e
 	source = cccl-quantile-scan.patch
 	sha256sums = SKIP
