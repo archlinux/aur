@@ -7,7 +7,7 @@
 # Arch/Omarchy (Intel and NVIDIA).
 
 pkgname=audibleport-bin
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Download and convert Audible audiobooks locally"
 arch=('x86_64')
@@ -20,15 +20,13 @@ depends=(
   'gstreamer'
   'gst-plugins-base'
   'gst-plugins-good'
+  'gst-plugins-bad'
+  'gst-libav'
   'openssl'
   'hicolor-icon-theme'
   'zlib'
   'dbus'
   'org.freedesktop.secrets'
-)
-optdepends=(
-  'gst-plugins-bad: extra media codecs for the webview'
-  'gst-libav: extra media codecs for the webview'
 )
 provides=('audibleport')
 conflicts=('audibleport')
@@ -41,7 +39,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  'caa3d7ee892638e6a837e5b4f1bc4035b9113284df878d36ab3bc5334b36805d'
+  'e217ceea4b962ce0f69104177c15adb8af08c8f494ad636275f7eb402cb52dae'
   'd7afd4229854d68a47e0cdadbbf4cd44a2cbef90b4104e30800557f6846cd3a0'
   'f306dfb5d537724f15d2af8c2bd81d8bf666c85c45e20aea6e8fb9cda2f4881e'
   'ab768f90de1bebd36122c52dce48305f9191660e017772cf7d852de9a6376594'
