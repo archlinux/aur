@@ -1,13 +1,13 @@
 # Maintainer: Siiire <siiire@pm.me>
 pkgname=jellium-desktop-bin
 pkgver=0.r1156.1b73a13
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="An unofficial desktop client for Jellyfin"
 arch=('x86_64')
 url="https://github.com/andrewrabert/jellium-desktop"
 license=('GPL-2.0-only')
-depends=('glibc' 'gcc-libs' 'hicolor-icon-theme')
+depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'libglvnd' 'mesa' 'vulkan-icd-loader' 'libpulse')
 provides=('jellyfin-desktop' 'jellium-desktop')
 conflicts=('jellyfin-desktop' 'jellyfin-media-player' 'jellium-desktop')
 options=('!strip')
