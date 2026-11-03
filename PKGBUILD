@@ -2,7 +2,7 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=65.9.0
+pkgver=65.10.0
 pkgrel=1
 _tarver=7.5.22
 pkgdesc='Command-line interface for Vercel'
@@ -20,7 +20,7 @@ conflicts=('vercel')
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('fc8f3404528996b920a9b77dd84f18aac91537347444a0c428d18309a015f73c')
+sha256sums=('13180c6f081f3f21ca90105e9d08b250c469861017b96ee98534fe92d14d001d')
 
 package() {
     local _stagedir="${srcdir}/${_pkgname}-${pkgver}-stage"
@@ -31,9 +31,9 @@ package() {
         -C "${_stagedir}" \
         --strip-components 1
 
-    # The published runtime tree still resolves vulnerable tar 7.5.7:
-    # @vercel/fun pins it, while @mapbox/node-pre-gyp accepts it via ^7.4.0.
-    # Keep the secure override applied to every dependency path.
+    # @vercel/container still pins tar 7.5.11; other paths resolve through
+    # @mapbox/node-pre-gyp. Keep every runtime dependency path on the
+    # security-fixed tar release.
     # Dev dependencies are temporarily removed because the published manifest
     # names private build-only packages. Restore them after resolving the
     # runtime tree, while retaining the override as installed package metadata.
