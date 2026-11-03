@@ -2,7 +2,7 @@
 
 pkgname=uutils-findutils-bin
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust implementation of findutils"
 arch=('aarch64' 'x86_64')
 url="https://github.com/uutils/findutils"
@@ -17,8 +17,18 @@ sha256sums_x86_64=('0b97b6084aa4fe9e3810ef7638dca72a04270f9568969a82cb04dfa5bc81
 
 
 package() {
-  install -Dm755 "$srcdir/findutils-$CARCH-unknown-linux-gnu"/{find,xargs} -t "$pkgdir/usr/bin"
-  install -Dm644 "$srcdir/findutils-$CARCH-unknown-linux-gnu/LICENSE" -t "$pkgdir/usr/share/licenses/uutils-findutils"
+  _findutils=""
+  case "$CARCH" in
+    "aarch64")
+      _findutils="findutils-$CARCH-unknown-linux-musl"
+      ;;
+    "x86_64")
+      _findutils="findutils-$CARCH-unknown-linux-gnu"
+      ;;
+  esac
+
+  install -Dm755 "$srcdir/$_findutils"/{find,locate,updatedb,xargs} -t "$pkgdir/usr/bin"
+  install -Dm644 "$srcdir/$_findutils/LICENSE" -t "$pkgdir/usr/share/licenses/uutils-findutils"
 
   for path in "$pkgdir/usr/bin"/*; do
     dir=$(dirname "$path")
