@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.246
+pkgver=1.4.247
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -61,7 +61,7 @@ _electronmajor=43
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=55ccff19ad4cd8ba28b6f3d2be798c1e626a2c2c
+_commit=97b9bb3613a333450a38057d745628323f3ad185
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -81,17 +81,19 @@ source_x86_64=(
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
-sha256sums=('e8d55bd31d15baa5e48d0a8613f52babde369caa6c328b9a97381d9e0971aec4'
-            'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
-            'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
-            '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
-            '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835'
-            '0d262438d6ca1de562db33ba8373ccc08298f3fdfa18209864d4189bddfaf742'
-            'd423881ade5704432cbe9afea626438991a1dcda3dda3ed18811e1b3fd721e1e'
-            '3b1943f5b65997ce52196f055b3c10b30dd5e81ae934a91bff096d42c7fcc425'
-            'aba5146aed46aa61abf4000285460f088698f618991d81ef9730d408173cc253'
-            'c97fe80d1e55c274207f62c6b388ae4573627028624ae73bcabd0eabcc7d76e5'
-            'eacec99a44af83ed452e367f343e69042a21f8d9750f15a6447b7de2991146a0')
+sha256sums=(
+  '289c8b417fc46935fe21ce4997fee3bc5f5d9d004d8ccc6c8e0f8e309a35c2c1'
+  'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
+  'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
+  '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
+  '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835'
+  '0d262438d6ca1de562db33ba8373ccc08298f3fdfa18209864d4189bddfaf742'
+  'd423881ade5704432cbe9afea626438991a1dcda3dda3ed18811e1b3fd721e1e'
+  '3b1943f5b65997ce52196f055b3c10b30dd5e81ae934a91bff096d42c7fcc425'
+  'aba5146aed46aa61abf4000285460f088698f618991d81ef9730d408173cc253'
+  'c97fe80d1e55c274207f62c6b388ae4573627028624ae73bcabd0eabcc7d76e5'
+  'eacec99a44af83ed452e367f343e69042a21f8d9750f15a6447b7de2991146a0'
+)
 sha256sums_x86_64=('1de98ed2e9621113b0887b06322b461efb9df73d913fc1d151039b10b7117a41')
 sha256sums_aarch64=('e7ca24224eb626a032828ec584c67903ad2f389911b849d009ed70a19f70d8d3')
 noextract=(
