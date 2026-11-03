@@ -1,0 +1,21 @@
+pkgbase = rabbitvcs-dolphin-git
+	pkgdesc = RabbitVCS integration for the Dolphin file manager
+	pkgver = r3.76f4dc0
+	pkgrel = 1
+	url = https://github.com/hendy643/rabbitvcs-dolphin
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = dolphin
+	depends = rabbitvcs-cli
+	depends = kcoreaddons
+	depends = kio
+	depends = qt6-base
+	provides = rabbitvcs-dolphin
+	conflicts = rabbitvcs-dolphin
+	source = rabbitvcs-dolphin-git::git+https://github.com/hendy643/rabbitvcs-dolphin.git
+	sha256sums = SKIP
+
+pkgname = rabbitvcs-dolphin-git

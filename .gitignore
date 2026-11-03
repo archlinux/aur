@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/build/
+/rabbitvcs-dolphin-git/
+*.pkg.tar*
+*.log
