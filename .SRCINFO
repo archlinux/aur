@@ -1,7 +1,7 @@
 pkgbase = kalipso
 	pkgdesc = Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sansevieria-ou.github.io/kalipso/
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -21,6 +21,6 @@ pkgbase = kalipso
 	optdepends = gnome-shell: the GNOME Shell extension
 	optdepends = xdg-desktop-portal: reader colours from the window behind
 	source = kalipso-2.0.tar.gz::https://github.com/SANSEVIERIA-OU/kalipso/archive/refs/tags/v2.0.tar.gz
-	sha256sums = 98c8e918e95e19d00ada3375c2c6075baf5b51bc0d3ebed6b8698b24923a92a3
+	sha256sums = 1c68b123baff2786f7aa7c477a2de7a3f70c03a9336fdaa1dd00310d30180f31
 
 pkgname = kalipso
