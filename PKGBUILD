@@ -14,7 +14,7 @@ optdepends=('gawk: for Win2K/Win98 toggling awk scripts'
 			'mawk: for Win2K/Win98 toggling awk scripts'
 			'chicago95-icon-theme-git: for some missing icons in SE98 theme')
 source=("git+https://github.com/nestoris/Win98SE.git")
-sha256sums=('SKIP')
+sha256sums=('436bcf64c2496712d182b479fc67e8a9b41e939e7743f96f14fa2fac901fdcce')
 
 pkgver() {
     cd Win98SE
