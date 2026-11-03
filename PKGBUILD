@@ -1,7 +1,7 @@
 # Maintainer: Siiire <siiire@pm.me>
 pkgname=jellium-desktop-bin
 pkgver=0.r1156.1b73a13
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="An unofficial desktop client for Jellyfin"
 arch=('x86_64')
@@ -22,6 +22,10 @@ prepare() {
 
     # Normalize broken 700 directory permissions from upstream AppImage
     chmod -R u+rwX,go+rX,go-w "${srcdir}/squashfs-root"
+
+# Use Arch's native dynamic linker and system libraries first so host GPU/EGL/Vulkan drivers work
+    sed -i 's|ln -sf "${HERE}/usr/lib/${LD_SONAME}"|ln -sf "/usr/lib/${LD_SONAME}"|' "${srcdir}/squashfs-root/AppRun"
+    sed -i 's|export LD_LIBRARY_PATH="|export LD_LIBRARY_PATH="/usr/lib:/usr/lib/pulseaudio:|' "${srcdir}/squashfs-root/AppRun"
 }
 
 package() {
