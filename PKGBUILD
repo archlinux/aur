@@ -1,7 +1,7 @@
 # Maintainer: Ваше Имя <voltasar@gmail.com>
 
 pkgname=se98-wm-theme
-pkgver='1.82'
+pkgver='1.83'
 pkgrel=1
 pkgdesc="Windows 98 Second Edition (Win98SE) inspired window manager theme for xfwm4, metacity, GTK2, GTK3, and GTK4"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
     'metacity: for Metacity window manager'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('44621735d31e10bf4512d1cdf32cdc1ee9c38fa720d6653df33c0837e52c5509')
+sha256sums=('8c3d2555896f1cdc9fd7685d585cb78a283259400baf65d87c428a457d065e3e')
 
 package() {
     # Создаем директорию для темы

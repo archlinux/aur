@@ -1,6 +1,6 @@
 pkgbase = se98-wm-theme
 	pkgdesc = Windows 98 Second Edition (Win98SE) inspired window manager theme for xfwm4, metacity, GTK2, GTK3, and GTK4
-	pkgver = 1.82
+	pkgver = 1.83
 	pkgrel = 1
 	url = https://github.com/nestoris/se98-wm-theme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = se98-wm-theme
 	optdepends = gtk4: for GTK4 applications
 	optdepends = xfwm4: for Xfce window manager
 	optdepends = metacity: for Metacity window manager
-	source = https://github.com/nestoris/se98-wm-theme/archive/refs/tags/v1.82.tar.gz
-	sha256sums = 44621735d31e10bf4512d1cdf32cdc1ee9c38fa720d6653df33c0837e52c5509
+	source = https://github.com/nestoris/se98-wm-theme/archive/refs/tags/v1.83.tar.gz
+	sha256sums = 8c3d2555896f1cdc9fd7685d585cb78a283259400baf65d87c428a457d065e3e
 
 pkgname = se98-wm-theme
