@@ -1,6 +1,6 @@
 pkgbase = no-mistakes-bin
 	pkgdesc = Kill all the slop. Raise clean PR.
-	pkgver = 1.107.1
+	pkgver = 1.108.0
 	pkgrel = 1
 	url = https://github.com/kunchenguid/no-mistakes
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = no-mistakes-bin
 	provides = no-mistakes
 	conflicts = no-mistakes
 	options = !strip
-	source = README-1.107.1.md::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.107.1/README.md
-	source = LICENSE-1.107.1::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.107.1/LICENSE
+	source = README-1.108.0.md::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.108.0/README.md
+	source = LICENSE-1.108.0::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.108.0/LICENSE
 	sha256sums = 4fb45c9784cac4c8feb174b2caa5e7fe4ad71da8bb27f4d306328a5bb970bdf7
 	sha256sums = 945016bd37e1ba7211622ef60ee1d23ab727896ba7710edd21e8fbe983863969
-	source_x86_64 = no-mistakes-x86_64-1.107.1.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.107.1/no-mistakes-v1.107.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = fc0b66e6b5b926c033e4b0f7bdbee59abef293d1b6f625a20f33bd76a2ea3ea8
-	source_aarch64 = no-mistakes-aarch64-1.107.1.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.107.1/no-mistakes-v1.107.1-linux-amd64.tar.gz
-	sha256sums_aarch64 = fc0b66e6b5b926c033e4b0f7bdbee59abef293d1b6f625a20f33bd76a2ea3ea8
+	source_x86_64 = no-mistakes-x86_64-1.108.0.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.108.0/no-mistakes-v1.108.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8217676e3516d48d43187241b79554ec0025b0ff00f6bc86d99f91db1d2fee70
+	source_aarch64 = no-mistakes-aarch64-1.108.0.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.108.0/no-mistakes-v1.108.0-linux-amd64.tar.gz
+	sha256sums_aarch64 = 8217676e3516d48d43187241b79554ec0025b0ff00f6bc86d99f91db1d2fee70
 
 pkgname = no-mistakes-bin
