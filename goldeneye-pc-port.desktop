@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GoldenEye 007
+GenericName=First-person shooter
+Comment=Native PC port of GoldenEye 007, built from the N64 decompilation
+Exec=goldeneye-pc-port
+Icon=goldeneye-pc-port
+Terminal=false
+Categories=Game;Shooter;

@@ -1,0 +1,7 @@
+# Track only the package files, so a ROM, src/ or pkg/ never gets pushed.
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!goldeneye-pc-port
+!goldeneye-pc-port.desktop

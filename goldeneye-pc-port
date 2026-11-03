@@ -1,0 +1,266 @@
+#!/bin/bash
+# goldeneye-pc-port - start the GoldenEye 007 PC port.
+#
+# The game keeps its ROM, save, settings and ROM-derived assets in a data/
+# folder in the directory it is started from, so this launcher starts it
+# from a folder in your home directory. The first run asks for your US ROM
+# and generates the assets the game needs from it.
+
+set -uo pipefail
+
+app=goldeneye-pc-port
+title="GoldenEye 007"
+optdir=/opt/$app
+game=${XDG_DATA_HOME:-$HOME/.local/share}/$app
+cache=${XDG_CACHE_HOME:-$HOME/.cache}/$app
+
+data=$game/data
+rom=$data/ge007.ntsc-final.z64
+stamp=$data/.assets-version
+region=ntsc-final
+
+declare -A rom_sha1=(
+	[abe01e4aeb033b6c0836819f549c791b26cfde83]=US
+	[167c3c433dec1f1eb921736f7d53fac8cb45ee31]=PAL
+	[2a5dade32f7fad6c73c659d2026994632c1b3174]=JP
+)
+
+usage() {
+	cat <<EOF
+Usage: $app [options] [-- game options]
+
+Starts the GoldenEye 007 PC port. The first run asks for your ROM dump and
+generates the game's assets from it.
+
+Options:
+  --rom FILE        use this ROM dump without being asked (.z64, .v64 or
+                    .n64; the US / NTSC-U version only, for now)
+  --reset-assets    regenerate the assets made from your ROM
+  --no-gui          use terminal prompts instead of dialogs
+  -h, --help        show this help
+
+Anything else is passed to the game.
+
+Files ($data):
+  ge007.ntsc-final.z64   your ROM
+  ge007.eep              your save (a 1964 or Project64 save copied here
+                         as ge007.eep is converted on the next start)
+  ge007.ini              settings (also changed in game with F10)
+  pcmodels-*, pccg-*     assets generated from your ROM
+EOF
+}
+
+# --- talking to the user -------------------------------------------------
+
+gui=1
+
+pick_ui() {
+	if (( gui )) && [[ -n ${DISPLAY:-}${WAYLAND_DISPLAY:-} ]] && command -v zenity >/dev/null; then
+		gui=1
+	elif [[ -t 0 ]]; then
+		gui=0
+	else
+		echo "$app: no terminal, and zenity cannot open a window here" >&2
+		exit 1
+	fi
+}
+
+info() {
+	if (( gui )); then
+		zenity --info --no-markup --width=440 --title="$title" --text="$1" 2>/dev/null
+	else
+		printf '%s\n' "$1" >&2
+	fi
+}
+
+error() {
+	if (( gui )); then
+		zenity --error --no-markup --width=440 --title="$title" --text="$1" 2>/dev/null
+	else
+		printf 'error: %s\n' "$1" >&2
+	fi
+}
+
+die() {
+	error "$1"
+	exit 1
+}
+
+ask() {
+	if (( gui )); then
+		zenity --question --no-markup --width=440 --title="$title" --text="$1" 2>/dev/null
+	else
+		local answer
+		read -rp "$1 [Y/n] " answer || return 1
+		[[ -z $answer || $answer == [Yy]* ]]
+	fi
+}
+
+# Prints the chosen path; fails if the user cancels.
+pick_file() {
+	if (( gui )); then
+		zenity --file-selection --title="$1" \
+			--file-filter='N64 ROMs | *.z64 *.Z64 *.v64 *.V64 *.n64 *.N64' \
+			--file-filter='All files | *' 2>/dev/null
+	else
+		local path
+		printf '%s\n' "$1" >&2
+		read -erp "Path (empty to cancel): " path || return 1
+		path=${path%"${path##*[![:space:]]}"}
+		path=${path#\'}; path=${path%\'}; path=${path#\"}; path=${path%\"}
+		path=${path/#\~/$HOME}
+		[[ -n $path ]] || return 1
+		printf '%s\n' "$path"
+	fi
+}
+
+# --- the ROM -------------------------------------------------------------
+
+# Saves a dump as $rom in big-endian (.z64) order, if it is the US retail
+# cartridge.
+import_rom() {
+	local in=$1 tmp sum
+	if [[ ! -f $in ]]; then
+		error "File not found:
+$in"
+		return 1
+	fi
+	tmp=$(mktemp "$data/.import.XXXXXX") || return 1
+
+	if ! python3 -I - "$in" "$tmp" <<'EOF'
+import sys
+src, dst = sys.argv[1], sys.argv[2]
+data = open(src, 'rb').read()
+if len(data) % 4:
+    sys.exit(1)
+magic = data[:4]
+if magic == b'\x80\x37\x12\x40':        # .z64, big-endian
+    out = data
+elif magic == b'\x37\x80\x40\x12':      # .v64, byte-swapped
+    out = bytearray(len(data))
+    out[0::2], out[1::2] = data[1::2], data[0::2]
+elif magic == b'\x40\x12\x37\x80':      # .n64, little-endian
+    out = bytearray(len(data))
+    for i in range(4):
+        out[i::4] = data[3 - i::4]
+else:
+    sys.exit(1)
+open(dst, 'wb').write(out)
+EOF
+	then
+		rm -f "$tmp"
+		error "That file isn't an N64 ROM:
+$in"
+		return 1
+	fi
+
+	sum=$(sha1sum "$tmp") || { rm -f "$tmp"; return 1; }
+	sum=${sum%% *}
+	case ${rom_sha1[$sum]:-} in
+		US)
+			mv -f "$tmp" "$rom" || return 1
+			rm -f "$stamp"
+			return 0
+			;;
+		PAL|JP)
+			rm -f "$tmp"
+			error "That's the ${rom_sha1[$sum]} version of GoldenEye 007. This release of the PC port only supports the US (NTSC-U) version."
+			return 1
+			;;
+		*)
+			rm -f "$tmp"
+			error "That ROM isn't an unmodified GoldenEye 007 cartridge dump:
+$in"
+			return 1
+			;;
+	esac
+}
+
+require_rom() {
+	local path
+	[[ -f $rom ]] && return 0
+	ask "The GoldenEye 007 PC port runs from your own copy of the game.
+
+Choose your US (NTSC-U) ROM dump now? (.z64, .v64 or .n64)" || exit 0
+	while [[ ! -f $rom ]]; do
+		path=$(pick_file "Choose your US GoldenEye 007 ROM") || exit 0
+		import_rom "$path"
+	done
+}
+
+# --- assets made from the ROM -------------------------------------------
+
+assets_ready() {
+	[[ -f $data/pcmodels-$region/pcmodels.bin && -f $data/pccg-$region/pccg.bin &&
+		-f $stamp && $(<"$stamp") == "$(<"$optdir/version")" ]]
+}
+
+# The converter works inside its own folder, so it runs from a copy.
+make_assets() {
+	local work log=$cache/convert.log status
+	mkdir -p "$cache" || die "Couldn't create $cache"
+	work=$(mktemp -d "$cache/convert.XXXXXX") || die "Couldn't create a work folder in $cache"
+	cp -r "$optdir/prepare-assets" "$work/" && chmod -R u+w "$work" ||
+		{ rm -rf "$work"; die "Couldn't copy the asset converter"; }
+	rm -f "$stamp"
+
+	local -a cmd=("$work/prepare-assets/ge007-convert" --rom "$rom" --out "$game")
+	if (( gui )); then
+		"${cmd[@]}" 2>&1 | tee "$log" |
+			sed -u -e 's/^\(.\{0,90\}\).*/# \1/' -e 's/&/\&amp;/g; s/</\&lt;/g' |
+			zenity --progress --pulsate --auto-close --no-cancel --width=560 \
+				--title="$title" --text="Preparing the game's assets from your ROM. This takes a few seconds..." 2>/dev/null
+		status=${PIPESTATUS[0]}
+	else
+		echo "Preparing the game's assets from your ROM..." >&2
+		"${cmd[@]}" 2>&1 | tee "$log"
+		status=${PIPESTATUS[0]}
+	fi
+	rm -rf "$work"
+
+	if (( status != 0 )) || [[ ! -f $data/pcmodels-$region/pcmodels.bin || ! -f $data/pccg-$region/pccg.bin ]]; then
+		die "Couldn't prepare the game's assets. The log is at:
+$log"
+	fi
+	cp "$optdir/version" "$stamp"
+}
+
+main() {
+	local rom_arg="" reset=0
+	local -a game_args=()
+
+	while (( $# )); do
+		case $1 in
+			--rom)          [[ $# -ge 2 ]] || { usage >&2; exit 2; }; rom_arg=$2; shift ;;
+			--rom=*)        rom_arg=${1#*=} ;;
+			--reset-assets) reset=1 ;;
+			--no-gui)       gui=0 ;;
+			-h|--help)      usage; exit 0 ;;
+			--)             shift; game_args+=("$@"); break ;;
+			*)              game_args+=("$1") ;;
+		esac
+		shift
+	done
+
+	pick_ui
+	mkdir -p "$data" || die "Couldn't create $data"
+
+	exec 9>"$data/.lock"
+	flock -n 9 || die "GoldenEye 007 is already running or being set up."
+
+	if [[ -n $rom_arg ]]; then
+		import_rom "$rom_arg" || exit 1
+	fi
+	require_rom
+
+	if (( reset )) || ! assets_ready; then
+		make_assets
+	fi
+
+	cd "$game" || die "Couldn't open $game"
+	exec "$optdir/ge007.x86_64" "${game_args[@]}"
+}
+
+if [[ ${BASH_SOURCE[0]} == "$0" ]]; then
+	main "$@"
+fi
