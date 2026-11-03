@@ -1,7 +1,7 @@
 # Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor-bin
-pkgver=53.0
+pkgver=54.0
 pkgrel=1
 pkgdesc="A Virtual Machine Monitor for modern Cloud workloads"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
@@ -29,17 +29,17 @@ if [[ "$CARCH" == 'x86_64' ]]; then
         "https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/ch-remote-static"
         "https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/cloud-hypervisor-static"
     )
-    sha256sums+=('5e393c0edcec8567ef664a8c4cc38ebd33d858b6376da36853b60ea51fcca572'
-                 '13f32ba952e6791fd901f2279be2055fbacc64005f96c42a8e90d58860df84a7'
-                 '448af3d4e59b22c2987f7df94c213ad40fb53a10d437e42b5ee6c4fce7c29ecc')
+    sha256sums+=('978dbc10deae6c83beb119b8187f968e4b2963b73ef7163cac791c8c1522dfee'
+            'acd5be240d5c73373effbe818908fc03e313ec8486237904bff11d93b71b1c83'
+            '4f4f98a3d661a40f3e5272627cc895a1b2e525f2f6bedf5f895f9cd21ba5c65b')
 
 elif [[ "$CARCH" == 'aarch64' ]]; then
     source+=(
         "ch-remote-static::https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/ch-remote-static-${CARCH}"
         "cloud-hypervisor-static::https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/cloud-hypervisor-static-${CARCH}"
     )
-    sha256sums+=('ade26617f74264467e1381f146fd1face6b8b0fb13c5ec84f4acedd72f972596'
-                 'f192b510eea1c710cbc439d716bb0573c223fc463dbe3e6523788a2b7ef62850')
+    sha256sums+=('44521d7415eb45ac3188e1d90ab3b12f689e6548606df779ec87c4fcce297d9e'
+                 'e8a6d9786ea678e739f1a386682846e93742dcb9c7b6e3e0c62e3bda6cff0ef3')
 fi
 
 package() {
