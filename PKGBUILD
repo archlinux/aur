@@ -1,7 +1,7 @@
 # Maintainer: asuka minato
 
 pkgname=omofun
-pkgver=2.0.2
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Desktop anime streaming client repackaged to run with system Electron'
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=("file://omofun-${pkgver}-setup.exe"
         'download-selector.patch'
         'system-electron.patch')
 noextract=("omofun-${pkgver}-setup.exe")
-sha256sums=('d4472bcd965350d43b66e7df02fe142214d8e9f35e6ccf70f1d50306d76705eb'
-            'b95804d2de3c5e9741c857ef83f4836e52d1a81524b12befb244f3b6966511fa'
+sha256sums=('7f9a5423c07a8449d697667c4155c66e0eeabf177e30e74cd7d2781e3d724c5d'
+            '2183f9ecf3f0fa24bc9f119dcbc12a7d5bf4e981927e4d063485bf7b5bfc3306'
             'ba59532862d78b90bde3a1ec74055b5ca27725e7290d321ded27c2bef56c9b26')
 
 prepare() {
@@ -45,7 +45,8 @@ prepare() {
     "$srcdir/app/node_modules/koffi/src" \
     "$srcdir/app/node_modules/koffi/vendor" \
     "$srcdir/app/node_modules/libwin32" \
-    "$srcdir/app/node_modules/qrcode/bin"
+    "$srcdir/app/node_modules/qrcode/bin" \
+    "$srcdir/app/node_modules/wasmoon/bin"
 
   local selectors=("$srcdir"/app/out/renderer/assets/DownloadSelectorView-*.js)
   if (( ${#selectors[@]} != 1 )) || [[ ! -f ${selectors[0]} ]]; then
