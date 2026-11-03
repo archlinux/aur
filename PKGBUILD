@@ -1,23 +1,29 @@
 # Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
 pkgname=stellar-cli
-pkgver=26.0.0
+pkgver=30.0.1
 pkgrel=1
 pkgdesc='Command-line multi-tool for running and deploying Stellar contracts on the Stellar network'
 url='https://stellar.org'
 arch=(x86_64)
 license=(Apache-2.0)
-depends=(glibc gcc-libs systemd-libs openssl dbus)
+depends=(glibc libgcc libstdc++ systemd-libs openssl dbus)
 makedepends=(git cargo clang)
-source=(git+https://github.com/stellar/$pkgname#tag=v$pkgver)
-sha512sums=('2845d1bb00ce43df6190637faec5bc16fdecf1877c0ff8d0a4522253e216b59bf01170b57dc2990ca209700a7edf68c45bf4d99a5ec08088e2b6c04e8d5a0584')
-# https://github.com/briansmith/ring/issues/1444
-options=(!lto)
+source=(git+https://github.com/stellar/$pkgname#tag=v$pkgver
+        stellar-cli-gcc16-directory-iterator.patch::https://github.com/WebAssembly/binaryen/commit/6a78bf0af57dbff8f9d6a77b2527eb0ebb5b73e9.patch?full_index=1)
+sha512sums=('ed129502c71c97d359d9ea9d6d3cc80749a01e9ce1937c61a8b6cbfcc8f62f0fcdd78b67fe74d58e18f002d2e65a886a37d8ed6b996ea13f0fc2b0304a5550c1'
+            'd9c4a1f387a402fffabb01a7a2a30599aad0693bde6be511175b1a869de91a492bd127b9713f088770e06246a117f5f3b7af7f61e1b510e112b827695e42bdbb')
 
 prepare() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  local _binaryen
+  while IFS= read -r -d '' _binaryen; do
+    patch -N -p1 -d "$_binaryen" -i "$srcdir/stellar-cli-gcc16-directory-iterator.patch"
+  done < <(find "$HOME/.cargo" -type d -path '*/wasm-opt-sys-*/binaryen' -print0)
+
   mkdir completions
 }
 
@@ -25,6 +31,8 @@ build() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
   cargo build --frozen --release -p stellar-cli
   local _completion="target/release/stellar completion"
   $_completion --shell bash > "completions/stellar"

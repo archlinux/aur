@@ -20,6 +20,8 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "lilac.yaml",
+    "lilac.py",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
