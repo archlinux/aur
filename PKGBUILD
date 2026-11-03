@@ -2,7 +2,7 @@
 
 _pkgname=MaterialCraft
 pkgname=materialcraft
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 url="https://github.com/PiJellyPin/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Substance Designer'
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
-sha256sums=('78866ac3da35bfc38adc9f97b56a4eb8fea63dbfab192590e83cd35d12ada718')
+sha256sums=('1d9485dfe01d200321c08880cac6953409d461c61adc8b952c501e29f05b2370')
 
 _srcenv() {
 	cd "$_archive"
