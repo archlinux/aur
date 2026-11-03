@@ -1,0 +1,25 @@
+pkgbase = kryoptic
+	pkgdesc = A PKCS #11 software token written in Rust
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://github.com/latchset/kryoptic
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pandoc
+	makedepends = clang-libs
+	makedepends = clang
+	depends = brotli
+	depends = glibc
+	depends = zlib
+	depends = zstd
+	depends = sqlite
+	depends = openssl
+	backup = etc/kryoptic/token.conf
+	source = https://github.com/latchset/kryoptic/releases/download/v1.5.4/kryoptic-1.5.4.tar.gz
+	source = token.conf
+	sha256sums = bfa39be18e95f54009dfbd4e74a59a73c425b1cd1cc6236b3143f63141c41c03
+	sha256sums = 84ab4485a53f12cfa385109756f44d0269f27ec056f82e2f8cba91301abe15a1
+
+pkgname = kryoptic
