@@ -1,6 +1,6 @@
 pkgbase = datamodel-code-generator
 	pkgdesc = Generate Python models from JSON Schema, OpenAPI, JSON, and YAML
-	pkgver = 0.86.0
+	pkgver = 0.88.0
 	pkgrel = 1
 	url = https://github.com/datamodel-code-generator/datamodel-code-generator
 	arch = any
@@ -38,9 +38,9 @@ pkgbase = datamodel-code-generator
 	optdepends = python-msgspec: use generated msgspec models
 	optdepends = python-openapi-spec-validator: optional OpenAPI validation
 	optdepends = python-prance: optional OpenAPI validation
-	provides = python-datamodel-code-generator=0.86.0
+	provides = python-datamodel-code-generator=0.88.0
 	conflicts = python-datamodel-code-generator
-	source = source::git+https://github.com/datamodel-code-generator/datamodel-code-generator.git#commit=361e17d6e2005e68848c99e1830605fbe904ae28
+	source = source::git+https://github.com/datamodel-code-generator/datamodel-code-generator.git#commit=1ebbfc2264f9cd28545f5e4a3adc121ce71cd7e3
 	sha256sums = SKIP
 
 pkgname = datamodel-code-generator

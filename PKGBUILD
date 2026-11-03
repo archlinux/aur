@@ -2,7 +2,7 @@
 # Contributor: ThePirate42 <aur at thepirate42 dot org>
 
 pkgname=datamodel-code-generator
-pkgver=0.86.0
+pkgver=0.88.0
 pkgrel=1
 pkgdesc='Generate Python models from JSON Schema, OpenAPI, JSON, and YAML'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   'python-openapi-spec-validator: optional OpenAPI validation'
   'python-prance: optional OpenAPI validation'
 )
-_commit=361e17d6e2005e68848c99e1830605fbe904ae28
+_commit=1ebbfc2264f9cd28545f5e4a3adc121ce71cd7e3
 source=("source::git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -48,11 +48,31 @@ check() {
   # Run upstream reference/type handling and representative schema generation
   # against the wheel. Network services and exhaustive output-backend matrices
   # are outside this offline packaging check.
-  PYTHONPATH="$srcdir/check-install$site_packages:$PWD" python -m pytest -v \
-    tests/test_reference.py tests/test_types.py tests/test_util.py \
-    tests/parser/test_jsonschema.py::test_parser_template_data_reuse \
-    tests/parser/test_jsonschema.py::test_parser_template_data_root_cycle \
-    tests/parser/test_jsonschema.py::test_schema_validator_root_alias_uses_output_model_capability
+  DATAMODEL_STAGED_ROOT="$srcdir/check-install" \
+    PYTHONNOUSERSITE=1 PYTHONPATH="$srcdir/check-install$site_packages:$PWD" python -P - <<'PYTEST'
+import os
+from pathlib import Path
+import sys
+
+import datamodel_code_generator
+import pytest
+
+staged = Path(os.environ["DATAMODEL_STAGED_ROOT"]).resolve()
+assert Path(datamodel_code_generator.__file__).resolve().is_relative_to(staged)
+result = pytest.main([
+    "-v", "--import-mode=importlib",
+    "tests/test_reference.py", "tests/test_types.py", "tests/test_util.py",
+    "tests/parser/test_jsonschema.py::test_parser_template_data_reuse",
+    "tests/parser/test_jsonschema.py::test_parser_template_data_root_cycle",
+    "tests/parser/test_jsonschema.py::test_schema_validator_root_alias_uses_output_model_capability",
+])
+for name, module in tuple(sys.modules.items()):
+    if name == "datamodel_code_generator" or name.startswith("datamodel_code_generator."):
+        origin = getattr(module, "__file__", None)
+        if origin:
+            assert Path(origin).resolve().is_relative_to(staged), (name, origin)
+raise SystemExit(result)
+PYTEST
 }
 
 package() {
