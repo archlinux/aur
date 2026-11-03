@@ -1,6 +1,6 @@
 # Maintainer: rotko <hq@rotko.net>
 pkgname=codj
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Vim-style terminal music player and keyboard DJ (TUI for codjd)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'pkgconf')
 # The crate's release profile does its own LTO.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hitchho/codj/archive/v$pkgver.tar.gz")
-sha256sums=('d06885531c4a83787391ed5206a1631d0477219571b048ac041f04432e5980f7')
+sha256sums=('0d7ff8e373017fd35e36cfb195e08173046683dab0837d40c85b28fcfd2b65df')
 
 prepare() {
   cd "$pkgname-$pkgver"

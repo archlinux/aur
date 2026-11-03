@@ -1,6 +1,6 @@
 pkgbase = codj
 	pkgdesc = Vim-style terminal music player and keyboard DJ (TUI for codjd)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/hitchho/codj
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = codj
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = codj-0.2.0.tar.gz::https://github.com/hitchho/codj/archive/v0.2.0.tar.gz
-	sha256sums = d06885531c4a83787391ed5206a1631d0477219571b048ac041f04432e5980f7
+	source = codj-0.2.1.tar.gz::https://github.com/hitchho/codj/archive/v0.2.1.tar.gz
+	sha256sums = 0d7ff8e373017fd35e36cfb195e08173046683dab0837d40c85b28fcfd2b65df
 
 pkgname = codj
