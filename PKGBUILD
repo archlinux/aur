@@ -3,7 +3,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 pkgname='svu-bin'
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc='Semantic Version Utility'
 url='https://github.com/caarlos0/svu'
@@ -13,10 +13,10 @@ provides=('svu')
 conflicts=('svu')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/svu/releases/download/v${pkgver}/svu_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('1b90854f0df87c99cb8ed7134c73b5f2d0bc94293eb91095f868be649f6e0f1a')
+sha256sums_aarch64=('13e336729e48acedaba98ca3b95677205d823838292f58c97f81b3e8548a37df')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/svu/releases/download/v${pkgver}/svu_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('c0c086b557ff68bd0fabbf5a1c5783d160e72ddd514e84e4d7e3f8f1427361bb')
+sha256sums_x86_64=('5fbb90426372fa11567d826f5c3f04154bdf342959ca694cc152330c4fe130e3')
 
 package() {
   # bin
