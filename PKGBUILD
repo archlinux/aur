@@ -1,6 +1,6 @@
 # Maintainer: Akrm Al-Hakimi <alhakimiakrmj@gmail.com>
 pkgname=nmrs
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="NetworkManager client built on nmrs and gpui"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('networkmanager' 'fontconfig' 'freetype2' 'libxkbcommon' 'libxkbcommon-
 makedepends=('cargo')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c914d7de8b5ed9d3164e78f504e625d1e3453f0ed8efeaea4f761f677c90ee5')
+sha256sums=('8799bbd39da82e47e7fe09d1fa6b68f8aa6eb405426bc0126cfb2ecede667e90')
 
 prepare() {
   cd "nmrs-gui-$pkgver"
