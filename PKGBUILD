@@ -4,13 +4,15 @@
 
 pkgname=deepseek-harness-cli-git
 pkgver=0.2.2.alpha.3.r25588.g8bd0733
-pkgrel=1
+pkgrel=2
 pkgdesc='DeepSeek Harness CLI (dsh) and agent harness (git, builds on Linux without the macOS-only CUA provider)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/deepseek-ai/deepseek-harness'
 license=('MIT')
 depends=('nodejs' 'pnpm')
 makedepends=('git' 'npm')
+optdepends=('git: repository-aware tools'
+            'bubblewrap: sandboxed command execution')
 options=('!strip')
 provides=('deepseek-harness')
 conflicts=('deepseek-harness' 'deepseek-harness-bin' 'deepseek-harness-git')
