@@ -1,0 +1,14 @@
+pkgbase = mdv
+	pkgdesc = Terminal markdown viewer that follows your desktop palette, with inline images and rendered mermaid diagrams
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/erans/mdv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	optdepends = xdg-utils: open document links in your browser
+	source = mdv-0.1.1.tar.gz::https://github.com/erans/mdv/archive/refs/tags/v0.1.1/mdv-0.1.1.tar.gz
+	sha256sums = f82277b09e9cd102fb4ecdc73f525238f89e33006bce4247e1d8728a7a2a2410
+
+pkgname = mdv
