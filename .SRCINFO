@@ -1,6 +1,6 @@
 pkgbase = shopware-cli-bin
 	pkgdesc = A cli which contains handy helpful commands for daily Shopware tasks
-	pkgver = 0.19.7
+	pkgver = 0.19.8
 	pkgrel = 1
 	url = https://developer.shopware.com/
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = shopware-cli-bin
 	conflicts = shopware-cli
 	provides = shopware-cli
 	arch = aarch64
-	source_aarch64 = shopware-cli-bin_0.19.7_aarch64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.19.7/shopware-cli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 1a70ab152eae0db4602c0bbeb37dfe7e101655d5398e10b37e4b1454f78e0a8c
+	source_aarch64 = shopware-cli-bin_0.19.8_aarch64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.19.8/shopware-cli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9b0689122f573d817dbaf9323d0cb5765817ea226b1264c7cf3a3a66a74796d3
 	arch = x86_64
-	source_x86_64 = shopware-cli-bin_0.19.7_x86_64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.19.7/shopware-cli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7258fec7a397f5d9ab119a7baa67fd44343e79fcb0429e5bf2ac9e7f417e73d0
+	source_x86_64 = shopware-cli-bin_0.19.8_x86_64.tar.gz::https://github.com/shopware/shopware-cli/releases/download/0.19.8/shopware-cli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 269778e818fe815361904256a30ec583ec11dd544ea6010bd742cc9546036263
 	
 pkgname = shopware-cli-bin
