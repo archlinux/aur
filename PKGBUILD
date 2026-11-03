@@ -4,12 +4,13 @@
 _pkgname=torchao
 pkgname=python-$_pkgname
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PyTorch architecture optimization and quantization library'
 arch=('x86_64')
 url='https://github.com/pytorch/ao'
 license=('BSD-3-Clause')
-options=('!debug')
+# Preserve the built wheel RECORD for installed native extensions.
+options=('!debug' '!strip')
 depends=(
   'glibc'
   'libgcc'

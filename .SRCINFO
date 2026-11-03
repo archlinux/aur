@@ -1,7 +1,7 @@
 pkgbase = python-torchao
 	pkgdesc = PyTorch architecture optimization and quantization library
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/ao
 	arch = x86_64
 	license = BSD-3-Clause
@@ -45,6 +45,7 @@ pkgbase = python-torchao
 	optdepends = python-triton: Triton kernels
 	optdepends = python-yaml: experimental MPS shader code generation
 	options = !debug
+	options = !strip
 	source = python-torchao-0.18.0.tar.gz::https://github.com/pytorch/ao/archive/refs/tags/v0.18.0.tar.gz
 	source = cutlass-e51efbfe18fe4f4cbb66ab814c55bf4aa0185491.tar.gz::https://github.com/NVIDIA/cutlass/archive/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491.tar.gz
 	source = Exclude-test-suite-from-wheel.patch
