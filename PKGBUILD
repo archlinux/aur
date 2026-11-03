@@ -450,6 +450,7 @@ prepare() {
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/20706
   # Fixed upstream in 7.7 by https://github.com/PowerShell/PowerShell/pull/26565, which isn't
   # backported to 7.6, so drop this patch with 7.7
+  # Fix for 7.6 requested: https://github.com/PowerShell/PowerShell/issues/28306
   patch -Np1 -i "$srcdir/psmodulepath-combined-paths.patch"
 
   # CIM (Microsoft.Management.Infrastructure, MMI) is only usable on Windows, and only free on Linux:
