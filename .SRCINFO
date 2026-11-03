@@ -8,7 +8,7 @@ pkgbase = gaze-kde-bin
 	license = GPL-3.0-or-later
 	depends = kcmutils
 	depends = kirigami
-	optdepends = gaze
+	optdepends = gaze-bin
 	provides = gaze-kde=0.4.2-1
 	conflicts = gaze-kde
 	source = gaze-kde-0.4.2-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-kde-0.4.2-1-x86_64.pkg.tar.zst
