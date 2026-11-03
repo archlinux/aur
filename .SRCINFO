@@ -1,6 +1,6 @@
 pkgbase = kio-s3-git
 	pkgdesc = KIO worker for Amazon S3 and compatible storage (git version)
-	pkgver = r513.e631628
+	pkgver = r520.6e9ff21
 	pkgrel = 1
 	url = https://invent.kde.org/network/kio-s3
 	arch = x86_64
