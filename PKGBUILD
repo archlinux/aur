@@ -17,7 +17,7 @@ optdepends=(
     'metacity: for Metacity window manager'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP') # Временно, позже пересчитаем
+sha256sums=('44621735d31e10bf4512d1cdf32cdc1ee9c38fa720d6653df33c0837e52c5509')
 
 package() {
     # Создаем директорию для темы

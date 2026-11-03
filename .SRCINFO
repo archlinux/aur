@@ -11,6 +11,6 @@ pkgbase = se98-wm-theme
 	optdepends = xfwm4: for Xfce window manager
 	optdepends = metacity: for Metacity window manager
 	source = https://github.com/nestoris/se98-wm-theme/archive/refs/tags/v1.82.tar.gz
-	sha256sums = SKIP
+	sha256sums = 44621735d31e10bf4512d1cdf32cdc1ee9c38fa720d6653df33c0837e52c5509
 
 pkgname = se98-wm-theme
