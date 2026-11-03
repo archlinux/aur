@@ -1,5 +1,5 @@
 pkgbase = sonora-bin
-	pkgdesc = A native music streaming client, built with Rust and GPUI
+	pkgdesc = A native, familiar music streaming client
 	pkgver = 0.47.0
 	pkgrel = 1
 	url = https://github.com/sonorahq/sonora
