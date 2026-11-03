@@ -2,7 +2,7 @@
 
 pkgname=aries-connect-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="KDE Connect-compatible daemon exposing devices over D-Bus (no KDE/Qt dependencies)"
 arch=('x86_64')
@@ -15,21 +15,16 @@ depends=(
 makedepends=()
 conflicts=(${_pkgname})
 options=(!lto)
-source=(
-  "${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
-  "https://raw.githubusercontent.com/Frikilinux/${_pkgname}/v${pkgver}/contrib/aries-connect.service"
-)
-sha256sums=(
-  'e499279a0d964950b9eb5dff26caa23ff73133a11f836f8644a054af53765343'
-  '8358a38a739ed8c21f27944ced458fde0856822ce8156993755f754c134462a5'
-)
+source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=('b97f8cb54db7de845548af175688594bfa992bc15cdb906cd2dbfa6a1614c90d')
 
 package() {
   cd "${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu"
 
   install -Dm755 aries-connect "${pkgdir}/usr/bin/aries-connect"
-  install -Dm644 ${srcdir}/aries-connect.service \
+  install -Dm644 contrib/aries-connect.service \
     "${pkgdir}/usr/lib/systemd/user/aries-connect.service"
-  install -dm 755 "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -m 644 doc/* "${pkgdir}/usr/share/doc/${_pkgname}"
+  for f in doc/*; do
+    install -Dm 644 "$f" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "$f")"
+  done
 }
