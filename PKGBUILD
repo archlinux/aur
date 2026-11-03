@@ -3,10 +3,10 @@
 
 pkgbase=mnt-reform-qcacld2-dkms
 pkgname=('mnt-reform-qcacld2-dkms' 'mnt-reform-qcacld2-firmware')
-_qcacld2_commit=5ed82051e9fa391448e5805d1f1a5407c5890323
+_qcacld2_commit=9f591ce92671c333ac7fe407b7f725f37b77ebf1
 _qcacld2_short=${_qcacld2_commit:0:8}
 
-pkgver=20260831.${_qcacld2_short}
+pkgver=20261102.${_qcacld2_short}
 pkgrel=1
 
 arch=('aarch64' 'x86_64')
