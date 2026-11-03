@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=linuxvr-viewshot
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Take photos in VR with a hand-frame gesture on Linux (WiVRn / Monado) - OpenXR API layer + desktop app"
 # Der OpenXR-Layer ist eine native .so (Rust) -> nicht 'any'
@@ -21,6 +21,8 @@ makedepends=('cargo')
 options=('!lto')
 optdepends=('python-opencv: QR code detection in photos'
             'python-onnxruntime-cpu: text recognition for the translation (plus "pip install --user rapidocr")'
+            'python-jeepney: desktop screenshot with a key (KDE Plasma)'
+            'spectacle: desktop screenshot with a key (KDE Plasma)'
             'glib2: move deleted photos to the trash via gio (fallback)'
             'wl-clipboard: copy from the VR panel when only the background service runs')
 # Git-Tag darf einen Bindestrich haben (v0.5.0-alpha), pkgver nicht
@@ -28,7 +30,7 @@ _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
 # Hinweis nach Installation/Update: einmal "Installieren" in der App drücken
 install="${pkgname}.install"
-sha256sums=('7008a09774cd029aa0ea08b41ee52d7f144785fd0f0d44ec325397d7e9e0cfc9')
+sha256sums=('16668167638fdb5ee4166c50885b246ac5c226143f72b8e2fe819c0b32a1adc7')
 
 _srcdir() { echo "LinuxVR-ViewShot-${_tag#v}"; }
 
