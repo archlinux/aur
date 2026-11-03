@@ -3,8 +3,8 @@
 pkgname=python-darabonba-core
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=1.0.9
-pkgrel=2
+pkgver=1.0.10
+pkgrel=1
 epoch=
 pkgdesc="The darabonba module of alibabaCloud Python SDK."
 arch=('any')
@@ -32,7 +32,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('1026c965b4c2b48f89995eadad7ab780a03959812c8f8de4670eb44c48e5b179')
+sha256sums=('cef11108817e340e04bcfa299d502ca4f7fc922175a45ad122c9581dc8043c54')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
