@@ -1,6 +1,6 @@
 pkgbase = epics-pvxs
 	pkgdesc = EPICS PVA protocol client/server library and utilities
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://epics-base.github.io/pvxs/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = epics-pvxs
 	depends = gcc-libs
 	depends = glibc
 	depends = libevent
-	source = pvxs-1.5.2.tar.gz::https://github.com/epics-base/pvxs/archive/refs/tags/1.5.2.tar.gz
-	sha256sums = 061506998fcbfeb376ddf9c85095405197cf23a9f03a932984c40be4aa817cb0
+	source = pvxs-1.5.3.tar.gz::https://github.com/epics-base/pvxs/archive/refs/tags/1.5.3.tar.gz
+	sha256sums = a3f4790ed24137d8b71eababf63d1a380a75a264528c5ea6c0418e12b1f89a50
 
 pkgname = epics-pvxs

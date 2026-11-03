@@ -3,7 +3,7 @@
 
 _name=pvxs
 pkgname=epics-pvxs
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='EPICS PVA protocol client/server library and utilities'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
     'libevent'
 )
 source=("${_name}-${pkgver}.tar.gz::https://github.com/epics-base/pvxs/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('061506998fcbfeb376ddf9c85095405197cf23a9f03a932984c40be4aa817cb0')
+sha256sums=('a3f4790ed24137d8b71eababf63d1a380a75a264528c5ea6c0418e12b1f89a50')
 
 prepare() {
     cd "${_name}-${pkgver}"
