@@ -5,7 +5,7 @@ _pkgname=tirith
 pkgname=${_pkgname}-bin
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -21,29 +21,30 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc' 'bash' 'zsh')
 
-options=(!lto !strip)
-install=tirith.install
+options=('!strip')
+
+install="${_pkgname}.install"
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE-AGPL"
-		"tirith-${pkgver}.sh::${_urlraw}/shell/tirith.sh"
-		"bash-${pkgver}.hook::${_urlraw}/shell/lib/bash-hook.bash"
-		"zsh-${pkgver}.hook::${_urlraw}/shell/lib/zsh-hook.zsh"
-		"fish-${pkgver}.hook::${_urlraw}/shell/lib/fish-hook.fish"
-		"nushell-${pkgver}.hook::${_urlraw}/shell/lib/nushell-hook.nu"
-		"powershell-${pkgver}.hook::${_urlraw}/shell/lib/powershell-hook.ps1")
+		"${_pkgname}-${pkgver}.sh::${_urlraw}/crates/tirith/assets/shell/${_pkgname}.sh"
+		"bash-${pkgver}.hook::${_urlraw}/crates/tirith/assets/shell/lib/bash-hook.bash"
+		"zsh-${pkgver}.hook::${_urlraw}/crates/tirith/assets/shell/lib/zsh-hook.zsh"
+		"fish-${pkgver}.hook::${_urlraw}/crates/tirith/assets/shell/lib/fish-hook.fish"
+		"nushell-${pkgver}.hook::${_urlraw}/crates/tirith/assets/shell/lib/nushell-hook.nu"
+		"powershell-${pkgver}.hook::${_urlraw}/crates/tirith/assets/shell/lib/powershell-hook.ps1")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('7c8845b10b4bd983da3d24d9cca3ab119b203a03ef0fdbb305785ab489b1d5c9'
+sha256sums=('5d4783bbec834c61e274f4e157031f63faa3ea17ec352b819310ee8b34ed69de'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '0fee41415c73ff61505504e6e651bf0ccba8165ad7f38763643c278529bb6025'
-            '26f06ed05c5cd34e92636800c01b3bfabe462cbef73b3f9cc5d07f19314b1134'
-            'e774746f81c741652f2a358fd329880bab912c9d5d19fe9f0c6f169712c77bba'
-            '56bb35d832850dc4af604102248f4bfdad77bc9b20a698165e006f9d4bee4d83'
-            '4c3b8d02ba861e2a5738ecb8b3c8af94bce0c281980ddefc0273814d46e40d63'
-            'a8ad9992c44ad717bbf562fbef17f935a5b57a17fc5d438d33a058786fa26937')
-sha256sums_x86_64=('efa6bf414a83dba385d4f13137e8677f850ced9102fe74ebb14c72f31df0dc77')
-sha256sums_aarch64=('c550b1bfb0c8c872ab3421cd6ef756f260f7cf4981a18cedd49f141fa2d77569')
+            '068340f706a0cdd32f3d2612cd88f49fd969c2a809422d2aaaeff458b5449675'
+            'e785a563f069b6c99aefe4a8ab6395499d72871df704f5825d9a623878e21aac'
+            'daed514f531780d90398285959206c5a35abaa8b7c0c94502f8d750e8f31ceff'
+            '76b8e3efdd4654bfabd69dd7a911ed244dd0ea2654f121cb2aa77d704eaebde0'
+            '9ef39540051dfcbc6bd79ce55e1ebbd131b37ff4b70c46a2ee1f9cdc36fe68c9')
+sha256sums_x86_64=('e2a87b1fbb967e8d37bc9c3c19bcd97f7979c9253e2f600d9293fce4d86d07ce')
+sha256sums_aarch64=('e9f3d685f0a5ba210c67e763749905915a1b34099a1419f9ce87a1ee60b9fc37')
 
 
 package() {
@@ -62,7 +63,7 @@ package() {
 
 	# Completions
 	install -Dm644 "completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-	install -Dm644 "completions/_tirith" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+	install -Dm644 "completions/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 	install -Dm644 "completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 
 	# Man page
