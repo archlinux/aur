@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A tmux-style terminal database client with vim keys"
 
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f15aaf5c3f1241079c6cc217df0efecc26917b54ddf908a1b8ff721bbbf04e18')
-sha256sums_aarch64=('ed494052b7b327c96bf9c752cd6fe425264a6e51d2c9c97f77edda33e2147d24')
+sha256sums_x86_64=('b5b56ef6d80f26644588085814782498909c38368b5c541b3a06418db2b66892')
+sha256sums_aarch64=('ed82143029944cee21d877ca34b6c9cfd8590d69ebea323d1494bc047e67467e')
 
 
 package() {
