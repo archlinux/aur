@@ -1,0 +1,27 @@
+pkgbase = rustgrid-bin
+	pkgdesc = Native database GUI for SQL and Redis, built in Rust without WebView
+	pkgver = 0.1.5
+	pkgrel = 2
+	url = https://github.com/yisier/rustgrid
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	optdepends = noto-fonts: CJK fonts used by the database table view
+	optdepends = ttf-dejavu: monospace font for the editor
+	provides = rustgrid
+	conflicts = rustgrid
+	options = !strip
+	options = !debug
+	source = rustgrid-icon.png::https://raw.githubusercontent.com/yisier/rustgrid/v0.1.5/crates/rustgrid-app/assets/logo.png
+	sha256sums = e8c73449133ba38031be6d0b6c56b18f7333293794f9853000fba295eda67d34
+	source_x86_64 = RustGrid-0.1.5-linux-x64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v0.1.5/RustGrid-0.1.5-linux-x64.tar.gz
+	sha256sums_x86_64 = aeb7b52b78a16fe0a653a96af8ba6821198feea9601234d81febaf41e35bf16e
+	source_aarch64 = RustGrid-0.1.5-linux-arm64.tar.gz::https://github.com/yisier/rustgrid/releases/download/v0.1.5/RustGrid-0.1.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 36b4bce6ef4f2ede17a7c5e3233496ec0754c65d871df0b9b751b0411a06733e
+
+pkgname = rustgrid-bin
