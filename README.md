@@ -208,6 +208,18 @@ makepkg -si
 That list is the same one the Inter block in `~/.config/fontconfig/fonts.conf`
 turns on for pango, so Chrome renders what GTK renders.
 
+Για να μη γράφεις τη λίστα με το χέρι, το `FEATURE_DEFAULTS=fonts.conf` ψήνει τα
+features που είναι ενεργά (χωρίς σχόλιο) στα `<match>` των οικογενειών που
+εγκαθιστά το build (`Inter Variable` για variable, `Inter` και/ή `Inter Display`
+για static, `Inter Nerd Font Propo` με `NERD_PATCH`) στο
+`~/.config/fontconfig/fonts.conf` (άλλο αρχείο: `INTER_FONTS_CONF`). Τα tags των
+οικογενειών ενώνονται και μπαίνουν σε όλα τα αρχεία του build. Παραλείπονται, με
+σημείωση, τα αρνητικά (`-calt`), όσα λείπουν από το GSUB των upstream αρχείων, όσα
+εφαρμόζει ήδη κάθε shaper (`kern liga ccmp locl mark mkmk calt`) και όσα αρνείται
+το `make_features.py` (`aalt ordn dlig salt ...`).
+
+    FEATURE_DEFAULTS=fonts.conf makepkg -si
+
 | tag | what it changes | note |
 |---|---|---|
 | `zero` | slashed zero | |
