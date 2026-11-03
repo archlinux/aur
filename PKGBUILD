@@ -1,7 +1,7 @@
 # Maintainer: P6g9YHK6 <https://github.com/P6g9YHK6>
 pkgname=openpilot-cabana
 pkgver=2.0.20261024.gf2f9d5d420
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="CAN bus visualizer and DBC editor from comma.ai openpilot"
 arch=("x86_64")
@@ -99,6 +99,8 @@ package() {
   rm -rf "$site"/{comma_deps_gcc_arm_none_eabi,comma_deps_raylib,comma_deps_git_lfs,comma_deps_acados,comma_deps_eigen,comma_deps_imgui,comma_deps_capnproto,scons,cython,sympy,mpmath,matplotlib,casadi,fonttools,kiwisolver,pyparsing,cycler,contourpy,raylib}-*.dist-info
   rm -f "$site"/__editable__* "$site"/_*_editable*.pth "$site"/*.egg-link
   rm -f "$site"/*.dist-info/direct_url.json
+  rm -f "$site"/_openpilot.pth
+  find "$dest/python" -name "_sysconfigdata*" -exec sed -i "s|$srcdir/python|$_root/python|g" {} +
   rm -f "$dest/.venv/bin"/{scons,sconsign,scons-configure-cache,cython,cythonize,cygdb,fonttools,pyftmerge,pyftsubset,ttx,isympy}
 
   # The bundled interpreter's test suite and GUI toolkit are never used.
