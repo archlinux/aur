@@ -1,6 +1,6 @@
 pkgbase = soundcraft-bin
 	pkgdesc = Open-source native digital audio workstation, Pro Tools alternative (prebuilt binary)
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/storytold/soundcraft
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = soundcraft-bin
 	provides = soundcraft
 	conflicts = soundcraft
 	options = !strip
-	source_x86_64 = soundcraft-0.16.0-linux-x86_64.tar.gz::https://github.com/storytold/soundcraft/releases/download/v0.16.0/soundcraft-0.16.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 25c6b0cb8924198f22e3a6f2771d7dcc9e041a3244a4be445cbde9d00e7dc19e
-	source_aarch64 = soundcraft-0.16.0-linux-aarch64.tar.gz::https://github.com/storytold/soundcraft/releases/download/v0.16.0/soundcraft-0.16.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = a691a399929e9a3d2a39c210704554887bc46d07b5de68474e46f5abc2089577
+	source_x86_64 = soundcraft-0.17.0-linux-x86_64.tar.gz::https://github.com/storytold/soundcraft/releases/download/v0.17.0/soundcraft-0.17.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 309bfecbb3044c16f0a200d64b58b341834089fa78211f722afb50eb05566d71
+	source_aarch64 = soundcraft-0.17.0-linux-aarch64.tar.gz::https://github.com/storytold/soundcraft/releases/download/v0.17.0/soundcraft-0.17.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 6188c76afd0434fe032fdc458eeaa9e88d5c286f5d03cfc3507e372030102ae6
 
 pkgname = soundcraft-bin
