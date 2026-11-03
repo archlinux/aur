@@ -1,6 +1,6 @@
 pkgbase = atto-netbsd-git
 	pkgdesc = Small Emacs-like terminal editor from NetBSD
-	pkgver = 20261102180238.g7540cc4f
+	pkgver = 20261103065654.g862f10ae
 	pkgrel = 1
 	url = https://github.com/NetBSD/src/tree/trunk/usr.bin/atto
 	arch = x86_64

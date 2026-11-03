@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=atto-netbsd-git
-pkgver=20261102180238.g7540cc4f
+pkgver=20261103065654.g862f10ae
 pkgrel=1
 pkgdesc='Small Emacs-like terminal editor from NetBSD'
 arch=('x86_64' 'aarch64')
