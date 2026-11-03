@@ -1,6 +1,6 @@
-pkgbase = saturn-bin
-	pkgdesc = Cross-platform deezer client made in Flutter
-	pkgver = 4.0.1
+pkgbase = saturn-canary-bin
+	pkgdesc = Cross-platform deezer client made in Flutter - Canary Version
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/Sheathed/Saturn
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = saturn-bin
 	depends = nss
 	optdepends = libappindicator-gtk3
 	provides = saturnmusic
-	conflicts = saturn-git
-	source = https://github.com/Sheathed/Saturn/releases/download/v4.0.1/saturn-4.0.1-linux.deb
-	sha256sums = edfd2af044d2f34db8f8f8625b74f0ada6cf84c73bd637677fa8abc81ace8a59
+	conflicts = saturn-canary-git
+	source = https://github.com/Sheathed/Saturn/releases/download/v4.0.2-canary.51/saturn-canary-4.0.2+51-linux-canary.51.deb
+	sha256sums = 03b670b6da80e73e8e2888b1b073f5cb4789a0394c2b218698723adfac87a0f1
 
-pkgname = saturn-bin
+pkgname = saturn-canary-bin
