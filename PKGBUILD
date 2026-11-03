@@ -13,7 +13,7 @@ makedepends=('cargo')
 # The release profile strips debug info, so a -debug split package would be empty.
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/koedame/chordsketch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('991905ae50b16703e503f1f667625e3af7ac44bc3423971635843d87d4b9126b')
+sha256sums=('2c7f28480683b27c69b08241c6f4d95e64590f9d327850f501549aa700a41435')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
