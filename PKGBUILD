@@ -1,7 +1,7 @@
 # Maintainer: qubeck <qubeck [AT] disroot [DOT] org>
 
 pkgname=libpdfium
-pkgver=156.0.8078.79
+pkgver=156.0.8078.80
 pkgrel=1
 pkgdesc='PDF rendering/manipulation library from Chromium'
 arch=(x86_64)
@@ -38,7 +38,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'increase-fortify-level.patch'
         'chromium-153-hermetic-python.patch'
         'chromium-156-revert-gn-check-includes.patch')
-sha256sums=('d9e8b637dbdd3a1cccb4966e81a66e3f3c4c29f5ce9732a70f5a4f949cd03923'
+sha256sums=('6c4dc0a9e809ed3ad44b69a9d4622f147f3b3f9b34740ec8fc9735a78bbde80b'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49'
