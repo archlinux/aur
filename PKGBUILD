@@ -1,7 +1,7 @@
 # Maintainer: mensylisir <710080675@qq.com>
 
 pkgname=catpaw
-pkgver=2026.0929.1642
+pkgver=2026.0929.1948
 pkgrel=1
 _electron=42.11.2
 _node=24.18.0
@@ -17,7 +17,7 @@ depends=(
   'libappindicator' 'libpulse' 'json-glib' 'wayland' 'systemd-libs' 'dbus'
   'libnotify'
 )
-makedepends=('7zip' 'unzip' 'nodejs' 'node-gyp' 'python' 'gcc' 'make')
+makedepends=('unzip' 'nodejs' 'node-gyp' 'python' 'gcc' 'make')
 optdepends=(
   'libreoffice-fresh: PPTX 转 PDF/图片'
   'poppler: PDF 渲染与转换（pdftoppm）'
@@ -29,7 +29,7 @@ optdepends=(
 options=('!strip' '!debug' '!lto')
 
 source=(
-  "catpaw-${pkgver}.dmg::https://s3-fra01-eu.mykeeta.net/catpaw-overseas/ide/darwin/stable/${pkgver}/catpaw.20260929170804.dmg"
+  "catpaw-${pkgver}.exe::https://s3-fra01-eu.mykeeta.net/catpaw-overseas/ide/win32-x64/stable/${pkgver}/17906831719554905511_CatPaw-overseas-${pkgver}-x64.exe"
   "electron-v${_electron}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron}/electron-v${_electron}-linux-x64.zip"
   "node-v${_electron}-headers.tar.gz::https://artifacts.electronjs.org/headers/dist/v${_electron}/node-v${_electron}-headers.tar.gz"
   "node-v${_node}-linux-x64.tar.gz::https://nodejs.org/dist/v${_node}/node-v${_node}-linux-x64.tar.gz"
@@ -62,9 +62,14 @@ source=(
   'catpaw-overseas-512.png'
   'DISCLAIMER'
   'LICENSE.port-scripts'
+  # innoextract: upstream (dscharrer) stopped at 1.9 and cannot read Inno Setup
+  # 6.4 installers; Arch only packages 1.9. crazy-max publishes static Linux
+  # builds of the updated fork: version-pinned, sha256-verified, build-time
+  # only (never shipped in the package).
+  'innoextract-linux-amd64::https://github.com/crazy-max/innoextract/releases/download/v1.13.0/innoextract-linux-amd64'
 )
 sha256sums=(
-  '61892d392534e429113ad65958f011cb25c635dcdbe02f85fe7cec2bdb7fb2b0'
+  'd5767b1b2ecbd83bf7f5d657d6dee30ad2ca63ab497e8d019a25daf3e6e98a17'
   '1e0b2a6d59bb8836858a24dec454c36e15a904dd1000a1053c8e36ecc44333bc'
   'b586bf9cc6352053f9e075ed06a160a42653971742fd1746e8951e6942d55879'
   '783130984963db7ba9cbd01089eaf2c2efb055c7c1693c943174b967b3050cb8'
@@ -82,7 +87,7 @@ sha256sums=(
   'b836abe532912ae6c3388dbe713952af293a3d005fc9e4d34d52f14da99dda71'
   '89a7df4761ff335e4dd5367e4cf04cecb9ba4e2cc130a0220f798d188414dc6c'
   '2bf84853274ce6b39f3c363d5ed00573ad5ea99796c362dbb2c9a5e2be669c9c'
-  '00301679279b349dd6e1965fd9843c71e8749a11fb25cd920411d237bbb2e80a'
+  '2f74947dbad844e51ad63ee3430ea79f115cee34deb646e3d5b65e1bbcda0f05'
   'ef50b80ae1d55a5f48c94db21cf74c3543723af4e89f85eb9d80c0900b1efdf1'
   'ffa303d2f54724e538f4696cc7e108d7b73c254e92250f1cd2a0ac583aee22a6'
   '8b7c70e7c9381857ef57b06adfe3abbaef16abc1ddc1bfe33ad403db742f657f'
@@ -97,11 +102,12 @@ sha256sums=(
   'a46fd41f737c444854aa40d0c3808a50a5934ce5d338a4fe109b24ff95351aca'
   'c1cbc22e34b5109d993beda70d5fa3c776a958a2fa3872d895f4668515671b31'
   '315ac7033d47f8bb9c58fa42c1956b59d7654da7dc7b9790c3d5b4749538fe60'
+  'c898db2ecc282ff8d943e9868d03dd6f1fc6069ddd40430341b211f93826b360'
 )
 
 # convert.sh performs its own extraction, so keep the downloaded archives intact.
 noextract=(
-  "catpaw-${pkgver}.dmg"
+  "catpaw-${pkgver}.exe"
   "electron-v${_electron}-linux-x64.zip"
   "node-v${_electron}-headers.tar.gz"
   "node-v${_node}-linux-x64.tar.gz"
@@ -122,7 +128,10 @@ noextract=(
 )
 
 build() {
-  export APP_DMG="$srcdir/catpaw-${pkgver}.dmg"
+  export APP_EXE="$srcdir/catpaw-${pkgver}.exe"
+  export INNOEXTRACT="$srcdir/innoextract-linux-amd64"
+  chmod 755 "$INNOEXTRACT"
+  export PATH="$(dirname "$INNOEXTRACT"):$PATH"
   export ELECTRON_ZIP="$srcdir/electron-v${_electron}-linux-x64.zip"
   export ELECTRON_HEADERS_TGZ="$srcdir/node-v${_electron}-headers.tar.gz"
   export NODE_TARBALL="$srcdir/node-v${_node}-linux-x64.tar.gz"

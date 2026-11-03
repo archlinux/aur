@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Convert the official macOS-only CatPaw (妙手) build into a Linux Electron app.
+# Convert the official Windows-only CatPaw (妙手) build into a Linux Electron app.
 # Sourced inputs are passed via environment variables by PKGBUILD; this script
 # never touches the network.
 set -Eeuo pipefail
 
-: "${APP_DMG:?APP_DMG not set}"
+: "${APP_EXE:?APP_EXE not set}"
+: "${INNOEXTRACT:?INNOEXTRACT not set}"
 : "${ELECTRON_ZIP:?ELECTRON_ZIP not set}"
 : "${ELECTRON_HEADERS_TGZ:?ELECTRON_HEADERS_TGZ not set}"
 : "${NODE_TARBALL:?NODE_TARBALL not set}"
@@ -39,20 +40,18 @@ fi
 info() { printf '==> %s\n' "$*"; }
 die() { printf 'error: %s\n' "$*" >&2; exit 1; }
 
-extract_dmg() {
-  local dmg="$1" dest="${WORK_DIR}/dmg"
-  info "Extracting macOS DMG"
+extract_exe() {
+  local exe="$1" dest="${WORK_DIR}/win"
+  info "Extracting Windows installer (Inno Setup)"
   install -dm755 "${dest}"
-  7z x -y -bd -o"${dest}" "${dmg}" >/dev/null || die "failed to extract ${dmg}"
+  "${INNOEXTRACT}" -d "${dest}" "${exe}" >/dev/null ||
+    die "innoextract failed on ${exe}"
 
-  # 7z stores notarization sidecar files as regular files; prune them.
-  find "${dest}" -name '*:com.apple.cs.*' -type f -delete
-  find "${dest}" -maxdepth 2 -type d -name '__MACOSX' -prune -exec rm -rf {} + || true
-
-  APP_BUNDLE="$(find "${dest}" -maxdepth 3 -type d -name '*.app' | sort | head -n1)"
-  [ -n "${APP_BUNDLE}" ] || die "no .app bundle found in the DMG"
-  APP_RESOURCES="${APP_BUNDLE}/Contents/Resources"
-  [ -f "${APP_RESOURCES}/app.asar" ] || die "app.asar missing from ${APP_RESOURCES}"
+  local asar_dirs
+  mapfile -t asar_dirs < <(find "${dest}" -type f -name 'app.asar' -printf '%h\n')
+  [ "${#asar_dirs[@]}" -eq 1 ] ||
+    die "expected exactly one app.asar in ${exe}, found ${#asar_dirs[@]}"
+  APP_RESOURCES="${asar_dirs[0]}"
 }
 
 stage_electron() {
@@ -77,8 +76,14 @@ copy_payload() {
   cp -a "${res}/app.asar.unpacked" "${out}/resources/app.asar.unpacked"
 
   # product.json lives next to the asar so the app can read branding at startup.
+  # The macOS bundle keeps it under app/, the Windows payload at resources root.
   install -dm755 "${out}/resources/app"
-  cp "${res}/app/product.json" "${out}/resources/app/product.json"
+  if [ -f "${res}/app/product.json" ]; then
+    cp "${res}/app/product.json" "${out}/resources/app/product.json"
+  else
+    cp "${res}/product.json" "${out}/resources/app/product.json"
+    cp "${res}/product.json" "${out}/resources/product.json"
+  fi
 
   local d
   for d in cli cli-apps app-extensions skills wasm; do
@@ -94,12 +99,13 @@ copy_payload() {
   cp "${res}/tray-iconTemplate.png" "${out}/resources/tray-iconTemplate.png"
   cp "${res}/tray-iconTemplate@2x.png" "${out}/resources/tray-iconTemplate@2x.png"
 
-  # Drop macOS-only artifacts and the unusable darwin code-sign sidecars.
+  # Drop platform-only artifacts: code-sign sidecars, .lproj bundles, the
+  # native helper directory (dylib/PE sidecar) and the Windows powershell runtime.
   find "${out}/resources" -name '*:com.apple.cs.*' -type f -delete
   find "${out}/resources" -name '*.lproj' -type d -prune -exec rm -rf {} + || true
-  rm -rf "${out}/resources/native"            # libKeyboardHelper.dylib + xlsx-sidecar
+  rm -rf "${out}/resources/native"            # libKeyboardHelper + xlsx-sidecar
   rm -rf "${out}/resources/runtimes"          # replaced by write_runtimes()
-  rm -f "${out}/resources/bin/paw"
+  rm -f "${out}/resources/bin/paw" "${out}/resources/bin/paw.cmd"
 }
 
 pkg_extract() {
@@ -132,25 +138,34 @@ replace_native_modules() {
   local app="${1}" nm="${1}/resources/app.asar.unpacked/node_modules"
   [ -d "${nm}" ] || die "app.asar.unpacked/node_modules missing"
 
-  info "Purging macOS/Windows native artifacts"
-  rm -rf "${nm}/@img/sharp-darwin-x64" "${nm}/@img/sharp-libvips-darwin-x64"
-  rm -rf "${nm}/@napi-rs/canvas-darwin-x64"
-  rm -rf "${nm}/@koromix/koffi-darwin-x64"
+  info "Purging non-Linux native artifacts"
+  rm -rf "${nm}"/@img/sharp-* "${nm}"/@img/sharp-libvips-*
+  rm -rf "${nm}"/@napi-rs/canvas-*
+  rm -rf "${nm}"/@koromix/koffi-*
   rm -rf "${nm}/koffi/node_modules/@koromix"
-  rm -rf "${nm}/@wecom/cli-darwin-x64" "${nm}/@wecom/cli-darwin-arm64"
-  rm -rf "${nm}/@ffmpeg-installer/darwin-x64"
-  rm -rf "${nm}/@vscode/windows-mutex"
-  rm -rf "${nm}/@esbuild/darwin-x64" "${nm}/@esbuild/darwin-arm64"
-  rm -rf "${nm}/@esbuild/win32-x64" "${nm}/@esbuild/win32-arm64"
-  rm -rf "${nm}/@catpaw/office-runtime-darwin-x64"
-  rm -rf "${nm}/@esbuild/linux-arm64"
-  rm -f "${nm}/agent-browser/bin/agent-browser-darwin-x64"
-  # esbuild's shim binary is shipped as a Mach-O executable; use the Linux
-  # counterpart from the platform package that is also bundled.
-  [ -f "${nm}/@esbuild/linux-x64/bin/esbuild" ] ||
-    die "esbuild linux-x64 binary missing; refusing to keep the macOS shim"
-  install -m755 "${nm}/@esbuild/linux-x64/bin/esbuild" \
-    "${nm}/esbuild/bin/esbuild"
+  rm -rf "${nm}"/@wecom/cli-*
+  rm -rf "${nm}"/@catpaw/office-runtime-*
+  rm -rf "${nm}"/@vscode/windows-*
+  rm -f "${nm}"/agent-browser/bin/agent-browser-*
+  # Windows-only helpers that the Inno Setup installer ships alongside the app.
+  rm -f "${nm}/@catpaw/agent-sdk/bin/catpaw-cli.exe"
+  rm -rf "${nm}/node-pty/build/Release/conpty" "${nm}/node-pty/build/Release/winpty"
+  rm -rf "${nm}/set-global-proxy/lib/win"
+  local d
+  for d in "${nm}"/@ffmpeg-installer/*; do
+    case "$(basename "${d}")" in linux-*) ;; *) rm -rf "${d}" ;; esac
+  done
+  if [ -d "${nm}/@esbuild" ]; then
+    for d in "${nm}"/@esbuild/*; do
+      case "$(basename "${d}")" in linux-x64) ;; *) rm -rf "${d}" ;; esac
+    done
+    # esbuild's shim binary is a foreign-arch executable; use the Linux
+    # counterpart from the platform package that is also bundled.
+    [ -f "${nm}/@esbuild/linux-x64/bin/esbuild" ] ||
+      die "esbuild linux-x64 binary missing; refusing to keep a foreign shim"
+    install -m755 "${nm}/@esbuild/linux-x64/bin/esbuild" \
+      "${nm}/esbuild/bin/esbuild"
+  fi
   rm -rf "${nm}/node-pty/prebuilds" "${nm}/node-pty/bin"
   rm -rf "${nm}/bufferutil/prebuilds" "${nm}/bufferutil/bin"
   rm -rf "${nm}/utf-8-validate/prebuilds" "${nm}/utf-8-validate/bin"
@@ -327,7 +342,7 @@ EOF
 }
 
 main() {
-  extract_dmg "${APP_DMG}"
+  extract_exe "${APP_EXE}"
   install -dm755 "${WORK_DIR}/headers"
   tar -xzf "${ELECTRON_HEADERS_TGZ}" -C "${WORK_DIR}/headers"
   [ -f "${WORK_DIR}/headers/node_headers/include/node/config.gypi" ] ||
