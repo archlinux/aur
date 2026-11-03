@@ -1,15 +1,14 @@
-# Maintainer: Claudia Pellegrino <clau@tiqua.de>
+# Maintainer: Claudia Pellegrino <auerhuhn@archlinux.org>
 
 pkgname=funiculi-git
 _gitpkgname=funiculi
-pkgver=0.2.0.r56.f2ea19d
-pkgrel=2
+pkgver=0.2.0.r78.196b46a
+pkgrel=1
 pkgdesc='Control your Denon AVR amplifier from the command line'
 arch=('any')
 url='https://github.com/claui/funiculi'
 license=('Apache-2.0')
 depends=(
-  'nmap'
   'pulseaudio-dlna-cygn'
   'python'
   'python-colorama'
@@ -18,13 +17,15 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatch'
   'python-installer'
   'python-myst-parser'
-  'python-poetry'
   'python-sphinx'
+  'python-sphinx-autoapi'
   'python-wheel'
 )
-provides=('funiculi')
+checkdepends=('python-pytest')
+provides=("funiculi=${pkgver}")
 conflicts=('funiculi')
 options=('!debug' '!strip')
 
@@ -39,7 +40,7 @@ sha512sums=(
 pkgver() {
   cd "${srcdir}/${_gitpkgname}"
   printf "%s.r%s.%s" \
-    "$(poetry version -s)" \
+    "$(hatch version)" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
@@ -51,6 +52,11 @@ build() {
 
   echo >&2 'Generating man page'
   sphinx-build -aqEW -b man doc/sphinx build/man
+}
+
+check() {
+  cd "${srcdir}/${_gitpkgname}"
+  python -m pytest
 }
 
 package() {
