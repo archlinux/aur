@@ -1,0 +1,16 @@
+pkgbase = python-pypicosdk-git
+	pkgdesc = Python bindings for PicoSDK to work with Picoscopes
+	pkgver = 1.7.5.r6.g2ad6ac4
+	pkgrel = 1
+	url = https://github.com/picotech/pyPicoSDK
+	arch = x86_64
+	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = git
+	depends = python
+	source = git+https://github.com/picotech/pyPicoSDK
+	sha512sums = SKIP
+
+pkgname = python-pypicosdk-git
