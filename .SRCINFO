@@ -1,6 +1,6 @@
 pkgbase = zerx-lab-fluxdown-bin
 	pkgdesc = FluxDown - Rust 驱动的多协议下载管理器（HTTP/FTP/BitTorrent）
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://fluxdown.com
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = zerx-lab-fluxdown-bin
 	provides = fluxdown
 	conflicts = fluxdown
 	options = !strip
-	source_x86_64 = FluxDown-0.6.5-linux-x64.tar.gz::https://github.com/zerx-lab/FluxDown/releases/download/v0.6.5/FluxDown-0.6.5-linux-x64.tar.gz
-	sha256sums_x86_64 = c63c8401851f0aa95f02f319bfa29068b37e7296da30f56680380202925a375d
+	source_x86_64 = FluxDown-0.6.6-linux-x64.tar.gz::https://github.com/zerx-lab/FluxDown/releases/download/v0.6.6/FluxDown-0.6.6-linux-x64.tar.gz
+	sha256sums_x86_64 = a999020bc27631d86e62ec2df677a597bb96c0a70aa5a4a9d1cfa05614a1d713
 
 pkgname = zerx-lab-fluxdown-bin
