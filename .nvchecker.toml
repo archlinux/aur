@@ -1,0 +1,11 @@
+# The prereleases of PowerShell (7.7.0-preview.5, 7.7.0-rc.1), without the hyphen pacman doesn't allow
+# in pkgver. Sorted like pacman does, which puts previews before release candidates.
+[powershell-preview]
+source = "git"
+git = "https://github.com/PowerShell/PowerShell.git"
+use_max_tag = true
+prefix = "v"
+include_regex = 'v7\.\d+\.\d+-(preview|rc)\.\d+'
+sort_version_key = "vercmp"
+from_pattern = '^([\d.]+)-'
+to_pattern = '\1'

@@ -1,0 +1,73 @@
+diff --git a/PowerShell.Common.props b/PowerShell.Common.props
+index 82c0cd9cd..0ac975942 100644
+--- a/PowerShell.Common.props
++++ b/PowerShell.Common.props
+@@ -231,4 +231,9 @@
+   <PropertyGroup>
+     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+   </PropertyGroup>
++
++  <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
++    <!-- System.Drawing.Common is only supported on Windows, keep Microsoft.Windows.Compatibility from bringing it in -->
++    <PrunePackageReference Include="System.Drawing.Common" Version="11.0.0-rc.3.26522.148" />
++  </ItemGroup>
+ </Project>
+diff --git a/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj b/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj
+index 262c88efc..e689df0ab 100644
+--- a/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj
++++ b/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj
+@@ -19,10 +19,19 @@
+ 
+   <ItemGroup>
+     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.9.0" />
+-    <PackageReference Include="System.Drawing.Common" Version="11.0.0-rc.3.26522.148" />
+     <PackageReference Include="JsonSchema.Net" Version="7.4.0" />
+   </ItemGroup>
+ 
++  <ItemGroup Condition=" '$(IsWindows)' == 'true' ">
++    <!-- System.Drawing.Common is only supported on Windows, and only used by Out-Printer -->
++    <PackageReference Include="System.Drawing.Common" Version="11.0.0-rc.3.26522.148" />
++  </ItemGroup>
++
++  <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
++    <!-- Out-Printer is only available on Windows -->
++    <Compile Remove="commands\utility\FormatAndOutput\out-printer\**\*.cs" />
++  </ItemGroup>
++
+   <ItemGroup>
+     <EmbeddedResource Update="resources\*\*.resx">
+       <ManifestResourceName>$(RootNamespace).resources.%(Filename)</ManifestResourceName>
+diff --git a/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj b/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj
+index 0e0239e60..700ed6067 100644
+--- a/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj
++++ b/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj
+@@ -33,7 +33,6 @@
+     <PackageReference Include="System.DirectoryServices" Version="11.0.0-rc.3.26522.148" />
+     <PackageReference Include="System.DirectoryServices.AccountManagement" Version="11.0.0-rc.3.26522.148" />
+     <PackageReference Include="System.DirectoryServices.Protocols" Version="11.0.0-rc.3.26522.148" />
+-    <PackageReference Include="System.Drawing.Common" Version="11.0.0-rc.3.26522.148" />
+     <!-- the following package(s) are from https://github.com/dotnet/corefx -->
+     <PackageReference Include="System.IO.Packaging" Version="11.0.0-rc.3.26522.148" />
+     <PackageReference Include="System.IO.Ports" Version="11.0.0-rc.3.26522.148" />
+@@ -51,6 +50,7 @@
+     <PackageReference Include="System.ServiceModel.Primitives" Version="10.0.652802" />
+     <!-- the source could not be found for the following package(s) -->
+     <PackageReference Include="Microsoft.Windows.Compatibility" Version="11.0.0-rc.3.26522.148" />
++    <PackageReference Include="System.Drawing.Common" Version="11.0.0-rc.3.26522.148" Condition=" '$(IsWindows)' == 'true' " />
+     <PackageReference Include="System.ServiceModel.Syndication" Version="11.0.0-rc.3.26522.148" />
+     <PackageReference Include="System.ServiceProcess.ServiceController" Version="11.0.0-rc.3.26522.148" />
+     <PackageReference Include="System.Speech" Version="11.0.0-rc.3.26522.148" />
+diff --git a/test/Test.Common.props b/test/Test.Common.props
+index 8a5522e9e..b6dcbe907 100644
+--- a/test/Test.Common.props
++++ b/test/Test.Common.props
+@@ -27,4 +27,9 @@
+   <PropertyGroup Condition=" '$(IsWindows)' != 'true' ">
+     <DefineConstants>$(DefineConstants);UNIX</DefineConstants>
+   </PropertyGroup>
++
++  <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
++    <!-- System.Drawing.Common is only supported on Windows, keep Microsoft.Windows.Compatibility from bringing it in -->
++    <PrunePackageReference Include="System.Drawing.Common" Version="11.0.0-rc.3.26522.148" />
++  </ItemGroup>
+ </Project>
