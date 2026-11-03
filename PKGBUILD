@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="TUI for easily running parallel coding agents"
 
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('9f929e47e08dbd7b11b30d7ae60ce5c75582e609b26e4566d2ce24883a0f21aa')
-sha256sums_aarch64=('9f929e47e08dbd7b11b30d7ae60ce5c75582e609b26e4566d2ce24883a0f21aa')
+sha256sums_x86_64=('579d55990357f216fc9174742960dc5012d658b556b4a12ed935a5cbd9c73a82')
+sha256sums_aarch64=('579d55990357f216fc9174742960dc5012d658b556b4a12ed935a5cbd9c73a82')
 
 
 package() {
