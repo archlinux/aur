@@ -1,6 +1,6 @@
 # Maintainer: Jbsco <https://github.com/Jbsco>
 pkgname=blockcodec-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Lossless audio codec with a SPARK-proved block decoder, per-block CRCs and fast seeking'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 provides=('blockcodec')
 conflicts=('blockcodec')
 source=("blockcodec-${pkgver}.tar.gz::https://github.com/Jbsco/codec-study/releases/download/v${pkgver}/blockcodec-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('aaffc189533d2862b0b7def49d31b3c7669b728b690b82fa37e8b110d6018e8f')
+sha256sums=('0b2060575c46e7886444595b2d1f7aef893250044d037d0aa1ebe532207700bb')
 
 package() {
     cd "${srcdir}/blockcodec-v${pkgver}"
