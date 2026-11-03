@@ -1,0 +1,17 @@
+pkgbase = coolapk-desktop-bin
+	pkgdesc = 基于 Tauri 2、Vue 3 和 Rust 的非官方酷安桌面客户端
+	pkgver = 1.39.3
+	pkgrel = 1
+	url = https://github.com/coolapk-desktop/coolapk-desktop
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = coolapk-desktop
+	conflicts = coolapk-desktop
+	source = coolapk-desktop-1.39.3.deb::https://github.com/coolapk-desktop/coolapk-desktop/releases/download/v1.39.3/coolapk-desktop_1.39.3_amd64.deb
+	source = LICENSE-1.39.3::https://github.com/coolapk-desktop/coolapk-desktop/raw/v1.39.3/LICENSE
+	sha256sums = eefff13381e4336215c401d870ea1ba633e7c7c8b9b160ee0f536a6fd8c8f556
+	sha256sums = 4e1461d7dcd7ae220e7458cf4df8fd4973dd9adcdfeefaba45b9f5e4065979a3
+
+pkgname = coolapk-desktop-bin
