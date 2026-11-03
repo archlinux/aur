@@ -1,6 +1,6 @@
 pkgbase = rayshot
 	pkgdesc = Fast screenshot and annotation tool for Linux (GNOME/Wayland)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/paranoica/rayshot
 	install = rayshot.install
@@ -17,7 +17,7 @@ pkgbase = rayshot
 	provides = rayshot
 	conflicts = rayshot-git
 	options = !lto
-	source = rayshot-0.1.9.tar.gz::https://github.com/paranoica/rayshot/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = 2a5bfcc225ab625b419fe50fc9aa206223b42c06be15e4d69d7795139902ca4f
+	source = rayshot-0.1.10.tar.gz::https://github.com/paranoica/rayshot/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = f382782963df959d073c2d898b0375dfbd29701bfab7bcdd0b1106d834331743
 
 pkgname = rayshot
