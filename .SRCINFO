@@ -1,0 +1,26 @@
+pkgbase = nvidia-open-p2p-dkms
+	pkgdesc = NVIDIA open kernel modules patched for consumer GPU P2P (PCIe BAR1 / NVLink)
+	pkgver = 615.78.08
+	pkgrel = 1
+	url = https://github.com/aikitoria/open-gpu-kernel-modules
+	arch = x86_64
+	arch = aarch64
+	license = MIT AND GPL-2.0-only
+	depends = dkms
+	depends = nvidia-utils=615.78.08
+	provides = nvidia-open-dkms
+	provides = nvidia-open
+	provides = nvidia-dkms
+	provides = NVIDIA-MODULE
+	conflicts = nvidia-open-dkms
+	conflicts = nvidia-open
+	conflicts = nvidia-dkms
+	conflicts = nvidia
+	options = !strip
+	options = !debug
+	source = nvidia-open-p2p-dkms-615.78.08.tar.gz::https://github.com/aikitoria/open-gpu-kernel-modules/archive/efed6748b6e7bfc81273f61c148554aa5944e107.tar.gz
+	source = dkms.conf
+	sha256sums = 2562e8237a99913ee44340f2e517f27b914b31b40e90f9d8b1b4c784330a4fb7
+	sha256sums = ae4b05b85bd3514189978c21a26371cd444cdd38ff6db4eb49f9524a9d43f787
+
+pkgname = nvidia-open-p2p-dkms
