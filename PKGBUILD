@@ -6,7 +6,7 @@
 pkgname=python-pytorch-lightning
 _pkgname=pytorch_lightning
 pkgver=2.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The lightweight PyTorch wrapper for high-performance AI research"
 arch=('any')
 url='https://lightning.ai'
@@ -50,7 +50,7 @@ checkdepends=(
   'python-omegaconf'
   'python-onnx'
   'python-onnx-ir'
-  'python-onnxruntime-cpu'
+  'python-onnxruntime'
   'python-onnxscript'
   'python-pandas'
   'python-psutil'

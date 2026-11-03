@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-lightning
 	pkgdesc = The lightweight PyTorch wrapper for high-performance AI research
 	pkgver = 2.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lightning.ai
 	arch = any
 	license = Apache-2.0
@@ -16,7 +16,7 @@ pkgbase = python-pytorch-lightning
 	checkdepends = python-omegaconf
 	checkdepends = python-onnx
 	checkdepends = python-onnx-ir
-	checkdepends = python-onnxruntime-cpu
+	checkdepends = python-onnxruntime
 	checkdepends = python-onnxscript
 	checkdepends = python-pandas
 	checkdepends = python-psutil
