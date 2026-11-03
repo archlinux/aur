@@ -3,7 +3,7 @@
 # Contributor: Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=actiona
-pkgver=3.11.4
+pkgver=3.11.5
 pkgrel=1
 pkgdesc='A task automation tool that allows you to create and execute action lists'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('bluez-libs' 'qt6-declarative' 'libxtst' 'qt6-tools' 'qt6-speech' 'qt6-
          'qt6-multimedia' 'libnotify' 'opencv')
 makedepends=('boost' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jmgr/${pkgname}/releases/download/v${pkgver}/actiona-${pkgver}-source-linux.tar.gz")
-sha256sums=('20bf5bf738cae3675707cbd18fd5d1c3babb53ddf3e63c60f507947ac397c721')
+sha256sums=('59dc24e61291c8d31ab44508954d5861f4a5a394aaca94a20f02b96787d2077b')
 
 latestver() {
   gh api repos/Jmgr/actiona/releases/latest --jq '.tag_name' | sed 's/^v//'

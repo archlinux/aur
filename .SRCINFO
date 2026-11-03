@@ -1,12 +1,11 @@
 pkgbase = actiona
 	pkgdesc = A task automation tool that allows you to create and execute action lists
-	pkgver = 3.11.4
+	pkgver = 3.11.5
 	pkgrel = 1
 	url = https://wiki.actiona.tools
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = boost
-	makedepends = cpp-mini
 	makedepends = cmake
 	depends = bluez-libs
 	depends = qt6-declarative
@@ -18,7 +17,7 @@ pkgbase = actiona
 	depends = libnotify
 	depends = opencv
 	options = !buildflags
-	source = actiona-3.11.4.tar.gz::https://github.com/Jmgr/actiona/releases/download/v3.11.4/actiona-3.11.4-source-linux.tar.gz
-	sha256sums = 20bf5bf738cae3675707cbd18fd5d1c3babb53ddf3e63c60f507947ac397c721
+	source = actiona-3.11.5.tar.gz::https://github.com/Jmgr/actiona/releases/download/v3.11.5/actiona-3.11.5-source-linux.tar.gz
+	sha256sums = 59dc24e61291c8d31ab44508954d5861f4a5a394aaca94a20f02b96787d2077b
 
 pkgname = actiona
