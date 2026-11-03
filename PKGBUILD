@@ -2,7 +2,7 @@
 
 _pkgname=tinymist
 pkgname=tinymist-bin
-pkgver=0.15.10
+pkgver=0.15.12
 pkgrel=1
 pkgdesc="Integrated language service for Typst (LSP, CLI, preview server)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/Myriad-Dream
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_pkgname-$pkgver-armv7.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-armv7-unknown-linux-gnueabihf.tar.gz")
 sha256sums=('a9f29769fd3a7ee2976e6e161a93e16461fa305c088c4806242e50ec8ef86bce')
-sha256sums_x86_64=('10df33ec0b6cb380b1354b55bd8a32fdc2f00fec281b7dc0a41086bd0038e0fc')
-sha256sums_aarch64=('0a545957d894cec8a4ca9010d05a7fa27beb1e356c2b221b7f7f704538ff0bb0')
-sha256sums_armv7h=('8b334de94c91d95d679d59a920f0d850a33778b14fc3ce9061cba9f157f4fdc2')
+sha256sums_x86_64=('95f98715f2bc3ecff528124dd691db074c15de1fe0ed2dfa8be43dda6dbbb967')
+sha256sums_aarch64=('d75cabad569b8fc7d24fa326a36ce0c2e3a287c5a4f66204c1fc302185225678')
+sha256sums_armv7h=('fff1ee1bdecf6c9a63d48f2b4b639aff7f7d14a743d2bbb552f281cd0d04a9cb')
 
 prepare() {
   cd "$srcdir"
