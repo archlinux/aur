@@ -1,6 +1,6 @@
 # Maintainer: Anuraj Jit Saikia <rajasaikia1644@gmail.com>
 pkgname=voisu
-pkgver=0.69.1
+pkgver=0.69.2
 pkgrel=1
 pkgdesc="Voice dictation for Linux desktops (daemon, CLI, and optional Overlay)"
 arch=('x86_64')
@@ -55,7 +55,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/archive/re
         'LICENSE.ring-once_cell-APACHE'
         'LICENSE.ring-once_cell-MIT'
         'LICENSE.ring-fiat')
-sha256sums=('bb5cd49f996cdc4c36617df40d614fdadad1350ea5ddd8fd8dfe3698e7d4a6e2'
+sha256sums=('189079579f5c3d9645079f309424a570a8f84bad2108e6a9b925b6d17c87544a'
             'b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a'
             '005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d'
             'f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f'
