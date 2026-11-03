@@ -21,7 +21,7 @@ makedepends=(
   "dotnet-build-deps-$_dotnetsdkver"
   git
 )
-# 5.x is the last version line published under the MIT license alone, later releases on nuget.org come
+# 5.x is the last version line published under the MIT licence alone, later releases on nuget.org come
 # with the Open Source Maintenance Fee EULA (OSMFEULA.txt in the repository). It's what JsonSchema.Net 7.x
 # (dotnet-jsonschema-net-7) needs, the version PowerShell uses. 5.3.1 wasn't tagged, this is the commit
 # it was published from. Json.More.Net is built from this commit as well, like upstream does.
