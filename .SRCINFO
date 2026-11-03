@@ -1,6 +1,6 @@
 pkgbase = termtastic-git
 	pkgdesc = Feature-rich handmade Meshtastic console client
-	pkgver = 1.0.0.alpha5.r18.gf88b38c
+	pkgver = 1.0.0.alpha6.r3.gff1ce4c
 	pkgrel = 1
 	url = https://github.com/acelot/termtastic
 	arch = x86_64
