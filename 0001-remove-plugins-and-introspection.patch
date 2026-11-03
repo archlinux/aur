@@ -1,0 +1,463 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -92,8 +92,6 @@
+ GTK_PRINT_REQUIRED=3.5.4
+ SHARED_MIME_INFO_REQUIRED=0.20
+ EXEMPI_REQUIRED=1.99.5
+-LIBPEAS_REQUIRED=0.7.4
+-LIBPEAS_GTK_REQUIRED=0.7.4
+ 
+ XVIEWER_MODULES="gtk+-3.0 >= $GTK_REQUIRED \
+              glib-2.0 >= $GLIB_REQUIRED \
+@@ -102,20 +100,7 @@
+              cinnamon-desktop >= $CINNAMON_DESKTOP_REQUIRED \
+              gdk-pixbuf-2.0 >= $GDKPIXBUF_REQUIRED \
+              gtk+-unix-print-3.0 >= $GTK_PRINT_REQUIRED \
+-             shared-mime-info >= $SHARED_MIME_INFO_REQUIRED \
+-             libpeas-1.0 >= $LIBPEAS_REQUIRED \
+-             libpeas-gtk-1.0 >= $LIBPEAS_GTK_REQUIRED"
+-
+-# Introspection
+-GOBJECT_INTROSPECTION_CHECK([0.9.3])
+-
+-if test "$found_introspection" = "yes"; then
+-  have_introspection=yes
+-  AC_DEFINE([HAVE_INTROSPECTION], [1], [Define to enable GObject Introspection])
+-else
+-  have_introspection=no
+-fi
+-
++             shared-mime-info >= $SHARED_MIME_INFO_REQUIRED"
+ # ***************
+ # libm (required)
+ # ***************
+@@ -367,5 +352,4 @@
+ 	XMP support ................:  ${have_exempi}
+ 	JPEG support ...............:  ${have_jpeg}
+ 	Colour management support ..:  ${have_lcms}
+-	GObject Introspection.......:  ${have_introspection}
+ "
+--- a/data/xviewer-preferences-dialog.ui
++++ b/data/xviewer-preferences-dialog.ui
+@@ -2,7 +2,6 @@
+ <!-- Generated with glade 3.18.3 -->
+ <interface>
+   <requires lib="gtk+" version="3.10"/>
+-  <requires lib="libpeas-gtk" version="1.0"/>
+   <object class="GtkAdjustment" id="adjustment1">
+     <property name="lower">1</property>
+     <property name="upper">100</property>
+@@ -562,40 +561,6 @@
+                 <property name="tab_fill">False</property>
+               </packing>
+             </child>
+-            <child>
+-              <object class="GtkBox" id="plugin_manager_container">
+-                <property name="visible">True</property>
+-                <property name="can_focus">False</property>
+-                <property name="border_width">12</property>
+-                <property name="orientation">vertical</property>
+-                <child>
+-                  <object class="PeasGtkPluginManager" id="plugin_manager">
+-                    <property name="visible">True</property>
+-                    <property name="can_focus">False</property>
+-                    <property name="orientation">vertical</property>
+-                  </object>
+-                  <packing>
+-                    <property name="expand">True</property>
+-                    <property name="fill">True</property>
+-                    <property name="position">0</property>
+-                  </packing>
+-                </child>
+-              </object>
+-              <packing>
+-                <property name="position">2</property>
+-              </packing>
+-            </child>
+-            <child type="tab">
+-              <object class="GtkLabel" id="label97">
+-                <property name="visible">True</property>
+-                <property name="can_focus">False</property>
+-                <property name="label" translatable="yes">Plugins</property>
+-              </object>
+-              <packing>
+-                <property name="position">2</property>
+-                <property name="tab_fill">False</property>
+-              </packing>
+-            </child>
+           </object>
+           <packing>
+             <property name="expand">True</property>
+--- a/src/main.c
++++ b/src/main.c
+@@ -26,13 +26,9 @@
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif
+-#ifdef HAVE_INTROSPECTION
+-#include <girepository.h>
+-#endif
+ 
+ #include "xviewer-application.h"
+ #include "xviewer-application-internal.h"
+-#include "xviewer-plugin-engine.h"
+ #include "xviewer-util.h"
+ 
+ #include <string.h>
+@@ -101,9 +97,6 @@
+ 	/* Option groups are free'd together with the context 
+ 	 * Using gtk_get_option_group here initializes gtk during parsing */
+ 	g_option_context_add_group (ctx, gtk_get_option_group (FALSE));
+-#ifdef HAVE_INTROSPECTION
+-	g_option_context_add_group (ctx, g_irepository_get_option_group ());
+-#endif
+ 
+ 	if (!g_option_context_parse (ctx, &argc, &argv, &error)) {
+ 		gchar *help_msg;
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -25,7 +25,6 @@
+ 	xviewer-metadata-reader-jpg.h	\
+ 	xviewer-metadata-reader-png.h	\
+ 	xviewer-pixbuf-util.h		\
+-	xviewer-plugin-engine.h             \
+ 	xviewer-preferences-dialog.h	\
+ 	xviewer-print.h			\
+ 	xviewer-print-image-setup.h         \
+@@ -37,7 +36,6 @@
+ 
+ INST_H_FILES =				\
+ 	xviewer-application.h		\
+-	xviewer-application-activatable.h	\
+ 	xviewer-clipboard-handler.h		\
+ 	xviewer-debug.h			\
+ 	xviewer-enums.h			\
+@@ -56,12 +54,10 @@
+ 	xviewer-thumb-view.h		\
+ 	xviewer-transform.h			\
+ 	xviewer-uri-converter.h		\
+-	xviewer-window-activatable.h	\
+ 	xviewer-window.h
+ 
+ libxviewer_c_files = 			\
+ 	xviewer-application.c		\
+-	xviewer-application-activatable.c	\
+ 	xviewer-clipboard-handler.c		\
+ 	xviewer-close-confirmation-dialog.c \
+ 	xviewer-debug.c			\
+@@ -78,7 +74,6 @@
+ 	xviewer-metadata-reader-jpg.c	\
+ 	xviewer-metadata-reader-png.c	\
+ 	xviewer-pixbuf-util.c		\
+-	xviewer-plugin-engine.c            	\
+ 	xviewer-preferences-dialog.c	\
+ 	xviewer-print.c			\
+ 	xviewer-print-image-setup.c         \
+@@ -95,7 +90,6 @@
+ 	xviewer-transform.c			\
+ 	xviewer-uri-converter.c		\
+ 	xviewer-util.c			\
+-	xviewer-window-activatable.c	\
+ 	xviewer-window.c			\
+ 	zoom.c
+ 
+@@ -137,7 +131,6 @@
+ 	-DXVIEWER_DATA_DIR=\""$(pkgdatadir)"\"			\
+ 	-DXVIEWER_LOCALE_DIR=\""$(datadir)/locale"\"		\
+ 	-DXVIEWER_PIXMAPS_DIR=\""$(datadir)/pixmaps/xviewer"\"		\
+-	-DXVIEWER_PLUGIN_DIR=\""$(libdir)/xviewer/plugins"\"		\
+ 	-DLIBDIR=\""$(libdir)"\"
+ 
+ libxviewer_la_CFLAGS =						\
+@@ -165,13 +158,11 @@
+ xviewer_CFLAGS = 							\
+ 	$(XVIEWER_CFLAGS)						\
+ 	-DXVIEWER_DATA_DIR=\""$(pkgdatadir)"\"			\
+-	-DXVIEWER_LOCALE_DIR=\""$(datadir)/locale"\"                \
+-	$(INTROSPECTION_CFLAGS)
++	-DXVIEWER_LOCALE_DIR=\""$(datadir)/locale"\"
+ 
+ xviewer_LDADD = 				\
+ 	libxviewer.la			\
+-	$(XVIEWER_LIBS)			\
+-	$(INTROSPECTION_LIBS)
++	$(XVIEWER_LIBS)
+ 
+ xviewer_LDFLAGS = -export-dynamic -no-undefined
+ 
+@@ -205,26 +196,6 @@
+ 
+ CLEANFILES = $(BUILT_SOURCES)
+ 
+-if HAVE_INTROSPECTION
+--include $(INTROSPECTION_MAKEFILE)
+-INTROSPECTION_GIRS = Xviewer-3.0.gir
+-INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) --warn-all $(libxviewer_la_CPPFLAGS)
+-
+-Xviewer-3.0.gir: xviewer
+-Xviewer_3_0_gir_INCLUDES = Gtk-3.0
+-Xviewer_3_0_gir_FILES = $(INST_H_FILES) $(libxviewer_c_files) $(BUILT_SOURCES)
+-Xviewer_3_0_gir_VERSION = 3.0
+-Xviewer_3_0_gir_PROGRAM = $(builddir)/xviewer
+-Xviewer_3_0_gir_NAMESPACE = Xviewer
+-Xviewer_3_0_gir_CFLAGS = $(XVIEWER_CFLAGS)
+-girdir = $(datadir)/xviewer/gir-1.0
+-gir_DATA = $(INTROSPECTION_GIRS)
+-
+-typelibdir = $(libdir)/xviewer/girepository-1.0
+-typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+-
+-CLEANFILES += $(gir_DATA) $(typelib_DATA)
+-endif
+ 
+ dist-hook:
+ 	cd $(distdir); rm -f $(BUILT_SOURCES)
+--- a/src/xviewer-application.c
++++ b/src/xviewer-application.c
+@@ -34,7 +34,6 @@
+ #include "xviewer-thumbnail.h"
+ #include "xviewer-window.h"
+ #include "xviewer-application.h"
+-#include "xviewer-application-activatable.h"
+ #include "xviewer-application-internal.h"
+ #include "xviewer-util.h"
+ 
+@@ -230,28 +229,10 @@
+ 	g_object_unref (builder);
+ }
+ 
+-static void
+-on_extension_added (PeasExtensionSet *set,
+-		    PeasPluginInfo   *info,
+-		    PeasExtension    *exten,
+-		    XviewerApplication   *app)
+-{
+-	xviewer_application_activatable_activate (XVIEWER_APPLICATION_ACTIVATABLE (exten));
+-}
+-
+-static void
+-on_extension_removed (PeasExtensionSet *set,
+-		      PeasPluginInfo   *info,
+-		      PeasExtension    *exten,
+-		      XviewerApplication   *app)
+-{
+-	xviewer_application_activatable_deactivate (XVIEWER_APPLICATION_ACTIVATABLE (exten));
+-}
+ 
+ static void
+ xviewer_application_startup (GApplication *application)
+ {
+-	XviewerApplication *app = XVIEWER_APPLICATION (application);
+ 	GError *error = NULL;
+ 	GFile *css_file;
+ 	GtkSettings *settings;
+@@ -305,16 +286,6 @@
+ 	if (shows_app_menu && !shows_menubar)
+ 		xviewer_application_init_app_menu (XVIEWER_APPLICATION (application));
+ 
+-	app->priv->extensions = peas_extension_set_new (
+-				   PEAS_ENGINE (app->priv->plugin_engine),
+-				   XVIEWER_TYPE_APPLICATION_ACTIVATABLE,
+-				   "app", app, NULL);
+-	g_signal_connect (app->priv->extensions, "extension-added",
+-			  G_CALLBACK (on_extension_added), app);
+-	g_signal_connect (app->priv->extensions, "extension-removed",
+-			  G_CALLBACK (on_extension_removed), app);
+-
+-	peas_extension_set_call (app->priv->extensions, "activate");
+ }
+ 
+ static void
+@@ -359,12 +330,6 @@
+ 	XviewerApplication *application = XVIEWER_APPLICATION (object);
+ 	XviewerApplicationPrivate *priv = application->priv;
+ 
+-	g_clear_object (&priv->extensions);
+-
+-	if (priv->plugin_engine) {
+-		g_object_unref (priv->plugin_engine);
+-		priv->plugin_engine = NULL;
+-	}
+ 
+ 	g_clear_object (&priv->ui_settings);
+ 
+@@ -436,7 +401,6 @@
+ 	xviewer_application->priv = xviewer_application_get_instance_private (xviewer_application);
+ 	priv = xviewer_application->priv;
+ 
+-	priv->plugin_engine = xviewer_plugin_engine_new ();
+ 	priv->flags = 0;
+ 
+ 	priv->ui_settings = g_settings_new (XVIEWER_CONF_UI);
+--- a/src/xviewer-application-internal.h
++++ b/src/xviewer-application-internal.h
+@@ -28,22 +28,18 @@
+ #include <glib.h>
+ #include <glib-object.h>
+ 
+-#include <libpeas/peas-extension-set.h>
+ 
+ #include "xviewer-application.h"
+-#include "xviewer-plugin-engine.h"
+ #include "xviewer-window.h"
+ 
+ G_BEGIN_DECLS
+ 
+ struct _XviewerApplicationPrivate {
+-	XviewerPluginEngine  *plugin_engine;
+ 
+ 	XviewerStartupFlags   flags;
+ 
+ 	GSettings        *ui_settings;
+ 
+-	PeasExtensionSet *extensions;
+ };
+ 
+ void              xviewer_application_screensaver_enable  (XviewerApplication *application);
+--- a/src/xviewer-preferences-dialog.c
++++ b/src/xviewer-preferences-dialog.c
+@@ -35,7 +35,6 @@
+ #include <glib/gi18n.h>
+ #include <glib-object.h>
+ #include <gtk/gtk.h>
+-#include <libpeas-gtk/peas-gtk-plugin-manager.h>
+ 
+ #define RADIO_VALUE "radio-value"
+ 
+@@ -57,7 +56,6 @@
+ 	GtkWidget     *loop_check;
+ 	GtkWidget     *seconds_scale;
+ 
+-	GtkWidget     *plugin_manager;
+ };
+ 
+ static GObject *instance = NULL;
+@@ -143,9 +141,6 @@
+ {
+ 	GtkWidgetClass *widget_class = (GtkWidgetClass*) klass;
+ 
+-	/* This should make sure the libpeas-gtk dependency isn't
+-	 * dropped by aggressive linkers (#739618) */
+-	g_type_ensure (PEAS_GTK_TYPE_PLUGIN_MANAGER);
+ 
+ 	gtk_widget_class_set_template_from_resource (widget_class,
+ 						     "/org/x/viewer/ui/xviewer-preferences-dialog.ui");
+@@ -187,9 +182,6 @@
+ 						      XviewerPreferencesDialog,
+ 						      seconds_scale);
+ 
+-	gtk_widget_class_bind_template_child_private (widget_class,
+-						      XviewerPreferencesDialog,
+-						      plugin_manager);
+ }
+ 
+ static void
+@@ -300,7 +292,6 @@
+ 			 scale_adjustment, "value",
+ 			 G_SETTINGS_BIND_DEFAULT);
+ 
+-	gtk_widget_show_all (priv->plugin_manager);
+ 
+ }
+ 
+--- a/src/xviewer-window.c
++++ b/src/xviewer-window.c
+@@ -51,10 +51,8 @@
+ #include "xviewer-jobs.h"
+ #include "xviewer-util.h"
+ #include "xviewer-save-as-dialog-helper.h"
+-#include "xviewer-plugin-engine.h"
+ #include "xviewer-close-confirmation-dialog.h"
+ #include "xviewer-clipboard-handler.h"
+-#include "xviewer-window-activatable.h"
+ #include "xviewer-metadata-sidebar.h"
+ 
+ #include "xviewer-enum-types.h"
+@@ -67,8 +65,6 @@
+ #include <gio/gdesktopappinfo.h>
+ #include <gtk/gtk.h>
+ 
+-#include <libpeas/peas-extension-set.h>
+-#include <libpeas/peas-activatable.h>
+ 
+ #if defined(HAVE_LCMS) && defined(GDK_WINDOWING_X11)
+ #include <X11/Xlib.h>
+@@ -183,7 +179,6 @@
+ 
+ 	GtkPageSetup        *page_setup;
+ 
+-	PeasExtensionSet    *extensions;
+ 
+ #ifdef HAVE_LCMS
+         cmsHPROFILE         *display_profile;
+@@ -5321,13 +5316,6 @@
+ 	window = XVIEWER_WINDOW (object);
+ 	priv = window->priv;
+ 
+-	peas_engine_garbage_collect (PEAS_ENGINE (XVIEWER_APP->priv->plugin_engine));
+-
+-	if (priv->extensions != NULL) {
+-		g_object_unref (priv->extensions);
+-		priv->extensions = NULL;
+-		peas_engine_garbage_collect (PEAS_ENGINE (XVIEWER_APP->priv->plugin_engine));
+-	}
+ 
+ 	if (priv->store != NULL) {
+ 		g_signal_handlers_disconnect_by_func (priv->store,
+@@ -5454,7 +5442,6 @@
+ 		g_clear_object (&priv->thumbview);
+ 	}
+ 
+-	peas_engine_garbage_collect (PEAS_ENGINE (XVIEWER_APP->priv->plugin_engine));
+ 
+ 	G_OBJECT_CLASS (xviewer_window_parent_class)->dispose (object);
+ }
+@@ -5738,23 +5725,6 @@
+ 	}
+ }
+ 
+-static void
+-on_extension_added (PeasExtensionSet *set,
+-		    PeasPluginInfo   *info,
+-		    PeasExtension    *exten,
+-		    GtkWindow        *window)
+-{
+-	peas_extension_call (exten, "activate", window);
+-}
+-
+-static void
+-on_extension_removed (PeasExtensionSet *set,
+-		      PeasPluginInfo   *info,
+-		      PeasExtension    *exten,
+-		      GtkWindow        *window)
+-{
+-	peas_extension_call (exten, "deactivate", window);
+-}
+ 
+ static GObject *
+ xviewer_window_constructor (GType type,
+@@ -5762,24 +5732,13 @@
+ 			GObjectConstructParam *construct_params)
+ {
+ 	GObject *object;
+-	XviewerWindowPrivate *priv;
+ 
+ 	object = G_OBJECT_CLASS (xviewer_window_parent_class)->constructor
+ 			(type, n_construct_properties, construct_params);
+ 
+-	priv = XVIEWER_WINDOW (object)->priv;
+ 
+ 	xviewer_window_construct_ui (XVIEWER_WINDOW (object));
+ 
+-	priv->extensions = peas_extension_set_new (PEAS_ENGINE (XVIEWER_APP->priv->plugin_engine),
+-						   XVIEWER_TYPE_WINDOW_ACTIVATABLE,
+-						   "window",
+-						   XVIEWER_WINDOW (object), NULL);
+-	peas_extension_set_call (priv->extensions, "activate");
+-	g_signal_connect (priv->extensions, "extension-added",
+-			  G_CALLBACK (on_extension_added), object);
+-	g_signal_connect (priv->extensions, "extension-removed",
+-			  G_CALLBACK (on_extension_removed), object);
+ 
+ 	return object;
+ }

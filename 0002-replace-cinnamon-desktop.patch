@@ -1,0 +1,994 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,7 +87,6 @@
+ 
+ GTK_REQUIRED=3.10.0
+ GLIB_REQUIRED=2.38.0
+-CINNAMON_DESKTOP_REQUIRED=3.2.0
+ GDKPIXBUF_REQUIRED=2.4.0
+ GTK_PRINT_REQUIRED=3.5.4
+ SHARED_MIME_INFO_REQUIRED=0.20
+@@ -97,7 +96,6 @@
+              glib-2.0 >= $GLIB_REQUIRED \
+              gio-2.0 >= $GLIB_REQUIRED \
+              gio-unix-2.0 >= $GLIB_REQUIRED \
+-             cinnamon-desktop >= $CINNAMON_DESKTOP_REQUIRED \
+              gdk-pixbuf-2.0 >= $GDKPIXBUF_REQUIRED \
+              gtk+-unix-print-3.0 >= $GTK_PRINT_REQUIRED \
+              shared-mime-info >= $SHARED_MIME_INFO_REQUIRED"
+--- a/data/xviewer.appdata.xml.in
++++ b/data/xviewer.appdata.xml.in
+@@ -7,8 +7,7 @@
+       Xviewer is an image viewer which supports many formats. It can be used to view single images or images in a collection.
+     </_p>
+     <_p>
+-      Xviewer also allows to view the images in a fullscreen slideshow mode
+-      or set an image as the desktop wallpaper.
++      Xviewer also allows to view the images in a fullscreen slideshow mode.
+       It reads the camera tags to automatically rotate your images in the correct
+       portrait or landscape orientation.
+     </_p>
+--- a/data/xviewer-ui.xml
++++ b/data/xviewer-ui.xml
+@@ -11,7 +11,6 @@
+       <separator/>
+       <menuitem action="ImagePrint"/>
+       <separator/>
+-      <menuitem action="ImageSetAsWallpaper"/>
+       <menuitem action="ImageOpenContainingFolder"/>
+       <separator/>
+       <menuitem action="ImageProperties"/>
+@@ -111,7 +110,6 @@
+     <menuitem action="EditMoveToTrash"/>
+     <separator/>
+     <menuitem action="ImageProperties"/>
+-    <menuitem action="ImageSetAsWallpaper"/>
+     <menuitem action="ImageOpenContainingFolder"/>
+   </popup>
+ 
+@@ -130,7 +128,6 @@
+     <menuitem action="EditMoveToTrash"/>
+     <separator/>
+     <menuitem action="ImageProperties"/>
+-    <menuitem action="ImageSetAsWallpaper"/>
+     <menuitem action="ImageOpenContainingFolder"/>
+   </popup>
+ 
+--- a/src/xviewer-file-chooser.c
++++ b/src/xviewer-file-chooser.c
+@@ -20,6 +20,7 @@
+ 
+ #include "xviewer-file-chooser.h"
+ #include "xviewer-pixbuf-util.h"
++#include "xviewer-thumbnail.h"
+ 
+ #include <stdlib.h>
+ 
+@@ -28,12 +29,6 @@
+ #include <gio/gio.h>
+ #include <gtk/gtk.h>
+ 
+-/* We must define GNOME_DESKTOP_USE_UNSTABLE_API to be able
+-   to use GnomeDesktopThumbnail */
+-#ifndef GNOME_DESKTOP_USE_UNSTABLE_API
+-#define GNOME_DESKTOP_USE_UNSTABLE_API
+-#endif
+-#include <libcinnamon-desktop/gnome-desktop-thumbnail.h>
+ 
+ static char *last_dir[] = { NULL, NULL, NULL, NULL };
+ 
+@@ -41,7 +36,7 @@
+ 
+ struct _XviewerFileChooserPrivate
+ {
+-	GnomeDesktopThumbnailFactory *thumb_factory;
++	GCancellable *preview_cancel;
+ 
+ 	GtkWidget *image;
+ 	GtkWidget *size_label;
+@@ -58,8 +53,7 @@
+ 
+ 	priv = XVIEWER_FILE_CHOOSER (object)->priv;
+ 
+-	if (priv->thumb_factory != NULL)
+-		g_object_unref (priv->thumb_factory);
++	g_clear_object (&priv->preview_cancel);
+ 
+ 	(* G_OBJECT_CLASS (xviewer_file_chooser_parent_class)->finalize) (object);
+ }
+@@ -250,10 +244,10 @@
+  * further information according to the thumbnail spec.
+  */
+ static void
+-set_preview_pixbuf (XviewerFileChooser *chooser, GdkPixbuf *pixbuf, goffset size)
++set_preview_pixbuf (XviewerFileChooser *chooser, GdkPixbuf *pixbuf)
+ {
+ 	XviewerFileChooserPrivate *priv;
+-	int bytes;
++	guint64 bytes;
+ 	int pixels;
+ 	const char *bytes_str;
+ 	const char *width;
+@@ -272,12 +266,9 @@
+ 		/* try to read file size */
+ 		bytes_str = gdk_pixbuf_get_option (pixbuf, "tEXt::Thumb::Size");
+ 		if (bytes_str != NULL) {
+-			bytes = atoi (bytes_str);
++			bytes = g_ascii_strtoull (bytes_str, NULL, 10);
+ 			size_str = g_format_size (bytes);
+ 		}
+-		else {
+-			size_str = g_format_size (size);
+-		}
+ 
+ 		/* try to read image dimensions */
+ 		width  = gdk_pixbuf_get_option (pixbuf, "tEXt::Thumb::Image::Width");
+@@ -318,89 +309,62 @@
+ }
+ 
+ static void
+-update_preview_cb (GtkFileChooser *file_chooser, gpointer data)
++cancel_preview (GtkWidget *widget, gpointer data)
+ {
+-	XviewerFileChooserPrivate *priv;
+-	char *uri;
+-	char *thumb_path = NULL;
+-	GFile *file;
+-	GFileInfo *file_info;
+-	GdkPixbuf *pixbuf = NULL;
+-	gboolean have_preview = FALSE;
+-
+-	priv = XVIEWER_FILE_CHOOSER (file_chooser)->priv;
+-
+-	uri = gtk_file_chooser_get_preview_uri (file_chooser);
+-	if (uri == NULL) {
+-		gtk_file_chooser_set_preview_widget_active (file_chooser, FALSE);
+-		return;
+-	}
++	XviewerFileChooserPrivate *priv = XVIEWER_FILE_CHOOSER (widget)->priv;
+ 
+-	file = g_file_new_for_uri (uri);
+-	file_info = g_file_query_info (file,
+-				       G_FILE_ATTRIBUTE_TIME_MODIFIED ","
+-				       G_FILE_ATTRIBUTE_STANDARD_TYPE ","
+-				       G_FILE_ATTRIBUTE_STANDARD_SIZE ","
+-				       G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+-				       0, NULL, NULL);
+-	g_object_unref (file);
+-
+-	if ((file_info != NULL) && (priv->thumb_factory != NULL)
+-	    && g_file_info_get_file_type (file_info) != G_FILE_TYPE_SPECIAL) {
+-		guint64 mtime;
+-
+-		mtime = g_file_info_get_attribute_uint64 (file_info,
+-							  G_FILE_ATTRIBUTE_TIME_MODIFIED);
+-		thumb_path = gnome_desktop_thumbnail_factory_lookup (priv->thumb_factory, uri, mtime);
+-
+-		if (thumb_path != NULL && g_file_test (thumb_path, G_FILE_TEST_EXISTS)) {
+-			/* try to load and display preview thumbnail */
+-			pixbuf = gdk_pixbuf_new_from_file (thumb_path, NULL);
+-		} else if (g_file_info_get_size (file_info) <= 100000) {
+-			/* read files smaller than 100kb directly */
+-
+-			gchar *mime_type = g_content_type_get_mime_type (
+-						g_file_info_get_content_type (file_info));
+-
+-
+-			if (G_LIKELY (mime_type)) {
+-				gboolean can_thumbnail, has_failed;
+-
+-				can_thumbnail = gnome_desktop_thumbnail_factory_can_thumbnail (
+-							priv->thumb_factory,
+-							uri, mime_type, mtime);
+-				has_failed = gnome_desktop_thumbnail_factory_has_valid_failed_thumbnail (
+-							priv->thumb_factory,
+-							uri, mtime);
+-
+-				if (G_LIKELY (can_thumbnail && !has_failed))
+-					pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (
+-							priv->thumb_factory, uri, mime_type);
+-
+-				g_free (mime_type);
+-			}
+-		}
++	if (priv->preview_cancel != NULL)
++		g_cancellable_cancel (priv->preview_cancel);
++	g_clear_object (&priv->preview_cancel);
++}
+ 
+-		if (pixbuf != NULL) {
+-			have_preview = TRUE;
++static void
++load_preview (GTask *task, gpointer source_object, gpointer task_data,
++              GCancellable *cancellable)
++{
++	GError *error = NULL;
++	GdkPixbuf *pixbuf = xviewer_thumbnail_load_file (task_data, cancellable, &error);
+ 
+-			set_preview_pixbuf (XVIEWER_FILE_CHOOSER (file_chooser), pixbuf,
+-					    g_file_info_get_size (file_info));
++	if (pixbuf != NULL)
++		g_task_return_pointer (task, pixbuf, g_object_unref);
++	else
++		g_task_return_error (task, error);
++}
+ 
+-			if (pixbuf != NULL) {
+-				g_object_unref (pixbuf);
+-			}
+-		}
++static void
++preview_loaded (GObject *source, GAsyncResult *result, gpointer data)
++{
++	XviewerFileChooser *chooser = XVIEWER_FILE_CHOOSER (source);
++	GTask *task = G_TASK (result);
++	GdkPixbuf *pixbuf = g_task_propagate_pointer (task, NULL);
++
++	if (g_task_get_cancellable (task) == chooser->priv->preview_cancel) {
++		set_preview_pixbuf (chooser, pixbuf);
++		gtk_file_chooser_set_preview_widget_active (GTK_FILE_CHOOSER (chooser),
++		                                           pixbuf != NULL);
++		g_clear_object (&chooser->priv->preview_cancel);
+ 	}
++	g_clear_object (&pixbuf);
++}
+ 
+-	if (thumb_path != NULL) {
+-		g_free (thumb_path);
+-	}
++static void
++update_preview_cb (GtkFileChooser *file_chooser, gpointer data)
++{
++	XviewerFileChooserPrivate *priv = XVIEWER_FILE_CHOOSER (file_chooser)->priv;
++	GFile *file;
++	GTask *task;
+ 
+-	g_free (uri);
+-	g_object_unref (file_info);
++	cancel_preview (GTK_WIDGET (file_chooser), NULL);
++	gtk_file_chooser_set_preview_widget_active (file_chooser, FALSE);
++	file = gtk_file_chooser_get_preview_file (file_chooser);
++	if (file == NULL)
++		return;
+ 
+-	gtk_file_chooser_set_preview_widget_active (file_chooser, have_preview);
++	priv->preview_cancel = g_cancellable_new ();
++	task = g_task_new (file_chooser, priv->preview_cancel, preview_loaded, NULL);
++	g_task_set_task_data (task, file, g_object_unref);
++	g_task_run_in_thread (task, load_preview);
++	g_object_unref (task);
+ }
+ 
+ static void
+@@ -432,7 +396,7 @@
+ 	gtk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (widget), vbox);
+ 	gtk_file_chooser_set_preview_widget_active (GTK_FILE_CHOOSER (widget), FALSE);
+ 
+-	priv->thumb_factory = gnome_desktop_thumbnail_factory_new (GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL);
++	g_signal_connect (widget, "destroy", G_CALLBACK (cancel_preview), NULL);
+ 
+ 	g_signal_connect (widget, "update-preview",
+ 			  G_CALLBACK (update_preview_cb), NULL);
+--- a/src/xviewer-thumbnail.c
++++ b/src/xviewer-thumbnail.c
+@@ -26,182 +26,86 @@
+ #include <config.h>
+ #endif
+ 
+-/* We must define GNOME_DESKTOP_USE_UNSTABLE_API to be able
+-   to use GnomeDesktopThumbnail */
+-#ifndef GNOME_DESKTOP_USE_UNSTABLE_API
+-#define GNOME_DESKTOP_USE_UNSTABLE_API
+-#endif
+-#include <libcinnamon-desktop/gnome-desktop-thumbnail.h>
+-
+ #include "xviewer-thumbnail.h"
+-#include "xviewer-list-store.h"
+-#include "xviewer-debug.h"
+-
+-#define XVIEWER_THUMB_ERROR xviewer_thumb_error_quark ()
+ 
+-static GnomeDesktopThumbnailFactory *factory = NULL;
+ static GdkPixbuf *frame = NULL;
+ 
+-typedef enum {
+-	XVIEWER_THUMB_ERROR_VFS,
+-	XVIEWER_THUMB_ERROR_GENERIC,
+-	XVIEWER_THUMB_ERROR_UNKNOWN
+-} XviewerThumbError;
+-
+-typedef struct {
+-	char    *uri_str;
+-	char    *thumb_path;
+-	time_t   mtime;
+-	char    *mime_type;
+-	gboolean thumb_exists;
+-	gboolean failed_thumb_exists;
+-	gboolean can_read;
+-} XviewerThumbData;
+-
+-static GQuark
+-xviewer_thumb_error_quark (void)
+-{
+-	static GQuark q = 0;
+-	if (q == 0)
+-		q = g_quark_from_static_string ("xviewer-thumb-error-quark");
+-
+-	return q;
+-}
+-
+ static void
+-set_vfs_error (GError **error, GError *ioerror)
++thumbnail_size_prepared (GdkPixbufLoader *loader, gint width, gint height,
++                         gpointer user_data)
+ {
+-	g_set_error (error,
+-		     XVIEWER_THUMB_ERROR,
+-		     XVIEWER_THUMB_ERROR_VFS,
+-		     "%s", ioerror ? ioerror->message : "VFS error making a thumbnail");
+-}
++	gint *dimensions = user_data;
++	gdouble scale = MIN (128.0 / MAX (width, height), 1.0);
+ 
+-static void
+-set_thumb_error (GError **error, int error_id, const char *string)
+-{
+-	g_set_error (error,
+-		     XVIEWER_THUMB_ERROR,
+-		     error_id,
+-		     "%s", string);
++	dimensions[0] = width;
++	dimensions[1] = height;
++	gdk_pixbuf_loader_set_size (loader, MAX (1, (gint) (width * scale)),
++	                           MAX (1, (gint) (height * scale)));
+ }
+ 
+-static GdkPixbuf*
+-get_valid_thumbnail (XviewerThumbData *data, GError **error)
++GdkPixbuf *
++xviewer_thumbnail_load_file (GFile *file, GCancellable *cancellable, GError **error)
+ {
++	GFileInfo *info;
++	GFileInputStream *stream;
++	GdkPixbufLoader *loader;
+ 	GdkPixbuf *thumb = NULL;
+-
+-	g_return_val_if_fail (data != NULL, NULL);
+-
+-	/* does a thumbnail under the path exists? */
+-	if (data->thumb_exists) {
+-		thumb = gdk_pixbuf_new_from_file (data->thumb_path, error);
+-
+-		/* is this thumbnail file up to date? */
+-		if (thumb != NULL && !gnome_desktop_thumbnail_is_valid (thumb, data->uri_str, data->mtime)) {
+-			g_object_unref (thumb);
+-			thumb = NULL;
+-		}
+-	}
+-
+-	return thumb;
+-}
+-
+-static GdkPixbuf *
+-create_thumbnail_from_pixbuf (XviewerThumbData *data,
+-			      GdkPixbuf *pixbuf,
+-			      GError **error)
+-{
+-	GdkPixbuf *thumb;
+-	gint width, height;
+-	gfloat perc;
+-
+-	g_assert (factory != NULL);
+-
+-	width = gdk_pixbuf_get_width (pixbuf);
+-	height = gdk_pixbuf_get_height (pixbuf);
+-
+-	perc = CLAMP (128.0/(MAX (width, height)), 0, 1);
+-#if GDK_PIXBUF_CHECK_VERSION(2,36,5)
+-	thumb = gdk_pixbuf_scale_simple (pixbuf,
+-							   width*perc,
+-							   height*perc,
+-							   GDK_INTERP_HYPER);
+-#else
+-	thumb = gnome_desktop_thumbnail_scale_down_pixbuf (pixbuf,
+-							   width*perc,
+-							   height*perc);
+-#endif
+-
+-	return thumb;
+-}
+-
+-static void
+-xviewer_thumb_data_free (XviewerThumbData *data)
+-{
+-	if (data == NULL)
+-		return;
+-
+-	g_free (data->thumb_path);
+-	g_free (data->mime_type);
+-	g_free (data->uri_str);
+-
+-	g_slice_free (XviewerThumbData, data);
+-}
+-
+-static XviewerThumbData*
+-xviewer_thumb_data_new (GFile *file, GError **error)
+-{
+-	XviewerThumbData *data;
+-	GFileInfo *file_info;
+-	GError *ioerror = NULL;
+-
+-	g_return_val_if_fail (file != NULL, NULL);
+-	g_return_val_if_fail (error != NULL && *error == NULL, NULL);
+-
+-	data = g_slice_new0 (XviewerThumbData);
+-
+-	data->uri_str    = g_file_get_uri (file);
+-	data->thumb_path = gnome_desktop_thumbnail_path_for_uri (data->uri_str, GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL);
+-
+-	file_info = g_file_query_info (file,
+-				       G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
+-				       G_FILE_ATTRIBUTE_TIME_MODIFIED ","
+-				       G_FILE_ATTRIBUTE_THUMBNAIL_PATH ","
+-				       G_FILE_ATTRIBUTE_THUMBNAILING_FAILED ","
+-				       G_FILE_ATTRIBUTE_ACCESS_CAN_READ,
+-				       0, NULL, &ioerror);
+-	if (file_info == NULL)
+-	{
+-		set_vfs_error (error, ioerror);
+-		g_clear_error (&ioerror);
++	gint dimensions[2] = { 0, 0 };
++	guchar buffer[8192];
++	gssize count;
++	gchar *value;
++
++	g_return_val_if_fail (G_IS_FILE (file), NULL);
++	g_return_val_if_fail (error == NULL || *error == NULL, NULL);
++
++	/* NOTE: No shared on-disk thumbnail cache; callers load in worker threads. */
++	info = g_file_query_info (file, G_FILE_ATTRIBUTE_STANDARD_TYPE ","
++	                          G_FILE_ATTRIBUTE_STANDARD_SIZE,
++	                          G_FILE_QUERY_INFO_NONE, cancellable, error);
++	if (info == NULL)
++		return NULL;
++	if (g_file_info_get_file_type (info) != G_FILE_TYPE_REGULAR) {
++		g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_NOT_REGULAR_FILE,
++		                     "Thumbnail source is not a regular file");
++		g_object_unref (info);
++		return NULL;
+ 	}
+ 
+-	if (*error == NULL) {
+-		/* if available, copy data */
+-		data->mtime = g_file_info_get_attribute_uint64 (file_info,
+-								G_FILE_ATTRIBUTE_TIME_MODIFIED);
+-		data->mime_type = g_strdup (g_file_info_get_content_type (file_info));
+-
+-		data->thumb_exists = (g_file_info_get_attribute_byte_string (file_info,
+-					                                     G_FILE_ATTRIBUTE_THUMBNAIL_PATH) != NULL);
+-		data->failed_thumb_exists = g_file_info_get_attribute_boolean (file_info,
+-									       G_FILE_ATTRIBUTE_THUMBNAILING_FAILED);
+-		data->can_read = TRUE;
+-		if (g_file_info_has_attribute (file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ)) {
+-			data->can_read = g_file_info_get_attribute_boolean (file_info,
+-									    G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+-		}
++	stream = g_file_read (file, cancellable, error);
++	if (stream == NULL) {
++		g_object_unref (info);
++		return NULL;
+ 	}
+-	else {
+-		xviewer_thumb_data_free (data);
+-		data = NULL;
+-		g_clear_error (&ioerror);
++	loader = gdk_pixbuf_loader_new ();
++	g_signal_connect (loader, "size-prepared",
++	                  G_CALLBACK (thumbnail_size_prepared), dimensions);
++	while ((count = g_input_stream_read (G_INPUT_STREAM (stream), buffer,
++	                                     sizeof buffer, cancellable, error)) > 0) {
++		if (!gdk_pixbuf_loader_write (loader, buffer, count, error))
++			goto out;
+ 	}
+-
+-	g_object_unref (file_info);
+-
+-	return data;
++	if (count < 0)
++		goto out;
++	if (!gdk_pixbuf_loader_close (loader, error))
++		goto out;
++
++	thumb = gdk_pixbuf_apply_embedded_orientation (gdk_pixbuf_loader_get_pixbuf (loader));
++	value = g_strdup_printf ("%d", dimensions[0]);
++	gdk_pixbuf_set_option (thumb, "tEXt::Thumb::Image::Width", value);
++	g_free (value);
++	value = g_strdup_printf ("%d", dimensions[1]);
++	gdk_pixbuf_set_option (thumb, "tEXt::Thumb::Image::Height", value);
++	g_free (value);
++	value = g_strdup_printf ("%" G_GOFFSET_FORMAT, g_file_info_get_size (info));
++	gdk_pixbuf_set_option (thumb, "tEXt::Thumb::Size", value);
++	g_free (value);
++out:
++	if (thumb == NULL)
++		gdk_pixbuf_loader_close (loader, NULL);
++	g_object_unref (loader);
++	g_object_unref (stream);
++	g_object_unref (info);
++	return thumb;
+ }
+ 
+ static void
+@@ -434,6 +338,9 @@
+ {
+ 	gint width, height;
+ 
++	g_return_val_if_fail (GDK_IS_PIXBUF (thumbnail), NULL);
++	g_return_val_if_fail (dimension > 0, NULL);
++
+ 	width = gdk_pixbuf_get_width (thumbnail);
+ 	height = gdk_pixbuf_get_height (thumbnail);
+ 
+@@ -450,11 +357,7 @@
+ 		width  = MAX (width  * factor, 1);
+ 		height = MAX (height * factor, 1);
+ 
+-#if GDK_PIXBUF_CHECK_VERSION(2,36,5)
+ 		result_pixbuf = gdk_pixbuf_scale_simple (thumbnail, width, height, GDK_INTERP_HYPER);
+-#else
+-		result_pixbuf = gnome_desktop_thumbnail_scale_down_pixbuf (thumbnail, width, height);
+-#endif
+ 
+ 		return result_pixbuf;
+ 	}
+@@ -475,73 +378,21 @@
+ GdkPixbuf*
+ xviewer_thumbnail_load (XviewerImage *image, GError **error)
+ {
+-	GdkPixbuf *thumb = NULL;
++	GdkPixbuf *thumb;
+ 	GFile *file;
+-	XviewerThumbData *data;
+-	GdkPixbuf *pixbuf = NULL;
+ 
+-	g_return_val_if_fail (image != NULL, NULL);
+-	g_return_val_if_fail (error != NULL && *error == NULL, NULL);
++	g_return_val_if_fail (XVIEWER_IS_IMAGE (image), NULL);
++	g_return_val_if_fail (error == NULL || *error == NULL, NULL);
+ 
+ 	file = xviewer_image_get_file (image);
+-	data = xviewer_thumb_data_new (file, error);
++	thumb = xviewer_thumbnail_load_file (file, NULL, error);
+ 	g_object_unref (file);
+-
+-	if (data == NULL)
+-		return NULL;
+-
+-	if (!data->can_read ||
+-	    (data->failed_thumb_exists && gnome_desktop_thumbnail_factory_has_valid_failed_thumbnail (factory, data->uri_str, data->mtime))) {
+-		xviewer_debug_message (DEBUG_THUMBNAIL, "%s: bad permissions or valid failed thumbnail present",data->uri_str);
+-		set_thumb_error (error, XVIEWER_THUMB_ERROR_GENERIC, "Thumbnail creation failed");
+-		return NULL;
+-	}
+-
+-	/* check if there is already a valid cached thumbnail */
+-	thumb = get_valid_thumbnail (data, error);
+-
+-	if (thumb != NULL) {
+-		xviewer_debug_message (DEBUG_THUMBNAIL, "%s: loaded from cache",data->uri_str);
+-	} else if (gnome_desktop_thumbnail_factory_can_thumbnail (factory, data->uri_str, data->mime_type, data->mtime)) {
+-		/* Only use the image pixbuf when it is up to date. */
+-		if (!xviewer_image_is_file_changed (image))
+-			pixbuf = xviewer_image_get_pixbuf (image);
+-
+-		if (pixbuf != NULL) {
+-			/* generate a thumbnail from the in-memory image,
+-			   if we have already loaded the image */
+-			xviewer_debug_message (DEBUG_THUMBNAIL, "%s: creating from pixbuf",data->uri_str);
+-			thumb = create_thumbnail_from_pixbuf (data, pixbuf, error);
+-			g_object_unref (pixbuf);
+-		} else {
+-			/* generate a thumbnail from the file */
+-			xviewer_debug_message (DEBUG_THUMBNAIL, "%s: creating from file",data->uri_str);
+-			thumb = gnome_desktop_thumbnail_factory_generate_thumbnail (factory, data->uri_str, data->mime_type);
+-		}
+-
+-		if (thumb != NULL) {
+-			/* Save the new thumbnail */
+-			gnome_desktop_thumbnail_factory_save_thumbnail (factory, thumb, data->uri_str, data->mtime);
+-			xviewer_debug_message (DEBUG_THUMBNAIL, "%s: normal thumbnail saved",data->uri_str);
+-		} else {
+-			/* Save a failed thumbnail, to stop further thumbnail attempts */
+-			gnome_desktop_thumbnail_factory_create_failed_thumbnail (factory, data->uri_str, data->mtime);
+-			xviewer_debug_message (DEBUG_THUMBNAIL, "%s: failed thumbnail saved",data->uri_str);
+-			set_thumb_error (error, XVIEWER_THUMB_ERROR_GENERIC, "Thumbnail creation failed");
+-		}
+-	}
+-
+-	xviewer_thumb_data_free (data);
+-
+ 	return thumb;
+ }
+ 
+ void
+ xviewer_thumbnail_init (void)
+ {
+-	if (factory == NULL) {
+-		factory = gnome_desktop_thumbnail_factory_new (GNOME_DESKTOP_THUMBNAIL_SIZE_NORMAL);
+-	}
+ 
+ 	if (frame == NULL) {
+ 		frame = gdk_pixbuf_new_from_file (XVIEWER_DATA_DIR "/pixmaps/thumbnail-frame.png", NULL);
+--- a/src/xviewer-thumbnail.h
++++ b/src/xviewer-thumbnail.h
+@@ -28,11 +28,6 @@
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ #include "xviewer-image.h"
+ 
+-#define GDK_PIXBUF_CHECK_VERSION(major, minor, micro) \
+-	(GDK_PIXBUF_MAJOR > (major) || \
+-	(GDK_PIXBUF_MAJOR == (major) && GDK_PIXBUF_MINOR > (minor)) || \
+-	(GDK_PIXBUF_MAJOR == (major) && GDK_PIXBUF_MINOR == (minor) && \
+-	 GDK_PIXBUF_MICRO >= (micro)))
+ 
+ G_BEGIN_DECLS
+ 
+@@ -46,6 +41,11 @@
+ GdkPixbuf*    xviewer_thumbnail_load        (XviewerImage *image,
+ 					 GError **error);
+ 
++G_GNUC_INTERNAL
++GdkPixbuf*    xviewer_thumbnail_load_file   (GFile *file,
++                                           GCancellable *cancellable,
++                                           GError **error);
++
+ #define XVIEWER_THUMBNAIL_ORIGINAL_WIDTH  "xviewer-thumbnail-orig-width"
+ #define XVIEWER_THUMBNAIL_ORIGINAL_HEIGHT "xviewer-thumbnail-orig-height"
+ 
+--- a/src/xviewer-window.c
++++ b/src/xviewer-window.c
+@@ -88,7 +88,6 @@
+ #define XVIEWER_RECENT_FILES_APP_NAME "Image Viewer"
+ #define XVIEWER_RECENT_FILES_LIMIT  5
+ 
+-#define XVIEWER_WALLPAPER_FILENAME "xviewer-wallpaper"
+ 
+ #define is_rtl (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL)
+ 
+@@ -159,11 +158,9 @@
+         XviewerJob              *transform_job;
+ 	XviewerJob              *save_job;
+ 	GFile               *last_save_as_folder;
+-	XviewerJob              *copy_job;
+ 
+         guint                image_info_message_cid;
+         guint                tip_message_cid;
+-	guint                copy_file_cid;
+ 
+         XviewerStartupFlags      flags;
+ 	GSList              *file_list;
+@@ -210,7 +207,6 @@
+ static void xviewer_window_list_store_image_removed (GtkTreeModel *tree_model,
+                  				 GtkTreePath  *path,
+ 						 gpointer      user_data);
+-static void xviewer_window_set_wallpaper (XviewerWindow *window, const gchar *filename, const gchar *visible_filename);
+ static gboolean xviewer_window_save_images (XviewerWindow *window, GList *images);
+ static void xviewer_window_finish_saving (XviewerWindow *window);
+ static GAppInfo *get_appinfo_for_editor (XviewerWindow *window);
+@@ -703,27 +699,6 @@
+ 	}
+ }
+ 
+-static void
+-update_selection_ui_visibility (XviewerWindow *window)
+-{
+-	XviewerWindowPrivate *priv;
+-	GtkAction *wallpaper_action;
+-	gint n_selected;
+-
+-	priv = window->priv;
+-
+-	n_selected = xviewer_thumb_view_get_n_selected (XVIEWER_THUMB_VIEW (priv->thumbview));
+-
+-	wallpaper_action =
+-		gtk_action_group_get_action (priv->actions_image,
+-					     "ImageSetAsWallpaper");
+-
+-	if (n_selected == 1) {
+-		gtk_action_set_sensitive (wallpaper_action, TRUE);
+-	} else {
+-		gtk_action_set_sensitive (wallpaper_action, FALSE);
+-	}
+-}
+ 
+ static gboolean
+ add_file_to_recent_files (GFile *file)
+@@ -1551,7 +1526,6 @@
+ 	if (xviewer_thumb_view_get_n_selected (XVIEWER_THUMB_VIEW (priv->thumbview)) == 0)
+ 		return;
+ 
+-	update_selection_ui_visibility (window);
+ 
+ 	image = xviewer_thumb_view_get_first_selected_image (XVIEWER_THUMB_VIEW (priv->thumbview));
+ 
+@@ -2752,137 +2726,6 @@
+ 	}
+ }
+ 
+-static void
+-wallpaper_info_bar_response (GtkInfoBar *bar, gint response, XviewerWindow *window)
+-{
+-	if (response == GTK_RESPONSE_YES) {
+-		GAppInfo *app_info;
+-		GError *error = NULL;
+-
+-		if (g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "Cinnamon") == 0 || g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "X-Cinnamon") == 0)
+-			app_info = g_app_info_create_from_commandline ("cinnamon-settings backgrounds", "System Settings", G_APP_INFO_CREATE_NONE, &error);
+-		else if (g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "MATE") == 0)
+-			app_info = g_app_info_create_from_commandline ("mate-appearance-properties --show-page=background", "System Settings", G_APP_INFO_CREATE_NONE, &error);
+-		else if (g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "XFCE") == 0)
+-			app_info = g_app_info_create_from_commandline ("xfdesktop-settings", "Desktop", G_APP_INFO_CREATE_NONE, &error);
+-		else if (g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "Unity") == 0)
+-			app_info = g_app_info_create_from_commandline ("unity-control-center appearance", "System Settings", G_APP_INFO_CREATE_NONE, &error);
+-		else
+-			app_info = g_app_info_create_from_commandline ("gnome-XDG_CURRENT_DESKTOPcontrol-center background", "System Settings", G_APP_INFO_CREATE_NONE, &error);
+-
+-		if (error != NULL) {
+-			g_warning ("%s%s", _("Error launching System Settings: "),
+-				   error->message);
+-			g_error_free (error);
+-			error = NULL;
+-		}
+-
+-		if (app_info != NULL) {
+-			GdkAppLaunchContext *context;
+-			GdkDisplay *display;
+-
+-			display = gtk_widget_get_display (GTK_WIDGET (window));
+-			context = gdk_display_get_app_launch_context (display);
+-			g_app_info_launch (app_info, NULL, G_APP_LAUNCH_CONTEXT (context), &error);
+-
+-			if (error != NULL) {
+-				g_warning ("%s%s", _("Error launching System Settings: "),
+-					   error->message);
+-				g_error_free (error);
+-				error = NULL;
+-			}
+-
+-			g_object_unref (context);
+-			g_object_unref (app_info);
+-		}
+-	}
+-
+-	/* Close message area on every response */
+-	xviewer_window_set_message_area (window, NULL);
+-}
+-
+-static void
+-xviewer_window_set_wallpaper (XviewerWindow *window, const gchar *filename, const gchar *visible_filename)
+-{
+-	GSettings *settings;
+-	GtkWidget *info_bar;
+-	GtkWidget *image;
+-	GtkWidget *label;
+-	GtkWidget *hbox;
+-	gchar *markup;
+-	gchar *text;
+-	gchar *basename;
+-	gchar *uri;
+-
+-	uri = g_filename_to_uri (filename, NULL, NULL);
+-
+-	if (g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "Cinnamon") == 0 || g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "X-Cinnamon") == 0) {
+-		settings = g_settings_new ("org.cinnamon.desktop.background");
+-		g_settings_set_string (settings, "picture-uri", uri);
+-		g_object_unref (settings);
+-	}
+-	else if (g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "MATE") == 0) {
+-		settings = g_settings_new ("org.mate.background");
+-		g_settings_set_string (settings, "picture-filename", filename);
+-		g_object_unref (settings);
+-	}
+-	else if (g_strcmp0 (g_getenv ("XDG_CURRENT_DESKTOP"), "XFCE") == 0) {
+-		gchar *command = g_strdup_printf("xfce4-set-wallpaper '%s'", filename);
+-		system(command);
+-		g_free(command);
+-	}
+-	else {
+-		settings = g_settings_new ("org.gnome.desktop.background");
+-		g_settings_set_string (settings, "picture-uri", uri);
+-		g_object_unref (settings);
+-	}
+-
+-	g_free (uri);
+-
+-	/* I18N: When setting mnemonics for these strings, watch out to not
+-	   clash with mnemonics from xviewer's menubar */
+-	info_bar = gtk_info_bar_new_with_buttons (_("_Open Background Preferences"),
+-						  GTK_RESPONSE_YES,
+-						  C_("MessageArea","Hi_de"),
+-						  GTK_RESPONSE_NO, NULL);
+-	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
+-				       GTK_MESSAGE_QUESTION);
+-
+-	image = gtk_image_new_from_icon_name ("dialog-question",
+-					      GTK_ICON_SIZE_DIALOG);
+-	label = gtk_label_new (NULL);
+-
+-	if (!visible_filename)
+-		basename = g_path_get_basename (filename);
+-
+-	/* The newline character is currently necessary due to a problem
+-	 * with the automatic line break. */
+-	text = g_strdup_printf (_("The image \"%s\" has been set as Desktop Background."
+-				  "\nWould you like to modify its appearance?"),
+-				visible_filename ? visible_filename : basename);
+-	markup = g_markup_printf_escaped ("<b>%s</b>", text);
+-	gtk_label_set_markup (GTK_LABEL (label), markup);
+-	g_free (markup);
+-	g_free (text);
+-	if (!visible_filename)
+-		g_free (basename);
+-
+-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+-	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+-	gtk_widget_set_valign (image, GTK_ALIGN_START);
+-	gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+-	gtk_widget_set_halign (label, GTK_ALIGN_START);
+-	gtk_box_pack_start (GTK_BOX (gtk_info_bar_get_content_area (GTK_INFO_BAR (info_bar))), hbox, TRUE, TRUE, 0);
+-	gtk_widget_show_all (hbox);
+-	gtk_widget_show (info_bar);
+-
+-
+-	xviewer_window_set_message_area (window, info_bar);
+-	gtk_info_bar_set_default_response (GTK_INFO_BAR (info_bar),
+-					   GTK_RESPONSE_YES);
+-	g_signal_connect (info_bar, "response",
+-			  G_CALLBACK (wallpaper_info_bar_response), window);
+-}
+ 
+ static void
+ xviewer_job_save_cb (XviewerJobSave *job, gpointer user_data)
+@@ -2942,60 +2785,6 @@
+ 	}
+ }
+ 
+-static void
+-xviewer_job_copy_cb (XviewerJobCopy *job, gpointer user_data)
+-{
+-	XviewerWindow *window = XVIEWER_WINDOW (user_data);
+-	gchar *filepath, *basename, *filename, *extension;
+-	GtkAction *action;
+-	GFile *source_file, *dest_file;
+-	GTimeVal mtime;
+-
+-	/* Create source GFile */
+-	basename = g_file_get_basename (job->images->data);
+-	filepath = g_build_filename (job->destination, basename, NULL);
+-	source_file = g_file_new_for_path (filepath);
+-	g_free (filepath);
+-
+-	/* Create destination GFile */
+-	extension = xviewer_util_filename_get_extension (basename);
+-	filename = g_strdup_printf  ("%s.%s", XVIEWER_WALLPAPER_FILENAME, extension);
+-	filepath = g_build_filename (job->destination, filename, NULL);
+-	dest_file = g_file_new_for_path (filepath);
+-	g_free (filename);
+-	g_free (extension);
+-
+-	/* Move the file */
+-	g_file_move (source_file, dest_file, G_FILE_COPY_OVERWRITE,
+-		     NULL, NULL, NULL, NULL);
+-
+-	/* Update mtime, see bug 664747 */
+-	g_get_current_time (&mtime);
+-	g_file_set_attribute_uint64 (dest_file, G_FILE_ATTRIBUTE_TIME_MODIFIED,
+-	                             mtime.tv_sec, G_FILE_QUERY_INFO_NONE,
+-				     NULL, NULL);
+-	g_file_set_attribute_uint32 (dest_file,
+-				     G_FILE_ATTRIBUTE_TIME_MODIFIED_USEC,
+-				     mtime.tv_usec, G_FILE_QUERY_INFO_NONE,
+-				     NULL, NULL);
+-
+-	/* Set the wallpaper */
+-	xviewer_window_set_wallpaper (window, filepath, basename);
+-	g_free (basename);
+-	g_free (filepath);
+-
+-	gtk_statusbar_pop (GTK_STATUSBAR (window->priv->statusbar),
+-			   window->priv->copy_file_cid);
+-	action = gtk_action_group_get_action (window->priv->actions_image,
+-					      "ImageSetAsWallpaper");
+-	gtk_action_set_sensitive (action, TRUE);
+-
+-	window->priv->copy_job = NULL;
+-
+-	g_object_unref (source_file);
+-	g_object_unref (dest_file);
+-	g_object_unref (job);
+-}
+ 
+ static gboolean
+ xviewer_window_save_images (XviewerWindow *window, GList *images)
+@@ -3284,71 +3073,6 @@
+ 			      xviewer_transform_rotate_new (270));
+ }
+ 
+-static void
+-xviewer_window_cmd_wallpaper (GtkAction *action, gpointer user_data)
+-{
+-	XviewerWindow *window;
+-	XviewerWindowPrivate *priv;
+-	XviewerImage *image;
+-	GFile *file;
+-	char *filename = NULL;
+-
+-	g_return_if_fail (XVIEWER_IS_WINDOW (user_data));
+-
+-	window = XVIEWER_WINDOW (user_data);
+-	priv = window->priv;
+-
+-	/* If currently copying an image to set it as wallpaper, return. */
+-	if (priv->copy_job != NULL)
+-		return;
+-
+-	image = xviewer_thumb_view_get_first_selected_image (XVIEWER_THUMB_VIEW (priv->thumbview));
+-
+-	g_return_if_fail (XVIEWER_IS_IMAGE (image));
+-
+-	file = xviewer_image_get_file (image);
+-
+-	filename = g_file_get_path (file);
+-
+-	/* Currently only local files can be set as wallpaper */
+-	if (filename == NULL || !xviewer_util_file_is_persistent (file))
+-	{
+-		GList *files = NULL;
+-		GtkAction *action;
+-
+-		action = gtk_action_group_get_action (window->priv->actions_image,
+-						      "ImageSetAsWallpaper");
+-		gtk_action_set_sensitive (action, FALSE);
+-
+-		priv->copy_file_cid = gtk_statusbar_get_context_id (GTK_STATUSBAR (priv->statusbar),
+-								    "copy_file_cid");
+-		gtk_statusbar_push (GTK_STATUSBAR (priv->statusbar),
+-				    priv->copy_file_cid,
+-				    _("Saving image locally…"));
+-
+-		files = g_list_append (files, xviewer_image_get_file (image));
+-		priv->copy_job = xviewer_job_copy_new (files, g_get_user_data_dir ());
+-		g_signal_connect (priv->copy_job,
+-				  "finished",
+-				  G_CALLBACK (xviewer_job_copy_cb),
+-				  window);
+-		g_signal_connect (priv->copy_job,
+-				  "progress",
+-				  G_CALLBACK (xviewer_job_progress_cb),
+-				  window);
+-		xviewer_job_scheduler_add_job (priv->copy_job);
+-
+-		g_object_unref (file);
+-		g_free (filename);
+-		return;
+-	}
+-
+-	g_object_unref (file);
+-
+-	xviewer_window_set_wallpaper (window, filename, NULL);
+-
+-	g_free (filename);
+-}
+ 
+ static gboolean
+ xviewer_window_all_images_trasheable (GList *images)
+@@ -4182,9 +3906,6 @@
+ 	{ "EditRotate270", "object-rotate-left-symbolic", N_("Rotate Counterc_lockwise"), "<control><shift>r",
+ 	  N_("Rotate the image 90 degrees to the left"),
+ 	  G_CALLBACK (xviewer_window_cmd_rotate_270) },
+-	{ "ImageSetAsWallpaper", NULL, N_("Set as Wa_llpaper"),
+-	  "<control>F8", N_("Set the selected image as the wallpaper"),
+-	  G_CALLBACK (xviewer_window_cmd_wallpaper) },
+ 	{ "EditMoveToTrash", "user-trash-symbolic", N_("Move to _Trash"), NULL,
+ 	  N_("Move the selected image to the trash folder"),
+ 	  G_CALLBACK (xviewer_window_cmd_move_to_trash) },

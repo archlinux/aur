@@ -1,0 +1,32 @@
+pkgbase = xviewer-minimal
+	pkgdesc = GTK3 image viewer with printing, without plugins or Cinnamon integration
+	pkgver = 2.6.2
+	pkgrel = 2
+	url = https://github.com/linuxmint/xviewer
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = glib2-devel
+	makedepends = gnome-common
+	makedepends = libxml2
+	depends = at-spi2-core
+	depends = cairo
+	depends = dconf
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gsettings-desktop-schemas
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = zlib
+	optdepends = cups: local print server, not required for PDF or a remote CUPS server
+	provides = xviewer=2.6.2
+	conflicts = xviewer
+	options = !debug
+	source = xviewer-2.6.2.tar.gz::https://github.com/linuxmint/xviewer/archive/refs/tags/2.6.2.tar.gz
+	source = 0001-remove-plugins-and-introspection.patch
+	source = 0002-replace-cinnamon-desktop.patch
+	sha256sums = 2bbe97181be7bbb9a163224640b9ba97377f8ac7850bd7f553d7737bd9207938
+	sha256sums = 2c87a896846a09215bfd2c09ef42b0d252f348bce37ac02c0c8c3795d7a42ca9
+	sha256sums = 91d50c548b3a15dba37564d5863c28f0a68541eba9e00842312b8067f1ea13d7
+
+pkgname = xviewer-minimal
