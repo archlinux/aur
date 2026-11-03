@@ -1,9 +1,8 @@
 [Desktop Entry]
 Name=Cabana
-Comment=CAN Bus Visualizer & Analyzer
-Exec=cabana %u
-Icon=/usr/share/icons/hicolor/scalable/apps/cabana.svg
+Comment=CAN bus visualizer and DBC editor
+Exec=cabana
+Icon=cabana
 Terminal=false
 Type=Application
-Categories=Qt;Development;Engineering;
-MimeType=application/x-can-log;text/x-can-log;text/x-asc-log;text/x-trc-log;
+Categories=Development;Engineering;

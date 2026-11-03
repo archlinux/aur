@@ -1,45 +1,11 @@
 # openpilot-cabana
 
-AUR package: <https://aur.archlinux.org/packages/openpilot-cabana>
+AUR package for [Cabana](https://github.com/commaai/openpilot/tree/master/openpilot/tools/cabana), the CAN bus visualizer and DBC editor from comma.ai openpilot. It is maintained at [P6g9YHK6/openpilot-cabana-arch](https://github.com/P6g9YHK6/openpilot-cabana-arch).
 
-## Installation
+## Install size
 
-```bash
-yay -S openpilot-cabana
-# or
-paru -S openpilot-cabana
-```
+Cabana calls Python at runtime for remote routes, login, log migration and the WebRTC device bridge. The package therefore bundles Python 3.12, its dependencies and the openpilot modules under `/opt/openpilot-cabana`, about 700 MB installed.
 
-Or manually with `makepkg`:
+## Changes in 2.0
 
-```bash
-git clone https://aur.archlinux.org/openpilot-cabana.git
-cd openpilot-cabana
-makepkg -s
-pacman -U openpilot-cabana-*.pkg.tar.zst
-```
-
-## About
-
-AUR package for [Cabana](https://github.com/deanlee/openpilot-cabana) — a CAN / CAN FD bus analysis and visualization tool. This package auto-updates daily with the latest upstream commits.
-
-## Auto-Update
-
-This package is automatically rebuilt and published to AUR whenever new commits are pushed to the upstream [deanlee/openpilot-cabana](https://github.com/deanlee/openpilot-cabana) repository.
-
-The build pipeline:
-1. Syncs latest commits from upstream every hour
-2. Builds on Arch Linux in GitHub Actions
-3. Publishes updated package to AUR
-
-## Package Contents
-
-- `PKGBUILD` — build script, fetches from upstream tag
-- `archlinux.patch` — patches for Arch Linux compatibility (Qt6 detection, compiler warnings)
-- `cabana.desktop` — desktop entry
-- `cabana-icon.svg` — application icon
-
-## Dependencies
-
-- Arch Linux (x86_64)
-- [Samba](https://wiki.archlinux.org/title/Samba) (optional, for Windows-style network browsing)
+The package now builds the official imgui Cabana from `commaai/openpilot` rather than the Qt app from `deanlee/openpilot-cabana`. Vector ASC, candump and PEAK TRC log files are no longer supported. Supported sources are openpilot routes, Panda, SocketCAN and msgq.
