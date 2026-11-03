@@ -1,0 +1,31 @@
+diff --git a/ctypesgen/ctypedescs.py b/ctypesgen/ctypedescs.py
+index e787804..c4103d5 100755
+--- a/ctypesgen/ctypedescs.py
++++ b/ctypesgen/ctypedescs.py
+@@ -58,6 +58,7 @@ ctypes_type_map = {
+     ("__uint64", False, 0): "c_uint64",
+     ("__uint64_t", False, 0): "c_uint64",
+     ("_Bool", True, 0): "c_bool",
++    ("bool", True, 0): "c_bool",
+ }
+ 
+ ctypes_type_map_python_builtin = {
+@@ -66,9 +67,7 @@ ctypes_type_map_python_builtin = {
+     ("int", True, 2): "c_longlong",
+     ("int", False, 2): "c_ulonglong",
+     ("size_t", True, 0): "c_size_t",
+-    ("apr_int64_t", True, 0): "c_int64",
+     ("off64_t", True, 0): "c_int64",
+-    ("apr_uint64_t", False, 0): "c_uint64",
+     ("wchar_t", True, 0): "c_wchar",
+     ("ptrdiff_t", True, 0): "c_ptrdiff_t",  # Requires definition in preamble
+     ("ssize_t", True, 0): "c_ptrdiff_t",  # Requires definition in preamble
+@@ -123,7 +122,7 @@ def visit_type_and_collect_info(ctype):
+     return structs, enums, typedefs, errors, identifiers
+ 
+ 
+-# Remove one level of indirection from funtion pointer; needed for typedefs
++# Remove one level of indirection from function pointer; needed for typedefs
+ # and function parameters.
+ def remove_function_pointer(t):
+     if type(t) == CtypesPointer and type(t.destination) == CtypesFunction:

@@ -1,20 +1,23 @@
 pkgbase = python-ctypesgen
-	pkgdesc = Pure-python wrapper generator for ctypes
+	pkgdesc = Generate Python ctypes wrappers from C header files
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ctypesgen/ctypesgen
-	changelog = python-ctypesgen.changelog.md
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = python-pytest
-	makedepends = python-setuptools>=44.0.0
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools-scm>=3.4.3
+	makedepends = help2man
 	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-toml
-	depends = python>=3.7.0
-	source = https://files.pythonhosted.org/packages/source/c/ctypesgen/ctypesgen-1.1.1.tar.gz
+	makedepends = python-wheel
+	depends = gcc
+	depends = python
+	source = ctypesgen-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/c/ctypesgen/ctypesgen-1.1.1.tar.gz
+	source = ctypedescs-backports.patch
 	sha256sums = deaa2d64a95d90196a2e8a689cf9b952be6f3366f81e835245354bf9dbac92f6
+	sha256sums = 0d4b74c4aa3514715fa365b5dd7c9c8a4b0b53e160d1c6f1ba9bc3c8123bf238
 
 pkgname = python-ctypesgen
