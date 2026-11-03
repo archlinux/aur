@@ -1,4 +1,6 @@
 # Maintainer: All Ban Dee <mw@z.tm.pl>
+# Co-Maintainer: agony <27015 at riseup dot net>
+
 pkgname=plasma-drop
 pkgver=1.5.9
 pkgrel=1
