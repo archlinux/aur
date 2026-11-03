@@ -1,0 +1,23 @@
+pkgbase = python-matdeeplearn
+	pkgdesc = GNN package for materials chemistry (Fung Lab, Georgia Tech)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Fung-Lab/MatDeepLearn_dev
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytorch
+	depends = python-torch-geometric
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-ase
+	depends = python-pymatgen-core
+	depends = python-scikit-learn
+	depends = python-matplotlib
+	source = MatDeepLearn_dev-0.0.1.tar.gz::https://github.com/Fung-Lab/MatDeepLearn_dev/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-matdeeplearn
