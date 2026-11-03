@@ -1,0 +1,23 @@
+pkgbase = plex-tray
+	pkgdesc = Desktop tray controls for the system Plex Media Server service
+	pkgver = 0.1.0
+	pkgrel = 3
+	url = https://github.com/bpierre/plex-tray
+	arch = x86_64
+	license = MIT
+	checkdepends = desktop-file-utils
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = dbus
+	depends = systemd
+	depends = polkit
+	depends = plex-media-server
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = libnotify: desktop notifications for service errors
+	options = !debug
+	source = plex-tray-0.1.0.tar.gz::https://github.com/bpierre/plex-tray/releases/download/v0.1.0/plex-tray-0.1.0.tar.gz
+	sha256sums = 507c50e5fd9c3c6c1ff0c51df59ef145e7214824a65fce495991b8ef2ab6bda6
+
+pkgname = plex-tray
