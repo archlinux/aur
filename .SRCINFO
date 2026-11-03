@@ -1,5 +1,5 @@
 pkgbase = dotnet-pluralize-net
-	pkgdesc = Pluralize or singularize any English word, Pluralize.NET (NuGet package)
+	pkgdesc = Pluralise or singularise any English word, Pluralize.NET (NuGet package)
 	pkgver = 1.0.13
 	pkgrel = 2
 	url = https://github.com/sarathkcm/Pluralize.NET
