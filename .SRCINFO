@@ -1,6 +1,6 @@
 pkgbase = python-parsl
 	pkgdesc = Parallel Python workflows with data dependency tracking
-	pkgver = 2026.10.26
+	pkgver = 2026.11.2
 	pkgrel = 1
 	url = https://github.com/Parsl/parsl
 	arch = any
@@ -37,9 +37,9 @@ pkgbase = python-parsl
 	optdepends = python-pandas: workflow visualization
 	optdepends = python-plotly: workflow visualization
 	optdepends = python-daemon: visualization server
-	source = python-parsl-2026.10.26.tar.gz::https://github.com/Parsl/parsl/archive/60f3905dcf27844a218e243659140b385a824de8.tar.gz
+	source = python-parsl-2026.11.2.tar.gz::https://github.com/Parsl/parsl/archive/538eef21381b62c1bd3531df5eab1dcfcada3310.tar.gz
 	source = pytest9-path-hook.patch
-	sha256sums = c45b9af773dda025957be8d124893c74554000fba674b058cef4f6bf58b4d322
+	sha256sums = b5df457032c350a28a9fb18d41a9dadd3f02a7e3f0a702f9dcdb3bad39280b79
 	sha256sums = a51ee1f7da5aab4b907e0536efc3c6285e0b50930a6dca4f7e18b98836fbce43
 
 pkgname = python-parsl
