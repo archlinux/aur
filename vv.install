@@ -1,0 +1,36 @@
+# pacman scriptlets for the `vv` package. Until October 2026 the AUR name
+# `vv` belonged to an unrelated program, wolfpld's terminal image viewer
+# (https://github.com/wolfpld/vv, last AUR version 3.2-1). Installing this
+# package over it replaces /usr/bin/vv with a different program, so say so.
+
+_vv_about() {
+    cat <<'EOF'
+==> vv is the data and genomic file viewer from https://github.com/balwierz/vv
+    (free software, MIT licence): Parquet, Arrow, HDF5 / AnnData, BAM, VCF,
+    BED, TSV / CSV and more, as a table in the terminal; vvg (vv-gui) is
+    its desktop viewer.
+    Until October 2026 the AUR package "vv" was a different program with
+    the same name: wolfpld's terminal image viewer
+    (https://github.com/wolfpld/vv).
+EOF
+}
+
+post_install() {
+    _vv_about
+}
+
+# $1 = new version, $2 = old version. The old package's database entry is
+# still in place before the upgrade, so its URL tells which vv it was.
+pre_upgrade() {
+    if grep -qs 'github\.com/wolfpld/vv' "/var/lib/pacman/local/vv-$2/desc"; then
+        cat <<EOF
+==> WARNING: this is NOT an upgrade of the vv you have installed.
+    The installed vv $2 is wolfpld's terminal image viewer
+    (https://github.com/wolfpld/vv). It is being replaced by a different
+    program with the same name, vv $1: the data and genomic file viewer
+    from https://github.com/balwierz/vv. After this, /usr/bin/vv no longer
+    displays images. To get the image viewer back, remove this package and
+    build it from https://github.com/wolfpld/vv.
+EOF
+    fi
+}

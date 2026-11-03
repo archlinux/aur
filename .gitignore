@@ -1,5 +1,6 @@
-base64
-src
-stb
-tracy
-*.tar*
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!vv.install
+!LICENSE
