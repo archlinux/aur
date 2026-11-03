@@ -1,0 +1,13 @@
+pkgbase = perl-date-leapyear
+	pkgdesc = Is a particular year a leap year?
+	pkgver = 1.72
+	pkgrel = 1
+	url = https://metacpan.org/release/Date-Leapyear
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	depends = perl
+	options = !emptydirs
+	source = perl-date-leapyear-1.72.tar.gz::https://cpan.metacpan.org/authors/id/R/RB/RBOW/Date-Leapyear-1.72.tar.gz
+	sha256sums = 706360e57a85cf5c0de1cc6502d0366e876df7b42a2e60192861a273750fa603
+
+pkgname = perl-date-leapyear
