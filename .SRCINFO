@@ -1,12 +1,12 @@
 pkgbase = osdlyrics
 	pkgdesc = A lyric show compatible with various media players
-	pkgver = 0.5.16
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/osdlyrics/osdlyrics
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = intltool
-	depends = gtk2
+	depends = gtk3
 	depends = dbus-glib
 	depends = curl
 	depends = libnotify
@@ -22,8 +22,8 @@ pkgbase = osdlyrics
 	depends = python-chardet
 	depends = python-gobject
 	depends = python-mpd2
-	depends = libappindicator
-	source = osdlyrics-0.5.16.tar.gz::https://github.com/osdlyrics/osdlyrics/archive/0.5.16.tar.gz
-	b2sums = d9f38f12229b7b96abbe9b99ed464f8c3ad9a2b78439d46f79f70b52e74515d8f3ecdef371fea439981ed45aa499e5f0784edb715c32a0aa43866f5cb508569f
+	depends = libayatana-appindicator
+	source = osdlyrics-0.6.0.tar.gz::https://github.com/osdlyrics/osdlyrics/archive/0.6.0.tar.gz
+	b2sums = 9b3e826578ec2964e0f6118224d1328ec26b026bdd0efde5c992e1e9d0657007dcc3ca6bcf6bcf872e0d3b4211d6417323765973f268d369ab27a0d7c2afeee6
 
 pkgname = osdlyrics

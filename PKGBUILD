@@ -3,19 +3,19 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=osdlyrics
-pkgver=0.5.16
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A lyric show compatible with various media players"
 arch=('x86_64')
 url="https://github.com/osdlyrics/osdlyrics"
 license=('GPL-3.0-or-later')
-depends=('gtk2' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
+depends=('gtk3' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
          'glibc' 'hicolor-icon-theme' 'sqlite' 'pango' 'python'
          'python-pycurl' 'python-dbus' 'python-chardet'
-         'python-gobject' 'python-mpd2' 'libappindicator')
+         'python-gobject' 'python-mpd2' 'libayatana-appindicator')
 makedepends=('intltool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('d9f38f12229b7b96abbe9b99ed464f8c3ad9a2b78439d46f79f70b52e74515d8f3ecdef371fea439981ed45aa499e5f0784edb715c32a0aa43866f5cb508569f')
+b2sums=('9b3e826578ec2964e0f6118224d1328ec26b026bdd0efde5c992e1e9d0657007dcc3ca6bcf6bcf872e0d3b4211d6417323765973f268d369ab27a0d7c2afeee6')
 
 prepare() {
   cd "$pkgname-$pkgver"
