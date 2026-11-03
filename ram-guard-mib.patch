@@ -1,0 +1,179 @@
+From 93a8b6ee01313da2cd0da836916235071cd1f9c4 Mon Sep 17 00:00:00 2001
+From: basalt <basalt@localhost>
+Date: Tue, 3 Nov 2026 07:20:57 +0300
+Subject: [PATCH] ram-guard: --ram-guard-mib N (0 = the RAM guard off)
+
+The serve RAM guard's floor is the automatic margin plus one prompt chunk's file
+reads. --ram-guard-mib N replaces it; 0 turns the guard off: nothing is shed and
+no request stops for the guard, so the OS reclaims its page cache and swaps
+instead. Placement, the tiers and the chunk sizes are untouched.
+
+Base: 64a935db
+---
+ docs/configuration/index.md        |  1 +
+ docs/running.md                    |  7 ++++++-
+ include/basalt/platform/memory.hpp |  3 ++-
+ include/basalt/program/options.hpp |  5 +++++
+ src/platform/memory.cpp            |  2 +-
+ src/program/cli/arguments.cpp      | 10 ++++++++++
+ src/program/cli/help.cpp           |  6 +++++-
+ src/program/serve/memory.cpp       |  5 ++++-
+ tests/platform/memory_test.cpp     |  2 ++
+ 9 files changed, 36 insertions(+), 5 deletions(-)
+
+diff --git a/docs/configuration/index.md b/docs/configuration/index.md
+index 88cc91f9..a7078097 100644
+--- a/docs/configuration/index.md
++++ b/docs/configuration/index.md
+@@ -148,6 +148,7 @@ The model's experts live in VRAM (the expert cache), in RAM, or in the file. The
+ | `vram-reserve-mib` | engine | integer MiB, at least 256 (128 on Linux) | 700 (lowered automatically, down to 300, on a card that would otherwise get too few slots; a value you give is kept unless it is raised as described here) | VRAM left free on the main card for graphs, scratch and the head when `expert-cache auto` sizes the cache. A server's kernels and window graphs that load after the cache (96 MiB, plus 24 MiB per slot with `--parallel`) load into it; a reserve too small to hold them and keep the floor free is raised to that: on Linux with `--parallel 4`, any value below 320 MiB (128 + 96 + 4 x 24) becomes 320, and the `expert cache auto` start line gives both (`320 MiB reserved (150 asked, ...)`). Below the floor is refused. Raise it if the machine pages GPU memory or other programs need VRAM. |
+ | `resident-experts` | engine | switch | on when the engine has an expert profile for the model | Keep the experts the GPU does not hold in page-locked RAM, so none is read from the file again. Leaves a RAM floor free for the OS; when the RAM cannot hold them it falls back to a plain file mapping. `mmap-experts` turns it off. |
+ | `resident-budget-gib` | engine | number GiB | auto when not set | Like `resident-experts` but with at most N GiB of experts in RAM, hottest first. Refused when it would leave less than the RAM floor free; the error names the largest safe value. |
++| `ram-guard-mib` | engine | integer MiB, 0 or more | the RAM margin plus one prompt chunk's file reads | The MemAvailable a serving request must stay above; below it the request stops with an error instead of the machine swapping. `0` turns the guard off: requests run however far the RAM goes and the OS reclaims and swaps. Placement and the tiers are untouched, so output does not change. |
+ | `mmap-experts` | engine | switch | off | Opt out of the default resident RAM copy and back to a file mapping. Speed then depends on the OS page cache. |
+ | `shared-expert-arena` | engine | file path | off | Back the resident arena with one shared file so several processes use one copy. Put it on `/dev/shm`. |
+ | `expert-profile-save` | engine | file path | off | Save what the adaptive tier learned (experts in VRAM and routing counts) to this file on exit and periodically. A start that finds the file places it instead of the engine's profile, so the first request runs on what the last run learned: faster when the workload continues, slower when it changes ([adaptive tier](adaptive.md)). Needs the adaptive tier on. `tools/convert/convert.py --profile` reads it too. |
+diff --git a/docs/running.md b/docs/running.md
+index 73480368..44acd0e2 100644
+--- a/docs/running.md
++++ b/docs/running.md
+@@ -226,11 +226,16 @@ Basalt refuses settings that would leave the machine without memory, and never s
+   under 1 GiB free, or below the guard while the kernel's memory pressure (`/proc/pressure/memory`, avg10) shows tasks
+   stalled most of the time (some >= 60% or full >= 40%). Without a pressure reading (Windows, or a kernel without PSI)
+   below the guard is critical. The error (`RAM low (... free < ... guard) ...: request stopped` or `RAM critical (...
+-  free < ... hard floor): request stopped`, also returned to the client) names `--resident-budget-gib` only when the
++  free < ... hard floor): request stopped`, also returned to the client) names `--resident-budget-gib` and
++  `--ram-guard-mib` only when the
+   engine's own growth took the RAM, otherwise how much other programs took. While the model sleeps the guard judges no
+   reading (the driver holds the GPU state in RAM until the wake); the wake takes a fresh one. Windows does not count the
+   pages read through the mapped expert file as available, so within 1 GiB of the guard the engine gives them back first
+   and reads again.
++- `--ram-guard-mib N` replaces that guard's floor with N MiB, `0` turning the guard off: nothing is shed and no request
++  stops for the guard. Placement, the tiers and the chunk sizes do not change: with the guard off a request runs
++  however far the RAM goes, so the OS reclaims its page cache and swaps and the request slows instead of stopping
++  with an error.
+ 
+ ## Vision: `--vision`
+ 
+diff --git a/include/basalt/platform/memory.hpp b/include/basalt/platform/memory.hpp
+index 07fc599d..f74cc5a8 100644
+--- a/include/basalt/platform/memory.hpp
++++ b/include/basalt/platform/memory.hpp
+@@ -146,9 +146,10 @@ inline bool ram_below_floor(uint64_t avail, uint64_t floor) { return avail > 0 &
+ /// give-back (0 = none yet) and `since_ms` the time since it.  Within `lead` of `floor`, the first give-back is due at
+ /// once; later ones need the cooldown over and the reading down by `refill` since `after`, i.e. the view has been
+ /// read in again.  A reading that stays low with nothing refilling therefore causes no repeated give-backs.
++/// A `floor` of 0 is the guard off (`--ram-guard-mib 0`): nothing is ever given back.
+ inline bool reclaim_due(uint64_t avail, uint64_t floor, uint64_t lead, uint64_t after, uint64_t since_ms,
+                         uint64_t refill = 256ull << 20, uint64_t cooldown_ms = 250) {
+-    if (!ram_below_floor(avail, floor + lead)) return false;
++    if (floor == 0 || !ram_below_floor(avail, floor + lead)) return false;
+     if (after == 0) return true;
+     return since_ms >= cooldown_ms && avail + refill <= after;
+ }
+diff --git a/include/basalt/program/options.hpp b/include/basalt/program/options.hpp
+index 8886548b..b2ba5303 100644
+--- a/include/basalt/program/options.hpp
++++ b/include/basalt/program/options.hpp
+@@ -118,6 +118,11 @@ struct Options {
+     /// this reserve for the graphs, the hit scratch and the head.
+     int vram_reserve_mib = 700;
+     bool vram_reserve_given = false;   // --vram-reserve-mib on the command line (no smaller automatic reserve)
++    /// `--ram-guard-mib N`: the free RAM (MemAvailable) a serving request must stay above; below it a request stops
++    /// with an error instead of the machine swapping.  -1 = the automatic floor (the RAM margin plus one prompt
++    /// chunk's file reads, `ram_guard_floor`); 0 = the guard off: requests run however far the RAM goes and the OS
++    /// reclaims its cache and swaps instead.  Placement and the tiers stay as they are; the RAM-home reserve follows.
++    int64_t ram_guard_mib = -1;
+     /// Opt-in: the expert cache in physical segments (CUDA virtual memory management), so the serve loop's
+     /// `VRAM <reserve_mib>` command can give part of it back to other programs and take it again.  Off: one cudaMalloc.
+     bool vram_elastic = false;
+diff --git a/src/platform/memory.cpp b/src/platform/memory.cpp
+index 674e193a..238b8f8a 100644
+--- a/src/platform/memory.cpp
++++ b/src/platform/memory.cpp
+@@ -301,7 +301,7 @@ std::string ram_stop_message(uint64_t avail, uint64_t floor, uint64_t hard, cons
+                       (unsigned long long) (floor >> 20));
+     char tail[160] = "";
+     if (own > others)
+-        std::snprintf(tail, sizeof tail, "; lower --resident-budget-gib");
++        std::snprintf(tail, sizeof tail, "; lower --resident-budget-gib or set --ram-guard-mib");
+     else if (others >= (1ull << 20))
+         std::snprintf(tail, sizeof tail, "; other programs took %llu MiB since the engine was ready",
+                       (unsigned long long) (others >> 20));
+diff --git a/src/program/cli/arguments.cpp b/src/program/cli/arguments.cpp
+index 69ec81f2..fce5dbae 100644
+--- a/src/program/cli/arguments.cpp
++++ b/src/program/cli/arguments.cpp
+@@ -92,6 +92,16 @@ std::optional<int> parse_options(int argc, char** argv, Options& o, std::string&
+         else if (a == "--gpu") o.gpu = next("--gpu");
+         else if (a == "--gpu-plan") o.gpu_plan = true;
+         else if (a == "--vram-reserve-mib") { o.vram_reserve_mib = std::atoi(next("--vram-reserve-mib")); o.vram_reserve_given = true; }
++        else if (a == "--ram-guard-mib") {
++            const char* v = next("--ram-guard-mib");
++            char* end = nullptr;
++            const long mib = std::strtol(v, &end, 10);
++            if (mib < 0 || end == v || *end != '\0') {
++                basalt::log::error("basalt generate", "--ram-guard-mib needs N >= 0 MiB (0 = the guard off)");
++                return 2;
++            }
++            o.ram_guard_mib = mib;
++        }
+         else if (a == "--prefill") {
+             const std::string v = next("--prefill");
+             o.prefill_given = true;
+diff --git a/src/program/cli/help.cpp b/src/program/cli/help.cpp
+index 8edde7a3..065da802 100644
+--- a/src/program/cli/help.cpp
++++ b/src/program/cli/help.cpp
+@@ -199,7 +199,11 @@ void usage() {
+                  "  --resident-budget-gib N  the resident mode with at most N GiB of experts in RAM (hottest first;\n"
+                  "                       auto when not set: what fits);\n"
+                  "                       a budget that would leave less than the RAM floor free is refused, naming\n"
+-                 "                       the largest safe value.\n");
++                 "                       the largest safe value.\n"
++                 "  --ram-guard-mib N  the RAM (MemAvailable) a serving request must stay above: below it the request\n"
++                 "                       stops with an error instead of the machine swapping.  Auto when not set: the\n"
++                 "                       RAM margin (the larger of 2 GiB and 5% of the RAM) plus one prompt chunk's\n"
++                 "                       file reads; 0 = the guard off (the OS reclaims and swaps instead).\n");
+ }
+ 
+ }  // namespace basalt::program::cli
+diff --git a/src/program/serve/memory.cpp b/src/program/serve/memory.cpp
+index f364f969..b2f9d691 100644
+--- a/src/program/serve/memory.cpp
++++ b/src/program/serve/memory.cpp
+@@ -284,7 +284,10 @@ int Runtime::init_memory() {
+     basalt::platform::stop_memory_watchdog();
+     // from here the RAM guard watches: below its floor the engine sheds and new requests wait, and a running
+     // request stops only once the RAM is critical
+-    guard_floor = basalt::platform::ram_guard_floor(basalt::platform::ram_margin(), tier_file_bytes, prompt_file_bytes);
++    // (--ram-guard-mib overrides that floor; 0 turns the guard off, the placement and the tiers stay as sized)
++    guard_floor = o.ram_guard_mib >= 0
++                      ? (uint64_t) o.ram_guard_mib << 20
++                      : basalt::platform::ram_guard_floor(basalt::platform::ram_margin(), tier_file_bytes, prompt_file_bytes);
+     basalt::platform::start_ram_guard(guard_floor);
+     disk_floor = guard_floor + (1ull << 30);   // a disk-tier capture or read stays a GiB above the guard
+     // what a stop's error compares against, to tell the engine's own growth from other programs'
+diff --git a/tests/platform/memory_test.cpp b/tests/platform/memory_test.cpp
+index ae1a57da..bd7e2b40 100644
+--- a/tests/platform/memory_test.cpp
++++ b/tests/platform/memory_test.cpp
+@@ -96,6 +96,7 @@ int ram_floor_cases() {
+     check("serve guard, experts read from the file: margin + 3.5", guard / G, 5.5);
+     check("serve guard, only part of a chunk read from the file", ram_guard_floor(margin, all_q4, gib(1)) / G, 3.0);
+     check("serve guard, nothing read from the file: the margin", ram_guard_floor(margin, 0, prompt) / G, 2.0);
++    check("serve guard --ram-guard-mib 0: a low reading still runs", ram_below_floor(gib(0.1), 0) ? 1.0 : 0.0, 0.0);
+     struct Case { const char* what; double avail; bool low; };
+     const Case cases[] = {
+         {"well above the floor", 20.0, false},
+@@ -393,6 +394,7 @@ int reclaim_due_cases() {
+     check("less than a chunk refilled: no", reclaim_due(after - step + 1, floor, lead, after, 10000), false);
+     check("low and nothing refilling: no", reclaim_due(floor + lead - 1, floor, lead, floor + lead - 1, 10000), false);
+     check("rose above the lead, fell back a chunk: yes", reclaim_due(floor + lead - 1, floor, lead, gib(9.0), 250), true);
++    check("the guard off (floor 0): no", reclaim_due(gib(0.5), 0, lead, 0, 0), false);
+     return fail;
+ }
+ // The watchdog's line: the budget flag is named only when the resident copy is big enough for it to shrink.
+-- 
+2.56.0
+

@@ -1,0 +1,28 @@
+pkgbase = basalt-inference-git
+	pkgdesc = Local inference engine for Qwen3.8-Flash-Next MoE packs (NVIDIA Blackwell, sm_120)
+	pkgver = 0.2.0.43.g2911d687
+	pkgrel = 1
+	url = https://github.com/jesdga95/basalt
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = cuda
+	depends = python
+	depends = python-numpy
+	depends = python-jinja
+	depends = python-markupsafe
+	depends = python-regex
+	depends = python-yaml
+	depends = python-tqdm
+	depends = python-pillow
+	depends = python-psutil
+	source = basalt::git+https://github.com/jesdga95/basalt.git#branch=main
+	source = ram-guard-mib.patch
+	source = 0001-cmake-overridable-basalt-source-dir.patch
+	sha256sums = SKIP
+	sha256sums = 3f591caf54a17dff4f7c4093fc01581154e5e170e4be87a20e3189bfcf4e3f0b
+	sha256sums = d065296aa095292902f3b02a87d9321c798c6f00972c17594a14a4f324747490
+
+pkgname = basalt-inference-git
