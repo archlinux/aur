@@ -1,6 +1,6 @@
 pkgbase = your-szu-life-git
 	pkgdesc = 泥深 - 你的SZU助手
-	pkgver = 0.13.0.ra3fea4d
+	pkgver = 0.13.5.reac7c72
 	pkgrel = 1
 	url = https://github.com/rinnein/your-szu-life
 	arch = x86_64
