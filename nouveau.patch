@@ -108,10 +108,50 @@ diff -ruN a/nouveau_backlight.c b/nouveau_backlight.c
  
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
+diff -ruN a/dispnv04/crtc.c b/dispnv04/crtc.c
+--- a/dispnv04/crtc.c	2026-06-12 01:03:26.000000000 +0300
++++ b/dispnv04/crtc.c	2026-11-03 22:14:30.837703189 +0200
+@@ -923,6 +923,7 @@
+ 	return nv04_crtc_do_mode_set_base(crtc, old_fb, x, y, false);
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 0, 0)
+ static int
+ nv04_crtc_mode_set_base_atomic(struct drm_crtc *crtc,
+ 			       struct drm_framebuffer *fb,
+@@ -930,6 +931,7 @@
+ {
+ 	return nv04_crtc_do_mode_set_base(crtc, fb, x, y, true);
+ }
++#endif
+ 
+ static void nv04_cursor_upload(struct drm_device *dev, struct nouveau_bo *src,
+ 			       struct nouveau_bo *dst)
+@@ -1274,7 +1276,9 @@
+ 	.commit = nv_crtc_commit,
+ 	.mode_set = nv_crtc_mode_set,
+ 	.mode_set_base = nv04_crtc_mode_set_base,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 0, 0)
+ 	.mode_set_base_atomic = nv04_crtc_mode_set_base_atomic,
++#endif
+ 	.disable = nv_crtc_disable,
+ 	.get_scanout_position = nouveau_display_scanoutpos,
+ };
+diff -ruN a/nouveau_bo.h b/nouveau_bo.h
+--- a/nouveau_bo.h	2026-06-12 01:03:26.000000000 +0300
++++ b/nouveau_bo.h	2026-11-03 22:14:30.837321856 +0200
+@@ -4,6 +4,7 @@
+ #include <drm/drm_gem.h>
+ #include <drm/ttm/ttm_bo.h>
+ #include <drm/ttm/ttm_placement.h>
++#include "nouveau_compat.h"
+ 
+ struct nouveau_channel;
+ struct nouveau_cli;
 diff -ruN a/nouveau_compat.h b/nouveau_compat.h
---- a/nouveau_compat.h	1970-01-01 00:00:00.000000000 +0000
-+++ b/nouveau_compat.h	2026-11-02 19:30:00.000000000 +0200
-@@ -0,0 +1,77 @@
+--- a/nouveau_compat.h	1970-01-01 02:00:00.000000000 +0200
++++ b/nouveau_compat.h	2026-11-03 22:14:30.839060973 +0200
+@@ -0,0 +1,81 @@
 +/* SPDX-License-Identifier: MIT */
 +#ifndef __NOUVEAU_COMPAT_H__
 +#define __NOUVEAU_COMPAT_H__
@@ -177,6 +217,10 @@ diff -ruN a/nouveau_compat.h b/nouveau_compat.h
 +#define drm_atomic_state_default_release drm_atomic_commit_default_release
 +
 +#define drm_sched_entity_fini(entity)    drm_sched_entity_kill(entity)
++
++#define NOUVEAU_WQ_FLAGS                 WQ_PERCPU
++#else
++#define NOUVEAU_WQ_FLAGS                 0
 +#endif
 +
 +/*
@@ -189,60 +233,9 @@ diff -ruN a/nouveau_compat.h b/nouveau_compat.h
 +#endif
 +
 +#endif /* __NOUVEAU_COMPAT_H__ */
-diff -ruN a/nouveau_drv.h b/nouveau_drv.h
---- a/nouveau_drv.h	2026-06-12 01:03:26.000000000 +0300
-+++ b/nouveau_drv.h	2026-11-02 19:30:50.873558253 +0200
-@@ -49,6 +49,7 @@
- #include <drm/drm_device.h>
- #include <drm/drm_drv.h>
- #include <drm/drm_file.h>
-+#include "nouveau_compat.h"
- 
- #include <drm/ttm/ttm_bo.h>
- #include <drm/ttm/ttm_placement.h>
-diff -ruN a/nouveau_bo.h b/nouveau_bo.h
---- a/nouveau_bo.h	2026-06-12 01:03:26.000000000 +0300
-+++ b/nouveau_bo.h	2026-11-02 19:32:00.162034113 +0200
-@@ -4,6 +4,7 @@
- #include <drm/drm_gem.h>
- #include <drm/ttm/ttm_bo.h>
- #include <drm/ttm/ttm_placement.h>
-+#include "nouveau_compat.h"
- 
- struct nouveau_channel;
- struct nouveau_cli;
-diff -ruN a/dispnv04/crtc.c b/dispnv04/crtc.c
---- a/dispnv04/crtc.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/dispnv04/crtc.c	2026-11-02 19:30:50.873910893 +0200
-@@ -923,6 +923,7 @@
- 	return nv04_crtc_do_mode_set_base(crtc, old_fb, x, y, false);
- }
- 
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 0, 0)
- static int
- nv04_crtc_mode_set_base_atomic(struct drm_crtc *crtc,
- 			       struct drm_framebuffer *fb,
-@@ -930,6 +931,7 @@
- {
- 	return nv04_crtc_do_mode_set_base(crtc, fb, x, y, true);
- }
-+#endif
- 
- static void nv04_cursor_upload(struct drm_device *dev, struct nouveau_bo *src,
- 			       struct nouveau_bo *dst)
-@@ -1274,7 +1276,9 @@
- 	.commit = nv_crtc_commit,
- 	.mode_set = nv_crtc_mode_set,
- 	.mode_set_base = nv04_crtc_mode_set_base,
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 0, 0)
- 	.mode_set_base_atomic = nv04_crtc_mode_set_base_atomic,
-+#endif
- 	.disable = nv_crtc_disable,
- 	.get_scanout_position = nouveau_display_scanoutpos,
- };
 diff -ruN a/nouveau_dmem.c b/nouveau_dmem.c
 --- a/nouveau_dmem.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nouveau_dmem.c	2026-11-02 19:30:50.874183374 +0200
++++ b/nouveau_dmem.c	2026-11-03 22:14:30.838053671 +0200
 @@ -219,8 +219,19 @@
  	return ret;
  }
@@ -265,7 +258,7 @@ diff -ruN a/nouveau_dmem.c b/nouveau_dmem.c
  
 diff -ruN a/nouveau_drm.c b/nouveau_drm.c
 --- a/nouveau_drm.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nouveau_drm.c	2026-11-02 19:30:50.874433542 +0200
++++ b/nouveau_drm.c	2026-11-03 22:14:30.839305558 +0200
 @@ -156,6 +156,16 @@
  static inline bool
  nouveau_cli_work_ready(struct dma_fence *fence)
@@ -291,9 +284,29 @@ diff -ruN a/nouveau_drm.c b/nouveau_drm.c
  }
  
  static void
+@@ -631,7 +642,7 @@
+ 	struct drm_device *dev = drm->dev;
+ 	int ret;
+ 
+-	drm->sched_wq = alloc_workqueue("nouveau_sched_wq_shared", 0,
++	drm->sched_wq = alloc_workqueue("nouveau_sched_wq_shared", NOUVEAU_WQ_FLAGS,
+ 					WQ_MAX_ACTIVE);
+ 	if (!drm->sched_wq)
+ 		return -ENOMEM;
+diff -ruN a/nouveau_drv.h b/nouveau_drv.h
+--- a/nouveau_drv.h	2026-06-12 01:03:26.000000000 +0300
++++ b/nouveau_drv.h	2026-11-03 22:14:30.837101582 +0200
+@@ -49,6 +49,7 @@
+ #include <drm/drm_device.h>
+ #include <drm/drm_drv.h>
+ #include <drm/drm_file.h>
++#include "nouveau_compat.h"
+ 
+ #include <drm/ttm/ttm_bo.h>
+ #include <drm/ttm/ttm_placement.h>
 diff -ruN a/nouveau_fence.c b/nouveau_fence.c
 --- a/nouveau_fence.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nouveau_fence.c	2026-11-02 19:30:50.874609983 +0200
++++ b/nouveau_fence.c	2026-11-03 22:14:30.838630717 +0200
 @@ -41,7 +41,11 @@
  static inline struct nouveau_fence_chan *
  nouveau_fctx(struct nouveau_fence *fence)
@@ -306,6 +319,18 @@ diff -ruN a/nouveau_fence.c b/nouveau_fence.c
  }
  
  static bool
+diff -ruN a/nouveau_sched.c b/nouveau_sched.c
+--- a/nouveau_sched.c	2026-06-12 01:03:26.000000000 +0300
++++ b/nouveau_sched.c	2026-11-03 22:14:30.839455647 +0200
+@@ -416,7 +416,7 @@
+ 	int ret;
+ 
+ 	if (!wq) {
+-		wq = alloc_workqueue("nouveau_sched_wq_%d", 0, WQ_MAX_ACTIVE,
++		wq = alloc_workqueue("nouveau_sched_wq_%d", NOUVEAU_WQ_FLAGS, WQ_MAX_ACTIVE,
+ 				     current->pid);
+ 		if (!wq)
+ 			return -ENOMEM;
 diff -ruN a/include/nvkm/core/device.h b/include/nvkm/core/device.h
 --- a/include/nvkm/core/device.h	2026-06-12 01:03:26.000000000 +0300
 +++ b/include/nvkm/core/device.h	2026-11-03 13:22:29.771667954 +0200
@@ -793,7 +818,7 @@ diff -ruN a/nvkm/subdev/clk/gf100.c b/nvkm/subdev/clk/gf100.c
  }
 diff -ruN a/nvkm/subdev/pmu/fuc/gf100.fuc3.h b/nvkm/subdev/pmu/fuc/gf100.fuc3.h
 --- a/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-11-02 19:09:37.398361546 +0200
++++ b/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-11-03 22:14:55.749828392 +0200
 @@ -1260,7 +1260,7 @@
  	0xb8525413,
  	0x0bf406e1,
@@ -820,7 +845,7 @@ diff -ruN a/nvkm/subdev/pmu/fuc/gf100.fuc3.h b/nvkm/subdev/pmu/fuc/gf100.fuc3.h
  	0x14b60080,
 diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
 --- a/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/pmu/gt215.c	2026-11-02 19:09:37.398753007 +0200
++++ b/nvkm/subdev/pmu/gt215.c	2026-11-03 22:14:55.750959954 +0200
 @@ -23,6 +23,7 @@
   */
  #include "priv.h"
@@ -829,12 +854,13 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  
  #include <subdev/timer.h>
  
-@@ -35,8 +36,28 @@
+@@ -35,8 +36,29 @@
  	u32 addr;
  
  	mutex_lock(&pmu->send.mutex);
 +	/* Fermi DIAGNOSTIC: audit every host->PMU message. */
-+	if (device->card_type == NV_C0)
++	if (device->card_type == NV_C0 &&
++	    nvkm_boolopt(device->cfgopt, "NvFermiDiag", false))
 +		nvkm_info(subdev, "pmu send: proc %08x msg %08x d0 %08x d1 %08x\n",
 +			  process, message, data0, data1);
  	/* wait for a free slot in the fifo */
@@ -858,7 +884,7 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  	if (nvkm_msec(device, 2000,
  		u32 tmp = nvkm_rd32(device, 0x10a4b0);
  		if (tmp != (addr ^ 8))
-@@ -56,27 +77,85 @@
+@@ -56,27 +78,85 @@
  	}
  
  	/* acquire data segment access */
@@ -957,7 +983,7 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  	}
  
  	mutex_unlock(&pmu->send.mutex);
-@@ -96,31 +175,60 @@
+@@ -96,31 +176,61 @@
  		return;
  
  	/* acquire data segment access */
@@ -989,7 +1015,8 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
 +	}
 +
 +	/* Fermi DIAGNOSTIC: log every consumed packet, not just mismatches. */
-+	if (device->card_type == NV_C0)
++	if (device->card_type == NV_C0 &&
++	    nvkm_boolopt(device->cfgopt, "NvFermiDiag", false))
 +		nvkm_info(subdev, "pmu consumed: proc %08x msg %08x d0 %08x d1 %08x (slot %u)\n",
 +			  process, message, data0, data1, addr & 0x0f);
  
@@ -1028,7 +1055,7 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  		}
  	}
  
-@@ -202,10 +310,35 @@
+@@ -202,10 +312,36 @@
  {
  	struct nvkm_device *device = pmu->subdev.device;
  	int i;
@@ -1054,7 +1081,8 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  		nvkm_wr32(device, 0x10a014, 0x0000ffff);
 +		/* Fermi: the proprietary driver pauses the Falcon
 +		 * (ENG_CONTROL.PAUSE_TRIGGER) before pulling reset. */
-+		if (device->card_type == NV_C0) {
++		if (device->card_type == NV_C0 &&
++		    nvkm_boolopt(device->cfgopt, "NvFermiDiag", false)) {
 +			nvkm_wr32(device, 0x10a0a4, 0x00000002);
 +			nvkm_msec(device, 2000,
 +				if (nvkm_rd32(device, 0x10a0a4) & 0x00000200)
@@ -1064,7 +1092,7 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  		nvkm_msec(device, 2000,
  			if (!nvkm_rd32(device, 0x10a04c))
  				break;
-@@ -220,11 +353,215 @@
+@@ -220,11 +356,216 @@
  			break;
  	);
  
@@ -1168,7 +1196,8 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
 +	 * every data word with explicit per-word indexing (robust against
 +	 * any auto-increment step) and rewrite gaps, bounded.  Then log
 +	 * the true queue slots via seg2 raw reads. */
-+	if (device->card_type == NV_C0) {
++	if (device->card_type == NV_C0 &&
++	    nvkm_boolopt(device->cfgopt, "NvFermiDiag", false)) {
 +		int round, bad = 0;
 +
 +		for (round = 0; round < 3; round++) {
@@ -1280,7 +1309,7 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  	/* upload code segment */
  	nvkm_wr32(device, 0x10a180, 0x01000000);
  	for (i = 0; i < pmu->func->code.size / 4; i++) {
-@@ -256,7 +593,128 @@
+@@ -256,7 +597,131 @@
  	pmu->recv.base = nvkm_rd32(device, 0x10a4dc) & 0x0000ffff;
  	pmu->recv.size = nvkm_rd32(device, 0x10a4dc) >> 16;
  
@@ -1318,7 +1347,8 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
 +	 * (raw DMEM reads, as the blob uses them).  If seg1 offsets were
 +	 * word (not byte) offsets, every packet/script upload would miss
 +	 * the firmware's queue area.  Slot 7 is zeroed afterwards. */
-+	if (device->card_type == NV_C0) {
++	if (device->card_type == NV_C0 &&
++	    nvkm_boolopt(device->cfgopt, "NvFermiDiag", false)) {
 +		static const u32 magic[4] = { 0xdeadbeef, 0xcafef00d,
 +					      0x8badf00d, 0xfeedface };
 +		u32 slot7 = ((7 << 4) + (pmu->send.base & 0x0000ffff)) & 0x00ffffff;
@@ -1351,7 +1381,8 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
 +	 * reached the Falcon; loops-delta proves it ran the idle loop;
 +	 * both zero with a frozen counter proves the bump was lost in
 +	 * I/O gating.  Watchdog re-enabled afterwards. */
-+	if (device->card_type == NV_C0) {
++	if (device->card_type == NV_C0 &&
++	    nvkm_boolopt(device->cfgopt, "NvFermiDiag", false)) {
 +		u32 reply[2] = { 0, 0 };
 +		u32 d0a, d1a, d0b, d1b, d0c, d1c;
 +		int ret = -ETIMEDOUT, k;
@@ -1395,7 +1426,8 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
 +	 * handler code (so INFO's failure is INFO-specific); static means
 +	 * nothing message-driven can ever work (custom executor, which
 +	 * needs no looper, becomes mandatory). */
-+	if (device->card_type == NV_C0) {
++	if (device->card_type == NV_C0 &&
++	    nvkm_boolopt(device->cfgopt, "NvFermiDiag", false)) {
 +		u32 t0, t1;
 +
 +		t0 = nvkm_rd32(device, 0x10a5d4);
@@ -1411,7 +1443,7 @@ diff -ruN a/nvkm/subdev/pmu/gt215.c b/nvkm/subdev/pmu/gt215.c
  
 diff -ruN a/nvkm/subdev/pmu/memx.c b/nvkm/subdev/pmu/memx.c
 --- a/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/pmu/memx.c	2026-11-02 19:09:37.399172035 +0200
++++ b/nvkm/subdev/pmu/memx.c	2026-11-03 22:14:55.750462643 +0200
 @@ -61,9 +61,11 @@
  	memx->size = reply[1];
  
