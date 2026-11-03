@@ -1,9 +1,9 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-tritonclient
-pkgver=2.73.0
+pkgver=2.74.0
 pkgrel=1
-_commit=9e2333e7040822490ffe479c47c9a8411aa91f1c
+_commit=b047a08cf64e96f9aff28fa90d704b664d1ffa99
 pkgdesc='Python client libraries for NVIDIA Triton Inference Server (HTTP/gRPC)'
 arch=('any')
 url='https://github.com/triton-inference-server/client'
@@ -77,7 +77,7 @@ prepare() {
   sed -i 's/^import model_config_pb2/from tritonclient.grpc import model_config_pb2/' tritonclient/grpc/service_pb2.py
   sed -i 's/^import service_pb2/from tritonclient.grpc import service_pb2/' tritonclient/grpc/service_pb2_grpc.py
 
-  # Hatchling now explicitly packages only the supported client namespaces.
+  # Upstream Hatchling includes both current and compatibility namespaces.
 
 }
 
@@ -98,10 +98,25 @@ check() {
   python -m installer --destdir="${_test_root}" dist/*.whl
 
   cd "${srcdir}"
-  PYTHONPATH="${_test_root}${_site_packages}" \
-    python -m pytest -q --import-mode=importlib \
-      client/src/python/library/tests/test_shared_memory.py \
-      client/src/python/library/tests/test_inference_server_client.py
+  TRITONCLIENT_STAGED_ROOT="${_test_root}" \
+  PYTHONPATH="${_test_root}${_site_packages}" python -P - <<'PYTEST'
+import os
+from pathlib import Path
+import sys
+import tritonclient
+import pytest
+root = Path(os.environ["TRITONCLIENT_STAGED_ROOT"]).resolve()
+assert Path(tritonclient.__file__).resolve().is_relative_to(root)
+result = pytest.main(["-q", "--import-mode=importlib",
+    "client/src/python/library/tests/test_shared_memory.py",
+    "client/src/python/library/tests/test_inference_server_client.py"])
+for name, module in tuple(sys.modules.items()):
+    if name == "tritonclient" or name.startswith("tritonclient."):
+        origin = getattr(module, "__file__", None)
+        if origin:
+            assert Path(origin).resolve().is_relative_to(root), (name, origin)
+raise SystemExit(result)
+PYTEST
 
   TRITONCLIENT_EXPECTED_VERSION="${pkgver}" \
   TRITONCLIENT_STAGED_ROOT="${_test_root}" \
