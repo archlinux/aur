@@ -2,7 +2,7 @@
 pkgname=moonfin
 pkgver=3.0.0
 pkgrel=1
-pkgdesc='Jellyfin & Emby media client for Linux'
+pkgdesc='Jellyfin & Emby media client for Linux. Use this package for non-systemd distros'
 arch=('x86_64')
 url='https://github.com/Moonfin-Client/Moonfin-Core'
 license=('GPL-2.0-or-later')
