@@ -1,7 +1,7 @@
 pkgbase = chiaki-ng-bin
 	pkgdesc = Free and Open Source PlayStation Remote Play client (upstream AppImage)
-	pkgver = 1.10.0
-	pkgrel = 2
+	pkgver = 1.10.1
+	pkgrel = 1
 	url = https://chiaki-ng.github.io/chiaki-ng/
 	arch = x86_64
 	license = LicenseRef-AGPL-3.0-only-OpenSSL
@@ -31,12 +31,12 @@ pkgbase = chiaki-ng-bin
 	provides = chiaki
 	conflicts = chiaki-ng
 	conflicts = chiaki
-	noextract = chiaki-ng-bin-1.10.0.AppImage
+	noextract = chiaki-ng-bin-1.10.1.AppImage
 	options = !strip
 	options = !debug
-	source = chiaki-ng-bin-1.10.0.AppImage::https://github.com/chiaki-ng/chiaki-ng/releases/download/v1.10.0/chiaki-ng.AppImage_x86_64
-	source = COPYING-1.10.0::https://raw.githubusercontent.com/chiaki-ng/chiaki-ng/v1.10.0/COPYING
-	sha256sums = cac42c21a19a111f2f0729bb9eef7d3878c6d2a4f06e017d383aff2aba719fd3
+	source = chiaki-ng-bin-1.10.1.AppImage::https://github.com/chiaki-ng/chiaki-ng/releases/download/v1.10.1/chiaki-ng.AppImage_x86_64
+	source = COPYING-1.10.1::https://raw.githubusercontent.com/chiaki-ng/chiaki-ng/v1.10.1/COPYING
+	sha256sums = 060a39ad0a3ab6948e7ed280e07532ecfc63a9c5fb806cdeaf2a9bf6c73741d6
 	sha256sums = fff3acb5eddbde97746cc1ad2082a1e95f50c2315a8748b26b8a81a499d8d216
 
 pkgname = chiaki-ng-bin

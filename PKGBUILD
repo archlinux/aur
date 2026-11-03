@@ -3,8 +3,8 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=chiaki-ng-bin
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.10.1
+pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play client (upstream AppImage)"
 arch=('x86_64')
 url="https://chiaki-ng.github.io/chiaki-ng/"
@@ -24,7 +24,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/chiaki-ng/chiaki-ng/releases/download/v${pkgver}/chiaki-ng.AppImage_x86_64"
         "COPYING-${pkgver}::https://raw.githubusercontent.com/chiaki-ng/chiaki-ng/v${pkgver}/COPYING")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('cac42c21a19a111f2f0729bb9eef7d3878c6d2a4f06e017d383aff2aba719fd3' 'fff3acb5eddbde97746cc1ad2082a1e95f50c2315a8748b26b8a81a499d8d216')
+sha256sums=('060a39ad0a3ab6948e7ed280e07532ecfc63a9c5fb806cdeaf2a9bf6c73741d6' 'fff3acb5eddbde97746cc1ad2082a1e95f50c2315a8748b26b8a81a499d8d216')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}.AppImage"
