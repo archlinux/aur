@@ -1,6 +1,6 @@
 pkgname=skwd-lens-model
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Default SigLIP 2 semantic model pack for Skwd Lens'
 arch=(x86_64)
 url='https://github.com/liixini/skwd-lens'
