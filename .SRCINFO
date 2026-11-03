@@ -1,6 +1,6 @@
 pkgbase = shenv-bin
 	pkgdesc = End-to-end encrypted .env sharing. Store anywhere, decrypt only with authorized teammates. No server needed.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/p-arndt/shenv
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = shenv-bin
 	provides = shenv
 	conflicts = shenv
 	options = !strip
-	source = README-0.8.1.md::https://raw.githubusercontent.com/p-arndt/shenv/v0.8.1/README.md
-	sha256sums = 62e3a5f96a19fbedc00f7173057c4d5161b96cc36015a5091a1345f6b005652f
-	source_x86_64 = shenv-x86_64-0.8.1.tgz::https://github.com/p-arndt/shenv/releases/download/v0.8.1/shenv_0.8.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = d92362af59bf05918adcfe562bbab261581b3aa13d8f4a99e973fbbb3b48ce5f
-	source_aarch64 = shenv-aarch64-0.8.1.tgz::https://github.com/p-arndt/shenv/releases/download/v0.8.1/shenv_0.8.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8b6d5616e96a06fc8c3a0339f1f12c851f7de6469ac474c505bdc22256c09595
+	source = README-0.8.2.md::https://raw.githubusercontent.com/p-arndt/shenv/v0.8.2/README.md
+	sha256sums = e25ddae25d50b19740604caa46134ed31a48f0d15e87de7bbc9b28b3f59dee14
+	source_x86_64 = shenv-x86_64-0.8.2.tgz::https://github.com/p-arndt/shenv/releases/download/v0.8.2/shenv_0.8.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = db7ca1730a6f42af93d1909d226847de5d2443effbc5921c848ac080a81a0068
+	source_aarch64 = shenv-aarch64-0.8.2.tgz::https://github.com/p-arndt/shenv/releases/download/v0.8.2/shenv_0.8.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = d74a33dc33ac9f78b0b1e2a08a867cc2a55ab293482f11c4f927d8bd556659b9
 
 pkgname = shenv-bin

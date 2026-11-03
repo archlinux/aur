@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="End-to-end encrypted .env sharing. Store anywhere, decrypt only with authorized teammates. No server needed."
 
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('62e3a5f96a19fbedc00f7173057c4d5161b96cc36015a5091a1345f6b005652f')
-sha256sums_x86_64=('d92362af59bf05918adcfe562bbab261581b3aa13d8f4a99e973fbbb3b48ce5f')
-sha256sums_aarch64=('8b6d5616e96a06fc8c3a0339f1f12c851f7de6469ac474c505bdc22256c09595')
+sha256sums=('e25ddae25d50b19740604caa46134ed31a48f0d15e87de7bbc9b28b3f59dee14')
+sha256sums_x86_64=('db7ca1730a6f42af93d1909d226847de5d2443effbc5921c848ac080a81a0068')
+sha256sums_aarch64=('d74a33dc33ac9f78b0b1e2a08a867cc2a55ab293482f11c4f927d8bd556659b9')
 
 
 package() {
