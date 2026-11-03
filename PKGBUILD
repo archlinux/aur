@@ -75,8 +75,12 @@ prepare() {
         hist-gradient-boosting-float32.patch \
         tuned-threshold-classifier.patch \
         pipeline-raw-scores.patch; do
-        git apply --check --exclude=CHANGELOGS.md "$srcdir/$patch"
-        git apply --exclude=CHANGELOGS.md "$srcdir/$patch"
+        # The extracted archive is not the parent AUR Git worktree. Prevent
+        # git apply from silently skipping source paths in a yay checkout.
+        GIT_CEILING_DIRECTORIES="$srcdir" \
+            git apply --check --exclude=CHANGELOGS.md "$srcdir/$patch"
+        GIT_CEILING_DIRECTORIES="$srcdir" \
+            git apply --verbose --exclude=CHANGELOGS.md "$srcdir/$patch"
     done
 
     patch -Np1 --fuzz=0 -i "$srcdir/radius-safe-index.patch"
