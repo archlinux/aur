@@ -5,19 +5,17 @@
 _srcname=RiipL
 
 pkgname=riipl
-pkgver=0.2
+pkgver=1.0
 pkgrel=1
-pkgdesc="Local DeepL rip-off powered by any OpenAI-compatible API"
+pkgdesc="Lightning-fast, all-in-one desktop translator"
 arch=(x86_64 aarch64)
 url="https://github.com/KFERMercer/RiipL"
 license=('GPL-3.0-only')
-depends=(qt6-base hicolor-icon-theme)
+depends=(hicolor-icon-theme qt6-base qt6-svg)
 makedepends=(cmake qt6-tools)
 conflicts=(riipl-git)
-source=("$_srcname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        "riipl.desktop")
-sha256sums=('abc1c2ec4849b429b9bc01d978e1130fdd9e156702c7bfd35fe185c89a1b07d0'
-            '97f09da0bc6ebf851c55f391e2e3ecba1040a2a18ceab2c8264c4c1b4998ef99')
+source=("$_srcname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('eaa5eeb399d2c671ed3992f044f51fe2bfd745ba95fa5aa0edc70aa73a281c7d')
 
 build() {
   cmake -S "$_srcname-$pkgver" -B build -DCMAKE_BUILD_TYPE=None
@@ -25,9 +23,9 @@ build() {
 }
 
 package() {
-  install -Dm755 build/RiipL "$pkgdir/usr/bin/riipl"
+  install -Dm755 build/riipl "$pkgdir/usr/bin/riipl"
   install -Dm644 "$_srcname-$pkgver/resources/icons/app.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/riipl.svg"
-  install -Dm644 riipl.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "$_srcname-$pkgver/resources/riipl.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "$_srcname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

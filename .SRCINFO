@@ -1,6 +1,6 @@
 pkgbase = riipl
-	pkgdesc = Local DeepL rip-off powered by any OpenAI-compatible API
-	pkgver = 0.2
+	pkgdesc = Lightning-fast, all-in-one desktop translator
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/KFERMercer/RiipL
 	arch = x86_64
@@ -8,12 +8,11 @@ pkgbase = riipl
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = qt6-tools
-	depends = qt6-base
 	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-svg
 	conflicts = riipl-git
-	source = RiipL-0.2.tar.gz::https://github.com/KFERMercer/RiipL/archive/refs/tags/0.2.tar.gz
-	source = riipl.desktop
-	sha256sums = abc1c2ec4849b429b9bc01d978e1130fdd9e156702c7bfd35fe185c89a1b07d0
-	sha256sums = 97f09da0bc6ebf851c55f391e2e3ecba1040a2a18ceab2c8264c4c1b4998ef99
+	source = RiipL-1.0.tar.gz::https://github.com/KFERMercer/RiipL/archive/refs/tags/1.0.tar.gz
+	sha256sums = eaa5eeb399d2c671ed3992f044f51fe2bfd745ba95fa5aa0edc70aa73a281c7d
 
 pkgname = riipl
