@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
 pkgver=4.007
-pkgrel=7
+pkgrel=8
 pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
@@ -169,6 +169,16 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #                 Never aalt, ordn or the small caps: make_features.py refuses
 #                 those unless --allow-risky is passed.
 #
+#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
+#                 (uncommented) in the <match> blocks of the families this build
+#                 installs ("MiSans Latin"))
+#                 in ${MISANS_FONTS_CONF:-~/.config/fontconfig/fonts.conf}.
+#                 Several families: their tags are merged and baked into every
+#                 file of the build. Dropped with a note: negated tags (-calt),
+#                 tags the upstream fonts lack in GSUB, tags HarfBuzz always
+#                 applies (kern liga ccmp locl mark mkmk calt) and the ones
+#                 make_features.py refuses (aalt ordn dlig salt ...).
+#
 #  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
 #                 Install the result as this family instead, so the stock
 #                 MiSans Latin stays available. The name must not end in a
@@ -234,6 +244,57 @@ _ask_choice() {
 
 # Called once, from prepare(): ask for whatever the environment has not set,
 # but only on a terminal, then save every set option to .build_opts.
+# Prints the bakeable tags active in the user's fonts.conf for the families
+# given as $1 ("A|B"); the remaining arguments are the upstream fonts whose GSUB
+# decides which tags exist (a tag no file has would abort make_features.py).
+_features_from_fontsconf() {
+  local _conf="${MISANS_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+  local _fams="$1"; shift
+  if [[ ! -f "$_conf" ]]; then
+    echo "Error: $_conf not found (set MISANS_FONTS_CONF)." >&2; return 1
+  fi
+  python - "$_conf" "$_fams" "$@" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from fontTools.ttLib import TTFont
+conf, fams = sys.argv[1], set(sys.argv[2].split("|"))
+fonts = sys.argv[3:]
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+gsub = None
+for f in fonts:
+    try:
+        t = TTFont(f, lazy=True)["GSUB"].table
+    except Exception:
+        continue
+    gsub = (gsub or set()) | {r.FeatureTag for r in t.FeatureList.FeatureRecord}
+if gsub is None:
+    print("  note: no source font found to check GSUB; not filtering by it", file=sys.stderr)
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() in fams
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            elif gsub is not None and tag not in gsub: why = "not a GSUB feature of the font"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+}
+
 _prompt_options() {
   if [[ -t 0 ]]; then
     echo ""
@@ -277,10 +338,12 @@ _prompt_options() {
     _ask_choice "Bake features into calt" none \
       "none:leave the fonts as upstream ships them (default)" \
       "pango:case,ss01,ss07 - the set the fonts.conf block turns on: raised punctuation, two alternates" \
+      "fonts.conf:the features active for "MiSans Latin" in ~/.config/fontconfig/fonts.conf" \
       "custom:type the tag list yourself"
     case $_choice in
       none)    FEATURE_DEFAULTS="" ;;
       pango)   FEATURE_DEFAULTS="case,ss01,ss07" ;;
+      fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
       custom)
         echo "  Tags, comma or space separated (e.g. \"case,ss01,ss07\"):"
         read -r -p "  > " _tags || _tags=""
@@ -301,6 +364,13 @@ _prompt_options() {
     echo ""
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
+  fi
+
+  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
+    local _fc_fams="MiSans Latin"
+    local _fc_files=("$srcdir/$_fontdir"/*.ttf)
+    FEATURE_DEFAULTS="$(_features_from_fontsconf "$_fc_fams" "${_fc_files[@]}")" || exit 1
+    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
   fi
 
   local _k
