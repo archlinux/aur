@@ -7,7 +7,7 @@
 
 # Maintainer: patchouli
 
-pkgver=9.4.0
+pkgver=9.5.0
 pkgname="ida-pro"
 pkgrel=1
 pkgdesc="Hex-Rays IDA Pro"
@@ -19,17 +19,17 @@ depends=('libgl'
 	'libxext'
 	'libxrender'
 	'glib2'
-	'qt5-base'
+	'qt6-base'
 	'python-rpyc'
 	)
 options=('!strip')
 
-_installer='ida-pro_94_x64linux.run'
+_installer='ida-pro_95_x64linux.run'
 
 source=("file://${_installer}"
 		"${pkgname}.desktop")
 
-sha256sums=('37c64a622933f4eb58ce173c7cdb27d304db461db7bcf6ab7cda9002dba5d066'
+sha256sums=('f8bbc7904ab7ab1b864bbaa698374396d52afacd3c39403db6dff2d0cf355075'
             '662478dbcb939db8a36f89170246c2187b1086bff840dd96bd4d8f72eac3cad5')
 
 arch=('x86_64')
