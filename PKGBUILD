@@ -1,10 +1,12 @@
 # Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
 #
-# Upstream: https://git.metalpunks.info/arch-ports
+# Upstream: https://codeberg.org/dptpirate/arch-ports
+#
+# vim: ts=2 sw=2
 
 _pkgname=deadbeef-lyricbar
 pkgname=deadbeef-plugin-lyricbar-git
-pkgver=r202.g3383709
+pkgver=r203.g0b69f09
 pkgrel=1
 pkgdesc="DeaDBeeF lyric bar plugin"
 arch=('x86_64' 'i686')

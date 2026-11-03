@@ -1,6 +1,6 @@
 pkgbase = deadbeef-plugin-lyricbar-git
 	pkgdesc = DeaDBeeF lyric bar plugin
-	pkgver = r202.g3383709
+	pkgver = r203.g0b69f09
 	pkgrel = 1
 	url = https://github.com/AsVHEn/deadbeef-lyricbar
 	arch = x86_64
