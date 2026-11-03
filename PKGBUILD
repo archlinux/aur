@@ -7,7 +7,7 @@ pkgdesc="Omarchy Quickshell lock screen integration for Gaze"
 arch=('x86_64' )
 url="https://gaze.gundulabs.com"
 license=('GPL-3.0-or-later' )
-depends=('gaze' 'jq' )
+depends=('gaze-bin' 'jq' )
 optdepends=()
 # This wrapper installs the same files under the same names as gaze-omarchy, so it has
 # to claim that name. Without it an AUR helper treats any other package called
