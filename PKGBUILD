@@ -3,7 +3,7 @@ pkgname=raveo-ttf-hinted
 _raveover=1.1
 _nfver=3.4.0
 pkgver="${_raveover}"
-pkgrel=4
+pkgrel=5
 pkgdesc='Raveo is a warmer modification of Inter with redrawn glyphs, distributed with optional hinting and Nerd Fonts patching.'
 arch=('any')
 url='https://github.com/jakubfoglar/raveo'
@@ -43,6 +43,17 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 #                    tabular everywhere, "case" raises the brackets. The build
 #                    asks this too (none / a list of your own), so the variable
 #                    is only needed for unattended builds.
+#
+#                    FEATURE_DEFAULTS=fonts.conf takes the tags that are ACTIVE
+#                    (uncommented) in the fontfeatures of every <match
+#                    target="font"> for a family starting with "Raveo" in
+#                    ${RAVEO_FONTS_CONF:-~/.config/fontconfig/fonts.conf}. It is
+#                    resolved just before baking, when the fonts exist, so the
+#                    tags are also checked against their GSUB. Dropped with a
+#                    note: negated tags (-liga), tags the fonts lack, tags every
+#                    shaper applies anyway (kern liga ccmp locl mark mkmk calt)
+#                    and the ones make_features.py refuses (aalt ordn dlig salt
+#                    hlig hist). Nothing left = the fonts are installed as built.
 #
 #  FEATURE_FAMILY  "Name"  Install as another family instead of in place, so
 #                    the stock Raveo stays available.
@@ -153,8 +164,11 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 		echo "Bake OpenType features into the fonts' calt?"
 		echo "  1) none    leave the fonts as upstream ships them (default)"
 		echo "  2) custom  type the tag list yourself (e.g. case,tnum)"
-		read -p "  1-2 (default: 1) " _feat_ans || _feat_ans=""
-		if [[ "${_feat_ans:-1}" == 2 ]]; then
+		echo "  3) fonts.conf  the features active for Raveo in ~/.config/fontconfig/fonts.conf"
+		read -p "  1-3 (default: 1) " _feat_ans || _feat_ans=""
+		if [[ "${_feat_ans:-1}" == 3 ]]; then
+			FEATURE_DEFAULTS="fonts.conf"
+		elif [[ "${_feat_ans:-1}" == 2 ]]; then
 			read -p "  Tags, comma or space separated: " _tags || _tags=""
 			_tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
 			while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
@@ -253,6 +267,49 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd'
 		fi
 	fi
 
+	if [[ "$FEATURE_DEFAULTS" == fonts.conf ]]; then
+		_conf="${RAVEO_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+		if [[ ! -f "$_conf" ]]; then
+			echo "Error: $_conf not found (set RAVEO_FONTS_CONF)." >&2; exit 1
+		fi
+		FEATURE_DEFAULTS="$(python - "$_conf" "$srcdir/forinstall/"*.[ot]tf <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from fontTools.ttLib import TTFont
+conf, fonts = sys.argv[1], sys.argv[2:]
+always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
+refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
+gsub = set()
+for path in fonts:
+    f = TTFont(path, lazy=True)
+    if "GSUB" in f:
+        gsub |= {r.FeatureTag for r in f["GSUB"].table.FeatureList.FeatureRecord}
+tags = []
+for m in ET.parse(conf).getroot().iter("match"):
+    if m.get("target") != "font":
+        continue
+    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip().startswith("Raveo")
+               for t in m.findall("test")):
+        continue
+    for e in m.findall("edit"):
+        if e.get("name") != "fontfeatures":
+            continue
+        for st in e.findall("string"):
+            tag = (st.text or "").strip()
+            why = None
+            if tag.startswith("-"): why = "negated"
+            elif tag in always: why = "already applied by every shaper"
+            elif tag in refused: why = "refused by make_features.py"
+            elif tag not in gsub: why = "not a GSUB feature of the fonts"
+            if why:
+                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
+            elif tag not in tags:
+                tags.append(tag)
+print(",".join(tags))
+PY
+)" || exit 1
+		echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
+	fi
 	if [[ -n "$FEATURE_DEFAULTS" ]]; then
 		_fam=()
 		[[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
