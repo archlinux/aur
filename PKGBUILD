@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc="Advertisements, a SourceMod plugin displaying messages on game servers (in the addons folder of sourcemod)"
 arch=(any)
 url="https://github.com/ErikMinekus/sm-advertisements"
-# Upstream states no license; a SourceMod plugin is a derivative work of SourceMod's include files,
-# which SourceMod's license puts under GPL 3.0 with its exceptions
+# Upstream states no licence; a SourceMod plugin is a derivative work of SourceMod's include files,
+# which SourceMod's licence puts under GPL 3.0 with its exceptions
 license=(GPL-3.0-only LicenseRef-SourceMod-exception)
 depends=(sourcemod)
 makedepends=(git sourcemod-scripting)
