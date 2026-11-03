@@ -29,23 +29,15 @@ Build and install (replaces the stock modules, then reboot):
 makepkg -si
 ```
 
-Enable the release hooks in a fresh clone:
-
-```bash
-git config core.hooksPath .githooks
-```
-
 Release: bump `pkgver`, `_commit`, and `pkgrel` in `PKGBUILD`, then:
 
 ```bash
 updpkgsums
+makepkg --printsrcinfo > .SRCINFO
 git add -A && git commit -S -m "Update to <version>"
-git push
+git tag -s <version> -m "nvidia-open-p2p-dkms <version>"
 ```
 
-The hooks refresh `.SRCINFO` and tag `<version>`. Publish to the AUR with
-`git push origin master`.
-
-The AUR accepts only the `master` branch and rejects tags, so keep
-`push.followTags` off for the AUR remote and push release tags to a mirror
-instead (for example `git push <mirror> master --follow-tags`).
+Publish to the AUR with `git push origin master`. The AUR accepts only the
+`master` branch and rejects tags, so push release tags to a mirror instead
+(for example `git push <mirror> master --follow-tags`).
