@@ -25,6 +25,8 @@ bump:
 
   sed -i "s/^pkgver=.*/pkgver=$latest/; s/^pkgrel=.*/pkgrel=1/" PKGBUILD
   just update-checksums
+  
+  git commit -am "chore: bump to v$latest"
 
 update-checksums:
   updpkgsums

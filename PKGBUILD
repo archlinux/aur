@@ -1,6 +1,6 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=crit.md-bin
-pkgver=0.23.0
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="Review agent plans, diffs, and web apps in the browser"
 arch=("x86_64" "aarch64")
@@ -22,9 +22,9 @@ source_aarch64=("crit-$pkgver-linux-arm64::$url/releases/download/v$pkgver/crit-
 noextract=("crit-$pkgver-linux-amd64" "crit-$pkgver-linux-arm64")
 
 sha256sums=('2cf35fdedf349b666381d909b857baf5641314024edf7064e16d553c59f67345'
-            'bf894bf06c91b692805a05d2615e224af5d9bd2c8e0e06fe0caaf66ed3cb6326')
-sha256sums_x86_64=('5a953161443fb3c9304a543ff8ca3e07e9a2522b831e3cf2b63c9ed1a01e6902')
-sha256sums_aarch64=('3c9a8f11ae3c59fc854f7948ecf4f33f17164d8a4c6afa3fde997c8b153f25bd')
+            '226fa475c452a355dd520a8a266a5395a8a3fce90521c9d774a62ec15fabd2f9')
+sha256sums_x86_64=('10aa756a3146362be3a349cc8223955e23a1cd6daa0abbb13dd500741f793a90')
+sha256sums_aarch64=('fc1cc46624d5573157336e96bc3b93c965cd649eb8168f966b8b93f77c0b4072')
 
 package() {
   case "$CARCH" in
