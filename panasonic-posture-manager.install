@@ -1,0 +1,44 @@
+# Minimal pacman hook for panasonic-posture-manager.
+#
+# All error paths use `|| true`: the package is installable in chroots, live
+# images and non-systemd build environments where systemctl cannot talk to a
+# manager.  The commands are deliberately absolute and do not evaluate any
+# package-controlled strings.
+#
+# What happens here:
+#  - the system service is enabled and started immediately (it is also D-Bus
+#    activatable, so this is a convenience, not a requirement);
+#  - the user session adapter is enabled globally so it starts with the next
+#    graphical login.  The *current* session is not touched by pacman: log out
+#    and back in, or run
+#      systemctl --user start panasonic-posture-manager-session.service
+#    once.  README.md documents this first-run step.
+
+post_install() {
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1 || true
+  /usr/bin/systemctl enable --now panasonic-posture-manager.service >/dev/null 2>&1 || true
+  /usr/bin/systemctl --global enable panasonic-posture-manager-session.service >/dev/null 2>&1 || true
+  printf '%s\n' \
+    'panasonic-posture-manager installed.' \
+    'The current graphical session needs one re-login (or manual start) before the' \
+    'session adapter runs: systemctl --user start panasonic-posture-manager-session.service'
+}
+
+post_upgrade() {
+  # The package ships both unit files; reload the manager first so the new
+  # service file is known, then keep the D-Bus name consistent.  try-restart
+  # does not interrupt an operator who intentionally stopped the service.
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1 || true
+  /usr/bin/systemctl enable panasonic-posture-manager.service >/dev/null 2>&1 || true
+  /usr/bin/systemctl try-restart panasonic-posture-manager.service >/dev/null 2>&1 || true
+  /usr/bin/systemctl --global enable panasonic-posture-manager-session.service >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+  /usr/bin/systemctl disable --now panasonic-posture-manager.service >/dev/null 2>&1 || true
+  /usr/bin/systemctl --global disable panasonic-posture-manager-session.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1 || true
+}
