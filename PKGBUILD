@@ -2,7 +2,7 @@
 
 pkgbase=jidugs-appimage
 pkgname=jidugs
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="极度公式 公式一键识别快速转换，几十项技术创新助力，快捷方便！"
 arch=('x86_64')
@@ -12,16 +12,15 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    glibc
     hicolor-icon-theme
-    zlib
+    libz.so
 )
 makedepends=()
 backup=()
 options=(!strip !debug)
 install=
 source=("${pkgname}-${pkgver}-x86_64.AppImage::https://jidugs.wlhex.com/download/极度公式-${pkgver}.AppImage")
-sha256sums=('9398aacff7ec91d5e998a24c739500062d2fbce5617b050470cbcc52fad4d7ad')
+sha256sums=('f6edf4faf4dcdb6dec1bca0db7022ec52720a782aadbffd3d57642658ed46a84')
 
 _install_path="/opt/appimages"
 
