@@ -3,17 +3,16 @@
 
 _pkgname=siphashc
 pkgname=python-siphashc
-pkgver=2.7
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Python module (in c) for siphash-2-4"
 url="https://github.com/WeblateOrg/siphashc"
 depends=('python')
 makedepends=('python-build' 'python-setuptools' 'python-installer')
-checkdepends=('python-wheel')
 license=('ISC')
 arch=('x86_64' 'aarch64')
-source=("${url}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('6cb844855358e6b879cde8f6945784aec026db8900f18bdd836329969255f2fad03dfb33b4e3a7d8af57724bc7ace06c75b16c51bec83212ffe50b068317aa62')
+source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+b2sums=('896dfa67d1839a60cd3b79342980b40fb12065abffcbf344f5571479c9a8a6ef3815cd57e41ba73a9057c2a3e24c207757b77665631db69ab435423668469e1b')
 
 build() {
     cd ${_pkgname}-${pkgver}
