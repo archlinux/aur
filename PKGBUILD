@@ -4,8 +4,8 @@ pkgname=snapdog
 # prerelease identifier, e.g. "0.27.5-test1"); it names the GitHub release
 # assets. pkgver must never carry that suffix or its hyphen (Arch policy), so
 # it always holds just the release core.
-_tag=0.31.0
-pkgver=0.31.0
+_tag=0.32.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Multi-room audio system with AirPlay, Snapcast, MQTT, and KNX integration"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source=(
 sha256sums=('bb0aeed707da05f35e7f089f00946f8c1ab70d8e3ce36a2eeff87bb51407ceac' 'c21a13544a55cc6b28501679192715d17020ed7e0a90988600878846e1f5013a' '1e2b2079983c75ce2504bab78f23c628b2f1a5de3bece33ebb652e350093e340' '28e4684b452b4be45026ce333721e5992757280f20dd1e643a2c4d8b76672df5')
 source_x86_64=("snapdog-v${_tag}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/SnapDogRocks/snapdog/releases/download/v${_tag}/snapdog-v${_tag}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("snapdog-v${_tag}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/SnapDogRocks/snapdog/releases/download/v${_tag}/snapdog-v${_tag}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('3d082a0b160b96145066d18e042a84d4ab28f7d5a921f8cac0e3f983caf2574f')
-sha256sums_aarch64=('f565c7bedf41fe343b389758c59a6b77e273c03ac792bb119efd76750235a5d2')
+sha256sums_x86_64=('767cd363ade39f8b49622143844c2d58e58b14f8bb28b6ecf10173b5c11b4cf6')
+sha256sums_aarch64=('5de0b2f62dd4388dfaabc82c10c26aa950a5c113883ff9a7bfa73d0b0b9a8b17')
 
 package() {
   cd "snapdog-v${_tag}-${CARCH}-unknown-linux-gnu"
