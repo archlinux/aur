@@ -1,13 +1,10 @@
 pkgbase = python-pylance
 	pkgdesc = Python wrapper for the Lance columnar data format
-	pkgver = 13.0.0
+	pkgver = 14.0.2
 	pkgrel = 1
 	url = https://github.com/lance-format/lance
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = python-boto3
-	checkdepends = python-datasets
-	checkdepends = python-duckdb
 	checkdepends = python-ml-dtypes
 	checkdepends = python-pillow
 	checkdepends = python-pandas
@@ -16,8 +13,6 @@ pkgbase = python-pylance
 	checkdepends = python-pytest
 	checkdepends = python-pytest-socket
 	checkdepends = python-pytest-xdist
-	checkdepends = python-pytorch
-	checkdepends = python-tensorflow
 	checkdepends = python-tqdm
 	makedepends = lz4
 	makedepends = python-build
@@ -34,7 +29,7 @@ pkgbase = python-pylance
 	depends = python
 	depends = python-pyarrow>=14
 	depends = python-numpy>=1.22
-	depends = python-lance-namespace>=0.12
+	depends = python-lance-namespace>=0.13
 	depends = python-lance-namespace<0.14
 	depends = zstd
 	optdepends = python-datasets: Hugging Face datasets integration
@@ -49,13 +44,12 @@ pkgbase = python-pylance
 	optdepends = python-tqdm: vector training progress bars
 	options = !debug
 	options = !lto
-	source = python-pylance-13.0.0.tar.gz::https://github.com/lance-format/lance/archive/refs/tags/v13.0.0.tar.gz
-	source = lance-namespace-0.9.patch
+	options = !strip
+	source = python-pylance-14.0.2.tar.gz::https://github.com/lance-format/lance/archive/refs/tags/v14.0.2.tar.gz
 	source = progress-callback-test.patch
 	source = invalid-log-path-test.patch
-	sha256sums = 7f25a50b95e8a40c6568dc45333b49272c6326523a472a70e175b4e28a252cbd
-	sha256sums = 02225c3b95794c4143c44ab6af7cbc39f5fc150c34f5a3db1d9cd2261f768651
-	sha256sums = 2a75a2b269753cd5c72944f26dffb8485a4a7243573b3afec9a8ba83c1525930
-	sha256sums = 2bd7d8c401dd65c557d621466cd71196a7058ffde0e81a72ee1bd1f29667814a
+	sha256sums = 91228e11ded856254fcfb389c965ae57bfffc43365bbf72fccd1971feb7a8d31
+	sha256sums = 3cd69e6fbfd972dcd79a1ce63fd035a12a74e476f62800910801cd04d365b1b0
+	sha256sums = 34bd5ed151329068b9eb2839c6815a0c36541ba05208023fbfce0547a829181e
 
 pkgname = python-pylance

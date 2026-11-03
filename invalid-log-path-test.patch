@@ -1,6 +1,9 @@
 --- a/python/python/tests/test_log.py
 +++ b/python/python/tests/test_log.py
-@@ -182,2 +182,5 @@
+@@ -182,8 +182,11 @@
+     sys.platform == "win32",
+     reason="subprocess does not work correctly in CI on Windows",
+ )
 -def test_lance_log_file_invalid_path():
 -    invalid_path = "/invalid/path/that/cannot/be/created/lance.log"
 +def test_lance_log_file_invalid_path(tmp_path):
@@ -8,3 +11,6 @@
 +    parent = tmp_path / "not-a-directory"
 +    parent.write_text("file, not directory")
 +    invalid_path = str(parent / "lance.log")
+ 
+     result = subprocess.run(
+         [

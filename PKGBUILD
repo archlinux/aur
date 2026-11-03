@@ -2,7 +2,7 @@
 
 pkgname=python-pylance
 _pkgname=pylance
-pkgver=13.0.0
+pkgver=14.0.2
 pkgrel=1
 pkgdesc="Python wrapper for the Lance columnar data format"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
     'python'
     'python-pyarrow>=14'
     'python-numpy>=1.22'
-    'python-lance-namespace>=0.12'
+    'python-lance-namespace>=0.13'
     'python-lance-namespace<0.14'
     'zstd'
 )
@@ -31,9 +31,6 @@ makedepends=(
     'openssl'
 )
 checkdepends=(
-    'python-boto3'
-    'python-datasets'
-    'python-duckdb'
     'python-ml-dtypes'
     'python-pillow'
     'python-pandas'
@@ -42,10 +39,9 @@ checkdepends=(
     'python-pytest'
     'python-pytest-socket'
     'python-pytest-xdist'
-    'python-pytorch'
-    'python-tensorflow'
     'python-tqdm'
 )
+
 optdepends=(
     'python-datasets: Hugging Face datasets integration'
     'python-duckdb: DuckDB interoperability'
@@ -58,24 +54,21 @@ optdepends=(
     'python-tensorflow: TensorFlow dataset and image support'
     'python-tqdm: vector training progress bars'
 )
-options=('!debug' '!lto')
+options=('!debug' '!lto' '!strip')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/lance-format/lance/archive/refs/tags/v$pkgver.tar.gz"
-    'lance-namespace-0.9.patch'
     'progress-callback-test.patch'
     'invalid-log-path-test.patch'
 )
 sha256sums=(
-    '7f25a50b95e8a40c6568dc45333b49272c6326523a472a70e175b4e28a252cbd'
-    '02225c3b95794c4143c44ab6af7cbc39f5fc150c34f5a3db1d9cd2261f768651'
-    '2a75a2b269753cd5c72944f26dffb8485a4a7243573b3afec9a8ba83c1525930'
-    '2bd7d8c401dd65c557d621466cd71196a7058ffde0e81a72ee1bd1f29667814a'
+    '91228e11ded856254fcfb389c965ae57bfffc43365bbf72fccd1971feb7a8d31'
+    '3cd69e6fbfd972dcd79a1ce63fd035a12a74e476f62800910801cd04d365b1b0'
+    '34bd5ed151329068b9eb2839c6815a0c36541ba05208023fbfce0547a829181e'
 )
 
 prepare() {
     cd "lance-$pkgver"
 
-    patch -Np1 -i "$srcdir/lance-namespace-0.9.patch"
     patch -Np1 -i "$srcdir/progress-callback-test.patch"
     patch -Np1 -i "$srcdir/invalid-log-path-test.patch"
 
@@ -113,25 +106,45 @@ check() {
     # The wheel is complete; discard the very large Rust target before tests.
     rm -rf "$srcdir/cargo-target"
 
-    # Compatibility tests create pip-managed environments and download old
-    # wheels; recurring tests require pre-generated datasets.  The upstream
-    # integration marker remains disabled because it requires object storage.
-    HOME="$srcdir/test-home" \
-    HF_HUB_OFFLINE=1 \
-    TRANSFORMERS_OFFLINE=1 \
-    AWS_EC2_METADATA_DISABLED=true \
-    PYTHONDONTWRITEBYTECODE=1 \
-        "$_test_venv/bin/python" -m pytest -vv \
-        -m 'not recurring' \
-        --run-slow \
-        --basetemp="$srcdir/pytest-tmp" \
-        --disable-socket \
-        --allow-hosts=127.0.0.1,localhost \
-        --allow-unix-socket \
-        --ignore=python/tests/compat \
-        --ignore=python/tests/recurring \
-        --deselect=python/tests/test_huggingface.py::test_write_hf_dataset \
-        python/tests
+    # Representative upstream CPU coverage: files, schemas, filtering, dataset
+    # mutations, fragments, vector indexes and the current public namespace API.
+    # Upstream marks continue to skip external storage, large slow cases and GPU.
+    # Spawn needs a real main file and the source-only python.tests namespace.
+    # Runtime lance remains in the installed venv, checked before and after pytest.
+    cat > "$srcdir/run-installed-tests.py" <<'PYTEST'
+import os
+from pathlib import Path
+import sys
+import lance
+import pytest
+
+def main():
+    staged = Path(os.environ["LANCE_STAGED_ROOT"]).resolve()
+    assert Path(lance.__file__).resolve().is_relative_to(staged)
+    tests = Path(os.environ["LANCE_TEST_ROOT"])
+    selected = ["test_arrow.py", "test_dataset.py", "test_file.py", "test_filter.py",
+                "test_fragment.py", "test_schema.py", "test_vector_index.py",
+                "test_namespace_dir.py", "test_log.py"]
+    result = pytest.main(["-vv", "--import-mode=importlib",
+        "--basetemp=" + os.environ["LANCE_PYTEST_TMP"], "--disable-socket",
+        "--allow-hosts=127.0.0.1,localhost", "--allow-unix-socket",
+        *[str(tests / name) for name in selected]])
+    for name, module in tuple(sys.modules.items()):
+        if name == "lance" or name.startswith("lance."):
+            origin = getattr(module, "__file__", None)
+            if origin:
+                assert Path(origin).resolve().is_relative_to(staged), (name, origin)
+    raise SystemExit(result)
+
+if __name__ == "__main__":
+    main()
+PYTEST
+    LANCE_STAGED_ROOT="$_test_venv" \
+    LANCE_TEST_ROOT="$PWD/python/tests" \
+    LANCE_PYTEST_TMP="$srcdir/pytest-tmp" \
+    HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 AWS_EC2_METADATA_DISABLED=true \
+    PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$PWD:$PWD/python/tests" \
+        "$_test_venv/bin/python" -P "$srcdir/run-installed-tests.py"
 
     HOME="$srcdir/test-home" \
     PYTHONDONTWRITEBYTECODE=1 \
