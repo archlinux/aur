@@ -5,7 +5,7 @@
 
 pkgbase=leftwm
 pkgname=(leftwm leftwm-nonsystemd)
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=3
 pkgdesc="A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('bash: themes'
             'lemonbar: light weight bar'
             'polybar: light weight bar')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5889843e64377f8c09edae51cadeddb9e6dab599e51c96fcc8314ceb4a5a7f16')
+sha256sums=('4b7012668ac2e788e8990a1905ed3cc6f8dfd107ffde51af661b8b95e4c2c771')
 install='readme.install'
 
 prepare() {
@@ -32,7 +32,7 @@ build() {
 	cd $pkgbase-$pkgver
 
 	export CARGO_TARGET_DIR=target_non_systemd
-	cargo build --frozen --release --no-default-features --features=lefthk,sys-log,xlib
+	cargo build --frozen --release --no-default-features --features=lefthk,sys-log,xlib,leftwm-watchdog
 
 	export CARGO_TARGET_DIR=target_systemd
 	cargo build --frozen --release
