@@ -1,7 +1,7 @@
 pkgbase = python-dspy
 	pkgdesc = The framework for programming (not prompting) language models
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stanfordnlp/dspy
 	arch = any
 	license = MIT
@@ -44,7 +44,7 @@ pkgbase = python-dspy
 	optdepends = python-accelerate: local Hugging Face fine-tuning
 	optdepends = python-colbert-ai: local ColBERT indexing and reranking
 	optdepends = python-datasets: dataset loaders and local fine-tuning
-	optdepends = python-faiss-git: approximate-nearest-neighbor embedding retrieval
+	optdepends = python-faiss: approximate-nearest-neighbor embedding retrieval
 	optdepends = ipython: notebook display and synchronous use inside a running event loop
 	optdepends = python-langchain: LangChain tool conversion
 	optdepends = python-langchain-core: langchain extra (LangChain Core interoperability)

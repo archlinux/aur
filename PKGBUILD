@@ -4,7 +4,7 @@
 _name=dspy
 pkgname=python-$_name
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The framework for programming (not prompting) language models"
 arch=('any')
 url="https://github.com/stanfordnlp/dspy"
@@ -57,7 +57,7 @@ optdepends=(
     'python-accelerate: local Hugging Face fine-tuning'
     'python-colbert-ai: local ColBERT indexing and reranking'
     'python-datasets: dataset loaders and local fine-tuning'
-    'python-faiss-git: approximate-nearest-neighbor embedding retrieval'
+    'python-faiss: approximate-nearest-neighbor embedding retrieval'
     'ipython: notebook display and synchronous use inside a running event loop'
     'python-langchain: LangChain tool conversion'
     'python-langchain-core: langchain extra (LangChain Core interoperability)'
