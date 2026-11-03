@@ -1,6 +1,6 @@
 # Maintainer: Anuraj Jit Saikia <rajasaikia1644@gmail.com>
 pkgname=voisu
-pkgver=0.65.0
+pkgver=0.66.0
 pkgrel=1
 pkgdesc="Cloud-first Linux dictation for Wayland (daemon, CLI, and optional Overlay)"
 arch=('x86_64')
@@ -58,7 +58,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Anuraj-Dev/voisu/archive/re
         'LICENSE.ring-once_cell-APACHE'
         'LICENSE.ring-once_cell-MIT'
         'LICENSE.ring-fiat')
-sha256sums=('058d761171debb66fb733d9302348f9a5800f8b2257d93a31102ab205fad6cfd'
+sha256sums=('6b6f74729778dfaedd80c80256a01ab113c894e5e59986ed6415c74df80619ca'
             'b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a'
             '005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d'
             'f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f'
@@ -108,6 +108,8 @@ package() {
     # backends that support it; the stable session token is the primary fix.
     install -Dm644 packaging/voisu.desktop \
         "$pkgdir/usr/share/applications/voisu.desktop"
+    install -Dm644 packaging/icons/voisu.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/voisu.svg"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
