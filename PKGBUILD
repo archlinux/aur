@@ -1,14 +1,14 @@
 # Maintainer: fam007e <faisalmoshiur+secpasswdmgmt@gmail.com>
 pkgname=securepasswd_mgmt
 pkgver=2026.11.03
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure, cross-platform password manager with TOTP support"
 arch=('x86_64')
 url="https://github.com/fam007e/SecurePasswd_MGMT"
 license=('MIT')
-depends=('libsodium' 'argon2' 'sqlcipher' 'qt6-base' 'qt6-svg' 'openssl' 'curl' 'cmocka' 'pcre2' 'libcsv')
-makedepends=('cmake' 'gcc')
-install=securepasswd_mgmt.install
+depends=('libsodium' 'argon2' 'sqlcipher' 'qt6-base' 'qt6-svg' 'openssl'
+         'curl' 'libcsv' 'hicolor-icon-theme')
+makedepends=('cmake' 'cmocka')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/SecurePasswd_MGMT/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('720f99c30e04eaf56ad9fd4d26deee823b89078f5477ce188f0bae49f40e042a')
 
@@ -22,16 +22,13 @@ build() {
 }
 
 check() {
-    cd "$srcdir/SecurePasswd_MGMT-${pkgver}/build/tests"
-    # Run tests if available
-    ctest --output-on-failure || warning "Some tests failed"
+    cd "$srcdir/SecurePasswd_MGMT-${pkgver}"
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd "$srcdir/SecurePasswd_MGMT-${pkgver}/build"
-    make DESTDIR="$pkgdir" install
+    cd "$srcdir/SecurePasswd_MGMT-${pkgver}"
+    DESTDIR="$pkgdir" cmake --install build
 
-    # Install license
-    install -Dm644 "$srcdir/SecurePasswd_MGMT-${pkgver}/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
