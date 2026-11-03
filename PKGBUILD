@@ -5,7 +5,7 @@
 pkgname=riipl-git
 pkgver=0.0.r0.g0000000
 pkgrel=1
-pkgdesc="Local DeepL rip-off powered by any OpenAI-compatible API"
+pkgdesc="Lightning-fast, all-in-one desktop translator"
 arch=(x86_64 aarch64)
 url="https://github.com/KFERMercer/RiipL"
 license=('GPL-3.0-only')
