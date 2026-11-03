@@ -16,7 +16,7 @@ makedepends=(
   "dotnet-build-deps-$_dotnetsdkver"
   git
 )
-# 2.x is the last version line published under the MIT license alone, later releases on nuget.org come
+# 2.x is the last version line published under the MIT licence alone, later releases on nuget.org come
 # with the Open Source Maintenance Fee EULA (OSMFEULA.txt in the repository). It's what JsonPointer.Net
 # 5.x and JsonSchema.Net 7.x (dotnet-jsonpointer-net-5, dotnet-jsonschema-net-7) need, the versions
 # PowerShell uses. 2.2.0 wasn't tagged, this is the commit it was published from.
