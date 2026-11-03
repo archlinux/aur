@@ -1,0 +1,37 @@
+diff --git a/src/System.Management.Automation/engine/Modules/ModuleIntrinsics.cs b/src/System.Management.Automation/engine/Modules/ModuleIntrinsics.cs
+index 6d37de883d..b25e1398a1 100644
+--- a/src/System.Management.Automation/engine/Modules/ModuleIntrinsics.cs
++++ b/src/System.Management.Automation/engine/Modules/ModuleIntrinsics.cs
+@@ -1141,7 +1141,7 @@ namespace System.Management.Automation
+                     int position = PathContainsSubstring(result.ToString(), subPathToAdd); // searching in effective 'result' value ensures that possible duplicates in pathsToAdd are handled correctly
+                     if (position == -1) // subPathToAdd not found - add it
+                     {
+-                        if (insertPosition == -1 || insertPosition > basePath.Length) // append subPathToAdd to the end
++                        if (insertPosition == -1 || insertPosition > result.Length) // append subPathToAdd to the end
+                         {
+                             bool endsWithPathSeparator = false;
+                             if (result.Length > 0)
+@@ -1166,6 +1166,9 @@ namespace System.Management.Automation
+                         else // insert at the requested location (this is used by DSC (<Program Files> location) and by 'user-specific location' (SpecialFolder.MyDocuments or EVT.User))
+                         {
+                             result.Insert(insertPosition, subPathToAdd + Path.PathSeparator);
++
++                            // keep the order of the paths if pathToAdd is a combined path
++                            insertPosition += subPathToAdd.Length + 1;
+                         }
+                     }
+                 }
+@@ -1277,7 +1280,12 @@ namespace System.Management.Automation
+             if (!string.IsNullOrEmpty(pathToAdd))
+             {
+                 path = AddToPath(path, pathToAdd, insertIndex);
+-                insertIndex = path.IndexOf(Path.PathSeparator, PathContainsSubstring(path, pathToAdd));
++
++                // pathToAdd can be a combined path itself (e.g. PSModulePath from powershell.config.json),
++                // which PathContainsSubstring doesn't support. Continue after the last of its entries instead.
++                string[] subPaths = pathToAdd.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries);
++                int position = subPaths.Length > 0 ? PathContainsSubstring(path, subPaths[subPaths.Length - 1]) : -1;
++                insertIndex = position == -1 ? -1 : path.IndexOf(Path.PathSeparator, position);
+                 if (insertIndex != -1)
+                 {
+                     // advance past the path separator

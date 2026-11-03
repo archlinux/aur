@@ -1,0 +1,107 @@
+diff --git a/src/Microsoft.PowerShell.Commands.Management/commands/management/Clipboard.cs b/src/Microsoft.PowerShell.Commands.Management/commands/management/Clipboard.cs
+index 77e1b497b9..9035e21272 100644
+--- a/src/Microsoft.PowerShell.Commands.Management/commands/management/Clipboard.cs
++++ b/src/Microsoft.PowerShell.Commands.Management/commands/management/Clipboard.cs
+@@ -3,6 +3,7 @@
+ 
+ using System;
+ using System.Diagnostics;
++using System.IO;
+ using System.Runtime.InteropServices;
+ using System.Threading;
+ 
+@@ -16,6 +17,27 @@ namespace Microsoft.PowerShell.Commands.Internal
+         // This is useful for testing in CI as well.
+         private static string _internalClipboard;
+ 
++        // On Wayland, wl-clipboard (wl-copy and wl-paste) is used if it's installed. Otherwise xclip is
++        // used, as on X11, which works on Wayland as well through Xwayland.
++        private static bool UseWlClipboard()
++        {
++            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("WAYLAND_DISPLAY")))
++            {
++                return false;
++            }
++
++            string path = Environment.GetEnvironmentVariable("PATH") ?? string.Empty;
++            foreach (string directory in path.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries))
++            {
++                if (File.Exists(Path.Combine(directory, "wl-copy")) && File.Exists(Path.Combine(directory, "wl-paste")))
++                {
++                    return true;
++                }
++            }
++
++            return false;
++        }
++
+         private static string StartProcess(
+             string tool,
+             string args,
+@@ -76,8 +98,17 @@ namespace Microsoft.PowerShell.Commands.Internal
+             }
+             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+             {
+-                tool = "xclip";
+-                args = "-selection clipboard -out";
++                if (UseWlClipboard())
++                {
++                    // Text only, as it is without a newline added, like xclip
++                    tool = "wl-paste";
++                    args = "--no-newline --type text";
++                }
++                else
++                {
++                    tool = "xclip";
++                    args = "-selection clipboard -out";
++                }
+             }
+             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+             {
+@@ -109,14 +140,23 @@ namespace Microsoft.PowerShell.Commands.Internal
+             }
+             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+             {
+-                tool = "xclip";
+-                if (string.IsNullOrEmpty(text))
++                if (UseWlClipboard())
+                 {
+-                    args = "-selection clipboard /dev/null";
++                    // As plain text, instead of a type wl-copy guesses from the text, like HTML
++                    tool = "wl-copy";
++                    args = "--type text/plain";
+                 }
+                 else
+                 {
+-                    args = "-selection clipboard -in";
++                    tool = "xclip";
++                    if (string.IsNullOrEmpty(text))
++                    {
++                        args = "-selection clipboard /dev/null";
++                    }
++                    else
++                    {
++                        args = "-selection clipboard -in";
++                    }
+                 }
+             }
+             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+diff --git a/test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1 b/test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
+index 62f8d77a44..a8c88a8916 100644
+--- a/test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
++++ b/test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
+@@ -4,12 +4,13 @@
+ Describe 'Clipboard cmdlet tests' -Tag CI {
+     BeforeAll {
+         $xclip = Get-Command xclip -CommandType Application -ErrorAction Ignore
++        $wlClipboard = $env:WAYLAND_DISPLAY -and (Get-Command wl-copy, wl-paste -CommandType Application -ErrorAction Ignore).Count -eq 2
+     }
+ 
+     Context 'Text' {
+         BeforeAll {
+             $defaultParamValues = $PSDefaultParameterValues.Clone()
+-            $PSDefaultParameterValues["it:skip"] = ($IsWindows -and $env:PROCESSOR_ARCHITECTURE.Contains("arm")) -or ($IsLinux -and $xclip -eq $null)
++            $PSDefaultParameterValues["it:skip"] = ($IsWindows -and $env:PROCESSOR_ARCHITECTURE.Contains("arm")) -or ($IsLinux -and $xclip -eq $null -and -not $wlClipboard)
+         }
+ 
+         AfterAll {

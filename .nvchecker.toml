@@ -1,0 +1,8 @@
+# The releases of the current long-term support series, 7.6 (LTSReleaseTag of upstream's
+# tools/metadata.json). Moves to the next LTS series by hand, when this package does.
+[powershell-lts]
+source = "git"
+git = "https://github.com/PowerShell/PowerShell.git"
+use_max_tag = true
+prefix = "v"
+include_regex = 'v7\.6\.\d+'

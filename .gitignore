@@ -1,0 +1,34 @@
+# Created by https://www.toptal.com/developers/gitignore/api/archlinuxpackages
+# Edit at https://www.toptal.com/developers/gitignore?templates=archlinuxpackages
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+# End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
+
+PowerShell/
+
+PowerShell-Native/
+PowerShellGetv2/
+oneget/
+NuGetProvider/
+PSResourceGet/
+Microsoft.PowerShell.Archive/
+PSReadLine/
+Pager/
+MarkdownRender/
+ThreadJob/
+SelfSignedCertificate/
+PowerShellStandard/

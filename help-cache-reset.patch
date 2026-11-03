@@ -1,0 +1,109 @@
+diff --git a/src/System.Management.Automation/help/CommandHelpProvider.cs b/src/System.Management.Automation/help/CommandHelpProvider.cs
+index 15af80745d..4a3b3b7f0e 100644
+--- a/src/System.Management.Automation/help/CommandHelpProvider.cs
++++ b/src/System.Management.Automation/help/CommandHelpProvider.cs
+@@ -15,6 +15,7 @@ using System.Xml;
+ using Dbg = System.Management.Automation.Diagnostics;
+ using System.Management.Automation.Help;
+ using System.Reflection;
++using System.Runtime.CompilerServices;
+ 
+ namespace System.Management.Automation
+ {
+@@ -352,10 +353,12 @@ namespace System.Management.Automation
+             {
+                 if (isCmdlet)
+                 {
++                    _originalHelpFiles.TryAdd(cmdletInfo, cmdletInfo.HelpFile);
+                     cmdletInfo.HelpFile = helpFile;
+                 }
+                 else if (isFunction)
+                 {
++                    _originalHelpFiles.TryAdd(functionInfo, functionInfo.HelpFile);
+                     functionInfo.HelpFile = helpFile;
+                 }
+             }
+@@ -491,6 +494,13 @@ namespace System.Management.Automation
+         /// </summary>
+         private readonly Hashtable _helpFiles = new Hashtable();
+ 
++        /// <summary>
++        /// The original HelpFile property of the commands whose HelpFile was set to the file their help
++        /// was found in. A full path in HelpFile is loaded directly, so Reset() restores the original
++        /// values to search for the help again, e.g. in a new UI culture or after Update-Help.
++        /// </summary>
++        private readonly ConditionalWeakTable<CommandInfo, string> _originalHelpFiles = new ConditionalWeakTable<CommandInfo, string>();
++
+         private string GetHelpFile(string helpFile, CmdletInfo cmdletInfo)
+         {
+             string helpFileToLoad = helpFile;
+@@ -1304,6 +1314,20 @@ namespace System.Management.Automation
+             base.Reset();
+ 
+             _helpFiles.Clear();
++
++            foreach (KeyValuePair<CommandInfo, string> entry in _originalHelpFiles)
++            {
++                if (entry.Key is CmdletInfo cmdletInfo)
++                {
++                    cmdletInfo.HelpFile = entry.Value;
++                }
++                else if (entry.Key is FunctionInfo functionInfo)
++                {
++                    functionInfo.HelpFile = entry.Value;
++                }
++            }
++
++            _originalHelpFiles.Clear();
+         }
+ 
+         #endregion
+diff --git a/test/powershell/engine/Help/HelpSystem.Tests.ps1 b/test/powershell/engine/Help/HelpSystem.Tests.ps1
+index a17394c1d9..1e864cf12a 100644
+--- a/test/powershell/engine/Help/HelpSystem.Tests.ps1
++++ b/test/powershell/engine/Help/HelpSystem.Tests.ps1
+@@ -713,3 +713,44 @@ Describe 'InputTypes accurately describe pipelinable input' {
+         $inputTypes | Should -Be "System.String"
+     }
+ }
++
++Describe "Get-Help searches for help again after its cache is reset" -Tags 'CI' {
++    BeforeAll {
++        $moduleName = 'HelpCacheResetTest'
++        $moduleBase = Join-Path $TestDrive $moduleName
++        foreach ($culture in 'en-US', 'de-DE') {
++            $null = New-Item -ItemType Directory -Path (Join-Path $moduleBase $culture) -Force
++            Set-Content -Path (Join-Path $moduleBase $culture "$moduleName-Help.xml") -Value @"
++<?xml version="1.0" encoding="utf-8"?>
++<helpItems schema="maml" xmlns="http://msh">
++  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
++    <command:details>
++      <command:name>Get-HelpCacheResetTest</command:name>
++      <maml:description><maml:para>Help for $culture</maml:para></maml:description>
++    </command:details>
++  </command:command>
++</helpItems>
++"@
++        }
++
++        Set-Content -Path (Join-Path $moduleBase "$moduleName.psm1") -Value 'function Get-HelpCacheResetTest { }'
++        Import-Module (Join-Path $moduleBase "$moduleName.psm1")
++        $originalUICulture = [System.Globalization.CultureInfo]::CurrentUICulture
++    }
++
++    AfterAll {
++        [System.Globalization.CultureInfo]::CurrentUICulture = $originalUICulture
++        Remove-Module $moduleName -ErrorAction SilentlyContinue
++    }
++
++    It "Get-Help finds the help of the new UI culture after the help was found in another one" {
++        # Finding the help sets the HelpFile property of the command to the full path of the help file.
++        # A change of the UI culture resets the help cache, like Update-Help does, so the help has to be
++        # searched for again instead of loading that file.
++        [System.Globalization.CultureInfo]::CurrentUICulture = 'en-US'
++        (Get-Help Get-HelpCacheResetTest).Synopsis | Should -BeExactly 'Help for en-US'
++
++        [System.Globalization.CultureInfo]::CurrentUICulture = 'de-DE'
++        (Get-Help Get-HelpCacheResetTest).Synopsis | Should -BeExactly 'Help for de-DE'
++    }
++}

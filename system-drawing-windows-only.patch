@@ -1,0 +1,73 @@
+diff --git a/PowerShell.Common.props b/PowerShell.Common.props
+index c82b473c09..ddc6e3f759 100644
+--- a/PowerShell.Common.props
++++ b/PowerShell.Common.props
+@@ -231,4 +231,9 @@
+   <PropertyGroup>
+     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+   </PropertyGroup>
++
++  <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
++    <!-- System.Drawing.Common is only supported on Windows, keep Microsoft.Windows.Compatibility from bringing it in -->
++    <PrunePackageReference Include="System.Drawing.Common" Version="10.0.14" />
++  </ItemGroup>
+ </Project>
+diff --git a/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj b/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj
+index 94653589be..3dead43eb0 100644
+--- a/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj
++++ b/src/Microsoft.PowerShell.Commands.Utility/Microsoft.PowerShell.Commands.Utility.csproj
+@@ -15,10 +15,19 @@
+ 
+   <ItemGroup>
+     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+-    <PackageReference Include="System.Drawing.Common" Version="10.0.14" />
+     <PackageReference Include="JsonSchema.Net" Version="7.4.0" />
+   </ItemGroup>
+ 
++  <ItemGroup Condition=" '$(IsWindows)' == 'true' ">
++    <!-- System.Drawing.Common is only supported on Windows, and only used by Out-Printer -->
++    <PackageReference Include="System.Drawing.Common" Version="10.0.14" />
++  </ItemGroup>
++
++  <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
++    <!-- Out-Printer is only available on Windows -->
++    <Compile Remove="commands\utility\FormatAndOutput\out-printer\**\*.cs" />
++  </ItemGroup>
++
+   <ItemGroup>
+     <EmbeddedResource Update="resources\*\*.resx">
+       <ManifestResourceName>$(RootNamespace).resources.%(Filename)</ManifestResourceName>
+diff --git a/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj b/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj
+index 05b1caba47..dec34b4a19 100644
+--- a/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj
++++ b/src/Microsoft.PowerShell.SDK/Microsoft.PowerShell.SDK.csproj
+@@ -50,7 +50,6 @@
+     <PackageReference Include="System.DirectoryServices" Version="10.0.14" />
+     <PackageReference Include="System.DirectoryServices.AccountManagement" Version="10.0.14" />
+     <PackageReference Include="System.DirectoryServices.Protocols" Version="10.0.14" />
+-    <PackageReference Include="System.Drawing.Common" Version="10.0.14" />
+     <!-- the following package(s) are from https://github.com/dotnet/corefx -->
+     <PackageReference Include="System.IO.Packaging" Version="10.0.14" />
+     <PackageReference Include="System.IO.Ports" Version="10.0.14" />
+@@ -69,6 +68,7 @@
+     <PackageReference Include="System.ServiceModel.Primitives" Version="10.0.652802" />
+     <!-- the source could not be found for the following package(s) -->
+     <PackageReference Include="Microsoft.Windows.Compatibility" Version="10.0.14" />
++    <PackageReference Include="System.Drawing.Common" Version="10.0.14" Condition=" '$(IsWindows)' == 'true' " />
+     <PackageReference Include="System.ServiceModel.Syndication" Version="10.0.14" />
+     <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.14" />
+     <PackageReference Include="System.Speech" Version="10.0.14" />
+diff --git a/test/Test.Common.props b/test/Test.Common.props
+index 3fafbbf8f8..a3bb8c776d 100644
+--- a/test/Test.Common.props
++++ b/test/Test.Common.props
+@@ -27,4 +27,9 @@
+   <PropertyGroup Condition=" '$(IsWindows)' != 'true' ">
+     <DefineConstants>$(DefineConstants);UNIX</DefineConstants>
+   </PropertyGroup>
++
++  <ItemGroup Condition=" '$(IsWindows)' != 'true' ">
++    <!-- System.Drawing.Common is only supported on Windows, keep Microsoft.Windows.Compatibility from bringing it in -->
++    <PrunePackageReference Include="System.Drawing.Common" Version="10.0.14" />
++  </ItemGroup>
+ </Project>
