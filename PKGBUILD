@@ -1,8 +1,8 @@
 # Maintainer: adogecheems <adogecheems@outlook.com>
 #
 # AUR source-build package for the 2.0.x series. Read README.md in this
-# directory before submitting. The source is pinned to the v2.0.0 release tag;
-# the AUR package has not been submitted yet.
+# directory before submitting. The source is pinned to the v2.0.0 release tag.
+# The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
 pkgver=2.0.0
