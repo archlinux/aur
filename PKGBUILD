@@ -1,6 +1,6 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=vllm-xpu
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="vLLM optimized for Intel Arc GPUs"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('python311' 'cmake' 'ninja' 'gcc' 'curl')
 provides=('vllm')
 conflicts=('vllm')
 source=("vllm-${pkgver}.tar.gz::https://github.com/vllm-project/vllm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bf592c132f27bbb5f65cff0bbd2ee873eae722b79c8286934fd5b5cf88b43d61')
+sha256sums=('2540b44ac130699997ccc2c7cf57ae3ceae43348643d0603330b01458b111a09')
 install=$pkgname.install
 
 build() {
