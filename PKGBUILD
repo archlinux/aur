@@ -2,7 +2,7 @@
 
 pkgname=python-phonemizer
 _name=${pkgname#python-}
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 epoch=
 pkgdesc="Simple text to phones converter for multiple languages"
@@ -32,7 +32,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('3f7ab07e30cbd631bd5701b296c9d10421f59937db29a9030edcd1fe1524b059')
+sha256sums=('9808c897773a23def58d89e1a3ac3506f56e8d04ee806d3ee80214880e2c9261')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
