@@ -1,7 +1,7 @@
 # Maintainer: Alexey Makhmutov <makhmutov at gmail dot com>
 pkgname=gnome-shell-extension-frippery-move-clock
-pkgver=50.0
-pkgrel=2
+pkgver=51.0
+pkgrel=1
 pkgdesc="GNOME extension that moves the clock from the centre of the panel towards the right. Part of GNOME Shell Frippery."
 arch=("any")
 url='http://frippery.org/extensions/index.html'
@@ -10,17 +10,10 @@ groups=("gnome-shell-extensions")
 depends=("gnome-shell>=1:46")
 conflicts=("gnome-shell-frippery")
 options=("!strip" "!debug")
-source=("http://frippery.org/extensions/gnome-shell-frippery-${pkgver}.tgz"
-        "frippery-move-clock-gnome51.patch")
-b2sums=("692f8006af818284695911de2b884a21aba0ae176ba9d7ea608ca8734fd22c557efae11d2d58e373f8ae010070fc796dfd9acb2e213941c74d052ff11bc52601"
-        "9e743412533acce5fb1c6b5c3a507c939cc3cefd2379735aafd24f509497bdf1fdddaf181d1b4426ad9c2ce3e1cb38d732e486711220919759b567a5668a3ddb")
+source=("http://frippery.org/extensions/gnome-shell-frippery-${pkgver}.tgz")
+b2sums=("fb096e0fd55ba7109327a9a59cc6ec79d4b5e7e25219f60b2bb88d86e50e05eff27aeafd41bc03b388b03cb188d0983ce86f8f70fc8afd66921960fcb69aac3b")
 
 _uuid="Move_Clock@rmy.pobox.com"
-
-prepare() {
-  cd .local
-  patch -Np1 -i ../frippery-move-clock-gnome51.patch
-}
 
 package() {
   cd .local
