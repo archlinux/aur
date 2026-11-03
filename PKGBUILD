@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.5.4.r0.g981e310
+pkgver=0.5.8.r0.g444ccc2
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -25,10 +25,12 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
+    "${pkgname%-git}.js"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -59,12 +61,14 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_npm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -74,14 +78,18 @@ _set_build_env() {
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_audit=false
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
-    export CARGO_HOME="${HOME}/.cargo"
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
+}
+_set_rust_build_env() {
+	export HOME="${srcdir}/.home"
+	export CARGO_HOME="${HOME}/.cargo"
 	export CARGO_NET_GIT_FETCH_WITH_CLI=true
 	export CARGO_NET_RETRY=5
 	export CARGO_HTTP_MULTIPLEXING=false
 	export CARGO_INCREMENTAL=0
 	export CARGO_TERM_COLOR=never
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
-	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}" "${CARGO_HOME}"
+	mkdir -p "${HOME}" "${CARGO_HOME}"
 }
 _use_local_electron_for_forge() {
 	local _arch=$([[ "${CARCH}" == "aarch64" ]] && echo arm64 || [[ "${CARCH}" == "armv7h" ]] && echo armv7l || echo x64)
@@ -89,7 +97,7 @@ _use_local_electron_for_forge() {
 	local _zf="${_zd}/electron-v${SYSTEM_ELECTRON_VERSION}-linux-${_arch}.zip"
 	mkdir -p "${_zd}"
 	rm -f "${_zf}"
-	( cd "${ELECTRON_DIST}" && find . $ -type f -o -type l $ -readable -print | zip -@ -0 -q -y "${_zf}" )
+	( cd "${ELECTRON_DIST}" && find . \( -type f -o -type l \) -readable -print | zip -@ -0 -q -y "${_zf}" )
 	[[ -s "${_zf}" ]] || { echo "ERROR: Failed to generate electron zip (directory not readable?)"; return 1; }
 	find . -name "forge.config.*" ! -path "*/node_modules/*" -print0 | while IFS= read -r -d '' _cfg; do
 		sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${_cfg}"
@@ -101,7 +109,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
-    " "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh" "${srcdir}/${pkgname%-git}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -109,7 +117,9 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
+    _set_rust_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     rustup update stable
     rustup default stable
@@ -120,15 +130,17 @@ prepare() {
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
+    _set_rust_build_env
     export NODE_ENV=production
-    npm run prepare:native-services
+    node scripts/prepare-native-services.js
     npx electron-forge package
+    rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "$(_get_project_dir)/src/renderer/assets/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
