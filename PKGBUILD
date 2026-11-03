@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=photocraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.19.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc='Layer-based image and photo editor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -26,15 +26,15 @@ source=("$_pkgname-$pkgver-NOTICE.txt::https://raw.githubusercontent.com/storyto
         "$_pkgname-$pkgver-LICENSE-lucide.txt::https://raw.githubusercontent.com/storytold/$_pkgname/v$pkgver/assets/icons/LICENSE-lucide.txt")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums=('bfb4e2d258b2db6aa3e9d2a33914212817745926ac836aa268e4208f13ed3fdf'
+sha256sums=('511087b49923695d4d0d91416b3cda337157677814c85e40e4e05639fcaa1cdd'
             'f0a582a0645a2ec9c979ac2619e9503315483a33f1bb39b56fe5b55632b0ca79'
             'a5cf25f3f3c2fe2c6d294db04f1bfea7259ac21e8edde5c7fabaa4c379e94795'
             'e2a852424fe4ee684225a6a8a34c73f8944f11ad825b7fc3a58ddcee617ed23d'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57')
-sha256sums_x86_64=('123385b1730ace18f12bc0f494606e6a4cd3f4ab891f93036cd4e71b8aea70f7')
-sha256sums_aarch64=('5948e8f10c3c020aa8c8803f1a9038a2ffb4dda8ebb1b129881c8a416b2d48ae')
+sha256sums_x86_64=('398787d58fe46919e99c9f56e35545549ef0aaab007f869a92beff7d9fe52234')
+sha256sums_aarch64=('ec07b36b48063ca30db0c9043adf86f752255b9800dfe93bf2c6c3fcc9688588')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
