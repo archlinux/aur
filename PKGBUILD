@@ -4,7 +4,7 @@
 pkgname=sonora
 pkgver=0.47.0
 pkgrel=1
-pkgdesc='A native music streaming client, built with Rust and GPUI'
+pkgdesc='A native, familiar music streaming client'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sonorahq/sonora'
 license=('GPL-3.0-or-later')
