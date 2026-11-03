@@ -1,11 +1,12 @@
 pkgbase = openpilot-cabana
 	pkgdesc = CAN bus visualizer and DBC editor from comma.ai openpilot
 	pkgver = 2.0.20261024.gf2f9d5d420
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/commaai/openpilot/tree/master/openpilot/tools/cabana
 	arch = x86_64
 	license = MIT
+	makedepends = binutils
 	makedepends = git
 	makedepends = git-lfs
 	makedepends = patchelf

@@ -4,7 +4,7 @@ AUR package for [Cabana](https://github.com/commaai/openpilot/tree/master/openpi
 
 ## Install size
 
-Cabana calls Python at runtime for remote routes, login, log migration and the WebRTC device bridge. The package therefore bundles Python 3.12, its dependencies and the openpilot modules under `/opt/openpilot-cabana`, about 700 MB installed.
+Cabana calls Python at runtime for remote routes, login, log migration and the WebRTC device bridge. The package therefore bundles Python 3.12, its dependencies and the openpilot modules under `/opt/openpilot-cabana`, about 290 MB installed.
 
 ## Changes in 2.0
 
