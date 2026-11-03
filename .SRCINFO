@@ -1,19 +1,21 @@
 pkgbase = anihot-app
 	pkgdesc = Linux client for AniHot anime streaming app
-	pkgver = 7.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/MrGlany/AniHotAppPC
 	install = anihot-app.install
 	arch = x86_64
 	license = custom
+	makedepends = ffmpeg
 	depends = glibc
 	depends = gtk3
 	depends = bash
 	depends = sqlite
 	depends = mpv
+	depends = libsecret
 	depends = desktop-file-utils
 	options = !debug
-	source = anihot-7.0.0.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/7.0.0r/7.0.0-linux.zip
-	sha256sums = 2b4057ad9d56d9a52ec27884b1d16530c9d65389efc17b179c207accdf52ba3d
+	source = anihot-7.0.1.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/7.0.1r/7.0.1-linux.zip
+	sha256sums = f4796904321a588166174a83cf3dcb1db3817745d1c7502bfb9916f2137686a4
 
 pkgname = anihot-app
