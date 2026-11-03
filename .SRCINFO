@@ -1,6 +1,6 @@
 pkgbase = ani-cli-arabic
 	pkgdesc = Terminal-based anime streaming with Arabic subtitles!
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/np4abdou1/ani-cli-arabic
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = ani-cli-arabic
 	depends = mpv
 	provides = ani-cli-ar
 	conflicts = ani-cli-ar
-	source = https://github.com/np4abdou1/ani-cli-arabic/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = dce32be6bf1a249add620e143a5194a47d5ae3469b31d293d4f83d965abc46cd
+	source = https://github.com/np4abdou1/ani-cli-arabic/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = f2a77f30ab5310c4d065e85f541f906bd781dcdbf6ef128df0eba66cb164b485
 
 pkgname = ani-cli-arabic
