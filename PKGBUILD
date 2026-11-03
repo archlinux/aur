@@ -4,8 +4,8 @@
 # pushes this file to AUR; in the repository it is the template.
 
 pkgname=kalipso
-pkgver=2.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc='Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal'
 arch=('x86_64')
 url='https://sansevieria-ou.github.io/kalipso/'
@@ -17,7 +17,7 @@ optdepends=('plasma-workspace: the Plasma widget and the KWin script'
             'gnome-shell: the GNOME Shell extension'
             'xdg-desktop-portal: reader colours from the window behind')
 source=("kalipso-$pkgver.tar.gz::https://github.com/SANSEVIERIA-OU/kalipso/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c68b123baff2786f7aa7c477a2de7a3f70c03a9336fdaa1dd00310d30180f31')
+sha256sums=('5d64398942f8ae2f91ec47e3125f3b1f175936c2913e704fb182a5fcb94a3849')
 
 build() {
   cmake -S "kalipso-$pkgver" -B build -G Ninja -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF
