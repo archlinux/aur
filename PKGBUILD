@@ -3,7 +3,7 @@
 
 pkgbase=cutlass
 pkgname=('cutlass' 'python-cutlass')
-pkgver=4.8.0
+pkgver=4.8.1
 pkgrel=1
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
     'use-ml-dtypes-for-bfloat16.patch'
 )
 sha256sums=(
-    'b7bb2ba0473a5a5d699c62e5feb42caa11cb109ec58ba82ca458af9cd139f39b'
+    '71fc2892e8bcd929398b5aa72e3393af1bad0cae9814cd75661ca88e688c2159'
     '0da3200384a74d9474fcf44dbf80f269af4df4216c00c736cb48b48d32ccfcd0'
     'dac69672d439862d715b7a81c08d76741ce65652117ee9d06f914527412cc6a9'
     '5fe8a416b8ac2151d1ff46fbf7478a8990500636cb99ced4c7d16b8e71d4e5e6'
