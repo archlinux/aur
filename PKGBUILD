@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r168.55a1485
+pkgver=r169.e703604
 pkgrel=1
 pkgdesc="A bare KWin Wayland session to run any shell on (Dux, digit, Quickshell configs), with Hyprland-style workspaces"
 # Not 'any': the KWin plugins (workspace sharing, and the protocols shells
@@ -13,10 +13,10 @@ license=('GPL-3.0-or-later')
 # bridge; the rest are what the session scripts call.
 depends=('kwin' 'kglobalacceld' 'xdg-desktop-portal-kde'
          'python' 'python-dbus' 'python-gobject' 'systemd'
-         'wl-clipboard' 'wl-clip-persist')
+         'wl-clipboard' 'wl-clip-persist' 'lua')
 optdepends=(
   'quickshell: Quickshell-based shells such as Dux'
-  'lua: the keys from a Hyprland Lua config'
+  'libnotify: a notification when mmsimpulse.lua has a mistake'
   'powerdevil: idle timeouts, DPMS, suspend and brightness'
   'upower: battery status'
   'kdeplasma-addons: task switcher layouts, without which Alt+Tab draws nothing'
@@ -59,7 +59,7 @@ package() {
   # assembled in $HOME and cannot be built here, so the package ships the
   # tooling and `mmsimpulse-install` does that part once.
   install -d "$pkgdir/usr/share/mmsimpulse"
-  cp -a bin kwin-script profiles session shortcuts install.sh README.md \
+  cp -a bin config kwin-script profiles session shortcuts install.sh README.md \
         "$pkgdir/usr/share/mmsimpulse/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/mmsimpulse-install" <<'WRAPPER'
