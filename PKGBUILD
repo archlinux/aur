@@ -22,7 +22,7 @@
 # bar can simply not run mshell; the helpers stay useful on their own.
 
 pkgname=margo-git
-pkgver=r2736.a57f8b7b
+pkgver=r2779.53545ad7
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -180,9 +180,11 @@ backup=(
 # render aborts. The Cargo release profile sets `strip = "none"`;
 # this line keeps makepkg's outer strip from overriding it.
 options=(!lto !strip)
-# No install scriptlet: mtune's GSettings schema, desktop entry and
-# hicolor icons are picked up by the system pacman hooks (glib2's
-# glib-compile-schemas, desktop-file-utils, gtk-update-icon-cache).
+# The install scriptlet retires an /etc/mlogind/variables.toml that the
+# pre-4.5.1 `mlogind sync-theme` wrote (post_install/post_upgrade run the
+# helper installed below). It also refreshes mtune's GSettings schema,
+# desktop and icon caches, which the system pacman hooks cover as well.
+install=margo-git.install
 source=("git+${url}.git#branch=main")
 sha256sums=("SKIP")
 
@@ -657,6 +659,14 @@ package() {
     "$pkgdir/etc/mlogind/config.toml"
   install -Dm644 "mlogind/extra/variables.toml" \
     "$pkgdir/etc/mlogind/variables.toml"
+  # Before 4.5.1 `mlogind sync-theme` overwrote that backup file with a
+  # user's palette, so pacman keeps it as "modified". post_upgrade runs this
+  # helper to put the default back over such a copy only (see the script);
+  # the pristine default rides along for it.
+  install -Dm755 "mlogind/extra/retire-old-sync-variables.sh" \
+    "$pkgdir/usr/lib/mlogind/retire-old-sync-variables.sh"
+  install -Dm644 "mlogind/extra/variables.toml" \
+    "$pkgdir/usr/lib/mlogind/variables.toml.default"
   install -Dm644 "mlogind/extra/mlogind.pam" \
     "$pkgdir/etc/pam.d/mlogind"
   # The greeter runs as an unprivileged system user and gets its logind
@@ -671,8 +681,9 @@ package() {
   # a first-class logind session. Inert while [autologin] is unset.
   install -Dm644 "mlogind/extra/mlogind-autologin.pam" \
     "$pkgdir/etc/pam.d/mlogind-autologin"
-  # mlock's own PAM service: pam_unix only, so wrong passwords typed at
-  # the locked screen can't trip pam_faillock and lock the owner out.
+  # The lockers' PAM service (mlock and mshell's lock screen): pam_unix
+  # only, so wrong passwords typed at the locked screen can't trip
+  # pam_faillock and lock the owner out.
   install -Dm644 "mlock/extra/mlock.pam" \
     "$pkgdir/etc/pam.d/mlock"
   install -Dm644 "mlogind/extra/mlogind.sysusers" \
