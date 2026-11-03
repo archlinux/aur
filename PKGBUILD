@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <floss@jetm.me>
 _pkgname='Drata Agent'
 pkgname=drata-agent-bin
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc='Tray application reporting read-only machine state for compliance tracking'
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('drata-agent')
 # hence !strip, which would otherwise corrupt the prebuilt Electron.
 options=('!strip' '!emptydirs' '!lto')
 source=("${pkgname}-${pkgver}.deb::https://github.com/drata/drata-agent/releases/download/${pkgver}/Drata-Agent-linux.deb")
-sha512sums=('e9dd8971435110646f3e85c35921b5ad85cf50d1d493bc1e41ba1f2813d9bf6eba09273b9ef26f191e73f992319a0049c14c8df5a25835a703194b85c87f7299')
+sha512sums=('650a817111cbf5fd5766512bfe6addd5fc81c314a24ad2671729dcdb6bf649e0c58418c2de92663bc7cf620e72e607a4b48ec0ca0b8f16e725a493f5ebcd32fb')
 
 prepare() {
   tar -xf data.tar.xz
