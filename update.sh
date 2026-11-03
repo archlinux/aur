@@ -21,14 +21,32 @@ command -v makepkg >/dev/null || die "makepkg is required"
 [[ -f "$pkgbuild" ]] || die "PKGBUILD not found: $pkgbuild"
 [[ $# -le 1 ]] || die "usage: $0 [version]"
 
+# Authenticated requests avoid the 60 req/h per-IP limit on the public API.
+# Order: GITHUB_TOKEN / GH_TOKEN, then gh's stored credentials, then anonymous.
+token="${GITHUB_TOKEN:-${GH_TOKEN:-}}"
+api() {
+  if [[ -n "$token" ]]; then
+    curl -fsSL -H "Authorization: Bearer $token" -H 'Accept: application/vnd.github+json' \
+      "https://api.github.com/$1"
+  elif command -v gh >/dev/null && gh auth status >/dev/null 2>&1; then
+    gh api "$1"
+  else
+    curl -fsSL -H 'Accept: application/vnd.github+json' "https://api.github.com/$1"
+  fi
+}
+
+err="$(mktemp)"
+trap 'rm -f "$err"' EXIT
 if (( $# == 1 )); then
   tag="v${1#v}"
-  release="$(curl -fsSL "https://api.github.com/repos/$repo/releases/tags/$tag")" \
-    || die "release $tag not found"
+  release="$(api "repos/$repo/releases/tags/$tag" 2>"$err")" \
+    || die "release $tag not found: $(tr -d '\n' <"$err")"
 else
-  release="$(curl -fsSL "https://api.github.com/repos/$repo/releases/latest")" \
-    || die "failed to query the latest release"
+  release="$(api "repos/$repo/releases/latest" 2>"$err")" \
+    || die "failed to query the latest release: $(tr -d '\n' <"$err")"
 fi
+rm -f "$err"
+trap - EXIT
 
 version="$(jq -r '.tag_name | sub("^v"; "")' <<<"$release")"
 [[ "$version" =~ ^[0-9]+(\.[0-9]+)+$ ]] \
