@@ -36,7 +36,6 @@ package() {
   install -Dm644 package.json "$pkgdir/$mod_dir/package.json"
   ln -s "$mod_dir/dist/cli/index.js" "$pkgdir/usr/bin/${pkgname}"
 
-  cp -r docs/* "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
