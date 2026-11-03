@@ -1,6 +1,6 @@
 # Maintainer: Kharec <sandro@cazzaniga.fr>
 pkgname=shai
-pkgver=0.1.11
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Terminal coding agent and pair-programming buddy"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ovh/shai/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'eb516e13cb5928049cd4c573c89ffe13b90367293bc7459fbd1cfab613b458e7'
+  'd4defa2a4949a6e8fbf5eae0f40786478f709fe9aba993841da8838515d8ab6f'
 )
 
 prepare() {
@@ -24,8 +24,6 @@ prepare() {
   export OPENSSL_NO_VENDOR=1
   mkdir -p "$CARGO_HOME"
   cd "$srcdir/$pkgname-$pkgver"
-
-  cargo update -p ratatui --precise 9879bf96245e183472787ad8d93776f7d13e40df
 
   local rust_target
   case "$CARCH" in
