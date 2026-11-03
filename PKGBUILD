@@ -4,7 +4,7 @@ pkgname=relic-gruvbox-gtk-theme
 _repo=Gruvbox-GTK-Theme
 _commit=578cd220b5ff6e86b078a6111d26bb20ec8c733f
 _date=2025.10.23
-pkgver=2025.10.23.r9.95dc59b
+pkgver=2025.10.23.r21.b44e0de
 pkgrel=1
 # 1: 2026-10-29, pkgver counts only the fixes commits of generic/ and relic/ (r9 after r11)
 epoch=1
