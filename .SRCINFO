@@ -1,6 +1,6 @@
 pkgbase = agent-desktop-bin
 	pkgdesc = Desktop computer use for AI agents through OS accessibility trees (pre-compiled binary)
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/vercel-labs/agent-desktop
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = agent-desktop-bin
 	provides = agent-desktop
 	conflicts = agent-desktop
 	conflicts = agent-desktop-git
-	source = LICENSE-v1.0.2::https://raw.githubusercontent.com/vercel-labs/agent-desktop/v1.0.2/LICENSE
+	source = LICENSE-v1.1.0::https://raw.githubusercontent.com/vercel-labs/agent-desktop/v1.1.0/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = https://github.com/vercel-labs/agent-desktop/releases/download/v1.0.2/agent-desktop-v1.0.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ad661b7a3fd8f990a769243f4889a240ca0e2c8dab3ef5bddd6019086c71e0b4
-	source_aarch64 = https://github.com/vercel-labs/agent-desktop/releases/download/v1.0.2/agent-desktop-v1.0.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 864cb782e0afc8bf0df19622016b24bdbd1a83fc7749f784ee82aa49a7f845eb
+	source_x86_64 = https://github.com/vercel-labs/agent-desktop/releases/download/v1.1.0/agent-desktop-v1.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = efbdcf4caf10132e4fe915db1ec643184c947c65e0511845aeb4839445d7ea43
+	source_aarch64 = https://github.com/vercel-labs/agent-desktop/releases/download/v1.1.0/agent-desktop-v1.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 252c17e271a444352a5ba1e9f8fcbace89fa7b6b0bfcc4abebad2b35eb1f7a4d
 
 pkgname = agent-desktop-bin
