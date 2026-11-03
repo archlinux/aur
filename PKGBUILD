@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.6.62
+pkgver=0.6.65
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('108f79474aa90bc7603fb3d29fa2530069dc945f662a9415747d626dc173bb12')
+sha256sums=('7840a02379c657ca4ea58551155dbf1e70bfe7b6553988cd42cc97bd2ea7ea07')
 
 # rustup provides an unversioned "rust" package, so check the actual toolchain.
 _check_rust_version() {
@@ -61,6 +61,10 @@ prepare() {
     _check_rust_version || return 1
     export npm_config_cache="$srcdir/.npm"
     pnpm config --location project set store-dir "$srcdir/.pnpm-store"
+
+    # Release tags can carry the previous version: upstream's CI stamps it
+    # with this script and only syncs the source afterwards.
+    node .github/scripts/set-release-version.mjs "v$pkgver"
 
     # Enable vue-demi's postinstall in upstream's pnpm build-script policy
     # so it can select the correct Vue 2/3 shim.
