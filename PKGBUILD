@@ -16,5 +16,5 @@ package() {
   install -Dm755 "taproot" "$pkgdir/usr/bin/taproot"
   install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('0dd7efd1d50878c004c6ff839d98bee1d83e0ad85ef35d4c03954cc20f65f197'
+            '64d90764a9baac9d5f0797d6d9a7dfb26823396df09c872557e971cf76cc0a92')

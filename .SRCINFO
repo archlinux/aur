@@ -9,7 +9,7 @@ pkgbase = omnidotdev-taproot-bin
 	conflicts = omnidotdev-taproot
 	source = omnidotdev-taproot-bin-0.2.0.tar.gz::https://github.com/omnidotdev/taproot/releases/download/v0.2.0/taproot-x86_64-unknown-linux-gnu.tar.gz
 	source = omnidotdev-taproot-bin-0.2.0-LICENSE::https://raw.githubusercontent.com/omnidotdev/taproot/v0.2.0/LICENSE.md
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 0dd7efd1d50878c004c6ff839d98bee1d83e0ad85ef35d4c03954cc20f65f197
+	sha256sums = 64d90764a9baac9d5f0797d6d9a7dfb26823396df09c872557e971cf76cc0a92
 
 pkgname = omnidotdev-taproot-bin
