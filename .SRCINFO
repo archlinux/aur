@@ -1,23 +1,20 @@
 pkgbase = python-tantivy
 	pkgdesc = Official Python bindings for the Tantivy search engine
 	pkgver = 0.27.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/quickwit-oss/tantivy-py
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-maturin<2.0
-	makedepends = python-maturin>=1.9.3
-	makedepends = rust
-	makedepends = pkgconf
-	depends = python
+	depends = python>=3.11
 	depends = glibc
 	depends = libgcc
-	depends = zstd
-	source = tantivy-py-0.27.0.tar.gz::https://github.com/quickwit-oss/tantivy-py/archive/refs/tags/0.27.0.tar.gz
-	sha256sums = fc90d88dadd2de6fe7d0772588e0e694f158316ef872ac1abee06ed2f4b4fff4
+	noextract = tantivy-0.27.0-cp311-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	noextract = tantivy-0.27.0-cp311-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+	source_x86_64 = https://github.com/quickwit-oss/tantivy-py/releases/download/0.27.0/tantivy-0.27.0-cp311-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums_x86_64 = 2d5d5ac2f16038b7ea4cfc10839d20dbec87b5a96076b0984b493e410c1a8415
+	source_aarch64 = https://github.com/quickwit-oss/tantivy-py/releases/download/0.27.0/tantivy-0.27.0-cp311-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+	sha256sums_aarch64 = 7e3ba1f366e05a4ebf176cd549206fa25bdac9ea722637b21fa351582b65440e
 
 pkgname = python-tantivy

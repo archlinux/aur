@@ -1,36 +1,26 @@
 # Maintainer: Dmitriy Geels <dmitriy dot geels at gmail dot com>
 pkgname=python-tantivy
 pkgver=0.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Official Python bindings for the Tantivy search engine'
 arch=(x86_64 aarch64)
 url="https://github.com/quickwit-oss/tantivy-py"
 license=(MIT)
-depends=(python glibc libgcc zstd)
-makedepends=(python-build python-installer python-wheel 'python-maturin<2.0' 'python-maturin>=1.9.3' rust pkgconf)
-_ref=0.27.0
-_builddir=tantivy-py-0.27.0
-source=("tantivy-py-0.27.0.tar.gz::https://github.com/quickwit-oss/tantivy-py/archive/refs/tags/$_ref.tar.gz")
-sha256sums=('fc90d88dadd2de6fe7d0772588e0e694f158316ef872ac1abee06ed2f4b4fff4')
+depends=('python>=3.11' glibc libgcc)
+makedepends=(python-installer)
+_release="https://github.com/quickwit-oss/tantivy-py/releases/download/$pkgver"
+_wheel="tantivy-$pkgver-cp311-abi3-manylinux_2_17_${CARCH}.manylinux2014_${CARCH}.whl"
+source_x86_64=("$_release/tantivy-$pkgver-cp311-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+source_aarch64=("$_release/tantivy-$pkgver-cp311-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl")
+sha256sums_x86_64=('2d5d5ac2f16038b7ea4cfc10839d20dbec87b5a96076b0984b493e410c1a8415')
+sha256sums_aarch64=('7e3ba1f366e05a4ebf176cd549206fa25bdac9ea722637b21fa351582b65440e')
+noextract=("${source_x86_64[0]##*/}" "${source_aarch64[0]##*/}")
 
 prepare(){
- cd "$srcdir/$_builddir"
- export CARGO_HOME="$srcdir/cargo-home"
- cargo fetch --locked
-}
-
-build(){
- cd "$srcdir/$_builddir"
- export CARGO_HOME="$srcdir/cargo-home"
- export CARGO_NET_OFFLINE=true
- # Link zstd-sys against the system library rather than bundled Zstandard.
- export ZSTD_SYS_USE_PKG_CONFIG=1
- export MATURIN_PEP517_ARGS="--locked --offline"
- python -m build --wheel --no-isolation
+ bsdtar -xOf "$srcdir/$_wheel" "tantivy-$pkgver.dist-info/licenses/LICENSE" > "$srcdir/LICENSE"
 }
 
 package(){
- cd "$srcdir/$_builddir"
- python -m installer --destdir="$pkgdir" dist/*.whl
- install -Dm644 "$srcdir/tantivy-py-0.27.0/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ python -m installer --destdir="$pkgdir" "$srcdir/$_wheel"
+ install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
