@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=papirus-folder-icons
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An expanded set of custom folder icons for the Papirus Icon Theme using Font Awesome symbolics."
 arch=('any')
 url="https://gitlab.com/benleppke/papirus-folder-icons"
@@ -11,7 +11,7 @@ makedepends=('setconf')
 options=('!strip')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
         'setup.patch')
-sha256sums=('c5b75e8f9adc42516189b00ca0076c90e414e8bce670aa23b312160b17999b0b'
+sha256sums=('06afd6e5d23ce1cd3427896215d46f36d6de01184f26e72a3b307300cd9cb377'
             '587cdcf8ee81ab101a8880ca11a48e2cfa8456c31c87a2962583bd882931b215')
 
 prepare() {
@@ -20,7 +20,7 @@ prepare() {
   # Don't run gtk-update-icon-cache
   patch -Np1 -i ../setup.patch
 
-  setconf setup.sh SYSTEM_DEST_DIR ""$pkgdir/usr/share/icons""
+  setconf setup.sh SYSTEM_DEST_DIR "$pkgdir/usr/share/icons"
 }
 
 package() {
