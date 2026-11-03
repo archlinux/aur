@@ -61,6 +61,8 @@ GPOS: `kern` (scripts DFLT/cyrl/grek/latn) και `mkmk`. Δεν υπάρχει 
 - `sups`/`subs`/`frac`: ποτέ ως προεπιλογή (αλλάζουν το περιεχόμενο).
 - Το `make_features.py` αρνείται από μόνο του τα `aalt`, `ordn`, `salt`, `dlig`, `hlig`, `hist`.
 
+Για να ψήσεις ό,τι έχεις ενεργό στο fonts.conf: `FEATURE_DEFAULTS=fonts.conf`.
+
 Στον browser: `font-feature-settings: "case"` για μεμονωμένες περιπτώσεις.
 
 ## Μεταβολή με το βάρος

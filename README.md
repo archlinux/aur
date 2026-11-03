@@ -14,6 +14,13 @@
 `STATIC_ITALIC`, `NERD_PATCH`, `HINTING`, `HINT_PRESET`, `FEATURE_DEFAULTS`,
 `GASP_MODE`, …). Οι απαντήσεις σώζονται στο `$srcdir/.build_opts`.
 
+`FEATURE_DEFAULTS=fonts.conf` (ή η αντίστοιχη επιλογή στο μενού) ψήνει τα features
+που είναι ενεργά (χωρίς σχόλιο) στο `<match>` της οικογένειας `Xmind` του
+`~/.config/fontconfig/fonts.conf` (άλλο αρχείο: `XM_FONTS_CONF`). Παραλείπονται, με
+σημείωση, τα αρνητικά (`-liga`), όσα δεν υπάρχουν στο GSUB, όσα εφαρμόζει ήδη
+κάθε shaper (`kern liga ccmp locl`) και όσα αρνείται το `make_features.py`
+(`aalt ordn dlig`). Έτσι το `kern`/`liga` του block δεν χαλά το build.
+
 Μετά την εγκατάσταση, για bytecode hinting (δεν ενεργοποιείται μόνο του):
 
     sudo ln -s /usr/share/fontconfig/conf.avail/80-ttf-xmind-hinted.conf /etc/fonts/conf.d/
