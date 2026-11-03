@@ -2,7 +2,7 @@
 # pkgver is bumped automatically by .github/workflows/build.yml on each
 # GitHub release; checksums are refreshed there with updpkgsums.
 pkgname=snippit
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Desktop clip-trimming tool with live multi-track audio mixing and lossless export (Tauri + React)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('cargo' 'nodejs' 'npm')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "snippit.desktop")
-sha256sums=('83f4b3d27bbeb32cc292a88627a60023f4247e37be0d91c6f85551c45b1961a1'
+sha256sums=('c74860fad9e9f5775833826dd9c7ede81a941a1c5bd13f835127a0c5599c46a8'
             '9a05c74e25b18ccdcdc1dc89cb0471a73203780fccea90a061d4b771c95f97a0')
 
 prepare() {

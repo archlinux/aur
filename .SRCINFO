@@ -1,6 +1,6 @@
 pkgbase = snippit
 	pkgdesc = Desktop clip-trimming tool with live multi-track audio mixing and lossless export (Tauri + React)
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/mikilimj/Snippit
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = snippit
 	depends = gst-libav
 	depends = hicolor-icon-theme
 	options = !lto
-	source = snippit-1.2.2.tar.gz::https://github.com/mikilimj/Snippit/archive/refs/tags/v1.2.2.tar.gz
+	source = snippit-1.3.0.tar.gz::https://github.com/mikilimj/Snippit/archive/refs/tags/v1.3.0.tar.gz
 	source = snippit.desktop
-	sha256sums = 83f4b3d27bbeb32cc292a88627a60023f4247e37be0d91c6f85551c45b1961a1
+	sha256sums = c74860fad9e9f5775833826dd9c7ede81a941a1c5bd13f835127a0c5599c46a8
 	sha256sums = 9a05c74e25b18ccdcdc1dc89cb0471a73203780fccea90a061d4b771c95f97a0
 
 pkgname = snippit
