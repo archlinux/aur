@@ -1,24 +1,26 @@
 # Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
 _name='netaudio'
 pkgname='netaudio'
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Cross-platform control, automation, and monitoring for Dante network audio devices"
 arch=('x86_64' 'aarch64')
 url='https://github.com/chris-ritsen/network-audio-controller'
 license=(Unlicense)
-depends=('python' 'python-click' 'python-cryptography' 'python-dbus-fast' 'python-ifaddr' 'python-rich'
+depends=('alsa-lib' 'libpulse' 'python' 'python-click' 'python-cryptography' 'python-dbus-fast' 'python-ifaddr' 'python-rich'
          'python-segno' 'python-typer' 'python-typing_extensions' 'python-yaml' 'python-zeroconf')
-optdepends=('python-jack-client: follow JACK audio with host_audio'
+optdepends=('jack: native JACK audio'
+            'python-jack-client: follow JACK audio with host_audio'
             'python-numpy: record JACK audio'
             'python-pulsectl-asyncio: follow PulseAudio audio with host_audio'
             'python-redis: publish device state to Redis'
             'wireshark-cli: live network capture')
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel' 'rust')
+options=('!lto')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "netaudio-${pkgver}.service::https://raw.githubusercontent.com/chris-ritsen/network-audio-controller/v${pkgver}/systemd/netaudio.service")
-sha256sums=('e9e1d61536612a0ffba0fa0ea8661a4e8c50142bec155dc24305ffdcbcff80ff'
-            '62000946fc3ed099a89358cff33295f94e74dafe8e8d3e21575f1e3202a90f8c')
+sha256sums=('74c783452adf0df0d6d3bd874c9865afc13613fe54ae0296f25c075fed367d99'
+            'de4e7a411fa6818436be641a2106d5c71cd77b7d3d1ac8659bc2e739e1364dcb')
 
 prepare() {
     cd "${_name}-${pkgver}/packages/netaudio-core"
