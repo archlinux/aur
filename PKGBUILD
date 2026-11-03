@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('webkitgtk-6.0' 'gtk4')
 provides=('sing-box-ez-gui' 'sing-box-ez')
 conflicts=('sing-box-ez-gui' 'sing-box-ez')
-source=("$pkgname-$pkgver::https://github.com/he11ah0und/sing-box-ez/releases/download/v$pkgver/sing-box-ez-amd64-linux-gcc-gui"
+source=("$pkgname-$pkgver::https://github.com/he11ah0und/sing-box-ez/releases/download/v$pkgver/sing-box-ez-amd64-linux-gcc-gui-aur"
         "sing-box-ez.desktop"
         "appicon.png")
 # The first entry is refreshed by the publish workflow on every release.
