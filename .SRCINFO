@@ -1,6 +1,6 @@
 pkgbase = arch-os-manager
 	pkgdesc = Update, maintain and repair Arch Linux from one place
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/murkl/arch-os-manager
 	install = arch-os-manager.install
@@ -25,7 +25,7 @@ pkgbase = arch-os-manager
 	optdepends = meld: merges configuration updates side by side
 	provides = system-manager
 	conflicts = system-manager
-	source = arch-os-manager-2.3.0.tar.gz::https://github.com/murkl/arch-os-manager/archive/refs/tags/2.3.0.tar.gz
-	sha256sums = 8812fd02fe34e0409d27454f93c02ba808ef68eb471040a93f5d7e5bd1b6ff8e
+	source = arch-os-manager-2.4.0.tar.gz::https://github.com/murkl/arch-os-manager/archive/refs/tags/2.4.0.tar.gz
+	sha256sums = 24721737742ba4d1fa21bf84e63fda662d24a619c8fdca6405f8235ee155f4f2
 
 pkgname = arch-os-manager

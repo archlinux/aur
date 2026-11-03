@@ -2,7 +2,7 @@
 # Stamped by tools/aur.sh at a release, which fills the placeholders.
 
 pkgname=arch-os-manager
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Update, maintain and repair Arch Linux from one place'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=('system-manager')
 conflicts=('system-manager')
 install=arch-os-manager.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8812fd02fe34e0409d27454f93c02ba808ef68eb471040a93f5d7e5bd1b6ff8e')
+sha256sums=('24721737742ba4d1fa21bf84e63fda662d24a619c8fdca6405f8235ee155f4f2')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
