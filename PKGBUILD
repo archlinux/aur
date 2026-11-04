@@ -3,7 +3,7 @@
 # Contributor: Yakumo Saki <yakumo at ziomatrix dot org>
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
-pkgver=3.5.343
+pkgver=3.5.402
 pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
@@ -27,7 +27,7 @@ _filename="$pkgname-desktop-$pkgver-x86_64.AppImage"
 source=("${_filename}::https://desktop.clickup.com/linux"
         "terms.html::https://clickup.com/terms")
 
-sha256sums=('c49e007b483b7266e093202d724d3f365dcb742c536c96e7908a342c48e66742'
+sha256sums=('baa1fbf68da593dba1056cf1402addb8de3090faf2af8b3eeb0201785941674d'
             'SKIP')
 
 prepare() {
