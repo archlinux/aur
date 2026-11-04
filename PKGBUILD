@@ -2,7 +2,7 @@
 pkgbase=kuna-bin
 pkgname=("${pkgbase}" "ghidra-extension-${pkgbase}")
 _pkgname="${pkgbase%-bin}"
-pkgver=1.989 # renovate: datasource=github-releases depName=Noelo-Lab/kuna
+pkgver=1.990 # renovate: datasource=github-releases depName=Noelo-Lab/kuna
 # Ghidra release the extension zip is built against; it is part of the asset name
 _ghidraver=12.1.2
 pkgrel=1
@@ -16,10 +16,10 @@ source=("${_dl}-specs.tar.gz"
   "${_dl}-KunaDecompiler-ghidra_${_ghidraver}.zip")
 source_x86_64=("${_dl}-linux-x86_64.tar.gz")
 source_aarch64=("${_dl}-linux-arm64.tar.gz")
-sha256sums=('1a0cdd327b99ac1cde891ef21f05824ed2313bbc41b8bda196cfd89e03419b6a'
-            'bf9411a8e89dcdd33f9653ba41b1f60a1d209f44ff41f755b8b1721b8a0254ec')
-sha256sums_x86_64=('f935d848ba4b3f515479b9dbcbf749b170e64703ae0636f28b050e7368ab517f')
-sha256sums_aarch64=('b5f12a6751a02ddd7c245c4ebfde008542041d702c7438dc30e778ae6216c47e')
+sha256sums=('ba23be41584062fb5b99d47f008fd794044890c800efcf2fcf683aa3ca09a541'
+            '9130b380c87beeb5b18f820ac300ea0ffcfed4ca6fe407f4c654042d839f2e94')
+sha256sums_x86_64=('4860603084da39dcdebeb9155116a886f8294003af54cecdb6a687529f0b5f54')
+sha256sums_aarch64=('8492ccd011c51aeac670435ab00ac3166400ad65f41b0198b6d9689ef2c147b9')
 
 package_kuna-bin() {
   depends=('glibc' 'libgcc')
