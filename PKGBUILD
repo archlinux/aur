@@ -4,7 +4,7 @@
 
 _name='PySimpleGUI'
 pkgname='python-pysimplegui'
-pkgver=6.3
+pkgver=6.4
 pkgrel=1
 pkgdesc='Create GUIs using Python, quickly and easily'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'tk')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-runner')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2cde7cc156ea2223840eaef1685a919ec057d77347ca0eedcd3b64e091b6498b')
+sha256sums=('4c218e1190da0dcb6cd74ec179426a0f9bbc9cdd0019d888018c3619ba23ffbf')
 
 build() {
     cd "${_name}-$pkgver"
