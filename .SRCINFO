@@ -1,7 +1,7 @@
 pkgbase = nghttp2
 	pkgdesc = Client, server and proxy programs from the nghttp2 library
-	pkgver = 1.70.0
-	pkgrel = 2
+	pkgver = 1.71.0
+	pkgrel = 1
 	url = https://nghttp2.org/
 	arch = x86_64
 	license = MIT
@@ -13,11 +13,11 @@ pkgbase = nghttp2
 	depends = systemd-libs>=209
 	depends = jansson>=2.5
 	depends = jemalloc
-	depends = libnghttp2>=1.70.0
+	depends = libnghttp2>=1.71.0
 	options = !emptydirs
 	backup = etc/nghttpx/nghttpx.conf
 	backup = etc/logrotate.d/nghttpx
-	source = https://github.com/nghttp2/nghttp2/releases/download/v1.70.0/nghttp2-1.70.0.tar.xz
-	sha256sums = e05cb1388eaca3830aded4ccf20044b6e1ac1a61411dcca11b0437c4285c8bc2
+	source = https://github.com/nghttp2/nghttp2/releases/download/v1.71.0/nghttp2-1.71.0.tar.xz
+	sha256sums = c0f55121d88650e4b9227aec28cebaf664d2417ca60fe70be0f8d38829f52116
 
 pkgname = nghttp2
