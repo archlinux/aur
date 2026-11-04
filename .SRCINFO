@@ -1,0 +1,38 @@
+pkgbase = lunalauncher-git
+	pkgdesc = A custom Minecraft launcher based on Prism Launcher (git build with bundled YukariConnect)
+	pkgver = 11.0.2.r11406.g9176c13fb
+	pkgrel = 1
+	url = https://github.com/AndreaFrederica/LunaLauncher
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = aspnet-targeting-pack>=10.0
+	makedepends = clang
+	makedepends = cmake
+	makedepends = dotnet-sdk>=10.0
+	makedepends = git
+	makedepends = jdk21-openjdk
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = qt6-imageformats
+	depends = gamemode
+	depends = hicolor-icon-theme
+	depends = java-runtime>=8
+	depends = libarchive
+	depends = libwebp
+	depends = qrencode
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-networkauth
+	depends = qt6-svg
+	depends = qt6-websockets
+	depends = tomlplusplus
+	depends = zlib
+	provides = lunalauncher
+	conflicts = lunalauncher
+	options = !debug
+	options = !lto
+	source = git+https://github.com/AndreaFrederica/LunaLauncher.git
+	sha256sums = SKIP
+
+pkgname = lunalauncher-git
