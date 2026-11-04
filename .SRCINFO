@@ -1,7 +1,7 @@
 pkgbase = bambu-studio
 	pkgdesc = PC Software for BambuLab and other 3D printers
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -53,8 +53,10 @@ pkgbase = bambu-studio
 	source = BambuStudio-02.09.01.70.tar.gz::https://github.com/bambulab/BambuStudio/archive/refs/tags/v02.09.01.70.tar.gz
 	source = BambuStudio.desktop
 	source = 0001-src-slic3r-CMakeLists.txt-avoid-linking-to-the-depre.patch
+	source = https://github.com/bambulab/BambuStudio/pull/12925.patch
 	sha256sums = 39175631bcd01e942e0936fd3610a9c4bd43b5920768eda0bb365b00985537b0
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 824a8f709f04a353d017362526b56db3c9cdd073a0b58d080f1e6e6095a186fe
 
 pkgname = bambu-studio

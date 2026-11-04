@@ -3,7 +3,7 @@ _raw_pkgver=02.09.01.70
 
 pkgname=bambu-studio
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
@@ -24,11 +24,18 @@ source=(
 	"BambuStudio-$_raw_pkgver.tar.gz::https://github.com/bambulab/BambuStudio/archive/refs/tags/v$_raw_pkgver.tar.gz"
 	'BambuStudio.desktop'
 	'0001-src-slic3r-CMakeLists.txt-avoid-linking-to-the-depre.patch'
+	'https://github.com/bambulab/BambuStudio/pull/12925.patch'
 )
-sha256sums=('39175631bcd01e942e0936fd3610a9c4bd43b5920768eda0bb365b00985537b0' SKIP SKIP)
+sha256sums=(
+	'39175631bcd01e942e0936fd3610a9c4bd43b5920768eda0bb365b00985537b0'
+	SKIP
+	SKIP
+	'824a8f709f04a353d017362526b56db3c9cdd073a0b58d080f1e6e6095a186fe'
+)
 
 prepare() {
 	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0001-src-slic3r-CMakeLists.txt-avoid-linking-to-the-depre.patch
+	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/12925.patch
 	mkdir -p \
 		$srcdir/BambuStudio_deps \
 		$srcdir/BambuStudio-$_raw_pkgver/build \
