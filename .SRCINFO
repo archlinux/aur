@@ -1,6 +1,6 @@
 pkgbase = archductor
 	pkgdesc = Archductor parallel coding-agent workflow tool built around Git worktrees
-	pkgver = 0.13.8
+	pkgver = 0.13.9
 	pkgrel = 1
 	url = https://github.com/perceo-ai/conductor-arch
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = archductor
 	depends = libxkbcommon
 	depends = libnotify
 	depends = libsecret
-	source = archductor-0.13.8.tar.gz::https://github.com/perceo-ai/conductor-arch/archive/refs/tags/v0.13.8.tar.gz
-	sha256sums = 172c673c15a2fad19d4cf7e51dee2f2b14f9d1510f0fde3596bb3d5ee3348ab5
+	source = archductor-0.13.9.tar.gz::https://github.com/perceo-ai/conductor-arch/archive/refs/tags/v0.13.9.tar.gz
+	sha256sums = 446c84f30c6efcd337298a5af703fc4cadbc97278094d2cba81c981450942376
 
 pkgname = archductor
