@@ -1,7 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 # Rendered by .github/workflows/aur-git.yml (or scripts/render-pkgbuild.sh).
 pkgname=rawm-control-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita configuration tool for RAWM gaming mice (git)"
 arch=('any')
