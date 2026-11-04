@@ -1,6 +1,6 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=keymux
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Keyboard middleware for gaming with low-level input interception"
 arch=('x86_64' 'aarch64')
@@ -11,12 +11,13 @@ makedepends=()
 optdepends=('systemd: for systemd service files (or use OpenRC/runit scripts)'
             'openrc: for OpenRC init scripts'
             'runit: for runit service directories'
+            'rust-wasm: compile steno plugins (rustc with the wasm32-unknown-unknown target)'
             'niri: automatic game mode detection in Niri compositor'
             'hyprland: automatic game mode detection in Hyprland compositor'
             'sway: automatic game mode detection in Sway compositor'
             'i3-wm: automatic game mode detection in i3 window manager'
             'bspwm: automatic game mode detection in bspwm window manager')
-options=('!debug')
+options=('!debug' '!lto')
 install=keymux.install
 
 _arch="$CARCH"
@@ -31,6 +32,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/LICENSE"
     "keymux.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux.service"
     "keymux-niri.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-niri.service"
+    "keymux-steno.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-steno.service"
     "keymux-hyprland.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-hyprland.service"
     "keymux-sway.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-sway.service"
     "keymux-i3.service::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/systemd/keymux-i3.service"
@@ -54,7 +56,7 @@ source=(
     "runit-keymux-bspwm-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/run"
     "runit-keymux-bspwm-log-run::https://raw.githubusercontent.com/noahlyk/keymux/v${pkgver}/runit/keymux-bspwm/log/run"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 "$srcdir/keymux" "$pkgdir/usr/bin/keymux"
@@ -62,6 +64,8 @@ package() {
     # Install systemd services (if systemd is detected)
     if [ -d "/run/systemd/system" ]; then
         install -Dm644 "$srcdir/keymux.service" "$pkgdir/usr/lib/systemd/system/keymux.service"
+        # On-screen steno keyboard and tape: any Wayland compositor with layer-shell
+        install -Dm644 "$srcdir/keymux-steno.service" "$pkgdir/usr/lib/systemd/user/keymux-steno.service"
 
         if pacman -Qq niri &>/dev/null; then
             install -Dm644 "$srcdir/keymux-niri.service" "$pkgdir/usr/lib/systemd/user/keymux-niri.service"
