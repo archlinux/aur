@@ -1,7 +1,7 @@
 _basepkg=kyanite
 
 pkgname="${_basepkg}-git"
-pkgver=r283.6cf2fd7
+pkgver=r393.c3514eb
 pkgrel=1
 pkgdesc='A lightweight, graphical text editor'
 arch=('x86_64' 'i686' 'aarch64' 'armv7')
