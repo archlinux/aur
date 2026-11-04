@@ -2,18 +2,18 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=tuner
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Minimalist radio station player geared towards RadioBrowser"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/tuner-labs/${pkgname}"
 license=('GPL-3.0-only')
-depends=('gtk3' 'libgee' 'gst-plugins-bad-libs' 'gst-plugins-good')
+depends=('gtk3' 'libgee' 'gst-plugins-good')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'dont-update-gsettings-schemas-at-build-time.patch')
-sha256sums=('75b9df7a99712a6ddf75ba5c492546df56826ec78c7bec28a0982cd3370f244c'
+sha256sums=('d4850ec868e11b9d1fc5c878e6dd78f9f77ec2e724c17348ba29ebd8ab7396a7'
             'cdf42ae339ae4c837811b302f127846f2a9aee3af19fc824b5743aa7c91d8008')
 
 prepare() {
