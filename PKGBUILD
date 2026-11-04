@@ -2,7 +2,7 @@
 
 _pkgname='opensuse'
 pkgname='libvirt-iso-opensuse-tumbleweed-bin'
-pkgver=20261024
+pkgver=20261027
 pkgrel=1
 pkgdesc='Official openSUSE Tumbleweed network installation ISO for libvirt'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=("${_archive}")
 sha256sums=(
-	'99e9ec05fc4780b9660b096428972aa40411941bc1b5675771ea1bae55d034d3'
+	'670e45e311dced310b7cd62b2bbb7e430b3c933f0ad396cf8312d5d52d329e06'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -33,9 +33,9 @@ sha256sums=(
 )
 b2sums=(
 	'SKIP'
-	'57034b0a7d7a3fd52a435e006c2e7319a13b56fc3e917b3b05bdf4cb470c3282c6dc649226353a8d14e4c2f2fe72ac7d9e947ba3b2587adfa0171f02d39952d2'
-	'b77bd0c8b1ac5b77813d88389cb99d195c057d7f4a1d5210c71b703b592e946793ead8825a1bb01938957768004857e588c562ec7a2b924cbaac34ca0be7873b'
-	'00068f63d84268ff073b3b02071d249243057e34004e86cab13b55837f78eab178dce238bd33a3e5dfffc069fbee9330a9257d9f4de9563180f13349fd1d59e4'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'4dccb397a48d320e2cdf0ac31d68426bbff1ff2f65e0d464ea77b4a809eb59be038eb81d4cdc67596dee0f49c63a84d735bd4da13626a8dfed771bc44c0a9423'
 )
 validpgpkeys=('AD485664E901B867051AB15F35A2F86E29B700A4')
@@ -53,9 +53,13 @@ _verify_pinned_key() {
 }
 
 prepare() {
+	local status
+
 	_verify_pinned_key "${srcdir}/opensuse-release-key.pubkey" 'AD485664E901B867051AB15F35A2F86E29B700A4' || return 1
-	gpgv --keyring "${srcdir}/release-key.gpg" \
-		"${srcdir}/${_checksum}.signature" "${srcdir}/${_checksum}" || return 1
+	status="$(gpgv --status-fd 1 --keyring "${srcdir}/release-key.gpg" \
+		"${srcdir}/${_checksum}.signature" "${srcdir}/${_checksum}")" || return 1
+	awk -v fingerprint="${validpgpkeys[0]}" \
+		'$1 == "[GNUPG:]" && $2 == "VALIDSIG" && $NF == fingerprint { valid = 1 } END { exit !valid }' <<< "${status}" || return 1
 	grep -Fxq "${sha256sums[0]}  ${_archive}" "${srcdir}/${_checksum}"
 }
 
