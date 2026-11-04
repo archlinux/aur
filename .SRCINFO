@@ -1,5 +1,5 @@
 pkgbase = arch-skm
-	pkgdesc = Build signed Arch Linux kernels with local module signing
+	pkgdesc = Automated linux kernel building with Signed Kernel Modules (in-tree & out-of-tree)
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/sk8thing/arch-skm
