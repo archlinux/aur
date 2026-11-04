@@ -1,0 +1,19 @@
+pkgbase = jotter-bin
+	pkgdesc = A fast Jupyter notebook TUI with vim keys, inline plots and rendered LaTeX
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/samox73/jotter
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = python
+	provides = jotter
+	conflicts = jotter
+	options = !strip
+	source_x86_64 = jotter-x86_64-0.5.2.tgz::https://github.com/samox73/jotter/releases/download/v0.5.2/jotter-x86_64-linux.tar.gz
+	sha256sums_x86_64 = b8eb28acfd58df187eaf471d0d53f6f26fdfb718d99f465aee12421cefdd137d
+	source_aarch64 = jotter-aarch64-0.5.2.tgz::https://github.com/samox73/jotter/releases/download/v0.5.2/jotter-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 6297855c75f68b95c944af51c6226a6cb26d9e0faf8b31cb8410889704c4c5ce
+
+pkgname = jotter-bin

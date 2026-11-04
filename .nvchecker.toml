@@ -1,0 +1,5 @@
+[jotter-bin]
+source = "github"
+github = "samox73/jotter"
+use_latest_release = true
+prefix = "v"
