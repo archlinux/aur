@@ -1,18 +1,32 @@
+omarchy_integration_reason() {
+  echo '  Omarchy tags only the terminals it knows. Until this runs, Super+C and Super+V send Ctrl+C (interrupt) and Ctrl+V to Splinterm instead of copying and pasting,'
+  echo '  and Splinterm misses the terminal opacity and input-method rules. It also makes Splinterm the default terminal and the screensaver terminal; splinterm integration omarchy disable reverses it.'
+}
+
 post_install() {
   echo 'Splinterm installed for the documented Arch/Omarchy target.'
   echo 'Active Omarchy Quattro themes are discovered and reloaded automatically; no theme hook is required.'
-  echo 'Add com.oldjobobo.splinterm.desktop to ~/.config/xdg-terminals.list when ready to make it preferred.'
-  echo 'Optional Omarchy screensaver integration: splinterm integration omarchy-screensaver enable'
+  echo 'On Omarchy, run: splinterm integration omarchy enable'
+  omarchy_integration_reason
+  echo '  Check it with: splinterm integration omarchy status'
+  echo 'Outside Omarchy, add com.oldjobobo.splinterm.desktop to ~/.config/xdg-terminals.list when ready to make it preferred.'
 }
 
 post_upgrade() {
-  echo 'Beta 3 removes terminal workload TasksMax overrides; existing daemon and workload units keep their old policy until recreated.'
-  echo 'From an external terminal, stop splinterd.service, run systemctl --user daemon-reload, then start splinterd.service; stopping ends active Dojos.'
-  echo 'This package does not restart user services automatically.'
-  echo 'Check Omarchy screensaver integration: splinterm integration omarchy-screensaver status'
+  echo 'This package never restarts user services: a running splinterd keeps the previous build, and its shells, until it restarts or upgrades.'
+  echo 'Upgrading from 0.1.x: a 0.1 daemon cannot hand its shells to 0.2, so the move to 0.2 needs one restart, which ends every running shell. Save work first.'
+  echo '  The next Splinterm launch asks before restarting a daemon that may still run shells; choosing Not now changes nothing.'
+  echo '  To restart it yourself, from a terminal Splinterm does not own: systemctl --user daemon-reload && systemctl --user restart splinterd.service'
+  echo 'Within 0.2: run splinterm upgrade to see whether a live upgrade can move the running shells to this build without ending them.'
+  echo 'After a restart, reopen your Splinterm Windows: a client that is already running keeps the old binary and is refused.'
+  echo 'Before downgrading to 0.1.x, stop splinterd.service yourself or use the guarded installer: the 0.1 launcher restarts an incompatible daemon without asking.'
+  echo 'On Omarchy, check the integration with: splinterm integration omarchy status'
+  echo '  If it is not yet enabled, run splinterm integration omarchy enable; without it, Super+C sends Ctrl+C (interrupt) to Splinterm.'
+  echo '  On Omarchy 4, if splinterm integration omarchy-screensaver status reports a shadowed legacy launcher, re-run splinterm integration omarchy enable, then run omarchy-restart-shell or log in again.'
 }
 
 post_remove() {
   echo 'User-owned Splinterm configuration and runtime state were preserved.'
-  echo 'If enabled, ~/.local/bin/omarchy-launch-screensaver is now a harmless dangling link; move that exact link out of PATH before uninstall with: splinterm integration omarchy-screensaver disable'
+  echo 'If the Omarchy screensaver integration was enabled, its launcher link is now dangling and Omarchy uses its own launcher.'
+  echo 'Remove the Splinterm require blocks from ~/.config/hypr/hyprland.lua and delete ~/.config/hypr/splinterm-integration.lua and ~/.config/hypr/splinterm-screensaver.lua, or run splinterm integration omarchy disable before uninstalling.'
 }
