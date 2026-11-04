@@ -1,0 +1,18 @@
+pkgbase = xtop-bin
+	pkgdesc = A TUI system monitor written in Rust for X (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xtop-cli/xtop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = xtop
+	conflicts = xtop
+	conflicts = xtop-git
+	source_x86_64 = https://github.com/xtop-cli/xtop/releases/download/v0.1.0/xtop-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d6cf49f622bb77d8ec998db4eb5ac389bbd515989368de1b97f294bb2ef1150e
+	source_aarch64 = https://github.com/xtop-cli/xtop/releases/download/v0.1.0/xtop-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f47dc5ca1dc9a8a20c64cc2c0c5d73f84055af3668d98f577f155d98793df96b
+
+pkgname = xtop-bin
