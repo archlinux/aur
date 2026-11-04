@@ -3,7 +3,7 @@
 pkgname=dux-search-git
 _pkgname=dux-search
 _binname=dsearch
-pkgver=2.0.0.r1.g646b0e0
+pkgver=2.1.0.r0.gd9495f1
 pkgrel=1
 pkgdesc='Fast filesystem search service (git)'
 arch=('x86_64' 'aarch64')
