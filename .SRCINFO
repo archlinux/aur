@@ -18,7 +18,7 @@ pkgbase = invoiceninja
 	options = !strip
 	backup = etc/webapps/invoiceninja/config.env
 	backup = var/lib/invoiceninja/config.env
-	source = invoiceninja::git+https://github.com/invoiceninja/invoiceninja.git=v5.13.53
+	source = invoiceninja::git+https://github.com/invoiceninja/invoiceninja.git#tag=v5.13.53
 	source = invoiceninja-queue.service
 	source = invoiceninja-queue.timer
 	source = invoiceninja-scheduler.service
