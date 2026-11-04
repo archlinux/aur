@@ -1,6 +1,6 @@
 pkgbase = epic-games-launcher-proton-bin
 	pkgdesc = Native Epic Games Launcher Preview with per-game Proton selection
-	pkgver = 0.110.0
+	pkgver = 0.111.0
 	pkgrel = 1
 	url = https://github.com/Adiker/egl-arch
 	arch = x86_64
@@ -29,13 +29,13 @@ pkgbase = epic-games-launcher-proton-bin
 	depends = util-linux
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
-	provides = epic-games-launcher=0.110.0
+	provides = epic-games-launcher=0.111.0
 	conflicts = epic-games-launcher
 	conflicts = epic-games-launcher-bin
-	noextract = egl-arch-release-0.110.0-1-x86_64.tar.zst
+	noextract = egl-arch-release-0.111.0-1-x86_64.tar.zst
 	options = !strip
 	options = !debug
-	source = egl-arch-release-0.110.0-1-x86_64.tar.zst::https://github.com/Adiker/egl-arch/releases/download/v0.110.0-1/epic-games-launcher-proton-bin-0.110.0-1-x86_64.pkg.tar.zst
-	sha256sums = 19747584e896ff8158f0fd25ceb5aa3e25aa203b22f7ba70d2755b5884098ebe
+	source = egl-arch-release-0.111.0-1-x86_64.tar.zst::https://github.com/Adiker/egl-arch/releases/download/v0.111.0-1/epic-games-launcher-proton-bin-0.111.0-1-x86_64.pkg.tar.zst
+	sha256sums = 4b0b45f7ce5960d6ceb778036cd37ccd1c7b663fb1ed1c55592e22c75f19a2d4
 
 pkgname = epic-games-launcher-proton-bin
