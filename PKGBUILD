@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
@@ -39,6 +39,8 @@ package() {
   cp -r electron "${pkgdir}/opt/${pkgname}/"
   cp -r src "${pkgdir}/opt/${pkgname}/"
   cp -r shared "${pkgdir}/opt/${pkgname}/"
+  # Built by build:web: the bundled plugin packages the server seeds on first start.
+  cp -r generated "${pkgdir}/opt/${pkgname}/"
 
   cp package.json "${pkgdir}/opt/${pkgname}/"
   cp tsconfig.json "${pkgdir}/opt/${pkgname}/" 2>/dev/null || true
