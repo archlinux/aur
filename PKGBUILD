@@ -2,12 +2,12 @@
 
 pkgname=perl-re-engine-re2
 pkgver=0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Replaces perl's regex engine in a given lexical scope with RE2"
 arch=('x86_64')
 url="https://github.com/dgl/re-engine-RE2"
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
-depends=('perl' 'gcc-libs' 'glibc' 're2')
+depends=('perl' 'libgcc' 'libstdc++' 'glibc' 're2')
 makedepends=('perl-extutils-cppguess')
 source=("https://www.cpan.org/modules/by-module/re/re-engine-RE2-${pkgver}.tar.gz"
         "https://src.fedoraproject.org/rpms/perl-re-engine-RE2/raw/d82ae9a185248467deb08e391be5febcd6c8da9e/f/re-engine-RE2-0.18-Unbundle-re2.patch"
