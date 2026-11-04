@@ -5,7 +5,7 @@ _flavor='virt'
 _series='v3.24'
 pkgname="libvirt-iso-${_pkgname}-${_flavor}-bin"
 pkgver=3.24.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Alpine Linux virtualization ISO for libvirt'
 arch=('x86_64')
 url='https://www.alpinelinux.org/downloads/'
@@ -31,22 +31,25 @@ sha512sums=(
 )
 b2sums=(
 	'SKIP'
-	'df2166f5bb3da6b2046772d7e71bb56d1bc63ff96e66c8bb48fc0fb517ccdaf91b590cbe5e0be9c85fbb7892d8d599f7528d5d6890dd275d4e5362a9cde80e22'
-	'a0df34a1645d2c21a80dff3776a53fe8b71d1daae06f11fa6f0f5446a496caa42b4d5c2365d5b6f8efcc2460f9c3182c77f0204783ff45cba43201c18ae12057'
+	'SKIP'
+	'SKIP'
 	'6ca732810a034a28e8297a022a7bbcef378ce5534c21d772bed0fe1668046df0594e2c6c66638efd23a894eb59990c6ed34c10e4f7653ceb25f2b9843365b8b7'
 )
 validpgpkeys=('0482D84022F52DF1C4E7CD43293ACD0907D9495A')
 
 prepare() {
 	local fingerprint
+	local status
 
 	fingerprint="$(gpg --batch --show-keys --with-colons "${srcdir}/alpine-release-key.pubkey" |
 		awk -F: '$1 == "fpr" {print $10; exit}')" || return 1
 	[[ "${fingerprint}" == '0482D84022F52DF1C4E7CD43293ACD0907D9495A' ]] || return 1
 	gpg --batch --yes --dearmor --output "${srcdir}/release-key.gpg" \
 		"${srcdir}/alpine-release-key.pubkey" || return 1
-	gpgv --keyring "${srcdir}/release-key.gpg" \
-		"${srcdir}/${_iso}.signature" "${srcdir}/${_iso}"
+	status="$(gpgv --status-fd 1 --keyring "${srcdir}/release-key.gpg" \
+		"${srcdir}/${_iso}.signature" "${srcdir}/${_iso}")" || return 1
+	awk -v fingerprint="${validpgpkeys[0]}" \
+		'$1 == "[GNUPG:]" && $2 == "VALIDSIG" && $NF == fingerprint { valid = 1 } END { exit !valid }' <<< "${status}"
 }
 
 check() {
