@@ -3,7 +3,7 @@
 pkgname=bc250-control-center-git
 # pkgver() rewrites this from the cloned main branch on every build; the
 # value here is only what the AUR shows until publish-aur.sh refreshes it.
-pkgver=1.21.3.r134.g37afbef
+pkgver=1.22.0.r138.gf55387f
 pkgrel=1
 pkgdesc='BC-250 monitoring, tuning and recovery control center'
 arch=('any')
@@ -11,10 +11,13 @@ url='https://github.com/movacx/bc250-control-center'
 license=('MIT')
 depends=(
   'bash'
-  'python'
+  'python>=3.11'
   'python-pyqt6'
   'python-psutil'
+  'python-pip>=22.3'
   'qt6-svg'
+  'openssl'
+  'ca-certificates'
   'polkit'
   'jq'
   'diffutils'
