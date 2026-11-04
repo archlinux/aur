@@ -3,7 +3,7 @@ _versioncode=50
 _pkgname=fluent-lyrics
 pkgname=${_pkgname}-bin
 pkgver="0.0.$_versioncode"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kobe-koto/FluentLyrics"
@@ -14,9 +14,6 @@ depends=(
   'at-spi2-core'
   'json-glib'
   'glycin'
-)
-optdepends=(
-  'libayatana-appindicator: for tray function to work (Recommended)'
 )
 provides=('fluent-lyrics')
 conflicts=('fluent-lyrics')

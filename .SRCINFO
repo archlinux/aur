@@ -1,7 +1,7 @@
 pkgbase = fluent-lyrics-bin
 	pkgdesc = Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)
 	pkgver = 0.0.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kobe-koto/FluentLyrics
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = fluent-lyrics-bin
 	depends = at-spi2-core
 	depends = json-glib
 	depends = glycin
-	optdepends = libayatana-appindicator: for tray function to work (Recommended)
 	provides = fluent-lyrics
 	conflicts = fluent-lyrics
 	source = cc.koto.fluent_lyrics.desktop
