@@ -1,7 +1,7 @@
 # Maintainer: Connor Prussin <connor@prussin.net>
 # Written by packages/distro/aur.sh in https://github.com/cprussin/domicile.
 pkgname=domicile-bin
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc=A\ Wayland\ compositor\ whose\ renderer\ is\ a\ web\ engine.\ Installs\ the\ \`domicile\`\ login\ session\,\ the\ engine\,\ the\ manganese\ and\ simple\ shells\,\ the\ PAM\ service\ the\ lock\ uses\ and\ the\ \`domicile\`\ group.
 arch=(x86_64)
@@ -13,11 +13,11 @@ provides=(domicile)
 conflicts=(domicile)
 backup=( etc/pam.d/domicile etc/security/limits.d/10-domicile.conf )
 install=domicile.install
-source=("domicile-1.0.0-1-x86_64.pkg.tar.zst::https://packages.domicile-desktop.com/arch/x86_64/domicile-1.0.0-1-x86_64.pkg.tar.zst")
-noextract=("domicile-1.0.0-1-x86_64.pkg.tar.zst")
-sha256sums=(70534a32f4bcdfb10bdde3e33dbe45152f05fc5bdd4f9dcae81e31b2957b3efc)
+source=("domicile-1.1.1-1-x86_64.pkg.tar.zst::https://packages.domicile-desktop.com/arch/x86_64/domicile-1.1.1-1-x86_64.pkg.tar.zst")
+noextract=("domicile-1.1.1-1-x86_64.pkg.tar.zst")
+sha256sums=(35579993a283c1d3acc12abce1f25e14dc1e29c7fad35f25aabdba1ce76396be)
 
 package() {
-  bsdtar -xpf "$srcdir/domicile-1.0.0-1-x86_64.pkg.tar.zst" -C "$pkgdir" \
+  bsdtar -xpf "$srcdir/domicile-1.1.1-1-x86_64.pkg.tar.zst" -C "$pkgdir" \
     --exclude .PKGINFO --exclude .MTREE --exclude .BUILDINFO --exclude .INSTALL
 }
