@@ -1,7 +1,7 @@
 # Maintainer: Phillip Dykman <phil.d324@gmail.com>
 pkgname=plasmic-cli
 # renovate: datasource=npm depName=@plasmicapp/cli
-pkgver=0.1.384
+pkgver=0.1.385
 pkgrel=1
 pkgdesc='Plasmic CLI for syncing local code with Plasmic designs (wraps @plasmicapp/cli)'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 conflicts=('plasmic')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@plasmicapp/cli/-/cli-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('98336ede8237b94f7d5ac36350d2c240d914647a74cb4f3573b6ffdcc7197815')
+sha256sums=('46f211787f190cfb5d45b3e86c456f974fae7f19298f11e0a1a564ae1da509c7')
 
 package() {
   npm install -g --no-fund --no-audit --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
