@@ -14,6 +14,6 @@ pkgbase = gsp370-tray
 	optdepends = libnotify: low-battery notifications
 	options = !debug
 	source = gsp370-tray-2.0.2.tar.gz::https://github.com/NasirA1991/gsp370-tray/releases/download/v2.0.2/gsp370-tray-2.0.2.tar.gz
-	sha256sums = 42736298a261764d0c605604b681c69aa60fe577097fa3847a053b27e3f10ae2
+	sha256sums = f031454a3e3056ad4978c87e0e5cefa8de81d50596b291b3b969262b51ad875c
 
 pkgname = gsp370-tray
