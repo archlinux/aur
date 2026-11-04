@@ -2,16 +2,16 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-rosbags
-pkgver=0.9.19
+pkgver=0.11.9
 pkgrel=1
-pkgdesc='Pure Python library to read, modify, convert, and write rosbag files.'
+pkgdesc='Pure Python library to read, modify, convert, and write rosbag files'
 arch=(any)
 url='https://gitlab.com/ternaris/rosbags'
 license=('Apache-2.0')
-depends=('python' 'python-lz4' 'python-numpy' 'python-ruamel-yaml' 'python-zstandard')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+depends=('python' 'python-lz4' 'python-numpy' 'python-ruamel-yaml' 'python-typing_extensions')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 source=("git+https://gitlab.com/ternaris/rosbags.git#tag=v${pkgver}")
-sha256sums=('e79c012eb9a365e438baa319944f54375202e683bb3ac3e9cc1a4f0b4fe6c013')
+sha256sums=('7baa6106887b6f610076316987294860c9df675d8665393ff425c736e98139a2')
 
 _pkgname=rosbags
 
