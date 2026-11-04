@@ -1,0 +1,21 @@
+pkgbase = slintlu
+	pkgdesc = Run Wayland desktop shells (bars, docks, launchers, overlays) written in the Slint language
+	pkgver = 0.1.0.r60.g871294b
+	pkgrel = 1
+	url = https://github.com/LunaDashWM/SlintLu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = wayland
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = libglvnd
+	optdepends = vulkan-icd-loader: Vulkan renderer
+	optdepends = vulkan-driver: Vulkan renderer
+	source = slintlu-871294b5e1ccc10167187185485e840517562a32.tar.gz::https://github.com/LunaDashWM/SlintLu/archive/871294b5e1ccc10167187185485e840517562a32.tar.gz
+	sha256sums = 3d1e7bf7b4601e639e4bb54e27b1926bb65ace694628c57cbfb1d9b6e063c386
+
+pkgname = slintlu
