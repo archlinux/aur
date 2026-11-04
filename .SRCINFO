@@ -1,9 +1,10 @@
 pkgbase = kalipso
 	pkgdesc = Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal
-	pkgver = 2.9
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://sansevieria-ou.github.io/kalipso/
 	arch = x86_64
+	license = LicenseRef-SANSEVIERIA-1.0
 	license = AGPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
@@ -20,7 +21,7 @@ pkgbase = kalipso
 	optdepends = plasma-workspace: the Plasma widget and the KWin script
 	optdepends = gnome-shell: the GNOME Shell extension
 	optdepends = xdg-desktop-portal: reader colours from the window behind
-	source = kalipso-2.9.tar.gz::https://github.com/SANSEVIERIA-OU/kalipso/archive/refs/tags/v2.9.tar.gz
-	sha256sums = 1a362b4cfa73acbbc5fc4e4831ebe92a941feeab19c1745e96e783e763c22a01
+	source = kalipso-3.0.tar.gz::https://github.com/SANSEVIERIA-OU/kalipso/archive/refs/tags/v3.0.tar.gz
+	sha256sums = 5aee11be2e1b94560feba7525f01e77cd651eb9c40e060df8d38747fefc94409
 
 pkgname = kalipso
