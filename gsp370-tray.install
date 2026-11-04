@@ -1,0 +1,14 @@
+post_install() {
+    udevadm control --reload-rules
+    for tty in /sys/class/tty/ttyACM*; do
+        [ -e "$tty/device" ] || continue
+        dev="$(readlink -f "$tty/device")"
+        [ "$(cat "$dev/../idVendor" 2>/dev/null)" = "1395" ] || continue
+        [ "$(cat "$dev/../idProduct" 2>/dev/null)" = "009a" ] || continue
+        udevadm trigger --action=add "$tty"
+    done
+}
+
+post_upgrade() {
+    post_install
+}
