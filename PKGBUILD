@@ -4,7 +4,7 @@
 
 pkgname=github-backup
 _pkgname=python-github-backup
-pkgver=0.66.0
+pkgver=0.66.1
 pkgrel=1
 pkgdesc="Backup a github user or organization."
 arch=(any)
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/josegonzalez/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('213d57b9329194a9e04b5916f5a4c29d8fb88d5a29270b929e5f2439b43ecdcfce5695aa86648f351d1ec8ba72630c96d7949c9ae5936c35e9402757a3f2cb0a')
+sha512sums=('874692e0b33291416fa10b2d9f636ef8710b3509e31aa131bd5b800aa1001554cd31106f6435226f6cc98548b1a9cf0eee32faa3c854bf86e22266e6150004f3')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
