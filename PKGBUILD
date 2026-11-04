@@ -4,8 +4,8 @@
 # workflow (scripts/linux-packages.mjs pkgbuild); change the template there, not this copy.
 
 pkgname=atc-bin
-pkgver=0.2.12
-_version=0.2.12
+pkgver=0.2.14
+_version=0.2.14
 pkgrel=1
 pkgdesc='Atomic Server: install an inference engine, pull a model, serve it over an OpenAI-compatible API (https://atomic.chat)'
 arch=('x86_64' 'aarch64')
@@ -19,16 +19,16 @@ conflicts=('atc')
 # A Bun-compiled binary carries its program after the executable; stripping it cuts the program off.
 options=('!strip' '!debug')
 
-_base='https://github.com/AtomicBot-ai/atomic-server/releases/download/v0.2.12'
+_base='https://github.com/AtomicBot-ai/atomic-server/releases/download/v0.2.14'
 source=("LICENSE-${_version}::${_base}/LICENSE"
         "NOTICE-${_version}::${_base}/NOTICE"
         "THIRD_PARTY_NOTICES-${_version}.md::${_base}/THIRD_PARTY_NOTICES.md")
 # The x86_64 package carries the baseline build (no AVX2 needed), as the deb and rpm do.
 source_x86_64=("atc-${_version}-x86_64::${_base}/atc-${_version}-x86_64-unknown-linux-gnu-baseline")
 source_aarch64=("atc-${_version}-aarch64::${_base}/atc-${_version}-aarch64-unknown-linux-gnu")
-sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4' '0fc89a2d40a3f52c9e85f9430412cb6095360a1b5fa500afff596e59d5cafd7f' '030f6309c343f8c6080e90bae127aa4631b38f2dc45aed95c67525d3b7d191f3')
-sha256sums_x86_64=('dc1cbedd35a72515aca1aceebca1de7a28f8f68ca1bb061941a953919172b7ce')
-sha256sums_aarch64=('2ddb9c19855c9b380a182621fbcbc8e721ba194e61a3effb332d9ab078a4527d')
+sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4' '0fc89a2d40a3f52c9e85f9430412cb6095360a1b5fa500afff596e59d5cafd7f' '49efb1ee1b3ec56b48329212a2e2218a7810f7296ad092721bd0501e04bec49b')
+sha256sums_x86_64=('f2a7ec8211703dc3c1c406fe45e56a2e68bf5b55730adbbb0f80d3b08d0c36bd')
+sha256sums_aarch64=('f917b8c47ea22474c1a65942af3323980f7c072c5b9173712725389776901d7c')
 
 package() {
   install -Dm755 "${srcdir}/atc-${_version}-${CARCH}" "${pkgdir}/usr/bin/atc"
