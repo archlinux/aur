@@ -1,7 +1,7 @@
 # Maintainer: Shisones <shisones745@proton.me>
 
 pkgname=waka-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A front-end for libalpm, inspired by nala (prebuilt binary)"
 url="https://github.com/Shisones/Waka"
@@ -12,7 +12,7 @@ conflicts=('waka')
 depends=('glibc' 'gcc-libs' 'pacman')
 optdepends=('curl: for waka fetch')
 source=("waka-$pkgver-x86_64.tar.gz::https://github.com/Shisones/Waka/releases/download/v$pkgver/waka-$pkgver-x86_64.tar.gz")
-sha256sums=('59a0f54473236d374e593cc426bbf1fd9709a883929c7d59b50f65248357a429')
+sha256sums=('974f5c98eb76abd78032847b9978a195340cc1df8233716447f2b342c93b214d')
 
 package() {
     install -Dm755 "$srcdir/waka" "$pkgdir/usr/bin/waka"
