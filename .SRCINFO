@@ -1,11 +1,14 @@
 pkgbase = m68k-elf-toolchain
 	pkgdesc = A complete gcc/binutils/newlib toolchain for m68k-elf
-	pkgver = 20261027
+	pkgver = 20261104
 	pkgrel = 1
 	url = https://www.gnu.org
 	arch = x86_64
-	license = GPL
-	license = BSD
+	license = GPL-3.0-or-later
+	license = LGPL-3.0-or-later
+	license = GPL-2.0-or-later
+	license = BSD-3-Clause
+	license = custom
 	makedepends = git
 	depends = bash
 	depends = zlib
@@ -14,7 +17,6 @@ pkgbase = m68k-elf-toolchain
 	depends = mpfr
 	depends = libmpc
 	depends = libisl
-	depends = libelf
 	depends = expat
 	depends = ncurses
 	depends = readline
@@ -30,8 +32,8 @@ pkgbase = m68k-elf-toolchain
 	options = !lto
 	options = staticlibs
 	source = git+https://sourceware.org/git/binutils-gdb.git#commit=cd679f551a3961ba3ac17a8f9e48d86323207b7c
-	source = git+https://gcc.gnu.org/git/gcc.git#commit=b567707db43a9990e4319c0c38f4b0c752d45ac7
-	source = git+https://sourceware.org/git/newlib-cygwin.git#commit=8ba4275b83ec27529f67e0d477611fa6d8d6e6bd
+	source = git+https://gcc.gnu.org/git/gcc.git#commit=096da3d6e3814aeab097a091efb66908f1789821
+	source = git+https://sourceware.org/git/newlib-cygwin.git#commit=b097f95233d26da7af6887798297d1efadb75370
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
