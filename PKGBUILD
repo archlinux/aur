@@ -1,8 +1,8 @@
 # Maintainer: lifespirit <life@crabs.pro>
 
 pkgname=pict-rs
-pkgver=0.5.19
-pkgrel=3
+pkgver=0.5.25
+pkgrel=1
 pkgdesc='A simple image hosting service'
 arch=('x86_64')
 url='https://git.asonix.dog/asonix/pict-rs'
