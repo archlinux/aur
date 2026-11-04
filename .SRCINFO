@@ -1,15 +1,15 @@
 pkgbase = sway-session
 	pkgdesc = Persistent work sessions for Sway
 	pkgver = 0.11.1
-	pkgrel = 1
-	url = https://automation.izoone.com/releases/sway-session
+	pkgrel = 2
+	url = https://entire.com/et/marang/sway-session
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.26.10
 	depends = sway
 	options = !debug
-	source = sway-session-0.11.1.tar.gz::https://automation.izoone.com/releases/sway-session/v0.11.1/sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6.tar.gz
+	source = sway-session-0.11.1.tar.gz::https://get.izoone.com/sway-session/v0.11.1/sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6.tar.gz
 	sha256sums = cf6cd82ddde4dcfca656d3a25d5ce5ce537270f72cd75662f92524d1052e6411
 
 pkgname = sway-session
