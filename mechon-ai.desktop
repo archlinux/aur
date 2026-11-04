@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Mechon AI
+GenericName=AI Dataset Engineering Workstation
+Comment=Local-first desktop workstation for SFT and DPO dataset engineering
+Exec=mechon-ai
+Icon=mechon-ai
+Terminal=false
+Type=Application
+Categories=Development;IDE;Science;
+Keywords=LLM;AI;SFT;DPO;Dataset;FineTuning;MachineLearning;
+StartupWMClass=mechon-ai
+MimeType=application/json;application/x-jsonlines;

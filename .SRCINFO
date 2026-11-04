@@ -1,0 +1,32 @@
+pkgbase = mechon-ai-git
+	pkgdesc = Local-first desktop workstation for SFT and DPO dataset engineering (always tracks and builds latest release tag)
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Mechon-AI/mechon-ai
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = nodejs>=18
+	makedepends = npm
+	makedepends = pkgconf
+	makedepends = rust
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = openssl
+	depends = pango
+	depends = sqlite
+	depends = webkit2gtk-4.1
+	optdepends = ollama: local offline inference runtime
+	provides = mechon-ai
+	conflicts = mechon-ai
+	options = !lto
+	source = mechon-ai::git+https://github.com/Mechon-AI/mechon-ai.git
+	source = mechon-ai.desktop
+	sha256sums = SKIP
+	sha256sums = c958bfc8aa215ff6589ba48f78b5958ae45d19dc6aec3d45c0ebad7b9e2089b5
+
+pkgname = mechon-ai-git
