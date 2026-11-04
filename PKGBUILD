@@ -1,8 +1,8 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=proton-pass-cli-bin
-pkgver=2.5.1 # datasource=github-releases depName=protonpass/pass-cli
-pkgrel=2
+pkgver=2.7.0 # datasource=github-releases depName=protonpass/pass-cli
+pkgrel=1
 pkgdesc='A command-line interface for managing your Proton Pass vaults, items, and secrets.'
 provides=('proton-pass-cli')
 conflicts=('proton-pass-cli')
@@ -16,8 +16,8 @@ _downloadUrl="https://github.com/protonpass/pass-cli/releases/download/${pkgver}
 source_aarch64=("pass-cli-aarch64-${pkgver}::${_downloadUrl}/pass-cli-linux-aarch64")
 source_x86_64=("pass-cli-x86_64-${pkgver}::${_downloadUrl}/pass-cli-linux-x86_64")
 
-sha256sums_aarch64=('03042c8ad70b21fa1da834f2e4e74484710ab3f05754af10c5035acdf68f3c87')
-sha256sums_x86_64=('40e27645e0485f5f0db928b81469d1c5a7c8968a162956e940069476244c02b1')
+sha256sums_aarch64=('93918d5621593cac88956854d0f52cbc43851dcd9c01840ffe48a88b3be84c6b')
+sha256sums_x86_64=('fd933e76179a5a33b295853e9c6696e49e584fe2141b1aafc63a3d78c0791cdb')
 
 package() {
 	install -Dm755 "pass-cli-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/pass-cli"
