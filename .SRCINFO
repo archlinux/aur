@@ -1,6 +1,6 @@
 pkgbase = beeper-bin
 	pkgdesc = The ultimate messaging app
-	pkgver = 4.3.264
+	pkgver = 4.3.276
 	pkgrel = 1
 	epoch = 1
 	url = https://www.beeper.com/beta
@@ -16,7 +16,7 @@ pkgbase = beeper-bin
 	conflicts = beeper-v4-bin
 	options = !strip
 	options = !debug
-	source = Beeper-4.3.264-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-4.3.264-x86_64.AppImage
-	sha256sums = 399ee4cd2b5e20b0d7d95039448190a98b6998a75648540149c4e5dbcce30551
+	source = Beeper-4.3.276-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-4.3.276-x86_64.AppImage
+	sha256sums = 35166a35fe137cbe254b34e7da52bb34f087a1829f00c87cf0f8b4604da9d5fe
 
 pkgname = beeper-bin
