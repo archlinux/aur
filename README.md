@@ -116,4 +116,4 @@ Audio und Headset-Integration wurden nicht funktional getestet.
 
 Referenzen: [PKGBUILD](https://man.archlinux.org/man/PKGBUILD.5),
 [makepkg](https://man.archlinux.org/man/makepkg.8),
-[Fortinet-Downloads](https://www.fortinet.com/support/product-downloads).
+[FortiFone-Downloads](https://fortivoice-cloud.com/noauth/index.html).

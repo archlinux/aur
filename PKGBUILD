@@ -5,7 +5,7 @@ pkgver=8.0.0.67
 pkgrel=1
 pkgdesc='Fortinet softclient for FortiVoice phone systems and FortiVoice Cloud'
 arch=('x86_64')
-url='https://www.fortinet.com/support/product-downloads'
+url='https://fortivoice-cloud.com/noauth/index.html'
 license=('LicenseRef-Fortinet')
 depends=(
   'alsa-lib'
