@@ -1,6 +1,6 @@
 pkgbase = rawm-control
 	pkgdesc = Native GTK4/libadwaita configuration tool for RAWM gaming mice
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/NasirA1991/rawm-control
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = rawm-control
 	depends = python-cairo
 	depends = python-dbus
 	depends = hicolor-icon-theme
-	source = rawm-control-0.1.5.tar.gz::https://github.com/NasirA1991/rawm-control/releases/download/v0.1.5/rawm-control-0.1.5.tar.gz
-	sha256sums = 4f918678a245da32563991060157bbea7effd06a97f826458a6ab8abed7fd9f5
+	source = rawm-control-0.1.6.tar.gz::https://github.com/NasirA1991/rawm-control/releases/download/v0.1.6/rawm-control-0.1.6.tar.gz
+	sha256sums = 7d94ca77a5a72c9a68c65e50bfba7ddab162c3b5e946862f77e4c965c3e50733
 
 pkgname = rawm-control
