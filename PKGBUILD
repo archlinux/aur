@@ -10,19 +10,12 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.98.0
+pkgver=0.99.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
 url="https://github.com/AlexanderMattTurner/agent-glovebox"
 license=('Apache-2.0')
-
-# `claude-guard` is this project's former package name. replaces+conflicts make
-# pacman migrate an existing `claude-guard` install to agent-glovebox on the next
-# `-Syu` (both fields are needed: replaces drives the swap, conflicts blocks a
-# co-install of the two names).
-replaces=('claude-guard')
-conflicts=('claude-guard')
 
 # bash 5: the wrapper needs associative arrays + ${var,,}. git drives the
 # worktree/snapshot flow; jq parses the firewall allowlist; coreutils backs the
@@ -40,8 +33,8 @@ optdepends=(
 )
 
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.98.0/agent-glovebox-0.98.0.tar.gz")
-sha256sums=('60c1f3e67db9e1c96e805d6763222cabc9fac26731bea7ef65980bf687470e65')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/releases/download/v0.99.0/agent-glovebox-0.99.0.tar.gz")
+sha256sums=('aa87adad5da558505e2c1026a0f9b6f96709f94bf15bf3ead2866ded9ebd8d65')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
