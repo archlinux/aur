@@ -1,7 +1,7 @@
 # Maintainer: Cypher-Monarch <monarchcypher@gmail.com>
 
 pkgname=cyphergatevpn-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="CypherGate VPN binary release"
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
 )
 
 sha256sums=(
-  'ad54cbe8df336f769f48200796ec6713278d42cf9320debfe8352bfc68def72b'
-  '8cf8d4aa6cf045741f7381cf47c553d2e4ef1a79876990d0bce01bcdb0cef67a'
+  'bae4919f95c4f80b6814e1aecb2bdf5ccc72aac85f4789a880fa16940a2210d1'
+  'a6432c857610504791ef912a682920f55dbdd5daf863cb2b4b331e40888d00ee'
 )
 
 validpgpkeys=(
@@ -41,7 +41,7 @@ package() {
   install -d "$pkgdir/usr/share/cyphergate/themes"
   cp -r "themes/." "$pkgdir/usr/share/cyphergate/themes/"
 
-  cp -r "Assets" "$pkgdir/opt/CypherGate/"
+  cp -r "assets" "$pkgdir/opt/CypherGate/"
 
   # desktop entry
   install -d "$pkgdir/usr/share/applications"
@@ -49,7 +49,7 @@ package() {
 [Desktop Entry]
 Name=CypherGate VPN
 Exec=/opt/CypherGate/cyphergate
-Icon=/opt/CypherGate/Assets/icon.png
+Icon=/opt/CypherGate/assets/icon.png
 Type=Application
 Categories=Network;Utility;
 EOF
