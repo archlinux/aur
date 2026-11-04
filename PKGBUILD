@@ -1,5 +1,6 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Evann DREUMONT (LeGmask) <archlinux@evann.dev>
 
 pkgbase=networkmanager-openvpn-pkcs11
 pkgname=(
