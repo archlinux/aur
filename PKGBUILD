@@ -1,7 +1,7 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 
 pkgname=vrcx-0
-pkgver=2.31.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc='Fast, lightweight VRCX implementation built with Tauri and Rust'
 arch=('x86_64')
@@ -27,13 +27,15 @@ makedepends=(
 )
 source=(
   "VRCX-0-${pkgver}.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v${pkgver}.tar.gz"
+  'fix-desktop-widget-fr-label-test.patch'
 )
-sha256sums=('564433e2f48431c04ab17a405a0582f0fa3201da3707c5ab2e185a6d51d7e87a')
+sha256sums=('af74f7edcb4b1bd610ec02808e44a236eeee7ddb898502c073518dce9bcd2b77'
+            'd30e1b15843802067e6787416a8d852812eacce121f7b226a4ef775fd72259bb')
 
 prepare() {
   cd "VRCX-0-${pkgver}"
 
-  # patch -Np1 -i "${srcdir}/fix-notification-row-by-role-test.patch"
+  patch -Np1 -i "${srcdir}/fix-desktop-widget-fr-label-test.patch"
 
   export CARGO_HOME="${srcdir}/cargo"
   export npm_config_cache="${srcdir}/npm-cache"

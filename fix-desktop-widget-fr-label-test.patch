@@ -1,0 +1,19 @@
+--- a/crates/i18n/src/tests.rs
++++ b/crates/i18n/src/tests.rs
+@@ -96,7 +96,7 @@
+ }
+ 
+ #[test]
+-fn activity_window_labels_are_localized_and_fall_back_to_english_where_untranslated() {
++fn activity_window_labels_are_localized() {
+     assert_eq!(
+         text("zh-CN", DesktopWidgetKey::DesktopWidgetMenuPin),
+         "窗口置顶"
+@@ -107,6 +107,6 @@
+     );
+     assert_eq!(
+         text("fr", DesktopWidgetKey::DesktopWidgetTitle),
+-        text("en", DesktopWidgetKey::DesktopWidgetTitle)
++        "Overlay du bureau"
+     );
+ }
