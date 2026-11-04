@@ -2,7 +2,7 @@
 # Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=pake-cli
-pkgver=3.17.8
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('a2aced73dc54dcb9e5ccf8e9654820498df0dcd58a0d79ec85321f8fa7ec6be8058951b55cf406bb2149f3bafc01bb07f7d86e1dbcd08ee5787676a017c81845')
+b2sums=('c2b24101126b2301ecb0c495ffbd7d6145324b3193f90f142c9a8c34a93d2fabc19ddee9335e0a93d52e7288c82070808027edf5cd01dc0fc1cb07a8debaef0b')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
