@@ -1,9 +1,9 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
+# Created with assistance from Qwen3.8 Flash Next.
 # Desktop GUI is WPF and Windows-only; the release ships a self-contained CLI for Linux.
 pkgname=discimagestudio-bin
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Disc Image Studio CLI: generate and burn visible image-mapped CD, DVD and BD-R discs (prebuilt Linux CLI, GUI is Windows-only)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio'
