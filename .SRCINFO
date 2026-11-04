@@ -1,6 +1,6 @@
 pkgbase = kiln-agents-bin
 	pkgdesc = Native Claude and Codex session launcher with a paired phone client
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/cjber/kiln
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = kiln-agents-bin
 	conflicts = kiln
 	conflicts = kiln-agents
 	options = !strip
-	source = kiln-0.18.1.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.18.1.tar.gz
-	sha256sums = 53d85e705c2b4dc8d0d2401288d86f272b14204c266c03a1da63ee285ddd20f3
-	source_x86_64 = kiln-linux-x64-0.18.1::https://github.com/cjber/kiln/releases/download/v0.18.1/kiln-linux-x64
-	sha256sums_x86_64 = d98daaf84eae027ac72e507771bcd3b53100d947279706c217d774f08ff49595
-	source_aarch64 = kiln-linux-arm64-0.18.1::https://github.com/cjber/kiln/releases/download/v0.18.1/kiln-linux-arm64
-	sha256sums_aarch64 = b4a222d7993551894ef8ee37ee70164e01aa1587203e3ca6d3f456d7c84b1cb2
+	source = kiln-0.19.0.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.19.0.tar.gz
+	sha256sums = b5eed93009c22fd5b8c076ec761e67168bc3d088066dff65d3b973eccc324b03
+	source_x86_64 = kiln-linux-x64-0.19.0::https://github.com/cjber/kiln/releases/download/v0.19.0/kiln-linux-x64
+	sha256sums_x86_64 = 4ea8809232b5618df1d3a37bf74bfa5f11ce6f07219a258697c00e29a0623c7a
+	source_aarch64 = kiln-linux-arm64-0.19.0::https://github.com/cjber/kiln/releases/download/v0.19.0/kiln-linux-arm64
+	sha256sums_aarch64 = b4885c5e4112357527442fe54fef36126a4b88fb8529a39a3357f908ca455226
 
 pkgname = kiln-agents-bin
