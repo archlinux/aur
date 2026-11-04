@@ -4,7 +4,7 @@
 
 pkgname=bazarr-beta
 _pkgname=${pkgname/-beta/}
-pkgver=1.6.3_beta.25
+pkgver=1.6.3_beta.26
 pkgrel=1
 pkgdesc='Subtitle management and download automation for Sonarr and Radarr'
 arch=(any)
@@ -44,7 +44,7 @@ source=(
   imghdr.py
 )
 noextract=("${pkgname}-${pkgver//_/-}.zip")
-sha256sums=('53801cd23765362be0879c03803422a826906f5f6339413a119320978321d1f7'
+sha256sums=('9bcebc570e3387370cc6bd21fa4da35fa33c0a8a86e0704998bbd8e7058936e4'
             '5921db5ff3d3501cc8ff4a137d161b525fb91cce02369d5cc39ef6eb7b3a79fc'
             '73a60121fd2b7b8f5bad75ec4b0f92552fcae0e29a4b9e6aaf15f86a825a88a3'
             'e7055260d0f3554e8b628d9560d8e12a40f720d76542048df0dfc838db88357b'
