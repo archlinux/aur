@@ -3,10 +3,14 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
 _pkgname="millennium"
-pkgname="${_pkgname}-git"
+pkgbase="${_pkgname}-git"
+pkgname=(
+    "${_pkgname}-git"
+    "${_pkgname}-x86-git"
+)
 _Pkgname="Millennium"
 pkgver=v3.6.3.beta.1.r7.gd6a7822a
-pkgrel=2
+pkgrel=3
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead. (git-version, next branch)"
 arch=('x86_64')
 url="https://steambrew.app"
@@ -40,21 +44,21 @@ makedepends=(
 provides=("${_pkgname}=${pkgver}")
 conflicts=(
     "${_pkgname}"
+    "${_pkgname}-bin"
 )
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
     'https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/949.patch' # For the new SteamRT3 build
-    'reqhald-949.patch'
 )
 sha256sums=('SKIP'
-            '8f9f5c5ad2b8aa5bafd8e543e84d602def01c2dfb8a17ddccfdcc551a36d32fe'
-            'be62f4369a359e47e6de90f5a14dcf1d7df23c1d8cc9049b594a50fa9055b98b')
+            'e934cfcdf8eb01224abcd77c20e5689a8857020ab5921c0bda850da8287b7643')
 options=(!debug)
 install="${_pkgname}.install"
 
 pkgver() {
     cd                  "${srcdir}/${_Pkgname}"
-    git                 describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git                 describe --long --tags | \
+    sed                 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -66,46 +70,53 @@ prepare() {
         src="${src##*/}"
         [[ $src = *.patch ]] || continue
         echo "Applying patch ${src}..."
-        git apply -v -3 "../${src}"
+        git  apply -v -3 "../${src}"
     done
 
-    LDFLAGS_NEW="${LDFLAGS//-lomp/}"
-    LDFLAGS_NEW="${LDFLAGS_NEW//-lpthread/}"
+    # strip nodlopen, it'll break steamRT3 sandboxing
+    LDFLAGS="$(echo "${LDFLAGS}"     | sed -E 's/-Wl,-z,nodlopen$//g; s/,-z,nodlopen//g')"
+    RUSTFLAGS="$(echo "${RUSTFLAGS}" | sed -E 's/-Wl,-z,nodlopen$//g; s/,-z,nodlopen//g')"
 
-    env LDFLAGS="${LDFLAGS_NEW}" \
+    # strip omp and pthread for m32 build, as this will cause issues otherwise when linking to libs we don't package for m32.
+    LDFLAGS_NEW="$(echo "${LDFLAGS}"     | sed -E 's/-l(omp|pthread)$//g; s/,-l(omp|pthread)//g')"
+    RUSTFLAGS_NEW="$(echo "${RUSTFLAGS}" | sed -E 's/-l(omp|pthread)$//g; s/,-l(omp|pthread)//g')"
+
+    env LDFLAGS="${LDFLAGS_NEW}" RUSTFLAGS="${RUSTFLAGS_NEW}" \
+    cmake               -GNinja --preset linux-arch-pkgbuild-x86 .
+    env LDFLAGS="${LDFLAGS}"     RUSTFLAGS="${RUSTFLAGS}"     \
     cmake               -GNinja --preset linux-arch-pkgbuild     .
-
-    cmake               -GNinja --preset linux-arch-pkgbuild-x64 .
 }
 
 build() {
     cd                  "${srcdir}/${_Pkgname}"
-
     cmake               --build build
-    cmake               --build build64
+    cmake               --build build32
 }
 
-package() {
-    cd                  "${srcdir}/${_Pkgname}"
+_install_millennium_variant() {
+    local _arch="${1}"
+    local _build_dir="${2}"
+    local _suffix="${3}"
 
-    # Finally, install files to package location
-    declare -a files=(
-        "build:libmillennium_x86.so"
-        "build:libmillennium_hhx64.so"
-        "build:libmillennium_bootstrap_x86.so"
-        "build:libmillennium_luavm_x86"
-        "build:libmillennium_bootstrap_hhx64.so"
-        "build:libmillennium_pvs64"
-        "build64:libmillennium_x64.so"
-        "build64:libmillennium_luavm_x64"
-        "build64:libmillennium_bootstrap_x64.so"
-    )
+    install -Dm755 "${_build_dir}/lib${_pkgname}_${_arch}.so"           -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm755 "${_build_dir}/lib${_pkgname}_bootstrap_${_arch}.so" -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm755 "${_build_dir}/lib${_pkgname}_luavm_${_arch}"        -t "${pkgdir}/usr/lib/${_pkgname}/"
+}
 
-    for entry in "${files[@]}"; do
-        dir="${entry%%:*}"
-        file="${entry##*:}"
-        install         -Dm755 "${dir}/${file}" -t "${pkgdir}/usr/lib/millennium/"
-    done
+package_millennium-git() {
+    cd "${srcdir}/${_Pkgname}"
 
-    install             -Dm644 'LICENSE.md'     -t "${pkgdir}/usr/share/licenses/millennium/"
+    _install_millennium_variant "x64" "build"
+    install -Dm755 "build/lib${_pkgname}_hhx64.so"           -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm755 "build/lib${_pkgname}_bootstrap_hhx64.so" -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm755 "build/lib${_pkgname}_pvs64"              -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm644 'LICENSE.md'                              -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+}
+
+package_millennium-x86-git() {
+    cd "${srcdir}/${_Pkgname}"
+
+    _install_millennium_variant "x86" "build32"
+    install -Dm755 "build32/lib${_pkgname}_bootstrap_x86.so" -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm644 'LICENSE.md'                                -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
