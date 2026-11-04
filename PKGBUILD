@@ -2,7 +2,7 @@
 
 _gemname=solargraph
 pkgname=ruby-$_gemname
-pkgver=0.62.0
+pkgver=0.62.1
 pkgrel=1
 pkgdesc="A Ruby language server"
 arch=(any)
@@ -52,9 +52,9 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/castwide/${_gemname}/archive/v${pkgver}.tar.gz"
   "no-git-lsfiles-and-lower-rbs-and-rdoc-requirements.patch"
 )
-sha256sums=('fd3bb0b7fc2217a12fe817b057fbd90e77683011aa5a43e2a120166414d780e2'
+sha256sums=('6af16b87d4a95ccd92936c5f1cfa7102d4b8280fd74efeecc42d78a446a5018e'
             'e1d0054dd02c42efbd598d49c49d3f6a190ef234ca1b1b222c109d416f0461b6')
-b2sums=('d02841cc1777bf2b689f6c4e9beb0d15c80ecc25e6b67ddad127e6cdc7e9771c06d1043be12622a514a0fed2a874e3bb2acc0c42e0bd83628160ab94a4dd4973'
+b2sums=('9cd9e78c539c51a23cb9e4e055c22af383b9820b39bc4332deed927fa63dddc50fdd7585c3a094ed4f796fd74dcdb42df9c84e01f4f8506049f18c2fa7a63b09'
         'eca592100065db2dae1028f8762ceec4ed56e42609cddf901b7b0d858445e5f3034595ee65ede9d8a56d79944f4aa568579afb7fddf775ec17e0c6579c230998')
 
 prepare() {
