@@ -7,7 +7,6 @@ pkgbase = webdav-bin
 	arch = aarch64
 	arch = armv7h
 	arch = armv6h
-	arch = i686
 	license = MIT
 	provides = webdav=5.17.3
 	conflicts = webdav
@@ -28,7 +27,5 @@ pkgbase = webdav-bin
 	sha256sums_armv7h = b3efa5910058795729f82252f21e23aad0fc31f4f6220caf0367603c058fa08a
 	source_armv6h = webdav-5.17.3-armv6.tar.gz::https://github.com/hacdias/webdav/releases/download/v5.17.3/linux-armv6-webdav.tar.gz
 	sha256sums_armv6h = 8733eccc78df85a0925610a4d9e82c772e12057c1678c10f12b929ac01f4bb46
-	source_i686 = webdav-5.17.3-386.tar.gz::https://github.com/hacdias/webdav/releases/download/v5.17.3/linux-386-webdav.tar.gz
-	sha256sums_i686 = a3db6d66226b7ce0f08188ed410d9de6ace3d64117a3f52cb20c83790902e91a
 
 pkgname = webdav-bin

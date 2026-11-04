@@ -4,7 +4,7 @@ pkgname=webdav-bin
 pkgver=5.17.3
 pkgrel=1
 pkgdesc='Standalone WebDAV server (prebuilt)'
-arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'i686')
+arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/hacdias/webdav'
 license=('MIT')
 provides=("webdav=${pkgver}")
@@ -19,7 +19,6 @@ source_x86_64=("webdav-${pkgver}-amd64.tar.gz::${_release}/linux-amd64-webdav.ta
 source_aarch64=("webdav-${pkgver}-arm64.tar.gz::${_release}/linux-arm64-webdav.tar.gz")
 source_armv7h=("webdav-${pkgver}-armv7.tar.gz::${_release}/linux-armv7-webdav.tar.gz")
 source_armv6h=("webdav-${pkgver}-armv6.tar.gz::${_release}/linux-armv6-webdav.tar.gz")
-source_i686=("webdav-${pkgver}-386.tar.gz::${_release}/linux-386-webdav.tar.gz")
 sha256sums=('d178253eaf9dee6faad783ec9a1d61c0babca6ddced3216ee81957e05873b201'
             'f775c6ec0eb47472b7d7a13a10508b5aedf2fa7a92aeb4a8492484e64dd64b56'
             '2e6ceac8a2cbdd85ceb6ebbb7cae7d1ad00b14fc8a7e131da9c7ef573f3246e0'
@@ -28,7 +27,6 @@ sha256sums_x86_64=('a992c55638e00e345ebf1b065f1f70b04450905868327c0bc1c6ea1822ba
 sha256sums_aarch64=('62ffe5798ece015d51a181348edff188807467a76e9bf6eac696932833f88b58')
 sha256sums_armv7h=('b3efa5910058795729f82252f21e23aad0fc31f4f6220caf0367603c058fa08a')
 sha256sums_armv6h=('8733eccc78df85a0925610a4d9e82c772e12057c1678c10f12b929ac01f4bb46')
-sha256sums_i686=('a3db6d66226b7ce0f08188ed410d9de6ace3d64117a3f52cb20c83790902e91a')
 
 build() {
   for shell in bash fish zsh; do
