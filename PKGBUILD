@@ -4,7 +4,7 @@
 # MIT license. See LICENSE.packaging.
 
 pkgname=openshell-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='The safe, private runtime for autonomous AI agents.'
 arch=('x86_64' 'aarch64')
@@ -55,14 +55,14 @@ sha256sums=('d07c0367e2861e7fe70fa1b679f879f4fa2f9138ade4457d44ecf8b2e135bb45'
             '3e7781ebd7780720d4310ed798f2cacfb1c8ac60a8ceb6cd4fbda81d1d375ba5'
             '707c93399d6af66b8f4479e5c9a4e1958958f883324f033aa7eae8d2708b8c13'
             'b21382e3e0ce1f394e66eca7ef8903c36214c9c267c5784d1ad58d96a1e6b95a')
-sha256sums_x86_64=('2951c67366f3e3584ed9cec8d49b9f0b0eefc8cacea8b0582ac164590492f136'
-                   '811265a55993beb333905a5b560764a40aa9177250171f711dce8ba820f7eff8'
-                   '789c42ea8783f66574bc49d09f32136224a182f5ef1a46b84b71ef2f31de818f'
-                   '855fdf50b9f1200a6fafd1474b725adff3e7bfe9f787252cdec01c16e90d717c')
-sha256sums_aarch64=('259452a6065c4f76e71884b84e8696cc0fec2f8a832891d333f268ca7bb55a21'
-                    'de7342457746829138cecbc21cc90a2d5d4c0ea22a362b976831ac3bbb0109d6'
-                    '93092ff5669cd312f915d704243365c688933232c931cae43d492669f4a1673e'
-                    'f12c877d290638f67c3e54b1faed94a50b27f6404200b44c195e6dded6b9a994')
+sha256sums_x86_64=('5c1adfcae797eac9b2e8b9280c66c1f75e4e84d9e31ce6938c5b994314ef6098'
+                   'e1714dcfd85c949e2f53260bcfbf04b203f6f5cbd3a61e61c11c38cbc91cb102'
+                   'c1b3166d1c232948293ff84b0fac2d0419a24e4b694d354ba6aeb100efa2f039'
+                   'fb350f042546efc9c0ecf00bd59d3f96c23367fc450183f8d97326fadd124e21')
+sha256sums_aarch64=('696b523c263895b69eaa7c7e6afbb19b8af6c65cd79c7ffac7b685b6e3aa23da'
+                    'eb0ba91efebbcc61e4cfae5fb18934c5fe308ece1a09ba16c999d00c452109dc'
+                    'ed60eab7612f372a0f669186ac2637fe3223fe90a1c20ad51d747e1a87ca5c6d'
+                    '490993872ff31d0f886a0fd01238bf8498bb64f6d9df64db68121e736c69cbc2')
 
 build() {
   pandoc -s -t man "$srcdir/openshell-$pkgver.1.md" -o "$srcdir/openshell.1"
