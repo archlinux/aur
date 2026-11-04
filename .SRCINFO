@@ -14,7 +14,6 @@ pkgbase = invoiceninja
 	optdepends = nginx: web server
 	optdepends = redis: session driver
 	optdepends = chromium: pdf generation using snappdf
-	noextract = invoiceninja-5.13.53.tar
 	options = !strip
 	backup = etc/webapps/invoiceninja/config.env
 	backup = var/lib/invoiceninja/config.env

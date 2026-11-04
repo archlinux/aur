@@ -27,7 +27,6 @@ sha256sums=('SKIP'
             'ed7ce9c42bf1de019c4ca43c1a7bfb32e65aae8c6687ce0e5a4474c7e4a7537e'
             'b54a95a349294c93a97832cc88652e46d30692c722906ef4bce99ef4d73e8d33'
             'a72270bdc4bb146cc00fe0162b8d366467eed96582f64a40ec6d8e2bd9a013ba')
-noextract=("$pkgname-$pkgver.tar")
 backup=("etc/webapps/$pkgname/config.env" "var/lib/$pkgname/config.env")
 install="$pkgname.install"
 options=("!strip")
