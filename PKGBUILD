@@ -6,22 +6,22 @@
 pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
-pkgver=1.11.4
+pkgver=1.11.7
 pkgrel=1
 pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xiaoyaocz/dart_simple_live'
 license=('GPL-3.0-only')
 _flutterchannel=stable
-_flutterversion=3.38.9
+_flutterversion=3.47.9
 depends=('xdg-user-dirs' 'gtk3' 'mpv')
 makedepends=('ninja' 'cmake' 'clang' 'git' 'patchelf')
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/${_flutterchannel}/linux/flutter_linux_${_flutterversion}-${_flutterchannel}.tar.xz"
-    "git+https://github.com/xiaoyaocz/dart_simple_live.git#commit=615ea4b1b0c808c5ac21d6f0410c519dbac1a19d"
+    "git+https://github.com/xiaoyaocz/dart_simple_live.git#commit=bccd2ba2e77bc34b3e3a0897f1cb5e0b402afd2b"
 )
-sha256sums=('cb39eeb717c7d7dce95736b862cada2fdedeebcbb0107c44a346659c77031003'
-            '8e1f6b5497238c6b358e6438bf29e7c812e33fcba285c4c9feed64f5125b7767')
+sha256sums=('25ed8c3c29d51a7353f2a944310b478af8214920639524b19c50a19e6c044c5a'
+            '17bfb7236f25c628bfbf78ee21d9776b1f1e5f567f7197856857c83057a2671d')
 case "${CARCH}" in
   "x86_64")
     export _dartarch="x64"
