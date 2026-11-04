@@ -1,7 +1,7 @@
 # Maintainer: Zorbatron <46525467+Zorbatron@users.noreply.github.com>
 
 pkgname=openmeters
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Fast and professional audio metering/visualization for Linux."
 
@@ -13,7 +13,7 @@ makedepends=("git" "cargo" "pkgconf" "clang")
 provides=("openmeters")
 conflicts=("openmeters")
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('c5ff4b5d629b2cd23dbafd3536844aa53cbe0cee3d0b8a8265bde77913c6db92')
+sha256sums=('3a95961b047f8967aebe385a70d6f71ea5f8e693e0cc96d8b857d2c64b973ca6')
 # force disable lto for this package; it fails linking if it's enabled
 options=('!lto')
 
