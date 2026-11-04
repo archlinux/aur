@@ -1,6 +1,6 @@
 pkgbase = bootrecov
 	pkgdesc = TUI/CLI helper for /boot recovery snapshots and bootloader fallback entries
-	pkgver = 0.4.18
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://automation.izoone.com/releases/bootrecov
 	install = bootrecov.install
@@ -13,7 +13,7 @@ pkgbase = bootrecov
 	depends = squashfs-tools
 	depends = file
 	options = !debug
-	source = bootrecov-0.4.18.tar.gz::https://automation.izoone.com/releases/bootrecov/v0.4.18/bootrecov-596fe93567a12b4f29ee1bdffbcf36cdea6bae8c.tar.gz
-	sha256sums = 4c42371cfe9629bc89bdcf10c900aacf6b9100138160335e8a8072db1951fe31
+	source = bootrecov-0.5.0.tar.gz::https://automation.izoone.com/releases/bootrecov/v0.5.0/bootrecov-17867977094a36caf108880e807692b0a8f8c805.tar.gz
+	sha256sums = aae7d2030e13f09b70cda9c35cd67d580d6d57352b0a0025b4f62d393d91ef4f
 
 pkgname = bootrecov
