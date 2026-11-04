@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=lynx-share-bin
-pkgver=0.1.22alpha
+pkgver=0.1.23alpha
 pkgrel=1
 pkgdesc='A lightweight DAW with the FL Studio workflow (prebuilt binaries)'
 arch=('x86_64')
@@ -18,10 +18,10 @@ provides=('lynx-share')
 conflicts=('lynx-share')
 options=(!strip !debug)
 
-_tag=v0.1.22-alpha
+_tag=v0.1.23-alpha
 _upstreamver="${_tag#v}"
 source=("$url/releases/download/$_tag/LYNX-$_upstreamver-linux-x86_64.tar.gz")
-sha256sums=('0ccd30651e37228138657e19ffdf8155310cb6545e4fda56da9517a5a1ea7412')
+sha256sums=('879dfb5f89a03816d3b4e7fc2bc927e44ffc697c41888885e77d7888d01b29e1')
 
 package() {
   cd "$srcdir/LYNX-$_upstreamver-linux-x86_64"
