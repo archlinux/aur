@@ -5,7 +5,7 @@
 # rerun packaging/scripts/generate-aur-bin.sh instead.
 
 pkgname=panasonic-posture-manager-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Prebuilt posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
@@ -36,7 +36,7 @@ install="${pkgname}.install"
 
 _archive="panasonic-posture-manager-${pkgver}-1-x86_64.pkg.tar.zst"
 source=("${_archive}::https://github.com/adogecheems/panasonic-posture-manager/releases/download/v${pkgver}/${_archive}")
-sha256sums=('3373872c593740c01e61409582a3852b60be442ba47b07c1c6a51b0ee8d2f883')
+sha256sums=('535656d5f273b2b81412328ae857ad87fe43c9a858647dd66a6b4a1427c7a160')
 
 package() {
   bsdtar -xf "${srcdir}/${_archive}" -C "${pkgdir}" usr
