@@ -1,6 +1,6 @@
 pkgbase = vm-qontrol-bin
 	pkgdesc = Create, run and fine-tune QEMU/KVM virtual machines: guided setup, unattended installs, settings that explain themselves
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/VM-Qontrol
 	arch = x86_64
@@ -37,9 +37,9 @@ pkgbase = vm-qontrol-bin
 	optdepends = polkit: one-prompt host changes (host drives, PCI handover, huge pages, nested virtualization)
 	provides = vm-qontrol
 	conflicts = vm-qontrol
-	noextract = VMQontrol-0.0.5-linux-x64.tar.gz
+	noextract = VMQontrol-0.0.6-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/VM-Qontrol/releases/download/v0.0.5/VMQontrol-0.0.5-linux-x64.tar.gz
-	sha256sums = 403999444958bb45c5df7388a4407b04d40b24ed5b2b3e3803ce3505ae54fb7b
+	source = https://github.com/codingncaffeine/VM-Qontrol/releases/download/v0.0.6/VMQontrol-0.0.6-linux-x64.tar.gz
+	sha256sums = 4b17528218a736a9da3dd5bc9388e38e70022e1b82f9cbd632ec08a31f4a5a5a
 
 pkgname = vm-qontrol-bin
