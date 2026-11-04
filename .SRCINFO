@@ -1,6 +1,6 @@
 pkgbase = python-pymboot-rs
 	pkgdesc = Python bindings for McuBoot implementation in Rust, providing high-performance communication with NXP MCU bootloader
-	pkgver = 0.1.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/nxp-mcuxpresso/rblhost
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-pymboot-rs
 	conflicts = rblhost
 	options = !debug
 	options = !lto
-	source = pymboot-rs::git+https://github.com/nxp-mcuxpresso/rblhost.git#tag=v0.1.0
-	sha256sums = 4003ecddc991652a454381a559e982858b6c61c5608abef69c499798161dbc10
+	source = pymboot-rs::git+https://github.com/nxp-mcuxpresso/rblhost.git#tag=v0.3.0
+	sha256sums = 09b11bf8c93c83e7bcff398c39b900b631603c2d69ff14efcf2158a36a5f9d54
 
 pkgname = python-pymboot-rs

@@ -2,7 +2,7 @@
 
 pkgname=python-pymboot-rs
 _name=${pkgname#python-}
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Python bindings for McuBoot implementation in Rust, providing high-performance communication with NXP MCU bootloader"
 provides=(${pkgname} rblhost)
@@ -29,7 +29,7 @@ optdepends=()
 options=(!debug !lto)
 license=('BSD-3-Clause')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('4003ecddc991652a454381a559e982858b6c61c5608abef69c499798161dbc10')
+sha256sums=('09b11bf8c93c83e7bcff398c39b900b631603c2d69ff14efcf2158a36a5f9d54')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
