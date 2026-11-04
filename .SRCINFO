@@ -1,7 +1,7 @@
 pkgbase = python-pyoxipng
 	pkgdesc = Python wrapper for multithreaded .png image file optimizer oxipng
 	pkgver = 9.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nfrasser/pyoxipng
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,6 @@ pkgbase = python-pyoxipng
 	makedepends = python-installer
 	makedepends = python-maturin
 	makedepends = python-wheel
-	makedepends = rust
-	makedepends = cargo
 	depends = python
 	depends = oxipng
 	options = !lto
