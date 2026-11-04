@@ -4,6 +4,7 @@
 # Split package by board lineup to avoid clutter.
 # Installed by a libalpm hook.
 # For the Pi5 see https://github.com/raspberrypi/rpi-eeprom
+# Versioning follows Arch Linux ARM.
 
 pkgbase=raspberrypi-bootloader
 pkgname=(
@@ -11,8 +12,8 @@ pkgname=(
     raspberrypi-bootloader-legacy
     raspberrypi-bootloader-rpi4
 )
-pkgver=1.20260915
-pkgrel=4
+pkgver=20260915
+pkgrel=1
 pkgdesc="Bootloader files for Raspberry Pi"
 arch=(any)
 url="https://github.com/raspberrypi/firmware"
@@ -21,26 +22,26 @@ options=(!strip)
 source=(
     raspberrypi-bootloader-install
     raspberrypi-bootloader-install.hook.in
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/LICENCE.broadcom"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/LICENCE.broadcom"
     # legacy: Pi 1/2/3, Zero & Zero 2 (boot ROM loads bootcode.bin -> start*.elf)
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/bootcode.bin"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start_cd.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start_x.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start_db.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup.dat"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup_cd.dat"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup_x.dat"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup_db.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/bootcode.bin"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start_cd.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start_x.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start_db.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup_cd.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup_x.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup_db.dat"
     # Pi 4: bootloader lives in EEPROM, start4*.elf is the SD-card fallback
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start4.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start4cd.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start4db.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/start4x.elf"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup4.dat"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup4cd.dat"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup4db.dat"
-    "https://raw.githubusercontent.com/raspberrypi/firmware/$pkgver/boot/fixup4x.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start4.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start4cd.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start4db.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/start4x.elf"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup4.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup4cd.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup4db.dat"
+    "https://raw.githubusercontent.com/raspberrypi/firmware/1.$pkgver/boot/fixup4x.dat"
 )
 sha256sums=('0ba7644ff014ebb61f242c6757c977dedd65fbad8e0b870e4a06dda9b0297b72'
             '428026db5507f95dfb92b8d1e3b0cc6dd6c92ed9989106461b03a157a1a7c004'
@@ -73,7 +74,6 @@ package_raspberrypi-bootloader-common() {
 package_raspberrypi-bootloader-legacy() {
     pkgdesc+=" (1/2/3, Zero & Zero 2)"
     depends=(raspberrypi-bootloader-common)
-    # Side note: ALARM dropped the 1. at the beginning so this will eventually conflict on migration
     provides=(raspberrypi-bootloader)
 
     install -Dm644 "$srcdir/LICENCE.broadcom" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

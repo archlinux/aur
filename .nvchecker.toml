@@ -1,7 +1,5 @@
-# Upstream (CI bot) publishes a GitHub release for every 1.YYYYMMDD tag, so
-# use the releases API instead of the git plugin — the latter bare-clones the
-# ~180 MB repo on every check. If releases ever stop being published, add
-# `include_tags = true`, or revert to source = "git".
 [raspberrypi-bootloader]
 source = "github"
 github = "raspberrypi/firmware"
+use_latest_release = true
+prefix = "1."
