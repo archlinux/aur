@@ -4,7 +4,7 @@
 
 pkgname=python-billiard
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('x86_64')
 url="https://pypi.org/project/billiard/"
@@ -27,7 +27,7 @@ build() {
 
 check() {
   cd billiard-$pkgver
-  pytest -v
+  PYTHONPATH="$PWD" pytest -v
 }
 
 package() {
