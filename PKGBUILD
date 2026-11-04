@@ -1,8 +1,8 @@
 # Maintainer: omartelo <meopedevts@proton.me>
-# Rendered by .github/workflows/release.yml (0.83.0 -> tag, checksums via
+# Rendered by .github/workflows/release.yml (0.84.0 -> tag, checksums via
 # updpkgsums) and pushed to the AUR — edit this template, never the AUR copy.
 pkgname=lich-bin
-pkgver=0.83.0
+pkgver=0.84.0
 pkgrel=1
 pkgdesc="Run your coding agents side by side, each on its own branch"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('zenity: native folder picker')
 source=("lich-v${pkgver}-linux-amd64.tar.zst::${url}/releases/download/v${pkgver}/lich-v${pkgver}-linux-amd64.tar.zst"
         "lich-${pkgver}.desktop::https://raw.githubusercontent.com/lichdotdev/lich/v${pkgver}/build/linux/lich.desktop"
         "lich-${pkgver}.png::https://raw.githubusercontent.com/lichdotdev/lich/v${pkgver}/build/appicon.png")
-sha256sums=('825ae324f1410959c67ab595281376d75b527accd2ce4f627429ffbb452aa744'
+sha256sums=('3e30594e9eff5962141a419bbf348a2a3285176e7c4e048a7f8051e01e9f575c'
             'dd41fb10417c9038bc43cd1c503f196b05f5fbec07baa8695b50bdf8cfcdc47f'
             '75aa775e531ad495d905a37f07e8e608f4d93e4b2ff1d4b145a764e71ac48b0a')
 
