@@ -1,6 +1,6 @@
 pkgbase = invidious-git
 	pkgdesc = Alternative front-end to YouTube
-	pkgver = r2780.67a18dcf
+	pkgver = r6023.44f4604a
 	pkgrel = 1
 	url = https://github.com/iv-org/invidious
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = invidious-git
 	depends = xz
 	depends = zlib
 	depends = librsvg
+	depends = invidious-companion-git
 	optdepends = postgresql: Database, not needed if remote
 	provides = invidious
 	conflicts = invidious

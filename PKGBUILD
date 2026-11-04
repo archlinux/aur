@@ -1,6 +1,6 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 pkgname=invidious-git
-pkgver=r2780.67a18dcf
+pkgver=r6023.44f4604a
 pkgrel=1
 pkgdesc="Alternative front-end to YouTube"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/iv-org/invidious"
 license=('AGPL')
 # Not all deps are explicitly listed on invidious website,
 # but resulting binary is somehow linked against them
-depends=('gc' 'gcc-libs' 'glibc' 'icu' 'libevent' 'libxml2' 'libyaml' 'openssl' 'pcre' 'sqlite' 'xz' 'zlib' 'librsvg')
+depends=('gc' 'gcc-libs' 'glibc' 'icu' 'libevent' 'libxml2' 'libyaml' 'openssl' 'pcre' 'sqlite' 'xz' 'zlib' 'librsvg' 'invidious-companion-git')
 makedepends=('crystal' 'shards' 'git')
 optdepends=('postgresql: Database, not needed if remote')
 provides=('invidious')
