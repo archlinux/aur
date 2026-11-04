@@ -1,6 +1,6 @@
 pkgbase = dfdu-bin
 	pkgdesc = Disk usage browser for the terminal
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/jordond/dfdu
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = dfdu-bin
 	conflicts = dfdu
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/jordond/dfdu/releases/download/v0.5.0/dfdu-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = 939bda3096e9741ea7644b4f2cd89f1e3eab9db0b613b71aa0cb036f24b340f0
-	source_aarch64 = https://github.com/jordond/dfdu/releases/download/v0.5.0/dfdu-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = 83cd0fc6b900d7c510be50de67c4bcf3e32d6ffb21091c417fd1378ed579995f
+	source_x86_64 = https://github.com/jordond/dfdu/releases/download/v0.5.1/dfdu-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 62a2611768135e33a437d8684a99f238242064730b1e97ab10766d50b9aadded
+	source_aarch64 = https://github.com/jordond/dfdu/releases/download/v0.5.1/dfdu-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = d75f83fa57b4bf37219084b30e7a2b4db24f3e9e3e856a03703f1eb69da6286c
 
 pkgname = dfdu-bin
