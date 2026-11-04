@@ -5,15 +5,14 @@ _pkgname=dux-files
 _binname=dfiles
 _appid=dev.duxlabs.files
 _portalservice=org.freedesktop.impl.portal.desktop.dfiles.service
-pkgver=2.0.0.r12.g1d5944f
+pkgver=2.1.0.r0.gbb784ed
 pkgrel=1
 pkgdesc='File manager for Wayland from Dux Labs (git)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/duxlabs-dev/$_pkgname"
 license=('MIT')
 depends=('quickshell' 'qt6-declarative')
-optdepends=('dms-shell: dynamic theming via Dux Shell colors'
-            'bubblewrap: run external thumbnailers in a sandbox'
+optdepends=('bubblewrap: run external thumbnailers in a sandbox'
             'ffmpegthumbnailer: video thumbnails'
             'poppler: pdf thumbnails'
             'qt6-webengine: pdf previews'

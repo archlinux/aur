@@ -1,7 +1,7 @@
 pkgbase = dux-files-git
 	pkgdesc = File manager for Wayland from Dux Labs (git)
-	pkgver = 2.0.0.r1.gf646769
-	pkgrel = 2
+	pkgver = 2.1.0.r0.gbb784ed
+	pkgrel = 1
 	url = https://github.com/duxlabs-dev/dux-files
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = dux-files-git
 	makedepends = go>=2:1.27
 	depends = quickshell
 	depends = qt6-declarative
-	optdepends = dms-shell: dynamic theming via Dux Shell colors
 	optdepends = bubblewrap: run external thumbnailers in a sandbox
 	optdepends = ffmpegthumbnailer: video thumbnails
 	optdepends = poppler: pdf thumbnails
@@ -19,8 +18,8 @@ pkgbase = dux-files-git
 	optdepends = udisks2: the devices sidebar
 	optdepends = polkit: retry denied operations as administrator
 	optdepends = xdg-desktop-portal: use dfiles as the file chooser
-	provides = dfiles=2.0.0.r1.gf646769
-	provides = dux-files=2.0.0.r1.gf646769
+	provides = dfiles=2.1.0.r0.gbb784ed
+	provides = dux-files=2.1.0.r0.gbb784ed
 	conflicts = dfiles
 	conflicts = dux-files
 	conflicts = dux-files-bin
