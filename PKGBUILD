@@ -3,13 +3,13 @@
 # Generated blocks are rewritten by packaging/sync-pkgbuild.py; do not edit them by hand.
 
 pkgname=qtgmc-6ui
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="QTGMC deinterlacer for archival video (VapourSynth) with a Qt6 GUI"
 arch=(x86_64)
 url="https://github.com/jogai/qtgmc-6ui"
 # BEGIN generated: licenses (packaging/sync-pkgbuild.py)
-license=('GPL-2.0-only' 'Apache-2.0' 'GPL-2.0-or-later' 'GPL-3.0-or-later' 'LGPL-2.1-only' 'LGPL-3.0-only' 'MIT' 'WTFPL')
+license=('GPL-2.0-only' 'Apache-2.0' 'CC-BY-4.0' 'GPL-2.0-or-later' 'GPL-3.0-or-later' 'LGPL-2.1-only' 'LGPL-3.0-only' 'MIT' 'WTFPL')
 _extra_licenses=('zimg-1ad1895d5ff0bbe69c61243f9996aede713d1b5f.tar.gz|COPYING|resize2/zimg-COPYING'
                  'graphengine-cb5b2ce13384ec2491f0c37256ea210034799f69.tar.gz|COPYING|resize2/graphengine-COPYING'
                  'graphengine-7bb77a5c062c610e7f44df6a59155cc3ab3e452a.tar.gz|COPYING|znedi3/graphengine-COPYING'
@@ -67,7 +67,7 @@ else
   source=("$_srcname.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 # set by sync-pkgbuild.py --project-sha256 (never updpkgsums)
-_project_sha256='e6173f801b5495360b71b588fe12bbb18588c7ef5effe5cc23a4f630508d540c'
+_project_sha256='157c948403ad8e71f892f3c9b7954becd154f946e54c5a607db4749a5b64c4d1'
 sha256sums=("$_project_sha256")
 
 # BEGIN generated: plugin-sources (packaging/sync-pkgbuild.py from packaging/plugins/plugins.json)
