@@ -1,11 +1,11 @@
 # Maintainer: adogecheems <adogecheems@outlook.com>
 #
-# AUR source-build package for the 2.1.x series. Read USAGE.md at the
-# repository root before submitting. The source is pinned to the v2.1.2 release tag.
+# AUR source-build package for the 2.2.x series. Read USAGE.md at the
+# repository root before submitting. The source is pinned to the v2.2.0 release tag.
 # The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
