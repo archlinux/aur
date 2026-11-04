@@ -1,6 +1,6 @@
 # Maintainer: Matthias Volk <m.volk at tue dot nl>
 pkgname=carl-storm
-pkgver=14.36
+pkgver=14.37
 pkgrel=1
 pkgdesc="The Computer ARithmetic and Logic library for the probabilistic model checker Storm"
 arch=(i686 x86_64 aarch64)
@@ -13,7 +13,7 @@ provides=()
 conflicts=(carl)
 replaces=(carl-master14)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stormchecker/carl-storm/archive/$pkgver.tar.gz")
-sha256sums=('bdb4339903544d03c8b63e348a1559b19cc420469116afa1e0cd6716cba63cfe')
+sha256sums=('a5127b61f7296aec567a6aca331eae51bc5b41a69d1eaf8cc991ce8aaa322a11')
 
 build() {
 	mkdir -p "$pkgname-$pkgver/build"
