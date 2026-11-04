@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=xgrep-search
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Ultra-fast indexed code search engine with MCP server for AI coding tools"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'git')
 optdepends=('git: git-aware searches with --changed and --since')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/momokun7/xgrep/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('88c43dac76a6d6d39174f1633d946746ffe0a7b7c7fa02519a5da2daf53b848f')
+sha256sums=('ff6215a5bac0ab01ac49b0223d2c96e90c27452e92db6fa5270dca69135647a1')
 
 prepare() {
   cd "xgrep-$pkgver"
