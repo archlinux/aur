@@ -1,6 +1,6 @@
 pkgbase = zwift-bootstrap-bin
 	pkgdesc = Unofficial native Linux launcher for Zwift that installs, updates and starts the game with Wine
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/bpauli/zwift-bootstrap
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = zwift-bootstrap-bin
 	optdepends = libnotify: notification when an update fails
 	provides = zwift-bootstrap
 	conflicts = zwift-bootstrap
-	source = https://github.com/bpauli/zwift-bootstrap/releases/download/v0.3.0/zwift-bootstrap_0.3.0_linux_amd64.tar.gz
-	sha256sums = cf93477d2af956850b75f6f9a01636a1dd061b8a0a23331ade531cd68b873101
+	source = https://github.com/bpauli/zwift-bootstrap/releases/download/v0.3.1/zwift-bootstrap_0.3.1_linux_amd64.tar.gz
+	sha256sums = 74618f65d6e9624657632e78796c6cb02cb1e47a12ed58af73733f1b19f185f4
 
 pkgname = zwift-bootstrap-bin
