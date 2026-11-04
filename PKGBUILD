@@ -1,7 +1,7 @@
 # Maintainer: phil.d324@gmail.com <H3mul>
 pkgname=claude-mem
 # renovate: datasource=npm depName=claude-mem
-pkgver=15.7.0
+pkgver=15.9.0
 pkgrel=1
 pkgdesc='Memory compression system for Claude Code - persist context across sessions'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
         claude-mem-worker.service)
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('a7a3ee750f6577aeb9c83f990300464ebe4e0f48d9fcd5b593229d9e37652704'
+sha256sums=('9d4a2fd7e19077452a803d6e6b0e3f07d6983a241b96758b6d43648806bff531'
             'aa9e319949c5aaf754e80a06ea41704309ffad7f11a9cdc5c476dc1ed02fae70')
 
 package() {
