@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=tailord
-pkgver="0.2.5"
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Daemon handling fan, keyboard and general HW support for Tuxedo laptops (part of tuxedo-rs)"
 arch=("x86_64")
@@ -12,7 +12,7 @@ provides=(
 )
 depends=(
   'glibc'
-  'gcc-libs'
+  'libgcc'
   'tuxedo-io'
   'tuxedo-keyboard'
 )
@@ -32,9 +32,7 @@ conflicts=(
 source=(
   "${pkgname}"::"git+${url}#tag=${pkgname}-v${pkgver}"
 )
-sha256sums=(
-  'cf33972732601cd9e0f2502689a2f7620ba5fc886174e84f9192bbd5c8e801a1'
-)
+sha256sums=('50ceaa0040abfd515c7b2532f6969bb5b6392fb4dc71c6e63016e453a6294970')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable

@@ -1,0 +1,5 @@
+[tailord]
+source = "git"
+git = "https://github.com/AaronErhardt/tuxedo-rs.git"
+prefix = "tailord-v"
+include_regex = 'tailord-.*'
