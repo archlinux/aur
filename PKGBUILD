@@ -1,12 +1,13 @@
 # Maintainer: gustahxn <https://github.com/gustahxn>
 pkgname=wallfinder-git
 pkgver=r1.abc1234
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based wallpaper selector for Wayland compositors"
 arch=('any')
 url="https://github.com/gustahxn/wallfinder"
 license=('MIT')
 depends=('fzf' 'chafa' 'swaybg' 'libnotify')
+optdepends=('imagemagick: recorta o preview no centro pra nao sobrar barra preta embaixo da imagem')
 makedepends=('git')
 provides=('wallfinder')
 conflicts=('wallfinder')
