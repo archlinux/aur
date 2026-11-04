@@ -1,6 +1,9 @@
 # TuxTalk's first run sets up a hotkey helper service and udev rules outside
 # the package. pre_remove runs only on removal (an upgrade calls
-# pre_upgrade), so they go with the package and stay through updates.
+# pre_upgrade), so they go with the package and stay through updates. It also
+# runs when pacman removes this package for one that conflicts with it (the
+# switch between tuxtalk and tuxtalk-appimage): the helper goes then too, and
+# Fix Typing sets it up again.
 # The same as packaging/before-remove.sh in the TuxTalk repository.
 pre_remove() {
     systemctl disable --now tuxtalk-hotkeys.service >/dev/null 2>&1 || true
