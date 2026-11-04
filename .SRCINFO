@@ -1,6 +1,6 @@
 pkgbase = meowtd
 	pkgdesc = send cute MOTDs to your (girl|enby|boy)friends' computers
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://git.koi.rip/koi/meowtd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = meowtd
 	license = Apache-2.0
 	makedepends = zig
 	depends = libssh2
-	source = meowtd-0.3.0::git+https://git.koi.rip/koi/meowtd.git#tag=v0.3.0
-	sha256sums = 8b1e17bd487be22c8670396bf52d0946edbe7b7db3ea92e0fc40d74c61cf7e0d
+	source = meowtd-0.3.1::git+https://git.koi.rip/koi/meowtd.git#tag=v0.3.1
+	sha256sums = 27bb63543d4e78a04aecedaf4f3177c24926a70976af34ee1f4889f7037a8d6b
 
 pkgname = meowtd
