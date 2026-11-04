@@ -12,7 +12,7 @@
 #    graphical login.  The *current* session is not touched by pacman: log out
 #    and back in, or run
 #      systemctl --user start panasonic-posture-manager-session.service
-#    once.  README.md documents this first-run step.
+#    once.  USAGE.md documents this first-run step.
 
 post_install() {
   /usr/bin/systemctl daemon-reload >/dev/null 2>&1 || true
