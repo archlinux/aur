@@ -1,5 +1,5 @@
-pkgbase = networkmanager-openvpn
-	pkgdesc = NetworkManager VPN plugin for OpenVPN
+pkgbase = networkmanager-openvpn-pkcs11
+	pkgdesc = NetworkManager VPN plugin for OpenVPN, with PKCS#11 support
 	pkgver = 1.12.5
 	pkgrel = 2
 	url = https://networkmanager.dev/docs/vpn/
@@ -8,6 +8,8 @@ pkgbase = networkmanager-openvpn
 	makedepends = git
 	makedepends = libnma
 	makedepends = openvpn
+	makedepends = p11-kit
+	makedepends = pkcs11-helper
 	makedepends = python
 	depends = glib2
 	depends = glibc
@@ -16,13 +18,17 @@ pkgbase = networkmanager-openvpn
 	depends = libnm
 	depends = libnma-gtk4
 	depends = libsecret
+	depends = p11-kit
+	depends = pkcs11-helper
 	source = git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#tag=1.12.5
+	source = Add-PKCS11-support.patch
 	validpgpkeys = 07F9AEC86144386D9576210B66A44781B4EBC2D0
 	validpgpkeys = 1CFF865BDF957BE935765BBD2E1878D078DEF7C6
 	b2sums = edbce314b1893816a02a4def83b0d28435518d96baff0940e20dd2124b7ed64833777c7ac145166cc56ff4d6a592624b9b1d25b470d79068e94a320849a6173c
+	b2sums = SKIP
 
-pkgname = networkmanager-openvpn
-	pkgdesc = NetworkManager VPN plugin for OpenVPN (with GUI)
+pkgname = networkmanager-openvpn-pkcs11
+	pkgdesc = NetworkManager VPN plugin for OpenVPN, with PKCS#11 support (with GUI)
 	depends = glib2
 	depends = glibc
 	depends = gtk4
@@ -30,13 +36,19 @@ pkgname = networkmanager-openvpn
 	depends = libnm
 	depends = libnma-gtk4
 	depends = libsecret
-	depends = networkmanager-vpn-plugin-openvpn=1.12.5-2
+	depends = p11-kit
+	depends = pkcs11-helper
+	depends = networkmanager-vpn-plugin-openvpn-pkcs11=1.12.5-2
 	optdepends = libnma: GUI support (GTK 3)
+	provides = networkmanager-openvpn=1.12.5
+	conflicts = networkmanager-openvpn
 
-pkgname = networkmanager-vpn-plugin-openvpn
-	pkgdesc = NetworkManager VPN plugin for OpenVPN (VPN plugin only)
+pkgname = networkmanager-vpn-plugin-openvpn-pkcs11
+	pkgdesc = NetworkManager VPN plugin for OpenVPN, with PKCS#11 support (VPN plugin only)
 	depends = glib2
 	depends = glibc
 	depends = libgcc
 	depends = libnm
 	depends = openvpn
+	provides = networkmanager-vpn-plugin-openvpn=1.12.5
+	conflicts = networkmanager-vpn-plugin-openvpn

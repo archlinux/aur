@@ -1,14 +1,14 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgbase=networkmanager-openvpn
+pkgbase=networkmanager-openvpn-pkcs11
 pkgname=(
-  networkmanager-openvpn
-  networkmanager-vpn-plugin-openvpn
+  networkmanager-openvpn-pkcs11
+  networkmanager-vpn-plugin-openvpn-pkcs11
 )
 pkgver=1.12.5
 pkgrel=2
-pkgdesc="NetworkManager VPN plugin for OpenVPN"
+pkgdesc="NetworkManager VPN plugin for OpenVPN, with PKCS#11 support"
 url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
@@ -20,15 +20,25 @@ depends=(
   libnm
   libnma-gtk4
   libsecret
+  p11-kit
+  pkcs11-helper
 )
 makedepends=(
   git
   libnma
   openvpn
+  p11-kit
+  pkcs11-helper
   python
 )
-source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#tag=$pkgver")
-b2sums=('edbce314b1893816a02a4def83b0d28435518d96baff0940e20dd2124b7ed64833777c7ac145166cc56ff4d6a592624b9b1d25b470d79068e94a320849a6173c')
+source=(
+  "git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#tag=$pkgver"
+  "Add-PKCS11-support.patch"
+)
+b2sums=(
+  'edbce314b1893816a02a4def83b0d28435518d96baff0940e20dd2124b7ed64833777c7ac145166cc56ff4d6a592624b9b1d25b470d79068e94a320849a6173c'
+  'SKIP'
+)
 validpgpkeys=(
   07F9AEC86144386D9576210B66A44781B4EBC2D0 # Íñigo Huguet <ihuguet@redhat.com>
   1CFF865BDF957BE935765BBD2E1878D078DEF7C6 # Íñigo Huguet <ihuguet@riseup.net>
@@ -36,6 +46,7 @@ validpgpkeys=(
 
 prepare() {
   cd NetworkManager-openvpn
+  patch -Np1 -i ../Add-PKCS11-support.patch
   autoreconf -fvi
 }
 
@@ -65,14 +76,16 @@ _pick() {
   done
 }
 
-package_networkmanager-openvpn() {
+package_networkmanager-openvpn-pkcs11() {
   pkgdesc+=" (with GUI)"
   depends+=(
-    "networkmanager-vpn-plugin-openvpn=$pkgver-$pkgrel"
+    "networkmanager-vpn-plugin-openvpn-pkcs11=$pkgver-$pkgrel"
   )
   optdepends=(
     "libnma: GUI support (GTK 3)"
   )
+  provides=("networkmanager-openvpn=$pkgver")
+  conflicts=(networkmanager-openvpn)
 
   cd NetworkManager-openvpn
   make DESTDIR="$pkgdir" install dbusservicedir=/usr/share/dbus-1/system.d
@@ -86,7 +99,7 @@ package_networkmanager-openvpn() {
   _pick plugin usr/share/dbus-1
 }
 
-package_networkmanager-vpn-plugin-openvpn() {
+package_networkmanager-vpn-plugin-openvpn-pkcs11() {
   pkgdesc+=" (VPN plugin only)"
   depends=(
     glib2
@@ -95,6 +108,8 @@ package_networkmanager-vpn-plugin-openvpn() {
     libnm
     openvpn
   )
+  provides=("networkmanager-vpn-plugin-openvpn=$pkgver")
+  conflicts=(networkmanager-vpn-plugin-openvpn)
 
   mv plugin/* "$pkgdir"
 }
