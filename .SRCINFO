@@ -1,6 +1,6 @@
 pkgbase = disc-image-studio-git
 	pkgdesc = Generate CD, DVD and Blu-ray images that show a picture on the burned disc (git version)
-	pkgver = r65.9edf061
+	pkgver = r72.3a5cde6
 	pkgrel = 1
 	url = https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio
 	arch = x86_64
