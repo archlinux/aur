@@ -3,7 +3,7 @@
 pkgname=arch-skm
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Build signed Arch Linux kernels with local module signing"
+pkgdesc="Automated linux kernel building with Signed Kernel Modules (in-tree & out-of-tree)"
 arch=('x86_64')
 url="https://github.com/sk8thing/${pkgname}"
 license=('GPL-3.0-only')
