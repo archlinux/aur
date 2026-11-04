@@ -1,13 +1,13 @@
 pkgbase = sanctum
 	pkgdesc = A small, reviewable, capable, pq-secure and fully privilege separated VPN daemon
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://sanctorum.se
 	arch = x86_64
 	license = ISC
 	depends = libsodium
 	conflicts = sanctum-git
-	source = https://sanctorum.se/releases/sanctum-1.4.1.tgz
-	sha256sums = 3e92fd47c2d8046cda09e3c3b5fb826c38cf2851ea0aebfce1dee60b0f3f30b9
+	source = https://sanctorum.se/releases/sanctum-1.4.2.tgz
+	sha256sums = 886cb491742e0ed788744126b01653dcaa81ea35d502dd8886794fcc5d63c1d5
 
 pkgname = sanctum
