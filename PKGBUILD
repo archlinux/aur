@@ -4,7 +4,7 @@
 
 pkgname=thermalright-trcc-git
 _pkgname=thermalright-trcc-linux
-pkgver=8.3.7.r3.gc9c9c8a
+pkgver=9.12.0.r2.g8a43859
 pkgrel=2
 pkgdesc="Thermalright LCD/LED Control Center for Linux (git version)"
 arch=('any')
@@ -17,26 +17,40 @@ depends=(
   'python-numpy'
   'python-psutil'
   'python-pyusb'
+  'python-pyudev'
   'python-click'
   'python-typer'
   'python-fastapi'
+  'uvicorn'
+  'python-websockets'
+  'python-cryptography'
+  'python-python-multipart>=0.0.18'
+  'python-prompt_toolkit'
+  'python-certifi'
   'libusb'
   'sg3_utils'
-  'p7zip'
+  '7zip'
+  'dmidecode'
+  'polkit'
 )
-# python-uvicorn not in official Arch repos — bundled via pip in package()
+# Keep hardware-specific providers optional: NVIDIA pulls a driver stack;
+# python-hidapi and python-hid conflict, and Steam Deck needs python-hid.
 optdepends=(
-  'python-pynvml: NVIDIA GPU sensor support'
+  'python-nvidia-ml-py: NVIDIA GPU sensor support'
   'python-dbus: Wayland session support'
   'python-gobject: Wayland session support'
-  'python-hidapi: Alternative HID transport'
+  'python-hidapi: HID panel support (install this or python-hid)'
+  'python-hid: HID panel support (install this or python-hidapi)'
+  'python-sounddevice: Audio visualizer support (AUR; installs PortAudio)'
+  'python-qrcode: Remote pairing QR codes'
+  'ffmpeg: Video playback and audio capture'
+  'smartmontools: Disk health sensors'
 )
 makedepends=(
   'git'
   'python-build'
   'python-installer'
   'python-hatchling'
-  'python-pip'
 )
 provides=('thermalright-trcc')
 conflicts=('thermalright-trcc')
@@ -70,12 +84,11 @@ package() {
 
   python -m installer --destdir="${pkgdir}" --prefix=/usr dist/trcc_linux-*.whl
 
-  # Bundle deps not in official Arch repos.
-  python -m pip install --root="${pkgdir}" --prefix=/usr --no-deps uvicorn
-
   # udev rules
   install -Dm644 packaging/udev/70-trcc-lcd.rules \
     "${pkgdir}/usr/lib/udev/rules.d/70-trcc-lcd.rules"
+  install -Dm644 packaging/udev/70-trcc-rgb.rules \
+    "${pkgdir}/usr/lib/udev/rules.d/70-trcc-rgb.rules"
   # Device-access group referenced by the udev rules
   install -Dm644 packaging/sysusers/trcc.conf \
     "${pkgdir}/usr/lib/sysusers.d/trcc.conf"
@@ -85,15 +98,32 @@ package() {
   # modules-load (SCSI generic)
   install -Dm644 packaging/modprobe/trcc-sg.conf \
     "${pkgdir}/usr/lib/modules-load.d/trcc-sg.conf"
+  install -Dm644 packaging/modprobe/trcc-rapl.conf \
+    "${pkgdir}/usr/lib/modules-load.d/trcc-rapl.conf"
   # desktop entry
   install -Dm644 src/trcc/assets/trcc-linux.desktop \
     "${pkgdir}/usr/share/applications/trcc-linux.desktop"
   # polkit policy
   install -Dm644 src/trcc/assets/com.github.lexonight1.trcc.policy \
     "${pkgdir}/usr/share/polkit-1/actions/com.github.lexonight1.trcc.policy"
+  # Executables referenced by the polkit policy
+  local helper
+  for helper in trcc-imc trcc-dmi trcc-ram-access trcc-ram-access-off \
+      trcc-module-devices trcc-module-devices-off; do
+    install -Dm755 "src/trcc/assets/${helper}" "${pkgdir}/usr/bin/${helper}"
+  done
   # systemd service
   install -Dm644 src/trcc/assets/trcc-quirk-fix.service \
     "${pkgdir}/usr/lib/systemd/system/trcc-quirk-fix.service"
+
+  # Optional user daemon: ship the unit without enabling or starting it.
+  install -Dm644 packaging/systemd/trccd.service \
+    "${pkgdir}/usr/lib/systemd/user/trccd.service"
+
+  local manpage
+  for manpage in man/man1/*.1; do
+    install -Dm644 "${manpage}" "${pkgdir}/usr/share/man/man1/${manpage##*/}"
+  done
 
   # app icons
   local size
