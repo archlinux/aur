@@ -1,0 +1,22 @@
+pkgbase = aurgus-bin
+	pkgdesc = AUR helper that audits PKGBUILDs before building them (prebuilt binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/prietus/aurgus
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = pacman
+	depends = git
+	depends = coreutils
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	optdepends = gnupg: import PGP keys needed to verify sources
+	provides = aurgus
+	conflicts = aurgus
+	source_x86_64 = https://github.com/prietus/aurgus/releases/download/v0.1.1/aurgus-0.1.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6b113bd13b7845773126e6db9f036dc8e9964f1cd18449fde9e43db6bff31135
+	source_aarch64 = https://github.com/prietus/aurgus/releases/download/v0.1.1/aurgus-0.1.1-aarch64-linux.tar.gz
+	sha256sums_aarch64 = eeed8272ed5b43fe71266954f3be2bd0504a3a8103d5665b0cb664a25682cebc
+
+pkgname = aurgus-bin
