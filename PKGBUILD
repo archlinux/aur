@@ -1,7 +1,7 @@
 # Maintainer: magnap <echo "bXJvazRhQGdtYWlsLmNvbQo=" | base64 -d>
 variant=-smu
 pkgname=cyan-skillfish-governor$variant
-pkgver=0.4.14
+pkgver=0.4.15
 tag=v${pkgver}
 pkgrel=1
 pkgdesc="GPU governor for the AMD Cyan Skillfish APU"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libdrm')
 makedepends=('cargo')
 backup=("etc/$pkgname/config.toml")
-source=("https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/v0.4.14.tar.gz")
+source=("https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/v0.4.15.tar.gz")
 b2sums=('794aa04522c28db72462a347d1033ec22e8b6fad8f4b912c8229d1d1d773b49c1b8325bb46b5b2b3a254751f25c5548dc27b6ab76142e902c70ff17dd42e806e')
 
 prepare() {
@@ -35,5 +35,6 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/dbus-1/system.d/" com.cyanskillfish.Governor.conf
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cyan-skillfish-governor${variant}/LICENSE"
     install -Dm644 default-config.toml "$pkgdir/etc/cyan-skillfish-governor${variant}/config.toml"
+    install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d/" 70-cyan-skillfish-governor.rules
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "cyan-skillfish-governor${variant}.service"
 }
