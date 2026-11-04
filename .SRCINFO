@@ -1,9 +1,10 @@
 pkgbase = kalipso-bin
 	pkgdesc = Teleprompter that keeps your place: follows your voice on your computer, scrolls at a steady pace or waits for your pedal (prebuilt)
-	pkgver = 2.9
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://sansevieria-ou.github.io/kalipso/
 	arch = x86_64
+	license = LicenseRef-SANSEVIERIA-1.0
 	license = AGPL-3.0-or-later
 	depends = glibc
 	depends = hicolor-icon-theme
@@ -19,10 +20,10 @@ pkgbase = kalipso-bin
 	provides = kalipso
 	conflicts = kalipso
 	conflicts = kalipso-git
-	noextract = kalipso-2.9-archlinux-x86_64.tar.zst
+	noextract = kalipso-3.0-archlinux-x86_64.tar.zst
 	options = !strip
 	options = !debug
-	source = https://github.com/SANSEVIERIA-OU/kalipso/releases/download/v2.9/kalipso-2.9-archlinux-x86_64.tar.zst
-	sha256sums = 529d4231ae8f4579e3b97995097d8ea364d74c4b42e8b172b208ce82cf14eea1
+	source = https://github.com/SANSEVIERIA-OU/kalipso/releases/download/v3.0/kalipso-3.0-archlinux-x86_64.tar.zst
+	sha256sums = ceeedd0767e026d9772a501902b3717e7ff58b497028fe3a68402f4d6364c40b
 
 pkgname = kalipso-bin
