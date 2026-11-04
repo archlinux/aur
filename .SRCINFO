@@ -1,6 +1,6 @@
 pkgbase = vtium
 	pkgdesc = Terminal for the Linux console, drawn through KMS/DRM
-	pkgver = 0.1.0alpha.3
+	pkgver = 0.1.0alpha.4
 	pkgrel = 1
 	url = https://github.com/vtium/vtium
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vtium
 	makedepends = libxkbcommon
 	makedepends = systemd-libs
 	options = !debug
-	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.3?signed
+	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.4?signed
 	validpgpkeys = 33F9B54FD2A4B6A4110749B3BA464FC9847A832A
 	sha256sums = SKIP
 
