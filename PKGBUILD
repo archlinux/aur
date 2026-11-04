@@ -3,7 +3,7 @@
 pkgname=dux-greeter-git
 _pkgname=dux-greeter
 _binname=dms-greeter
-pkgver=2.0.0.r3.g4034ba1
+pkgver=2.1.0.r0.gcc00abd
 pkgrel=1
 pkgdesc='Greetd login screen with the Dux Shell aesthetic (git)'
 arch=('x86_64' 'aarch64')
