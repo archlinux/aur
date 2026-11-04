@@ -18,8 +18,10 @@ pkgbase = kryoptic
 	depends = openssl
 	backup = etc/kryoptic/token.conf
 	source = https://github.com/latchset/kryoptic/releases/download/v1.5.4/kryoptic-1.5.4.tar.gz
+	source = pin-cargo-lock.patch
 	source = token.conf
 	sha256sums = bfa39be18e95f54009dfbd4e74a59a73c425b1cd1cc6236b3143f63141c41c03
+	sha256sums = 938002e2499c6ac517a6fff40d1c38a839c261dc721bd193e4bd3bbd6c525253
 	sha256sums = 84ab4485a53f12cfa385109756f44d0269f27ec056f82e2f8cba91301abe15a1
 
 pkgname = kryoptic

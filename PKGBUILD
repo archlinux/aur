@@ -10,15 +10,17 @@ depends=('brotli' 'glibc' 'zlib' 'zstd' 'sqlite' 'openssl')
 makedepends=('rust' 'cargo' 'pandoc' 'clang-libs' 'clang')
 backup=('etc/kryoptic/token.conf')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+	"pin-cargo-lock.patch"
 	"token.conf")
 sha256sums=('bfa39be18e95f54009dfbd4e74a59a73c425b1cd1cc6236b3143f63141c41c03'
+            '938002e2499c6ac517a6fff40d1c38a839c261dc721bd193e4bd3bbd6c525253'
             '84ab4485a53f12cfa385109756f44d0269f27ec056f82e2f8cba91301abe15a1')
 
 _features="standard,pqc"
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	cargo update
+	patch -p1 -i $srcdir/pin-cargo-lock.patch
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
