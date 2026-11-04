@@ -8,13 +8,13 @@
 # same files as in hermes-agent-bin, whose CI builds this PKGBUILD under that
 # name (https://github.com/jabla/hermes-agent-bin).
 pkgname=hermes-agent
-_pkgver_tag=v0.22.6
-_commit=f0d94882e89ab8d4098b5bb2f166adfb9ee0a0ab
+_pkgver_tag=v0.22.7
+_commit=b200f5bc60e31588ba2cb60e288029c4a54ba5fa
 _tagver=${_pkgver_tag#v}           # tag without the leading v — GitHub strips it from the archive dir
 _optname=hermes-agent              # fixed install dir (pkgname-independent, matches source pkg)
 _pyver=3.14                        # Arch's python minor; keep depends=() in step
 _uvmin=0.13.5                      # pm's uv pin (pm/lock.json); check() stops when it moves
-pkgver=0.22.6
+pkgver=0.22.7
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
   'system-tools.py'
   'hermes_agent_env.py'
 )
-sha256sums=('2add026d44c602d8b911f7ef366bd3860505e0cd124e935aa78e09fd7e814091'
+sha256sums=('91bf15f50ce61e7da8a7890c11b202b904c3d7c0e2688a6dc6bcb42a2fe8b91d'
             'f6824d0250926db151b0a06043a8385a642d83048e2b73967625362076b7d818'
             '107cf7f981e7a96466d7c3f2a2cc1b8cdf2c1a5db797c22087b27f2e7f64541f'
             '196ba6f200257073a5f02bab284a11594e67bfe1e10470a83ab0fc9437ef777b'
