@@ -2,7 +2,7 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 _name=minikerberos
 pkgname="python-$_name"
-pkgver=0.4.9
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="Kerberos manipulation library in pure Python"
 url="https://github.com/skelsec/$_name"
@@ -25,7 +25,7 @@ makedepends=(
   'git'
 )
 source=("git+$url#tag=$pkgver")
-b2sums=('2d2d7bfdd50fb9390d87b9f26d6f0a98f6582da39384e26fe762fb392e649fe7ebc7287247146d1e7c2539806f8b7c2e50478ac1d697e3ef682b6e61aae3ea9f')
+b2sums=('3cfdbb87b131580d79827d259799223b810c9f49c368ec1fe3d25d30bb791714a892f9f613cdee09239b25dcfe0d7f68e71f3c3198c26a5419bd9329c07a4197')
 
 prepare() {
   git -C "$_name" clean -dfx
