@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://d22j4f41zcdpc.cloudfront.net/Open+PHA-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('2ae2bd7696785e04527cf674145f45999a1586c3b493885bc42d3f9943846d5e')
+sha256sums_x86_64=('a6405afb85467b22a6d319efc92e9f0954af449b780523496861b8308fe8a99a')
 
 
 prepare() {
