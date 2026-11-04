@@ -6,8 +6,8 @@
 
 _electron=electron
 pkgname=proton-pass
-pkgver=1.43.0
-pkgrel=3
+pkgver=1.43.1
+pkgrel=1
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
@@ -17,7 +17,7 @@ makedepends=('go-yq' 'nodejs' 'pnpm' 'rust')
 conflicts=('proton-pass-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
         "proton-pass.desktop")
-sha256sums=('4bec62194dfc4c7036a9a8af1229252f4f6bf98c42a5d4f05401d9970412f532'
+sha256sums=('cc1dfe6d567cd78d30cc3187c239c0f0de76b28a35aeec10cab2f855e946f445'
             '1c5c6373a3e3be71e34e42fa6c7486601f04a645763496c5a808bc843456e0fc')
 
 prepare() {
@@ -52,10 +52,6 @@ prepare() {
 
     # Skip broken internal repo for protontech packages
     sed -i '/@protontech/d' .npmrc
-
-    # HACK: Modify the Proton logger version for its dependents
-    # (TODO: Probably remove this on next release which should have this package updated)
-    sed -i 's@\^0\.0\.5@^1.0.0@' applications/*/package.json packages/*/package.json
 
     # Bypass pass-desktop-native build script (removes npm/rustup requirement and Rust target hardcoding)
     sed -i 's@build"@build:napi \&\& pnpm run build:host"@' applications/pass-desktop/package.json
