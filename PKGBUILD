@@ -3,7 +3,7 @@
 # At release: set pkgver, put the tarball's sha256 in sha256sums, then push this and the generated .SRCINFO
 # (makepkg --printsrcinfo > .SRCINFO) to ssh://aur@aur.archlinux.org/vm-qontrol-bin.git
 pkgname=vm-qontrol-bin
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Create, run and fine-tune QEMU/KVM virtual machines: guided setup, unattended installs, settings that explain themselves"
 arch=('x86_64')
@@ -12,10 +12,11 @@ license=('GPL-3.0-or-later')
 provides=('vm-qontrol')
 conflicts=('vm-qontrol')
 # Self-contained .NET publish (Avalonia draws through X11 or Wayland; icu = .NET globalization), plus what every
-# machine needs: QEMU, its disk tool and UEFI firmware.
-depends=('glibc' 'gcc-libs' 'zlib' 'icu' 'fontconfig' 'freetype2' 'libglvnd' 'libx11' 'libxext' 'libxi' 'libxrandr'
+# machine needs: QEMU, its disk tool and UEFI firmware; FreeRDP 3 opens Windows programs as windows (D43), so that
+# works without installing anything else.
+depends=('gnupg' 'glibc' 'gcc-libs' 'zlib' 'icu' 'fontconfig' 'freetype2' 'libglvnd' 'libx11' 'libxext' 'libxi' 'libxrandr'
          'libxcursor' 'libxrender' 'libice' 'libsm' 'libxkbcommon' 'wayland'
-         'qemu-desktop' 'edk2-ovmf')
+         'qemu-desktop' 'edk2-ovmf' 'freerdp')
 optdepends=('swtpm: the TPM Windows 11 requires'
             'virt-viewer: a window for each machine screen (or spice-gtk spicy)'
             'spice-gtk: hand USB devices to machines without a password'
@@ -29,7 +30,7 @@ optdepends=('swtpm: the TPM Windows 11 requires'
             'polkit: one-prompt host changes (host drives, PCI handover, huge pages, nested virtualization)')
 options=('!strip')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/VMQontrol-$pkgver-linux-x64.tar.gz")
-sha256sums=('4b17528218a736a9da3dd5bc9388e38e70022e1b82f9cbd632ec08a31f4a5a5a')
+sha256sums=('9e4f530a6f0fbf91190882e45cf1c8407c6f653ca1f077964fbdf4bf1dfba6ad')
 noextract=("VMQontrol-$pkgver-linux-x64.tar.gz")
 
 prepare() {
