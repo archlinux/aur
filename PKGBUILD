@@ -2,7 +2,7 @@
 
 pkgname=septabee
 pkgver=B_T25
-pkgrel=1
+pkgrel=2
 pkgdesc='A DAW built around audio rate parameter modulation and a ridiculous amount of optimization.'
 arch=('x86_64')
 url='https://septabee.nekoweb.org'
@@ -13,7 +13,7 @@ install=${pkgname}.install
 source=("https://downloads.septabee.com/SEPTABEE_DOWNLOADS/septabee_linux_${pkgver}.7z" 'septabee.desktop')
 sha256sums=('616aa03488f684c8323b92d9425f06e825dbbce7df6cd27b3c43822fd0f17cd1'
             'e3b414eb7a8fa5d0b565873cb4753b79dac456e7d0b4e9bc25f1305bcf036734')
-options=(!debug)
+options=(!debug !strip)
 
 package() {
     mkdir -p "${pkgdir}/opt/septabee"
