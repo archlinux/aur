@@ -386,7 +386,7 @@ EOF
     local status=0
     /usr/bin/aa-exec -p makepkg-jail-setup -- /usr/bin/bwrap "${args[@]}" -- \
         /usr/bin/aa-exec -p 'makepkg-jail-setup//&makepkg-jail-build' -- "$@" \
-        </dev/null 1>&"$out_fd" 2>&"$err_fd" || status=$?
+        < <(:) 1>&"$out_fd" 2>&"$err_fd" || status=$?
 
     # Close our pipe writers before waiting for the readers to finish.
     exec {out_fd}>&-
