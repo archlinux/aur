@@ -1,0 +1,15 @@
+pkgbase = mcp-grafana
+	pkgdesc = MCP server for Grafana
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/grafana/mcp-grafana
+	install = mcp-grafana.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = mcp-grafana-2.2.0.tar.gz::https://github.com/grafana/mcp-grafana/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 245cc4bb90ed3af887a7abe45118fcc83af810022f61069d737274638b2b262e
+
+pkgname = mcp-grafana
