@@ -3,7 +3,7 @@
 _pkgname='systemrescue'
 pkgname='libvirt-iso-systemrescue-bin'
 pkgver=13.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Official SystemRescue live recovery ISO for libvirt'
 arch=('x86_64')
 url='https://www.system-rescue.org/'
@@ -30,8 +30,8 @@ sha512sums=(
 )
 b2sums=(
 	'SKIP'
-	'1709f92610b9a2e2e20d7232065b2792036791ef2163c45b1f656eb783772b85bcadaa4cb875e4e7c8719acb7070450496c2454184e69af29353eefb9cefe639'
-	'a842fdcf8944a0d064e9b21f103ba3b29c74f9ab2024aa064b9ea2573b5329dc67e770a89154e6086e2e3dccd5fa4b809c24072ea079672f663b3b13f71c585f'
+	'SKIP'
+	'SKIP'
 	'49664b7a5aefd8e40cb9c41ea8d28d9df61d2d04067eeca446a24b6f6c6658eddcd87458cd3c9b58def7cd7aa80a35992217a8de12f37bb022785db1d11af445'
 )
 validpgpkeys=('0FF11AF081E98345594812037091115F8320B897')
@@ -49,9 +49,13 @@ _verify_pinned_key() {
 }
 
 prepare() {
+	local status
+
 	_verify_pinned_key "${srcdir}/systemrescue-release-key.pem" '0FF11AF081E98345594812037091115F8320B897' || return 1
-	gpgv --keyring "${srcdir}/release-key.gpg" \
-		"${srcdir}/${_archive}.signature" "${srcdir}/${_archive}"
+	status="$(gpgv --status-fd 1 --keyring "${srcdir}/release-key.gpg" \
+		"${srcdir}/${_archive}.signature" "${srcdir}/${_archive}")" || return 1
+	awk -v fingerprint="${validpgpkeys[0]}" \
+		'$1 == "[GNUPG:]" && $2 == "VALIDSIG" && $NF == fingerprint { valid = 1 } END { exit !valid }' <<< "${status}"
 }
 
 
