@@ -1,7 +1,7 @@
 pkgbase = python-pybase64
 	pkgdesc = Fast Base64 encoding/decoding in Python
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mayeut/pybase64
 	arch = x86_64
 	license = BSD-2-Clause
@@ -17,6 +17,8 @@ pkgbase = python-pybase64
 	depends = glibc
 	depends = python
 	provides = pybase64
+	options = !strip
+	options = !debug
 	source = pybase64-1.5.1::git+https://github.com/mayeut/pybase64.git#tag=v1.5.1
 	source = git+https://github.com/aklomp/base64.git#commit=bf058e571ac5002b75b03fed38e33ed4e8d45eff
 	sha256sums = SKIP
