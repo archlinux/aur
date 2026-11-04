@@ -3,7 +3,7 @@
 
 pkgname=leggio-git
 _pkgname=leggio
-pkgver=0.1.0.r1.g23e1048
+pkgver=0.4.1.r1.g1ee1f0f
 pkgrel=1
 pkgdesc="Sheet music viewer built for use at arm's length (git)"
 arch=('any')
