@@ -1,6 +1,6 @@
 pkgbase = atk-control-git
 	pkgdesc = Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice (git)
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/NasirA1991/atk-control
 	arch = any
