@@ -1,6 +1,6 @@
 pkgbase = kiln-agents
 	pkgdesc = Native Claude and Codex session launcher with a paired phone client
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/cjber/kiln
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = kiln-agents
 	conflicts = kiln
 	conflicts = kiln-agents-bin
 	options = !strip
-	source = kiln-agents-0.15.0.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = bf986d2a298cd6bf4feff4391097f3011f8a1dbfd4b72ad1ce0a2dfc5b0b7ea3
+	source = kiln-agents-0.16.0.tar.gz::https://github.com/cjber/kiln/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = abbe62b5d7a8f621f55aa4b37cd831bdaf830636b25a23edd49414b7270dc41e
 
 pkgname = kiln-agents
