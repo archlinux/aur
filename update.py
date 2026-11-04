@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # coding: utf-8
 # SPDX-License-Identifier: Apache-2.0
 
@@ -15,21 +15,32 @@ import requests
 import subprocess
 import re
 import sys
+from urllib.parse import urlsplit
 
 
 def get_download_data() -> tuple[str, str, str]:
     download_page_url = "https://api.multiviewer.dev/api/v1/releases/latest"
-    r = requests.get(download_page_url)
+    r = requests.get(download_page_url, timeout=30)
     r.raise_for_status()
 
     data = r.json()
+    version = data["version"]
     release = next(
         release for release in data["downloads"] if release["platform"] == "linux"
     )
     url = release["url"]
-    assert "linux-x64" in url
-    assert url.endswith(".zip")
-    return url, data["version"], str(release["id"])
+    url_split = urlsplit(url)
+    url_parts = url_split.path.strip("/").split("/")
+    if (
+        url_split.hostname != "releases.multiviewer.app"
+        or len(url_parts) != 5
+        or url_parts[0] != "v"
+        or url_parts[1] != version
+    ):
+        sys.exit(f"Unexpected download URL: {url}")
+
+    build = "/".join(url_parts[1:4])
+    return url, version, build
 
 
 def check_version(version: str) -> None:
