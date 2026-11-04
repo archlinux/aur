@@ -4,8 +4,8 @@
 
 pkgname=rclone-beta-bin
 _srcname=rclone
-pkgrel=2
-pkgver=1.76.0_beta.10701.9751d168b
+pkgrel=1
+pkgver=1.76.0_beta.10703.c9a5f106a
 _upver=${pkgver//_/-}
 # The version string ends in the commit it was built from; the beta zips
 # carry no licence file, so it comes from that exact commit.
@@ -31,11 +31,11 @@ source_armv7h=("rclone-v${_upver}-linux-arm-v7.zip::https://beta.rclone.org/v${_
 source_aarch64=("rclone-v${_upver}-linux-arm64.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm64.zip")
 
 b2sums=('aa3374959b1ee491c635f4b2414b4848405d8ad931be6344c3effeba9c1557db0a7fe09f00c9a1c51281249994e0712f811e1c98dc9d13c45a541be9bcac804c')
-b2sums_i686=('33efbe5d972cc7f52c23e1c53f95d8005213cbc7a8545812df67aac74c30efb6688773a3e36d6448f44b7fed0f1b0c37d6494a0b90a6123baf73498d848e1000')
-b2sums_x86_64=('148e191dfbbfefe79d4aba712cdc5255f35ebd85335ce161842fdcf06a8033bb65aa47f3418045dbfb89d5ae20ae3529667b6d7526fa7fad691d4b10a100584e')
-b2sums_armv6h=('d7c50841ada5bd50d6f877b01d274bee7e09d07e94e3886cddf1070aa99259f8619bfa176eafe096875db60b03612f3142b1f9eb9f9e10c5372a3715f62054dc')
-b2sums_armv7h=('30f6a20095a7bb3db31614b75be8dae9e3dde6c1d35c239da14e7e975b308f7a2ad4823cd9006faf5e460214b3514aea6016e974d84f8e4419f688886c7d1f0c')
-b2sums_aarch64=('a989cca182ffbb4700587ce15da5c1e28aa2178a70b5bfa3d48fa94090401ed0e79654e04eaacb08e92c101b5b27d3b5b977e225d84d9c586382a2f9747c6e65')
+b2sums_i686=('28b53cd52753bd9e78a00cffe7a858f5df1614744a8e33624f20850c9c85a0301149afc4d3bd4707283a684758fac1b57d93490049d49280c192de282994a675')
+b2sums_x86_64=('2f62e232eb50473b832f8465ef2ca3d354aeaf42ae4d2d0002de31a3833b656981bba9d99ede3a990c684a2f673f579a4f81184e3cf0b8dc941b8d210ed92e6c')
+b2sums_armv6h=('c24e90b9e7baf7e2f13fb59033c0997963f518410cd7c40649e03f197d004414c52ee478aa7d740046d89ee4b23e3f54bbfcc651052517eb92cd3575af8cdaed')
+b2sums_armv7h=('918dd9e91bddd3a003108ba3e39141c0dcabe30e45fce4ae52203222883dcecc93619bfc5e47dc8cbf184b14b8b61fc4cc5bcc52e4a5ca4a5f2721a18c7d297b')
+b2sums_aarch64=('03265d31178193bcea6ef50394f734f1bd0af2777a2f6b9a8f062d5dcd824eeabd391806c970c7939b1edb7a6ff46bbbe7ee6d1958558db001bfabe9c5439a03')
 
 latestver() {
     local size ver
