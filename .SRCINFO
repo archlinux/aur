@@ -1,6 +1,6 @@
 pkgbase = plasma-drop
 	pkgdesc = KDE Plasma 6 dropdown app launcher for Wayland (Yakuake-style for any app)
-	pkgver = 1.17.4
+	pkgver = 1.17.5
 	pkgrel = 1
 	url = https://github.com/SkeLLLa/plasma-drop
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = plasma-drop
 	depends = glibc
 	depends = libgcc
 	depends = kwin
-	source = plasma-drop-1.17.4.tar.gz::https://github.com/SkeLLLa/plasma-drop/archive/v1.17.4.tar.gz
-	sha256sums = 5c226902b0a10d9c3d006f52e4eaa34c1141cc945371f49ec5d2c801084447f9
+	source = plasma-drop-1.17.5.tar.gz::https://github.com/SkeLLLa/plasma-drop/archive/v1.17.5.tar.gz
+	sha256sums = 463621b25f61e49a2bdc25baf5e327bc63481e548149de5edd6079c89c187518
 
 pkgname = plasma-drop
