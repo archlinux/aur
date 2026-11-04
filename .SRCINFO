@@ -1,6 +1,6 @@
 pkgbase = arego
 	pkgdesc = Design with HTML and CSS on a native canvas
-	pkgver = 0.1.31
+	pkgver = 0.1.32
 	pkgrel = 1
 	url = https://arego.design
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = arego
 	optdepends = org.freedesktop.secrets: remember your key (gnome-keyring, kwallet, keepassxc)
 	options = !strip
 	options = !debug
-	source = Arego-0.1.31-linux-x86_64.tar.gz::https://releases.arego.design/v0.1.31/Arego-0.1.31-linux-x86_64.tar.gz
-	sha256sums = 5c63a8f27ef4a63288c4be5dfa07b7eb69f1bbfece456e1010a6d87527d09262
+	source = Arego-0.1.32-linux-x86_64.tar.gz::https://releases.arego.design/v0.1.32/Arego-0.1.32-linux-x86_64.tar.gz
+	sha256sums = 7fdebfbd060393b759f2e8453f9aab4dbbacd09540c1a4fcbbff6b0e300436ff
 
 pkgname = arego
