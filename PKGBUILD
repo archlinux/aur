@@ -2,7 +2,7 @@
 # Maintainer: Devon T. Bautista <devonb@lanl.gov>
 
 pkgname='ochami-bin'
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Command line interface for OpenCHAMI services'
 url='https://github.com/openchami/ochami'
@@ -14,10 +14,10 @@ optdepends=('bash-completion: for bash completion support' 'jq: for pretty-print
 backup=('etc/ochami/config.yaml')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/openchami/ochami/releases/download/v${pkgver}/ochami_Linux_arm64.tar.gz")
-sha256sums_aarch64=('68d6209eec8bac940a5df13c4e959262c5e9431b081c0e4159a23bc34b6f9d27')
+sha256sums_aarch64=('536019706808c0442668c9444d862922147da828fbb89a83de8c295f2b3ce2ff')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/openchami/ochami/releases/download/v${pkgver}/ochami_Linux_x86_64v1.tar.gz")
-sha256sums_x86_64=('c1bbe4b671b16f0c6a7a4591ac2126937bdb139ce2fad419d5b5f3176353afcf')
+sha256sums_x86_64=('04cf7e28c3192f137f986ccd78aeeb900bd83fad840b83528d617084c0fc89da')
 
 package() {
   # Binary
