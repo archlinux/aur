@@ -1,14 +1,14 @@
 pkgbase = axiom
 	pkgdesc = Powerful log analytics from the comfort of your command-line
 	pkgver = 0.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axiomhq/cli
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	license = MIT
-	makedepends = go>=1.27.3
+	makedepends = go
 	depends = glibc
 	source = axiom-0.22.0-841bd2721896952322863bfce5eec0d035933b4f.tar.gz::https://github.com/axiomhq/cli/archive/841bd2721896952322863bfce5eec0d035933b4f.tar.gz
 	sha256sums = ebe7433699663433842d577b3a7efeb2767d4f2003f0ab4d09681edade2f1b00

@@ -2,7 +2,7 @@
 
 pkgname=axiom
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 _commit=841bd2721896952322863bfce5eec0d035933b4f
 pkgdesc="Powerful log analytics from the comfort of your command-line"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -10,19 +10,21 @@ url="https://github.com/axiomhq/cli"
 license=('MIT')
 depends=('glibc')
 depends_armv7h=('libgcc')
-makedepends=('go>=1.27.3')
+makedepends=('go')
 source=("$pkgname-$pkgver-${_commit}.tar.gz::https://github.com/axiomhq/cli/archive/${_commit}.tar.gz")
 sha256sums=('ebe7433699663433842d577b3a7efeb2767d4f2003f0ab4d09681edade2f1b00')
 
 prepare() {
   cd "cli-${_commit}"
   export GOPATH="$srcdir/gopath"
+  export GOMODCACHE="$srcdir/gopath/pkg/mod"
   go mod download -modcacherw
 }
 
 build() {
   cd "cli-${_commit}"
   export GOPATH="$srcdir/gopath"
+  export GOMODCACHE="$srcdir/gopath/pkg/mod"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -44,10 +46,12 @@ build() {
 check() {
   cd "cli-${_commit}"
   export GOPATH="$srcdir/gopath"
+  export GOMODCACHE="$srcdir/gopath/pkg/mod"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildvcs=false -mod=readonly -modcacherw"
   
   go test ./...
 }
@@ -63,4 +67,8 @@ package() {
   install -Dm644 build/bash-completion "$pkgdir/usr/share/bash-completion/completions/axiom"
   install -Dm644 build/zsh-completion "$pkgdir/usr/share/zsh/site-functions/_axiom"
   install -Dm644 build/fish-completion "$pkgdir/usr/share/fish/vendor_completions.d/axiom.fish"
+
+  if [[ -d "$srcdir/gopath" ]]; then
+    (cd "$srcdir" && GOTOOLCHAIN=local GOPATH="$srcdir/gopath" GOMODCACHE="$srcdir/gopath/pkg/mod" go clean -modcache)
+  fi
 }
