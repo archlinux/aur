@@ -1,0 +1,24 @@
+pkgbase = python-onnx-asr
+	pkgdesc = Speech recognition with ONNX models (Parakeet, Whisper, GigaAM and others)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/istupakov/onnx-asr
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-huggingface-hub
+	checkdepends = python-onnx
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-onnxscript
+	makedepends = python-ml-dtypes
+	depends = python
+	depends = python-numpy
+	depends = python-onnxruntime
+	optdepends = python-huggingface-hub: download models from the Hugging Face Hub
+	source = https://files.pythonhosted.org/packages/source/o/onnx-asr/onnx_asr-0.12.0.tar.gz
+	sha256sums = c1fcacddbced392f9f769ed5c6223f4ce739a6e4549346de33b9b520d4ead713
+
+pkgname = python-onnx-asr
