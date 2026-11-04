@@ -1,5 +1,10 @@
 ## Changelog
-* 10a78e5ef038f8b97d6966bc76f1cf21bb5616ac chore(deps): bump github.com/andybalholm/brotli from v1.1.1 to v1.2.7 (#5933)
+* 054e1462455e11657c2315c25872479de237c69b docs: backport v2.4.2 release notes (#5935) (#5937)
+* 860ef8d7093f9b6c824a7528010b15d782645e4f docs: prepare v2.4.3 security release notes (#6039)
+* 450765820c3cec9c66821d0446667b355783c899 fix(deps): update undici to 8.12.3 (#6035) (#6037)
+* ab80c48f88036fbe9c4f1480e057e64b7a552336 fix(security/high/): update module github.com/go-jose/go-jose/v4 to v4.1.6 [security] (#5966)
+* 064da62c375b92cc02aed1fc484d6013bfd669a6 fix(security/unknown/): update module golang.org/x/net to v0.62.0 [security] (#5973)
+* 584f609c00160e517d8f7bf94e0c38dc0c28b990 fix(security/unknown/api): update module golang.org/x/net to v0.62.0 [security] (#5974)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -14,7 +19,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull grafana/pyroscope:2.4.2
+  docker pull grafana/pyroscope:2.4.3
 ```
 
 
