@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'MSG'
+==> PreAUR runs as the "preaur" user (home /var/lib/preaur).
+==> Before enabling preaur.timer:
+==>   - add the sudo rules: sudo visudo -f /etc/sudoers.d/preaur
+==>     (example: /usr/share/doc/preaur-git/preaur.sudoers.example)
+==>   - put your project in /var/lib/preaur/preaur (sudo -iu preaur)
+==> An existing "preaur" user is not modified; to move it from /home/preaur,
+==> see "Migrating From /home/preaur" in the README.
+MSG
+}

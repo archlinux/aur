@@ -22,6 +22,7 @@ source=(
   "git+$url.git"
 )
 sha256sums=('SKIP')
+install=preaur.install
 
 pkgver() {
   cd "$srcdir/$_repo"
@@ -44,4 +45,10 @@ package() {
   install -Dm644 "$repo_dir/docs/man/preaur.1" "$pkgdir/usr/share/man/man1/preaur.1"
   install -Dm644 "$repo_dir/docs/man/preaur-config.5" "$pkgdir/usr/share/man/man5/preaur-config.5"
   install -Dm644 "$repo_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 "$repo_dir/packaging/preaur.sysusers" "$pkgdir/usr/lib/sysusers.d/preaur.conf"
+  install -Dm644 "$repo_dir/packaging/preaur.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/preaur.conf"
+  install -Dm644 "$repo_dir/packaging/preaur.service" "$pkgdir/usr/lib/systemd/system/preaur.service"
+  install -Dm644 "$repo_dir/packaging/preaur.timer" "$pkgdir/usr/lib/systemd/system/preaur.timer"
+  install -Dm644 "$repo_dir/packaging/preaur.sudoers.example" "$pkgdir/usr/share/doc/$pkgname/preaur.sudoers.example"
 }
