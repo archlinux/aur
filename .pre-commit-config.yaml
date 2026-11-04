@@ -115,6 +115,32 @@ repos:
         entry: rumdl check --config 'MD013.paragraphs = false'
         types: [markdown]
 
+      # Mago in each file's directory, with the mago.toml of a package there (e.g. the stubs of what a
+      # script loads at runtime, *.stub.php, which are only formatted); warnings fail as well
+      - id: mago-format
+        name: mago format (mago)
+        language: system
+        entry: >-
+          bash -c 'status=0; for file; do (cd "$(dirname "$file")" && mago format "$(basename "$file")")
+          || status=1; done; exit "$status"' --
+        types: [php]
+      - id: mago-lint
+        name: mago lint (mago)
+        language: system
+        entry: >-
+          bash -c 'status=0; for file; do (cd "$(dirname "$file")" && mago lint --minimum-fail-level warning
+          "$(basename "$file")") || status=1; done; exit "$status"' --
+        types: [php]
+        exclude: \.stub\.php$
+      - id: mago-analyze
+        name: mago analyze (mago)
+        language: system
+        entry: >-
+          bash -c 'status=0; for file; do (cd "$(dirname "$file")" && mago analyze --minimum-fail-level warning
+          "$(basename "$file")") || status=1; done; exit "$status"' --
+        types: [php]
+        exclude: \.stub\.php$
+
       # Errors stop pwsh, which otherwise exits with 0 without PSScriptAnalyzer or when it fails on a file
       - id: psscriptanalyzer
         name: PSScriptAnalyzer (powershell-editor-services)
