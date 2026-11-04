@@ -1,6 +1,6 @@
 pkgbase = hyprswitch
 	pkgdesc = A CLI/GUI that allows switching between windows in Hyprland
-	pkgver = 5.0.0
+	pkgver = 6.0.0.alpha.1
 	pkgrel = 1
 	url = https://github.com/egnrse/hyprswitch/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = hyprswitch
 	depends = hyprland
 	depends = gtk4-layer-shell
 	depends = gtk4
-	source = hyprswitch-5.0.0.tar.gz::https://github.com/egnrse/hyprswitch/archive/refs/tags/v5.0.0.tar.gz
-	sha256sums = f47916c755ccf11920b281c2fa643ffce71757674e2bb78ba0a4adb06efed3d8
+	source = hyprswitch-6.0.0-alpha.1.tar.gz::https://github.com/egnrse/hyprswitch/archive/refs/tags/v6.0.0-alpha.1.tar.gz
+	sha256sums = 3fae9ceff3bfb02dd32469dab27f761af7eda4ef8e4fc60875f19e4a2b5a1602
 
 pkgname = hyprswitch
