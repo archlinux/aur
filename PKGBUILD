@@ -1,10 +1,10 @@
-# Maintainer: Nicolas Lorin < michael at we solve everything dot com> 
+# Maintainer: Nicolas Lorin <androw95220@gmail.com> 
 # Contributor: Michael Asher < michael at we solve everything dot com> 
 pkgname=cs-firewall-bouncer
 _altpkgname=crowdsec-firewall-bouncer
-pkgver=0.0.36
+pkgver=0.0.38
 pkgrel=1
-_gitpkgrel=0.0.36
+_gitpkgrel=0.0.38
 pkgdesc="Use the CrowdSec API to create a dynamic blocklist used by supported firewalls."
 arch=('any')
 url="https://github.com/crowdsecurity/cs-firewall-bouncer"
@@ -54,6 +54,6 @@ package() {
 	mkdir -p ${pkgdir}/usr/local/installers/${pkgname}
 	cp -R ${srcdir}/${pkgname}-${_gitpkgrel}/${_altpkgname}-${_gitpkgrel}/* ${pkgdir}/usr/local/installers/${pkgname}
 }
-sha256sums=('46c41cce09df0be41ca091499fffd3ca2e61f85fb66e4f82060043e0894290cf'
+sha256sums=('da89f16986ce8e82c4479a1cca82274546dfcc8d4859d282d1e0c8ca7a321296'
             'f5354b4e609355af90738bc02a905ed95d69c11877a8b20f5935c6f58700fc27'
             'ba497cc11b456853604dcf38492580369f9557550944acaa56b0a99fc3028800')
