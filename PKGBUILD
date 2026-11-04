@@ -1,6 +1,6 @@
 # Maintainer: Sanjaya Danushka <neoarch.app@gmail.com>
 pkgname=neoarch
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (stable release; use 'neoarch-git' for beta builds)"
 arch=('any')
@@ -27,23 +27,15 @@ package() {
   chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_arch_deps.sh"
   chmod +x "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
   chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_desktop_entry.sh"
-  # Fix entry point reference from aurora_home.py to -m neoarch
-  sed -i 's|aurora_home.py|-m neoarch|' "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
   # GUI on PATH as `neoarch`, CLI as `neoarch-cli` and the short `neo`
   install -d "$pkgdir/usr/bin"
   ln -s /opt/neoarch/Neoarch/bin/neoarch.sh "$pkgdir/usr/bin/neoarch"
   ln -s /opt/neoarch/Neoarch/bin/neoarch-cli "$pkgdir/usr/bin/neoarch-cli"
   ln -s /opt/neoarch/Neoarch/bin/neoarch-cli "$pkgdir/usr/bin/neo"
   # Install desktop file
-  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/packaging/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
-  sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
-  sed -i 's|Icon=.*|Icon=neoarch|' "$pkgdir/usr/share/applications/neoarch.desktop"
-  # Install icon — PNG fallback for every desktop, optional scalable SVG
+  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/packaging/io.github.sanjayadanushka712.NeoArch.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
+  # Install icon
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/app/icon.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
-  if [[ -f "$pkgdir/opt/neoarch/Neoarch/assets/icons/NeoarchLogo.svg" ]]; then
-    install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/NeoarchLogo.svg" \
-      "$pkgdir/usr/share/icons/hicolor/scalable/apps/neoarch.svg"
-  fi
   # Install license
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
