@@ -2,7 +2,7 @@
 
 pkgname=paraphrase-git
 _pkgname=paraphrase
-pkgver=0.1.0.r273.g361a400
+pkgver=0.2.0.r0.ga25eaad
 pkgrel=1
 pkgdesc="Offline AI grammar checker, rewriter and reply writer that runs on your computer"
 arch=('x86_64')
