@@ -9,6 +9,7 @@ arch=(x86_64)
 url='https://github.com/vector-im/lk-jwt-service/'
 license=("AGPL-3")
 makedepends=(rust git)
+options=("!lto")
 backup=(
 	"etc/${_reponame}/env.conf"
 )
