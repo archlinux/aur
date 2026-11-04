@@ -3,11 +3,12 @@
 # introspection/docs, plus novabrowser patches: colour filter (dark mode keeps dark parts dark),
 # the webkitglib/2.54 branch fixes since 2.54.2 (security), a fix for a Skia self-deadlock that
 # froze pages under memory pressure, and upstream f311092c0d (AcceleratedSurface timer abort).
+# WebRTC is on (GStreamer webrtcbin + libnice) for Google Meet.
 # Build recipe and patch: https://github.com/Novaturiente/novabrowser-webkit/tree/master/spikes/wk-build
 # Upstream source: https://webkitgtk.org/releases/webkitgtk-$pkgver.tar.xz
 pkgname=webkitgtk-6.0-nova-bin
 pkgver=2.54.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Web content engine for GTK 4 (PGO + x86-64-v3 + ThinLTO build with novabrowser patches, prebuilt)"
 url="https://github.com/Novaturiente/novabrowser-webkit"
 arch=(x86_64)
@@ -20,14 +21,15 @@ depends=(at-spi2-core atk bubblewrap cairo enchant expat fontconfig freetype2 gd
   xdg-dbus-proxy zlib)
 optdepends=('geoclue: Geolocation support'
   'gst-libav: nonfree media decoding'
-  'gst-plugins-bad: media decoding'
+  'gst-plugins-bad: media decoding, WebRTC (webrtcbin)'
+  'libnice: WebRTC ICE (GStreamer nice plugin)'
   'gst-plugins-good: media decoding')
 provides=("webkitgtk-6.0=$pkgver" "webkitgtk-6.0-nova=$pkgver" libjavascriptcoregtk-6.0.so libwebkitgtk-6.0.so)
 conflicts=(webkitgtk-6.0 webkitgtk-6.0-nova)
 options=(!strip !debug)
 _tag=webkitgtk-6.0-nova-$pkgver-$pkgrel
 source=("$_tag-x86_64.tar.zst::$url/releases/download/$_tag/$_tag-x86_64.tar.zst")
-sha256sums=('5a2e6c5e803117b047af7aba9552dc512042abbc52607c2a782d5a252aaab411')
+sha256sums=('6a393b9e8955bc5ba3f9c08b68652c91b3c167a4efbed71bf4eb56de9cade9bf')
 
 prepare() {
   /lib/ld-linux-x86-64.so.2 --help 2>/dev/null | grep -q 'x86-64-v3 (supported' || {

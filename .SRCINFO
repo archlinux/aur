@@ -1,7 +1,7 @@
 pkgbase = webkitgtk-6.0-nova-bin
 	pkgdesc = Web content engine for GTK 4 (PGO + x86-64-v3 + ThinLTO build with novabrowser patches, prebuilt)
 	pkgver = 2.54.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Novaturiente/novabrowser-webkit
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -60,7 +60,8 @@ pkgbase = webkitgtk-6.0-nova-bin
 	depends = zlib
 	optdepends = geoclue: Geolocation support
 	optdepends = gst-libav: nonfree media decoding
-	optdepends = gst-plugins-bad: media decoding
+	optdepends = gst-plugins-bad: media decoding, WebRTC (webrtcbin)
+	optdepends = libnice: WebRTC ICE (GStreamer nice plugin)
 	optdepends = gst-plugins-good: media decoding
 	provides = webkitgtk-6.0=2.54.2
 	provides = webkitgtk-6.0-nova=2.54.2
@@ -70,7 +71,7 @@ pkgbase = webkitgtk-6.0-nova-bin
 	conflicts = webkitgtk-6.0-nova
 	options = !strip
 	options = !debug
-	source = webkitgtk-6.0-nova-2.54.2-3-x86_64.tar.zst::https://github.com/Novaturiente/novabrowser-webkit/releases/download/webkitgtk-6.0-nova-2.54.2-3/webkitgtk-6.0-nova-2.54.2-3-x86_64.tar.zst
-	sha256sums = 5a2e6c5e803117b047af7aba9552dc512042abbc52607c2a782d5a252aaab411
+	source = webkitgtk-6.0-nova-2.54.2-4-x86_64.tar.zst::https://github.com/Novaturiente/novabrowser-webkit/releases/download/webkitgtk-6.0-nova-2.54.2-4/webkitgtk-6.0-nova-2.54.2-4-x86_64.tar.zst
+	sha256sums = 6a393b9e8955bc5ba3f9c08b68652c91b3c167a4efbed71bf4eb56de9cade9bf
 
 pkgname = webkitgtk-6.0-nova-bin
