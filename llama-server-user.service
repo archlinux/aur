@@ -1,0 +1,59 @@
+[Unit]
+Description=LLaMA.cpp HTTP Server
+Documentation=https://github.com/ggml-org/llama.cpp/tree/%PKGVER%/tools/server
+Wants=modprobe@amdgpu.service modprobe@nvidia_drm.service modprobe@nvidia_uvm.service
+After=modprobe@amdgpu.service modprobe@nvidia_drm.service modprobe@nvidia_uvm.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/llama-server
+# Security
+NoNewPrivileges=yes
+# Sandboxing
+ProtectSystem=strict
+ProtectHome=tmpfs
+RuntimeDirectory=llama/server
+ConfigurationDirectory=llama/server
+CacheDirectory=huggingface/hub
+CacheDirectory=mesa_shader_cache
+PrivateTmp=yes
+DevicePolicy=closed
+
+# Devices in /dev/dri, for all GPU backends
+DeviceAllow=char-drm rw
+
+# /dev/kfd, for hip backend
+DeviceAllow=char-kfd rw
+
+# /dev/nvidia0, /dev/nvidia1, etc, for cuda backend
+DeviceAllow=char-nvidia rw
+
+# /dev/nvidiactl, for cuda backend
+DeviceAllow=char-nvidiactl rw
+
+# /dev/nvidia-uvm, for cuda backend
+DeviceAllow=char-nvidia-uvm rw
+
+PrivateIPC=yes
+PrivateUsers=self
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=strict
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+PrivateBPF=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+PrivateMounts=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallArchitectures=native
+EnvironmentFile=-%E/llama/server/environment.conf
+
+[Install]
+WantedBy=default.target

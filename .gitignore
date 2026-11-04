@@ -1,0 +1,7 @@
+*
+!.gitignore
+
+# Allow the required AUR metadata files
+!PKGBUILD
+!.SRCINFO
+!llama-server-*
