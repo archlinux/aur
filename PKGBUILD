@@ -1,9 +1,9 @@
 # Maintainer: Velocifyer <velocifyer at] velocifyer.com> (obfuscated)
 pkgname=mosh-rs
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 provides=('mosh')
-pkgdesc='A rust basde reimplementation of mosh with scrollback support'
+pkgdesc='A rust based reimplementation of mosh with scrollback support'
 url="https://github.com/Arunjay4213/mosh-rs"
 source=("mosh-rs-${pkgver}.tar.gz::https://github.com/Arunjay4213/mosh-rs/archive/refs/tags/v${pkgver}.tar.gz")
 arch=('x86_64' 'aarch64')

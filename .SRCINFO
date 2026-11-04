@@ -1,7 +1,7 @@
 pkgbase = mosh-rs
-	pkgdesc = A rust basde reimplementation of mosh with scrollback support
+	pkgdesc = A rust based reimplementation of mosh with scrollback support
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arunjay4213/mosh-rs
 	arch = x86_64
 	arch = aarch64
