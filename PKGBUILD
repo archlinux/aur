@@ -1,3 +1,6 @@
+# Maintainer inetol
+# Maintainer ynnsn
+
 pkgname=termius-deb
 pkgver=10.4.0
 pkgrel=1
