@@ -6,7 +6,7 @@
 
 pkgname=vicinae-bin
 pkgver=0.29.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A focused launcher for your desktop — native, fast, extensible"
 arch=('x86_64')
 url="https://github.com/vicinaehq/vicinae"
@@ -16,6 +16,7 @@ depends=(
   qt6-base
   qt6-declarative
   qt6-svg
+  qt6-multimedia
   layer-shell-qt
   libqalculate
   qtkeychain-qt6
