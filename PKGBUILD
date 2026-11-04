@@ -5,8 +5,8 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.106.6
-pkgrel=2
+pkgver=1.108.0
+pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/BerriAI/litellm'
@@ -37,8 +37,7 @@ depends=('python'
          'libgcc')
 makedepends=('python-maturin'
              'python-build'
-             'python-installer'
-             'python-wheel')
+             'python-installer')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-granian: proxy'
@@ -145,7 +144,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('64aca892cc25672da099162d2922c8933157b4bd4153a0273b2ec679bc4c3688')
+sha256sums=('dd4e85183639a563fd00a329175e4c717c5ba3e1d1037f913193849e47896757')
 
 prepare() {
   cd "$pkgname-$pkgver"
