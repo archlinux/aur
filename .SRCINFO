@@ -1,6 +1,6 @@
 pkgbase = flamewm-bin
 	pkgdesc = Fast Rust X11 window manager and desktop session, with a preliminary Wayland compositor
-	pkgver = 0.1.3
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://wm.arkflame.com
 	arch = x86_64
@@ -57,9 +57,9 @@ pkgbase = flamewm-bin
 	options = !debug
 	backup = etc/pam.d/flamewm-lock
 	backup = etc/xdg/menus/flamewm-applications.menu
-	source = flamewm-0.1.3-amd64.deb::https://github.com/ArkFlame/flamewm/releases/download/0.1.3/flamewm_0.1.3_amd64.deb
-	source = flamewm-lock.pam::https://raw.githubusercontent.com/ArkFlame/flamewm/0.1.3/packaging/arch/flamewm-lock.pam
-	sha256sums = cebeb4a8938020578b3d99b9f9eeff4709cd1ee9a84b8f9a68a4bfdc8da07f0c
+	source = flamewm-0.1.5-amd64.deb::https://github.com/ArkFlame/flamewm/releases/download/0.1.5/flamewm_0.1.5_amd64.deb
+	source = flamewm-lock.pam::https://raw.githubusercontent.com/ArkFlame/flamewm/0.1.5/packaging/arch/flamewm-lock.pam
+	sha256sums = c35e9756811de7a98de2c1bd50cb534aba090da12a859432244ca0763df354ba
 	sha256sums = 2f9b7a7a8a8583ed40969240ee7d0d42ffba4a44b69a7d241bd60634795a8e84
 
 pkgname = flamewm-bin
