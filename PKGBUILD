@@ -1,13 +1,21 @@
 # Maintainer: @ivanquanta
+__='
 
-#---- usage info -----------------------------------------------------------------------------
-IFS= read -r -d '' _usage << 'EOF'
+Description/features:
+    A wrapper for pacman (such as yay or paru), it transparently handles all cache operations
+    within `/tmp` (which is a `tmpfs` residing in RAM).
+    This reduces wear on your SSD and increases package installation speeds.
+    It automatically cleans up caches, makes no changes to your system,
+    and requires no configuration, it is ready to use immediately.
+    There are no changes to how you interact with your package manager’s commands.
+    If sudo or doas are not present on the system, it uses systemd run0 for privilege escalation.
+    When redirecting to stdout (e.g., yay > /tmp/out.txt), it adds no extraneous information to the output.
+    Autocompletion work.
 
-    Package task:
-        Increase the speed of the package managers.
-        Increase the life of an ssd/nvme disks.
+Installing:
+    yay -S pacman-tmpfs
 
-    USAGE:
+Usage:
     After installing pacman-tmpfs you can use your favourite package manager as usual
     with tmpfs caches and automatically cleaning. Autocompletion is also working. For example:
         run0 pacman -Syu htop
@@ -27,12 +35,12 @@ IFS= read -r -d '' _usage << 'EOF'
     They will not be automatically cleared with --default option!
     For cleanup all caches (tmpfs and local) just update system like:
         sudo pacman -Syu
-    #
-EOF
+
+'
 #---------------------------------------------------------------------------------------------
 
 pkgname=pacman-tmpfs
-pkgver=2026.11.02
+pkgver=2026.11.04
 pkgrel=1
 
 pkgdesc='Wrapper for pacman, yay, paru using tmpfs for caches and auto cleaning.'
@@ -44,14 +52,11 @@ optdepends=('yay: Yet another yogurt. Pacman wrapper and AUR helper written in g
             'paru: Feature packed AUR helper'
             )
 options=('!debug')
-install=install.sh
 
 source=(
     pacman-tmpfs.sh     # хранится в git aur. в source пересчитывает sha256sums
 )
 sha256sums=('f5c92d7daeaf29aea97d42ebb26e3db333678bcf74b772f91d3ac10adbe7caf9')
-
-echo -n "${_usage}" > /tmp/pacman-tmpfs_usage.txt
 
 #---------------------------------------------------------------------------------------------
 package() {
