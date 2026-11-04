@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=spitfire
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Tiling Wayland compositor with a live-reloadable Lua config, in the spirit of dwm"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ backup=('etc/xdg-desktop-portal/spitfire-portals.conf')
 # (undefined lua_* symbols).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('de2d63b0759f5663bfc9749f11496b507f197c64e52d901a8f5dc905f17a2602')
+sha256sums=('664b81b160898d20f7271751f8f87faa07cfb2af5e8bde1bdefa2e3fe19624d0')
 
 # Smithay is pinned as a git dependency in Cargo.lock, so prepare() needs
 # network access (hence git in makedepends).
