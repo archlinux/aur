@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.43
+pkgver=0.1.44
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -23,7 +23,7 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/package_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ca527cfc9682fcc33e2d3b954554cebbd5a8367dccb57fda793da5b0a8dad72a')
+sha256sums=('2bf1ba656abe047050e6ed013e9b2703e710f3dc63553dd556adee4d0033b4fc')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -140,12 +140,12 @@ EOF
 EOF
 
   cat > "$pkgdir/etc/archcanary/bpftool_allowlist.conf" << 'EOF'
-# eBPF loader binaries to skip during the bpftool LSM-loader check
+# eBPF loader binaries to skip during the bpftool loader and kprobe checks
 # (--check-bpftool), system-wide allowlist. One binary basename per line.
 # Everything after # is a comment.
 # Add loaders that are known-good but not pacman-owned (a self-built or
-# manually-installed security/monitoring tool that legitimately loads LSM
-# eBPF hooks) — matched against the basename of /proc/<pid>/exe.
+# manually-installed security/monitoring tool that legitimately loads eBPF
+# hooks, e.g. opensnitchd) — matched against the basename of /proc/<pid>/exe.
 #
 # Example:
 # falco  # runtime security monitoring, installed from upstream binary release
