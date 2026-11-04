@@ -1,6 +1,6 @@
 # Maintainer: Kanehekili <kanehekili.media@gmail.com>
 pkgname=easyplayer
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Simple video and audio player based on mpv"
 url="https://github.com/kanehekili/EasyPlayer"
@@ -8,8 +8,8 @@ license=('GPL-2.0-or-later')
 depends=('python-pyqt6' 'mpv' 'ffmpeg')
 optdepends=('python-numpy: spectrum analyzer')
 arch=('x86_64' 'aarch64')
-source=(https://github.com/kanehekili/EasyPlayer/releases/download/1.6.0/easyplayer1.6.0.tar)
-sha256sums=(dae13385a3170c0c5e460c4b381c4a89670c24ed70212c1fa4cc59336d76a1d6)
+source=(https://github.com/kanehekili/EasyPlayer/releases/download/1.6.1/easyplayer1.6.1.tar)
+sha256sums=(4d7342587ac6c734538823cf12e5c4e6fcd6216eb150e37e96e443bf814811f8)
 
 package() {
   cd "${srcdir}/easyplayer"
