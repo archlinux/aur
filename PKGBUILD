@@ -1,14 +1,16 @@
 # Maintainer: OldJobobo
 pkgbase=splinterm
 pkgname=('splinterm' 'splinterm-mcp')
-pkgver=0.1.1
-_upstream_ver=0.1.1
+pkgver=0.2.0
+_upstream_ver=0.2.0
+_commit=1f129ff88c1cfdcd498ec44eed38b3328d9c94a1
 # Candidate template only; publish after verified GitHub release publication.
-# Candidate tooling must bind the new archive checksum.
+# Candidate tooling must bind the new archive checksum and source commit.
 pkgrel=1
 arch=('x86_64')
-url='https://github.com/oldjobobo/splinterm'
-license=('MIT')
+options=('!strip')
+url='https://github.com/ministry-of-taste/splinterm'
+license=('MIT' 'Apache-2.0')
 makedepends=(
   'cargo'
   'fontconfig'
@@ -27,10 +29,10 @@ makedepends=(
   'xdg-terminal-exec'
 )
 source=(
-  "https://github.com/OldJobobo/splinterm/releases/download/v$_upstream_ver/$pkgbase-$_upstream_ver.tar.gz"
+  "https://github.com/ministry-of-taste/splinterm/releases/download/v$_upstream_ver/$pkgbase-$_upstream_ver.tar.gz"
 )
 sha256sums=(
-  '276770c8f3b4ae10466ff965c07af2860ae91a8649d312f32cb760aef5b784f2'
+  '285d2eb815bbf90cd83bcdf79d8a1ed4b8106586a7cd34dca42d50b505a1428f'
 )
 
 prepare() {
@@ -41,8 +43,12 @@ prepare() {
 
 build() {
   cd "$pkgbase-$_upstream_ver"
+  export SPLINTERM_BUILD_COMMIT=$_commit
+  export SPLINTERM_BUILD_PROVENANCE=release-candidate
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
+  # Keep source installs warning-free without discarding user compiler flags.
+  export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }-D warnings"
   cargo build --frozen --release \
     -p splinterm -p splinterd -p splinterm-relay -p splinterm-pty -p splinterm-mcp
 }
@@ -75,6 +81,13 @@ package_splinterm() {
   install -Dm755 target/release/splinterd "$pkgdir/usr/bin/splinterd"
   install -Dm755 target/release/splinterm-relay "$pkgdir/usr/bin/splinterm-relay"
   install -Dm755 target/release/splinterm-pty-child "$pkgdir/usr/bin/splinterm-pty-child"
+  python tools/package/generate-package-provenance.py \
+    --commit "$_commit" \
+    --provenance release-candidate \
+    --version "$_upstream_ver" \
+    --daemon "$pkgdir/usr/bin/splinterd" \
+    --client "$pkgdir/usr/bin/splinterm" \
+    --output "$pkgdir/usr/share/splinterm/package-provenance-v1.json"
   install -Dm755 dist/bin/splinterm-xdg-terminal-exec "$pkgdir/usr/bin/splinterm-xdg-terminal-exec"
   ln -s splinterm-xdg-terminal-exec "$pkgdir/usr/bin/splinterm-dojos"
   ln -s splinterm-xdg-terminal-exec "$pkgdir/usr/bin/splinterm-sessions"
@@ -86,6 +99,8 @@ package_splinterm() {
 
   install -Dm644 dist/applications/com.oldjobobo.splinterm.desktop \
     "$pkgdir/usr/share/applications/com.oldjobobo.splinterm.desktop"
+  install -Dm644 dist/applications/com.oldjobobo.splinterm.remotes.desktop \
+    "$pkgdir/usr/share/applications/com.oldjobobo.splinterm.remotes.desktop"
   install -Dm644 dist/metainfo/com.oldjobobo.splinterm.metainfo.xml \
     "$pkgdir/usr/share/metainfo/com.oldjobobo.splinterm.metainfo.xml"
   install -Dm644 dist/icons/com.oldjobobo.splinterm.svg \
