@@ -1,6 +1,6 @@
 pkgbase = isocast-git
 	pkgdesc = OBS alternative that records every source as its own file (Git HEAD
-	pkgver = 0.0.10.r4.gbd1fc8e
+	pkgver = 0.0.10.r21.g2ddcc6d
 	pkgrel = 1
 	url = https://isocast.xyz
 	arch = x86_64
@@ -14,12 +14,14 @@ pkgbase = isocast-git
 	depends = fontconfig
 	depends = glibc
 	depends = gst-plugins-base-libs
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libpipewire
 	depends = openh264
-	provides = isocast=0.0.10.r4.gbd1fc8e
+	depends = webkitgtk-6.0
+	provides = isocast=0.0.10.r21.g2ddcc6d
 	conflicts = isocast
-	source = git+https://github.com/R44VC0RP/isocast.git
+	source = git+https://github.com/anomalyco/isocast.git
 	sha256sums = SKIP
 
 pkgname = isocast-git
@@ -27,8 +29,10 @@ pkgname = isocast-git
 	depends = fontconfig
 	depends = glibc
 	depends = gst-plugins-base-libs
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libpipewire
 	depends = openh264
+	depends = webkitgtk-6.0
 	depends = libasound.so
 	depends = libgcc_s.so
