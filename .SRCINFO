@@ -1,12 +1,12 @@
 pkgbase = geist-font
 	pkgdesc = A new font family for Vercel, created by Vercel in collaboration with Basement Studio
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://vercel.com/font
 	arch = any
 	license = OFL-1.1
-	source = https://github.com/vercel/geist-font/releases/download/v1.9.0/geist-font-v1.9.0.zip
-	sha256sums = 1f2dd9ea90e68d0358a1d234a5f156807b2c3e0e295d78d87980a6dbad1fa58c
+	source = https://github.com/vercel/geist-font/releases/download/v1.9.1/geist-font-v1.9.1.zip
+	sha256sums = f1194047382839bb3ad76a82b43694083cbb56201b2791d420282376fd592506
 
 pkgname = otf-geist
 
