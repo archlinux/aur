@@ -1,6 +1,6 @@
 pkgbase = tailor-cli
 	pkgdesc = CLI for controlling tailor-daemon (part of tuxedo-rs)
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/AaronErhardt/tuxedo-rs
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = tailor-cli
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
-	depends = gcc-libs
-	depends = tailord=0.2.5
+	depends = libgcc
+	depends = tailord=0.3.0
 	provides = tailor-cli
-	source = tailor-cli::git+https://github.com/AaronErhardt/tuxedo-rs#tag=tailor-v0.3.1
-	sha256sums = cf33972732601cd9e0f2502689a2f7620ba5fc886174e84f9192bbd5c8e801a1
+	source = tailor-cli::git+https://github.com/AaronErhardt/tuxedo-rs#tag=tailor-v0.3.2
+	sha256sums = 50ceaa0040abfd515c7b2532f6969bb5b6392fb4dc71c6e63016e453a6294970
 
 pkgname = tailor-cli

@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=tailor-cli
-pkgver="0.3.1"
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="CLI for controlling tailor-daemon (part of tuxedo-rs)"
 arch=("x86_64")
@@ -12,8 +12,8 @@ provides=(
 )
 depends=(
   'glibc'
-  'gcc-libs'
-  'tailord=0.2.5'
+  'libgcc'
+  'tailord=0.3.0'
 )
 makedepends=(
   'git'
@@ -22,9 +22,7 @@ makedepends=(
 source=(
   "${pkgname}"::"git+${url}#tag=${pkgname%-*}-v${pkgver}"
 )
-sha256sums=(
-  'cf33972732601cd9e0f2502689a2f7620ba5fc886174e84f9192bbd5c8e801a1'
-)
+sha256sums=('50ceaa0040abfd515c7b2532f6969bb5b6392fb4dc71c6e63016e453a6294970')
 # Source name is tailor_cli rather than tailor-cli
 _srcname="tailor_cli"
 

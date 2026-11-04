@@ -1,0 +1,5 @@
+[tailor-cli]
+source = "git"
+git = "https://github.com/AaronErhardt/tuxedo-rs.git"
+prefix = "tailor-v"
+include_regex = 'tailor-.*'
