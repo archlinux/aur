@@ -1,6 +1,6 @@
 # Maintainer: prietus <prietus@live.com>
 pkgname=aurgus-git
-pkgver=0.1.0.r7.g4fff586
+pkgver=0.1.0.r0.g4198f7a
 pkgrel=1
 pkgdesc="AUR helper that audits PKGBUILDs before building them (git version)"
 arch=('x86_64' 'aarch64')

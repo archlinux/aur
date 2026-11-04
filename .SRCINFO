@@ -1,6 +1,6 @@
 pkgbase = aurgus-git
 	pkgdesc = AUR helper that audits PKGBUILDs before building them (git version)
-	pkgver = 0.1.0.r7.g4fff586
+	pkgver = 0.1.0.r0.g4198f7a
 	pkgrel = 1
 	url = https://github.com/prietus/aurgus
 	arch = x86_64
