@@ -2,7 +2,7 @@
 
 pkgname=pict-rs
 pkgver=0.5.19
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple image hosting service'
 arch=('x86_64')
 url='https://git.asonix.dog/asonix/pict-rs'
@@ -16,8 +16,7 @@ depends=(
 )
 makedepends=('git' 'rust' 'protobuf')
 options=('!lto')
-_commit='c20a7db2d91c118696c61acb45cb00ca073fda49'
-source=("$pkgname::git+$url#commit=$_commit")
+source=("$pkgname::git+$url#tag=v${pkgver}")
 b2sums=('SKIP')
 
 pkgver() {
