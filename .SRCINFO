@@ -1,6 +1,6 @@
 pkgbase = atk-control
 	pkgdesc = Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice (MAD R, VXE R1)
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/NasirA1991/atk-control
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = atk-control
 	conflicts = compx-control-git
 	conflicts = atk-control-git
 	replaces = compx-control
-	source = atk-control-0.4.6.tar.gz::https://github.com/NasirA1991/atk-control/releases/download/v0.4.6/atk-control-0.4.6.tar.gz
-	sha256sums = e4b9194826a05450194b6e8a6add1b4ac4bb19147b17ac2dabe9164af87ecbe6
+	source = atk-control-0.4.7.tar.gz::https://github.com/NasirA1991/atk-control/releases/download/v0.4.7/atk-control-0.4.7.tar.gz
+	sha256sums = 1d0c4bc6e56aade002cc5122aefe52f6fae469de8292e0eb9b07a471b39c1560
 
 pkgname = atk-control
