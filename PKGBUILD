@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-git
-pkgver=1.0.8.r0.gbb4b4ff
+pkgver=1.0.9.r0.g4687d24
 pkgrel=1
 pkgdesc="A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
