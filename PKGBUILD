@@ -1,11 +1,11 @@
 # Maintainer: xscriptor <x@xscriptor.com>
 pkgname=xtop-git
 _pkgname=xtop
-pkgver=r7.37fae84
+pkgver=r35.cb17bb7
 pkgrel=1
-pkgdesc="A btop-like system monitor written in Rust for X"
+pkgdesc="A TUI system monitor written in Rust for X"
 arch=('x86_64')
-url="https://github.com/xscriptordev/xtop"
+url="https://github.com/xtop-cli/xtop"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
