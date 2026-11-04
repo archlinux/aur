@@ -2,7 +2,7 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 _name=asysocks
 pkgname="python-$_name"
-pkgver=0.2.18
+pkgver=0.2.19
 pkgrel=1
 pkgdesc="Socks5/Socks4 client and server python library"
 url="https://github.com/skelsec/$_name"
@@ -22,7 +22,7 @@ makedepends=(
   'git'
 )
 source=("git+$url#tag=$pkgver")
-b2sums=('40a758d01d0107ae2d90fd20ccaf9cf72fcea3e166f39b356eb2195ed670349b50a0e5038386f83747cea65a4a664b7f3cd03b26ad2a30a0bfe16b4811c7f04c')
+b2sums=('3c7c107e6d3102f0ecd51ae980b4c1b47184c84150160efd338a2dcfbd3d9f368592db821fa34bfbe5fd0c15c6f24443d46c541a9f74ccd616fe81442d49edc4')
 
 prepare() {
   git -C "$_name" clean -dfx
