@@ -1,4 +1,5 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: aarto <aarto@aur.archlinux.org>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-rosbags
 pkgver=0.9.19
