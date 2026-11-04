@@ -1,6 +1,6 @@
 pkgbase = rpi-clone-tui-git
 	pkgdesc = Raspberry Pi disk cloner with guided whiptail TUI, progress gauge and CPU/MEM charts
-	pkgver = 2.1.0.r2.g47cd749
+	pkgver = 2.1.0.r160.g63e80a7
 	pkgrel = 1
 	url = https://github.com/9M2PJU/rpi-clone
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = rpi-clone-tui-git
 	conflicts = rpi-clone
 	conflicts = rpi-clone-setup
 	conflicts = rpi-clone-git
-	source = git+https://github.com/9M2PJU/rpi-clone.git
+	source = git+https://github.com/9M2PJU/rpi-clone.git#branch=tui-gauge-v2
 	sha256sums = SKIP
 
 pkgname = rpi-clone-tui-git
