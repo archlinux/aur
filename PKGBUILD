@@ -1,5 +1,5 @@
 pkgname=emqutiti
-pkgver=0.7.16
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Terminal-based MQTT client written in Go"
 arch=('x86_64')
@@ -8,16 +8,16 @@ license=('MIT')
 depends=()
 options=('!debug')
 makedepends=('go')
-source=("emqutiti-$pkgver.tar.gz::$url/v$pkgver/emqutiti-fe91099de8b683091eb03afb78f20e6ddccaca3b.tar.gz")
-sha256sums=('d8bfaab788fbc02482cd35955c758a77c662e501ad648e5a492f205607977e0e')
+source=("emqutiti-$pkgver.tar.gz::$url/v$pkgver/emqutiti-e897315937081d84e5bfb26f3d190317ff6347f3.tar.gz")
+sha256sums=('afea74c4264e6f7bafea5bc88b95dfdef8a043714834760785700ce8a236b4d7')
 
 build() {
-  cd "emqutiti-fe91099de8b683091eb03afb78f20e6ddccaca3b"
-  CGO_ENABLED=0 go build -buildvcs=false -trimpath -ldflags="-s -w -X github.com/marang/emqutiti/cmd.version=$pkgver" -o emqutiti ./cmd/emqutiti
+  cd "emqutiti-e897315937081d84e5bfb26f3d190317ff6347f3"
+  CGO_ENABLED=0 go build -buildvcs=false -trimpath -ldflags="-s -w -X go.izoone.com/emqutiti/cmd.version=$pkgver" -o emqutiti ./cmd/emqutiti
 }
 
 package() {
-  cd "emqutiti-fe91099de8b683091eb03afb78f20e6ddccaca3b"
+  cd "emqutiti-e897315937081d84e5bfb26f3d190317ff6347f3"
   install -Dm755 emqutiti "$pkgdir/usr/bin/emqutiti"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
