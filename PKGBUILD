@@ -2,7 +2,7 @@
 
 _pkgname=key2touch
 pkgname=key2touch-git
-pkgver=r18.g482dc8b
+pkgver=r19.ge3272fe
 pkgrel=1
 pkgdesc="Map keyboard keys to touchscreen input on Wayland desktops, made for playing on Waydroid"
 arch=('any')
