@@ -1,8 +1,8 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=thunderbird-extension-cardbook
-pkgver=107.2
-_commit=8cb0683622cb21bd3db30d3064794e6fbb16f889
+pkgver=107.7
+_commit=40cc9646181a0a2346cbef921fa6ee4cb55d7a94
 pkgrel=1
 pkgdesc="A new Thunderbird address book based on the CardDAV and vCard standards"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MPL-2.0')
 depends=('thunderbird')
 conflicts=('thunderbird<128' 'thunderbird>=161')
 source=("${url}/-/archive/${_commit}/${pkgname#thunderbird-extension-}-${pkgver}.tar.gz")
-sha256sums=('554dec43eacd1c713a307488678c3bbf96a8e488d01bd311402dd961dec4f559')
+sha256sums=('d283444ec0339a2651ce6a0a8670c58b57c552e61395771defad3bb473667fe8')
 
 build() {
     cd CardBook-${_commit}
