@@ -10,7 +10,7 @@
 # Keep pkgver in step with debian/changelog: it names the tarball.
 
 pkgname=mx-tools
-pkgver=26.10.1
+pkgver=26.11
 pkgrel=1
 pkgdesc="MX Tools - Dashboard application launcher for various MX tools"
 arch=('x86_64')
@@ -18,12 +18,12 @@ url="https://mxlinux.org"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg')
 makedepends=('cmake' 'ninja' 'qt6-declarative' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.10.1.tar.gz")
-sha256sums=('9f4dc862e824b8a9281edafa4cf73304915047c9313e5deed5bd3042a545a66d')
+source=("https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.11.tar.gz")
+sha256sums=('0632851a564b84211c0fd786310a44c10236bc7ade3b31bafc0072a1a650b663')
 
 # dpkg-source packed this tarball from a directory called "src", so that - not
 # ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="mx-tools-26.10.1"
+_srcdir="mx-tools-26.11"
 
 build() {
     cd "${srcdir}/${_srcdir}"
