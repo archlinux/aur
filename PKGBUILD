@@ -1,6 +1,6 @@
 # Maintainer: username227 {gfrank227 [at] gmail [dot] com}
 pkgname=viper4linux-re-git
-pkgver=1.0.0.r34.g789a82b
+pkgver=1.1.0.r160.g0bcf628
 pkgrel=1
 pkgdesc='Reverse-engineered ViPERDSP effects for PipeWire with a Qt6 interface (development VCS build)'
 arch=('x86_64')
@@ -23,43 +23,30 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/viper4linux"
-    git submodule init -- third_party/ViPERDSP
-    git config 'submodule.third_party/ViPERDSP.url' "$srcdir/ViPERDSP"
+    git config submodule.third_party/ViPERDSP.url "$srcdir/ViPERDSP"
     git -c protocol.file.allow=always submodule update --init --checkout -- third_party/ViPERDSP
-    test "$(git -C third_party/ViPERDSP rev-parse HEAD)" = "$(git rev-parse HEAD:third_party/ViPERDSP)" || return 1
-    mkdir -p "$srcdir/ViPERDSP-patched"
-    git -C third_party/ViPERDSP archive HEAD | tar -x -C "$srcdir/ViPERDSP-patched"
-    VIPERDSP_SOURCE_DIR="$srcdir/ViPERDSP-patched" python3 patches/fix_lufs_speed.py
-    VIPERDSP_SOURCE_DIR="$srcdir/ViPERDSP-patched" python3 patches/preallocate_stereo_imager.py
-    VIPERDSP_SOURCE_DIR="$srcdir/ViPERDSP-patched" python3 patches/preallocate_multiband_compressor.py
 }
+
 
 build() {
     cmake -S "$srcdir/viper4linux" -B "$srcdir/viper4linux-build" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DVIPERDSP_SOURCE_DIR="$srcdir/ViPERDSP-patched"
-    cmake --build "$srcdir/viper4linux-build" --parallel "$(nproc)"
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DVIPER_ENABLE_SYSTEM_INSTALL=ON \
+        -DVIPER_SYSTEM_INSTALL_LAYOUT=arch \
+        -DVIPER_SYSTEM_PACKAGE_NAME="$pkgname"
+
+    cmake --build "$srcdir/viper4linux-build"
 }
 
 check() {
     cd "$srcdir/viper4linux"
-    bash tests/check-mock.sh
-    python3 tests/check-launcher.py
-    python3 tests/check-theme-contract.py
-    python3 tests/check-ui-contract.py
-    python3 tests/check-tray-contract.py
-    python3 tests/check-named-presets-contract.py
-    python3 tests/check-preset-reset-contract.py
-    python3 tests/check-packaging-contract.py
-    nm -D "$srcdir/viper4linux-build/viper_dsp_ladspa.so" | grep -Eq ' [TW] ladspa_descriptor$'
+    bash tests/check-package.sh
+    nm -D "$srcdir/viper4linux-build/viper_dsp_ladspa.so" |
+        grep -Eq ' [TW] ladspa_descriptor$'
 }
 
-
 package() {
-    local tree="$srcdir/viper4linux"
-    local built="$srcdir/viper4linux-build"
-
-    bash "$tree/packaging/arch/install-package.sh" \
-        "$tree" "$built" "$pkgdir" "$pkgname"
+    DESTDIR="$pkgdir" cmake --install "$srcdir/viper4linux-build"
 }
 
