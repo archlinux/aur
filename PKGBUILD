@@ -2,9 +2,9 @@
 
 pkgname=archon-appimage
 _pkgapp=archon
-_pkgbuild_commit=f2a2c3e
-pkgver=9.6.223
-pkgrel=15
+_pkgbuild_commit=0d31a23
+pkgver=9.6.252
+pkgrel=1
 pkgdesc="Desktop uploader app for Archon packaged as the upstream AppImage"
 arch=('x86_64')
 url='https://www.archon.gg/download'
@@ -18,7 +18,7 @@ source=(
   "${_pkgapp}-v${pkgver}.AppImage::https://github.com/RPGLogs/Uploaders-archon/releases/download/v${pkgver}/archon-v${pkgver}.AppImage"
 )
 sha256sums=(
-  '28ed8c761d7571ebb1c350eaab231fcaeddcbe568d5c7de8354d745c1f535285'
+  '02033582e6e43cea6a91f334f3ecb532e9462981bdc2b861201921bc92db1cb0'
 )
 options=(!strip)
 
