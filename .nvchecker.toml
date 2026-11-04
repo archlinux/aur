@@ -1,0 +1,5 @@
+[tailor-hwcaps]
+source = "git"
+git = "https://github.com/AaronErhardt/tuxedo-rs.git"
+prefix = "tailor_hwcaps-v"
+include_regex = 'tailor_hwcaps.*'
