@@ -4,7 +4,7 @@ _repo=dux-search
 _binname=dsearch
 
 pkgname=dux-search-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Fast filesystem search service (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_x86_64=("${_binname}-${arch[0]}-${pkgver}.gz::${url}/releases/download/v$
 source_aarch64=("${_binname}-${arch[1]}-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_binname}-linux-${_barch[1]}.gz")
 
 sha256sums=('4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa'
-            '061aff88c1f93bea87d705221482a55c2a4ec093d410785e7e8c44c99a1409d8'
+            '21d606307da6754f5d0f8bc7d6ad6e2ef461f6d60dae14b26cdf0e019c76183b'
             '4203149be986e77617da42b0c7297e268b5daf89bf796ecbc41263e7746b031d')
-sha256sums_x86_64=('c46f6ce6f58e39e3d1c125aa4466034c9fd4402756b3f5438317d19ec3f820a0')
-sha256sums_aarch64=('ac9fdf6fc94048fc3fe190326f93df5b6a2b85a2482df13d4a34956268e94535')
+sha256sums_x86_64=('99d566bbc748479d42f12dc1c3a362e00877cfa222b55a53aa108ded6ced7414')
+sha256sums_aarch64=('04c188092e61304ec4aa034b33f58dfa2198dc9608735c434353b2b0db958f28')
 
 # makepkg's mime sniffing does not reliably detect a gzipped ELF, so decompress it ourselves
 noextract=("${_binname}-${arch[0]}-${pkgver}.gz" "${_binname}-${arch[1]}-${pkgver}.gz")
