@@ -4,7 +4,7 @@
 pkgname=dux-gop-git
 _pkgname=dux-gop
 _binname=dgop
-pkgver=2.0.0.r1.gc1dbfaf
+pkgver=2.1.0.r0.g88d03ba
 pkgrel=1
 pkgdesc='System monitoring CLI + REST API (git)'
 arch=(x86_64 aarch64 armv7h)
