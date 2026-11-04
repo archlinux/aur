@@ -1,6 +1,6 @@
 pkgbase = svelte-language-server-git
 	pkgdesc = Svelte Language Server, git master build
-	pkgver = r1958.e549d195c
+	pkgver = r1973.22f3225fc
 	pkgrel = 1
 	url = https://github.com/sveltejs/language-tools
 	arch = any

@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=svelte-language-server
 pkgname=${_pkgname}-git
-pkgver=r1958.e549d195c
+pkgver=r1973.22f3225fc
 pkgrel=1
 pkgdesc='Svelte Language Server, git master build'
 url="https://github.com/sveltejs/language-tools"
@@ -40,7 +40,10 @@ build() {
 }
 
 check() {
-  cd "${pkgname}/packages/language-server"
+  # The TS GO tests need the content mapper, it has no build script
+  cd "${pkgname}/packages/typescript-content-mapper"
+  pnpm exec tsc
+  cd ../language-server
   pnpm test
 }
 
