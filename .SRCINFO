@@ -1,0 +1,14 @@
+pkgbase = ghostunnel
+	pkgdesc = TLS proxy with mutual authentication for securing non-TLS services
+	pkgver = 1.11.5
+	pkgrel = 1
+	url = https://github.com/ghostunnel/ghostunnel
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = ghostunnel-1.11.5.tar.gz::https://github.com/ghostunnel/ghostunnel/archive/refs/tags/v1.11.5.tar.gz
+	sha256sums = 4e422caf02e8fc2082f749f56b37dd64133da0e288cebdfdde52be8537ead69a
+
+pkgname = ghostunnel
