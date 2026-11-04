@@ -49,9 +49,10 @@ check() {
 package() {
 	_tools=('kryoptic_init' 'kryoptic_otp' 'softhsm_migrate')
 	cd "$pkgname-$pkgver"
-	for t in "${tools[@]}"; do
-		install -v -D -m 0755 -t "$pkgdir/usr/bin" target/release/$t
-	done
+	install -v -D -m 0755 -t "$pkgdir/usr/bin" target/release/kryoptic_init
+	install -v -D -m 0755 -t "$pkgdir/usr/bin" target/release/kryoptic_otp
+	install -v -D -m 0755 -t "$pkgdir/usr/bin" target/release/softhsm_migrate
+
 	install -v -D -m 0755 -t "$pkgdir/usr/lib/pkcs11" target/release/libkryoptic_pkcs11.so
 	install -v -D -m 0644 -t "$pkgdir/etc/kryoptic" "$srcdir/token.conf"
 
