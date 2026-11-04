@@ -53,7 +53,8 @@ build() {
   [[ $CONNECT_AUTH_URL && $CONNECT_AUTH_PUBLISHABLE_KEY ]] ||
     { error "Can't read the Connect settings"; return 1; }
 
-  pnpm install --frozen-lockfile
+  # Use the pinned pnpm without its update banner.
+  npm_config_update_notifier=false pnpm install --frozen-lockfile
   pnpm build:types
   # pacman manages updates: the in-app updater would install a .deb with dpkg,
   # so give it no update feed. Its artifacts also need a signing key.
