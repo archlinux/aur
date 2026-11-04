@@ -1,6 +1,6 @@
 pkgbase = freshgram-git
 	pkgdesc = Breaking ToS Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (git version)
-	pkgver = 7.5.5.r85.g26d2291
+	pkgver = 7.6.0.r28466.gc674561
 	pkgrel = 1
 	url = https://github.com/Snowy-Fluffy/freshGram
 	arch = x86_64
@@ -69,7 +69,7 @@ pkgbase = freshgram-git
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = freshgram=7.5.5
+	provides = freshgram=7.6.0
 	conflicts = freshgram
 	conflicts = freshgram-bin
 	options = !lto

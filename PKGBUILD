@@ -9,7 +9,7 @@ export DEBUG_CXXFLAGS="-g1"
 
 _pkgname=freshgram
 pkgname="$_pkgname-git"
-pkgver=7.5.5.r85.g26d2291
+pkgver=7.6.0.r28466.gc674561
 pkgrel=1
 pkgdesc='Breaking ToS Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (git version)'
 arch=('x86_64')
