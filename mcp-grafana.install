@@ -1,0 +1,7 @@
+post_install() {
+  echo "  mcp-grafana reports anonymous usage statistics to Grafana Labs"
+  echo "  (stats.grafana.org) every 4 hours and at shutdown, because the"
+  echo "  developer enabled it by default. To turn it off, start the server"
+  echo "  with --usage-stats=disabled, or set GRAFANA_USAGE_STATS=disabled"
+  echo "  or DO_NOT_TRACK=1 in its environment."
+}
