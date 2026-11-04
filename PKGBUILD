@@ -11,7 +11,7 @@
 
 pkgname=ty-bin
 _pkgname=ty
-pkgver=0.0.96
+pkgver=0.0.97
 pkgrel=1
 pkgdesc='Extremely fast Python type checker and language server (prebuilt binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -30,9 +30,9 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_base}/ty-aarch64-unknow
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::${_base}/ty-armv7-unknown-linux-gnueabihf.tar.gz")
 
 sha256sums=('860e3d7a86b84e6a7012c7a635fc64df475cebc6cce34dfeb73a5982ec58176c')
-sha256sums_x86_64=('88c99960a4171aeb34d98ec4036f9cc8e7a95dcf807fc549007aadcaf7751536')
-sha256sums_aarch64=('31e9b4c8004f03df4c9756b57a57a24f21369fcc61abcf4cc3fdc27b6eae946d')
-sha256sums_armv7h=('a7ff70650b0532e32b1b8d601ed978296083e771f3ac47ba124d81874ec2ea8c')
+sha256sums_x86_64=('d1d257df052ac5dc5c6a114f7fc73a5ff4253e0d4f714095b6c8772cfd8f1bf4')
+sha256sums_aarch64=('a369a6af123af9a1bc8883d03a4f91a7cdd88f98758d59123e3aacd4fae58f93')
+sha256sums_armv7h=('ea8d06aaa97e1209b673c97e5bf85a620c30feb6fb1945158985eb428f90b746')
 
 # Map Arch CARCH -> upstream target triple subdir inside the tarball.
 _target_x86_64='x86_64-unknown-linux-gnu'
