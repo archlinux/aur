@@ -1,12 +1,13 @@
 pkgbase = libredj
 	pkgdesc = DJ software for Linux.
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/OpenDJLab/LibreDJ
 	arch = x86_64
 	groups = pro-audio
 	license = GPL-3.0-only
 	makedepends = cargo-nightly
+	depends = jack
 	source = libredj-0.9.0.zip::https://codeberg.org/OpenDJLab/LibreDJ/archive/v0.9.0.zip
 	sha256sums = 880a51c8f6b2be7af1c1e24725fc1bfee83a7520f4b9df826ff79ff7eed215f9
 
