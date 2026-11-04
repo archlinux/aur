@@ -2,7 +2,7 @@
 
 _uuid=todav@aperte.dev
 pkgname=gnome-shell-extension-todav-bin
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='GNOME Shell companion extension for Todav: tasks, month and agenda in the top bar'
 arch=('any')
@@ -13,7 +13,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/$_uuid.shell-extension.zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('a9228d8a18207eca32c205ae84c37a6feecec2c75851c0ac5c68da521479592b')
+sha256sums=('9237899565c29ac7c5dea82c7cb8d0d2b5c902723807800352e7280b3b816c6b')
 
 package() {
 	local _dest="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"

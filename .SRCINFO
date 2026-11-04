@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-todav-bin
 	pkgdesc = GNOME Shell companion extension for Todav: tasks, month and agenda in the top bar
-	pkgver = 2.4.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/AperteDev/todav
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-todav-bin
 	depends = todav
 	provides = gnome-shell-extension-todav
 	conflicts = gnome-shell-extension-todav
-	noextract = gnome-shell-extension-todav-bin-2.4.3.zip
-	source = gnome-shell-extension-todav-bin-2.4.3.zip::https://github.com/AperteDev/todav/releases/download/v2.4.3/todav@aperte.dev.shell-extension.zip
-	sha256sums = a9228d8a18207eca32c205ae84c37a6feecec2c75851c0ac5c68da521479592b
+	noextract = gnome-shell-extension-todav-bin-2.5.0.zip
+	source = gnome-shell-extension-todav-bin-2.5.0.zip::https://github.com/AperteDev/todav/releases/download/v2.5.0/todav@aperte.dev.shell-extension.zip
+	sha256sums = 9237899565c29ac7c5dea82c7cb8d0d2b5c902723807800352e7280b3b816c6b
 
 pkgname = gnome-shell-extension-todav-bin
