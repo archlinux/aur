@@ -1,12 +1,12 @@
 pkgbase = openusage.sh
 	pkgdesc = Terminal-first local quota and usage tracking dashboard for AI coding tools
-	pkgver = 0.26.0
+	pkgver = 0.26.3
 	pkgrel = 1
 	url = https://github.com/janekbaraniewski/openusage
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/janekbaraniewski/openusage/releases/download/v0.26.0/openusage_0.26.0_linux_amd64.tar.gz
-	sha256sums = 1b5094acb5ffb5b7ef5123c0e598e7d20fe21b4d0f09a5cedde82d0ea175e5df
+	source = https://github.com/janekbaraniewski/openusage/releases/download/v0.26.3/openusage_0.26.3_linux_amd64.tar.gz
+	sha256sums = 171aae210ff93f423b0a7b6be276a1ccda2045c53ebe9db6362364b841225960
 
 pkgname = openusage.sh
