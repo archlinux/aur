@@ -2,7 +2,7 @@
 
 pkgname=lokinet-gui
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Graphical user interface for lokinet"
 arch=('i686' 'x86_64')
 url="https://github.com/oxen-io/lokinet-gui"
