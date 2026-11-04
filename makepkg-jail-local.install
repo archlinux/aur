@@ -1,33 +1,41 @@
-post_install() {
-    cat <<'EOF'
-==> makepkg-jail-local installed.
-    Load both AppArmor profiles:
-      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-setup
-      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
+_reload_profiles() {
+    if ! grep -qs Y /sys/module/apparmor/parameters/enabled; then
+        echo '==> AppArmor is not enabled; makepkg-jail profiles not loaded.'
+        return 0
+    fi
 
-    To enable the traur pre-build scan hook:
+    # Build first: the setup profile's change_profile rule refers to it.
+    if apparmor_parser -r /etc/apparmor.d/makepkg-jail-build \
+                          /etc/apparmor.d/makepkg-jail-setup; then
+        echo '==> makepkg-jail AppArmor profiles loaded.'
+    else
+        echo '==> ERROR: loading the makepkg-jail AppArmor profiles failed.'
+        echo '    makepkg-jail will refuse to build until they load.'
+    fi
+}
+
+post_install() {
+    _reload_profiles
+    cat <<'EOF'
+    To enable the traur pre-build scan:
       sudo ln -s /usr/share/makepkg-jail/hooks/traur \
         /etc/makepkg-jail/pre-fetch.d/50-traur
-
-    After testing, set in paru.conf under [bin]:
+    To use with paru, set under [bin] in paru.conf:
       Makepkg = /usr/bin/paru-makepkg-jail
+    Packages needing network in build() (npm ci, ...) can be listed in
+      /etc/makepkg-jail/online-build
 EOF
 }
 
 post_upgrade() {
-    cat <<'EOF'
-==> makepkg-jail-local upgraded.
-    Check for /etc/apparmor.d/makepkg-jail-*.pacnew, then reload profiles:
-      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-setup
-      sudo apparmor_parser -r /etc/apparmor.d/makepkg-jail-build
-EOF
+    _reload_profiles
+    echo '    If a makepkg-jail-*.pacnew or online-build.pacnew was created, merge it.'
 }
 
 post_remove() {
-    cat <<'EOF'
-==> Remove the paru.conf Makepkg override for paru-makepkg-jail.
-    Loaded AppArmor profiles are not unloaded automatically.
-    Remove the traur hook symlink if present:
-      sudo rm -f /etc/makepkg-jail/pre-fetch.d/50-traur
-EOF
+    # Unload the profiles; their files are already gone at this point.
+    for p in makepkg-jail-setup makepkg-jail-build; do
+        printf '%s' "$p" > /sys/kernel/security/apparmor/.remove 2>/dev/null || true
+    done
+    echo '==> Remove the paru.conf Makepkg entry and the 50-traur symlink if present.'
 }
