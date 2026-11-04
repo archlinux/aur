@@ -352,6 +352,9 @@ main() {
   node "${SCRIPT_DIR}/repack-asar.js" \
     "${OUT_DIR}/resources/app.asar" \
     "${OUT_DIR}/resources/app.asar.unpacked"
+  info "Disabling the invisible-overlay window on Linux"
+  node "${SCRIPT_DIR}/patch-overlay-window.js" "${OUT_DIR}/resources/app.asar" ||
+    die "overlay window patch failed (upstream bundle changed?)"
   write_runtimes "${OUT_DIR}"
   write_paw "${OUT_DIR}"
   write_metadata "${OUT_DIR}"
