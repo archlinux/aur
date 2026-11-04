@@ -1,0 +1,19 @@
+pkgbase = apkscope
+	pkgdesc = Android APK decompiler, xrefs, API recon and MCP server, with native viewer
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/suffixing/apkscope
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = libx11
+	depends = wayland
+	options = !lto
+	source = apkscope-0.5.3.tar.gz::https://github.com/suffixing/apkscope/archive/refs/tags/v0.5.3.tar.gz
+	sha256sums = 88c13c773fbec5467ee02432fa18c2e83abfc4dcf8c8c73e3cc6c35f7414d8da
+
+pkgname = apkscope
