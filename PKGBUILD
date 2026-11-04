@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-pass-cli
-pkgver=2.5.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='A command-line interface for Proton Pass'
 arch=(aarch64 x86_64)
@@ -10,14 +10,10 @@ license=(GPL-3.0-or-later)
 depends=(glibc libgcc sqlcipher)
 makedepends=(cargo git)
 source=($pkgname::git+https://github.com/protonpass/pass-cli.git#tag=$pkgver)
-b2sums=('d870d246fcce5659e11b2402952a789adf0b45835013fa18b02a961fc4e077712469edfa7d1f011a18c6d84831491ac0633c71b7aff7be364ee61d39d91849a3')
+b2sums=('cc769a5d03112610686af8b32a8deaa0bb5bcedf2df53ebf39d60e579a0001b4a5e9535ca40b2174f9d955d23af9ce2c63cf79630f92f524909a48460c30c796')
 
 prepare() {
     cd $pkgname
-
-    # Workaround for query overflow depth limit on nested async fns
-    # https://github.com/rust-lang/rust/issues/152942
-    sed -i '19i #![recursion_limit = "256"]' pass-cli/src/main.rs pass/src/lib.rs
 
     sed -i '/uniffi-bindgen/d' Cargo.toml
 
@@ -37,6 +33,10 @@ build() {
     export CARGO_TARGET_DIR=target
     export CARGO_PROFILE_RELEASE_DEBUG=true
     cargo build --frozen --release
+
+    for sh in bash zsh fish; do
+        target/release/pass-cli completions $sh > pass-cli.$sh
+    done
 }
 
 check() {
@@ -49,4 +49,8 @@ package() {
     cd $pkgname
     install -Dm755 target/release/pass-cli -t "$pkgdir/usr/bin/"
     install -Dm644 CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
+
+    install -Dm644 pass-cli.bash "$pkgdir/usr/share/bash-completion/completions/pass-cli"
+    install -Dm644 pass-cli.zsh "$pkgdir/usr/share/zsh/site-functions/_pass-cli"
+    install -Dm644 pass-cli.fish "$pkgdir/usr/share/fish/vendor_completions.d/pass-cli.fish"
 }
