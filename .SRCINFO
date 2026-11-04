@@ -1,6 +1,6 @@
 pkgbase = gimp-appimage
 	pkgdesc = GNU Image Manipulation Program AppImage
-	pkgver = 3.2.6
+	pkgver = 3.2.8
 	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gimp-appimage
 	provides = gimp
 	conflicts = gimp
 	options = !strip
-	source = https://download.gimp.org/gimp/v3.2/linux/GIMP-3.2.6-x86_64.AppImage
-	sha512sums = 9ed8a22d826e313104d09c02b4944d1afb634d630203338c008d9283c0b72a92c46acddbcc204eb8f6bca559d88e8ce2a40628ef6467ae69f7189a0b1586216d
+	source = https://download.gimp.org/gimp/v3.2/linux/GIMP-3.2.8-x86_64.AppImage
+	sha512sums = 572ca857c7ddda467265259ada1add46c3c8a7d4951af1f580600fde9e314a17ef9f767b137a12f56c66e4d349e18323ebfda353c6c9411bf6bc04a5fced9cb1
 
 pkgname = gimp-appimage
