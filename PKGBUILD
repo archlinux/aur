@@ -1,7 +1,7 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 pkgname=python-aiconfigurator-core
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 _commit=7bdd746cedc46f4d555ccbd3d0d2194c4015219f
 pkgdesc='Standalone AIConfigurator modeling data and native Rust estimators'
 arch=('x86_64')
@@ -14,10 +14,10 @@ depends=('glibc' 'gcc-libs' 'python>=3.11' 'python-packaging>=20.0'
   'python-numpy>=2.1' 'python-numpy<3' 'python-pandas>=2.2.3'
   'python-pyarrow>=15.0.0' 'python-yaml>=6.0' 'python-scipy')
 # Alternative SciPy packages may expose an unversioned capability.
-# Keep the upstream/API minimum on the concrete providers.
+# Keep release-versioned provider floors and enforce the real SciPy version
+# in the consumer at import time for moving VCS providers.
 conflicts=(
   'python-scipy<1.13.1'
-  'python-scipy-git<1.13.1'
   'python-scipy-mkl<1.13.1'
   'python-scipy-mkl-bin<1.13.1'
   'python-scipy-mkl-tbb<1.13.1'
@@ -28,11 +28,13 @@ checkdepends=('python-pytest' 'python-pytest-mock' 'python-pytest-timeout'
   'python-jinja>=3.1.0' 'python-matplotlib>=3.9.4' 'python-plotext>=5.3.2' 'python-plotext<6'
   'python-plotly>=6.0.1' 'python-prettytable>=3.16.0' 'python-pydantic>=2.5'
   'python-tqdm>=4.0.0' 'python-bokeh' 'python-nvidia-ml-py' 'python-munch>=4.0.0')
-source=("git+https://github.com/ai-dynamo/aiconfigurator.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://github.com/ai-dynamo/aiconfigurator.git#commit=$_commit"
+        'scipy-runtime-floor.patch')
+sha256sums=('SKIP' '59da4614c02d7c7d149ffcc7359b3d1a78297abc031e1b521777aeefe23d9c17')
 
 prepare() {
   cd aiconfigurator
+  patch -Np1 -i "$srcdir/scipy-runtime-floor.patch"
   git lfs install --local
   git config lfs.url https://github.com/ai-dynamo/aiconfigurator.git/info/lfs
   git lfs pull

@@ -1,7 +1,7 @@
 pkgbase = python-aiconfigurator-core
 	pkgdesc = Standalone AIConfigurator modeling data and native Rust estimators
 	pkgver = 0.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ai-dynamo/aiconfigurator
 	arch = x86_64
 	license = Apache-2.0
@@ -39,13 +39,14 @@ pkgbase = python-aiconfigurator-core
 	depends = python-yaml>=6.0
 	depends = python-scipy
 	conflicts = python-scipy<1.13.1
-	conflicts = python-scipy-git<1.13.1
 	conflicts = python-scipy-mkl<1.13.1
 	conflicts = python-scipy-mkl-bin<1.13.1
 	conflicts = python-scipy-mkl-tbb<1.13.1
 	options = !lto
 	options = !strip
 	source = git+https://github.com/ai-dynamo/aiconfigurator.git#commit=7bdd746cedc46f4d555ccbd3d0d2194c4015219f
+	source = scipy-runtime-floor.patch
 	sha256sums = SKIP
+	sha256sums = 59da4614c02d7c7d149ffcc7359b3d1a78297abc031e1b521777aeefe23d9c17
 
 pkgname = python-aiconfigurator-core

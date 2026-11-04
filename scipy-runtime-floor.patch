@@ -1,0 +1,18 @@
+--- a/aic-core/src/aiconfigurator_core/__init__.py
++++ b/aic-core/src/aiconfigurator_core/__init__.py
+@@ -23,6 +23,15 @@
+ ``aiconfigurator_core::memory::estimate_kv_cache`` is a Rust-only forwarder for
+ embedded callers (e.g. the Dynamo Mocker).
+ """
++
++# VCS package versions can differ from the installed SciPy distribution.
++from importlib.metadata import version as _distribution_version
++from packaging.version import Version as _SciPyVersion
++
++_scipy_version = _distribution_version("scipy")
++if _SciPyVersion(_scipy_version) < _SciPyVersion("1.13.1"):
++    raise ImportError("aiconfigurator-core requires SciPy >=1.13.1, found " + _scipy_version)
++del _distribution_version, _SciPyVersion, _scipy_version
+ 
+ from ._aiconfigurator_core import (
+     AicEngine,
