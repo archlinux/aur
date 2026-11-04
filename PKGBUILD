@@ -2,7 +2,7 @@
 
 pkgbase=ttf-lxgw-marker-gothic
 pkgname=($pkgbase)
-pkgver=1.003
+pkgver=1.010
 pkgrel=1
 arch=(any)
 url='https://github.com/lxgw/LxgwMarkerGothic'
@@ -14,7 +14,7 @@ makedepends=()
 groups=(lxgw-font)
 source=("LxgwMarkerGothic-v${pkgver}.zip::${url}/releases/download/v${pkgver}/LxgwMarkerGothic-v${pkgver}.zip")
 
-sha256sums=('858f40c1b0a4c62a2949a13a071bfbc0075a096ab84b85a3f783688547f57444')
+sha256sums=('19c6ba648271a35048b6e3471f888a7736cae8f426ed304067d304a9d12b070b')
 
 package_ttf-lxgw-marker-gothic() {
     export LC_CTYPE="zh_CN.UTF-8"
