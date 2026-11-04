@@ -1,6 +1,6 @@
 pkgbase = steam-library-mover
 	pkgdesc = Move installed Steam games between Steam libraries safely
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/NasirA1991/steam-library-mover
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = steam-library-mover
 	depends = hicolor-icon-theme
 	optdepends = steam: native Steam client
 	optdepends = flatpak: Flatpak Steam client
-	source = steam-library-mover-0.1.1.tar.gz::https://github.com/NasirA1991/steam-library-mover/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = f3f213da67001bd3731756b9fee2b19382951622cceb8aaf59e2ffb93fdf745b
+	source = steam-library-mover-0.1.2.tar.gz::https://github.com/NasirA1991/steam-library-mover/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 18d03bb0621d8c8d45f87323a15d6bb99a5460fc8b28936606f2a80e750b5deb
 
 pkgname = steam-library-mover
