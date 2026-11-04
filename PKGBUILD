@@ -17,7 +17,7 @@ optdepends=("mariadb: database"
             "redis: session driver"
             "chromium: pdf generation using snappdf"
            )
-source=("$pkgname::git+https://github.com/invoiceninja/invoiceninja.git$tag=v${pkgver}"
+source=("$pkgname::git+https://github.com/invoiceninja/invoiceninja.git#tag=v${pkgver}"
         "$pkgname-queue.service"
         "$pkgname-queue.timer"
         "$pkgname-scheduler.service"
