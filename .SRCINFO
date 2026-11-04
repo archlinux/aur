@@ -1,0 +1,21 @@
+pkgbase = versitygw-bin
+	pkgdesc = S3 object storage server for a filesystem (prebuilt)
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/versity/versitygw
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = bash
+	provides = versitygw=1.10.0
+	conflicts = versitygw
+	backup = etc/versitygw.d/example.conf
+	backup = etc/versitygw.d/example-iam.conf
+	source = versitygw-1.10.0.tar.gz::https://github.com/versity/versitygw/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = 2412650615032f002f67fdc83e03e33f36298f8cfeeff9755c3f61c0df0b4fb8
+	source_x86_64 = versitygw-1.10.0-x86_64.tar.gz::https://github.com/versity/versitygw/releases/download/v1.10.0/versitygw_v1.10.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8f9869752939d4dc9cfe1bddb935a02cc6610e95319a3a9fc2947d2a6ebd2c91
+	source_aarch64 = versitygw-1.10.0-aarch64.tar.gz::https://github.com/versity/versitygw/releases/download/v1.10.0/versitygw_v1.10.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6307b377caee30c1f0fc8950e62ba684e0440a92f8e6a3a06bee1b83a857f03a
+
+pkgname = versitygw-bin
