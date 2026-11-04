@@ -1,10 +1,10 @@
 # Maintainer: xscriptor <x@xscriptor.com>
 pkgname=xtop-git
 _pkgname=xtop
-pkgver=r35.cb17bb7
+pkgver=r45.0500176
 pkgrel=1
 pkgdesc="A TUI system monitor written in Rust for X"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/xtop-cli/xtop"
 license=('MIT')
 depends=('gcc-libs')
@@ -34,11 +34,9 @@ build() {
 
 package() {
   cd "$_pkgname"
-  
-  # Instalar binario
-  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-  # Instalar licencia y readme
+  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$_pkgname/CHANGELOG.md"
 }
