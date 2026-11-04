@@ -2,7 +2,7 @@
 # Maintainer: coolapso <c4s@coolapso.sh>
 
 pkgname='notekpr-cli-bin'
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Command-line client for notekpr, end-to-end encrypted Markdown notes'
 url='https://github.com/coolapso/notekpr'
@@ -13,10 +13,10 @@ conflicts=('notekpr-cli')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('df5855afa101dc61d231299fbe8e2b6a765c8fc4bbdd76b018c58005b66d2353')
+sha256sums_aarch64=('acb3af43ccc16475c70bf3e427997090cfa7338a8b6c3fdb10f18daec2cde3f7')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v${pkgver}/notekpr-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('4d52facc2abfc82d82e9bf05cf378569c3156a99f2f6a241c55e86541fbf8003')
+sha256sums_x86_64=('0c54b062d8043e43211afa44ba2188d0cb9b1b6500ee2804b8cde4490b8bd5cb')
 
 package() {
   install -Dm755 notekpr "$pkgdir/usr/bin/notekpr"
