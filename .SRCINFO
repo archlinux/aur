@@ -1,7 +1,7 @@
 pkgbase = dux-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO (git)
-	pkgver = 2.0.0.r43.gb7be4a3
-	pkgrel = 2
+	pkgver = 2.1.0.r0.g7627111
+	pkgrel = 1
 	url = https://github.com/duxlabs-dev/dux-shell
 	install = dux-shell-git.install
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = dux-shell-git
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = cups-pk-helper: Printer Management
 	optdepends = dux-greeter: Dux Shell login screen for greetd
-	provides = dms-shell=2.0.0.r43.gb7be4a3
-	provides = dux-shell=2.0.0.r43.gb7be4a3
+	provides = dms-shell=2.1.0.r0.g7627111
+	provides = dux-shell=2.1.0.r0.g7627111
 	conflicts = dms-shell
 	conflicts = dux-shell
 	conflicts = dms-shell-git

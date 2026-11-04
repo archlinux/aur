@@ -3,7 +3,7 @@
 pkgname=dux-shell-git
 _pkgname=dux-shell
 _binname=dms
-pkgver=2.0.0.r181.g387750b
+pkgver=2.1.0.r0.g7627111
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO (git)'
 arch=(x86_64 aarch64)
