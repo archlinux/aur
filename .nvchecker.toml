@@ -1,0 +1,3 @@
+[perl-devel-nytprof]
+source = "cpan"
+cpan = "Devel-NYTProf"
