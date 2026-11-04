@@ -3,13 +3,13 @@
 # Contributor: gee
 
 pkgname=reshade-shaders-git
-pkgver=r118.67603ed
+pkgver=r172.43db9ad
 pkgrel=1
 pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt'
 arch=('any')
 url='https://github.com/crosire/reshade-shaders'
 license=('custom')
-makedepends=('git' 'curl' 'libarchive' 'parallel')
+makedepends=('git' 'curl' 'libarchive')
 source=("git+https://github.com/crosire/reshade-shaders.git#branch=list")
 sha256sums=(SKIP)
 options=(!strip)
@@ -29,8 +29,7 @@ build() (
         local -A ini_array
         local line license shaders textures
 
-        read -r
-        while read -r line; do
+        while read -d $'\t' -r line; do
             case "$line" in
             "PackageName="*)
                 ini_array[name]="${line#PackageName=}";;
@@ -45,7 +44,7 @@ build() (
             "DownloadUrl="*)
                 ini_array[url]="${line#DownloadUrl=}";;
             esac
-        done
+        done <<< "$1"$'\t'
 
         # Set fallback name if empty
         ini_array[name]="${ini_array[name]:-${ini_array[url]##*/}}"
@@ -82,9 +81,17 @@ build() (
     export -f extract_effect msg error
     export ALL_OFF BOLD BLUE GREEN RED YELLOW
 
-    cat ../reshade-shaders/EffectPackages.ini |\
-        SHELL=$(type -p bash) parallel -N1 --pipe --regexp --recstart '^\[[^\]]*\]' \
-            extract_effect
+    local sed_script
+    sed_script=$(printf -- '%s;' \
+        '1d' \
+        '/^(DownloadUrl|(Texture)?InstallPath|PackageName)/H' \
+        '/\[[0-9]+\]/{s/.*//; b print}' \
+        '$b print' \
+        'b; :print; x; s/^\n//; s/\n+/\t/g; p'
+    )
+
+    xargs -d '\n' -P 8 -I {} -- bash -c 'extract_effect "$@"' -- {} < <(
+        sed -nEe "$sed_script" ../reshade-shaders/EffectPackages.ini)
 )
 
 package() {
