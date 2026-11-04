@@ -1,7 +1,7 @@
 pkgbase = discimagestudio-bin
 	pkgdesc = Disc Image Studio CLI: generate and burn visible image-mapped CD, DVD and BD-R discs (prebuilt Linux CLI, GUI is Windows-only)
-	pkgver = 1.3.6
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = discimagestudio-bin
 	conflicts = discimagestudio
 	options = !strip
 	options = !debug
-	source_x86_64 = DiscImageStudio-CLI-1.3.6-linux-x64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.3.6/DiscImageStudio-CLI-v1.3.6-linux-x64.tar.gz
-	sha256sums_x86_64 = b559cb0c072b61ae497cd9e953bc0be1de6ed79003977ccf2430e5ac4a9ba980
-	source_aarch64 = DiscImageStudio-CLI-1.3.6-linux-arm64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.3.6/DiscImageStudio-CLI-v1.3.6-linux-arm64.tar.gz
-	sha256sums_aarch64 = e898fe2be9b39bc201d22f9398ed12d54a3542b32b4a015d39d801b6bef5743a
+	source_x86_64 = DiscImageStudio-CLI-1.4.0-linux-x64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.4.0/DiscImageStudio-CLI-v1.4.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 23d39873b0fb8fee04cff60fa128b0419afeb70362d31dc8e05b8fe7328b4244
+	source_aarch64 = DiscImageStudio-CLI-1.4.0-linux-arm64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.4.0/DiscImageStudio-CLI-v1.4.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9e231c0d5cde0a31c7601d21707cadac2a49454fad62ebf2e820cb742a22c071
 
 pkgname = discimagestudio-bin
