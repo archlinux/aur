@@ -1,6 +1,6 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-usage
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='Usage statistics dashboard for Pi sessions'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/tmustier/pi-extensions/archive/refs/tags/usage-extension/v${pkgver}.tar.gz"
 )
-sha256sums=('a79cacbbd9a573b341f0bbb2db375dc62d19a6a927ae172464102e4d8e3bec69')
+sha256sums=('d3581fae188c4935083aa71975dbafa74557a18fdacc90eea9468eef40b903b6')
 install=pi-ext.install
 optdepends=('pi-coding-agent' 'pi-coding-agent-git')
 
