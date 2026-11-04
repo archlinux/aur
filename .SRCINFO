@@ -1,0 +1,20 @@
+pkgbase = vstbridge
+	pkgdesc = Windows VST2/VST3/CLAP plugins in Linux DAWs via Wine. A fork of yabridge by Robert Van Der Helm.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/rations/vstbridge
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = wine
+	depends = gtk3
+	depends = glibc>=2.34
+	depends = libxcb
+	depends = gcc-libs
+	optdepends = wine-staging: recommended Wine implementation
+	optdepends = winetricks: install DXVK and other Wine components
+	options = !strip
+	options = !debug
+	source = vstbridge-0.0.4-x86_64.tar.gz::https://github.com/rations/vstbridge/releases/download/v0.0.4/vstbridge-0.0.4-x86_64.tar.gz
+	sha256sums = 1b851e55098fc176f21c82f78c4842a67746b177265e9fed8e9062b3d54f6c5e
+
+pkgname = vstbridge
