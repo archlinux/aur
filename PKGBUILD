@@ -1,6 +1,6 @@
 # Maintainer: Twilight0 <https://github.com/Twilight0>
 pkgname=nouveau-dkms
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Unified Nouveau out-of-tree module with Fermi core, shader, and DDR3 memory reclocking (DKMS)"
 arch=('x86_64')
@@ -16,11 +16,13 @@ source=(
   "nouveau.patch"
   "dkms.conf"
   "nouveau.conf"
+  "nouveau-load.conf"
 )
 sha256sums=('1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad'
             'e64487d03d540d8e1dd900d4a741c68efa12176b56fb5567b5e0ba2f1d4f5e24'
             '7f0d3d86a1551d4f1775d6dea33568f04d59dbf38faa7e9d50c0b327cfc327a6'
-            '326efac21bf858f7be0e41b21f2c585bfd1ef5b18dad9cce022685a4623bb090')
+            '326efac21bf858f7be0e41b21f2c585bfd1ef5b18dad9cce022685a4623bb090'
+            '661930169e6914c8c1a174f1f45cfb885e38c6aff9ec5cfc7ea1d7a740a84e17')
 
 prepare() {
   msg2 "Applying Fermi reclocking and 120Hz display patches..."
@@ -42,4 +44,7 @@ package() {
 
   # Install default modprobe configuration
   install -Dm644 "${srcdir}/nouveau.conf" "${pkgdir}/usr/lib/modprobe.d/nouveau.conf"
+
+  # Install early module loading configuration (for Plymouth and systems without initramfs)
+  install -Dm644 "${srcdir}/nouveau-load.conf" "${pkgdir}/usr/lib/modules-load.d/nouveau.conf"
 }
