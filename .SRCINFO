@@ -1,6 +1,6 @@
 pkgbase = xmap-studio-bin
 	pkgdesc = Free and open-source mind map editor for .xmind files, with native LaTeX formulas
-	pkgver = 26.4.1
+	pkgver = 26.4.2
 	pkgrel = 1
 	url = https://github.com/gioelerosana/xmap-studio
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = xmap-studio-bin
 	conflicts = xmap-studio-git
 	options = !strip
 	options = !debug
-	source = xmap-studio-26.4.1-linux-x86_64.tar.gz::https://github.com/gioelerosana/xmap-studio/releases/download/v26.4.1/xmap-studio-26.4.1-linux-x86_64.tar.gz
+	source = xmap-studio-26.4.2-linux-x86_64.tar.gz::https://github.com/gioelerosana/xmap-studio/releases/download/v26.4.2/xmap-studio-26.4.2-linux-x86_64.tar.gz
 	source = xmap-studio.sh
-	sha256sums = da553e207133bfb1e6ecc63e18fca4d60e9a67f8d134634dc7bdbbaff40e4d30
+	sha256sums = 544e70bfa2ffc127c06c2cb4a9811e77147c343f5d2c2d233adc17d3f576e582
 	sha256sums = e1d01076568a7fc57e4202a4bd9c78148bf2d24e09a37ba2e8380b5828bbc0c1
 
 pkgname = xmap-studio-bin
