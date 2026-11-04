@@ -1,6 +1,6 @@
 # Maintainer: Nasir A. <NasirA1991@users.noreply.github.com>
 pkgname=gsp370-tray
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Tray and Plasma widget for the Sennheiser/EPOS GSP 370 (battery and sidetone)'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: low-battery notifications'
 options=('!debug')
 install=gsp370-tray.install
 source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('1a4ed37df30f08e3253eea566cbef3b8bde4feb467ebeba675ef04660d932552')
+sha256sums=('f6a61ac8e322baa5b93e621a21acea5994400a46e9094da79de89a5e615da8ac')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
