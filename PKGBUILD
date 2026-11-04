@@ -4,7 +4,7 @@
 pkgname=pg_sift
 pkgver=4.0.0
 pkgrel=1
-pkgdesc='BM25 full-text search and fast aggregate analytics inside PostgreSQL, from one extension'
+pkgdesc='Fast analytics for PostgreSQL: keep your queries, just add an index. Plus BM25 full-text search'
 arch=('x86_64')
 url='https://github.com/brauliobo/pg_sift'
 license=('PostgreSQL')
