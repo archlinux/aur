@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=chatwithwork-desktop-git
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Chat with Work Desktop: the desktop app, terminal interface and background agent (development version)"
 arch=('x86_64' 'aarch64')
