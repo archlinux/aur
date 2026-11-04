@@ -4,7 +4,7 @@
 
 pkgname=invoiceninja
 pkgver=5.13.53
-pkgrel=3
+pkgrel=4
 pkgdesc='Invoices, Expenses and Tasks built with Laravel and Flutter'
 url='https://www.invoiceninja.com/'
 license=('ELv2')
@@ -18,25 +18,20 @@ optdepends=(
   'redis: session driver'
   'chromium: PDF generation using snappdf'
   'php-imagick: image processing'
+  'invoiceninja-ui: React administration frontend'
 )
 backup=('etc/webapps/invoiceninja/config.env' 'var/lib/invoiceninja/config.env')
 install="$pkgname.install"
 options=('!strip')
 
-# The React admin UI is a separate upstream project with independent versions.
-# Keep this pinned to a reviewed release tag. Do not build from moving develop.
-_ui_tag='06.10.2026.1'
-
 source=(
   "$pkgname::git+https://github.com/invoiceninja/invoiceninja.git#tag=v${pkgver}"
-  "invoiceninja-ui::git+https://github.com/invoiceninja/ui.git#tag=${_ui_tag}"
   "$pkgname-queue.service"
   "$pkgname-queue.timer"
   "$pkgname-scheduler.service"
   "$pkgname-scheduler.timer"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   '2e41b2c94877d29f7abf8912d7bd9a26dd7d003876253c7d49762c6ec9f72ea5'
   'ed7ce9c42bf1de019c4ca43c1a7bfb32e65aae8c6687ce0e5a4474c7e4a7537e'
@@ -71,7 +66,6 @@ ADDITIONAL_ENV_VARIABLES
 
 build() {
   local app="$srcdir/$pkgname"
-  local ui="$srcdir/invoiceninja-ui"
 
   # Composer needs a temporary .env for Laravel's package discovery scripts.
   # It must never be included in the generated package.
@@ -87,20 +81,7 @@ build() {
   test -f vendor/autoload.php
   rm -f .env
 
-  # Build the separately versioned React admin panel, following upstream's
-  # release recipe, but with a pinned tag instead of its moving develop branch.
-  cd "$ui"
-  cp .env.example .env
-  sed -i 's/^VITE_IS_TEST=.*/VITE_IS_TEST=false/' .env
-  printf '\nVITE_PUSHER_APP_KEY=f0111a02782708da651f\n' >> .env
-  cp "$app/vite.config.ts.react" vite.config.js
-
-  HUSKY=0 npm install --no-audit --no-fund
-  npm run build
-  test -s dist/index.html
-  cp -a dist/. "$app/public/"
-  mv -f "$app/public/index.html" "$app/resources/views/react/index.blade.php"
-  rm -f .env
+  # React UI is packaged separately as invoiceninja-ui.
 
   # Build the Laravel frontend assets.
   cd "$app"
@@ -108,7 +89,6 @@ build() {
   npm run production
 
   test -f public/build/manifest.json
-  test -f resources/views/react/index.blade.php
   test -f vendor/autoload.php
 
   # No build-time dependencies or ephemeral environment file in the package.
@@ -121,8 +101,16 @@ package() {
 
   install -d "$pkgdir/etc/webapps/$pkgname"
   install -d "$pkgdir/usr/share/webapps/$pkgname"
-  # Keep the source checkout's .git and temporary dotfiles out of the package.
+  # Keep .git, node_modules, and build-time .env files out of the package.
   cp -r -- * "$pkgdir/usr/share/webapps/$pkgname/"
+  # Include Apache routing rules (normally omitted by a glob matching only '*').
+  if [[ -f public/.htaccess ]]; then
+    install -Dm644 public/.htaccess "$pkgdir/usr/share/webapps/$pkgname/public/.htaccess"
+  fi
+  # React UI owns this Blade template and the public/react subtree.
+  rm -f "$pkgdir/usr/share/webapps/$pkgname/resources/views/react/index.blade.php"
+  rm -rf "$pkgdir/usr/share/webapps/$pkgname/public/react"
+
 
   install -Dm600 config.env "$pkgdir/var/lib/$pkgname/config.env"
   chown http:http "$pkgdir/var/lib/$pkgname/config.env"
