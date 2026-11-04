@@ -1,7 +1,7 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 pkgname=python-aiconfigurator-core
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 _commit=7bdd746cedc46f4d555ccbd3d0d2194c4015219f
 pkgdesc='Standalone AIConfigurator modeling data and native Rust estimators'
 arch=('x86_64')
@@ -9,10 +9,19 @@ url='https://github.com/ai-dynamo/aiconfigurator'
 license=('Apache-2.0')
 # The cc-built bundled zstd archive must contain native objects, not GCC LTO
 # bytecode that Rust's linker cannot resolve (observed missing ZSTD_* symbols).
-options=('!lto')
+options=('!lto' '!strip')
 depends=('glibc' 'gcc-libs' 'python>=3.11' 'python-packaging>=20.0'
   'python-numpy>=2.1' 'python-numpy<3' 'python-pandas>=2.2.3'
-  'python-pyarrow>=15.0.0' 'python-yaml>=6.0' 'python-scipy>=1.13.1')
+  'python-pyarrow>=15.0.0' 'python-yaml>=6.0' 'python-scipy')
+# Alternative SciPy packages may expose an unversioned capability.
+# Keep the upstream/API minimum on the concrete providers.
+conflicts=(
+  'python-scipy<1.13.1'
+  'python-scipy-git<1.13.1'
+  'python-scipy-mkl<1.13.1'
+  'python-scipy-mkl-bin<1.13.1'
+  'python-scipy-mkl-tbb<1.13.1'
+)
 makedepends=('cargo' 'git' 'git-lfs' 'python-build' 'python-installer'
   'python-maturin>=1.12' 'python-maturin<2' 'python-setuptools>=69' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-mock' 'python-pytest-timeout'
