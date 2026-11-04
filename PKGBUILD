@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="xsnow-bin"
-pkgver=3.9.6
+pkgver=3.9.10
 pkgrel=1
 pkgdesc="Let it snow on your desktop"
 url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
@@ -13,8 +13,8 @@ depends=("atk" "cairo" "gsl" "gtk3" "libx11" "libxpm" "libxml2")
 # replaced sourceforce with results from https://pkgs.org/search/?q=xsnow
 source_x86_64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1_amd64.deb")
 source_aarch64=("http://ftp.de.debian.org/debian/pool/main/x/xsnow/xsnow_$pkgver-1_arm64.deb")
-b2sums_x86_64=('0a5d625d9a9457c08281643395fce002245ea39f5e6ff5bca0b54a1662795618ddeea3deaa20ffc7c5c252872eadd5ec59d6f8031764348854300af72723d22a')
-b2sums_aarch64=('ef089ec3f80bd6e926d346fe9ad7c19aeea5bbd6e1d69dfa63ec3c7ee5b748025ba626c05dbf59ab1a21ec60fe0e2a65e435b4c05dbd9922f20c22a9aecb6a16')
+b2sums_x86_64=('99a20ee1837af978fb46f73cd4e15fe7d368d50bb01670f81819f8fb00e665341f94c7fa892c4c2201e70857eec6d9653957f44ce0b91768171a80b243993647')
+b2sums_aarch64=('9c3cf1f40a6ba55f736b6716b0e9ba7cbaecbe7b6f467a3e544322624fd3415931515cec6caf7d5fd715cff17786a5382823ca39d48a7f7c6bb38097cafcac73')
 
 prepare(){
  tar -xf "data.tar.xz"
