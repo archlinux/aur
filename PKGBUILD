@@ -1,6 +1,6 @@
 # Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 pkgname=onyx-desktop
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="Onyx AI desktop client - native wrapper for the Onyx knowledge assistant"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 
 source=("https://github.com/onyx-dot-app/onyx/releases/download/v${pkgver}/Onyx_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/onyx-dot-app/onyx/v${pkgver}/LICENSE")
-sha256sums=('38436b4a2ab2ebaa2a89ed8e7e1c6353ebe2cd1a7888f9d1ddcc976541449ff3'
+sha256sums=('fc38f5691743a915b6f6e80a3f0707bbcfac055961808e9b373ce5efc098a398'
             'd4847240794058c7ac3cfdf8e5d528fe8b0edf15b32a96612ecb9b3e182092b7')
 
 package() {
