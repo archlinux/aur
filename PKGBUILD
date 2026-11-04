@@ -6,7 +6,7 @@ _iconname=dev.duxlabs.calendar
 _desktopid=dev.duxlabs.calendar
 
 pkgname=dux-calendar-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Local, Google, Microsoft, and CalDAV calendars for the Dux desktop (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,6 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_repo}/v${pkgver}"
 _urlrel="${url}/releases/download/v${pkgver}"
 license=('MIT')
 depends=('quickshell' 'qt6-declarative')
-optdepends=('dms-shell: dynamic theming via Dux Shell colors')
 provides=("${_binname}" "${_repo}" 'dankcalendar')
 conflicts=("${_binname}" "${_repo}" 'dankcalendar' 'dankcalendar-bin' 'dankcalendar-git' 'dux-calendar-git')
 replaces=('dankcalendar-bin')
@@ -33,13 +32,13 @@ source_x86_64=("${_binname}-${arch[0]}-${pkgver}.gz::${_urlrel}/${_binname}-linu
 source_aarch64=("${_binname}-${arch[1]}-${pkgver}.gz::${_urlrel}/${_binname}-linux-${_barch[1]}.gz")
 
 sha256sums=('a5b49222ed7b2e61fc82bc0d834be0729d9c4d4ed55798ff563c6ad0474178ad'
-            '52fbc6fc5b69c0f72bf6261fa850a35d6e764a2ee5f46a1b176876b6604950a3'
+            '249045d73bdddc349eeaed18680c1decd54d1b2ab3aa4a12070fca66e77eb9c3'
             '49ab0353bd4a915c43adae4d11ff49730e13a2af530aaf6b918a3d8e430c9acf'
             '4ca116a3853362bfe7513ebe10be3c06fb244520e5cca997c66d8d562d03fc12'
             'df7a0f965cc85e2e0d5b5dfa88b9b68b159a4bf846ef2906d7e05c3ca3c9ae39'
-            'c6c327701785ca115308a2afa3ec1bf4a9bd31cbe0d5298663b47741f47b343d')
-sha256sums_x86_64=('8b0ab121a4b1eb82dc7ffc5a577e84f34a561618d0800a3cd02862c4ee9d7b66')
-sha256sums_aarch64=('912c7001c3e0ac06f5b54199bed0d7249b10d3173bf5507280d6bf8356dfc7d3')
+            '87a102d8606d9d4db8ed0f2f1c32a3ee51bffc3afe3c4fe422f8149f642aabcb')
+sha256sums_x86_64=('dca709444679da95b4a89d63eb9755ed0d529e37aed0e38014ad0a58c3febaf2')
+sha256sums_aarch64=('8b8c02f7707039ee7885f272a22cacf64421d81a1bca662b1710a643f5b4c0be')
 
 # makepkg's mime sniffing does not reliably detect a gzipped ELF, so decompress it ourselves
 noextract=("${_binname}-${arch[0]}-${pkgver}.gz" "${_binname}-${arch[1]}-${pkgver}.gz")
