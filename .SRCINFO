@@ -1,6 +1,6 @@
 pkgbase = madlions-control
 	pkgdesc = Native GTK4/libadwaita configuration tool for MADLIONS magnetic-switch keyboards
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/NasirA1991/madlions-control
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = madlions-control
 	depends = python-cairo
 	depends = hicolor-icon-theme
 	options = !strip
-	source = madlions-control-0.1.0.tar.gz::https://github.com/NasirA1991/madlions-control/releases/download/v0.1.0/madlions-control-0.1.0.tar.gz
-	sha256sums = acce052410244b5ae40f96d4dc0e0fbb33d400d9bde1b2995b579fa91c31a917
+	source = madlions-control-0.1.1.tar.gz::https://github.com/NasirA1991/madlions-control/releases/download/v0.1.1/madlions-control-0.1.1.tar.gz
+	sha256sums = 7915879dbcd85eec136b792de694f6e19f42d42f27840bf6f439c530b143a56e
 
 pkgname = madlions-control
