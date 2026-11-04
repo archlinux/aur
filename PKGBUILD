@@ -5,7 +5,7 @@
 
 pkgname=sm64coopdx
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API"
 url="https://sm64coopdx.com/"
 license=("LicenseRef-unknown")
@@ -13,6 +13,7 @@ arch=(x86_64 i686 pentium4 aarch64 armv7h)
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 depends=(sdl2)
+optdepends=('discord-game-sdk: Used for Discord invites.')
 makedepends=("python>=3.6"
              glew
              zlib
