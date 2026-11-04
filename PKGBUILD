@@ -2,29 +2,29 @@
 
 _pkgname=amneziavpn
 pkgname=$_pkgname-bin
-pkgver=5.0.3.0
-pkgrel=2
-pkgdesc="Amnezia VPN Client"
-arch=('x86_64')
-url="https://github.com/amnezia-vpn/amnezia-client"
-license=('GPL-3.0-only')
+pkgver=5.1.0.6
+pkgrel=1
+pkgdesc='Amnezia VPN Client'
+arch=(x86_64)
+url='https://github.com/amnezia-vpn/amnezia-client'
+license=(GPL-3.0-only)
+makedepends=(7zip binwalk)
 optdepends=(
   'xcb-util-cursor: X11 cursor support'
   'xcb-util-wm: X11 window manager interaction support'
 )
-makedepends=('binwalk' 'p7zip')
 provides=($_pkgname)
 conflicts=($_pkgname{,-git})
 options=(!debug)
 install=$_pkgname.install
 source=($_pkgname-$pkgver.run::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.run)
-sha256sums=('0335f2643f58c4d7494be4c6d47582574fa7e5a463450e9a47b0c5c2eda797c2')
+sha256sums=('f60a4f373332dac8465bd9b8e4f233ee3aa32131fe124d31ca70bc499c73496f')
 
-# TODO: Remove this when dev merges [fix: bundle qtwayland in linux builds](https://github.com/amnezia-vpn/amnezia-client/pull/3139)
-if [[ ${AMNEZIAVPN_BUNDLE_WAYLAND_PLUGIN-true} == true ]]; then
+# TODO: Remove this when dev merges amnezia-vpn/amnezia-client#3139
+if [[ ${AMNEZIAVPN_BUNDLE_WAYLAND_PLUGIN:-true} == true ]]; then
   _bndlqtver=6.10.1-1
 
-  makedepends+=('patchelf')
+  makedepends+=(patchelf)
   source+=(
     qt6-base-$_bndlqtver.tar.zst::https://archive.archlinux.org/packages/q/qt6-base/qt6-base-$_bndlqtver-x86_64.pkg.tar.zst
     qt6-wayland-$_bndlqtver.tar.zst::https://archive.archlinux.org/packages/q/qt6-wayland/qt6-wayland-$_bndlqtver-x86_64.pkg.tar.zst
@@ -51,10 +51,10 @@ prepare() {
   rm -rf extractions
 
   # Fix the desktop file
-  sed -i 's#/usr/share/pixmaps/AmneziaVPN.png#AmneziaVPN#g' "$srcdir"/AmneziaVPN/AmneziaVPN.desktop
+  sed -i 's#/usr/share/pixmaps/AmneziaVPN.png#AmneziaVPN#g' AmneziaVPN/AmneziaVPN.desktop
 
-  # TODO: Remove this when dev merges [fix: bundle qtwayland in linux builds](https://github.com/amnezia-vpn/amnezia-client/pull/3139)
-  if [[ ${AMNEZIAVPN_BUNDLE_WAYLAND_PLUGIN-true} == true ]]; then
+  # TODO: Remove this when dev merges amnezia-vpn/amnezia-client#3139
+  if [[ ${AMNEZIAVPN_BUNDLE_WAYLAND_PLUGIN:-true} == true ]]; then
     bsdtar -xf qt6-base-$_bndlqtver.tar.zst -C AmneziaVPN --strip-components=1 \
            usr/lib/libQt6WaylandClient.so.6{,.10.1}
 
@@ -70,11 +70,11 @@ prepare() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/{opt/AmneziaVPN,usr/bin}/
-  cp -a "$srcdir"/AmneziaVPN/{bin,lib,plugins,qml,translations}/ "$pkgdir"/opt/AmneziaVPN/
+  install -dm755 "$pkgdir"/{opt/AmneziaVPN,usr/bin}
+  cp -a --no-preserve=ownership AmneziaVPN/{bin,lib,plugins,qml,translations}/ "$pkgdir"/opt/AmneziaVPN/
   ln -rs "$pkgdir"/opt/AmneziaVPN/bin/AmneziaVPN "$pkgdir"/usr/bin/AmneziaVPN
 
-  install -Dm644 "$srcdir"/AmneziaVPN/AmneziaVPN.service -t "$pkgdir"/usr/lib/systemd/system/
-  install -Dm644 "$srcdir"/AmneziaVPN/AmneziaVPN.desktop -t "$pkgdir"/usr/share/applications/
-  install -Dm644 "$srcdir"/AmneziaVPN/AmneziaVPN.png     -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps/
+  install -Dm644 AmneziaVPN/AmneziaVPN.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -Dm644 AmneziaVPN/AmneziaVPN.desktop -t "$pkgdir"/usr/share/applications/
+  install -Dm644 AmneziaVPN/AmneziaVPN.png     -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps/
 }
