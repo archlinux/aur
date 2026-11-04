@@ -1,0 +1,16 @@
+pkgbase = lddtree
+	pkgdesc = Read the dynamic library dependency tree
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/messense/lddtree-rs
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/messense/lddtree-rs/archive/v0.5.1/lddtree-v0.5.1.tar.gz
+	sha256sums = e056a7a04e21c00c8eb1fdb5dd0b7f55e3e7dd5820551696cbbd08381c954bc8
+
+pkgname = lddtree
