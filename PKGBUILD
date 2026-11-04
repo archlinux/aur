@@ -1,7 +1,7 @@
 # Maintainer: pentago <876756+pentago@users.noreply.github.com>
 
 pkgname=terraform-mcp-server
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Model Context Protocol (MCP) server for the Terraform ecosystem"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('terraform: workspace and module operations')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6804f0a07c5c3bdf6d24d8c65740c104d543cbabb027f9378abb8ce2aab97af5')
+sha256sums=('8c744e2ad553ee37db41b66a0f2dbb6532939c00e17b5f00bd10f5809f6f3990')
 
 prepare() {
 	cd "$pkgname-$pkgver"
