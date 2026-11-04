@@ -1,7 +1,7 @@
 # Maintainer: WaiJade <waijade@outlook.com>
 
 pkgname=astrobox-ng
-pkgver=2.2.0
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="AstroBox is a leading tool for managing and extending wearable devices"
 arch=('x86_64')
@@ -9,37 +9,45 @@ url="https://github.com/AstralSightStudios/AstroBox-NG"
 license=('AGPL-3.0')
 options=('!debug')
 depends=(
-    'webkit2gtk-4.1'
-    'gtk3'
+    # CEF（Chromium）运行时
+    'nss'
+    'nspr'
+    'alsa-lib'
+    'libcups'
+    'mesa'
+    'at-spi2-core'
     'libx11'
+    'libxcb'
+    'libxext'
+    'libxfixes'
+    'libxdamage'
+    'libxcomposite'
+    'libxrandr'
+    'libxkbcommon'
+    'pango'
+    'cairo'
+    'gdk-pixbuf2'
+    'expat'
+    # 应用本身（GTK 文件对话框、蓝牙、单实例）
+    'gtk3'
+    'glib2'
+    'dbus'
+    'systemd-libs'
     'gcc-libs'
     'glibc'
-    'zlib'
-    'bzip2'
-    'libxcb'
-    'libxkbcommon'
-    'dbus'
-    'libsecret'
-    'libsoup3'
-    'gstreamer'
-    'gst-plugins-base'
-    'libepoxy'
-    'atk'
-    'at-spi2-core'
-    'cairo'
-    'pango'
-    'gdk-pixbuf2'
-    'harfbuzz'
     'hicolor-icon-theme'
     'desktop-file-utils'
     'shared-mime-info'
+)
+optdepends=(
+    'sqlite: migrate settings and sign-in state from WebKitGTK-based releases'
 )
 makedepends=('curl')
 
 prepare() {
     local _base="AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/AstroBox-${pkgver}-${pkgrel}_x86_64.pkg.tar.zst"
     local _file="AstroBox-${pkgver}-${pkgrel}_x86_64.pkg.tar.zst"
-    local _expected="c0238e7967e521d56462233fa804b3b4da058a829be192b4d0397db755402c53"
+    local _expected="26a10e32a9ad563eadb10116c9540f2c90d7d218f3437b6f6927e3eb70e95018"
     local _mirrors=(
         "https://github.com/${_base}|GitHub"
         "https://ghfast.top/https://github.com/${_base}|ghfast"
