@@ -1,6 +1,6 @@
 # Maintainer: Nasir A. <NasirA1991@users.noreply.github.com>
 pkgname=gsp370-tray
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Tiny StatusNotifierItem tray for the Sennheiser/EPOS GSP 370 (battery and sidetone)'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('libnotify: low-battery notifications')
 options=('!debug')
 install=gsp370-tray.install
 source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('f031454a3e3056ad4978c87e0e5cefa8de81d50596b291b3b969262b51ad875c')
+sha256sums=('5db9e65ba4de470d3a5f35f71486d84cabf5af353281169bc6e45b8285e0b869')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
