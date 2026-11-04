@@ -34,8 +34,8 @@ _tarball() {
 }
 
 source=(
-    "https://github.com/neurocyte/flow-nightly/releases/download/${_tag}/flow-${_tag}-$(_arch_map)-debug.tar.gz"
-    "https://github.com/neurocyte/flow-nightly/releases/download/${_tag}/flow-${_tag}-$(_arch_map)-debug.tar.gz.sig"
+    "https://github.com/neurocyte/flow-nightly/releases/download/${_tag}/flow-${_tag}-$(_arch_map).tar.gz"
+    "https://github.com/neurocyte/flow-nightly/releases/download/${_tag}/flow-${_tag}-$(_arch_map).tar.gz.sig"
 )
 sha256sums=('SKIP' 'SKIP')
 
