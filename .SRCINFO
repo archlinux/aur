@@ -1,12 +1,13 @@
 pkgbase = cdf-nasa
 	pkgdesc = NASA Common Data Format (CDF) library for scientific data management
-	pkgver = 3.9.0
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://cdf.gsfc.nasa.gov/
 	arch = x86_64
 	license = unknown
 	depends = bash
-	source = https://spdf.gsfc.nasa.gov/pub/software/cdf/dist/latest/linux/cdf39_0-dist-all.tar.gz
-	md5sums = 74543ee4791bc614dd5dce126df64eec
+	options = !debug
+	source = https://spdf.gsfc.nasa.gov/pub/software/cdf/dist/latest/linux/cdf39_2-dist-all.tar.gz
+	md5sums = f11272f12d547d085936656c86cdc670
 
 pkgname = cdf-nasa
