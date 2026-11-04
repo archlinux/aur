@@ -249,7 +249,8 @@ prepare() {
   # The package reference flowed to Rules, which needs it as well
   sed -i "s|\( *\)<ProjectReference Include=\"..\\\\Engine\\\\Engine.csproj\" />|&\n\1$_smareference|" Rules/Rules.csproj
   # CrossCompatibility is compiled against PowerShellStandard.Library, which would flow to Rules and
-  # win over the version of PowerShell referenced there
+  # win over the version of PowerShell referenced there. Upstream issue:
+  # https://github.com/PowerShell/PSScriptAnalyzer/issues/2300
   sed -i -e 's|<TargetFrameworks>netstandard2.0;net462</TargetFrameworks>|<TargetFrameworks>netstandard2.0</TargetFrameworks>|' \
     -e 's|<PackageReference Include="PowerShellStandard.Library" />|<PackageReference Include="PowerShellStandard.Library" PrivateAssets="all" />|' \
     PSCompatibilityCollector/Microsoft.PowerShell.CrossCompatibility/Microsoft.PowerShell.CrossCompatibility.csproj
