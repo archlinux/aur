@@ -1,9 +1,9 @@
 # Maintainer: YesPlayMusic contributors
 
 pkgname=yesplaymusic-axuanran-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-_releasever=0.1.4
+_releasever=0.1.5
 pkgdesc="XuMP - a third-party Netease Cloud Music player"
 arch=('x86_64')
 url="https://github.com/axuanran/YesPlayMusic"
@@ -31,7 +31,7 @@ source=(
     "XuMP-${_releasever}.pacman::${url}/releases/download/v${_releasever}/XuMP-${_releasever}.pacman"
     "LICENSE-${_releasever}::https://raw.githubusercontent.com/axuanran/YesPlayMusic/v${_releasever}/LICENSE"
 )
-sha256sums=('15bfc0451c2a1c0a9a5514c9b8ce7d6cb46330b19debbac13ea397f08720bc8f'
+sha256sums=('6cac29afd8487747e3529e49326b99220b19c53ea905c7058f991847e9b87fd5'
             'c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6')
 
 package() {
@@ -42,7 +42,15 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     ln -sf '/opt/XuMP/xump' "$pkgdir/usr/bin/xump"
 
-    chmod 4755 "$pkgdir/opt/XuMP/chrome-sandbox"
+    # Releases built with electron-builder 26.15.3 - 26.17.0 shipped no
+    # chrome-sandbox (the snap target deleted it from the shared linux-unpacked
+    # app dir), so only set the SUID bit when the helper is actually packaged.
+    if [[ -e "$pkgdir/opt/XuMP/chrome-sandbox" ]]; then
+        chmod 4755 "$pkgdir/opt/XuMP/chrome-sandbox"
+    else
+        echo "==> WARNING: chrome-sandbox is missing from the release artifact;" >&2
+        echo "==> WARNING: the app will fall back to the user-namespace sandbox." >&2
+    fi
 
     install -Dm644 "$srcdir/LICENSE-${_releasever}" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
