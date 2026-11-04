@@ -23,6 +23,8 @@ path = [
   ".editorconfig",
   ".pre-commit-config.yaml",
   "sourcebans-pp.php",
+  "panel.stub.php",
+  "mago.toml",
   "nginx.conf.example",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"

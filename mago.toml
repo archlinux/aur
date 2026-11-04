@@ -1,0 +1,3 @@
+# The stubs of the panel the script loads at runtime, for the analyser
+[source]
+includes = ["panel.stub.php"]
