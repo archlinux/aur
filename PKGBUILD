@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Peter Flynn <peter@flynn.network>
 pkgname=foundry-bin
-pkgver=1.8.7
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Blazing fast, portable and modular Ethereum development toolkit written in Rust"
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,8 @@ conflicts=('foundry' 'foundry-git')
 
 source_x86_64=("https://github.com/foundry-rs/foundry/releases/download/v${pkgver}/foundry_v${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/foundry-rs/foundry/releases/download/v${pkgver}/foundry_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('6f0e5697801cbdd059553360b2cb54ff52870789a0249a16da2a07c157a18534')
-sha256sums_x86_64=('ba470eb718e779e4b0e3f1520b5284231b1bf98e9a39de07fb8f77ed70525bcf')
+sha256sums_aarch64=('22d3060fa83515fb901690a2c59a5f552bd41c241886195b2159562fc4947abc')
+sha256sums_x86_64=('8d17599b42e3139f1a9c171be3798c4ed8e743ae17b84cc3435e57bf2a51ae99')
 
 package() {
   cd "$srcdir"
