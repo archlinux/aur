@@ -2,7 +2,7 @@
 
 pkgname=catpaw
 pkgver=2026.0929.1948
-pkgrel=1
+pkgrel=2
 _electron=42.11.2
 _node=24.18.0
 _python=3.12.13
@@ -49,6 +49,7 @@ source=(
   'catpaw-cli-linux-x64-1.2.0-beta.19::https://s3plus.meituan.net/mcopilot-pub/cli/v1.2.0-beta.19/catpaw-cli-linux-x64'
   'convert.sh'
   'repack-asar.js'
+  'patch-overlay-window.js'
   'patch-skill-manifests.js'
   'catpaw.sh'
   'catpaw-overseas.desktop'
@@ -87,8 +88,9 @@ sha256sums=(
   'b836abe532912ae6c3388dbe713952af293a3d005fc9e4d34d52f14da99dda71'
   '89a7df4761ff335e4dd5367e4cf04cecb9ba4e2cc130a0220f798d188414dc6c'
   '2bf84853274ce6b39f3c363d5ed00573ad5ea99796c362dbb2c9a5e2be669c9c'
-  '2f74947dbad844e51ad63ee3430ea79f115cee34deb646e3d5b65e1bbcda0f05'
+  'e0836baacc6c50e1ed0e346a8d0e8b9c1211924eedd9332df99383b65c56c910'
   'ef50b80ae1d55a5f48c94db21cf74c3543723af4e89f85eb9d80c0900b1efdf1'
+  'f3e0d720d575cb6521f639754157d86b7aed60b993bc62708b99ac37ae8e1248'
   'ffa303d2f54724e538f4696cc7e108d7b73c254e92250f1cd2a0ac583aee22a6'
   '8b7c70e7c9381857ef57b06adfe3abbaef16abc1ddc1bfe33ad403db742f657f'
   'c9e8109a3657b04261796d3882f29819853b63ce13ccc8f31feadb0d5ca3f2d1'
