@@ -10,8 +10,8 @@
 # scope and would add maintenance burden as WhatsApp Web's CSS changes.
 
 pkgname=karere-custom-css
-pkgver=4.3.4
-pkgrel=2
+pkgver=4.3.5
+pkgrel=1
 pkgdesc="Karere with optional custom.css live reload"
 arch=('x86_64')
 url="https://github.com/riccardomarotti/karere"
@@ -24,7 +24,7 @@ _cef_ver="152.0.6"
 _cef_chromium="152.0.7977.83"
 _cef_hash="g708dc14"
 _cef_dir="cef_binary_${_cef_ver}+${_cef_hash}+chromium-${_cef_chromium}_linux64_minimal"
-_commit="36d8181792c47ece615d8acbcba96a3f2ae0f601"
+_commit="068fbfe9859c21279b1a7f46902c3589da83dfea"
 
 # libcef.so runtime libraries (readelf -d)
 depends=(
