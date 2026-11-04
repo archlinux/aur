@@ -2,7 +2,7 @@
 
 pkgname=disc-image-studio-bin
 _pkgname=disc-image-studio
-pkgver=1.3.6
+pkgver=1.4.0
 _asset=DiscImageStudio-CLI
 pkgrel=1
 pkgdesc='Generate CD, DVD and Blu-ray images that show a picture on the burned disc (prebuilt)'
@@ -16,8 +16,8 @@ options=('!strip' '!debug')
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_asset}-${pkgver}-linux-x64.tar.gz::${_release}/${_asset}-v${pkgver}-linux-x64.tar.gz")
 source_aarch64=("${_asset}-${pkgver}-linux-arm64.tar.gz::${_release}/${_asset}-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('b559cb0c072b61ae497cd9e953bc0be1de6ed79003977ccf2430e5ac4a9ba980')
-sha256sums_aarch64=('e898fe2be9b39bc201d22f9398ed12d54a3542b32b4a015d39d801b6bef5743a')
+sha256sums_x86_64=('23d39873b0fb8fee04cff60fa128b0419afeb70362d31dc8e05b8fe7328b4244')
+sha256sums_aarch64=('9e231c0d5cde0a31c7601d21707cadac2a49454fad62ebf2e820cb742a22c071')
 
 package() {
   install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
