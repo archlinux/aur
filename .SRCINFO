@@ -1,0 +1,17 @@
+pkgbase = neo4j-mcp-bin
+	pkgdesc = Neo4j official MCP server (prebuilt)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/neo4j/mcp
+	install = neo4j-mcp.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = neo4j-mcp=2.1.0
+	conflicts = neo4j-mcp
+	source_x86_64 = neo4j-mcp-2.1.0-x86_64.tar.gz::https://github.com/neo4j/mcp/releases/download/v2.1.0/neo4j-mcp_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 08df1b370d0e96a2d30dd1bcfd86f32233165956f0be119140e43d0636650723
+	source_aarch64 = neo4j-mcp-2.1.0-aarch64.tar.gz::https://github.com/neo4j/mcp/releases/download/v2.1.0/neo4j-mcp_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4da528ba2794211a22b15507d1cfadafac3ed601ca8da9b89fd7f9cac226d810
+
+pkgname = neo4j-mcp-bin

@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables telemetry by default: neo4j-mcp sends usage data to"
+  echo "  Mixpanel, and its event IDs carry a MAC address of this machine."
+  echo "  Disable it with NEO4J_MCP_TELEMETRY=false or --telemetry false."
+}
