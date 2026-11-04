@@ -1,6 +1,6 @@
 # Maintainer: va2bbw <antelaurijssen@gmail.com>
 pkgname=mercury-modem
-pkgver=1.9.21
+pkgver=1.9.22
 pkgrel=1
 pkgdesc="Digital Radio OFDM HF modem protocol for ARQ data connections"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -49,4 +49,4 @@ package() {
     install -Dm644 audioio/ffaudio/UNLICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE-ffaudio"
 }
-sha256sums=('785a84463581ba89420ff1a18b3f4ea88f92f2176fc13d16b899c1dbfdb883cd')
+sha256sums=('17e5ba53299325603ea91e101051b9f837dfe5fcabed21e32e16068b7b17829d')
