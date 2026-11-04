@@ -46,7 +46,7 @@ prepare() {
   "./${_pkgname}.AppImage" --appimage-extract &>/dev/null
 
   cp  -t "./" "squashfs-root/${_pkgname}.desktop"
-  sed -i 's|^Exec=AppRun.*|Exec=/usr/bin/puppyclicker %U|' "${_pkgname}.desktop"
+  sed -i "s|^Exec=AppRun.*|Exec=/usr/bin/${_pkgname} %U|" "${_pkgname}.desktop"
 
   # Patch the launcher to ignore hcaptcha and fix the api endpoint to the new structure.
   # cd           'squashfs-root/resources'
