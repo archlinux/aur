@@ -7,12 +7,12 @@ _fullurl="${_wayback}/${_origroot}"
 _name=tcmaker
 pkgname="fml-${_name}"
 pkgver=5.11
-pkgrel=1
+pkgrel=2
 pkgdesc='FML Test Card Maker: An application that allows to create test cards and more basic patterns from their individual elements (colour bars, frequency gratings, etc), rather than having to draw them manually with a graphics package.'
 url="${_fullurl}/${_name}.htm"
 arch=('i686' 'x86_64')
 license=('LicenseRef-custom')
-depends=('sh' 'wine' 'hicolor-icon-theme')
+depends=('sh' 'wine' 'wine-gecko' 'hicolor-icon-theme')
 install="${_name}.install"
 
 source=(
