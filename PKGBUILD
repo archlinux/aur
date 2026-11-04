@@ -2,11 +2,11 @@
 
 _pkgname=spacy-transformers
 pkgname=python-${_pkgname}
-pkgver=1.3.9
+pkgver=2.0.3
 pkgrel=1
-pkgdesc="spaCy pipelines for pre-trained BERT and other transformers"
+pkgdesc="Use pretrained transformers like BERT, XLNet and GPT-2 in spaCy"
 arch=(x86_64 aarch64)
-url='https://spacy.io/'
+url='https://github.com/explosion/spacy-transformers'
 license=(MIT)
 depends=(
 	python-spacy
@@ -23,7 +23,7 @@ makedepends=(
 	python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/explosion/${_pkgname}/archive/refs/tags/release-v${pkgver}.tar.gz")
-b2sums=("91db967e6f8269c09f5773da4e8c1c3c9b4315cf9a1123016683ad0a6912d69d39ac4b476df4835d702284cd6ca8a5c7fbd5439f33f9567dfa7d56ef8728cef0")
+sha256sums=("15aba60c0a0000173513fc2bbc4df449fdd421694f16fb093357235f216ff6c2")
 
 build() {
     cd "${_pkgname}-release-v${pkgver}"
