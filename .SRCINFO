@@ -1,6 +1,6 @@
 pkgbase = gomodel-git
 	pkgdesc = High-performance AI gateway (git main build, quasi-nightly)
-	pkgver = 0.2.1.r4.g8e7aa5ba1
+	pkgver = 0.2.1.r7.gd3ab69fcf
 	pkgrel = 1
 	url = https://github.com/ENTERPILOT/GoModel
 	install = gomodel.install
@@ -19,7 +19,7 @@ pkgbase = gomodel-git
 	provides = gomodel
 	conflicts = gomodel
 	options = !lto
-	source = gomodel-git::git+https://github.com/ENTERPILOT/GoModel.git#commit=8e7aa5ba13657681bcbef25a76c47961fa06d98b
+	source = gomodel-git::git+https://github.com/ENTERPILOT/GoModel.git#commit=d3ab69fcf460b579c81f4b4ac7fd2f46351bd4cf
 	source = plugin-message-format-4.4.0.tgz::https://registry.npmjs.org/@inlang/plugin-message-format/-/plugin-message-format-4.4.0.tgz
 	source = plugin-m-function-matcher-2.2.6.tgz::https://registry.npmjs.org/@inlang/plugin-m-function-matcher/-/plugin-m-function-matcher-2.2.6.tgz
 	source = gomodel-user.service
