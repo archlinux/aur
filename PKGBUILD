@@ -11,7 +11,7 @@ makedepends=('rust')
 optdepends=('libnotify: low-battery notifications')
 options=('!debug')
 install=gsp370-tray.install
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
 sha256sums=('f031454a3e3056ad4978c87e0e5cefa8de81d50596b291b3b969262b51ad875c')
 
 build() {
