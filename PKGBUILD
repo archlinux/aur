@@ -1,7 +1,7 @@
 # Maintainer: Sam M <contact@s-mc.io>
 pkgname=nuvio-desktop-git
 _pkgname=nuvio-desktop
-pkgver=0.1.32_alpha
+pkgver=0.1.34_alpha
 pkgrel=1
 pkgdesc="A modern media hub desktop application (built from git source)"
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=(
 	'java-environment>=17'
 	'patchelf'
 	'pkgconf'
+	'cmake'
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}" "nuvio-desktop-bin" "nuvio" "nuvio-desktop")
