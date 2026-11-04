@@ -1,4 +1,7 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
+# Contributor: Kent Fredric <kentnl@cpan.org>
+# Contributor: Petrenko Alexey <alexey-p at uralweb dot ru>
 
 _author=JKEENAN
 _dist=Devel-NYTProf
