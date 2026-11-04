@@ -1,6 +1,6 @@
 pkgbase = mmsimpulse-git
 	pkgdesc = A bare KWin Wayland session to run any shell on (Dux, digit, Quickshell configs), with Hyprland-style workspaces
-	pkgver = r179.4fef27c
+	pkgver = r180.c06e7eb
 	pkgrel = 1
 	url = https://github.com/mahirsn/mmsimpulse
 	arch = x86_64
