@@ -1,6 +1,6 @@
 # Maintainer: Chris Watson (watzon)
 pkgname=sayso-bin
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Local voice dictation into any app"
 arch=('x86_64' 'aarch64')
@@ -15,16 +15,17 @@ conflicts=('sayso')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/watzon/sayso/releases/download/v$pkgver/sayso-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('15c07f1f223a0ccc57d321610dea323d0a6423ff7b03ca30fda267014db842e1')
-sha256sums_aarch64=('40d34aff2d7796e348d7916d94d69f1c0193daf88a72d2288bcc45ee10170641')
+sha256sums_x86_64=('e54694f43973a170b205d381f8b428ef2a2771c91312837291651626e63ccc2c')
+sha256sums_aarch64=('da65951649a8c9f7627b6335183bc02e439764621833040d28e203ce3462db68')
 
 package() {
   cd "sayso-$pkgver-linux-$CARCH"
   # The app finds the engine and the cleanup runtime next to itself, so the
-  # three binaries live in one folder.
+  # binaries live in one folder.
   install -Dm755 bin/sayso "$pkgdir/usr/lib/sayso/sayso"
   install -Dm755 bin/sayso-engine "$pkgdir/usr/lib/sayso/sayso-engine"
-  install -Dm755 bin/sayso-cleanup "$pkgdir/usr/lib/sayso/sayso-cleanup"
+  # On x86_64 the cleanup runtime has one build for each instruction set.
+  install -Dm755 -t "$pkgdir/usr/lib/sayso" bin/sayso-cleanup*
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/sayso/sayso "$pkgdir/usr/bin/sayso"
   install -Dm644 share/applications/dev.sayso.Sayso.desktop "$pkgdir/usr/share/applications/dev.sayso.Sayso.desktop"
