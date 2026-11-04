@@ -4,11 +4,13 @@
 _pyname=pmdarima
 pkgname=python-${_pyname}
 pkgver=2.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Python's forecast::auto.arima equivalent"
 arch=('x86_64' 'aarch64')
 url='https://github.com/alkaline-ml/pmdarima'
 license=('MIT')
+# Preserve the native extension bytes recorded by the installed wheel.
+options=('!strip')
 depends=(
   'cython'
   'openblas'
@@ -18,10 +20,19 @@ depends=(
   'python-packaging'
   'python-pandas'
   'python-scikit-learn'
-  'python-scipy>=1.13.0'
+  'python-scipy'
   'python-setuptools'
   'python-statsmodels>=0.14.5'
   'python-urllib3'
+)
+# Alternative SciPy packages may expose an unversioned capability.
+# Keep the upstream/API minimum on the concrete providers.
+conflicts=(
+  'python-scipy<1.13.0'
+  'python-scipy-git<1.13.0'
+  'python-scipy-mkl<1.13.0'
+  'python-scipy-mkl-bin<1.13.0'
+  'python-scipy-mkl-tbb<1.13.0'
 )
 optdepends=(
   'python-matplotlib: plotting and visualization utilities'
