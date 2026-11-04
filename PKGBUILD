@@ -18,7 +18,7 @@ conflicts=(
   'svt-av1-hdr10plus-git'
   'svt-av1-bluesword-git'
 )
-provides=('svt-av1' 'SvtAv1EncApp' 'libSvtAv1Enc.so')
+provides=("svt-av1" "svt-av1=$pkgver" "SvtAv1EncApp" "libSvtAv1Enc.so")
 
 source=(
   "$pkgname::git+$url"
@@ -51,7 +51,7 @@ build() {
   cd "$pkgname/Build/linux"
 
   # Safe optimizations for video encoders
-  CFLAGS="-O3 -march=znver4 -mtune=znver4 \
+  CFLAGS="-O3 -march=native -mtune=native \
           -falign-functions=32 -falign-loops=32 \
           -fno-math-errno -fno-trapping-math \
           -fno-semantic-interposition \
