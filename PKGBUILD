@@ -1,7 +1,7 @@
 # Maintainer: Snowy-Fluffy <snowy.lnnk@gmail.com>
 
 pkgname=freshgram-bin
-pkgver=7.5.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc='Breaking ToS Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (prebuilt)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 source=("freshGram-linux-x86_64-$pkgver.tar.gz::$url/releases/download/v$pkgver/freshGram-linux-x86_64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/Snowy-Fluffy/freshGram/v$pkgver/LICENSE")
 noextract=("freshGram-linux-x86_64-$pkgver.tar.gz")
-sha256sums=('9fc2ba9627e7776fad2d4f1c6f5289f50076979607ac871ffcf75beb6864ba31'
+sha256sums=('a5f526a5b9f9f12b7fc1a70f03c551e3d82b53662d43764387829b8fda1ca117'
             'a728b65d02eeaf6b50c075a33b76107c652c3e5a12ff67f53682c83d47a23e1e')
 
 package() {

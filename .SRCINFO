@@ -1,6 +1,6 @@
 pkgbase = freshgram-bin
 	pkgdesc = Breaking ToS Telegram Desktop fork with a lot of security features, all AyuGram features, and a lot of design styles (prebuilt)
-	pkgver = 7.5.0
+	pkgver = 7.6.0
 	pkgrel = 1
 	url = https://github.com/Snowy-Fluffy/freshGram
 	arch = x86_64
@@ -16,15 +16,15 @@ pkgbase = freshgram-bin
 	depends = libxcb
 	depends = pango
 	optdepends = xdg-desktop-portal: file dialogs and screen sharing
-	provides = freshgram=7.5.0
+	provides = freshgram=7.6.0
 	conflicts = freshgram
 	conflicts = freshgram-git
-	noextract = freshGram-linux-x86_64-7.5.0.tar.gz
+	noextract = freshGram-linux-x86_64-7.6.0.tar.gz
 	options = !strip
 	options = !debug
-	source = freshGram-linux-x86_64-7.5.0.tar.gz::https://github.com/Snowy-Fluffy/freshGram/releases/download/v7.5.0/freshGram-linux-x86_64.tar.gz
-	source = LICENSE-7.5.0::https://raw.githubusercontent.com/Snowy-Fluffy/freshGram/v7.5.0/LICENSE
-	sha256sums = 9fc2ba9627e7776fad2d4f1c6f5289f50076979607ac871ffcf75beb6864ba31
+	source = freshGram-linux-x86_64-7.6.0.tar.gz::https://github.com/Snowy-Fluffy/freshGram/releases/download/v7.6.0/freshGram-linux-x86_64.tar.gz
+	source = LICENSE-7.6.0::https://raw.githubusercontent.com/Snowy-Fluffy/freshGram/v7.6.0/LICENSE
+	sha256sums = a5f526a5b9f9f12b7fc1a70f03c551e3d82b53662d43764387829b8fda1ca117
 	sha256sums = a728b65d02eeaf6b50c075a33b76107c652c3e5a12ff67f53682c83d47a23e1e
 
 pkgname = freshgram-bin
