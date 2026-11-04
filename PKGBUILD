@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/ci.yml` republish.
 pkgname=pikr-bin
 _pkgname=pikr
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Vim-modal application launcher — rofi replacement. (binary release)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('vulkan-driver: a Vulkan driver for the loader to use (e.g. vulkan-r
 # aarch64 source / sha lines will be restored when #31 lands
 # `aarch64-unknown-linux-gnu` back in the binary build matrix.
 source_x86_64=("pikr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v${pkgver}/pikr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('79c77e9558ab71da7111677f338a63611c75f5a07afd4e29f6e7363337009482')
+sha256sums_x86_64=('d0391836c127696dfcd3b07cb2487213b3474dfccd7589f5487e114a683cf4c8')
 
 package() {
     install -Dm755 "$srcdir/pikr" "$pkgdir/usr/bin/pikr"
