@@ -1,6 +1,6 @@
 pkgbase = ghostex-bin
 	pkgdesc = Native AI agent workspaces with terminals and an embedded browser (prebuilt)
-	pkgver = 10.45.0
+	pkgver = 10.46.0
 	pkgrel = 1
 	url = https://github.com/maddada/Ghostex
 	arch = x86_64
@@ -28,13 +28,13 @@ pkgbase = ghostex-bin
 	depends = fontconfig
 	depends = wmctrl
 	depends = hicolor-icon-theme
-	provides = ghostex=10.45.0
+	provides = ghostex=10.46.0
 	conflicts = ghostex
 	options = !strip
 	options = !debug
-	source = ghostex-10.45.0-linux-x64.tar.zst::https://github.com/maddada/Ghostex/releases/download/v10.45.0/ghostex-10.45.0-linux-x64.tar.zst
-	source = ghostex-10.45.0-LICENSE::https://raw.githubusercontent.com/maddada/Ghostex/v10.45.0/LICENSE
-	sha256sums = dc71633775ca55751d720511e6bd8dd699d921f314558fc83942e96f0e0ff05d
+	source = ghostex-10.46.0-linux-x64.tar.zst::https://github.com/maddada/Ghostex/releases/download/v10.46.0/ghostex-10.46.0-linux-x64.tar.zst
+	source = ghostex-10.46.0-LICENSE::https://raw.githubusercontent.com/maddada/Ghostex/v10.46.0/LICENSE
+	sha256sums = 4c59e921eb017b3d9b525b62874906e8dff06eed2d3589f52475c598fac436a5
 	sha256sums = 50c3e6ee30c68e93ebed3e549770999eaee10b88618588d57c9d5355d0996509
 
 pkgname = ghostex-bin
