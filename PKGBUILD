@@ -1,13 +1,14 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='usbimager'
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives (GTK+ Frontend)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://gitlab.com/bztsrc/usbimager'
 license=('MIT')
-depends=('gtk3' 'udisks2')
+depends=('gtk3' 'udisks2' 'glib2' 'glibc' 'hicolor-icon-theme')
 makedepends=('setconf')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'makefile.patch')
