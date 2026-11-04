@@ -1,0 +1,21 @@
+pkgbase = aurgus-git
+	pkgdesc = AUR helper that audits PKGBUILDs before building them (git version)
+	pkgver = 0.1.0.r7.g4fff586
+	pkgrel = 1
+	url = https://github.com/prietus/aurgus
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = pacman
+	depends = git
+	depends = coreutils
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	optdepends = gnupg: import PGP keys needed to verify sources
+	provides = aurgus
+	conflicts = aurgus
+	source = aurgus::git+https://github.com/prietus/aurgus.git
+	sha256sums = SKIP
+
+pkgname = aurgus-git
