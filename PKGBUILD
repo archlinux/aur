@@ -1,6 +1,6 @@
 # Maintainer: Oleg Antonyan <oleg.b.antonyan@gmail.com>
 pkgname=omnipackage
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="Build and distribute RPM, DEB & Arch packages easily"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('rust')
 # makepkg defaults LTO on; disable it — breaks linking prebuilt C/asm (aws-lc-rs/ring).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/omnipackage/omnipackage-rs/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('600f88e8d0955aa185054a18a54de61c32825a18b4ed3ab309604a8dfeebc8fb')
+sha256sums=('f2c8757a246b18b5e6de29f0fef37d0e90389b51b517b56bd8ace016809235e9')
 
 build() {
   cd "$srcdir/omnipackage-rs-$pkgver"

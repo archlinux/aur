@@ -1,6 +1,6 @@
 pkgbase = omnipackage
 	pkgdesc = Build and distribute RPM, DEB & Arch packages easily
-	pkgver = 0.1.19
+	pkgver = 0.1.20
 	pkgrel = 1
 	url = https://omnipackage.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = omnipackage
 	depends = podman
 	optdepends = docker: alternative container runtime (instead of podman)
 	options = !lto
-	source = omnipackage-0.1.19.tar.gz::https://github.com/omnipackage/omnipackage-rs/archive/refs/tags/v0.1.19.tar.gz
-	sha256sums = 600f88e8d0955aa185054a18a54de61c32825a18b4ed3ab309604a8dfeebc8fb
+	source = omnipackage-0.1.20.tar.gz::https://github.com/omnipackage/omnipackage-rs/archive/refs/tags/v0.1.20.tar.gz
+	sha256sums = f2c8757a246b18b5e6de29f0fef37d0e90389b51b517b56bd8ace016809235e9
 
 pkgname = omnipackage
