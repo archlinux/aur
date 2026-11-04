@@ -1,0 +1,5 @@
+[pail-bin]
+source = "github"
+github = "DejavuMoe/Pail"
+use_latest_release = true
+prefix = "v"

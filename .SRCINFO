@@ -1,0 +1,23 @@
+pkgbase = pail-bin
+	pkgdesc = S3 storage manager with a desktop GUI and CLI
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/DejavuMoe/Pail
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = cairo
+	depends = fontconfig
+	depends = gtk-layer-shell
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = pango
+	depends = webkit2gtk-4.1
+	optdepends = xdg-utils: opening links in the default browser
+	provides = pail
+	conflicts = pail
+	options = !strip
+	source = https://github.com/DejavuMoe/Pail/releases/download/v0.4.0/Pail-v0.4.0-linux-amd64.tar.gz
+	sha256sums = 252623084723013fa57811e7ba43647eca3c2ec522e7dde5266dca84fb8bf832
+
+pkgname = pail-bin
