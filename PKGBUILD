@@ -1,7 +1,7 @@
 # Maintainer: komaruworld <rtysus228 at gmail dot com>
 
 pkgname=mocktail-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux (prebuilt)'
 arch=('x86_64')
@@ -37,11 +37,10 @@ optdepends=('gamemode: Feral GameMode integration')
 provides=('mocktail')
 conflicts=('mocktail' 'mocktail-git')
 options=('!debug' '!strip')
-# Release asset names do not include the AUR package release.
-_archive="mocktail-${pkgver}-${CARCH}.pkg.tar.zst"
+_archive="mocktail-${pkgver}-1-${CARCH}.pkg.tar.zst"
 source=("${_archive}::https://github.com/komaruworld/mocktail/releases/download/${pkgver}/${_archive}")
 noextract=("${_archive}")
-sha256sums=('d5cc7216e88fd2889369e8eb7fba4276b2746c2b084dce566aaaa7505bc2ffb7')
+sha256sums=('1b5f9e9388359aae412000eadd7c5cc8b283c6c2f5086cc49dafce07192f54fa')
 
 package() {
   bsdtar -xf "${srcdir}/${_archive}" -C "${pkgdir}" usr

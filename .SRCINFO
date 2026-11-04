@@ -1,6 +1,6 @@
 pkgbase = mocktail-bin
 	pkgdesc = Android x86-64 Roblox compatibility runtime for Linux (prebuilt)
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/komaruworld/mocktail
 	arch = x86_64
@@ -33,10 +33,10 @@ pkgbase = mocktail-bin
 	provides = mocktail
 	conflicts = mocktail
 	conflicts = mocktail-git
-	noextract = mocktail-1.0.4-x86_64.pkg.tar.zst
+	noextract = mocktail-1.0.5-1-x86_64.pkg.tar.zst
 	options = !debug
 	options = !strip
-	source = mocktail-1.0.4-x86_64.pkg.tar.zst::https://github.com/komaruworld/mocktail/releases/download/1.0.4/mocktail-1.0.4-x86_64.pkg.tar.zst
-	sha256sums = d5cc7216e88fd2889369e8eb7fba4276b2746c2b084dce566aaaa7505bc2ffb7
+	source = mocktail-1.0.5-1-x86_64.pkg.tar.zst::https://github.com/komaruworld/mocktail/releases/download/1.0.5/mocktail-1.0.5-1-x86_64.pkg.tar.zst
+	sha256sums = 1b5f9e9388359aae412000eadd7c5cc8b283c6c2f5086cc49dafce07192f54fa
 
 pkgname = mocktail-bin
