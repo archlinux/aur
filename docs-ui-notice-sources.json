@@ -1,0 +1,121 @@
+{
+  "sources": [
+    {
+      "filename": "docs-styled-components-LICENSE",
+      "url": "https://raw.githubusercontent.com/styled-components/styled-components/4f54d97af2a05e571b357e2806697e479af065a0/LICENSE",
+      "sha256": "5b893305a717230e5b0024ff5ca3eec1dc05ba600c9b140730488d97ce56f1e6",
+      "packages": {
+        "styled-components": [
+          "5.3.11"
+        ]
+      },
+      "role": "original_notice",
+      "scope": "Original root MIT grant at exact v5.3.11 release source. The component version and 544 own source-map entries match. The generated errors.js source-map entries remain explicitly distinct, no complete rebuild equivalence is claimed."
+    },
+    {
+      "filename": "docs-toggle-selection-standard-terms.txt",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt",
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "packages": {
+        "toggle-selection": [
+          "1.0.6"
+        ]
+      },
+      "role": "standard_license_template",
+      "declared_license": "MIT",
+      "reviewed_source_commit": "466460c75ca40630d8de940490718247fce79a3e",
+      "scope": "Standard SPDX terms for the exact upstream declared license. Complete pinned Git tree has no original license/notice file. Original package metadata and available README including attribution remain retained. Template placeholders are unfilled, no copyright owner or year is invented."
+    },
+    {
+      "filename": "docs-short-unique-id-standard-terms.txt",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/Apache-2.0.txt",
+      "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+      "packages": {
+        "short-unique-id": [
+          "5.3.2"
+        ]
+      },
+      "role": "standard_license_template",
+      "declared_license": "Apache-2.0",
+      "reviewed_source_commit": "55af179f51d622818db61641200e677b95fbc265",
+      "scope": "Standard SPDX terms for the exact upstream declared license. Complete pinned Git tree has no original license/notice file. Original package metadata and available README including attribution remain retained. Template placeholders are unfilled, no copyright owner or year is invented."
+    },
+    {
+      "filename": "docs-highlightjs-vue-standard-terms.txt",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "packages": {
+        "highlightjs-vue": [
+          "1.0.0"
+        ]
+      },
+      "role": "standard_license_template",
+      "declared_license": "CC0-1.0",
+      "reviewed_source_commit": "2a0d197ec24ba70e019e12a13bd42f006124506a",
+      "scope": "Standard SPDX terms for the exact upstream declared license. Complete pinned Git tree has no original license/notice file. Original package metadata and available README including attribution remain retained. Template placeholders are unfilled, no copyright owner or year is invented."
+    },
+    {
+      "filename": "docs-tr46-standard-terms.txt",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt",
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "packages": {
+        "tr46": [
+          "0.0.3"
+        ]
+      },
+      "role": "standard_license_template",
+      "declared_license": "MIT",
+      "reviewed_source_commit": "a8009f9ce80ff5dbe71dd71e203afe4e4c878d28",
+      "scope": "Standard SPDX terms for the exact upstream declared license. Complete pinned Git tree has no original license/notice file. Original package metadata and available README including attribution remain retained. Template placeholders are unfilled, no copyright owner or year is invented."
+    },
+    {
+      "filename": "docs-workerize-loader-upstream-README.md",
+      "url": "https://raw.githubusercontent.com/Redocly/workerize-loader/6897b3fa5784c8f4970c81e04dbc8025f3c60938/README.md",
+      "sha256": "c06b587892173a82f6d923ce24bcefd49d2b4dd18f36afe2dc06b3aea1e6af76",
+      "packages": {
+        "workerize-loader": [
+          "1.3.0"
+        ]
+      },
+      "role": "original_attribution_readme",
+      "package_metadata_sha256": {
+        "workerize-loader": "f985d137c85a409d15a71df933fe0591a5deb353de0f2fbe926f53315f9e3d12"
+      },
+      "scope": "Exact original README attribution and MIT declaration at the installed source commit. This is not a standalone original license grant file."
+    },
+    {
+      "filename": "docs-format-upstream-README.md",
+      "url": "https://raw.githubusercontent.com/samsonjs/format/4f898096759776b7c84fa7a25b13c923dadfe46e/Readme.md",
+      "sha256": "e078ab4217332db9ac446cdf23e932eabd21d6db7c239a6495df4d3802251f20",
+      "packages": {
+        "format": [
+          "0.2.2"
+        ]
+      },
+      "role": "original_attribution_readme",
+      "package_metadata_sha256": {
+        "format": "0754698e3180d26da07fa0ca1fbfce331c0e1652db512aee35b443204bdec553"
+      },
+      "scope": "Exact original README attribution and MIT declaration at the installed source commit. This is not a standalone original license grant file."
+    },
+    {
+      "filename": "docs-workerize-format-MIT-template.txt",
+      "url": "https://raw.githubusercontent.com/LestaD/license.js/f921751cb8d7f82f6abfe0551c72353f49982748/licenses/MIT.txt",
+      "sha256": "a568830569a01ce0075873bba1637dc2b188939b87b11eb63a20df7cc3460e13",
+      "packages": {
+        "workerize-loader": [
+          "1.3.0"
+        ],
+        "format": [
+          "0.2.2"
+        ]
+      },
+      "role": "standard_license_template",
+      "package_metadata_sha256": {
+        "workerize-loader": "f985d137c85a409d15a71df933fe0591a5deb353de0f2fbe926f53315f9e3d12",
+        "format": "0754698e3180d26da07fa0ca1fbfce331c0e1652db512aee35b443204bdec553"
+      },
+      "scope": "Unmodified MIT template from the original linked license generator, pinned to exact Git source. Original README attributions retained separately, template placeholders intentionally not filled. No generated file is represented as an original grant."
+    }
+  ]
+}

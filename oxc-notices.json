@@ -1,0 +1,438 @@
+{
+  "scope": "Original notices for exact compiled Cargo sources. Build dependencies are included. Downloaded but uncompiled crates are not runtime evidence. An absent original file remains explicitly distinguished from borrowed-code notices.",
+  "files": [
+    {
+      "filename": "oxc-notice-20538257cfb1812d4816.txt",
+      "sha256": "20538257cfb1812d48164a7d11c0008a66b33c01b4debdfa0ec2a104fe00f028",
+      "url": "https://raw.githubusercontent.com/oxc-project/nodejs-built-in-modules/9117efa38fe088325e8a1036a8ddea7f3546c1ac/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-23f18e03dc49df91622f.txt",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/serde_json/LICENSE-MIT"
+    },
+    {
+      "filename": "oxc-notice-3f1ce66533302df3a32e.txt",
+      "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+      "url": "https://raw.githubusercontent.com/napi-rs/napi-rs/8bab46ee5dfd48a7b51e8bad3d09aed315ada4df/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-43070e2d4e532684de52.txt",
+      "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+      "url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-43293fded4890ea79c7e.txt",
+      "sha256": "43293fded4890ea79c7ec12e41c644524063cac78f44ab52c4deba169fc4c13f",
+      "url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-sonic_cpp"
+    },
+    {
+      "filename": "oxc-notice-5c932d88256b4ab958f6.txt",
+      "sha256": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3",
+      "url": "https://raw.githubusercontent.com/oxc-project/javascript-globals/a3888aa28f1312f80df0b8e5cb885106277e490e/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-62c7a1e35f56406896d7.txt",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-rust"
+    },
+    {
+      "filename": "oxc-notice-664f4e8a5ae846b8a949.txt",
+      "sha256": "664f4e8a5ae846b8a94960da2418187c0b4176d64266ba5fdb8316a8ddf50f27",
+      "url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-simdjson"
+    },
+    {
+      "filename": "oxc-notice-6fb8065469e053e7193b.txt",
+      "sha256": "6fb8065469e053e7193bd6a82616740b2819725fbd12a027aa99534643247cca",
+      "url": "https://raw.githubusercontent.com/oxc-project/oxc-browserslist/a9b49a18042671c91811dc1074e01b9c08331327/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-71674605ec4c087fe9eb.txt",
+      "sha256": "71674605ec4c087fe9eb534e3e4f9e26eb2e4aabcd76a29fd156c6a844d44b3d",
+      "url": "https://raw.githubusercontent.com/Nugine/simd/d74c030d9dc4f3cae02146d1f497ff62726ef09a/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-734d7fb3eb56f0a04e6b.txt",
+      "sha256": "734d7fb3eb56f0a04e6b7ab0c5d3634624a8bfaa2acc87a2c03a029b20868cf8",
+      "url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-yyjson"
+    },
+    {
+      "filename": "oxc-notice-7fb47d7306f9a3ba25b4.txt",
+      "sha256": "7fb47d7306f9a3ba25b44e7b9a94a300548a46709ed27753e28deac8e868b1cd",
+      "url": "https://raw.githubusercontent.com/oxc-project/fast-glob/3b6c31c39a676257fd1d95c338025b64f3f0395a/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-89461664ce2aee7d80ea.txt",
+      "sha256": "89461664ce2aee7d80ea8fba7118fe7abd490d76ba435cf1d81d3128e060711f",
+      "url": "https://raw.githubusercontent.com/Canop/lazy-regex/39a459c01e1ba2488075be50a821e2d72e466241/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-95ced5ecf1133fbf41d4.txt",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "url": "https://raw.githubusercontent.com/oxc-project/oxc-index-vec/8e09fe324eb6df02f56e4eacdfac958930300380/LICENSE"
+    },
+    {
+      "filename": "oxc-notice-b05785f9f18e6716bab6.txt",
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt"
+    },
+    {
+      "filename": "oxc-notice-c71d239df91726fc519c.txt",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-sonic"
+    }
+  ],
+  "crates": [
+    {
+      "name": "base64-simd",
+      "version": "0.8.0",
+      "cargo_manifest_sha256": "aa103a538f3fea026b646611ce892957a30d452eda6bef15a892f12c3a67f749",
+      "cargo_vcs_info_sha256": "b371389063321859f1fe9ea823e089d4a47be7a6d52304a36624f08a1a4d4c48",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-71674605ec4c087fe9eb.txt",
+          "sha256": "71674605ec4c087fe9eb534e3e4f9e26eb2e4aabcd76a29fd156c6a844d44b3d",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/Nugine/simd/d74c030d9dc4f3cae02146d1f497ff62726ef09a/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "fast-glob",
+      "version": "1.1.1",
+      "cargo_manifest_sha256": "90bfa772b2c2a3f16bda44165fd51ad7e1375d2877d2c67d2373568f12c1b357",
+      "cargo_vcs_info_sha256": "a5487c47ed3cc3ca27dcfcda377666a85b9ae6acbba45ff066c047303c82cdef",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-7fb47d7306f9a3ba25b4.txt",
+          "sha256": "7fb47d7306f9a3ba25b44e7b9a94a300548a46709ed27753e28deac8e868b1cd",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/oxc-project/fast-glob/3b6c31c39a676257fd1d95c338025b64f3f0395a/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "javascript-globals",
+      "version": "2.0.0",
+      "cargo_manifest_sha256": "1d957bddf5f0744a24c5e233fc311e795a176cb05dfb6e22305318bf382dae9b",
+      "cargo_vcs_info_sha256": "dba6881cfe20b3d1526a3e25d0c109688028192bab0d4ddfd128815d41637e4f",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-5c932d88256b4ab958f6.txt",
+          "sha256": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/oxc-project/javascript-globals/a3888aa28f1312f80df0b8e5cb885106277e490e/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "json-escape-simd",
+      "version": "3.1.0",
+      "cargo_manifest_sha256": "562dd611091a99607fc1b2496282f9135138a0596f7d219025ea92022d1fd5b7",
+      "cargo_vcs_info_sha256": "7fc71a6194146695149035542f9ba5b1ca1f4d24d1c9570b097473341f7fcffe",
+      "declared_license": "MIT",
+      "original_notice_status": "ORIGINAL_LICENSE_FILE_ABSENT_DECLARATION_AND_ATTRIBUTION_PRESERVED",
+      "notices": [
+        {
+          "filename": "oxc-notice-43070e2d4e532684de52.txt",
+          "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+          "output": "borrowed-sonic-rs/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/LICENSE"
+        },
+        {
+          "filename": "oxc-notice-62c7a1e35f56406896d7.txt",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "output": "borrowed-sonic-rs/licenses/LICENSE-rust",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-rust"
+        },
+        {
+          "filename": "oxc-notice-664f4e8a5ae846b8a949.txt",
+          "sha256": "664f4e8a5ae846b8a94960da2418187c0b4176d64266ba5fdb8316a8ddf50f27",
+          "output": "borrowed-sonic-rs/licenses/LICENSE-simdjson",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-simdjson"
+        },
+        {
+          "filename": "oxc-notice-c71d239df91726fc519c.txt",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "output": "borrowed-sonic-rs/licenses/LICENSE-sonic",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-sonic"
+        },
+        {
+          "filename": "oxc-notice-43293fded4890ea79c7e.txt",
+          "sha256": "43293fded4890ea79c7ec12e41c644524063cac78f44ab52c4deba169fc4c13f",
+          "output": "borrowed-sonic-rs/licenses/LICENSE-sonic_cpp",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-sonic_cpp"
+        },
+        {
+          "filename": "oxc-notice-734d7fb3eb56f0a04e6b.txt",
+          "sha256": "734d7fb3eb56f0a04e6b7ab0c5d3634624a8bfaa2acc87a2c03a029b20868cf8",
+          "output": "borrowed-sonic-rs/licenses/LICENSE-yyjson",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/LICENSE-yyjson"
+        },
+        {
+          "filename": "oxc-notice-62c7a1e35f56406896d7.txt",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "output": "borrowed-sonic-rs/licenses/serde_json/LICENSE-APACHE",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/serde_json/LICENSE-APACHE"
+        },
+        {
+          "filename": "oxc-notice-23f18e03dc49df91622f.txt",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "output": "borrowed-sonic-rs/licenses/serde_json/LICENSE-MIT",
+          "original_source_url": "https://raw.githubusercontent.com/cloudwego/sonic-rs/41ae6e8a5962da26eab34432d1412f35ea6d199e/licenses/serde_json/LICENSE-MIT"
+        },
+        {
+          "filename": "oxc-notice-b05785f9f18e6716bab6.txt",
+          "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+          "output": "declared-license-standard-terms/MIT.txt",
+          "source_url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt",
+          "role": "standard_license_template",
+          "scope": "Unmodified standard MIT terms matching the original Cargo license declaration. Placeholders remain unfilled. This is not an original crate notice or an attribution for its borrowed Sonic-RS implementation."
+        }
+      ],
+      "retained_source_files": [
+        {
+          "source": "Cargo.toml.orig",
+          "sha256": "f103211aa25c365a98ca97b29c583a5f018886b3143b0c7a54c409c11bfc7956",
+          "output": "crate-attribution/Cargo.toml.orig"
+        },
+        {
+          "source": "README.md",
+          "sha256": "bc8b8de017f796af78b940f4b00992caa84334e4ff5063a0210a59843605547a",
+          "output": "crate-attribution/README.md"
+        },
+        {
+          "source": "src/lib.rs",
+          "sha256": "8988c6cc34e0c220bf1ef3c63f14a8289953c18ee038c46a914d7c177cd3e1b5",
+          "output": "crate-attribution/src/lib.rs"
+        }
+      ],
+      "explanation": "The exact crate and its Git tree contain no license file. Cargo.toml declares MIT. src/lib.rs attributes the borrowed implementation to Sonic-RS v0.5.5. Preserve the distinct original Sonic-RS notices and the crate attribution without treating them as the missing crate license."
+    },
+    {
+      "name": "lazy-regex-proc_macros",
+      "version": "3.6.1",
+      "cargo_manifest_sha256": "e12f2183084c9c295a395a89d5d6154e6d8002e904d6e4b9857934e605c4b83a",
+      "cargo_vcs_info_sha256": "cda367a6c389180a2e54c1c5b4220891199613e1f22a27f9bd52f2a8c74173a4",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-89461664ce2aee7d80ea.txt",
+          "sha256": "89461664ce2aee7d80ea8fba7118fe7abd490d76ba435cf1d81d3128e060711f",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/Canop/lazy-regex/39a459c01e1ba2488075be50a821e2d72e466241/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "napi",
+      "version": "3.14.2",
+      "cargo_manifest_sha256": "2976cd78981bc9fe93553c4ac82d7e9bc49925117ffa5d7058b8e77dcc2e8ed5",
+      "cargo_vcs_info_sha256": "61cdf7a01406c8059d4d65d95730ac52e183380f6367e5083efd409da427521c",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-3f1ce66533302df3a32e.txt",
+          "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/napi-rs/napi-rs/8bab46ee5dfd48a7b51e8bad3d09aed315ada4df/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "napi-build",
+      "version": "2.6.0",
+      "cargo_manifest_sha256": "a98789d7687d7c9a48c8636f9c3e4b93572d1c7a46c964b3dcb52060015faf3f",
+      "cargo_vcs_info_sha256": "ab0db254baa56192392dfa8a058f15a6e6d306194faeb4858b7cbb6f71276685",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-3f1ce66533302df3a32e.txt",
+          "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/napi-rs/napi-rs/a94cef33f62e74682963dd085e283f52dcec2600/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "napi-derive",
+      "version": "3.6.12",
+      "cargo_manifest_sha256": "82625c8ef8bb0103791232c71c5bb854e1e3b28abe00048e0939315315c936d3",
+      "cargo_vcs_info_sha256": "8d068ce86b74812fd96e8b77b81e3e9c8301071ada0cd25368a2cdef24761830",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-3f1ce66533302df3a32e.txt",
+          "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/napi-rs/napi-rs/8bab46ee5dfd48a7b51e8bad3d09aed315ada4df/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "napi-derive-backend",
+      "version": "6.1.5",
+      "cargo_manifest_sha256": "8f8a647b7fadfec81d4c510fcc3581352f4319c046a36c1687850f85ab5d4fff",
+      "cargo_vcs_info_sha256": "d9626aa42f0508e1cfb9555f8b07838ec377e5ce1e21b68b5fdc62d44cbf78d2",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-3f1ce66533302df3a32e.txt",
+          "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/napi-rs/napi-rs/4694e6d7c7d7eb2ac6b9a634374c3519a9e5851f/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "napi-sys",
+      "version": "3.4.0",
+      "cargo_manifest_sha256": "dd44d722e9064e2c8431509bc121bb5443b93e3944aeeae4b956217025445561",
+      "cargo_vcs_info_sha256": "e83464a4c378004e398379bcf42e57189e8840f671bc3ed57d12917a7d4dd9f1",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-3f1ce66533302df3a32e.txt",
+          "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/napi-rs/napi-rs/37109f133043aff379a38edfb8b1548e7e9309e5/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "nodejs-built-in-modules",
+      "version": "1.0.0",
+      "cargo_manifest_sha256": "d02f41b60c43ea0d157291a68e250ac1f387412fdc839e8ccf4676765284d709",
+      "cargo_vcs_info_sha256": "018eb753cda15fe540e9b1614dc91be9c387648b38364a6f61ddbdfec969b64c",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-20538257cfb1812d4816.txt",
+          "sha256": "20538257cfb1812d48164a7d11c0008a66b33c01b4debdfa0ec2a104fe00f028",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/oxc-project/nodejs-built-in-modules/9117efa38fe088325e8a1036a8ddea7f3546c1ac/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "oxc-browserslist",
+      "version": "5.0.1",
+      "cargo_manifest_sha256": "53bb653858f4ef7050bf2b72aed03cc248916e60ffcbac15e00819b35b7c7eb1",
+      "cargo_vcs_info_sha256": "f74a3e8c1aa7364d33af5e48094a2097f26967c2c5ad323d7cf324d35daa26ab",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-6fb8065469e053e7193b.txt",
+          "sha256": "6fb8065469e053e7193bd6a82616740b2819725fbd12a027aa99534643247cca",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/oxc-project/oxc-browserslist/a9b49a18042671c91811dc1074e01b9c08331327/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "oxc_index",
+      "version": "5.0.0",
+      "cargo_manifest_sha256": "379e187364b5a29454b259f75ac0d06fd0955e009bd3dcbd1cbde64f0e05238f",
+      "cargo_vcs_info_sha256": "4e3ef30a54157d284228c8ec462f9217041a9c3de1434e697a4d0469a0cdf15e",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-95ced5ecf1133fbf41d4.txt",
+          "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/oxc-project/oxc-index-vec/8e09fe324eb6df02f56e4eacdfac958930300380/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "oxc_resolver",
+      "version": "11.24.3",
+      "cargo_manifest_sha256": "de7c9bed84243497d38045b09e3def832a3bd71730ffbfddb1af4566db0e44c3",
+      "cargo_vcs_info_sha256": "6bab20d257274b4e7cfd1b80ff84b24cc248415c997950952a34ada85d2e7f5b",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-95ced5ecf1133fbf41d4.txt",
+          "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/oxc-project/oxc-resolver/b6a6125c5556ca1ae0e48b479d203e8f06effd10/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    },
+    {
+      "name": "vsimd",
+      "version": "0.8.0",
+      "cargo_manifest_sha256": "7a3defd1f3b642bc229a518351f3feb23a69ddaf0349414562edbeeca40d60ad",
+      "cargo_vcs_info_sha256": "b6a479e65704d09745d31e0d86d23ca44ba673b01ddd0da81cc8ba619a92b2aa",
+      "declared_license": "MIT",
+      "original_notice_status": "EXACT_UPSTREAM_NOTICE",
+      "notices": [
+        {
+          "filename": "oxc-notice-71674605ec4c087fe9eb.txt",
+          "sha256": "71674605ec4c087fe9eb534e3e4f9e26eb2e4aabcd76a29fd156c6a844d44b3d",
+          "output": "upstream/LICENSE",
+          "original_source_url": "https://raw.githubusercontent.com/Nugine/simd/d74c030d9dc4f3cae02146d1f497ff62726ef09a/LICENSE"
+        }
+      ],
+      "retained_source_files": []
+    }
+  ],
+  "compiled_source_license_expressions": [
+    "(MIT OR Apache-2.0) AND Unicode-3.0",
+    "0BSD OR MIT OR Apache-2.0",
+    "Apache-2.0",
+    "Apache-2.0 OR BSL-1.0",
+    "Apache-2.0 OR GPL-2.0-only",
+    "Apache-2.0 OR MIT",
+    "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "Apache-2.0 WITH LLVM-exception OR BSL-1.0",
+    "Apache-2.0/MIT",
+    "BSD-3-Clause",
+    "ISC",
+    "MIT",
+    "MIT OR Apache-2.0",
+    "MIT OR Zlib OR Apache-2.0",
+    "MIT-0",
+    "MIT/Apache-2.0",
+    "Unicode-3.0",
+    "Unlicense OR MIT",
+    "Unlicense/MIT",
+    "Zlib"
+  ],
+  "bundled_javascript_license_expressions": [
+    "(MIT OR CC0-1.0)",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "MIT"
+  ]
+}

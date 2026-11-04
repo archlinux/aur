@@ -1,0 +1,15 @@
+--- a/unsloth/import_fixes.py
++++ b/unsloth/import_fixes.py
+@@ -5999,6 +5999,12 @@
+     except Exception:
+         return
+ 
++    # Arch's Torch 2.15 is paired with torchvision 0.29.2.
++    # Keep the upstream binary probe for this exact distribution pair.
++    if torch_v.release == (2, 15, 0) and tv_v.release == (0, 29, 2):
++        _probe_torchvision_binary(torch_version_raw, torchvision_version_raw, (0, 29, 2))
++        return
++
+     # Ground truth, takes precedence over the formula; see pytorch.org/get-started/previous-versions/
+     TORCH_TORCHVISION_COMPAT = {
+         (2, 9): (0, 24),

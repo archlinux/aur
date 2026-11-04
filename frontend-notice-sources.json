@@ -1,0 +1,131 @@
+{
+  "sources": [
+    {
+      "filename": "frontend-radix-LICENSE",
+      "url": "https://raw.githubusercontent.com/radix-ui/primitives/fcef0668a5c827e5a4baac405474d75680f9a4eb/LICENSE",
+      "sha256": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+      "packages": {
+        "@radix-ui/number": [
+          "1.1.1"
+        ],
+        "@radix-ui/react-compose-refs": [
+          "1.1.2"
+        ],
+        "@radix-ui/react-context": [
+          "1.1.2"
+        ],
+        "@radix-ui/react-direction": [
+          "1.1.1"
+        ],
+        "@radix-ui/react-id": [
+          "1.1.1"
+        ],
+        "@radix-ui/react-use-callback-ref": [
+          "1.1.1"
+        ],
+        "@radix-ui/react-use-escape-keydown": [
+          "1.1.1"
+        ],
+        "@radix-ui/react-use-layout-effect": [
+          "1.1.1"
+        ],
+        "@radix-ui/react-use-previous": [
+          "1.1.1"
+        ],
+        "@radix-ui/react-use-size": [
+          "1.1.1"
+        ]
+      },
+      "scope": "Original root MIT notice at the exact published gitHead, source-map contents matched to Git blobs.",
+      "role": "original_notice"
+    },
+    {
+      "filename": "frontend-rehype-katex-LICENSE",
+      "url": "https://raw.githubusercontent.com/remarkjs/remark-math/88a9497e1ede93b958237c85edbf5651faeca7af/license",
+      "sha256": "cb992262f361a5359e6771c28740d33c7041e15332ae8537fae40538992591a9",
+      "packages": {
+        "rehype-katex": [
+          "7.0.1"
+        ]
+      },
+      "scope": "Original repository notice for the exact release source. Original npm package metadata is retained separately.",
+      "role": "original_notice"
+    },
+    {
+      "filename": "frontend-victory-vendor-LICENSE",
+      "url": "https://raw.githubusercontent.com/FormidableLabs/victory/d9d9ca2d5038d6ef9de91f2cef39e6fb2733baa6/LICENSE.txt",
+      "sha256": "34dee5fd5e5cc756efb5ad4d64652bce719bdf5e900ca5d7538253e737930bc4",
+      "packages": {
+        "victory-vendor": [
+          "37.3.6"
+        ]
+      },
+      "scope": "Original repository notice for the exact release source. Original npm package metadata is retained separately.",
+      "role": "original_notice"
+    },
+    {
+      "filename": "frontend-qrcode-generator-LICENSE",
+      "url": "https://raw.githubusercontent.com/kazuhikoarase/qrcode-generator/83b7e8fe3fddd3b0368dbafd6ce56995bd25e3c8/LICENSE",
+      "sha256": "3a850fa5f08101db6f40676c2786e10bd2cd5fff7b12ffdf1e0c434d4e49d90c",
+      "packages": {
+        "qrcode-generator": [
+          "2.0.4"
+        ]
+      },
+      "scope": "Original repository notice for the exact release source. Original npm package metadata is retained separately.",
+      "role": "original_notice"
+    },
+    {
+      "filename": "frontend-remark-math-LICENSE",
+      "url": "https://raw.githubusercontent.com/remarkjs/remark-math/d5d0660b150810a535bbb07eac6cc96a4510aa24/license",
+      "sha256": "cb992262f361a5359e6771c28740d33c7041e15332ae8537fae40538992591a9",
+      "packages": {
+        "remark-math": [
+          "6.0.0"
+        ]
+      },
+      "scope": "Original repository notice for the exact release source. Original npm package metadata is retained separately.",
+      "role": "original_notice"
+    },
+    {
+      "filename": "frontend-react-remove-scroll-bar-LICENSE",
+      "url": "https://raw.githubusercontent.com/theKashey/react-remove-scroll-bar/7301c160fda44cb8cf2b9fdfde61efad35736196/LICENSE",
+      "sha256": "a79aae0c0f21990d9d963bb3c5a79cdcea9a46f8523ba55c58d7fe776b6ebc84",
+      "packages": {
+        "react-remove-scroll-bar": [
+          "2.3.8"
+        ]
+      },
+      "scope": "Original upstream notice added in the sole-child commit of npm 2.3.7 source. Every distributed dist file is identical between npm 2.3.7 and 2.3.8. The unavailable 2.3.8 gitHead is not claimed verified.",
+      "role": "original_notice"
+    },
+    {
+      "filename": "frontend-use-composed-ref-standard-license.txt",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/MIT.txt",
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "packages": {
+        "use-composed-ref": [
+          "1.4.0"
+        ]
+      },
+      "scope": "Standard SPDX terms supplied for the license declared in the exact upstream package metadata. No original grant or copyright file exists in the reviewed source tree. Template placeholders are intentionally unfilled, no copyright owner or year is invented.",
+      "role": "standard_license_template",
+      "declared_license": "MIT",
+      "reviewed_source_commit": "ea2c9d969f2f90a349f4c99338b806423824cea2"
+    },
+    {
+      "filename": "frontend-dingbat-to-unicode-standard-license.txt",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/d46e94e2c78ceede1cfc63cfa0396472d2798d4c/text/BSD-2-Clause.txt",
+      "sha256": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df",
+      "packages": {
+        "dingbat-to-unicode": [
+          "1.0.1"
+        ]
+      },
+      "scope": "Standard SPDX terms supplied for the license declared in the exact upstream package metadata. No original grant or copyright file exists in the reviewed source tree. Template placeholders are intentionally unfilled, no copyright owner or year is invented.",
+      "role": "standard_license_template",
+      "declared_license": "BSD-2-Clause",
+      "reviewed_source_commit": "b27f259b49907f99b1b9097abba5a9668106b779"
+    }
+  ]
+}

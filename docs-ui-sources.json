@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "name": "swagger-ui",
+      "version": "5.30.2",
+      "commit": "30d8f985caeca5bb9400cf21403686ec5a82c1cc",
+      "archive_url": "https://codeload.github.com/swagger-api/swagger-ui/tar.gz/30d8f985caeca5bb9400cf21403686ec5a82c1cc",
+      "archive_sha256": "8fbe28a025d89f845f99418acf96db90ac91281487fd7fe3d976f4cb4873e439",
+      "archive_prefix": "swagger-ui-30d8f985caeca5bb9400cf21403686ec5a82c1cc",
+      "filename": "docs-ui-0-30d8f985caeca5bb9400cf21403686ec5a82c1cc.tar.gz",
+      "index": 0
+    },
+    {
+      "name": "redoc",
+      "version": "2.5.1",
+      "commit": "d140213cb6a977cc7376d15e308f0cd63498ed56",
+      "archive_url": "https://codeload.github.com/Redocly/redoc/tar.gz/d140213cb6a977cc7376d15e308f0cd63498ed56",
+      "archive_sha256": "dda13adc57bda7cad293b5592a4e050b1f02b85dccb5a315a0dd88080eeea716",
+      "archive_prefix": "redoc-d140213cb6a977cc7376d15e308f0cd63498ed56",
+      "filename": "docs-ui-1-d140213cb6a977cc7376d15e308f0cd63498ed56.tar.gz",
+      "index": 1
+    }
+  ]
+}

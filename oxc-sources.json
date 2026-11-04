@@ -1,0 +1,93 @@
+{
+  "sources": [
+    {
+      "index": 0,
+      "name": "oxc-napi",
+      "commit": "73e6b564737a29ecebf428d276421dcc492836df",
+      "url": "https://codeload.github.com/oxc-project/oxc/tar.gz/73e6b564737a29ecebf428d276421dcc492836df",
+      "filename": "oxc-73e6b564737a29ecebf428d276421dcc492836df.tar.gz",
+      "archive_prefix": "oxc-73e6b564737a29ecebf428d276421dcc492836df",
+      "archive_sha256": "2983ca061220c0de4474301ad813a622b41ad4ec21512b40de58f6f196ddbc65",
+      "pnpm_version": "12.7.0",
+      "rust_msrv": "1.97.0",
+      "cargo_lock_sha256": "b7aef620c2020743879318100d4abbe85836a6c3f18b705ecb9e791fc20913f5",
+      "pnpm_lock_sha256": "cd6cb9f3d162c874280a6257bb5676e2eea04665c81afa25dd38405c7dc0ec18",
+      "license_sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "components": [
+        {
+          "path": "napi/parser",
+          "metadata_sha256": "ee6e1d109d68d67efb0df075b9a9a5d731a666e082bcfba1d792ca39680f6132"
+        },
+        {
+          "path": "napi/transform",
+          "metadata_sha256": "dfcf5da4fd2c07cb520dc346faaf43bcb7a10f9c084595172af43aff635a44f3"
+        },
+        {
+          "path": "npm/oxc-types",
+          "metadata_sha256": "ab398550cf8a4e1687416fad481dcbdbe3284f1f6ffbda195abcaabaab2f881b"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "name": "oxlint",
+      "commit": "07ed78f4abde4020ca7919381ffea4da8616b78a",
+      "url": "https://codeload.github.com/oxc-project/oxc/tar.gz/07ed78f4abde4020ca7919381ffea4da8616b78a",
+      "filename": "oxc-07ed78f4abde4020ca7919381ffea4da8616b78a.tar.gz",
+      "archive_prefix": "oxc-07ed78f4abde4020ca7919381ffea4da8616b78a",
+      "archive_sha256": "d2b9377ec7a4a9423b5b4a1c7ed9b46f44fe799168abd5075dfd7e72aef03519",
+      "pnpm_version": "12.7.0",
+      "rust_msrv": "1.97.0",
+      "cargo_lock_sha256": "b40489caf8a1731f4749485d266ae76136c1d9aad72860ce1d02dfe78f1e023f",
+      "pnpm_lock_sha256": "cd6cb9f3d162c874280a6257bb5676e2eea04665c81afa25dd38405c7dc0ec18",
+      "license_sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "components": [
+        {
+          "path": "apps/oxlint",
+          "metadata_sha256": "cb7c678822be43d732e2fce24abbd3703df85337405124675d3be149a983ddaf"
+        },
+        {
+          "path": "npm/oxlint",
+          "metadata_sha256": "27a502b2568f35f5571fb483605fa7e9ff5fc086c27c7086f0721abae2cb15b3"
+        }
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "name": "oxc-parser",
+      "version": "0.155.0",
+      "source_index": 0,
+      "path": "napi/parser",
+      "native_directory": "src-js",
+      "native_filename": "parser.linux-x64-gnu.node",
+      "test_files": [
+        "test/parse.test.ts",
+        "test/esm.test.ts"
+      ]
+    },
+    {
+      "name": "oxc-transform",
+      "version": "0.155.0",
+      "source_index": 0,
+      "path": "napi/transform",
+      "native_directory": ".",
+      "native_filename": "transform.linux-x64-gnu.node",
+      "test_files": [
+        "test/transform.test.ts",
+        "test/id.test.ts",
+        "test/moduleRunnerTransform.test.ts"
+      ]
+    },
+    {
+      "name": "oxlint",
+      "version": "1.89.0",
+      "source_index": 1,
+      "path": "apps/oxlint",
+      "native_directory": "dist",
+      "native_filename": "oxlint.linux-x64-gnu.node",
+      "test_files": []
+    }
+  ],
+  "scope": "Native x86_64 Linux Studio validator and React compilation. Sources and official build tools are separate from compiled runtime payloads."
+}
