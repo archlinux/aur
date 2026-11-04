@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=mp4ff
-pkgver=0.61.0
+pkgver=0.62.0
 pkgrel=1
 pkgdesc='Tools for parsing and manipulating MP4/ISOBMFF files'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('c37d251eaf8269100e4c85a22a14c34a507c6f4ac56dcf6249e6209938274f25')
+sha256sums=('e8cd8b3253cf4ae3aec8c9c4bcd35abb6366c7864df18b0b95b34966c7540e3c')
 
 prepare() {
   cd "${pkgname}"
