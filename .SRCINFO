@@ -1,6 +1,6 @@
 pkgbase = zero-beat-git
 	pkgdesc = Terminal music player for NetEase Cloud Music and Bilibili (TUI)
-	pkgver = 0.6.0.r72.gfa75985
+	pkgver = 0.6.1.r75.g418b6fa
 	pkgrel = 1
 	url = https://github.com/Sheyiyuan/zero-beat
 	arch = x86_64
