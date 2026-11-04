@@ -1,6 +1,6 @@
 pkgbase = alma-desktop-bin
 	pkgdesc = A beautiful desktop application that unifies your AI experience. Seamlessly switch between OpenAI, Anthropic, Google Gemini, and custom providers.
-	pkgver = 0.4.410
+	pkgver = 0.4.414
 	pkgrel = 1
 	url = https://alma.now
 	arch = x86_64
@@ -36,9 +36,9 @@ pkgbase = alma-desktop-bin
 	depends = libxkbcommon
 	depends = systemd-libs
 	depends = java-runtime
-	provides = alma=0.4.410
+	provides = alma=0.4.414
 	conflicts = alma-appimage
-	source = https://github.com/yetone/alma-releases/releases/download/v0.4.410/alma-0.4.410-linux-amd64.deb
-	sha256sums = a424d421d66850187f82211a64bb605942464a0e8dbde7418b0f4b648a89f221
+	source = https://github.com/yetone/alma-releases/releases/download/v0.4.414/alma-0.4.414-linux-amd64.deb
+	sha256sums = 62d6dcd69051ad1103d76d1f2ad596a45dd7c26b13227b8981b08d69bc844410
 
 pkgname = alma-desktop-bin
