@@ -1,7 +1,7 @@
 # Maintainer: mc_klatz
 
 pkgname=sone
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output"
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bb609de36f70010a64b02dd6ff0ca361c27a5770e7eb0cc7db6b4ede2df211b')
+sha256sums=('80885e39c6b6493dcfb6f9fe1ae369a359947ed1023561122439e502032d4000')
 
 prepare() {
     cd "$pkgname-$pkgver"
