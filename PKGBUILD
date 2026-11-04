@@ -1,7 +1,7 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=preaur-git
 _repo=PreAUR
-pkgver=0.0.6.r0.g9bcf9c7
+pkgver=0.0.7.r9.gf7a358f
 pkgrel=1
 pkgdesc="PreAUR, build AUR (not only) pkgbuilds ahead of time."
 arch=('any')
@@ -48,7 +48,7 @@ package() {
 
   install -Dm644 "$repo_dir/packaging/preaur.sysusers" "$pkgdir/usr/lib/sysusers.d/preaur.conf"
   install -Dm644 "$repo_dir/packaging/preaur.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/preaur.conf"
-  install -Dm644 "$repo_dir/packaging/preaur.service" "$pkgdir/usr/lib/systemd/system/preaur.service"
-  install -Dm644 "$repo_dir/packaging/preaur.timer" "$pkgdir/usr/lib/systemd/system/preaur.timer"
+  install -Dm644 "$repo_dir/packaging/preaur@.service" "$pkgdir/usr/lib/systemd/system/preaur@.service"
+  install -Dm644 "$repo_dir/packaging/preaur@.timer" "$pkgdir/usr/lib/systemd/system/preaur@.timer"
   install -Dm644 "$repo_dir/packaging/preaur.sudoers.example" "$pkgdir/usr/share/doc/$pkgname/preaur.sudoers.example"
 }
