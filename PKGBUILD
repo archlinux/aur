@@ -27,6 +27,10 @@ makedepends=(
   'clang'           # YukariConnect NativeAOT 发布需要
   'cmake'           # meson 以 cmake 方式探测 Qt6
   'dotnet-sdk>=10.0' # YukariConnect 子项目构建（面向 .NET 10）
+  # Arch 的 dotnet-sdk 依赖不带版本号，会被 dotnet-runtime-8.0 等旧版
+  # 的 versioned provides 冒充满足，必须显式钉住 10.x 的运行时与目标包。
+  'dotnet-runtime>=10.0'
+  'dotnet-targeting-pack>=10.0'
   'git'
   'jdk21-openjdk'   # 上游 Pixi 固定 openjdk 21；JDK 26+ 已移除 java.applet，旧版 MC applet 代码无法编译
   'meson'
