@@ -1,0 +1,3 @@
+[python-mypy-protobuf]
+source = "pypi"
+pypi = "mypy-protobuf"

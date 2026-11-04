@@ -1,10 +1,10 @@
 pkgbase = python-mypy-protobuf
 	pkgdesc = Generate mypy stub files from protobuf specs
-	pkgver = 3.6.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/nipunn1313/mypy-protobuf
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -13,7 +13,8 @@ pkgbase = python-mypy-protobuf
 	depends = protobuf
 	depends = python
 	depends = python-protobuf
-	source = https://files.pythonhosted.org/packages/source/m/mypy-protobuf/mypy-protobuf-3.6.0.tar.gz
-	sha256sums = 02f242eb3409f66889f2b1a3aa58356ec4d909cdd0f93115622e9e70366eca3c
+	optdepends = python-types-protobuf: type stubs for checking generated code with mypy
+	source = https://files.pythonhosted.org/packages/source/m/mypy-protobuf/mypy_protobuf-5.1.0.tar.gz
+	sha256sums = 8493758852a9cdc075a11dbe96c6e37ea2feba5fd5f33ef7442b9a275322a94c
 
 pkgname = python-mypy-protobuf
