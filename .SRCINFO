@@ -1,6 +1,6 @@
 pkgbase = lyr-bin
 	pkgdesc = A desktop status bar for Wayland, Windows and macOS (binary release)
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/kryptic-sh/lyr
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = lyr-bin
 	depends = vulkan-icd-loader
 	depends = libxkbcommon
 	depends = fontconfig
-	provides = lyr=0.5.1
+	provides = lyr=0.6.0
 	conflicts = lyr
-	source_x86_64 = lyr-v0.5.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/lyr/releases/download/v0.5.1/lyr-v0.5.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 54239c27355c6395f9890d24f544ecd7d4f72e61a39012936237dc940db379b0
-	source_aarch64 = lyr-v0.5.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/lyr/releases/download/v0.5.1/lyr-v0.5.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0ce0001f2a36adb8fa910f63f1ea33a8dc227ef3e1896f8c70f5999db7233e21
+	source_x86_64 = lyr-v0.6.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/lyr/releases/download/v0.6.0/lyr-v0.6.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4ca746e266db7da9a1ae18955729b7aa6ad4f6357ebcb1267e89aa6078b3265b
+	source_aarch64 = lyr-v0.6.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/lyr/releases/download/v0.6.0/lyr-v0.6.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4277c05188ecd30f9ed735c2fc2b9624959d4b6efb4b886a2f94483ba7e5b692
 
 pkgname = lyr-bin
