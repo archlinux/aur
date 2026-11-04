@@ -2,7 +2,7 @@
 
 pkgname=old-launcher-git
 _name=old_launcher
-pkgver=r101.9f5f67b
+pkgver=r178.ffa1583
 pkgrel=1
 pkgdesc='Launcher and addon manager for World of Warcraft 3.3.5a clients'
 arch=('x86_64' 'aarch64')
@@ -54,6 +54,8 @@ build() {
   cd "$_name"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # The package owns the binary: the launcher won't offer to update itself.
+  export OLD_LAUNCHER_PACKAGED=1
   # Rust 1.99's LLVM crashes vectorizing libbz2-rs-sys for AVX-512 with fat
   # LTO, which -C target-cpu=native (CachyOS's makepkg default) turns on
   # wherever the CPU has it: llvm/llvm-project#229609, fixed in LLVM after
