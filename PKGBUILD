@@ -1,6 +1,6 @@
 # Maintainer: Ice Pie <icepie.dev@gmail.com>
 pkgname=niceaigc-bin
-pkgver=1.0.9
+pkgver=1.0.14
 pkgrel=1
 pkgdesc='NiceAIGC desktop application'
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('niceaigc')
 source=(
   "niceaigc-${pkgver}.deb::https://app.niceaigc.net/api/v1/download/linux/x64?format=deb"
 )
-sha256sums=('855059a295d853a65cd2bd3d883de2b1d0fe855167cb4f6b3034c15552cc6fc6')
+sha256sums=('d53258220a318e39b053b77e2ceed0d816857c4b7f6c6c50bbf893791da64f28')
 
 prepare() {
   bsdtar -xf "${srcdir}/niceaigc-${pkgver}.deb" -C "${srcdir}"
