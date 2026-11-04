@@ -1,12 +1,12 @@
 # Maintainer: MeoArch <https://github.com/QwQdoge>
-_srcdir=meo-ai-dd5f6f64583af6146f34d072926b2b70169a8111
+_srcdir=meo-ai-fbb9e9e7ce541acd858b3e55e4fd09dee236c8cb
 pkgname=meo-ai-beta
-pkgver=0.1.0beta2
-pkgrel=8
+pkgver=0.1.0beta10
+pkgrel=1
 pkgdesc="Meo AI desktop app and headless AgentService (Beta channel)"
 arch=('x86_64')
 conflicts=('meo-ai')
-provides=('meo-ai=0.1.0beta2')
+provides=('meo-ai=0.1.0beta10')
 url='https://github.com/QwQdoge/meo-ai'
 license=('GPL-3.0-or-later' 'MIT' 'BSD-3-Clause')
 depends=('meo-account' 'meoui-qml>=1.0.4beta3' 'qt6-base' 'qt6-declarative'
@@ -23,7 +23,7 @@ optdepends=('meo-settings: manage Meo Account and device AI connections'
             'python-pyaudio: microphone input'
             'python-mcp: external MCP tools')
 options=('!debug')
-source=('meo-ai-dd5f6f64583af6146f34d072926b2b70169a8111.tar.gz::https://codeload.github.com/QwQdoge/meo-ai/tar.gz/dd5f6f64583af6146f34d072926b2b70169a8111'
+source=('meo-ai-fbb9e9e7ce541acd858b3e55e4fd09dee236c8cb.tar.gz::https://codeload.github.com/QwQdoge/meo-ai/tar.gz/fbb9e9e7ce541acd858b3e55e4fd09dee236c8cb'
         'org.meo.AI.desktop'
         'newspaper3k-LICENSE'
         'feedfinder2-LICENSE'
@@ -33,7 +33,7 @@ source=('meo-ai-dd5f6f64583af6146f34d072926b2b70169a8111.tar.gz::https://codeloa
         'feedfinder2-0.0.4.tar.gz::https://files.pythonhosted.org/packages/35/82/1251fefec3bb4b03fd966c7e7f7a41c9fc2bb00d823a34c13f847fd61406/feedfinder2-0.0.4.tar.gz'
         'newspaper3k-0.2.8-py3-none-any.whl::https://files.pythonhosted.org/packages/d7/b9/51afecb35bb61b188a4b44868001de348a0e8134b4dfa00ffc191567c4b9/newspaper3k-0.2.8-py3-none-any.whl'
         'tinysegmenter-0.3.tar.gz::https://files.pythonhosted.org/packages/17/82/86982e4b6d16e4febc79c2a1d68ee3b707e8a020c5d2bc4af8052d0f136a/tinysegmenter-0.3.tar.gz')
-sha256sums=('7f7ad44c8b47ed14d0b0a9794944bb9fc1981923e594be8c8b62d9b6c074ba03'
+sha256sums=('a0a80dfc357161827f7e9d8caa07a806df8f5d616eda3652a76ba4d323af127e'
             '330e2822261054e9cb41a802cd51f7b4e1b3696e335a8b10cd6d91552cc11e74'
             '662ea995a58f4d1138128ae1f44a91bccd4ddb114419d04446cf165442b8217c'
             'dd878f923e4dc2e4ee6a4482fc00a94a933888c2ceb51db131827939a26739af'
