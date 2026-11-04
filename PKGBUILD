@@ -2,7 +2,7 @@
 
 pkgname=flclash
 _name=FlClash
-pkgver=0.9.1
+pkgver=0.9.3
 _flutter=3.47.6
 pkgrel=1
 pkgdesc="Multi-platform proxy client based on ClashMeta"
@@ -24,14 +24,17 @@ depends=('at-spi2-core'
          'pango')
 makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'gendesk' 'git' 'go' 'ninja' 'rustup')
 source=("git+${url}.git#tag=v${pkgver}"
-        "git+https://github.com/chen08209/Clash.Meta.git")
-sha256sums=('6e1e375f6c7965975aa08be207aeb80168610c03fb6af8a184b39ebc1abe51b5'
+        "git+https://github.com/chen08209/Clash.Meta.git"
+        "git+https://github.com/chen08209/prism_ui.git")
+sha256sums=('dd2d88d78843a1bc6971ab8de380fca345e9e51cd6e16924867f2a45b0fa48a0'
+            'SKIP'
             'SKIP')
 
 prepare() {
     cd "${_name}"
     git submodule init
     git config submodule.core/Clash.Meta.url "${srcdir}/Clash.Meta"
+    git config submodule.plugins/prism_ui.url "${srcdir}/prism_ui"
     git -c protocol.file.allow=always submodule update
 
     sed -i 's|-Werror|-Wno-error|' linux/CMakeLists.txt
