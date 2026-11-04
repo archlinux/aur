@@ -4,14 +4,15 @@
 
 # shellcheck shell=bash disable=SC2034,SC2164
 
+_electron=electron
 pkgname=proton-pass
 pkgver=1.43.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source and secure identity manager"
 arch=('aarch64' 'x86_64')
 url="https://proton.me/pass"
 license=('GPL-3.0-or-later')
-depends=('bash' 'glibc' 'electron' 'libgcc' 'libxkbcommon')
+depends=('bash' 'glibc' "${_electron}" 'libgcc' 'libxkbcommon')
 makedepends=('go-yq' 'nodejs' 'pnpm' 'rust')
 conflicts=('proton-pass-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${pkgver}.tar.gz"
@@ -138,7 +139,7 @@ package() {
 
     # Set up the wrapper script
     install -d "${pkgdir}"/usr/bin
-    echo -e '#!/bin/bash\n\nexec /usr/bin/electron /usr/share/proton-pass/app.asar "$@"' \
+    echo -e "#"'!'"/bin/bash\n\nexec /usr/bin/${_electron} /usr/share/proton-pass/app.asar \"\$@\"" \
         | tee "${pkgdir}"/usr/bin/${pkgname} > /dev/null
     chmod +x "${pkgdir}"/usr/bin/${pkgname}
 
