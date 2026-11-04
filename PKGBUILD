@@ -1,9 +1,10 @@
 pkgname=makepkg-jail-local
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Local bubblewrap makepkg sandbox with AppArmor and a restricted paru adapter'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
+url='https://aur.archlinux.org/packages/makepkg-jail-local'
 
 depends=(
     'apparmor'
