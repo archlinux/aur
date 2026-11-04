@@ -1,6 +1,6 @@
 pkgbase = compx-control
 	pkgdesc = Native GTK4/libadwaita configuration tool for COMPX-based gaming mice (MAD R, VXE R1)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/NasirA1991/compx-control
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = compx-control
 	depends = python-cairo
 	depends = python-dbus
 	depends = hicolor-icon-theme
-	source = compx-control-0.1.1.tar.gz::https://github.com/NasirA1991/compx-control/releases/download/v0.1.1/compx-control-0.1.1.tar.gz
-	sha256sums = 5b0cf47daa96db387d2b44494a588a8fd8118d8022d1fa3ea6ea681d633c9718
+	source = compx-control-0.1.2.tar.gz::https://github.com/NasirA1991/compx-control/releases/download/v0.1.2/compx-control-0.1.2.tar.gz
+	sha256sums = 51fa6d513a76884c735ab8174d0b1352dcf58234dfdfeb2cd64bebe4050fdf70
 
 pkgname = compx-control
