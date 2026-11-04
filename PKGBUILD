@@ -1,6 +1,6 @@
 # Maintainer: captience <milkkjello@gmail.com>
 pkgname=tide
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A YouTube Music client for Linux"
 arch=('any')
@@ -35,7 +35,7 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # computed from the GitHub tag tarball at release time (updpkgsums once
 # v$pkgver is tagged and pushed); until then this is the previous release's.
-sha256sums=('fa242314ce578fd5207ca30c246e94aee73344577b905baff1a62f08e55272df')
+sha256sums=('07be2c2e68da1c69a248bc86c956e5d6b8b7743c372011652858d0023174a92d')
 
 build() {
   cd "$pkgname-$pkgver"
