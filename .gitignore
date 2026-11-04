@@ -8,3 +8,5 @@
 !set_gasp.py
 !measure.py
 !make_features.py
+!fit_weight.py
+!even_spacing.py

@@ -4,7 +4,7 @@ _gmver=1.100
 _gfcommit=d36f78e60bb8424f6c2a2eb9b4bd717cd4d77651
 _nfver=3.5.1
 pkgver="${_gmver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Akt (Google Fonts), a grotesque sans with a wght axis (100-900), Greek and Cyrillic, re-hinted with ttfautohint for FreeType (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://fonts.google.com/specimen/Akt'
@@ -21,6 +21,8 @@ source=(
   "make_features.py"
   "set_gasp.py"
   "measure.py"
+  "fit_weight.py"
+  "even_spacing.py"
   "README.md"
   "FEATURES.md"
 )
@@ -28,11 +30,13 @@ noextract=("font-patcher-${_nfver}.zip")
 sha256sums=('3da5013ec56bf5a83cccd1d5601b89fa58a6cda5b3fd0e5f8d18ee3690272c05'
             'a27d7054c92711c58325a652f1968c92d1825a48bf745d50df802ec3d0ebb642'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
-            '68f3709ffa119bd8e7812b1b3c25e5c50f7929668866d8a621b5d1175a7e87a8'
+            '63a9168f053caf0e942a0b78e61d99655dc85247636b94f54e72ebcca3dc1df8'
             '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '3ad4eb1296ca40b68d32fe5220fe03cb0c8b0d7725b1f179d3df2176430b0ff8'
-            'bd69328694f2a67498ea0a2bf59a4a6c71c9b39d837bc8d4d3434e758d967af8'
+            '966cc105db5f0f50c2015227baab9f24fe2e77054f8251b51ebb7e10ab412000'
+            '3557b5cc0ed23dc5069f58391f3f1c1ed9aa551560ff01f134a8b5db73f9fa91'
+            'be40b0414f99e8bf007a60b0bf6cb31adb0ffd6af25014ff56fc7fea250ec668'
             '53f95d81331096d439ec7235e59b830d42c0016c1e8a57231134afe280edbcb9')
 
 # ── What this package does ──────────────────────────────────────────────────
@@ -75,10 +79,46 @@ sha256sums=('3da5013ec56bf5a83cccd1d5601b89fa58a6cda5b3fd0e5f8d18ee3690272c05'
 #                           fontTools instancer and hinted on its own
 #  STATIC_WEIGHTS "100 ... 900"  wght values to cut (default: all nine)
 #
+#  REGULAR_WGHT 100-900  Cut the "Regular" static at this wght instead of 400
+#               (e.g. 330). Forces AK_VARIANT=static. Why: at 16 ppem the design's
+#               horizontal bars are 1.33px (1 solid + 1 faint row = blurry); at
+#               wght ~300-340 they are ~1.1-1.2px, so the nnn hinting leaves them
+#               nearly a single clean row, with the design's stroke ratio kept.
+#               Costs ~15% ink (lighter text). Bold (700) stays as designed.
+#               REGULAR_WGHT=auto runs fit_weight.py: it measures the bars of the
+#               font's own outlines and picks the wght closest to 400 whose bars
+#               are within FIT_TOLERANCE px (default 0.25) of a whole pixel at
+#               FIT_PPEM (default 16 = 12pt on a 1x screen). Akt: 335 at 16 ppem.
+#               Nothing fits (or the font is already clean) -> stays at 400.
+#  FIT_PPEM / FIT_TOLERANCE  see REGULAR_WGHT=auto.
+#  SCALE_WEIGHTS true/false  With REGULAR_WGHT: also re-space the other weights so
+#               the family stays evenly stepped (default: true). Bold (700) and
+#               above stay as designed (at 16 ppem Bold's bars are already
+#               1.93px = a clean 2px row). 100-400 and 400-700 are each remapped
+#               linearly: REGULAR_WGHT=330 cuts Light at 253, Regular 330,
+#               Medium 453, SemiBold 577. false = only Regular moves (then Light
+#               300 and Regular 330 are almost the same weight).
+#
 #  NERD_PATCH   true/false  Patch with Nerd Fonts glyphs (default: false).
 #                           font-patcher drops fvar/gvar, so this forces
 #                           AK_VARIANT=static. Family "Akt Nerd Font (Mono|Propo)".
 #
+#  EVEN_SPACING  ""|all|latin,greek,cyrillic (comma list)  (default: none)
+#               Evens out the optical gap between letter pairs of the whole font.
+#               For every lowercase and every uppercase pair it measures the area
+#               between the outlines up to x-height / cap height (profiles clamped at
+#               a depth so open shapes like c, e, ς are not over-credited) and adds a
+#               GPOS kern lookup that moves each pair towards the median gap. Accented
+#               letters follow their base letter; pairs the designer already kerned
+#               are left alone. Why: Akt's sidebearings give uneven pairs, e.g.
+#               Greek "λώ" vs "ει" differ by ~1px at 16 ppem. Works on variable and
+#               static fonts. Numbers: python even_spacing.py --stats --report ει,ab FONT
+#               Calibrated per font by even_spacing.py: depth and strength are fitted
+#               to the pairs the designer kerned by hand, and the size limits follow
+#               FIT_PPEM (max kern ~1 px, skip < 0.1 px). Override any of them:
+#  EVEN_STRENGTH  0-1.5 (default auto)   EVEN_DEPTH  0.05-0.6 (default auto)
+#  EVEN_MAX       max |kern|, units/1000 em (default auto = 1000/FIT_PPEM)
+#  EVEN_MIN       skip corrections below this (default auto = 100/FIT_PPEM)
 #  HINTING      true/false  Hint with ttfautohint (default: true).
 #
 #  HINT_PRESET  natural|balanced|sharp|light|custom (default: natural)
@@ -125,7 +165,7 @@ _opt_keys=(AK_VARIANT FEATURE_DEFAULTS FEATURE_FAMILY
            HINTING HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX
            HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
-           HINT_FAMILY_SUFFIX HINT_INTEGER_PPEM GASP_MODE)
+           HINT_FAMILY_SUFFIX HINT_INTEGER_PPEM GASP_MODE REGULAR_WGHT FIT_PPEM FIT_TOLERANCE SCALE_WEIGHTS EVEN_SPACING EVEN_STRENGTH EVEN_DEPTH EVEN_MAX EVEN_MIN)
 
 _ask_yn() {
   local _ans
@@ -205,6 +245,36 @@ _prompt_options() {
         "variable:one wght-axis font (recommended)" \
         "static:one file per weight, hinted per weight"
       AK_VARIANT=$_choice
+    fi
+    if [[ "${REGULAR_WGHT+set}" != set ]]; then
+      echo ""
+      echo "  At 16 ppem Regular's horizontal bars are 1.33px (1 solid + 1 faint row)."
+      echo "  A lighter Regular makes them nearly one clean row (needs static fonts)."
+      _ask_choice "Regular weight" auto \
+        "auto:measure the font and pick the wght whose bars fit whole pixels (default)" \
+        "400:as designed" \
+        "custom:type a wght, 100-900"
+      case $_choice in
+        400)    REGULAR_WGHT="" ;;
+        auto)   REGULAR_WGHT=auto ;;
+        custom) read -r -p "  wght (100-900): " REGULAR_WGHT || REGULAR_WGHT="" ;;
+        *)      REGULAR_WGHT=$_choice ;;
+      esac
+    fi
+    if [[ "${EVEN_SPACING+set}" != set ]]; then
+      echo ""
+      echo "  Some letter pairs are spaced unevenly (e.g. Greek \"λώ\" tight, \"ει\" loose)."
+      _ask_choice "Even out spacing with kern pairs" none \
+        "none:as designed (default)" \
+        "all:Latin, Greek and Cyrillic" \
+        "greek:Greek only" \
+        "latin:Latin only" \
+        "custom:type a list, e.g. latin,greek"
+      case $_choice in
+        none)   EVEN_SPACING="" ;;
+        custom) read -r -p "  scripts: " EVEN_SPACING || EVEN_SPACING="" ;;
+        *)      EVEN_SPACING=$_choice ;;
+      esac
     fi
     if [[ "${FEATURE_DEFAULTS+set}" != set ]]; then
       echo ""
@@ -295,6 +365,40 @@ _resolve_options() {
       *) echo "Error: $_v='${!_v}' must be true or false." >&2; exit 1 ;;
     esac
   done
+  EVEN_SPACING="${EVEN_SPACING:-}"
+  EVEN_STRENGTH="${EVEN_STRENGTH:-auto}"; EVEN_DEPTH="${EVEN_DEPTH:-auto}"
+  EVEN_MAX="${EVEN_MAX:-auto}"; EVEN_MIN="${EVEN_MIN:-auto}"
+  if [[ ! "$EVEN_SPACING" =~ ^(|all|(latin|greek|cyrillic)(,(latin|greek|cyrillic))*)$ ]]; then
+    echo "Error: EVEN_SPACING must be empty, all, or a comma list of latin,greek,cyrillic." >&2; exit 1
+  fi
+  for _v in EVEN_STRENGTH EVEN_DEPTH EVEN_MAX EVEN_MIN; do
+    [[ "${!_v}" == auto || "${!_v}" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { echo "Error: $_v='${!_v}' must be a number." >&2; exit 1; }
+  done
+  REGULAR_WGHT="${REGULAR_WGHT:-}"
+  SCALE_WEIGHTS="${SCALE_WEIGHTS:-true}"
+  case "$SCALE_WEIGHTS" in true|false) ;;
+    *) echo "Error: SCALE_WEIGHTS must be true or false." >&2; exit 1 ;; esac
+  if [[ "$REGULAR_WGHT" == auto ]]; then
+    FIT_PPEM="${FIT_PPEM:-16}"; FIT_TOLERANCE="${FIT_TOLERANCE:-0.25}"
+    if REGULAR_WGHT=$(python "$srcdir/fit_weight.py" --ppem "$FIT_PPEM" \
+         --tolerance "$FIT_TOLERANCE" --quiet "$srcdir/AktVF.ttf") \
+       && [[ "$REGULAR_WGHT" != 400 ]]; then
+      echo "==> REGULAR_WGHT=auto: bars fit at wght $REGULAR_WGHT ($FIT_PPEM ppem)."
+    else
+      echo "==> REGULAR_WGHT=auto: wght 400 already fits (or nothing does); unchanged."
+      REGULAR_WGHT=""
+    fi
+  fi
+  if [[ -n "$REGULAR_WGHT" ]]; then
+    if [[ ! "$REGULAR_WGHT" =~ ^[1-9][0-9]{2}$ || "$REGULAR_WGHT" -gt 900 ]]; then
+      echo "Error: REGULAR_WGHT='$REGULAR_WGHT' must be 100-900." >&2; exit 1
+    fi
+    if [[ "$AK_VARIANT" == variable ]]; then
+      echo "==> Note: REGULAR_WGHT needs a static cut; using AK_VARIANT=static."
+      AK_VARIANT=static
+    fi
+    [[ " $STATIC_WEIGHTS " == *" 400 "* ]] || STATIC_WEIGHTS="400 $STATIC_WEIGHTS"
+  fi
   # font-patcher drops fvar/gvar, so patching always works on statics.
   if [[ "$NERD_PATCH" == true && "$AK_VARIANT" == variable ]]; then
     echo "==> Note: the variable font cannot be Nerd-patched; using AK_VARIANT=static."
@@ -402,7 +506,18 @@ build() {
     echo "==> Cutting static instances..."
     local _w
     for _w in $STATIC_WEIGHTS; do
-      python "$srcdir/make_statics.py" --wght "$_w" -o "$srcdir/selected" "$srcdir/AktVF.ttf"
+      if [[ -n "$REGULAR_WGHT" ]] && { [[ "$_w" == 400 ]] || [[ "$SCALE_WEIGHTS" == true && "$_w" -lt 700 ]]; }; then
+        local _cut=$REGULAR_WGHT
+        if (( _w < 400 )); then
+          _cut=$(( 100 + (_w - 100) * (REGULAR_WGHT - 100) / 300 ))
+        elif (( _w > 400 )); then
+          _cut=$(( REGULAR_WGHT + (_w - 400) * (700 - REGULAR_WGHT) / 300 ))
+        fi
+        python "$srcdir/make_statics.py" --wght "$_cut" --name-as "$_w" \
+          -o "$srcdir/selected" "$srcdir/AktVF.ttf"
+      else
+        python "$srcdir/make_statics.py" --wght "$_w" -o "$srcdir/selected" "$srcdir/AktVF.ttf"
+      fi
     done
   fi
   local _count
@@ -427,6 +542,21 @@ build() {
     fi
     echo "==> Patched $_count font(s)."
     _hintsrc="$srcdir/patched"
+  fi
+
+  # ── Step 2b: optical spacing ────────────────────────────────────────────────
+  # After patching, before hinting: only GPOS changes, ttfautohint keeps it.
+  if [[ -n "$EVEN_SPACING" ]]; then
+    echo "==> Evening out $EVEN_SPACING spacing with kern pairs..."
+    rm -rf "$srcdir/spaced"; mkdir -p "$srcdir/spaced"
+    local -a _es=(--script "$EVEN_SPACING" --ppem "${FIT_PPEM:-16}")
+    local _o _n
+    for _o in strength:EVEN_STRENGTH depth:EVEN_DEPTH max:EVEN_MAX min:EVEN_MIN; do
+      _n=${_o#*:}
+      [[ "${!_n}" == auto ]] || _es+=("--${_o%%:*}" "${!_n}")
+    done
+    python "$srcdir/even_spacing.py" "${_es[@]}" -o "$srcdir/spaced" "$_hintsrc"/*.ttf
+    _hintsrc="$srcdir/spaced"
   fi
 
   if [[ "$HINTING" != true ]]; then
@@ -489,6 +619,8 @@ package() {
   local _out="$srcdir/selected"
   if [[ "$HINTING" == true ]]; then
     _out="$srcdir/hinted"
+  elif [[ -n "$EVEN_SPACING" ]]; then
+    _out="$srcdir/spaced"     # patched (if Nerd) and spaced
   elif [[ "$NERD_PATCH" == true ]]; then
     _out="$srcdir/patched"
   fi

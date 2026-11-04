@@ -43,10 +43,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--wght", type=int, required=True)
     ap.add_argument("--italic", action="store_true")
+    ap.add_argument("--name-as", type=int, default=None, metavar="W",
+                    help="cut at --wght (any 100-900) but name/classify the "
+                         "result as the standard weight W (e.g. a 330 cut "
+                         "installed as Regular)")
     ap.add_argument("-o", "--outdir", required=True)
     ap.add_argument("vf")
     a = ap.parse_args()
 
+    cut = a.wght
+    if a.name_as is not None:
+        a.wght = a.name_as
+        if not 100 <= cut <= 900:
+            sys.exit(f"make_statics.py: wght {cut} outside 100-900")
     if a.wght not in WEIGHTS:
         sys.exit(f"make_statics.py: wght {a.wght} is not one of {sorted(WEIGHTS)}")
 
@@ -54,7 +63,7 @@ def main():
     if ("post" in font and (font["post"].italicAngle != 0)) != a.italic:
         sys.exit(f"make_statics.py: {a.vf} does not look like the "
                  f"{'italic' if a.italic else 'roman'} font")
-    font = instantiateVariableFont(font, {"wght": a.wght}, updateFontNames=False)
+    font = instantiateVariableFont(font, {"wght": cut}, updateFontNames=False)
 
     italic = a.italic
     wname = WEIGHTS[a.wght]
