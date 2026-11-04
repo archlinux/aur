@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A turn-key terminal workspace built from tools you already trust"
 
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('6301923d0ef699f915611f58e4e2edb1e8661acad91b1644978a253d334e4f6d')
-sha256sums_aarch64=('dcc91ee22f2bdd3c8258c6a2eb0f3a5835fa5697aea5bbc97bb9a0bb1695ceb4')
+sha256sums_x86_64=('d19d7f111a4ac7bd22cdde2ee55d34c4e53611faeab21f12bca61ada5cd4404c')
+sha256sums_aarch64=('68d6248c48c8ebf46824245699e775241764e9831195b4bed520e9b3c2de1bf1')
 
 
 package() {
