@@ -14,32 +14,28 @@ PREFIX=/usr/share/keeperfx-tux              # engine package's config trees
 DATA_PREFIX=/usr/share/keeperfx-tux-data    # data package (a dependency)
 GAMEDIR="${KEEPERFX_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/keeperfx-alpha}"
 
-# Read-only trees, linked wholesale. The data package's copies are preferred: they
-# are supersets of the engine package's (which ships only the text config), and
-# since 1.4.0.5273 the release archive carries freshly-overlaid config, so there is
-# no staleness to work around -- the two are byte-identical at the same tag.
-RO_DIRS=(lang fxdata creatrs ldata multiplayer)
-# The user drops their own Dungeon Keeper files into these alongside ours, so they
-# must be real directories. Packaged files are linked in individually.
+# Packaged trees, merged: every directory in the game directory is a real one that
+# belongs to the user, and only the packaged FILES inside are links into /usr. The
+# data package's copies are preferred: they are supersets of the engine package's
+# (which ships only the text config), and since 1.4.0.5273 the release archive
+# carries freshly-overlaid config, so the two are byte-identical at the same tag.
 #
-# campgns and levels are here rather than in RO_DIRS because add-ons land in them.
-# Linked as whole directories they resolved to root-owned /usr trees, so the
-# launcher's Workshop and Mod Manager could not write a campaign or map pack into
-# them at all -- "Install" failed on a package install and could never succeed.
-# Merged, the directory itself is the user's and each packaged campaign is a
-# symlink inside it, so downloaded content simply sits alongside.
-MERGE_DIRS=(data sound campgns levels)
+# Any directory linked whole resolves to a root-owned /usr tree, and add-ons land
+# all over the game tree. Linking campgns/ and levels/ whole made every Workshop
+# and Mod Manager install fail; merging them one level deep still left the packaged
+# map packs and campaigns as links, and a Workshop map ships as
+# levels/standard/mapNNNNN.* -- an addition to the stock "Standard levels" pack --
+# so "Install" failed with "Could not write into levels" on every package install.
+# The same held for multiplayer/, which the launcher installs into too. So no
+# directory is a link, at any depth.
+MERGE_DIRS=(lang fxdata creatrs ldata multiplayer data sound campgns levels)
 # User-owned: seeded once, never clobbered afterwards.
 RW_DIRS=(mods music)
-# Packaged entries INSIDE a merged directory that the user is meant to write into,
-# so they must be real directories rather than symlinks to the read-only package.
-#
-# The merge above fixed this one level up -- linking campgns/ and levels/ whole made
-# them root-owned and add-on installs impossible -- but the same trap remained one
-# level down. levels/personal is where the launcher installs a standalone workshop
-# map, and its own readme calls it "your personal folder to do with as you see fit";
-# levels/legacy is the same kind of drop folder. Linked to /usr they are read-only,
-# so installing a single map failed on every package install.
+# Packaged directories the user is meant to write into: seeded with COPIES of what
+# the package ships there (a readme), so the user can edit or delete them without
+# the next start linking them back. levels/personal is where the launcher installs a
+# standalone workshop map, and its own readme calls it "your personal folder to do
+# with as you see fit"; levels/legacy is the same kind of drop folder.
 USER_DROP_DIRS=(levels/personal levels/legacy)
 
 # Files the user must supply from their own Dungeon Keeper installation.
@@ -77,6 +73,7 @@ _src_for() {
 # existed, and a count goes to stderr at the end.
 moved=0
 stuck=0
+unlinked=0
 STASH_ROOT="$GAMEDIR/.replaced-by-package"
 STASH=""
 _same_file() {
@@ -118,51 +115,57 @@ _clear_for_link() {
     return 0
 }
 
-mkdir -p "$GAMEDIR"/{save,scrshots}
-
-for d in "${RO_DIRS[@]}"; do
-    src=$(_src_for "$d") || true
-    [ -n "$src" ] || continue
-    if _clear_for_link "$GAMEDIR/$d" "$src"; then
-        ln -sfn "$src" "$GAMEDIR/$d"
+# Merge the packaged tree $1 into "$GAMEDIR/$2": each directory a real one, each
+# file a link, so the user's own files and add-ons can sit beside the packaged ones
+# anywhere. Whatever stands where a packaged file goes is an earlier install's copy
+# and makes way (_clear_for_link).
+_merge_tree() {
+    local src=$1 rel=$2 dst="$GAMEDIR/$2" f base
+    # An older wrapper linked this directory whole. Removing the link never touches
+    # what it points at, and the loop below links the packaged files straight back in.
+    if [ -L "$dst" ]; then
+        rm -f "$dst"
+    elif [ -e "$dst" ] && [ ! -d "$dst" ]; then
+        _clear_for_link "$dst" "$src" || return 0
     fi
-done
+    mkdir -p "$dst" 2>/dev/null || return 0
+    for f in "$src"/*; do
+        [ -e "$f" ] || continue
+        base=${f##*/}
+        if [ -d "$f" ]; then
+            case " ${USER_DROP_DIRS[*]} " in
+                *" $rel/$base "*)
+                    if [ -L "$dst/$base" ]; then
+                        rm -f "$dst/$base"
+                    fi
+                    mkdir -p "$dst/$base"
+                    cp -rn "$f/." "$dst/$base/" 2>/dev/null || true
+                    continue
+                    ;;
+            esac
+            _merge_tree "$f" "$rel/$base"
+        elif [ -L "$dst/$base" ] && [ "$dst/$base" -ef "$f" ]; then
+            # Already linked. Every start walks thousands of packaged files, and this
+            # test starts no process, so a start stays quick.
+            continue
+        elif _clear_for_link "$dst/$base" "$f"; then
+            # A folder the player made read-only must not stop the game: under set -e a
+            # failed ln would end the script here. Counted, and reported at the end.
+            ln -sfn "$f" "$dst/$base" 2>/dev/null || unlinked=$((unlinked + 1))
+        fi
+    done
+}
+
+mkdir -p "$GAMEDIR"/{save,scrshots}
 
 for d in "${MERGE_DIRS[@]}"; do
     src=$(_src_for "$d") || true
     [ -n "$src" ] || continue
-    # Migration: campgns and levels used to be linked as whole directories, which
-    # made them read-only /usr trees. Replace such a link with a real directory --
-    # removing a symlink never touches what it points at, and the loop below links
-    # the packaged content straight back in.
-    if [ -L "$GAMEDIR/$d" ]; then
-        rm -f "$GAMEDIR/$d"
-    fi
-    mkdir -p "$GAMEDIR/$d"
-    # Link each packaged file individually so the user's own files can sit beside
-    # them. Whatever stands where a packaged file goes is an earlier install's copy
-    # and makes way (_clear_for_link).
-    for f in "$src"/*; do
-        [ -e "$f" ] || continue
-        base=$(basename "$f")
-        target="$GAMEDIR/$d/$base"
-        # A drop folder must be the user's own directory, not a link into /usr, or
-        # nothing can ever be installed into it. Seed it with whatever the package
-        # ships (a readme) and never clobber what the user put there afterwards.
-        case " ${USER_DROP_DIRS[*]} " in
-            *" $d/$base "*)
-                if [ -L "$target" ]; then
-                    rm -f "$target"          # removing a link never touches /usr
-                fi
-                mkdir -p "$target"
-                cp -rn "$f/." "$target/" 2>/dev/null || true
-                continue
-                ;;
-        esac
-        if _clear_for_link "$target" "$f"; then
-            ln -sfn "$f" "$target"
-        fi
-    done
+    _merge_tree "$src" "$d"
+    # A file a later version no longer ships leaves its link dangling. Only links
+    # into the packages are pruned; the user's own files and links are not touched.
+    find "$GAMEDIR/$d" -xtype l \( -lname "$DATA_PREFIX/*" -o -lname "$PREFIX/*" \) \
+        -delete 2>/dev/null || true
 done
 
 for d in "${RW_DIRS[@]}"; do
@@ -175,6 +178,10 @@ done
 if [ "$moved" -gt 0 ]; then
     echo "keeperfx-tux: moved $moved file(s) or folder(s) that an earlier install left in" \
          "$GAMEDIR, and that differ from the packaged game, to $STASH" >&2
+fi
+if [ "$unlinked" -gt 0 ]; then
+    echo "keeperfx-tux: $unlinked packaged file(s) could not be linked into $GAMEDIR" \
+         "(is a folder there read-only?); the game starts without them" >&2
 fi
 if [ "$stuck" -gt 0 ]; then
     echo "keeperfx-tux: $stuck file(s) or folder(s) in $GAMEDIR hide the packaged game's" \
