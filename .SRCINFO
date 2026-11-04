@@ -1,9 +1,10 @@
 pkgbase = openidea-bin
 	pkgdesc = Open-source IntelliJ IDEA-style IDE rebuilt in Rust
-	pkgver = 0.1.33
+	pkgver = 0.1.35
 	pkgrel = 1
 	url = https://github.com/l0ng-ai/openidea
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	depends = glibc
 	depends = glib2
@@ -17,9 +18,11 @@ pkgbase = openidea-bin
 	conflicts = openidea
 	options = !strip
 	options = !debug
-	source = OpenIDEA-0.1.33-1.x86_64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v0.1.33/OpenIDEA-0.1.33-1.x86_64.rpm
 	source = LICENSE
-	sha256sums = ddafddcdd4271fc31fabeaefe619b281eaa3515c5788a2dbb77b345fdb344643
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = OpenIDEA-0.1.35-1.x86_64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v0.1.35/OpenIDEA-0.1.35-1.x86_64.rpm
+	sha256sums_x86_64 = fbf2f5ff1a52abaf1705a03e8dd93043d3d65c0991757934971cb1cf67f13193
+	source_aarch64 = OpenIDEA-0.1.35-1.aarch64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v0.1.35/OpenIDEA-0.1.35-1.aarch64.rpm
+	sha256sums_aarch64 = 1625500b652b99682becf6c9587946b05fa09a58229ed4877d5c99700db22c30
 
 pkgname = openidea-bin
