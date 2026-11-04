@@ -6,7 +6,7 @@ _appname=${_pkgname%-cli}
 pkgname=${_pkgname}-bin
 pkgdesc="Semantic CLI tool for process management. Target by port, PID, name or path."
 
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,9 +29,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('c7f9eb97a593a88e42431614564bf73d3b2177ffbc959a63cfe62856b4a10d1e'
-            '43b9bf79de8d1a9d304313b8da9a328d85c7a68beafadbdaa1cdf587001c0f18')
-sha256sums_x86_64=('988a768507474284c04b93c0af7091cded972507d91b816903a52db9c1f9c57a')
-sha256sums_aarch64=('bcd62a45d61245ebacca5cbd6b3663e7823a5912798ba153f52c71373c089b15')
+            '75e6bb1484259e2d740049e5f3bc868f6b9ee4adc68d357dc9818c2c3c1d07da')
+sha256sums_x86_64=('34b0d1f8ae19a8bdd7dce03d0dd3ebcc595c06e2242c7a39fcac462eaff36395')
+sha256sums_aarch64=('fa5fb2fd56ecea059979a3095360354342fe12a9c6d1208b485978b3406293e3')
 
 
 case ${CARCH} in
