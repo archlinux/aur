@@ -1,6 +1,6 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 pkgname=madlions-control-git
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita configuration tool for MADLIONS magnetic-switch keyboards (git)"
 arch=('any')
@@ -17,8 +17,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   local base
-  base=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//') || base=0.1.1
-  printf '%s.r%s.g%s' "${base:-0.1.1}" \
+  base=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//') || base=0.2.0
+  printf '%s.r%s.g%s' "${base:-0.2.0}" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
