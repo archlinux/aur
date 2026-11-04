@@ -1,6 +1,6 @@
 # Maintainer: Jordon de Hoog <jordon.dehoog@gmail.com>
 pkgname=dfdu
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Disk usage browser for the terminal"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7dc3dc63986ae0cc24fd098158417bd7e878a0beeec3e2b834cc026753294da2')
+sha256sums=('6acb45a1a278c93de8ce2f5c5c70a0188d84a6c03c298b8dbb3d56127ae76306')
 
 prepare() {
     cd "$pkgname-$pkgver"
