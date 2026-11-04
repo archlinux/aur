@@ -1,0 +1,21 @@
+From 677b492b9b0cfea61bbcae6eea68c8ecb2d7306a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=A9bastien=20Alix?= <seb@usr-src.org>
+Date: Sun, 26 Apr 2026 10:15:50 +0200
+Subject: [PATCH] [FIX] Fix and update Sphinx documentation
+
+Trimmed to the odoorpc/models.py hunk, the rest does not apply to the 0.10.1 sdist.
+
+---
+diff --git a/odoorpc/models.py b/odoorpc/models.py
+index 6218ba8..3c515ba 100644
+--- a/odoorpc/models.py
++++ b/odoorpc/models.py
+@@ -61,6 +61,8 @@ def rpc_method(*args, **kwargs):
+         return rpc_method
+ 
+     def __repr__(cls):
++        if not hasattr(cls, "_name"):
++            return super().__repr__()
+         return "Model(%r)" % (cls._name)
+ 
+     @property
