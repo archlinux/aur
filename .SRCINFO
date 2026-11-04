@@ -1,0 +1,17 @@
+pkgbase = noir-audit-bin
+	pkgdesc = Desktop Android privacy audit TUI: audits app permissions, reporting endpoints and data flows over adb, with reversible fixes (prebuilt binary)
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/Verlintas/NOIR
+	arch = x86_64
+	license = MIT
+	depends = android-tools
+	optdepends = jadx: decompile single APKs for deep analysis
+	provides = noir-audit
+	options = !strip
+	source = LICENSE::https://raw.githubusercontent.com/Verlintas/NOIR/v0.2.6/LICENSE
+	sha256sums = 5cff0504757e04b6c4cf1aed536a2618ac0f3df2c8f3365a67fbf12630bad7f4
+	source_x86_64 = noir-audit-bin-0.2.6.zip::https://github.com/Verlintas/NOIR/releases/download/v0.2.6/noir-v0.2.6-Linux-portable.zip
+	sha256sums_x86_64 = e2c54d6584276913d2d0ebc042fcc3ad0e5da1bd46ac061cc4b2ebe595d85a4f
+
+pkgname = noir-audit-bin
