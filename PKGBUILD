@@ -2,7 +2,7 @@
 
 _pkgname=metacubexd-desktop
 pkgname=${_pkgname}-electron
-pkgver=1.274.3
+pkgver=1.274.4
 pkgrel=1
 pkgdesc="MetaCubeXD official desktop client (system-wide Electron and Mihomo)"
 arch=('any')
@@ -22,7 +22,7 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
-b2sums=('72c852ae4f71c4c970cb1d92c1ce493f5b1af5c53b98176f97b68c205601617136e02d29d044f8532e921a0e6bfc7a1ed5cdea33e7a347c13ef76e90c01809e5'
+b2sums=('d874ca781ba144d13959cf6801abff25d58af5d333d08e6cf50245091f04020e07facef3e069a05e7f80fad0c67914f7ef7bda27f563e9bc3fdeaf1d80668e64'
         '32fc7f1255170819e175875d25566a27e4b3655b90ee6fd01c97259e1297e4eea722fd9cfc97bc43837618b1e99ddf46ee160bb1da207766674335497dd5feaa')
 
 prepare() {
