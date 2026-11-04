@@ -2,8 +2,8 @@
 
 _name=photon
 pkgname="$_name-lemmy"
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.4.3
+pkgrel=1
 pkgdesc='An alternative front end for Lemmy'
 arch=('any')
 url="https://github.com/Xyphyn/$_name"
