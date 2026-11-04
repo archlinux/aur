@@ -1,7 +1,7 @@
 # Maintainer:
 # Contributor: Arnaud DURAND <durandarnaud44@free.fr>, Gwendal Beaumont, Tsokar
 pkgname=tchap-desktop
-pkgver=4.21.5
+pkgver=4.23.0
 pkgrel=1
 pkgdesc="Desktop app for Tchap."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/tchap-${pkgver}/Tchap-prod_${pkgver}_amd64.deb")
-sha256sums_x86_64=('0f8e17ab773b47347f754e317a4a18593ae69551c9d7928da616d70b85d90a18')
+sha256sums_x86_64=('0f79ac9a9f245b992d2d548ceeba33494627471afefea86e9600be4d5977bce5')
 package() {
   # Extract package data
   tar -xvf data.tar.gz -C "${pkgdir}"
