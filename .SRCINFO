@@ -1,6 +1,6 @@
 pkgbase = stormchecker
 	pkgdesc = A modern probabilistic model checker
-	pkgver = 1.14.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://www.stormchecker.org
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = stormchecker
 	optdepends = soplex: additional LP solver,
 	optdepends = spot: support for LTL formulas
 	conflicts = stormchecker-git
-	source = storm-1.14.0.tar.gz::https://github.com/stormchecker/storm/archive/1.14.0.tar.gz
-	sha256sums = ab5d7df2049ab683c3062f58d4201f960f8295bb9c702a2352305b7c7c597010
+	source = storm-2.0.0.tar.gz::https://github.com/stormchecker/storm/archive/2.0.0.tar.gz
+	sha256sums = 60f0df72032331bd5284038b7a30ee3c003cbff672eda74cf302a0ee28164f00
 
 pkgname = stormchecker

@@ -1,7 +1,7 @@
 # Maintainer: Matthias Volk <m.volk at tue dot nl>
 # Contributor: Sascha Wunderlich <archlinux at saschawunderlich dot de>
 pkgname=stormchecker
-pkgver=1.14.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A modern probabilistic model checker"
 arch=(i686 x86_64 aarch64)
@@ -20,7 +20,7 @@ provides=()
 conflicts=(stormchecker-git)
 replaces=()
 source=("storm-$pkgver.tar.gz::https://github.com/stormchecker/storm/archive/$pkgver.tar.gz")
-sha256sums=('ab5d7df2049ab683c3062f58d4201f960f8295bb9c702a2352305b7c7c597010')
+sha256sums=('60f0df72032331bd5284038b7a30ee3c003cbff672eda74cf302a0ee28164f00')
 
 build() {
 	mkdir -p "storm-$pkgver/build"
