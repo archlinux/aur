@@ -1,5 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 # Rendered by .github/workflows/aur-git.yml (or scripts/render-pkgbuild.sh).
+# This is a VCS package: the source moves with main, so the checksum must be
+# SKIP. Use the `rawm-control` package for a pinned release tarball + SHA-256.
 pkgname=rawm-control-git
 pkgver=0.1.10
 pkgrel=1
