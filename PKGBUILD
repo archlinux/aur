@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=herdr-corral-bin
 _pkgname=herdr-corral
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="VS Code-style terminal workbench plugin for Herdr (Explorer / SCM / GitHub)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ optdepends=(
 provides=('corral' 'herdr-corral')
 conflicts=('corral' 'herdr-corral' 'herdr-corral-git')
 options=(!strip)
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.10/herdr-corral-0.1.10-x86_64.tar.xz")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.10/herdr-corral-0.1.10-aarch64.tar.xz")
-sha256sums_x86_64=('206284049c8bd65a451019dfe977261be36eb63192906b9e7f1a9a2497fc88fa')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.11/herdr-corral-0.1.11-x86_64.tar.xz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.11/herdr-corral-0.1.11-aarch64.tar.xz")
+sha256sums_x86_64=('11ca374310059fae607250dae340aef797b36ab8dfbd0937cf02aa8c63297771')
 sha256sums_aarch64=('SKIP')
 
 package() {
