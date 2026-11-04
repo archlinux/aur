@@ -9,13 +9,13 @@
 
 pkgname=xdg-desktop-portal-halley
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Native xdg-desktop-portal ScreenCast and Screenshot backend for the Halley compositor"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/halley"
 license=('GPL-3.0-only')
 depends=('pipewire' 'xdg-desktop-portal' 'mesa' 'libdrm')
-makedepends=('cargo' 'rust' 'pkgconf')
+makedepends=('cargo' 'rust' 'pkgconf' 'clang')
 optdepends=('halley: the Halley compositor this portal backend captures from')
 options=('!debug' '!lto')
 # Halley v0.9.1 contains halley-portal v0.3.0.
