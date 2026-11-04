@@ -6,10 +6,11 @@ pkgver=2.1.2
 pkgrel=1
 pkgdesc="Simulator for developing Zepp OS mini programs and watchfaces"
 arch=('x86_64')
-url="https://zeppos.com/developer/simulator/"
-# Proprietary Zepp EULA, which upstream does not ship in the .deb - only the
-# Electron and Chromium notices are there, and those are what land in
-# /usr/share/licenses. Terms live at the url above.
+url="https://docs.zepp.com/docs/guides/tools/simulator/"
+# Upstream publishes no license for the app: the .deb's control file says
+# "License: unknown", and only the Electron and Chromium notices are inside,
+# which are what land in /usr/share/licenses. The Apache-2.0 LICENSE.txt in
+# zeppos-docs covers the docs, not this binary.
 license=('LicenseRef-custom')
 options=('!strip' '!debug')
 
@@ -28,7 +29,7 @@ depends=(
   # dlopened by name, so they have no NEEDED entry to be found by
   'libnotify' 'libsecret' 'xdg-utils'
 )
-optdepends=('libappindicator-gtk3: tray icon support')
+optdepends=('libappindicator: tray icon support')
 
 # Upstream files every build under the date it was published, so the directory
 # changes with each release. The download table is rendered client side at
