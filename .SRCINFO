@@ -1,7 +1,7 @@
 pkgbase = onon
 	pkgdesc = A quiet reader for the keyboard, built on MuPDF and configured with Lua
-	pkgver = 0.11.3
-	pkgrel = 1
+	pkgver = 0.13.3
+	pkgrel = 2
 	url = https://github.com/Aethar01/onon
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = onon
 	depends = libmupdf
 	depends = gtk3
 	conflicts = onon-git
-	source = onon-0.11.3.tar.gz::https://github.com/Aethar01/onon/archive/refs/tags/0.11.3.tar.gz
-	sha256sums = b890a1a4ea026777633aea072e0ff880f7599e727e4a32d76574fdd3c4706bf5
+	source = onon-0.13.3.tar.gz::https://github.com/Aethar01/onon/archive/refs/tags/0.13.3.tar.gz
+	sha256sums = 6dada335aaea99e54394bd4daa58cc919149880fad3be912c97934b8dfdfe6ce
 
 pkgname = onon
