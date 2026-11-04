@@ -2,8 +2,8 @@
 
 pkgname=kosmozoo-git
 _release_ver=0.2.2.r0
-pkgver=0.2.2.r0.g79ef2d4
-pkgrel=2
+pkgver=0.3.0.r1.g17d8978
+pkgrel=3
 pkgdesc="Local review and curation app for ComfyUI image output"
 arch=('x86_64')
 url="https://github.com/alexindigo/kosmozoo"
@@ -34,15 +34,16 @@ pkgver() {
 build() {
   cd "$pkgname"
   export DENO_DIR="$srcdir/deno-dir" DENO_NO_UPDATE_CHECK=1 DENO_SQLITE_PATH=/usr/lib/libsqlite3.so
-  deno cache --frozen src/main.mjs src/cli.mjs build.mjs plugins/*/plugin.mjs
-  deno run --frozen --allow-all build.mjs
+  deno task deps
+  deno run --frozen --cached-only --allow-all build.mjs
   deno task --frozen-lockfile setup
 }
 package() {
   cd "$pkgname"; local app="$pkgdir/usr/lib/kosmozoo"
   install -d "$app/plugins"
-  cp -a src client client-solid-dist deno.json deno.lock VERSION "$app/"
-  install -d "$app/packaging/linux"; cp -a packaging/linux/resources "$app/packaging/linux/"
+  cp -a src client client-solid-dist deno.json deno.lock VERSION LICENSE LICENSE.GPL "$app/"
+  install -Dm644 docs/executable.md "$app/docs/executable.md"
+  install -d "$app/packaging/linux"; cp -a packaging/linux/resources packaging/linux/PUBLICATION.md packaging/linux/LICENSING.md "$app/packaging/linux/"
   for p in hello difference detector critic; do install -Dm644 plugins/$p/*.mjs -t "$app/plugins/$p/"; done
   cp -a "$srcdir/deno-dir" "$app/deno-dir"
   local revision; revision=$(git -C "$srcdir/$pkgname" rev-parse HEAD)

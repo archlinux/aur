@@ -1,7 +1,7 @@
 pkgbase = kosmozoo-git
 	pkgdesc = Local review and curation app for ComfyUI image output
-	pkgver = 0.2.2.r0.g79ef2d4
-	pkgrel = 2
+	pkgver = 0.3.0.r1.g17d8978
+	pkgrel = 3
 	url = https://github.com/alexindigo/kosmozoo
 	install = kosmozoo.install
 	arch = x86_64
