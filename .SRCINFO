@@ -1,0 +1,20 @@
+pkgbase = gtkittorrent
+	pkgdesc = Modern GTK4 and Libadwaita frontend for qBittorrent
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/BenBJD/gtkittorrent
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-qbittorrent-api
+	optdepends = qbittorrent-nox: Recommended headless qBittorrent for local instances
+	optdepends = qbittorrent: Desktop application fallback for local instances
+	source = gtkittorrent-0.1.2.tar.gz::https://github.com/BenBJD/gtkittorrent/archive/v0.1.2.tar.gz
+	sha256sums = 41fdf567a1ad2b1a4db5b85685137ad6e0db41c61e7911a99524e051063e1d4a
+
+pkgname = gtkittorrent
