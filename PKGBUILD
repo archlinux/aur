@@ -67,7 +67,6 @@ package() {
 
     # Create symbolic links because SonarQube expects a specific directory layout.
     ln -s "/var/log/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/logs"
-    ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/run"
     ln -s "/etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/conf"
     rm -rf "${pkgdir}/usr/share/webapps/${_pkgname}/temp"
     ln -s "/var/lib/${_pkgname}/temp" "${pkgdir}/usr/share/webapps/${_pkgname}/temp"
