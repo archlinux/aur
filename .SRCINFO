@@ -1,6 +1,6 @@
 pkgbase = linux-trackpad-driver-bin
 	pkgdesc = Extensible userspace Linux driver for enhanced trackpad functionality, currently supporting Apple Magic Trackpad 2 — prebuilt binary
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 2
 	url = https://github.com/aaronroquefonseca/linux-trackpad-driver
 	install = ltd.install
@@ -16,9 +16,9 @@ pkgbase = linux-trackpad-driver-bin
 	conflicts = linux-trackpad-driver
 	conflicts = linux-trackpad-driver-git
 	backup = etc/linux-trackpad-driver/config.toml
-	source_x86_64 = https://github.com/aaronroquefonseca/linux-trackpad-driver/releases/download/v0.1.3/linux-trackpad-driver-v0.1.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 69e0a96e8f2ca50c9e39ac1f0c6b8928635543931e3def35e4e47eaff869e599
-	source_aarch64 = https://github.com/aaronroquefonseca/linux-trackpad-driver/releases/download/v0.1.3/linux-trackpad-driver-v0.1.3-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c6a669e16bd94ce024d53d776934a4146a74b48d587c123025bb21d64ea4d7f6
+	source_x86_64 = https://github.com/aaronroquefonseca/linux-trackpad-driver/releases/download/v0.1.4/linux-trackpad-driver-v0.1.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b8dd169b52ade16d3e2928ba366fd8aa7e3eb8418b9803ba657064a5cc8e77fe
+	source_aarch64 = https://github.com/aaronroquefonseca/linux-trackpad-driver/releases/download/v0.1.4/linux-trackpad-driver-v0.1.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 385389ecb50ad193cd3674843c1c84a560e931ebd5de8c0c95d2a7fe9d9ba28f
 
 pkgname = linux-trackpad-driver-bin
