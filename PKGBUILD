@@ -2,7 +2,7 @@
 pkgname=mpv-modernx
 _pkgname=ModernX
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of modernX (based on mpv-osc-modern), that aims to mirror the functionality of MPV's stock OSC while with a more modern-looking interface."
 arch=('any')
 url="https://github.com/zydezu/ModernX"
@@ -14,7 +14,7 @@ optdepends=(
   'mpv-thumbfast-git: for thumbnails'
 )
 conflicts=("${pkgname}-git")
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/zydezu/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/zydezu/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {

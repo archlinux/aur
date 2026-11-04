@@ -1,7 +1,7 @@
 pkgbase = mpv-modernx
 	pkgdesc = A fork of modernX (based on mpv-osc-modern), that aims to mirror the functionality of MPV's stock OSC while with a more modern-looking interface.
 	pkgver = 0.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zydezu/ModernX
 	arch = any
 	license = unknown
@@ -10,7 +10,7 @@ pkgbase = mpv-modernx
 	optdepends = ffmpeg: for downloading videos
 	optdepends = mpv-thumbfast-git: for thumbnails
 	conflicts = mpv-modernx-git
-	source = ModernX-0.4.8.tar.gz::https://github.com/zydezu/ModernX/archive/refs/tags/0.4.8.tar.gz
+	source = ModernX-0.4.8.tar.gz::https://github.com/zydezu/ModernX/archive/refs/tags/v0.4.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = mpv-modernx
