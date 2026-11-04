@@ -1,0 +1,14 @@
+pkgbase = bawue-fonts
+	pkgdesc = BaWue-FontFamily
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://design.landbw.de/corporate-design/basiselemente/typografie
+	arch = any
+	license = unknown
+	makedepends = unzip
+	source = BaWue.zip
+	sha256sums = SKIP
+
+pkgname = ttf-bawue
+
+pkgname = otf-bawue
