@@ -1,18 +1,19 @@
 # Maintainer: Nasir A. <NasirA1991@users.noreply.github.com>
 pkgname=gsp370-tray
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
-pkgdesc='Tiny StatusNotifierItem tray for the Sennheiser/EPOS GSP 370 (battery and sidetone)'
+pkgdesc='Tray and Plasma widget for the Sennheiser/EPOS GSP 370 (battery and sidetone)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/NasirA1991/gsp370-tray'
 license=('MIT')
 depends=('dbus' 'gcc-libs' 'glibc')
 makedepends=('rust')
-optdepends=('libnotify: low-battery notifications')
+optdepends=('libnotify: low-battery notifications'
+            'plasma-workspace: KDE Plasma panel widget')
 options=('!debug')
 install=gsp370-tray.install
 source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('f109fb815d7d1809209b1f4196eb4713d1aa51ad9f88389e79b44ec52f161593')
+sha256sums=('1a4ed37df30f08e3253eea566cbef3b8bde4feb467ebeba675ef04660d932552')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -41,4 +42,7 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 docs/protocol.md "$pkgdir/usr/share/doc/$pkgname/docs/protocol.md"
     install -Dm644 docs/tray-icon.png "$pkgdir/usr/share/doc/$pkgname/docs/tray-icon.png"
+    install -d "$pkgdir/usr/share/plasma/plasmoids/org.nasir.gsp370battery"
+    cp -a packaging/plasmoid/gsp370battery/. \
+        "$pkgdir/usr/share/plasma/plasmoids/org.nasir.gsp370battery/"
 }
