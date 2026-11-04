@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=ampcode
-pkgver=0.0.1793808035_gb6dfb9
+pkgver=0.0.1793822441_g8e158a
 pkgrel=1
 pkgdesc="Amp CLI — Sourcegraph's agentic coding tool"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ _amp_ver=${pkgver//_/-}
 source=("${pkgname}-${pkgver}-npm.tgz::https://registry.npmjs.org/@sourcegraph/amp/-/amp-${_amp_ver}.tgz")
 source_x86_64=("${pkgname}-${pkgver}-x64::https://static.ampcode.com/cli/${_amp_ver}/amp-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-arm64::https://static.ampcode.com/cli/${_amp_ver}/amp-linux-arm64")
-sha256sums=('6417c2cdbd5e00b40eccc304d60d9f5e065ff6bfca218a47e3b8b05dd448f65e')
-sha256sums_x86_64=('3d50dc23d5434e61bde333bcb7ff399c5763090f9b21004c01ad4eea3c769d40')
-sha256sums_aarch64=('312c35b9026d0cce433caa8c8c9397562a97623979c35889eef145a1ee95435e')
+sha256sums=('46ec81879bb8dfc597e18771367d819a44dfdf163d3aa558fa7bc61c5e304e74')
+sha256sums_x86_64=('c25cf7ed5d3bff6f62aa83b9b0d26f18d7b40bc7657d9286a2f8315985b5abe9')
+sha256sums_aarch64=('6b9bd0ce18d4661d2bcefa26ddacf52e0174c35e4c0017482b77a9effec7f2e2')
 
 latestver() {
     curl -fsS https://static.ampcode.com/cli/cli-version.txt | tr '-' '_'
