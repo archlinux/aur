@@ -1,0 +1,15 @@
+pkgbase = lunadash-shell
+	pkgdesc = LunaDash session shell (panel, dock, launcher, dashboard) written in Slint and run by SlintLu
+	pkgver = 0.r14.g61c97b8
+	pkgrel = 1
+	url = https://github.com/LunaDashWM/LunaDash-Shell
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = slintlu
+	makedepends = bash
+	depends = slintlu
+	depends = sh
+	source = lunadash-shell-61c97b8ff279f0b597d2eac683c10cd78b98240b.tar.gz::https://github.com/LunaDashWM/LunaDash-Shell/archive/61c97b8ff279f0b597d2eac683c10cd78b98240b.tar.gz
+	sha256sums = ffe6672240b79357dbeaef805b76d228525fdb3b2bf431b9db75b5c780369bb6
+
+pkgname = lunadash-shell
