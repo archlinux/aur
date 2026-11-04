@@ -1,10 +1,10 @@
 # Maintainer: Joachim Klahr <klahr@r8.rs>
 pkgname=quadrate
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Stack-based programming language that compiles to native code via LLVM"
 arch=('x86_64')
-url="https://git.sr.ht/~klahr/quadrate"
+url="https://github.com/quadrate-language/quadrate"
 license=('GPL-3.0-or-later')
 depends=('llvm-libs' 'jansson' 'openssl')
 makedepends=('meson' 'ninja' 'clang' 'llvm' 'git')
@@ -13,8 +13,8 @@ optdepends=(
     'python: for LSP server'
 )
 options=('!debug' '!lto')
-_gittag=0.5.0
-source=("$pkgname-$pkgver::git+https://git.sr.ht/~klahr/quadrate#tag=$_gittag")
+_gittag=0.7.0
+source=("$pkgname-$pkgver::git+https://github.com/quadrate-language/quadrate.git#tag=$_gittag")
 sha256sums=('SKIP')
 
 build() {
