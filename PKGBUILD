@@ -4,9 +4,9 @@
 # before verification, build and publication. Historical bootstrap placeholders
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.10.4
+pkgver=0.11.1
 pkgrel=1
-_commit=e1dba96a46db416a47ef4540981ceb8cd530e10c
+_commit=399e618d1b0a86375f9eb9a777ecf2dc57a55ba6
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
 url="https://automation.izoone.com/releases/sway-session"
@@ -14,14 +14,16 @@ license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.10')
 options=('!debug')
-source=("sway-session-$pkgver.tar.gz::$url/v$pkgver/sway-session-e1dba96a46db416a47ef4540981ceb8cd530e10c.tar.gz")
-sha256sums=('8febd4f503a54dae18c9a440336416c9f828a52ba89ec6b438eb3183d69d3a1b')
+source=("sway-session-$pkgver.tar.gz::$url/v$pkgver/sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6.tar.gz")
+sha256sums=('cf6cd82ddde4dcfca656d3a25d5ce5ce537270f72cd75662f92524d1052e6411')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
-_go_ldflags=(-s -w -buildid= -X "main.version=$pkgver" -X "main.commit=$_commit" -X "main.modified=false" -X "github.com/marang/sway-session/internal/buildmetadata.Stamp=sway-session-build-v1|$pkgver|$_commit|false|end-sway-session-build-v1")
+# This historical source uses the old module; release preparation rebinds the
+# stamp symbol to the selected release source's module.
+_go_ldflags=(-s -w -buildid= -X "main.version=$pkgver" -X "main.commit=$_commit" -X "main.modified=false" -X "go.izoone.com/sway-session/internal/buildmetadata.Stamp=sway-session-build-v1|$pkgver|$_commit|false|end-sway-session-build-v1")
 
 build() {
-  cd "sway-session-e1dba96a46db416a47ef4540981ceb8cd530e10c"
+  cd "sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -30,7 +32,7 @@ build() {
 }
 
 check() {
-  cd "sway-session-e1dba96a46db416a47ef4540981ceb8cd530e10c"
+  cd "sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6"
   export GOCACHE="$srcdir/go-build"
   export GOMODCACHE="$srcdir/go-mod"
   export GOTOOLCHAIN=local
@@ -39,7 +41,7 @@ check() {
 }
 
 package() {
-  cd "sway-session-e1dba96a46db416a47ef4540981ceb8cd530e10c"
+  cd "sway-session-399e618d1b0a86375f9eb9a777ecf2dc57a55ba6"
   install -Dm755 sway-session "$pkgdir/usr/bin/sway-session"
   install -Dm644 contrib/completions/bash/sway-session "$pkgdir/usr/share/bash-completion/completions/sway-session"
   install -Dm644 contrib/completions/zsh/_sway-session "$pkgdir/usr/share/zsh/site-functions/_sway-session"
