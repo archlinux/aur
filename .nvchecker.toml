@@ -1,0 +1,5 @@
+[steamvr-linux-fixes-layer-bin]
+source = "github"
+github = "BnuuySolutions/SteamVRLinuxFixes"
+use_latest_release = true
+prefix = "v"
