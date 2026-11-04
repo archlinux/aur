@@ -1,23 +1,20 @@
 pkgbase = rayshot-git
 	pkgdesc = Fast screenshot and annotation tool for Linux (GNOME/Wayland)
-	pkgver = r1
+	pkgver = 0.2.0.r0.ga2fd7db
 	pkgrel = 1
 	url = https://github.com/paranoica/rayshot
 	install = rayshot.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = clang
+	makedepends = glib2
 	makedepends = git
-	depends = pipewire
 	depends = wl-clipboard
 	depends = xdg-desktop-portal
 	depends = vulkan-icd-loader
-	optdepends = xdg-desktop-portal-gnome: GNOME portal backend, daemon and hotkey support
-	optdepends = glib2: gsettings, required for automatic GNOME hotkey setup
+	optdepends = gnome-shell: instant capture and the Print hotkey through the bundled extension
 	provides = rayshot
 	conflicts = rayshot
-	options = !lto
 	source = rayshot::git+https://github.com/paranoica/rayshot.git
 	sha256sums = SKIP
 
