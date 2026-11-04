@@ -1,0 +1,10 @@
+# Downloaded upstream files and makepkg artifacts
+/*.deb
+/EULA.pdf
+/*.pkg.tar.*
+/*.src.tar.*
+/src/
+/pkg/
+/.inspection/
+/.aur-publish/
+/*.log
