@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
-	pkgver = 153.6.0.101
-	pkgrel = 3
+	pkgver = 153.6.0.102
+	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	arch = x86_64
@@ -80,29 +80,29 @@ pkgbase = konform-browser
 	optdepends = firefox-noscript: Selectively enable javascript on pages
 	optdepends = firefox-decentraleyes: Local emulation of Content Delivery Networks
 	provides = konform-browser
-	noextract = security-state--intermediates-153.6.0.101.zip
+	noextract = security-state--intermediates-153.6.0.102.zip
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	backup = usr/lib/konform/librewolf.cfg
 	backup = usr/lib/konform/distribution/policies.json
-	source = src::git+https://codeberg.org/konform-browser/source.git#tag=153.6.0.101
+	source = src::git+https://codeberg.org/konform-browser/source.git#tag=153.6.0.102
 	source = firefox-153.6.0esr-2.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/153.6.0esr-candidates/build2/source/firefox-153.6.0esr.source.tar.xz
 	source = firefox-153.6.0esr-2.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/153.6.0esr-candidates/build2/source/firefox-153.6.0esr.source.tar.xz.asc
 	source = firefox-l10n-1e95d1c5f519c3fbde715345ae7beb56a2c79077.tar.gz::https://github.com/mozilla-l10n/firefox-l10n/archive/1e95d1c5f519c3fbde715345ae7beb56a2c79077.tar.gz
 	source = konform.desktop
 	source = default192x192.png
 	source = entrypoint.sh
-	source = security-state--intermediates-153.6.0.101.zip::https://codeberg.org/konform-browser/source/releases/download/153.6.0.101/security-state--intermediates.zip
+	source = security-state--intermediates-153.6.0.102.zip::https://codeberg.org/konform-browser/source/releases/download/153.6.0.102/security-state--intermediates.zip
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 6cc2d4299596e589a2f63961a413b1ec33a7f9f22b0ae97ed6532b0250f5b6de
+	sha256sums = 974b0b1ee4d069449e829aa92d0ec9b28e2e345b436a02c55c17d830de9a9909
 	sha256sums = 91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25
 	sha256sums = SKIP
 	sha256sums = 5cda6675c1d51c6b16395a6be861f980968ed884a404d68d465e8fea87009ef5
 	sha256sums = 68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4
 	sha256sums = b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b
 	sha256sums = c683b93bcb843da6de51ee49dd163c6eb9889f27988357aba3ca8766abd76f2e
-	sha256sums = 35f7aa8e133eb1afaba6ace59d516d3b60e66fe20e7adc90eb31c522737fc03f
+	sha256sums = ae8968444be8a77b69f219cd6b35eded970010727fef812820df19f254b860ad
 
 pkgname = konform-browser
