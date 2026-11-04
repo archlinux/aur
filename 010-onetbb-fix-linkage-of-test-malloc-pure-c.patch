@@ -1,6 +1,6 @@
 --- a/test/CMakeLists.txt
 +++ b/test/CMakeLists.txt
-@@ -671,6 +671,7 @@ if (TARGET TBB::tbbmalloc)
+@@ -743,6 +743,7 @@ if (TARGET TBB::tbbmalloc)
  
              enable_language(C)
              tbb_add_c_test(SUBDIR tbbmalloc NAME test_malloc_pure_c DEPENDENCIES TBB::tbbmalloc)

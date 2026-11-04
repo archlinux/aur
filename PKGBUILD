@@ -9,7 +9,7 @@
 _Name="oneTBB"
 _name="${_Name,,}"
 pkgname="lib32-$_name"
-pkgver=2023.1.0
+pkgver=2023.2.0
 pkgrel=1
 pkgdesc="oneAPI Threading Building Blocks - a high level abstract threading library (32-bit)"
 arch=('x86_64')
@@ -34,14 +34,18 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   '010-onetbb-fix-linkage-of-test-malloc-pure-c.patch'
+  '020-onetbb-fix-python-test.patch'::'https://github.com/uxlfoundation/oneTBB/commit/518d57b48adb48fec3aaf18b931d11d868ec646b.patch'
 )
-b2sums=('78d91cc0eb6bd6d1d06cde1902a1d6c335a30f0ddc0a4976bc4878a31d037c645238774f68ee40be86b55b6d2f17621cd79786e0e0acc58c0ac78c451a44b211'
-        '98e8087a3dff8487428a3f7761339f96a385725b09134c5fcaf3400c7386e5c62eb93bd40340f3a48cc5825b80f79dc954c61e4951f081d5bf6e26353b1f399b')
+b2sums=('786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce'
+        '466914a40d09c83ec6f52dbabf1db67313d4eed8aa4c7e77305b0bdc5b61cf0aac527d064825570381121b4082584bd0b59bf92f447f5f44ba79b2b2670191f4'
+        '772ddee5447f03bacc5e6e1d1e0d33e3866dada50b210fd5dd578c09a995d0d41654f7d556e5ac1e246f5037c3ede6ea836e63609f0b54d997d46fead0a15094')
 
 prepare() {
   # https://github.com/uxlfoundation/oneTBB/issues/1735
   # https://gitlab.archlinux.org/archlinux/packaging/packages/onetbb/-/merge_requests/2
   patch -Np1 -d "$srcdir/$_pkgsrc" -i "$srcdir/010-onetbb-fix-linkage-of-test-malloc-pure-c.patch"
+
+  patch -Np1 -d "$srcdir/$_pkgsrc" -i "$srcdir/020-onetbb-fix-python-test.patch"
 }
 
 build() {
@@ -57,6 +61,7 @@ build() {
     -D CMAKE_INSTALL_LIBDIR:PATH='lib32'
     -D TBB_STRICT:BOOL=OFF
     -D TBB4PY_BUILD:BOOL=OFF
+    -D TCM_STRICT:BOOL=OFF
   )
 
   cmake -B "$_pkgsrc/build" -S "$_pkgsrc" "${cmake_options[@]}"
