@@ -3,7 +3,7 @@
 _pkgauthor=jmelahman
 _pkgname=pkglint
 pkgname=${_pkgname}-bin
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='Linter for Arch Linux PKGBUILDs'
 
@@ -20,8 +20,8 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d6320b5d61943372e939a010229a1ed02443b85af2c68d4b28557b0ccf51048e')
-sha256sums_aarch64=('9c21db706e1a8ce75e01ac0f8aad8b65265a3e334b8b7a8ffaf8525d8367b39c')
+sha256sums_x86_64=('068fed3f5ca63274824b7824a6887b0e85e5853fc87976ffd2a68888f3d3fe8a')
+sha256sums_aarch64=('1c3d8e2d592f504e68b631367ae731464529f4a1bf50b48bb7de2d8d77f861eb')
 
 
 package() {
