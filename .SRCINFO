@@ -1,6 +1,6 @@
 pkgbase = room-arranger
 	pkgdesc = 3D room / apartment / floor planner with simple user interface.
-	pkgver = 11.2.3
+	pkgver = 11.3.0
 	pkgrel = 1
 	url = https://www.roomarranger.com
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = room-arranger
 	depends = openssl
 	options = !strip
 	options = !debug
-	source = https://f000.backblazeb2.com/file/rooarr/rooarr1123-linux64.tar.gz
+	source = https://f000.backblazeb2.com/file/rooarr/rooarr1130-linux64.tar.gz
 	source = rooarr_run.sh
 	source = roomarranger.desktop
-	sha512sums = 78bfbc83192d8873adfd6a2e359956c837d0130d73659546d552cd13bcd98340a934c39e91db407b713adcfd3b7e7c87b9899d96da79758cbe62a5f33ba2cd4f
+	sha512sums = a8623a61180b164afb1a3e1b5d0720fd2f52f3c6e042b61eb3c390d7984d095db1e2ce565830a12778eff5e791913c2f97581439dc25662633d5a56f40fab817
 	sha512sums = 4fb685442c7527ae8494cc700c6e06dd37cdf1e21d3beb1b2479e98840329b612ec8ffb2f6b5e8e43a7cfda57800b2aee2b8bf0e1608f5fb510f68558be19663
 	sha512sums = 73799a47527485f0b2102ee1eba33ad8e86bf3b269697588390064467323e4ed44fc49d8b6a18b113d0a62ddf81178e8b0dbca2f321d4c52016ee2d8afeb165d
 
