@@ -1,7 +1,7 @@
 # Maintainer: Bagas Sanjaya <bagasdotme@gmail.com>
 pkgname=kryoptic
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A PKCS #11 software token written in Rust"
 arch=('x86_64')
 url="https://github.com/latchset/kryoptic"

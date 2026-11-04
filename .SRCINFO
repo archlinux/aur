@@ -1,7 +1,7 @@
 pkgbase = kryoptic
 	pkgdesc = A PKCS #11 software token written in Rust
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/latchset/kryoptic
 	arch = x86_64
 	license = Apache-2.0
