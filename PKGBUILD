@@ -6,7 +6,7 @@
 # Contributor: Bart Ribbers <bribbers at disroot dot org>
 
 _pkgver_sys='20.0-20260927'
-_pkgver_vendor='20.0-20260927'
+_pkgver_vendor='20.0-20261022'
 _pkgver_images_vendor=$_pkgver_vendor
 _pkgver_images_vendor_x86=$_pkgver_vendor
 _pkgver_images_vendor_arm=$_pkgver_vendor
@@ -16,7 +16,7 @@ _pkgver_images_system_x86=$_pkgver_sys
 _pkgver_images_system_arm=$_pkgver_sys
 _pkgver_images_system_arm64=$_pkgver_sys
 pkgname=waydroid-image
-pkgver="${_pkgver_sys//-/.}"
+pkgver="${_pkgver_vendor//-/.}"
 pkgrel=1
 epoch=1
 pkgdesc="LineageOS-based Android images for Waydroid"
@@ -34,13 +34,13 @@ source_armv7h=("$_srcprefix/system/lineage/waydroid_arm/lineage-$_pkgver_images_
 source_aarch64=("$_srcprefix/system/lineage/waydroid_arm64/lineage-$_pkgver_images_system_arm64-VANILLA-waydroid_arm64-system.zip"
                 "$_srcprefix/vendor/waydroid_arm64/lineage-$_pkgver_images_vendor_arm64-MAINLINE-waydroid_arm64-vendor.zip")
 sha256sums_x86_64=('053552725bf4ae25e2d3f7e6f1947203294aa9d73dc17fe1f3abe646e5d3bd8a'
-                   'd911b8353f6c807b94790b1c41c67e863a9f3dcd1cf3ec0232351398235afd7a')
+                   '91663c337013145208b6c533d7e1fa2a915a9864ddc8fc56966f40cd759648ac')
 sha256sums_i686=('be42a16bc10ea14ce44e1fc67c046dd2d85171f03d135fd13fcddc6796951702'
-                 '99af2f69d5fd2c1f2d3830183f6de9689375833ac082e16cc5c9a94cd953990e')
+                 'fd5c3f915c74a1416ffe818415ab05b14a1e9f00314217078b357bb0fede7d3c')
 sha256sums_armv7h=('c36f1298165c572c803c0d76ed6086d37e7639dbb3d8bcec0f5e16984e494152'
-                   '335c710902148cf6f4edac5e7ab464f1af536deb460eb81facd31b9557cec1e7')
+                   'c3e903a28f5e42c48a6e9bd6af5f70d9762a635cdddde1608e10c2622e6a78d5')
 sha256sums_aarch64=('5fb8179ed4455f45919c5a2bfbfdd1591619295994ad321217f03bb1dcfc53a7'
-                    '20a49c11961a5ac7295320f578764eeab3c982b217f1bfde7473adfc22e747ae')
+                    '89d5fb9a5c977adcc9fc7755483d3762c397b9c8579524f9d1df052b51c83fb3')
 
 package() {
 	install -Dm644 {system,vendor}.img -t "$pkgdir/usr/share/waydroid-extra/images/"
