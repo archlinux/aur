@@ -2,7 +2,7 @@
 
 pkgname=bchd
 pkgver=0.22.4
-pkgrel=0
+pkgrel=1
 pkgdesc="BCHD is an alternative BCH implementation written in Go."
 arch=('i686' 'x86_64')
 url="http://github.com/gcash/bchd"
