@@ -1,0 +1,16 @@
+pkgbase = pele-git
+	pkgdesc = Fast, lightweight Mermaid renderer that outputs themeable SVG (Git version)
+	pkgver = 1.13.0.r0.g3a2f075
+	pkgrel = 1
+	url = https://github.com/obsidianmd/pele
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=20
+	provides = pele=1.13.0.r0.g3a2f075
+	conflicts = pele
+	source = pele::git+https://github.com/obsidianmd/pele.git#branch=main
+	sha256sums = SKIP
+
+pkgname = pele-git
