@@ -3,9 +3,9 @@
 _pkgname=firedragon
 __pkgname=$_pkgname-catppuccin
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.11.0
+_pkgver=13.11.1
 _branding=catppuccin
-_gentoo=firefox-159-patches-01.tar.xz
+_gentoo=firefox-159-patches-02.tar.xz
 _gentoo_exclude=(0014-bgo-940031-wasm-support-firefox-155.patch)
 
 pkgname=$__pkgname
@@ -84,8 +84,8 @@ install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('4e921dacd815421319df82f8a5c1e2104199065e1d2ce13526b30c7f3255b9ff'
-  'ffe58cc79c6439aa19cf52b245f2a7d730b27700c652319dc3a5a9d10d162df7')
+sha256sums=('bf7cbe1143f4d44e57ac0790e0044de7879f96366b48004e44e516fa3ec4a66d'
+  '4de62f581e1a580a077312a101979e8397c80a0c439a8897145bb9b430d0795c')
 
 prepare() {
   mkdir -p mozbuild
@@ -121,8 +121,9 @@ prepare() {
   corepack enable --install-directory "$srcdir"/.bin
 
   pushd browser/$_pkgname > /dev/null
-  corepack pnpm install --frozen-lockfile
-  corepack pnpm all:build
+  corepack install
+  pnpm install --frozen-lockfile
+  pnpm all:build
   popd > /dev/null
 
   cat >> ../mozconfig << END
