@@ -4,7 +4,7 @@
 pkgname=pg_sift
 pkgver=4.0.0
 pkgrel=1
-pkgdesc='CTID-bitmap full-text search index with BM25 ranking for PostgreSQL'
+pkgdesc='BM25 full-text search and fast aggregate analytics inside PostgreSQL, from one extension'
 arch=('x86_64')
 url='https://github.com/brauliobo/pg_sift'
 license=('PostgreSQL')
