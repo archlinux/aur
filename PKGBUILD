@@ -4,7 +4,7 @@
 # workflow sets pkgver and the checksum.
 
 pkgname=herakleo-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Desktop IPTV player for M3U lists and Xtream Codes (prebuilt)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('herakleo')
 conflicts=('herakleo' 'herakleo-wails')
 source=("$url/releases/download/v$pkgver/herakleo-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('d4b7c6a013fba221d666523bc3fe5f708219d4dcad321e5c8edaf053586f9df3')
+sha256sums=('34106ca8725d26b465bd45390db7712528e45600f3db178210a479b3034b347e')
 
 package() {
   cd "herakleo-$pkgver-linux-x86_64"
