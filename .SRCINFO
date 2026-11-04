@@ -1,6 +1,6 @@
 pkgbase = hornero-config
 	pkgdesc = HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)
-	pkgver = 0.3.17
+	pkgver = 0.3.18
 	pkgrel = 1
 	url = https://github.com/HorneroOS/config
 	install = hornero-config.install
@@ -11,6 +11,7 @@ pkgbase = hornero-config
 	makedepends = librsvg
 	depends = bash
 	depends = git
+	depends = polkit-gnome
 	depends = python
 	depends = python-materialyoucolor
 	optdepends = hyprland: compositor defaults under /etc/xdg/hypr
@@ -47,7 +48,7 @@ pkgbase = hornero-config
 	optdepends = thunar-volman: removable-media handling for Thunar
 	optdepends = nm-connection-editor: NetworkManager connection editor
 	backup = etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf
-	source = config::git+https://github.com/HorneroOS/config.git#commit=42cefcc6974fa5ad0900e0e4de4bd0de5dee3963
+	source = config::git+https://github.com/HorneroOS/config.git#commit=8754a454ac02a8aee49aac2856fbfdb0efb73f63
 	sha256sums = SKIP
 
 pkgname = hornero-config

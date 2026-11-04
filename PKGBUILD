@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hornero-config
-pkgver=0.3.17
+pkgver=0.3.18
 pkgrel=1
 pkgdesc="HorneroOS curated desktop defaults (compositor, terminal, GTK, fonts, XDG handlers)"
 arch=('any')
@@ -12,7 +12,12 @@ url="https://github.com/HorneroOS/config"
 license=('MIT' 'CC-BY-2.0' 'CC-BY-SA-4.0')
 # python-materialyoucolor: lib/hornero/generate-m3-colors.py (theme switching via
 # `horneroctl appearance scheme regenerate`); without it every theme set rolls back.
-depends=('bash' 'git' 'python' 'python-materialyoucolor')
+# polkit-gnome: both compositor configs autostart its authentication agent
+# (Hyprland autostart.lua, Niri spawn-at-startup); without it no agent is
+# registered and every pkexec flow fails with "No session for cookie"
+# (hornero#366). Hard dependency so existing installs gain the agent on the
+# next hornero-config update, not only fresh installs via the catalogue.
+depends=('bash' 'git' 'polkit-gnome' 'python' 'python-materialyoucolor')
 makedepends=('librsvg')
 optdepends=(
   'hyprland: compositor defaults under /etc/xdg/hypr'
@@ -54,7 +59,7 @@ optdepends=(
 # AUR chroot builds identical to local packaging/ builds.
 install=hornero-config.install
 backup=('etc/wireplumber/wireplumber.conf.d/51-hornero-bluetooth.conf')
-source=("config::git+https://github.com/HorneroOS/config.git#commit=42cefcc6974fa5ad0900e0e4de4bd0de5dee3963")
+source=("config::git+https://github.com/HorneroOS/config.git#commit=8754a454ac02a8aee49aac2856fbfdb0efb73f63")
 sha256sums=('SKIP')
 
 # Locate the checkout root both when building from a local clone
