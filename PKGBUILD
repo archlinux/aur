@@ -2,7 +2,7 @@
 
 _pkgname=vite-plus
 pkgname=${_pkgname}
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="The Unified Toolchain for the Web"
 arch=("x86_64" "aarch64")
@@ -21,8 +21,8 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/voidzero-dev/vite-plus/archive/refs/tags/v${pkgver}.tar.gz"
   "vite-plus-js-${pkgver}.tgz::https://registry.npmjs.org/vite-plus/-/vite-plus-${pkgver}.tgz"
 )
-sha256sums=('c1d15c0b059753878b47816329f275274dbf42f958a071e4ada79fa0f54c4152'
-  '52a980dbfc61a5a1b6083688232d6a28b223a6d87c500213f3c6702fe898753d')
+sha256sums=('1b0de3dc75ceecd073591b65f90479d18372aa8151089868a07baedc2d9c7ca7'
+            '2148b7f188e265e6cc05e534a0cd9165532bab9aa4ae6cfb480265b308839dc1')
 
 install=vite-plus.install
 
