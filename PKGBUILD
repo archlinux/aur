@@ -2,7 +2,7 @@
 
 _pkgname=snp2le
 pkgname=python-${_pkgname}
-pkgver=0.1.18
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="Convert Touchstone S-parameter files into lumped-elemt netlists for NGSpice and VACASK"
 arch=(any)
@@ -34,7 +34,7 @@ optdepends=(
     'vacask: SPICE simulator to simulate/verify results'
 )
 source=("${_pkgname}::git+${url}#tag=v${pkgver}")
-b2sums=('d80d6ca4d42804d7c59c1a0c8f961efbb8697324f84f549f09354fefcc83553d473ad48d1778a354b78ae9b70d63179a87e2bb400d199e6207fbda50d095a873')
+b2sums=('62c0439e66e0eba11f42dc767072ef1621adb7278529877da99c9ba3757743164b292857ea9258bf86136ca46f8db5d6c21e733bc1a71db6277664d8cfc4cdfa')
 
 build() {
     cd "${_pkgname}"
