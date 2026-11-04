@@ -1,6 +1,6 @@
 pkgbase = z13-tablet-kit
-	pkgdesc = Posture-aware tablet mode for the ASUS ROG Flow Z13 (GZ302) on KDE Plasma 6 / Wayland
-	pkgver = 1.0.4
+	pkgdesc = Posture-aware tablet mode for the 2025 ASUS ROG Flow Z13 (GZ302) 3-in-1 on KDE Plasma 6 / Wayland
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/aic0d3r/z13-tablet-kit
 	install = z13-tablet-kit.install
@@ -11,12 +11,13 @@ pkgbase = z13-tablet-kit
 	depends = qt6-tools
 	depends = glib2
 	depends = libkscreen
+	depends = kconfig
+	depends = plasma-keyboard
 	depends = z13ctl-plus-bin
-	optdepends = plasma-keyboard: on-screen keyboard in tablet posture
-	optdepends = maliit-keyboard: alternative on-screen keyboard
+	optdepends = maliit-keyboard: alternative on-screen keyboard in the session
 	optdepends = iio-sensor-proxy: Plasma auto-rotate
 	optdepends = z13gui-plus-bin: posture/health overlay and tablet settings
-	source = z13-tablet-kit-1.0.4.tar.gz::https://github.com/aic0d3r/z13-tablet-kit/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = 7486ed2a95f7aa844ce285df23cfcc0828ca6ab7298c73a7e36457e58f9d0eee
+	source = z13-tablet-kit-1.0.5.tar.gz::https://github.com/aic0d3r/z13-tablet-kit/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = b946edf34848acf3dbf717101b3a8d752a254e97182c622d8237056a65394c15
 
 pkgname = z13-tablet-kit
