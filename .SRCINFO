@@ -1,6 +1,6 @@
 pkgbase = wasp-d77
 	pkgdesc = Lua-configurable Wayland compositor based on dwl/wlroots
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/dani-77/wasp
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = wasp-d77
 	provides = wasp
 	conflicts = wasp
 	backup = etc/xdg-desktop-portal/wasp-portals.conf
-	source = wasp-0.9.1.tar.gz::https://github.com/dani-77/wasp/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 6d12700903a4d59a494984882126c7bda15ede8788a071c0f98d050a2e10d762
+	source = wasp-0.10.0.tar.gz::https://github.com/dani-77/wasp/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = d3dcd7f71b22ac0facf06745c77eb9a662bc2c0d2f5922cd8f757305f1a892db
 
 pkgname = wasp-d77
