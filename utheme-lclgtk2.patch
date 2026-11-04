@@ -1,0 +1,68 @@
+Description: only use GTK2 for theme detection with the GTK2 widgetset
+ utheme.pas pulls in the gtk2/glib2 units on every Linux build, which
+ links libgtk-x11-2.0 into the binary even when the LCL is built for
+ another widgetset. Arch Linux ships the LCL precompiled for Qt5/Qt6
+ only, and gtk2 is no longer in the official repositories, so restrict
+ that code to LCLGTK2. With other widgetsets, IsDarkMode returns False.
+Forwarded: no
+
+diff --git a/packages/OpenRSATGUI/utheme.pas b/packages/OpenRSATGUI/utheme.pas
+index 5ddfcbf..cca38e2 100644
+--- a/packages/OpenRSATGUI/utheme.pas
++++ b/packages/OpenRSATGUI/utheme.pas
+@@ -12,10 +12,10 @@ uses
+   {$IFDEF DARWIN}
+   CocoaAll,
+   {$ENDIF DARWIN}
+-  {$IFDEF LINUX}
++  {$IFDEF LCLGTK2}
+   gtk2,
+   glib2,
+-  {$ENDIF LINUX}
++  {$ENDIF LCLGTK2}
+   SysUtils,
+   ulog;
+ 
+@@ -25,10 +25,10 @@ function IsDarkMode: Boolean;
+ function IsMacDarkMode: Boolean;
+ function GetMacThemeName: String;
+ {$ENDIF DARWIN}
+-{$IFDEF LINUX}
++{$IFDEF LCLGTK2}
+ function IsLinuxDarkMode: Boolean;
+ function GetGtkThemeName: String;
+-{$ENDIF LINUX}
++{$ENDIF LCLGTK2}
+ {$IFDEF WINDOWS}
+ function IsWinDarkMode: Boolean;
+ function GetWinThemeName: String;
+@@ -48,9 +48,9 @@ begin
+   result := IsMacDarkMode;
+   {$ENDIF DARWIN}
+ 
+-  {$IFDEF LINUX}
++  {$IFDEF LCLGTK2}
+   result := IsLinuxDarkMode;
+-  {$ENDIF LINUX}
++  {$ENDIF LCLGTK2}
+ 
+   {$IFDEF WINDOWS}
+   result := IsWinDarkMode;
+@@ -76,7 +76,7 @@ end;
+ 
+ {$ENDIF DARWIN}
+ 
+-{$IFDEF LINUX}
++{$IFDEF LCLGTK2}
+ function IsLinuxDarkMode: Boolean;
+ begin
+   result := LowerCase(GetGtkThemeName).Contains('dark');
+@@ -105,7 +105,7 @@ begin
+   end;
+ end;
+ 
+-{$ENDIF LINUX}
++{$ENDIF LCLGTK2}
+ 
+ {$IFDEF WINDOWS}
+ function IsWinDarkMode: Boolean;

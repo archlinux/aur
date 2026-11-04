@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=OpenRSAT
+GenericName=Active Directory Administration
+GenericName[fr]=Administration Active Directory
+Comment=Manage Active Directory users, DNS, sites and services
+Comment[fr]=Gérer les utilisateurs, le DNS, les sites et les services d'Active Directory
+Exec=openrsat
+Icon=openrsat
+Terminal=false
+Categories=System;
+Keywords=Active Directory;AD;LDAP;Kerberos;Samba;RSAT;DNS;

@@ -1,0 +1,5 @@
+[openrsat]
+source = "github"
+github = "tranquilit/OpenRSAT"
+use_latest_release = true
+prefix = "v"
