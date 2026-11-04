@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=phosphor-logging-git
-pkgver=r1191.f88d6ff
+pkgver=r1268.3962950
 pkgrel=1
 epoch=
 pkgdesc="Libraries for common event and logging creation."
@@ -12,6 +12,7 @@ groups=()
 depends=(
     systemd-libs
     #AUR
+    libcper-git
     sdbusplus-git
     sdeventplus-git
     phosphor-dbus-interfaces-git
@@ -26,6 +27,7 @@ makedepends=(
     nlohmann-json
     python-jsonschema
     meson
+    pkgconf
 )
 checkdepends=()
 optdepends=()
