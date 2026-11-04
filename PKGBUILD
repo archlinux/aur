@@ -22,7 +22,11 @@ build() {
 		aarch64) _target=bun-linux-arm64 ;;
 	esac
 	# same build as upstream's release-binaries.yml workflow
-	bun build src/index.ts --compile --target="$_target" --outfile firecrawl
+	# bun inlines __dirname at build time, which would otherwise leak $srcdir
+	# into the binary; point it at the compiled binary's virtual root instead
+	bun build src/index.ts --compile --target="$_target" \
+		--define '__dirname="/$bunfs/root"' \
+		--outfile firecrawl
 }
 
 package() {
