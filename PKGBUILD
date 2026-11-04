@@ -1,7 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 # Rendered by .github/workflows/aur-git.yml.
 pkgname=atk-control-git
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice (git)"
 arch=('any')
@@ -18,8 +18,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   local base
-  base=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//') || base=0.4.6
-  printf '%s.r%s.g%s' "${base:-0.4.6}" \
+  base=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//') || base=0.4.7
+  printf '%s.r%s.g%s' "${base:-0.4.7}" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
