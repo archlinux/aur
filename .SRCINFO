@@ -1,6 +1,6 @@
 pkgbase = mavernix
 	pkgdesc = A lightweight Wayland desktop session with a classic look
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/Mavernix/mavernix
 	arch = x86_64
@@ -54,7 +54,7 @@ pkgbase = mavernix
 	optdepends = hwdata: the graphics card's name in About This Computer
 	optdepends = xdg-desktop-portal-gtk: file choosers for sandboxed programs
 	optdepends = xdg-desktop-portal-wlr: screen sharing
-	source = mavernix-0.5.7.tar.gz::https://github.com/Mavernix/mavernix/archive/refs/tags/v0.5.7.tar.gz
-	sha256sums = 976f3b272d9dc15dc11c1a6975849e6b490791da378fe8183754326a0935c5ff
+	source = mavernix-0.5.8.tar.gz::https://github.com/Mavernix/mavernix/archive/refs/tags/v0.5.8.tar.gz
+	sha256sums = 81b78ca4a4caa8c2dc7aad4e40111cbb9b6c4a71440857e08c8e5c75d4b628cb
 
 pkgname = mavernix
