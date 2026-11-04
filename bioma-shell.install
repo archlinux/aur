@@ -98,9 +98,20 @@ post_upgrade() {
     _uinput
     cat <<'MSG'
 ==> Restart Bioma to run the new version:  /usr/share/bioma/scripts/shell restart
-    Keys the new version brings are added to your bioma-binds.kdl then;
-    the ones you removed stay removed.
+    (or log out and back in). Keys the new version brings are added to your
+    bioma-binds.kdl then; the ones you removed stay removed.
 MSG
+    # 1.0.0-beta.61 moved Bioma from Quickshell to Genoma.
+    if [ "$(vercmp "$2" 1.0.0beta61)" -lt 0 ]; then
+        cat <<'MSG'
+==> Bioma now runs on Genoma, not Quickshell. The shell already running is
+    the old one until that restart; your settings carry over unchanged.
+    Your own scripts calling `qs ipc call …` for Bioma: use
+    /usr/share/bioma/scripts/ipc <target> <function> … instead.
+    Quickshell is no longer needed by Bioma: `pacman -Rs quickshell` if
+    nothing else of yours uses it.
+MSG
+    fi
 }
 
 post_remove() {

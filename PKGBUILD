@@ -1,10 +1,10 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=bioma-shell
-_tag=v1.0.0-beta.60
-pkgver=1.0.0beta60
-pkgrel=1
-pkgdesc="A desktop shell for niri, built with Quickshell: living surfaces rather than a bar"
+_tag=v1.0.0-beta.61
+pkgver=1.0.0beta61
+pkgrel=2
+pkgdesc="A desktop shell for niri, built on Genoma: living surfaces rather than a bar"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AkusenArcade/Bioma"
 license=('GPL-3.0-or-later')
@@ -14,11 +14,9 @@ license=('GPL-3.0-or-later')
 # wizard, which serves one kind of machine.
 depends=(
     'niri'
-    'quickshell'
-    'qt6-5compat'
-    # Qt Quick draws the shell through Vulkan when a driver answers
-    # (scripts/vulkan), and through OpenGL when none does.
-    'vulkan-icd-loader'
+    # The runtime the shell, the lock screen and the greeter run on, at the
+    # version this release was made against.
+    'genoma=0.1.1'
     'python'
     # The calendar's recurrences, and the feed addresses it keeps in the
     # keyring (scripts/calendar, secret-tool).
@@ -34,13 +32,13 @@ depends=(
     'glibc'
     'util-linux'
     'fontconfig'
-    # The two voices (Typography): expressive and technical.
+    # The two voices (genoma/core/typography.luau): expressive and technical.
     'ttf-spectral'
     'ttf-orbitron'
     # Theme: palettes from the wallpaper, the wallpaper folder picker, and
     # Bioma's own cursors, rendered from SVG in the palette (scripts/cursors).
     # The cursor and icon themes are built per user, in their palette, by the
-    # shell's first start, and put on the desktop then (services/Looks.qml).
+    # shell's first start, and put on the desktop then (genoma/services/looks.luau).
     'matugen'
     'zenity'
     'librsvg'
@@ -102,7 +100,6 @@ optdepends=(
     'gnome-online-accounts: the calendars of Google, Microsoft, Nextcloud and WebDAV accounts in the clock'
     'gnome-online-accounts-gtk: adding those accounts outside GNOME Settings'
     'gamemode: performance mode, on by itself while a game runs'
-    'vulkan-driver: the shell drawn through Vulkan, a third lighter than OpenGL (vulkan-radeon, vulkan-intel, nvidia-utils)'
 )
 # libspa builds a small C shim that makepkg's LTO turns into bitcode, which
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
@@ -112,7 +109,7 @@ install=bioma-shell.install
 # but one switched off here must not come back with the next update.
 backup=('etc/xdg/autostart/bioma.desktop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('f29bef954358f8c465ffb3e736b9fb5d80f9537de052639a657ea2f3b7d321e1')
+sha256sums=('f515858843bd1416d388e8edd6977d6eec48618d9f069990fb11a692a4f7782f')
 
 _srcdir() {
     printf '%s/Bioma-%s' "$srcdir" "${_tag#v}"
@@ -138,11 +135,11 @@ package() {
     install -d "$share"
 
     # What the shell, the lock screen and the greeter read at runtime. The
-    # design documents and their media stay in the repository.
+    # design documents and their media stay in the repository, and so does
+    # the Quickshell version (quickshell/), kept there as a backup.
     cp -r --no-preserve=ownership \
-        assets cells components config core greeter lock organisms services structure scripts \
+        assets config genoma scripts \
         "$share/"
-    install -m644 shell.qml lock.qml greeter.qml "$share/"
 
     # The spectrum tool is architecture-dependent, so it lives in /usr/lib;
     # the shell looks for it where a build in the repository puts it.
