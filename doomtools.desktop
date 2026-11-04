@@ -8,7 +8,7 @@ Comment=Set of utilities for building projects for Doom engine games
 Terminal=false
 StartupWMClass=net-mtrop-doom-tools-gui-DoomToolsGUIMain
 
-Path=/usr/share/doomtools/
+Path=/usr/share/java/doomtools
 
 Actions=decohack;dimgconv;dmxconv;doommake;wadmerge;wadscript;wswantbl;wadtex;wtexport;
 
