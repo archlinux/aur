@@ -4,15 +4,15 @@
 # builds it before push.
 pkgname=sway-title-animator
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Animated Unicode titlebars for Sway"
 arch=('x86_64' 'aarch64')
-url="https://automation.izoone.com/releases/sway-title-animator"
+url="https://entire.com/et/marang/sway-title-animator"
 license=('MIT')
 depends=('sway')
 makedepends=('go>=1.26.10')
 options=('!debug')
-source=("sway-title-animator-$pkgver.tar.gz::$url/v$pkgver/sway-title-animator-00fc5a09935e54c330b340cb71188fa33c44a2d6.tar.gz")
+source=("sway-title-animator-$pkgver.tar.gz::https://get.izoone.com/sway-title-animator/v$pkgver/sway-title-animator-00fc5a09935e54c330b340cb71188fa33c44a2d6.tar.gz")
 sha256sums=('c3ce162478fff664e50042455dec2a3bbb1fc37fa9989ce21feed5b880598d20')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
