@@ -11,6 +11,8 @@ makedepends=('git')
 provides=('madlions-control')
 conflicts=('madlions-control')
 options=('!strip')
+# VCS source: git verifies the checkout by commit hash.  A tarball SHA here
+# would either fail on every upstream commit or freeze the package.
 source=("$pkgname::git+https://github.com/NasirA1991/madlions-control.git")
 sha256sums=('SKIP')
 
