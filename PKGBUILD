@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=etherpad-lite-bin
-pkgver=3.3.14
+pkgver=3.3.15
 # Debian revision of the upstream .deb asset for this pkgver.
 _debrel=1
 pkgrel=1
@@ -22,8 +22,8 @@ source_x86_64=("etherpad_${pkgver}-${_debrel}_amd64.deb::https://github.com/ethe
 source_aarch64=("etherpad_${pkgver}-${_debrel}_arm64.deb::https://github.com/ether/etherpad-lite/releases/download/v${pkgver}/etherpad_${pkgver}-${_debrel}_arm64.deb")
 sha256sums=('ecb57e3ac038f09b9f593e920d73e13a9b2dd54659fdc68195e121c9da9fcf97'
             '4f5b24e9b4a1d73309d9b02ef52dd1417b26c2cda16249699280fa93453d5401')
-sha256sums_x86_64=('475e6da69bd35e0e80c705c6cf421b8431d7eb80b3ece8a8358a9388b9a5e270')
-sha256sums_aarch64=('57a542d0ae772fcff4f9d8f4fc34c2381a86927545b5fe099045e08d92871b39')
+sha256sums_x86_64=('969d5cc410c06e40f604a3b3e30d53346c0b8d923794c9d441faae4b3a73fc55')
+sha256sums_aarch64=('de458e2dfef8ac4a7cd36633fbe90937390e120ac4e588689955623e92d31c6f')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}" --no-same-owner
@@ -35,20 +35,6 @@ package() {
 
     # Debian packaging scraps are useless on Arch.
     rm -rf "${pkgdir}/opt/etherpad/bin/deb-src"
-
-    # Upstream's .deb ships these symlinks without their targets
-    # (admin/doc/ui dev UIs and the playwright test dep are excluded
-    # from the production build); dangling links resolve to ENOENT
-    # exactly like absent ones, so dropping them is behavior-neutral.
-    # pnpm records the same links twice, once per node_modules level.
-    rm "${pkgdir}/opt/etherpad/node_modules/admin" \
-       "${pkgdir}/opt/etherpad/node_modules/docs" \
-       "${pkgdir}/opt/etherpad/node_modules/ui" \
-       "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/admin" \
-       "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/ui" \
-       "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/@etherpad/openapi-codegen" \
-       "${pkgdir}/opt/etherpad/node_modules/.pnpm/node_modules/@playwright/test" \
-       "${pkgdir}/opt/etherpad/src/node_modules/@playwright/test"
 
     # Runtime state belongs to tmpfiles.d, which recreates these paths with
     # the same 0750 modes; the .deb only ships them as empty directories.
