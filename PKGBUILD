@@ -1,7 +1,7 @@
 # Maintainer: JAuxance <auxance.jourdan@proton.me>
 pkgname=manager-bin
 _pkgname=manager
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Productivity companion — day counter, focus timer, schedule, journal"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('gtk-layer-shell: timer widget on Wayland (Hyprland, Sway, KDE)')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Manager_${pkgver}_amd64.deb")
-sha256sums=('c6a5198a85400832ea62ad0be71ebf2198bf11e6b88717622a958fac9b7c0ecf')
+sha256sums=('9cc01034ba0cfc5479796518eb26cfd2c70e1cabe327f1aed152039010a98ade')
 options=('!strip' '!debug')
 
 prepare() {
