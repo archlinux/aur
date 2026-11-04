@@ -8,13 +8,14 @@ pkgbase = python-rosbags
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
 	depends = python-lz4
 	depends = python-numpy
 	depends = python-ruamel-yaml
 	depends = python-zstandard
-	source = python-rosbags-0.9.19.tar.gz::https://gitlab.com/ternaris/rosbags/-/archive/v0.9.19/rosbags-v0.9.19.tar.gz
-	sha256sums = cde1b718c148e131bfcddd65856ed05065dbb673f4e0cdd2f48f9d9ea7ab4d10
+	source = git+https://gitlab.com/ternaris/rosbags.git#tag=v0.9.19
+	sha256sums = e79c012eb9a365e438baa319944f54375202e683bb3ac3e9cc1a4f0b4fe6c013
 
 pkgname = python-rosbags

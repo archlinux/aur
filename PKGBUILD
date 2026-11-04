@@ -9,18 +9,18 @@ arch=(any)
 url='https://gitlab.com/ternaris/rosbags'
 license=('Apache-2.0')
 depends=('python' 'python-lz4' 'python-numpy' 'python-ruamel-yaml' 'python-zstandard')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/ternaris/rosbags/-/archive/v${pkgver}/rosbags-v${pkgver}.tar.gz")
-sha256sums=('cde1b718c148e131bfcddd65856ed05065dbb673f4e0cdd2f48f9d9ea7ab4d10')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+source=("git+https://gitlab.com/ternaris/rosbags.git#tag=v${pkgver}")
+sha256sums=('e79c012eb9a365e438baa319944f54375202e683bb3ac3e9cc1a4f0b4fe6c013')
 
 _pkgname=rosbags
 
 build() {
-  cd "${srcdir}/${_pkgname}-v${pkgver}"
+  cd "$srcdir/$_pkgname"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-v${pkgver}"
+  cd "$srcdir/$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
