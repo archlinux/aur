@@ -2,7 +2,7 @@
 # Contributor: Santiago Burgos <santiago.burgos1089@gmail.com>
 pkgname=fingwit
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fingerprint Configuration Tool"
 url="https://github.com/xapp-project/fingwit"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'fingwit_pam.conf')
 sha256sums=('f61e1f3c00c1e31f9c04f2432d2a3bab59147d5eb41779c3be4ce1d45fe75a02'
             'c93378f42af280a724960c895b2007dabaa028368d1aba70d0cde6044f475222'
-            'c8391a47d2eb53823bf9efd8c72c3a7d96e6696cd43001af7a53b8678a056608')
+            'a5df2e143c32f1a92d4f56e26f630165340ef988fcedae73f380987d4dc3d0ab')
 
 prepare() {
   cd "$pkgname-$pkgver"
