@@ -1,0 +1,16 @@
+pkgbase = fuse-exfat-mister-git
+	pkgdesc = FUSE-based exFAT file system driver (fork with MiSTer symlinks)
+	pkgver = r568.43f4773
+	pkgrel = 1
+	url = https://github.com/drizzt/exfat-MiSTer
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	depends = fuse3
+	provides = fuse-exfat
+	conflicts = fuse-exfat
+	replaces = fuse-exfat
+	source = git+https://github.com/drizzt/exfat-MiSTer.git
+	sha256sums = SKIP
+
+pkgname = fuse-exfat-mister-git
