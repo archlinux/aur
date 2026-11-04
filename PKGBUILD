@@ -2,7 +2,7 @@
 
 pkgname=trae-cn-ide
 pkgver=2.3.99936
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered IDE by ByteDance (Chinese Domestic Version)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=("trae-cn.sh" "trae-cn.desktop")
 source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.99936/linux/TRAE_CN-linux-x64.tar.gz")
 source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.99936/linux/TRAE_CN-linux-arm64.tar.gz")
-b2sums=('f7998b11d3f97f84895231ca1ca9a05bd3a97106f363744fc5f13402c15c419cc56d09e52c9366bfbd75c016b0aada69286bef8879df4925df0ef446212d7c45'
+b2sums=('b16bf7b4e9a60d3f2d04fda6b7c6f2ca224009daffeae4e2b82a2b0f2f95d8821ebb45a6a2c394357b6a55b25c801181a3200f25a373202adb0c2637b7b9d5b0'
             '02d2c5d433e4d56a958bc7766563d977d79070f06c94bfa5829d2eb3c20c50111c3ff5174109bdb6f8f20cafdf4730f053f37c3a7a03e6b0f466446981dcc407')
 b2sums_x86_64=('e034892e6507d3e83488e5f769a0aedc8d654b727fbbb2cce473e5bfc167e3a6661efe0e6cfffe9d98531ac009c5508691c63f9e9267ea0b85b5a74cc98c44bb')
 b2sums_aarch64=('e25c64e1bad9c1e861c038f16a945eb46e306c6ec2213fa5cfd54359c80296b21fd143d4792aacd3bcf0522018ef7423c0d98b2b08e4e6fcd768b52c22d181ee')
