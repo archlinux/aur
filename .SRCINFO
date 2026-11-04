@@ -1,0 +1,19 @@
+pkgbase = pdgfr
+	pkgdesc = Zero-install, pure-CPU French text-to-speech engine with an embedded model
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/akhenakh/pdgfr
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = CC-BY-4.0
+	license = Unicode-3.0
+	makedepends = go>=1.27
+	optdepends = pipewire-audio: pw-play/pw-cat playback
+	optdepends = libpulse: paplay playback
+	optdepends = alsa-utils: aplay playback
+	optdepends = ffmpeg: ffplay playback
+	source = pdgfr-0.1.tar.gz::https://github.com/akhenakh/pdgfr/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 839e9910e39f0876d0d085441d8d1ae10058e4dbb8434d0c7a59b6cd7495bb07
+
+pkgname = pdgfr
