@@ -12,7 +12,7 @@ depends=('libdrm')
 makedepends=('cargo')
 backup=("etc/$pkgname/config.toml")
 source=("https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/v0.4.15.tar.gz")
-b2sums=('794aa04522c28db72462a347d1033ec22e8b6fad8f4b912c8229d1d1d773b49c1b8325bb46b5b2b3a254751f25c5548dc27b6ab76142e902c70ff17dd42e806e')
+b2sums=('c7ab28b4883dd62b29682a7349bd4b939881d015932be3800a0443edceb6e19f773eb88f32021f191840bd7de978ef5185911bf9aa782c6bebb402d55b5931d4')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
