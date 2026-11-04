@@ -1,6 +1,6 @@
 # Maintainer: Soymadip <soumadip@zohomail.in>
 pkgname=mpv-mpris2-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Rust implementation of the MPRIS v2 D-Bus interface for mpv"
 arch=('x86_64')
