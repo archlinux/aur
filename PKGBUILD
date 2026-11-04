@@ -1,5 +1,5 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
-pkgname=kosmozoo; pkgver=0.2.2; pkgrel=1
+pkgname=kosmozoo; pkgver=0.3.0; pkgrel=1
 pkgdesc="Local review and curation app for ComfyUI image output"
 arch=('x86_64')
 url="https://github.com/alexindigo/kosmozoo"
@@ -9,20 +9,21 @@ optdepends=('chromium: app window' 'google-chrome: app window' 'brave-bin: app w
 install=kosmozoo.install
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "kosmozoo.sh")
-sha256sums=('bcf48d68278de4108a3d266439d78971f6c74b20819b4ab512ee1a6a8aeb7ec3'
+sha256sums=('e24bbf0969a80d0c08faa44967580e89e76aad518806b816560ded0a71e29fb5'
             'd830038ed0bd18cd38b59e2d753a7389aaa926135818f48151d700976ba8d42e')
 build() {
   cd "$pkgname-$pkgver"
   export DENO_DIR="$srcdir/deno-dir" DENO_NO_UPDATE_CHECK=1 DENO_SQLITE_PATH=/usr/lib/libsqlite3.so
-  deno cache --frozen src/main.mjs src/cli.mjs build.mjs plugins/*/plugin.mjs
-  deno run --frozen --allow-all build.mjs
+  deno task deps
+  deno run --frozen --cached-only --allow-all build.mjs
   deno task --frozen-lockfile setup
 }
 package() {
   cd "$pkgname-$pkgver"; local app="$pkgdir/usr/lib/kosmozoo"
   install -d "$app/plugins"
-  cp -a src client client-solid-dist deno.json deno.lock VERSION "$app/"
-  install -d "$app/packaging/linux"; cp -a packaging/linux/resources "$app/packaging/linux/"
+  cp -a src client client-solid-dist deno.json deno.lock VERSION LICENSE LICENSE.GPL "$app/"
+  install -Dm644 docs/executable.md "$app/docs/executable.md"
+  install -d "$app/packaging/linux"; cp -a packaging/linux/resources packaging/linux/PUBLICATION.md packaging/linux/LICENSING.md "$app/packaging/linux/"
   for p in hello difference detector critic; do install -Dm644 plugins/$p/*.mjs -t "$app/plugins/$p/"; done
   cp -a "$srcdir/deno-dir" "$app/deno-dir"
   local revision; revision=$(gzip -dc "$srcdir/$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)
