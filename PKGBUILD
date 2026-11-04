@@ -1,9 +1,9 @@
 pkgname=zed-globalization
 pkgver=1.26.2
-pkgrel=3
+pkgrel=1
 pkgdesc="Zed editor with globalization support (pre-built binary)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/x6nux/zed-globalization"
+url="https://github.com/wenyinos/ZedG"
 license=('AGPL-3.0-or-later' 'Apache-2.0' 'GPL-3.0-or-later')
 # 只提供 zedg 命令:不再安装 /usr/bin/zed,故不再 provide zed。
 # 但仍需与官方 zed 包冲突——两者都会安装 dev.zed.Zed.desktop。
@@ -11,11 +11,11 @@ provides=('zedg')
 conflicts=('zedg' 'zed')
 options=('!strip' '!debug')
 
-source_x86_64=("https://github.com/x6nux/zed-globalization/releases/download/v${pkgver}/zedg-zh-cn-linux-x86_64-v${pkgver}.tar.gz")
-source_aarch64=("https://github.com/x6nux/zed-globalization/releases/download/v${pkgver}/zedg-zh-cn-linux-aarch64-v${pkgver}.tar.gz")
+source_x86_64=("https://github.com/wenyinos/ZedG/releases/download/v${pkgver}/zedg-zh-cn-linux-x86_64-v${pkgver}.tar.gz")
+source_aarch64=("https://github.com/wenyinos/ZedG/releases/download/v${pkgver}/zedg-zh-cn-linux-aarch64-v${pkgver}.tar.gz")
 
-sha256sums_x86_64=('f714ce5d00c629c77a44488d11fe1841ea8451f57db12bdb73a1e2445d34c286')
-sha256sums_aarch64=('22e244a576d954daa25950ca66553ee781bf13909d68bb74772332a1a4c3d591')
+sha256sums_x86_64=('e6b9c8ebcb9cbc94b9a25fe9d04ed39f211730ef2ee39d0ef6ab53a033cd0a03')
+sha256sums_aarch64=('055b3dfa19268277c13bf750ee27df168ef83d77e4b4e55324b5687bbfd71f8b')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/"
@@ -32,9 +32,6 @@ package() {
   # CLI 自身文件名无关紧要,它按 ../libexec/zed-editor 定位主程序。
   rm -f "${pkgdir}/usr/bin/zed"
   mv "${pkgdir}/usr/libexec/zedg" "${pkgdir}/usr/bin/zedg"
-
-  # 上游多余的产物:指向 CLI 的软链,以及生态兼容开关脚本
-  rm -f "${pkgdir}/usr/libexec/zed-cli" "${pkgdir}/usr/bin/zedg-activate"
 
   # 桌面条目:必须调用 CLI(主程序在 Linux 上不会把打开请求转发给已运行实例)。
   # 上游桌面项本就用 Exec=zedg,这里按 FreeDesktop 改名并补 MimeType。
