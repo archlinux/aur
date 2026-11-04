@@ -1,0 +1,3 @@
+# makepkg-jail: packages whose build()/check()/package() keep the network.
+# One pkgbase per line. Only list packages whose PKGBUILD you have read:
+# every future update of a listed package also builds with network.

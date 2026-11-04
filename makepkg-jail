@@ -508,6 +508,47 @@ run_prefetch_hooks() {
     printf '%s\n' "$digest" > "$stamp"
 }
 
+# --- Per-package network for the build phase ---------------------------
+# Packages listed in /etc/makepkg-jail/online-build (one pkgbase per line,
+# '#' comments) keep the network during build()/check()/package(), for
+# recipes that download in build() (npm ci, gradle, ...). The file is
+# root-owned on purpose. An explicit --offline is always honoured.
+online_build_list=/etc/makepkg-jail/online-build
+
+online_build_allowed() {
+    [[ -r "$online_build_list" ]] || return 1
+
+    local srcinfo line pkgbase=
+    srcinfo=$("$self" --offline --printsrcinfo) ||
+        die "Could not read package metadata."
+    while IFS= read -r line; do
+        if [[ "$line" == "pkgbase = "* ]]; then
+            pkgbase=${line#pkgbase = }
+            break
+        fi
+    done <<< "$srcinfo"
+
+    [[ "$pkgbase" =~ ^[[:alnum:]@_+][[:alnum:]@._+-]*$ ]] ||
+        die "Unexpected pkgbase in package metadata: ${pkgbase:-<none>}"
+
+    while IFS= read -r line; do
+        line=${line%%#*}
+        line=${line//[[:space:]]/}
+        if [[ -n "$line" && "$line" == "$pkgbase" ]]; then
+            return 0
+        fi
+    done < "$online_build_list"
+    return 1
+}
+
+if [[ "$net_mode" == auto ]] && (( ! query && ! online && ! split )); then
+    if online_build_allowed; then
+        printf '==> makepkg-jail: network ON for the build phase (listed in %s)\n' \
+            "$online_build_list" >&2
+        online=1
+    fi
+fi
+
 # Hooks run before anything goes online, and before -s installs anything.
 if (( split || online )); then
     run_prefetch_hooks
@@ -570,7 +611,7 @@ if (( split )); then
     if (( clean_after )); then build_args+=(--clean); fi
 
     "$self" --online "${fetch_args[@]}" "${pass[@]}"
-    "$self" --offline "${build_args[@]}" "${pass[@]}"
+    "$self" "${build_args[@]}" "${pass[@]}"
 else
     single=()
     if (( clean_before )); then single+=(--cleanbuild); fi

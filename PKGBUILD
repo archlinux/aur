@@ -1,5 +1,5 @@
 pkgname=makepkg-jail-local
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Local bubblewrap makepkg sandbox with AppArmor and a restricted paru adapter'
 arch=('x86_64')
@@ -35,6 +35,7 @@ install=makepkg-jail-local.install
 backup=(
     'etc/apparmor.d/makepkg-jail-build'
     'etc/apparmor.d/makepkg-jail-setup'
+    'etc/makepkg-jail/online-build'
 )
 
 options=(
@@ -49,14 +50,16 @@ source=(
     'hook-traur'
     'makepkg-jail-build'
     'makepkg-jail-setup'
+    'online-build'
 )
 
-sha256sums=('ebf18d288ae3599a577f4b1f25767f22ac156974e8a1eb5760b605305d45c0b8'
+sha256sums=('dedf2cf36d0b59f94d0cd4a45fe0109f9addd480bf647b85fcf3d6cece17a3ab'
             '3da0a51a9decc3ffd9c05d194dd38baa32389d60fa76f6e1ce2457df6aa5d494'
             'ecf24a3118060612c6a38c26a038acbe6a7e5c8531bcb65837ec7d17e3d8ecbf'
             'cffe63df95629b4871bc357c96b86e632cc316c3c93d7c3ab2f34314dd492f8e'
             'c6a667a913b1d9fa745fec2e659c5c392c822093e1de9ad0ff3b03816611e001'
-            '82671f29ce1fe024bc474ab3058427a4407376bd3cb920f4fac0b30cccdab1d8')
+            '82671f29ce1fe024bc474ab3058427a4407376bd3cb920f4fac0b30cccdab1d8'
+            'ea542fbd5da726cce8e3dc5efddc031415e3e8f799ec94c746dc5a2bbd6c5343')
 
 prepare() {
     cd "$srcdir"
@@ -124,4 +127,7 @@ package() {
 
     install -Dm644 makepkg-jail-setup \
         "$pkgdir/etc/apparmor.d/makepkg-jail-setup"
+
+    install -Dm644 online-build \
+        "$pkgdir/etc/makepkg-jail/online-build"
 }
