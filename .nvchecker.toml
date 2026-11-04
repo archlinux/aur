@@ -1,3 +1,7 @@
 [bibiman]
 source = "git"
 git = "https://codeberg.org/lukeflo/bibiman"
+
+[bibiman-cratesio]
+source = "cratesio"
+cratesio = "bibiman"
