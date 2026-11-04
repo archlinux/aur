@@ -1,0 +1,18 @@
+pkgbase = kantele
+	pkgdesc = Settings GUI for the d77 window managers (pwm, wasp, spitfire)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dani-77/kantele
+	arch = any
+	license = MIT
+	checkdepends = python-tomlkit
+	checkdepends = lua54
+	depends = python
+	depends = python-pyqt6
+	depends = python-tomlkit
+	depends = lua54
+	depends = qt6-wayland
+	source = kantele-0.1.0.tar.gz::https://github.com/dani-77/kantele/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5de2334981edf199a78cc71e96e47ccb94cd1e39a8d052f9185217d13d84ac34
+
+pkgname = kantele
