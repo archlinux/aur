@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=EVE Console
+Comment=EVE Online companion for industry, trading and character management
+Comment[pl]=Asystent EVE Online do zarządzania przemysłem, handlem i postaciami
+Exec=eveconsole
+Icon=eveconsole
+Terminal=false
+Categories=Game;
+Keywords=EVE;Online;industry;trading;
