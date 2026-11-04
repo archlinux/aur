@@ -5,14 +5,13 @@ _pkgname=dux-calendar
 _binname=dcal
 _iconname=dev.duxlabs.calendar
 _desktopid=dev.duxlabs.calendar
-pkgver=2.0.0.r6.ge7123fc
+pkgver=2.1.0.r1.g1a731d7
 pkgrel=1
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the Dux desktop (git)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/duxlabs-dev/$_pkgname"
 license=('MIT')
 depends=('quickshell' 'qt6-declarative')
-optdepends=('dms-shell: dynamic theming via Dux Shell colors')
 makedepends=('git' 'go')
 provides=("$_binname=$pkgver" "$_pkgname=$pkgver" "dankcalendar=$pkgver")
 conflicts=("$_binname" "$_pkgname" 'dankcalendar' 'dankcalendar-bin' 'dankcalendar-git' 'dux-calendar-bin')
