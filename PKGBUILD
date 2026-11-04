@@ -4,16 +4,12 @@
 # Tracks upstream main of https://github.com/jesdga95/basalt plus two local patches:
 #   0001-cmake-overridable-basalt-source-dir.patch  BASALT_SOURCE_DIR / engine path become cmake options
 #   ram-guard-mib.patch                             --ram-guard-mib N (0 = the RAM guard off)
-# Both patches apply with `git am --3way` to upstream main through bd984820 (checked 2026-11-03).
-# Upstream bug found through this package: https://github.com/jesdga95/basalt/issues/224
-# (out-of-range operator[] in Tokenizer::merge_piece; see build() and README).
-# Named basalt-inference-git, and the PATH commands are qualified the same way: AUR already has
-# aur/basalt and aur/basalt-bin (a TUI for Obsidian) owning /usr/bin/basalt, plus the vkBasalt
-# family and basalt-monado (a SLAM library). Qualifying the names beats declaring a conflict with
-# unrelated software. The runtime tree keeps upstream's own names (/usr/lib/basalt/bin/basalt),
-# which is also the path baked into basalt-probe/-bench as their engine.
+# Both apply cleanly to upstream main through 1b3f6964 (v0.2.1, checked 2026-11-04).
+# basalt-inference-git, and the PATH commands are qualified the same way: AUR already has
+# aur/basalt, aur/basalt-bin (a TUI for Obsidian), the vkBasalt family and basalt-monado.  The
+# runtime tree keeps upstream's own names under /usr/lib/basalt.
 pkgname=basalt-inference-git
-pkgver=0.2.0.45.g83d76f90
+pkgver=0.2.1.2.geeefe8a6
 pkgrel=1
 pkgdesc='Local inference engine for Qwen3.8-Flash-Next MoE packs (NVIDIA Blackwell, sm_120)'
 arch=(x86_64)
@@ -26,12 +22,11 @@ source=("basalt::git+https://github.com/jesdga95/basalt.git#branch=main"
         ram-guard-mib.patch
         0001-cmake-overridable-basalt-source-dir.patch)
 sha256sums=('SKIP'
-            '3f591caf54a17dff4f7c4093fc01581154e5e170e4be87a20e3189bfcf4e3f0b'
+            '526f9ac9fd39b11d5c59e6d44640fbc481a0d378da5a16209045904f1b118361'
             'd065296aa095292902f3b02a87d9321c798c6f00972c17594a14a4f324747490')
 
-# BASALT_DEBUG=1 makepkg -si builds with -g, splits off a basalt-git-debug package (gdb then reports
-# file:line), and turns LTO off there: -g plus -flto wants far more RAM than this codebase compiles
-# comfortably. Used to catch the engine's out-of-bounds vector<int> (see README).
+# BASALT_DEBUG=1 makepkg -si builds with -g and splits off a basalt-inference-git-debug package (gdb
+# then reports file:line).  LTO is off there: -g plus -flto needs far more RAM than this builds in.
 [[ -n ${BASALT_DEBUG:-} ]] && options=('debug' '!lto')
 
 # The installed runtime tree: basalt serve chdirs here and runs `python3 -m serve.server`, and the
@@ -52,7 +47,9 @@ prepare() {
       git am --abort 2>/dev/null
       printf '%s does not apply to %s:\n' "$p" "$(git describe --tags --always)" >&2
       printf '  1. in a scratch clone: git checkout <new-main>; git am --3way %s/%s\n' "$srcdir" "$p" >&2
-      printf '     fix the conflicts, git add them, git am --continue, then:\n' >&2
+      printf '     if only docs/ and tests/ conflict: git checkout HEAD -- docs tests\n'
+      printf '     (the patch is source-only on purpose), otherwise fix the conflicts there; then\n'
+      printf '     git add them, git am --continue, and:\n' >&2
       printf '     git format-patch -1 --stdout > %s/%s   (keep the patch file name)\n' "$srcdir" "$p" >&2
       printf '  2. sha256sum that file, put the new sum in sha256sums[]\n' >&2
       printf '  3. rm -rf src pkg && makepkg -si\n' >&2
@@ -64,40 +61,27 @@ prepare() {
 
 build() {
   cd "$srcdir/basalt"
-  # CUDA toolkit: name it, do not inherit it.  AUR helpers run makepkg through sudo, and sudo's
-  # env_reset + secure_path ("/usr/local/sbin:/usr/local/bin:/usr/bin") drop both CUDA_PATH and
-  # /opt/cuda/bin that /etc/profile.d/cuda.sh exports for login shells.  Arch installs CUDA to
-  # /opt/cuda and has no /usr/local/cuda - the one directory CMake force-prepends to its toolkit
-  # search - so configure then dies in project(): "Failed to find nvcc.  Compiler requires the CUDA
-  # toolkit.  Please set the CUDAToolkit_ROOT variable".  An explicit CUDAToolkit_ROOT or CUDA_PATH
-  # in the environment still wins over the /opt/cuda default.
+  # Name the CUDA toolkit, do not inherit it: an AUR helper runs makepkg through sudo, whose
+  # env_reset + secure_path drop CUDA_PATH and /opt/cuda/bin, and CMake's own search starts at
+  # /usr/local/cuda, which Arch does not have - configure then fails in project() with "Failed to
+  # find nvcc".  An explicit CUDAToolkit_ROOT/CUDA_PATH still wins over the /opt/cuda default.
   local cuda_root="${CUDAToolkit_ROOT:-${CUDA_PATH:-/opt/cuda}}"
   local cuda_compiler=()
   [[ -x "$cuda_root/bin/nvcc" ]] && cuda_compiler=(-DCMAKE_CUDA_COMPILER="$cuda_root/bin/nvcc")
   export CUDAToolkit_ROOT="$cuda_root"
   export PATH="$cuda_root/bin:$PATH"
-  # Arch's hardening puts -Wp,-D_GLIBCXX_ASSERTIONS in CXXFLAGS, and libstdc++ then checks every
-  # vector::operator[].  The engine hits one on the serve path - Tokenizer::merge_piece forms
-  # &sym_[count] in its shift (src/program/tokenizer/bpe.cpp:240), reported upstream as
-  # https://github.com/jesdga95/basalt/issues/224 - and the check aborts the engine mid-request
-  # (exit -6, "stl_vector.h:1253 ... Assertion '__n < this->size()' failed") on ordinary tool-list
-  # prompts.  A plain build is not hurt today (the move is empty), it is silent UB, so the flag
-  # cannot stay on here; the checks also sit in the hot expert/token loops.
-  # Drop the one flag; the rest of the hardening stays.  BASALT_GLIBCXX_ASSERTIONS=1 keeps it on to
-  # hunt the next one (README), and to re-check this once #224 is fixed upstream.
-  # given to cmake as -DCMAKE_CXX_FLAGS below, not just exported: an existing build/ directory keeps
-  # its cached CMAKE_CXX_FLAGS otherwise, and the flag would come back on an incremental rebuild.
-  local cxxflags="$CXXFLAGS" cudaflags=""
-  [[ -z ${BASALT_GLIBCXX_ASSERTIONS:-} ]] && cxxflags="${cxxflags/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+  local cudaflags=""
   # nvcc does not take CXXFLAGS, so the .cu host code needs -g passed through explicitly
   [[ -n ${BASALT_DEBUG:-} ]] && cudaflags="-Xcompiler=-g"
-  [[ -n ${BASALT_JOBS:-} ]] && echo "basalt: building with ${BASALT_JOBS} jobs, CXXFLAGS=[$cxxflags]" >&2
+  [[ -n ${BASALT_JOBS:-} ]] && echo "basalt: building with ${BASALT_JOBS} jobs, CXXFLAGS=[$CXXFLAGS]" >&2
+  # CXXFLAGS is given to cmake explicitly, not just exported: a reused build/ directory keeps its
+  # cached CMAKE_CXX_FLAGS otherwise.
   # CMAKE_SKIP_RPATH: the cuda package ships /etc/ld.so.conf.d/cuda.conf, so the binaries do not
   # need a RUNPATH into /opt/cuda (namcap flags it as insecure).
   cmake -S . -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="$cxxflags" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_CUDA_FLAGS="$cudaflags" \
     -DBASALT_SOURCE_DIR="$_prefix" \
     -DBASALT_ENGINE_BIN="$_prefix/bin/basalt" \
@@ -112,9 +96,9 @@ build() {
 
 package() {
   cd "$srcdir/basalt"
-  # CMake has no install() rules and puts the binaries in the source tree's bin/, so they are installed by hand.
-  # In the tree they keep upstream's names (the engine path is baked into probe/bench); only the PATH
-  # symlinks are qualified, so /usr/bin/basalt stays free for aur/basalt and aur/basalt-bin.
+  # CMake has no install() rules: the binaries land in the source tree's bin/ and go in by hand.  In
+  # the tree they keep upstream's names (probe and bench bake in that engine path); only the PATH
+  # symlinks are qualified.
   install -d "$pkgdir/usr/bin"
   for b in basalt basalt-bench basalt-probe basalt-vision; do
     install -Dm755 "bin/$b" "$pkgdir$_prefix/bin/$b"

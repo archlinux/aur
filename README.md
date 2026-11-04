@@ -38,27 +38,11 @@ BASALT_JOBS=2 makepkg -si               # if the CUDA compile thrashes RAM: peak
 ${AUR_HELPER} -S basalt-inference-git   # or via an AUR helper once this dir is added to it
 ```
 
-Patch state: both apply with `git am --3way` to upstream main through `bd984820` (checked
-2026-11-03); `ram-guard-mib.patch` was taken from base `64a935db`. `namcap PKGBUILD` is clean.
+Both patches apply to upstream main through `1b3f6964` (v0.2.1, checked 2026-11-04).
 
-Verified on a built package: `/usr/bin/{basalt-inference,basalt-inference-bench,basalt-inference-probe,
-basalt-inference-vision}` are symlinks into the tree, `basalt-inference --help` carries
-`--ram-guard-mib`, `basalt-inference-probe --help`
-reports `--fixtures DIR (default /usr/lib/basalt/data/bench)`, `/usr/bin/basalt` is left unowned, and
-`python3 -c 'import serve.server'` from `/usr/lib/basalt` imports on the system python.
-
-`-DCMAKE_SKIP_RPATH=ON` keeps the CUDA libraries off a RUNPATH: `cuda` ships
-`/etc/ld.so.conf.d/cuda.conf`, so `ldd` resolves `libcudart/libcublas/libcublasLt` from
-`/opt/cuda/lib64` without it (namcap flagged the RUNPATH as insecure).
-
-`makepkg` still prints *"Package contains reference to $srcdir"* for `basalt` and `basalt-bench`:
-three `__FILE__`-style log strings in the ggml mmq kernels (`src/prefill/mmq/…`) and bench's path
-to `basalt-device`, a dev program that is not shipped. nvcc has no prefix-map flag, so they stay;
-everything that is *used* as a path points at `/usr/lib/basalt`.
-
-`namcap` on the built package also warns that `python-markupsafe`, `python-yaml` and `python-tqdm`
-"may not be needed": they are not imported by name from `serve/`, they are jinja2's and `gguf-py`'s
-own requirements (`tools/convert` reads and writes GGUF), so they stay in `depends`.
+`makepkg` prints *"Package contains reference to $srcdir"* for `basalt` and `basalt-bench`: a few
+`__FILE__`-style log strings in the ggml kernels, and bench's path to a dev program this package does
+not ship. Nothing that is used as a path: those all point at `/usr/lib/basalt`.
 
 ## Running the installed engine
 
@@ -107,7 +91,9 @@ PKGDIR=~/pkg/basalt-inference-git
 git clone --no-hardlinks "$CHECKOUT" /tmp/rebase && cd /tmp/rebase
 git fetch origin main && git checkout -q origin/main
 git am --3way "$PKGDIR/ram-guard-mib.patch"
-#    resolve the conflicts (usually the context around --vram-reserve-mib in
+#    when only docs/ and tests/ conflict, drop those hunks (the patch is source-only):
+git checkout HEAD -- docs tests 2>/dev/null
+#    otherwise resolve the conflicts (usually the context around --vram-reserve-mib in
 #    src/program/cli/arguments.cpp, guard_floor in src/program/serve/memory.cpp,
 #    the Options block in include/basalt/program/options.hpp), then:
 git add -A && git am --continue
