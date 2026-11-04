@@ -1,7 +1,7 @@
 pkgbase = cef-vaapi
 	pkgdesc = Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)
 	pkgver = 154.0.34
-	pkgrel = 6
+	pkgrel = 7
 	url = https://chromiumembedded.github.io/cef
 	arch = x86_64
 	license = BSD-3-Clause
@@ -113,7 +113,7 @@ pkgbase = cef-vaapi
 	sha256sums = a82147f07982d49b0744c53c5fc038d4de1ef7d9a828b6280abbb49462b623eb
 	sha256sums = 0cc5f7c7ccf0927c0bbfdb9e797dc5b1f4c9f021e8a01d943121d3ee4e6416bf
 	sha256sums = cfef4a4eeed2272b3101131af6c1bb63c7932a715c36634a1e027f770634e013
-	sha256sums = 387946ce712fc239a71a2cfb6c5cc2d83e92e64aa12659e2b7a8ef8bf4c25708
+	sha256sums = 0038f0d9130305f8375ac12569dc0467432545202eab149ae2b08aedf1a03ff9
 	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
 	sha256sums = 1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0

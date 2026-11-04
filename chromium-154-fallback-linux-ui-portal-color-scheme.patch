@@ -6,6 +6,26 @@ each toolkit's OsSettingsProvider. FallbackLinuxUi, used when GTK and Qt are
 disabled, implemented SetColorScheme() as a no-op, so prefers-color-scheme
 stayed light. Give it a minimal OsSettingsProvider fed by the portal.
 
+Register the process-lifetime fallback in GetLinuxUiThemes() when it is first
+created, just like the GTK and Qt implementations. Without registration,
+DarkModeManagerLinux never calls its SetDarkTheme() or SetColorScheme(), so
+the portal preference cannot reach the provider or web content.
+
+--- a/ui/linux/linux_ui_factory.cc
++++ b/ui/linux/linux_ui_factory.cc
+@@ -113,7 +113,11 @@
+ }
+ 
+ LinuxUiAndTheme* GetFallbackUi() {
+-  static LinuxUiAndTheme* fallback_ui = CreateFallbackUi().release();
++  static LinuxUiAndTheme* fallback_ui = [] {
++    LinuxUiAndTheme* ui = CreateFallbackUi().release();
++    GetLinuxUiThemesImpl().push_back(ui);
++    return ui;
++  }();
+   return fallback_ui;
+ }
+ 
 --- a/ui/linux/fallback_linux_ui.h
 +++ b/ui/linux/fallback_linux_ui.h
 @@ -5,10 +5,12 @@
