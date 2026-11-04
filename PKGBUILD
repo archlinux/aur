@@ -3,7 +3,7 @@
 pkgname=python-liger-kernel
 _pkgname=Liger-Kernel
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient Triton kernels for LLM training"
 arch=('any')
 url="https://github.com/linkedin/Liger-Kernel"
@@ -24,11 +24,18 @@ makedepends=(
 )
 checkdepends=(
     'python-pytest'
-    'python-transformers>=4.52.0'
+    'python-transformers'
 )
 optdepends=(
-    'python-transformers>=4.52.0: for Hugging Face Transformers integration'
+    'python-transformers: for Hugging Face Transformers integration'
     'python-pytest: cross-backend correctness helpers in liger_kernel.testing'
+)
+# The integration itself rejects Transformers older than 5.0.0.
+# Keep the shared capability usable by versionless public providers.
+# The VCS package uses an r-count, so its metadata cannot express this API floor.
+# Upstream's preserved import guard enforces the real Transformers version.
+conflicts=(
+    'python-transformers<5.0.0'
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/linkedin/Liger-Kernel/archive/refs/tags/v$pkgver.tar.gz"
