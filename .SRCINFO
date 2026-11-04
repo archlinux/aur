@@ -1,0 +1,22 @@
+pkgbase = kommunicator
+	pkgdesc = Kirigami Client for Nextcloud Talk
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/lubuwest/Kommunicator
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	depends = qt6-base
+	depends = extra-cmake-modules
+	depends = kconfigwidgets
+	depends = kwindowsystem
+	depends = kio
+	depends = kirigami
+	depends = qtkeychain-qt6
+	depends = qt6-svg
+	depends = knotifications
+	depends = kitemmodels
+	source = kommunicator-0.1.tar.gz::https://codeberg.org/lubuwest/Kommunicator/archive/v0.1.tar.gz
+	md5sums = ee8fa0e14a37ec5e540e9fa16e49f121
+
+pkgname = kommunicator
