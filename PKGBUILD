@@ -10,12 +10,19 @@ license=('unknown')
 makedepends=('unzip')
 # Users must provide BaWue.zip themselves.
 # Place it in the same directory as this PKGBUILD before running makepkg.
-source=('BaWue.zip')
-sha256sums=('SKIP')
 
 prepare() {
+  local zipfile="$startdir/BaWue.zip"
+
+  if [[ ! -f "$zipfile" ]]; then
+    error "BaWue.zip not found. Place it next to the PKGBUILD before running makepkg."
+    return 1
+  fi
+
+  unzip -q "$zipfile" -d "$srcdir"
+
   if [[ ! -d "$srcdir/bawue" ]]; then
-    error "Source BaWue.zip does not contain directory 'bawue/'."
+    error "BaWue.zip does not contain directory 'bawue/' directory."
     return 1
   fi
 }

@@ -6,8 +6,6 @@ pkgbase = bawue-fonts
 	arch = any
 	license = unknown
 	makedepends = unzip
-	source = BaWue.zip
-	sha256sums = SKIP
 
 pkgname = ttf-bawue
 
