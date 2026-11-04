@@ -17,7 +17,7 @@
 # ELECTRON_RUN_AS_NODE。
 
 pkgname=dsh-desktop-linux-bin
-pkgver=0.2.2alpha.2
+pkgver=0.2.2alpha.3
 pkgrel=1
 pkgdesc='Official DeepSeek Harness desktop packaging ported to Linux (prebuilt)'
 arch=('x86_64')
@@ -43,15 +43,15 @@ conflicts=('deepseek-harness-desktop')
 options=('!strip' '!debug' '!emptydirs')
 install="$pkgname.install"
 
-_debrel=v0.2.2alpha2
-_debname=deepseek-harness-0.2.2-alpha.2-linux-amd64-unsigned.deb
+_debrel=v0.2.2alpha3
+_debname=deepseek-harness-0.2.2-alpha.3-linux-amd64-unsigned.deb
 # 产物自身的安装前缀,以及本包的安装前缀。
 _artprefix="/opt/DeepSeek Harness"
 _pkgprefix="/opt/$pkgname"
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ffyfox/dsh-desktop-linux/releases/download/$_debrel/$_debname"
         'LICENSE')
-sha256sums=('bb31196fab76a18b5a2d2ed1c043627d34efbf9bae94b47afb244af2aa625cf9'
+sha256sums=('853c3ec899cdea4d6a3646f7837a98a3e31b342956b7ffbcf2c54a9f647ba3eb'
             'ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be')
 
 package() {
