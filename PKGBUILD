@@ -88,7 +88,7 @@ sha256sums=('bf7cbe1143f4d44e57ac0790e0044de7879f96366b48004e44e516fa3ec4a66d'
   '4de62f581e1a580a077312a101979e8397c80a0c439a8897145bb9b430d0795c')
 
 prepare() {
-  mkdir -p mozbuild
+  mkdir -p mozbuild bin
   cd $_pkgname-v$_pkgver
 
   for patch in $(tar -tf "$srcdir/$_gentoo" --wildcards '*.patch' $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}")); do
@@ -113,12 +113,11 @@ prepare() {
     export FIREDRAGON_TARGET=linux-arm64
   fi
 
-  export COREPACK_HOME="$srcdir"/.corepack
-  export PNPM_HOME="$srcdir"/.pnpm
-  export PATH="$srcdir"/.bin:"$PATH"
+  export COREPACK_HOME="$srcdir"/corepack
+  export PNPM_HOME="$srcdir"/pnpm
+  export PATH="$srcdir"/bin:"$PATH"
 
-  mkdir -p "$srcdir"/.bin
-  corepack enable --install-directory "$srcdir"/.bin
+  corepack enable --install-directory "$srcdir"/bin
 
   pushd browser/$_pkgname > /dev/null
   corepack install
