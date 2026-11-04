@@ -1,6 +1,6 @@
 pkgbase = fgj
 	pkgdesc = A command-line tool for working with Forgejo instances (including Codeberg.org)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://codeberg.org/romaintb/fgj
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fgj
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = fgj-0.6.0.tar.gz::https://codeberg.org/romaintb/fgj/archive/v0.6.0.tar.gz
-	sha256sums = 4092b78b8b3cb4c06dfbaa2743b925592844f80e2207ddb5e0525fbba4a77a64
+	source = fgj-0.6.1.tar.gz::https://codeberg.org/romaintb/fgj/archive/v0.6.1.tar.gz
+	sha256sums = 1033add9e8ce34c4545d7d9ceecee1cf0363ec108d6bbd76cee31d07e8429b58
 
 pkgname = fgj

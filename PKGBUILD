@@ -1,6 +1,6 @@
 # Maintainer: Romain Bertrand <romaintb@noreply.codeberg.org>
 pkgname=fgj
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A command-line tool for working with Forgejo instances (including Codeberg.org)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/romaintb/fgj/archive/v${pkgver}.tar.gz")
-sha256sums=('4092b78b8b3cb4c06dfbaa2743b925592844f80e2207ddb5e0525fbba4a77a64')
+sha256sums=('1033add9e8ce34c4545d7d9ceecee1cf0363ec108d6bbd76cee31d07e8429b58')
 
 prepare() {
   cd "${pkgname}"
@@ -36,4 +36,7 @@ package() {
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 <("build/${pkgname}" completion bash) "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm644 <("build/${pkgname}" completion fish) "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 <("build/${pkgname}" completion zsh) "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
