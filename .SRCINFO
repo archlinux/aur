@@ -1,6 +1,6 @@
 pkgbase = db9s-bin
 	pkgdesc = Database TUI
-	pkgver = 2026.11.2
+	pkgver = 2026.11.3
 	pkgrel = 1
 	url = https://github.com/damien-mathieu1/db9s
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = db9s-bin
 	provides = db9s
 	conflicts = db9s
 	options = !strip
-	source_x86_64 = db9s-x86_64-2026.11.2.tgz::https://github.com/damien-mathieu1/db9s/releases/download/v2026.11.2/db9s-v2026.11.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3ced28accd0426931118f9e763bf973ca04740c638480cdcc409ac6cb423d17c
+	source_x86_64 = db9s-x86_64-2026.11.3.tgz::https://github.com/damien-mathieu1/db9s/releases/download/v2026.11.3/db9s-v2026.11.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fa78a95ab8049fe94707255d0c3d27a7cf611812d23b140ae827c80c29dd31ae
 
 pkgname = db9s-bin
