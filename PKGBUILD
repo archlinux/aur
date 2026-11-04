@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Single-host system diagnostics TUI"
 
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.gz")
-sha256sums=('f442d0671a8f6f204d82f74e0639ef59c07979b4833f5aa3177a50126035f230'
+sha256sums=('bb31263561365f7db9e7d13935990a7793fd4b4ec759950c0ef5101d9a57414c'
             'e78d969849862ac5abf431de8929c62759311a0cc58fd404eaf30996ab3f9162')
-sha256sums_x86_64=('45dda51b29c29439c1deeda24b768c4a6a01f7af342b6ca6504b165c974f9c1c')
-sha256sums_aarch64=('d5b2565aa8059b60f8769a6fe56472d6222be653ec0d0923585842a6c667bce6')
+sha256sums_x86_64=('19226bf342dfc05aeddebd275207ab9c73942a57014e9b3ffc124f46bdfcdb3e')
+sha256sums_aarch64=('dbb42cb5f7a81745669df949750aa7cb7bdbd9eba5f9e4729d43355806b74f09')
 
 
 case ${CARCH} in
