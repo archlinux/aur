@@ -19,7 +19,7 @@ _electronver=37.10.3
 _cn_pkgver=5.6.2.40046327
 _cn_build=c7b525f3
 pkgver=${_pkgver}_${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
@@ -56,7 +56,7 @@ noextract=(
   "WorkBuddy-linux-x64-deb-${_cn_pkgver}-${_cn_build}.deb"
   "WorkBuddy-linux-arm64-deb-${_cn_pkgver}-${_cn_build}.deb"
 )
-sha256sums=('6e8c6154b013e26cb2f8f2c3646b206a135cd0060e67f86298c1d2b23c10a1c3'
+sha256sums=('a4f4bba61a2ed88da4a3e6d9e06990306d93d3053dbaed26ba3f739160549a6e'
             '33aeab4b44329127ce747cc3048df98db9873cb511685e666d81332d9c219c73'
             'f263ea88a81ceb8be3b59c458fd7be15daf0dbbd2b625fc143f772ad300742fd'
             'f207ee01cc207532c3c804ba6ff6ab4209adab06a1903d9b9f38b8d96d90d50c'

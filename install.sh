@@ -191,6 +191,20 @@ APP_DIR="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
 export CHROME_DESKTOP="${APP_ID}.desktop"
 export ELECTRON_FORCE_IS_PACKAGED=1
 
+# Wayland 下 Electron 注册全局快捷键会走 XDG GlobalShortcuts portal，GNOME 会
+# 弹出 "Add Keyboard Shortcuts" 授权窗。shortcut-state.json 里的空 accelerator
+# 表示「不注册该快捷键」，首次启动前写入可避免每次打开都弹窗；用户仍可在
+# “设置 → 快捷键”里自行指定（保存后会覆盖本文件）。
+# 仅 Wayland 会话需要：X11 下不会触发 portal 弹窗，保留上游默认的全局快捷键。
+if [ "\${XDG_SESSION_TYPE:-}" = wayland ] || [ -n "\${WAYLAND_DISPLAY:-}" ]; then
+  STATE_DIR="\${WORKBUDDY_USER_DATA_DIR:-\${WORKBUDDY_CONFIG_DIR:-\${CODEBUDDY_CONFIG_DIR:-\$HOME/.workbuddy-ai}}/app}"
+  STATE_FILE="\$STATE_DIR/shortcut-state.json"
+  if [ ! -f "\$STATE_FILE" ]; then
+    mkdir -p "\$STATE_DIR" &&
+      printf '%s\n' '{"version":1,"toggleWindowAccelerator":""}' >"\$STATE_FILE" || true
+  fi
+fi
+
 exec "\$APP_DIR/electron" \\
   --no-sandbox \\
   --disable-dev-shm-usage \\
