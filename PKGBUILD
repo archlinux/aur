@@ -68,7 +68,7 @@ sha256sums=(
 package() {
   local _dest="$pkgdir/opt/$_appname"
 
-  install -Dm755 -t "$_dest" "$srcdir/kyty_emulator" "$srcdir/launcher"
+  install -Dm755 -t "$_dest" "$srcdir/kyty_emulator" "$srcdir/kyty_launcher"
   install -Dm644 -t "$_dest" "$srcdir/qt.conf"
   install -dm755 "$_dest/lib"
   install -m644 -t "$_dest/lib" "$srcdir/lib"/*.so.*
@@ -90,9 +90,10 @@ set -eu
 dir=\${XDG_DATA_HOME:-\$HOME/.local/share}/$_appname
 mkdir -p "\$dir"
 ln -sfn /opt/$_appname/kyty_emulator /opt/$_appname/lib /opt/$_appname/plugins /opt/$_appname/qt.conf "\$dir/"
-cp --remove-destination /opt/$_appname/launcher "\$dir/launcher"
+rm -f "\$dir/launcher"
+cp --remove-destination /opt/$_appname/kyty_launcher "\$dir/kyty_launcher"
 cd "\$dir"
-exec ./launcher "\$@"
+exec ./kyty_launcher "\$@"
 EOF
 
   install -Dm644 "$srcdir/$_appname-$pkgver.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_appname.svg"
