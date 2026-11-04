@@ -2,7 +2,7 @@
 
 pkgname=jubbio-bin
 _pkgname=jubbio
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="Official desktop client for Jubbio (community chat & voice platform)"
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=(
 source_x86_64=("${pkgname}-${pkgver}.deb::https://cdn.jubbio.com/downloads/v${pkgver}/Jubbio.deb")
 sha512sums=('870726a3806b8e113789930b9c0ad8ee114f0af338af24b0d8936bf9e318f786423acca9fbce28c1cb2fdbe68920c7a52e7c220d0a23d94fae4dee33257c2152'
             'd6138717ab0626837f86de6a734f198319d70a7acf79fc982420b1b1436620eb33e02d095883d19e5aef35e796cf1028febf9187cec18d97fb38b34e7147d9ac')
-sha512sums_x86_64=('fa602e8065770de0514196bc9b7c2a4592c0ec5cb949a8aa75a7d1364628bd95602833d606a7dfd1bed12e4a9e1d54352ec421f9c70059931c36e0b7aa5d3611')
+sha512sums_x86_64=('3a7c1128801e66dee9e6f19bfaadb4ccf62e1f8c3dbfdae8567208ea138dfc4be5cdf07f50f07ce009dada54417efb9472b0653b0c9e0def9ef56380ece19b80')
 
 package() {
     # Extract data archive unpacked by makepkg into $srcdir
