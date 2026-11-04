@@ -13,6 +13,8 @@ replaces=('compx-control-git')
 provides=('atk-control' 'compx-control')
 conflicts=('atk-control' 'compx-control' 'compx-control-git')
 source=("$pkgname::git+https://github.com/NasirA1991/atk-control.git")
+# VCS package: the source moves with main. A fixed tarball checksum would stop
+# it being a -git package; install atk-control for a pinned release + SHA-256.
 sha256sums=('SKIP')
 
 pkgver() {
