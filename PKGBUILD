@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rclone-bisync-manager-git
-pkgver=0.4.0b3.r8.g4ebce4f
+pkgver=0.4.0b4.r0.gfe1d5e7
 pkgrel=1
 pkgdesc="A daemon-based solution for automated, bidirectional synchronization of files using RClone (includes system tray)"
 arch=('any')
@@ -28,6 +28,9 @@ prepare() {
 # Use system Python so venv in PATH does not break the build (python-build, python-installer from pacman).
 build() {
     cd "$srcdir/$pkgname"
+    # AUR helpers keep $srcdir between upgrades; a previous version's wheel left in dist/ would
+    # also match dist/*.whl in package() and collide with the new one.
+    rm -rf dist
     /usr/bin/python -m build --wheel --no-isolation
 }
 
