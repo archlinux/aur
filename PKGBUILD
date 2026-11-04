@@ -2,96 +2,153 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
-pkgname="invoiceninja"
+pkgname=invoiceninja
 pkgver=5.13.53
-pkgrel=2
-pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
-url="https://www.invoiceninja.com/"
-license=("ELv2")
-arch=("any")
-depends=("php" "php-gd")
-makedepends=("tar")
-optdepends=("mariadb: database"
-            "apache: web server"
-            "nginx: web server"
-            "redis: session driver"
-            "chromium: pdf generation using snappdf"
-           )
-source=("$pkgname::git+https://github.com/invoiceninja/invoiceninja.git#tag=v${pkgver}"
-        "$pkgname-queue.service"
-        "$pkgname-queue.timer"
-        "$pkgname-scheduler.service"
-        "$pkgname-scheduler.timer")
-sha256sums=('SKIP'
-            '2e41b2c94877d29f7abf8912d7bd9a26dd7d003876253c7d49762c6ec9f72ea5'
-            'ed7ce9c42bf1de019c4ca43c1a7bfb32e65aae8c6687ce0e5a4474c7e4a7537e'
-            'b54a95a349294c93a97832cc88652e46d30692c722906ef4bce99ef4d73e8d33'
-            'a72270bdc4bb146cc00fe0162b8d366467eed96582f64a40ec6d8e2bd9a013ba')
-backup=("etc/webapps/$pkgname/config.env" "var/lib/$pkgname/config.env")
+pkgrel=3
+pkgdesc='Invoices, Expenses and Tasks built with Laravel and Flutter'
+url='https://www.invoiceninja.com/'
+license=('ELv2')
+arch=('any')
+depends=('php' 'php-gd')
+makedepends=('git' 'composer' 'nodejs' 'npm' 'tar')
+optdepends=(
+  'mariadb: database'
+  'apache: web server'
+  'nginx: web server'
+  'redis: session driver'
+  'chromium: PDF generation using snappdf'
+  'php-imagick: image processing'
+)
+backup=('etc/webapps/invoiceninja/config.env' 'var/lib/invoiceninja/config.env')
 install="$pkgname.install"
-options=("!strip")
+options=('!strip')
 
-prepare(){
- cd "$pkgname"
+# The React admin UI is a separate upstream project with independent versions.
+# Keep this pinned to a reviewed release tag. Do not build from moving develop.
+_ui_tag='06.10.2026.1'
 
- # create new copy of example configuration file
- cp ".env.example" "config.env"
+source=(
+  "$pkgname::git+https://github.com/invoiceninja/invoiceninja.git#tag=v${pkgver}"
+  "invoiceninja-ui::git+https://github.com/invoiceninja/ui.git#tag=${_ui_tag}"
+  "$pkgname-queue.service"
+  "$pkgname-queue.timer"
+  "$pkgname-scheduler.service"
+  "$pkgname-scheduler.timer"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  '2e41b2c94877d29f7abf8912d7bd9a26dd7d003876253c7d49762c6ec9f72ea5'
+  'ed7ce9c42bf1de019c4ca43c1a7bfb32e65aae8c6687ce0e5a4474c7e4a7537e'
+  'b54a95a349294c93a97832cc88652e46d30692c722906ef4bce99ef4d73e8d33'
+  'a72270bdc4bb146cc00fe0162b8d366467eed96582f64a40ec6d8e2bd9a013ba'
+)
 
- # remember to change value
- sed -i "config.env" \
-     -e "s|PHANTOMJS_SECRET=.*|# change this value\n&=XXXXXX|" \
-     -e "s|UPDATE_SECRET=.*|# change this value\n&=XXXXXX|"
+prepare() {
+  cd "$srcdir/$pkgname"
 
- # provide necessary or useful variables not already included in the configuration file
- cat >> "config.env" << ADDITIONAL_ENV_VARIABLES
-# prevent snappdf from downloading chromium, which should be installed from the official repo
+  # Never distribute the example APP_KEY: each installation must generate its own.
+  cp .env.example config.env
+  sed -i \
+    -e 's|^APP_KEY=.*|APP_KEY=|' \
+    -e 's|^PHANTOMJS_SECRET=.*|PHANTOMJS_SECRET=|' \
+    -e 's|^UPDATE_SECRET=.*|UPDATE_SECRET=|' \
+    config.env
+
+  cat >> config.env <<'ADDITIONAL_ENV_VARIABLES'
+
+# Use the system Chromium binary rather than downloading another copy.
 SNAPPDF_SKIP_DOWNLOAD=true
+SNAPPDF_EXECUTABLE_PATH=/usr/bin/chromium
 
-# write to /var/lib/invoiceninja/app instead of /usr/share/webapps/invoiceninja/public
+# Keep user data outside /usr/share/webapps/invoiceninja.
 FILESYSTEM_DISK=local
 
-# advanced log options
-#EXPANDED_LOGGING=false
-#LOG_PDF_HTML=false
-
-# change this value
-#API_SECRET=XXXXXX
-
+# Set unique APP_KEY, UPDATE_SECRET and other secrets before deployment.
+# API_SECRET=
 ADDITIONAL_ENV_VARIABLES
-
- # use canonical binary path
- sed -i "vendor/beganovich/snappdf/src/Command/DownloadChromiumCommand.php" \
-     -e 's|return dirname(__FILE__, $level) . "/versions/{$revision}/chrome-linux/chrome";|return "/usr/bin/chromium";|'
 }
 
-package(){
- cd "$pkgname"
- # program files
- install -d "$pkgdir/etc/webapps/$pkgname"
- install -d "$pkgdir/usr/share/webapps/$pkgname"
- cp -r * "$pkgdir/usr/share/webapps/$pkgname"
- # configuration (must be writable by the webapp)
- install -D -o http -g http -m 600 "config.env" "$pkgdir/var/lib/$pkgname/config.env"
- ln -s "/var/lib/$pkgname/config.env" "$pkgdir/etc/webapps/$pkgname/config.env"
- ln -s "/var/lib/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
- rm "$pkgdir/usr/share/webapps/$pkgname/config.env"
- # cache
- install -d "$pkgdir/var/cache/"
- mv "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache" "$pkgdir/var/cache/$pkgname"
- ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
- chown -R http: "$pkgdir/var/cache/$pkgname"
- chmod 750 "$pkgdir/var/cache/$pkgname"
- # persistent storage and logs
- install -d "$pkgdir/var/lib/"
- mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
- ln -s "/var/lib/$pkgname/storage" "$pkgdir/usr/share/webapps/$pkgname/storage"
- chown -R http: "$pkgdir/var/lib/$pkgname"
- chmod 750 "$pkgdir/var/lib/$pkgname"
- # systemd files
- install -D -m 644 "$srcdir/$pkgname-queue.service" "$pkgdir/usr/lib/systemd/system/$pkgname-queue.service"
- install -D -m 644 "$srcdir/$pkgname-queue.timer" "$pkgdir/usr/lib/systemd/system/$pkgname-queue.timer"
- install -D -m 644 "$srcdir/$pkgname-scheduler.service" "$pkgdir/usr/lib/systemd/system/$pkgname-scheduler.service"
- install -D -m 644 "$srcdir/$pkgname-scheduler.timer" "$pkgdir/usr/lib/systemd/system/$pkgname-scheduler.timer"
- # license
- install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build() {
+  local app="$srcdir/$pkgname"
+  local ui="$srcdir/invoiceninja-ui"
+
+  # Composer needs a temporary .env for Laravel's package discovery scripts.
+  # It must never be included in the generated package.
+  cd "$app"
+  cp .env.example .env
+  export COMPOSER_HOME="$srcdir/composer-home"
+  export COMPOSER_CACHE_DIR="$srcdir/composer-cache"
+  export SNAPPDF_SKIP_DOWNLOAD=true
+  export SNAPPDF_EXECUTABLE_PATH=/usr/bin/chromium
+
+  composer install --no-dev --prefer-dist --optimize-autoloader \
+    --no-interaction --no-progress
+  test -f vendor/autoload.php
+  rm -f .env
+
+  # Build the separately versioned React admin panel, following upstream's
+  # release recipe, but with a pinned tag instead of its moving develop branch.
+  cd "$ui"
+  cp .env.example .env
+  sed -i 's/^VITE_IS_TEST=.*/VITE_IS_TEST=false/' .env
+  printf '\nVITE_PUSHER_APP_KEY=f0111a02782708da651f\n' >> .env
+  cp "$app/vite.config.ts.react" vite.config.js
+
+  HUSKY=0 npm install --no-audit --no-fund
+  npm run build
+  test -s dist/index.html
+  cp -a dist/. "$app/public/"
+  mv -f "$app/public/index.html" "$app/resources/views/react/index.blade.php"
+  rm -f .env
+
+  # Build the Laravel frontend assets.
+  cd "$app"
+  HUSKY=0 npm install --no-audit --no-fund
+  npm run production
+
+  test -f public/build/manifest.json
+  test -f resources/views/react/index.blade.php
+  test -f vendor/autoload.php
+
+  # No build-time dependencies or ephemeral environment file in the package.
+  rm -rf node_modules
+  rm -f .env
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+
+  install -d "$pkgdir/etc/webapps/$pkgname"
+  install -d "$pkgdir/usr/share/webapps/$pkgname"
+  # Keep the source checkout's .git and temporary dotfiles out of the package.
+  cp -r -- * "$pkgdir/usr/share/webapps/$pkgname/"
+
+  install -Dm600 config.env "$pkgdir/var/lib/$pkgname/config.env"
+  chown http:http "$pkgdir/var/lib/$pkgname/config.env"
+  ln -s "/var/lib/$pkgname/config.env" "$pkgdir/etc/webapps/$pkgname/config.env"
+  ln -s "/var/lib/$pkgname/config.env" "$pkgdir/usr/share/webapps/$pkgname/.env"
+  rm "$pkgdir/usr/share/webapps/$pkgname/config.env"
+
+  install -d "$pkgdir/var/cache/"
+  mv "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache" "$pkgdir/var/cache/$pkgname"
+  ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
+  chown -R http:http "$pkgdir/var/cache/$pkgname"
+  chmod 750 "$pkgdir/var/cache/$pkgname"
+
+  install -d "$pkgdir/var/lib/"
+  mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
+  ln -s "/var/lib/$pkgname/storage" "$pkgdir/usr/share/webapps/$pkgname/storage"
+  chown -R http:http "$pkgdir/var/lib/$pkgname"
+  chmod 750 "$pkgdir/var/lib/$pkgname"
+
+  install -Dm644 "$srcdir/$pkgname-queue.service" \
+    "$pkgdir/usr/lib/systemd/system/$pkgname-queue.service"
+  install -Dm644 "$srcdir/$pkgname-queue.timer" \
+    "$pkgdir/usr/lib/systemd/system/$pkgname-queue.timer"
+  install -Dm644 "$srcdir/$pkgname-scheduler.service" \
+    "$pkgdir/usr/lib/systemd/system/$pkgname-scheduler.service"
+  install -Dm644 "$srcdir/$pkgname-scheduler.timer" \
+    "$pkgdir/usr/lib/systemd/system/$pkgname-scheduler.timer"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

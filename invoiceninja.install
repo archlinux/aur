@@ -19,12 +19,43 @@ The official documentation is available at: https://invoiceninja.github.io/docs/
 INFO
 }
 
-post_upgrade(){
- cat <<INFO
+post_upgrade() {
+  # pacman invokes this hook only on a package upgrade, not a first install.
+  # All Laravel commands run as the web server user, not root.
+  app_dir=/usr/share/webapps/invoiceninja
 
-To complete the update of Invoice Ninja, you need to run these commands:
+  printf '\n[invoiceninja] Running post-upgrade Artisan maintenance...\n'
 
-    sudo -u http php /usr/share/webapps/invoiceninja/artisan migrate
+  if [ ! -f "$app_dir/artisan" ] || [ ! -f "$app_dir/vendor/autoload.php" ]; then
+    printf '%s\n' \
+      '[invoiceninja] ERROR: Missing artisan or Composer vendor/autoload.php.' \
+      '[invoiceninja] Upgrade commands were not run. Verify that the package was built with Composer dependencies.' >&2
+    return 1
+  fi
 
-INFO
+  if [ ! -f "$app_dir/.env" ]; then
+    printf '%s\n' \
+      '[invoiceninja] ERROR: Application .env is missing.' \
+      '[invoiceninja] Configure /var/lib/invoiceninja/config.env before running migrations.' >&2
+    return 1
+  fi
+
+  if (
+    cd "$app_dir" &&
+    /usr/bin/runuser -u http -- /usr/bin/php artisan optimize:clear &&
+    /usr/bin/runuser -u http -- /usr/bin/php artisan vendor:publish \
+      --provider='Elastic\Migrations\ServiceProvider' --no-interaction &&
+    /usr/bin/runuser -u http -- /usr/bin/php artisan vendor:publish \
+      --provider='Elastic\Client\ServiceProvider' --no-interaction &&
+    /usr/bin/runuser -u http -- /usr/bin/php artisan optimize:clear &&
+    /usr/bin/runuser -u http -- /usr/bin/php artisan migrate --force --no-interaction
+  ); then
+    printf '%s\n' '[invoiceninja] Post-upgrade maintenance completed.'
+  else
+    printf '%s\n' \
+      '[invoiceninja] ERROR: Post-upgrade maintenance failed.' \
+      '[invoiceninja] Review the error above and complete the steps manually.' \
+      '[invoiceninja] Note: pacman does not roll back package files or database changes.' >&2
+    return 1
+  fi
 }
