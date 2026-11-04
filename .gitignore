@@ -1,0 +1,8 @@
+/src/
+/pkg/
+/*.AppImage
+/*.AppImage.part
+/bb-desktop-*-LICENSE
+/*.pkg.tar.*
+/*.src.tar.*
+/*.log
