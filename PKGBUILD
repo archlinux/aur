@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname="tailor-gui"
-pkgver="0.2.5"
-pkgrel=1
+pkgver=0.2.5
+pkgrel=2
 pkgdesc="Graphical client for tailord (part of tuxedo-rs)"
 arch=("x86_64")
 url="https://github.com/AaronErhardt/tuxedo-rs/"
@@ -10,10 +10,11 @@ groups=('tuxedo-rs')
 provides=(
   'tailor-gui'
 )
+_tailord_ver="0.3.0"
 depends=(
-  'tailord=0.2.5'
-  'gtk4'
-  'libadwaita'
+  "tailord=${_tailord_ver}"
+  "gtk4"
+  "libadwaita"
 )
 makedepends=(
   'cargo'
@@ -21,13 +22,10 @@ makedepends=(
   'git'
 )
 # NOTE: Source needs to correspond to tailord's source
-_tailord_tag="tailord-v0.2.5"
 source=(
-  "${pkgname}"::"git+${url}#tag=${_tailord_tag}"
+  "${pkgname}"::"git+${url}#tag=tailord-v${_tailord_ver}"
 )
-sha256sums=(
-  'cf33972732601cd9e0f2502689a2f7620ba5fc886174e84f9192bbd5c8e801a1'
-)
+sha256sums=('50ceaa0040abfd515c7b2532f6969bb5b6392fb4dc71c6e63016e453a6294970')
 
 _srcname="tailor_gui"
 

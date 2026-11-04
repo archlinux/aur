@@ -1,5 +1,5 @@
-pkg/
-src/
-*.log
-*.pkg*
-*/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
