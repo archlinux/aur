@@ -1,0 +1,16 @@
+--- a/pmdarima/__init__.py
++++ b/pmdarima/__init__.py
+@@ -37,6 +37,13 @@
+     sys.stderr.write('Partial import of pmdarima during the build process.%s'
+                      % _os.linesep)
+ else:
++    # VCS package versions can differ from the installed SciPy distribution.
++    from packaging.version import Version as _SciPyVersion
++    _scipy_version = get_version("scipy")
++    if _SciPyVersion(_scipy_version) < _SciPyVersion("1.13.0"):
++        raise ImportError("pmdarima requires SciPy >=1.13.0, found " + _scipy_version)
++    del _SciPyVersion, _scipy_version
++
+     # check that the build completed properly. This prints an informative
+     # message in the case that any of the C code was not properly compiled.
+     from . import __check_build

@@ -4,7 +4,7 @@
 _pyname=pmdarima
 pkgname=python-${_pyname}
 pkgver=2.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Python's forecast::auto.arima equivalent"
 arch=('x86_64' 'aarch64')
 url='https://github.com/alkaline-ml/pmdarima'
@@ -26,10 +26,10 @@ depends=(
   'python-urllib3'
 )
 # Alternative SciPy packages may expose an unversioned capability.
-# Keep the upstream/API minimum on the concrete providers.
+# Keep release-versioned provider floors and enforce the real SciPy version
+# in the consumer at import time for moving VCS providers.
 conflicts=(
   'python-scipy<1.13.0'
-  'python-scipy-git<1.13.0'
   'python-scipy-mkl<1.13.0'
   'python-scipy-mkl-bin<1.13.0'
   'python-scipy-mkl-tbb<1.13.0'
@@ -55,11 +55,18 @@ checkdepends=(
 source=(
   "${_pyname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   'gasoline.csv::https://alkaline-ml.com/datasets/gasoline.csv'
+  'scipy-runtime-floor.patch'
 )
 sha256sums=(
   '4debd209df0bb4eb772015350bf16ef9b48c0ff8ff6ba497270d9007e2a02ab1'
   '59ba35cda906b1b3ab695eeecba25cbc3c145168b455dda0ae44443ae7372287'
+  'd92132d190ea17ec2cdfd55a7f787a4f33edc709fcf249f5f72c7adb5b63273f'
 )
+
+prepare() {
+  cd "${_pyname}-${pkgver}"
+  patch -Np1 -i "$srcdir/scipy-runtime-floor.patch"
+}
 
 build() {
   cd "${_pyname}-${pkgver}"
