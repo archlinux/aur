@@ -2,7 +2,7 @@
 
 _pkgname=metacubexd-desktop
 pkgname=${_pkgname}-bin
-pkgver=1.274.3
+pkgver=1.274.4
 pkgrel=1
 pkgdesc="MetaCubeXD Official Desktop Client (Precompiled version)"
 arch=('x86_64' 'aarch64')
@@ -46,8 +46,8 @@ source_x86_64=("${pkgname}-${pkgver}-x64.pacman::${url}/releases/download/v${pkg
 source_aarch64=("${pkgname}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/MetaCubeXD-${pkgver}-linux-aarch64.pacman")
 
 b2sums=('e054b16548c555ae5bb461e634f18fd48956f976dbe546e6b0dae65954f12e19c99fa3f3b41fdb4faf5b9959266366e2430774d9bc072b22b09fffa09d231e37')
-b2sums_x86_64=('858f2b63f8725e9562bd036f765650195e834a8f7b819567508488a105b7187fc1ca7f1078e04406bd675f39c84d00467a2aecc6f8dc68d1a5acb387ac6b8685')
-b2sums_aarch64=('5287ca88f3463fc0c498923eb37f5fa7e4130261ddc4c557ef7119789cf0b6890b56ed6ed9146e3fcb9dc231073c6e3878c42e40268447a46c4e936b62b22dce')
+b2sums_x86_64=('d73617334d4a66c97d300e18a13dbd9939f8aa6966f7c8286ddc944c7a4ff30a6d4648c1d51dbf81b53a70efc29981b4581a62f0f27e6c9549886826d59e11e0')
+b2sums_aarch64=('a8aa4567a98dab54d4834f43b24e7d729da770820226670c408639da8ff76e1a3cbc63aac65da61b87c78037824fcb9a3f40162d4a492f38801dc7e5a0cc2c43')
 
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}/"
