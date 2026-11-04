@@ -1,6 +1,6 @@
 pkgbase = ordo-bin
 	pkgdesc = Terminal-first, single-user project planning tool
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/ilyasturki/ordo
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ordo-bin
 	provides = ordo
 	conflicts = ordo
 	options = !strip
-	source = LICENSE-0.14.1::https://github.com/ilyasturki/ordo/raw/v0.14.1/LICENSE
+	source = LICENSE-0.14.2::https://github.com/ilyasturki/ordo/raw/v0.14.2/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = ordo-bin-0.14.1-x86_64::https://github.com/ilyasturki/ordo/releases/download/v0.14.1/ordo-linux-x64
-	sha256sums_x86_64 = e5f83fa3a6c1e78b9fa4ffc9a3b50b5a97d554a5b6d4e62a4df2085c6e5c5d79
-	source_aarch64 = ordo-bin-0.14.1-aarch64::https://github.com/ilyasturki/ordo/releases/download/v0.14.1/ordo-linux-arm64
-	sha256sums_aarch64 = 6159e699e875053b04156eed1609ae5efe6236baf301f17570cf8e38772b8cae
+	source_x86_64 = ordo-bin-0.14.2-x86_64::https://github.com/ilyasturki/ordo/releases/download/v0.14.2/ordo-linux-x64
+	sha256sums_x86_64 = 5f02b4058d93bb3ae523bf6f7c7f9fce1b0767740fb12d38934be3a582b5bf92
+	source_aarch64 = ordo-bin-0.14.2-aarch64::https://github.com/ilyasturki/ordo/releases/download/v0.14.2/ordo-linux-arm64
+	sha256sums_aarch64 = 7ff4b80b76512b7c9c88e91f66d4921d978c6229768cfbd0dbb36080a0d52df0
 
 pkgname = ordo-bin
