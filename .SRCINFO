@@ -1,0 +1,20 @@
+pkgbase = rail-bin
+	pkgdesc = A modern terminal mail client for Gmail and Microsoft 365, with an MCP server for AI agents
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/vitosans/rail
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rail
+	conflicts = rail
+	options = !strip
+	source_x86_64 = rail-x86_64-0.10.1.tgz::https://github.com/vitosans/rail/releases/download/v0.10.1/rail-v0.10.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d35cc9325127452b11f721419030372e2a4ea939825cc6177bc70d887fd13ebf
+	source_aarch64 = rail-aarch64-0.10.1.tgz::https://github.com/vitosans/rail/releases/download/v0.10.1/rail-v0.10.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ec2a869ac8f7a3417b0eeb95b1f6a629d786404418afc5323ac7ed94d329bbc6
+
+pkgname = rail-bin

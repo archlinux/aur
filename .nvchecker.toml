@@ -1,0 +1,5 @@
+[rail-bin]
+source = "github"
+github = "vitosans/rail"
+use_latest_release = true
+prefix = "v"
