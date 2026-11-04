@@ -1,7 +1,7 @@
 # Maintainer: Timofey Brukhanchik <asyncbtd@gmail.com>
 
 pkgname=epic-lore-desktop-bin
-pkgver=0.9.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="GUI client for next-generation open source version control system by Epic Games (Pre-compiled binary)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('lore-desktop')
 options=('!strip' '!debug')
 _deb="${pkgname}-$(date +%F-%H).amd64.deb"
 source=("${_deb}::https://releases.lore.org/desktop/releases/stable/lore-desktop_amd64.deb")
-sha256sums=('cdef516e010a46e72906c47f5dc741f5e3d9dd22bed73fa3e7af602de65bf252')
+sha256sums=('0ca3e2cf89ae288969841379ac11dfc6ade9b40b62bb00186bb310a8fd83b372')
 noextract=("$_deb")
 
 pkgver() {
