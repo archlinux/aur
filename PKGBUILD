@@ -1,6 +1,6 @@
 # Maintainer: quest
 pkgname=spawn-desktop
-pkgver=0.7.42
+pkgver=0.7.73
 pkgrel=1
 pkgdesc="Spawn desktop app with Discord Rich Presence"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('at-spi2-core'
 optdepends=('libappindicator-gtk3: tray icon support')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::https://spawnfile.io/desktop/releases/Spawn-$pkgver.deb")
-sha512sums=('dce90236292f3709c4069bda479db177e7224782216b7c86f5c65a76661548c8ed78c6950c6e886323b848870357091c6da05edc0b16f5d039b6c370c37a00dc')
+sha512sums=('a3b63321b260a8bbe4208a7ff5b633a521ed9d7ff5b9d7e1428ecbbf8b191926807c3a44f13d9690e84646db27bab5ac19ee61cf32a68d2dbe1993ea5c1d5d40')
 
 package() {
     bsdtar -xOf "$pkgname-$pkgver.deb" data.tar.xz | bsdtar -xf - -C "$pkgdir"
