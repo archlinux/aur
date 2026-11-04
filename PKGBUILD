@@ -1,6 +1,6 @@
 # Maintainer: Alfonso de la Guarda <alfonsodg at gmail dot com>
 pkgname=marker-enhanced-bin
-pkgver=2026.04.25
+pkgver=2026.11.04
 pkgrel=1
 pkgdesc="Markdown editor with Mermaid 10.9, batch PDF export, dark mode, and security fixes (prebuilt binary)"
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=(
 )
 provides=('marker')
 conflicts=('marker' 'marker-git' 'marker-enhanced-git')
-source=("https://github.com/alfonsodg/Marker/releases/download/v${pkgver}/marker-enhanced-2026.04.25-x86_64.tar.gz")
-sha256sums=('2af3413f1129d93353e1fe3e7adc175915db5a5b33975c449cff6cd1d7154686')
+source=("https://github.com/alfonsodg/Marker/releases/download/v${pkgver}/marker-enhanced-2026.11.04-x86_64.tar.gz")
+sha256sums=('375704e77eb8fe74924143ecf0586136eb4c4ab8ff31b3c16a6b719b9c711ecc')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/usr"
