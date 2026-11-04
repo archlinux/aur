@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="aria2tui"
-pkgver=0.1.13.4
+pkgver=0.1.13.5
 pkgrel=1
 pkgdesc="A TUI Frontend for the Aria2c Download Manager"
 
@@ -23,7 +23,7 @@ depends=('python' 'aria2' 'python-pyperclip' 'python-toml' 'python-requests' 'py
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/v${pkgver}.tar.gz")
-sha256sums=('08e41b3c686b3344cc158a1cd6e611d6e2dc446ac61aa84fb64bb9b913576d2b')
+sha256sums=('43c8b19f6dacb17530f001688317d01f295c5f6dc554916dceef284c6ff5540e')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
