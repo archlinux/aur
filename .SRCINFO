@@ -1,0 +1,18 @@
+pkgbase = ida-pro-plugin-zh-cn-git
+	pkgdesc = IDA Pro 9.x Simplified Chinese Localization Plugin
+	pkgver = r4.85769b4
+	pkgrel = 1
+	url = https://github.com/chendiyao/IDA-Pro-zh-CN
+	arch = any
+	license = CC-BY-4.0
+	makedepends = git
+	depends = ida-pro
+	depends = python
+	depends = pyside6
+	depends = shiboken6
+	provides = ida-pro-plugin-zh-cn
+	conflicts = ida-pro-plugin-zh-cn
+	source = ida-pro-plugin-zh-cn-git::git+https://github.com/chendiyao/IDA-Pro-zh-CN.git
+	sha256sums = SKIP
+
+pkgname = ida-pro-plugin-zh-cn-git
