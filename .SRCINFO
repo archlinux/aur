@@ -1,0 +1,21 @@
+pkgbase = compx-control-git
+	pkgdesc = Native GTK4/libadwaita configuration tool for COMPX-based gaming mice (git)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NasirA1991/compx-control
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	depends = python-dbus
+	depends = hicolor-icon-theme
+	provides = compx-control
+	conflicts = compx-control
+	source = compx-control-git::git+https://github.com/NasirA1991/compx-control.git
+	sha256sums = SKIP
+
+pkgname = compx-control-git
