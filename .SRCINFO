@@ -1,6 +1,6 @@
 pkgbase = capture-studio-bin
 	pkgdesc = Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)
-	pkgver = 0.1.51
+	pkgver = 0.1.52
 	pkgrel = 1
 	url = https://tenzen.studio
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = capture-studio-bin
 	provides = capture-studio
 	conflicts = capture-studio
 	conflicts = tenzen-studio-bin
-	noextract = Capture-Studio-0.1.51-linux-x64.flatpak
+	noextract = Capture-Studio-0.1.52-linux-x64.flatpak
 	options = !strip
 	options = !debug
-	source = Capture-Studio-0.1.51-linux-x64.flatpak::https://downloads.tenzen.studio/desktop/stable/linux/0.1.51/Capture-Studio-0.1.51-linux-x64.flatpak
-	sha256sums = e40c7ab3cfc7af766a3df654ba5f4ca166e548a69615418d5780315cf908d3f4
+	source = Capture-Studio-0.1.52-linux-x64.flatpak::https://downloads.tenzen.studio/desktop/stable/linux/0.1.52/Capture-Studio-0.1.52-linux-x64.flatpak
+	sha256sums = 8a53d5fe5ef807d0eb52acf6ded07043b1faa5299e23b2668c43c9583f51594e
 
 pkgname = capture-studio-bin
