@@ -3,6 +3,10 @@ post_install() {
   echo "  tune_hipblaslt --out /path/to/plans.bin"
   echo "Set this environment variable before running gufo:"
   echo "  export GUFO_HIPBLASLT_PLAN_CACHE=/path/to/plans.bin"
+  echo
+  echo "To build with multiple extensions, separate their absolute source paths with semicolons:"
+  echo '  export GUFO_EXTENSION_DIRS="/path/to/extension1;/path/to/extension2"'
+  echo "Then rebuild gufo-git with this variable set to compile the extensions into the binary."
 }
 
 post_upgrade() {

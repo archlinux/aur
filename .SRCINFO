@@ -1,6 +1,6 @@
 pkgbase = gufo-git
 	pkgdesc = The Open Source Strix Halo AI engine (git version).
-	pkgver = 0.26.0.r12.ge011849c
+	pkgver = 0.29.0.r4.g6c1ac518
 	pkgrel = 1
 	url = https://github.com/gufo-org/gufo
 	install = gufo-git.install
@@ -23,11 +23,13 @@ pkgbase = gufo-git
 	depends = icu
 	depends = libjpeg-turbo
 	depends = libpng
+	depends = libsndfile
+	depends = libsoxr
 	depends = libwebp
 	depends = openssl
 	depends = rocblas
 	depends = rocprofiler
-	provides = gufo=0.26.0.r12.ge011849c
+	provides = gufo=0.29.0.r4.g6c1ac518
 	conflicts = gufo
 	options = !lto
 	options = !debug
