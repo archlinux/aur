@@ -1,7 +1,7 @@
 # Maintainer: blueperil at blueperil dot de
 
 pkgname=meshmonitor
-pkgver=4.17.1
+pkgver=4.17.2
 pkgrel=1
 pkgdesc='Web dashboard for monitoring Meshtastic, MeshCore and MQTT mesh networks'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ source=("git+${url}.git#tag=v${pkgver/rc/-rc}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('67cd4a0048b31f91f872092b1bfbe00ca16dcccb831d41f2551c4fbcf8e5f6b5'
+sha256sums=('04af673b9c03fda37712aeb48ebde72202fb5cac7248490f0db0c43bef8fff97'
             '996e15ae1f2cc6bc7fb3103d13e502031d415dbb64f1b26872c35424890a50b2'
             '7ed7cf20001e8fd44b48b0af4af68ff95c1618ee1a5e4c279ba4faaf40b7ecab'
             '8189cf6775ae2c3975da7d2f557eb881f4badc581637661627e2924a07fc9395')
