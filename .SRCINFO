@@ -1,13 +1,13 @@
 pkgbase = protonup-rs-bin
 	pkgdesc = CLI program to automate the installation and update of Proton-GE
-	pkgver = 0.14.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/auyer/Protonup-rs
 	arch = any
 	license = Apache
 	provides = protonup-rs
 	conflicts = protonup-rs
-	source = protonup-rs-bin-0.14.0.tar.gz::https://github.com/auyer/Protonup-rs/releases/download/v0.14.0/protonup-rs-linux-amd64.tar.gz
-	sha256sums = 017f1bce3250d738bde0d368d21532edbcacc9dffc80422305bbcf0feb2d561b
+	source = protonup-rs-bin-0.15.1.tar.gz::https://github.com/auyer/Protonup-rs/releases/download/v0.15.1/protonup-rs-linux-amd64.tar.gz
+	sha256sums = 55d8d36f6aceaa998c082fd1d3ff01b7237612d09017f71de28871b425c9570f
 
 pkgname = protonup-rs-bin
