@@ -1,4 +1,0 @@
-[swig]
-source = "git"
-git = "https://github.com/swig/swig"
-prefix = "v"
