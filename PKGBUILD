@@ -34,6 +34,6 @@ package() {
   install -Dm644 "flatpak/$id.desktop" "$pkgdir/usr/share/applications/$id.desktop"
   install -Dm644 "flatpak/$id.metainfo.xml" "$pkgdir/usr/share/metainfo/$id.metainfo.xml"
 
-  install -Dm644 tools/raw-recv/99-switch-frame-tap.rules \
+  install -Dm644 tools/raw-recv/70-switch-frame-tap.rules \
     "$pkgdir/usr/lib/udev/rules.d/70-switch-frame-tap.rules"
 }
