@@ -1,49 +1,50 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-time-parsedate'
-pkgver='2015.103'
-pkgrel='1'
-pkgdesc="date parsing both relative and absolute"
+_author=BPS
+_dist=Time-ParseDate
+pkgname=perl-${_dist@L}
+pkgver=2026.033
+pkgrel=1
+pkgdesc='date parsing both relative and absolute'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=('perl>=5.8.1')
+makedepends=(
+    'perl-extutils-makemaker>=6.59'
+    'perl-module-install'
+    'perl-time-piece'
+)
 options=('!emptydirs')
-depends=('perl')
-makedepends=()
-url='https://metacpan.org/release/Time-ParseDate'
-source=('http://search.cpan.org/CPAN/authors/id/M/MU/MUIR/modules/Time-ParseDate-2015.103.tar.gz')
-md5sums=('9143d075278857d21c77467d26f1603b')
-sha512sums=('3c5bf09198289a889e606c806fbb225e729fa1a0af6d04056b75c4c61110e6135fce0eccd8c58a2f1db364d7d624b417f4960bdfa376d2fb9b16ecf090879fd0')
-_distdir="Time-ParseDate-2015.103"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('8465c8146bd129d3be4a402b45e1b9f9c306f42b0f58a1e507bbdbd653f253b7')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
