@@ -12,10 +12,10 @@ provides=('yolocam')
 conflicts=('yolocam')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bemoty/yolocam/releases/download/v${pkgver}/yolocam_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('3e9c4ecb2b143099a260ce5f2d9d53b9ed665a9dcd848f02a5624c64de7ffb54')
+sha256sums_aarch64=('dc12814585f5d40aefde30eae941b312b9c37a02ee4886a4c0eb0abafc28d6ab')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bemoty/yolocam/releases/download/v${pkgver}/yolocam_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('153fb1fb58fd539fcb94dd52b527d8a5009bd492d6ebfbbee47245d0ac8ce83c')
+sha256sums_x86_64=('6fc6a11092c7ddc6a0feb1fdf35d06c063c3e2b115765bd5851358c4a212ba7f')
 
 package() {
   install -Dm755 "./yolocam" "${pkgdir}/usr/bin/yolocam"
