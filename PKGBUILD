@@ -2,7 +2,7 @@
 # Previous Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
 
 pkgname=kubescape
-pkgver=4.0.17
+pkgver=4.0.19
 pkgrel=1
 epoch=0
 pkgdesc="An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters."
@@ -13,7 +13,7 @@ makedepends=('go>=2:1.20.0')
 provides=('kubescape')
 conflicts=('kubescape-bin')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('831581b3a20585e69b478d159f3cf575da33f1fa6d0928e2f75c0f1650b8d565f7ff0abc0c9d4c1bca10b374cc3b28ba5cc4979c55100b227c68e498eb2f727b')
+sha512sums=('2db7e3a14260b6ff08cb1a38f705b7e4c0cfc0533a3609913aaa9b58e85cce8695fa7bd97b4a58b86c9181966c6e68a475143db23fafd4a4876c054685991a28')
 
 build() {
   cd "${pkgname}-${pkgver}"
