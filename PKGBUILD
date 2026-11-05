@@ -38,7 +38,7 @@ sha512sums=('5740bf3beb8494f156ef93fe0b84511a1e31388871b5f34af71e637b63ebbcd819d
   'SKIP'
   '7ca4fc08ad5074f7ae7115f8eb511ad53b84edcf6770395d43512bee73e38ffad0e1b59850e7732454abdf880266307cf5fd396ac516ef1f9489d4fb592a455b'
   'SKIP'
-  '8d5076afcf484875f9c990b17117e19452d5a301a3d4c5275a879ea21ade60286bf9b4ca90ee99a381750cf09c0842c23bbf028e1c69169c3639f8f36b64e54a'
+  'a32501433e60802869ad970419ea1f73ba7af90aa6825299576184e6e43f06858a51727291a837129553af078354e150cb1265a85aa4528772ae018d21666e61'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3')
 b2sums=('40ab8c2bd0bf247e4f131cfad93801b4f7d8a4c878d07fae071751f3ba70bdb5bc3794b29b7b92e637fc963d8c3850ead7a0c6e3279adf8a9b0bd5b6b781c611'
   'SKIP'
@@ -47,7 +47,7 @@ b2sums=('40ab8c2bd0bf247e4f131cfad93801b4f7d8a4c878d07fae071751f3ba70bdb5bc3794b
   'SKIP'
   'a596fe2649f4f9d5644b3abe7df3fa1d921ec378324691f04e17df60e3ebec39f3877ecb68519b71fde1a0a8144e48b35556febb241fa3cc631794c7e866f8d5'
   'SKIP'
-  '9d19b3f89340e85170c3471cfc696530a149d2d166fdd32b5fc1d8db7f8ec07a801cd2a676df8eb3fe7cd64367116d56c737e2ab0a21ee5f92f0f590143997fe'
+  '18c1a5f6046c090d2107ea3d0bfdd1e4aaa49e1f7659d281403fe3a0b619fcff0b786af73482237e5849e176da50044d8fbf134eb12b11fdf1e7600be2b0979d'
   'b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600')
 
 # Clang, like upstream's builds: the code builds with -Werror
@@ -71,8 +71,9 @@ prepare() {
   git -C third_party/khook config submodule.third_party/safetyhook.url "$srcdir/safetyhook"
   git -C third_party/khook -c protocol.file.allow=always submodule update --force third_party/safetyhook
 
-  # The loader's tests with KHook's headers, which the loader's sources include, like the loader
-  # (https://github.com/alliedmodders/metamod-source/pull/293)
+  # The loader's tests with KHook's headers, which the loader's sources include, like the loader,
+  # and without SourceHook's, which is gone. Upstream wants to rework the tests for the move to KHook
+  # instead (https://github.com/alliedmodders/metamod-source/pull/293)
   patch -Np1 -i "$srcdir/loader-test-khook.patch"
 
   # SafetyHook's Zydis, amalgamated from Zydis and Zycore at the release's commits by Zydis's
