@@ -1,6 +1,6 @@
 pkgbase = qrow-bin
 	pkgdesc = Query rows in tables, documents and databases from the terminal (pre-built binary)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/denisotree/qrow
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = qrow-bin
 	license = Apache-2.0
 	provides = qrow
 	conflicts = qrow
-	source_x86_64 = qrow-bin-1.0.0-x86_64.tar.gz::https://github.com/denisotree/qrow/releases/download/v1.0.0/qrow-v1.0.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 512e44c47a4056b3041a09a81a95dbb1d1df5447930f607ffad2426e181e421b
-	source_aarch64 = qrow-bin-1.0.0-aarch64.tar.gz::https://github.com/denisotree/qrow/releases/download/v1.0.0/qrow-v1.0.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = dc27572085957c6fffcd20e9477a19b66c524a0a3f48440c188462fd959ac705
+	source_x86_64 = qrow-bin-1.1.0-x86_64.tar.gz::https://github.com/denisotree/qrow/releases/download/v1.1.0/qrow-v1.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 084906210a89baaea6c1c584d11c59baad7307fea101bfb009f34edf0ddf7fb3
+	source_aarch64 = qrow-bin-1.1.0-aarch64.tar.gz::https://github.com/denisotree/qrow/releases/download/v1.1.0/qrow-v1.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d5c5b3724f2f87cfe4a2d911251a905dba0a910f6ec5aa4aa62f4e99183bbd28
 
 pkgname = qrow-bin

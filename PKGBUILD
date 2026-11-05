@@ -3,7 +3,7 @@
 # AUR page: https://aur.archlinux.org/packages/qrow-bin
 
 pkgname=qrow-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Query rows in tables, documents and databases from the terminal (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ _base_url="https://github.com/denisotree/qrow/releases/download/v${pkgver}"
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::${_base_url}/qrow-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::${_base_url}/qrow-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('512e44c47a4056b3041a09a81a95dbb1d1df5447930f607ffad2426e181e421b')
-sha256sums_aarch64=('dc27572085957c6fffcd20e9477a19b66c524a0a3f48440c188462fd959ac705')
+sha256sums_x86_64=('084906210a89baaea6c1c584d11c59baad7307fea101bfb009f34edf0ddf7fb3')
+sha256sums_aarch64=('d5c5b3724f2f87cfe4a2d911251a905dba0a910f6ec5aa4aa62f4e99183bbd28')
 
 package() {
     local _src_dir="qrow-v${pkgver}-${CARCH}-unknown-linux-gnu"
