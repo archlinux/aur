@@ -1,7 +1,7 @@
 # Maintainer: Nikolay Bryskin <nikicat@users.noreply.github.com>
 
 pkgname=bisq2
-pkgver=2.1.14
+pkgver=2.1.15
 pkgrel=1
 pkgdesc="The Decentralized Trading Platform"
 arch=('x86_64')
@@ -13,7 +13,7 @@ checkdepends=('pango' 'ttf-dejavu')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
   "git+https://github.com/bisq-network/bitcoind.git"
   "bisq2.desktop")
-sha256sums=('2f33b13ab0a35a60c387d8be673d9711ff56ebf8c278bfc8afe26ab7d36f4b81'
+sha256sums=('2620839a9b866dbfe60a45827c3e73395b0432534510d7b7fa6ce33446a75ebf'
             'SKIP'
             '4168bef82a5330ddaaa7b5055b1107d6eb912cd6b071c29220262173a4b8d61f')
 
