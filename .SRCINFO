@@ -1,11 +1,10 @@
 pkgbase = perl-plack
 	pkgdesc = Perl/CPAN Module Plack: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
-	pkgver = 1.0054
+	pkgver = 1.0057
 	pkgrel = 1
 	url = https://metacpan.org/release/Plack
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-test-requires
 	checkdepends = perl-test-tcp>=2.15
 	checkdepends = perl-cgi-compile
@@ -31,8 +30,8 @@ pkgbase = perl-plack
 	depends = perl-uri>=1.59
 	depends = perl-www-form-urlencoded>=0.23
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0054.tar.gz
-	md5sums = 2aff327a947accfde698fff73b42e1f9
-	sha512sums = 2cc1179e79e620e6bc55d7f5e865e4ca86f39c10ea1477ce9f4918f8b4a9b5cae855b8624e2894106b10aedf83d3d6a32b5fee38faaeb17d8156d257373cbfd8
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0057.tar.gz
+	md5sums = e9962275809ab5ec3891362dc16ebf06
+	sha512sums = 5a905f0c2152df3d907d2308507200871577070fa308ee1dd32ece0c62399faf056f7c52d593328090f6b00620f64ec0528759725f1de5c2020eaa3565464b56
 
 pkgname = perl-plack
