@@ -1,5 +1,26 @@
 # Release Notes
 
+## 2.107.0
+
+This release adds support for Pip 26.3.
+
+* Add support for Pip 26.3. (#3325)
+
+## 2.106.2
+
+This release fixes `pex3 lock export --format pep-751` package marker calculation. As pointed out by
+@gmjimenezc, packages reachable via multiple dependency paths would fail to have markers propagated
+in certain cases.
+
+* Walk all paths when calculating a package marker. (#3324)
+
+## 2.106.1
+
+This release fixes the `--venv-repository` resolver to handle resolves that also include interpreter
+constraints.
+
+* Fix `--venv-repository` to handle ICs. (#3320)
+
 ## 2.106.0
 
 This release adds support for parent directory bindings to `pex --bind-resource-path` (via trailing
