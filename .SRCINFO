@@ -1,6 +1,6 @@
 pkgbase = kiekje
 	pkgdesc = Capture, mark up and keep screenshots
-	pkgver = 0.1.0alpha10
+	pkgver = 0.1.0alpha11
 	pkgrel = 1
 	url = https://github.com/remcostoeten/kiekje
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = kiekje
 	optdepends = gst-plugins-good: capture sound through PulseAudio, and screen recording
 	optdepends = gst-plugin-pipewire: screen recording
 	options = !lto
-	source = kiekje-0.1.0-alpha.10.tar.gz::https://github.com/remcostoeten/kiekje/archive/refs/tags/v0.1.0-alpha.10.tar.gz
-	sha256sums = f39b3870cbf20e91e71eb5e5ba4a1f7a6d93dc937d83da98f99c155a6e41ff3b
+	source = kiekje-0.1.0-alpha.11.tar.gz::https://github.com/remcostoeten/kiekje/archive/refs/tags/v0.1.0-alpha.11.tar.gz
+	sha256sums = cf5eade7788397d227c4735704f5820e711cbccc7c31a93cc2d426124274d399
 
 pkgname = kiekje

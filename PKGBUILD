@@ -1,8 +1,8 @@
 # Maintainer: Remco Stoeten
 pkgname=kiekje
-pkgver=0.1.0alpha10
+pkgver=0.1.0alpha11
 pkgrel=1
-_tag=0.1.0-alpha.10
+_tag=0.1.0-alpha.11
 pkgdesc='Capture, mark up and keep screenshots'
 arch=('x86_64' 'aarch64')
 url='https://github.com/remcostoeten/kiekje'
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=('!lto')
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('f39b3870cbf20e91e71eb5e5ba4a1f7a6d93dc937d83da98f99c155a6e41ff3b')
+sha256sums=('cf5eade7788397d227c4735704f5820e711cbccc7c31a93cc2d426124274d399')
 
 prepare() {
     cd "$pkgname-$_tag"
