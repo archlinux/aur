@@ -4,20 +4,32 @@
 
 pkgname=perl-datetime-format-natural
 _dist=DateTime-Format-Natural
-pkgver=1.18
-pkgrel=2
+pkgver=1.27
+pkgrel=1
 pkgdesc='Parse informal natural language date/time strings'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
 url="https://metacpan.org/dist/$_dist"
 _author=SCHUBIGER
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('d9346a4615035459d8bcee0fac3d4ebaea038f4f43b284f69edf73f6ed5751fe')
+sha256sums=('077ea2321a83b2481edb0efeeecfb7e8aefe6140988a171dd09caba06e757d5c')
 
 arch=(any)
-depends=(perl-clone perl-datetime perl-datetime-hires perl-boolean)
+depends=(
+  perl-boolean
+  perl-clone
+  perl-datetime
+  perl-datetime-hires
+  perl-datetime-timezone
+  perl-params-validate
+  perl-scalar-list-utils
+)
 makedepends=(perl-module-build)
 checkdepends=(perl-module-util perl-test-mocktime-hires)
+optdepends=(
+  'perl-date-calc'
+  'perl-datetime-calendar-julian'
+)
 options=('!emptydirs')
 
 build() {
