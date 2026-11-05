@@ -47,7 +47,7 @@
 
 pkgname=dsh-desktop-git
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
@@ -98,7 +98,7 @@ conflicts=('dsh-desktop')
 options=('!strip')
 
 # ── 区域自适应镜像（见文件头说明）─────────────────────────────────────────────
-_geo_cache="${XDG_CACHE_HOME:-$HOME/.cache}/dsh-desktop-git-geo"
+_geo_cache="${XDG_CACHE_HOME:-$HOME/.cache}/dsh-desktop-git-geo.v2"
 _geo_is_cn() {
   [[ ${DSH_NO_MIRROR:-0} == 1 ]] && return 1
   [[ ${DSH_FORCE_CN:-0} == 1 ]] && return 0
