@@ -13,6 +13,7 @@ pkgdesc="SMJansson, a JSON extension of SourceMod (in the addons folder of sourc
 arch=(x86_64)
 url="https://github.com/davenonymous/SMJansson"
 # The extension's code says GPL 3.0 with SourceMod's exceptions; the repository has no licence file
+# (https://github.com/davenonymous/SMJansson/issues/13)
 license=(GPL-3.0-only LicenseRef-SourceMod-exception)
 depends=(lib32-gcc-libs lib32-glibc lib32-jansson sourcemod)
 # The sources of the installed SourceMod, which it's built against
