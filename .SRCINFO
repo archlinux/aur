@@ -1,6 +1,6 @@
 pkgbase = python-cysqlite
 	pkgdesc = Python SQLite driver
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/coleifer/cysqlite
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-cysqlite
 	depends = python
 	depends = cython
 	depends = sqlite
-	source = https://files.pythonhosted.org/packages/source/c/cysqlite/cysqlite-0.4.0.tar.gz
-	sha256sums = 723d6d1eda17ba05eaeb0261a11d91912a9ed1ce277d2a64d5cd09499de321e4
+	source = https://files.pythonhosted.org/packages/source/c/cysqlite/cysqlite-0.4.1.tar.gz
+	sha256sums = 646dc1beb3db264315c023d6ef686a07ce57d47d99cd13e4c086e10f0af69b90
 
 pkgname = python-cysqlite
