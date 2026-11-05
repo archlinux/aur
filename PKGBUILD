@@ -15,9 +15,9 @@
 # QoderWake service (https://qoder.cn/).
 
 pkgname=qoderwake-cn-bin
-_upstreamver=1.2.11-cn
-pkgver=1.2.11_cn
-pkgrel=2
+_upstreamver=1.2.12-cn
+pkgver=1.2.12_cn
+pkgrel=1
 pkgdesc="QoderWake 国内版 local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.cn/'
@@ -34,8 +34,8 @@ source_x86_64=(
 source_aarch64=(
   "qoderwake-cn-${_upstreamver}-linux-arm64.tar.gz::https://ide.qoder.com.cn/qoderwake-cn/releases/${_upstreamver}/qoderwake-cn_${_upstreamver}_linux_arm64.tar.gz"
 )
-sha256sums_x86_64=('aef63230ee27bd958aa220ddaaff4f9c3bd0723d71dde8c859d118968cfba6cc')
-sha256sums_aarch64=('0a6f9d1edc91f25535451547161517e23e2ee8599840be0f48cb575bda18317d')
+sha256sums_x86_64=('ab4f23fe6a5d863d31fbd72b983b136507c9ee59f8d6f9ddb355c83daf32105d')
+sha256sums_aarch64=('b48f62cc25cca6675123f4ce78a0d6ab440ade52ed038167498b39e7b9b998c8')
 
 package() {
   # The tarball has no top-level directory, so makepkg extracts it flat into
