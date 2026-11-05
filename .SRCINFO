@@ -1,15 +1,17 @@
 pkgbase = go-to-meeting-desktop
 	pkgdesc = Go To Meeting desktop built with electron
 	pkgver = 1.0.0
-	pkgrel = 1
-	arch = x86_64
-	license = custom
-	makedepends = electron
+	pkgrel = 2
+	url = https://github.com/CrankySupertoon/gotomeeting-linux-desktop
+	arch = any
+	license = MIT
 	makedepends = gendesk
-	source_x86_64 = https://raw.githubusercontent.com/CrankySupertoon/gotomeeting-nativefier/master/icon.png
-	source_x86_64 = https://github.com/CrankySupertoon/gotomeeting-linux-desktop/archive/1.0.0.tar.gz
-	md5sums_x86_64 = SKIP
-	md5sums_x86_64 = SKIP
+	makedepends = yarn
+	makedepends = npm
+	depends = electron
+	source = https://raw.githubusercontent.com/CrankySupertoon/gotomeeting-nativefier/master/icon.png
+	source = https://github.com/CrankySupertoon/gotomeeting-linux-desktop/archive/1.0.0.tar.gz
+	md5sums = 287a6b0529c8eab2bb848a39da810a94
+	md5sums = 55a9186d4666bae9ef485825c5b814b6
 
 pkgname = go-to-meeting-desktop
-
