@@ -105,10 +105,3 @@ build() {
 _package_console() {
   _make install DESTDIR="$pkgdir" PKGNAME="$pkgname"
 }
-
-# vtium's terminfo entry, compiled under its name xterm-vtium, and the
-# license (ADR-1500 D3). No package ships an entry named kmscon: the
-# kmscon-terminfo package keeps that name.
-_package_terminfo() {
-  _make install-terminfo DESTDIR="$pkgdir" PKGNAME="$pkgname"
-}
