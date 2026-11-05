@@ -13,6 +13,7 @@ pkgbase = nerd-fonts-apple-hinted
 	makedepends = parallel
 	makedepends = fontforge
 	makedepends = libarchive
+	makedepends = ttfautohint
 	provides = nerd-fonts-apple
 	provides = ttf-font-nerd
 	conflicts = nerd-fonts-apple

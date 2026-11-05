@@ -16,7 +16,7 @@ pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Ne
 arch=(any)
 url="https://developer.apple.com/fonts/"
 license=("custom")
-makedepends=("git" "p7zip" "python" "python-fonttools" "python-skia-pathops" "parallel" "fontforge" "libarchive")
+makedepends=("git" "p7zip" "python" "python-fonttools" "python-skia-pathops" "parallel" "fontforge" "libarchive" "ttfautohint")
 options=(!strip !zipman)
 conflicts=("nerd-fonts-apple" "apple-fonts" "nerd-fonts-sf-mono")
 provides=("nerd-fonts-apple" "ttf-font-nerd")
@@ -76,10 +76,14 @@ sha256sums=('SKIP'
 #    Extra: FONTTUNE_REPO / FONTTUNE_REF pick the fonttune source (local testing:
 #    FONTTUNE_REPO=file:///path/to/fonttune).
 #
-#  Hinting (ttfautohint / CFF hints) was removed: under GNOME's hintslight FreeType
-#  autohints TrueType itself and ignores the bytecode (bitmaps identical, +44% size).
-#  README.md has the measurements; the last version that had it is the commit
-#  before "refactor: move tuning into fonttune".
+#  Hinting is the fonttune step `hint` (ttfautohint; FONTTUNE_HINT=balanced|sharp|
+#  natural|light). Under GNOME's hintslight FreeType ignores the bytecode (bitmaps
+#  identical, +44% size), so the question defaults to "no" there. When it is on,
+#  the package also ships conf.avail/80-$pkgname.conf (not enabled) that makes
+#  the installed families use it:
+#    sudo ln -s /usr/share/fontconfig/conf.avail/80-$pkgname.conf /etc/fonts/conf.d/
+#  GTK4 needs font-rendering=manual + font-hinting=medium as well. The old CFF
+#  engine is gone (worse than ttfautohint); see README.md for the measurements.
 #
 # fonts.conf features: FONTTUNE_FEATURES=fonts.conf takes the tags active in the
 # <match target="font"> blocks of ~/.config/fontconfig/fonts.conf (or $APPLE_FONTS_CONF)
@@ -503,6 +507,15 @@ package() {
   # Fail loud: never silently ship a fontless package.
   if ! compgen -G "$pkgdir/usr/share/fonts/apple/*" >/dev/null; then
     echo "Error: no fonts were installed from $_src."; exit 1
+  fi
+
+  # Opt-in fontconfig snippet when the fonts carry ttfautohint bytecode.
+  if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
+    install -d "$pkgdir/usr/share/fontconfig/conf.avail"
+    python "$srcdir/fonttune/bin/fonttune" hintconf --name "$pkgname" \
+      -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" \
+      "$pkgdir"/usr/share/fonts/apple/*.ttf
+    chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
   fi
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
