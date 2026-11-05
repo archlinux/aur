@@ -51,18 +51,28 @@ sha256sums=('0e7f0a3e924c9a86478fc6fc2946de2e4ab8fc704ed72ee40434ade94bb9b0c6'
 #                                 implies TS_VARIANT=static
 
 # Local fonttune, uncommitted edits included: `/path/to/fonttune/bin/fonttune dev on`
-# (once; `dev off` undoes it) or FONTTUNE_DEV=/path/to/fonttune for one build
-# (FONTTUNE_DEV=off ignores the saved one). The tree is copied to
+# (once; `dev off` undoes it), or for one build FONTTUNE_DEV=true (that saved
+# tree, else ../fonttune next to this PKGBUILD) or =/path/to/fonttune; =false
+# ignores the saved one. The tree is copied to
 # $srcdir/fonttune-local; the git source and .SRCINFO stay as they are.
 _ft() { if [[ -d "$srcdir/fonttune-local" ]]; then echo "$srcdir/fonttune-local"; else echo "$srcdir/fonttune"; fi; }
 
 _ft_local() {  # in prepare(): pick the local tree, if one is set
+  # FONTTUNE_DEV: a path, true|1|yes|on (saved tree, else ../fonttune next to
+  # this PKGBUILD) or false|0|no|off; unset: the saved tree, if any
   local _dev=${FONTTUNE_DEV-} _cf=${XDG_CONFIG_HOME:-$HOME/.config}/fonttune/dev
-  if [[ -z ${FONTTUNE_DEV+x} && -r "$_cf" ]]; then _dev=$(<"$_cf"); fi
   rm -rf "$srcdir/fonttune-local"
-  if [[ -z "$_dev" || "$_dev" == off ]]; then return 0; fi
+  case "${_dev,,}" in
+    false|0|no|off) return 0 ;;
+    true|1|yes|on|'')
+      if [[ -r "$_cf" ]]; then _dev=$(<"$_cf")
+      elif [[ -n "$_dev" ]]; then _dev=$(realpath -m "$startdir/../fonttune")
+      else return 0
+      fi ;;
+  esac
   if [[ ! -f "$_dev/fonttune/__init__.py" ]]; then
-    echo "Error: local fonttune '$_dev' (FONTTUNE_DEV or $_cf) is not a fonttune tree." >&2
+    echo "Error: local fonttune '$_dev' is not a fonttune tree. Set FONTTUNE_DEV to the" >&2
+    echo "       fonttune checkout, or run 'fonttune dev on' there (saves it to $_cf)." >&2
     exit 1
   fi
   mkdir "$srcdir/fonttune-local"
