@@ -152,6 +152,10 @@ def calibrate(blocks, kern, cmap, a):
 def process(path, a):
     f = TTFont(path); gs = f.getGlyphSet(); cmap = f.getBestCmap(); hmtx = f["hmtx"]
     upm = f["head"].unitsPerEm; os2 = f["OS/2"]
+    if f["post"].isFixedPitch:
+        print(f"==> even_spacing: {os.path.basename(path)}: monospaced, skipped"); return
+    if "GPOS" not in f or not any(fr.FeatureTag == "kern" for fr in f["GPOS"].table.FeatureList.FeatureRecord):
+        print(f"==> even_spacing: {os.path.basename(path)}: no GPOS kern feature, skipped"); return
     zone = {"lower": getattr(os2, "sxHeight", 0) or upm // 2,
             "upper": getattr(os2, "sCapHeight", 0) or int(upm * .7)}
     sc = upm / 1000
@@ -179,8 +183,19 @@ def process(path, a):
             depth = 0.22 if depth is None else depth
             strength = 0.8 if strength is None else strength
             print(f"  calibration inconclusive ({'no data' if not cal else 'r=%.2f' % cal[0]}); using depth {depth}, strength {strength}")
+    # A class-kerning subtable needs disjoint classes per side, but one glyph can
+    # serve several letters (Latin I / Cyrillic І, a shared ka.cyrl...): the first
+    # letter to claim a glyph keeps it, per side.
+    own = ({}, {}); memside = []
+    for mem in members:
+        ms = ({}, {})
+        for b, gl in mem.items():
+            for side in (0, 1):
+                keep = tuple(g for g in gl if own[side].setdefault(g, (id(mem), b)) == (id(mem), b))
+                if keep: ms[side][b] = keep
+        memside.append(ms)
     pairs = {}; before, after = [], []
-    for (prof, top), mem in zip(blocks, members):
+    for (prof, top), mem, (ml, mr) in zip(blocks, members, memside):
         g = raw_gaps(prof, depth, top, kern, cmap)
         gap = {k: v[0] + v[1] for k, v in g.items()}
         kerned = {k for k, v in g.items() if v[1]}
@@ -189,7 +204,7 @@ def process(path, a):
             d = max(-a.max * sc, min(a.max * sc, (target - gv) * strength))
             if abs(d) < a.min * sc or (l, r) in kerned: d = 0
             before.append(gv); after.append(gv + d)
-            if d: pairs[mem[l], mem[r]] = (buildValue({"XAdvance": int(round(d))}), buildValue({}))
+            if d and l in ml and r in mr: pairs[ml[l], mr[r]] = (buildValue({"XAdvance": int(round(d))}), buildValue({}))
             if a.report and chr(l) + chr(r) in a.report:
                 print(f"  {chr(l)}{chr(r)}: gap {gv:6.1f}  target {target:6.1f}  kern {d:+6.1f}")
     if a.stats and before:
