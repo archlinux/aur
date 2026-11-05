@@ -2,19 +2,19 @@
 
 _modver=1.3.0
 pkgname=asterisk-codec_opus
-_astver=23.0
+_astver=24.0
 pkgver=${_astver}_${_modver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Opus Software Codec for Asterisk"
 url=https://digium.com
 license=(LicenseRef-Digium-EULA)
 arch=(x86_64)
 options=(!debug !strip)
 source=(https://downloads.digium.com/pub/telephony/codec_opus/asterisk-${_astver}/x86-64/codec_opus-${pkgver}-x86_64.tar.gz)
-sha256sums=('bb0f1dd87c716686be9b23facf60b3265018c0550b4202add07ae7a028bfaa1f')
+sha256sums=('5a28d340002bd24fef0abda2946ad4460d78c60c510fcf78f0611226cdaf74fc')
 
 package() {
-	depends+=('asterisk>=23.0.0' 'asterisk<24.0.0')
+	depends+=('asterisk>=24.0.0' 'asterisk<25.0.0')
 
 	cd codec_opus-${pkgver}-x86_64
 
