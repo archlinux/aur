@@ -1,7 +1,7 @@
 pkgbase = futubull-desktop-bin
 	pkgdesc = One-Stop Trading Platform for Hong Kong, US and China Connect Stocks
 	pkgver = 16.37.27308
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.futunn.com/
 	arch = x86_64
 	license = custom

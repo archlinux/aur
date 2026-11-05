@@ -4,7 +4,7 @@ _pkgname=futubull-desktop
 
 pkgname=${_pkgname}-bin
 pkgver=16.37.27308
-pkgrel=1
+pkgrel=2
 pkgdesc="One-Stop Trading Platform for Hong Kong, US and China Connect Stocks"
 arch=('x86_64')
 url="https://www.futunn.com/"
@@ -32,8 +32,10 @@ sha256sums_x86_64=('c732f8bf53e3e88c521ceabe9ec7d2e0a9c656cce5652579e5b8095ee32d
                    'a08936d41b249848e7cb1b2339f9cff6db5f7698a76c23580267353ec68fc1f6')
 
 package() {
-  # Extract files from the deb package
-  tar -xJ -f data.tar.xz -C "${pkgdir}"
+  # Read the payload name from this deb and detect its compression automatically
+  local _data_archive
+  _data_archive=$(bsdtar -tf "${srcdir}/${_deb}" 'data.tar*')
+  bsdtar -xf "${srcdir}/${_data_archive}" -C "${pkgdir}"
   mv "${pkgdir}/opt/FTNN" "${pkgdir}/opt/${_pkgname}"
   rm -rf "${pkgdir}/out"
 
