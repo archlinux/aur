@@ -1,6 +1,6 @@
 pkgbase = yserver
 	pkgdesc = A modern X11 server written from scratch in Rust (DRM/KMS + Vulkan)
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/joske/yserver
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = yserver
 	optdepends = xorg-fonts-misc: core X11 bitmap fonts for legacy clients
 	optdepends = lightdm: graphical login (see the example drop-in in /usr/share/doc)
 	options = !lto
-	source = yserver-1.8.0.tar.gz::https://github.com/joske/yserver/archive/refs/tags/v1.8.0.tar.gz
-	sha256sums = a1ec2d4bb5271bd0edbcee927b1167b96bb17b62bec6c4da652c1993cdc44ea8
+	source = yserver-1.9.0.tar.gz::https://github.com/joske/yserver/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 4f0ea0e89f29cc7de84075cfaf66ed0abe57d657bf004cd1fc9400390e36a954
 
 pkgname = yserver
