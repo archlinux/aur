@@ -1,71 +1,49 @@
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Created: 01/11/2011
 
-_author=D/DJ/DJERIUS
-_perlmod=Expect-Simple
-pkgname=perl-expect-simple
+_author=DJERIUS
+_dist=Expect-Simple
+pkgname=perl-${_dist@L}
 pkgver=0.04
-pkgrel=3
-pkgdesc='Expect::Simple - wrapper around the Expect module'
+pkgrel=4
+pkgdesc='wrapper around the Expect module'
 arch=('any')
-url="http://search.cpan.org/dist/Expect-Simple/"
-license=('GPL' 'PerlArtistic')
-groups=()
-depends=('perl>=5.10.0')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-noextract=()
+url=https://metacpan.org/dist/$_dist
+license=('GPL-2.0-or-later')
+depends=(
+    'perl'
+    'perl-expect'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('af83b92185e642695913ff138efe819752e80857759996deafcaab2700ad5db5')
 
-build(){
-  cd "$srcdir"/$_perlmod-$pkgver
-  
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    /usr/bin/perl Build.PL
-    perl Build
-  fi
 }
-check(){
-  cd "$srcdir"/$_perlmod-$pkgver
 
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build test
-  fi
 }
-package(){
-  cd "$srcdir"/$_perlmod-$pkgver
-  
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make install
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build install
-  fi
 
-  # remove perllocal.pod and .packlist
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-md5sums=('bf185be42e59996021f088788168f9ab')
