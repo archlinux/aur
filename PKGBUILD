@@ -5,15 +5,17 @@
 # 五行、重新生成 .SRCINFO 并 push。**其余内容**（依赖、package()、desktop 条目等）
 # 改本仓库里的这份模板即可，CI 会原样带上去。
 #
-# 产物布局：自包含应用（内置 JBR 运行时）整体装进 /opt/CPPlayer，
+# 产物布局：应用主体装进 /opt/CPPlayer，不内置 JBR 运行时；
+# /opt/CPPlayer/lib/runtime 软链接至系统 /usr/lib/jvm/jbr25（由依赖包 jbr25 提供）。
 # /usr/bin/cpplayer 是跳板脚本（exec /opt/CPPlayer/bin/CPPlayer "$@"）。
-# 与 app/build.gradle.kts 的 packageLinuxTarGz 产出的 tar.gz 布局对应：
+# 对应布局：
 #   CPPlayer/bin/CPPlayer          启动器
-#   CPPlayer/lib/runtime/...       jlink 裁剪的 JBR 运行时
+#   CPPlayer/lib/app/*.jar         应用字节码与依赖
+#   CPPlayer/lib/runtime           软链接至 /usr/lib/jvm/jbr25
 #   CPPlayer/lib/CPPlayer.png 等   图标（jpackage 放置）
 
 pkgname=cpplayer-bin
-pkgver=1.7.8
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Cross-platform music player (Material 3 Expressive) - prebuilt binaries"
 arch=('x86_64')
@@ -21,32 +23,42 @@ url="https://github.com/Aurora-Nasa-1/CPPlayer-KMP"
 # 仓库目前没有 LICENSE 文件：先用 LicenseRef-UNLICENSED 占位。
 # 上游加了 LICENSE 后，把这里改成对应 SPDX 标识（MIT / GPL-3.0-or-later ...）。
 license=('LicenseRef-UNLICENSED')
-# 应用自带 JBR 运行时，不需要 java-runtime；这些是运行时镜像动态链接的系统库：
+# AUR 分发流不包含自带 JBR，依赖系统/AUR 安装的 jbr25 运行时（提供 Java 25、原生 WindowMove 与高效 GC）；
+# 其余为运行时动态链接的系统库：
 # alsa-lib —— rodio/CPAL 播放走 ALSA；fontconfig/X11 组 —— AWT/Skiko 窗口与字体。
-depends=('alsa-lib' 'fontconfig' 'libx11' 'libxext' 'libxrender' 'libxtst' 'libxi')
+depends=('jbr25' 'alsa-lib' 'fontconfig' 'libx11' 'libxext' 'libxrender' 'libxtst' 'libxi')
 provides=('cpplayer')
 conflicts=('cpplayer')
 # ⚠️ 下面这行被 CI 的 sed 整行重写（url、下载地址、真实 sha256）；
 # 手工构建时先跑 `updpkgsums`（或 `makepkg -g`）把 SKIP 换成真实哈希。
-source=("CPPlayer-${pkgver}-linux-x64.tar.gz::https://github.com/Aurora-Nasa-1/CPPlayer-KMP/releases/download/v1.7.8/CPPlayer-1.7.8-linux-x64.tar.gz")
-sha256sums=('23613a38529b272f117bcf02e640e203a4c32591f33c9bcc76d5db0fb82ae4c8')
+source=("CPPlayer-${pkgver}-linux-x64.tar.gz::https://github.com/Aurora-Nasa-1/CPPlayer-KMP/releases/download/v1.8.0/CPPlayer-1.8.0-linux-x64.tar.gz")
+sha256sums=('a8409330db42811327acac8cc86acf555fdfb32121ad4dd6d46619bbe626e172')
 
 package() {
-  # 自包含应用整体进 /opt（与 google-chrome / jetbrains-toolbox 同一做法）。
+  # 应用本体进 /opt（与 google-chrome / jetbrains-toolbox 类似）。
   install -dm755 "${pkgdir}/opt"
   cp -a "${srcdir}/CPPlayer" "${pkgdir}/opt/CPPlayer"
 
+  # AUR 分发流不内置 JBR 运行时：剥离自带的 lib/runtime 目录，软链接至系统 jbr25
+  rm -rf "${pkgdir}/opt/CPPlayer/lib/runtime"
+  ln -s /usr/lib/jvm/jbr25 "${pkgdir}/opt/CPPlayer/lib/runtime"
+
   # tar.gz 正常情况下已带 755；这里是最后一道保险，防止权限位在传输中丢失。
   chmod 755 "${pkgdir}/opt/CPPlayer/bin/CPPlayer"
-  find "${pkgdir}/opt/CPPlayer/lib/runtime/bin" -maxdepth 1 -type f -exec chmod 755 {} +
-  if [ -f "${pkgdir}/opt/CPPlayer/lib/runtime/lib/jspawnhelper" ]; then
-    chmod 755 "${pkgdir}/opt/CPPlayer/lib/runtime/lib/jspawnhelper"
-  fi
 
   # 跳板脚本而不是软链：jpackage 启动器按自身真实路径找 ../lib/<名>.cfg，
   # 经 sh -c exec 调用不受 /usr/bin 下符号链接解析的影响。
+  # 启动前校验 jbr25 运行时的存在性，提供清晰的用户报错。
   install -dm755 "${pkgdir}/usr/bin"
-  printf '#!/bin/sh\nexec /opt/CPPlayer/bin/CPPlayer "$@"\n' > "${pkgdir}/usr/bin/cpplayer"
+  cat > "${pkgdir}/usr/bin/cpplayer" <<'LAUNCHER'
+#!/bin/sh
+if [ ! -d "/opt/CPPlayer/lib/runtime" ]; then
+  echo "Error: JetBrains Runtime 25 not found at /usr/lib/jvm/jbr25" >&2
+  echo "Please ensure the 'jbr25' package is installed on your system: pacman -S jbr25" >&2
+  exit 1
+fi
+exec /opt/CPPlayer/bin/CPPlayer "$@"
+LAUNCHER
   chmod 755 "${pkgdir}/usr/bin/cpplayer"
 
   # 桌面图标：jpackage 的 Linux 应用镜像把图标放在 lib/<应用名>.png，
