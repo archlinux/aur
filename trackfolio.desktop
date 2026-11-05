@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Trackfolio
+Comment=Manage your music catalog and audio metadata
+Exec=trackfolio
+Icon=trackfolio
+Terminal=false
+Categories=AudioVideo;Audio;
+Keywords=music;tags;metadata;albums;
+StartupNotify=true

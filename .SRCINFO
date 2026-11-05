@@ -1,0 +1,36 @@
+pkgbase = trackfolio-bin
+	pkgdesc = Manage FLAC and MP3 metadata in a local music catalog
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Evilchuck666/Trackfolio
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = zlib
+	depends = fontconfig
+	depends = freetype2
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = xcb-util-cursor
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = wayland
+	depends = dbus
+	provides = trackfolio=0.1.0
+	conflicts = trackfolio
+	options = !strip
+	options = !debug
+	source = trackfolio-0.1.0-linux-x64.tar.gz::https://github.com/Evilchuck666/Trackfolio/releases/download/v0.1.0/Trackfolio-linux-x64.tar.gz
+	source = trackfolio.desktop
+	source = trackfolio.svg
+	sha256sums = 7bd88fc156d141f4458a1fbbaa306f0f8eb71a2fa0638d799236bdd92cf9a3e8
+	sha256sums = 407c8b23864edb6bc66879a5f646e6c5356f8758e08c01220ff9225c826bbb6c
+	sha256sums = 250fa792ce18d2ec3a42e616d6ffd10a0d2eb8966a8f41084f19b2abb646fc71
+
+pkgname = trackfolio-bin
