@@ -1,0 +1,19 @@
+pkgbase = python-openmeteo-sdk
+	pkgdesc = Open-Meteo Python SDK
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://github.com/open-meteo/openmeteo-sdk
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	depends = python-flatbuffers
+	source = https://files.pythonhosted.org/packages/source/o/openmeteo_sdk/openmeteo_sdk-1.30.0.tar.gz
+	sha256sums = 9b643ce593a557eddc880f8526da9c3700ef96f4388e6f43b5e2cadb6d92cff4
+
+pkgname = python-openmeteo-sdk
