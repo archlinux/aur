@@ -1,0 +1,6 @@
+/src
+/pkg
+License.txt
+unRarLicense.txt
+*.zip
+*.pkg.*
