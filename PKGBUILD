@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="Dashboard for browsing and inspecting Claude Code agent sessions"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/gentritbiba/cogpit"
 license=('MIT')
 depends=('c-ares' 'gcc-libs' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libnotify' 'libxcrypt-compat' 'libxss' 'mesa' 'nss' 'alsa-lib')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/gentritbiba/cogpit/releases/download/v${pkgver}/cogpit-${pkgver}.pacman")
-sha256sums=('97405f2b286f60fccf73ac323866715d11a1e7963196fd9ac03dafa79062e058')
+sha256sums=('6c3da7760beb8ac857e3ada003209d1a5fa734941eebf2091cf24cda264e508b')
 # !strip: the .pacman payload bundles the Bun-compiled Claude CLI under
 # app.asar.unpacked; makepkg's default strip truncates its embedded JS bundle
 # and breaks session spawning. !debug: no symbols to split without strip.
