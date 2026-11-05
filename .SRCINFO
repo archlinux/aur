@@ -10,7 +10,7 @@ pkgbase = weread-pake
 	conflicts = weread
 	source = weread-pake-3.17.6.deb::https://github.com/tw93/Pake/releases/download/V3.17.6/WeRead_x86_64.deb
 	source = LICENSE-3.17.6::https://raw.githubusercontent.com/tw93/Pake/V3.17.6/LICENSE
-	sha256sums = bbaba6e37722bd8cd4a3bd99abf0276fdb5aadf9d75cc744435472a1b5062d96
+	sha256sums = 3bbaa3b771fe1dda5008e129087c2f59f1515f0f715d74b820205605cb7cf010
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = weread-pake
