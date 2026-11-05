@@ -3,7 +3,7 @@
 _fname=mada
 pkgbase=$_fname-font
 pkgname=ttf-$_fname-variable
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='A geometric, unmodulted Arabic display typeface'
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/aliftype/$_fname"
 license=(OFL)
 provides=("$pkgbase")
 source=("$url/releases/download/v$pkgver/${_fname^}-$pkgver.zip")
-sha256sums=('349e87879f6813d12638e0c21f465b25f090b96209ec6627dd2d5574f0a1ea7d')
+sha256sums=('b40a1078ca557a9797ed54464c3fe27142e6ac7f14a8e052672bcd909a436ee6')
 
 package_ttf-mada-variable() {
 	cd "${_fname^}-$pkgver"
