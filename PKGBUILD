@@ -1,7 +1,7 @@
 # Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 
 pkgname=nodeterm-bin
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Node-based terminal manager — multiple draggable, zoomable terminals on a single canvas"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('nodeterm')
 conflicts=('nodeterm')
 options=('!strip' '!emptydirs')
 source=("node-terminal_${pkgver}_amd64.deb::https://github.com/eneskirca/nodeterm/releases/download/v${pkgver}/node-terminal_${pkgver}_amd64.deb")
-sha256sums=('206fe157525e54140650b4bb7b2bdbdbd8b592961b7a6a2ab974c136b8182638')
+sha256sums=('95d0b7ec9016f23adf7a8092bfda7e3ecc8e8d8a9610b87e5722f1f5319ac2ef')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
