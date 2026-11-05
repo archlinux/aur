@@ -41,7 +41,7 @@ sha256sums=('4509ad62e97c2e07c7fbc51180caba092b66fb2967e4de7dcba149ab3beb3b15'
 # Upstream ships NO hinting. Tuning (ttfautohint, gasp, kerning/spacing, pixel
 # grid, features baked into calt, ...) is done by fonttune, which asks in
 # prepare(); every key can be preset as FONTTUNE_<KEY> (e.g. FONTTUNE_HINT=natural).
-# Local testing: FONTTUNE_REPO=file:///path/to/fonttune. See README.md for the
+# Local testing: `fonttune dev on` (see _ft_local). See README.md for the
 # measurements and FEATURES.md for what the font can do.
 #
 # Package options (environment; asked on a TTY when unset):
@@ -62,9 +62,33 @@ sha256sums=('4509ad62e97c2e07c7fbc51180caba092b66fb2967e4de7dcba149ab3beb3b15'
 #   FONTTUNE_HINT=natural makepkg -si
 #   NERD_PATCH=true STATIC_WEIGHTS="400 700" makepkg -si
 
+# Local fonttune, uncommitted edits included: `/path/to/fonttune/bin/fonttune dev on`
+# (once; `dev off` undoes it) or FONTTUNE_DEV=/path/to/fonttune for one build
+# (FONTTUNE_DEV=off ignores the saved one). The tree is copied to
+# $srcdir/fonttune-local; the git source and .SRCINFO stay as they are.
+_ft() { if [[ -d "$srcdir/fonttune-local" ]]; then echo "$srcdir/fonttune-local"; else echo "$srcdir/fonttune"; fi; }
+
+_ft_local() {  # in prepare(): pick the local tree, if one is set
+  local _dev=${FONTTUNE_DEV-} _cf=${XDG_CONFIG_HOME:-$HOME/.config}/fonttune/dev
+  if [[ -z ${FONTTUNE_DEV+x} && -r "$_cf" ]]; then _dev=$(<"$_cf"); fi
+  rm -rf "$srcdir/fonttune-local"
+  if [[ -z "$_dev" || "$_dev" == off ]]; then return 0; fi
+  if [[ ! -f "$_dev/fonttune/__init__.py" ]]; then
+    echo "Error: local fonttune '$_dev' (FONTTUNE_DEV or $_cf) is not a fonttune tree." >&2
+    exit 1
+  fi
+  mkdir "$srcdir/fonttune-local"
+  tar -C "$_dev" --exclude=.git --exclude=__pycache__ -cf - . | tar -C "$srcdir/fonttune-local" -xf -
+  echo "local:$(git -C "$_dev" describe --always --dirty 2>/dev/null || echo "$_dev")" \
+    > "$srcdir/fonttune-local/.rev"
+  echo "==> fonttune: LOCAL tree $_dev ($(<"$srcdir/fonttune-local/.rev"))" >&2
+}
+
+_ft_rev() { cat "$(_ft)/.rev" 2>/dev/null || git -C "$srcdir/fonttune" describe --always --dirty 2>/dev/null; }
+
 _check_fonttune() {
   local _api
-  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$srcdir/fonttune/fonttune/__init__.py")
+  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$(_ft)/fonttune/__init__.py")
   if [[ "$_api" != "$_ftapi" ]]; then
     echo "Error: fonttune API is '${_api:-?}', this PKGBUILD expects $_ftapi." >&2
     echo "       Update the PKGBUILD for the new fonttune, or pin FONTTUNE_REF=tag=<last-good>." >&2
@@ -86,6 +110,7 @@ _ask() {  # _ask VAR "question" default(y|n): only on a TTY and when VAR is unse
 
 prepare() {
   cd "$srcdir"
+  _ft_local
   _check_fonttune
   _ask NERD_PATCH "Patch with Nerd Fonts glyphs (forces static fonts)" n
   if [[ -z "${GM_VARIANT:-}" && "$NERD_PATCH" != true && -z "${REGULAR_WGHT:-}" && -t 0 ]]; then
@@ -110,9 +135,9 @@ prepare() {
   else
     local -a _st=(--family "Geom" --weights "$STATIC_WEIGHTS")
     echo "==> Cutting static instances..."
-    python "$srcdir/fonttune/bin/fonttune" statics -o "$srcdir/selected" "${_st[@]}" "$srcdir/GeomVF.ttf"
+    python "$(_ft)/bin/fonttune" statics -o "$srcdir/selected" "${_st[@]}" "$srcdir/GeomVF.ttf"
     if [[ "$STATIC_ITALIC" == true ]]; then
-      python "$srcdir/fonttune/bin/fonttune" statics -o "$srcdir/selected" "${_st[@]}" "$srcdir/GeomItalicVF.ttf"
+      python "$(_ft)/bin/fonttune" statics -o "$srcdir/selected" "${_st[@]}" "$srcdir/GeomItalicVF.ttf"
     fi
   fi
   compgen -G "$srcdir/selected/*.ttf" >/dev/null || { echo "Error: no fonts produced." >&2; exit 1; }
@@ -121,7 +146,7 @@ prepare() {
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
   fi
-  python "$srcdir/fonttune/bin/fonttune" configure --defaults clean \
+  python "$(_ft)/bin/fonttune" configure --defaults clean \
     --save-to "$srcdir/fonttune.toml" "$srcdir/selected/"*
 }
 
@@ -135,10 +160,10 @@ build() {
       parallel --will-cite -j"$(nproc)" python "$srcdir/font-patcher/font-patcher" \
         --variable-width-glyphs -q -c {} -out "$srcdir/patched" '>/dev/null'
     compgen -G "$srcdir/patched/*" >/dev/null || { echo "Error: font-patcher produced no output." >&2; exit 1; }
-    parallel --will-cite -j"$(nproc)" python "$srcdir/fonttune/fonttune/steps/fix_names.py" ::: "$srcdir/patched/"*
+    parallel --will-cite -j"$(nproc)" python "$(_ft)/fonttune/steps/fix_names.py" ::: "$srcdir/patched/"*
     _src="$srcdir/patched"
   fi
-  python "$srcdir/fonttune/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
+  python "$(_ft)/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
     --fonts-conf "${GM_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}" \
     --features-match '^Geom' "$_src/"*
   echo "$_src" > "$srcdir/.out"
@@ -150,12 +175,12 @@ package() {
   install -Dm644 -t "$_fontdir" "$_src/"*.ttf
   install -Dm644 "$srcdir/OFL.txt" "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/README.md" "$srcdir/FEATURES.md"
-  git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
+  _ft_rev > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
   install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
 
   if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
     install -d "$pkgdir/usr/share/fontconfig/conf.avail"
-    python "$srcdir/fonttune/bin/fonttune" hintconf --name "$pkgname" \
+    python "$(_ft)/bin/fonttune" hintconf --name "$pkgname" \
       -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" "$_fontdir/"*.ttf
     chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
   fi
