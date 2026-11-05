@@ -1,7 +1,7 @@
 # Maintainer: PulseSync <contact@pulsesync.dev>
 
 pkgname=pulsesync-bin
-pkgver=3.0.3
+pkgver=3.1.0
 pkgrel=1
 _prefix=builds/app
 _branch=beta
@@ -26,8 +26,8 @@ provides=('pulsesync')
 conflicts=('pulsesync')
 options=('!strip')
 
-_asset_version="3.0.3-beta"
-_asset="pulsesync-app-3.0.3-beta-linux-x64.tar.gz"
+_asset_version="3.1.0-beta"
+_asset="pulsesync-app-3.1.0-beta-linux-x64.tar.gz"
 
 source=(
   'pulsesync.desktop'
@@ -35,7 +35,7 @@ source=(
 )
 source_x86_64=("${_asset}::https://s3.pulsesync.dev/${_prefix}/${_branch}/${_asset}")
 sha256sums=('40712fd6e126ebe51de9f7aaa055c044390ab18ab3984048419b7f20c7df9410' 'fb0b48d037e98bdd70c3a5cf0f9587df0a72450245c786f6da80525523c982e1')
-sha256sums_x86_64=('f3694dc55326be332a66b159fc68e0931131e56939652a21791232fddec0d7c8')
+sha256sums_x86_64=('35a1d73b4baeb14c9d183a2b29cec319de1ed7b5df96d08121f997b47c1d3e9b')
 
 package() {
   install -dm755 "${pkgdir}"
