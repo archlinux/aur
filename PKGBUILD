@@ -2,7 +2,7 @@
 # Maintainer: parhelia
 
 pkgname=throne
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64' 'loongarch64' 'riscv64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'gendesk' 'git' 'go' 'lld' 'protobuf' 'qt6-tools' 'vulkan-h
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/throneproj/Throne/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
         "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
-sha256sums=('0b01f134a82a888cf667e4a04e96ba287374a3008d5d507732ba572c56e5d26f'
+sha256sums=('9c666bab1b20a28db1d5f9e7bdcb30a6a549032da7d487e7ec4580ecd9a78327'
             '3bb765a93afa8c4f3b4fbf4440507c79ba32e4e4600e94706ccd7705209e0c34'
             'SKIP')
 
@@ -32,8 +32,8 @@ prepare() {
 
     export GOBIN="${srcdir}/bin"
     export PATH="${PATH}:${GOBIN}"
-    go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+    go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.12
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.6.2
 
     cd gen
     protoc -I . --go_out=. --go-grpc_out=. libcore.proto
@@ -60,7 +60,7 @@ build() {
         -mod=readonly \
         -modcacherw \
         -ldflags="-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}' -X 'internal/godebug.defaultGODEBUG=multipathtcp=0' -checklinkname=0" \
-        -tags="with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale,badlinkname,tfogo_checklinkname0,with_naive_outbound"
+        -tags="with_clash_api,with_quic,with_wireguard,with_utls,with_dhcp,with_tailscale,with_openvpn,with_openconnect,badlinkname,tfogo_checklinkname0,with_naive_outbound"
 }
 
 package() {
