@@ -2,7 +2,7 @@
 
 pkgname=pwm-d77
 _name=pwm
-pkgver=0.6.5
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="PipaWindowManager, a Penrose Lib Tiling Window Manager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/dani-77/pwm"
 license=('MIT')
 provides=('pwm')
 conflicts=('pwm')
-depends=('libx11' 'libxft' 'dmenu' 'st' 'wireless_tools' 'dbus' 'gcc-libs' 'glibc')
+depends=('libx11' 'libxft' 'dmenu' 'st' 'wireless_tools' 'dbus' 'gcc-libs' 'glibc' 'ttf-jetbrains-mono-nerd')
 makedepends=('cargo' 'pkgconf')
 optdepends=(
   'slock: default screen locker'
@@ -27,7 +27,7 @@ optdepends=(
 )
 backup=('etc/xdg/pwm/startup.sh')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c1357cb36638c0553efc0960a964ea174487041196fd165e07fe5f51d6c0b7b4')
+sha256sums=('fadfc12f38f39b6e1479ad88fc043280b25f86f0d5598732a521d9b21e6cc199')
 
 prepare() {
     cd "$_name-$pkgver"

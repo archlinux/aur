@@ -1,6 +1,6 @@
 pkgbase = pwm-d77
 	pkgdesc = PipaWindowManager, a Penrose Lib Tiling Window Manager
-	pkgver = 0.6.5
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/dani-77/pwm
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = pwm-d77
 	depends = dbus
 	depends = gcc-libs
 	depends = glibc
+	depends = ttf-jetbrains-mono-nerd
 	optdepends = slock: default screen locker
 	optdepends = libpulse: volume keys (pactl)
 	optdepends = feh: wallpaper in startup.sh
@@ -29,7 +30,7 @@ pkgbase = pwm-d77
 	optdepends = sxhkd: extra hotkeys in startup.sh
 	optdepends = xf86-input-synaptics: touchpad tap-to-click in startup.sh
 	backup = etc/xdg/pwm/startup.sh
-	source = pwm-0.6.5.tar.gz::https://github.com/dani-77/pwm/archive/refs/tags/0.6.5.tar.gz
-	sha256sums = c1357cb36638c0553efc0960a964ea174487041196fd165e07fe5f51d6c0b7b4
+	source = pwm-0.6.7.tar.gz::https://github.com/dani-77/pwm/archive/refs/tags/0.6.7.tar.gz
+	sha256sums = fadfc12f38f39b6e1479ad88fc043280b25f86f0d5598732a521d9b21e6cc199
 
 pkgname = pwm-d77
