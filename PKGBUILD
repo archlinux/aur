@@ -1,6 +1,6 @@
 pkgbase=rust-dos
 pkgname=('rust-dos' 'libretro-rust-dos')
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/dividebysandwich/rust-dos"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Update with updpkgsums once v$pkgver is tagged.
-sha256sums=('98cd1c88d3297e628f3f72e6da1410fed5088f93024e98276af0c860328bc902')
+sha256sums=('2d9ed8581b9311a8e691e49b9e26fdc3786266a31fcd101dd3380ff400d1a856')
 
 prepare() {
     cd "$pkgbase-$pkgver"
