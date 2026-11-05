@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=simplearchiver
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="An alternative to tar"
 arch=(x86_64)
@@ -12,14 +12,14 @@ options=()
 install=
 changelog=
 source=("${pkgname}::git+https://github.com/Stephen-Seo/SimpleArchiver.git#tag=${pkgver}")
-sha256sums=('fab5b6a2ef87698cb7e27b41042b66c8f97effa0ee298f88cd00dd71c909bcbb')
+sha256sums=('9195f88c7eda45464d49d72aef3c6ea2104a2ddc57742051a55b935baf12f125')
 
 prepare() {
     cd "${pkgname}"
     cmake -S . -B BuildRel \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_WITH_DEBUGGING_INFO=On \
-        -DSDSA_OVERRIDE_VERSION_STRING="${pkgver}-${pkgrel} (AUR)" \
+        -DSDSA_EXTRA_VERSION_STRING="${pkgver}-${pkgrel} (AUR)" \
         -DENABLE_LIBCAP=On
 }
 

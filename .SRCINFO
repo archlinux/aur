@@ -1,6 +1,6 @@
 pkgbase = simplearchiver
 	pkgdesc = An alternative to tar
-	pkgver = 4.3.2
+	pkgver = 4.3.3
 	pkgrel = 1
 	url = https://github.com/Stephen-Seo/SimpleArchiver
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = simplearchiver
 	makedepends = git
 	makedepends = cmake
 	depends = libcap
-	source = simplearchiver::git+https://github.com/Stephen-Seo/SimpleArchiver.git#tag=4.3.2
-	sha256sums = fab5b6a2ef87698cb7e27b41042b66c8f97effa0ee298f88cd00dd71c909bcbb
+	source = simplearchiver::git+https://github.com/Stephen-Seo/SimpleArchiver.git#tag=4.3.3
+	sha256sums = 9195f88c7eda45464d49d72aef3c6ea2104a2ddc57742051a55b935baf12f125
 
 pkgname = simplearchiver
