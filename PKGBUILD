@@ -2,7 +2,7 @@
 
 pkgname=mimick
 pkgver=9.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Immich desktop client that backs up and browses your photos'
 arch=('x86_64' 'aarch64')
 url='https://mimick.nicx.dev'
