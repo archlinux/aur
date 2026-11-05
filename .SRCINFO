@@ -1,0 +1,24 @@
+pkgbase = weather-tui
+	pkgdesc = A TUI application for displaying weather forecasts with hour-by-hour graphs
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/benedikt-mayer/weather-tui
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-textual
+	depends = python-textual-plotext
+	depends = python-dotenv
+	depends = python-httpx
+	depends = python-openmeteo-sdk
+	depends = python-openmeteo-requests
+	provides = weather-tui
+	source = weather-tui-1.4.0.tar.gz::https://github.com/benedikt-mayer/weather-tui/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = ce5171d271de3461f82c37867b4abc114e837380a2a3e049de6b430005d89f04
+
+pkgname = weather-tui

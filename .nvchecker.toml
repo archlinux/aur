@@ -1,0 +1,3 @@
+[weather-tui]
+source = "pypi"
+pypi = "weather-tui"
