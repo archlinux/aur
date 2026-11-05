@@ -15,7 +15,7 @@
 
 pkgbase=skwir
 pkgname=(skwir skwir-mermaid skwir-mupdf)
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents'
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ source_x86_64=("pdfium-linux-x64-$_pdfium.tgz::https://github.com/bblanchon/pdfi
 source_aarch64=("pdfium-linux-arm64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-arm64.tgz")
 # skwir's: filled by aur-prepare after the release tag is pushed; PDFium's: as
 # tools/package/pdfium.lock pins them.
-sha256sums=('194c469bdac3eb8c6b7c0f8599253b443aa138f872e0fb613b344e9258510896')
+sha256sums=('2ad6f576bdf59fe5c8ee9822f27185cb751429262c3f1347f22be92c4fdb2b4c')
 sha256sums_x86_64=('e1c3ce6e270cb5e0c20816b379ad9f2c1309972697c505f508de92bf5e7d6659')
 sha256sums_aarch64=('8b8818f2ec57d1b213d952ca6d7f0ffeca9d0110487d0e20ad83ba918bc92efa')
 
@@ -97,6 +97,8 @@ package_skwir() {
     'fuse3: rclone mounts, and phones KDE holds'
     'avahi: servers nearby, a NAS or a Mac'
     'wsdd: Windows PCs nearby'
+    "inter-font: skwir's own interface font, when chosen"
+    "ttf-jetbrains-mono: skwir's own code font, when chosen"
   )
   # skwir's own, PDFium's, and the Poppler and DjVuLibre readers': a
   # program linking Poppler (GPL v2 or v3) or DjVuLibre (GPL v2 or later)
