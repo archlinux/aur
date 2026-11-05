@@ -1,6 +1,6 @@
 pkgbase = discimagestudio
 	pkgdesc = Disc Image Studio CLI: generate and burn visible image-mapped CD, DVD and BD-R discs (Linux CLI, GUI is Windows-only)
-	pkgver = 1.4.0
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = discimagestudio
 	makedepends = dotnet-sdk>=10
 	depends = dotnet-runtime>=10
 	options = !debug
-	source = discimagestudio-1.4.0.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 895e3d4c1ffe4b1a1b9627a058b7ddc8b6b77a1510cfb78f37b0ff337554b2a7
+	source = discimagestudio-1.4.2.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = c5aee0a467e98d2669242c495471e36bad9bb98453db1af574367e5516f6ba77
 
 pkgname = discimagestudio
