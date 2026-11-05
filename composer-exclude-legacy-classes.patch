@@ -1,0 +1,22 @@
+diff --git a/web/composer.json b/web/composer.json
+index f96b9620..5ff91db9 100644
+--- a/web/composer.json
++++ b/web/composer.json
+@@ -33,7 +33,16 @@
+     "autoload": {
+         "psr-4": {
+             "Sbpp\\": "includes/"
+-        }
++        },
++        "exclude-from-classmap": [
++            "includes/Auth/openid.php",
++            "includes/BanRemoval.php",
++            "includes/BanType.php",
++            "includes/LogSearchType.php",
++            "includes/LogType.php",
++            "includes/SteamID/",
++            "includes/WebPermission.php"
++        ]
+     },
+     "autoload-dev": {
+         "classmap": ["phpstan/"]

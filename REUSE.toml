@@ -29,3 +29,8 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "composer-exclude-legacy-classes.patch"
+SPDX-FileCopyrightText = "SourceBans++ Dev Team"
+SPDX-License-Identifier = "Elastic-2.0"
