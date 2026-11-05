@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shutter-encoder-bin
 _pkgname='Shutter Encoder'
-pkgver=20.4
+pkgver=20.5
 pkgrel=1
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux."
 arch=('x86_64')
@@ -36,23 +36,20 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8c76bac9906e00a0e57ab4ac34889cba0c475cbd30e1d2bf2bee68d4cb5765c2'
-            'd2e12cd239e05ceca84f310de6b1d6beae419d4015f112ca82f830e128e38964')
+sha256sums=('191c6e146c8ee1bdfd3fe974ef256e9a8d73fb8ad709e210c3272d09e3d1f162'
+            '54c9c369d98cf70616bcdcf091d13bafc63b630f89db8e476512bf6984591cc5')
 prepare() {
-    # Create normal launcher
     sed -i -e "
         s/@appname@/${pkgname%-bin}/
         s/@runname@/${pkgname%-bin}/
     " "${srcdir}/${pkgname%-bin}.sh" > "${srcdir}/${pkgname%-bin}.sh.tmp"
     mv "${srcdir}/${pkgname%-bin}.sh.tmp" "${srcdir}/${pkgname%-bin}.sh"
-    # Create high-DPI launcher
     sed "s|/bin/${pkgname%-bin}\"$|/bin/${pkgname%-bin}-high-dpi\"|" \
         "${srcdir}/${pkgname%-bin}.sh" > "${srcdir}/${pkgname%-bin}-high-dpi.sh"
     bsdtar -xf "${srcdir}/data."*
     find "${srcdir}" -type d -exec chmod 755 {} \;
     find "${srcdir}" -type f -name "*.*" -perm 777 -exec chmod 644 {} \;
     find "${srcdir}" -type f -perm 777 -exec chmod 755 {} \;
-    # Fix desktop files
     sed -i -e "
         s|Exec=\"/opt/${pkgname%-bin}/bin/${_pkgname}\"|Exec=/usr/lib/${pkgname%-bin}/bin/${pkgname%-bin}|
         s|Icon=/opt/${pkgname%-bin}/lib/${_pkgname// /_}.png|Icon=${pkgname%-bin}|
@@ -61,37 +58,28 @@ prepare() {
         s|Exec=\"/opt/${pkgname%-bin}/bin/${_pkgname} High-DPI\"|Exec=/usr/lib/${pkgname%-bin}/bin/${pkgname%-bin}-high-dpi|
         s|Icon=/opt/${pkgname%-bin}/lib/${_pkgname// /_}_High-DPI.png|Icon=${pkgname%-bin}-high-dpi|
     " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname// /_}_High-DPI.desktop"
-    # Create symlinks for system-provided tools
-    ln -sf "/usr/bin/7za" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/7za"
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/ffmpeg"
-    ln -sf "/usr/bin/ffprobe" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/ffprobe"
+    for _bin in 7za ffmpeg ffprobe mediainfo dcraw dvdauthor; do
+        ln -sf "/usr/bin/${_bin}" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/${_bin}"
+    done
     ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/yt-dlp_linux"
-    ln -sf "/usr/bin/mediainfo" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/mediainfo"
-    ln -sf "/usr/bin/dcraw" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/dcraw"
-    ln -sf "/usr/bin/dvdauthor" "${srcdir}/opt/${pkgname%-bin}/lib/app/Library/dvdauthor"
 }
 package() {
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}-high-dpi.sh" "${pkgdir}/usr/bin/${pkgname%-bin}-high-dpi"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/opt/${pkgname%-bin}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    # Rename binaries to match pkgname convention
+    cp -a "${srcdir}/opt/${pkgname%-bin}/." "${pkgdir}/usr/lib/${pkgname%-bin}"
     mv "${pkgdir}/usr/lib/${pkgname%-bin}/bin/${_pkgname}" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/bin/${pkgname%-bin}"
     mv "${pkgdir}/usr/lib/${pkgname%-bin}/bin/${_pkgname} High-DPI" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/bin/${pkgname%-bin}-high-dpi"
-    # Rename configs to match renamed binaries
     mv "${pkgdir}/usr/lib/${pkgname%-bin}/lib/app/${_pkgname}.cfg" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/lib/app/${pkgname%-bin}.cfg"
     mv "${pkgdir}/usr/lib/${pkgname%-bin}/lib/app/${_pkgname} High-DPI.cfg" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/lib/app/${pkgname%-bin}-high-dpi.cfg"
-    # Install launcher scripts
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/${pkgname%-bin}-high-dpi.sh" "${pkgdir}/usr/bin/${pkgname%-bin}-high-dpi"
-    # Install desktop files
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname// /_}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname// /_}_High-DPI.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-bin}-high-dpi.desktop"
-    # Install icons
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname// /_}.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname// /_}_High-DPI.png" \
