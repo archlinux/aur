@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=clauth
-pkgver=0.18.0
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Claude Code multi-account manager and usage monitor with auto-switch (CLI, TUI, MCP plugin)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('clauth-bin')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/uwuclxdy/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname-notify-only-update.patch")
-sha256sums=('b89423c6095f1651f6ab4e0667505956a6ac7f1ecacb59b8013d9ad2dfea7cd5'
+sha256sums=('2f3efd3f27bbb714bda4eb18da92e56dfbe9088ffe00e4efbf63ab0c04f8ca99'
             'fed8d959821e18c4cb18756eabd85569013e937ce75932afcec69748cfd6cd95')
 
 prepare() {
