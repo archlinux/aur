@@ -1,0 +1,14 @@
+pkgbase = thronectl
+	pkgdesc = Command-line tool and web UI for the Throne API (control Throne from scripts)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/throneproj/Throne-api
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	options = !debug
+	source = thronectl-0.3.0.tar.gz::https://github.com/throneproj/Throne-api/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 7497cbc2ed047740347b9ad0979d30ab00559f92162b20f0498d3d036233f8a0
+
+pkgname = thronectl
