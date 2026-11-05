@@ -23,7 +23,7 @@ _clangbuild=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=7.2.3
+pkgver=7.2.15
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -49,10 +49,10 @@ options=(
   !strip
 )
 _srcname=linux-${pkgver}
-_kernel_base_commit=58e7295cfecaddec94629160386412e0f2b1e8fe
+_kernel_base_commit=497791a0a96b866d90add64041c47acdff49cae6
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=3cf31ee6f25bcba94c24443fb98d9a50f6f2a263
-_prjc_version=7.2-r0
+_arch_config_commit=a6ef53be1f83078a3311939f9b7df866853d2a04
+_prjc_version=7.2-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20250818.2
 source=(
@@ -67,12 +67,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('a1d10f1b4422f55c9c87fec0d319fd3dfaf8992f40f9c3d6da1d74e6e78ef220c24cdcd5b689070fb4a287070d1cb3659dc9ea79e5500027854f32c1326c67f7'
+b2sums=('a1d1a6572667dfd75f7dde083a8d461db98e08bbc67cdd395e2d73a422ee487bd14392ce69b9511c386b63d9c3c02255978a33149278d6e3bace35937ceda495'
         'SKIP'
-        'da56ce9b2f28b75436c52afbc16913027796d98b467575920d82e15fb626689438e69cc07fedde77a96f2cb2ce10b510a873c43f43105ccec9a44e656b0624e1'
-        '8aadf1d43a98e331de9f7f429289b01b0252b0f929ab25fe7c61ca5bf86dba73f649a0204f83314911f26b3c8b338445986da80ee88fabc85d813e230b31a575'
+        '5f863771b626ec7d01692b8a2c4cf0bbb774fe334320723d0454f0f07410db58106cb56f2715d3add61ca1e2887e753806ea32d7b4b21d37bad32ae44f144ad5'
+        '3f945c725790ad12dfa3c0ff3bead5ede2b25d67e93522b974ddeed02b6c242659af29a2082ff1a8fc6b748f187f5fc9f2a326e77a3ca0cb8bf46f7b29a0d059'
         '58b007e983845716a777b81ca459cbb075f8618654eacbff0690581057632eda494a0238034d9f3e84d504a4a223cb6d895074f0acdfe050a5f9b36a9d981c6d'
-        'b5875b5eb0563c88a2867baa55f709f1d85de162fa9e43645939a2dee749ff60d0999ecd734c00103f0fc99283bfadb14512a22d0c5e9803e29bfeeafb892e87')
+        '76de35d6d36675a65b8f4717877d9c3ca14c72d8c1ef0a929a1e0aecc462426f15ae7390b85fa761e505963e1f07a0268eed7621f61d5600a9a3f6128e882c01')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
