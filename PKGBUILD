@@ -47,10 +47,15 @@ pkgver() {
 # from the other's.
 
 # vtium's Makefile compiles the entry with tic under its name xterm-vtium
-# and stages it with the license, so which file goes where lives in vtium's
+# and stages it with LICENSE, so which file goes where lives in vtium's
 # tree (ADR-1500 D1, D3). make install-terminfo builds no console, so the
 # package needs no cargo.
+# The recipe installs COPYING beside LICENSE itself, so that a package built
+# from a tag whose make install stages LICENSE alone still carries COPYING:
+# the notices for the authors and the third-party code and data vtium
+# builds in.
 package() {
   make -C "$srcdir/vtium" PREFIX=/usr install-terminfo \
     DESTDIR="$pkgdir" PKGNAME="$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/vtium/COPYING"
 }
