@@ -1,13 +1,14 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-session
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64 aarch64)
 url='https://github.com/zskamljic/tde-session'
 license=(GPL-3.0-or-later)
 depends=(
+  gdk-pixbuf2
   glibc
   layer-shell-qt
   libcanberra
@@ -52,9 +53,12 @@ optdepends=(
   'gnome-keyring: remembering the passphrases of SSH keys'
   'fprintd: unlocking the screen with a finger'
   'brightnessctl: the keyboard light keys, where the keyboard does not change it itself'
+  'greetd: Charon, the login screen'
+  'accountsservice: names and pictures of people on the login screen'
+  'xorg-xinit: X11 sessions from the login screen'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('55af4d3700e62e8164346387fa8aab5d4d174055284a44e936e23cc915fffa2b')
+sha256sums=('03d627eec85cdcd9401f4604c8666268d9ae875fdc16fca717c19d36859748f7')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
