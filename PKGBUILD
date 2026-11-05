@@ -103,6 +103,7 @@ package() {
   # - the certificates where certbot puts them
   # - the redirect of port 80 to HTTPS in a location: in the server, it would run before the
   #   location of the challenges and redirect them as well
+  #   (https://github.com/cryptpad/cryptpad/pull/2448)
   sed -Ee 's|^( *)include letsencrypt-webroot;|\1location ^~ /.well-known/acme-challenge/ {\n\1    root /var/lib/letsencrypt;\n\1}|' \
     -e 's|^( *)return 301 (.*)$|\1location / {\n\1    return 301 \2\n\1}|' \
     -e 's|/etc/ssl/lets-encrypt/([^/]+)/cert;|/etc/letsencrypt/live/\1/fullchain.pem;|' \
