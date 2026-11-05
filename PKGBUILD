@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=mcp-toolbox
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='MCP server for databases'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b870a9f2be0ea64dd7d2706f22a60c9d0bcce47742cf674ab08702f8dad64e5f')
+sha256sums=('17090c37ff486feb8bc860f40792147891976301d576cf4ecc9b0df889019e88')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
