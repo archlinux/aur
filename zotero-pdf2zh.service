@@ -25,9 +25,9 @@ EnvironmentFile=-/etc/conf.d/zotero-pdf2zh
 ExecStartPre=/usr/lib/zotero-pdf2zh/runtime-sync
 # --check_update false：服务端的源码更新由 pacman 管，且自更新会被下次启动时
 # 的同步覆盖回去，所以关掉它，避免出现“更新了又回退”的怪现象。
-ExecStart=/usr/bin/uv run --python 3.12 \
-          --with-requirements /var/lib/zotero-pdf2zh/app/requirements.txt \
-          /var/lib/zotero-pdf2zh/app/server.py \
+# 服务端用系统 Python 运行（依赖是 python-flask 等系统包），开机启动不再需要
+# 访问 PyPI；uv 只在首次翻译时用来创建 pdf2zh/pdf2zh_next 环境。
+ExecStart=/usr/bin/python3 /var/lib/zotero-pdf2zh/app/server.py \
           --host ${ZOTERO_PDF2ZH_HOST} --port ${ZOTERO_PDF2ZH_PORT} --check_update false
 Restart=on-failure
 RestartSec=5

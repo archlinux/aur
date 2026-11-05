@@ -4,6 +4,9 @@
 # 服务端把 config/、translated/ 和翻译环境都写在自己的目录下，所以这些脚本
 # 必须跑在 /var/lib/zotero-pdf2zh/app，而不是只读的 /usr/lib/zotero-pdf2zh。
 #
+# 服务端本身用系统 Python（依赖是 python-flask 等系统包）；uv 只在脚本内部
+# 创建 pdf2zh/pdf2zh_next 翻译环境时用到，不会在启动时联网装服务端依赖。
+#
 #   sudo zotero-pdf2zh                            # 前台运行服务端（排查问题用）
 #   sudo zotero-pdf2zh manage_packages.py status  # 查看翻译环境状态
 #   sudo zotero-pdf2zh update_packages.py         # 更新翻译环境依赖
@@ -39,5 +42,4 @@ install -d -o zotero-pdf2zh -g zotero-pdf2zh -m 0755 /var/lib/zotero-pdf2zh
 runuser -u zotero-pdf2zh -- /usr/lib/zotero-pdf2zh/runtime-sync
 exec runuser -u zotero-pdf2zh -- env HOME=/var/lib/zotero-pdf2zh \
 	PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 \
-	/usr/bin/uv run --python 3.12 --with-requirements "$app/requirements.txt" \
-	"$app/$script" "$@"
+	/usr/bin/python3 "$app/$script" "$@"
