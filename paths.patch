@@ -1,0 +1,13 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index c33219c..9e506dd 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -33,5 +33,6 @@ proxmox-installer-types = { version = "0.1.1", features = ["legacy"] }
+ # Local path overrides
+ # NOTE: You must run `cargo update` after changing this for it to take effect!
+ [patch.crates-io]
+-# proxmox-network-types.path = "../proxmox/proxmox-network-types"
+-# proxmox-installer-types.path = "../proxmox/proxmox-installer-types"
++proxmox-network-types.path = "../proxmox/proxmox-network-types"
++proxmox-installer-types.path = "../proxmox/proxmox-installer-types"
++proxmox-sys.path = "../proxmox/proxmox-sys"

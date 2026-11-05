@@ -1,0 +1,36 @@
+pkgbase = proxmox-auto-install-assistant
+	pkgdesc = prepare an automated proxmox install iso
+	pkgver = 9.2.8
+	pkgrel = 1
+	url = https://pve.proxmox.com/wiki/Automated_Installation
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = iso-codes
+	makedepends = perl
+	makedepends = perl-filesys-df
+	makedepends = perl-json
+	makedepends = perl-string-shellquote
+	makedepends = perl-timedate
+	makedepends = perl-uri
+	makedepends = rust
+	makedepends = tzdata
+	depends = glibc
+	depends = libgcc
+	depends = libisoburn
+	depends = libxcrypt
+	depends = openssl
+	depends = zstd
+	options = !lto
+	source = pve-installer::git+https://github.com/proxmox/pve-installer.git#commit=ba2007cd7cc383d64e028c2a798e8f0a065a9b49
+	source = proxmox::git+https://github.com/proxmox/proxmox-rs.git#commit=aa6a31b22aa674f30e8b24ab2fb904b5d50ad8bb
+	source = pve-common::git+https://github.com/proxmox/pve-common.git#commit=389a003d691b94c2dd6cd09d4acb276faa445c91
+	source = Cargo.lock
+	source = paths.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = cccff6d4c4a4d87326b6e1081de9cf57b8dc6ee07079618caccc463bc9ece2b3
+	sha256sums = ae2c9025000504bc063bc028594969e59705d39fa7e4213c9126262661bf8e0b
+
+pkgname = proxmox-auto-install-assistant

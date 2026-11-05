@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/pve-installer/
+/proxmox/
+/pve-common/
+/*.pkg.tar.*
+/*.src.tar.*
