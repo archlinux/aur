@@ -1,6 +1,6 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 pkgname=vibrancegui-linux
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Unofficial VibranceGUI-style vkSumi color profile manager for Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   'steam: Steam game library integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NasirA1991/vibrancegui-linux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51da5e6c08cd74218341b3dbe4a80768abc9a63985fdb03d44bc6e04b60efb56')
+sha256sums=('d6373dbf1d8da25df01dd39960e7bc07816a96ad0d892db6f0a05fd3e8a09592')
 
 build() {
   cd "$pkgname-$pkgver"
