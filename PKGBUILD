@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=dbx-bin
-pkgver=0.6.65
+pkgver=0.6.66
 pkgrel=1
 pkgdesc="Open-source, lightweight, cross-platform database client. Supports MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, ClickHouse, SQL Server"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('dbx')
 options=('!strip' '!debug')
 depends=('webkit2gtk-4.1' 'gtk3')
 source_x86_64=("dbx_${pkgver}_amd64.deb::https://github.com/t8y2/dbx/releases/download/v${pkgver}/dbx_${pkgver}_amd64.deb")
-sha256sums_x86_64=('20f25756bf325eb5cbb9c091d4f6e4016c121c1273cae4361a6f8a45a8c50663')
+sha256sums_x86_64=('460c2608357af13fe552484d5a9bee0953b47712247bc2266dee180b1e627912')
 
 package() {
     # Extract deb package
