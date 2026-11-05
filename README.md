@@ -259,18 +259,18 @@ to 62 px in pango-view.
 
 ---
 
-## 4b. Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+## 4b. Features in apps that ignore fontconfig (`FONTTUNE_FEATURES`)
 
 fontconfig's `fontfeatures` is read by pango/GTK only: Chromium, Electron, Qt
 and LibreOffice shape text without it, and in a browser only the page CSS can
 ask for a feature. A font cannot declare one "on by default" either - a shaper
 applies a fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`). So the
 only way to make a feature the default everywhere is to move its lookups into
-one of those features, which is what `make_features.py` does and what
-`FEATURE_DEFAULTS` runs as the last build step.
+one of those features, which is what fonttune's `features` step does and what
+`FONTTUNE_FEATURES` runs as the last build step.
 
 `makepkg` asks for this during the build: Enter bakes nothing, so a plain build
-is unchanged. `FEATURE_FAMILY` is not prompted for on purpose - it renames every
+is unchanged. `FONTTUNE_FEATURE_FAMILY` is not prompted for on purpose - it renames every
 file to one family, which would merge the cuts a multi-family build installs -
 so the variables below are what an unattended build, or a renamed copy, uses.
 
@@ -278,14 +278,14 @@ This font has four GSUB features - `liga`, `locl`, `pnum`, `rvrn` - so there is
 exactly one candidate:
 
 ```sh
-FEATURE_DEFAULTS=pnum makepkg -si     # proportional figures in every app
+FONTTUNE_FEATURES=pnum makepkg -si     # proportional figures in every app
 ```
 
-`FEATURE_DEFAULTS=fonts.conf` bakes the features that are **active** (not commented out) in the
+fonttune's `features = "fonts.conf"` (`FONTTUNE_FEATURES=fonts.conf`) bakes the features that are **active** (not commented out) in the
 `<match target="font">` blocks for `Roboto Flex` in `~/.config/fontconfig/fonts.conf` (another file:
 `FLEX_FONTS_CONF`), so the one list drives both pango and every other app. Skipped, with a
 `note:` line: negated tags (`-liga`), tags the font has no GSUB lookups for, tags every
-shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones `make_features.py`
+shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones fonttune's `features` step
 refuses (`aalt ordn dlig ...`). If nothing is left, nothing is baked.
 
 Roboto Flex ships **tabular figures** as its default: a column of numbers lines
@@ -296,14 +296,14 @@ baked with no CSS 206.14, baked + `"calt" 0` 239.30).
 
 Two things are different from the other packages here:
 
-- Roboto Flex has **no `calt` at all**, so `make_features.py` creates one and
+- Roboto Flex has **no `calt` at all**, so fonttune's `features` step creates one and
   registers it for every language. That keeps the CSS off switch identical
   across the family (`"calt" 0`), at the cost of a `calt` feature that contains
   only `pnum`.
 - With `pnum` baked there is no way back to tabular figures *from CSS* except
   `"calt" 0`: this font has no `tnum`, the tabular forms are the defaults, so
   `font-feature-settings: "tnum"` has nothing to switch to. Use
-  `FEATURE_FAMILY="Roboto Flex Proportional"` if you want both on the machine.
+  `FONTTUNE_FEATURE_FAMILY="Roboto Flex Proportional"` if you want both on the machine.
   The shipped `79-roboto-flex-families.conf` and `81-roboto-flex-italic.conf`
   keep testing for `Roboto Flex`, so they do not match a renamed family.
 
@@ -353,12 +353,27 @@ Re-run the hinting measurements with `measure.py`
 
 ---
 
+## Build options (fonttune)
+
+Tuning is done by [fonttune](https://github.com/gaou-piou/fonttune); the
+PKGBUILD asks its questions in `prepare()` and each answer can be preset as
+`FONTTUNE_<KEY>` (`hint`, `gasp`, `features`, ...). The default hint question is
+now answered by you (this README measured `balanced`; `FONTTUNE_HINT=balanced`
+keeps the old behaviour). Package options: `FLEX_VARIANT=variable|static`,
+`STATIC_WEIGHTS`, `STATIC_WIDTHS`, `STATIC_ITALIC`, `STATIC_OPSZ`, `ITALIC_FIX`
+and `NERD_PATCH` (implies static); the statics are cut by `fonttune statics`.
+The old `HINT_*`, `GASP_MODE` and `FEATURE_*` variables, `make_statics.py`,
+`make_features.py` and `set_gasp.py` are gone, and some option names in the
+sections above predate this change (`HINT_PRESET` is fonttune's `hint`,
+`FEATURE_DEFAULTS` its `features`). The resolved choices are saved in
+`/usr/share/doc/ttf-roboto-flex-hinted/fonttune.toml`.
+
 ## Differences from the sibling packages
 
 - Roboto Flex is unhinted upstream. `HINTING=false` installs it as shipped,
   which at hintmedium means **no hinting at all** (empty `prep`, see TL;DR),
   and at hintslight the autohinter. Not a useful fallback.
-- Default preset `balanced`, as for SF Pro Text (Inter uses `natural`):
+- Measured preset `balanced` (the old default), as for SF Pro Text (Inter uses `natural`):
   `natural` glues i/j from Regular 13 px.
 - The variable font is the default and the recommended install. Only it has
   automatic optical size and every axis.
