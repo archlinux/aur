@@ -1,4 +1,4 @@
 [rogue]
 source = "regex"
-url = "https://beej.us/moria/files/rogue/"
-regex = 'rogue(\d+(?:\.\d+)+)-src\.tar\.gz'
+url = "http://rogue.rogueforge.net/rogue-5-4/"
+regex = 'Rogue (\d+(?:\.\d+)+) Source Code'

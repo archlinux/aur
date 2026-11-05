@@ -11,12 +11,8 @@ arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="http://rogue.rogueforge.net/rogue-5-4/"
 license=('LicenseRef-custom')
 depends=('ncurses')
-
-# The main site seems to be down. I mirrored the source from the
-# Internet Archive onto my Moria site for now.
-
-#source=("http://rogue.rogueforge.net/files/rogue5.4/rogue${pkgver}-src.tar.gz" "config.guess::https://git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=428664896cf9e92d264976a960c76660938dffce")
-source=("https://beej.us/moria/files/rogue/rogue${pkgver}-src.tar.gz" "config.guess")
+source=("http://rogue.rogueforge.net/files/rogue5.4/rogue${pkgver}-src.tar.gz" "config.guess")
+#source=("https://beej.us/moria/files/rogue/rogue${pkgver}-src.tar.gz" "config.guess")  # Mirror of 5.4.4
 sha256sums=('7d37a61fc098bda0e6fac30799da347294067e8e079e4b40d6c781468e08e8a1'
             'ac18bbd7dc3769e1646af49ebba331a391829f4a73579b735dc8d439bd1c7f07')
 
