@@ -127,7 +127,7 @@ prepare() {
   _check_fonttune
   _ask NERD_PATCH "Patch with Nerd Fonts glyphs (forces static fonts)" n
   if [[ -z "${AK_VARIANT:-}" && "$NERD_PATCH" != true && -z "${REGULAR_WGHT:-}" && -t 0 ]]; then
-    read -r -p "[AK_VARIANT] variable or static [variable] " AK_VARIANT
+    read -r -p "[AK_VARIANT] variable or static (static: pixel grid possible) [variable] " AK_VARIANT
   fi
   AK_VARIANT="${AK_VARIANT:-variable}"
   case "$AK_VARIANT" in variable|static) ;;
