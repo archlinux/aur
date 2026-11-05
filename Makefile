@@ -64,8 +64,14 @@ update-version: pull ## Update the package version in PKGBUILD (use pkgver and p
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Update the package to $(use_pkgver)-$(use_pkgrel)"
 	sed -i -e 's/^pkgver=.*$$/pkgver=$(use_pkgver)/' -e 's/^pkgrel=.*$$/pkgrel=$(use_pkgrel)/' PKGBUILD
 
+.PHONY: update-license
+update-license: update-version ## Refresh LICENSE from upstream at the release tag
+	@echo -e "${CC_YELLOW}==>${CC_WHITE} Refresh LICENSE from upstream${CC_END}"
+	curl -fsSL -o LICENSE "$$(source PKGBUILD && echo "$${url}/raw/v$${pkgver}/LICENSE")"
+	git diff --stat -- LICENSE
+
 .PHONY: update-pkgbuild
-update-pkgbuild: update-version ## Update the checksums in the PKGBUILD
+update-pkgbuild: update-license ## Update the checksums in the PKGBUILD
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Update the checksums in PKGBUILD${CC_END}"
 	updpkgsums
 
@@ -98,7 +104,7 @@ update-sources: update-pkgbuild update-srcinfo ## Update PKGBUILD (pull/version/
 .PHONY: commit
 commit: ## Commit the current PKGBUILD/.SRCINFO to the repository
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Commit the PKGBUILD and .SRCINFO files${CC_END}"
-	git add PKGBUILD .SRCINFO Makefile
+	git add PKGBUILD .SRCINFO Makefile LICENSE
 	git commit -m "Bump package to $$(
 		cat .SRCINFO \
 			| awk -F ' = ' \

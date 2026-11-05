@@ -5,7 +5,7 @@ _pkgname=rune
 _binaryname=rune
 pkgdesc="Fast, GPU-rendered, keyboard-driven IDE for power users"
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/unstablebuild/rune"
 license=('GPL-3.0-or-later')
@@ -32,8 +32,9 @@ source_x86_64=(
 source_aarch64=(
     "$pkgname-$pkgver-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz"
 )
+# upstream's LICENSE at the release tag, refreshed by `make update-sources`
 source=(
-    "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
+    "LICENSE"
 )
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
@@ -57,5 +58,5 @@ package() {
     install -D -m0644 "${srcdir}/${_pkgname}.app/share/icons/hicolor/512x512/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -D -m0644 "${srcdir}/${_pkgname}.app/share/icons/hicolor/1024x1024/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
 
-    install -D -m0644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m0644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
