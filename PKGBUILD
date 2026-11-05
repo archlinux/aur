@@ -7,15 +7,15 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B7.r826.g236efcb1
+pkgver=B7.r829.gcdba29f2
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
-makedepends=('binutils' 'cmake' 'fontconfig' 'fuse3' 'git' 'libegl'
-             'libpipewire' 'libpulse' 'libsamplerate' 'libxi' 'libxpresent'
-             'libxss' 'obs-studio' 'spice-protocol' 'usbredir' 'wayland-protocols')
+makedepends=('binutils' 'cmake' 'fontconfig' 'fuse3' 'git' 'libegl' 'libpipewire'
+             'libpulse' 'libsamplerate' 'libxi' 'libxinerama' 'libxpresent' 'libxss'
+             'obs-studio' 'simde' 'spice-protocol' 'usbredir' 'wayland-protocols')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "LGMP::git+https://github.com/gnif/LGMP.git"
         "PureSpice::git+https://github.com/gnif/PureSpice.git"
