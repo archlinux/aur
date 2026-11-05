@@ -78,7 +78,7 @@ post_install() {
 ==> vtium already holds VTs on this machine, through these links, which the
     console package this one replaced, or an earlier install, left. They
     name vtium@.service, which this package installs, so those VTs stay
-    vtium's and you need change nothing:
+    vtium's and you do not need to change anything:
 EOF
     # shellcheck disable=SC2086 # one path a word
     printf '      %s\n' $links
@@ -96,6 +96,15 @@ EOF
       sudo systemctl restart vtium@tty3.service
 EOF
     _vtium_still_running
+    if [ -z "$links" ]; then
+      cat <<'EOF'
+    No link gives vtium these VTs at their next start, so each goes back to
+    what it had before once its vtium stops. vtium console makes vtium start
+    there again, and vtium console status lists what each VT starts:
+      vtium console status
+      sudo vtium console enable 3
+EOF
+    fi
   fi
 }
 
@@ -124,8 +133,8 @@ pre_remove() {
     printf '%s\n' "    A VT whose link still names vtium@.service then has no console unit;"
     printf '%s\n' "    pacman lists those links when the removal ends. If pacman removes this"
     printf '%s\n' "    package to install another vtium console package, that package"
-    printf '%s\n' "    installs vtium@.service again, the links stay valid, and you need do"
-    printf '%s\n' "    nothing."
+    printf '%s\n' "    installs vtium@.service again, the links stay valid, and you do not need"
+    printf '%s\n' "    to do anything."
   fi
 }
 
@@ -154,12 +163,12 @@ post_remove() {
   [ -n "$left" ] || return 0
   printf '%s\n' "==> If pacman removed this package to install another vtium console package,"
   printf '%s\n' "    such as vtium-minspec in place of vtium, that package installs"
-  printf '%s\n' "    vtium@.service again, the links below stay valid, and you need do"
-  printf '%s\n' "    nothing. Otherwise vtium is removed, but these links to vtium@.service"
-  printf '%s\n' "    are left and point at nothing, so logind would start nothing on those"
-  printf '%s\n' "    VTs. Remove each, and enable its VT's getty at boot again. Where kmscon"
-  printf '%s\n' "    served a VT, skip that VT's add-wants line and link the VT to kmscon"
-  printf '%s\n' "    instead, as shown below:"
+  printf '%s\n' "    vtium@.service again, the links below stay valid, and you do not need to"
+  printf '%s\n' "    do anything. Otherwise vtium is removed, but these links to"
+  printf '%s\n' "    vtium@.service are left and point at nothing, so logind would start"
+  printf '%s\n' "    nothing on those VTs. Remove each, and enable its VT's getty at boot"
+  printf '%s\n' "    again. Where kmscon served a VT, skip that VT's add-wants line and link"
+  printf '%s\n' "    the VT to kmscon instead, as shown below:"
   printf '%s' "$left"
   printf '%s\n' "    The kmscon link, for a VT that kmscon served:"
   printf '%s\n' "      sudo ln -s /usr/lib/systemd/system/kmsconvt@.service \\"
