@@ -6,7 +6,7 @@ pkgver=4.15.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication (pre-built)"
 arch=('x86_64')
-url="https://github.com/Veridian-Zenith/Voix"
+url="https://git.gay/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
 provides=('sudo' 'doas')
@@ -25,7 +25,7 @@ install="${pkgname}.install"
 # AUR helpers (paru/yay) fetch a missing validpgpkey automatically.
 validpgpkeys=('7887165D6B07DE7785BD536E5239ACB42207EE03')
 
-_release="https://github.com/Veridian-Zenith/Voix/releases/download/v${pkgver}"
+_release="https://git.gay/Veridian-Zenith/Voix/releases/download/v${pkgver}"
 
 # x86_64 only: the release pipeline publishes a single prebuilt tarball.
 # The tarball is paired with its detached signature; the .asc gets a SKIP
@@ -34,7 +34,7 @@ source_x86_64=(
     "voix-x86_64-bin.tar.gz::${_release}/voix-x86_64-bin.tar.gz"
     "voix-x86_64-bin.tar.gz.asc::${_release}/voix-x86_64-bin.tar.gz.asc"
 )
-sha256sums_x86_64=('b57da9fe404d25c10acc37b2909c5c18b24c44318e8c5c948669bd639dcb6f98'
+sha256sums_x86_64=('c67153b8782a5ba0e9b2db56b0846285030d512eaa613a039ebd75d3911d37a5'
                    'SKIP')
 
 package() {
