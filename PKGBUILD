@@ -3,7 +3,7 @@
 _pkgauthor=Lifailon
 _pkgname=lazyjournal
 pkgname=${_pkgname}-bin
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='TUI for journalctl, file system logs, as well Docker and Podman containers for quick viewing and filtering with fuzzy find and regex support'
 
@@ -24,9 +24,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_barch[1]}")
 sha256sums=('003691f02cd7daac075ce43b0934ee248498ad462a22c38a2e7eb1a0ff48393b'
-            '04aa2773bf521b37d6c9cceb9b23ad660e7e75802a5e416942da1f7d51149ddc')
-sha256sums_x86_64=('c264bbcb6b30fa6418bbfce2087d0e1ecdc7ad17421772c0f002e4cbf8cf4bd7')
-sha256sums_aarch64=('2718c73349ff1ef297f5a19d3e636ca116c6f8e85106ea5744c6d71bf8df6924')
+            '9c80212f0d9eff6f195bc9fb7282eece6aab0c9f7981c64e5d305bee051a18e4')
+sha256sums_x86_64=('e6f322d764450386ee24581965e9e3c4aad12b3fe926a9fcdc070619bc8d5b2b')
+sha256sums_aarch64=('45ac79b7c74bf5de19682f9dc1a769bdb136185f1cc9031de8c924a7d75ec83f')
 
 package() {
 	cd "${srcdir}/" || exit
