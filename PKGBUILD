@@ -3,7 +3,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=wacli
-pkgver=0.25.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="WhatsApp CLI"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/openclaw/wacli"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='b7603b697e69be591afa83379ced1e73177604c6'
+_commit='535a8b969cc83c3aad57f66be77e8fd4a7fcaaa3'
 source=("git+https://github.com/openclaw/wacli.git#commit=$_commit")
 sha256sums=('SKIP')
 
