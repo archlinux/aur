@@ -2,7 +2,7 @@
 _appname=phoenix
 pkgname="dragonrealms-${_appname}-bin"
 _pkgname='Phoenix'
-pkgver=1.36.2
+pkgver=1.37.0
 _electronversion=34
 pkgrel=1
 pkgdesc="Ignite your DragonRealms journey with Phoenix, a cross-platform game client 🔥."
@@ -13,6 +13,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'libvips'
 )
 options=(
     '!strip'
@@ -23,7 +24,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('501790efd6111ae8616bd495cd9c6788746c7bd1d7c734a17da9fe6d9179d4c5'
+sha256sums=('7bb0cc44c9104e4f775f79700827ab7b1f8a0db8c4eb6dac42eebd69198a9e94'
             '9840c7e4ab122a58a44c4a988d289c6f630c95ad10b7887452e3b326332a0bc3'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')

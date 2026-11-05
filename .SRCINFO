@@ -1,19 +1,20 @@
 pkgbase = dragonrealms-phoenix-bin
 	pkgdesc = Ignite your DragonRealms journey with Phoenix, a cross-platform game client 🔥.
-	pkgver = 1.36.2
+	pkgver = 1.37.0
 	pkgrel = 1
 	url = https://github.com/dragonrealms-phoenix/phoenix
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = electron34
-	provides = dragonrealms-phoenix=1.36.2
+	depends = libvips
+	provides = dragonrealms-phoenix=1.37.0
 	conflicts = dragonrealms-phoenix
 	options = !strip
-	source = dragonrealms-phoenix-1.36.2.deb::https://github.com/dragonrealms-phoenix/phoenix/releases/download/v1.36.2/phoenix-v1.36.2-linux-amd64.deb
-	source = LICENSE-1.36.2.md::https://raw.githubusercontent.com/dragonrealms-phoenix/phoenix/v1.36.2/LICENSE.md
+	source = dragonrealms-phoenix-1.37.0.deb::https://github.com/dragonrealms-phoenix/phoenix/releases/download/v1.37.0/phoenix-v1.37.0-linux-amd64.deb
+	source = LICENSE-1.37.0.md::https://raw.githubusercontent.com/dragonrealms-phoenix/phoenix/v1.37.0/LICENSE.md
 	source = dragonrealms-phoenix.js
 	source = dragonrealms-phoenix.sh
-	sha256sums = 501790efd6111ae8616bd495cd9c6788746c7bd1d7c734a17da9fe6d9179d4c5
+	sha256sums = 7bb0cc44c9104e4f775f79700827ab7b1f8a0db8c4eb6dac42eebd69198a9e94
 	sha256sums = 9840c7e4ab122a58a44c4a988d289c6f630c95ad10b7887452e3b326332a0bc3
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
