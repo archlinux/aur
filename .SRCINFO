@@ -1,13 +1,13 @@
 pkgbase = snd-usb-babyface-pro-dkms
 	pkgdesc = DKMS driver for the RME Babyface Pro FS (proprietary USB mode)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/ismail-bahloul/babyface-pro-linux
 	arch = any
 	license = GPL2
 	depends = dkms
 	optdepends = linux-headers: build against the stock kernel
-	source = https://github.com/ismail-bahloul/babyface-pro-linux/archive/v0.2.2/babyface-pro-linux-0.2.2.tar.gz
-	sha256sums = 7f58e55a636e01f43b625d3dbea1eed505bb8cd88435dc8415038c6cf179c23a
+	source = https://github.com/ismail-bahloul/babyface-pro-linux/archive/v0.2.3/babyface-pro-linux-0.2.3.tar.gz
+	sha256sums = 2ab04aff81154de3ed7ef01bd82b39cb2b27553b782469a34897038c5ddf36f0
 
 pkgname = snd-usb-babyface-pro-dkms
