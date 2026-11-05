@@ -1,6 +1,6 @@
 pkgbase = remotepower-server
 	pkgdesc = Self-hosted fleet-management server for RemotePower (nginx + gunicorn/Flask): dashboards, CVE/drift/compliance, monitoring, AI
-	pkgver = 7.4.0
+	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://github.com/tyxak/remotepower
 	install = remotepower-server.install
@@ -25,10 +25,10 @@ pkgbase = remotepower-server
 	optdepends = postgresql: PostgreSQL storage backend for large / multi-node fleets
 	optdepends = python-websockets: agent push (wake-nudge) daemon — remotepower-push exits without it
 	backup = etc/nginx/snippets/remotepower-locations.conf
-	source = remotepower-7.4.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v7.4.0/remotepower-7.4.0.tar.gz
-	source = remotepower-7.4.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v7.4.0/remotepower-7.4.0.tar.gz.asc
+	source = remotepower-7.5.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v7.5.0/remotepower-7.5.0.tar.gz
+	source = remotepower-7.5.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v7.5.0/remotepower-7.5.0.tar.gz.asc
 	validpgpkeys = E7B5AD456728B8462A8B54BFD488AF115D2CCDBF
-	sha256sums = 81ea994dc031da33539a17bcc43328bc85259be1caff9000683ee0a92d497421
+	sha256sums = 21fc001d58577a432fd6078f4b7b4fdb366482b36e099d31d9279b13d3b84606
 	sha256sums = SKIP
 
 pkgname = remotepower-server
