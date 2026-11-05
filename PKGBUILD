@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fieldcraft
-pkgver=0.7.0
+pkgver=0.7.5
 pkgrel=1
 url="https://tangency-labs.github.io/$pkgname/"
 _url="https://github.com/tangency-labs/$pkgname"
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('3c89fe73ffb2a978b4cc7d68901e6d7e924905a1c8874850234130f7fbbb0a32')
+sha256sums=('c9d666d42af10ffabadedd080405a8365d5f8ce4a4a27a0d402f91c870a47e64')
 
 _srcenv() {
 	cd "$_archive"
@@ -46,6 +46,6 @@ package() {
 	depends+=(libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
-	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/io.github.jyviko.$pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/io.github.tangencylabs.$pkgname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
