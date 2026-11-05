@@ -56,11 +56,11 @@ stylistic sets `ss01`–`ss20`/`cv`. Τα ψηφία είναι αναλογικ
 
 ## Χρήση
 
-- **Ψήσιμο:** `FEATURE_DEFAULTS=tag,...` βάζει features στο `calt` ώστε να τα
-  εφαρμόζουν όλα τα προγράμματα. Το `make_features.py` αρνείται τα `aalt`, `ordn`
+- **Ψήσιμο:** `FONTTUNE_FEATURES=tag,...` βάζει features στο `calt` ώστε να τα
+  εφαρμόζουν όλα τα προγράμματα. Το fonttune αρνείται τα `aalt`, `ordn`
   και `dlig` (τα ft/tt/www μένουν μόνο μέσω CSS/pango). Τα `frac`/`sups` δεν
   προτείνονται (πειράζουν κανονικό κείμενο: `21/2`).
-- **Από το fonts.conf:** `FEATURE_DEFAULTS=fonts.conf` ψήνει όσα features είναι
+- **Από το fonts.conf:** `FONTTUNE_FEATURES=fonts.conf` ψήνει όσα features είναι
   ενεργά στο block της οικογένειας (παραλείπονται τα always-on και όσα δεν υπάρχουν).
 - **fontconfig `fontfeatures`:** φτάνει μόνο σε pango/GTK. Δες το block στο
   `~/.config/fontconfig/fonts.conf`.
