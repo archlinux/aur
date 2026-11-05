@@ -15,8 +15,8 @@
 # commit that GitHub signs with its own key.
 
 pkgbase=vtium-git
-pkgname=('vtium-git')
-pkgver=r1866.16e66a2
+pkgname=vtium-git
+pkgver=0.1.0alpha.5.r0.g2f54fa7
 pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM (git main)'
 arch=('x86_64')
@@ -92,7 +92,7 @@ prepare() {
 #     settings below stay those of the default build.
 #   - HWACCEL=off and DISPLAY_BUFFERS=3, the defaults the console and
 #     vtium-config read for hwaccel and display-buffers (ADR-1500 D8). The
-#     console draws on the CPU until hwaccel = on in /etc/vtium/vtium.conf
+#     console draws on the CPU until a line hwaccel in /etc/vtium/vtium.conf
 #     turns the GPU path on, and keeps three buffers for each display.
 #   - FRITS, the frits make install stages into /etc/vtium/fonts, which each
 #     console package's backup list names.
