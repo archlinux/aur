@@ -14,7 +14,7 @@ source=("https://github.com/AprilNEA/OpenLogi/releases/download/$pkgver/openlogi
 sha256sums=('48e73e4405756cfeab0c904606745e2db013ac5a24f914337f314251dc2fb70a')
 
 package() {
-	bsdtar -xf data.tar.gz -C "$pkgdir/"
+	bsdtar -xf data.tar.* -C "$pkgdir/"
 
 	# The upstream .deb ships this as a template and expands it from its
 	# postinst script. Arch does not run Debian maintainer scripts, so expand it
