@@ -1,6 +1,6 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 pkgname=vibrancegui-linux
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Unofficial VibranceGUI-style vkSumi color profile manager for Linux"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   'xdg-desktop-portal: native file picker for Add manually'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NasirA1991/vibrancegui-linux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('17fa3c9f820c90d07ab7905b8cb4516d07c9d0c766c977dee0fbbbf3a9c6d56d')
+sha256sums=('2551649cebf49a837090beb1b10964a03ba0bf033c8413198392e2f296099f12')
 
 build() {
   cd "$pkgname-$pkgver"
