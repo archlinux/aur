@@ -6,7 +6,7 @@ pkgver=4.15.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64')
-url="https://github.com/Veridian-Zenith/Voix"
+url="https://git.gay/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
 makedepends=('cmake>=3.30' 'clang' 'lld' 'ninja' 'pkgconf' 'ccache')
@@ -32,7 +32,7 @@ source=(
     "voix-src-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/voix-src-${pkgver}.tar.gz"
     "voix-src-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/voix-src-${pkgver}.tar.gz.asc"
 )
-sha256sums=('75145927104f577b1a7372b4d17e3b7acd702714999818168b2aec1d65b69977'
+sha256sums=('55429b76f30f6baf7123783ffb792bd006718f5d9eb151382e0f1c7772ddec99'
             'SKIP')
 
 build() {
