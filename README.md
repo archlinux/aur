@@ -69,7 +69,7 @@ stay clear (see below).
 | gsettings `org.gnome.desktop.interface` | `font-rendering 'manual'`, `font-hinting 'medium'`, `font-antialiasing 'grayscale'` | In `automatic` GTK4 forces hintslight and ignores the snippet |
 | `~/.config/gtk-4.0/settings.ini` | `gtk-hint-font-metrics=false` | Metric hinting makes Inter lighter and changes line height |
 | Firefox `user.js` / about:config | `gfx.text.subpixel-position.force-enabled = true` | At hintmedium Firefox rounds advances to whole pixels (uneven gaps); see the sibling README §9 |
-| build | default `HINT_PRESET=natural` | Least distortion of the bytecode presets (see below) |
+| build | default hint preset `natural` (fonttune `hint`) | Least distortion of the bytecode presets (see below) |
 
 ```sh
 sudo ln -s /usr/share/fontconfig/conf.avail/80-ttf-inter-hinted.conf /etc/fonts/conf.d/
@@ -258,15 +258,26 @@ Two things to know before enabling it:
   805.61.
 - **fontconfig can no longer turn a single feature off.** `-cv11` in
   `fonts.conf` does nothing once `cv11`'s lookups belong to `calt`. With
-  `FEATURE_FAMILY="Inter Single"` the fonts install under a second family
+  fonttune's `feature_family` (e.g. "Inter Single") the fonts install under a second family
   instead, and the stock Inter keeps all its switches.
+
+## Build options (fonttune)
+
+Tuning is done by [fonttune](https://github.com/gaou-piou/fonttune); the
+PKGBUILD asks its questions in `prepare()` and each answer can be preset as
+`FONTTUNE_<KEY>`. Package options: `INTER_VARIANT=ttf|otf|variable`,
+`WANT_INTER`, `WANT_DISPLAY`, `NERD_PATCH`. The old CFF hinting engine
+(`HINT_ENGINE=cff`, afdko) was removed: with `otf` fonttune converts to
+TrueType instead. Some option names in the sections above predate this
+change; the resolved choices are saved in
+`/usr/share/doc/ttf-inter-hinted/fonttune.toml`.
 
 ## Differences from nerd-fonts-apple-hinted
 
 - Inter's best bytecode preset is `natural` (`n`). For SF Pro Text it is
   `balanced` (`q`): there `s` and `n` glue the dots at 10–12 px.
 - Upstream Inter static TTFs are already hinted (ttfautohint `qqq`). Apple's
-  OTFs are effectively unhinted. `HINTING=false` is therefore a reasonable
+  OTFs are effectively unhinted. Answering no to fonttune's `hint` question is therefore a reasonable
   fallback for Inter, but not for SF Pro.
 - Inter keeps the same x-height in every weight, so its variable font hints as
   well as the statics.

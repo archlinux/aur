@@ -1,15 +1,15 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-inter-hinted
+_ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if main moved to another one
 _interver=4.1
 _nfver=3.5.1
 pkgver="${_interver}"
-pkgrel=7
-pkgdesc='Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)'
+pkgrel=8
+pkgdesc='Inter, a typeface designed for UI legibility, tuned with fonttune (optionally Nerd Fonts patched)'
 arch=('any')
 url='https://rsms.me/inter/'
 license=('OFL-1.1')
-makedepends=('python' 'python-fonttools' 'python-skia-pathops' 'fontforge' 'parallel' 'ttfautohint')
-optdepends=('afdko: CFF/OTF hinting via otfautohint (HINT_ENGINE=cff)')
+makedepends=('git' 'python' 'python-fonttools' 'python-skia-pathops' 'fontforge' 'parallel' 'ttfautohint')
 options=(!strip)
 provides=('inter-font')
 conflicts=('inter-font' 'interui-ttf-hinted')
@@ -18,737 +18,126 @@ source=(
   "Inter-${_interver}.zip::https://github.com/rsms/inter/releases/download/v${_interver}/Inter-${_interver}.zip"
   "font-patcher-${_nfver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
   "LICENSE-${_interver}.txt::https://raw.githubusercontent.com/rsms/inter/v${_interver}/LICENSE.txt"
-  "otf2ttf.py"
-  "set_gasp.py"
-  "cff_hint.py"
-  "dedup_blues.py"
-  "make_features.py"
+  "fonttune::git+${FONTTUNE_REPO:-https://github.com/gaou-piou/fonttune.git}#${FONTTUNE_REF:-branch=main}"
 )
 noextract=("font-patcher-${_nfver}.zip")
 sha256sums=('9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a'
-            '151f00af692183a62146453b709f04240dfe72fdc7a1b98a833f664177eacd21'
-            '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
-            '77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc'
-            '980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194'
-            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
+            'SKIP')
 
-# ── What this package does ──────────────────────────────────────────────────
+# Inter (Rasmus Andersson) from the upstream release zip. Tuning (hinting,
+# gasp, features baked into calt, ...) is done by fonttune, which asks in
+# prepare(); every key can be preset as FONTTUNE_<KEY>. Local testing:
+# FONTTUNE_REPO=file:///path/to/fonttune.
 #
-# Takes Inter from the upstream release zip and, depending on the options
-# below, installs the static TTF, static OTF or variable fonts, optionally
-# patched with Nerd Fonts glyphs, re-hinted with ttfautohint and with an
-# opt-in fontconfig snippet.
+#   INTER_VARIANT=ttf|otf|variable  font set (default ttf; asked on a TTY)
+#                                   otf is converted to TrueType by fonttune
+#                                   (otf2ttf); variable is not Nerd-patchable
+#   WANT_INTER=true|false           "Inter"          (default true)
+#   WANT_DISPLAY=true|false         "Inter Display"  (default false)
+#   NERD_PATCH=true                 patch with Nerd Fonts glyphs (default false)
 #
-# rsms already ships the static TTFs hinted (ttfautohint, stem mode qqq). The
-# point of re-hinting is the stem mode. Measured on FreeType 2.14.3 (v40
-# interpreter, grayscale) with pango/cairo, Inter Regular…ExtraBold plus
-# Italic/Bold Italic at 9-20px:
-#
-#   * Only the THIRD letter of --stem-width-mode matters on Linux: v40 reports
-#     itself to the bytecode as DirectWrite ClearType. Upstream's qqq renders
-#     like qsq, and qss like sss.
-#   * x-height, cap height and baseline agree between flat and round letters in
-#     every variant, upstream included, so there is nothing to fix there.
-#   * Shape is what differs. Re-measured 2026-09-29 with real GTK4 (GSK)
-#     renders against an 8x supersampled unhinted reference, Regular/SemiBold
-#     12-16px, mean deviation from the outline: preset sharp 18.1, balanced
-#     15.4, natural 12.9, FreeType's light autohinter 12.8. sharp snaps stems
-#     to whole pixels, which reads as harsh, slightly distorted letters. Hence
-#     the default preset is "natural".
-#   * The i/j dots and diaereses (ï ä ö ü ϊ) stay clear with every stem mode:
-#     0 of 392 glued (7 weights x 10-16px x 8 glyphs) for both s and n. An
-#     earlier count that blamed n stems (72 of 490) does not reproduce.
-#   * --increase-x-height, --x-height-snapping-exceptions, --hinting-limit,
-#     gasp and --windows-compatibility made no visible difference.
-#   * The variable font ships unhinted. It can be hinted (ttfautohint keeps the
-#     fvar/gvar axes, blue zones come from the default master); Inter keeps
-#     the same x-height in every weight, so the instances measure as well as
-#     the statics.
-#
-# FreeType only runs TrueType bytecode at hintstyle hintmedium/hintfull. With
-# the common hintslight setting it uses its own light autohinter instead and
-# ignores these hints. The package therefore ships (but does not enable)
-# /usr/share/fontconfig/conf.avail/80-ttf-inter-hinted.conf, which turns on
-# bytecode hinting for the installed families only. It uses hintmedium, not
-# hintfull: cairo/pango render the two identically, but Blink turns off
-# subpixel positioning at hintfull. Chromium and Electron apps are excluded by
-# prgname: at device scale 1 Skia uses linear advances only for hintslight/none,
-# so at hintmedium every glyph advance is rounded to a whole pixel (uneven
-# gaps; nerd-fonts-apple-hinted README.md §10). Enable it with:
-#
-#   sudo ln -s /usr/share/fontconfig/conf.avail/80-ttf-inter-hinted.conf \
-#              /etc/fonts/conf.d/
-#
-# That is not enough for GTK4 (4.16+): with gtk-font-rendering=automatic, the
-# default, GTK4 hard-codes hintslight and cairo lets that override fontconfig.
-# On GNOME set `gsettings set org.gnome.desktop.interface font-rendering manual`
-# and font-hinting to medium, and put gtk-hint-font-metrics=false in
-# ~/.config/gtk-4.0/settings.ini. See README.md.
-#
-# The alternative is to leave the snippet off and use hintslight with
-# FreeType's stem darkening. It is the smoothest option that still keeps
-# vertical metrics sharp, but it does not use this package's hints (README.md).
-#
-# ── Build-time options ───────────────────────────────────────────────────────
-#
-# Run from a terminal, prepare() asks for INTER_VARIANT, WANT_INTER/
-# WANT_DISPLAY, NERD_PATCH, HINTING, HINT_ENGINE and HINT_PRESET (Enter keeps
-# the default). Any of them already set in the environment is not asked.
-# Without a TTY (chroot, CI, piped stdin) nothing is asked and the environment
-# variables / defaults below apply. The answers are saved to
-# $srcdir/.build_opts for build() and package().
-#
-#  INTER_VARIANT  ttf|otf|variable   Which font set to install (default: ttf)
-#                   ttf       static TrueType (extras/ttf)
-#                   otf       static OpenType/CFF (extras/otf)
-#                   variable  InterVariable.ttf + InterVariable-Italic.ttf
-#
-#  WANT_INTER     true/false  The "Inter" text cut (default: true)
-#  WANT_DISPLAY   true/false  The "Inter Display" optical size (default: false)
-#                             At least one must be true; ignored for variable,
-#                             whose single file carries both via the opsz axis.
-#
-#  NERD_PATCH  true/false  Patch with Nerd Fonts glyphs (default: false).
-#                          font-patcher cannot keep variable axes, so
-#                          INTER_VARIANT=variable switches to ttf when patching.
-#
-#  HINTING     true/false  Re-hint (default: true). false installs the fonts as
-#                          rsms ships them: static TTFs with his qqq ttfautohint
-#                          hints, the variable fonts unhinted.
-#
-#  HINT_ENGINE ttfautohint|cff  (default: ttfautohint). cff keeps OTF outlines
-#                          (otfautohint, or FontForge as a fallback) and only
-#                          applies to INTER_VARIANT=otf without patching.
-#                          ttfautohint converts OTF input to TTF first.
-#
-#  HINT_PRESET  name       Named bundle of ttfautohint flags (default: natural)
-#                          ("Linux" = the stem letter FreeType v40 actually uses)
-#               natural    stem=nnn (Linux: n)  range 8-48   x-height 0   (least distortion)
-#               sharp      stem=sss (Linux: s)  range 6-48   x-height 14  (highest contrast,
-#                                                                       most distortion)
-#               balanced   stem=qsq (Linux: q)  range 8-48   x-height 14  (ttfautohint defaults;
-#                                                                       renders like upstream)
-#               light      stem=nnn (Linux: n)  range 12-48  x-height 0   (HiDPI; <12px left alone)
-#               custom     use the individual HINT_* vars below verbatim
-#
-#  Individual ttfautohint knobs (override the preset; empty = use preset value):
-#  HINT_MODE       nnn|qqq|qsq|sss   3-char --stem-width-mode (grayscale/GDI/DW)
-#                        On Linux only the 3rd letter has an effect.
-#  HINT_RANGE_MIN  N    --hinting-range-min
-#  HINT_RANGE_MAX  N    --hinting-range-max
-#  HINT_LIMIT      N    --hinting-limit (default: same as HINT_RANGE_MAX, so
-#                        hinting really stops above the range; 0 = no limit)
-#  HINT_XHEIGHT    N    --increase-x-height (0 = disable)
-#  HINT_XSNAP_EXC  STR  --x-height-snapping-exceptions (e.g. "13-17"; unset = none)
-#  HINT_DEFAULT_SCRIPT  STR  --default-script (default: latn)
-#  HINT_FALLBACK_SCRIPT STR  --fallback-script for glyphs outside any script
-#                        (default: latn; Nerd-patched builds always use none
-#                        plus --fallback-scaling so icons are not hinted as Latin)
-#  HINT_WINCOMPAT  true/false  --windows-compatibility (Windows/Wine only)
-#  HINT_TTFA_TABLE true/false  --ttfa-table: embed the parameters used, readable
-#                        with `ttfautohint --ttfa-info` (default: false)
-#  HINT_FAMILY_SUFFIX  STR     -F/--family-suffix, e.g. " Hinted"
-#
-#  GASP_MODE  keep|sized|smooth|gridfit  (default: keep; Windows/Wine only,
-#             FreeType 2.14 ignores gasp)
-#               keep     leave the gasp table as ttfautohint wrote it
-#               sized    MS strategy: <=8 grayscale, 9-16 gridfit, 17+ both
-#               smooth   all sizes anti-aliased ({0xFFFF: 15})
-#               gridfit  all sizes gridfit+grayscale ({0xFFFF: 3})
-#
-#  ── Features every app can see (not just pango) ───────────────────────────
-#
-#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
-#                 Bake these GSUB features into the font's 'calt' feature, so
-#                 that EVERY renderer applies them, not only pango. For the
-#                 reason, see the note at the bottom of this block.
-#                 Asked during the build as well (none / the recommended set /
-#                 a list of your own); the variables below are what an
-#                 unattended build uses. FEATURE_FAMILY stays environment-only
-#                 on purpose: it renames every file to one family, which would
-#                 merge the cuts a multi-family build installs.
-#
-#                 Suggested set - the same one the Inter block in
-#                 ~/.config/fontconfig/fonts.conf turns on for pango, so that
-#                 Chromium renders what GTK renders:
-#                     FEATURE_DEFAULTS="zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13"
-#                   zero   slashed zero (0 vs O)
-#                   ss01   open digits: flat-top 3, open 4 6 9 (cv02/cv03/cv04/cv09)
-#                   ss03   round quotes and commas
-#                   cv01   1 with a flag and a base
-#                   cv05   l with a tail, so l / I / 1 cannot be confused
-#                   cv06   simplified u without the spur
-#                   cv11   single-storey a, like Greek alpha
-#                   cv12   compact f   (cv13 compact t)
-#                 A cut that does not have a tag simply skips it: Inter's
-#                 italic has no cv11 (its a stays double-storey), so a set
-#                 that names cv11 still builds. A tag that no file has is an
-#                 error.
-#                 Never aalt, ordn, salt or the small caps: make_features.py
-#                 refuses those unless --allow-risky is passed.
-#
-#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
-#                 (uncommented) in the <match> blocks of the families this build
-#                 installs ("Inter Variable" for the variable
-#                 fonts, "Inter" and/or "Inter Display" for statics, "Inter Nerd Font
-#                 Propo" with NERD_PATCH))
-#                 in ${INTER_FONTS_CONF:-~/.config/fontconfig/fonts.conf}.
-#                 Several families: their tags are merged and baked into every
-#                 file of the build. Dropped with a note: negated tags (-calt),
-#                 tags the upstream fonts lack in GSUB, tags HarfBuzz always
-#                 applies (kern liga ccmp locl mark mkmk calt) and the ones
-#                 make_features.py refuses (aalt ordn dlig salt ...).
-#
-#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
-#                 Install the result as this family instead, so the stock
-#                 Inter stays available. The name must not end in a pango
-#                 style word (Thin, Bold, Italic, ...): pango would drop it.
-#
-#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
-#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
-#  only ask from page CSS. A shaper applies a fixed list of features whatever
-#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
-#  moving a feature's lookups into calt is the only way to make it the
-#  default in every program. Verified in Chromium: the baked font with no CSS
-#  at all is pixel-identical to stock Inter with font-feature-settings
-#  listing the same tags. The escape hatch is CSS "calt" 0, which also drops
-#  Inter's own contextual alternates (the -> arrow, capital-height
-#  punctuation next to capitals). Pair FEATURE_DEFAULTS with
-#  FEATURE_FAMILY if you want to keep both looks on the machine.
-#
-#  Examples:
-#    makepkg -si                              (asks, when run from a terminal)
-#    makepkg -si </dev/null                   (never asks: defaults only)
-#    INTER_VARIANT=variable makepkg -si       (asks everything else)
-#    WANT_DISPLAY=true HINT_PRESET=balanced makepkg -si
-#    NERD_PATCH=true HINT_FAMILY_SUFFIX=" Hinted" makepkg -si
-#    INTER_VARIANT=variable FEATURE_DEFAULTS=zero,ss01,cv05,cv11 makepkg -si
-#    FEATURE_DEFAULTS=cv11 FEATURE_FAMILY="Inter Single" makepkg -si
-# ────────────────────────────────────────────────────────────────────────────
+# rsms ships the static TTFs hinted (ttfautohint, stem mode qqq); the point of
+# the `hint` step is the stem mode (see fonttune's README). The old CFF
+# hinting engine (HINT_ENGINE=cff, otfautohint/FontForge) is gone: converting
+# to TrueType is what helps under hintslight.
 
-# Every option _resolve_options() understands, and so the only keys
-# .build_opts may set.
-_opt_keys=(INTER_VARIANT WANT_INTER WANT_DISPLAY NERD_PATCH HINTING HINT_ENGINE
-           HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX HINT_LIMIT
-           HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT HINT_FALLBACK_SCRIPT
-           HINT_WINCOMPAT HINT_TTFA_TABLE HINT_FAMILY_SUFFIX GASP_MODE
-           FEATURE_DEFAULTS FEATURE_FAMILY)
-
-# _ask_yn QUESTION DEFAULT(y|n) -> sets _yn to true/false
-_ask_yn() {
-  local _ans
-  read -r -p "  $1? [$2] " _ans || _ans=""
-  [[ "${_ans:-$2}" =~ ^[yY] ]] && _yn=true || _yn=false
-}
-
-# _ask_choice TITLE DEFAULT KEY:description ... -> sets _choice to a KEY.
-# Enter (or EOF) keeps DEFAULT; anything else must be a listed number.
-_ask_choice() {
-  local _title="$1" _default="$2"; shift 2
-  local -a _items=("$@")
-  local _i _ans
-  echo "  $_title:"
-  for _i in "${!_items[@]}"; do
-    printf "    %d) %-12s %s%s\n" "$((_i + 1))" "${_items[$_i]%%:*}" "${_items[$_i]#*:}" \
-      "$([[ "${_items[$_i]%%:*}" == "$_default" ]] && echo "  (default)")"
-  done
-  while :; do
-    read -r -p "  > " _ans || _ans=""
-    if [[ -z "$_ans" ]]; then _choice="$_default"; return; fi
-    if [[ "$_ans" =~ ^[0-9]+$ ]] && (( _ans >= 1 && _ans <= ${#_items[@]} )); then
-      _choice="${_items[$((_ans - 1))]%%:*}"; return
-    fi
-    echo "  Enter 1-${#_items[@]}, or press Enter for $_default."
-  done
-}
-
-# Called once, from prepare(): ask for whatever the environment has not set,
-# but only on a terminal, then save every set option to .build_opts.
-# Prints the bakeable tags active in the user's fonts.conf for the families
-# given as $1 ("A|B"); the remaining arguments are the upstream fonts whose GSUB
-# decides which tags exist (a tag no file has would abort make_features.py).
-_features_from_fontsconf() {
-  local _conf="${INTER_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
-  local _fams="$1"; shift
-  if [[ ! -f "$_conf" ]]; then
-    echo "Error: $_conf not found (set INTER_FONTS_CONF)." >&2; return 1
-  fi
-  python - "$_conf" "$_fams" "$@" <<'PY'
-import sys
-import xml.etree.ElementTree as ET
-from fontTools.ttLib import TTFont
-conf, fams = sys.argv[1], set(sys.argv[2].split("|"))
-fonts = sys.argv[3:]
-always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
-refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
-gsub = None
-for f in fonts:
-    try:
-        t = TTFont(f, lazy=True)["GSUB"].table
-    except Exception:
-        continue
-    gsub = (gsub or set()) | {r.FeatureTag for r in t.FeatureList.FeatureRecord}
-if gsub is None:
-    print("  note: no source font found to check GSUB; not filtering by it", file=sys.stderr)
-tags = []
-for m in ET.parse(conf).getroot().iter("match"):
-    if m.get("target") != "font":
-        continue
-    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() in fams
-               for t in m.findall("test")):
-        continue
-    for e in m.findall("edit"):
-        if e.get("name") != "fontfeatures":
-            continue
-        for st in e.findall("string"):
-            tag = (st.text or "").strip()
-            why = None
-            if tag.startswith("-"): why = "negated"
-            elif tag in always: why = "already applied by every shaper"
-            elif tag in refused: why = "refused by make_features.py"
-            elif gsub is not None and tag not in gsub: why = "not a GSUB feature of the font"
-            if why:
-                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
-            elif tag not in tags:
-                tags.append(tag)
-print(",".join(tags))
-PY
-}
-
-_prompt_options() {
-  if [[ -t 0 ]]; then
-    echo ""
-    echo "  ttf-inter-hinted: build options (Enter = default)"
-    echo ""
-    if [[ -z "${INTER_VARIANT:-}" ]]; then
-      _ask_choice "Font set" ttf \
-        "ttf:static TrueType" \
-        "otf:static OpenType/CFF" \
-        "variable:InterVariable (all weights and opsz in one file)"
-      INTER_VARIANT=$_choice
-    fi
-    if [[ "$INTER_VARIANT" != variable && -z "${WANT_INTER:-}${WANT_DISPLAY:-}" ]]; then
-      _ask_yn "Include Inter (text cut)" y;      WANT_INTER=$_yn
-      _ask_yn "Include Inter Display" n;         WANT_DISPLAY=$_yn
-    fi
-    if [[ -z "${NERD_PATCH:-}" ]]; then
-      _ask_yn "Patch with Nerd Fonts glyphs" n;  NERD_PATCH=$_yn
-    fi
-    if [[ -z "${HINTING:-}" ]]; then
-      _ask_yn "Re-hint with ttfautohint (n = keep upstream hints)" y; HINTING=$_yn
-    fi
-    if [[ "$HINTING" == true && "$INTER_VARIANT" == otf && "${NERD_PATCH:-false}" != true && \
-          -z "${HINT_ENGINE:-}" ]]; then
-      _ask_choice "Hinting engine" ttfautohint \
-        "ttfautohint:TrueType bytecode, converts OTF to TTF" \
-        "cff:PostScript/CFF hints, keeps OTF"
-      HINT_ENGINE=$_choice
-    fi
-    if [[ "$HINTING" == true && "${HINT_ENGINE:-ttfautohint}" == ttfautohint && \
-          -z "${HINT_PRESET:-}" ]]; then
-      _ask_choice "Hinting preset" natural \
-        "natural:stem n, 8-48px, no x-height boost (least distortion)" \
-        "sharp:stem s, 6-48px (highest contrast, harsher shapes)" \
-        "balanced:stem q, 8-48px (ttfautohint defaults, like upstream)" \
-        "light:stem n, 12-48px, no x-height boost (HiDPI)" \
-        "custom:use the HINT_* environment variables"
-      HINT_PRESET=$_choice
-    fi
-    echo ""
-    echo "  ── OpenType features ────────────────────────────────────"
-    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
-    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
-    echo "  lookups into calt, which every program applies - the only way Chromium,"
-    echo "  Electron, Qt and LibreOffice honour one, since they never read"
-    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
-    _ask_choice "Bake features into calt" none \
-      "none:leave the fonts as upstream ships them (default)" \
-      "pango:zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13 - the set the fonts.conf block turns on: slashed zero, single-storey a, alternates" \
-      "fonts.conf:the features active for the chosen Inter families in ~/.config/fontconfig/fonts.conf" \
-      "custom:type the tag list yourself"
-    case $_choice in
-      none)    FEATURE_DEFAULTS="" ;;
-      pango)   FEATURE_DEFAULTS="zero,ss01,ss03,cv01,cv05,cv06,cv11,cv12,cv13" ;;
-      fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
-      custom)
-        echo "  Tags, comma or space separated (e.g. \"zero,ss01,cv11\"):"
-        read -r -p "  > " _tags || _tags=""
-                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
-        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
-        _tags="${_tags#,}"; _tags="${_tags%,}"
-        FEATURE_DEFAULTS="$_tags"
-        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
-        ;;
-    esac
-    if [[ -n "$FEATURE_DEFAULTS" ]]; then
-      echo ""
-      echo "A copy under another family name keeps the stock look available; set"
-      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"Inter Alt\") and"
-      echo "build again. Without it the packaged files keep their names and the"
-      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
-    fi
-    echo ""
-  else
-    echo "==> Non-interactive build (no TTY): using environment variables / defaults."
-  fi
-
-  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
-    local _fc_fams="" _fc_files=()
-    if [[ "${INTER_VARIANT:-ttf}" == variable ]]; then
-      _fc_fams="Inter Variable"
-      _fc_files=("$srcdir"/InterVariable*.ttf)
-    else
-      if [[ "${WANT_INTER:-true}" == true ]]; then _fc_fams="Inter"; fi
-      if [[ "${WANT_DISPLAY:-false}" == true ]]; then _fc_fams="${_fc_fams:+$_fc_fams|}Inter Display"; fi
-      _fc_files=("$srcdir"/extras/ttf/Inter-*.ttf "$srcdir"/extras/ttf/InterDisplay-*.ttf)
-    fi
-    if [[ "${NERD_PATCH:-false}" == true ]]; then _fc_fams="${_fc_fams:+$_fc_fams|}Inter Nerd Font Propo"; fi
-    FEATURE_DEFAULTS="$(_features_from_fontsconf "$_fc_fams" "${_fc_files[@]}")" || exit 1
-    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
-  fi
-
-  local _k
-  : > "$srcdir/.build_opts"
-  for _k in "${_opt_keys[@]}"; do
-    # "set" rather than non-empty: HINT_XSNAP_EXC="" (no exceptions) differs
-    # from HINT_XSNAP_EXC unset (ttfautohint's default).
-    if [[ "${!_k+set}" == set ]]; then
-      printf '%s=%s\n' "$_k" "${!_k}" >> "$srcdir/.build_opts"
-    fi
-  done
-}
-
-# Load .build_opts (whitelisted keys only), then apply defaults and validate.
-# makepkg runs build() and package() in separate shells, so both call this.
-_resolve_options() {
-  local _k _v
-  if [[ ! -f "$srcdir/.build_opts" ]]; then
-    echo "Error: $srcdir/.build_opts missing; run a full makepkg (prepare() writes it)." >&2
+_check_fonttune() {
+  local _api
+  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$srcdir/fonttune/fonttune/__init__.py")
+  if [[ "$_api" != "$_ftapi" ]]; then
+    echo "Error: fonttune API is '${_api:-?}', this PKGBUILD expects $_ftapi." >&2
+    echo "       Update the PKGBUILD for the new fonttune, or pin FONTTUNE_REF=tag=<last-good>." >&2
     exit 1
   fi
-  while IFS='=' read -r _k _v; do
-    if [[ " ${_opt_keys[*]} " == *" $_k "* ]]; then
-      printf -v "$_k" '%s' "$_v"
-    fi
-  done < "$srcdir/.build_opts"
+}
 
+_ask() {  # _ask VAR "question" default(y|n): only on a TTY and when VAR is unset
+  local _v="$1" _a
+  [[ -n "${!_v:-}" ]] && return 0
+  if [[ -t 0 ]]; then
+    read -r -p "[$_v] $2 [$3] " _a
+    _a="${_a:-$3}"
+  else
+    _a="$3"
+  fi
+  [[ "$_a" =~ ^[yYtT] ]] && printf -v "$_v" true || printf -v "$_v" false
+}
+
+prepare() {
+  cd "$srcdir"
+  _check_fonttune
+  _ask NERD_PATCH "Patch with Nerd Fonts glyphs" n
+  if [[ -z "${INTER_VARIANT:-}" && -t 0 && "$NERD_PATCH" != true ]]; then
+    read -r -p "[INTER_VARIANT] ttf, otf or variable [ttf] " INTER_VARIANT
+  fi
   INTER_VARIANT="${INTER_VARIANT:-ttf}"
-  WANT_INTER="${WANT_INTER:-true}"
-  WANT_DISPLAY="${WANT_DISPLAY:-false}"
-  NERD_PATCH="${NERD_PATCH:-false}"
-  HINTING="${HINTING:-true}"
-  HINT_ENGINE="${HINT_ENGINE:-ttfautohint}"
-  HINT_PRESET="${HINT_PRESET:-natural}"
-  GASP_MODE="${GASP_MODE:-keep}"
-  HINT_WINCOMPAT="${HINT_WINCOMPAT:-false}"
-  HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
-  HINT_DEFAULT_SCRIPT="${HINT_DEFAULT_SCRIPT:-latn}"
-  HINT_FALLBACK_SCRIPT="${HINT_FALLBACK_SCRIPT:-latn}"
-  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
-  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
-
-  case "$INTER_VARIANT" in
-    ttf|otf|variable) ;;
-    *) echo "Error: INTER_VARIANT='$INTER_VARIANT' invalid (ttf|otf|variable)." >&2; exit 1 ;;
-  esac
-  for _v in WANT_INTER WANT_DISPLAY NERD_PATCH HINTING HINT_WINCOMPAT HINT_TTFA_TABLE; do
-    case "${!_v}" in
-      true|false) ;;
-      *) echo "Error: $_v='${!_v}' must be true or false." >&2; exit 1 ;;
-    esac
-  done
-  # font-patcher drops fvar/gvar, so patching always works on static TTFs.
+  case "$INTER_VARIANT" in ttf|otf|variable) ;;
+    *) echo "Error: INTER_VARIANT='$INTER_VARIANT' invalid (ttf|otf|variable)." >&2; exit 1 ;; esac
   if [[ "$NERD_PATCH" == true && "$INTER_VARIANT" == variable ]]; then
     echo "==> Note: variable fonts cannot be Nerd-patched; using INTER_VARIANT=ttf."
     INTER_VARIANT=ttf
   fi
-  if [[ "$INTER_VARIANT" != variable && "$WANT_INTER" != true && "$WANT_DISPLAY" != true ]]; then
-    echo "Error: select at least one of WANT_INTER / WANT_DISPLAY." >&2; exit 1
-  fi
-  case "$HINT_ENGINE" in
-    ttfautohint|cff) ;;
-    *) echo "Error: HINT_ENGINE='$HINT_ENGINE' invalid (ttfautohint|cff)." >&2; exit 1 ;;
-  esac
-  if [[ "$HINT_ENGINE" == cff && ( "$INTER_VARIANT" != otf || "$NERD_PATCH" == true ) ]]; then
-    echo "==> Note: the cff engine needs INTER_VARIANT=otf without patching; using ttfautohint."
-    HINT_ENGINE=ttfautohint
-  fi
-
-  local _m _lo _hi _xh
-  case "$HINT_PRESET" in
-    sharp)    _m=sss; _lo=6;  _hi=48; _xh=14 ;;
-    balanced) _m=qsq; _lo=8;  _hi=48; _xh=14 ;;
-    natural)  _m=nnn; _lo=8;  _hi=48; _xh=0  ;;
-    light)    _m=nnn; _lo=12; _hi=48; _xh=0  ;;
-    custom)   _m=nnn; _lo=8;  _hi=48; _xh=0  ;;
-    *)
-      echo "Error: unknown HINT_PRESET='$HINT_PRESET'." >&2
-      echo "  Valid: sharp balanced natural light custom" >&2
-      exit 1 ;;
-  esac
-  # A preset never overrides a value the user set explicitly.
-  HINT_MODE="${HINT_MODE:-$_m}"
-  HINT_RANGE_MIN="${HINT_RANGE_MIN:-$_lo}"
-  HINT_RANGE_MAX="${HINT_RANGE_MAX:-$_hi}"
-  HINT_LIMIT="${HINT_LIMIT:-$HINT_RANGE_MAX}"
-  HINT_XHEIGHT="${HINT_XHEIGHT:-$_xh}"
-
-  if [[ ! "$HINT_MODE" =~ ^[nqs]{3}$ ]]; then
-    echo "Error: HINT_MODE='$HINT_MODE' must be 3 chars from n/q/s (e.g. sss)." >&2
-    exit 1
-  fi
-  for _v in HINT_RANGE_MIN HINT_RANGE_MAX HINT_LIMIT HINT_XHEIGHT; do
-    if [[ ! "${!_v}" =~ ^[0-9]+$ ]]; then
-      echo "Error: $_v='${!_v}' must be a non-negative integer." >&2; exit 1
-    fi
-  done
-  if (( HINT_RANGE_MIN > HINT_RANGE_MAX )); then
-    echo "Error: HINT_RANGE_MIN ($HINT_RANGE_MIN) > HINT_RANGE_MAX ($HINT_RANGE_MAX)." >&2
-    exit 1
-  fi
-  for _v in HINT_DEFAULT_SCRIPT HINT_FALLBACK_SCRIPT; do
-    if [[ ! "${!_v}" =~ ^[a-z0-9]{3,4}$ ]]; then
-      echo "Error: $_v='${!_v}' must be a script tag (e.g. latn, none)." >&2; exit 1
-    fi
-  done
-  case "$GASP_MODE" in
-    keep|sized|smooth|gridfit) ;;
-    *) echo "Error: GASP_MODE='$GASP_MODE' invalid (keep|sized|smooth|gridfit)." >&2; exit 1 ;;
-  esac
-  for _v in ${FEATURE_DEFAULTS//,/ }; do
-    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
-      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. cv11)." >&2
-      exit 1
-    fi
-  done
-}
-
-prepare() {
-  _prompt_options
-  _resolve_options   # validate now, so a typo fails before the long steps
-
-  rm -rf "$srcdir/font-patcher"
-  mkdir -p "$srcdir/font-patcher"
-  bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
-}
-
-# Step 6 helper: bake features into calt on the finished files, last, so
-# hinting never sees the extra lookups. Also called on the unhinted/CFF paths.
-_bake_features() {
-  if [[ -n "$FEATURE_DEFAULTS" ]]; then
-    local _fsrc="$srcdir/selected" _fam=()
-    if [[ "$HINTING" == true ]]; then _fsrc="$srcdir/hinted"
-    elif [[ "$NERD_PATCH" == true ]]; then _fsrc="$srcdir/patched"; fi
-    [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
-    echo "==> Baking $FEATURE_DEFAULTS into calt" \
-         "${FEATURE_FAMILY:+(installed as '$FEATURE_FAMILY')}..."
-    python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
-      "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$_fsrc"/*.[ot]tf
-  fi
-}
-
-build() {
-  _resolve_options
-
-  echo "==> Options: variant=$INTER_VARIANT inter=$WANT_INTER display=$WANT_DISPLAY" \
-       "nerd=$NERD_PATCH hinting=$HINTING engine=$HINT_ENGINE"
-  if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
-    echo "==> ttfautohint: preset=$HINT_PRESET stem=$HINT_MODE" \
-         "range=$HINT_RANGE_MIN-$HINT_RANGE_MAX limit=$HINT_LIMIT x-height=$HINT_XHEIGHT" \
-         "x-snap-exc='${HINT_XSNAP_EXC-<default>}' gasp=$GASP_MODE" \
-         "ttfa-table=$HINT_TTFA_TABLE${HINT_FAMILY_SUFFIX:+ suffix='$HINT_FAMILY_SUFFIX'}"
-  fi
-
-  rm -rf "$srcdir/selected" "$srcdir/converted" "$srcdir/patched" "$srcdir/hinted" \
-         "$srcdir/featured"
-  mkdir -p "$srcdir/selected" "$srcdir/converted" "$srcdir/patched" "$srcdir/hinted"
-
-  # ── Step 1: select ──────────────────────────────────────────────────────────
-  # Inter-4.1.zip layout:
-  #   InterVariable.ttf, InterVariable-Italic.ttf   (variable)
-  #   extras/ttf/{Inter,InterDisplay}-*.ttf          (static TrueType, hinted)
-  #   extras/otf/{Inter,InterDisplay}-*.otf          (static OpenType/CFF)
+  rm -rf "$srcdir/selected" "$srcdir/font-patcher"; mkdir -p "$srcdir/selected"
   if [[ "$INTER_VARIANT" == variable ]]; then
     cp "$srcdir"/InterVariable*.ttf "$srcdir/selected/"
   else
-    local _ext="$INTER_VARIANT"
+    _ask WANT_INTER "Include Inter" y
+    _ask WANT_DISPLAY "Include Inter Display" n
+    if [[ "$WANT_INTER$WANT_DISPLAY" != *true* ]]; then
+      echo "Error: select at least one of WANT_INTER / WANT_DISPLAY." >&2; exit 1
+    fi
+    # Inter-4.1.zip: extras/ttf/{Inter,InterDisplay}-*.ttf, extras/otf/*.otf
     if [[ "$WANT_INTER" == true ]]; then
-      find "$srcdir/extras/$_ext" -maxdepth 1 -name "Inter-*.$_ext" -exec cp {} "$srcdir/selected/" \;
+      find "$srcdir/extras/$INTER_VARIANT" -maxdepth 1 -name "Inter-*.$INTER_VARIANT" -exec cp {} "$srcdir/selected/" \;
     fi
     if [[ "$WANT_DISPLAY" == true ]]; then
-      find "$srcdir/extras/$_ext" -maxdepth 1 -name "InterDisplay-*.$_ext" -exec cp {} "$srcdir/selected/" \;
+      find "$srcdir/extras/$INTER_VARIANT" -maxdepth 1 -name "InterDisplay-*.$INTER_VARIANT" -exec cp {} "$srcdir/selected/" \;
     fi
   fi
-  local _count
-  _count=$(find "$srcdir/selected" -type f | wc -l)
-  echo "==> Selected $_count font file(s)."
-  if (( _count == 0 )); then
-    echo "Error: no fonts matched the selection. Has the zip layout changed?" >&2; exit 1
-  fi
-
-  local _hintsrc="$srcdir/selected"
-
-  # ── Step 2: Nerd Fonts patching ─────────────────────────────────────────────
-  # Patch first, hint afterwards: font-patcher does not keep hint bytecode, and
-  # ttfautohint then sees the final glyph set including the icons.
+  compgen -G "$srcdir/selected/*" >/dev/null || { echo "Error: no fonts matched. Has the zip layout changed?" >&2; exit 1; }
+  printf '%s\n%s\n' "$NERD_PATCH" "$INTER_VARIANT" > "$srcdir/.opts"
   if [[ "$NERD_PATCH" == true ]]; then
-    echo "==> Patching with Nerd Fonts glyphs (this takes a while)..."
+    mkdir -p "$srcdir/font-patcher"
+    bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
+  fi
+  python "$srcdir/fonttune/bin/fonttune" configure --defaults clean \
+    --save-to "$srcdir/fonttune.toml" "$srcdir/selected/"*
+}
+
+build() {
+  _check_fonttune
+  local _src="$srcdir/selected"
+  if [[ "$(sed -n 1p "$srcdir/.opts")" == true ]]; then
+    printf "%b" "\e[1;33m==> WARNING:\e[0m Patching with Nerd Fonts glyphs, this takes a while...\n"
+    rm -rf "$srcdir/patched"; mkdir -p "$srcdir/patched"
     find "$srcdir/selected" -type f | sort | \
       parallel --will-cite -j"$(nproc)" python "$srcdir/font-patcher/font-patcher" \
         --variable-width-glyphs -q -c {} -out "$srcdir/patched" '>/dev/null'
-    _count=$(find "$srcdir/patched" -maxdepth 1 \( -name '*.ttf' -o -name '*.otf' \) | wc -l)
-    if (( _count == 0 )); then
-      echo "Error: font-patcher produced no output. See messages above." >&2; exit 1
-    fi
-    echo "==> Patched $_count font(s)."
-    _hintsrc="$srcdir/patched"
+    compgen -G "$srcdir/patched/*" >/dev/null || { echo "Error: font-patcher produced no output." >&2; exit 1; }
+    parallel --will-cite -j"$(nproc)" python "$srcdir/fonttune/fonttune/steps/fix_names.py" ::: "$srcdir/patched/"*
+    _src="$srcdir/patched"
   fi
-
-  if [[ "$HINTING" != true ]]; then
-    _bake_features
-    return 0
-  fi
-
-  # ── Step 3a: CFF hinting (otf, unpatched) ───────────────────────────────────
-  if [[ "$HINT_ENGINE" == cff ]]; then
-    local _f _out
-    if command -v otfautohint >/dev/null 2>&1; then
-      echo "==> CFF hinting with otfautohint..."
-    else
-      echo "==> CFF hinting with FontForge AutoHint (install afdko for otfautohint)..."
-    fi
-    for _f in "$_hintsrc"/*.otf; do
-      _out="$srcdir/hinted/${_f##*/}"
-      if command -v otfautohint >/dev/null 2>&1; then
-        python "$srcdir/dedup_blues.py" "$_f"
-        if ! otfautohint --force-overlap -o "$_out" "$_f" 2>/dev/null; then
-          echo "==> WARNING: otfautohint failed on ${_f##*/}; using FontForge AutoHint."
-          rm -f "$_out"
-          python "$srcdir/cff_hint.py" "$_f" "$_out"
-        fi
-      else
-        python "$srcdir/cff_hint.py" "$_f" "$_out"
-      fi
-    done
-    _bake_features
-    return 0
-  fi
-
-  # ── Step 3b: ttfautohint ────────────────────────────────────────────────────
-  # ttfautohint needs TrueType outlines: convert any OTF (the otf variant, or
-  # patched OTFs) with cu2qu first.
-  if compgen -G "$_hintsrc/*.otf" >/dev/null; then
-    echo "==> Converting OTF to TTF for ttfautohint..."
-    find "$_hintsrc" -maxdepth 1 -name '*.otf' | sort | \
-      parallel --will-cite -j"$(nproc)" \
-        python "$srcdir/otf2ttf.py" --post-format 2.0 --max-error 1.0 \
-          -o "$srcdir/converted/{/.}.ttf" {}
-    find "$_hintsrc" -maxdepth 1 -name '*.ttf' -exec cp {} "$srcdir/converted/" \;
-    _hintsrc="$srcdir/converted"
-  fi
-
-  local -a _ta_opts=(
-    --hinting-range-min="$HINT_RANGE_MIN"
-    --hinting-range-max="$HINT_RANGE_MAX"
-    --hinting-limit="$HINT_LIMIT"
-    --increase-x-height="$HINT_XHEIGHT"
-    --stem-width-mode="$HINT_MODE"
-    --default-script="$HINT_DEFAULT_SCRIPT"
-    --ignore-restrictions
-  )
-  if [[ "$NERD_PATCH" == true ]]; then
-    # Icons would otherwise get Latin blue zones: scale them instead.
-    _ta_opts+=(--fallback-script=none --fallback-scaling)
-  else
-    _ta_opts+=(--fallback-script="$HINT_FALLBACK_SCRIPT")
-  fi
-  # Honour an explicit empty HINT_XSNAP_EXC (= no exceptions); omit if unset.
-  if [[ "${HINT_XSNAP_EXC+set}" == set ]]; then
-    _ta_opts+=(--x-height-snapping-exceptions="$HINT_XSNAP_EXC")
-  fi
-  if [[ "$HINT_WINCOMPAT" == true ]]; then _ta_opts+=(--windows-compatibility); fi
-  if [[ -n "${HINT_FAMILY_SUFFIX:-}" ]]; then _ta_opts+=(--family-suffix="$HINT_FAMILY_SUFFIX"); fi
-  if [[ "$HINT_TTFA_TABLE" == true ]]; then _ta_opts+=(--ttfa-table); else _ta_opts+=(--no-info); fi
-
-  echo "==> Hinting with ttfautohint..."
-  local _f
-  for _f in "$_hintsrc"/*.ttf; do
-    ttfautohint "${_ta_opts[@]}" "$_f" "$srcdir/hinted/${_f##*/}"
-  done
-
-  if [[ "$GASP_MODE" != keep ]]; then
-    echo "==> Applying gasp mode '$GASP_MODE'..."
-    python "$srcdir/set_gasp.py" "$GASP_MODE" "$srcdir/hinted/"*.ttf
-  fi
-
-  _bake_features
+  python "$srcdir/fonttune/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
+    --fonts-conf "${INTER_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}" \
+    --features-match '^Inter' "$_src/"*
+  echo "$_src" > "$srcdir/.out"
 }
 
 package() {
-  _resolve_options
-
-  local _out="$srcdir/selected"
-  if [[ "$HINTING" == true ]]; then
-    _out="$srcdir/hinted"
-  elif [[ "$NERD_PATCH" == true ]]; then
-    _out="$srcdir/patched"
-  fi
-  if [[ -n "$FEATURE_DEFAULTS" ]]; then _out="$srcdir/featured"; fi
-  if ! compgen -G "$_out/*.[ot]tf" >/dev/null; then
-    echo "Error: no fonts to install in $_out." >&2; exit 1
-  fi
-  install -Dm644 -t "$pkgdir/usr/share/fonts/inter" "$_out/"*.[ot]tf
+  local _src; _src=$(< "$srcdir/.out")
+  local _fontdir="$pkgdir/usr/share/fonts/inter"
+  install -Dm644 -t "$_fontdir" "$_src/"*.[ot]tf
   install -Dm644 "$srcdir/LICENSE-${_interver}.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
+  install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
 
-  # Opt-in rendering tweak (see the header): bytecode hinting for the families
-  # this build installed as ttfautohinted TTFs. Shipped in conf.avail and
-  # deliberately not enabled. The family list is read from the fonts, so Nerd
-  # Fonts names and family suffixes are covered.
-  if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
-    local _fam _conf="$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
-    local _chromium_prgnames=(chrome chromium brave helium electron code slack signal-desktop vesktop)
-    local _prg _prgtests=""
-    for _prg in "${_chromium_prgnames[@]}"; do
-      _prgtests+="    <test qual=\"all\" name=\"prgname\" compare=\"not_eq\"><string>$_prg</string></test>"$'\n'
-    done
-    install -d "${_conf%/*}"
-    {
-      echo '<?xml version="1.0" encoding="UTF-8"?>'
-      echo '<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">'
-      echo "<!-- Installed by $pkgname. Use the ttfautohint bytecode hints in these"
-      echo "     fonts rather than FreeType's light autohinter. hintmedium, not"
-      echo "     hintfull: same rendering in cairo/pango, and Blink keeps subpixel"
-      echo "     positioning at hintmedium but drops it at hintfull."
-      echo "     Chromium and Electron apps are excluded: at device scale 1 they use"
-      echo "     linear advances only for hintslight/none, so hintmedium would round"
-      echo "     every glyph advance to a whole pixel (uneven letter gaps). -->"
-      echo '<fontconfig>'
-      # One <match> per family: several <test>s in one <match> are ANDed, so
-      # the prgname tests exclude every listed app. qual="all" makes a test
-      # pass when prgname is unset. prgname is the executable's basename.
-      while IFS= read -r _fam; do
-        _fam="${_fam//&/&amp;}"; _fam="${_fam//</&lt;}"
-        cat <<EOF
-  <match target="font">
-    <test name="family" compare="eq"><string>$_fam</string></test>
-${_prgtests%$'\n'}
-    <edit name="hinting" mode="assign"><bool>true</bool></edit>
-    <edit name="autohint" mode="assign"><bool>false</bool></edit>
-    <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
-  </match>
-EOF
-      done < <(python - "$pkgdir/usr/share/fonts/inter/"*.ttf <<'PY' | sort -u
-import sys
-from fontTools.ttLib import TTFont
-for path in sys.argv[1:]:
-    name = TTFont(path, lazy=True)["name"]
-    print(name.getDebugName(16) or name.getDebugName(1))
-PY
-)
-      echo '</fontconfig>'
-    } > "$_conf"
-    chmod 644 "$_conf"
+  if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
+    install -d "$pkgdir/usr/share/fontconfig/conf.avail"
+    python "$srcdir/fonttune/bin/fonttune" hintconf --name "$pkgname" \
+      -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" "$_fontdir/"*.ttf
+    chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
   fi
 }

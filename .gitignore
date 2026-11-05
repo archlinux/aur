@@ -3,8 +3,3 @@
 !PKGBUILD
 !README.md
 !.SRCINFO
-!otf2ttf.py
-!set_gasp.py
-!cff_hint.py
-!dedup_blues.py
-!make_features.py
