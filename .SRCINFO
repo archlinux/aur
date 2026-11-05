@@ -1,0 +1,20 @@
+pkgbase = evex-mpp-bin
+	pkgdesc = Desktop XMPP client built for EVE Online communities: fleet pings, auto-join rooms, always-on-top alerts, EVE time and themes.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/AlexDeveOp/EvEX-MPP
+	arch = x86_64
+	license = MIT
+	depends = electron45
+	provides = evex-mpp=0.8.0
+	conflicts = evex-mpp
+	source = evex-mpp-0.8.0.deb::https://github.com/AlexDeveOp/EvEX-MPP/releases/download/v0.8.0/evex-mpp_0.8.0_amd64.deb
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/AlexDeveOp/EvEX-MPP/v0.8.0/LICENSE
+	source = evex-mpp.js
+	source = evex-mpp.sh
+	sha256sums = 395b6e8e306249ec4ceaf960a054c54c48e124272db2719381c866fa89b5aa7f
+	sha256sums = 94dfdcc87fdeac00abb85ee58b68abf53ea754afac459123e39ef21dbfba5865
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+
+pkgname = evex-mpp-bin
