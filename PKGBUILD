@@ -709,7 +709,7 @@ _resolve_options() {
 
   # ── Nerd Fonts patching ──────────────────────────────────────────────────
   if [[ "$_interactive" == true && -z "${NERD_PATCH:-}" ]]; then
-    _ask_yn "Patch fonts with Nerd Fonts glyphs" n
+    _ask_yn "[NERD_PATCH] Patch fonts with Nerd Fonts glyphs" n
     [[ "$_yn" =~ ^[yY]$ ]] && NERD_PATCH=true || NERD_PATCH=false
   fi
   NERD_PATCH="${NERD_PATCH:-false}"
@@ -720,7 +720,7 @@ _resolve_options() {
     echo "  Variable fonts (SF Pro, SF Compact, New York) contain all weights"
     echo "  in a single file with fvar/gvar axes. They are excluded when"
     echo "  patching because font-patcher destroys variable axes."
-    _ask_yn "Include variable TTF fonts" n
+    _ask_yn "[WANT_VARIABLE] Include variable TTF fonts" n
     [[ "$_yn" =~ ^[yY]$ ]] && WANT_VARIABLE=true || WANT_VARIABLE=false
   fi
   # Variable fonts are never compatible with Nerd Fonts patching
@@ -735,7 +735,7 @@ _resolve_options() {
       echo "        converted OTF→TTF first; variable TTFs are flattened to static."
       echo "        The 'cff' engine hints OTFs in place and keeps them as OTF."
     fi
-    _ask_yn "Apply autohinting (no effect at hintslight)" n
+    _ask_yn "[HINTING] Apply autohinting (no effect at hintslight)" n
     [[ "$_yn" =~ ^[yY]$ ]] && HINTING=true || HINTING=false
   fi
   HINTING="${HINTING:-false}"
@@ -743,7 +743,7 @@ _resolve_options() {
   # ── Hinting engine ─────────────────────────────────────────────────────────
   if [[ "$HINTING" == true && "$NERD_PATCH" == false && "$_interactive" == true && -z "${HINT_ENGINE:-}" ]]; then
     echo ""
-    _ask_choice "Hinting engine" ttfautohint \
+    _ask_choice "[HINT_ENGINE] Hinting engine" ttfautohint \
       "ttfautohint:TrueType bytecode, converts OTF→TTF" \
       "cff:PostScript/CFF hints, keeps OTF"
     HINT_ENGINE=$_choice
@@ -765,7 +765,7 @@ _resolve_options() {
       echo ""
       echo "  Note: at hintslight FreeType only snaps TrueType outlines; Apple's OTFs"
       echo "        have no CFF hints, so they stay unsnapped. Converting needs no ttfautohint."
-      _ask_yn "Convert OTF to TTF outlines (no hinting)" y
+      _ask_yn "[OTF2TTF] Convert OTF to TTF outlines (no hinting)" y
       [[ "$_yn" =~ ^[yY]$ ]] && OTF2TTF=true || OTF2TTF=false
     fi
     OTF2TTF="${OTF2TTF:-true}"
@@ -778,7 +778,7 @@ _resolve_options() {
   if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
     if [[ "$_interactive" == true && -z "${HINT_PRESET:-}" && -z "${HINT_MODE:-}" ]]; then
       echo ""
-      _ask_choice "Hinting preset" balanced \
+      _ask_choice "[HINT_PRESET] Hinting preset" balanced \
         "balanced:stem q, 8-50px, x-height 14 (measured best)" \
         "sharp:stem s, 6-50px, x-height 14 (max contrast, low-DPI)" \
         "natural:stem n, 8-50px, no x-height boost (least distortion)" \
@@ -804,7 +804,7 @@ _resolve_options() {
   # ── Weight classes ─────────────────────────────────────────────────────────
   if [[ "$_interactive" == true && -z "${FIX_WEIGHTS:-}" ]]; then
     echo ""
-    _ask_yn "Normalise weight classes (New York Bold/Black are mislabelled)" y
+    _ask_yn "[FIX_WEIGHTS] Normalise weight classes (New York Bold/Black are mislabelled)" y
     [[ "$_yn" =~ ^[yY]$ ]] && FIX_WEIGHTS=true || FIX_WEIGHTS=false
   fi
   FIX_WEIGHTS="${FIX_WEIGHTS:-true}"
@@ -823,7 +823,7 @@ _resolve_options() {
     echo "  Removing it makes all three agree within 1%; body text then sits at"
     echo "  the design widths, ~10% tighter than Apple's tracking makes it."
     echo "  See the header for the measurements."
-    _ask_yn "Remove the trak table (recommended)" y
+    _ask_yn "[STRIP_TRAK] Remove the trak table (recommended)" y
     [[ "$_yn" =~ ^[yY]$ ]] && STRIP_TRAK=true || STRIP_TRAK=false
   fi
   STRIP_TRAK="${STRIP_TRAK:-true}"
@@ -839,7 +839,7 @@ _resolve_options() {
       echo "  Stripping leaves the design widths. Apple's tracking can be baked into"
       echo "  the advance widths at one point size instead, so every program shows the"
       echo "  same constant spacing (SF Pro Rounded +80 units at 13pt, Text -12)."
-      read -p "  Point size to bake in, 0 for none (default: 13) " TRAK_BAKE
+      read -p "  [TRAK_BAKE] Point size to bake in, 0 for none (default: 13) " TRAK_BAKE
     fi
     TRAK_BAKE="${TRAK_BAKE:-13}"
     if ! [[ "$TRAK_BAKE" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
@@ -852,7 +852,7 @@ _resolve_options() {
   # ── Size-specific tracking (STAT) ──────────────────────────────────────────
   if [[ "$_interactive" == true && -z "${TRACKING:-}" ]]; then
     echo ""
-    _ask_yn "Enable Apple's size-specific tracking (adds a STAT table)" y
+    _ask_yn "[TRACKING] Enable Apple's size-specific tracking (adds a STAT table)" y
     [[ "$_yn" =~ ^[yY]$ ]] && TRACKING=true || TRACKING=false
   fi
   TRACKING="${TRACKING:-true}"
@@ -881,7 +881,7 @@ _resolve_options() {
     echo ""
     echo "  ── Font families ────────────────────────────────────────"
 
-    _ask_yn "Include SF Pro" y
+    _ask_yn "[WANT_SF_PRO] Include SF Pro" y
     if [[ "$_yn" =~ ^[yY]$ ]]; then
       WANT_SF_PRO=true
       if [[ -z "${SF_PRO_SUBS:-}" ]]; then
@@ -893,7 +893,7 @@ _resolve_options() {
       WANT_SF_PRO=false
     fi
 
-    _ask_yn "Include SF Compact" n
+    _ask_yn "[WANT_SF_COMPACT] Include SF Compact" n
     if [[ "$_yn" =~ ^[yY]$ ]]; then
       WANT_SF_COMPACT=true
       if [[ -z "${SF_COMPACT_SUBS:-}" ]]; then
@@ -905,13 +905,13 @@ _resolve_options() {
       WANT_SF_COMPACT=false
     fi
 
-    _ask_yn "Include SF Mono" y
+    _ask_yn "[WANT_SF_MONO] Include SF Mono" y
     [[ "$_yn" =~ ^[yY]$ ]] && WANT_SF_MONO=true || WANT_SF_MONO=false
 
-    _ask_yn "Include SF Arabic" n
+    _ask_yn "[WANT_SF_ARABIC] Include SF Arabic" n
     [[ "$_yn" =~ ^[yY]$ ]] && WANT_SF_ARABIC=true || WANT_SF_ARABIC=false
 
-    _ask_yn "Include New York" y
+    _ask_yn "[WANT_NY] Include New York" y
     if [[ "$_yn" =~ ^[yY]$ ]]; then
       WANT_NY=true
       if [[ -z "${NY_SUBS:-}" ]]; then
@@ -947,7 +947,7 @@ _resolve_options() {
     echo "  way Chrome, Electron, Qt and LibreOffice honour one, since they"
     echo "  never read fontconfig's fontfeatures. GTK is covered either way by"
     echo "  the block in ~/.config/fontconfig/fonts.conf."
-    _ask_choice "Bake features into calt" none \
+    _ask_choice "[FEATURE_DEFAULTS] Bake features into calt" none \
       "none:leave the fonts as Apple ships them (default)" \
       "text:ss06,cv07,case - slashed zero, one-storey a, raised punctuation" \
       "colon:text + ss03, centred colon - SF Mono is left alone" \
@@ -986,7 +986,7 @@ _resolve_options() {
       echo "  (\"SF Pro Text\" and \"SF Pro Text Alt\"). Without it the packaged"
       echo "  files keep their names and the features apply everywhere, with no"
       echo "  way back except CSS \"calt\" 0."
-      _ask_yn "Also install a renamed copy (suffix ' Alt')" n
+      _ask_yn "[FEATURE_FAMILY] Also install a renamed copy (suffix ' Alt')" n
       [[ "$_yn" =~ ^[yY]$ ]] && FEATURE_FAMILY=" Alt" || FEATURE_FAMILY=""
     fi
   fi
@@ -1012,7 +1012,7 @@ _resolve_options() {
   if [[ "$_interactive" == true && "${EVEN_SPACING+set}" != set ]]; then
     echo ""
     echo "  Some letter pairs are spaced unevenly (e.g. Greek \"λώ\" tight, \"ει\" loose)."
-    _ask_choice "Even out spacing with kern pairs" none \
+    _ask_choice "[EVEN_SPACING] Even out spacing with kern pairs" none \
       "none:as Apple designed it (default)" \
       "all:Latin, Greek and Cyrillic" \
       "greek:Greek only" \
@@ -1028,7 +1028,7 @@ _resolve_options() {
   if [[ "$_interactive" == true && "${PIXEL_GRID+set}" != set && -z "$EVEN_SPACING" ]]; then
     echo ""
     echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
-    _ask_choice "Put advances and kerning on a pixel grid" off \
+    _ask_choice "[PIXEL_GRID] Put advances and kerning on a pixel grid" off \
       "off:no" \
       "auto:from the GNOME interface font size (pt x 96/72 x text scaling)" \
       "16:16 ppem = 12pt GTK / 16px web" \
