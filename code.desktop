@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Code
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=codium %F
+Icon=vscode
+Type=Application
+StartupNotify=false
+StartupWMClass=codium
+Categories=Utility;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=vscodium;codium;vscode;code;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=codium --new-window %F
+Icon=vscode

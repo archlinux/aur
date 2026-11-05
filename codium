@@ -1,0 +1,118 @@
+#!/usr/bin/env sh
+#
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See License.txt in the project root for license information.
+
+# Names of flags config files to look for, in precedence order (first match wins)
+FLAGS_CONF_NAMES="code-flags.conf codium-flags.conf"
+FLAGS_CONF_DIR="${HOME}/.config"
+
+INSTALL_DIR="/usr/share/vscodium"
+
+load_flags() {
+	local conf_name conf_path
+	EXTRA_FLAGS=""
+
+	for conf_name in $FLAGS_CONF_NAMES; do
+		conf_path="$FLAGS_CONF_DIR/$conf_name"
+
+		[ -f "$conf_path" ] || continue
+
+		# Read flags: strip blank lines and comments, expand each line as args
+		while IFS= read -r flag || [ -n "$flag" ]; do
+			case "$flag" in
+				''|\#*) continue ;;
+			esac
+			EXTRA_FLAGS="$EXTRA_FLAGS $flag"
+		done < "$conf_path"
+
+		return 0
+	done
+}
+
+use_remote_cli() {
+	[ -z "$VSCODE_IPC_HOOK_CLI" ] && return 1
+
+	local remote_cli
+	remote_cli="$(which -a 'codium' | grep /remote-cli/)"
+
+	[ -n "$remote_cli" ] || return 1
+
+	"$remote_cli" "$@"
+	exit $?
+}
+
+check_wsl() {
+	grep -qi Microsoft /proc/version 2>/dev/null || return 0
+	[ -n "$DONT_PROMPT_WSL_INSTALL" ] && return 0
+
+	printf "To use VSCodium with the Windows Subsystem for Linux, please install VSCodium in Windows and uninstall the Linux version in WSL. You can then use the \`codium\` command in a WSL terminal just as you would in a normal command prompt.\n" >&2
+	printf "Do you want to continue anyway? [y/N] " >&2
+	read -r YN
+	YN=$(printf '%s' "$YN" | tr '[:upper:]' '[:lower:]')
+
+	case "$YN" in
+		y|yes) ;;
+		*)
+			exit 1
+			;;
+	esac
+
+	printf "To no longer see this prompt, start VSCodium with the environment variable DONT_PROMPT_WSL_INSTALL defined.\n" >&2
+}
+
+check_root() {
+	[ "$(id -u)" != "0" ] && return 0
+
+	local arg
+	for arg in "$@"; do
+		case "$arg" in
+			--user-data-dir|--user-data-dir=*|--file-write|tunnel|serve-web)
+				return 0
+				;;
+		esac
+	done
+
+	printf "You are trying to start VSCodium as a super user which isn't recommended. If this was intended, please add the argument \`--no-sandbox\` and specify an alternate user data directory using the \`--user-data-dir\` argument.\n" >&2
+	exit 1
+}
+
+resolve_vscode_path() {
+	local script_path bin_dir
+
+	if command -v readlink >/dev/null 2>&1; then
+		script_path="$(readlink -f "$0")"
+	else
+		script_path="$0"
+	fi
+
+	bin_dir="$(dirname "$script_path")"
+
+	# If the electron binary sits next to this script's parent, use relative path
+	if [ -x "$bin_dir/../codium" ]; then
+		printf '%s' "$bin_dir/.."
+		return 0
+	fi
+
+	printf '%s' "$INSTALL_DIR"
+}
+
+main() {
+	use_remote_cli "$@"
+	check_wsl
+	load_flags
+	check_root "$@"
+
+	local vscode_path electron cli
+	vscode_path="$(resolve_vscode_path)"
+	electron="$vscode_path/codium"
+	cli="$vscode_path/resources/app/out/cli.js"
+
+	# Apply loaded flags
+	set -- $EXTRA_FLAGS "$@"
+
+	ELECTRON_RUN_AS_NODE=1 "$electron" "$cli" "$@"
+	exit $?
+}
+
+main "$@"
