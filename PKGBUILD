@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mudlet-bin
 _pkgname=Mudlet
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="⚔️ A cross-platform, open source, and super fast MUD client with scripting in Lua."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar::${_ghurl}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.tar"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('46dc6e4209ee0ca65a446b9c88e6504ddb6bdf0210dd6a2c664875a5624c8f10'
+sha256sums=('52fe5f54fd4918b275e7c8e87b951de597cc9cd297a8bbb739d4f012a4c9b4aa'
             '216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
