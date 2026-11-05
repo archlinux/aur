@@ -1,7 +1,7 @@
 # Author: Leonidas Spyropoulos <artafinde at archlinux.org>
 
 pkgname=droplet-agent
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 epoch=1
 pkgdesc='DigitalOcean Droplet Agent for Enhanced Droplet Graphs'
@@ -11,7 +11,7 @@ makedepends=('go')
 license=('Apache')
 source=("https://github.com/digitalocean/${pkgname}/archive/${pkgver}.tar.gz"
         "droplet-agent.service")
-sha512sums=('c662d6b9988c6a309d23e0913ca70b175f11df644affd51b4ae88bc3ecb25fe457f3dce471955ec59580c18c75c9e15b33732ae721c03091f3e262762ed426ff'
+sha512sums=('681fc3d1a395ac0f8abe21d18d3d8fa18874f5a48ae832e193a030f6403dd4481fbaed7cda54d1ecde9ef28e7a0253a0da08ce44c8e40bcba8251278691528db'
             '57504535c4387644ba941ce512b8a86aec9ca990b4fae48f43bda1e2abb62b55f68bbc692df32c82b07e0f6a3cd4cbb39f298ba86fab54e00f301b54115cd7b3')
 
 prepare() {
