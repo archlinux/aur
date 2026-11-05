@@ -1,6 +1,6 @@
 # Maintainer: Sean Gillespie <sean@mistersg.net>
 pkgname=cardano-conf
-pkgver=11.0.1_config
+pkgver=11.1.3_config
 pkgrel=1
 pkgdesc="Configuration files for Cardano core components"
 arch=("any")
@@ -11,20 +11,20 @@ makedepends=('git')
 provides=()
 backup=(
   etc/cardano/mainnet/{byron-genesis,shelley-genesis,alonzo-genesis,conway-genesis}.json
-  etc/cardano/mainnet/{config,config-legacy,peer-snapshot,topology,tracer-config}.json
+  etc/cardano/mainnet/{config,peer-snapshot,topology,tracer-config}.json
   etc/cardano/mainnet/submit-api-config.json
   etc/cardano/mainnet/checkpoints.json
   etc/cardano/preprod/{byron-genesis,shelley-genesis,alonzo-genesis,conway-genesis}.json
-  etc/cardano/preprod/{config,config-legacy,peer-snapshot,topology,tracer-config}.json
+  etc/cardano/preprod/{config,peer-snapshot,topology,tracer-config}.json
   etc/cardano/preprod/submit-api-config.json
   etc/cardano/preview/{byron-genesis,shelley-genesis,alonzo-genesis,conway-genesis}.json
-  etc/cardano/preview/{config,config-legacy,peer-snapshot,topology,tracer-config}.json
+  etc/cardano/preview/{config,peer-snapshot,topology,tracer-config}.json
   etc/cardano/preview/submit-api-config.json
   etc/cardano/preview/checkpoints.json
 )
 options=()
-source=("git+https://github.com/input-output-hk/cardano-playground#tag=node-11.0.1-config")
-sha256sums=('f71e60726bf632480a221fffb3f4c4ab86e08a862a583b6cc003df69a46c0e36')
+source=("git+https://github.com/input-output-hk/cardano-playground#tag=node-11.1.3-config")
+sha256sums=('021ce5e7d1d9c3ea4bd64fe50be96836bdce8dbfceb0255931bd7374b3a52698')
 
 package() {
   cd "cardano-playground"
