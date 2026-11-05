@@ -2,7 +2,7 @@
 pkgname=pokeclicker-automation-bin
 _pkgname="PokéClicker with Scripts"
 pkgver=1.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Pokeclicker Desktop with automation scripts support"
 arch=('x86_64')
 url="https://github.com/Farigh/pokeclicker-automation-desktop"
@@ -12,6 +12,7 @@ optdepends=('libappindicator-gtk3: app indicator support')
 provides=('pokeclicker')
 conflicts=('pokeclicker-bin' 'pokeclicker-scripts-bin')
 install="${pkgname}.install"
+options=('!debug' '!strip')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/pokeclicker-desktop-with-scripts_${pkgver}_amd64.deb")
 sha256sums=('1d8d5d020ee57efdb6f455197de84e092fd0a1189127df6731e1a03af6403d3d')
 
