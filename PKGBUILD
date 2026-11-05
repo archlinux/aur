@@ -1,7 +1,7 @@
 # Maintainer: opecko <https://github.com/opecko>
 # AUR package: builds Sonolith from the GitHub release tag. Updated by scripts/aur.sh.
 pkgname=sonolith
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="YouTube Music desktop client"
 url='https://github.com/opecko/sonolith'
@@ -18,7 +18,7 @@ optdepends=('nodejs: JS runtime for the yt-dlp playback fallback'
             'gnome-keyring: stores the login cookie (Secret Service)')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/opecko/sonolith/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('13fc43a840b83b4fe3eaee614379de650719b7403af3c1d3a78ff466ea150a73')
+sha256sums=('c83cb6a302b74861732af766217e50649a62470f53755e1768c7e380adde58ae')
 
 prepare() {
   cd "$pkgname-$pkgver"
