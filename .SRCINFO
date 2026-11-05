@@ -1,0 +1,14 @@
+pkgbase = vtium-terminfo
+	pkgdesc = The terminfo entry xterm-vtium, for sessions in vtium
+	pkgver = 0.1.0alpha.5
+	pkgrel = 1
+	url = https://github.com/vtium/vtium
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ncurses
+	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.5?signed
+	validpgpkeys = 33F9B54FD2A4B6A4110749B3BA464FC9847A832A
+	sha256sums = SKIP
+
+pkgname = vtium-terminfo
