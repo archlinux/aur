@@ -1,0 +1,4 @@
+[mada-font]
+source = "git"
+git = "https://github.com/aliftype/mada.git"
+prefix = "v"
