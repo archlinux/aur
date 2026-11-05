@@ -4,7 +4,7 @@
 
 _pkgname=libfprint
 pkgname="$_pkgname-vfs009x-git"
-pkgver=1.94.9.r2.g450e6ae
+pkgver=1.94.100.r3.ge738dc5
 pkgrel=1
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 url="https://gitlab.archlinux.org/gugah/libfprint"
@@ -18,8 +18,7 @@ depends=(
   libgudev
   libgusb
   pixman
-  openssl-1.1
-  nss
+  openssl
 )
 makedepends=(
   git
@@ -106,14 +105,6 @@ pkgver() {
 }
 
 build() {
-  # Set PKG_CONFIG_PATH to prefer OpenSSL 1.1's .pc files
-  export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig${PKG_CONFIG_PATH:+:}$PKG_CONFIG_PATH"
-
-  # Prepend OpenSSL 1.1 include and lib paths to CFLAGS, CPPFLAGS, and LDFLAGS
-  export CFLAGS="-I/usr/include/openssl-1.1 ${CFLAGS}"
-  export CPPFLAGS="-I/usr/include/openssl-1.1 ${CPPFLAGS}"
-  export LDFLAGS="-L/usr/lib/openssl-1.1 ${LDFLAGS}"
-
   local _meson_opts=(
     -D drivers=all
     -D doc="$_build_doc"
