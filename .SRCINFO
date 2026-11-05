@@ -1,13 +1,13 @@
 pkgbase = agx
 	pkgdesc = Terminal step-through debugger for AI agent traces (Claude Code, Codex, Gemini, LangChain, Vercel AI SDK, OpenTelemetry GenAI)
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/brevity1swos/agx
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	depends = gcc-libs
-	source = agx-0.3.0.tar.gz::https://github.com/brevity1swos/agx/archive/refs/tags/agx-tui-v0.3.0.tar.gz
-	sha256sums = 2e5b4a71a54715c5292c6501001a82c96ae952e14af52d6234d021ff32ede614
+	source = agx-0.3.2.tar.gz::https://github.com/brevity1swos/agx/archive/refs/tags/agx-tui-v0.3.2.tar.gz
+	sha256sums = 5ed303d9d6abad39233b248f61b7c3bf6c1b48096745e81c0da5b7179b96f944
 
 pkgname = agx
