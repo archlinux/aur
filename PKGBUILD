@@ -4,12 +4,12 @@
 # Maintainer: cookie <kyliepc@proton.me>
 _pkgname=vesktop
 pkgname=vesktop-keybindings-git
-pkgdesc="A standalone Electron-based Discord app with Vencord & improved Linux support"
-pkgver=r383.9716ff4
+pkgdesc="A standalone Electron-based Discord app with Vencord & improved Linux support with PR #1238 applied"
+pkgver=r626.75b0320
 pkgrel=1
 
 arch=("x86_64" "aarch64")
-url="https://github.com/Covkie/Vesktop"
+url="https://github.com/Vencord/Vesktop"
 license=('GPL-3.0-only')
 
 depends=('alsa-lib' 'gtk3' 'nss')
@@ -50,6 +50,9 @@ build() {
 
   # Extra dependencie
   pnpm add uiohook-napi --allow-build=uiohook-napi
+
+  # Fix Electron 45 ABI detection
+  pnpm add -Dw node-abi@4.40.0
 
   pnpm buildLibVesktop
   pnpm package:dir
