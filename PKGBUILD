@@ -4,33 +4,19 @@
 
 pkgname=perl-net-cups
 _dist=Net-CUPS
-pkgver=0.64
-pkgrel=3
+pkgver=0.65
+pkgrel=1
 pkgdesc='Common Unix Printing System Interface'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
 url="https://metacpan.org/dist/$_dist"
 _author=NINE
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('d7bc77ff0f62bf874c843c590eb12a80bbd44749a2fb74dbed445c35d0e85a85')
+sha256sums=('36e592b3d7beb1190e1703c7784f20622a37a7f119ff560f270678e5791b4d94')
 
 arch=(x86_64)
-depends=(
-  'perl'
-  'e2fsprogs>=1.43.4'
-  'glibc>=2.25'
-  'krb5>=1.13.7'
-  'libcups>=2.2.3'
-  'zlib>=1:1.2.11'
-  'cups-filters'
-)
+depends=(perl libcups libcupsfilters)
 options=('!emptydirs')
-
-prepare() {
-  cd "$srcdir/$_dist-$pkgver"
-  # Replace all instances of CUPS_IMAGE_ with CF_IMAGE_ in the source files
-  find . -type f -exec sed -i 's/CUPS_IMAGE_/CF_IMAGE_/g' {} +
-}
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
