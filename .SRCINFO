@@ -1,12 +1,13 @@
 pkgbase = bcmr-bin
 	pkgdesc = Better Copy Move Remove — A modern, safe CLI tool for file operations with progress display, resume, and remote copy.
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bengerthelorf/bcmr
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	provides = bcmr
 	conflicts = bcmr
+	options = !strip
 	source = LICENSE-0.7.2::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.7.2/LICENSE
 	source = README-0.7.2.md::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.7.2/README.md
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
