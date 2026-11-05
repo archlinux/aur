@@ -9,7 +9,7 @@ pkgname=('colloid-gtk-theme-fixed-git'
         'colloid-nord-gtk-theme-fixed-git')
 _name=colloid-gtk-theme
 _fixes=colloid
-pkgver=2026.08.08.r3.gfe11342.f23.cb7a9d1
+pkgver=2026.08.08.r3.gfe11342.f24.0eefd00
 pkgrel=1
 pkgdesc="Colloid GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)"
 arch=('any')
