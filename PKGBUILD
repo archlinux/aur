@@ -166,11 +166,14 @@ check() {
   mapfile -t _feeds < <(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' NuGet.config.upstream)
   _nuget_config "${_feeds[@]}" "nuget.org=https://api.nuget.org/v3/index.json"
   # Only the build for Unix and the newest .NET, the test runner doesn't support .NET 6 anymore. The
-  # newer analyzers of the .NET 10 SDK warn about the test tools, which is an error upstream. The
-  # xunit.runner.visualstudio of 2.x like upstream's (Arcade 8): the 3.x of the source-built Arcade
-  # serialises the test cases, and the SkippedTestCase of XUnitExtensions 8.x loses its skip reason
-  # then, so ConditionalFact tests run, e.g. the ones that need a SQL Server (TEST_TCP_CONN_STR).
-  # Fixed in XUnitExtensions 10.x, not in 8.x: https://github.com/dotnet/arcade/pull/15667
+  # newer analyzers of the .NET 10 SDK warn about the test tools, which is an error upstream.
+  # xunit.runner.visualstudio 2.x, like upstream's Arcade 8 has, instead of the 3.x of the
+  # source-built Arcade: 3.x serialises the test cases, and the SkippedTestCase of XUnitExtensions
+  # 8.x reads its skip reason back only after the base class has asked for it, so the
+  # ConditionalFact tests run anyway, e.g. the ones that need a SQL Server (TEST_TCP_CONN_STR).
+  # Fixed in XUnitExtensions 10.x (https://github.com/dotnet/arcade/pull/15667), not backported to
+  # 8.x: drop XUnitRunnerVisualStudioVersion once upstream's MicrosoftDotNetXUnitExtensionsVersion
+  # (eng/Versions.props, with its Arcade) is 10.x or newer.
   DOTNET_ROLL_FORWARD=Major dotnet test "src/$_nugetid/tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}" \
     -p:TargetFrameworks=net8.0-unix -p:TreatWarningsAsErrors=false -p:XUnitRunnerVisualStudioVersion=2.8.2
   rm -rf "${_test_tmp:?}"
