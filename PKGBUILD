@@ -2,7 +2,7 @@
 
 _pkgname='archlinux'
 pkgname="libvirt-iso-${_pkgname}-bin"
-pkgver=2026.10.01
+pkgver=2026.11.01
 pkgrel=1
 pkgdesc='Official Arch Linux installation ISO for libvirt'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 noextract=("${_pkgname}-${pkgver}-${CARCH}.iso")
 sha256sums=(
-	'684ded26c63240ff4a41e8c25ee84ea6da233f557364821f13d12c2b0a9059a5'
+	'01bcdcf01af2f7d58f2794899c834770d25c9bfc945bd092b32bb66672a4a216'
 	'SKIP'
 	'cb5f1ca3b96864dcbf26ef4792510c79eabd25a8988fd57e24fef4c02b278d4c'
 )
