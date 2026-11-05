@@ -1,0 +1,25 @@
+pkgbase = frankmdfast-bin
+	pkgdesc = Native desktop rewrite of FrankMD: markdown notes with live preview, Vim mode and AI tools (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/akitaonrails/FrankMDFast
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fontconfig
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = fcitx5: input method support
+	provides = frankmdfast
+	conflicts = frankmdfast
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/akitaonrails/FrankMDFast/releases/download/v0.1.0/frankmdfast-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 155d2b4b2418e89b3106284cde5d1f07195ba33b312d7c5d64c3f22d3fa9ad8c
+	source_aarch64 = https://github.com/akitaonrails/FrankMDFast/releases/download/v0.1.0/frankmdfast-0.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d274340517ed91f71a26476d86812eab86c7dd92e5fd3e47c2720c9875692e75
+
+pkgname = frankmdfast-bin
