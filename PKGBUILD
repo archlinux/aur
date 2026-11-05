@@ -1,5 +1,5 @@
 pkgname=music-tui
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A keyboard and mouse-driven terminal music player built with ratatui"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 install=music-tui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d22428db3dea0858a9eeb595745286431b4995db4e0f26bd3591c333b612c129')
+sha256sums=('04743a9f439baaa56c9337921de3033f1f0f73848e8ff27e76f062bd779ea867')
 
 build() {
     cd "$pkgname-$pkgver"
