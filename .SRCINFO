@@ -1,6 +1,6 @@
 pkgbase = oyo
 	pkgdesc = A diff viewer that works two ways: step through changes or review a classic scrollable diff
-	pkgver = 0.1.67
+	pkgver = 0.1.68
 	pkgrel = 1
 	url = https://github.com/ahkohd/oyo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = oyo
 	depends = glibc
 	depends = libgcc
 	provides = oy
-	source = oyo-0.1.67.tgz::https://github.com/ahkohd/oyo/archive/refs/tags/v0.1.67.tar.gz
-	sha256sums = a3eb18a447a97ae967794dc48e8a8d89ab28bf014dee83dff594449dca718b31
+	source = oyo-0.1.68.tgz::https://github.com/ahkohd/oyo/archive/refs/tags/v0.1.68.tar.gz
+	sha256sums = 0107985c521bf6a671154b11d5fb9e9b099b64149c039fa0b4eddaed8ac89aa1
 
 pkgname = oyo
