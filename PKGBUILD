@@ -3,7 +3,7 @@
 
 pkgname='python-wagtail'
 _name=${pkgname#python-}
-pkgver='8.0'
+pkgver='8.1'
 pkgrel=1
 pkgdesc="A Django content management system."
 url="https://wagtail.org/"
@@ -33,7 +33,7 @@ checkdepends=(
 license=('MIT')
 arch=('any')
 source=("https://github.com/${_name}/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('867bec35efc557cdb90560548012e2302c1e89da42ace29b4a6ea38255d4f647b8fa57bf8d0739fe1751c1ed945a9f72ec1fde81eccda7a247bd2208e9be3ca4')
+sha512sums=('6e143445511c9862cf787a04f02feb50e6feda0b150628748b4ee355630c4a9f1a049ff9719ec71bcf08fb7f2221607a2fc0ce4493b4506ae3966e459642a0b3')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
