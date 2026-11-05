@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=cadcraft-bin
 _pkgname=cadcraft
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Open-source native CAD and drafting app, AutoCAD alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('89996b1764ff15696857e0894d60b84569051051818f6480e9b7f823c76a46e4')
-sha256sums_aarch64=('a417ed6d9ab946c2849725b20d8fdad0bfb098e7a73d6118f35e19567387cb9e')
+sha256sums_x86_64=('dda165a2f2ee6e1ef49c7cc0257b5e0382deb541d8eae02113176882f9f2ec00')
+sha256sums_aarch64=('4a7a4f67d7734664f157720b1d7c68e37fb8a18a96509c7c620cab59a3775356')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
