@@ -4,7 +4,7 @@
 # (binary + LICENSE + .desktop + icons), i.e. releases after v0.2.2.
 
 pkgname=archtoys-bin
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="System-wide color picker for Linux, inspired by PowerToys (precompiled binary)"
 arch=('x86_64')
@@ -12,11 +12,14 @@ url="https://github.com/Mujtaba1i/Archtoys"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'libx11' 'libxcb' 'libxcursor' 'libxi'
          'libxkbcommon' 'libxkbcommon-x11' 'libglvnd' 'wayland' 'hicolor-icon-theme')
+optdepends=('tesseract: Text Extractor (Archtoys can also install it when you turn it on)'
+            'tesseract-data-eng: English for Text Extractor'
+            'tesseract-data-osd: lets Text Extractor find the writing system by itself')
 provides=("archtoys=${pkgver}")
 conflicts=('archtoys')
 options=('!debug')
 source=("archtoys-linux-x86_64-v${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
-sha256sums=('acdb756f4d91e418b37a862927417535b91bb5008c88473a07b60b6f4ecb2d51')
+sha256sums=('b3ab4bc3712ea33245bc57e75f3e3f72d0cc984a74cf031577f453fae37d3694')
 
 package() {
   cd "${srcdir}"

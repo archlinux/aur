@@ -1,6 +1,6 @@
 pkgbase = archtoys-bin
 	pkgdesc = System-wide color picker for Linux, inspired by PowerToys (precompiled binary)
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Mujtaba1i/Archtoys
 	arch = x86_64
@@ -17,10 +17,13 @@ pkgbase = archtoys-bin
 	depends = libglvnd
 	depends = wayland
 	depends = hicolor-icon-theme
-	provides = archtoys=0.6.2
+	optdepends = tesseract: Text Extractor (Archtoys can also install it when you turn it on)
+	optdepends = tesseract-data-eng: English for Text Extractor
+	optdepends = tesseract-data-osd: lets Text Extractor find the writing system by itself
+	provides = archtoys=0.7.0
 	conflicts = archtoys
 	options = !debug
-	source = archtoys-linux-x86_64-v0.6.2.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v0.6.2/archtoys-linux-x86_64.tar.gz
-	sha256sums = acdb756f4d91e418b37a862927417535b91bb5008c88473a07b60b6f4ecb2d51
+	source = archtoys-linux-x86_64-v0.7.0.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v0.7.0/archtoys-linux-x86_64.tar.gz
+	sha256sums = b3ab4bc3712ea33245bc57e75f3e3f72d0cc984a74cf031577f453fae37d3694
 
 pkgname = archtoys-bin
