@@ -1,50 +1,54 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-catalyst-component-instancepercontext'
-pkgver='0.001001'
-pkgrel='1'
-pkgdesc="Moose role to create only one instance of component per context"
+_author=GRODITI
+_dist=Catalyst-Component-InstancePerContext
+pkgname=perl-${_dist@L}
+pkgver=0.001001
+pkgrel=2
+pkgdesc='Moose role to create only one instance of component per context'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-catalyst-runtime'
+    'perl-moose'
+    'perl-scalar-list-utils'
+)
+makedepends=(
+    'perl-module-install'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-catalyst-runtime' 'perl-moose')
-makedepends=()
-url='http://search.cpan.org/dist/Catalyst-Component-InstancePerContext'
-source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRODITI/Catalyst-Component-InstancePerContext-0.001001.tar.gz')
-md5sums=('dd3e9c804cb7f8d6755132d92b26a80a')
-sha512sums=('548c1fad4f125263776d773b2c8b337ac619e6f04c7cbe0d4bb62de3f8845c07d0207b289aecd28de564bc9ad759163b7dac8b5254aff0dc5910cd6b4d71bdf7')
-_distdir="Catalyst-Component-InstancePerContext-0.001001"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('7f63f930e1e613f15955c9e6d73873675c50c0a3bc2a61a034733361ed26d271')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
