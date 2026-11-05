@@ -1,49 +1,39 @@
-# Maintainer: René Wagner <rwagner at rw-net dot de>
+# Maintainer: Elias Elwyn <a@jthvai.net>
+# Contributor: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-javascript-minifier-xs'
-pkgver='0.15'
-pkgrel='1'
-pkgdesc="XS based JavaScript minifier"
-arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl')
-makedepends=()
-url='https://metacpan.org/release/JavaScript-Minifier-XS'
-source=("http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/JavaScript-Minifier-XS-${pkgver}.tar.gz")
+pkgname=perl-javascript-minifier-xs
+_dist=JavaScript-Minifier-XS
+pkgver=0.15
+pkgrel=2
+pkgdesc='XS based JavaScript minifier'
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+
+url="https://metacpan.org/dist/$_dist"
+_author=GTERMARS
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('5d9b034f58f0b6ff5b64647bd3c5a9ce05b2a70edee339fbc3173aee747cc050')
-_distdir="JavaScript-Minifier-XS-${pkgver}"
+
+arch=(x86_64)
+depends=(perl)
+options=('!emptydirs')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
