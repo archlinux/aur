@@ -2,14 +2,13 @@
 # Contributor: justanoobcoder <syaorancode@gmail.com>
 
 pkgname=mechvibes
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A modern mechanical keyboard sound simulator with customizable soundpacks"
 arch=('x86_64')
 url="https://mechvibes.com/"
 license=('MIT')
 depends=('alsa-lib'
-         'bzip2'
          'cairo'
          'gdk-pixbuf2'
          'glib2'
@@ -27,7 +26,7 @@ depends=('alsa-lib'
          'zstd')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hainguyents13/mechvibes/archive/v${pkgver}.tar.gz")
-sha256sums=('f2456e183d3692fdb416833436f618b3b83d61849730f0f2e9bbca308799d68f')
+sha256sums=('19b41ec4a625d39f283a6274009a0dd159c9a2dabc3b0b6e8ad2c3b2822229bc')
 
  prepare() {
     cd "${pkgname}-${pkgver}"
@@ -40,6 +39,7 @@ sha256sums=('f2456e183d3692fdb416833436f618b3b83d61849730f0f2e9bbca308799d68f')
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export ZSTD_SYS_USE_PKG_CONFIG=1
+    CFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release --all-features
 }
 
