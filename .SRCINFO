@@ -1,6 +1,6 @@
 pkgbase = voisu-bin
 	pkgdesc = Voice dictation for Linux desktops (prebuilt binaries)
-	pkgver = 0.72.0
+	pkgver = 0.73.0
 	pkgrel = 1
 	url = https://github.com/Anuraj-Dev/voisu
 	install = voisu-bin.install
@@ -22,9 +22,9 @@ pkgbase = voisu-bin
 	optdepends = libei: direct Delivery of the Transcript into the focused window
 	optdepends = xdg-desktop-portal-kde: portal backend for KDE Plasma
 	optdepends = xdg-desktop-portal-hyprland: portal backend for Hyprland
-	provides = voisu=0.72.0
+	provides = voisu=0.73.0
 	conflicts = voisu
-	source = voisu-bin-0.72.0.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v0.72.0/voisu-0.72.0-x86_64.tar.gz
-	sha256sums = 599b8b6498249a898ca8e0aa1969cc8e975bda091fb3c4debe93d6593741c25a
+	source = voisu-bin-0.73.0.tar.gz::https://github.com/Anuraj-Dev/voisu/releases/download/v0.73.0/voisu-0.73.0-x86_64.tar.gz
+	sha256sums = 14ab492532c1be5bd191cac9fd16e6852621f0d54c67b1e7281041016a62fc51
 
 pkgname = voisu-bin
