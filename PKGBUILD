@@ -8,7 +8,7 @@
 
 pkgname=xrdp
 pkgver=0.10.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
 arch=(i686 x86_64 armv6h armv7l aarch64)
@@ -26,13 +26,18 @@ backup=('etc/xrdp/sesman.ini'
 	'etc/default/xrdp')
 install="${pkgname}.install"
 source=("https://github.com/neutrinolabs/xrdp/releases/download/v${pkgver//_/-}/xrdp-${pkgver//_/-}.tar.gz"
-	"arch-config.diff")
+	'arch-config.diff'
+	'sysusers.d'
+	'tmpfiles.d')
 sha256sums=('2f7beb5a3b2529c8d72dc0df9b8cdca31ab0e0c14d1e3421210f5e6ec0ab3b75'
-            'e0ffce5b1a436990281fe2cc4a3cd9c2840a1dad99740aeaea866ccd9ef56db0')
+            'c69bdcf3b7f7e5ef1dad8caab0e5a438f0857c1e36a7b2b5aa1e6dcf5e45882c'
+            '72f2e1d945d91ddf7034fbe9b64d55e8fbe88d737b0cc3cedd779321b63d05c1'
+            'd75eb05321d247ce792471a9f5176b1b03cf6166673d6bdd110da8fb7e8bd856')
 
 prepare() {
   cd "${pkgname}-${pkgver//_/-}"
-  patch -Np2 -b -z .orig <../arch-config.diff
+  patch -Np1 -b -z .orig < "../arch-config.diff"
+  #patch -Np2 -b -z .orig <../arch-config.diff
   ./bootstrap
 }
 
@@ -76,4 +81,6 @@ package() {
   rm -f "$pkgdir"/etc/xrdp/rsakeys.ini
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
   install -Dm644 instfiles/default/xrdp "$pkgdir"/etc/default/xrdp
+  install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/xrdp.conf"
+  install -Dm644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/xrdp.conf"
 }

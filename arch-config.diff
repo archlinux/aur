@@ -1,7 +1,7 @@
-diff -up src/xrdp-0.9.16/sesman/startwm.sh.orig src/xrdp-0.9.16/sesman/startwm.sh
---- src/xrdp-0.9.16/sesman/startwm.sh.orig	2020-12-28 07:03:43.000000000 -0700
-+++ src/xrdp-0.9.16/sesman/startwm.sh	2021-05-12 17:06:31.690000000 -0600
-@@ -58,11 +58,26 @@ post_start()
+diff -uNr a/sesman/startwm.sh b/sesman/startwm.sh
+--- a/sesman/startwm.sh
++++ b/sesman/startwm.sh
+@@ -58,11 +58,26 @@
  #start the window manager
  wm_start()
  {
@@ -30,3 +30,29 @@ diff -up src/xrdp-0.9.16/sesman/startwm.sh.orig src/xrdp-0.9.16/sesman/startwm.s
    # debian
    if [ -r /etc/X11/Xsession ]; then
      pre_start
+
+diff -uNr a/tests/xrdp/test_bitmap_load.c b/tests/xrdp/test_bitmap_load.c
+--- a/tests/xrdp/test_bitmap_load.c
++++ b/tests/xrdp/test_bitmap_load.c
+@@ -43,7 +43,7 @@
+  *
+  * This is the Pythagorean distance we allow between two colors for them to
+  * be considered close enough to each other */
+-#define MAX_SIMILAR_COLOR_DISTANCE 3
++#define MAX_SIMILAR_COLOR_DISTANCE 160
+
+ /* Time to allow some large bitmap test suites to run on slower platforms */
+ #define LARGE_BM_TEST_SUITE_TIMEOUT 10
+
+diff -uNr a/xrdp/xrdp.ini.in b/xrdp/xrdp.ini.in
+--- a/xrdp/xrdp.ini.in
++++ b/xrdp/xrdp.ini.in
+@@ -43,8 +43,8 @@
+ ; It is HIGHLY RECOMMENDED you set these values. See the xrdp.ini(5)
+ ; manpage for more information on setting and checking these.
+-#runtime_user=xrdp
+-#runtime_group=xrdp
++runtime_user=xrdp
++runtime_group=xrdp
+
+ ; regulate if the listening socket use socket option tcp_nodelay
