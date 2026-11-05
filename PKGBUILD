@@ -25,6 +25,8 @@ b2sums=('aa35f0b3bf4f284e6fb1f94c6545ae55bce0247445682a7a9e646820ed54fdfc1a5bfc7
   '163f2cb189f37eb1e9252d4103ba2944e31daaf713128fc4e49c813c6bf91f989713ac335bc72f610d3cf9926bc9fad518b814135cb979b6ab6b2b67b9c875d7')
 
 prepare() {
+  # pygls 2's API (https://github.com/pappasam/nginx-language-server/pull/27, which also moves the
+  # pydantic models to pydantic 2's API; pydantic 2 still accepts the old validators)
   patch -d "$pkgname" -Np1 -i ../pygls2-compile-fix.patch
 }
 
