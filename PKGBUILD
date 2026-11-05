@@ -195,7 +195,7 @@ prepare() {
   printf '#define ZYCORE_STATIC_BUILD\n#define ZYDIS_STATIC_BUILD\n' |
     cat - amalgamated-dist/Zydis.h >"$_zydis/Zydis.h"
   # The script names each source file with its absolute path: relative to Zydis's, so the source
-  # doesn't depend on where it was built
+  # doesn't depend on where it was built (https://github.com/zyantific/zydis/pull/661)
   sed "s|^// Source file: $srcdir/zydis/|// Source file: |" amalgamated-dist/Zydis.c >"$_zydis/Zydis.c"
 }
 
