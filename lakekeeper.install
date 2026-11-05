@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables user surveys by default: the lakekeeper web UI loads"
+  echo "  the Formbricks SDK, and the browser contacts app.formbricks.com."
+  echo "  Disable them with LAKEKEEPER__UI__ENABLE_SURVEYS=false."
+}
