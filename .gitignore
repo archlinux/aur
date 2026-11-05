@@ -10,3 +10,4 @@
 !system76-driver.install
 !actions.patch
 !cli.patch
+!no-pyflakes.patch

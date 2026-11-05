@@ -1,0 +1,67 @@
+diff -Npur a/setup.py b/setup.py
+--- a/setup.py	2026-11-05 10:03:13.942919997 -0700
++++ b/setup.py	2026-11-05 10:58:09.656054239 -0700
+@@ -34,7 +34,6 @@ import subprocess
+ from setuptools import Command, setup
+ 
+ import system76driver
+-from system76driver.tests.run import run_tests
+ 
+ 
+ SCRIPTS = [
+@@ -43,42 +42,6 @@ SCRIPTS = [
+ ]
+ 
+ 
+-def run_pyflakes3():
+-    pyflakes3 = '/usr/bin/pyflakes3'
+-    if not os.access(pyflakes3, os.R_OK | os.X_OK):
+-        print('WARNING: cannot read and execute: {!r}'.format(pyflakes3))
+-        return
+-    tree = path.dirname(path.abspath(__file__))
+-    names = [
+-        'system76driver',
+-        'setup.py',
+-        'system76-daemon',
+-    ] + SCRIPTS
+-    cmd = [pyflakes3] + [path.join(tree, name) for name in names]
+-    print('check_call:', cmd)
+-    subprocess.check_call(cmd)
+-    print('[pyflakes3 checks passed]')
+-
+-
+-class Test(Command):
+-    description = 'run unit tests and doc tests'
+-
+-    user_options = [
+-        ('skip-gtk', None, 'Skip GTK related tests'),
+-    ]
+-
+-    def initialize_options(self):
+-        self.skip_gtk = 0
+-
+-    def finalize_options(self):
+-        pass
+-
+-    def run(self):
+-        if not run_tests(self.skip_gtk):
+-            raise SystemExit(2)
+-        run_pyflakes3()
+-
+-
+ setup(
+     name='system76driver',
+     version=system76driver.__version__,
+@@ -87,10 +50,9 @@ setup(
+     author='System76, Inc.',
+     author_email='dev@system76.com',
+     license='GPLv2+',
+-    cmdclass={'test': Test},
++
+     packages=[
+-        'system76driver',
+-        'system76driver.tests'
++        'system76driver'
+     ],
+     scripts=SCRIPTS,
+     package_data={

@@ -2,8 +2,8 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=24.04.22
-pkgrel=3
+pkgver=24.04.23
+pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -17,14 +17,10 @@ depends=(
   'lm_sensors'
   'pciutils'
   'polkit'
-  'python-cffi'
   'python-dbus'
   'python-distro'
   'python-evdev'
   'python-gobject'
-  'python-pynacl'
-  'python-systemd'
-  'python-xlib'
   'system76-firmware'
   'usbutils'
   'wireless_tools'
@@ -33,40 +29,44 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-pyflakes'
   'python-setuptools'
   'python-wheel'
 )
+checkdepends=(
+  'desktop-file-utils'
+  'python-pytest'
+)
 optdepends=(
   'firmware-manager: Manage System76 firmware updates via standalone application'
-  'grub: Required to apply kernel parameters'
-  'pulseaudio: To apply microphone fix'
   'system76-dkms: Control hotkeys and fan on certain System76 laptops'
-  'system76-acpi-dkms: Provides the system76_acpi in-tree driver (only for (<5.16))'
   'system76-io-dkms: Enable System76 I/O daughterboard'
   'system76-oled: Control brightness on OLED displays'
   'system76-power: System76 Power Management'
-  'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service'
 )
-checkdepends=('python-pytest')
 install="$pkgname.install"
 source=("git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
         'cli.patch'
-        'actions.patch')
-sha256sums=('b274bc87955e33c549d2d6b5f7bb74f27a3970220b373319aec373efa1daa121'
+        'actions.patch'
+        'no-pyflakes.patch')
+sha256sums=('c2716542974036e5378896d1a14ce7db4d120752b48e47793703def733702f7b'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
-            'ec8e19504242b67f6c2ef92d382336060fb9024d0ebae0ed3de38aa2f34cbc2a')
+            'ec8e19504242b67f6c2ef92d382336060fb9024d0ebae0ed3de38aa2f34cbc2a'
+            '03b93d996423343f58ffaf35cdd73b1c11f14c38399dcdd328d0db5f697c6a38')
 
 prepare() {
   cd "$pkgname"
   git clean -dfx
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
-  patch -Np1 --no-backup-if-mismatch -i "$srcdir/cli.patch"
+  patch -Np1 -i "$srcdir/cli.patch"
 
   # Use mkinitcpio instead of initramfs-tools
-  patch -Np1 --no-backup-if-mismatch -i "$srcdir/actions.patch"
+  patch -Np1 -i "$srcdir/actions.patch"
+
+  # Pyflakes only required for CI test that cannot run in chroot
+  # Remove tests from package
+  patch -Np1 -i "$srcdir/no-pyflakes.patch"
 }
 
 build() {
@@ -81,6 +81,8 @@ check() {
 
   # Skip failing Gtk test
   test-env/bin/python -I -m pytest -k 'not test_gtk' || :
+
+  desktop-file-validate *.desktop
 }
 
 package() {
@@ -106,8 +108,4 @@ package() {
 
   # Create /var/lib/system76-driver directory for brightness settings saving
   install -d "$pkgdir/var/lib/$pkgname"
-
-  # Remove tests
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "${pkgdir}${site_packages}/system76driver/tests/"
 }
