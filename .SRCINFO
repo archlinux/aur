@@ -1,0 +1,17 @@
+pkgbase = subview-nightly-bin
+	pkgdesc = Display a subtitle stream from stdin as a desktop overlay — nightly build
+	pkgver = 0.1.0+nightly+20261105+0+g2ec388b2
+	pkgrel = 1
+	url = https://github.com/someoneonsmile/subview
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = subview
+	conflicts = subview
+	conflicts = subview-bin
+	source_x86_64 = subview-0.1.0+nightly+20261105+0+g2ec388b2-x86_64-linux-gnu.tar.gz::https://github.com/someoneonsmile/subview/releases/download/nightly/subview-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = subview-0.1.0+nightly+20261105+0+g2ec388b2-aarch64-linux-gnu.tar.gz::https://github.com/someoneonsmile/subview/releases/download/nightly/subview-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = subview-nightly-bin
