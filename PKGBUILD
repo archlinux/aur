@@ -4,7 +4,7 @@ _appname=SimpleArchiver
 _pkgauthor=Stephen-Seo
 _pkgname=${_appname,,}
 pkgname=${_pkgname}-bin
-pkgver=4.3.3
+pkgver=4.3.4
 pkgrel=1
 pkgdesc="An alternative to tar"
 
@@ -25,8 +25,8 @@ source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}_${_arch_prefix}_$
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}_${_arch_prefix}_${arch[1]}")
 sha256sums=('db7f7ce8121ec5084ef74e60e72d22f165f6d7d6664a1af5ccdbb956e1f38793'
             '47c9ccf698e4fd5f4d4ba1d9eda8d2aeed67b92cab4e7e901c7cf536fd54b2df')
-sha256sums_x86_64=('df09ce9e1741c3a2234f5a399b2f7c2ea64779a1065f2e0d489d23eed26263e5')
-sha256sums_aarch64=('0d66c8ec7fd9438629fadcaf64bc1fb253f54190a6a57ec62a59033c2a5aee74')
+sha256sums_x86_64=('0e361b9b8161e4477ad11f8855919508d72e74684ef04d68a3ccb86a6168bd60')
+sha256sums_aarch64=('b6a2b4ae21f212cc9886c4d848e53ff5adc8d5d4bcff3ed4546abd9ddaed57dc')
 
 
 package() {
