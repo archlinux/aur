@@ -259,7 +259,7 @@ so the knob only has an effect on statics - where it does help: a static
 Regular hinted with `-x 14` glues 0 cases instead of 5, for 0.1 of extra
 deviation, which is what upstream's own statics do.
 
-That is the one place where `COMM_VARIANT=static HINT_PRESET=balanced` is worth
+That is the one place where `COMM_VARIANT=static FONTTUNE_HINT=balanced` is worth
 trying: it opens the dots at Regular on every machine, including the ones on
 `hintmedium`. For the variable font the preset choice is a choice of stem mode
 only.
@@ -289,8 +289,7 @@ for it, because Windows GDI needs whole-pixel ppem. On Linux the flag does not
 change the ppem FreeType picks - measured 11 px at 8 pt / 96 dpi with the bit
 clear **and** set - it only feeds the hinter's integer assumption, which moves
 ink by up to 3.5% (`+3.5%` at 8 pt, `-2.5%` at 10 pt, nothing at 9 or 12 pt,
-where the ppem is already whole). `HINT_INTEGER_PPEM=true` sets it for people
-who want fontbakery clean or who match Windows; the default leaves it off.
+where the ppem is already whole). The package no longer sets it (fonttune has no such option); the flag stays clear, as ttfautohint leaves it.
 
 ---
 
@@ -378,29 +377,29 @@ python measure.py Commissioner-Italic.ttf slight '{}' 10,11,12
 
 ---
 
-## 5. Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+## 5. Features in apps that ignore fontconfig (`FONTTUNE_FEATURES`)
 
 fontconfig's `fontfeatures` is read by pango/GTK only: Chromium, Electron, Qt
 and LibreOffice shape text without it, and in a browser only the page CSS can
 ask for a feature. A font cannot declare one "on by default" either - a shaper
 applies a fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`). So the
 only way to make a feature the default everywhere is to move its lookups into
-one of those features, which is what `make_features.py` does and what
-`FEATURE_DEFAULTS` runs as the last build step:
+one of those features, which is what fonttune's `features` step does and what
+`FONTTUNE_FEATURES` runs as the last build step:
 
 ```sh
-FEATURE_DEFAULTS=ss01 makepkg -si     # the alternate G with a bar, in every app
+FONTTUNE_FEATURES=ss01 makepkg -si     # the alternate G with a bar, in every app
 ```
 
-`FEATURE_DEFAULTS=fonts.conf` bakes the features that are **active** (not commented out) in the
+fonttune's `features = "fonts.conf"` (`FONTTUNE_FEATURES=fonts.conf`) bakes the features that are **active** (not commented out) in the
 `<match target="font">` blocks for `Commissioner` in `~/.config/fontconfig/fonts.conf` (another file:
 `COMM_FONTS_CONF`), so the one list drives both pango and every other app. Skipped, with a
 `note:` line: negated tags (`-liga`), tags the font has no GSUB lookups for, tags every
-shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones `make_features.py`
+shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones fonttune's `features` step
 refuses (`aalt ordn dlig ...`). If nothing is left, nothing is baked.
 
 `makepkg` asks for this during the build: Enter bakes nothing, so a plain build
-is unchanged. `FEATURE_FAMILY` is not prompted for on purpose - it renames every
+is unchanged. `FONTTUNE_FEATURE_FAMILY` is not prompted for on purpose - it renames every
 file to one family, which would merge the cuts a multi-family build installs -
 so the variables below are what an unattended build, or a renamed copy, uses.
 
@@ -417,15 +416,29 @@ barred G today, Chromium, Electron and Qt do not, because they never read
 | `ss01` | alternate `G` **with a bar**: `G Ĝ Ğ Ġ Ģ Ǧ` to `.ss01` forms | yes - `fonts.conf` already asks for it in pango |
 | `ss02` | `б` to the Serbian form - the same substitution `locl` does for `lang="sr"` | **no**: it would give Russian text the Serbian letter |
 | `case`, `tnum`, `frac`, `sups`, `subs`, `sinf`, `numr`, `dnom`, `pnum` | per-context requests (raised punctuation, tabular figures, fractions) | only per context |
-| `ordn`, `aalt` | `H2O` to `H2º`, every alternate at once | **never** (`make_features.py` refuses them) |
+| `ordn`, `aalt` | `H2O` to `H2º`, every alternate at once | **never** (fonttune's `features` step refuses them) |
 
 Measured on the built package, 44 px, `Greece Gg ĜĞ Γγ`: the baked font with
 no CSS at all is **pixel-identical** to the stock font with
 `font-feature-settings: "ss01" 1` (0 differing pixels out of 1200x96), 191
 pixels differ from the stock font, and `"calt" 0` brings the stock glyphs back
-exactly. `FEATURE_FAMILY="Commissioner Barred"` installs it as a second family
+exactly. `FONTTUNE_FEATURE_FAMILY="Commissioner Barred"` installs it as a second family
 instead, so both looks stay available - note that the shipped
 `79-commissioner-families.conf` keeps testing for the old name then.
+
+## Build options (fonttune)
+
+Tuning is done by [fonttune](https://github.com/gaou-piou/fonttune); the
+PKGBUILD asks its questions in `prepare()` and each answer can be preset as
+`FONTTUNE_<KEY>` (`hint`, `gasp`, `features`, ...). Package options:
+`COMM_VARIANT=variable|static`, `STATIC_WEIGHTS`, `STATIC_ITALIC`,
+`STATIC_VOICES="default flare loud"` and `NERD_PATCH` (implies static); the
+statics are cut by `fonttune statics`. The old `HINT_*`, `GASP_MODE` and
+`FEATURE_*` variables, `make_statics.py`, `make_features.py` and `set_gasp.py`
+are gone, and some option names in the sections above predate this change
+(`HINT_PRESET` is fonttune's `hint`, `FEATURE_DEFAULTS` its `features`). The
+resolved choices are saved in
+`/usr/share/doc/ttf-commissioner-hinted/fonttune.toml`.
 
 ## Differences from the sibling packages
 
