@@ -2,7 +2,7 @@
 
 pkgname=coredeck-bin
 _name=CoreDeck
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Native desktop command center for the Android SDK (AVDs, system images, APK inspection)'
 
@@ -26,8 +26,8 @@ source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/devmuaz/$_n
 
 sha256sums=('d38b5905e96871c4c21563212bdb13d856663b2b94a57efcf8068ff537919706'
             '7ea39a99bffcea8f965587c322381cd87544dec1e6e4991f03bb38b17eb7d3e9')
-sha256sums_x86_64=('938daeb7ddc8815b2b430fce0dafe3102bb5a9f9345da83c2ddafbbf75843639')
-sha256sums_aarch64=('3edf209730bf03056fb9e7c665552b2cc5254314778eca533dec04ee4634a02a')
+sha256sums_x86_64=('21d545acd75d6d7513910f82e19d334888abc6b231d53e99fabd9c98511e857d')
+sha256sums_aarch64=('4a126211825e06291f095a59cec8d70b6add39c54c04e9f80f7429dec2986ff5')
 
 package() {
   case "$CARCH" in
