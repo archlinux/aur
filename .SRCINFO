@@ -1,0 +1,27 @@
+pkgbase = kiota-bin
+	pkgdesc = OpenAPI based HTTP client code generator (prebuilt)
+	pkgver = 1.38.0
+	pkgrel = 1
+	url = https://github.com/microsoft/kiota
+	install = kiota.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = icu
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl
+	optdepends = krb5: Kerberos and Negotiate HTTP authentication
+	provides = kiota=1.38.0
+	conflicts = kiota
+	options = !strip
+	options = !debug
+	source = kiota-1.38.0-LICENSE::https://raw.githubusercontent.com/microsoft/kiota/v1.38.0/LICENSE
+	sha256sums = c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
+	source_x86_64 = kiota-1.38.0-x86_64.zip::https://github.com/microsoft/kiota/releases/download/v1.38.0/linux-x64.zip
+	sha256sums_x86_64 = aca484531cd4aaeec1aa751f3cad6a0e1b5709260035c7955f1ee8e6b7615f5a
+	source_aarch64 = kiota-1.38.0-aarch64.zip::https://github.com/microsoft/kiota/releases/download/v1.38.0/linux-arm64.zip
+	sha256sums_aarch64 = c517a102b5203eee62aacf58f0baeefa6a828be62e7261a112e1d3c9b7dcaff1
+
+pkgname = kiota-bin

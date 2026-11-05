@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables telemetry by default: kiota sends usage data and"
+  echo "  traces of its HTTP requests to Azure Application Insights."
+  echo "  Disable it with KIOTA_CLI_TELEMETRY_OPTOUT=1."
+}
