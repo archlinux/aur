@@ -1,0 +1,15 @@
+pkgbase = koda-desktop-bin
+	pkgdesc = Koda AI desktop client (prebuilt AppImage)
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://www.kodacode.ru/
+	arch = x86_64
+	license = ISC
+	depends = fuse2
+	provides = koda-desktop
+	conflicts = koda-desktop
+	options = !strip
+	source_x86_64 = Koda-Desktop-1.3.2.AppImage::https://nexus.kodacode.online/repository/koda-desktop/tags/v1.3.2/linux/Koda-Desktop-1.3.2.AppImage
+	sha256sums_x86_64 = 8774da266acd14c7945920337c854c4e6c1a5cf490f760f6e061a9fc62d1253f
+
+pkgname = koda-desktop-bin
