@@ -19,6 +19,6 @@ pkgbase = foldav
 	optdepends = org.freedesktop.secrets: keep the passwords in the system keyring
 	options = !lto
 	source = foldav-0.1.0.tar.gz::https://github.com/AperteDev/foldav/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 3fa043099c3e2434d648121d95c02ea391056e0874c416aceee6975dd185669d
 
 pkgname = foldav
