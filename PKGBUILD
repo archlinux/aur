@@ -1,7 +1,7 @@
 # Maintainer: npil <npil>
 # Contributor: fossdd <fossdd@pwned.life>
 pkgname=lyrebird-proxy
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="pluggable transport proxy for Tor, implementing obfs4"
 url="https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird"
@@ -14,6 +14,7 @@ sha256sums=('SKIP')  # validate against upstream's PGP signature instead
 validpgpkeys=(
   '40BBCBED223F5EB2A03EF657D7D7A110ABC79A6C'  # Shelikhoo <shelikhoo@torproject.org>
   '07948FFA64160A425BCD27EAC732B1D1C28F4E2F'  # Ruben Pollan (meskio) <meskio@torproject.org>
+  '5A618CE840883942BAF1334F009DE379FD9B7B90'  # Cecylia Bocovich (cohosh) <cohosh@torproject.org>
 )
 
 build() {
