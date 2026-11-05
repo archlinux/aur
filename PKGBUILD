@@ -10,8 +10,8 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=2026_10_23
-pkgrel=3
+pkgver=2026_11_03
+pkgrel=1
 pkgdesc="One zig to rule them all"
 arch=(
   'aarch64'
@@ -61,20 +61,20 @@ source_x86_64=(
   "${_pkgname[1]}-${pkgver}-x86_64-linux.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname[1]}-x86_64-linux.tar.gz"
   "${_pkgname[2]}-${pkgver}-x86_64-linux.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname[2]}-x86_64-linux.tar.gz"
 )
-sha256sums=('4cf0cb1eff9e991243f36225ece249760a47b7387e6e518afc873e6fdb01c364'
+sha256sums=('4f22b17a0fcc2259e9fd07a02cd334342b30319d61f06a11e67b7cd219f727d8'
             '491fef2e3fe35219d5bd74c3b0d166d323e279678fca49bb48200348d04c769d')
-sha256sums_aarch64=('196e43be6ef5a7d748b98b2d5c6fb976d1c24ff76da5cfbd1a898ed6755e0504'
-                    '196e43be6ef5a7d748b98b2d5c6fb976d1c24ff76da5cfbd1a898ed6755e0504')
-sha256sums_armv7h=('546a5cb9c63cbccdf42b4ba0f1f023963d7405e4283c1047266e58bc37b0b670'
-                   '20cd7373c2ebe3ae8739dfb3b1ba4242d49d39688019eaca2f3efd7506dc8581')
-sha256sums_i686=('72900004242bf8cf354dcd499ad75a17f2ba8382f0a41fc8bbe51c6725f7486a'
-                 '6d8359f0a348e49cebe26e25ef13e396970b1bc764842ac6b0b163274c81fd2c')
-sha256sums_powerpc64le=('a6f8852cb7452af84856a637cdcc630a0d8da5ec1d5b6f8d261c25639ba029c5'
-                        '2a9ccb0937ea59c6fb704aa33fb7801b69c1a147e01d7836d58fd1e40d05a485')
-sha256sums_riscv64=('8b7c12972161899c73706a24825f0162586a6e6f3c00aeb6d5f9756bde63f7fc'
-                    'b8f47a44d95a11b01d1bd4ca05561dbb0c58c283ee8fed3035af9af0615411e7')
-sha256sums_x86_64=('9475f2aba65240f7a3d402d8b8d98ea4e96eb2540a40308490a9e7b5215222f1'
-                   'c6f2632b48d481104628ce2738c661745f69ce7ec41059940d023fd87e0e11ca')
+sha256sums_aarch64=('fa82356bc96cb6e31866356cd23dfc9081271b45f16cb0c77ea8069eb3c7b660'
+                    '98a0eb2b0ab6f66f864a9257221fcdfce2d6c0703c682e948c2687cae391ea35')
+sha256sums_armv7h=('e63bee8df06adb4e22cd247f7c432f670ef8cda0a9f56ee4bee2041c76029032'
+                   'a38252a736f1b25492d17b276c8e34419f072e7822d8d9c7e95a3506996ce284')
+sha256sums_i686=('cdca78fde026c9a925e1ddc3cc512aaca3bc30c7bd05c7e73fa4a9d2c844653c'
+                 '929249f7b64fb7b4b4a24fbcab01397605fa381c77fba449f69970cd0ebdeca2')
+sha256sums_powerpc64le=('189ecbd2672ca2cf891a0b6f68b40b8a87673dd163eb3769dbb4ef51f85544b5'
+                        '9c43fde3f4c7b0efbefef54c885fe67d2f5af7caa7e76710326c5ceae6fa60dc')
+sha256sums_riscv64=('fa17d8110535540d65e690bb4a73f888e66d57834a79ee33ebb195d31c02125c'
+                    '4a58f45ee46f70bf431da1407fe3fbdde73025d2dd6d4723f8c9b889913899e7')
+sha256sums_x86_64=('8bc0be4b1f4067250436be7072550bf2ff87f9efbc74ad53f64fa46f254c0c06'
+                   '4c26eb040e8817ad5ceab5ffea7453409b077c53b9f772f9bbcfe13948fe50d6')
 
 package_anyzig-common-bin() {
   pkgdesc+=" (common files)"
@@ -110,6 +110,7 @@ package_anyzig-bin() {
 }
 
 package_anyzls-bin() {
+  pkgdesc+=" (ZLS)"
   depends=(
     "${_pkgbase}-common-bin>=${pkgver}-${pkgrel}"
   )
