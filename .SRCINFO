@@ -1,7 +1,7 @@
 pkgbase = docker-sbx-bin
 	pkgdesc = Run AI coding agents in isolated Docker microVM sandboxes
 	pkgver = 0.51.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.docker.com/products/docker-sandboxes/
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=docker-sbx-bin
 pkgver=0.51.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run AI coding agents in isolated Docker microVM sandboxes"
 arch=('x86_64' 'aarch64')
 url="https://www.docker.com/products/docker-sandboxes/"
@@ -41,26 +41,44 @@ package() {
     local _src="${srcdir}/docker-sbx"
     local _libexec="${pkgdir}/usr/libexec"
 
-    install -Dm755 "${_src}/sbx" "${pkgdir}/usr/bin/sbx"
-    install -Dm755 "${_src}/containerd-shim-nerdbox-v1" \
-        "${_libexec}/containerd-shim-nerdbox-v1"
-    install -Dm755 "${_src}/mkfs.erofs" "${_libexec}/mkfs.erofs"
-    install -Dm755 "${_src}/libsailor.so" "${_libexec}/lib/libsailor.so"
+    # sbx locates every helper through "<its own dir>/../libexec", and upstream
+    # keeps adding to that set (0.51 added docker-docklet and the sailor
+    # rootfs, 0.50 added mkfs.ext4). Ship the whole payload instead of a
+    # hand-kept list: a helper left out does not fail the build, it fails as a
+    # sandbox that refuses to boot.
+    install -d "${_libexec}"
+    cp -a "${_src}/." "${_libexec}/"
+    rm -f "${_libexec}/install.sh"
 
-    if [[ -f "${_src}/containerd-shim-nerdbox-gpu-v1" ]]; then
-        install -Dm755 "${_src}/containerd-shim-nerdbox-gpu-v1" \
-            "${_libexec}/containerd-shim-nerdbox-gpu-v1"
-    fi
-
-    local _file
-    for _file in "${_src}"/nerdbox-kernel-* "${_src}"/nerdbox-rootfs-*.erofs; do
-        [[ -f "${_file}" ]] && install -Dm644 "${_file}" "${_libexec}/$(basename "${_file}")"
+    local _file _pattern
+    for _file in docker-docklet containerd-shim-nerdbox-v1 \
+                 mkfs.erofs mkfs.ext4 libsailor.so; do
+        [[ -f "${_libexec}/${_file}" ]] || {
+            echo "upstream no longer ships ${_file}; update the PKGBUILD" >&2
+            return 1
+        }
+    done
+    for _pattern in 'nerdbox-kernel-*' 'nerdbox-rootfs-*.erofs' 'sailor-rootfs-*.erofs'; do
+        compgen -G "${_libexec}/${_pattern}" >/dev/null || {
+            echo "upstream no longer ships ${_pattern}; update the PKGBUILD" >&2
+            return 1
+        }
     done
 
-    install -Dm644 "${_src}/apparmor-profile" \
-        "${pkgdir}/etc/apparmor.d/docker-sbx-nerdbox-shim"
-    install -Dm644 "${_src}/LICENSE" \
+    install -Dm755 "${_libexec}/sbx" "${pkgdir}/usr/bin/sbx"
+    rm -f "${_libexec}/sbx"
+
+    install -Dm755 "${_libexec}/libsailor.so" "${_libexec}/lib/libsailor.so"
+    rm -f "${_libexec}/libsailor.so"
+
+    install -Dm644 "${_libexec}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${_src}/THIRD-PARTY-NOTICES" \
+    install -Dm644 "${_libexec}/THIRD-PARTY-NOTICES" \
         "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY-NOTICES"
+    install -Dm644 "${_libexec}/apparmor-profile" \
+        "${pkgdir}/etc/apparmor.d/docker-sbx-nerdbox-shim"
+    rm -f "${_libexec}/LICENSE" "${_libexec}/THIRD-PARTY-NOTICES" \
+        "${_libexec}/apparmor-profile"
+
+    chmod -R u=rwX,go=rX "${pkgdir}"
 }
