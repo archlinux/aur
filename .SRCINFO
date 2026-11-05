@@ -1,0 +1,25 @@
+pkgbase = doltlite-bin
+	pkgdesc = SQLite fork with Git-style version control (prebuilt)
+	pkgver = 0.51.8
+	pkgrel = 1
+	url = https://github.com/dolthub/doltlite
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0 AND blessing
+	makedepends = patchelf
+	depends = glibc
+	depends = zlib
+	provides = doltlite=0.51.8
+	conflicts = doltlite
+	source = doltlite-0.51.8-LICENSE.md::https://raw.githubusercontent.com/dolthub/doltlite/v0.51.8/LICENSE.md
+	sha256sums = 29665b418abe9d65f3bdd723ca27336a998477566e9426d436530ede0e65efcf
+	source_x86_64 = https://github.com/dolthub/doltlite/releases/download/v0.51.8/doltlite-tools-linux-x64-0.51.8.zip
+	source_x86_64 = https://github.com/dolthub/doltlite/releases/download/v0.51.8/doltlite-lib-linux-x64-0.51.8.zip
+	sha256sums_x86_64 = 9cb16ab4d8d8f010381835cd8c27e5bafb2c3f41e0e1ceaa9330bd442ede2e7a
+	sha256sums_x86_64 = 442e8e69e45dac83937833e08b9e5023e19b050fb1975c8d8335b3df8d0f6064
+	source_aarch64 = https://github.com/dolthub/doltlite/releases/download/v0.51.8/doltlite-tools-linux-arm64-0.51.8.zip
+	source_aarch64 = https://github.com/dolthub/doltlite/releases/download/v0.51.8/doltlite-lib-linux-arm64-0.51.8.zip
+	sha256sums_aarch64 = a7abee81a028df10d23e982d19d2d6efb3b03480db39612574648cd5fe4c6e4e
+	sha256sums_aarch64 = 54428384e675d4740c2f064385bde71d6973229eed2cc3ce668fa3d7226cae09
+
+pkgname = doltlite-bin
