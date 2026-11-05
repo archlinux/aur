@@ -1,0 +1,23 @@
+pkgbase = shuru-bin
+	pkgdesc = A local-first microVM sandbox for running AI agents safely
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/superhq-ai/shuru
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = shuru
+	conflicts = shuru
+	options = !strip
+	source = README-0.13.0.md::https://raw.githubusercontent.com/superhq-ai/shuru/v0.13.0/README.md
+	source = LICENSE-0.13.0::https://raw.githubusercontent.com/superhq-ai/shuru/v0.13.0/LICENSE
+	sha256sums = 2fed3426b258dc88b9331caac51806615c23eeff112cf81122a2cd83872b02b6
+	sha256sums = 4bbe21af4ef8087e2394654c3ec92509cf5d7b1b54a45b433e0edff522e7ca4b
+	source_x86_64 = shuru-x86_64-0.13.0.tgz::https://github.com/superhq-ai/shuru/releases/download/v0.13.0/shuru-v0.13.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7971ad0536d316e03e39f24d6d2b1a506c5d5e4aef303606cdffb1969d1528ad
+	source_aarch64 = shuru-aarch64-0.13.0.tgz::https://github.com/superhq-ai/shuru/releases/download/v0.13.0/shuru-v0.13.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 90b3f1a1afcb412ac99a978277fd11dfeee6a413242727e1a71a7e6fbb2dde89
+
+pkgname = shuru-bin

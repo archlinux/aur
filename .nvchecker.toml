@@ -1,0 +1,5 @@
+[shuru-bin]
+source = "github"
+github = "superhq-ai/shuru"
+use_latest_release = true
+prefix = "v"
