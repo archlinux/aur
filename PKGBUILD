@@ -1,5 +1,5 @@
 pkgname=xeus6
-pkgver=6.0.6
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="C++ implementation of the Jupyter kernel protocol"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=('cmake' 'zeromq' 'cppzmq')
 provides=("xeus=${pkgver}")
 conflicts=('xeus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/QuantStack/xeus/archive/$pkgver.tar.gz")
-sha256sums=('2cf58d5466a541f7acf668e3500507ca54eb2393780ba3743d94308c24d6ca80')
+sha256sums=('93162d215a70d1ebd85d97bfea0e5f482ac4140d6de8d05990540a2f385021ab')
 options=(staticlibs)
 
 build() {
