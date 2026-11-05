@@ -62,7 +62,7 @@ prepare() {
     _check_electron_version
     sed -i -e "
         s/Exec=\/opt\/apps\/${_debname}\/files\/${_appname}.sh/Exec=${pkgname%-bin} %U/g
-        s/Icon=\/opt\/apps\/${_debname}\/files\/resources\/app\/${_appname}.png/Icon=${pkgname%-bin}/g
+        s/Icon=\/opt\/apps\/${_debname}\/files\/resources\/${_appname}.png/Icon=${pkgname%-bin}/g
     " "${srcdir}/opt/apps/${_debname}/entries/applications/${_appname}.desktop"
 }
 package() {
