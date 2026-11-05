@@ -3,7 +3,7 @@
 
 pkgname=bottles
 _pkgname=Bottles
-pkgver=67.5
+pkgver=67.6
 pkgrel=1
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
@@ -71,7 +71,7 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
-  "9a59d08d6b4cba979be835f18ff4cde65f1315ff908b73fa707a9a5ee6ee94ab"
+  "42bab50a8b127ef8de528450426087c814fd5b2bdb35296eca244b736eb13940"
 )
 
 prepare() {
