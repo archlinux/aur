@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-clipboard-indicator-latest
 	pkgdesc = The most popular clipboard manager for GNOME - always up-to-date
 	pkgver = 71
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator
 	arch = any
 	license = MIT
