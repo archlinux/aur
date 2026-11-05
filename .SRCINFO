@@ -26,7 +26,7 @@ pkgname = vtium-git
 	depends = vtium-terminfo-git
 	optdepends = kbd: console fonts, which vtium draws when no frit is set
 	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
-	provides = vtium
+	provides = vtium=r1866.16e66a2
 	conflicts = vtium
 	backup = etc/vtium/fonts/desktop.vtfrit
 	backup = etc/vtium/fonts/minspec-16.vtfrit
@@ -35,5 +35,5 @@ pkgname = vtium-git
 pkgname = vtium-terminfo-git
 	pkgdesc = The terminfo entry xterm-vtium, for sessions in vtium (git main)
 	arch = any
-	provides = vtium-terminfo
+	provides = vtium-terminfo=r1866.16e66a2
 	conflicts = vtium-terminfo

@@ -44,7 +44,11 @@ package_vtium-git() {
            'vtium-terminfo-git')
   optdepends=('kbd: console fonts, which vtium draws when no frit is set'
               'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
-  provides=('vtium')
+  # provides vtium at this build's version, so a package that depends on
+  # vtium, or on a version of it, is met by this one; conflicts with vtium,
+  # which every other console package provides, so a machine holds one
+  # console package at a time.
+  provides=("vtium=$pkgver")
   conflicts=('vtium')
   # The frits _make names in FRITS, which keep a user's edits across an
   # upgrade (ADR-1500 D8).
@@ -58,7 +62,7 @@ package_vtium-git() {
 package_vtium-terminfo-git() {
   arch=('any')
   pkgdesc='The terminfo entry xterm-vtium, for sessions in vtium (git main)'
-  provides=('vtium-terminfo')
+  provides=("vtium-terminfo=$pkgver")
   conflicts=('vtium-terminfo')
   _package_terminfo
 }
