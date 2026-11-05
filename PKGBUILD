@@ -2,8 +2,7 @@
 # Current maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=python-yt
 _module_name=yt
-<<<<<<< HEAD
-pkgver=4.4.1
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data."
 arch=(any)
@@ -43,7 +42,7 @@ optdepends=(
 )
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-sha256sums=('2df36425b48321ca236ea638f64fbe834f5d3b47c948cd519a7b048686253c25')
+sha256sums=('4be5142ca9a7654d9ba63529a1456a6389e7e66685aa4013758ed8b254308452')
 
 build() {
   cd "$srcdir/${_module_name}-$pkgver"
