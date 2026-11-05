@@ -1,0 +1,26 @@
+pkgbase = earshot-git
+	pkgdesc = Use your phone as your PC's microphone, over Wi-Fi (latest git)
+	pkgver = 1.1.0.r39.g3d6ebd2
+	pkgrel = 1
+	url = https://github.com/MrMazlum/Earshot
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = alsa-lib
+	makedepends = dbus
+	depends = alsa-lib
+	depends = dbus
+	depends = hicolor-icon-theme
+	optdepends = pulseaudio-utils: virtual microphone via pactl (PulseAudio)
+	optdepends = pipewire-pulse: virtual microphone via pactl (PipeWire)
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
+	provides = earshot
+	conflicts = earshot
+	conflicts = earshot-bin
+	source = git+https://github.com/MrMazlum/Earshot.git
+	sha256sums = SKIP
+
+pkgname = earshot-git
