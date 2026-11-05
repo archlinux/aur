@@ -1,0 +1,14 @@
+pkgbase = perl-test-diaginc
+	pkgdesc = List modules and versions loaded if tests fail
+	pkgver = 0.010
+	pkgrel = 1
+	url = https://metacpan.org/dist/Test-DiagINC
+	arch = any
+	license = Apache-2.0
+	checkdepends = perl-capture-tiny
+	depends = perl
+	options = !emptydirs
+	source = perl-test-diaginc-0.010.tar.gz::https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Test-DiagINC-0.010.tar.gz
+	sha256sums = 5bcb8d356c509e359d53d869c07efdaa8fee5d6cf99897018b9a914ceb21222e
+
+pkgname = perl-test-diaginc
