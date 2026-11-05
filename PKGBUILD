@@ -118,7 +118,7 @@ prepare() {
   _check_fonttune
   _ask NERD_PATCH "Patch with Nerd Fonts glyphs (implies static fonts)" n
   if [[ -z "${COMM_VARIANT:-}" && -t 0 && "$NERD_PATCH" != true ]]; then
-    read -r -p "[COMM_VARIANT] variable or static [variable] " COMM_VARIANT
+    read -r -p "[COMM_VARIANT] variable or static (static: pixel grid possible) [variable] " COMM_VARIANT
   fi
   COMM_VARIANT="${COMM_VARIANT:-variable}"
   case "$COMM_VARIANT" in variable|static) ;;
