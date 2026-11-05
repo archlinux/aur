@@ -1,4 +1,4 @@
-pkgbase = soh-bin
+pkgbase = shipwright-bin
 	pkgdesc = An unofficial PC port of The Legend of Zelda: Ocarina of Time
 	pkgver = 9.3.1
 	pkgrel = 1
@@ -24,4 +24,4 @@ pkgbase = soh-bin
 	sha256sums = d2aa81872c6176dd747bee8962a27371b090ac8904bb12352660127092e3792a
 	sha256sums = 33ffca9a886629700bce92f334d3d460da48f41b2194854c0280dea3f6451850
 
-pkgname = soh-bin
+pkgname = shipwright-bin

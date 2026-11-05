@@ -1,5 +1,5 @@
 # Maintainer: Luke Bubar <luke@coldmail.xyz>
-pkgname=soh-bin
+pkgname=shipwright-bin
 pkgver=9.3.1
 pkgrel=1
 _codename=Dewey-Bravo
