@@ -66,7 +66,9 @@ prepare() {
   cd json-everything || exit
   git submodule init ref-repos/JSON-Schema-Test-Suite
   git config submodule.ref-repos/JSON-Schema-Test-Suite.url "$srcdir/JSON-Schema-Test-Suite"
-  git -c protocol.file.allow=always submodule update ref-repos/JSON-Schema-Test-Suite
+  # --force: on a rebuild makepkg only resets the main checkout, the submodules would keep the
+  # previous build's changes
+  git -c protocol.file.allow=always submodule update --force ref-repos/JSON-Schema-Test-Suite
 
   # Source link isn't needed for this build
   find src -name '*.csproj' -exec sed -i '/Microsoft.SourceLink.GitHub/d' {} +
