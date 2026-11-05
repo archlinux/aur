@@ -41,7 +41,9 @@ prepare() {
     git submodule init "$_submodule"
     git config "submodule.$_submodule.url" "$srcdir/${_submodule##*/}"
   done
-  git -c protocol.file.allow=always submodule update third_party/amtl hl2sdk-manifests
+  # --force: on a rebuild makepkg only resets the main checkout, the submodules would keep the
+  # previous build's changes
+  git -c protocol.file.allow=always submodule update --force third_party/amtl hl2sdk-manifests
 }
 
 build() {
