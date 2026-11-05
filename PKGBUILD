@@ -2,7 +2,7 @@
 
 _npmscope=agentmemory
 pkgname=agentmemory
-pkgver=0.9.31
+pkgver=0.9.32
 pkgrel=1
 pkgdesc="Persistent memory for AI coding agents based on real-world benchmarks"
 arch=('x86_64')
@@ -14,11 +14,18 @@ options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@$_npmscope/$pkgname/-/$pkgname-$pkgver.tgz"
         "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/rohitg00/agentmemory/v$pkgver/LICENSE")
 noextract=("$pkgname-$pkgver.tgz")
-sha1sums=('eb1b9d9fb0e2544a8bf3bfb4650caee7eeef340b'
+sha1sums=('cedfdb39acce20b77e92b35fac83ce3ae7b34397'
           '828dcdad822eadebbf9b29e4412b2e7e4b1f68b4')
 
+# npm runs in build(), outside fakeroot: under fakeroot, npm's worker threads and
+# faked deadlock on the SysV message queue (all blocked in msgsnd, no CPU, for hours).
+build() {
+  npm install -g --cache "$srcdir/npm-cache" --no-audit --no-fund --no-update-notifier \
+    --prefix "$srcdir/stage/usr" "$srcdir/$pkgname-$pkgver.tgz"
+}
+
 package() {
-  npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
+  cp -a "$srcdir/stage/usr" "$pkgdir/"
 
   local _nm="$pkgdir/usr/lib/node_modules/@$_npmscope/$pkgname/node_modules"
 
