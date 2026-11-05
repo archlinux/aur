@@ -2,10 +2,10 @@
 
 pkgname=voix-bin
 _pkgname=voix
-pkgver=4.14.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication (pre-built)"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
@@ -27,8 +27,8 @@ validpgpkeys=('7887165D6B07DE7785BD536E5239ACB42207EE03')
 
 _release="https://github.com/Veridian-Zenith/Voix/releases/download/v${pkgver}"
 
-# Per-architecture source arrays - AUR selects the matching one automatically.
-# Each tarball is paired with its detached signature; the .asc gets a SKIP
+# x86_64 only: the release pipeline publishes a single prebuilt tarball.
+# The tarball is paired with its detached signature; the .asc gets a SKIP
 # checksum because it is the signature itself (verified via validpgpkeys).
 source_x86_64=(
     "voix-x86_64-bin.tar.gz::${_release}/voix-x86_64-bin.tar.gz"
@@ -36,13 +36,6 @@ source_x86_64=(
 )
 sha256sums_x86_64=('b57da9fe404d25c10acc37b2909c5c18b24c44318e8c5c948669bd639dcb6f98'
                    'SKIP')
-sha256sums_aarch64=('2cd1bb762c4590073c01cb5f27fc25abf7f281f655a31405595c9d51171389f6'
-                    'SKIP')
-
-source_aarch64=(
-    "voix-aarch64-bin.tar.gz::${_release}/voix-aarch64-bin.tar.gz"
-    "voix-aarch64-bin.tar.gz.asc::${_release}/voix-aarch64-bin.tar.gz.asc"
-)
 
 package() {
     cd voix-bin
