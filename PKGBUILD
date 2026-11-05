@@ -1,14 +1,14 @@
 # Maintainer: Marcus Bandit <marcusbanditten@gmail.com>
 pkgname=anirss
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Search nyaa.si and hand the result to qBittorrent"
+pkgdesc="Search the endpoints you add and hand releases to qBittorrent"
 arch=('any')
 url="https://github.com/marcusbandit/anirss"
 license=('GPL-3.0-or-later')
 depends=('python' 'fzf' 'python-setproctitle')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marcusbandit/anirss/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b786cea875ae30077b77f6da86ca4a36e84b537f8a70a85100712d62abf8143')
+sha256sums=('1fd2030a963bc6e5c1a6e5491fdbc3d78e11f6f17f1f056bb016b72d5fa8bd03')
 
 package() {
     cd "$pkgname-$pkgver"
