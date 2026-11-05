@@ -1,0 +1,7 @@
+# What makepkg leaves here: the git clone of vtium, the build and package
+# trees, and the packages.
+/vtium/
+/src/
+/pkg/
+/*.pkg.tar*
+/*.log
