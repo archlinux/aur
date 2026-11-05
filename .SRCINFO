@@ -1,0 +1,49 @@
+pkgbase = ime-jd-bin
+	pkgdesc = 键道输入法, an independent implementation of the 键道 (xkjd) input scheme
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/hronro/ime-jd
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	noextract = jd-ime-v0.10.0-linux-x86_64-fcitx5.pkg.tar.zst
+	noextract = jd-ime-v0.10.0-linux-x86_64-ibus.pkg.tar.zst
+	noextract = jd-ime-v0.10.0-linux-x86_64-userdict.pkg.tar.zst
+	noextract = jd-ime-v0.10.0-linux-arm64-fcitx5.pkg.tar.zst
+	noextract = jd-ime-v0.10.0-linux-arm64-ibus.pkg.tar.zst
+	noextract = jd-ime-v0.10.0-linux-arm64-userdict.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/hronro/ime-jd/releases/download/v0.10.0/jd-ime-v0.10.0-linux-x86_64-fcitx5.pkg.tar.zst
+	source_x86_64 = https://github.com/hronro/ime-jd/releases/download/v0.10.0/jd-ime-v0.10.0-linux-x86_64-ibus.pkg.tar.zst
+	source_x86_64 = https://github.com/hronro/ime-jd/releases/download/v0.10.0/jd-ime-v0.10.0-linux-x86_64-userdict.pkg.tar.zst
+	sha256sums_x86_64 = 27d777a8ed91324521798efe9fc5cf61ce9fd4071bdb82d9661996dcb1f8f0f5
+	sha256sums_x86_64 = 166a815837c731401b9405b1d7be735fc9f34d3b81fc4d57926647bc7373139c
+	sha256sums_x86_64 = d08c9b411e5473768b37569bd4efc68d2f41e6303d98b726e5d5755c96a3f69d
+	source_aarch64 = https://github.com/hronro/ime-jd/releases/download/v0.10.0/jd-ime-v0.10.0-linux-arm64-fcitx5.pkg.tar.zst
+	source_aarch64 = https://github.com/hronro/ime-jd/releases/download/v0.10.0/jd-ime-v0.10.0-linux-arm64-ibus.pkg.tar.zst
+	source_aarch64 = https://github.com/hronro/ime-jd/releases/download/v0.10.0/jd-ime-v0.10.0-linux-arm64-userdict.pkg.tar.zst
+	sha256sums_aarch64 = a64b552d3f9f87a2c1bd187c424ca1fbdbf37f4eec1ab4d7e259810862055493
+	sha256sums_aarch64 = d5646d780b0648e72aab5da8f9a633cef6da2e2b7a0407e92d86a0daff9b902c
+	sha256sums_aarch64 = de8128c9f33695f553d29fb0ac789cf1a59c9417cbbcd264fbe2f57f5eaff6e0
+
+pkgname = ime-jd-fcitx5-bin
+	pkgdesc = 键道输入法 for Fcitx 5
+	depends = fcitx5>=5.0.14
+	optdepends = ime-jd-userdict-bin: the window that edits the user dictionary
+	provides = ime-jd-fcitx5
+	conflicts = ime-jd-fcitx5
+
+pkgname = ime-jd-ibus-bin
+	pkgdesc = 键道输入法 for IBus
+	depends = ibus>=1.5.26
+	depends = gcc-libs
+	optdepends = ime-jd-userdict-bin: the window that edits the user dictionary
+	provides = ime-jd-ibus
+	conflicts = ime-jd-ibus
+
+pkgname = ime-jd-userdict-bin
+	pkgdesc = 键道用户自造词, the window that edits 键道's user dictionary
+	depends = gtk4>=4.6
+	provides = ime-jd-userdict
+	conflicts = ime-jd-userdict
