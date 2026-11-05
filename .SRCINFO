@@ -1,6 +1,6 @@
 pkgbase = apkscope
 	pkgdesc = Android APK decompiler, xrefs, API recon and MCP server, with native viewer
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/suffixing/apkscope
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = apkscope
 	depends = libx11
 	depends = wayland
 	options = !lto
-	source = apkscope-0.5.3.tar.gz::https://github.com/suffixing/apkscope/archive/refs/tags/v0.5.3.tar.gz
-	sha256sums = 88c13c773fbec5467ee02432fa18c2e83abfc4dcf8c8c73e3cc6c35f7414d8da
+	source = apkscope-0.6.0.tar.gz::https://github.com/suffixing/apkscope/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 076310fdb3612105060502bca0a53a91d4db6c739c6748ef6720bf8faa05bf53
 
 pkgname = apkscope

@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=apkscope
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Android APK decompiler, xrefs, API recon and MCP server, with native viewer"
 arch=('x86_64')
@@ -23,7 +23,18 @@ makedepends=('cargo')
 # Cargo.toml's own `lto = true` still applies to the Rust code.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('88c13c773fbec5467ee02432fa18c2e83abfc4dcf8c8c73e3cc6c35f7414d8da')
+sha256sums=('076310fdb3612105060502bca0a53a91d4db6c739c6748ef6720bf8faa05bf53')
+
+# glutin's sys crates generate their bindings into target/ during the build and
+# rustc records the generated file's path in panic metadata, so the binary ships
+# the builder's absolute $srcdir unless the prefix is remapped. build() and
+# check() must pass identical rustflags: package() installs whatever the check
+# build left in target/release, and differing flags would rebuild every crate.
+_cargo_env() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}/="
+}
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -33,8 +44,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
+  _cargo_env
   # Upstream builds eframe with default-features off and never re-enables a
   # windowing backend, so winit aborts with "The platform you're compiling for
   # is not supported by winit" and the viewer only ever exists for Windows.
@@ -44,8 +54,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
+  _cargo_env
   # Same feature set as build(): a --no-default-features test run would replace
   # target/release/$pkgname with the viewer-less binary that package() installs.
   cargo test --release --frozen --features eframe/x11,eframe/wayland
