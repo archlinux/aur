@@ -102,12 +102,16 @@ build() {
 # With images, also the image helper /usr/bin/vtium-image, the sysusers file
 # that creates its account, and the picture gallery tool
 # /usr/bin/vtium-gallery, a bash script.
-# The recipe installs COPYING beside LICENSE itself, so that a package built
-# from a tag whose make install stages LICENSE alone still carries COPYING:
-# the notices for the third-party code and data vtium builds in, such as
-# Unifont and Unicode's data tables, whose license asks that its notice go
-# with every copy.
+# The recipe installs COPYING and the two license texts it points to beside
+# LICENSE itself, so that a package built from a tag whose make install
+# stages LICENSE alone still carries them. COPYING holds the notices for the
+# third-party code and data vtium builds in, such as Unicode's data tables,
+# whose license asks that its notice go with every copy. OFL-1.1.txt is the
+# SIL Open Font License of the Unifont font, which asks that its text go
+# with the font, and rgb-license.txt is the license of X.Org's color names.
 _package_console() {
   _make install DESTDIR="$pkgdir" PKGNAME="$pkgname"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/vtium/COPYING"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/vtium/COPYING" \
+    "$srcdir/vtium/crates/vtium-font/data/OFL-1.1.txt" \
+    "$srcdir/vtium/crates/vtium-term/gen-color-names/src/rgb-license.txt"
 }
