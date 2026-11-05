@@ -1,21 +1,24 @@
 pkgbase = python-etebase
 	pkgdesc = Etebase Python library
 	pkgver = 0.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/etesync/etebase-py
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cargo
 	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python-setuptools-rust
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	depends = glibc
+	depends = gcc-libs
 	depends = openssl
+	depends = python
 	depends = python-msgpack
 	depends = libsodium
 	source = python-etebase::git+https://github.com/etesync/etebase-py.git#tag=v0.32.0
 	source = 0001-Link-against-system-openssl-libsodium.patch
-	source = 0002-Use-patched-rust-cpython.patch
 	sha256sums = d8936ee3efdf50ad4700a650d338a251c1c684feb852a8fae849aef1384de243
-	sha256sums = 89d4cbd5fae9b770751723f49e307711433de818fcefa2849feba95fe8e7ae87
+	sha256sums = 81925017f161896ee85892fb66c119fcf59200a5aa7fdffef163f1247e60fea8
 
 pkgname = python-etebase
