@@ -5,7 +5,7 @@
 pkgname=licensecheck
 pkgdesc='Simple license checker for source files'
 pkgver=3.3.10
-pkgrel=1
+pkgrel=2
 url='https://metacpan.org/dist/App-Licensecheck'
 arch=(any)
 license=('AGPL-3.0-or-later')
@@ -49,8 +49,16 @@ checkdepends=(
   'perl-test-without-module'
 )
 options=(!emptydirs)
-source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/App-Licensecheck-v${pkgver}.tar.gz")
-b2sums=('114f192f2c01e50b235df32fce33647d39765d4bc7f9f3993715a0f9a29112efc1cb3d190351f73c388a3069f4e9d06b82ef5306dde547890776c67e4309dd0c')
+source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/App-Licensecheck-v${pkgver}.tar.gz"
+        licensecheck-fix-encoding-tests.patch)
+b2sums=('114f192f2c01e50b235df32fce33647d39765d4bc7f9f3993715a0f9a29112efc1cb3d190351f73c388a3069f4e9d06b82ef5306dde547890776c67e4309dd0c'
+        '16c4aca92f680b08c61200e5ad87c6598087c40e83330a693bd79a73f4215d06820681632abbe3379628a1fb736693eaa8d67a251db6bc1f2a81aea8cb7e61b9')
+
+prepare() {
+  cd "App-Licensecheck-v${pkgver}"
+
+  patch -t -Np1 -i ../licensecheck-fix-encoding-tests.patch
+}
 
 build() {
   cd "App-Licensecheck-v${pkgver}"

@@ -1,0 +1,151 @@
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Wed, 30 Sep 2026 22:25:40 -0300
+Subject: Fix t/20-script-encoding.t expectations for String-License 0.1.0+
+
+String::License v0.1.0 additionally emits the following debug line:
+> normalized license string: dash
+---
+ t/20-script-encoding.t |   34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+Index: b/t/20-script-encoding.t
+===================================================================
+--- a/t/20-script-encoding.t
++++ b/t/20-script-encoding.t
+@@ -60,20 +60,20 @@ subtest 'Latin-1 in UTF-8 parsed as UTF-
+ 	command {
+ 		args   => [qw(--encoding utf8 t/encoding/copr-utf8.h)],
+ 		stdout => $basic,
+-		stderr => qr/ as utf8\nheader end matches file size\nresolved/,
++		stderr => qr/ as utf8\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ };
+ subtest 'Latin-1 in UTF-8 parsed by default returns mojibake' => sub {
+ 	command {
+ 		args   => [qw(t/encoding/copr-utf8.h)],
+ 		stdout => qr//,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	my $todo = todo 'String::Copyright documented to accept only strings';
+ 	command {
+ 		args   => [qw(t/encoding/copr-utf8.h)],
+ 		stdout => $basic_utf8_as_latin1,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	$todo = undef;
+ };
+@@ -81,13 +81,13 @@ subtest 'Latin-1 in UTF-8 parsed by gues
+ 	command {
+ 		args   => [qw(--encoding Guess t/encoding/copr-utf8.h)],
+ 		stdout => qr//,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	my $todo = todo 'String::Copyright documented to accept only strings';
+ 	command {
+ 		args   => [qw(--encoding Guess t/encoding/copr-utf8.h)],
+ 		stdout => $basic_utf8_as_latin1,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	$todo = undef;
+ };
+@@ -95,27 +95,27 @@ subtest 'Latin-1 in UTF-8 parsed as ISO
+ 	command {
+ 		args   => [qw(--encoding iso-8859-1 t/encoding/copr-utf8.h)],
+ 		stdout => $basic_utf8_as_latin1,
+-		stderr => qr/ as iso-8859-1\nheader end matches file size\nresolved/,
++		stderr => qr/ as iso-8859-1\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ };
+ subtest 'Latin-1 in ISO 8859-1 parsed as ISO 8859-1 returns chars' => sub {
+ 	command {
+ 		args   => [qw(--encoding iso-8859-1 t/encoding/copr-iso8859.h)],
+ 		stdout => $extended,
+-		stderr => qr/ as iso-8859-1\nheader end matches file size\nresolved/,
++		stderr => qr/ as iso-8859-1\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ };
+ subtest 'Latin-1 in ISO 8859-1 parsed by default returns chars' => sub {
+ 	command {
+ 		args   => [qw(t/encoding/copr-iso8859.h)],
+ 		stdout => qr//,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	my $todo = todo 'String::Copyright documented to accept only strings';
+ 	command {
+ 		args   => [qw(t/encoding/copr-iso8859.h)],
+ 		stdout => $extended,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	$todo = undef;
+ };
+@@ -123,13 +123,13 @@ subtest 'Latin-1 in ISO 8859-1 parsed by
+ 	command {
+ 		args   => [qw(--encoding Guess t/encoding/copr-iso8859.h)],
+ 		stdout => qr//,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	my $todo = todo 'String::Copyright documented to accept only strings';
+ 	command {
+ 		args   => [qw(--encoding Guess t/encoding/copr-iso8859.h)],
+ 		stdout => $extended,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	$todo = undef;
+ };
+@@ -145,20 +145,20 @@ subtest 'CJK in EUC-JP parsed as EUC-JP
+ 	command {
+ 		args   => [qw(--encoding euc-jp t/encoding/README.gs550j)],
+ 		stdout => $japanese,
+-		stderr => qr/ as euc-jp\nheader end matches file size\nresolved/,
++		stderr => qr/ as euc-jp\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ };
+ subtest 'CJK in EUC-JP parsed by default returns mojibake and warns' => sub {
+ 	command {
+ 		args   => [qw(t/encoding/README.gs550j)],
+ 		stdout => qr//,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	my $todo = todo 'String::Copyright documented to accept only strings';
+ 	command {
+ 		args   => [qw(t/encoding/README.gs550j)],
+ 		stdout => $japanese_ujis_as_latin1,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	$todo = undef;
+ };
+@@ -166,13 +166,13 @@ subtest 'CJK in EUC-JP parsed by guessin
+ 	command {
+ 		args   => [qw(--encoding Guess t/encoding/README.gs550j)],
+ 		stdout => qr//,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	my $todo = todo 'String::Copyright documented to accept only strings';
+ 	command {
+ 		args   => [qw(--encoding Guess t/encoding/README.gs550j)],
+ 		stdout => $japanese_ujis_as_latin1,
+-		stderr => qr/ as raw bytes\nheader end matches file size\nresolved/,
++		stderr => qr/ as raw bytes\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ 	$todo = undef;
+ };
+@@ -180,7 +180,7 @@ subtest 'CJK in EUC-JP parsed as ISO 885
+ 	command {
+ 		args   => [qw(--encoding iso-8859-1 t/encoding/README.gs550j)],
+ 		stdout => $japanese_ujis_as_latin1,
+-		stderr => qr/ as iso-8859-1\nheader end matches file size\nresolved/,
++		stderr => qr/ as iso-8859-1\nheader end matches file size\nnormalized license string: dash\nresolved/,
+ 	};
+ };
+ subtest 'CJK in EUC-JP parsed as UTF-8 returns mojibake and warns' => sub {
