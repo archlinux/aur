@@ -5,8 +5,8 @@
 # Contributor: Juan Francisco Miranda <aurarchlinux.sleek355 at passfwd dot com>
 
 pkgname=pycharm
-pkgver=2026.2.4
-pkgrel=2
+pkgver=2026.3
+pkgrel=1
 provides=("pycharm")
 replaces=("pycharm-professional")
 conflicts=('pycharm-professional' 'pycharm-community-edition')
@@ -34,8 +34,8 @@ source_aarch64=("https://download.jetbrains.com/python/${pkgname}-${pkgver}-aarc
 
 sha256sums=('444611514a2e2e168d20ec866af0102fbdd0472af00925847471609578b187b7'
             '944d01526dcc0e6d4c321873bd42d2c7885973e929f3b363c31019f642af0101')
-sha256sums_x86_64=('87d39ae1125f7298e8f8c4b96aac836043eb15053f8dc5d7c52356eaab5762a8')
-sha256sums_aarch64=('9ce06a9551e17c68a5741ee70ae4203dcc530935fa5e105df171d600e55a2bbf')
+sha256sums_x86_64=('70d448ee1aa2a60234a6135b7ef9af6403fb691c26446113d587ccee06f6b813')
+sha256sums_aarch64=('113b773179905bd5413a437cda1e489cfb2794edfe9245381fd2df65fa76a213')
 
 makedepends=('python-setuptools' 'cython')
 optdepends=(
