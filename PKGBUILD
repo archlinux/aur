@@ -2,10 +2,10 @@
 
 pkgname=voix
 _pkgname=Voix
-pkgver=4.14.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
@@ -37,22 +37,12 @@ sha256sums=('75145927104f577b1a7372b4d17e3b7acd702714999818168b2aec1d65b69977'
 
 build() {
     cd "$_pkgname-$pkgver"
-    # ARCH-triggered: native build for x86_64; cross-compile for aarch64
-    if [ "$ARCH" = "aarch64" ]; then
-        CC=clang CXX=clang++ cmake -B build -G Ninja -Wno-dev \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-            -DENABLE_PERMISSIONS=OFF \
-            -DCMAKE_C_FLAGS="--target=aarch64-linux-gnu" \
-            -DCMAKE_CXX_FLAGS="--target=aarch64-linux-gnu -std=c++26 -fexperimental-library"
-    else
-        CC=clang CXX=clang++ cmake -B build -G Ninja -Wno-dev \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-            -DENABLE_PERMISSIONS=OFF
-    fi
+    # x86_64 only: aarch64 has no native build runner in the release pipeline.
+    CC=clang CXX=clang++ cmake -B build -G Ninja -Wno-dev \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DENABLE_PERMISSIONS=OFF
     cmake --build build
 }
 
