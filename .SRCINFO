@@ -13,6 +13,6 @@ pkgbase = logi-mx
 	depends = libadwaita
 	depends = dbus
 	source = logi-mx-0.7.0.tar.gz::https://github.com/RAprogramm/logi-mx/archive/v0.7.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 0f9c27f95edf9c6069b1e240562b8c53dbbfa707ed3d87149dc2e86de29e35bb
 
 pkgname = logi-mx
