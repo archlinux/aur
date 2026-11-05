@@ -1,6 +1,6 @@
 # Maintainer: Keith Cirkel <keithamus@users.noreply.github.com>
 pkgname=git-worktree-share
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Share untracked files across git worktrees"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/keithamus/git-worktree-share"
 license=('MIT')
 depends=('bash' 'git')
 source=("git-worktree-share-$pkgver.tar.gz::https://github.com/keithamus/git-worktree-share/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c9ca84c2f53377ad3b844be4466665fdfa40c153f43e6fafd251d46a92c7879c')
+sha256sums=('b8b7d4fd7b3c26f470f31ab4e4b8c3ac3ebf45b541ff2f77d8b191fbc5f9ca26')
 
 package() {
   cd "git-worktree-share-$pkgver"
