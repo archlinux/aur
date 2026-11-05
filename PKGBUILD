@@ -17,7 +17,21 @@ b2sums=('4125c5000f0d3913fa9a58686aeddc5223a1b62088ce8cbfa6db49b9d277c393a67f8d5
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
-  mvn package -Prelease -Dmaven.test.skip=true -Dmaven.repo.local="$srcdir/m2"
+  # Without the Kotlin daemon: it outlives the build, and a later build fails connecting to it
+  # once its classpath in $srcdir is gone
+  mvn package -Prelease -DskipTests -Dkotlin.compiler.daemon=false \
+    -Dmaven.repo.local="$srcdir/m2"
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  # Not offline (-o): Surefire resolves its JUnit Platform provider only when tests run, so
+  # build() can't fetch it. The tests themselves only use localhost (a LanguageTool HTTP server
+  # on port 8081, the TCP launcher test on 52714). LanguageToolPremiumIntegrationTest, which uses
+  # the API of LanguageTool's service with an account, skips itself without LANGUAGETOOL_USERNAME
+  # and LANGUAGETOOL_API_KEY, so they're unset in case the environment has them.
+  env -u LANGUAGETOOL_USERNAME -u LANGUAGETOOL_API_KEY \
+    mvn test -Prelease -Dkotlin.compiler.daemon=false -Dmaven.repo.local="$srcdir/m2"
 }
 
 package() {
