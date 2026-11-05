@@ -1,0 +1,7 @@
+/pkg/
+/src/
+*.tar.*
+*-build.log
+*-check.log
+*-package.log
+*-namcap.log
