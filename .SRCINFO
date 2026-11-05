@@ -1,0 +1,19 @@
+pkgbase = blaze-bin
+	pkgdesc = Incremental Rust build engine that rebuilds only what an edit changed
+	pkgver = 0.20261027.0
+	pkgrel = 1
+	url = https://github.com/indexable-inc/blaze
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = gcc
+	provides = blaze-engine
+	conflicts = blaze-engine
+	options = !debug
+	source_x86_64 = blaze-0.20261027.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v0.20261027.0/blaze-v0.20261027.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = df61ce6d8216087a40e986d4f84cf2a230638bde014e38519e08b50282e90e5d
+	source_aarch64 = blaze-0.20261027.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/indexable-inc/blaze/releases/download/v0.20261027.0/blaze-v0.20261027.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5fcc6c37e375be244d4d64a293d1f1574834fbfd3036d113fd886ca632f964ff
+
+pkgname = blaze-bin
