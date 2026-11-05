@@ -18,7 +18,7 @@ depends=('glibc' 'libgcc')
 optdepends=('yay: AUR search and per-source upgrades'
             'pacman-contrib: live update counts via checkupdates')
 
-options=('!lto')
+options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('c0861a7937584e0d9bbb7186bf580203f6b3821ad30bdfa5d5c83d58eb4e0dbe')
