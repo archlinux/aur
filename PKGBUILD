@@ -1,44 +1,40 @@
+# Maintainer: Elias Elwyn <a@jthvai.net>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
-pkgname='perl-test-mocktime-hires'
-pkgver='0.08'
-pkgrel='1'
-pkgdesc="Replaces actual time with simulated high resolution time"
-arch=('any')
-license=('PerlArtistic' 'GPL')
+pkgname=perl-test-mocktime-hires
+_dist=Test-MockTime-HiRes
+pkgver=0.08
+pkgrel=2
+pkgdesc='Replaces actual time with simulated high resolution tim'
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+
+url="https://metacpan.org/dist/$_dist"
+_author=TARAO
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('5f49f7aef895d327dafdf2744f39c176c8ab0e4b8227d2d6e3de689a259bdec1')
+
+arch=(any)
+depends=(perl perl-test-mocktime)
+makedepends=(perl-module-build-tiny)
+checkdepends=(perl-test-class perl-test-requires)
 options=('!emptydirs')
-depends=('perl-test-mocktime')
-checkdepends=('perl-test-class' 'perl-test-requires' 'perl-anyevent')
-makedepends=('perl-module-build-tiny')
-url='https://metacpan.org/dist/Test-MockTime-HiRes'
-source=('https://cpan.metacpan.org/authors/id/T/TA/TARAO/Test-MockTime-HiRes-0.08.tar.gz')
-md5sums=('ba664276b7540ed5f8f76fc68f5f75be')
-_distdir="Test-MockTime-HiRes-0.08"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build 
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  /usr/bin/perl Build.PL --create_packlist=0
+  ./Build
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    unset DISPLAY
-    /usr/bin/perl Build test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  ./Build test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
-
