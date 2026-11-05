@@ -16,34 +16,34 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e7d840da6b5d5a384ff56d44222ab02e11cb676827d35b39e139d585557660cf')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	export CGO_CPPFLAGS="$CPPFLAGS"
-	export CGO_CFLAGS="$CFLAGS"
-	export CGO_CXXFLAGS="$CXXFLAGS"
-	export CGO_LDFLAGS="$LDFLAGS"
-	export CGO_ENABLED=1
-	export GOPATH="$srcdir"
-	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -trimpath"
+  cd "${pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_ENABLED=1
+  export GOPATH="$srcdir"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -trimpath"
 
-	go build -ldflags "-compressdwarf=false -linkmode external" .
+  go build -ldflags "-compressdwarf=false -linkmode external" .
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	export CGO_CPPFLAGS="$CPPFLAGS"
-	export CGO_CFLAGS="$CFLAGS"
-	export CGO_CXXFLAGS="$CXXFLAGS"
-	export CGO_LDFLAGS="$LDFLAGS"
-	export CGO_ENABLED=1
-	export GOPATH="$srcdir"
-	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -trimpath"
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_ENABLED=1
+  export GOPATH="$srcdir"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -trimpath"
 
-	go test -ldflags "-compressdwarf=false -linkmode external" -v ./...
+  go test -ldflags "-compressdwarf=false -linkmode external" -v ./...
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-	install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
