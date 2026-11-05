@@ -1,0 +1,15 @@
+pkgbase = vtium-fonts
+	pkgdesc = The fonts that the frits of the vtium console packages name
+	pkgver = 0.1.0alpha.5
+	pkgrel = 1
+	url = https://github.com/vtium/vtium-arch
+	arch = any
+	license = MIT
+	depends = noto-fonts-emoji
+	depends = terminus-font
+	depends = ttf-jetbrains-mono
+	depends = ttf-nerd-fonts-symbols-mono
+	source = LICENSE
+	sha256sums = d539a3e857a06fe22834ab1308d115db5c5c0fc8080ccb46e763530bba825da7
+
+pkgname = vtium-fonts
