@@ -1,13 +1,13 @@
 pkgbase = sip3
 	pkgdesc = SIP3 monitoring system
 	pkgver = 2024.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sip3.io
 	arch = any
 	license = Apache-2.0
 	makedepends = git
 	makedepends = curl
-	makedepends = jdk-openjdk
+	makedepends = jdk21-openjdk
 	makedepends = maven
 	makedepends = libpcap
 	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server

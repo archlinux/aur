@@ -6,7 +6,7 @@ pkgname=("${pkgbase}-captain-ce"
          "${pkgbase}-twig-ce"
          "${pkgbase}-hoof-ce")
 pkgver=2024.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='SIP3 monitoring system'
 arch=('any')
 url='https://sip3.io'
@@ -14,7 +14,7 @@ license=('Apache-2.0')
 makedepends=(
   'git'
   'curl'
-  'jdk-openjdk'
+  'jdk21-openjdk'
   'maven'
   'libpcap'
 )
