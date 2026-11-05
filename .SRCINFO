@@ -1,6 +1,6 @@
 pkgbase = brum-bin
 	pkgdesc = Multi-Pane Web Environment (File Commander/Manager) - By Woofson (Pre-compiled standalone binary)
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/Woofson/brum
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = brum-bin
 	depends = libssh2
 	depends = openssl
 	depends = ca-certificates
-	source = brum-v1.17.0-linux-x86_64.tar.gz::https://github.com/Woofson/brum/releases/download/v1.17.0/brum-v1.17.0-linux-x86_64.tar.gz
-	sha256sums = 3ec6aa5be27591daf7330cdeafd6165cd46015c768cbc3dbeebe26b1c6af67de
+	source = brum-v1.18.0-linux-x86_64.tar.gz::https://github.com/Woofson/brum/releases/download/v1.18.0/brum-v1.18.0-linux-x86_64.tar.gz
+	sha256sums = dfb22043492f713172f1ad8062008ebbe40fefe2a53105915aac0f2802350cf2
 
 pkgname = brum-bin
