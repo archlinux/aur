@@ -2,7 +2,7 @@
 
 pkgbase = songloft-player
 	pkgdesc = Cross-platform music player client for Songloft servers (Flutter)
-	pkgver = 2.13.6
+	pkgver = 2.13.8
 	pkgrel = 1
 	url = https://songloft.hanxi.cc/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = songloft-player
 	depends = libdbusmenu-glib
 	depends = libdbusmenu-gtk3
 	depends = mpv
-	source = songloft-player-2.13.6.tar.gz::https://github.com/songloft-org/songloft-player/releases/download/v2.13.6/songloft-linux-x64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/songloft-org/songloft-player/v2.13.6/LICENSE
-	sha256sums = 88357314ef841ffa2513b24703cb5e6b82a4c10e11b63067d78f6ece1f06eb7e
+	source = songloft-player-2.13.8.tar.gz::https://github.com/songloft-org/songloft-player/releases/download/v2.13.8/songloft-linux-x64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/songloft-org/songloft-player/v2.13.8/LICENSE
+	sha256sums = 6f892a2b7290b006413984a5e74f375447553cffc0cc505d59ae856a41cfbc4b
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = songloft-player
