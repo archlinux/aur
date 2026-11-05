@@ -17,6 +17,6 @@ pkgbase = gextant-bin
 	conflicts = gextant
 	noextract = gextant-0.1.0-x86_64.tar.gz
 	source_x86_64 = gextant-0.1.0-x86_64.tar.gz::https://github.com/AperteDev/gextant/releases/download/v0.1.0/gextant-0.1.0-x86_64.tar.gz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 30e23616b4def6a250d368ade5b44652d4919158e6e54e708017760b3c9d7f6f
 
 pkgname = gextant-bin
