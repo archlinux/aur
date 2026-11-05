@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="qdl"
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
@@ -28,11 +28,14 @@ makedepends=(
 checkdepends=(
   'zip'
 )
+optdepends=(
+  'nbdkit: nbdkit plugin'
+)
 _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-b2sums=('b6962ddab5ebe0618573a474a5f3d389c99fde5a077d61ab1d35d44c045c7934d17ca6dc0d90d6a94a440442de26b403c1e49dcc42b70b8fffe535baa967bebc')
+b2sums=('ce6451eae6421c12a347ac0dacc54e3de4a9e4b45114464358fbeaaba9301651095b21ba4d3782cd94edd0e022587858b04a45c00185e3390476de668439645b')
 
 build() {
   local meson_options=(
@@ -56,6 +59,6 @@ package() {
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
   cd "${_pkgsrc}"
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE"   -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
