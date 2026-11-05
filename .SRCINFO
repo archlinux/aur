@@ -1,0 +1,22 @@
+pkgbase = anima-engine
+	pkgdesc = Animated desktop overlays, a Workshop browser, and AI background removal. Builds from source with every feature: about ten to twenty minutes, because the release profile uses fat LTO and one codegen unit.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/swordreforge/linux_animeengine_git
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = gcc
+	depends = glibc
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = mesa: a Vulkan driver, without which the overlay and the studio cannot render
+	optdepends = ffmpeg: render and probe video for the mp4 tools and the AI removal (ffprobe comes with it)
+	optdepends = steamcmd: download and sync Workshop items
+	optdepends = xdg-desktop-portal: file dialogs in the studio
+	optdepends = libsteam_api: Steam presence, if built with the steamworks feature
+	options = !lto
+	source = anima-engine-0.1.1.tar.gz::https://github.com/swordreforge/linux_animeengine_git/archive/v0.1.1.tar.gz
+	sha256sums = 95f0b31ea4c123e1e757951c75240c7adcb3a87745d26f8eebd7a55cddd6f10f
+
+pkgname = anima-engine
