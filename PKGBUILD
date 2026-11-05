@@ -2,9 +2,9 @@
 pkgname=calendar-bin
 _pkgname=Calendar
 _appname="io.github.KangLin.${_pkgname}"
-pkgver=1.0.25
+pkgver=1.0.26
 pkgrel=1
-pkgdesc="Task, calendar, Vision protection.(Prebuilt version)"
+pkgdesc="Task, calendar, Vision protection."
 arch=(
     'aarch64'
     'x86_64'
@@ -23,9 +23,9 @@ depends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/rabbit${pkgname%-bin}_${pkgver}_ubuntu26.04_aarch64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/rabbit${pkgname%-bin}_${pkgver}_ubuntu26.04_x86_64.deb")
-sha256sums=('7bf300a49fb28500eeb082a713bde6a0ec98328630c0c53df5610512c2449cbc')
-sha256sums_aarch64=('bf2414376d761df6bf7f630acafd73dfea18d56c4b3ee02992ae697db44e03e7')
-sha256sums_x86_64=('b4858dbc73b320c5d76343774f834b12dc3377a020757efcbcc603e9824e5c77')
+sha256sums=('0329c178e2f06a774d0dc991ced6af7ce746ff5e53c8e5be45cf471dec04d974')
+sha256sums_aarch64=('7ae8a55982a0a54e1b6460a734ebf2b1ca59f3675f01eeef85e66aaa1cd420a8')
+sha256sums_x86_64=('71deac3ed04769c80ca7c538012d2d42197631b95106c1f1c84130bf75aed1fa')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
