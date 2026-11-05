@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-bin
-pkgver=3.0.1
+pkgver=3.1.0
 _electronversion=43
 pkgrel=1
 pkgdesc="An open-source desktop markup editor that supports webdav.一款支持webdav的开源桌面端markdown编辑器"
@@ -21,11 +21,13 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-${CARCH}-${pkgver}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nlbwqmz/wj-markdown-editor/${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f58186570fa17fb2415dc34404349812800cf182721a693f7640de33ea3fc06b'
+sha256sums=('674f33b5ac5bfd29940712c79a3d22d1f240f8f9118afc6fd7e22bd662b2eb3a'
             '4db85f2bcfa2b60623a893393a61158a562fd907cf1244a06f41fd11eb6f8605'
-            '983ddfde8e06d067be65dd41ccc555f4da0a635358eac915c40863d0782206c7')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -38,11 +40,22 @@ _check_electron_version() {
 	(( _v == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
+_install_icons() {
+	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
+	while IFS= read -r -d '' _icon; do
+		_ext="${_icon##*.}"
+		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
+		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
+		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
+		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
+		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
+	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
@@ -58,14 +71,9 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-		_extension="${_i##*.}"
-		_icon_path="${_i#*share/icons/}"
-		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-	done
+    _install_icons
     install -Dm644 "${srcdir}/usr/share/mime/packages/${pkgname%-bin}.xml" -t "${pkgdir}/usr/share/mime/packages"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
