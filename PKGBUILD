@@ -2,7 +2,7 @@
 pkgname=go-music-dl-bin
 _pkgname="Go Music DL"
 _rpmname=music-dl-desktop-go
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="一个基于 Go 语言的全网音乐搜索与下载工具。支持 CLI 命令行与 Web 服务双模式，内置网易云、QQ、酷狗、Bilibili、汽水音乐等 10+ 个主流平台，支持多源并发搜索与无损音质解析."
 arch=('x86_64')
@@ -17,7 +17,18 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.rpm")
-sha256sums=('8b84df01c9f16afb069927669ce42424b202af20c1783200c3fbee07619a9a85')
+sha256sums=('ca123f5f25218062400e1b1a3d5cd453d6d4b5b9062793153336c92c7d5cc2f5')
+_install_icons() {
+	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
+	while IFS= read -r -d '' _icon; do
+		_ext="${_icon##*.}"
+		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
+		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
+		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
+		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
+		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
+	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+}
 prepare() {
     sed -i -e "
         s/Name=${_rpmname}/Name=${_pkgname}/g
@@ -28,11 +39,6 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_rpmname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_rpmname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-		_extension="${_i##*.}"
-		_icon_path="${_i#*share/icons/}"
-		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-	done
+    _install_icons
 }
 
