@@ -1,6 +1,6 @@
 # Maintainer: Sean Gillespie <sean@mistersg.net>
 pkgname=cardano-db-sync-bin
-pkgver=13.7.2.1
+pkgver=13.8.0.0
 pkgrel=1
 pkgdesc="A Cardano chain indexer that stores block and transactions in a PostgreSQL database"
 arch=("x86_64")
@@ -14,10 +14,10 @@ options=(!debug !strip)
 install=cardano-db-sync-bin.install
 
 source=(
-  "https://github.com/IntersectMBO/cardano-db-sync/releases/download/$pkgver/cardano-db-sync-$pkgver-linux.tar.gz"
+  "https://github.com/IntersectMBO/cardano-db-sync/releases/download/$pkgver/cardano-db-sync-$pkgver-linux-amd64.tar.gz"
   "cardano-dist::git+https://github.com/sgillespie/cardano-db-sync-dist#commit=db6d3395102eeb02ebd3c54bf2e6c107a6b0ec36"
 )
-sha256sums=('e1d94e868e7abcf26d506d921787add698e65ca7d90491d8d4fd7f1af6770bf1'
+sha256sums=('e05754514730bfa626763f9c1e58dff2f9b3e6b2e6a131d238bba69947d65045'
             '0e6cfbd2a7dac91d04081868ad91feb89c80d90076b5f3129b2aa51bf00df1d6')
 
 check() {
