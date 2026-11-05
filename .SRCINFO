@@ -1,0 +1,19 @@
+pkgbase = qrow-bin
+	pkgdesc = Query rows in tables, documents and databases from the terminal (pre-built binary)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/denisotree/qrow
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = qrow
+	conflicts = qrow
+	conflicts = tuitab
+	conflicts = tuitab-bin
+	replaces = tuitab-bin
+	source_x86_64 = qrow-bin-0.12.0-x86_64.tar.gz::https://github.com/denisotree/qrow/releases/download/v0.12.0/qrow-v0.12.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1fd8e1327c39a162e54ef5ee66f691f3bfd54ffc6a2f639185957999a0934d5e
+	source_aarch64 = qrow-bin-0.12.0-aarch64.tar.gz::https://github.com/denisotree/qrow/releases/download/v0.12.0/qrow-v0.12.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 72370049089a3cff10ba73363b076b3b1f75e5a3c27c471d9dc1562f10b074f5
+
+pkgname = qrow-bin
