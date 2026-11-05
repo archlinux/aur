@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scratchmark
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Organized markdown editor"
 arch=('x86_64')
@@ -10,14 +10,19 @@ depends=(
   'gtk4'
   'gtksourceview5'
   'libadwaita'
+  'libgcc'
   'libspelling'
 )
 makedepends=(
   'cargo'
   'meson'
 )
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sevonj/scratchmark/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e2a77909b45af141bf770cd51d8092559c0629d4a3db1b48bd487cd0778af88d')
+sha256sums=('042f8ab9736f6676a240e17de2f68e7a4790bda19facedccaa6f8916dfde34a4')
 
 prepare() {
   cd "$pkgname-$pkgver"
