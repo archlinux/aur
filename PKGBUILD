@@ -2,7 +2,7 @@
 
 pkgname=latex-tuda-ci
 _pkgname=tuda_latex_templates
-pkgver=4.04
+pkgver=4.06
 pkgrel=2
 pkgdesc='TUDa-CI for LaTeX from Technical University of Darmstadt'
 arch=('any')
@@ -25,8 +25,8 @@ makedepends=(
   'zip'
 )
 replaces=('latex-tuddesign' 'latex-tuddesign-thesis' 'latex-tuddesign-fonts')
-source=("https://github.com/tudace/${_pkgname}/archive/v${pkgver}/${pkgver}-${_pkgname}.tar.gz")
-b2sums=('01a60e2b5b849807b48fd3783c920ed77c600125fe82292c6ef68178b27e37d57a279997c1e3e531e7fb821176a8e785654b777bd01934ea64fcf6d8a8406d48')
+source=("https://github.com/tudace/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('55193883f86d558ce2be196f0464959cdd6b3246f32361826defef127e8d01f5182dfae8072732d1372e3c870763e8781b80a28a608aad14e377089742e6b893')
 
 build() {
   cd ${_pkgname}-${pkgver}
