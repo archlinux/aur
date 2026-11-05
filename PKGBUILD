@@ -183,7 +183,8 @@ sha256sums=('SKIP'
 #  EVEN_STRENGTH 0-1.5 / EVEN_DEPTH 0.05-0.6 / EVEN_MAX / EVEN_MIN   (default auto)
 #                            override the calibration (see even_spacing.py --help)
 #
-#  PIXEL_GRID    ""|N            (default: off; N = target ppem, 16 = 12pt GTK / 16px web)
+#  PIXEL_GRID    ""|N            (default: off; N = target ppem, 16 = 12pt GTK / 16px web;
+#               auto = GNOME interface font size x 96/72 x text-scaling-factor)
 #                            Rounds every glyph advance and every pair-kern value to a
 #                            whole pixel at N ppem (pixel_grid.py). With subpixel
 #                            positioning each letter otherwise starts on a different
@@ -576,6 +577,21 @@ _extract_selected() {
 }
 
 _show()    { printf "  [%s] %s\n" "$1" "$2"; }
+# PIXEL_GRID=auto: ppem of the GNOME interface font (size in pt x 96/72 x
+# text-scaling-factor). Does not know about monitor scale (fractional scaling).
+_auto_ppem() {
+  local _f _s _t
+  _f=$(gsettings get org.gnome.desktop.interface font-name 2>/dev/null) || _f=""
+  _s=$(sed -nE "s/^'.* ([0-9]+(\.[0-9]+)?)'\$/\1/p" <<<"$_f")
+  _t=$(gsettings get org.gnome.desktop.interface text-scaling-factor 2>/dev/null) || _t=""
+  [[ "$_t" =~ ^[0-9]+(\.[0-9]+)?$ ]] || _t=1
+  if [[ ! "$_s" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+    echo "  auto: could not read the GNOME font size; assuming 16 ppem." >&2
+    echo 16; return
+  fi
+  awk -v s="$_s" -v t="$_t" 'BEGIN { printf "%.2f\n", s * 96 / 72 * t }' | sed -E '/\./ s/\.?0+$//'
+}
+
 _ask_yn()  { local _default="${2:-n}"; read -p "  $1? (default: $_default) " _yn; _yn="${_yn:-$_default}"; }
 _ask_multi() {
   local _label="$1"; shift; local _opts=("$@"); local _n=${#_opts[@]}
@@ -1013,6 +1029,7 @@ _resolve_options() {
     echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
     _ask_choice "Put advances and kerning on a pixel grid" off \
       "off:no" \
+      "auto:from the GNOME interface font size (pt x 96/72 x text scaling)" \
       "16:16 ppem = 12pt GTK / 16px web" \
       "14:14 ppem" \
       "13:13 ppem" \
@@ -1022,6 +1039,9 @@ _resolve_options() {
       custom) read -r -p "  ppem: " PIXEL_GRID || PIXEL_GRID="" ;;
       *)      PIXEL_GRID=$_choice ;;
     esac
+  fi
+  if [[ "${PIXEL_GRID:-}" == auto ]]; then
+    PIXEL_GRID=$(_auto_ppem); echo "  PIXEL_GRID=auto -> ${PIXEL_GRID} ppem"
   fi
   PIXEL_GRID="${PIXEL_GRID:-}"
   if [[ ! "$PIXEL_GRID" =~ ^([0-9]+(\.[0-9]+)?)?$ ]]; then
