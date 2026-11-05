@@ -1011,8 +1011,17 @@ _resolve_options() {
   if [[ "$_interactive" == true && "${PIXEL_GRID+set}" != set ]]; then
     echo ""
     echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
-    _ask_yn "Put advances and kerning on the 16 ppem pixel grid" n
-    [[ "$_yn" =~ ^[yY]$ ]] && PIXEL_GRID=16 || PIXEL_GRID=""
+    _ask_choice "Put advances and kerning on a pixel grid" off \
+      "off:no (default)" \
+      "16:16 ppem = 12pt GTK / 16px web" \
+      "14:14 ppem" \
+      "13:13 ppem" \
+      "custom:type a size in ppem"
+    case $_choice in
+      off)    PIXEL_GRID="" ;;
+      custom) read -r -p "  ppem: " PIXEL_GRID || PIXEL_GRID="" ;;
+      *)      PIXEL_GRID=$_choice ;;
+    esac
   fi
   PIXEL_GRID="${PIXEL_GRID:-}"
   if [[ ! "$PIXEL_GRID" =~ ^([0-9]+(\.[0-9]+)?)?$ ]]; then
