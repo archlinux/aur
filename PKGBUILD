@@ -2,7 +2,7 @@
 
 pkgname=python-contact
 _name=${pkgname#python-}
-pkgver=1.7.2
+pkgver=1.7.4
 pkgrel=1
 arch=('any')
 license=('GPLv3')
@@ -11,7 +11,7 @@ url="https://github.com/pdxlocations/contact"
 depends=('python>=3.10' 'meshtastic-python' 'python-pyserial')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git' 'python-virtualenv' 'python-poetry' 'python-poetry-core')
 source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('dde51046e778fe9c61b590cd840a532184f72477f9b8e0bb764516d79f421e6d')
+sha256sums=('275abd83c7aae13111dc54a68be5027848f81e600440acacb519362b3ebbbad1')
 
 build() {
     cd "${_name}-${pkgver}"
