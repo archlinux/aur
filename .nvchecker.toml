@@ -1,0 +1,13 @@
+[perl-time-parsedate]
+source = "cpan"
+cpan = "Time-ParseDate"
+
+# Remove trailing zeros to "normalize" version
+#
+# Rationale:
+#  Upstream does not declares versions as string in their modules, which causes
+#  a version mismatch from metadata - e.g. version 2026.033 is declared in modules
+#  but declared as 2026.0330 in metadata. This causes nvchecker to pull the wrong
+#  version from metadata (MetaCPAN API).
+from_pattern = '0*\z'
+to_pattern = ''
