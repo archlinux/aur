@@ -17,8 +17,9 @@ b2sums=('4125c5000f0d3913fa9a58686aeddc5223a1b62088ce8cbfa6db49b9d277c393a67f8d5
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
-  # Without the Kotlin daemon: it outlives the build, and a later build fails connecting to it
-  # once its classpath in $srcdir is gone
+  # Without the Kotlin daemon, which would keep running for hours after the build. Before Kotlin
+  # 2.4.20 it also breaks later builds once its classpath in $srcdir is gone: new daemons hand
+  # their clients over to it while it shuts down (https://youtrack.jetbrains.com/issue/KT-75840)
   mvn package -Prelease -DskipTests -Dkotlin.compiler.daemon=false \
     -Dmaven.repo.local="$srcdir/m2"
 }
