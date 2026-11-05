@@ -1,19 +1,29 @@
 pkgbase = zerus-ade-bin
 	pkgdesc = Agent development environment for AI coding agents across your machines
-	pkgver = 0.47.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://github.com/ufna/zerus
 	arch = x86_64
 	license = MIT
-	depends = qt6-base>=6.12.0
-	depends = qt6-multimedia>=6.12.0
-	depends = qt6-svg>=6.12.0
-	depends = kstatusnotifieritem>=6.31.0
-	depends = kwindowsystem>=6.31.0
-	depends = kidletime>=6.31.0
+	depends = webkit2gtk-4.1>=2.54.2
+	depends = gtk3>=1:3.24.52
+	depends = gdk-pixbuf2>=2.44.8
+	depends = glib2>=2.90.1
+	depends = cairo>=1.18.6
+	depends = libsoup3>=3.8.1
+	depends = alsa-lib>=1.2.16.1
+	depends = gstreamer>=1.28.8
+	depends = gst-plugins-base-libs>=1.28.8
+	depends = libappindicator>=12.10.1
+	depends = dbus>=1.16.2
 	depends = libgcc>=16.2.1+r23+gd564253eb6c8
 	depends = libstdc++>=16.2.1+r23+gd564253eb6c8
 	depends = glibc>=2.44+r50+g1848099f063e
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
 	depends = tmux>=3.7
 	depends = openssh
 	depends = python
@@ -23,21 +33,20 @@ pkgbase = zerus-ade-bin
 	depends = bash
 	depends = tar
 	optdepends = konsole: external KDE terminal integration
-	optdepends = qt6-webengine: embedded DeepSeek Native UI
 	optdepends = wl-clipboard: clipboard transfers on Wayland
 	optdepends = xclip: clipboard transfers on X11
 	optdepends = nodejs: separately installed native agents and DeepSeek Harness
 	optdepends = npm: install Codex and DeepSeek Harness from Accounts
 	optdepends = git: Git repository and worktree features
 	optdepends = systemd: user service autostart and isolated DeepSeek scopes
-	provides = zerus=0.47.0
+	provides = zerus=0.48.0
 	provides = hgs
 	provides = hgs-tray
 	conflicts = zerus
 	conflicts = zerus-git
 	options = !strip
 	options = !debug
-	source = https://github.com/ufna/zerus/releases/download/v0.47.0/zerus-0.47.0-arch-x86_64.tar.gz
-	sha256sums = f4f35292194e462c093aaa6b8f9ef880ffc779ab9c757b54511f79538f352ef9
+	source = https://github.com/ufna/zerus/releases/download/v0.48.0/zerus-0.48.0-arch-x86_64.tar.gz
+	sha256sums = 9b578829081bdd7da88356b4adf811a2f9a2d621db57ced72ab3a51fab67e2fa
 
 pkgname = zerus-ade-bin
