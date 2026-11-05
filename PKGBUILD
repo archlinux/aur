@@ -4,7 +4,7 @@ pkgname=rune-ide
 _pkgname=rune
 _binaryname=rune
 pkgdesc="Fast, GPU-rendered, keyboard-driven IDE for power users"
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/unstablebuild/rune"
@@ -45,7 +45,7 @@ optdepends=(
 conflicts=("${pkgname}-bin")
 
 source=("${pkgname}-src::git+${url}.git#tag=v${pkgver}")
-sha256sums=('9a409b42429ae05ea3650b004c531dd9ac96a812870997116bd346f63c360c21')
+sha256sums=('81c12b32fb6e81e2ca302be578cd70b4b9e9f0574810ac7fae4a65b51deecfb7')
 
 prepare() {
     cd "${srcdir}/${pkgname}-src"
