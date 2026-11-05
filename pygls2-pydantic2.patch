@@ -1,0 +1,132 @@
+diff --git a/nginx_language_server/parser/data.py b/nginx_language_server/parser/data.py
+index 98c673f..8ee2eaf 100644
+--- a/nginx_language_server/parser/data.py
++++ b/nginx_language_server/parser/data.py
+@@ -5,7 +5,7 @@ import pathlib
+ import textwrap
+ from typing import Any, Dict, List, Optional
+ 
+-from pydantic import BaseModel, Field, validator
++from pydantic import BaseModel, Field, ValidationInfo, field_validator
+ 
+ from .utils import wrap_plain_text, wrap_rich_text
+ 
+@@ -17,28 +17,31 @@ class DirectiveDefinition(BaseModel):
+ 
+     name: str
+     syntax: List[str]
+-    default: Optional[str] = Field(alias="def")
++    default: Optional[str] = Field(default=None, alias="def")
+     contexts: List[str]
+     desc: str
+     notes: List[str]
+-    since: Optional[str]
++    since: Optional[str] = None
+     module: str
+ 
+-    # Calculated values
+-    ls_detail: str = ""
+-    ls_documentation: str = ""
++    # Calculated values: validate_default runs their validators, as nothing passes them
++    ls_detail: str = Field(default="", validate_default=True)
++    ls_documentation: str = Field(default="", validate_default=True)
+ 
+     # pylint: disable=no-self-argument
+     # pylint: disable=unused-argument
+ 
+-    @validator("ls_detail", always=True)
+-    def get_ls_detail(cls, v, values) -> str:
++    @field_validator("ls_detail", mode="after")
++    @classmethod
++    def get_ls_detail(cls, v: str, info: ValidationInfo) -> str:
+         """Get detail string."""
+-        return f"dir: {values['name']}"
++        return f"dir: {info.data['name']}"
+ 
+-    @validator("ls_documentation", always=True)
+-    def get_ls_documentation(cls, v, values) -> str:
++    @field_validator("ls_documentation", mode="after")
++    @classmethod
++    def get_ls_documentation(cls, v: str, info: ValidationInfo) -> str:
+         """Get documentation string."""
++        values = info.data
+         result = ""
+         if values["default"]:
+             result += (
+@@ -90,21 +93,24 @@ class VariableDefinition(BaseModel):
+     desc: str
+     module: str
+ 
+-    # Calculated values
+-    ls_detail: str = ""
+-    ls_documentation: str = ""
++    # Calculated values: validate_default runs their validators, as nothing passes them
++    ls_detail: str = Field(default="", validate_default=True)
++    ls_documentation: str = Field(default="", validate_default=True)
+ 
+     # pylint: disable=no-self-argument
+     # pylint: disable=unused-argument
+ 
+-    @validator("ls_detail", always=True)
+-    def get_ls_detail(cls, v, values) -> str:
++    @field_validator("ls_detail", mode="after")
++    @classmethod
++    def get_ls_detail(cls, v: str, info: ValidationInfo) -> str:
+         """Get detail string."""
+-        return f"var: {values['name']}"
++        return f"var: {info.data['name']}"
+ 
+-    @validator("ls_documentation", always=True)
+-    def get_ls_documentation(cls, v, values) -> str:
++    @field_validator("ls_documentation", mode="after")
++    @classmethod
++    def get_ls_documentation(cls, v: str, info: ValidationInfo) -> str:
+         """Get documentation string."""
++        values = info.data
+         result = ""
+         if values["desc"]:
+             desc = wrap_rich_text(values["desc"].strip())
+diff --git a/nginx_language_server/pygls_utils.py b/nginx_language_server/pygls_utils.py
+index 1243743..189b17a 100644
+--- a/nginx_language_server/pygls_utils.py
++++ b/nginx_language_server/pygls_utils.py
+@@ -6,7 +6,7 @@ Helper functions that simplify working with pygls
+ from typing import Optional
+ 
+ from lsprotocol.types import Position, Range
+-from pygls.workspace import Document
++from pygls.workspace import TextDocument as Document
+ 
+ 
+ def char_before_cursor(
+diff --git a/nginx_language_server/server.py b/nginx_language_server/server.py
+index 5d24c70..c92fe77 100644
+--- a/nginx_language_server/server.py
++++ b/nginx_language_server/server.py
+@@ -22,7 +22,7 @@ from lsprotocol.types import (
+     MarkupKind,
+     TextDocumentPositionParams,
+ )
+-from pygls.server import LanguageServer
++from pygls.lsp.server import LanguageServer
+ 
+ from nginx_language_server import __version__, pygls_utils
+ from nginx_language_server.parser import DIRECTIVES, VARIABLES, nginxconf
+@@ -47,7 +47,7 @@ def completion(
+     server: LanguageServer, params: CompletionParams
+ ) -> Optional[CompletionList]:
+     """Returns completion items."""
+-    document = server.workspace.get_document(params.text_document.uri)
++    document = server.workspace.get_text_document(params.text_document.uri)
+     parsed = nginxconf.convert(document.source)
+     line = nginxconf.find(parsed, params.position.line)
+     if not line:
+@@ -88,7 +88,7 @@ def hover(
+     server: LanguageServer, params: TextDocumentPositionParams
+ ) -> Optional[Hover]:
+     """Support Hover."""
+-    document = server.workspace.get_document(params.text_document.uri)
++    document = server.workspace.get_text_document(params.text_document.uri)
+     parsed = nginxconf.convert(document.source)
+     word = document.word_at_position(params.position)
+     line = nginxconf.find(parsed, params.position.line)

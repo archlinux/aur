@@ -28,7 +28,7 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-  "pygls2-compile-fix.patch",
+  "pygls2-pydantic2.patch",
 ]
 SPDX-FileCopyrightText = "nginx-language-server contributors"
 SPDX-License-Identifier = "GPL-3.0-only"
