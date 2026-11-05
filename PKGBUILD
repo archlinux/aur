@@ -7,7 +7,7 @@
 pkgname=plasmazones
 # pkgver/pkgrel are placeholders; CI rewrites them against the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc='Window snapping, tiling and scrolling for KDE Plasma'
 arch=('x86_64')
@@ -53,11 +53,28 @@ optdepends=(
     'hwdata: readable GPU names in the rendering device picker'
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# 'SKIP' so local `makepkg -p PKGBUILD` doesn't fail integrity-check
-# on the placeholder pkgver. release.yml templates a real sha256 when
-# publishing to AUR (see the awk rewrite in the publish-aur job).
-sha256sums=('3bf985f2f7477d307457f9b63c4d9ac9a390074dbd507506c2db5ef0191876c1')
+# The release tarball, then the third-party archives the build compiles in.
+# Those are pinned (version, URL and SHA-256) in cmake/PhosphorDependencies.cmake,
+# and check-conventions.py's dep-pins rule fails when the URLs and hashes here
+# stop matching the pin, so bump them together. They stay archives (noextract):
+# build() hands $srcdir to CMake as PHOSPHOR_DEPS_ARCHIVES, which checks each
+# hash and unpacks it itself, so the build never reaches the network.
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "luau-0.745.tar.gz::https://github.com/luau-lang/luau/archive/refs/tags/0.745.tar.gz"
+    "valijson-1.1.3.tar.gz::https://github.com/tristanpenman/valijson/archive/refs/tags/v1.1.3.tar.gz"
+)
+noextract=('luau-0.745.tar.gz' 'valijson-1.1.3.tar.gz')
+# The first entry is 'SKIP' so local `makepkg -p PKGBUILD` doesn't fail its
+# integrity check on the placeholder pkgver. release.yml templates the real
+# sha256 into that entry, and only that one, when publishing to AUR (see the
+# awk rewrite in the publish-aur job, and update-aur.sh). Keep one entry per
+# line with the release tarball's first: that rewrite relies on both.
+sha256sums=(
+    '764dc81dfa85f30fde64067fa2a3e1cdcebfe29e45a2682ba29e61fb6fbb5c60'
+    '53c22773bace6cabbabaead576fbc08d11a0317fce11a3dbf9d027dda6849248' # luau-0.745.tar.gz
+    '887b53b1a924f6fe0b35fa3bbc9bbbe5ae8c72097b7f0f7c17b45f4cfa646029' # valijson-1.1.3.tar.gz
+)
 install=plasmazones.install
 
 build() {
@@ -66,6 +83,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_TESTING=OFF \
+        -DPHOSPHOR_DEPS_ARCHIVES="$srcdir" \
         -Wno-dev
     cmake --build build --parallel
 }
