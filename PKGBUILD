@@ -138,6 +138,7 @@ prepare() {
 
   # --scripting-only builds SafetyHook as well, which only the extensions use and which doesn't
   # support aarch64, and doesn't allow aarch64 on Linux, only on macOS
+  # (https://github.com/alliedmodders/sourcemod/pull/2608)
   patch -Np1 -i "$srcdir/scripting-only.patch"
   # The MySQL extension with MariaDB Connector/C, linked dynamically, instead of a static MySQL 5.5
   # (without the latter's internal headers)
