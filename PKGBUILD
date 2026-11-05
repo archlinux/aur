@@ -3,7 +3,7 @@
 # AUR release package: builds Choir from a tagged GitHub release tarball.
 # (For the latest commit on main instead, see the choir-overlay-git package.)
 pkgname=choir-overlay
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Discord voice overlay for Vulkan + OpenGL games (not affiliated with Discord Inc.)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ noextract=(
   'nlohmann_json-3.12.0.zip'
 )
 sha256sums=(
-  '1bd9cecdb9faf1bc8afdc90784a10206ff040910e3c71b807f93d25111f849a3'
+  'b80b180a06e86a09501e5f63d7c0197b4af5e21cb010a8aa655c0de34de4db64'
   '0eb50fe9aeba1a51f96b5843c7f630a32ed2e9362d693c61b87e4fa870cf826d'
   '636e9099a55869f25a95739b345e844c6b42166a0a0d22837ffbedd8e7af0bce'
   'b8cb0ef2dd7f57f18933997c9934bb1fa962594f701cd5a8d3c2c80541559372'
