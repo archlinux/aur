@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=velocitty
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Terminal for Linux desktops"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 makedepends=('meson')
 checkdepends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('25fa9e98f0537644107d7c721be3ca1149e17e3e22e04618e53ec38dfd74af91')
+sha256sums=('13aa9cbc61797d461349a410d8a6171728a9446afb5b240e546023a0e9deb387')
 
 build() {
   arch-meson "$pkgname-$pkgver" build

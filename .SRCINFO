@@ -1,6 +1,6 @@
 pkgbase = velocitty
 	pkgdesc = Terminal for Linux desktops
-	pkgver = 1.0.4
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/xapp-project/velocitty
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = velocitty
 	depends = python-xapp
 	depends = vte4
 	depends = xapp-symbolic-icons
-	source = velocitty-1.0.4.tar.gz::https://github.com/xapp-project/velocitty/archive/refs/tags/1.0.4.tar.gz
-	sha256sums = 25fa9e98f0537644107d7c721be3ca1149e17e3e22e04618e53ec38dfd74af91
+	source = velocitty-1.0.7.tar.gz::https://github.com/xapp-project/velocitty/archive/refs/tags/1.0.7.tar.gz
+	sha256sums = 13aa9cbc61797d461349a410d8a6171728a9446afb5b240e546023a0e9deb387
 
 pkgname = velocitty
