@@ -1,6 +1,6 @@
 pkgbase = caret
 	pkgdesc = GPU-rendered terminal for Wayland
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/sachesi/caret
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = caret
 	conflicts = caret-git
 	conflicts = tangent
 	replaces = tangent
-	source = caret-0.3.1.tar.gz::https://github.com/sachesi/caret/archive/v0.3.1/caret-0.3.1.tar.gz
-	sha256sums = d6216e79fbebffca5beb3e3161e2206014dbaf93db1601316bfc9e44c67f86d9
+	source = caret-0.3.2.tar.gz::https://github.com/sachesi/caret/archive/v0.3.2/caret-0.3.2.tar.gz
+	sha256sums = ed42dc2f281817fa7692b0d3f79dea57f5ac79f3243276f7c6d8cde1c4c825fb
 
 pkgname = caret

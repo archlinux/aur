@@ -2,7 +2,7 @@
 
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=caret
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='GPU-rendered terminal for Wayland'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('xdg-terminal-exec: open Caret from launchers that ask for a termina
 conflicts=('caret-git' 'tangent')
 replaces=('tangent')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d6216e79fbebffca5beb3e3161e2206014dbaf93db1601316bfc9e44c67f86d9')
+sha256sums=('ed42dc2f281817fa7692b0d3f79dea57f5ac79f3243276f7c6d8cde1c4c825fb')
 
 prepare() {
   cd "$pkgname-$pkgver"
