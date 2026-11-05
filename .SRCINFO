@@ -10,9 +10,9 @@ pkgbase = gnome-shell-extension-clipboard-indicator-latest
 	conflicts = gnome-shell-extension-clipboard-indicator
 	conflicts = gnome-shell-extension-clipboard-history
 	source = gnome-shell-extension-clipboard-indicator-71.tar.gz::https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator/archive/v71.tar.gz
-	source = gnome-51-pr-641.patch
+	source = gnome-51.patch
 	sha256sums = 31d6c3694889b0f1c257b113926643e6a37610495f501cbd810eb2c14b9ebd85
-	sha256sums = 4b790f67fad8458b1d1706f34e3f7edfc68d5f179193da5a16c457f22c6fb433
+	sha256sums = e465e590a57e1dd44ac2f98ab53d928959b8f33e7633990c200d8093c2f04d75
 
 pkgname = gnome-shell-extension-clipboard-indicator-latest
 	depends = gnome-shell

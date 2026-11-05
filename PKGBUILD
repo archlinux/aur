@@ -24,10 +24,10 @@ conflicts=(
 )
 source=(
   "${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-  gnome-51-pr-641.patch
+  gnome-51.patch
 )
 sha256sums=('31d6c3694889b0f1c257b113926643e6a37610495f501cbd810eb2c14b9ebd85'
-            '4b790f67fad8458b1d1706f34e3f7edfc68d5f179193da5a16c457f22c6fb433')
+            'e465e590a57e1dd44ac2f98ab53d928959b8f33e7633990c200d8093c2f04d75')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -37,7 +37,7 @@ prepare() {
     -e 's/^\(install:\) all$/\1/' \
     Makefile
 
-  patch -p1 -i ../gnome-51-pr-641.patch
+  patch -p1 -i ../gnome-51.patch
 }
 
 package() {

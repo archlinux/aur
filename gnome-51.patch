@@ -1,7 +1,7 @@
 From 96ae74733830d0cbc6c46351c5b623a56f371bf4 Mon Sep 17 00:00:00 2001
 From: josephsellers <6892567+josephsellers@users.noreply.github.com>
 Date: Thu, 17 Sep 2026 13:19:25 +0100
-Subject: [PATCH 1/2] fix: stop using Clutter.get_default_backend()
+Subject: [PATCH 1/3] fix: stop using Clutter.get_default_backend()
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -32,7 +32,7 @@ index 6ec9baa9..e3546e53 100644
 From 39a0f9077daca21a62adaa975eb6a03bda499f27 Mon Sep 17 00:00:00 2001
 From: josephsellers <6892567+josephsellers@users.noreply.github.com>
 Date: Thu, 17 Sep 2026 13:19:25 +0100
-Subject: [PATCH 2/2] fix: GNOME 51 St.BoxLayout orientation
+Subject: [PATCH 2/3] fix: GNOME 51 St.BoxLayout orientation
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -165,3 +165,46 @@ index d8dac1f3..a2513c59 100644
      ],
      "uuid": "clipboard-indicator@tudmotu.com",
      "name": "Clipboard Indicator",
+
+From 2d28be67a3dd2385339d00cd025109e85e97e6b7 Mon Sep 17 00:00:00 2001
+From: Yotam Bar-On <tudmotu@gmail.com>
+Date: Thu, 5 Nov 2026 17:54:50 +0200
+Subject: [PATCH 3/3] Drop GNOME 46 support
+
+global.stage.context only exists from mutter 47 (ClutterActor:context),
+so the new seat lookup in keyboard.js fails on GNOME 46. Remove 46 from
+metadata.json and point GNOME 46 users to v71 in the README.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ README.md     | 4 +++-
+ metadata.json | 1 -
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index c35f93c4..2c359497 100644
+--- a/README.md
++++ b/README.md
+@@ -80,8 +80,10 @@ $ gnome-extensions enable clipboard-indicator@tudmotu.com
+ Depending on your GNOME version, you will need to install the following
+ Clipboard Indicator versions:
+ 
+-* GNOME 46 and above:
++* GNOME 47 and above:
+   * Use latest version
++* GNOME 46:
++  * v71
+ * GNOME 45:
+   * v57
+ * GNOME 42-44
+diff --git a/metadata.json b/metadata.json
+index a2513c59..902ff019 100644
+--- a/metadata.json
++++ b/metadata.json
+@@ -1,6 +1,5 @@
+ {
+     "shell-version": [
+-        "46",
+         "47",
+         "48",
+         "49",
