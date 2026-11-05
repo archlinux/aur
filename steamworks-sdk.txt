@@ -1,7 +1,8 @@
-SteamWorks is built against the Steamworks headers of the Source SDK
-(https://github.com/alliedmodders/hl2sdk, branch csgo, public/steam), and links
-against its libsteam_api.so, which isn't installed: the game server provides it.
+SteamWorks is built against the headers of Valve's Steamworks SDK 1.32, as in
+upstream's builds (https://github.com/rlabrecque/SteamworksSDK, a copy of the
+SDK), and links against its libsteam_api.so, which isn't installed: the game
+server provides it.
 
-The Steamworks headers are Copyright (c) Valve Corporation, all rights
-reserved, and are licensed under the terms Valve distributes them under for the
-development of games and mods. They carry no license text of their own.
+The Steamworks SDK is Copyright (c) 1996-2014 Valve Corporation, all rights
+reserved, and is licensed under the terms Valve distributes it under for the
+development of games and mods. Its headers carry no license text of their own.
