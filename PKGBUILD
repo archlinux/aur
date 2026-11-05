@@ -2,8 +2,8 @@
 
 _name=pyqwest
 pkgname=python-$_name
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='A modern, high-performance HTTP client for Python and Rust.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/curioswitch/pyqwest'
@@ -40,22 +40,26 @@ checkdepends=('python-aiohttp'
 options=(!lto)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "pyvoy::git+https://github.com/curioswitch/pyvoy.git")
-sha256sums=('91b211d615c0d2ffeb39ed80cbc035d66fc328e03cf496985ec3c7b99126519c'
+sha256sums=('b35cf5e940b098ad657c8b521352d530b18f7eff187aa69d52658bccae1e3b71'
             'SKIP')
 
 prepare() {
-  cd "$srcdir"/$_name-$pkgver
+  cd "$_name-$pkgver"
+  # Use the maturin version shipped by Arch
+  sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
   # Use the standard library compression.zstd module instead of python-zstd
   sed -i 's/^import zstd\b.*/from compression import zstd/' tests/apps/asgi/kitchensink.py tests/apps/wsgi/kitchensink.py
-  cd "$srcdir"/pyvoy
+  cd "$srcdir/pyvoy"
   git checkout --quiet "$(git tag -l 'v*' --sort=-v:refname | head -1)"
+  # Use the maturin version shipped by Arch
+  sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
 }
 
 build() {
-  cd "$srcdir"/$_name-$pkgver
+  cd "$_name-$pkgver"
   export ZSTD_SYS_USE_PKG_CONFIG=1
   RUSTFLAGS="$RUSTFLAGS --cfg reqwest_unstable --cfg tokio_unstable" python -m build --wheel --no-isolation
-  cd "$srcdir"/pyvoy
+  cd "$srcdir/pyvoy"
   python -m build --wheel --no-isolation
 }
 
@@ -64,7 +68,7 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/$_name-$pkgver
+  cd "$_name-$pkgver"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer "$srcdir"/pyvoy/dist/*.whl
@@ -73,7 +77,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir"/$_name-$pkgver
+  cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }

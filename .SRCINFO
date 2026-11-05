@@ -1,7 +1,7 @@
 pkgbase = python-pyqwest
 	pkgdesc = A modern, high-performance HTTP client for Python and Rust.
-	pkgver = 0.12.0
-	pkgrel = 2
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/curioswitch/pyqwest
 	arch = x86_64
 	arch = aarch64
@@ -36,9 +36,9 @@ pkgbase = python-pyqwest
 	depends = libgcc
 	depends = glibc
 	options = !lto
-	source = pyqwest-0.12.0.tar.gz::https://github.com/curioswitch/pyqwest/archive/refs/tags/v0.12.0.tar.gz
+	source = pyqwest-0.13.0.tar.gz::https://github.com/curioswitch/pyqwest/archive/refs/tags/v0.13.0.tar.gz
 	source = pyvoy::git+https://github.com/curioswitch/pyvoy.git
-	sha256sums = 91b211d615c0d2ffeb39ed80cbc035d66fc328e03cf496985ec3c7b99126519c
+	sha256sums = b35cf5e940b098ad657c8b521352d530b18f7eff187aa69d52658bccae1e3b71
 	sha256sums = SKIP
 
 pkgname = python-pyqwest
