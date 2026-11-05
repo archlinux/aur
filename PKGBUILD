@@ -6,8 +6,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=r0
-pkgrel=3
+pkgver=4.0.0.alpha.1.r4143.g5ac5665
+pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms (Audacity 4 development branch)"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -29,6 +29,7 @@ depends=(
 	mpg123
 	wavpack
 	libsndfile
+	libid3tag
 	portaudio
 	sqlite
 	twolame
@@ -77,7 +78,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
 }
 
 prepare() {
@@ -86,10 +87,6 @@ prepare() {
 	git config submodule.muse.url "$srcdir/muse_framework"
 	git config submodule.muse_deps.url "$srcdir/muse_deps"
 	git -c protocol.file.allow=always submodule update
-
-	# TODO: muse::extensions::Type conflicts with Qt 6.12 Type, remove when fixed in upstream
-	sed -i 's/^muse_create_qml_module(muse_extensions_qml ALIAS /muse_create_qml_module(muse_extensions_qml NO_UNITY ALIAS /' \
-		muse/framework/extensions/qml/Muse/Extensions/CMakeLists.txt
 }
 
 build() {
@@ -98,6 +95,7 @@ build() {
 		-G Ninja \
 		-S . \
 		-B build \
+		-Wno-author \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D EXTDEPS_OVERRIDE_ALL=SYSTEM \
