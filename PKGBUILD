@@ -83,7 +83,7 @@ prepare() {
     FONT_TYPE=otf
   elif [[ -z "${FONT_TYPE:-}" && -t 0 ]]; then
     local _a
-    read -r -p "[FONT_TYPE] variable or static otf [V/o] " _a
+    read -r -p "[FONT_TYPE] variable or static otf (static: pixel grid possible) [V/o] " _a
     [[ "$_a" =~ ^[oO] ]] && FONT_TYPE=otf
   fi
   FONT_TYPE="${FONT_TYPE:-variable}"
