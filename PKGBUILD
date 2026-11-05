@@ -1,7 +1,7 @@
 # Maintainer: futpib <futpib@gmail.com>
 
 pkgname=acli-bin
-pkgver=1.3.39
+pkgver=1.3.40
 pkgrel=1
 pkgdesc="Software to interact with Atlassian Cloud from the terminal"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('acli')
 
 source_x86_64=("https://acli.atlassian.com/linux/${pkgver}-stable/acli_${pkgver}-stable_linux_amd64.tar.gz")
 
-sha256sums_x86_64=('7e0fb4dbedb1bb9100f8dc854d31d43c4b7c2c740e4cfd83b750760f4957b5a5')
+sha256sums_x86_64=('19c113789e8a66bf11a80dc18cf75e7e7ba239112005f4e9cd69db05f11ac526')
 
 package() {
   install -Dm755 "acli_${pkgver}-stable_linux_amd64/acli" "$pkgdir/usr/bin/acli"
