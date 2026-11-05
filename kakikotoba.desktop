@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=kakikotoba
+Comment=小説執筆向けの縦書きテキストエディタ
+Exec=kakikotoba %f
+Icon=kakikotoba
+Terminal=false
+Categories=Qt;Utility;TextEditor;
+MimeType=text/plain;text/markdown;
