@@ -130,8 +130,7 @@ check() {
   export TMPDIR="$_test_tmp"
   # Tests of features and behaviour that only exist on Windows, which upstream doesn't run elsewhere:
   local _filter=(
-    # Managed identity with mTLS proof of possession, which needs Windows CNG keys (KeyGuard), see
-    # https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/pull/5807
+    # Managed identity with mTLS proof of possession, which needs Windows CNG keys (KeyGuard)
     'FullyQualifiedName!~ManagedIdentityTests.ImdsV2Tests.'
     'FullyQualifiedName!~ManagedIdentityTests.ManagedIdentityTests.GetManagedIdentityCapabilities_ImdsV2KeyGuard_ReportsKeyGuardAsync'
     # The key provider for it uses CNG on .NET 8 regardless of the platform (#if NET8_0)
