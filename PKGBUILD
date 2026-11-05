@@ -2,7 +2,7 @@
 
 pkgname=disc-image-studio-git
 _pkgname=disc-image-studio
-pkgver=r72.3a5cde6
+pkgver=r81.63de641
 pkgrel=1
 pkgdesc='Generate CD, DVD and Blu-ray images that show a picture on the burned disc (git version)'
 arch=('x86_64')
