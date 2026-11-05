@@ -1,7 +1,7 @@
 # Maintainer: Joomzie <tntecyu74 at mozmail dot com>
 pkgname=bbhost-desktop-bin
 _pkgname=bbhost
-pkgver=0.2.24
+pkgver=0.2.26
 pkgrel=1
 pkgdesc="Definitive Bloodborne PC Experience"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=("vulkan-icd-loader" "curl" "zlib")
 provides=('bbhost')
 source=("https://github.com/droogie/bbhost/releases/download/v${pkgver}/bbhost-linux-v${pkgver}.tar.gz"
         "bbhost.png")
-sha256sums=('5c2a4c7e7279cb78906d337ce36822a4474fb944e0859eae8327fea5dd3c03b5'
+sha256sums=('42136fa2749539f5b4d71cffcd86968424e723a4d68ef50e0bede4fd83d468ab'
             '67816f5b2a1ce724baa48a49cf55b5119bd5108bfae8ad4441fa3d48b133b16f')
 
 prepare() {
