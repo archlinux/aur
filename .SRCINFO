@@ -1,6 +1,6 @@
 pkgbase = nym-vpnc
 	pkgdesc = NymVPN command-line client
-	pkgver = 2026.14.0
+	pkgver = 2026.15.0
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nym-vpnc
 	provides = nym-vpnc
 	conflicts = nym-vpnc
 	options = !debug
-	source = https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-v2026.14.0.tar.gz
-	sha256sums = e4c00f89e7d35be34c4ad3258d6675c04d5f61cfbd99e52917b8bcc33b933c9b
+	source = https://github.com/nymtech/nym-vpn-client/archive/refs/tags/nym-vpn-v2026.15.0.tar.gz
+	sha256sums = 8373946244710fbebbddaae821f88af1723d1d16234217e635b5b611fb4d285a
 
 pkgname = nym-vpnc
