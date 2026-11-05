@@ -1,7 +1,7 @@
 pkgbase = vtium
 	pkgdesc = Terminal for the Linux console, drawn through KMS/DRM
 	pkgver = 0.1.0alpha.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vtium/vtium
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,10 @@ pkgbase = vtium
 	makedepends = systemd-libs
 	options = !debug
 	source = vtium::git+https://github.com/vtium/vtium.git#tag=v0.1.0-alpha.5?signed
+	source = terminus.vtfrit
 	validpgpkeys = 33F9B54FD2A4B6A4110749B3BA464FC9847A832A
 	sha256sums = SKIP
+	sha256sums = 600bace75f6fa5e109d29368e4b3872218e9d9e2eb53f0a795e74b68e9c39989
 
 pkgname = vtium
 	install = vtium.install
@@ -24,6 +26,7 @@ pkgname = vtium
 	depends = mesa
 	depends = systemd-libs
 	depends = vtium-terminfo
+	optdepends = vtium-fonts: the fonts the shipped frits name
 	optdepends = kbd: console fonts, which vtium draws when no frit is set
 	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
 	conflicts = vtium-git
@@ -34,3 +37,4 @@ pkgname = vtium
 	backup = etc/vtium/fonts/desktop.vtfrit
 	backup = etc/vtium/fonts/minspec-16.vtfrit
 	backup = etc/vtium/fonts/minspec-8.vtfrit
+	backup = etc/vtium/fonts/terminus.vtfrit

@@ -18,33 +18,40 @@ pkgbase=vtium
 pkgname=('vtium')
 _tag=v0.1.0-alpha.5
 pkgver=0.1.0alpha.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM'
 arch=('x86_64')
 url='https://github.com/vtium/vtium'
 license=('MIT')
 makedepends=('cargo' 'git' 'libxkbcommon' 'systemd-libs')
 options=('!debug')
-source=("vtium::git+https://github.com/vtium/vtium.git#tag=${_tag}?signed")
-sha256sums=('SKIP')
+source=("vtium::git+https://github.com/vtium/vtium.git#tag=${_tag}?signed"
+        'terminus.vtfrit')
+sha256sums=('SKIP'
+            '600bace75f6fa5e109d29368e4b3872218e9d9e2eb53f0a795e74b68e9c39989')
 validpgpkeys=('33F9B54FD2A4B6A4110749B3BA464FC9847A832A') # Aaron Bockelie <aaronsb@gmail.com>
 
 package_vtium() {
   depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'systemd-libs'
            'vtium-terminfo')
-  optdepends=('kbd: console fonts, which vtium draws when no frit is set'
+  optdepends=('vtium-fonts: the fonts the shipped frits name'
+              'kbd: console fonts, which vtium draws when no frit is set'
               'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
   # The other console packages, so a machine holds one at a time. Each of
   # them provides vtium, so a package that depends on vtium is met by any.
   conflicts=('vtium-git' 'vtium-minspec' 'vtium-minspec-git'
              'vtium-minspec-gpu' 'vtium-minspec-gpu-git')
-  # The frits _make names in FRITS, which keep a user's edits across an
-  # upgrade (ADR-1500 D8).
+  # The frits _make names in FRITS, and the Terminus frit, which keep a
+  # user's edits across an upgrade (ADR-1500 D8).
   backup=('etc/vtium/fonts/desktop.vtfrit'
           'etc/vtium/fonts/minspec-16.vtfrit'
-          'etc/vtium/fonts/minspec-8.vtfrit')
+          'etc/vtium/fonts/minspec-8.vtfrit'
+          'etc/vtium/fonts/terminus.vtfrit')
   install=vtium.install
   _package_console
+  # The Terminus frit names the console font by the file name Arch's
+  # terminus-font gives it, so this repository carries it, not vtium's tree.
+  install -Dm644 "$srcdir/terminus.vtfrit" "$pkgdir/etc/vtium/fonts/terminus.vtfrit"
 }
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
