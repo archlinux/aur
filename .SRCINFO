@@ -1,6 +1,6 @@
 pkgbase = kwi-git
 	pkgdesc = Kwi is a modern and fast terminal for KDE Plasma and other desktops built on libghostty-vt
-	pkgver = r22.aadf139
+	pkgver = r68.db0ecd3
 	pkgrel = 1
 	url = https://apps.kde.org/kwi/
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = kwi-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = extra-cmake-modules
-	makedepends = fish
 	makedepends = vulkan-headers
 	makedepends = qqc2-desktop-style
 	makedepends = appstream
