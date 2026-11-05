@@ -1,23 +1,23 @@
 pkgbase = godot-launcher-bin
 	pkgdesc = A streamlined, open-source tool designed to simplify and accelerate your Godot game development workflow.
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://godotlauncher.org/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron43
-	provides = godot-launcher=1.13.1
+	provides = godot-launcher=1.14.0
 	conflicts = godot-launcher
-	source = LICENSE-1.13.1.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.13.1/LICENSE.txt
-	source = resources-path-override.js
+	source = LICENSE-1.14.0.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.14.0/LICENSE.txt
+	source = godot-launcher.js
 	source = godot-launcher.sh
 	sha256sums = 982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1
-	sha256sums = 7860b52642f7f9cac7341253149e5ac9b75deb338c2cf507c90e49a05d3adeb8
-	sha256sums = 523a9e7294fb8d0611611db823288e3dc38ae021eceb3067791dc0c4ff3b0d15
-	source_aarch64 = godot-launcher-1.13.1-aarch64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.13.1/Godot_Launcher-1.13.1-linux_aarch64.rpm
-	sha256sums_aarch64 = 47e90d365a9765b54e96085d0b240953201bd7b19d142f38bb0d4c0e312b5712
-	source_x86_64 = godot-launcher-1.13.1-x86_64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.13.1/Godot_Launcher-1.13.1-linux_x86_64.rpm
-	sha256sums_x86_64 = b5b89b22e3a0f998140d19fe39c6151ef66252173ad32067762e4d015e10f9fd
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	source_aarch64 = godot-launcher-1.14.0-aarch64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.14.0/Godot_Launcher-1.14.0-linux_aarch64.rpm
+	sha256sums_aarch64 = b8eda123bfff828dd0dfce0a600bef9e4fb3a4814184f50642f2805f3217fee8
+	source_x86_64 = godot-launcher-1.14.0-x86_64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.14.0/Godot_Launcher-1.14.0-linux_x86_64.rpm
+	sha256sums_x86_64 = c30babfad32f97c807c30e2db876c9010eff90cd2534a62377ee2b8d7f581933
 
 pkgname = godot-launcher-bin
