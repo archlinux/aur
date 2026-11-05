@@ -4,8 +4,8 @@
 
 pkgname=titan-git
 _pkgname=titan.core
-pkgver=10.1.2.r15.ge86dfd732
-pkgrel=3
+pkgver=11.2.1.r11.g3e29742b2
+pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
