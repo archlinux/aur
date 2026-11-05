@@ -1,8 +1,4 @@
-src/
-pkg/
-*.tar.gz
-*.tar.zst
-*.zip
-font-patcher-*
-.claude*
-.claude-flow/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
