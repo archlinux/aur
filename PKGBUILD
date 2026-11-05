@@ -2,7 +2,7 @@
 # The current aur/PKGBUILD continues to describe its published binary release.
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=sober-bin
-_upstream_version=2026.11.2
+_upstream_version=2026.11.3
 pkgver="${_upstream_version//-/_}"
 pkgrel=1
 pkgdesc='Local-first repository governance and code review with native core grammars'
@@ -21,7 +21,7 @@ source=(
 # Validate paths and types before extracting the archive ourselves.
 noextract=("sober-grammars_v${_upstream_version}_linux_amd64.tar.gz")
 sha256sums=(
-  '94bab4738f30e6ebd7617e669208e43da60f51d0ee3766f1d662540f58dc6eb7'
+  '339e94c1531214a483df26c1a4fa9fff56674cee946a3c592899e587fbba3536'
   'SKIP'
   '227257b5f7f21d16e90bb2a07b935e0fe8c5fa8bcdc17f4a3cc78df634e6a15d'
 )
