@@ -1,0 +1,68 @@
+From 80a3cb45cdff2fe456e4424c10a8bbb409277ca0 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Thu, 5 Nov 2026 16:59:22 +0000
+Subject: [PATCH 3/4] Fix compatibility with radicale >= 3.9.0
+
+https://github.com/Kozea/Radicale/commit/b9ec1c223f3c013f1dd4cb417f03105f8cb338d8
+https://github.com/Kozea/Radicale/commit/2523ffef8fe5022392ae6f1a034734815c2943cd
+---
+ etesync_dav/radicale/rights.py      |  2 +-
+ etesync_dav/radicale/web.py         | 10 +++++-----
+ etesync_dav/radicale_main/server.py |  2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/etesync_dav/radicale/rights.py b/etesync_dav/radicale/rights.py
+index 278e7fd..fc738d5 100644
+--- a/etesync_dav/radicale/rights.py
++++ b/etesync_dav/radicale/rights.py
+@@ -19,7 +19,7 @@ from .etesync_cache import etesync_for_user
+ 
+ 
+ class Rights(rights.BaseRights):
+-    def authorization(self, user, path):
++    def authorization(self, user, user_groups, path):
+         if not user:
+             return ""
+ 
+diff --git a/etesync_dav/radicale/web.py b/etesync_dav/radicale/web.py
+index 6b4c515..dd37355 100644
+--- a/etesync_dav/radicale/web.py
++++ b/etesync_dav/radicale/web.py
+@@ -20,7 +20,7 @@ from etesync_dav.mac_helpers import has_ssl
+ 
+ 
+ class Web(web.BaseWeb):
+-    def _call(self, environ, base_prefix, path, user):
++    def _call(self, environ, base_prefix, path, user, user_groups, request_info):
+         from etesync_dav.webui import app
+ 
+         ret_response = []
+@@ -37,8 +37,8 @@ class Web(web.BaseWeb):
+             ret_response.append(None)  # xml_request field
+         return tuple(ret_response)
+ 
+-    def get(self, environ, base_prefix, path, user):
+-        return self._call(environ, base_prefix, path, user)
++    def get(self, environ, base_prefix, path, user, user_groups, request_info):
++        return self._call(environ, base_prefix, path, user, user_groups, request_info)
+ 
+-    def post(self, environ, base_prefix, path, user):
+-        return self._call(environ, base_prefix, path, user)
++    def post(self, environ, base_prefix, path, user, user_groups, request_info):
++        return self._call(environ, base_prefix, path, user, user_groups, request_info)
+diff --git a/etesync_dav/radicale_main/server.py b/etesync_dav/radicale_main/server.py
+index b593661..508512c 100644
+--- a/etesync_dav/radicale_main/server.py
++++ b/etesync_dav/radicale_main/server.py
+@@ -57,7 +57,7 @@ class MyApplication(Application):
+         """Manage POST request."""
+         # Dispatch .web URL to web module
+         if path == "/.web" or path.startswith("/.web/"):
+-            return self._web.post(environ, base_prefix, path, user)
++            return self._web.post(environ, base_prefix, path, user, set(), {})
+ 
+         return super().do_POST(environ, base_prefix, path, user, remote_host, user_agent)
+ 
+-- 
+2.56.0
+

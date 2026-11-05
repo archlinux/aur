@@ -1,0 +1,33 @@
+From d2178ceb2fcf4c91dcdf87a2f20cd182aea0d40d Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Thu, 5 Nov 2026 17:16:55 +0000
+Subject: [PATCH 4/4] Fix compatibility with peewee >=4.0.1
+
+https://github.com/coleifer/peewee/commit/2a8d977855e3d2326cf52624484cc1ebeb06a56f
+---
+ etesync_dav/local_cache/__init__.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/etesync_dav/local_cache/__init__.py b/etesync_dav/local_cache/__init__.py
+index 9c2d7c4..35630fe 100644
+--- a/etesync_dav/local_cache/__init__.py
++++ b/etesync_dav/local_cache/__init__.py
+@@ -62,13 +62,13 @@ class Etebase:
+             self.user, created = models.User.get_or_create(username=self.username)
+ 
+     def _init_db(self, db_path):
+-        from playhouse.sqlite_ext import SqliteExtDatabase
++        from playhouse.sqlite_ext import SqliteDatabase
+ 
+         directory = os.path.dirname(db_path)
+         if directory != "" and not os.path.exists(directory):
+             os.makedirs(directory)
+ 
+-        database = SqliteExtDatabase(
++        database = SqliteDatabase(
+             db_path,
+             pragmas={
+                 "journal_mode": "wal",
+-- 
+2.56.0
+
