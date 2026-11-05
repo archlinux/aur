@@ -1,0 +1,44 @@
+diff --git a/sourcepawn/vm/debug-metadata.cpp b/sourcepawn/vm/debug-metadata.cpp
+--- a/sourcepawn/vm/debug-metadata.cpp
++++ b/sourcepawn/vm/debug-metadata.cpp
+@@ -26,8 +26,11 @@ using namespace sp;
+ #    include <sys/stat.h>
+ #    include <sys/types.h>
+ 
+-// __rdtsc
+-#    include <x86intrin.h>
++// __rdtsc, the timestamp counter of x86; other architectures use CLOCK_MONOTONIC
++#    if defined(__i386__) || defined(__x86_64__)
++#        include <x86intrin.h>
++#        define SP_HAS_ARCH_TIMESTAMP
++#    endif
+ 
+ PerfJitFile::PerfJitFile(bool self_delete) {
+     self_delete_ = self_delete;
+@@ -88,9 +91,13 @@ PerfJitdumpFile::PerfJitdumpFile(bool self_delete) {
+         return;
+     }
+ 
+-    // Use arch timestamps unless the env var is explicitly set to 0.
++    // Use arch timestamps where there are any, unless the env var is explicitly set to 0.
++#    if defined(SP_HAS_ARCH_TIMESTAMP)
+     char* env = getenv("JITDUMP_USE_ARCH_TIMESTAMP");
+     use_arch_timestamp_ = !env || *env != '0';
++#    else
++    use_arch_timestamp_ = false;
++#    endif
+ 
+     jitheader header = {};
+     header.magic = JITHEADER_MAGIC;
+@@ -175,9 +182,11 @@ uint64_t
+ PerfJitdumpFile::GetTimestamp() {
+     timespec ts;
+ 
++#    if defined(SP_HAS_ARCH_TIMESTAMP)
+     if (use_arch_timestamp_) {
+         return __rdtsc();
+     }
++#    endif
+ 
+     if (clock_gettime(CLOCK_MONOTONIC, &ts)) {
+         return 0;

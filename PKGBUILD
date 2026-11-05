@@ -60,6 +60,7 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   sqlite-system.patch
   sourcepawn-zlib.patch
   sourcepawn-source-date-epoch.patch
+  sourcepawn-jitdump-timestamp.patch
   sourcemod-delete-noexcept.patch
   geoip-libmaxminddb.patch
   source-sdk.txt
@@ -83,6 +84,7 @@ sha512sums=('0e64d64e3ae313761c182b46fde75fe0c73d73338585bf9f2d598f0ec2079f9177c
   '0d099ef8459feb0ccb4df4bcc7a447ab22a8bc20dccfe7d41ab7bc01fec89955616ab5d223ec02b5490b45b67de12f6119000ec28e04d8bac9c70957f0115e0a'
   'ec7b87123e13badefd397af96f9d5827473b5ce9b879ad5b58d4e6073efe7ea9875bcb845c0b367dc802ab871552af6636b50ad29c7a365783929f43a5701ee9'
   'dbd37e95a9e553e1fed22651222e9efb53fc2b5b6652f7f11dcf04a5a0bd489427caecacf1aa940a75693832d9e2c1b97c16cbf76ad9f5705247ca6f142850bd'
+  '4e41d2ad114c1bcc31218af17f810d8354955fa6fe64ae73971e7f8555fb3b4b21522985c2496d0e375162fbea87e720a3b1013bbd42fa52d2e3cd03d9909cae'
   '5634114e3418e894506206b30030af9a4465fdb2d4c8f15e5e81eaadb086c7fdce8c54835309548d42b7776ee1803c638fc2e2aa23f3363cfc395ffffd741a3e'
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
@@ -106,6 +108,7 @@ b2sums=('ed80eee3d79d284917fb41985f4680f1ce913ee117a08288423841788f7fd3eb26c982f
   '5b706c6b3f4157bc817c95ab499f0d1f980c2b7d04a3057d502d86a6f1abe90c961f2a6335f102e68bc6edfe4bb4d25aae8bbe5edbf942c8dd36d83e0357084b'
   'f19c6c50dc6567bb97cd18e2fb837fa7b17183de8a96bc44f000973ba79a8b52a2f11d8313c802cb8b7cf667edda594cbbb92ef9aa9915b85693fac06ebddffe'
   '2bdd4ad7f2888971c76ccfff3293acc8669be619014096c7430827807f3dd04c9d8610c4edb91a8c7c6da0afaf21fc39b503cb29ddefbe88b726120ae56ada1f'
+  'bba74435e7dc5f3130aac26905537b68504a63a7c0e3c1c6e8388d52d300f19cd47addb3eda6801dfe1cf9920d04a2f5b25e48d69a07b797aa1cb7c8c61a359a'
   'f86955655433526c10e56495e57ac546620a5fe7fe9e804669a80823bf7a782667907276ed06bd4905a05b640f947f6cad7a8b087acd26bbd7d191cb90ebe457'
   '6a7a7c578f22af05c0a6617a621c36add3f6f287f73d64d127dc91952acf5a1c71c619b3513fdb8ab4bb5767c57dee81fbbcd616f4f6c9163189f9d6002f8fad'
   'b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600'
@@ -153,6 +156,7 @@ prepare() {
 
   # --scripting-only builds SafetyHook as well, which only the extensions use and which doesn't
   # support aarch64, and doesn't allow aarch64 on Linux, only on macOS
+  # (https://github.com/alliedmodders/sourcemod/pull/2608)
   patch -Np1 -i "$srcdir/scripting-only.patch"
   # The MySQL extension with the system's MariaDB Connector/C, linked dynamically, instead of a
   # static one with a static OpenSSL
@@ -177,6 +181,9 @@ prepare() {
   # SOURCE_DATE_EPOCH in UTC if it's set, so that plugins build reproducibly
   # (https://github.com/alliedmodders/sourcepawn/pull/1204)
   patch -Np1 -i "$srcdir/sourcepawn-source-date-epoch.patch"
+  # The perf jitdump support, which is built on all Linux targets now, with x86's timestamp counter
+  # only on x86: aarch64 doesn't build otherwise (https://github.com/alliedmodders/sourcepawn/pull/1205)
+  patch -Np1 -i "$srcdir/sourcepawn-jitdump-timestamp.patch"
   # The replacement operator delete of extensions and logic.so declared noexcept, like the
   # standard's (implicitly so already; GCC warns about the different exception specifier)
   # (https://github.com/alliedmodders/sourcemod/pull/2607)

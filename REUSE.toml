@@ -56,3 +56,8 @@ SPDX-License-Identifier = "BSD-3-Clause"
 path = "sourcepawn-source-date-epoch.patch"
 SPDX-FileCopyrightText = ["ITB CompuPhase", "AlliedModders LLC"]
 SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = "sourcepawn-jitdump-timestamp.patch"
+SPDX-FileCopyrightText = "AlliedModders LLC"
+SPDX-License-Identifier = "BSD-3-Clause"
