@@ -164,9 +164,9 @@ package_sourcebans-pp() {
   rm -r "${_webroot:?}"/{tests,phpstan,bin,demos,includes/PHPStan} \
     "$_webroot"/{.gitignore,phpstan*.neon,phpstan*.php,phpunit.xml,package.json,package-lock.json}
   # Nor what the libraries ship besides their code and licences: documentation, tests, examples, the
-  # configuration of their development tools, the source of maxmind-db/reader's C extension
-  # (https://github.com/maxmind/MaxMind-DB-Reader-php/pull/318). Then the autoloader is generated
-  # again, so it doesn't list the removed classes
+  # configuration of their development tools, the source of maxmind-db/reader's C extension (which
+  # upstream ships on purpose, for packagers building it from the archive). Then the autoloader is
+  # generated again, so it doesn't list the removed classes
   find "$_webroot/includes/vendor" -mindepth 3 -maxdepth 3 ! -iname 'license*' \( -name '.*' \
     -o -iname '*.md' -o -name '*.txt' -o -name '*.xml' -o -name '*.dist' -o -name '*.dist.php' \
     -o -name '*.neon' -o -name '*.yml' -o -name '*.sh' -o -name Makefile -o -name 'composer.*' \
