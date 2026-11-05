@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=newscid
-pkgver=1.3.34
+pkgver=1.3.35
 pkgrel=1
 pkgdesc="Chess Information Database (Scid v4 compatible)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
     'scid: legacy database tools (tcscid)'
 )
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/chrisfair/newscid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('667c4912e63ceeb027138b5f59a3b536562558cbfa03cbcf80dc166ef91e3111')
+sha256sums=('f75dea99c2d778fbc43dd222830040fb3c64d60577c1248da6dd3843448e27f2')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/frontend"
@@ -23,6 +23,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    unset GOROOT
+    export PATH="/usr/bin:${PATH}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
