@@ -1,6 +1,6 @@
 pkgbase = caddy-ratelimit
 	pkgdesc = Fast web server with automatic HTTPS with ratelimit support
-	pkgver = 2.11.8
+	pkgver = 2.11.9
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = caddy-ratelimit
 	conflicts = caddy
 	options = !lto
 	backup = etc/caddy/Caddyfile
-	source = git+https://github.com/caddyserver/caddy.git#tag=v2.11.8
-	source = caddy-dist::git+https://github.com/caddyserver/dist.git#tag=v2.11.8
+	source = git+https://github.com/caddyserver/caddy.git#tag=v2.11.9
+	source = caddy-dist::git+https://github.com/caddyserver/dist.git#tag=v2.11.9
 	source = caddy.service
 	source = caddy-api.service
 	source = caddy.tmpfiles
@@ -24,7 +24,7 @@ pkgbase = caddy-ratelimit
 	source = use-data-dir-for-autosave.patch
 	source = caddy-disable-executable-altering-commands.patch::https://src.fedoraproject.org/rpms/caddy/raw/rawhide/f/0001-Disable-commands-that-can-alter-the-binary.patch
 	validpgpkeys = 29D0817A67156E4F25DC24782A349DD577D586A5
-	sha512sums = d50eaa178ed8980612d840d5deda52c7ed23817613218c1a4446762cf6bafba13537eea375a7635adfc6034adcd845aee25cf30b1df6b5e4504f723c4ba30e1a
+	sha512sums = fd32ba875767972f2c0a81ee8784ffe50be0dfd53db87e17473099d2b72c02c4fb2c1937f6c1eaf685118aaf3ab16ce95f20527de8ad39b243756caae796a477
 	sha512sums = 3ba21ee94d60e50a293c7f0a65c5583ffecd216b76e32013d842088a64fb7a44bd07408f591776942a18aa6c8667a95b5b25467309bba696bc3d6ece67ff9b1b
 	sha512sums = e6cdf5f81af01d0a6290ef9503d0bd90244684a6305e5638f079c234b2bc6454688daea3ea9d1b6a6f00eeba0375e9c4372e64c5cb49b5d1206384d2a7201273
 	sha512sums = 6c9d5dce22f1f0f4e222d4adeccd93c486b3be2ac221a7f8a58933b22ce91fe3da8ad38e6db7212846e4ab6336ebc058df16215a43636b965dfed469b3aaa2f6
