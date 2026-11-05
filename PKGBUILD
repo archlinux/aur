@@ -16,7 +16,7 @@
 # is an absolute symlink — safe by design.
 
 pkgname=c0wrk
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Desktop AI coding-agent built with Wails (Go + React) — CPU flavor, upstream release binaries'
 arch=(x86_64 aarch64)
@@ -35,10 +35,10 @@ source=("LICENSE::$url/raw/v$pkgver/LICENSE" 'c0wrk.desktop' 'c0wrk.png')
 sha256sums=('26a0f4863f365c987a6762b0a48e987136543118989b2f00f2d57c70a45ffd15' '817980d6896b98a304ade9b151125408e83bdc00c0e7f006eb5f6d7bb486fe62' '7004f261089ce6744435156a4c6952e2d4d87ad6eec1a1a9af347ae6a1f76938')
 
 source_x86_64=("c0wrk-desktop-$pkgver-linux-amd64.tar.gz::$url/releases/download/v$pkgver/c0wrk-desktop-linux-amd64.tar.gz")
-sha256sums_x86_64=('9c6b6744e5e8eb4c84958cba2ab57ac9ec420ead2f7aa117fa699729a1c04e3c')
+sha256sums_x86_64=('f22fd1c815d8baaa57446d0a0ff03ec6d744b09090b6d1dabb9dd90eceb1fa2d')
 
 source_aarch64=("c0wrk-desktop-$pkgver-linux-arm64.tar.gz::$url/releases/download/v$pkgver/c0wrk-desktop-linux-arm64.tar.gz")
-sha256sums_aarch64=('1fbec1e2d785c0adff38b415874894c35af61a8b4ce0e9c76718d6ee600cd8b8')
+sha256sums_aarch64=('d374f5229d0e67d7b684a26435351d412bf81b9b5b5749dc398d32551f5f01df')
 
 package() {
   cd "$srcdir"
