@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=penguin-mail
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Mail and calendar for Linux. Gmail and IMAP accounts, Google Calendar, contacts, OpenPGP and S/MIME"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('gnome-shell-extension-appindicator: tray icon on GNOME Shell'
             'bubblewrap: run assistant skill scripts')
 options=(!lto !debug)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('9e17b82b48840520b7b421c984f17756834fa919910e00a4466f78fa2183889e')
+sha256sums=('0a7667722155a734c78b964dd165436a1adf9cb122a971e4f3c84f2037a7d886')
 
 prepare() {
   cd "$pkgname-$pkgver"
