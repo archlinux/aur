@@ -1,14 +1,14 @@
 pkgbase = perl-datetime-hires
 	pkgdesc = Create DateTime objects with sub-second current time resolution
 	pkgver = 0.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/DateTime-HiRes
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	depends = perl
 	depends = perl-datetime
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-HiRes-0.04.tar.gz
-	md5sums = 6e7be00854ce84cac644cf04c66a6f33
+	source = perl-datetime-hires-0.04.tar.gz::https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-HiRes-0.04.tar.gz
+	sha256sums = 1c23159332c30f9eba54b75e6692be4dea8052243eaff3026c9c90b8b64bc395
 
 pkgname = perl-datetime-hires
