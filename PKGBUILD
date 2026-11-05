@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=xgrep-search-bin
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Ultra-fast indexed code search engine with MCP server for AI coding tools"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('xgrep-search')
 conflicts=('xgrep-search')
 options=('!debug')
 source_x86_64=("xg-$pkgver-x86_64.tar.gz::https://github.com/momokun7/xgrep/releases/download/v$pkgver/xg-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('97fb88eafd4c9d8c8eaf480bc9ff649be029f708ae3c7b280db92bd928c329e8')
-sha256sums_aarch64=('ed714069e3a92b514de64062f85707715fbc3b9c6051ac72bca16a6741dd5953')
+sha256sums_x86_64=('9fe13e5b6ff41115a2c2ef16cab23812e4fec377df7a3aca0e87663dec89051b')
+sha256sums_aarch64=('2ba3f0942aa8a08419716b458708cdd25f651146ec5a3b8d985160ce5dd691e4')
 
 source_aarch64=("xg-$pkgver-aarch64.tar.gz::https://github.com/momokun7/xgrep/releases/download/v$pkgver/xg-aarch64-unknown-linux-gnu.tar.gz")
 
