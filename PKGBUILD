@@ -1,7 +1,8 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 #
-# vtium built from the tip of a git branch: GitHub's main by default, as two
-# packages, the console and its terminfo entry (ADR-1500 D3).
+# vtium's console built from the tip of a git branch: GitHub's main by
+# default (ADR-1500 D3). Its terminfo entry comes from the
+# vtium-terminfo-git package, which a recipe of its own builds (ADR-1500 D8).
 # VTIUM_GIT_URL and VTIUM_GIT_BRANCH point the build at another repository
 # and branch, such as a local checkout. The console is built for an
 # ordinary desktop or laptop, with the features images logind gpu and
@@ -14,14 +15,14 @@
 # commit that GitHub signs with its own key.
 
 pkgbase=vtium-git
-pkgname=('vtium-git' 'vtium-terminfo-git')
+pkgname=('vtium-git')
 pkgver=r1866.16e66a2
 pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM (git main)'
 arch=('x86_64')
 url='https://github.com/vtium/vtium'
 license=('MIT')
-makedepends=('cargo' 'git' 'ncurses' 'libxkbcommon' 'systemd-libs')
+makedepends=('cargo' 'git' 'libxkbcommon' 'systemd-libs')
 options=('!debug')
 source=("vtium::git+${VTIUM_GIT_URL:-https://github.com/vtium/vtium.git}#branch=${VTIUM_GIT_BRANCH:-main}"
         'terminus.vtfrit')
@@ -66,13 +67,6 @@ package_vtium-git() {
   install -Dm644 "$srcdir/terminus.vtfrit" "$pkgdir/etc/vtium/fonts/terminus.vtfrit"
 }
 
-package_vtium-terminfo-git() {
-  arch=('any')
-  pkgdesc='The terminfo entry xterm-vtium, for sessions in vtium (git main)'
-  provides=("vtium-terminfo=$pkgver")
-  conflicts=('vtium-terminfo')
-  _package_terminfo
-}
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
 # aur-publish refuses a package whose copy differs from the other's.
@@ -124,11 +118,4 @@ build() {
 # picture gallery tool /usr/bin/vtium-gallery, a bash script.
 _package_console() {
   _make install DESTDIR="$pkgdir" PKGNAME="$pkgname"
-}
-
-# vtium's terminfo entry, compiled under its name xterm-vtium, and the
-# license (ADR-1500 D3). No package ships an entry named kmscon: the
-# kmscon-terminfo package keeps that name.
-_package_terminfo() {
-  _make install-terminfo DESTDIR="$pkgdir" PKGNAME="$pkgname"
 }

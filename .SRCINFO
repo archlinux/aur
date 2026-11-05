@@ -7,7 +7,6 @@ pkgbase = vtium-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = ncurses
 	makedepends = libxkbcommon
 	makedepends = systemd-libs
 	options = !debug
@@ -35,9 +34,3 @@ pkgname = vtium-git
 	backup = etc/vtium/fonts/minspec-16.vtfrit
 	backup = etc/vtium/fonts/minspec-8.vtfrit
 	backup = etc/vtium/fonts/terminus.vtfrit
-
-pkgname = vtium-terminfo-git
-	pkgdesc = The terminfo entry xterm-vtium, for sessions in vtium (git main)
-	arch = any
-	provides = vtium-terminfo=r1866.16e66a2
-	conflicts = vtium-terminfo
