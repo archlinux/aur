@@ -1,0 +1,21 @@
+pkgbase = wizardchat-bin
+	pkgdesc = Simple, secure, magical Matrix client
+	pkgver = 26.12.1
+	pkgrel = 1
+	url = https://wizardchat.org
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	optdepends = gst-plugins-bad: voice and video calls
+	optdepends = gst-libav: more video formats
+	provides = wizardchat
+	conflicts = wizardchat
+	options = !debug
+	source = https://gitlab.com/api/v4/projects/wizardchat%2Fwizardchat/packages/generic/wizardchat-desktop/v26.12.1/wizardchat-26.12.1-linux-x86_64.tar.gz
+	sha256sums = b59990451f862576aba1f9bab6ca993e60de676b804b72f0cc8f5d1f797bbb5b
+
+pkgname = wizardchat-bin
