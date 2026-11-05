@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-clippy-land
 	pkgdesc = Clipboard history applet for the COSMIC panel
-	pkgver = 1.1.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/k33wee/clippy-land
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = cosmic-ext-applet-clippy-land
 	depends = libxkbcommon
 	depends = wayland
 	conflicts = cosmic-ext-applet-clippy-land-git
-	source = clippy-land-1.1.2.tar.gz::https://github.com/k33wee/clippy-land/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 880e28642ee72ab4764acb7aa8c40081c6c40537050ab72ba97dc88bf5092fe5
+	source = clippy-land-2.0.0.tar.gz::https://github.com/k33wee/clippy-land/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = f1a944aa0c0d379804329f18999b44c7c0b9a92d905d3f83dbc49b6793584e59
 
 pkgname = cosmic-ext-applet-clippy-land
