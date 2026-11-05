@@ -36,7 +36,8 @@ prepare() {
     "$pkgver" "$(git rev-parse --short HEAD)" >web/configs/version.json
 
   # Nothing prebuilt: TinyMCE 5.4.2, which nothing loads since the dashboard text's editor was
-  # replaced by Markdown (#1113), and the GeoLite2 Country database, geoipupdate's instead
+  # replaced by Markdown (#1113; removed upstream by https://github.com/sbpp/sourcebans-pp/pull/1620),
+  # and the GeoLite2 Country database, geoipupdate's instead
   rm -r web/includes/tinymce
   rm web/data/GeoLite2-Country.mmdb
 
