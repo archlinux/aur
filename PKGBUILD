@@ -4,8 +4,8 @@ _pkgname='alpine'
 _flavor='virt'
 _series='v3.24'
 pkgname="libvirt-iso-${_pkgname}-${_flavor}-bin"
-pkgver=3.24.3
-pkgrel=2
+pkgver=3.24.4
+pkgrel=1
 pkgdesc='Official Alpine Linux virtualization ISO for libvirt'
 arch=('x86_64')
 url='https://www.alpinelinux.org/downloads/'
@@ -24,7 +24,7 @@ source=(
 )
 noextract=("${_iso}")
 sha512sums=(
-	'8dcb83380f5c53178142eb9470fc78aae80c60df03bb85b16434e1cd338c27782252171f5f23763d04295afc89a2738e24e70290dc2479ccc41c6c47db54962d'
+	'036b1d90a71cbe99525b7f985331ee874e3bfff28b3e86f9cb4f07251f9d01ef2eea592a3069b8f718ea7e79d5e5eecead129376a2a5b48ff6eb98ad0f75b603'
 	'SKIP'
 	'SKIP'
 	'SKIP'
