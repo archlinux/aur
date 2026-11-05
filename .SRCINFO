@@ -7,7 +7,7 @@ pkgbase = otf-aoyagikouzant
 	license = CUSTOM
 	source = https://opentype.jp/bin/AoyagiKouzanTOTF.zip
 	source = https://opentype.jp/aoyagikouzanfontt.htm
-	md5sums = c663e0899b8ce92f76e05b711f017378
-	md5sums = 6f327e6722e0a6389e8c487dbd207866
+	md5sums = 93edd00fbf73424c28a87eda4b7aca94
+	md5sums = 57ead28bd6ce776fd953f8c040ca6d9c
 
 pkgname = otf-aoyagikouzant
