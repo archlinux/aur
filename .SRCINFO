@@ -1,6 +1,6 @@
 pkgbase = risuai-bin
 	pkgdesc = Make your own story. User-friendly software for LLM roleplaying.(Prebuilt version)
-	pkgver = 2026.10.292
+	pkgver = 2026.10.294
 	pkgrel = 1
 	url = https://risuai.net/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = risuai-bin
 	depends = webkit2gtk-4.1
 	depends = python
 	depends = python-pydantic
-	provides = risuai=2026.10.292
+	provides = risuai=2026.10.294
 	conflicts = risuai
-	source = risuai-2026.10.292.rpm::https://github.com/kwaroran/RisuAI/releases/download/v2026.10.292/RisuAI-2026.10.292-1.x86_64.rpm
-	sha256sums = fd537a75f066635dbb609f2e71e743803d0e7938d403c779ed17b2579b3638d1
+	source = risuai-2026.10.294.rpm::https://github.com/kwaroran/RisuAI/releases/download/v2026.10.294/RisuAI-2026.10.294-1.x86_64.rpm
+	sha256sums = ed281c3e6c5b1db7d5c0dc6fc24791e142d9dc519628d05d41e82f095bdfde58
 
 pkgname = risuai-bin
