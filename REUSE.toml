@@ -61,3 +61,8 @@ SPDX-License-Identifier = "BSD-3-Clause"
 path = "sourcepawn-jitdump-timestamp.patch"
 SPDX-FileCopyrightText = "AlliedModders LLC"
 SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = "zydis-amalgamate-paths.patch"
+SPDX-FileCopyrightText = ["Florian Bernd", "Joel Höner"]
+SPDX-License-Identifier = "MIT"

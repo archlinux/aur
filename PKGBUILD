@@ -8,7 +8,7 @@ pkgname=(sourcemod-dev-scripting sourcemod-dev sourcemod-dev-src)
 # prereleases), <version>.<build>, the build being the number of commits, which SourceMod's
 # versioning counts with git
 pkgver=1.13.0.7484
-pkgrel=1
+pkgrel=2
 pkgdesc="SourceMod, the scripting and administration platform for Source engine game servers (development builds)"
 arch=(x86_64 aarch64)
 url="https://www.sourcemod.net"
@@ -61,6 +61,7 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   sourcepawn-zlib.patch
   sourcepawn-source-date-epoch.patch
   sourcepawn-jitdump-timestamp.patch
+  zydis-amalgamate-paths.patch
   sourcemod-delete-noexcept.patch
   geoip-libmaxminddb.patch
   source-sdk.txt
@@ -85,6 +86,7 @@ sha512sums=('0e64d64e3ae313761c182b46fde75fe0c73d73338585bf9f2d598f0ec2079f9177c
   'ec7b87123e13badefd397af96f9d5827473b5ce9b879ad5b58d4e6073efe7ea9875bcb845c0b367dc802ab871552af6636b50ad29c7a365783929f43a5701ee9'
   'dbd37e95a9e553e1fed22651222e9efb53fc2b5b6652f7f11dcf04a5a0bd489427caecacf1aa940a75693832d9e2c1b97c16cbf76ad9f5705247ca6f142850bd'
   '4e41d2ad114c1bcc31218af17f810d8354955fa6fe64ae73971e7f8555fb3b4b21522985c2496d0e375162fbea87e720a3b1013bbd42fa52d2e3cd03d9909cae'
+  '54c1386ffdc6c6efdbedccdaddffedc78e3e7c31f7b4de7cec0561a28f5364123cb776216efc39cadec5292488d06a8a49ed9d65ed244f4b1d724215ca8283ab'
   '5634114e3418e894506206b30030af9a4465fdb2d4c8f15e5e81eaadb086c7fdce8c54835309548d42b7776ee1803c638fc2e2aa23f3363cfc395ffffd741a3e'
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
@@ -109,6 +111,7 @@ b2sums=('ed80eee3d79d284917fb41985f4680f1ce913ee117a08288423841788f7fd3eb26c982f
   'f19c6c50dc6567bb97cd18e2fb837fa7b17183de8a96bc44f000973ba79a8b52a2f11d8313c802cb8b7cf667edda594cbbb92ef9aa9915b85693fac06ebddffe'
   '2bdd4ad7f2888971c76ccfff3293acc8669be619014096c7430827807f3dd04c9d8610c4edb91a8c7c6da0afaf21fc39b503cb29ddefbe88b726120ae56ada1f'
   'bba74435e7dc5f3130aac26905537b68504a63a7c0e3c1c6e8388d52d300f19cd47addb3eda6801dfe1cf9920d04a2f5b25e48d69a07b797aa1cb7c8c61a359a'
+  'e8f46cfa4744c5ea62c28369a7c81a9027a389dbb6573495279b084ff99b6a39d114097788278c2be84237da7b7986c310bd6a6069fe3896cb234784181bcf68'
   'f86955655433526c10e56495e57ac546620a5fe7fe9e804669a80823bf7a782667907276ed06bd4905a05b640f947f6cad7a8b087acd26bbd7d191cb90ebe457'
   '6a7a7c578f22af05c0a6617a621c36add3f6f287f73d64d127dc91952acf5a1c71c619b3513fdb8ab4bb5767c57dee81fbbcd616f4f6c9163189f9d6002f8fad'
   'b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600'
@@ -213,6 +216,10 @@ prepare() {
   git submodule init dependencies/zycore
   git config submodule.dependencies/zycore.url "$srcdir/zycore-c"
   git -c protocol.file.allow=always submodule update --force dependencies/zycore
+  # The script names each source file with its path relative to Zydis's rather than its absolute
+  # one, so the source doesn't depend on where it was built, and its pattern as a raw string, which
+  # Python warns about otherwise (https://github.com/zyantific/zydis/pull/661)
+  patch -Np1 -i "$srcdir/zydis-amalgamate-paths.patch"
   python assets/amalgamate.py >/dev/null
   local _zydis="$srcdir/sourcemod/public/safetyhook/zydis"
   grep -q '^#define ZYDIS_STATIC_BUILD$' "$_zydis/Zydis.h" || exit
