@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 pkgname=todav
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Tasks and calendar kept in your Nextcloud'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cargo' 'blueprint-compiler' 'gettext')
 # GCC's LTO objects of ring's bundled C code don't link with rustc's lld.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4e9aa6b0cbf4c58da393ded9b353a79a03fd1eade33c86e801da055bb6f31d5')
+sha256sums=('005bcbfcc292a6cdb71bb6a31b6552a4fc43b8b9b4630a78ea3f0e43b604eb5e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
