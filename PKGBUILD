@@ -29,7 +29,7 @@ source=("basalt::git+https://github.com/jesdga95/basalt.git#branch=main"
 sha256sums=('SKIP'
             '6f0e1998e7eba8a0c4a854f51d13c12537d6b868b39641871d8ff0265df17eda'
             'd065296aa095292902f3b02a87d9321c798c6f00972c17594a14a4f324747490'
-            '434c5aaa58d33cf2c5a6b4f718a3ef8aec23e97acd7de00a4d9d1965c34bfb06')
+            '629c96b83a3cbd2b6aa75165c7e1c33d78a656e3c487f302d791e99b7fb88f7f')
 
 # BASALT_DEBUG=1 makepkg -si builds with -g and splits off a basalt-inference-git-debug package (gdb
 # then reports file:line).  LTO is off there: -g plus -flto needs far more RAM than this builds in.
