@@ -1,6 +1,6 @@
 pkgbase = logi-mx
 	pkgdesc = Logitech MX Master 3S configuration tool and daemon with system tray
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/RAprogramm/logi-mx
 	install = logi-mx.install
@@ -12,7 +12,7 @@ pkgbase = logi-mx
 	depends = gtk4
 	depends = libadwaita
 	depends = dbus
-	source = logi-mx-0.7.0.tar.gz::https://github.com/RAprogramm/logi-mx/archive/v0.7.0.tar.gz
-	sha256sums = 0f9c27f95edf9c6069b1e240562b8c53dbbfa707ed3d87149dc2e86de29e35bb
+	source = logi-mx-0.7.1.tar.gz::https://github.com/RAprogramm/logi-mx/archive/v0.7.1.tar.gz
+	sha256sums = ea1e59c36879c20993833bdeebc7f87575264a3b4dd643dbe25be543929af2a4
 
 pkgname = logi-mx
