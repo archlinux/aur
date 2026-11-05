@@ -2,7 +2,7 @@
 
 _pkgauthor='charles-001'
 _pkgname='dolphie'
-pkgname="${_pkgname}"
+pkgname=${_pkgname}
 pkgver=6.18.0
 pkgrel=1
 pkgdesc="Your single pane of glass for real-time analytics into MySQL/MariaDB & ProxySQL"
@@ -18,10 +18,8 @@ _url_github="https://github.com/${_pkgauthor}/${_pkgname}"
 url="${_url_github}"
 
 provides=("${_pypi_package}")
-replaces=("python-${pkgname}")
-conflicts=("python-${pkgname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-poetry-core')
-depends=('python' 'python-sqlparse' 'python-pygments' 'python-pymysql' 'python-psutil' 'python-rich' 'python-textual' 'python-plotext' 'python-zstandard' 'python-orjson' 'python-requests' 'python-loguru' 'python-packaging' 'python-charset-normalizer' 'python-myloginpath')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
+depends=('python' 'python-sqlparse' 'python-pygments' 'python-pymysql' 'python-psutil' 'python-rich' 'python-textual' 'python-textual-plotext' 'python-plotext' 'python-zstandard' 'python-orjson' 'python-requests' 'python-loguru' 'python-packaging' 'python-myloginpath')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
