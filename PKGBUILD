@@ -7,8 +7,8 @@ pkgname=(
   "${pkgbase}"
   "anyzls"
 )
-pkgver=2026_10_23
-pkgrel=2
+pkgver=2026_11_03
+pkgrel=1
 pkgdesc="One zig to rule them all"
 arch=(
   'aarch64'
@@ -31,7 +31,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('0c91b7a01aa687ef5a56b0575d18f4f7e2697591a31c3508dfe93f283b43e8b6eeb6e1cd108bf8cf4bba3b69a7d598b7617cff541f3ac9c3a208c4badafe6058')
+b2sums=('24ea84cba4ab4e55f853c26d3b1916e105a5b321d2bbfbd970b4253dcbd62e678504eb921e54874687fe5fdc24b8cb9487cd011c1a1afe46225a73753e93180b')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -99,6 +99,7 @@ package_anyzig() {
 }
 
 package_anyzls() {
+  pkgdesc+=" (ZLS)"
   depends=(
     "${pkgbase}-common>=${pkgver}-${pkgrel}"
   )
