@@ -1,0 +1,18 @@
+pkgbase = sing-box-dashboard-git
+	pkgdesc = Web dashboard for sing-box
+	pkgver = 0.0.0.r95.3e4bf08
+	pkgrel = 1
+	url = https://github.com/SagerNet/sing-box-dashboard
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = nodejs
+	makedepends = pnpm
+	provides = sing-box-dashboard
+	conflicts = sing-box-dashboard
+	source = git+https://github.com/SagerNet/sing-box-dashboard.git
+	source = git+https://github.com/mbadolato/iTerm2-Color-Schemes.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sing-box-dashboard-git

@@ -1,0 +1,4 @@
+*.log
+*.pkg*
+sing-box-dashboard/
+iTerm2-Color-Schemes/
