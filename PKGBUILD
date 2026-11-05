@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_gitname}-bin
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 
-pkgver=2.22.0
+pkgver=2.23.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.MD"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('997fc3f21fc53ecfe3daf93d5d6e64f1a0982bfb04752f129b1b6180711c6b04'
+sha256sums=('8394e80e3210550d52a8a520add00856cc9f33f976b48e23bfbc0b2ec9f95902'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('c987547d7191f494b25a88566a29ca0f07ad06ea8cafb4e1e7793a067b8e073b')
-sha256sums_aarch64=('0b77c7ec9516a130d97d982ed4caf13798c1bae6e05b5a931b59d02acfc1829e')
+sha256sums_x86_64=('e95c25e5523b49a59c3c77b7916a06d41322ee4c62599dc94ff0a4ae15d1bc09')
+sha256sums_aarch64=('eadccbcc325e6ac9161750321218a708a0ee416eddb9d8fb86b7d4c4f6344072')
 
 
 package() {
