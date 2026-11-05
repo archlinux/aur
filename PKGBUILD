@@ -125,7 +125,7 @@ prepare() {
   _check_fonttune
   _ask NERD_PATCH "Patch with Nerd Fonts glyphs (implies static fonts)" n
   if [[ -z "${GEO_VARIANT:-}" && -t 0 && "$NERD_PATCH" != true ]]; then
-    read -r -p "[GEO_VARIANT] variable or static [variable] " GEO_VARIANT
+    read -r -p "[GEO_VARIANT] variable or static (static: pixel grid possible) [variable] " GEO_VARIANT
   fi
   GEO_VARIANT="${GEO_VARIANT:-variable}"
   case "$GEO_VARIANT" in variable|static) ;;
