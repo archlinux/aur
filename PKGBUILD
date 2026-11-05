@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=gitswitcher
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Secure Git identity and SSH/GPG key management tool for seamless account switching'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url='https://github.com/tenseleyFlow/gitswitchC'
 license=('GPL-3.0-or-later')
 depends=('git' 'openssh' 'gnupg' 'readline')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('897bd0321f2e12a3160ec97ddb1e95495d766056e435fe3c6a50d9c14db226f0')
+sha256sums=('3628317c6dd2470707e4fcc141ab38b089892661030ccbf246fad9c2d5506d9b')
 
 build() {
     make -C "$srcdir/gitswitchC-$pkgver" \
