@@ -1,6 +1,6 @@
 # Maintainer: Emirhan Gedish <casanovalx@tutamail.com>
 pkgname=qtcalc-git
-pkgver=0.2a
+pkgver=0.3a
 pkgrel=1
 pkgdesc="Dead simple calculator written in C++ and Qt6"
 arch=('x86_64')
