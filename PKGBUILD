@@ -2,22 +2,23 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='tequilashot-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Tequilashot - screenshots and screen recording for Wayland'
 url='https://github.com/chmouel/tequilashot'
-arch=('aarch64' 'x86_64')
+arch=('x86_64')
 license=('Apache 2.0')
 provides=('tequilashot')
 conflicts=('tequilashot' 'sway-easyshot' 'sway-easyshot-bin')
-
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v${pkgver}/tequilashot_${pkgver}_linux_aarch64.tar.gz")
-sha256sums_aarch64=('fe84e65a26853b823e59fa83389356c0a4648ab7dc633c09c99f6728d885b52e')
+depends=('gtk4' 'libadwaita>=1:1.9' 'libgirepository')
+optdepends=('gtk4-layer-shell: round camera bubble')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v${pkgver}/tequilashot_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('c06fff9b05144e8caac333083b71fc39b981fd4e06b43af418c5bae08eab06b4')
+sha256sums_x86_64=('0da373afcb4a581b2de3ad626dca265bed91a86a1b88efdd0959a92542bb4e1b')
 
 package() {
   install -Dm755 "./tequilashot" "${pkgdir}/usr/bin/tequilashot"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tequilashot/LICENSE"
+  install -Dm644 "./com.chmouel.Tequilashot.Recorder.desktop" "${pkgdir}/usr/share/applications/com.chmouel.Tequilashot.Recorder.desktop"
+  install -Dm644 "./tequilashot-mark.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.chmouel.Tequilashot.Recorder.svg"
 }

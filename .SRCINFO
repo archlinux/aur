@@ -1,18 +1,19 @@
 pkgbase = tequilashot-bin
 	pkgdesc = Tequilashot - screenshots and screen recording for Wayland
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/chmouel/tequilashot
 	license = Apache 2.0
+	optdepends = gtk4-layer-shell: round camera bubble
+	depends = gtk4
+	depends = libadwaita>=1:1.9
+	depends = libgirepository
 	conflicts = tequilashot
 	conflicts = sway-easyshot
 	conflicts = sway-easyshot-bin
 	provides = tequilashot
-	arch = aarch64
-	source_aarch64 = tequilashot-bin_0.3.0_aarch64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v0.3.0/tequilashot_0.3.0_linux_aarch64.tar.gz
-	sha256sums_aarch64 = fe84e65a26853b823e59fa83389356c0a4648ab7dc633c09c99f6728d885b52e
 	arch = x86_64
-	source_x86_64 = tequilashot-bin_0.3.0_x86_64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v0.3.0/tequilashot_0.3.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = c06fff9b05144e8caac333083b71fc39b981fd4e06b43af418c5bae08eab06b4
+	source_x86_64 = tequilashot-bin_0.3.1_x86_64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v0.3.1/tequilashot_0.3.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0da373afcb4a581b2de3ad626dca265bed91a86a1b88efdd0959a92542bb4e1b
 	
 pkgname = tequilashot-bin
