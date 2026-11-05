@@ -1,7 +1,7 @@
 # Maintainer: Chris Werner Rau <aur@cwrau.io>
 
 pkgname=mattpocock-skills
-pkgver=1.3.1 # renovate: datasource=github-releases depName=mattpocock/skills
+pkgver=1.3.2 # renovate: datasource=github-releases depName=mattpocock/skills
 pkgrel=1
 pkgdesc="Matt Pocock's agent skills (agentskills.io format), linked into ~/.agents/skills via user tmpfiles"
 url="https://github.com/mattpocock/skills"
@@ -11,7 +11,7 @@ depends=('systemd')
 makedepends=('jq')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1847b1dab968d7dc8e87fdcad6613574557fd51301b66ba423c78d306bfa157b')
+sha256sums=('74c155a89776b00c5a0d9bd196cc8b8208d45890bf0665f0619b4fafdf74c7bc')
 
 _datadir="/usr/share/agent-skills/$pkgname"
 
