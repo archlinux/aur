@@ -1,13 +1,13 @@
 pkgbase = volpack
-	pkgdesc = Enhanced Philippe Lacroute's volpack volume rendering library
+	pkgdesc = Enhanced version of Philippe Lacroute's volume rendering library
 	pkgver = 1.0c7
-	pkgrel = 2
-	url = http://amide.sourceforge.net/packages.html
+	pkgrel = 3
+	url = https://amide.sourceforge.net/packages.html
 	arch = i686
 	arch = x86_64
-	license = GPL
-	source = http://sourceforge.net/projects/amide/files/volpack/1.0c7/volpack-1.0c7.tgz/download
-	md5sums = 119ec828ecad8dbf7afc4e71f4c4eb69
+	license = BSD-3-Clause
+	depends = glibc
+	source = volpack-1.0c7.tgz::https://sourceforge.net/projects/amide/files/volpack/1.0c7/volpack-1.0c7.tgz/download
+	sha256sums = b82b143df479add2b3e18499537a79b1b0fa7e1cc88dff2e7481b4ee075719d2
 
 pkgname = volpack
-
