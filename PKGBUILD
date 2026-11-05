@@ -4,7 +4,7 @@ pkgname=rune-ide-bin
 _pkgname=rune
 _binaryname=rune
 pkgdesc="Fast, GPU-rendered, keyboard-driven IDE for power users"
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/unstablebuild/rune"
@@ -37,8 +37,8 @@ source=(
 )
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('b2d06bb396f8eb61cd3654e3727c84933c0ad7a80c8aa9fa92da90ea715a5fff')
-sha256sums_aarch64=('99b35fdf2c5fa2a2924fd6d183255479514cbf99e9b006392a4d4e7e1d35449e')
+sha256sums_x86_64=('b40dc0987b36b5d76e28ec97bd5fb27b5bede862b436541fe99200c19035ee0b')
+sha256sums_aarch64=('fe66133f8a91f5565492e8e5fa6f397c69812d439cac34f6d3faa55f44543b94')
 
 package() {
     # upstream ships a self-contained "rune.app" bundle, kept under /opt
