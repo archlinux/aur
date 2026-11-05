@@ -42,11 +42,12 @@ sha256sums=('b98f9e091b6337a86f4e0f69c94c31905e1e287782853f472e176b4e28d3f81f'
 # fonttune (https://github.com/gaou-piou/fonttune), which asks its questions in
 # prepare() and prints advice for your desktop/browser before it starts.
 # Every key can be preset: FONTTUNE_<KEY>=value (see `fonttune steps`).
-# Local testing: FONTTUNE_REPO=file:///path/to/fonttune.
+# Local testing: `fonttune dev on` (see _ft_local).
 #
 #   NERD_PATCH=true   patch with Nerd Fonts glyphs (default false; asked on a TTY)
 
 prepare() {
+  _ft_local
   _check_fonttune
   mkdir -p "$srcdir/selected"
   install -m644 "$srcdir/DidactGothic-Regular.ttf" "$srcdir/selected/"
@@ -61,13 +62,37 @@ prepare() {
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
   fi
-  python "$srcdir/fonttune/bin/fonttune" configure --defaults clean \
+  python "$(_ft)/bin/fonttune" configure --defaults clean \
     --save-to "$srcdir/fonttune.toml" "$srcdir/selected/"*
 }
 
+# Local fonttune, uncommitted edits included: `/path/to/fonttune/bin/fonttune dev on`
+# (once; `dev off` undoes it) or FONTTUNE_DEV=/path/to/fonttune for one build
+# (FONTTUNE_DEV=off ignores the saved one). The tree is copied to
+# $srcdir/fonttune-local; the git source and .SRCINFO stay as they are.
+_ft() { if [[ -d "$srcdir/fonttune-local" ]]; then echo "$srcdir/fonttune-local"; else echo "$srcdir/fonttune"; fi; }
+
+_ft_local() {  # in prepare(): pick the local tree, if one is set
+  local _dev=${FONTTUNE_DEV-} _cf=${XDG_CONFIG_HOME:-$HOME/.config}/fonttune/dev
+  if [[ -z ${FONTTUNE_DEV+x} && -r "$_cf" ]]; then _dev=$(<"$_cf"); fi
+  rm -rf "$srcdir/fonttune-local"
+  if [[ -z "$_dev" || "$_dev" == off ]]; then return 0; fi
+  if [[ ! -f "$_dev/fonttune/__init__.py" ]]; then
+    echo "Error: local fonttune '$_dev' (FONTTUNE_DEV or $_cf) is not a fonttune tree." >&2
+    exit 1
+  fi
+  mkdir "$srcdir/fonttune-local"
+  tar -C "$_dev" --exclude=.git --exclude=__pycache__ -cf - . | tar -C "$srcdir/fonttune-local" -xf -
+  echo "local:$(git -C "$_dev" describe --always --dirty 2>/dev/null || echo "$_dev")" \
+    > "$srcdir/fonttune-local/.rev"
+  echo "==> fonttune: LOCAL tree $_dev ($(<"$srcdir/fonttune-local/.rev"))" >&2
+}
+
+_ft_rev() { cat "$(_ft)/.rev" 2>/dev/null || git -C "$srcdir/fonttune" describe --always --dirty 2>/dev/null; }
+
 _check_fonttune() {
   local _api
-  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$srcdir/fonttune/fonttune/__init__.py")
+  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$(_ft)/fonttune/__init__.py")
   if [[ "$_api" != "$_ftapi" ]]; then
     echo "Error: fonttune API is '${_api:-?}', this PKGBUILD expects $_ftapi." >&2
     echo "       Update the PKGBUILD for the new fonttune, or pin FONTTUNE_REF=tag=<last-good>." >&2
@@ -84,10 +109,10 @@ build() {
     python "$srcdir/font-patcher/font-patcher" --variable-width-glyphs -q -c \
       "$srcdir/selected/DidactGothic-Regular.ttf" -out "$srcdir/patched" >/dev/null
     compgen -G "$srcdir/patched/*.ttf" >/dev/null || { echo "Error: font-patcher produced no output." >&2; exit 1; }
-    python "$srcdir/fonttune/fonttune/steps/fix_names.py" "$srcdir/patched/"*.ttf
+    python "$(_ft)/fonttune/steps/fix_names.py" "$srcdir/patched/"*.ttf
     _src="$srcdir/patched"
   fi
-  python "$srcdir/fonttune/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
+  python "$(_ft)/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
     --fonts-conf "${DG_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}" \
     --features-match '^Didact Gothic' "$_src/"*.ttf
   echo "$_src" > "$srcdir/.out"
@@ -99,14 +124,14 @@ package() {
   install -Dm644 -t "$_fontdir" "$_src/"*.ttf
   install -Dm644 "$srcdir/OFL.txt" "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
   install -d "$pkgdir/usr/share/doc/$pkgname"
-  git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
+  _ft_rev > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
   install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
   install -m644 "$srcdir/README.md" "$srcdir/FEATURES.md" "$pkgdir/usr/share/doc/$pkgname/"
 
   # Opt-in fontconfig snippet when the fonts carry ttfautohint bytecode.
   if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
     install -d "$pkgdir/usr/share/fontconfig/conf.avail"
-    python "$srcdir/fonttune/bin/fonttune" hintconf --name "$pkgname" \
+    python "$(_ft)/bin/fonttune" hintconf --name "$pkgname" \
       -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" "$_fontdir/"*.ttf
     chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
   fi
