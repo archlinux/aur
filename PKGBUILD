@@ -1,7 +1,7 @@
 # Maintainer: Anand Pant
 
 pkgname=foundry-cli-bin
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Foundry DevOps automation CLI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('foundry-cli')
 conflicts=('foundry-cli')
 
 _asset="foundry-cli_${pkgver}_linux_amd64.tar.gz"
-_sha256='8f30d16d9aa4c4538b11f4ec5c8f16367c13f4e59150705b51b69a9780888976'
+_sha256='414790b5526f3ac351a5d3cb26f58685cec28d4a397fb0f1529964a2315c43bf'
 
 prepare() {
   gh release download "v${pkgver}" \
@@ -29,13 +29,15 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/foundry-cli"
   install -Dm755 "foundry-cli" \
     "${pkgdir}/usr/lib/foundry-cli/foundry-cli"
-  cp -R templates "${pkgdir}/usr/lib/foundry-cli/"
+  if [[ -d templates ]]; then
+    cp -R templates "${pkgdir}/usr/lib/foundry-cli/"
 
-  if [[ ! -f "${pkgdir}/usr/lib/foundry-cli/templates/README.md" ]]; then
-    install -Dm644 /dev/stdin \
-      "${pkgdir}/usr/lib/foundry-cli/templates/README.md" <<'EOT'
+    if [[ ! -f "${pkgdir}/usr/lib/foundry-cli/templates/README.md" ]]; then
+      install -Dm644 /dev/stdin \
+        "${pkgdir}/usr/lib/foundry-cli/templates/README.md" <<'EOT'
 # templates
 EOT
+    fi
   fi
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
