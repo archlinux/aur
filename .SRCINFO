@@ -1,0 +1,21 @@
+pkgbase = lakekeeper-bin
+	pkgdesc = Apache Iceberg REST catalog (prebuilt)
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/lakekeeper/lakekeeper
+	install = lakekeeper.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = lakekeeper=0.14.2
+	conflicts = lakekeeper
+	source = lakekeeper-0.14.2-NOTICE::https://raw.githubusercontent.com/lakekeeper/lakekeeper/v0.14.2/NOTICE
+	sha256sums = 13d28577ff9b20b8c7c31ce33c00168b83f84a87c06fa15a6c7ee17985a48a1b
+	source_x86_64 = lakekeeper-0.14.2-x86_64.tar.gz::https://github.com/lakekeeper/lakekeeper/releases/download/v0.14.2/lakekeeper-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e1eb2de75f95c1124f91ed32bfd14bcbddf906f91651bbd446ad9a0af99251b8
+	source_aarch64 = lakekeeper-0.14.2-aarch64.tar.gz::https://github.com/lakekeeper/lakekeeper/releases/download/v0.14.2/lakekeeper-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 501b946d53189ea75c8921f4d6b03501214ee830ec45a9fe25e32c826d1c6889
+
+pkgname = lakekeeper-bin
