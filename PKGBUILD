@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=26.10.23
+pkgver=26.11.05
 pkgrel=1
 pkgdesc="An intelligent multi-scenario recording tool inspired by the minimalist concept of ancient 'knot-tying' memorization."
 arch=('x86_64')
@@ -10,31 +10,13 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'qt6-base'
-    'qt6-declarative'
-    'qt6-5compat'
-    'qt6-svg'
-    'qt6-wayland'
-    'qt6-serialport'
-    'qt6-positioning'
-    'qt6-tools'
-    'icu'
     'sqlite'
     'openssl'
-    'libgcrypt'
     'libgpg-error'
     'nss'
     'nspr'
-    'nettle'
     'gmp'
-    'keyutils'
-    'krb5'
-    'p11-kit'
-    'libtasn1'
-    'avahi'
     'e2fsprogs'
-    'libproxy'
-    'libinput'
 )
 optdepends=(
     'fcitx5-qt: Fcitx5 input method support'
@@ -46,51 +28,31 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f8a52a8583838621ab3872b5185d7e9593eebf5c1583679e00ef559a18b71b9c'
+sha256sums=('353e3754b8bc369f3861a059311e9efddcf9ad85dd21435aae1dfa8ba40d7b1d'
             '5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66'
-            '6f38e0cb252008b84532d5914cb851aa45518771db172e7f5a091fe16123e05e')
+            '216b754c5be3b7d33ebc915743a3bc4d6663a63b0a07468c88cc26bf20908cb4')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/icon/${pkgname%-bin}/g
         s/Application;/Utility;/g
         s/Name=${_pkgname}/Name=Android ${_pkgname}/g
-    " "${srcdir}/squashfs-root/default.desktop"
-    find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
+    " "${srcdir}/opt/${_pkgname}/default.desktop"
+    find "${srcdir}/opt/${_pkgname}" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    # Install main binary
-    install -Dm755 "${srcdir}/squashfs-root/Knot" "${pkgdir}/usr/lib/${pkgname%-bin}/Knot"
-    # Install qt.conf
-    install -Dm644 "${srcdir}/squashfs-root/qt.conf" "${pkgdir}/usr/lib/${pkgname%-bin}/qt.conf"
-    # Install plugins (keep only necessary ones, remove bundled Fcitx5 lib)
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/plugins"
-    cp -a "${srcdir}/squashfs-root/plugins/." "${pkgdir}/usr/lib/${pkgname%-bin}/plugins/"
-    # Remove bundled Fcitx5 libraries and symlinks (use system ones instead)
-    rm -f "${pkgdir}/usr/lib/${pkgname%-bin}/plugins/platforminputcontexts/libFcitx5Qt6DBusAddons.so"*
-    rm -f "${pkgdir}/usr/lib/${pkgname%-bin}/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so"
-    # Install translations
-    if [ -d "${srcdir}/squashfs-root/translations" ]; then
-        cp -a "${srcdir}/squashfs-root/translations" "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    fi
-    install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    cp -a "${srcdir}/opt/${_pkgname}/." "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/default.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
