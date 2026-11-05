@@ -1,0 +1,3 @@
+[perl-expect-simple]
+source = "cpan"
+cpan = "Expect-Simple"
