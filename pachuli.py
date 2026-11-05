@@ -29,7 +29,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 
-VERSION = "2.1.0"
+VERSION = "2.1.1"
 AUR_ADDR = "https://aur.archlinux.org"
 DEFAULT_BUILD_DIR = Path(
     os.environ.get("PACHULI_BUILDDIR", Path.home() / ".cache" / "pachuli" / "builds")
@@ -292,6 +292,52 @@ def run(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, **kwargs)
 
 
+def _pacman_cache_dirs() -> list[Path]:
+    """Pacmans Paket-Cache-Verzeichnis(se), via `pacman-conf CacheDir`
+    ermittelt (respektiert mehrere/angepasste CacheDir-Einträge in
+    pacman.conf); fällt bei fehlendem/leerem pacman-conf auf den
+    Standardpfad zurück."""
+    try:
+        result = subprocess.run(
+            ["pacman-conf", "CacheDir"], capture_output=True, text=True, timeout=5,
+        )
+        dirs = [Path(line.strip()) for line in result.stdout.splitlines() if line.strip()]
+        if dirs:
+            return dirs
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return [Path("/var/cache/pacman/pkg/")]
+
+
+def _clean_stale_download_dirs(opts: Options) -> None:
+    """Pacmans sandboxter Downloader (DownloadUser) legt während eines
+    laufenden Downloads ein leeres Platzhalter-Verzeichnis
+    "download-XXXXXX" im Cache an; wird der Download unterbrochen
+    (Absturz, Netzwerkfehler, gekillter Prozess), bleibt dieses leere
+    Verzeichnis zurück. `pacman -Sc`/`-Scc` versucht danach, jeden
+    dieser Reste als reguläre Datei zu öffnen und scheitert mit
+    "could not open file ...: Error reading fd N" - harmlos, aber
+    störend, und pacman räumt sie von sich aus nie auf. Vor dem
+    eigentlichen -Sc/-Scc hier entfernen, damit der Aufruf sauber
+    durchläuft."""
+    stale = []
+    for cache_dir in _pacman_cache_dirs():
+        try:
+            stale += [d for d in cache_dir.iterdir()
+                      if d.is_dir() and d.name.startswith("download-")]
+        except OSError:
+            continue
+    if not stale:
+        return
+    result = escalate(["rm", "-rf", *[str(d) for d in stale]], opts)
+    if result.returncode == 0:
+        msg(
+            f"{len(stale)} verwaiste(s) Download-Platzhalter-Verzeichnis(se) "
+            "aus dem Cache entfernt (unterbrochene Downloads)",
+            Colors.BLUE, opts.quiet,
+        )
+
+
 # --------------------------------------------------------------------------
 # AUR RPC Client
 # --------------------------------------------------------------------------
@@ -302,6 +348,7 @@ class AurClient:
     def __init__(self, base_url: str = AUR_ADDR, timeout: int = HTTP_TIMEOUT):
         self.base_url = base_url
         self.timeout = timeout
+        self._base_cache: dict[str, str] = {}
 
     def _get_json(self, path: str) -> dict | None:
         url = f"{self.base_url}{path}"
@@ -330,6 +377,24 @@ class AurClient:
     def exists(self, package: str) -> bool:
         data = self._get_json(f"/rpc/v5/info?arg[]={urllib.parse.quote(package)}")
         return bool(data and data.get("resultcount", 0) > 0)
+
+    def package_base(self, package: str) -> str:
+        """Name des AUR-Git-Repos (pkgbase), aus dem `package` gebaut wird.
+
+        Split-Pakete (z.B. shelly-bin + shelly-flatpak-backend-bin) werden
+        aus EINEM Repo gebaut, das nur nach der Paketbasis heißt. Fragt man
+        das AUR nach dem Repo eines der anderen Paketnamen, liefert es ein
+        leeres Repo statt eines Fehlers. Ist die Basis nicht ermittelbar
+        (offline, API-Fehler), wird der Paketname selbst zurückgegeben."""
+        if package in self._base_cache:
+            return self._base_cache[package]
+        base = package
+        for entry in self.info([package]):
+            if entry.get("Name") == package and entry.get("PackageBase"):
+                base = entry["PackageBase"]
+                break
+        self._base_cache[package] = base
+        return base
 
 
 # --------------------------------------------------------------------------
@@ -516,6 +581,29 @@ def is_devel_package(name: str) -> bool:
 LOG_PATH = Path(
     os.environ.get("XDG_STATE_HOME", Path.home() / ".local" / "state")
 ) / "pachuli" / "build-errors.log"
+
+
+_DEP_RE = re.compile(r"^\s*([^<>=\s]+)\s*(<=|>=|=|<|>)?\s*(.*?)\s*$")
+
+
+def parse_dep(dep: str) -> tuple[str, str, str]:
+    """'foo>=1.2-1' -> ('foo', '>=', '1.2-1'); ohne Bedingung ('foo', '', '')."""
+    m = _DEP_RE.match(dep)
+    if not m:
+        return dep.strip(), "", ""
+    return m.group(1), m.group(2) or "", m.group(3) or ""
+
+
+def dep_satisfied_by(op: str, wanted: str, have: str | None) -> bool:
+    """Erfüllt die Version `have` die Bedingung `op wanted`? Ohne Bedingung
+    genügt jedes Vorkommen; hat der Anbieter keine Version (Provides ohne
+    '=x'), kann er eine versionierte Bedingung nicht erfüllen (pacman-Regel)."""
+    if not op:
+        return True
+    if not have:
+        return False
+    c = vercmp(have, wanted)
+    return {"=": c == 0, "<": c < 0, ">": c > 0, "<=": c <= 0, ">=": c >= 0}[op]
 
 
 def log_failed_build(pkg: str, cmd: list[str]) -> None:
@@ -706,6 +794,14 @@ class Pachuli:
         self.aur = AurClient()
         self.opts.builddir.mkdir(parents=True, exist_ok=True)
         self._build_stack: list[str] = []  # geordnet, gegen Abhängigkeitszyklen
+        # Paketbasen, die in DIESEM Lauf schon erfolgreich gebaut und
+        # installiert wurden: Split-Pakete (mehrere pkgname aus einem
+        # PKGBUILD) werden damit nur einmal gebaut, nicht pro Teilpaket.
+        self._built_bases: set[str] = set()
+        # Gebaute, aber noch nicht installierte Pakete (nur beim
+        # Sammel-Update, siehe update()/_install_deferred()):
+        # Einträge (Paketbasis, [Paketdateien], Build-Ordner).
+        self._deferred: list[tuple[str, list[Path], Path]] = []
 
     # -- PKGBUILD ansehen --------------------------------------------------
 
@@ -797,7 +893,10 @@ class Pachuli:
                     result[key].append(line.split(" = ", 1)[1])
         return result
 
-    def build(self, pkg: str) -> bool:
+    def build(self, pkg: str, defer: bool = False) -> bool:
+        """Baut `pkg` und installiert es. Mit defer=True wird die Installation
+        nur vorgemerkt und später gesammelt von _install_deferred()
+        erledigt (eine einzige Rechte-Abfrage für alle Pakete)."""
         pkg_dir = self.opts.builddir / pkg
         if not pkg_dir.is_dir():
             die(f"failed to cd {pkg_dir}")
@@ -871,6 +970,12 @@ class Pachuli:
             log_failed_build(pkg, makepkg_cmd + ["# kein Paketartefakt gefunden"])
             return False
 
+        if defer:
+            self._deferred.append((pkg, pkg_files, pkg_dir))
+            msg(f"{pkg} gebaut, Installation folgt gesammelt am Ende",
+                Colors.BLUE, self.opts.quiet)
+            return True
+
         install_cmd = ["pacman", "-U", *[str(p) for p in pkg_files], "--needed"]
         if self.opts.noconfirm:
             install_cmd.append("--noconfirm")
@@ -909,7 +1014,24 @@ class Pachuli:
 
         if is_existing_repo:
             msg(f"Checking {pkg} for updates...", Colors.BLUE, self.opts.quiet)
-            subprocess.run(["git", "fetch", "-q"], cwd=pkg_dir)
+            fetched = subprocess.run(["git", "fetch", "-q"], cwd=pkg_dir).returncode == 0
+            if fetched:
+                fetched = subprocess.run(
+                    ["git", "rev-parse", "-q", "--verify", "FETCH_HEAD"],
+                    cwd=pkg_dir, capture_output=True,
+                ).returncode == 0
+            if not fetched:
+                # Ohne gültigen FETCH_HEAD wären diff/reset unten sinnlos und
+                # `git clean -fdx` würde den Ordner leerräumen.
+                if (pkg_dir / "PKGBUILD").is_file():
+                    msg(f"AUR-Repo von {pkg} nicht erreichbar, verwende den "
+                        f"lokalen Stand", Colors.YELLOW, self.opts.quiet)
+                    return
+                # Leerer/kaputter Klon (z.B. von einem früheren Fehlversuch):
+                # verwerfen und unten frisch klonen.
+                shutil.rmtree(pkg_dir, ignore_errors=True)
+                is_existing_repo = False
+        if is_existing_repo:
             diff = subprocess.run(
                 ["git", "diff", "HEAD..FETCH_HEAD", "--", "PKGBUILD"],
                 cwd=pkg_dir, capture_output=True, text=True,
@@ -982,8 +1104,17 @@ class Pachuli:
         finally:
             shutil.rmtree(tmp_dir, ignore_errors=True)
 
-    def get(self, pkg: str) -> bool:
+    def get(self, pkg: str, defer: bool = False) -> bool:
         pkg = validate_pkg_name(pkg)
+        base = self.aur.package_base(pkg)
+        if base != pkg:
+            msg(f"{pkg} wird zusammen mit seiner Paketbasis {base} gebaut",
+                Colors.BLUE, self.opts.quiet)
+            pkg = validate_pkg_name(base)
+        if pkg in self._built_bases:
+            msg(f"{pkg} wurde in diesem Lauf bereits gebaut und installiert",
+                Colors.BLUE, self.opts.quiet)
+            return True
         if pkg in self._build_stack:
             die(
                 f"Abhängigkeitszyklus erkannt: '{pkg}' wird bereits weiter "
@@ -996,7 +1127,12 @@ class Pachuli:
             self._fetch_or_clone(pkg, pkg_dir)
 
             if not (pkg_dir / "PKGBUILD").is_file():
-                die(f"{pkg_dir} does not contain a PKGBUILD or it is not accessible")
+                # Das AUR liefert beim Klonen eines unbekannten Namens ein
+                # leeres Repo statt eines Fehlers. Dieses Wrack nicht
+                # liegen lassen, sonst scheitert schon der nächste Lauf daran.
+                shutil.rmtree(pkg_dir, ignore_errors=True)
+                die(f"'{pkg}' hat im AUR kein PKGBUILD (Name unbekannt oder "
+                    f"Teilpaket ohne eigenes Repo)")
 
             self._verify_pkgbuild_identity(pkg, pkg_dir)
 
@@ -1007,7 +1143,10 @@ class Pachuli:
                     shutil.rmtree(pkg_dir, ignore_errors=True)
                     return False
 
-            return self.build(pkg)
+            ok = self.build(pkg, defer=defer)
+            if ok:
+                self._built_bases.add(pkg)
+            return ok
         finally:
             self._build_stack.remove(pkg)
 
@@ -1110,6 +1249,97 @@ class Pachuli:
                         selected.append(entry.get("Name", ""))
         return selected
 
+    # -- Repo-Upgrade mit Konfliktbehandlung --------------------------------
+
+    _CONFLICT_RE = re.compile(
+        r"^:: (\S+) and (\S+) are in conflict(?:\. Remove (\S+)\?)?", re.M)
+    _NAME_VER_RE = re.compile(r"^(\S+)-(?:\d+:)?[^-\s]+-[^-\s]+$")
+
+    def _strip_version(self, name_ver: str) -> str:
+        """'plasma-x11-session-6.7.5-3' -> 'plasma-x11-session'."""
+        m = self._NAME_VER_RE.match(name_ver)
+        return m.group(1) if m else name_ver
+
+    def _find_repo_conflicts(self) -> list[tuple[str, str]]:
+        """Ermittelt per Trockenlauf (`pacman -Su --print`, ohne Root, mit
+        LC_ALL=C damit die Meldungen sprachunabhängig sind) die Paare
+        (neues Paket, installiertes Paket, das entfernt werden müsste),
+        die ein Upgrade blockieren. Leere Liste = kein Paketkonflikt."""
+        env = dict(os.environ, LC_ALL="C", LANG="C")
+        try:
+            res = subprocess.run(
+                ["pacman", "-Su", "--print", "--noconfirm"],
+                capture_output=True, text=True, stdin=subprocess.DEVNULL,
+                env=env, timeout=120,
+            )
+        except (OSError, subprocess.SubprocessError):
+            return []
+        text = (res.stdout or "") + "\n" + (res.stderr or "")
+        conflicts: list[tuple[str, str]] = []
+        for m in self._CONFLICT_RE.finditer(text):
+            new_pkg = self._strip_version(m.group(1))
+            # pacman nennt in der Frage "Remove X?" genau das installierte
+            # Paket, das entfernt werden muss; sonst das zweite der Paar.
+            old_pkg = m.group(3) or self._strip_version(m.group(2))
+            if (new_pkg, old_pkg) not in conflicts:
+                conflicts.append((new_pkg, old_pkg))
+        return conflicts
+
+    def _removal_is_safe(self, pkg: str) -> bool:
+        """True, wenn pacman `pkg` ohne Abhängigkeitsbruch entfernen könnte
+        (Simulation via `pacman -Rp`; installiert muss es außerdem sein)."""
+        if subprocess.run(["pacman", "-Qq", pkg], capture_output=True).returncode != 0:
+            return False
+        res = subprocess.run(["pacman", "-Rp", pkg], capture_output=True,
+                             stdin=subprocess.DEVNULL)
+        return res.returncode == 0
+
+    def _repo_upgrade(self, sync_flags: str) -> None:
+        """Führt `pacman <sync_flags>` aus und bricht bei Fehlschlag ab.
+
+        Bisher wurde der Exit-Code ignoriert: Scheiterte pacman (z. B. an
+        einem Paketkonflikt wie plasma-workspace <-> plasma-x11-session
+        bei Plasma 6.8), lief pachuli weiter und meldete am Ende Erfolg.
+        Jetzt: Fehlschlag -> Konflikte erkennen, den Nutzer fragen (bzw.
+        bei --noconfirm automatisch, aber nur wenn das Entfernen sicher
+        ist) und das Upgrade danach wiederholen. Alles andere -> Abbruch
+        mit Exit-Code != 0, damit Aufrufer (auch Pachul) den Fehler sehen.
+        """
+        base = ["pacman", sync_flags] + (["--noconfirm"] if self.opts.noconfirm else [])
+        result = escalate(base, self.opts)
+        if result.returncode == 0:
+            return
+
+        # Nach dem ersten Versuch sind die Datenbanken bereits synchron;
+        # für Wiederholungen genügt -Su (spart einen weiteren Sync).
+        retry_flags = "-Su"
+        retry = ["pacman", retry_flags] + (["--noconfirm"] if self.opts.noconfirm else [])
+
+        for _ in range(5):  # Schutz vor Endlosschleifen
+            conflicts = self._find_repo_conflicts()
+            if not conflicts:
+                break
+            msg("Paketkonflikt blockiert das System-Upgrade:", Colors.YELLOW, self.opts.quiet)
+            to_remove: list[str] = []
+            for new_pkg, old_pkg in conflicts:
+                print(f"   {Colors.BOLD}{new_pkg}{Colors.RESET} (neu) steht in Konflikt mit "
+                      f"{Colors.BOLD}{old_pkg}{Colors.RESET} (installiert)")
+                if not self._removal_is_safe(old_pkg):
+                    die(f"'{old_pkg}' kann nicht automatisch entfernt werden "
+                        f"(wird von anderen Paketen benötigt). Bitte manuell auflösen: "
+                        f"pacman -Rns {old_pkg}")
+                if yesno(f"'{old_pkg}' entfernen, damit '{new_pkg}' installiert werden kann",
+                         self.opts.noconfirm):
+                    to_remove.append(old_pkg)
+                else:
+                    die("Upgrade abgebrochen (Konflikt nicht aufgelöst)")
+            rm_cmd = ["pacman", "-Rns"] + (["--noconfirm"] if self.opts.noconfirm else []) + to_remove
+            if escalate(rm_cmd, self.opts).returncode != 0:
+                die(f"Entfernen von {', '.join(to_remove)} fehlgeschlagen")
+            if escalate(retry, self.opts).returncode == 0:
+                return
+        die("Repo-Upgrade (pacman) fehlgeschlagen - siehe Ausgabe oben", result.returncode or 1)
+
     # -- Update -----------------------------------------------------------
 
     def update(self, packages: list[str], count_only: bool = False) -> None:
@@ -1136,7 +1366,7 @@ class Pachuli:
                 if not count_only:
                     sync_flags = self.opts.sync_flags(upgrade=True)
                     if sync_flags:
-                        escalate(["pacman", sync_flags] + (["--noconfirm"] if self.opts.noconfirm else []), self.opts)
+                        self._repo_upgrade(sync_flags)
                 if count_only:
                     if self.opts.quiet:
                         print(f"0 {self._checkupdates_count()}")
@@ -1162,12 +1392,13 @@ class Pachuli:
             # es (wie berichtet) gar keine pkexec-Abfrage.
             sync_flags = self.opts.sync_flags(upgrade=True)
             if sync_flags:
-                escalate(["pacman", sync_flags] + (["--noconfirm"] if self.opts.noconfirm else []), self.opts)
+                self._repo_upgrade(sync_flags)
 
         msg("Synchronizing AUR package versions...", Colors.BLUE, self.opts.quiet or count_only)
 
         old_versions = self._installed_versions(aur_pkgs)
-        new_versions = {entry["Name"]: entry.get("Version", "") for entry in self.aur.info(aur_pkgs)}
+        entries = {entry["Name"]: entry for entry in self.aur.info(aur_pkgs)}
+        new_versions = {name: e.get("Version", "") for name, e in entries.items()}
 
         upgradable = []
         for pkg in aur_pkgs:
@@ -1220,12 +1451,41 @@ class Pachuli:
             print(f"\n{Colors.BOLD}Packages ({len(upgradable) + len(devel_pkgs)}){Colors.RESET} {names}\n")
             if yesno("Proceed with package upgrade", self.opts.noconfirm):
                 failed = []
-                for pkg, _ in upgradable:
-                    if not self.get(pkg):
+                # Reihenfolge: Pakete, die eine neuere Version eines anderen
+                # Pakets aus DIESEM Lauf brauchen, kommen erst danach dran;
+                # das benötigte Paket wird sofort installiert. Alle übrigen
+                # werden nur gebaut und am Ende in EINEM pacman -U
+                # installiert (eine Passwortabfrage statt einer pro Paket).
+                order, immediate = self._plan_upgrade_order(upgradable, entries)
+                for pkg in order:
+                    defer = self._base_of(pkg, entries) not in immediate
+                    if not self._get_safely(pkg, defer=defer):
                         failed.append(pkg)
                 for pkg in devel_pkgs:
-                    if not self.get(pkg):
+                    if not self._get_safely(pkg, defer=True):
                         failed.append(pkg)
+                failed_bases = self._install_deferred()
+                if failed_bases:
+                    for pkg in [p for p, _ in upgradable] + devel_pkgs:
+                        if (self._base_of(pkg, entries) in failed_bases
+                                and pkg not in failed):
+                            failed.append(pkg)
+                if failed:
+                    # Nachprüfen, was wirklich schiefging: Hat ein Paket
+                    # trotz gemeldetem Fehler (z.B. ein Teilschritt im Build)
+                    # die Zielversion erhalten, ist das kein Fehlschlag.
+                    targets = dict(upgradable)
+                    installed_now = self._installed_versions(failed)
+                    really_failed = []
+                    for p in failed:
+                        want, have = targets.get(p), installed_now.get(p)
+                        if want and have and vercmp(have, want) >= 0:
+                            msg(f"'{p}' meldete einen Fehler, ist aber in Version "
+                                f"{have} installiert — wird nicht als Fehlschlag gewertet",
+                                Colors.YELLOW, self.opts.quiet)
+                        else:
+                            really_failed.append(p)
+                    failed = really_failed
                 if failed:
                     # Bisher wurde hier jeder Rückgabewert von self.get()
                     # verworfen — ein fehlgeschlagenes Paket (siehe build()
@@ -1238,6 +1498,134 @@ class Pachuli:
                         f"werden: {', '.join(failed)}")
 
         self.opts.noview = noview_prev
+
+    def _get_safely(self, pkg: str, defer: bool = False) -> bool:
+        """get() für Sammel-Updates: Ein harter Fehler (die/PachuliError) bei
+        EINEM Paket soll nicht die übrigen Pakete des Laufs verhindern."""
+        try:
+            return self.get(pkg, defer=defer)
+        except PachuliError:
+            return False   # die() hat die Meldung bereits ausgegeben
+
+    def _base_of(self, pkg: str, entries: dict[str, dict]) -> str:
+        e = entries.get(pkg)
+        if e and e.get("PackageBase"):
+            return e["PackageBase"]
+        return self.aur.package_base(pkg)
+
+    def _plan_upgrade_order(self, upgradable: list[tuple[str, str]],
+                            entries: dict[str, dict]) -> tuple[list[str], set[str]]:
+        """Bestimmt die Bau-Reihenfolge eines Sammel-Updates.
+
+        Erkennt, wenn ein zu aktualisierendes Paket P (Depends, MakeDepends,
+        CheckDepends) etwas braucht, das mit dem INSTALLIERTEN Stand nicht
+        erfüllt ist, aber durch die neue Version eines anderen Pakets Q aus
+        demselben Lauf erfüllt wird (z.B. 'Q>=2.0' bei installiertem Q 1.9).
+        Dann muss Q vor dem Bauen von P schon installiert sein.
+
+        Rückgabe: (Paketnamen in Bau-Reihenfolge, Menge der Paketbasen, die
+        sofort statt gesammelt installiert werden müssen). Zyklen werden
+        aufgelöst, indem die zyklische Kante ignoriert wird."""
+        names = [p for p, _ in upgradable]
+        new_v = dict(upgradable)
+        base_of = {n: self._base_of(n, entries) for n in names}
+
+        # Wer kann welchen Namen bereitstellen (eigener Name + Provides)?
+        providers: dict[str, list[tuple[str, str | None]]] = {}
+        for n in names:
+            providers.setdefault(n, []).append((n, new_v[n]))
+            for prov in entries.get(n, {}).get("Provides") or []:
+                pname, op, pver = parse_dep(prov)
+                providers.setdefault(pname, []).append((n, pver if op == "=" else None))
+
+        prereqs: dict[str, set[str]] = {b: set() for b in base_of.values()}
+        for n in names:
+            e = entries.get(n, {})
+            deps = [d for key in ("Depends", "MakeDepends", "CheckDepends")
+                    for d in (e.get(key) or [])]
+            if not deps:
+                continue
+            try:
+                # `pacman -T` listet genau die Abhängigkeiten, die der
+                # aktuell installierte Stand NICHT erfüllt.
+                out = subprocess.run(["pacman", "-T", *deps],
+                                     capture_output=True, text=True).stdout
+            except OSError:
+                continue
+            for line in out.splitlines():
+                dname, op, dver = parse_dep(line)
+                for q, qver in providers.get(dname, []):
+                    if base_of[q] != base_of[n] and dep_satisfied_by(op, dver, qver):
+                        prereqs[base_of[n]].add(base_of[q])
+
+        # Topologische Sortierung (Voraussetzungen zuerst), Reihenfolge sonst
+        # wie in `upgradable`.
+        ordered_bases: list[str] = []
+        state: dict[str, int] = {}   # 1 = in Arbeit, 2 = fertig
+
+        def visit(base: str) -> None:
+            if state.get(base):
+                return           # fertig oder Zyklus -> Kante ignorieren
+            state[base] = 1
+            for dep in sorted(prereqs.get(base, ())):
+                visit(dep)
+            state[base] = 2
+            ordered_bases.append(base)
+
+        for n in names:
+            visit(base_of[n])
+
+        order = [n for b in ordered_bases for n in names if base_of[n] == b]
+        immediate = {b for deps in prereqs.values() for b in deps}
+        if immediate:
+            msg("Reihenfolge angepasst: " + ", ".join(sorted(immediate))
+                + " wird vor den davon abhängigen Paketen installiert",
+                Colors.YELLOW, self.opts.quiet)
+        return order, immediate
+
+    def _install_deferred(self) -> list[str]:
+        """Installiert alle gesammelten, fertig gebauten Pakete mit EINEM
+        `pacman -U`. Schlägt das fehl (z.B. ein Konflikt bei einem Paket),
+        werden sie einzeln versucht, damit ein Problem nicht alle blockiert.
+        Gibt die Paketbasen zurück, die nicht installiert werden konnten."""
+        items, self._deferred = self._deferred, []
+        if not items:
+            return []
+
+        def cmd_for(files: list[Path]) -> list[str]:
+            cmd = ["pacman", "-U", *[str(p) for p in files], "--needed"]
+            if self.opts.noconfirm:
+                cmd.append("--noconfirm")
+            return cmd
+
+        def cleanup(pkg_dir: Path) -> None:
+            for tarball in pkg_dir.glob("*.tar.*"):
+                tarball.unlink(missing_ok=True)
+
+        all_files = [f for _, files, _ in items for f in files]
+        msg(f"Installiere {len(items)} gebaute Paket(e) gemeinsam...",
+            Colors.BLUE, self.opts.quiet)
+        if escalate(cmd_for(all_files), self.opts).returncode == 0:
+            for _, _, pkg_dir in items:
+                cleanup(pkg_dir)
+            return []
+
+        msg("Gesammelte Installation fehlgeschlagen, installiere die Pakete "
+            "einzeln...", Colors.YELLOW, self.opts.quiet)
+        failed: list[str] = []
+        for base, files, pkg_dir in items:
+            cmd = cmd_for(files)
+            result = escalate(cmd, self.opts)
+            if result.returncode != 0:
+                print(f"{Colors.RED}error:{Colors.RESET} Installation von "
+                      f"'{base}' fehlgeschlagen (pacman -U, Exit-Code "
+                      f"{result.returncode})", file=sys.stderr)
+                log_failed_build(base, cmd)
+                self._built_bases.discard(base)
+                failed.append(base)
+            else:
+                cleanup(pkg_dir)
+        return failed
 
     def _installed_versions(self, pkgs: list[str]) -> dict[str, str]:
         result = subprocess.run(["pacman", "-Q", *pkgs], capture_output=True, text=True)
@@ -1314,10 +1702,11 @@ class Pachuli:
 
             # Flags richten sich pacman-treu nach dem angegebenen y-Level
             # (siehe Options.sync_flags): ohne -Sy/-Syy wird die Paket-
-            # datenbank nicht zwangsweise neu geladen, es wird aber (wie
-            # bisher) zusammen mit den Zielpaketen ein voller Upgrade
-            # durchgeführt (`u`-Teil bleibt immer aktiv bei --install).
-            cmd = ["pacman", self.opts.sync_flags(upgrade=True), *needed_ok, "--needed"]
+            # datenbank nicht neu geladen. Eine reine Installation (-S)
+            # führt bewusst KEIN System-Upgrade durch (kein 'u'-Flag) -
+            # dafür sind -Su/-Syu/-Syyu da. sync_flags() liefert bei
+            # refresh=0 ohne Upgrade None, daher Fallback auf plain "-S".
+            cmd = ["pacman", self.opts.sync_flags(upgrade=False) or "-S", *needed_ok, "--needed"]
             if self.opts.debug:
                 print(f"# debug: cmd={cmd}", file=sys.stderr)
             if self.opts.noconfirm:
@@ -1476,6 +1865,7 @@ class Pachuli:
         bei -Scc ausnahmslos alle. Mit -a/--aur-only wird der pacman-eigene
         Paket-Cache nicht angefasst, nur der pachuli-Build-Cache."""
         if not self.opts.auronly:
+            _clean_stale_download_dirs(self.opts)
             flags = "-Scc" if force else "-Sc"
             cmd = ["pacman", flags]
             if self.opts.noconfirm:

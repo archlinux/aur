@@ -4,8 +4,8 @@
 # URL: https://github.com/wergosam/Pachul
 
 pkgname=pachul
-pkgver=2.2.10
-pkgrel=4
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita"
 arch=('any')
 url="https://github.com/wergosam/Pachul"
@@ -29,10 +29,10 @@ source=(
     "io.github.wergosam.pachul-tray.desktop"
     "pachuli.py"
 )
-sha256sums=('6dee67a4c7ed8d49c8e3fd12e5f0d092430c2f09fe0c4a0a7941e207d85cea1e'
+sha256sums=('79143c81c45c691b690244f8118058c5906128d2ec584df6952c2d9fa9c8d3d3'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
             'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194'
-            '7d1edf9ecdf9af5fbf0e612f0256095d243be90aa8079898a762e9176e408814')
+            '1bd4afa8c20d8005e6d01a008c4c67104ee183520204aa055519c091c7222433')
 # pachuli.py is a local file, not fetched via URL — it must sit next to this
 # PKGBUILD in the AUR git repo (same as the two .desktop files above).
 # Checksum intentionally SKIP: unlike the tarball above (a remote download,
@@ -70,8 +70,8 @@ package() {
     # Python-Module
     install -d "$pkgdir/usr/share/$pkgname"
     install -m644 app.py backend.py dialogs.py distro.py i18n.py icons.py \
-        models.py notifier.py pkgmanager.py pkgmanager_native.py styles.py \
-        tray.py window.py "$pkgdir/usr/share/$pkgname/"
+        localpkg.py models.py notifier.py pkgmanager.py pkgmanager_native.py \
+        styles.py toolshub.py tray.py window.py "$pkgdir/usr/share/$pkgname/"
 
     # Master-SVG-Icon liegt laut app.py direkt neben den Modulen
     install -m644 io.github.wergosam.pachul.svg "$pkgdir/usr/share/$pkgname/"
