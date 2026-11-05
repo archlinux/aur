@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=2.4.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
@@ -17,10 +17,10 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
 provides=('wingdrive')
 conflicts=('wingdrive')
 options=('!strip' '!debug')
-_upstream_version=2.4.1
-source=("WingDrive-2.4.1-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-2.4.1-x86_64.AppImage"
+_upstream_version=3.0.0
+source=("WingDrive-3.0.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.0.0-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('1be70618c8741e98864e84c65ea18645dcde0d8cff0e74546cb5ed000d21f056' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('e09fe04ae2e8f1d7de9da2abbb2842c8525002e51e8a619be4942a37f3f9f9d1' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -29,8 +29,8 @@ sha256sums=('1be70618c8741e98864e84c65ea18645dcde0d8cff0e74546cb5ed000d21f056' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-2.4.1-x86_64.AppImage"
-  "./WingDrive-2.4.1-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-3.0.0-x86_64.AppImage"
+  "./WingDrive-3.0.0-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
@@ -70,13 +70,11 @@ StartupWMClass=WingDrive
 Categories=System;FileTools;FileManager;
 Keywords=files;folders;file manager;explorer;browser;
 MimeType=inode/directory;application/x-wingdrive-memory;
+X-GNOME-UsesNotifications=true
 DESKTOP
-  # Starts WingDrive hidden when an app reveals a file while it is not running.
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/dbus-1/services/com.wingdrive.FileManager1.service" <<'DBUS'
-[D-BUS Service]
-Name=org.freedesktop.FileManager1
-Exec=/usr/bin/wingdrive --hidden
-DBUS
+  # No D-Bus activation file for org.freedesktop.FileManager1: the name
+  # belongs to the user's default file manager. WingDrive claims it at runtime
+  # only when it is the default for inode/directory (filemanager1.rs).
   if [[ -d squashfs-root/usr/share/icons ]]; then
     install -d "$pkgdir/usr/share/icons"
     cp -a squashfs-root/usr/share/icons/. "$pkgdir/usr/share/icons/"
