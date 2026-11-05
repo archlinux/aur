@@ -26,9 +26,33 @@ sha256sums=('9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd' '
 # NERD_PATCH=true needs static fonts (font-patcher destroys variable axes), so
 # it implies FONT_TYPE=otf. Everything else is asked by fonttune in prepare().
 
+# Local fonttune, uncommitted edits included: `/path/to/fonttune/bin/fonttune dev on`
+# (once; `dev off` undoes it) or FONTTUNE_DEV=/path/to/fonttune for one build
+# (FONTTUNE_DEV=off ignores the saved one). The tree is copied to
+# $srcdir/fonttune-local; the git source and .SRCINFO stay as they are.
+_ft() { if [[ -d "$srcdir/fonttune-local" ]]; then echo "$srcdir/fonttune-local"; else echo "$srcdir/fonttune"; fi; }
+
+_ft_local() {  # in prepare(): pick the local tree, if one is set
+  local _dev=${FONTTUNE_DEV-} _cf=${XDG_CONFIG_HOME:-$HOME/.config}/fonttune/dev
+  if [[ -z ${FONTTUNE_DEV+x} && -r "$_cf" ]]; then _dev=$(<"$_cf"); fi
+  rm -rf "$srcdir/fonttune-local"
+  if [[ -z "$_dev" || "$_dev" == off ]]; then return 0; fi
+  if [[ ! -f "$_dev/fonttune/__init__.py" ]]; then
+    echo "Error: local fonttune '$_dev' (FONTTUNE_DEV or $_cf) is not a fonttune tree." >&2
+    exit 1
+  fi
+  mkdir "$srcdir/fonttune-local"
+  tar -C "$_dev" --exclude=.git --exclude=__pycache__ -cf - . | tar -C "$srcdir/fonttune-local" -xf -
+  echo "local:$(git -C "$_dev" describe --always --dirty 2>/dev/null || echo "$_dev")" \
+    > "$srcdir/fonttune-local/.rev"
+  echo "==> fonttune: LOCAL tree $_dev ($(<"$srcdir/fonttune-local/.rev"))" >&2
+}
+
+_ft_rev() { cat "$(_ft)/.rev" 2>/dev/null || git -C "$srcdir/fonttune" describe --always --dirty 2>/dev/null; }
+
 _check_fonttune() {
   local _api
-  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$srcdir/fonttune/fonttune/__init__.py")
+  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$(_ft)/fonttune/__init__.py")
   if [[ "$_api" != "$_ftapi" ]]; then
     echo "Error: fonttune API is '${_api:-?}', this PKGBUILD expects $_ftapi." >&2
     echo "       Update the PKGBUILD or pin FONTTUNE_REF=tag=<last-good>." >&2
@@ -37,6 +61,7 @@ _check_fonttune() {
 }
 
 prepare() {
+  _ft_local
   _check_fonttune
   if [[ -z "${NERD_PATCH:-}" && -t 0 ]]; then
     local _a
@@ -66,7 +91,7 @@ prepare() {
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-$_nfver.zip" -C "$srcdir/font-patcher"
   fi
-  python "$srcdir/fonttune/bin/fonttune" configure --defaults clean \
+  python "$(_ft)/bin/fonttune" configure --defaults clean \
     --save-to "$srcdir/fonttune.toml" "$srcdir/selected/"*
 }
 
@@ -80,10 +105,10 @@ build() {
       parallel --will-cite -0 -j"$(nproc)" python "$srcdir/font-patcher/font-patcher" \
         --variable-width-glyphs -q -c {} -out "$srcdir/patched" '>/dev/null'
     compgen -G "$srcdir/patched/*.otf" >/dev/null || { echo "Error: font-patcher produced no output." >&2; exit 1; }
-    parallel --will-cite -j"$(nproc)" python "$srcdir/fonttune/fonttune/steps/fix_names.py" ::: "$srcdir/patched/"*.otf
+    parallel --will-cite -j"$(nproc)" python "$(_ft)/fonttune/steps/fix_names.py" ::: "$srcdir/patched/"*.otf
     _src="$srcdir/patched"
   fi
-  python "$srcdir/fonttune/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
+  python "$(_ft)/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
     --fonts-conf "${RAVEO_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}" \
     --features-match '^Raveo' "$_src/"*
   echo "$_src" > "$srcdir/.out"
@@ -99,12 +124,12 @@ package() {
   compgen -G "$_fontdir/*" >/dev/null || { echo "Error: no fonts installed from $_src." >&2; exit 1; }
   install -Dm644 "$srcdir/raveo/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
   install -d "$pkgdir/usr/share/doc/$pkgname"
-  git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
+  _ft_rev > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
   install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
 
   if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
     install -d "$pkgdir/usr/share/fontconfig/conf.avail"
-    python "$srcdir/fonttune/bin/fonttune" hintconf --name "$pkgname" \
+    python "$(_ft)/bin/fonttune" hintconf --name "$pkgname" \
       -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" "$_fontdir/"*.ttf
     chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
   fi
