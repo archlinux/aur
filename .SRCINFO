@@ -1,6 +1,6 @@
 pkgbase = colloid-gtk-theme-fixed-git
 	pkgdesc = Colloid GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
-	pkgver = 2026.08.08.r3.gfe11342.f7.0c09bae
+	pkgver = 2026.08.08.r3.gfe11342.f22.e66e55b
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Colloid-gtk-theme
 	install = colloid-gtk-theme-fixed.install

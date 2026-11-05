@@ -9,7 +9,7 @@ pkgname=('colloid-gtk-theme-fixed-git'
         'colloid-nord-gtk-theme-fixed-git')
 _name=colloid-gtk-theme
 _fixes=colloid
-pkgver=2026.08.08.r3.gfe11342.f7.0c09bae
+pkgver=2026.08.08.r3.gfe11342.f22.e66e55b
 pkgrel=1
 pkgdesc="Colloid GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)"
 arch=('any')
@@ -76,6 +76,7 @@ prepare() {
   local sass=src/sass
   cp "$fx/generic/fixes-3.0.scss" "$sass/_fixes-3.0.scss"
   cp "$fx/generic/fixes-4.0.scss" "$sass/_fixes-4.0.scss"
+  cp "$fx/${_fixes}/local-fixes-3.0.scss" "$sass/_local-fixes-3.0.scss"
   cp "$fx/${_fixes}/local-fixes-4.0.scss" "$sass/_local-fixes-4.0.scss"
   cp "$fx/${_fixes}/fixes-variables.scss" "$sass/_fixes-variables.scss"
 
@@ -85,6 +86,7 @@ prepare() {
   for f in src/main/gtk-3.0/*.scss; do
     sed -i "$(awk 'END { print NR - 1 }' "$f") a @import '../../sass/fixes-3.0';" "$f"
     sed -i "$(awk 'END { print NR - 6 }' "$f") a @import '../../sass/fixes-variables';" "$f"
+    sed -i "$(awk 'END { print NR - 1 }' "$f") a @import '../../sass/local-fixes-3.0';" "$f"
   done
   for f in src/main/gtk-4.0/*.scss; do
     sed -i "$(awk 'END { print NR - 1 }' "$f") a @import '../../sass/fixes-4.0';" "$f"
@@ -93,13 +95,13 @@ prepare() {
   done
 }
 
-# floating panels, no window border, normal (non-macOS) window buttons
+# floating panels, no window border, macOS-style window buttons (upstream default)
 _colloid() {
   cd "${_name}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d "${pkgdir}/usr/share/themes"
   # TERM: install.sh draws a spinner with tput, which fails without one (clean chroots)
-  TERM=${TERM:-dumb} ./install.sh -t all --tweaks "$@" float rimless normal -d "${pkgdir}/usr/share/themes"
+  TERM=${TERM:-dumb} ./install.sh -t all --tweaks "$@" float rimless -d "${pkgdir}/usr/share/themes"
 }
 
 package_colloid-gtk-theme-fixed-git() {
