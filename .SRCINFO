@@ -1,6 +1,6 @@
 pkgbase = requesto-bin
 	pkgdesc = A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry.
-	pkgver = 1.12.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://requesto.com.au/
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = requesto-bin
 	depends = nodejs
 	depends = libappindicator
 	depends = libayatana-appindicator
-	provides = requesto=1.12.2
+	provides = requesto=1.13.0
 	conflicts = requesto
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-1.12.2::https://raw.githubusercontent.com/t3rr11/Requesto/v1.12.2/LICENSE
+	source = LICENSE-1.13.0::https://raw.githubusercontent.com/t3rr11/Requesto/v1.13.0/LICENSE
 	source = requesto.js
 	source = requesto.sh
 	sha256sums = baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = 0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328
-	source_x86_64 = requesto-1.12.2-x86_64.deb::https://github.com/t3rr11/Requesto/releases/download/v1.12.2/requesto-electron_1.12.2_amd64.deb
-	sha256sums_x86_64 = 3a72e419fc158b114cd83c00d5eda4e7e432c99ca974fcc82f665f5a0506e508
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	source_x86_64 = requesto-1.13.0-x86_64.deb::https://github.com/t3rr11/Requesto/releases/download/v1.13.0/requesto-electron_1.13.0_amd64.deb
+	sha256sums_x86_64 = 52bea8f6c8402942b3d26b61b438fc92811e879ede69ce4a8010e324ddd8c5d7
 
 pkgname = requesto-bin
