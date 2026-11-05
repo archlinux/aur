@@ -15,7 +15,7 @@
 # 0.1.0 (vercmp).
 
 pkgbase=vtium
-pkgname=('vtium')
+pkgname=vtium
 _tag=v0.1.0-alpha.5
 pkgver=0.1.0alpha.5
 pkgrel=2
@@ -78,7 +78,7 @@ prepare() {
 #     settings below stay those of the default build.
 #   - HWACCEL=off and DISPLAY_BUFFERS=3, the defaults the console and
 #     vtium-config read for hwaccel and display-buffers (ADR-1500 D8). The
-#     console draws on the CPU until hwaccel = on in /etc/vtium/vtium.conf
+#     console draws on the CPU until a line hwaccel in /etc/vtium/vtium.conf
 #     turns the GPU path on, and keeps three buffers for each display.
 #   - FRITS, the frits make install stages into /etc/vtium/fonts, which each
 #     console package's backup list names.
