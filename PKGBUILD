@@ -1,7 +1,7 @@
 # Maintainer: Alexeyev Vitaly <vitamindbnfkz@gmail.com>
 pkgname=linux-legion
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Control center for Lenovo Legion laptops: power modes, fans, Spectrum RGB lighting, battery (Vantage for Linux)"
 arch=('x86_64')
 url="https://github.com/VitaminDB/linux-legion"
@@ -11,11 +11,15 @@ optdepends=('libx11: X11 session' 'libxcursor: cursors in X11' 'nvidia-utils: NV
 makedepends=('cargo' 'git')
 options=('!lto' '!debug')
 install=linux-legion.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d2221a248f92f2e6f8f3f5939ca59b6a4e557ace6554a7a3438d6afe79a5bd3')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        "hide-empty-tunables.patch")
+sha256sums=('4d2221a248f92f2e6f8f3f5939ca59b6a4e557ace6554a7a3438d6afe79a5bd3'
+            '26aeea086f8806453b2d8dfdce848717212a1aade6cd4d3f0e4a4a86975692d1')
 
 prepare() {
     cd "$pkgname-$pkgver"
+    # 0.1.4-2: скрыть атрибуты прошивки с пустым диапазоном (0–0); «Максимум» их не трогает
+    patch -Np1 -i "$srcdir/hide-empty-tunables.patch"
     export RUSTUP_TOOLCHAIN=stable
     # syngui — git-зависимость; коммит закреплён в Cargo.lock
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"

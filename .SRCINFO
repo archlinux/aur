@@ -1,7 +1,7 @@
 pkgbase = linux-legion
 	pkgdesc = Control center for Lenovo Legion laptops: power modes, fans, Spectrum RGB lighting, battery (Vantage for Linux)
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VitaminDB/linux-legion
 	install = linux-legion.install
 	arch = x86_64
@@ -22,6 +22,8 @@ pkgbase = linux-legion
 	options = !lto
 	options = !debug
 	source = linux-legion-0.1.4.tar.gz::https://github.com/VitaminDB/linux-legion/archive/refs/tags/v0.1.4.tar.gz
+	source = hide-empty-tunables.patch
 	sha256sums = 4d2221a248f92f2e6f8f3f5939ca59b6a4e557ace6554a7a3438d6afe79a5bd3
+	sha256sums = 26aeea086f8806453b2d8dfdce848717212a1aade6cd4d3f0e4a4a86975692d1
 
 pkgname = linux-legion
