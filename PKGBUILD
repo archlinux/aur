@@ -64,10 +64,12 @@ prepare() {
     git submodule init "$_submodule"
     git config "submodule.$_submodule.url" "$srcdir/${_submodules[$_submodule]}"
   done
-  git -c protocol.file.allow=always submodule update "${!_submodules[@]}"
+  # --force: on a rebuild makepkg only resets the main checkout, the submodules would keep the
+  # previous build's changes
+  git -c protocol.file.allow=always submodule update --force "${!_submodules[@]}"
   git -C third_party/khook submodule init third_party/safetyhook
   git -C third_party/khook config submodule.third_party/safetyhook.url "$srcdir/safetyhook"
-  git -C third_party/khook -c protocol.file.allow=always submodule update third_party/safetyhook
+  git -C third_party/khook -c protocol.file.allow=always submodule update --force third_party/safetyhook
 
   # The loader's tests with KHook's headers, which the loader's sources include, like the loader
   patch -Np1 -i "$srcdir/loader-test-khook.patch"
@@ -78,7 +80,7 @@ prepare() {
   cd "$srcdir/zydis" || exit
   git submodule init dependencies/zycore
   git config submodule.dependencies/zycore.url "$srcdir/zycore-c"
-  git -c protocol.file.allow=always submodule update dependencies/zycore
+  git -c protocol.file.allow=always submodule update --force dependencies/zycore
   python assets/amalgamate.py >/dev/null
   local _zydis="$srcdir/$_name/third_party/khook/third_party/safetyhook/zydis"
   grep -q '^#define ZYDIS_STATIC_BUILD$' "$_zydis/Zydis.h" || exit
