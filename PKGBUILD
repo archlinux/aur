@@ -3,8 +3,8 @@
 # Repository: https://github.com/minpeter/aur-epic-games-launcher-bin
 
 pkgname=epic-games-launcher-bin
-pkgver=0.110.0
-_commit=gf2e5ba5
+pkgver=0.111.0
+_commit=g3921dcd
 pkgrel=1
 pkgdesc="Official Epic Games Store launcher (Preview)"
 arch=('x86_64')
@@ -28,30 +28,33 @@ optdepends=(
   'libsecret: store authentication tokens in the system keyring'
   'xdg-utils: open external links in the default browser'
 )
-makedepends=('7zip')
 provides=("epic-games-launcher=${pkgver}")
 conflicts=('epic-games-launcher')
 options=('!debug' '!strip')
 
-_appimage="EpicGamesLauncher-${pkgver}-${_commit}-x86_64.AppImage"
-source=("${_appimage}::https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${pkgver}%2B${_commit}/Linux/EpicGamesLauncher-x86_64.AppImage")
-noextract=("${_appimage}")
-sha256sums=('53bbd1242e095f609963280ef132158115442ab719ba45785c5a93eafaa95c40')
+_deb="EpicGamesLauncher-${pkgver}-${_commit}-x86_64.deb"
+source=("${_deb}::https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${pkgver}%2B${_commit}/Linux/EpicGamesLauncher-x86_64.deb")
+noextract=("${_deb}")
+sha256sums=('0e01451883060f0b6028d311163ebd9f938d80ffb49f9720603ea6cc7aba666c')
 
 prepare() {
-  rm -rf "${srcdir}/squashfs-root"
-  7z x "${srcdir}/${_appimage}" -o"${srcdir}/squashfs-root" >/dev/null
+  rm -rf "${srcdir}/deb"
+  mkdir -p "${srcdir}/deb/data"
+  bsdtar -xf "${srcdir}/${_deb}" -C "${srcdir}/deb"
+  bsdtar -xf "${srcdir}"/deb/data.tar.* -C "${srcdir}/deb/data"
 }
 
 package() {
-  cd "${srcdir}/squashfs-root"
+  cd "${srcdir}/deb/data"
 
   install -Dm755 usr/bin/EpicGamesLauncher \
     "${pkgdir}/usr/lib/epic-games-launcher/bin/EpicGamesLauncher"
-  install -Dm755 usr/lib/libEOSSDK-Linux-Shipping.so \
-    "${pkgdir}/usr/lib/epic-games-launcher/lib/libEOSSDK-Linux-Shipping.so"
+  install -Dm755 usr/lib/epic-games-launcher/libEOSSDK-Linux-Shipping.so \
+    "${pkgdir}/usr/lib/epic-games-launcher/libEOSSDK-Linux-Shipping.so"
   install -Dm644 usr/lib/epic-games-launcher/resources/ThirdPartyNotices.txt \
     "${pkgdir}/usr/lib/epic-games-launcher/resources/ThirdPartyNotices.txt"
+  # RUNPATH $ORIGIN/../lib/epic-games-launcher resolves to the package root.
+  install -dm755 "${pkgdir}/usr/lib/epic-games-launcher/lib"
   ln -s .. "${pkgdir}/usr/lib/epic-games-launcher/lib/epic-games-launcher"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/EpicGamesLauncher" <<'EOF'
@@ -68,8 +71,6 @@ EOF
     "${pkgdir}/usr/share/icons/hicolor/32x32/apps/EpicGamesLauncher.png"
   install -Dm644 usr/share/icons/hicolor/128x128/apps/EpicGamesLauncher.png \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/EpicGamesLauncher.png"
-  install -Dm644 epic-games-launcher.png \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/EpicGamesLauncher.png"
   install -Dm644 usr/share/icons/hicolor/256x256@2/apps/EpicGamesLauncher.png \
     "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/EpicGamesLauncher.png"
 
