@@ -2,7 +2,7 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastytrade
-pkgver=0.59.0
+pkgver=0.73.0
 pkgrel=2
 epoch=1
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
@@ -19,7 +19,7 @@ optdepends=('libappindicator-gtk3: tray icon'
 conflicts=('tastytrade-bin')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://download.tastytrade.com/desktop-2.0/tastytrade-linux-amd64-${pkgver}.deb")
-sha512sums=('8e8cf4e8b96af5dc79adf927d0377b2b4c054738380501bf1ce8bdac7c772b5cf066aaaa8a089c9c9b8dc1041f8842c648fa957249aaaf19f87dee5195ac7fd0')
+sha512sums=('c68cce4f132834b3140b016aca0ec2ad8ab3cc31185537859f9d2b96ec0ee2df9ab0f65ea2b1e095fcf52565d47a91491275944c18182e200059f82e966cf94b')
 
 prepare() {
 	bsdtar -xf data.tar.xz
