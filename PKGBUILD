@@ -1,6 +1,6 @@
 # Maintainer: Nasir A <evilleader91@gmail.com>
 pkgname=steam-library-mover
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Move installed Steam games between Steam libraries safely"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'ninja')
 optdepends=('steam: native Steam client'
             'flatpak: Flatpak Steam client')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f0f8f540f7c389b69e6f3b9cd1a2cafe53ccaf93d8ec9e9e7f23c178586dbdee')
+sha256sums=('f4899724ebec203c8574d76f61151dd82bbee34c6d65f178695a1b5d1a1b6c99')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
