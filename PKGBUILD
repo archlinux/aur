@@ -20,10 +20,14 @@ b2sums=('b980c98a92c64dafd459ac98783d2cc2bf4a4af2fef6e72dc89adac0bf304c1c6a1449a
 build() {
   cd "xpadneo-${pkgver}"
 
+  make VERSION="v${pkgver}" VERSION
   make build
 }
 
 check() {
+  local dkms_ver
+  dkms_ver=$(cat "xpadneo-${pkgver}/VERSION")
+
   local kernels=(/usr/lib/modules/*/build)
   if [[ ! -d ${kernels[0]} ]]; then
     echo LINUX-HEADERS required to run check > /dev/stderr
@@ -33,7 +37,7 @@ check() {
   local kver=${kernels[0]}
   kver=$(dirname "${kver}")
   kver=$(basename "${kver}")
-  echo '##' Checking if module builds on Linux "${kver}"...
+  echo "## Checking if hid-xpadneo ${dkms_ver} builds on Linux ${kver}..."
   echo
 
   mkdir -p check/dkms check/src
@@ -44,7 +48,7 @@ check() {
   )
 
   fakeroot dkms "${dkms_options[@]}" add "xpadneo-${pkgver}/hid-xpadneo"
-  fakeroot dkms "${dkms_options[@]}" build "hid-xpadneo/v${pkgver}"
+  fakeroot dkms "${dkms_options[@]}" build "hid-xpadneo/${dkms_ver}"
 }
 
 package() {
