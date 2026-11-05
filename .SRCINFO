@@ -1,6 +1,6 @@
 pkgbase = qtcalc-git
 	pkgdesc = Dead simple calculator written in C++ and Qt6
-	pkgver = 0.2a
+	pkgver = 0.3a
 	pkgrel = 1
 	url = https://gitea.com/doccnova/qtcalc
 	arch = x86_64
