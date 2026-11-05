@@ -1,13 +1,12 @@
 pkgname="recomplauncher-bin"
-pkgver=0.90.0
-betaver=16
+pkgver=0.90.0.16
 pkgrel=1
 pkgdesc="Recompiled games, native on PC."
 arch=('x86_64')
 url="https://github.com/elripalda/RecompStore"
 license=('GPL 3.0')
 
-source=("RecompLauncher.desktop" "https://github.com/elripalda/RecompLauncher/releases/download/v${pkgver}-beta.${betaver}/RecompLauncher_${pkgver}-beta.${betaver}_amd64.AppImage")
+source=("RecompLauncher.desktop" "https://github.com/elripalda/RecompLauncher/releases/download/v${pkgver%.*}-beta.${pkgver##*.}/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage")
 sha256sums=('3e775eee4f97fccac2bc634e042ecd0337ff487c49f20a00d758adb9a06e57cd'
             'c2620268088538026d41ecd26afc2eaf4aad601410ef59ef8904b5f91404fef9')
 
@@ -16,8 +15,8 @@ package(){
     install -dm755 "$pkgdir/usr/lib"
     install -dm755 "$pkgdir/usr/share"
 
-    chmod +x "$srcdir/RecompLauncher_${pkgver}-beta.${betaver}_amd64.AppImage"
-    "$srcdir/RecompLauncher_${pkgver}-beta.${betaver}_amd64.AppImage" --appimage-extract
+    chmod +x "$srcdir/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage"
+    "$srcdir/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage" --appimage-extract
 
     install -Dm755 "$srcdir/squashfs-root/usr/bin/recomplauncher" "$pkgdir/usr/bin"
     rm -rf "$srcdir/squashfs-root/usr/share/doc" \

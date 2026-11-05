@@ -1,6 +1,6 @@
 pkgbase = recomplauncher-bin
 	pkgdesc = Recompiled games, native on PC.
-	pkgver = 0.90.0
+	pkgver = 0.90.0.16
 	pkgrel = 1
 	url = https://github.com/elripalda/RecompStore
 	arch = x86_64
