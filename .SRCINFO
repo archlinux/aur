@@ -1,7 +1,7 @@
 pkgbase = satur8
 	pkgdesc = Per-game digital vibrance for Linux: compositor/scanout saturation boost, never injected into the game
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NtrpyDev/satur8
 	arch = x86_64
 	license = GPL-3.0-or-later

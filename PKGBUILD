@@ -1,7 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 pkgname=satur8
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Per-game digital vibrance for Linux: compositor/scanout saturation boost, never injected into the game"
 arch=('x86_64')
 url="https://github.com/NtrpyDev/satur8"
@@ -36,6 +36,14 @@ prepare() {
         sed -i 's/find_package(Qt6 REQUIRED COMPONENTS Core Gui DBus)/find_package(Qt6 REQUIRED COMPONENTS Core Gui DBus Qml)/' \
             assets/kwin-effect/CMakeLists.txt
         sed -i 's/^    Qt6::DBus$/    Qt6::DBus\n    Qt6::Qml/' assets/kwin-effect/CMakeLists.txt
+    fi
+
+    # KWin 6.x refuses to load a script package whose metadata.json lacks
+    # KPackageStructure, logging "does not match requested format KWin/Script".
+    # Without the focus forwarder, per-game profiles never follow focus.
+    if ! grep -q '"KPackageStructure"' assets/kwin-script/metadata.json; then
+        sed -i 's/^    "X-Plasma-API": "javascript",$/    "KPackageStructure": "KWin\/Script",\n    "X-Plasma-API": "javascript",/' \
+            assets/kwin-script/metadata.json
     fi
 }
 
