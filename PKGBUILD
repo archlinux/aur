@@ -165,21 +165,13 @@ check() {
   local _feeds=()
   mapfile -t _feeds < <(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' NuGet.config.upstream)
   _nuget_config "${_feeds[@]}" "nuget.org=https://api.nuget.org/v3/index.json"
-  # The ExecuteXmlReader tests need a SQL Server (TEST_TCP_CONN_STR). Their ConditionalFact skips them
-  # without one with upstream's xunit.runner.visualstudio 2.4.3 (Arcade 8), but the 3.x of the
-  # source-built Arcade runs them, as it doesn't work with the ConditionalFact of XUnitExtensions 8.x.
-  # ExecuteXmlReaderAsyncErrorTest runs as well, but passes, as it ignores the exception.
-  local _test _filter=()
-  for _test in ExecuteXmlReaderTest ExecuteXmlReaderAsyncTest; do
-    _filter+=("FullyQualifiedName!=System.Data.SqlClient.Tests.DiagnosticTest.$_test")
-  done
   # Only the build for Unix and the newest .NET, the test runner doesn't support .NET 6 anymore. The
-  # newer analyzers of the .NET 10 SDK warn about the test tools, which is an error upstream.
+  # newer analyzers of the .NET 10 SDK warn about the test tools, which is an error upstream. The
+  # xunit.runner.visualstudio of 2.x like upstream's (Arcade 8): the 3.x of the source-built Arcade
+  # doesn't skip the ConditionalFact tests of XUnitExtensions 8.x, e.g. the ones that need a SQL
+  # Server (TEST_TCP_CONN_STR)
   DOTNET_ROLL_FORWARD=Major dotnet test "src/$_nugetid/tests/$_nugetid.Tests.csproj" "${_build_arguments[@]}" \
-    -p:TargetFrameworks=net8.0-unix -p:TreatWarningsAsErrors=false --filter "$(
-      IFS='&'
-      echo "${_filter[*]}"
-    )"
+    -p:TargetFrameworks=net8.0-unix -p:TreatWarningsAsErrors=false -p:XUnitRunnerVisualStudioVersion=2.8.2
   rm -rf "${_test_tmp:?}"
 }
 
