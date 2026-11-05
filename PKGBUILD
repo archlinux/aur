@@ -1,12 +1,13 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
+_ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if main moved to another one
 pkgver=4.007
-pkgrel=8
-pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
+pkgrel=9
+pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, tuned with fonttune (fontconfig-friendly weight classes, optional hinting)"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
 license=(LicenseRef-MiSans)
-makedepends=(python python-fonttools ttfautohint)
+makedepends=(git python python-fonttools ttfautohint)
 provides=(ttf-misans-latin)
 conflicts=(ttf-misans-latin)
 options=(!strip)
@@ -16,14 +17,10 @@ options=(!strip)
 # that the fonts really are version $pkgver.
 source=("MiSans_Latin-${pkgver}.zip::https://hyperos.mi.com/font-download/MiSans_Latin.zip"
         "LICENSE.pdf::https://hyperos.mi.com/font-download/MiSans字体知识产权许可协议.pdf"
-        "fix_weights.py"
-        "set_gasp.py"
-        "make_features.py")
+        "fonttune::git+${FONTTUNE_REPO:-https://github.com/gaou-piou/fonttune.git}#${FONTTUNE_REF:-branch=main}")
 sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
             '4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86'
-            'f7b025ab723a672e0c821c610251199d04a5342c265483eafeb35f3e5f0be45b'
-            '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
-            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
+            'SKIP')
 
 # ── Licensing note ──────────────────────────────────────────────────────────
 #
@@ -35,440 +32,35 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #
 # ── What this package does ──────────────────────────────────────────────────
 #
-# Upstream MiSans Latin 4.007 ships effectively unhinted: the static TTFs carry
-# an 8-byte 'prep' program and not a single glyph instruction. This package:
+# Upstream MiSans Latin ships effectively unhinted (an 8-byte 'prep', no glyph
+# instructions). This package takes the ten static TTF weights (Thin … Heavy)
+# and runs fonttune on them; prepare() asks the questions:
 #
-#   1. takes the ten static TTF weights (Thin … Heavy); the variable font, OTF
-#      and WOFF/WOFF2 files are not used
-#   2. optionally normalises usWeightClass (FIX_WEIGHTS, default on). Stock
-#      weights make fontconfig pick Medium for "regular" and Heavy for "bold";
-#      see fix_weights.py
-#   3. hints every weight with ttfautohint, which detects the Latin, Greek and
-#      Cyrillic scripts and builds separate blue zones for each. Each weight
-#      takes its blue zones from its own outlines (HINT_REFERENCE=false)
-#   4. optionally rewrites the gasp table (GASP_MODE)
+#   * weights  normalise usWeightClass. Stock weights make fontconfig pick
+#              Medium for "regular" and Heavy for "bold"
+#   * hint     ttfautohint (bytecode runs only at hintmedium/hintfull; the
+#              package ships an opt-in 80-*.conf for that)
+#   * gasp, features baked into calt, ... (`fonttune steps`)
 #
-# Measured on FreeType 2.14.3 (v40 interpreter, grayscale), rendered through
-# pango/cairo at 9-16px:
-#
-#   * Only the THIRD letter of --stem-width-mode matters on Linux. v40 reports
-#     itself to the bytecode as DirectWrite ClearType, so nnn, snn and nsn
-#     render pixel-identically; nns does not. The presets below therefore
-#     differ where it counts: n (natural), q (quantized) or s (strong).
-#   * Do not use --reference=Regular. Bold's x-height really is taller than
-#     Regular's (559/572 flat/round vs 530/544 units), so Regular's blue zones
-#     capture none of Bold's tops: at 12-16px the round letters (o e c s)
-#     rise 1px above the flat ones (x n r v). Each weight's own zones keep
-#     all letters on one x-height at every size.
-#   * The stock, unhinted fonts break visibly at hintfull (gaps inside words,
-#     uneven baseline); the hinted ones do not.
-#   * No visible effect for MiSans on Linux: gasp (FreeType ignores it),
-#     --composites (identical pixels, larger file), --windows-compatibility
-#     (Windows clipping only), and --increase-x-height 0 vs 14 (nearly
-#     identical). gasp and -W still matter if the fonts are used under Wine.
-#   * v40 ignores horizontal hints, so the outlines' advances never change.
-#     But at hintfull Chrome turns off subpixel positioning and rounds every
-#     advance to a whole pixel (text widths up to ±2% off, uneven gaps in
-#     bold). cairo/pango render hintmedium and hintfull pixel-identically,
-#     so hintmedium is the setting to use.
-#   * Chromium keeps subpixel glyph *positions* at hintmedium, but not exact
-#     *advances*: at device scale 1 Skia uses linear advances only for
-#     hintslight/none, so at hintmedium every advance is rounded to a whole
-#     pixel too (measured on SF Pro Text: 0 of 54 fractional advances vs 49;
-#     nerd-fonts-apple-hinted README.md §10). The snippet therefore leaves
-#     Chromium and Electron apps out by prgname.
-#
-# FreeType only runs TrueType bytecode at hintstyle hintmedium/hintfull. With
-# the common hintslight setting it uses its own light autohinter instead and
-# ignores these hints. The package therefore ships (but does not enable)
-# /usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf, which turns on
-# bytecode hinting (hintmedium) for this family only, except in Chromium and
-# Electron apps (see above). Enable it with:
-#
-#   sudo ln -s /usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf \
-#              /etc/fonts/conf.d/
-#
-# ── Build-time options ───────────────────────────────────────────────────────
-#
-# Run from a terminal, prepare() asks for FIX_WEIGHTS, HINT_PRESET,
-# HINT_REFERENCE and GASP_MODE (Enter keeps the default). Any of them already
-# set in the environment is not asked. Without a TTY (chroot, CI, piped stdin)
-# nothing is asked and the environment variables / defaults below apply.
-# The answers are saved to $srcdir/.build_opts for build() and package().
-#
-#  FIX_WEIGHTS     true/false  Normalise usWeightClass (default: true)
-#  HINT_REFERENCE  true/false  Hint every weight against Regular's blue zones
-#                              (--reference; default: false; true breaks the
-#                              x-height of the heavier weights, see above)
-#
-#  HINT_PRESET  name         Named bundle of ttfautohint flags (default: hack)
-#                            ("Linux" = the stem letter FreeType v40 actually uses)
-#               balanced     stem=qsq (Linux: q)  range 8-50   x-height 14  (upstream defaults)
-#               sharp        stem=sss (Linux: s)  range 6-50   x-height 14  (max contrast, low-DPI)
-#               natural      stem=nnn (Linux: n)  range 8-50   x-height 0   (least distortion)
-#               light        stem=nnn (Linux: n)  range 12-50  x-height 0   (HiDPI; <12px left alone)
-#               hack         stem=qsq (Linux: q)  range 6-50   x-height 10  fallback latn
-#                            (the settings source-foundry's Hack is built with)
-#               custom       use the individual HINT_* vars below verbatim
-#
-#  Individual ttfautohint knobs (override the preset; empty = use preset value):
-#  HINT_MODE       nnn|qqq|qsq|sss   3-char --stem-width-mode (grayscale/GDI/DW; n/q/s)
-#                        On Linux only the 3rd letter has an effect (see above).
-#  HINT_RANGE_MIN  N    --hinting-range-min  (default 8)
-#  HINT_RANGE_MAX  N    --hinting-range-max  (default 50)
-#  HINT_LIMIT      N    --hinting-limit      (default: same as HINT_RANGE_MAX, so
-#                        hinting really stops above the range instead of reusing
-#                        the largest hint set up to 200px; 0 = no limit)
-#  HINT_XHEIGHT    N    --increase-x-height  (default 14; 0 = disable)
-#  HINT_XSNAP_EXC  STR  --x-height-snapping-exceptions  (e.g. "13-17", "" = none)
-#  HINT_FALLBACK_SCRIPT  STR  --fallback-script for glyphs outside any script
-#                        (symbols, arrows); e.g. latn (default: none)
-#  HINT_WINCOMPAT  true/false  --windows-compatibility (Windows/Wine only)
-#  HINT_TTFA_TABLE true/false  --ttfa-table: embed a TTFA table recording every
-#                        parameter used, readable with `ttfautohint --ttfa-info`
-#                        (default: false)
-#  HINT_FAMILY_SUFFIX  STR     -F/--family-suffix, e.g. " Hinted" gives the family
-#                              "MiSans Latin Hinted" (the fontconfig snippet follows)
-#
-#  GASP_MODE  keep|sized|smooth|gridfit   (default: keep; Windows/Wine only)
-#               keep     leave the gasp table as ttfautohint wrote it ({0xFFFF: 15})
-#               sized    MS strategy: <=8 grayscale, 9-16 gridfit, 17+ both
-#               smooth   all sizes anti-aliased ({0xFFFF: 15}, symmetric flags)
-#               gridfit  all sizes gridfit+grayscale ({0xFFFF: 3})
-#
-#  ── Features every app can see (not just pango) ───────────────────────────
-#
-#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
-#                 Bake these GSUB features into the font's 'calt' feature, so
-#                 that EVERY renderer applies them, not only pango. For the
-#                 reason, see the note at the bottom of this block.
-#                 Asked during the build as well (none / the recommended set /
-#                 a list of your own); the variables below are what an
-#                 unattended build uses. FEATURE_FAMILY stays environment-only
-#                 on purpose: it renames every file to one family, which would
-#                 merge the cuts a multi-family build installs.
-#
-#                 Suggested set - the three the MiSans Latin block in
-#                 ~/.config/fontconfig/fonts.conf turns on for pango that do
-#                 not redesign a character:
-#                     FEATURE_DEFAULTS="case,ss01,ss07"
-#                   case   12 subs: ( ) [ ] { } « » ‹ › become .case forms,
-#                          raised to sit centred on CAPITAL height. This is a
-#                          look, not a fix: it applies to lowercase text too,
-#                          "a(b)c" included.
-#                   ss01   4 subs: period.round, colon.round, divide.round and
-#                          a straight comma - the round dots the typeface was
-#                          drawn for
-#                   ss07   8 subs: straight comma, semicolon and quotes
-#                 The config also enables ss08 (dial pad # and *), ss09
-#                 (MiType digits: it replaces the design of every digit, 1318
-#                 codepoints) and frac. Add them here if Chrome must look
-#                 exactly like GTK does, but know what they do: frac turns
-#                 "21/2" into 2½ (three-part dates such as 1/2/2026 are left
-#                 alone), and ss09 is a different numeral design.
-#                 Never aalt, ordn or the small caps: make_features.py refuses
-#                 those unless --allow-risky is passed.
-#
-#                 FEATURE_DEFAULTS=fonts.conf takes the features that are ACTIVE
-#                 (uncommented) in the <match> blocks of the families this build
-#                 installs ("MiSans Latin"))
-#                 in ${MISANS_FONTS_CONF:-~/.config/fontconfig/fonts.conf}.
-#                 Several families: their tags are merged and baked into every
-#                 file of the build. Dropped with a note: negated tags (-calt),
-#                 tags the upstream fonts lack in GSUB, tags HarfBuzz always
-#                 applies (kern liga ccmp locl mark mkmk calt) and the ones
-#                 make_features.py refuses (aalt ordn dlig salt ...).
-#
-#  FEATURE_FAMILY  "Name"  (default: empty = edit the fonts in place)
-#                 Install the result as this family instead, so the stock
-#                 MiSans Latin stays available. The name must not end in a
-#                 pango style word (Thin, Bold, Italic, ...).
-#
-#  Why calt: fontconfig's fontfeatures is read by pango/GTK only. Chromium,
-#  Electron, Qt, LibreOffice, kitty and Firefox ignore it, and a browser can
-#  only ask from page CSS. A shaper applies a fixed list of features whatever
-#  the font declares (ccmp locl mark mkmk kern calt liga clig rlig), so
-#  moving a feature's lookups into calt is the only way to make it the
-#  default in every program. Verified in Chromium: the baked font with no CSS
-#  at all is pixel-identical to the stock one with font-feature-settings
-#  listing the same tags. The escape hatch is CSS "calt" 0, which also drops
-#  MiSans' own contextual alternates.
-#
-#  Examples:
-#    makepkg -si                         (asks, when run from a terminal)
-#    makepkg -si </dev/null              (never asks: defaults only)
-#    HINT_PRESET=sharp makepkg -si       (asks everything except the preset)
-#    HINT_PRESET=custom HINT_MODE=qqs HINT_RANGE_MIN=6 makepkg -si
-#    FIX_WEIGHTS=false HINT_FAMILY_SUFFIX=" Hinted" makepkg -si
-#    FEATURE_DEFAULTS=case,ss01,ss07 makepkg -si
-#    FEATURE_DEFAULTS=ss09 FEATURE_FAMILY="MiSans Latin Alt" makepkg -si
-# ────────────────────────────────────────────────────────────────────────────
+# Every key can be preset: FONTTUNE_<KEY>=value. Local testing:
+# FONTTUNE_REPO=file:///path/to/fonttune. Each weight takes its blue zones from
+# its own outlines (no --reference): Bold's x-height is taller than Regular's.
 
 _fontdir="MiSans Latin/ttf"
-_family="MiSans Latin"
 
-# Every option _resolve_options() understands, and so the only keys
-# .build_opts may set.
-_opt_keys=(FIX_WEIGHTS HINT_REFERENCE HINT_PRESET HINT_MODE HINT_RANGE_MIN
-           HINT_RANGE_MAX HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC
-           HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
-           HINT_FAMILY_SUFFIX GASP_MODE FEATURE_DEFAULTS FEATURE_FAMILY)
-
-# _ask_yn QUESTION DEFAULT(y|n) -> sets _yn to true/false
-_ask_yn() {
-  local _ans
-  read -r -p "  $1? [$2] " _ans || _ans=""
-  [[ "${_ans:-$2}" =~ ^[yY] ]] && _yn=true || _yn=false
-}
-
-# _ask_choice TITLE DEFAULT KEY:description ... -> sets _choice to a KEY.
-# Enter (or EOF) keeps DEFAULT; anything else must be a listed number.
-_ask_choice() {
-  local _title="$1" _default="$2"; shift 2
-  local -a _items=("$@")
-  local _i _ans
-  echo "  $_title:"
-  for _i in "${!_items[@]}"; do
-    printf "    %d) %-9s %s%s\n" "$((_i + 1))" "${_items[$_i]%%:*}" "${_items[$_i]#*:}" \
-      "$([[ "${_items[$_i]%%:*}" == "$_default" ]] && echo "  (default)")"
-  done
-  while :; do
-    read -r -p "  > " _ans || _ans=""
-    if [[ -z "$_ans" ]]; then _choice="$_default"; return; fi
-    if [[ "$_ans" =~ ^[0-9]+$ ]] && (( _ans >= 1 && _ans <= ${#_items[@]} )); then
-      _choice="${_items[$((_ans - 1))]%%:*}"; return
-    fi
-    echo "  Enter 1-${#_items[@]}, or press Enter for $_default."
-  done
-}
-
-# Called once, from prepare(): ask for whatever the environment has not set,
-# but only on a terminal, then save every set option to .build_opts.
-# Prints the bakeable tags active in the user's fonts.conf for the families
-# given as $1 ("A|B"); the remaining arguments are the upstream fonts whose GSUB
-# decides which tags exist (a tag no file has would abort make_features.py).
-_features_from_fontsconf() {
-  local _conf="${MISANS_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
-  local _fams="$1"; shift
-  if [[ ! -f "$_conf" ]]; then
-    echo "Error: $_conf not found (set MISANS_FONTS_CONF)." >&2; return 1
-  fi
-  python - "$_conf" "$_fams" "$@" <<'PY'
-import sys
-import xml.etree.ElementTree as ET
-from fontTools.ttLib import TTFont
-conf, fams = sys.argv[1], set(sys.argv[2].split("|"))
-fonts = sys.argv[3:]
-always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
-refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
-gsub = None
-for f in fonts:
-    try:
-        t = TTFont(f, lazy=True)["GSUB"].table
-    except Exception:
-        continue
-    gsub = (gsub or set()) | {r.FeatureTag for r in t.FeatureList.FeatureRecord}
-if gsub is None:
-    print("  note: no source font found to check GSUB; not filtering by it", file=sys.stderr)
-tags = []
-for m in ET.parse(conf).getroot().iter("match"):
-    if m.get("target") != "font":
-        continue
-    if not any(t.get("name") == "family" and (t.findtext("string") or "").strip() in fams
-               for t in m.findall("test")):
-        continue
-    for e in m.findall("edit"):
-        if e.get("name") != "fontfeatures":
-            continue
-        for st in e.findall("string"):
-            tag = (st.text or "").strip()
-            why = None
-            if tag.startswith("-"): why = "negated"
-            elif tag in always: why = "already applied by every shaper"
-            elif tag in refused: why = "refused by make_features.py"
-            elif gsub is not None and tag not in gsub: why = "not a GSUB feature of the font"
-            if why:
-                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
-            elif tag not in tags:
-                tags.append(tag)
-print(",".join(tags))
-PY
-}
-
-_prompt_options() {
-  if [[ -t 0 ]]; then
-    echo ""
-    echo "  ttf-misans-latin-hinted: build options (Enter = default)"
-    echo ""
-    if [[ -z "${FIX_WEIGHTS:-}" ]]; then
-      _ask_yn "Normalise weight classes (fontconfig picks the right Regular/Bold)" y
-      FIX_WEIGHTS=$_yn
-    fi
-    if [[ -z "${HINT_PRESET:-}" ]]; then
-      _ask_choice "Hinting preset" hack \
-        "balanced:stem q, 8-50px, x-height 14 (ttfautohint defaults)" \
-        "sharp:stem s, 6-50px, x-height 14 (max contrast, low-DPI)" \
-        "natural:stem n, 8-50px, no x-height boost (least distortion)" \
-        "light:stem n, 12-50px, no x-height boost (HiDPI)" \
-        "hack:stem q, 6-50px, x-height 10, fallback latn (Hack's settings)" \
-        "custom:use the HINT_* environment variables"
-      HINT_PRESET=$_choice
-    fi
-    if [[ -z "${HINT_REFERENCE:-}" ]]; then
-      echo "  Hinting every weight against Regular's blue zones breaks the x-height"
-      echo "  of Bold and Heavy (round letters sit 1px above flat ones)."
-      _ask_yn "Use Regular as the blue-zone reference" n
-      HINT_REFERENCE=$_yn
-    fi
-    if [[ -z "${GASP_MODE:-}" ]]; then
-      _ask_choice "gasp table (FreeType ignores it; Windows/Wine only)" keep \
-        "keep:as ttfautohint writes it" \
-        "sized:grayscale <=8px, gridfit 9-16px, both 17px+" \
-        "smooth:all sizes anti-aliased" \
-        "gridfit:all sizes gridfit + grayscale"
-      GASP_MODE=$_choice
-    fi
-    echo ""
-    echo "  ── OpenType features ────────────────────────────────────"
-    echo "  A font cannot declare a feature \"on by default\": programs apply a fixed"
-    echo "  list (kern calt liga ...) and ignore the rest. Baking moves a feature's"
-    echo "  lookups into calt, which every program applies - the only way Chromium,"
-    echo "  Electron, Qt and LibreOffice honour one, since they never read"
-    echo "  fontconfig's fontfeatures. GTK is covered either way by fonts.conf."
-    _ask_choice "Bake features into calt" none \
-      "none:leave the fonts as upstream ships them (default)" \
-      "pango:case,ss01,ss07 - the set the fonts.conf block turns on: raised punctuation, two alternates" \
-      "fonts.conf:the features active for "MiSans Latin" in ~/.config/fontconfig/fonts.conf" \
-      "custom:type the tag list yourself"
-    case $_choice in
-      none)    FEATURE_DEFAULTS="" ;;
-      pango)   FEATURE_DEFAULTS="case,ss01,ss07" ;;
-      fonts.conf) FEATURE_DEFAULTS="fonts.conf" ;;
-      custom)
-        echo "  Tags, comma or space separated (e.g. \"case,ss01,ss07\"):"
-        read -r -p "  > " _tags || _tags=""
-                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
-        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
-        _tags="${_tags#,}"; _tags="${_tags%,}"
-        FEATURE_DEFAULTS="$_tags"
-        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
-        ;;
-    esac
-    if [[ -n "$FEATURE_DEFAULTS" ]]; then
-      echo ""
-      echo "A copy under another family name keeps the stock look available; set"
-      echo "FEATURE_FAMILY to the name for it (e.g. FEATURE_FAMILY=\"MiSans Latin Alt\") and"
-      echo "build again. Without it the packaged files keep their names and the"
-      echo "features apply everywhere, with no way back except CSS \"calt\" 0."
-    fi
-    echo ""
-  else
-    echo "==> Non-interactive build (no TTY): using environment variables / defaults."
-  fi
-
-  if [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]]; then
-    local _fc_fams="MiSans Latin"
-    local _fc_files=("$srcdir/$_fontdir"/*.ttf)
-    FEATURE_DEFAULTS="$(_features_from_fontsconf "$_fc_fams" "${_fc_files[@]}")" || exit 1
-    echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
-  fi
-
-  local _k
-  : > "$srcdir/.build_opts"
-  for _k in "${_opt_keys[@]}"; do
-    # "set" rather than non-empty: HINT_XSNAP_EXC="" (no exceptions) differs
-    # from HINT_XSNAP_EXC unset (ttfautohint's default).
-    if [[ "${!_k+set}" == set ]]; then
-      printf '%s=%s\n' "$_k" "${!_k}" >> "$srcdir/.build_opts"
-    fi
-  done
-}
-
-# Load .build_opts (whitelisted keys only), then apply defaults and validate.
-# makepkg runs build() and package() in separate shells, so both call this.
-_resolve_options() {
-  local _k _v
-  if [[ ! -f "$srcdir/.build_opts" ]]; then
-    echo "Error: $srcdir/.build_opts missing; run a full makepkg (prepare() writes it)." >&2
+_check_fonttune() {
+  local _api
+  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$srcdir/fonttune/fonttune/__init__.py")
+  if [[ "$_api" != "$_ftapi" ]]; then
+    echo "Error: fonttune API is '${_api:-?}', this PKGBUILD expects $_ftapi." >&2
+    echo "       Update the PKGBUILD for the new fonttune, or pin FONTTUNE_REF=tag=<last-good>." >&2
     exit 1
   fi
-  while IFS='=' read -r _k _v; do
-    if [[ " ${_opt_keys[*]} " == *" $_k "* ]]; then
-      printf -v "$_k" '%s' "$_v"
-    fi
-  done < "$srcdir/.build_opts"
-
-  FIX_WEIGHTS="${FIX_WEIGHTS:-true}"
-  HINT_REFERENCE="${HINT_REFERENCE:-false}"
-  HINT_PRESET="${HINT_PRESET:-balanced}"
-
-  local _m _lo _hi _xh _fb
-  case "$HINT_PRESET" in
-    balanced) _m=qsq; _lo=8;  _hi=50; _xh=14; _fb=none ;;
-    sharp)    _m=sss; _lo=6;  _hi=50; _xh=14; _fb=none ;;
-    natural)  _m=nnn; _lo=8;  _hi=50; _xh=0;  _fb=none ;;
-    light)    _m=nnn; _lo=12; _hi=50; _xh=0;  _fb=none ;;
-    hack)     _m=qsq; _lo=6;  _hi=50; _xh=10; _fb=latn ;;
-    custom)   _m=qsq; _lo=8;  _hi=50; _xh=14; _fb=none ;;
-    *)
-      echo "Error: unknown HINT_PRESET='$HINT_PRESET'." >&2
-      echo "  Valid: balanced sharp natural light hack custom" >&2
-      exit 1 ;;
-  esac
-  # A preset never overrides a value the user set explicitly.
-  HINT_MODE="${HINT_MODE:-$_m}"
-  HINT_RANGE_MIN="${HINT_RANGE_MIN:-$_lo}"
-  HINT_RANGE_MAX="${HINT_RANGE_MAX:-$_hi}"
-  HINT_LIMIT="${HINT_LIMIT:-$HINT_RANGE_MAX}"
-  HINT_XHEIGHT="${HINT_XHEIGHT:-$_xh}"
-  HINT_FALLBACK_SCRIPT="${HINT_FALLBACK_SCRIPT:-$_fb}"
-  GASP_MODE="${GASP_MODE:-keep}"
-  HINT_WINCOMPAT="${HINT_WINCOMPAT:-false}"
-  HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
-  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
-  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
-
-  if [[ ! "$HINT_MODE" =~ ^[nqs]{3}$ ]]; then
-    echo "Error: HINT_MODE='$HINT_MODE' must be 3 chars from n/q/s (e.g. qsq)." >&2
-    exit 1
-  fi
-  local _v
-  for _v in HINT_RANGE_MIN HINT_RANGE_MAX HINT_LIMIT HINT_XHEIGHT; do
-    if [[ ! "${!_v}" =~ ^[0-9]+$ ]]; then
-      echo "Error: $_v='${!_v}' must be a non-negative integer." >&2; exit 1
-    fi
-  done
-  if (( HINT_RANGE_MIN > HINT_RANGE_MAX )); then
-    echo "Error: HINT_RANGE_MIN ($HINT_RANGE_MIN) > HINT_RANGE_MAX ($HINT_RANGE_MAX)." >&2
-    exit 1
-  fi
-  case "$GASP_MODE" in
-    keep|sized|smooth|gridfit) ;;
-    *) echo "Error: GASP_MODE='$GASP_MODE' invalid (keep|sized|smooth|gridfit)." >&2; exit 1 ;;
-  esac
-  if [[ ! "$HINT_FALLBACK_SCRIPT" =~ ^[a-z0-9]{3,4}$ ]]; then
-    echo "Error: HINT_FALLBACK_SCRIPT='$HINT_FALLBACK_SCRIPT' must be a script tag (e.g. none, latn)." >&2
-    exit 1
-  fi
-  for _v in FIX_WEIGHTS HINT_REFERENCE HINT_WINCOMPAT HINT_TTFA_TABLE; do
-    case "${!_v}" in
-      true|false) ;;
-      *) echo "Error: $_v='${!_v}' must be true or false." >&2; exit 1 ;;
-    esac
-  done
-  for _v in ${FEATURE_DEFAULTS//,/ }; do
-    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
-      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss01)." >&2
-      exit 1
-    fi
-  done
 }
 
 prepare() {
-  _prompt_options
-
-  # The checksum already pins the zip; this catches a PKGBUILD whose pkgver was
-  # bumped without looking at what Xiaomi actually shipped.
+  _check_fonttune
+  # The checksum already pins the zip; this catches a bumped pkgver.
   local _ver
   _ver="$(python -c 'import sys
 from fontTools.ttLib import TTFont
@@ -478,119 +70,38 @@ print(str(TTFont(sys.argv[1], lazy=True)["name"].getDebugName(5)).split()[-1])' 
     echo "Error: fonts report version '$_ver' but pkgver is '$pkgver'." >&2
     exit 1
   fi
-}
-
-build() {
-  _resolve_options
-
-  echo "==> Options: FIX_WEIGHTS=$FIX_WEIGHTS reference=$HINT_REFERENCE preset=$HINT_PRESET" \
-       "stem=$HINT_MODE range=$HINT_RANGE_MIN-$HINT_RANGE_MAX limit=$HINT_LIMIT" \
-       "x-height=$HINT_XHEIGHT fallback=$HINT_FALLBACK_SCRIPT gasp=$GASP_MODE" \
-       "ttfa-table=$HINT_TTFA_TABLE${HINT_FAMILY_SUFFIX:+ suffix='$HINT_FAMILY_SUFFIX'}"
-
-  rm -rf "$srcdir/work" "$srcdir/hinted" "$srcdir/featured"
-  mkdir -p "$srcdir/work" "$srcdir/hinted"
+  rm -rf "$srcdir/work"; mkdir -p "$srcdir/work"
   cp "$srcdir/$_fontdir/"*.ttf "$srcdir/work/"
-
   local _count
   _count=$(find "$srcdir/work" -name '*.ttf' | wc -l)
   if (( _count != 10 )); then
     echo "Error: expected 10 static TTF weights, found $_count. Has the zip layout changed?" >&2
     exit 1
   fi
+  python "$srcdir/fonttune/bin/fonttune" configure --defaults clean \
+    --save-to "$srcdir/fonttune.toml" "$srcdir/work/"*.ttf
+}
 
-  if [[ "$FIX_WEIGHTS" == true ]]; then
-    echo "==> Normalising usWeightClass..."
-    python "$srcdir/fix_weights.py" "$srcdir/work/"*.ttf
-  fi
-
-  local -a _ta_opts=(
-    --hinting-range-min="$HINT_RANGE_MIN"
-    --hinting-range-max="$HINT_RANGE_MAX"
-    --hinting-limit="$HINT_LIMIT"
-    --increase-x-height="$HINT_XHEIGHT"
-    --stem-width-mode="$HINT_MODE"
-    --fallback-script="$HINT_FALLBACK_SCRIPT"
-    --no-info
-  )
-  # Opt-in: blue zones from the (unhinted, weight-fixed) Regular for every
-  # weight. Off by default, see the header. The path is relative
-  # (ttfautohint runs inside work/) because a TTFA table records it verbatim.
-  if [[ "$HINT_REFERENCE" == true ]]; then
-    _ta_opts+=(--reference=MiSansLatin-Regular.ttf)
-  fi
-  if [[ "$HINT_TTFA_TABLE" == true ]]; then _ta_opts+=(--ttfa-table); fi
-  # Honour an explicit empty HINT_XSNAP_EXC (= no exceptions); omit if unset.
-  if [[ "${HINT_XSNAP_EXC+set}" == set ]]; then
-    _ta_opts+=(--x-height-snapping-exceptions="$HINT_XSNAP_EXC")
-  fi
-  if [[ "$HINT_WINCOMPAT" == true ]]; then _ta_opts+=(--windows-compatibility); fi
-  if [[ -n "${HINT_FAMILY_SUFFIX:-}" ]]; then _ta_opts+=(--family-suffix="$HINT_FAMILY_SUFFIX"); fi
-
-  echo "==> Hinting with ttfautohint..."
-  local _f
-  cd "$srcdir/work"
-  for _f in *.ttf; do
-    ttfautohint "${_ta_opts[@]}" "$_f" "$srcdir/hinted/$_f"
-  done
-
-  if [[ "$GASP_MODE" != keep ]]; then
-    echo "==> Applying gasp mode '$GASP_MODE'..."
-    python "$srcdir/set_gasp.py" "$GASP_MODE" "$srcdir/hinted/"*.ttf
-  fi
-
-  # Last, on the finished files, so ttfautohint never sees the extra lookups.
-  if [[ -n "$FEATURE_DEFAULTS" ]]; then
-    local _fam=()
-    [[ -n "$FEATURE_FAMILY" ]] && _fam=(--family "$FEATURE_FAMILY")
-    echo "==> Baking $FEATURE_DEFAULTS into calt" \
-         "${FEATURE_FAMILY:+(installed as '$FEATURE_FAMILY')}..."
-    python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
-      "${_fam[@]+"${_fam[@]}"}" -o "$srcdir/featured" "$srcdir/hinted/"*.ttf
-  fi
+build() {
+  _check_fonttune
+  python "$srcdir/fonttune/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place \
+    --fonts-conf "${MISANS_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}" \
+    --features-match '^MiSans Latin' "$srcdir/work/"*.ttf
 }
 
 package() {
-  _resolve_options
-
-  local _out="$srcdir/hinted"
-  if [[ -n "$FEATURE_DEFAULTS" ]]; then _out="$srcdir/featured"; fi
-  install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname" "$_out/"*.ttf
+  install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname" "$srcdir/work/"*.ttf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/LICENSE.pdf"
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
+  install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
 
-  # The name the fontconfig snippet below must use: whatever this build
-  # installed. FEATURE_FAMILY replaces the whole family name, so it wins over
-  # HINT_FAMILY_SUFFIX (which ttfautohint had already rewritten).
-  local _conf_family="${FEATURE_FAMILY:-${_family}${HINT_FAMILY_SUFFIX:-}}"
-
-  # Opt-in rendering tweak (see the header): full bytecode hinting for this
-  # family only. Shipped in conf.avail and deliberately not enabled.
-  # Several <test>s in one <match> are ANDed, so the prgname tests exclude
-  # every listed app. qual="all" makes a test pass when prgname is unset.
-  # prgname is the executable's basename.
-  local _prg _prgtests=""
-  for _prg in chrome chromium brave helium electron code slack signal-desktop vesktop; do
-    _prgtests+="    <test qual=\"all\" name=\"prgname\" compare=\"not_eq\"><string>$_prg</string></test>"$'\n'
-  done
-  install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf" <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-<!-- Installed by $pkgname. Use the ttfautohint bytecode hints in these
-     fonts rather than FreeType's light autohinter.
-     Chromium and Electron apps are excluded: at device scale 1 they use
-     linear advances only for hintslight/none, so hintmedium would round
-     every glyph advance to a whole pixel (uneven letter gaps). -->
-<fontconfig>
-  <match target="font">
-    <test name="family" compare="eq">
-      <string>${_conf_family}</string>
-    </test>
-${_prgtests%$'\n'}
-    <edit name="hinting" mode="assign"><bool>true</bool></edit>
-    <edit name="autohint" mode="assign"><bool>false</bool></edit>
-    <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
-  </match>
-</fontconfig>
-EOF
+  # Opt-in fontconfig snippet when the fonts carry ttfautohint bytecode.
+  if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
+    install -d "$pkgdir/usr/share/fontconfig/conf.avail"
+    python "$srcdir/fonttune/bin/fonttune" hintconf --name "$pkgname" \
+      -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" \
+      "$pkgdir/usr/share/fonts/$pkgname/"*.ttf
+    chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
+  fi
 }
