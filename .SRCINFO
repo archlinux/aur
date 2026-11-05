@@ -1,10 +1,11 @@
 pkgbase = tde-session-bin
 	pkgdesc = The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/zskamljic/tde-session
 	arch = x86_64
 	license = GPL-3.0-or-later
+	depends = gdk-pixbuf2
 	depends = glibc
 	depends = layer-shell-qt
 	depends = libcanberra
@@ -41,10 +42,13 @@ pkgbase = tde-session-bin
 	optdepends = gnome-keyring: remembering the passphrases of SSH keys
 	optdepends = fprintd: unlocking the screen with a finger
 	optdepends = brightnessctl: the keyboard light keys, where the keyboard does not change it itself
-	provides = tde-session=0.3.10
+	optdepends = greetd: Charon, the login screen
+	optdepends = accountsservice: names and pictures of people on the login screen
+	optdepends = xorg-xinit: X11 sessions from the login screen
+	provides = tde-session=0.3.11
 	conflicts = tde-session
-	noextract = tde-session-0.3.10-x86_64.tar.zst
-	source = tde-session-0.3.10-x86_64.tar.zst::https://github.com/zskamljic/tde-session/releases/download/v0.3.10/tde-session-0.3.10-x86_64.tar.zst
-	sha256sums = a8e9a0d61f6b9e92b0930430476e943129da124d39ff7c8287871d8a3f48f0af
+	noextract = tde-session-0.3.11-x86_64.tar.zst
+	source = tde-session-0.3.11-x86_64.tar.zst::https://github.com/zskamljic/tde-session/releases/download/v0.3.11/tde-session-0.3.11-x86_64.tar.zst
+	sha256sums = 55e32222d33b1c1e24be4444ca3f2d3d23cc85da2976aa1ef80fb1ebf5cb352d
 
 pkgname = tde-session-bin
