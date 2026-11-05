@@ -1,0 +1,18 @@
+pkgbase = krakend
+	pkgdesc = High-performance, stateless, declarative API gateway
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/krakend/krakend-ce
+	install = krakend.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	backup = etc/krakend/krakend.json
+	source = krakend-3.0.3.tar.gz::https://github.com/krakend/krakend-ce/archive/refs/tags/v3.0.3.tar.gz
+	source = krakend.sysusers
+	sha256sums = ee444b0267929e56d4aa561bd7a442c90427550438c4b348e43f94ad37ec01ff
+	sha256sums = 6710405313f2e37386f5299581058a0ba5e14bd800262a04759c0faa98e48c08
+
+pkgname = krakend

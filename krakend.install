@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables telemetry by default: krakend sends usage reports to"
+  echo "  usage.krakend.io, the first one with a summary of its configuration."
+  echo "  Disable it with USAGE_DISABLE=1 in the environment of krakend."
+}
