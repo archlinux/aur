@@ -9,7 +9,7 @@
 
 pkgbase=skwir-git
 pkgname=(skwir-git skwir-mermaid-git skwir-mupdf-git)
-pkgver=0.3.0.r0.gb80ceb6
+pkgver=0.3.1.r0.g1c246df
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
@@ -104,6 +104,8 @@ package_skwir-git() {
     'fuse3: rclone mounts, and phones KDE holds'
     'avahi: servers nearby, a NAS or a Mac'
     'wsdd: Windows PCs nearby'
+    "inter-font: skwir's own interface font, when chosen"
+    "ttf-jetbrains-mono: skwir's own code font, when chosen"
   )
   # skwir's own, PDFium's, and the Poppler and DjVuLibre readers': a
   # program linking Poppler (GPL v2 or v3) or DjVuLibre (GPL v2 or later)

@@ -1,6 +1,6 @@
 pkgbase = skwir-git
 	pkgdesc = An augmented file manager, for humans and agents (its last commit)
-	pkgver = 0.3.0.r0.gb80ceb6
+	pkgver = 0.3.1.r0.g1c246df
 	pkgrel = 1
 	url = https://skwir.org
 	arch = x86_64
@@ -80,7 +80,9 @@ pkgname = skwir-git
 	optdepends = fuse3: rclone mounts, and phones KDE holds
 	optdepends = avahi: servers nearby, a NAS or a Mac
 	optdepends = wsdd: Windows PCs nearby
-	provides = skwir=0.3.0.r0.gb80ceb6
+	optdepends = inter-font: skwir's own interface font, when chosen
+	optdepends = ttf-jetbrains-mono: skwir's own code font, when chosen
+	provides = skwir=0.3.1.r0.g1c246df
 	conflicts = skwir
 
 pkgname = skwir-mermaid-git
@@ -88,7 +90,7 @@ pkgname = skwir-mermaid-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mermaid=0.3.0.r0.gb80ceb6
+	provides = skwir-mermaid=0.3.1.r0.g1c246df
 	conflicts = skwir-mermaid
 
 pkgname = skwir-mupdf-git
@@ -97,5 +99,5 @@ pkgname = skwir-mupdf-git
 	depends = skwir-git
 	depends = libgcc
 	depends = glibc
-	provides = skwir-mupdf=0.3.0.r0.gb80ceb6
+	provides = skwir-mupdf=0.3.1.r0.g1c246df
 	conflicts = skwir-mupdf
