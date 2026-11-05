@@ -1,0 +1,24 @@
+pkgbase = mdflowviewer
+	pkgdesc = Markdown viewer and editor with live preview (Tauri + WebKitGTK)
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/cafercan/MDViewer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	options = !lto
+	options = !debug
+	source = mdflowviewer-3.0.2.tar.gz::https://github.com/cafercan/MDViewer/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = 6bcdf5ca5eb4d2007a1e6eae1e2b0b86d6420ba9183972e7619e0dd381ee975d
+
+pkgname = mdflowviewer
