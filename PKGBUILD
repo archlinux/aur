@@ -1,7 +1,7 @@
 # Maintainer: Burkhard Pauli <burkhard at pauli dot tech>
 pkgname=zwift-bootstrap-bin
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial native Linux launcher for Zwift that installs, updates and starts the game with Wine"
 arch=('x86_64')
 url="https://github.com/bpauli/zwift-bootstrap"
@@ -21,6 +21,7 @@ package() {
     install -Dm755 zwift-bootstrap-ble "${pkgdir}/usr/bin/zwift-bootstrap-ble"
     install -Dm755 contrib/zwift-start "${pkgdir}/usr/bin/zwift-start"
     install -Dm644 contrib/zwift.desktop "${pkgdir}/usr/share/applications/zwift-bootstrap.desktop"
+    install -Dm644 contrib/zwift.png "${pkgdir}/usr/share/icons/hicolor/192x192/apps/zwift-bootstrap.png"
     install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
     install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
