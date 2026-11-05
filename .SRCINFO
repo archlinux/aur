@@ -1,0 +1,23 @@
+pkgbase = youdaodict-bin
+	pkgdesc = Third-party A copy of Youdao Dict translation.有道翻译复刻版
+	pkgver = 11.3.26.0
+	pkgrel = 1
+	url = http://cidian.youdao.com/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-youdaodict
+	depends = electron42
+	provides = youdaodict=11.3.26.0
+	conflicts = youdaodict
+	source = LICENSE.html::https://c.youdao.com/dict/law/youdaofanyi_pc_privacy.html
+	source = youdaodict.js
+	source = youdaodict.sh
+	sha256sums = 5d60752880454c54621bfe3c8a886c714f6f47f7fe4890b230e9cd7f78e300f5
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = e0aa8bf265dbd30108314bbd34948d9d878320f97d6b4e5d85e1ce6f83a655e1
+	source_aarch64 = youdaodict-11.3.26.0-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/youdaodict-v11.3.26.0/netease.youdao.dict.otohime_11.3.26.0_arm64.deb
+	sha256sums_aarch64 = 7210f5ba4f5894311c3e1bb8d5a9e7216a501431f9acb63a7cefb7bf465c6f15
+	source_x86_64 = youdaodict-11.3.26.0-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/youdaodict-v11.3.26.0/netease.youdao.dict.otohime_11.3.26.0_amd64.deb
+	sha256sums_x86_64 = 43e2f891b20fa3ffd52b18c948abb17c6c7136bf93f7db18dc9f51e23abfbe3e
+
+pkgname = youdaodict-bin
