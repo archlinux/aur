@@ -2,8 +2,8 @@
 
 _pkgname="qdl"
 pkgname="${_pkgname}-bin"
-pkgver=2.8
-pkgrel=2
+pkgver=2.9
+pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
   'aarch64'
@@ -18,6 +18,10 @@ depends=(
   'libusb'
   'libxml2-legacy'
   # 'libzip'
+
+  'bzip2'
+  'openssl'
+  'zlib'
 )
 provides=(
   "${_pkgname}"
@@ -36,10 +40,10 @@ source_aarch64=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}-binary-ubuntu-24-x64-v${pkgver}.zip"
 )
-sha256sums=('a5d370f5a145801a5c4b1881c70fd8cf53daa15b1228996862e53ffd30c03d41'
+sha256sums=('01b8598cec284ac16bf950b1856b0ea1023d5e2df3a0aa961ec550908922538c'
             '85814c88fc75be2523c03551ee2abefc0c30b423edda343197796e0c0e168058')
-sha256sums_aarch64=('58b883cc2860643ddc2a059987c1e077737bb56d66230e4dfa9274a165dae92f')
-sha256sums_x86_64=('80e2fb22c093ce6641ee0102dd45f5851f4fc65803d0e8d359c4080699e5af6c')
+sha256sums_aarch64=('a232781f1ca6951af5bc0bd6b01d8c7db3cee90001c4cdda6da27302c2e6fb1a')
+sha256sums_x86_64=('8fdbb0b03fe99f429506ad9828415c02ca6b95a6f453a8ffb3b5a17ef7f26dd0')
 
 package() {
   local source_array="source_${CARCH}[0]"
