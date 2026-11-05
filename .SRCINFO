@@ -1,0 +1,19 @@
+pkgbase = videodown
+	pkgdesc = 哔哩哔哩、抖音、YouTube 视频下载工具（MyGo/MujicaUI 原生界面）
+	pkgver = 1.0.0_alpha.3
+	pkgrel = 1
+	url = https://github.com/kamiertop/videodown
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=1.27.3
+	makedepends = git
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = ffmpeg
+	optdepends = xdg-utils: 在文件管理器中打开下载目录
+	options = !debug
+	source = git+https://github.com/kamiertop/videodown.git#tag=v1.0.0-alpha.3
+	sha256sums = SKIP
+
+pkgname = videodown
