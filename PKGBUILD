@@ -9,8 +9,10 @@ pkgdesc='Language Server for nginx.conf'
 arch=(any)
 url='https://github.com/pappasam/nginx-language-server'
 license=(GPL-3.0-only)
+# crossplane-gixy rather than crossplane (which it provides): crossplane's package doesn't build with
+# the current Python, as its check() runs tox with Python 3.10 at most
 depends=(
-  crossplane
+  crossplane-gixy
   python
   python-lsprotocol
   python-pydantic
