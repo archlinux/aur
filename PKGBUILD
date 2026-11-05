@@ -27,6 +27,8 @@ b2sums=('8da71c2a4626ca136aa4822feeeafb30ad121b9bc6d2e27893793f2515cbec767179e4e
 
 prepare() {
   cd "$pkgname-$pkgver" || exit
+  # The SIGCHLD handler with its parameter, which C23 (GCC 15's default) requires: fixed upstream
+  # after v14, a release is requested (https://github.com/Scribery/tlog/issues/382)
   patch -Np0 -i "$srcdir/rec-pointer-type-fix.patch"
 }
 
