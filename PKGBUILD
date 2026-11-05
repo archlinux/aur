@@ -44,7 +44,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
   # man page
-  install -Dm644 share/notmuch-mailmover.1.gz "$pkgdir/usr/share/man/man1/notmuch-mailmover.1.gz"
+  install -Dm644 share/notmuch-mailmover.1 "$pkgdir/usr/share/man/man1/notmuch-mailmover.1"
 
   # examples
   mkdir -p "$pkgdir/usr/share/doc/notmuch-mailmover"
