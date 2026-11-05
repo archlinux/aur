@@ -22,8 +22,8 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # Arch's makepkg.conf sets CFLAGS="-march=native ...". That flag reaches the
-  # `ring` crate's asm build via the cc crate and breaks its p384 object link
+  # A tuned makepkg.conf (CachyOS ships "-march=native -O3") reaches the `ring`
+  # crate's asm build via the cc crate and breaks its p384 object link
   # (undefined ring_core_*_p384_* symbols). Drop the injected C/linker flags;
   # ring builds and links cleanly with cargo's own defaults.
   unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
