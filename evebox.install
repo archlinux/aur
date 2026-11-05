@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'EOF'
+==> EveBox reads /var/log/suricata/eve.json as user "evebox".
+    If Suricata runs on this host with group-readable logs, add a drop-in:
+
+      systemctl edit evebox.service      (and/or evebox-agent.service)
+
+      [Service]
+      SupplementaryGroups=suricata
+
+==> Edit /etc/evebox/evebox.yaml (bind address, TLS), then:
+      systemctl enable --now evebox.service
+    The initial admin password is printed once in: journalctl -u evebox
+
+==> To run the server on a different host than Suricata, use
+    evebox-agent.service on the Suricata host (/etc/evebox/agent.yaml).
+EOF
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet evebox.service; then
+    echo "==> Restart EveBox to use the new version: systemctl restart evebox"
+  fi
+  if systemctl is-active --quiet evebox-agent.service; then
+    echo "==> Restart the agent: systemctl restart evebox-agent"
+  fi
+}

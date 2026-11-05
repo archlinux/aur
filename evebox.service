@@ -1,0 +1,46 @@
+[Unit]
+Description=EveBox server (Suricata event viewer)
+Documentation=https://evebox.org/docs/
+After=network-online.target suricata.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=evebox
+Group=evebox
+# Extra command line options, e.g. EVEBOX_OPTS="-v"
+EnvironmentFile=-/etc/default/evebox
+ExecStart=/usr/bin/evebox server -D /var/lib/evebox -c /etc/evebox/evebox.yaml $EVEBOX_OPTS
+Restart=on-failure
+RestartSec=5
+
+StateDirectory=evebox
+StateDirectoryMode=0750
+RuntimeDirectory=evebox
+
+# Hardening. The filesystem is read-only except for the state and runtime
+# directories, so the EVE log only needs to be readable by the evebox user
+# (see evebox.install for the suricata group drop-in).
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

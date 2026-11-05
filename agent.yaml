@@ -1,0 +1,23 @@
+# EveBox agent configuration (evebox-bin package default).
+# Upstream reference: /usr/share/doc/evebox/examples/agent.yaml
+#
+# Runs on the Suricata host and ships EVE events to an EveBox server
+# running elsewhere. Not needed when the server reads eve.json locally.
+
+server:
+  url: http://127.0.0.1:5636
+  # Agent key, created on the server with: evebox config agents add <name>
+  #key: eba_...
+
+# Set to true if the server uses a self-signed certificate
+#disable-certificate-check: false
+
+# Direct Elasticsearch output instead of an EveBox server
+elasticsearch:
+  enabled: false
+  #url: http://127.0.0.1:9200
+  #index: logstash
+
+input:
+  paths:
+    - "/var/log/suricata/eve.json"

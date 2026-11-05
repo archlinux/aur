@@ -1,0 +1,5 @@
+# Config files may hold an agent key or Elasticsearch credentials
+d /etc/evebox             0750 root   evebox -
+z /etc/evebox/evebox.yaml 0640 root   evebox -
+z /etc/evebox/agent.yaml  0640 root   evebox -
+d /var/lib/evebox         0750 evebox evebox -

@@ -1,0 +1,43 @@
+[Unit]
+Description=EveBox agent (ships Suricata EVE events to a remote EveBox server)
+Documentation=https://evebox.org/docs/
+After=network-online.target suricata.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=evebox
+Group=evebox
+# Extra command line options, e.g. EVEBOX_AGENT_OPTS="-v"
+EnvironmentFile=-/etc/default/evebox-agent
+ExecStart=/usr/bin/evebox agent -D /var/lib/evebox-agent -c /etc/evebox/agent.yaml $EVEBOX_AGENT_OPTS
+Restart=on-failure
+RestartSec=5
+
+# Bookmarks (read position in eve.json) are kept here
+StateDirectory=evebox-agent
+StateDirectoryMode=0750
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

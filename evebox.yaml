@@ -1,0 +1,48 @@
+# EveBox server configuration (evebox-bin package default).
+# Upstream reference: /usr/share/doc/evebox/examples/evebox.yaml
+#
+# The data directory (SQLite event DB, user DB, self-signed TLS cert) is
+# set by the systemd unit: -D /var/lib/evebox
+
+http:
+  # Address to bind to. Default is localhost only. Set to the LAN address
+  # of this host (e.g. 192.168.6.2) or "0.0.0.0" / "::" to expose it.
+  host: 127.0.0.1
+  port: 5636
+
+  tls:
+    # With enabled: true and no certificate/key, EveBox generates a
+    # self-signed certificate in the data directory.
+    enabled: false
+    #certificate: /etc/evebox/tls/cert.pem
+    #key: /etc/evebox/tls/key.pem
+
+authentication:
+  # On first start with authentication required, EveBox creates the user
+  # "admin" and logs a random password once (journalctl -u evebox).
+  # Manage users with: evebox -D /var/lib/evebox config users ...
+  required: true
+
+database:
+  type: sqlite
+
+  retention:
+    # SQLite only: keep events for this many days (0 = forever)
+    days: 7
+    # Optional upper size limit
+    #size: "10 GB"
+
+# Read Suricata EVE logs on this host. Set enabled: false if this server
+# only receives events from remote evebox agents.
+input:
+  enabled: true
+  paths:
+    - "/var/log/suricata/eve.json"
+  # Add the full rule text to alert events. Leave disabled if Suricata
+  # already logs it (eve-log alert: metadata: rule: yes).
+  #rules:
+  #  - "/var/lib/suricata/rules/*.rules"
+
+# GeoIP enrichment uses /usr/share/GeoIP/GeoLite2-City.mmdb if present.
+#geoip:
+#  disabled: false
