@@ -1,16 +1,18 @@
 # Maintainer: Vladimir Alyamkin <ufna@ufna.dev>
 pkgname=zerus-git
-pkgver=0.46.0.r2319.g61278175
+pkgver=0.48.0.r6568.g76712669d
 pkgrel=1
 pkgdesc='Agent development environment for AI coding agents across your machines'
 arch=('x86_64')
 url='https://github.com/ufna/zerus'
 license=('MIT')
-depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'kstatusnotifieritem' 'kwindowsystem' 'kidletime'
+depends=('webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'glib2' 'cairo' 'libsoup3'
+         'alsa-lib' 'gstreamer' 'gst-plugins-base-libs'
+         'libappindicator' 'dbus'
+         'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav'
          'tmux>=3.7' 'openssh' 'python' 'curl' 'procps-ng' 'libgcc' 'libstdc++' 'glibc' 'hicolor-icon-theme' 'bash' 'tar')
-makedepends=('git' 'rust' 'cmake' 'ninja' 'qt6-tools' 'qt6-webengine')
+makedepends=('git' 'rust' 'nodejs' 'npm')
 optdepends=('konsole: external KDE terminal integration'
-            'qt6-webengine: embedded DeepSeek Native UI'
             'wl-clipboard: clipboard transfers on Wayland'
             'xclip: clipboard transfers on X11'
             'nodejs: separately installed native agents and DeepSeek Harness'
@@ -34,24 +36,28 @@ prepare() {
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')" \
         --manifest-path services/mobile/connector/Cargo.toml
+    cargo fetch --locked --manifest-path client/src-tauri/Cargo.toml \
+        --target "$(rustc -vV | sed -n 's/^host: //p')"
+    (cd client && npm ci --no-audit --no-fund)
 }
 
 build() {
     cd "$srcdir/zerus"
-    export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+    export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR="$PWD/target"
     cargo build --frozen --release
     cargo build --frozen --release --manifest-path services/mobile/connector/Cargo.toml
-    cmake -S tray -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DHGS_NATIVE_UI_PLUGIN=ON
-    cmake --build build
+    (cd client && npm exec -- tauri build --no-bundle \
+        --config "$PWD/src-tauri/tauri.switch.linux.conf.json" --features video -- --frozen)
     python scripts/collect-licenses.py "$srcdir/licenses" \
-        --manifest-path Cargo.toml --manifest-path services/mobile/connector/Cargo.toml
+        --manifest-path Cargo.toml --manifest-path services/mobile/connector/Cargo.toml \
+        --manifest-path client/src-tauri/Cargo.toml --manifest-features client/src-tauri/Cargo.toml=video
 }
 
 check() {
     cd "$srcdir/zerus"
-    export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+    export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR="$PWD/target"
     cargo test --frozen --release
+    cargo test --frozen --release --manifest-path client/src-tauri/Cargo.toml --features video --lib
     # The journal handoff tests need a Python connector with aiohttp; CI runs them.
     cargo test --frozen --release --manifest-path services/mobile/connector/Cargo.toml \
         --lib --test config_vectors --test journal_vectors --test runtime_vectors --test mutations \
@@ -61,7 +67,7 @@ check() {
 package() {
     cd "$srcdir/zerus"
     python scripts/package-linux.py --destdir "$pkgdir" \
-        --cli target/release/hgs --gui build/hgs-tray --native-ui-plugin build/plugins/libhgs-tray-native-ui.so \
+        --cli target/release/hgs --gui target/release/hgs-tray \
         --connector target/release/zerus-mobile-connector \
         --licenses "$srcdir/licenses" --package-name "$pkgname"
 }
