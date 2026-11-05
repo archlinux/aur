@@ -1,6 +1,6 @@
 pkgbase = clever-tools-bin
 	pkgdesc = Command Line Interface for Clever Cloud. (standalone binary)
-	pkgver = 5.3.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/CleverCloud/clever-tools
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = clever-tools-bin
 	conflicts = clever-tools
 	options = !strip
 	options = !debug
-	source = clever-tools-5.3.0_linux.tar.gz::https://clever-tools.clever-cloud.com/releases/5.3.0/clever-tools-5.3.0_linux.tar.gz
-	sha256sums = f2d2b1b7f97b2123a23cdc37e15126368af93ea1f1382070b9fbca3743cdf6e8
+	source = clever-tools-5.4.0_linux.tar.gz::https://clever-tools.clever-cloud.com/releases/5.4.0/clever-tools-5.4.0_linux.tar.gz
+	sha256sums = 017edd8aed89360c84f2ea383df0db62439a66261b248053a15b9966c7fb8ea3
 
 pkgname = clever-tools-bin
