@@ -1,25 +1,25 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname="backup-warden"
+_pkgauthor='charles-001'
+_pkgname='backup-warden'
+pkgname=${_pkgname}
 pkgver=1.0.16
 pkgrel=1
 pkgdesc="Streamline your backup management with ease and simplicity"
 
-_pypi_package=${pkgname}
+_pypi_package=${_pkgname}
 _pypi_version=${pkgver}
 
 license=('GPL-3.0')
 arch=('any')
 
-_url_pypi='https://pypi.org/project/backup-warden'
-_url_github='https://github.com/charles-001/backup-warden'
+_url_pypi="https://pypi.org/project/${_pypi_package}"
+_url_github="https://github.com/${_pkgauthor}/${_pkgname}"
 url="${_url_github}"
 
 provides=("${_pypi_package}")
-replaces=("python-${pkgname}")
-conflicts=("python-${pkgname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-poetry-core')
-depends=('python' 'python-dateutil' 'python-invoke' 'python-slack-sdk' 'python-tabulate' 'python-packaging' 'python-simpleeval' 'python-loguru' 'fabric' 'python-boto3' 'python-requests' 'backup-warden' 'python-botocore' 'python-humanfriendly' 'python-paramiko')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-poetry' 'python-poetry-core')
+depends=('python' 'python-dateutil' 'python-invoke' 'python-slack-sdk' 'python-tabulate' 'python-packaging' 'python-simpleeval' 'python-loguru' 'fabric' 'python-boto3' 'python-requests' 'python-botocore' 'python-humanfriendly' 'python-paramiko')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/${pkgver}.tar.gz")
