@@ -1,8 +1,8 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz-nightly-bin
 # pkgver cannot hold the tag's "-", so the release's own version rides in _version.
-_version=0.68.0-nightly.20261103
-pkgver=0.68.0_nightly.20261103
+_version=0.68.0-nightly.20261105
+pkgver=0.68.0_nightly.20261105
 pkgrel=1
 pkgdesc="A modern music player, built nightly from the latest development code (pre-built binary)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 )
 source=("kopuz-nightly-$pkgver-$pkgrel.deb::https://github.com/Kopuz-org/kopuz/releases/download/v$_version/kopuz-nightly_${_version}_amd64.deb")
 # Filled in at publish time from the release's kopuz-nightly_<version>_amd64.deb.sha256.
-sha256sums=('7572a1fa5bd20316963f29e49b22d2b1747428a5c649f2891c71f38d1b6d854d')
+sha256sums=('3323176443a0fa91d1fe6a12d92024db3b280fdb743ee24226a30b03d10e54b6')
 
 package() {
     bsdtar -xf data.tar.gz -C "$pkgdir"
