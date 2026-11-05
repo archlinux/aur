@@ -1,7 +1,7 @@
 pkgbase = mimick
 	pkgdesc = Unofficial Immich desktop client that backs up and browses your photos
 	pkgver = 9.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mimick.nicx.dev
 	arch = x86_64
 	arch = aarch64
@@ -31,6 +31,7 @@ pkgbase = mimick
 	optdepends = gst-plugins-good: play more video formats
 	optdepends = gst-libav: play H.264, HEVC, and other common video codecs
 	optdepends = xdg-desktop-portal: show your location on the map
+	optdepends = geoclue: show your location on the map
 	optdepends = gnome-keyring: store the API key in a Secret Service keyring (or another provider)
 	options = !lto
 	options = !debug

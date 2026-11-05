@@ -32,6 +32,7 @@ optdepends=(
   'gst-plugins-good: play more video formats'
   'gst-libav: play H.264, HEVC, and other common video codecs'
   'xdg-desktop-portal: show your location on the map'
+  'geoclue: show your location on the map'
   'gnome-keyring: store the API key in a Secret Service keyring (or another provider)'
 )
 options=('!lto' '!debug')
