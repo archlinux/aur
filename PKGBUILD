@@ -41,9 +41,9 @@ _dotnet_env() {
 
 prepare() {
   cd Humanizer || exit
-  # Nerdbank.GitVersioning is a prebuilt tool that derives the version from git, it's passed in build()
-  # instead. Source link isn't needed either.
-  sed -i -e '/Nerdbank.GitVersioning/d' -e '/Microsoft.SourceLink.GitHub/d' src/Directory.build.props
+  # src/Directory.build.props, which references Nerdbank.GitVersioning (a prebuilt tool that derives
+  # the version from git, passed in build() instead) and SourceLink, isn't imported: MSBuild looks for
+  # Directory.Build.props, and file names are case-sensitive here
   # The netstandard1.0 build would need its prebuilt reference assemblies
   sed -i 's|<TargetFrameworks>netstandard1.0;|<TargetFrameworks>|' src/Humanizer/Humanizer.csproj
   sed -i -e '/<group targetFramework="netstandard1.0">/,/<\/group>/d' -e '/bin\\Release\\netstandard1.0/d' \
