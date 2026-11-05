@@ -6,7 +6,7 @@ _appname=${_gitname//-/}
 pkgname=${_gitname}-bin
 pkgdesc="Graphical SFTP client and terminal emulator (SSH) with helpful utilities."
 
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}.deb")
-sha256sums=('9b8f1e2efac3cd70007f82b7dc411da7481ad01cf813ace2003bc1881078c361'
+sha256sums=('c0c6638f8af8b96f7e020da41f659c1e5c7c21b19905e93e48561b375f90e69f'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('a565d7286a4ccd2b8e464a6e879c646a7b4a19b7f7805af01f5848820777c5bc')
+sha256sums_x86_64=('d97db21c3b868218649f57f63308e62266cd22c97c522c2aed659cbfa85e5976')
 
 
 package() {
