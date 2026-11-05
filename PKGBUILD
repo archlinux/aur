@@ -3,7 +3,8 @@
 # Automation: https://github.com/its-me/aur.hstr
 
 pkgname=hstr
-pkgver=3.2
+pkgver=3.3
+_tag=v.3.3
 pkgrel=1
 pkgdesc="Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history."
 arch=('x86_64')
@@ -11,9 +12,15 @@ url="https://github.com/dvorka/hstr"
 license=('Apache')
 makedepends=('readline' 'ncurses')
 depends=('readline')
-source=("https://github.com/dvorka/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bceab1cb3c3b636d9ff4dfbaf8b035530e76a36d948767ed1735c4e79d7473eb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dvorka/${pkgname}/archive/refs/tags/${_tag}.tar.gz")
+noextract=("${pkgname}-${pkgver}.tar.gz")
+sha256sums=('ca458520804b1494ac3af4cfaafe484468ff00978aa4528fc4ef0536e383374a')
 
+# upstream tag names are inconsistent (3.1, v3.2, v.3.3), and so is the archive's top-level dir
+prepare() {
+    mkdir -p "${pkgname}-${pkgver}"
+    bsdtar -xf "${pkgname}-${pkgver}.tar.gz" -C "${pkgname}-${pkgver}" --strip-components 1
+}
 
 build() {
     cd "${pkgname}-${pkgver}/build/tarball"
