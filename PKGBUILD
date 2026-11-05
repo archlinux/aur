@@ -13,7 +13,7 @@ makedepends=('cargo' 'blueprint-compiler')
 # GCC's LTO objects of ring's bundled C code don't link with rustc's lld.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('67040c288f3e7a9a08979220e2f70602044df8e57279b43611e1297abb5f6c71')
 
 prepare() {
 	cd "$pkgname-$pkgver"

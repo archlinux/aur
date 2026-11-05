@@ -17,6 +17,6 @@ pkgbase = gextant
 	optdepends = org.freedesktop.secrets: keep the access tokens in the system keyring
 	options = !lto
 	source = gextant-0.1.0.tar.gz::https://github.com/AperteDev/gextant/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 67040c288f3e7a9a08979220e2f70602044df8e57279b43611e1297abb5f6c71
 
 pkgname = gextant
