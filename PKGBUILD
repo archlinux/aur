@@ -1,3 +1,5 @@
+# Maintainer: s-k <aur at kzhrv most-common gtld>
+
 _pkgname=bb-desktop
 pkgname=${_pkgname}-bin
 pkgver=0.48.1
