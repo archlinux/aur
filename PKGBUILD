@@ -11,7 +11,7 @@
 
 pkgname=zcode-ce-bin
 _pkgname=ZCode-CE
-pkgver=3.16.3.ce.1.fix.1
+pkgver=3.17.2.ce.1
 # 上游版本号形如 3.14.1-ce.1；pacman 的 pkgver 不允许连字符，改用点号。
 # 与包内 .PKGINFO 的 3.14.1_ce.1 对应，语义相同。
 pkgrel=1
@@ -38,13 +38,13 @@ options=('!strip')
 
 # 上游的版本号与 tag 形如 3.14.1-ce.1（含连字符），而 pacman 的 pkgver 不允许连字符，
 # 所以 pkgver 用点号形式 3.14.1.ce.1，下载地址仍按上游原样拼接。
-_upstream_ver=3.16.3-ce.1.fix.1
-_upstream_tag=v3.16.3-ce.1.fix.1
+_upstream_ver=3.17.2-ce.1
+_upstream_tag=v3.17.2-ce.1
 
 source=(
     "${pkgname}-${pkgver}.pkg.tar.zst::https://github.com/Zcode-CE/Zcode-CE/releases/download/${_upstream_tag}/${_pkgname}-${_upstream_ver}-linux-x64.pkg.tar.zst"
 )
-sha256sums=('b48deef8ba9e936fa2cf7a82d57086bfa419e7d8799bef5eb0f9be591a5838f2')
+sha256sums=('65517eb7e235543d710df402a89dc8c72363f0b889b701a31cb4d3dd1443001d')
 
 package() {
     # 源就是我们自己的 pacman 包：直接解到 ${pkgdir} 即可，不需要再打包一次。
