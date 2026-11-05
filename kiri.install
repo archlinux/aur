@@ -1,0 +1,39 @@
+post_install() {
+  cat <<'EOF'
+==> Kiri is installed. Nothing runs yet; set it up for your account with
+      sudo kiri host-access $USER
+    (or open Kiri from the app menu). That enables kiri.service and adds you
+    to the `kiri` group. Members of `kiri` can run containers as root on this
+    machine; treat it like the docker group.
+==> Engine socket: unix:///run/kiri/docker.sock. With any docker CLI:
+      docker context create kiri --docker host=unix:///run/kiri/docker.sock
+EOF
+  if [ -x /usr/lib/kiri/docker ]; then
+    cat <<'EOF'
+==> kiri-bin: its docker CLI is added at the end of PATH by
+    /etc/profile.d/kiri.sh (log in again). Another docker on PATH wins.
+    Shells that skip /etc/profile (e.g. fish): /usr/lib/kiri/path/docker
+EOF
+  fi
+}
+
+post_upgrade() {
+  if [ -d /run/systemd/system ] && systemctl is-active -q kiri.service; then
+    echo "==> The Kiri engine keeps running $2 until it restarts:"
+    echo "      sudo systemctl restart kiri   (running containers stop)"
+  fi
+}
+
+pre_remove() {
+  if [ -d /run/systemd/system ]; then
+    systemctl disable --now kiri.service 2>/dev/null || true
+  fi
+}
+
+post_remove() {
+  cat <<'EOF'
+==> Kiri is removed. Images, containers and volumes remain in /var/lib/kiri
+    and /var/lib/kiri-daemon; delete them yourself if you no longer need them
+    (unmount anything still mounted under /var/lib/kiri first).
+EOF
+}
