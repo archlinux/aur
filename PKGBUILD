@@ -3,15 +3,15 @@
 
 pkgname=perl-date-ical
 _dist=Date-ICal
-pkgver=2.678
-pkgrel=2
+pkgver=2.682
+pkgrel=1
 pkgdesc='Perl extension for ICalendar date objects'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
 url="https://metacpan.org/dist/$_dist"
-_author=RBOW
+_author=SKIM
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('f934d2578fdc89208715ee7b0925d7699c3c6e7efe87620ee3cc5cc9326e4902')
+sha256sums=('9e876e9007bb7c3c4852ab76c90f055c9d0735b5ac494ca087be4f7e38955d2d')
 
 arch=(any)
 depends=(perl perl-date-leapyear)
