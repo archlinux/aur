@@ -6,7 +6,7 @@
 
 _pkgname=vlang
 pkgname=vlang-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Simple compiled language for developing maintainable software (binary release)'
 arch=('x86_64')
@@ -19,16 +19,16 @@ options=(!strip)
 makedepends=('libx11' 'git')
 optdepends=('glfw: Needed for graphics support'
   'freetype2: Needed for graphics support'
-  'glfw: Graphics support'
   'openssl: Needed for http support')
 source=("${_pkgname}-${pkgver}.zip::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
-sha256sums=('0c35c79343b308e0415619d8e6d8da340c6a24c18331123553cc686ffb18abf4')
+sha256sums=('86caf9e70c3342d48ef19eb4f6c47b709f18c90ae86255520d5c29df6b482e23')
 
 build() {
   cd v
   LDFLAGS="-Wl,--as-needed -Wl,-z,relro -Wl,-z,now" \
     PATH="$PWD:$PATH" \
-    v build-tools #strip off some optimizations that tcc may not support
+    v -cc cc build-tools
+  find cmd/tools -name "*.tmp.c*" -delete
 }
 
 package() {
@@ -36,6 +36,7 @@ package() {
   install -d "${pkgdir}/usr/lib/vlang" \
 		"${pkgdir}/usr/share/licenses/${pkgname}" \
 		"${pkgdir}/usr/share/doc/${pkgname}" \
+		"${pkgdir}/usr/share/vlang" \
 		"${pkgdir}/usr/bin" \
     "${pkgdir}/usr/lib/vlang/cmd/tools"
 
