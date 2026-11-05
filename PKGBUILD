@@ -1,7 +1,8 @@
 # Maintainer: Eduardo Parra <eduparra90@gmail.com>
+# AUR history recovery is handled by aur-maintainer; build downloads stay outside this package directory.
 pkgname=github-copilot-app-bin
 _pkgname=github-copilot-app
-pkgver=1.1.29
+pkgver=1.1.35
 pkgrel=1
 pkgdesc="GitHub Copilot desktop application (Tauri)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +20,8 @@ options=('!strip' '!emptydirs')
 source_x86_64=("$pkgname-$pkgver-x64.deb::$url/releases/download/v$pkgver/GitHub-Copilot-linux-x64.deb")
 source_aarch64=("$pkgname-$pkgver-arm64.deb::$url/releases/download/v$pkgver/GitHub-Copilot-linux-arm64.deb")
 
-sha256sums_x86_64=('22abda15e198d810cf1a582f4184db43620dc45a93733574d4f02f008dd3a370')
-sha256sums_aarch64=('51117b94e5e278e609d9f568857c86d7b45cbc98d8d09b20497134377c33351b')
+sha256sums_x86_64=('c2cc6f0389747b342c64be5613b3ffc3f56e3dbe1d11dc82f496e665a613404f')
+sha256sums_aarch64=('c2d50afd989ee2caa7318a10f2ebc9fe56df322b614c4183b284939963b72c63')
 
 package() {
     local _deb
