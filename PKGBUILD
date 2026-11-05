@@ -1,6 +1,6 @@
 # Maintainer: Vendetta1871
 pkgname=skvirt
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Touch-driven on-screen keyboard for fcitx5 on KWin (Wayland)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('hunspell-en_us: English word suggestions'
             'whisper-cpp: voice input via whisper-server'
             'fcitx5-commit-git: insert dictated text as one commit instead of key taps')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bc2abd98b0e88d35dcf594c823d77ebd3265449d046730547b97221c0ea72c97')
+sha256sums=('03ba2669f6bdb1c017b6e9b8876c8d1fa4399fbe3dae6241c13991549f79414c')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" -DCMAKE_BUILD_TYPE=Release
