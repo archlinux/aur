@@ -1,0 +1,27 @@
+post_install() {
+  cat <<'EOF'
+==> InfoCamere Sign Desktop installed. Start it from the menu or run: infocamere-sign
+
+==> Enable the smartcard service once, if not done yet:
+      sudo systemctl enable --now pcscd.socket
+
+==> Notes:
+    - Never start the app with sudo: it leaves a lock in /tmp that stops the
+      engine for your normal user (fix: sudo rm /tmp/InfoCamere*Engine*.lock).
+    - Start hidden in the tray at login:
+        mkdir -p ~/.config/autostart
+        sed 's|^Exec=.*|Exec=infocamere-sign --hide|' \
+          /usr/share/applications/infocamere-sign-desktop.desktop \
+          > ~/.config/autostart/infocamere-sign-desktop.desktop
+    - GNOME needs gnome-shell-extension-appindicator for the tray icon.
+    - This package raises the engine's WebSocket limit from 16 MiB so that
+      signing with 3+ visible signatures does not hang (see PKGBUILD,
+      _ws_limit_mib). Settings and logs are in ~/.infocameresign/
+    - Upstream supports only Ubuntu 24.04 LTS: please report problems on the
+      AUR page, not to InfoCamere.
+EOF
+}
+
+post_upgrade() {
+  echo "==> Restart InfoCamere Sign Desktop (also the copy in the tray) to use the new version."
+}

@@ -1,0 +1,17 @@
+#!/bin/sh
+# Launcher for InfoCamere Sign Desktop (AUR: infocamere-sign-desktop-bin)
+APP=/opt/infocamere-sign-desktop
+
+# The engine keeps a lock file in /tmp. If the app was ever started as root
+# (sudo), that lock is not writable and the engine exits silently.
+for f in "/tmp/InfoCamere Sign Desktop Engine.exe"*.lock; do
+  if [ -e "$f" ] && [ ! -w "$f" ]; then
+    msg="Stale lock owned by another user: $f -- remove it with: sudo rm '$f'"
+    echo "$msg" >&2
+    command -v notify-send >/dev/null && notify-send "InfoCamere Sign Desktop" "$msg"
+  fi
+done
+
+# Electron registers the infocameresign:// handler under this desktop-file name
+export CHROME_DESKTOP=infocamere-sign-desktop.desktop
+exec "$APP/bin/frontend/InfoCamere Sign Desktop.exe" --no-sandbox "$@"

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=InfoCamere Sign Desktop
+GenericName=Digital signature
+GenericName[it]=Firma digitale
+Comment=Qualified electronic signature (CAdES, PAdES) with smartcard
+Comment[it]=Firma digitale qualificata (CAdES, PAdES) con smartcard
+Exec=infocamere-sign %u
+Icon=infocamere-sign-desktop
+Terminal=false
+Categories=Office;Utility;
+Keywords=firma;digitale;signature;p7m;pades;cades;cns;smartcard;
+MimeType=x-scheme-handler/infocameresign;
+StartupWMClass=InfoCamere Sign Desktop
