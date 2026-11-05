@@ -1,13 +1,13 @@
 pkgbase = perl-data-buffer
 	pkgdesc = Read/write buffer class
-	pkgver = 0.04
-	pkgrel = 2
+	pkgver = 0.06
+	pkgrel = 1
 	url = https://metacpan.org/dist/Data-Buffer
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	depends = perl
 	options = !emptydirs
-	source = perl-data-buffer-0.04.tar.gz::https://cpan.metacpan.org/authors/id/B/BT/BTROTT/Data-Buffer-0.04.tar.gz
-	sha256sums = 2b3d09b7bcf389fc116207b283bee250e348d44c9c63460bee67efab4dd21bb4
+	source = perl-data-buffer-0.06.tar.gz::https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Data-Buffer-0.06.tar.gz
+	sha256sums = 815956260f846095f12e1682da6f6d6857a2512dcf394dbc569293102b8fe4ad
 
 pkgname = perl-data-buffer

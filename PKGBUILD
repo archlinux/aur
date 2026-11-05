@@ -3,15 +3,15 @@
 
 pkgname=perl-data-buffer
 _dist=Data-Buffer
-pkgver=0.04
-pkgrel=2
+pkgver=0.06
+pkgrel=1
 pkgdesc='Read/write buffer class'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
 url="https://metacpan.org/dist/$_dist"
-_author=BTROTT
+_author=TIMLEGGE
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('2b3d09b7bcf389fc116207b283bee250e348d44c9c63460bee67efab4dd21bb4')
+sha256sums=('815956260f846095f12e1682da6f6d6857a2512dcf394dbc569293102b8fe4ad')
 
 arch=(any)
 depends=(perl)
