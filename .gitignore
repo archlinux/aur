@@ -4,10 +4,4 @@
 !README.md
 !FEATURES.md
 !.SRCINFO
-!make_statics.py
-!set_gasp.py
 !measure.py
-!make_features.py
-!fit_weight.py
-!even_spacing.py
-!pixel_grid.py

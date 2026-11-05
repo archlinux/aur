@@ -66,8 +66,8 @@ ss01–ss06 subs sups`. GPOS: `kern mark mkmk`.
 
 ## Χρήση
 
-- **Ψήσιμο:** `FEATURE_DEFAULTS=tag,...` βάζει features στο `calt` ώστε να τα
-  εφαρμόζουν όλα τα προγράμματα. Το `make_features.py` αρνείται τα
+- **Ψήσιμο:** `FONTTUNE_FEATURES=tag,...` βάζει features στο `calt` ώστε να τα
+  εφαρμόζουν όλα τα προγράμματα. Το fonttune αρνείται τα
   `aalt`, `ordn`, `dlig` (χωρίς `--allow-risky`). Λογικά για κείμενο:
   `ss01`, `onum`, `cv02`… Όχι `frac`/`sups` (πειράζουν κανονικό κείμενο).
 - **fontconfig `fontfeatures`:** φτάνει μόνο σε pango/GTK. Δες το block στο

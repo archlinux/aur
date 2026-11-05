@@ -11,15 +11,12 @@ patched με Nerd Fonts. Τα χαρακτηριστικά της γραμματ
     makepkg -si </dev/null   # δεν ρωτάει: μόνο προεπιλογές
 
 Επιλογές: βλέπε την κεφαλίδα του `PKGBUILD` (`AK_VARIANT`, `STATIC_WEIGHTS`,
-`NERD_PATCH`, `HINTING`, `HINT_PRESET`, `FEATURE_DEFAULTS`, `GASP_MODE`, …).
-Οι απαντήσεις σώζονται στο `$srcdir/.build_opts`.
+`REGULAR_WGHT`, `SCALE_WEIGHTS`, `NERD_PATCH`) και την ενότητα «Build options
+(fonttune)» στο τέλος.
 
-`FEATURE_DEFAULTS=fonts.conf` (ή η αντίστοιχη επιλογή στο μενού) ψήνει τα features
+`FONTTUNE_FEATURES=fonts.conf` (ή η αντίστοιχη ερώτηση) ψήνει τα features
 που είναι ενεργά (χωρίς σχόλιο) στο `<match>` της οικογένειας `Akt` του
-`~/.config/fontconfig/fonts.conf` (άλλο αρχείο: `AK_FONTS_CONF`). Παραλείπονται, με
-σημείωση, τα αρνητικά (`-liga`), όσα δεν υπάρχουν στο GSUB, όσα εφαρμόζει ήδη
-κάθε shaper (`kern liga ccmp locl`) και όσα αρνείται το `make_features.py`
-(`aalt ordn dlig`). Έτσι το `kern`/`liga` του block δεν χαλά το build.
+`~/.config/fontconfig/fonts.conf` (άλλο αρχείο: `AK_FONTS_CONF`).
 
 Μετά την εγκατάσταση, για bytecode hinting (δεν ενεργοποιείται μόνο του):
 
@@ -139,16 +136,16 @@ hinted περίπτωση από 400 και πάνω (unhinted: 1–3 γράμμ
 
 Ο τελικός συνδυασμός για GNOME/Wayland με `font-hinting = slight`:
 
-    REGULAR_WGHT=auto EVEN_SPACING=all HINTING=false makepkg -si
+    REGULAR_WGHT=auto FONTTUNE_EVEN_SPACING=all FONTTUNE_HINT=no makepkg -si
 
 | Επιλογή | Τι κάνει | Αξίζει στο `slight`; |
 |---|---|---|
-| `HINTING` (ttfautohint, presets) | bytecode hinting | **Όχι**: το `slight` χρησιμοποιεί τον autohinter του FreeType και αγνοεί το bytecode· με και χωρίς hint το αποτέλεσμα βγαίνει πανομοιότυπο. Ωφελεί μόνο `medium`/`full` (εκεί τα κάθετα πάχη βγαίνουν ομοιόμορφα, sd 0.00 έναντι 0.14) |
-| `REGULAR_WGHT=auto` | κόβει το Regular σε static στο wght όπου οι οριζόντιες μπάρες πέφτουν σε ακέραιο pixel (`fit_weight.py`, 16 ppem, ανοχή 0.25 → **335** για το Akt) και ξαναμοιράζει τα βάρη κάτω από το Bold (`SCALE_WEIGHTS`, π.χ. R=330 → Light 253, Medium 453, SemiBold 577) | **Ναι**: η αχνή γραμμή κάτω από την πάνω μπάρα του Τ/τ πέφτει από 0.53 σε 0.36 του μέγιστου |
-| `EVEN_SPACING=all` | kern lookup που εξισώνει τα οπτικά κενά ζευγών (`even_spacing.py`) | Ανεξάρτητο από το hinting (αλλάζει μόνο το GPOS) |
-| `PIXEL_GRID=16` | στρογγυλοποιεί advances (`hmtx`) και kerning σε ακέραια pixel στα 16 ppem (`pixel_grid.py`) ώστε με subpixel positioning το ίδιο στέλεχος να βγαίνει ίδιο σε κάθε γράμμα | **Ναι**, μόνο με `AK_VARIANT=static`: η μεταβλητή γραμματοσειρά κρατά τα advances στο HVAR και παραλείπεται με προειδοποίηση. Τιμή αντί για 1000 upem: υπόλοιπο ≤ 0.008 px (το 62.5 δεν είναι ακέραιο). Κόστος: τα κενά διαφέρουν έως ~0.5 px από το σχέδιο |
+| `FONTTUNE_HINT` (ttfautohint, presets) | bytecode hinting | **Όχι**: το `slight` χρησιμοποιεί τον autohinter του FreeType και αγνοεί το bytecode· με και χωρίς hint το αποτέλεσμα βγαίνει πανομοιότυπο. Ωφελεί μόνο `medium`/`full` (εκεί τα κάθετα πάχη βγαίνουν ομοιόμορφα, sd 0.00 έναντι 0.14) |
+| `REGULAR_WGHT=auto` | κόβει το Regular σε static στο wght όπου οι οριζόντιες μπάρες πέφτουν σε ακέραιο pixel (`fonttune fit-weight`, 16 ppem, ανοχή 0.25 → **335** για το Akt) και ξαναμοιράζει τα βάρη κάτω από το Bold (`SCALE_WEIGHTS`, π.χ. R=330 → Light 253, Medium 453, SemiBold 577) | **Ναι**: η αχνή γραμμή κάτω από την πάνω μπάρα του Τ/τ πέφτει από 0.53 σε 0.36 του μέγιστου |
+| `FONTTUNE_EVEN_SPACING=all` | kern lookup που εξισώνει τα οπτικά κενά ζευγών (fonttune `even_spacing`) | Ανεξάρτητο από το hinting (αλλάζει μόνο το GPOS) |
+| `FONTTUNE_PIXEL_GRID=16` | στρογγυλοποιεί advances (`hmtx`) και kerning σε ακέραια pixel στα 16 ppem (fonttune `pixel_grid`) ώστε με subpixel positioning το ίδιο στέλεχος να βγαίνει ίδιο σε κάθε γράμμα | **Ναι**, μόνο με static (`AK_VARIANT=static`): η μεταβλητή γραμματοσειρά κρατά τα advances στο HVAR και παραλείπεται με προειδοποίηση. Τιμή αντί για 1000 upem: υπόλοιπο ≤ 0.008 px (το 62.5 δεν είναι ακέραιο). Κόστος: τα κενά διαφέρουν έως ~0.5 px από το σχέδιο |
 
-### `fit_weight.py` (`REGULAR_WGHT=auto`)
+### `fonttune fit-weight` (`REGULAR_WGHT=auto`)
 
 Μετρά το ύψος της μπάρας του `=` και το πλάτος του στελέχους του `l` σε instances
 ανά 50 μονάδες wght (παρεμβολή ανά 5) και διαλέγει το μεγαλύτερο wght ≤ 400
@@ -157,7 +154,7 @@ hinted περίπτωση από 400 και πάνω (unhinted: 1–3 γράμμ
 με 0.2 έβγαινε 315, που φάνηκε χειρότερο από το 330. 12 και 21.33 ppem → 400
 (δεν χρειάζεται αλλαγή). Έξοδος 400 ή αποτυχία = κανένα cut.
 
-### `even_spacing.py` (`EVEN_SPACING`)
+### `even_spacing` (`FONTTUNE_EVEN_SPACING`)
 
 Για κάθε ζεύγος πεζών και κάθε ζεύγος κεφαλαίων (Latin, Greek, Cyrillic, ή λίστα) μετρά
 το εμβαδόν του κενού μέχρι το x-height / cap height, με τα προφίλ κομμένα σε βάθος
@@ -170,10 +167,10 @@ Calibration ανά font: το `depth` και το `strength` προσαρμόζ�
 σχεδιαστής έκανε kern με το χέρι (η διόρθωση που ζητά το μέτρο πρέπει να συμφωνεί
 μαζί τους· Akt: ~4700 ζεύγη, r 0.41–0.60, depth 0.18–0.28). Αν r < 0.25, πέφτει σε
 depth 0.22 / strength 0.8. Τα `--max`/`--min` ακολουθούν το μέγεθος-στόχο
-(1px / 0.1px στο `FIT_PPEM`). Παράκαμψη: `EVEN_STRENGTH`, `EVEN_DEPTH`, `EVEN_MAX`,
-`EVEN_MIN`. Αποτέλεσμα: διασπορά κενών 51.7 → 35.7 (std, μονάδες/1000).
+(1px / 0.1px στο `FIT_PPEM`). Παράκαμψη: `FONTTUNE_EVEN_STRENGTH`, `FONTTUNE_EVEN_DEPTH`, `FONTTUNE_EVEN_MAX`,
+`FONTTUNE_EVEN_MIN`. Αποτέλεσμα: διασπορά κενών 51.7 → 35.7 (std, μονάδες/1000).
 
-    python even_spacing.py --stats --report ει,ώσ,ab FONT.ttf   # μόνο μέτρηση
+    # μέτρηση: δες `fonttune steps` / το even_spacing του fonttune
 
 Επαληθεύτηκε με πραγματικό Pango shaping: το «ώσ» ανοίγει +2.1px στα 100pt, ενώ
 τα kerned ζεύγη (λώ, AV) μένουν ίδια.
@@ -185,12 +182,12 @@ depth 0.22 / strength 0.8. Τα `--max`/`--min` ακολουθούν το μέγ
 σε όλα τα `hintstyle`, `gtk-font-rendering` και renderers: η τοποθέτηση είναι σωστή.
 Το `gtk-hint-font-metrics=true` τη χειροτερεύει (0.17 / 0.51). Η «περίεργη απόσταση»
 στο «εκδηλώσεις» ήταν στο ίδιο το φόντ (άνισα sidebearings, π.χ. λώ 75 έναντι ις 136
-μονάδες), γι' αυτό υπάρχει το `EVEN_SPACING`.
+μονάδες), γι' αυτό υπάρχει το `FONTTUNE_EVEN_SPACING`.
 
 ## 5. Τεχνικές από τα άλλα πακέτα
 
-`HINT_INTEGER_PPEM` είναι κλειστό (μεγαλώνει το κείμενο στο Linux). `GASP_MODE=keep`:
-το FreeType αγνοεί το gasp. `FEATURE_DEFAULTS` ψήνει features στο `calt` (το
+Το integer-ppem είναι κλειστό (μεγαλώνει το κείμενο στο Linux). Το gasp μένει όπως είναι:
+το FreeType το αγνοεί. Το fonttune `features` ψήνει features στο `calt` (το
 fontconfig `fontfeatures` φτάνει μόνο στο pango). Το Nerd Fonts patching γίνεται
 πριν το hinting και αναγκάζει static, γιατί το font-patcher αφαιρεί το fvar/gvar.
 
@@ -199,3 +196,14 @@ fontconfig `fontfeatures` φτάνει μόνο στο pango). Το Nerd Fonts p
     python measure.py FONT.ttf MODE '{"wght":400}' 12,13,14,16 glued,height,dev
 
 (MODE: `none`, `slight`, `medium`, `auto`. Θέλει `freetype-py` και `numpy`.)
+
+## Build options (fonttune)
+
+Η ρύθμιση γίνεται από το [fonttune](https://github.com/gaou-piou/fonttune): το
+PKGBUILD ρωτάει στο `prepare()` (hint, gasp, features, even spacing, pixel grid, …)
+και κάθε απάντηση μπορεί να οριστεί εκ των προτέρων ως `FONTTUNE_<KEY>`
+(π.χ. `FONTTUNE_HINT=natural`, `FONTTUNE_FEATURES=case,ss01`). Επιλογές του
+πακέτου: `AK_VARIANT`, `STATIC_WEIGHTS`, `REGULAR_WGHT`, `SCALE_WEIGHTS`, `FIT_PPEM`, `FIT_TOLERANCE`, `NERD_PATCH`. Οι παλιές `HINTING`, `HINT_*`, `GASP_MODE`, `FEATURE_*`, `EVEN_*`, `PIXEL_GRID`
+και τα scripts `make_statics.py`, `fit_weight.py`, `make_features.py`, `set_gasp.py`, `even_spacing.py`, `pixel_grid.py` αφαιρέθηκαν: τα αντικαθιστά το
+fonttune. Οι ενότητες παραπάνω που τις αναφέρουν προηγούνται αυτής της αλλαγής·
+οι επιλογές που έγιναν σώζονται στο `/usr/share/doc/ttf-akt-hinted/fonttune.toml`.
