@@ -1,7 +1,7 @@
 # Maintainer: Treadful <mail at treadful dot dev>
 _base_pkgname="doh-server"
 pkgname="${_base_pkgname}-bin"
-pkgver=0.10.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Fast, mature, secure DoH and ODoH server proxy written in Rust."
 arch=('x86_64' 'aarch64')
@@ -25,9 +25,9 @@ sha256sums=(
 	'56ffc1c5331aa6b372c84d345f6a352d5321ab2787eea92449b6c3776b9c4711'
 	'57b1cb9011c96531d6a93253c23ab114af5ff3b5c447f9a3029983744676bf97')
 sha256sums_x86_64=(
-	'98a8e2a3fa9ad4ffccded1ef6e1d0b2a6647755edea76ed3394cc7b27ea34829')
+	'7ce97a4ed3d9deee9d2b1de71bb60013f46188f5d2a085fbf230bf4c8e3c8b25')
 sha256sums_aarch64=(
-	'f588e5bafcd4b36e490466bbbb693eae6e1d783c68dbb5314a1523bd1a27f114')
+	'579f63372b23e904761d3b12aeb5aa3031403dda1d03f95288b0ef5b21e8c36c')
 validpgpkeys=()
 
 package() {
