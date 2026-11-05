@@ -7,7 +7,7 @@ pkgname=(sourcemod-scripting sourcemod sourcemod-src)
 # SourceMod's version: the stable branch's tag, <version>.<build>, the build being the number of
 # commits, which SourceMod's versioning counts with git
 pkgver=1.12.0.7260
-pkgrel=2
+pkgrel=3
 pkgdesc="SourceMod, the scripting and administration platform for Source engine game servers"
 arch=(x86_64 aarch64)
 url="https://www.sourcemod.net"
@@ -70,7 +70,7 @@ sha512sums=('783fe9bb0dd53f3f751871e89a03e52911afc4fbfaddd73c03c16291a9bdd6e9fe4
   '156d6c377315044ccb081cddd28d932927139674a67bd2e6ef47c3030dcf58ccf4168936b823a8efad63ffcedc57f700654ce38223f8dc5c25bfc39051fa1389'
   '0a991fc5debf7a9f56223083f255094733feaec23166f621e2e77c4f9886e98be9ba4989a66c3889d0424e0d0d2df6f98c229e8ce00e3da2f20bea2c0b333e7b'
   '9abe05c8a9b14575cbd04318c8a9aecb0cc3593470cd69ede089c103b6a507c383be72f12e2f8240fa0edfac4d543be58c3e5f3d9106ecc3857783af90e57096'
-  'eba2aead936cc6b544c341c1b83fc25af17e876f84ff57a998fc11eda4fa6f30a2bd3ef9db4a15b7d9bcd1d3ea847e0929dc23a078b884d0cf5d40fbd835f676'
+  '113df3e27049294b62c18c54bc40b9121d53b232df2f94d01703740e9e1646662aebff35e3b25946effa9e32c59721e76e91e7fb21a00a4ca5417f9b074f33c6'
   '1efd42634d92859493cd30a36b6696cd5c748dcc533c09c88fe68a8f447f03708ffa11f93d2df5652e63e2c35cc4de7a59d71230c19eb9ff51b7c5dff1f383dd'
   'e85a55faf907b826cb5fa80505fb84e73090d0a31025695ffd6fb3356cd778a77d7fdf30da6e036e44408edc63b63920340075dbeb969a99181440f0c391060d'
   'd57a24d7cea93a0ef35ed452c865095ffce638fa9cf020592a18afe9f03d6d23b607aa16ed0a94d0d180380a2ec84d16cf43aed520c1f638785690215d4af423'
@@ -90,7 +90,7 @@ b2sums=('80681ad0378521bc27756add78ac4c66c81d53b28016efc37b4f1a7d82b598a370bd6a9
   'c1d68f624e55bec3af3e4a3b1461bf420e6ce03ada499d0eff39a14e76494ef2502ee56a6f3da1e442209b4f10165d7b2b026b9efad982c6e40cfd0d5dd323d3'
   '3f24351caa24fc969e2b85ea343df270e39b2679cef5ca5e5ce3c8a36735cf9b44ecc3d55bdb2343377ecc9efce386e308b4f45e1d6d48380d155b56c6611ba2'
   '0001251324fb1c43da0676f7e7da4f01667273b8095afbbb539a760288aba6ad782ced95d7863ee671449f526009dd1141a65c217a502118ff35338d1ee4f32e'
-  '5d1fbca72e2da61aea85526e9d0c3661084833bbe79d4b807d04bf4e77ae8a83ee2edcef6376eae01e874d8dce271842e470424fc8704c90198387df4fae5d3f'
+  '273d3325c79b800b52b83e1af11011224d7fdaa67dd49b0ef4105c3211b467dddce22aed27fc3476356195f2539703e1a96e42a9437ea6f5d1b0b9a6a7eb3122'
   'd826c2dd98b0199c5a351c5ec340e27490108f667445b42b5884d1d2a5be23b0b8beec288266d4ead602569e363c81fed570eac2732cf0be6a05bd557b9cf0a4'
   '634cebeb610aafd6ee1067d6d76afdbf93c7fd95227f2d47656a5d61395441471c4ec6d30995ff3c80f649c38c488ec272a95e8d0080288d5217fc8197ef8954'
   '75ec7373286f5d7cd778e6738609679c95aff00ce13eb9b451a3156dcd1da3191862f587b8b01ff4f056c1348529267fe34246bf63574aeb7f10b13a7b6db612'
@@ -140,7 +140,8 @@ prepare() {
   # The PostgreSQL extension with the system's libpq, linked dynamically, instead of a static 9.6
   patch -Np1 -i "$srcdir/pgsql-libpq.patch"
   # The regex extension with the system's PCRE2, linked dynamically, instead of a static PCRE 8.44
-  # (PCRE 1, end of life): translates regex.inc's PCRE flags and error codes
+  # (PCRE 1, end of life): translates regex.inc's PCRE flags and error codes. Without PCRE's limit of
+  # 20 groups and matches, empty matches of MatchAll advance, and GetSubString keeps to maxlen.
   patch -Np1 -i "$srcdir/regex-pcre2.patch"
   # The webternet extension, which the updater downloads with, with the system's libcurl, linked
   # dynamically, instead of a static curl 7.19 without TLS; the update server over HTTPS

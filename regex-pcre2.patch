@@ -43,7 +43,7 @@ index 0aa9b77..7ba49df 100644
    binary.sources += [
      'extension.cpp',
 diff --git a/extensions/regex/CRegEx.cpp b/extensions/regex/CRegEx.cpp
-index 06a50dc..368cb5c 100644
+index 06a50dc..9aa770e 100644
 --- a/extensions/regex/CRegEx.cpp
 +++ b/extensions/regex/CRegEx.cpp
 @@ -29,11 +29,9 @@
@@ -82,7 +82,7 @@ index 06a50dc..368cb5c 100644
  	mFree = true;
  	if (subject)
  		free(subject);
-@@ -81,19 +85,88 @@ int RegEx::Compile(const char *pattern, int iFlags)
+@@ -81,19 +85,94 @@ int RegEx::Compile(const char *pattern, int iFlags)
  {
  	if (!mFree)
  		Clear();
@@ -111,6 +111,9 @@ index 06a50dc..368cb5c 100644
 +		pcre2_set_newline(ctx, options.newline);
 +	if (options.bsr)
 +		pcre2_set_bsr(ctx, options.bsr);
++	/* \K in lookarounds, which PCRE allowed */
++	uint32_t extra = PCRE2_EXTRA_ALLOW_LOOKAROUND_BSK;
++	pcre2_set_compile_extra_options(ctx, extra);
 +
 +	int errorcode;
 +	PCRE2_SIZE erroroffset;
@@ -123,7 +126,7 @@ index 06a50dc..368cb5c 100644
 +		backslashes++;
 +	if (re == nullptr && errorcode == PCRE2_ERROR_UNKNOWN_ESCAPE && options.unknownEscapeIsLiteral && backslashes % 2 == 0)
 +	{
-+		pcre2_set_compile_extra_options(ctx, PCRE2_EXTRA_BAD_ESCAPE_IS_LITERAL);
++		pcre2_set_compile_extra_options(ctx, extra | PCRE2_EXTRA_BAD_ESCAPE_IS_LITERAL);
 +		re = pcre2_compile(reinterpret_cast<PCRE2_SPTR>(pattern), PCRE2_ZERO_TERMINATED, options.compile, &errorcode, &erroroffset, ctx);
 +	}
 +	pcre2_compile_context_free(ctx);
@@ -135,35 +138,38 @@ index 06a50dc..368cb5c 100644
 +		mError = mErrorBuffer;
 +		mErrorCode = PosixCompileError(errorcode);
 +		mErrorOffset = static_cast<int>(erroroffset);
-+		return 0;
-+	}
-+
-+	/* As many pairs as PCRE's ovector of MAX_CAPTURES ints held (the last third was workspace) */
-+	mMatchData = pcre2_match_data_create(MAX_MATCHES, nullptr);
+ 		return 0;
+ 	}
+ 
++	/* Room for the match and all groups of the pattern: PCRE's fixed ovector of 20 pairs (the last
++	   third workspace) made a pattern with more groups report no match */
++	mMatchData = pcre2_match_data_create_from_pattern(re, nullptr);
 +	if (mMatchData == nullptr)
 +	{
 +		pcre2_code_free(re);
 +		re = nullptr;
 +		mErrorCode = REG_ESPACE;
 +		mError = "failed to get memory";
- 		return 0;
- 	}
++		return 0;
++	}
 +	mMatchOptions = options.match;
- 
++
  	mFree = false;
  
  	return 1;
  }
  
 +/* Runs one match and copies the offsets into the match like PCRE's ovector, unset groups as -1 */
-+bool RegEx::MatchAt(size_t len, size_t offset, RegexMatch &match, int &rc)
++bool RegEx::MatchAt(size_t len, size_t offset, uint32_t options, RegexMatch &match, int &rc)
 +{
-+	rc = pcre2_match(re, reinterpret_cast<PCRE2_SPTR>(subject), len, offset, mMatchOptions, mMatchData, nullptr);
++	rc = pcre2_match(re, reinterpret_cast<PCRE2_SPTR>(subject), len, offset, mMatchOptions | options, mMatchData, nullptr);
 +	if (rc < 0)
 +		return false;
 +
 +	PCRE2_SIZE *ovector = pcre2_get_ovector_pointer(mMatchData);
-+	for (int i = 0; i < 2 * MAX_MATCHES; i++)
++	uint32_t pairs = pcre2_get_ovector_count(mMatchData);
++	match.mVector.resize(2 * pairs);
++	for (uint32_t i = 0; i < 2 * pairs; i++)
 +		match.mVector[i] = ovector[i] == PCRE2_UNSET ? -1 : static_cast<int>(ovector[i]);
 +	match.mSubStringCount = rc;
 +
@@ -173,14 +179,15 @@ index 06a50dc..368cb5c 100644
  int RegEx::Match(const char *const str, const size_t offset)
  {
  	int rc = 0;
-@@ -106,20 +179,17 @@ int RegEx::Match(const char *const str, const size_t offset)
+@@ -106,20 +185,18 @@ int RegEx::Match(const char *const str, const size_t offset)
  	//save str
  	subject = strdup(str);
  
 -	rc = pcre_exec(re, nullptr, subject, strlen(subject), offset, 0, mMatches[0].mVector, MAX_CAPTURES);
 -
 -	if (rc < 0)
-+	if (!MatchAt(strlen(subject), offset, mMatches[0], rc))
++	mMatches.resize(1);
++	if (!MatchAt(strlen(subject), offset, 0, mMatches[0], rc))
  	{
 -		if (rc == PCRE_ERROR_NOMATCH)
 +		if (rc == PCRE2_ERROR_NOMATCH)
@@ -197,17 +204,34 @@ index 06a50dc..368cb5c 100644
  	mMatchCount = 1;
  
  	return 1;
-@@ -141,22 +211,21 @@ int RegEx::MatchAll(const char *str)
+@@ -140,23 +217,37 @@ int RegEx::MatchAll(const char *str)
+ 
  	size_t offset = 0;
  	unsigned int matches = 0;
++	RegexMatch match;
++	/* After an empty match, a non-empty one at the same offset (as pcre2demo.c does) */
++	uint32_t retry = 0;
  
 -	while (matches < MAX_MATCHES && offset < len && (rc = pcre_exec(re, 0, subject, len, offset, 0, mMatches[matches].mVector, MAX_CAPTURES)) >= 0)
-+	while (matches < MAX_MATCHES && offset < len && MatchAt(len, offset, mMatches[matches], rc))
++	while (offset < len)
  	{
- 		offset = mMatches[matches].mVector[1];
+-		offset = mMatches[matches].mVector[1];
 -		mMatches[matches].mSubStringCount = rc;
++		if (!MatchAt(len, offset, retry, match, rc))
++		{
++			if (rc != PCRE2_ERROR_NOMATCH || !retry)
++				break;
++			/* There's none, the next match starts a character later: the empty one would repeat
++			   forever. PCRE stopped after 20 matches, which were the same empty one. */
++			offset = NextCharacter(len, offset);
++			retry = 0;
++			continue;
++		}
  
++		mMatches.push_back(match);
  		matches++;
++		offset = match.mVector[1];
++		retry = match.mVector[0] == match.mVector[1] ? PCRE2_NOTEMPTY_ATSTART | PCRE2_ANCHORED : 0;
  	}
  
 -	if (rc < PCRE_ERROR_NOMATCH || (rc == PCRE_ERROR_NOMATCH && matches == 0))
@@ -224,26 +248,100 @@ index 06a50dc..368cb5c 100644
  			return -1;
  		}
  	}
+@@ -166,6 +257,26 @@ int RegEx::MatchAll(const char *str)
+ 	return 1;
+ }
+ 
++/* The offset after the character at offset, a newline of two characters as one */
++size_t RegEx::NextCharacter(size_t len, size_t offset) const
++{
++	uint32_t options = 0, newline = 0;
++	pcre2_pattern_info(re, PCRE2_INFO_ALLOPTIONS, &options);
++	pcre2_pattern_info(re, PCRE2_INFO_NEWLINE, &newline);
++
++	bool crlf = newline == PCRE2_NEWLINE_ANY || newline == PCRE2_NEWLINE_CRLF || newline == PCRE2_NEWLINE_ANYCRLF;
++	if (crlf && offset + 1 < len && subject[offset] == '\r' && subject[offset + 1] == '\n')
++		return offset + 2;
++
++	offset++;
++	if (options & PCRE2_UTF)
++	{
++		while (offset < len && (subject[offset] & 0xc0) == 0x80)
++			offset++;
++	}
++	return offset;
++}
++
+ void RegEx::ClearMatch()
+ {
+ 	// Clears match results
+@@ -176,6 +287,7 @@ void RegEx::ClearMatch()
+ 		free(subject);
+ 	subject = nullptr;
+ 	mMatchCount = 0;
++	mMatches.clear();
+ }
+ 
+ bool RegEx::GetSubstring(int s, char buffer[], int max, int match)
+@@ -184,16 +296,16 @@ bool RegEx::GetSubstring(int s, char buffer[], int max, int match)
+ 
+ 	if (s >= mMatches[match].mSubStringCount || s < 0)
+ 		return false;
++	if (max <= 0)
++		return true;
+ 
+-	char *substr_a = subject + mMatches[match].mVector[2 * s];
+-	int substr_l = mMatches[match].mVector[2 * s + 1] - mMatches[match].mVector[2 * s];
++	/* An unset group is empty */
++	int start = mMatches[match].mVector[2 * s];
++	int substr_l = start < 0 ? 0 : mMatches[match].mVector[2 * s + 1] - start;
+ 
+-	for (i = 0; i<substr_l; i++)
+-	{
+-		if (i >= max)
+-			break;
+-		buffer[i] = substr_a[i];
+-	}
++	/* At most max - 1 characters, the last one is the terminator */
++	for (i = 0; i < substr_l && i < max - 1; i++)
++		buffer[i] = subject[start + i];
+ 
+ 	buffer[i] = '\0';
+ 
 diff --git a/extensions/regex/CRegEx.h b/extensions/regex/CRegEx.h
-index 8a08857..bb908ab 100644
+index 8a08857..cefbd5d 100644
 --- a/extensions/regex/CRegEx.h
 +++ b/extensions/regex/CRegEx.h
-@@ -33,6 +33,9 @@
+@@ -33,13 +33,16 @@
  #ifndef _INCLUDE_CREGEX_H
  #define _INCLUDE_CREGEX_H
  
+-#define MAX_MATCHES 20
+-#define MAX_CAPTURES MAX_MATCHES*3
 +#define PCRE2_CODE_UNIT_WIDTH 8
 +#include <pcre2.h>
 +
- #define MAX_MATCHES 20
- #define MAX_CAPTURES MAX_MATCHES*3
++#include <vector>
  
-@@ -62,9 +65,14 @@ public:
+ struct RegexMatch
+ {
+ 	int mSubStringCount;
+-	int mVector[MAX_CAPTURES];
++	/* The offsets of the match and its groups, in pairs, -1 for an unset group */
++	std::vector<int> mVector;
+ };
+ 
+ class RegEx
+@@ -60,11 +63,17 @@ public:
+ 	int mErrorCode;
+ 	const char *mError;
  	int mMatchCount;
- 	RegexMatch mMatches[MAX_MATCHES];
+-	RegexMatch mMatches[MAX_MATCHES];
++	std::vector<RegexMatch> mMatches;
  private:
 -	pcre *re;
-+	bool MatchAt(size_t len, size_t offset, RegexMatch &match, int &rc);
++	bool MatchAt(size_t len, size_t offset, uint32_t options, RegexMatch &match, int &rc);
++	size_t NextCharacter(size_t len, size_t offset) const;
 +
 +	pcre2_code *re;
 +	pcre2_match_data *mMatchData;
