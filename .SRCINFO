@@ -1,8 +1,8 @@
 pkgbase = omniget-bin
-	pkgdesc = A yt-dlp GUI, a Udemy and Hotmart course downloader, and a desktop app for AI coding agents.Free and open source.
-	pkgver = 0.10.1
+	pkgdesc = Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites.
+	pkgver = 0.14.0
 	pkgrel = 1
-	url = https://discord.gg/TA8A8r2z
+	url = https://t.me/OpenSelena
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,11 +12,11 @@ pkgbase = omniget-bin
 	depends = alsa-lib
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = omniget=0.10.1
+	provides = omniget=0.14.0
 	conflicts = omniget
-	source_aarch64 = omniget-0.10.1-aarch64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.10.1/omniget-0.10.1-1.aarch64.rpm
-	sha256sums_aarch64 = 31e86e9ac4eb33911f8a82c956cff3d7cfd5071a92b97960c20979b7b67c1391
-	source_x86_64 = omniget-0.10.1-x86_64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.10.1/omniget-0.10.1-1.x86_64.rpm
-	sha256sums_x86_64 = e26dfca13730ca80f3b2923261a415f0f9858e9691d626a1b3dea64a4c3c050c
+	source_aarch64 = omniget-0.14.0-aarch64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.14.0/OmniGet_0.14.0_arm64.deb
+	sha256sums_aarch64 = dbb60afd3e6d416df00ea0e39f62fac6f76e6cc2dbe4eb47194dda81b9dffb47
+	source_x86_64 = omniget-0.14.0-x86_64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.14.0/OmniGet_0.14.0_amd64.deb
+	sha256sums_x86_64 = 620ab4dcad9462958746185365931ca3b60dcdcc05d8a61b7d8c0b7ed7a43900
 
 pkgname = omniget-bin
