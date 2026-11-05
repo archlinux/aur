@@ -2,7 +2,7 @@
 
 _pkgname=gostman
 pkgname=${_pkgname}-bin
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='An API client for REST, GraphQL, gRPC and WebSocket that you, your CI pipeline and your coding agent share. Desktop app, web app and command line, no account.'
 arch=(x86_64)
@@ -29,7 +29,7 @@ options=(
 source_x86_64=(
 	"${_pkgname}-${pkgver}.deb::https://github.com/kunalgoesbyken/${_pkgname}/releases/download/v${pkgver}/Gostman-linux-amd64.deb"
 )
-b2sums_x86_64=('4920a39f94043cc56ebbbba3a9b9d165b0b06fd9b60cde445c14b1732f5ba223e446b719227842b882e94a393fcb4dff833563716d2014e508f9d583a62181b9')
+b2sums_x86_64=('303728e1ea361a6b83cc3a6f0afd5519aa4410023fc687114adf334bcf24fa86e3fdd0b8fb8d48c5a4604344ef7329e023357a1233a7640ad5a27c5ed334dcb7')
 
 prepare() {
 	bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/"
