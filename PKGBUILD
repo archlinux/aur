@@ -2,7 +2,7 @@
 
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
-pkgver=3.2.0.r4.g3a8080e
+pkgver=3.3.0.r7.g16e08c0
 pkgrel=1
 pkgdesc="A GUI client for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ url="https://github.com/yuezk/GlobalProtect-openconnect"
 license=('GPL3')
 
 makedepends=(git pkg-config make autoconf automake gettext libtool patch curl wget file appmenu-gtk-module librsvg cargo)
-depends=(openssl webkit2gtk-4.1 libappindicator-gtk3 libsecret libxml2 zlib lz4 gnutls libp11-kit nettle gmp shared-mime-info desktop-file-utils xdg-utils)
+depends=(webkit2gtk-4.1 libappindicator-gtk3 libsecret libxml2 zlib lz4 gnutls libp11-kit nettle libhogweed.so gmp shared-mime-info desktop-file-utils xdg-utils)
 optdepends=('wmctrl: for window management')
 
 conflicts=('globalprotect-openconnect')
@@ -22,7 +22,8 @@ source=("${_pkgname_prefix}::git+https://github.com/yuezk/GlobalProtect-openconn
 
 sha256sums=("SKIP")
 
-options=('!strip')
+# GCC LTO objects from native dependencies cannot be linked by Rust's LLD.
+options=('!strip' '!lto')
 
 pkgver() {
   cd "${_pkgname_prefix}"
@@ -38,9 +39,6 @@ prepare() {
 }
 
 build() {
-  # Must unset the CFLAGS, otherwise the build fails on linking openssl, don't know why
-  unset CFLAGS
-
   cd "${_pkgname_prefix}"
   cargo build --frozen --release
 }
