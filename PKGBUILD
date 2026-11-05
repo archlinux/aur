@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=pdbufr
 pkgname=python-${_name}
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="High-level BUFR interface for ecCodes"
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
     python-requests
 )
 source=($_name::git+https://github.com/ecmwf/$_name.git#tag=$pkgver)
-b2sums=('7bc84358d776385fbe0baf9276202febf4bc74f1b5f603eefa38dd95831ac3d40912653adf5a557f9943b4be579dc9b24d5e9392b8c4a58ae6499ee9bf4ede7e')
+b2sums=('283dc6c7083889df45b1dec974cd40826d8bef04700710340e5f2247478b6c68bdcb3d814eae948e6a6d8b28548473ad3cd2e2f793e3b07b31cd1fa948fc0d09')
 
 build() {
     cd $_name
