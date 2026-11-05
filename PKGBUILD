@@ -24,15 +24,19 @@ install="${pkgname}.install"
 source_x86_64=(
   "nym-vpn-core-bin-x86_64.tar.gz::${url}/releases/download/${_release_tag}/nym-vpn-core-v${_dlver}_linux_x86_64.tar.gz"
   "nym-vpnd.service"
+  "nym-vpn.conf"
 )
 source_aarch64=(
   "nym-vpn-core-bin-aarch64.tar.gz::${url}/releases/download/${_release_tag}/nym-vpn-core-v${_dlver}_linux_aarch64.tar.gz"
   "nym-vpnd.service"
+  "nym-vpn.conf"
 )
 b2sums_x86_64=('265dba8854e24b25e5be5a76ca3be47c023fbdc837cc8dbdb285e120bdec887453ae5beb0f34acf448922c0959dccb25f3c6ec66e5fc2d2cdde1a1f1fab5b2de'
-               'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
+               'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414'
+               'b10f63aa6bfce86012bc46176025a847c2877cd8728652ba7d4dcaeba67d71b6eb35212281da43e117c5c11cae3499f8425c1e486a358047b7340bf613a4b14a')
 b2sums_aarch64=('7b8b15ea472340cbb5aca96ec16bdd0badd46f0e2c40b99643cbc3ead03172a57621eb7f2ca92573b00a79f11302e99a966e8e36d1627a777a0c4d01d39c1cd5'
-                'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
+                'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414'
+                'b10f63aa6bfce86012bc46176025a847c2877cd8728652ba7d4dcaeba67d71b6eb35212281da43e117c5c11cae3499f8425c1e486a358047b7340bf613a4b14a')
 
 package() {
   local _srcdir="nym-vpn-core-v${_dlver}_linux_${CARCH}"
@@ -42,4 +46,5 @@ package() {
   install -Dm755 "${_srcdir}/nym-socks5-proxy" "${pkgdir}/usr/bin/nym-socks5-proxy"
 
   install -Dm644 nym-vpnd.service "${pkgdir}/usr/lib/systemd/system/nym-vpnd.service"
+  install -Dm644 nym-vpn.conf "${pkgdir}/usr/lib/sysusers.d/nym-vpn.conf"
 }
