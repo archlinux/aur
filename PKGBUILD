@@ -19,7 +19,7 @@ pkgname=(
 )
 pkgver=1.12.0
 _realver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=(
@@ -40,6 +40,7 @@ build () {
 	--features tpm,unix \
 	--package daemon \
 	--package kanidm-ipa-sync \
+	--package kanidm-mail-sender \
 	--package kanidm_tools \
 	--package kanidm_unix_int \
 	--package nss_kanidm \
@@ -84,6 +85,7 @@ package_kanidm-server () {
 
   install -Dm755 target/release/kanidmd "${pkgdir}/usr/bin/kanidmd"
   install -Dm755 target/release/kanidm-ipa-sync "${pkgdir}/usr/bin/kanidm-ipa-sync"
+  install -Dm755 target/release/kanidm-mail-sender "${pkgdir}/usr/bin/kanidm-mail-sender"
 
   install -Dm644 target/release/build/completions/_kanidmd "${pkgdir}/usr/share/zsh/site-functions/_kanidmd"
 
