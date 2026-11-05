@@ -1,20 +1,21 @@
 pkgbase = perl-catalyst-plugin-session-store-file
 	pkgdesc = File storage backend for session data.
 	pkgver = 0.18
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-File
+	pkgrel = 2
+	url = https://metacpan.org/dist/Catalyst-Plugin-Session-Store-File
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker>=6.42
+	makedepends = perl-module-install
+	makedepends = perl-test-simple
 	depends = perl-cache-cache>=1.02
 	depends = perl-catalyst-plugin-session>=0.27
 	depends = perl-catalyst-runtime>=5.7000
 	depends = perl-class-data-inheritable>=0.04
 	depends = perl-mro-compat>=0.10
+	depends = perl>=5.8.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Catalyst-Plugin-Session-Store-File-0.18.tar.gz
-	md5sums = ab6912c5d8a4eeedc7d603e5bb0a47cf
-	sha512sums = cd57f24c75304952989147b39ca542aed8d1ab448e77cba876b34f8bf0ba3859f5b0ac7a10dd480eadb2046037ecdd137bea1a2ea7ecc67dec2f49989bde3118
+	source = https://cpan.metacpan.org/authors/id/F/FL/FLORA/Catalyst-Plugin-Session-Store-File-0.18.tar.gz
+	sha256sums = 54738e3ce76f8be8b66947092d28973c73d79d1ee19b5d92b057552f8ff09b4f
 
 pkgname = perl-catalyst-plugin-session-store-file
-
