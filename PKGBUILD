@@ -3,7 +3,7 @@
 _pkgname='archlinux'
 _variant='cloudimg'
 pkgname="libvirt-image-${_pkgname}-bin"
-pkgver=20261015.611680
+pkgver=20261101.620452
 pkgrel=1
 pkgdesc='Official Arch Linux cloud-init QCOW2 template for libvirt'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 noextract=("${_upstream_image}")
 sha256sums=(
-	'08754e28d91b1680086c6211ef4df13559e766fff7cdb4006489b14b5d281f08'
+	'794eb4889b39e1f0ed7d5ae998b2a1ed2137db8cf8c3476cf2962c7437ecb003'
 	'SKIP'
 	'1227563c5cc845d4a1fd0dbd0aced043040edb36168ad3278e6341e638647e29'
 )
