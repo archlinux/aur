@@ -1,11 +1,10 @@
 pkgbase = perl-datetime-format-natural
 	pkgdesc = Parse informal natural language date/time strings
 	pkgver = 1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/DateTime-Format-Natural
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-module-util
 	checkdepends = perl-test-mocktime-hires
 	makedepends = perl-module-build
@@ -14,7 +13,7 @@ pkgbase = perl-datetime-format-natural
 	depends = perl-datetime-hires
 	depends = perl-boolean
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.18.tar.gz
-	md5sums = 17253821734e7166036e3e223fd3f006
+	source = perl-datetime-format-natural-1.18.tar.gz::https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.18.tar.gz
+	sha256sums = d9346a4615035459d8bcee0fac3d4ebaea038f4f43b284f69edf73f6ed5751fe
 
 pkgname = perl-datetime-format-natural
