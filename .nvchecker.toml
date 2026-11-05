@@ -1,5 +1,6 @@
 [servo-nightly-bin]
-source = "cmd"
-cmd = """
-curl -sLI -o /dev/null -w %{url_effective} https://github.com/servo/servo-nightly-builds/releases/latest | rev | cut -d/ -f1 | rev | tr -d -
-"""
+source = "git"
+git = "https://github.com/servo/servo-nightly-builds.git"
+include_regex = "\\d{4}-\\d{2}-\\d{2}"
+from_pattern = "(\\d{4})-(\\d{2})-(\\d{2})"
+to_pattern = "\\1\\2\\3"
