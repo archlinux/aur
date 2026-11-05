@@ -1,7 +1,7 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built on Genoma: living surfaces rather than a bar
 	pkgver = 1.0.0beta62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = bioma-shell
 	makedepends = cargo
 	makedepends = clang
 	depends = niri
-	depends = genoma=0.1.1
+	depends = genoma>=0.1.1
+	depends = genoma<0.2.0
 	depends = python
 	depends = python-dateutil
 	depends = libsecret
