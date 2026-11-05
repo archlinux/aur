@@ -1,0 +1,19 @@
+pkgbase = hyprdown-git
+	pkgdesc = Close every app running under Hyprland without user input, then exit, power off, reboot or log out (git version)
+	pkgver = 0.3.0_r0_g6c40460
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/hyprdown
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = glibc
+	depends = json-c
+	depends = systemd
+	depends = systemd-libs
+	provides = hyprdown
+	conflicts = hyprdown
+	source = hyprdown::git+https://github.com/TheElevatedOne/hyprdown.git
+	sha256sums = SKIP
+
+pkgname = hyprdown-git
