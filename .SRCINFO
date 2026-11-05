@@ -18,6 +18,6 @@ pkgbase = foldav-bin
 	conflicts = foldav
 	noextract = foldav-0.1.0-x86_64.tar.gz
 	source_x86_64 = foldav-0.1.0-x86_64.tar.gz::https://github.com/AperteDev/foldav/releases/download/v0.1.0/foldav-0.1.0-x86_64.tar.gz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 98373edaf03ae5c20c428eef4711197a390e8efe0edf5d2b3977aac775d5ce66
 
 pkgname = foldav-bin
