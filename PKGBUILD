@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.6.286
+pkgver=5.6.287
 _electronversion=32
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software."
@@ -31,8 +31,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/do
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('b3519f8013b51a167acab6aa4c05500466f49656821aec47d491404311b7580d')
-sha256sums_x86_64=('f3c6d031e3cc25060259130618d2998ea6642715ead1229ab34315c7d24f7130')
+sha256sums_aarch64=('4fa7251835b9d581af415a27358a1420f71e7258a5d085980dfce27ab58ce2ca')
+sha256sums_x86_64=('a22cbaf1ee27b082724f16f40220ebda816c4e660442edc96c2836d5b66f8d22')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
