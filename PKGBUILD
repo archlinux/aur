@@ -1,50 +1,39 @@
+# Maintainer: Elias Elwyn <a@jthvai.net>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
-pkgname='perl-module-util'
-pkgver='1.09'
-pkgrel='2'
-pkgdesc="Module name tools and transformations"
-arch=('any')
-license=('PerlArtistic' 'GPL')
+pkgname=perl-module-util
+_dist=Module-Util
+pkgver=1.09
+pkgrel=3
+pkgdesc='Module name tools and transformations'
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+
+url="https://metacpan.org/dist/$_dist"
+_author=MATTLAW
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('6cfbcb6a45064446ec8aa0ee1a7dddc420b54469303344187aef84d2c7f3e2c6')
+
+arch=(any)
+depends=(perl)
+makedepends=(perl-module-build)
 options=('!emptydirs')
-depends=('perl')
-makedepends=('perl-module-build')
-url='https://metacpan.org/release/Module-Util'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATTLAW/Module-Util-1.09.tar.gz')
-md5sums=('4b7cc19f3f998e2d543ae033fbcb5666')
-sha512sums=('6669216598c5a3b41964e65792fa5bdea9675150bf2ef908ed3e154b9fbc207de0b766feaebc2656a5379393cf8acafa5e27aeb694b9a56d8ff3b5f9c35837ad')
-_distdir="Module-Util-1.09"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  /usr/bin/perl Build.PL --create_packlist=0
+  ./Build
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  ./Build test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
