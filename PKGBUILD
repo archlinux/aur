@@ -2,7 +2,7 @@
 
 _pkgname='kde-linux'
 pkgname="libvirt-iso-${_pkgname}-bin"
-pkgver=202610210254
+pkgver=202611050254
 pkgrel=1
 pkgdesc='Official KDE Linux Testing installation ISO for libvirt (weekly updated!)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ checkdepends=(
 	'mtools'
 )
 _iso="${_pkgname}_${pkgver}.iso"
-_base_url='https://files.kde.org/kde-linux'
+_base_url='https://kde-linux-images.s3.kde.org/testing'
 
 # KDE publishes SHA256SUMS.gpg, but not the public key required to verify it.
 # Their impressively decorative signature has been documented here:
@@ -33,7 +33,7 @@ source=(
 )
 noextract=("${_iso}")
 sha256sums=(
-	'd517786b2c643c9e210615ae7b64f92b0b3f799f0677591eb43495a63c5f85c4'
+	'45369f282016e9820d640859160a48e6f7c9172b6b633d907753c5622e8b5739'
 	'9280ddacc03cb58f09b31483a06dba9216a0cfde2fe53091ff571504c4095160'
 #	'SKIP'
 #	'SKIP'
