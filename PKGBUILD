@@ -2,7 +2,7 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=263.7031.23
+_buildver=263.7307.200
 _veryear=2026
 _verrelease=3
 _verextra=
@@ -15,7 +15,7 @@ options=(!strip !debug)
 url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-_archive="ideaIU-${_buildver}.tar.gz"
+_archive="idea-${_veryear}.${_verrelease}.tar.gz"
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ue-eap.desktop")
 sha256sums=($(curl -s "https://download.jetbrains.com/idea/${_archive}.sha256" | cut -f1 -d" ")
