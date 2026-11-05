@@ -3,6 +3,7 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!opentracker.service
-!opentracker.sysusers
-!opentracker.tmpfiles
+!LICENSE-opentracker
+!LICENSES/
+!LICENSE
+!REUSE.toml

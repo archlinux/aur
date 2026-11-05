@@ -1,4 +1,4 @@
 [opentracker]
 source = "regex"
 url = "https://erdgeist.org/arts/software/opentracker/"
-regex = "<p>V(\\d+\\.\\d+) <a class="
+regex = "href=\"opentracker-([\\d\\.]+).tar.bz2\">"
