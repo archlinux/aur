@@ -2,7 +2,7 @@
 
 _pkgname=crosspoint-sync
 pkgname=${_pkgname}-git
-pkgver=r156.7140edf
+pkgver=r408.067ffec
 pkgrel=1
 pkgdesc="Lightweight KoSync Server for Syncing Crosspoint/CrossInk stats & progress"
 arch=("any")
@@ -37,7 +37,7 @@ prepare() {
 	npm ci
 
 	cd "app"
-	npm ci --ignore-scripts
+	npm ci --ignore-scripts --allow-git=all
 }
 
 build() {
