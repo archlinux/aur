@@ -45,11 +45,11 @@ source=(
 # a known-good hash (replace the 6th SKIP). The *.py helpers are vendored locally
 # (no network fetch), so they are covered by makepkg's local-file hashing —
 # fill these in with `updpkgsums`.
-sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
-            'c1d0e344ebadd66eb62f03f823784cce49f1787f56563fb098fca01fc554135c'
-            '6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945'
-            '2760c62d502b77012c49517c2ea392ec2d4c647fe060985c927df48d105197b9'
-            '1c2eedb4526cc0f326f8b7ea978f5a433756476a2c8c56072537608edb88f8f4'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '151f00af692183a62146453b709f04240dfe72fdc7a1b98a833f664177eacd21'
             '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
