@@ -1,6 +1,6 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 pkgname=vibrancegui-linux
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Unofficial VibranceGUI-style vkSumi color profile manager for Linux"
 arch=('x86_64')
@@ -10,9 +10,6 @@ depends=(
   'gcc-libs'
   'glibc'
   'fontconfig'
-  'openssl'
-  'gtk4'
-  'libadwaita'
   'libglvnd'
   'wayland'
   'libxkbcommon'
@@ -29,11 +26,11 @@ optdepends=(
   'xdg-desktop-portal: native file picker for Add manually'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NasirA1991/vibrancegui-linux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('21ad02e3ade00195c6ac3b06f1bfcc461fdb6c2d61763927bc2105b459d65b3b')
+sha256sums=('e64968941b48c2ebb9a4c6e2a9a7fe284069c366b09f5283c5545933a28c5d78')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --bin vibrancegui-gtk
+  cargo build --release --locked
 }
 
 check() {
@@ -43,7 +40,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 target/release/vibrancegui-gtk "$pkgdir/usr/bin/vibrancegui"
+  install -Dm755 target/release/vibrancegui "$pkgdir/usr/bin/vibrancegui"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 packaging/vibrancegui.desktop "$pkgdir/usr/share/applications/vibrancegui.desktop"
