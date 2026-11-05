@@ -4,7 +4,7 @@ _pkgauthor=kkdai
 _pkgname=youtube
 _appname=youtubedr
 pkgname=${_appname}-bin
-pkgver=2.10.6
+pkgver=2.10.7
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Download YouTube videos"
@@ -19,8 +19,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5b186a086d89f5c4231cf76a67dc825b3712c2a798f43589acc660740b2d2c5f')
-sha256sums_aarch64=('d54118f072860bfc727c53c6e54266d8a3fd1602eb67f8955e31157d67de8659')
+sha256sums_x86_64=('b4719fda114df0613fb249d4f5a09316dfadbd43f0b9ab99ee49d64506cf956a')
+sha256sums_aarch64=('328cec8e7c25e85751e3e5d03e19593f0413185ef88eddc9878bd85f096c227c')
 
 
 package() {
