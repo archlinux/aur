@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url="https://github.com/hrzlgnm/zux"
 license=('MIT' 'OFL-1.1')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 conflicts=('zux-bin')
-makedepends=('cargo' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
+makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c81e5977f82cd855d5274bbf68f27a13e2c89e35820449c0f6fdd941550ae74a')
+sha256sums=('900e8af836d50f038040512713e6a120215eb43f5241676410e95c32a8d9a2b0')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
@@ -23,6 +23,8 @@ prepare() {
 build() {
     cd "$srcdir/$_builddir" || exit 1
     export CFLAGS="${CFLAGS//-flto=auto//}"
+    # route the cargo spawned by 'pnpm tauri' through cargo-auditable
+    export PATH="$PWD/scripts:$PATH"
     pnpm run tauri build --no-bundle
     # bundle the already-built binary as deb to get required icons and
     # desktop file for packaging, without building a second time
