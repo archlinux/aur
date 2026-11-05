@@ -5,7 +5,7 @@
 pkgbase=sourcebans-pp
 pkgname=(sourcebans-pp sourcemod-sourcebans-pp)
 pkgver=2.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="SourceBans++, the admin, ban and communication management of SourceMod game servers"
 arch=(any)
 url="https://sbpp.github.io"
@@ -40,6 +40,13 @@ prepare() {
   # and the GeoLite2 Country database, geoipupdate's instead
   rm -r web/includes/tinymce
   rm web/data/GeoLite2-Country.mmdb
+
+  # maxmind-db/reader 1.14.0 instead of the lock's 1.13.1: its decoder limits the time and memory a
+  # lookup can take, which a crafted database could make exponential. Upstream's Dependabot has the
+  # update (https://github.com/sbpp/sourcebans-pp/pull/1586): drop this once a release includes it.
+  COMPOSER_HOME="$srcdir/composer" php -d extension=iconv -d extension=sodium /usr/bin/composer \
+    update --working-dir=web --no-install --no-interaction --no-progress maxmind-db/reader \
+    --with maxmind-db/reader:1.14.0
 
   # The daily telemetry ping off unless an admin turns it on (Settings, Features): the default of
   # new installs (data.sql) and of the migration adding it to older ones (807)
@@ -157,8 +164,9 @@ package_sourcebans-pp() {
   rm -r "${_webroot:?}"/{tests,phpstan,bin,demos,includes/PHPStan} \
     "$_webroot"/{.gitignore,phpstan*.neon,phpstan*.php,phpunit.xml,package.json,package-lock.json}
   # Nor what the libraries ship besides their code and licences: documentation, tests, examples, the
-  # configuration of their development tools, the source of maxmind-db/reader's C extension. Then the
-  # autoloader is generated again, so it doesn't list the removed classes
+  # configuration of their development tools, the source of maxmind-db/reader's C extension
+  # (https://github.com/maxmind/MaxMind-DB-Reader-php/pull/318). Then the autoloader is generated
+  # again, so it doesn't list the removed classes
   find "$_webroot/includes/vendor" -mindepth 3 -maxdepth 3 ! -iname 'license*' \( -name '.*' \
     -o -iname '*.md' -o -name '*.txt' -o -name '*.xml' -o -name '*.dist' -o -name '*.dist.php' \
     -o -name '*.neon' -o -name '*.yml' -o -name '*.sh' -o -name Makefile -o -name 'composer.*' \

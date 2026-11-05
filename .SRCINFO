@@ -1,7 +1,7 @@
 pkgbase = sourcebans-pp
 	pkgdesc = SourceBans++, the admin, ban and communication management of SourceMod game servers
 	pkgver = 2.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sbpp.github.io
 	arch = any
 	license = Elastic-2.0
