@@ -289,7 +289,9 @@ prepare() {
   grep -R -w -l --include='*.cs' 'Range' . | while read -r _file; do
     sed -i '/Licensed under the MIT License/ausing Range = OmniSharp.Extensions.LanguageServer.Protocol.Models.Range;' "$_file"
   done
-  # Start-EditorServices.ps1 fails without a LogLevel, see
+  # Start-EditorServices.ps1 fails without a LogLevel: its translation of the legacy log levels sets
+  # $LogLevel to $null, which the parameter's ValidateSet rejects, and Start-EditorServices translates
+  # them itself. Proposed upstream, closed without being merged:
   # https://github.com/PowerShell/PowerShellEditorServices/pull/2333
   sed -i '/Translate legacy PSES log levels to MEL levels/,+7d' module/PowerShellEditorServices/Start-EditorServices.ps1
   # PSReadLine isn't bundled, load the one of PowerShell
