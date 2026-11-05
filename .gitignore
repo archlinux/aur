@@ -1,0 +1,5 @@
+# makepkg output stays out of git
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO

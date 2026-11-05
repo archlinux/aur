@@ -1,0 +1,24 @@
+pkgbase = fzlaunch-git
+	pkgdesc = Launch apps and commands as systemd units from fzf (git development version)
+	pkgver = r2.1100868
+	pkgrel = 1
+	url = https://gitlab.com/greyxor/fzlaunch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = awk
+	depends = coreutils
+	depends = findutils
+	depends = fzf>=0.61
+	depends = sed
+	depends = sh
+	optdepends = app2unit: launch picks as systemd units (default launcher)
+	optdepends = uwsm: launch picks with FZLAUNCH_LAUNCHER="uwsm app" or "uwsm-app"
+	optdepends = xdg-terminal-exec: open commands and terminal apps in your terminal
+	optdepends = man-db: command summaries in the preview
+	provides = fzlaunch=r2.1100868
+	conflicts = fzlaunch
+	source = fzlaunch-git::git+https://gitlab.com/greyxor/fzlaunch.git
+	b2sums = SKIP
+
+pkgname = fzlaunch-git
