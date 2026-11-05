@@ -2,7 +2,7 @@
 
 _pkgname=libtde
 pkgname=libtde-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='What TDE applications share: configuration, theme, window frame and dialogs'
 arch=(x86_64)
@@ -25,7 +25,7 @@ conflicts=("$_pkgname")
 # Built by the release workflow of the sources' repository, from the tag.
 source=("$_pkgname-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.zst")
 noextract=("$_pkgname-$pkgver-x86_64.tar.zst")
-sha256sums=('939d728bdba8cf3b5b56cf72679bd859aad246ad066a082d2b6be0bb082d76ee')
+sha256sums=('a39892b06e3acb84fdc527101a14fcc90edb3debdac7a06186813611e6414871')
 
 package() {
   bsdtar -xf "$_pkgname-$pkgver-x86_64.tar.zst" -C "$pkgdir"
