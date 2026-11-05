@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=mcp-toolbox-git
-pkgver=r2375.08c6934
+pkgver=r2378.06ea49d
 pkgrel=1
 pkgdesc='MCP server for databases (git version)'
 arch=('x86_64' 'aarch64')
