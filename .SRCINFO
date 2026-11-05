@@ -1,6 +1,6 @@
 pkgbase = vykar
 	pkgdesc = Fast, encrypted, deduplicated backups in Rust
-	pkgver = 0.20.1
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/borgbase/vykar
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = vykar
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = xdotool
-	source = vykar-0.20.1.tar.gz::https://github.com/borgbase/vykar/archive/v0.20.1.tar.gz
-	b2sums = ecf4303051745295f0bad6076f884ad47a4f81a10227c0fbe975dc59925d22c76fe32989e11c65e33eb8a365b0039ed08e4478f25b32ec5cf576938ad8b99380
+	source = vykar-0.21.1.tar.gz::https://github.com/borgbase/vykar/archive/v0.21.1.tar.gz
+	b2sums = 17b9e9cdf6723e80918ea6d2ad7cb5b1b6a1f18e91bc46339b61039629f662c844219de6bcbe9fc5da04964b2c3f51031d7a61706376b8e5f75c1d0418b38d3f
 
 pkgname = vykar
