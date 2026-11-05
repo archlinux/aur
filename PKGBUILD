@@ -1,5 +1,5 @@
 pkgname=rlshim
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A lightweight, native Linux launcher for RuneLite."
 arch=('x86_64' 'aarch64')
@@ -10,14 +10,14 @@ makedepends=('cargo' 'make' 'pkgconf' 'curl')
 provides=('rlshim')
 conflicts=('rlshim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RdrSeraphim/rlshim/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66f7368e11b619f3e9b058dc78b31e7e4a4c2d743dd610c9f2d1991967882811')
+sha256sums=('8ed9923a26fdb02c34fe47b1621a5dde4403eb58a4585a24eb52f6ce462bedc2')
 
 build() {
-	cd "$pkgname-$pkgver"
-	cargo build --release --locked
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	DESTDIR="$pkgdir" PREFIX=/usr make install
+    cd "$pkgname-$pkgver"
+    DESTDIR="$pkgdir" PREFIX=/usr make install
 }
