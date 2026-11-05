@@ -1,7 +1,7 @@
 # Maintainer: Snowy Fluffy <snowy.lnnk@gmail.com>
 pkgname=thronectl
 _reponame=Throne-api
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Command-line tool and web UI for the Throne API (control Throne from scripts)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7497cbc2ed047740347b9ad0979d30ab00559f92162b20f0498d3d036233f8a0')
+sha256sums=('2ffd6304d6393b4697a70e74214f4988ee26093f1929930b333c38ce03caf6ed')
 
 build() {
   cd "$_reponame-$pkgver"
