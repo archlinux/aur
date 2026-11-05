@@ -1,6 +1,6 @@
 # Maintainer: Jordon de Hoog <jordon.dehoog@gmail.com>
 pkgname=dfdu-bin
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Disk usage browser for the terminal"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('dfdu')
 options=('!debug' '!strip')
 source_x86_64=("$url/releases/download/v$pkgver/dfdu-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("$url/releases/download/v$pkgver/dfdu-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('8d262ed0a81e6cceeeaaacc31ee9021964b0a37785fb91c2229a298f3e28ca3d')
-sha256sums_aarch64=('fb6595e92c3e7c7544e1ebc1bc277e48af56d78e66bb71c682e65aa480cf0f70')
+sha256sums_x86_64=('8641acdbbc91bae6f6e60bfff5a17e3dcc466c31e30bd2906edc128f9acd59c9')
+sha256sums_aarch64=('e203465df8b2eff4dbc2ef49757c88d4db195973fae70dd62d37bfa11942dd2e')
 
 package() {
     cd "dfdu-$CARCH-unknown-linux-musl"
