@@ -2,7 +2,7 @@
 
 _pkgname=agent-desktop
 pkgname=agent-desktop-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Desktop computer use for AI agents through OS accessibility trees (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("LICENSE-v${pkgver}::https://raw.githubusercontent.com/vercel-labs/${_pk
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('efbdcf4caf10132e4fe915db1ec643184c947c65e0511845aeb4839445d7ea43')
-sha256sums_aarch64=('252c17e271a444352a5ba1e9f8fcbace89fa7b6b0bfcc4abebad2b35eb1f7a4d')
+sha256sums_x86_64=('591ae7f4a38479dc045df97e27447c0c8b530441730ab6b990e27c813162af44')
+sha256sums_aarch64=('68e8ebbb4f80e44485d2f1cf972943a38ee43108e2e0ce56bdfa641fd1599f68')
 
 package() {
   # agent-desktop looks for its helper next to its own executable
