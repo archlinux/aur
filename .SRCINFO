@@ -1,0 +1,16 @@
+pkgbase = yolocam-bin
+	pkgdesc = Control YoloLiv YoloCam S3 camera settings from the command line
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bemoty/yolocam
+	license = Apache-2.0
+	conflicts = yolocam
+	provides = yolocam
+	arch = aarch64
+	source_aarch64 = yolocam-bin_1.0.0_aarch64.tar.gz::https://github.com/bemoty/yolocam/releases/download/v1.0.0/yolocam_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3e9c4ecb2b143099a260ce5f2d9d53b9ed665a9dcd848f02a5624c64de7ffb54
+	arch = x86_64
+	source_x86_64 = yolocam-bin_1.0.0_x86_64.tar.gz::https://github.com/bemoty/yolocam/releases/download/v1.0.0/yolocam_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 153fb1fb58fd539fcb94dd52b527d8a5009bd492d6ebfbbee47245d0ac8ce83c
+	
+pkgname = yolocam-bin
