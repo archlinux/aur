@@ -128,8 +128,10 @@ prepare() {
     git submodule init "$_submodule"
     git config "submodule.$_submodule.url" "$srcdir/${_submodule##*/}"
   done
-  git -c protocol.file.allow=always submodule update public/amtl sourcepawn hl2sdk-manifests \
-    public/safetyhook
+  # Checked out again (--force), as makepkg only resets SourceMod's checkout when it's built again:
+  # the submodules keep the previous build's patches otherwise
+  git -c protocol.file.allow=always submodule update --force public/amtl sourcepawn \
+    hl2sdk-manifests public/safetyhook
 
   # --scripting-only builds SafetyHook as well, which only the extensions use and which doesn't
   # support aarch64, and doesn't allow aarch64 on Linux, only on macOS
@@ -186,7 +188,7 @@ prepare() {
   cd "$srcdir/zydis" || exit
   git submodule init dependencies/zycore
   git config submodule.dependencies/zycore.url "$srcdir/zycore-c"
-  git -c protocol.file.allow=always submodule update dependencies/zycore
+  git -c protocol.file.allow=always submodule update --force dependencies/zycore
   python assets/amalgamate.py >/dev/null
   local _zydis="$srcdir/sourcemod/public/safetyhook/zydis"
   grep -q '^#define ZYDIS_STATIC_BUILD$' "$_zydis/Zydis.h" || exit
