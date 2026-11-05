@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.1.3
+pkgver=4.1.4
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -21,6 +21,8 @@ depends=(
 )
 makedepends=(
     'nvm'
+	'npm'
+	'yarn'
     'gendesk'
     'git'
     'jq'
@@ -30,9 +32,9 @@ source=(
 	"${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('40cba9c3336976742681c20f1fea993af2f3e38d4d84558042b10242fc9ca84e'
+sha256sums=('5670fab469816aaa64462e0313650dca2dd071a24f8abeaf7ca518dba287ce88'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -57,12 +59,14 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_yarn_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -73,7 +77,7 @@ _set_build_env() {
 	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
 	local _yarnver _yarnmajor=0
-	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
+	_yarnver="$(node -p "try { require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || '' } catch { '' }" 2>/dev/null || true)"
 	_yarnmajor="${_yarnver%%.*}"
 	_yarnmajor="${_yarnmajor:-0}"
 	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
@@ -104,13 +108,11 @@ _set_build_env() {
 		export YARN_IGNORE_ENGINES=true
 		export YARN_PRODUCTION=false
 		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
+		export YARN_REGISTRY="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
 	fi
 	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
 	_reg="${_reg%/}"
-	if [[ -f .yarnrc ]]; then
-		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
-	fi
-	if [[ -f yarn.lock ]] && grep -q 'resolved "https://registry.yarnpkg.com' yarn.lock; then
+	if [[ -f yarn.lock ]] && grep -q 'registry.yarnpkg.com' yarn.lock; then
 		sed -i "s|https://registry.yarnpkg.com/|${_reg}/|g" yarn.lock
 	fi
 }
@@ -128,7 +130,8 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_yarn_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     export NODE_ENV=development
     yarn add --dev node-addon-api
@@ -137,7 +140,8 @@ prepare() {
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_yarn_build_env
     export NODE_ENV=production
     yarn run build:prod
     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.yml
