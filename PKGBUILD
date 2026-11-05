@@ -4,7 +4,7 @@
 
 pkgname=rogue
 pkgver=5.4.4
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="The original dungeon crawl game."
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
