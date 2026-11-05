@@ -1,6 +1,6 @@
 pkgbase = pathaction
 	pkgdesc = A file execution router that uses YAML rules to determine which commands to execute on files and directories
-	pkgver = 1.1.0
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/jamescherti/pathaction
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pathaction
 	depends = python-jinja
 	depends = python-schema
 	depends = python-yaml
-	source = pathaction-1.1.0.tar.gz::https://github.com/jamescherti/pathaction/archive/v1.1.0.tar.gz
-	sha256sums = 3927818fcaed0750daffb0adcfd91be3c5215cdb54caa1e21fff2ec77ce3d3cc
+	source = pathaction-1.1.3.tar.gz::https://github.com/jamescherti/pathaction/archive/v1.1.3.tar.gz
+	sha256sums = 0ee1540ca13ba5c05f2fbeb4e16d25e8c00c73a6ec13361be87b798fb1e4cd36
 
 pkgname = pathaction
