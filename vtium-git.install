@@ -1,5 +1,5 @@
 # Messages pacman shows after vtium is installed, upgraded or removed, the
-# same for the vtium and vtium-git packages. Nothing here starts, stops,
+# same for every console package. Nothing here starts, stops,
 # restarts, enables or disables a unit: a restart hangs up every session on
 # that VT, so a new build takes effect at each VT's next start, and which
 # VTs run vtium is the user's choice, made with vtium console (ADR-1500 D3,
