@@ -9,12 +9,12 @@
 #
 # _tag and pkgver are bumped by .github/workflows/publish-aur.yml when a release
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
-_tag=v1.4.0.6078
+_tag=v1.4.0.6088
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=82c7c7058089dfa633ce26b44223f0b11f25c739
+_launcher_commit=a6402f3f1dbce1896574ff46b7ca10ba6e5b2506
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
-pkgver=1.4.0.6078
+pkgver=1.4.0.6088
 # rel 4: ship the pacman hook that reports a library break the soname
 # dependencies below cannot catch, and pick up the launcher fix that stops a
 # crash report carrying a log the failing run never wrote.
@@ -72,7 +72,7 @@ source=(
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
   'SKIP'
-  'd09e3fa4c6d7d1c87b4f85f1c20ab43897756a908b449a9d2d133408bb24da75'
+  '5bd8f469015c50cbe3668fd9483771e8f4c67cc27c061b145dc1a100130cd0bb'
   'SKIP'
   '57f83c03c54dbc76535e22cc051811875bd572fdbc6e0457e9b63df92afe1de3'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'
