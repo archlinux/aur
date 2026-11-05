@@ -72,6 +72,7 @@ prepare() {
   git -C third_party/khook -c protocol.file.allow=always submodule update --force third_party/safetyhook
 
   # The loader's tests with KHook's headers, which the loader's sources include, like the loader
+  # (https://github.com/alliedmodders/metamod-source/pull/293)
   patch -Np1 -i "$srcdir/loader-test-khook.patch"
 
   # SafetyHook's Zydis, amalgamated from Zydis and Zycore at the release's commits by Zydis's
