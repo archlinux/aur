@@ -38,7 +38,7 @@ BASALT_JOBS=2 makepkg -si               # if the CUDA compile thrashes RAM: peak
 ${AUR_HELPER} -S basalt-inference-git   # or via an AUR helper once this dir is added to it
 ```
 
-Both patches apply to upstream main through `1b3f6964` (v0.2.1, checked 2026-11-04).
+Both patches apply to upstream main through `dc047a77` (3 commits past v0.2.1, checked 2026-11-04).
 
 `makepkg` prints *"Package contains reference to $srcdir"* for `basalt` and `basalt-bench`: a few
 `__FILE__`-style log strings in the ggml kernels, and bench's path to a dev program this package does
@@ -80,7 +80,9 @@ basalt-inference serve --config ~/.config/basalt/basalt_config.json
 
 ## When `prepare()` aborts
 
-`git am --3way` failed: upstream moved one of the patched files.
+Neither `patch -Np1` nor the `git apply --3way` fallback applied: upstream moved one of the patched
+files. `prepare()` resets the tracked files to upstream's state first, so reusing `src/` is fine; the
+`.rej` files it leaves name the hunks that moved. The recipe below regenerates the patch either way.
 
 ```sh
 # set these two to your paths: your basalt checkout, and this package directory

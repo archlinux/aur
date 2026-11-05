@@ -1,4 +1,4 @@
-From 30f70e486660a109330cb2536f3999a0c92fe4d3 Mon Sep 17 00:00:00 2001
+From 0fbbde1ff63490d7df21d8e6d52d493a34f547a0 Mon Sep 17 00:00:00 2001
 From: basalt <basalt@localhost>
 Date: Tue, 3 Nov 2026 07:20:57 +0300
 Subject: [PATCH] ram-guard: --ram-guard-mib N (0 = the RAM guard off)
@@ -8,10 +8,17 @@ reads. --ram-guard-mib N replaces it; 0 turns the guard off: nothing is shed and
 no request stops for the guard, so the OS reclaims its page cache and swaps
 instead. Placement, the tiers and the chunk sizes are untouched.
 
-Base: 1b3f6964 (v0.2.1).  Deliberately source-only: no docs/ and no tests/
-hunks.  Those files churn every release - docs/running.md is exactly where this
-patch conflicted at v0.2.1 - and they change nothing the package ships; the flag
-is documented in the package README instead.  Keep it that way when rebasing.
+Base: dc047a77 (3 commits past v0.2.1).  Deliberately source-only: no docs/ and
+no tests/ hunks.  Those files churn every release - docs/running.md is exactly
+where this patch conflicted at v0.2.1 - and they change nothing the package
+ships; the flag is documented in the package README instead.  Keep it that way
+when rebasing.
+
+The help text writes 5%% of the RAM with an escaped percent: usage() prints the
+string as a printf format, so a bare "5% of" is read as the conversion "% o" -
+-Wformat warns about a missing unsigned int argument and --help then prints the
+octal value of whatever register printf reached for ("570154f the RAM").  Do not
+"tidy" that backslash away.
 ---
  include/basalt/platform/memory.hpp |  3 ++-
  include/basalt/program/options.hpp |  5 +++++
@@ -88,7 +95,7 @@ index 7ad86c2a..152255fc 100644
              const std::string v = next("--prefill");
              o.prefill_given = true;
 diff --git a/src/program/cli/help.cpp b/src/program/cli/help.cpp
-index 61c0e0d7..bd88986a 100644
+index 61c0e0d7..6f3d51c7 100644
 --- a/src/program/cli/help.cpp
 +++ b/src/program/cli/help.cpp
 @@ -203,7 +203,11 @@ void usage() {
@@ -99,7 +106,7 @@ index 61c0e0d7..bd88986a 100644
 +                 "                       the largest safe value.\n"
 +                 "  --ram-guard-mib N  the RAM (MemAvailable) a serving request must stay above: below it the request\n"
 +                 "                       stops with an error instead of the machine swapping.  Auto when not set: the\n"
-+                 "                       RAM margin (the larger of 2 GiB and 5% of the RAM) plus one prompt chunk's\n"
++                 "                       RAM margin (the larger of 2 GiB and 5%% of the RAM) plus one prompt chunk's\n"
 +                 "                       file reads; 0 = the guard off (the OS reclaims and swaps instead).\n");
  }
  

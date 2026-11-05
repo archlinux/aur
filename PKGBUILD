@@ -4,12 +4,13 @@
 # Tracks upstream main of https://github.com/jesdga95/basalt plus two local patches:
 #   0001-cmake-overridable-basalt-source-dir.patch  BASALT_SOURCE_DIR / engine path become cmake options
 #   ram-guard-mib.patch                             --ram-guard-mib N (0 = the RAM guard off)
-# Both apply cleanly to upstream main through 1b3f6964 (v0.2.1, checked 2026-11-04).
-# basalt-inference-git, and the PATH commands are qualified the same way: AUR already has
+# Both apply cleanly (no offset, no 3-way needed) to upstream main through dc047a77, 3 commits past
+# v0.2.1, checked 2026-11-04.
+# The package and its PATH commands are both basalt-inference-git: AUR already has
 # aur/basalt, aur/basalt-bin (a TUI for Obsidian), the vkBasalt family and basalt-monado.  The
 # runtime tree keeps upstream's own names under /usr/lib/basalt.
 pkgname=basalt-inference-git
-pkgver=0.2.1.2.geeefe8a6
+pkgver=0.2.1.3.gdc047a77
 pkgrel=1
 pkgdesc='Local inference engine for Qwen3.8-Flash-Next MoE packs (NVIDIA Blackwell, sm_120)'
 arch=(x86_64)
@@ -22,7 +23,7 @@ source=("basalt::git+https://github.com/jesdga95/basalt.git#branch=main"
         ram-guard-mib.patch
         0001-cmake-overridable-basalt-source-dir.patch)
 sha256sums=('SKIP'
-            '526f9ac9fd39b11d5c59e6d44640fbc481a0d378da5a16209045904f1b118361'
+            '6f0e1998e7eba8a0c4a854f51d13c12537d6b868b39641871d8ff0265df17eda'
             'd065296aa095292902f3b02a87d9321c798c6f00972c17594a14a4f324747490')
 
 # BASALT_DEBUG=1 makepkg -si builds with -g and splits off a basalt-inference-git-debug package (gdb
@@ -35,26 +36,35 @@ _prefix=/usr/lib/basalt
 
 pkgver() {
   cd "$srcdir/basalt"
-  git describe --tags --always | sed -e 's/^v//' -e 's/-/./g'
+  git describe --tags --always --long | sed -e 's/^v//' -e 's/-/./g'
 }
 
 prepare() {
   cd "$srcdir/basalt"
-  git config user.email pkgbuild@localhost     # git am needs a committer identity
-  git config user.name  makepkg
+  # srcdir survives between builds, so put the tracked files back the way upstream has them first:
+  # a second run over an already patched tree makes patch(1) exit 1 and leave .rej files, which
+  # would look like an upstream breakage.  HEAD has to be named - after the git apply fallback the
+  # index holds the patched copy, and a bare `git checkout -- .` would restore that.  Untracked
+  # build/ and bin/ are left alone, so an incremental rebuild still works.
+  git checkout -q HEAD -- .
+  find . -name '*.rej' -delete
   for p in 0001-cmake-overridable-basalt-source-dir.patch ram-guard-mib.patch; do
-    if ! git am --3way "$srcdir/$p"; then
-      git am --abort 2>/dev/null
-      printf '%s does not apply to %s:\n' "$p" "$(git describe --tags --always)" >&2
-      printf '  1. in a scratch clone: git checkout <new-main>; git am --3way %s/%s\n' "$srcdir" "$p" >&2
-      printf '     if only docs/ and tests/ conflict: git checkout HEAD -- docs tests\n'
-      printf '     (the patch is source-only on purpose), otherwise fix the conflicts there; then\n'
-      printf '     git add them, git am --continue, and:\n' >&2
-      printf '     git format-patch -1 --stdout > %s/%s   (keep the patch file name)\n' "$srcdir" "$p" >&2
-      printf '  2. sha256sum that file, put the new sum in sha256sums[]\n' >&2
-      printf '  3. rm -rf src pkg && makepkg -si\n' >&2
-      printf 'A silently unpatched tree is worse than a failed build: the flag would just be missing.\n' >&2
-      return 1
+    if ! patch -Np1 --no-backup-if-mismatch -i "$srcdir/$p"; then
+      git checkout -q HEAD -- .
+      find . -name '*.rej' -delete
+      if ! git apply --3way "$srcdir/$p"; then
+        printf '%s does not apply to %s:\n' "$p" "$(git describe --tags --always)" >&2
+        printf '  the .rej files next to the sources show which hunks upstream moved.\n' >&2
+        printf '  1. in a scratch clone: git checkout <new-main>; git am --3way %s/%s\n' "$srcdir" "$p" >&2
+        printf '     if only docs/ and tests/ conflict: git checkout HEAD -- docs tests\n'
+        printf '     (the patch is source-only on purpose), otherwise fix the conflicts there; then\n'
+        printf '     git add them, git am --continue, and:\n' >&2
+        printf '     git format-patch -1 --stdout > %s/%s   (keep the patch file name)\n' "$srcdir" "$p" >&2
+        printf '  2. sha256sum that file, put the new sum in sha256sums[]\n' >&2
+        printf '  3. rm -rf src pkg && makepkg -si\n' >&2
+        printf 'A silently unpatched tree is worse than a failed build: the flag would just be missing.\n' >&2
+        return 1
+      fi
     fi
   done
 }
