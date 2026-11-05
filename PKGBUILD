@@ -39,7 +39,7 @@ optdepends=(
     'xdg-utils: open the output folder'
 )
 source=(
-    "$_pkgname-$pkgver.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v$pkgver/PDFApps-Linux.tar.gz"
+    "$_pkgname-$pkgver.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v$pkgver/PDFApps-Linux-x86_64.tar.gz"
     "$_pkgname-$pkgver.LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/LICENSE"
     "$_pkgname-$pkgver.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/data/io.github.nelsonduarte.PDFApps.desktop"
     "$_pkgname-$pkgver.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v$pkgver/data/io.github.nelsonduarte.PDFApps.metainfo.xml"

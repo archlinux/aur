@@ -26,7 +26,7 @@ pkgbase = pdfapps-bin
 	optdepends = xdg-utils: open the output folder
 	provides = pdfapps=1.15.2
 	conflicts = pdfapps
-	source = pdfapps-1.15.2.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.15.2/PDFApps-Linux.tar.gz
+	source = pdfapps-1.15.2.tar.gz::https://github.com/nelsonduarte/PDFApps/releases/download/v1.15.2/PDFApps-Linux-x86_64.tar.gz
 	source = pdfapps-1.15.2.LICENSE::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/LICENSE
 	source = pdfapps-1.15.2.desktop::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/data/io.github.nelsonduarte.PDFApps.desktop
 	source = pdfapps-1.15.2.metainfo.xml::https://raw.githubusercontent.com/nelsonduarte/PDFApps/v1.15.2/data/io.github.nelsonduarte.PDFApps.metainfo.xml
