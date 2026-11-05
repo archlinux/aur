@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluebubbles-bin
 _pkgname=BlueBubbles
-pkgver="2.1.5+desktop.95"
+pkgver="2.1.6+desktop.96"
 pkgrel=1
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!"
 arch=(
@@ -32,9 +32,9 @@ options=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
-sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('7ed96c817f3c73df2a9ee63e180c99685529274cd3f798cea671d3a2a35658a1')
-sha256sums_x86_64=('d26151c9dc8ab0c15b70b245318a6d51bc5138bad659cab7942de4a00e4bf5cd')
+sha256sums=('a46613b6df5ea182d243b68fa5ed3df97f307cf9d81788c9ff4c0e1d6f671dfe')
+sha256sums_aarch64=('bd92dd372c6c495bf79a86d90f3ed7cd2dc73b00866ca632636e68aa1dac1d20')
+sha256sums_x86_64=('10d52a9c1f9180ec8ae2e180bf9d52070f39d6f4d4da63526ca7ba1406603150')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -52,6 +52,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -a "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/data/flutter_assets/assets/icon/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    ln -sf "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/libmpv.so.1"
+    ln -sf "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libmpv.so.1"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
