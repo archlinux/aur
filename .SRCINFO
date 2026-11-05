@@ -24,16 +24,19 @@ pkgbase = simpleautoframer-git
 	optdepends = xdg-desktop-portal-gnome: portal backend for GNOME (>=47 recommended)
 	optdepends = xdg-desktop-portal-hyprland: portal backend for Hyprland
 	optdepends = xdg-desktop-portal-wlr: portal backend for Sway/other wlroots WMs
-	optdepends = cuda: optional GPU acceleration (rebuild with -DUSE_CUDA=ON)
+	optdepends = opencv-cuda: run the YuNet face detector on an NVIDIA GPU
 	provides = simpleautoframer
 	conflicts = simpleautoframer
+	backup = etc/modprobe.d/v4l2loopback-simpleautoframer.conf
 	source = simpleautoframer::git+https://github.com/Rimsoo/SimpleAutoFramer.git
+	source = libv4l2cpp::git+https://github.com/mpromonet/libv4l2cpp.git
 	source = v4l2loopback.conf
 	source = v4l2loopback-modules-load.conf
 	source = simpleautoframer.install
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3b4ec0e8c362a04c0a028004fef48aaccf7985084f29af9a0a4c527f5847f53c
+	sha256sums = 0a9b6fa6a540c07d2dc881fcd20c9456df050cb3b2717110c7b1456f622d0f5d
+	sha256sums = 127762625f91d0f78fabe4927d6a6196717b5ad3de9f8ed796c2b2b0d093ddb4
 
 pkgname = simpleautoframer-git

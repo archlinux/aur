@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Open-source auto-framing for webcams (alternative to NVIDIA Broadcast)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Rimsoo/SimpleAutoFramer"
-license=('MIT') # Change to match your LICENSE file
+license=('MIT')
 
 depends=(
     'opencv'
@@ -26,13 +26,15 @@ makedepends=(
     'pkgconf'
 )
 
+backup=('etc/modprobe.d/v4l2loopback-simpleautoframer.conf')
+
 optdepends=(
     'xdg-desktop-portal: required for global shortcuts under Wayland'
     'xdg-desktop-portal-kde: portal backend for KDE Plasma'
     'xdg-desktop-portal-gnome: portal backend for GNOME (>=47 recommended)'
     'xdg-desktop-portal-hyprland: portal backend for Hyprland'
     'xdg-desktop-portal-wlr: portal backend for Sway/other wlroots WMs'
-    'cuda: optional GPU acceleration (rebuild with -DUSE_CUDA=ON)'
+    'opencv-cuda: run the YuNet face detector on an NVIDIA GPU'
 )
 
 provides=("$_pkgname")
@@ -40,16 +42,16 @@ conflicts=("$_pkgname")
 
 source=(
     "$_pkgname::git+$url.git"
+    "libv4l2cpp::git+https://github.com/mpromonet/libv4l2cpp.git"
     "v4l2loopback.conf"
     "v4l2loopback-modules-load.conf"
     "$_pkgname.install"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP' # regenerate with updpkgsums
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            '3b4ec0e8c362a04c0a028004fef48aaccf7985084f29af9a0a4c527f5847f53c'
+            '0a9b6fa6a540c07d2dc881fcd20c9456df050cb3b2717110c7b1456f622d0f5d'
+            '127762625f91d0f78fabe4927d6a6196717b5ad3de9f8ed796c2b2b0d093ddb4')
 install="$_pkgname.install"
 
 pkgver() {
@@ -59,31 +61,23 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    git submodule update --init --recursive
+    # Use the submodule fetched by makepkg (no network access in prepare()).
+    git submodule init
+    git config submodule.libv4l2cpp.url "$srcdir/libv4l2cpp"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
     cd "$_pkgname"
 
-    # Prefer the distro OpenCV over /usr/local custom builds. A common Arch
-    # pitfall: /usr/local/lib/cmake/opencv4/ pins an exact CUDA version
-    # ("Found unsuitable version 13.2, required exactly 12.8") which breaks
-    # configure. /usr/lib/cmake/opencv4/ (shipped by the opencv /
-    # opencv-cuda packages) works everywhere.
-    local -a opencv_dir_arg=()
-    if [[ -z "${OpenCV_DIR:-}" && -f /usr/lib/cmake/opencv4/OpenCVConfig.cmake ]]; then
-        opencv_dir_arg=(-DOpenCV_DIR=/usr/lib/cmake/opencv4)
-    fi
-
     cmake -B build -S . \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DINSTALL_MODE=ON \
-        -DUSE_CUDA=OFF \
         -DUSE_X11_SHORTCUTS=ON \
         -DUSE_PORTAL_SHORTCUTS=ON \
-        "${opencv_dir_arg[@]}" \
-        -Wno-dev
+        -DINSTALL_UNINSTALLER=OFF \
+        -Wno-author
     cmake --build build
 }
 
