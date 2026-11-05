@@ -7,7 +7,7 @@ _pypi_package='listpick'
 
 
 pkgname="listpick"
-pkgver=0.1.18.1
+pkgver=0.1.18.2
 pkgrel=1
 pkgdesc="A powerful TUI data tool for creating TUI apps or viewing/comparing tabulated data"
 
@@ -29,7 +29,7 @@ depends=('python' 'ipython' 'python-pandas' 'python-wcwidth' 'python-openpyxl' '
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/v${pkgver}.tar.gz")
-sha256sums=('8bf0f4387144f704f2399ef4d8ff36000b30b3e2aae914a778c2f797c0aef0ef')
+sha256sums=('17d64e92376061af61ce82ddc94ab7ceeb3698b892a750e1371d2803f55b554c')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
