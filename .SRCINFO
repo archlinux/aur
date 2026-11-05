@@ -23,7 +23,7 @@ pkgbase = ttf-roboto-flex-hinted
 	source = measure.py
 	source = 79-roboto-flex-families.conf
 	source = 81-roboto-flex-italic.conf
-	source = fonttune::git+file:///mnt/SSD/packaging/fonttune#branch=main
+	source = fonttune::git+https://github.com/gaou-piou/fonttune.git#branch=main
 	sha256sums = 6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b
 	sha256sums = 454ec26838f2b8f2e2588e759dd3742577e0d305d3359a7b81c86641fcab7d21
 	sha256sums = 42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a
