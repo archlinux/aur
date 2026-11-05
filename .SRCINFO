@@ -74,7 +74,7 @@ pkgbase = yukigram-desktop
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)
 	optdepends = xdg-desktop-portal: desktop integration
 	source = https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.5/tdesktop-7.3.5-full.tar.gz
-	source = git+https://github.com/tdlib/td.git#tag=c15d3f5a5de6e3ba5839822c451152e5e18bb700
+	source = git+https://github.com/tdlib/td.git#commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 	source = wallet-engine-0.0.7.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v0.0.7.tar.gz
 	source = https://github.com/yukigram/yukigram/archive/refs/tags/v7.3.5.0.tar.gz
 	source = https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch

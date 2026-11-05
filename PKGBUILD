@@ -87,7 +87,7 @@ _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver%.*}/tdesktop-${pkgver%.*}-full.tar.gz"
-  "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
+  "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz
   "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.tar.gz"
   https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
