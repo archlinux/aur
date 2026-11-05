@@ -28,6 +28,7 @@ pkgbase = wingdrive-bin
 	optdepends = poppler: PDF thumbnails in folders that are not indexed
 	provides = wingdrive
 	conflicts = wingdrive
+	conflicts = wingdrive-nightly
 	options = !strip
 	options = !debug
 	source = WingDrive-3.0.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v3.0.0/WingDrive-3.0.0-x86_64.AppImage

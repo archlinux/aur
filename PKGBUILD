@@ -15,7 +15,7 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
             'ffmpeg: video thumbnails in folders that are not indexed'
             'poppler: PDF thumbnails in folders that are not indexed')
 provides=('wingdrive')
-conflicts=('wingdrive')
+conflicts=('wingdrive' 'wingdrive-nightly')
 options=('!strip' '!debug')
 _upstream_version=3.0.0
 source=("WingDrive-3.0.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.0.0-x86_64.AppImage"
