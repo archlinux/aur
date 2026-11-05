@@ -1,6 +1,6 @@
 pkgbase = vieb
-	pkgdesc = Vim Inspired Electron Browser - Vim bindings for the web by design.(Use system-wide electron)
-	pkgver = 12.10.0
+	pkgdesc = Vim Inspired Electron Browser - Vim bindings for the web by design.
+	pkgver = 12.11.0
 	pkgrel = 1
 	url = https://vieb.dev/
 	arch = any
@@ -9,13 +9,14 @@ pkgbase = vieb
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	makedepends = yarn
 	makedepends = gendesk
 	makedepends = jq
-	depends = electron43
-	source = vieb-12.10.0::git+https://github.com/Jelmerro/Vieb#tag=12.10.0
+	depends = electron45
+	source = vieb-12.11.0.tar.gz::https://github.com/Jelmerro/Vieb/archive/refs/tags/12.11.0.tar.gz
+	source = vieb.js
 	source = vieb.sh
-	sha256sums = 7b15ecabbcaad8a4d4a5a94a82befce6f4cb787959f07150f08cc9660c199a25
+	sha256sums = 9989a0511789b499da3beb593b22d2e306bc74e6926d4a379576c0da8dc536c8
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = vieb
