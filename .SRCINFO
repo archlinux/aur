@@ -1,7 +1,7 @@
 pkgbase = relayfsd
 	pkgdesc = A tool that monitors a dir and automatically uploads files to another dir
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Almutairi0/relayfsd
 	arch = x86_64
 	license = MIT

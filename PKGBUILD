@@ -1,6 +1,6 @@
 pkgname='relayfsd'
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that monitors a dir and automatically uploads files to another dir"
 arch=('x86_64')
 url="https://github.com/Almutairi0/relayfsd"
@@ -31,5 +31,5 @@ package() {
     install -Dm644 "${srcdir}/relayfsd/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     # Install systemd service
-    #install -Dm644 "${srcdir}/relayfsd/relayfsd.service" "${pkgdir}/usr/lib/systemd/user/relayfsd.service"
+    install -Dm644 "${srcdir}/relayfsd/relayfsd.service" "${pkgdir}/usr/lib/systemd/user/relayfsd.service"
 }
