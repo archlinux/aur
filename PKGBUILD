@@ -22,7 +22,7 @@
 # bar can simply not run mshell; the helpers stay useful on their own.
 
 pkgname=margo-git
-pkgver=r2960.c356a912
+pkgver=r3130.442df353
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -107,8 +107,15 @@ makedepends=(
   mpv             # mshellctl links libmpv directly (build.rs -lmpv) for the wallpaper engine
 )
 optdepends=(
+  # Every external program the code runs is listed in
+  # scripts/runtime-tools.txt with the package that provides it;
+  # scripts/optdepends-drift.sh (CI) fails when the code starts running a
+  # program that has no row there, or a row's package is missing below.
+  # Each feature degrades gracefully (a hint or an error toast) without it.
   # Sessions & XDG plumbing
   "xdg-desktop-portal-wlr: alternative wlroots-native screencast backend (not used by default; margo-portal serves ScreenCast/Screenshot natively)"
+  "xdg-utils: xdg-open / xdg-mime for opening links, files and default apps"
+  "polkit: pkexec for privileged actions (power menu, firewall widget, update/pacnew/rollback, CPU dashboard)"
   # Toolkit Wayland backends (for non-GTK apps under margo)
   "qt5-wayland: Qt5 native Wayland backend"
   "qt6-wayland: Qt6 native Wayland backend"
@@ -116,6 +123,10 @@ optdepends=(
   "swappy: post-capture annotation editor for mscreenshot"
   "satty: alternative annotation editor for mscreenshot"
   "wf-recorder: screen recording via wlr-screencopy"
+  "gpu-screen-recorder: hardware-encoded screen recording backend"
+  "tesseract: OCR of a screenshot region (mscreenshot / mshell screenshot menu)"
+  "tesseract-data-eng: English language data for the screenshot OCR"
+  "zbar: QR-code decoding of a screenshot region (zbarimg)"
   "yt-dlp: \`mshellctl play play\`/\`download\` of YouTube + other streaming URLs"
   # Clipboard managers — mshell clipboard widget + mshellshare paste
   "copyq: clipboard manager via wlr-data-control"
@@ -125,15 +136,44 @@ optdepends=(
   # here so an `optdepends` install pulls a complete experience.
   "networkmanager: NetworkManager backend for mshell network + ndns"
   "bluez: Bluez backend for mshell bluetooth widget"
+  "bluez-utils: bluetoothctl for the launcher Bluetooth provider"
   "upower: UPower backend for mshell battery widget"
   "power-profiles-daemon: power profile switching for mshell + the mpower auto-profile service"
   "brightnessctl: brightness fallback when DDC/CI is unavailable"
   "iwd: alternative wireless backend for the network widget"
+  "iw: Wi-Fi hotspot from the network menu"
+  "speedtest-cli: network menu speed test"
   "ufw: needed by the mshell nufw firewall widget"
   "podman: needed by the mshell npodman widget"
   "mullvad-vpn: the VPN daemon driven by the mvpn binary (CLI + GTK panel)"
   "blocky: local DNS resolver controlled by the ndns widget"
   "curl: used by the nip public-IP widget (already pulled by base)"
+  "udisks2: removable-drive pill (mount / unmount / eject)"
+  "smartmontools: drive health in the CPU dashboard"
+  "cava: audio visualizer pill"
+  "wireplumber: wpctl for the launcher audio provider"
+  "noise-suppression-for-voice: microphone noise suppression (RNNoise LADSPA plugin)"
+  "matugen: wallpaper-derived colour themes"
+  "github-cli: the GitHub menu (gh)"
+  "valent: phone integration pill and menu (AUR)"
+  "scrcpy: Android screen mirroring from the Valent menu"
+  "android-tools: adb device discovery for scrcpy mirroring"
+  # System updates pill / menu
+  "pacman-contrib: checkupdates for the update count (no sudo, no db lock)"
+  "arch-audit: security advisories in the system-update menu"
+  "topgrade: alternative system-update backend (AUR)"
+  # Launcher providers
+  "fd: launcher file search"
+  "plocate: launcher file search from the locate index"
+  "pass: launcher password-store provider"
+  "playerctl: launcher media provider + media keys on the lock screen"
+  "libqalculate: calculator units, currency and percentages (qalc)"
+  # mlayout (per-tag layout profiles)
+  "wlr-randr: mlayout monitor apply / capture"
+  # mdots (dotfiles manager) + mtm + launcher git providers
+  "git: mdots repositories, mtm plugins"
+  "age: mdots secrets (age-keygen)"
+  "sops: mdots encrypted secrets"
   # mlogind (TUI login manager)
   "fprintd: opt-in fingerprint login for mlogind (pam_fprintd)"
   # mtm (native tmux manager)
@@ -175,11 +215,19 @@ backup=(
   "etc/mlogind/xsetup.sh"
 )
 # Cargo profile already enables thin LTO; the outer makepkg LTO
-# pass would just spend time twice. `!strip` preserves the symbol
-# tables so `coredumpctl info` / `addr2line` can resolve mesa-side
-# render aborts. The Cargo release profile sets `strip = "none"`;
-# this line keeps makepkg's outer strip from overriding it.
-options=(!lto !strip)
+# pass would just spend time twice.
+#
+# `debug` (with makepkg's default `strip`) splits the debug info out:
+# the installed binaries are stripped (measured on r2960: 1144 MB of ELF
+# -> 214 MB; /usr/bin/mshell 644 -> 113 MB) and the symbols + line
+# tables go to a separate `margo-git-debug` package under
+# /usr/lib/debug (build-id + .gnu_debuglink). Install that package to
+# keep symbolized backtraces: `coredumpctl info`/gdb and margo's own
+# panic-hook backtrace both find the split debug info there; without it
+# a panic still names its file:line, but the frames are addresses. The
+# Cargo release profile keeps `strip = "none"` so the symbols survive
+# until makepkg moves them.
+options=(!lto debug)
 # The install scriptlet retires an /etc/mlogind/variables.toml that the
 # pre-4.5.1 `mlogind sync-theme` wrote (post_install/post_upgrade run the
 # helper installed below). It also refreshes mtune's GSettings schema,
@@ -214,10 +262,18 @@ prepare() {
 build() {
   cd "$srcdir/margo"
 
-  # `--remap-path-prefix` rewrites the build dir to `/build` in
-  # the embedded debug strings; otherwise pacman warns about a
-  # reference to `$srcdir` in the installed binary.
-  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/build"
+  # The debug strings point at the sources the `debug` option ships in
+  # margo-git-debug (/usr/src/debug/margo-git), not at `$srcdir`, or
+  # pacman warns about a reference to `$srcdir` in the installed binary.
+  # makepkg's `debug` option adds this same remap itself; repeating it
+  # keeps builders that skip makepkg's build environment clean too.
+  local dbgsrc="${DBGSRCDIR:-/usr/src/debug}/${pkgbase:-$pkgname}"
+  # `-C debuginfo=line-tables-only` overrides makepkg's DEBUG_RUSTFLAGS
+  # (`-C debuginfo=2`, rust.conf), which would replace the Cargo
+  # profile's line tables with full DWARF: a far larger debug package and
+  # a much slower link, for variable-level detail nobody steps through.
+  # Line tables + symbols are what backtraces and coredumps need.
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=$dbgsrc -C debuginfo=line-tables-only"
   # `--remap-path-prefix` only touches rustc — build scripts that
   # spawn the C compiler via `cc-rs` (e.g. `libspa-sys`, which
   # generates `static_fns.c` for PipeWire bindings) bake their
@@ -225,8 +281,8 @@ build() {
   # info via gcc/clang's own path encoding. Mirror the remap on
   # the C side with `-ffile-prefix-map` so makepkg's "reference
   # to $srcdir" check stays clean.
-  export CFLAGS="${CFLAGS:-} -ffile-prefix-map=$srcdir=/build"
-  export CXXFLAGS="${CXXFLAGS:-} -ffile-prefix-map=$srcdir=/build"
+  export CFLAGS="${CFLAGS:-} -ffile-prefix-map=$srcdir=$dbgsrc"
+  export CXXFLAGS="${CXXFLAGS:-} -ffile-prefix-map=$srcdir=$dbgsrc"
 
   # Two invocations on purpose — do NOT collapse back to a single
   # `--workspace` build. The shell-side crates pull the `wayle-*`
@@ -288,11 +344,13 @@ build() {
   # wayland-client/khronos-egl/wayland-egl for the wallpaper engine's own
   # EGL context; it already lives in this tokio/GTK group, so nothing
   # else changes here.
+  # mshell-privileged (the root helper mshell's pkexec actions run) is
+  # libc-only; it sits with mshell, whose frame links its library half.
   cargo build --frozen --release \
     --features mshell/wasm-plugins \
     -p mshell -p mshellctl -p mshellshare -p mpicker -p mwizard \
     -p mkeys -p mvpn -p mgreet \
-    -p margo-portal
+    -p margo-portal -p mshell-privileged
 
   # mtune (folder-first music player) gets its OWN invocation. Its
   # `mpris-server` dep pulls zbus on the `async-io` executor (same as
@@ -308,19 +366,21 @@ build() {
 check() {
   cd "$srcdir/margo"
 
-  # Only the library + CLI crates have unit tests we can run from
-  # a packager environment; the compositor + mshell want a live
-  # Wayland session. Test failures are non-blocking — surface
-  # them as warnings but let pacman still ship the build.
-  cargo test --frozen --release \
+  # The library + CLI crates whose unit tests run without a live
+  # Wayland session (the compositor + mshell want one). The same tests
+  # CI runs, in the same (test) profile. `--release` would not reuse
+  # build()'s artifacts: this one invocation mixes two build() groups plus
+  # dev-dependencies, so its feature sets differ and most dependencies
+  # would be rebuilt with LTO on top. A failure stops the package like any
+  # other check(); `makepkg --nocheck` skips it.
+  cargo test --frozen \
     --package margo-config \
     --package margo-layouts \
     --package mctl \
     --package mlayout \
     --package mdots \
     --package mcal \
-    --package mtune ||
-    echo "::: margo: test suite reported failures (non-blocking)"
+    --package mtune
 }
 
 package() {
@@ -525,6 +585,19 @@ package() {
     "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.margo.service"
   install -Dm644 "assets/margo-portal.service" \
     "$pkgdir/usr/lib/systemd/user/margo-portal.service"
+
+  # ── mshell's root helper + its polkit actions ───────────────────
+  # Every privileged action mshell offers (pacnew review, rollback,
+  # background upgrade, signalling another user's process, SMART read,
+  # ThinkPad fan level) is one fixed verb of this helper, run through
+  # pkexec. Root-owned 0755 in a directory users can't write; the policy
+  # matches each verb on exec.path + exec.argv1 so the polkit dialog
+  # names what root will do. Both paths are fixed by the code
+  # (mshell_privileged::HELPER) and the policy file.
+  install -Dm755 "target/release/mshell-privileged" \
+    "$pkgdir/usr/lib/mshell/mshell-privileged"
+  install -Dm644 "mshell-crates/mshell-privileged/data/org.margo.mshell.privileged.policy" \
+    "$pkgdir/usr/share/polkit-1/actions/org.margo.mshell.privileged.policy"
 
   # ── mshell desktop-shell user service ──────────────────────────
   # Starts mshell (the bar / menus / notifications) when a margo
