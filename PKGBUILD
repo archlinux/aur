@@ -74,7 +74,7 @@ sha256sums=('SKIP'
 #    FONTTUNE_FEATURE_SUFFIX  e.g. " Alt": install renamed families next to nothing else
 #    FONTTUNE_GASP         keep|sized|smooth|gridfit
 #    Extra: FONTTUNE_REPO / FONTTUNE_REF pick the fonttune source (local testing:
-#    FONTTUNE_REPO=file:///path/to/fonttune).
+#    `fonttune dev on` (see _ft_local)).
 #
 #  Hinting is the fonttune step `hint` (ttfautohint; FONTTUNE_HINT=balanced|sharp|
 #  natural|light). Under GNOME's hintslight FreeType ignores the bytecode (bitmaps
@@ -388,10 +388,11 @@ prepare() {
   # version out of the extracted font files.
   _extract_selected
   _select_fonts
+  _ft_local
   _check_fonttune
   # The tuning questions, asked about the fonts that were just selected (so
   # only relevant ones appear). Answers go to a file that build() reads.
-  python "$srcdir/fonttune/bin/fonttune" configure --defaults apple \
+  python "$(_ft)/bin/fonttune" configure --defaults apple \
     --save-to "$srcdir/fonttune.toml" "$srcdir/selected/"*
 }
 
@@ -418,11 +419,35 @@ pkgver() {
   printf '%s+nf%s\n' "${_apple//-/.}" "${_nfver//-/.}"
 }
 
+# Local fonttune, uncommitted edits included: `/path/to/fonttune/bin/fonttune dev on`
+# (once; `dev off` undoes it) or FONTTUNE_DEV=/path/to/fonttune for one build
+# (FONTTUNE_DEV=off ignores the saved one). The tree is copied to
+# $srcdir/fonttune-local; the git source and .SRCINFO stay as they are.
+_ft() { if [[ -d "$srcdir/fonttune-local" ]]; then echo "$srcdir/fonttune-local"; else echo "$srcdir/fonttune"; fi; }
+
+_ft_local() {  # in prepare(): pick the local tree, if one is set
+  local _dev=${FONTTUNE_DEV-} _cf=${XDG_CONFIG_HOME:-$HOME/.config}/fonttune/dev
+  if [[ -z ${FONTTUNE_DEV+x} && -r "$_cf" ]]; then _dev=$(<"$_cf"); fi
+  rm -rf "$srcdir/fonttune-local"
+  if [[ -z "$_dev" || "$_dev" == off ]]; then return 0; fi
+  if [[ ! -f "$_dev/fonttune/__init__.py" ]]; then
+    echo "Error: local fonttune '$_dev' (FONTTUNE_DEV or $_cf) is not a fonttune tree." >&2
+    exit 1
+  fi
+  mkdir "$srcdir/fonttune-local"
+  tar -C "$_dev" --exclude=.git --exclude=__pycache__ -cf - . | tar -C "$srcdir/fonttune-local" -xf -
+  echo "local:$(git -C "$_dev" describe --always --dirty 2>/dev/null || echo "$_dev")" \
+    > "$srcdir/fonttune-local/.rev"
+  echo "==> fonttune: LOCAL tree $_dev ($(<"$srcdir/fonttune-local/.rev"))" >&2
+}
+
+_ft_rev() { cat "$(_ft)/.rev" 2>/dev/null || git -C "$srcdir/fonttune" describe --always --dirty 2>/dev/null; }
+
 _check_fonttune() {
   # fonttune is tracked at main (latest). Its API number only changes when a
   # step interface breaks; then this package needs a matching update.
   local _api
-  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$srcdir/fonttune/fonttune/__init__.py")
+  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$(_ft)/fonttune/__init__.py")
   if [[ "$_api" != "$_ftapi" ]]; then
     echo "Error: fonttune API is '${_api:-?}', this PKGBUILD expects $_ftapi." >&2
     echo "       Update the PKGBUILD for the new fonttune, or pin FONTTUNE_REF=tag=<last-good>." >&2
@@ -446,7 +471,7 @@ build() {
   _check_fonttune
   _load_options
 
-  local -a _ft=(python "$srcdir/fonttune/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place
+  local -a _ft=(python "$(_ft)/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place
                 --fonts-conf "${APPLE_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
                 --features-match "$(_families_regex)")
   local _s
@@ -484,7 +509,7 @@ build() {
   # pushing the name table past the 64 KB limit; no later step could write the
   # font back. Repair it before anything else touches the patched fonts.
   echo "==> Repairing the name table font-patcher wrote..."
-  parallel --will-cite -j"$(nproc)" python "$srcdir/fonttune/fonttune/steps/fix_names.py" ::: "${_patched[@]}"
+  parallel --will-cite -j"$(nproc)" python "$(_ft)/fonttune/steps/fix_names.py" ::: "${_patched[@]}"
 
   "${_ft[@]}" --skip weights,trak "${_patched[@]}"
 }
@@ -497,7 +522,7 @@ package() {
 
   install -d "$pkgdir/usr/share/fonts/apple" "$pkgdir/usr/share/doc/$pkgname"
   # Which fonttune and settings produced these fonts (build provenance).
-  git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
+  _ft_rev > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
   install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
 
   local _f
@@ -512,7 +537,7 @@ package() {
   # Opt-in fontconfig snippet when the fonts carry ttfautohint bytecode.
   if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
     install -d "$pkgdir/usr/share/fontconfig/conf.avail"
-    python "$srcdir/fonttune/bin/fonttune" hintconf --name "$pkgname" \
+    python "$(_ft)/bin/fonttune" hintconf --name "$pkgname" \
       -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" \
       "$pkgdir"/usr/share/fonts/apple/*.ttf
     chmod 644 "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
