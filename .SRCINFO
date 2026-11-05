@@ -1,0 +1,16 @@
+pkgbase = subview-bin
+	pkgdesc = Display a subtitle stream from stdin as a desktop overlay
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/someoneonsmile/subview
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = subview
+	conflicts = subview
+	source_x86_64 = subview-0.1.0-x86_64-linux-gnu.tar.gz::https://github.com/someoneonsmile/subview/releases/download/v0.1.0/subview-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = subview-0.1.0-aarch64-linux-gnu.tar.gz::https://github.com/someoneonsmile/subview/releases/download/v0.1.0/subview-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = subview-bin
