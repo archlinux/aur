@@ -1,6 +1,6 @@
 pkgbase = libvirt-image-archlinux-basic-bin
 	pkgdesc = Official Arch Linux basic QCOW2 template for libvirt without cloud-init
-	pkgver = 20261015.611680
+	pkgver = 20261101.620452
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/arch-boxes
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = libvirt-image-archlinux-basic-bin
 	checkdepends = libguestfs
 	checkdepends = linux
 	checkdepends = qemu-img
-	noextract = Arch-Linux-x86_64-basic-20261015.611680.qcow2
-	source = Arch-Linux-x86_64-basic-20261015.611680.qcow2::https://geo.mirror.pkgbuild.com/images/v20261015.611680/Arch-Linux-x86_64-basic-20261015.611680.qcow2
-	source = Arch-Linux-x86_64-basic-20261015.611680.qcow2.sig::https://geo.mirror.pkgbuild.com/images/v20261015.611680/Arch-Linux-x86_64-basic-20261015.611680.qcow2.sig
+	noextract = Arch-Linux-x86_64-basic-20261101.620452.qcow2
+	source = Arch-Linux-x86_64-basic-20261101.620452.qcow2::https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-basic-20261101.620452.qcow2
+	source = Arch-Linux-x86_64-basic-20261101.620452.qcow2.sig::https://geo.mirror.pkgbuild.com/images/v20261101.620452/Arch-Linux-x86_64-basic-20261101.620452.qcow2.sig
 	source = DISTRIBUTION-LICENSE
 	validpgpkeys = 1B9A16984A4E8CB448712D2AE0B78BF4326C6F8F
-	sha256sums = bb888a084568f4e68b1260ffa614ebf806c79668fa20f946c691973538f4d33c
+	sha256sums = bc52e4dc79cd55b55ae2d1c119b1ffe61e93f5545ea800d5183a04668de1e962
 	sha256sums = SKIP
 	sha256sums = 1227563c5cc845d4a1fd0dbd0aced043040edb36168ad3278e6341e638647e29
 

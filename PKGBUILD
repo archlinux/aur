@@ -3,7 +3,7 @@
 _pkgname='archlinux'
 _variant='basic'
 pkgname="libvirt-image-${_pkgname}-basic-bin"
-pkgver=20261015.611680
+pkgver=20261101.620452
 pkgrel=1
 pkgdesc='Official Arch Linux basic QCOW2 template for libvirt without cloud-init'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 noextract=("${_upstream_image}")
 sha256sums=(
-	'bb888a084568f4e68b1260ffa614ebf806c79668fa20f946c691973538f4d33c'
+	'bc52e4dc79cd55b55ae2d1c119b1ffe61e93f5545ea800d5183a04668de1e962'
 	'SKIP'
 	'1227563c5cc845d4a1fd0dbd0aced043040edb36168ad3278e6341e638647e29'
 )
