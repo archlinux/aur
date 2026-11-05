@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=cadcraft
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('370af1c04677c4fcde49c88485e526a1701f66dfd8650101b46c9c45b138b25b')
+sha256sums=('c81f84ada82aee7d55d09fbf3a69c35862e89df92666bdb69a9b8b9e1df7ee46')
 
 _srcenv() {
 	cd "$_archive"
