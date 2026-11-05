@@ -1,6 +1,6 @@
 pkgbase = zapret2
 	pkgdesc = Anti-DPI software
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/bol-van/zapret2
 	install = zapret2.install
@@ -19,7 +19,7 @@ pkgbase = zapret2
 	conflicts = zapret2-bin
 	backup = opt/zapret2/config
 	backup = opt/zapret2/ipset/zapret-hosts-user-exclude.txt
-	source = zapret2::git+https://github.com/bol-van/zapret2.git#tag=v1.0.6
-	sha256sums = e528b56b6e2f2b6f05d9d5b09fa811d7ddff092b44cf259e796cab856a7dedc1
+	source = zapret2::git+https://github.com/bol-van/zapret2.git#tag=v1.0.7
+	sha256sums = c50b22342ced6fa79857a87ba9bdd13274ed2777077d5642600014d1ae02631c
 
 pkgname = zapret2

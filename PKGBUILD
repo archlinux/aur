@@ -1,22 +1,22 @@
 # Maintainer: Aleksey Smirnov <debugger94 at gmail dot com>
 
 pkgname=zapret2
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
-pkgdesc="Anti-DPI software"
-arch=('x86_64')
+pkgdesc='Anti-DPI software'
+arch=(x86_64)
 url="https://github.com/bol-van/$pkgname"
-license=('MIT')
+license=(MIT)
 depends=(
-  'bind'  # host, nslookup
-  'curl'
-  'iptables'
-  'libnetfilter_queue'
-  'luajit'
-  'nmap'  # ncat
+  bind  # host, nslookup
+  curl
+  iptables
+  libnetfilter_queue
+  luajit
+  nmap  # ncat
 )
+makedepends=(git)
 optdepends=('ipset: required for iptables mode')
-makedepends=('git')
 provides=($pkgname)
 conflicts=($pkgname-{git,bin})
 backup=(
@@ -28,7 +28,7 @@ backup=(
 )
 install=$pkgname.install
 source=($pkgname::git+$url.git#tag=v$pkgver)
-sha256sums=('e528b56b6e2f2b6f05d9d5b09fa811d7ddff092b44cf259e796cab856a7dedc1')
+sha256sums=('c50b22342ced6fa79857a87ba9bdd13274ed2777077d5642600014d1ae02631c')
 
 prepare() {
   cd $pkgname/ipset
