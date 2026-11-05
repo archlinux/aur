@@ -1,6 +1,6 @@
 pkgbase = nightcap-git
 	pkgdesc = Android x86-64 Roblox compatibility runtime for Linux
-	pkgver = 0.4.0.r333.g6c3ffd0
+	pkgver = 0.5.0.r424.g93cca80
 	pkgrel = 1
 	url = https://github.com/CoderDayton/nightcap
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = nightcap-git
 	makedepends = vulkan-headers
 	depends = capstone
 	depends = curl
-	depends = ffmpeg
 	depends = fontconfig
 	depends = gcc-libs
 	depends = glib2
