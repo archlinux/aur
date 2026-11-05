@@ -1,6 +1,6 @@
 pkgbase = disc-image-studio-bin
 	pkgdesc = Generate CD, DVD and Blu-ray images that show a picture on the burned disc (prebuilt)
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = disc-image-studio-bin
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	provides = disc-image-studio=1.4.1
+	provides = disc-image-studio=1.4.2
 	conflicts = disc-image-studio
 	options = !strip
 	options = !debug
-	source_x86_64 = DiscImageStudio-CLI-1.4.1-linux-x64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.4.1/DiscImageStudio-CLI-v1.4.1-linux-x64.tar.gz
-	sha256sums_x86_64 = 57f46a3ab14d0112f9b4726e083237b9606917e8fa779407f11a3427a50aba4d
-	source_aarch64 = DiscImageStudio-CLI-1.4.1-linux-arm64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.4.1/DiscImageStudio-CLI-v1.4.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = c7ef93a74331f992dd6d43bc7ed9c023d002836dcddbc28674861e7be40fd785
+	source_x86_64 = DiscImageStudio-CLI-1.4.2-linux-x64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.4.2/DiscImageStudio-CLI-v1.4.2-linux-x64.tar.gz
+	sha256sums_x86_64 = 335bf4e5ebe4881dfc2de8a4018c012e85d3b1a8b76a44ea7a2d2282e43fd8eb
+	source_aarch64 = DiscImageStudio-CLI-1.4.2-linux-arm64.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/releases/download/v1.4.2/DiscImageStudio-CLI-v1.4.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0e5fd6220126b42f1d921e1056241df8876bd9856830caabbee8560d98e573f5
 
 pkgname = disc-image-studio-bin
