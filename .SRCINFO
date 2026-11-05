@@ -1,6 +1,6 @@
 pkgbase = zinc-term
 	pkgdesc = A terminal emulator written in Zig
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Mvkweb/zinc
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zinc-term
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	conflicts = zinc-term-git
-	source = https://github.com/Mvkweb/zinc/releases/download/v0.2.0/zinc-v0.2.0.tar.gz
-	sha256sums = 61da16714982cf263f42afadb9ce4be772abdbd8a5edb21cf2931c5ab6bbb204
+	source = https://github.com/Mvkweb/zinc/releases/download/v0.2.1/zinc-v0.2.1.tar.gz
+	sha256sums = 325bdd0bfb73ddf9cbf235ade80b46caa60eb7ab312989816c250ca8bdc4383c
 
 pkgname = zinc-term

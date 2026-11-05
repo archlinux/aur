@@ -3,7 +3,7 @@
 
 _pkgname=zinc
 pkgname=zinc-term
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A terminal emulator written in Zig'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 conflicts=('zinc-term-git')
 source=("https://github.com/Mvkweb/zinc/releases/download/v$pkgver/zinc-v$pkgver.tar.gz")
-sha256sums=('61da16714982cf263f42afadb9ce4be772abdbd8a5edb21cf2931c5ab6bbb204')
+sha256sums=('325bdd0bfb73ddf9cbf235ade80b46caa60eb7ab312989816c250ca8bdc4383c')
 
 build() {
 	cd "$srcdir/$_pkgname-v$pkgver"
