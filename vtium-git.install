@@ -4,6 +4,12 @@
 # that VT, so a new build takes effect at each VT's next start, and which
 # VTs run vtium is the user's choice, made with vtium console (ADR-1500 D3,
 # D5, D7).
+#
+# pacman removes a console package that another one conflicts with the way
+# it removes one on request, scriptlets included, and the scriptlets cannot
+# tell the two apart. So the removal messages say what holds when another
+# vtium console package takes this one's place, and post_install says what
+# the replaced package left.
 
 _vtium_enable() {
   cat <<'EOF'
@@ -32,13 +38,68 @@ _vtium_running() {
     awk '$1 ~ /^vtium@tty[0-9]+\.service$/ { print $1 }'
 }
 
+# The VTs whose vtium still runs the build it started with, under a heading,
+# or nothing.
+_vtium_still_running() {
+  local running
+  running=$(_vtium_running)
+  [ -n "$running" ] || return 0
+  printf '%s\n' "    These still run the build they started with:"
+  # shellcheck disable=SC2086 # one unit name a word
+  printf '      %s\n' $running
+}
+
+# The links to vtium@.service under /etc/systemd/system, one path a line,
+# or nothing. Each outlives the package and then names a unit that is gone,
+# until another vtium console package installs it again.
+_vtium_links() {
+  local l
+  for l in /etc/systemd/system/autovt@.service /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
+    [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] && printf '%s\n' "$l"
+  done
+  return 0
+}
+
+# A first install says that vtium runs on no VT. When this package takes the
+# place of another vtium console package, the links that gave vtium its VTs
+# are still there and name vtium@.service, which this package installs
+# again, so those VTs stay vtium's, and a vtium that still runs keeps the
+# build it started with until it restarts.
 post_install() {
-  _vtium_enable
+  local links running
+  links=$(_vtium_links)
+  running=$(_vtium_running)
+  if [ -z "$links" ] && [ -z "$running" ]; then
+    _vtium_enable
+    return 0
+  fi
+  if [ -n "$links" ]; then
+    cat <<'EOF'
+==> vtium already holds VTs on this machine, through these links, which the
+    console package this one replaced, or an earlier install, left. They
+    name vtium@.service, which this package installs, so those VTs stay
+    vtium's and you need change nothing:
+EOF
+    # shellcheck disable=SC2086 # one path a word
+    printf '      %s\n' $links
+    cat <<'EOF'
+    vtium console status lists them, and sudo vtium console disable --all
+    gives them back.
+EOF
+  fi
+  if [ -n "$running" ]; then
+    cat <<'EOF'
+==> No running vtium was restarted: a restart ends every session on its VT.
+    Each VT runs this build from its next start, at a reboot or when you
+    restart it on purpose, from another VT or over ssh, after logging out
+    there, for VT 3:
+      sudo systemctl restart vtium@tty3.service
+EOF
+    _vtium_still_running
+  fi
 }
 
 post_upgrade() {
-  local running
-  running=$(_vtium_running)
   cat <<'EOF'
 ==> vtium was upgraded, and no running vtium was restarted: a restart ends
     every session on its VT. Each VT runs the new build from its next start,
@@ -46,21 +107,7 @@ post_upgrade() {
     ssh, after logging out there, for VT 3:
       sudo systemctl restart vtium@tty3.service
 EOF
-  if [ -n "$running" ]; then
-    printf '%s\n' "    These still run the build they started with:"
-    # shellcheck disable=SC2086 # one unit name a word
-    printf '      %s\n' $running
-  fi
-}
-
-# The links to vtium@.service under /etc/systemd/system, one path a line,
-# or nothing. Each outlives the package and then names a unit that is gone.
-_vtium_links() {
-  local l
-  for l in /etc/systemd/system/autovt@.service /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
-    [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] && printf '%s\n' "$l"
-  done
-  return 0
+  _vtium_still_running
 }
 
 pre_remove() {
@@ -75,18 +122,22 @@ pre_remove() {
   printf '%s\n' "    session on that VT."
   if [ -n "$(_vtium_links)" ]; then
     printf '%s\n' "    A VT whose link still names vtium@.service then has no console unit;"
-    printf '%s\n' "    pacman lists those links when the removal ends."
+    printf '%s\n' "    pacman lists those links when the removal ends. If pacman removes this"
+    printf '%s\n' "    package to install another vtium console package, that package"
+    printf '%s\n' "    installs vtium@.service again, the links stay valid, and you need do"
+    printf '%s\n' "    nothing."
   fi
 }
 
 post_remove() {
   # The links that vtium console made, or that were made by hand, outlive the
-  # package and now point at nothing; this names each one and changes
-  # nothing. vtium console disable --all, run before the removal, gives each
-  # back as it was. A getty comes back through add-wants, which makes only
-  # its getty.target want: systemctl enable getty@ttyN.service would also
-  # link autovt@ttyN.service to the getty, and vtium console enable N refuses
-  # a VT whose own link names another console.
+  # package and now point at nothing, until another vtium console package
+  # installs vtium@.service again; this names each one and changes nothing.
+  # vtium console disable --all, run before the removal, gives each back as
+  # it was. A getty comes back through add-wants, which makes only its
+  # getty.target want: systemctl enable getty@ttyN.service would also link
+  # autovt@ttyN.service to the getty, and vtium console enable N refuses a VT
+  # whose own link names another console.
   local l vt left='' getty='' records=/var/lib/vtium/console
   while IFS= read -r l; do
     [ -n "$l" ] || continue
@@ -101,10 +152,14 @@ post_remove() {
   done <<<"$(_vtium_links)"
   left+=$getty
   [ -n "$left" ] || return 0
-  printf '%s\n' "==> vtium is removed, but these links to vtium@.service are left and point at"
-  printf '%s\n' "    nothing, so logind would start nothing on those VTs. Remove each, and"
-  printf '%s\n' "    enable its VT's getty at boot again. Where kmscon served a VT, skip that"
-  printf '%s\n' "    VT's add-wants line and link the VT to kmscon instead, as shown below:"
+  printf '%s\n' "==> If pacman removed this package to install another vtium console package,"
+  printf '%s\n' "    such as vtium-minspec in place of vtium, that package installs"
+  printf '%s\n' "    vtium@.service again, the links below stay valid, and you need do"
+  printf '%s\n' "    nothing. Otherwise vtium is removed, but these links to vtium@.service"
+  printf '%s\n' "    are left and point at nothing, so logind would start nothing on those"
+  printf '%s\n' "    VTs. Remove each, and enable its VT's getty at boot again. Where kmscon"
+  printf '%s\n' "    served a VT, skip that VT's add-wants line and link the VT to kmscon"
+  printf '%s\n' "    instead, as shown below:"
   printf '%s' "$left"
   printf '%s\n' "    The kmscon link, for a VT that kmscon served:"
   printf '%s\n' "      sudo ln -s /usr/lib/systemd/system/kmsconvt@.service \\"
@@ -119,5 +174,6 @@ post_remove() {
     printf '%s\n' "    Or put back exactly what vtium console recorded in $records:"
     printf '%s\n' "    install vtium again, run sudo vtium console disable --all, then remove it."
   fi
-  printf '%s\n' "    Next time, run sudo vtium console disable --all before pacman -R vtium."
+  printf '%s\n' "    Next time, run sudo vtium console disable --all before you remove vtium's"
+  printf '%s\n' "    console package."
 }
