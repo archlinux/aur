@@ -10,7 +10,7 @@ pkgname=(
 )
 _Pkgname="Millennium"
 pkgver=v3.6.3.beta.1.r7.gd6a7822a
-pkgrel=3
+pkgrel=4
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead. (git-version, next branch)"
 arch=('x86_64')
 url="https://steambrew.app"
@@ -42,10 +42,6 @@ makedepends=(
     'libxtst'
 )
 provides=("${_pkgname}=${pkgver}")
-conflicts=(
-    "${_pkgname}"
-    "${_pkgname}-bin"
-)
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
     'https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/949.patch' # For the new SteamRT3 build
@@ -56,13 +52,13 @@ options=(!debug)
 install="${_pkgname}.install"
 
 pkgver() {
-    cd                  "${srcdir}/${_Pkgname}"
-    git                 describe --long --tags | \
-    sed                 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd      "${srcdir}/${_Pkgname}"
+    git     describe --long --tags | \
+    sed     's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd                  "${srcdir}/${_Pkgname}"
+    cd      "${srcdir}/${_Pkgname}"
 
     # Add custom patches if needed
     for src in "${source[@]}"; do
@@ -72,51 +68,53 @@ prepare() {
         echo "Applying patch ${src}..."
         git  apply -v -3 "../${src}"
     done
-
-    # strip nodlopen, it'll break steamRT3 sandboxing
-    LDFLAGS="$(echo "${LDFLAGS}"     | sed -E 's/-Wl,-z,nodlopen$//g; s/,-z,nodlopen//g')"
-    RUSTFLAGS="$(echo "${RUSTFLAGS}" | sed -E 's/-Wl,-z,nodlopen$//g; s/,-z,nodlopen//g')"
-
-    # strip omp and pthread for m32 build, as this will cause issues otherwise when linking to libs we don't package for m32.
-    LDFLAGS_NEW="$(echo "${LDFLAGS}"     | sed -E 's/-l(omp|pthread)$//g; s/,-l(omp|pthread)//g')"
-    RUSTFLAGS_NEW="$(echo "${RUSTFLAGS}" | sed -E 's/-l(omp|pthread)$//g; s/,-l(omp|pthread)//g')"
-
-    env LDFLAGS="${LDFLAGS_NEW}" RUSTFLAGS="${RUSTFLAGS_NEW}" \
-    cmake               -GNinja --preset linux-arch-pkgbuild-x86 .
-    env LDFLAGS="${LDFLAGS}"     RUSTFLAGS="${RUSTFLAGS}"     \
-    cmake               -GNinja --preset linux-arch-pkgbuild     .
 }
 
 build() {
-    cd                  "${srcdir}/${_Pkgname}"
-    cmake               --build build
-    cmake               --build build32
+    cd      "${srcdir}/${_Pkgname}"
+
+    # strip nodlopen, it'll break steamRT3 sandboxing
+    LDFLAGS="$(echo   "${LDFLAGS}"   | sed -E 's/-Wl,-z,nodlopen$//g; s/,-z,nodlopen//g')"
+    RUSTFLAGS="$(echo "${RUSTFLAGS}" | sed -E 's/-Wl,-z,nodlopen$//g; s/,-z,nodlopen//g')"
+
+    # strip omp and pthread for m32 build, as this will cause issues otherwise when linking to libs we don't package for m32.
+    LDFLAGS_NEW="$(echo   "${LDFLAGS}"   | sed -E 's/-l(omp|pthread)$//g; s/,-l(omp|pthread)//g')"
+    RUSTFLAGS_NEW="$(echo "${RUSTFLAGS}" | sed -E 's/-l(omp|pthread)$//g; s/,-l(omp|pthread)//g')"
+
+    env LDFLAGS="${LDFLAGS_NEW}" RUSTFLAGS="${RUSTFLAGS_NEW}" \
+    cmake   -GNinja --preset linux-arch-pkgbuild-x86 .
+    env LDFLAGS="${LDFLAGS}"     RUSTFLAGS="${RUSTFLAGS}"     \
+    cmake   -GNinja --preset linux-arch-pkgbuild     .
+
+    cmake   --build build
+    cmake   --build build32
 }
 
 _install_millennium_variant() {
-    local _arch="${1}"
-    local _build_dir="${2}"
-    local _suffix="${3}"
-
     install -Dm755 "${_build_dir}/lib${_pkgname}_${_arch}.so"           -t "${pkgdir}/usr/lib/${_pkgname}/"
     install -Dm755 "${_build_dir}/lib${_pkgname}_bootstrap_${_arch}.so" -t "${pkgdir}/usr/lib/${_pkgname}/"
     install -Dm755 "${_build_dir}/lib${_pkgname}_luavm_${_arch}"        -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm755 "build/lib${_pkgname}_pvs64"                         -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm644 'LICENSE.md'                                         -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 package_millennium-git() {
-    cd "${srcdir}/${_Pkgname}"
+    cd      "${srcdir}/${_Pkgname}"
 
-    _install_millennium_variant "x64" "build"
-    install -Dm755 "build/lib${_pkgname}_hhx64.so"           -t "${pkgdir}/usr/lib/${_pkgname}/"
-    install -Dm755 "build/lib${_pkgname}_bootstrap_hhx64.so" -t "${pkgdir}/usr/lib/${_pkgname}/"
-    install -Dm755 "build/lib${_pkgname}_pvs64"              -t "${pkgdir}/usr/lib/${_pkgname}/"
-    install -Dm644 'LICENSE.md'                              -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+    _arch="x64"
+    _build_dir="build"
+
+    _install_millennium_variant
+
+    install -Dm755 "build/lib${_pkgname}_hhx64.so"                      -t "${pkgdir}/usr/lib/${_pkgname}/"
+    install -Dm755 "build/lib${_pkgname}_bootstrap_hhx64.so"            -t "${pkgdir}/usr/lib/${_pkgname}/"
 }
 
 package_millennium-x86-git() {
-    cd "${srcdir}/${_Pkgname}"
+    cd      "${srcdir}/${_Pkgname}"
 
-    _install_millennium_variant "x86" "build32"
-    install -Dm755 "build32/lib${_pkgname}_bootstrap_x86.so" -t "${pkgdir}/usr/lib/${_pkgname}/"
-    install -Dm644 'LICENSE.md'                                -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+    _arch="x86"
+    _build_dir="build32"
+
+    _install_millennium_variant
 }
