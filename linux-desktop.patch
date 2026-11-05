@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index 3cb86ce8..6c9654c2 100644
+index 4d52487a..bdafff88 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -2,6 +2,7 @@ CLAUDE.local.md
@@ -10,13 +10,15 @@ index 3cb86ce8..6c9654c2 100644
  apps/desktop/*.p12
  node_modules/
  lib/
-@@ -47,3 +48,4 @@ worktrees/
- .agents/worktrees/
- .typert-*/
- native/system/test/bin/
+@@ -50,3 +51,6 @@ native/system/test/bin/
+ 
+ # Generated company-signed CUA release record.
+ /packages/experimental/cua-macos/cua-helper.json
++
++# Desktop packaging scratch directories.
 +apps/desktop/.desktop-build/
 diff --git a/apps/desktop/package.json b/apps/desktop/package.json
-index 081a90ea..0977b0df 100644
+index 00eee144..32623e3d 100644
 --- a/apps/desktop/package.json
 +++ b/apps/desktop/package.json
 @@ -38,6 +38,8 @@
@@ -842,10 +844,10 @@ index 6c3c12c8..0ae20f99 100644
    resolveDesktopPackageTarget(target))
  if (windows && !values.unsigned) await verifyWindowsCode(application)
 diff --git a/apps/desktop/src/main.ts b/apps/desktop/src/main.ts
-index 4770fe83..55a0b614 100644
+index d8d0e30c..937f67d2 100644
 --- a/apps/desktop/src/main.ts
 +++ b/apps/desktop/src/main.ts
-@@ -255,6 +255,16 @@ function platformLoginUrl(authorizeUrl: string): string {
+@@ -256,6 +256,16 @@ function platformLoginUrl(authorizeUrl: string): string {
    return url.href
  }
  
@@ -862,7 +864,7 @@ index 4770fe83..55a0b614 100644
  function createWindow(preload: string, show = false, primary = false): BrowserWindow {
    const window = new BrowserWindow({
      width: 1280,
-@@ -278,6 +288,10 @@ function createWindow(preload: string, show = false, primary = false): BrowserWi
+@@ -279,6 +289,10 @@ function createWindow(preload: string, show = false, primary = false): BrowserWi
        visualEffectState: 'active' as const,
        backgroundColor: '#00000000',
      } : {}),
@@ -873,7 +875,7 @@ index 4770fe83..55a0b614 100644
      webPreferences: {
        preload,
        nodeIntegration: false,
-@@ -1025,15 +1039,13 @@ async function main(): Promise<void> {
+@@ -1027,15 +1041,13 @@ async function main(): Promise<void> {
      updates.dispose()
    })
  
@@ -890,7 +892,7 @@ index 4770fe83..55a0b614 100644
    })
    // A custom application menu replaces Electron's default menu, so macOS needs
    // its standard menus and application hide commands declared explicitly.
-@@ -1084,8 +1096,11 @@ async function main(): Promise<void> {
+@@ -1089,8 +1101,11 @@ async function main(): Promise<void> {
      tray?.relabel()
    }
    refreshApplicationMenu()
@@ -986,6 +988,22 @@ index b7d8315f..dc8fc84d 100644
        process.stdout.write(Object.keys(module).sort().join(','));
      `], { stdio: ['ignore', 'pipe', 'pipe'], env: { PATH: process.env.PATH } })
      let stdout = ''
+diff --git a/apps/desktop/tests/main-startup.spec.ts b/apps/desktop/tests/main-startup.spec.ts
+index 3b1e63e0..e23a1a6e 100644
+--- a/apps/desktop/tests/main-startup.spec.ts
++++ b/apps/desktop/tests/main-startup.spec.ts
+@@ -589,8 +589,10 @@ describe('desktop main startup', () => {
+     harness.ipcOn.mock.calls.find(([channel]) => channel === DESKTOP_IPC.localeChanged)![1](
+       { sender, senderFrame: sender.mainFrame }, nextLocale,
+     )
++    // Linux also owns a status-area icon, whose localized context menu is rebuilt through the
++    // same builder, so the application menu is the last template that carries a submenu.
+     const refreshed = platform === 'win32' ? applicationMenuItems()
+-      : harness.menu.mock.lastCall![0][0]!.submenu as MenuItemConstructorOptions[]
++      : harness.menu.mock.calls.filter(call => Array.isArray(call[0][0]?.submenu)).at(-1)![0][0]!.submenu as MenuItemConstructorOptions[]
+     expect(refreshed.filter(item => item.role === 'toggleDevTools' && item.visible !== false)).toEqual([
+       { role: 'toggleDevTools', label: nextLocale === 'en' ? en.toggleDevToolsMenu : zh.toggleDevToolsMenu },
+     ])
 diff --git a/apps/desktop/tests/package-target.spec.ts b/apps/desktop/tests/package-target.spec.ts
 index ba647d76..86050869 100644
 --- a/apps/desktop/tests/package-target.spec.ts
@@ -1002,7 +1020,7 @@ index ba647d76..86050869 100644
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'darwin', 'x64')).toThrow(/Apple Silicon/u)
      expect(() => resolveDesktopPackageTarget('mac-arm64', 'linux', 'arm64')).toThrow(/macOS/u)
 diff --git a/package.json b/package.json
-index 9dccd600..8c2b5137 100644
+index c4f13094..4b93a8fa 100644
 --- a/package.json
 +++ b/package.json
 @@ -42,6 +42,8 @@
