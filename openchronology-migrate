@@ -1,0 +1,32 @@
+#!/bin/sh
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# Brings the OpenChronology database up to this package's schema, then (re)starts the server,
+# and the mail worker and the log importers (syslog, journald), each if it is enabled (an upgrade
+# stopped them all, #371, #374). Safe to run more than once.
+# Usage: sudo openchronology-migrate [--no-restart]   (--no-restart restarts nothing)
+set -eu
+APP=/usr/lib/openchronology
+CONFIG=/etc/openchronology/openchronology.env
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Run as root: sudo openchronology-migrate" >&2
+  exit 1
+fi
+if [ ! -r "$CONFIG" ]; then
+  echo "$CONFIG is missing; reinstall openchronology-server or restore it from a backup." >&2
+  exit 1
+fi
+# Node reads the same KEY=value file the services use, as systemd does (OCH_CONFIG: a # inside
+# a value is part of it, where node --env-file would cut the value there).
+runuser -u openchronology -- env OCH_CONFIG="$CONFIG" "$APP/node/bin/node" "$APP/server/migrate.mjs"
+if [ "${1:-}" != "--no-restart" ] && [ -d /run/systemd/system ]; then
+  systemctl enable --quiet openchronology.service
+  systemctl restart openchronology.service
+  echo "OpenChronology restarted."
+  # Disabled until configured (README); an enabled one runs the new version too.
+  for worker in "mail:mail worker" "syslog:syslog receiver" "journald:journald follower"; do
+    if systemctl is-enabled --quiet "openchronology-${worker%%:*}.service" 2>/dev/null; then
+      systemctl restart "openchronology-${worker%%:*}.service"
+      echo "OpenChronology ${worker#*:} restarted."
+    fi
+  done
+fi

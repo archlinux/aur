@@ -1,0 +1,33 @@
+# The OpenChronology platform as a systemd service (Debian and RPM packages), on the address
+# in /etc/openchronology/openchronology.env.
+[Unit]
+Description=OpenChronology platform
+Documentation=file:///usr/share/doc/openchronology-server/README.Debian
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=openchronology
+Group=openchronology
+EnvironmentFile=/etc/openchronology/openchronology.env
+WorkingDirectory=/usr/lib/openchronology
+ExecStart=/usr/lib/openchronology/node/bin/node /usr/lib/openchronology/openchronology-server.mjs
+Restart=on-failure
+# Node exits with 128 + SIGTERM when stopped; that is a clean stop, not a failure.
+SuccessExitStatus=143
+RestartSec=5
+# Open live views keep the server from exiting promptly; do not wait long for them.
+TimeoutStopSec=10
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+# /var/cache/openchronology (CACHE_DIRECTORY), where downloads are cached (EXPORT_CACHE).
+CacheDirectory=openchronology
+
+[Install]
+WantedBy=multi-user.target

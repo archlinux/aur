@@ -1,0 +1,121 @@
+OpenChronology server for Arch Linux
+====================================
+
+Install
+-------
+
+From the AUR, with an AUR helper or by hand:
+
+    git clone https://aur.archlinux.org/openchronology-server.git
+    cd openchronology-server && makepkg -si
+
+It builds och-convert and the pgmp extension for this system's PostgreSQL, and installs
+the server, the `openchronology` system user and its services. As Arch packages do, it
+leaves PostgreSQL and the database to you; finish with:
+
+    sudo openchronology-setup
+
+which:
+
+  - initializes PostgreSQL in /var/lib/postgres/data if it is not yet, and starts and
+    enables it;
+  - writes /etc/openchronology/openchronology.env, with a new AUTH_ENCRYPTION_KEY;
+  - creates the `openchronology` PostgreSQL role and database, with the pgmp extension;
+  - migrates the database (openchronology-migrate) and starts openchronology.service,
+    which listens on 127.0.0.1:5173.
+
+It is safe to run again. The server runs on Arch's Node.js (`nodejs`, or an LTS package
+that provides it).
+
+PostgreSQL major upgrades: pgmp is built for the PostgreSQL this package was built with.
+After pacman installs a new PostgreSQL major version, upgrade the cluster as the Arch
+wiki describes (pg_upgrade), and rebuild this package so pgmp matches it.
+
+Configure
+---------
+
+Edit /etc/openchronology/openchronology.env, then `sudo systemctl restart openchronology`:
+
+  - APP_ORIGIN: the public HTTPS origin users reach, without a trailing slash. The server
+    refuses a plain http:// origin other than localhost; on a trusted private network
+    without a proxy, set ALLOW_INSECURE_ORIGIN=1 and HOST=0.0.0.0 to serve
+    http://<name>:5173 directly (and open the port in your firewall). If the website reports "Server
+    misconfigured", the reason is also in `journalctl -u openchronology`.
+  - RESEND_API_KEY and AUTH_EMAIL_FROM for account email, then
+    `sudo systemctl enable --now openchronology-mail`.
+  - ADMIN_USERNAME, ADMIN_EMAIL and ADMIN_INITIAL_PASSWORD for the first administrator,
+    created by `sudo openchronology-migrate`. The password is used once; to sign in with it
+    again (or with a new one written there), run `sudo openchronology-reset-admin-password`.
+  - Sign-in providers, human verification, quotas: see the comments in the file and
+    authentication.md, administration.md in this directory.
+
+Back up AUTH_ENCRYPTION_KEY apart from the database: without it, enrolled authenticator
+secrets cannot be decrypted. Do not change it once accounts exist.
+
+Serve it publicly through an HTTPS reverse proxy. With Caddy:
+
+    timescale.example {
+        reverse_proxy 127.0.0.1:5173
+    }
+
+Caddy 2.5 and later replace an incoming
+X-Forwarded-For with the client address, so set TRUST_PROXY=1 (with another proxy, only if
+it does the same; see README.md). Proxies should allow request bodies of at least 32 MiB
+and streaming responses (live updates).
+
+The syslog receiver (syslog.md) is configured in /etc/openchronology/syslog.env with routes
+in /etc/openchronology/syslog-routes.json; then
+`sudo systemctl enable --now openchronology-syslog`.
+
+The journald follower (journald.md) streams this machine's systemd journal, or another
+machine's over SSH, into timelines. Configure it in /etc/openchronology/journald.env (the timeline or
+routes, and which units); then `sudo systemctl enable --now openchronology-journald`.
+
+`och-import-logs` imports historic log files (log-import.md), with OCH_API_URL and
+OCH_API_KEY from the environment or syslog.env: `och-import-logs --help`.
+
+Upgrade
+-------
+
+Installing a newer package (from the AUR, `makepkg -si` again, or your AUR helper's upgrade)
+stops the server and leaves the database and configuration as they are. It then lists:
+
+  1. Settings this version's template has that /etc/openchronology/openchronology.env
+     lacks. Compare with:
+         diff -u /etc/openchronology/openchronology.env \
+                 /usr/share/openchronology/openchronology.env.example
+  2. A backup:  sudo -u postgres pg_dump openchronology > openchronology.sql
+  3. sudo openchronology-migrate, which migrates the database and starts the server, and
+     each of the mail worker (openchronology-mail) and the log importers
+     (openchronology-syslog, openchronology-journald) that is enabled. Disabled ones stay
+     stopped.
+
+openchronology-migrate is safe to run more than once. `--no-restart` migrates only and starts
+nothing.
+
+Remove
+------
+
+`sudo pacman -R openchronology-server` stops and removes the server. The configuration
+(/etc/openchronology, including AUTH_ENCRYPTION_KEY), the database and the system user
+remain; delete them with:
+
+    sudo rm -rf /etc/openchronology /var/lib/openchronology /var/cache/openchronology
+    sudo -u postgres dropdb openchronology
+    sudo -u postgres dropuser openchronology
+    sudo userdel openchronology
+
+Layout
+------
+
+  /usr/lib/openchronology            the application and och-convert (node/bin/node is
+                                     this system's /usr/bin/node)
+  /usr/bin/openchronology-setup      first-time setup (run it once after installing)
+  /usr/bin/openchronology-migrate    database migration
+  /usr/bin/openchronology-reset-admin-password   the administrator's password, from the configuration
+  /usr/bin/och-import-logs           log file import
+  /etc/openchronology                configuration (created by openchronology-setup)
+  /usr/share/openchronology          configuration templates of the installed version
+  /usr/lib/systemd/system            openchronology, openchronology-mail, openchronology-syslog,
+                                     openchronology-journald
+  /usr/lib/postgresql, /usr/share/postgresql/extension   pgmp for this system's PostgreSQL

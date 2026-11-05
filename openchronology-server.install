@@ -1,0 +1,54 @@
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# pacman's scripts for openchronology-server (#331). Installing leaves PostgreSQL and the
+# database to the administrator, as Arch packages do: openchronology-setup does both. An
+# upgrade stops the services, which openchronology-migrate starts again on the new version.
+services='openchronology.service openchronology-mail.service openchronology-syslog.service openchronology-journald.service'
+
+post_install() {
+  cat <<'MSG'
+
+To finish installing OpenChronology, run:
+
+  sudo openchronology-setup
+
+It initializes PostgreSQL if it is not yet, creates the openchronology database with the
+pgmp extension, writes /etc/openchronology/openchronology.env and starts the server on
+http://127.0.0.1:5173. See /usr/share/doc/openchronology-server/README.Arch.
+
+MSG
+}
+
+pre_upgrade() {
+  if [ -d /run/systemd/system ]; then
+    # shellcheck disable=SC2086
+    systemctl stop $services >/dev/null 2>&1 || true
+  fi
+}
+
+post_upgrade() {
+  # Not set up yet: nothing to upgrade.
+  if [ ! -e /etc/openchronology/openchronology.env ]; then
+    post_install
+    return 0
+  fi
+  /usr/bin/openchronology-setup upgrade || true
+}
+
+pre_remove() {
+  if [ -d /run/systemd/system ]; then
+    # shellcheck disable=SC2086
+    systemctl disable --now $services >/dev/null 2>&1 || true
+  fi
+}
+
+post_remove() {
+  cat <<'MSG'
+OpenChronology was removed. Its configuration (/etc/openchronology, including
+AUTH_ENCRYPTION_KEY), the PostgreSQL database and the openchronology system user remain.
+To delete them as well:
+  sudo rm -rf /etc/openchronology /var/lib/openchronology /var/cache/openchronology
+  sudo -u postgres dropdb openchronology
+  sudo -u postgres dropuser openchronology
+  sudo userdel openchronology
+MSG
+}

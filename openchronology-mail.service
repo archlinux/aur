@@ -1,0 +1,27 @@
+# Account email delivery (Resend) as a systemd service, with the server's configuration
+# (Debian and RPM packages).
+[Unit]
+Description=OpenChronology account email delivery (Resend)
+Documentation=file:///usr/share/doc/openchronology-server/README.Debian
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=openchronology
+Group=openchronology
+EnvironmentFile=/etc/openchronology/openchronology.env
+Environment=NODE_ENV=production
+WorkingDirectory=/usr/lib/openchronology
+ExecStart=/usr/lib/openchronology/node/bin/node server/mail-worker.mjs
+Restart=on-failure
+# Node exits with 128 + SIGTERM when stopped; that is a clean stop, not a failure.
+SuccessExitStatus=143
+RestartSec=10
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target

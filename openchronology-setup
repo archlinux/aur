@@ -1,0 +1,154 @@
+#!/bin/sh
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# Sets up OpenChronology on Arch Linux (#331), as the RPM package's openchronology-setup does:
+# the configuration, the PostgreSQL role and database (with pgmp), the migration and the
+# service. Arch does not initialize PostgreSQL itself, so this does when it is not yet. The
+# administrator runs it once after installing; upgrades (post_upgrade) leave the configuration
+# and database alone, and advise on both.
+# Usage: sudo openchronology-setup [install|upgrade]   (install when run by hand)
+set -e
+CONFIG_DIR=/etc/openchronology
+CONFIG=$CONFIG_DIR/openchronology.env
+EXAMPLES=/usr/share/openchronology
+DOCS=/usr/share/doc/openchronology-server/README.Arch
+PGDATA=/var/lib/postgres/data
+mode=${1:-install}
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Run as root: sudo openchronology-setup" >&2
+  exit 1
+fi
+systemd=
+[ -d /run/systemd/system ] && systemd=1
+
+install -d -m 0750 -o openchronology -g openchronology /var/lib/openchronology
+install -d -m 0750 -o root -g openchronology "$CONFIG_DIR"
+# Configuration files are created once and then belong to the administrator: upgrades never
+# rewrite them (each version's templates stay in /usr/share/openchronology to compare).
+new_config() {
+  [ -e "$1" ] && return 0
+  sed "$2" "$3" >"$1.new"
+  chown root:openchronology "$1.new"
+  chmod 0640 "$1.new"
+  mv "$1.new" "$1"
+}
+key=$(od -An -tx1 -N32 /dev/urandom | tr -d ' \n')
+new_config "$CONFIG" "s|^AUTH_ENCRYPTION_KEY=\$|AUTH_ENCRYPTION_KEY=$key|" \
+  "$EXAMPLES/openchronology.env.example"
+new_config "$CONFIG_DIR/syslog.env" "" "$EXAMPLES/syslog.env.example"
+new_config "$CONFIG_DIR/journald.env" "" "$EXAMPLES/journald.env.example"
+if [ -n "$systemd" ]; then systemctl daemon-reload; fi
+
+psql_as_postgres() { runuser -u postgres -- psql -X -q -v ON_ERROR_STOP=1 "$@"; }
+reachable() { psql_as_postgres -Atc 'SELECT 1' >/dev/null 2>&1; }
+# PostgreSQL: initialized and started when it is not yet (a fresh system, or a container
+# without systemd, where its package cannot start it).
+if ! reachable; then
+  if [ ! -s "$PGDATA/PG_VERSION" ]; then
+    # As the Arch wiki initializes it.
+    install -d -m 0700 -o postgres -g postgres "$PGDATA"
+    runuser -u postgres -- initdb -D "$PGDATA" --locale=C.UTF-8 --encoding=UTF8 \
+      --auth-local=peer --auth-host=scram-sha-256 >/dev/null
+  fi
+  # PostgreSQL's socket directory comes from systemd-tmpfiles: at boot, or at the end of the
+  # transaction that installed it, which is still running when this package sets up.
+  install -d -m 0755 -o postgres -g postgres /run/postgresql
+  if [ -n "$systemd" ]; then
+    systemctl enable --now postgresql >/dev/null 2>&1 || true
+  else
+    runuser -u postgres -- pg_ctl -D "$PGDATA" -l /var/lib/postgres/openchronology-start.log \
+      -w start >/dev/null 2>&1 || true
+  fi
+  for _ in $(seq 30); do
+    reachable && break
+    sleep 1
+  done
+fi
+running=
+if reachable; then running=1; fi
+# An installed database is upgraded by the administrator (openchronology-migrate); one that
+# is missing (a first install, or one that could not reach PostgreSQL) is created now.
+installed=
+if [ "$mode" = upgrade ]; then
+  installed=1
+  if [ -n "$running" ] &&
+    [ -z "$(psql_as_postgres -Atc "SELECT 1 FROM pg_database WHERE datname='openchronology'")" ]; then
+    installed=
+  fi
+fi
+if [ -n "$installed" ]; then
+  # Settings the new template has that this installation's configuration does not.
+  missing=$(sed -n 's/^\([A-Z][A-Z0-9_]*\)=.*/\1/p' "$EXAMPLES/openchronology.env.example" |
+    while read -r name; do grep -q "^$name=" "$CONFIG" || echo "  $name"; done)
+  version=$(pacman -Q openchronology-server 2>/dev/null | cut -d' ' -f2)
+  cat <<MSG
+
+OpenChronology $version is installed over an earlier version.
+Upgrades stop the server; it starts again once the database is migrated to this version:
+
+  1. Review the configuration in $CONFIG against this version's template:
+       diff -u $CONFIG $EXAMPLES/openchronology.env.example
+MSG
+  if [ -n "$missing" ]; then
+    echo "     New settings to consider (their defaults apply until you add them):"
+    echo "$missing" | sed 's/^/     /'
+  fi
+  cat <<MSG
+  2. Back up the database:   sudo -u postgres pg_dump openchronology > openchronology.sql
+  3. Migrate and restart:    sudo openchronology-migrate
+
+See $DOCS.
+
+MSG
+  exit 0
+fi
+
+if [ -z "$running" ]; then
+  cat <<MSG
+
+OpenChronology is installed, but PostgreSQL is not running, so the database was not created.
+Start it, then finish the setup:
+
+  sudo systemctl enable --now postgresql
+  sudo openchronology-setup
+
+See $DOCS.
+
+MSG
+  exit 0
+fi
+if [ -z "$(psql_as_postgres -Atc "SELECT 1 FROM pg_roles WHERE rolname='openchronology'")" ]; then
+  psql_as_postgres -c 'CREATE ROLE openchronology LOGIN'
+fi
+if [ -z "$(psql_as_postgres -Atc "SELECT 1 FROM pg_database WHERE datname='openchronology'")" ]; then
+  psql_as_postgres -c 'CREATE DATABASE openchronology OWNER openchronology'
+fi
+# pgmp is not a trusted extension: the superuser creates it once for the application's role.
+psql_as_postgres -d openchronology -c 'CREATE EXTENSION IF NOT EXISTS pgmp'
+openchronology-migrate --no-restart
+if [ -n "$systemd" ]; then
+  systemctl enable --quiet openchronology.service
+  systemctl restart openchronology.service
+  # The mail worker and the log importers, each if it is enabled (#371, #374).
+  for unit in mail syslog journald; do
+    if systemctl is-enabled --quiet "openchronology-$unit.service" 2>/dev/null; then
+      systemctl restart "openchronology-$unit.service"
+    fi
+  done
+fi
+origin=$(sed -n 's/^APP_ORIGIN=//p' "$CONFIG")
+state="ready (start it with the openchronology service)"
+if [ -n "$systemd" ]; then state="running"; fi
+cat <<MSG
+
+OpenChronology is installed and $state at $origin.
+
+Next steps:
+  - Set APP_ORIGIN, email, an administrator and sign-in providers in $CONFIG,
+    then: sudo openchronology-migrate (creates the administrator) or
+          sudo systemctl restart openchronology
+  - Put an HTTPS reverse proxy in front of it for public use.
+  - Back up AUTH_ENCRYPTION_KEY from $CONFIG separately from the database.
+
+See $DOCS.
+
+MSG

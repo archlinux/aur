@@ -1,0 +1,4 @@
+# The OpenChronology server's directories (#331): its home, and its configuration, readable by
+# its group (openchronology-setup writes the files once).
+d /var/lib/openchronology 0750 openchronology openchronology -
+d /etc/openchronology 0750 root openchronology -

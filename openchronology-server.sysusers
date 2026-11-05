@@ -1,0 +1,2 @@
+# The OpenChronology server's system user (#331): its services run as it.
+u openchronology - "OpenChronology server" /var/lib/openchronology
