@@ -37,7 +37,7 @@ sha256sums=('3da5013ec56bf5a83cccd1d5601b89fa58a6cda5b3fd0e5f8d18ee3690272c05'
             '3ad4eb1296ca40b68d32fe5220fe03cb0c8b0d7725b1f179d3df2176430b0ff8'
             '966cc105db5f0f50c2015227baab9f24fe2e77054f8251b51ebb7e10ab412000'
             'd286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b'
-            'c3fed52bfcbefc4e0a324477560917572179a413aa09123dd6d888279b152d1d'
+            'b9b6e0a38ae470bc68106f9099cfc10e30774c6dd6377ac00c8bda52c109eccf'
             'aceadd7432c2be91f08aae14d556955d160397167bffe613c0b947e53acd8fda'
             '53f95d81331096d439ec7235e59b830d42c0016c1e8a57231134afe280edbcb9')
 
@@ -413,6 +413,9 @@ _resolve_options() {
   PIXEL_GRID="${PIXEL_GRID:-}"
   if [[ ! "$PIXEL_GRID" =~ ^([0-9]+(\.[0-9]+)?)?$ ]]; then
     echo "Error: PIXEL_GRID must be empty or a size in ppem (e.g. 16)." >&2; exit 1
+  fi
+  if [[ -n "$PIXEL_GRID" && -n "$EVEN_SPACING" ]]; then
+    echo "Error: PIXEL_GRID rounds the kerning that EVEN_SPACING adds; use one of them." >&2; exit 1
   fi
   EVEN_STRENGTH="${EVEN_STRENGTH:-auto}"; EVEN_DEPTH="${EVEN_DEPTH:-auto}"
   EVEN_MAX="${EVEN_MAX:-auto}"; EVEN_MIN="${EVEN_MIN:-auto}"
