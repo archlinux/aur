@@ -63,9 +63,9 @@ ss06 subs sups tnum zero`. GPOS: `kern mark mkmk`. **Δεν υπάρχει `liga
 
 ## Χρήση
 
-- **Ψήσιμο:** `FEATURE_DEFAULTS=tag,...` βάζει features στο `calt` ώστε να τα
-  εφαρμόζουν όλα τα προγράμματα. Το `make_features.py` αρνείται τα `aalt`, `ordn`
-  (χωρίς `--allow-risky`). Λογικά για κείμενο: `zero`, `ss06`, `cv04`… Όχι
+- **Ψήσιμο:** `FONTTUNE_FEATURES=tag,...` βάζει features στο `calt` ώστε να τα
+  εφαρμόζουν όλα τα προγράμματα. Το βήμα `features` του fonttune αρνείται τα `aalt`, `ordn`.
+  Λογικά για κείμενο: `zero`, `ss06`, `cv04`… Όχι
   `frac`/`sups` (πειράζουν κανονικό κείμενο).
 - **fontconfig `fontfeatures`:** φτάνει μόνο σε pango/GTK. Δες το block στο
   `~/.config/fontconfig/fonts.conf`.

@@ -15,22 +15,26 @@ Fonts. Τα χαρακτηριστικά (features, κάλυψη, Ελληνικ
     makepkg -si              # ρωτάει, όταν τρέχει από τερματικό
     makepkg -si </dev/null   # δεν ρωτάει: μόνο προεπιλογές
 
-Επιλογές: βλέπε την κεφαλίδα του `PKGBUILD` (`TS_VARIANT`, `STATIC_WEIGHTS`,
-`STATIC_ITALIC`, `STATIC_WIDTHS`, `STATIC_OPSZ`, `NERD_PATCH`, `HINTING`,
-`HINT_PRESET`, `FEATURE_DEFAULTS`, `GASP_MODE`, …). Οι απαντήσεις σώζονται στο
-`$srcdir/.build_opts`.
+Επιλογές πακέτου: βλέπε την κεφαλίδα του `PKGBUILD` (`TS_VARIANT`,
+`STATIC_WEIGHTS`, `STATIC_ITALIC`, `STATIC_WIDTHS`, `STATIC_OPSZ`, `NERD_PATCH`).
+Το tuning (hinting, gasp, features στο `calt`, …) το κάνει το
+[fonttune](https://github.com/gaou-piou/fonttune): οι ερωτήσεις γίνονται στο
+`prepare()` και κάθε απάντηση μπορεί να δοθεί έτοιμη ως `FONTTUNE_<KEY>`
+(`FONTTUNE_HINT`, `FONTTUNE_GASP`, `FONTTUNE_FEATURES`, …). Οι τελικές επιλογές
+σώζονται στο `/usr/share/doc/ttf-tiktok-sans-hinted/fonttune.toml`. Τα στατικά
+κόβονται με `fonttune statics`. Οι παλιές μεταβλητές `HINTING`, `HINT_*`,
+`GASP_MODE`, `FEATURE_*` και τα `make_statics.py`, `make_features.py`,
+`set_gasp.py` δεν υπάρχουν πια.
 
-`FEATURE_DEFAULTS=fonts.conf` ψήνει τα features που είναι ενεργά (χωρίς σχόλιο)
+`FONTTUNE_FEATURES=fonts.conf` ψήνει τα features που είναι ενεργά (χωρίς σχόλιο)
 στο `<match>` της οικογένειας `TikTok Sans` του `~/.config/fontconfig/fonts.conf`
-(άλλο αρχείο: `TS_FONTS_CONF`). Παραλείπονται, με σημείωση, τα αρνητικά
-(`-calt`), όσα δεν υπάρχουν στο GSUB, όσα εφαρμόζει ήδη κάθε shaper
-(`kern ccmp locl calt mark mkmk`) και όσα αρνείται το `make_features.py`.
+(άλλο αρχείο: `TS_FONTS_CONF`).
 
 Παραδείγματα:
 
     TS_VARIANT=static makepkg -si                       # 7 βάρη + πλάγια, opsz 14, wdth 100
     TS_VARIANT=static STATIC_WIDTHS="75 100" STATIC_OPSZ=12 makepkg -si
-    TS_VARIANT=static HINT_PRESET=balanced makepkg -si
+    TS_VARIANT=static FONTTUNE_HINT=balanced makepkg -si
 
 Μετά την εγκατάσταση, για bytecode hinting (δεν ενεργοποιείται μόνο του):
 
@@ -49,9 +53,10 @@ Chromium και τα Electron εξαιρούνται με `prgname`: σε device
   τιμές, εντολές σε 999 από 1167 περιγράμματα) και `cvar`.
 - **Static:** κάθε στυλ κόβεται με τον instancer του fontTools (άξονες wght, wdth,
   opsz, slnt καρφωμένοι) και hint-άρεται χωριστά με τα presets του πακέτου.
-- **Variable:** μένει το upstream hinting (`HINTING=false` προεπιλογή). Με
-  `HINTING=true` αφαιρείται πρώτα το `cvar` (δείχνει σε cvt που ξαναγράφεται) και
-  ξαναπερνά ttfautohint.
+- **Variable:** με την προεπιλογή του fonttune (`hint` κενό) μένει το upstream
+  hinting. Αν διαλέξεις hint preset, το fonttune ξαναπερνά ttfautohint· σημείωση:
+  το `cvar` δεν αφαιρείται πια (το παλιό PKGBUILD το αφαιρούσε), οπότε για το
+  variable προτιμήστε να μην ξανα-hint-άρετε.
 - Το Nerd Fonts patching αναγκάζει static και ξανά-hinting, γιατί το
   font-patcher πετά το bytecode.
 
@@ -117,8 +122,8 @@ Chromium και τα Electron εξαιρούνται με `prgname`: σε device
 
 ## 4. Τεχνικές από τα άλλα πακέτα
 
-`HINT_INTEGER_PPEM` είναι κλειστό (μεγαλώνει το κείμενο στο Linux). `GASP_MODE=keep`
-(το upstream έχει gasp 8:10, 65535:15). `FEATURE_DEFAULTS` ψήνει features στο
+Το integer-ppem είναι κλειστό (μεγαλώνει το κείμενο στο Linux). Το upstream έχει
+gasp 8:10, 65535:15 (`FONTTUNE_GASP`). Το `FONTTUNE_FEATURES` ψήνει features στο
 `calt` (το fontconfig `fontfeatures` φτάνει μόνο στο pango).
 
 ## 5. Επαλήθευση
