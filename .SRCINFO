@@ -1,0 +1,22 @@
+pkgbase = gextant
+	pkgdesc = Updates GNOME Shell extensions from their repositories
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AperteDev/gextant
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	depends = gtk4
+	depends = libadwaita>=1:1.7
+	depends = libsecret
+	depends = glib2
+	depends = ca-certificates
+	depends = libgcc
+	depends = glibc
+	optdepends = org.freedesktop.secrets: keep the access tokens in the system keyring
+	options = !lto
+	source = gextant-0.1.0.tar.gz::https://github.com/AperteDev/gextant/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = gextant
