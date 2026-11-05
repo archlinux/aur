@@ -1,6 +1,6 @@
 pkgbase = clauth-bin
 	pkgdesc = Claude Code multi-account manager and usage monitor with auto-switch (prebuilt binary)
-	pkgver = 0.18.0
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/uwuclxdy/clauth
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = clauth-bin
 	conflicts = clauth
 	options = !strip
 	options = !debug
-	source = LICENSE-clauth-0.18.0::https://raw.githubusercontent.com/uwuclxdy/clauth/v0.18.0/LICENSE
+	source = LICENSE-clauth-0.18.2::https://raw.githubusercontent.com/uwuclxdy/clauth/v0.18.2/LICENSE
 	sha256sums = cdda746ab9906de0e39936a41b1eabf9dd2c8790715c14b4ea5285abbcfec17f
-	source_x86_64 = clauth-bin-0.18.0-x86_64::https://github.com/uwuclxdy/clauth/releases/download/v0.18.0/clauth-linux-x86_64
-	sha256sums_x86_64 = 74c0b1630a2e1a93f5bffffa7a3bcbd31740306892cf21a4c969133e26e38d18
+	source_x86_64 = clauth-bin-0.18.2-x86_64::https://github.com/uwuclxdy/clauth/releases/download/v0.18.2/clauth-linux-x86_64
+	sha256sums_x86_64 = 1c8ff039bbb4b71e38af155aae3b91a46339850ad8be7ab560c0a1ce3f037ef7
 
 pkgname = clauth-bin
