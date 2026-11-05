@@ -1,7 +1,7 @@
 # Maintainer: lzsnyy <710080675@qq.com>
 pkgname=qoder-agent
 _pkgname=Qoder
-pkgver=0.5.3
+pkgver=0.5.5
 _electronversion=43
 pkgrel=1
 pkgdesc="Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle."
@@ -27,12 +27,12 @@ options=(
     '!strip'
 )
 source=(
-    "qoder-${pkgver}.rpm::https://download.qoder.com/qoder-app/releases/latest/${_pkgname}-linux-${CARCH}.rpm"
+    "qoder-${pkgver}.rpm::https://download.qoder.com/qoder-app/releases/${pkgver}/${_pkgname}-linux-${CARCH}.rpm"
     "LICENSE.html"
     "qoder.js"
     "qoder.sh"
 )
-sha256sums=('3f1ed471575aa0591d959a6d2a8f66518df71b18dd47a6df0e5597789cb72be8'
+sha256sums=('f03579a510922a07b64c0cd30b721d2bde8814de832383a5ffd832414b0db34e'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
