@@ -23,6 +23,7 @@ pkgbase = ttf-akt-hinted
 	source = measure.py
 	source = fit_weight.py
 	source = even_spacing.py
+	source = pixel_grid.py
 	source = README.md
 	source = FEATURES.md
 	sha256sums = 3da5013ec56bf5a83cccd1d5601b89fa58a6cda5b3fd0e5f8d18ee3690272c05
@@ -34,6 +35,7 @@ pkgbase = ttf-akt-hinted
 	sha256sums = 3ad4eb1296ca40b68d32fe5220fe03cb0c8b0d7725b1f179d3df2176430b0ff8
 	sha256sums = 966cc105db5f0f50c2015227baab9f24fe2e77054f8251b51ebb7e10ab412000
 	sha256sums = d286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b
+	sha256sums = c3fed52bfcbefc4e0a324477560917572179a413aa09123dd6d888279b152d1d
 	sha256sums = be40b0414f99e8bf007a60b0bf6cb31adb0ffd6af25014ff56fc7fea250ec668
 	sha256sums = 53f95d81331096d439ec7235e59b830d42c0016c1e8a57231134afe280edbcb9
 

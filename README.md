@@ -146,6 +146,7 @@ hinted περίπτωση από 400 και πάνω (unhinted: 1–3 γράμμ
 | `HINTING` (ttfautohint, presets) | bytecode hinting | **Όχι**: το `slight` χρησιμοποιεί τον autohinter του FreeType και αγνοεί το bytecode· με και χωρίς hint το αποτέλεσμα βγαίνει πανομοιότυπο. Ωφελεί μόνο `medium`/`full` (εκεί τα κάθετα πάχη βγαίνουν ομοιόμορφα, sd 0.00 έναντι 0.14) |
 | `REGULAR_WGHT=auto` | κόβει το Regular σε static στο wght όπου οι οριζόντιες μπάρες πέφτουν σε ακέραιο pixel (`fit_weight.py`, 16 ppem, ανοχή 0.25 → **335** για το Akt) και ξαναμοιράζει τα βάρη κάτω από το Bold (`SCALE_WEIGHTS`, π.χ. R=330 → Light 253, Medium 453, SemiBold 577) | **Ναι**: η αχνή γραμμή κάτω από την πάνω μπάρα του Τ/τ πέφτει από 0.53 σε 0.36 του μέγιστου |
 | `EVEN_SPACING=all` | kern lookup που εξισώνει τα οπτικά κενά ζευγών (`even_spacing.py`) | Ανεξάρτητο από το hinting (αλλάζει μόνο το GPOS) |
+| `PIXEL_GRID=16` | στρογγυλοποιεί advances (`hmtx`) και kerning σε ακέραια pixel στα 16 ppem (`pixel_grid.py`) ώστε με subpixel positioning το ίδιο στέλεχος να βγαίνει ίδιο σε κάθε γράμμα | **Ναι**, μόνο με `AK_VARIANT=static`: η μεταβλητή γραμματοσειρά κρατά τα advances στο HVAR και παραλείπεται με προειδοποίηση. Τιμή αντί για 1000 upem: υπόλοιπο ≤ 0.008 px (το 62.5 δεν είναι ακέραιο). Κόστος: τα κενά διαφέρουν έως ~0.5 px από το σχέδιο |
 
 ### `fit_weight.py` (`REGULAR_WGHT=auto`)
 

@@ -23,6 +23,7 @@ source=(
   "measure.py"
   "fit_weight.py"
   "even_spacing.py"
+  "pixel_grid.py"
   "README.md"
   "FEATURES.md"
 )
@@ -36,6 +37,7 @@ sha256sums=('3da5013ec56bf5a83cccd1d5601b89fa58a6cda5b3fd0e5f8d18ee3690272c05'
             '3ad4eb1296ca40b68d32fe5220fe03cb0c8b0d7725b1f179d3df2176430b0ff8'
             '966cc105db5f0f50c2015227baab9f24fe2e77054f8251b51ebb7e10ab412000'
             'd286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b'
+            'c3fed52bfcbefc4e0a324477560917572179a413aa09123dd6d888279b152d1d'
             'be40b0414f99e8bf007a60b0bf6cb31adb0ffd6af25014ff56fc7fea250ec668'
             '53f95d81331096d439ec7235e59b830d42c0016c1e8a57231134afe280edbcb9')
 
@@ -119,6 +121,13 @@ sha256sums=('3da5013ec56bf5a83cccd1d5601b89fa58a6cda5b3fd0e5f8d18ee3690272c05'
 #  EVEN_STRENGTH  0-1.5 (default auto)   EVEN_DEPTH  0.05-0.6 (default auto)
 #  EVEN_MAX       max |kern|, units/1000 em (default auto = 1000/FIT_PPEM)
 #  EVEN_MIN       skip corrections below this (default auto = 100/FIT_PPEM)
+#  PIXEL_GRID    ""|N  (default: off; N = target ppem, 16 = 12pt GTK / 16px web)
+#               Rounds every advance and every kern value to whole pixels at N ppem
+#               (pixel_grid.py), so all glyphs start on the pixel grid and identical
+#               letters are rasterised identically with subpixel positioning on. Cost:
+#               gaps vary a bit more (about 0.5 px max). Needs static fonts: the
+#               variable font keeps its advances in HVAR, which this does not touch,
+#               so with AK_VARIANT=variable it is skipped with a warning.
 #  HINTING      true/false  Hint with ttfautohint (default: true).
 #
 #  HINT_PRESET  natural|balanced|sharp|light|custom (default: natural)
@@ -165,7 +174,7 @@ _opt_keys=(AK_VARIANT FEATURE_DEFAULTS FEATURE_FAMILY
            HINTING HINT_PRESET HINT_MODE HINT_RANGE_MIN HINT_RANGE_MAX
            HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC HINT_DEFAULT_SCRIPT
            HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
-           HINT_FAMILY_SUFFIX HINT_INTEGER_PPEM GASP_MODE REGULAR_WGHT FIT_PPEM FIT_TOLERANCE SCALE_WEIGHTS EVEN_SPACING EVEN_STRENGTH EVEN_DEPTH EVEN_MAX EVEN_MIN)
+           HINT_FAMILY_SUFFIX HINT_INTEGER_PPEM GASP_MODE REGULAR_WGHT FIT_PPEM FIT_TOLERANCE SCALE_WEIGHTS EVEN_SPACING EVEN_STRENGTH EVEN_DEPTH EVEN_MAX EVEN_MIN PIXEL_GRID)
 
 _ask_yn() {
   local _ans
@@ -276,6 +285,21 @@ _prompt_options() {
         *)      EVEN_SPACING=$_choice ;;
       esac
     fi
+    if [[ "${PIXEL_GRID+set}" != set && "$AK_VARIANT" == static ]]; then
+      echo ""
+      echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
+      _ask_choice "Put advances and kerning on a pixel grid" off \
+        "off:no (default)" \
+        "16:16 ppem = 12pt GTK / 16px web" \
+        "14:14 ppem" \
+        "13:13 ppem" \
+        "custom:type a size in ppem"
+      case $_choice in
+        off)    PIXEL_GRID="" ;;
+        custom) read -r -p "  ppem: " PIXEL_GRID || PIXEL_GRID="" ;;
+        *)      PIXEL_GRID=$_choice ;;
+      esac
+    fi
     if [[ "${FEATURE_DEFAULTS+set}" != set ]]; then
       echo ""
       echo "  A font cannot declare a feature \"on by default\"; baking moves its lookups"
@@ -366,6 +390,10 @@ _resolve_options() {
     esac
   done
   EVEN_SPACING="${EVEN_SPACING:-}"
+  PIXEL_GRID="${PIXEL_GRID:-}"
+  if [[ ! "$PIXEL_GRID" =~ ^([0-9]+(\.[0-9]+)?)?$ ]]; then
+    echo "Error: PIXEL_GRID must be empty or a size in ppem (e.g. 16)." >&2; exit 1
+  fi
   EVEN_STRENGTH="${EVEN_STRENGTH:-auto}"; EVEN_DEPTH="${EVEN_DEPTH:-auto}"
   EVEN_MAX="${EVEN_MAX:-auto}"; EVEN_MIN="${EVEN_MIN:-auto}"
   if [[ ! "$EVEN_SPACING" =~ ^(|all|(latin|greek|cyrillic)(,(latin|greek|cyrillic))*)$ ]]; then
@@ -559,6 +587,21 @@ build() {
     _hintsrc="$srcdir/spaced"
   fi
 
+  # ── Step 2c: pixel-grid advances and kerning ────────────────────────────────
+  # After patching and spacing (it rounds their kern values too), before hinting.
+  if [[ -n "$PIXEL_GRID" ]]; then
+    if [[ "$AK_VARIANT" == variable ]]; then
+      echo "==> WARNING: PIXEL_GRID needs static fonts (AK_VARIANT=static); skipped."
+    else
+      echo "==> Putting advances and kerning on the $PIXEL_GRID ppem pixel grid..."
+      rm -rf "$srcdir/gridded"; mkdir -p "$srcdir/gridded"
+      find "$_hintsrc" -maxdepth 1 -name '*.ttf' | sort | \
+        parallel --will-cite -j"$(nproc)" \
+          python "$srcdir/pixel_grid.py" --ppem "$PIXEL_GRID" -o "$srcdir/gridded" {}
+      _hintsrc="$srcdir/gridded"
+    fi
+  fi
+
   if [[ "$HINTING" != true ]]; then
     _bake_features "$_hintsrc"
     return 0
@@ -619,6 +662,8 @@ package() {
   local _out="$srcdir/selected"
   if [[ "$HINTING" == true ]]; then
     _out="$srcdir/hinted"
+  elif [[ -n "$PIXEL_GRID" && "$AK_VARIANT" == static ]]; then
+    _out="$srcdir/gridded"    # patched (if Nerd), spaced and on the pixel grid
   elif [[ -n "$EVEN_SPACING" ]]; then
     _out="$srcdir/spaced"     # patched (if Nerd) and spaced
   elif [[ "$NERD_PATCH" == true ]]; then
