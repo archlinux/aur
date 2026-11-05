@@ -1,0 +1,19 @@
+pkgbase = niri-tracker-git
+	pkgdesc = Screen time tracking for the niri Wayland compositor
+	pkgver = 0.1.1.r9.g3e50a16
+	pkgrel = 1
+	url = https://github.com/Qiumix/niri-tracker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	provides = niri-tracker
+	conflicts = niri-tracker
+	conflicts = niri-tracker-bin
+	options = !lto
+	source = git+https://github.com/Qiumix/niri-tracker.git
+	sha256sums = SKIP
+
+pkgname = niri-tracker-git
