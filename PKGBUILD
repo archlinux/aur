@@ -5,7 +5,7 @@
 # updates pkgver/pkgrel/sha256sums and publishes this file to the AUR.
 pkgname=satur8-bin
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Per-game digital vibrance for Linux (prebuilt binaries)"
 arch=('x86_64')
 url="https://github.com/NtrpyDev/satur8"
@@ -20,7 +20,7 @@ conflicts=('satur8')
 options=('!strip' '!debug')
 source=("$pkgname-v$pkgver-$pkgrel-x86_64.tar.gz::https://github.com/NasirA1991/satur8-aur/releases/download/satur8-bin-v$pkgver-$pkgrel/$pkgname-v$pkgver-$pkgrel-x86_64.tar.gz")
 # Replaced by the build-bin workflow with the checksum of the released tarball.
-sha256sums=('64fb32bb6d2e384699493012b5136fcd154f61b72d780aca5ed86be9181f80b8')
+sha256sums=('dfb637c6773e71b174f2f3068c39a013c42d8bd8d3083f26994761c19aee9794')
 
 package() {
     cp -a --no-preserve=ownership usr "$pkgdir/"
