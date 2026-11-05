@@ -97,3 +97,12 @@ Chromium και τα Electron εξαιρούνται με `prgname`: σε device
     python measure.py FONT.ttf MODE '{}' 12,13,14,16 glued,height,dev
 
 (MODE: `none`, `slight`, `medium`, `auto`. Θέλει `freetype-py` και `numpy`.)
+
+## Build options (fonttune)
+
+Tuning (hinting, gasp, baked features, ...) is done by
+[fonttune](https://github.com/gaou-piou/fonttune): `prepare()` asks its
+questions, and every answer can be preset as `FONTTUNE_<KEY>` (e.g.
+`FONTTUNE_HINT=natural`). The old `HINTING`, `HINT_*`, `GASP_MODE` and
+`FEATURE_*` variables no longer exist; any mention of them above is historical.
+The resolved choices are saved in `/usr/share/doc/$pkgname/fonttune.toml`.
