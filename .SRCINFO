@@ -1,0 +1,20 @@
+pkgbase = openchronology-desktop-bin
+	pkgdesc = Exact timelines, shared on your terms: the OpenChronology desktop app
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/openchronology/timeline-app
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gmp
+	depends = sqlite
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = openchronology-desktop
+	conflicts = openchronology-desktop
+	noextract = openchronology-desktop-0.22.0.deb
+	options = !strip
+	options = !debug
+	source = openchronology-desktop-0.22.0.deb::https://github.com/openchronology/timeline-app/releases/download/v0.22.0/openchronology-desktop-linux-amd64.deb
+	sha256sums = 72e09a11c132e8656aa296613e78159722ea217d9393acda6f952d24388c8121
+
+pkgname = openchronology-desktop-bin
