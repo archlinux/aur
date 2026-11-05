@@ -1,26 +1,30 @@
 pkgbase = mingw-w64-qca-qt5
 	pkgdesc = Qt Cryptographic Architecture (mingw-w64)
-	pkgver = 2.3.8
+	pkgver = 2.3.12
 	pkgrel = 1
 	url = https://userbase.kde.org/QCA
 	arch = any
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-qt5-base
 	makedepends = mingw-w64-qt6-5compat
+	makedepends = mingw-w64-openssl
 	makedepends = qt6-base
 	makedepends = ninja
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.kde.org/stable/qca/2.3.8/qca-2.3.8.tar.xz
-	source = https://download.kde.org/stable/qca/2.3.8/qca-2.3.8.tar.xz.sig
+	source = https://download.kde.org/stable/qca/2.3.12/qca-2.3.12.tar.xz
+	source = https://download.kde.org/stable/qca/2.3.12/qca-2.3.12.tar.xz.sig
 	validpgpkeys = CB9387521E1EE0127DA804843FDBB55084CC5D84
-	sha256sums = 48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264
+	sha256sums = d4a2b3aa0272d73ea0c4cd2140960177fa34ddc2030e59a48ecfb80c757572c3
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qca-qt5
 	depends = mingw-w64-qt5-base
+	optdepends = mingw-w64-openssl: SSL plugin
 
 pkgname = mingw-w64-qca-qt6
+	depends = mingw-w64-qt6-base
 	depends = mingw-w64-qt6-5compat
+	optdepends = mingw-w64-openssl: SSL plugin

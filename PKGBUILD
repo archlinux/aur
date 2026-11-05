@@ -6,16 +6,16 @@
 
 pkgbase=mingw-w64-qca-qt5
 pkgname=(mingw-w64-qca-qt5 mingw-w64-qca-qt6)
-pkgver=2.3.8
+pkgver=2.3.12
 pkgrel=1
 pkgdesc='Qt Cryptographic Architecture (mingw-w64)'
 arch=('any')
 url='https://userbase.kde.org/QCA'
-license=(LGPL)
-makedepends=('mingw-w64-cmake' 'mingw-w64-qt5-base' 'mingw-w64-qt6-5compat' 'qt6-base' 'ninja')
+license=(LGPL-2.1-or-later)
+makedepends=('mingw-w64-cmake' 'mingw-w64-qt5-base' 'mingw-w64-qt6-5compat' 'mingw-w64-openssl' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://download.kde.org/stable/qca/$pkgver/qca-$pkgver.tar.xz{,.sig})
-sha256sums=('48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264'
+sha256sums=('d4a2b3aa0272d73ea0c4cd2140960177fa34ddc2030e59a48ecfb80c757572c3'
             'SKIP')
 validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
 
@@ -66,6 +66,7 @@ _cleanup() {
 
 package_mingw-w64-qca-qt5() {
   depends=(mingw-w64-qt5-base)
+  optdepends=('mingw-w64-openssl: SSL plugin')
 
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-qt5-$_arch
@@ -74,7 +75,8 @@ package_mingw-w64-qca-qt5() {
 }
 
 package_mingw-w64-qca-qt6() {
-  depends=(mingw-w64-qt6-5compat)
+  depends=(mingw-w64-qt6-base mingw-w64-qt6-5compat)
+  optdepends=('mingw-w64-openssl: SSL plugin')
 
   for _arch in ${_architectures_qt6}; do
     DESTDIR="$pkgdir" cmake --install build-qt6-$_arch
