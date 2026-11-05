@@ -21,7 +21,10 @@ pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM (git main)'
 arch=('x86_64')
 url='https://github.com/vtium/vtium'
-license=('MIT')
+# vtium is MIT. The console also builds in the Unifont font (OFL-1.1),
+# tables made from Unicode's data (Unicode-3.0) and X.Org's color names
+# (MIT-open-group and MIT), which COPYING lists.
+license=('MIT' 'OFL-1.1' 'Unicode-3.0' 'MIT-open-group')
 makedepends=('cargo' 'git' 'libxkbcommon' 'systemd-libs')
 options=('!debug')
 source=("vtium::git+${VTIUM_GIT_URL:-https://github.com/vtium/vtium.git}#branch=${VTIUM_GIT_BRANCH:-main}"
