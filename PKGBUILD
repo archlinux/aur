@@ -165,7 +165,10 @@ check() {
   local _feeds=()
   mapfile -t _feeds < <(sed -n -E 's|.*<add key="([^"]+)" value="(https[^"]+)".*|\1=\2|p' NuGet.config.upstream)
   _nuget_config "${_feeds[@]}" "nuget.org=https://api.nuget.org/v3/index.json"
-  # The ExecuteXmlReader tests need a SQL Server (TEST_TCP_CONN_STR), but aren't skipped without one
+  # The ExecuteXmlReader tests need a SQL Server (TEST_TCP_CONN_STR). Their ConditionalFact skips them
+  # without one with upstream's xunit.runner.visualstudio 2.4.3 (Arcade 8), but the 3.x of the
+  # source-built Arcade runs them, as it doesn't work with the ConditionalFact of XUnitExtensions 8.x.
+  # ExecuteXmlReaderAsyncErrorTest runs as well, but passes, as it ignores the exception.
   local _test _filter=()
   for _test in ExecuteXmlReaderTest ExecuteXmlReaderAsyncTest; do
     _filter+=("FullyQualifiedName!=System.Data.SqlClient.Tests.DiagnosticTest.$_test")
