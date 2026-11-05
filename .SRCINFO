@@ -10,6 +10,7 @@ pkgbase = deadband-git
 	depends = pyside6
 	depends = python-hidapi
 	depends = libusb
+	optdepends = udev-hid-bpf: volume and media keys on the Cyclone 2 and G7 Pro
 	provides = deadband
 	conflicts = deadband
 	conflicts = gamesir-cyclone2-git

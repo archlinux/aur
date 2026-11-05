@@ -19,6 +19,7 @@ license=('MIT')
 # not exist). A dev box with pyside6 already installed hides this -- it only shows
 # up on a clean `makepkg` dependency check, i.e. on every user's first install.
 depends=('python' 'pyside6' 'python-hidapi' 'libusb')
+optdepends=('udev-hid-bpf: volume and media keys on the Cyclone 2 and G7 Pro')
 makedepends=('git')
 provides=('deadband')
 # Supersede the pre-rename package so an upgrade replaces it instead of leaving a
@@ -48,6 +49,8 @@ package() {
   cp -r vendors "$share"/
   find "$share/vendors" -name '__pycache__' -type d -prune -exec rm -rf {} +
   cp -r qml "$share"/
+  # media-key descriptor fixup, installed by the user with udev-hid-bpf (Manual)
+  install -Dm644 -t "$share/hid-bpf" packaging/hid-bpf/*.bpf.o
   install -d "$share/assets"
   # icon-*.png are the launcher art; glyph-pad*.png are the in-app themed logo mark
   # (two pre-tinted variants: light accents need the dark glyph -- see Theme.onAccent)
