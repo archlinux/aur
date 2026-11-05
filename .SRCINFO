@@ -7,7 +7,6 @@ pkgbase = vtium
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = ncurses
 	makedepends = libxkbcommon
 	makedepends = systemd-libs
 	options = !debug
@@ -28,10 +27,10 @@ pkgname = vtium
 	optdepends = kbd: console fonts, which vtium draws when no frit is set
 	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
 	conflicts = vtium-git
+	conflicts = vtium-minspec
+	conflicts = vtium-minspec-git
+	conflicts = vtium-minspec-gpu
+	conflicts = vtium-minspec-gpu-git
 	backup = etc/vtium/fonts/desktop.vtfrit
 	backup = etc/vtium/fonts/minspec-16.vtfrit
 	backup = etc/vtium/fonts/minspec-8.vtfrit
-
-pkgname = vtium-terminfo
-	pkgdesc = The terminfo entry xterm-vtium, for sessions in vtium
-	arch = any
