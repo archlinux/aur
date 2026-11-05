@@ -1,6 +1,6 @@
 pkgbase = joidy
 	pkgdesc = Personal knowledge management with gamification
-	pkgver = 1.1.0_beta.7
+	pkgver = 1.1.0_beta.8
 	pkgrel = 1
 	url = https://joidy-web.vercel.app
 	install = joidy.install
