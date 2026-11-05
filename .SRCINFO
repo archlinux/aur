@@ -1,6 +1,6 @@
 pkgbase = aeroftp-bin
-	pkgdesc = Modern multi-protocol file client with AI, encryption and cloud storage (FTP, FTPS, SFTP, WebDAV, S3, Azure, Swift, MTP)
-	pkgver = 4.2.5
+	pkgdesc = Modern multi-protocol file client with AI, encryption and cloud storage (FTP, FTPS, SFTP, SCP, WebDAV, S3, Azure, Swift, MTP)
+	pkgver = 4.2.6
 	pkgrel = 1
 	url = https://aeroftp.app
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = aeroftp-bin
 	conflicts = aeroftp-git
 	options = !strip
 	options = !debug
-	source = aeroftp-bin-4.2.5.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v4.2.5/AeroFTP_4.2.5_amd64.deb
-	source = aeroftp-bin-4.2.5.deb.sigstore.json::https://github.com/axpdev-lab/aeroftp/releases/download/v4.2.5/AeroFTP_4.2.5_amd64.deb.sigstore.json
-	sha256sums = f6ccad22486466996e085754bfc7d752ed300256e3402195123b075d518f7aa4
+	source = aeroftp-bin-4.2.6.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v4.2.6/AeroFTP_4.2.6_amd64.deb
+	source = aeroftp-bin-4.2.6.deb.sigstore.json::https://github.com/axpdev-lab/aeroftp/releases/download/v4.2.6/AeroFTP_4.2.6_amd64.deb.sigstore.json
+	sha256sums = ac5f55146d9a1485b7e7940d706ec354c9c47eaaf458fa9e9c5def67bbc92bdf
 	sha256sums = SKIP
 
 pkgname = aeroftp-bin
