@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-cli-git
-pkgver=0.7.2.r100.ge6064bb
+pkgver=0.13.0.r272.g3ed57e9dd
 pkgrel=2
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
@@ -39,13 +39,17 @@ pkgver() {
 	if git describe --long --tags --match 'v[0-9]*' >/dev/null 2>&1; then
 		git describe --long --tags --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 	else
-		printf "0.7.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	fi
+}
+
+prepare() {
+	cd "$srcdir/paseo"
+	npm_config_cache="$srcdir/npm-cache" npm ci
 }
 
 build() {
 	cd "$srcdir/paseo"
-	npm ci
 	npm run build:server
 }
 
@@ -93,7 +97,6 @@ WRAPPER
 
 	chmod -R go-w "${pkgdir}/usr" 2>/dev/null || true
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} + 2>/dev/null || true
-	chown -R root:root "${pkgdir}" 2>/dev/null || true
 
 	install -Dm644 "$srcdir/paseo/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
