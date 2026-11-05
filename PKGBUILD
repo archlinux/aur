@@ -289,7 +289,7 @@ _prompt_options() {
       echo ""
       echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
       _ask_choice "Put advances and kerning on a pixel grid" off \
-        "off:no (default)" \
+        "off:no" \
         "16:16 ppem = 12pt GTK / 16px web" \
         "14:14 ppem" \
         "13:13 ppem" \
