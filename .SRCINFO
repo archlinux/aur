@@ -1,6 +1,6 @@
 pkgbase = omnigent-desktop
 	pkgdesc = Desktop client for collaborating with AI agents
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/omnigent-ai/omnigent
 	arch = x86_64
@@ -40,10 +40,10 @@ pkgbase = omnigent-desktop
 	replaces = omnigent<=0.17.0-2
 	options = !strip
 	options = !debug
-	source = omnigent-0.20.0.tar.gz::https://github.com/omnigent-ai/omnigent/archive/refs/tags/v0.20.0.tar.gz
+	source = omnigent-0.21.0.tar.gz::https://github.com/omnigent-ai/omnigent/archive/refs/tags/v0.21.0.tar.gz
 	source = omnigent-desktop
 	source = omnigent-desktop.desktop
-	sha256sums = 7979ee4e87509b286b2418671f38d89ac7b028ce0ab5c882c8618f154b08396f
+	sha256sums = 44f4ca275d21146e87390b4800efc31bd3e5fa2c30b060962b73c55e27e735c3
 	sha256sums = 8393e46f4aac97b93894ca4ef7068fd78ad6f809b3339576171abda089d24654
 	sha256sums = c6eac7eefe6ab74a06f452e1ab106e25e8780c7044dfc337a742b35d9ed354fe
 
