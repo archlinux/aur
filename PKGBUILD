@@ -58,6 +58,7 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   sourcepawn-shell-jit-define.patch
   sourcemod-delete-noexcept.patch
   geoip-libmaxminddb.patch
+  zydis-amalgamate-paths.patch
   source-sdk.txt
   spcomp.sh)
 sha512sums=('783fe9bb0dd53f3f751871e89a03e52911afc4fbfaddd73c03c16291a9bdd6e9fe4194caf94617c7cb94caef6850d0cd077bc6bf478846c2383607a966fbba4e'
@@ -78,6 +79,7 @@ sha512sums=('783fe9bb0dd53f3f751871e89a03e52911afc4fbfaddd73c03c16291a9bdd6e9fe4
   '9e429ffbac68a20afaeb324e63b2e688fcbb063d7132b8cc1e16855861225f13298ec67e55fe74ec64290c2e2930e1e19d487ca653b0cb64bb42c607cf4c666c'
   '5634114e3418e894506206b30030af9a4465fdb2d4c8f15e5e81eaadb086c7fdce8c54835309548d42b7776ee1803c638fc2e2aa23f3363cfc395ffffd741a3e'
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
+  '54c1386ffdc6c6efdbedccdaddffedc78e3e7c31f7b4de7cec0561a28f5364123cb776216efc39cadec5292488d06a8a49ed9d65ed244f4b1d724215ca8283ab'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
   '3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2')
 b2sums=('80681ad0378521bc27756add78ac4c66c81d53b28016efc37b4f1a7d82b598a370bd6a90a277dd66f08ed08bde169f142c51e2f424de3176c939dad21a131575'
@@ -98,6 +100,7 @@ b2sums=('80681ad0378521bc27756add78ac4c66c81d53b28016efc37b4f1a7d82b598a370bd6a9
   'a2d51f38244b4ce2fbc05d4d8a15e724d2ce014ce47a3be63586fe21a07a8f24a9ba0cb41b55a9366b528c1e55b25c194a0c409e781eddc1fc477eb2ff9704e5'
   'f86955655433526c10e56495e57ac546620a5fe7fe9e804669a80823bf7a782667907276ed06bd4905a05b640f947f6cad7a8b087acd26bbd7d191cb90ebe457'
   '6a7a7c578f22af05c0a6617a621c36add3f6f287f73d64d127dc91952acf5a1c71c619b3513fdb8ab4bb5767c57dee81fbbcd616f4f6c9163189f9d6002f8fad'
+  'e8f46cfa4744c5ea62c28369a7c81a9027a389dbb6573495279b084ff99b6a39d114097788278c2be84237da7b7986c310bd6a6069fe3896cb234784181bcf68'
   'b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600'
   '670fb582edac8bdef05a3842edbef464c5238861df80fbf5e788fe2752275db395826c0b6eb90d5c9fd725b2a368b8d7884aea9de6d89adde6032c481a6311b8')
 
@@ -189,14 +192,16 @@ prepare() {
   git submodule init dependencies/zycore
   git config submodule.dependencies/zycore.url "$srcdir/zycore-c"
   git -c protocol.file.allow=always submodule update --force dependencies/zycore
+  # The script names each source file with its path relative to Zydis's rather than its absolute
+  # one, so the source doesn't depend on where it was built, and its pattern as a raw string, which
+  # Python warns about otherwise (https://github.com/zyantific/zydis/pull/661)
+  patch -Np1 -i "$srcdir/zydis-amalgamate-paths.patch"
   python assets/amalgamate.py >/dev/null
   local _zydis="$srcdir/sourcemod/public/safetyhook/zydis"
   grep -q '^#define ZYDIS_STATIC_BUILD$' "$_zydis/Zydis.h" || exit
   printf '#define ZYCORE_STATIC_BUILD\n#define ZYDIS_STATIC_BUILD\n' |
     cat - amalgamated-dist/Zydis.h >"$_zydis/Zydis.h"
-  # The script names each source file with its absolute path: relative to Zydis's, so the source
-  # doesn't depend on where it was built (https://github.com/zyantific/zydis/pull/661)
-  sed "s|^// Source file: $srcdir/zydis/|// Source file: |" amalgamated-dist/Zydis.c >"$_zydis/Zydis.c"
+  cp amalgamated-dist/Zydis.c "$_zydis/Zydis.c"
 }
 
 build() {

@@ -55,3 +55,8 @@ SPDX-License-Identifier = "GPL-3.0-or-later"
 path = "sourcepawn-source-date-epoch.patch"
 SPDX-FileCopyrightText = ["ITB CompuPhase", "AlliedModders LLC"]
 SPDX-License-Identifier = "Zlib"
+
+[[annotations]]
+path = "zydis-amalgamate-paths.patch"
+SPDX-FileCopyrightText = ["Florian Bernd", "Joel Höner"]
+SPDX-License-Identifier = "MIT"
