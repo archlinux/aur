@@ -1,7 +1,7 @@
 pkgbase = titan-git
 	pkgdesc = TTCN3 test automation platform
 	pkgver = 10.1.2.r15.ge86dfd732
-	pkgrel = 2
+	pkgrel = 3
 	url = https://projects.eclipse.org/projects/tools.titan
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = titan-git
 	depends = libxml2
 	depends = ncurses
 	depends = openssl
-	options = !lto
 	source = git+https://gitlab.eclipse.org/eclipse/titan/titan.core.git
 	source = titan.profile
 	sha256sums = SKIP

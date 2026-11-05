@@ -5,7 +5,7 @@
 pkgname=titan-git
 _pkgname=titan.core
 pkgver=10.1.2.r15.ge86dfd732
-pkgrel=2
+pkgrel=3
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
@@ -35,11 +35,6 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# LTO breaks linking: create_legacy_logger is declared as a variable in
-# LoggerPluginManager.cc, but defined as a function in LegacyLogger.cc.
-# See https://gitlab.eclipse.org/eclipse/titan/titan.core/-/work_items/815.
-options=(!lto)
-
 prepare() {
     cd $srcdir/$_pkgname
     rm -f Makefile.personal
@@ -59,8 +54,11 @@ build() {
     # spawn sub-makes in other directories; if these variables come from the
     # environment, make exports the modified values and they leak across
     # directories (e.g. -fno-exceptions, -DTITAN_RUNTIME_2).  Pass makepkg's
-    # flags under different names instead.
-    export ARCH_CFLAGS="$CFLAGS" ARCH_CXXFLAGS="$CXXFLAGS"
+    # flags under different names instead.  Static libraries (libttcn3*.a)
+    # are shipped, so emit fat LTO objects: makepkg strips LTO bytecode from
+    # static objects, which would otherwise leave them empty.
+    export ARCH_CFLAGS="$CFLAGS -ffat-lto-objects"
+    export ARCH_CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
     export ARCH_CPPFLAGS="$CPPFLAGS" ARCH_LDFLAGS="$LDFLAGS"
     unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
     make dep
