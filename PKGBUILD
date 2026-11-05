@@ -1,6 +1,6 @@
 # Maintainer: Lucia <bordiyan20035@gmail.com>
 pkgname=opensourcetree-git
-pkgver=1.2.27
+pkgver=1.2.28.r0.g7ee3049
 pkgrel=1
 pkgdesc="SourceTree-inspired Git GUI built with PyQt6"
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
     'git'
 )
 optdepends=(
+    'equestria-qt-kit: Equestria OS themes'
     'git-lfs: Git Large File Storage support'
     'konsole: for interactive SSH authentication in terminal'
     'xterm: alternative terminal for SSH auth'
@@ -28,9 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/opensourcetree"
-    git describe --tags --long 2>/dev/null \
-        | sed 's/^v//;s/-[0-9]*-g[0-9a-f]*//' \
-        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
@@ -41,9 +40,9 @@ package() {
     install -Dm644 "$_src/main.py"    "$_lib/main.py"
     install -Dm644 "$_src/style.qss"  "$_lib/style.qss"
 
-    cp -a "$_src/app"     "$_lib/"
-    cp -a "$_src/assets"  "$_lib/"
-    cp -a "$_src/locales" "$_lib/"
+    cp -a --no-preserve=ownership "$_src/app"     "$_lib/"
+    cp -a --no-preserve=ownership "$_src/assets"  "$_lib/"
+    cp -a --no-preserve=ownership "$_src/locales" "$_lib/"
 
     find "$_lib" -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
 
