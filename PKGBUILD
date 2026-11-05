@@ -124,8 +124,8 @@ prepare() {
     ln -sfn "hl2sdk-${!_commit}" "$srcdir/hl2sdk-$_sdk"
   done
 
-  # clamp() of a float with int bounds, whose template arguments conflict (l4d, l4d2, nucleardawn,
-  # orangebox)
+  # clamp() of a float with int bounds, whose template arguments conflict where clamp() takes one
+  # type: the line of episode1, l4d, nucleardawn and orangebox (the others have float bounds already)
   sed -i 's/clamp( t, 0, 1 )/clamp( t, 0.0f, 1.0f )/' "$srcdir"/hl2sdk-*/mathlib/mathlib_base.cpp
   # MIN and MAX of basetypes.h, which orangebox's quantizers (CRLF line endings) don't include,
   # unlike l4d's
