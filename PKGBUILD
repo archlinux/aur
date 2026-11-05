@@ -3,7 +3,7 @@
 
 pkgname=ultracopier
 _pkgname=Ultracopier
-pkgver=3.1.0.7
+pkgver=3.1.0.8
 pkgrel=1
 pkgdesc="A replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management"
 url='https://ultracopier.herman-brule.com'
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'hicolor-icon-theme' 'liburing')
 makedepends=('qt6-tools')
 source=("$pkgname-$pkgver.tgz::https://github.com/alphaonex86/Ultracopier/archive/$pkgver.tar.gz")
-b2sums=('9c751cfc3c9bbcb098432dc88d43484afa9de59ea7bc77a29db21c9718e5592b45a9709392270a8974075cbe2765ba664d4faf0cf781db8298e5a4a6a09944ac')
+b2sums=('ccf806aa7fddea2e512aba3efb7b601cdd8246b16aab44f46becf75ac99309f1d9686d575489be3bde6ef2e4210bda7cab09254b1f29e8a7ff41a0b5fd092222')
 
 prepare() {
 	find "$_pkgname-$pkgver" -name "*.ts" -exec lrelease {} \;
