@@ -1,8 +1,8 @@
 # Maintainer: Alexeyev Vitaly <vitamindbnfkz@gmail.com>
 pkgname=ardor-mouse
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Configuration tool for the ARDOR GAMING Edge Air Ultra mouse: DPI, RGB lighting, buttons, polling rate"
+pkgdesc="Configuration tool for ARDOR GAMING mice (Edge Air Ultra, Rukh): DPI, RGB lighting, buttons, polling rate"
 arch=('x86_64')
 url="https://github.com/VitaminDB/ardor-mouse"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 options=('!lto' '!debug')
 install=ardor-mouse.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c31bc2108ef610ef6315f9e56f20fa1ec4ceb4381f07565ffe4a03a5894e613')
+sha256sums=('1a14705351c0e9be615a1245fc948137f72b2eb63df0a629829c77fbfa56f168')
 
 prepare() {
     cd "$pkgname-$pkgver"

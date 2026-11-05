@@ -1,6 +1,6 @@
 pkgbase = ardor-mouse
-	pkgdesc = Configuration tool for the ARDOR GAMING Edge Air Ultra mouse: DPI, RGB lighting, buttons, polling rate
-	pkgver = 0.2.0
+	pkgdesc = Configuration tool for ARDOR GAMING mice (Edge Air Ultra, Rukh): DPI, RGB lighting, buttons, polling rate
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/VitaminDB/ardor-mouse
 	install = ardor-mouse.install
@@ -20,7 +20,7 @@ pkgbase = ardor-mouse
 	optdepends = libxcursor: cursors in X11
 	options = !lto
 	options = !debug
-	source = ardor-mouse-0.2.0.tar.gz::https://github.com/VitaminDB/ardor-mouse/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 6c31bc2108ef610ef6315f9e56f20fa1ec4ceb4381f07565ffe4a03a5894e613
+	source = ardor-mouse-0.3.0.tar.gz::https://github.com/VitaminDB/ardor-mouse/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 1a14705351c0e9be615a1245fc948137f72b2eb63df0a629829c77fbfa56f168
 
 pkgname = ardor-mouse
