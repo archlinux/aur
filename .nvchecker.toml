@@ -1,0 +1,3 @@
+[python-openmeteo-requests]
+source = "pypi"
+pypi = "openmeteo-requests"

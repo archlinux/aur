@@ -1,0 +1,20 @@
+pkgbase = python-openmeteo-requests
+	pkgdesc = Open-Meteo Python Library using 'requests'
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/open-meteo/openmeteo-requests
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	depends = python-openmeteo-sdk
+	depends = python-niquests
+	source = https://files.pythonhosted.org/packages/source/o/openmeteo_requests/openmeteo_requests-1.7.5.tar.gz
+	sha256sums = 5557b5df957aa00f5e673d85ddc47f8b5bcadde6c72a98c0ec1999b538db39f9
+
+pkgname = python-openmeteo-requests
