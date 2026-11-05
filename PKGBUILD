@@ -5,8 +5,8 @@ pkgdesc="a Dovecot replication controller, bringing back replication to Dovecot 
 arch=(x86_64)
 url="https://github.com/dovewarden/dovewarden"
 license=('MIT')
-depends=()
-makedepends=()
+depends=('dovecot')
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dovewarden/dovewarden/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('bc717b5020e4565dda03a20be40044a175ffb91c98a412e1702f5a146f988c64')
 
