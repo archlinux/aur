@@ -2,7 +2,7 @@
 # Maintainer: Joshua Winkler <josh@bemoty.dev>
 
 pkgname='yolocam-bin'
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Control YoloLiv YoloCam S3 camera settings from the command line'
 url='https://github.com/bemoty/yolocam'
@@ -12,13 +12,16 @@ provides=('yolocam')
 conflicts=('yolocam')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bemoty/yolocam/releases/download/v${pkgver}/yolocam_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('dc12814585f5d40aefde30eae941b312b9c37a02ee4886a4c0eb0abafc28d6ab')
+sha256sums_aarch64=('198afd687ae39bf842bfa4fa4a668c017aff4e0726e7192e2fcdc31daee010bc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bemoty/yolocam/releases/download/v${pkgver}/yolocam_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6fc6a11092c7ddc6a0feb1fdf35d06c063c3e2b115765bd5851358c4a212ba7f')
+sha256sums_x86_64=('9770c628e2cde87a39e80fc098a4310352bc9adcbcc929bcb50f0e6ebf031522')
 
 package() {
   install -Dm755 "./yolocam" "${pkgdir}/usr/bin/yolocam"
+  install -Dm644 "./completions/yolocam.bash" "${pkgdir}/usr/share/bash-completion/completions/yolocam"
+  install -Dm644 "./completions/yolocam.zsh" "${pkgdir}/usr/share/zsh/site-functions/_yolocam"
+  install -Dm644 "./completions/yolocam.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/yolocam.fish"
   install -d "${pkgdir}/usr/share/licenses/yolocam-bin"
   cp -r third_party_licenses "${pkgdir}/usr/share/licenses/yolocam-bin/"
 
