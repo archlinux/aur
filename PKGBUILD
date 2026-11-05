@@ -263,10 +263,10 @@ _prompt_options() {
     echo "  $pkgname: build options (Enter = default)"
     echo ""
     if [[ -z "${NERD_PATCH:-}" ]]; then
-      _ask_yn "Patch with Nerd Fonts glyphs (forces static fonts)" n; NERD_PATCH=$_yn
+      _ask_yn "[NERD_PATCH] Patch with Nerd Fonts glyphs (forces static fonts)" n; NERD_PATCH=$_yn
     fi
     if [[ "$NERD_PATCH" != true && -z "${AK_VARIANT:-}" ]]; then
-      _ask_choice "Font set" variable \
+      _ask_choice "[AK_VARIANT] Font set" variable \
         "variable:one wght-axis font (recommended)" \
         "static:one file per weight, hinted per weight"
       AK_VARIANT=$_choice
@@ -275,7 +275,7 @@ _prompt_options() {
       echo ""
       echo "  At 16 ppem Regular's horizontal bars are 1.33px (1 solid + 1 faint row)."
       echo "  A lighter Regular makes them nearly one clean row (needs static fonts)."
-      _ask_choice "Regular weight" auto \
+      _ask_choice "[REGULAR_WGHT] Regular weight" auto \
         "auto:measure the font and pick the wght whose bars fit whole pixels (default)" \
         "400:as designed" \
         "custom:type a wght, 100-900"
@@ -289,7 +289,7 @@ _prompt_options() {
     if [[ "${EVEN_SPACING+set}" != set ]]; then
       echo ""
       echo "  Some letter pairs are spaced unevenly (e.g. Greek \"λώ\" tight, \"ει\" loose)."
-      _ask_choice "Even out spacing with kern pairs" none \
+      _ask_choice "[EVEN_SPACING] Even out spacing with kern pairs" none \
         "none:as designed (default)" \
         "all:Latin, Greek and Cyrillic" \
         "greek:Greek only" \
@@ -304,7 +304,7 @@ _prompt_options() {
     if [[ "${PIXEL_GRID+set}" != set && "$AK_VARIANT" == static ]]; then
       echo ""
       echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
-      _ask_choice "Put advances and kerning on a pixel grid" off \
+      _ask_choice "[PIXEL_GRID] Put advances and kerning on a pixel grid" off \
         "off:no" \
         "auto:from the GNOME interface font size (pt x 96/72 x text scaling)" \
         "16:16 ppem = 12pt GTK / 16px web" \
@@ -324,7 +324,7 @@ _prompt_options() {
       echo ""
       echo "  A font cannot declare a feature \"on by default\"; baking moves its lookups"
       echo "  into calt, which every program applies (see the header of this PKGBUILD)."
-      _ask_choice "Bake features into calt" none \
+      _ask_choice "[FEATURE_DEFAULTS] Bake features into calt" none \
         "none:leave the fonts as upstream ships them (default)" \
         "fonts.conf:the features active for \"Akt\" in ~/.config/fontconfig/fonts.conf" \
         "custom:type the tag list yourself"
@@ -341,10 +341,10 @@ _prompt_options() {
       esac
     fi
     if [[ -z "${HINTING:-}" ]]; then
-      _ask_yn "Hint with ttfautohint (n = unhinted, as upstream)" y; HINTING=$_yn
+      _ask_yn "[HINTING] Hint with ttfautohint (n = unhinted, as upstream)" y; HINTING=$_yn
     fi
     if [[ "$HINTING" == true && -z "${HINT_PRESET:-}" ]]; then
-      _ask_choice "Hinting preset" natural \
+      _ask_choice "[HINT_PRESET] Hinting preset" natural \
         "natural:stem n, 8-48px, no x-height boost (closest to the design)" \
         "balanced:stem q, 8-48px (opens the dots, a few more dots open)" \
         "sharp:stem s, 6-48px (highest contrast, higher dev)" \
