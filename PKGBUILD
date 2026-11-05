@@ -3,7 +3,7 @@
 # AUR page: https://aur.archlinux.org/packages/qrow-bin
 
 pkgname=qrow-bin
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Query rows in tables, documents and databases from the terminal (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -11,17 +11,15 @@ url="https://github.com/denisotree/qrow"
 license=('Apache-2.0')
 depends=()
 provides=('qrow')
-# tuitab-bin and tuitab are the same program under its former name.
-conflicts=('qrow' 'tuitab' 'tuitab-bin')
-replaces=('tuitab-bin')
+conflicts=('qrow')
 
 _base_url="https://github.com/denisotree/qrow/releases/download/v${pkgver}"
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::${_base_url}/qrow-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::${_base_url}/qrow-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('1fd8e1327c39a162e54ef5ee66f691f3bfd54ffc6a2f639185957999a0934d5e')
-sha256sums_aarch64=('72370049089a3cff10ba73363b076b3b1f75e5a3c27c471d9dc1562f10b074f5')
+sha256sums_x86_64=('512e44c47a4056b3041a09a81a95dbb1d1df5447930f607ffad2426e181e421b')
+sha256sums_aarch64=('dc27572085957c6fffcd20e9477a19b66c524a0a3f48440c188462fd959ac705')
 
 package() {
     local _src_dir="qrow-v${pkgver}-${CARCH}-unknown-linux-gnu"
