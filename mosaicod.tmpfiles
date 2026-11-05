@@ -1,0 +1,2 @@
+d /var/lib/mosaico 0750 mosaico mosaico -
+d /var/lib/mosaico/storage 0750 mosaico mosaico -

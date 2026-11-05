@@ -1,0 +1,5 @@
+*.log
+*.zst
+mosaico
+pkg
+src

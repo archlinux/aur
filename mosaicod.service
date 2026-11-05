@@ -1,0 +1,15 @@
+[Unit]
+Description=Mosaico daemon
+Documentation=https://docs.mosaico.dev/daemon/config
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=exec
+User=mosaico
+ExecStart=/usr/bin/mosaicod server
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

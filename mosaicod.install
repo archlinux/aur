@@ -1,0 +1,25 @@
+post_install() {
+	cat <<-EOM
+	:: mosaicod needs a PostgreSQL role and database before its first start.
+	   On a local PostgreSQL:
+	     # sudo -u postgres createuser mosaico
+	     # sudo -u postgres createdb -O mosaico mosaico
+	   For an instance elsewhere, set [database] in /etc/mosaicod/config.toml.
+	   Then start the daemon and its daily store cleanup:
+	     # systemctl enable --now mosaicod.service mosaico-cleanup.timer
+	   API keys are off, so anyone who can reach the daemon can read and write
+	   data. To require them, set api_key_enabled = true under [server],
+	   restart mosaicod.service and create a key:
+	     # sudo -u mosaico mosaicod api-key create --permissions 'read|write|delete'
+	EOM
+}
+
+post_remove() {
+	cat <<-EOM
+	:: The data in /var/lib/mosaico and the mosaico database were left in
+	   place. To remove them as well:
+	     # rm -rf /var/lib/mosaico
+	     # sudo -u postgres dropdb mosaico
+	     # sudo -u postgres dropuser mosaico
+	EOM
+}

@@ -1,0 +1,20 @@
+# https://docs.mosaico.dev/daemon/config
+
+[server]
+host = "127.0.0.1"
+port = 6726
+api_key_enabled = false
+
+[database]
+url = "postgresql://localhost/mosaico?host=/run/postgresql"
+user = "mosaico"
+
+[store]
+endpoint = "file:///var/lib/mosaico/storage"
+bucket = "mosaico"
+
+[cleanup]
+retention_duration = 86400
+
+[logging]
+format = "plain"

@@ -1,0 +1,10 @@
+[Unit]
+Description=Mosaico store cleanup
+Documentation=https://docs.mosaico.dev/daemon/cleanup
+After=network-online.target postgresql.service mosaicod.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=mosaico
+ExecStart=/usr/bin/mosaicod cleanup --time-interval 0
