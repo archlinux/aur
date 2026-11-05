@@ -1,0 +1,25 @@
+pkgbase = mdflowviewer-bin
+	pkgdesc = Markdown viewer and editor with live preview (prebuilt binary)
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/cafercan/MDViewer
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	provides = mdflowviewer=3.0.2
+	conflicts = mdflowviewer
+	noextract = mdflowviewer_3.0.2_amd64.deb
+	options = !strip
+	options = !debug
+	source = mdflowviewer_3.0.2_amd64.deb::https://github.com/cafercan/MDViewer/releases/download/v3.0.2/mdflowviewer_3.0.2_amd64.deb
+	sha256sums = df96a83914477897e2b5d8ecbc8176155ff3c5ff09006d2627c33664d31f8418
+
+pkgname = mdflowviewer-bin
