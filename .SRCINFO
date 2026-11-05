@@ -1,6 +1,6 @@
 pkgbase = unisic-bin
 	pkgdesc = Capture, annotate, record and share your screen on Linux Wayland (binary release)
-	pkgver = 0.8.8
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://github.com/unisic/unisic
 	arch = x86_64
@@ -35,12 +35,12 @@ pkgbase = unisic-bin
 	depends = libxcb
 	optdepends = xdg-desktop-portal-kde: KDE portal backend for screenshots and screen recording
 	optdepends = xdg-desktop-portal-gtk: generic portal backend on non-KDE desktops
-	provides = unisic=0.8.8
+	provides = unisic=0.8.9
 	conflicts = unisic
-	noextract = unisic-0.8.8-1-x86_64.pkg.tar.zst
+	noextract = unisic-0.8.9-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = unisic-0.8.8-1-x86_64.pkg.tar.zst::https://github.com/unisic/unisic/releases/download/v0.8.8/unisic-0.8.8-1-x86_64.pkg.tar.zst
-	sha256sums = e7964f550604e911d474f85a66baa3094dd28980ab456b4b0d9c1b5800670048
+	source = unisic-0.8.9-1-x86_64.pkg.tar.zst::https://github.com/unisic/unisic/releases/download/v0.8.9/unisic-0.8.9-1-x86_64.pkg.tar.zst
+	sha256sums = 5ed4521b678d1ae507843ad4a4b77f6733ef1bc500eaab21447bcc2fe51980c9
 
 pkgname = unisic-bin
