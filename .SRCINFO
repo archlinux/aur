@@ -1,7 +1,7 @@
 pkgbase = vtium-terminfo
 	pkgdesc = The terminfo entry xterm-vtium, for sessions in vtium
 	pkgver = 0.1.0alpha.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vtium/vtium
 	arch = any
 	license = MIT
