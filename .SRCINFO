@@ -1,6 +1,6 @@
 pkgbase = virt-v2v
 	pkgdesc = Convert a guest image to use with KVM
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://libguestfs.org/virt-v2v.1.html
 	install = virt-v2v.install
@@ -18,9 +18,9 @@ pkgbase = virt-v2v
 	optdepends = mingw-w64-rhsrvany: for Windows based VM
 	optdepends = virtio-win: for windows based VM
 	options = !ccache
-	source = https://download.libguestfs.org/virt-v2v/2.10-stable/virt-v2v-2.10.0.tar.gz
+	source = https://download.libguestfs.org/virt-v2v/2.12-stable/virt-v2v-2.12.0.tar.gz
 	source = virt-v2v.install
-	sha256sums = 0cd703d872fac81ed6358462a0c1f50de0db5b70240f31e203e1d82c999d12cc
+	sha256sums = 6032d86f75f20419539e70c7c905f8c9a664b738eb086f4012f653ef933504dc
 	sha256sums = 6235d47396e8e193a80de17825fe337f18ab0bb6ffb4a61f204bea57e5a90f7d
 
 pkgname = virt-v2v
