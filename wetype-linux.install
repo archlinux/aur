@@ -12,7 +12,13 @@ EOF
 }
 
 post_upgrade() {
-  post_install
+  cat <<'EOF'
+WeType updated. The running daemon and Fcitx5 still use the old build;
+restart both to load the new one:
+
+  systemctl --user restart wetype-daemon
+  fcitx5 -r -d
+EOF
 }
 
 post_remove() {

@@ -1,6 +1,6 @@
 # Maintainer: Aliorpse <aliorpse@qq.com>
 pkgname=wetype-linux
-pkgver=0.1.1+wetype3.0.2.22
+pkgver=0.1.1+wetype3.0.2.29
 pkgrel=1
 pkgdesc="WeType (微信输入法) engine for Fcitx5, running the Windows engine under Wine"
 arch=('x86_64')
