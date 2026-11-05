@@ -1,0 +1,22 @@
+pkgbase = quill-bin
+	pkgdesc = Fast, keyboard-driven terminal email client with conversations, a unified inbox and a real address book (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/samibr/quill
+	install = quill-bin.install
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = zlib
+	depends = brotli
+	depends = zstd
+	provides = quill=0.1.0
+	conflicts = quill
+	options = !strip
+	options = !debug
+	source = quill-0.1.0-x86_64-linux.tar.gz::https://codeberg.org/samibr/quill/releases/download/v0.1.0/quill-0.1.0-x86_64-linux.tar.gz
+	sha256sums = cbd958c9e375e8439420017dce923b7d43e26ab0c136878ff87e7a5aaa07053e
+
+pkgname = quill-bin

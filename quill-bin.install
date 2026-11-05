@@ -1,0 +1,14 @@
+post_install() {
+  echo ""
+  echo "  Quill installed. Run it from a terminal:  quill"
+  echo ""
+  echo "  First run asks for your IMAP/SMTP settings (Gmail needs an app"
+  echo "  password). Config lives in ~/.config/quill/, mode 0600."
+  echo ""
+  echo "  Press ? inside the app for the full key list."
+  echo ""
+}
+
+post_upgrade() {
+  echo "  Quill updated to $1. Your config in ~/.config/quill/ is untouched."
+}
