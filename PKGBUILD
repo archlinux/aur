@@ -7,7 +7,7 @@ _name=SMJansson
 # SMJansson has no releases: its version (smsdk_config.h), the number of commits and the latest
 # commit, which fixes the build with current SourceMod
 _commit=b811b3341254fff6756d66fbc6c928ee6e701a32
-pkgver=2.6.0.1.r36.gb811b33
+pkgver=2.6.0.1.r39.g0b18ba4
 pkgrel=1
 pkgdesc="SMJansson, a JSON extension of SourceMod (in the addons folder of sourcemod)"
 arch=(x86_64)
@@ -23,22 +23,15 @@ checkdepends=(sourcemod-scripting)
 _pins_lookup() {
   echo "_commit $(curl -fsSL "https://api.github.com/repos/davenonymous/SMJansson/commits/${pkgver##*.g}" | jq -r .sha)"
 }
-source=("$_name-$_commit.tar.gz::https://github.com/davenonymous/SMJansson/archive/$_commit.tar.gz"
-  smjansson-system-jansson.patch)
-sha512sums=('36e8b5db06dea90a205c3ad3266dd9d41ba19f5dba86be1e79506829432153245e3499bff7e97c74e6103a32bde949bf976059528f35e40b01f7ea8a082d1028'
-  '197ac4ed92556f931cca36fad74b005b2b1f5a8a06a7b414224352965ae91b7864f57beab9981e087597bda15ce51ddbaac63657755dc18cdb78583e7d4885fe')
-b2sums=('a5a6f5a53710c299caf381684d07a4f7a8eb6f92c8eaffcfd3d9dc84a76f87898b207abfd94586b61049a7d3b34c18bb93e7b28e684d5487641309584498bca4'
-  'a1c6dc75875581de11a91e2a9f1005f923af556b89fb622882e9e663e61d0a7ae1fe019cc4a86b9aeb491bfdebaaba259e972f22d120caadccb0431bef3fde36')
+source=("$_name-$_commit.tar.gz::https://github.com/davenonymous/SMJansson/archive/$_commit.tar.gz")
+sha512sums=('36e8b5db06dea90a205c3ad3266dd9d41ba19f5dba86be1e79506829432153245e3499bff7e97c74e6103a32bde949bf976059528f35e40b01f7ea8a082d1028')
+b2sums=('a5a6f5a53710c299caf381684d07a4f7a8eb6f92c8eaffcfd3d9dc84a76f87898b207abfd94586b61049a7d3b34c18bb93e7b28e684d5487641309584498bca4')
 
 prepare() {
   cd "$srcdir/$_name-$_commit" || exit
   # SourceMod's SDK manifests where the build script looks for them
   ln -s /usr/src/sourcemod/hl2sdk-manifests hl2sdk-manifests
 
-  # The extension with the system's jansson and without SDKs (--sdks=), SourceMod's asm and
-  # libudis86 (not used); configure.py with Python 3.14's argparse, which checks the help texts;
-  # test.inc with the regex.inc it uses
-  patch -Np1 -i "$srcdir/smjansson-system-jansson.patch"
   # Nothing prebuilt or bundled: the extension, the test plugin and jansson 2.6
   rm -r bin pawn/plugins jansson
 }
