@@ -1,0 +1,21 @@
+pkgbase = tapes-bin
+	pkgdesc = Atomic dotfiles switcher for Linux and ricing (prebuilt binary)
+	pkgver = 0.1.6beta
+	pkgrel = 1
+	url = https://github.com/futurekismo-oss/tapes
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = tapes
+	conflicts = tapes
+	conflicts = tapes-git
+	options = !debug
+	options = !strip
+	source = tapes-bin-0.1.6beta-x86_64.tar.gz::https://github.com/futurekismo-oss/tapes/releases/download/v0.1.6-beta/tapes-x86_64-unknown-linux-gnu-v0.1.6-beta.tgz
+	source = LICENSE::https://github.com/futurekismo-oss/tapes/raw/v0.1.6-beta/LICENSE
+	source = README.md::https://github.com/futurekismo-oss/tapes/raw/v0.1.6-beta/README.md
+	sha256sums = 14e4bc48ef2e31d74dbfeeea616d15e3d7c9d646d121a2fd77a7b60ee18e996d
+	sha256sums = 33958a9cac02e9b9796325e4e8ba4c48e28761b51f0044affe4e688aca861f7c
+	sha256sums = 41e1ae4e1b806de1f7cd45929dae9f5096ae842c03c720478b8fb6c909d6c3cb
+
+pkgname = tapes-bin
