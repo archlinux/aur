@@ -45,19 +45,21 @@ def process(src, dst, ppem):
     f = TTFont(src)
     if "fvar" in f or "glyf" not in f or f["post"].isFixedPitch or "CFF " in f or "CFF2" in f:
         shutil.copy(src, dst); return "skipped"
+    if ppem <= 0: raise SystemExit("--ppem must be positive")
     unit = f["head"].unitsPerEm / ppem
     hmtx = f["hmtx"].metrics
     n = 0
     for g, (adv, lsb) in list(hmtx.items()):
         if adv <= 0: continue            # combining marks
         new = max(unit, rnd(adv, unit))
-        if new != adv: hmtx[g] = (int(new), lsb); n += 1
+        if new != adv: hmtx[g] = (int(round(new)), lsb); n += 1
     k = 0
     if "GPOS" in f:
         for v in kern_values(f):
             if v is not None and getattr(v, "XAdvance", None):
-                nv = int(rnd(v.XAdvance, unit))
+                nv = int(round(rnd(v.XAdvance, unit)))
                 if nv != v.XAdvance: v.XAdvance = nv; k += 1
+    f["hhea"].advanceWidthMax = max(a for a, _ in hmtx.values())
     f.save(dst)
     return f"{n} advances, {k} kern values"
 

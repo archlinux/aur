@@ -63,7 +63,7 @@ sha256sums=('SKIP'
             '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
             '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
             'd286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b'
-            'c3fed52bfcbefc4e0a324477560917572179a413aa09123dd6d888279b152d1d')
+            'b9b6e0a38ae470bc68106f9099cfc10e30774c6dd6377ac00c8bda52c109eccf')
 
 # ── Versioning ──────────────────────────────────────────────────────────────
 #
@@ -88,7 +88,8 @@ sha256sums=('SKIP'
 #                             destroys fvar/gvar axes during generation.)
 #                             Ignored when NERD_PATCH=true.
 #
-#  HINTING   true/false      Apply autohinting (default: true)
+#  HINTING   true/false      Apply autohinting (default: false: at hintslight FreeType
+#                            ignores the bytecode, bitmaps are identical, size +44%)
 #                            When NERD_PATCH=true:  hints the patched TTF output.
 #                            When NERD_PATCH=false + ttfautohint engine: converts
 #                              static OTF→TTF first, then hints. Variable TTFs are
@@ -589,7 +590,7 @@ _auto_ppem() {
     echo "  auto: could not read the GNOME font size; assuming 16 ppem." >&2
     echo 16; return
   fi
-  awk -v s="$_s" -v t="$_t" 'BEGIN { printf "%.2f\n", s * 96 / 72 * t }' | sed -E '/\./ s/\.?0+$//'
+  awk -v s="$_s" -v t="$_t" 'BEGIN { printf "%.4f\n", s * 96 / 72 * t }' | sed -E '/\./ s/\.?0+$//'
 }
 
 _ask_yn()  { local _default="${2:-n}"; read -p "  $1? (default: $_default) " _yn; _yn="${_yn:-$_default}"; }
@@ -734,10 +735,10 @@ _resolve_options() {
       echo "        converted OTF→TTF first; variable TTFs are flattened to static."
       echo "        The 'cff' engine hints OTFs in place and keeps them as OTF."
     fi
-    _ask_yn "Apply autohinting" y
+    _ask_yn "Apply autohinting (no effect at hintslight)" n
     [[ "$_yn" =~ ^[yY]$ ]] && HINTING=true || HINTING=false
   fi
-  HINTING="${HINTING:-true}"
+  HINTING="${HINTING:-false}"
 
   # ── Hinting engine ─────────────────────────────────────────────────────────
   if [[ "$HINTING" == true && "$NERD_PATCH" == false && "$_interactive" == true && -z "${HINT_ENGINE:-}" ]]; then
@@ -1024,7 +1025,7 @@ _resolve_options() {
     esac
   fi
   EVEN_SPACING="${EVEN_SPACING:-}"
-  if [[ "$_interactive" == true && "${PIXEL_GRID+set}" != set ]]; then
+  if [[ "$_interactive" == true && "${PIXEL_GRID+set}" != set && -z "$EVEN_SPACING" ]]; then
     echo ""
     echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
     _ask_choice "Put advances and kerning on a pixel grid" off \
@@ -1046,6 +1047,10 @@ _resolve_options() {
   PIXEL_GRID="${PIXEL_GRID:-}"
   if [[ ! "$PIXEL_GRID" =~ ^([0-9]+(\.[0-9]+)?)?$ ]]; then
     echo "Error: PIXEL_GRID must be empty or a size in ppem (e.g. 16)."; exit 1
+  fi
+  if [[ -n "$PIXEL_GRID" && -n "$EVEN_SPACING" ]]; then
+    echo "Error: PIXEL_GRID rounds the kerning that EVEN_SPACING adds (about 85% of it"
+    echo "       is zeroed); use one of them."; exit 1
   fi
   EVEN_PPEM="${EVEN_PPEM:-16}"
   EVEN_STRENGTH="${EVEN_STRENGTH:-auto}"; EVEN_DEPTH="${EVEN_DEPTH:-auto}"
