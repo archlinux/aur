@@ -1,19 +1,22 @@
 pkgbase = perl-panotools-script
 	pkgdesc = Perl/CPAN Module Panotools::Script : Panorama Tools scripting
-	pkgver = 0.28
-	pkgrel = 2
+	pkgver = 0.29
+	pkgrel = 1
 	url = https://metacpan.org/dist/Panotools-Script
 	arch = any
 	license = GPL-2.0-or-later
 	checkdepends = hugin
 	depends = perl
+	depends = perl-image-exiftool
+	depends = perl-image-size
+	depends = perl-libwww
+	depends = perl-uri
 	optdepends = zenity: GUI
 	optdepends = enblend-enfuse: enblend-* enfuse-* scripts
 	optdepends = imagemagick: entile
-	optdepends = perl-image-size: erect2* and few other scripts
 	optdepends = hugin: tools for generating panorama projects
 	options = !emptydirs
-	source = perl-panotools-script-0.28.tar.gz::https://cpan.metacpan.org/authors/id/B/BP/BPOSTLE/Panotools-Script-0.28.tar.gz
-	sha256sums = 2e13fb3255f048c2282b9f10c0616053d4f6f4e4c67e978ef4c53bab3919d561
+	source = perl-panotools-script-0.29.tar.gz::https://cpan.metacpan.org/authors/id/B/BP/BPOSTLE/Panotools-Script-0.29.tar.gz
+	sha256sums = 95507d1e75ed1389cacd7731a1e62697c386eb71ea5ae2bf50ff7f70320c1f0a
 
 pkgname = perl-panotools-script
