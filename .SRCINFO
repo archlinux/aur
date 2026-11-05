@@ -1,6 +1,6 @@
 pkgbase = gossamer
 	pkgdesc = Gossamer language toolchain
-	pkgver = 0.75.18
+	pkgver = 0.76.0
 	pkgrel = 1
 	url = https://github.com/danpozmanter/gossamer
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gossamer
 	license = Apache-2.0
 	depends = gcc-libs
 	options = !strip
-	source_x86_64 = gossamer-0.75.18-linux-x86_64.tar.gz::https://github.com/danpozmanter/gossamer/releases/download/v0.75.18/gos-0.75.18-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d5a37325ddf6a8ec12e7b297d681abde790532e0fe4b608ba35e0e6d3e278c94
-	source_aarch64 = gossamer-0.75.18-linux-aarch64.tar.gz::https://github.com/danpozmanter/gossamer/releases/download/v0.75.18/gos-0.75.18-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 9329eb9da9f6461d1f237a72785e0c851a657fa4e5c19fac3c631be146f93d31
+	source_x86_64 = gossamer-0.76.0-linux-x86_64.tar.gz::https://github.com/danpozmanter/gossamer/releases/download/v0.76.0/gos-0.76.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f98fdb8a7ea0882cd9d0c384ead7a05f0376c1ee803429906105e265aa464aa1
+	source_aarch64 = gossamer-0.76.0-linux-aarch64.tar.gz::https://github.com/danpozmanter/gossamer/releases/download/v0.76.0/gos-0.76.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 02b721e6a93df34e5d7d5c721873ec611ad445101a9870f5f1b1eece649e37d8
 
 pkgname = gossamer
