@@ -1,0 +1,18 @@
+pkgbase = tapes-git
+	pkgdesc = Atomic dotfiles switcher for Linux and ricing (git version)
+	pkgver = 0.1.6beta.r8.gf6c0144
+	pkgrel = 1
+	url = https://github.com/futurekismo-oss/tapes
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = tapes
+	conflicts = tapes
+	conflicts = tapes-bin
+	source = tapes::git+https://github.com/futurekismo-oss/tapes.git
+	sha256sums = SKIP
+
+pkgname = tapes-git
