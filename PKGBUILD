@@ -18,7 +18,7 @@
 # Contributor: Aleksey Filippov <sarum9in@gmail.com>
 
 pkgname=mtproxy-git
-pkgver=50.cafc338
+pkgver=66.69f2f08
 pkgrel=1
 pkgdesc="Proxy server for Telegram messaging app"
 arch=('i686' 'x86_64')
@@ -31,17 +31,13 @@ source=(
     mtproxy-config.service
     mtproxy-config.timer
     mtproxy.service
-    pid_assertion.patch
-    fcommon.patch
 )
 noextract=()
 md5sums=('SKIP'
          '1a9cdcef498d2e9ffb5def0112c3e2b0'
          'a67f6a3b3874d9dac15c7cf620d696c2'
          'aa2367c3f759632473824fabcc3544ff'
-         '1ee66acee6c42aca9160b9ccfe534bc3'
-         '50233354ac78d52280a93092b809f7aa'
-         '9fdedbb1b4b64698cc2d017f3dc1e603')
+         '1ee66acee6c42aca9160b9ccfe534bc3')
 backup=('etc/mtproxy.conf')
 
 pkgver() {
@@ -49,17 +45,8 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cd "$srcdir/$pkgname"
-  patch --forward --strip=1 --input="$srcdir/pid_assertion.patch"
-  patch --forward --strip=1 --input="$srcdir/fcommon.patch"
-}
-
 build() {
   cd "$srcdir/$pkgname"
-  export CFLAGS=-fcommon
-  export CXXFLAGS=-fcommon
-  export LDFLAGS=-fcommon
   make $MFLAGS
 }
 
