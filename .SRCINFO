@@ -1,12 +1,15 @@
 pkgbase = python-pyvoy
 	pkgdesc = A Python application server implemented in Envoy.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/curioswitch/pyvoy
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	checkdepends = python-anyio
+	checkdepends = python-opentelemetry-instrumentation-asgi
+	checkdepends = python-opentelemetry-proto
+	checkdepends = python-opentelemetry-sdk
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-trio
@@ -15,7 +18,6 @@ pkgbase = python-pyvoy
 	makedepends = python-maturin
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = clang
 	makedepends = git
 	depends = python
@@ -26,9 +28,9 @@ pkgbase = python-pyvoy
 	depends = python-uvloop
 	depends = libgcc
 	depends = glibc
-	source = pyvoy::git+https://github.com/curioswitch/pyvoy.git#tag=v1.3.0
+	source = pyvoy::git+https://github.com/curioswitch/pyvoy.git#tag=v1.4.0
 	source = kosoku::git+https://github.com/curioswitch/kosoku.git
-	sha256sums = 6a4cbbb61306f23637fc72c5466192d9a41213c51bd5f75ab119d3d591171f4d
+	sha256sums = 01a9141359fa98ae788e7cc1ee064736f1f96b340333b932ae3238367fa58b28
 	sha256sums = SKIP
 
 pkgname = python-pyvoy

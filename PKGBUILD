@@ -2,7 +2,7 @@
 
 _name=pyvoy
 pkgname=python-$_name
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A Python application server implemented in Envoy.'
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,12 @@ depends=('python'
 makedepends=('python-maturin'
              'python-build'
              'python-installer'
-             'python-wheel'
              'clang'
              'git')
 checkdepends=('python-anyio'
+              'python-opentelemetry-instrumentation-asgi'
+              'python-opentelemetry-proto'
+              'python-opentelemetry-sdk'
               'python-pytest'
               'python-pytest-asyncio'
               'python-trio'
@@ -30,21 +32,25 @@ checkdepends=('python-anyio'
               'python-websockets')
 source=("$_name::git+$url.git#tag=v$pkgver"
         "kosoku::git+https://github.com/curioswitch/kosoku.git")
-sha256sums=('6a4cbbb61306f23637fc72c5466192d9a41213c51bd5f75ab119d3d591171f4d'
+sha256sums=('01a9141359fa98ae788e7cc1ee064736f1f96b340333b932ae3238367fa58b28'
             'SKIP')
 
 prepare() {
-  cd "$srcdir"/$_name
+  cd "$_name"
+  # Use the maturin version shipped by Arch
+  sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
   # Tests expect RemoteProtocolError from newer pyqwest, same as upstream fix in curioswitch/pyvoy#322
   sed -i 's/\bReadError\b/RemoteProtocolError/g' tests/test_kitchensink.py
-  cd "$srcdir"/kosoku
+  cd ../kosoku
   git checkout --quiet "$(git tag -l 'v*' --sort=-v:refname | head -1)"
+  # Use the maturin version shipped by Arch
+  sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
 }
 
 build() {
-  cd "$srcdir"/$_name
+  cd "$_name"
   python -m build --wheel --no-isolation
-  cd "$srcdir"/kosoku
+  cd ../kosoku
   python -m build --wheel --no-isolation
 }
 
@@ -53,7 +59,7 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/$_name
+  cd "$_name"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer "$srcdir"/kosoku/dist/*.whl
@@ -61,6 +67,6 @@ check() {
 }
 
 package() {
-  cd "$srcdir"/$_name
+  cd "$_name"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
