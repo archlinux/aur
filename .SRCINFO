@@ -1,6 +1,6 @@
 pkgbase = postybirb-git
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.
-	pkgver = 4.1.2.r0.gf143d2b
+	pkgver = 4.1.4.r0.g7ee324e
 	pkgrel = 1
 	url = https://www.postybirb.com/
 	arch = aarch64
@@ -13,12 +13,14 @@ pkgbase = postybirb-git
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron42
-	provides = postybirb=4.1.2
+	provides = postybirb=4.1.4
 	conflicts = postybirb
 	conflicts = postybirb-plus
 	source = postybirb.git::git+https://github.com/mvdicarlo/postybirb.git
+	source = postybirb.js
 	source = postybirb.sh
 	sha256sums = SKIP
-	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 
 pkgname = postybirb-git
