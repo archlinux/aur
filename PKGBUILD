@@ -9,8 +9,8 @@ _nfver=3.5.1
 # pkgrel to 1 when it changes. After a build that selected a subset of the
 # families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
-pkgver=22.0.5.4+nf3.5.1
-pkgrel=10
+pkgver=22.2.2.1+nf3.5.1
+pkgrel=1
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
