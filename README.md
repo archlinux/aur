@@ -400,9 +400,8 @@ ttfautohint leaves bit 3 of `head.flags` clear; fontbakery fails hinted fonts
 for it, because Windows GDI needs whole-pixel ppem. On Linux it is not
 cosmetic: with the bit set, FreeType rounds a fractional size up to the next
 whole pixel, measured on this font as +19% ink at 8 pt and +16% at 11 pt
-(96 dpi) – i.e. text gets bigger and line breaks move. The option
-`HINT_INTEGER_PPEM=true` sets it for people who match Windows; the default
-leaves it off.
+(96 dpi) – i.e. text gets bigger and line breaks move. The package
+no longer offers to set it (fonttune has no such option); the flag stays clear.
 
 ---
 
@@ -483,29 +482,29 @@ python measure.py Geologica-Regular.ttf slight '{}' 10,11,12
 
 ---
 
-## 5. Features in apps that ignore fontconfig (`FEATURE_DEFAULTS`)
+## 5. Features in apps that ignore fontconfig (`FONTTUNE_FEATURES`)
 
 fontconfig's `fontfeatures` is read by pango/GTK only: Chromium, Electron, Qt
 and LibreOffice shape text without it, and in a browser only the page CSS can
 ask for a feature. A font cannot declare one "on by default" either - a shaper
 applies a fixed list (`ccmp locl mark mkmk kern calt liga clig rlig`). So the
 only way to make a feature the default everywhere is to move its lookups into
-one of those features, which is what `make_features.py` does and what
-`FEATURE_DEFAULTS` runs as the last build step:
+one of those features, which is what fonttune's `features` step does and what
+`FONTTUNE_FEATURES` runs as the last build step:
 
 ```sh
-FEATURE_DEFAULTS=ss01 makepkg -si     # cursive a/g in every app, Chrome included
+FONTTUNE_FEATURES=ss01 makepkg -si     # cursive a/g in every app, Chrome included
 ```
 
-`FEATURE_DEFAULTS=fonts.conf` bakes the features that are **active** (not commented out) in the
+fonttune's `features = "fonts.conf"` (`FONTTUNE_FEATURES=fonts.conf`) bakes the features that are **active** (not commented out) in the
 `<match target="font">` blocks for `Geologica` and `Geologica UI` in `~/.config/fontconfig/fonts.conf` (another file:
 `GEO_FONTS_CONF`), so the one list drives both pango and every other app. Skipped, with a
 `note:` line: negated tags (`-liga`), tags the font has no GSUB lookups for, tags every
-shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones `make_features.py`
+shaper applies anyway (`kern liga ccmp locl mark mkmk calt`) and the ones fonttune's `features` step
 refuses (`aalt ordn dlig ...`). If nothing is left, nothing is baked.
 
 `makepkg` asks for this during the build: Enter bakes nothing, so a plain build
-is unchanged. `FEATURE_FAMILY` is not prompted for on purpose - it renames every
+is unchanged. `FONTTUNE_FEATURE_FAMILY` is not prompted for on purpose - it renames every
 file to one family, which would merge the cuts a multi-family build installs -
 so the variables below are what an unattended build, or a renamed copy, uses.
 
@@ -528,9 +527,24 @@ Nerd Fonts build.
 Measured on the built package, 44 px, `Gg a αγ Agenda`: baked with no CSS is
 **pixel-identical** to stock Geologica with `font-feature-settings: "ss01" 1`
 (0 differing pixels), 5305 pixels differ from the stock font, and `"calt" 0`
-restores the stock glyphs exactly. `FEATURE_FAMILY="Geologica Cursive"`
+restores the stock glyphs exactly. `FONTTUNE_FEATURE_FAMILY="Geologica Cursive"`
 installs it as a second family; it cannot be combined with `GEO_UI_WEIGHT`,
 since both would rename the same file.
+
+## Build options (fonttune)
+
+Tuning is done by [fonttune](https://github.com/gaou-piou/fonttune); the
+PKGBUILD asks its questions in `prepare()` and each answer can be preset as
+`FONTTUNE_<KEY>` (`hint`, `gasp`, `features`, ...). Package options:
+`GEO_VARIANT=variable|static`, `STATIC_WEIGHTS`, `STATIC_ITALIC`,
+`STATIC_SHRP`, `GEO_UI_WEIGHT`, `GEO_UI_FEATURES` and `NERD_PATCH` (implies
+static); the statics are cut by `fonttune statics`. `make_ui.py` (the
+"Geologica UI" avar family) stays in the package because fonttune has no
+weight-remap step. The old `HINT_*`, `GASP_MODE` and `FEATURE_*` variables,
+`make_statics.py`, `make_features.py` and `set_gasp.py` are gone, and some
+option names in the sections above predate this change (`HINT_PRESET` is
+fonttune's `hint`, `FEATURE_DEFAULTS` its `features`). The resolved choices
+are saved in `/usr/share/doc/ttf-geologica-hinted/fonttune.toml`.
 
 ## Differences from the sibling packages
 
