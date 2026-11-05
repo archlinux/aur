@@ -7,7 +7,7 @@
 # to /usr/share. What a user changes lives in ~/.config/zenworks.
 
 pkgname=zenworks
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 PACKAGER="Zenworks Delphi"
 # the source's tag: $pkgver, or a hotfix's own (0.1.9-2) for a pkgrel that
@@ -31,7 +31,10 @@ depends=(
   # audio, media & documents
   pipewire pipewire-pulse wireplumber libpulse alsa-utils pamixer playerctl
   gst-plugins-good gst-plugins-bad gst-plugins-ugly
-  ffmpeg mpv imagemagick perl-image-exiftool poppler ghostscript djvulibre
+  ffmpeg gifsicle mpv imagemagick perl-image-exiftool poppler ghostscript djvulibre
+  # reading text in pictures (Picasso, Clio, Cynosure): English always; the
+  # setup assistant offers the language you pick (tesseract-data-*)
+  tesseract tesseract-data-eng
   hunspell hunspell-en_us
   # a laptop's screen brightness (Control Hub; monitors go through ddcutil)
   brightnessctl
@@ -55,8 +58,6 @@ optdepends=(
   'zoxide: the terminal setup Zenworks offers (installed when you accept it)'
   'noto-fonts-cjk: Chinese, Japanese and Korean text'
   'noto-fonts-extra: more weights and rare scripts'
-  'tesseract: copying text out of a picture (Picasso)'
-  'tesseract-data-eng: copying English text out of a picture'
   'unrar: opening RAR archives in Terminus'
   'ratarmount: browsing big archives without unpacking them'
   'ntfsprogs: repairing and formatting NTFS drives'
@@ -82,7 +83,7 @@ conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('cf5a5c999b1336676e63b573e9647c6c6ebc8089619b0e60200cf8dd10014657')
+sha256sums=('75e18a0ac498e8c0702ffe303f1928cb95abe657782b41ddd9c6c3c4899a8979')
 
 package() {
   # the tarball's directory is named after the repository, as GitHub has
