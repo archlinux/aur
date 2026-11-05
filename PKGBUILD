@@ -112,10 +112,16 @@ build() {
 
 # The console, its helper, its units vtium@.service and vtium-getty@.service,
 # the example configuration /etc/vtium/vtium.conf.example, the frits in
-# /etc/vtium/fonts, the example udev rules and hwdb fragment, the head
-# file's template, and the license. With images, also the image helper
-# /usr/bin/vtium-image, the sysusers file that creates its account, and the
-# picture gallery tool /usr/bin/vtium-gallery, a bash script.
+# /etc/vtium/fonts, the example udev rules and hwdb fragment, and LICENSE.
+# With images, also the image helper /usr/bin/vtium-image, the sysusers file
+# that creates its account, and the picture gallery tool
+# /usr/bin/vtium-gallery, a bash script.
+# The recipe installs COPYING beside LICENSE itself, so that a package built
+# from a tag whose make install stages LICENSE alone still carries COPYING:
+# the notices for the third-party code and data vtium builds in, such as
+# Unifont and Unicode's data tables, whose license asks that its notice go
+# with every copy.
 _package_console() {
   _make install DESTDIR="$pkgdir" PKGNAME="$pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/vtium/COPYING"
 }
