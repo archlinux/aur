@@ -1,6 +1,6 @@
 # Maintainer: fkzys <fkzys at proton dot me>
 pkgname=bwrap-common
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Reusable bubblewrap sandbox helpers for shell wrappers"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     'verify-lib: library integrity verification before sourcing'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e21a791c7a15cf0c40748f4752fe3a65a9a0e68c345b32431e4f148ba57cf9b7')
+sha256sums=('285102f70c41f40fc0b87a991716287f3cf03bedb11b7c8a841a3f339fcad3eb')
 
 package() {
     cd "${pkgname}-${pkgver}"
