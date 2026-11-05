@@ -1,7 +1,7 @@
 pkgbase = lib32-onetbb
 	pkgdesc = oneAPI Threading Building Blocks - a high level abstract threading library (32-bit)
 	pkgver = 2023.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uxlfoundation.github.io/oneTBB/
 	arch = x86_64
 	license = Apache-2.0
@@ -22,9 +22,9 @@ pkgbase = lib32-onetbb
 	replaces = lib32-tbb
 	source = https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2023.2.0/oneTBB-2023.2.0.tar.gz
 	source = 010-onetbb-fix-linkage-of-test-malloc-pure-c.patch
-	source = 020-onetbb-fix-python-test.patch::https://github.com/uxlfoundation/oneTBB/commit/518d57b48adb48fec3aaf18b931d11d868ec646b.patch
-	b2sums = 786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce
+	source = 020-onetbb-fix-python-test.patch::https://github.com/uxlfoundation/oneTBB/commit/518d57b48adb48fec3aaf18b931d11d868ec646b.patch?full_index=1
+	b2sums = 7213f2166c1ca746346810e03d4178075299d6823b627b15ca7d78089988c1b0868cc21939d54d55f1249fa76a4bf9a6027e82b9f68e3938f1bd5f32f1491513
 	b2sums = 466914a40d09c83ec6f52dbabf1db67313d4eed8aa4c7e77305b0bdc5b61cf0aac527d064825570381121b4082584bd0b59bf92f447f5f44ba79b2b2670191f4
-	b2sums = 772ddee5447f03bacc5e6e1d1e0d33e3866dada50b210fd5dd578c09a995d0d41654f7d556e5ac1e246f5037c3ede6ea836e63609f0b54d997d46fead0a15094
+	b2sums = ce938c8a827be1c8f7324ab9f77a2e0636661110e7bff009102ea46f5958069a53452761de28bf4932583c8da0265bf405849763448cc87d883260668ec8f7e3
 
 pkgname = lib32-onetbb
