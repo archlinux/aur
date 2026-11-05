@@ -1,6 +1,6 @@
 pkgbase = dfdu
 	pkgdesc = Disk usage browser for the terminal
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/jordond/dfdu
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dfdu
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = dfdu-0.5.2.tar.gz::https://github.com/jordond/dfdu/archive/refs/tags/v0.5.2.tar.gz
-	sha256sums = a4522d100818224f9fd93ca4048eef391ad174b1d55414932aefb0047bfb51fd
+	source = dfdu-0.6.0.tar.gz::https://github.com/jordond/dfdu/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 0641c4bb07727c84baa33c3fcad5008619972b9f7036c35d9a6369893a7741a3
 
 pkgname = dfdu
