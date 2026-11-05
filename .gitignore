@@ -1,0 +1,18 @@
+# Sources downloaded by makepkg
+*.appimage
+*.AppImage
+*.png
+
+# makepkg artifacts
+src/
+pkg/
+*.tar.zst
+*.tar.gz
+*.tar.xz
+*.log
+
+# Editor files
+*~
+*.swp
+.idea/
+.vscode/

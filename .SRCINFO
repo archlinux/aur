@@ -1,0 +1,27 @@
+pkgbase = soh-bin
+	pkgdesc = An unofficial PC port of The Legend of Zelda: Ocarina of Time
+	pkgver = 9.3.1
+	pkgrel = 1
+	url = https://www.shipofharkinian.com
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	depends = sdl2
+	depends = libpng
+	depends = libzip
+	depends = lsb-release
+	optdepends = zenity: for file picker dialogs
+	optdepends = kdialog: for file picker dialogs (KDE)
+	provides = soh
+	conflicts = soh
+	conflicts = soh-git
+	noextract = soh-9.3.1.appimage
+	options = !strip
+	source = soh-9.3.1.appimage::https://github.com/HarbourMasters/Shipwright/releases/download/9.3.1/SoH-Dewey-Bravo.appimage
+	source = soh.desktop
+	source = soh.png::https://raw.githubusercontent.com/HarbourMasters/Shipwright/develop/soh/macosx/sohIcon.png
+	sha256sums = e4bb775c9a0c3629ebac57e4b6ccba6d0b621d71ab201e9105aceef9141ad1f4
+	sha256sums = d2aa81872c6176dd747bee8962a27371b090ac8904bb12352660127092e3792a
+	sha256sums = 33ffca9a886629700bce92f334d3d460da48f41b2194854c0280dea3f6451850
+
+pkgname = soh-bin

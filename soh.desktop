@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ship of Harkinian
+GenericName=Ocarina of Time PC Port
+Comment=An unofficial PC port of The Legend of Zelda: Ocarina of Time
+Exec=soh
+Icon=soh
+Terminal=false
+Categories=Game;
+Keywords=zelda;ocarina;n64;
