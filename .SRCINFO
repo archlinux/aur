@@ -12,7 +12,9 @@ pkgbase = vtium-git
 	makedepends = systemd-libs
 	options = !debug
 	source = vtium::git+https://github.com/vtium/vtium.git#branch=main
+	source = terminus.vtfrit
 	sha256sums = SKIP
+	sha256sums = 600bace75f6fa5e109d29368e4b3872218e9d9e2eb53f0a795e74b68e9c39989
 
 pkgname = vtium-git
 	install = vtium-git.install
@@ -24,6 +26,7 @@ pkgname = vtium-git
 	depends = mesa
 	depends = systemd-libs
 	depends = vtium-terminfo-git
+	optdepends = vtium-fonts: the fonts the shipped frits name
 	optdepends = kbd: console fonts, which vtium draws when no frit is set
 	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
 	provides = vtium=r1866.16e66a2
@@ -31,6 +34,7 @@ pkgname = vtium-git
 	backup = etc/vtium/fonts/desktop.vtfrit
 	backup = etc/vtium/fonts/minspec-16.vtfrit
 	backup = etc/vtium/fonts/minspec-8.vtfrit
+	backup = etc/vtium/fonts/terminus.vtfrit
 
 pkgname = vtium-terminfo-git
 	pkgdesc = The terminfo entry xterm-vtium, for sessions in vtium (git main)

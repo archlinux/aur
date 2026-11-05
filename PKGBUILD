@@ -23,8 +23,10 @@ url='https://github.com/vtium/vtium'
 license=('MIT')
 makedepends=('cargo' 'git' 'ncurses' 'libxkbcommon' 'systemd-libs')
 options=('!debug')
-source=("vtium::git+${VTIUM_GIT_URL:-https://github.com/vtium/vtium.git}#branch=${VTIUM_GIT_BRANCH:-main}")
-sha256sums=('SKIP')
+source=("vtium::git+${VTIUM_GIT_URL:-https://github.com/vtium/vtium.git}#branch=${VTIUM_GIT_BRANCH:-main}"
+        'terminus.vtfrit')
+sha256sums=('SKIP'
+            '600bace75f6fa5e109d29368e4b3872218e9d9e2eb53f0a795e74b68e9c39989')
 
 pkgver() {
   cd vtium
@@ -42,7 +44,8 @@ pkgver() {
 package_vtium-git() {
   depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'systemd-libs'
            'vtium-terminfo-git')
-  optdepends=('kbd: console fonts, which vtium draws when no frit is set'
+  optdepends=('vtium-fonts: the fonts the shipped frits name'
+              'kbd: console fonts, which vtium draws when no frit is set'
               'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
   # provides vtium at this build's version, so a package that depends on
   # vtium, or on a version of it, is met by this one; conflicts with vtium,
@@ -50,13 +53,17 @@ package_vtium-git() {
   # console package at a time.
   provides=("vtium=$pkgver")
   conflicts=('vtium')
-  # The frits _make names in FRITS, which keep a user's edits across an
-  # upgrade (ADR-1500 D8).
+  # The frits _make names in FRITS, and the Terminus frit, which keep a
+  # user's edits across an upgrade (ADR-1500 D8).
   backup=('etc/vtium/fonts/desktop.vtfrit'
           'etc/vtium/fonts/minspec-16.vtfrit'
-          'etc/vtium/fonts/minspec-8.vtfrit')
+          'etc/vtium/fonts/minspec-8.vtfrit'
+          'etc/vtium/fonts/terminus.vtfrit')
   install=vtium-git.install
   _package_console
+  # The Terminus frit names the console font by the file name Arch's
+  # terminus-font gives it, so this repository carries it, not vtium's tree.
+  install -Dm644 "$srcdir/terminus.vtfrit" "$pkgdir/etc/vtium/fonts/terminus.vtfrit"
 }
 
 package_vtium-terminfo-git() {

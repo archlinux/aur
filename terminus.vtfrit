@@ -1,0 +1,20 @@
+# terminus: the Terminus console font at 8x16 cells, from Arch Linux's
+# terminus-font package, which installs it as
+# /usr/share/kbd/consolefonts/ter-v16n.psf.gz, then the built-in unifont,
+# which draws every character Terminus lacks (ADR-1500 D8). vtium ships
+# this frit, never the font: the glyph helper finds ter-v16n among the kbd
+# console fonts installed on the machine, and leaves it out when the
+# machine lacks it. Terminus covers Latin, Greek and Cyrillic, box drawing
+# and blocks.
+#
+# Licence: Terminus Font under the SIL OFL 1.1; unifont under the SIL OFL
+# 1.1.
+
+name=terminus
+cell=8x16
+license=OFL-1.1
+
+# Arch's terminus-font installs it; the glyph helper finds a console font
+# by its file's name, with kbd's suffixes dropped.
+source=font:ter-v16n
+source=builtin:unifont
