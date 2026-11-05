@@ -25,7 +25,7 @@ sha256sums=(
 
 package_deskwaifu-bin() {
   depends=('glibc' 'gcc-libs' 'wayland' 'libglvnd' 'systemd-libs' 'qt6-base>=6.5' 'qt6-wayland>=6.5' 'qt6-scxml>=6.5' 'qt6-websockets>=6.5' 'qt6-multimedia>=6.5' 'layer-shell-qt>=6.6' 'bash' 'python' 'psmisc')
-  optdepends=('deskwaifu-ocr-bin: optional native OCR helper (models provisioned separately)')
+  optdepends=('deskwaifu-ocr-bin: optional in-process OCR module (models provisioned separately)')
   provides=("deskwaifu=$pkgver")
   conflicts=('deskwaifu')
   # Select only the installed payload; never nest upstream package metadata.
@@ -33,14 +33,13 @@ package_deskwaifu-bin() {
 }
 
 package_deskwaifu-ocr-bin() {
-  pkgdesc='DeskWaifu native OCR helper and ONNX Runtime CPU runtime (no models or dictionaries)'
+  pkgdesc='DeskWaifu in-process OCR module using system ONNX Runtime (no models or dictionaries)'
   license=('MIT' 'Apache-2.0')
-  depends=("deskwaifu-bin=$pkgver-$pkgrel" 'glibc' 'gcc-libs' 'qt6-base>=6.5' 'opencv' 'yaml-cpp')
+  depends=("deskwaifu-bin=$pkgver-$pkgrel" 'glibc' 'gcc-libs' 'qt6-base>=6.5' 'opencv' 'yaml-cpp' 'onnxruntime-cpu')
   provides=("deskwaifu-ocr=$pkgver")
   conflicts=('deskwaifu-ocr')
   bsdtar -xpf "$srcdir/$_ocr" -C "$pkgdir" usr
   # The upstream component uses the un-suffixed name for its license directory.
+  # ONNX Runtime is a system dependency, so no bundled runtime license is installed here.
   mv "$pkgdir/usr/share/licenses/deskwaifu-ocr" "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 "$pkgdir/usr/share/licenses/$pkgname/onnxruntime/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
