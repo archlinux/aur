@@ -11,15 +11,11 @@
     makepkg -si </dev/null   # δεν ρωτάει: μόνο προεπιλογές
 
 Επιλογές: βλέπε την κεφαλίδα του `PKGBUILD` (`XM_VARIANT`, `STATIC_WEIGHTS`,
-`STATIC_ITALIC`, `NERD_PATCH`, `HINTING`, `HINT_PRESET`, `FEATURE_DEFAULTS`,
-`GASP_MODE`, …). Οι απαντήσεις σώζονται στο `$srcdir/.build_opts`.
+`STATIC_ITALIC`, `NERD_PATCH`) και την ενότητα «Build options (fonttune)» στο τέλος.
 
-`FEATURE_DEFAULTS=fonts.conf` (ή η αντίστοιχη επιλογή στο μενού) ψήνει τα features
+`FONTTUNE_FEATURES=fonts.conf` (ή η αντίστοιχη ερώτηση) ψήνει τα features
 που είναι ενεργά (χωρίς σχόλιο) στο `<match>` της οικογένειας `Xmind` του
-`~/.config/fontconfig/fonts.conf` (άλλο αρχείο: `XM_FONTS_CONF`). Παραλείπονται, με
-σημείωση, τα αρνητικά (`-liga`), όσα δεν υπάρχουν στο GSUB, όσα εφαρμόζει ήδη
-κάθε shaper (`kern liga ccmp locl`) και όσα αρνείται το `make_features.py`
-(`aalt ordn dlig`). Έτσι το `kern`/`liga` του block δεν χαλά το build.
+`~/.config/fontconfig/fonts.conf` (άλλο αρχείο: `XM_FONTS_CONF`).
 
 Μετά την εγκατάσταση, για bytecode hinting (δεν ενεργοποιείται μόνο του):
 
@@ -99,10 +95,7 @@ hinted περίπτωση στα 400–900. Unhinted: 3–4 γράμματα.
 
 ## 4. Τεχνικές από τα άλλα πακέτα
 
-`HINT_INTEGER_PPEM` είναι κλειστό (μεγαλώνει το κείμενο στο Linux +16–19%
-μελάνι σε μικρά μεγέθη). `GASP_MODE=keep`: το FreeType αγνοεί το gasp.
-`FEATURE_DEFAULTS` ψήνει features στο `calt` (το fontconfig `fontfeatures`
-φτάνει μόνο στο pango). Το Nerd Fonts patching γίνεται πριν το hinting, και
+Το integer-ppem είναι κλειστό (μεγαλώνει το κείμενο στο Linux). Το gasp μένει όπως είναι: το FreeType το αγνοεί. Το fonttune `features` ψήνει features στο `calt` (το fontconfig `fontfeatures` φτάνει μόνο στο pango). Το Nerd Fonts patching γίνεται πριν το hinting, και
 αναγκάζει static, γιατί το font-patcher αφαιρεί το fvar/gvar.
 
 ## 5. Επαλήθευση
@@ -110,3 +103,14 @@ hinted περίπτωση στα 400–900. Unhinted: 3–4 γράμματα.
     python measure.py FONT.ttf MODE '{"wght":400}' 12,13,14,16 glued,height,dev
 
 (MODE: `none`, `slight`, `medium`, `auto`. Θέλει `freetype-py` και `numpy`.)
+
+## Build options (fonttune)
+
+Η ρύθμιση γίνεται από το [fonttune](https://github.com/gaou-piou/fonttune): το
+PKGBUILD ρωτάει στο `prepare()` (hint, gasp, features, even spacing, pixel grid, …)
+και κάθε απάντηση μπορεί να οριστεί εκ των προτέρων ως `FONTTUNE_<KEY>`
+(π.χ. `FONTTUNE_HINT=natural`, `FONTTUNE_FEATURES=case,ss01`). Επιλογές του
+πακέτου: `XM_VARIANT`, `STATIC_WEIGHTS`, `STATIC_ITALIC`, `NERD_PATCH`. Οι παλιές `HINTING`, `HINT_*`, `GASP_MODE`, `FEATURE_*`
+και τα scripts `make_statics.py`, `make_features.py`, `set_gasp.py` αφαιρέθηκαν: τα αντικαθιστά το
+fonttune. Οι ενότητες παραπάνω που τις αναφέρουν προηγούνται αυτής της αλλαγής·
+οι επιλογές που έγιναν σώζονται στο `/usr/share/doc/ttf-xmind-hinted/fonttune.toml`.

@@ -50,7 +50,7 @@ GPOS: `kern` (scripts DFLT/cyrl/grek/latn) και `mkmk`. Δεν υπάρχει 
 μονάδες) και **δεν υπάρχει tabular εναλλακτική**. Για πίνακες με αριθμούς
 χρησιμοποίησε monospace.
 
-### Τι να ψήσεις (`FEATURE_DEFAULTS`)
+### Τι να ψήσεις (`FONTTUNE_FEATURES`)
 
 Τίποτα από αυτά δεν είναι σωστό ως προεπιλογή για συνεχές κείμενο, γι' αυτό το
 πακέτο δεν ψήνει τίποτα αν δεν το ζητήσεις:
@@ -59,9 +59,9 @@ GPOS: `kern` (scripts DFLT/cyrl/grek/latn) και `mkmk`. Δεν υπάρχει 
   Σε μικτό κείμενο οι παύλες, οι παρενθέσεις και το `:` ανεβαίνουν και φαίνονται ψηλά δίπλα στα πεζά.
 - `ss03`: το ίδιο, χωρίς το `:` (το `:` ανάμεσα σε ψηφία ανεβαίνει ήδη από το `calt`).
 - `sups`/`subs`/`frac`: ποτέ ως προεπιλογή (αλλάζουν το περιεχόμενο).
-- Το `make_features.py` αρνείται από μόνο του τα `aalt`, `ordn`, `salt`, `dlig`, `hlig`, `hist`.
+- Το fonttune αρνείται από μόνο του τα `aalt`, `ordn`, `salt`, `dlig`, `hlig`, `hist`.
 
-Για να ψήσεις ό,τι έχεις ενεργό στο fonts.conf: `FEATURE_DEFAULTS=fonts.conf`.
+Για να ψήσεις ό,τι έχεις ενεργό στο fonts.conf: `FONTTUNE_FEATURES=fonts.conf`.
 
 Στον browser: `font-feature-settings: "case"` για μεμονωμένες περιπτώσεις.
 
