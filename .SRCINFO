@@ -1,5 +1,5 @@
 pkgbase = anirss-git
-	pkgdesc = Search nyaa.si and hand the result to qBittorrent (git main)
+	pkgdesc = Search the endpoints you add and hand releases to qBittorrent (git main)
 	pkgver = 0.0.0.r0.0000000
 	pkgrel = 1
 	url = https://github.com/marcusbandit/anirss
