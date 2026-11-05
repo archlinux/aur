@@ -1,6 +1,6 @@
 pkgbase = smartsub-git
 	pkgdesc = Free, open-source desktop app to generate, translate, dub & burn video subtitles — local Whisper speech-to-text, AI dubbing & voice cloning, offline, GPU-accelerated.
-	pkgver = 3.11.0.r17.g8d7d392
+	pkgver = 3.12.2.r0.g0a692cf
 	pkgrel = 1
 	url = https://smartsub.linxiaodong.com/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = smartsub-git
 	depends = python-openai-whisper
 	depends = ffmpeg
 	depends = nodejs
-	provides = smartsub=3.11.0
+	provides = smartsub=3.12.2
 	conflicts = smartsub
 	source = smartsub.git::git+https://github.com/buxuku/SmartSub
 	source = smartsub.js
 	source = smartsub.sh
 	sha256sums = SKIP
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 
 pkgname = smartsub-git
