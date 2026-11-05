@@ -46,7 +46,7 @@
 
 
 pkgname=dsh-desktop-git
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation (Linux build without the bundled Office runtime)'
 arch=('x86_64')
