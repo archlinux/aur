@@ -3,7 +3,7 @@
 # workflow (apps/cli/scripts/publish/render-aur.mjs). Direct edits are
 # overwritten on the next prod release.
 pkgname=nebula-ai-bin
-pkgver=0.1.26
+pkgver=0.1.27
 pkgrel=1
 pkgdesc="CLI/TUI for the nebula.gg AI task orchestration platform"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ provides=("nebula-ai=$pkgver")
 conflicts=('nebula-ai')
 options=('!strip')
 
-source_x86_64=("nebula-ai-v0.1.26-linux-x64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.26/linux-x64/nebula-ai-v0.1.26-linux-x64.tar.gz")
-sha256sums_x86_64=('cb8af547b046555b72fe4a4d72f257154af973896026d08e57485fc756b6e8a4')
-source_aarch64=("nebula-ai-v0.1.26-linux-arm64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.26/linux-arm64/nebula-ai-v0.1.26-linux-arm64.tar.gz")
-sha256sums_aarch64=('61bc86bffd7d095f38c508bc1a8680f77d075a112fe9735641a4169a53c6faed')
+source_x86_64=("nebula-ai-v0.1.27-linux-x64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.27/linux-x64/nebula-ai-v0.1.27-linux-x64.tar.gz")
+sha256sums_x86_64=('35d22ca03f5c5b33f8df2bc72c757ae53a27c5a15d6e3d9abe0e9f2c6f39baff')
+source_aarch64=("nebula-ai-v0.1.27-linux-arm64.tar.gz::https://app-assets.nebula.gg/cli/stable/v0.1.27/linux-arm64/nebula-ai-v0.1.27-linux-arm64.tar.gz")
+sha256sums_aarch64=('f9d7b0d1961cd5fc853e81dd9b5ba1ee31f4cfc11ac0821bf9d9d4f411610a78')
 
 package() {
   install -Dm755 "${srcdir}/nebula-ai" "${pkgdir}/usr/bin/nebula-ai"
