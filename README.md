@@ -617,6 +617,15 @@ replacing the static Display/Text/Rounded by cuts of a variable font that has
 no Rounded. **`HINTING` under `hintslight`:** FreeType's autohinter ignores the
 bytecode, so ttfautohint only pays off with `hintmedium`/`hintfull`.
 
+**`PIXEL_GRID=16` (default off).** Rounds every advance and kern value to a whole
+pixel at 16 ppem (`pixel_grid.py`, static TrueType only, runs after
+`EVEN_SPACING`). With subpixel positioning each letter starts on a different
+fraction of a pixel, so one stem is drawn as a dark column here and two grey ones
+there and a word looks unevenly bold. Measured in headless Firefox 159 (SF Pro
+Rounded Regular, 16 px, grayscale): six different stem profiles for identical
+letters become one. The price is spacing: gap spread 0.54 -> 0.78 px, the same as
+turning subpixel positioning off. Only at the chosen size; others behave as before.
+
 **`OTF2TTF` (default `true`).** With `HINTING=false` the static OTFs are still
 converted to TrueType outlines (cu2qu, no ttfautohint). At `hintslight`
 FreeType runs its autohinter on TrueType outlines (it snaps the x-height and

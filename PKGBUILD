@@ -38,6 +38,7 @@ source=(
   "fix_names.py"
   "make_features.py"
   "even_spacing.py"
+  "pixel_grid.py"
 )
 # Apple re-spins the DMGs without versioning, so those legitimately stay SKIP —
 # the real identity check is pkgver(), which reads the version out of the font
@@ -61,7 +62,8 @@ sha256sums=('SKIP'
             'a45a8aa72da4175f1ac16141c6b2f5335d0aa402dcc58903bdd6a2622573eaa3'
             '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
             '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
-            'd286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b')
+            'd286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b'
+            'c3fed52bfcbefc4e0a324477560917572179a413aa09123dd6d888279b152d1d')
 
 # ── Versioning ──────────────────────────────────────────────────────────────
 #
@@ -180,6 +182,20 @@ sha256sums=('SKIP'
 #  EVEN_PPEM     16          target size: max kern 1000/ppem (~1px), min 100/ppem
 #  EVEN_STRENGTH 0-1.5 / EVEN_DEPTH 0.05-0.6 / EVEN_MAX / EVEN_MIN   (default auto)
 #                            override the calibration (see even_spacing.py --help)
+#
+#  PIXEL_GRID    ""|N            (default: off; N = target ppem, 16 = 12pt GTK / 16px web)
+#                            Rounds every glyph advance and every pair-kern value to a
+#                            whole pixel at N ppem (pixel_grid.py). With subpixel
+#                            positioning each letter otherwise starts on a different
+#                            fraction of a pixel, so the same stem is drawn as one dark
+#                            column here and two grey ones there and a word looks
+#                            unevenly bold. On the grid, identical letters render
+#                            identically. Measured in Firefox (SF Pro Rounded 16px):
+#                            6 different stem profiles -> 1. Price: gaps follow the
+#                            rounding (std 0.54 -> 0.78 px). Only at N ppem; other sizes
+#                            behave as before. Static TrueType only: needs OTF2TTF or
+#                            HINTING=true with ttfautohint; CFF, variable and mono
+#                            fonts are left alone. Runs after EVEN_SPACING.
 #
 #  Not carried over from ttf-akt-hinted: REGULAR_WGHT=auto. It cuts a lighter
 #  Regular from a variable font so the horizontal bars land on whole pixels at
@@ -992,6 +1008,16 @@ _resolve_options() {
     esac
   fi
   EVEN_SPACING="${EVEN_SPACING:-}"
+  if [[ "$_interactive" == true && "${PIXEL_GRID+set}" != set ]]; then
+    echo ""
+    echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
+    _ask_yn "Put advances and kerning on the 16 ppem pixel grid" n
+    [[ "$_yn" =~ ^[yY]$ ]] && PIXEL_GRID=16 || PIXEL_GRID=""
+  fi
+  PIXEL_GRID="${PIXEL_GRID:-}"
+  if [[ ! "$PIXEL_GRID" =~ ^([0-9]+(\.[0-9]+)?)?$ ]]; then
+    echo "Error: PIXEL_GRID must be empty or a size in ppem (e.g. 16)."; exit 1
+  fi
   EVEN_PPEM="${EVEN_PPEM:-16}"
   EVEN_STRENGTH="${EVEN_STRENGTH:-auto}"; EVEN_DEPTH="${EVEN_DEPTH:-auto}"
   EVEN_MAX="${EVEN_MAX:-auto}"; EVEN_MIN="${EVEN_MIN:-auto}"
@@ -1027,6 +1053,7 @@ _resolve_options() {
     "${FEATURE_DEFAULTS:-<none baked>}" \
     "${FEATURE_FAMILY:+  (family suffix '$FEATURE_FAMILY')}"
   printf "  EVEN_SPACING:  %s\n" "${EVEN_SPACING:-<none>}"
+  printf "  PIXEL_GRID:    %s\n" "${PIXEL_GRID:-<off>}"
   echo ""
   _show "$( [[ "$WANT_SF_PRO"     == true ]] && echo "x" || echo " " )" "SF Pro      ${SF_PRO_SUBS:+(subfamilies: $SF_PRO_SUBS)}"
   _show "$( [[ "$WANT_SF_COMPACT" == true ]] && echo "x" || echo " " )" "SF Compact  ${SF_COMPACT_SUBS:+(subfamilies: $SF_COMPACT_SUBS)}"
@@ -1061,6 +1088,7 @@ _resolve_options() {
     echo "FEATURE_FROM_CONF=$FEATURE_FROM_CONF"
     echo "FEATURE_FAMILY=$FEATURE_FAMILY"
     echo "EVEN_SPACING=$EVEN_SPACING"
+    echo "PIXEL_GRID=$PIXEL_GRID"
     echo "EVEN_PPEM=$EVEN_PPEM"
     echo "EVEN_STRENGTH=$EVEN_STRENGTH"
     echo "EVEN_DEPTH=$EVEN_DEPTH"
@@ -1097,7 +1125,7 @@ _load_options() {
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
       FEATURE_DEFAULTS|FEATURE_FROM_CONF|FEATURE_FAMILY| \
-      EVEN_SPACING|EVEN_PPEM|EVEN_STRENGTH|EVEN_DEPTH|EVEN_MAX|EVEN_MIN| \
+      EVEN_SPACING|PIXEL_GRID|EVEN_PPEM|EVEN_STRENGTH|EVEN_DEPTH|EVEN_MAX|EVEN_MIN| \
       WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY| \
       SF_PRO_SUBS|SF_COMPACT_SUBS|NY_SUBS)
         printf -v "$_k" '%s' "$_v" ;;
@@ -1452,6 +1480,30 @@ build() {
       for _f in "$srcdir/spaced"/*; do
         [[ -f "$_f" ]] && mv -f "$_f" "$_hintsrc/"
       done
+    fi
+  fi
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # Step 4c — Pixel-grid advances and kerning (PIXEL_GRID)
+  # ══════════════════════════════════════════════════════════════════════════
+  # After EVEN_SPACING so its kern values are rounded too. Static TrueType only
+  # (pixel_grid.py copies CFF/variable/mono fonts unchanged).
+  if [[ -n "$PIXEL_GRID" ]]; then
+    if compgen -G "$_hintsrc/*.ttf" >/dev/null; then
+      printf "%b" "\e[1;35m==> INFO:\e[0m Putting advances and kerning on the $PIXEL_GRID ppem pixel grid...\n"
+      mkdir -p "$srcdir/gridded"
+      local -a _pgf=()
+      for _f in "$_hintsrc"/*.ttf; do
+        [[ -f "$_f" && "$(basename "$_f")" != ._* ]] && _pgf+=("$_f")
+      done
+      printf '%s\0' "${_pgf[@]}" | \
+        parallel --will-cite -0 -j"$(nproc)" \
+          python "$srcdir/pixel_grid.py" --ppem "$PIXEL_GRID" -o "$srcdir/gridded" {}
+      for _f in "$srcdir/gridded"/*; do
+        [[ -f "$_f" ]] && mv -f "$_f" "$_hintsrc/"
+      done
+    else
+      printf "%b" "\e[1;33m==> WARNING:\e[0m PIXEL_GRID needs TrueType fonts (OTF2TTF=true); skipped.\n"
     fi
   fi
 
