@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=6.2.0.beta.3.r133.g2aa04ac
+pkgver=6.2.1.r138.g345593f
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -17,7 +17,8 @@ depends=(
 )
 makedepends=(
     'npm'
-    'yarn'
+    'pnpm'
+	'yarn'
     'git'
     'nvm'
     'gendesk'
@@ -32,7 +33,7 @@ source=(
 )
 sha256sums=('SKIP'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -63,62 +64,43 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
 	export XDG_DATA_HOME="${HOME}/.local/share"
-	export YARN_CACHE_FOLDER="${HOME}/.yarn/cache"
-	export YARN_NETWORK_CONCURRENCY=32
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
-	export npm_config_registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
-	local _yarnver _yarnmajor=0
-	_yarnver="$(node -p "try { require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || '' } catch { '' }" 2>/dev/null || true)"
-	_yarnmajor="${_yarnver%%.*}"
-	_yarnmajor="${_yarnmajor:-0}"
-	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
-		export XDG_STATE_HOME="${HOME}/.local/state"
-		export YARN_ENABLE_GLOBAL_CACHE=false
-		export YARN_ENABLE_MIRROR=false
-		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/berry"
-		export YARN_NODE_LINKER=node-modules
-		export YARN_NM_MODE=hardlinks-local
-		export YARN_ENABLE_TELEMETRY=false
-		export YARN_ENABLE_SCRIPTS=true
-		export YARN_HTTP_TIMEOUT=600000
-		export YARN_HTTP_RETRY=5
-		export YARN_NPM_REGISTRY_SERVER="${YARN_NPM_REGISTRY_SERVER:-${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}}"
-		local _yarnhome="${HOME}/.yarn/install"
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${COREPACK_HOME}" "${_yarnhome}"
-		if [[ -n "${_yarnver}" ]]; then
-			npm install -g "@yarnpkg/cli-dist@${_yarnver}" --prefix "${_yarnhome}" --registry "${npm_config_registry}"
-			export PATH="${_yarnhome}/bin:${PATH}"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _detected=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_detected="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_detected}" ]; then
+			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
 		fi
-	else
-		export YARN_GLOBAL_FOLDER="${HOME}/.yarn/global"
-		export YARN_LINK_FOLDER="${HOME}/.yarn/link"
-		export YARN_TEMP_FOLDER="${HOME}/.yarn/tmp"
-		export YARN_NETWORK_TIMEOUT=600000
-		export YARN_CHILD_CONCURRENCY="$(nproc)"
-		export YARN_FROZEN_LOCKFILE=true
-		export YARN_IGNORE_ENGINES=true
-		export YARN_PRODUCTION=false
-		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}" "${COREPACK_HOME}"
 	fi
-	local _reg="${NPM_CONFIG_REGISTRY:-https://registry.yarnpkg.com}"
-	export YARN_REGISTRY="${_reg}"
-	_reg="${_reg%/}"
-	if [[ -f .yarnrc ]]; then
-		sed -i "s|^registry .*|registry \"${_reg}\"|" .yarnrc
-	fi
-	if [[ -f yarn.lock ]] && grep -q 'resolved "https://registry.yarnpkg.com' yarn.lock; then
-		sed -i "s|https://registry.yarnpkg.com/|${_reg}/|g" yarn.lock
+	local _ver="${_pnpmver:-${_detected}}"
+	if [ -n "${_ver}" ]; then
+		npm install -g "pnpm@${_ver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
 	fi
 }
 prepare() {
@@ -134,23 +116,24 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    _set_build_env
     _ensure_local_nvm
+	_set_electron_build_env
+    _set_pnpm_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    find apps/studio -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     export NODE_ENV=development
-    yarn add -W -D node-gyp
-    yarn install
+    pnpm add -D node-gyp
+    pnpm install
 }
 build() {
     cd "$(_get_project_dir)"
-    _set_build_env
     _ensure_local_nvm
+	_set_electron_build_env
+    _set_pnpm_build_env
     export NODE_ENV=production
-    yarn run lib:build
+    pnpm run lib:build
     cd "$(_get_project_dir)/apps/studio"
-    yarn run build
-    yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder-config.js
+    pnpm run build
+    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder-config.js"
     local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
 	find "$(_get_app_dir)" -type d \
 		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
