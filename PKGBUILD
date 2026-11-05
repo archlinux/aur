@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=kimi-code-bin
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Kimi Code CLI - the starting point for next-gen agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -28,19 +28,19 @@ options=('!strip')
 # LICENSE comes from the repo at the release tag (see [extras] in
 # metadata.toml); its URL and checksum are filled in by the updater.
 source_x86_64=(
-    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.5.0/kimi-code-linux-x64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.5.0/LICENSE"
+    "kimi-code-${pkgver}-linux-x64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.5.1/kimi-code-linux-x64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.5.1/LICENSE"
 )
 sha256sums_x86_64=(
-    'a9a9f490c79c1b2af08c1aef963ef335f1d9596207b26bc4c71e3667f9ab921f'
+    'd3fe0696e2ed244200c6c42344cbd71429eff40dc9761fdcb5f994057b78bee9'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 source_aarch64=(
-    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.5.0/kimi-code-linux-arm64.tar.gz"
-    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.5.0/LICENSE"
+    "kimi-code-${pkgver}-linux-arm64.tar.gz::https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai/kimi-code%402.5.1/kimi-code-linux-arm64.tar.gz"
+    "kimi-code-${pkgver}-LICENSE::https://raw.githubusercontent.com/MoonshotAI/kimi-code/%40moonshot-ai%2Fkimi-code%402.5.1/LICENSE"
 )
 sha256sums_aarch64=(
-    'c75746bc52b37cca1d9995b1fadab57bb766488db347e24beab684b229fc2a0c'
+    '70c3a09506f7d3d0f211077eb100d34186fef1017347c73ed0d944bb2b474cf3'
     '23cc68e17992e0b512ae2e80afc5787d7d8e0fbfbdb4fff54ec0245508fa400e'
 )
 
