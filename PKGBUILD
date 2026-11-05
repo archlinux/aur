@@ -441,7 +441,9 @@ prepare() {
   cd "$srcdir"/oneget || exit
   git submodule init
   git config submodule.src/Microsoft.PackageManagement.NuGetProvider.url "$srcdir/NuGetProvider"
-  git -c protocol.file.allow=always submodule update
+  # --force: on a rebuild makepkg only resets the main checkout, the submodules would keep the
+  # previous build's changes
+  git -c protocol.file.allow=always submodule update --force
   # On Unix, PackageManagement used /tmp/Microsoft.PackageManagement for all users,
   # making it unusable for everyone but the first user running it
   # Upstream discussion: https://github.com/PowerShell/PowerShell/issues/15330
