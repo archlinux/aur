@@ -1,6 +1,6 @@
 pkgbase = kvmem-cuda-git
 	pkgdesc = llama.cpp server with KVMem long-context KV memory management (CUDA)
-	pkgver = 0.19.1.r20.g4b755f2
+	pkgver = 0.19.1.r67.ga2d8d9b
 	pkgrel = 1
 	url = https://github.com/kvmem/kvmem
 	arch = x86_64
@@ -23,9 +23,7 @@ pkgbase = kvmem-cuda-git
 	options = !debug
 	source = git+https://github.com/kvmem/kvmem.git
 	source = git+https://github.com/ggml-org/llama.cpp.git
-	source = 0001-Keep-nvml.h-from-clobbering-llama.h-DEPRECATED.patch
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = c1adf0f5dd86209807ac7f2fb45045dc911bc98e6f9cdeeb113ed7724eed857ad6bc30bdca3c4ee69c752affdd0079af5dc1d4816fb1bcc74a52ad22c1677553
 
 pkgname = kvmem-cuda-git

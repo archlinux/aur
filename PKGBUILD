@@ -2,7 +2,7 @@
 # Based on the extra/llama-cpp PKGBUILD by Sven-Hendrik Haase and Maxime Gauduin
 
 pkgname=kvmem-cuda-git
-pkgver=0.19.1.r20.g4b755f2
+pkgver=0.19.1.r67.ga2d8d9b
 pkgrel=1
 pkgdesc='llama.cpp server with KVMem long-context KV memory management (CUDA)'
 arch=(x86_64)
@@ -33,11 +33,9 @@ options=(
   !debug
 )
 source=(git+https://github.com/kvmem/kvmem.git
-        git+https://github.com/ggml-org/llama.cpp.git
-        0001-Keep-nvml.h-from-clobbering-llama.h-DEPRECATED.patch)
+        git+https://github.com/ggml-org/llama.cpp.git)
 b2sums=('SKIP'
-        'SKIP'
-        'c1adf0f5dd86209807ac7f2fb45045dc911bc98e6f9cdeeb113ed7724eed857ad6bc30bdca3c4ee69c752affdd0079af5dc1d4816fb1bcc74a52ad22c1677553')
+        'SKIP')
 
 # The adapter patches llama.cpp's bundled ggml, so neither system ggml nor
 # llama-cpp can be used; the private libraries live in /usr/lib/kvmem instead
@@ -56,7 +54,6 @@ prepare() {
   git config submodule.llamacpp.url "${srcdir}"/llama.cpp
   git -c protocol.file.allow=always submodule update --no-recommend-shallow backends/llamacpp
   python scripts/prepare-backends.py --backend llamacpp
-  patch -Np1 -i ../0001-Keep-nvml.h-from-clobbering-llama.h-DEPRECATED.patch
 }
 
 build() {
