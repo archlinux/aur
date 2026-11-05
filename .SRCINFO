@@ -1,6 +1,6 @@
 pkgbase = kantele
 	pkgdesc = Settings GUI for the d77 window managers (pwm, wasp, spitfire)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/dani-77/kantele
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = kantele
 	depends = python-tomlkit
 	depends = lua54
 	depends = qt6-wayland
-	source = kantele-0.1.0.tar.gz::https://github.com/dani-77/kantele/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5de2334981edf199a78cc71e96e47ccb94cd1e39a8d052f9185217d13d84ac34
+	source = kantele-0.2.0.tar.gz::https://github.com/dani-77/kantele/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9f4a9a654c4e92e2ddfee3f488a645b09559956210b0658fba55993f73f499c0
 
 pkgname = kantele
