@@ -5,7 +5,7 @@
 # They link only libc.so.6, libm.so.6 and libgcc_s.so.1 (no RPATH); any current
 # Arch glibc satisfies them. The efr-code package builds the same version from source.
 pkgname=efr-code-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state'
 arch=('x86_64')
@@ -27,7 +27,7 @@ _dist="${pkgname%-bin}-$pkgver-$CARCH-linux"
 source_x86_64=("$url/releases/download/v$pkgver/$_dist.tar.gz")
 # Filled in for each release by .github/workflows/aur.yml with the value that
 # upstream publishes in $_dist.tar.gz.sha256 next to the tarball.
-sha256sums_x86_64=('b1c7a6cadf9ceda77eb93c27f689620e28165fcaee29eb1c23eee5cb66f6035f')
+sha256sums_x86_64=('2d0b199ac3992e8f10837f113d45ed41a9591ff67118bbb1faa599955a5370c1')
 
 package() {
   cd "$_dist"
