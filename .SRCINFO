@@ -1,7 +1,7 @@
 pkgbase = sccache-jetm
 	pkgdesc = Shared compilation cache - build with distributed-compile fixes
 	pkgver = 0.19.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/mozilla/sccache
 	arch = x86_64
 	license = Apache-2.0
@@ -20,6 +20,6 @@ pkgbase = sccache-jetm
 	source = 0002-jetm-carry-part2.patch
 	sha256sums = 2da079033cd19fd8e2a09f56f9a7d9d1a72d591ff3acdc47d95b920145cf2671
 	sha256sums = d3a01041e9f79eea85be1e572926ab1e7277c1f635d28e4d0464d6347911dbf2
-	sha256sums = c9d83dd54f54d2a7bfcf3468beb8d46c418c0aa03cfd34856641ae92e0376c41
+	sha256sums = fd3b750b55f4353ec53ff097d060c83a3c2d4742204070d1186363e94def59ee
 
 pkgname = sccache-jetm

@@ -6,20 +6,21 @@
 # changes are applied on top as a patch in prepare(), so a release that no longer takes
 # the patch fails the build there instead of shipping a silently different sccache.
 #
-#   0001, 0002  jetm/sccache carry-cleanups: v0.19.0 plus 72 commits, split in two files
-#         in commit order (part1 = the first 38, part2 = the last 34) because the AUR
-#         rejects any file over 488 KiB and the whole carry is 653 KiB. They apply in order
+#   0001, 0002  jetm/sccache carry-cleanups: v0.19.0 plus 73 commits, split in two files
+#         in commit order (part1 = the first 38, part2 = the last 35) because the AUR
+#         rejects any file over 488 KiB and the whole carry is 655 KiB. They apply in order
 #         in prepare(). The work behind mozilla/sccache#2776 and #2777 and the scheduler,
 #         packaging and rust/gcc dist fixes not yet sent upstream, then the review and defect
 #         fixes on top of carry/0.19.0. Regenerate by taking
 #         git format-patch --stdout <release>..<rebased carry branch>
 #         and cutting it at a commit boundary so each part stays well under 450000 bytes.
 #
-#         The last two commits (the end of part2) are mozilla/sccache#2795 (open, by Benjamin Leggett), which
-#         makes sources with .incbin or .include directives hash the files they pull in:
+#         The last three commits (the end of part2) are mozilla/sccache#2795 (open, by Benjamin Leggett),
+#         which makes sources with .incbin or .include directives hash the files they pull in:
 #         without it a kernel build is served the previous build's certs/system_certificates.o.
-#         They replace an earlier narrower carry fix. Drop both when #2795 or an equivalent
-#         lands in a release; the rebase then conflicts on src/compiler/c.rs, which is expected.
+#         They replace an earlier narrower carry fix; the third is a clippy::question_mark fix
+#         for Rust 1.99 in that code. Drop all three when #2795 or an equivalent lands in a
+#         release; the rebase then conflicts on src/compiler/c.rs, which is expected.
 #
 # On a new upstream release: rebase the carry branch onto it, regenerate 0001 and
 # rebuild. A patch that fails to apply stops the build, which is how to find out what
@@ -36,7 +37,7 @@ pkgname=sccache-jetm
 _upstream=sccache
 _target=x86_64-unknown-linux-gnu
 pkgver=0.19.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Shared compilation cache - build with distributed-compile fixes'
 arch=(x86_64)
 url=https://github.com/mozilla/sccache
@@ -70,7 +71,7 @@ source=(
 # it, so the labels live up here instead.
 sha256sums=('2da079033cd19fd8e2a09f56f9a7d9d1a72d591ff3acdc47d95b920145cf2671'
             'd3a01041e9f79eea85be1e572926ab1e7277c1f635d28e4d0464d6347911dbf2'
-            'c9d83dd54f54d2a7bfcf3468beb8d46c418c0aa03cfd34856641ae92e0376c41')
+            'fd3b750b55f4353ec53ff097d060c83a3c2d4742204070d1186363e94def59ee')
 
 prepare() {
   cd "$_upstream-$pkgver"

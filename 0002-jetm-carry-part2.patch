@@ -1,7 +1,7 @@
 From d2b3db2f6f47d929494d91f57d9d8a9e91e2d689 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:41:13 -0600
-Subject: [PATCH 01/34] dist: time local preprocessing in the per-job load
+Subject: [PATCH 01/35] dist: time local preprocessing in the per-job load
  diagnostics
 
 The R0 dist instrumentation times put_toolchain, alloc, submit, and
@@ -162,7 +162,7 @@ Javier Tia
 From 7d5374ae1951defc51ea0d8b35f3e25c4514a2ba Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:42:44 -0600
-Subject: [PATCH 02/34] compiler/c: gauge live local preprocess concurrency
+Subject: [PATCH 02/35] compiler/c: gauge live local preprocess concurrency
 
 The preprocessing wall - the client jobserver's cores saturated by local
 cc1 -E for the whole cluster while remote nodes idle - was only ever an
@@ -253,7 +253,7 @@ Javier Tia
 From 0414008068bf178dc25e3b3d6da23af667bc8c7b Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:44:38 -0600
-Subject: [PATCH 03/34] compiler: concatenate strings without relying on deref
+Subject: [PATCH 03/35] compiler: concatenate strings without relying on deref
  coercion
 
 The lib test target links the thirtyfour dev-dependency, whose 0.36
@@ -293,7 +293,7 @@ Javier Tia
 From b7f70580ebe7690d77fb7f1e433d9ea950f82eea Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:46:08 -0600
-Subject: [PATCH 04/34] ci: mirror the CI validation gate in pre-commit
+Subject: [PATCH 04/35] ci: mirror the CI validation gate in pre-commit
 
 The pre-commit config only ran nightly fmt and clippy with no failure
 gate, so a break reached CI before anyone noticed - a changed function
@@ -390,7 +390,7 @@ Javier Tia
 From f868d96dd45928eac778c653f2328f53abe2b9d0 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:51:43 -0600
-Subject: [PATCH 05/34] dist: satisfy clippy under the all-features gate
+Subject: [PATCH 05/35] dist: satisfy clippy under the all-features gate
 
 The tree fails `clippy -D warnings --features all,dist-server` with the
 current toolchain. The failing sites in this commit are in
@@ -734,7 +734,7 @@ Javier Tia
 From 57ca4823938e5602aea91b9d72069d30572cf697 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:51:33 -0600
-Subject: [PATCH 06/34] chore: fix clippy lints flagged by a newer toolchain
+Subject: [PATCH 06/35] chore: fix clippy lints flagged by a newer toolchain
 
 Clippy 1.99 rejects the tree under `-D warnings` at more sites than
 the dist-specific commit covers: collapsible_if in
@@ -841,7 +841,7 @@ Javier Tia
 From ef1710d34d65f9a992281c2fac1e736878bad83b Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 15:55:24 -0600
-Subject: [PATCH 07/34] compiler: keep the server annotation on a reported
+Subject: [PATCH 07/35] compiler: keep the server annotation on a reported
  remote failure
 
 With the dist fallback switch off, the remote result is meant to reach
@@ -910,7 +910,7 @@ Javier Tia
 From 4e3def9704d7eddeed5b8c8d3dd1311d6267e2e1 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 17:54:55 -0600
-Subject: [PATCH 08/34] compiler/rust: ship sysroot rlibs whose name has no
+Subject: [PATCH 08/35] compiler/rust: ship sysroot rlibs whose name has no
  hash suffix
 
 The inputs packager skips a hashless library when rustc dependency
@@ -1020,7 +1020,7 @@ Javier Tia
 From 3c0c7a4a2f2d04c068debc22527618b309251889 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 17:57:25 -0600
-Subject: [PATCH 09/34] dist: compare returned outputs, not path existence,
+Subject: [PATCH 09/35] dist: compare returned outputs, not path existence,
  after a remote compile
 
 After a successful remote compile the client fell back to a local
@@ -1429,7 +1429,7 @@ Javier Tia
 From f8c2b9b1a1997e70b768803618e488ee811b2230 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 18:58:14 -0600
-Subject: [PATCH 10/34] dist/scheduler: test the Started backstop, deregister
+Subject: [PATCH 10/35] dist/scheduler: test the Started backstop, deregister
  and status paths
 
 Mutation testing showed three guards that no test failed without: the
@@ -1568,7 +1568,7 @@ Javier Tia
 From 2df26335ab392b39a7e7b1737a244100b419a52c Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Tue, 27 Oct 2026 20:08:50 -0600
-Subject: [PATCH 11/34] pre-commit: Format with rustfmt at the crate edition
+Subject: [PATCH 11/35] pre-commit: Format with rustfmt at the crate edition
 
 The rust-fmt hook ran `cargo +nightly fmt -- <files>`. With explicit
 file arguments that invokes rustfmt directly, and rustfmt then parses
@@ -1604,7 +1604,7 @@ Javier Tia
 From cad1b61e89a83e2f4d95c8624836ff14b7d00e86 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Tue, 27 Oct 2026 20:07:18 -0600
-Subject: [PATCH 12/34] compiler/c: Test that the task env reaches the
+Subject: [PATCH 12/35] compiler/c: Test that the task env reaches the
  toolchain packager's compiler
 
 The toolchain packager asks the compiler where its sub-tools live with
@@ -1832,7 +1832,7 @@ Javier Tia
 From d60ebd0dd395000b042040331527347d2b8732ff Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Tue, 27 Oct 2026 20:07:20 -0600
-Subject: [PATCH 13/34] dist/build: Test the production eviction path, not just
+Subject: [PATCH 13/35] dist/build: Test the production eviction path, not just
  Mutex::try_lock
 
 The only eviction test locked and try-locked a Mutex it created itself,
@@ -2022,7 +2022,7 @@ Javier Tia
 From 0125ff493b7e92c0536ecfd95785ce6099271ca3 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Tue, 27 Oct 2026 20:08:43 -0600
-Subject: [PATCH 14/34] dist/scheduler: Warn about a wedged build once per
+Subject: [PATCH 14/35] dist/scheduler: Warn about a wedged build once per
  interval, not per heartbeat
 
 A server names a stuck job in every heartbeat, about every 30 seconds,
@@ -2244,7 +2244,7 @@ Javier Tia
 From 65a8bfef508aea703d866693c8336edd8448e06d Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 16:27:03 -0600
-Subject: [PATCH 15/34] compiler: share the in-flight guard and the dist
+Subject: [PATCH 15/35] compiler: share the in-flight guard and the dist
  test-mock helpers
 
 PreprocInflightGuard in c.rs and DistInflightGuard in compiler.rs were
@@ -2524,7 +2524,7 @@ Javier Tia
 From b73aab490000ace2a99891b70329ca3bc352804d Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:32:28 -0600
-Subject: [PATCH 16/34] dist/scheduler: treat a heartbeat without a report as
+Subject: [PATCH 16/35] dist/scheduler: treat a heartbeat without a report as
  no liveness information
 
 A heartbeat from a server that predates the active-jobs report has no
@@ -3003,7 +3003,7 @@ Javier Tia
 From 65ea92a9baba228bfc9f705bcc4ba4ba83d192dd Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:33:24 -0600
-Subject: [PATCH 17/34] dist/http: accept heartbeats from servers that predate
+Subject: [PATCH 17/35] dist/http: accept heartbeats from servers that predate
  the active-jobs report
 
 The heartbeat request gained a trailing active_jobs field, and bincode
@@ -3440,7 +3440,7 @@ Javier Tia
 From 8d36f344a14b41076bab7a440e766ae9cc119b39 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:35:25 -0600
-Subject: [PATCH 18/34] dist/server: verify an uploaded toolchain's hash before
+Subject: [PATCH 18/35] dist/server: verify an uploaded toolchain's hash before
  it enters the cache
 
 The upload was grafted into the cache first and hashed afterwards, so a
@@ -3646,7 +3646,7 @@ Javier Tia
 From 4bed3b8fa53fea2533790054c34b4e956947d72e Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:42:38 -0600
-Subject: [PATCH 19/34] dist/server: create upload temp files with the prefix
+Subject: [PATCH 19/35] dist/server: create upload temp files with the prefix
  the cache scan removes
 
 The upload receiver streamed into a default-prefixed temporary file in
@@ -3807,7 +3807,7 @@ Javier Tia
 From aa02ef2cebf0e70ae237fca5990be4770bde51cb Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:43:54 -0600
-Subject: [PATCH 20/34] dist/build: skip eviction victims whose preparation
+Subject: [PATCH 20/35] dist/build: skip eviction victims whose preparation
  lock is held
 
 Eviction removed every victim from the toolchain map before checking
@@ -3993,7 +3993,7 @@ Javier Tia
 From d4144f0d66822b72d05c864573d57de9cac927ac Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:44:42 -0600
-Subject: [PATCH 21/34] compiler: report a dropped dist output when the
+Subject: [PATCH 21/35] compiler: report a dropped dist output when the
  fallback switch is off
 
 With `[dist] fallback = false` the returned-versus-declared output check
@@ -4278,7 +4278,7 @@ Javier Tia
 From f25d341e23374c259c1a2b377a020909fa5f00f4 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:47:44 -0600
-Subject: [PATCH 22/34] compiler/rust: keep every metadata member when trimming
+Subject: [PATCH 22/35] compiler/rust: keep every metadata member when trimming
  a dependency rlib
 
 Trimming looked only for the legacy `rust.metadata.bin` member. Current
@@ -4499,7 +4499,7 @@ Javier Tia
 From 785739a7442f81b0d61860f7d47fc47a9251b9f4 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 17:56:10 -0600
-Subject: [PATCH 23/34] server: report a dropped dist output as a plain failure
+Subject: [PATCH 23/35] server: report a dropped dist output as a plain failure
 
 The error added for a declared output the build server did not return
 fell through the server's compile handler to its generic branch, which
@@ -4613,7 +4613,7 @@ Javier Tia
 From a547f2488429832d9943f2153e79b5198ab520dc Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 18:07:11 -0600
-Subject: [PATCH 24/34] server: name the dropped output in the failure and log
+Subject: [PATCH 24/35] server: name the dropped output in the failure and log
  rejected uploads
 
 The dropped-output arm printed the error with plain Display, which shows
@@ -4692,7 +4692,7 @@ Javier Tia
 From 91e2ae4d63d254f63c63dd81afec534df9650295 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Fri, 30 Oct 2026 19:33:33 -0600
-Subject: [PATCH 25/34] dist: share the packable-file filter and drop dead
+Subject: [PATCH 25/35] dist: share the packable-file filter and drop dead
  deregister pool settings
 
 add_dir_contents and add_shared_libraries each carried the same test for
@@ -4803,7 +4803,7 @@ Javier Tia
 From 1dc02e815eb7d0a54d6929c0a0607034e37957f7 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Sun, 1 Nov 2026 10:42:21 -0600
-Subject: [PATCH 26/34] scripts: add a loopback smoke test for the carry defect
+Subject: [PATCH 26/35] scripts: add a loopback smoke test for the carry defect
  fixes
 
 The fixes for older heartbeats, long compiles, forged and interrupted
@@ -5758,7 +5758,7 @@ Javier Tia
 From cc822154aacea54dfc7a163b042f8a9bc11effea Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Sun, 1 Nov 2026 11:51:30 -0600
-Subject: [PATCH 27/34] Cargo.lock: update the crates the advisory scan flags
+Subject: [PATCH 27/35] Cargo.lock: update the crates the advisory scan flags
 
 The lockfile inherited from the 0.19.0 release holds 29 RustSec
 findings in 15 crates, so the pre-push advisory scan rejects every push
@@ -6267,7 +6267,7 @@ Javier Tia
 From 8d794713e60bab04015542fb82cfe190bd950656 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Sun, 1 Nov 2026 11:52:10 -0600
-Subject: [PATCH 28/34] Cargo.toml: require zstd 0.14
+Subject: [PATCH 28/35] Cargo.toml: require zstd 0.14
 
 The zstd binding and its safe wrapper carry three RustSec findings
 (context reuse across abandoned streams, an unchecked seekable offset,
@@ -6379,7 +6379,7 @@ Javier Tia
 From 42f8a9aa03047b8a4d7e1ecafcc3eb9a0c098b87 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Sun, 1 Nov 2026 11:55:35 -0600
-Subject: [PATCH 29/34] Cargo.toml: require object 0.40
+Subject: [PATCH 29/35] Cargo.toml: require object 0.40
 
 ruzstd, the zstd decoder behind the object-file parser, has a
 decompression-bomb finding that is fixed only from ruzstd 0.9.1, and
@@ -6473,7 +6473,7 @@ Javier Tia
 From dd5e84aedfe12dedc43a5932f97904ee04d9eb4d Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Sun, 1 Nov 2026 11:57:17 -0600
-Subject: [PATCH 30/34] cache_io: port the cache entry writer to zip 9
+Subject: [PATCH 30/35] cache_io: port the cache entry writer to zip 9
 
 Three RustSec findings against the zip 0.6 series (SUID bits and
 symlinks preserved by the archive extraction calls) are fixed only from
@@ -6677,7 +6677,7 @@ Javier Tia
 From 0b53bb7cc5ad5e377de565e92fd9f8ef165cb1f4 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Sun, 1 Nov 2026 11:58:26 -0600
-Subject: [PATCH 31/34] audit: accept the rsa timing finding that has no fix
+Subject: [PATCH 31/35] audit: accept the rsa timing finding that has no fix
 
 After the dependency updates, the advisory scan reports one remaining
 vulnerability: the Marvin timing side channel in rsa 0.9.10, for which
@@ -6724,7 +6724,7 @@ Javier Tia
 From 32d9f38b865ece52aa490ceb9876b4df8c15c453 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Sun, 1 Nov 2026 16:01:32 -0600
-Subject: [PATCH 32/34] cache: pin the cache entry writer and the damaged-entry
+Subject: [PATCH 32/35] cache: pin the cache entry writer and the damaged-entry
  paths
 
 The zip 9 port changed the writer but the only tests of it round-trip
@@ -6854,7 +6854,7 @@ Javier Tia
 From 1043e2b1379c9ac5646617efc1f92f722426369f Mon Sep 17 00:00:00 2001
 From: Benjamin Leggett <benjamin@edera.io>
 Date: Wed, 5 Aug 2026 14:01:12 -0400
-Subject: [PATCH 33/34] fix(cache): invalidate cache for .include and .incbin
+Subject: [PATCH 33/35] fix(cache): invalidate cache for .include and .incbin
  directives
 
 Signed-off-by: Javier Tia <javier@peridio.com>
@@ -7739,7 +7739,7 @@ Javier Tia
 From 09292a3a7ce36b7738fe95dc138ff96ad3514644 Mon Sep 17 00:00:00 2001
 From: Benjamin Leggett <benjamin@edera.io>
 Date: Wed, 5 Aug 2026 16:56:25 -0400
-Subject: [PATCH 34/34] fix(cache): also fix a few more similar issues
+Subject: [PATCH 34/35] fix(cache): also fix a few more similar issues
 
 Signed-off-by: Javier Tia <javier@peridio.com>
 ---
@@ -8175,6 +8175,44 @@ index 4d0fcc4a..defd9a05 100644
      if compiler.name == "clang++" {
          test_clang_multicall(compiler.clone(), tempdir);
      }
+-- 
+Javier Tia
+
+
+From 6509485d09d584111c179555d796937e4cb8d1ed Mon Sep 17 00:00:00 2001
+From: Javier Tia <javier@peridio.com>
+Date: Thu, 5 Nov 2026 11:01:14 -0600
+Subject: [PATCH 35/35] compiler/c: Use ? for the .include prefix fallthrough
+
+clippy::question_mark on Rust 1.99 flags the else branch of
+asm_dependency_at that strips INCLUDE_DIRECTIVE and returns None
+otherwise, and the pre-push clippy gate fails on it under -D warnings.
+
+Taking the prefix with ? in the else branch keeps the same two-way
+dispatch and the same None for any other text, so no behaviour changes.
+
+Signed-off-by: Javier Tia <javier@peridio.com>
+---
+ src/compiler/c.rs | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/compiler/c.rs b/src/compiler/c.rs
+index 71f10854..4e11c3b7 100644
+--- a/src/compiler/c.rs
++++ b/src/compiler/c.rs
+@@ -989,10 +989,9 @@ fn asm_dependency_at(slice: &[u8]) -> Option<(AsmDependency, usize)> {
+     let (wrap, directive_len, after_directive): (fn(Vec<u8>) -> AsmDependency, _, _) =
+         if let Some(rest) = slice.strip_prefix(INCBIN_DIRECTIVE) {
+             (AsmDependency::Embedded, INCBIN_DIRECTIVE.len(), rest)
+-        } else if let Some(rest) = slice.strip_prefix(INCLUDE_DIRECTIVE) {
+-            (AsmDependency::Source, INCLUDE_DIRECTIVE.len(), rest)
+         } else {
+-            return None;
++            let rest = slice.strip_prefix(INCLUDE_DIRECTIVE)?;
++            (AsmDependency::Source, INCLUDE_DIRECTIVE.len(), rest)
+         };
+ 
+     Some(match parse_file_operand(after_directive)? {
 -- 
 Javier Tia
 
