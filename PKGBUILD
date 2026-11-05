@@ -2,7 +2,7 @@
 
 pkgbase=jetbrains-gateway
 pkgname=(jetbrains-gateway jetbrains-gateway-jre)
-pkgver=2026.2.4
+pkgver=2026.3
 pkgrel=1
 pkgdesc='An entry point to Remote Development'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/idea/gateway/JetBrainsGateway-${pkgver}.tar.gz"
         jetbrains-gateway.desktop
         LICENSE)
-b2sums=('7e4c09758542dfbe529811b576c3af822422f736bc039a9bc4718eed689e4237b810a47c962b18fd1e0f0d43655d9adc1afd949ee03b0f1487f2e5bfb94db59f'
+b2sums=('50949667c3b24c3952fef53a2c3012c51b1602cf46857034033d7a4920da5ac37ce1d21b6dc210772b215e1b3c5a0bcb4729c895fb90e8f747a69f8544e85287'
         'a3b84f0bfc783abc4174bb903e2b0d48e820f698a724593626c5ba142ae0acede39d3d3dba43638c5bd13bbc3ff68f98f34240eebec88798565a86a0d804de17'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
