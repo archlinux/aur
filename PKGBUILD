@@ -6,7 +6,7 @@
 
 pkgname=ddhx
 _pkgname=ddhx
-pkgver=0.13.0
+pkgver=0.14.0
 pkg_name_ver="${_pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
@@ -18,7 +18,7 @@ makedepends=('git' 'dub' 'dmd')
 provides=("ddhx")
 conflicts=("ddhx")
 source=("https://github.com/dd86k/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("45bd4b27024e9f0f7127d3dda1fdc0b4b9627e017957ed6a7e3fbabcdb54e7d3")
+sha256sums=("8722c6cbbbcc380dda95b5b8eac56b68adb40fe0f92d0265015cfd68fc6fdd58")
 
 #pkgver() {
 #  cd "${srcdir}/${pkg_name_ver}"
