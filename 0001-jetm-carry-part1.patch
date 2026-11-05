@@ -1,7 +1,7 @@
 From de70acefc6a2fb2a93d20dc7e8ec9d09e414483c Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:19:15 -0600
-Subject: [PATCH 01/48] server: don't panic when a finished compile has neither
+Subject: [PATCH 01/38] server: don't panic when a finished compile has neither
  code nor signal
 
 get_signal did `status.signal().expect("must have signal")`, assuming the
@@ -108,7 +108,7 @@ Javier Tia
 From d93e23bd615e743b5fd246b854983a05a212684c Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:22:04 -0600
-Subject: [PATCH 02/48] compiler: log distributed-compile decisions at info
+Subject: [PATCH 02/38] compiler: log distributed-compile decisions at info
  level
 
 sccache logged the distribute-vs-local decision only at debug ("Compiling
@@ -174,7 +174,7 @@ Javier Tia
 From d085ce4b09326a2c2cc61f5c0617f9d3ab43d61e Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:21:37 -0600
-Subject: [PATCH 03/48] compiler: fall back to local on distributed-compile
+Subject: [PATCH 03/38] compiler: fall back to local on distributed-compile
  failure
 
 A distributed compile the build-server rejects is often a distribution
@@ -252,7 +252,7 @@ Javier Tia
 From 49ddb9d8efc6015512c2f20a2215bd3f25c065d7 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:23:34 -0600
-Subject: [PATCH 04/48] compiler: fall back to local when a dist compile drops
+Subject: [PATCH 04/38] compiler: fall back to local when a dist compile drops
  an output
 
 A distributed compile can return a successful (exit 0) result yet omit a
@@ -445,7 +445,7 @@ Javier Tia
 From c630508eb9922955390287c84b57919abb6ec9ca Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:24:23 -0600
-Subject: [PATCH 05/48] logging: keep wrapper log output off the compiler's
+Subject: [PATCH 05/38] logging: keep wrapper log output off the compiler's
  stderr
 
 When sccache runs as a compiler wrapper (`sccache <compiler> ...`) it
@@ -549,7 +549,7 @@ Javier Tia
 From 2adc43ccb55c4c905886e5864db43fe6e1e6326b Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:24:00 -0600
-Subject: [PATCH 06/48] dist: don't fail a distributed compile over an optional
+Subject: [PATCH 06/38] dist: don't fail a distributed compile over an optional
  missing output
 
 After a distributed compile the client verifies every declared output
@@ -592,7 +592,7 @@ Javier Tia
 From 2132f6a42ea95fe8b658d59937a97d558c50e479 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:23:21 -0600
-Subject: [PATCH 07/48] compiler: log a failed distributed compile's remote
+Subject: [PATCH 07/38] compiler: log a failed distributed compile's remote
  output at debug
 
 When a distributed compile exits non-zero the client logs only the exit
@@ -645,7 +645,7 @@ Javier Tia
 From e982f9dad352a47cd9e2d8651990501dee342a96 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:29:10 -0600
-Subject: [PATCH 08/48] config: add the dist fallback switch
+Subject: [PATCH 08/38] config: add the dist fallback switch
 
 Kernel assembler sources that .incbin generated files fail on the
 build server, because the generated file is not among the shipped
@@ -765,7 +765,7 @@ Javier Tia
 From bbeab9f927b219311d30b91f27619960eb6b2b43 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 11:34:28 -0600
-Subject: [PATCH 09/48] compiler: honor the dist fallback switch
+Subject: [PATCH 09/38] compiler: honor the dist fallback switch
 
 A non-zero remote exit code or a missing declared output unconditionally
 triggered a local recompile. That contradicts upstream's behaviour, where
@@ -1119,7 +1119,7 @@ Javier Tia
 From cb8dc81aac4aed01eb882afb5142fc616145be21 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:36:02 -0600
-Subject: [PATCH 10/48] compiler/rust: ship the target spec so a remote rustc
+Subject: [PATCH 10/38] compiler/rust: ship the target spec so a remote rustc
  resolves --target
 
 A distributed rust compile against an OpenEmbedded custom target failed on
@@ -1501,7 +1501,7 @@ Javier Tia
 From 0d746cee92d95b8285cf38798e0a88b623e991d1 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:37:31 -0600
-Subject: [PATCH 11/48] compiler/rust: ship the target sysroot std to
+Subject: [PATCH 11/38] compiler/rust: ship the target sysroot std to
  distributed compiles
 
 A distributed cross-compile against an OpenEmbedded custom target failed on
@@ -1607,7 +1607,7 @@ Javier Tia
 From 03e12a3c5295ab373e15ad87004ad65342be2cfd Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:36:31 -0600
-Subject: [PATCH 12/48] compiler/rust: ship split-metadata rlibs whole instead
+Subject: [PATCH 12/38] compiler/rust: ship split-metadata rlibs whole instead
  of dropping them
 
 When packaging dist inputs, sccache trims a dependency rlib to just its
@@ -1767,7 +1767,7 @@ Javier Tia
 From 49fc6832068f8c900ca9660170dcb7fbb77fc89f Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:40:01 -0600
-Subject: [PATCH 13/48] compiler/gcc: fix distributed compile of relative input
+Subject: [PATCH 13/38] compiler/gcc: fix distributed compile of relative input
  paths
 
 sccache-dist ships the preprocessed input through the inputs packager
@@ -1883,7 +1883,7 @@ Javier Tia
 From 02817f77f0ba5b7e253847771b3673f9c561149d Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:44:01 -0600
-Subject: [PATCH 14/48] compiler/gcc: never distribute precompiled-header
+Subject: [PATCH 14/38] compiler/gcc: never distribute precompiled-header
  generation
 
 A distributed PCH build produced a .gch that broke every consumer of the
@@ -2011,7 +2011,7 @@ Javier Tia
 From 4888aae374ec5992585e7988d70d16d8b37617a5 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:42:12 -0600
-Subject: [PATCH 15/48] compiler/gcc: keep configure feature-probes local
+Subject: [PATCH 15/38] compiler/gcc: keep configure feature-probes local
 
 avocado-distro's do_configure phase ships ~900 autoconf conftest and
 CMake try_compile feature-probe compiles to the build-server. Each is a
@@ -2207,7 +2207,7 @@ Javier Tia
 From 23519a0cac3e50fcd89d7cd9976aba5bd528d1e9 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:45:02 -0600
-Subject: [PATCH 16/48] compiler/gcc: run /dev/null feature-probes locally
+Subject: [PATCH 16/38] compiler/gcc: run /dev/null feature-probes locally
 
 OpenSSL probes assembler support by running the compiler on /dev/null:
 `gcc -Wa,--help -c -o null.o -x assembler /dev/null`, then greps the
@@ -2287,7 +2287,7 @@ Javier Tia
 From 7e37206e67a2786adb228e11bc328be2daa6d97e Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:44:58 -0600
-Subject: [PATCH 17/48] dist/pkg: bundle relocated interpreter's libdir into
+Subject: [PATCH 17/38] dist/pkg: bundle relocated interpreter's libdir into
  the toolchain package
 
 sccache-dist packages a toolchain's shared libraries by parsing `ldd`
@@ -2432,7 +2432,7 @@ Javier Tia
 From c810f2000da448dfda9f9d56e86ff6a76bd67e05 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:46:56 -0600
-Subject: [PATCH 18/48] compiler: package the compile task's toolchain, not the
+Subject: [PATCH 18/38] compiler: package the compile task's toolchain, not the
  daemon's
 
 When sccache packages a C/C++ toolchain for distributed compilation it
@@ -2707,7 +2707,7 @@ Javier Tia
 From 243736304a2b9d729249be8d3fa6b6c3a1cfda8c Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:45:31 -0600
-Subject: [PATCH 19/48] dist/pkg: bundle the sysroot usr/lib for split-sysroot
+Subject: [PATCH 19/38] dist/pkg: bundle the sysroot usr/lib for split-sysroot
  toolchains
 
 A relocated toolchain interpreter (the OE buildtools SDK loader) already
@@ -2843,7 +2843,7 @@ Javier Tia
 From 56fa7b71bde7d90766163f5b34b1f7fefaeb5efe Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:47:12 -0600
-Subject: [PATCH 20/48] dist/pkg: skip dangling symlinks when packaging a
+Subject: [PATCH 20/38] dist/pkg: skip dangling symlinks when packaging a
  toolchain
 
 Cold toolchain packaging walked the relocated interpreter's sysroot and
@@ -2933,7 +2933,7 @@ Javier Tia
 From 1172153d845942a45df3e4e69970cc6f546d3d9a Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:49:52 -0600
-Subject: [PATCH 21/48] dist/pkg: ship long input paths via GNU tar long-name
+Subject: [PATCH 21/38] dist/pkg: ship long input paths via GNU tar long-name
 
 The input packager built each tar entry with a ustar header and set the
 entry path with Header::set_path, which overruns the ustar name (100 B)
@@ -3153,7 +3153,7 @@ Javier Tia
 From 42337626e9cdf857bc5a0a41e6f87b1e728fd8fa Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:51:46 -0600
-Subject: [PATCH 22/48] dist: report a per-server breakdown in scheduler status
+Subject: [PATCH 22/38] dist: report a per-server breakdown in scheduler status
 
 SchedulerStatusResult only carried cluster aggregates (num_servers,
 num_cpus, in_progress), so a client could see total capacity but not how
@@ -3315,7 +3315,7 @@ Javier Tia
 From 4abccea8af8a365b7883d7ed535bcd0e91b666e6 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:52:46 -0600
-Subject: [PATCH 23/48] dist/scheduler: drop a stopped server promptly
+Subject: [PATCH 23/38] dist/scheduler: drop a stopped server promptly
 
 A build server that stops is only removed once prune_servers sees its
 last_seen exceed the 90s heartbeat timeout, and prune runs only on the
@@ -3675,7 +3675,7 @@ Javier Tia
 From 257162490ca0382dd8358b87cc71fd339bf29ae4 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:55:39 -0600
-Subject: [PATCH 24/48] dist/scheduler: soften the error demotion so an idle
+Subject: [PATCH 24/38] dist/scheduler: soften the error demotion so an idle
  remote node is not stranded
 
 A server that fails a job assignment is dropped into the best_err bucket and
@@ -3963,7 +3963,7 @@ Javier Tia
 From 9a171b205ae097e2f879550f005728d52803de36 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:57:42 -0600
-Subject: [PATCH 25/48] dist/scheduler: make routing topology-aware and
+Subject: [PATCH 25/38] dist/scheduler: make routing topology-aware and
  deterministic
 
 The load model weighs every server as job_count/core_count with the raw
@@ -4187,7 +4187,7 @@ Javier Tia
 From b27bd55dd353d5cf8fe07d11bcfb24139dd8c977 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 12:57:28 -0600
-Subject: [PATCH 26/48] dist/scheduler: derive the colocated de-weight
+Subject: [PATCH 26/38] dist/scheduler: derive the colocated de-weight
  dynamically
 
 The advertised-cores override added earlier had to be a hardcoded absolute
@@ -4516,7 +4516,7 @@ Javier Tia
 From 9ee133b66333fcde1d4eddb6cfca77d98b47358d Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:00:54 -0600
-Subject: [PATCH 27/48] dist/scheduler: reap Started jobs whose Complete update
+Subject: [PATCH 27/38] dist/scheduler: reap Started jobs whose Complete update
  was lost
 
 A distributed job that reached the Started state but never reported
@@ -4777,7 +4777,7 @@ Javier Tia
 From 0f57afffb4271f3638f28edf2eb7d1c93c61704e Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:05:12 -0600
-Subject: [PATCH 28/48] dist/scheduler: add a between-nodes job-lifecycle leak
+Subject: [PATCH 28/38] dist/scheduler: add a between-nodes job-lifecycle leak
  detector
 
 Diagnosing scheduler slot leaks meant a rebuild-with-debug-logging cycle
@@ -4935,7 +4935,7 @@ Javier Tia
 From 252ca082e45277cf0bfc9fbbd6084efc273c785e Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:04:30 -0600
-Subject: [PATCH 29/48] dist/scheduler: make late job-state updates idempotent
+Subject: [PATCH 29/38] dist/scheduler: make late job-state updates idempotent
 
 The 180s Started-job reaper can discard a successful compile: it reclaims
 the slot at the timeout, then the build server's run_job propagates a
@@ -5057,7 +5057,7 @@ Javier Tia
 From a8b72b8f677c748c4cd4ccd7597c3546b24efffd Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:05:25 -0600
-Subject: [PATCH 30/48] dist/scheduler: measure the unclaimed reservation
+Subject: [PATCH 30/38] dist/scheduler: measure the unclaimed reservation
  timeout from Ready
 
 The unclaimed-reservation reaper timed a job out from its allocation
@@ -5166,7 +5166,7 @@ Javier Tia
 From e01a31c69427db49a1ab0575409b4091f3e9caae Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:10:32 -0600
-Subject: [PATCH 31/48] dist: make scheduler restart safe for job accounting
+Subject: [PATCH 31/38] dist: make scheduler restart safe for job accounting
 
 A build server that keeps running across a scheduler restart can be
 handed a job id it still holds a job_toolchains entry for, and
@@ -5334,7 +5334,7 @@ Javier Tia
 From c930b831dc3ebe16723eaf7687c28e803956b308 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:12:40 -0600
-Subject: [PATCH 32/48] dist: reap Started jobs by liveness lease, not a fixed
+Subject: [PATCH 32/38] dist: reap Started jobs by liveness lease, not a fixed
  timeout
 
 The scheduler reaped a Started job purely on a fixed 180s timeout, so a
@@ -5971,7 +5971,7 @@ Javier Tia
 From fb924f23c8e0bc863df963dced4b593cb75fd6f1 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:19:17 -0600
-Subject: [PATCH 33/48] dist/http: reuse connections and offload large
+Subject: [PATCH 33/38] dist/http: reuse connections and offload large
  deserialize
 
 The single client daemon is the throughput chokepoint of a full image
@@ -6648,7 +6648,7 @@ Javier Tia
 From 2fafebdcb3c6aacafeac79e976f4bfe5f9d1c981 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:20:42 -0600
-Subject: [PATCH 34/48] dist/http: re-close the connection on chunked toolchain
+Subject: [PATCH 34/38] dist/http: re-close the connection on chunked toolchain
  submit
 
 do_submit_toolchain posts a chunked body (wrap_stream, no Content-Length),
@@ -6717,7 +6717,7 @@ Javier Tia
 From b89f531e02a2633998f3d6b7951c26e921a0ced1 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:21:42 -0600
-Subject: [PATCH 35/48] dist/server: shrink toolchain locks so compiles stop
+Subject: [PATCH 35/38] dist/server: shrink toolchain locks so compiles stop
  convoying
 
 The build server serialized all concurrent compiles behind two global
@@ -7531,7 +7531,7 @@ Javier Tia
 From 7adee95f0f089aae697f21c5b9e69b9453119c4d Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:31:41 -0600
-Subject: [PATCH 36/48] dist/server: bound the shutdown deregister and poll the
+Subject: [PATCH 36/38] dist/server: bound the shutdown deregister and poll the
  stop flag faster
 
 The SIGINT/SIGTERM handler installed for graceful deregistration runs a
@@ -7581,7 +7581,7 @@ Javier Tia
 From 4e4b035d0f3758b3f5d69810b4f0bce1957ecc42 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:33:13 -0600
-Subject: [PATCH 37/48] tests/harness: wait for dist servers to exit on
+Subject: [PATCH 37/38] tests/harness: wait for dist servers to exit on
  teardown
 
 DistSystem::drop sent SIGINT to each dist server, slept a fixed 100 ms
@@ -7664,7 +7664,7 @@ Javier Tia
 From 7b5b6d0a5bab86b150c6b0f823f56aba0351d071 Mon Sep 17 00:00:00 2001
 From: Javier Tia <javier@peridio.com>
 Date: Mon, 26 Oct 2026 13:38:09 -0600
-Subject: [PATCH 38/48] dist: instrument job scheduling and client dispatch for
+Subject: [PATCH 38/38] dist: instrument job scheduling and client dispatch for
  load diagnosis
 
 The 2-node cluster leaves both build servers idle for long stretches of a
@@ -7883,1573 +7883,6 @@ index aaa95596..b5a8cf05 100644
          );
          Ok((DistType::Ok(server_id), jc.output.into()))
      };
--- 
-Javier Tia
-
-
-From d2b3db2f6f47d929494d91f57d9d8a9e91e2d689 Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 13:41:13 -0600
-Subject: [PATCH 39/48] dist: time local preprocessing in the per-job load
- diagnostics
-
-The R0 dist instrumentation times put_toolchain, alloc, submit, and
-run+fetch per job, but not the client-side preprocessing that produces
-the shipped input. That leaves the W2 gap: the preprocessing tax is the
-leading theory for why the colocated node shows far more cc1 activity
-than the remote one, yet it is only inferred from cc1 process counts,
-never measured against the dist round-trip it precedes.
-
-Time the single cc1 -E invocation in generate_hash_key (the preprocess
-await in the C hasher) and thread the duration to the per-job line via a
-new Compilation::preprocess_duration accessor. The value is captured
-where the work happens rather than re-derived on the dist path, because
-preprocessing runs during hash-key generation, before the dist
-round-trip begins, so it cannot be timed inside do_dist_compile itself.
-A trait default returns None so only the C compiler, which does local
-preprocessing, carries a value; Rust and already-preprocessed inputs log
-0ms. The number joins the existing dist-job done line as preprocess Nms
-and is not folded into the round-trip total.
-
-Signed-off-by: Javier Tia <floss@jetm.me>
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/compiler/c.rs        | 24 ++++++++++++++++++++++++
- src/compiler/compiler.rs | 21 ++++++++++++++++++++-
- 2 files changed, 44 insertions(+), 1 deletion(-)
-
-diff --git a/src/compiler/c.rs b/src/compiler/c.rs
-index 30c82460..cc566dad 100644
---- a/src/compiler/c.rs
-+++ b/src/compiler/c.rs
-@@ -160,6 +160,13 @@ struct CCompilation<I: CCompilerImpl> {
-     is_locally_preprocessed: bool,
-     #[cfg(feature = "dist-client")]
-     preprocessed_input: Vec<u8>,
-+    /// R0 instrumentation: wall-time spent running the local preprocessor
-+    /// (`cc1 -E`) for this compile during hash-key generation, threaded into
-+    /// the per-job dist log so the client-side preprocessing tax is timed
-+    /// rather than inferred. `None` when no local preprocessing ran (input was
-+    /// already preprocessed, or a preprocessor-cache hit skipped the run).
-+    #[cfg(feature = "dist-client")]
-+    preprocess_duration: Option<std::time::Duration>,
-     executable: PathBuf,
-     compiler: I,
-     cwd: PathBuf,
-@@ -501,6 +508,8 @@ where
-             None
-         };
- 
-+        #[cfg(feature = "dist-client")]
-+        let mut preprocess_elapsed: Option<std::time::Duration> = None;
-         let (preprocessor_output, include_files) = if needs_preprocessing {
-             if let Some(preprocessor_key) = &preprocessor_key
-                 && cache_control == CacheControl::Default
-@@ -550,6 +559,8 @@ where
-                                 is_locally_preprocessed: false,
-                                 #[cfg(feature = "dist-client")]
-                                 preprocessed_input: PREPROCESSING_SKIPPED_COMPILE_POISON.to_vec(),
-+                                #[cfg(feature = "dist-client")]
-+                                preprocess_duration: None,
-                                 executable: self.executable.clone(),
-                                 compiler: self.compiler.to_owned(),
-                                 cwd: cwd.clone(),
-@@ -563,6 +574,8 @@ where
-                 }
-             }
- 
-+            #[cfg(feature = "dist-client")]
-+            let preprocess_start = std::time::Instant::now();
-             let result = self
-                 .compiler
-                 .preprocess(
-@@ -576,6 +589,10 @@ where
-                     use_preprocessor_cache_mode,
-                 )
-                 .await;
-+            #[cfg(feature = "dist-client")]
-+            {
-+                preprocess_elapsed = Some(preprocess_start.elapsed());
-+            }
-             let out_pretty = self.parsed_args.output_pretty().into_owned();
-             let result = result.map_err(|e| {
-                 debug!("[{}]: preprocessor failed: {:?}", out_pretty, e);
-@@ -704,6 +721,8 @@ where
-                 is_locally_preprocessed: true,
-                 #[cfg(feature = "dist-client")]
-                 preprocessed_input: preprocessor_output,
-+                #[cfg(feature = "dist-client")]
-+                preprocess_duration: preprocess_elapsed,
-                 executable: self.executable.clone(),
-                 compiler: self.compiler.clone(),
-                 cwd,
-@@ -1275,6 +1294,11 @@ impl<T: CommandCreatorSync, I: CCompilerImpl> Compilation<T> for CCompilation<I>
-         self.is_locally_preprocessed
-     }
- 
-+    #[cfg(feature = "dist-client")]
-+    fn preprocess_duration(&self) -> Option<std::time::Duration> {
-+        self.preprocess_duration
-+    }
-+
-     fn outputs<'a>(&'a self) -> Box<dyn Iterator<Item = FileObjectSource> + 'a> {
-         Box::new(
-             self.parsed_args
-diff --git a/src/compiler/compiler.rs b/src/compiler/compiler.rs
-index b5a8cf05..e325829a 100644
---- a/src/compiler/compiler.rs
-+++ b/src/compiler/compiler.rs
-@@ -954,6 +954,13 @@ where
-         let (_inflight_guard, in_flight) = DistInflightGuard::enter();
-         let dist_started = Instant::now();
-         info!("[{}]: dist-job start (in_flight {})", out_pretty, in_flight);
-+        // Local preprocessing (`cc1 -E`) already ran during hash-key generation,
-+        // before this dist round-trip began; read its duration here so the tax
-+        // that skews load onto the colocated node is timed in the per-job line.
-+        let ms_preprocess = compilation
-+            .preprocess_duration()
-+            .map(|d| d.as_millis())
-+            .unwrap_or(0);
-         let mut dist_compile_cmd =
-             dist_compile_cmd.context("Could not create distributed compile command")?;
-         debug!("[{}]: Creating distributed compile request", out_pretty);
-@@ -1164,10 +1171,11 @@ where
- 
-         let ms_run_fetch = t_run.elapsed().as_millis();
-         info!(
--            "[{}]: dist-job done on {} in {}ms (put_tc {}ms, alloc {}ms, submit {}ms, run+fetch {}ms, in_flight {})",
-+            "[{}]: dist-job done on {} in {}ms (preprocess {}ms, put_tc {}ms, alloc {}ms, submit {}ms, run+fetch {}ms, in_flight {})",
-             out_pretty,
-             server_id.addr(),
-             dist_started.elapsed().as_millis(),
-+            ms_preprocess,
-             ms_put_toolchain,
-             ms_alloc,
-             ms_submit,
-@@ -1242,6 +1250,17 @@ where
-         true
-     }
- 
-+    /// R0 instrumentation: wall-time the client spent locally preprocessing
-+    /// this compile's source (`cc1 -E`) during hash-key generation, when that
-+    /// step ran. Threaded into the per-job dist log so the preprocessing tax is
-+    /// timed rather than inferred. `None` when no local preprocessing ran
-+    /// (input already preprocessed, or a preprocessor-cache hit skipped it), or
-+    /// for compilers whose hash step does no local preprocessing.
-+    #[cfg(feature = "dist-client")]
-+    fn preprocess_duration(&self) -> Option<Duration> {
-+        None
-+    }
-+
-     /// Returns an iterator over the results of this compilation.
-     ///
-     /// Each item is a descriptive (and unique) name of the output paired with
--- 
-Javier Tia
-
-
-From 7d5374ae1951defc51ea0d8b35f3e25c4514a2ba Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 13:42:44 -0600
-Subject: [PATCH 40/48] compiler/c: gauge live local preprocess concurrency
-
-The preprocessing wall - the client jobserver's cores saturated by local
-cc1 -E for the whole cluster while remote nodes idle - was only ever an
-inference from per-job timers. Nothing measured how many preprocesses run
-at once, so there was no way to confirm the jobserver token pool is the
-feed bottleneck rather than bitbake under-producing jobs.
-
-Wrap the preprocess call in an RAII counter mirroring DistInflightGuard
-and log "preprocess done in <n>ms (concurrent <k>)" so the concurrency is
-a time series. The guard drops the count as soon as preprocessing returns,
-before the dist round-trip, so it reflects preprocess pressure alone;
-gated on dist-client so a non-dist build is unchanged.
-
-Signed-off-by: Javier Tia <floss@jetm.me>
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/compiler/c.rs | 39 ++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 38 insertions(+), 1 deletion(-)
-
-diff --git a/src/compiler/c.rs b/src/compiler/c.rs
-index cc566dad..bf4cf611 100644
---- a/src/compiler/c.rs
-+++ b/src/compiler/c.rs
-@@ -47,6 +47,34 @@ use crate::errors::*;
- use super::CacheControl;
- use super::preprocessor_cache::PreprocessorCacheEntry;
- 
-+/// Live count of local preprocess (`cc1 -E`) invocations, gauged so the PC1
-+/// preprocessing wall - the jobserver's cores saturated by preprocessing for
-+/// the whole cluster while remote nodes idle - is a measured number rather than
-+/// an inference.
-+#[cfg(feature = "dist-client")]
-+static PREPROC_INFLIGHT: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
-+
-+/// RAII counter for `PREPROC_INFLIGHT`: increments on `enter`, returning the
-+/// concurrency including this one, and decrements on drop so the count stays
-+/// correct across every exit of the preprocess future.
-+#[cfg(feature = "dist-client")]
-+struct PreprocInflightGuard;
-+
-+#[cfg(feature = "dist-client")]
-+impl PreprocInflightGuard {
-+    fn enter() -> (Self, usize) {
-+        let inflight = PREPROC_INFLIGHT.fetch_add(1, std::sync::atomic::Ordering::SeqCst) + 1;
-+        (PreprocInflightGuard, inflight)
-+    }
-+}
-+
-+#[cfg(feature = "dist-client")]
-+impl Drop for PreprocInflightGuard {
-+    fn drop(&mut self) {
-+        PREPROC_INFLIGHT.fetch_sub(1, std::sync::atomic::Ordering::SeqCst);
-+    }
-+}
-+
- /// A generic implementation of the `Compiler` trait for C/C++ compilers.
- #[derive(Clone)]
- pub struct CCompiler<I>
-@@ -576,6 +604,8 @@ where
- 
-             #[cfg(feature = "dist-client")]
-             let preprocess_start = std::time::Instant::now();
-+            #[cfg(feature = "dist-client")]
-+            let (preproc_guard, preproc_concurrency) = PreprocInflightGuard::enter();
-             let result = self
-                 .compiler
-                 .preprocess(
-@@ -591,7 +621,14 @@ where
-                 .await;
-             #[cfg(feature = "dist-client")]
-             {
--                preprocess_elapsed = Some(preprocess_start.elapsed());
-+                let elapsed = preprocess_start.elapsed();
-+                preprocess_elapsed = Some(elapsed);
-+                drop(preproc_guard);
-+                info!(
-+                    "preprocess done in {}ms (concurrent {})",
-+                    elapsed.as_millis(),
-+                    preproc_concurrency
-+                );
-             }
-             let out_pretty = self.parsed_args.output_pretty().into_owned();
-             let result = result.map_err(|e| {
--- 
-Javier Tia
-
-
-From 0414008068bf178dc25e3b3d6da23af667bc8c7b Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 13:44:38 -0600
-Subject: [PATCH 41/48] compiler: concatenate strings without relying on deref
- coercion
-
-The lib test target links the thirtyfour dev-dependency, whose 0.36
-release adds several `impl Add<_> for String`. With more than one `Add`
-impl for String in scope, the compiler no longer performs the
-&String -> &str deref coercion that `s + &count` relied on, so
-`cargo test` fails to compile the lib target with E0277 in files
-unrelated to the change at hand.
-
-Spell the right-hand side as &str explicitly (count.as_str()). The
-result is identical but no longer depends on coercion, so the test
-target builds regardless of which extra Add impls a dev-dependency
-happens to introduce.
-
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/compiler/nvcc.rs | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/src/compiler/nvcc.rs b/src/compiler/nvcc.rs
-index 777ce6d5..814cde08 100644
---- a/src/compiler/nvcc.rs
-+++ b/src/compiler/nvcc.rs
-@@ -1193,7 +1193,7 @@ fn remap_generated_filenames(
-                                 // Don't use the count as the first character of the file name, because the file name
-                                 // may be used as an identifier (via the __FILE__ macro) and identifiers with leading
-                                 // digits are not valid in C/C++, i.e. `x_0.cudafe1.cpp` instead of `0.cudafe1.cpp`.
--                                .join("x_".to_owned() + &count + extension)
-+                                .join("x_".to_owned() + count.as_str() + extension)
-                                 .to_string_lossy()
-                                 .to_string()
-                         })
--- 
-Javier Tia
-
-
-From b7f70580ebe7690d77fb7f1e433d9ea950f82eea Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 13:46:08 -0600
-Subject: [PATCH 42/48] ci: mirror the CI validation gate in pre-commit
-
-The pre-commit config only ran nightly fmt and clippy with no failure
-gate, so a break reached CI before anyone noticed - a changed function
-signature or struct literal in tests/ slipped through because plain
-cargo check and makepkg never compile the integration tests.
-
-Add the CI gate locally: clippy with the same -D warnings and allows CI
-sets, but --features all,dist-server so the feature-gated dist code is
-actually linted (CI's clippy runs default features and never covers it),
-and cargo check --locked --all-targets so the test harness is
-type-checked at commit time against the committed Cargo.lock. Move cargo
-test and cargo audit to pre-push so per-commit turnaround stays fast. fmt
-stays on nightly to match the tree's existing formatting.
-
-Signed-off-by: Javier Tia <floss@jetm.me>
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- .pre-commit-config.yaml | 55 +++++++++++++++++++++++++++++++++++------
- 1 file changed, 47 insertions(+), 8 deletions(-)
-
-diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
-index f90466be..5347052c 100644
---- a/.pre-commit-config.yaml
-+++ b/.pre-commit-config.yaml
-@@ -1,17 +1,56 @@
- repos:
---   repo: local
-+  - repo: local
-     hooks:
--    -   id: rust-linting
--        name: Rust linting
--        description: Run cargo fmt on files included in the commit.
-+      # Format changed Rust files. Kept on nightly because the tree is
-+      # nightly-formatted; stable fmt would reflow files needlessly.
-+      - id: rust-fmt
-+        name: cargo fmt
-+        description: Format Rust sources included in the commit.
-         entry: cargo +nightly fmt --
-         pass_filenames: true
-         types: [file, rust]
-         language: system
--    -   id: rust-clippy
--        name: Rust clippy
--        description: Run cargo clippy on files included in the commit.
--        entry: cargo +nightly clippy --workspace --all-targets --all-features --
-+
-+      # Lint with the gate CI enforces (.github/workflows/ci.yml): -D warnings
-+      # plus the three allows CI sets. --features all,dist-server so the
-+      # feature-gated dist-client / dist-server code is actually linted - CI's
-+      # clippy runs on default features and never covers it.
-+      - id: rust-clippy
-+        name: cargo clippy
-+        description: Lint all targets with warnings denied.
-+        entry: cargo clippy --locked --all-targets --features all,dist-server -- -D warnings -A unknown-lints -A clippy::type_complexity -A clippy::new-without-default
-         pass_filenames: false
-         types: [file, rust]
-         language: system
-+
-+      # Compile every target including the integration-test harness. This is the
-+      # gate that catches a changed function signature or struct literal under
-+      # tests/ that plain `cargo check` and `makepkg` never compile.
-+      - id: rust-check
-+        name: cargo check --all-targets
-+        description: Type-check every target, including tests and benches.
-+        entry: cargo check --locked --all-targets --features all,dist-server
-+        pass_filenames: false
-+        types: [file, rust]
-+        language: system
-+
-+      # Run the CI test set on push (lib, bins, integration tests). On push, not
-+      # per commit, so commit turnaround stays fast.
-+      - id: rust-test
-+        name: cargo test
-+        description: Run the library, binary, and integration tests.
-+        entry: cargo test --locked --features all,dist-server --lib --bins --tests
-+        pass_filenames: false
-+        types: [file, rust]
-+        language: system
-+        stages: [pre-push]
-+
-+      # RustSec advisory scan on push (org security standard).
-+      - id: cargo-audit
-+        name: cargo audit
-+        description: Scan dependencies for known advisories.
-+        entry: cargo audit
-+        pass_filenames: false
-+        types: [file, rust]
-+        language: system
-+        stages: [pre-push]
--- 
-Javier Tia
-
-
-From f868d96dd45928eac778c653f2328f53abe2b9d0 Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 13:51:43 -0600
-Subject: [PATCH 43/48] dist: satisfy clippy under the all-features gate
-
-The tree fails `clippy -D warnings --features all,dist-server` with the
-current toolchain. The failing sites in this commit are in
-src/bin/sccache-dist/build.rs (semicolon_if_nothing_returned,
-collapsible_if, to_string_in_format_args, useless_borrows_in_formatting),
-src/bin/sccache-dist/cmdline/mod.rs (large_enum_variant),
-src/bin/sccache-dist/cmdline/parse.rs (implicit_clone,
-semicolon_if_nothing_returned), src/bin/sccache-dist/main.rs
-(collapsible_if) and src/dist/http.rs (collapsible_if,
-semicolon_if_nothing_returned).
-
-I applied the forms clippy suggests: trailing semicolons, collapsed
-let-chains, dropped redundant borrows and to_string calls, a cloned String
-instead of to_string on a dereference, and a boxed server Config in the
-sccache-dist Command enum, with the one destructuring site in main.rs
-adjusted to unbox it. Behaviour is unchanged.
-
-Signed-off-by: Javier Tia <floss@jetm.me>
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/bin/sccache-dist/build.rs         | 32 +++++------
- src/bin/sccache-dist/cmdline/mod.rs   |  2 +-
- src/bin/sccache-dist/cmdline/parse.rs |  6 +-
- src/bin/sccache-dist/main.rs          | 83 +++++++++++++--------------
- src/dist/http.rs                      | 12 ++--
- 5 files changed, 67 insertions(+), 68 deletions(-)
-
-diff --git a/src/bin/sccache-dist/build.rs b/src/bin/sccache-dist/build.rs
-index 7488bc81..0cf1ae92 100644
---- a/src/bin/sccache-dist/build.rs
-+++ b/src/bin/sccache-dist/build.rs
-@@ -250,7 +250,7 @@ impl OverlayBuilder {
- 
-     fn cleanup(&self) -> Result<()> {
-         if self.dir.exists() {
--            fs::remove_dir_all(&self.dir).context("Failed to clean up builder directory")?
-+            fs::remove_dir_all(&self.dir).context("Failed to clean up builder directory")?;
-         }
-         Ok(())
-     }
-@@ -487,7 +487,7 @@ impl OverlayBuilder {
-                         // This error is unfortunately not Send+Sync
-                     )
-                     .mount()
--                    .map_err(|e| anyhow!("Failed to mount overlay FS: {}", e.to_string()))?;
-+                    .map_err(|e| anyhow!("Failed to mount overlay FS: {}", e))?;
- 
-                     let CompileCommand {
-                         executable,
-@@ -583,11 +583,11 @@ impl OverlayBuilder {
-                                 Ok(file) => {
-                                     let output = OutputData::try_from_reader(file)
-                                         .context("Failed to read output file")?;
--                                    outputs.push((path, output))
-+                                    outputs.push((path, output));
-                                 }
-                                 Err(e) => {
-                                     if e.kind() == io::ErrorKind::NotFound {
--                                        debug!("Missing output path {:?}", path)
-+                                        debug!("Missing output path {:?}", path);
-                                     } else {
-                                         return Err(
-                                             Error::from(e).context("Failed to open output file")
-@@ -717,7 +717,7 @@ impl DockerBuilder {
-                     bail!("Malformed container listing - third field on row")
-                 }
-                 if image_name.starts_with("sccache-builder-") {
--                    containers_to_rm.push(container_id)
-+                    containers_to_rm.push(container_id);
-                 }
-             }
-             if !containers_to_rm.is_empty() {
-@@ -747,7 +747,7 @@ impl DockerBuilder {
-                     bail!("Malformed image listing - third field on row")
-                 }
-                 if image_name.starts_with("sccache-builder-") {
--                    images_to_rm.push(image_id)
-+                    images_to_rm.push(image_id);
-                 }
-             }
-             if !images_to_rm.is_empty() {
-@@ -755,7 +755,7 @@ impl DockerBuilder {
-                     .args(["rmi"])
-                     .args(images_to_rm)
-                     .check_run()
--                    .context("Failed to remove image")?
-+                    .context("Failed to remove image")?;
-             }
-         }
- 
-@@ -828,10 +828,10 @@ impl DockerBuilder {
-                 }
-                 // Docker diff paths are in alphabetical order and we do `rm -rf`, so we might be able to skip
-                 // calling Docker more than necessary (since it's slow)
--                if let Some(lastpath) = lastpath {
--                    if Path::new(changepath).starts_with(lastpath) {
--                        continue;
--                    }
-+                if let Some(lastpath) = lastpath
-+                    && Path::new(changepath).starts_with(lastpath)
-+                {
-+                    continue;
-                 }
-                 lastpath = Some(changepath);
-                 if let Err(e) = Command::new("docker")
-@@ -839,7 +839,7 @@ impl DockerBuilder {
-                     .check_run()
-                 {
-                     // We do a final check anyway, so just continue
--                    warn!("Failed to remove added path in a container: {}", e)
-+                    warn!("Failed to remove added path in a container: {}", e);
-                 }
-             }
- 
-@@ -875,7 +875,7 @@ impl DockerBuilder {
-         // Good as new, add it back to the container list
-         if let Some(entry) = self.container_lists.lock().unwrap().get_mut(tc) {
-             debug!("Reclaimed container {}", cid);
--            entry.push(cid)
-+            entry.push(cid);
-         } else {
-             warn!(
-                 "Was ready to reclaim container {} but toolchain went missing",
-@@ -916,7 +916,7 @@ impl DockerBuilder {
-             .context("Failed to copy toolchain tar into container")?;
-         drop(toolchain_rdr);
- 
--        let imagename = format!("sccache-builder-{}", &tc.archive_id);
-+        let imagename = format!("sccache-builder-{}", tc.archive_id);
-         Command::new("docker")
-             .args(["commit", &cid, &imagename])
-             .check_run()
-@@ -1027,9 +1027,9 @@ impl DockerBuilder {
-             if output.status.success() {
-                 let output = OutputData::try_from_reader(&*output.stdout)
-                     .expect("Failed to read compress output stdout");
--                outputs.push((path, output))
-+                outputs.push((path, output));
-             } else {
--                debug!("Missing output path {:?}", path)
-+                debug!("Missing output path {:?}", path);
-             }
-         }
- 
-diff --git a/src/bin/sccache-dist/cmdline/mod.rs b/src/bin/sccache-dist/cmdline/mod.rs
-index fafe3902..f77737bd 100644
---- a/src/bin/sccache-dist/cmdline/mod.rs
-+++ b/src/bin/sccache-dist/cmdline/mod.rs
-@@ -23,7 +23,7 @@ pub use parse::try_parse_from;
- pub enum Command {
-     Auth(AuthSubcommand),
-     Scheduler(config::scheduler::Config),
--    Server(config::server::Config),
-+    Server(Box<config::server::Config>),
- }
- 
- #[derive(Debug, PartialEq, Eq)]
-diff --git a/src/bin/sccache-dist/cmdline/parse.rs b/src/bin/sccache-dist/cmdline/parse.rs
-index 4ead7131..9a1e9a70 100644
---- a/src/bin/sccache-dist/cmdline/parse.rs
-+++ b/src/bin/sccache-dist/cmdline/parse.rs
-@@ -207,7 +207,7 @@ pub fn try_parse_from(
-                     matches
-                         .get_one::<String>("secret-key")
-                         .expect("`secret-key` is required")
--                        .to_string()
-+                        .clone()
-                 };
- 
-                 AuthSubcommand::JwtHS256ServerToken {
-@@ -255,7 +255,7 @@ pub fn try_parse_from(
-                 .get_one::<PathBuf>("config")
-                 .expect("`config` is required");
-             if let Some(config) = config::server::from_path(config_path)? {
--                Command::Server(config)
-+                Command::Server(Box::new(config))
-             } else {
-                 bail!("Could not load config")
-             }
-@@ -282,7 +282,7 @@ mod tests {
- 
-     #[test]
-     fn debug_assert() {
--        get_clap_command().debug_assert()
-+        get_clap_command().debug_assert();
-     }
- 
-     #[test]
-diff --git a/src/bin/sccache-dist/main.rs b/src/bin/sccache-dist/main.rs
-index 0a95c21d..08635aa1 100644
---- a/src/bin/sccache-dist/main.rs
-+++ b/src/bin/sccache-dist/main.rs
-@@ -234,17 +234,18 @@ fn run(command: Command) -> Result<i32> {
-             unreachable!();
-         }
- 
--        Command::Server(server_config::Config {
--            builder,
--            cache_dir,
--            public_addr,
--            bind_address,
--            scheduler_url,
--            scheduler_auth,
--            toolchain_cache_size,
--            num_cpus: advertised_num_cpus,
--            colocated_reserve_fraction,
--        }) => {
-+        Command::Server(config) => {
-+            let server_config::Config {
-+                builder,
-+                cache_dir,
-+                public_addr,
-+                bind_address,
-+                scheduler_url,
-+                scheduler_auth,
-+                toolchain_cache_size,
-+                num_cpus: advertised_num_cpus,
-+                colocated_reserve_fraction,
-+            } = *config;
-             let builder: Box<dyn dist::BuilderIncoming> = match builder {
-                 #[cfg(not(target_os = "freebsd"))]
-                 server_config::BuilderType::Docker => {
-@@ -980,14 +981,13 @@ impl SchedulerIncoming for Scheduler {
-                 let active_set: HashSet<JobId> = active_jobs.into_iter().collect();
-                 let mut liveness_reap = Vec::new();
-                 for &job_id in details.jobs_assigned.iter() {
--                    if let Some(detail) = jobs.get(&job_id) {
--                        if detail.state == JobState::Started
--                            && !active_set.contains(&job_id)
--                            && !details.last_active_jobs.contains(&job_id)
--                            && now.duration_since(detail.since) > LIVENESS_GRACE
--                        {
--                            liveness_reap.push(job_id);
--                        }
-+                    if let Some(detail) = jobs.get(&job_id)
-+                        && detail.state == JobState::Started
-+                        && !active_set.contains(&job_id)
-+                        && !details.last_active_jobs.contains(&job_id)
-+                        && now.duration_since(detail.since) > LIVENESS_GRACE
-+                    {
-+                        liveness_reap.push(job_id);
-                     }
-                 }
-                 if !liveness_reap.is_empty() {
-@@ -1015,25 +1015,24 @@ impl SchedulerIncoming for Scheduler {
-                 // stopped naming the job in its heartbeats.
-                 let mut stale_started = Vec::new();
-                 for &job_id in details.jobs_assigned.iter() {
--                    if let Some(detail) = jobs.get(&job_id) {
--                        if detail.state == JobState::Started
--                            && now.duration_since(detail.since) > STARTED_COMPLETE_TIMEOUT
--                        {
--                            if details.last_active_jobs.contains(&job_id) {
--                                // Still reported active past the backstop timeout:
--                                // not reaped (a genuinely-slow live compile must
--                                // survive) but likely a wedged build the server
--                                // names forever. Surface it so it is visible in
--                                // logs rather than silently accumulating.
--                                warn!(
--                                    "Started job {} on server {} still reported active past {:?}; possible wedged build",
--                                    job_id,
--                                    server_id.addr(),
--                                    STARTED_COMPLETE_TIMEOUT
--                                );
--                            } else {
--                                stale_started.push(job_id);
--                            }
-+                    if let Some(detail) = jobs.get(&job_id)
-+                        && detail.state == JobState::Started
-+                        && now.duration_since(detail.since) > STARTED_COMPLETE_TIMEOUT
-+                    {
-+                        if details.last_active_jobs.contains(&job_id) {
-+                            // Still reported active past the backstop timeout:
-+                            // not reaped (a genuinely-slow live compile must
-+                            // survive) but likely a wedged build the server
-+                            // names forever. Surface it so it is visible in
-+                            // logs rather than silently accumulating.
-+                            warn!(
-+                                "Started job {} on server {} still reported active past {:?}; possible wedged build",
-+                                job_id,
-+                                server_id.addr(),
-+                                STARTED_COMPLETE_TIMEOUT
-+                            );
-+                        } else {
-+                            stale_started.push(job_id);
-                         }
-                     }
-                 }
-@@ -1153,10 +1152,10 @@ impl SchedulerIncoming for Scheduler {
-                     // than allocation time, so time spent uploading a toolchain
-                     // (Pending) does not consume the claim budget and a job that
-                     // is still uploading is not reaped as a no-show.
--                    if let Some(details) = server_details {
--                        if let Some(t) = details.jobs_unclaimed.get_mut(&job_id) {
--                            *t = now;
--                        }
-+                    if let Some(details) = server_details
-+                        && let Some(t) = details.jobs_unclaimed.get_mut(&job_id)
-+                    {
-+                        *t = now;
-                     }
-                     let detail = entry.get_mut();
-                     detail.state = job_state;
-diff --git a/src/dist/http.rs b/src/dist/http.rs
-index 82092b08..e864e02d 100644
---- a/src/dist/http.rs
-+++ b/src/dist/http.rs
-@@ -761,10 +761,10 @@ mod server {
-                 cert_digest: Vec<u8>,
-                 cert_pem: Vec<u8>,
-             ) -> Result<()> {
--                if let Some((saved_cert_digest, _)) = certs.get(&server_id) {
--                    if saved_cert_digest == &cert_digest {
--                        return Ok(());
--                    }
-+                if let Some((saved_cert_digest, _)) = certs.get(&server_id)
-+                    && saved_cert_digest == &cert_digest
-+                {
-+                    return Ok(());
-                 }
-                 info!(
-                     "Adding new certificate for {} to scheduler",
-@@ -1094,11 +1094,11 @@ mod server {
-                             if is_new {
-                                 info!("Server connected to scheduler");
-                             }
--                            thread::sleep(HEARTBEAT_INTERVAL)
-+                            thread::sleep(HEARTBEAT_INTERVAL);
-                         }
-                         Err(e) => {
-                             error!(target: "sccache_heartbeat", "Failed to send heartbeat to server: {}", e);
--                            thread::sleep(HEARTBEAT_ERROR_INTERVAL)
-+                            thread::sleep(HEARTBEAT_ERROR_INTERVAL);
-                         }
-                     }
-                 }
--- 
-Javier Tia
-
-
-From 57ca4823938e5602aea91b9d72069d30572cf697 Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 13:51:33 -0600
-Subject: [PATCH 44/48] chore: fix clippy lints flagged by a newer toolchain
-
-Clippy 1.99 rejects the tree under `-D warnings` at more sites than
-the dist-specific commit covers: collapsible_if in
-src/bin/sccache-dist/token_check.rs, and irregular_braces on the
-`vec!(...)` calls inside the stringvec!, ovec! and pathvec! macros of
-src/test/utils.rs and the vec_from! macro of tests/system.rs.
-
-I collapsed the nested if into a let-chain and wrote the macro bodies as
-`vec![...]`. Behaviour is unchanged.
-
-The pre-commit rust-clippy hook now also allows
-clippy::double_must_use. It fires on async_trait's macro expansion in
-clippy 1.99 at every async trait in the crate, and there is no source
-line to fix; the flag sits on the command line, next to the other -A
-flags, so no allow attribute is added to the code.
-
-Signed-off-by: Javier Tia <floss@jetm.me>
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- .pre-commit-config.yaml             | 2 +-
- src/bin/sccache-dist/token_check.rs | 8 ++++----
- src/test/utils.rs                   | 6 +++---
- tests/system.rs                     | 2 +-
- 4 files changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
-index 5347052c..f7986a43 100644
---- a/.pre-commit-config.yaml
-+++ b/.pre-commit-config.yaml
-@@ -18,7 +18,7 @@ repos:
-       - id: rust-clippy
-         name: cargo clippy
-         description: Lint all targets with warnings denied.
--        entry: cargo clippy --locked --all-targets --features all,dist-server -- -D warnings -A unknown-lints -A clippy::type_complexity -A clippy::new-without-default
-+        entry: cargo clippy --locked --all-targets --features all,dist-server -- -D warnings -A unknown-lints -A clippy::type_complexity -A clippy::new-without-default -A clippy::double_must_use
-         pass_filenames: false
-         types: [file, rust]
-         language: system
-diff --git a/src/bin/sccache-dist/token_check.rs b/src/bin/sccache-dist/token_check.rs
-index 93fabf02..2591076c 100644
---- a/src/bin/sccache-dist/token_check.rs
-+++ b/src/bin/sccache-dist/token_check.rs
-@@ -113,10 +113,10 @@ impl ProxyTokenCheck {
-         if let Some(ref auth_cache) = self.maybe_auth_cache {
-             let mut auth_cache = auth_cache.lock().unwrap();
-             let (ref mut auth_cache, cache_duration) = *auth_cache;
--            if let Some(cached_at) = auth_cache.get(token) {
--                if cached_at.elapsed() < cache_duration {
--                    return Ok(());
--                }
-+            if let Some(cached_at) = auth_cache.get(token)
-+                && cached_at.elapsed() < cache_duration
-+            {
-+                return Ok(());
-             }
-             auth_cache.remove(token);
-         }
-diff --git a/src/test/utils.rs b/src/test/utils.rs
-index 3809abc9..0df30f52 100644
---- a/src/test/utils.rs
-+++ b/src/test/utils.rs
-@@ -31,21 +31,21 @@ use crate::jobserver::Client;
- /// Return a `Vec` with each listed entry converted to an owned `String`.
- macro_rules! stringvec {
-     ( $( $x:expr ),* ) => {
--        vec!($( $x.to_owned(), )*)
-+        vec![$( $x.to_owned(), )*]
-     };
- }
- 
- /// Return a `Vec` with each listed entry converted to an owned `OsString`.
- macro_rules! ovec {
-     ( $( $x:expr ),* ) => {
--        vec!($( ::std::ffi::OsString::from($x), )*)
-+        vec![$( ::std::ffi::OsString::from($x), )*]
-     };
- }
- 
- /// Return a `Vec` with each listed entry converted to an owned `PathBuf`.
- macro_rules! pathvec {
-     ( $( $x:expr ),* ) => {
--        vec!($( ::std::path::PathBuf::from($x), )*)
-+        vec![$( ::std::path::PathBuf::from($x), )*]
-     };
- }
- 
-diff --git a/tests/system.rs b/tests/system.rs
-index 57e5f65c..3ae8445a 100644
---- a/tests/system.rs
-+++ b/tests/system.rs
-@@ -87,7 +87,7 @@ fn adv_key_kind(lang: &str, compiler: &str) -> String {
- 
- macro_rules! vec_from {
-     ( $t:ty, $( $x:expr ),* ) => {
--        vec!($( Into::<$t>::into(&$x), )*)
-+        vec![$( Into::<$t>::into(&$x), )*]
-     };
- }
- 
--- 
-Javier Tia
-
-
-From ef1710d34d65f9a992281c2fac1e736878bad83b Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 15:55:24 -0600
-Subject: [PATCH 45/48] compiler: keep the server annotation on a reported
- remote failure
-
-With the dist fallback switch off, the remote result is meant to reach
-the client as release 0.19.0 returns it. The switch commit kept the
-exit code and the compiler's stderr but dropped the line 0.19.0 puts at
-the top of that stderr naming the server the job failed on, which is
-the only hint that a failure belongs to one host, for example flaky
-hardware.
-
-Restore the annotation on the reported-failure path. It cannot run with
-the switch on, because a non-zero remote result has already turned into
-a local recompile by then. The test for the switch-off mode now asserts
-that the stderr starts with the annotation as well as ending with the
-remote compiler's output; upstream's own failed-compile test only checks
-the end, which is why the loss went unnoticed.
-
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/compiler/compiler.rs | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/src/compiler/compiler.rs b/src/compiler/compiler.rs
-index e325829a..f8fc821a 100644
---- a/src/compiler/compiler.rs
-+++ b/src/compiler/compiler.rs
-@@ -1056,7 +1056,7 @@ where
-                 )
-             })?;
- 
--        let jc = match jres {
-+        let mut jc = match jres {
-             dist::RunJobResult::Complete(jc) => jc,
-             dist::RunJobResult::JobNotFound => bail!("Job {} not found on server", job_id),
-         };
-@@ -1169,6 +1169,17 @@ where
-             );
-         }
- 
-+        if jc.output.code != 0 {
-+            // Reached only with the fallback switch off, where the remote result is
-+            // reported to the client as release 0.19.0 does.
-+            // Add server info to help diagnose host-specific failures, e.g. due to flaky hardware.
-+            // Failed builds are not cached so this tampering should not cause too much trouble.
-+            let server_info = format!("sccache: Job failed on server {}:\n", server_id.addr());
-+            jc.output
-+                .stderr
-+                .splice(0..0, server_info.as_bytes().to_vec());
-+        }
-+
-         let ms_run_fetch = t_run.elapsed().as_millis();
-         info!(
-             "[{}]: dist-job done on {} in {}ms (preprocess {}ms, put_tc {}ms, alloc {}ms, submit {}ms, run+fetch {}ms, in_flight {})",
-@@ -3929,6 +3940,8 @@ LLVM version: 6.0",
-         }
-         assert_eq!(res.status.code(), Some(1));
-         assert!(res.stderr.ends_with(b"remote stderr"));
-+        // As in 0.19.0, a reported remote failure names the server that produced it.
-+        assert!(res.stderr.starts_with(b"sccache: Job failed on server "));
-     }
- 
-     #[test_case(true ; "with preprocessor cache")]
--- 
-Javier Tia
-
-
-From 4e3def9704d7eddeed5b8c8d3dd1311d6267e2e1 Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 17:54:55 -0600
-Subject: [PATCH 46/48] compiler/rust: ship sysroot rlibs whose name has no
- hash suffix
-
-The inputs packager skips a hashless library when rustc dependency
-names are unavailable, because a name such as libz.so is then
-indistinguishable from a Rust artifact. That skip ran before the
-exemption for a target rustlib directory, so a non-cargo build never
-shipped the sysroot's libstd.rlib. The remote rustc then lacked std
-and every std-dependent crate fell back to a local recompile.
-
-Apply the rustlib exemption to the skip as well. A hashless file
-outside a rustlib directory is still skipped, which a second test
-pins.
-
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/compiler/rust.rs | 66 +++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 65 insertions(+), 1 deletion(-)
-
-diff --git a/src/compiler/rust.rs b/src/compiler/rust.rs
-index 26436d45..86bff5ed 100644
---- a/src/compiler/rust.rs
-+++ b/src/compiler/rust.rs
-@@ -2706,7 +2706,8 @@ impl pkg::InputsPackager for RustInputsPackager {
-                     };
-                     // Without rustc dependency names, a hashless native library such as
-                     // libz.so is indistinguishable from a hashless Rust artifact.
--                    if hashless && rlib_dep_reader_and_names.is_none() {
-+                    // A target rustlib dir is exempt: its hashless libstd.rlib is a Rust crate.
-+                    if hashless && !ship_all && rlib_dep_reader_and_names.is_none() {
-                         continue;
-                     }
-                     if let Some((_, ref dep_crate_names)) = rlib_dep_reader_and_names {
-@@ -4962,6 +4963,69 @@ foo.rs:
-         )));
-     }
- 
-+    #[cfg(feature = "dist-client")]
-+    fn shipped_lib_names(libdir: &Path) -> Vec<String> {
-+        let packager = Box::new(RustInputsPackager {
-+            env_vars: vec![],
-+            crate_link_paths: vec![libdir.to_path_buf()],
-+            crate_types: CrateTypes {
-+                rlib: false,
-+                staticlib: false,
-+            },
-+            inputs: vec![],
-+            path_transformer: dist::PathTransformer::new(),
-+            rlib_dep_reader: None,
-+        });
-+        let mut buf = vec![];
-+        pkg::InputsPackager::write_inputs(packager, &mut buf).unwrap();
-+        let mut archive = tar::Archive::new(buf.as_slice());
-+        let mut names: Vec<String> = archive
-+            .entries()
-+            .unwrap()
-+            .map(|e| {
-+                let e = e.unwrap();
-+                let path = e.path().unwrap();
-+                path.file_name().unwrap().to_string_lossy().into_owned()
-+            })
-+            .collect();
-+        names.sort();
-+        names
-+    }
-+
-+    // With no rustc dependency names (a non-cargo build) a target sysroot still has
-+    // to ship its hashless libstd.rlib, or every std-dependent crate fails remotely.
-+    #[cfg(feature = "dist-client")]
-+    #[test]
-+    fn test_inputs_packager_ships_hashless_sysroot_rlib_without_dep_names() {
-+        let td = tempfile::Builder::new()
-+            .prefix("sccache_test_rustlib")
-+            .tempdir()
-+            .unwrap();
-+        let libdir = td.path().join("rustlib/aarch64-linux-gnu/lib");
-+        fs::create_dir_all(&libdir).unwrap();
-+        fs::write(libdir.join("libstd.rlib"), b"std").unwrap();
-+        fs::write(libdir.join("libcore-0123456789abcdef.rlib"), b"core").unwrap();
-+        assert_eq!(
-+            vec!["libcore-0123456789abcdef.rlib", "libstd.rlib"],
-+            shipped_lib_names(&libdir)
-+        );
-+    }
-+
-+    // Outside a target rustlib dir a hashless library is a native library such as
-+    // libz.so and must stay out of the inputs when no dependency names are known.
-+    #[cfg(feature = "dist-client")]
-+    #[test]
-+    fn test_inputs_packager_skips_hashless_native_lib_outside_rustlib() {
-+        let td = tempfile::Builder::new()
-+            .prefix("sccache_test_nativelib")
-+            .tempdir()
-+            .unwrap();
-+        let libdir = td.path().join("usr/lib");
-+        fs::create_dir_all(&libdir).unwrap();
-+        fs::write(libdir.join("libz.so"), b"z").unwrap();
-+        assert!(shipped_lib_names(&libdir).is_empty());
-+    }
-+
-     #[cfg(feature = "dist-client")]
-     #[test]
-     fn test_is_rustlib_target_libdir() {
--- 
-Javier Tia
-
-
-From 3c0c7a4a2f2d04c068debc22527618b309251889 Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 17:57:25 -0600
-Subject: [PATCH 47/48] dist: compare returned outputs, not path existence,
- after a remote compile
-
-After a successful remote compile the client fell back to a local
-recompile only when a declared output path did not exist. A stale
-object from an earlier build sits at that path, so a server that
-dropped the output still passed the check and the stale file was
-cached as the result of the new compile.
-
-Match each declared output against the set the server returned. gcc's
-dependency file is the exception: the local preprocessor writes it and
-the server never returns it, so it keeps the existence check. Without
-that exemption every -MD compile would fall back locally.
-
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/compiler/compiler.rs | 321 ++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 316 insertions(+), 5 deletions(-)
-
-diff --git a/src/compiler/compiler.rs b/src/compiler/compiler.rs
-index f8fc821a..993eb7f8 100644
---- a/src/compiler/compiler.rs
-+++ b/src/compiler/compiler.rs
-@@ -973,11 +973,24 @@ where
-         // finishes. Captured before `compilation` is moved into the packagers
-         // below so a remote compile that drops a declared output can be detected
-         // and salvaged (see the missing-output check after the run completes).
--        let expected_output_paths: Vec<PathBuf> = compilation
-+        //
-+        // Each entry pairs the output's dist path with its local path. The dist
-+        // path is matched against what the server returned, because a stale file
-+        // from an earlier build at the local path would pass a bare existence
-+        // check. gcc's dependency file (key `d`) is written by the local
-+        // preprocessor and the server never returns it, so it keeps the
-+        // existence check.
-+        let expected_outputs: Vec<(String, PathBuf, bool)> = compilation
-             .outputs()
-             .filter(|output| !output.optional)
--            .map(|output| cwd.join(output.path))
--            .collect();
-+            .map(|output| {
-+                let local = cwd.join(output.path);
-+                path_transformer
-+                    .as_dist_abs(&local)
-+                    .map(|dist| (dist, local, output.key == "d"))
-+            })
-+            .collect::<Option<_>>()
-+            .context("Failed to adapt an output path for distributed compile")?;
-         let (inputs_packager, toolchain_packager, outputs_rewriter) =
-             compilation.into_dist_packagers(path_transformer)?;
- 
-@@ -1088,6 +1101,8 @@ where
-             }};
-         }
- 
-+        let returned_outputs: std::collections::HashSet<String> =
-+            jc.outputs.iter().map(|(p, _)| p.clone()).collect();
-         for (path, output_data) in jc.outputs {
-             let len = output_data.lens().actual;
-             let local_path = try_or_cleanup!(
-@@ -1160,7 +1175,16 @@ where
-         // or_else below, which reproduces the full output set. Compiles whose
-         // dist output set is complete are unaffected.
-         if fallback_enabled
--            && let Some(missing) = expected_output_paths.iter().find(|p| !p.exists())
-+            && let Some((_, missing, _)) =
-+                expected_outputs
-+                    .iter()
-+                    .find(|(dist, local, locally_produced)| {
-+                        if *locally_produced {
-+                            !local.exists()
-+                        } else {
-+                            !returned_outputs.contains(dist)
-+                        }
-+                    })
-         {
-             bail!(
-                 "distributed compile on {} did not return expected output {}; recompiling locally",
-@@ -3944,6 +3968,253 @@ LLVM version: 6.0",
-         assert!(res.stderr.starts_with(b"sccache: Job failed on server "));
-     }
- 
-+    // A stale object from an earlier build sits at the output path. When the build
-+    // server returns exit 0 but drops that output, the path still exists, so a
-+    // bare existence check would accept the stale file and cache it as the result.
-+    #[test]
-+    #[cfg(feature = "dist-client")]
-+    fn test_compiler_dist_dropped_output_not_masked_by_stale_file() {
-+        drop(env_logger::try_init());
-+        let creator = new_creator();
-+        let f = TestFixture::new();
-+        let gcc = f.mk_bin("gcc").unwrap();
-+        let runtime = Runtime::new().unwrap();
-+        let pool = runtime.handle().clone();
-+        std::fs::write(f.tempdir.path().join("foo.c"), "whatever").unwrap();
-+        let storage = Arc::new(DiskCache::new(
-+            f.tempdir.path().join("cache"),
-+            u64::MAX,
-+            &pool,
-+            PreprocessorCacheModeConfig::default(),
-+            CacheMode::ReadWrite,
-+            vec![],
-+        ));
-+        next_command(
-+            &creator,
-+            Ok(MockChild::new(exit_status(0), "compiler_id=gcc", "")),
-+        );
-+        next_assembler(&creator, "GNU assembler (GNU Binutils) 2.42", "");
-+        let c = get_compiler_info(
-+            creator.clone(),
-+            &gcc,
-+            f.tempdir.path(),
-+            &[],
-+            &[],
-+            &pool,
-+            None,
-+        )
-+        .wait()
-+        .unwrap()
-+        .0;
-+        let obj = f.tempdir.path().join("foo.o");
-+        std::fs::write(&obj, b"STALE OBJECT").unwrap();
-+        next_command(
-+            &creator,
-+            Ok(MockChild::new(exit_status(0), "preprocessor output", "")),
-+        );
-+        let o = obj.clone();
-+        next_command_calls(&creator, move |_| {
-+            let mut f = File::create(&o)?;
-+            f.write_all(b"FRESH LOCAL")?;
-+            Ok(MockChild::new(exit_status(0), "", ""))
-+        });
-+        let cwd = f.tempdir.path();
-+        let arguments = ovec!["-c", "foo.c", "-o", "foo.o"];
-+        let mut hasher = match c.parse_arguments(&arguments, ".".as_ref(), &[]) {
-+            CompilerArguments::Ok(h) => h,
-+            o => panic!("Bad result from parse_arguments: {:?}", o),
-+        };
-+        let dist_client = test_dist::IncompleteOutputsClient::new();
-+        let service = server::SccacheService::mock_with_dist_client(
-+            dist_client.clone(),
-+            storage.clone(),
-+            pool.clone(),
-+        );
-+        let (_cached, res) = hasher
-+            .get_cached_or_compile(
-+                &service,
-+                Some(dist_client),
-+                creator,
-+                storage,
-+                arguments,
-+                cwd.to_path_buf(),
-+                vec![],
-+                CacheControl::ForceRecache,
-+                pool,
-+            )
-+            .wait()
-+            .unwrap();
-+        assert_eq!(exit_status(0), res.status);
-+        assert_eq!(
-+            b"FRESH LOCAL".as_slice(),
-+            fs::read(&obj).unwrap().as_slice()
-+        );
-+    }
-+    // gcc's dependency file is written by the local preprocessor and the build
-+    // server never returns it. A distributed compile that returns only the object
-+    // must still be accepted, with no local recompile.
-+    #[test]
-+    #[cfg(feature = "dist-client")]
-+    fn test_compiler_dist_locally_written_dep_file_is_not_a_dropped_output() {
-+        drop(env_logger::try_init());
-+        let creator = new_creator();
-+        let f = TestFixture::new();
-+        let gcc = f.mk_bin("gcc").unwrap();
-+        let runtime = Runtime::new().unwrap();
-+        let pool = runtime.handle().clone();
-+        std::fs::write(f.tempdir.path().join("foo.c"), "whatever").unwrap();
-+        let storage = Arc::new(DiskCache::new(
-+            f.tempdir.path().join("cache"),
-+            u64::MAX,
-+            &pool,
-+            PreprocessorCacheModeConfig::default(),
-+            CacheMode::ReadWrite,
-+            vec![],
-+        ));
-+        next_command(
-+            &creator,
-+            Ok(MockChild::new(exit_status(0), "compiler_id=gcc", "")),
-+        );
-+        next_assembler(&creator, "GNU assembler (GNU Binutils) 2.42", "");
-+        let c = get_compiler_info(
-+            creator.clone(),
-+            &gcc,
-+            f.tempdir.path(),
-+            &[],
-+            &[],
-+            &pool,
-+            None,
-+        )
-+        .wait()
-+        .unwrap()
-+        .0;
-+        let dep = f.tempdir.path().join("foo.d");
-+        let d = dep.clone();
-+        // The preprocessor invocation writes the dependency file. No compiler
-+        // invocation is queued: a local recompile would find none and fail.
-+        next_command_calls(&creator, move |_| {
-+            std::fs::write(&d, b"foo.o: foo.c\n")?;
-+            Ok(MockChild::new(exit_status(0), "preprocessor output", ""))
-+        });
-+        let cwd = f.tempdir.path();
-+        let arguments = ovec!["-c", "foo.c", "-o", "foo.o", "-MD", "-MF", "foo.d"];
-+        let mut hasher = match c.parse_arguments(&arguments, ".".as_ref(), &[]) {
-+            CompilerArguments::Ok(h) => h,
-+            o => panic!("Bad result from parse_arguments: {:?}", o),
-+        };
-+        let dist_client = test_dist::IncompleteOutputsClient::dropping(".d");
-+        let service = server::SccacheService::mock_with_dist_client(
-+            dist_client.clone(),
-+            storage.clone(),
-+            pool.clone(),
-+        );
-+        let (_cached, res) = hasher
-+            .get_cached_or_compile(
-+                &service,
-+                Some(dist_client),
-+                creator,
-+                storage,
-+                arguments,
-+                cwd.to_path_buf(),
-+                vec![],
-+                CacheControl::ForceRecache,
-+                pool,
-+            )
-+            .wait()
-+            .unwrap();
-+        assert_eq!(exit_status(0), res.status);
-+        assert!(
-+            fs::read(f.tempdir.path().join("foo.o"))
-+                .unwrap()
-+                .starts_with(b"some data in ")
-+        );
-+        assert_eq!(
-+            b"foo.o: foo.c\n".as_slice(),
-+            fs::read(&dep).unwrap().as_slice()
-+        );
-+    }
-+
-+    // With `[dist] fallback = false` a remote result is reported as it came back, as
-+    // in 0.19.0: a dropped output must not trigger the local recompile that the
-+    // default mode performs.
-+    #[test]
-+    #[cfg(feature = "dist-client")]
-+    fn test_compiler_dist_dropped_output_does_not_recompile_without_fallback() {
-+        drop(env_logger::try_init());
-+        let creator = new_creator();
-+        let f = TestFixture::new();
-+        let gcc = f.mk_bin("gcc").unwrap();
-+        let runtime = Runtime::new().unwrap();
-+        let pool = runtime.handle().clone();
-+        std::fs::write(f.tempdir.path().join("foo.c"), "whatever").unwrap();
-+        let storage = Arc::new(DiskCache::new(
-+            f.tempdir.path().join("cache"),
-+            u64::MAX,
-+            &pool,
-+            PreprocessorCacheModeConfig::default(),
-+            CacheMode::ReadWrite,
-+            vec![],
-+        ));
-+        next_command(
-+            &creator,
-+            Ok(MockChild::new(exit_status(0), "compiler_id=gcc", "")),
-+        );
-+        next_assembler(&creator, "GNU assembler (GNU Binutils) 2.42", "");
-+        let c = get_compiler_info(
-+            creator.clone(),
-+            &gcc,
-+            f.tempdir.path(),
-+            &[],
-+            &[],
-+            &pool,
-+            None,
-+        )
-+        .wait()
-+        .unwrap()
-+        .0;
-+        next_command(
-+            &creator,
-+            Ok(MockChild::new(exit_status(0), "preprocessor output", "")),
-+        );
-+        let recompiled = Arc::new(std::sync::atomic::AtomicBool::new(false));
-+        let flag = recompiled.clone();
-+        next_command_calls(&creator, move |_| {
-+            flag.store(true, std::sync::atomic::Ordering::SeqCst);
-+            Ok(MockChild::new(exit_status(0), "", ""))
-+        });
-+        let cwd = f.tempdir.path();
-+        let arguments = ovec!["-c", "foo.c", "-o", "foo.o"];
-+        let mut hasher = match c.parse_arguments(&arguments, ".".as_ref(), &[]) {
-+            CompilerArguments::Ok(h) => h,
-+            o => panic!("Bad result from parse_arguments: {:?}", o),
-+        };
-+        let dist_client = test_dist::IncompleteOutputsClient::without_fallback();
-+        let service = server::SccacheService::mock_with_dist_client(
-+            dist_client.clone(),
-+            storage.clone(),
-+            pool.clone(),
-+        );
-+
-+        let _ = hasher
-+            .get_cached_or_compile(
-+                &service,
-+                Some(dist_client),
-+                creator,
-+                storage,
-+                arguments,
-+                cwd.to_path_buf(),
-+                vec![],
-+                CacheControl::ForceRecache,
-+                pool,
-+            )
-+            .wait();
-+
-+        assert!(
-+            !recompiled.load(std::sync::atomic::Ordering::SeqCst),
-+            "a dropped output must not fall back to a local recompile when the switch is off"
-+        );
-+    }
-+
-     #[test_case(true ; "with preprocessor cache")]
-     #[test_case(false ; "without preprocessor cache")]
-     #[cfg(feature = "dist-client")]
-@@ -4453,6 +4724,9 @@ mod test_dist {
-         has_started: AtomicBool,
-         tc: Toolchain,
-         output: ProcessOutput,
-+        /// Name suffix of the one output to drop; the last output when `None`.
-+        drop_suffix: Option<&'static str>,
-+        fallback: bool,
-     }
- 
-     impl IncompleteOutputsClient {
-@@ -4464,6 +4738,35 @@ mod test_dist {
-                     archive_id: "somearchiveid".to_owned(),
-                 },
-                 output: ProcessOutput::fake_output(0, vec![], vec![]),
-+                drop_suffix: None,
-+                fallback: true,
-+            })
-+        }
-+
-+        #[allow(clippy::new_ret_no_self)]
-+        pub fn dropping(suffix: &'static str) -> Arc<dyn dist::Client> {
-+            Arc::new(Self {
-+                has_started: AtomicBool::default(),
-+                tc: Toolchain {
-+                    archive_id: "somearchiveid".to_owned(),
-+                },
-+                output: ProcessOutput::fake_output(0, vec![], vec![]),
-+                drop_suffix: Some(suffix),
-+                fallback: true,
-+            })
-+        }
-+
-+        /// Drops the last output like `new`, with the `[dist] fallback` switch off.
-+        #[allow(clippy::new_ret_no_self)]
-+        pub fn without_fallback() -> Arc<dyn dist::Client> {
-+            Arc::new(Self {
-+                has_started: AtomicBool::default(),
-+                tc: Toolchain {
-+                    archive_id: "somearchiveid".to_owned(),
-+                },
-+                output: ProcessOutput::fake_output(0, vec![], vec![]),
-+                drop_suffix: None,
-+                fallback: false,
-             })
-         }
-     }
-@@ -4515,7 +4818,12 @@ mod test_dist {
-             // Drop one declared output to mimic a build-server that returned a
-             // successful compile with an incomplete output set.
-             let mut outputs = outputs;
--            outputs.pop();
-+            match self.drop_suffix {
-+                Some(suffix) => outputs.retain(|name| !name.ends_with(suffix)),
-+                None => {
-+                    outputs.pop();
-+                }
-+            }
-             let outputs = outputs
-                 .into_iter()
-                 .map(|name| {
-@@ -4544,6 +4852,9 @@ mod test_dist {
-                 )),
-             ))
-         }
-+        fn fallback_enabled(&self) -> bool {
-+            self.fallback
-+        }
-         fn rewrite_includes_only(&self) -> bool {
-             false
-         }
--- 
-Javier Tia
-
-
-From f8c2b9b1a1997e70b768803618e488ee811b2230 Mon Sep 17 00:00:00 2001
-From: Javier Tia <javier@peridio.com>
-Date: Mon, 26 Oct 2026 18:58:14 -0600
-Subject: [PATCH 48/48] dist/scheduler: test the Started backstop, deregister
- and status paths
-
-Mutation testing showed three guards that no test failed without: the
-backstop reaping a Started job the server still reports active, a
-graceful deregister dropping the departing server's jobs, and the
-per-server list in the status response. Revert any of them and the
-suite stayed green.
-
-Add a test for each, and one that an unknown server's deregister is a
-successful no-op that leaves other servers untouched.
-
-Signed-off-by: Javier Tia <javier@peridio.com>
----
- src/bin/sccache-dist/main.rs | 104 +++++++++++++++++++++++++++++++++++
- 1 file changed, 104 insertions(+)
-
-diff --git a/src/bin/sccache-dist/main.rs b/src/bin/sccache-dist/main.rs
-index 08635aa1..ceadf4ef 100644
---- a/src/bin/sccache-dist/main.rs
-+++ b/src/bin/sccache-dist/main.rs
-@@ -2288,6 +2288,110 @@ mod scheduler_tests {
-         assert!(cache.insert_at(&wrong_tc, &bad_path).is_err());
-     }
- 
-+    fn nonce_of(scheduler: &Scheduler, server_id: ServerId) -> ServerNonce {
-+        scheduler
-+            .servers
-+            .lock()
-+            .unwrap()
-+            .get(&server_id)
-+            .unwrap()
-+            .server_nonce
-+            .clone()
-+    }
-+
-+    // The fixed-timeout backstop must not reap a job the server still names in its
-+    // heartbeats, however old: a genuinely slow compile has to survive. Dropping the
-+    // "reported active" guard would reap every long compile at the timeout.
-+    #[test]
-+    fn test_backstop_keeps_a_started_job_the_server_still_reports_active() {
-+        let scheduler = Scheduler::new();
-+        let server_id = ServerId::new("10.42.0.2:10501".parse::<SocketAddr>().unwrap());
-+        let job_id = JobId(1000);
-+        insert_started_job(
-+            &scheduler,
-+            server_id,
-+            job_id,
-+            STARTED_COMPLETE_TIMEOUT + Duration::from_secs(10),
-+        );
-+        let nonce = nonce_of(&scheduler, server_id);
-+
-+        scheduler
-+            .handle_heartbeat_server(
-+                server_id,
-+                nonce,
-+                32,
-+                Box::new(TestJobAuthorizer),
-+                vec![job_id],
-+            )
-+            .unwrap();
-+
-+        assert!(scheduler.jobs.lock().unwrap().contains_key(&job_id));
-+        assert!(
-+            scheduler
-+                .servers
-+                .lock()
-+                .unwrap()
-+                .get(&server_id)
-+                .unwrap()
-+                .jobs_assigned
-+                .contains(&job_id)
-+        );
-+        assert_eq!(0, scheduler.jobs_reaped_started.load(Ordering::Relaxed));
-+    }
-+
-+    // A graceful deregister must drop the departing server's jobs from the
-+    // scheduler, or they count as in progress forever.
-+    #[test]
-+    fn test_deregister_drops_the_servers_jobs_and_counts_them() {
-+        let scheduler = Scheduler::new();
-+        let server_id = ServerId::new("10.42.0.2:10501".parse::<SocketAddr>().unwrap());
-+        let job_id = JobId(1000);
-+        insert_started_job(&scheduler, server_id, job_id, Duration::from_secs(1));
-+
-+        let res = scheduler.handle_deregister_server(server_id).unwrap();
-+
-+        assert!(res.success);
-+        assert!(scheduler.servers.lock().unwrap().is_empty());
-+        assert!(scheduler.jobs.lock().unwrap().is_empty());
-+        assert_eq!(1, scheduler.jobs_pruned.load(Ordering::Relaxed));
-+    }
-+
-+    #[test]
-+    fn test_deregister_of_an_unknown_server_is_a_successful_no_op() {
-+        let scheduler = Scheduler::new();
-+        let known = ServerId::new("10.42.0.2:10501".parse::<SocketAddr>().unwrap());
-+        insert_started_job(&scheduler, known, JobId(1000), Duration::from_secs(1));
-+        let unknown = ServerId::new("10.42.0.9:10501".parse::<SocketAddr>().unwrap());
-+
-+        let res = scheduler.handle_deregister_server(unknown).unwrap();
-+
-+        assert!(res.success);
-+        assert_eq!(1, scheduler.servers.lock().unwrap().len());
-+        assert_eq!(1, scheduler.jobs.lock().unwrap().len());
-+        assert_eq!(0, scheduler.jobs_pruned.load(Ordering::Relaxed));
-+    }
-+
-+    // The status response carries one entry per server with its own core count and
-+    // assigned-job count, alongside the aggregates.
-+    #[test]
-+    fn test_status_reports_each_server_with_its_load() {
-+        let scheduler = Scheduler::new();
-+        insert_busy_server(&scheduler, "10.42.0.1:10501", 3, None);
-+        insert_busy_server(&scheduler, "10.42.0.2:10501", 0, None);
-+
-+        let status = scheduler.handle_status().unwrap();
-+
-+        assert_eq!(2, status.num_servers);
-+        assert_eq!(64, status.num_cpus);
-+        let mut servers = status.servers.clone();
-+        servers.sort_by(|a, b| a.id.cmp(&b.id));
-+        assert_eq!("10.42.0.1:10501", servers[0].id);
-+        assert_eq!(32, servers[0].num_cpus);
-+        assert_eq!(3, servers[0].in_progress);
-+        assert_eq!("10.42.0.2:10501", servers[1].id);
-+        assert_eq!(0, servers[1].in_progress);
-+    }
-+
-     /// Blocks inside its first read until released, so an upload stays in flight.
-     struct GatedReader {
-         data: std::io::Cursor<Vec<u8>>,
 -- 
 Javier Tia
 
