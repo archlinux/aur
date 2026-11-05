@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/driftwood-game-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=driftwood-game-bin
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Open-world survival crafting game: gather, build, explore, fight, trade and learn magic"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=('libdecor: window decorations on GNOME Wayland'
 options=('!strip')   # self-contained .NET single-file bundle — stripping breaks it
 source_x86_64=("$url/releases/download/v$pkgver/Driftwood-v$pkgver-linux-x64.tar.gz")
 # The release's own tarball, hashed when it was built (publish-release.sh writes the .sha256).
-sha256sums_x86_64=('e372bec924e324c520c1e969ca0a273a389eec4d825bee3e8f4bba8727050557')
+sha256sums_x86_64=('a99908d589c1938bccb8c6eea44d2088db3e6f18efb409221ba6e5f442b11929')
 
 package() {
     local id=io.github.codingncaffeine.Driftwood
@@ -31,6 +31,8 @@ package() {
     install -dm755 "$pkgdir/usr/lib/driftwood-game" "$pkgdir/usr/bin"
     install -m755 "$src/Driftwood" "$pkgdir/usr/lib/driftwood-game/Driftwood"
     install -m644 "$src"/lib*.so* "$pkgdir/usr/lib/driftwood-game/"
+    # Epic, the co-op meeting place: the module and the game's credentials sit beside the program.
+    install -m644 "$src/Driftwood.Net.Eos.dll" "$src/eos.txt" "$pkgdir/usr/lib/driftwood-game/"
     ln -s /usr/lib/driftwood-game/Driftwood "$pkgdir/usr/bin/driftwood-game"
 
     # The tarball carries these for a player who unpacks it by hand and runs install.sh; here they
