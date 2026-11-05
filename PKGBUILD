@@ -1,6 +1,6 @@
 # Maintainer: auscaster <hi@auscaster.com>
 pkgname=nitromta-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Self-hosted mail delivery engine that speaks the Amazon SES v2 API"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ license=('Apache-2.0')
 depends=('glibc' 'ca-certificates')
 provides=('nitromta')
 conflicts=('nitromta')
-source_x86_64=("https://github.com/nitrosend/nitromta/releases/download/v0.2.1/nitromta-0.2.1-x86_64-linux.tar.gz")
-source_aarch64=("https://github.com/nitrosend/nitromta/releases/download/v0.2.1/nitromta-0.2.1-aarch64-linux.tar.gz")
-sha256sums_x86_64=('e71ee6b84332aba6210f81ac9d8982ac394ab00d344da5146def7cddd4a27925')
-sha256sums_aarch64=('304693698a880b7dd87563a19da7ecd3ec9cc56da94583b6baae04000461f678')
+source_x86_64=("https://github.com/nitrosend/nitromta/releases/download/v0.2.2/nitromta-0.2.2-x86_64-linux.tar.gz")
+source_aarch64=("https://github.com/nitrosend/nitromta/releases/download/v0.2.2/nitromta-0.2.2-aarch64-linux.tar.gz")
+sha256sums_x86_64=('73c427440c39cfa0fb176279fb4bc5297de470082d6c5e2ed9b1f6ed46d01915')
+sha256sums_aarch64=('433424470547b9131a54222aa1b2bcd84b526bce841876df7f4c3949c00d2e89')
 
 package() {
   cd "nitromta-${pkgver}-${CARCH}-linux"
