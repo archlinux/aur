@@ -1,6 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=nerd-fonts-apple-hinted
 _nfver=3.5.1
+_ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if main moved to another one
 # pkgver is derived at build time by pkgver() below: the highest font version
 # found inside the selected Apple fonts, plus the Nerd Fonts patcher version
 # (e.g. 22.0.5.4+nf3.5.1). The literal here is only a placeholder for the first
@@ -15,7 +16,7 @@ pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Ne
 arch=(any)
 url="https://developer.apple.com/fonts/"
 license=("custom")
-makedepends=("p7zip" "python" "python-fonttools" "python-skia-pathops" "parallel" "fontforge" "ttfautohint" "libarchive")
+makedepends=("git" "p7zip" "python" "python-fonttools" "python-skia-pathops" "parallel" "fontforge" "ttfautohint" "libarchive")
 optdepends=("afdko: better CFF/OTF hinting via otfautohint (HINT_ENGINE=cff)")
 options=(!strip !zipman)
 conflicts=("nerd-fonts-apple" "apple-fonts" "nerd-fonts-sf-mono")
@@ -27,18 +28,12 @@ source=(
   "SF-Arabic.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg"
   "NY.dmg::https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
   "font-patcher-${_nfver}::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
-  "otf2ttf.py"
-  "set_gasp.py"
   "cff_hint.py"
   "dedup_blues.py"
   "font_meta.py"
-  "fix_weights.py"
   "add_stat.py"
-  "strip_trak.py"
   "fix_names.py"
-  "make_features.py"
-  "even_spacing.py"
-  "pixel_grid.py"
+  "fonttune::git+${FONTTUNE_REPO:-https://github.com/gaou-piou/fonttune.git}#${FONTTUNE_REF:-branch=main}"
 )
 # Apple re-spins the DMGs without versioning, so those legitimately stay SKIP —
 # the real identity check is pkgver(), which reads the version out of the font
@@ -52,18 +47,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
-            '151f00af692183a62146453b709f04240dfe72fdc7a1b98a833f664177eacd21'
-            '0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99'
             '77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc'
             '980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194'
             '1297a4be9504032cc3457c3d50f30a21c3101f4203f5dd545c8d4c19f4859600'
-            'e475b94e90c3e569d51a24b3355e854db5195b4e161384896b7637cd42a2564e'
             '4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0'
-            'a45a8aa72da4175f1ac16141c6b2f5335d0aa402dcc58903bdd6a2622573eaa3'
             '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
-            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
-            'd286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b'
-            'b9b6e0a38ae470bc68106f9099cfc10e30774c6dd6377ac00c8bda52c109eccf')
+            'SKIP')
 
 # ── Versioning ──────────────────────────────────────────────────────────────
 #
@@ -1237,7 +1226,7 @@ PY
   for _f in "${_FEATURE_SKIP[@]}"; do
     _skip+=(--skip "$_f")
   done
-  python "$srcdir/make_features.py" --features "$FEATURE_DEFAULTS" \
+  python "$srcdir/fonttune/fonttune/steps/make_features.py" --features "$FEATURE_DEFAULTS" \
     ${_skip[@]+"${_skip[@]}"} -o "$srcdir/featured" "${_files[@]}"
   fi
 
@@ -1288,7 +1277,20 @@ pkgver() {
   printf '%s+nf%s\n' "${_apple//-/.}" "${_nfver//-/.}"
 }
 
+_check_fonttune() {
+  # fonttune is tracked at main (latest). Its API number only changes when a
+  # step interface breaks; then this package needs a matching update.
+  local _api
+  _api=$(sed -nE 's/^API *= *([0-9]+).*/\1/p' "$srcdir/fonttune/fonttune/__init__.py")
+  if [[ "$_api" != "$_ftapi" ]]; then
+    echo "Error: fonttune API is '${_api:-?}', this PKGBUILD expects $_ftapi." >&2
+    echo "       Update the PKGBUILD for the new fonttune, or pin FONTTUNE_REF=tag=<last-good>." >&2
+    exit 1
+  fi
+}
+
 build() {
+  _check_fonttune
   _load_options
 
 
@@ -1381,7 +1383,7 @@ build() {
   # patching, so every later step (and fontconfig) sees the corrected values.
   if [[ "$FIX_WEIGHTS" == true ]]; then
     echo "==> Normalising usWeightClass..."
-    python "$srcdir/fix_weights.py" "$srcdir/selected/"*
+    python "$srcdir/fonttune/fonttune/steps/fix_weights.py" "$srcdir/selected/"*
   fi
 
   # Apple's trak table goes first: every later step (conversion, patching,
@@ -1391,9 +1393,9 @@ build() {
     echo "==> Removing Apple's trak (size-specific tracking)..."
     if [[ "$TRAK_BAKE" != 0 ]]; then
       echo "    (baking the tracking at ${TRAK_BAKE}pt into the advance widths)"
-      python "$srcdir/strip_trak.py" --bake "$TRAK_BAKE" "$srcdir/selected/"*
+      python "$srcdir/fonttune/fonttune/steps/strip_trak.py" --bake "$TRAK_BAKE" "$srcdir/selected/"*
     else
-      python "$srcdir/strip_trak.py" "$srcdir/selected/"*
+      python "$srcdir/fonttune/fonttune/steps/strip_trak.py" "$srcdir/selected/"*
     fi
   fi
 
@@ -1415,7 +1417,7 @@ build() {
     printf "%b" "\e[1;34m==> INFO:\e[0m Converting static OTF→TTF...\n"
     find "$srcdir/selected" -name '*.otf' ! -name '._*' | sort | \
       parallel --will-cite -j"$(nproc)" \
-        'python "'"$srcdir/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
+        'python "'"$srcdir/fonttune/fonttune/steps/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
            -o "'"$srcdir/converted"'/{/.}.ttf" "{}"'
     # Variable TTFs and native TTFs pass through unchanged
     find "$srcdir/selected" -name '*.ttf' ! -name '._*' \
@@ -1480,7 +1482,7 @@ build() {
       printf "%b" "\e[1;34m==> INFO:\e[0m Converting patched OTF→TTF...\n"
       find "$srcdir/patched" -maxdepth 1 -name '*.otf' ! -name '._*' | sort | \
         parallel --will-cite -j"$(nproc)" \
-          'python "'"$srcdir/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
+          'python "'"$srcdir/fonttune/fonttune/steps/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
              -o "'"$srcdir/patched"'/{/.}.ttf" "{}" && rm -f "{}"'
     fi
     _hintsrc="$srcdir/patched"
@@ -1510,7 +1512,7 @@ build() {
     if (( ${#_esf[@]} )); then
       printf '%s\0' "${_esf[@]}" | \
         parallel --will-cite -0 -j"$(nproc)" \
-          python "$srcdir/even_spacing.py" "${_es[@]}" -o "$srcdir/spaced" {}
+          python "$srcdir/fonttune/fonttune/steps/even_spacing.py" "${_es[@]}" -o "$srcdir/spaced" {}
       for _f in "$srcdir/spaced"/*; do
         [[ -f "$_f" ]] && mv -f "$_f" "$_hintsrc/"
       done
@@ -1532,7 +1534,7 @@ build() {
       done
       printf '%s\0' "${_pgf[@]}" | \
         parallel --will-cite -0 -j"$(nproc)" \
-          python "$srcdir/pixel_grid.py" --ppem "$PIXEL_GRID" -o "$srcdir/gridded" {}
+          python "$srcdir/fonttune/fonttune/steps/pixel_grid.py" --ppem "$PIXEL_GRID" -o "$srcdir/gridded" {}
       for _f in "$srcdir/gridded"/*; do
         [[ -f "$_f" ]] && mv -f "$_f" "$_hintsrc/"
       done
@@ -1644,7 +1646,7 @@ build() {
     fi
     if compgen -G "$_gasp_dir/*.ttf" >/dev/null; then
       printf "%b" "\e[1;36m==> INFO:\e[0m Applying gasp mode '$GASP_MODE' to TTF output...\n"
-      python "$srcdir/set_gasp.py" "$GASP_MODE" "$_gasp_dir"/*.ttf
+      python "$srcdir/fonttune/fonttune/steps/set_gasp.py" "$GASP_MODE" "$_gasp_dir"/*.ttf
     fi
   fi
 
@@ -1684,6 +1686,9 @@ package() {
   fi
 
   install -d "$pkgdir/usr/share/fonts/apple"
+  # Which fonttune produced these fonts (build provenance).
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
 
   # Where the fonts to install live. Step 7 wrote the baked copies to
   # $srcdir/featured, which already contains exactly what this build would have

@@ -3,15 +3,8 @@
 !PKGBUILD
 !README.md
 !.SRCINFO
-!otf2ttf.py
-!set_gasp.py
 !cff_hint.py
 !dedup_blues.py
 !font_meta.py
-!fix_weights.py
 !add_stat.py
 !fix_names.py
-!make_features.py
-!strip_trak.py
-!even_spacing.py
-!pixel_grid.py
