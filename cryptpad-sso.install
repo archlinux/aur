@@ -1,0 +1,14 @@
+post_upgrade() {
+  # Since 1.0.0-7 the package doesn't install sso.js, whose example upstream deprecated: SSO is
+  # configured in CryptPad's administration panel now. pacman saved a changed sso.js as .pacsave on
+  # the upgrade to 1.0.0-7, or does now, which disabled SSO: move it back, as CryptPad still reads it.
+  local sso=/etc/webapps/cryptpad/sso.js
+  if (($(vercmp "$2" 1.0.0-8) < 0)) && [[ -f "$sso.pacsave" && ! -e "$sso" ]]; then
+    mv "$sso.pacsave" "$sso"
+    cat <<'MSG'
+/etc/webapps/cryptpad/sso.js is in place again: CryptPad still reads it, but it's deprecated and no
+longer part of the package. SSO is configured in CryptPad's administration panel now. Move the
+settings there, then delete sso.js and restart cryptpad.service.
+MSG
+  fi
+}

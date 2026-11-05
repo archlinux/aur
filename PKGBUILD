@@ -4,17 +4,16 @@
 
 pkgname=cryptpad-sso
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="SSO plugin for Cryptpad"
 arch=(any)
 url="https://github.com/cryptpad/sso"
 license=(AGPL-3.0-or-later)
 depends=('cryptpad>=2026.9.0')
 makedepends=(npm)
-# sso.js isn't installed any more: upstream deprecated its example, sso.example.js, as SSO is now
-# configured in CryptPad itself. It stays here as in earlier releases, so a changed sso.js isn't
-# removed on upgrade: pacman keeps it as sso.js.pacsave.
-backup=(etc/webapps/cryptpad/sso.js)
+# No sso.js any more: upstream deprecated its example, as SSO is configured in CryptPad's
+# administration panel now. An existing one is put back on upgrade (see cryptpad-sso.install).
+install=$pkgname.install
 options=(!strip !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('5e5b5b974c75be65a7bdb15953dcef0b5d42c39fe61dc2227e83dec7f630ba7e43b2f082e2458143eb44f94d1d6941076c3ab5ec3fe23832eb5d22e1acefd220')
