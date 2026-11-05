@@ -14,7 +14,7 @@
 
 pkgname=qoderwake-bin
 pkgver=1.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.com/'
@@ -47,4 +47,30 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s ../lib/qoderwake/qoderwake "${pkgdir}/usr/bin/qoderwake"
   ln -s ../lib/qoderwake/qodercli/qodercli-wake "${pkgdir}/usr/bin/qodercli-wake"
+
+  # Upstream ships no desktop integration; the product is a CLI plus a local
+  # web console. Add a launcher that starts the daemon and opens that console,
+  # using the QoderWake logo bundled in the runtime.
+  install -Dm644 "${srcdir}/resources/browser-connector/chrome-extension/qwork-logo-light.png" \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/qoderwake.png"
+  install -Dm644 "${srcdir}/resources/browser-connector/chrome-extension/icons/icon-128.png" \
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/qoderwake.png"
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/lib/qoderwake/qoderwake-console" <<'CONSOLE'
+#!/bin/sh
+# Desktop launcher: start the daemon and open the local console. `start --open`
+# waits for the daemon instead of racing it with a separate `portal` call.
+exec /usr/bin/qoderwake start --open
+CONSOLE
+
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/qoderwake.desktop" <<'DESKTOP'
+[Desktop Entry]
+Type=Application
+Name=QoderWake
+Comment=Open the local QoderWake console
+Exec=/usr/lib/qoderwake/qoderwake-console
+Icon=qoderwake
+Terminal=false
+Categories=Development;
+DESKTOP
 }
