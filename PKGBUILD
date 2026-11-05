@@ -1,32 +1,28 @@
-# Maintainer: Nogweii <me@aether.earth>
+# Maintainer: Nogweii <packages@nogweii.net>
 pkgname=alpm-html
 # renovate: datasource=gitlab-tags depName=archlinux/alpm-html registryUrl=https://code.aether.earth
 pkgver=0.10.0
 pkgrel=1
 pkgdesc="Generate a static site for browsing an Arch repo, styled like the main website."
 arch=(any)
-url="https://code.aether.earth/archlinux/alpm-html"
+url="https://code.aether.earth/nogweii/alpm-html/"
 license=('GPL3')
-depends=('pyalpm' 'python-jinja' 'python-inflect')
-optdepends=(
-  'python-daiquiri: For prettier verbose logs'
-  'python-htmlmin: Support minifying the generated HTML'
-)
+depends=('pyalpm' 'python-jinja' 'python-inflect' 'python-daiquiri')
 makedepends=('asciidoc')
-source=("https://code.aether.earth/archlinux/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('c33b09520f701fe5f139463c189d227749de7a95e9d531beea43093986f7d2db88011fc15200060db0d0c02f219d1392e3fe02d89abf686e5351ff719078c51c')
-b2sums=('b78656aa58b13d1ae2f8904b4313379e89e2dc1b8a26d5dc75835e920dd3dab37bb30caeead10b05e1815671e95b357285a3ad0c95f270afc33f71d9e200d806')
+source=("https://code.aether.earth/nogweii/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('3361c8030b578206983b26c3858afaf55c7103574c59bb5eeea0a6a5e2289ae6d24124399a3ab69ee7f09eb92800a5802274976da35560cd41f407fdf560073e')
+b2sums=('2a801232c0ebadb7b9b5862ce30dcedeff62a9a2f8b6081238ab0c990fde75626c31e68b9e709ffad90db7086b016d7190d36667a684eaa308b2a5e05d7597a2')
 
 build() {
-    cd "${srcdir}/$pkgname-v$pkgver"
-    a2x -d manpage -f manpage alpm-html.1.asciidoc
+  cd "${srcdir}/$pkgname-v$pkgver"
+  a2x -d manpage -f manpage alpm-html.1.asciidoc
 }
 
 package() {
-    cd "${srcdir}/$pkgname-v$pkgver"
+  cd "${srcdir}/$pkgname-v$pkgver"
 
-    install -D -m 0644 resources/* -t "${pkgdir}/usr/share/${pkgname}"
-    install -D -m 0755 alpm-html.py "${pkgdir}/usr/bin/alpm-html"
-    install -D -m 0644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}"
-    install -D -m 0644 -t "${pkgdir}/usr/share/man/man1/" alpm-html.1
+  install -D -m 0644 resources/* -t "${pkgdir}/usr/share/${pkgname}"
+  install -D -m 0755 alpm-html.py "${pkgdir}/usr/bin/alpm-html"
+  install -D -m 0644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}"
+  install -D -m 0644 -t "${pkgdir}/usr/share/man/man1/" alpm-html.1
 }
