@@ -1,6 +1,6 @@
 pkgbase = niri-tracker-bin
 	pkgdesc = Screen time tracking for the niri Wayland compositor (prebuilt binary)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Qiumix/niri-tracker
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = niri-tracker-bin
 	conflicts = niri-tracker
 	conflicts = niri-tracker-git
 	options = !strip
-	source_x86_64 = niri-tracker-bin-0.1.1.tar.gz::https://github.com/Qiumix/niri-tracker/releases/download/v0.1.1/niri-tracker-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5b0982f99ef70b0d363759d8033f05e95781c533954aa692d169a3498357d638
-	source_aarch64 = niri-tracker-bin-0.1.1.tar.gz::https://github.com/Qiumix/niri-tracker/releases/download/v0.1.1/niri-tracker-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 8bf9a04f31f54deea5312809a62d85e0678b8f404fa7400926cfd4c1dbc57a35
+	source_x86_64 = niri-tracker-bin-0.1.2.tar.gz::https://github.com/Qiumix/niri-tracker/releases/download/v0.1.2/niri-tracker-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a9ec4c18aabc5585306e9e0396ecc0a1716c66896dd4a05b5c405dd05be5ebfa
+	source_aarch64 = niri-tracker-bin-0.1.2.tar.gz::https://github.com/Qiumix/niri-tracker/releases/download/v0.1.2/niri-tracker-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 31f003098ef34fa9f17c21d0ce0da0615a5c09efb24d86ad5593955f493e0b54
 
 pkgname = niri-tracker-bin
