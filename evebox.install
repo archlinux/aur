@@ -7,13 +7,6 @@ post_install() {
 
       [Service]
       SupplementaryGroups=suricata
-
-==> Edit /etc/evebox/evebox.yaml (bind address, TLS), then:
-      systemctl enable --now evebox.service
-    The initial admin password is printed once in: journalctl -u evebox
-
-==> To run the server on a different host than Suricata, use
-    evebox-agent.service on the Suricata host (/etc/evebox/agent.yaml).
 EOF
 }
 

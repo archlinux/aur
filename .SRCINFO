@@ -1,7 +1,7 @@
 pkgbase = evebox-bin
 	pkgdesc = Web based Suricata EVE event viewer and alert management (static upstream binary)
 	pkgver = 0.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://evebox.org
 	install = evebox.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = evebox-bin
 	license = MIT
 	optdepends = suricata: produce EVE logs on this host (server with local input, or agent)
 	optdepends = suricata-nfqueue: same, Suricata built with NFQUEUE inline IPS support
-	optdepends = geoip-database: GeoLite2 City database in /usr/share/GeoIP for GeoIP enrichment
+	optdepends = geoipupdate: download the GeoLite2 City database for GeoIP enrichment
 	optdepends = elasticsearch: alternative event store instead of the built-in SQLite
 	provides = evebox
 	conflicts = evebox

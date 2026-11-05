@@ -3,7 +3,7 @@
 pkgname=evebox-bin
 _pkgname=evebox
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web based Suricata EVE event viewer and alert management (static upstream binary)"
 arch=('x86_64' 'aarch64')
 url="https://evebox.org"
@@ -12,7 +12,7 @@ depends=()                       # static musl binary, web UI is embedded
 optdepends=(
   'suricata: produce EVE logs on this host (server with local input, or agent)'
   'suricata-nfqueue: same, Suricata built with NFQUEUE inline IPS support'
-  'geoip-database: GeoLite2 City database in /usr/share/GeoIP for GeoIP enrichment'
+  'geoipupdate: download the GeoLite2 City database for GeoIP enrichment'  
   'elasticsearch: alternative event store instead of the built-in SQLite'
 )
 provides=("${_pkgname}")
