@@ -1,17 +1,21 @@
 pkgbase = baml
 	pkgdesc = BAML wrapper - toolchain manager and launcher (built from source)
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/BoundaryML/baml
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	options = !strip
+	options = !lto
+	options = !debug
 	makedepends = rust
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = gcc
-	source = baml-0.2.5.tar.gz::https://github.com/BoundaryML/baml/archive/refs/tags/baml-wrapper-0.2.5.tar.gz
-	sha256sums = f1539402dfeb4cfd6b4b14f4b21e5b290eb6fb23c965f61e0e5757570333f73d
+	makedepends = python
+	source = baml-0.3.0.tar.gz::https://github.com/BoundaryML/baml/archive/refs/tags/baml-wrapper-0.3.0.tar.gz
+	sha256sums = e5bc34eb29f88a5089f3a7e1c811f95fcf12d0254a952810e04cf252b29b40ab
 	provides = baml
 	conflicts = baml-bin
 
