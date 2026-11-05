@@ -13,7 +13,7 @@ _subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bilibili official desktop client.哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -74,7 +74,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _install_icons
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
