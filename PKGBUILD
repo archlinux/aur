@@ -3,19 +3,16 @@
 # AUR page: https://aur.archlinux.org/packages/qrow
 
 pkgname=qrow
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Query rows in tables, documents and databases from the terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/denisotree/qrow"
 license=('Apache-2.0')
 depends=()
-# tuitab is the same program under its former name.
-conflicts=('tuitab')
-replaces=('tuitab')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e739d90b9eda539010af549ba1bdb50b9d329712fc3aec519304b7d9119a2418')
+sha256sums=('dc29c6ee6808a6b14b528091681bb97e28fac880beb0b6e2fa23057b60334b93')
 
 prepare() {
     cd "$pkgname-$pkgver"

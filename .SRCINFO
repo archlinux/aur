@@ -1,6 +1,6 @@
 pkgbase = qrow
 	pkgdesc = Query rows in tables, documents and databases from the terminal
-	pkgver = 0.12.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/denisotree/qrow
 	arch = x86_64
@@ -8,9 +8,7 @@ pkgbase = qrow
 	license = Apache-2.0
 	makedepends = rust
 	makedepends = cargo
-	conflicts = tuitab
-	replaces = tuitab
-	source = qrow-0.12.0.tar.gz::https://github.com/denisotree/qrow/archive/refs/tags/v0.12.0.tar.gz
-	sha256sums = e739d90b9eda539010af549ba1bdb50b9d329712fc3aec519304b7d9119a2418
+	source = qrow-1.0.0.tar.gz::https://github.com/denisotree/qrow/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = dc29c6ee6808a6b14b528091681bb97e28fac880beb0b6e2fa23057b60334b93
 
 pkgname = qrow
