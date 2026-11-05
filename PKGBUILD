@@ -106,8 +106,9 @@ _geo_is_cn() {
   if [[ -s $_geo_cache ]] && (( $(stat -c %Y "$_geo_cache" 2>/dev/null || echo 0) > $(date +%s) - 86400 )); then
     cc=$(<"$_geo_cache")
   else
-    # api.ip.sb 对没有 User-Agent 的请求返回 403，必须带浏览器 UA
-    cc=$(curl -fsS --max-time 5 -A 'Mozilla/5.0' https://api.ip.sb/geoip 2>/dev/null \
+    # api.ip.sb 对没有 User-Agent 的请求返回 403，必须带浏览器 UA；
+    # 同时强制直连：环境里有 HTTPS_PROXY 时会从代理出口取到 US 等错误结果。
+    cc=$(curl -fsS --noproxy '*' --max-time 5 -A 'Mozilla/5.0' https://api.ip.sb/geoip 2>/dev/null \
       | sed -n 's/.*"country_code"[[:space:]]*:[[:space:]]*"\([A-Za-z]*\)".*/\1/p' | head -1)
     if [[ -n $cc ]]; then
       ( mkdir -p "${_geo_cache%/*}" && printf '%s' "$cc" >"$_geo_cache" ) 2>/dev/null || true
