@@ -3,6 +3,7 @@ pkgbase = battles-of-brass-git
 	pkgver = 1.0.r38.4d2284b
 	pkgrel = 1
 	url = https://github.com/BattlesOfBrass/BOB
+	install = battles-of-brass-git.install
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git

@@ -10,6 +10,7 @@ url='https://github.com/BattlesOfBrass/BOB'
 license=('GPL-3.0-only')
 depends=('java-runtime>=21')
 makedepends=('git' 'gradle' 'jdk21-openjdk')
+install="${pkgname}.install"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/BattlesOfBrass/BOB.git"
@@ -61,4 +62,21 @@ package() {
     "${pkgdir}/usr/share/pixmaps/bob.png"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Changelog for the upgrade message (see ${pkgname}.install).
+  # The hash of the currently installed version is read from pacman, so the
+  # list only contains commits that came in since the last update.
+  local _installed _old _log
+  _installed=$(pacman -Q "${pkgname}" 2>/dev/null | awk '{print $2}')
+  _old=${_installed%-*}   # strip pkgrel
+  _old=${_old##*.}        # keep the short commit hash
+  if [[ -n "${_old}" ]] && git cat-file -e "${_old}^{commit}" 2>/dev/null; then
+    _log=$(git log --no-decorate --format='  %h %s' -n 30 "${_old}..HEAD")
+  fi
+  if [[ -n "${_log}" ]]; then
+    # Strip control characters, since pacman prints this text as root
+    printf '%s\n' "${_log}" | sed 's/[[:cntrl:]]//g' |
+      install -Dm644 /dev/stdin \
+        "${pkgdir}/usr/share/doc/${pkgname}/changes.txt"
+  fi
 }

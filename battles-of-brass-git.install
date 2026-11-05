@@ -1,0 +1,9 @@
+post_upgrade() {
+    # $1 = new version, $2 = old version
+    local changes=/usr/share/doc/battles-of-brass-git/changes.txt
+
+    if [ -s "$changes" ]; then
+        echo ":: New commits since $2:"
+        cat "$changes"
+    fi
+}
