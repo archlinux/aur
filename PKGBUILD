@@ -1,8 +1,8 @@
-# Maintainer: TODO
+# Maintainer: Michael Gates <michael at belowthesalt . us>
 pkgname=python-ciscoisesdk
 _name=ciscoisesdk
 pkgver=2.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Cisco Identity Services Engine SDK for Python"
 arch=('any')
 url="https://github.com/CiscoISE/${_name}"
