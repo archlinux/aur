@@ -4,18 +4,19 @@
 
 pkgname=perl-javascript-minifier-xs
 _dist=JavaScript-Minifier-XS
-pkgver=0.15
-pkgrel=2
+pkgver=0.16
+pkgrel=1
 pkgdesc='XS based JavaScript minifier'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
 url="https://metacpan.org/dist/$_dist"
 _author=GTERMARS
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('5d9b034f58f0b6ff5b64647bd3c5a9ce05b2a70edee339fbc3173aee747cc050')
+sha256sums=('75034e876939ebc3dd48ce2ebaf06044b06ed57ab3a1863f053f950e984d9954')
 
 arch=(x86_64)
 depends=(perl)
+checkdepends=(perl-test-diaginc)
 options=('!emptydirs')
 
 build() {
