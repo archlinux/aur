@@ -13,7 +13,7 @@
 #   ENABLE_AVX=1 makepkg -si
 
 pkgname=lightpanda
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Headless browser designed for AI and automation - 11x faster than Chrome, 9x less memory"
 arch=('x86_64' 'aarch64')
@@ -24,22 +24,22 @@ makedepends=('zig>=0.17.0' 'rust' 'git')
 options=(!debug !lto)
 
 # Versions from .github/actions/install/action.yml at the ${pkgver} tag.
-_zig_v8=v0.5.9
+_zig_v8=v0.6.1
 _v8=15.5.35.13
 _v8_from_source=${LIGHTPANDA_V8_FROM_SOURCE:-0}
 
 source=("lightpanda_${pkgver}.tar.gz::https://github.com/lightpanda-io/browser/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6a7a274acfdbf6d87b573d1a90029d2e17f71f718f78b03099d96d48f514d64e')
+sha256sums=('6050074a29c249e929edb695cec3a454e6a3481625e74fabcec0534fa3fc8ab1')
 
 if [[ $_v8_from_source == 1 ]]; then
 	makedepends+=('python')
 else
 	_v8_url="https://github.com/lightpanda-io/zig-v8-fork/releases/download/${_zig_v8}"
-	source_x86_64=("libc_v8_${_v8}_x86_64.a::${_v8_url}/libc_v8_${_v8}_linux_x86_64.a")
-	source_aarch64=("libc_v8_${_v8}_aarch64.a::${_v8_url}/libc_v8_${_v8}_linux_aarch64.a")
-	sha256sums_x86_64=('eed0fa1a97d815e2f5000e7a29153d62e06ef92d2d80a024598701394e9322cb')
-	sha256sums_aarch64=('30edeb56ec8374364ccbb50965fc6671f3c95addf980b367d6bd4ef9d96cde34')
-	noextract=("libc_v8_${_v8}_x86_64.a" "libc_v8_${_v8}_aarch64.a")
+	source_x86_64=("libc_v8_${_v8}_${_zig_v8}_x86_64.a::${_v8_url}/libc_v8_${_v8}_linux_x86_64.a")
+	source_aarch64=("libc_v8_${_v8}_${_zig_v8}_aarch64.a::${_v8_url}/libc_v8_${_v8}_linux_aarch64.a")
+	sha256sums_x86_64=('a1e14e88d8b81619d1ee589683a853c4bde061f79959aed1fc1bd0620a26c370')
+	sha256sums_aarch64=('ae51df8bb52d9911808cac8fc1169d58f340f5e776f98aaf1cbcae5d27226c67')
+	noextract=("libc_v8_${_v8}_${_zig_v8}_x86_64.a" "libc_v8_${_v8}_${_zig_v8}_aarch64.a")
 fi
 
 prepare() {
@@ -75,7 +75,7 @@ build() {
 		fi
 		echo "Building V8 from source (this takes a while)"
 	else
-		_flags+=(-Dprebuilt_v8_path="${srcdir}/libc_v8_${_v8}_${CARCH}.a")
+		_flags+=(-Dprebuilt_v8_path="${srcdir}/libc_v8_${_v8}_${_zig_v8}_${CARCH}.a")
 	fi
 
 	zig build "${_flags[@]}" snapshot_creator -- src/snapshot.bin
