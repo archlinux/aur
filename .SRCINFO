@@ -1,0 +1,23 @@
+pkgbase = alex-git
+	pkgdesc = Android Logical Extractor - ADB-based mobile acquisition tool (git)
+	pkgver = 0.7.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/prosch88/ALEX
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = tk
+	depends = android-tools
+	depends = python-pillow
+	depends = python-numpy
+	optdepends = python-zeroconf: wireless ADB pairing discovery (else vendored via pip)
+	optdepends = python-qrcode: wireless ADB pairing QR codes (else vendored via pip)
+	provides = alex
+	conflicts = alex
+	conflicts = alex-bin
+	source = git+https://github.com/prosch88/ALEX.git
+	sha256sums = SKIP
+
+pkgname = alex-git
