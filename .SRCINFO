@@ -1,6 +1,6 @@
 pkgbase = gridcraft-bin
 	pkgdesc = Open-source native spreadsheet, Excel alternative (prebuilt binary)
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/storytold/gridcraft
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = gridcraft-bin
 	provides = gridcraft
 	conflicts = gridcraft
 	options = !strip
-	source_x86_64 = gridcraft-0.16.0-linux-x86_64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.16.0/gridcraft-0.16.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4c5c223186bd1e94fed9fedaf3cbf77a9ac96dd45a32bf36448fc023066f13df
-	source_aarch64 = gridcraft-0.16.0-linux-aarch64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.16.0/gridcraft-0.16.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 8c9384c6102b2f2a2d7d5e083f9bc3558d16555aef55dd4a445f142a43a89f17
+	source_x86_64 = gridcraft-0.16.1-linux-x86_64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.16.1/gridcraft-0.16.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 429e0334cdd30ed75ebff59453a644114c3cb7e3347991a81b32041d75f41fe4
+	source_aarch64 = gridcraft-0.16.1-linux-aarch64.tar.gz::https://github.com/storytold/gridcraft/releases/download/v0.16.1/gridcraft-0.16.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f580f5c22406e3781f9dac0f6be1e08de6a6e6e59046a92c9bebe1fc8a4fbd81
 
 pkgname = gridcraft-bin
