@@ -1,7 +1,7 @@
 pkgbase = qoderwake-cn-bin
 	pkgdesc = QoderWake 国内版 local CLI and daemon (official prebuilt Linux runtime)
 	pkgver = 1.2.11_cn
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qoder.cn/
 	arch = x86_64
 	arch = aarch64
