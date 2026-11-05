@@ -7,7 +7,7 @@
 # traceroute) that also installs /usr/bin/etr, hence the name and conflicts.
 
 pkgname=etr-terminal-bin
-pkgver=0.10.15
+pkgver=0.10.19
 pkgrel=1
 pkgdesc="Reconnecting remote shell over QUIC — a Rust implementation of Eternal Terminal (et)"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ source_x86_64=("etr-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/
                "etrs-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/etrs-linux-x86_64")
 source_aarch64=("etr-${pkgver}-linux-aarch64::${url}/releases/download/v${pkgver}/etr-linux-aarch64"
                 "etrs-${pkgver}-linux-aarch64::${url}/releases/download/v${pkgver}/etrs-linux-aarch64")
-sha256sums_x86_64=('aa923ba85c696adeb2586168afa92879b0ab9c76729c01da7e5947cdda093b1b'
-                   '31940c6f50228a8b7e6b00f119f9f00ce2ebe69fc4c233f0687d5245f80c2d70')
-sha256sums_aarch64=('74aaf1e1c6c9385413067bdbaa8634b2d121d0ae126b2b8d8daf91e6b091b3e3'
-                    'f47f6fb67f552ecb6a68bb80ff8bf72067bde3d1fb8713f22e286bc4b9d15c5a')
+sha256sums_x86_64=('257bc67b4e12e70413a83db1f6e75254bf6cb0352e6330313b108a2ba77b32bb'
+                   '25a5243e289a11638116545375b61aed0825dc9f53e9bc16f0626139ade1df8a')
+sha256sums_aarch64=('e9cd3fc3651be7452b9484b44fe018e4900ee949f626b684be2f85ff4920c084'
+                    '0d781587f6d096f00c2311799ee852ea70c22b2b9941aa4e04522c75603904b9')
 
 # Arch-INDEPENDENT source, alongside the per-arch binaries above: one tarball carrying both
 # man pages and bash/zsh/fish completions for both binaries, built by the `extras` job in
@@ -38,7 +38,7 @@ sha256sums_aarch64=('74aaf1e1c6c9385413067bdbaa8634b2d121d0ae126b2b8d8daf91e6b09
 # release workflow proves it rather than asserting it: both Linux runners generate a set
 # natively and the job hard-fails if they differ by a byte.
 source=("etr-extras-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/etr-extras.tar.gz")
-sha256sums=('0fc8b6f839b83062b6e411e2a5744caceb9a192f2a0dd2dba2062a0b34e3cc3a')
+sha256sums=('9a48fe419d6cd1350519ca57687eb08ac66c83ab24ca6468b3971e6fc5aba4c4')
 
 package() {
     install -Dm755 "${srcdir}/etr-${pkgver}-linux-${CARCH}" "${pkgdir}/usr/bin/etr"
