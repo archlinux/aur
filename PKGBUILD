@@ -1,7 +1,7 @@
 # Maintainer: javy
 
 pkgname=libundr
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('git' 'gcc' 'make')
 provides=('undr')
 conflicts=('undr')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('80f22bd1906b5acc2abb3f0eb10712b9d60419ae9bde4db56bba113fe0950317b0feb8f2ba4771e145ea16085dd7abd83e33e37a25fd1cf0a34fee904b40a517')
+sha512sums=('397b7aee2a001951e513cdad0baec3088b755f79044f9adcce33a2c58ccb4397e797066751c47c800e1e8aa06f5ac5b2078d8d8211faf764aff52c8dbcc95e1b')
 
 build() {
   cd "${pkgname}"
