@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-autoreject
 _name=${pkgname#python-}
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Python package for automatically rejecting bad trials and sensors in EEG/MEG data"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('202d4904e31ddce022c47bca4f7a78f83d92644039750cdb6a56b9b76539e41d')
+sha256sums=('b5ad629f9a644cb851ba90754cc33fd1b97e7a8b496f996357205c69fd06eb7f')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
