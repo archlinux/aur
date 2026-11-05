@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Make messy Linux command output readable"
 
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('72a920ce1cab6370255d2cdd7c1b9e58fd8385452935c170aa31c794df912373')
+sha256sums=('4d980e723e512f0d3848a749ff86b491d4762da01cd98e80f93559561aa325fc')
 
 
 build() {
