@@ -1,6 +1,6 @@
 pkgbase = memex-bin
 	pkgdesc = Search and resume Claude Code, Codex, Pi, OpenCode, Copilot and Cursor transcripts (prebuilt binary)
-	pkgver = 0.31.1
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/nicosuave/memex
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = memex-bin
 	depends = openssl
 	provides = memex
 	conflicts = memex
-	source = LICENSE-0.31.1::https://raw.githubusercontent.com/nicosuave/memex/v0.31.1/LICENSE
+	source = LICENSE-0.32.0::https://raw.githubusercontent.com/nicosuave/memex/v0.32.0/LICENSE
 	sha256sums = 9a5ac0bc0f2967d314a6b4d69e503a90660b24ef145fc465d80b49906ddfd11b
-	source_x86_64 = memex-bin-0.31.1-x86_64.tar.gz::https://github.com/nicosuave/memex/releases/download/v0.31.1/memex-0.31.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6b814fd75def20dbdcea845aee19f63bb1d36581da6e4f71a314d2a9a87e77ed
-	source_aarch64 = memex-bin-0.31.1-aarch64.tar.gz::https://github.com/nicosuave/memex/releases/download/v0.31.1/memex-0.31.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0447fe27d9a09067f3fab22e8e9b2d852a8c6654eedeb11756e80fc597493143
+	source_x86_64 = memex-bin-0.32.0-x86_64.tar.gz::https://github.com/nicosuave/memex/releases/download/v0.32.0/memex-0.32.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7a436d76b3ce442e7fbd9db8730faf9b0578e973d83709833657d00124cffd0c
+	source_aarch64 = memex-bin-0.32.0-aarch64.tar.gz::https://github.com/nicosuave/memex/releases/download/v0.32.0/memex-0.32.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8f273c198336dfe7af057db69a0225e9398a3c3382c51928fd8b5508187a9809
 
 pkgname = memex-bin
