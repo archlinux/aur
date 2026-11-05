@@ -2,7 +2,7 @@
 
 pkgname=storagesifter-bin
 _name=${pkgname%-bin}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A fast, GPU-accelerated disk-usage treemap visualizer'
 arch=(x86_64)
@@ -25,9 +25,9 @@ _rawurl=https://raw.githubusercontent.com/Fopull-LLC/StorageSifter/refs/tags/v$p
 source=($_name-$pkgver-CHANGELOG.md::$_rawurl/CHANGELOG.md
         $_name-$pkgver-com.fopull.StorageSifter.metainfo.xml::$_rawurl/packaging/com.fopull.StorageSifter.metainfo.xml)
 source_x86_64=(https://github.com/Fopull-LLC/StorageSifter/releases/download/v$pkgver/$_name-v$pkgver-x86_64-linux.tar.gz)
-b2sums=('ffb74fb2abdb3226bb827a329609a1f3712d187f82b439852f23c61b310bc9e4cb6ca881c1864f07323a0bdfdcfb5545dd210ed4029c0ec044963c68c67754bd'
+b2sums=('b891f4660ef38b2598e36c83f0003b30b0956750550b6ce673a34fd254f9559fed7193c9d552f01e8b1fc500e7cc3494820d310d6f1e8559c5ba3d3528a2ce83'
         '3d36c479a85a84380d3d6eff2fabe698b6c0064059b363fcac38c38ccb631e4798e595687cd082b272d0cffa37bf791a4bf486dc2c4e3bc1aac3b0c6a6f99f65')
-b2sums_x86_64=('afc0866bf5e5ec32912da7a128b11d3d2d6c1e14c6e4fab8cb01e35a3cc234f6a1aaebae0b05d03d7d726253362a523ff95343c304e24be9a4a2d93276e07cbd')
+b2sums_x86_64=('a5f7dd459c595f81c8a8c8778ffda13dd5d26f3ab7a022cde6d280808ca6e1a0c3fddc36439907ab021acb7bc8411a36c2952d5b48ff7caf2a7ec3ed93554a67')
 
 package() {
     cd $_name-v$pkgver-$CARCH-linux
