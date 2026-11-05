@@ -8,7 +8,7 @@
 # Maintainer: venator <venator at tutamail dot com>
 
 pkgname=skwir-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (the release build)'
 arch=('x86_64')
@@ -54,7 +54,7 @@ conflicts=('skwir' 'skwir-mermaid' 'skwir-mupdf')
 options=('!strip' '!debug')
 source=("skwir-$pkgver-linux-x86_64.tar.gz::$_repo/releases/download/v$pkgver/skwir-$pkgver-linux-x86_64.tar.gz")
 # Filled by aur-prepare with the release's.
-sha256sums=('e8d5bba324749d01bd96d04e8e48142a044e1c822db98ad5e868ca4ce3c4f31c')
+sha256sums=('d60870b5354eb03cb767f4db237371068ef324187820cd4d17e9fefbdb17aaef')
 
 package() {
   install -d "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses"
