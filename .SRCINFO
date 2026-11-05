@@ -1,7 +1,7 @@
 pkgbase = crit
 	pkgdesc = Review AI coding agents' plans, diffs and running apps in the browser, local-first
 	pkgver = 0.23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomasz-tomczyk/crit
 	arch = x86_64
 	arch = aarch64

@@ -2,7 +2,7 @@
 
 pkgname=crit
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Review AI coding agents' plans, diffs and running apps in the browser, local-first"
 arch=('x86_64' 'aarch64')
 url='https://github.com/tomasz-tomczyk/crit'
@@ -51,7 +51,9 @@ check() {
   # Tests detect default branch from the cwd's repo which causes issues,
   # making a repo for the tests to run in solves this
   git init -q
-  go test ./...
+  # These two assume 127.0.0.1:19999 is available, but that might not be the
+  # case on all hosts (e.g. Netdata listens there by default), so skip the tests
+  go test -skip 'TestSmokeTest_ConnectionRefused|TestRunLive_SmokeFailFatal' ./...
 }
 
 package() {
