@@ -5,7 +5,6 @@ pkgbase = kodi-addon-script-module-inputstreamhelper
 	url = https://github.com/emilsvennesson/script.module.inputstreamhelper
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = kodi-addon-inputstream-adaptive
 	source = https://github.com/emilsvennesson/script.module.inputstreamhelper/releases/download/v0.8.6/script.module.inputstreamhelper-0.8.6.zip
 	sha256sums = 9186e70bc29a16f24213a32edbb5afc14747da143a51e4be687c1939e40cf088

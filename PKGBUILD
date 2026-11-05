@@ -8,7 +8,6 @@ _gitname=script.module.inputstreamhelper
 arch=('any')
 url="https://github.com/emilsvennesson/${_gitname}"
 license=('MIT')
-makedepends=('git')
 depends=('kodi-addon-inputstream-adaptive')
 source=("https://github.com/emilsvennesson/${_gitname}/releases/download/v${pkgver}/${_gitname}-${pkgver}.zip")
 sha256sums=('9186e70bc29a16f24213a32edbb5afc14747da143a51e4be687c1939e40cf088')
