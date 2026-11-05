@@ -2,7 +2,7 @@
 
 pkgname=dsh-tauri-desktop-bin
 # 跟随上游稳定版升级，打包发行号从 1 重新开始。
-pkgver=0.30.3
+pkgver=0.30.4
 pkgrel=1
 pkgdesc='Native desktop application for DeepSeek Harness (official binary)'
 arch=('x86_64')
@@ -66,7 +66,7 @@ sha256sums=(
 )
 source_x86_64=("${url}/releases/download/v${pkgver}/Deepseek.Harness.Desktop_${pkgver}_amd64.deb")
 # 使用当前 GitHub 发布资产公布的 SHA-256 校验预编译包。
-sha256sums_x86_64=('6023e0721f0931766921475e5adaca0865dfbe534611b9f36d92ddd40c7c39ba')
+sha256sums_x86_64=('126ca950d3a36b4d0965bf30ca5fdb4ec5e0238de1a4b7b54528941ee2d67ff8')
 
 # 安装官方 deb 的完整资源树，补全协议入口并收录上游许可。
 package() {
