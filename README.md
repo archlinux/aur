@@ -617,6 +617,13 @@ replacing the static Display/Text/Rounded by cuts of a variable font that has
 no Rounded. **`HINTING` under `hintslight`:** FreeType's autohinter ignores the
 bytecode, so ttfautohint only pays off with `hintmedium`/`hintfull`.
 
+**`OTF2TTF` (default `true`).** With `HINTING=false` the static OTFs are still
+converted to TrueType outlines (cu2qu, no ttfautohint). At `hintslight`
+FreeType runs its autohinter on TrueType outlines (it snaps the x-height and
+horizontal stems) but the native CFF engine on OTF, and Apple's OTFs carry no
+CFF hints, so nothing gets snapped. `OTF2TTF=false` keeps the OTFs;
+`HINTING=true HINT_ENGINE=cff` also keeps them.
+
 ## Verifying on your own system
 
 1. **Effective GTK4 settings:** see the Python snippet in §4.

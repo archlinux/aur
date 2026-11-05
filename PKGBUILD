@@ -94,6 +94,17 @@ sha256sums=('SKIP'
 #                            When NERD_PATCH=false + cff engine: hints OTFs in place,
 #                              output stays OTF (no TTF conversion).
 #
+#  OTF2TTF   true/false      Convert the static OTFs to TrueType outlines (default: true,
+#                            except with HINTING=true HINT_ENGINE=cff, which keeps OTF).
+#                            Only matters with HINTING=false: ttfautohint is skipped
+#                            but the cu2qu conversion still happens. Why: under
+#                            hintslight FreeType runs its autohinter on TrueType
+#                            outlines (snaps x-height / horizontal stems) but the
+#                            native CFF engine on OTF, and Apple's OTFs carry no
+#                            hints, so nothing gets snapped. ttfautohint bytecode
+#                            itself is ignored at hintslight, so skipping it costs
+#                            nothing. HINTING=true + ttfautohint always converts.
+#
 #  HINT_ENGINE  ttfautohint|cff   Hinting backend (default: ttfautohint)
 #                            ttfautohint: TrueType bytecode hints (best for screen/
 #                              terminal/Latin; requires TTF, converts OTF→TTF).
@@ -711,6 +722,25 @@ _resolve_options() {
     echo "Error: HINT_ENGINE='$HINT_ENGINE' invalid (use 'ttfautohint' or 'cff')."; exit 1
   fi
 
+  # ── OTF → TTF conversion ───────────────────────────────────────────────────
+  # Implied by HINTING=true + ttfautohint, impossible with the cff engine; only
+  # a free choice when hinting is off.
+  if [[ "$HINTING" == true ]]; then
+    if [[ "$HINT_ENGINE" == ttfautohint ]]; then OTF2TTF=true; else OTF2TTF=false; fi
+  else
+    if [[ "$_interactive" == true && -z "${OTF2TTF:-}" ]]; then
+      echo ""
+      echo "  Note: at hintslight FreeType only snaps TrueType outlines; Apple's OTFs"
+      echo "        have no CFF hints, so they stay unsnapped. Converting needs no ttfautohint."
+      _ask_yn "Convert OTF to TTF outlines (no hinting)" y
+      [[ "$_yn" =~ ^[yY]$ ]] && OTF2TTF=true || OTF2TTF=false
+    fi
+    OTF2TTF="${OTF2TTF:-true}"
+  fi
+  if [[ "$OTF2TTF" != true && "$OTF2TTF" != false ]]; then
+    echo "Error: OTF2TTF='$OTF2TTF' invalid (use true or false)."; exit 1
+  fi
+
   # ── Hinting preset (ttfautohint only) ──────────────────────────────────────
   if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
     if [[ "$_interactive" == true && -z "${HINT_PRESET:-}" && -z "${HINT_MODE:-}" ]]; then
@@ -991,7 +1021,7 @@ _resolve_options() {
     fi
     printf "    gasp=%s\n" "$GASP_MODE"
   else
-    printf "  HINTING:       false\n"
+    printf "  HINTING:       false  (OTF2TTF=%s)\n" "$OTF2TTF"
   fi
   printf "  FEATURES:      %s%s\n" \
     "${FEATURE_DEFAULTS:-<none baked>}" \
@@ -1016,6 +1046,7 @@ _resolve_options() {
     echo "STRIP_TRAK=$STRIP_TRAK"
     echo "TRAK_BAKE=$TRAK_BAKE"
     echo "HINTING=$HINTING"
+    echo "OTF2TTF=$OTF2TTF"
     echo "HINT_ENGINE=$HINT_ENGINE"
     echo "HINT_PRESET=${HINT_PRESET:-}"
     echo "HINT_MODE=${HINT_MODE:-}"
@@ -1062,7 +1093,7 @@ _load_options() {
   [[ -f "$srcdir/.build_opts" ]] || { echo "Error: missing .build_opts; run prepare() first."; exit 1; }
   while IFS='=' read -r _k _v; do
     case "$_k" in
-      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|STRIP_TRAK|TRAK_BAKE|HINTING|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
+      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|STRIP_TRAK|TRAK_BAKE|HINTING|OTF2TTF|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
       FEATURE_DEFAULTS|FEATURE_FROM_CONF|FEATURE_FAMILY| \
@@ -1318,8 +1349,8 @@ build() {
   # cubics to quadratic splines while preserving the name table. The 'cff' engine
   # keeps OTFs intact and is handled in step 5.
   local _patchsrc
-  if [[ "$NERD_PATCH" == false && "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
-    printf "%b" "\e[1;34m==> INFO:\e[0m Converting static OTF→TTF for ttfautohint...\n"
+  if [[ "$NERD_PATCH" == false && "$OTF2TTF" == true ]]; then
+    printf "%b" "\e[1;34m==> INFO:\e[0m Converting static OTF→TTF...\n"
     find "$srcdir/selected" -name '*.otf' ! -name '._*' | sort | \
       parallel --will-cite -j"$(nproc)" \
         'python "'"$srcdir/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
@@ -1382,9 +1413,9 @@ build() {
     # The ttfautohint engine needs TrueType glyf outlines, so convert any patched
     # OTFs to TTF in place. (The cff engine only runs when NERD_PATCH=false, so a
     # patched tree never feeds it.)
-    if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]] && \
+    if [[ "$OTF2TTF" == true ]] && \
        compgen -G "$srcdir/patched/*.otf" >/dev/null; then
-      printf "%b" "\e[1;34m==> INFO:\e[0m Converting patched OTF→TTF for ttfautohint...\n"
+      printf "%b" "\e[1;34m==> INFO:\e[0m Converting patched OTF→TTF...\n"
       find "$srcdir/patched" -maxdepth 1 -name '*.otf' ! -name '._*' | sort | \
         parallel --will-cite -j"$(nproc)" \
           'python "'"$srcdir/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
@@ -1542,6 +1573,8 @@ build() {
       _out="$srcdir/patched/hinted"
     elif [[ "$NERD_PATCH" == true ]]; then
       _out="$srcdir/patched"
+    elif [[ "$OTF2TTF" == true ]]; then
+      _out="$srcdir/converted"
     fi
     _bake_features "$_out"
   fi
@@ -1550,7 +1583,7 @@ build() {
 package() {
   # Reuse the single source of truth written by prepare(); makepkg runs each
   # function in a fresh shell, so nothing is inherited.
-  local HINTING NERD_PATCH WANT_VARIABLE HINT_ENGINE FEATURE_DEFAULTS
+  local HINTING OTF2TTF NERD_PATCH WANT_VARIABLE HINT_ENGINE FEATURE_DEFAULTS
   _load_options
 
   # Step 7 of build() wrote the baked fonts here; they are the final artefacts.
@@ -1578,6 +1611,8 @@ package() {
     # font-patcher emits TTF for TTF inputs and OTF for OTF inputs (e.g. SF
     # Mono), so install both.
     _src="$srcdir/patched"; _allow_ttf=true
+  elif [[ "$OTF2TTF" == true ]]; then
+    _src="$srcdir/converted"; _allow_ttf=true
   fi
 
   if compgen -G "$_src/*.otf" >/dev/null; then
