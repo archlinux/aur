@@ -2,7 +2,7 @@ pkgbase = ord
 	pkgdesc = Process text through customizable LLM templates.
 	pkgver = 2.2.0
 	pkgrel = 1
-	url = https://gitlab.com/EddieBrunstedt/ord
+	url = https://github.com/EddieBrunstedt/ord
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = ord
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = ord-2.2.0.tar.gz::https://gitlab.com/EddieBrunstedt/ord/-/archive/2.2.0/ord-2.2.0.tar.gz
+	source = ord-2.2.0.tar.gz::https://github.com/EddieBrunstedt/ord/archive/refs/tags/2.2.0.tar.gz
 	sha256sums = a3b4c52066cd6d8425238a86108d3d2f9378d9975ac06478a2ae2dea0bc3c27d
 
 pkgname = ord

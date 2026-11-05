@@ -5,12 +5,12 @@ pkgver=2.2.0
 pkgrel=1
 pkgdesc="Process text through customizable LLM templates."
 arch=('x86_64')
-url="https://gitlab.com/EddieBrunstedt/ord"
+url="https://github.com/EddieBrunstedt/ord"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'openssl')
 makedepends=('git' 'rust' 'cargo')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/EddieBrunstedt/ord/-/archive/$pkgver/ord-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a3b4c52066cd6d8425238a86108d3d2f9378d9975ac06478a2ae2dea0bc3c27d')
 
 build() {
