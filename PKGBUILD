@@ -10,7 +10,7 @@ _nfver=3.5.1
 # families (SF Mono alone gives 18.0.1.1+nf3.5.1), restore both lines before
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.0.5.4+nf3.5.1
-pkgrel=9
+pkgrel=10
 pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
 arch=(any)
 url="https://developer.apple.com/fonts/"
@@ -37,6 +37,7 @@ source=(
   "strip_trak.py"
   "fix_names.py"
   "make_features.py"
+  "even_spacing.py"
 )
 # Apple re-spins the DMGs without versioning, so those legitimately stay SKIP —
 # the real identity check is pkgver(), which reads the version out of the font
@@ -59,7 +60,8 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
             '4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0'
             'a45a8aa72da4175f1ac16141c6b2f5335d0aa402dcc58903bdd6a2622573eaa3'
             '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
-            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e')
+            '200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e'
+            'd286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b')
 
 # ── Versioning ──────────────────────────────────────────────────────────────
 #
@@ -147,6 +149,37 @@ sha256sums=('968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918'
 #                            SF Pro Text -12 (Apple tightens it). Larger text is
 #                            a little looser than Apple would set it. 0 = plain
 #                            design widths. Not applied to variable fonts.
+#
+#  EVEN_SPACING  ""|all|latin,greek,cyrillic   (default: none)
+#                            Evens out the optical gap between letter pairs with a
+#                            new GPOS kern lookup (even_spacing.py). For every
+#                            lowercase and every uppercase pair it measures the
+#                            area between the outlines up to x-height / cap height
+#                            and moves the pair towards the median gap of its
+#                            script. Pairs Apple already kerned are left alone;
+#                            accented letters follow their base letter. Applied to
+#                            every family, every weight, before hinting; only GPOS
+#                            changes, so it is independent of HINTING and of the
+#                            renderer. SF Mono (monospaced) and fonts without a
+#                            kern feature are skipped with a note.
+#                            Calibrated per font: depth and strength are fitted to
+#                            the pairs Apple kerned by hand (SF Pro Text: 5195
+#                            pairs, depth 0.28, strength 0.40, r=0.38; gap spread
+#                            std 53.8 -> 44.5 units/1000). Measured 2026-11-05.
+#  EVEN_PPEM     16          target size: max kern 1000/ppem (~1px), min 100/ppem
+#  EVEN_STRENGTH 0-1.5 / EVEN_DEPTH 0.05-0.6 / EVEN_MAX / EVEN_MIN   (default auto)
+#                            override the calibration (see even_spacing.py --help)
+#
+#  Not carried over from ttf-akt-hinted: REGULAR_WGHT=auto. It cuts a lighter
+#  Regular from a variable font so the horizontal bars land on whole pixels at
+#  16 ppem. Apple's static Regular is the VF at wght 400 (bars 1.27 px, stem
+#  1.36 px) and fit_weight.py puts the best fit at wght 390: 2% less ink, no
+#  visible change, and it would mean replacing the static Display/Text/Rounded
+#  files by cuts of a VF that has no Rounded. Not worth it here.
+#
+#  Under GNOME's hintslight FreeType uses its own autohinter and ignores the
+#  ttfautohint bytecode, so HINTING=true only pays off with hintmedium/hintfull
+#  (measured on Akt: identical rendering with and without under slight).
 #
 #  ── ttfautohint tuning ──
 #  HINT_PRESET  name         Named bundle of ttfautohint flags (default: balanced)
@@ -912,6 +945,34 @@ _resolve_options() {
     fi
   fi
 
+  # ── Optical spacing (see the header) ──────────────────────────────────────
+  if [[ "$_interactive" == true && "${EVEN_SPACING+set}" != set ]]; then
+    echo ""
+    echo "  Some letter pairs are spaced unevenly (e.g. Greek \"λώ\" tight, \"ει\" loose)."
+    _ask_choice "Even out spacing with kern pairs" none \
+      "none:as Apple designed it (default)" \
+      "all:Latin, Greek and Cyrillic" \
+      "greek:Greek only" \
+      "latin:Latin only" \
+      "custom:type a list, e.g. latin,greek"
+    case $_choice in
+      none)   EVEN_SPACING="" ;;
+      custom) read -r -p "  scripts: " EVEN_SPACING || EVEN_SPACING="" ;;
+      *)      EVEN_SPACING=$_choice ;;
+    esac
+  fi
+  EVEN_SPACING="${EVEN_SPACING:-}"
+  EVEN_PPEM="${EVEN_PPEM:-16}"
+  EVEN_STRENGTH="${EVEN_STRENGTH:-auto}"; EVEN_DEPTH="${EVEN_DEPTH:-auto}"
+  EVEN_MAX="${EVEN_MAX:-auto}"; EVEN_MIN="${EVEN_MIN:-auto}"
+  if [[ ! "$EVEN_SPACING" =~ ^(|all|(latin|greek|cyrillic)(,(latin|greek|cyrillic))*)$ ]]; then
+    echo "Error: EVEN_SPACING must be empty, all, or a comma list of latin,greek,cyrillic."; exit 1
+  fi
+  for _v in EVEN_PPEM EVEN_STRENGTH EVEN_DEPTH EVEN_MAX EVEN_MIN; do
+    [[ "${!_v}" == auto || "${!_v}" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { echo "Error: $_v='${!_v}' must be a number."; exit 1; }
+  done
+  [[ "$EVEN_PPEM" != auto ]] || EVEN_PPEM=16
+
   # ── Build summary ─────────────────────────────────────────────────────────
   echo ""
   echo "  ── Build summary ───────────────────────────────────────"
@@ -935,6 +996,7 @@ _resolve_options() {
   printf "  FEATURES:      %s%s\n" \
     "${FEATURE_DEFAULTS:-<none baked>}" \
     "${FEATURE_FAMILY:+  (family suffix '$FEATURE_FAMILY')}"
+  printf "  EVEN_SPACING:  %s\n" "${EVEN_SPACING:-<none>}"
   echo ""
   _show "$( [[ "$WANT_SF_PRO"     == true ]] && echo "x" || echo " " )" "SF Pro      ${SF_PRO_SUBS:+(subfamilies: $SF_PRO_SUBS)}"
   _show "$( [[ "$WANT_SF_COMPACT" == true ]] && echo "x" || echo " " )" "SF Compact  ${SF_COMPACT_SUBS:+(subfamilies: $SF_COMPACT_SUBS)}"
@@ -967,6 +1029,12 @@ _resolve_options() {
     echo "FEATURE_DEFAULTS=$FEATURE_DEFAULTS"
     echo "FEATURE_FROM_CONF=$FEATURE_FROM_CONF"
     echo "FEATURE_FAMILY=$FEATURE_FAMILY"
+    echo "EVEN_SPACING=$EVEN_SPACING"
+    echo "EVEN_PPEM=$EVEN_PPEM"
+    echo "EVEN_STRENGTH=$EVEN_STRENGTH"
+    echo "EVEN_DEPTH=$EVEN_DEPTH"
+    echo "EVEN_MAX=$EVEN_MAX"
+    echo "EVEN_MIN=$EVEN_MIN"
     echo "WANT_SF_PRO=$WANT_SF_PRO"
     echo "WANT_SF_COMPACT=$WANT_SF_COMPACT"
     echo "WANT_SF_MONO=$WANT_SF_MONO"
@@ -998,6 +1066,7 @@ _load_options() {
       HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
       HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
       FEATURE_DEFAULTS|FEATURE_FROM_CONF|FEATURE_FAMILY| \
+      EVEN_SPACING|EVEN_PPEM|EVEN_STRENGTH|EVEN_DEPTH|EVEN_MAX|EVEN_MIN| \
       WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY| \
       SF_PRO_SUBS|SF_COMPACT_SUBS|NY_SUBS)
         printf -v "$_k" '%s' "$_v" ;;
@@ -1324,6 +1393,35 @@ build() {
     _hintsrc="$srcdir/patched"
   else
     _hintsrc="$_patchsrc"
+  fi
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # Step 4b — Optical spacing (EVEN_SPACING)
+  # ══════════════════════════════════════════════════════════════════════════
+  # After conversion/patching and before hinting: only GPOS changes and
+  # ttfautohint / otfautohint keep it. Rewrites the files of $_hintsrc in place
+  # (they are build copies, never the downloaded sources).
+  if [[ -n "$EVEN_SPACING" ]]; then
+    printf "%b" "\e[1;35m==> INFO:\e[0m Evening out $EVEN_SPACING spacing with kern pairs...\n"
+    local -a _es=(--script "$EVEN_SPACING" --ppem "$EVEN_PPEM")
+    local _o _n
+    for _o in strength:EVEN_STRENGTH depth:EVEN_DEPTH max:EVEN_MAX min:EVEN_MIN; do
+      _n=${_o#*:}
+      [[ "${!_n}" == auto ]] || _es+=("--${_o%%:*}" "${!_n}")
+    done
+    mkdir -p "$srcdir/spaced"
+    local -a _esf=()
+    for _f in "$_hintsrc"/*.ttf "$_hintsrc"/*.otf; do
+      [[ -f "$_f" && "$(basename "$_f")" != ._* ]] && _esf+=("$_f")
+    done
+    if (( ${#_esf[@]} )); then
+      printf '%s\0' "${_esf[@]}" | \
+        parallel --will-cite -0 -j"$(nproc)" \
+          python "$srcdir/even_spacing.py" "${_es[@]}" -o "$srcdir/spaced" {}
+      for _f in "$srcdir/spaced"/*; do
+        [[ -f "$_f" ]] && mv -f "$_f" "$_hintsrc/"
+      done
+    fi
   fi
 
   # ══════════════════════════════════════════════════════════════════════════

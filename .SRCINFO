@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-apple-hinted
 	pkgdesc = Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes
 	pkgver = 22.0.5.4+nf3.5.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
@@ -37,6 +37,7 @@ pkgbase = nerd-fonts-apple-hinted
 	source = strip_trak.py
 	source = fix_names.py
 	source = make_features.py
+	source = even_spacing.py
 	sha256sums = 968ab3b8b1f92c2d8af61eb0680f5c2224c4e78d59b986bf004502a7fc012918
 	sha256sums = c1d0e344ebadd66eb62f03f823784cce49f1787f56563fb098fca01fc554135c
 	sha256sums = 6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945
@@ -53,5 +54,6 @@ pkgbase = nerd-fonts-apple-hinted
 	sha256sums = a45a8aa72da4175f1ac16141c6b2f5335d0aa402dcc58903bdd6a2622573eaa3
 	sha256sums = 066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6
 	sha256sums = 200fc13d7cf288ebd10c2832a0c9e1cf5a8b7c7e4e6283311778a2df7057581e
+	sha256sums = d286a94b46119d537f1845895b97d0ef91629d10187f0f2afea88658bd3d9d5b
 
 pkgname = nerd-fonts-apple-hinted

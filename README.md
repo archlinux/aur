@@ -584,6 +584,39 @@ though, and both symptoms break something:
 duplicate Mac licence records, but only when the table really does not compile,
 so fonts that are fine are left byte-for-byte alone.
 
+## Optical spacing (`EVEN_SPACING`)
+
+    EVEN_SPACING=all makepkg -si          # or greek / latin / latin,greek,cyrillic
+
+Adds a GPOS kern lookup (`even_spacing.py`, same script as in `ttf-akt-hinted`) that
+evens out the optical gap between letter pairs. For every lowercase and every
+uppercase pair it measures the area between the outlines up to x-height / cap
+height (profiles clamped at a depth, so open shapes such as c, e, ς are not
+over-credited) and moves the pair towards the median gap of its script. Pairs
+Apple already kerned are left alone; accented letters follow their base letter.
+
+It runs on every selected file after OTF→TTF conversion / Nerd patching and
+before hinting, so it works with `HINTING` on or off and with every renderer
+(only GPOS changes). SF Mono is monospaced and is skipped; so is any font without
+a `kern` feature.
+
+Calibrated per file against the pairs Apple kerned by hand (depth and strength
+with the best correlation, falling back to 0.22 / 0.8 when r < 0.25). Measured
+2026-11-05: SF Pro Text Regular 5195 pairs, depth 0.28, strength 0.40, r 0.38, gap
+spread (std, units/1000) 53.8 → 44.5; New York Small 1166 pairs, depth 0.35,
+strength 0.60, r 0.49, 47.9 → 38.7. Weaker than on Akt (r 0.41–0.60) because
+Apple's own kerning is dense, so most pairs are left to it. Size limits follow
+`EVEN_PPEM` (default 16: max kern 1 px, min 0.1 px); `EVEN_STRENGTH`,
+`EVEN_DEPTH`, `EVEN_MAX`, `EVEN_MIN` override the calibration.
+
+**Not carried over: `REGULAR_WGHT=auto`.** `fit_weight.py` finds the Regular whose
+horizontal bars land on whole pixels at 16 ppem. SF Pro's static Regular equals
+the variable font at wght 400 (bars 1.27 px, stems 1.36 px) and the best fit is
+wght 390, 2 % less ink and no visible difference; applying it would mean
+replacing the static Display/Text/Rounded by cuts of a variable font that has
+no Rounded. **`HINTING` under `hintslight`:** FreeType's autohinter ignores the
+bytecode, so ttfautohint only pays off with `hintmedium`/`hintfull`.
+
 ## Verifying on your own system
 
 1. **Effective GTK4 settings:** see the Python snippet in §4.
