@@ -1,6 +1,6 @@
 # Maintainer: xmengnet <my@liyp.cc>
 pkgname=revda-next
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 pkgdesc='Danmaku live & video player for Linux (pure-Go rewrite of Revda)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('mpv' 'ffmpeg')
 makedepends=('go')
 conflicts=('revda' 'revda-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8332a659945ca9bc1e9c6dbff1a4cbb0b6aa56b45983fc0f61f7856b073438ea')
+sha256sums=('9b7fe91895b80c74259cb6418d23e1de3ec995d8866c1970b5516039e3c07a56')
 
 build() {
   cd "Revda-Next-$pkgver"
