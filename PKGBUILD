@@ -5,35 +5,30 @@
 
 pkgname=perl-orlite
 _dist=ORLite
-pkgver=1.98
-pkgrel=4
+pkgver=2.00
+pkgrel=1
 pkgdesc='ORLite - Extremely light weight SQLite-specific ORM'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
 url="https://metacpan.org/dist/$_dist"
-_author=ADAMK
-source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz"
-        "fix_tests.patch")
-sha256sums=('79e9ef07dee7feb7cafdea1a9c0432e12587fc350707a6bc72fd29502b87d021'
-            'f5135d9dab28d8163e418428af346b1d9484f8513d8874c65bd3eddfe4491a97')
+_author=ETHER
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('dd4bc23ab4c87c5096a406aaa03c75e2f9e48f858c7283d84cff8af24b82defa')
 
 arch=(any)
 depends=(
   perl
-  perl-file-remove
   perl-dbd-sqlite
+  perl-dbi
+  perl-file-remove
   perl-params-util
 )
-makedepends=(
+checkdepends=(
+  perl-class-xsaccessor
   perl-test-script
-  perl-module-install
+  perl-test-deep
 )
 options=('!emptydirs')
-
-prepare() {
-  cd "$srcdir/$_dist-$pkgver"
-  patch -p1 < "$srcdir"/fix_tests.patch
-}
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
