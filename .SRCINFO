@@ -1,0 +1,20 @@
+pkgbase = python-ciscoisesdk
+	pkgdesc = Cisco Identity Services Engine SDK for Python
+	pkgver = 2.4.7
+	pkgrel = 1
+	url = https://github.com/CiscoISE/ciscoisesdk
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-requests
+	depends = python-requests-toolbelt
+	depends = python-fastjsonschema
+	depends = python-xmltodict
+	options = !strip
+	source = v2.4.7.tar.gz::https://github.com/CiscoISE/ciscoisesdk/archive/refs/tags/v2.4.7.tar.gz
+	sha256sums = 31e20de50788eac69c891440161d626931a30e99d2a6edc4b255d85dcf8a53eb
+
+pkgname = python-ciscoisesdk

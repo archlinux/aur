@@ -1,0 +1,4 @@
+[python-ciscoisesdk]
+source = "git"
+git = "https://github.com/CiscoISE/ciscoisesdk.git"
+prefix = "v"
