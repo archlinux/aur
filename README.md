@@ -56,6 +56,26 @@ basalt-inference serve --config ~/.config/basalt/basalt_config.json
 (`--expert-profile-save`, `--shared-expert-arena`), and `basalt-inference-bench --community` (which writes
 `docs/community/benchmarks.json` in its tree) is unavailable from the package.
 
+### Headless: the systemd user service
+
+`/usr/lib/systemd/user/basalt-inference.service` ships with the package; installing it enables
+nothing. As your own user — a user unit lives in your own manager, so not with sudo:
+
+```sh
+systemctl --user enable --now basalt-inference.service
+loginctl enable-linger $USER                       # up at boot, no login needed
+journalctl --user -u basalt-inference.service -f   # the server's log; the engine writes its own to
+                                                   # ~/.cache/basalt/<hash>/engine.log
+```
+
+The unit's only argument is `--config`: model, GPU, port and the engine flags come from
+`~/.config/basalt/basalt_config.json`, so one file describes the server either way. It gives the load
+15 minutes (`TimeoutStartSec=900` — a default 90 s start would kill a load that was going to work),
+restarts on failure, and `stop` sends SIGTERM, which is the server's own shutdown path (it tells the
+engine to quit; if the supervisor dies first, the engine's lifeline kills it). Change it with
+`systemctl --user edit basalt-inference.service`: a drop-in survives upgrades, the shipped file does
+not.
+
 ## What the package does
 
 - Binaries → `/usr/lib/basalt/bin/{basalt,basalt-bench,basalt-probe,basalt-vision}`, symlinked into
@@ -72,6 +92,8 @@ basalt-inference serve --config ~/.config/basalt/basalt_config.json
   (`the engine binary … does not exist`). `package()` greps for this and fails the build otherwise.
   `basalt-bench`'s device-kernel path still names `basalt-device`, which upstream builds into the
   build directory and this package does not ship.
+- `basalt-inference.service` → `/usr/lib/systemd/user/`, the headless server unit above. The install
+  hook only prints how to enable it.
 - Python deps come from [extra] (`python-numpy python-jinja python-markupsafe python-regex
   python-yaml python-tqdm python-pillow python-psutil`); `requirements.txt` pins are ignored.
 - `cuda` is a runtime dep too (`libcudart/libcublas/libcublasLt`); the driver is left to you.

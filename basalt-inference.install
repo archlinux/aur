@@ -1,0 +1,23 @@
+post_install() {
+  cat <<'EOF'
+
+basalt-inference installs a systemd user unit, basalt-inference.service
+To run the server headless, as your own user (never as root):
+
+  systemctl --user enable --now basalt-inference.service   # now, and at login
+  loginctl enable-linger $USER                             # at boot, with no login at all
+  journalctl --user -u basalt-inference.service -f         # follow its log
+
+Everything the server runs with - model, GPU, port, engine flags - lives in
+  ~/.config/basalt/basalt_config.json
+and the engine's own log goes to ~/.cache/basalt/<hash>/engine.log.
+
+The unit under /usr/lib/systemd/user is replaced on every upgrade, so keep your changes in a drop-in:
+  systemctl --user edit basalt-inference.service
+EOF
+}
+
+post_upgrade() {
+  echo "basalt-inference: the shipped unit may have changed - as your own user:"
+  echo "  systemctl --user daemon-reload && systemctl --user restart basalt-inference.service"
+}

@@ -4,4 +4,6 @@
 !.gitignore
 !README.md
 !*.patch
+!*.service
+!*.install
 !LICENSE

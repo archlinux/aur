@@ -1,0 +1,51 @@
+# basalt-inference.service - the inference server as a systemd user unit.
+#
+#   systemctl --user enable --now basalt-inference.service   # now, and at login
+#   loginctl enable-linger $USER                             # at boot, no login at all
+#   journalctl --user -u basalt-inference.service -f          # watch it
+#
+# --config is the only argument here on purpose: model, GPU, port and the engine flags all come from
+# ~/.config/basalt/basalt_config.json, so one file describes the server however it is started.
+# Change this unit with a drop-in - `systemctl --user edit basalt-inference.service` - because the
+# copy under /usr/lib/systemd/user is overwritten by every package upgrade.
+#
+# systemd takes a directive value to the end of the line: no comment after `Key=value`, they go on
+# their own line.  `systemd-analyze --user verify basalt-inference.service` says so if one slips in.
+
+[Unit]
+Description=basalt inference engine (headless OpenAI-compatible server)
+Documentation=https://github.com/jesdga95/basalt
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/basalt-inference serve --config %h/.config/basalt/basalt_config.json
+WorkingDirectory=%h
+
+# `basalt-inference serve` replaces itself with `python3 -m serve.server --engine-bin
+# /usr/lib/basalt/bin/basalt --config ...`, which forks the engine as its child: one foreground tree,
+# no daemonising and no pid file, so nothing here needs Type=forking.  SIGTERM is the server's own
+# shutdown path (it sends QUIT to the engine, and the engine's lifeline kills it outright if the
+# supervisor goes away first), and KillMode's default already reaps the whole cgroup.
+
+# A model of this size is tens of gigabytes and the load is I/O bound: the 90 s default would kill a
+# start that was going to succeed.  Stop gets time too, to hand the GPU and the RAM back.
+TimeoutStartSec=900
+TimeoutStopSec=120
+
+Restart=on-failure
+# a crash must not turn into a GPU reload loop that never lets go
+RestartSec=15
+
+# /usr/lib/basalt is root-owned, so the interpreter's bytecode cache needs somewhere writable; the
+# server's own state and its engine.log already live under ~/.cache/basalt.  Unbuffered, so journal
+# lines arrive as they are written rather than in blocks.
+Environment=PYTHONPYCACHEPREFIX=%h/.cache/basalt/pycache
+Environment=PYTHONUNBUFFERED=1
+
+# Want `systemctl --user start` to return only once the model actually answers?  Uncomment, and set
+# the port to the one in the config: /health replies {"status": "ok", ..., "loaded": true}.
+# ExecStartPost=/bin/sh -c 'for i in $(seq 900); do curl -fsS http://127.0.0.1:33300/health | grep -q "\\"loaded\\": true" && exit 0; sleep 1; done; exit 1'
+
+[Install]
+# default.target is the user manager's equivalent of multi-user.target.
+WantedBy=default.target

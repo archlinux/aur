@@ -19,12 +19,17 @@ license=(MIT)
 depends=(cuda python python-numpy python-jinja python-markupsafe
          python-regex python-yaml python-tqdm python-pillow python-psutil)
 makedepends=(git cmake ninja)
+# ships basalt-inference.service; the hook only prints how to enable it - a package install must not
+# decide to map tens of gigabytes and take a GPU
+install=basalt-inference.install
 source=("basalt::git+https://github.com/jesdga95/basalt.git#branch=main"
         ram-guard-mib.patch
-        0001-cmake-overridable-basalt-source-dir.patch)
+        0001-cmake-overridable-basalt-source-dir.patch
+        basalt-inference.service)
 sha256sums=('SKIP'
             '6f0e1998e7eba8a0c4a854f51d13c12537d6b868b39641871d8ff0265df17eda'
-            'd065296aa095292902f3b02a87d9321c798c6f00972c17594a14a4f324747490')
+            'd065296aa095292902f3b02a87d9321c798c6f00972c17594a14a4f324747490'
+            '434c5aaa58d33cf2c5a6b4f718a3ef8aec23e97acd7de00a4d9d1965c34bfb06')
 
 # BASALT_DEBUG=1 makepkg -si builds with -g and splits off a basalt-inference-git-debug package (gdb
 # then reports file:line).  LTO is off there: -g plus -flto needs far more RAM than this builds in.
@@ -123,6 +128,11 @@ package() {
   find "$pkgdir$_prefix" -name '__pycache__' -type d -prune -exec rm -rf {} +
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -m644 THIRD_PARTY_LICENSES "$pkgdir$_prefix/THIRD_PARTY_LICENSES"
+
+  # the headless server unit; systemd --user reads units from here too, so enabling it is the only
+  # step left to the operator (the .install hook says so, it does not enable it)
+  install -Dm644 "$srcdir/basalt-inference.service" \
+    "$pkgdir/usr/lib/systemd/user/basalt-inference.service"
 
   # both patches must be baked into the installed engine, or the package is broken
   if ! grep -aq -- '--ram-guard-mib' "$pkgdir$_prefix/bin/basalt"; then
