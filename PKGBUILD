@@ -1,6 +1,6 @@
 # Maintainer: Senya <senya at riseup.net>
 pkgname=crowdin-cli
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Command line tool that allows you to manage and synchronize localization resources with your Crowdin project"
 url="https://crowdin.github.io/crowdin-cli"
@@ -17,8 +17,8 @@ source_aarch64=("crowdin-$pkgver-aarch64::https://github.com/crowdin/crowdin-cli
 # The binary checksums are filled in by the publish workflow (.github/workflows/publish.yml)
 # from the crowdin-cli_checksums.sha256 release asset.
 sha256sums=('86ca3b5b587e7e8722996a29717755d83bf9348b1b6d52a519232b1bf26527af')
-sha256sums_x86_64=('8ae5766ebb8ecb44ea14d751e4caef1d2c21039a28776ac4e7623fe773d7897c')
-sha256sums_aarch64=('7114310c67e42d7a7230b6e29c6c566e4d971fe9c2b9bfbd3e588a592430fe9e')
+sha256sums_x86_64=('cce779df4046a10e8728b4f5ba873e882ab3e1ba4ee7b9d766e2bfa1240ddfcc')
+sha256sums_aarch64=('fa9e116eee8ca81b494c01ab587ae5df0769b4ba0da88a7559bef01c3f70abcd')
 
 build() {
   cd "$srcdir"
