@@ -1,8 +1,12 @@
 # nerd-fonts-apple-hinted
 
-Apple's SF Pro, SF Mono and New York fonts, converted to TrueType and hinted
-with ttfautohint (optionally Nerd Fonts patched). Build options are documented
-in the header of `PKGBUILD`.
+Apple's SF Pro, SF Mono and New York fonts, tuned with
+[fonttune](https://github.com/gaou-piou/fonttune) (optionally Nerd Fonts patched).
+Build options are documented in the header of `PKGBUILD`.
+
+> ttfautohint / CFF hinting (`HINTING`, `HINT_*`, `GASP_MODE`'s hinting path and the
+> shipped `80-*.conf`) was removed: under hintslight FreeType ignores the bytecode.
+> The measurements below stay as the record of why.
 
 This file records **how these fonts actually get rendered on a GNOME/Wayland
 desktop, and which settings you need so the hints in the package are used**.

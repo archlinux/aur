@@ -12,12 +12,11 @@ _ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if 
 # committing: `git checkout PKGBUILD` and re-apply the pkgrel bump.
 pkgver=22.2.2.1+nf3.5.1
 pkgrel=1
-pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes"
+pkgdesc="Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched, tuned with fonttune"
 arch=(any)
 url="https://developer.apple.com/fonts/"
 license=("custom")
-makedepends=("git" "p7zip" "python" "python-fonttools" "python-skia-pathops" "parallel" "fontforge" "ttfautohint" "libarchive")
-optdepends=("afdko: better CFF/OTF hinting via otfautohint (HINT_ENGINE=cff)")
+makedepends=("git" "p7zip" "python" "python-fonttools" "python-skia-pathops" "parallel" "fontforge" "libarchive")
 options=(!strip !zipman)
 conflicts=("nerd-fonts-apple" "apple-fonts" "nerd-fonts-sf-mono")
 provides=("nerd-fonts-apple" "ttf-font-nerd")
@@ -28,444 +27,66 @@ source=(
   "SF-Arabic.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg"
   "NY.dmg::https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
   "font-patcher-${_nfver}::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
-  "cff_hint.py"
-  "dedup_blues.py"
   "font_meta.py"
-  "add_stat.py"
-  "fix_names.py"
   "fonttune::git+${FONTTUNE_REPO:-https://github.com/gaou-piou/fonttune.git}#${FONTTUNE_REF:-branch=main}"
 )
-# Apple re-spins the DMGs without versioning, so those legitimately stay SKIP —
+# Apple re-spins the DMGs without versioning, so those legitimately stay SKIP:
 # the real identity check is pkgver(), which reads the version out of the font
-# files themselves. FontPatcher is a tagged GitHub release — pin it once you have
-# a known-good hash (replace the 6th SKIP). The *.py helpers are vendored locally
-# (no network fetch), so they are covered by makepkg's local-file hashing —
-# fill these in with `updpkgsums`.
+# files themselves. fonttune tracks main (see _check_fonttune).
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
-            '77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc'
-            '980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194'
             '1297a4be9504032cc3457c3d50f30a21c3101f4203f5dd545c8d4c19f4859600'
-            '4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0'
-            '066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6'
             'SKIP')
 
 # ── Versioning ──────────────────────────────────────────────────────────────
 #
-# pkgver() composes the version from the fonts themselves plus the patcher:
-#
 #     <highest Apple font version>+nf<nerd fonts version>    e.g. 22.0.5.4+nf3.5.1
 #
-# The Apple part is read out of the OpenType `name` table (nameID 5, e.g.
-# "Version 22.0d5e4" → 22.0.5.4) of the *selected* families, taking the highest.
 # Apple versions each family independently (SF Pro 22.0d5e4, SF Mono 18.0d1e1,
-# New York 16.0d2e2), so taking the max keeps pkgver monotonic: any family Apple
-# bumps raises the package version, while a re-spin that changes nothing leaves
-# it untouched. Note that pkgver therefore depends on which families you select.
+# New York 16.0d2e2), so taking the max of the selected families keeps pkgver
+# monotonic. pkgver therefore depends on which families you select.
 #
-# ── Build-time options (all settable via env vars) ──────────────────────────
+# ── Build options ───────────────────────────────────────────────────────────
 #
-#  NERD_PATCH  true/false   Patch fonts with Nerd Fonts glyphs (default: false)
-#                           false → install fonts as-is (static OTF or variable TTF)
+# Asked on a terminal, otherwise taken from the environment / defaults.
 #
-#  WANT_VARIABLE  true/false  Include variable TTF fonts when NERD_PATCH=false.
-#                             (Variable fonts are excluded when patching — font-patcher
-#                             destroys fvar/gvar axes during generation.)
-#                             Ignored when NERD_PATCH=true.
+#  Apple-specific (this PKGBUILD):
+#    NERD_PATCH     true/false  patch with Nerd Fonts glyphs (default false)
+#    WANT_VARIABLE  true/false  also install the variable TTFs; never with NERD_PATCH
+#    WANT_SF_PRO / WANT_SF_COMPACT / WANT_SF_MONO / WANT_SF_ARABIC / WANT_NY
+#                   true/false  (defaults true false true false true)
+#    SF_PRO_SUBS / SF_COMPACT_SUBS / NY_SUBS   space-separated subfamilies, empty = all
 #
-#  HINTING   true/false      Apply autohinting (default: false: at hintslight FreeType
-#                            ignores the bytecode, bitmaps are identical, size +44%)
-#                            When NERD_PATCH=true:  hints the patched TTF output.
-#                            When NERD_PATCH=false + ttfautohint engine: converts
-#                              static OTF→TTF first, then hints. Variable TTFs are
-#                              hinted directly (axes are flattened to a static TTF).
-#                            When NERD_PATCH=false + cff engine: hints OTFs in place,
-#                              output stays OTF (no TTF conversion).
+#  Font tuning (fonttune; see `fonttune steps` and its README). Every key can
+#  be given as FONTTUNE_<KEY>, which also skips its question:
+#    FONTTUNE_OTF2TTF      true/false   OTF -> TrueType outlines (FreeType only
+#                                       autohints TrueType under hintslight)
+#    FONTTUNE_WEIGHTS      true/false   normalise usWeightClass
+#    FONTTUNE_TRAK         ""|strip|stat|<pt>   trak table: leave, remove, keep+STAT, or
+#                                       bake the tracking at <pt> points (default 13)
+#    FONTTUNE_EVEN_SPACING ""|all|latin,greek,cyrillic
+#    FONTTUNE_PIXEL_GRID   ""|auto|<ppem>      exclusive with EVEN_SPACING
+#    FONTTUNE_FEATURES     ""|fonts.conf|tag,tag   bake into calt so every program applies them
+#    FONTTUNE_FEATURE_SUFFIX  e.g. " Alt": install renamed families next to nothing else
+#    FONTTUNE_GASP         keep|sized|smooth|gridfit
+#    Extra: FONTTUNE_REPO / FONTTUNE_REF pick the fonttune source (local testing:
+#    FONTTUNE_REPO=file:///path/to/fonttune).
 #
-#  OTF2TTF   true/false      Convert the static OTFs to TrueType outlines (default: true,
-#                            except with HINTING=true HINT_ENGINE=cff, which keeps OTF).
-#                            Only matters with HINTING=false: ttfautohint is skipped
-#                            but the cu2qu conversion still happens. Why: under
-#                            hintslight FreeType runs its autohinter on TrueType
-#                            outlines (snaps x-height / horizontal stems) but the
-#                            native CFF engine on OTF, and Apple's OTFs carry no
-#                            hints, so nothing gets snapped. ttfautohint bytecode
-#                            itself is ignored at hintslight, so skipping it costs
-#                            nothing. HINTING=true + ttfautohint always converts.
+#  Hinting (ttfautohint / CFF hints) was removed: under GNOME's hintslight FreeType
+#  autohints TrueType itself and ignores the bytecode (bitmaps identical, +44% size).
+#  README.md has the measurements; the last version that had it is the commit
+#  before "refactor: move tuning into fonttune".
 #
-#  HINT_ENGINE  ttfautohint|cff   Hinting backend (default: ttfautohint)
-#                            ttfautohint: TrueType bytecode hints (best for screen/
-#                              terminal/Latin; requires TTF, converts OTF→TTF).
-#                            cff: PostScript/CFF hints, OTF output preserved. Uses
-#                              otfautohint (afdko) if present, else falls back
-#                              to FontForge AutoHint. Forced to ttfautohint when
-#                              NERD_PATCH=true (patched fonts are always TTF).
-#
-#  FIX_WEIGHTS  true/false   Normalise usWeightClass (default: true). Apple ships
-#                            every New York optical size with Bold = Semibold = 600
-#                            and Black = Heavy = 800, so fc-match "New York Small:bold"
-#                            picks Black. See fix_weights.py.
-#
-#  TRACKING  true/false      Enable Apple's size-specific tracking (default: true).
-#                            SF Pro / New York carry an AAT `trak` table, which
-#                            HarfBuzz applies only if the font also has STAT;
-#                            add_stat.py adds a minimal one. No effect with
-#                            NERD_PATCH=true: font-patcher (FontForge) drops
-#                            both trak and STAT.
-#                            Forced to false when STRIP_TRAK=true, because the
-#                            two do opposite things.
-#
-#  STRIP_TRAK  true/false    Remove the `trak` table instead (default: true).
-#                            Every program treats it differently, and the result
-#                            is visible as letter-spacing:
-#                              pango/GTK   applies it  (13px text 353 px with,
-#                                           319 without)
-#                              Chromium    applies it  (+22 units/glyph at 32px,
-#                                           the value the table asks for: 24)
-#                              Firefox     applies it ~5x too strongly
-#                                           (+115 units/glyph at 32px, +171 at
-#                                           13px -> +20% line width in body text)
-#                            Measured on SF Pro Rounded Regular, 20x"H" at 32px
-#                            through fontconfig, only the trak table differing:
-#                              chromium with 455 / without 448 px
-#                              firefox  with 484 / without 448 px
-#                            and a 57-character sentence at 13px:
-#                              firefox  377 px with trak, 315 without;
-#                              GTK      353 px with trak, 319 without.
-#                            448 and 315 are the hmtx design widths. Stripping
-#                            makes the browsers agree, but takes Apple's
-#                            tracking away from GTK and Chromium too (~10%
-#                            tighter body text); TRAK_BAKE gives it back. Set
-#                            STRIP_TRAK=false to keep the table (then
-#                            TRACKING=true is what makes it reachable).
-#
-#  TRAK_BAKE  points|0       With STRIP_TRAK=true: before the table is removed,
-#                            add its normal-track tracking at this point size to
-#                            every advance width (default: 13). One constant
-#                            tracking that every program reads the same way, at
-#                            the size body text is read at. SF Pro Rounded reads
-#                            +80 units/glyph at 13pt (+4% line width at 13px),
-#                            SF Pro Text -12 (Apple tightens it). Larger text is
-#                            a little looser than Apple would set it. 0 = plain
-#                            design widths. Not applied to variable fonts.
-#
-#  EVEN_SPACING  ""|all|latin,greek,cyrillic   (default: none)
-#                            Evens out the optical gap between letter pairs with a
-#                            new GPOS kern lookup (even_spacing.py). For every
-#                            lowercase and every uppercase pair it measures the
-#                            area between the outlines up to x-height / cap height
-#                            and moves the pair towards the median gap of its
-#                            script. Pairs Apple already kerned are left alone;
-#                            accented letters follow their base letter. Applied to
-#                            every family, every weight, before hinting; only GPOS
-#                            changes, so it is independent of HINTING and of the
-#                            renderer. SF Mono (monospaced) and fonts without a
-#                            kern feature are skipped with a note.
-#                            Calibrated per font: depth and strength are fitted to
-#                            the pairs Apple kerned by hand (SF Pro Text: 5195
-#                            pairs, depth 0.28, strength 0.40, r=0.38; gap spread
-#                            std 53.8 -> 44.5 units/1000). Measured 2026-11-05.
-#  EVEN_PPEM     16          target size: max kern 1000/ppem (~1px), min 100/ppem
-#  EVEN_STRENGTH 0-1.5 / EVEN_DEPTH 0.05-0.6 / EVEN_MAX / EVEN_MIN   (default auto)
-#                            override the calibration (see even_spacing.py --help)
-#
-#  PIXEL_GRID    ""|N            (default: off; N = target ppem, 16 = 12pt GTK / 16px web;
-#               auto = GNOME interface font size x 96/72 x text-scaling-factor)
-#                            Rounds every glyph advance and every pair-kern value to a
-#                            whole pixel at N ppem (pixel_grid.py). With subpixel
-#                            positioning each letter otherwise starts on a different
-#                            fraction of a pixel, so the same stem is drawn as one dark
-#                            column here and two grey ones there and a word looks
-#                            unevenly bold. On the grid, identical letters render
-#                            identically. Measured in Firefox (SF Pro Rounded 16px):
-#                            6 different stem profiles -> 1. Price: gaps follow the
-#                            rounding (std 0.54 -> 0.78 px). Only at N ppem; other sizes
-#                            behave as before. Static TrueType only: needs OTF2TTF or
-#                            HINTING=true with ttfautohint; CFF, variable and mono
-#                            fonts are left alone. Runs after EVEN_SPACING.
-#
-#  Not carried over from ttf-akt-hinted: REGULAR_WGHT=auto. It cuts a lighter
-#  Regular from a variable font so the horizontal bars land on whole pixels at
-#  16 ppem. Apple's static Regular is the VF at wght 400 (bars 1.27 px, stem
-#  1.36 px) and fit_weight.py puts the best fit at wght 390: 2% less ink, no
-#  visible change, and it would mean replacing the static Display/Text/Rounded
-#  files by cuts of a VF that has no Rounded. Not worth it here.
-#
-#  Under GNOME's hintslight FreeType uses its own autohinter and ignores the
-#  ttfautohint bytecode, so HINTING=true only pays off with hintmedium/hintfull
-#  (measured on Akt: identical rendering with and without under slight).
-#
-#  ── ttfautohint tuning ──
-#  HINT_PRESET  name         Named bundle of ttfautohint flags (default: balanced)
-#                            ("Linux" = the stem letter FreeType v40 actually uses)
-#               balanced     stem=qsq (Linux: q)  range 8-50   x-height 14  (upstream defaults)
-#               sharp        stem=sss (Linux: s)  range 6-50   x-height 14  (max contrast, low-DPI)
-#               natural      stem=nnn (Linux: n)  range 8-50   x-height 0   (least distortion)
-#               light        stem=nnn (Linux: n)  range 12-50  x-height 0   (HiDPI; <12px left alone)
-#               custom       use the individual HINT_* vars below verbatim
-#
-#  Individual ttfautohint knobs (override the preset; empty = use preset value):
-#  HINT_MODE     nnn|qqq|qsq|sss   3-char --stem-width-mode (grayscale/GDI/DW; n/q/s)
-#                      On Linux only the 3rd letter has an effect (see below).
-#  HINT_RANGE_MIN  N    --hinting-range-min  (default 8)
-#  HINT_RANGE_MAX  N    --hinting-range-max  (default 50)
-#  HINT_LIMIT      N    --hinting-limit      (default: same as HINT_RANGE_MAX, so
-#                        hinting really stops above the range instead of reusing
-#                        the largest hint set up to 200px; 0 = no limit)
-#  HINT_XHEIGHT    N    --increase-x-height  (default 14; 0 = disable x-height snapping bump)
-#  HINT_XSNAP_EXC  STR  --x-height-snapping-exceptions  (default "10-13", "" = none;
-#                        see the i-dot note below)
-#  HINT_WINCOMPAT  true/false  --windows-compatibility (Windows/Wine only)
-#  HINT_TTFA_TABLE true/false  -t/--ttfa-table (embed a TTFA table with all params)
-#  HINT_FAMILY_SUFFIX  STR     -F/--family-suffix (distinguish differently-hinted builds)
-#  (PUA/Nerd icon glyphs are always handled with --fallback-script=none --fallback-scaling.)
-#
-#  ── gasp grid-fitting / anti-aliasing tuning (TTF output only) ──
-#  GASP_MODE  keep|sized|smooth|gridfit   (default: keep; Windows/Wine only,
-#             FreeType 2.14 ignores gasp)
-#               keep     leave the gasp table as ttfautohint/font-patcher wrote it
-#               sized    MS strategy: <=8 grayscale, 9-16 gridfit, 17+ both
-#               smooth   all sizes anti-aliased ({0xFFFF:15}; gftools style)
-#               gridfit  all sizes gridfit+grayscale ({0xFFFF:3})
-#
-#  ── Features every app can see (not just pango) ───────────────────────────
-#
-#  FEATURE_DEFAULTS  "tag,tag,..."  (default: empty = leave the fonts alone)
-#                 Bake these GSUB features into the font's 'calt' feature, so
-#                 that EVERY renderer applies them - Chromium, Electron, Qt,
-#                 LibreOffice, kitty - and not only pango, the one client that
-#                 reads fontconfig's fontfeatures. See "Why calt" below.
-#
-#                 What the Apple fonts actually have (audited 2026-10-29 with
-#                 fontTools 4.68 and HarfBuzz 15.0 against the installed faces;
-#                 the cv names are the fonts' own UI labels, read out of the
-#                 name table through the cvXX FeatureParams):
-#
-#                   cv01  straight-sided six and nine     cv02  open four
-#                   cv03  seriffed capital J              cv04  centred colon
-#                   cv05  seriffed capital I              cv06  tailed lowercase l
-#                   cv07  one-storey a                    cv08  slashed zero
-#                   cv09  small dollar sign               cv12  serifed digit one
-#                   cv13  wide square root                cv10/11  $ and +
-#                   ss01-ss07  Apple's duplicates of cv01/02/04/03/05/06/07, for
-#                              apps that cannot ask for cvXX. ss06 is the union
-#                              (0 4 6 9 I J l), ss04 opens the currency signs.
-#                   ss09, ss12-ss17  private-use symbol variants, not text
-#                   case   raises 21 punctuation glyphs to cap height
-#                   tnum   tabular figures
-#                   frac, numr, dnom, sups, subs, ordn   per-context only
-#                   smcp/c2sc  real small caps: they would replace EVERY
-#                              lowercase letter with a cap-height one
-#                   rtlm   mirrors the square root for RTL - never bake it
-#
-#                 ~/.config/fontconfig/fonts.conf turns on case, ss02, ss03,
-#                 ss06 and cv07 for SF Pro Text, for pango only. This is the
-#                 set that makes the other renderers agree with GTK:
-#
-#                     FEATURE_DEFAULTS="ss06,cv07,case"
-#
-#                 (ss02 is already part of ss06. ss03 - the centred colon -
-#                 is baked into every family that can draw it; SF Mono cannot,
-#                 so the build leaves it out there instead of failing. The
-#                 ss03 bullet below has the measurements.)
-#
-#                 FEATURE_DEFAULTS=fonts.conf takes the tags that are ACTIVE
-#                 (uncommented) in the fontfeatures of every <match
-#                 target="font"> in ${APPLE_FONTS_CONF:-~/.config/fontconfig/fonts.conf}
-#                 whose family belongs to a family this build installs (SF Pro,
-#                 SF Compact, SF Mono, SF Arabic, New York, and their Nerd Font
-#                 names). The tags of all those blocks are united and baked into
-#                 every font; _FEATURE_SKIP below still applies (ss03 stays out
-#                 of SF Mono). Dropped with a note: negated tags (-calt), tags
-#                 HarfBuzz always applies (kern liga ccmp locl mark mkmk calt)
-#                 and the ones make_features.py refuses (aalt ordn dlig salt
-#                 hlig hist). The Apple fonts are extracted only after the
-#                 options are resolved, so tags the fonts lack are filtered at
-#                 bake time instead (with a note): a tag no font has is dropped
-#                 rather than failing the build.
-#
-#                 THREE TRAPS, all measured on these fonts:
-#                 * ss03 means two different things. In SF Pro Text, SF Pro
-#                   Display and SF Pro Rounded it is the centred colon
-#                   (colon -> colon.uc, one substitution). In SF Mono it is
-#                   "REMOVE the slash from the zero" (zero -> zero.1,
-#                   3 contours to 2) and the family has no colon.uc glyph at
-#                   all, so a centred colon is impossible there. New York
-#                   Small has neither: its centred colon is ss01.
-#                   That is what _FEATURE_SKIP is for - the tag is dropped for
-#                   the family that cannot honour it and baked into all the
-#                   others, so asking for it never costs a build. For a
-#                   slashed zero in SF Pro use cv08; in SF Mono you already
-#                   have one.
-#                 * the cvXX numbers are not the same across optical sizes. In
-#                   SF Pro Rounded cv01 is the six ALONE, cv02 the nine and
-#                   cv03 the open four, where SF Pro Text's cv01 is six+nine and
-#                   cv02 is four. One global list therefore changes different
-#                   glyphs in different families - that is Apple's numbering,
-#                   not a bug here. Check any font with:
-#                       python3 make_features.py --list /usr/share/fonts/apple/FONT
-#                 * the families differ in what they carry at all: SF Mono has
-#                   only c2sc ccmp locl smcp ss03 ss04 (no liga, no calt), New
-#                   York Small only c2sc calt ccmp locl onum smcp ss01 tnum.
-#                   SF Mono has no code ligatures in this release.
-#
-#                 A tag a family does not have is skipped for that file with a
-#                 note, and so is a tag that means something else there (see
-#                 _FEATURE_SKIP): every font gets what it can support out of
-#                 what you asked for, and nothing fails because one family
-#                 cannot honour a tag. A tag no font has at all is still an
-#                 error, so a typo cannot pass silently. Never bake aalt (every
-#                 alternate at once), ordn (H2O -> H2º), smcp/c2sc or rtlm;
-#                 make_features.py refuses the first three unless --allow-risky
-#                 is passed. Do not bake tnum/frac/numr/dnom/sups/subs either:
-#                 they are per-context requests, and baking tnum would
-#                 tabularise running prose.
-#
-#                 Prompted for, but after the family questions rather than with
-#                 the others: the useful answer depends on which families the
-#                 build contains (ss03 is the centred colon in SF Pro and the
-#                 un-slashing of the zero in SF Mono), so the menu offers the
-#                 set the fontconfig block uses, the same set plus ss03, or a
-#                 list of your own. Enter keeps the default, which bakes
-#                 nothing. Choosing the colon set for a build that contains
-#                 SF Mono is allowed: that family simply does not get ss03.
-#
-#                 Nerd Fonts patched builds work too: font-patcher keeps every
-#                 GSUB feature (verified on a patched SF Pro Text and SF Mono).
-#                 FontForge does damage the name table, which is repaired by
-#                 fix_names.py before this step runs - without that repair the
-#                 font cannot be written back at all, because FontForge adds a
-#                 duplicate Mac-Roman copy of Apple's 60 KB licence string and
-#                 pushes the name table past the format's 64 KB limit.
-#
-#  FEATURE_FAMILY  "Suffix"  (default: empty = edit the fonts in place)
-#                 NOTE: the value is a SUFFIX here, unlike in the single-family
-#                 packages (ttf-inter-hinted, ttf-geologica-hinted, ...), because
-#                 one build installs up to thirteen families. " Alt" installs
-#                 SF Pro Text as "SF Pro Text Alt" and SF Mono as "SF Mono Alt",
-#                 so the stock names stay available and every family keeps its
-#                 own identity - including the families that carry none of the
-#                 requested tags, which are renamed too so nothing collides.
-#                 It must not end in a pango style word (Bold, Thin, Italic,
-#                 ...); fix_names.py refuses those.
-#                 The shipped 80-$pkgname.conf reads the family names out of the
-#                 packaged fonts, so renamed families are covered there; a
-#                 fontconfig block or page CSS that names "SF Pro Text" is not.
-#
-#  Why calt: a shaper applies a fixed list of features whatever a font declares
-#  (ccmp locl mark mkmk kern calt liga clig rlig), and fontconfig's fontfeatures
-#  is read by pango/GTK only. Moving a feature's lookups into calt is therefore
-#  the only way to make it the default in every program. The lookups stay in the
-#  font, so font-feature-settings: "calt" 0 still turns them all off again - but
-#  asking for the individual tag ("-cv07") no longer switches just that one.
-#
-#  Font family selection:
-#  WANT_SF_PRO      true/false   (default: true)
-#  WANT_SF_COMPACT  true/false   (default: false)
-#  WANT_SF_MONO     true/false   (default: true)
-#  WANT_SF_ARABIC   true/false   (default: false)
-#  WANT_NY          true/false   (default: true)
-#
-#  Subfamily selection (space-separated, empty = all):
-#  SF_PRO_SUBS      e.g. "Display Text Rounded"
-#  SF_COMPACT_SUBS  e.g. "Display Text Rounded"
-#  NY_SUBS          e.g. "Small Medium Large ExtraLarge"
-#
-#  Non-interactive examples:
-#    HINTING=true HINT_PRESET=sharp WANT_SF_MONO=true WANT_SF_PRO=false makepkg -si
-#    NERD_PATCH=false HINTING=true HINT_ENGINE=cff makepkg -si
-#    HINTING=true HINT_PRESET=custom HINT_MODE=qqs HINT_RANGE_MIN=6 HINT_XSNAP_EXC="" makepkg -si
-#
-# ── What the hinting options do on Linux ────────────────────────────────────
-#
-# Measured on FreeType 2.14.3 (v40 interpreter, grayscale), pango/cairo and
-# Chrome, 9-20px, on SF Pro Text (Light…Heavy), SF Mono and New York Small:
-#
-#   * Apple's static OTFs are effectively unhinted: not one glyph carries a
-#     stem hint, only (partly wrong) blue zones, and SF Pro's BlueScale is 0.
-#     FreeType's CFF engine is used for them at every hintstyle, and it is the
-#     worst result measured: round and flat letters disagree on x-height in 13
-#     of 72 SF Pro weight/size combinations and on cap height in 18.
-#   * ttfautohint fixes that: 1 of 72 for SF Pro, 0 for SF Mono and New York,
-#     with every preset.
-#   * The cff engine (otfautohint) is clearly worse than ttfautohint here (41
-#     of 72 x-height mismatches, and ~8 min for ten fonts), even with the
-#     overlapping zones deduplicated and BlueScale corrected. It stays available
-#     for anyone who wants to keep the OTF outlines.
-#   * Only the THIRD letter of --stem-width-mode matters: v40 reports itself to
-#     the bytecode as DirectWrite ClearType. qss and sss render pixel-identically,
-#     as do qsq and qqq. The presets differ where it counts: q, s or n.
-#   * --increase-x-height 14 vs 0 only differs at 10px; --hinting-limit 200 vs
-#     50 does not differ at all up to 16px; gasp and -W have no effect.
-#   * The i/j dots and diaereses (ï ä ö ü ϊ) touch the letter at Bold/Heavy
-#     10-13px with every stem mode (s and n worse than q). Leaving 10-13px out
-#     of x-height snapping (HINT_XSNAP_EXC=10-13, the default) keeps the gap
-#     in more of them (87 -> 70 of 560 cases) at the price of a slightly
-#     smaller x-height at those sizes; heights stay consistent either way.
-#   * Do not hint against Regular's blue zones (--reference): Bold's x-height
-#     really is taller (1101 vs 1078 units in SF Pro Text), which puts round
-#     letters 1px above flat ones in the heavier weights.
-#
-# FreeType only runs TrueType bytecode at hintstyle hintmedium/hintfull. With
-# the common hintslight setting it uses its own light autohinter instead and
-# ignores these hints. The package therefore ships (but does not enable)
-# /usr/share/fontconfig/conf.avail/80-nerd-fonts-apple-hinted.conf, which turns
-# on bytecode hinting for the installed families only. It uses hintmedium, not
-# hintfull: cairo/pango render the two identically, but Blink turns off
-# subpixel positioning at hintfull. Chromium and Electron apps are excluded by
-# prgname: at device scale 1 Skia uses linear advances only for hintslight/none,
-# so at hintmedium every glyph advance is rounded to a whole pixel (measured:
-# 0 of 54 fractional advances; README.md §10). Enable it with:
-#
-#   sudo ln -s /usr/share/fontconfig/conf.avail/80-nerd-fonts-apple-hinted.conf \
-#              /etc/fonts/conf.d/
-#
-# That is not enough for GTK4 (4.16+): with gtk-font-rendering=automatic, the
-# default, GTK4 hard-codes hintslight and cairo lets that override fontconfig.
-# On GNOME set `gsettings set org.gnome.desktop.interface font-rendering manual`
-# and font-hinting to medium, and put gtk-hint-font-metrics=false in
-# ~/.config/gtk-4.0/settings.ini. See README.md.
+# fonts.conf features: FONTTUNE_FEATURES=fonts.conf takes the tags active in the
+# <match target="font"> blocks of ~/.config/fontconfig/fonts.conf (or $APPLE_FONTS_CONF)
+# whose family belongs to a family this build installs. A tag a family cannot
+# honour is skipped there (_FEATURE_SKIP: ss03 is the centred colon in SF Pro
+# but "remove the slash from the zero" in SF Mono).
 # ────────────────────────────────────────────────────────────────────────────
-
-_validate_hint_mode() {
-  if [[ ! "$HINT_MODE" =~ ^[nqs]{3}$ ]]; then
-    echo "Error: HINT_MODE='$HINT_MODE' is invalid."
-    echo "  Must be 3 chars from: n (natural)  q (quantized)  s (strong)"
-    echo "  Examples: nnn  qqq  qsq  sss"
-    exit 1
-  fi
-}
-
-# Map a named preset into the individual HINT_* vars.
-# Individual vars already set in the environment are preserved (preset never
-# overrides an explicit user value). Presets leave gasp alone: FreeType
-# ignores it, so it is only ever set explicitly through GASP_MODE.
-_apply_preset() {
-  local _p="$1"
-  local _m _lo _hi _xh
-  case "$_p" in
-    balanced) _m=qsq; _lo=8;  _hi=50; _xh=14 ;;
-    sharp)    _m=sss; _lo=6;  _hi=50; _xh=14 ;;
-    natural)  _m=nnn; _lo=8;  _hi=50; _xh=0  ;;
-    light)    _m=nnn; _lo=12; _hi=50; _xh=0  ;;
-    custom)   _m=qsq; _lo=8;  _hi=50; _xh=14 ;;
-    *)
-      echo "Error: unknown HINT_PRESET='$_p'."
-      echo "  Valid: balanced sharp natural light custom"
-      exit 1 ;;
-  esac
-  HINT_MODE="${HINT_MODE:-$_m}"
-  HINT_RANGE_MIN="${HINT_RANGE_MIN:-$_lo}"
-  HINT_RANGE_MAX="${HINT_RANGE_MAX:-$_hi}"
-  HINT_LIMIT="${HINT_LIMIT:-$HINT_RANGE_MAX}"
-  HINT_XHEIGHT="${HINT_XHEIGHT:-$_xh}"
-  # Unset means the measured default; an explicit "" means no exceptions.
-  if [[ "${HINT_XSNAP_EXC+set}" != set ]]; then HINT_XSNAP_EXC="10-13"; fi
-}
 
 # ── DMG extraction ──────────────────────────────────────────────────────────
 # Apple ships two different DMG layouts and re-spins the images without bumping
@@ -566,28 +187,13 @@ _extract_selected() {
   rm -rf "$srcdir/dmg"
 }
 
-_show()    { printf "  [%s] %s\n" "$1" "$2"; }
-# PIXEL_GRID=auto: ppem of the GNOME interface font (size in pt x 96/72 x
-# text-scaling-factor). Does not know about monitor scale (fractional scaling).
-_auto_ppem() {
-  local _f _s _t
-  _f=$(gsettings get org.gnome.desktop.interface font-name 2>/dev/null) || _f=""
-  _s=$(sed -nE "s/^'.* ([0-9]+(\.[0-9]+)?)'\$/\1/p" <<<"$_f")
-  _t=$(gsettings get org.gnome.desktop.interface text-scaling-factor 2>/dev/null) || _t=""
-  [[ "$_t" =~ ^[0-9]+(\.[0-9]+)?$ ]] || _t=1
-  if [[ ! "$_s" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
-    echo "  auto: could not read the GNOME font size; assuming 16 ppem." >&2
-    echo 16; return
-  fi
-  awk -v s="$_s" -v t="$_t" 'BEGIN { printf "%.4f\n", s * 96 / 72 * t }' | sed -E '/\./ s/\.?0+$//'
-}
-
-_ask_yn()  { local _default="${2:-n}"; read -p "  $1? (default: $_default) " _yn; _yn="${_yn:-$_default}"; }
+_show() { printf "  [%s] %s\n" "$1" "$2"; }
+_ask_yn() { local _default="${2:-n}"; read -r -p "  $1? (default: $_default) " _yn || _yn=""; _yn="${_yn:-$_default}"; }
 _ask_multi() {
   local _label="$1"; shift; local _opts=("$@"); local _n=${#_opts[@]}
   echo "    Subfamilies (space-separated numbers, or Enter/a for all):"
   for (( i=0; i<_n; i++ )); do printf "      %d) %s\n" "$((i+1))" "${_opts[$i]}"; done
-  read -p "    > " _raw; _sel=""
+  read -r -p "    > " _raw || _raw=""; _sel=""
   if [[ "$_raw" =~ ^[aA]$ || -z "$_raw" ]]; then
     _sel="${_opts[*]}"
   else
@@ -599,524 +205,77 @@ _ask_multi() {
   fi
 }
 
-# _ask_choice TITLE DEFAULT KEY:description ... -> sets _choice to a KEY.
-# Enter (or EOF) keeps DEFAULT; anything else must be a listed number. Plain
-# `select` cannot do this: it redisplays the menu on an empty line.
-_ask_choice() {
-  local _title="$1" _default="$2"; shift 2
-  local -a _items=("$@")
-  local _i _ans
-  echo "  $_title:"
-  for _i in "${!_items[@]}"; do
-    printf "    %d) %-12s %s%s\n" "$((_i + 1))" "${_items[$_i]%%:*}" "${_items[$_i]#*:}" \
-      "$([[ "${_items[$_i]%%:*}" == "$_default" ]] && echo "  (default)")"
-  done
-  while :; do
-    read -r -p "  > " _ans || _ans=""
-    if [[ -z "$_ans" ]]; then _choice="$_default"; return; fi
-    if [[ "$_ans" =~ ^[0-9]+$ ]] && (( _ans >= 1 && _ans <= ${#_items[@]} )); then
-      _choice="${_items[$((_ans - 1))]%%:*}"; return
-    fi
-    echo "  Enter 1-${#_items[@]}, or press Enter for $_default."
-  done
-}
-
-# Prints the bakeable tags active in fonts.conf for the families this build
-# installs. $1 is an ERE tested against the family name of each <match>.
-# Tags the fonts lack in GSUB are filtered later, in _bake_features.
-_features_from_fontsconf() {
-  local _conf="${APPLE_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
-  if [[ ! -f "$_conf" ]]; then
-    echo "Error: $_conf not found (set APPLE_FONTS_CONF)." >&2; return 1
-  fi
-  python - "$_conf" "$1" <<'PY'
-import re, sys
-import xml.etree.ElementTree as ET
-conf, fam_re = sys.argv[1:3]
-rx = re.compile(fam_re)
-always = {"kern", "liga", "ccmp", "locl", "mark", "mkmk", "calt", "clig", "rlig", "rvrn"}
-refused = {"aalt", "ordn", "dlig", "salt", "hlig", "hist"}
-tags = []
-for m in ET.parse(conf).getroot().iter("match"):
-    if m.get("target") != "font":
-        continue
-    if not any(t.get("name") == "family" and rx.search((t.findtext("string") or "").strip())
-               for t in m.findall("test")):
-        continue
-    for e in m.findall("edit"):
-        if e.get("name") != "fontfeatures":
-            continue
-        for st in e.findall("string"):
-            tag = (st.text or "").strip()
-            why = None
-            if tag.startswith("-"): why = "negated"
-            elif tag in always: why = "already applied by every shaper"
-            elif tag in refused: why = "refused by make_features.py"
-            if why:
-                print(f"  note: fonts.conf: '{tag}' skipped ({why})", file=sys.stderr)
-            elif tag not in tags:
-                tags.append(tag)
-print(",".join(tags))
-PY
-}
-
-# FEATURE_DEFAULTS=fonts.conf -> the tag list; sets FEATURE_FROM_CONF.
-_resolve_conf_features() {
-  [[ "${FEATURE_DEFAULTS:-}" == fonts.conf ]] || return 0
-  local -a _alt=()
-  [[ "$WANT_SF_PRO" == true ]]     && _alt+=('SF ?Pro')
-  [[ "$WANT_SF_COMPACT" == true ]] && _alt+=('SF ?Compact')
-  [[ "$WANT_SF_MONO" == true ]]    && _alt+=('SF ?Mono')
-  [[ "$WANT_SF_ARABIC" == true ]]  && _alt+=('SF ?Arabic')
-  [[ "$WANT_NY" == true ]]         && _alt+=('New ?York')
-  local _re="^($(IFS='|'; echo "${_alt[*]}"))"
-  FEATURE_DEFAULTS="$(_features_from_fontsconf "$_re")" || exit 1
-  FEATURE_FROM_CONF=true
-  echo "==> FEATURE_DEFAULTS from fonts.conf: ${FEATURE_DEFAULTS:-<none>}"
-}
-
-# Resolve every build option: prompt when interactive, otherwise fall back to
-# environment variables and defaults. Called from prepare() (so the answers are
-# known before pkgver() needs them) and re-read from disk by build().
+# Apple-specific options only. Everything about the font tuning itself is asked
+# by `fonttune configure` once the fonts are selected (see prepare()).
 _resolve_options() {
-  # ══════════════════════════════════════════════════════════════════════════
-  # Interactivity guard: only prompt when connected to a terminal. In a clean
-  # chroot / CI / --noconfirm build stdin is not a TTY; prompting there would
-  # read EOF and silently fall through, so we go straight to env vars/defaults.
-  # ══════════════════════════════════════════════════════════════════════════
   local _interactive=false
-  if [[ -t 0 ]]; then _interactive=true; fi
-
+  [[ -t 0 ]] && _interactive=true
   if [[ "$_interactive" == true ]]; then
     echo ""
-    echo "╔══════════════════════════════════════════════════════╗"
-    echo "║       nerd-fonts-apple-hinted — build options        ║"
-    echo "╚══════════════════════════════════════════════════════╝"
+    echo "══ nerd-fonts-apple-hinted: fonts ══"
   else
     echo "==> Non-interactive build (no TTY): using environment variables / defaults."
   fi
 
-  # ── Nerd Fonts patching ──────────────────────────────────────────────────
   if [[ "$_interactive" == true && -z "${NERD_PATCH:-}" ]]; then
     _ask_yn "[NERD_PATCH] Patch fonts with Nerd Fonts glyphs" n
     [[ "$_yn" =~ ^[yY]$ ]] && NERD_PATCH=true || NERD_PATCH=false
   fi
   NERD_PATCH="${NERD_PATCH:-false}"
 
-  # ── Variable fonts (only relevant when not patching) ─────────────────────
   if [[ "$_interactive" == true && "$NERD_PATCH" == false && -z "${WANT_VARIABLE:-}" ]]; then
-    echo ""
-    echo "  Variable fonts (SF Pro, SF Compact, New York) contain all weights"
-    echo "  in a single file with fvar/gvar axes. They are excluded when"
-    echo "  patching because font-patcher destroys variable axes."
+    echo "  Variable fonts hold all weights in one file; font-patcher destroys their axes."
     _ask_yn "[WANT_VARIABLE] Include variable TTF fonts" n
     [[ "$_yn" =~ ^[yY]$ ]] && WANT_VARIABLE=true || WANT_VARIABLE=false
   fi
-  # Variable fonts are never compatible with Nerd Fonts patching
-  if [[ "$NERD_PATCH" == true ]]; then WANT_VARIABLE=false; fi
+  [[ "$NERD_PATCH" == true ]] && WANT_VARIABLE=false
   WANT_VARIABLE="${WANT_VARIABLE:-false}"
 
-  # ── Hinting ──────────────────────────────────────────────────────────────
-  if [[ "$_interactive" == true && -z "${HINTING:-}" ]]; then
-    echo ""
-    if [[ "$NERD_PATCH" == false ]]; then
-      echo "  Note: ttfautohint engine hints TrueType, so static OTFs are"
-      echo "        converted OTF→TTF first; variable TTFs are flattened to static."
-      echo "        The 'cff' engine hints OTFs in place and keeps them as OTF."
-    fi
-    _ask_yn "[HINTING] Apply autohinting (no effect at hintslight)" n
-    [[ "$_yn" =~ ^[yY]$ ]] && HINTING=true || HINTING=false
-  fi
-  HINTING="${HINTING:-false}"
-
-  # ── Hinting engine ─────────────────────────────────────────────────────────
-  if [[ "$HINTING" == true && "$NERD_PATCH" == false && "$_interactive" == true && -z "${HINT_ENGINE:-}" ]]; then
-    echo ""
-    _ask_choice "[HINT_ENGINE] Hinting engine" ttfautohint \
-      "ttfautohint:TrueType bytecode, converts OTF→TTF" \
-      "cff:PostScript/CFF hints, keeps OTF"
-    HINT_ENGINE=$_choice
-  fi
-  HINT_ENGINE="${HINT_ENGINE:-ttfautohint}"
-  # Patched fonts are always TTF → ttfautohint only.
-  if [[ "$NERD_PATCH" == true ]]; then HINT_ENGINE=ttfautohint; fi
-  if [[ "$HINT_ENGINE" != ttfautohint && "$HINT_ENGINE" != cff ]]; then
-    echo "Error: HINT_ENGINE='$HINT_ENGINE' invalid (use 'ttfautohint' or 'cff')."; exit 1
-  fi
-
-  # ── OTF → TTF conversion ───────────────────────────────────────────────────
-  # Implied by HINTING=true + ttfautohint, impossible with the cff engine; only
-  # a free choice when hinting is off.
-  if [[ "$HINTING" == true ]]; then
-    if [[ "$HINT_ENGINE" == ttfautohint ]]; then OTF2TTF=true; else OTF2TTF=false; fi
-  else
-    if [[ "$_interactive" == true && -z "${OTF2TTF:-}" ]]; then
-      echo ""
-      echo "  Note: at hintslight FreeType only snaps TrueType outlines; Apple's OTFs"
-      echo "        have no CFF hints, so they stay unsnapped. Converting needs no ttfautohint."
-      _ask_yn "[OTF2TTF] Convert OTF to TTF outlines (no hinting)" y
-      [[ "$_yn" =~ ^[yY]$ ]] && OTF2TTF=true || OTF2TTF=false
-    fi
-    OTF2TTF="${OTF2TTF:-true}"
-  fi
-  if [[ "$OTF2TTF" != true && "$OTF2TTF" != false ]]; then
-    echo "Error: OTF2TTF='$OTF2TTF' invalid (use true or false)."; exit 1
-  fi
-
-  # ── Hinting preset (ttfautohint only) ──────────────────────────────────────
-  if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]]; then
-    if [[ "$_interactive" == true && -z "${HINT_PRESET:-}" && -z "${HINT_MODE:-}" ]]; then
-      echo ""
-      _ask_choice "[HINT_PRESET] Hinting preset" balanced \
-        "balanced:stem q, 8-50px, x-height 14 (measured best)" \
-        "sharp:stem s, 6-50px, x-height 14 (max contrast, low-DPI)" \
-        "natural:stem n, 8-50px, no x-height boost (least distortion)" \
-        "light:stem n, 12-50px, no x-height boost (HiDPI)" \
-        "custom:use the HINT_* environment variables"
-      HINT_PRESET=$_choice
-    fi
-    HINT_PRESET="${HINT_PRESET:-balanced}"
-    _apply_preset "$HINT_PRESET"
-    _validate_hint_mode
-
-    # Validate numeric knobs.
-    for _v in HINT_RANGE_MIN HINT_RANGE_MAX HINT_LIMIT HINT_XHEIGHT; do
-      if [[ ! "${!_v}" =~ ^[0-9]+$ ]]; then
-        echo "Error: $_v='${!_v}' must be a non-negative integer."; exit 1
-      fi
-    done
-    if (( HINT_RANGE_MIN > HINT_RANGE_MAX )); then
-      echo "Error: HINT_RANGE_MIN ($HINT_RANGE_MIN) > HINT_RANGE_MAX ($HINT_RANGE_MAX)."; exit 1
-    fi
-  fi
-
-  # ── Weight classes ─────────────────────────────────────────────────────────
-  if [[ "$_interactive" == true && -z "${FIX_WEIGHTS:-}" ]]; then
-    echo ""
-    _ask_yn "[FIX_WEIGHTS] Normalise weight classes (New York Bold/Black are mislabelled)" y
-    [[ "$_yn" =~ ^[yY]$ ]] && FIX_WEIGHTS=true || FIX_WEIGHTS=false
-  fi
-  FIX_WEIGHTS="${FIX_WEIGHTS:-true}"
-  if [[ "$FIX_WEIGHTS" != true && "$FIX_WEIGHTS" != false ]]; then
-    echo "Error: FIX_WEIGHTS='$FIX_WEIGHTS' must be true or false."; exit 1
-  fi
-
-  # ── Apple's trak table: keep it or take it out ─────────────────────────────
-  # Asked before the STAT option below, because the answer decides whether that
-  # option means anything at all.
-  if [[ "$_interactive" == true && -z "${STRIP_TRAK:-}" ]]; then
-    echo ""
-    echo "  Apple's 'trak' table is size-specific tracking, and Linux programs"
-    echo "  disagree about it: GTK and Chromium apply it as written, Firefox"
-    echo "  applies it about five times too strongly (+20% line width at 13px)."
-    echo "  Removing it makes all three agree within 1%; body text then sits at"
-    echo "  the design widths, ~10% tighter than Apple's tracking makes it."
-    echo "  See the header for the measurements."
-    _ask_yn "[STRIP_TRAK] Remove the trak table (recommended)" y
-    [[ "$_yn" =~ ^[yY]$ ]] && STRIP_TRAK=true || STRIP_TRAK=false
-  fi
-  STRIP_TRAK="${STRIP_TRAK:-true}"
-  if [[ "$STRIP_TRAK" != true && "$STRIP_TRAK" != false ]]; then
-    echo "Error: STRIP_TRAK='$STRIP_TRAK' must be true or false."; exit 1
-  fi
-  if [[ "$STRIP_TRAK" == true ]]; then
-    # STAT is only ever added so that HarfBuzz picks the tracking up; there is
-    # nothing left to pick up once the table is gone, so do not ask about it.
-    TRACKING=false
-    if [[ "$_interactive" == true && -z "${TRAK_BAKE:-}" ]]; then
-      echo ""
-      echo "  Stripping leaves the design widths. Apple's tracking can be baked into"
-      echo "  the advance widths at one point size instead, so every program shows the"
-      echo "  same constant spacing (SF Pro Rounded +80 units at 13pt, Text -12)."
-      read -p "  [TRAK_BAKE] Point size to bake in, 0 for none (default: 13) " TRAK_BAKE
-    fi
-    TRAK_BAKE="${TRAK_BAKE:-13}"
-    if ! [[ "$TRAK_BAKE" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
-      echo "Error: TRAK_BAKE='$TRAK_BAKE' must be a point size or 0."; exit 1
-    fi
-  else
-    TRAK_BAKE=0
-  fi
-
-  # ── Size-specific tracking (STAT) ──────────────────────────────────────────
-  if [[ "$_interactive" == true && -z "${TRACKING:-}" ]]; then
-    echo ""
-    _ask_yn "[TRACKING] Enable Apple's size-specific tracking (adds a STAT table)" y
-    [[ "$_yn" =~ ^[yY]$ ]] && TRACKING=true || TRACKING=false
-  fi
-  TRACKING="${TRACKING:-true}"
-  if [[ "$TRACKING" != true && "$TRACKING" != false ]]; then
-    echo "Error: TRACKING='$TRACKING' must be true or false."; exit 1
-  fi
-  if [[ "$STRIP_TRAK" == true && "$TRACKING" == true ]]; then
-    echo "Error: STRIP_TRAK=true and TRACKING=true contradict each other"
-    echo "       (one removes the trak table, the other exposes it). Pick one."
-    exit 1
-  fi
-
-  # gasp default + validation (used by both engines, but only meaningful for TTF)
-  GASP_MODE="${GASP_MODE:-keep}"
-  case "$GASP_MODE" in
-    keep|sized|smooth|gridfit) ;;
-    *) echo "Error: GASP_MODE='$GASP_MODE' invalid (keep|sized|smooth|gridfit)."; exit 1 ;;
-  esac
-
-  HINT_WINCOMPAT="${HINT_WINCOMPAT:-false}"
-  HINT_TTFA_TABLE="${HINT_TTFA_TABLE:-false}"
-
-  # ── Font family & subfamily selection ────────────────────────────────────
   if [[ "$_interactive" == true && \
         -z "${WANT_SF_PRO:-}${WANT_SF_COMPACT:-}${WANT_SF_MONO:-}${WANT_SF_ARABIC:-}${WANT_NY:-}" ]]; then
-    echo ""
-    echo "  ── Font families ────────────────────────────────────────"
-
     _ask_yn "[WANT_SF_PRO] Include SF Pro" y
     if [[ "$_yn" =~ ^[yY]$ ]]; then
       WANT_SF_PRO=true
-      if [[ -z "${SF_PRO_SUBS:-}" ]]; then
-        echo "  SF Pro subfamilies:"
-        _ask_multi "SF Pro" "Display" "Text" "Rounded"
-        SF_PRO_SUBS="$_sel"
-      fi
-    else
-      WANT_SF_PRO=false
-    fi
-
+      if [[ -z "${SF_PRO_SUBS:-}" ]]; then _ask_multi "SF Pro" Display Text Rounded; SF_PRO_SUBS="$_sel"; fi
+    else WANT_SF_PRO=false; fi
     _ask_yn "[WANT_SF_COMPACT] Include SF Compact" n
     if [[ "$_yn" =~ ^[yY]$ ]]; then
       WANT_SF_COMPACT=true
-      if [[ -z "${SF_COMPACT_SUBS:-}" ]]; then
-        echo "  SF Compact subfamilies:"
-        _ask_multi "SF Compact" "Display" "Text" "Rounded"
-        SF_COMPACT_SUBS="$_sel"
-      fi
-    else
-      WANT_SF_COMPACT=false
-    fi
-
+      if [[ -z "${SF_COMPACT_SUBS:-}" ]]; then _ask_multi "SF Compact" Display Text Rounded; SF_COMPACT_SUBS="$_sel"; fi
+    else WANT_SF_COMPACT=false; fi
     _ask_yn "[WANT_SF_MONO] Include SF Mono" y
     [[ "$_yn" =~ ^[yY]$ ]] && WANT_SF_MONO=true || WANT_SF_MONO=false
-
     _ask_yn "[WANT_SF_ARABIC] Include SF Arabic" n
     [[ "$_yn" =~ ^[yY]$ ]] && WANT_SF_ARABIC=true || WANT_SF_ARABIC=false
-
     _ask_yn "[WANT_NY] Include New York" y
     if [[ "$_yn" =~ ^[yY]$ ]]; then
       WANT_NY=true
-      if [[ -z "${NY_SUBS:-}" ]]; then
-        echo "  New York subfamilies:"
-        _ask_multi "New York" "Small" "Medium" "Large" "ExtraLarge"
-        NY_SUBS="$_sel"
-      fi
-    else
-      WANT_NY=false
-    fi
+      if [[ -z "${NY_SUBS:-}" ]]; then _ask_multi "New York" Small Medium Large ExtraLarge; NY_SUBS="$_sel"; fi
+    else WANT_NY=false; fi
   fi
-
   WANT_SF_PRO="${WANT_SF_PRO:-true}"
   WANT_SF_COMPACT="${WANT_SF_COMPACT:-false}"
   WANT_SF_MONO="${WANT_SF_MONO:-true}"
   WANT_SF_ARABIC="${WANT_SF_ARABIC:-false}"
   WANT_NY="${WANT_NY:-true}"
-
   if [[ "$WANT_SF_PRO$WANT_SF_COMPACT$WANT_SF_MONO$WANT_SF_ARABIC$WANT_NY" != *true* ]]; then
     echo "Error: no font families selected. Aborting."; exit 1
   fi
 
-  # ── Features baked into calt (see the header) ─────────────────────────────
-  # Asked here, after the family answers, because the recommendation depends on
-  # them: ss03 is the centred colon in SF Pro but the un-slashing of the zero in
-  # SF Mono, where the slashed zero IS the default (0 -> zero.1).
-  if [[ "$_interactive" == true && -z "${FEATURE_DEFAULTS:-}" ]]; then
-    echo ""
-    echo "  ── OpenType features ────────────────────────────────────"
-    echo "  A font cannot declare a feature \"on by default\": programs apply a"
-    echo "  fixed list (kern calt liga ...) and ignore the rest. Baking moves a"
-    echo "  feature's lookups into calt, which every program applies - the only"
-    echo "  way Chrome, Electron, Qt and LibreOffice honour one, since they"
-    echo "  never read fontconfig's fontfeatures. GTK is covered either way by"
-    echo "  the block in ~/.config/fontconfig/fonts.conf."
-    _ask_choice "[FEATURE_DEFAULTS] Bake features into calt" none \
-      "none:leave the fonts as Apple ships them (default)" \
-      "text:ss06,cv07,case - slashed zero, one-storey a, raised punctuation" \
-      "colon:text + ss03, centred colon - SF Mono is left alone" \
-      "fonts.conf:the features active for the selected Apple families in ~/.config/fontconfig/fonts.conf" \
-      "custom:type the tag list yourself"
-    case $_choice in
-      none)  FEATURE_DEFAULTS="" ;;
-      text)  FEATURE_DEFAULTS="ss06,cv07,case" ;;
-      colon) FEATURE_DEFAULTS="ss06,cv07,case,ss03" ;;
-      fonts.conf) FEATURE_DEFAULTS="fonts.conf"; _resolve_conf_features ;;
-      custom)
-        echo "  Tags, comma or space separated (e.g. \"ss06,cv07,case\"):"
-        read -r -p "  > " _tags || _tags=""
-                _tags="${_tags//[[:space:]]/,}"          # "a b" == "a,b"
-        while [[ "$_tags" == *,,* ]]; do _tags="${_tags//,,/,}"; done
-        _tags="${_tags#,}"; _tags="${_tags%,}"
-        FEATURE_DEFAULTS="$_tags"
-        [[ -n "$FEATURE_DEFAULTS" ]] || echo "  Nothing entered - baking nothing."
-        ;;
-    esac
-    if [[ -n "$FEATURE_DEFAULTS" ]]; then
-      # ss03 means two different things in the two families. Do not refuse the
-      # build and do not drop the tag for everyone: each family gets what it
-      # can support (_FEATURE_SKIP does the per-family part at build time).
-      if [[ "$WANT_SF_MONO" == true && ",$FEATURE_DEFAULTS," == *,ss03,* ]]; then
-        echo ""
-        echo "  ss03 is the centred colon in SF Pro (colon -> colon.uc). SF Mono"
-        echo "  has no colon.uc glyph, and its ss03 replaces the slashed zero"
-        echo "  with a plain one instead - so SF Mono is left out of this tag,"
-        echo "  and every other family still gets it. Same rule for anything a"
-        echo "  family cannot do: each font gets what it can support out of"
-        echo "  your list, with a note in the build log."
-      fi
-      echo ""
-      echo "  A renamed copy keeps the stock look available next to the new one"
-      echo "  (\"SF Pro Text\" and \"SF Pro Text Alt\"). Without it the packaged"
-      echo "  files keep their names and the features apply everywhere, with no"
-      echo "  way back except CSS \"calt\" 0."
-      _ask_yn "[FEATURE_FAMILY] Also install a renamed copy (suffix ' Alt')" n
-      [[ "$_yn" =~ ^[yY]$ ]] && FEATURE_FAMILY=" Alt" || FEATURE_FAMILY=""
-    fi
-  fi
-  FEATURE_DEFAULTS="${FEATURE_DEFAULTS:-}"
-  FEATURE_FROM_CONF="${FEATURE_FROM_CONF:-false}"
-  _resolve_conf_features   # also covers FEATURE_DEFAULTS=fonts.conf from the environment
-  FEATURE_FAMILY="${FEATURE_FAMILY:-}"
-  for _v in ${FEATURE_DEFAULTS//,/ }; do
-    if [[ ! "$_v" =~ ^[A-Za-z0-9]{4}$ ]]; then
-      echo "Error: FEATURE_DEFAULTS: '$_v' is not a feature tag (e.g. ss06)."; exit 1
-    fi
-  done
-  if [[ -n "$FEATURE_FAMILY" ]]; then
-    # Trailing whitespace would end up in the family name; a leading space is
-    # deliberate (" Alt" -> "SF Pro Text Alt").
-    FEATURE_FAMILY="${FEATURE_FAMILY%"${FEATURE_FAMILY##*[![:space:]]}"}"
-    if [[ ! "$FEATURE_FAMILY" =~ ^[[:space:]]*[A-Za-z0-9][A-Za-z0-9\ ._-]*$ ]]; then
-      echo "Error: FEATURE_FAMILY='$FEATURE_FAMILY' is not usable as a family suffix."; exit 1
-    fi
-  fi
-
-  # ── Optical spacing (see the header) ──────────────────────────────────────
-  if [[ "$_interactive" == true && "${EVEN_SPACING+set}" != set ]]; then
-    echo ""
-    echo "  Some letter pairs are spaced unevenly (e.g. Greek \"λώ\" tight, \"ει\" loose)."
-    _ask_choice "[EVEN_SPACING] Even out spacing with kern pairs" none \
-      "none:as Apple designed it (default)" \
-      "all:Latin, Greek and Cyrillic" \
-      "greek:Greek only" \
-      "latin:Latin only" \
-      "custom:type a list, e.g. latin,greek"
-    case $_choice in
-      none)   EVEN_SPACING="" ;;
-      custom) read -r -p "  scripts: " EVEN_SPACING || EVEN_SPACING="" ;;
-      *)      EVEN_SPACING=$_choice ;;
-    esac
-  fi
-  EVEN_SPACING="${EVEN_SPACING:-}"
-  if [[ "$_interactive" == true && "${PIXEL_GRID+set}" != set && -z "$EVEN_SPACING" ]]; then
-    echo ""
-    echo "  With subpixel positioning the same stem is drawn differently from letter to letter."
-    _ask_choice "[PIXEL_GRID] Put advances and kerning on a pixel grid" off \
-      "off:no" \
-      "auto:from the GNOME interface font size (pt x 96/72 x text scaling)" \
-      "16:16 ppem = 12pt GTK / 16px web" \
-      "14:14 ppem" \
-      "13:13 ppem" \
-      "custom:type a size in ppem"
-    case $_choice in
-      off)    PIXEL_GRID="" ;;
-      custom) read -r -p "  ppem: " PIXEL_GRID || PIXEL_GRID="" ;;
-      *)      PIXEL_GRID=$_choice ;;
-    esac
-  fi
-  if [[ "${PIXEL_GRID:-}" == auto ]]; then
-    PIXEL_GRID=$(_auto_ppem); echo "  PIXEL_GRID=auto -> ${PIXEL_GRID} ppem"
-  fi
-  PIXEL_GRID="${PIXEL_GRID:-}"
-  if [[ ! "$PIXEL_GRID" =~ ^([0-9]+(\.[0-9]+)?)?$ ]]; then
-    echo "Error: PIXEL_GRID must be empty or a size in ppem (e.g. 16)."; exit 1
-  fi
-  if [[ -n "$PIXEL_GRID" && -n "$EVEN_SPACING" ]]; then
-    echo "Error: PIXEL_GRID rounds the kerning that EVEN_SPACING adds (about 85% of it"
-    echo "       is zeroed); use one of them."; exit 1
-  fi
-  EVEN_PPEM="${EVEN_PPEM:-16}"
-  EVEN_STRENGTH="${EVEN_STRENGTH:-auto}"; EVEN_DEPTH="${EVEN_DEPTH:-auto}"
-  EVEN_MAX="${EVEN_MAX:-auto}"; EVEN_MIN="${EVEN_MIN:-auto}"
-  if [[ ! "$EVEN_SPACING" =~ ^(|all|(latin|greek|cyrillic)(,(latin|greek|cyrillic))*)$ ]]; then
-    echo "Error: EVEN_SPACING must be empty, all, or a comma list of latin,greek,cyrillic."; exit 1
-  fi
-  for _v in EVEN_PPEM EVEN_STRENGTH EVEN_DEPTH EVEN_MAX EVEN_MIN; do
-    [[ "${!_v}" == auto || "${!_v}" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { echo "Error: $_v='${!_v}' must be a number."; exit 1; }
-  done
-  [[ "$EVEN_PPEM" != auto ]] || EVEN_PPEM=16
-
-  # ── Build summary ─────────────────────────────────────────────────────────
   echo ""
-  echo "  ── Build summary ───────────────────────────────────────"
-  printf "  NERD_PATCH:    %s\n" "$NERD_PATCH"
-  printf "  WANT_VARIABLE: %s\n" "$WANT_VARIABLE"
-  printf "  FIX_WEIGHTS:   %s\n" "$FIX_WEIGHTS"
-  printf "  TRACKING:      %s   (STRIP_TRAK: %s, TRAK_BAKE: %s)\n" "$TRACKING" "$STRIP_TRAK" "$TRAK_BAKE"
-  if [[ "$HINTING" == true ]]; then
-    printf "  HINTING:       true  (engine=%s)\n" "$HINT_ENGINE"
-    if [[ "$HINT_ENGINE" == ttfautohint ]]; then
-      printf "    preset=%s  stem=%s  range=%s-%s  limit=%s  x-height=%s\n" \
-        "$HINT_PRESET" "$HINT_MODE" "$HINT_RANGE_MIN" "$HINT_RANGE_MAX" "$HINT_LIMIT" "$HINT_XHEIGHT"
-      printf "    x-snap-exc='%s'  win-compat=%s  ttfa-table=%s%s\n" \
-        "${HINT_XSNAP_EXC-<default>}" "$HINT_WINCOMPAT" "$HINT_TTFA_TABLE" \
-        "${HINT_FAMILY_SUFFIX:+  family-suffix='$HINT_FAMILY_SUFFIX'}"
-    fi
-    printf "    gasp=%s\n" "$GASP_MODE"
-  else
-    printf "  HINTING:       false  (OTF2TTF=%s)\n" "$OTF2TTF"
-  fi
-  printf "  FEATURES:      %s%s\n" \
-    "${FEATURE_DEFAULTS:-<none baked>}" \
-    "${FEATURE_FAMILY:+  (family suffix '$FEATURE_FAMILY')}"
-  printf "  EVEN_SPACING:  %s\n" "${EVEN_SPACING:-<none>}"
-  printf "  PIXEL_GRID:    %s\n" "${PIXEL_GRID:-<off>}"
-  echo ""
-  _show "$( [[ "$WANT_SF_PRO"     == true ]] && echo "x" || echo " " )" "SF Pro      ${SF_PRO_SUBS:+(subfamilies: $SF_PRO_SUBS)}"
-  _show "$( [[ "$WANT_SF_COMPACT" == true ]] && echo "x" || echo " " )" "SF Compact  ${SF_COMPACT_SUBS:+(subfamilies: $SF_COMPACT_SUBS)}"
-  _show "$( [[ "$WANT_SF_MONO"    == true ]] && echo "x" || echo " " )" "SF Mono"
-  _show "$( [[ "$WANT_SF_ARABIC"  == true ]] && echo "x" || echo " " )" "SF Arabic"
-  _show "$( [[ "$WANT_NY"         == true ]] && echo "x" || echo " " )" "New York    ${NY_SUBS:+(subfamilies: $NY_SUBS)}"
+  echo "  ── Fonts ───────────────────────────────────────────────"
+  printf "  NERD_PATCH: %s   WANT_VARIABLE: %s\n" "$NERD_PATCH" "$WANT_VARIABLE"
+  _show "$( [[ "$WANT_SF_PRO"     == true ]] && echo x || echo ' ' )" "SF Pro      ${SF_PRO_SUBS:+(subfamilies: $SF_PRO_SUBS)}"
+  _show "$( [[ "$WANT_SF_COMPACT" == true ]] && echo x || echo ' ' )" "SF Compact  ${SF_COMPACT_SUBS:+(subfamilies: $SF_COMPACT_SUBS)}"
+  _show "$( [[ "$WANT_SF_MONO"    == true ]] && echo x || echo ' ' )" "SF Mono"
+  _show "$( [[ "$WANT_SF_ARABIC"  == true ]] && echo x || echo ' ' )" "SF Arabic"
+  _show "$( [[ "$WANT_NY"         == true ]] && echo x || echo ' ' )" "New York    ${NY_SUBS:+(subfamilies: $NY_SUBS)}"
   echo "  ────────────────────────────────────────────────────────"
-  echo ""
 
-  # Persist the resolved options so build() and package() reuse the same answers
-  # instead of re-prompting (makepkg runs each function in a fresh shell).
+  # makepkg runs each function in a fresh shell: persist for build()/package().
   {
     echo "NERD_PATCH=$NERD_PATCH"
     echo "WANT_VARIABLE=$WANT_VARIABLE"
-    echo "FIX_WEIGHTS=$FIX_WEIGHTS"
-    echo "TRACKING=$TRACKING"
-    echo "STRIP_TRAK=$STRIP_TRAK"
-    echo "TRAK_BAKE=$TRAK_BAKE"
-    echo "HINTING=$HINTING"
-    echo "OTF2TTF=$OTF2TTF"
-    echo "HINT_ENGINE=$HINT_ENGINE"
-    echo "HINT_PRESET=${HINT_PRESET:-}"
-    echo "HINT_MODE=${HINT_MODE:-}"
-    echo "HINT_RANGE_MIN=${HINT_RANGE_MIN:-}"
-    echo "HINT_RANGE_MAX=${HINT_RANGE_MAX:-}"
-    echo "HINT_LIMIT=${HINT_LIMIT:-}"
-    echo "HINT_XHEIGHT=${HINT_XHEIGHT:-}"
-    echo "HINT_WINCOMPAT=$HINT_WINCOMPAT"
-    echo "HINT_TTFA_TABLE=$HINT_TTFA_TABLE"
-    echo "GASP_MODE=$GASP_MODE"
-    echo "FEATURE_DEFAULTS=$FEATURE_DEFAULTS"
-    echo "FEATURE_FROM_CONF=$FEATURE_FROM_CONF"
-    echo "FEATURE_FAMILY=$FEATURE_FAMILY"
-    echo "EVEN_SPACING=$EVEN_SPACING"
-    echo "PIXEL_GRID=$PIXEL_GRID"
-    echo "EVEN_PPEM=$EVEN_PPEM"
-    echo "EVEN_STRENGTH=$EVEN_STRENGTH"
-    echo "EVEN_DEPTH=$EVEN_DEPTH"
-    echo "EVEN_MAX=$EVEN_MAX"
-    echo "EVEN_MIN=$EVEN_MIN"
     echo "WANT_SF_PRO=$WANT_SF_PRO"
     echo "WANT_SF_COMPACT=$WANT_SF_COMPACT"
     echo "WANT_SF_MONO=$WANT_SF_MONO"
@@ -1125,133 +284,111 @@ _resolve_options() {
     echo "SF_PRO_SUBS=${SF_PRO_SUBS:-}"
     echo "SF_COMPACT_SUBS=${SF_COMPACT_SUBS:-}"
     echo "NY_SUBS=${NY_SUBS:-}"
-    # These two are optional and must distinguish "unset" from "set to empty".
-    # `if` rather than `&&` so an unset variable is not a non-zero exit status
-    # for the whole group under makepkg's `set -e`.
-    if [[ "${HINT_XSNAP_EXC+set}" == set ]]; then
-      echo "HINT_XSNAP_EXC=$HINT_XSNAP_EXC"
-    fi
-    if [[ -n "${HINT_FAMILY_SUFFIX:-}" ]]; then
-      echo "HINT_FAMILY_SUFFIX=$HINT_FAMILY_SUFFIX"
-    fi
   } > "$srcdir/.build_opts"
 }
 
-# Load the options persisted by _resolve_options(). Keys are whitelisted so a
-# stray line in the file can never inject an arbitrary variable.
+# Keys are whitelisted so a stray line can never inject an arbitrary variable.
 _load_options() {
   local _k _v
   [[ -f "$srcdir/.build_opts" ]] || { echo "Error: missing .build_opts; run prepare() first."; exit 1; }
   while IFS='=' read -r _k _v; do
     case "$_k" in
-      NERD_PATCH|WANT_VARIABLE|FIX_WEIGHTS|TRACKING|STRIP_TRAK|TRAK_BAKE|HINTING|OTF2TTF|HINT_ENGINE|HINT_PRESET|HINT_MODE| \
-      HINT_RANGE_MIN|HINT_RANGE_MAX|HINT_LIMIT|HINT_XHEIGHT|HINT_WINCOMPAT| \
-      HINT_TTFA_TABLE|HINT_XSNAP_EXC|HINT_FAMILY_SUFFIX|GASP_MODE| \
-      FEATURE_DEFAULTS|FEATURE_FROM_CONF|FEATURE_FAMILY| \
-      EVEN_SPACING|PIXEL_GRID|EVEN_PPEM|EVEN_STRENGTH|EVEN_DEPTH|EVEN_MAX|EVEN_MIN| \
-      WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY| \
-      SF_PRO_SUBS|SF_COMPACT_SUBS|NY_SUBS)
-        printf -v "$_k" '%s' "$_v" ;;
+      NERD_PATCH|WANT_VARIABLE|WANT_SF_PRO|WANT_SF_COMPACT|WANT_SF_MONO|WANT_SF_ARABIC|WANT_NY|\
+      SF_PRO_SUBS|SF_COMPACT_SUBS|NY_SUBS) printf -v "$_k" '%s' "$_v" ;;
     esac
   done < "$srcdir/.build_opts"
 }
 
-# ── Tags that must not be baked into some families ──────────────────────────
-# Audit 2026-10-29 of the shipped fonts (make_features.py --list on each):
-#
-#   tag    SF Pro Text/Display/Rounded      SF Mono                New York
-#   ss03   colon -> colon.uc                zero -> zero.1         absent
-#          (the centred colon, 1 sub)       (un-slashes the zero,
-#                                           3 contours -> 2; there
-#                                           is no colon.uc glyph)
-#
-# One tag, two meanings. Baking ss03 into a mixed build gave SF Mono a change
-# nobody asked for; refusing the whole build threw the tag away for the
-# families that can do exactly what was asked. Neither is right, so the tag is
-# dropped for the family that cannot honour it and baked into all the others.
-#
-# Syntax: 'TAG=REGEX|reason'. The regex is tested against the family name, the
-# nameID 16 name and the file name, so 'SF ?Mono' also matches the patched
-# 'SFMono Nerd Font Mono' and survives FontForge's garbage in nameID 16.
+# Tags that must not be baked into some families. Audit 2026-10-29: ss03 is the
+# centred colon in SF Pro (colon -> colon.uc) but un-slashes the zero in SF Mono
+# (no colon.uc glyph there), so the tag is dropped for SF Mono and baked into
+# the rest. 'TAG=REGEX|reason'; the regex is tested against the family name, the
+# nameID 16 name and the file name, so it also matches the patched Nerd names.
 _FEATURE_SKIP=(
   'ss03=SF ?Mono|SF Mono has no colon.uc glyph; its ss03 would replace the slashed zero with a plain one'
 )
 
-# _bake_features SRC: move the lookups of FEATURE_DEFAULTS into 'calt' on the
-# fonts this build ended up with (hinted, patched or plain) and write them to
-# $srcdir/featured. Last step on purpose: ttfautohint never sees the lookups,
-# and the gasp pass has already run.
-_bake_features() {
-  local _src="$1" _f
-  local -a _files=()
-  [[ -n "$FEATURE_DEFAULTS" ]] || return 0
-  for _f in "$_src"/*.ttf "$_src"/*.otf; do
-    [[ -f "$_f" ]] || continue
-    _files+=("$_f")
-  done
-  if (( ${#_files[@]} == 0 )); then
-    echo "Error: FEATURE_DEFAULTS is set but $_src holds no fonts." >&2; exit 1
-  fi
-  rm -rf "$srcdir/featured"; mkdir -p "$srcdir/featured"
-  if [[ "${FEATURE_FROM_CONF:-false}" == true ]]; then
-    # Tags from fonts.conf were never checked against the fonts: drop the ones
-    # no font of this build has in GSUB (the others fail make_features.py).
-    FEATURE_DEFAULTS="$(python - "$FEATURE_DEFAULTS" "${_files[@]}" <<'PY'
-import sys
-from fontTools.ttLib import TTFont
-want = [t for t in sys.argv[1].split(",") if t]
-have = set()
-for path in sys.argv[2:]:
-    f = TTFont(path, lazy=True)
-    if "GSUB" in f:
-        have |= {r.FeatureTag for r in f["GSUB"].table.FeatureList.FeatureRecord}
-keep = []
-for t in want:
-    if t in have: keep.append(t)
-    else: print(f"  note: fonts.conf: '{t}' skipped (no font of this build has it in GSUB)", file=sys.stderr)
-print(",".join(keep))
-PY
-)"
-    if [[ -z "$FEATURE_DEFAULTS" ]]; then
-      echo "==> Nothing from fonts.conf can be baked into these fonts; installing them as built."
-      cp -p "${_files[@]}" "$srcdir/featured/"
-    fi
-  fi
-  if [[ -n "$FEATURE_DEFAULTS" ]]; then
-  echo "==> Baking $FEATURE_DEFAULTS into calt..."
-  # A tag that means something else in one family is dropped there and baked
-  # into the rest (_FEATURE_SKIP): the build never fails because one family
-  # cannot honour a tag, and never loses the tag for the families that can.
-  local -a _skip=()
-  for _f in "${_FEATURE_SKIP[@]}"; do
-    _skip+=(--skip "$_f")
-  done
-  python "$srcdir/fonttune/fonttune/steps/make_features.py" --features "$FEATURE_DEFAULTS" \
-    ${_skip[@]+"${_skip[@]}"} -o "$srcdir/featured" "${_files[@]}"
+# Copy the extracted fonts of the selected families to $srcdir/selected. Selection
+# is by each font's `name` table (typographic family, nameID 16, else 1), not by
+# file name: Apple has changed file naming between re-spins, the family names
+# have been stable.
+_select_fonts() {
+  declare -gA _fam_of=()
+  local _file _fam
+  while IFS=$'\t' read -r _file _fam; do
+    if [[ -n "$_file" ]]; then _fam_of["$_file"]="$_fam"; fi
+  done < <(python "$srcdir/font_meta.py" families "$srcdir/extracted/"* 2>/dev/null)
+  if (( ${#_fam_of[@]} == 0 )); then
+    echo "Error: could not read family names from any extracted font." >&2
+    echo "       Is python-fonttools installed and are the fonts intact?" >&2
+    exit 1
   fi
 
-  # FEATURE_FAMILY is a suffix here, one per family, and it has to be applied
-  # even to the families that carry none of the requested tags (SF Mono has no
-  # ss06/cv07/case but still must not collide with the stock install). Renaming
-  # is therefore a separate pass over the result rather than --family.
-  if [[ -n "$FEATURE_FAMILY" ]]; then
-    echo "==> Installing as family suffix '$FEATURE_FAMILY'..."
-    python "$srcdir/fix_names.py" --suffix "$FEATURE_FAMILY" "$srcdir/featured/"*
-  fi
+  # Does family string $1 belong to base family $2 with one of subfamilies $3?
+  # Empty $3 means "any subfamily of this base family".
+  _family_matches() {
+    local _fam="$1" _base="$2" _subs="$3" _sub
+    [[ "$_fam" == "$_base" ]] && { [[ -z "$_subs" ]] && return 0 || return 1; }
+    [[ "$_fam" == "$_base "* ]] || return 1
+    [[ -z "$_subs" ]] && return 0
+    local _rest="${_fam#"$_base" }"
+    for _sub in $_subs; do
+      [[ "${_rest// /}" == "${_sub// /}" ]] && return 0   # "ExtraLarge" == "Extra Large"
+    done
+    return 1
+  }
+
+  # Apple ships the variable faces as .ttf and the static ones as .otf; variable
+  # fonts are only wanted with NERD_PATCH=false and WANT_VARIABLE=true.
+  _select_family() {
+    local _want="$1" _base="$2" _subs="$3"
+    [[ "$_want" != true ]] && return 0
+    local _f _bn _fam _n=0
+    for _f in "$srcdir/extracted"/*; do
+      [[ -f "$_f" ]] || continue
+      _bn="$(basename "$_f")"
+      [[ "$_bn" == ._* ]] && continue
+      _fam="${_fam_of[$_bn]:-}"
+      [[ -n "$_fam" ]] || continue
+      _family_matches "$_fam" "$_base" "$_subs" || continue
+      if [[ "$_bn" == *.ttf || "$_bn" == *.TTF ]]; then
+        [[ "$NERD_PATCH" == true || "$WANT_VARIABLE" != true ]] && continue
+      fi
+      cp -n "$_f" "$srcdir/selected/" && _n=$(( _n + 1 ))
+    done
+    if (( _n == 0 )); then
+      echo "Warning: no fonts matched '$_base'${_subs:+ (subfamilies: $_subs)}." >&2
+      local _avail
+      _avail="$(printf '%s\n' "${_fam_of[@]}" | grep -F "$_base" | sort -u | paste -sd', ')"
+      if [[ -n "$_avail" ]]; then echo "         Available: $_avail" >&2; fi
+    fi
+    return 0
+  }
+
+  _select_family "$WANT_SF_MONO"    "SF Mono"    ""
+  _select_family "$WANT_SF_ARABIC"  "SF Arabic"  ""
+  _select_family "$WANT_SF_PRO"     "SF Pro"     "$SF_PRO_SUBS"
+  _select_family "$WANT_SF_COMPACT" "SF Compact" "$SF_COMPACT_SUBS"
+  _select_family "$WANT_NY"         "New York"   "$NY_SUBS"
+
+  local _n; _n=$(find "$srcdir/selected" -type f | wc -l)
+  echo "==> Selected $_n font files for processing."
+  if (( _n == 0 )); then echo "Error: no fonts matched the selection. Check subfamily names."; exit 1; fi
 }
 
 prepare() {
   _resolve_options
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 1 — Extract fonts from Apple DMG archives (selected families only)
-  # ══════════════════════════════════════════════════════════════════════════
-  # Extraction lives in prepare() rather than build() so pkgver() — which runs
-  # in between — can read the version out of the extracted font files.
-  rm -rf "$srcdir/extracted" "$srcdir/converted" "$srcdir/patched" \
-         "$srcdir/selected" "$srcdir/dmg"
-  mkdir -p "$srcdir/extracted" "$srcdir/converted" "$srcdir/patched" \
-           "$srcdir/selected"
+  rm -rf "$srcdir/extracted" "$srcdir/patched" "$srcdir/selected" "$srcdir/dmg"
+  mkdir -p "$srcdir/extracted" "$srcdir/patched" "$srcdir/selected"
+  # Extraction lives in prepare() so pkgver(), which runs next, can read the
+  # version out of the extracted font files.
   _extract_selected
+  _select_fonts
+  _check_fonttune
+  # The tuning questions, asked about the fonts that were just selected (so
+  # only relevant ones appear). Answers go to a file that build() reads.
+  python "$srcdir/fonttune/bin/fonttune" configure --defaults apple \
+    --save-to "$srcdir/fonttune.toml" "$srcdir/selected/"*
 }
 
 pkgver() {
@@ -1289,477 +426,83 @@ _check_fonttune() {
   fi
 }
 
+# Regex over the families this build installs, for fonttune's fonts.conf lookup.
+_families_regex() {
+  local -a _alt=()
+  [[ "$WANT_SF_PRO" == true ]]     && _alt+=('SF ?Pro')
+  [[ "$WANT_SF_COMPACT" == true ]] && _alt+=('SF ?Compact')
+  [[ "$WANT_SF_MONO" == true ]]    && _alt+=('SF ?Mono')
+  [[ "$WANT_SF_ARABIC" == true ]]  && _alt+=('SF ?Arabic')
+  [[ "$WANT_NY" == true ]]         && _alt+=('New ?York')
+  local IFS='|'
+  echo "^(${_alt[*]})"
+}
+
 build() {
   _check_fonttune
   _load_options
 
+  local -a _ft=(python "$srcdir/fonttune/bin/fonttune" run --config "$srcdir/fonttune.toml" --in-place
+                --fonts-conf "${APPLE_FONTS_CONF:-${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/fonts.conf}"
+                --features-match "$(_families_regex)")
+  local _s
+  for _s in "${_FEATURE_SKIP[@]}"; do _ft+=(--feature-skip "$_s"); done
 
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 2 — Filter by family/subfamily and variable-font preference
-  # ══════════════════════════════════════════════════════════════════════════
-  # Selection is driven by each font's OpenType `name` table (typographic family,
-  # nameID 16, falling back to nameID 1) rather than by filename patterns. Apple
-  # has already changed both the installer layout and file naming between
-  # re-spins, but the internal family names ("SF Pro Text", "New York Small",
-  # "SF Mono") have been stable across every release we have seen — and they are
-  # what fontconfig ends up showing the user anyway.
-  #
-  # The family map is built once with a single python call; the shell then only
-  # does string matching, so a new weight or a renamed file is picked up for free.
-  declare -A _fam_of=()
-  local _file _fam
-  while IFS=$'\t' read -r _file _fam; do
-    if [[ -n "$_file" ]]; then _fam_of["$_file"]="$_fam"; fi
-  done < <(python "$srcdir/font_meta.py" families "$srcdir/extracted/"* 2>/dev/null)
-
-  if (( ${#_fam_of[@]} == 0 )); then
-    echo "Error: could not read family names from any extracted font." >&2
-    echo "       Is python-fonttools installed and are the fonts intact?" >&2
-    exit 1
+  if [[ "$NERD_PATCH" != true ]]; then
+    "${_ft[@]}" "$srcdir/selected/"*
+    return
   fi
 
-  # Does family string $1 belong to base family $2 with one of subfamilies $3?
-  # Empty $3 means "any subfamily of this base family".
-  _family_matches() {
-    local _fam="$1" _base="$2" _subs="$3" _sub
-    # Exact base family (e.g. "SF Mono", or the variable "SF Pro") …
-    [[ "$_fam" == "$_base" ]] && { [[ -z "$_subs" ]] && return 0 || return 1; }
-    # … or "<base> <subfamily>" (e.g. "SF Pro Text", "New York Small").
-    [[ "$_fam" == "$_base "* ]] || return 1
-    [[ -z "$_subs" ]] && return 0
-    local _rest="${_fam#"$_base" }"
-    for _sub in $_subs; do
-      # Compare ignoring spaces so "ExtraLarge" matches "Extra Large".
-      [[ "${_rest// /}" == "${_sub// /}" ]] && return 0
-    done
-    return 1
-  }
+  # font-patcher (FontForge) drops trak and STAT, so weights and trak run first;
+  # everything else works on the patched fonts.
+  printf "%b" "\e[1;33m==> WARNING:\e[0m Patching with Nerd Fonts glyphs, this takes a while...\n"
+  "${_ft[@]}" --only weights,trak "$srcdir/selected/"*
 
-  # Copy every extracted font whose family matches, honouring the static/variable
-  # split: variable fonts are TTFs with an fvar axis and are only wanted when
-  # NERD_PATCH=false and WANT_VARIABLE=true (font-patcher destroys fvar/gvar).
-  _select_family() {
-    local _want="$1" _base="$2" _subs="$3"
-    [[ "$_want" != true ]] && return 0
-    local _f _bn _fam _n=0
-    for _f in "$srcdir/extracted"/*; do
-      [[ -f "$_f" ]] || continue
-      _bn="$(basename "$_f")"
-      [[ "$_bn" == ._* ]] && continue
-      _fam="${_fam_of[$_bn]:-}"
-      [[ -n "$_fam" ]] || continue
-      _family_matches "$_fam" "$_base" "$_subs" || continue
-      # Apple ships the variable faces as .ttf and the static faces as .otf.
-      if [[ "$_bn" == *.ttf || "$_bn" == *.TTF ]]; then
-        [[ "$NERD_PATCH" == true || "$WANT_VARIABLE" != true ]] && continue
-      fi
-      cp -n "$_f" "$srcdir/selected/" && _n=$(( _n + 1 ))
-    done
-    if (( _n == 0 )); then
-      echo "Warning: no fonts matched '$_base'${_subs:+ (subfamilies: $_subs)}." >&2
-      # List what was actually available so a renamed subfamily is obvious.
-      local _avail
-      _avail="$(printf '%s\n' "${_fam_of[@]}" | grep -F "$_base" | sort -u | paste -sd', ')"
-      if [[ -n "$_avail" ]]; then echo "         Available: $_avail" >&2; fi
-    fi
-    return 0
-  }
+  # SF Mono: -s (--mono) keeps the monospace cell width.
+  find "$srcdir/selected" \( -name 'SF-Mono-*.otf' -o -name 'SF-Mono-*.ttf' \) | sort | \
+    parallel --will-cite -j4 python "$srcdir/font-patcher" \
+      --variable-width-glyphs -q -c -s {} -out "$srcdir/patched" '>/dev/null'
+  find "$srcdir/selected" \( -name '*.otf' -o -name '*.ttf' \) ! -name 'SF-Mono-*' | sort | \
+    parallel --will-cite -j4 python "$srcdir/font-patcher" \
+      --variable-width-glyphs -q -c {} -out "$srcdir/patched" '>/dev/null'
 
-  # SF Mono and SF Arabic have no subfamily split; the rest are filtered by the
-  # *_SUBS variables (empty = every subfamily).
-  _select_family "$WANT_SF_MONO"    "SF Mono"     ""
-  _select_family "$WANT_SF_ARABIC"  "SF Arabic"   ""
-  _select_family "$WANT_SF_PRO"     "SF Pro"      "$SF_PRO_SUBS"
-  _select_family "$WANT_SF_COMPACT" "SF Compact"  "$SF_COMPACT_SUBS"
-  _select_family "$WANT_NY"         "New York"    "$NY_SUBS"
+  # font-patcher keeps the input outline format (OTF in, OTF out).
+  local -a _patched=()
+  local _f
+  for _f in "$srcdir/patched/"*.otf "$srcdir/patched/"*.ttf; do
+    [[ -f "$_f" ]] && _patched+=("$_f")
+  done
+  if (( ${#_patched[@]} == 0 )); then echo "Error: font-patcher produced no output."; exit 1; fi
+  echo "==> Patched ${#_patched[@]} font(s)."
 
-  local _sel_count; _sel_count=$(find "$srcdir/selected" -type f | wc -l)
-  echo "==> Selected $_sel_count font files for processing."
-  if (( _sel_count == 0 )); then
-    echo "Error: no fonts matched the selection. Check subfamily names."; exit 1
-  fi
+  # FontForge writes garbage into nameID 16/17 (a patched SF Pro would advertise
+  # "最攀਀ऀ攀砀...") and adds a duplicate Mac-Roman copy of Apple's 60 KB licence,
+  # pushing the name table past the 64 KB limit; no later step could write the
+  # font back. Repair it before anything else touches the patched fonts.
+  echo "==> Repairing the name table font-patcher wrote..."
+  parallel --will-cite -j"$(nproc)" python "$srcdir/fonttune/fonttune/steps/fix_names.py" ::: "${_patched[@]}"
 
-  # Weight classes are fixed on the selected copies, before any conversion or
-  # patching, so every later step (and fontconfig) sees the corrected values.
-  if [[ "$FIX_WEIGHTS" == true ]]; then
-    echo "==> Normalising usWeightClass..."
-    python "$srcdir/fonttune/fonttune/steps/fix_weights.py" "$srcdir/selected/"*
-  fi
-
-  # Apple's trak table goes first: every later step (conversion, patching,
-  # hinting, feature baking) then carries fonts that have no tracking at all,
-  # instead of each of them deciding whether to preserve it.
-  if [[ "$STRIP_TRAK" == true ]]; then
-    echo "==> Removing Apple's trak (size-specific tracking)..."
-    if [[ "$TRAK_BAKE" != 0 ]]; then
-      echo "    (baking the tracking at ${TRAK_BAKE}pt into the advance widths)"
-      python "$srcdir/fonttune/fonttune/steps/strip_trak.py" --bake "$TRAK_BAKE" "$srcdir/selected/"*
-    else
-      python "$srcdir/fonttune/fonttune/steps/strip_trak.py" "$srcdir/selected/"*
-    fi
-  fi
-
-  # STAT goes in after the weight fix (it records usWeightClass). fontTools
-  # (otf2ttf) and ttfautohint keep both STAT and trak; font-patcher drops both.
-  if [[ "$TRACKING" == true ]]; then
-    echo "==> Adding STAT so HarfBuzz applies the fonts' trak tracking..."
-    python "$srcdir/add_stat.py" "$srcdir/selected/"*
-  fi
-
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 3 — OTF → TTF conversion (only for the ttfautohint engine, no patch)
-  # ══════════════════════════════════════════════════════════════════════════
-  # ttfautohint requires TrueType glyf outlines. otf2ttf.py (cu2qu) converts CFF
-  # cubics to quadratic splines while preserving the name table. The 'cff' engine
-  # keeps OTFs intact and is handled in step 5.
-  local _patchsrc
-  if [[ "$NERD_PATCH" == false && "$OTF2TTF" == true ]]; then
-    printf "%b" "\e[1;34m==> INFO:\e[0m Converting static OTF→TTF...\n"
-    find "$srcdir/selected" -name '*.otf' ! -name '._*' | sort | \
-      parallel --will-cite -j"$(nproc)" \
-        'python "'"$srcdir/fonttune/fonttune/steps/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
-           -o "'"$srcdir/converted"'/{/.}.ttf" "{}"'
-    # Variable TTFs and native TTFs pass through unchanged
-    find "$srcdir/selected" -name '*.ttf' ! -name '._*' \
-      -exec cp -n {} "$srcdir/converted/" \;
-    _patchsrc="$srcdir/converted"
-  else
-    # NERD_PATCH=true → font-patcher converts implicitly.
-    # cff engine / no-hint → operate on selected fonts directly.
-    _patchsrc="$srcdir/selected"
-  fi
-
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 4 — Nerd Fonts patching (skipped when NERD_PATCH=false)
-  # ══════════════════════════════════════════════════════════════════════════
-  local _hintsrc
-  if [[ "$NERD_PATCH" == true ]]; then
-    printf "%b" "\e[1;33m==> WARNING:\e[0m Patching with Nerd Fonts glyphs — this takes a while...\n"
-
-    # SF Mono: -s (--mono) preserves monospace cell-width metrics.
-    # stderr is kept (only stdout silenced) so patch failures are visible, and we
-    # assert non-empty output afterwards rather than masking with `|| true`.
-    find "$_patchsrc" \( -name 'SF-Mono-*.otf' -o -name 'SF-Mono-*.ttf' \) | sort | \
-      parallel --will-cite -j4 python "$srcdir/font-patcher" \
-        --variable-width-glyphs -q -c -s {} \
-        -out "$srcdir/patched" '>/dev/null'
-
-    find "$_patchsrc" \( -name '*.otf' -o -name '*.ttf' \) ! -name 'SF-Mono-*' | sort | \
-      parallel --will-cite -j4 python "$srcdir/font-patcher" \
-        --variable-width-glyphs -q -c {} \
-        -out "$srcdir/patched" '>/dev/null'
-
-    # font-patcher preserves the input outline format: OTF/CFF inputs (all the
-    # Apple static fonts, including SF Mono) yield patched *.otf; only TrueType
-    # inputs yield *.ttf. Count both, and fail loud if nothing came out.
-    local _patched_count
-    _patched_count=$(find "$srcdir/patched" -maxdepth 1 \( -name '*.ttf' -o -name '*.otf' \) | wc -l)
-    if (( _patched_count == 0 )); then
-      echo "Error: font-patcher produced no output. See messages above."; exit 1
-    fi
-    echo "==> Patched $_patched_count font(s)."
-
-    # FontForge (and therefore font-patcher) writes garbage into nameID 16/17,
-    # which fontconfig prefers over nameID 1: a patched SF Pro would advertise
-    # "最攀਀ऀ攀砀..." as its family. It also adds a duplicate Mac-Roman copy of
-    # Apple's 60 KB licence string, which pushes the name table past the
-    # format's 64 KB limit - past that no tool, fontTools included, can write
-    # the font back out, so every later step would fail. Repair it now.
-    local -a _pfix=()
-    for _f in "$srcdir/patched/"*.otf "$srcdir/patched/"*.ttf; do
-      [[ -f "$_f" ]] && _pfix+=("$_f")
-    done
-    if (( ${#_pfix[@]} )); then
-      echo "==> Repairing the name table font-patcher wrote..."
-      parallel --will-cite -j"$(nproc)" python "$srcdir/fix_names.py" ::: "${_pfix[@]}"
-    fi
-
-    # The ttfautohint engine needs TrueType glyf outlines, so convert any patched
-    # OTFs to TTF in place. (The cff engine only runs when NERD_PATCH=false, so a
-    # patched tree never feeds it.)
-    if [[ "$OTF2TTF" == true ]] && \
-       compgen -G "$srcdir/patched/*.otf" >/dev/null; then
-      printf "%b" "\e[1;34m==> INFO:\e[0m Converting patched OTF→TTF...\n"
-      find "$srcdir/patched" -maxdepth 1 -name '*.otf' ! -name '._*' | sort | \
-        parallel --will-cite -j"$(nproc)" \
-          'python "'"$srcdir/fonttune/fonttune/steps/otf2ttf.py"'" --post-format 2.0 --max-error 1.0 \
-             -o "'"$srcdir/patched"'/{/.}.ttf" "{}" && rm -f "{}"'
-    fi
-    _hintsrc="$srcdir/patched"
-  else
-    _hintsrc="$_patchsrc"
-  fi
-
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 4b — Optical spacing (EVEN_SPACING)
-  # ══════════════════════════════════════════════════════════════════════════
-  # After conversion/patching and before hinting: only GPOS changes and
-  # ttfautohint / otfautohint keep it. Rewrites the files of $_hintsrc in place
-  # (they are build copies, never the downloaded sources).
-  if [[ -n "$EVEN_SPACING" ]]; then
-    printf "%b" "\e[1;35m==> INFO:\e[0m Evening out $EVEN_SPACING spacing with kern pairs...\n"
-    local -a _es=(--script "$EVEN_SPACING" --ppem "$EVEN_PPEM")
-    local _o _n
-    for _o in strength:EVEN_STRENGTH depth:EVEN_DEPTH max:EVEN_MAX min:EVEN_MIN; do
-      _n=${_o#*:}
-      [[ "${!_n}" == auto ]] || _es+=("--${_o%%:*}" "${!_n}")
-    done
-    mkdir -p "$srcdir/spaced"
-    local -a _esf=()
-    for _f in "$_hintsrc"/*.ttf "$_hintsrc"/*.otf; do
-      [[ -f "$_f" && "$(basename "$_f")" != ._* ]] && _esf+=("$_f")
-    done
-    if (( ${#_esf[@]} )); then
-      printf '%s\0' "${_esf[@]}" | \
-        parallel --will-cite -0 -j"$(nproc)" \
-          python "$srcdir/fonttune/fonttune/steps/even_spacing.py" "${_es[@]}" -o "$srcdir/spaced" {}
-      for _f in "$srcdir/spaced"/*; do
-        [[ -f "$_f" ]] && mv -f "$_f" "$_hintsrc/"
-      done
-    fi
-  fi
-
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 4c — Pixel-grid advances and kerning (PIXEL_GRID)
-  # ══════════════════════════════════════════════════════════════════════════
-  # After EVEN_SPACING so its kern values are rounded too. Static TrueType only
-  # (pixel_grid.py copies CFF/variable/mono fonts unchanged).
-  if [[ -n "$PIXEL_GRID" ]]; then
-    if compgen -G "$_hintsrc/*.ttf" >/dev/null; then
-      printf "%b" "\e[1;35m==> INFO:\e[0m Putting advances and kerning on the $PIXEL_GRID ppem pixel grid...\n"
-      mkdir -p "$srcdir/gridded"
-      local -a _pgf=()
-      for _f in "$_hintsrc"/*.ttf; do
-        [[ -f "$_f" && "$(basename "$_f")" != ._* ]] && _pgf+=("$_f")
-      done
-      printf '%s\0' "${_pgf[@]}" | \
-        parallel --will-cite -0 -j"$(nproc)" \
-          python "$srcdir/fonttune/fonttune/steps/pixel_grid.py" --ppem "$PIXEL_GRID" -o "$srcdir/gridded" {}
-      for _f in "$srcdir/gridded"/*; do
-        [[ -f "$_f" ]] && mv -f "$_f" "$_hintsrc/"
-      done
-    else
-      printf "%b" "\e[1;33m==> WARNING:\e[0m PIXEL_GRID needs TrueType fonts (OTF2TTF=true); skipped.\n"
-    fi
-  fi
-
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 5 — Hinting
-  # ══════════════════════════════════════════════════════════════════════════
-  if [[ "$HINTING" == true && "$HINT_ENGINE" == cff && "$NERD_PATCH" == false ]]; then
-    # ── CFF/OTF hinting: keep OTF outlines, no TTF conversion ──
-    mkdir -p "$srcdir/patched/hinted"
-    local _have_otfautohint=false
-    command -v otfautohint >/dev/null 2>&1 && _have_otfautohint=true
-    if [[ "$_have_otfautohint" == true ]]; then
-      printf "%b" "\e[1;32m==> INFO:\e[0m CFF hinting via otfautohint (AFDKO)...\n"
-    else
-      printf "%b" "\e[1;32m==> INFO:\e[0m CFF hinting via FontForge AutoHint (install afdko for otfautohint)...\n"
-    fi
-    # Two Apple-specific quirks make stock otfautohint abort on these fonts:
-    #
-    #  1. Overlapping alignment zones. otfautohint reads the CFF Private-dict
-    #     zones and FATALLY rejects any that overlap or sit within 1+2*BlueFuzz
-    #     units. Apple's SF Pro/Compact ship DUPLICATE/OVERLAPPING zones (e.g.
-    #     SF Pro Text BlueValues lists (1443,1477) twice; OtherBlues has
-    #     (-34,0)⊃(-19,0)) → "top of zone X overlaps zone Y". dedup_blues.py
-    #     collapses those redundant pairs into a spec-conformant, non-overlapping
-    #     set (outlines untouched).
-    #
-    #  2. closeSegs assertion on overlapping contours. otfautohint has an open
-    #     bug (afdko #1795, unfixed through 5.0.1) where `assert n and p` in
-    #     hinter.py crashes on glyphs with overlapping/degenerate contours — the
-    #     heavy SF *-Black weights hit this (e.g. uni10094E.large). Passing
-    #     --force-overlap routes glyphs through otfautohint's overlap-correction
-    #     path during analysis and avoids the crash WITHOUT altering the emitted
-    #     outlines (verified bit-identical on normal glyphs).
-    #
-    # otfautohint preserves the name table; the FontForge AutoHint path
-    # (cff_hint.py) is kept only as a last-resort fallback (it repairs the names
-    # FontForge mangles) so a font is never silently dropped from the package.
-    for _f in "$_hintsrc"/*.otf; do
-      [[ -f "$_f" ]] || continue
-      local _out="$srcdir/patched/hinted/$(basename "$_f")"
-      if [[ "$_have_otfautohint" == true ]]; then
-        python "$srcdir/dedup_blues.py" "$_f"
-        if ! otfautohint --force-overlap -o "$_out" "$_f" 2>/dev/null; then
-          printf "%b" "\e[1;33m==> WARNING:\e[0m otfautohint failed on $(basename "$_f"); using FontForge AutoHint instead.\n"
-          rm -f "$_out"
-          python "$srcdir/cff_hint.py" "$_f" "$_out"
-        fi
-      else
-        python "$srcdir/cff_hint.py" "$_f" "$_out"
-      fi
-    done
-    # Variable / native TTFs cannot get CFF hints — pass them through untouched.
-    for _f in "$_hintsrc"/*.ttf; do
-      [[ -f "$_f" ]] || continue
-      cp -n "$_f" "$srcdir/patched/hinted/"
-    done
-
-  elif [[ "$HINTING" == true ]]; then
-    # ── ttfautohint engine (TTF) ──
-    # PUA glyphs (SF Symbols / Nerd icons): --fallback-script=none +
-    # --fallback-scaling scale them proportionally instead of mis-hinting as Latin.
-    printf "%b" "\e[1;32m==> INFO:\e[0m ttfautohint (preset=$HINT_PRESET, stem=$HINT_MODE, range=$HINT_RANGE_MIN-$HINT_RANGE_MAX, x-height=$HINT_XHEIGHT)...\n"
-    mkdir -p "$srcdir/patched/hinted"
-
-    # Assemble optional flags.
-    local -a _ta_opts=(
-      --hinting-range-min="$HINT_RANGE_MIN"
-      --hinting-range-max="$HINT_RANGE_MAX"
-      --hinting-limit="$HINT_LIMIT"
-      --increase-x-height="$HINT_XHEIGHT"
-      --fallback-script=none
-      --fallback-scaling
-      --stem-width-mode="$HINT_MODE"
-      --ignore-restrictions
-    )
-    # x-height-snapping-exceptions: honour an explicit value (including empty
-    # string = no exceptions); omit entirely if unset to use ttfautohint's default.
-    if [[ "${HINT_XSNAP_EXC+set}" == set ]]; then
-      _ta_opts+=(--x-height-snapping-exceptions="$HINT_XSNAP_EXC")
-    fi
-    if [[ "$HINT_WINCOMPAT" == true ]]; then _ta_opts+=(--windows-compatibility); fi
-    if [[ -n "${HINT_FAMILY_SUFFIX:-}" ]]; then _ta_opts+=(--family-suffix="$HINT_FAMILY_SUFFIX"); fi
-    if [[ "$HINT_TTFA_TABLE" == true ]]; then
-      _ta_opts+=(--ttfa-table)
-    else
-      _ta_opts+=(--no-info)
-    fi
-
-    for _f in "$_hintsrc"/*.ttf; do
-      [[ -f "$_f" ]] || continue
-      ttfautohint "${_ta_opts[@]}" "$_f" "$srcdir/patched/hinted/$(basename "$_f")"
-    done
-  fi
-
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 6 — gasp grid-fitting / anti-aliasing tuning (TTF output only)
-  # ══════════════════════════════════════════════════════════════════════════
-  if [[ "$HINTING" == true && "$GASP_MODE" != keep ]]; then
-    local _gasp_dir
-    if [[ "$HINT_ENGINE" == cff && "$NERD_PATCH" == false ]]; then
-      _gasp_dir="$srcdir/patched/hinted"   # only the .ttf passthroughs here have a gasp
-    else
-      _gasp_dir="$srcdir/patched/hinted"
-    fi
-    if compgen -G "$_gasp_dir/*.ttf" >/dev/null; then
-      printf "%b" "\e[1;36m==> INFO:\e[0m Applying gasp mode '$GASP_MODE' to TTF output...\n"
-      python "$srcdir/fonttune/fonttune/steps/set_gasp.py" "$GASP_MODE" "$_gasp_dir"/*.ttf
-    fi
-  fi
-
-  # ══════════════════════════════════════════════════════════════════════════
-  # Step 7 — Bake FEATURE_DEFAULTS into calt (see the header)
-  # ══════════════════════════════════════════════════════════════════════════
-  # Last, so ttfautohint and set_gasp.py work on the unmodified font. package()
-  # installs from $srcdir/featured when this ran.
-  if [[ -n "$FEATURE_DEFAULTS" ]]; then
-    local _out="$srcdir/selected"
-    if [[ "$HINTING" == true ]]; then
-      _out="$srcdir/patched/hinted"
-    elif [[ "$NERD_PATCH" == true ]]; then
-      _out="$srcdir/patched"
-    elif [[ "$OTF2TTF" == true ]]; then
-      _out="$srcdir/converted"
-    fi
-    _bake_features "$_out"
-  fi
+  "${_ft[@]}" --skip weights,trak "${_patched[@]}"
 }
 
 package() {
-  # Reuse the single source of truth written by prepare(); makepkg runs each
-  # function in a fresh shell, so nothing is inherited.
-  local HINTING OTF2TTF NERD_PATCH WANT_VARIABLE HINT_ENGINE FEATURE_DEFAULTS
+  local NERD_PATCH
   _load_options
+  local _src="$srcdir/selected"
+  [[ "$NERD_PATCH" == true ]] && _src="$srcdir/patched"
 
-  # Step 7 of build() wrote the baked fonts here; they are the final artefacts.
-  local _baked=false
-  if [[ -n "$FEATURE_DEFAULTS" ]]; then
-    if compgen -G "$srcdir/featured/*.ttf" >/dev/null || \
-       compgen -G "$srcdir/featured/*.otf" >/dev/null; then
-      _baked=true
-    else
-      echo "Error: FEATURE_DEFAULTS was set but $srcdir/featured is empty."; exit 1
-    fi
-  fi
-
-  install -d "$pkgdir/usr/share/fonts/apple"
-  # Which fonttune produced these fonts (build provenance).
-  install -d "$pkgdir/usr/share/doc/$pkgname"
+  install -d "$pkgdir/usr/share/fonts/apple" "$pkgdir/usr/share/doc/$pkgname"
+  # Which fonttune and settings produced these fonts (build provenance).
   git -C "$srcdir/fonttune" describe --always --dirty > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
+  install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
 
-  # Where the fonts to install live. Step 7 wrote the baked copies to
-  # $srcdir/featured, which already contains exactly what this build would have
-  # installed otherwise.
-  local _src="$srcdir/selected" _allow_ttf="$WANT_VARIABLE"
-  if [[ "$_baked" == true ]]; then
-    _src="$srcdir/featured"; _allow_ttf=true
-  elif [[ "$HINTING" == true ]]; then
-    _src="$srcdir/patched/hinted"; _allow_ttf=true
-  elif [[ "$NERD_PATCH" == true ]]; then
-    # font-patcher emits TTF for TTF inputs and OTF for OTF inputs (e.g. SF
-    # Mono), so install both.
-    _src="$srcdir/patched"; _allow_ttf=true
-  elif [[ "$OTF2TTF" == true ]]; then
-    _src="$srcdir/converted"; _allow_ttf=true
-  fi
-
-  if compgen -G "$_src/*.otf" >/dev/null; then
-    install -m644 "$_src/"*.otf "$pkgdir/usr/share/fonts/apple"
-  fi
-  if [[ "$_allow_ttf" == true ]] && compgen -G "$_src/*.ttf" >/dev/null; then
-    install -m644 "$_src/"*.ttf "$pkgdir/usr/share/fonts/apple"
-  fi
+  local _f
+  for _f in "$_src"/*.otf "$_src"/*.ttf; do
+    [[ -f "$_f" ]] && install -m644 "$_f" "$pkgdir/usr/share/fonts/apple/"
+  done
   # Fail loud: never silently ship a fontless package.
   if ! compgen -G "$pkgdir/usr/share/fonts/apple/*" >/dev/null; then
     echo "Error: no fonts were installed from $_src."; exit 1
-  fi
-
-  # Opt-in rendering tweak (see the header): bytecode hinting for the families
-  # this build actually installed as ttfautohinted TTFs. Shipped in conf.avail
-  # and deliberately not enabled. The family list is read from the fonts, so
-  # Nerd Fonts names ("SFMono Nerd Font") and family suffixes are covered.
-  if [[ "$HINTING" == true && "$HINT_ENGINE" == ttfautohint ]] && \
-     compgen -G "$pkgdir/usr/share/fonts/apple/*.ttf" >/dev/null; then
-    local _fam _conf="$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf"
-    local _chromium_prgnames=(chrome chromium brave helium electron code slack signal-desktop vesktop)
-    install -d "${_conf%/*}"
-    {
-      echo '<?xml version="1.0" encoding="UTF-8"?>'
-      echo '<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">'
-      echo "<!-- Installed by $pkgname. Use the ttfautohint bytecode hints in these"
-      echo "     fonts rather than FreeType's light autohinter. hintmedium, not"
-      echo "     hintfull: same rendering in cairo/pango, and Blink keeps subpixel"
-      echo "     positioning at hintmedium but drops it at hintfull."
-      echo "     Chromium and Electron apps are excluded: at device scale 1 they use"
-      echo "     linear advances only for hintslight/none, so hintmedium would round"
-      echo "     every glyph advance to a whole pixel (uneven letter gaps). -->"
-      echo '<fontconfig>'
-      # One <match> per family: several <test>s in one <match> are ANDed, so
-      # the prgname tests exclude every listed app. qual="all" makes a test
-      # pass when prgname is unset. prgname is the executable's basename.
-      local _prg _prgtests=""
-      for _prg in "${_chromium_prgnames[@]}"; do
-        _prgtests+="    <test qual=\"all\" name=\"prgname\" compare=\"not_eq\"><string>$_prg</string></test>"$'\n'
-      done
-      while IFS= read -r _fam; do
-        _fam="${_fam//&/&amp;}"; _fam="${_fam//</&lt;}"
-        cat <<EOF
-  <match target="font">
-    <test name="family" compare="eq"><string>$_fam</string></test>
-${_prgtests%$'\n'}
-    <edit name="hinting" mode="assign"><bool>true</bool></edit>
-    <edit name="autohint" mode="assign"><bool>false</bool></edit>
-    <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
-  </match>
-EOF
-      done < <(python "$srcdir/font_meta.py" families "$pkgdir/usr/share/fonts/apple/"*.ttf \
-                 | cut -f2 | sort -u)
-      echo '</fontconfig>'
-    } > "$_conf"
-    chmod 644 "$_conf"
   fi
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"

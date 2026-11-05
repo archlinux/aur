@@ -3,8 +3,4 @@
 !PKGBUILD
 !README.md
 !.SRCINFO
-!cff_hint.py
-!dedup_blues.py
 !font_meta.py
-!add_stat.py
-!fix_names.py

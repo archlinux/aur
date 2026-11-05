@@ -1,5 +1,5 @@
 pkgbase = nerd-fonts-apple-hinted
-	pkgdesc = Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched and/or autohinted (ttfautohint / CFF), with fixed weight classes
+	pkgdesc = Apple fonts (SF Pro, SF Compact, SF Mono, SF Arabic, NY), optionally Nerd Fonts patched, tuned with fonttune
 	pkgver = 22.2.2.1+nf3.5.1
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
@@ -12,9 +12,7 @@ pkgbase = nerd-fonts-apple-hinted
 	makedepends = python-skia-pathops
 	makedepends = parallel
 	makedepends = fontforge
-	makedepends = ttfautohint
 	makedepends = libarchive
-	optdepends = afdko: better CFF/OTF hinting via otfautohint (HINT_ENGINE=cff)
 	provides = nerd-fonts-apple
 	provides = ttf-font-nerd
 	conflicts = nerd-fonts-apple
@@ -28,11 +26,7 @@ pkgbase = nerd-fonts-apple-hinted
 	source = SF-Arabic.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg
 	source = NY.dmg::https://devimages-cdn.apple.com/design/resources/download/NY.dmg
 	source = font-patcher-3.5.1::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/FontPatcher.zip
-	source = cff_hint.py
-	source = dedup_blues.py
 	source = font_meta.py
-	source = add_stat.py
-	source = fix_names.py
 	source = fonttune::git+https://github.com/gaou-piou/fonttune.git#branch=main
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -40,11 +34,7 @@ pkgbase = nerd-fonts-apple-hinted
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a
-	sha256sums = 77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc
-	sha256sums = 980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194
 	sha256sums = 1297a4be9504032cc3457c3d50f30a21c3101f4203f5dd545c8d4c19f4859600
-	sha256sums = 4bf340fce88dbc436a6bdb0f95389fc89562a363689dee9fe1bd511ecfd468a0
-	sha256sums = 066e262416f7303992aed4c32a26754aee5050525c1bb5ed94b6cfac16162de6
 	sha256sums = SKIP
 
 pkgname = nerd-fonts-apple-hinted
