@@ -3,7 +3,7 @@
 pkgname=battles-of-brass-git
 _pkgname=battles-of-brass
 pkgver=1.0.r38.4d2284b
-pkgrel=1
+pkgrel=2
 pkgdesc='Battles of Brass, a game inspired by Spirits of Steel, made in java! (git version)'
 arch=('any')
 url='https://github.com/BattlesOfBrass/BOB'

@@ -1,7 +1,7 @@
 pkgbase = battles-of-brass-git
 	pkgdesc = Battles of Brass, a game inspired by Spirits of Steel, made in java! (git version)
 	pkgver = 1.0.r38.4d2284b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BattlesOfBrass/BOB
 	install = battles-of-brass-git.install
 	arch = any
