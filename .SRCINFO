@@ -1,6 +1,6 @@
 pkgbase = disc-image-studio
 	pkgdesc = Generate CD, DVD and Blu-ray images that show a picture on the burned disc
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = disc-image-studio
 	depends = libgcc
 	depends = libstdc++
 	options = !debug
-	source = disc-image-studio-1.4.1.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = e72edcd496f807ec4d4a06a7168e8df5bf75a78fcd45e88abfb41221f1b36066
+	source = disc-image-studio-1.4.2.tar.gz::https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = c5aee0a467e98d2669242c495471e36bad9bb98453db1af574367e5516f6ba77
 
 pkgname = disc-image-studio
