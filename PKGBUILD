@@ -1,32 +1,34 @@
-# Maintainer: Adam Mlady <adam.mlady@elevated.ovh>
+# Maintainer: TheElevatedOne <adam.mlady@elevated.ovh>
 
-_pkgname="hyprdown"
-pkgname="${_pkgname}-bin"
-pkgdesc="A CLI counterpart to hyprshutdown for Hyprland"
-pkgver=0.2.0
+pkgname=hyprdown-bin
+_pkgname=hyprdown
+pkgver=0.3.0
 pkgrel=1
-
-arch=("any")
-url="https://github.com/TheElevatedOne/hyprdown"
+pkgdesc='Close every app running under Hyprland without user input, then exit, power off, reboot or log out (prebuilt)'
+arch=('x86_64')
+url='https://github.com/TheElevatedOne/hyprdown'
 license=('BSD-3-Clause')
-provides=('hyprdown')
-conflicts=('hyprdown')
-depends=('systemd' 'systemd-libs')
+depends=(
+  'glibc'
+  'json-c'
+  'systemd'
+  'systemd-libs'
+)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+# Built by the upstream release workflow.
 options=('!debug')
-
 source=(
-  "${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
-  'https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/heads/main/LICENSE'
-  'https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/heads/main/README.md'
+  "$_pkgname-$pkgver-linux.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-linux.tar.gz"
+  "LICENSE-$pkgver::https://raw.githubusercontent.com/TheElevatedOne/$_pkgname/refs/tags/$pkgver/LICENSE"
+  "README-$pkgver.md::https://raw.githubusercontent.com/TheElevatedOne/$_pkgname/refs/tags/$pkgver/README.md"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('b3b0462bb5609552a049713e6aca55dbbb19ae04166f99c0cd6039a762952ce5'
+            '953ddedbcd7b01e88a78f928a55b83ae1edc8436e2bbbca3a25a29a0660df143'
+            'c1798914a8684604bf016ae712868d4e4344ee2f1af48bb6598c20c11ae742b6')
 
 package() {
-  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
-  install -Dm644 "${srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
-  install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "$_pkgname" -t "$pkgdir/usr/bin"
+  install -Dm644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
