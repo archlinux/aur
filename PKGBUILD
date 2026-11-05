@@ -95,7 +95,7 @@ _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver%.*}/tdesktop-${pkgver%.*}-full.tar.gz"
-  "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
+  "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   wallet-engine-${_wallet_engine_ver}.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v${_wallet_engine_ver}.tar.gz
   "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.tar.gz"
   https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
@@ -125,15 +125,11 @@ build() {
 
   export CC=clang
   export CXX=clang++
-  export LDFLAGS="$LDFLAGS -fuse-ld=mold"
+  export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=mold"
+  export LDFLAGS="$LDFLAGS -flto=thin -fuse-ld=mold -Wl,--icf=safe"
 
-  CFLAGS="${CFLAGS//-fvar-tracking-assignments/}"
-  CXXFLAGS="${CXXFLAGS//-fvar-tracking-assignments/}"
-  CFLAGS="${CFLAGS//-flto*/}"
-  CXXFLAGS="${CXXFLAGS//-flto*/}"
-  LDFLAGS="${LDFLAGS//-flto*/}"
-  CFLAGS="${CFLAGS//-g / }"
-  CXXFLAGS="${CXXFLAGS//-g / }"
+  export CFLAGS="$CFLAGS -flto=thin"
+  export CXXFLAGS="$CXXFLAGS -flto=thin"
 
   local makepkg_jobs
   if [[ "$MAKEFLAGS" =~ -j[[:space:]]*([0-9]+) ]]; then
@@ -142,15 +138,17 @@ build() {
     makepkg_jobs=$(nproc)
   fi
 
-  (( mem_jobs < 1 )) && mem_jobs=1
-
   local mem_jobs=$(awk '/MemTotal/ {print int($2 / 1024 / 1024 / 1.2)}' /proc/meminfo)
   (( mem_jobs < 1 )) && mem_jobs=1
 
   local jobs=$(( mem_jobs < makepkg_jobs ? mem_jobs : makepkg_jobs ))
 
   export CMAKE_BUILD_PARALLEL_LEVEL="$jobs"
-  export CARGO_BUILD_JOBS="$jobs"  
+  export CARGO_BUILD_JOBS="$jobs"
+  export CARGO_BUILD_PROFILE=release
+  export CARGO_PROFILE_RELEASE_LTO=thin
+  export CARGO_PROFILE_RELEASE_OPT_LEVEL=2
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=4
   cd wallet-engine-${_wallet_engine_ver}
   just build
   just bindings-cpp
@@ -162,6 +160,8 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
     -Wno-dev \
+    -DCMAKE_LINKER_TYPE=MOLD \
+    -DCMAKE_PCH_INSTANTIATE_TEMPLATES=ON \
     -DTD_E2E_ONLY=ON
   cmake --build td/build  -j "$jobs"
   cmake --install td/build
@@ -172,10 +172,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -Dtde2e_DIR="$PWD/td/install/lib/cmake/tde2e" \
     -DCMAKE_PREFIX_PATH="$PWD/wallet-engine-${_wallet_engine_ver}/install" \
+    -DCMAKE_LINKER_TYPE=MOLD \
     -DCMAKE_BUILD_TYPE=Release \
     -DTDESKTOP_API_ID=611335 \
+    -DCMAKE_PCH_INSTANTIATE_TEMPLATES=ON \
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
-    -DCMAKE_JOB_POOLS="link_pool=1" \
+    -DCMAKE_JOB_POOLS="link_pool=2" \
     -DCMAKE_JOB_POOL_LINK=link_pool
 
   cmake --build build -j "$jobs"
