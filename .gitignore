@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!pacman-managed.patch
+!thinkrail-desktop.sh
+!thinkrail.desktop

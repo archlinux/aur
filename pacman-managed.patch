@@ -1,0 +1,37 @@
+--- a/apps/cli/src/bootstrap.ts
++++ b/apps/cli/src/bootstrap.ts
+@@ -7,8 +7,7 @@
+ import { type CliOptions, parseArgs, parseSubcommand, USAGE } from "./args";
+ import { openUiThenStartAttribution } from "./attributionReadiness";
+ import { BINARY_SOURCE_MAP_BASE } from "./binarySourceMap";
+-import { runUninstall } from "./uninstall";
+-import { createCliHostUpdate, runUpdate } from "./update";
++import { createCliHostUpdate } from "./update";
+ 
+ const DEFAULT_STATIC_DIR = resolve(import.meta.dir, "../../web/dist");
+ 
+@@ -26,11 +25,8 @@
+ 	const argv = Bun.argv.slice(2);
+ 	const subcommand = parseSubcommand(argv);
+ 	if (subcommand) {
+-		const exitCode =
+-			subcommand === "update"
+-				? await runUpdate(argv.slice(1), process.env, build)
+-				: await runUninstall(argv.slice(1), process.env);
+-		process.exit(exitCode);
++		console.error(`thinkrail ${subcommand} is disabled: this build is managed by pacman.`);
++		process.exit(1);
+ 	}
+ 
+ 	let options: CliOptions;
+--- a/apps/desktop/electrobun.config.ts
++++ b/apps/desktop/electrobun.config.ts
+@@ -15,7 +15,7 @@
+ 		exitOnLastWindowClosed: true,
+ 	},
+ 	release: {
+-		baseUrl: "https://github.com/JetBrains/thinkrail/releases/download/desktop-updates",
++		baseUrl: "",
+ 		generatePatch: false,
+ 	},
+ 	build: {

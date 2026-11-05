@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ThinkRail
+Comment=Lightweight IDE for vibe coding with the pi agent
+Exec=thinkrail-desktop
+Icon=thinkrail
+Terminal=false
+StartupWMClass=ThinkRail
+Categories=Development;IDE;
