@@ -52,6 +52,7 @@ build() {
   cd "$pkgbase/build" || exit
   # Position-independent code for the SDKs' tier1 and mathlib, which the build compiles into the
   # plugins: l4d2's manifest doesn't add -fPIC like the others, which leaves text relocations
+  # (https://github.com/alliedmodders/hl2sdk-manifests/pull/21)
   CXXFLAGS+=" -fPIC"
   # Every game of hl2sdk, for its servers' architectures. The SDKs' shared libraries (tier0,
   # vstdlib) are only linked against, the games bring their own.
