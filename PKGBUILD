@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r91739.c665272d1c9
+pkgver=r92495.ddd3c0ca887
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -50,11 +50,17 @@ makedepends=(autoconf-archive automake rustup cmake git nasm ninja patchelf skia
   zmij # AUR
 )
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
+
+# For AK/Math.h until upstream figures that out.
+_llvm_commit=e54169423e7ee5d8b41c2f1b6f7a59000c901ee0
 source=(
   "git+$url"
+  "llvm-project-${_llvm_commit}.tar.gz::https://github.com/llvm/llvm-project/archive/${_llvm_commit}.tar.gz"
 )
+noextract=("llvm-project-${_llvm_commit}.tar.gz")
 sha256sums=(
   'SKIP'
+  'db3ee51752d716118e3ff1109c7920a32dfc29bd414112e8d18ff6280e608c1c'
 )
 
 pkgver() {
@@ -63,6 +69,12 @@ pkgver() {
 }
 
 prepare() {
+  rm -rf llvm-libc
+  bsdtar -xf "llvm-project-${_llvm_commit}.tar.gz" "llvm-project-${_llvm_commit}/libc"
+  (cd "llvm-project-${_llvm_commit}/libc" && find hdr include shared src/__support src/string/memory_utils -name '*.h' \
+    -exec install -Dm644 {} "${srcdir}/llvm-libc/include/llvm-libc/{}" \;)
+  rm -rf "llvm-project-${_llvm_commit}"
+
   sed -e '/march=/d' -e '/-Ctarget-cpu=native/d' -i ladybird/Meta/CMake/compile_options.cmake
   sed -e 's/78\.3 EXACT/78.3/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
   sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Meta/CMake/check_for_dependencies.cmake
@@ -89,6 +101,7 @@ build() {
     -DENABLE_LTO_FOR_RELEASE=OFF \
     -DCMAKE_INSTALL_PREFIX='/opt/ladybird/usr' \
     -DENABLE_INSTALL_HEADERS=OFF \
+    -DLLVM_LIBC_INCLUDE_DIR="${srcdir}/llvm-libc/include" \
     -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname%-git}" \
     -GNinja \
     -Wno-dev

@@ -1,6 +1,6 @@
 pkgbase = ladybird-git
 	pkgdesc = Truly independent web browser
-	pkgver = r91739.c665272d1c9
+	pkgver = r92495.ddd3c0ca887
 	pkgrel = 1
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
@@ -51,12 +51,15 @@ pkgbase = ladybird-git
 	depends = wuffs-lib
 	provides = ladybird
 	conflicts = ladybird
+	noextract = llvm-project-e54169423e7ee5d8b41c2f1b6f7a59000c901ee0.tar.gz
 	options = !lto
 	options = !debug
 	options = !buildflags
 	options = !staticlibs
 	options = !emptydirs
 	source = git+https://github.com/LadybirdBrowser/ladybird
+	source = llvm-project-e54169423e7ee5d8b41c2f1b6f7a59000c901ee0.tar.gz::https://github.com/llvm/llvm-project/archive/e54169423e7ee5d8b41c2f1b6f7a59000c901ee0.tar.gz
 	sha256sums = SKIP
+	sha256sums = db3ee51752d716118e3ff1109c7920a32dfc29bd414112e8d18ff6280e608c1c
 
 pkgname = ladybird-git
