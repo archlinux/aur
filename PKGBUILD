@@ -2,8 +2,8 @@
 # Contributer: Ian Huang <imyxhuang@gmail.com>
 # Contributer: MartorSkull <livemartor@gmail.com>
 pkgname=cardano-node-bin
-pkgver=11.0.1
-pkgrel=2
+pkgver=11.1.3
+pkgrel=1
 pkgdesc="The core component that is used to participate in a Cardano 
 decentralised blockchain (binary package)."
 arch=("x86_64")
@@ -17,8 +17,9 @@ options=(!debug !strip)
 install=cardano-node-bin.install
 source=(
   "https://github.com/IntersectMBO/cardano-node/releases/download/$pkgver/cardano-node-$pkgver-linux-amd64.tar.gz"
-  "cardano-dist::git+https://github.com/sgillespie/cardano-db-sync-dist#commit=db6d3395102eeb02ebd3c54bf2e6c107a6b0ec36")
-sha256sums=('40e88a543564251338c4888ef79fde51d2306c18b48ac308c9eab3220e3a13f0'
+  "cardano-dist::git+https://github.com/sgillespie/cardano-db-sync-dist#commit=db6d3395102eeb02ebd3c54bf2e6c107a6b0ec36"
+)
+sha256sums=('530fb99986fbdccc46f9ee0dd86cabb1393b015feac9173cb731d89fa748365f'
             '0e6cfbd2a7dac91d04081868ad91feb89c80d90076b5f3129b2aa51bf00df1d6')
 
 check() {
