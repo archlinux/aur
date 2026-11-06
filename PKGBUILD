@@ -2,7 +2,7 @@
 # Co-Maintainer: slip <aur.57652 AT 8shield DOT net>
 # Contributor: max-k <max-k AT post DOT com>
 pkgname=ampache
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
@@ -20,7 +20,7 @@ _sourcebase="https://github.com/${pkgname}/${pkgname}/releases/download"
 source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all_php8.5_squashed.zip"
         "nginx-example.conf"
         "${pkgname}.install")
-sha256sums=('453cfafb025e5d24c8d28ff780ee3757f24960b3e6d3b1e2665308592634f341'
+sha256sums=('24753ceb4cb109f98c2ab872a1a94b70ab97a21437c26c463a2a10f731a03488'
             'd579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb'
             'bd9bad5e2825dbc203a7f8e478ba44657de559ce6fe4bd6d079089bbe47734db')
 options=(!strip)
