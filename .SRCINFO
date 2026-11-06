@@ -1,7 +1,7 @@
 pkgbase = devin-marketplace
 	pkgdesc = Enable VS Code marketplace in Devin Desktop (formerly windsurf-marketplace)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://marketplace.visualstudio.com/vscode
 	install = devin-marketplace.install
 	arch = any
