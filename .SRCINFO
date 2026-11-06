@@ -1,0 +1,19 @@
+pkgbase = slinky-bin
+	pkgdesc = A utility for wrangling symbolic links on Unix systems (prebuilt binaries)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fictionic/slinky
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = slinky
+	conflicts = slinky
+	options = !debug
+	source_x86_64 = slinky-0.1.0-x86_64.tar.xz::https://github.com/fictionic/slinky/releases/download/v0.1.0/slinky-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2fc511ce9fff05c6132ef1c5a1bc263abf403db52ffcff5cba10de3f561d3d60
+	source_aarch64 = slinky-0.1.0-aarch64.tar.xz::https://github.com/fictionic/slinky/releases/download/v0.1.0/slinky-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = f9dea3937c6bb34dacb0f96003e6c82348c794d12510621ded4973a3e53e90f1
+
+pkgname = slinky-bin
