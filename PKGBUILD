@@ -3,14 +3,14 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=concat
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine"
 arch=('x86_64')
 url="https://github.com/jub0t/Concat"
 license=('AGPL-3.0-or-later')
-# Nothing is spawned at run time: FFmpeg is linked, whisper.cpp, sherpa-onnx
-# and Skia are compiled in. alsa-lib is cpal's playback backend;
+# Nothing is spawned at run time: FFmpeg is linked, whisper.cpp and Skia
+# are compiled in. alsa-lib is cpal's playback backend;
 # fontconfig and freetype are the font side of the renderer; libglvnd and
 # vulkan-icd-loader are the two backends Skia and wgpu draw on, and the rest is
 # what winit opens by name for whichever session the user is in. dbus is the
@@ -34,25 +34,19 @@ options=('!debug' '!lto')
 # Only tags that start with a version are packaged, and pkgver drops their
 # hyphens (v0.2.2-alpha.1 -> 0.2.2alpha.1), which pacman sorts older than a
 # later plain 0.2.2, so no epoch is needed. See pkg.sh.
-_tag="v0.2.8"
-# sherpa-onnx-sys (the text-to-speech backend) does not build its C++ side:
-# it downloads a prebuilt static-lib archive from its own release page unless
-# it is handed one. Handing it one keeps that binary under makepkg's
-# checksums instead of arriving unverified from a build script. The version
-# follows upstream's Cargo.lock and is synced by pkg.sh.
-_sherpa="1.13.7"
-# skia-bindings, behind Slint's Skia renderer, is the same: it downloads
-# prebuilt Skia libraries unless it is handed them. The archive is named by
+_tag="v0.2.9"
+# skia-bindings, behind Slint's Skia renderer, does not build Skia: it
+# downloads prebuilt Skia libraries from its own release page unless it is
+# handed them. Handing them over keeps that binary under makepkg's checksums
+# instead of arriving unverified from a build script. The archive is named by
 # the crate version and a key (rust-skia commit, target, Skia features). Both
 # are synced by pkg.sh.
 _skia="0.153.3"
 _skia_key="b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/${_tag}.tar.gz"
-        "https://github.com/k2-fsa/sherpa-onnx/releases/download/v${_sherpa}/sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
         "https://github.com/rust-skia/skia-binaries/releases/download/${_skia}/skia-binaries-${_skia_key}.tar.gz")
-noextract=("sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2"
-           "skia-binaries-${_skia_key}.tar.gz")
-sha256sums=('b253b43ac2d56f78e389d16ee5f3efb8ad9f0dc008b9f1378026954d1859ab45' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
+noextract=("skia-binaries-${_skia_key}.tar.gz")
+sha256sums=('2e9b92e40c54a9b18ea6b2f3fc58d834735d766192ed09809f2756941351a176' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
 
 # GitHub names the tarball's top folder after the repository, so it carries
 # upstream's capitalisation: "Concat" since the repository was renamed after
@@ -71,9 +65,8 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # the checksummed archive from source[1], instead of a download in build()
-  export SHERPA_ONNX_ARCHIVE_DIR="$srcdir"
-  # the same for source[2]; {key} is filled in by skia-bindings itself
+  # the checksummed archive from source[1], instead of a download in build();
+  # {key} is filled in by skia-bindings itself
   export SKIA_BINARIES_URL="file://$srcdir/skia-binaries-{key}.tar.gz"
   # ort, the ONNX Runtime binding behind the cutout models, downloads a
   # prebuilt runtime from its build script unless it is pointed at one. Arch
