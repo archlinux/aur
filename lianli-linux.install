@@ -1,0 +1,16 @@
+post_upgrade() {
+    systemd-detect-virt --quiet --container && return 0
+    [ -d /run/systemd/system ] || return 0
+    systemctl --system daemon-reload >/dev/null 2>&1 || :
+    systemctl --system try-restart lianli-daemon-system.service >/dev/null 2>&1 || :
+    for d in /run/user/*; do
+        [ -d "$d" ] && [ -S "$d/bus" ] || continue
+        uid="${d##*/}"
+        user="$(id -nu "$uid" 2>/dev/null)" || continue
+        runuser -u "$user" -- env XDG_RUNTIME_DIR="$d" DBUS_SESSION_BUS_ADDRESS="unix:path=$d/bus" \
+            systemctl --user daemon-reload >/dev/null 2>&1 || :
+        runuser -u "$user" -- env XDG_RUNTIME_DIR="$d" DBUS_SESSION_BUS_ADDRESS="unix:path=$d/bus" \
+            systemctl --user try-restart lianli-daemon.service >/dev/null 2>&1 || :
+    done
+    return 0
+}

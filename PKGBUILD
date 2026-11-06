@@ -1,6 +1,6 @@
 # Maintainer: sgtaziz <sgtaziz013 at gmail dot com>
 pkgname=lianli-linux-git
-pkgver=1.2.2.r4.g7e3a42c
+pkgver=1.2.4.r22.g6bd7ff4
 pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 for Lian Li devices"
 arch=('x86_64')
@@ -15,6 +15,7 @@ conflicts=('lianli-linux')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 options=('!lto' '!debug')
+install=lianli-linux.install
 
 pkgver() {
   cd lian-li-linux
