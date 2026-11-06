@@ -1,4 +1,4 @@
-# Maintainer: guitaripod <guitaripod@icloud.com>
+# Maintainer: guitaripod <marcus@midgarcorp.cc>
 pkgname=emojipick
 pkgver=0.1.6
 pkgrel=1
