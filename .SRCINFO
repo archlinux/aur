@@ -1,0 +1,17 @@
+pkgbase = spin2cpp-git
+	pkgdesc = Tool to convert Parallax Propeller Spin code to PASM, C++ or C
+	pkgver = v7.7.3.r28.ga487858
+	pkgrel = 1
+	url = https://github.com/totalspectrum/spin2cpp
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	optdepends = tcl
+	optdepends = tk
+	provides = spin2cpp-git
+	conflicts = spin2cpp
+	source = git+https://github.com/totalspectrum/spin2cpp.git
+	sha256sums = SKIP
+
+pkgname = spin2cpp-git
