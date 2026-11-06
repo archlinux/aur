@@ -1,5 +1,5 @@
 pkgname=audiomuse-ai-worker
-pkgver=3.6.2
+pkgver=3.7.1
 pkgrel=1
 pkgdesc='AudioMuse-AI analysis and task queue worker'
 arch=('x86_64')
@@ -89,7 +89,7 @@ source=(
   'worker.env'
 )
 
-sha256sums=('b499eebc2fe90a69ba0e0af93e8c4f047d7624778f485b0e7f9d83e631ccf02d'
+sha256sums=('749854810658a21797ea1415ab1e727178d7309007eb13e72b8a0c1938840e3d'
             'a48ad887950a557aefbb4dcddf58ad4802213ff5fc6fb51eda3507cd797bb9b0'
             '0d4e78dd43c610aec88c099e41f4a8969797da5ac2612ea6ca21faa9e1a428f3'
             '17860403f8fc90aff8ac0632a0741eb5e58d8c0b0ad2fce5ced967274b0ea971'
@@ -124,7 +124,7 @@ package() {
   local _models="$pkgdir/usr/share/audiomuse-ai/worker"
 
   install -d "$_app"
-  cp -a "$_src/." "$_app/"
+  cp -a --no-preserve=ownership "$_src/." "$_app/"
 
   rm -rf \
     "$_app/.github" \
