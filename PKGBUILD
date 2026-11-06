@@ -2,7 +2,7 @@
 # Maintainer : SFN
 
 pkgname=channel
-pkgver=0.4.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="An input manager for the river compositor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('zig' 'git')
 source=(
 "$pkgname::git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('90987fc145894e4353f3a8549818f4518e2d4cd86b8d361f5548cebb2d876b46')
+sha256sums=('5572e77fc1fef4ff5d6081428a7ccde44f73ba2c1acb747a1c6dbf8613c5575b')
 
 build() {
 	cd $pkgname
