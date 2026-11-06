@@ -1,11 +1,11 @@
 pkgname=tether-git
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Bridge an iPhone to the Linux desktop: clipboard, files, messages, and notifications"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/zackb/tether"
 license=('MIT')
-depends=('gtk3' 'libnotify' 'openssl' 'wayland' 'avahi' 'glib2' 'bluez' 'bluez-utils' 'bluez-obex')
+depends=('gtk3' 'gtk-layer-shell' 'libnotify' 'ncurses' 'openssl' 'wayland' 'avahi' 'glib2' 'libsecret' 'bluez' 'bluez-utils' 'bluez-obex' 'ffmpeg' 'pipewire')
 makedepends=('cmake' 'ninja' 'git')
 provides=('tether')
 conflicts=('tether' 'tether-bin')
