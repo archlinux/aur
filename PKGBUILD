@@ -1,6 +1,6 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 pkgname=bitty
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal"
 arch=('x86_64' 'aarch64')
@@ -37,6 +37,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/bitty" "$pkgdir/usr/bin/bitty"
+  install -Dm755 "target/release/bittyd" "$pkgdir/usr/bin/bittyd"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
