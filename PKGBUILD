@@ -2,7 +2,8 @@
 
 pkgname=gnome-ssh-askpass4-git
 _pkgbase=openssh-portable
-pkgver=9.7.1.728.g3d8ae7f23
+_file=contrib/gnome-ssh-askpass4.c
+pkgver=20250714.e6805e2a6
 pkgrel=1
 pkgdesc='A passphrase requester for ssh-add using gcr.'
 arch=('x86_64')
@@ -26,7 +27,9 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
-  git describe --long --tags | sed 's/^V_//;s/_P/./;s/[-_]/./g'
+  printf '%s.%s' \
+    "$(git log -1 --format=%cd --date=format:%Y%m%d -- "$_file")" \
+    "$(git log -1 --format=%h -- "$_file")"
 }
 
 build() {
@@ -35,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgbase}/contrib"
+  cd "${srcdir}/${_pkgbase}/contrib"
 
   install -D -m 755 gnome-ssh-askpass4 "${pkgdir}/usr/lib/ssh/gnome-ssh-askpass4"
   install -D -m 755 "${srcdir}/gnome-ssh-askpass4.sh" "${pkgdir}/etc/profile.d/gnome-ssh-askpass4.sh"
