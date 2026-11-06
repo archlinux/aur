@@ -50,42 +50,46 @@ _font_sums=(
 # static TTFs each (Regular, Medium, Bold and their italics). Tuning (hinting,
 # gasp, features baked into calt, ...) is done by fonttune, which asks in
 # prepare(); every key can be preset as FONTTUNE_<KEY>. Local testing:
-# `fonttune dev on` (see _ft_local).
+# `FONTTUNE_DEV=true` (see _ft_local).
 #
 #   WANT_GOOGLE_SANS=true|false          "Google Sans"         (default true)
 #   WANT_GOOGLE_SANS_DISPLAY=true|false  "Google Sans Display" (default true)
 #   NERD_PATCH=true                      patch with Nerd Fonts glyphs (default false)
 
-# Local fonttune, uncommitted edits included: `/path/to/fonttune/bin/fonttune dev on`
-# (once; `dev off` undoes it), or for one build FONTTUNE_DEV=true (that saved
-# tree, else ../fonttune next to this PKGBUILD) or =/path/to/fonttune; =false
-# ignores the saved one. The tree is copied to
-# $srcdir/fonttune-local; the git source and .SRCINFO stay as they are.
+# Local fonttune, uncommitted edits included, only with FONTTUNE_DEV=true: the
+# tree in FONTTUNE_DEV_DIR, else the one saved by `fonttune dev set [path]`, else
+# ../fonttune next to this PKGBUILD, else (with a note) the git source. Unset or
+# false (AUR helpers): always the git source. A missing tree never stops the
+# build. The tree is copied to $srcdir/fonttune-local; the git source and
+# .SRCINFO stay as they are.
 _ft() { if [[ -d "$srcdir/fonttune-local" ]]; then echo "$srcdir/fonttune-local"; else echo "$srcdir/fonttune"; fi; }
 
-_ft_local() {  # in prepare(): pick the local tree, if one is set
-  # FONTTUNE_DEV: a path, true|1|yes|on (saved tree, else ../fonttune next to
-  # this PKGBUILD) or false|0|no|off; unset: the saved tree, if any
-  local _dev=${FONTTUNE_DEV-} _cf=${XDG_CONFIG_HOME:-$HOME/.config}/fonttune/dev
+_ft_local() {  # in prepare(): with FONTTUNE_DEV=true the local tree, if there is one
+  local _dev=${FONTTUNE_DEV-} _cf=${XDG_CONFIG_HOME:-$HOME/.config}/fonttune/dev _t
+  local -a _try=()
   rm -rf "$srcdir/fonttune-local"
   case "${_dev,,}" in
-    false|0|no|off) return 0 ;;
-    true|1|yes|on|'')
-      if [[ -r "$_cf" ]]; then _dev=$(<"$_cf")
-      elif [[ -n "$_dev" ]]; then _dev=$(realpath -m "$startdir/../fonttune")
-      else return 0
-      fi ;;
+    true|1|yes|on) ;;
+    ''|false|0|no|off) return 0 ;;
+    *) echo "==> fonttune: FONTTUNE_DEV=$_dev is not true/false: building with the git source" \
+         "(the tree goes in FONTTUNE_DEV_DIR or \`fonttune dev set\`)" >&2
+       return 0 ;;
   esac
-  if [[ ! -f "$_dev/fonttune/__init__.py" ]]; then
-    echo "Error: local fonttune '$_dev' is not a fonttune tree. Set FONTTUNE_DEV to the" >&2
-    echo "       fonttune checkout, or run 'fonttune dev on' there (saves it to $_cf)." >&2
-    exit 1
+  [[ -n "${FONTTUNE_DEV_DIR-}" ]] && _try+=("$FONTTUNE_DEV_DIR")
+  [[ -r "$_cf" ]] && _try+=("$(<"$_cf")")
+  _try+=("$(realpath -m "$startdir/../fonttune")")
+  for _t in "${_try[@]}" ''; do
+    [[ -n "$_t" && -f "$_t/fonttune/__init__.py" ]] && break
+  done
+  if [[ -z "$_t" ]]; then
+    echo "==> fonttune: FONTTUNE_DEV=$_dev but no fonttune tree at ${_try[*]}: building with the git source" >&2
+    return 0
   fi
   mkdir "$srcdir/fonttune-local"
-  tar -C "$_dev" --exclude=.git --exclude=__pycache__ -cf - . | tar -C "$srcdir/fonttune-local" -xf -
-  echo "local:$(git -C "$_dev" describe --always --dirty 2>/dev/null || echo "$_dev")" \
+  tar -C "$_t" --exclude=.git --exclude=__pycache__ -cf - . | tar -C "$srcdir/fonttune-local" -xf -
+  echo "local:$(git -C "$_t" describe --always --dirty 2>/dev/null || echo "$_t")" \
     > "$srcdir/fonttune-local/.rev"
-  echo "==> fonttune: LOCAL tree $_dev ($(<"$srcdir/fonttune-local/.rev"))" >&2
+  echo "==> fonttune: LOCAL tree $_t ($(<"$srcdir/fonttune-local/.rev"))" >&2
 }
 
 _ft_rev() { cat "$(_ft)/.rev" 2>/dev/null || git -C "$srcdir/fonttune" describe --always --dirty 2>/dev/null; }
