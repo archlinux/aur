@@ -1,6 +1,6 @@
 pkgbase = dprint-git
 	pkgdesc = A pluggable and configurable code formatting platform written in Rust
-	pkgver = 0.51.1.r13.g3269ae18
+	pkgver = 0.64.3.r42.gf64afe40
 	pkgrel = 1
 	url = https://dprint.dev/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = dprint-git
 	depends = glibc
 	depends = libgcc
 	depends = bzip2
-	provides = dprint=0.51.1.r13.g3269ae18
+	provides = dprint=0.64.3.r42.gf64afe40
 	conflicts = dprint
 	source = git+https://github.com/dprint/dprint.git
 	sha256sums = SKIP

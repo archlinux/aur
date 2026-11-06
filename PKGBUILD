@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dprint-git
-pkgver=0.51.1.r13.g3269ae18
+pkgver=0.64.3.r42.gf64afe40
 pkgrel=1
 pkgdesc="A pluggable and configurable code formatting platform written in Rust"
 arch=('i686' 'x86_64')
@@ -18,11 +18,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "dprint"
 
-  if [ ! -f "crates/dprint/Cargo.lock" ]; then
-    cargo update \
+  if [ ! -f "Cargo.lock" ]; then
+    cargo generate-lockfile \
       --manifest-path "crates/dprint/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "crates/dprint/Cargo.toml"
 }
 
