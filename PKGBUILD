@@ -1,6 +1,6 @@
 pkgname=iscsi-util-bin
-pkgver=4.0.1
-pkgrel=5
+pkgver=4.5.0
+pkgrel=6
 pkgdesc="A simple and modern GUI for managing iSCSI."
 arch=('x86_64')
 license=('MIT')
@@ -21,16 +21,17 @@ depends=(
   'cifs-utils'     # montajes SMB
 )
 
-
-
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_v4/ISCSI-Util.tar.gz")
+source=("https://github.com/mijocecr/iscsi-util/releases/download/iscsi-util_4.5/ISCSI-Util.tar.gz")
 sha256sums=('SKIP')
 
 package() {
   install -d "$pkgdir/usr/lib/iscsi-util"
   cp -r "$srcdir"/* "$pkgdir/usr/lib/iscsi-util/"
+
+  # Asegurar permisos de ejecución en el binario principal
+  chmod +x "$pkgdir/usr/lib/iscsi-util/ISCSI-Util"
 
   install -d "$pkgdir/usr/bin"
   ln -s /usr/lib/iscsi-util/ISCSI-Util "$pkgdir/usr/bin/iscsi-util"
