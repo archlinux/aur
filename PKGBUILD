@@ -1,0 +1,78 @@
+# Maintainer: Ignacio Galmarino <igalmarino@gmail.com>
+#
+# Kept in pila's repository (packaging/aur/pila-git); the AUR repository is a
+# copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
+
+pkgname=pila-git
+pkgver=0.2.1.r207.g8b027d2
+pkgrel=1
+pkgdesc='A stacking Wayland compositor built on Smithay'
+arch=(x86_64 aarch64)
+url='https://github.com/igalmarino/pila'
+license=(GPL-3.0-or-later)
+# The libraries pila links (readelf -d), EGL (loaded at runtime through
+# libglvnd) and Xwayland, which pila starts for X11 apps.
+depends=(
+    glibc
+    libgcc
+    libglvnd
+    libinput
+    libxkbcommon
+    mesa
+    seatd
+    systemd-libs
+    xorg-xwayland
+)
+makedepends=(cargo git pkgconf)
+optdepends=(
+    'kitty: the default terminal (or foot, alacritty, ...)'
+    'xdg-desktop-portal-wlr: screen sharing'
+    'grim: screenshots'
+    'slurp: picking the screen to share, and screenshot regions'
+    'xdg-desktop-portal-gtk: file chooser and other portals'
+    'wl-clipboard: clipboard from the command line'
+    'swaylock: locking the session'
+)
+provides=(pila)
+conflicts=(pila)
+backup=(
+    etc/xdg/xdg-desktop-portal/pila-portals.conf
+    etc/xdg/xdg-desktop-portal-wlr/pila
+)
+source=("pila::git+$url.git")
+sha256sums=(SKIP)
+
+pkgver() {
+    cd pila
+    printf '%s.r%s.g%s' \
+        "$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n1)" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd pila
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd pila
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
+
+check() {
+    cd pila
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo test --frozen --release
+}
+
+package() {
+    cd pila
+    # The same files, paths and session entry as a hand install.
+    PREFIX=/usr DESTDIR="$pkgdir" scripts/install --no-build
+    install -Dm644 -t "$pkgdir/usr/share/doc/pila" README.md config.example.toml
+}
