@@ -1,0 +1,15 @@
+pkgbase = dbus-send-json
+	pkgdesc = A modification of dbus-send to print replies in JSON
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/fishn/dbus-send-json
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = GPL
+	makedepends = meson
+	depends = dbus
+	source = https://codeberg.org/fishn/dbus-send-json/archive/0.1.0.tar.gz
+	sha256sums = 2c2d3fb4d4ce48b59ae25e9a4574a4f9b01b0e76ea5e2d9c01952587a1c3838d
+
+pkgname = dbus-send-json
