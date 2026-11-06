@@ -2,7 +2,7 @@
 pkgname=usagenometer
 # Arch forbids hyphens in pkgver; keep the real SemVer+channel in _pkgver.
 _surface=cli
-_pkgver=0.1.4-beta
+_pkgver=0.1.6-beta
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='AI usage meters in the terminal (Codex, Cursor, Antigravity, Claude, Grok)'
@@ -14,7 +14,7 @@ makedepends=('cargo')
 optdepends=('libnotify: desktop notifications for usg --notify / --alert')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${_surface}/v${_pkgver}.tar.gz")
-sha256sums=('ef1fcbdbe12425134fccb07fe95f3c53c97a150c31564970fba6ce0a54ca8d37')
+sha256sums=('3704115856219152b0f01d2d625cdf509edb8732b6621d98d32ebdad02fc36eb')
 
 prepare() {
   cd "$pkgname-${_surface}-v${_pkgver}"
