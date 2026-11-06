@@ -1,6 +1,6 @@
 # Maintainer: Amin Beheshti amin.bhst@gmail.com
 pkgname=brisk
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
 pkgdesc="Ultra-fast, modern download manager (Official Release)"
 arch=('x86_64')
