@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Launch apps and commands as systemd units from fzf (git development version)'
 arch=(any)
 url='https://gitlab.com/greyxor/fzlaunch'
-license=(MIT)
+license=('AGPL-3.0-only')
 # Everything fzlaunch runs itself. app2unit is the default launcher (uwsm can
 # replace it, see optdepends) and needs xdg-terminal-exec for -T, which
 # fzlaunch passes for every command, but does not depend on it.
@@ -43,6 +43,5 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	install -Dm755 fzlaunch -t "${pkgdir}/usr/bin/"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
