@@ -1,4 +1,5 @@
 diff --git a/AMBuildScript b/AMBuildScript
+index ab8d8a6..d37d6e1 100644
 --- a/AMBuildScript
 +++ b/AMBuildScript
 @@ -371,10 +371,6 @@ class ExtensionConfig(object):
@@ -13,6 +14,7 @@ diff --git a/AMBuildScript b/AMBuildScript
  
    def ExtLibrary(self, context, compiler, name):
 diff --git a/AMBuilder b/AMBuilder
+index 5fe72b8..e1615de 100644
 --- a/AMBuilder
 +++ b/AMBuilder
 @@ -8,7 +8,6 @@ for cxx in builder.targets:
@@ -25,9 +27,9 @@ diff --git a/AMBuilder b/AMBuilder
  
 @@ -23,21 +22,11 @@ for cxx in builder.targets:
      elif cxx.family == 'msvc':
-       cxx.cxxflags += ['/GR-']
+       binary.compiler.cxxflags += ['/GR-']
  
-+    # The system's jansson, on the binary's compiler: ExtLibrary() has cloned cxx already
++    # The system's jansson instead of the bundled sources
 +    binary.compiler.postlink += ['-ljansson']
 +
      binary.sources += [
@@ -49,6 +51,7 @@ diff --git a/AMBuilder b/AMBuilder
      ]
  
 diff --git a/extension.cpp b/extension.cpp
+index f21d8e9..bc554de 100644
 --- a/extension.cpp
 +++ b/extension.cpp
 @@ -30,7 +30,7 @@
@@ -61,6 +64,7 @@ diff --git a/extension.cpp b/extension.cpp
  /**
   * @file extension.cpp
 diff --git a/sdk/smsdk_config.h b/sdk/smsdk_config.h
+index d493da7..52cedbb 100644
 --- a/sdk/smsdk_config.h
 +++ b/sdk/smsdk_config.h
 @@ -32,7 +32,7 @@

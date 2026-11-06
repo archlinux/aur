@@ -1,0 +1,25 @@
+diff --git a/AMBuilder b/AMBuilder
+index 6eff5ed..5fe72b8 100644
+--- a/AMBuilder
++++ b/AMBuilder
+@@ -13,15 +13,15 @@ for cxx in builder.targets:
+     ]
+ 
+     if cxx.target.platform == 'linux':
+-      cxx.postlink += ['-lpthread', '-lrt']
++      binary.compiler.postlink += ['-lpthread', '-lrt']
+     elif cxx.target.platform == 'mac':
+-      cxx.cflags += ['-Wno-deprecated-declarations']
+-      cxx.postlink += ['-framework', 'CoreServices']
++      binary.compiler.cflags += ['-Wno-deprecated-declarations']
++      binary.compiler.postlink += ['-framework', 'CoreServices']
+ 
+     if cxx.family == 'gcc' or cxx.family == 'clang':
+-      cxx.cxxflags += ['-fno-rtti']
++      binary.compiler.cxxflags += ['-fno-rtti']
+     elif cxx.family == 'msvc':
+-      cxx.cxxflags += ['/GR-']
++      binary.compiler.cxxflags += ['/GR-']
+ 
+     binary.sources += [
+       'extension.cpp',

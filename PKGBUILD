@@ -6,7 +6,7 @@ pkgname=sourcemod-smjansson
 _name=SMJansson
 # Upstream's tags are jansson's version and a release of SMJansson for it (v2.15.1-1)
 pkgver=2.15.1.1
-pkgrel=1
+pkgrel=2
 _tag=v${pkgver%.*}-${pkgver##*.}
 pkgdesc="SMJansson, a JSON extension of SourceMod (in the addons folder of sourcemod)"
 arch=(x86_64)
@@ -20,16 +20,22 @@ depends=(glibc jansson lib32-gcc-libs lib32-glibc lib32-jansson libgcc sourcemod
 makedepends=(ambuild clang python sourcemod-src)
 checkdepends=(sourcemod-scripting)
 source=("$_name-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz"
+  smjansson-ambuilder-binary-compiler.patch
   smjansson-system-jansson.patch)
 sha512sums=('121574e7c7a6c6853bafb1de08761f72dcaad978ff30a3677c4203f7860c5f9ca1d2fa93fa7667879b920019b71c3d0f87f0b3b1cb95dfb4145c86fa29304b53'
-  'e86ace0263c91ca9667c57cfda371661d926bcd04fb2607c532dd38795849114d3da9427cf80fb9bf79a4a32d168273ca10ba03fefc58af4677dff769cc68411')
+  'fd859673e30df5e814e4664f36fccac4f8487d9e7041856786236dc6e025d799dd3c263e39d49bd0dfe117ea2a741b0ab34d0fae46da6181b585fc9a2479407b'
+  'b35c431dfaee9e904f43712d85daf5705298dd299be88c8b049f12b75e3b4d6a2d28919c6788c7545aa306dbc34b0c4de82e9786ae65f824f8b94d279a0b1ae5')
 b2sums=('9bbd71b5c3e6e99e22c29fd3e80ee130e43a670249a5dbdadc836f4f6603f3c0dc1af397bc7f43309f9ff5c63ce5798be3bc22127c61a97f99dc86b9c94eb959'
-  '3a93a0eff4b5ba5162e12b35e69561001da78986e39847fae17d4aada191da2c64ffd077f85a4c442fca2d734a4edd1932bef0c99901ed154a1e9c096c3842c3')
+  '0dd35a75297218cdfa9d5076a39c0d19ce2a917fe0debf95837dad527197478bf2b2a89907cded625e1c568631e91922509042a6749180add752543785f67c5b'
+  '6947c12ca8e2d3a30c1d1c36d83193c1a6b6c3655e26fb55b6f66ab3c4ef3f56e8cd21fe5749c737023ebc4508bded467240bf0d8ec24bfef4fb5d6830a2a251')
 
 prepare() {
   cd "$srcdir/$_name-${_tag#v}" || exit
-  # The system's jansson (the version it bundles) instead of the bundled sources, linked by the
-  # binary's compiler: the AMBuilder adds its flags to the compiler after ExtLibrary() has cloned it
+  # The platform flags (-fno-rtti, the libraries to link) on the extension's compiler, which
+  # ExtLibrary() has cloned before the AMBuilder adds them
+  # (https://github.com/davenonymous/SMJansson/pull/15)
+  patch -Np1 -i "$srcdir/smjansson-ambuilder-binary-compiler.patch"
+  # The system's jansson (the version it bundles) instead of the bundled sources
   patch -Np1 -i "$srcdir/smjansson-system-jansson.patch"
 
   # Nothing prebuilt or bundled: the test plugin, jansson's sources and its configuration headers
