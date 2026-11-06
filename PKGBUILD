@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lcarlier@archlinux.org>
 
 pkgname=jnext
-pkgver=1.1.87
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A ZX Spectrum Next emulator using VHDL sources as a reference"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/jorgegv/jnext"
 license=('GPL-3.0-only')
 options=()
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('32d2f21fc8a506123b43493e5aee5183b48117a5a73b8dd42c89fe9510f24006')
+sha256sums=('50094caeb6949d0844250d6fabc70a160fc4e6fad77539b0fd069aa61d3ec9c7')
 
 prepare() {
   cd $pkgname-$pkgver/third_party/
