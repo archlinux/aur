@@ -1,6 +1,6 @@
 pkgbase = ddev-test-edge-bin
 	pkgdesc = DDEV: a local web development environment (edge)
-	pkgver = 1.108.1_draftflow1
+	pkgver = 1.108.1_draftflow2
 	pkgrel = 1
 	url = https://github.com/ddev/ddev
 	license = Apache 2
@@ -11,10 +11,10 @@ pkgbase = ddev-test-edge-bin
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = ddev-test-edge-bin_1.108.1_draftflow1_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow1/ddev_linux-arm64.v1.108.1-draftflow1.tar.gz
-	sha256sums_aarch64 = 369c7ce86787c2222e04d20e3042243e9bba1e8bb22df7ce83733caedea8fab8
+	source_aarch64 = ddev-test-edge-bin_1.108.1_draftflow2_aarch64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow2/ddev_linux-arm64.v1.108.1-draftflow2.tar.gz
+	sha256sums_aarch64 = 1f723d6f67ed35d24cf910e8d6522ce9fb00b5d05ed18165e25b63064ec67780
 	arch = x86_64
-	source_x86_64 = ddev-test-edge-bin_1.108.1_draftflow1_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow1/ddev_linux-amd64.v1.108.1-draftflow1.tar.gz
-	sha256sums_x86_64 = 0236ba6d460591c249123befcecf47844c43a010f4f85a89685dfbe084a60e35
+	source_x86_64 = ddev-test-edge-bin_1.108.1_draftflow2_x86_64.tar.gz::https://github.com/ddev-test/ddev/releases/download/v1.108.1-draftflow2/ddev_linux-amd64.v1.108.1-draftflow2.tar.gz
+	sha256sums_x86_64 = bc2ecdc98ce84d4853eade8bf11bf4ed2236cb4101c47631648683bf56d7dfd5
 	
 pkgname = ddev-test-edge-bin
