@@ -3,7 +3,7 @@
 pkgauthor="baairon"
 pkgname="torlink"
 pkgdesc="A sleek, zero-setup torrent finder and downloader that lives right in your terminal"
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('a1774da8a348e6551bedfa2d01511a59d8310e5a2f817e009cd02ba15ded579649d8f009caadbdf126fcda2d11a0e0d8e5738006aa6fcd6d6eeccd2ff200abac')
+b2sums=('1fbfc4452c3b75da5b97b3f70adfe94093971d22cb2b70c1dbee899ec614338055b0298c3920175625090faa37eea4385d61623b02eb8f7c51babf329cdd16b8')
 
 
 package() {
