@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=pdfcraft-bin
 _pkgname=pdfcraft
-pkgver=0.18.2
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Open-source native PDF workbench, Acrobat alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('323bad7b373392076461e2cad5db63b22f47a032ba005a6c4a35f3483d05dae4')
-sha256sums_aarch64=('6ac0f63a3b8ce422046053e601e44be6276d8e5576a084c0c709b0e3a3f65eb6')
+sha256sums_x86_64=('3657aa40fe146d4af40fab0507c97f6ee2c6ce5ba9938567194439be3335ba8b')
+sha256sums_aarch64=('bb7ef777f3cb8874f6028a35942a6093ae0a30eb009b5c6e5ee1247846389f11')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
