@@ -3,7 +3,7 @@
 _pkgauthor=walles
 _pkgname=riff
 pkgname=${_pkgname}diff-bin
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='A diff filter highlighting which line parts have changed'
 
@@ -25,8 +25,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${pkg
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_barch[1]}-linux")
 sha256sums=('8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26'
             'fa622f9a15b96f5aebb65de430287cfaecb1bfd4ecae6ab5ce6b457c5964a307')
-sha256sums_x86_64=('f9c6cf02023b76182c9a9638916217054f4e9cf5a0b46b208f7ab96f6f8aa2e3')
-sha256sums_aarch64=('8732887eafd4913131a8afe5c78330afb5acf701a166b27e8ab2f9f2d2c931c2')
+sha256sums_x86_64=('279068ceb813670eed79b30145207f6d96776cec6764282a53e7313c8e4d477e')
+sha256sums_aarch64=('1acbe244b18a4d60b7ef5aafb5f8c538548817ab528c52bccabf27737e3698df')
 
 
 package() {
