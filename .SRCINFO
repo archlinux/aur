@@ -1,6 +1,6 @@
 pkgbase = gitpane
 	pkgdesc = Multi-repo Git workspace dashboard for the terminal
-	pkgver = 0.17.1
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://github.com/affromero/gitpane
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = gitpane
 	conflicts = gitpane-bin
 	options = !lto
 	options = !debug
-	source = gitpane-0.17.1.tar.gz::https://github.com/affromero/gitpane/archive/refs/tags/v0.17.1.tar.gz
+	source = gitpane-0.18.4.tar.gz::https://github.com/affromero/gitpane/archive/refs/tags/v0.18.4.tar.gz
 	source = 0001-clean-disable-the-self-update-subcommand.patch
-	sha256sums = 76179a9e312beb5e17842b6ab52ebe4d81a3ae0864d55fcbb090b01a101804a3
+	sha256sums = 97971fd5a24b42927fa35ac17b4c4f471afa2ed7d32a7d9e5b035011519ded3f
 	sha256sums = 585746e0713807290faffbb4521668c1f15d1d96ecef6a7cc0b393dce272d2c3
 
 pkgname = gitpane
