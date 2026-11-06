@@ -6,9 +6,9 @@ _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=0.37.4
 _pkgver="$pkgver-beta"
-pkgrel=1
+pkgrel=2
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://opentubex.org"
 license=('AGPL-3.0-or-later')
 depends=('electron44')
@@ -18,12 +18,15 @@ makedepends=('git' 'npm' 'pnpm' 'go')
 changelog=opentubex.changelog
 source=("$pkgname-$pkgver.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}-beta.tar.gz"
         opentubex.desktop
-        opentubex.sh)
+        opentubex.sh
+        default-build-architecture.patch)
 sha256sums=('78712a8528ae5c41543d54b6c33c21324c87fe78bc3042fff954178d890f810d'
             '63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d'
-            '4779a1453099f738e59efb59a6f13ce192aaa9cababdce7db000253144e7ff9a')
+            '4779a1453099f738e59efb59a6f13ce192aaa9cababdce7db000253144e7ff9a'
+            '29decf1958ea0444e752db3b78434cbaa072a51b4976ef8b405d272c54c46125')
 
 prepare() {
+  patch -d "$srcdir/$_pkgname-$_pkgver" -Np1 -i "$srcdir/default-build-architecture.patch"
   sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron44'," \
     "$srcdir/$_pkgname-$_pkgver/_scripts/ebuilder.config.mjs"
   sed -i "/Platform\\.LINUX\\.createTarget/s/\\[[^]]*\\]/['dir']/" \
@@ -45,8 +48,12 @@ build() {
 }
 
 package() {
+  local build_directory=linux-unpacked
+  if [[ $CARCH == aarch64 ]]; then
+    build_directory=linux-arm64-unpacked
+  fi
   install -d "${pkgdir}"/{usr/bin,usr/lib/opentubex}
-  cp -R "./$_pkgname-$_pkgver/build/linux-unpacked/resources/"app.asar* "$pkgdir/usr/lib/$pkgname"
+  cp -R "./$_pkgname-$_pkgver/build/$build_directory/resources/"app.asar* "$pkgdir/usr/lib/$pkgname"
   install -Dm755 "./opentubex.sh" "$pkgdir/usr/bin/opentubex"
 
   cd "$_pkgname-$_pkgver"
