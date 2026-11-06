@@ -1,6 +1,6 @@
 pkgbase = wu-bin
 	pkgdesc = Fast, native code editor in Rust that feels like VS Code
-	pkgver = 1.1.17
+	pkgver = 1.1.18
 	pkgrel = 1
 	url = https://github.com/farshed/wu
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = wu-bin
 	provides = wu
 	conflicts = wu
 	options = !debug
-	source_x86_64 = wu-bin-1.1.17-x86_64.tar.gz::https://github.com/farshed/wu/releases/download/v1.1.17/wu-linux-x86_64.tar.gz
-	sha256sums_x86_64 = c6ea1c75995eca64c51879e35381199ea26c05d0ff001f0cf162b95eeddc8b9a
-	source_aarch64 = wu-bin-1.1.17-aarch64.tar.gz::https://github.com/farshed/wu/releases/download/v1.1.17/wu-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 05a8a064bd64ffc682aa450b881b6021089e1a783874b326896db9e582a0c31f
+	source_x86_64 = wu-bin-1.1.18-x86_64.tar.gz::https://github.com/farshed/wu/releases/download/v1.1.18/wu-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 124150b16889f9ea086c6bda5d7dde6aca3c3308979823612053dc236c76840b
+	source_aarch64 = wu-bin-1.1.18-aarch64.tar.gz::https://github.com/farshed/wu/releases/download/v1.1.18/wu-linux-aarch64.tar.gz
+	sha256sums_aarch64 = bebba7168610732c6a95ceda51dd4c58ea339c19c00b6e14df1c2d818e38b645
 
 pkgname = wu-bin
