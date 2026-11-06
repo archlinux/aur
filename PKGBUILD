@@ -5,7 +5,7 @@ pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
 pkgver=2.5.10
 _ipc_ver=2.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -22,7 +22,7 @@ sha512sums=('7b28dcb41abe622a23a2ae625070d3c9bee5ea3bcab259f0b93a25a78843a220351
             'fcfb16a27e754d352a523b9fb78f44b102c0f6c0413dc060352e9b32ddcf290cac9004c46fdbd9914feaa252e4f8dc5f2586b3b0837b2ad36799f0986e479415'
             '1a2b0ca9ada3753a34eb90ef94955ad544d725528efedd0885799d5e34f14f1454d3e0c2c3b450b6e5c6f9f3cad61d57b4258725cf4ab71b3096b01db636ac17'
             'd8d77d4a5bdba94e115c9a2af4f1ccb3673be4870051efb76851c2a0b48ef896ed6cd8a9207b0f4e4468e19083e5ae11e6eb05b2c2ffec40e643329566682aa4'
-            '51c308fdd3cabcb7c091416f0b24a6cf1204792e319e226f89e8a5e9e54fe20dfbf5f4d4430effd5349a6f8682e7118c23d6fa8035d1fa8bebe04f759afab992')
+            '068e907b8ca88cf81bd3fbce1b9947bc25c80b59fa8a53ecbdb52213b9005a6eef98b0c455bdda41b2da94fe7e807c23754756dd4c17369604ccdd37544ab53c')
 
 prepare() {
 	pushd "${_pkgname}-service-ipc-${_ipc_ver}/"
@@ -30,7 +30,7 @@ prepare() {
 	popd
 
 	cd "${pkgname}-${pkgver}/"
-	jq '.bundle.createUpdaterArtifacts = false' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+	jq '.bundle.createUpdaterArtifacts = false | del(.plugins.updater)' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
 	pnpm i
 
 	cd src-tauri
