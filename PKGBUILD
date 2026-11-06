@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.07.28
-pkgrel=9
+pkgrel=10
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -34,6 +34,7 @@ depends=(
 makedepends=(
   'python-rosinstall_generator'
   'python-vcs2l'
+  'python-pkg-resources'
 )
 conflicts=(
   "ros2-${_rosdist_short}"
@@ -96,7 +97,7 @@ build() {
 
     # Build
     colcon build --metas $srcdir/colcon.meta --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} \
-        --cmake-args -DBUILD_TESTING=OFF -DCMAKE_IGNORE_PATH="/usr/share/orocos_kdl/cmake/" -Wno-dev
+        --cmake-args -DBUILD_TESTING=OFF -DCMAKE_IGNORE_PATH="/usr/share/orocos_kdl/cmake/" -Wno-author
 
     # Replace all references to srcdir in colcon shell files
      printf "Replace references to srcdir in colcon shell files\n"
