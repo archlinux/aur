@@ -6,7 +6,7 @@ pkgdesc='Intel® Software Guard Extensions SDK for Linux* OS'
 pkgver=2.30.1
 _pkgver="${pkgver%.1}.101.1"
 pkgrel=1
-url='https://github.com/intel/confidential-computing.sgx.sdk'
+url='https://github.com/intel/confidential-computing.sgx'
 arch=(x86_64)
 license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx.sdk/blob/main/License.txt
 provides=("intel-sgx-sdk=${pkgver}")
