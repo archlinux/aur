@@ -96,11 +96,18 @@ prepare() {
   done
 }
 
+# mac_buttons=true makepkg: macOS-style window buttons (red/yellow/green circles, a darker dot
+# on hover) instead of Jasper's 22px glyph circles; the fixes take both from the theme's
+# $window_button, so the same package serves either. The theme names do not change.
 package() {
   cd "${_name}"
+  local tweaks=(dracula)
+  if [[ ${mac_buttons:-} == true ]]; then
+    tweaks+=(macos)
+  fi
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d "${pkgdir}/usr/share/themes"
   # every accent, light and dark, Dracula colors
   # TERM: install.sh draws a spinner with tput, which fails without one (clean chroots)
-  TERM=${TERM:-dumb} ./install.sh -t all -c light dark --tweaks dracula -d "${pkgdir}/usr/share/themes"
+  TERM=${TERM:-dumb} ./install.sh -t all -c light dark --tweaks "${tweaks[@]}" -d "${pkgdir}/usr/share/themes"
 }
