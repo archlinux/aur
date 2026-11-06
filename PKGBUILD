@@ -7,7 +7,7 @@ _aliasname=czv
 pkgname=${_appname}-bin
 pkgdesc="A Comfort First terminal text editor — type like nano, navigate like vim"
 
-pkgver=0.2.37
+pkgver=0.2.38
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('a921572d037a6d55be821a360902231cd65b0c7ae9db3567200c4ca59aed5d97')
-sha256sums_aarch64=('f43891d71c8948a43dead5ed90c0835fe0889842788d3bf606c69c43a8f7903b')
+sha256sums_x86_64=('f2b6ea36237585bcde17b0c23d217a82674d4aa0a36f0915fdf9e91ca732587e')
+sha256sums_aarch64=('242147e887788f012ee8fb5ee81bd3cfb4f6b7f701ec1efb5a77f22dfe9b7f6b')
 
 
 case ${CARCH} in
