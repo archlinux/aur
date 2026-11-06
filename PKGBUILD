@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-git
-pkgver=3.1.0.r0.gbd6414b
+pkgver=3.1.1.r0.gea7a344
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -54,12 +54,10 @@ _get_app_dir() {
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
 }
 _get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -oE '[0-9]+' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	(( _elec_ver == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
+	local _v=$(find "$(_get_project_dir)" -name package.json ! -path '*/node_modules/*' -exec jq -r '.. | (.electron? // empty) | strings' {} + 2>/dev/null | sed 's/^[^0-9]*//' | grep -E '^[0-9]' | head -1 | sed 's/\..*//')
+	_v=${_v:-$(grep -hoE 'electron[@":][^0-9]*[0-9]+\.[0-9.]+' "$(_get_project_dir)"/*lock* 2>/dev/null | grep -oE '[0-9]+\.[0-9.]+' | head -1 | sed 's/\..*//')}
+	[[ "$_v" =~ ^[0-9] ]] || return 1
+	(( ${_v} == _electronversion )) && echo -e "\033[1;32mElectron version: ${_v}\033[0m" || echo -e "\033[1;31mElectron version: ${_v} (expected ${_electronversion})\033[0m"
 }
 _set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
@@ -99,25 +97,18 @@ prepare() {
     cd "$(_get_project_dir)/${pkgname%-git}-web"
     export NODE_ENV=development
     npm install
-    npm run build
     cd "$(_get_project_dir)/${pkgname%-git}-electron"
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    sed -i "s|const documentsPath = app.isPackaged ? path.resolve(app.getPath('documents'), 'wj-markdown-editor') : app.getAppPath()|const documentsPath = path.resolve(app.getPath('userData'))|g" \
-        src/data/recent.js
-    sed -i "s|return app.isPackaged|return true \|\| app.isPackaged|g" \
-        src/data/config/configConstants.js
-    sed -i "s|app.getPath('documents'), 'wj-markdown-editor'|app.getPath('userData')|g" \
-        src/data/config/configConstants.js
-    sed -i "s|app.getPath('documents'), 'wj-markdown-editor/logs'|app.getPath('userData'), 'logs'|g" \
-        src/util/logUtil.js
     npm install
 }
 build() {
-    cd "$(_get_project_dir)/${pkgname%-git}-electron"
+    cd "$(_get_project_dir)/${pkgname%-git}-web"
     _ensure_local_nvm
     _set_electron_build_env
     _set_npm_build_env
     export NODE_ENV=production
+    npm run build
+    cd "$(_get_project_dir)/${pkgname%-git}-electron"
     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
     rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
