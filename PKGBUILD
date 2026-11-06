@@ -4,7 +4,7 @@
 pkgname=steamdeck-dsp
 _srctag=1.03
 pkgver=${_srctag#galileo-}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/evlav/valve-hardware-audio-processing"
 pkgdesc="Steamdeck Audio Processing"

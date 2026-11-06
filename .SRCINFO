@@ -1,7 +1,7 @@
 pkgbase = steamdeck-dsp
 	pkgdesc = Steamdeck Audio Processing
 	pkgver = 1.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evlav/valve-hardware-audio-processing
 	install = steamdeck-dsp.install
 	arch = x86_64
