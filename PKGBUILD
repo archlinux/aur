@@ -5,18 +5,20 @@ _pkgname=kchat
 _originalpkgname=kChat
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="kChat is an instant messaging service which enables you to discuss, share and coordinate your teams in complete security via your Internet browser, mobile phone, tablet or computer."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.infomaniak.com/en/apps/download-kchat"
 license=('custom:Unlicense')
 depends=('zlib')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://download.storage5.infomaniak.com/kchat/kchat-desktop-${pkgver}-linux-x86_64.AppImage")
+source_aarch64=("${_appimage}::https://download.storage5.infomaniak.com/kchat/kchat-desktop-${pkgver}-linux-arm64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('018904da4a45fd06f65f8f68e4a03f0508400363f0dd17b77817802fb8dea8f5')
+sha256sums_x86_64=('d5694e2958dacf398fb806c9479c283f4b04f44912c6672c26766b993a2d1588')
+sha256sums_aarch64=('194b6723b8a9ab7483e693f845e0938442666d0dc1ec02d0d975b9a4d6831e61')
 
 prepare() {
     chmod +x "${_appimage}"

@@ -1,14 +1,17 @@
 pkgbase = kchat-appimage
 	pkgdesc = kChat is an instant messaging service which enables you to discuss, share and coordinate your teams in complete security via your Internet browser, mobile phone, tablet or computer.
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://www.infomaniak.com/en/apps/download-kchat
 	arch = x86_64
+	arch = aarch64
 	license = custom:Unlicense
 	depends = zlib
-	noextract = kchat-appimage-3.5.2.AppImage
+	noextract = kchat-appimage-3.5.3.AppImage
 	options = !strip
-	source_x86_64 = kchat-appimage-3.5.2.AppImage::https://download.storage5.infomaniak.com/kchat/kchat-desktop-3.5.2-linux-x86_64.AppImage
-	sha256sums_x86_64 = 018904da4a45fd06f65f8f68e4a03f0508400363f0dd17b77817802fb8dea8f5
+	source_x86_64 = kchat-appimage-3.5.3.AppImage::https://download.storage5.infomaniak.com/kchat/kchat-desktop-3.5.3-linux-x86_64.AppImage
+	sha256sums_x86_64 = d5694e2958dacf398fb806c9479c283f4b04f44912c6672c26766b993a2d1588
+	source_aarch64 = kchat-appimage-3.5.3.AppImage::https://download.storage5.infomaniak.com/kchat/kchat-desktop-3.5.3-linux-arm64.AppImage
+	sha256sums_aarch64 = 194b6723b8a9ab7483e693f845e0938442666d0dc1ec02d0d975b9a4d6831e61
 
 pkgname = kchat-appimage
