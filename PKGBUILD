@@ -2,7 +2,7 @@
 
 pkgname=exdesktop-bin
 _pkgname=exdesktop
-pkgver=7.3.3.8
+pkgver=7.3.3.9
 pkgrel=1
 pkgdesc='Unofficial Telegram Desktop fork with exteraGram features, channel feed and Python plugins (prebuilt)'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=("exDesktop-linux-x64-$pkgver.tar.gz::$url/releases/download/v$pkgver/exD
         "$_pkgname.desktop"
         "$_pkgname.sh")
 noextract=("exDesktop-linux-x64-$pkgver.tar.gz")
-sha256sums=('0aef2f8a1b5552e782d2fff792b52feb7c5f22ead195baa71fac5fc000939d21'
+sha256sums=('0d83381704e9a96eb9431bfbf79003ae53970c90c73631b2a0739f7838598474'
             'a728b65d02eeaf6b50c075a33b76107c652c3e5a12ff67f53682c83d47a23e1e'
             'f6ef428025d0edccb48197dd83b8b8aa0e27be368007bfc564b9e7684e888ce4'
             'd20934cdcf9cc29f30b8755f2bdd12185fa3b09fcce50327c7f4530f2ab76dff'
