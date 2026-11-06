@@ -31,6 +31,7 @@ path = [
   "smjansson-ambuilder-binary-compiler.patch",
   "smjansson-system-jansson.patch",
   "smjansson-test-deherit-unused.patch",
+  "smjansson-packagescript-always-copy.patch",
 ]
 SPDX-FileCopyrightText = "davenonymous and the SMJansson contributors"
 SPDX-License-Identifier = "GPL-3.0-only"

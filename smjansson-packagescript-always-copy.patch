@@ -1,0 +1,15 @@
+diff --git a/PackageScript b/PackageScript
+index bd8e136..14ddd93 100644
+--- a/PackageScript
++++ b/PackageScript
+@@ -37,9 +37,7 @@ def CopyFiles(src, dest, files):
+   dest_entry = folder_map[dest]
+   for source_file in files:
+     source_path = os.path.join(builder.sourcePath, src, source_file)
+-    dest_path = os.path.join(dest_entry.path, source_file)
+-    if not os.path.isfile(str(dest_path)):
+-      builder.AddCopy(source_path, dest_entry)
++    builder.AddCopy(source_path, dest_entry)
+ 
+ # Sourcemod Files
+ CopyFiles('pawn/scripting', 'addons/sourcemod/scripting',
