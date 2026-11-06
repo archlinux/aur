@@ -8,6 +8,10 @@ pkgbase = mp4ff-bin
 	license = MIT
 	provides = mp4ff=0.62.0
 	conflicts = mp4ff
+	source = mp4ff_0.62.0_bits_LICENSE.md::https://raw.githubusercontent.com/Eyevinn/mp4ff/v0.62.0/bits/LICENSE.md
+	source = mp4ff_0.62.0_mp4_LICENSE.md::https://raw.githubusercontent.com/Eyevinn/mp4ff/v0.62.0/mp4/LICENSE.md
+	sha256sums = 844a3d32d3e73b5b6d8c1eb29db0f577192fad5ca8492c9afe7b5d093b1fd429
+	sha256sums = 39a8b5a93eb3838e6e07626db26503ac740d339cea3a4650a838331ddb7f181a
 	source_x86_64 = https://github.com/Eyevinn/mp4ff/releases/download/v0.62.0/mp4ff_0.62.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = adad87aceaabb24cd3ca30becca07baf8f7b19701645b65241e8767b4a07792e
 	source_aarch64 = https://github.com/Eyevinn/mp4ff/releases/download/v0.62.0/mp4ff_0.62.0_linux_arm64.tar.gz
