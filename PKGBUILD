@@ -6,7 +6,7 @@
 _pkgname='ryelang'
 pkgname="$_pkgname-git"
 pkgdesc='Rye — a programming language trying to be flexible about expression, but strict about state (development version)'
-pkgver=0.2.57.r4.g5c4f1af
+pkgver=0.2.81.r1.g89bbf23
 pkgrel=1
 url='https://ryelang.org/'
 _url='https://github.com/refaktor/rye'
@@ -61,7 +61,7 @@ build() {
     -mod=readonly
     -modcacherw
     -trimpath
-    -tags=seccomp,no_contrib
+   '-tags=seccomp,no_contrib'
   )
   go build "${_opts[@]}" -o bin/ryelang
 }
