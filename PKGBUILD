@@ -3,22 +3,21 @@
 # Contributor: Davide Depau <davide@depau.eu>
 
 _pkgname=libfprint
-pkgname="$_pkgname-vfs009x-git"
+pkgname=$_pkgname-vfs009x-git
 pkgver=1.94.100.r3.ge738dc5
 pkgrel=1
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 url="https://gitlab.archlinux.org/gugah/libfprint"
-license=('LGPL-2.1-or-later')
-arch=('x86_64')
-
+arch=(x86_64)
+license=(LGPL-2.1-or-later)
 depends=(
-  gcc-libs
+  libgcc
   glib2
   glibc
   libgudev
   libgusb
-  pixman
   openssl
+  pixman
 )
 makedepends=(
   git
@@ -35,18 +34,16 @@ checkdepends=(
   umockdev
 )
 optdepends=(
-  'fprintd: D-Bus daemon that manages fingerprint readers'
-  'validity-sensors-tools: Flash, factory reset and pair Validity fingerprint sensors 009x'
+  'fprintd: D-Bus service to access fingerprint readers'
+  'validity-sensors-tools-git: Linux tool to flash and pair Validity fingerprint sensors 009x'
   'gtk3: (make) Build GTK-based demos'
 )
-
 provides=(
-  "$_pkgname=$pkgver"
-  'libfprint-2.so'
+  $_pkgname=$pkgver
+  libfprint-2.so
 )
 groups=(fprint)
 conflicts=("$_pkgname")
-
 source=(
   "git+$url.git#branch=vfs009x"
   "0001-VFS0097-Update-vfs0090.h.patch"
@@ -64,7 +61,7 @@ _build_examples=${BUILD_EXAMPLES:-false}
 _build_tests=${BUILD_TESTS:-false}
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   # Initialize the vfs0090 submodule
   git submodule update --init --recursive
@@ -99,40 +96,36 @@ prepare() {
 }
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' --exclude='*_*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  local _meson_opts=(
+  local meson_options=(
     -D drivers=all
-    -D doc="$_build_doc"
-    -D gtk-examples="$_build_examples"
-    -D installed-tests="$_build_tests"
-    -D udev_rules_dir=/usr/lib/udev/rules.d
-    -D udev_hwdb_dir=/usr/lib/udev/hwdb.d
+
+    -D installed-tests=$_build_tests
+    -D doc=$_build_doc
+    -D gtk-examples=$_build_examples
   )
 
-  cd "$srcdir"
-  arch-meson "$_pkgname" build "${_meson_opts[@]}"
+  arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
 check() {
-  cd "$srcdir"
-  # meson test -C build --print-errorlogs || printf "Some tests failed (expected without hardware)\n"
+  meson test -C build --print-errorlogs --exclude egis_etu905
 }
 
 package() {
-  cd "$srcdir"
   meson install -C build --destdir "$pkgdir"
-
   install -Dm644 "$srcdir/0002-60-libfprint-2-tod-vfs0090.rules" \
     "$pkgdir/usr/lib/udev/rules.d/60-libfprint-2-tod-vfs0090.rules"
-
   # Install documentation if built
   if [[ "$_build_doc" == "true" ]]; then
     install -dm755 "$pkgdir/usr/share/doc/$pkgname"
   fi
 }
+
+# vim:set sw=2 sts=-1 et:
