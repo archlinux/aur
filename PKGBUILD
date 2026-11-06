@@ -2,7 +2,7 @@
 
 _pkgname=squigwire
 pkgname="${_pkgname}-git"
-pkgver=r4.824f98a
+pkgver=r6.9cf5d9c
 pkgrel=1
 pkgdesc="System-wide PipeWire parametric EQ"
 url="https://codeberg.org/mazylol/squigwire"
