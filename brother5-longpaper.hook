@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/sane/libsane-brother5.so.1.0.7
+
+[Action]
+Description = Applying Brother DS-740D Long Paper patch to SANE backend...
+When = PostTransaction
+Exec = /usr/lib/brother5-longpaper/apply-patch.sh

@@ -1,0 +1,19 @@
+post_install() {
+    /usr/lib/brother5-longpaper/apply-patch.sh
+    echo "==> brscan5-longpaper-fix: Patch applied to /usr/lib/sane/libsane-brother5.so.1.0.7"
+    echo "==> Maximum scan height is now set to 1828.8mm (72 inches)."
+}
+
+post_upgrade() {
+    /usr/lib/brother5-longpaper/apply-patch.sh
+}
+
+pre_remove() {
+    REAL_LIB="/usr/lib/sane/libsane-brother5-real.so.1.0.7"
+    SANE_LIB="/usr/lib/sane/libsane-brother5.so.1.0.7"
+    if [ -f "$REAL_LIB" ]; then
+        cp -f "$REAL_LIB" "$SANE_LIB"
+        rm -f "$REAL_LIB"
+        echo "==> Restored original Brother SANE backend."
+    fi
+}
