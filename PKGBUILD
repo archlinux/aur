@@ -2,7 +2,7 @@
 # Contributor: frousties <frousties.snouf@gmail.com>
 _pkgname=furifont
 pkgname=otf-${_pkgname}
-pkgver=v0.6.2
+pkgver=v0.7.0
 pkgrel=1
 pkgdesc="Japanese font that shows furigana on the font itself."
 arch=('any')
