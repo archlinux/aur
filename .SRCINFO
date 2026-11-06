@@ -1,6 +1,6 @@
 pkgbase = botropolis-bin
 	pkgdesc = Every Claude Code session on this machine, drawn as a city (binary release)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Botropolis-City/botropolis
 	install = botropolis.install
@@ -21,12 +21,12 @@ pkgbase = botropolis-bin
 	optdepends = claude-code: the sessions botropolis draws and manages
 	optdepends = waybar: a status bar for `botropolis bar --watch`
 	optdepends = ffmpeg: record clips in sharing mode
-	provides = botropolis=0.4.0
+	provides = botropolis=0.4.1
 	conflicts = botropolis
 	options = !debug
-	source_x86_64 = botropolis-0.4.0-linux-amd64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.4.0/botropolis-0.4.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = b1b5d662695519c9ee9c5f9c1294452466673fccbccf9784e7b634c9bfec7310
-	source_aarch64 = botropolis-0.4.0-linux-arm64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.4.0/botropolis-0.4.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4247626e1debc88639d6943cbb1a4c0b1c4d8e752cf9d3c63e80ab92226d2d95
+	source_x86_64 = botropolis-0.4.1-linux-amd64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.4.1/botropolis-0.4.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 17cff9465bc06923931c8514d055c7abf86868dba2b7163365898f19292ebafc
+	source_aarch64 = botropolis-0.4.1-linux-arm64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.4.1/botropolis-0.4.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 56fca2ffd4018a6bd6d8e359c6809173f226a0542a332c94609c529070b7c4c3
 
 pkgname = botropolis-bin

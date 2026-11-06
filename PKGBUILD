@@ -1,7 +1,7 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=botropolis-bin
 _pkgname=botropolis
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Every Claude Code session on this machine, drawn as a city (binary release)"
 arch=('x86_64' 'aarch64')
@@ -34,8 +34,8 @@ options=('!debug')
 # package would be built from binaries whose source tree is not here.
 source_x86_64=("${_pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('b1b5d662695519c9ee9c5f9c1294452466673fccbccf9784e7b634c9bfec7310')
-sha256sums_aarch64=('4247626e1debc88639d6943cbb1a4c0b1c4d8e752cf9d3c63e80ab92226d2d95')
+sha256sums_x86_64=('17cff9465bc06923931c8514d055c7abf86868dba2b7163365898f19292ebafc')
+sha256sums_aarch64=('56fca2ffd4018a6bd6d8e359c6809173f226a0542a332c94609c529070b7c4c3')
 
 package() {
     cd "${_pkgname}-${pkgver}"
