@@ -1,6 +1,6 @@
 pkgbase = usbredir-git
 	pkgdesc = usbredir libraries and utilities
-	pkgver = 0.13.0.10.g39fca2b
+	pkgver = 0.15.0.r1.gf4406c5
 	pkgrel = 1
 	url = https://www.spice-space.org/usbredir.html
 	arch = x86_64

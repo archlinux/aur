@@ -2,7 +2,7 @@
 
 _pkgname=usbredir
 pkgname="${_pkgname}"-git
-pkgver=0.13.0.10.g39fca2b
+pkgver=0.15.0.r1.gf4406c5
 pkgrel=1
 pkgdesc='usbredir libraries and utilities'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --always | sed 's|^usbredir.||;s|-|.|g'
+    git describe --always | sed 's|^usbredir.||;s|-|.r|;s|-|.|'
 }
 
 prepare() {
