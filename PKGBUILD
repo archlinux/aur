@@ -3,8 +3,8 @@
 # Contributor: Rodrigo Severo <rsev at protonmail dot com>
 
 pkgname='therion'
-pkgver='6.4.0'
-pkgrel='2'
+pkgver='6.4.1'
+pkgrel='1'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -43,7 +43,7 @@ source=(
 )
 
 sha256sums=(
-	'5680a703e2ea6975f087e1757929dc060d02bae2ed2bea2c934de19a1b94b344'
+	'f8c62beac7ee6fe05a97545969ba70affe8659732b2191cdf0fea1382d913220'
 	'0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3'
 )
 
@@ -57,8 +57,6 @@ _sourcedir="${pkgname}-${pkgver}"
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-
-  sed -i 's@\<fmt/core\.h\>@fmt/format.h@' src/therion-core/*.cxx
 
   # patch to get UTF8 and available fonts
   patch -p0 -i ${srcdir}/therion_ini.patch
