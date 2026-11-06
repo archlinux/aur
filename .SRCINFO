@@ -1,6 +1,6 @@
 pkgbase = wscreensavers
 	pkgdesc = Native Wayland version of XScreenSaver with 25 built-in WebGL/Canvas ports, XScreenSaver XML bridge, PAM lock screen, and live desktop wallpaper mode
-	pkgver = 1.1.17
+	pkgver = 1.1.18
 	pkgrel = 1
 	url = https://github.com/chrisfair/wscreensavers
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = wscreensavers
 	optdepends = swaylock: Optional external Wayland lock provider
 	provides = wscreensavers
 	conflicts = wscreensavers
-	source = wscreensavers-1.1.17.tar.gz::https://github.com/chrisfair/wscreensavers/archive/refs/tags/v1.1.17.tar.gz
-	sha256sums = 909d3f4c644f3afaf8d5ea9ff72609d020dd4a5962a1e8c546c3f3c7a7a78fad
+	source = wscreensavers-1.1.18.tar.gz::https://github.com/chrisfair/wscreensavers/archive/refs/tags/v1.1.18.tar.gz
+	sha256sums = bbb0c5c3f56e11925aa2096bb63072c759062b1a04f1f3344a4b34a2b3d9bd8e
 
 pkgname = wscreensavers
