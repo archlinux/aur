@@ -118,7 +118,7 @@ package() {
 
   # Create configuration directory (empty by default)
   mkdir -p "${pkgdir}/etc"
-  mkdir --mode=755 "${pkgdir}/etc/${_gitname}"
+  mkdir --mode=700 "${pkgdir}/etc/${_gitname}"
 
   # Save Linux README to documentation
   install -D --mode=644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
