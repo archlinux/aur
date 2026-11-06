@@ -2,10 +2,10 @@
 pkgname=moekoemusic-bin
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.7.1
-_electronversion=39
+pkgver=1.7.2
+_electronversion=42
 pkgrel=1
-pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
+pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.一款开源简洁高颜值的酷狗第三方客户端"
 arch=(
     #'aarch64'
     'x86_64'
@@ -27,13 +27,15 @@ options=(
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/MoeKoeMusic/MoeKoeMusic/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
 #source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}_v${pkgver}-amd64.deb")
 sha256sums=('f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
-            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
-sha256sums_x86_64=('9d82eab5bb170e875ac2ba06300c1f74f1524ac2c146427d6cc111e072a3ea67')
+            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+sha256sums_x86_64=('ce2197536d476c1f5e05350be009979b3173f12a90f475febfcdfdce8d4327fb')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -46,11 +48,22 @@ _check_electron_version() {
 	(( _v == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m$_v$([[ $c -eq 31 ]] && echo " (expected $_electronversion)")\033[0m"
 }
+_install_icons() {
+	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
+	while IFS= read -r -d '' _icon; do
+		_ext="${_icon##*.}"
+		_size=$(echo "${_icon%/*}" | grep -oE '[0-9]+x[0-9]+|scalable' | head -1)
+		[[ -z "${_size}" ]] && _size=$([[ "${_ext}" == svg ]] && echo scalable || od -An -tu1 -j16 -N8 "${_icon}" 2>/dev/null | awk '{printf "%dx%d",$1*16777216+$2*65536+$3*256+$4,$5*16777216+$6*65536+$7*256+$8}')
+		[[ "${_size}" =~ ^[0-9]+x[0-9]+$ ]] || _size=scalable
+		_dest=$([[ "${_icon}" == */share/pixmaps/* ]] && echo pixmaps || echo "icons/hicolor/${_size}/apps")
+		install -Dm644 "${_icon}" "${pkgdir}/usr/share/${_dest}/${_name}.${_ext}"
+	done < <(find "${_src}" \( -path '*/share/icons/*' -o -path '*/share/pixmaps/*' -o -path '*entries/icons/*' \) -type f \( -name '*.png' -o -name '*.svg' \) -print0 2>/dev/null)
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i -e "
@@ -58,20 +71,13 @@ prepare() {
         s/Utility/AudioVideo/g
         3i\Name[zh_CN]=${_zhsname}
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -i -e "
-        s/icon\.ico/icon\.png/g
-        s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g
-        s/\.\.\/api/\.\/api/g
-    " "${srcdir}/app.asar.unpacked/electron/appServices.js"
-    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    cp -a "$(_get_app_dir)/"{api,assets} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    cp -a "$(_get_app_dir)/assets" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _install_icons
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
