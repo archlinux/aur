@@ -7,9 +7,14 @@ pkgbase = occtre
 	license = MPL-2.0
 	makedepends = python
 	makedepends = python-pip
+	makedepends = python-pytest
+	makedepends = python-pytest-mock
+	makedepends = binutils
 	depends = python
 	depends = python-tomlkit
 	depends = python-tabulate
 	depends = python-dataclass-binder
+	source = https://files.pythonhosted.org/packages/source/o/occtre/occtre-1.0.0.tar.gz
+	sha256sums = 87edfde9ffbf58cd88fe88cdb81b9f6a9baf061a0f4803dc03a51bd934280a66
 
 pkgname = occtre
