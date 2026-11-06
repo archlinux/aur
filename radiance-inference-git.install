@@ -1,3 +1,21 @@
+# Tightens /etc/radiance and its conf to root-only. pacman keeps the user's copy of a
+# backup= file *with its mode*, so a world-readable conf from an older package survives
+# the upgrade, and it holds the --api-key when RADIANCE_EXTRA_ARGS sets one. Clears the
+# group/other bits only; the owner's mode and the file's ownership are left alone.
+_lockdown_conf() {
+  local dir=/etc/radiance
+  local conf="$dir/radiance.conf"
+  # find -perm /BITS matches when any of BITS is set; -printf x makes that testable. The
+  # dir is shipped 0750, so only group-write and every world bit count as too open; the
+  # conf is shipped 0600, so any group/other bit counts.
+  [[ -d $dir ]] && [[ -n "$(find "$dir" -maxdepth 0 -perm /0027 -printf x 2>/dev/null)" ]] &&
+    chmod 750 "$dir" && echo "==> ${dir} is now 0750 root:root"
+  [[ -f $conf ]] && [[ -n "$(find "$conf" -maxdepth 0 -perm /077 -printf x 2>/dev/null)" ]] &&
+    chmod go= "$conf" &&
+    echo "==> ${conf}: cleared its group/other bits (package ships 0600 root:root) - it can carry --api-key"
+  return 0
+}
+
 # arg 1:  the new package version
 post_install() {
   cat <<'EOM'
@@ -5,6 +23,8 @@ post_install() {
 ==>   1. Learn about the CLI:        radiance --help
 ==>   2. Edit the configuration:     sudo $EDITOR /etc/radiance/radiance.conf
 ==>      (set RADIANCE_MODEL to a real target (view --models in --help to see options); the unit fails until you do)
+==>      (the conf is 0600 root:root: a --api-key in RADIANCE_EXTRA_ARGS is a secret, so
+==>       do not widen it, and keep root-only backups of it)
 ==>   3. Enable and start service:   sudo systemctl enable --now radiance.service
 EOM
 }
@@ -12,6 +32,7 @@ EOM
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
+  _lockdown_conf
   # -git convention: re-show setup steps on every upgrade.
   post_install "$1"
 }

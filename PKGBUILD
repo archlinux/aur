@@ -6,7 +6,7 @@
 #   4. Build and test (run: makepkg -sf)
 _pkgname=radiance-inference
 pkgname=${_pkgname}-git
-pkgver=1.10.0.r0
+pkgver=1.17.0.r58
 pkgrel=1
 pkgdesc="C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)"
 arch=('x86_64')
@@ -22,7 +22,9 @@ options=('!lto' '!debug')
 source=("${_pkgname}::git+${url}.git#branch=main"
         radiance.service
         radiance.conf)
-sha256sums=('SKIP' 'cf695b19ebdc371c8894710ea0dea831507ac4618aaeb7d5b458f14d4cb35b3a' '9aaea1f8692a1098414cf97db6d7248b026894eaa1e37f4d692cdce2e08d10a8')
+sha256sums=('SKIP'
+            'a80ff0180ef8646558d80998815c59ec5855f1bfde1e47d21d89d657ff7542ea'
+            '6c6d78815ba851d8747f2e7c75f665e8dfce0aa7037d6938a340d68176e97bf0')
 
 # Edit for other hardware: run `offload-arch`.
 _hip_archs='gfx1201'
@@ -80,5 +82,10 @@ package() {
   install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 
   install -Dm644 "${srcdir}/radiance.service" "${pkgdir}/usr/lib/systemd/system/radiance.service"
-  install -Dm644 "${srcdir}/radiance.conf"    "${pkgdir}/etc/radiance/radiance.conf"
+  # The conf is the only place a --api-key can live (the server reads no key env var), so
+  # ship it root-only: 0644 leaks the key to every local user. The unit has no User= and
+  # PID 1 reads EnvironmentFile as root, so 0600 costs the service nothing. -D would create
+  # /etc/radiance 0755; create it first at 0750 so the directory is not traversable either.
+  install -d -m750 "${pkgdir}/etc/radiance"
+  install -Dm600 "${srcdir}/radiance.conf"    "${pkgdir}/etc/radiance/radiance.conf"
 }

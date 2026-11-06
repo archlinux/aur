@@ -1,6 +1,6 @@
 pkgbase = radiance-inference-git
 	pkgdesc = C++20 LLM inference server for AMD GPUs (primarily gfx1201) with OpenAI-compatible HTTP API (git HEAD)
-	pkgver = 1.10.0.r0
+	pkgver = 1.17.0.r58
 	pkgrel = 1
 	url = https://codeberg.org/StillDeadcode/radiance
 	install = radiance-inference-git.install
@@ -22,7 +22,7 @@ pkgbase = radiance-inference-git
 	source = radiance.service
 	source = radiance.conf
 	sha256sums = SKIP
-	sha256sums = cf695b19ebdc371c8894710ea0dea831507ac4618aaeb7d5b458f14d4cb35b3a
-	sha256sums = 9aaea1f8692a1098414cf97db6d7248b026894eaa1e37f4d692cdce2e08d10a8
+	sha256sums = a80ff0180ef8646558d80998815c59ec5855f1bfde1e47d21d89d657ff7542ea
+	sha256sums = 6c6d78815ba851d8747f2e7c75f665e8dfce0aa7037d6938a340d68176e97bf0
 
 pkgname = radiance-inference-git

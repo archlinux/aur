@@ -8,6 +8,12 @@ Wants=network-online.target
 
 [Service]
 Type=exec
+# 0600 root:root - it is the only place a --api-key can go. PID 1 reads EnvironmentFile as
+# root, so the unit needs no access beyond that. Adding User= below would mean making this
+# file group-readable for that user, which widens the secret's audience: keep the key here
+# (0600), or move it to its own 0600 file via a `systemctl edit radiance` drop-in that adds
+# EnvironmentFile= - and note that a drop-in ExecStart must escape \$RADIANCE_EXTRA_ARGS,
+# since escaping moves the expansion into the service shell.
 EnvironmentFile=/etc/radiance/radiance.conf
 # The HIP runtime caps one allocation and the heap below what the placement plan
 # hands out (Dockerfile ENV, docs/DOCKER.md).
