@@ -3,22 +3,23 @@
 
 _pkgname=ReGreet
 pkgname=greetd-${_pkgname,,}-git
-pkgver=0.3.0.r9.e30b3f7
-pkgrel=2
+pkgver=0.5.0.r36.3190584
+pkgrel=1
 pkgdesc='Clean and customizable greeter for greetd'
 url="https://github.com/rharish101/$_pkgname"
 license=(GPL-3.0-or-later)
 arch=(x86_64)
 depends=(wayland-compositor
-         greetd
-         accountsservice
-         cairo
-         libgcc
-         gdk-pixbuf2
-         glib2
-         glibc
-         gtk4
-         pango)
+        greetd
+        accountsservice
+        cairo
+        libgcc
+        gdk-pixbuf2
+        glib2
+        glibc
+        gtk4
+        pango
+        gettext)
 provides=(greetd-greeter)
 backup=("etc/greetd/${_pkgname,,}.toml")
 makedepends=(cargo git)
@@ -26,34 +27,36 @@ install=$pkgname.install
 source=("$_pkgname::git+$url.git"
         "${_pkgname,,}.toml")
 sha256sums=('SKIP'
-            'b80b3eb31f8cc463d512c9db0eef899bdbe232d977429a8a12e95a3b6df2e387')
+        'b80b3eb31f8cc463d512c9db0eef899bdbe232d977429a8a12e95a3b6df2e387')
 conflicts=("greetd-${_pkgname,,}")
 replaces=(regreet-git)
 
 pkgver() {
-	cd "$_pkgname"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+        cd "$_pkgname"
+        printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "$_pkgname"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+        cd "$_pkgname"
+        cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$_pkgname"
-	cargo build --frozen --release --all-features
+        cd "$_pkgname"
+        TARGET_LOCALE_DIR="target/locale" cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$_pkgname"
-	cargo test --frozen --all-features
+        cd "$_pkgname"
+        cargo test --frozen --all-features
 }
 
 package() {
-	cd "$_pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname,,}"
-	install -Dm0644 -t "$pkgdir/etc/greetd/" ../"${_pkgname,,}.toml"
-	install -Dm0644 -t "$pkgdir/usr/share/doc/greetd-${_pkgname,,}/" "${_pkgname,,}.sample.toml"
-	install -Dm0644 systemd-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname,,}.conf"
+        cd "$_pkgname"
+        install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname,,}"
+        install -Dm0644 -t "$pkgdir/etc/greetd/" ../"${_pkgname,,}.toml"
+        install -Dm0644 -t "$pkgdir/usr/share/doc/greetd-${_pkgname,,}/" "${_pkgname,,}.sample.toml"
+        install -Dm0644 systemd-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname,,}.conf"
+        install -Dm0755 -d "$pkgdir/usr/share/locale"
+        cp -r target/locale/. "$pkgdir/usr/share/locale/"
 }
