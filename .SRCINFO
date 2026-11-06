@@ -1,7 +1,7 @@
 pkgbase = lightxdm
 	pkgdesc = Display-manager-free TTY1 login: your desktop starts and its keyring unlocks
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/eserlxl/lightXDM
 	install = lightxdm.install
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = lightxdm
 	depends = sudo
 	depends = gnupg
 	depends = grep
-	source = https://github.com/eserlxl/lightXDM/releases/download/v1.0.0/lightxdm-1.0.0.tar.gz
-	source = https://github.com/eserlxl/lightXDM/releases/download/v1.0.0/lightxdm-1.0.0.tar.gz.sig
+	source = https://github.com/eserlxl/lightXDM/releases/download/v1.0.1/lightxdm-1.0.1.tar.gz
+	source = https://github.com/eserlxl/lightXDM/releases/download/v1.0.1/lightxdm-1.0.1.tar.gz.sig
 	validpgpkeys = 2B0541BF62E91D538C55739DF677BC1E3BD7246E
-	b2sums = 326a83c22748687a637c98cc74bb741b0d645f5078e1b9abaa14d6309f0d8379d7d90d934a23cc4f3308b21ca11de8aa85fb166adc13eb76d4fd9c2834e45b71
+	b2sums = d365f36e85271b0ac27a5da504fa819831e1397922d3cd6abaab672b15a7e64c35087baa6a4f66afbb9404ebaeb6918d9a017d58ed6be9ed21bef937e16e34f0
 	b2sums = SKIP
 
 pkgname = lightxdm
