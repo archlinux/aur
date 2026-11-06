@@ -1,7 +1,7 @@
 pkgbase = rmm
 	pkgdesc = RAPIDS Memory Manager
 	pkgver = 26.10.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rapidsai/rmm
 	arch = x86_64
 	license = Apache-2.0

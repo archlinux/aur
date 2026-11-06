@@ -3,7 +3,7 @@
 pkgbase=rmm
 pkgname=(rmm python-rmm)
 pkgver=26.10.00
-pkgrel=1
+pkgrel=2
 pkgdesc="RAPIDS Memory Manager"
 url="https://github.com/rapidsai/rmm"
 arch=('x86_64')
@@ -27,6 +27,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+    export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH:+$CMAKE_PREFIX_PATH:}/usr"
     export CXXFLAGS="$CXXFLAGS -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
