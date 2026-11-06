@@ -23,10 +23,3 @@ path = [
 ]
 SPDX-FileCopyrightText = "gnome-shell-extension-clipboard-indicator-latest contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = [
-    "gnome-51.patch",
-]
-SPDX-FileCopyrightText = "2014 Yotam Bar-On"
-SPDX-License-Identifier = "MIT"

@@ -6,8 +6,8 @@
 _pkgname=gnome-shell-extension-clipboard-indicator
 _uuid=clipboard-indicator@tudmotu.com
 pkgname="${_pkgname}-latest"
-pkgver=71
-pkgrel=3
+pkgver=72
+pkgrel=1
 pkgdesc="The most popular clipboard manager for GNOME - always up-to-date"
 arch=("any")
 url="https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator"
@@ -24,20 +24,15 @@ conflicts=(
 )
 source=(
   "${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-  gnome-51.patch
 )
-sha256sums=('31d6c3694889b0f1c257b113926643e6a37610495f501cbd810eb2c14b9ebd85'
-            'e465e590a57e1dd44ac2f98ab53d928959b8f33e7633990c200d8093c2f04d75')
+sha256sums=('26cda053b762514f4d29acac4b82090e672b7380e667fd7ec90b6b6ae5e55a06')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
   sed -i \
-    -e 's/\bREADME\.rst\b//' \
     -e 's/^\(install:\) all$/\1/' \
     Makefile
-
-  patch -p1 -i ../gnome-51.patch
 }
 
 package() {
