@@ -5,7 +5,7 @@
 pkgname=sourcemod-advertisements
 _name=sm-advertisements
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Advertisements, a SourceMod plugin displaying messages on game servers (in the addons folder of sourcemod)"
 arch=(any)
 url="https://github.com/ErikMinekus/sm-advertisements"
@@ -36,10 +36,13 @@ build() {
 }
 
 package() {
-  # In the addons folder of sourcemod: the plugin and its configuration, as in upstream's package
+  # In the addons folder of sourcemod: the plugin and its configuration, as in upstream's package;
+  # its sources with SourceMod's, like its own plugins'
   local _src="$srcdir/$_name/addons/sourcemod" _sm="$pkgdir/usr/lib/sourcemod/addons/sourcemod"
   install -Dm644 "$_src/plugins/advertisements.smx" -t "$_sm/plugins"
   install -Dm644 "$_src/configs/advertisements.txt" -t "$_sm/configs"
+  install -Dm644 "$_src/scripting/advertisements.sp" -t "$_sm/scripting"
+  install -Dm644 "$_src"/scripting/advertisements/*.sp -t "$_sm/scripting/advertisements"
 
   install -Dm644 /usr/share/licenses/sourcemod-scripting/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
