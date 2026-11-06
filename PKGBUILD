@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=routinator
-pkgver=0.15.3
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
@@ -11,16 +11,18 @@ depends=('glibc' 'libgcc' 'rsync')
 makedepends=('cargo')
 backup=('etc/routinator/routinator.conf')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NLnetLabs/routinator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('46b23e4dfd1c66f7caaf511e188cf7894b9d2c1e9019cc237e2ef6188ce64fd1')
+sha256sums=('80ac7be33e3b4b66375ace26fcee3ffd4fb6d624e7c29bb87921492523dd6e41')
 
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   if [ ! -f "Cargo.lock" ]; then
-    cargo update
+    cargo generate-lockfile
   fi
-  cargo fetch
+  cargo fetch \
+    --locked \
+    --target host-tuple
 }
 
 check() {
