@@ -6,7 +6,7 @@ _obs_ver=32.2.2
 _obs_studio=obs-studio
 pkgbase=obs-rust-git
 pkgname=("$_obs_studio-rust-git" "$_obs_studio-rust-plugin-browser-git")
-pkgver=1.0.0.r14.g7e00deb
+pkgver=1.0.1beta.20261106.r2.g6fda448
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -83,7 +83,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
     -DOBS_BRAND_RUST=ON
-    -DOBS_RUST_VERSION="${pkgver%.r*}"
+    -DOBS_RUST_VERSION="$(sed 's/beta/-beta/' <<< ${pkgver%.r*})"
     -DENABLE_RUST_LIBOBS=ON
     -DMbedTLS_DIR="/usr/lib/mbedtls3/cmake/MbedTLS"
     -DENABLE_BROWSER=ON
