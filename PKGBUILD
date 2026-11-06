@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A BitTorrent Client in your Terminal"
 
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}.deb")
-sha256sums=('25d4fed14f85e286ea3b3221e55b369712ce8fa1d1fde0d624e80b472b03e437'
+sha256sums=('d7b3cfa17d7d45e29449a67b6876458cbd66c80e486cba790a4e65495f57be48'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('05a9d474f57a5cc7399d913dc5cc39f808d91d2802f80bc1fe22335ae6eb7664')
+sha256sums_x86_64=('f2ef6f95442756244351bec78472c07f48cf7180e835496bfd1d2170502f4a4b')
 
 
 package() {
