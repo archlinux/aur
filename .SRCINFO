@@ -1,0 +1,18 @@
+pkgbase = mkinitcpio-mercurio
+	pkgdesc = mkinitcpio hook that sends a notification through mercurio on each boot
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/alphajack/mkinitcpio-mercurio
+	install = mkinitcpio-mercurio.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = mkinitcpio
+	depends = mercurio
+	optdepends = mkinitcpio-systemd-extras: network connectivity (systemd initrd)
+	optdepends = mkinitcpio-netconf: network connectivity (busybox initrd)
+	backup = etc/mercurio/initcpio.conf
+	source = mkinitcpio-mercurio-1.0.0.tar.gz::https://gitlab.archlinux.org/alphajack/mkinitcpio-mercurio/-/archive/v1.0.0/mkinitcpio-mercurio-v1.0.0.tar.gz
+	b2sums = dd8a11c913af00d82dd0ff30f1ff69eb17a9c2758b61f9d783977386eed30fa763c5104cad34b08d26d2da7011bd78dce4214b7a2ab1af0e1cf273a12c0bd577
+
+pkgname = mkinitcpio-mercurio
