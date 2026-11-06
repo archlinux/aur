@@ -1,6 +1,6 @@
 pkgbase = ambermoon-net
 	pkgdesc = C# rewrite of the 1993 Amiga RPG Ambermoon
-	pkgver = 1.13.7
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://github.com/Pyrdacor/Ambermoon.net
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = ambermoon-net
 	depends = libxkbcommon
 	depends = libglvnd
 	depends = openal
-	provides = ambermoon-net=1.13.7
+	provides = ambermoon-net=1.15.1
 	conflicts = ambermoon-net-bin
 	options = !strip
-	source = ambermoon-net-1.13.7.tar.gz::https://github.com/Pyrdacor/Ambermoon.net/archive/refs/tags/v1.13.7.tar.gz
-	sha256sums = 961c429b989d6a74dcc06a60cad44b8b76a1c6241da0b703c8ef36a29a413b0b
+	source = ambermoon-net-1.15.1.tar.gz::https://github.com/Pyrdacor/Ambermoon.net/archive/refs/tags/v1.15.1.tar.gz
+	sha256sums = 471506f8333a4355369eb35d4b2a3c783eb975c0cd084b111a75d3d0975305f0
 
 pkgname = ambermoon-net
