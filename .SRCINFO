@@ -5,8 +5,13 @@ pkgbase = mcdc-checker
 	url = https://gitlab.com/gtd-gmbh/mcdc-checker/mcdc-checker
 	arch = any
 	license = MPL-2.0
+	makedepends = python
 	makedepends = python-pip
+	makedepends = python-pytest
+	makedepends = python-deepdiff
 	depends = python>=3.11
 	depends = clang>=19.1.0
+	source = https://files.pythonhosted.org/packages/source/m/mcdc-checker/mcdc_checker-1.6.0.tar.gz
+	sha256sums = 6e182fef2c7dd3216623faf59832e08adc1c31012bfee2dca427ed57cd52ed01
 
 pkgname = mcdc-checker
