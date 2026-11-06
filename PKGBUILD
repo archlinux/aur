@@ -3,7 +3,7 @@ pkgname=zalo-for-linux-git
 pkgdesc="Zalo for Linux — unofficial port with ZaDark, running on system Electron 22"
 arch=('x86_64' 'aarch64')
 url="https://github.com/doandat943/zalo-for-linux"
-license=('MIT')
+license=('BSD-3-Clause')
 pkgver=26.10.11+26.2.1.r183.285ba91
 pkgrel=1
 epoch=2
@@ -32,14 +32,6 @@ makedepends=(
 optdepends=(
     'wl-clipboard: paste images from clipboard on Wayland'
     'xclip: paste images from clipboard on X11'
-    'deepin-screen-recorder: Screenshot without/with Zalo window button'
-    'spectacle: Screenshot without/with Zalo window button'
-    'flameshot: Screenshot without/with Zalo window button'
-    'gnome-screenshot: Screenshot without/with Zalo window button'
-    'xfce4-screenshooter: Screenshot without/with Zalo window button'
-    'mate-utils: Screenshot without/with Zalo window button'
-    'cosmic-screenshot: Screenshot without/with Zalo window button'
-    'scrot: Screenshot without/with Zalo window button'
     'zenity: call window when the engine is run standalone'
 )
 
