@@ -3,7 +3,6 @@ Description=honk transparent proxy engine
 Documentation=https://github.com/daeuniverse/honk
 Wants=network-online.target
 After=network-online.target docker.service systemd-sysctl.service
-# dae attaches to the same interfaces, so starting one stops the other.
 Conflicts=dae.service
 StartLimitIntervalSec=300
 StartLimitBurst=5
@@ -11,9 +10,6 @@ StartLimitBurst=5
 [Service]
 Type=notify
 User=root
-WorkingDirectory=/var/lib/honk
-StateDirectory=honk
-StateDirectoryMode=0700
 # Without nfnetlink_queue loaded, startup disables NFQUEUE until the next restart.
 ExecStartPre=-/usr/bin/modprobe -a nfnetlink_queue nft_ct nft_queue
 ExecStart=/usr/bin/honk-core --config /etc/honk/config.dae --disable-timestamp

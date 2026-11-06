@@ -1,43 +1,23 @@
-# Default configuration shipped by honk-core-bin.
+# Direct-only default: verify the datapath first, then add nodes, groups and
+# rules. See https://github.com/daeuniverse/honk/blob/main/doc/en/configuration.md
 #
-# This is a direct-only setup: host-originated traffic is intercepted and
-# routed directly, so the datapath can be verified before adding proxies.
-# Add nodes, groups, routing and DNS rules afterwards; see
-# https://github.com/daeuniverse/honk/blob/main/doc/en/configuration.md
-#
-# honk needs Linux 6.12+, cgroup v2 with CONFIG_CGROUP_BPF, and bpffs mounted
-# at /sys/fs/bpf. Keep an out-of-band management path during first deployment.
-#
-# geoip.dat and geosite.dat start as links to the v2ray-geoip and
-# v2ray-domain-list-community data. With the native API enabled below, honk also
-# downloads MetaCubeX geodata into data_dir every 24 hours by default. Those
-# copies take precedence, so pacman updates of the v2ray data stop applying.
-# Automatic updates can only be changed through the API. A category missing from
-# the loaded file (the v2ray data lacks geosite:gfw and geosite:apple-cn, for
-# example) logs a warning and its rule never matches.
+# geoip.dat and geosite.dat under data_dir, which the native API downloads and
+# updates, take precedence over the v2ray data linked from /usr/share/honk.
 
 global {
     wan_interface: auto
     data_dir: '/var/lib/honk'
     log_level: info
     auto_config_kernel_parameter: true
-    # The service loads nfnetlink_queue, nft_ct and nft_queue before starting.
-    # If startup still logs "NFQUEUE is unavailable", check kernel support and
-    # restart, or uncomment the line below when UDP staging is not needed.
-    # nfqueue_enable: false
 }
 
 routing {
     fallback: direct
 }
 
-# Embedded web UI (the doona dashboard, included in this full build).
-# native_api requires a restart when changed; `honk-core reload` rejects it.
-# Password mode keeps the administrator credential in
-# /var/lib/honk/state/honk.db, and the first visit to the UI opens setup.
-# config_write lets the UI add subscriptions and nodes to this main file.
-# For token auth instead, put a secret in a separate read-only include; a
-# secret declared here would make this source read-only.
+# The first visit to the UI creates the administrator. Changing native_api
+# needs a restart. A secret declared in this file makes it read-only to the UI,
+# so put token auth in a separate include instead.
 experimental {
     native_api {
         enabled: true
@@ -47,14 +27,3 @@ experimental {
         config_write: true
     }
 }
-#
-# The Clash-compatible API with an external dashboard (zashboard by default)
-# is a separate option; enabling it downloads the dashboard on first start.
-#
-# experimental {
-#     clash_api {
-#         external_controller: '127.0.0.1:9090'
-#         external_ui: 'zashboard'
-#         secret: 'replace-me'
-#     }
-# }
