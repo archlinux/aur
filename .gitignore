@@ -1,2 +1,4 @@
-admin-portal
+admin-portal/
+src/
 invoiceninja-desktop-*.pkg.tar.zst
+invoiceninja-desktop-*.pkg.tar.zst.sig
