@@ -9,6 +9,7 @@ path = [
   "lcl-to-resx.py",
   ".editorconfig",
   ".pre-commit-config.yaml",
+  ".typos.toml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
