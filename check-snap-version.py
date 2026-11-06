@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check for a stable Ecosia Snap release and optionally update the PKGBUILD."""
+"""Check stable, beta, and edge Ecosia Snap releases and optionally update to stable."""
 
 import argparse
 import hashlib
@@ -15,7 +15,7 @@ from urllib.request import Request, urlopen
 SNAP_NAME = "ecosia"
 SNAP_ARCH = "amd64"
 SNAP_TRACK = "latest"
-SNAP_RISK = "stable"
+SNAP_RISKS = ("stable", "beta", "edge")
 API_URL = f"https://api.snapcraft.io/v2/snaps/info/{SNAP_NAME}"
 ROOT = Path(__file__).resolve().parent
 PKGBUILD = ROOT / "PKGBUILD"
@@ -42,18 +42,18 @@ def replace_assignment(contents: str, name: str, value: str, *, quote: bool = Fa
     return updated
 
 
-def fetch_release() -> dict:
+def fetch_releases() -> dict[str, dict]:
     request = Request(API_URL, headers=HEADERS)
     with urlopen(request, timeout=20) as response:
         metadata = json.load(response)
 
-    return next(
-        entry
+    return {
+        entry["channel"]["risk"]: entry
         for entry in metadata["channel-map"]
         if entry["channel"]["architecture"] == SNAP_ARCH
         and entry["channel"]["track"] == SNAP_TRACK
-        and entry["channel"]["risk"] == SNAP_RISK
-    )
+        and entry["channel"]["risk"] in SNAP_RISKS
+    }
 
 
 def snap_id_from_url(url: str, revision: str) -> str:
@@ -156,7 +156,7 @@ def update_package(contents: str, release: dict, latest_version: str, latest_rev
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("-u", "--update", action="store_true", help="update PKGBUILD and .SRCINFO")
+    parser.add_argument("-u", "--update", action="store_true", help="update PKGBUILD and .SRCINFO to stable")
     args = parser.parse_args()
 
     try:
@@ -164,19 +164,28 @@ def main() -> int:
         current_version = pkgbuild_value("pkgver", contents)
         current_revision = pkgbuild_value("_snap_revision", contents)
         current_id = pkgbuild_value("_snap_id", contents)
-        release = fetch_release()
+        releases = fetch_releases()
 
+        print(f"PKGBUILD:         {current_version} (Snap revision {current_revision})")
+        for risk in SNAP_RISKS:
+            label = f"Snapcraft {risk}:"
+            if risk in releases:
+                channel_release = releases[risk]
+                print(f"{label:<17} {channel_release['version']} (Snap revision {channel_release['revision']})")
+            else:
+                print(f"{label:<17} unavailable")
+
+        if "stable" not in releases:
+            raise ValueError(f"no {SNAP_TRACK}/stable release found for {SNAP_ARCH}")
+        release = releases["stable"]
         latest_version = str(release["version"])
         latest_revision = str(release["revision"])
         latest_id = snap_id_from_url(release["download"]["url"], latest_revision)
 
-        print(f"PKGBUILD:         {current_version} (Snap revision {current_revision})")
-        print(f"Snapcraft stable: {latest_version} (Snap revision {latest_revision})")
-
         if (current_version, current_revision, current_id) == (latest_version, latest_revision, latest_id):
-            print("Status: up to date")
+            print("Status: up to date (stable)")
         else:
-            print("Status: update available")
+            print("Status: update available (stable)")
             print(f"Released: {release['channel']['released-at']}")
             print(f"Download: {release['download']['url']}")
             if args.update:
@@ -185,7 +194,6 @@ def main() -> int:
         OSError,
         ValueError,
         KeyError,
-        StopIteration,
         HTTPError,
         URLError,
         json.JSONDecodeError,
