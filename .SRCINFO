@@ -1,0 +1,29 @@
+pkgbase = plein-git
+	pkgdesc = Start from a single idea, lay out the script, storyboard, shots and voiceover on the canvas, and finish your work together with an AI agent.
+	pkgver = 0.10.4.r29.g0ed5702
+	pkgrel = 1
+	url = https://plein.ikuyu.com
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = pnpm
+	makedepends = jq
+	depends = electron45
+	depends = ffmpeg
+	depends = nodejs
+	depends = libass
+	provides = plein=0.10.4
+	conflicts = plein
+	options = !strip
+	options = !emptydirs
+	source = plein.git::git+https://github.com/hoobnn/plein.git
+	source = plein.js
+	source = plein.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+
+pkgname = plein-git
