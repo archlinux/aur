@@ -1,21 +1,18 @@
 pkgbase = salam-bin
 	pkgdesc = General-purpose systems programming language with a built-in DSL (prebuilt binary)
-	pkgver = 0.5.9
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/SalamLang/Salam
 	arch = x86_64
 	arch = aarch64
-	arch = armv7h
 	license = GPL-3.0-or-later
-	provides = salam=0.5.9
+	provides = salam=0.6.2
 	conflicts = salam
 	options = !strip
 	options = !debug
-	source_x86_64 = salam-bin-0.5.9-x86_64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.5.9/salam-0.5.9-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 279fdb3a6434156664be7759b81bc990b0aeef1b577e03c5496421d0e6ebb67a
-	source_aarch64 = salam-bin-0.5.9-aarch64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.5.9/salam-0.5.9-linux-aarch64.tar.gz
-	sha256sums_aarch64 = db4d00bbcb122114b162e498b680779727584f5261a8663b0d1bf8ca239d00eb
-	source_armv7h = salam-bin-0.5.9-armv7h.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.5.9/salam-0.5.9-linux-armhf.tar.gz
-	sha256sums_armv7h = 6583ab5d74ef95f3818d4489ec5ef66d0b12b4666d888bf6c7d875c10a0db62c
+	source_x86_64 = salam-bin-0.6.2-x86_64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.6.2/salam-0.6.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3a83f9ff58226284c449d7bf1cf2072400ff65984ece047a672bf3a669cb5474
+	source_aarch64 = salam-bin-0.6.2-aarch64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.6.2/salam-0.6.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 4b2a8fb60cbf4805bd841b136cd5dbffd1dafcd48755ee87a1a73e3736171606
 
 pkgname = salam-bin
