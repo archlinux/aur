@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 pkgname=foldav
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A file manager for the files in your Nextcloud'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'blueprint-compiler' 'gettext')
 # GCC's LTO objects of ring's bundled C code don't link with rustc's lld.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3fa043099c3e2434d648121d95c02ea391056e0874c416aceee6975dd185669d')
+sha256sums=('25ad64c106b126092d34bc15c49b067f20e2bce30d8cc620c7eb9f03865563c7')
 
 prepare() {
 	cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = foldav
 	pkgdesc = A file manager for the files in your Nextcloud
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/AperteDev/foldav
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = foldav
 	optdepends = gnome-online-accounts: sign in with a GNOME Online Accounts account
 	optdepends = org.freedesktop.secrets: keep the passwords in the system keyring
 	options = !lto
-	source = foldav-0.1.0.tar.gz::https://github.com/AperteDev/foldav/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 3fa043099c3e2434d648121d95c02ea391056e0874c416aceee6975dd185669d
+	source = foldav-0.2.0.tar.gz::https://github.com/AperteDev/foldav/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 25ad64c106b126092d34bc15c49b067f20e2bce30d8cc620c7eb9f03865563c7
 
 pkgname = foldav
