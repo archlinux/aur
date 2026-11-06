@@ -7,7 +7,10 @@ pkgbase = ocgraph
 	license = MPL-2.0
 	makedepends = python
 	makedepends = python-pip
+	makedepends = python-pytest
 	depends = python
 	depends = python-graphviz
+	source = https://files.pythonhosted.org/packages/source/o/ocgraph/ocgraph-1.0.0.tar.gz
+	sha256sums = 867b0464e80b8f596bfbae69e07d0ea12967918a0f62d6aa7b6c3b262720c2a7
 
 pkgname = ocgraph
