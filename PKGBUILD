@@ -1,7 +1,7 @@
 # Maintainer: Joy Jasper <0x73757375@gmail.com>
 # Contributor: Ahmed Saad
 pkgname=g502-hub
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Unofficial G HUB alternative for the Logitech G502 HERO: DPI, lighting, buttons, macros, profiles and game rules"
 arch=('any')

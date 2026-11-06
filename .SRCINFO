@@ -1,6 +1,6 @@
 pkgbase = g502-hub
 	pkgdesc = Unofficial G HUB alternative for the Logitech G502 HERO: DPI, lighting, buttons, macros, profiles and game rules
-	pkgver = 0.2.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Ahmedxsaad/g502-hub
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = g502-hub
 	depends = gst-plugin-pipewire
 	depends = libpulse
 	optdepends = steam: game detection, cover art colors and the LIGHTSYNC bridge for Proton games
-	source = g502-hub::git+https://github.com/Ahmedxsaad/g502-hub.git#tag=v0.2.1
+	source = g502-hub::git+https://github.com/Ahmedxsaad/g502-hub.git#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = g502-hub
