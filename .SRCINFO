@@ -1,12 +1,13 @@
 pkgbase = shaula
 	pkgdesc = Capture, annotate, save, and copy screenshots on Wayland
-	pkgver = 0.1.8
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/fgonzalezurriola/shaula
 	install = shaula.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = librsvg
 	makedepends = meson
 	makedepends = ninja
 	makedepends = pkgconf
@@ -29,7 +30,7 @@ pkgbase = shaula
 	optdepends = ttf-excalifont: recommended annotation font
 	provides = shaula
 	conflicts = shaula-bin
-	source = shaula-0.1.8.tar.gz::https://github.com/fgonzalezurriola/shaula/archive/refs/tags/v0.1.8.tar.gz
-	sha256sums = 890c290385ff41eaa3cabcf6b18cc5143b8500592bb17663afc850576cb2ef74
+	source = shaula-0.1.10.tar.gz::https://github.com/fgonzalezurriola/shaula/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = e4f60235e789677fecc5269d7e8397dc81ddc913fd1bca864771bde105147ed8
 
 pkgname = shaula
