@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=semantic-diff
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="AI-powered semantic analysis of git commits. Goes beyond git diff to show intent, impact, risk, and review questions."
 
@@ -19,7 +19,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-rich' 'python-dotenv' 'python-click' 'python-anthropic' 'python-gitpython' 'python-pydantic')
 
 source=("${pkgname}-${pkgver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9603b50e2e88e744b8898630c828b389031ef0a9ca13cf6893b925a5c7f33a8c')
+sha256sums=('460aefe4d34bbd5391895b4d121b049e48e18ea048c008b71417da36f42a7e83')
 
 build() {
     cd "${srcdir}/${pkgname//-/_}-${pkgver}/"
