@@ -1,6 +1,6 @@
 pkgbase = wallhost
 	pkgdesc = Animated wallpapers (Wallpaper Engine workshop content) behind the KDE Plasma desktop, crash-isolated from plasmashell
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/broroeror/wallhost
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = wallhost
 	depends = kwin
 	depends = systemd
 	depends = linux-wallpaperengine-git
-	source = wallhost-0.1.0.tar.gz::https://github.com/broroeror/wallhost/archive/v0.1.0.tar.gz
-	sha256sums = d5913ad881971f09c88dcf868253be26cb80885c23d697401ad8208cf05eb206
+	source = wallhost-0.1.1.tar.gz::https://github.com/broroeror/wallhost/archive/v0.1.1.tar.gz
+	sha256sums = f0eebe512435a208943740614ee1793f73ae6368ff3bcce946faa93431f7759b
 
 pkgname = wallhost

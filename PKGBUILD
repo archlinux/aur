@@ -1,6 +1,6 @@
 # Maintainer: broroeror <54515333+broroeror@users.noreply.github.com>
 pkgname=wallhost
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Animated wallpapers (Wallpaper Engine workshop content) behind the KDE Plasma desktop, crash-isolated from plasmashell"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'pyside6' 'qt6-svg' 'python-dbus' 'python-gobject' 'kwin' 'systemd'
          'linux-wallpaperengine-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5913ad881971f09c88dcf868253be26cb80885c23d697401ad8208cf05eb206')
+sha256sums=('f0eebe512435a208943740614ee1793f73ae6368ff3bcce946faa93431f7759b')
 
 check() {
   cd "$pkgname-$pkgver"
