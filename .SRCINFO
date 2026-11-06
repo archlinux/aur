@@ -1,0 +1,19 @@
+pkgbase = odyssey-ctl
+	pkgdesc = Control Samsung Odyssey monitors over DDC/CI: picture, game and lighting settings, presets, CLI and GUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/deddroid/odyssey-ctl
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libxkbcommon
+	optdepends = wayland: native Wayland window
+	optdepends = libx11: X11 window
+	options = !lto
+	source = odyssey-ctl-0.1.0.tar.gz::https://github.com/deddroid/odyssey-ctl/archive/v0.1.0.tar.gz
+	sha256sums = 2f0ef42c581361dcce1454d39c2143e54b3a4e073a1227bf65c363fba72efa23
+
+pkgname = odyssey-ctl
