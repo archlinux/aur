@@ -18,7 +18,7 @@ makedepends=('java-environment=17' 'maven')
 conflicts=('autofirma-bin' 'autofirma-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ctt-gob-es/${_pkgname}/archive/v${pkgver}.tar.gz"
         "java-websocket-${_java_websocket_commit}.tar.gz::https://github.com/TooTallNate/Java-WebSocket/archive/${_java_websocket_commit}.tar.gz"
-        "https://patch-diff.githubusercontent.com/raw/ctt-gob-es/clienteafirma/pull/487.patch"
+        "487.patch::https://github.com/ctt-gob-es/clienteafirma/commit/05d433f6d5439263c5cf58bbd1391e06d5fc6bea.patch"
         "561.patch::https://github.com/ctt-gob-es/clienteafirma/commit/cb08ba7960dab42d0965cfce8c763fe354232f14.patch"
         "autofirma"
         "autofirma.desktop"
