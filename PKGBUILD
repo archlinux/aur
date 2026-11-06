@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=versitygw-bin
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='S3 object storage server for a filesystem (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ _release="${url}/releases/download/v${pkgver}"
 source=("versitygw-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("versitygw-${pkgver}-x86_64.tar.gz::${_release}/versitygw_v${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("versitygw-${pkgver}-aarch64.tar.gz::${_release}/versitygw_v${pkgver}_Linux_arm64.tar.gz")
-sha256sums=('2412650615032f002f67fdc83e03e33f36298f8cfeeff9755c3f61c0df0b4fb8')
-sha256sums_x86_64=('8f9869752939d4dc9cfe1bddb935a02cc6610e95319a3a9fc2947d2a6ebd2c91')
-sha256sums_aarch64=('6307b377caee30c1f0fc8950e62ba684e0440a92f8e6a3a06bee1b83a857f03a')
+sha256sums=('97d35b99ce46c23c56723dbc46526de17b3b23e33b00e8044e9e3f420a3927c4')
+sha256sums_x86_64=('1f075c9dc92fef232f5b3c7465711ddc5e1b062b2b6df4a3bd246a4be5b35b52')
+sha256sums_aarch64=('8bd88019511c288de3ce2e5f0efb86f4092a98f7067371a1a8fa461ec0cc161b')
 
 package() {
   install -Dm755 "versitygw_v${pkgver}_Linux_"*/versitygw -t "${pkgdir}/usr/bin"
