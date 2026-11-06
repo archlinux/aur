@@ -1,8 +1,8 @@
 # Maintainer: Remco Stoeten
 pkgname=kiekje-bin
-pkgver=0.1.0alpha11
+pkgver=0.1.0alpha12
 pkgrel=1
-_tag=0.1.0-alpha.11
+_tag=0.1.0-alpha.12
 pkgdesc='Capture, mark up and keep screenshots (release binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/remcostoeten/kiekje'
@@ -13,14 +13,16 @@ optdepends=(
     'gst-plugins-base: capture sound'
     'gst-plugins-good: capture sound through PulseAudio, and screen recording'
     'gst-plugin-pipewire: screen recording'
+    'tesseract: copying the text in a region'
+    'tesseract-data-eng: English for text capture; add tesseract-data-nld and others for more languages'
 )
 provides=('kiekje')
 conflicts=('kiekje')
 options=('!strip' '!debug')
 source_x86_64=("kiekje-$_tag-x86_64-linux.tar.gz::$url/releases/download/v$_tag/kiekje-$_tag-x86_64-linux.tar.gz")
 source_aarch64=("kiekje-$_tag-aarch64-linux.tar.gz::$url/releases/download/v$_tag/kiekje-$_tag-aarch64-linux.tar.gz")
-sha256sums_x86_64=('dd8140b5a0917de2a9aba4b0028ae28833edbf41ab0aafc4d481a0d6cb63f166')
-sha256sums_aarch64=('6b321c432fb04d7aa639b05e57dbc25e2971c3750d4a77bb5004008fc16965bd')
+sha256sums_x86_64=('78037ffcf251910e6bf36a30398f581066461e111395a0d8985a3cc0030b318e')
+sha256sums_aarch64=('dbd8f91f742c989c42f9fe560e6bc19a13c536e83671ef639071ffd3a6018c48')
 
 package() {
     cd "kiekje-$_tag-$CARCH-linux"

@@ -1,6 +1,6 @@
 pkgbase = kiekje-bin
 	pkgdesc = Capture, mark up and keep screenshots (release binary)
-	pkgver = 0.1.0alpha11
+	pkgver = 0.1.0alpha12
 	pkgrel = 1
 	url = https://github.com/remcostoeten/kiekje
 	arch = x86_64
@@ -21,13 +21,15 @@ pkgbase = kiekje-bin
 	optdepends = gst-plugins-base: capture sound
 	optdepends = gst-plugins-good: capture sound through PulseAudio, and screen recording
 	optdepends = gst-plugin-pipewire: screen recording
+	optdepends = tesseract: copying the text in a region
+	optdepends = tesseract-data-eng: English for text capture; add tesseract-data-nld and others for more languages
 	provides = kiekje
 	conflicts = kiekje
 	options = !strip
 	options = !debug
-	source_x86_64 = kiekje-0.1.0-alpha.11-x86_64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.11/kiekje-0.1.0-alpha.11-x86_64-linux.tar.gz
-	sha256sums_x86_64 = dd8140b5a0917de2a9aba4b0028ae28833edbf41ab0aafc4d481a0d6cb63f166
-	source_aarch64 = kiekje-0.1.0-alpha.11-aarch64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.11/kiekje-0.1.0-alpha.11-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 6b321c432fb04d7aa639b05e57dbc25e2971c3750d4a77bb5004008fc16965bd
+	source_x86_64 = kiekje-0.1.0-alpha.12-x86_64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.12/kiekje-0.1.0-alpha.12-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 78037ffcf251910e6bf36a30398f581066461e111395a0d8985a3cc0030b318e
+	source_aarch64 = kiekje-0.1.0-alpha.12-aarch64-linux.tar.gz::https://github.com/remcostoeten/kiekje/releases/download/v0.1.0-alpha.12/kiekje-0.1.0-alpha.12-aarch64-linux.tar.gz
+	sha256sums_aarch64 = dbd8f91f742c989c42f9fe560e6bc19a13c536e83671ef639071ffd3a6018c48
 
 pkgname = kiekje-bin
