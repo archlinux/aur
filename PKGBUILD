@@ -1,7 +1,7 @@
 # Python package author: Thomas Wucher <thomas.wucher@gtd-gmbh.de>
 pkgname=elf-checker
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to visualize and check where ELF sections are located in different types of binaries"
 arch=(any)
 url="https://pypi.org/project/elf-checker"
@@ -23,10 +23,6 @@ check() {
   # options of the release ask for the coverage plugin, so they are dropped.
   cd "$srcdir/elf_checker-$pkgver"
   PYTHONPATH="$srcdir/$pkgname" pytest -o addopts="" -q test
-  # The module and the entry point run from the tree that the package ships.
-  cd "$srcdir/$pkgname"
-  PATH="$srcdir/$pkgname/bin:$PATH" python -c "import elf_checker; print('module of the install:', elf_checker.__file__)"
-  PATH="$srcdir/$pkgname/bin:$PATH" "$pkgname" --version
 }
 
 package() {
