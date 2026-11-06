@@ -1,6 +1,6 @@
 pkgbase = o2-rs
 	pkgdesc = Rust port of the ORCΛ esoteric programming language and terminal livecoding environment
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/coignard/o2
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = o2-rs
 	conflicts = o2-rs-bin
 	options = !strip
 	options = !debug
-	source = o2-0.3.7.tar.gz::https://github.com/coignard/o2/archive/refs/tags/0.3.7.tar.gz
-	sha256sums = dccba6c58a71b0511bc58e072c741fbc954f5b78996f358d193aec3e254f5417
+	source = o2-0.3.8.tar.gz::https://github.com/coignard/o2/archive/refs/tags/0.3.8.tar.gz
+	sha256sums = 63e576ed19632bd65ac86ec8f261c163e21ba725a84821b7f6a96020d6c47b1e
 
 pkgname = o2-rs
