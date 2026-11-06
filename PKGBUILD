@@ -6,7 +6,7 @@ pkgname=runyte
 pkgedition=desktop
 alias=runed
 appid="com.${pkgname}.${pkgname^}"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="An editor-first, agent-ready terminal workspace for software development"
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip' '!debug')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e196fa3825055836823addfd5bc5a31a7003c1ad0fba339b09f8d4a874de2ba2')
+sha256sums=('30d15733b80ff14d34b70f91a24d7e4bd3264ff5fc1d6ed7cef3469a0cfec07e')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
@@ -44,7 +44,6 @@ check() {
 	cargo test --frozen --release -p ${pkgname} -p ${pkgname}-${pkgedition} -- \
 		--skip "plugin::state::tests::private_state_canonical_cas_delete_and_content_aba" \
 		--skip "plugin::state::tests::private_state_fixed_pending_recovery_cancel_and_postpromotion_failure" \
-		--skip "workspace::host::plugins::tests::applications::help::space_question_follows_the_models_registered_topic_and_live_actions" \
 		--skip "workspace::host::plugins::tests::applications::state::state_post_mutation_timeout_is_unknown_and_late_success_is_not_replied_twice"
 }
 
