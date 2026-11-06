@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=prek-git
-pkgver=0.5.9.r16.gc88a1ccc
+pkgver=0.5.10.r10.gdf7413db
 pkgrel=1
 pkgdesc="A framework to run git hooks"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ sha256sums=('SKIP')
 prepare() {
   cd "prek"
 
-  if [ ! -f "crates/prek/Cargo.lock" ]; then
-    cargo update \
+  if [ ! -f "Cargo.lock" ]; then
+    cargo generate-lockfile \
       --manifest-path "crates/prek/Cargo.toml"
   fi
   cargo fetch \
