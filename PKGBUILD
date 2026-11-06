@@ -2,7 +2,7 @@
 
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin ollama-vulkan-bin)
-pkgver=0.40.14
+pkgver=0.40.15
 pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"
 
@@ -48,8 +48,8 @@ sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
             '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
             '137e1d50a5f3058c30a73b7bb3c323888d225e6a7ae47564be869827db0659a3'
             'c45babd58b56b10ece2c652b67ca3104ed0ceaf4d6041b846be4e71dbd669c2d')
-sha256sums_x86_64=('993e83d08c3d13d17c55009a3e2664c8a25445e644aec3a68bef5abb6abce67d')
-sha256sums_aarch64=('39bb333b7b4c0bafcdd7fad35eab1ae9aaf4518ea0f2c731de4376e3a29c94d0')
+sha256sums_x86_64=('628c018404a4206493efd38e46251c154ede5141b8b8dc85c659b3b027c47379')
+sha256sums_aarch64=('7f699ead5cdb4ae1ed89b888b148a238af188708800871e1889ab9dcee95f247')
 
 
 package_ollama-bin() {
