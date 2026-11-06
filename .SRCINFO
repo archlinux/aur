@@ -1,18 +1,18 @@
 pkgbase = chromium-extension-return-youtube-dislike
 	pkgdesc = Return YouTube Dislike - chromium extension
-	pkgver = 3.0.0.16
+	pkgver = 4.1.6
 	pkgrel = 1
 	url = https://github.com/Anarios/return-youtube-dislike
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = openssl
 	makedepends = jq
 	makedepends = unzip
 	depends = chromium
-	noextract = return-youtube-dislike-3.0.0.16.zip
-	source = return-youtube-dislike-3.0.0.16.zip::https://github.com/Anarios/return-youtube-dislike/releases/download/v3.0.0.16/chrome.zip
+	noextract = return-youtube-dislike-chrome-4.1.6.zip
+	source = https://github.com/Anarios/return-youtube-dislike/releases/download/v4.1.6/return-youtube-dislike-chrome-4.1.6.zip
 	source = return-youtube-dislike.pem
-	sha256sums = a85ac098d5fd4e20d4ee4b1a419e7da2418e50467539b4aec4e34a1497171630
+	sha256sums = 81df9894f8af385638e17d01493d2ec64cb612c3e34cde385c103648de95ed07
 	sha256sums = b25ae9e44d68756e8124b60be28dccc308570f5576440989aa8fa0d639d2c8f2
 
 pkgname = chromium-extension-return-youtube-dislike
