@@ -1,8 +1,91 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index ee6742a..f6f8230 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -129,6 +129,50 @@ jobs:
+           path: ${{ steps.pack.outputs.archive }}
+           if-no-files-found: error
+ 
++  system-jansson:
++    name: Build (linux, system jansson)
++    runs-on: ubuntu-22.04
++
++    steps:
++      - name: Install packages
++        run: |
++          sudo apt-get update
++          sudo apt-get install -yq --no-install-recommends clang libjansson-dev
++
++      - name: Checkout
++        uses: actions/checkout@v4
++        with:
++          path: extension
++
++      - name: Checkout SourceMod
++        uses: actions/checkout@v4
++        with:
++          repository: alliedmodders/sourcemod
++          ref: ${{ env.SOURCEMOD_BRANCH }}
++          path: sourcemod
++          submodules: recursive
++
++      - name: Set up Python
++        uses: actions/setup-python@v5
++        with:
++          python-version: '3.12'
++
++      - name: Install AMBuild
++        run: pip install git+https://github.com/alliedmodders/ambuild
++
++      # Only x86_64, which needs no 32-bit packages.
++      - name: Build
++        working-directory: extension/build
++        run: |
++          export CC=clang CXX=clang++
++          python ../configure.py --enable-optimize --targets=x86_64 --sm-path=../../sourcemod --system-jansson
++          ambuild
++
++      - name: Check that the extension links the system jansson
++        run: |
++          binary=extension/build/package/addons/sourcemod/extensions/x64/smjansson.ext.so
++          readelf -d "$binary" | grep 'NEEDED.*libjansson'
++
+   release:
+     name: Release
+     if: startsWith(github.ref, 'refs/tags/v')
 diff --git a/AMBuildScript b/AMBuildScript
-index ab8d8a6..d37d6e1 100644
+index ab8d8a6..f09196d 100644
 --- a/AMBuildScript
 +++ b/AMBuildScript
-@@ -371,10 +371,6 @@ class ExtensionConfig(object):
+@@ -88,18 +88,18 @@ class ExtensionConfig(object):
+       raise Exception('Could not find a source copy of SourceMod')
+     self.sm_root = Normalize(self.sm_root)
+ 
++    # The installed jansson, found by the compiler, or else a source copy: the bundled one, unless
++    # --jansson-path names another
++    if builder.options.system_jansson:
++      if builder.options.jansson_path:
++        raise Exception('--system-jansson and --jansson-path exclude each other')
++      return
+     if builder.options.jansson_path:
+       self.jansson_root = builder.options.jansson_path
+     else:
+-      self.jansson_root = ResolveEnvPath('JANSSONSOURCE26', 'jansson-2.6')
+-      if not self.jansson_root:
+-        self.jansson_root = ResolveEnvPath('JANSSONSOURCE_DEV', 'jansson-source')
+-      if not self.jansson_root:
+-        self.jansson_root = ResolveEnvPath('JANSSONSOURCE_DEV', 'jansson-central')
+-      if not self.jansson_root:
+-        self.jansson_root = ResolveEnvPath('JANSSONSOURCE_DEV', 'jansson')
+-
+-    if not self.jansson_root or not os.path.isdir(self.jansson_root):
++      self.jansson_root = os.path.join(builder.sourcePath, 'jansson')
++
++    if not os.path.isdir(self.jansson_root):
+       raise Exception('Could not find a source copy of jansson')
+     self.jansson_root = Normalize(self.jansson_root)
+ 
+@@ -371,10 +371,11 @@ class ExtensionConfig(object):
        os.path.join(self.sm_root, 'public', 'amtl', 'amtl'),
        os.path.join(self.sm_root, 'public', 'amtl'),
      ]
@@ -10,11 +93,16 @@ index ab8d8a6..d37d6e1 100644
 -      os.path.join(builder.sourcePath, 'jansson-config'),
 -      os.path.join(self.jansson_root, 'src'),
 -    ]
++    if self.jansson_root:
++      compiler.includes += [
++        os.path.join(builder.sourcePath, 'jansson-config'),
++        os.path.join(self.jansson_root, 'src'),
++      ]
      return compiler
  
    def ExtLibrary(self, context, compiler, name):
 diff --git a/AMBuilder b/AMBuilder
-index 5fe72b8..e1615de 100644
+index 5fe72b8..69190f8 100644
 --- a/AMBuilder
 +++ b/AMBuilder
 @@ -8,7 +8,6 @@ for cxx in builder.targets:
@@ -25,13 +113,8 @@ index 5fe72b8..e1615de 100644
        'SOURCEMOD_BUILD'
      ]
  
-@@ -23,21 +22,11 @@ for cxx in builder.targets:
-     elif cxx.family == 'msvc':
-       binary.compiler.cxxflags += ['/GR-']
+@@ -25,20 +24,33 @@ for cxx in builder.targets:
  
-+    # The system's jansson instead of the bundled sources
-+    binary.compiler.postlink += ['-ljansson']
-+
      binary.sources += [
        'extension.cpp',
 -      os.path.join(Extension.jansson_root, 'src', 'dtoa.c'),
@@ -50,16 +133,81 @@ index 5fe72b8..e1615de 100644
        os.path.join(Extension.sm_root, 'public', 'smsdk_ext.cpp'),
      ]
  
++    if Extension.jansson_root:
++      # jansson's sources, with the build settings of jansson-config/
++      binary.compiler.defines += ['HAVE_CONFIG_H']
++      binary.sources += [
++        os.path.join(Extension.jansson_root, 'src', source) for source in [
++          'dtoa.c',
++          'dump.c',
++          'error.c',
++          'hashtable.c',
++          'hashtable_seed.c',
++          'load.c',
++          'memory.c',
++          'pack_unpack.c',
++          'strbuffer.c',
++          'strconv.c',
++          'utf.c',
++          'value.c',
++          'version.c',
++        ]
++      ]
++    elif cxx.family == 'msvc':
++      # The installed jansson, found through the LIB environment variable
++      binary.compiler.postlink += ['jansson.lib']
++    else:
++      binary.compiler.postlink += ['-ljansson']
++
+     Extension.extensions += [builder.Add(binary)]
+diff --git a/README.md b/README.md
+index 564fd75..e97f2be 100644
+--- a/README.md
++++ b/README.md
+@@ -1746,6 +1746,11 @@ matching prompt.
+ - `--targets` is `x86` for 32-bit servers, `x86_64` for 64-bit servers, or both.
+ - The bundled Jansson in `jansson/` is found automatically. `--jansson-path` points to another copy of Jansson
+   2.15.1.
++- `--system-jansson` links the installed Jansson instead, 2.13 or later, which the compiler has to find by itself:
++  on Linux the distribution's package (e.g. `libjansson-dev`, and its 32-bit version for `x86`), on Windows a
++  `jansson.lib` in the paths of the `INCLUDE` and `LIB` environment variables. On Windows it should be a static
++  library, like vcpkg's `x86-windows-static` and `x64-windows-static` triplets: Windows doesn't look for a
++  `jansson.dll` next to the extension when the server loads it.
+ - Jansson's build settings are in `jansson-config/` (`jansson_config.h` and `jansson_private_config.h`), written by
+   hand in place of the ones Jansson's own build would generate, so that `jansson/` stays an unchanged copy of the
+   release. Builds with clang on Linux are tested on Team Fortress 2 servers; builds with Visual Studio 2022 on
+diff --git a/configure.py b/configure.py
+index d5b3516..93c4ad6 100644
+--- a/configure.py
++++ b/configure.py
+@@ -23,7 +23,9 @@ parser = run.BuildParser(sourcePath = sys.path[0], api='2.2')
+ parser.options.add_argument('--sm-path', type=str, dest='sm_path', default=None,
+                        help='Path to SourceMod')
+ parser.options.add_argument('--jansson-path', type=str, dest='jansson_path', default=None,
+-                       help='Path to jansson')
++                       help='Path to a jansson source (default: the bundled one)')
++parser.options.add_argument('--system-jansson', action='store_true', dest='system_jansson',
++                       help='Link the installed jansson (2.13 or later) instead of building one')
+ parser.options.add_argument('--enable-debug', action='store_const', const='1', dest='debug',
+                        help='Enable debugging symbols')
+ parser.options.add_argument('--enable-optimize', action='store_const', const='1', dest='opt',
 diff --git a/extension.cpp b/extension.cpp
-index f21d8e9..bc554de 100644
+index f21d8e9..348a9e1 100644
 --- a/extension.cpp
 +++ b/extension.cpp
-@@ -30,7 +30,7 @@
+@@ -30,7 +30,14 @@
   */
  
  #include "extension.h"
 -#include "jansson/src/jansson.h"
 +#include <jansson.h>
++
++// The newest functions used are from jansson 2.13 (json_object_update_recursive()), which
++// matters with --system-jansson
++#if JANSSON_VERSION_HEX < 0x020d00
++#error "SMJansson needs jansson 2.13 or later"
++#endif
++
  #include <string.h>
  /**
   * @file extension.cpp
