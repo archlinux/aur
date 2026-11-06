@@ -3,7 +3,7 @@
 
 _name=assertpy
 pkgname=python-assertpy
-pkgver=2.35.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc="Fully typed fluent assertion library for Python"
 arch=(any)
@@ -31,8 +31,8 @@ optdepends=(
   python-polars
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('939a95575077d7bbc4361a6c48ba8be609227b286d34871c2644b362988867ab727a87109643829f3bce46cf2236041db0e7a965123f2417a086fa97fb1bbb16')
-b2sums=('b51ade5796ca2722434e48c61f26df43bf7f541a7cd2878cd021cf6c0cc1163cc52752942f879c2ced14d09bda49557595a34b16178528681bcca42888e71b75')
+sha512sums=('f7f7ed438a754bda36ff41b277048f3c9caf2b7ab62ca272ceeffec9b37acd0f1d5e1e06bd32c42fa45aa75850f4ff47891c190ec7190fe0a2ef3e18265b7952')
+b2sums=('a87e355e1cefabddb6d59b52cf4899cd9cc5c8ce2362a31ad0a7e09aceff264bf758320a032969ddaabd6556fc3d682c06c3e5ea2ef8c766fa5c3c53c0fe2740')
 
 build() {
   cd $_name-$pkgver
