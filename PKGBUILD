@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 # Co-maintainer: robertfoster
 pkgname=rayfish-bin
-pkgver=0.5.16
+pkgver=0.5.16 # renovate: datasource=github-releases depName=rayfish/rayfish
 pkgrel=1
 pkgdesc="P2P mesh VPN powered by iroh"
 arch=(x86_64 aarch64)
@@ -10,8 +10,8 @@ license=(MPL-2.0)
 provides=(rayfish)
 conflicts=(rayfish)
 source=("https://github.com/rayfish/rayfish/raw/v$pkgver/contrib/rayfish.service")
-source_x86_64=("rayfish-x86_64-$pkgver.sha256::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-x86_64.sha256"
-"rayfish-x86_64-$pkgver::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-x86_64")
+source_x86_64=("rayfish-$CARCH-$pkgver.sha256::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-x86_64.sha256"
+"rayfish-$CARCH-$pkgver::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-x86_64")
 source_aarch64=("rayfish-aarch64-$pkgver.sha256::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-aarch64.sha256"
 "rayfish-aarch64-$pkgver::https://github.com/rayfish/rayfish/releases/download/v$pkgver/ray-linux-aarch64")
 b2sums=('ea64e603735076c542af3d9c61520709df834f4255ee2da6bf05a66285a2b1bfdcd2f3a2c0ed98053f0f77f21b8df9fee116fc686778fc3f68e76d7e73f70737')
