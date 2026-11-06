@@ -30,8 +30,8 @@ post_remove() {
 }
 
 post_install() {
-	echo "-------------------------------------------------------------------------"
-	echo "After installation, review /etc/honk/config.dae, then run"
-	echo "\"sudo systemctl enable --now honk-core\" to start honk-core."
-	echo "-------------------------------------------------------------------------"
+  echo "-------------------------------------------------------------------------"
+  echo "After installation, review /etc/honk/config.dae, then run"
+  echo "\"sudo systemctl enable --now honk-core\" to start honk-core."
+  echo "-------------------------------------------------------------------------"
 }

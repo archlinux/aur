@@ -7,16 +7,23 @@
 #
 # honk needs Linux 6.12+, cgroup v2 with CONFIG_CGROUP_BPF, and bpffs mounted
 # at /sys/fs/bpf. Keep an out-of-band management path during first deployment.
+#
+# geoip.dat and geosite.dat start as links to the v2ray-geoip and
+# v2ray-domain-list-community data. With the native API enabled below, honk also
+# downloads MetaCubeX geodata into data_dir every 24 hours by default. Those
+# copies take precedence, so pacman updates of the v2ray data stop applying.
+# Automatic updates can only be changed through the API. A category missing from
+# the loaded file (the v2ray data lacks geosite:gfw and geosite:apple-cn, for
+# example) logs a warning and its rule never matches.
 
 global {
     wan_interface: auto
     data_dir: '/var/lib/honk'
     log_level: info
     auto_config_kernel_parameter: true
-    # If startup logs "NFQUEUE netlink unavailable", load nfnetlink_queue,
-    # nft_ct and nft_queue, or uncomment the line below. While the runtime has
-    # disabled NFQUEUE, UI/API config writes fail with unsupported_value
-    # (restart-required on nfqueue_enable), and no subscription can be added.
+    # The service loads nfnetlink_queue, nft_ct and nft_queue before starting.
+    # If startup still logs "NFQUEUE is unavailable", check kernel support and
+    # restart, or uncomment the line below when UDP staging is not needed.
     # nfqueue_enable: false
 }
 
