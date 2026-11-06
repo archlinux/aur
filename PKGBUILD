@@ -3,7 +3,7 @@
 _pkgname=DistroAV
 pkgname=distroav
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NDI integration for OBS Studio"
 arch=('x86_64')
 license=('GPL2')
@@ -11,7 +11,7 @@ url="https://github.com/DistroAV/DistroAV"
 provides=('obs-ndi' 'distroav')
 conflicts=('obs-ndi-bin' 'obs-ndi-git' 'distroav-git')
 depends=('avahi' 'libndi' 'obs-studio' 'sndio')
-makedepends=('cmake')
+makedepends=('cmake' 'simde')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('645ec98e401b26f933a50023655d2899efaad8540c77cc9d03dec6144d17dd19')
