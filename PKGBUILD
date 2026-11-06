@@ -1,6 +1,6 @@
 # Maintainer: fgonzalezurriola <fgonzalezurriola@gmail.com>
 pkgname=shaula-bin
-pkgver=0.1.8
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Capture, annotate, save, and copy screenshots on Wayland (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -37,8 +37,8 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v
 # immutable LICENSE and release-archive hashes only inside the temporary AUR
 # clone.
 sha256sums=('51100d4e517c591b0c6fa0bf94f10b86d7309736a46a23d53b0c85bf4c86966a')
-sha256sums_x86_64=('8e2f01be2205b03098a140b8c42ee1032d35853c691bbedc42158b87ac2ca40d')
-sha256sums_aarch64=('0e2d66c02f8369bb4673e875d45c7ceee4bc3bea09cd6874b75f633a79659209')
+sha256sums_x86_64=('b61186c6a5ece64bb0e54537484df4a655c7a65179dd66b19188a1de49988859')
+sha256sums_aarch64=('bbe50f3b719ff4f6c9a14ea4253529db9c14c8494ef73a3e721dc3f70aef0db9')
 
 package() {
   install -d "${pkgdir}/usr"
