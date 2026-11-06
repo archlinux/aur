@@ -1,6 +1,6 @@
 pkgbase = abcclock
 	pkgdesc = Qt5 hover desktop clock: analog dial, weekday, date, three city timezones and weather
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/abcabc0330/abcclock
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = abcclock
 	license = MIT
 	makedepends = make
 	depends = qt5-base
-	source = abcclock-1.1.0.tar.gz::https://github.com/abcabc0330/abcclock/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 521375740e7aa6157a45d08a15f019e765a0d248e4a443a4877978fed040e0f7
+	source = abcclock-1.2.0.tar.gz::https://github.com/abcabc0330/abcclock/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 499cafd8a72cb99ab1a786d80f1c44aa610fa76a5c9e3a2346b4e1e30a2cd997
 
 pkgname = abcclock
