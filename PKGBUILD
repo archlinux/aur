@@ -1,6 +1,6 @@
 epoch=1
 pkgname=osu-radio-git
-pkgver=0.r7
+pkgver=0.r8
 pkgrel=1
 pkgdesc='Desktop music player for local osu! libraries (development version)'
 arch=('x86_64')
