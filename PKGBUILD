@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.108.0
+pkgver=1.108.1
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('x86_64' 'aarch64')
@@ -144,7 +144,7 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dd4e85183639a563fd00a329175e4c717c5ba3e1d1037f913193849e47896757')
+sha256sums=('5347a8185f04d82f5d672d4335c951eabcc115f7c9e68c9ab0661f537c95e661')
 
 prepare() {
   cd "$pkgname-$pkgver"
