@@ -3,7 +3,7 @@
 
 _pkgname=spice-protocol
 pkgname="${_pkgname}"-git
-pkgver=0.14.3.4.g969baca
+pkgver=0.14.5.r1.g499cc83
 pkgrel=1
 pkgdesc='Headers defining SPICE protocols'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --always | sed "s/^v//;s/-/./g"
+    git describe --always --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = spice-protocol-git
 	pkgdesc = Headers defining SPICE protocols
-	pkgver = 0.14.3.4.g969baca
+	pkgver = 0.14.5.r1.g499cc83
 	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = any
