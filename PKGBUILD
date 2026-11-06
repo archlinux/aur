@@ -5,7 +5,7 @@
 pkgbase=sourcebans-pp
 pkgname=(sourcebans-pp sourcemod-sourcebans-pp)
 pkgver=2.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="SourceBans++, the admin, ban and communication management of SourceMod game servers"
 arch=(any)
 url="https://sbpp.github.io"
@@ -223,11 +223,13 @@ package_sourcemod-sourcebans-pp() {
 
   local _name=${FUNCNAME[0]#package_} _src="$srcdir/$pkgbase/game/addons/sourcemod"
   # In the addons folder of sourcemod: the plugins, their configuration and translations, as in
-  # upstream's package; their include files for other plugins with SourceMod's
+  # upstream's package; their sources and include files with SourceMod's, like its own plugins'
   local _sm="$pkgdir/usr/lib/sourcemod/addons/sourcemod"
   install -Dm644 "$_src"/plugins/*.smx -t "$_sm/plugins"
   install -Dm644 "$_src"/configs/sourcebans/* -t "$_sm/configs/sourcebans"
   install -Dm644 "$_src"/translations/* -t "$_sm/translations"
+  install -Dm644 "$_src"/scripting/*.sp -t "$_sm/scripting"
+  install -Dm644 "$_src"/scripting/sbpp_admcfg/*.sp -t "$_sm/scripting/sbpp_admcfg"
   install -Dm644 "$_src"/scripting/include/*.inc -t "$_sm/scripting/include"
 
   install -Dm644 "$srcdir/$pkgbase/LICENSE-plugins.txt" "$pkgdir/usr/share/licenses/$_name/LICENSE.txt"
