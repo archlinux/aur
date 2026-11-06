@@ -1,6 +1,6 @@
 pkgbase = bb-desktop-bin
 	pkgdesc = Agentic IDE for orchestrating coding agents (official AppImage)
-	pkgver = 0.48.1
+	pkgver = 0.49.0
 	pkgrel = 1
 	url = https://github.com/get-bb/bb
 	arch = x86_64
@@ -36,14 +36,14 @@ pkgbase = bb-desktop-bin
 	depends = xdg-utils
 	optdepends = libappindicator: system tray integration
 	optdepends = xdg-desktop-portal: desktop integration on Wayland
-	provides = bb-desktop=0.48.1
+	provides = bb-desktop=0.49.0
 	conflicts = bb-desktop
-	noextract = bb-0.48.1-x86_64.AppImage
+	noextract = bb-0.49.0-x86_64.AppImage
 	options = !debug
 	options = !strip
-	source = bb-0.48.1-x86_64.AppImage::https://github.com/get-bb/bb/releases/download/desktop-v0.48.1/bb-0.48.1-x86_64.AppImage
-	source = bb-desktop-0.48.1-LICENSE::https://raw.githubusercontent.com/get-bb/bb/desktop-v0.48.1/LICENSE
-	sha256sums = df04e14d4735ed0b0922bb6b16a833bece5f45356a63de7d4d847bf7b1d2ced1
+	source = bb-0.49.0-x86_64.AppImage::https://github.com/get-bb/bb/releases/download/desktop-v0.49.0/bb-0.49.0-x86_64.AppImage
+	source = bb-desktop-0.49.0-LICENSE::https://raw.githubusercontent.com/get-bb/bb/desktop-v0.49.0/LICENSE
+	sha256sums = 8349ab773715624fec5082739c817d2a15809504699d34b47d3d9dfbe60fc770
 	sha256sums = d10816aa30183af920bdd789a81b16847bcf3e287e1b3419dd7d85f6e3e8e7b0
 
 pkgname = bb-desktop-bin
