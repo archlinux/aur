@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=patent-bin
 _pkgname=patent
-pkgver=0.14.1
+pkgver=0.14.3
 pkgrel=1
 pkgdesc='A prior-art search for your code ideas. Stop building what already exists.'
 arch=(
@@ -27,8 +27,8 @@ source_x86_64=("patent-bin-$pkgver.tar.xz::$url/releases/download/v$pkgver/paten
 source_aarch64=("patent-bin-$pkgver.tar.xz::$url/releases/download/v$pkgver/patent-aarch64-unknown-linux-gnu.tar.xz")
 install=patent.install
 sha256sums=('24dff75c38b578cb7e8057366a764cb4313078f16bada568baf79ecde5cb49af')
-sha256sums_x86_64=('8157a81f8390d3815ee233e9640ec6c4224ab65ca98b8bfb0fcbd560dbc3998d')
-sha256sums_aarch64=('0901410df7d48147ba0e38fd2abe935aa8bf2d713e1814f33d821a4e0db92917')
+sha256sums_x86_64=('3af51932ae7935544b5e3352cf8493725772d821a518eae6a38fe8e706057658')
+sha256sums_aarch64=('fb85ba7a7b894d3dd15498f2080d515eecf1df41c9a8440bae4ee0f49b7d402e')
 
 package() {
     cd "patent-$CARCH-unknown-linux-gnu"
