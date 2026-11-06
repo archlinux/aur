@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=craft-anything-bin
 _pkgname=craft-anything
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Understand how any software works, and craft your own (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('674ec59ffbdaefbd577917e07c9d464562043b275a3889ba4f60239a12f03d53')
-sha256sums_aarch64=('4dc9c0dfaed3a79beb5f6b7fc5da5b3e6abce658c067f5429891e35f34562954')
+sha256sums_x86_64=('28d9ebffb976ea4469fb54022742db59f4d9f623d18071369ff4d801c49b8bc0')
+sha256sums_aarch64=('3ea46366879914d04330dc5a779f9bfa8e1cfa446aa1f3a35ab94da6e6f79578')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
