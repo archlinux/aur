@@ -1,6 +1,6 @@
 pkgbase = aimp
 	pkgdesc = Powerful free audio player, converter and tag editor (v6 Beta, Unstable)
-	pkgver = 6.00.3091
+	pkgver = 6.00.3094
 	pkgrel = 1
 	url = https://www.aimp.ru
 	changelog = changelog
@@ -19,9 +19,9 @@ pkgbase = aimp
 	optdepends = aimp-skins: external skins
 	provides = aimp
 	conflicts = aimp
-	source = https://aimp.ru/files/desktop/builds/aimp-6.00.3091beta7-1-x86_64.pkg.tar.zst
+	source = https://aimp.ru/files/desktop/builds/aimp-6.00.3094beta7-1-x86_64.pkg.tar.zst
 	source = changelog
-	sha256sums = eddef8b0896945fd0b27e681c2d554d23796b93d59df34d37ed78719f9cf26f2
-	sha256sums = 254bd58a56fd2723460d908783f1a7d0eaf688443360f756332b0f0068570c46
+	sha256sums = d23c8a0f565696129b119d538d7c6207e7347def81ce6eee65ebeffdd35d2c69
+	sha256sums = 119a21b960b0f65998fe23c864118a2952736e67734b8aa00e83d7fac555eaf1
 
 pkgname = aimp
