@@ -1,7 +1,7 @@
 # Maintainer: Adiker (https://aur.archlinux.org/account/Adiker)
 # Repackage the complete, prebuilt GitHub release; no local compilation.
 pkgname=epic-games-launcher-proton-bin
-pkgver=0.112.0
+pkgver=0.113.0
 pkgrel=1
 # GitHub release revision is independent of AUR packaging-only revisions.
 _release=1
@@ -23,7 +23,7 @@ options=('!strip' '!debug')
 _archive="egl-arch-release-${pkgver}-${_release}-${CARCH}.tar.zst"
 source=("${_archive}::https://github.com/Adiker/egl-arch/releases/download/v${pkgver}-${_release}/${pkgname}-${pkgver}-${_release}-${CARCH}.pkg.tar.zst")
 noextract=("${_archive}")
-sha256sums=('dc686b92c8176d7a6c59e2c44ffb9ad1fd0bb22953665448891b52e6f5ea43f5')
+sha256sums=('fcf5a71f3f20324bafe8fb4eb62c60bd530af6e24b74ee695f14aeb02ebd97b3')
 
 package() {
   # Copy only the payload; makepkg generates fresh package metadata itself.
