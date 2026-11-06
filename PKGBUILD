@@ -3,7 +3,7 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 
 pkgname=shpool
-pkgver=0.11.5
+pkgver=0.11.6
 pkgrel=1
 pkgdesc='Think tmux, then aim... lower'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 checkdepends=('fish' 'less' 'zsh' 'procps-ng')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f17faedac656e1d37d0ce0b4cfa5a9c95c3b7a9985c9236424c368c8e65e9f28b323096142ae45abead3ecc657f2a41412c155df0e929f67ce7064c2eeba7e3b')
+sha512sums=('877d53a9d1b43d375d6e8b881aa4b9c23891ba1aaa493d0f32760c5ddb55410fd5b1bf6753c3ba438c7e5fdad33e59df03c4926279c50792119dd16207574abb')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
