@@ -1,14 +1,14 @@
 # Maintainer: Giorgio Gilestro <giorgio at gilest.ro>
 
 pkgname=ethoscope-node
-pkgver=r2231.gbf320832
-pkgrel=9
+pkgver=r2899.gb7d417eb
+pkgrel=1
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
-makedepends=('base-devel' 'git' 'gcc-fortran' 'rsync' 'wget' 'fping' )
-depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-wheel' 'python-pip' 'sshpass' 'cloudflared' 'gcc'
+makedepends=('base-devel' 'git' 'gcc-fortran' 'wget' 'fping' )
+depends=('ntp' 'cronie' 'openssh' 'mariadb' 'dnsmasq' 'avahi' 'python-setuptools' 'python-wheel' 'python-pip' 'sshpass' 'cloudflared' 'gcc' 'git' 'rsync'
          'python-bottle' 'python-cherrypy' 'python-mysql-connector' 'python-netifaces'
          'python-gitpython' 'python-zeroconf' 'python-numpy' 'python-opencv' 'python-pyserial'
          'python-psutil' 'python-requests' 'python-scipy' 'python-dateutil' 'python-mattermostdriver')
@@ -27,33 +27,17 @@ pkgver() {
 
 package() {
   #creating packaging directories
-  install -dm0755 $pkgdir/opt
-  install -dm0755 $pkgdir/srv/git
   install -dm0755 $pkgdir/usr/lib/systemd/system
+  install -dm0755 $pkgdir/usr/share/${pkgname}
   install -dm0755 $pkgdir/ethoscope_data/{results,videos,cache,sensors}
-  
-  #create bare repo
-  git clone --mirror https://github.com/gilestrolab/ethoscope.git "${pkgdir}/srv/git/ethoscope.git"
-  
-  #configure proper fetch refspec for bare repository
-  cd "${pkgdir}/srv/git/ethoscope.git"
-  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-  git fetch origin
-  
-  #clone working copy from bare repo (avoids git alternates issues)
-  cd "${pkgdir}/opt"
-  git clone "${pkgdir}/srv/git/ethoscope.git" ethoscope
 
-  #setting python3 branch
-  cd "${pkgdir}/opt/ethoscope"
-  git checkout ${_git_branch}
+  # Reason: nodes update /opt/ethoscope and /srv/git/ethoscope.git themselves (Update System, the
+  # mirror timer), so the package ships the history as a git bundle and ethoscope-node.install makes
+  # both trees from it. Shipped as package files, the trees clashed on every later upgrade with the
+  # files a self-updated node had gained ("exists in filesystem").
+  git clone --mirror https://github.com/gilestrolab/ethoscope.git "${srcdir}/ethoscope-mirror.git"
+  git -C "${srcdir}/ethoscope-mirror.git" bundle create "${pkgdir}/usr/share/${pkgname}/ethoscope.bundle" --branches --tags
 
-  #set remote to local bare repo and clean logs with pkgdir references
-  git remote set-url origin /srv/git/ethoscope.git
-
-  #remove git logs that contain pkgdir references
-  rm -rf .git/logs
-  
   # Install service files as symbolic links
   cd "${pkgdir}/usr/lib/systemd/system/"
   ln -s /opt/ethoscope/services/ethoscope_node.service ./
@@ -64,7 +48,7 @@ package() {
   ln -s /opt/ethoscope/services/ethoscope_backup_sqlite.service ./
   ln -s /opt/ethoscope/services/ethoscope_backup_unified.service ./
   ln -s /opt/ethoscope/services/ethoscope_backup_video.service ./
-  ln -s /opt/ethoscope/services/virtuascope.service ./
+  ln -s /opt/ethoscope/services/ethoscope_virtuascope.service ./
   ln -s /opt/ethoscope/services/ethoscope_mirror_fetch.service ./
   ln -s /opt/ethoscope/services/ethoscope_mirror_fetch.timer ./
 

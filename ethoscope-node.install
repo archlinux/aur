@@ -1,81 +1,209 @@
-## arg 1:  the new package version
-#pre_install() {
-	# do something here
-#}
-
-# arg 1:  the new package version
-post_install() {
-
-    #setting the bare installation folder as safe.directory
-    git config --system --add safe.directory /srv/git/ethoscope.git
-
-    # Installing python modules in editable mode
-    # This creates .egg-info metadata and registers console script entry points
-    # --no-build-isolation: Use system setuptools/wheel instead of downloading (no network in chroot)
-    # --no-deps: Don't install dependencies (already handled by pacman)
-    echo "Installing Python packages in editable mode..."
-    cd /opt/ethoscope/src/node/ && pip install -e . --break-system-packages --no-build-isolation --no-deps
-    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages --no-build-isolation --no-deps
-
-    echo "enabling NODE specific systemd service files"
-    systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service
-    echo "enabling periodic refresh of the local bare mirror from upstream"
-    systemctl enable --now ethoscope_mirror_fetch.timer
-    echo "enabling the GIT server on the node and NTP service"
-    systemctl enable git-daemon.socket ntpd.service
-    
-    #changing hostname on node
-    hostnamectl set-hostname node
-    
-    #setting host settings on node
-    echo "127.0.0.1    node" > /etc/hosts
-
-    echo ""
-    echo "Installation complete. Console scripts are now available:"
-    echo "  - server, backup_tool, make_index, video_backup_tool (from ethoscope_node)"
-    echo "  - device_server, device_server_optimized (from ethoscope)"
-    echo ""
-    echo "PLEASE REBOOT NOW."
-}
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-#pre_upgrade() {
-	# do something here
-#}
-
-# arg 1:  the new package version
-# arg 2:  the old package version
-post_upgrade() {
-    #setting the bare installation folder as safe.directory
-    git config --system --add safe.directory /srv/git/ethoscope.git
-
-    # Update python packages in editable mode
-    echo "Updating Python packages in editable mode..."
-    cd /opt/ethoscope/src/node && pip install -e . --break-system-packages --no-build-isolation --no-deps
-    cd /opt/ethoscope/src/ethoscope && pip install -e . --break-system-packages --no-build-isolation --no-deps
-}
-
-# arg 1:  the old package version
-pre_remove() {
-    echo "disabling systemd service files"
-    systemctl stop ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service ethoscope_mirror_fetch.timer
-    systemctl disable ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service ethoscope_backup_video.service ethoscope_mirror_fetch.timer
-    systemctl stop git-daemon.socket ntpd.service
-    systemctl disable git-daemon.socket ntpd.service
-
-}
-
-# arg 1:  the old package version
-post_remove() {
-    #removes the git directorie just in case
-    rm -rf /opt/ethoscope
-    rm -rf /srv/git/ethoscope.git
-}
-
-# Note: pip install -e is required to:
-# 1. Generate .egg-info metadata for proper package registration
-# 2. Create console script entry points (server, backup_tool, device_server, etc.)
-# 3. Enable proper import resolution for the ethoscope packages
+# ethoscope-node install, upgrade and remove scripts.
 #
-# Dependencies are still managed via pacman; pip only handles package registration.
+# The package ships the ethoscope git history as a bundle. These scripts make the node's two git
+# trees from it and keep them: /srv/git/ethoscope.git (the node's mirror, served to the ethoscopes and
+# refreshed from GitHub by ethoscope_mirror_fetch.timer) and /opt/ethoscope (the code the node runs,
+# updated by the node's update server). The package owns neither tree, so a node that updated itself
+# never clashes with a later package.
+#
+# Upgrades also bring nodes of the old layout (/opt/ethoscope-node, before mid-2025) to this one.
+# Every systemctl call tolerates a chroot (ISO build) or a container.
+
+BUNDLE=/usr/share/ethoscope-node/ethoscope.bundle
+MIRROR=/srv/git/ethoscope.git
+CODE=/opt/ethoscope
+BRANCH=dev
+UPSTREAM=https://github.com/gilestrolab/ethoscope.git
+OLD_CODE=/opt/ethoscope-node
+MARKER=/var/lib/ethoscope-node/units-v2
+# Set by pre_upgrade: by post_upgrade pacman may have removed every trace of the old layout.
+MIGRATING=/var/lib/ethoscope-node/migrating-old-layout
+
+# Enabled once per machine; later upgrades leave the admin's choices alone. Not
+# ethoscope_backup_video: ethoscope_backup_unified backs up videos too and conflicts with it.
+NODE_UNITS="ethoscope_node.service ethoscope_update_node.service ethoscope_backup_unified.service
+ethoscope_mirror_fetch.timer git-daemon.socket ntpd.service"
+# Unit names of the old layout (and of package 1.6, which still enabled some of them).
+LEGACY_UNITS="ethoscope_backup.service ethoscope_video_backup.service ethososcope_video_backup.service
+ethoscope_backup_incremental.service ethoscope_backup_static.service virtuascope.service"
+
+_is_old_layout() {
+    [ -d "$OLD_CODE" ] || [ -e /opt/ethoscope_updater ] || [ -L /opt/ethoscope_updater ]
+}
+
+# Move a path out of the way under a name that is never reused.
+_set_aside() {
+    [ -e "$1" ] || [ -L "$1" ] || return 0
+    local target="$1.$2"
+    [ -e "$target" ] && target="$target.$(date +%Y%m%d%H%M%S)"
+    mv "$1" "$target"
+    echo "  kept $1 as $target"
+}
+
+_valid_mirror() { git -C "$MIRROR" rev-parse -q --verify "refs/heads/$BRANCH^{commit}" >/dev/null 2>&1; }
+_valid_code() { git -C "$CODE" rev-parse -q --verify "HEAD^{commit}" >/dev/null 2>&1; }
+
+# Create the mirror and the checkout from the bundle where they are missing or broken.
+_make_trees() {
+    if ! _valid_mirror; then
+        _set_aside "$MIRROR" broken
+        git clone -q --mirror "$BUNDLE" "$MIRROR"
+    fi
+    git -C "$MIRROR" remote set-url origin "$UPSTREAM"
+    if ! _valid_code; then
+        _set_aside "$CODE" broken
+        git clone -q --branch "$BRANCH" "$MIRROR" "$CODE"
+    fi
+    git -C "$CODE" remote set-url origin "$MIRROR"
+}
+
+# Bring both trees up to the bundle without ever moving them back or touching local work.
+_refresh_from_bundle() {
+    # Branches only move forward: a mirror that already fetched newer commits keeps them.
+    git -C "$MIRROR" fetch -q "$BUNDLE" "refs/heads/*:refs/heads/*" "refs/tags/*:refs/tags/*" 2>/dev/null || true
+    if [ "$(git -C "$CODE" rev-parse --abbrev-ref HEAD)" = "$BRANCH" ] &&
+        git -C "$CODE" diff --quiet && git -C "$CODE" diff --cached --quiet; then
+        git -C "$CODE" fetch -q origin
+        git -C "$CODE" merge -q --ff-only "origin/$BRANCH" 2>/dev/null ||
+            echo "  $CODE has commits of its own: left as it is"
+    else
+        echo "  $CODE has local changes or is not on $BRANCH: left as it is"
+    fi
+}
+
+_safe_directory() {
+    git config --system --get-all safe.directory 2>/dev/null | grep -qx "$MIRROR" ||
+        git config --system --add safe.directory "$MIRROR"
+}
+
+# Editable installs register the packages and their console scripts (server, backup_tool, ...);
+# the dependencies come from pacman. --no-build-isolation works offline (ISO chroot).
+_install_python() {
+    (cd "$CODE/src/node" && pip install -q -e . --break-system-packages --no-build-isolation --no-deps)
+    (cd "$CODE/src/ethoscope" && pip install -q -e . --break-system-packages --no-build-isolation --no-deps)
+}
+
+_enable_units_once() {
+    [ -e "$MARKER" ] && return 0
+    local unit
+    for unit in $NODE_UNITS; do
+        systemctl enable "$unit" 2>/dev/null || echo "  could not enable $unit"
+    done
+    systemctl disable ethoscope_backup_video.service 2>/dev/null || true
+    mkdir -p "$(dirname "$MARKER")" && touch "$MARKER"
+}
+
+# Enablement links of units that no longer exist (old names, removed services).
+_drop_dangling_unit_links() {
+    find /etc/systemd/system -xtype l \( -name 'ethoscope*' -o -name 'ethososcope*' -o -name 'virtuascope*' \) \
+        -print -delete 2>/dev/null | sed 's/^/  removed dangling /'
+}
+
+# Before the old package's files go: stop and disable its units, and set aside unit files that old
+# installers copied into /etc/systemd/system (they would shadow the package's units).
+_stop_old_layout() {
+    local unit file
+    for unit in ethoscope_node.service ethoscope_update_node.service $LEGACY_UNITS; do
+        systemctl stop "$unit" 2>/dev/null || true
+    done
+    for unit in $LEGACY_UNITS; do
+        systemctl disable "$unit" 2>/dev/null || true
+    done
+    for file in /etc/systemd/system/ethoscope*.service /etc/systemd/system/virtuascope.service; do
+        [ -f "$file" ] && [ ! -L "$file" ] && grep -qE "$OLD_CODE|node_src" "$file" && _set_aside "$file" pre-2025
+    done
+    return 0
+}
+
+# What pacman does not remove after the old layout: the rest of /opt/ethoscope-node, the updater
+# link, setup.py develop leftovers and a daily cron link into the old tree.
+_clean_old_layout() {
+    local sp file
+    _set_aside "$OLD_CODE" pre-2025
+    rm -rf /opt/ethoscope_updater
+    [ -L /etc/cron.daily/make_index.py ] && readlink /etc/cron.daily/make_index.py | grep -q "^$OLD_CODE/" &&
+        rm -f /etc/cron.daily/make_index.py
+    [ -f /usr/bin/device_server.py ] && grep -q "$OLD_CODE" /usr/bin/device_server.py && rm -f /usr/bin/device_server.py
+    for sp in $(python -c 'import site; print(" ".join(site.getsitepackages()))'); do
+        for file in "$sp"/*.egg-link; do
+            [ -f "$file" ] && head -n 1 "$file" | grep -q "^$OLD_CODE" && rm -f "$file"
+        done
+        [ -f "$sp/easy-install.pth" ] && sed -i "\#^$OLD_CODE#d" "$sp/easy-install.pth"
+    done
+    return 0
+}
+
+post_install() {
+    _make_trees
+    _safe_directory
+    echo "Installing the Python packages in editable mode..."
+    _install_python
+    _enable_units_once
+
+    hostnamectl set-hostname node
+    echo "127.0.0.1    node" >/etc/hosts
+
+    echo
+    echo "Installation complete. PLEASE REBOOT NOW."
+}
+
+pre_upgrade() {
+    # Packages before the bundle owned the two trees, and pacman is about to delete their files from
+    # them. Hard-link copies keep the trees whole (self-updates and local edits included) at no cost.
+    if [ ! -e "$BUNDLE" ]; then
+        local tree
+        for tree in "$MIRROR" "$CODE"; do
+            [ -d "$tree" ] || continue
+            _set_aside "$tree.keep" stale
+            cp -al "$tree" "$tree.keep"
+        done
+    fi
+    if _is_old_layout; then
+        mkdir -p "$(dirname "$MIGRATING")" && touch "$MIGRATING"
+        _stop_old_layout
+    fi
+    return 0
+}
+
+post_upgrade() {
+    local tree old_layout=false
+    if [ -e "$MIGRATING" ] || _is_old_layout; then old_layout=true; fi
+    for tree in "$MIRROR" "$CODE"; do
+        if [ -d "$tree.keep" ]; then
+            rm -rf "$tree"
+            mv "$tree.keep" "$tree"
+        fi
+    done
+    if $old_layout; then
+        echo "Moving this node from the old layout ($OLD_CODE) to $CODE..."
+        _clean_old_layout
+        rm -f "$MIGRATING"
+    fi
+    _drop_dangling_unit_links
+    _make_trees
+    _refresh_from_bundle
+    _safe_directory
+    echo "Updating the Python packages in editable mode..."
+    _install_python
+    _enable_units_once
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo
+    if $old_layout; then
+        echo "PLEASE REBOOT NOW. On the first visit the node opens the setup wizard, with your settings and users."
+    else
+        echo "Reboot, or restart the ethoscope services, to run the new version."
+    fi
+}
+
+pre_remove() {
+    local unit
+    for unit in $NODE_UNITS ethoscope_backup_video.service; do
+        systemctl stop "$unit" 2>/dev/null || true
+        systemctl disable "$unit" 2>/dev/null || true
+    done
+}
+
+post_remove() {
+    rm -rf "$CODE" "$MIRROR" "$MARKER"
+}
