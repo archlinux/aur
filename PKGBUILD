@@ -1,7 +1,7 @@
 # Maintainer: Joel Jax <joeljax@web.de>
 
 pkgname=vstbridge # For git paths
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Windows VST2/VST3/CLAP plugins in Linux DAWs via Wine. A fork of yabridge by Robert Van Der Helm."
 arch=('x86_64')
@@ -22,8 +22,8 @@ provides=()
 conflicts=()
 options=('!strip' '!debug') # Upstream binaries (Wine PE hosts) must not be stripped
 
-source=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums=('1b851e55098fc176f21c82f78c4842a67746b177265e9fed8e9062b3d54f6c5e') # Adjust with each version bump (copy from git releases page)
+source=("${pkgname}-${pkgver}-${CARCH}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-x86_64.tar.gz")
+sha256sums=('c3fd659c27f2da4ee7c70f4b148fc76f8ea54a2e114b210a46e5760b12b35273') # Adjust with each version bump (copy from git releases page)
 
 prepare() {
   :
