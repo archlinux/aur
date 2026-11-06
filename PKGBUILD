@@ -2,7 +2,7 @@
 pkgname=mesonotes-bin
 pkgver=1.0.48
 pkgrel=1
-pkgdesc="Notes, tasks, boards, canvases and writing on your own computer"
+pkgdesc="A hobby notes app built on one principle: your data is your property"
 arch=('x86_64')
 url="https://linuxmind.gitlab.io/"
 license=('GPL-3.0-or-later')
