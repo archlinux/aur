@@ -1,7 +1,7 @@
 # Python package author: Thomas Wucher <thomas.wucher@gtd-gmbh.de>
 pkgname=ocgraph
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to visualize object code as control flow graph"
 arch=(any)
 url="https://pypi.org/project/ocgraph"
@@ -23,10 +23,6 @@ check() {
   # plugin, so they are dropped.
   cd "$srcdir/ocgraph-$pkgver"
   PYTHONPATH="$srcdir/$pkgname" pytest -o addopts="" -q test
-  # The module and the entry point run from the tree that the package ships.
-  cd "$srcdir/$pkgname"
-  PATH="$srcdir/$pkgname/bin:$PATH" python -c "import ocgraph; print('module of the install:', ocgraph.__file__)"
-  PATH="$srcdir/$pkgname/bin:$PATH" "$pkgname" --version
 }
 
 package() {

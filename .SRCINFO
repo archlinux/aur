@@ -1,7 +1,7 @@
 pkgbase = ocgraph
 	pkgdesc = A tool to visualize object code as control flow graph
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ocgraph
 	arch = any
 	license = MPL-2.0
