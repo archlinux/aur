@@ -1,7 +1,7 @@
 pkgbase = routine-notify-bin
 	pkgdesc = Daily routine notification manager with scheduled reminders, AI messages and voice
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kurojs/RoutineNotify
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = routine-notify-bin
 	options = !debug
 	source = routine-notify_2.1.0_amd64.deb::https://github.com/kurojs/RoutineNotify/releases/download/v2.1.0/routine-notify_2.1.0_amd64.deb
 	source = LICENSE-2.1.0::https://raw.githubusercontent.com/kurojs/RoutineNotify/v2.1.0/LICENSE
-	sha256sums = 37e7287cf888d734dd4b73bcaa68242a3a9d13d2fd19069680c43510e1dd0562
+	sha256sums = 3bab3847318f9f352483e08a33f2e06e72961b7dcd2c7739e88bd9bb98310683
 	sha256sums = 0245351174201391368c8b9ab56925b0f66f5042d0e606ab638f2a1247dbd6ed
 
 pkgname = routine-notify-bin

@@ -3,7 +3,7 @@
 pkgname=routine-notify-bin
 _pkgname=routine-notify
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Daily routine notification manager with scheduled reminders, AI messages and voice"
 arch=('x86_64')
 url="https://github.com/kurojs/RoutineNotify"
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/kurojs/RoutineNotify/v${pkgver}/LICENSE")
-sha256sums=('37e7287cf888d734dd4b73bcaa68242a3a9d13d2fd19069680c43510e1dd0562'
+sha256sums=('3bab3847318f9f352483e08a33f2e06e72961b7dcd2c7739e88bd9bb98310683'
             '0245351174201391368c8b9ab56925b0f66f5042d0e606ab638f2a1247dbd6ed')
 
 package() {
