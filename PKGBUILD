@@ -1,5 +1,5 @@
 pkgname=koda-desktop-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Koda AI desktop client (prebuilt AppImage)'
 arch=('x86_64')
@@ -9,8 +9,8 @@ depends=('fuse2')
 provides=('koda-desktop')
 conflicts=('koda-desktop')
 options=('!strip')
-source_x86_64=("Koda-Desktop-${pkgver}.AppImage::https://nexus.kodacode.online/repository/koda-desktop/tags/v1.3.2/linux/Koda-Desktop-1.3.2.AppImage")
-sha256sums_x86_64=('8774da266acd14c7945920337c854c4e6c1a5cf490f760f6e061a9fc62d1253f')
+source_x86_64=("Koda-Desktop-${pkgver}.AppImage::https://nexus.kodacode.online/repository/koda-desktop/tags/v1.3.3/linux/Koda-Desktop-1.3.3.AppImage")
+sha256sums_x86_64=('44578de058722aace16b91cea9f746f7237335591f2c9ab572f3db18b66cd579')
 
 prepare() {
   chmod +x "Koda-Desktop-${pkgver}.AppImage"
