@@ -1,4 +1,4 @@
-# Maintainer: Marcus Ordoñez <guitaripod@gmail.com>
+# Maintainer: Marcus Ordoñez <marcus@midgarcorp.cc>
 pkgname=tailscode-git
 _pkgname=tailscode
 pkgver=1.80.r1600.g7536d14e
