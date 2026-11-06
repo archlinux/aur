@@ -1,7 +1,7 @@
 pkgbase = tributary
 	pkgdesc = A high-performance, Rhythmbox-style media manager with unified local and remote backends
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jm2/tributary
 	arch = x86_64
 	license = GPL-3.0-or-later

@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=tributary
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, Rhythmbox-style media manager with unified local and remote backends"
 arch=('x86_64')
 url="https://github.com/jm2/tributary"
@@ -27,6 +27,8 @@ sha256sums=('458abad839df47e3da6f2ed9ec151d662252473c36d5ae4d39c7d358ecbc1c0b')
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --locked
 }
 
