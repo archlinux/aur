@@ -1,6 +1,6 @@
 pkgbase = gitpane-bin
 	pkgdesc = Multi-repo Git workspace dashboard for the terminal
-	pkgver = 0.17.1
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://github.com/affromero/gitpane
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = gitpane-bin
 	conflicts = gitpane-git
 	options = !debug
 	options = !strip
-	source = LICENSE-0.17.1::https://raw.githubusercontent.com/affromero/gitpane/refs/tags/v0.17.1/LICENSE
+	source = LICENSE-0.18.4::https://raw.githubusercontent.com/affromero/gitpane/refs/tags/v0.18.4/LICENSE
 	sha256sums = 5953e81de31e9fbf77306d93feac10000c25889ec5a35c1e954d0d6efc3fd794
-	source_x86_64 = gitpane-0.17.1-bin.tar.gz::https://github.com/affromero/gitpane/releases/download/v0.17.1/gitpane-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = d6baf7173799b0ab5dfa0f80962d747666a181a9bb51a57217d3db14de0d993d
-	source_aarch64 = gitpane-0.17.1-bin.tar.gz::https://github.com/affromero/gitpane/releases/download/v0.17.1/gitpane-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4a776a44f0251cbb77197d7855f1113bb597da91925197418267039d112c9930
+	source_x86_64 = gitpane-0.18.4-bin.tar.gz::https://github.com/affromero/gitpane/releases/download/v0.18.4/gitpane-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 41a0d301900b91accb0830f13d060b5744724c2987ab58c398c1b14d6144b8ad
+	source_aarch64 = gitpane-0.18.4-bin.tar.gz::https://github.com/affromero/gitpane/releases/download/v0.18.4/gitpane-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 53d0c72027d35a294b8dc2c602b792b24af8ae67886d85d8d2b5847794f04c9d
 
 pkgname = gitpane-bin
