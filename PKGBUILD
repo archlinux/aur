@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=sheprd-bin
-pkgver=20261104.1
+pkgver=20261106.1
 pkgrel=1
 pkgdesc="Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)"
 arch=('x86_64' 'aarch64')
@@ -16,12 +16,12 @@ replaces=('herdr-gpui')
 source_x86_64=(
   "Sheprd-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v${pkgver}/Sheprd-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_x86_64=('907db17b00a47d835d646ea579f2b940fa1f7271e1b026127a5726de9403b092')
+sha256sums_x86_64=('f664727aea579eee644a9f54ef66d12b403fb9cd096c5e0ad768f005a0f52698')
+sha256sums_aarch64=('2fc0573b49f0e3f0c172b96af026009a3150bb1d3ba4ef17ab394ca630afdfdb')
 
 source_aarch64=(
   "Sheprd-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v${pkgver}/Sheprd-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_aarch64=('753e1c5bf37cee60ff4755583b4d7f3e1c81ef92b0e021fd71559628eaa86447')
 
 package() {
   local _release_dir="${srcdir}/Sheprd-${pkgver}-${CARCH}-unknown-linux-gnu"
