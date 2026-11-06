@@ -186,7 +186,8 @@ prepare() {
   # alliedmodders/sourcepawn@36252599: drop this once SourceMod's sourcepawn submodule has it)
   patch -Np1 -i "$srcdir/sourcepawn-source-date-epoch.patch"
   # The perf jitdump support, which is built on all Linux targets now, with x86's timestamp counter
-  # only on x86: aarch64 doesn't build otherwise (https://github.com/alliedmodders/sourcepawn/pull/1205)
+  # only on x86: aarch64 doesn't build otherwise (https://github.com/alliedmodders/sourcepawn/pull/1205,
+  # merged as alliedmodders/sourcepawn@0e3f7dbc: drop this once SourceMod's sourcepawn submodule has it)
   patch -Np1 -i "$srcdir/sourcepawn-jitdump-timestamp.patch"
   # The replacement operator delete of extensions and logic.so declared noexcept, like the
   # standard's (implicitly so already; GCC warns about the different exception specifier)
