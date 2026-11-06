@@ -1,7 +1,7 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=odyssey-ctl-bin
 _pkgname=odyssey-ctl
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Control Samsung Odyssey monitors over DDC/CI: picture, game and lighting settings, presets, CLI and GUI (prebuilt)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!lto' '!strip' '!debug')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('ce969cd8b9f34dbe9a83de010f30e20269a123484ebeb3d944145d493074b6d3')
+sha256sums=('04c68472682a82e1cd29bd25477e796d2c67854bedf6c3000f26bdb7fbf21d5b')
 
 package() {
   cd "$_pkgname-$pkgver-linux-x86_64"
