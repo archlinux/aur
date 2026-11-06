@@ -1,0 +1,19 @@
+diff -ura frankenphp-1.13.5/frankenphp.c modified/frankenphp.c
+--- frankenphp-1.13.5/frankenphp.c	2026-11-05 19:35:09.000000000 +0900
++++ modified/frankenphp.c	2026-11-06 17:11:13.417624906 +0900
+@@ -1403,6 +1403,7 @@
+ 
+ static int frankenphp_deactivate(void) { return SUCCESS; }
+ 
++#ifdef ZTS
+ /* ext/date's post-deactivate hook frees last_errors, which its GINIT leaves
+  * uninitialized, even when a failed startup skipped its RINIT
+  * TODO: remove when only PHP versions with the fix are supported (8.4.28+,
+@@ -1413,6 +1414,7 @@
+   zend_date_globals *globals = ts_resource(*date->globals_id_ptr);
+   globals->last_errors = NULL;
+ }
++#endif
+ 
+ static void frankenphp_handle_aborted_connection(void) {
+   /* a bailout would fail php_request_startup(), let the script's first write

@@ -10,8 +10,16 @@ url="https://frankenphp.dev"
 license=('MIT')
 depends=('php-embed' 'watcher')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/php/frankenphp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c853ae46bfa87a355a8dd3f18e25fb7e986a9fbff4b0ae70139b7fe6662f4a83')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/php/frankenphp/archive/refs/tags/v$pkgver.tar.gz"
+	"nts-fix.patch")
+sha256sums=('c853ae46bfa87a355a8dd3f18e25fb7e986a9fbff4b0ae70139b7fe6662f4a83'
+	'3f4ccf2fe29ca224aaec70680846ea09cdefdad0e94f2ffeda0b1dfab02a3280')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	# https://github.com/php/frankenphp/issues/2818
+	patch -p1 -i ../nts-fix.patch
+}
 
 build() {
 	# like yay's PKGBUILD
