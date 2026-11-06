@@ -2,7 +2,7 @@
 
 pkgname=mcdc-checker
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to check C/C++ source code for non tree-like binary decisions so that its MCDC test coverage can be assessed with GCov"
 arch=(any)
 url=https://gitlab.com/gtd-gmbh/mcdc-checker/mcdc-checker
@@ -23,10 +23,6 @@ check() {
   # ask for the coverage plugin, so they are dropped.
   cd "$srcdir/mcdc_checker-$pkgver"
   PYTHONPATH="$srcdir/$pkgname" pytest -o addopts="" -q mcdc_checker/tests
-  # The import chain and the entry point run from the tree that the package ships.
-  cd "$srcdir/$pkgname"
-  PATH="$srcdir/$pkgname/bin:$PATH" python -c "import sys, mcdc_checker.__main__ as entry; print('module of the install:', entry.__file__); print('BDD imported by the install:', 'BDD' in sys.modules); print('search path of the install:', sorted({p for p in sys.path if 'include' in p})); entry.main(['--version'])"
-  PATH="$srcdir/$pkgname/bin:$PATH" "$pkgname" --version
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = mcdc-checker
 	pkgdesc = A tool to check C/C++ source code for non tree-like binary decisions so that its MCDC test coverage can be assessed with GCov
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gtd-gmbh/mcdc-checker/mcdc-checker
 	arch = any
 	license = MPL-2.0
