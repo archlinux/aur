@@ -1,6 +1,6 @@
 # Maintainer: lyj404 <lyj404 at proton dot me>
 pkgname=keestone-bin
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='A KeePass-compatible password manager built with Flutter'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('keestone')
 conflicts=('keestone')
 source_x86_64=("$url/releases/download/v$pkgver/KeeStone-v$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/KeeStone-v$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('e33a4d868b48efbb472f4a4871a5456c1f1ea4d2f9762fe28685ada02f37b377')
-sha256sums_aarch64=('77affc8f824fd0462e03666f097e7e790514d27ec88a6d72ab914159bb8decb3')
+sha256sums_x86_64=('085b2f6c398079d92268b430bf901c6ba53cc1c58196e7c47dfefd201f4a80fd')
+sha256sums_aarch64=('b478fb67b7ff88c3189062e562a2ae61a1e07421bd9ced2f1304d9623015ada9')
 
 package() {
   cd "$srcdir"
