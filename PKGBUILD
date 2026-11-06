@@ -1,6 +1,6 @@
 # Python package author: Thomas Wucher <thomas.wucher@gtd-gmbh.de>
 pkgname=ocgraph
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A tool to visualize object code as control flow graph"
 arch=(any)
