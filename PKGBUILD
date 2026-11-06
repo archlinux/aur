@@ -182,7 +182,8 @@ prepare() {
   patch -Np1 -i "$srcdir/sourcepawn-zlib.patch"
   # spcomp's __DATE__ and __TIME__, which every plugin has in its version info (core.inc), from
   # SOURCE_DATE_EPOCH in UTC if it's set, so that plugins build reproducibly
-  # (https://github.com/alliedmodders/sourcepawn/pull/1204)
+  # (https://github.com/alliedmodders/sourcepawn/pull/1204, merged as
+  # alliedmodders/sourcepawn@36252599: drop this once SourceMod's sourcepawn submodule has it)
   patch -Np1 -i "$srcdir/sourcepawn-source-date-epoch.patch"
   # The perf jitdump support, which is built on all Linux targets now, with x86's timestamp counter
   # only on x86: aarch64 doesn't build otherwise (https://github.com/alliedmodders/sourcepawn/pull/1205)
