@@ -1,7 +1,7 @@
 # Maintainer: João Gabriel V. Melão <jgvasconcellos22@gmail.com>
 
 pkgname=silex-desktop-v3-bin
-pkgver=3.10.0canary4 # I'll switch to stable once ready
+pkgver=3.10.0canary5 # I'll switch to stable once ready
 _pkgver=3.10.0-canary.5
 pkgrel=1
 pkgdesc="Silex website builder desktop application"
