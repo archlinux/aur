@@ -2,7 +2,7 @@
 
 _pkgbase=foldav
 pkgname="$_pkgbase-bin"
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A file manager for the files in your Nextcloud'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source_x86_64=("$_pkgbase-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgbase-$pkgver-x86_64.tar.gz")
 noextract=("$_pkgbase-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('98373edaf03ae5c20c428eef4711197a390e8efe0edf5d2b3977aac775d5ce66')
+sha256sums_x86_64=('cf10462cfbad8a63b3aa4c9ab97e20848eae4f00f4855141da79783ddedb6c52')
 
 package() {
 	bsdtar -xf "$_pkgbase-$pkgver-x86_64.tar.gz" -C "$pkgdir" --no-same-owner
