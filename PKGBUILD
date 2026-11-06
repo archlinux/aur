@@ -4,7 +4,7 @@
 # Contributor: Mattias Andersson <contact at stablemate dot se>
 
 pkgname=playwright
-pkgver=1.64.1
+pkgver=1.65.0
 pkgrel=1
 pkgdesc='Node.js library to automate Chromium, Firefox and WebKit with a single API'
 arch=('any')
@@ -27,8 +27,8 @@ noextract=(
   "$pkgname-$pkgver.tgz"
   "playwright-core-$pkgver.tgz"
 )
-sha512sums=('1c2ad5847af9410bb0628b301141936fb806a79db6c9f95bbff493f27178b05586b8b8d00add7b43f12e6e918648d2989f5b6c4c23d9c6a1e11c27d5511bbb50'
-            '042e2cf32e9211503a435ad2c594eda3c848d4a508df15e51c6660bc6a8fe08a8f748fdae855fd1f6f480cdcfbbcaa3d976d5be8b7d8a2c49c3cbe8cdf1c720d')
+sha512sums=('17700c59c478e2a301b7892afba29bea65fb6e3197b2192d28538f50b77bade103e992567af8db351ab2b0feeaf8001313d91d3c464189b7b1d4162cbe956878'
+            'bcd48a807e98aad37b71d4ff2f7df8ce8d1af98c24ae989ccab1c995658f226fd0f8d9f64962278a5d35a13d266eef7a5381a0a11b426100fd0b3250823bbe94')
 
 check() {
   local checkdir="$srcdir/check"
@@ -46,7 +46,7 @@ check() {
     "$srcdir/$pkgname-$pkgver.tgz" \
     "$srcdir/playwright-core-$pkgver.tgz"
 
-  [[ "$($checkdir/prefix/bin/playwright --version)" == "Version $pkgver" ]]
+  [[ "$("$checkdir"/prefix/bin/playwright --version)" == "Version $pkgver" ]]
   [[ -f "$checkdir/prefix/lib/node_modules/$pkgname/package.json" ]]
   [[ -f "$checkdir/prefix/lib/node_modules/playwright-core/package.json" ]]
   ! find "$checkdir/prefix" -type d -name 'ms-playwright' -print -quit | grep -q .
