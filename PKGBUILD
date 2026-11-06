@@ -4,8 +4,8 @@
 
 pkgname=dotnet-system-clientmodel
 _nugetid=System.ClientModel
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Building blocks for .NET clients that call cloud services, System.ClientModel (NuGet package)"
 arch=(any)
 url='https://github.com/Azure/azure-sdk-for-net'
@@ -17,11 +17,11 @@ makedepends=(
 )
 # The commit the package was published from (tag System.ClientModel_1.16.0), and the official build
 # of it, see the file version 1.1600.26.46705 of its assemblies (encoding the date and build number)
-_commit="dcd5b3aadd7fe3ebc73a22408cb514bd18ec3e6f"
+_commit="589eb9e6a05aec55b5fed98d9465e28b1e85739d"
 _officialbuildid="20260917.5"
 source=("azure-sdk-for-net-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
-sha512sums=('fe251bbbd7ad8e7cf41388d0e86df322fe9bd97db021e1ee125fa53cf0a7cc062c80ab9dd91d0a376321d678d8959d76743a5d024feec178de64cb7dae51290d')
-b2sums=('3be2e64c9e9f7c110447a2eda26a2140fd24536255185fc145212897a544ddbfad83479a6c4c33205346ea3d12a1afd1d130a1f98ca5d38ca9db16cd25d7ab7c')
+sha512sums=('dfc9d287cc3ca884753f9bb85b3a39eff14680e56dea9a234df480d004ef373765048b6f627e723a5e982535c548596069fcff5942284d55b6502cfb103f294e')
+b2sums=('6966a0b7d5e8df629b0adf3e1244ea02d8ae89d621f9da0ef614ae305e73af916c8f7c841335f91400073f343caf3f7df0f70286d92ffe2860384c84faacb9e3')
 
 _dotnet_env() {
   export NUGET_PACKAGES="$srcdir/nuget"
