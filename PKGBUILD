@@ -1,8 +1,8 @@
 pkgname=nusgmon-git
 pkgdesc="Lightweight CLI to record and analyze network usage per interface"
 depends=('python' 'python-psutil' 'systemd')
-makedepends=('git')
-pkgver=121
+makedepends=('git' 'sed' 'grep')
+pkgver=124
 pkgrel=1
 arch=('any')
 source=('git+https://github.com/LUCKYS1NGHH/nusgmon.git')

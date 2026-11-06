@@ -1,12 +1,14 @@
 pkgbase = nusgmon-git
 	pkgdesc = Lightweight CLI to record and analyze network usage per interface
-	pkgver = 121
+	pkgver = 124
 	pkgrel = 1
 	url = https://github.com/LUCKYS1NGHH/nusgmon
 	install = nusgmon.install
 	arch = any
 	license = GPL-3.0
 	makedepends = git
+	makedepends = sed
+	makedepends = grep
 	depends = python
 	depends = python-psutil
 	depends = systemd
