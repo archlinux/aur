@@ -1,8 +1,8 @@
 # Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=skalibs-static
-pkgver=2.15.1.0
-pkgrel=3
+pkgver=2.16.0.0
+pkgrel=1
 pkgdesc="A set of general-purpose C programming libraries"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.skarnet.org/software/skalibs"
@@ -12,7 +12,7 @@ provides=(skalibs=${pkgver})
 replaces=(skalibs-musl)
 options=('staticlibs' '!lto')
 source=(${url}/skalibs-$pkgver.tar.gz)
-sha256sums=('f9c905e74935c6fe911c7e344e3e89d5fbd2014c1a04650b524b15ce9b5635d1')
+sha256sums=('90a3deda94a40d7d6a4495fe6feaf91c0185e0428d59cbd150a1a468741269aa')
 build() {
   cd skalibs-$pkgver
   export CC="musl-gcc -fno-link-libatomic"
