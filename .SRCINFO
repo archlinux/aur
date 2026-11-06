@@ -1,7 +1,7 @@
 pkgbase = kcgroups-dmemcg
 	pkgdesc = KDE library to manipulate cgroups (and boost foreground apps) - fork adding dmem cgroup support
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/pixelcluster/kcgroups
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = kcgroups-dmemcg
 	makedepends = extra-cmake-modules
 	makedepends = git
 	conflicts = kcgroups-git
-	source = kcgroups::git+https://github.com/pixelcluster/kcgroups.git#tag=kcgroups-dmemcg-experimental
-	source = plasma-foreground-booster::git+https://github.com/pixelcluster/kcgroups.git#tag=booster-dmemcg-experimental
+	source = kcgroups::git+https://github.com/pixelcluster/kcgroups.git#tag=kcgroups-dmemcg-experimental-0.2
+	source = plasma-foreground-booster::git+https://github.com/pixelcluster/kcgroups.git#tag=booster-dmemcg-experimental-0.2
 	sha256sums = fc231c52a9a0b135870b73ce51849a64ea84f80eb8f921c0c0d85af8e12fde28
-	sha256sums = d48cf2a39ad087be415fced5b83b5f2ce497cb809fefae622e64e67c824d3286
+	sha256sums = b289024bb331d2700caf4f315d5be822af022e267f82c1903a3f7b0c09733e79
 
 pkgname = kcgroups-dmemcg
 	depends = qt6-base

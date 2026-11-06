@@ -2,9 +2,9 @@
 
 pkgbase=kcgroups-dmemcg
 pkgname=('kcgroups-dmemcg' 'plasma-foreground-booster-dmemcg')
-_tag=dmemcg-experimental
-pkgver=0.1
-pkgrel=2
+_tag="dmemcg-experimental-0.2"
+pkgver=0.2
+pkgrel=1
 pkgdesc="KDE library to manipulate cgroups (and boost foreground apps) - fork adding dmem cgroup support"
 arch=('i686' 'x86_64')
 url="https://github.com/pixelcluster/kcgroups"
@@ -14,7 +14,7 @@ conflicts=('kcgroups-git')
 source=("kcgroups::git+https://github.com/pixelcluster/kcgroups.git#tag=kcgroups-${_tag}"
 	"plasma-foreground-booster::git+https://github.com/pixelcluster/kcgroups.git#tag=booster-${_tag}")
 sha256sums=('fc231c52a9a0b135870b73ce51849a64ea84f80eb8f921c0c0d85af8e12fde28'
-            'd48cf2a39ad087be415fced5b83b5f2ce497cb809fefae622e64e67c824d3286')
+            'b289024bb331d2700caf4f315d5be822af022e267f82c1903a3f7b0c09733e79')
 
 prepare() {
   mkdir -p kcgroups-build
@@ -37,6 +37,7 @@ build () {
     CMAKE_PREFIX_PATH=../kcgroups-install/usr \
     cmake ../plasma-foreground-booster \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make
 }
