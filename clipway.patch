@@ -1,4 +1,4 @@
-From 03e445ef153ea0f316605aac2b588e40c7e52d9b Mon Sep 17 00:00:00 2001
+From e3bf1dd79f31f3ed3e0870dc656e862a6216c710 Mon Sep 17 00:00:00 2001
 From: krisztianfekete <git@krisztianfekete.org>
 Date: Wed, 17 Jun 2026 20:32:34 +0200
 Subject: [PATCH] dndcp: add a Wayland clipboard backend (wlr-data-control via
@@ -26,6 +26,12 @@ Scope: plain UTF-8 text only (no images, RTF, or drag-and-drop). The MVP
 shells out to wl-clipboard and therefore needs no new build dependencies
 (no libwayland, no wayland-scanner).
 
+Guest clipboard changes are detected by comparing against the last text
+recorded. Text is recorded only once the host was given it, or when it can
+never be sent (invalid UTF-8, too large). A transient rejection (plain text
+not in the negotiated caps, a failed clip allocation) is not recorded, so
+the next host request retries it instead of reporting it unchanged.
+
 New files:
   services/plugins/dndcp/copyPasteUIWayland.h
   services/plugins/dndcp/copyPasteUIWayland.cpp
@@ -33,30 +39,30 @@ New files:
   services/plugins/dndcp/copyPasteDnDWayland.cpp
 ---
  services/plugins/dndcp/Makefile.am            |   2 +
- .../plugins/dndcp/copyPasteDnDWayland.cpp     | 298 ++++++++++++++
- services/plugins/dndcp/copyPasteUIWayland.cpp | 362 ++++++++++++++++++
- services/plugins/dndcp/copyPasteUIWayland.h   |  70 ++++
+ .../plugins/dndcp/copyPasteDnDWayland.cpp     | 298 ++++++++++++
+ services/plugins/dndcp/copyPasteUIWayland.cpp | 431 +++++++++++++++++
+ services/plugins/dndcp/copyPasteUIWayland.h   |  73 +++
  .../dndcp/dndGuestBase/copyPasteDnDWayland.h  |  58 +++
  .../dndGuestBase/copyPasteDnDWrapper.cpp      |  20 +-
- 6 files changed, 809 insertions(+), 1 deletion(-)
+ 6 files changed, 881 insertions(+), 1 deletion(-)
  create mode 100644 services/plugins/dndcp/copyPasteDnDWayland.cpp
  create mode 100644 services/plugins/dndcp/copyPasteUIWayland.cpp
  create mode 100644 services/plugins/dndcp/copyPasteUIWayland.h
  create mode 100644 services/plugins/dndcp/dndGuestBase/copyPasteDnDWayland.h
 
 diff --git a/services/plugins/dndcp/Makefile.am b/services/plugins/dndcp/Makefile.am
-index 1b0b8b8..e1f5458 100644
 --- a/services/plugins/dndcp/Makefile.am
 +++ b/services/plugins/dndcp/Makefile.am
-@@ -90,6 +90,8 @@ libdndcp_la_SOURCES += copyPasteCompatX11.c
- libdndcp_la_SOURCES += vmCopyPasteDnDWrapper.cpp
- libdndcp_la_SOURCES += copyPasteDnDX11.cpp
- libdndcp_la_SOURCES += copyPasteUIX11.cpp
+@@ -98,4 +98,9 @@
++# The Wayland clipboard backend shells out to wl-clipboard and links no Gtk,
++# so it is built in every configuration, including HAVE_GTK4.
 +libdndcp_la_SOURCES += copyPasteDnDWayland.cpp
 +libdndcp_la_SOURCES += copyPasteUIWayland.cpp
- libdndcp_la_SOURCES += dndUIX11.cpp
- libdndcp_la_SOURCES += dndcp.cpp
- libdndcp_la_SOURCES += dragDetWndX11.cpp
++
+ if LINUX
+ libdndcp_la_CPPFLAGS += -I$(top_srcdir)/services/plugins/dndcp/fakeMouse
+ libdndcp_la_SOURCES  += fakeMouseWayland/fakeMouseWayland.cpp
+ libdndcp_la_CPPFLAGS += -DUSE_UINPUT
 diff --git a/services/plugins/dndcp/copyPasteDnDWayland.cpp b/services/plugins/dndcp/copyPasteDnDWayland.cpp
 new file mode 100644
 index 0000000..9653e85
@@ -363,10 +369,10 @@ index 0000000..9653e85
 +}
 diff --git a/services/plugins/dndcp/copyPasteUIWayland.cpp b/services/plugins/dndcp/copyPasteUIWayland.cpp
 new file mode 100644
-index 0000000..5ecbc40
+index 0000000..e61f6a5
 --- /dev/null
 +++ b/services/plugins/dndcp/copyPasteUIWayland.cpp
-@@ -0,0 +1,362 @@
+@@ -0,0 +1,431 @@
 +/*********************************************************
 + * Copyright (C) 2026 VMware, Inc. All rights reserved.
 + *
@@ -404,6 +410,7 @@ index 0000000..5ecbc40
 +#include <glib.h>
 +#include <errno.h>
 +#include <string.h>
++#include <sys/wait.h>
 +#include <unistd.h>
 +
 +#include "vmware.h"
@@ -421,39 +428,19 @@ index 0000000..5ecbc40
 +/*
 + *-----------------------------------------------------------------------------
 + *
-+ * CopyPasteWaylandReapChild --
-+ *
-+ *    GChildWatch callback used to reap the (short-lived) foreground
-+ *    wl-copy / wl-paste helper processes so they do not become zombies.
-+ *
-+ *-----------------------------------------------------------------------------
-+ */
-+
-+static void
-+CopyPasteWaylandReapChild(GPid pid,       // IN
-+                          gint status,    // IN: unused
-+                          gpointer data)  // IN: unused
-+{
-+   g_spawn_close_pid(pid);
-+}
-+
-+
-+/*
-+ *-----------------------------------------------------------------------------
-+ *
 + * CopyPasteWaylandSetText --
 + *
 + *    Push UTF-8 text onto the local Wayland clipboard by spawning wl-copy and
-+ *    feeding the bytes to its stdin. wl-copy reads stdin until EOF, then forks
-+ *    a resident daemon to serve the selection and the foreground process
-+ *    exits; therefore we must close stdin after writing (the EOF) and must not
-+ *    block waiting for it. The spawn inherits the environment so wl-copy sees
-+ *    WAYLAND_DISPLAY / XDG_RUNTIME_DIR.
++ *    feeding the bytes to its stdin. wl-copy reads stdin until EOF, installs
++ *    the selection, then forks a resident daemon and exits its foreground
++ *    process. Wait for that foreground process so a subsequent clipboard read
++ *    cannot race the selection update. The spawn inherits the environment so
++ *    wl-copy sees WAYLAND_DISPLAY / XDG_RUNTIME_DIR.
 + *
 + *-----------------------------------------------------------------------------
 + */
 +
-+static void
++static bool
 +CopyPasteWaylandSetText(const char *data,  // IN
 +                        gsize len)         // IN
 +{
@@ -471,9 +458,10 @@ index 0000000..5ecbc40
 +      g_warning("%s: failed to spawn wl-copy: %s\n", __FUNCTION__,
 +                err != NULL ? err->message : "unknown error");
 +      g_clear_error(&err);
-+      return;
++      return false;
 +   }
 +
++   bool success = true;
 +   while (off < len) {
 +      ssize_t written = write(stdinFd, data + off, len - off);
 +      if (written < 0) {
@@ -482,14 +470,29 @@ index 0000000..5ecbc40
 +         }
 +         g_warning("%s: write to wl-copy failed: %s\n", __FUNCTION__,
 +                   g_strerror(errno));
++         success = false;
 +         break;
 +      }
 +      off += (gsize) written;
 +   }
 +
-+   /* Closing stdin is the EOF that lets wl-copy daemonize. */
++   /* Closing stdin is the EOF that lets wl-copy install the selection. */
 +   close(stdinFd);
-+   g_child_watch_add(pid, CopyPasteWaylandReapChild, NULL);
++
++   /* Wait for wl-copy to install the selection before it can be reread. */
++   gint status = 0;
++   pid_t waited;
++   do {
++      waited = waitpid(pid, &status, 0);
++   } while (waited < 0 && errno == EINTR);
++   g_spawn_close_pid(pid);
++
++   if (waited < 0) {
++      g_warning("%s: wait for wl-copy failed: %s\n", __FUNCTION__,
++                g_strerror(errno));
++      return false;
++   }
++   return success && WIFEXITED(status) && WEXITSTATUS(status) == 0;
 +}
 +
 +
@@ -603,6 +606,16 @@ index 0000000..5ecbc40
 +      return true;
 +   }
 +
++   /*
++    * Establish a baseline before the first host request. Otherwise the guest's
++    * pre-existing clipboard looks new and overwrites a newer host clipboard as
++    * soon as the VM receives focus.
++    */
++   gsize len = 0;
++   gchar *text = CopyPasteWaylandGetText(&len);
++   mLastClipboardText.assign(text != NULL ? text : "", len);
++   g_free(text);
++
 +   mCP->srcRecvClipChanged.connect(
 +      sigc::mem_fun(this, &CopyPasteUIWayland::GetRemoteClipboardCB));
 +   mCP->destRequestClipChanged.connect(
@@ -669,7 +682,9 @@ index 0000000..5ecbc40
 +      }
 +      g_debug("%s: setting %" G_GSIZE_FORMAT " bytes of text on local clipboard\n",
 +              __FUNCTION__, len);
-+      CopyPasteWaylandSetText(text, len);
++      if (CopyPasteWaylandSetText(text, len)) {
++         mLastClipboardText.assign(text, len);
++      }
 +   } else {
 +      g_debug("%s: no text item in remote clipboard (text-only backend)\n",
 +              __FUNCTION__);
@@ -695,6 +710,7 @@ index 0000000..5ecbc40
 +   gsize len = 0;
 +   gchar *text;
 +   bool validDataInClip = false;
++   bool retryable = false;
 +
 +   g_debug("%s: enter.\n", __FUNCTION__);
 +
@@ -706,9 +722,27 @@ index 0000000..5ecbc40
 +   CPClipboard_Clear(&mClipboard);
 +
 +   text = CopyPasteWaylandGetText(&len);
++
++   /*
++    * Upstream detects change via a signal: the X selection timestamp in the
++    * GTK3 backend, a generation counter driven off signal_changed() in the
++    * GTK4 one. We have no such signal here, so compare content instead.
++    * Consequence: recopying the same text reads as unchanged. Replace this
++    * with wl-paste --watch driving a generation counter when the backend is
++    * rebased onto open-vm-tools 13.1.0 or later.
++    */
++   std::string currentText(text != NULL ? text : "", len);
++   if (currentText == mLastClipboardText) {
++      g_debug("%s: local clipboard is unchanged\n", __FUNCTION__);
++      g_free(text);
++      SendClipNotChanged();
++      return;
++   }
++
 +   if (text != NULL && len > 0) {
 +      if (!mCP->CheckCapability(DND_CP_CAP_PLAIN_TEXT_CP)) {
 +         g_debug("%s: plain text copy/paste not in caps\n", __FUNCTION__);
++         retryable = true;
 +      } else if (!g_utf8_validate(text, len, NULL)) {
 +         g_debug("%s: clipboard data is not valid UTF-8 text, skipping\n",
 +                 __FUNCTION__);
@@ -718,9 +752,22 @@ index 0000000..5ecbc40
 +      } else if (CPClipboard_SetItem(&mClipboard, CPFORMAT_TEXT, text, len + 1)) {
 +         validDataInClip = true;
 +         g_debug("%s: got %" G_GSIZE_FORMAT " bytes of text\n", __FUNCTION__, len);
++      } else {
++         g_debug("%s: failed to add text to clip\n", __FUNCTION__);
++         retryable = true;
 +      }
 +   }
 +   g_free(text);
++
++   /*
++    * Record only what the host was actually given, or text that can never be
++    * sent (invalid UTF-8, too large). A transient rejection must not be
++    * recorded: the text would then read as unchanged on every later request
++    * and could never be copied until the clipboard changed.
++    */
++   if (!retryable) {
++      mLastClipboardText = currentText;
++   }
 +
 +   if (validDataInClip) {
 +      mCP->DestUISendClip(&mClipboard);
@@ -729,12 +776,40 @@ index 0000000..5ecbc40
 +      mCP->DestUISendClip(&mClipboard);
 +   }
 +}
++
++
++/*
++ *-----------------------------------------------------------------------------
++ *
++ * CopyPasteUIWayland::SendClipNotChanged --
++ *
++ *    Send a not-changed clip to host.
++ *
++ * Results:
++ *    None.
++ *
++ * Side effects:
++ *    None.
++ *
++ *-----------------------------------------------------------------------------
++ */
++
++void
++CopyPasteUIWayland::SendClipNotChanged(void)
++{
++   CPClipboard clip;
++
++   CPClipboard_Init(&clip);
++   CPClipboard_SetChanged(&clip, FALSE);
++   mCP->DestUISendClip(&clip);
++   CPClipboard_Destroy(&clip);
++}
 diff --git a/services/plugins/dndcp/copyPasteUIWayland.h b/services/plugins/dndcp/copyPasteUIWayland.h
 new file mode 100644
-index 0000000..de03769
+index 0000000..2570106
 --- /dev/null
 +++ b/services/plugins/dndcp/copyPasteUIWayland.h
-@@ -0,0 +1,70 @@
+@@ -0,0 +1,73 @@
 +/*********************************************************
 + * Copyright (C) 2026 VMware, Inc. All rights reserved.
 + *
@@ -770,6 +845,7 @@ index 0000000..de03769
 +#ifndef __COPYPASTE_UI_WAYLAND_H__
 +#define __COPYPASTE_UI_WAYLAND_H__
 +
++#include <string>
 +#include <sigc++/trackable.h>
 +
 +#include "vm_basic_types.h"
@@ -798,9 +874,11 @@ index 0000000..de03769
 +   void GetRemoteClipboardCB(const CPClipboard *clip);
 +   /* guest -> host: host is asking for the guest clipboard. */
 +   void GetLocalClipboard(void);
++   void SendClipNotChanged(void);
 +
 +   GuestCopyPasteMgr *mCP;
 +   CPClipboard mClipboard;
++   std::string mLastClipboardText;
 +   bool mInited;
 +};
 +
