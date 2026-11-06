@@ -2,7 +2,7 @@
 
 pkgname=ros2-lyrical-base
 pkgver=2026.08.07
-pkgrel=1
+pkgrel=2
 _rosdist="Lyrical Luth"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -24,6 +24,7 @@ depends=(
     'python-lark-parser'
     'python-netifaces'
     'python-numpy'
+    'python-osrf_pycommon'
     'python-psutil'
     'python-yaml'
     'tinyxml2'
@@ -35,6 +36,7 @@ makedepends=(
   'git'
   'python-rosinstall_generator'
   'python-vcs2l'
+  'python-pkg-resources'
 )
 conflicts=(
   "ros2-${_rosdist_short}"
