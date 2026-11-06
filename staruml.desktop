@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=StarUML
+Comment=A sophisticated software modeler
+Exec=/opt/StarUML/staruml %U
+Terminal=false
+Type=Application
+Icon=staruml
+StartupWMClass=io.staruml.rs
+MimeType=application/vnd.staruml.mdj;
+Categories=Development;
