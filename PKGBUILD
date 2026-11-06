@@ -8,13 +8,18 @@
 # daemon reads it from the install directory and mirrors it into
 # ~/.qoderwake/runtime-resources on first start.
 #
+# The daemon also creates ".runtime-install.lock" and runtime metadata next to
+# that executable on every start, so the install directory has to be writable
+# by the user running it. /usr/lib is not, hence the wrapper below stages a
+# private copy of the executable and runs it from the user's data directory.
+#
 # The runtime archive carries no LICENSE/COPYING text, so the package declares
 # LicenseRef-custom and cannot install a license file; terms are those of the
 # QoderWake service (https://qoder.com/).
 
 pkgname=qoderwake-bin
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.com/'
@@ -45,8 +50,39 @@ package() {
   find "${pkgdir}/usr/lib/qoderwake" -type d -name __pycache__ -prune -exec rm -rf {} +
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s ../lib/qoderwake/qoderwake "${pkgdir}/usr/bin/qoderwake"
   ln -s ../lib/qoderwake/qodercli/qodercli-wake "${pkgdir}/usr/bin/qodercli-wake"
+
+  # The daemon creates ".runtime-install.lock" and runtime metadata next to its
+  # own executable on every start. /usr/lib is root-owned, so running the
+  # packaged binary directly fails with EACCES: the daemon never comes up and
+  # the desktop launcher silently does nothing. Stage a writable copy of the
+  # executable in the user's data dir first; resources/ and qodercli/ are
+  # linked back into the package and stay read-only.
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/qoderwake" <<'WRAPPER'
+#!/bin/sh
+set -u
+_src='/usr/lib/qoderwake'
+_ver='@PKGVER@'
+_root="${XDG_DATA_HOME:-${HOME}/.local/share}/qoderwake"
+_runtime="${_root}/runtime"
+
+if [ ! -f "${_runtime}/.version" ] \
+  || [ "$(cat "${_runtime}/.version" 2>/dev/null)" != "${_ver}" ]; then
+  mkdir -p "${_root}" || exit 1
+  _tmp="${_root}/runtime.new.$$"
+  rm -rf "${_tmp}"
+  mkdir -p "${_tmp}" || exit 1
+  install -m755 "${_src}/qoderwake" "${_tmp}/qoderwake" || exit 1
+  ln -s "${_src}/resources" "${_tmp}/resources"
+  ln -s "${_src}/qodercli" "${_tmp}/qodercli"
+  printf '%s\n' "${_ver}" > "${_tmp}/.version" || exit 1
+  rm -rf "${_runtime}"
+  mv "${_tmp}" "${_runtime}" || exit 1
+fi
+
+exec "${_runtime}/qoderwake" "$@"
+WRAPPER
+  sed -i "s|@PKGVER@|${pkgver}|" "${pkgdir}/usr/bin/qoderwake"
 
   # Upstream ships no desktop integration; the product is a CLI plus a local
   # web console. Add a launcher that starts the daemon and opens that console,
@@ -58,9 +94,13 @@ package() {
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/lib/qoderwake/qoderwake-console" <<'CONSOLE'
 #!/bin/sh
-# Desktop launcher: start the daemon and open the local console. `start --open`
-# waits for the daemon instead of racing it with a separate `portal` call.
-exec /usr/bin/qoderwake start --open
+# Desktop launcher: /usr/bin/qoderwake stages the runtime in the user's data
+# dir (the daemon needs a writable install directory). `start` waits for the
+# daemon and is a no-op when it is already running; `portal` then always opens
+# the console in the browser, whereas `start --open` only opens it on the
+# first start.
+/usr/bin/qoderwake start
+exec /usr/bin/qoderwake portal
 CONSOLE
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/qoderwake.desktop" <<'DESKTOP'
