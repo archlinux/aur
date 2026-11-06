@@ -1,13 +1,14 @@
 pkgbase = iamb-bin
 	pkgdesc = A Matrix client for Vim addicts
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ulyssa/iamb
 	arch = x86_64
 	license = Apache-2.0
 	depends = hicolor-icon-theme
 	provides = iamb
 	conflicts = iamb
+	conflicts = iamb-git
 	options = !debug
 	source = https://github.com/ulyssa/iamb/releases/download/v0.13.1/iamb-0.13.1-x86_64-unknown-linux-musl.tar.gz
 	b2sums = 55a258c420cf8771c22ffb829eefa4bd5a5ac70c285d8c13689e08523e1028a452907b8f18c21a5f325560e1ffba8a3c6df410308c99d1bc7a859a38d920ab03
