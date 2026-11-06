@@ -5,7 +5,7 @@
 
 _name=semgrep
 pkgname=${_name}-bin
-pkgver=1.183.0
+pkgver=1.184.0
 pkgrel=1
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 
@@ -47,7 +47,7 @@ depends=(
 optdepends=('jsonnet: experimental jsonnet support')
 provides=("${_name}")
 
-_b2sum="c5fd85ac31a5ec53feee54ebdce933ab1c94af81695a2b244b0baefdbcdba92a"
+_b2sum="3f32d5f5f37bbfa8fee1527c749a7bfc5a1ab57f4316f98e91783721b340a35d"
 _whl="${_name}-${pkgver}-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-manylinux_2_34_${CARCH}.whl"
 
 options=('!strip')
@@ -56,7 +56,7 @@ noextract=("${_whl}")
 source=("https://files.pythonhosted.org/packages/${_b2sum:0:2}/${_b2sum:2:2}/${_b2sum:4}/${_whl}"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE")
-sha512sums=('09aae543d03a8f46d1dbde7dbb04796885323e91838e365d212bb8f63c1c1011c83f464660beed92cacf38e8b7c92a787dde4271fc05d6a06c9bfa67146e1e70'
+sha512sums=('82c7946831d36733e5bbed3f9fb677dff0213356a5cce75de18bee34d22e6ec7c1c88e6218ad533dde2c0fcf577c4de834ce66e7ff075425f684f71b135fe78e'
             '53eb0ea0dcf2d9e578b6ba7913381c787cc29e3dc692774cd98ab0ae6b2fb4ceaaef7eab0b0dcade6c00b6629df3e9f6ddfa994d57bd1c728c3f3d792e2c3b60'
             'dec798f85edac11b3a3f4bb1f309397719dd4de04f66357a5520b23e758cba757c9c7bee87bdbae2a5f936368cab0670bbd3395030393c029d68d0e72fcfba1e')
 
