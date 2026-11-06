@@ -2,20 +2,20 @@
 
 pkgname=execline-static
 _pkgname=execline
-pkgver=2.9.9.2
-pkgrel=2
+pkgver=2.10.0.0
+pkgrel=1
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('aarch64' 'i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}"
 license=('ISC')
-makedepends=('skalibs-static>=2.15.0.0' 'musl' 'gcc' 'make')
+makedepends=('skalibs-static>=2.16.0.0' 'musl' 'gcc' 'make')
 optdepends=('execline-man-pages')
 provides=('execline')
 conflicts=('execline')
 replaces=('execline-musl')
 options=('staticlibs' '!lto' '!debug')
 source=("${url}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('908ed4db3a6b3a23a205d8fd4cf2a71089156f2aeae0f54656045aafad2dee32')
+sha256sums=('561be2ce578604644e2263a889bbdf4736e7980401ee88556a7f9017c166dbab')
 build() {
   cd "${_pkgname}-${pkgver}"
   export CC="musl-gcc -fno-link-libatomic"
