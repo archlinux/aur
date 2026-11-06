@@ -1,0 +1,19 @@
+pkgbase = antifennel-git
+	pkgdesc = Turn Lua code into Fennel code
+	pkgver = 0.3.2.r2.g613a075
+	pkgrel = 1
+	url = https://git.sr.ht/~technomancy/antifennel
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = pandoc
+	depends = luajit
+	provides = antifennel
+	conflicts = antifennel
+	conflicts = antifennel-lua55
+	conflicts = antifennel-lua54
+	source = antifennel-git::git+https://git.sr.ht/~technomancy/antifennel
+	sha256sums = SKIP
+
+pkgname = antifennel-git
