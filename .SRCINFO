@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-silver-dock-git
+	pkgdesc = A dock for GNOME Shell that can also hold the top bar's menu, clock and tray
+	pkgver = 1.7.r52.gbecab9d
+	pkgrel = 1
+	url = https://github.com/simonlinuxcraft/silver-dock
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = gettext
+	depends = gnome-shell
+	provides = gnome-shell-extension-silver-dock
+	conflicts = gnome-shell-extension-silver-dock
+	source = gnome-shell-extension-silver-dock::git+https://github.com/simonlinuxcraft/silver-dock.git
+	source = gnome51-shader-snippet.patch
+	sha256sums = SKIP
+	sha256sums = 4dd6acf3fdb833c68d772c82ff7b102900946721921b4c6bdd546a00e5923bd7
+
+pkgname = gnome-shell-extension-silver-dock-git
