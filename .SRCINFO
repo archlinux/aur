@@ -1,0 +1,28 @@
+pkgbase = sheprd-bin
+	pkgdesc = Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)
+	pkgver = 20261104.1
+	pkgrel = 1
+	url = https://github.com/sheprd-labs/sheprd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc>=2.39
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = freetype2
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = vulkan-icd-loader
+	provides = sheprd
+	provides = herdr-gpui
+	conflicts = sheprd
+	conflicts = herdr-gpui
+	replaces = herdr-gpui
+	source_x86_64 = Sheprd-20261104.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v20261104.1/Sheprd-20261104.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 907db17b00a47d835d646ea579f2b940fa1f7271e1b026127a5726de9403b092
+	source_aarch64 = Sheprd-20261104.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/sheprd-labs/sheprd/releases/download/v20261104.1/Sheprd-20261104.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 753e1c5bf37cee60ff4755583b4d7f3e1c81ef92b0e021fd71559628eaa86447
+
+pkgname = sheprd-bin
