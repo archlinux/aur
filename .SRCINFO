@@ -1,0 +1,41 @@
+pkgbase = tidra-git
+	pkgdesc = Keep every project you maintain up to date from one desktop app (development)
+	pkgver = 0.1.6.r0.g606f55d
+	pkgrel = 1
+	url = https://github.com/yusifaliyevpro/tidra-app
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = git
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator
+	depends = libgcc
+	depends = libsoup3
+	depends = libx11
+	depends = libxi
+	depends = sh
+	depends = util-linux
+	depends = webkit2gtk-4.1
+	optdepends = org.freedesktop.secrets: store tokens in the desktop keyring
+	optdepends = nodejs: manage Node.js projects
+	optdepends = npm: manage npm projects
+	optdepends = pnpm: manage pnpm projects
+	optdepends = yarn: manage Yarn projects
+	optdepends = bun: manage Bun projects
+	optdepends = github-cli: import an existing GitHub CLI authentication token
+	provides = tidra=0.1.6.r0.g606f55d
+	conflicts = tidra
+	options = !lto
+	source = tidra::git+https://github.com/yusifaliyevpro/tidra-app.git#branch=main
+	sha256sums = SKIP
+
+pkgname = tidra-git
