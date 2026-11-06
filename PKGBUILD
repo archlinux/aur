@@ -2,7 +2,7 @@
 
 pkgname=jorvik-bin
 _pkgname=jorvik
-pkgver=1.0.29
+pkgver=1.0.30
 pkgrel=1
 pkgdesc="Chat and voice for Matrix"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 install="$pkgname.install"
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Jorvik-$pkgver.deb")
-sha256sums=('833ef53edb3f3fa1ade3787062de6cfa251356e6ddf58167cca6ae17f8df8d30')
+sha256sums=('21b90db3df9f266352a278eb31769aa4fd46ff2863f46201387d1dcde75ee5b9')
 # makepkg does not understand .deb, so unpack it by hand in package().
 noextract=("$_pkgname-$pkgver.deb")
 
