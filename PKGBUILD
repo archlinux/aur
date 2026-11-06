@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=mediaboom-3
-pkgver=2.0.3.0+1.0.0.0
+pkgver=2.0.3.0+1.0.0.1
 pkgrel=1
 pkgdesc="Cross-platform music and video player written in C#"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('git' 'dotnet-sdk-10.0' 'make' 'which' 'python-py7zr')
 optdepends=('portaudio: PortAudio support for MediaBoom'
 			'libpulse: PulseAudio support for MediaBoom')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/MediaBoom#tag=v1.0.0")
+source=("${pkgname}::git+https://github.com/Aptivi/MediaBoom#tag=v1.0.0.1")
 sha256sums=('SKIP')
 
 prepare() {

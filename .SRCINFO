@@ -1,6 +1,6 @@
 pkgbase = mediaboom-3
 	pkgdesc = Cross-platform music and video player written in C#
-	pkgver = 2.0.3.0+1.0.0.0
+	pkgver = 2.0.3.0+1.0.0.1
 	pkgrel = 1
 	url = https://aptivi.github.io
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = mediaboom-3
 	optdepends = portaudio: PortAudio support for MediaBoom
 	optdepends = libpulse: PulseAudio support for MediaBoom
 	options = !strip
-	source = mediaboom-3::git+https://github.com/Aptivi/MediaBoom#tag=v1.0.0
+	source = mediaboom-3::git+https://github.com/Aptivi/MediaBoom#tag=v1.0.0.1
 	sha256sums = SKIP
 
 pkgname = mediaboom-3
