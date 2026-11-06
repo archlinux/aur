@@ -1,7 +1,7 @@
 pkgbase = fluffychat-color-emoji
 	pkgdesc = The cutest instant messenger in the [matrix] (with color emoji fallback)
 	pkgver = 2.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/krille-chan/fluffychat
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,7 @@ pkgbase = fluffychat-color-emoji
 	depends = libpulse
 	depends = libsecret
 	depends = noto-fonts-emoji
+	depends = mpv
 	depends = openssl
 	depends = webkit2gtk-4.1
 	depends = xdg-user-dirs

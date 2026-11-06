@@ -13,7 +13,7 @@ export FVM_CACHE_PATH
 _pkgname="fluffychat"
 pkgname="$_pkgname-color-emoji"
 pkgver=2.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The cutest instant messenger in the [matrix] (with color emoji fallback)"
 url="https://github.com/krille-chan/fluffychat"
 license=('AGPL-3.0-only')
