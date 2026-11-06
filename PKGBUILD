@@ -4,65 +4,66 @@
 
 pkgname=sourcemod-smjansson
 _name=SMJansson
-# SMJansson has no releases: its version (smsdk_config.h), the number of commits and the latest
-# commit, which fixes the build with current SourceMod
-_commit=b811b3341254fff6756d66fbc6c928ee6e701a32
-pkgver=2.6.0.1.r39.g0b18ba4
+# Upstream's tags are jansson's version and a release of SMJansson for it (v2.15.1-1)
+pkgver=2.15.1.1
 pkgrel=1
+_tag=v${pkgver%.*}-${pkgver##*.}
 pkgdesc="SMJansson, a JSON extension of SourceMod (in the addons folder of sourcemod)"
 arch=(x86_64)
 url="https://github.com/davenonymous/SMJansson"
-# The extension's code says GPL 3.0 with SourceMod's exceptions; the repository has no licence file
-# (https://github.com/davenonymous/SMJansson/issues/13)
-license=(GPL-3.0-only LicenseRef-SourceMod-exception)
-depends=(lib32-gcc-libs lib32-glibc lib32-jansson sourcemod)
+# GPL 3.0 with exceptions like SourceMod's, which the SMJansson authors grant for its code
+# (LICENSE.txt)
+license=(GPL-3.0-only LicenseRef-SMJansson-exception)
+# The 32-bit and the 64-bit extension, for the servers of both architectures
+depends=(glibc jansson lib32-gcc-libs lib32-glibc lib32-jansson libgcc sourcemod)
 # The sources of the installed SourceMod, which it's built against
 makedepends=(ambuild clang python sourcemod-src)
 checkdepends=(sourcemod-scripting)
-# Where ./aur-packages commits reads the pins from: the commit pkgver names
-_pins_lookup() {
-  echo "_commit $(curl -fsSL "https://api.github.com/repos/davenonymous/SMJansson/commits/${pkgver##*.g}" | jq -r .sha)"
-}
-source=("$_name-$_commit.tar.gz::https://github.com/davenonymous/SMJansson/archive/$_commit.tar.gz")
-sha512sums=('36e8b5db06dea90a205c3ad3266dd9d41ba19f5dba86be1e79506829432153245e3499bff7e97c74e6103a32bde949bf976059528f35e40b01f7ea8a082d1028')
-b2sums=('a5a6f5a53710c299caf381684d07a4f7a8eb6f92c8eaffcfd3d9dc84a76f87898b207abfd94586b61049a7d3b34c18bb93e7b28e684d5487641309584498bca4')
+source=("$_name-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz"
+  smjansson-system-jansson.patch)
+sha512sums=('121574e7c7a6c6853bafb1de08761f72dcaad978ff30a3677c4203f7860c5f9ca1d2fa93fa7667879b920019b71c3d0f87f0b3b1cb95dfb4145c86fa29304b53'
+  'e86ace0263c91ca9667c57cfda371661d926bcd04fb2607c532dd38795849114d3da9427cf80fb9bf79a4a32d168273ca10ba03fefc58af4677dff769cc68411')
+b2sums=('9bbd71b5c3e6e99e22c29fd3e80ee130e43a670249a5dbdadc836f4f6603f3c0dc1af397bc7f43309f9ff5c63ce5798be3bc22127c61a97f99dc86b9c94eb959'
+  '3a93a0eff4b5ba5162e12b35e69561001da78986e39847fae17d4aada191da2c64ffd077f85a4c442fca2d734a4edd1932bef0c99901ed154a1e9c096c3842c3')
 
 prepare() {
-  cd "$srcdir/$_name-$_commit" || exit
-  # SourceMod's SDK manifests where the build script looks for them
-  ln -s /usr/src/sourcemod/hl2sdk-manifests hl2sdk-manifests
+  cd "$srcdir/$_name-${_tag#v}" || exit
+  # The system's jansson (the version it bundles) instead of the bundled sources, linked by the
+  # binary's compiler: the AMBuilder adds its flags to the compiler after ExtLibrary() has cloned it
+  patch -Np1 -i "$srcdir/smjansson-system-jansson.patch"
 
-  # Nothing prebuilt or bundled: the extension, the test plugin and jansson 2.6
-  rm -r bin pawn/plugins jansson
+  # Nothing prebuilt or bundled: the test plugin, jansson's sources and its configuration headers
+  rm -r pawn/plugins jansson jansson-config
 }
 
 build() {
   # Clang, like SourceMod's builds; position-independent code, which upstream only builds for
-  # x86_64, so the library has no text relocations
+  # x86_64, so the 32-bit library has no text relocations
   export CC=clang CXX=clang++
   CFLAGS+=" -fPIC"
 
-  mkdir -p "$_name-$_commit/build"
-  cd "$_name-$_commit/build" || exit
-  # No SDK, as it's a plain extension. The build script requires the paths of Metamod:Source and a
-  # jansson source to be folders, but uses neither: jansson's headers are in /usr/include.
-  python ../configure.py --enable-optimize --targets=x86 --sdks= \
-    --sm-path=/usr/src/sourcemod --mms-path="$srcdir" --jansson-path=/usr/include
+  mkdir -p "$_name-${_tag#v}/build"
+  cd "$_name-${_tag#v}/build" || exit
+  # The build script requires the path of a jansson source to be a folder, but uses nothing in it:
+  # the headers are the system's
+  python ../configure.py --enable-optimize --targets=x86,x86_64 --sm-path=/usr/src/sourcemod \
+    --jansson-path=/usr/include
   ambuild
 }
 
 check() {
   # The test plugin compiles against the include file and SourceMod's
-  cd "$_name-$_commit/build/package/addons/sourcemod/scripting" || exit
+  cd "$_name-${_tag#v}/build/package/addons/sourcemod/scripting" || exit
   spcomp64 -iinclude -o"$srcdir/smjansson.test.smx" smjansson.test.sp
 }
 
 package() {
-  # In the addons folder of sourcemod, as it uses no SDK: the extension, its include file and test
-  # plugin, as in upstream's package
+  # In the addons folder of sourcemod, as it uses no SDK: the extensions (the 64-bit one in x64/),
+  # the include file and the test plugin, as in upstream's package
   install -d "$pkgdir/usr/lib/sourcemod"
-  cp -r --no-preserve=ownership "$srcdir/$_name-$_commit/build/package/addons" "$pkgdir/usr/lib/sourcemod/"
+  cp -r --no-preserve=ownership "$srcdir/$_name-${_tag#v}/build/package/addons" "$pkgdir/usr/lib/sourcemod/"
 
-  # SourceMod's licence and exceptions, which the extension's code refers to
-  install -Dm644 /usr/src/sourcemod/licenses/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+  # The licence with the exceptions, and the GPL texts it refers to
+  install -Dm644 "$srcdir/$_name-${_tag#v}/LICENSE.txt" "$srcdir/$_name-${_tag#v}"/licenses/GPLv{2,3}.txt \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
 }

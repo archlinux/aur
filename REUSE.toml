@@ -28,5 +28,5 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = "smjansson-system-jansson.patch"
-SPDX-FileCopyrightText = "SMJansson contributors"
+SPDX-FileCopyrightText = "davenonymous and the SMJansson contributors"
 SPDX-License-Identifier = "GPL-3.0-only"

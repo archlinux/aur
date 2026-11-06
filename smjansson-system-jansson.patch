@@ -1,0 +1,74 @@
+diff --git a/AMBuildScript b/AMBuildScript
+--- a/AMBuildScript
++++ b/AMBuildScript
+@@ -371,10 +371,6 @@ class ExtensionConfig(object):
+       os.path.join(self.sm_root, 'public', 'amtl', 'amtl'),
+       os.path.join(self.sm_root, 'public', 'amtl'),
+     ]
+-    compiler.includes += [
+-      os.path.join(builder.sourcePath, 'jansson-config'),
+-      os.path.join(self.jansson_root, 'src'),
+-    ]
+     return compiler
+ 
+   def ExtLibrary(self, context, compiler, name):
+diff --git a/AMBuilder b/AMBuilder
+--- a/AMBuilder
++++ b/AMBuilder
+@@ -8,7 +8,6 @@ for cxx in builder.targets:
+ 
+     binary.compiler.defines += [
+       'HAVE_STRING_H',
+-      'HAVE_CONFIG_H',
+       'SOURCEMOD_BUILD'
+     ]
+ 
+@@ -23,21 +22,11 @@ for cxx in builder.targets:
+     elif cxx.family == 'msvc':
+       cxx.cxxflags += ['/GR-']
+ 
++    # The system's jansson, on the binary's compiler: ExtLibrary() has cloned cxx already
++    binary.compiler.postlink += ['-ljansson']
++
+     binary.sources += [
+       'extension.cpp',
+-      os.path.join(Extension.jansson_root, 'src', 'dtoa.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'dump.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'error.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'hashtable.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'hashtable_seed.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'load.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'memory.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'pack_unpack.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'strbuffer.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'strconv.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'utf.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'value.c'),
+-      os.path.join(Extension.jansson_root, 'src', 'version.c'),
+       os.path.join(Extension.sm_root, 'public', 'smsdk_ext.cpp'),
+     ]
+ 
+diff --git a/extension.cpp b/extension.cpp
+--- a/extension.cpp
++++ b/extension.cpp
+@@ -30,7 +30,7 @@
+  */
+ 
+ #include "extension.h"
+-#include "jansson/src/jansson.h"
++#include <jansson.h>
+ #include <string.h>
+ /**
+  * @file extension.cpp
+diff --git a/sdk/smsdk_config.h b/sdk/smsdk_config.h
+--- a/sdk/smsdk_config.h
++++ b/sdk/smsdk_config.h
+@@ -32,7 +32,7 @@
+ #ifndef _INCLUDE_SOURCEMOD_EXTENSION_CONFIG_H_
+ #define _INCLUDE_SOURCEMOD_EXTENSION_CONFIG_H_
+ 
+-#include "jansson/src/jansson.h"
++#include <jansson.h>
+ /**
+  * @file smsdk_config.h
+  * @brief Contains macros for configuring basic extension information.
