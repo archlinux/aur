@@ -19,4 +19,5 @@ post_upgrade() {
 
 pre_remove() {
   /usr/share/devin-marketplace/patch.py -R
+  /usr/bin/rm -f /usr/share/devin-marketplace/cache.json
 }
