@@ -2,7 +2,7 @@
 # Maintainer : SFN
 
 pkgname=rhine
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A modular window manager for river"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('wayland-compositor')
 source=(
 "$pkgname::git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('346bd87f0d5f7d27c759f79f8457de152a1b128690b52f9ec346e19d565b7c02')
+sha256sums=('7ecac2143fb9e6c22706ba383d797b682e128a5a85e780b81e24dfdd8d75c4f1')
 
 build() {
 	cd $pkgname
@@ -24,7 +24,8 @@ build() {
 	--prefix /usr \
 	--search-prefix /usr \
 	-Dpie=true \
-	-Dnotify=true \
+	-Dstrip=true \
+	-Ddbus=true \
 	-Doptimize=ReleaseSafe
 }
 
