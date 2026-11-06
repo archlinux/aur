@@ -1,0 +1,23 @@
+post_install() {
+    cat <<'EOF'
+uu-remote-linux-bin — 非官方 UU 远程 Linux 被控端 + 控制端
+
+首次使用需扫码登录（图形桌面里运行）：
+
+    uuremote-server login
+
+需要常驻时启用用户服务：
+
+    systemctl --user daemon-reload
+    systemctl --user enable --now uuremote-native.service
+
+查看日志：journalctl --user -u uuremote-native.service -f
+
+Wayland 下建议启用 uinput 虚拟键鼠（包已附带 udev 规则，重新插拔或重启后生效）：
+
+    sudo udevadm control --reload && sudo udevadm trigger --name-match=uinput
+
+Xfce 等不向 systemd 传 DISPLAY 的桌面，以及无显示器服务器的配置，
+见上游 README：https://github.com/VallierDev/uu-remote-linux#安装
+EOF
+}

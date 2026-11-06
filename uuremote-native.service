@@ -1,0 +1,13 @@
+[Unit]
+Description=UU Remote Linux host (unofficial)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Environment=RUST_LOG=info
+ExecStart=/usr/bin/uuremote-server
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
