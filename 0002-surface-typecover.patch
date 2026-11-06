@@ -258,7 +258,7 @@ index e9da59e4b..9dd06855f 100644
  	struct mt_device *td = hid_get_drvdata(hdev);
  
 +	unregister_pm_notifier(&td->pm_notifier);
- 	timer_delete_sync(&td->release_timer);
+ 	timer_shutdown_sync(&td->release_timer);
  
  	sysfs_remove_group(&hdev->dev.kobj, &mt_attribute_group);
 @@ -2727,6 +2818,11 @@ static const struct hid_device_id mt_devices[] = {
@@ -572,7 +572,7 @@ index 9dd06855f..419ddf1d9 100644
 +	}
  
  	unregister_pm_notifier(&td->pm_notifier);
- 	timer_delete_sync(&td->release_timer);
+ 	timer_shutdown_sync(&td->release_timer);
 -- 
 2.43.0
 
