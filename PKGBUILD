@@ -6,7 +6,17 @@
 # values here are the release this copy was last checked against.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.22.0
+_version=0.23.0
+# The beta channel's wikistow-desktop-beta-bin is this package, renamed and
+# with _channel=beta, which the app reads to offer betas (docs/releasing.md).
+_channel=stable
+# The beta installs beside the stable app under names of its own, so a
+# computer can have both: its folder, launcher, launcher entry and icon.
+if [[ $_channel == beta ]]; then
+    _app=wikistow-desktop-beta
+else
+    _app=wikistow-desktop
+fi
 pkgname=wikistow-desktop-bin
 pkgver=${_version//-/}
 pkgrel=1
@@ -21,19 +31,22 @@ license=('MIT')
 depends=('electron44' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=('gnome-keyring: keep the sign-in and a remembered unlock between launches'
             'kwallet: keep the sign-in and a remembered unlock between launches')
-provides=('wikistow-desktop')
-conflicts=('wikistow-desktop')
+provides=("$_app")
+conflicts=("$_app")
 source=("https://github.com/skint007/wikistow/releases/download/v$_version/wikistow-desktop-$_version.tar.gz")
-sha256sums=('14956fba9b7831f99fe800f99f77842d22ed83d82b8e7390c65d666f705b4f8d')
+sha256sums=('918ac1991dbcb03d83dca64f52029bd1f6b4ef1a1172c9849379acd9b396d095')
 
 package() {
     cd "wikistow-desktop-$_version"
-    install -Dm644 app.asar "$pkgdir/usr/lib/wikistow-desktop/app.asar"
+    # The app knows it is the beta from its folder (apps/desktop/src/install.ts).
+    install -Dm644 app.asar "$pkgdir/usr/lib/$_app/app.asar"
     # How the app was installed, for the app to read (docs/desktop.md).
-    echo aur > "$pkgdir/usr/lib/wikistow-desktop/install-source"
-    install -Dm755 wikistow-desktop "$pkgdir/usr/bin/wikistow-desktop"
-    install -Dm644 wikistow-desktop.desktop "$pkgdir/usr/share/applications/wikistow-desktop.desktop"
-    install -Dm644 wikistow-desktop.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wikistow-desktop.svg"
-    install -Dm644 wikistow-desktop.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/wikistow-desktop.png"
+    echo aur > "$pkgdir/usr/lib/$_app/install-source"
+    echo "$_channel" > "$pkgdir/usr/lib/$_app/channel"
+    # One launcher for both, which starts the app its name says.
+    install -Dm755 wikistow-desktop "$pkgdir/usr/bin/$_app"
+    install -Dm644 "$_app.desktop" "$pkgdir/usr/share/applications/$_app.desktop"
+    install -Dm644 "$_app.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_app.svg"
+    install -Dm644 "$_app.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_app.png"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
