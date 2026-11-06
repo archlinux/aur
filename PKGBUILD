@@ -6,7 +6,8 @@
 pkgname='invoiceninja-desktop'
 _repo='admin-portal'
 pkgdesc="Desktop client for Invoice Ninja"
-pkgver=5.0.191
+pkgver=5.0.204
+_flutter_version=3.41.9
 pkgrel=1
 url='https://invoiceninja.com/'
 source=("git+https://github.com/invoiceninja/${_repo}#tag=v${pkgver}" "invoiceninja-desktop.desktop" "invoiceninja")
@@ -19,7 +20,7 @@ depends=(gtk3
         glibc)
 arch=('i686' 'x86_64')
 license=('custom')
-sha512sums=('010ba77276a31392715d3ee33bead6a9f45543e712ed611e055da29825d1ef0a9ca672d7bd65ffd80774ea89a6234c849361a837dc3bae807d5ebb4759c8e4a2'
+sha512sums=('aea5870b7c61e5bb7713ad254a9256300b7a2299c87aea214ce9e3992b4b1d115455210098ccaca1ae947ee363fa6559b5c09e775399fcead29bb0950c3c6546'
             '2465924fe1087c5980419841d17352f23fb2458a74bb1acda577d58f374e0dcd871e8bc1334c7ed151e6050b08e50eb400631a24b0b94007b5e938d875db6255'
             'bb7286a93b510c0c0b5fbb7b3889e4e264bb17108d43e981fdca1535764c02d99b1a8f4a3ee878c994730cff82ff736a0c56ca8089bdca26d82d66df12ef9a93')
 
@@ -29,7 +30,7 @@ prepare() {
   sed -i s#/superlistapp/#/Flutter-Bounty-Hunters/# pubspec.yaml
   sed -i s#/superlistapp/#/Flutter-Bounty-Hunters/# pubspec.lock
   sed -i s#/superlistapp/#/Flutter-Bounty-Hunters/# pubspec.foss.yaml
-  fvm use 3.35.5 --force
+  fvm use $_flutter_version --force
   fvm flutter pub get
 }
 
