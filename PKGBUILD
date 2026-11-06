@@ -1,7 +1,7 @@
 # Maintainer: Ivan Reutov <nujievik@gmail.com>
 
 pkgname=fb2-clean
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Simple CLI utility to remove images from fb2 books"
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ makedepends=("rust" "pkgconf" "zstd")
 options=(!debug)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("fb9e15809f37bb411cebcdc7c63831bbbb26dffaf4f44cb3465a1fd803cee9b8")
+sha256sums=('19ddcdd0f58067ab7d1f23f4b3d04de11edcb0dfcbaee48749a31707c1d8cfa0')
 
 build() {
   export ZSTD_SYS_USE_PKG_CONFIG=1
