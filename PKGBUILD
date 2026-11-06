@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkinitcpio-mercurio"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="mkinitcpio hook that sends a notification through mercurio on each boot"
 url="https://gitlab.archlinux.org/alphajack/mkinitcpio-mercurio"
@@ -11,7 +11,7 @@ depends=("bash" "mkinitcpio" "mercurio")
 optdepends=("mkinitcpio-systemd-extras: network connectivity (systemd initrd)"
             "mkinitcpio-netconf: network connectivity (busybox initrd)")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('e280386baee2b4b2c2188dd996910d8a6b64af8bd938e33eae8931ff29da626ad5af81c8db06dd39caf0b1a9e90ea47e9fc573dd8bf347c499cf1a6defbd84bb')
+b2sums=('839aab28d566e27e5301b82447385f9ee6a53ac183f09a8f65a43239f1a27801bd05f1c539dbad9b227da681355e3d91ad55d5f1756fb53ecf7dace48fad15d7')
 backup=("etc/mercurio/initcpio.conf")
 install="$pkgname.install"
 
