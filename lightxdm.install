@@ -8,6 +8,7 @@ AURGEN_MESSAGES
 post_upgrade() {
     cat <<'AURGEN_MESSAGES'
 lightXDM was updated. To apply the new version, each user who set it up runs: lightxdm-update
+It replaces hand-edited ~/.bash_profile, ~/.xinitrc and ~/.wayland-session, keeping them as *.lightxdm-edited: keep changes in ~/.bashrc and ~/.config/lightxdm/.
 AURGEN_MESSAGES
 }
 

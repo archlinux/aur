@@ -1,7 +1,7 @@
 pkgbase = lightxdm
-	pkgdesc = Start your desktop from a TTY1 login instead of a display manager, with PAM keyring unlock
+	pkgdesc = Display-manager-free TTY1 login: your desktop starts and its keyring unlocks
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eserlxl/lightXDM
 	install = lightxdm.install
 	arch = any
