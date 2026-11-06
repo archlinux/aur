@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chirpity-bin
 _pkgname=Chirpity
-pkgver=6.3.0
+pkgver=6.3.1
 _electronversion=43
 pkgrel=1
 pkgdesc="AI powered audio analyser for bird call visualisation, detection and cataloguing."
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('98fa1a8a6949b33df1b2ecfff5480651e4d9ca143ec25c5f6b6e5a82d8e72d5f'
+sha256sums=('e526b90dd70799e905f5de8465b13184647d8cb9c5a5a7d2008d69ddf1cbd081'
             '04d5c28567bb68b3c647742455c90091e2ea2b6708da27679889e1f80dd838ed'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
