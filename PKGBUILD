@@ -2,7 +2,7 @@
 
 pkgname=eve-wrench-git
 pkgver=0.8.0.r2.gaa3e2fc
-pkgrel=1
+pkgrel=2
 pkgdesc='EVE Online settings manager - backup, restore, and sync settings (development version)'
 arch=('x86_64')
 url='https://github.com/eve-wrench/eve-wrench-app'
