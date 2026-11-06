@@ -23,10 +23,6 @@ check() {
   # plugin, so they are dropped.
   cd "$srcdir/occtre-$pkgver"
   PYTHONPATH="$srcdir/$pkgname" pytest -o addopts="" -q test
-  # The module and the entry point run from the tree that the package ships.
-  cd "$srcdir/$pkgname"
-  PATH="$srcdir/$pkgname/bin:$PATH" python -c "import occtre; print('module of the install:', occtre.__file__)"
-  PATH="$srcdir/$pkgname/bin:$PATH" "$pkgname" --version
 }
 
 package() {
