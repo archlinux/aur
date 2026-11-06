@@ -15,10 +15,10 @@ source=("${url}/FurifontSans-Regular.otf"
 		"${url}/FurifontSansRomaji-Regular.otf"
 		"${url}/FurifontSerifRomaji-Regular.otf"
 		"${url}/OFL.txt")
-sha256sums=('b30d7e2da4ecbb2e8a9c737f8ac45a0b4ae3fca1585e1b2590d073498ebceb56'
-			'cbc907150ec01057991d34cfe9a47c26ff2521036c08048f0fdc6b5e1f068ac6'
-			'705059476ce847c6f83cfe773248e3f63dcefecbeec9a9ad5fe445efffde1717'
-			'c9b6dc316fe999783d6495083ab24d9a77303b04364235a582e492fa442ac28d'
+sha256sums=('5d42132b053985817d07aadc099a7735a8836ad38907141be8709f27cae8e87e'
+			'16916980b4fa036258076a851aba39f6531dce49fb3d2581b880be0f2b89dbe9'
+			'5a4c0ec2e748e5ac2118680cc4b17f9c15a45b9e4473a8d8db66982d8a50883b'
+			'90b7d7566c9f02f282deecdd0dd9b0c57486e3b9924c846215e95d6a64ab6ec6'
 			'fcac737e761ec63dbfbdce11030a1780161920d80315edba9c8beff1c2bac5a2')
 
 package() {
