@@ -1,6 +1,6 @@
 pkgname=zaptide
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Native WhatsApp client built with GTK4 and libadwaita"
 arch=('x86_64' 'aarch64')
 url="https://github.com/luminusOS/zaptide"
@@ -32,7 +32,7 @@ optdepends=(
   'xdg-desktop-portal: desktop integration and attachment selection'
 )
 conflicts=('zaptide-bin' 'zaptide-git')
-options=('!debug')
+options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e9b67f6a7bcdb045e587db74bb5221ca2f5dbdf7f51e87c9b8b05c712acd59b0')
 
