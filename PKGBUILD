@@ -1,11 +1,11 @@
 # Maintainer: Valens.dev <info@valens.dev>
 pkgname=shotivo-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free screenshots. Free sharing. (precompiled)"
 arch=('x86_64' 'aarch64')
 url="https://shotivo.app"
-license=('MIT')
+license=('custom:proprietary')
 depends=('gtk4' 'libadwaita' 'pipewire' 'xorg-xwayland' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk')
 optdepends=('wlroots: window capture on wlroots compositors via wlrctl'
             'kwin: window capture on KDE Plasma')
