@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OpenRig
+GenericName=Guitar Multi-Effects
+Comment=Guitar multi-effects pedalboard: NAM, LV2 and impulse responses
+Exec=openrig
+Icon=openrig
+Terminal=false
+Categories=AudioVideo;Audio;Music;
+Keywords=guitar;amp;effects;pedalboard;NAM;LV2;
