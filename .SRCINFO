@@ -1,0 +1,17 @@
+pkgbase = bypass
+	pkgdesc = Modern terminal secrets manager compatible with KeePass vaults
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/yaroshevych/bypass
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = make
+	makedepends = go
+	depends = keepassxc
+	provides = bypass
+	options = !strip
+	source = bypass-0.2.0.tgz::https://github.com/yaroshevych/bypass/archive/v0.2.0.tar.gz
+	sha256sums = 390ac26315e6ef7ee6d7ffe5c589b6e3af4779844c64926585be4596f67af8ef
+
+pkgname = bypass
