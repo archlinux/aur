@@ -1,12 +1,12 @@
 pkgname=flypaper
-pkgver=0.5.0
-pkgrel=1
+pkgver=0.5.1
+pkgrel=0
 pkgdesc='Externally bind or mark sockets on the fly'
 arch=('x86_64')
 url='https://codeberg.org/iguanajuice/flypaper'
 license=('GPL-3.0')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('f85ab0567746b248f614d3f4e0573403825aa44a8af7c6b15816a14808bbb218')
+sha256sums=('8485a362b5124b9b5923536fad0ad8afcdfcdade58969e8864d968f0f06ef6aa')
 options=('!debug')
 
 depends=(
