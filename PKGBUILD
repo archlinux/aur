@@ -1,6 +1,6 @@
-# Maintainer: Bardiya <bardiyafeili@gmail.com>
+# Maintainer: Bardiya
 pkgname=wttrbar-bin
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Weather indicator for Waybar"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source_x86_64=(
   "LICENSE::https://github.com/bjesus/wttrbar/releases/download/${pkgver}/LICENSE"
 )
 sha256sums_x86_64=(
-  'c16a8db80dcbbf95e3cee98f9d2bb52ce64607c0538ebd4cef7e6cc333e63417'
+  '7b5d39279b908999a2f4d0143958ffb9aa05a9a6568233bc737db835a4c0b0db'
   '9bf212e0aa2728b6307e5a0daac43db8308529066c2513cc79e021eaec377e62'
 )
 
