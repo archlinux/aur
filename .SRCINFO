@@ -7,8 +7,11 @@ pkgbase = elf-checker
 	license = MPL-2.0
 	makedepends = python
 	makedepends = python-pip
+	makedepends = python-pytest
 	depends = python
 	depends = python-pyelftools
 	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/e/elf-checker/elf_checker-2.0.0.tar.gz
+	sha256sums = c25963d3aa8469fd5a691ed09a07febc4bf4828fcfe317786d0a091b11fad7c9
 
 pkgname = elf-checker
