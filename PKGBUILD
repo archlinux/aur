@@ -2,7 +2,7 @@
 #   build recipe:  https://gitea.weircon.dk/agw/pi3-smart-workspace
 pkgname=pi3-smart-workspace
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Switch i3 workspaces based on which output your mouse cursor is on"
 arch=('any')
 url="https://asger.weirsøe.dk/en/projects/pi3-smart-workspace"
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('python' 'i3-wm' 'python-i3ipc' 'python-pynput')
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/v$pkgver.tar.gz")
-sha256sums=('03e419bd280f27e408478304ee44ca8519efa47fb5101d6e796d632f455552b3')
+sha256sums=('4b9494044c674b1dd0b7bab5c6adc5fad23a3e0e6da9225d50cfab3d38f3cf4c')
 
 build() {
     cd "$srcdir/$pkgname"
