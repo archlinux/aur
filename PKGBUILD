@@ -2,10 +2,12 @@
 
 # Maintainer: zt <zt@zt64.dev>
 # Maintainer: cookie <kyliepc@proton.me>
+# Maintainer: Mylloon <aur@mylloon.fr>
+
 _pkgname=vesktop
 pkgname=vesktop-keybindings-git
 pkgdesc="A standalone Electron-based Discord app with Vencord & improved Linux support with PR #1238 applied"
-pkgver=r626.75b0320
+pkgver=r655.5078e64
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -23,7 +25,7 @@ provides=("vesktop")
 conflicts=('vesktop')
 
 source=(
-  "$_pkgname::git+$url.git"
+  "$_pkgname::git+$url.git#branch=global-shortcuts"
   "vesktop.desktop::https://aur.archlinux.org/cgit/aur.git/plain/vesktop.desktop?h=vesktop-git"
   "vesktop.sh::https://aur.archlinux.org/cgit/aur.git/plain/vesktop.sh?h=vesktop-git"
 )
@@ -42,9 +44,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname" || exit
-
-  # Change branch
-  git checkout global-shortcuts
 
   pnpm i --frozen-lockfile
 
