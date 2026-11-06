@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=optivorbis-git
-pkgver=0.3.0.r552.g27c0f1b
+pkgver=0.3.2.r140.g1d70cf3d
 pkgrel=1
 pkgdesc="Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data"
 arch=('i686' 'x86_64')
@@ -18,11 +18,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "OptiVorbis"
 
-  if [ ! -f "packages/optivorbis_cli/Cargo.lock" ]; then
-    cargo update \
+  if [ ! -f "Cargo.lock" ]; then
+    cargo erate-lockfile \
       --manifest-path "packages/optivorbis_cli/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "packages/optivorbis_cli/Cargo.toml"
 }
 
