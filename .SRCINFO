@@ -1,0 +1,11 @@
+pkgbase = ttf-newsreader
+	pkgdesc = Newsreader, a text and display serif typeface for on-screen reading by Production Type
+	pkgver = 2021.03.01
+	pkgrel = 1
+	url = https://github.com/productiontype/Newsreader
+	arch = any
+	license = OFL-1.1
+	source = ttf-newsreader-cfcb4f7af0e52c25e8df2a2431814c8e5fe2e155.tar.gz::https://github.com/productiontype/Newsreader/archive/cfcb4f7af0e52c25e8df2a2431814c8e5fe2e155.tar.gz
+	sha256sums = e6726fdd7a4791fe586142a7e60c9a37d4fa26da7515634f91ba56a489022d7a
+
+pkgname = ttf-newsreader
