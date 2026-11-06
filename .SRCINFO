@@ -1,6 +1,6 @@
 pkgbase = runyte-bin
 	pkgdesc = An editor-first, agent-ready terminal workspace for software development
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/runyte/runyte
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = runyte-bin
 	provides = runed
 	conflicts = runyte
 	options = !strip
-	source_x86_64 = runyte-x86_64-0.4.1.txz::https://github.com/runyte/runyte/releases/download/v0.4.1/runyte-desktop-v0.4.1-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 5ea2687c79d0baf4be7002586373fe04eee1e396918d96403ee01f5a1e0364d3
-	source_aarch64 = runyte-aarch64-0.4.1.txz::https://github.com/runyte/runyte/releases/download/v0.4.1/runyte-desktop-v0.4.1-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = bceaa9836afc9e2a99274690b4cf2bcf902f346a57071b90524d52c5fd1d0216
+	source_x86_64 = runyte-x86_64-0.4.2.txz::https://github.com/runyte/runyte/releases/download/v0.4.2/runyte-desktop-v0.4.2-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 82644020972e644fd46b2ab9132e68c02fd867d08bad9eda46dc9e0dbbc1097d
+	source_aarch64 = runyte-aarch64-0.4.2.txz::https://github.com/runyte/runyte/releases/download/v0.4.2/runyte-desktop-v0.4.2-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 65889ca2a3498ca24e6f740252ec50e731b99a180f417701da3ac98c6e907f2c
 
 pkgname = runyte-bin
