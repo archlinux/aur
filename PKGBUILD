@@ -1,6 +1,16 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
+
+# PKGBUILD for building on the Open Build Service.
+#
+# OBS build VMs have no network, so every source has to be present in the
+# package's OBS sources before the build starts. This consumes the Debian
+# native tarball that release builds commit to debs/ - it carries the complete
+# source tree - instead of fetching a GitHub tarball the way aur/PKGBUILD does.
+#
+# Keep pkgver in step with debian/changelog: it names the tarball.
+
 pkgname=mx-user
-pkgver=26.07.1
+pkgver=26.11
 pkgrel=1
 pkgdesc="Simple user configuration tool"
 arch=('x86_64')
@@ -8,11 +18,15 @@ url="https://github.com/MX-Linux/mx-user"
 license=('GPL3')
 depends=('qt6-base' 'polkit' 'rsync' 'shadow')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.07.1.tar.gz")
-sha256sums=('c4911f98343e399378644f9ca8b4f20652698421206382b871d7a6fc0a6d1f7c')
+source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.11.tar.gz")
+sha256sums=('b84449b85c0e82cf6bdeb899b3da922a9764cc7b4a3fea725b90e83165fbc309')
+
+# dpkg-source packed this tarball from a directory called "src", so that - not
+# ${pkgname}-${pkgver} - is what it unpacks to.
+_srcdir="mx-user-26.11"
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_srcdir}"
 
     rm -rf build
 
@@ -30,12 +44,15 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_srcdir}"
 
     install -Dm755 build/mx-user "${pkgdir}/usr/bin/mx-user"
 
-    install -dm755 "${pkgdir}/usr/share/mx-user/locale"
-    install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-user/locale/" 2>/dev/null || true
+    # "install -D" with several sources needs -t, and then creates the
+    # destination directory itself, so the separate install -dm755 is gone. No
+    # error suppression either: the old "2>/dev/null || true" swallowed a glob
+    # that matched nothing, shipping the package with no translations at all.
+    install -Dm644 -t "${pkgdir}/usr/share/mx-user/locale/" build/*.qm
 
     install -dm755 "${pkgdir}/usr/lib/mx-user"
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-user/helper"
@@ -46,7 +63,7 @@ package() {
     install -Dm644 mx-user.desktop "${pkgdir}/usr/share/applications/mx-user.desktop"
     install -Dm644 debian/mx-user.1 "${pkgdir}/usr/share/man/man1/mx-user.1"
 
-    install -Dm644 icons/mx-user.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/mx-user.png"
+    install -Dm644 icons/mx-user.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/mx-user.png"
     install -Dm644 icons/mx-user.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-user.svg"
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-user"
@@ -58,4 +75,8 @@ package() {
     if [ -f debian/changelog ]; then
         gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-user/changelog.gz"
     fi
+    # namcap flags a declared license= with nothing under
+    # /usr/share/licenses. The file is in the source; it was simply never
+    # installed.
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

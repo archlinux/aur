@@ -1,6 +1,6 @@
 pkgbase = mx-user
 	pkgdesc = Simple user configuration tool
-	pkgver = 26.07.1
+	pkgver = 26.11
 	pkgrel = 1
 	url = https://github.com/MX-Linux/mx-user
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mx-user
 	depends = polkit
 	depends = rsync
 	depends = shadow
-	source = https://github.com/MX-Linux/mx-user/archive/refs/tags/26.07.1.tar.gz
-	sha256sums = c4911f98343e399378644f9ca8b4f20652698421206382b871d7a6fc0a6d1f7c
+	source = https://github.com/MX-Linux/mx-user/archive/refs/tags/26.11.tar.gz
+	sha256sums = b84449b85c0e82cf6bdeb899b3da922a9764cc7b4a3fea725b90e83165fbc309
 
 pkgname = mx-user
