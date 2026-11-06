@@ -5,7 +5,7 @@ pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
 pkgver=2.5.10
 _ipc_ver=2.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -30,7 +30,7 @@ prepare() {
 	popd
 
 	cd "${pkgname}-${pkgver}/"
-	jq '.bundle.createUpdaterArtifacts = false | del(.plugins.updater)' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+	jq '.bundle.createUpdaterArtifacts = false | .plugins.updater.endpoints = []' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
 	pnpm i
 
 	cd src-tauri
