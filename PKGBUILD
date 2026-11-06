@@ -1,10 +1,10 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=cfetch-agent
-pkgver=0.9.9
-pkgrel=1
+pkgver=0.10.3
+pkgrel=2
 pkgdesc="Cited, trust-tiered memory for AI coding agents over plain Markdown"
 arch=('x86_64' 'aarch64')
-url="https://github.com/corbet-labs/cfetch"
+url="https://git.corbet.ch/corbet-libs/cfetch"
 license=('LicenseRef-FSL-1.1-ALv2')
 provides=('cfetch')
 conflicts=('cfetch')
@@ -13,7 +13,7 @@ conflicts=('cfetch')
 # the archive links "successfully empty" and every sqlite3_* symbol goes missing.
 options=('!lto')
 makedepends=('cargo' 'git')
-source=("$pkgname::git+https://github.com/corbet-labs/cfetch.git#tag=v$pkgver")
+source=("$pkgname::git+https://git.corbet.ch/corbet-libs/cfetch.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
@@ -23,8 +23,8 @@ prepare() {
 
 _cfetch_variant() {
   case "$CARCH" in
-    x86_64) printf '%s\n' linux-cfetch-remote-x86_64 ;;
-    aarch64) printf '%s\n' linux-cfetch-remote-arm64 ;;
+    x86_64) printf '%s\n' linux-cfetch-cpu-x86_64 ;;
+    aarch64) printf '%s\n' linux-cfetch-cpu-arm64 ;;
     *) printf 'unsupported cfetch architecture: %s\n' "$CARCH" >&2; return 1 ;;
   esac
 }
@@ -90,7 +90,7 @@ _cfetch_portable_build_env() {
 build() {
   cd "$pkgname"
   _cfetch_portable_build_env
-  CFETCH_VARIANT="$(_cfetch_variant)" cargo build --release --locked
+  CFETCH_VARIANT="$(_cfetch_variant)" cargo build --release --locked --features embedded-embeddings
 }
 
 check() {
@@ -99,7 +99,7 @@ check() {
   # the same value recompiles target/release/cfetch as an unidentified developer
   # build, and package() would then install that overwritten binary.
   _cfetch_portable_build_env
-  CFETCH_VARIANT="$(_cfetch_variant)" cargo test --release --locked
+  CFETCH_VARIANT="$(_cfetch_variant)" cargo test --release --locked --features embedded-embeddings
 }
 
 package() {
@@ -111,4 +111,6 @@ package() {
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   install -Dm644 THIRD-PARTY-LICENSES.txt \
     "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES.txt"
+  install -Dm644 release/onnxruntime-LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/onnxruntime-LICENSE.txt"
+  install -Dm644 release/onnxruntime-NOTICES.txt "$pkgdir/usr/share/licenses/$pkgname/onnxruntime-NOTICES.txt"
 }
