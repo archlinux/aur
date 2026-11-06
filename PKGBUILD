@@ -1,11 +1,12 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=velocity-speedtest
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A simple speedtest app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vani-tty1/velocity"
 license=('GPL-3.0-or-later')
+options=(!debug)
 depends=(
   'glib2'
   'gtk4'
@@ -19,11 +20,10 @@ makedepends=(
   'meson'
   'ninja'
   'glib2-devel'
-  
 )
 
 source=("velocity-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('51be188eef1a62bcb56eb9eed7c03482b45880b5d5c1286d26a9e3c913c8bac2')
+sha256sums=('db70356db2e45090d3f2802312af679b186c45bc733efb5982a18892c18bade0')
 
 build() {
   cd "velocity-${pkgver}"
