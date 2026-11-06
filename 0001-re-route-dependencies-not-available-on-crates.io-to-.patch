@@ -5,11 +5,11 @@ Subject: [PATCH] re-route dependencies not available on crates.io to git repos
 
 Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
 ---
-    Cargo.toml | 146 ++++++++++++-------------------------------------------------
- 1 file changed, 27 insertions(+), 119 deletions(-)
+ Cargo.toml         | 163 +++++++++++------------------------------------------
+ 2 files changed, 32 insertions(+), 139 deletions(-)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index 6d82326c0..f3e0fe754 100644
+index 0d822b9d5..184ded276 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -41,8 +41,6 @@ members = [
@@ -21,23 +21,7 @@ index 6d82326c0..f3e0fe754 100644
  
      "pxar-bin",
  ]
-@@ -122,7 +120,6 @@ pbs-tools = { path = "pbs-tools" }
- # regular crates
- anyhow = "1.0"
- async-trait = "0.1.56"
--apt-pkg-native = "0.3.2"
- bitflags = "2.4"
- bytes = "1.0"
- cidr = "0.3"
-@@ -135,7 +132,6 @@ flate2 = "1.0"
- foreign-types = "0.3"
- futures = "0.3"
- h2 = { version = "0.4", features = [ "stream" ] }
--handlebars = "3.0"
- hex = "0.4.3"
- hickory-resolver = { version = "0.24.1", default-features = false, features = [ "system-config", "tokio-runtime" ] }
- http-body-util = "0.1"
-@@ -175,164 +171,66 @@ zstd = "0.13"
+@@ -170,162 +168,65 @@ zstd = "0.13"
  zstd-safe = "7"
  
  [dependencies]
@@ -67,7 +51,6 @@ index 6d82326c0..f3e0fe754 100644
 -rustyline.workspace = true
 -serde.workspace = true
 -serde_json.workspace = true
--syslog.workspace = true
 -termcolor.workspace = true
 -thiserror.workspace = true
 -tokio = { workspace = true, features = [ "fs", "io-util", "io-std", "macros", "net", "parking_lot", "process", "rt", "rt-multi-thread", "signal", "time" ] }
@@ -101,7 +84,7 @@ index 6d82326c0..f3e0fe754 100644
 -proxmox-metrics.workspace = true
 -proxmox-network-api = { workspace = true, features = [ "impl" ] }
 -proxmox-network-types.workspace = true
--proxmox-notify = { workspace = true, features = [ "pbs-context" ] }
+-proxmox-notify = { workspace = true, features = [ "pbs-context", "legacy-matchers" ] }
 -proxmox-openid.workspace = true
 -proxmox-product-config.workspace = true
 -proxmox-parallel-handler.workspace = true

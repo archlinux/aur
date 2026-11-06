@@ -1,7 +1,7 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=4.2.8
+pkgver=4.2.10
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-s
 options=(!lto)
 source=(
     "$pkgname-$pkgver::git+https://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git+https://git.proxmox.com/git/proxmox.git#commit=07f4269cc682157ffac2ee76610a2ccd656e7d30"
+    "proxmox::git+https://git.proxmox.com/git/proxmox.git#commit=17d7f43dbca69d622bee07a93626ae1e741f7109"
     "proxmox-fuse::git+https://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git+https://git.proxmox.com/git/pxar.git"
     "pathpatterns::git+https://git.proxmox.com/git/pathpatterns.git"
