@@ -1,6 +1,6 @@
 pkgbase = systemd-remove-birthdate
 	pkgver = 262.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -54,6 +54,8 @@ pkgbase = systemd-remove-birthdate
 	makedepends = lib32-gcc-libs
 	makedepends = python-pefile
 	makedepends = linux-headers
+	makedepends = rust
+	makedepends = rust-bindgen
 	conflicts = mkinitcpio<38-1
 	source = git+https://github.com/systemd/systemd#tag=v262.1?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
@@ -231,8 +233,8 @@ pkgname = systemd-remove-birthdate-tests
 	depends = python-pexpect
 	depends = python-pytest
 	depends = python-psutil
-	depends = systemd-remove-birthdate=262.1-1
-	depends = systemd-remove-birthdate-libs=262.1-1
+	depends = systemd-remove-birthdate=262.1-2
+	depends = systemd-remove-birthdate-libs=262.1-2
 	provides = systemd-tests=262.1
 	conflicts = systemd-tests
 	conflicts = systemd-tests-git
