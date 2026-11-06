@@ -1,6 +1,6 @@
 pkgbase = vice-clipper
 	pkgdesc = Medal.tv-style game clip recorder for Linux: instant replay, session recording, and one-click sharing
-	pkgver = 2.15.0
+	pkgver = 2.15.1
 	pkgrel = 1
 	url = https://github.com/splitshotz/Vice
 	install = vice-clipper.install
@@ -37,7 +37,7 @@ pkgbase = vice-clipper
 	optdepends = python-gobject: keyboard overlay
 	optdepends = python-cairo: keyboard overlay
 	optdepends = gtk-layer-shell: keyboard overlay on Wayland
-	source = vice-clipper-2.15.0.tar.gz::https://github.com/splitshotz/Vice/archive/refs/tags/v2.15.0.tar.gz
+	source = vice-clipper-2.15.1.tar.gz::https://github.com/splitshotz/Vice/archive/refs/tags/v2.15.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = vice-clipper
