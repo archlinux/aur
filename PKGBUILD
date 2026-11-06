@@ -1,5 +1,5 @@
 pkgname=libelectron
-pkgver=2026.7
+pkgver=2026.8
 pkgrel=1
 libsplashver=1.2.2
 libadblockver=1.6.3
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('npm' 'git' 'icu')
 pkgdesc="A meta package for electron and electron dependencies."
 makedepends=('unzip')
-sha256sums=('98dc889ae0a41228034ddda2b62d604969f736f95c19f4287c5aec0a6a2392f9'
+sha256sums=('cfaf5b0d9ce6060171fb471bbf220e206056b56755261dbee4da468802815f54'
             '2617eb7a1523fb285931611bc48eceb593713d1730ca8864066e776c5674cf1c'
             'e8cb905216c3ac9ba1c74b34ecc5b9eecee04739275bfec1d34d0f56e7e0bdf1'
             '9fc283a91a8048c78866677c8b099e06a91346b3d2973b85b3aafb5fc72f8a48')
