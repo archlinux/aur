@@ -1,6 +1,6 @@
 pkgbase = wild-git
 	pkgdesc = A linker with the goal of being very fast for iterative development
-	pkgver = 0.8.0.r72.g5dae38e0
+	pkgver = 0.11.0.r91.g7d888d20
 	pkgrel = 1
 	url = https://github.com/davidlattimore/wild
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = wild-git
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	provides = wild=0.8.0.r72.g5dae38e0
+	provides = wild=0.11.0.r91.g7d888d20
 	conflicts = wild
 	options = !lto
 	source = git+https://github.com/davidlattimore/wild.git

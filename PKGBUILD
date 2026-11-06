@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wild-git
-pkgver=0.8.0.r72.g5dae38e0
+pkgver=0.11.0.r91.g7d888d20
 pkgrel=1
 pkgdesc="A linker with the goal of being very fast for iterative development"
 arch=('i686' 'x86_64')
@@ -20,11 +20,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "wild"
 
-  if [ ! -f "wild/Cargo.lock" ]; then
-    cargo update \
+  if [ ! -f "Cargo.lock" ]; then
+    cargo generate-lockfile \
       --manifest-path "wild/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "wild/Cargo.toml"
 }
 
