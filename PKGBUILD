@@ -6,9 +6,9 @@ pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
 license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Apache-2.0' 'CC0-1.0')
-depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
+depends=('aspnet-runtime>=10' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
          'fontconfig' 'libx11' 'libice' 'libsm' 'glib2' 'libsndfile' 'alsa-lib')
-makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf' 'python' 'cargo')
+makedepends=('dotnet-sdk>=10' 'dotnet-targeting-pack>=10' 'lv2' 'pkgconf' 'python' 'cargo')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin'
