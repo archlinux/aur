@@ -7,7 +7,7 @@
 
 pkgname=xmap-studio-bin
 _pkgname=xmap-studio
-pkgver=26.5.0
+pkgver=26.5.1
 pkgrel=1
 pkgdesc='Free and open-source mind map editor for .xmind files, with native LaTeX formulas'
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=('!strip' '!debug')
 _tarball="$_pkgname-$pkgver-linux-x86_64"
 source=("$_tarball.tar.gz::$url/releases/download/v$pkgver/$_tarball.tar.gz"
         'xmap-studio.sh')
-sha256sums=('a83a01a79a92b8bf0bb955c437c0afd3c2fd4697c451bca2a578bc948975bcd1'
+sha256sums=('7dd44a659dc3ec4891b9720ce4931e9f8a87a326dea13555bbd2a9f67ea82daf'
             'e1d01076568a7fc57e4202a4bd9c78148bf2d24e09a37ba2e8380b5828bbc0c1')
 
 package() {
