@@ -11,7 +11,7 @@ _appname=tp
 pkgname=${_cratename}
 pkgdesc="A colorful htop/btop-style system monitor TUI"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -29,7 +29,7 @@ provides=("${_appname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('ae7d0d9e4279e5ded7e3819cdf50ae24fe6394323ac07dd6c9e84aa2227b3565')
+sha256sums=('e0d3a3b2b6219e547b1c3576e260f8ae8e68a16b28bba5a4ce3f9b010aceaec0')
 
 
 build() {
