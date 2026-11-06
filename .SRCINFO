@@ -1,6 +1,6 @@
 pkgbase = jankk-bin
 	pkgdesc = A GBA game launcher and emulator frontend built with Qt and mGBA (prebuilt)
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Happilli/_jankk
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = jankk-bin
 	depends = lua
 	provides = jankk
 	conflicts = jankk
-	source = jankk-0.1.3-x86_64.tar.gz::https://github.com/Happilli/_jankk/releases/download/v0.1.3/jankk-0.1.3-x86_64.tar.gz
-	sha256sums = 2da9eeec9c5986cd16407c1ef2a72daaf48b43e14feca7d489bd102407d39f66
+	source = jankk-0.1.4-x86_64.tar.gz::https://github.com/Happilli/_jankk/releases/download/v0.1.4/jankk-0.1.4-x86_64.tar.gz
+	sha256sums = d19d139611c7ba46b0e99e75a26fe2e77fdc6776d6d535e6e34b4c3fe9f50ba1
 
 pkgname = jankk-bin
