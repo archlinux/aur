@@ -1,14 +1,14 @@
 # Maintainer: mmoya <mmoya at mmoya dot org>
 
 pkgname=maki-bin
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="An efficient AI coding agent"
 arch=('x86_64')
 url="https://github.com/tontinton/maki"
 license=('MIT')
 source=("${url}/releases/download/v${pkgver}/maki-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('a8c5311a292201c728354add3aa27ed32d0ffd374f4f9d136ba3a92949fb5352')
+sha256sums=('3e0a1d1a4bc2bbaafdeb94f2a551bcc2d0f6ed81edfd9dd13272d9caa5add787')
 options=('!debug')
 
 package() {
