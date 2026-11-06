@@ -9,11 +9,11 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.20.0
-_subver=1
+_subver=2
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
-pkgrel=2
+pkgrel=1
 pkgdesc="Bilibili official desktop client.哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -39,8 +39,8 @@ source=(
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('78c5cb1fc77d3982398fe30defc00359faa6e7d7a4d03086a29d6b9b0fef3b09')
-sha256sums_x86_64=('889626df2fa98b8e02aa3ce1357089663eb36d58631180285f83714c54f660a3')
+sha256sums_aarch64=('b3d42b2db5ea9647f198c514f831430e3ad0698e3ba2455ceaa0a990ec81a5e4')
+sha256sums_x86_64=('3c423f701c8f6126e1f6daffd65e43cf5213bc53ae18d2af5b339d04f0298ae7')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
