@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=nexttrace-bin
-pkgver=1.7.5
+pkgver=1.7.6
 _tag=v$pkgver
 pkgrel=1
 provides=('nexttrace')
@@ -12,7 +12,7 @@ url='https://github.com/nxtrace/NTrace-core'
 license=('GPL-3.0-only')
 install=nexttrace.install
 source=("$pkgname-$pkgver::$url/releases/download/$_tag/nexttrace_linux_amd64")
-sha256sums=('7d7fa3bdd967494d1c051766696dea753bc6f4a1d95c2016fdfa078cf1894ff6')
+sha256sums=('3868c8190c961b534b8f2d0ed528796fc48d46a818ee5268fe2dfc6aa44b3a5e')
 
 package() {
     install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/nexttrace"
