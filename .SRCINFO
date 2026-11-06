@@ -1,6 +1,6 @@
 pkgbase = grappa-bin
 	pkgdesc = Always-on IRC bouncer with a REST/WebSocket API and bundled cicchetto web client (official binary)
-	pkgver = 1.6.0
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/vjt/grappa-irc
 	install = grappa.install
@@ -20,14 +20,14 @@ pkgbase = grappa-bin
 	optdepends = perl-image-exiftool: remove metadata from image uploads
 	optdepends = ffmpeg: remove metadata from video uploads
 	optdepends = nginx: HTTPS reverse proxy
-	provides = grappa=1.6.0
+	provides = grappa=1.6.2
 	conflicts = grappa
-	noextract = grappa-bin-v1.6.0-grappa-1.6.0-1-x86_64.pkg.tar.zst
+	noextract = grappa-bin-v1.6.2-grappa-1.6.2-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = grappa-bin-v1.6.0-grappa-1.6.0-1-x86_64.pkg.tar.zst::https://github.com/vjt/grappa-irc/releases/download/v1.6.0/grappa-1.6.0-1-x86_64.pkg.tar.zst
+	source = grappa-bin-v1.6.2-grappa-1.6.2-1-x86_64.pkg.tar.zst::https://github.com/vjt/grappa-irc/releases/download/v1.6.2/grappa-1.6.2-1-x86_64.pkg.tar.zst
 	source = README.md
-	sha256sums = 6722aef456d7d3e8e996fe304c4864569279c34334664f402258a1bbbae5e3e1
+	sha256sums = 62953a4c50a3f6afca7ab58fe33c86cd07454f0fe620162ff54df4bd756368b9
 	sha256sums = f40466d9862f8bf95819effdedceea8fa08f454ab179c583d53e04a85835d7a5
 
 pkgname = grappa-bin
