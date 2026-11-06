@@ -47,4 +47,6 @@ check() {
 package() {
   install -Dm755 "${srcdir}"/build/* -t "${pkgdir}/usr/bin"
   install -Dm644 "${srcdir}/mp4ff/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${srcdir}/mp4ff/bits/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/bits"
+  install -Dm644 "${srcdir}/mp4ff/mp4/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/mp4"
 }
