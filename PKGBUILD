@@ -1,6 +1,6 @@
 # Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
 pkgname='netaudio-git'
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Cross-platform control, automation, and monitoring for Dante network audio devices (git version)"
 arch=('x86_64' 'aarch64')
