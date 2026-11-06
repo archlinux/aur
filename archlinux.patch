@@ -1,26 +1,39 @@
-diff --git a/YUViewApp/YUViewApp.pro b/YUViewApp/YUViewApp.pro
-index 024fae08..67af39e9 100644
---- a/YUViewApp/YUViewApp.pro
-+++ b/YUViewApp/YUViewApp.pro
-@@ -19,7 +19,7 @@ win32-msvc* {
+From f21da9518cd96ef58e8c818bd318e02975a1ca43 Mon Sep 17 00:00:00 2001
+From: Ruben Gonzalez <rgonzalez@fluendo.com>
+Date: Fri, 6 Nov 2026 18:14:38 +0100
+Subject: [PATCH] Arch Linux changes
+
+---
+ CMakeLists.txt                         | 2 +-
+ YUViewLib/src/decoder/decoderVVDec.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7a3f86a..b89b209 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,7 @@ option(YUVIEW_BUILD_TESTS "Build YUView unit tests" OFF)
+ execute_process(COMMAND git describe --tags WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   OUTPUT_VARIABLE YUVIEW_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE ERROR_QUIET)
+ if(NOT YUVIEW_VERSION)
+-  set(YUVIEW_VERSION 0)
++  set(YUVIEW_VERSION v2.15)
+ endif()
+ message(STATUS "YUView version: ${YUVIEW_VERSION}")
  
- unix:!mac {
-     isEmpty(PREFIX) {
--        PREFIX = /usr/local
-+        PREFIX = /usr
-     }
-     isEmpty(BINDIR) {
-         BINDIR = bin
 diff --git a/YUViewLib/src/decoder/decoderVVDec.cpp b/YUViewLib/src/decoder/decoderVVDec.cpp
-index 78b0fd8d..f7bfb173 100644
+index 6632eb7..00221e1 100644
 --- a/YUViewLib/src/decoder/decoderVVDec.cpp
 +++ b/YUViewLib/src/decoder/decoderVVDec.cpp
-@@ -171,6 +171,8 @@ QStringList decoderVVDec::getLibraryNames() const
-   // Since this has been compiled for linux it will fail and not even try to open the .dylib.
+@@ -173,7 +173,7 @@ QStringList decoderVVDec::getLibraryNames() const
    // On windows and linux ommitting the extension works
    QStringList names;
-+  if (is_Q_OS_LINUX)
-+    names << "libvvdec";
    if (is_Q_OS_LINUX)
-     names << "libvvdecLib";
-   if (is_Q_OS_MAC)
+-    names << "libvvdecLib";
++    names << "libvvdec";
+   if (is_Q_OS_MACOS)
+     names << "libvvdecLib.dylib";
+   if (is_Q_OS_WIN)
+-- 
+2.56.0
+
