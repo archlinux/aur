@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=lightxdm
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Display-manager-free TTY1 login: your desktop starts and its keyring unlocks'
 arch=('any')
@@ -17,8 +17,8 @@ license=('GPL-3.0-or-later')
 validpgpkeys=('2B0541BF62E91D538C55739DF677BC1E3BD7246E')
 depends=('bash' 'sudo' 'gnupg' 'grep')
 install='lightxdm.install'
-source=("https://github.com/eserlxl/lightXDM/releases/download/v1.0.2/lightxdm-1.0.2.tar.gz" "https://github.com/eserlxl/lightXDM/releases/download/v1.0.2/lightxdm-1.0.2.tar.gz.sig")
-b2sums=('46387d0ad1bfbea282ef5bf3be98c7acd38f05c057b007baeb54e0bc9442cc9a76c9624719a033509779a4d0d9838f307adc0e9e69094396ab9e472ce8dac69e'
+source=("https://github.com/eserlxl/lightXDM/releases/download/v1.1.0/lightxdm-1.1.0.tar.gz" "https://github.com/eserlxl/lightXDM/releases/download/v1.1.0/lightxdm-1.1.0.tar.gz.sig")
+b2sums=('bf5d56ef90f6761e40d34b15ac31a61c50013152d442cd67bcd7d8f7756cde8e62f8655d86c2842a01bedbe2c9ab3fa1a13c7a438b936c499c9e2fdc1ad7cfe4'
         'SKIP')
 
 build() {
