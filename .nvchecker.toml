@@ -1,0 +1,4 @@
+[tidra]
+source="git"
+git="https://github.com/yusifaliyevpro/tidra-app"
+prefix="v"
