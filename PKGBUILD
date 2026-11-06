@@ -1,42 +1,47 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 pkgname=fzlaunch-git
-pkgver=r2.1100868
+pkgver=r8.a17e128
 pkgrel=1
 pkgdesc='Launch apps and commands as systemd units from fzf (git development version)'
 arch=(any)
 url='https://gitlab.com/greyxor/fzlaunch'
 license=(MIT)
+# Everything fzlaunch runs itself. app2unit is the default launcher (uwsm can
+# replace it, see optdepends) and needs xdg-terminal-exec for -T, which
+# fzlaunch passes for every command, but does not depend on it.
 depends=(
+	app2unit
 	awk
 	coreutils
 	findutils
-	'fzf>=0.61'
+	'fzf>=0.67'
 	sed
 	sh
+	xdg-terminal-exec
 )
 makedepends=(git)
 optdepends=(
-	'app2unit: launch picks as systemd units (default launcher)'
-	'uwsm: launch picks with FZLAUNCH_LAUNCHER="uwsm app" or "uwsm-app"'
-	'xdg-terminal-exec: open commands and terminal apps in your terminal'
+	'chafa: app icons in the preview'
 	'man-db: command summaries in the preview'
+	'uwsm: launch with FZLAUNCH_LAUNCHER="uwsm app" or "uwsm-app"'
 )
-provides=("${pkgname%-git}=${pkgver}")
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+${url}.git")
+source=("git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+	cd "${pkgname%-git}"
 	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 check() {
-	sh "${pkgname}/tests/run.sh"
+	cd "${pkgname%-git}"
+	sh tests/run.sh
 }
 
 package() {
-	cd "${pkgname}"
+	cd "${pkgname%-git}"
 	install -Dm755 fzlaunch -t "${pkgdir}/usr/bin/"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
