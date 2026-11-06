@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=opensquilla
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='OpenSquilla desktop app repackaged from the official macOS release'
 arch=('x86_64')
@@ -27,8 +27,8 @@ source=(
 )
 noextract=("OpenSquilla-${pkgver}-mac-arm64.dmg")
 sha256sums=(
-  '19c019f88efae7dd68812b981f092242dc5fc91e8aa11e717039ab63347ac6f0'
-  'b2c362733c72b984d4f816d226cacd23794de8ebd559119c10006697ac59f9d5'
+  '3911b779f864009fc6fb9860b0f6c3cf24e1963e2e16194a7f9993defb6152df'
+  'db292f4b604422fb6828acb4d9bb976fb69fcfcff4eaf77109aca0a4aed7151a'
   'c101ed4bf5ff25352e2fc6136b7c5e4f542ec9c8724354f3afade11bbf6de939'
   'SKIP'
   'a5e72781a32dec1ac68ce5ab9d09539c8919d2785667996b8d7ffc2c1c0ad5f3'
