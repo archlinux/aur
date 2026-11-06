@@ -1,7 +1,7 @@
 pkgbase = optivorbis-git
 	pkgdesc = Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data
 	pkgver = 0.3.2.r140.g1d70cf3d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://optivorbis.github.io/OptiVorbis/
 	arch = i686
 	arch = x86_64
