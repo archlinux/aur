@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=evex-mpp-bin
 _pkgname=EvEX-MPP
-pkgver=0.8.0
+pkgver=0.10.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Desktop XMPP client built for EVE Online communities: fleet pings, auto-join rooms, always-on-top alerts, EVE time and themes."
@@ -16,13 +16,11 @@ depends=(
 source=(
 	"${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AlexDeveOp/EvEX-MPP/v${pkgver}/LICENSE"
-	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('395b6e8e306249ec4ceaf960a054c54c48e124272db2719381c866fa89b5aa7f'
+sha256sums=('236c42653da5f370dbbe26e6299938b40223da811b7072622d7ce2421655fb18'
             '94dfdcc87fdeac00abb85ee58b68abf53ea754afac459123e39ef21dbfba5865'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'ef3b8fed44fdace077b976cc3a89a93bde368a9e445e4134efd7a44358676a27')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -50,14 +48,14 @@ prepare() {
 	sed -i -e "
 		s/@electronversion@/${_electronversion}/g
 		s/@appname@/${pkgname%-bin}/g
-	" "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
+	" "${srcdir}/${pkgname%-bin}.sh"
 	bsdtar -xf "${srcdir}/data."*
 	_check_electron_version
 	sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
 	_install_icons
 	install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"

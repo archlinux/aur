@@ -3,6 +3,8 @@ set -e
 export _APPDIR="/usr/lib/@appname@"
 export CHROME_DESKTOP="@appname@.desktop"
 export LD_LIBRARY_PATH="${_APPDIR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export ELECTRON_IS_DEV=0
+export NODE_ENV=production
 if [[ -f "${_APPDIR}/app.asar" ]]; then
 	_RUNNAME="${_APPDIR}/app.asar"
 elif [[ -d "${_APPDIR}/app" ]]; then
@@ -34,4 +36,4 @@ auto)
 	_OZONE_ARG=("--ozone-platform=x11")
 	;;
 esac
-exec electron@electronversion@ "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --require "${_APPDIR}/@appname@.js" --app "${_RUNNAME}" "$@"
+exec electron@electronversion@ --resources-path="${_APPDIR}" "${_SANDBOX_ARG[@]}" "${_OZONE_ARG[@]}" --app "${_RUNNAME}" "$@"
