@@ -6,7 +6,7 @@
 
 pkgname=amp-desktop-bin
 _pkgname=amp-desktop
-pkgver=0.1.29899321
+pkgver=0.1.29899681
 pkgrel=1
 pkgdesc='Amp, the frontier coding agent, as a desktop app'
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${_url}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${_url}-arm64.deb")
 noextract=("${_pkgname}-${pkgver}-x86_64.deb" "${_pkgname}-${pkgver}-aarch64.deb")
 # Publishing (.buildkite/scripts/linux-desktop-build.sh) sets these to the debs' checksums.
-sha256sums_x86_64=('fc77f26805493d22e05d6c2fa8601b4c76e7696cbd7dd7d960267a2ccdef6c9b')
-sha256sums_aarch64=('446a710a45be094073e7ffad510b19396abe5bd59b45e0729c485da1b3d43d7e')
+sha256sums_x86_64=('8f2044b91bd57f31bbda5bc4461ae072a60987cc9d85cbd3471ddc9cde0faa0a')
+sha256sums_aarch64=('ca91676f362fe083e3fc19763f9f6e7476529510daba3b7f071595941ee0a1a4')
 
 package() {
 	bsdtar -xOf "${_pkgname}-${pkgver}-${CARCH}.deb" 'data.tar.*' | bsdtar -xf - -C "${pkgdir}"
