@@ -1,13 +1,14 @@
 # Maintainer: Thomas Wucher <thomas.wucher@gtd-gmbh.de>
 
 pkgname=mcdc-checker
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A tool to check C/C++ source code for non tree-like binary decisions so that its MCDC test coverage can be assessed with GCov"
 arch=(any)
 url=https://gitlab.com/gtd-gmbh/mcdc-checker/mcdc-checker
-license=("Mozilla Public License Version 2.0")
-depends=("python>=3.10" "clang>=19.1.0")
+license=(MPL-2.0)
+makedepends=("python-pip")
+depends=("python>=3.11" "clang>=19.1.0")
 
 build() {
   pip install --no-deps --target="$pkgname" $pkgname==$pkgver
