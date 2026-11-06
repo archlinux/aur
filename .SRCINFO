@@ -1,6 +1,6 @@
 pkgbase = mesonotes-bin
 	pkgdesc = A hobby notes app built on one principle: your data is your property
-	pkgver = 1.0.48
+	pkgver = 1.0.50
 	pkgrel = 1
 	url = https://linuxmind.gitlab.io/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mesonotes-bin
 	conflicts = mesonotes
 	options = !strip
 	options = !debug
-	source = mesonotes-1.0.48-amd64.deb::https://gitlab.com/api/v4/projects/linuxmind%2Fmesonotes/packages/generic/mesonotes/1.0.48/mesonotes-1.0.48-amd64.deb
-	sha256sums = c87f44b33e32b02d59ca9ff3b2820d178002ee2e2868b89408d5200b2392d217
+	source = mesonotes-1.0.50-amd64.deb::https://gitlab.com/api/v4/projects/linuxmind%2Fmesonotes/packages/generic/mesonotes/1.0.50/mesonotes-1.0.50-amd64.deb
+	sha256sums = 5348995d6a8c21c8ab1fe296e292912cc8240c69b1a13d200acc323d0fe987a0
 
 pkgname = mesonotes-bin
