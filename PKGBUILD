@@ -1,7 +1,7 @@
 # Maintainer: Josesk Volpe <joseskvolpe at gmail dot com>
 # Co-Maintainer: Melroy van den Berg <melroy at melroy dot org>
 pkgname=winegui-bin
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="A user-friendly WINE graphical interface"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 conflicts=('winegui')
 provides=('winegui')
 source=("$pkgname-$pkgver.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v$pkgver.tar.gz")
-md5sums=('54c35ee8df048daa7a3ed0489efc83dd')
+md5sums=('53a947c653b38572977a061b6cb72c74')
 
 package() {
 	mkdir $pkgdir/usr
