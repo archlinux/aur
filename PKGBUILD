@@ -1,6 +1,6 @@
 # Python package author: Thomas Wucher <thomas.wucher@gtd-gmbh.de>
 pkgname=occtre
-pkgver=0.10.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A tool for producing and collecting test coverage on assembler level"
 arch=(any)
