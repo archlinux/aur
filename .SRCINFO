@@ -1,6 +1,6 @@
 pkgbase = leggio
 	pkgdesc = Sheet music viewer built for use at arm's length
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/MrGilfy/leggio
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = leggio
 	depends = libadwaita
 	depends = poppler-glib
 	depends = hicolor-icon-theme
-	source = https://github.com/MrGilfy/leggio/releases/download/v0.4.2/leggio-0.4.2.tar.gz
-	sha256sums = f386f27c1b9653f702101d3edbd90815b92d31b13f8a0850e00eb7fa1e27abe5
+	source = https://github.com/MrGilfy/leggio/releases/download/v0.4.3/leggio-0.4.3.tar.gz
+	sha256sums = 94ec99dbad4a2a33d279fb63223233838520c5ba0e40cee4792f5534ddb06c63
 
 pkgname = leggio
