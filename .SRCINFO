@@ -1,0 +1,22 @@
+pkgbase = daintree-bin
+	pkgdesc = A review-first desktop habitat for running AI coding agents in parallel.
+	pkgver = 0.48.0
+	pkgrel = 1
+	url = https://daintree.org
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron42
+	depends = git
+	depends = npm
+	depends = nodejs
+	depends = gh-cli
+	provides = daintree=0.48.0
+	conflicts = daintree
+	source = daintree-0.48.0.deb::https://updates.daintree.org/releases/daintree_0.48.0_amd64.deb
+	source = daintree.js
+	source = daintree.sh
+	sha256sums = 1a0a96323876a27490123fc1d1b756c30a06626d751d02833d70e1923196d738
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+
+pkgname = daintree-bin
