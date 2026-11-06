@@ -1,7 +1,7 @@
 # Maintainer: cookie <coookieuniverse@gmail.com>
 pkgname=staruml
 pkgver=8.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated software modeler"
 arch=('x86_64')
 url="http://staruml.io/"
@@ -22,7 +22,7 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s '/opt/staruml/staruml' "${pkgdir}/usr/bin/staruml"
 
-    build_desktop_dir="${pkgdir}/usr/share/applications"
-    install -d -m755 "${build_desktop_dir}"
-    install -m644 "${srcdir}/${pkgname}.desktop" "${build_desktop_dir}"
+    #build_desktop_dir="${pkgdir}/usr/share/applications"
+    #install -d -m755 "${build_desktop_dir}"
+    #install -m644 "${srcdir}/${pkgname}.desktop" "${build_desktop_dir}"
 }
