@@ -20,28 +20,29 @@ license=('AGPL-3.0-only')
 arch=('x86_64' 'aarch64')
 
 depends=(
-  'gtk3'
-  'libpulse'  # dlopened by flutter_webrtc's bundled libwebrtc
-  'libsecret' # flutter_secure_storage
-  'noto-fonts-emoji'
-  'openssl'   # sqlite encryption
-  'webkit2gtk-4.1'
-  'xdg-user-dirs' # path_provider
+    'gtk3'
+    'libpulse'  # dlopened by flutter_webrtc's bundled libwebrtc
+    'libsecret' # flutter_secure_storage
+    'noto-fonts-emoji'
+    'mpv'
+    'openssl' # sqlite encryption
+    'webkit2gtk-4.1'
+    'xdg-user-dirs' # path_provider
 )
 makedepends=(
-  'clang'
-  'cmake'
-  'fvm'
-  'git'
-  'lld'
-  'llvm'
-  'ninja'
-  'patchelf'
-  'rust'
+    'clang'
+    'cmake'
+    'fvm'
+    'git'
+    'lld'
+    'llvm'
+    'ninja'
+    'patchelf'
+    'rust'
 )
 optdepends=(
-  'zenity: for flutter_file_picker'
-  'kdialog: for flutter_file_picker'
+    'zenity: for flutter_file_picker'
+    'kdialog: for flutter_file_picker'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
@@ -51,69 +52,69 @@ options=('!lto' '!strip' '!debug')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=(
-  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
-  '0000-fix-wayland-gtk-csd.patch'
-  '0001-color-emoji-fallback.patch'
+    "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
+    '0000-fix-wayland-gtk-csd.patch'
+    '0001-color-emoji-fallback.patch'
 )
 sha256sums=('c823b44008dd1d9f7b0360a7122d66ec5a96544f7ad28166f39bdc5eaeaf69d4'
-            '04a373c2c25a9be1617ab1ccb19da48ae379ff392bb59a3938bcdec00ab82230'
-            'b35ccd4fdf32109ecbfd4979828a4b21ee66d38b67c1175c7ebe7ca90f2ecd1f')
+    '04a373c2c25a9be1617ab1ccb19da48ae379ff392bb59a3938bcdec00ab82230'
+    'b35ccd4fdf32109ecbfd4979828a4b21ee66d38b67c1175c7ebe7ca90f2ecd1f')
 
 prepare() (
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\n\nApplying patch: %s\n' "$src"
-      patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
-    fi
-  done
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        src="${src%.zst}"
+        if [[ $src == *.patch ]]; then
+            printf '\n\nApplying patch: %s\n' "$src"
+            patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
+        fi
+    done
 )
 
 build() {
-  local _units=$(OMP_NUM_THREADS=16 nproc --all)
-  export CARGO_PROFILE_RELEASE_LTO=false
-  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$_units
+    local _units=$(OMP_NUM_THREADS=16 nproc --all)
+    export CARGO_PROFILE_RELEASE_LTO=false
+    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$_units
 
-  # cargokit builds dart-sys through rust's cc crate, which picks gcc and
-  # inherits CFLAGS. gcc has no -Wunused-but-set-global and rejects the
-  # -Wno-error= below outright, so pin both compilers to the clang the rest
-  # of the flutter build already uses.
-  export CC=clang
-  export CXX=clang++
+    # cargokit builds dart-sys through rust's cc crate, which picks gcc and
+    # inherits CFLAGS. gcc has no -Wunused-but-set-global and rejects the
+    # -Wno-error= below outright, so pin both compilers to the clang the rest
+    # of the flutter build already uses.
+    export CC=clang
+    export CXX=clang++
 
-  export CFLAGS CXXFLAGS
-  CFLAGS+=" -Wno-error=deprecated-literal-operator"
-  CXXFLAGS+=" -Wno-error=deprecated-literal-operator"
+    export CFLAGS CXXFLAGS
+    CFLAGS+=" -Wno-error=deprecated-literal-operator"
+    CXXFLAGS+=" -Wno-error=deprecated-literal-operator"
 
-  # flutter builds the app and every plugin with -Wall -Werror, so clang 23's
-  # new -Wunused-but-set-global breaks flutter_webrtc over the parent_class
-  # variable glib's G_DEFINE_TYPE declares. Only the -Wno-error=<name> form
-  # survives the -Werror that cmake appends after these flags.
-  CFLAGS+=" -Wno-error=unused-but-set-global"
-  CXXFLAGS+=" -Wno-error=unused-but-set-global"
+    # flutter builds the app and every plugin with -Wall -Werror, so clang 23's
+    # new -Wunused-but-set-global breaks flutter_webrtc over the parent_class
+    # variable glib's G_DEFINE_TYPE declares. Only the -Wno-error=<name> form
+    # survives the -Werror that cmake appends after these flags.
+    CFLAGS+=" -Wno-error=unused-but-set-global"
+    CXXFLAGS+=" -Wno-error=unused-but-set-global"
 
-  # fix missing include
-  export CXXFLAGS+=" -include cstdint"
+    # fix missing include
+    export CXXFLAGS+=" -include cstdint"
 
-  # fix incompatible flags on ARM
-  if [ "${CARCH::1}" != "x" ]; then
-    local _unwanted=(
-      -fstack-protector-strong
-      -fstack-clash-protection
-    )
+    # fix incompatible flags on ARM
+    if [ "${CARCH::1}" != "x" ]; then
+        local _unwanted=(
+            -fstack-protector-strong
+            -fstack-clash-protection
+        )
 
-    for i in "${_unwanted[@]}"; do
-      CFLAGS=$(sed -E -e "s&${i}&&g" -e 's&\s+& &g' <<< "$CFLAGS")
-      CXXFLAGS=$(sed -E -e "s&${i}&&g" -e 's&\s+& &g' <<< "$CXXFLAGS")
-    done
-  fi
+        for i in "${_unwanted[@]}"; do
+            CFLAGS=$(sed -E -e "s&${i}&&g" -e 's&\s+& &g' <<<"$CFLAGS")
+            CXXFLAGS=$(sed -E -e "s&${i}&&g" -e 's&\s+& &g' <<<"$CXXFLAGS")
+        done
+    fi
 
-  # cargokit (flutter_vodozemac) insists on rustup; give it a stand-in that
-  # uses the system rust toolchain
-  mkdir -p "$srcdir/rustup-shim"
-  cat > "$srcdir/rustup-shim/rustup" << 'EOF'
+    # cargokit (flutter_vodozemac) insists on rustup; give it a stand-in that
+    # uses the system rust toolchain
+    mkdir -p "$srcdir/rustup-shim"
+    cat >"$srcdir/rustup-shim/rustup" <<'EOF'
 #!/bin/sh
 case "$1 $2" in
   "toolchain list") echo "stable-$(rustc -vV | sed -n 's/^host: //p') (default)" ;;
@@ -122,42 +123,42 @@ case "$1 $2" in
   *) exit 0 ;;
 esac
 EOF
-  chmod +x "$srcdir/rustup-shim/rustup"
-  export PATH="$srcdir/rustup-shim:$PATH"
+    chmod +x "$srcdir/rustup-shim/rustup"
+    export PATH="$srcdir/rustup-shim:$PATH"
 
-  cd "$_pkgsrc"
+    cd "$_pkgsrc"
 
-  : ${_fvm_version=$(grep -Pom1 '"flutter": "\K[0-9\.]+' ".fvmrc")}
+    : ${_fvm_version=$(grep -Pom1 '"flutter": "\K[0-9\.]+' ".fvmrc")}
 
-  fvm install "$_fvm_version"
-  fvm use "$_fvm_version" --force
+    fvm install "$_fvm_version"
+    fvm use "$_fvm_version" --force
 
-  fvm flutter --disable-analytics
-  fvm flutter pub get
-  fvm flutter build linux --no-pub --release
+    fvm flutter --disable-analytics
+    fvm flutter pub get
+    fvm flutter build linux --no-pub --release
 }
 
 package() {
-  pushd "$_pkgsrc"/build/linux/*/release
-  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/$_pkgname" .
-  DESTDIR="$pkgdir" cmake -P cmake_install.cmake
-  popd
+    pushd "$_pkgsrc"/build/linux/*/release
+    cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/$_pkgname" .
+    DESTDIR="$pkgdir" cmake -P cmake_install.cmake
+    popd
 
-  # rpath
-  patchelf --set-rpath '$ORIGIN' "$pkgdir/usr/lib/$_pkgname/lib"/*.so
+    # rpath
+    patchelf --set-rpath '$ORIGIN' "$pkgdir/usr/lib/$_pkgname/lib"/*.so
 
-  # symlink
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    # symlink
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-  # license
-  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+    # license
+    install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  # icon
-  install -Dm644 "$_pkgsrc/assets/logo/vector/logo_standalone.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+    # icon
+    install -Dm644 "$_pkgsrc/assets/logo/vector/logo_standalone.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
-  # launcher
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+    # launcher
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<END
 [Desktop Entry]
 Type=Application
 Name=FluffyChat
