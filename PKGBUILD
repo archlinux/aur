@@ -4,7 +4,7 @@ _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
 _debname=com.microsoft.VSCode
-pkgver=1.145.1
+pkgver=1.145.2
 _electronversion=43
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications."
@@ -16,6 +16,7 @@ arch=(
 url="https://code.visualstudio.com/"
 _ghurl="https://github.com/microsoft/vscode"
 #_dlurl="https://packages.microsoft.com/yumrepos/vscode/Packages/c"
+#_dlurl="https://packages.microsoft.com/repos/code/pool/main/c/code/"
 license=('LicenseRef-scancode-commercial-license')
 provides=(
     "${_pkgname}"
@@ -54,9 +55,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('dc6e622af50c366f1713adfa1de690bbee9af76c8fec1d4dccddadffc9bdf2ba'
             '13fb5f66f31ced197d0e2b566daae599ffe96ab6f9eea7a0ffccbfc2eedae92f')
-sha256sums_aarch64=('43e9e6fab9f62d6bc4789496e0fbf105673328db2a93becd1e584703e4da17b4')
-sha256sums_armv7h=('f378e487c214a7abcafd48984a8fa41a5b7e7e3ee029fd840d72ffae73176b28')
-sha256sums_x86_64=('8f29b08bcb8c57ee1486bcab23c5c8c2d307566a406d1c3925673b291a9f0c4e')
+sha256sums_aarch64=('9f9a744d717e1ce1f28931e5ce2d1ba146ad87863806acedb2786b39384916e6')
+sha256sums_armv7h=('ab00f37884b7ef9a5ee13c8a14d2aa28b0d42fa56615f32ab79ca5e24758f075')
+sha256sums_x86_64=('fb0e0563fd3977e77e53fa46e5da18d52cb04b3bb5be24fd2366ff2008becc02')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
