@@ -1,10 +1,9 @@
-# Maintainer: Di Mei <di.mei@coinbase.com>
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 _pkgname=roast
 pkgname="$_pkgname"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Adversarial cross-model code review'
 url='https://github.com/bluesky-social/roast'
 arch=('aarch64' 'i686' 'x86_64')
