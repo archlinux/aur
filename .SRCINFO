@@ -1,6 +1,6 @@
 pkgbase = remmina-plugin-ultraviewer-git
 	pkgdesc = UltraViewer remote desktop protocol plugin for Remmina
-	pkgver = 0.2.3.r0.gcf73601
+	pkgver = 0.2.3.r0.gca2bb79
 	pkgrel = 1
 	url = https://github.com/hmtheboy154/remmina-plugin-ultraviewer
 	arch = x86_64
