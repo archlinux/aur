@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=exDesktop
+Comment=Unofficial Telegram Desktop fork with Python plugins
+TryExec=exdesktop
+Exec=exdesktop -- %U
+Icon=exdesktop
+Terminal=false
+StartupWMClass=TelegramDesktop
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+MimeType=x-scheme-handler/tg;x-scheme-handler/tonsite;x-scheme-handler/ton;
+Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;exdesktop;extera;
+Actions=quit;
+
+[Desktop Action quit]
+Exec=exdesktop -quit
+Name=Quit exDesktop
+Icon=application-exit
