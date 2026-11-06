@@ -1,7 +1,7 @@
 pkgbase = shotivo-bin
-	pkgdesc = Free screenshots. Free sharing. No ads in the app. (precompiled)
+	pkgdesc = Free screenshots. Free sharing. (precompiled)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shotivo.app
 	arch = x86_64
 	arch = aarch64

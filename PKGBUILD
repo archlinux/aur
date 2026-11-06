@@ -1,8 +1,8 @@
-# Maintainer: Valens.dev <hello@valens.dev>
+# Maintainer: Valens.dev <info@valens.dev>
 pkgname=shotivo-bin
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="Free screenshots. Free sharing. No ads in the app. (precompiled)"
+pkgrel=2
+pkgdesc="Free screenshots. Free sharing. (precompiled)"
 arch=('x86_64' 'aarch64')
 url="https://shotivo.app"
 license=('MIT')
