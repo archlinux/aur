@@ -11,7 +11,7 @@ pkgbase = python-funk
 	makedepends = python-setuptools
 	depends = python
 	depends = python-precisely
-	source = python-funk-c9415c25c2f70310550d7db65f3f563481d0cdc5.tar.gz::https://github.com/mwilliamson/funk/archive/c9415c25c2f70310550d7db65f3f563481d0cdc5.tar.gz
+	source = python-funk-c9415c2.tar.gz::https://github.com/mwilliamson/funk/archive/c9415c25c2f70310550d7db65f3f563481d0cdc5.tar.gz
 	b2sums = 5ac9925b53eb6f0701359f1c057eff7bd0dbd5f668062bed7545028734414568a2471793a87a5214a25f8c6373d3b6a01af6bb5c2553d0fa2689c3b8ff744176
 
 pkgname = python-funk

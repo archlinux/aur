@@ -13,7 +13,7 @@ license=('BSD-2-Clause')
 checkdepends=('python-pytest')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 depends=('python' 'python-precisely')
-source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
+source=("${pkgname}-${_commit:0:7}.tar.gz::${url}/archive/${_commit}.tar.gz")
 b2sums=('5ac9925b53eb6f0701359f1c057eff7bd0dbd5f668062bed7545028734414568a2471793a87a5214a25f8c6373d3b6a01af6bb5c2553d0fa2689c3b8ff744176')
 
 prepare() {
