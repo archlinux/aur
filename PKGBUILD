@@ -3,7 +3,7 @@
 # AUR page: https://aur.archlinux.org/packages/qrow
 
 pkgname=qrow
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Query rows in tables, documents and databases from the terminal"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0ebe6639e000fcb64d8356fbee846668b16e89e059e664ef24fbaa9dbca8e12e')
+sha256sums=('c4e472d9cd7a1a78f11d9a83b4f56b6177789b318732a5642fba762d8d47342c')
 
 prepare() {
     cd "$pkgname-$pkgver"
