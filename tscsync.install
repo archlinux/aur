@@ -10,16 +10,16 @@ Before first setup, remove any prior manual /usr/local + ESP install:
   sudo /path/to/upstream/scripts/uninstall.sh
   # or: sudo tscsync-uninstall  (if an older package setup was used)
 
-Activate (example for rEFInd):
-  sudo tscsync-setup --loader refind
+Activate (pick your loader):
+  sudo tscsync-setup --loader refind         # or: grub | systemd-boot
   sudo tscsync-set-mode sync
 
-Secure Boot: EFI signing differs by distro and key setup (sbctl, MOK,
-distribution keys, …). tscsync-setup may auto-sign when it finds a usable
-key. If auto-sign fails or warns, install unsigned and sign manually:
+Signing: tscsync-setup auto-signs when it finds a key it knows about
+(DKMS MOK, sbctl db, …), even if Secure Boot is off. That needs
+sbsigntools (pulled in as a dependency). To install unsigned instead:
 
-  sudo tscsync-setup --loader refind --no-sign
-  # then sign the driver with your usual tool, e.g.:
+  sudo tscsync-setup --loader grub --no-sign
+  # then, if Secure Boot is on, sign with your usual tool, e.g.:
   #   sbctl sign -s "$(. /etc/tscsync.conf; echo "$DRIVER")"
   #   # or: sbsign --key … --cert … --output "$DRIVER" "$DRIVER"
   sudo tscsync-set-mode sync

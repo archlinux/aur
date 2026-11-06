@@ -1,7 +1,7 @@
 pkgbase = tscsync
 	pkgdesc = Pre-boot TSC sync for AMD (UEFI) so Linux keeps the TSC clocksource
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zanasin/tscsync
 	install = tscsync.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tscsync
 	depends = bash
 	depends = util-linux
 	depends = systemd
-	optdepends = sbsigntools: sign the EFI binary during tscsync-setup
+	depends = sbsigntools
 	optdepends = sbctl: enroll/sign with your Secure Boot keys
 	optdepends = mokutil: detect Secure Boot / MOK state during setup
 	conflicts = tscsync-git

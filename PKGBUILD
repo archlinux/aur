@@ -5,15 +5,16 @@
 
 pkgname=tscsync
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pre-boot TSC sync for AMD (UEFI) so Linux keeps the TSC clocksource'
 arch=('x86_64')
 url='https://github.com/Zanasin/tscsync'
 license=('MIT')
-depends=('bash' 'util-linux' 'systemd')
+# sbsigntools: setup auto-signs when any known key exists (DKMS MOK, sbctl db, …),
+# even with Secure Boot off — missing sbsign hard-fails (Zanasin/tscsync#7).
+depends=('bash' 'util-linux' 'systemd' 'sbsigntools')
 makedepends=('curl' 'binutils' 'gcc' 'make')
 optdepends=(
-  'sbsigntools: sign the EFI binary during tscsync-setup'
   'sbctl: enroll/sign with your Secure Boot keys'
   'mokutil: detect Secure Boot / MOK state during setup'
 )
