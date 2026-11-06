@@ -1,7 +1,7 @@
 # Maintainer: safalski <https://git.safallama.com.np/safalski>
 pkgname=typeshi-bin
 _pkgname=typeshi
-pkgver=0.1.23
+pkgver=0.1.24
 pkgrel=1
 pkgdesc="A typing application (prebuilt binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/releases/download/v$pkgver/typeshi-bin-$pkgver-x86_64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/RyuZinOh/typeshi-mirror/v$pkgver/LICENSE")
-sha256sums=('31c6173bd3736c3ba6d5c8a34e8d68f7fefa5c3ffe1b11a3c604e2d0ad32ebd9'
+sha256sums=('df7b9faeea6aa9ffbc9a74f1df11781b38870f27bfe0be85d2e51154fd483397'
             '47eb383c5eadf7ad1499b981bd842679d7a73275801c83a24035b7e09e7c5b83')
 
 package() {
