@@ -1,7 +1,7 @@
 # Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 
 pkgname=c-lightning-rest
-pkgver=0.10.7
+pkgver=0.10.8
 pkgrel=1
 pkgdesc="REST APIs for c-lightning written in Node.js"
 arch=(any)
@@ -20,7 +20,7 @@ source=("https://github.com/Ride-The-Lightning/c-lightning-REST/archive/refs/tag
 	"REST.tmpfiles")
 
 #noextract=("v${pkgver}.tar.gz")
-sha256sums=('9bf76331093e83df7819a4d6ff2cac0ff79581672a63c71aa78d6da2dd141252'
+sha256sums=('fd3fc1bae44d1b46cb30f256b5888241cb8b967affc8f6f999a5ac0e7d4f8041'
             'SKIP'
             'c20528fb2c185771dff808ab288ae2c739ef431017fba93814e07852ac65eb3f'
             '83b8752bcc6a68df21540d2ce2809059639de97516e0a3f66b6a2c0f24f40d7c'
