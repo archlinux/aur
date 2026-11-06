@@ -4,7 +4,7 @@
 
 pkgname=orocos-kdl
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains"
 url="https://www.orocos.org/kdl.html"
 arch=('any')
@@ -21,6 +21,7 @@ build() {
   cmake -B build -S "${srcdir}/${_dir}-${pkgver}/${_pkgname}" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY:BOOL=ON \
     -DENABLE_TESTS:BOOL=OFF \
     -DENABLE_EXAMPLES:BOOL=OFF
 
