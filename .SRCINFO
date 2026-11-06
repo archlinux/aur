@@ -1,6 +1,6 @@
 pkgbase = dprint-plugin-json
 	pkgdesc = JSON code formatting plugin for dprint.
-	pkgver = 0.25.2
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/dprint/dprint-plugin-json
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dprint-plugin-json
 	makedepends = rust
 	makedepends = rust-wasm
 	depends = dprint
-	source = dprint-plugin-json-v0.25.2.tar.gz::https://github.com/dprint/dprint-plugin-json/archive/refs/tags/0.25.2.tar.gz
-	sha512sums = d74b16a3d49c68bd73d1bb4f73556a7b10f24b2865608bab22520413d320d57ee2925611ad8db027482212dce849e7ed716fd2399d019b112a7a308b55c9a944
+	source = dprint-plugin-json-v0.26.0.tar.gz::https://github.com/dprint/dprint-plugin-json/archive/refs/tags/0.26.0.tar.gz
+	sha512sums = 715ceb28b09a5ea2274fcd76b4031421d648df4edd20f535bf2e23545b29d876f19ab3b34826c9b0a3f2114bb0bf3cca8634694bd6679fc120906c4ef542a9cb
 
 pkgname = dprint-plugin-json
