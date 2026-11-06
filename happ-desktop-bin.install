@@ -23,7 +23,6 @@ post_install() {
     chmod +x /opt/happ/bin/core/xray 2>/dev/null || true
     chmod +x /opt/happ/bin/tun/sing-box 2>/dev/null || true
     chmod +x /opt/happ/bin/tun2/tun2proxy-bin 2>/dev/null || true
-    chmod +x /opt/happ/bin/antifilter/antifilter 2>/dev/null || true
 
     # Enable and (re)start happd daemon (runs as root — needed for TUN/VPN).
     # Must be `restart`, not `start`: post_upgrade routes here too, and `start`
