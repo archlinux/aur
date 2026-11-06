@@ -1,0 +1,31 @@
+--- a/electron/auto-update.mjs
++++ b/electron/auto-update.mjs
+@@ -557,6 +557,8 @@
+  * @param {{ disposeAgent?: () => void | Promise<void> }} [hooks]
+  */
+ export function setupAutoUpdater(hooks = {}) {
++  // Distro packages upgrade through the package manager, not AppImage auto-update.
++  if (process.env.GROK_DESKTOP_DISABLE_UPDATER === "1") return;
+   if (!app.isPackaged) return;
+   const autoUpdater = ensureWired(hooks);
+   if (!autoUpdater) return;
+@@ -580,6 +582,19 @@
+  * @param {{ disposeAgent?: () => void | Promise<void> }} [hooks]
+  */
+ export async function checkForUpdatesInteractive(hooks = {}) {
++  if (process.env.GROK_DESKTOP_DISABLE_UPDATER === "1") {
++    await box({
++      type: "info",
++      buttons: ["OK"],
++      defaultId: 0,
++      title: "Updates",
++      message: "Updates are installed with the system package manager.",
++      detail:
++        "This build does not use the in-app updater. Install a newer grok-desktop package to upgrade.",
++    });
++    return { ok: false, reason: "distro" };
++  }
++
+   if (!app.isPackaged) {
+     await box({
+       type: "info",

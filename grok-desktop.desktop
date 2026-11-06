@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Grok Desktop
+Comment=Desktop GUI for the Grok Build coding agent
+Exec=grok-desktop %U
+Icon=grok-desktop
+Terminal=false
+StartupWMClass=Grok Desktop
+Categories=Development;
+Keywords=grok;xai;agent;coding;
