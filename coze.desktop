@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Coze
+Name[zh_CN]=扣子
+Comment=Coze desktop app (repackaged from the official macOS release)
+Comment[zh_CN]=扣子桌面端（从官方 macOS 版转换）
+Exec=coze %U
+Icon=coze
+Terminal=false
+Type=Application
+Categories=Network;Office;
+StartupNotify=true
+StartupWMClass=Coze
