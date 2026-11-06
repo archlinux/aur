@@ -5,7 +5,7 @@ pkgname="$_pkgname-bin"
 _pkgver=26.3-stable
 pkgver=26.3_stable
 _pkgfmt=_linux_mono_
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform 2D and 3D game engine"
 url="https://www.redotengine.org/"
 license=('MIT')
@@ -20,7 +20,7 @@ if test "$CARCH" == 'aarch64'; then
 fi
 
 depends=(
-  embree3
+  embree
   freetype2
   graphite
   harfbuzz

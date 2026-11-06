@@ -1,12 +1,12 @@
 pkgbase = redot-mono-bin
 	pkgdesc = A multi-platform 2D and 3D game engine
 	pkgver = 26.3_stable
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.redotengine.org/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = embree3
+	depends = embree
 	depends = freetype2
 	depends = graphite
 	depends = harfbuzz
