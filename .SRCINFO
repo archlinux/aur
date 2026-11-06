@@ -1,15 +1,15 @@
 pkgbase = xepak
 	pkgdesc = Declarative REST,RPC,MCP server builder. TOML-backed DSL with optional Lua scripting. SQLite-based.
-	pkgver = 0.0.10_rc
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/rustrum/xepak
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = xepak
-	source_x86_64 = https://github.com/rustrum/xepak/releases/download/v0.0.10-rc/xepak-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f0da9e7470407ecb7314fb18f790d04d305ce8d5d46d1552e0134ce8831f0639
-	source_aarch64 = https://github.com/rustrum/xepak/releases/download/v0.0.10-rc/xepak-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0e5bfaf89b0af7449df69b27908385e3849cccb1356ade0124c7535f66703816
+	source_x86_64 = xepak-x86_64-v0.1.0.tar.gz::https://github.com/rustrum/xepak/releases/download/v0.1.0/xepak-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0f991aff164fdfb693e41d95b4c26b9cb1c78d639757f922fa03aaa746ec2ade
+	source_aarch64 = xepak-aarch64-v0.1.0.tar.gz::https://github.com/rustrum/xepak/releases/download/v0.1.0/xepak-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f0d9939c8a7f5be73a6cb48b1f58a20657dcab6eef1331b7294caa9181b315a2
 
 pkgname = xepak

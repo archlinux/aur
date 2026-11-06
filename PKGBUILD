@@ -6,24 +6,23 @@ pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('MIT')
 
-pkgver="0.0.10_rc"
-_tag="v0.0.10-rc"
-# _tag="v${pkgver}"
+pkgver="0.1.0"
+_tag="v${pkgver}"
 
 provides=('xepak')
 depends=()
 conflicts=()
 
 source_x86_64=(
-    "https://github.com/rustrum/xepak/releases/download/${_tag}/xepak-x86_64-unknown-linux-gnu.tar.gz"
+    "xepak-x86_64-${_tag}.tar.gz::https://github.com/rustrum/xepak/releases/download/${_tag}/xepak-x86_64-unknown-linux-gnu.tar.gz"
 )
 source_aarch64=(
-    "https://github.com/rustrum/xepak/releases/download/${_tag}/xepak-aarch64-unknown-linux-gnu.tar.gz"
+    "xepak-aarch64-${_tag}.tar.gz::https://github.com/rustrum/xepak/releases/download/${_tag}/xepak-aarch64-unknown-linux-gnu.tar.gz"
 )
 
 # Architecture-specific checksums
-sha256sums_x86_64=('f0da9e7470407ecb7314fb18f790d04d305ce8d5d46d1552e0134ce8831f0639')
-sha256sums_aarch64=('0e5bfaf89b0af7449df69b27908385e3849cccb1356ade0124c7535f66703816')
+sha256sums_x86_64=('0f991aff164fdfb693e41d95b4c26b9cb1c78d639757f922fa03aaa746ec2ade')
+sha256sums_aarch64=('f0d9939c8a7f5be73a6cb48b1f58a20657dcab6eef1331b7294caa9181b315a2')
 
 package() {
   cd "${srcdir}"
