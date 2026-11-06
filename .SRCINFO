@@ -1,0 +1,25 @@
+pkgbase = inkstone-git
+	pkgdesc = A lightweight desktop client for pi, with MCP and project workspaces.
+	pkgver = 0.14.0.r1.g1eed44f
+	pkgrel = 1
+	url = https://github.com/Yu-DaTouX/Inkstone
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron45
+	depends = nodejs
+	depends = python
+	provides = inkstone=0.14.0
+	conflicts = inkstone
+	source = inkstone.git::git+https://github.com/Yu-DaTouX/Inkstone.git
+	source = inkstone.js
+	source = inkstone.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+
+pkgname = inkstone-git
