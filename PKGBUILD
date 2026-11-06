@@ -3,7 +3,7 @@
 
 pkgname=artcraft-launcher-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Install, update and launch the Craft App Suite (prebuilt binary)'
 arch=(x86_64 aarch64)
@@ -34,8 +34,8 @@ options=(!strip !debug)
 _archive="$_pkgname-$pkgver-linux"
 source_x86_64=("$url/releases/download/v$pkgver/$_archive-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_archive-aarch64.tar.gz")
-sha256sums_x86_64=('540536bd4bc520e20511f3e5445e2b2dc1ef79f70f37ebe1894b919e3219f825')
-sha256sums_aarch64=('06f915433750bca63ad1f5646655abf7a267739184a7579e23039d1017cdbf5a')
+sha256sums_x86_64=('04a26649692107ca4d49c9ea2d47b24c19de2af8b19140d13563d9fc78f19aed')
+sha256sums_aarch64=('3e0959a628e9c2c283f20300b637e5fa9d6f7f29eadcc76d8aa6d56924146b57')
 
 package() {
 	cd "$_archive-$CARCH"
