@@ -1,0 +1,15 @@
+pkgbase = k582-control
+	pkgdesc = RGB lighting, per-key colours, remaps and macros for the Redragon K582 keyboard
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/L4FeeR/k582-control
+	arch = any
+	license = GPL-2.0-or-later
+	depends = python
+	depends = pyside6
+	depends = python-evdev
+	optdepends = libnotify: error popups when launched from the app menu
+	source = k582-control-0.1.0.tar.gz::https://github.com/L4FeeR/k582-control/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 025927049aa5ecbd19c7456d8b2b5756889e474b469125446af5991392ded6f9
+
+pkgname = k582-control
