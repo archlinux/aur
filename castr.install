@@ -3,15 +3,9 @@ post_install() {
 
 castr is installed. Two things are worth knowing:
 
-  1. Neither backend's dependencies are pulled in automatically.
-
-     For an Apple TV:
-       yay -S doubletake-git
-     Version 0.4.0 cannot capture on Hyprland; the git package can.
-
-     For a Chromecast:
-       sudo pacman -S gst-plugin-pipewire gst-plugins-base gst-plugins-good \
-                      gst-plugins-bad gst-libav gst-plugin-va
+  1. Both backends come with it. AirPlay is castr-airplay, castr's own
+     build of doubletake in /usr/lib/castr; doubletake-git is not needed.
+     For hardware encoding also install gst-plugin-va (Intel, AMD).
 
   2. Your firewall must let the receiver reach this machine. Both backends
      need mDNS; the ports differ because the receivers connect differently.
@@ -36,5 +30,16 @@ MSG
 post_upgrade() {
   # Settings and hand-added receivers are copied from omarchy-cast on first
   # run, if it was installed. It is left untouched and keeps working.
-  :
+  if [ "$(vercmp "$2" 0.3.0)" -lt 0 ]; then
+    cat <<'MSG'
+
+castr 0.3.0 brings its own AirPlay helper, castr-airplay, which checks that an
+Apple TV it has paired with really is that Apple TV. Pairings made before now
+never recorded the television's identity, so each Apple TV asks for its code
+ONE more time, on the next cast. After that it does not ask again.
+
+doubletake-git is no longer used by castr; remove it if nothing else needs it.
+
+MSG
+  fi
 }
