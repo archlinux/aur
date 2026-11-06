@@ -2,12 +2,12 @@ pkgbase = nodewipe
 	pkgdesc = Find and reclaim disk space from stray dev artifacts (node_modules, Python venvs, Rust/Java/JS build caches, and more)
 	pkgver = 0.7.0
 	pkgrel = 1
-	url = https://github.com/JOKER-53/nodewipe
+	url = https://github.com/KADHIRAVANEG/nodewipe
 	arch = x86_64
 	license = MIT
 	provides = nodewipe
 	conflicts = nodewipe-bin
-	source = nodewipe-0.7.0::https://github.com/JOKER-53/nodewipe/releases/download/v0.7.0/nodewipe-linux-x86_64
+	source = nodewipe-0.7.0::https://github.com/KADHIRAVANEG/nodewipe/releases/download/v0.7.0/nodewipe-linux-x86_64
 	sha256sums = SKIP
 
 pkgname = nodewipe
