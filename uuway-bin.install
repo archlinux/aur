@@ -1,0 +1,33 @@
+post_install() {
+  udevadm control --reload 2>/dev/null || true
+  udevadm trigger --subsystem-match=misc --sysname-match=uinput --action=add 2>/dev/null || true
+  echo "Run uuway setup as your normal user. GNOME Wayland support is experimental."
+}
+post_upgrade() { post_install; }
+pre_remove() {
+#!/bin/sh
+# On removal (not upgrade) stop the user services of every logged-in user, so nothing
+# keeps running from files that are about to disappear. Best effort: a failure here
+# must never block the removal.
+set -e
+
+case remove in
+remove|deconfigure)
+    if command -v loginctl >/dev/null 2>&1 && command -v runuser >/dev/null 2>&1; then
+        for uid in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $1}'); do
+            user=$(id -nu "$uid" 2>/dev/null) || continue
+            runtime=/run/user/$uid
+            [ -S "$runtime/bus" ] || continue
+            timeout 200 runuser -u "$user" -- env XDG_RUNTIME_DIR="$runtime" \
+                DBUS_SESSION_BUS_ADDRESS="unix:path=$runtime/bus" \
+                systemctl --user stop uu-native-bridge.service uu-native-text.service \
+                uu-native-display.service >/dev/null 2>&1 || true
+        done
+    fi
+    echo "uuway: services stopped. Your Wine prefix, UU login and settings are kept; run 'uuway uninstall' first next time to also remove the per-user service files."
+    ;;
+esac
+
+:
+
+}
