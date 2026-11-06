@@ -4,7 +4,7 @@
 
 _name=chinese-calendar
 pkgname=python-chinese-calendar
-pkgver=1.11.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Chinese calendar library for Python, 判断农历年是否有闰月、中国的法定节假日等 (非官方社区打包)"
 arch=('any')
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer')
 _srcname=${_name//-/_}
-source=("https://files.pythonhosted.org/packages/a0/af/d5dd356a7d03d17325a2f3100e35d26300a405bc7d57d3325dd634f04cc2/chinese_calendar-1.11.0.tar.gz")
-sha256sums=('931d9187cbf7bb1dc09685dedb5013e74678bbe03a173d71d46b76afc37f2597')
+source=("https://files.pythonhosted.org/packages/4d/7b/f5f66c5d2d01610fc23a4619923d59d94523ef5c70b67c1aadb9234de05a/chinese_calendar-1.12.1.tar.gz")
+sha256sums=('9355e6398cd360100fab75262971dd28e1ca61cac994ccb3768cfb84b77466fe')
 
 build() {
   cd "$srcdir/${_srcname}-${pkgver}"
