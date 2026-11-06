@@ -1,7 +1,7 @@
 #Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=appmenu-gtk-module-wayland
-pkgver=26.11.03
+pkgver=26.11.05
 pkgrel=1
 pkgdesc="GTK3 global menu on plasma wayland."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('a3bd503489fb017dc77602d391ce64392dbb13c9ae19db6f7f8fd3dd0350b577')
+sha256sums=('588518f3d1a8e4725a17de0b6d992aae53bedbf6e55045dbf4568b76081a4813')
 
 build() {
     cd "$pkgname-${pkgver}"
