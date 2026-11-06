@@ -2,8 +2,8 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.2.12+r3729+g48f82abfd
-pkgrel=3
+pkgver=3.3.0+r3972+g48a0187ce
+pkgrel=2
 pkgdesc='SLADE3 Doom editor'
 arch=('x86_64')
 url='http://slade.mancubus.net/'
@@ -37,7 +37,7 @@ makedepends=('git'
   'p7zip'
   'ninja')
 
-source=("slade::git+https://github.com/sirjuddington/SLADE.git#branch=3.3.0")
+source=("slade::git+https://github.com/sirjuddington/SLADE.git")
 sha256sums=('SKIP')
 
 pkgver() {
