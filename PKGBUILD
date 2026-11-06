@@ -20,4 +20,3 @@ package() {
   cp -a "${srcdir}/usr" "${pkgdir}/"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
