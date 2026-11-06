@@ -1,12 +1,27 @@
 pkgbase = ttf-nanum
-	pkgdesc = Nanum series TrueType fonts
-	pkgver = 2018
+	pkgdesc = Naver Nanum fonts (TrueType)
+	pkgver = 20200507
 	pkgrel = 1
-	url = http://hangeul.naver.com/
+	url = https://hangeul.naver.com/font
 	arch = any
-	license = custom:OFL
+	license = OFL-1.1
+	provides = ttf-font
+	conflicts = ttf-nanum-meta
+	conflicts = ttf-nanumgothic
+	conflicts = ttf-nanummyeongjo
+	conflicts = ttf-nanummyeongjo-yethangul
+	conflicts = ttf-nanumbarungothic
+	conflicts = ttf-nanumbarungothic-yethangul
+	conflicts = ttf-nanumbarunpen
+	conflicts = ttf-nanumbrush
+	conflicts = ttf-nanumpen
+	conflicts = ttf-nanumsquare
+	conflicts = ttf-nanumsquareround
+	conflicts = ttf-nanumgothic_coding
+	conflicts = ttf-nanum-yethangul
 	source = http://appdown.naver.com/naver/font/NanumFont/setup/NanumFontSetup_TTF_ALL.zip
+	source = OFL.txt
 	sha256sums = c7584eb9ee521f106cfbf8c893fc6400ca43c66385ab39c3ab6abc89586ee7fb
+	sha256sums = 65c23f0be72b06e4e77f273a399c24cb57a310fbe273cf4bd6dc10d4dff9c2ba
 
 pkgname = ttf-nanum
-
