@@ -115,6 +115,14 @@ repos:
         entry: rumdl check --config 'MD013.paragraphs = false'
         types: [markdown]
 
+      # British English, settings in .typos.toml. --force-exclude: its excludes also apply to the files
+      # the hook runner passes.
+      - id: typos
+        name: typos (typos)
+        language: system
+        entry: typos --force-exclude
+        types: [text]
+
       # Mago in each file's directory, with the mago.toml of a package there (e.g. the stubs of what a
       # script loads at runtime, *.stub.php, which are only formatted); warnings fail as well
       - id: mago-format
