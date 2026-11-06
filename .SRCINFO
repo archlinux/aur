@@ -1,6 +1,6 @@
 pkgbase = xerj-bin
 	pkgdesc = Local-first search engine and MCP server for AI agents: BM25, vector and hybrid search over code, docs, logs and PDFs
-	pkgver = 1.0.0rc.100
+	pkgver = 1.0.0rc.101
 	pkgrel = 1
 	url = https://xerj.org
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = xerj-bin
 	conflicts = xerj
 	options = !strip
 	options = !debug
-	source_x86_64 = xerj-1.0.0-rc.100-x86_64-unknown-linux-gnu.tar.gz::https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.100/xerj-1.0.0-rc.100-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 25aec3e84b904c995bd2d58abe4f83badb8a6f9d1d56dbe2f22180bada9b00cc
-	source_aarch64 = xerj-1.0.0-rc.100-aarch64-unknown-linux-gnu.tar.gz::https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.100/xerj-1.0.0-rc.100-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 3bc11e44eb3cb2b320cfd16c64ac64cf858b4ec45ac74f223ffee622fc21dab7
+	source_x86_64 = xerj-1.0.0-rc.101-x86_64-unknown-linux-gnu.tar.gz::https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.101/xerj-1.0.0-rc.101-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 999647a588cb113b49ec27cb72c43afa6bf367d8fb2b079b510eee703b025800
+	source_aarch64 = xerj-1.0.0-rc.101-aarch64-unknown-linux-gnu.tar.gz::https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.101/xerj-1.0.0-rc.101-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 69ffd58123ea8e54b3be8bee2143a18a8455f4f943f9da114b86f3d0fbca16bb
 
 pkgname = xerj-bin
