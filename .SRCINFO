@@ -1,7 +1,7 @@
 pkgbase = sourcemod-sourcebans-pp-discord-forward
 	pkgdesc = SourceBans++ Discord Forward, a SourceMod plugin forwarding bans, comms blocks and reports to Discord webhooks
 	pkgver = 1.1.0.r10.g736764a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sbpp/discord-forward
 	arch = any
 	license = GPL-3.0-only

@@ -8,7 +8,7 @@ _name=discord-forward
 # SourceMod and has the fixes since, plugin version 1.2.0
 _commit=736764a6abddff6b39fd43c45752b34c7db30be0
 pkgver=1.1.0.r10.g736764a
-pkgrel=1
+pkgrel=2
 pkgdesc="SourceBans++ Discord Forward, a SourceMod plugin forwarding bans, comms blocks and reports to Discord webhooks"
 arch=(any)
 url="https://github.com/sbpp/discord-forward"
@@ -32,6 +32,8 @@ build() {
 }
 
 package() {
-  # In the addons folder of sourcemod
-  install -Dm644 "$_name-$_commit/sbpp_discord.smx" -t "$pkgdir/usr/lib/sourcemod/addons/sourcemod/plugins"
+  # In the addons folder of sourcemod; its source with SourceMod's, like its own plugins'
+  local _sm="$pkgdir/usr/lib/sourcemod/addons/sourcemod"
+  install -Dm644 "$_name-$_commit/sbpp_discord.smx" -t "$_sm/plugins"
+  install -Dm644 "$_name-$_commit/sbpp_discord.sp" -t "$_sm/scripting"
 }
