@@ -1,6 +1,6 @@
 pkgbase = sunsetr-bin
 	pkgdesc = Automatic blue light filter for Hyprland, Niri, and everything Wayland (pre-compiled binary)
-	pkgver = 0.12.5
+	pkgver = 0.12.6
 	pkgrel = 1
 	url = https://github.com/psi4j/sunsetr
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sunsetr-bin
 	conflicts = sunsetr-git
 	replaces = sunsetr-git-debug
 	options = !debug
-	source = sunsetr-0.12.5-x86_64-linux.tar.gz::https://github.com/psi4j/sunsetr/releases/download/v0.12.5/sunsetr-v0.12.5-x86_64-linux.tar.gz
-	sha256sums = a353ad1c59e737f66326c28da2f67d473243f51ab6a8426f17c779eb8b8461d7
+	source = sunsetr-0.12.6-x86_64-linux.tar.gz::https://github.com/psi4j/sunsetr/releases/download/v0.12.6/sunsetr-v0.12.6-x86_64-linux.tar.gz
+	sha256sums = d9d4febb9a57998bca0a4db38bb11c28971d74d2b4613785dea65e7c82e7ec49
 
 pkgname = sunsetr-bin
