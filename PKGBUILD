@@ -1,6 +1,6 @@
 # Maintainer: safalski <https://git.safallama.com.np/safalski>
 pkgname=jankk
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _ryu_commit=200007fb1be91a9a3eb4cc642733865d3f74f447
 pkgdesc="A GBA game launcher and emulator frontend built with Qt and mGBA"
@@ -11,7 +11,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia-ffmpeg' 'qt6-svg' 'qt6-sha
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/_jankk/archive/refs/tags/v$pkgver.tar.gz"
         "ryu-$_ryu_commit.tar.gz::https://github.com/Happilli/ryu/archive/$_ryu_commit.tar.gz")
-sha256sums=('af3e85e2420511d693ffaedc7a7399f003f3335789dd167b6907162807b672b8'
+sha256sums=('4e2282196f64da560972464b71d22003c5770e10c332b9ef97c6be165d71e2e4'
             'f2a61e2899c966488cf35409faeefd293271e6f694825ad710d61c402c7b29c2')
 
 prepare() {
