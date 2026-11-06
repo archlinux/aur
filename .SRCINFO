@@ -7,9 +7,11 @@ pkgbase = rewise
 	license = GPL3
 	makedepends = autoconf
 	makedepends = automake
+	makedepends = libbsd
 	makedepends = zlib
+	depends = libbsd
 	depends = zlib
-	source = rewise-0.4.0.tar.gz::https://codeberg.org/CYBERDEV/REWise/archive/v0.4.0.tar.gz
-	sha512sums = cc67a34bf764a9443e746f5efc932183b5d3176702c20f9304631f33f507ff00dfa218ff61b2bb3ed96df627c3d678ab680c1a419130f7d41fd3d2aa111d559f
+	source = rewise-0.4.0-2.tar.gz::https://codeberg.org/CYBERDEV/REWise/archive/v0.4.0-2.tar.gz
+	sha512sums = 21f7c4e184eb150fb779dc9a795f3e2e1df3da18645640be58b44213cba25f67a477905fbe6c82fdf01538bd810693827bd87b47539f4e9f394226fd9261324e
 
 pkgname = rewise
