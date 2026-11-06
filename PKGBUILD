@@ -1,6 +1,6 @@
 # Maintainer: Fofo Rivera <foforivera@gmail.com>
 pkgname=pocketcli
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="Terminal UI client for Pocket Casts - browse podcasts, sync playback, manage subscriptions"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/foforivera/pocketcli"
 license=('MIT')
 depends=('python' 'python-httpx' 'mpv')
 source=("pocketcli.py::https://raw.githubusercontent.com/foforivera/pocketcli/v${pkgver}/pocketcli.py")
-sha256sums=('d9aafc5cd6801107f83034a3c06aa7fc8ddb3aadec519d6eaed98824df755ec1')
+sha256sums=('7227e7fdb9915b16397145e0bd9646fdf65c209f09e3f95b7e2d8e0192cd9911')
 
 package() {
     install -Dm755 "${srcdir}/pocketcli.py" "${pkgdir}/usr/bin/pocketcli"
