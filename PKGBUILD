@@ -3,8 +3,8 @@
 
 pkgname=python-videotimestamps
 _origpkgname=videotimestamps
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Get video timestamps."
 arch=("x86_64")
 url='https://github.com/moi15moi/VideoTimestamps/'
@@ -32,10 +32,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/v/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz"
   "bestsource-r22.patch::https://github.com/moi15moi/VideoTimestamps/commit/3974ee4ea25136fe198bd578f9248dfdf2028e75.patch"
 )
-sha256sums=(
-  'a8ace9dcb148656dd552b6fc8d9c817bc2bd5192b4985ff50a0384caf0b835cb'
-  'a25a52aac13da7a6fd12bf53b6534d24798f255d7cf37af5cd6a78599c38ab0b'
-)
+sha256sums=('817fb019dd39c860314e53c745c4ef73e733ad3734dddee92e2059463b41b4cf'
+            'a25a52aac13da7a6fd12bf53b6534d24798f255d7cf37af5cd6a78599c38ab0b')
 
 prepare() {
   cd "${_origpkgname}-${pkgver}" || exit
