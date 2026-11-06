@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/sable/sable "$@"
+exec /usr/lib/sable/sable-nightly "$@"
