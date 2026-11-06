@@ -2,8 +2,8 @@
 # Contributor: David Lumaye <david at chindit dot be>
 
 pkgname=frankenphp
-pkgver=1.13.4
-pkgrel=2
+pkgver=1.13.5
+pkgrel=1
 pkgdesc="The modern PHP app server"
 arch=('x86_64')
 url="https://frankenphp.dev"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('php-embed' 'watcher')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/php/frankenphp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('855d2e725cf4882e489cabf89f1827ff7e7991de348ed6d2e702056016751462')
+sha256sums=('c853ae46bfa87a355a8dd3f18e25fb7e986a9fbff4b0ae70139b7fe6662f4a83')
 
 build() {
 	# like yay's PKGBUILD
