@@ -1,0 +1,19 @@
+pkgbase = roast-git
+	pkgdesc = Adversarial cross-model code review
+	pkgver = r4.g8af0ff0
+	pkgrel = 1
+	url = https://github.com/bluesky-social/roast
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = roast
+	conflicts = roast
+	conflicts = roast-bin
+	source = roast::git+https://github.com/bluesky-social/roast
+	sha256sums = SKIP
+
+pkgname = roast-git
