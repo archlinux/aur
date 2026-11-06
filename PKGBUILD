@@ -2,7 +2,7 @@
 
 _name=langgraph-cli
 pkgname=python-$_name
-pkgver=0.4.41
+pkgver=0.4.42
 pkgrel=1
 pkgdesc='CLI for interacting with LangGraph API.'
 arch=('any')
@@ -26,7 +26,7 @@ checkdepends=('python-pytest'
 optdepends=('python-langgraph-api: inmem'
             'python-langgraph-runtime-inmem: inmem')
 source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/cli==$pkgver.tar.gz")
-sha256sums=('c0a55aae1ae0ff169c91cbc9812ef8f570c5f9395e2ff945fb748f427cf836b7')
+sha256sums=('8eb7222e523a1abe5202f1e3b23db87eec8529027c316a58f5c428ba0502f6e5')
 
 build() {
   cd "langgraph-cli-$pkgver/libs/cli"
