@@ -1,6 +1,6 @@
 pkgbase = linuxtoys-bin
 	pkgdesc = A collection of tools for Linux in a user-friendly way.
-	pkgver = 7.9.6
+	pkgver = 7.9.7
 	pkgrel = 1
 	url = https://github.com/psygreg/linuxtoys
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = linuxtoys-bin
 	makedepends = pkgconf 
 	makedepends = patchelf 
 	makedepends = gtk3
-	provides = linuxtoys=7.9.6
-	source = https://github.com/psygreg/linuxtoys/releases/download/7.9.6/linuxtoys-7.9.6.tar.xz
-	sha256sums = c7de754474ca8e9c49106c77e925458365ec3e6c9ef3f6e6cbae0d651f65c316
+	provides = linuxtoys=7.9.7
+	source = https://github.com/psygreg/linuxtoys/releases/download/7.9.7/linuxtoys-7.9.7.tar.xz
+	sha256sums = d0a44a42c122b27ad5f1fdfa560cb220444586f15e73b5723903f6c1f7becd62
 pkgname = linuxtoys-bin
