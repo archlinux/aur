@@ -11,18 +11,18 @@ license=(BSD-3)
 depends=(sdl3 sdl3_ttf sdl3_image sdl3_mixer alsa-tools libopenmpt enet glm taglib gtk3)
 conflicts=(gamebreaker)
 makedepends=(make)
-source=("GameBreaker-${pkgver}-sdl3.tar.gz::https://codeberg.org/elpoeprod/GameBreaker/archive/v${pkgver}-sdl3.tar.gz")
-md5sums=('a9459a2fb27cfd1afdba0e5b84aa6516')
+source=("GameBreaker-${pkgver}-${pkgrel}-sdl3.tar.gz::https://codeberg.org/elpoeprod/GameBreaker/archive/v${pkgver}-{$pkgrel}-sdl3.tar.gz")
+md5sums=('7c6969f6e05de988365f223fe7573f1a')
 
 build(){
-	rename "gamebreaker" "GameBreaker-${pkgver}-sdl3" "${srcdir}/gamebreaker"
-	cd "${srcdir}/GameBreaker-${pkgver}-sdl3"
+	rename "gamebreaker" "GameBreaker-${pkgver}-${pkgrel}-sdl3" "${srcdir}/gamebreaker"
+	cd "${srcdir}/GameBreaker-${pkgver}-${pkgrel}-sdl3"
 	mkdir "build"
 	make
 }
 
 package(){
-	cd "${srcdir}/GameBreaker-${pkgver}-sdl3"
+	cd "${srcdir}/GameBreaker-${pkgver}-${pkgrel}-sdl3"
 
 	mkdir -p "$pkgdir/usr/local/include/gamebreaker/"
 	mkdir -p "$pkgdir/usr/lib/"
