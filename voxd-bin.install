@@ -1,0 +1,16 @@
+_uinput_now() {
+  # Load the module and apply the uaccess rule now, without a reboot.
+  udevadm control --reload 2>/dev/null || true
+  modprobe uinput 2>/dev/null || true
+  udevadm trigger --sysname-match=uinput --action=change 2>/dev/null || true
+}
+
+post_install() {
+  _uinput_now
+  echo ">>> voxd: each user runs 'voxd' once to complete the setup (creates ~/.config/voxd)."
+  echo ">>> voxd: speech recognition needs whisper.cpp (optional dependency)."
+}
+
+post_upgrade() {
+  _uinput_now
+}

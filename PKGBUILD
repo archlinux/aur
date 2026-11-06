@@ -1,7 +1,7 @@
 # Maintainer: Luca Steccanella <steccas at pm dot me>
 pkgname=voxd-bin
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 _upstreamrel=1
 pkgdesc="Voice-typing/dictation app for Linux using local speech-to-text processing (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -35,6 +35,7 @@ optdepends=(
 )
 provides=('voxd')
 conflicts=('voxd' 'voxd-git')
+install="${pkgname}.install"
 source_x86_64=(
     "voxd-${pkgver}-${_upstreamrel}-x86_64.pkg.tar.zst::https://github.com/jakovius/voxd/releases/download/v${pkgver}/voxd-${pkgver}-${_upstreamrel}-x86_64.pkg.tar.zst"
 )
@@ -59,4 +60,14 @@ package() {
         echo "Error: Python version patch for /usr/bin/voxd did not apply" >&2
         return 1
     fi
+
+    # Upstream's .INSTALL is dropped (it builds a pip venv we don't need). Keep its
+    # uinput setup the Arch way: rule under /usr/lib (auto-reloaded by systemd's
+    # pacman hook) and module autoload at boot. The rule's uaccess tag grants the
+    # logged-in user access to /dev/uinput, no 'input' group membership needed.
+    install -Dm644 "$pkgdir/etc/udev/rules.d/99-uinput.rules" \
+        "$pkgdir/usr/lib/udev/rules.d/70-voxd-uinput.rules"
+    rm -r "$pkgdir/etc/udev"
+    rmdir --ignore-fail-on-non-empty "$pkgdir/etc"
+    echo uinput | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/voxd.conf"
 }
