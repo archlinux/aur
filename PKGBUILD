@@ -21,8 +21,10 @@
 
 pkgname=qoderwake-cn-bin
 _upstreamver=1.2.12-cn
-pkgver=1.2.12_cn
-pkgrel=2
+# The runtime is upstream 1.2.12-cn; the ".2" suffix is a packaging patch level
+# so AUR helpers and users see a new version without relying on a pkgrel bump.
+pkgver=1.2.12_cn.2
+pkgrel=1
 pkgdesc="QoderWake 国内版 local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.cn/'
@@ -66,7 +68,7 @@ package() {
 #!/bin/sh
 set -u
 _src='/usr/lib/qoderwake-cn'
-_ver='@PKGVER@'
+_ver='@RUNTIMEVER@'
 _root="${XDG_DATA_HOME:-${HOME}/.local/share}/qoderwake-cn"
 _runtime="${_root}/runtime"
 
@@ -86,7 +88,7 @@ fi
 
 exec "${_runtime}/qoderwake-cn" "$@"
 WRAPPER
-  sed -i "s|@PKGVER@|${pkgver}|" "${pkgdir}/usr/bin/qoderwake-cn"
+  sed -i "s|@RUNTIMEVER@|${_upstreamver}|" "${pkgdir}/usr/bin/qoderwake-cn"
 
   # Upstream ships no desktop integration; the product is a CLI plus a local
   # web console. Add a launcher that starts the daemon and opens that console,
