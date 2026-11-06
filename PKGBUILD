@@ -1,7 +1,7 @@
 # Maintainer: Burkhard Pauli <burkhard at pauli dot tech>
 pkgname=zwift-bootstrap-bin
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Unofficial native Linux launcher for Zwift that installs, updates and starts the game with Wine"
 arch=('x86_64')
 url="https://github.com/bpauli/zwift-bootstrap"
@@ -14,7 +14,7 @@ provides=('zwift-bootstrap')
 conflicts=('zwift-bootstrap')
 install=zwift-bootstrap-bin.install
 source=("${url}/releases/download/v${pkgver}/zwift-bootstrap_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('3e6456e6bc12b0bc6623aa005d523745453455097401be41603551a331a5aa48')
+sha256sums=('5511bcddd0aaffef4480ddd09d29b0c3112cfffe4d3bcd901b0ab1997f443fd5')
 
 package() {
     install -Dm755 zwift-bootstrap "${pkgdir}/usr/bin/zwift-bootstrap"
