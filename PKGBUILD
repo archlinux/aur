@@ -2,7 +2,7 @@
 
 pkgname=wolf-lang-bin
 _pkgname=wolf-lang
-pkgver=0.2.36
+pkgver=0.2.37
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer (release archive)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/wolffe-lang/wolf-lang'
 license=('GPL-3.0-or-later')
 # `sh` runs the /usr/bin/wolf exec script; `cc` (gcc) links every
 # program `wolf build` produces, so gcc is a runtime dependency.
-# glibc floor: the 0.2.36 archives import at most GLIBC_2.34 (objdump -T,
+# glibc floor: the 0.2.37 archives import at most GLIBC_2.34 (readelf -V,
 # x86_64 and aarch64); every Arch glibc meets that, so it stays unversioned.
 depends=('sh' 'gcc' 'gcc-libs' 'glibc')
 optdepends=(
@@ -35,8 +35,8 @@ options=('!strip' '!debug')
 # no `+dev` suffix, which a from-tarball rebuild could not manage.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('d383c74c8cd123b9d9dfaa268271d4f004294f85c2b230237d0ef07027d9500d')
-sha256sums_aarch64=('3d5bd9ef47d3d198dd67fb3f995dff3ef7b169097529fa0e7ae8524e723be3d4')
+sha256sums_x86_64=('9811d32e1dddcb743b96a14ea685faee06ba453242c1ae3deb90063f5bb9bcaa')
+sha256sums_aarch64=('24c0975dfbc804dbb76c26449a9795a6897f186089fa39e2de1a84ab78d431f8')
 
 package() {
     local _triple
