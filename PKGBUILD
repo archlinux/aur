@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
 pkgver="11.1.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -1012,11 +1012,6 @@ if [ ! -f "$prefix/system.reg" ] || [ ! -f "$prefix/user.reg" ]; then
 fi
 
 sed -i s/'"CommonFilesDir"="C:\\\\Program Files\\\\Common Files"'/'"CommonFilesDir"="Z:'"$(printf '%s' "$installdir" | sed s_'/'_'\\\\\\\\'_g)"'\\\\'"${pkgname}"'\\\\Common Files\"'/g "$prefix/system.reg"
-
-if ! grep -q '"Decorated"="N"' "$prefix/user.reg"; then
-   echo -e "\n[Software\\\\\Wine\\\\\X11 Driver]" >> "$prefix/user.reg"
-   echo '"Decorated"="N"' >> "$prefix/user.reg"
-fi
 
 if ! grep -q '"Graphics"="x11,wayland"' "$prefix/user.reg"; then
    echo -e "\n[Software\\\\\Wine\\\\\Drivers]" >> "$prefix/user.reg"
