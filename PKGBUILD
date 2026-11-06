@@ -1,6 +1,6 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 pkgname=bluegit
-pkgver=20261104161624
+pkgver=20261106204613
 pkgrel=1
 pkgdesc='Self-hosted git-platform'
 arch=('x86_64')
@@ -11,9 +11,9 @@ makedepends=('go')
 backup=('etc/bluegit/config.yml')
 options=('!debug')
 install=bluegit.install
-_commit=ef1f85fdaaef9648f31c60994718c08a54482ba5
+_commit=8a03f4edb3af1d775449bb5c3179da3a31e5be92
 source=("bluegit-${_commit}.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/${_commit}/bluegit-${_commit}.tar.gz")
-sha256sums=('e6623485e058d5ae3bd448ff3367fa14993e3e42a52d7af2342471eb57ffd7e9')
+sha256sums=('3c197d812d70ab522691d34f825a9a3289be0054614e0e8fa257bdd69f6e4759')
 
 build() {
   cd "$srcdir/bluegit-${_commit}"
