@@ -3,7 +3,7 @@
 pkgbase=lazy-tmux
 pkgname=('lazy-tmux' 'lazy-tmux-fzf')
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast tmux session manager"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alchemmist/lazy-tmux"
@@ -29,21 +29,22 @@ _package_arch_suffix() {
   esac
 }
 
-package_lazy-tmux() {
-  local archsuffix
+_package_release() {
+  local suffix="$1" binary="$2" archsuffix staging
   archsuffix="$(_package_arch_suffix)"
-  install -d "$pkgdir/usr/bin"
-  tar -xzf "$srcdir/lazy-tmux_${pkgver}_linux_${archsuffix}.tar.gz" -C "$pkgdir/usr/bin"
-  chmod +x "$pkgdir/usr/bin/lazy-tmux"
+  staging="$(mktemp -d)"
+  tar -xzf "$srcdir/lazy-tmux_${pkgver}_linux_${archsuffix}${suffix}.tar.gz" -C "$staging"
+  install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$binary" "$pkgdir/usr/share/doc/$binary"
+  install -m755 "$staging/lazy-tmux" "$pkgdir/usr/bin/$binary"
+  install -m644 "$staging/LICENSE" "$pkgdir/usr/share/licenses/$binary/LICENSE"
+  install -m644 "$staging/README.md" "$pkgdir/usr/share/doc/$binary/README.md"
+  rm -rf "$staging"
+}
+
+package_lazy-tmux() {
+  _package_release "" "lazy-tmux"
 }
 
 package_lazy-tmux-fzf() {
-  local archsuffix
-  archsuffix="$(_package_arch_suffix)"
-  install -d "$pkgdir/usr/bin"
-  tar -xzf "$srcdir/lazy-tmux_${pkgver}_linux_${archsuffix}_fzf.tar.gz" -C "$pkgdir/usr/bin"
-  if [ -f "$pkgdir/usr/bin/lazy-tmux" ]; then
-    mv "$pkgdir/usr/bin/lazy-tmux" "$pkgdir/usr/bin/lazy-tmux-fzf"
-  fi
-  chmod +x "$pkgdir/usr/bin/lazy-tmux-fzf"
+  _package_release "_fzf" "lazy-tmux-fzf"
 }

@@ -1,17 +1,17 @@
 pkgbase = lazy-tmux
 	pkgdesc = Fast tmux session manager
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alchemmist/lazy-tmux
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	source_x86_64 = lazy-tmux_0.3.4_linux_amd64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.4/lazy-tmux_linux_amd64.tar.gz
 	source_x86_64 = lazy-tmux_0.3.4_linux_amd64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.4/lazy-tmux_linux_amd64_fzf.tar.gz
-	source_aarch64 = lazy-tmux_0.3.4_linux_arm64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.4/lazy-tmux_linux_arm64.tar.gz
-	source_aarch64 = lazy-tmux_0.3.4_linux_arm64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.4/lazy-tmux_linux_arm64_fzf.tar.gz
 	sha256sums_x86_64 = c947ea83f43c434de4560eb58aafa3c9ac5f998379932ccb0bffaa5f022ba239
 	sha256sums_x86_64 = 2c86bac4633d56f4b24f1a76105b1bc333cf10f8ae8702b002b099205cc9d7dd
+	source_aarch64 = lazy-tmux_0.3.4_linux_arm64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.4/lazy-tmux_linux_arm64.tar.gz
+	source_aarch64 = lazy-tmux_0.3.4_linux_arm64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.3.4/lazy-tmux_linux_arm64_fzf.tar.gz
 	sha256sums_aarch64 = 4470dec213318d88c519f2d4a2b8d526eb7ede59441f063d6382aba40cf0aef7
 	sha256sums_aarch64 = 1d682e5ca9d5251caed1b7bdf8c417895eea5ac446f223d73f6d7b72437533a9
 
