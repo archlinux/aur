@@ -1,0 +1,17 @@
+pkgbase = hotkeys-gpd
+	pkgdesc = Hotkey daemon for the GPD Pocket: backlight, volume and mute keys (evdev + ALSA, no desktop needed)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/goabonga/hotkeys-gpd
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	depends = libevdev
+	depends = alsa-lib
+	optdepends = gpd-pocket-mixer: persistence of the volume through pocket-mixer-state.service
+	options = !debug
+	backup = etc/gpd-hotkeysd.conf
+	source = hotkeys-gpd-0.1.0.tar.gz::https://github.com/goabonga/hotkeys-gpd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7eea739dd8e7a424f224e82580fce88bcac818c3f9b0d7e5f749befb24489a9f
+
+pkgname = hotkeys-gpd
