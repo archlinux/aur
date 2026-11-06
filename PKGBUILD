@@ -2,7 +2,7 @@
 
 pkgname=hyprdown-git
 _pkgname=hyprdown
-pkgver=0.3.0_r0_g6c40460
+pkgver=0.3.0_r2_g1456910
 pkgrel=1
 pkgdesc='Close every app running under Hyprland without user input, then exit, power off, reboot or log out (git version)'
 arch=('x86_64' 'aarch64')
