@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.1.4
+pkgver=4.1.5
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -29,12 +29,10 @@ makedepends=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-	"${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('5670fab469816aaa64462e0313650dca2dd071a24f8abeaf7ca518dba287ce88'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+sha256sums=('11a11f1461e9452f38a11bd76c9cb9890b642903e8105f28cfe171a0977f40cc'
+            'ef3b8fed44fdace077b976cc3a89a93bde368a9e445e4134efd7a44358676a27')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -122,7 +120,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
+    " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -149,7 +147,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "$(_get_project_dir)/packaging-resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
