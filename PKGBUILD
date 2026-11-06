@@ -2,9 +2,9 @@
 
 _name=tree-sitter-scala
 pkgname=python-tree-sitter-scala
-pkgver=0.26.4
+pkgver=0.26.5
 pkgrel=1
-_commit=8c0b6d44bfd66bf7bc9a1fc15084ef17cef2f97e
+_commit=dc823fa0763078b25db7372b38edd9ffcbc07b00
 pkgdesc="Scala grammar for tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-scala"
@@ -17,7 +17,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/${_commit}.tar.gz")
-sha256sums=('e09d98f550aa7cdd9ab9e1e030aed9048a8786001fddc78d126507e432e2ff92')
+sha256sums=('6bdbfab4afa250b7fb69364c3b1f86134bc074b1ee9ecb409b13d95d9692449a')
 
 build() {
     cd "${_name}-${_commit}"
