@@ -1,6 +1,6 @@
 pkgbase = ljprint-git
 	pkgdesc = BLE CLI for LuckJingle / DingDang thermal printers (reverse-engineered protocol)
-	pkgver = r2.29e8196
+	pkgver = r9.f637ac6
 	pkgrel = 1
 	url = https://github.com/MrSlopster/ljprint
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ljprint-git
 	depends = python-bleak
 	depends = python-numpy
 	depends = python-pillow
-	depends = python-pypdfium2
+	depends = poppler
 	depends = python-barcode
 	depends = python-qrcode
 	provides = ljprint
