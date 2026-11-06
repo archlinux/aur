@@ -1,8 +1,8 @@
 # Maintainer: safalski <https://git.safallama.com.np/safalski>
 pkgname=typeshi
-pkgver=0.1.23
+pkgver=0.1.24
 pkgrel=1
-_ryu_commit=200007fb1be91a9a3eb4cc642733865d3f74f447
+_ryu_commit=8e58402ca25703730cb6985e2437ac3c8fad071f
 pkgdesc="A typing application"
 arch=('x86_64')
 url="https://github.com/RyuZinOh/typeshi-mirror"
@@ -11,8 +11,8 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-shadertools')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/archive/refs/tags/v$pkgver.tar.gz"
         "ryu-$_ryu_commit.tar.gz::https://github.com/Happilli/ryu/archive/$_ryu_commit.tar.gz")
-sha256sums=('83f56613699bd59285a4e13b795ccc86398dd85267d54f2b48ec428d59aaa8eb'
-            'f2a61e2899c966488cf35409faeefd293271e6f694825ad710d61c402c7b29c2')
+sha256sums=('5fad24f4082456a7d57442fd60795454f50e989e8c3af166c0645820e216a486'
+            'd7d36ef1c45bdb14a66f5ee0a86ae3fb94f30cbf243fc9a8ef7b9ec81ba78731')
 
 prepare() {
   cp -a "$srcdir/ryu-$_ryu_commit/." "$srcdir/typeshi-mirror-$pkgver/third_party/ryu/"
