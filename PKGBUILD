@@ -38,6 +38,19 @@ sha512sums=(
     'SKIP'
 )
 
+# Migrate existing source caches from git:// to HTTPS, as these error out otherwise on update,
+# which loos rather scary for now reason and is annoying to fixup for unexperienced users.
+for _src in "${source[@]}"; do
+  [[ $_src == *::git+https://git.proxmox.com/git/* ]] || continue
+  _url=${_src#*::git+}; _url=${_url%%#*}
+  _dir="${startdir:-.}/${_src%%::*}"
+  [[ -d $_dir ]] || _dir="${SRCDEST:-${startdir:-.}}/${_src%%::*}"
+  if [[ $(git --git-dir="$_dir" config --local --get remote.origin.url 2>/dev/null) == "git://${_url#https://}" ]]; then
+    git --git-dir="$_dir" remote set-url origin "$_url"
+  fi
+done
+unset _src _url _dir
+
 _apply() {
   echo "applying patch '$1'"
   patch --forward --strip=1 --input="${srcdir}/$1"
