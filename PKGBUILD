@@ -6,8 +6,8 @@
 
 _pkgname=vesktop
 pkgname=vesktop-keybindings-git
-pkgdesc="A standalone Electron-based Discord app with Vencord & improved Linux support with PR #1238 applied"
-pkgver=r655.5078e64
+pkgdesc="A standalone Electron-based Discord app with Vencord & improved Linux support with PR #1389"
+pkgver=r665.4eda14f
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -25,7 +25,7 @@ provides=("vesktop")
 conflicts=('vesktop')
 
 source=(
-  "$_pkgname::git+$url.git#branch=global-shortcuts"
+  "$_pkgname::git+$url.git#branch=global-shortcuts-better"
   "vesktop.desktop::https://aur.archlinux.org/cgit/aur.git/plain/vesktop.desktop?h=vesktop-git"
   "vesktop.sh::https://aur.archlinux.org/cgit/aur.git/plain/vesktop.sh?h=vesktop-git"
 )
