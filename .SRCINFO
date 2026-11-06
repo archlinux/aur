@@ -1,0 +1,24 @@
+pkgbase = mindustry-sdl3-bin
+	pkgdesc = SDL3 backend version of Mindustry.
+	pkgver = 160.6
+	pkgrel = 1
+	url = https://github.com/Anuken/Mindustry
+	arch = any
+	license = GPL-3.0-only
+	makedepends = java-environment=17
+	makedepends = libicns
+	depends = alsa-lib
+	options = !debug
+	source = mindustry-160.6.tar.gz::https://github.com/Anuken/Mindustry/archive/v160.6.tar.gz
+	source = mindustry-arc-160.6.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v160.6.tar.gz
+	source = 0001-mindustry-use-sdl3-backend.patch
+	source = 0002-arc-sdl3-preserve-wheel-delta.patch
+	sha256sums = 47c06c0f37bd1dba70e388316acf0b090e74188f21c0b417c5e9475036afff49
+	sha256sums = 578f715c0b6afeb15924e6d1c2afed214a7bf70fae8e5283047fdc3b56533833
+	sha256sums = 61959e61bd689970d56ca34d67d44a045bb56a1586fcfafa5f143aed889fa013
+	sha256sums = bb05ef13b95043139864ee689daa1e3972dd780cde8c23525ba19fb73b0ec215
+
+pkgname = mindustry-sdl3-bin
+	depends = alsa-lib
+	depends = java-runtime>=17
+	depends = hicolor-icon-theme

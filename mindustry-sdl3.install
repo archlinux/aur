@@ -1,0 +1,14 @@
+post_install() {
+  echo ""
+  echo "==> WARNING: mindustry-sdl3"
+  echo ""
+  echo "This package switches Mindustry's desktop backend from SDL2 to SDL3."
+  echo "It is intended for users affected by SDL2 input method issues, especially Fcitx5 users."
+  echo "If you notice rendering, input, or mod compatibility issues, compare with mindustry or mindustry-bin before reporting upstream."
+  echo "The SDL3 backend is not the official default backend. EXPERIENCE ONLY."
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
