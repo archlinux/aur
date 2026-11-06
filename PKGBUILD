@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=newscid
-pkgver=1.3.35
+pkgver=1.3.36
 pkgrel=1
 pkgdesc="Chess Information Database (Scid v4 compatible)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
     'scid: legacy database tools (tcscid)'
 )
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/chrisfair/newscid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f75dea99c2d778fbc43dd222830040fb3c64d60577c1248da6dd3843448e27f2')
+sha256sums=('b3eb2c7b8cfb41e12d1f43f9a99545645a1f2b732e8adf4926bbeed53a64d228')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/frontend"
