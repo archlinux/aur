@@ -9,6 +9,7 @@ pkgbase = usbredir-git
 	license = LGPL-2.1-only
 	makedepends = git
 	makedepends = meson
+	depends = glibc
 	depends = libusb
 	depends = glib2
 	provides = usbredir
