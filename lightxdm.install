@@ -1,0 +1,20 @@
+post_install() {
+    cat <<'AURGEN_MESSAGES'
+lightXDM is installed, but nothing is set up yet. As your regular user, run: lightxdm-install
+It asks for sudo, installs the packages of your desktop and sets up the TTY1 login (lightxdm-install --help).
+AURGEN_MESSAGES
+}
+
+post_upgrade() {
+    cat <<'AURGEN_MESSAGES'
+lightXDM was updated. To apply the new version, each user who set it up runs: lightxdm-update
+AURGEN_MESSAGES
+}
+
+pre_remove() {
+    cat <<'AURGEN_MESSAGES'
+Removing this package does not undo the lightXDM setup: run sudo lightxdm-uninstall before removing it.
+If the package is already removed, reinstall it to get lightxdm-uninstall back.
+AURGEN_MESSAGES
+}
+

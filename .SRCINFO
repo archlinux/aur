@@ -1,0 +1,19 @@
+pkgbase = lightxdm
+	pkgdesc = Start your desktop from a TTY1 login instead of a display manager, with PAM keyring unlock
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/eserlxl/lightXDM
+	install = lightxdm.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = sudo
+	depends = gnupg
+	depends = grep
+	source = https://github.com/eserlxl/lightXDM/releases/download/v1.0.0/lightxdm-1.0.0.tar.gz
+	source = https://github.com/eserlxl/lightXDM/releases/download/v1.0.0/lightxdm-1.0.0.tar.gz.sig
+	validpgpkeys = 2B0541BF62E91D538C55739DF677BC1E3BD7246E
+	b2sums = 326a83c22748687a637c98cc74bb741b0d645f5078e1b9abaa14d6309f0d8379d7d90d934a23cc4f3308b21ca11de8aa85fb166adc13eb76d4fd9c2834e45b71
+	b2sums = SKIP
+
+pkgname = lightxdm
