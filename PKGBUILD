@@ -21,7 +21,7 @@
 #    will be replaced.
 pkgname=ahfail
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Screen locker that says 'ah ah ah, you didn't say the magic word' on a wrong password"
 arch=('x86_64')
 url="https://asger.weirsøe.dk/en/projects/ahfail"
@@ -41,7 +41,7 @@ backup=('etc/pam.d/ahfail')
 install=ahfail.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$_repo/archive/v$pkgver.tar.gz")
-sha256sums=('7a437e3c813c0302ef9864d0ad6acbb7746aad4178e66f5a772c08d7808f07d2')
+sha256sums=('12e0a50cbb9634f71b48346839ffdee2c1d9c32cf95adea970632d6824dbe3c8')
 
 prepare() {
     cd "$srcdir/gtk-ahfail"
