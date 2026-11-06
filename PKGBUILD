@@ -2,7 +2,7 @@
 
 pkgname=ttc-calicosevka
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An Iosevka-based font created by a calico cat lover'
 arch=('any')
 url='https://codeberg.org/Kit_CMystle/ttc-calicosevka'
@@ -17,7 +17,7 @@ sha256sums=('3397c0ba05411fe88674895f3a526e37993dd7beaf60bc4fec3a94059bf910d2'
             'SKIP'
             '4ba53c7c1cb39279aae5f8d7d22054c485c71169920e5a36ed098b115e2e3c5d'
             'SKIP')
-validpgpkeys=('5A62BB9E38D86B56F18E013B692CCF2A6D8F2D98')
+validpgpkeys=('30E975B34C2A2FF155524EF461DA6BEEBCF75BC2')
 
 package() {
 	install -Dm644 Calicosevka.ttc "$pkgdir/usr/share/fonts/TTC/Calicosevka.ttc"
