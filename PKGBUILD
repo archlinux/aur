@@ -2,7 +2,7 @@
 pkgname=subview-bin
 provides=('subview')
 conflicts=('subview')
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Display a subtitle stream from stdin as a desktop overlay"
 arch=('x86_64' 'aarch64')
