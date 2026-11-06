@@ -8,7 +8,7 @@
 #
 # Template note: the release workflow (`aur-bin` job) copies this file to the
 # AUR `bitty-bin` repository as `PKGBUILD`, substitutes `pkgver` with the
-# release tag version, and replaces `766296d9274bb71ebbf0df0893d7667c0d67e90519f57fb3e21b90aadcbad5e7` below with
+# release tag version, and replaces `364b83d12f619bd468bc6c4a0c23b08175751da3536e0f1d92cba330445f1d26` below with
 # the real sha256 from the published `.sha256` asset. The binary checksum must
 # never be `SKIP` in a published package.
 #
@@ -27,7 +27,7 @@
 # The metadata tarball below is not mirrored (only dist/* is), so it keeps the
 # GitHub archive URL. The binary sha256 is always verified by makepkg.
 pkgname=bitty-bin
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -46,12 +46,13 @@ source_x86_64=(
   "${_bitty_src}::https://cdn.bitty.run/releases/v${pkgver}/${_bitty_asset}"
 )
 sha256sums_x86_64=(
-  '766296d9274bb71ebbf0df0893d7667c0d67e90519f57fb3e21b90aadcbad5e7'
+  '364b83d12f619bd468bc6c4a0c23b08175751da3536e0f1d92cba330445f1d26'
 )
 
 package() {
   cd "${srcdir}/bitty-${pkgver}-x86_64-unknown-linux-gnu"
   install -Dm755 bin/bitty "${pkgdir}/usr/bin/bitty"
+  install -Dm755 bin/bittyd "${pkgdir}/usr/bin/bittyd"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
