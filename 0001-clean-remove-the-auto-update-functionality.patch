@@ -1,19 +1,19 @@
-From a07d36188aff40345a31ab4811802c3a6541e58b Mon Sep 17 00:00:00 2001
+From 2c4844148e56e59a5c5da8642a9b87ce174da390 Mon Sep 17 00:00:00 2001
 From: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 Date: Wed, 28 Oct 2026 19:26:07 +0300
 Subject: [PATCH 1/3] clean: remove the auto update functionality
 
 ---
- main.js             |  13 +--
+ main.js             |  12 +-
  preload.js          |   5 -
- renderer/app.js     |  41 +-------
+ renderer/app.js     |  67 +---------
  renderer/index.html |   1 -
- update.js           | 224 --------------------------------------------
- 5 files changed, 2 insertions(+), 282 deletions(-)
+ update.js           | 310 --------------------------------------------
+ 5 files changed, 2 insertions(+), 393 deletions(-)
  delete mode 100644 update.js
 
 diff --git a/main.js b/main.js
-index 9e2b2cc..017aece 100644
+index 8a689ed..18e2078 100644
 --- a/main.js
 +++ b/main.js
 @@ -5,7 +5,6 @@ const path = require('node:path');
@@ -24,7 +24,7 @@ index 9e2b2cc..017aece 100644
  // The header's star button: the project's page, and its star count on GitHub, asked at most once every
  // ten minutes (null when it can't be had). (Kept out of update.js: a change there only shows at the next
  // update.)
-@@ -492,17 +491,7 @@ function setUpIpc() {
+@@ -623,16 +622,7 @@ function setUpIpc() {
      return on;
    });
    ipcMain.handle('app:version', () => app.getVersion());
@@ -33,8 +33,7 @@ index 9e2b2cc..017aece 100644
 -  // first) and the swap script takes over. Or the release's page, in the browser.
 -  ipcMain.handle('update:check', () => updates.check().catch(() => null));
 -  ipcMain.handle('update:install', async () => {
--    let last = -1;
--    await updates.install((p) => { if (p - last >= 0.01 || p >= 1) { last = p; win?.webContents.send('update:progress', p); } });
+-    await updates.install((p) => win?.webContents.send('update:progress', p));
 -    setTimeout(() => win?.close(), 300);
 -    return true;
 -  });
@@ -44,11 +43,11 @@ index 9e2b2cc..017aece 100644
    ipcMain.handle('repo:stars', () => repoStars().catch(() => null));
    ipcMain.handle('repo:open', () => shell.openExternal(REPO_PAGE));
 diff --git a/preload.js b/preload.js
-index 0a3c3f4..e976b9e 100644
+index 00fa3bd..9bb7dbe 100644
 --- a/preload.js
 +++ b/preload.js
-@@ -37,12 +37,7 @@ contextBridge.exposeInMainWorld('nc', {
-   saveSong: (name, midi, code) => ipcRenderer.invoke('song:save', name, midi, code),
+@@ -46,12 +46,7 @@ contextBridge.exposeInMainWorld('nc', {
+   onTakeFailed: (fn) => ipcRenderer.on('take:failed', (_e, why) => fn(why)),
    // Drop clips (J): a finished clip, whole, into Videos\Toaster.
    saveClip: (buf, ext) => ipcRenderer.invoke('clip:save', buf, ext),
 -  // Updates (update.js): a newer release, or null; on your yes, fetch it and restart into it; or
@@ -61,35 +60,36 @@ index 0a3c3f4..e976b9e 100644
    stars: () => ipcRenderer.invoke('repo:stars'),
    openRepo: () => ipcRenderer.invoke('repo:open'),
 diff --git a/renderer/app.js b/renderer/app.js
-index 1f65447..3c7b31d 100644
+index aa8a3df..4f14901 100644
 --- a/renderer/app.js
 +++ b/renderer/app.js
-@@ -170,7 +170,6 @@ const state = {
-   sceneryScene: 'auto', // and its scene (A too): auto (a new one each song), or one by name
-   spaghettiKind: 'snakes', // the spaghetti's noodles (A while it's on): SPAGHETTI_KINDS
+@@ -202,7 +202,6 @@ const state = {
+   earthTour: true,
+   earthClip: 'aurora', // the Earth's view (A while it's on): EARTH_CLIPS
    calm: false, // fewer flashes (the help's setting; on at first if Windows' animations are off)
 -  updates: true, // look for a newer Toaster when it starts (the help's setting)
    mirror: true, // the camera mirrored, as a selfie view is; off, as the camera sees it (the help's setting; see camview.js)
    playerBar: true, // the player bar along the bottom (the help's setting; see player.js)
    playerRec: false, // and in a recording, which leaves it out unless this is on (the help's setting too)
-@@ -194,7 +193,7 @@ let col = { bg: [5, 29, 181], fg: [255, 255, 255], ink: [2, 11, 69] };
+@@ -228,7 +227,7 @@ let col = { bg: [5, 29, 181], fg: [255, 255, 255], ink: [2, 11, 69] };
  
  // The look you picked (background and its strength, blocks, orb, card, glass, theme, drop effect)
  // is remembered between launches. The camera always starts off.
--const SAVED = ['hintsDone', 'keys', 'codeHidden', 'beatHidden', 'crt', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'updates', 'mirror', 'playerBar', 'playerRec', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'spaghettiKind', 'radio', 'seenVersion', 'userScenes', 'radioStations', 'queueRepeat', 'queueShuffle', 'queueResume', 'recentAlbums'];
-+const SAVED = ['hintsDone', 'keys', 'codeHidden', 'beatHidden', 'crt', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'mirror', 'playerBar', 'playerRec', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'spaghettiKind', 'radio', 'seenVersion', 'userScenes', 'radioStations', 'queueRepeat', 'queueShuffle', 'queueResume', 'recentAlbums'];
- function loadSettings() {
-   let saved = {};
-   try {
-@@ -1112,18 +1111,6 @@ function setCalm(on) {
+-const SAVED = ['perfectCopy', 'stagedTypos', 'hintsDone', 'keys', 'codeHidden', 'beatHidden', 'crt', 'look', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'updates', 'mirror', 'playerBar', 'playerRec', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'spaghettiKind', 'radio', 'seenVersion', 'userScenes', 'radioStations', 'spotifyLinks', 'queueRepeat', 'queueShuffle', 'libCover', 'queueResume', 'recentAlbums', 'glassPlates', 'earthClip', 'patternKick', 'earthTour'];
++const SAVED = ['perfectCopy', 'stagedTypos', 'hintsDone', 'keys', 'codeHidden', 'beatHidden', 'crt', 'look', 'strength', 'blocks', 'blockLook', 'gameScreens', 'orb', 'card', 'cardV', 'cardBig', 'glass', 'theme', 'drop', 'syncTrim', 'camFx', 'calm', 'mirror', 'playerBar', 'playerRec', 'worldLook', 'chromeCollage', 'spectroTheme', 'sceneryTheme', 'sceneryScene', 'spaghettiKind', 'radio', 'seenVersion', 'userScenes', 'radioStations', 'spotifyLinks', 'queueRepeat', 'queueShuffle', 'libCover', 'queueResume', 'recentAlbums', 'glassPlates', 'earthClip', 'patternKick', 'earthTour'];
+ function sceneDomains() {
+   return { visual: VISUALS, theme: THEMES, blockLook: BLOCK_LOOKS, gameScreens: GAME_SCREENS,
+     sceneryScene: ['auto', ...scenery.scenes], blocks: true, vertical: true, orb: true, libCover: ['chars', 'photo'],
+@@ -1362,19 +1361,6 @@ function setCalm(on) {
  }
  $('calm').addEventListener('change', (e) => setCalm(e.target.checked));
  
 -// Updates: the help's checkbox, and the offer of a newer Toaster (update.js in the main process
 -// looks it up on GitHub): a few seconds after it starts, once, not over a recording. Update now:
--// it downloads, checks it, closes and opens again as the new one; or, where it can't (a Mac, a
--// copy it can't write beside, a try at that version that didn't go through in the last day, with
--// why), the release's page.
+-// it downloads, checks it, closes and opens again as the new one (on a Mac, with the old one in the
+-// Trash); or, where it can't (a copy it can't write beside, a Mac copy run from Downloads or a disk
+-// image, which says to move it into Applications first, a try at that version that didn't go
+-// through in the last day, with why), the release's page.
 -function setUpdates(on) {
 -  state.updates = on;
 -  $('updates').checked = on;
@@ -100,7 +100,7 @@ index 1f65447..3c7b31d 100644
  // Mirror the camera: the help's checkbox, and Ctrl+K's "camera: mirrored" and "camera: not mirrored". On
  // (as it always was), the camera is shown as a mirror shows you; off, as the camera sees it, for pointing
  // it at your gear. The camera layer, the ASCII camera, the dots, the voxels, big eyes, the cut-out, the
-@@ -1153,31 +1140,6 @@ function setPlayerRec(on) {
+@@ -1404,56 +1390,6 @@ function setPlayerRec(on) {
  }
  $('playerbar').addEventListener('change', (e) => setPlayerBar(e.target.checked));
  $('playerrec').addEventListener('change', (e) => setPlayerRec(e.target.checked));
@@ -113,14 +113,18 @@ index 1f65447..3c7b31d 100644
 -    title: 'toaster update', icon: 'info',
 -    text: u.failed
 -      ? `Toaster ${u.version} is out (this one is ${u.current}), but installing it here didn't go through last time (${u.failed}). Open its page to get it?`
--      : `Toaster ${u.version} is out (this one is ${u.current}). ${u.canInstall ? 'Update now? It downloads, then closes and opens again as the new one.' : 'Open its page to get it?'}`,
+-      : u.why
+-        ? `Toaster ${u.version} is out (this one is ${u.current}), but ${u.why}. Open its page to get it?`
+-        : `Toaster ${u.version} is out (this one is ${u.current}). ${u.canInstall ? 'Update now? It downloads, then closes and opens again as the new one.' : 'Open its page to get it?'}`,
 -    buttons: [u.canInstall ? 'Update now' : 'Open page', 'Later'],
 -  });
 -  $('alerts').querySelector('button').addEventListener('click', async () => {
 -    if (!u.canInstall) { window.nc.updatePage(); return; }
+-    showUpdateProgress();
 -    flashStatus('downloading the update');
 -    try {
 -      await window.nc.updateInstall();
+-      $('update-download-text').textContent = `opening Toaster ${u.version}`;
 -      flashStatus(`opening Toaster ${u.version}`);
 -    } catch (err) {
 -      xpAlert($('alerts'), { title: 'toaster update', icon: 'warning', text: `The update didn't go through (${String(err?.message || err).replace(/^.*?Error: /, '')}), and nothing changed. Get it from its page instead?`, buttons: ['Open page', 'OK'] });
@@ -128,23 +132,44 @@ index 1f65447..3c7b31d 100644
 -    }
 -  });
 -}
--window.nc?.onUpdateProgress?.((p) => flashStatus(`downloading the update ${Math.round(p * 100)}%`));
+-function showUpdateProgress() {
+-  xpAlert($('alerts'), { title: 'toaster update', icon: 'info', text: 'downloading the update…', buttons: [] });
+-  const box = $('alerts').querySelector('.xp');
+-  box.querySelector('.xp-ctl').remove();
+-  box.querySelector('p').id = 'update-download-text';
+-  const bar = document.createElement('progress');
+-  bar.id = 'update-download-bar';
+-  bar.max = 1;
+-  bar.setAttribute('aria-label', 'Update download');
+-  box.querySelector('.xp-frame').append(bar);
+-}
+-window.nc?.onUpdateProgress?.((p) => {
+-  const text = $('update-download-text'), bar = $('update-download-bar');
+-  if (!text || !bar) return;
+-  const mb = (bytes) => (bytes / 1e6).toFixed(1);
+-  text.textContent = p.total
+-    ? `downloading the update: ${mb(p.downloaded)} / ${mb(p.total)} MB`
+-    : `downloading the update: ${mb(p.downloaded)} MB (total unknown)`;
+-  if (p.fraction === null) bar.removeAttribute('value');
+-  else bar.value = p.fraction;
+-  if (p.fraction === 1) text.textContent += ' — checking and unpacking…';
+-});
  
  // What's new (news.js): after an update, once, a box with what came in since the version last
  // opened, each with its key (the first time Toaster opens, the welcome note instead); "Show in
-@@ -2505,7 +2467,6 @@ setGlass(state.glass);
- setCodeHidden(state.codeHidden, state.beatHidden);
- setCrt(state.crt);
+@@ -3108,7 +3044,6 @@ setGlassPlates(state.glassPlates, false);
+ const looksReady = loadLooks();
  setCalm(state.calm);
+ setStagedTypos(state.stagedTypos);
 -setUpdates(state.updates);
  setMirror(state.mirror);
  setPlayerBar(state.playerBar);
  setPlayerRec(state.playerRec);
 diff --git a/renderer/index.html b/renderer/index.html
-index 851b35c..3fa1391 100644
+index 912770e..91d9315 100644
 --- a/renderer/index.html
 +++ b/renderer/index.html
-@@ -121,7 +121,6 @@
+@@ -125,7 +125,6 @@
    <p>Toaster listens to whatever your <span class="os-win">PC</span><span class="os-mac">Mac</span> plays and writes it out as Strudel code, live: the drums on a 16-step grid, the tempo, bass, chords, key and lead line. A new song starts a fresh page. It's a reconstruction for show, not an exact transcription; steady beats work best.</p>
    <p>When the kick comes back after a break, the backgrounds answer the drop, and the drop effect, if you've picked one with <kbd data-k="dropfx">B</kbd>, takes over the screen. The camera features run on this <span class="os-win">PC</span><span class="os-mac">Mac</span>; nothing is uploaded. Your picks are remembered, except the camera, which always starts off.</p>
    <label class="calm"><input type="checkbox" id="calm" /><span><b>Fewer flashes</b>: no full-screen flashes, hard cuts or colour flashes. On from the start if <span class="os-win">Windows' "Show animations" is off</span><span class="os-mac">the Mac's Reduce motion setting is on</span>.</span></label>
@@ -154,24 +179,30 @@ index 851b35c..3fa1391 100644
    <label class="calm"><input type="checkbox" id="playerrec" /><span><b>Player bar in recordings</b>: off, a recording leaves the bar out, as it does the header and footer; on, it's in the video.</span></label>
 diff --git a/update.js b/update.js
 deleted file mode 100644
-index e9b01b4..0000000
+index 0858841..0000000
 --- a/update.js
 +++ /dev/null
-@@ -1,224 +0,0 @@
+@@ -1,310 +0,0 @@
 -// Updates from GitHub (main process). When Toaster starts, the page asks (unless you turned it
 -// off in the help): the latest release of the repo is looked up, and a newer version is offered
--// to the page, which asks you. With your yes, on Windows, in a copy unzipped somewhere it can
--// write to: the release's zip is downloaded, checked against the SHA-256 GitHub lists for it,
+-// to the page, which asks you. With your yes, in a copy it can replace where it stands: the
+-// release's zip for this system is downloaded, checked against the SHA-256 GitHub lists for it,
 -// and unpacked beside the app; then the window closes (a recording finishes first) and a small
--// PowerShell script waits for Toaster to exit, moves the old copy aside, moves the new one in,
--// starts it, and removes the old copy (or, when another program holds a file open so the folder
--// can't move, writes the new files over the old ones in place). Anything amiss, and nothing is
--// swapped: the page offers the release's page instead, and an update that didn't go through says
--// why rather than offering itself again. On a Mac (no download yet) it only offers the page. The
--// request to GitHub carries nothing about you or what's playing.
+-// script waits for Toaster to exit, swaps the new copy in and starts it.
+-//   Windows: a PowerShell script moves the old copy aside, moves the new one in, starts it, and
+-//   removes the old copy (or, when another program holds a file open so the folder can't move,
+-//   writes the new files over the old ones in place).
+-//   Mac (helpers/mac-update.cjs): the Mac zip, unpacked by ditto; a shell script renames the old
+-//   Toaster.app aside, renames the new one into its place, starts it, and puts the old one in the
+-//   Trash. A copy run from Downloads or a disk image is run by the Mac from a read-only place
+-//   that can't replace itself: the page says to move it into Applications.
+-// Anything amiss, and nothing is swapped: the page offers the release's page instead, and an
+-// update that didn't go through says why rather than offering itself again. The request to GitHub
+-// carries nothing about you or what's playing.
 -const { app, net } = require('electron');
 -const path = require('node:path');
 -const fs = require('node:fs');
+-const os = require('node:os');
 -const crypto = require('node:crypto');
 -const { Readable, Transform } = require('node:stream');
 -const { pipeline } = require('node:stream/promises');
@@ -216,7 +247,8 @@ index e9b01b4..0000000
 -  } catch { return null; }
 -}
 -
--// A newer release than this copy, or null: { version, current, page, canInstall, failed }.
+-// A newer release than this copy, or null: { version, current, page, canInstall, failed, why }. why (on a Mac, where a
+-// download is there to be had but this copy can't replace itself where it is) says so in words, with what to do.
 -async function check() {
 -  if (!app.isPackaged && !process.env.TOASTER_UPDATE_FEED) return null; // (run from source: git pull)
 -  const res = await net.fetch(FEED, { headers: { Accept: 'application/vnd.github+json', 'User-Agent': `Toaster/${app.getVersion()}` } });
@@ -224,13 +256,24 @@ index e9b01b4..0000000
 -  const rel = await res.json();
 -  const version = String(rel.tag_name || '').replace(/^v/, ''), current = app.getVersion();
 -  if (rel.draft || rel.prerelease || !/^\d+(\.\d+)*$/.test(version) || !newer(version, current)) return null;
--  const zip = (rel.assets || []).find((a) => a.name === `Toaster-${version}-win-x64.zip`);
+-  const mac = process.platform === 'darwin';
+-  const assets = rel.assets || [];
+-  const asset = (target) => assets.find((a) => a.name === `Toaster-${version}-${target}.zip`);
+-  const zip = mac ? asset(`mac-${process.arch}`) || asset('mac-universal') : asset('win-x64');
 -  const sha = /^sha256:([0-9a-f]{64})$/.exec(zip?.digest || '')?.[1];
 -  const appDir = path.dirname(process.execPath);
 -  found = { version, page: String(rel.html_url || `https://github.com/${REPO}/releases/latest`), zip: zip?.browser_download_url, size: zip?.size, sha, appDir };
--  const canInstall = process.platform === 'win32' && !!zip && !!sha && isDownloadURL(found.zip) && writable(path.dirname(appDir));
+-  let canInstall, why = null;
+-  if (mac) {
+-    canInstall = !!zip && !!sha && isDownloadURL(found.zip);
+-    if (canInstall) {
+-      // (if where this copy is can't be worked out, the page's offer stays, rather than no offer at all)
+-      try { why = require('./helpers/mac-update.cjs').where(app.getPath('exe')).problem; } catch { why = null; canInstall = false; }
+-      canInstall = canInstall && !why;
+-    }
+-  } else canInstall = process.platform === 'win32' && !!zip && !!sha && isDownloadURL(found.zip) && writable(path.dirname(appDir));
 -  const failed = canInstall ? lastTry(version) : null;
--  return { version, current, page: found.page, canInstall: canInstall && !failed, failed };
+-  return { version, current, page: found.page, canInstall: canInstall && !failed, failed, why };
 -}
 -
 -// can a folder be made beside the app (where the new copy is unpacked, so the swap is a rename)?
@@ -248,35 +291,32 @@ index e9b01b4..0000000
 -  });
 -}
 -
--// Downloads, checks and unpacks the release found, then hands over to the swap script; resolves
--// once the script is waiting (the caller then closes the window), or throws with why not.
--// progress(fraction) as the zip arrives.
--async function install(progress) {
--  const f = found;
--  if (!f?.zip || !f.sha || process.platform !== 'win32') throw new Error('no download for this system');
--  if (!isDownloadURL(f.zip)) throw new Error('the update download is not on GitHub');
--  const parent = path.dirname(f.appDir), stage = path.join(parent, `Toaster-update-${f.version}`);
--  fs.rmSync(stage, { recursive: true, force: true }); // (a stage left by an update that didn't finish)
--  fs.mkdirSync(stage, { recursive: true });
--  try {
--  const file = path.join(stage, `Toaster-${f.version}-win-x64.zip`);
+-// The release's zip, fetched into file and checked as it arrives (the same on both systems): resolves once all of it is on
+-// disk and its SHA-256 is the one GitHub lists for it, or throws with why (the file is removed). progress({ downloaded, total, fraction }) as the
+-// zip arrives.
+-async function fetchZip(f, file, progress) {
 -  const download = new AbortController(), hash = crypto.createHash('sha256');
 -  // A server that stops sending (before the headers or mid-body) would otherwise leave the download
 -  // waiting forever: with nothing for STALL_MS, it's given up.
--  let stalled = false, watchdog;
+-  let stalled = false, watchdog, got = 0, last = 0;
+-  const total = Number.isSafeInteger(f.size) && f.size > 0 ? f.size : null;
+-  const report = () => {
+-    last = Date.now();
+-    progress({ downloaded: got, total, fraction: total ? Math.min(1, got / total) : null });
+-  };
 -  const alive = () => { clearTimeout(watchdog); watchdog = setTimeout(() => { stalled = true; download.abort(); }, STALL_MS); };
 -  try {
 -    alive();
+-    report();
 -    // (GitHub sends a release's download on to its CDN: net.fetch follows that itself; a 'manual'
 -    // redirect throws in Electron, so only the release's own URL is checked, above)
 -    const res = await net.fetch(f.zip, { signal: download.signal, headers: { 'User-Agent': `Toaster/${app.getVersion()}` } });
 -    if (!res.ok || !res.body) throw new Error(`download failed (${res.status})`);
--    let got = 0;
 -    const meter = new Transform({ transform(chunk, encoding, done) {
 -      alive();
 -      hash.update(chunk);
 -      got += chunk.length;
--      try { if (f.size) progress(got / f.size); done(null, chunk); } catch (err) { done(err); }
+-      try { if (Date.now() - last >= 200) report(); done(null, chunk); } catch (err) { done(err); }
 -    } });
 -    // The pipeline observes open, write and finish errors, including while waiting for drain.
 -    // Destroying its readable cancels the response, so a failed disk never leaves a download running.
@@ -285,11 +325,47 @@ index e9b01b4..0000000
 -  } catch (err) {
 -    download.abort();
 -    await fs.promises.rm(file, { force: true }).catch(() => {});
--    throw stalled ? new Error('the download stalled') : err;
+-    throw stalled ? new Error('the download stalled') : saving(dropped(err, got));
 -  } finally {
 -    clearTimeout(watchdog);
 -  }
--  if (hash.digest('hex') !== f.sha) { fs.rmSync(stage, { recursive: true, force: true }); throw new Error("the download didn't match GitHub's checksum"); }
+-  // (a connection that closes early without saying so only shows by the size, when GitHub lists one; the checksum catches the rest)
+-  const short = !!f.size && got < f.size;
+-  if (short || hash.digest('hex') !== f.sha) {
+-    fs.rmSync(file, { force: true });
+-    throw new Error(short ? 'the download was cut short' : "the download didn't match GitHub's checksum");
+-  }
+-  report();
+-}
+-
+-// What the runtime says when a connection drops is cryptic ("terminated" from Node's fetch, "net::ERR_..." from Electron's):
+-// said plainly instead, with the original kept as the cause. Any other error is as it came.
+-function dropped(err, got) {
+-  const code = String(err?.cause?.code || err?.code || '');
+-  if (!/^(UND_ERR|ECONN|EPIPE|ETIMEDOUT|ENOTFOUND|EAI_)/.test(code) && !/^(terminated|fetch failed|Failed to fetch|net::)/i.test(err?.message || '')) return err;
+-  return new Error(got ? 'the connection dropped partway through the download' : "the download couldn't be started (GitHub couldn't be reached)", { cause: err });
+-}
+-
+-// A file system's failure (a full disk, a folder that can't be written) in words: the code says which.
+-const saving = (err) => (err?.syscall && /^E[A-Z]+$/.test(err.code || '') ? new Error(`the update couldn't be saved (${err.code})`, { cause: err }) : err);
+-
+-// Downloads, checks and unpacks the release found, then hands over to the swap script; resolves
+-// once the script is waiting (the caller then closes the window), or throws with why not.
+-// progress({ downloaded, total, fraction }) as the zip arrives.
+-function install(progress) {
+-  return process.platform === 'darwin' ? installMac(progress) : installWindows(progress);
+-}
+-
+-async function installWindows(progress) {
+-  const f = found;
+-  if (!f?.zip || !f.sha || process.platform !== 'win32') throw new Error('no download for this system');
+-  if (!isDownloadURL(f.zip)) throw new Error('the update download is not on GitHub');
+-  const parent = path.dirname(f.appDir), stage = path.join(parent, `Toaster-update-${f.version}`);
+-  fs.rmSync(stage, { recursive: true, force: true }); // (a stage left by an update that didn't finish)
+-  fs.mkdirSync(stage, { recursive: true });
+-  try {
+-  const file = path.join(stage, `Toaster-${f.version}-win-x64.zip`);
+-  await fetchZip(f, file, progress);
 -  // unpacked with Windows' own tar (in Windows 10 and 11), then checked: one folder, with the app
 -  await unpack(file, stage);
 -  fs.rmSync(file, { force: true });
@@ -312,6 +388,41 @@ index e9b01b4..0000000
 -    // Only the stage is ours to remove: the installed app hasn't been touched at this point.
 -    await fs.promises.rm(stage, { recursive: true, force: true }).catch(() => {});
 -    throw err;
+-  }
+-}
+-
+-// The Mac's install: the same fetch and checks, the zip unpacked by ditto beside the app, then the swap script of
+-// helpers/mac-update.cjs (its header has the order of things). Before that script starts, everything made is in a folder of ours
+-// (a temp folder, and a hidden stage beside the app): the installed app is touched only after Toaster has closed, so whatever
+-// throws here leaves it as it was, working, and says why.
+-async function installMac(progress) {
+-  const f = found;
+-  if (!f?.zip || !f.sha) throw new Error('no download for this system');
+-  if (!isDownloadURL(f.zip)) throw new Error('the update download is not on GitHub');
+-  const mac = require('./helpers/mac-update.cjs'), exe = app.getPath('exe');
+-  // (looked at again, not taken from the offer: since then Toaster may have been moved, or its folder changed)
+-  const { bundle, problem } = mac.where(exe);
+-  if (problem) throw new Error(problem);
+-  const stage = mac.stageOf(bundle, f.version);
+-  let temp;
+-  try {
+-    temp = fs.mkdtempSync(path.join(app.getPath('temp'), 'toaster-update-'));
+-    mac.clearStages(bundle); // (a stage left by an update that didn't finish)
+-    const file = path.join(temp, mac.zipName(f.version));
+-    await fetchZip(f, file, progress);
+-    fs.mkdirSync(stage);
+-    await mac.unpack(file, stage);
+-    const fresh = await mac.unpackedBundle(stage, f.version, exe);
+-    await mac.startSwap({
+-      pid: process.pid, app: bundle, fresh, stage, aside: mac.asideOf(bundle, process.pid), trash: path.join(os.homedir(), '.Trash'),
+-      keep: `Toaster ${app.getVersion()}`, version: f.version, log: path.join(app.getPath('temp'), 'toaster-update.log'),
+-    });
+-  } catch (err) {
+-    // Only the stage is ours to remove: the installed app hasn't been touched at this point.
+-    await fs.promises.rm(stage, { recursive: true, force: true }).catch(() => {});
+-    throw saving(err);
+-  } finally {
+-    if (temp) await fs.promises.rm(temp, { recursive: true, force: true }).catch(() => {});
 -  }
 -}
 -

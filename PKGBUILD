@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=toaster
-pkgver=0.4.29
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Hears whatever is playing and writes it out as live Strudel code, with visuals'
 arch=(
@@ -24,10 +24,10 @@ source=(
     '0002-chore-npm-update-the-packages.patch'
 )
 sha256sums=(
-    '199487c968fe70064e98e10faffd547d46d7fa1db1aac0d6d7c97154dbb085bb'
+    '658f19165cee95cb75ad764d7a050138a3065d4a2729c40c524a4dce207cb13b'
     'd8716162035147616f5702802e039456968fa2d594c070d4a6ede66845caa01c'
-    '8b5376b277fb9bba6ad41d55a2fed3a6802504990fda72774cb057ab007cbaed'
-    '84bb64037873a10a98999cccf1a14062f083cb402348e6d366887650098bd902'
+    '7794f95b44910fd10e412dddea883530bf4b8514eccd1599f4509aca485b8367'
+    'c6c7c28db13796d23ef53d6092942863cf3de4224f68d8d5bd0c3b76cf9b65e4'
 )
 
 prepare() {
