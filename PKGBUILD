@@ -1,7 +1,7 @@
 # Maintainer: Neo_Chen <neochen1024+clda@gmail.com>
 
 pkgname=0c-ime
-pkgver=0.2.7
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Zhuyin (Bopomofo) input method with statistical and neural candidate selection, for Fcitx5 and IBus"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('fcitx5: Fcitx5 frontend'
             'python-numpy: neural candidate selection and punctuation'
             'python-onnxruntime: neural candidate selection and punctuation')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('dedfa3debe3cc840cc0dc054e11b27970502d24a8d9dfda1073e745b82341170')
+sha256sums=('67bf34104ae52953f5b9fb586e2320c262e4a7907692b288598853db6cde1b96')
 
 _make() {
   make PREFIX=/usr LIBEXECDIR=/usr/lib VERSION="$pkgver" "$@"
