@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cloud-hypervisor-git
-pkgver=50.0.r139.gecb971a49
+pkgver=54.0.r436.gf7ade4b03
 pkgrel=1
 pkgdesc="An open source Virtual Machine Monitor (VMM) that runs on top of KVM"
 arch=('x86_64')
@@ -18,11 +18,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "cloud-hypervisor"
 
-  if [ ! -f "cloud-hypervisor/Cargo.lock" ]; then
-    cargo update \
+  if [ ! -f "Cargo.lock" ]; then
+    cargo generate-lockfile \
       --manifest-path "cloud-hypervisor/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "cloud-hypervisor/Cargo.toml"
 }
 
