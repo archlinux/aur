@@ -5,8 +5,8 @@ provides=(zalo)
 conflicts=(zalo)
 pkgver=26.11.10
 _zadarkver=26.3
-_commithash=dd7cf93
-pkgrel=3
+_commithash=8ce3b4c
+pkgrel=4
 pkgdesc="Zalo for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/VN-Linux-Family/zalo-for-linux"
@@ -23,14 +23,6 @@ depends=(
 optdepends=(
     'wl-clipboard: paste images from clipboard on Wayland'
     'xclip: paste images from clipboard on X11'
-    'deepin-screen-recorder: Screenshot without/with Zalo window button'
-    'spectacle: Screenshot without/with Zalo window button'
-    'flameshot: Screenshot without/with Zalo window button'
-    'gnome-screenshot: Screenshot without/with Zalo window button'
-    'xfce4-screenshooter: Screenshot without/with Zalo window button'
-    'mate-utils: Screenshot without/with Zalo window button'
-    'cosmic-screenshot: Screenshot without/with Zalo window button'
-    'scrot: Screenshot without/with Zalo window button'
     'zenity: call window when the engine is run standalone'
 )
 source=(
@@ -44,8 +36,8 @@ sha256sums=(
     'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
 )
-sha256sums_x86_64=('940c7999c0df1844526c0e709ea836c88e21f9afd7921b56566c66d08e80dabc')
-sha256sums_aarch64=('1b42ecffbd8e6d00511509601015f6d412f5803b9daed758645aa93db94425dd')
+sha256sums_x86_64=('473023ed270d1cef8b82ab212c20df00ee009473c800a1910860271e776c8a0a')
+sha256sums_aarch64=('a9a993932c75b1d3f9bddb2ef0477d7a8bdf1ae980b196a2e151a043c32097e4')
 
 package() {
     install -Dm755 "${srcdir}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}.AppImage" "${pkgdir}/usr/bin/zalo"
