@@ -1,62 +1,62 @@
-# Contributer: mzwing <mzwing@mzwing.eu.org>
+# Contributor: mzwing <mzwing@mzwing.eu.org>
 
 pkgname='deepin-wine10-stable'
-_pkgver=10.14deepin11
+_pkgver=10.14deepin14
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Deepin wine10 stable"
 arch=('x86_64')
 url="http://www.deepin.org"
-license=('Proprietary')
-makedepends=('tar')
+license=('LicenseRef-Proprietary')
+makedepends=('binutils')
 source=("https://pro-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine10-stable/deepin-wine10-stable_${_pkgver}_amd64.deb")
 noextract=("deepin-wine10-stable_${_pkgver}_amd64.deb")
-sha256sums=('a3412982cfb16d8e20d29508779ac5ad8a3b389a41737eebb7f657a1b5b9cb0f')
+sha256sums=('dd5a9dc0c94ab7ce4d3ace543f1a8946c4c8b059cd1d2c23acbb83e6efc04018')
 DLAGENTS=("https::/usr/bin/curl -A 'Debian\ APT-HTTP/1.3' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 depends=(
-    alsa-lib                    # libasound2 (>= 1.0.16)
-    glibc                       # libc6 (>= 2.26)
+    alsa-lib # libasound2 (>= 1.0.16)
+    glibc    # libc6 (>= 2.26)
     # libcapi                     # libcapi20-3
-    dbus                        # libdbus-1-3 (>= 1.9.16)
-    gcc-libs                    # libgcc1 (>= 1:3.0)
-    glib2                       # libglib2.0-0 (>= 2.37.3)
-    libgphoto2                  # libgphoto2-6 (>= 2.5.10),  libgphoto2-port12 (>= 2.5.10)
-    gst-plugins-base-libs       # libgstreamer-plugins-base1.0-0 (>= 1.8.0)
-    gstreamer                   # libgstreamer1.0-0 (>= 1.14.0)
-    pcsclite                    # libpcsclite1 (>= 1.3.3)
-    libpng                      # libpng16-16 (>= 1.6.2-1)
-    libpulse                    # libpulse0 (>= 0.99.1)
-    sane                        # libsane (>= 1.0.24)
-    systemd-libs                # libudev1 (>= 183)
-    libusb                      # libusb-1.0-0 (>= 2:1.0.21)
-    libx11                      # libx11-6
-    libxext                     # libxext6
-    ocl-icd                     # ocl-icd-libopencl1 | libopencl1,  ocl-icd-libopencl1 (>= 1.0) | libopencl-1.2-1
-    alsa-plugins                # libasound2-plugins
-    ncurses                     # libncurses6 | libncurses5 | libncurses
+    dbus                  # libdbus-1-3 (>= 1.9.16)
+    gcc-libs              # libgcc1 (>= 1:3.0)
+    glib2                 # libglib2.0-0 (>= 2.37.3)
+    libgphoto2            # libgphoto2-6 (>= 2.5.10),  libgphoto2-port12 (>= 2.5.10)
+    gst-plugins-base-libs # libgstreamer-plugins-base1.0-0 (>= 1.8.0)
+    gstreamer             # libgstreamer1.0-0 (>= 1.14.0)
+    pcsclite              # libpcsclite1 (>= 1.3.3)
+    libpng                # libpng16-16 (>= 1.6.2-1)
+    libpulse              # libpulse0 (>= 0.99.1)
+    sane                  # libsane (>= 1.0.24)
+    systemd-libs          # libudev1 (>= 183)
+    libusb                # libusb-1.0-0 (>= 2:1.0.21)
+    libx11                # libx11-6
+    libxext               # libxext6
+    ocl-icd               # ocl-icd-libopencl1 | libopencl1,  ocl-icd-libopencl1 (>= 1.0) | libopencl-1.2-1
+    alsa-plugins          # libasound2-plugins
+    ncurses               # libncurses6 | libncurses5 | libncurses
 )
 
 optdepends=(
-    libcap                      # libcap2-bin
-    cups                        # libcups2
-    fontconfig                  # libfontconfig1
-    freetype2                   # libfreetype6
-    glu                         # libglu1-mesa | libglu1
-    gnutls                      # libgnutls30 | libgnutls28 | libgnutls26
-    libjpeg-turbo               # libjpeg62-turbo | libjpeg8
-    krb5                        # libgssapi-krb5-2, libkrb5-3
-    unixodbc                    # libodbc1
-    mesa                        # libosmesa6
-    sdl2-compat                 # libsdl2-2.0-0
-    v4l-utils                   # libv4l-0
-    libxcomposite               # libxcomposite1
-    libxcursor                  # libxcursor1
-    libxfixes                   # libxfixes3
-    libxi                       # libxi6
-    libxinerama                 # libxinerama1
-    libxrandr                   # libxrandr2
-    libxrender                  # libxrender1
-    libxxf86vm                  # libxxf86vm1
+    libcap        # libcap2-bin
+    cups          # libcups2
+    fontconfig    # libfontconfig1
+    freetype2     # libfreetype6
+    glu           # libglu1-mesa | libglu1
+    gnutls        # libgnutls30 | libgnutls28 | libgnutls26
+    libjpeg-turbo # libjpeg62-turbo | libjpeg8
+    krb5          # libgssapi-krb5-2, libkrb5-3
+    unixodbc      # libodbc1
+    mesa          # libosmesa6
+    sdl2-compat   # libsdl2-2.0-0
+    v4l-utils     # libv4l-0
+    libxcomposite # libxcomposite1
+    libxcursor    # libxcursor1
+    libxfixes     # libxfixes3
+    libxi         # libxi6
+    libxinerama   # libxinerama1
+    libxrandr     # libxrandr2
+    libxrender    # libxrender1
+    libxxf86vm    # libxxf86vm1
 )
 
 package() {
