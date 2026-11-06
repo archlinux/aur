@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-bin
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=43
 pkgrel=1
 pkgdesc="An open-source desktop markup editor that supports webdav.一款支持webdav的开源桌面端markdown编辑器"
@@ -15,16 +15,13 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    "asar"
-)
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-${CARCH}-${pkgver}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nlbwqmz/wj-markdown-editor/${pkgver}/LICENSE"
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('674f33b5ac5bfd29940712c79a3d22d1f240f8f9118afc6fd7e22bd662b2eb3a'
+sha256sums=('67f1a38baaca84de2ec8944466dacfa281e440fb25260c407a6cc126302f8914'
             '4db85f2bcfa2b60623a893393a61158a562fd907cf1244a06f41fd11eb6f8605'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
@@ -58,16 +55,6 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    asar e "$(_get_app_dir)/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -i "s|const documentsPath = app.isPackaged ? path.resolve(app.getPath('documents'), 'wj-markdown-editor') : app.getAppPath()|const documentsPath = path.resolve(app.getPath('userData'))|g" \
-        "${srcdir}/app.asar.unpacked/src/data/recent.js"
-    sed -i "s|return app.isPackaged|return true \|\| app.isPackaged|g" \
-        "${srcdir}/app.asar.unpacked/src/data/config/configConstants.js"
-    sed -i "s|app.getPath('documents'), 'wj-markdown-editor'|app.getPath('userData')|g" \
-        "${srcdir}/app.asar.unpacked/src/data/config/configConstants.js"
-    sed -i "s|app.getPath('documents'), 'wj-markdown-editor/logs'|app.getPath('userData'), 'logs'|g" \
-        "${srcdir}/app.asar.unpacked/src/util/logUtil.js"
-    asar p "${srcdir}/app.asar.unpacked" "$(_get_app_dir)/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
