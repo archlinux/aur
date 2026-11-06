@@ -1,6 +1,6 @@
 pkgbase = aurodle-git
 	pkgdesc = An AUR helper that builds packages into a local repository
-	pkgver = r0.0000000
+	pkgver = r307.6d45d5a
 	pkgrel = 1
 	url = https://github.com/rmarquis/aurodle
 	arch = x86_64
