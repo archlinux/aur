@@ -162,7 +162,7 @@ build() {
 		# one first, as systemd requires for Type!=oneshot. The stock line's
 		# --port=${PORT} cannot be kept as is: an empty PORT makes tailscaled
 		# refuse to start, where leaving the flag out lets it choose.
-		add_systemd_drop_in tailscaled.service override <<-EOU
+		add_systemd_drop_in tailscaled.service mkinitcpio-tailscale <<-EOU
 			[Unit]
 			DefaultDependencies=no
 			After=network-online.target
