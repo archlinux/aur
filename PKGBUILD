@@ -1,7 +1,7 @@
 # maintainer: verse <versedev.store@proton.me>
 _pkgname=ClakIME
 pkgname=clak
-pkgver=0.7.8
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Fast and highly stable Vietnamese input method for Fcitx5 and Wayland"
 arch=('x86_64' 'aarch64')
@@ -21,6 +21,7 @@ build() {
     cd "$_pkgname-$pkgver" 2>/dev/null || cd "$pkgname-$pkgver" 2>/dev/null || cd *-"$pkgver"
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
+        -DRELEASE_DIST=ON \
         -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build -j"$(nproc)"
 }
