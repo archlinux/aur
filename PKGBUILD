@@ -6,9 +6,9 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A selection-first modal text editor for the terminal, scriptable in Scheme"
 
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
-_gitcommit=5a54f215b
+_gitcommit=9325f2b6c
 _gitversion=v${pkgver}
 
 arch=('x86_64')
@@ -28,9 +28,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_gitcommit}-${_barch[0]}.tar.gz")
-sha256sums=('0356eceae925faa86254ddd33da7919faa107cd4fc7c1dc9969c5d0d5cc24cbd'
+sha256sums=('b401bb15eb0ccf4915eded4f4e4a4a8d12d84b37fdcc06daea1eab7330376b97'
             'e10b2e23fc9874c2f8c7ddac5d9a3f1123f5149ffed33ce598166f54febf66b2')
-sha256sums_x86_64=('e92f8840fd9fd3fda87270b85a20c4e9203afc2fa761a3984e872e061a4496f8')
+sha256sums_x86_64=('c0c7ef8f2b2e84e3c7420bb7ffe5f0b108d3e26b8a68c689b186d09d73c9a6f7')
 
 
 case ${CARCH} in
