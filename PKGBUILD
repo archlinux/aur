@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typos-git
-pkgver=1.43.5.r0.g57b11c6b
+pkgver=1.52.0.r2.g7cd4cdb2
 pkgrel=1
 pkgdesc="Source code spell checker"
 arch=('i686' 'x86_64')
@@ -18,11 +18,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "typos"
 
-  if [ ! -f "crates/typos-cli/Cargo.lock" ]; then
-    cargo update \
+  if [ ! -f "Cargo.lock" ]; then
+    cargo generate-lockfile \
       --manifest-path "crates/typos-cli/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "crates/typos-cli/Cargo.toml"
 }
 
