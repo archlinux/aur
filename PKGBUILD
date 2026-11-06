@@ -5,7 +5,7 @@
 # Arch's Node.js and PostgreSQL.
 # Maintainer: Athan Clark <athan.clark@gmail.com>
 pkgname=openchronology-server
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='Exact timelines, shared on your terms: the OpenChronology platform server'
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug' '!lto')
 install=openchronology-server.install
 # The exact-rational type for PostgreSQL, pinned as the other packages pin it.
 _pgmp=1849585416f2bc3d070bf8cef6a659907687ec7f
-source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openchronology/timeline-app/releases/download/v0.22.0/openchronology-server-platform.tar.gz"
+source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openchronology/timeline-app/releases/download/v0.22.1/openchronology-server-platform.tar.gz"
         "pgmp-$_pgmp.tar.gz::https://codeload.github.com/dvarrazzo/pgmp/tar.gz/$_pgmp"
         'openchronology.service'
         'openchronology-mail.service'
@@ -36,7 +36,7 @@ source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openc
         'openchronology-server.tmpfiles'
         'README.Arch')
 noextract=("openchronology-server-platform-$pkgver.tar.gz")
-sha256sums=('b09e6fc3257c08e8e4fa0a6d2cf3fd87a3be89c76bb8611f1a07e97d365d894a'
+sha256sums=('583c426483c78fd5f81bc893d2c30466d1d0288283ab91aaa749868b4be68b65'
             'cf7d04d364cadde4304e4130fd314525a637037c4f20f1406a3aa27d47a1302f'
             '7d794e7517f2686e0d714f01a4bba4fcb9abc59b6f68d70882e53f28bf5daea8'
             '9bc5061f00c3049011e2124147b81eb02e50945a5b17f40430cfe91de662796c'
