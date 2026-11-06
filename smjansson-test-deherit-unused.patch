@@ -1,0 +1,13 @@
+diff --git a/pawn/scripting/include/test.inc b/pawn/scripting/include/test.inc
+index ddc0035..f5b3521 100644
+--- a/pawn/scripting/include/test.inc
++++ b/pawn/scripting/include/test.inc
+@@ -61,7 +61,7 @@ stock StringMap Test_New(int count) {
+ }
+ 
+ stock void Test_Deherit(StringMap hObj) {
+-
++	#pragma unused hObj
+ }
+ 
+ stock void Test_Destroy(StringMap hObj) {

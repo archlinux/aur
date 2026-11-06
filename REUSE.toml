@@ -27,6 +27,10 @@ SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
-path = ["smjansson-ambuilder-binary-compiler.patch", "smjansson-system-jansson.patch"]
+path = [
+  "smjansson-ambuilder-binary-compiler.patch",
+  "smjansson-system-jansson.patch",
+  "smjansson-test-deherit-unused.patch",
+]
 SPDX-FileCopyrightText = "davenonymous and the SMJansson contributors"
 SPDX-License-Identifier = "GPL-3.0-only"

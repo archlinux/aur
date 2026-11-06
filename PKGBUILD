@@ -6,7 +6,7 @@ pkgname=sourcemod-smjansson
 _name=SMJansson
 # Upstream's tags are jansson's version and a release of SMJansson for it (v2.15.1-1)
 pkgver=2.15.1.1
-pkgrel=2
+pkgrel=3
 _tag=v${pkgver%.*}-${pkgver##*.}
 pkgdesc="SMJansson, a JSON extension of SourceMod (in the addons folder of sourcemod)"
 arch=(x86_64)
@@ -21,13 +21,16 @@ makedepends=(ambuild clang python sourcemod-src)
 checkdepends=(sourcemod-scripting)
 source=("$_name-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz"
   smjansson-ambuilder-binary-compiler.patch
-  smjansson-system-jansson.patch)
+  smjansson-system-jansson.patch
+  smjansson-test-deherit-unused.patch)
 sha512sums=('121574e7c7a6c6853bafb1de08761f72dcaad978ff30a3677c4203f7860c5f9ca1d2fa93fa7667879b920019b71c3d0f87f0b3b1cb95dfb4145c86fa29304b53'
   'fd859673e30df5e814e4664f36fccac4f8487d9e7041856786236dc6e025d799dd3c263e39d49bd0dfe117ea2a741b0ab34d0fae46da6181b585fc9a2479407b'
-  'b35c431dfaee9e904f43712d85daf5705298dd299be88c8b049f12b75e3b4d6a2d28919c6788c7545aa306dbc34b0c4de82e9786ae65f824f8b94d279a0b1ae5')
+  'b35c431dfaee9e904f43712d85daf5705298dd299be88c8b049f12b75e3b4d6a2d28919c6788c7545aa306dbc34b0c4de82e9786ae65f824f8b94d279a0b1ae5'
+  '0678ef0fca6f783caeeaf39fdd6d8dbd77ed3b67e05b7ebf73ec81793da88bfd18004e5d3a652217d0dc8d4014dcf08285a9df5950bd8e5ecf01cb4b36cd325c')
 b2sums=('9bbd71b5c3e6e99e22c29fd3e80ee130e43a670249a5dbdadc836f4f6603f3c0dc1af397bc7f43309f9ff5c63ce5798be3bc22127c61a97f99dc86b9c94eb959'
   '0dd35a75297218cdfa9d5076a39c0d19ce2a917fe0debf95837dad527197478bf2b2a89907cded625e1c568631e91922509042a6749180add752543785f67c5b'
-  '6947c12ca8e2d3a30c1d1c36d83193c1a6b6c3655e26fb55b6f66ab3c4ef3f56e8cd21fe5749c737023ebc4508bded467240bf0d8ec24bfef4fb5d6830a2a251')
+  '6947c12ca8e2d3a30c1d1c36d83193c1a6b6c3655e26fb55b6f66ab3c4ef3f56e8cd21fe5749c737023ebc4508bded467240bf0d8ec24bfef4fb5d6830a2a251'
+  '4e3257dfad08eaddb6b01c887f03bdc15bf82971ffcbb53f8340b24805b7333763816c4f4b310b6316834697bfe04a5ed1355409016ace575cea1a220e6b51d0')
 
 prepare() {
   cd "$srcdir/$_name-${_tag#v}" || exit
@@ -35,6 +38,9 @@ prepare() {
   # ExtLibrary() has cloned before the AMBuilder adds them, merged upstream after v2.15.1-1
   # (https://github.com/davenonymous/SMJansson/pull/15)
   patch -Np1 -i "$srcdir/smjansson-ambuilder-binary-compiler.patch"
+  # Test_Deherit()'s parameter marked as unused, so the test plugin compiles without warnings
+  # (https://github.com/davenonymous/SMJansson/pull/16)
+  patch -Np1 -i "$srcdir/smjansson-test-deherit-unused.patch"
   # The system's jansson (the version it bundles) instead of the bundled sources
   patch -Np1 -i "$srcdir/smjansson-system-jansson.patch"
 
