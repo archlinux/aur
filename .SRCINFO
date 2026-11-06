@@ -1,0 +1,24 @@
+pkgbase = notemark-git
+	pkgdesc = A fast, local-first Markdown notes app. Notes are plain .md files.
+	pkgver = 2.0.0.r2.g741f88a
+	pkgrel = 1
+	url = https://github.com/AbdulDevHub/NoteMark
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	makedepends = yarn
+	depends = electron45
+	provides = notemark=2.0.0
+	conflicts = notemark
+	source = notemark.git::git+https://github.com/AbdulDevHub/NoteMark.git
+	source = notemark.js
+	source = notemark.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+
+pkgname = notemark-git
