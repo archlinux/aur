@@ -1,6 +1,6 @@
 # Maintainer: Edicson Abel <edicsonabelinfo@gmail.com>
 pkgname=download-media
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Interactive yt-dlp wrapper with probe-first wizard, clipboard, carousel item picker, history, and cookies support"
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
   'yt-dlp'
   'ffmpeg'
   'python-secretstorage'
+  'python-curl_cffi'
 )
 makedepends=(
   'python-build'
@@ -25,7 +26,7 @@ optdepends=(
   'xsel: alternate clipboard URL detection on X11'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('407b9c66af0f56243bfc44a59b5d48aef28282627ea8f6ccd63b498c29f718e1')
+sha256sums=('bb68fb8aeedf6359fd4f69c9583b2515b8e0297412b107484faef699212dd0cc')
 
 build() {
   cd "$pkgname-$pkgver"
