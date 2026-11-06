@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=o2-rs-bin
 _pkgname=o2
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='Rust port of the ORCΛ esoteric programming language and terminal livecoding environment'
 arch=(
@@ -20,8 +20,8 @@ source=("${_pkgname}-LICENSE-${pkgver}::https://raw.githubusercontent.com/coigna
 source_x86_64=("${_pkgname}-${pkgver}-bin.tar.gz::${url}/releases/download/${pkgver}/o2-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-bin.tar.gz::${url}/releases/download/${pkgver}/o2-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('88877c2e963b5492bd46aa1894fb986cec26d0cd7daced3d81c3692caeae3ad3')
-sha256sums_aarch64=('659cee65f2a3b9b13847a28da03cecca000158105d7ed860522916b46afa9841')
+sha256sums_x86_64=('b9820c978e2f65e433e2866ec781994068ff54d26a28e9d2a30ee66c286eade5')
+sha256sums_aarch64=('4b008cfd5178d304c19974c00093e059b281c499b1d9e2c273ce95ce579718a1')
 
 package() {
     install -Dm0755 o2 "${pkgdir}/usr/bin/o2"
