@@ -16,11 +16,11 @@ depends=(
 makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-sphinx')
 options=(!lto)
 source=(
-    "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=07f4269cc682157ffac2ee76610a2ccd656e7d30"
-    "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
-    "pxar::git://git.proxmox.com/git/pxar.git"
-    "pathpatterns::git://git.proxmox.com/git/pathpatterns.git"
+    "$pkgname-$pkgver::git+https://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
+    "proxmox::git+https://git.proxmox.com/git/proxmox.git#commit=07f4269cc682157ffac2ee76610a2ccd656e7d30"
+    "proxmox-fuse::git+https://git.proxmox.com/git/proxmox-fuse.git"
+    "pxar::git+https://git.proxmox.com/git/pxar.git"
+    "pathpatterns::git+https://git.proxmox.com/git/pathpatterns.git"
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
     "0002-docs-drop-all-but-client-man-pages.patch"
     "elf-strip-unused-dependencies.sh"
