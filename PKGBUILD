@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lrcget
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Utility for mass-downloading LRC synced lyrics for your offline music library.'
 arch=(
@@ -35,7 +35,7 @@ source=(
     'lrcget'
 )
 sha256sums=(
-    '61936f4edb105f9c696bfcc056871df6286bb6f8ade860d564667d31fd53735c'
+    '4510c21febd176dea60cb23e2366584a867633b198842400600acea39d6047df'
     '123d8dc688e5b447ed6a9547fc4ddd1baec283238d86277392356c7e9fdef343'
 )
 
