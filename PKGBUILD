@@ -1,7 +1,7 @@
 # Maintainer: xii69 <xii69@yahoo.com>
 
 pkgname=phoenix-launcher
-pkgver=1.6.0_beta.13
+pkgver=1.6.0_beta.14
 pkgrel=1
 _pkgver=${pkgver//_/-}
 
