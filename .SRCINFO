@@ -1,6 +1,6 @@
 pkgbase = skykeep-bin
 	pkgdesc = Native iCloud apps: Notes, Reminders, Calendar, Contacts, Drive and Photos, offline and in sync (upstream binary)
-	pkgver = 0.1.6
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/YashwanthKamireddi/Skykeep
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = skykeep-bin
 	optdepends = fuse3: iCloud Drive and Photos as folders in the file manager
 	provides = skykeep
 	conflicts = skykeep
-	noextract = skykeep-bin-0.1.6.deb
+	noextract = skykeep-bin-0.1.9.deb
 	options = !strip
 	options = !debug
-	source = skykeep-bin-0.1.6.deb::https://github.com/YashwanthKamireddi/Skykeep/releases/download/v0.1.6/Skykeep_0.1.6_amd64.deb
-	sha256sums = 0091c4785cf6cc3dd985800c6a974f29b3309cea6ca312171c0adccafb70662c
+	source = skykeep-bin-0.1.9.deb::https://github.com/YashwanthKamireddi/Skykeep/releases/download/v0.1.9/Skykeep_0.1.9_amd64.deb
+	sha256sums = 43360b2936b0a3d5efef0a052de62f0e7345e821a1a41f7a7f7c0540f6b4fb63
 
 pkgname = skykeep-bin
