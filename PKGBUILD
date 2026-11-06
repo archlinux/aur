@@ -2,7 +2,7 @@
 # Release package: builds the tag v$pkgver from GitHub.
 # To package the committed HEAD of this checkout instead, run: cd packaging && makepkg -p PKGBUILD.local -f
 pkgname=pg_sift
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc='Fast analytics for PostgreSQL: just add an index, plus BM25 full-text search'
 arch=('x86_64')
