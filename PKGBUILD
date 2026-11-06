@@ -2,18 +2,23 @@
 # shellcheck disable=SC2034,SC2154
 # makepkg consumes package metadata and supplies srcdir/pkgdir.
 pkgname=lyfy
-pkgver=26.10.4
+pkgver=26.11.0
 pkgrel=1
 pkgdesc='Declarative system maintenance and Git-backed host state for Arch Linux'
 arch=('x86_64')
 url="https://github.com/partanskiy/$pkgname"
 license=('MIT' 'GPL-3.0-only')
 depends=('glibc' 'libgcc' 'git' 'pacman' 'systemd' 'libalpm.so' 'libarchive.so')
-optdepends=('sudo: authenticate interactive host lint and explicit --elevate scans')
+optdepends=('sudo: authenticate protected lint/save reads'
+            'sqlite: consistent SQLite capture and restoration'
+            'shadow: explicit user and group restoration'
+            'age: encrypt directory/S3/Yandex Disk state and portable archives'
+            'curl: S3 and Yandex Disk object transfers')
 makedepends=('cargo' 'pkgconf')
+checkdepends=('sqlite' 'age' 'curl')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('295c22bcbd02e63eb9bd80ac5c4b2422322edfeba014f818ebab9fdce5a405f8')
+sha256sums=('c59e26a8688a8d37713985ca07366c13582d5a0a5441e660655da8d3058245df')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver" || return
@@ -47,12 +52,12 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 DISTRIBUTION.md "$pkgdir/usr/share/licenses/$pkgname/DISTRIBUTION.md"
   install -Dm644 THIRD_PARTY_LICENSES.txt "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.txt"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 ARCHITECTURE.md "$pkgdir/usr/share/doc/$pkgname/ARCHITECTURE.md"
-  install -Dm644 examples/config.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
+  for document in README.md ARCHITECTURE.md CONTRIBUTING.md RELEASING.md DISTRIBUTION.md LICENSE; do
+    install -Dm644 "$document" "$pkgdir/usr/share/doc/$pkgname/$document"
+  done
   install -Dm644 "docs/man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 "docs/man/$pkgname.conf.5" "$pkgdir/usr/share/man/man5/$pkgname.conf.5"
-  for document in configuration rules lint library application storage storage-design; do
-    install -Dm644 "docs/$document.md" "$pkgdir/usr/share/doc/$pkgname/$document.md"
+  for document in docs/*.md examples/config.toml examples/migration/*; do
+    install -Dm644 "$document" "$pkgdir/usr/share/doc/$pkgname/$document"
   done
 }
