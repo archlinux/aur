@@ -1,0 +1,23 @@
+pkgbase = paperwing-git
+	pkgdesc = The free, open-source desktop alternative to Adobe Acrobat. Built on BentoPDF.
+	pkgver = 1.2.4.r5.g1b3f52f
+	pkgrel = 1
+	url = https://paperwingapp.com/
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron45
+	provides = paperwing=1.2.4
+	conflicts = paperwing
+	source = paperwing.git::git+https://github.com/rohanvijaykumar/paperwing.git
+	source = paperwing.js
+	source = paperwing.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+
+pkgname = paperwing-git
