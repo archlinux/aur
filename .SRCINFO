@@ -1,7 +1,7 @@
 pkgbase = zenworks
 	pkgdesc = A desktop environment built on Quickshell and Hyprland
-	pkgver = 0.2.5
-	pkgrel = 1
+	pkgver = 0.2.6
+	pkgrel = 2
 	url = https://github.com/kbuckleys/Zenworks
 	install = zenworks.install
 	arch = any
@@ -126,7 +126,7 @@ pkgbase = zenworks
 	optdepends = fcitx5: typing Chinese, Japanese, Korean and more (installed when Input methods is turned on)
 	conflicts = zen-browser
 	backup = etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS
-	source = zenworks-0.2.5.tar.gz::https://github.com/kbuckleys/Zenworks/archive/refs/tags/0.2.5.tar.gz
-	sha256sums = 26c2a5a4e3abd97c1b3680e0273f8aab4456a428a7c4b30172021781f0d9c2f7
+	source = zenworks-0.2.6-2.tar.gz::https://github.com/kbuckleys/Zenworks/archive/refs/tags/0.2.6-2.tar.gz
+	sha256sums = 87e1686850339ff2b15e798323cb40c3755f4f0b46bd395371b7b25b4a385559
 
 pkgname = zenworks
