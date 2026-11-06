@@ -1,6 +1,6 @@
 pkgbase = kanshi-gtk4-git
 	pkgdesc = Arrange displays on Wayland and save the layout as a kanshi profile
-	pkgver = 0.4.0.r0.g5d54ea3
+	pkgver = 0.5.0.r0.g557b20b
 	pkgrel = 1
 	url = https://github.com/grigio/kanshi-gtk4
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = kanshi-gtk4-git
 	depends = hicolor-icon-theme
 	depends = libadwaita
 	depends = libgcc
-	depends = wlr-randr
 	optdepends = kanshi: persist layouts across reboot and hotplug
 	optdepends = cosmic-randr: real mirroring on COSMIC
+	optdepends = wlr-randr: debugging fallback backend (KANSHI_GTK4_BACKEND=wlr-randr)
 	provides = kanshi-gtk4
 	conflicts = kanshi-gtk4
 	source = git+https://github.com/grigio/kanshi-gtk4.git
