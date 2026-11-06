@@ -2,7 +2,7 @@
 
 pkgname=boringtun
 pkgver=0.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Userspace WireGuard implementation in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/cloudflare/boringtun"
@@ -18,11 +18,13 @@ prepare() {
   cd "$pkgname-$pkgname-$pkgver"
 
   if [ ! -f "Cargo.lock" ]; then
-    cargo update \
-      --workspace
+    cargo generate-lockfile \
+      --manifest-path "boringtun-cli/Cargo.toml"
   fi
   cargo fetch \
-    --manifest-path "$pkgname-cli/Cargo.toml"
+    --locked \
+    --target host-tuple \
+    --manifest-path "boringtun-cli/Cargo.toml"
 }
 
 check() {
