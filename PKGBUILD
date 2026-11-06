@@ -2,7 +2,7 @@
 
 pkgauthor="fasouto"
 pkgname="termaid"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Render Mermaid diagrams in your terminal or Python app"
 
@@ -25,7 +25,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bf5cfe768b567ac9bf99aaf80e74f30632c9385045e5ff5ebe8b32a2334d7fb2')
+sha256sums=('112f225a368e902fbfcf8eb0f79b62c32fddbdf542d7ad545ae730cf72c4496a')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
