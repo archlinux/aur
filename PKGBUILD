@@ -1,8 +1,8 @@
 # Maintainer: bobrik <an9rax@gmail.com>
 
 pkgname=dota2-minify-bin
-pkgver=1.13.1
-pkgrel=3
+pkgver=2
+pkgrel=1
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt binary"
 arch=('x86_64')
 url="https://github.com/Egezenn/dota2-minify"
@@ -12,6 +12,9 @@ depends=(
     'fontconfig'
     'hicolor-icon-theme'
 )
+optdepends=(
+    'chromium: open the web UI in a standalone app window (any Chromium-based browser works)'
+)
 makedepends=('7zip' 'icoutils')
 provides=('dota2-minify')
 conflicts=('dota2-minify' 'dota2-minify-rc-bin')
@@ -19,37 +22,31 @@ conflicts=('dota2-minify' 'dota2-minify-rc-bin')
 # https://github.com/Egezenn/dota2-minify/releases
 _tag="Minify-v${pkgver}"
 source=("${pkgname}-${pkgver}.zip::https://github.com/Egezenn/dota2-minify/releases/download/${_tag}/Minify-v${pkgver}-linux.zip")
-sha256sums=('de11fb082b5f8cfac06457b0f1b23d51fb2d01b501927e44b913ab6b333a29a1')
+sha256sums=('7968db46be30a5c1a5cad122fdf6d836bd28ccf3dfb10a201128b02d8716e529')
 
 noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
     cd "${srcdir}"
-    7za x "${pkgname}-${pkgver}.zip"
+    rm -rf minify
+    7za x -ominify "${pkgname}-${pkgver}.zip"
     icotool -x \
         --width=256 \
         --height=256 \
-        -o "${srcdir}/bin/images/favicon.png" \
-        "${srcdir}/bin/images/favicon.ico"
+        -o "${srcdir}/favicon.png" \
+        "${srcdir}/minify/_internal/bin/images/favicon.ico"
 }
 
 package() {
-    # Zip layout matches the stable binary release:
+    # Zip layout (v2+):
     #   Minify          (ELF executable)
-    #   _internal/      (PyInstaller bundled libraries)
-    #   bin/            (images, data files)
+    #   _internal/      (PyInstaller bundle; bin/, ui/, locales/ live here)
     #   mods/           (included mods)
     #   LICENSE
     #   README.md
 
     install -dm755 "${pkgdir}/usr/share/dota2-minify"
-
-    (
-        cd "${srcdir}" || exit
-        for _item in Minify _internal bin mods LICENSE README.md; do
-            cp -a --no-preserve=ownership "${_item}" "${pkgdir}/usr/share/dota2-minify/"
-        done
-    )
+    cp -a --no-preserve=ownership "${srcdir}/minify/." "${pkgdir}/usr/share/dota2-minify/"
 
     install -dm755 "${pkgdir}/usr/bin"
     cat >"${pkgdir}/usr/bin/dota2-minify" <<EOF
@@ -85,7 +82,7 @@ Categories=Game;
 Keywords=dota2;mod;patcher;
 EOF
 
-    install -Dm644 "${pkgdir}/usr/share/dota2-minify/bin/images/favicon.png" \
+    install -Dm644 "${srcdir}/favicon.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dota2-minify.png"
 
     install -Dm644 "${pkgdir}/usr/share/dota2-minify/LICENSE" \
