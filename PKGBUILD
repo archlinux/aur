@@ -1,6 +1,6 @@
 # Maintainer: ddfabc <liqiang0330@gmail.com>
 pkgname=abcclock
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Qt5 hover desktop clock: analog dial, weekday, date, three city timezones and weather"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt5-base' 'dbus')
 makedepends=('make' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('72bf05776fd7bf5788abe57ea3e2a673cf15cd25c49c81787c2b086ad11fc6cb')
+sha256sums=('c8332f2383d35ff46374d009bc97d2ca1f4428dbab8f120da6b248b20b15c30a')
 
 build() {
     cd "$pkgname-$pkgver"
