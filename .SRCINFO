@@ -1,7 +1,7 @@
 pkgbase = vgshell-git
 	pkgdesc = Desktop shell for Hyprland, built on Quickshell (development version)
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.4.r148.gec08c7e
+	pkgrel = 1
 	url = https://github.com/vanillagreencom/vgshell
 	install = vgshell-git.install
 	arch = any
@@ -103,5 +103,7 @@ pkgbase = vgshell-git
 	optdepends = brave-bin: opens a calendar day in a Brave profile
 	optdepends = vivaldi: opens a calendar day in a Vivaldi profile
 	optdepends = microsoft-edge-stable-bin: opens a calendar day in a Microsoft Edge profile
+	source = vgshell::git+https://github.com/vanillagreencom/vgshell.git#branch=main
+	sha256sums = SKIP
 
 pkgname = vgshell-git

@@ -5,8 +5,8 @@
 # this file and on ../vgshell/PKGBUILD. makepkg rewrites pkgver from pkgver().
 
 pkgname=vgshell-git
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.4.r148.gec08c7e
+pkgrel=1
 pkgdesc='Desktop shell for Hyprland, built on Quickshell (development version)'
 arch=('any')
 url='https://github.com/vanillagreencom/vgshell'
@@ -114,16 +114,9 @@ optdepends=(
 makedepends=('git')
 install=vgshell-git.install
 
-# No git+ source: makepkg clones one as a mirror of every ref the remote
-# advertises, and GitHub's refs/pull/* still reach the history main no
-# longer holds. This clone takes main alone, with every commit and tree but
-# only the file contents its checkout needs, so pkgver() counts the commits
-# a full clone counts. Tags pointing into main come with it, for the
-# release version pkgver() names.
-prepare() {
-  rm -rf -- "$srcdir/vgshell"
-  git clone --filter=blob:none --single-branch --branch main -- "$url.git" "$srcdir/vgshell"
-}
+# REVISIT(D123): AUR helpers need the standard VCS source to track main.
+source=("vgshell::git+https://github.com/vanillagreencom/vgshell.git#branch=main")
+sha256sums=('SKIP')
 
 # The tree's own version judge names the version, so the package and
 # `vgshell --version` in the checkout print the same X.Y.Z.r<N>.g<hash>.
