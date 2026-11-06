@@ -1,14 +1,14 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=helium-d77
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Wayland shell built with the Helium shell framework"
 arch=('x86_64')
 url="https://github.com/dani-77/helium-d77"
 license=('MIT')
 depends=('wayland' 'libglvnd' 'libxkbcommon' 'fontconfig' 'freetype2' 'pam' 'gcc-libs' 'glibc'
-         'wl-clipboard' 'curl')
+         'wl-clipboard' 'curl' 'amorphis')
 makedepends=('cargo' 'pkgconf' 'git')
 optdepends=(
   'alsa-utils: volume widget and OSD'
@@ -19,7 +19,7 @@ optdepends=(
   'pciutils: GPU detection in helium-ollama'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e5a573cc898bd8d036fdaff90dc48952901bb1bb96d4ee8f0a630b2f6221d744')
+sha256sums=('e2579ea56443253769ab0eef80d8e75dda4d60f94b965758d49e6a82334ee27d')
 
 prepare() {
     cd "$pkgname-$pkgver"
