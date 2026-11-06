@@ -1,7 +1,7 @@
 # Maintainer: opecko <https://github.com/opecko>
 # AUR package: repackages the .deb from the GitHub release. Updated by scripts/aur.sh.
 pkgname=sonolith-bin
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="YouTube Music desktop client (prebuilt)"
 url='https://github.com/opecko/sonolith'
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 source=("https://github.com/opecko/sonolith/releases/download/v$pkgver/sonolith_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/opecko/sonolith/v$pkgver/LICENSE")
 noextract=("sonolith_${pkgver}_amd64.deb")
-sha256sums=('9bb502b5d2199f6019cd8f6c9f7acfb9fe3516334e896e13e655f81a183b0ed3'
+sha256sums=('e1ddf6184d22cccabe9881de26fccf1c49c4965d48906e2a98158cbe532fa874'
             'd8246ddc68471e6f5d5eb2bc54b9fb5878d6c362a7d99df0dd8193ec48cbdcce')
 
 prepare() {
