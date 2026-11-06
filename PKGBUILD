@@ -7,7 +7,7 @@
 # Playback still needs host libvlc; the AppImage does not bundle it.
 
 pkgname=radioshed
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Station-centric player for a local music library"
 arch=(x86_64)
@@ -26,7 +26,7 @@ source_x86_64=(
     "$pkgname-$pkgver.AppImage::https://github.com/visorcraft/RadioShed/releases/download/v$pkgver/RadioShed-$pkgver-x86_64.AppImage"
 )
 sha256sums=('f1099d46419c109bc8ad60dfe24a81c90b4d61f76747c7255fb599dd6f608832')
-sha256sums_x86_64=('f27c849289afb1c972f7855c3a637940d65b8635ba57aedc0f8e64896753ec33')
+sha256sums_x86_64=('40a49ccf3c90a86da01787a582ae36e4bee62256d32cfb0a13fc7fdd9dbade3b')
 
 prepare() {
     chmod +x "$pkgname-$pkgver.AppImage"
