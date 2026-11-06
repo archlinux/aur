@@ -8,7 +8,17 @@
 # publishing starts.
 
 # pacman sorts a prerelease such as 0.3.0rc.1 before 0.3.0 only without the `-`.
-_version=0.22.0
+_version=0.23.0
+# The beta channel's wikistow-cli-beta-bin is this package, renamed
+# (docs/releasing.md).
+_channel=stable
+# The beta installs beside the stable CLI as wikistow-beta, which the CLI
+# reads from its own name to keep its files apart (apps/cli/src/program.ts).
+if [[ $_channel == beta ]]; then
+    _app=wikistow-beta
+else
+    _app=wikistow
+fi
 pkgname=wikistow-cli-bin
 pkgver=${_version//-/}
 pkgrel=1
@@ -19,8 +29,8 @@ license=('MIT')
 # Bun's runtime is inside the binary; it links only glibc.
 depends=('glibc')
 optdepends=("libsecret: keep an agent's key in the keyring (agent enroll --secret-store)")
-provides=('wikistow-cli')
-conflicts=('wikistow-cli')
+provides=("wikistow-cli${_app#wikistow}")
+conflicts=("wikistow-cli${_app#wikistow}")
 # Stripping would cut off the program Bun appends to its runtime.
 options=('!strip' '!debug')
 _download="https://github.com/skint007/wikistow/releases/download/v$_version"
@@ -28,10 +38,10 @@ source=("LICENSE-$_version::$_download/LICENSE")
 source_x86_64=("wikistow-$_version-x86_64::$_download/wikistow-linux-x64")
 source_aarch64=("wikistow-$_version-aarch64::$_download/wikistow-linux-arm64")
 sha256sums=('49e9b16003c5e96891265ca2f912087102de955704eda32482dfe2c4b8fbafd6')
-sha256sums_x86_64=('291913cad08e72ce852c4dce7ad855b0fdc4bf21abde764ad1e44594f76785cf')
-sha256sums_aarch64=('7d797b784ca65422505e629291cfa9a1680c347bc98a8328351e85ac4b3deba0')
+sha256sums_x86_64=('f1eec18cfbb6efa55a5878964cba783d426671d60b0661da363e67b21cf09ca8')
+sha256sums_aarch64=('1fe2e8c65985f20263e078b11e0fbe9764204d554d2f10852ab79f20d3c5b773')
 
 package() {
-    install -Dm755 "wikistow-$_version-$CARCH" "$pkgdir/usr/bin/wikistow"
+    install -Dm755 "wikistow-$_version-$CARCH" "$pkgdir/usr/bin/$_app"
     install -Dm644 "LICENSE-$_version" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
