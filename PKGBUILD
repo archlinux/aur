@@ -11,7 +11,7 @@ pkgdesc="A self-hosted OpenID Connect Identity Provider"
 arch=('x86_64' 'aarch64')
 _barch=('linux-amd64' 'linux-arm64')
 
-url="https://filebrowser.org/"
+url="http://getautentico.dev/"
 _gurl="https://github.com/${_pkgauthor}/${_pkgname}"
 _gurlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 
