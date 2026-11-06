@@ -120,8 +120,9 @@ prepare() {
   done
 
   cd "Nerdbank.Streams-$_commit" || exit
-  rmdir ext/MessagePack
-  ln -s "$srcdir/MessagePack-CSharp-$_messagepackcommit" ext/MessagePack
+  # The submodule's empty folder, or the link of a previous build, which -n replaces
+  [[ -L ext/MessagePack ]] || rmdir ext/MessagePack
+  ln -sfn "$srcdir/MessagePack-CSharp-$_messagepackcommit" ext/MessagePack
   # Upstream pins a newer feature band of the .NET SDK, which isn't needed
   jq 'del(.sdk)' global.json >global.json.new
   mv global.json.new global.json
