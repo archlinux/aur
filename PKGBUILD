@@ -8,7 +8,7 @@
 # Maintainer: Eser KUBALI <eserlxl@gmail.com>
 
 pkgname=lightxdm
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Display-manager-free TTY1 login: your desktop starts and its keyring unlocks'
 arch=('any')
@@ -17,8 +17,8 @@ license=('GPL-3.0-or-later')
 validpgpkeys=('2B0541BF62E91D538C55739DF677BC1E3BD7246E')
 depends=('bash' 'sudo' 'gnupg' 'grep')
 install='lightxdm.install'
-source=("https://github.com/eserlxl/lightXDM/releases/download/v1.0.1/lightxdm-1.0.1.tar.gz" "https://github.com/eserlxl/lightXDM/releases/download/v1.0.1/lightxdm-1.0.1.tar.gz.sig")
-b2sums=('d365f36e85271b0ac27a5da504fa819831e1397922d3cd6abaab672b15a7e64c35087baa6a4f66afbb9404ebaeb6918d9a017d58ed6be9ed21bef937e16e34f0'
+source=("https://github.com/eserlxl/lightXDM/releases/download/v1.0.2/lightxdm-1.0.2.tar.gz" "https://github.com/eserlxl/lightXDM/releases/download/v1.0.2/lightxdm-1.0.2.tar.gz.sig")
+b2sums=('46387d0ad1bfbea282ef5bf3be98c7acd38f05c057b007baeb54e0bc9442cc9a76c9624719a033509779a4d0d9838f307adc0e9e69094396ab9e472ce8dac69e'
         'SKIP')
 
 build() {
@@ -73,6 +73,7 @@ package() {
     copy_tree "bin" "usr/bin" "755"
     copy_tree "dotfiles" "usr/share/$pkgname/dotfiles" "644"
     copy_tree "pam" "usr/share/$pkgname/pam" "644"
+    copy_tree "alpm" "usr/share/libalpm/hooks" "644"
     copy_tree "docs" "usr/share/doc/$pkgname" "644"
     install -Dm644 -t "$pkgdir/usr/share/$pkgname" install.sh uninstall.sh enable-autologin.sh
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
