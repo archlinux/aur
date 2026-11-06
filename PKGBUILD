@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.250
+pkgver=1.4.251
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -61,7 +61,7 @@ _electronmajor=43
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=b98a0fba16561fadc06868fe3e8710781d705efd
+_commit=a162e08b29b2883b02d8a0dfcc99e26c80b2cfe7
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -82,7 +82,7 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
- 'cfa0b70bd01a0fa2b4a1209e635d683e5b2e65a3536270511e907117bbfb161a'
+ '15834f5629d0aec6c07dfaad1d0216dc5a518467e470bc9e63a2f4bcc3a3707e'
   'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
   'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
   '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -140,8 +140,9 @@ data = path.read_text()
 
 replacements = [
     (
-        "const { verifyLinuxGlibcFloor } = "
-        "require('./scripts/verify-linux-glibc-floor.cjs')\n",
+        "const {\n"
+        "  verifyLinuxGlibcFloor\n"
+        "} = require('./scripts/native-build/linux/verify-linux-glibc-floor.cjs')\n",
         "",
     ),
     (
@@ -157,9 +158,9 @@ replacements = [
         "  appImageNodeRuntimeFpmArgs,\n"
         "  placeAppImageNodeRuntime,\n"
         "  verifyAppImageNodeRuntimeServesPty\n"
-        "} = require('./scripts/appimage-node-runtime.cjs')\n",
+        "} = require('./scripts/desktop-distribution/linux/appimage-node-runtime.cjs')\n",
         "const { appImageNodeRuntimeFpmArgs } = "
-        "require('./scripts/appimage-node-runtime.cjs')\n",
+        "require('./scripts/desktop-distribution/linux/appimage-node-runtime.cjs')\n",
     ),
     (
         "  beforePack: (\n"
@@ -210,9 +211,9 @@ data = data.replace(runtime_probe, "")
 
 path.write_text(data)
 
-commit_path = Path("config/scripts/build-source-commit.mjs")
+commit_path = Path("config/scripts/build-identity/build-source-commit.mjs")
 if not commit_path.is_file():
-    raise SystemExit("missing config/scripts/build-source-commit.mjs")
+    raise SystemExit("missing config/scripts/build-identity/build-source-commit.mjs")
 commit_path.write_text(
     "export function resolveBuildSourceCommit() {\n"
     f"  return '{os.environ['ORCA_COMMIT']}'\n"
