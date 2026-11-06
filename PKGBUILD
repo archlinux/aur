@@ -3,7 +3,7 @@
 
 pkgname=devin-features
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unblock some features in Devin Desktop (formerly windsurf-features)'
 arch=('any')
 url='https://github.com/microsoft/vscode'

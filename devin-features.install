@@ -1,8 +1,15 @@
+# patch.py < 1.2.1 only knows /usr/share/devin-desktop. During pre_upgrade the
+# old script is still on disk, so skip it when that path no longer exists.
+_old_script_usable() {
+  [ "$(vercmp "$1" 1.2.1)" -ge 0 ] || [ -f /usr/share/devin-desktop/resources/app/product.json ]
+}
+
 post_install() {
   /usr/share/devin-features/patch.py devin-features patch
 }
 
 pre_upgrade() {
+  _old_script_usable "$2" || return 0
   /usr/share/devin-features/patch.py devin-features restore
 }
 
