@@ -1,0 +1,20 @@
+pkgbase = notemark-bin
+	pkgdesc = A fast, local-first Markdown notes app. Notes are plain .md files.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/AbdulDevHub/NoteMark
+	arch = x86_64
+	license = MIT
+	depends = electron45
+	provides = notemark=2.0.0
+	conflicts = notemark
+	source = notemark-2.0.0.deb::https://github.com/AbdulDevHub/NoteMark/releases/download/v2.0.0/NoteMark-2.0.0-amd64.deb
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/AbdulDevHub/NoteMark/v2.0.0/LICENSE
+	source = notemark.js
+	source = notemark.sh
+	sha256sums = 7cb35d2b27710b5dd1570b11124caaf217ba1c74ab18e52ec416d48d4473e2db
+	sha256sums = 7842f891746d573e39f4b7b13db5b1561dd7038c4cd1fce7a2743875da9ca238
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+
+pkgname = notemark-bin
