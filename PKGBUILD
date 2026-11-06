@@ -2,18 +2,20 @@
 
 pkgname=glycin-ng
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="In-process image decoder without bwrap dependency or useless bloat"
 arch=('x86_64' 'aarch64')
 url=https://github.com/QaidVoid/glycin-ng
 license=('MIT' 'Apache-2.0')
-depends=('glibc')
+depends=('glibc' 'libgcc')
 makedepends=('cargo' 'rust' 'git')
 provides=('glycin')
 conflicts=('glycin')
 replaces=('glycin')
+# Upstream libglycin ABI version the shim implements.
+_glycin_ver=2.2.2
 source=("$pkgname::git+https://github.com/QaidVoid/glycin-ng.git#tag=$pkgver"
-        "glycin-2-header::https://raw.githubusercontent.com/GNOME/glycin/80463391d9e8f3f136f48e5fd6a63c0bf116e884/libglycin/include/glycin.h")
+        "glycin-2-header::https://raw.githubusercontent.com/GNOME/glycin/$_glycin_ver/libglycin/include/glycin.h")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -41,7 +43,7 @@ package() {
     > "$pkgdir"/usr/lib/pkgconfig/glycin-ng.pc
 
   sed -e "s|@PREFIX@|/usr|g" \
-      -e "s|@VERSION@|2.1.1|g" \
+      -e "s|@VERSION@|$_glycin_ver|g" \
     ./pkgconfig/glycin-2.pc.in \
     > "$pkgdir"/usr/lib/pkgconfig/glycin-2.pc
 }
