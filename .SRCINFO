@@ -1,0 +1,27 @@
+pkgbase = calfnxt
+	pkgdesc = VST3 audio plugin suite with web-based UI
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://github.com/boomshop/calfnxt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = libx11
+	source = calfnxt-2.16.0.tar.gz::https://github.com/boomshop/calfnxt/archive/refs/tags/v2.16.0.tar.gz
+	source = calfnxt-ui-dist.tar.xz::https://github.com/boomshop/calfnxt/releases/download/v2.16.0/calfnxt-2.16.0-ui-dist.tar.xz
+	source = vst3sdk::git+https://github.com/steinbergmedia/vst3sdk.git#tag=v3.8.0_build_66
+	sha256sums = 6813d20270526346f5ee8977df65584b309fc026abdad56769b4810313dbe06a
+	sha256sums = c8030bca8649681cbcea8f430d54bc3c0ee07d5a9520476bf1d93902f9cbf033
+	sha256sums = SKIP
+
+pkgname = calfnxt
