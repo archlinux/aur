@@ -17,9 +17,9 @@ build() {
 	# like yay's PKGBUILD
 	export GOPATH="${srcdir}/gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="$(php-config --includes) ${CFLAGS}"
+	export CGO_CFLAGS="${CFLAGS} $(php-config --includes)"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="$(php-config --ldflags) $(php-config --libs) ${LDFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS} $(php-config --ldflags) $(php-config --libs)"
 	export GOFLAGS="-trimpath -buildmode=pie -modcacherw"
 
 	cd "${pkgname}-${pkgver}/caddy/frankenphp/"
