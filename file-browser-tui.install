@@ -1,0 +1,14 @@
+post_install() {
+    echo
+    echo "==> file-browser-tui installed."
+    echo
+    echo "Run 'file-browser-tui --check' to see which optional tools were found."
+    echo "In launchers and window manager bindings use 'file-browser-tui --kitty'"
+    echo "(a kitty window set up for the app). F1 in the app lists the shortcuts;"
+    echo "the config is created at ~/.config/file-browser-tui/config.toml."
+    echo
+}
+
+post_upgrade() {
+    echo "==> file-browser-tui upgraded. Restart the app to pick up the new version."
+}
