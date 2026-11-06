@@ -37,6 +37,7 @@ pkgbase = open-vm-tools-clipway
 	provides = open-vm-tools
 	conflicts = open-vm-tools
 	conflicts = open-vm-tools-git
+	conflicts = open-vm-tools-wayland
 	options = docs
 	backup = etc/pam.d/vmtoolsd
 	backup = etc/vmware-tools/vgauth.conf

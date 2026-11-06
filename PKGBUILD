@@ -1,6 +1,6 @@
 _pkgbase=open-vm-tools
 pkgname=open-vm-tools-clipway
-conflicts=('open-vm-tools' 'open-vm-tools-git')
+conflicts=('open-vm-tools' 'open-vm-tools-git' 'open-vm-tools-wayland')
 provides=('open-vm-tools')
 epoch=6
 pkgver=13.1.0
@@ -14,8 +14,7 @@ depends=('fuse3' 'icu' 'iproute2' 'libdnet' 'libmspack' 'libsigc++'
          'uriparser' 'which' 'xmlsec' 'wl-clipboard' 'gtkmm3' 'libxtst')
 makedepends=('git' 'chrpath' 'doxygen' 'libxtst' 'python' 'rpcsvc-proto' 'glib2-devel' 'gtkmm3')
 checkdepends=('cunit')
-optdepends=(
-            'netctl: suspend-resume network state'
+optdepends=('netctl: suspend-resume network state'
             'networkmanager: suspend-resume network state')
 backup=('etc/pam.d/vmtoolsd'
         'etc/vmware-tools/vgauth.conf'
@@ -25,8 +24,8 @@ source=("git+https://github.com/vmware/open-vm-tools#tag=stable-${pkgver}"
         'vmtoolsd.pam'
         'vmtoolsd.service'
         'vmware-vmblock-fuse.service'
-        clipway.patch
-        open-vm-tools-gcc16.patch)
+        'clipway.patch'
+        'open-vm-tools-gcc16.patch')
 sha256sums=('916a09225a22653ec5e56b1df5bbfacc7f69b2b9e8ac734052936bcb75cde49a'
             '9848f4b621bb1134e463fea099f03933cf3f48f1ac5e580228abef264d26137e'
             '0626cc86232f75a7286c24c52d6b44260bba55e2e96c17fa22ed36decb61a4d9'
@@ -58,7 +57,6 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgbase}/open-vm-tools/"
-
   make check
 }
 
