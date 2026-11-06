@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=tributary-git
-pkgver=0.1.0.r0.g992a175
+pkgver=0.7.2.r0.g1a61fd9
 pkgrel=1
 pkgdesc="A high-performance, Rhythmbox-style media manager (Git version)"
 arch=('x86_64')
@@ -35,6 +35,8 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --locked
 }
 
@@ -45,18 +47,18 @@ package() {
   install -Dm755 "target/release/tributary" "$pkgdir/usr/bin/tributary"
 
   # Desktop entry
-  install -Dm644 "data/io.github.tributary.Tributary.desktop" \
-    "$pkgdir/usr/share/applications/io.github.tributary.Tributary.desktop"
+  install -Dm644 "data/io.github.jm2.tributary.desktop" \
+    "$pkgdir/usr/share/applications/io.github.jm2.tributary.desktop"
 
   # AppStream metainfo
-  install -Dm644 "data/io.github.tributary.Tributary.metainfo.xml" \
-    "$pkgdir/usr/share/metainfo/io.github.tributary.Tributary.metainfo.xml"
+  install -Dm644 "data/io.github.jm2.tributary.metainfo.xml" \
+    "$pkgdir/usr/share/metainfo/io.github.jm2.tributary.metainfo.xml"
 
   # Icons
   for size in 16 24 32 48 64 128 256 512; do
     install -Dm644 \
-      "data/icons/hicolor/${size}x${size}/apps/io.github.tributary.Tributary.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.github.tributary.Tributary.png"
+      "data/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.github.jm2.tributary.png"
   done
 
   # License
