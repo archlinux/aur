@@ -4,7 +4,7 @@
 # copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=pila-git
-pkgver=0.2.2.r227.gd653bc6
+pkgver=0.2.3.r249.gcf7adde
 pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
@@ -32,6 +32,8 @@ optdepends=(
     'xdg-desktop-portal-gtk: file chooser and other portals'
     'wl-clipboard: clipboard from the command line'
     'swaylock: locking the session'
+    'libnotify: notifications from pila, such as an invalid config (notify-send)'
+    'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
 )
 provides=(pila)
 conflicts=(pila)
