@@ -1,6 +1,6 @@
 pkgbase = python-hatch-rs
 	pkgdesc = Hatch plugin for Rust builds
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://pypi.org/project/hatch-rs/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-hatch-rs
 	depends = python-hatchling
 	depends = python-packaging
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/h/hatch_rs/hatch_rs-0.4.3.tar.gz
-	sha256sums = c5745d403b8dc14b0dcf7d8d404baf3a9416666cef973c6f48d15d0ba39d3c72
+	source = https://files.pythonhosted.org/packages/source/h/hatch_rs/hatch_rs-0.4.4.tar.gz
+	sha256sums = 08b0a25d338aa445a3bccbb66ac98c9b0f6578a2636322ba5e5740fe47d4876f
 
 pkgname = python-hatch-rs
