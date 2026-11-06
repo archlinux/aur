@@ -1,6 +1,6 @@
 pkgbase = lakekeeper
 	pkgdesc = Apache Iceberg REST catalog
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/lakekeeper/lakekeeper
 	install = lakekeeper.install
@@ -17,9 +17,9 @@ pkgbase = lakekeeper
 	depends = openssl
 	noextract = swagger-ui-5.17.14.zip
 	options = !lto
-	source = lakekeeper-0.14.2.tar.gz::https://github.com/lakekeeper/lakekeeper/archive/refs/tags/v0.14.2.tar.gz
+	source = lakekeeper-0.15.0.tar.gz::https://github.com/lakekeeper/lakekeeper/archive/refs/tags/v0.15.0.tar.gz
 	source = swagger-ui-5.17.14.zip::https://github.com/swagger-api/swagger-ui/archive/refs/tags/v5.17.14.zip
-	sha256sums = 663f893060bb0fe27c4beeaceff0f5ab96aea0d1c32c235227bffdab5a927e92
+	sha256sums = e7f9ddb3a41a836f71652ab5c847b79cb4d8e463b871b1b94153bf37a011f1d3
 	sha256sums = 481244d0812097b11fbaeef79f71d942b171617f9c9f9514e63acbe13e71ccdc
 
 pkgname = lakekeeper

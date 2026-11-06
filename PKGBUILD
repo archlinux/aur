@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=lakekeeper
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Apache Iceberg REST catalog'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ _swaggerui=5.17.14
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "swagger-ui-${_swaggerui}.zip::https://github.com/swagger-api/swagger-ui/archive/refs/tags/v${_swaggerui}.zip")
 noextract=("swagger-ui-${_swaggerui}.zip")
-sha256sums=('663f893060bb0fe27c4beeaceff0f5ab96aea0d1c32c235227bffdab5a927e92'
+sha256sums=('e7f9ddb3a41a836f71652ab5c847b79cb4d8e463b871b1b94153bf37a011f1d3'
             '481244d0812097b11fbaeef79f71d942b171617f9c9f9514e63acbe13e71ccdc')
 
 prepare() {
