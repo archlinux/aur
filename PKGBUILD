@@ -1,16 +1,17 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=brum
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Multi-Pane Web Environment (File Commander/Manager) - By Woofson"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Woofson/brum"
 license=('MIT')
 depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates')
+optdepends=('proton-drive-cli-bin: Proton Drive (Brum can also install it in Settings)')
 makedepends=('cargo' 'rust' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23c909522d973da89755046dc78faf5fc8ae3139de6312c252ff5a92598628ce')
+sha256sums=('796c5526f20290aa49be21c623aafcfea5947835b35ecbb9d6adb43a518e589f')
 
 prepare() {
     cd "$pkgname-$pkgver"
