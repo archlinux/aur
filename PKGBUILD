@@ -41,6 +41,9 @@ package() {
   install -D -m 755 "${srcdir}/gnome-ssh-askpass4.sh" "${pkgdir}/etc/profile.d/gnome-ssh-askpass4.sh"
   install -D -m 644 ../LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-  install -D -m 644 "${srcdir}/gnome-ssh-askpass4.conf" \
-      "${pkgdir}/usr/lib/systemd/user/ssh-agent.service.d/gnome-ssh-askpass4.conf"
+  for _unit in ssh-agent gcr-ssh-agent
+  do
+      install -D -m 644 "${srcdir}/gnome-ssh-askpass4.conf" \
+          "${pkgdir}/usr/lib/systemd/user/${_unit}.service.d/gnome-ssh-askpass4.conf"
+  done
 }
