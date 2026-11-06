@@ -1,7 +1,7 @@
 pkgbase = bao-git
 	pkgdesc = A verified streaming tool
 	pkgver = 0.13.1.r1.g3466bb3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oconnor663/bao
 	arch = i686
 	arch = x86_64
