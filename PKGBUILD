@@ -18,8 +18,12 @@
 # QoderWake service (https://qoder.com/).
 
 pkgname=qoderwake-bin
-pkgver=1.2.12
-pkgrel=2
+# The runtime itself is upstream 1.2.12; the ".2" suffix is a packaging patch
+# level so AUR helpers and users see a new version without waiting for a
+# pkgrel bump to be noticed.
+_upstreamver=1.2.12
+pkgver=1.2.12.2
+pkgrel=1
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
 url='https://qoder.com/'
@@ -27,14 +31,14 @@ license=('LicenseRef-custom')
 depends=('glibc' 'python')
 optdepends=('xdg-utils: open the QoderWake console in the default browser')
 options=('!strip' '!debug')
-provides=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${_upstreamver}")
 conflicts=("${pkgname%-bin}")
 
 source_x86_64=(
-  "qoderwake-${pkgver}-linux-amd64.tar.gz::https://download.qoder.com/qoderwake/releases/${pkgver}/qoderwake_${pkgver}_linux_amd64.tar.gz"
+  "qoderwake-${_upstreamver}-linux-amd64.tar.gz::https://download.qoder.com/qoderwake/releases/${_upstreamver}/qoderwake_${_upstreamver}_linux_amd64.tar.gz"
 )
 source_aarch64=(
-  "qoderwake-${pkgver}-linux-arm64.tar.gz::https://download.qoder.com/qoderwake/releases/${pkgver}/qoderwake_${pkgver}_linux_arm64.tar.gz"
+  "qoderwake-${_upstreamver}-linux-arm64.tar.gz::https://download.qoder.com/qoderwake/releases/${_upstreamver}/qoderwake_${_upstreamver}_linux_arm64.tar.gz"
 )
 sha256sums_x86_64=('5394e3ecc3b1437c7c26eeb81febaf2d383747bee52bcd663ae942e4fb780a3b')
 sha256sums_aarch64=('f38c7d216a41578e51c8d56680a047cd3fca40f7cdc779c7722fb0ee6f2cf030')
@@ -62,7 +66,7 @@ package() {
 #!/bin/sh
 set -u
 _src='/usr/lib/qoderwake'
-_ver='@PKGVER@'
+_ver='@RUNTIMEVER@'
 _root="${XDG_DATA_HOME:-${HOME}/.local/share}/qoderwake"
 _runtime="${_root}/runtime"
 
@@ -82,7 +86,7 @@ fi
 
 exec "${_runtime}/qoderwake" "$@"
 WRAPPER
-  sed -i "s|@PKGVER@|${pkgver}|" "${pkgdir}/usr/bin/qoderwake"
+  sed -i "s|@RUNTIMEVER@|${_upstreamver}|" "${pkgdir}/usr/bin/qoderwake"
 
   # Upstream ships no desktop integration; the product is a CLI plus a local
   # web console. Add a launcher that starts the daemon and opens that console,
