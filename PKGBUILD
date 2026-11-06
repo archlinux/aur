@@ -1,8 +1,8 @@
 # Maintainer: João Gabriel V. Melão <jgvasconcellos22@gmail.com>
 
 pkgname=silex-desktop-v3-bin
-pkgver=3.10.0canary4 # I'll switch to stable once ready
-_pkgver=3.10.0-canary.5
+pkgver=3.10.0canary6 # I'll switch to stable once ready
+_pkgver=3.10.0-canary.6
 pkgrel=1
 pkgdesc="Silex website builder desktop application"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "silex-desktop-${_pkgver}-128.png::${_raw}/desktop/src-tauri/icons/128x128.png"
     "silex-desktop-${_pkgver}-256.png::${_raw}/desktop/src-tauri/icons/128x128@2x.png"
 )
-sha256sums=('8d2b7d69ecfa9bf7f5a63d10f0fe156edaae21a29e49c55bde7928d87326a999'
+sha256sums=('9d9ae1af650d3f512620412fa508bc741a7cfd0c45a0078ca16e1e9e0fb0791c'
             '989a7245ae9e7c4e88c6c3213e14b8b75f292e1075f105991c7076cdfda3487d'
             'a657b1fb4c4bcd261346772be2c1b779f7c85f62adbdd5cc1387b34280273739'
             'e4c825dcf606944b693354d819d7e3ee861d97c80cb0cf40612b8e40f1a996e6')
