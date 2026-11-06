@@ -1,6 +1,6 @@
 pkgbase = python-katharos
 	pkgdesc = A functional programming and concurrency library for Python
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/kamalfarahani/katharos
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-katharos
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = katharos-1.5.1.tar.gz::https://github.com/kamalfarahani/katharos/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = 91392914eb02d45a5db9f46e2d47b57b90513e95f53925444044e29b5c4ae752
+	source = katharos-1.6.0.tar.gz::https://github.com/kamalfarahani/katharos/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 36c1e9242dfec723763cf0253e367e9ae810177fbe02966e15a35d52edfcf435
 
 pkgname = python-katharos
