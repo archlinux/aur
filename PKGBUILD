@@ -1,7 +1,7 @@
 # Maintainer: PiterDeVries <https://aur.archlinux.org/account/PiterDeVries>
 
 pkgname=sqlite-vector
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='cross-platform, ultra-efficient SQLite extension that brings vector search capabilities to your embedded database.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'sqlite3')
 makedepends=('gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 	"${pkgname}.install")
-sha256sums=('9e0d32d13d54184c7b8cddf31c5cecd731ea73011ac5d38e3eccbd5770ddb274'
+sha256sums=('f752b8571b6e8261d5d2ef40ec2e27bdfcb22b7d03220985e510728e712aedb4'
 	    '2d3981176c07c67789ec4a8d60bddf7bfa21c300e3c2f17fb2320562a64bfda4')
 install="sqlite-vector.install"
 
