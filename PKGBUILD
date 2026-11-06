@@ -10,7 +10,7 @@ pkgrel=4
 pkgdesc="Zalo for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/VN-Linux-Family/zalo-for-linux"
-license=('MIT')
+license=('BSD-3-Clause')
 depends=(
     'glibc'
     'python'
