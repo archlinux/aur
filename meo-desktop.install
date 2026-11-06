@@ -1,0 +1,19 @@
+_meo_decoration_plugin=/usr/lib/qt6/plugins/org.kde.kdecoration3/org.meo.decoration.so
+
+_meo_adopt_decoration_pacnew() {
+  local candidate="${_meo_decoration_plugin}.pacnew"
+  [ -f "$candidate" ] || return 0
+
+  echo "MeoArch: adopting packaged window decoration over a legacy unowned copy"
+  chown root:root "$candidate"
+  chmod 0755 "$candidate"
+  mv -f -- "$candidate" "$_meo_decoration_plugin"
+}
+
+post_install() {
+  _meo_adopt_decoration_pacnew
+}
+
+post_upgrade() {
+  _meo_adopt_decoration_pacnew
+}
