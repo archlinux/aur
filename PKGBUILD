@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='SPICE client library using GLib and GTK+'
 arch=('x86_64' 'aarch64')
 url='https://www.spice-space.org/'
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=('polkit' 'pixman' 'libcacard' 'libepoxy' 'gtk3' 'opus' 'libjpeg-turbo' 'json-glib' 'phodav' 'gst-plugins-base-libs' 'gobject-introspection'
          'spice-protocol-git' 'usbredir-git')
 makedepends=('git' 'meson' 'python-six' 'python-pyparsing' 'vala' 'wayland-protocols')
