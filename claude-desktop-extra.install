@@ -57,16 +57,17 @@ _refresh_caches() {
 }
 
 _cowork_note() {
-    # pacman does not install optdepends, so point users at the optional Cowork
-    # VM stack once at install time (fresh installs only - upgrades stay quiet).
+    # pacman does not install optdepends, so point users at the optional local
+    # Cowork VM stack once at install time (fresh installs only - upgrades stay quiet).
     local _qemu=qemu-system-x86 _fw=edk2-ovmf
     if [ "$(uname -m)" = "aarch64" ]; then
         _qemu=qemu-system-aarch64
         _fw=edk2-aarch64
     fi
-    echo "==> Optional - Cowork (agent workspace VM) needs:"
+    echo "==> Optional - the local Cowork VM (cloud Cowork needs none of this) needs:"
     echo "==>   sudo pacman -S --needed $_qemu $_fw virtiofsd"
-    echo "==>   sudo usermod -aG kvm \$USER    (then log out and back in)"
+    echo "==>   then Settings -> Extra -> Cowork (Linux) -> Enable KVM access, and restart the app"
+    echo "==>   (or: sudo usermod -aG kvm \$USER, then log out and back in)"
 }
 
 _legacy_repo_note() {

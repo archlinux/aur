@@ -5,7 +5,7 @@
 
 pkgname=claude-desktop-extra
 pkgver=4.23118.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -58,10 +58,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.23118.0-5/claude-desktop-4.23118.0-linux.tar.gz")
-sha256sums_x86_64=('3c978164fea9f51d6deeb2d257cec3b2539d347125e1d5642b7a47f410f2cd34')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.23118.0-5/claude-desktop-4.23118.0-linux-aarch64.tar.gz")
-sha256sums_aarch64=('a44bc2aa63fe20242774d629f350f0df8cd4c97525637a675358a8b649965500')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.23118.0-6/claude-desktop-4.23118.0-linux.tar.gz")
+sha256sums_x86_64=('eee74603bbd0690ea58038dd7430e724842e9c75fb1b96d1d46133a18ec228d8')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.23118.0-6/claude-desktop-4.23118.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('6c639a744e1d4fa799ac53728c063f3061d6d0e31d4dc7bba85a53d8ba4c0cd2')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -185,20 +185,25 @@ EOF
     fi
     install -pDm644 "$_mime" "$pkgdir/usr/share/mime/packages/com.anthropic.Claude.xml"
 
-    # Opt-in TPM access (cloud Cowork / Dispatch Computer Use): the rule and its
-    # root helper stay disabled inside the tree; the helper's polkit action is a
-    # package file so pkexec shows our prompt. The .install hook does not touch them.
+    # Opt-in TPM access (cloud Cowork / Dispatch Computer Use) and KVM access
+    # (local Cowork VM): the rules, the vhost_vsock modules-load file and their
+    # root helpers stay disabled inside the tree; the helpers' polkit actions are
+    # package files so pkexec shows our prompts. The .install hook does not touch them.
     local _udev="$pkgdir/usr/lib/claude-desktop/resources/linux-udev"
     local _policy=io.github.patrickjaja.claude-desktop-extra.tpm-access.policy
-    for _f in 70-claude-desktop-extra-tpm.rules cdb-tpm-access "$_policy"; do
+    local _kvm_policy=io.github.patrickjaja.claude-desktop-extra.kvm-access.policy
+    for _f in 70-claude-desktop-extra-tpm.rules cdb-tpm-access "$_policy" \
+            70-claude-desktop-extra-kvm.rules claude-desktop-extra-vsock.conf cdb-kvm-access "$_kvm_policy"; do
         if [ ! -f "$_udev/$_f" ]; then
             echo "ERROR: resources/linux-udev/$_f missing from the tarball - rebuild it" >&2
             return 1
         fi
     done
-    chmod 755 "$_udev" "$_udev/cdb-tpm-access"
-    chmod 644 "$_udev/70-claude-desktop-extra-tpm.rules" "$_udev/$_policy"
+    chmod 755 "$_udev" "$_udev/cdb-tpm-access" "$_udev/cdb-kvm-access"
+    chmod 644 "$_udev/70-claude-desktop-extra-tpm.rules" "$_udev/$_policy" \
+        "$_udev/70-claude-desktop-extra-kvm.rules" "$_udev/claude-desktop-extra-vsock.conf" "$_udev/$_kvm_policy"
     install -pDm644 "$_udev/$_policy" "$pkgdir/usr/share/polkit-1/actions/$_policy"
+    install -pDm644 "$_udev/$_kvm_policy" "$pkgdir/usr/share/polkit-1/actions/$_kvm_policy"
 
     # Upstream license notice (the official .deb's usr/share/doc copyright file,
     # placed at the tarball root by scripts/build-patched-tarball.sh).
