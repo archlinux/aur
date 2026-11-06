@@ -7,7 +7,7 @@ _appname=${_gitname%%-${_appsufix}}
 pkgname=${_gitname}-bin
 pkgdesc="Encrypted terminal note-taking app"
 
-pkgver=0.13.2
+pkgver=0.14.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('a46e19633bf7d5b868c32d7f9e7d8981a3216993ecf6eaf497c117bbbe1bb321')
-sha256sums_aarch64=('d733e3283c4ffd3fca2c51e2a013f062301053db2df5923f311ead7603598fc8')
+sha256sums_x86_64=('2aa71d560b3956d2da359e70aeb6e17915ed844b596615ac6c3f2bbe9bdd1caa')
+sha256sums_aarch64=('eb68454f576294f2e0e055a248fde282b7e649dd5838f04b5edb279d351fd33a')
 
 
 case ${CARCH} in
