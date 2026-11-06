@@ -3,15 +3,15 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=trice
-pkgver=1.3.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="🟢 super fast 🚀 tiny 🐥 𝘾 printf-look-and-feel ✍ trace code, in ⚡ interrupts ⚡ too ‼️, and real-time PC 💻 logging 👀"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rokath/trice"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='54ce845b069f989bfc762f28f6dd364954e6050f'
+_commit='e72ef07e93f3b8ef49865813a7b8251f3872c1af'
 source=("git+https://github.com/rokath/trice.git#commit=$_commit")
 sha256sums=('SKIP')
 
