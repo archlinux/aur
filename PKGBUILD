@@ -1,6 +1,6 @@
 pkgname=simplelogin-server
-pkgver=4.81.7
-pkgrel=5
+pkgver=4.83.5
+pkgrel=1
 pkgdesc='Self-hosted SimpleLogin email alias server'
 arch=('x86_64')
 url='https://github.com/simple-login/app'
@@ -88,6 +88,7 @@ optdepends=(
   'valkey: Redis-compatible session and rate-limit backend'
   'spamassassin: optional spamd backend'
   'ipython: interactive SimpleLogin shell helper'
+  'python-prometheus_client: Prometheus metrics backend'
   'python-flask-debugtoolbar: optional Flask debug toolbar'
   'python-facebook-sdk: optional Facebook authentication support'
 )
@@ -119,7 +120,7 @@ source=(
   'simplelogin.env.example'
 )
 
-sha256sums=('f52b57dbc5feebe2b5a5244c88fac197638e89b447338cdc173675a6b5eddca2'
+sha256sums=('f734532ccc165ed642740eaf6f4d1e1b4bb9c663ec5c9cb9871a584e8f78559d'
             '1cda5d1953388d25641e0383f6dc0630a42f22256aa1da9eafb9979909b71d17'
             '43585103727c465c90c437c167a7f608c6f4daebdb1dff7222a1918cda33e451'
             'cd2b3e5e7583139acb389505947cceb9860acf28c87d1eaef5ee5d5f02a75b18'
@@ -130,13 +131,13 @@ sha256sums=('f52b57dbc5feebe2b5a5244c88fac197638e89b447338cdc173675a6b5eddca2'
             '79b8ba1e448904a8d1bb62addb0d40786f4724e5816f511b0b30c148eebd7d11'
             'cacad537c38d146f3cbc06a8e0b87f4f577e1f5cc880451f8be12df3be691d59'
             '5267684be8a1d14fe3033b39c19c9e2b4936b4bf9e28ce1814c92d75f7cc45c5'
-            '5049a47c140d1f3414ba66a2848409103cbd5030d173bf2a0b614bc49123f738'
+            '1015d26493f207945ac04af2a6c4234d1f6881cf52a92cb035bf384b8d7385e2'
             '00aad070cf6ab19e3bb556809a5244132ce17ec5eab9b2ced4036b3ed00ceb27'
             '80feb5585a74e704df2c579249b51035e5a5a6c34236a8217eb2127830325798'
             'bd3c35b89dfd1151050da2c8f693b1e7ab5a87870b29f9fae9208cb4676de20b'
-            '9894586a36fad9e333bc58aa9885db4436de1665745d35d6b63ad89dedf8211f'
+            'a1ac5e01215fa5b23bcf0082b2b2157fdceb4299070ed0c9ea32cd23680551cc'
             '67f4d8355ace39cd7babbf36866e3f52c086b8102638fed0c692963b6ee336cf'
-            '7bfcc80a2bd87fc33bf94903defbbf52e60f766682d3138baf95994b6048d702'
+            '5c11dc74b6e94cedbcaac38e9b87b5415aa906a369b701c8743acc542fa0c423'
             '8e5f5fe52d6c72eda036bbc195ccc71140efb7829df7bae11e7667bf772b0061'
             'e6e594c7ca5d46fae0bfec33551741b1e3efe1515c444d7e33395d73bafae65e'
             '37a6a6569c1709c01cfc9026c275c5e468ccb812c12c2877174e365f06e2caa6'

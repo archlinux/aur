@@ -709,10 +709,7 @@
      sub = Subscription.create(
 --- a/tests/test_server.py
 +++ b/tests/test_server.py
-@@ -6,4 +6,4 @@ def test_redirect_login_page(flask_client):
- 
-     rv = flask_client.get("/")
-     assert rv.status_code == 302
+@@ -13 +13 @@
 -    assert rv.location == f"http://{EMAIL_DOMAIN}/auth/login"
 +    assert rv.location == "/auth/login"
 --- /dev/null
