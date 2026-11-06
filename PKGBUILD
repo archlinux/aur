@@ -4,7 +4,7 @@
 pkgname=steamos-powerbuttond
 _srctag=v4.2
 pkgver=${_srctag##v}
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url="https://gitlab.steamos.cloud/holo/powerbuttond"
 pkgdesc="Power button daemon for SteamOS"

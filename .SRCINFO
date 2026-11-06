@@ -1,7 +1,7 @@
 pkgbase = steamos-powerbuttond
 	pkgdesc = Power button daemon for SteamOS
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.steamos.cloud/holo/powerbuttond
 	arch = x86_64
 	license = BSD-2-Clause
