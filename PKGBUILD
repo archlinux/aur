@@ -47,7 +47,7 @@ prepare() {
   cabal update hackage.haskell.org,$ts
   cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
     --enable-tests --flag embed_data_files
-  cabal build --only-dependencies
+  cabal build --only-dependencies all
 }
 
 build() {
