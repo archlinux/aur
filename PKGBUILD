@@ -2,7 +2,8 @@
 
 _ghauthor=kooler
 _ghname=MiddayCommander
-_pkgname=mdc
+_pkgname=midday-commander
+_appname=mdc
 pkgname=${_pkgname}-bin
 pkgdesc="A TUI dual-panel terminal file manager written in Go, inspired by Midnight Commander."
 
@@ -20,8 +21,8 @@ _urlraw="https://raw.githubusercontent.com/${_ghauthor}/${_ghname}/${_ghversionn
 license=('MIT')
 
 makedepends=('git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_ghversionname}/${_ghname}_${_ghversion}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_ghversionname}/${_ghname}_${_ghversion}_${_barch[1]}.tar.gz")
@@ -40,11 +41,11 @@ prepare() {
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "git/config.example.toml" -t "${pkgdir}/usr/share/doc/${pkgname}/config/"
 	for theme in "git/themes/"*.toml; do
-		install -Dm644 "${theme}" -t "${pkgdir}/usr/share/doc/${pkgname}/themes/"
+		install -Dm644 "${theme}" -t "${pkgdir}/usr/share/${_appname}/themes/"
 	done
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
