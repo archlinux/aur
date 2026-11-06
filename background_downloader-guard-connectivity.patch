@@ -1,0 +1,41 @@
+--- a/lib/src/base_downloader.dart
++++ b/lib/src/base_downloader.dart
+@@ -185,7 +185,15 @@
+   }
+ 
+   void _initConnectivity() {
+-    try {
++    // connectivity_plus leaks Linux DBus failures (for example when
++    // NetworkManager is absent) past onError: its onListen is an async
++    // callback whose Future is discarded. Contain them in a guarded zone and
++    // keep the defaults (connected, not Wi-Fi), as the old catch intended.
++    void onError(Object e, [StackTrace? _]) {
++      log.finer('Connectivity initialization error: $e');
++    }
++
++    runZonedGuarded(() {
+       _connectivitySubscription = _connectivity.onConnectivityChanged.listen((
+         results,
+       ) {
+@@ -195,7 +203,7 @@
+               r == ConnectivityResult.wifi || r == ConnectivityResult.ethernet,
+         );
+         _onConnectivityChanged(connected, wifi);
+-      });
++      }, onError: onError);
+       _connectivity.checkConnectivity().then((results) {
+         final connected = results.any((r) => r != ConnectivityResult.none);
+         final wifi = results.any(
+@@ -203,10 +211,8 @@
+               r == ConnectivityResult.wifi || r == ConnectivityResult.ethernet,
+         );
+         _onConnectivityChanged(connected, wifi);
+-      });
+-    } catch (e) {
+-      log.finer('Connectivity initialization error: $e');
+-    }
++      }, onError: onError);
++    }, onError);
+   }
+ 
+   void _onConnectivityChanged(bool connected, bool wifi) {

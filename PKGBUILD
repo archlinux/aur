@@ -1,7 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=2.23.0.r68.g002df7b
+pkgver=2.25.0.r51.g6cc283a
 pkgrel=1
 pkgdesc='A modern Plex client for desktop and mobile'
 arch=('x86_64')
@@ -36,13 +36,16 @@ _flutter_ver=3.47.1
 source=(
     "$_pkgname::git+$url.git"
     "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutter_ver}-stable.tar.xz"
+    'background_downloader-guard-connectivity.patch'
 )
 sha256sums=('SKIP'
-            'a1d8166c0309267cb7dc99f1424eecf08b86946ad3b50723c6f59945964aea45')
+            'a1d8166c0309267cb7dc99f1424eecf08b86946ad3b50723c6f59945964aea45'
+            '9340e113ba1b9efb2dd20ba8ffd94243cc78d2e4bd614180eedb2f2b43b5f3b8')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
+    # Ignore diagnostic tags such as test-2883-keydiag when deriving pkgver.
+    git describe --long --tags --abbrev=7 --match '[0-9]*' --match 'v[0-9]*' 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
         || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -57,6 +60,18 @@ build() {
 
     cd "$_pkgname"
     flutter pub get
+
+    # Contain connectivity_plus DBus errors in background_downloader when
+    # NetworkManager is absent (systemd-networkd/iwd). Plezy guards its own
+    # calls; the pinned downloader fork does not. Skip once fixed upstream.
+    local _bd
+    for _bd in "$PUB_CACHE"/git/background_downloader-*/; do
+        if patch -d "$_bd" -p1 -N --dry-run -s < "$srcdir/background_downloader-guard-connectivity.patch" >/dev/null; then
+            patch -d "$_bd" -p1 -N < "$srcdir/background_downloader-guard-connectivity.patch"
+        else
+            echo "background_downloader connectivity patch not applicable to ${_bd}; skipping" >&2
+        fi
+    done
 
     # Remove -Werror from all CMakeLists.txt (fixes strict clang warnings in plugins)
     find . -name 'CMakeLists.txt' -exec sed -i 's/-Werror//g' {} +
