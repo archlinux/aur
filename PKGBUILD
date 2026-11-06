@@ -1,8 +1,8 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=genoma
-_tag=v0.1.1
-pkgver=0.1.1
+_tag=v0.1.2
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A Wayland shell toolkit: a Rust core drawing through Vulkan, interfaces written in Luau and reloaded live"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ makedepends=('cargo' 'clang')
 # Rust's linker cannot resolve (undefined spa_format_parse_libspa_rs).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('9e517f55246355f76c86541dd60ea3899599c33c8ecd85641eaef77a48abdfc6')
+sha256sums=('e8d804ba4ede070b1ed18ccb5042523aa0adfdaf55103976d738699e5dfcb357')
 
 _srcdir() {
     printf '%s/Genoma-%s' "$srcdir" "${_tag#v}"
