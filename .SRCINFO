@@ -1,6 +1,6 @@
 pkgbase = exdesktop-git
 	pkgdesc = Unofficial Telegram Desktop fork with exteraGram features, channel feed and Python plugins (git version)
-	pkgver = 7.3.3.8.r24.gb1023d0
+	pkgver = 7.3.3.9.r7.g4631a77
 	pkgrel = 1
 	url = https://github.com/metawka/exDesktop
 	arch = x86_64
@@ -71,7 +71,7 @@ pkgbase = exdesktop-git
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = exdesktop=7.3.3.8
+	provides = exdesktop=7.3.3.9
 	conflicts = exdesktop
 	conflicts = exdesktop-bin
 	conflicts = telegram-desktop
@@ -81,8 +81,8 @@ pkgbase = exdesktop-git
 	source = wallet-engine::git+https://github.com/i582/wallet-engine.git#commit=e59e0d89d7ee90c388bf36e3334c5b276f396697
 	source = wallet-engine-a895fef40eaa7d66481cff542c623b039b7ce494.patch::https://github.com/desktop-app/patches/raw/a895fef40eaa7d66481cff542c623b039b7ce494/wallet-engine.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 142098b7cb73193e14c5b37b014ee8f95e92ceceb4558cf5a89b7f8292d8b0c9
+	sha256sums = b930f701b1ab75075f3239b8bcdd3896eaa560f22e98d878bc0d5c846e8e895c
 	sha256sums = b40aba82c39a42d0526a85ecfa40d613baa57b1a2d6600e601a42a1576b3b822
 
 pkgname = exdesktop-git

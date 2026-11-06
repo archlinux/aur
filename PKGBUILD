@@ -9,7 +9,7 @@ export DEBUG_CXXFLAGS="-g1"
 
 _pkgname=exdesktop
 pkgname="$_pkgname-git"
-pkgver=7.3.3.8.r24.gb1023d0
+pkgver=7.3.3.9.r7.g4631a77
 pkgrel=1
 pkgdesc='Unofficial Telegram Desktop fork with exteraGram features, channel feed and Python plugins (git version)'
 arch=('x86_64')
@@ -110,8 +110,8 @@ source=(
 	"wallet-engine-$_patches_commit.patch::https://github.com/desktop-app/patches/raw/$_patches_commit/wallet-engine.patch"
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
+            '142098b7cb73193e14c5b37b014ee8f95e92ceceb4558cf5a89b7f8292d8b0c9'
+            'b930f701b1ab75075f3239b8bcdd3896eaa560f22e98d878bc0d5c846e8e895c'
             'b40aba82c39a42d0526a85ecfa40d613baa57b1a2d6600e601a42a1576b3b822')
 
 prepare() {
