@@ -1,6 +1,6 @@
 # Maintainer: KhooLy <seslikitapicinkhooly@gmail.com>
 pkgname=fluxa-desktop-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Cross-platform media center for streaming and managing your media library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('fluxa-desktop')
 conflicts=('fluxa-desktop')
 options=('!strip')
 source=("fluxa-desktop-${pkgver}.deb::${url}/releases/download/v${pkgver}/fluxa-${pkgver}-linux-amd64.deb")
-sha256sums=('18231fdd4f27b33f6ead9dc44fa02a0352e787f178c2608f1f6c4783d5ae08f1')
+sha256sums=('872ac070862072a68c24f60eda4cbba32a24edc181617e5a55924b1db72110d1')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"
