@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Audio and video streaming language (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://www.liquidsoap.info/'
-license=('GPL-2.0-or-later' 'LicenseRef-Fraunhofer')
+license=('GPL-2.0-or-later AND LicenseRef-Fraunhofer')
 depends=(
   'alsa-lib'
   'bzip2'
