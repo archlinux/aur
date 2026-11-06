@@ -10,14 +10,14 @@ IFS= read -r -d '' _usage << 'EOF'
 
     # step 1. add to /etc/skel/ and /root/, run once (copy/paste block)
     sudo cp -n /etc/skel/.bashrc{,.default.bak}
-    echo 'source /usr/share/gentoo-color-bash/10-gentoo-color.bash 2>/dev/null' | sudo tee -a /etc/skel/.bashrc
+    echo 'source /usr/share/gentoo-color-bash/10-gentoo-color.bash 2>/dev/null || true' | sudo tee -a /etc/skel/.bashrc
     sudo cp -n /root/.bashrc{,.default.bak}       2>/dev/null
     sudo cp -n /root/.bash_profile{,.default.bak} 2>/dev/null
     sudo cp -f /etc/skel/{.bashrc,.bash_profile} /root
 
     # step 2. for every exist user after login run once (copy/paste block)
     cp -n ~/.bashrc{,.default.bak}
-    echo 'source /usr/share/gentoo-color-bash/10-gentoo-color.bash 2>/dev/null' | tee -a ~/.bashrc
+    echo 'source /usr/share/gentoo-color-bash/10-gentoo-color.bash 2>/dev/null || true' | tee -a ~/.bashrc
 
     # Now you can add (if needed) you own ~/.dir_colors or /etc/DIR_COLORS for perfect ls.
     # See arch wiki or github for examples.
@@ -26,7 +26,7 @@ EOF
 #---------------------------------------------------------------------------------------------
 
 pkgname=gentoo-color-bash
-pkgver=2026.11.03          # 10-gentoo-color-r2.bash 2025-05-04 size: 2190
+pkgver=2026.11.07          # 10-gentoo-color-r2.bash 2025-05-04 size: 2190
 #_id=b39e66dce51adbe2ccef98dbd7e321c6c2e6b835
 pkgrel=1
 
