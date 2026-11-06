@@ -4,14 +4,15 @@
 
 pkgname=gpredict-git
 _pkgname=gpredict
-pkgver=2.3.r133.g91a4a3f
+pkgver=2.7.r0.g2259378
+#.r0.g2259378
 #.r133.g91a4a3f
-pkgrel=2
+pkgrel=1
 pkgdesc="Gpredict is a real-time satellite tracking and orbit prediction application."
 arch=('i686' 'x86_64')
 url="http://gpredict.oz9aec.net/"
 license=('GPL-2.0-only')
-depends=('curl>=7.19' 'goocanvas2' 'hamradio-menus')
+depends=('curl>=7.19' 'gtk3' 'hamradio-menus')
 makedepends=('git' 'autoconf' 'automake' 'intltool')
 optdepends=('hamlib: rig interfacing/control'
 	    'libreoffice: read /usr/share/doc/gpredict/um/gredict-user-manual.odt')
