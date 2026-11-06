@@ -1,6 +1,6 @@
 pkgname=skwd-paper-plasma
-pkgver=1.0.0_beta.26
-pkgrel=2
+pkgver=1.0.0_beta.27
+pkgrel=1
 pkgdesc='KDE Plasma wallpaper integration for Skwd Paper'
 arch=(x86_64)
 url='https://github.com/liixini/skwd-paper-plasma'
@@ -8,11 +8,11 @@ license=(MIT)
 depends=(libdrm libglvnd plasma-workspace qt6-base qt6-declarative qt6-tools skwd-paper)
 makedepends=(cmake gcc pkgconf)
 options=(!debug !lto)
-source=("$pkgname-1.0.0-beta.26.tar.gz::https://github.com/liixini/skwd-paper-plasma/archive/refs/tags/v1.0.0-beta.26.tar.gz")
-sha256sums=('1e9ebcaf40b2df5d16ba698a3b302d9d5ae0641f4abab9deeccdbc9162ca7a9e')
+source=("$pkgname-1.0.0-beta.27.tar.xz::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.27/skwd-paper-plasma-1.0.0-beta.27.tar.xz")
+sha256sums=('80d68a414b17ab34f20defeb14a1de10bc678016937b7fb98008a8f182865628')
 
 build() {
-  cmake -S "$srcdir/skwd-paper-plasma-1.0.0-beta.26" -B build \
+  cmake -S "$srcdir/skwd-paper-plasma-1.0.0-beta.27" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
