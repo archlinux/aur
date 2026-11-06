@@ -32,7 +32,7 @@ b2sums=('9bbd71b5c3e6e99e22c29fd3e80ee130e43a670249a5dbdadc836f4f6603f3c0dc1af39
 prepare() {
   cd "$srcdir/$_name-${_tag#v}" || exit
   # The platform flags (-fno-rtti, the libraries to link) on the extension's compiler, which
-  # ExtLibrary() has cloned before the AMBuilder adds them
+  # ExtLibrary() has cloned before the AMBuilder adds them, merged upstream after v2.15.1-1
   # (https://github.com/davenonymous/SMJansson/pull/15)
   patch -Np1 -i "$srcdir/smjansson-ambuilder-binary-compiler.patch"
   # The system's jansson (the version it bundles) instead of the bundled sources
