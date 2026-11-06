@@ -1,6 +1,6 @@
 # Maintainer: AnimaEngine
 pkgname=anima-engine
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Animated desktop overlays, a Workshop browser, and AI background removal. Builds from source
         with every feature: about ten to twenty minutes, because the release profile uses fat LTO and one
@@ -28,7 +28,7 @@ optdepends=(
 # The tarball is named after `$pkgname`; its contents carry the repository name, which is a different string.
 _archive=linux_animeengine_git
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swordreforge/linux_animeengine_git/archive/v$pkgver.tar.gz")
-sha256sums=('d7da229b6b716fd8fc4c354c0f8ea8f5bcb17db172e3be51a50bfa26b08cefb5')
+sha256sums=('3897cdca21bc1d1d48dbecc099ccef357e1da6a438074db8f69151e00a9fcb2e')
 
 build() {
   cd "$_archive-$pkgver"
