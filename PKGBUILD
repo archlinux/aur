@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqtt5-explorer-bin
 _pkgname='MQTT5 Explorer'
-pkgver=2.1.0
+pkgver=3.0.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A simple yet feature-rich client to visualize data of any MQTT broker."
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f31f4d728bd61e90cd492635ac98e05bf4bc5b4fdd59e884edecc7138cae2aec'
+sha256sums=('ead8852a3efaf206453ed19097817674ec8dda3c890869fe74db04d143caba93'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
