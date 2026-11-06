@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=rayfish
-pkgver=0.5.16 # renovate: datasource=github-tags depName=rayfish/rayfish
+pkgver=0.5.16 # renovate: datasource=github-releases depName=rayfish/rayfish
 pkgrel=1
 pkgdesc="P2P mesh VPN powered by iroh"
 arch=('x86_64' 'aarch64')
