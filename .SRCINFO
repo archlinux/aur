@@ -1,6 +1,6 @@
 pkgbase = vacuum
 	pkgdesc = fast, lightweight OpenAPI linter and quality checking tool
-	pkgver = 0.36.2
+	pkgver = 0.39.3
 	pkgrel = 1
 	url = https://quobix.com/vacuum/
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = vacuum
 	makedepends = go
 	makedepends = npm
 	depends = glibc
-	source = git+https://github.com/daveshanley/vacuum.git#tag=v0.36.2
-	sha256sums = 1fc6418bab5fe78ae1507d525cf4a508fc7348294a48d762eb7a6eef3adbc304
+	source = git+https://github.com/daveshanley/vacuum.git#tag=v0.39.3
+	sha256sums = b69df8bb9f04eff3cf6cf2053206037f114736262570e9750ec2efaf3675e49a
 
 pkgname = vacuum
