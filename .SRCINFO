@@ -1,7 +1,7 @@
 pkgbase = mediasync-git
 	pkgdesc = Universal media session bridge: local MPRIS players and Jellyfin sessions behind one local API
-	pkgver = r22.5515558
-	pkgrel = 1
+	pkgver = r0
+	pkgrel = 2
 	url = https://github.com/arkaizn/mediasync
 	arch = x86_64
 	arch = aarch64

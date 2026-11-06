@@ -1,8 +1,8 @@
 # Maintainer: Arkaizn <your-email at example dot com>
 pkgname=mediasync-git
 _pkgname=mediasync
-pkgver=r22.5515558
-pkgrel=1
+pkgver=r0
+pkgrel=2
 pkgdesc="Universal media session bridge: local MPRIS players and Jellyfin sessions behind one local API"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arkaizn/mediasync"
@@ -32,7 +32,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   export GOPATH="$srcdir/gopath"
-  go mod download -x 2>/dev/null || go mod download
+  # -modcacherw: keep the module cache writable so makepkg/yay can clean up.
+  go mod download -modcacherw
 }
 
 build() {
