@@ -1,0 +1,14 @@
+pkgbase = emuera-tty
+	pkgdesc = An Emuera (ERB engine) reimplementation in Rust for terminals
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/astartes-gaming/emuera-tty
+	arch = any
+	license = MIT
+	makedepends = cargo
+	optdepends = kitty: recommended terminal
+	optdepends = translate-shell: in-terminal MTL support
+	source = emuera-tty-0.1.1.zip::https://github.com/astartes-gaming/emuera-tty/archive/refs/tags/v0.1.1.zip
+	b2sums = 1a33fb2bc7670ff04bc60c8ce65bf31af83e6f09972fdcd324ce15852ebf870218d710670d8f3a98df0fc007cdb180aa96d80c35eb02fa40156e6f4d36f87325
+
+pkgname = emuera-tty
