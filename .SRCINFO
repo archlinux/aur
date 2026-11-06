@@ -1,0 +1,24 @@
+pkgbase = python-django-lts
+	pkgdesc = A high-level Python web framework, long-term support release
+	pkgver = 5.2.19
+	pkgrel = 2
+	url = https://www.djangoproject.com/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-installer
+	depends = python>=3.10
+	depends = python-sqlparse>=0.3.1
+	depends = python-asgiref>=3.8.1
+	optdepends = python-psycopg: for PostgreSQL backend
+	optdepends = python-psycopg2: for PostgreSQL backend
+	optdepends = python-argon2-cffi: for Argon2 password hashing support
+	provides = python-django=5.2.19
+	conflicts = python-django
+	replaces = python-django
+	noextract = django-5.2.19-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/d/django/django-5.2.19-py3-none-any.whl
+	source = django-5.2.19-bash-completion::https://raw.githubusercontent.com/django/django/5.2.19/extras/django_bash_completion
+	sha256sums = 5965d974a5218a2b68a11dd1276434707f23886525c23f0598eccedaf4f4ca00
+	sha256sums = 7e8e23ce8be3c9f7e82900ddcf7938aa202c4fe42e87374f09ed25f9ba2013cf
+
+pkgname = python-django-lts
