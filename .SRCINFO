@@ -1,14 +1,14 @@
 pkgbase = honrp-bin
 	pkgdesc = Discord Rich Presence for Heroes of Newerth (Juvio) on Linux/Steam Proton
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NasirA1991/honrp
 	arch = x86_64
 	license = MIT
 	provides = honrp
 	conflicts = honrp
 	options = !strip
-	source = honrp-linux-x86_64::https://github.com/NasirA1991/honrp/releases/download/v0.3.2/honrp-linux-x86_64
+	source = honrp-0.3.2-linux-x86_64::https://github.com/NasirA1991/honrp/releases/download/v0.3.2/honrp-linux-x86_64
 	source = LICENSE::https://github.com/NasirA1991/honrp/raw/v0.3.2/LICENSE
 	source = config.example.json::https://github.com/NasirA1991/honrp/raw/v0.3.2/config.example.json
 	sha256sums = fd2ff0d1fd2add9933f8f08dcb98e8b0258da2ed227866b2c54279f58ba2f17a
