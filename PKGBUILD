@@ -3,7 +3,7 @@
 pkgname=jasper-gtk-theme-fixed-git
 _name=jasper-gtk-theme
 _fixes=jasper
-pkgver=r121.gec9f301.f7.0c09bae
+pkgver=r121.gec9f301.f22.1db24ea
 pkgrel=1
 pkgdesc="Jasper GTK theme, Dracula colors, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)"
 arch=('any')
@@ -96,12 +96,18 @@ prepare() {
   done
 }
 
-# mac_buttons=true makepkg: macOS-style window buttons (red/yellow/green circles, a darker dot
-# on hover) instead of Jasper's 22px glyph circles; the fixes take both from the theme's
-# $window_button, so the same package serves either. The theme names do not change.
+# Window buttons: macOS-style (red/yellow/green circles, a darker dot on hover) or Jasper's own
+# 22px glyph circles; the fixes take both from the theme's $window_button, so the same package
+# serves either and the theme names do not change. mac_buttons=true|false makepkg decides without
+# asking; otherwise makepkg asks on the terminal (default: normal), and builds normal when there is
+# no terminal (chroot, CI, AUR helpers that detach it).
 package() {
   cd "${_name}"
-  local tweaks=(dracula)
+  local tweaks=(dracula) answer=
+  if [[ -z ${mac_buttons:-} ]] && { : </dev/tty; } 2>/dev/null; then
+    read -r -p "Jasper window buttons: [n]ormal or [m]ac? [N/m] " answer </dev/tty >/dev/tty || true
+    [[ ${answer,,} == m* ]] && mac_buttons=true
+  fi
   if [[ ${mac_buttons:-} == true ]]; then
     tweaks+=(macos)
   fi
