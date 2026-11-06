@@ -1,76 +1,140 @@
-opentubex (0.37.3) stable; urgency=medium
+opentubex (0.37.4) stable; urgency=medium
 
   [ Highlights ]
-  * Focus settings have a new Digital Wellbeing tab with a grayscale mode, daily
-    watch time and Shorts limits, break reminders, and a bedtime reminder that
-    can silence upload notifications.
+  * The app takes on Material 3 Expressive, with rounder corners, tinted buttons
+    and selections, springier motion, and bolder titles. Custom themes keep
+    working.
+  * A bell in the top bar keeps your live stream reminders, new uploads, and
+    automatic downloads, which appear in the app instead of as system
+    notifications while you use OpenTubeX. A new setting in General switches
+    notifications to system only or off.
 
   [ More improvements ]
-  * The Playlists icon in the navigation, tabs, and page headings is now
-    outlined to match the other navigation icons.
-  * When a package manager installed OpenTubeX, the update prompt now shows its
-    update command with a Copy button instead of a link to the website.
-  * Subscription groups can now have an icon, shown beside the group's name in
-    the group tabs and the subscribe button's group list.
-  * You can now choose how many search history entries and suggestions the
-    search bar shows before its list scrolls, from 5 to 50, in Appearance
-    settings.
-  * Chapters now have a loop button that repeats the chapter with A-B repeat.
-    Press it again to stop.
-  * You can keep the window open when you close its last tab. Turn off "Close
-    window when closing the last tab" in General settings, and a new tab opens
-    in its place.
-  * Follow creators from other platforms through RSS and Atom feeds, for example
-    from an RSSHub instance, in an optional RSS tab on the Subscriptions page.
-    Turn it on in the subscription settings.
-  * YouTube playlists, including saved ones, now have the "Search for Videos"
-    field. Searching loads the rest of the playlist so the results cover every
-    video.
-  * The actions below a video stay in one row of evenly sized buttons on narrow
-    screens, and the actions that don't fit move to a More options menu.
-  * Caption font size and background opacity have sliders again, in the captions
-    menu next to common values and in the settings. Font sizes go from 50% to
-    400% and opacities from 0% to 100%, both in 5% steps.
-  * Caption settings show color swatches, and the sample caption previews each
-    option as you hover over or move through it.
-  * Place each player control on the control bar, in the player menu, or
-    nowhere, and reorder the player menu. Resolution, playback speed, audio
-    tracks, loop, screenshot and chapters can now go on the control bar, and you
-    can hide any player menu entry, such as ambient mode, the sleep timer or
-    captions.
-  * Screenshots can be saved as JPEG XL. The format picker now lists legacy and
-    modern formats separately.
-  * When the video actions below the player share a narrow row, the download
-    button now sits at the end, after the More button.
-  * Afrikaans, Esperanto, and Urdu are now available as display languages.
-  * The Distraction Free settings category is now called Focus, and every
-    settings category describes what it contains more accurately.
+  * Exporting and importing large backups no longer freezes the app while the
+    archive is created or read.
+  * The cast menu lists the devices of every casting protocol together and,
+    while casting, becomes a remote with seek and volume sliders, playback
+    buttons, and subtitle choices.
+  * You can now pin and unpin channels from their context menus.
+  * Channels with TV shows now have a Shows tab. You can hide it in Distraction
+    Free settings.
+  * Right-clicking a collapsed tab group now opens a menu to expand it, close
+    its tabs, or ungroup them.
+  * Delete Old History on the History page can now delete your entire watch
+    history with the new "All time" option.
+  * The Material accent color picker now offers your system accent color, and
+    the app follows it when you change it.
+  * The About page and the update prompt now link to the new donation page,
+    where you can support OpenTubeX through GitHub Sponsors or Liberapay.
+  * Videos from other sites now work more like YouTube videos, with transcripts
+    when they have captions and the same side panels and phone sheets.
+  * Large watch histories and playlists are faster to edit, mark as watched, and
+    sync.
+  * OpenTubeX starts faster and stays responsive while loading a large watch
+    history.
+  * Layout settings in Appearance are now split into groups such as Interface,
+    Tabs, Scrolling, and Notifications, and their switches, like those for video
+    lists, sit in two columns.
+  * OpenTubeX no longer contacts api.invidious.io at startup unless it uses a
+    random Invidious instance.
+  * Long YouTube playlists open and play without first downloading every page.
+    Later pages load when playback, the playlist panel, or the progress bar
+    reaches them.
+  * Long video and playlist titles in lists and grids now stop after two lines
+    with an ellipsis, so cards line up more evenly. Hover over a title to see
+    all of it, or turn off Limit titles to two lines in Appearance settings.
+  * 32-bit ARM (armv7l) Linux builds are no longer available, because Electron
+    no longer supports them. 64-bit ARM (arm64) builds are still available.
+  * The watch queue and transcripts of long videos open and scroll smoothly even
+    with hundreds of queued videos or thousands of transcript lines.
+  * Menus, tooltips, and dialogs now follow Material 3, with accent-colored
+    icons and smooth open and close animations. Dialogs and bottom sheets also
+    blur the page behind them.
+  * A new layout setting hides in-app notifications that only confirm an action
+    or report a status. Errors, warnings, reminders, and notifications with an
+    action like Undo still appear, and background progress shows in the progress
+    bar.
+  * In the phone layout, the description now opens from a button like Comments,
+    with a two-line excerpt and chips for its music, games, tags, and content
+    labels.
+  * More menus open as bottom sheets on phones, including the channel setting,
+    cast, subscription settings, comment filter, comment sort, and "More
+    options" menus.
+  * Videos in the watch page playlist have a one-tap Remove from playlist button
+    on their thumbnails again. Add to playlist moved into each video's menu.
+  * The chapters panel next to the video now has a resize handle like the
+    playlist panel, so you can drag it taller to see more chapters at once. It
+    remembers the size you choose.
+  * RSS feeds can now refresh automatically. New items are marked as new and
+    show in the New feed, and items have a menu to open, download, or mark them
+    as watched.
+  * The RSS feed manager can now browse RSSHub, so picking an instance, a
+    service and a username fills in the feed address. Feeds from sites that ask
+    for a browser check now say so.
+  * Checking for updates downloads far less data, about 0.4 MB instead of 5 MB
+    when you're up to date.
+  * A channel's subscription settings and the Subscription settings manager use
+    chips you can toggle, keep the notification choices visible while the bell
+    is off, and set the daily video limit with a stepper.
+  * Watch progress of media opened by link, such as videos from other websites,
+    now syncs between your devices along with your history.
+  * The Ocean themes are now Tally Light and Tally Dark, matching the website's
+    new look. Their accent color defaults to red and can be changed to a preset,
+    a custom color, or your system's accent color where available.
+  * Twitch live chat uses less CPU in busy channels.
+  * With the Local API, Up Next now shows when a video is a collaboration
+    between several channels. Middle-clicking a collaboration's channel names
+    now lists the collaborators instead of doing nothing.
+  * You can now set the height of vertical tabs in Appearance settings.
+  * The new Video descriptions setting in Distraction Free settings and Quick
+    Settings hides descriptions, keeps them collapsed, or opens them expanded.
 
   [ Fixed bugs ]
-  * Dropdown menus, tooltips, and color pickers in the settings window now open
-    next to their button in Firefox instead of off to the side.
-  * Captions keep one size at font sizes other than 100%, instead of growing
-    word by word and spilling past their background.
-  * Video lengths past 24 hours now include days, such as 1:01:01:01, matching
-    the player.
-  * The tab bar now scrolls to the active tab when the app opens, when you
-    switch tabs with the keyboard, and when you open a new tab, so the active
-    tab stays visible.
-  * Tooltips now stay where they open instead of following the pointer, and
-    appear centered below buttons and navigation items.
-  * The reminder button on upcoming videos is filled with the accent color again
-    while a reminder is set, so it's easy to tell on from off.
-  * The audio track menu no longer resets while a video plays, so dragging its
-    scrollbar keeps scrolling.
-  * Menus no longer end with an empty separator line, for example the More menu
-    of a YouTube playlist.
-  * The player menu in the Customize interface preview now looks like the real
-    one, with centered tiles, and shows a list when the grid layout is turned
-    off.
-  * Channel About pages now show links whose address leaves out https://.
-  * The default playback speed is now rounded to two decimal places, so changing
-    the speed step no longer leaves values such as 1.1500000000000001.
-  * When using Invidious, the arrow keys now reach the About tab on channel
-    pages.
+  * The App font list opens right away instead of freezing for several seconds
+    when many fonts are installed.
+  * When playback drops frames, automatic quality now steps down to a lower
+    resolution of the same codec instead of switching to a codec that is harder
+    to decode, such as AV1.
+  * Captions grow and shrink with the player, so they cover the same share of
+    the video in a window, in fullscreen, and in the mini player.
+  * Older completed, queued, and paused downloads no longer disappear from
+    Downloads after a restart, and a download whose files can't all be removed
+    stays listed with an error message.
+  * Downloaded videos now start playing within a few seconds when YouTube can't
+    be reached, even while the rest of the internet works. Their details fill in
+    once YouTube responds again.
+  * A missing or wrong external player now shows a message that it couldn't be
+    started instead of crashing OpenTubeX with an error dialog.
+  * Failed or incomplete comment loads now offer a retry instead of reporting no
+    comments or repeatedly retrying. The phone comments panel no longer
+    duplicates its refresh and sort controls.
+  * Invidious instances with special characters such as @, spaces, or % in the
+    username or password of their URL now sign in correctly.
+  * Buttons, selected controls, and accent-colored highlights are now easier to
+    read with light main and secondary colors, such as Light Blue, Pink, and
+    Green.
+  * The app no longer crashes when you press a menu shortcut, such as Ctrl+, to
+    open the settings, after watching a video.
+  * When Start Videos Automatically is off, the next playlist or recommended
+    video now starts after the countdown or Play Now, while videos you open
+    yourself stay paused. Looping a playlist with one video now replays it every
+    time.
+  * Videos with captions in your preferred caption language now show those
+    captions instead of the auto-translation you last picked in the player.
+  * Videos and Shorts no longer take minutes to open while YouTube rate-limits
+    your connection, and other requests no longer stall behind one that cannot
+    succeed.
+  * Setting Reduced Motion to Force off now brings back every animation when
+    your system asks for reduced motion, and Force on stops the remaining tab,
+    sheet and gesture animations.
+  * RSS feeds that loaded before no longer reload after a restart when Fetch
+    Feed on Startup is off, and show their saved items instead.
+  * A failed search history import no longer erases your existing search
+    history.
+  * Videos keep loading at their selected quality on slow or high-latency
+    connections, instead of dropping to 360p and reloading over and over.
+  * Background subscription refresh no longer reports errors for channels
+    without Shorts, live streams, or posts, or mistakes their regular uploads
+    for Shorts or live streams.
 
- -- OpenTubeX contributors <info@opentubex.org>  Mon, 02 Nov 2026 02:50:16 +0000
+ -- OpenTubeX contributors <info@opentubex.org>  Fri, 06 Nov 2026 18:37:02 +0000
