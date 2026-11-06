@@ -1,6 +1,6 @@
 pkgbase = codenomad-bin
-	pkgdesc = A fast, multi-instance workspace for running OpenCode sessions
-	pkgver = 0.20.1
+	pkgdesc = A fast, multi-instance workspace for running OpenCode sessions (Electron build)
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/NeuralNomadsAI/CodeNomad
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = codenomad-bin
 	depends = dbus
 	depends = expat
 	depends = gcc-libs
-	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libcups
-	depends = libdrm
+	depends = libnotify
+	depends = libpulse
+	depends = libsecret
 	depends = libx11
 	depends = libxcb
 	depends = libxcomposite
@@ -31,19 +32,21 @@ pkgbase = codenomad-bin
 	depends = nss
 	depends = pango
 	depends = systemd-libs
-	optdepends = opencode: OpenCode V2 CLI (>= 2.0.7) that drives the coding sessions
+	optdepends = opencode>=2.1.2: OpenCode V2 CLI (2.2.1 recommended) that drives the coding sessions
 	optdepends = git: repository and worktree features
-	provides = codenomad=0.20.1
+	optdepends = xdg-utils: open links with the desktop default handler
+	provides = codenomad=1.0.1
 	conflicts = codenomad
 	conflicts = codenomad-git
 	conflicts = codenomad-tauri-bin
+	noextract = CodeNomad-Electron-linux-x64-1.0.1.deb
 	options = !strip
 	options = !debug
 	source = codenomad.desktop
-	source = codenomad-bin.LICENSE::https://github.com/NeuralNomadsAI/CodeNomad/raw/v0.20.1/LICENSE
-	source = CodeNomad-Electron-linux-x64-0.20.1.tar.gz::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.20.1/CodeNomad-Electron-linux-x64-0.20.1.tar.gz
-	sha256sums = 2157689d529c07fb4c88629e8dee8b028e36a77388359dce30d3ccb1dbcc54d9
-	sha256sums = 998529c4a806714b31c7445bd514ad3627350ae2381c8e070ec922460a9785e6
-	sha256sums = 40fb620c639b09da533b6c6d4b9136ad515a54918f9eb28038301a4c64794d00
+	source = codenomad-bin.LICENSE::https://github.com/NeuralNomadsAI/CodeNomad/raw/v1.0.1/LICENSE
+	source = CodeNomad-Electron-linux-x64-1.0.1.deb::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v1.0.1/CodeNomad-Electron-linux-x64-1.0.1.deb
+	b2sums = 959ec0b4bb861e8e0947a71210cfa7448a34274a794786e2079a51ef20df825b917dc280668036b2ad5d4cb1671d7bb51206f33304bf3f902d39b38ccf5dd992
+	b2sums = 51acd35f605da58fbd46b37113f5a36cf35f17e449ef11744da8aafdebd250b72e8309a29d259607621c4d6ada8711813cf9a219f3185d82431ec7f918490afe
+	b2sums = 9a07c3b6eab6d67185710711047833a6d5dd9a05550cd5c5395b750ca06a3ce26c5f968058744f9ac8752f8749f7fcf97ebaf40cea8ef344b084ab76ab1ee0e1
 
 pkgname = codenomad-bin

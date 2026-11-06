@@ -3,6 +3,7 @@ Name=CodeNomad
 Comment=A fast, multi-instance workspace for running OpenCode sessions
 Exec=codenomad %U
 Icon=codenomad
+Terminal=false
 Type=Application
 Categories=Development;IDE;
 Keywords=opencode;ai;coding;assistant;

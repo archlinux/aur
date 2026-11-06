@@ -3,12 +3,11 @@ pkg/
 *.pkg.tar.zst
 *.pkg.tar.xz
 *.tar.gz
+*.deb
 *.log
 
-# upstream license source (SRCDEST defaults to the build directory)
 codenomad-bin.LICENSE
 
-# nvchecker local version records (not committed)
 oldver.json
 newver.json
 oldver.json~
