@@ -7,13 +7,12 @@
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
 pkgver=26.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
 license=(GPL-2.0-or-later)
-depends=(nlopt libpng libglvnd freetype2 openssl 'calcmysky>=0.3'
-    qt6-charts qt6-multimedia qt6-webengine )
+depends=(nlopt libpng libglvnd freetype2 openssl 'calcmysky>=0.3' qt6-charts qt6-multimedia)
 makedepends=(cmake ninja mesa qt6-tools)
 optdepends=('man-db: manual pages for stellarium')
 conflicts=(${_pkgname})
@@ -50,6 +49,7 @@ build() {
     -DENABLE_XLSX=0 \
     -DENABLE_GPS=0 \
     -DENABLE_MEDIA=0 \
+    -DENABLE_QTWEBENGINE=0 \
     -DUSE_PLUGIN_TELESCOPECONTROL=0 \
     -Wno-author
   cmake --build build --target all -- ${MAKEFLAGS}
