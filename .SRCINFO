@@ -1,6 +1,6 @@
 pkgbase = ionix-system-git
 	pkgdesc = Ionix system files
-	pkgver = r10.a5dfb4d
+	pkgver = r13.7e36998
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionix-iso
 	arch = any
