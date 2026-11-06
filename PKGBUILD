@@ -1,7 +1,7 @@
 # Maintainer: xihale <i@xihale.top>
 # Contributor: xihale <i@xihale.top>
 pkgname=noir-audit-bin
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Desktop Android privacy audit TUI: audits app permissions, reporting endpoints and data flows over adb, with reversible fixes (prebuilt binary)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=('LICENSE::https://raw.githubusercontent.com/Verlintas/NOIR/v'"$pkgver"'/LICENSE')
 sha256sums=('5cff0504757e04b6c4cf1aed536a2618ac0f3df2c8f3365a67fbf12630bad7f4')
 source_x86_64=("$pkgname-$pkgver.zip::https://github.com/Verlintas/NOIR/releases/download/v$pkgver/noir-v$pkgver-Linux-portable.zip")
-sha256sums_x86_64=('8aa7eb5158e23fad5002e998579a7d17a3f103e67bf88f79df08cafd16530484')
+sha256sums_x86_64=('a1e8ccb34ed62477a71753587f000192a5fdb6ecffa8e776582883b0c5bdc050')
 
 package() {
   local _dest="$pkgdir/opt/$pkgname"
