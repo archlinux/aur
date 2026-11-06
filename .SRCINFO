@@ -1,0 +1,39 @@
+pkgbase = gplates-git
+	pkgdesc = plate tectonic reconstructions
+	pkgver = 2.6.0.56.291.ga46c71a01
+	pkgrel = 1
+	url = https://github.com/GPlates/GPlates
+	arch = x86_64
+	license = CC-BY-3.0
+	license = CC-BY-4.0
+	license = GPL-2.0-only
+	makedepends = boost
+	makedepends = cgal
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = boost-libs
+	depends = gdal
+	depends = glew
+	depends = glibc
+	depends = glu
+	depends = gmp
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	depends = mpfr
+	depends = proj
+	depends = python
+	depends = python-numpy
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qwt
+	depends = zlib
+	provides = gplates
+	conflicts = gplates
+	source = git+https://github.com/GPlates/GPlates.git#branch=main
+	source = gplates_2.5.0_geodata.zip::https://zenodo.org/records/14194897/files/gplates_2.5.0_geodata.zip?download=1
+	sha256sums = SKIP
+	sha256sums = 387a912cf560657c7e4b63d9a8d66055e81f215903a64f755ea207d500c8051b
+
+pkgname = gplates-git
