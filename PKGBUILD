@@ -15,8 +15,15 @@
 # sources from distant mirrors. See _HZ_ticks, _tickrate and _tcp_bbr3 below for
 # the reasoning on each.
 #
-# It also runs the BORE scheduler; see _cpusched. pkgrel follows CachyOS's
+# It also runs the mainline EEVDF scheduler; see _cpusched. pkgrel follows CachyOS's
 # numbering for a patch-only rebuild - see the note there.
+#
+# It also carries one local patch, kbuild-speedup.patch: a backport to 7.3 of the Linux
+# 7.4 build-speed work (kallsyms, mksysmap, Kconfig probe caching, modpost, objtool and
+# batched module finalisation). It touches the build scripts and objtool, and how module
+# metadata and symbol tables are emitted (include/linux/module.h, vermagic.h,
+# vmlinux.lds.h), not scheduler or driver code. The header of the patch lists its 33
+# commits and where each comes from. It is added for the 7.3 series only.
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null or choose proper variable to enable them
@@ -40,14 +47,13 @@
 # 'eevdf' - select 'EEVDF Scheduler'
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
-# Build machine: bore rather than upstream's cachyos (plain EEVDF). The 32
-# threads sit saturated by a build for hours while the desktop stays in use, and
-# BORE's burst penalty keeps interactive tasks ahead of the compile jobs. It was
-# held back while the XFS crash was being chased, to keep the source stock; that
-# investigation is finished. It adds one fetched patch (sched/0001-bore-cachy.patch).
-# scripts/check-cachyos-drift.sh tracks its name but cannot tell whether it still
-# applies to a new tag; that shows up as a failed prepare().
-: "${_cpusched:=bore}"
+# Build machine: eevdf, the mainline scheduler, with no scheduler patch to carry.
+# BORE was the default, but its CachyOS patch lags the stable tags: against 7.3.1 it
+# left an unguarded sysctl_sched_base_slice use at fair.c:1175 and prepare() built a
+# kernel that did not compile. sched_ext is enabled (SCHED_CLASS_EXT=y), so scx_lavd
+# or scx_bpfland from the scx-scheds package can replace EEVDF at runtime without a
+# rebuild. _cpusched=bore still works: its patch and checksum are added only then.
+: "${_cpusched:=eevdf}"
 
 ### Tweak kernel options prior to a build via nconfig
 : "${_makenconfig:=no}"
@@ -133,18 +139,20 @@
 # https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-configuring_transparent_huge_pages
 : "${_hugepage:=always}"
 
-# CPU compiler optimizations - Defaults to native if left empty
-# - "native" (use compiler autodetection)
+# CPU compiler optimizations - Detected when left empty
+# - "" (detect the AMD CPU doing the build, e.g. znver5, and compile for it)
+# - "native" (use compiler autodetection, evaluated on whichever host compiles)
 # - "zen4" (Use znver4 compiler optimizations)
-# - "generic" (kernel's default - to share the package between machines with different CPU µarch as long as they are x86-64)
+# - "generic_v1" to "generic_v4" (x86-64 levels, to share the package between machines with different CPU µarch)
 #
-# Left empty on purpose, which enables CONFIG_X86_NATIVE_CPU and compiles for
-# whichever CPU ran the build. That is only safe because every machine builds
-# this package itself from the AUR - the fleet is not uniform (Zen 5 and Zen 4),
-# so a binary built on one and installed on the other could execute an
-# instruction the target lacks. INVARIANT: do not ship a built package between
-# machines. If that ever changes, pin this to "zen4", which the whole fleet
-# runs natively and which costs the newer host well under a percent.
+# Left empty on purpose: the build host's CPU is read from /proc/cpuinfo and the
+# compiler, and passed as an explicit -march, so a distributed build compiles for the
+# machine that will run the kernel and not for the helper that happens to compile it.
+# The build refuses a non-AMD host. Only Zen 4 and newer are detected, since the
+# source has no option to carry older ones; those fall back to x86-64-v3. The package
+# is therefore tied to the CPU that built it. INVARIANT: do not ship a built package
+# between machines with different CPUs. If that ever changes, set "zen4", which the
+# whole fleet runs natively.
 : "${_processor_opt:=}"
 
 # Clang LTO mode, only available with the "llvm" compiler - options are "none", "full" or "thin".
@@ -290,7 +298,7 @@ _tagrel=1
 # 7.3.0-2 -> 7.3.0-3). It is also kept at least one above the previous build at
 # the same kernel version, so a rebuild always installs as a new version
 # instead of reinstalling over the running kernel's module tree.
-pkgrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -347,9 +355,10 @@ source=(
     # Its fix, args->total in xfs_parent.c, landed upstream between 7.2.6 and
     # 7.2.7. The carried patches can be read back from this file's git history.
     #
-    # Apart from the BORE patch added by _cpusched below, the source is STOCK +
-    # DWARF debuginfo, so a crash on it differs from the distro kernel only by
-    # the debug build and the scheduler.
+    # Apart from the BORE patch added by _cpusched below and the kbuild speedup
+    # backport added in the LLVM block, the source is STOCK + DWARF debuginfo, so
+    # a crash on it differs from the distro kernel only by the debug build, the
+    # scheduler and that backport.
 )
 validpgpkeys=(
   E18447AC260021D31F3FF6C4C8A2A4774B8B63C4  # Eric Naim <dnaim@cachyos.org>
@@ -360,6 +369,16 @@ validpgpkeys=(
 if _is_lto_kernel; then
     makedepends+=(clang llvm lld)
     source+=("dkms-clang-${_major}.patch::${_patchsource}/misc/dkms-clang.patch")
+    # Build-speed backport of the 7.4 Kbuild work; its header lists the 33 commits. It is
+    # local to this package, so nothing fetches it and _purge_fetched_patches leaves it
+    # alone. It sits after dkms-clang because both edit scripts/Makefile.warn and the
+    # patch is made against the file as dkms-clang leaves it, and its b2sums entry directly
+    # follows dkms-clang's. 7.4 already carries most of it, so it applies to the 7.3 series
+    # only. Re-check that it applies on every 7.3.x bump: a hunk that no longer applies
+    # fails prepare().
+    if [ "$_major" = "7.3" ]; then
+        source+=("kbuild-speedup.patch")
+    fi
     BUILD_FLAGS=(
         CC=clang
         LD=ld.lld
@@ -499,18 +518,35 @@ _dist_probe() {
     echo "$servers $cpus"
 }
 
-# Record whether this build distributes, and pin the CPU target when it does:
-# -march=native is evaluated on whichever host compiles, and zen4 is the fleet floor.
+# The compiler's name for the AMD CPU this build is for, such as znver5. The kernel
+# source has no Kconfig choice for the newest Zen parts, so the name is passed to the
+# compiler explicitly. Unlike -march=native, which is evaluated on whichever host
+# compiles, an explicit name gives every distributed builder the same target.
+# Refuses a non-AMD host, since this kernel is meant to be built for AMD CPUs only.
+_amd_march() {
+    local vendor name
+    vendor="$(awk -F': *' '/^vendor_id/ { print $2; exit }' "${_cpuinfo:-/proc/cpuinfo}" 2>/dev/null)" || true
+    if [ "$vendor" != AuthenticAMD ]; then
+        error "this kernel is built for AMD CPUs only, but vendor_id is '${vendor:-unknown}'. Set _processor_opt to generic_v3 (or native) to build it anyway."
+        return 1
+    fi
+    name="$(clang -march=native -### -x c /dev/null 2>&1 | sed -n 's/.*"-target-cpu" "\([^"]*\)".*/\1/p' | head -n1)" || true
+    case "$name" in
+        znver[0-9]*) echo "$name" ;;
+        *) error "clang reported '${name:-nothing}' for -march=native, not a Zen target; set _processor_opt explicitly"
+           return 1 ;;
+    esac
+}
+
+# Record whether this build distributes. The CPU target is not pinned for it: the
+# default is detected by _amd_march and passed explicitly, so it is the same on every
+# builder.
 _dist_decide() {
     local servers cpus
     read -r servers cpus <<< "$(_dist_probe)"
     mkdir -p "$srcdir"
     if [ "${servers:-0}" -ge 1 ]; then
         echo "dist $servers $cpus" > "$srcdir/.dist-decision"
-        if [ -z "$_processor_opt" ]; then
-            _processor_opt=zen4
-            msg2 "Distributed build: pinning _processor_opt=zen4 (pc2 is Zen 4 and -march=native is evaluated on whichever host compiles; zen4 is the fleet floor)"
-        fi
     else
         echo "local 0 0" > "$srcdir/.dist-decision"
     fi
@@ -520,15 +556,23 @@ _dist_decide() {
 # with servers now visible means the config was not pinned for distribution, so
 # fall back to ccache rather than ship non-pinned objects to other hosts.
 _build_plan() {
-    local mode=local servers=0 cpus=0 psrv=0 pcpus=0 i
+    local mode=local servers=0 cpus=0 psrv=0 pcpus=0 march i
     local -a kept=()
     if [ -f "$srcdir/.dist-decision" ]; then
         read -r mode servers cpus < "$srcdir/.dist-decision" || true
     fi
-    if [ "$mode" = local ] && [ "${_launcher_effective:-}" = sccache ]; then
+    # The CPU target prepare() detected, passed to the compiler as an explicit -march
+    # on top of the MZEN4 flag, which the later option overrides.
+    if [ -s "$srcdir/.march" ]; then
+        read -r march < "$srcdir/.march" || true
+        BUILD_FLAGS+=("KCFLAGS=-march=$march" "KAFLAGS=-march=$march")
+    fi
+    # Only a -march=native config is host specific; a recorded explicit target is safe
+    # to distribute even when prepare() saw no servers.
+    if [ "$mode" = local ] && [ "${_launcher_effective:-}" = sccache ] && [ ! -s "$srcdir/.march" ]; then
         read -r psrv pcpus <<< "$(_dist_probe)"
         if [ "${psrv:-0}" -ge 1 ]; then
-            warning "Scheduler now reports $psrv server(s) but prepare() decided local (no zen4 pin); building with ccache instead"
+            warning "Scheduler now reports $psrv server(s) but prepare() decided local with a host-specific CPU target; building with ccache instead"
             PATH="/usr/lib/ccache/bin:$PATH"
             for i in "${!BUILD_FLAGS[@]}"; do
                 case "${BUILD_FLAGS[$i]}" in
@@ -579,6 +623,7 @@ prepare() {
     cp ../config .config
 
     ### Select CPU optimization
+    rm -f "$srcdir/.march"
     if [ -n "$_processor_opt" ]; then
         MARCH="${_processor_opt^^}"
 
@@ -589,7 +634,21 @@ prepare() {
             NATIVE) scripts/config -d GENERIC_CPU -d MZEN4 -e X86_NATIVE_CPU;;
         esac
     else
-        scripts/config -d GENERIC_CPU -d MZEN4 -e X86_NATIVE_CPU
+        # No choice made: build for the CPU doing the build, named explicitly so a
+        # distributed build compiles for it too. MZEN4 is only the carrier that adds
+        # the Zen options; build() appends the detected -march, which overrides it.
+        march="$(_amd_march)" || _die "cannot detect the CPU target"
+        case "$march" in
+            znver[4-9] | znver[1-9][0-9])
+                scripts/config -d GENERIC_CPU -e MZEN4 -d X86_NATIVE_CPU
+                echo "$march" > "$srcdir/.march"
+                echo "Building for $march (detected)..." ;;
+            *)
+                # The source has no carrier for Zen 1 to 3, so use the closest generic level.
+                echo "Detected $march, older than the MZEN4 carrier; using x86-64-v3..."
+                scripts/config -e GENERIC_CPU -d MZEN4 -d X86_NATIVE_CPU --set-val X86_64_VERSION 3
+                rm -f "$srcdir/.march" ;;
+        esac
     fi
 
     ### Selecting CachyOS config
@@ -692,6 +751,20 @@ prepare() {
     # `make config` below resolves it.
     echo "Sizing NR_CPUS for this fleet rather than MAXSMP..."
     scripts/config -d MAXSMP --set-val NR_CPUS 64
+
+    ### Build without module signing
+    # One person uses this kernel on a machine with Secure Boot off, lockdown off and
+    # MODULE_SIG_FORCE unset, so nothing ever enforces a module signature and the
+    # signing key bought no protection. It did cost: the key is generated inside the
+    # build tree on every build, and a compile cache that returned an earlier build's
+    # certs/system_certificates.o left vmlinux trusting a key no module was signed with.
+    # Without signing there is no key and no certificate to go stale. Turn it back on
+    # (and give it a key kept outside the tree) before enabling lockdown or Secure Boot.
+    # MODULE_SIG_FORCE and the key options depend on MODULE_SIG, so the `make config`
+    # below drops them. SECURITY_LOCKDOWN_LSM goes too: security/lockdown/Kconfig has
+    # `select MODULE_SIG if MODULES`, so with it on the `make config` below switches
+    # signing straight back on. Lockdown is not in use here (it reads [none]).
+    scripts/config -d SECURITY_LOCKDOWN_LSM -d MODULE_SIG -d MODULE_SIG_ALL
 
     ### Do not boot with zswap in front of zram
     # Swap here is zram, and zswap ahead of it would compress every page twice
@@ -801,7 +874,12 @@ prepare() {
             echo "Running Steven Rostedt's make localmodconfig now"
             # localmodconfig reads one file, so the always-kept modules are merged in.
             cat "$_modlist" "$srcdir/modules.always" > "$srcdir/modules.merged"
-            make "${BUILD_FLAGS[@]}" LSMOD="$srcdir/modules.merged" localmodconfig
+            # The base config predates some symbols (GPIO_BT8XX, SND_SE6X today), and
+            # localmodconfig ends in `conf --oldconfig`, which asks about every new symbol
+            # on a terminal. A build run from one (pikaur, makepkg in a shell) stops on
+            # the first prompt; a detached build only got through because its closed stdin
+            # made conf take each default. Feed empty answers so both behave the same.
+            yes "" | make "${BUILD_FLAGS[@]}" LSMOD="$srcdir/modules.merged" localmodconfig
         else
             _die "No module list found at $_modlist"
         fi
@@ -830,20 +908,29 @@ prepare() {
 }
 
 _sign_modules() {
-    msg2 "Signing modules in $1"
-    local sign_script="${srcdir}/${_srcname}/scripts/sign-file"
-    local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "${srcdir}/${_srcname}/.config")"
-    if [[ ! "$sign_key" =~ ^/ ]]; then
-        sign_key="${srcdir}/${_srcname}/${sign_key}"
-    fi
-    local sign_cert="${srcdir}/${_srcname}/certs/signing_key.x509"
-    local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "${srcdir}/${_srcname}/.config")"
+    local config="${srcdir}/${_srcname}/.config"
 
     if [ "$_use_llvm_lto" != "none" ]; then
         local strip_bin="llvm-strip"
     else
         local strip_bin="strip"
     fi
+
+    # Stripping invalidates a signature, so signing (when it is on) comes after it.
+    if ! grep -q '^CONFIG_MODULE_SIG=y' "$config"; then
+        msg2 "Stripping modules in $1 (module signing is off)"
+        find "$1" -type f -name '*.ko' -print -exec "${strip_bin}" --strip-debug '{}' \;
+        return
+    fi
+
+    msg2 "Signing modules in $1"
+    local sign_script="${srcdir}/${_srcname}/scripts/sign-file"
+    local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "$config")"
+    if [[ ! "$sign_key" =~ ^/ ]]; then
+        sign_key="${srcdir}/${_srcname}/${sign_key}"
+    fi
+    local sign_cert="${srcdir}/${_srcname}/certs/signing_key.x509"
+    local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "$config")"
 
     find "$1" -type f -name '*.ko' -print \
         -exec "${strip_bin}" --strip-debug '{}' \; \
@@ -1140,6 +1227,18 @@ b2sums=('b744477e1202ae7c63020645fdd923625da6edd2bde61d01d9c7755e6d9628fc3fb00e6
         'SKIP'
         'ec368517f0f5bbe7d61e2e82f5d6e19262d2c1739f3322691c973eb75d17d23db8d10c73c07aa38f419278acc2287f63ba1c09496dda97c77368e4470eb8db81'
         '4103183a51f761fcc79e38dd6c48560a1bc7e7bd952bdaa5c2fbe0bf5e1ed593f896c00cfa2ce031ce720654c2078ecdb37d6c586417c75db7356569f44cb850'
-        '53f20cc88bb417dce11f26be6e09e83c5c071d56ea9300e7a7520814ed0b52c1a56dcd55077228ba1bdf9bd200a53c971cbc1fbd65a7e6cbfa7a1fb8e0e4521b'
+        '754c21da91745e0ee2992e1c1df53f5bd005dcdf076a2f5dce45c26c76f818768fc7123b652b73e7236c4fc3bcf2359bb0ff0d40e0d0b437613619ef5d768fc9'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
-        '04cca5d4811dce379776c124469cb69f5275e7eaa61401da9e23077d0d60d4d06b85b646292b6db4639541d70b4283f732b102c1168d6d29e16f8cccc695e205')
+        '2033d4dcd3bc97aff7fb7d9e4dfa027b9efe1cda646080ab79ebf29d3b6e7ba70e5df246d24add3b44009074be1ff801b17d825e73e74bfc615f79f72a7287ef')
+
+# One entry per source, in source order. The BORE patch is the last source and is
+# fetched only for the bore family, so its sum is appended only then; a scheduler
+# whose patches have no sum here fails makepkg's length check instead of building
+# unchecked. Appended by index, not with `b2sums+=(`: updpkgsums (run by aurgen)
+# treats any line starting `b2sums+=` as the array and deletes it along with the
+# lines after it. It still rewrites the array above to the sums of the current
+# _cpusched, so build with _cpusched=bore only after checking this block survived.
+case "$_cpusched" in
+    bore|rt-bore|hardened)
+        b2sums[${#b2sums[@]}]='04cca5d4811dce379776c124469cb69f5275e7eaa61401da9e23077d0d60d4d06b85b646292b6db4639541d70b4283f732b102c1168d6d29e16f8cccc695e205';;
+esac
