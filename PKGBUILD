@@ -3,7 +3,7 @@
 # Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.20.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
@@ -28,7 +28,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/spesmilo/$pkgname/t
         'electrumx.conf'
         'electrumx.service'
         'electrumx.sysusers')
-sha256sums=('4eb7e87b6f72c87d6f4e7fcc3aeada1401d1fce26550d08aa9608baf05523417'
+sha256sums=('faefbc54d1de2f66542a86ae034efecc99e042f7af756de94d5732601dfbde51'
             'ca05f8e8cf01c5074376df75a6691c1aea74cf278244f86ac838900cad9547fb'
             'ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e'
             '761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1')
@@ -99,5 +99,5 @@ package() {
 
   mv "$pkgdir/usr/bin/electrumx_server" "$pkgdir/usr/bin/electrumx-server"
   mv "$pkgdir/usr/bin/electrumx_rpc" "$pkgdir/usr/bin/electrumx-rpc"
-  mv "$pkgdir/usr/bin/electrumx_compact_history" "$pkgdir/usr/bin/electrumx-compact-history"
+#  mv "$pkgdir/usr/bin/electrumx_compact_history" "$pkgdir/usr/bin/electrumx-compact-history"
 }
