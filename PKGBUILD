@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sysinternalsebpf
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Sysinternals EBPF"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL-2.1-or-later')
 depends=('glibc' 'json-glib' 'libelf' 'zstd')
 makedepends=('clang' 'cmake')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/microsoft/SysinternalsEBPF/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ba4ff8afccba126966366ad809d7975c215eacc40c2e42cc1fd14efc5cd04269')
+sha256sums=('0b7e37c45fa9742088b9cd3ecd56376c4547cfd5dd4b2e6be0245e1bb4a145aa')
 
 
 prepare() {
