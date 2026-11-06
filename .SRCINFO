@@ -1,0 +1,17 @@
+pkgbase = python-unicode-rbnf
+	pkgdesc = A pure Python implementation of ICU's rule-based number format engine
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/rhasspy/unicode-rbnf
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pytest
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-unicode-rbnf-2.4.1::git+https://github.com/rhasspy/unicode-rbnf.git#tag=v2.4.1
+	sha256sums = b3eba9ddec4f69109812c5f0f1fddf1b065f1eeb1c1fcf40f291546db724e625
+
+pkgname = python-unicode-rbnf
