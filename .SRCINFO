@@ -9,7 +9,7 @@ pkgbase = daintree-bin
 	depends = git
 	depends = npm
 	depends = nodejs
-	depends = gh-cli
+	depends = github-cli
 	provides = daintree=0.48.0
 	conflicts = daintree
 	source = daintree-0.48.0.deb::https://updates.daintree.org/releases/daintree_0.48.0_amd64.deb

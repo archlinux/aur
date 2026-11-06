@@ -16,7 +16,7 @@ depends=(
     'git'
     'npm'
     'nodejs'
-    'gh-cli'
+    'github-cli'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://updates.daintree.org/releases/${pkgname%-bin}_${pkgver}_amd64.deb"
