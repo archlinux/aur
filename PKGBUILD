@@ -3,7 +3,7 @@
 # Binary package - downloads prebuilt binary from GitHub releases
 
 pkgname=fresh-editor-bin
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
@@ -15,9 +15,9 @@ source_x86_64=("fresh-editor-${pkgver}-x86_64.tar.xz::https://github.com/sinelaw
 source_aarch64=("fresh-editor-${pkgver}-aarch64.tar.xz::https://github.com/sinelaw/fresh/releases/download/v${pkgver}/fresh-editor-aarch64-unknown-linux-gnu.tar.xz"
                "https://raw.githubusercontent.com/sinelaw/fresh/master/LICENSE")
 
-sha256sums_x86_64=("4112b8b131e02bf4896a09146c4dd7b3383a2332ab554c3638394932ce94baff"
+sha256sums_x86_64=("182787fe491b52a9a145ce25c934c654233b498665f100de44275a1ce98d45da"
                   "SKIP")
-sha256sums_aarch64=("ffb4f056417bc653ddd073921e123491dbe3509e83f3fd55436be372a35e8f84"
+sha256sums_aarch64=("abd13f30a474ad5466f5dfd16e5494fb52be968185b00c7deb0f9e211d43bb00"
                    "SKIP")
 
 depends=("gcc-libs" "glibc")
