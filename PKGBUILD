@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=versitygw
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='S3 object storage server for a filesystem'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 backup=('etc/versitygw.d/example.conf'
         'etc/versitygw.d/example-iam.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2412650615032f002f67fdc83e03e33f36298f8cfeeff9755c3f61c0df0b4fb8')
+sha256sums=('97d35b99ce46c23c56723dbc46526de17b3b23e33b00e8044e9e3f420a3927c4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = versitygw
 	pkgdesc = S3 object storage server for a filesystem
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/versity/versitygw
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = versitygw
 	depends = bash
 	backup = etc/versitygw.d/example.conf
 	backup = etc/versitygw.d/example-iam.conf
-	source = versitygw-1.10.0.tar.gz::https://github.com/versity/versitygw/archive/refs/tags/v1.10.0.tar.gz
-	sha256sums = 2412650615032f002f67fdc83e03e33f36298f8cfeeff9755c3f61c0df0b4fb8
+	source = versitygw-1.11.0.tar.gz::https://github.com/versity/versitygw/archive/refs/tags/v1.11.0.tar.gz
+	sha256sums = 97d35b99ce46c23c56723dbc46526de17b3b23e33b00e8044e9e3f420a3927c4
 
 pkgname = versitygw
