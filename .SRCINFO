@@ -1,6 +1,6 @@
 pkgbase = pdsync
 	pkgdesc = Unofficial Proton Drive sync client with a tray app (third-party, not supported by Proton)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/broroeror/pdsync
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pdsync
 	depends = libsecret
 	depends = glib2
 	depends = systemd
-	source = pdsync-0.1.1.tar.gz::https://github.com/broroeror/pdsync/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = fd8f0f611518ebb3600e4e7ac0ad105a660ceeeadfaa464502e0a8190f8b46fa
+	source = pdsync-0.1.2.tar.gz::https://github.com/broroeror/pdsync/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 120734299ae8cc5e7660752918de98e07a23b2c8ed6f46829729cf04df4d348f
 
 pkgname = pdsync
