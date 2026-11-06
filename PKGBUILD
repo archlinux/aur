@@ -5,7 +5,7 @@
 _perlmod='Plack-Middleware-ReverseProxy'
 _modnamespace=Plack
 pkgname='perl-plack-middleware-reverseproxy'
-pkgver='0.16'
+pkgver='0.17'
 pkgrel=1
 pkgdesc="Plack::Middleware::ReverseProxy - Supports app to run as a reverse proxy backend"
 arch=('any')
@@ -13,8 +13,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'perl-plack' 'perl-yaml' 'perl-test-base')
 url='http://search.cpan.org/~miyagawa/Plack-Middleware-ReverseProxy/'
-source=("https://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('874931d37d07667ba0d0f37903b94511071f4191feb73fa45765da2b8c15a128')
+source=("https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/$_perlmod-$pkgver.tar.gz")
+sha256sums=('f9bdd9c40cc0b79ec583881925032409a926cc2747cbed09b2ff221c3cb64254')
 
 build() {
   cd "$srcdir/Plack-Middleware-ReverseProxy-$pkgver"
