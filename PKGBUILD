@@ -1,5 +1,5 @@
 pkgname=multica-desktop-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills - Desktop GUI"
 arch=(x86_64 aarch64)
@@ -12,8 +12,8 @@ conflicts=("multica-desktop")
 provides=(multica-desktop)
 
 _appimage="multica-desktop-${pkgver}-linux-${arch}.AppImage"
-source=("${_appimage}::https://github.com/multica-ai/multica/releases/download/v0.8.0/multica-desktop-0.8.0-linux-x86_64.AppImage")
-sha256sums=('b241c25245d72fac27f931004eb79755481ec90525e226aa816682ab7d3646a3')
+source=("${_appimage}::https://github.com/multica-ai/multica/releases/download/v0.8.1/multica-desktop-0.8.1-linux-x86_64.AppImage")
+sha256sums=('3f5a0ff13e36277b18f0c41c28e51579b095fa39f58127b73166c247889e0aa3')
 noextract=("${_appimage}")
 
 prepare() {
