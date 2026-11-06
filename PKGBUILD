@@ -7,7 +7,7 @@
 _pkgbase=webhid
 _tag=79a10e6dabc5ac50f0d20696af12f002a05c796f
 pkgname=${_pkgbase}
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc='WebHID implementation for Firefox via a native-messaging bridge and hidraw daemon'
 arch=('x86_64' 'aarch64')
