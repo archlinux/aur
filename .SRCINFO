@@ -1,6 +1,6 @@
 pkgbase = anima-engine
 	pkgdesc = Animated desktop overlays, a Workshop browser, and AI background removal. Builds from source with every feature: about ten to twenty minutes, because the release profile uses fat LTO and one codegen unit.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/swordreforge/linux_animeengine_git
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = anima-engine
 	optdepends = xdg-desktop-portal: file dialogs in the studio
 	optdepends = libsteam_api: Steam presence, if built with the steamworks feature
 	options = !lto
-	source = anima-engine-0.1.1.tar.gz::https://github.com/swordreforge/linux_animeengine_git/archive/v0.1.1.tar.gz
-	sha256sums = 95f0b31ea4c123e1e757951c75240c7adcb3a87745d26f8eebd7a55cddd6f10f
+	source = anima-engine-0.1.2.tar.gz::https://github.com/swordreforge/linux_animeengine_git/archive/v0.1.2.tar.gz
+	sha256sums = d7da229b6b716fd8fc4c354c0f8ea8f5bcb17db172e3be51a50bfa26b08cefb5
 
 pkgname = anima-engine
