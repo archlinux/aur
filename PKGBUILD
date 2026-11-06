@@ -2,7 +2,7 @@
 pkgbase=mosaico
 pkgname=(mosaico mosaicod python-mosaicolabs)
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The data platform for robotics and physical AI.'
 url='https://mosaico.dev/'
 license=('Apache-2.0')
@@ -20,7 +20,7 @@ source=(
     mosaico-sandbox.conf
 )
 b2sums=('18701d43b7473cf7908744c912174540e79162bbbe549e7846b2cea11ccfcae6f40dd0cba3f7b0b94e424a450b25e3fed8fd84328be9d10b23729c4f204fc9bd'
-        'aa570c6338969f62ca53092c884b2ff03a01203163f959ff767cf78931234e6652cb5058d419d18d073c37be79a9a9be0ab6a74680fd665ad728709f3666b0e7'
+        '97b08f65139892c1243aff5cb439fa28226d7be7ce76009244efa0adea8f6e36b956462a29736135d7ad725068585d3de1801c1281cbd81772a4ba6c7574f852'
         'c71f6037b38963cd61f70acd832db0d8d1db25bd70d7674f820eabe59c1b7c400582d9d61c0ac23c2c4d7228a42c7e84ee9b45e08b708fc93418452004a8a5ae'
         'fd9bea9a796a83e5557229ef75875f763662edbfac12663c19fb11502b1670f54d355d29be9a4c498094e1dccff21f7dac11f09af4902c65f2e01208deacf50f'
         '983c11c3fbc2e6f48f7541d7a75bfa79c649003519ca1a3b3d916c90fd42afeb38a666cfba9bfe6d250abee7172af9f8d82f1c262846d517bc187e593efaec04'
@@ -90,13 +90,13 @@ package_python-mosaicolabs() {
         python-typing_extensions
     )
     optdepends=(
-        'python-mcap-protobuf-support: MCAP bridge'
+        'python-mcap-protobuf-support: MCAP bridge and its examples'
+        'python-mujoco: MuJoCo visualization example'
         'python-scikit-learn: scikit-learn base classes in mosaicolabs.ml'
     )
 
-    # TODO: Drop the examples from the wheel
     python -m installer --destdir="$pkgdir" "$pkgbase"/mosaico-sdk-py/dist/*.whl
-    # TODO: Either add the testing module to the wheel or drop the testing command from the wheel
+    # TODO: The next release removes it upstream
     rm "$pkgdir/usr/bin/mosaicolabs.testing"
     install -Dm644 "$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
