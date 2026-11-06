@@ -4,7 +4,7 @@ pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=r13031.4842ee9e6
-pkgrel=4
+pkgrel=5
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'aarch64')
 url="https://opentubex.org"
@@ -55,8 +55,12 @@ build() {
 }
 
 package() {
+  local build_directory=linux-unpacked
+  if [[ $CARCH == aarch64 ]]; then
+    build_directory=linux-arm64-unpacked
+  fi
   install -d "${pkgdir}"/{usr/bin,usr/lib/opentubex-git}
-  cp -R "./$_pkgname/build/linux-unpacked/resources/"{app.asar,app.asar.unpacked} "$pkgdir/usr/lib/$pkgname"
+  cp -R "./$_pkgname/build/$build_directory/resources/"{app.asar,app.asar.unpacked} "$pkgdir/usr/lib/$pkgname"
   install -Dm755 "./opentubex.sh" "$pkgdir/usr/bin/opentubex"
 
   cd $_pkgname
