@@ -1,16 +1,16 @@
 pkgbase = edithere-bin
 	pkgdesc = Screenshot annotation and visual feedback tool (prebuilt binary)
-	pkgver = 0.12.7
+	pkgver = 0.12.8
 	pkgrel = 1
 	url = https://github.com/Inginnng/EditHere
 	arch = x86_64
 	license = PolyForm-Noncommercial-1.0.0
 	depends = glibc
 	options = !strip
-	source = EditHere-linux-x86_64-0.12.7.AppImage::https://github.com/Inginnng/EditHere/releases/download/v0.12.7/EditHere-linux-x86_64.AppImage
+	source = EditHere-linux-x86_64-0.12.8.AppImage::https://github.com/Inginnng/EditHere/releases/download/v0.12.8/EditHere-linux-x86_64.AppImage
 	source = LICENSE
 	source = NOTICE
-	sha256sums = 24f85dc5e16d62cb84065a4ef76d3c7af48c46c6c41ba8f376e4c1d542d00e1b
+	sha256sums = ff8f702d1783b76fb9ca1a0a8c4e74f03bb4b663fee6f81e7d4f3bd1bd9eaf74
 	sha256sums = ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8
 	sha256sums = 8d29c679a40ae2af03703948916a1284da69dd13d15e5561c0a496c2c6ff6367
 
