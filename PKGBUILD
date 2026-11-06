@@ -71,7 +71,7 @@ build() {
     export CXXFLAGS="${CXXFLAGS} -w"
 
     # Build
-    colcon build --metas $srcdir/colcon.meta --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -Wno-dev
+    colcon build --metas $srcdir/colcon.meta --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -Wno-author
 
     # Replace all references to srcdir in colcon shell files
      printf "Replace references to srcdir in colcon shell files\n"
