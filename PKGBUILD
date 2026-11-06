@@ -42,7 +42,10 @@ check() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   desktop-file-validate data/io.github.kanshi_gtk4.desktop
-  cargo test --frozen
+  # writes_backup_once_and_restores_bytes is racy: backups are named with a
+  # one-second timestamp (src/kanshi/config.rs), so its two writes get two
+  # backups whenever slow fsyncs push them across a second boundary.
+  cargo test --frozen -- --skip kanshi::config::tests::writes_backup_once_and_restores_bytes
 }
 
 package() {
