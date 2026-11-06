@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index 6e84de2..5e1a7db 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,14 +18,18 @@ install:
+ 		exit 1; \
+ 	fi
+ 	@if [ -f libcvec.a ]; then \
+-		cp libcvec.a /usr/lib; \
++		mkdir -p $(DESTDIR)$(libdir); \
++		cp libcvec.a $(DESTDIR)$(libdir); \
+ 	fi
+ 	@if [ -f libcvec.so ]; then \
+-		cp libcvec.so /usr/lib; \
++		mkdir -p $(DESTDIR)$(libdir); \
++		cp libcvec.so $(DESTDIR)$(libdir); \
+ 	fi
+-	@cp cvec.h /usr/include
++	@mkdir -p $(DESTDIR)$(includedir)
++	@cp cvec.h $(DESTDIR)$(includedir)
+ 	@if [ -f libcvec.pc ]; then \
+-		cp libcvec.pc /usr/lib/pkgconfig; \
++		mkdir -p $(DESTDIR)$(libdir)/pkgconfig; \
++		cp libcvec.pc $(DESTDIR)$(libdir)/pkgconfig; \
+ 	fi
+ 
+ clean:

@@ -1,0 +1,17 @@
+pkgbase = libcvec-git
+	pkgdesc = Generic C++ vector library for C (bleeding edge)
+	pkgver = r5.c2dcb09
+	pkgrel = 1
+	url = https://tvoygit.ru/vi_is_lonely/libcvec
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	depends = glibc
+	conflicts = libcvec
+	source = git+https://tvoygit.ru/vi_is_lonely/libcvec#branch=main
+	source = makefile-paths.patch
+	sha256sums = SKIP
+	sha256sums = c33b56e20d4277d441b7438032b43601e671ab43be20597ec1fdeec8e439fb04
+
+pkgname = libcvec-git
