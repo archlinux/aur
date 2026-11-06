@@ -4,16 +4,16 @@
 pkgname=mdsh
 pkgdesc='A markdown shell pre-processor'
 # Using latest commit from master until the next release.
-_commit=c78e9090d1450a748d4a21a194d458ee51ad9e7f
-pkgver=0.9.2.r10.g${_commit:0:7}
+_commit=eca79da623dab29ed132b6c4d26a26795c2499c2
+pkgver=0.9.2.r14.g${_commit:0:7}
 pkgrel=1
 url='https://github.com/zimbatm/mdsh'
 arch=(aarch64 x86_64)
 license=('MIT')
 makedepends=('cargo')
 depends=('glibc' 'libgcc')
-source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
-b2sums=('e8a5d7f2913157b780344121833a64ed2a9ac0e6711af9d70c6ab8f31919644f8e300383502a25a2ce9c427e8cf00ad6cfaeee888005f8d3e60e9d73e09434e6')
+source=("${pkgname}-${_commit:0:7}.tar.gz::${url}/archive/${_commit}.tar.gz")
+b2sums=('883aa079cfed8e2a902f65f347731b2e7293331e61924501d5e246aebac3737aca103de04b3279df51de8900be06711e63073b2acecaf681808816c6827d8f30')
 
 prepare() {
   cd "${pkgname}-${_commit}"
