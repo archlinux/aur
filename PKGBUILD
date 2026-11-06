@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-cli-git
-pkgver=0.26.5.r114.g256df9304
+pkgver=0.27.1.r157.g838e29858
 pkgrel=1
 pkgdesc="CLI tool for developing, testing, and using Tree-sitter parsers"
 arch=('i686' 'x86_64')
@@ -20,10 +20,12 @@ prepare() {
   cd "tree-sitter"
 
   if [ ! -f "Cargo.lock" ]; then
-    cargo update \
+    cargo generate-lockfile \
       --manifest-path "crates/cli/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "crates/cli/Cargo.toml"
 }
 
