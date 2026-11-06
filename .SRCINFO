@@ -6,7 +6,7 @@ pkgbase = ziggity
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = zig
+	makedepends = zig=0.16.0
 	depends = git
 	provides = ziggity
 	options = !strip

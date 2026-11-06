@@ -20,7 +20,7 @@ license=('MIT')
 
 provides=("${_appname}")
 
-makedepends=('zig')
+makedepends=('zig=0.16.0')
 depends=('git')
 
 options=('!strip')
