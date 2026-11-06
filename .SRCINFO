@@ -1,0 +1,21 @@
+pkgbase = doriface-bin
+	pkgdesc = Your devices, one terminal. Every machine you own, linked through an end-to-end encrypted mesh: the shells and coding agents on your machines in a browser tab, a phone and a desktop app, through a relay that only sees ciphertext.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://doriterm.com
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = electron45
+	provides = doriface=0.1.2
+	conflicts = doriface
+	source = doriface.js
+	source = doriface.sh
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	source_aarch64 = doriface-0.1.2-aarch64.deb::https://github.com/sisyphuslabs/doriterm/releases/download/v0.1.2/doriface_0.1.2_arm64.deb
+	sha256sums_aarch64 = f13ba36269bb376ec84ae94baaa10b095fb99ac40db4e3c9e2144a7cec8f07c3
+	source_x86_64 = doriface-0.1.2-x86_64.deb::https://github.com/sisyphuslabs/doriterm/releases/download/v0.1.2/doriface_0.1.2_amd64.deb
+	sha256sums_x86_64 = 940cf05d41a5b7aa6b16b16d8c8d2bf5af3cb85466f4cd56dd740eda61b2df05
+
+pkgname = doriface-bin
