@@ -1,7 +1,7 @@
 pkgbase = occtre
 	pkgdesc = A tool for producing and collecting test coverage on assembler level
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/occtre
 	arch = any
 	license = MPL-2.0
