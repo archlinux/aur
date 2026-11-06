@@ -158,7 +158,8 @@ prepare() {
   patch -Np1 -i "$srcdir/sourcepawn-zlib.patch"
   # spcomp's __DATE__ and __TIME__, which every plugin has in its version info (core.inc), from
   # SOURCE_DATE_EPOCH in UTC if it's set, so that plugins build reproducibly
-  # (https://github.com/alliedmodders/sourcepawn/pull/1204)
+  # (https://github.com/alliedmodders/sourcepawn/pull/1204, merged for SourcePawn 1.13 as
+  # alliedmodders/sourcepawn@36252599)
   patch -Np1 -i "$srcdir/sourcepawn-source-date-epoch.patch"
   # spshell and the verifier, which include the VM's environment.h, with the VM's SP_HAS_JIT, so
   # that its Environment class is the same in them as in the VM library they link (GCC's LTO
