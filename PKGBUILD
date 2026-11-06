@@ -2,7 +2,7 @@
 
 pkgname=bao
 pkgver=0.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
 url="https://github.com/oconnor663/bao"
@@ -17,10 +17,12 @@ prepare() {
   cd "$pkgname-$pkgver"
 
   if [ ! -f "bao_bin/Cargo.lock" ]; then
-    cargo update \
+    cargo generate-lockfile \
       --manifest-path "bao_bin/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "bao_bin/Cargo.toml"
 }
 
