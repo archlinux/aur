@@ -1,7 +1,7 @@
 # Maintainer: Marcel Krause <feuerwinter@gmail.com>
 
 pkgname=eve-wrench-git
-pkgver=0.6.0.r0.g2de3d80
+pkgver=0.8.0.r2.gaa3e2fc
 pkgrel=1
 pkgdesc='EVE Online settings manager - backup, restore, and sync settings (development version)'
 arch=('x86_64')
@@ -55,6 +55,7 @@ package() {
   cd eve-wrench-app
 
   install -Dm755 target/release/eve-wrench "${pkgdir}/usr/bin/eve-wrench"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 packaging/linux/eve-wrench.desktop \
     "${pkgdir}/usr/share/applications/eve-wrench.desktop"
   install -Dm644 assets/icons/32x32.png \
