@@ -2,7 +2,7 @@
 # Contributor: Edmund Lodewijks <echo "==gCt92YuwWah1WYlR3byBHQ4VnbpxGajJXY" | rev | base64 -d>
 
 pkgname=oniux
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Isolate applications over Tor using Linux namespaces'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(cargo git)
 source=(git+$url.git#tag=v$pkgver?signed)
 validpgpkeys=('772628464C6E8F56DBB5ACEC4CBE96203A1A78A7'  # Clara Engler <cve@cve.cx>
               '1C1BC007A9F607AA8152C040BEA7B180B1491921') # Alexander Færøy <ahf@0x90.dk>
-b2sums=('b9bc7f2ec5d4450ef155caca6f67686840ab6ffb94d63a55faf69e2333b0ee7ae88235e5e1bc579cd885b9e7d9cb561e7cbc2116c2c79e2070967f497a41d8ad')
+b2sums=('f7ef85853b60e8903ab27c869b4ef3509971c433ee72393ae05fbccd84865aa2894ebd172e47df1c43ade2b5e73bbacd8dc68cde3e88f26923ef0e5415747279')
 
 prepare() {
     cd oniux
