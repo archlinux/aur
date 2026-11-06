@@ -60,48 +60,6 @@ index f4af791e..c51ac82c 100644
  
  if(OS_MACOS OR OS_WINDOWS)
    set(OPENSSL_USE_STATIC_LIBS
-diff --git a/plugins/midi/CMakeLists.txt b/plugins/midi/CMakeLists.txt
-index 1d27eae6..bf0b4c60 100644
---- a/plugins/midi/CMakeLists.txt
-+++ b/plugins/midi/CMakeLists.txt
-@@ -3,6 +3,14 @@ project(advanced-scene-switcher-midi)
- 
- # --- Check libremidi requirements ---
- 
-+option(ADVSS_SYSTEM_LIBREMIDI "Use the system libremidi" ON)
-+if(ADVSS_SYSTEM_LIBREMIDI)
-+  find_package(libremidi CONFIG REQUIRED)
-+  find_package(PkgConfig REQUIRED)
-+  pkg_check_modules(PIPEWIRE REQUIRED IMPORTED_TARGET libpipewire-0.3)
-+  find_path(READERWRITERQUEUE_INCLUDE_DIR readerwriterqueue.h PATH_SUFFIXES readerwriterqueue REQUIRED)
-+  add_library(${PROJECT_NAME} MODULE)
-+else()
- get_target_property(ADVSS_SOURCE_DIR advanced-scene-switcher-lib SOURCE_DIR)
- set(LIBREMIDI_DIR "${ADVSS_SOURCE_DIR}/deps/libremidi")
- 
-@@ -45,6 +53,8 @@ else()
-   endif()
- endif()
- 
-+endif()
-+
- target_sources(
-   ${PROJECT_NAME}
-   PRIVATE macro-condition-midi.cpp macro-condition-midi.hpp
-@@ -53,6 +63,11 @@ target_sources(
- 
- setup_advss_plugin(${PROJECT_NAME})
- set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
--target_include_directories(${PROJECT_NAME} PRIVATE "${LIBREMIDI_DIR}/include")
--target_link_libraries(${PROJECT_NAME} PRIVATE libremidi)
-+if(ADVSS_SYSTEM_LIBREMIDI)
-+  target_include_directories(${PROJECT_NAME} PRIVATE "${READERWRITERQUEUE_INCLUDE_DIR}")
-+  target_link_libraries(${PROJECT_NAME} PRIVATE libremidi PkgConfig::PIPEWIRE)
-+else()
-+  target_include_directories(${PROJECT_NAME} PRIVATE "${LIBREMIDI_DIR}/include")
-+  target_link_libraries(${PROJECT_NAME} PRIVATE libremidi)
-+endif()
- install_advss_plugin(${PROJECT_NAME})
 diff --git a/plugins/speech/CMakeLists.txt b/plugins/speech/CMakeLists.txt
 index 0d56947a..b13f7c58 100644
 --- a/plugins/speech/CMakeLists.txt
@@ -292,3 +250,17 @@ index 2ad6297a..bc320f13 100644
  # --- Check cascade classifier availability ---
  # CascadeClassifier was moved to the xobjdetect contrib module in OpenCV 5
  if(OpenCV_VERSION_MAJOR LESS 5
+diff --git a/plugins/midi/CMakeLists.txt b/plugins/midi/CMakeLists.txt
+index 1d27eae6..de2b391f 100644
+--- a/plugins/midi/CMakeLists.txt
++++ b/plugins/midi/CMakeLists.txt
+@@ -11,6 +11,9 @@ if(NOT EXISTS "${LIBREMIDI_DIR}/CMakeLists.txt")
+                   "MIDI support will be disabled!")
+   return()
+ endif()
++set(CMAKE_CXX_STANDARD 20)
++find_package(readerwriterqueue CONFIG REQUIRED)
++add_library(readerwriterqueue ALIAS readerwriterqueue::readerwriterqueue)
+ add_subdirectory("${LIBREMIDI_DIR}" "${LIBREMIDI_DIR}/build" EXCLUDE_FROM_ALL)
+ 
+ # --- End of section ---
