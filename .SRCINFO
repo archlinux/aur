@@ -1,0 +1,26 @@
+pkgbase = lastwave-bin
+	pkgdesc = Desktop music player: YouTube Music, lossless audio, word-synced lyrics and Last.fm scrobbling
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Clash-Projects/LastWave-Desktop
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = patchelf
+	depends = ayatana-ido
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	depends = libkeybinder3
+	depends = libsecret
+	depends = mpv
+	depends = webkit2gtk-4.1
+	provides = lastwave
+	conflicts = lastwave
+	conflicts = lastwave-desktop
+	noextract = lastwave-2.0.1-x86_64.deb
+	options = !strip
+	options = !debug
+	source = lastwave-2.0.1-x86_64.deb::https://github.com/Clash-Projects/LastWave-Desktop/releases/download/v2.0.1/lastwave_2.0.1_amd64.deb
+	sha256sums = 833369c06a343d45e0db0cd3070d665c01ac30f0cc215dfeeae5e4330d382ac4
+
+pkgname = lastwave-bin
