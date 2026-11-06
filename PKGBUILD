@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=numbat-git
-pkgver=1.23.0.r8.g1de35b62
+pkgver=1.24.0.r5.ge8abf32b
 pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('i686' 'x86_64')
@@ -18,11 +18,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "numbat"
 
-  if [ ! -f "numbat-cli/Cargo.lock" ]; then
-    cargo update \
+  if [ ! -f "Cargo.lock" ]; then
+    cargo generate-lockfile \
       --manifest-path "numbat-cli/Cargo.toml"
   fi
   cargo fetch \
+    --locked \
+    --target host-tuple \
     --manifest-path "numbat-cli/Cargo.toml"
 }
 

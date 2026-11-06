@@ -1,6 +1,6 @@
 pkgbase = numbat-git
 	pkgdesc = A statically typed programming language for scientific computations with first class support for physical dimensions and units
-	pkgver = 1.23.0.r8.g1de35b62
+	pkgver = 1.24.0.r5.ge8abf32b
 	pkgrel = 1
 	url = https://numbat.dev/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = numbat-git
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	provides = numbat=1.23.0.r8.g1de35b62
+	provides = numbat=1.24.0.r5.ge8abf32b
 	conflicts = numbat
 	source = git+https://github.com/sharkdp/numbat.git
 	sha256sums = SKIP
