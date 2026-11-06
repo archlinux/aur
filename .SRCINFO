@@ -1,0 +1,25 @@
+pkgbase = loomy-bin
+	pkgdesc = Third-party Linux client for Loomy.第三方Loomy Linux 客户端.Loomy，你的AI工作搭子。不只是听指令的助手，更会主动理解你、帮助你，将你的想法实现并交付。
+	pkgver = 0.9.39
+	pkgrel = 1
+	url = https://loomy.xunfei.cn
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-loomy
+	depends = electron42
+	depends = nodejs
+	provides = loomy=0.9.39
+	conflicts = loomy
+	options = !strip
+	source = LICENSE.html::https://loomy.xunfei.cn/docs/Safe/Loomy-user
+	source = loomy.js
+	source = loomy.sh
+	sha256sums = 681ca4f4ed3c44337a1fe49f5fa012e83b0dea0d39908de0c82eb37e582a7feb
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = 62b13196a0e502ce4aa21ce710dfcfe83440bfaf87cb998ae4449780d4a9c9e6
+	source_aarch64 = loomy-0.9.39-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/Loomy0.9.39/cn.xunfei.loomy.otohime_0.9.39.0_arm64.deb
+	sha256sums_aarch64 = a596546aaa9a41a700d5d78d14984cda46e042cb0a00e556a1e91b517ea33ae5
+	source_x86_64 = loomy-0.9.39-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/Loomy0.9.39/cn.xunfei.loomy.otohime_0.9.39.0_amd64.deb
+	sha256sums_x86_64 = 437632c79b16bad0c7126e96e7729005eae4396ab211593340539627476c098d
+
+pkgname = loomy-bin
