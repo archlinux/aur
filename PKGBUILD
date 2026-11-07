@@ -1,10 +1,10 @@
 # Maintainer: Axel Haustant <noirbizarre@gmail.com>
 #
-# Source package. `0.6.0` and `fde5196dd0afb569079ca0e2ea2b08825ecc29079919cdced52c020470afa055` are substituted by
+# Source package. `0.7.0` and `a924ff21e7bf230a02fd615145bdd365d0cf4703233eb6b5c696d2f722c373d2` are substituted by
 # .github/workflows/aur.yaml from the published release assets.
 
 pkgname=git-wipe
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ conflicts=('git-synchronizer')
 replaces=('git-synchronizer')
 # The project tags without a `v` prefix, so the tag in the URL is `$pkgver`.
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('fde5196dd0afb569079ca0e2ea2b08825ecc29079919cdced52c020470afa055')
+sha256sums=('a924ff21e7bf230a02fd615145bdd365d0cf4703233eb6b5c696d2f722c373d2')
 
 prepare() {
   cd "$pkgname-$pkgver"
