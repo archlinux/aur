@@ -12,7 +12,7 @@ provides=('sub-store-front-end')
 conflicts=('sub-store-front-end' 'sub-store-front-end-git')
 source=("$url/releases/download/$pkgver/dist.zip"
         "$url/raw/$pkgver/LICENSE")
-sha256sums=('b8116df45fe061987c9bce09d15adc8f8e311134e9105be040b94db43ebc433d'
+sha256sums=('16cbb6f30c082312e969fb724b6398f1f649f7c42fee2e6609c920bf4e746abd'
             'SKIP')
 
 package() {

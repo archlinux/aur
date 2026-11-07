@@ -8,9 +8,9 @@ pkgbase = sub-store-front-end-bin
 	provides = sub-store-front-end
 	conflicts = sub-store-front-end
 	conflicts = sub-store-front-end-git
-	
-	
-	sha256sums = SKIP
+	source = https://github.com/sub-store-org/Sub-Store-Front-End/releases/download/2.34.2/dist.zip
+	source = https://github.com/sub-store-org/Sub-Store-Front-End/raw/2.34.2/LICENSE
+	sha256sums = 16cbb6f30c082312e969fb724b6398f1f649f7c42fee2e6609c920bf4e746abd
 	sha256sums = SKIP
 
 pkgname = sub-store-front-end-bin
