@@ -1,0 +1,14 @@
+pkgbase = my-app-time
+	pkgdesc = Your app usage time tracker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/desyatkas/my-app-time
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/desyatkas/my-app-time/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 2725b6b0bd1bfc1888195e4f76107c5acd8256e0a8b7b825044bb872c2cca646
+
+pkgname = my-app-time
