@@ -1,6 +1,6 @@
 pkgbase = ccstatusline
 	pkgdesc = Highly customizable status line formatter for Claude Code CLI with Powerline support
-	pkgver = 2.2.33
+	pkgver = 2.2.34
 	pkgrel = 1
 	url = https://github.com/sirmalloc/ccstatusline
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ccstatusline
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = ccstatusline-2.2.33.tgz
-	source = https://registry.npmjs.org/ccstatusline/-/ccstatusline-2.2.33.tgz
-	sha256sums = a9c7b178f73aa1ac1ee5c49543fb3765e04dac774fd257654c00e60a92adc174
+	noextract = ccstatusline-2.2.34.tgz
+	source = https://registry.npmjs.org/ccstatusline/-/ccstatusline-2.2.34.tgz
+	sha256sums = 4052d19f8703777e0ad354f17a31ba7466b88fcb9bf2c992965aa7e34d5fdf81
 
 pkgname = ccstatusline
