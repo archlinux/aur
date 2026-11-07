@@ -1,0 +1,26 @@
+[Unit]
+Description=Neon Lasertag dedicated server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Environment="LT_SERVER_NAME=Lasertag server"
+EnvironmentFile=-/etc/conf.d/neon-lasertag-server
+ExecStart=/usr/bin/neon-lasertag-server --name ${LT_SERVER_NAME} $LT_SERVER_ARGS
+Restart=on-failure
+DynamicUser=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+
+[Install]
+WantedBy=multi-user.target
