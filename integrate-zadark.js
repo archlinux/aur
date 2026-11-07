@@ -8,7 +8,7 @@ const BASE_DIR = process.cwd();
 const ZALO_VERSION = process.env.ZALO_VERSION;
 
 const zadarkPC = require(
-  path.join(BASE_DIR, 'plugins', 'zadark', 'build', 'pc', 'zadark-pc.js'),
+  path.join(BASE_DIR, 'vendor', 'zadark', 'build', 'pc', 'zadark-pc.js'),
 );
 zadarkPC.copyZaDarkAssets(BASE_DIR);
 zadarkPC.writeIndexFile(BASE_DIR);
@@ -26,7 +26,7 @@ const commit = execSync('git rev-parse --short HEAD', {
 }).trim();
 const zadarkVersion = JSON.parse(
   fs.readFileSync(
-    path.join(BASE_DIR, 'plugins', 'zadark', 'package.json'),
+    path.join(BASE_DIR, 'vendor', 'zadark', 'package.json'),
     'utf8',
   ),
 ).version;

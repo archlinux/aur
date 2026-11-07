@@ -4,7 +4,7 @@ pkgdesc="Zalo for Linux — unofficial port with ZaDark, running on system Elect
 arch=('x86_64' 'aarch64')
 url="https://github.com/doandat943/zalo-for-linux"
 license=('BSD-3-Clause')
-pkgver=26.10.11+26.2.1.r183.285ba91
+pkgver=26.11.10+26.3.r352.555a348
 pkgrel=1
 epoch=2
 provides=('zalo')
@@ -43,12 +43,10 @@ source=(
     "zalo.sh"
     "zalo.desktop"
 )
-sha256sums=(
-    'SKIP'
-    'bda3e47be9cb7a9707bed0e6c1344b32abe67a6c85de6538521223d59fa998de'
+sha256sums=('SKIP'
+    '28722496bda8cfc8f4ca5c310713bf003449b6c7a7f8f72ea1a5e9d42316083e'
     '277f7b54fc65deb7d524537ac73a110c23aab771aabff092d19c114abd305c91'
-    '9c692898a06c7d311e1cd2cbe53a4b0a0e5b46a42c69c8320318dce12d48bb47'
-)
+'9c692898a06c7d311e1cd2cbe53a4b0a0e5b46a42c69c8320318dce12d48bb47')
 
 pkgver() {
     local _src="$srcdir/$pkgname"
@@ -57,9 +55,9 @@ pkgver() {
         return 1
     fi
     cd "$_src"
-    git submodule update --init --recursive plugins/zadark >&2
+    git submodule update --init --recursive >&2
     local _zadark
-    _zadark=$(sed -n 's/.*"version": *"\([^"]*\)".*/\1/p' plugins/zadark/package.json | head -1)
+    _zadark=$(sed -n 's/.*"version": *"\([^"]*\)".*/\1/p' vendor/zadark/package.json | head -1)
     local _zalo
     _zalo=$(git describe --tags --abbrev=0)
     printf '%s+%s.r%s.%s' "$_zalo" "$_zadark" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -75,7 +73,7 @@ build() {
     
     # Zalo version = repo's latest tag, same number as the DMG on zadn.vn
     export ZALO_VERSION="$(git describe --tags --abbrev=0)"
-    export ZADARK_VERSION="$(node -p "require('./plugins/zadark/package.json').version")"
+    export ZADARK_VERSION="$(node -p "require('./vendor/zadark/package.json').version")"
     
     # npm >= 12 blocks git deps (crx in zadark's lockfile) — allow-git=all
     # scripts skipped, so fetch sqlite3's N-API v6 prebuilt manually
@@ -95,14 +93,11 @@ package() {
     local _lib="$pkgdir/usr/lib/zalo"
     
     install -d "$_lib" "$_lib/plugins"
-    cp -a main.js package.json app zcall-native plugins "$_lib/"
-    # ps-list's vendored Windows exes are unused on Linux (reads /proc).
-    find "$_lib/plugins/zadark" -type f \( -name '*.exe' -o -name '*.dylib' \
-    -o -name '*.dll' \) -delete
-    rm -rf "$_lib/plugins/zadark/node_modules"
+    cp -a main.js package.json app plugins "$_lib/"
+    cp -a native/engines/zcall "$_lib/zcall-native"
     find "$_lib" -type d -name __pycache__ -prune -exec rm -rf {} +
     find "$_lib" -type f -name '*.pyc' -delete
-    # gulp in the zadark submodule leaves the o+w bit; packages must not be world-writable
+    # gulp leaves the o+w bit on app/pc-dist/zadark; packages must not be world-writable
     chmod -R o-w "$_lib"
     
     install -Dm755 "$srcdir/zalo.sh" "$pkgdir/usr/bin/zalo"
