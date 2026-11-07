@@ -1,0 +1,23 @@
+pkgbase = dwcode
+	pkgdesc = Keyboard-first Cybercore desktop editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cybercoretech/dwcode
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = qt6-webchannel
+	makedepends = qt6-webengine
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-webchannel
+	depends = qt6-webengine
+	depends = hicolor-icon-theme
+	options = !debug
+	source = dwcode-0.1.0.tar.gz::https://github.com/cybercoretech/dwcode/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a02a631d477f18c67a64b1d8583ab7a0233b23def19d42459983765880891db5
+
+pkgname = dwcode
