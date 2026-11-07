@@ -16,7 +16,11 @@ depends=('gtk3' 'libsecret' 'libayatana-appindicator')
 optdepends=(
   'libpulse: PulseAudio 音频输出'
   'alsa-lib: ALSA 音频输出（PulseAudio 不可用时）'
+  'gtk-layer-shell: Wayland 下的迷你播放器面板'
 )
+# mygo-music-bin packages the same app from upstream's release; the two
+# install the same files, so only one of them fits at a time.
+conflicts=('mygo-music-bin')
 # Podcast captions need no package: the app downloads the sherpa-onnx
 # libraries and the Qwen3-ASR model into its own data directory when the
 # listener asks for captions, and loads them with purego.

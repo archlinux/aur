@@ -15,6 +15,8 @@ pkgbase = mygo-music
 	depends = libayatana-appindicator
 	optdepends = libpulse: PulseAudio 音频输出
 	optdepends = alsa-lib: ALSA 音频输出（PulseAudio 不可用时）
+	optdepends = gtk-layer-shell: Wayland 下的迷你播放器面板
+	conflicts = mygo-music-bin
 	options = !debug
 	source = git+https://github.com/egoist/mygo-music.git#tag=v0.1.21
 	sha256sums = SKIP
