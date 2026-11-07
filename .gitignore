@@ -5,6 +5,9 @@ pkg/
 # Built packages
 *.pkg.tar*
 *.src.tar*
+*.gz
 
 # Build logs
 *.log
+
+remote.sh

@@ -1,6 +1,6 @@
 pkgbase = project-reclaimer-bin
 	pkgdesc = A rewrite of Bungie's Halo Games, including CE, 2, 3, and ODST.
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/ProjectReclaimer/project-reclaimer-releases
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = project-reclaimer-bin
 	optdepends = xdg-utils: Opening invite links
 	provides = project-reclaimer
 	conflicts = project-reclaimer
-	source = https://github.com/ProjectReclaimer/project-reclaimer-releases/releases/download/v0.10.0/project-reclaimer-client-v0.10.0-linux-x86_64.tar.gz
-	sha256sums = d50c34a29a4d9bb7a6400886f4b353a485bff7348a35e5909e349cc8ea7654e7
+	source = https://github.com/ProjectReclaimer/project-reclaimer-releases/releases/download/v0.10.1/project-reclaimer-client-v0.10.1-linux-x86_64.tar.gz
+	sha256sums = 3aaf543d9746a92acf6b1c5e767358749b509f85ac79ff7e2f51a924dc520479
 
 pkgname = project-reclaimer-bin

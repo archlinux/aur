@@ -2,7 +2,7 @@
 
 pkgname=project-reclaimer-bin
 _pkgname=project-reclaimer
-pkgver=0.10.0
+pkgver=0.10.1
 _commit=c0b3fe02fd6c1bf64c7cdfd16eb7013c7352c3b5
 pkgrel=1
 pkgdesc="A rewrite of Bungie's Halo Games, including CE, 2, 3, and ODST."
@@ -37,7 +37,7 @@ conflicts=("$_pkgname")
 source=(
     "${url}/releases/download/v${pkgver}/project-reclaimer-client-v${pkgver}-linux-x86_64.tar.gz"
 )
-sha256sums=('d50c34a29a4d9bb7a6400886f4b353a485bff7348a35e5909e349cc8ea7654e7')
+sha256sums=('3aaf543d9746a92acf6b1c5e767358749b509f85ac79ff7e2f51a924dc520479')
 
 package() {
     local appdir
