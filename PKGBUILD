@@ -2,7 +2,7 @@
 # AUR history recovery: aur-maintainer backs up and removes oversized legacy blobs before publishing.
 pkgname=vega-cli-bin
 _pkgname=vega
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Amazon Vega CLI (KeplerVersionManager) — installs and manages the Vega SDK in \$HOME/vega"
 arch=('x86_64')
@@ -18,9 +18,9 @@ optdepends=(
 provides=('vega' 'kepler' 'vvman')
 conflicts=('vega' 'kepler' 'vvman')
 options=(!strip !debug)
-_sha256=d855d35c7202da1c626499a8ed48c4e75f29cb982a359861af2b7063ea8bf2d4
-source=("vega-1.4.8-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/d8/d855d35c7202da1c626499a8ed48c4e75f29cb982a359861af2b7063ea8bf2d4")
-sha256sums=('d855d35c7202da1c626499a8ed48c4e75f29cb982a359861af2b7063ea8bf2d4')
+_sha256=75a0be4eb62ca49c77d309de0678f0049e898c9689f7d2e468655f22fd7e9f85
+source=("vega-1.4.9-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/75/75a0be4eb62ca49c77d309de0678f0049e898c9689f7d2e468655f22fd7e9f85")
+sha256sums=('75a0be4eb62ca49c77d309de0678f0049e898c9689f7d2e468655f22fd7e9f85')
 install="${pkgname}.install"
 
 package() {
