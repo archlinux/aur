@@ -1,0 +1,20 @@
+pkgbase = evo-cli-bin
+	pkgdesc = CLI and MCP server for Cloud.ru Evolution
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/shatim-ops/evo-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = kubectl: Kubernetes commands
+	optdepends = helm: Helm commands
+	provides = evo-cli
+	provides = cloudru-vm
+	conflicts = evo-cli
+	conflicts = cloudru-vm
+	source_x86_64 = https://github.com/shatim-ops/evo-cli/releases/download/v1.7.2/evo_1.7.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 57f1bba1a849f706454322ec570e33c17768d57ec2d30ff18a7b5628895fdb0c
+	source_aarch64 = https://github.com/shatim-ops/evo-cli/releases/download/v1.7.2/evo_1.7.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = d5af8f53256c1436bdb4d1ca4c3589d67c3c38c6974381ad4cd764e3294a046b
+
+pkgname = evo-cli-bin
