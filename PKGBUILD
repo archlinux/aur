@@ -1,7 +1,7 @@
 # Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
 
 pkgname=moli-bin
-pkgver=1.1.21
+pkgver=1.1.22
 pkgrel=1
 pkgdesc="Best headless browser for AI agents. Lite, Fast, High-Compatibility."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libpng' 'brotli' 'bzip2' 'expat' 'freetype2' 'fontconfig')
 provides=('moli')
 conflicts=('moli' 'moli-git')
 source=("moli-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lexmount/moli/releases/download/v${pkgver}/moli-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('048d9e482b6c618af08b17eb19200ea65b1b2fafd39975e5b9de19a60653ed8f')
+sha256sums=('7e10f9a5b62371da56203b21ac0172bbe3c3626de189fc3742b91b2e2b8cdd39')
 options=(!strip)
 
 package() {
