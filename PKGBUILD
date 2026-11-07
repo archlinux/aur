@@ -6,7 +6,7 @@ pkgname=runyte
 pkgedition=desktop
 alias=runed
 appid="com.${pkgname}.${pkgname^}"
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="An editor-first, agent-ready terminal workspace for software development"
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip' '!debug')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('30d15733b80ff14d34b70f91a24d7e4bd3264ff5fc1d6ed7cef3469a0cfec07e')
+sha256sums=('cd9840c4027227722240a0165e825fa18858c62d344e4f0e3a89d4c19db1c52b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
