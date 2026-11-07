@@ -1,0 +1,3 @@
+[python-pyhidra]
+source = "git"
+git = "https://github.com/dod-cyber-crime-center/pyhidra.git"

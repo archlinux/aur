@@ -1,6 +1,6 @@
 pkgbase = python-pyhidra
 	pkgdesc = Pyhidra is a Python library that provides direct access to the Ghidra API within a native CPython interpreter using jpype.
-	pkgver = 1.0.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/dod-cyber-crime-center/pyhidra
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pyhidra
 	depends = python
 	depends = python-jpype1
 	depends = java-environment>=17
-	source = python-pyhidra-1.0.2.tar.gz::https://github.com/dod-cyber-crime-center/pyhidra/archive/1.0.2.tar.gz
-	sha256sums = 8d72973189ae6b58cc9a9ff1950d632f5dd237e3fdd81c090c7e13582181ce0e
+	source = python-pyhidra-1.3.0.tar.gz::https://github.com/dod-cyber-crime-center/pyhidra/archive/1.3.0.tar.gz
+	sha256sums = d8c59b635a0adc056b67700b640e386d4d56153d59f912dcae52bdfc46fc4f26
 
 pkgname = python-pyhidra
