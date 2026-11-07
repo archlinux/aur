@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta
-	pkgdesc = Beta version of standalone mail and news reader from mozilla.org
-	pkgver = 154.0b2
+	pkgdesc = Standalone mail and news reader from mozilla.org
+	pkgver = 160.0b5
 	pkgrel = 1
 	url = https://www.thunderbird.net/
 	arch = x86_64
@@ -46,28 +46,20 @@ pkgbase = thunderbird-beta
 	depends = libz.so
 	depends = nspr
 	depends = nss
-	provides = thunderbird=154.0b2
+	provides = thunderbird=160.0b5
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/thunderbird/releases/154.0b2/source/thunderbird-154.0b2.source.tar.xz
-	source = https://archive.mozilla.org/pub/thunderbird/releases/154.0b2/source/thunderbird-154.0b2.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/thunderbird/releases/160.0b5/source/thunderbird-160.0b5.source.tar.xz
+	source = https://archive.mozilla.org/pub/thunderbird/releases/160.0b5/source/thunderbird-160.0b5.source.tar.xz.asc
 	source = thunderbird-beta.desktop
 	source = install-dir.patch
 	source = metainfo.patch
-	source = clang22-wasm32-wasip1.patch
-	source = mozpkix-x11-success-macro.patch
-	source = rnp-botan-3.13-rsa-padding.patch
-	source = rust-1.98-targets.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = c620a080414b15e822073e22685c781a8b1789b93d5474aedcadbd8801945d97
 	sha256sums = c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b
 	sha256sums = f6c5bfde2c597fb4461ef2eaf498cc8d5e2ce3b67c651eccb2e361a537721c5e
-	sha256sums = c55bfd97f181bfdaf232ba800fb012bd9be63ffb2d1499dcb925d7126b62a981
-	sha256sums = b230f34b4395d69a2917b7b0c187c74848d6d1fbe51d9ab8342b622e78b2682e
-	sha256sums = cfec91018d5af57b63668897aaf3aa4ce3793da88cc6c561c2304bb5e9b871d7
-	sha256sums = 8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f
 
 pkgname = thunderbird-beta

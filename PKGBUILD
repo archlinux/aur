@@ -3,9 +3,9 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-beta
-pkgver=154.0b2
+pkgver=160.0b5
 pkgrel=1
-pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
+pkgdesc="Standalone mail and news reader from mozilla.org"
 url="https://www.thunderbird.net/"
 arch=('x86_64')
 license=(
@@ -72,10 +72,6 @@ source=(
   $pkgname.desktop
   install-dir.patch
   metainfo.patch
-  clang22-wasm32-wasip1.patch
-  mozpkix-x11-success-macro.patch
-  rnp-botan-3.13-rsa-padding.patch
-  rust-1.98-targets.patch
 )
 sha256sums=(
   'SKIP'
@@ -83,10 +79,6 @@ sha256sums=(
   'c620a080414b15e822073e22685c781a8b1789b93d5474aedcadbd8801945d97'
   'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
   'f6c5bfde2c597fb4461ef2eaf498cc8d5e2ce3b67c651eccb2e361a537721c5e'
-  'c55bfd97f181bfdaf232ba800fb012bd9be63ffb2d1499dcb925d7126b62a981'
-  'b230f34b4395d69a2917b7b0c187c74848d6d1fbe51d9ab8342b622e78b2682e'
-  'cfec91018d5af57b63668897aaf3aa4ce3793da88cc6c561c2304bb5e9b871d7'
-  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
 )
 
 validpgpkeys=(
