@@ -13,6 +13,7 @@ conflicts=('hyprlogin')
 depends=(
   'cairo'
   'glibc'
+  'greetd'
   'hyprgraphics'
   'hyprlang'
   'hyprutils'
@@ -33,7 +34,6 @@ makedepends=(
   'wayland-protocols'
 )
 optdepends=(
-  'greetd: login manager integration'
   'hyprland: greeter compositor session'
 )
 backup=('etc/hyprlogin/hyprlogin.conf')
