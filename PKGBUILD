@@ -1,7 +1,7 @@
 # Maintainer: Nasir <https://github.com/NasirA1991>
 pkgname=honrp-bin
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.4
+pkgrel=1
 pkgdesc='Discord Rich Presence for Heroes of Newerth (Juvio) on Linux/Steam Proton'
 arch=('x86_64')
 url='https://github.com/NasirA1991/honrp'
@@ -14,7 +14,7 @@ source=(
   "LICENSE::https://github.com/NasirA1991/honrp/raw/v${pkgver}/LICENSE"
   "config.example.json::https://github.com/NasirA1991/honrp/raw/v${pkgver}/config.example.json"
 )
-sha256sums=('fd2ff0d1fd2add9933f8f08dcb98e8b0258da2ed227866b2c54279f58ba2f17a' '8fcdd0dd9c0c06c3e94507870588dd73e04b460562ff01b9680e155d84c395a8' '7f2324947e60c9675b50c50682979d7a2c1b5d1583a133d469cbda380f468f1c')
+sha256sums=('081afa0520deb061a0eb19abe56d4fd89a1741d7dc07bfd972122e44181490a3' '8fcdd0dd9c0c06c3e94507870588dd73e04b460562ff01b9680e155d84c395a8' '4d53f8515828dc7c9a6e3e0e85389b1316d5e6e4dd11a13af7d4b25eb6d14c2a')
 
 package() {
   install -Dm755 "$srcdir/honrp-${pkgver}-linux-x86_64" "$pkgdir/usr/bin/honrp"
