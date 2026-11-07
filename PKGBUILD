@@ -7,7 +7,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=3.2.r14.g1820953
+pkgver=3.4.r26.gda36776
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -67,7 +67,10 @@ pkgver() {
 }
 
 build() {
-  arch-meson "$_pkgsrc" build
+  local _meson_opts=(
+    -Dhelp_pdf=disabled # requires fop (packaged) and pdfoutline (as yet unpackaged)
+  )
+  arch-meson "${_meson_opts[@]}" "$_pkgsrc" build
   meson compile -C build
 }
 
