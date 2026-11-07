@@ -1,7 +1,7 @@
 pkgbase=credentialsd
 pkgname=(credentialsd firefox-extension-credentialsd)
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Proposal for a Linux credential management xdg portal D-Bus specification, including webauthn/passkey support"
 arch=(x86_64)
 url=https://github.com/linux-credentials/credentialsd
@@ -11,7 +11,7 @@ makedepends=(rust meson zip desktop-file-utils jq blueprint-compiler clang)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linux-credentials/credentialsd/archive/refs/tags/v$pkgver.tar.gz"
         "0001-do-not-build-in-installing.diff")
-sha256sums=('97d4b3f53ceb3fff42120073a3f1acf903766214381b01fb87d59b256638c717'
+sha256sums=('7dd96e5e97c48418f19b8ce8755c24d06f94405af5be9554bb9e3c2e355a18c5'
             'e482662ce56195b3d7a35bac76a897010489cd47e0bfc937c1135217269e70a0')
 
 prepare() {
@@ -26,11 +26,13 @@ build() {
     arch-meson "$pkgbase-$pkgver" build \
         -Dcargo_home="$srcdir/cargo-home" \
         -Dcargo_locked=true \
-        -Dcargo_offline=true
+        -Dcargo_offline=true \
+        -Dfeature_demo_client=disabled
     meson compile -C build
 }
 package_credentialsd() {
-    depends+=(publicsuffix-list)
+    depends+=(publicsuffix-list xdg-desktop-portal-credentialsd)
+
     meson install -C build --destdir "$pkgdir"
 }
 package_firefox-extension-credentialsd() {
