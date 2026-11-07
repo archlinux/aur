@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat-bin
-pkgver=0.18.6
+pkgver=0.18.7
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=(!strip !debug)
 source_x86_64=("whoisthat-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/whoisthat-linux-amd64.tar.gz")
 source_aarch64=("whoisthat-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/whoisthat-linux-arm64.tar.gz")
 # CI pins the checksums of the published release assets.
-sha256sums_x86_64=('e9bc1e24934ad523815e43415b4526cd9eadb56f981fce742ee4f80c8fd6740e')
-sha256sums_aarch64=('22f39913efd734711c2b8b18bee1a1857407da2e54a8d268af4d8f5e22d004f6')
+sha256sums_x86_64=('4092183db46bdfc335fe04dffc77392061c9ccff0e0b7408c72063a0bba93f61')
+sha256sums_aarch64=('acb6e2e45eade936511422c5511ee7daa6189fadb4ee178c86377fc5167c29bd')
 
 package() {
     local src
@@ -38,4 +38,9 @@ package() {
     install -Dm644 "${srcdir}/whoisthat-url.desktop"     "${pkgdir}/usr/share/applications/whoisthat-url.desktop"
     install -Dm644 "${srcdir}/whoisthat.svg"             "${pkgdir}/usr/share/icons/hicolor/scalable/apps/whoisthat.svg"
     install -Dm644 "${srcdir}/LICENSE"                   "${pkgdir}/usr/share/licenses/whoisthat/LICENSE"
+
+    "${pkgdir}/usr/bin/whoisthat" completions bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/whoisthat"
+    "${pkgdir}/usr/bin/whoisthat" completions zsh  | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_whoisthat"
+    "${pkgdir}/usr/bin/whoisthat" completions fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/whoisthat.fish"
+    "${pkgdir}/usr/bin/whoisthat" man             | install -Dm644 /dev/stdin "${pkgdir}/usr/share/man/man1/whoisthat.1"
 }
