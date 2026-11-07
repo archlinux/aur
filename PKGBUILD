@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sysinternalsebpf-git
-pkgver=1.5.0.0.r1.g5cf432b
+pkgver=2.3.0.r0.ga43369a
 pkgrel=1
 pkgdesc="Sysinternals EBPF"
 arch=('i686' 'x86_64')
 url="https://github.com/microsoft/SysinternalsEBPF"
 license=('LGPL-2.1-or-later')
-depends=('glibc' 'json-glib' 'libelf' 'zstd')
-makedepends=('git' 'clang' 'cmake')
+depends=('glibc' 'glib2' 'json-glib' 'libelf' 'libz.so')
+makedepends=('git' 'clang' 'cmake' 'zlib')
 provides=("sysinternalsebpf=$pkgver")
 conflicts=('sysinternalsebpf')
 source=("git+https://github.com/microsoft/SysinternalsEBPF.git")
@@ -25,7 +25,7 @@ pkgver() {
   cd "SysinternalsEBPF"
 
   _tag=$(git tag -l --sort -creatordate | grep -E '^v?[0-9\.]+$' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
