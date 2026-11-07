@@ -2,8 +2,8 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 _name=aardwolf
 pkgname="python-$_name"
-pkgver=0.2.16
-pkgrel=2
+pkgver=0.2.17
+pkgrel=1
 pkgdesc="Asynchronous RDP/VNC client in Python (headless)"
 url="https://github.com/skelsec/$_name"
 arch=('x86_64')
@@ -33,7 +33,7 @@ makedepends=(
   'git'
 )
 source=("git+$url#tag=$pkgver")
-b2sums=('51d7ac2f131c43a25056d7d4b2204baaa981d7d14395eabf666f4abbaff84eb8e33c400a3c354e5d1962419d18b4a2a817cc3c27fc6a6e4ea21dee92569b8843')
+b2sums=('5f87364a71abb15784d1373279272ddf5bf797b23f7c83600772fb0cb937b40b7e83a9b69ae90417a539f2408d0de0eb0f8b508c48962330ba66bb5e0910c9fd')
 
 prepare() {
   cd "$_name"
