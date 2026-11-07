@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Modern terminal secrets manager compatible with KeePass vaults"
 
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('keepassxc')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('fd7568325766b9de04f0ee9ed1220087ee02714cc286090927ab56c224b338e9')
+sha256sums=('40c048cf9bf0228242652b236d7ec06e2ed25f9bf86b20321e55cd4f1f0142d9')
 
 
 build() {
