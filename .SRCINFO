@@ -1,6 +1,6 @@
 pkgbase = python-sentence-stream
 	pkgdesc = Small sentence splitter for text streams
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/OHF-Voice/sentence-stream
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-sentence-stream
 	makedepends = python-wheel
 	depends = python
 	depends = python-regex
-	source = git+https://github.com/OHF-Voice/sentence-stream.git#tag=v1.3.0
-	sha256sums = 61037186d78e042c4cb27dd0d6142e78e2ef54374435f4b9f0cd559a74bf2339
+	source = git+https://github.com/OHF-Voice/sentence-stream.git#tag=v1.4.0
+	sha256sums = b8d8f19695776d3ed96ee661336611ad30ee9213fbdc8bdcbf9512f583c9a7cc
 
 pkgname = python-sentence-stream
