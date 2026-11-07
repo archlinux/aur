@@ -1,7 +1,7 @@
 # Maintainer: Nick Dowsett <nickd42 AT gmail DOT com>
 
 pkgname=cosmic-applet-arch
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='COSMIC applet to display Arch Linux package status'
 arch=(x86_64)
@@ -23,7 +23,9 @@ makedepends=(
   clang
 )
 source=(git+https://github.com/nick42d/cosmic-applet-arch.git#tag=${pkgname}/v${pkgver})
-b2sums=('32b69cd0af5006b1b96ef6c1c1f3406541971b7a6f53477e97a02ed61e63e125b0624c3f1f56c4e27cb75d88c32379e86965ea656ad51436737a175e427c95f9')
+b2sums=('702aff4f259d984dc81c0a8d7f0b1d8ac5bffff3d23fa32ac2c3337767108638f3b003afeae20403997ce52f045b42be9a4a6427f5547e9bfea8a2fd18a9ecc2')
+# aws-lc-sys dependency fails to build with LTO enabled
+options=('!lto')
 
 prepare() {
   cd cosmic-applet-arch
