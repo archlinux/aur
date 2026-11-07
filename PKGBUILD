@@ -1,7 +1,7 @@
 # Maintainer: fkzys <fkzys at proton dot me>
 
 pkgname=gitpkg
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Minimal package manager for git + make projects"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
 )
 backup=('etc/gitpkg/gitpkg.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5e694420146b38ff7884ce7e5b981f4063c8b2838dc7b8c7e38c0e12bb32b036')
+sha256sums=('965e6006ab42930d643a0f89c013a77718095187bd11728959c27f7175afc9ad')
 
 package() {
     cd "${pkgname}-${pkgver}"
