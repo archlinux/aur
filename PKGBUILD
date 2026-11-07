@@ -1,20 +1,20 @@
 # Maintainer: puddings233 <puddings233 at outlook dot com>
 #
-_build_hash='g1d342ff-179'
+_build_hash='228'
 pkgname='hachimi-world-bin'
-pkgver='1.6.0'
-pkgrel=4
+pkgver='1.6.1'
+pkgrel=1
 pkgdesc='A community-driven open-source meme culture music community, bin version.'
 arch=('x86_64')
 depends=('hicolor-icon-theme')
 url='https://hachimi.world/'
 license=('AGPL-3.0')
 source=(
-  "https://storage.hachimi.world/distribution/linux/hachimi-world-${pkgver}-${pkgrel}-${_build_hash}.deb"
+  "https://storage.hachimi.world/distribution/linux/hachimi-world-${pkgver}-${_build_hash}.deb"
   "hachimi_world.desktop"
 )
 sha256sums=(
-  '14eb2a8069870447ee3371b8c5cbf2ee1400cfb38d15100bcbb534132c9259a5'
+  '6d1cb5bc0f7e7817daffec0ba3ab0644dace6d00f521680b486dd49b52dd9930'
   '6b0f18a105b54197adfd13cc762c93485d538ec2fcc5830cdc1f1b4ee493efc9'
 )
 
