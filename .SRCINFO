@@ -1,0 +1,17 @@
+pkgbase = strm
+	pkgdesc = A command-line interface for strumati
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/strumati/strm-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = gcc
+	depends = nodejs
+	provides = strm-cli
+	conflicts = strm-cli
+	source = git+https://github.com/strumati/strm-cli.git
+	sha256sums = SKIP
+
+pkgname = strm
