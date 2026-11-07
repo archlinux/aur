@@ -1,0 +1,17 @@
+post_install() {
+    echo
+    echo "==> xdg-desktop-portal-tui installed. To use it for file dialogs, add to"
+    echo "    ~/.config/xdg-desktop-portal/portals.conf under [preferred]:"
+    echo
+    echo "        org.freedesktop.impl.portal.FileChooser=tui"
+    echo
+    echo "    then restart the portal: pkill -f /usr/lib/xdg-desktop-portal"
+    echo "    Firefox also needs widget.use-xdg-desktop-portal.file-picker = 1."
+    echo "    Its window's app id is xdg-desktop-portal-tui (for floating rules)."
+    echo
+}
+
+post_upgrade() {
+    echo "==> xdg-desktop-portal-tui upgraded. Restart the portal to use the new version:"
+    echo "    pkill -f /usr/lib/xdg-desktop-portal"
+}
