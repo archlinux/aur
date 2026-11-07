@@ -1,7 +1,7 @@
 pkgbase = rozelynx-bin
 	pkgdesc = RozeLynx Web Browser: Firefox fork with LibreWolf privacy patches and per-tab network interface binding (binary release; Wayland-only builds - build rozelynx-git for X11/XWayland)
-	pkgver = 158.0.3
-	pkgrel = 7
+	pkgver = 158.0.4
+	pkgrel = 1
 	url = https://bytewheel.org/rozelynx
 	install = rozelynx-bin.install
 	arch = x86_64
@@ -47,10 +47,10 @@ pkgbase = rozelynx-bin
 	optdepends = networkmanager: geolocation via nearby Wi-Fi networks (necko-wifi)
 	optdepends = vulkan-icd-loader: Vulkan rendering (hwaccel vulkantest)
 	optdepends = howdy: face recognition for local passkeys (pam-passkeys; password prompt is the fallback)
-	provides = rozelynx=158.0.3
+	provides = rozelynx=158.0.4
 	conflicts = rozelynx
-	source = https://github.com/Bytewheel/RozeLynx/releases/download/v158.0.3/rozelynx-158.0.3-x86_64.tar.xz
-	sha256sums = 4c180c75d0f3e28a2cd5601770d0aec1664a30c92f063f1cb25cc3eec8d38768
+	source = https://github.com/Bytewheel/RozeLynx/releases/download/v158.0.4/rozelynx-158.0.4-x86_64.tar.xz
+	sha256sums = 422dd01710079ab62381f2696e5f0feb702acdf23cdc20c164253d1e198b6cb2
 
 pkgname = rozelynx-bin
 
