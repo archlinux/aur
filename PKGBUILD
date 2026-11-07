@@ -3,7 +3,7 @@
 # Desktop GUI is WPF and Windows-only; on Linux the upstream ships the CLI only.
 # This package builds the CLI from source, framework-dependent on the system .NET runtime.
 pkgname=discimagestudio
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Disc Image Studio CLI: generate and burn visible image-mapped CD, DVD and BD-R discs (Linux CLI, GUI is Windows-only)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('dotnet-sdk>=10')
 options=('!debug')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c5aee0a467e98d2669242c495471e36bad9bb98453db1af574367e5516f6ba77')
+sha256sums=('2449a4852303fdcff2b45b513481213d461014554710f255dcd11cc529e2b657')
 
 build() {
     cd "DiscImageStudio-$pkgver"
