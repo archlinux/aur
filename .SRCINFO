@@ -1,0 +1,21 @@
+pkgbase = subx-bin
+	pkgdesc = All-in-one fansub toolkit: extract/clean/shift/mux/convert/translate subs (prebuilt static binary)
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/andrizan/subx
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = ffmpeg
+	optdepends = mkvtoolnix-cli: sync on a video, extract --fonts/--chapters, native encode
+	optdepends = yt-dlp: fetch subtitles
+	provides = subx
+	conflicts = subx
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/andrizan/subx/releases/download/v1.3.4/subx-1.3.4-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = fa195448c911702f01f9c7d2e896d480e22d5f5834cba4f26555e1d9267b1eae
+	source_aarch64 = https://github.com/andrizan/subx/releases/download/v1.3.4/subx-1.3.4-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 424c8d37186acc2143348cbc6bba572a40de2efec13ac472f0cb08029e00501e
+
+pkgname = subx-bin
