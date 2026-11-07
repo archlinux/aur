@@ -1,6 +1,6 @@
 pkgbase = jdk21-zulu-fx-bin
 	pkgdesc = Azul Zulu JDK 21 with JavaFX
-	pkgver = 21.52.203
+	pkgver = 21.54.109
 	pkgrel = 1
 	url = https://www.azul.com/downloads
 	install = jdk21-zulu-fx-bin.install
@@ -17,9 +17,9 @@ pkgbase = jdk21-zulu-fx-bin
 	provides = java-runtime-headless-openjdk=21
 	provides = java-openjfx=21
 	options = !strip
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-fx-jdk21.0.12.1-linux_x64.tar.gz
-	sha256sums_x86_64 = 6b3f9319490fb265252647676ef74008695b9d3a3725b214c3679cb01dfde87d
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-fx-jdk21.0.12.1-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 2ac2ef0ece6f9c551884b133677d3b8d5396d957aa2d34f26137ad96f451d7df
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.54.109-ca-fx-jdk21.0.13.0.3-linux_x64.tar.gz
+	sha256sums_x86_64 = 8f5168f564c67cef3c4c371e6eb26f480799565659999da9aa3c142f9604e7ac
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.54.109-ca-fx-jdk21.0.13.0.3-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 47d96a157a09ed9bb0d306ffc4b63ef90ee556a542df3f5318ca330b14f171a4
 
 pkgname = jdk21-zulu-fx-bin
