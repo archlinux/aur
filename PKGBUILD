@@ -3,7 +3,7 @@
 # `markview-bin` packages the prebuilt archive from the same release. Both
 # install the same files, so they conflict with each other.
 pkgname=markview
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A fast, native Markdown reader with publication-quality typography.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 	'vulkan-icd-loader'
 	'xdg-desktop-portal'
 )
-makedepends=('cargo' 'rust>=1.92' 'fontconfig')
+makedepends=('cargo' 'rust>=1.96' 'fontconfig')
 optdepends=(
 	'noto-fonts-cjk: CJK glyphs for Chinese, Japanese, and Korean text'
 	'noto-fonts-emoji: colour Emoji glyphs'
@@ -34,7 +34,7 @@ source=(
 	'markview.mime.xml'
 )
 sha256sums=(
-	'afad1d3cd0e8065740e9fa19c12024d523eee89de98ccfb1f35226202e6366d2'
+	'cb23f9892074cd2bdb18d2df7baa48f095578f546e150b6f4f670cc74c63bbfd'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
 
