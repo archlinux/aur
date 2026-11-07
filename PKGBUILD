@@ -2,7 +2,7 @@
 
 pkgname=proton-pass-cli-bin
 pkgver=2.7.0 # datasource=github-releases depName=protonpass/pass-cli
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line interface for managing your Proton Pass vaults, items, and secrets.'
 provides=('proton-pass-cli')
 conflicts=('proton-pass-cli')
@@ -20,5 +20,20 @@ sha256sums_aarch64=('93918d5621593cac88956854d0f52cbc43851dcd9c01840ffe48a88b3be
 sha256sums_x86_64=('fd933e76179a5a33b295853e9c6696e49e584fe2141b1aafc63a3d78c0791cdb')
 
 package() {
-	install -Dm755 "pass-cli-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/pass-cli"
+
+	local target="${pkgdir}/usr/bin/pass-cli"
+
+	install -Dm755 "pass-cli-${CARCH}-${pkgver}" $target
+
+	$target completions bash | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgbase.bash"
+
+	$target completions elvish | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/elvish/lib/$pkgbase.elv"
+
+	$target completions fish | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgbase.fish"
+
+	$target completions zsh | \
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgbase"
 }

@@ -1,7 +1,7 @@
 pkgbase = proton-pass-cli-bin
 	pkgdesc = A command-line interface for managing your Proton Pass vaults, items, and secrets.
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://protonpass.github.io/pass-cli/
 	arch = aarch64
 	arch = x86_64
