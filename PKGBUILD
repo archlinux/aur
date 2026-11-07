@@ -1,7 +1,7 @@
 # Maintainer: ghollisjr <ghollisjr@gmail.com>
 
 pkgname=quickkey
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Hotkey menu of commands whose output goes to the clipboard'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'xorg-xrandr: place the window on the monitor under the pointer'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fc4a0e35336175f9eeaa5b487d5d622459676f8d35a08305a173893b217e6544')
+sha256sums=('bf7ce1350163dfbccc85b3e4c128993d927c598d1432d7e35622c0451306c049')
 
 check() {
   cd "$pkgname-$pkgver"
@@ -38,6 +38,8 @@ package() {
   # last-resort config, so a fresh install has something in the menu; copy it
   # to ~/.config/quickkey/config to make it yours
   install -Dm644 quickkey.conf "$pkgdir/usr/share/$pkgname/quickkey.conf"
+
+  install -Dm644 "$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 
   # glob, not a fixed name: the README was README.md up to v1.0.0 and is
   # README.org after it, and this PKGBUILD has to build either tarball
