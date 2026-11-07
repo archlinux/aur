@@ -1,7 +1,7 @@
 pkgbase = mininet
 	pkgdesc = Emulator for rapid prototyping of Software Defined Networks
 	pkgver = 2.3.1b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mininet/mininet
 	install = mininet.install
 	arch = x86_64

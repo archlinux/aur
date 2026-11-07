@@ -1,10 +1,10 @@
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 # Contributor: Walter Dworak <preparationh67@gmail.com>
 # Contributor: Pedro Martinez-Julia <pedromj@gmail.com>
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=mininet
 pkgver=2.3.1b4
-pkgrel=1
+pkgrel=2
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
          'libcgroup' 'openvswitch' 'psmisc')
