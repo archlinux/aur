@@ -1,9 +1,8 @@
 pkgbase = spin-git
 	pkgdesc = Explicit state logic model checking tool
-	pkgver = 6.5.2.r48.g043fc11
+	pkgver = 6.5.2.r51.ge21106f
 	pkgrel = 1
 	url = https://spinroot.com/
-	arch = i686
 	arch = x86_64
 	license = custom:BSD3
 	depends = glibc

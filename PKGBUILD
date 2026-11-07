@@ -1,13 +1,13 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=spin-git
-pkgver=6.5.2.r48.g043fc11
+pkgver=6.5.2.r51.ge21106f
 pkgrel=1
 pkgdesc='Explicit state logic model checking tool'
 depends=('glibc')
 optdepends=('tcl: ispin graphical interface'
             'ispin: GUI for Spin')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://spinroot.com/'
 license=('custom:BSD3')
 provides=('spin')
