@@ -12,7 +12,7 @@ license=("custom")
 source=("bitrix24_desktop-${pkgver}.deb::https://dl.bitrix24.com/b24/bitrix24_desktop.deb")
 sha256sums=('a6c58013e8023c46762e6bc191375dd161647a3feae0571199f1747eb6d3b0fa')
 
-depends=(gtk3 libxss libappindicator-gtk3 nss alsa-lib libx11 glibc)
+depends=(alsa-lib at-spi2-core ca-certificates cairo curl dbus glib2 gtk3 libcups libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr libxss libxtst mesa nspr nss pango systemd-libs ttf-liberation vulkan-icd-loader wget xdg-utils libappindicator)
 
 package() {
     tar -xf data.tar.xz -C "${pkgdir}"
