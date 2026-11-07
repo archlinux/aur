@@ -1,6 +1,6 @@
 #Maintainer: Risikoch jo.risikoch at gmail[dot]com
 pkgname=shelxle
-pkgver=1.0.1872
+pkgver=1.0.1874
 pkgrel=1
 pkgdesc="Graphical user interface for SHELXL and a viewer for crystal structures. SHELXL is required for refinement but must be obtained separately."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qt6-base')
 optdepends=('shelxl: required for structure refinement calculations (not in Arch repos)')
 makedepends=('qt6-tools')
 source=("shelxle-${pkgver}.tar.bz2::https://sourceforge.net/projects/shelxle/files/code/shelxle-${pkgver}.tar.bz2/download")
-sha256sums=('8e6df1c500dfd90b8958625447fd3de1bfe181e92c2bac67699f9c528648b457')
+sha256sums=('e2ebb99c349afb0e62572ea5aa0b45ced5f4124111f0fa349ead14f9c55614ec')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
