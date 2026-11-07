@@ -5,7 +5,7 @@
 
 pkgname=git-wipe-git
 _pkgname=git-wipe
-pkgver=0.6.0.r1.g5c7a466
+pkgver=0.7.0.r0.g085437e
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees (git)"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # `s/^v//` because the project tags with a `v` prefix, which pkgver forbids.
+  # Strip an optional v prefix defensively; current project tags are unprefixed.
   git describe --long --tags 2>/dev/null |
     sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
