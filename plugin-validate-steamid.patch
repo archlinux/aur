@@ -1,0 +1,72 @@
+diff --git a/game/addons/sourcemod/scripting/sbpp_main.sp b/game/addons/sourcemod/scripting/sbpp_main.sp
+index fb22f95..2c0bb38 100644
+--- a/game/addons/sourcemod/scripting/sbpp_main.sp
++++ b/game/addons/sourcemod/scripting/sbpp_main.sp
+@@ -688,6 +688,15 @@ public Action CommandUnban(int client, int args)
+ 		len = 0;
+ 		Arguments[0] = '\0';
+ 	}
++
++	bool isSteamId = strncmp(arg, "STEAM_", 6) == 0;
++	char steam3[MAX_AUTHID_LENGTH];
++	if (isSteamId && !Steam2ToSteam3(arg, steam3, sizeof(steam3)))
++	{
++		ReplyToCommand(client, "%sInvalid SteamID %s, expected STEAM_[01]:[01]:Z", Prefix, arg);
++		return Plugin_Handled;
++	}
++
+ 	if (!client)
+ 	{
+ 		// setup dummy adminAuth and adminIp for server
+@@ -703,12 +712,16 @@ public Action CommandUnban(int client, int args)
+ 	dataPack.WriteString(arg); // Steamid - IP
+ 	dataPack.WriteString(adminAuth); // Admin SteamID
+ 
+-	char query[256], argEscaped[sizeof(arg) * 2 + 1];
++	char query[512], argEscaped[sizeof(arg) * 2 + 1];
+ 	DB.Escape(arg, argEscaped, sizeof(argEscaped));
+ 
+-	if (strncmp(arg, "STEAM_", 6) == 0)
++	if (isSteamId)
+ 	{
+-		Format(query, sizeof(query), "SELECT bid FROM %s_bans WHERE (type = 0 AND authid = '%s') AND (length = '0' OR ends > UNIX_TIMESTAMP()) AND RemoveType IS NULL", DatabasePrefix, argEscaped);
++		// Either universe, like the ban check on connect: the web panel stores STEAM_0, some games
++		// report STEAM_1
++		char argYzEscaped[sizeof(arg) * 2 + 1];
++		DB.Escape(arg[8], argYzEscaped, sizeof(argYzEscaped));
++		Format(query, sizeof(query), "SELECT bid FROM %s_bans WHERE (type = 0 AND (authid = '%s' OR authid REGEXP '^STEAM_[0-9]:%s$')) AND (length = '0' OR ends > UNIX_TIMESTAMP()) AND RemoveType IS NULL", DatabasePrefix, argEscaped, argYzEscaped);
+ 	} else {
+ 		Format(query, sizeof(query), "SELECT bid FROM %s_bans WHERE (type = 1 AND ip     = '%s') AND (length = '0' OR ends > UNIX_TIMESTAMP()) AND RemoveType IS NULL", DatabasePrefix, argEscaped);
+ 	}
+@@ -768,6 +781,14 @@ public Action CommandAddBan(int client, int args)
+ 		return Plugin_Handled;
+ 	}
+ 
++	// A ban of anything else never matches a player, as their SteamIDs have this form
++	char steam3[MAX_AUTHID_LENGTH];
++	if (!Steam2ToSteam3(authid, steam3, sizeof(steam3)))
++	{
++		ReplyToCommand(client, "%sInvalid SteamID %s, expected STEAM_[01]:[01]:Z", Prefix, authid);
++		return Plugin_Handled;
++	}
++
+ 	if (!minutes && client && !(CheckCommandAccess(client, "sm_unban", ADMFLAG_UNBAN | ADMFLAG_ROOT)))
+ 	{
+ 		ReplyToCommand(client, "You do not have Perm Ban Permission");
+@@ -792,11 +813,13 @@ public Action CommandAddBan(int client, int args)
+ 	dataPack.WriteString(adminAuth);
+ 	dataPack.WriteString(adminIp);
+ 
+-	char sQuery[256], authidEscaped[sizeof(authid) * 2 + 1];
++	char sQuery[512], authidEscaped[sizeof(authid) * 2 + 1], authidYzEscaped[sizeof(authid) * 2 + 1];
+ 	DB.Escape(authid, authidEscaped, sizeof(authidEscaped));
++	DB.Escape(authid[8], authidYzEscaped, sizeof(authidYzEscaped));
+ 
+-	FormatEx(sQuery, sizeof sQuery, "SELECT bid FROM %s_bans WHERE type = 0 AND authid = '%s' AND (length = 0 OR ends > UNIX_TIMESTAMP()) AND RemoveType IS NULL",
+-		DatabasePrefix, authidEscaped);
++	// An existing ban of either universe, as SBPP_BanPlayerBySteamId looks for
++	FormatEx(sQuery, sizeof sQuery, "SELECT bid FROM %s_bans WHERE type = 0 AND (authid = '%s' OR authid REGEXP '^STEAM_[0-9]:%s$') AND (length = 0 OR ends > UNIX_TIMESTAMP()) AND RemoveType IS NULL",
++		DatabasePrefix, authidEscaped, authidYzEscaped);
+ 
+ 	DB.Query(SelectAddbanCallback, sQuery, dataPack, DBPrio_High);
+ 

@@ -35,3 +35,8 @@ SPDX-License-Identifier = "0BSD"
 path = "composer-exclude-legacy-classes.patch"
 SPDX-FileCopyrightText = "SourceBans++ Dev Team"
 SPDX-License-Identifier = "Elastic-2.0"
+
+[[annotations]]
+path = "plugin-validate-steamid.patch"
+SPDX-FileCopyrightText = "SourceBans++ Dev Team"
+SPDX-License-Identifier = "GPL-3.0-only"

@@ -5,7 +5,7 @@
 pkgbase=sourcebans-pp
 pkgname=(sourcebans-pp sourcemod-sourcebans-pp)
 pkgver=2.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="SourceBans++, the admin, ban and communication management of SourceMod game servers"
 arch=(any)
 url="https://sbpp.github.io"
@@ -19,15 +19,18 @@ checkdepends=(mariadb)
 source=("git+https://github.com/sbpp/sourcebans-pp.git#tag=$pkgver"
   sourcebans-pp.php
   nginx.conf.example
-  composer-exclude-legacy-classes.patch)
+  composer-exclude-legacy-classes.patch
+  plugin-validate-steamid.patch)
 sha512sums=('9758c463719adfe1c3115f06026da6034a771814c5c8948547fdb228d86db29ad945b1131b555a35f1446210c8880663cd986d2b4a3f1f14152624344d6c1f85'
   '2dbfac1a24bc5ca0f17e105a7966182dae8015af86af59d7b2f2839a51f9882de93f353adc7c9385d74c06d28d110bb83ac1689eec2db31260fcd069a5eb21ed'
   '227373db3705b82b2c44d2d2a0ed7916e35d3c40c2381ee67d0397e23bc1ff4796b6d049aeb6674c0e1e7b9323222e74c0fd90639ea8d6899a58932b05682b19'
-  '53f2f3f84c5979e391e5e609d991045f356d5a2d26009b882c7143fdb8a1fd8f161f6717d35286471f5ecf61b9bf4dddb08d8f2ea3031e350aca93881183d12e')
+  '53f2f3f84c5979e391e5e609d991045f356d5a2d26009b882c7143fdb8a1fd8f161f6717d35286471f5ecf61b9bf4dddb08d8f2ea3031e350aca93881183d12e'
+  '8492535d2b4cfc535dbc097efde122c5d13a1d553be0da9a0f96c32538d0c275d88d677faf1fb4176f92e18889a0042d41bb506abf9c04230ce3fe29a9dc45f4')
 b2sums=('9e69911b790cc681f7b7a8790de16fd2a2bd092369b556eb8a5dd98149601fbbcc56604992291380528c7f4683d35d354603ea6e8e0d3e227a07a938a5efce05'
   '517f2f72a01572cd07a1f3af97ddb187eee40834a17658e4ca9a9c83f65cc759327dfb406e21f677e733ce312e03f63713d28778c1e846ded899847f16d589a0'
   '03f7ce234493a51c3be8b3b5f5b35a287ccbc36f6fbda5b12fabc8bb5608221d9bedc31e291c1838dd4d92c8cf9a2c6df43b357e86313f75c82c20343af1d054'
-  'c80c9c71dfa20c439a2019e757dce866d836a0c67ca6ff945975ac647d816191e1305ae7d3e60925671280b503eb3ea0a1d8c5f4ec7270e547e3bfc0fe98c0af')
+  'c80c9c71dfa20c439a2019e757dce866d836a0c67ca6ff945975ac647d816191e1305ae7d3e60925671280b503eb3ea0a1d8c5f4ec7270e547e3bfc0fe98c0af'
+  'bf068d1059c7a66fdc3a08606e3b2306a604a27b7e5b1167405c7b47d7a575a5d327db54f61646407825012c6935953bc9c80f6309dca281d9267548d786a79d')
 
 prepare() {
   cd "$pkgbase" || exit
@@ -47,6 +50,11 @@ prepare() {
   # The legacy global classes of includes/ out of the PSR-4 classmap, which the optimised autoloader
   # warned about (https://github.com/sbpp/sourcebans-pp/pull/1621)
   patch -Np1 -i "$srcdir/composer-exclude-legacy-classes.patch"
+
+  # sm_addban and sm_unban check SteamIDs and find bans of either universe, so that sm_unban
+  # STEAM_1:0:Z lifts a ban the panel stored as STEAM_0:0:Z
+  # (https://github.com/sbpp/sourcebans-pp/pull/1623)
+  patch -Np1 -i "$srcdir/plugin-validate-steamid.patch"
 
   # maxmind-db/reader 1.14.0 instead of the lock's 1.13.1: its decoder limits the time and memory a
   # lookup can take, which a crafted database could make exponential. Upstream's Dependabot has the
