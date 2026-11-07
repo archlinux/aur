@@ -1,6 +1,6 @@
 pkgbase = lconnect-linux
 	pkgdesc = Unofficial Lian Li L-Connect 3 port: UNI FAN TL / TL LCD / SL Infinity fan speed, RGB and LCD control
-	pkgver = 2.0.11.4
+	pkgver = 2.0.11.5
 	pkgrel = 1
 	url = https://github.com/koenhendriks/lian-li-lconnect-linux
 	install = lconnect.install
@@ -20,7 +20,7 @@ pkgbase = lconnect-linux
 	optdepends = nvidia-utils: NVIDIA GPU temperature/load for fan curves and sensor screens
 	options = !strip
 	options = !debug
-	source = https://github.com/koenhendriks/lian-li-lconnect-linux/releases/download/v2.0.11.4/lconnect-linux-2.0.11.4.tar.gz
-	sha256sums = 710468267bcffdf0509d44d87bfe5cff1432537976e027e3d9944328f8e9e9fc
+	source = https://github.com/koenhendriks/lian-li-lconnect-linux/releases/download/v2.0.11.5/lconnect-linux-2.0.11.5.tar.gz
+	sha256sums = dfca002c32ee98678d504658ca0c13e0c1ce9f352d43f938d88fc56d539b1708
 
 pkgname = lconnect-linux
