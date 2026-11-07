@@ -1,0 +1,16 @@
+pkgbase = linkchanger
+	pkgdesc = A simple tool to change old domain URLs to new domain URLs in your website files.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RangS-1/LinkChanger
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = linkchanger-1.0.0.tar.gz::https://github.com/RangS-1/LinkChanger/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 54bfc5e06f40a1a3b8191821c3e1fc129a714fc78eaa5dcc84259f898fa657ab
+
+pkgname = linkchanger
