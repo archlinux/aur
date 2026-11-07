@@ -2,11 +2,11 @@
 
 pkgname=gllvm-git
 pkgver=1.3.1.r13.g154531b
-pkgrel=2
+pkgrel=3
 pkgdesc="Whole Program LLVM: wllvm ported to go"
 arch=('x86_64')
 url="https://github.com/SRI-CSL/gllvm"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=()
 makedepends=('git' 'go')
 optdepends=('clang: backend LLVM compiler')
