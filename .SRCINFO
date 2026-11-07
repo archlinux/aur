@@ -1,0 +1,21 @@
+pkgbase = aurbreak-bin
+	pkgdesc = A fast, offline-first desktop browser for the Arch User Repository (AUR)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/snowballons/AURbreak
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
+	optdepends = yay: quick AUR package installation support
+	optdepends = paru: alternative AUR helper support
+	optdepends = pikaur: alternative AUR helper support
+	provides = aurbreak
+	provides = browse-arch
+	conflicts = aurbreak
+	source = aurbreak-0.1.1-x86_64.tar.gz::https://github.com/snowballons/AURbreak/releases/download/v0.1.1/aurbreak-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 567d562b108d7219f298f3f75291e70c8c8eadaa24ed4b923356c378efa9e44f
+
+pkgname = aurbreak-bin
