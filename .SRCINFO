@@ -1,4 +1,4 @@
-pkgbase = hid-logitech-headset
+pkgbase = hid-logitech-headset-dkms
 	pkgdesc = Kernel driver reporting the battery of the Logitech PRO X 2 LIGHTSPEED headset (DKMS)
 	pkgver = 0.4
 	pkgrel = 1
@@ -7,6 +7,6 @@ pkgbase = hid-logitech-headset
 	license = GPL-2.0-or-later
 	depends = dkms
 	source = hid-logitech-headset-0.4.tar.gz::https://github.com/meven/hid-logitech-headset/archive/refs/tags/v0.4.tar.gz
-	sha256sums = SKIP
+	sha256sums = aef3cf513fefaab4a0bff065de66e3796757f64164a6c218ac42152f76cbc087
 
-pkgname = hid-logitech-headset
+pkgname = hid-logitech-headset-dkms

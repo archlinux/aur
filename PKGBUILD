@@ -10,7 +10,7 @@ url="https://github.com/meven/hid-logitech-headset"
 license=('GPL-2.0-or-later')
 depends=('dkms')
 source=("$_pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('aef3cf513fefaab4a0bff065de66e3796757f64164a6c218ac42152f76cbc087')
 
 package() {
 	cd "$_pkgbase-$pkgver"
