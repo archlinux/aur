@@ -29,7 +29,7 @@ pkgbase = ttf-geologica-hinted
 	sha256sums = 42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a
 	sha256sums = 5844c645e7d4f9a445be4ec9c049d2b84fa450efbf0179b47add06533561c478
 	sha256sums = cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1
-	sha256sums = 26ca6fb7ec518025486ea28a059f7e6f37d2f6a10d0f7caaea3437323bc3a664
+	sha256sums = be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c
 	sha256sums = SKIP
 
 pkgname = ttf-geologica-hinted

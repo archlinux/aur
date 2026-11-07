@@ -29,7 +29,7 @@ sha256sums=('9124d9e88ac6c11d761f35241713a51d68e2c4ebedce0edaca834717a00959ec'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             '5844c645e7d4f9a445be4ec9c049d2b84fa450efbf0179b47add06533561c478'
             'cfc6aa1b72cd6649d102a0a97ad1be0fcfc12476fc75a9d8251b6afd2a724fe1'
-            '26ca6fb7ec518025486ea28a059f7e6f37d2f6a10d0f7caaea3437323bc3a664'
+            'be02c70c77195b258b9333d32c7eabfbc3e19d74232bd4f31e2b1a02d8424f0c'
             'SKIP')
 
 # Geologica (Monokrom, 2023) ships as ONE variable font with four axes:
