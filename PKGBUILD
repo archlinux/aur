@@ -1,9 +1,9 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar-git
-pkgver=1.0.1.r125.gcbabc5d
+pkgver=1.0.1.r134.g92a0e6a
 pkgrel=1
 pkgdesc='Development version of the Linux-native Wayland terminal built on Ghostty terminal core'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/rockorager/monstar'
 license=('MIT')
 depends=(
