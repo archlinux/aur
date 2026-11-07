@@ -3,8 +3,8 @@
 
 pkgname='notifiarr-bin'
 appname='notifiarr'
-pkgver=0.9.7
-pkgrel=8
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='Official Client for Notifiarr.com'
 url='https://notifiarr.com'
 arch=('x86_64' 'armhf' 'armv7h' 'aarch64' 'i686' 'pentium4')
@@ -14,20 +14,20 @@ makedepends=('go' 'gzip')
 options=('!strip')
 backup=('etc/notifiarr/notifiarr.conf')
 install=notifiarr.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Notifiarr/notifiarr/archive/refs/tags/v0.9.7.tar.gz")
-sha256sums=('3399b73555961d825a78cbfcbc64810b49fc39bf46b5e74272451c132d97510e')
-source_x86_64=("${pkgname}-${pkgver}.x86_64.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.9.7/notifiarr.amd64.linux.gz")
-source_armhf=("${pkgname}-${pkgver}.armhf.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.9.7/notifiarr.arm.linux.gz")
-source_armv7h=("${pkgname}-${pkgver}.armv7h.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.9.7/notifiarr.arm.linux.gz")
-source_aarch64=("${pkgname}-${pkgver}.aarch64.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.9.7/notifiarr.arm64.linux.gz")
-source_i686=("${pkgname}-${pkgver}.i686.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.9.7/notifiarr.386.linux.gz")
-source_pentium4=("${pkgname}-${pkgver}.pentium4.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.9.7/notifiarr.386.linux.gz")
-sha256sums_x86_64=('65eb045f4df660a51e0dbab3b471b47181838d4c537e3eff33563ffd09d05d71')
-sha256sums_armhf=('10f91238a395d7cad1bdda0dd8fa8204bf18327fcbfb1cf7c82083a8a384da50')
-sha256sums_armv7h=('10f91238a395d7cad1bdda0dd8fa8204bf18327fcbfb1cf7c82083a8a384da50')
-sha256sums_aarch64=('767ade8e5f607c67cb825c4facaf70c4df6bb4fa871b3e9177faf0c6c379f16a')
-sha256sums_i686=('446161d06c668ad36e2daf56463868b8636153681ccc5a010948219ea4e8087e')
-sha256sums_pentium4=('446161d06c668ad36e2daf56463868b8636153681ccc5a010948219ea4e8087e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Notifiarr/notifiarr/archive/refs/tags/v0.10.0.tar.gz")
+sha256sums=('c5fea580dbfaf95bd0e6cb9b806d3781e13a0f4014d31246f168217783309d8b')
+source_x86_64=("${pkgname}-${pkgver}.x86_64.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.10.0/notifiarr.amd64.linux.gz")
+source_armhf=("${pkgname}-${pkgver}.armhf.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.10.0/notifiarr.arm.linux.gz")
+source_armv7h=("${pkgname}-${pkgver}.armv7h.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.10.0/notifiarr.arm.linux.gz")
+source_aarch64=("${pkgname}-${pkgver}.aarch64.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.10.0/notifiarr.arm64.linux.gz")
+source_i686=("${pkgname}-${pkgver}.i686.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.10.0/notifiarr.386.linux.gz")
+source_pentium4=("${pkgname}-${pkgver}.pentium4.gz::https://github.com/Notifiarr/notifiarr/releases/download/v0.10.0/notifiarr.386.linux.gz")
+sha256sums_x86_64=('705f88ed9c002bc9cc7e429b2377bc563658899a675970902c1511fc035be260')
+sha256sums_armhf=('3736186b542f6c9764c8177b907e38d7332172015ce5d26f325428ba86af4343')
+sha256sums_armv7h=('3736186b542f6c9764c8177b907e38d7332172015ce5d26f325428ba86af4343')
+sha256sums_aarch64=('65da3820f42fd57363c4c8d16a4dc65317ebbefbc1deae0322205f096a39430d')
+sha256sums_i686=('83fe78b5c5259cf971023d87659dd7e51226753b24780db4c23e8435e1e2bdc1')
+sha256sums_pentium4=('83fe78b5c5259cf971023d87659dd7e51226753b24780db4c23e8435e1e2bdc1')
 
 build() {
   cd "${appname}-${pkgver}"
@@ -56,6 +56,5 @@ package() {
   install -D -m 644 "init/systemd/${appname}.service" "${pkgdir}/usr/lib/systemd/system/${appname}.service"
   echo "u ${appname} - \"${appname} daemon\"" > "${appname}.sysusers"
   install -D -m 644 "${appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${appname}.conf"
-  printf '%s\n'     "# Log dir only. Do not chown /etc/notifiarr; tmpfiles runs on every boot."     "d /var/log/notifiarr 0755 notifiarr notifiarr -"     > "${appname}.tmpfiles"
-  install -D -m 644 "${appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${appname}.conf"
+  install -D -m 644 "init/systemd/${appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${appname}.conf"
 }
