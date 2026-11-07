@@ -3,13 +3,13 @@
 # Contributer: Amateurfunk Station der Hochschule Niederrhein (DF0FN) <df0fn@hs-niederrhein.de>
 
 pkgname=('svxlink')
-pkgver=26.05.1
+pkgver=26.05.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/sm0svx/svxlink"
 license=('GPL-2.0-only' 'LGPL-2.1-only')
 source=("https://github.com/sm0svx/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('78830607449cdf90f52142d8863a656bcc9777a0b90d709cd525b9455c1da63b')
+sha256sums=('2138b55a05b45cd93cfefb5574bf677d543574e3e697497f4827c14c6a29dff1')
 depends=('gsm' 'alsa-lib' 'openssl' 'speex' 'opus' 'python' 'popt' 'libgpiod'
          'libsigc++' 'gcc-libs' 'curl' 'libgcrypt' 'rtl-sdr' 'bash' 'python-yaml'
          'python-requests' 'tcl' 'libogg' 'jsoncpp' 'python-cryptography')
