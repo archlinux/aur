@@ -2,8 +2,10 @@ post_install() {
     echo
     echo "==> music-tui installed."
     echo
-    echo "On first launch open Settings (press 3), set your music directory (e),"
-    echo "then scan it (r)."
+    echo "On first launch open the Settings tab (the last one), set your music"
+    echo "directory (e), then scan it (r)."
+    echo
+    echo "For the Spotify and Explore tabs, install yt-dlp and ffmpeg."
     echo
     echo "Optional, for full visuals:"
     echo "  - a Nerd Font for the transport icons"
