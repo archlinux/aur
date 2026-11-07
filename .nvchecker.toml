@@ -1,0 +1,5 @@
+[tuck-bin]
+source = "github"
+github = "anuzdhk/tuck-filemanager"
+use_latest_release = true
+prefix = "v"
