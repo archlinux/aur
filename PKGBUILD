@@ -23,10 +23,12 @@ conflicts=("${pkgname%-bin}")
 
 depends=('glibc' 'libgcc' 'glib2' 'gtk4' 'vte4' 'libadwaita' 'gtksourceview5' 'poppler-glib' 'cairo' 'graphene' 'pango' 'libarchive' 'xz' 'hicolor-icon-theme')
 optdepends=('gvfs: network locations, Trash on other drives'
-			'gvfs-smb: Windows shares'
-			'git: git status in folders'
-			'flatpak: installing .flatpakref files'
-			'unrar: password-protected RAR archives')
+            'gvfs-smb: Windows shares'
+            'git: git status in folders'
+            'flatpak: installing .flatpakref files'
+            'unrar: password-protected RAR archives'
+            'imagemagick: Image Converter addon'
+            'ffmpeg: Video Compressor addon')
 
 options=('!strip')
 
@@ -37,10 +39,10 @@ noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64
 
 
 package() {
-	cd "${pkgdir}/"
+    cd "${pkgdir}/"
 
-	tar --exclude=".*" -xf "${srcdir}/${_appname}-${CARCH}-${pkgver}.tzst"
+    tar --exclude=".*" -xf "${srcdir}/${_appname}-${CARCH}-${pkgver}.tzst"
 
-	mv "${pkgdir}/usr/share/doc/${_appname}" "${pkgdir}/usr/share/doc/${pkgname}"
-	mv "${pkgdir}/usr/share/licenses/${_appname}" "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/share/doc/${_appname}" "${pkgdir}/usr/share/doc/${pkgname}"
+    mv "${pkgdir}/usr/share/licenses/${_appname}" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
