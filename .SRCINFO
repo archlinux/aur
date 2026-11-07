@@ -1,6 +1,6 @@
 pkgbase = ai-jail
 	pkgdesc = Sandbox wrapper for AI coding agents
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-jail
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ai-jail
 	conflicts = ai-jail-bin
 	options = !debug
 	options = !lto
-	source = ai-jail-3.2.0.tar.gz::https://github.com/akitaonrails/ai-jail/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = ddd73369552710ac4f071200f4b0dd04a60b0a72d7587310ef9f812788a4f4df
+	source = ai-jail-3.3.0.tar.gz::https://github.com/akitaonrails/ai-jail/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = 7667a8a9ae5deddf113f89363c994d3d821ab9f80c1a03620ed2d8eef7b89b5d
 
 pkgname = ai-jail
