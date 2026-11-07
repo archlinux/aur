@@ -1,34 +1,20 @@
 diff --git a/libs/v6core/src/debugger.cpp b/libs/v6core/src/debugger.cpp
-index be102af..841eb37 100644
+index 0e8fe6d..4e0aeea 100644
 --- a/libs/v6core/src/debugger.cpp
 +++ b/libs/v6core/src/debugger.cpp
-@@ -264,7 +264,7 @@ auto dev::Debugger::DebugReqHandling(Hardware::Req _req, nlohmann::json _reqData
- 			Breakpoint::GetStatus(_reqDataJ["status"]),
- 			_reqDataJ["autoDelete"],
- 			Breakpoint::GetOperand(_reqDataJ["operand"]),
--			ParseConditionName(_reqDataJ["condition"]),
-+			ParseConditionName(_reqDataJ["condition"].get<std::string>()),
- 			_reqDataJ["value"],
- 			_reqDataJ.value("counter", uint64_t{1}) };
- 		m_debugData.GetBreakpoints().Add({ std::move(bpData), _reqDataJ["comment"] });
-@@ -330,7 +330,7 @@ auto dev::Debugger::DebugReqHandling(Hardware::Req _req, nlohmann::json _reqData
- 			-1,
- 			Watchpoint::GetAccess(_reqDataJ["access"]),
- 			_reqDataJ["globalAddr"],
--				ParseConditionName(_reqDataJ["condition"]),
-+				ParseConditionName(_reqDataJ["condition"].get<std::string>()),
- 			_reqDataJ["value"],
- 			Watchpoint::GetType(_reqDataJ["type"]),
- 			_reqDataJ["len"],
-@@ -344,7 +344,7 @@ auto dev::Debugger::DebugReqHandling(Hardware::Req _req, nlohmann::json _reqData
- 			_reqDataJ["id"],
- 			Watchpoint::GetAccess(_reqDataJ["access"]),
- 			_reqDataJ["globalAddr"],
--			ParseConditionName(_reqDataJ["condition"]),
-+			ParseConditionName(_reqDataJ["condition"].get<std::string>()),
- 			_reqDataJ["value"],
- 			Watchpoint::GetType(_reqDataJ["type"]),
- 			_reqDataJ["len"],
+@@ -244,11 +244,11 @@ auto dev::Debugger::DebugReqHandling(Hardware::Req _req, nlohmann::json _reqData
+ 
+ 		m_recorder.Deserialize(data, _cpuStateP, _memStateP, _ioStateP, _displayStateP);
+ 		break;
++	}
+ 
+ 	case Hardware::Req::INTERNAL_RESET_TRACE_HISTORY:
+ 		m_traceLog.Reset();
+ 		break;
+-	}
+ 	//////////////////
+ 	//
+ 	// Breakpoints
 diff --git a/libs/v6utils/src/utils.cpp b/libs/v6utils/src/utils.cpp
 index 8a9070e..44d8fb8 100644
 --- a/libs/v6utils/src/utils.cpp

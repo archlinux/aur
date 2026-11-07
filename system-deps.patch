@@ -1,13 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cdfda20..94589ec 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -56,76 +56,20 @@
+@@ -68,76 +68,20 @@ endif()
  
  # ── External dependencies ──────────────────────────────────────────────
  
 -include(FetchContent)
-+# Arch Linux packaging: both dependencies come from the distribution
-+# instead of being fetched and built during configure.
- 
+-
 -# nlohmann::json
 -FetchContent_Declare(
 -    nlohmann_json
@@ -16,7 +16,9 @@
 -    GIT_SHALLOW TRUE
 -)
 -FetchContent_MakeAvailable(nlohmann_json)
--
++# Arch Linux packaging: both dependencies come from the distribution
++# instead of being fetched and built during configure.
+ 
 -# LuaJIT
 -FetchContent_Declare(
 -    LuaJIT
@@ -58,7 +60,8 @@
 -        BUILD_IN_SOURCE 1
 -    )
 -endif()
--
++find_package(nlohmann_json 3.11.3 REQUIRED)
+ 
 -# LuaJIT static lib path
 -if(WIN32)
 -    if(MINGW)
@@ -69,18 +72,15 @@
 -else()
 -    set(LUAJIT_STATIC_LIB "${luajit_SOURCE_DIR}/src/libluajit.a")
 -endif()
--
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(LUAJIT REQUIRED IMPORTED_TARGET luajit)
+ 
 -add_library(luajit STATIC IMPORTED)
 -set_target_properties(luajit PROPERTIES
 -    IMPORTED_LOCATION ${LUAJIT_STATIC_LIB}
 -    INTERFACE_INCLUDE_DIRECTORIES ${luajit_SOURCE_DIR}/src
 -    INTERFACE_LINK_OPTIONS $<$<CXX_COMPILER_ID:MSVC>:/NODEFAULTLIB:LIBCMT>
 -)
-+find_package(nlohmann_json 3.11.3 REQUIRED)
-+
-+find_package(PkgConfig REQUIRED)
-+pkg_check_modules(LUAJIT REQUIRED IMPORTED_TARGET luajit)
-+
 +add_library(luajit INTERFACE)
 +target_link_libraries(luajit INTERFACE PkgConfig::LUAJIT)
 +
