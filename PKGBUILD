@@ -2,7 +2,7 @@
 
 _pkgbase=notav
 pkgname="$_pkgbase-bin"
-pkgver=0.2.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Notes and a journal kept in your Nextcloud'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source_x86_64=("$_pkgbase-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgbase-$pkgver-x86_64.tar.gz")
 noextract=("$_pkgbase-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('768051dc5e712c907c5bcacbad3c0969e83e51c3bc5970d421420aa1c0dca901')
+sha256sums_x86_64=('af634c6c1c3dba9d1a65722a969bc7d2b45cfad2f7e7b6823285d30439d6b997')
 
 package() {
 	bsdtar -xf "$_pkgbase-$pkgver-x86_64.tar.gz" -C "$pkgdir" --no-same-owner
