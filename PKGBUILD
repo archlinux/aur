@@ -2,17 +2,17 @@
 # Maintainer: Dan Maftei <dan.maftei@chem.uaic.ro>
 pkgname=python-pyscf
 _name=pyscf
-pkgver=2.10.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Python module for quantum chemistry"
 provides=('python-pyscf')
 arch=('x86_64')
 url="https://github.com/pyscf/pyscf"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e754266e5dfcb761fd2d033041e225cf5ea0570e0587af5d56cc02ed00589820')
+sha256sums=('9af9315740a6b922ebfab73b177e641527874fa04376734854f9dc2886fa3650')
 license=('Apache-2.0')
 depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'xcfun' 'libcint' 'libxc' 'blas')
-makedepends=('cmake' 'python-build' 'python-installer')
+makedepends=('cmake' 'python-build' 'python-installer' 'python-setuptools')
 conflicts=(${pkgname}-git)
 
 build() {
