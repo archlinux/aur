@@ -2,7 +2,7 @@
 # Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=whitelist-bypass-creator-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="WhitelistBypass Creator — bypass platform restrictions"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 depends=('fuse2')
 makedepends=('squashfs-tools')
 source=("WhitelistBypass.Creator-${pkgver}-x86_64.AppImage::https://github.com/kulikov0/whitelist-bypass/releases/download/v${pkgver}/WhitelistBypass.Creator-${pkgver}-x86_64.AppImage")
-sha256sums=('7dafb4417337c5aa7b9e53ae3a02e5e59a67fffd4f468e4968312849c7cc3d69')
+sha256sums=('33e18e2b624ae48b39cf44f4f9ff5c0c579308bd3846a1a1f30f9a903b04520a')
 
 prepare() {
     cp -L "${srcdir}/WhitelistBypass.Creator-${pkgver}-x86_64.AppImage" "${srcdir}/real-appimage"

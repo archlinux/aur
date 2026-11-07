@@ -1,6 +1,6 @@
 pkgbase = whitelist-bypass-creator-bin
 	pkgdesc = WhitelistBypass Creator — bypass platform restrictions
-	pkgver = 0.4.4
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/kulikov0/whitelist-bypass
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = whitelist-bypass-creator-bin
 	makedepends = squashfs-tools
 	depends = fuse2
 	options = !strip
-	source = WhitelistBypass.Creator-0.4.4-x86_64.AppImage::https://github.com/kulikov0/whitelist-bypass/releases/download/v0.4.4/WhitelistBypass.Creator-0.4.4-x86_64.AppImage
-	sha256sums = ed2d4bf28211711513ecea9f27b59d553888bd7472685a4b88c7c7ec9a3131ca
+	source = WhitelistBypass.Creator-0.5.1-x86_64.AppImage::https://github.com/kulikov0/whitelist-bypass/releases/download/v0.5.1/WhitelistBypass.Creator-0.5.1-x86_64.AppImage
+	sha256sums = 33e18e2b624ae48b39cf44f4f9ff5c0c579308bd3846a1a1f30f9a903b04520a
 
 pkgname = whitelist-bypass-creator-bin
