@@ -8,8 +8,8 @@ pkgdesc="A selection-first modal text editor for the terminal, scriptable in Sch
 
 pkgver=0.19.0
 pkgrel=1
-_gitcommit=9325f2b6c
 _gitversion=v${pkgver}
+_gitcommit=$(gh api repos/${_gitauthor}/${_gitname}/git/tags/$(gh api repos/${_gitauthor}/${_gitname}/git/ref/tags/${_gitversion} --jq '.object.sha') --jq '.object.sha[0:9]')
 
 arch=('x86_64')
 _barch=('x86_64-unknown-linux-gnu')
