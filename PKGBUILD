@@ -2,7 +2,7 @@
 pkgname=patchsplit-bin
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="CLI tool to split pull requests into separate patches per commit"
+pkgdesc="A fast, cross-platform CLI tool for splitting and applying patches (upstream prebuilt binaries)"
 arch=('x86_64')
 url="https://github.com/zitzhen/patchsplit"
 license=('MIT')
