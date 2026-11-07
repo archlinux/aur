@@ -1,7 +1,7 @@
 pkgbase = linux-cachyos-rc
 	pkgdesc = Linux Clang ThinLTO + AutoFDO + Cachy Sauce Kernel by CachyOS with other patches and improvements - Release Candidate
-	pkgver = 7.3.rc6
-	pkgrel = 3
+	pkgver = 7.4.rc1
+	pkgrel = 2
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only
@@ -27,19 +27,20 @@ pkgbase = linux-cachyos-rc
 	makedepends = clang
 	makedepends = llvm
 	makedepends = lld
+	makedepends = pahole>=1:1.32-2
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.3-rc6-1/cachyos-7.3-rc6-1.tar.gz
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.3-rc6-1/cachyos-7.3-rc6-1.tar.gz.asc
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.4-rc1-1/cachyos-7.4-rc1-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.4-rc1-1/cachyos-7.4-rc1-1.tar.gz.asc
 	source = config
-	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.3/misc/dkms-clang.patch
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.4/misc/dkms-clang.patch
 	validpgpkeys = E18447AC260021D31F3FF6C4C8A2A4774B8B63C4
 	validpgpkeys = E8B9AA39F054E30E8290D492C3C4820857F654FE
-	b2sums = 177537fa8a8a7c36eb1ce495d7acd30e8a6b494c4eed50d2afc1bd14358d335bb5fa57a9d83226d044a41a56abbc321bc7863d3ad05dde0f7c2ae5c150532f09
+	b2sums = 2c3743453086a7b65ee40c72c64d7c199d3220ae98833b996736c625d82646abdf27af26d7766223903b27bd6238647ce934887c67d9b94e4e340f25cf9d8798
 	b2sums = SKIP
-	b2sums = 63a34e61c50d9a914f9b95089b48db4c394d908cc3dd33f2c2addc818268e478c810c8a7406181dbf6be6af54c0d04d6cccdfd4e2faf3314a4f542e97cbb4d85
-	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
+	b2sums = 2f19573d99a418f2b5cbd6e6394265afa36b62a1232097e694c91a9c387b6b2fbee304635ffa4f945e053a97a2cf97bef00b8eb337a9327b474689411c5ecbb1
+	b2sums = cb10d76ed978235db2f7db2de8a239331cf0b1bbf0482d32a5037e3602d6f9fb10a582a719ea49d53b7c15ff465e0f1a0594e61f3b235508336c67aa13f12bb4
 
 pkgname = linux-cachyos-rc
 	pkgdesc = The Linux Clang ThinLTO + AutoFDO + Cachy Sauce Kernel by CachyOS with other patches and improvements - Release Candidate kernel and modules
@@ -73,4 +74,5 @@ pkgname = linux-cachyos-rc-headers
 	depends = clang
 	depends = llvm
 	depends = lld
+	depends = pahole>=1:1.32-2
 	provides = LINUX-HEADERS
