@@ -1,11 +1,12 @@
 pkgbase = atto-netbsd-git
 	pkgdesc = Small Emacs-like terminal editor from NetBSD
-	pkgver = 20261103065654.g862f10ae
+	pkgver = 20261104184111.g36eddebc
 	pkgrel = 1
 	url = https://github.com/NetBSD/src/tree/trunk/usr.bin/atto
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Public-Domain
+	license = LicenseRef-NetBSD-menu
 	makedepends = git
 	depends = glibc>=2.38
 	depends = ncurses

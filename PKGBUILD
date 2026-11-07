@@ -1,11 +1,11 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=atto-netbsd-git
-pkgver=20261103065654.g862f10ae
+pkgver=20261104184111.g36eddebc
 pkgrel=1
 pkgdesc='Small Emacs-like terminal editor from NetBSD'
 arch=('x86_64' 'aarch64')
 url='https://github.com/NetBSD/src/tree/trunk/usr.bin/atto'
-license=('LicenseRef-Public-Domain')
+license=('LicenseRef-Public-Domain' 'LicenseRef-NetBSD-menu')
 depends=('glibc>=2.38' 'ncurses')
 makedepends=('git')
 # The unrelated AUR Nano wallet also installs /usr/bin/atto.
@@ -36,7 +36,13 @@ prepare() {
 
 build() {
   cd "$srcdir/src/usr.bin/atto"
-  cc $CPPFLAGS $CFLAGS -D_DEFAULT_SOURCE -o atto *.c $LDFLAGS -lncursesw
+  # glibc lacks the NetBSD compiler annotations and array/menu helpers.
+  cc $CPPFLAGS $CFLAGS -D_DEFAULT_SOURCE \
+    '-D__dead=__attribute__((__noreturn__))' \
+    '-D__printflike(a,b)=__attribute__((__format__(__printf__,a,b)))' \
+    '-D__arraycount(a)=(sizeof(a)/sizeof((a)[0]))' \
+    '-D__UNCONST(a)=(a)' \
+    -o atto *.c $LDFLAGS -lmenuw -lncursesw
 }
 
 package() {
@@ -44,4 +50,5 @@ package() {
   install -Dm755 atto "$pkgdir/usr/bin/atto"
   install -Dm644 atto.1 "$pkgdir/usr/share/man/man1/atto.1"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 menu.c "$pkgdir/usr/share/licenses/$pkgname/menu.c"
 }
