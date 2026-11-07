@@ -1,0 +1,30 @@
+pkgbase = plasma-nm-networkd
+	pkgdesc = Plasma applet and System Settings module powered by systemd-networkd & NetworkManager, drop-in replacement for plasma-nm
+	pkgver = 6.8.2
+	pkgrel = 1
+	url = https://github.com/lumexren/plasma-nm-networkd
+	install = plasma-nm-networkd.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = qt6-base
+	makedepends = kcmutils
+	makedepends = kcoreaddons
+	makedepends = ki18n
+	makedepends = gettext
+	depends = libplasma
+	depends = kcmutils
+	depends = kirigami
+	depends = kirigami-addons
+	depends = python
+	optdepends = networkmanager: For NetworkManager backend support
+	optdepends = systemd: For systemd-networkd backend support
+	optdepends = iwd: Intel wireless daemon for Wi-Fi
+	optdepends = wpa_supplicant: Alternative Wi-Fi management
+	provides = plasma-nm=6.8.2
+	conflicts = plasma-nm
+	source = git+https://github.com/lumexren/plasma-nm-networkd.git#branch=6.x
+	sha256sums = SKIP
+
+pkgname = plasma-nm-networkd
