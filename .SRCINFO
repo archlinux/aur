@@ -5,6 +5,7 @@ pkgbase = tuck-bin
 	url = https://github.com/anuzdhk/tuck-filemanager
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = tar
 	depends = glibc
 	depends = libgcc
 	depends = glib2

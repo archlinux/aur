@@ -21,6 +21,7 @@ license=('GPL-3.0-or-later')
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
+makedepends=('tar')
 depends=('glibc' 'libgcc' 'glib2' 'gtk4' 'vte4' 'libadwaita' 'gtksourceview5' 'poppler-glib' 'cairo' 'graphene' 'pango' 'libarchive' 'xz' 'hicolor-icon-theme')
 optdepends=('gvfs: network locations, Trash on other drives'
             'gvfs-smb: Windows shares'
