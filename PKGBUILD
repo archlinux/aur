@@ -62,6 +62,9 @@ build() {
     -DVICINAE_GIT_COMMIT_HASH="${SHA:0:7}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DVICINAE_PROVENANCE=aur \
+    -DLOCAL_AI=ON \
+    -DUSE_SYSTEM_INFERENCE_ENGINES=OFF \
+    -DGGML_VULKAN=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -B build
 
