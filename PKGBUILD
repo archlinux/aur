@@ -1,11 +1,12 @@
 # Maintainer: Frikilinux <frikilinux@gmail.com>
 
 pkgname=aries-connect
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="KDE Connect-compatible daemon exposing devices over D-Bus (no KDE/Qt dependencies)"
 arch=('x86_64')
-url="https://github.com/Frikilinux/aries-connect"
+# url="https://github.com/Frikilinux/aries-connect"
+url="https://gitlab.com/zotta/aries-connect"
 license=(GPL-2.0-or-later)
 depends=(
   glibc
@@ -13,8 +14,9 @@ depends=(
 )
 makedepends=(cargo)
 options=(!lto)
-source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('e1da47890a25aad2eacf9336a253ad1346bea3a79bb252e018f67fd7e57ae02a')
+# source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+source=(${url}/-/releases/v${pkgver}/downloads/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('9ce743a8d2de554d26e15765f423629ed0cbafdb49409b830d97cbc63fc1ca9b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

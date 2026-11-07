@@ -1,15 +1,15 @@
 pkgbase = aries-connect
 	pkgdesc = KDE Connect-compatible daemon exposing devices over D-Bus (no KDE/Qt dependencies)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://github.com/Frikilinux/aries-connect
+	url = https://gitlab.com/zotta/aries-connect
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = https://github.com/Frikilinux/aries-connect/releases/download/v0.3.0/aries-connect-0.3.0.tar.gz
-	sha256sums = e1da47890a25aad2eacf9336a253ad1346bea3a79bb252e018f67fd7e57ae02a
+	source = https://gitlab.com/zotta/aries-connect/-/releases/v0.4.0/downloads/aries-connect-0.4.0.tar.gz
+	sha256sums = 9ce743a8d2de554d26e15765f423629ed0cbafdb49409b830d97cbc63fc1ca9b
 
 pkgname = aries-connect
