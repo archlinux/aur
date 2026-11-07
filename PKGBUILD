@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/zitzhen/patchsplit"
 license=('MIT')
 depends=('curl')
+makedepends=('git' 'cargo')
 source=("$pkgname::git+https://github.com/zitzhen/patchsplit.git#tag=v${pkgver}")
 sha256sums=('4a265be17347d652a8a8fea08ef5ad80d357b8c70c0f9d46ca69b74352c5bea6')
 build() {
