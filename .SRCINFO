@@ -1,10 +1,10 @@
 pkgbase = python-pypacker
 	pkgdesc = The fastest and simplest packet manipulation lib for Python
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mike01/pypacker
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only AND BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer

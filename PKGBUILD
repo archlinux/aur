@@ -2,11 +2,11 @@
 
 pkgname=python-pypacker
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest and simplest packet manipulation lib for Python"
 arch=('x86_64')
 url="https://gitlab.com/mike01/pypacker"
-license=('GPL')
+license=('GPL-2.0-only AND BSD-3-Clause')
 depends=('python' 'python-netifaces')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://gitlab.com/mike01/pypacker/-/archive/v$pkgver/pypacker-v$pkgver.tar.gz")
@@ -24,6 +24,7 @@ package() {
         --prefix=/usr \
         --compile-bytecode=1 \
         dist/*.whl
+    install -Dm 644 LICENSE_BSD -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: set ts=4 sw=4 et :
