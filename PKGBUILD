@@ -1,14 +1,14 @@
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 # Contributor: Davide Depau <davide@depau.eu>
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=ydotool-git
-pkgver=1.0.4.r0.g57ba7d0
+pkgver=1.0.4.r38.g708e96f
 pkgrel=1
 epoch=1
 pkgdesc="Generic command-line automation tool (no X!)"
 depends=('glibc')
 makedepends=('git' 'cmake' 'ninja' 'scdoc' 'systemd')
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ReimuNotMoe/ydotool"
 license=('AGPL3')
 provides=('ydotool')
