@@ -1,0 +1,8 @@
+/src/
+/pkg/
+/*.run
+/*.run.part
+/*.pkg.tar.*
+/*.log
+__pycache__/
+*.py[cod]
