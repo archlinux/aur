@@ -2,7 +2,7 @@
 # Maintainer: Veitangie <emignatiev.work@gmail.com>
 
 pkgname='sinq-bin'
-pkgver=1.0.0_rc.32
+pkgver=1.0.0_rc.33
 pkgrel=1
 pkgdesc='A concurrent HTTP functional and integration testing tool.'
 url='https://github.com/Veitangie/sinq'
@@ -11,11 +11,11 @@ license=('GPL-3.0-or-later')
 provides=('sinq')
 conflicts=('sinq' 'sinq-git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.32/sinq-1.0.0-rc.32-linux-arm64.tar.gz")
-sha256sums_aarch64=('aadb597c49caf00f131d9dad14ee4f1886a05b3a14b76c3636d2265d44d3b763')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.33/sinq-1.0.0-rc.33-linux-arm64.tar.gz")
+sha256sums_aarch64=('cad4250dd62206994b16b9f1eea3bee9471bc3d27930ff3548ba2ad82799327c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.32/sinq-1.0.0-rc.32-linux-x86_64.tar.gz")
-sha256sums_x86_64=('f3f32c93e8eb6815fd1a7205b2d8b8b1e0590f3deee302cc9c0f43bfa9be075e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.33/sinq-1.0.0-rc.33-linux-x86_64.tar.gz")
+sha256sums_x86_64=('2c42010ea732c7683f228e218906d013d84f3c9cc76924320bee9e9e3c9b05d0')
 
 package() {
   install -Dm755 sinq "${pkgdir}/usr/bin/sinq"
