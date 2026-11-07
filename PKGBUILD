@@ -1,4 +1,5 @@
-# Maintainer: lingbopro <lingbopro [at] outlook [dot] com>
+# Maintainer: lingbopro <lingbopro@outlook.com>
+# This package is also available in my GitHub repository: https://github.com/lingbopro/pkgbuild
 pkgname=win12-desktop-bin
 pkgver=0.3.2
 pkgrel=1
