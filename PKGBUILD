@@ -4,7 +4,7 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.42.1
+pkgver=7.42.3
 _bettersqlite3ver=13.0.1
 _bufferutilver=4.0.9
 _pipewirever=1.1.0
@@ -39,7 +39,7 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('df60f1cf6dd9bb25b2c6a7f063a8e589f1d2acf8f58957e2086b6365ef912300'
+sha256sums=('52c4875994573f179b21a27475be3ea99af10ff188a4e7f23aa7343e9f88c869'
             '92935ff8280f933aff78f87e04eb718a21af003aec4e5bd0076f287aa1709da4'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
             'ed7425c2f287df8e192656f89b5c6645f67837aaaba64692e493dc8e8e0d55fe'
