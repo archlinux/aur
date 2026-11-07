@@ -1,6 +1,6 @@
 pkgbase = jasper-gtk-theme-fixed-git
 	pkgdesc = Jasper GTK theme, Dracula colors, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
-	pkgver = r121.gec9f301.f7.0c09bae
+	pkgver = r121.gec9f301.f22.1db24ea
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Jasper-gtk-theme
 	install = jasper-gtk-theme-fixed.install
