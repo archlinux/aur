@@ -1,0 +1,17 @@
+pkgbase = carryout-git
+	pkgdesc = Resumable, verifying downloader for multi-part Google Takeout exports (Git version)
+	pkgver = 0.2.0.r1.g1bd29a9
+	pkgrel = 1
+	url = https://github.com/jm2/carryout
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = carryout=0.2.0.r1.g1bd29a9
+	conflicts = carryout
+	source = carryout-git::git+https://github.com/jm2/carryout.git
+	sha256sums = SKIP
+
+pkgname = carryout-git
