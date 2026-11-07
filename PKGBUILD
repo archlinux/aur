@@ -76,5 +76,6 @@ package() {
     cd pila
     # The same files, paths and session entry as a hand install.
     PREFIX=/usr DESTDIR="$pkgdir" scripts/install --no-build
-    install -Dm644 -t "$pkgdir/usr/share/doc/pila" README.md config.example.toml
+    install -Dm644 -t "$pkgdir/usr/share/doc/pila" README.md config.example.toml \
+        docs/MANUAL.md docs/IPC.md
 }
