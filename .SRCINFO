@@ -1,7 +1,7 @@
 pkgbase = cua-driver-bin
 	pkgdesc = Desktop control daemon (cua-driver-rs) from trycua/cua — background window driving, clicks, typing, browser automation via MCP
-	pkgver = 0.38.0
-	pkgrel = 2
+	pkgver = 0.41.2
+	pkgrel = 1
 	url = https://github.com/trycua/cua
 	install = cua-driver-bin.install
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = cua-driver-bin
 	optdepends = gnome-shell: wayland-helper GNOME extension (winrects@cua)
 	optdepends = ffmpeg: video capture (start_recording)
 	optdepends = wf-recorder: native Wayland video capture
-	source = cua-driver-rs-0.38.0-linux-x86_64-binary.tar.gz::https://github.com/trycua/cua/releases/download/cua-driver-rs-v0.38.0/cua-driver-rs-0.38.0-linux-x86_64-binary.tar.gz
+	source = cua-driver-rs-0.41.2-linux-x86_64-binary.tar.gz::https://github.com/trycua/cua/releases/download/cua-driver-rs-v0.41.2/cua-driver-rs-0.41.2-linux-x86_64-binary.tar.gz
 	source = cua-driver.service
-	sha256sums = 31ab9709dd91ce73677e49b9f3e75c6f0d3e4d9625c286c9e58262bfbea698dd
+	sha256sums = aab4bc0978822102bf8276350aa2c101d3f7eb519adbc17fa949b5ea1bac892d
 	sha256sums = SKIP
 
 pkgname = cua-driver-bin
