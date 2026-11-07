@@ -2,7 +2,7 @@ pkgbase = dcmtk-git
 	pkgdesc = Collection of libraries and applications implementing large parts the DICOM standard
 	pkgver = 3.6.8.r54.gc791af76e
 	pkgrel = 1
-	url = https://dicom.offis.de/dcmtk
+	url = https://www.dcmtk.org
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = dcmtk-git
 	backup = etc/dcmtk-3.6.8-DEV/printers.cfg
 	backup = etc/dcmtk-3.6.8-DEV/storescp.cfg
 	backup = etc/dcmtk-3.6.8-DEV/storescu.cfg
-	source = git+https://git.dcmtk.org/dcmtk.git
+	source = git+https://github.com/dcmtk/dcmtk.git
 	sha256sums = SKIP
 
 pkgname = dcmtk-git

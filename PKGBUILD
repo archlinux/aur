@@ -6,14 +6,14 @@ pkgver=3.6.8.r54.gc791af76e
 pkgrel=1
 pkgdesc='Collection of libraries and applications implementing large parts the DICOM standard'
 arch=('i686' 'x86_64' 'aarch64')
-url='https://dicom.offis.de/dcmtk'
+url='https://www.dcmtk.org'
 license=('custom')
 depends=('libxml2' 'libsndfile' 'libpng' 'libtiff' 'libjpeg-turbo')
 makedepends=('git' 'cmake' 'doxygen')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=("etc/dcmtk-${pkgver%.r*}-DEV/"{dcmpstat,dcmqrprf,dcmqrscp,filelog,logger,printers,storescp,storescu}.cfg)
-source=("git+https://git.dcmtk.org/dcmtk.git")
+source=("git+https://github.com/dcmtk/dcmtk.git")
 sha256sums=('SKIP')
 
 pkgver() {
