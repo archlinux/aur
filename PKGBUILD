@@ -30,7 +30,7 @@ optdepends=(
     'grim: screenshots'
     'slurp: picking the screen to share, and screenshot regions'
     'xdg-desktop-portal-gtk: file chooser and other portals'
-    'wl-clipboard: clipboard from the command line'
+    'wl-clipboard: Mod+Shift+S, a region of the screen to the clipboard (wl-copy)'
     'swaylock: locking the session'
     'libnotify: notifications from pila, such as an invalid config (notify-send)'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
