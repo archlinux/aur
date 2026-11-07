@@ -1,6 +1,6 @@
 pkgbase = heatsync-chat-bin
 	pkgdesc = twitch, kick and youtube chat in one native window, with heatsync emotes (prebuilt release)
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/mellen9999/heatsync-chat
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = heatsync-chat-bin
 	optdepends = mpv: video links play in their own window
 	optdepends = yt-dlp: lets mpv play youtube and clip links
 	optdepends = pipewire: the mention sound (paplay or aplay work too)
-	provides = heatsync-chat=0.3.2
+	provides = heatsync-chat=0.3.3
 	conflicts = heatsync-chat
 	options = !strip
 	options = !debug
-	source_x86_64 = heatsync-chat-0.3.2-x86_64.tar.gz::https://github.com/mellen9999/heatsync-chat/releases/download/v0.3.2/heatsync-chat-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 1e1360b3c713ed75e0c6b2cd26da5b71547e70fe67353058a3d0e6e09d377245
-	source_aarch64 = heatsync-chat-0.3.2-aarch64.tar.gz::https://github.com/mellen9999/heatsync-chat/releases/download/v0.3.2/heatsync-chat-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 1d816b7d47cc4279ee6f5e7e62a9d8c025ab8fb80da8e56bcfe9a609a66ae41d
+	source_x86_64 = heatsync-chat-0.3.3-x86_64.tar.gz::https://github.com/mellen9999/heatsync-chat/releases/download/v0.3.3/heatsync-chat-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 3b1551d6356c78a9a3514ca0606dcff561113c30ed7993235bfd22e0e5f2ec50
+	source_aarch64 = heatsync-chat-0.3.3-aarch64.tar.gz::https://github.com/mellen9999/heatsync-chat/releases/download/v0.3.3/heatsync-chat-aarch64-linux.tar.gz
+	sha256sums_aarch64 = e29d06e56003b0a81c72cd07eaf351a0d50788f4d524a38b8ec0cc405c3547a9
 
 pkgname = heatsync-chat-bin
