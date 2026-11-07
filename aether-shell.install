@@ -3,73 +3,82 @@ post_install() {
 Aether is installed under /etc/xdg/quickshell/aether. It can coexist with
 caelestia-shell-git; only one of the two shells should be running.
 
-On first start, ~/.config/caelestia, ~/.local/state/caelestia and
+== Step 1: the Hyprland config (the settings pages need it) ==
+
+    aether hypr install
+
+That links this package's config into ~/.config/hypr and moves whatever was
+there to ~/.config/hypr.aether-backup.<timestamp>. Nothing is deleted:
+    mv ~/.config/hypr.aether-backup.<timestamp> ~/.config/hypr
+puts the old config back.
+
+Why it is required: every page under Nexus > Hyprland writes
+~/.config/aether/hypr-vars.lua, and only this config reads that file. Without
+it the pages save settings that never reach Hyprland. The Nexus page says so
+too, until it is installed.
+
+Keep your own tweaks in ~/.config/aether/hypr-user.lua -- the config loads it
+last, and Nexus > Hyprland > User configuration opens it. Port what you still
+need from the backup there, then delete the backup.
+
+Log out and back in (or run `hyprctl reload`) after installing.
+
+== Step 2: the shell ==
+
+Hyprland starts it: the config from step 1 already calls `aether shell -d`.
+To drive it by hand:
+    aether shell -d         start
+    aether shell -r -d      restart the running copy
+    aether shell -l         tail the log
+    aether shell -s         list every IPC target and function
+
+== Where things live ==
+
+Settings:  ~/.config/aether/shell.json
+State:     ~/.local/state/aether
+Data:      ~/.local/share/aether
+
+On first start ~/.config/caelestia, ~/.local/state/caelestia and
 ~/.local/share/caelestia are copied once to the aether names. The old
 directories are left alone, so a caelestia-shell install keeps its own.
 
-Nothing else is needed to build or start it.
+The installed config already sets SSH_ASKPASS, SUDO_ASKPASS and
+QT_QPA_PLATFORMTHEME; do not export them by hand. SSH still prompts in the
+terminal when one is attached -- set SSH_ASKPASS_REQUIRE=force if you want the
+dialog everywhere.
 
-Start the shell now:
-    aether shell -d
-
-After an upgrade, restart the running copy:
-    aether shell -r -d
-
-See what is running and how to talk to it:
-    aether shell -l
-    aether shell -s        # list every IPC target and function
-
-Hyprland starts the shell, so add this to your config once:
-
-    Lua config (~/.config/hypr/hyprland/execs.lua):
-        hl.exec_cmd("aether shell -d")
-
-    hyprlang config (~/.config/hypr/hyprland.conf):
-        exec-once = aether shell -d
-
-Keybinds are not installed into ~/.config/hypr -- that file is yours. The
-complete reference config, including every keybind and variable the settings
-pages write, is at:
-
-    /usr/share/aether-shell/hypr/
-
-Compare its hyprland/keybinds.lua and variables.lua with your own setup. Do not
-copy the whole tree over ~/.config/hypr without reading it: it is a full config,
-not a fragment.
-
-If you copied an older reference config, it still points at caelestia names.
-Update ~/.config/hypr before restarting the shell:
-  * global shortcuts are aether:* now, not caelestia:*
-  * the overrides file is ~/.config/aether/hypr-vars.lua
-  * the user file is ~/.config/aether/hypr-user.lua
-
-Until then, these still work from a terminal:
-
-    aether ipc call nexus open      # open the settings window
-    aether ipc call drawers toggle launcher
+The shell itself writes only ~/.config/aether/. It never edits
+~/.config/hypr; `aether hypr install` is the one command that does.
 
 Optional extras:
-    hyprmoncfg              saved monitor layouts (Display page)
-    bluez                   Bluetooth and the pairing agent
-    fprintd / howdy-next    fingerprint / face unlock
+    hyprmoncfg                   saved monitor layouts (Display page)
+    bluez                        Bluetooth and the pairing agent
+    fprintd / howdy-next         fingerprint / face unlock
     xdg-desktop-portal-hyprland  screen sharing and file pickers
-
-Qt application theming (optional): the Qt platform theme is installed. Add this
-to ~/.config/aether/hypr-user.lua and log back in:
-
-    hl.env("QT_QPA_PLATFORMTHEME", "aether")
-
-The shell writes only ~/.config/aether/. It never edits ~/.config/hypr.
 EOF
 }
 
 post_upgrade() {
-    post_install
+    cat <<'EOF'
+Aether was updated. Restart the running copy:
+
+    aether shell -r -d
+
+If Nexus > Hyprland shows a warning that the config is not installed, run:
+
+    aether hypr install
+
+Your settings in ~/.config/aether are kept.
+EOF
 }
 
 pre_remove() {
     cat <<'EOF'
 Aether's configuration is kept in ~/.config/aether/ and is not removed by
 this package. Delete it yourself if you also want to drop your settings.
+
+~/.config/hypr holds symlinks into this package after `aether hypr install`.
+Remove them (or restore a backup from ~/.config/hypr.aether-backup.*) before
+uninstalling, or Hyprland will start with a config that points at nothing.
 EOF
 }
