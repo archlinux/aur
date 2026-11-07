@@ -9,7 +9,7 @@
 # With addition of: https://github.com/RealSupremium/bluez/commit/fadd6455d4e9716b6c724681e18cfb3d7a1704e4
 
 pkgname='bluez-optional-force-active'
-pkgdesc='Daemons for the bluetooth protocol stack'
+pkgdesc='Daemons for the bluetooth protocol stack with a patch to improve PSVR2 Sense controller tracking'
 pkgver=5.88
 pkgrel=1
 url="http://www.bluez.org/"
