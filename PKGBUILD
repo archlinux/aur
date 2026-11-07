@@ -8,7 +8,7 @@
 # via `keeperfx-install` after installation.
 
 pkgname=keeperfx-git
-pkgver=1.4.0.r5513.g54f9ee23d
+pkgver=1.4.0.r5601.gf4bad330f
 pkgrel=1
 pkgdesc='Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.'
 arch=('x86_64')
@@ -32,10 +32,14 @@ _data7z="keeperfx_${_datever//./_}_complete.7z"
 # VCS clone whose origin differs. Cloning into a fresh "$_srcname" dir sidesteps the
 # "not a clone of ..." abort every existing user would otherwise hit on upgrade.
 _srcname=keeperfx
+# Same version as POTONGDAT_DOWNLOAD in upstream's prebuilds.mk.
+_po2ngdat_tag=v1.0.2.31-d
 source=("${_srcname}::git+https://github.com/dkfans/keeperfx.git#branch=${_branch}"
+        "po2ngdat::git+https://github.com/dkfans/po2ngdat.git#tag=${_po2ngdat_tag}"
         "${_data7z}::https://github.com/dkfans/keeperfx/releases/download/v${_datever}/${_data7z}")
 noextract=("${_data7z}")
 sha256sums=('SKIP'
+            'SKIP'
             '82d9d5634e8ea6cabb8f62fbd4830b758919893863cd313517af256a3040a279')
 
 pkgver() {
@@ -60,6 +64,27 @@ build() {
     -DCMAKE_C_FLAGS="$CFLAGS $map" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS $map"
   cmake --build "$srcdir/build" --target keeperfx
+
+  # The language .dat files in the release 7z are indexed by the engine's string enum, so
+  # a master engine on them loses every string added since the release. Build them from
+  # this checkout instead; pkg_lang.mk lists the same files upstream packages.
+  make -C "$srcdir/po2ngdat"
+  local dat po tbl out="$srcdir/langdat"
+  grep -oE 'pkg/[a-z0-9_/]+\.dat' pkg_lang.mk | sort -u | while IFS= read -r dat; do
+    dat=${dat#pkg/}
+    po=lang/${dat#fxdata/}; po=${po%.dat}.po
+    [ -f "$po" ] || po+=t
+    case $dat in
+      *_jpn.dat)           tbl=jp ;;
+      *_rus.dat|*_ukr.dat) tbl=ru ;;
+      *_chi.dat|*_cht.dat) tbl=ch ;;
+      *_kor.dat)           tbl=kr ;;
+      *)                   tbl=eu ;;
+    esac
+    mkdir -p "$out/${dat%/*}"
+    "$srcdir/po2ngdat/bin/po2ngdat" -o "$out/$dat" \
+      -e "$srcdir/po2ngdat/res/char_encoding_tbl_$tbl.txt" "$po" >/dev/null
+  done
 }
 
 package() {
@@ -74,12 +99,12 @@ package() {
   7z x -y "-o$fd" "$srcdir/$_data7z" >/dev/null
   install -d "$pkgdir/usr/share/$pkgname"
   local d
-  for d in data fxdata ldata levels sound campgns creatrs mods music; do
+  for d in data fxdata ldata levels sound campgns creatrs mods music multiplayer; do
     [ -d "$fd/$d" ] && cp -r "$fd/$d" "$pkgdir/usr/share/$pkgname/"
   done
   [ -f "$fd/keeperfx.cfg" ] && install -Dm644 "$fd/keeperfx.cfg" "$pkgdir/usr/share/$pkgname/keeperfx.cfg"
 
-  # The release 7z only provides the binary assets (graphics, sound, language .dat files).
+  # The release 7z only provides the binary assets (graphics, sound).
   # The text data the engine reads (configs, Lua, campaigns, map packs) moves with the code,
   # so take it from this same checkout, laid out like upstream's package.mk does. Otherwise
   # a master engine would run on the configs of the last release.
@@ -91,6 +116,7 @@ package() {
       ! -name readme.txt ! -name personal.cfg ) | while IFS= read -r f; do
     install -Dm644 "levels/$f" "$sd/levels/$f"
   done
+  cp -r "$srcdir/langdat/." "$sd/"
   find "$sd" -type d -exec chmod 755 {} +
   find "$sd" -type f -exec chmod 644 {} +
 

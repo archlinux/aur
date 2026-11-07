@@ -1,6 +1,6 @@
 pkgbase = keeperfx-git
 	pkgdesc = Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.
-	pkgver = 1.4.0.r5513.g54f9ee23d
+	pkgver = 1.4.0.r5601.gf4bad330f
 	pkgrel = 1
 	url = https://github.com/dkfans/keeperfx
 	install = keeperfx-git.install
@@ -33,7 +33,9 @@ pkgbase = keeperfx-git
 	options = !debug
 	options = !strip
 	source = keeperfx::git+https://github.com/dkfans/keeperfx.git#branch=master
+	source = po2ngdat::git+https://github.com/dkfans/po2ngdat.git#tag=v1.0.2.31-d
 	source = keeperfx_1_4_0_complete.7z::https://github.com/dkfans/keeperfx/releases/download/v1.4.0/keeperfx_1_4_0_complete.7z
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 82d9d5634e8ea6cabb8f62fbd4830b758919893863cd313517af256a3040a279
 
