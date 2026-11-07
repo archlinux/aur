@@ -1,7 +1,7 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=dotool-git
-pkgver=1.4.r1.gb5812c0
+pkgver=1.6.r3.g27ec57e
 pkgrel=1
 pkgdesc="Command to simulate input anywhere"
 arch=('any')
