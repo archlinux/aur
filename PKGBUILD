@@ -1,7 +1,7 @@
 # Maintainer: Jochem Kuipers <jochem@kuipers.cc>
 
 pkgname=ltbox-bin
-pkgver=3.2.2
+pkgver=3.3.5
 pkgrel=1
 pkgdesc='Lenovo tablet firmware tool (region, root, EDL) — binary release'
 arch=('x86_64' 'aarch64')
@@ -27,9 +27,9 @@ source_x86_64=(
 source_aarch64=(
   "LTBox-linux_arm64-v${pkgver}.tar.gz::https://github.com/miner7222/LTBox/releases/download/v${pkgver}/LTBox-linux_arm64-v${pkgver}.tar.gz"
 )
-sha256sums=('0f6346cbba24fd373e3edaefb2a212412517c4f34f7600fe20df432d58acfccb')
-sha256sums_x86_64=('b64085ea9fa6f5871126a71e90bdf6a914f63551f5f30eaca5f71c6f915bfb42')
-sha256sums_aarch64=('064fec83312cce30ab12de05a18aa5c00e9d1f37ad1966b5480b50a128154b8d')
+sha256sums=('66c912a16aaa7f1ba1026433391f4407650409efa6a9d8672d7578fb2b51f8b6')
+sha256sums_x86_64=('1154ee5cf81fcb314d486102085c5afda71297bf2c9725219c41c457abbc36d5')
+sha256sums_aarch64=('af15c6adcf1597250a5592f8342d82895676d18faf26f0d086e8dae9e57e565a')
 
 package() {
   local _srcdir
