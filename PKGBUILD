@@ -1,7 +1,7 @@
 # Maintainer: Artem Shustrov <shustrov_a@inbox.ru>
 pkgname=evo-cli-bin
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI and MCP server for Cloud.ru Evolution'
 arch=('x86_64' 'aarch64')
 url='https://github.com/shatim-ops/evo-cli'
@@ -26,6 +26,10 @@ package() {
     install -d "${pkgdir}/usr/share/zsh/site-functions"
     "${srcdir}/evo" completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_evo"
     chmod 644 "${pkgdir}/usr/share/zsh/site-functions/_evo"
+
+    install -d "${pkgdir}/usr/share/fish/vendor_completions.d"
+    "${srcdir}/evo" completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/evo.fish"
+    chmod 644 "${pkgdir}/usr/share/fish/vendor_completions.d/evo.fish"
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"

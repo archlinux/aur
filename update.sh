@@ -11,13 +11,19 @@ fi
 if [[ $# -eq 1 ]]; then
     version=${1#v}
 else
-    version=$(curl -fsSL https://api.github.com/repos/shatim-ops/evo-cli/releases/latest \
-        | sed -n 's/.*"tag_name": "v\([^"]*\)".*/\1/p' | head -n 1)
+    release_json=$(curl -fsSL https://api.github.com/repos/shatim-ops/evo-cli/releases/latest)
+    version=$(sed -n 's/.*"tag_name": "v\([^"]*\)".*/\1/p' <<< "$release_json")
 fi
 
 if [[ ! $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
     echo "Could not determine a valid release version: $version" >&2
     exit 1
+fi
+
+current_version=$(sed -n 's/^pkgver=//p' PKGBUILD)
+if [[ $version == "$current_version" ]]; then
+    echo "Already up to date: ${version}"
+    exit 0
 fi
 
 checksums=$(curl -fsSL "https://github.com/shatim-ops/evo-cli/releases/download/v${version}/checksums.txt")
