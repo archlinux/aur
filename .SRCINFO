@@ -1,6 +1,6 @@
 pkgbase = waterfox
 	pkgdesc = A customizable, privacy‑focused web browser
-	pkgver = 6.7.7
+	pkgver = 6.7.8
 	pkgrel = 1
 	url = https://github.com/BrowserWorks/waterfox
 	arch = x86_64
@@ -56,11 +56,11 @@ pkgbase = waterfox
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = waterfox-6.7.7.tar.gz::https://github.com/BrowserWorks/waterfox/archive/refs/tags/6.7.7.tar.gz
-	source = waterfox-6.7.7-locales.tar.gz::https://github.com/BrowserWorks/l10n/archive/2831b9febe74eaea144754d1643f1a0622afdaee.tar.gz
+	source = waterfox-6.7.8.tar.gz::https://github.com/BrowserWorks/waterfox/archive/refs/tags/6.7.8.tar.gz
+	source = waterfox-6.7.8-locales.tar.gz::https://github.com/BrowserWorks/l10n/archive/b38d767ad8d690d6a4f23091df07abfc7000ed0d.tar.gz
 	source = waterfox.desktop
-	sha256sums = fa2ae416803421ad7ed72472ca8e939cb5f941d974d0439528ebd6466c7a668b
-	sha256sums = ec57fd8ec1a9dc2a6dcd587a77f8e97dc88f66ef1609ba0e236887433786e593
+	sha256sums = e7f4f23d79f6954ce75f1551a8fcf4fe47afa2ca622f8a0e5f7fcf03e8174797
+	sha256sums = e91f923f4d3c9a18e29ef04582cdd1ea5aa23c15e8130cdef2901f5f6bf94ea9
 	sha256sums = 9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286
 
 pkgname = waterfox
