@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=larperCord
+Comment=Native Discord client
+Exec=larpercord
+Icon=larpercord
+Terminal=false
+Categories=Network;InstantMessaging;
+StartupWMClass=dev.larpercord
