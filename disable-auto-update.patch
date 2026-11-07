@@ -1,6 +1,6 @@
 --- a/electron/main.cjs
 +++ b/electron/main.cjs
-@@ -504,6 +504,9 @@
+@@ -505,6 +505,9 @@
  }
  
  function setupAutoUpdater() {

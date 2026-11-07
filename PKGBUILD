@@ -1,8 +1,8 @@
 # Maintainer: Sivasubramanian Ramanathan <sivasub987@gmail.com>
 
 pkgname=learnharness-bin
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Agent harness for adaptive teaching, practice, and a knowledge graph"
 arch=('x86_64')
 url="https://learnharness.ai/"
@@ -51,9 +51,9 @@ source=(
 source_x86_64=("learnharness-${pkgver}.deb::https://github.com/amosblomqvist/learnharness/releases/download/v${pkgver}/LearnHarness-${pkgver}-amd64.deb")
 sha256sums=(
   '6cf253fe5b5dcc88329faa24391249b996518ed6ba394980da945981b2981927'
-  '93cc1a1cc84cc7abc0f3e42fa08947de7bc2e90baa343d632952198535c1bf7b'
+  '0382ce601f83691cc1cb922ecadd4985eceb8fd382de1d11902d911cacd1b98c'
 )
-sha256sums_x86_64=('fc09e7ac1f9a9ae26bd8adbec27913e41e014e2c0c5f6abbb0e2207cca671d26')
+sha256sums_x86_64=('9d1ee7c105ef9ccbcca07f8cda7425bab7802c6b9f00dcef713a25d24e052084')
 
 package() {
   local resources="${pkgdir}/opt/LearnHarness/resources"

@@ -1,7 +1,7 @@
 pkgbase = learnharness-bin
 	pkgdesc = Agent harness for adaptive teaching, practice, and a knowledge graph
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://learnharness.ai/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -41,11 +41,11 @@ pkgbase = learnharness-bin
 	conflicts = learnharness
 	options = !strip
 	options = !debug
-	source = learnharness-0.4.1.svg::https://raw.githubusercontent.com/amosblomqvist/learnharness/v0.4.1/build/icon-flat.svg
+	source = learnharness-0.5.0.svg::https://raw.githubusercontent.com/amosblomqvist/learnharness/v0.5.0/build/icon-flat.svg
 	source = disable-auto-update.patch
 	sha256sums = 6cf253fe5b5dcc88329faa24391249b996518ed6ba394980da945981b2981927
-	sha256sums = 93cc1a1cc84cc7abc0f3e42fa08947de7bc2e90baa343d632952198535c1bf7b
-	source_x86_64 = learnharness-0.4.1.deb::https://github.com/amosblomqvist/learnharness/releases/download/v0.4.1/LearnHarness-0.4.1-amd64.deb
-	sha256sums_x86_64 = fc09e7ac1f9a9ae26bd8adbec27913e41e014e2c0c5f6abbb0e2207cca671d26
+	sha256sums = 0382ce601f83691cc1cb922ecadd4985eceb8fd382de1d11902d911cacd1b98c
+	source_x86_64 = learnharness-0.5.0.deb::https://github.com/amosblomqvist/learnharness/releases/download/v0.5.0/LearnHarness-0.5.0-amd64.deb
+	sha256sums_x86_64 = 9d1ee7c105ef9ccbcca07f8cda7425bab7802c6b9f00dcef713a25d24e052084
 
 pkgname = learnharness-bin
