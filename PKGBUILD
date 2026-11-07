@@ -8,12 +8,12 @@ pkgdesc='A lightweight interface for interacting with the graphical display of v
 arch=('i686' 'x86_64' 'aarch64')
 url='https://virt-manager.org'
 license=('GPL-2.0-only')
-depends=('gtk-vnc' 'libvirt-glib' 'spice-gtk' 'gobject-introspection' 'libgovirt' 'vte3' 'bash-completion')
-makedepends=('git' 'meson' 'intltool' 'spice-protocol-git')
+depends=('libvirt-glib' 'spice-gtk-git' 'gtk-vnc' 'libgovirt' 'vte3')
+makedepends=('git' 'meson' 'glib2-devel' 'bash-completion')
 provides=("${_pkgname}" 'virtviewer')
 conflicts=("${_pkgname}" 'virtviewer')
 source=("git+https://gitlab.com/${_pkgname}/${_pkgname}.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
