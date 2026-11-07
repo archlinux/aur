@@ -4,7 +4,7 @@
 
 pkgname=mininet
 pkgver=2.3.1b4
-pkgrel=2
+pkgrel=3
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
          'libcgroup' 'openvswitch' 'psmisc')
@@ -16,7 +16,7 @@ makedepends=('git' 'help2man' 'python-setuptools' 'python-build'
              'python-installer' 'python-wheel')
 arch=('x86_64')
 url='https://github.com/mininet/mininet'
-license=('custom')
+license=('BSD-3-Clause')
 install=mininet.install
 source=("https://github.com/mininet/mininet/archive/refs/tags/$pkgver.tar.gz"
         'git+https://github.com/mininet/openflow'   # for UserSwitch
