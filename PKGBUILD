@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A GPU-accelerated desktop Git client built in Rust with GPUI"
 
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -39,8 +39,8 @@ sha256sums=('25fd44f8c7bea68b876c37322e42bb898587d585394af069359cf419d3c5eb04'
             'f3c9ab74c5d4e4eb8c6d664d4beb971030b3cd2ae6495655b922539e4c5f03d2'
             '84c8d8c1ffa2114a14d9fa1be70b1b16897416e7d86d4d2801850fb49fe871c9'
             '1d7798802d4b382ba42cada0dd1324b6c86ad1a3c2cf2b3e01b12428f4a3669f'
-            '36fca793c4fb5d1ac0efbdd89a1f85183a2ff1878c759de15e4a80172e6050f0')
-sha256sums_x86_64=('c8e8cbf3b5d2df81edf6a5455136cbd14ec012b15b443316631caeef7f7bc0b4')
+            '0d4a0abdf14284fa341cb696327baaf1921a0abdf4c3a01bae4565fad3a99dde')
+sha256sums_x86_64=('f2951046f310ad163c0358d68c25cc41de4478ab437339fe841bdb42dd565004')
 
 
 package() {
