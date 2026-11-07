@@ -1,0 +1,12 @@
+pkgbase = patchsplit
+	pkgdesc = A fast, cross-platform CLI tool for splitting and applying patches
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/zitzhen/patchsplit
+	arch = x86_64
+	license = MIT
+	depends = curl
+	source = patchsplit::git+https://github.com/zitzhen/patchsplit.git#tag=v1.5.0
+	sha256sums = 4a265be17347d652a8a8fea08ef5ad80d357b8c70c0f9d46ca69b74352c5bea6
+
+pkgname = patchsplit
