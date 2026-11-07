@@ -2,7 +2,7 @@
 
 pkgname=aether-shell-git
 _pkgname=aether-shell
-pkgver=2.5.0.r1140.gbbc06d3
+pkgver=2.5.0.r1142.g1334e23
 pkgrel=1
 pkgdesc='Quickshell desktop shell for Hyprland, merging MiDnight Shell and OP-Caelestia'
 arch=('x86_64')
