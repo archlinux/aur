@@ -1,16 +1,16 @@
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 # Contributor: Philippe Hürlimann <p@hurlimann.org>
 # Contributor: Michel Zou <xantares09@hotmail.com>
-# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=retdec
 pkgver=5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A retargetable machine-code decompiler based on LLVM"
 arch=('x86_64')
 url="https://github.com/avast/retdec"
 license=('MIT')
 depends=('openssl' 'python' 'zlib')
-makedepends=('cmake3' 'doxygen' 'graphviz')
+makedepends=('cmake' 'doxygen' 'graphviz')
 optdepends=('upx: To use UPX unpacker in the preprocessing stage'
             'graphviz: To generate call or control flow grpahs')
 source=("https://github.com/avast/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -28,20 +28,30 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    # The use of cmake3 is needed for now because CMake 4.0 has removed
-    # compatibility with CMake < 3.5, which leads to configuration errors with
-    # llvm, yaramod, and fmt. We may consider switching back to cmake when
-    # retdec creates a new release that compiles with the updated version.
-    cmake3 -B build -S . \
+    # retdec 5.0 and the dependencies it builds itself (llvm, yaramod, fmt, ...)
+    # still declare cmake_minimum_required < 3.5, which CMake 4 rejects. This
+    # variable is CMake's documented override and is inherited by the nested
+    # ExternalProject builds. Drop it once upstream releases with newer minimums.
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+    # CMAKE_INSTALL_PREFIX deliberately points into $pkgdir instead of using
+    # the usual /usr prefix + DESTDIR. retdec's support/CMakeLists.txt runs
+    # install(CODE) steps that download the retdec-support archive, execute the
+    # freshly installed retdec-yarac, and delete/recreate the support directory
+    # at the *absolute* prefix path, ignoring DESTDIR. With a /usr prefix those
+    # steps would touch the live system. The decompiler locates share/retdec
+    # relative to its own binary at runtime, so the staged prefix is not baked
+    # into the installed files.
+    cmake -B build -S . \
         -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DRETDEC_DOC=ON
-    cmake3 --build build
+    cmake --build build
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    cmake3 --install build
+    cmake --install build
     install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE*
 }
 

@@ -1,11 +1,11 @@
 pkgbase = retdec
 	pkgdesc = A retargetable machine-code decompiler based on LLVM
 	pkgver = 5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/avast/retdec
 	arch = x86_64
 	license = MIT
-	makedepends = cmake3
+	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
 	depends = openssl
