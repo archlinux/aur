@@ -1,6 +1,6 @@
 pkgbase = polymath-dev
 	pkgdesc = Advanced keyboard layout customization tool for Flux keyboards (dev build)
-	pkgver = 1.5.0.1
+	pkgver = 1.5.0.5
 	pkgrel = 1
 	url = https://fluxkeyboard.com/updates-dev/polymath/linux/deb/
 	arch = x86_64
@@ -63,9 +63,9 @@ pkgbase = polymath-dev
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://fluxkeyboard.com/updates-dev/polymath/linux/deb/polymath_1.5.0.1_amd64.deb
+	source = https://fluxkeyboard.com/updates-dev/polymath/linux/deb/polymath_1.5.0.5_amd64.deb
 	source = udev.rules
-	sha256sums = 898cbace355218f4cedbb442b7f5b53063ea7051eb5db617af79206fba227b5c
+	sha256sums = 4e19ab2f887a8cd64937e0d821742c0993cad9b58549fcb263823c7de5fd38c1
 	sha256sums = SKIP
 
 pkgname = polymath-dev
