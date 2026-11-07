@@ -7,7 +7,6 @@ pkgbase = ttea
 	arch = i686
 	license = GPL
 	makedepends = meson
-	depends = glibc
 	optdepends = mpv: play timer sound
 	optdepends = mplayer: alternative player for timer
 	optdepends = gtk4: alternative GTK gui

@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 license=("GPL")
 source=("https://git.roshless.me/roshless/$pkgname/archive/$pkgver.tar.gz")
 makedepends=('meson')
-depends=('glibc')
+
 optdepends=(
     'mpv: play timer sound'
     'mplayer: alternative player for timer'
