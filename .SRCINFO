@@ -1,6 +1,6 @@
 pkgbase = stillmusic
 	pkgdesc = Minimal black and white CLI music player powered by MPV
-	pkgver = 0.3.0beta1
+	pkgver = 0.3.0beta2
 	pkgrel = 1
 	url = https://github.com/horizzon3507/stillmusic
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = stillmusic
 	conflicts = optionmusic
 	conflicts = optmusic
 	options = !lto
-	source = stillmusic-0.3.0-beta.1.tar.gz::https://github.com/horizzon3507/stillmusic/archive/refs/tags/v0.3.0-beta.1.tar.gz
-	sha256sums = 52739b0bac5553d41f9a93d9de087a48fe686c77837ec7b0e1e991b38c7120c5
+	source = stillmusic-0.3.0-beta.2.tar.gz::https://github.com/horizzon3507/stillmusic/archive/refs/tags/v0.3.0-beta.2.tar.gz
+	sha256sums = 920ac16fe99d8556f7583cbe1529caccbb13aace4db9e8cc47487498679a3bbe
 
 pkgname = stillmusic

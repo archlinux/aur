@@ -1,7 +1,7 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=stillmusic
-pkgver=0.3.0beta1
-_tag=0.3.0-beta.1
+pkgver=0.3.0beta2
+_tag=0.3.0-beta.2
 pkgrel=1
 pkgdesc='Minimal black and white CLI music player powered by MPV'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('cava: spectrum bars'
 conflicts=('stillmusic-bin' 'optionmusic' 'optmusic')
 options=('!lto')
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('52739b0bac5553d41f9a93d9de087a48fe686c77837ec7b0e1e991b38c7120c5')
+sha256sums=('920ac16fe99d8556f7583cbe1529caccbb13aace4db9e8cc47487498679a3bbe')
 
 prepare() {
   cd "stillmusic-$_tag"
