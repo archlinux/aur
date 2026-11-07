@@ -12,7 +12,7 @@ url='https://github.com/ndilieto/uacme/'
 makedepends=('asciidoc' 'git' 'libev')
 depends=('curl' 'gnutls')
 optdepends=('libev: for ualpn')
-license=('GPL3')
+license=('GPL3-or-later')
 source=("$pkgname-$pkgver::git+https://github.com/ndilieto/$pkgname.git#tag=$_pkgsha?signed")
 sha256sums=('7dbedda407af0852a02303341d7499f79acd57bbec364744eeb301b4748edf21')
 validpgpkeys=('243828049BB5F549446516E24142E3D6318A7874') # gpg --fetch-keys https://github.com/ndilieto.gpg
