@@ -1,0 +1,16 @@
+pkgbase = rgy-search-bin
+	pkgdesc = Whole-filesystem name search and content search in one stack (binary release)
+	pkgver = 0.1.10.0
+	pkgrel = 1
+	url = https://github.com/danalec/rgy
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	conflicts = rgy-search-avx2-bin
+	conflicts = rgy-search-znver4-bin
+	options = !strip
+	source = rgy-v0.1.10.0-x86_64-linux.tar.gz::https://github.com/danalec/rgy/releases/download/rgy-v0.1.10.0/rgy-v0.1.10.0-x86_64-linux.tar.gz
+	sha256sums = 9f5a4f5b122305c469d468a6d6e624291cf885b5963ac2c302f8299b591c4b41
+
+pkgname = rgy-search-bin
