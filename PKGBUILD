@@ -7,25 +7,25 @@
 
 pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
-pkgver=11.1.0.11723
+pkgver=12.1.2.29183
 #_pkgver=8372
-pkgrel=2
+pkgrel=1
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) - an office productivity suite"
 arch=('x86_64')
 license=('LicenseRef-WPS-EULA')
-url="http://wps-community.org"
+url="https://www.wps.com/office/linux"
 options=('!emptydirs')
 #[[ "$CARCH" = "i686" ]] && _archext=x86 || _archext=x86_64
 #source_i686=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-office_${pkgver}_i386.deb"
 #            'add_no_kdialog_variable.patch')
 #source=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-office_${pkgver}_amd64.deb"
-source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgver##*.}/wps-office_${pkgver}.XA_amd64.deb"
-        'fix-wps-python-parse.patch')
+#source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgver##*.}/wps-office_${pkgver}.XA_amd64.deb"
+source=("wps-office-${pkgver}_amd64.deb::https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/wps-office.deb")
+#       'fix-wps-python-parse.patch')
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('24132c03e1b53fe8983274c5165caa9128bdb1a6'
-          'f3713481edf04ffb08be8d24dce66554dd5a4f13')
+sha1sums=('f1ebc6ae0013e868324e289bbfd0a74ddddd0e73')
 
 prepare() {
     bsdtar -xpf data.tar.xz
@@ -35,32 +35,30 @@ prepare() {
 #   sed -i 's|/office6/${gApp}  ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wps
 #   sed -i 's|/office6/${gApp} ${gOptExt}|/office6/${gApp} -style gtk+ ${gOptExt}|' wpp et
 
-    cd "${srcdir}/usr/share/icons/hicolor"
+#   cd "${srcdir}/usr/share/icons/hicolor"
 
-    for _file in ./*; do
-        if [ -e ${_file}/mimetypes/wps-office2019-etmain.png ]; then
-            mkdir -p ${_file}/apps
-            cp -p ${_file}/mimetypes/wps-office2019* ${_file}/apps
-        fi
-    done
+#   for _file in ./*; do
+#       if [ -e ${_file}/mimetypes/wps-office2019-etmain.png ]; then
+#           mkdir -p ${_file}/apps
+#           cp -p ${_file}/mimetypes/wps-office2019* ${_file}/apps
+#       fi
+#   done
 
-    cd "${srcdir}"
-#   patch -Np1 -i "${srcdir}/fix_desktop_exec.patch"
-    patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
+#   cd "${srcdir}"
+##  patch -Np1 -i "${srcdir}/fix_desktop_exec.patch"
+#   patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
 }
 
 package_wps-office() {
-    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'sdl2' 'libxml2-legacy' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'libjpeg-turbo')
-    optdepends=('libtiff5: Provide libtiff.so.5 for wpspdf working'
-                'cups: for printing support'
+    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'sdl2'  'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'libjpeg-turbo')
+    optdepends=('cups: for printing support'
                 'libjpeg-turbo: JPEG image codec support'
                 'pango: for complex (right-to-left) text support'
                 'curl: An URL retrieval utility and library'
                 'ttf-wps-fonts: Symbol fonts required by wps-office'
                 'ttf-ms-fonts: Microsft Fonts recommended for wps-office'
                 'wps-office-fonts: FZ TTF fonts provided by wps community'
-                'wps-office-mime: Use mime files provided by Kingsoft'
-                'wps-office-mui-zh-cn: zh_CN support for WPS Office')
+                'wps-office-mime: Use mime files provided by Kingsoft')
     install=${pkgname}.install
     conflicts=('kingsoft-office')
 #   cd wps-office_${pkgver}_$_archext
@@ -69,7 +67,7 @@ package_wps-office() {
     install -d "${pkgdir}/usr/lib"
     cp -r office6 "${pkgdir}/usr/lib"
     # Fix for icu>=71.1
-    rm ${pkgdir}/usr/lib/office6/libstdc++.so*
+#   rm ${pkgdir}/usr/lib/office6/libstdc++.so*
     # Use system libjpeg
     rm ${pkgdir}/usr/lib/office6/libjpeg.so*
 #   chmod -x "${pkgdir}/usr/lib/office6/wpsoffice"
