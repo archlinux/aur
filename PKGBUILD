@@ -4,10 +4,10 @@
 _dotnet_version=11.0
 _system_dotnet=false
 
-pkgname=watt-toolkit-git
+pkgname=watt-toolkit-git-proxy
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.1.0.r12.g4310f7287
-pkgrel=1
+pkgver=3.1.0.r55.g87d859992
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL-3.0-only')
@@ -19,41 +19,41 @@ depends=(
 )
 makedepends=('git')
 optdepends=('steam: need official or flatpak version of steam')
-provides=('steam++' 'watt-toolkit')
-conflicts=('steam++' 'watt-toolkit')
+provides=('watt-toolkit-git' 'steam++' 'watt-toolkit')
+conflicts=('watt-toolkit-git' 'steam++' 'watt-toolkit')
 options=('staticlibs' '!strip')
 source=(
-    'git+https://github.com/BeyondDimension/SteamTools'
-    'git+https://github.com/BeyondDimension/Credentials-Public'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/SteamTools'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Credentials-Public'
     'watt-toolkit.desktop'
     'set-cap.hook'
     '0001-fix-MsgPack.diff'
     '0002-fix-X509CertificatePackable-to-byte[].diff'
     'environment_check.sh'
     # Submodules
-    'git+https://github.com/BeyondDimension/DirectoryPackages.git'
-    'git+https://github.com/BeyondDimension/ArchiSteamFarm.git'
-    'git+https://github.com/BeyondDimension/Avalonia.Image2.git'
-    'git+https://github.com/BeyondDimension/Gameloop.Vdf.git'
-    'git+https://github.com/BeyondDimension/Steam4NET.git'
-    'git+https://github.com/BeyondDimension/Titanium-Web-Proxy.git'
-    'git+https://github.com/BeyondDimension/SteamAchievementManager.git'
-    'git+https://github.com/JustArchiNET/ASF-ui.git'
-    'git+https://github.com/JustArchiNET/ArchiSteamFarm.wiki.git'
-    'git+https://github.com/BeyondDimension/SteamClient.git'
-    'git+https://github.com/quamotion/dotnet-packaging.git'
-    'git+https://github.com/BeyondDimension/dotnetCampus.Ipc.git'
-    'git+https://github.com/BeyondDimension/WTTS.MicroServices.ClientSDK.git'
-    'git+https://github.com/BeyondDimension/Common.git'
-    'git+https://github.com/BeyondDimension/WinAuth.git'
-    'git+https://github.com/BeyondDimension/ValveKeyValue.git'
-    'git+https://github.com/BeyondDimension/WTTS.Public.git'
-    'git+https://github.com/BeyondDimension/Facepunch.Steamworks.git'
-    'git+https://github.com/BeyondDimension/appcenter-sdk-dotnet.git'
-    'git+https://github.com/reactiveui/Fusillade.git'
-    'git+https://github.com/BeyondDimension/Avalonia8.git'
-    'git+https://github.com/BeyondDimension/SteamKit.git'
-    'git+https://github.com/steamdatabase/protobufs.git')
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/DirectoryPackages.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/ArchiSteamFarm.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Avalonia.Image2.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Gameloop.Vdf.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Steam4NET.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Titanium-Web-Proxy.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/SteamAchievementManager.git'
+    'git+https://v4.gh-proxy.org/https://github.com/JustArchiNET/ASF-ui.git'
+    'git+https://v4.gh-proxy.org/https://github.com/JustArchiNET/ArchiSteamFarm.wiki.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/SteamClient.git'
+    'git+https://v4.gh-proxy.org/https://github.com/quamotion/dotnet-packaging.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/dotnetCampus.Ipc.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/WTTS.MicroServices.ClientSDK.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Common.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/WinAuth.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/ValveKeyValue.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/WTTS.Public.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Facepunch.Steamworks.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/appcenter-sdk-dotnet.git'
+    'git+https://v4.gh-proxy.org/https://github.com/reactiveui/Fusillade.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/Avalonia8.git'
+    'git+https://v4.gh-proxy.org/https://github.com/BeyondDimension/SteamKit.git'
+    'git+https://v4.gh-proxy.org/https://github.com/steamdatabase/protobufs.git')
 sha256sums=('SKIP'
             'SKIP'
             '971f095988215965ba7256158a2c23af8be27222ea4f50655acd6c3bf3c4a23a'
@@ -87,16 +87,14 @@ sha256sums=('SKIP'
 
 
 declare -Ag _plugins=(
-    #[BD.WTTS.Client.Plugins.Accelerator]=Accelerator
-    #[BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
-    #[BD.WTTS.Client.Plugins.Authenticator]=Authenticator
-    #[BD.WTTS.Client.Plugins.GameAccount]=GameAccount
-    #[BD.WTTS.Client.Plugins.GameList]=GameList
-    #[BD.WTTS.Client.Plugins.GameTools]=GameTools
-    #[BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
-    #[BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
-    #[BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
-    #[BD.WTTS.Client.Plugins.Update]=Update
+    [BD.WTTS.Client.Plugins.Accelerator]=Accelerator
+    [BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
+    [BD.WTTS.Client.Plugins.Authenticator]=Authenticator
+    [BD.WTTS.Client.Plugins.GameAccount]=GameAccount
+    [BD.WTTS.Client.Plugins.GameList]=GameList
+    [BD.WTTS.Client.Plugins.GameTools]=GameTools
+    [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
+    [BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
 )
 
 if "$_system_dotnet"
@@ -179,7 +177,7 @@ prepare(){
     then
         export DOTNET_ROOT="${srcdir}/dotnet-sdk"
         export PATH="$DOTNET_ROOT:$PATH"
-        dotnet-install --channel "$_dotnet_version" --install-dir "${DOTNET_ROOT}" --no-path
+        dotnet-install --channel "$_dotnet_version" --install-dir "${DOTNET_ROOT}" --no-path --azure-feed "https://dotnetcli.azureedge.net/dotnet"
     fi
 
     dotnet --info | grep RID | cut -d : -f 2 | sed 's/arch/linux/' | xargs > _platform
