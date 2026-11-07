@@ -21,8 +21,6 @@ pkgbase = ttf-zen-maru-gothic-hinted
 	source = ZenMaruGothic-Black.ttf::https://raw.githubusercontent.com/google/fonts/92503f07b74eab956c1abf4956fbf46170716caa/ofl/zenmarugothic/ZenMaruGothic-Black.ttf
 	source = OFL.txt::https://raw.githubusercontent.com/google/fonts/92503f07b74eab956c1abf4956fbf46170716caa/ofl/zenmarugothic/OFL.txt
 	source = font-patcher-3.5.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/FontPatcher.zip
-	source = README.md
-	source = FEATURES.md
 	source = fonttune::git+https://github.com/gaou-piou/fonttune.git#branch=main
 	source = README.md
 	source = FEATURES.md
@@ -34,7 +32,7 @@ pkgbase = ttf-zen-maru-gothic-hinted
 	sha256sums = 2a20cf7ce1909d8ee1e949095d340f7d7656705f7c810a2d6faf56800ad0cb3d
 	sha256sums = 42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a
 	sha256sums = SKIP
-	sha256sums = c562a812ce7e1442eb2e1414d5a70cddde5e4ceb454d4b5fba68d45617431f81
+	sha256sums = be0df9cb6f2a809409db022e9da5f5e0d5dcd41ac6059029ce4a6471d4e5756c
 	sha256sums = 442b36978d2ed5c9e555adef20e2ba70a3775e7e66e6a11b3a0bd2d8df5d0032
 
 pkgname = ttf-zen-maru-gothic-hinted

@@ -15,7 +15,6 @@ options=(!strip)
 provides=('ttf-zen-maru-gothic')
 conflicts=('ttf-zen-maru-gothic')
 source=(
-
   "ZenMaruGothic-Light.ttf::https://raw.githubusercontent.com/google/fonts/${_gfcommit}/ofl/zenmarugothic/ZenMaruGothic-Light.ttf"
   "ZenMaruGothic-Regular.ttf::https://raw.githubusercontent.com/google/fonts/${_gfcommit}/ofl/zenmarugothic/ZenMaruGothic-Regular.ttf"
   "ZenMaruGothic-Medium.ttf::https://raw.githubusercontent.com/google/fonts/${_gfcommit}/ofl/zenmarugothic/ZenMaruGothic-Medium.ttf"
@@ -23,8 +22,6 @@ source=(
   "ZenMaruGothic-Black.ttf::https://raw.githubusercontent.com/google/fonts/${_gfcommit}/ofl/zenmarugothic/ZenMaruGothic-Black.ttf"
   "OFL.txt::https://raw.githubusercontent.com/google/fonts/${_gfcommit}/ofl/zenmarugothic/OFL.txt"
   "font-patcher-${_nfver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${_nfver}/FontPatcher.zip"
-  "README.md"
-  "FEATURES.md"
   "fonttune::git+${FONTTUNE_REPO:-https://github.com/gaou-piou/fonttune.git}#${FONTTUNE_REF:-branch=main}"
   "README.md"
   "FEATURES.md"
@@ -38,7 +35,7 @@ sha256sums=('c4e6fa10ff517df37cb0c13038fe2813f3c47afe6577fa4a5573200e4508b2c1'
             '2a20cf7ce1909d8ee1e949095d340f7d7656705f7c810a2d6faf56800ad0cb3d'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             'SKIP'
-            'c562a812ce7e1442eb2e1414d5a70cddde5e4ceb454d4b5fba68d45617431f81'
+            'be0df9cb6f2a809409db022e9da5f5e0d5dcd41ac6059029ce4a6471d4e5756c'
             '442b36978d2ed5c9e555adef20e2ba70a3775e7e66e6a11b3a0bd2d8df5d0032')
 
 # Zen Maru Gothic (Yoshimichi Ohira / Kazunari Tsuchiya, Google Fonts) is a
