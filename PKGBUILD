@@ -2,7 +2,7 @@
 
 pkgname=python-rns
 _name=${pkgname#python-}
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Self-configuring, encrypted and resilient mesh networking stack"
 arch=('any')
@@ -18,7 +18,7 @@ source=(
     $pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz
     python-rns-license::https://raw.githubusercontent.com/markqvist/Reticulum/refs/heads/master/LICENSE
 )
-sha256sums=('94f2352c7462e2fcf485d5c770eb2b41e666b753906ac3ce0a94e8a0c489a460'
+sha256sums=('aa99d550dacd0c895d81cac6d0740fbd8e89bdb3d452c555a51ef2305a6e5e4d'
             '00d736d22a942ba144a5914d05877f0532288024dc189c1aadd1930ee9b4b295')
 
 build() {
