@@ -1,12 +1,13 @@
 pkgbase = hyprlogin-bin
 	pkgdesc = GPU-accelerated greetd greeter for Hyprland, forked from hyprlock (prebuilt)
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AuthenticSm1les/hyprlogin
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = cairo
 	depends = glibc
+	depends = greetd
 	depends = libegl
 	depends = libgcc
 	depends = libgles
@@ -16,7 +17,6 @@ pkgbase = hyprlogin-bin
 	depends = libstdc++
 	depends = libxkbcommon
 	depends = wayland
-	optdepends = greetd: login manager integration
 	optdepends = hyprland: greeter compositor session
 	provides = hyprlogin=0.4.0
 	conflicts = hyprlogin
