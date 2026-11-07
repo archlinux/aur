@@ -3,7 +3,7 @@
 
 pkgname=elegoo-slicer-bin
 pkgver=1.5.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="ElegooSlicer is an open-source slicer compatible with most FDM printers"
 arch=('x86_64')
 url="https://github.com/ELEGOO-3D/ElegooSlicer"
@@ -29,9 +29,21 @@ package() {
   install -d $pkgdir/usr/bin
   ln -s /opt/${pkgname%-bin}/AppRun ${pkgdir}/usr/bin/elegoo-slicer
 
-  mv ${srcdir}/squashfs-root/com.orcaslicer.ElegooSlicer.desktop ${srcdir}/squashfs-root/ElegooSlicer.desktop
-  install -Dm644 ${srcdir}/squashfs-root/ElegooSlicer.desktop -t ${pkgdir}/usr/share/applications/
-  sed -i '/^Exec=/ c\Exec=/opt/elegoo-slicer/AppRun %U' ${pkgdir}/usr/share/applications/ElegooSlicer.desktop
-  sed -i 's|Icon=ElegooSlicer|Icon=/opt/elegoo-slicer/ElegooSlicer.png|g' ${pkgdir}/usr/share/applications/ElegooSlicer.desktop
-  sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/ElegooSlicer.desktop
+  # Install the desktop entry under a lowercase name matching the runtime
+  # window class (WM_CLASS "elegoo-slicer") so the taskbar/panel can
+  # associate the running window with this entry and use its icon.
+  install -Dm644 ${srcdir}/squashfs-root/com.orcaslicer.ElegooSlicer.desktop ${pkgdir}/usr/share/applications/elegoo-slicer.desktop
+  sed -i '/^Exec=/ c\Exec=/opt/elegoo-slicer/AppRun %U' ${pkgdir}/usr/share/applications/elegoo-slicer.desktop
+  sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/elegoo-slicer.desktop
+  # The AppImage desktop entry lacks StartupWMClass; add it so compositors
+  # match the running window to this desktop file.
+  grep -q '^StartupWMClass=' ${pkgdir}/usr/share/applications/elegoo-slicer.desktop || \
+    sed -i '/^Categories=/a StartupWMClass=elegoo-slicer' ${pkgdir}/usr/share/applications/elegoo-slicer.desktop
+
+  # Install hicolor icons (referenced by Icon=ElegooSlicer in the desktop
+  # entry) so the icon resolves both in the app menu and while running.
+  install -d ${pkgdir}/usr/share/icons/
+  cp -r ${srcdir}/squashfs-root/usr/share/icons/hicolor/ ${pkgdir}/usr/share/icons/
+
+  chmod +x ${pkgdir}/opt/${pkgname%-bin}/libexec/elegoo-slicer-env
 }
