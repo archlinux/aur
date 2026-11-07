@@ -1,0 +1,22 @@
+pkgbase = mygo-music
+	pkgdesc = MyGo Music - 原生桌面音乐播放器，播放本地文件与插件内容，不使用 WebView
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://mygo-music.egoist.dev
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = go
+	makedepends = gcc
+	makedepends = git
+	makedepends = nodejs
+	depends = gtk3
+	depends = libsecret
+	depends = libayatana-appindicator
+	optdepends = libpulse: PulseAudio 音频输出
+	optdepends = alsa-lib: ALSA 音频输出（PulseAudio 不可用时）
+	options = !debug
+	source = git+https://github.com/egoist/mygo-music.git#tag=v0.1.21
+	sha256sums = SKIP
+
+pkgname = mygo-music
