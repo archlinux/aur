@@ -34,6 +34,7 @@ mount umount2 pivot_root move_mount open_tree fsopen fsmount fsconfig fspick
 open_by_handle_at name_to_handle_at
 swapon swapoff reboot acct quotactl syslog
 iopl ioperm
+chown fchown lchown fchownat chown32 fchown32 lchown32
 """.split()
 
 for syscall in denied:
