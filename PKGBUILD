@@ -1,7 +1,7 @@
 # Maintainer: Guiradev <aur.evacuate190@passinbox.com>
 
 pkgname=gentle-ai
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="CLI tool to manage and configure AI coding agents ecosystems"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dc3fac43a382118f7dad360250121acdf575911caf19c88334576aba17e9c1f3')
+sha256sums=('da8e2de2ff469682498928f0a036aca7fe2b93537d87c17820ae00b34f9edcd3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
