@@ -1,5 +1,5 @@
 pkgname=jdk11-zulu-fx-bin
-pkgver=11.90.205
+pkgver=11.92.113
 pkgrel=1
 pkgdesc='Azul Zulu JDK 11 with JavaFX'
 arch=(
@@ -12,11 +12,11 @@ license=('custom')
 
 _jvm='java-11-zulu-fx'
 _javaver=11
-_zuluver=11.90.205
-_jdkver=11.0.32.1
-_sha256_x86_64='ee90afd42c2e3e2cab7e1f1d64c0ea8ff43064aa2caa9903fb305bedd6d41961'
-_sha256_i686='714d619bd180eb8cf71e817bcffc3eadcdc2cd12d433fd940886fb506b16be79'
-_sha256_aarch64='b6c9d7709660369e77d783aa6bcd88717c94b84914c5364e52a1e9f0d9ad4bf5'
+_zuluver=11.92.113
+_jdkver=11.0.33
+_sha256_x86_64='bb3f0f48a51f69d8a1feb093d725c01067b485e73aa77240be20bb3e99a27906'
+_sha256_i686='9295a48aef06d675346e28632ec12cf9bcbd23ba22a7ca2adfc3e2193bddb565'
+_sha256_aarch64='8d120ed2e0d02637594ffde4bdb2be8ec5c9df4ba9631d3341302ea16b75c34a'
 
 depends=(
     'java-runtime-common'
