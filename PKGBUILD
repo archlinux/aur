@@ -8,7 +8,7 @@ pkgname=(
   librsvg-noglycin
   librsvg-noglycin-docs
 )
-pkgver=2.63.3
+pkgver=2.63.4
 pkgrel=1
 pkgdesc="SVG rendering library, compatible with gdk-pixbuf2-noglycin"
 url="https://gitlab.gnome.org/GNOME/librsvg"
@@ -43,7 +43,7 @@ source=(
   # librsvg tags use SSH signatures which makepkg doesn't understand
   "git+https://gitlab.gnome.org/GNOME/librsvg.git#tag=$pkgver"
 )
-b2sums=('d08fb8e0c79e96a80ec420a33ba891e0c0cea510ed0d46e94085b74e436413db14d5dde03ab8da2306c0014eec5887149d19e80876752d5bec2f8e76446fc72d')
+b2sums=('9c55c6161eee4cc5762c3a19c229b27da9169d599e57fc3ec72012fe0825038b37f6355ffd422e15613f9aa5548e1a6c7a11106eb2acdf34d0f6623487303cd1')
 
 # Use debug
 export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
