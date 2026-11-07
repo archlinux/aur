@@ -1,0 +1,4 @@
+[getsploit]
+source = "git"
+git = "https://github.com/vulnersCom/getsploit.git"
+prefix = "v"
