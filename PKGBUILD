@@ -2,7 +2,7 @@
 
 pkgname=nomadnet
 _name=${pkgname#python-}
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Off-grid, resilient mesh communication with strong encryption"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://reticulum.network/"
 license=('MIT')
 source=($pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-sha256sums=('7fd433b890755b3187bc440d502f6fd50ec9b59bbf655283dff44d4274cf1b35')
+sha256sums=('4c064387199d9cd32b62c7d83ce770dfb6fe24d4092ed65758d0f6b3ef58b9bf')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
