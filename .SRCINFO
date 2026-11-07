@@ -1,0 +1,20 @@
+pkgbase = dwcode-bin
+	pkgdesc = Keyboard-first Cybercore desktop editor (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cybercoretech/dwcode
+	arch = x86_64
+	license = MIT
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-webchannel
+	depends = qt6-webengine
+	depends = hicolor-icon-theme
+	provides = dwcode
+	conflicts = dwcode
+	options = !debug
+	options = !strip
+	source = dwcode-bin-0.1.0-x86_64.tar.gz::https://github.com/cybercoretech/dwcode/releases/download/v0.1.0/dwcode-0.1.0-x86_64.tar.gz
+	sha256sums = 22dbdfcb17d9306d3570b584b090b674a2de3fbd29c8936ffb9af98a75d5415f
+
+pkgname = dwcode-bin
