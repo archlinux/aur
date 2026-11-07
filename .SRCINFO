@@ -1,12 +1,14 @@
 pkgbase = xdock
 	pkgdesc = Software that emulates the Window Maker dock apps for any window manager.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xdock.sourceforge.net
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = libx11
+	depends = glibc
+	depends = bash
 	options = !debug
 	source = https://sourceforge.net/projects/xdock/files/xdock/0.3.0/xdock-0.3.0.tar.gz
 	md5sums = 7fab19fdde7d0cdc6aba6760edf7d721
