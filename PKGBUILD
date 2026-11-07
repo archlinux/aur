@@ -3,24 +3,21 @@
 
 _pkgname=gthumb
 pkgname=gthumb-git
-pkgver=3.12.2+105+g5e5e2479
+pkgver=4.0.1+8+gdcf0b204e
 pkgrel=1
 pkgdesc="Image browser and viewer for the GNOME Desktop"
-arch=(i686 x86_64)
-url="http://live.gnome.org/gthumb/"
-license=('GPL')
+arch=(x86_64)
+url="https://gitlab.gnome.org/GNOME/gthumb"
+license=('GPL-2.0-or-later')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
-depends=(desktop-file-utils hicolor-icon-theme dconf librsvg clutter-gtk
-         gst-plugins-base-libs gsettings-desktop-schemas libwebp
-         webkit2gtk)
-makedepends=(intltool libchamplain libraw exiv2 itstool brasero librsvg
-             libraw liboauth docbook-xsl gnome-common yelp-tools meson)
-optdepends=('libraw: read RAW files'
-            'exiv2: metadata support'
-            'libchamplain: map viewer'
-            'brasero: burn discs'
-            'liboauth: web albums')
+depends=(exiv2 giflib glib2 gsettings-desktop-schemas gst-plugins-base-libs
+         gstreamer gtk4 hicolor-icon-theme lcms2 libadwaita libcolord libheif libjpeg-turbo
+         libjxl libpng libportal libportal-gtk4 libraw librsvg libtiff libwebp zlib)
+makedepends=(appstream desktop-file-utils git glib2-devel meson vala)
+optdepends=('gst-plugin-gtk4: video playback'
+            'gst-plugins-good: video thumbnails and rotation'
+            'gst-libav: additional video codecs')
 options=('!emptydirs')
 source=("git+https://gitlab.gnome.org/GNOME/gthumb.git")
 md5sums=('SKIP')
@@ -32,8 +29,7 @@ pkgver() {
 
 build() {
   arch-meson $_pkgname build \
-    --buildtype debugoptimized \
-    -D libchamplain=true
+    --buildtype debugoptimized
   ninja -C build
 }
 
