@@ -1,15 +1,15 @@
 pkgbase = pandacode
 	pkgdesc = Lightweight coding agent workspace
-	pkgver = 0.3.99
+	pkgver = 0.3.101
 	pkgrel = 1
 	url = https://github.com/aicodeking/pandacode
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	options = !strip
-	source_x86_64 = PandaCode-Linux-x86_64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v0.3.99/PandaCode-Linux-x86_64.AppImage
+	source_x86_64 = PandaCode-Linux-x86_64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v0.3.101/PandaCode-Linux-x86_64.AppImage
 	sha256sums_x86_64 = ec2148b4d679d6abf08a470ff7e2cfa450468b56f34e5ebf632ae427644cbe68
-	source_aarch64 = PandaCode-Linux-aarch64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v0.3.99/PandaCode-Linux-aarch64.AppImage
+	source_aarch64 = PandaCode-Linux-aarch64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v0.3.101/PandaCode-Linux-aarch64.AppImage
 	sha256sums_aarch64 = 07b3fa5e89149ce77d6769280964bdb7ff8e1663ec98a7fb7522db977e291cc4
 
 pkgname = pandacode
