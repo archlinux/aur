@@ -7,13 +7,12 @@ _version=1.0.9442
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Prosody Plugins"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=()
-optdepends=("prosody" "lua52" "lua52-sec" "lua52-zip" "lua52-event")
+depends=("prosody" "lua54-cjson" "lua54-inspect" "lua54-basexx" "lua54-luaossl")
 makedepends=(
         "git"
 )
