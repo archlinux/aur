@@ -2,9 +2,9 @@
 
 pkgname=python-ccsyspath
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Find the system include paths for clang and gcc based c/c++ compilers"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/AndrewWalker/ccsyspath"
 license=('MIT')
 depends=('python')
