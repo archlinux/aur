@@ -1,6 +1,6 @@
 pkgbase = lconnect-linux-bin
 	pkgdesc = Unofficial Lian Li L-Connect 3 port: UNI FAN TL / TL LCD / SL Infinity fan speed, RGB and LCD control (prebuilt binaries)
-	pkgver = 2.0.11.4
+	pkgver = 2.0.11.5
 	pkgrel = 1
 	url = https://github.com/koenhendriks/lian-li-lconnect-linux
 	install = lconnect.install
@@ -20,7 +20,7 @@ pkgbase = lconnect-linux-bin
 	conflicts = lconnect-linux
 	options = !strip
 	options = !debug
-	source = lconnect-linux-2.0.11.4-linux-x64.tar.gz::https://github.com/koenhendriks/lian-li-lconnect-linux/releases/download/v2.0.11.4/lconnect-linux-2.0.11.4-linux-x64.tar.gz
-	sha256sums = 5564bdfdb61129632a37b12b2614472ed9cfd4e0d4d16780fdaaacba563985c9
+	source = lconnect-linux-2.0.11.5-linux-x64.tar.gz::https://github.com/koenhendriks/lian-li-lconnect-linux/releases/download/v2.0.11.5/lconnect-linux-2.0.11.5-linux-x64.tar.gz
+	sha256sums = d6a3bba9f229d111c02590d590bd78a3cb6ba9ea9c58299ad5534403b3d53b79
 
 pkgname = lconnect-linux-bin
