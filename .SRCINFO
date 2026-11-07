@@ -1,0 +1,23 @@
+pkgbase = syndroid-bin
+	pkgdesc = synshell Android container: run Android apps on the desktop
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	groups = synshell-apps
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = syndroid
+	conflicts = syndroid
+	conflicts = syndroid-git
+	noextract = syndroid-0.2.0-x86_64.tar.zst
+	noextract = syndroid-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = syndroid-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syndroid-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = cd4bddc03476c82f70300594f6ab0dc0ffc5357ccef6f2a3f47fe8786769c6d3
+	source_aarch64 = syndroid-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syndroid-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 37b5556b113eb465ebacedb1eeeb08151798185e662cfb734a2a8cc9e33e29ab
+
+pkgname = syndroid-bin
