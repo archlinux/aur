@@ -2,13 +2,13 @@
 
 pkgname=libredblack
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='RedBlack balance tree searching and sorting library'
 depends=('python')
 makedepends=()
 arch=('x86_64')
 url='http://libredblack.sourceforge.net/'
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 source=("$pkgname-$pkgver.tar.gz"::"https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz/download"
         'rbgen.in.patch'
         "$pkgname-$pkgver-rbgen-python3.patch"
