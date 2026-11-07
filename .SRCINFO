@@ -1,0 +1,23 @@
+pkgbase = syn-systeminfo-bin
+	pkgdesc = synshell system monitor: processes, CPU, GPU, memory, disks, network
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	groups = synshell-apps
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = syn-systeminfo
+	conflicts = syn-systeminfo
+	conflicts = syn-systeminfo-git
+	noextract = syn-systeminfo-0.2.0-x86_64.tar.zst
+	noextract = syn-systeminfo-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = syn-systeminfo-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-systeminfo-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = 0e3d42f7aba33d167f9b177741945ff91fecfd7c20d81b5ee986d6c4d4a9e53d
+	source_aarch64 = syn-systeminfo-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-systeminfo-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = a7cffc3b1b07e477cca891e3c43fe3fcb987d42e009b7285efbf98927fc79b2f
+
+pkgname = syn-systeminfo-bin
