@@ -1,7 +1,7 @@
 pkgbase = tilp-xdg
 	pkgdesc = TI graphing calculator link/transfer program - with Support for the XDG Base Directory Specification
 	pkgver = 1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lpg.ticalc.org/prj_tilp/
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,13 @@ pkgbase = tilp-xdg
 	depends = gtk2
 	depends = libticalcs
 	optdepends = gfm: to manage and manipulate TI Group Files (backups)
-	source = http://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/tilp2-1.18.tar.bz2
+	provides = tilp
+	conflicts = tilp
+	source = https://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.18/tilp2-1.18.tar.bz2
 	source = remove-broken-kde-support.patch
 	source = xdg-basedir.patch
-	md5sums = daff9cb7a86af8965453e737f8fba781
-	md5sums = b678c0fade4b2daffc5662d7094b1544
-	md5sums = 59fdb64da7c1b123afb92ded69d25059
+	sha256sums = 7b3ab363eeb52504d6ef5811c5d264f8016060bb7bd427be5a064c2ed7384e47
+	sha256sums = f659d7eae872f6448b7f0e7317e34c6a0c1c0b5d984f80d502bc660bad7819f4
+	sha256sums = 04a2b7161d65332b5489581adc2b4f212f07a886b1d9a6d95a99f244c21f624f
 
 pkgname = tilp-xdg
