@@ -1,0 +1,16 @@
+pkgbase = nectarlink-bin
+	pkgdesc = A cross-platform client for Nectar
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/thtbee/nectarlink
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	provides = nectarlink
+	conflicts = nectarlink
+	source = nectarlink_0.1.5_amd64.deb::https://github.com/thtbee/nectarlink/releases/download/v0.1.5/nectarlink_0.1.5_amd64.deb
+	sha256sums = c516907e76e61fa5ad18048e93836a289974a46e7f2a8ff6fade79234ea9be6d
+
+pkgname = nectarlink-bin
