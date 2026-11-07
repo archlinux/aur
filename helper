@@ -208,11 +208,11 @@ type         = scripted
 command      = /bin/alsabeep-helper -n0 -L/var/log/dinit/alsabeep.log start
 stop-command = /bin/alsabeep-helper stop
 restart      = false
-waits-for    = loginready
+waits-for    = login.target
 EOF
 			dinitctl enable alsabeep
 			dinitctl start alsabeep
-			dinitcheck
+			dinit-check
 			;;
 		(s6-init)
 			mkdir /etc/s6/sv/alsabeep
