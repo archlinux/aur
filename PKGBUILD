@@ -3,11 +3,11 @@
 pkgbase=everforest-gtk-theme-git
 pkgname=('everforest-icon-theme-git' 'everforest-gtk-theme-git')
 pkgver=r54.462458b1
-pkgrel=1
+pkgrel=2
 pkgdesc='Everforest colour palette for GTK'
 arch=('any')
 url='https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gtk-engine-murrine')
 makedepends=('git' 'sassc')
 source=("$pkgbase"::'git+https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme')

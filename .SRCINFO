@@ -1,10 +1,10 @@
 pkgbase = everforest-gtk-theme-git
 	pkgdesc = Everforest colour palette for GTK
 	pkgver = r54.462458b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = sassc
 	depends = gtk-engine-murrine
