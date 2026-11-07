@@ -1,0 +1,235 @@
+In Arch we've permanently moved to glibc>=2.42 so for
+TCGETS2 the callers termios will always be equal or larger
+than our ktermios. Code that runs on old and new glibc
+would need to be more complicated than this.
+
+Hopefully glibc tcgetattr.c ___termios2_canonicalize_speeds
+knows how to correct mangled numeric speeds when we return
+less.
+
+The old glibc looks like it used TCGETS2 but TCGETS2 ==
+TCGETS so our ptym code responded. The new glibc TCGETS2 is
+a different constant so our code doesn't respond as if
+tcgetattr() is not supported. glibc does not gracefully
+fall back to TCGETS when TCGETS2 fails so we must respond
+to it. We could have also wrote our own custom tcgetattr
+that calls TCGETS but that seemed harder and less portable
+than doing it this way.
+
+New cfgetospeed code has not been tested on glibc<2.42 but
+should work.
+
+Watch the trueport baud rates in your favorite IOLAN
+product WebManager, Statistics, Serial Ports, Serial Port
+as you change baud rates in minicom.
+
+-CJS severach@aur
+
+Google AI helped in the making of this patch, not much, but
+just enough to guide my view towards the problem and away
+from non problems.
+
+"How can I adapt a program written for pre glibc 2.42
+termios to post glibc 2.42"
+
+The necessary adaptations depend on how a program handles
+serial speeds and legacy APIs:
+
+1. Stop manually manipulating c_cflag
+
+If your program sets baud rates by applying a bitmask or
+directly modifying the c_cflag field inside struct termios
+(a pattern common in very old code), it will break.
+
+• The Fix: You must use the POSIX standard functions
+cfsetispeed() and cfsetospeed(). Glibc internally bridges
+these functions to handle the old kernel values or modern
+custom BOTHER ioctls cleanly.
+
+2. Guarding against Macro Value Assumptions
+3. Replace <termio.h> references
+
+4. Direct Custom Baud Handling (Alternative)
+
+For cross-platform or hyper-portable tools that must
+compile across varying versions of glibc and other Unices,
+relying entirely on the native Linux kernel ioctl layer
+(using TCGETS2 / TCSETS2 and struct termios2) is often the
+most robust way to ignore glibc version discrepancies
+entirely.
+
+https://github.com/rust-lang/libc/issues/4692
+
+diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
+--- a/ptyx/ptym.c	2026-11-05 16:48:22.033535593 -0500
++++ b/ptyx/ptym.c	2026-11-05 16:48:35.763437003 -0500
+@@ -340,10 +340,11 @@ if ( s_tty && (s_tty->driver_data == NUL
+ 	 		ptyx_print(PTYX_DEBUG_IOCTL, ("ptyx_master_ioctl(%d): TIOCSBRK/TCSBRK/TCSBRKP failed, no slave\n", ptyx_info->line));
+ 			return -EIO; 
+ 		}
+ 	}
+ 	case TCGETS:
++	case TCGETS2:
+ 	{
+ 		STRUCT_TERMIOS *tmp_termios;
+ 
+ 		ptyx_print(PTYX_DEBUG_IOCTL, ("ptyx_master_ioctl(%d): cmd=TCGETS\n", ptyx_info->line));
+ 	
+diff -pNaru5 a/ssl_tp.c b/ssl_tp.c
+--- a/ssl_tp.c	2025-09-11 15:17:27.000000000 -0400
++++ b/ssl_tp.c	2026-11-05 16:48:35.763437003 -0500
+@@ -13,11 +13,11 @@
+  ****************************************************************************/
+ 
+ #include	<string.h>
+ #include	<ctype.h>
+ #include <inttypes.h>
+-#include	<termio.h>
++#include	<termios.h>
+ #include	<openssl/ssl.h>
+ #include	<openssl/err.h>
+ 
+ #include	"tp.h"
+ #include 	"pkt_forwarding.h"
+diff -pNaru5 a/swirl.c b/swirl.c
+--- a/swirl.c	2025-09-11 15:17:27.000000000 -0400
++++ b/swirl.c	2026-11-05 16:48:35.773436933 -0500
+@@ -5,11 +5,12 @@
+ #include <fcntl.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <time.h>
+-#include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #ifdef	SYS_STROPTS_H
+ #include <sys/stropts.h>
+ #endif
+ 
+ #define	IFLAG	0
+@@ -18,11 +19,12 @@
+ #define	LFLAG	3
+ 
+ #define FALSE	0
+ #define TRUE	1
+ 
+-struct termio termio;
++struct termios termio;
++#define IP22
+ 
+ #ifdef IP22
+ tcflag_t *FlagPtrs[4] = { &termio.c_iflag, &termio.c_oflag, &termio.c_cflag, &termio.c_lflag };
+ #else
+ unsigned short *FlagPtrs[4] = { &termio.c_iflag, &termio.c_oflag, &termio.c_cflag, &termio.c_lflag };
+diff -pNaru5 a/trueportd.c b/trueportd.c
+--- a/trueportd.c	2025-09-11 15:17:28.000000000 -0400
++++ b/trueportd.c	2026-11-05 16:51:15.942286928 -0500
+@@ -38,11 +38,11 @@ they don't have a manual :-( -- REW */
+ #include <ctype.h>
+ #include <stdarg.h>
+ #include <time.h>
+ #include <string.h>
+ #include <assert.h>
+-#include <termio.h>
++#include <termios.h>
+ #include <asm/ioctls.h>
+ #include <dirent.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <signal.h>
+@@ -4310,28 +4310,28 @@ void set_dserver_modes(int set_all)
+ 			(modes->c_cflag & CSTOPB) ? "CSTOPB ":"",
+ 			(modes->c_cflag & HUPCL) ? "HUPCL ":"",
+ 			(modes->c_cflag & PARENB) ? "PARENB ":"",
+ 			(modes->c_cflag & PARODD) ? "PARODD ":"",
+ 			(modes->c_cflag & MTS_TCSETA_SYNC) ? "MTS_TCSETA_SYNC ":"",
+-			((modes->c_cflag & CBAUD) == B50) ? "B50 ":"",
+-			((modes->c_cflag & CBAUD) == B75) ? "B75 ":"",
+-			((modes->c_cflag & CBAUD) == B110) ? "B110 ":"",
+-			((modes->c_cflag & CBAUD) == B134) ? "B134 ":"",
+-			((modes->c_cflag & CBAUD) == B150) ? "B150 ":"",
+-			((modes->c_cflag & CBAUD) == B200) ? "B200 ":"",
+-			((modes->c_cflag & CBAUD) == B300) ? "B300 ":"",
+-			((modes->c_cflag & CBAUD) == B600) ? "B600 ":"",
+-			((modes->c_cflag & CBAUD) == B1200) ? "B1200 ":"",
+-			((modes->c_cflag & CBAUD) == B1800) ? "B1800 ":"",
+-			((modes->c_cflag & CBAUD) == B2400) ? "B2400 ":"",
+-			((modes->c_cflag & CBAUD) == B4800) ? "B4800 ":"",
+-			((modes->c_cflag & CBAUD) == B9600) ? "B9600 ":"",
+-			((modes->c_cflag & CBAUD) == B19200) ? "B19200 ":"",
+-			((modes->c_cflag & CBAUD) == B38400) ? "B38400 ":"",
+-			((modes->c_cflag & CBAUD) == B57600) ? "B57600 ":"" ,
+-			((modes->c_cflag & CBAUD) == B115200) ? "B115200 ":"" ,
+-			((modes->c_cflag & CBAUD) == B230400) ? "B230400 ":"" ,
++			(cfgetospeed(modes) == B50) ? "B50 ":"",
++			(cfgetospeed(modes) == B75) ? "B75 ":"",
++			(cfgetospeed(modes) == B110) ? "B110 ":"",
++			(cfgetospeed(modes) == B134) ? "B134 ":"",
++			(cfgetospeed(modes) == B150) ? "B150 ":"",
++			(cfgetospeed(modes) == B200) ? "B200 ":"",
++			(cfgetospeed(modes) == B300) ? "B300 ":"",
++			(cfgetospeed(modes) == B600) ? "B600 ":"",
++			(cfgetospeed(modes) == B1200) ? "B1200 ":"",
++			(cfgetospeed(modes) == B1800) ? "B1800 ":"",
++			(cfgetospeed(modes) == B2400) ? "B2400 ":"",
++			(cfgetospeed(modes) == B4800) ? "B4800 ":"",
++			(cfgetospeed(modes) == B9600) ? "B9600 ":"",
++			(cfgetospeed(modes) == B19200) ? "B19200 ":"",
++			(cfgetospeed(modes) == B38400) ? "B38400 ":"",
++			(cfgetospeed(modes) == B57600) ? "B57600 ":"" ,
++			(cfgetospeed(modes) == B115200) ? "B115200 ":"" ,
++			(cfgetospeed(modes) == B230400) ? "B230400 ":"" ,
+ 			((modes->c_cflag & CS8) == CS5) ? "CS5 ":"",
+ 			((modes->c_cflag & CS8) == CS6) ? "CS6 ":"",
+ 			((modes->c_cflag & CS8) == CS7) ? "CS7 ":"",
+ 			((modes->c_cflag & CS8) == CS8) ? "CS8 ":"",
+ 			(modes->c_cflag & CRTSCTS) ? "CRTSCTS ":"");
+@@ -4402,28 +4402,29 @@ void set_dserver_modes(int set_all)
+ 	        ((modes->c_cflag & PARENB) ? MTS_PARENB : 0) |
+ 	        ((modes->c_cflag & PARODD) ? MTS_PARODD : 0) |
+ 	        /* ((modes->c_cflag & LOBLK) ? MTS_LOBLK : 0) | */
+ 	        ((modes->c_cflag & MTS_TCSETA_SYNC) ? MTS_TCSETA_SYNC : 0) |  
+ 
+-	        (((modes->c_cflag & CBAUD) == B50) ? MTS_B50 : 0) |
+-	        (((modes->c_cflag & CBAUD) == B110) ? MTS_B110 : 0) |
+-	        (((modes->c_cflag & CBAUD) == B134) ? MTS_B134 : 0) |
+-	        (((modes->c_cflag & CBAUD) == B75)     ? MTS_B75     : 0) |
+-	        (((modes->c_cflag & CBAUD) == B150)    ? MTS_B150    : 0) |
+-	        (((modes->c_cflag & CBAUD) == B200)    ? MTS_B200    : 0) |
+-	        (((modes->c_cflag & CBAUD) == B300)    ? MTS_B300    : 0) |
+-	        (((modes->c_cflag & CBAUD) == B600)    ? MTS_B600    : 0) |
+-	        (((modes->c_cflag & CBAUD) == B1200)   ? MTS_B1200   : 0) |
+-	        (((modes->c_cflag & CBAUD) == B1800)   ? MTS_B1800   : 0) |
+-	        (((modes->c_cflag & CBAUD) == B2400)   ? MTS_B2400   : 0) |
+-	        (((modes->c_cflag & CBAUD) == B4800)   ? MTS_B4800   : 0) |
+-	        (((modes->c_cflag & CBAUD) == B9600)   ? MTS_B9600   : 0) |
+-	        (((modes->c_cflag & CBAUD) == B19200)  ? MTS_B19200  : 0) |
+-	        (((modes->c_cflag & CBAUD) == B38400)  ? MTS_B38400  : 0) |
+-	        (((modes->c_cflag & CBAUD) == B57600)  ? MTS_B57600  : 0) |
+-	        (((modes->c_cflag & CBAUD) == B115200) ? MTS_B115200 : 0) |
+-	        (((modes->c_cflag & CBAUD) == B230400) ? MTS_B230400 : 0) |
++	        // (((modes->c_cflag & CBAUD) == __B50) ? MTS_B50 : 0) | // also works
++	        ((cfgetospeed(modes) == B50) ? MTS_B50 : 0) |
++	        ((cfgetospeed(modes) == B110) ? MTS_B110 : 0) |
++	        ((cfgetospeed(modes) == B134) ? MTS_B134 : 0) |
++	        ((cfgetospeed(modes) == B75)     ? MTS_B75     : 0) |
++	        ((cfgetospeed(modes) == B150)    ? MTS_B150    : 0) |
++	        ((cfgetospeed(modes) == B200)    ? MTS_B200    : 0) |
++	        ((cfgetospeed(modes) == B300)    ? MTS_B300    : 0) |
++	        ((cfgetospeed(modes) == B600)    ? MTS_B600    : 0) |
++	        ((cfgetospeed(modes) == B1200)   ? MTS_B1200   : 0) |
++	        ((cfgetospeed(modes) == B1800)   ? MTS_B1800   : 0) |
++	        ((cfgetospeed(modes) == B2400)   ? MTS_B2400   : 0) |
++	        ((cfgetospeed(modes) == B4800)   ? MTS_B4800   : 0) |
++	        ((cfgetospeed(modes) == B9600)   ? MTS_B9600   : 0) |
++	        ((cfgetospeed(modes) == B19200)  ? MTS_B19200  : 0) |
++	        ((cfgetospeed(modes) == B38400)  ? MTS_B38400  : 0) |
++	        ((cfgetospeed(modes) == B57600)  ? MTS_B57600  : 0) |
++	        ((cfgetospeed(modes) == B115200) ? MTS_B115200 : 0) |
++	        ((cfgetospeed(modes) == B230400) ? MTS_B230400 : 0) |
+ 
+ 	        ((modes->c_cflag & CS6) ? MTS_CS6 : 0) |
+ 	        ((modes->c_cflag & CS7) ? MTS_CS7 : 0) |
+ 	        ((modes->c_cflag & CRTSCTS) ? (MTS_CTSFLOW | MTS_RTSFLOW) : 0);
+ 

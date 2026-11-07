@@ -1,0 +1,32 @@
+diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
+--- a/ptyx/ptym.c	2026-11-04 23:21:26.305612161 -0500
++++ b/ptyx/ptym.c	2026-11-04 23:22:24.694885779 -0500
+@@ -176,11 +176,11 @@ static void ptyx_master_unthrottle(struc
+  *	 semaphore that should almost never come under contention.
+  *   (2) avoid redundant copying for cases where count >> receive_room
+  * N.B. Calls from user space may now return an error code instead of
+  * a count.
+  */
+-#ifdef HAVE_TTY_OPS_WRITE_SSIZE_T 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,6,0)
+ static ssize_t ptyx_master_write(struct tty_struct * tty,  const unsigned char *buf, size_t count)
+ #else 
+ static int ptyx_master_write(struct tty_struct * tty, const unsigned char *buf, int count)
+ #endif
+ {
+diff -pNaru5 a/ptyx/ptys.c b/ptyx/ptys.c
+--- a/ptyx/ptys.c	2026-11-04 23:21:26.305738799 -0500
++++ b/ptyx/ptys.c	2026-11-04 23:22:03.348469369 -0500
+@@ -208,11 +208,11 @@ static int slave_dump_data(struct ptyx_s
+  *	 semaphore that should almost never come under contention.
+  *   (2) avoid redundant copying for cases where count >> receive_room
+  * N.B. Calls from user space may now return an error code instead of
+  * a count.
+  */
+-#ifdef HAVE_TTY_OPS_WRITE_SSIZE_T 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,6,0)
+ static ssize_t ptyx_slave_write(struct tty_struct * tty,  const unsigned char *buf, size_t count)
+ #else 
+ static int ptyx_slave_write(struct tty_struct * tty, const unsigned char *buf, int count)
+ #endif
+ {

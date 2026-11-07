@@ -1,0 +1,86 @@
+diff -pNaru5 a/ptyx/ptyc.c b/ptyx/ptyc.c
+--- a/ptyx/ptyc.c	2025-09-11 15:17:28.000000000 -0400
++++ b/ptyx/ptyc.c	2026-11-04 23:13:38.750143282 -0500
+@@ -104,15 +104,11 @@ static int ptyx_ctrl_write_room(struct t
+ 	if (!tty || !tty->driver_data)		// paranoia
+ 		return 0;
+ 
+ 	ptyx_info = (struct ptyx_struct *) tty->driver_data;
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0))
+-	if (!tty || tty->flow.stopped || (ptyx_info->flags & SLAVE_CLOSING) )
+-#else
+ 	if (!tty || tty->TTY_STOPPED || (ptyx_info->flags & SLAVE_CLOSING) )
+-#endif
+ 		return 0;
+ 
+ 	return RECEIVE_ROOM(tty);
+ }
+ 
+diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
+--- a/ptyx/ptym.c	2026-11-04 23:12:40.537162278 -0500
++++ b/ptyx/ptym.c	2026-11-04 23:13:29.630746838 -0500
+@@ -198,11 +198,11 @@ static int ptyx_master_write(struct tty_
+ 	ptyx_print(PTYX_DEBUG_WRITE, ("ptyx_master_write(%d): buf=0x%p, count=%d\n", ptyx_info->line, buf, count));
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	s_tty = ptyx_info->s_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
+-	if (!s_tty || tty->flow.stopped || (ptyx_info->flags & SLAVE_CLOSING) )
++	if (!s_tty || tty->TTY_STOPPED || (ptyx_info->flags & SLAVE_CLOSING) )
+ 	{
+ 		return 0;
+ 	}
+ 
+     if (count > 0) 
+@@ -237,15 +237,11 @@ static int ptyx_master_write_room(struct
+ 
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	s_tty = ptyx_info->s_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0))
+-	if (!s_tty || tty->flow.stopped || (ptyx_info->flags & SLAVE_CLOSING) )
+-#else
+ 	if (!s_tty || tty->TTY_STOPPED || (ptyx_info->flags & SLAVE_CLOSING) )
+-#endif
+ 		return 0;
+ 
+ 	return RECEIVE_ROOM(s_tty);
+ }
+ 
+diff -pNaru5 a/ptyx/ptys.c b/ptyx/ptys.c
+--- a/ptyx/ptys.c	2026-11-04 23:12:40.537300226 -0500
++++ b/ptyx/ptys.c	2026-11-04 23:13:09.949960123 -0500
+@@ -230,15 +230,11 @@ static int ptyx_slave_write(struct tty_s
+ 
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	m_tty = ptyx_info->m_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0))
+-	if ( !m_tty || tty->flow.stopped )
+-#else
+ 	if ( !m_tty || tty->TTY_STOPPED )
+-#endif
+ 		return 0;
+ 	    
+         if (!slave_dump_data(ptyx_info))
+         {
+             if (count > 0) 
+@@ -281,15 +277,11 @@ static int ptyx_slave_write_room(struct
+ 
+ 	PTYX_LOCK(&ptyx_info->port_lock, flags);
+ 	m_tty = ptyx_info->m_tty;
+ 	PTYX_UNLOCK(&ptyx_info->port_lock, flags);
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,14,0))
+-	if (!m_tty || tty->flow.stopped)
+-#else
+ 	if (!m_tty || tty->TTY_STOPPED)
+-#endif
+ 		return 0;
+ 
+ 	return RECEIVE_ROOM(m_tty);
+ }
+ 

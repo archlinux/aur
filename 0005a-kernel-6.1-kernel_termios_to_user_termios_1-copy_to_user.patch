@@ -1,0 +1,29 @@
+diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
+--- a/ptyx/ptym.c	2025-09-11 15:17:28.000000000 -0400
++++ b/ptyx/ptym.c	2026-11-05 16:29:46.491549531 -0500
+@@ -54,11 +54,11 @@
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
+ #include <linux/uaccess.h>
+ #include <linux/termios.h>
+ 
+-static inline int kernel_termios_to_user_termios(struct termios __user *u, const struct ktermios *k)
++static inline int ptym_kernel_termios_to_user_termios(struct termios __user *u, const struct ktermios *k)
+ {
+     struct termios tmp;
+ 
+     tmp.c_iflag = k->c_iflag;
+     tmp.c_oflag = k->c_oflag;
+@@ -369,11 +369,11 @@ if ( s_tty && (s_tty->driver_data == NUL
+ 		if (kernel_termios_to_user_termios_1((struct termios *)arg, tmp_termios))
+ #else
+ 		if (kernel_termios_to_user_termios((struct termios *)arg, tmp_termios))
+ #endif
+ #else
+-		if (kernel_termios_to_user_termios((struct termios *)arg, tmp_termios))
++		if (kernel_termios_to_user_termios((struct termios2 *)arg, tmp_termios))
+ #endif
+ 		{
+ 			ptyx_print(PTYX_DEBUG_IOCTL, ("ptyx_master_ioctl(%d): return -EFAULT\n", ptyx_info->line));
+ 			return -EFAULT;
+ 		}

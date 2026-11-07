@@ -1,0 +1,16 @@
+diff -pNaru5 a/trueportd.c b/trueportd.c
+--- a/trueportd.c	2026-11-05 10:38:08.111497653 -0500
++++ b/trueportd.c	2026-11-05 10:43:16.599388833 -0500
+@@ -72,11 +72,11 @@ they don't have a manual :-( -- REW */
+ //****************************************************************************
+ //
+ 
+ #define MAX_TRACE_LEN 16
+ #define SMSIZEOF(_STRUCT, _MEMBER) sizeof((((_STRUCT *)0)->_MEMBER))
+-#define GROUPNAME GROUP
++#define GROUPNAME "uucp"
+ 
+ 
+ /****************************************************************************
+  *	Global data definitions						    *
+  ****************************************************************************/

@@ -3,6 +3,8 @@
 # Todo: Update addlogins and rmlogins for systemd* getty
 # Todo: Console utility like drpadmin: trueportadmin or ptyxadmin or ???
 
+# TODO: Compiles but does not work with glibc >= 2.42. Does not set baud rate in trueport mode.
+
 # Bugs:
 # The Statistics/Serial Screen on an SDS does not show the proper baud rate when a TruePort is set by stty -F.
 # tpadm -d removes the config entry but does not kill the daemon.
@@ -95,17 +97,17 @@ _opt_masterttypfx='px' # default px (this isn't very useful to users)
 
 set -u
 pkgname='trueport'
-_dlver='6.10.0-1'
+_dlver='6.10.4-1'
 pkgver="${_dlver//-/.}"
 #_dlver='6.8.0-2' # only use this with a version change patch set
 _srcdir="${pkgname}-${_dlver%%-*}"
-pkgrel='5'
+pkgrel='1'
 pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
 _pkgdescshort='Perle TruePort driver for Ethernet serial servers'
 arch=('i686' 'x86_64')
 url='https://www.perle.com/'
 license=('GPL' 'custom')
-depends=('glibc' 'systemd')
+depends=('glibc>=2.42' 'systemd')
 if [ "${_opt_SSL}" -ne 0 ]; then
   depends+=('openssl')
 fi
@@ -113,7 +115,7 @@ makedepends=('awk' 'sed' 'diffutils' 'patch')
 backup=(etc/trueport/{config.tp,pktfwdcfg.tp,sslcfg.tp})
 options=('!docs' '!emptydirs' '!strip')
 install="${pkgname}-install.sh"
-_verwatch=('https://www.perle.com/downloads/server_ds_ts.shtml' '\s\+<a.*trueport-linux-tgz">\([^<]\+\)<.*' 'f')
+#_verwatch=('https://www.perle.com/downloads/server_ds_ts.shtml' '\s\+<a.*trueport-linux-tgz">\([^<]\+\)<.*' 'f')
 source=(
   "https://www.perle.com/downloads/drivers/trueport/linux/${pkgname}-${_dlver}.tgz"
   'tty_default_permissions.patch'
@@ -127,31 +129,52 @@ source=(
   '0001-kernel-5.13-dropped-tty_check_change.patch'
   '0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
   '0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0003a-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
   '0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch'
+  '0005a-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch'
   '0006-kernel-6.0-set_termios-const-ktermios.patch'
+  '0006a-kernel-6.0-set_termios-const-ktermios.patch'
   '0007-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  '0007a-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  '0008-glib-2.42-termio_termios.patch'
+  '0009-kernel-5.14-TTY_STOPPED.patch'
+  '0010-group_uucp.patch'
 )
-md5sums=('5a529676de30706133255ba4e8dae5b0'
+md5sums=('7032fc1059ecb0b470412883519b44d5'
          '56444e2f404aa2e6a2c9e8e2bd919fcf'
          'fb798f306553cb253b30ff5af5ba2f40'
          '91a070a4d13c13108dd980ce39ba36b9'
          '5206e863cf6340c05325d86935d4b40c'
          'f464a0217b85a76657bcb7aa022f9a95'
+         'cbb8aa1d3a4a291c18051be0aeaba002'
          '835219e7c692cc699ec23f4e183f70bf'
          '2cc11aa436180b3daabad46d1b6bf3fb'
+         '486ff94559033f71552208e72783f622'
          '291a8307fa6a6e651ee0a98eb1cba50c'
-         'a06df58cd27782179eb2b75f965df62a')
-sha256sums=('c21340a7523593da3e229b79cfbcf9e656772b2039e972dbca3947d138d55ffa'
+         '0e252461c9fa74f8086e9da544844851'
+         'a06df58cd27782179eb2b75f965df62a'
+         '02d647f82a4d862549d6f4e1442c9945'
+         'e411034721f0f8f74ba454b7abd34a7c'
+         '793683f266b0abf49c6c70da778d4326'
+         '5a70385e858f7046d9283daccc1dbe25')
+sha256sums=('a2b6e765cdd8569b2af34ca85c91636a4887c4996c3e911c5a8f06f05ee08b15'
             '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639'
             '5f806246751d3a91c59bd97273221d1066006bafc7ed598c3d93f9b7bdae65a1'
             '8c84111b927912ee002ba7e0f398ff02e067bffa02e6bedcf1cd08138362040c'
             'ee64f971753fb4fd8a488e32e8fe3de9c468a00a1d1b995329bcfe87c93cedf7'
             '04025f2dc6fe868e890853e355d1d31fff6d3c463ad89db1cedda5f3843078a3'
+            '01107b60112b1c375dac626f3e38baa838637eab10a8a2c59fa4ee1133ecea0e'
             '31ffbbe3de9605aa5c974e92b24c22876c8091eac3c1ada8bb83c76ad829cc8c'
             '1ed2794858d1268e53d73f3d4a34a4d2bf84a24ffbfa8babca7ce10e97e60d6c'
+            '31cf166a0e68669e416ebd90cc61d93ea1f941d3e491e942ab4fe8208fac1216'
             'ad25f2d413ddd05c5561afea3e8d5b9e5b7859e5855bdb1da63c7a6f26f69599'
-            'c4e7b750ac573ec035c2da643d73736feae741fabd86e460efe51d8086cd3138')
+            '1b99673958090985ac16dadce77a48234d6e1b5060c93420e3394ba97cb3c31c'
+            'c4e7b750ac573ec035c2da643d73736feae741fabd86e460efe51d8086cd3138'
+            '2746c08d3da417a36940f74792c2591e97c1203741739dba4ff735e893341611'
+            'b7dac8b3144ce959445131c5200b96c29fbbc08bc1125f4e08812b3b3f863c66'
+            '3cdeb3f3016c354025018acf16e3d5770126bbba5515f8462d3c14de9b4185a3'
+            '3191efadd06f4094f485191b0fd06ca5763bd5dd4ef9f73893740802e9d888a5')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -160,7 +183,7 @@ else
 fi
 
 prepare() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   # diff -pNaru5 'trueport-6.8.0' 'trueport-6.8.3' > 'trueport-patch-6.8.0-6.8.3-stack-smashing.patch'
@@ -170,44 +193,63 @@ prepare() {
   # diff -pNaru5 'trueport-6.8.0' 'trueport-6.8.5' > 'trueport-patch-6.8.0-6.8.5.patch'
   #patch -Nup1 -i '../trueport-patch-6.8.0-6.8.5.patch'
 
-  #cd ..; cp -pr trueport-6.10.0{,.orig}; false
-  # diff -pNaru5 trueport-6.10.0{.orig,} > '0000-tty_unregister_driver-void.patch'
-  patch -Nup1 -i "${srcdir}/0000-tty_unregister_driver-void.patch"
+  local _patches=()
+  if [ "$(vercmp "${pkgver}" '6.10.0.1')" -le 0 ]; then
+    _patches+=('0000-tty_unregister_driver-void.patch')
+    _patches+=('0001-kernel-5.13-dropped-tty_check_change.patch')
+    # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
+    # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
+    # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
+    _patches+=('0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch')
+    # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+    # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
+    _patches+=('0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+    _patches+=('0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch')
+    _patches+=('0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch')
+    # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+    _patches+=('0006-kernel-6.0-set_termios-const-ktermios.patch')
+    _patches+=('0007-kernel-6.6-struct-tty_operations-write-size_t.patch')
+    _patches+=('0008-glib-2.42-termio_termios.patch')
 
-  #cd ..; cp -pr trueport-6.10.0{,.orig}; false
-  # diff -pNaru5 trueport-6.10.0{.orig,} > '0001-kernel-5.13-dropped-tty_check_change.patch'
-  patch -Nup1 -i "${srcdir}/0001-kernel-5.13-dropped-tty_check_change.patch"
+    # Add code for default permissions and chown group to uucp
+    # I tried to change system("mknod") to mknod() but the permissions
+    # wouldn't stick without a separate call to chmod()
+    sed -e "s:@TRUEPORT_TTY_PERMISSIONS@:${_opt_defaultmode}:g" \
+        -e "s:@TRUEPORT_TTY_GROUP@:uucp:g" \
+      "${srcdir}/tty_default_permissions.patch" | \
+    patch -Nbup0
+    # diff -pNau5 trueportd.c{.orig,} > '../tty_default_permissions.patch' # Then change the two @@ items above
+  fi
 
-  # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
-  # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
-  # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
-  #cd ..; cp -pr trueport-6.10.0{,.orig}; false
-  # diff -pNaru5 trueport-6.10.0{.orig,} > '0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
-  patch -Nup1 -i "${srcdir}/0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
-
-  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
-  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  #cd ..; cp -pr trueport-6.10.0{,.orig}; false
-  # diff -pNaru5 trueport-6.10.0{.orig,} > '0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup1 -i "${srcdir}/0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
-
+  if [ "$(vercmp "${pkgver}" '6.10.4.1')" -eq 0 ]; then
+    _patches+=('0003a-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+    _patches+=('0005a-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch')
+    _patches+=('0006a-kernel-6.0-set_termios-const-ktermios.patch')
+    _patches+=('0007a-kernel-6.6-struct-tty_operations-write-size_t.patch')
+    _patches+=('0008-glib-2.42-termio_termios.patch')
+    _patches+=('0009-kernel-5.14-TTY_STOPPED.patch')
+    _patches+=('0010-group_uucp.patch')
+  fi
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
-  patch -Nup1 -i "${srcdir}/0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0005-kernel-6.1-kernel_termios_to_user_termios_1-termios_internal.badpatch'
-  # diff -pNaru5 'a' 'b' > '0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch'
-  patch -Nup1 -i "${srcdir}/0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch"
-
-  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0006-kernel-6.0-set_termios-const-ktermios.patch'
-  patch -Nup1 -i "${srcdir}/0006-kernel-6.0-set_termios-const-ktermios.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0007-kernel-6.6-struct-tty_operations-write-size_t.patch'
-  patch -Nup1 -i "${srcdir}/0007-kernel-6.6-struct-tty_operations-write-size_t.patch"
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   # insert parameters and make install script non interactive.
   set +u; msg2 'Checking SSL with rpm_build'; set -u
@@ -255,32 +297,21 @@ prepare() {
       -e 's:\(grep "\)tx:'"\1${_opt_slavettypfx}:g" \
     -i 'tplogin'
 
-  # Add code for default permissions and chown group to uucp
-  # I tried to change system("mknod") to mknod() but the permissions
-  # wouldn't stick without a separate call to chmod()
-  sed -e "s:@TRUEPORT_TTY_PERMISSIONS@:${_opt_defaultmode}:g" \
-      -e "s:@TRUEPORT_TTY_GROUP@:uucp:g" \
-    "${srcdir}/tty_default_permissions.patch" | \
-  patch -Nbup0
-  # diff -pNau5 trueportd.c{.orig,} > '../tty_default_permissions.patch' # Then change the two @@ items above
-
-  'ma'ke -s -j1 clean # keep git-aurcheck quiet
-  set +u
+  make -j1 clean # keep git-aurcheck quiet
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   local _cflags=('-s' '-g -rdynamic')
   #_cflags[0]+=' -fno-stack-protector'
   local _makeflags=('-s' '')
   CFLAGS="${CFLAGS} ${_cflags[${_opt_Debug}]}" \
   make ${_makeflags[${_opt_Debug}]} -j1 # Too small to benefit from multi processor compile
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   if [ "${_opt_DKMS}" -eq 0 ]; then
@@ -359,7 +390,7 @@ BUILT_MODULE_NAME[0]="ptyx"
 BUILT_MODULE_LOCATION[0]="ptyx"
 # Using all processors doesn't compile this tiny module any faster.
 MAKE[0]="make -j1 -C 'ptyx'"
-CLEAN[0]="make -j1 -C 'ptyx' clean"
+#CLEAN[0]="make -j1 -C 'ptyx' clean"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
@@ -369,7 +400,6 @@ EOF
     install -pm644 'tp_ver.h' 'tp.h' -t "${_dkms}/"
     make -s -C "${_dkms}/ptyx/" KERNELRELEASE="$(uname -r)" clean
   fi
-  set +u
 }
 
 set +u
