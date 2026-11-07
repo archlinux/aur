@@ -1,0 +1,25 @@
+pkgbase = synshell-link-bin
+	pkgdesc = synshell: computer and phone link — screen, input, files, notifications (synlink)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	install = synshell-link.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = synshell-core
+	optdepends = openssh: ssh to linked devices
+	optdepends = fuse3: archives as folders; files of linked devices
+	provides = synshell-link
+	conflicts = synshell-link
+	conflicts = synshell-link-git
+	noextract = synshell-link-0.2.0-x86_64.tar.zst
+	noextract = synshell-link-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = synshell-link-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synshell-link-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = 2caaecd979d5d7b471ccf12507c9921b36cc4b141fa9be69151c063a4f3fa003
+	source_aarch64 = synshell-link-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synshell-link-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 163fd90ae52157725deeb224a10f51f7dce563504b4c6e83dfd2aec2e3a9bb7b
+
+pkgname = synshell-link-bin
