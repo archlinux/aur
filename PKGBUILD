@@ -3,11 +3,11 @@
 pkgbase=gruvbox-theme-git
 pkgname=('gruvbox-icon-theme-git' 'gruvbox-gtk-theme-git')
 pkgver=r64.de4e8370
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK theme based on the Gruvbox colour palette.'
 arch=('any')
 url='https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gtk-engine-murrine')
 makedepends=('git' 'sassc')
 source=("$pkgbase"::'git+https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme')
