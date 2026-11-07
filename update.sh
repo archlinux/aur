@@ -43,12 +43,14 @@ if (( $# == 1 )); then
     || die "release $tag not found: $(tr -d '\n' <"$err")"
 else
   # The default listing is newest-first and does include prereleases; the
-  # stable "latest" endpoint would keep pointing at 1.x.
+  # stable "latest" endpoint would keep pointing at 1.x. This package tracks
+  # betas only, so stable tags (e.g. a released 2.0.0) are skipped.
   release="$(api "repos/$repo/releases?per_page=30" 2>"$err" \
-    | jq -c --arg re '^v[0-9]+(\.[0-9]+)+(-[A-Za-z0-9.]+)?$' \
-        '[.[] | select(.draft == false) | select(.tag_name | test($re))][0] // empty' 2>/dev/null)" \
+    | jq -c --arg re '^v[0-9]+(\.[0-9]+)+-[A-Za-z0-9.]+$' \
+        '[.[] | select(.draft == false and .prerelease == true)
+              | select(.tag_name | test($re))][0] // empty' 2>/dev/null)" \
     || die "failed to query releases: $(tr -d '\n' <"$err")"
-  [[ -n "$release" ]] || die "no matching release found"
+  [[ -n "$release" ]] || die "no matching prerelease found"
 fi
 rm -f "$err"
 trap - EXIT
