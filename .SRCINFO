@@ -1,0 +1,37 @@
+pkgbase = plasma6-wallpaperswitch-git
+	pkgdesc = Per-virtual-desktop wallpaper switcher for KDE Plasma 6, with video wallpaper support
+	pkgver = 6.2.0.r48.gade0c55
+	pkgrel = 1
+	url = https://github.com/martenjj/wallpaperswitch
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kdbusaddons
+	depends = ki18n
+	depends = kiconthemes
+	depends = kio
+	depends = kstatusnotifieritem
+	depends = kwidgetsaddons
+	depends = kxmlgui
+	depends = plasma-workspace
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	optdepends = ffmpegthumbs: video thumbnails in the configuration dialogue
+	optdepends = plasma6-wallpapers-smart-video-wallpaper-reborn: alternative video plugin (useMediaPlugin=false)
+	provides = plasma6-wallpaperswitch=6.2.0
+	provides = wallpaperswitch=6.2.0
+	conflicts = plasma6-wallpaperswitch
+	conflicts = wallpaperswitch
+	source = wallpaperswitch::git+https://github.com/martenjj/wallpaperswitch.git#branch=kf6
+	sha256sums = SKIP
+
+pkgname = plasma6-wallpaperswitch-git
