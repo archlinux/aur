@@ -27,7 +27,7 @@ sha256sums=('b98f9e091b6337a86f4e0f69c94c31905e1e287782853f472e176b4e28d3f81f'
             '36e2f1debc9778bac79fac1a0cb5a5ef51c102f00b58ef7d8a05324144b68166'
             '42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a'
             'SKIP'
-            '1de31dc6b0d3f5d8c81754cfa0852b1e54137ef13fb2497ebecec00b16c98f2c'
+            '193608fdf70b24d56e54a2a6b7bf60f47edb5698361f408f7e51aa4ea1ecab43'
             '0c913d31f504a3d28c2749411f03cbdba9f17b6b1181bacbcef1f2928e8479f7')
 
 # Didact Gothic (Daniel Johnson, Cyreal; Google Fonts) is a single-weight
