@@ -2,7 +2,7 @@
 # Contributor: K4YT3X <aur@k4yt3x.com>
 
 pkgname=nspawn
-pkgver=2.3.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('polkit: let users other than root drive nspawn'
             'iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw'
             'iw: hand a wifi adapter to an app machine with --interface')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('435114f058c7867a6b0ed508a634f7df9349b5f5fa308fa958336d85aa8130d3')
+sha256sums=('f82c7825d0feda4ae85c5d2e48d7c09fe44d2de4bce8a5140d494df96c453260')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -43,7 +43,9 @@ package() {
   ./target/release/nspawn manpage | install -Dm644 /dev/stdin "${pkgdir}/usr/share/man/man1/nspawn.1"
   install -Dm644 packaging/systemd/nspawn.service "${pkgdir}/usr/lib/systemd/system/nspawn.service"
   install -Dm644 packaging/systemd/journald@nspawn.conf "${pkgdir}/usr/lib/systemd/journald@nspawn.conf"
-  install -Dm644 packaging/systemd/nspawn-api@.socket packaging/systemd/nspawn-api@.service packaging/systemd/nspawn-auto-update.service packaging/systemd/nspawn-auto-update.timer -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm644 packaging/systemd/nspawn-api@.socket packaging/systemd/nspawn-api@.service packaging/systemd/nspawn-api.socket \
+    packaging/systemd/nspawn-api.service packaging/systemd/nspawn-auto-update.service packaging/systemd/nspawn-auto-update.timer \
+    -t "${pkgdir}/usr/lib/systemd/system/"
   install -Dm644 packaging/dbus/org.nspawn.service "${pkgdir}/usr/share/dbus-1/system-services/org.nspawn.service"
   install -Dm644 packaging/dbus/org.nspawn.conf "${pkgdir}/usr/share/dbus-1/system.d/org.nspawn.conf"
   install -Dm644 packaging/polkit/org.nspawn.policy "${pkgdir}/usr/share/polkit-1/actions/org.nspawn.policy"
