@@ -14,10 +14,11 @@ Activate (pick your loader):
   sudo tscsync-setup --loader refind         # or: grub | systemd-boot
   sudo tscsync-set-mode sync
 
-Signing: tscsync-setup auto-signs when it finds a key it knows about
-(DKMS MOK, sbctl db, …), even if Secure Boot is off. That needs
-sbsigntools (pulled in as a dependency). To install unsigned instead:
+Signing: with Secure Boot off, setup installs unsigned if sbsign is missing
+(even when a leftover DKMS/MOK key is present). Install sbsigntools if you
+want auto-sign, or if Secure Boot is on. Manual path:
 
+  sudo pacman -S sbsigntools   # optional
   sudo tscsync-setup --loader grub --no-sign
   # then, if Secure Boot is on, sign with your usual tool, e.g.:
   #   sbctl sign -s "$(. /etc/tscsync.conf; echo "$DRIVER")"

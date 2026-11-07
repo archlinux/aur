@@ -4,17 +4,18 @@
 # 0001 adapts upstream scripts/unit template to Arch /usr paths (tscsync-setup).
 
 pkgname=tscsync
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='Pre-boot TSC sync for AMD (UEFI) so Linux keeps the TSC clocksource'
 arch=('x86_64')
 url='https://github.com/Zanasin/tscsync'
 license=('MIT')
-# sbsigntools: setup auto-signs when any known key exists (DKMS MOK, sbctl db, …),
-# even with Secure Boot off — missing sbsign hard-fails (Zanasin/tscsync#7).
-depends=('bash' 'util-linux' 'systemd' 'sbsigntools')
+depends=('bash' 'util-linux' 'systemd')
 makedepends=('curl' 'binutils' 'gcc' 'make')
+# sbsigntools: optional — with Secure Boot off, upstream install.sh no longer
+# hard-fails on a leftover DKMS key without sbsign (v2.2.2 / Zanasin/tscsync#7).
 optdepends=(
+  'sbsigntools: sign the EFI binary during tscsync-setup (needed if Secure Boot is on)'
   'sbctl: enroll/sign with your Secure Boot keys'
   'mokutil: detect Secure Boot / MOK state during setup'
 )
@@ -27,8 +28,8 @@ source=(
   '0001-arch-usr-paths.patch'
 )
 sha256sums=(
-  'bbacf9b64aae7b1525e9bc34b70cb647871a6d0c7c8a52e2cf1d4c6516386336'
-  '8f4bd82416ae7c7b906c899eba84d68e2d99079ceba852abf6638ffcba869d45'
+  'b37e81e3a99eb9038e41522fa868022b5b6759c9ba84639cc5b874bbb0fb542e'
+  'c220ba2b09414a4b6099ced814e11c0b1f524abe7eaeb6824476974430e80f65'
 )
 
 prepare() {

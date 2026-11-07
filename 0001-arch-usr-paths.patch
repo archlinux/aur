@@ -1,6 +1,6 @@
-diff -Naur tscsync-2.2.1/boot/tscsync-report.service.in tscsync-2.2.1-arch/boot/tscsync-report.service.in
---- a/boot/tscsync-report.service.in	2026-11-03 17:04:08.000000000 +0100
-+++ b/boot/tscsync-report.service.in	2026-11-03 17:19:03.088506738 +0100
+diff -Naur a/boot/tscsync-report.service.in b/boot/tscsync-report.service.in
+--- a/boot/tscsync-report.service.in	2026-11-06 17:29:21.000000000 +0100
++++ b/boot/tscsync-report.service.in	2026-11-07 08:19:02.612793297 +0100
 @@ -11,7 +11,7 @@
  
  [Service]
@@ -10,9 +10,9 @@ diff -Naur tscsync-2.2.1/boot/tscsync-report.service.in tscsync-2.2.1-arch/boot/
  
  [Install]
  WantedBy=multi-user.target system-update.target
-diff -Naur tscsync-2.2.1/scripts/install.sh tscsync-2.2.1-arch/scripts/install.sh
---- a/scripts/install.sh	2026-11-03 17:04:08.000000000 +0100
-+++ b/scripts/install.sh	2026-11-03 17:19:12.884817924 +0100
+diff -Naur a/scripts/install.sh b/scripts/install.sh
+--- a/scripts/install.sh	2026-11-06 17:29:21.000000000 +0100
++++ b/scripts/install.sh	2026-11-07 08:19:02.626460937 +0100
 @@ -4,7 +4,7 @@
  # Reinstalling (for example after git pull) keeps the current mode, measure or
  # sync with its options, unless tscsync was off; then it starts in measure.
@@ -73,7 +73,7 @@ diff -Naur tscsync-2.2.1/scripts/install.sh tscsync-2.2.1-arch/scripts/install.s
  if strings -el "$EFI_BIN" | grep -q 'TEST BUILD'; then
  	die "$EFI_BIN is the VM test build; rebuild with: make clean all"
  fi
-@@ -286,12 +287,12 @@
+@@ -294,12 +295,12 @@
  	[ -e "$GRUBENV" ] || "$EDITENV" "$GRUBENV" create
  	install -d "$ESP/EFI/tscsync"
  	install -m 0644 "$tmp/tscsync.efi" "$ESP/EFI/tscsync/tscsync.efi"
@@ -88,7 +88,7 @@ diff -Naur tscsync-2.2.1/scripts/install.sh tscsync-2.2.1-arch/scripts/install.s
  LOADER=grub
  GRUB_DIR=$GRUB_DIR
  GRUBENV=$GRUBENV
-@@ -311,7 +312,7 @@
+@@ -319,7 +320,7 @@
  	printf '%s%s\n' "$MODE" "$EXIT_TOK" >"$STATE_DIR/options"
  	install -m 0644 "$tmp/tscsync.efi" "$DRIVER"
  	cat >"$tmp/tscsync.conf" <<EOF
@@ -97,7 +97,7 @@ diff -Naur tscsync-2.2.1/scripts/install.sh tscsync-2.2.1-arch/scripts/install.s
  LOADER=$LOADER
  ESP=$ESP
  ESP_UUID=$ESP_UUID
-@@ -320,8 +321,6 @@
+@@ -328,8 +329,6 @@
  EOF
  fi
  install -m 0644 "$tmp/tscsync.conf" /etc/tscsync.conf
@@ -106,7 +106,7 @@ diff -Naur tscsync-2.2.1/scripts/install.sh tscsync-2.2.1-arch/scripts/install.s
  # Hang guard lives on grubenv (GRUB) or EFI/tscsync on the ESP (drivers).
  # Hardcoding /boot breaks installs whose ESP is /boot/efi or /efi.
  if [ "$LOADER" = grub ]; then
-@@ -330,10 +329,9 @@
+@@ -338,10 +337,9 @@
  	REQUIRES_MOUNTS=$(findmnt -no TARGET -T "$STATE_DIR")
  fi
  [ -n "$REQUIRES_MOUNTS" ] || die "cannot find the mount point for the hang guard"
@@ -118,16 +118,16 @@ diff -Naur tscsync-2.2.1/scripts/install.sh tscsync-2.2.1-arch/scripts/install.s
  	/etc/systemd/system/tscsync-report.service 2>/dev/null || true
  systemctl daemon-reload
  systemctl reenable tscsync-report.service
-@@ -362,5 +360,5 @@
+@@ -370,5 +368,5 @@
  Next:
    1. Shut down fully, then power on.
    2. Run: tscsync-status
 -  3. If it shows APs out of sync, switch to sync: sudo scripts/set-mode.sh sync
 +  3. If it shows APs out of sync, switch to sync: sudo tscsync-set-mode sync
  EOF
-diff -Naur tscsync-2.2.1/scripts/set-mode.sh tscsync-2.2.1-arch/scripts/set-mode.sh
---- a/scripts/set-mode.sh	2026-11-03 17:04:08.000000000 +0100
-+++ b/scripts/set-mode.sh	2026-11-03 17:19:03.088714620 +0100
+diff -Naur a/scripts/set-mode.sh b/scripts/set-mode.sh
+--- a/scripts/set-mode.sh	2026-11-06 17:29:21.000000000 +0100
++++ b/scripts/set-mode.sh	2026-11-07 08:19:02.629627615 +0100
 @@ -9,7 +9,7 @@
  set -euo pipefail
  
@@ -137,9 +137,9 @@ diff -Naur tscsync-2.2.1/scripts/set-mode.sh tscsync-2.2.1-arch/scripts/set-mode
  # shellcheck source=/dev/null
  . /etc/tscsync.conf
  
-diff -Naur tscsync-2.2.1/scripts/uninstall.sh tscsync-2.2.1-arch/scripts/uninstall.sh
---- a/scripts/uninstall.sh	2026-11-03 17:04:08.000000000 +0100
-+++ b/scripts/uninstall.sh	2026-11-03 17:19:03.088744316 +0100
+diff -Naur a/scripts/uninstall.sh b/scripts/uninstall.sh
+--- a/scripts/uninstall.sh	2026-11-06 17:29:21.000000000 +0100
++++ b/scripts/uninstall.sh	2026-11-07 08:19:02.642712214 +0100
 @@ -1,10 +1,11 @@
  #!/usr/bin/bash
  # SPDX-License-Identifier: MIT
