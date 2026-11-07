@@ -1,22 +1,22 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou (at) gmail (dot) com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 # Contributor: gilbus <aur(AT)tinkershell.eu>
 
-_wlr_version=0.19
+_wlr_version=0.20
 pkgname=cage-git
-pkgver=0.2.1.r6.gdcd64ae
+pkgver=0.3.0.r19.gf551ca2
 pkgrel=1
 pkgdesc="Kiosk compositor for Wayland"
-depends=(glibc wayland "libwlroots-${_wlr_version}.so" libxkbcommon)
-makedepends=(git meson scdoc wayland-protocols xorg-server-xwayland)
+depends=('glibc' 'wayland' "libwlroots-${_wlr_version}.so" 'libxkbcommon')
+makedepends=('git' 'meson' 'scdoc' 'wayland-protocols' 'xorg-server-xwayland')
 optdepends=(
     'polkit: System privilege control. Required if not using seatd service'
     'xorg-server-xwayland: X11 support'
 )
-arch=(x86_64)
+arch=('x86_64')
 url="https://www.hjdskes.nl/projects/cage/"
-license=(MIT)
-provides=(cage)
-conflicts=(cage)
+license=('MIT')
+provides=('cage')
+conflicts=('cage')
 source=("${pkgname}::git+https://github.com/cage-kiosk/cage.git")
 sha512sums=('SKIP')
 
@@ -31,7 +31,6 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    # export PKG_CONFIG_PATH="/usr/lib/wlroots0.17/pkgconfig/"
     meson setup --buildtype=release --prefix /usr "$srcdir/build"
     ninja -C "$srcdir/build"
 }
