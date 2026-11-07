@@ -1,6 +1,6 @@
 # Maintainer: chenpi11 <chenpi11@users.noreply.github.com>
 pkgname=sub-store-front-end-bin
-pkgver=2.32.2
+pkgver=2.34.2
 pkgrel=1
 pkgdesc='Sub-Store Progressive Web App'
 arch=('any')
@@ -12,7 +12,7 @@ provides=('sub-store-front-end')
 conflicts=('sub-store-front-end' 'sub-store-front-end-git')
 source=("$url/releases/download/$pkgver/dist.zip"
         "$url/raw/$pkgver/LICENSE")
-sha256sums=('5caa2dbcef7506bf67753adc1665da5ac8bd847f9769c4a7472d95ab0cb92057'
+sha256sums=('b8116df45fe061987c9bce09d15adc8f8e311134e9105be040b94db43ebc433d'
             'SKIP')
 
 package() {
