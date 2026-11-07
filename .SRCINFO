@@ -1,0 +1,17 @@
+pkgbase = rgy-search-znver4-bin
+	pkgdesc = Whole-filesystem name search and content search in one stack (AMD Zen 4 optimized binary release)
+	pkgver = 0.1.10.0
+	pkgrel = 1
+	url = https://github.com/danalec/rgy
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = rgy-search-bin
+	conflicts = rgy-search-bin
+	conflicts = rgy-search-avx2-bin
+	options = !strip
+	source = rgy-v0.1.10.0-znver4-linux.tar.gz::https://github.com/danalec/rgy/releases/download/rgy-v0.1.10.0/rgy-v0.1.10.0-znver4-linux.tar.gz
+	sha256sums = 2d8a9ba39a0937a518aac2e0c692fc2dec31c9dfafa4305ba3a657ff22b6bc89
+
+pkgname = rgy-search-znver4-bin
