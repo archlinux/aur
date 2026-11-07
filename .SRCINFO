@@ -1,7 +1,7 @@
 pkgbase = nib-bin
 	pkgdesc = Complete PDF toolkit that runs entirely on your own machine (fill, OCR, redact, compare, sign, PDF/A) — prebuilt binary
 	pkgver = 2.50.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daniel-alexander4/nib
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,7 @@ pkgbase = nib-bin
 	provides = nib
 	conflicts = nib
 	conflicts = nib-git
+	conflicts = nib-pdf-git
 	source_x86_64 = nib-2.50.4-linux-amd64::https://github.com/daniel-alexander4/nib/releases/download/v2.50.4/nib-2.50.4-linux-amd64
 	source_x86_64 = nib.desktop::https://raw.githubusercontent.com/daniel-alexander4/nib/v2.50.4/build/nib.desktop
 	source_x86_64 = nib.svg::https://raw.githubusercontent.com/daniel-alexander4/nib/v2.50.4/build/nib.svg

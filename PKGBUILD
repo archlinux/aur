@@ -3,7 +3,7 @@
 # Upstream: https://github.com/daniel-alexander4/nib
 pkgname=nib-bin
 pkgver=2.50.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete PDF toolkit that runs entirely on your own machine (fill, OCR, redact, compare, sign, PDF/A) — prebuilt binary'
 arch=('x86_64' 'aarch64')
 url='https://github.com/daniel-alexander4/nib'
@@ -18,7 +18,7 @@ optdepends=(
   'libheif: HEIC/HEIF photo import (heif-dec/heif-convert)'
 )
 provides=('nib')
-conflicts=('nib' 'nib-git')
+conflicts=('nib' 'nib-git' 'nib-pdf-git')
 source_x86_64=("nib-$pkgver-linux-amd64::https://github.com/daniel-alexander4/nib/releases/download/v$pkgver/nib-$pkgver-linux-amd64"
                "nib.desktop::https://raw.githubusercontent.com/daniel-alexander4/nib/v$pkgver/build/nib.desktop"
                "nib.svg::https://raw.githubusercontent.com/daniel-alexander4/nib/v$pkgver/build/nib.svg")
