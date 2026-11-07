@@ -1,0 +1,22 @@
+pkgbase = synshell-game-bin
+	pkgdesc = synshell: game mode (full-screen gamepad shell) and on-screen controller
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = synshell-game
+	conflicts = synshell-game
+	conflicts = synshell-game-git
+	noextract = synshell-game-0.2.0-x86_64.tar.zst
+	noextract = synshell-game-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = synshell-game-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synshell-game-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = f7191d77c725d11f5678e3d5e4e2d6e75e95aade514587d522400a56a1e01fb4
+	source_aarch64 = synshell-game-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synshell-game-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 932b6f4be3af92b211433e402d3827691b07cce593cc9ac0b51fcd838769ab5e
+
+pkgname = synshell-game-bin
