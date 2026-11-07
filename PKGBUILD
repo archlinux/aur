@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}.jar::https://github.com/BlackCherryCat/my-aur/rele
         "${pkgname}.install"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('e7fbd005154bcfec5a0a7dbdff5b45750acf222793d080449dbf1521ce8ac3e7'
+sha256sums=('e7fbd005154bcfec5a0a7dbdff5b45750acf222793d080449dbf1521ce8ac3e7'   # mindustry-sdl3-bin-160.7.jar (compiled SDL3, published as a release asset)
             '80aa3f58c2211188e9586b1ef47892956b0bb4042dcea7ea29e954b996ea786f'
             '7e5451947f90876b86ca8a96a285cdddaa7b426dbe71767c03c66dcfe2ddb966'
             'e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b'
