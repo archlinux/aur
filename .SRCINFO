@@ -1,6 +1,6 @@
 pkgbase = pideck-bin
 	pkgdesc = Desktop workbench for managing local AI coding agent sessions (prebuilt binary)
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/ayuayue/PiDeck
 	arch = x86_64
@@ -39,15 +39,15 @@ pkgbase = pideck-bin
 	optdepends = git: Git integration
 	optdepends = libappindicator: system tray support
 	optdepends = org.freedesktop.secrets: secret storage backend
-	provides = pideck=0.10.0
-	provides = pi-desktop=0.10.0
+	provides = pideck=0.11.1
+	provides = pi-desktop=0.11.1
 	conflicts = pideck
 	conflicts = pi-desktop
-	noextract = PiDeck_0.10.0_amd64.deb
+	noextract = PiDeck_0.11.1_amd64.deb
 	options = !strip
 	source = LICENSE
 	sha256sums = 032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab
-	source_x86_64 = PiDeck_0.10.0_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v0.10.0/PiDeck_0.10.0_amd64.deb
-	sha256sums_x86_64 = 3389b149ac7396ee3e343c2402167b852022598f79ff6335897328a34f3bb701
+	source_x86_64 = PiDeck_0.11.1_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v0.11.1/PiDeck_0.11.1_amd64.deb
+	sha256sums_x86_64 = aa9e5bb1f24e070777b960ccbe132bdabf1e90594092ebc1ee8d85953f29bfba
 
 pkgname = pideck-bin
