@@ -1,7 +1,7 @@
 pkgbase = tron
 	pkgdesc = Tiny CLI tool for controlling Lutron Caséta systems
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tessro/tron
 	arch = x86_64
 	license = MIT

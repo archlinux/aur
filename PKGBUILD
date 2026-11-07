@@ -1,8 +1,8 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=tron
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny CLI tool for controlling Lutron Caséta systems'
 depends=()
 optdepends=()
