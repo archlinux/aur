@@ -5,7 +5,7 @@ _pkgname=project-reclaimer
 pkgver=0.10.1
 _commit=c0b3fe02fd6c1bf64c7cdfd16eb7013c7352c3b5
 pkgrel=1
-pkgdesc="A rewrite of Bungie's Halo Games, including CE, 2, 3, and ODST."
+pkgdesc="A rewrite of Bungie's Halo Games. Uses Master Chief Collection on Steam for game data."
 arch=('x86_64')
 url='https://github.com/ProjectReclaimer/project-reclaimer-releases'
 
@@ -30,6 +30,7 @@ optdepends=(
     'libxkbcommon: Keyboard input for native Wayland'
     'libdecor: Client-side window decorations on Wayland'
     'xdg-utils: Opening invite links'
+    'steam: Project Reclaimer requires game data from steam, and can use steam to pull maps and mods from the workshop'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
