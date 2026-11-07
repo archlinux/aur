@@ -11,8 +11,10 @@ arch=(x86_64 aarch64)
 url='https://github.com/igalmarino/pila'
 license=(GPL-3.0-or-later)
 # The libraries pila links (readelf -d), EGL (loaded at runtime through
-# libglvnd) and Xwayland, which pila starts for X11 apps.
+# libglvnd), Xwayland, which pila starts for X11 apps, and bash for
+# pila-session and pila-report.
 depends=(
+    bash
     glibc
     libgcc
     libglvnd
@@ -34,6 +36,7 @@ optdepends=(
     'swaylock: locking the session'
     'libnotify: notifications from pila, such as an invalid config (notify-send)'
     'xdg-utils: opening links and files from programs such as kitty (xdg-open)'
+    'pciutils: the GPU and its driver in pila-report (lspci)'
 )
 provides=(pila)
 conflicts=(pila)
