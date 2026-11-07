@@ -2,7 +2,7 @@
 # Contributor: Severin Glöckner (severin.gloeckner@stud.htwk-leipzig.de)
 
 pkgname=pgmodeler
-pkgver=2.0.0_beta1
+pkgver=2.0.0
 pkgrel=1
 epoch=3
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v
         'mimetype.xml'
         'pgmodeler.install'
         'patch_no_check_update.diff')
-sha256sums=('16c7064814f073b3873bf4ef778eb90fd479c42b4ae29391d34c755723963c78'
+sha256sums=('074a9a508d5c8415464ab5c37bb8d1a9d511e23daa2ba15a4a05feb84463754a'
             '91c6ab0df840823a4de21a953592134fb7b4367565eebff8523dc08ea6c7cd36'
             'fed8d615a3b732a83e1bd9c9562c81f3bfcb0ce5a4abba96191bca0d602bdd33'
             '648d6351e1e1d1ad559e1ddfc98aff158e91c040b65c8c4ea74232c2077e19d7')
@@ -40,16 +40,16 @@ build() {
 #          QMAKE_CXXFLAGS_RELEASE+="${CXXFLAGS} ${CPPFLAGS}" \
 #          pgmodeler.pro
 #    make
-  # PGM_PREFIX        -> the root directory where the files will be placed    
-  # PGM_BINDIR        -> where executables accessible by the user resides    
-  # PGM_PRIVATEBINDIR -> where executables not directly accessible by the user resides    
-  # PGM_PRIVATELIBDIR -> where libraries not directly shared through the system resides    
-  # PGM_PLUGINSDIR    -> where third party plugins are installed    
-  # PGM_SHAREDIR      -> where shared files and resources should be placed    
-  # PGM_CONFDIR       -> where the pgModeler's configuration folder (conf) resides    
-  # PGM_DOCDIR        -> where documentation related files are placed    
-  # PGM_LANGDIR       -> where the UI translation folder (lang) resides    
-  # PGM_SAMPLESDIR    -> where the sample models folder (samples) resides    
+  # PGM_PREFIX        -> the root directory where the files will be placed
+  # PGM_BINDIR        -> where executables accessible by the user resides
+  # PGM_PRIVATEBINDIR -> where executables not directly accessible by the user resides
+  # PGM_PRIVATELIBDIR -> where libraries not directly shared through the system resides
+  # PGM_PLUGINSDIR    -> where third party plugins are installed
+  # PGM_SHAREDIR      -> where shared files and resources should be placed
+  # PGM_CONFDIR       -> where the pgModeler's configuration folder (conf) resides
+  # PGM_DOCDIR        -> where documentation related files are placed
+  # PGM_LANGDIR       -> where the UI translation folder (lang) resides
+  # PGM_SAMPLESDIR    -> where the sample models folder (samples) resides
   # PGM_SCHEMASDIR    -> where the object's schemas folder (schema) resides
     cmake -S . -B ./cmake-build \
                   -DCMAKE_PREFIX_PATH=$QT_ROOT -DCMAKE_BUILD_TYPE=Release \
