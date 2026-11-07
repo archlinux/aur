@@ -21,6 +21,7 @@ depends=(
   libqalculate
   qtkeychain-qt6
   syntax-highlighting
+  vulkan-icd-loader
 )
 makedepends=("sed")
 install=vicinae-bin.install
