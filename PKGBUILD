@@ -3,11 +3,11 @@
 _pkgname=roast
 pkgname="$_pkgname"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Adversarial cross-model code review'
 url='https://github.com/bluesky-social/roast'
 arch=('aarch64' 'i686' 'x86_64')
-license=('MIT')
+license=('MIT OR Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=("$_pkgname")
