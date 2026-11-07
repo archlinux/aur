@@ -1,15 +1,15 @@
 # Maintainer: tomsh <tomsh@disroot.org>
 pkgname=yamep
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Yet Another Markdown Editor & Preview"
 arch=('any')
 url="https://github.com/itstomsh/yamep"
 license=('GPL-3.0-or-later')
-depends=('python' 'pyside6' 'qt6-webengine' 'python-markdown' 'python-platformdirs' 'python-pymdown-extensions')
+depends=('python' 'pyside6' 'qt6-webengine' 'python-markdown' 'python-platformdirs' 'python-pymdown-extensions' 'python-pygments')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/itstomsh/yamep/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2dd8d71fb1fcb313ac20bb5706859f1914fbc960b5fce86ef53641c648ef4c78')
+sha256sums=('c20109750caf819ec2db75e107295ded85a5d1a751e6ef419af7f11e1d8c82d7')
 
 build() {
     cd "$pkgname-$pkgver"

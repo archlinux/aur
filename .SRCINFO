@@ -1,6 +1,6 @@
 pkgbase = yamep
 	pkgdesc = Yet Another Markdown Editor & Preview
-	pkgver = 2.0.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/itstomsh/yamep
 	arch = any
@@ -15,7 +15,8 @@ pkgbase = yamep
 	depends = python-markdown
 	depends = python-platformdirs
 	depends = python-pymdown-extensions
-	source = yamep-2.0.0.tar.gz::https://github.com/itstomsh/yamep/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 2dd8d71fb1fcb313ac20bb5706859f1914fbc960b5fce86ef53641c648ef4c78
+	depends = python-pygments
+	source = yamep-2.1.1.tar.gz::https://github.com/itstomsh/yamep/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = c20109750caf819ec2db75e107295ded85a5d1a751e6ef419af7f11e1d8c82d7
 
 pkgname = yamep
