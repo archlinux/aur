@@ -1,7 +1,7 @@
 # Maintainer: vii <coderdayton14 at gmail dot com>
 
 pkgname=nightcap
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
@@ -69,6 +69,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DMOCKTAIL_DEFAULT_COMPATIBILITY_MANIFEST=/usr/share/mocktail/metadata/roblox_compatibility.json \
     -DMOCKTAIL_DEFAULT_SIGNING_TRUST_MANIFEST=/usr/share/mocktail/metadata/roblox_signing_certificates.json \
+    -DMOCKTAIL_DEFAULT_DOWNLOAD_SOURCES_MANIFEST=/usr/share/mocktail/metadata/roblox_download_sources.json \
     -DMOCKTAIL_ENABLE_UPSTREAM_JNIVM=OFF \
     -DBUILD_TESTING=OFF
   cmake --build build
