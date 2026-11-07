@@ -1,0 +1,14 @@
+pkgbase = cloudlogin-bin
+	pkgdesc = Cloud.ru authentication helper for Evolution Managed Kubernetes
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cloud-ru-tech/cloudlogin
+	arch = x86_64
+	license = Apache-2.0
+	optdepends = kubectl: access to Managed Kubernetes clusters
+	provides = cloudlogin
+	conflicts = cloudlogin
+	source = cloudlogin-bin-1.0.2-amd64.tar.gz::https://github.com/cloud-ru-tech/cloudlogin/releases/download/v1.0.2/cloudlogin_Linux_amd64.tar.gz
+	sha256sums = 195535c4c528d15600d11e09f9f4a917e458d127b391715a05c68331ed3c64bf
+
+pkgname = cloudlogin-bin
