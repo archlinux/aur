@@ -19,7 +19,7 @@ optdepends=(
 provides=('earshot')
 conflicts=('earshot' 'earshot-git')
 source=("https://github.com/MrMazlum/Earshot/releases/download/v${pkgver}/earshot-receiver-linux-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a625c2e1d7272c9ed68ca6c76c548b13909d1be06d4b145c8f6719249a5d2288')
 
 package() {
   # Release tarballs wrap the files in one top-level dir; find them.
