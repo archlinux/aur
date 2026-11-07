@@ -2,7 +2,7 @@
 
 pkgname=tron
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Tiny CLI tool for controlling Lutron Caséta systems'
 depends=()
 optdepends=()
@@ -35,6 +35,7 @@ check() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm 755 "build/$pkgname" -t "$pkgdir/usr/bin/"
+    install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: set sw=4 ts=4 et:
