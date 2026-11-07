@@ -1,0 +1,23 @@
+pkgbase = synpass-bin
+	pkgdesc = synshell password manager
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	groups = synshell-apps
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = synpass
+	conflicts = synpass
+	conflicts = synpass-git
+	noextract = synpass-0.2.0-x86_64.tar.zst
+	noextract = synpass-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = synpass-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synpass-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = 6b4f7eed218740322aeb6aff55e92d57668ecbf494ff5591836c7c245711c0b2
+	source_aarch64 = synpass-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synpass-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 4c015d53d77a2b4e7ccbde59d4d3e73b693db49842e2d198f3f15eef6dd2ffc2
+
+pkgname = synpass-bin
