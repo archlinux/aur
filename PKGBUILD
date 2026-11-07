@@ -2,7 +2,7 @@
 
 pkgname=pwm-d77
 _name=pwm
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="PipaWindowManager, a Penrose Lib Tiling Window Manager"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
 )
 backup=('etc/xdg/pwm/startup.sh')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('fadfc12f38f39b6e1479ad88fc043280b25f86f0d5598732a521d9b21e6cc199')
+sha256sums=('46a4b635e8c6142071c6dfb6ccf95d128f935f7c370aef88b8790b1f7c73ff61')
 
 prepare() {
     cd "$_name-$pkgver"
