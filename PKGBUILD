@@ -15,7 +15,7 @@ arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
 
 makedepends=('zstd')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
