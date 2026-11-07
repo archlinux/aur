@@ -2,7 +2,7 @@
 
 pkgname=saturn-canary-bin
 pkgver=4.0.2
-_canary_rel=51
+_canary_rel=54
 pkgrel=1
 pkgdesc="Cross-platform deezer client made in Flutter - Canary Version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('saturn-canary-git')
 
 source=( "${url}/releases/download/v${pkgver}-canary.${_canary_rel}/saturn-canary-${pkgver}+${_canary_rel}-linux-canary.${_canary_rel}.deb" )
 
-sha256sums=('03b670b6da80e73e8e2888b1b073f5cb4789a0394c2b218698723adfac87a0f1')
+sha256sums=('8242a9812a88b63722bdca066618ab20c25b378172261ce908da59ef04076604')
 
 package() {
 	cd "${srcdir}"
