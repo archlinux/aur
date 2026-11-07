@@ -2,8 +2,8 @@
 
 pkgname=sing-box-cagedbird-bin
 _pkgname=sing-box
-_pkgver=1.15.0-alpha.13-cagedbird.20261106090453.07838a1df
-pkgver=1.15.0_alpha.13_cagedbird.20261106090453.07838a1df
+_pkgver=1.15.0-alpha.13-cagedbird.20261107124353.70cbde848
+pkgver=1.15.0_alpha.13_cagedbird.20261107124353.70cbde848
 epoch=1
 pkgrel=1
 pkgdesc='The universal proxy platform with native Clash subscription support (cagedbird binary build)'
@@ -41,8 +41,8 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             '41a8bd7e2968e85101b3057dc46b356583ee528df5595700acc4290dd492c993'
             'b0fab6d2d3107ab03a5be0fe4fa10afb42c1efea0203cb96cf6091d28492c903'
             '2419da22721c800e886c6d075fd081f107c698b2e1e89fc5111d31bad33f72fc')
-sha256sums_x86_64=('7c8b9e2d96d250dd1c2b6f37db67f3a5e352ee0c1be31242c571214a86f7c0be')
-sha256sums_aarch64=('f3cb2e32a07f46c724de2f17d0ca717a0c3122da62dde11e215530ea3e90c98e')
+sha256sums_x86_64=('544eab3813d501ddbdc0d8eaf69b6466939cedbbc829bcaebe3465cc09de11eb')
+sha256sums_aarch64=('7d8c7fe8f300ed7fc9f408a9a9e68645af173e4231ff3b10bf1612281aae6686')
 
 package() {
     install -Dm644 "config.json-${_pkgver}" "${pkgdir}/etc/sing-box/config.json"
