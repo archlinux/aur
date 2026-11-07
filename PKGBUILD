@@ -1,6 +1,6 @@
 # Maintainer: Mathis <999frostz@gmail.com>
 pkgname=screenix-bin
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Professional screen recorder with smooth zoom effects"
 arch=('x86_64')
@@ -41,7 +41,7 @@ provides=('screenix')
 conflicts=('screenix')
 options=('!strip' '!debug')
 source=("https://github.com/mathisdev7/screenix-releases/releases/download/v${pkgver}/Screenix_${pkgver}_amd64.deb")
-sha256sums=('c8fa06e0493ab17eda72d6ad6606899656d45d3a8f925c2425326446f882b7d4')
+sha256sums=('230448b3935091ceef2cf3ca35bcf064caebee89158907e0506a5ab19c026da0')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
