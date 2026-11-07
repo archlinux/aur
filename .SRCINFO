@@ -1,6 +1,6 @@
 pkgbase = punyinform
 	pkgdesc = A fast and compact Inform 6 library
-	pkgver = 6.7
+	pkgver = 6.8
 	pkgrel = 1
 	url = https://github.com/johanberntsson/PunyInform
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = punyinform
 	license = MIT
 	checkdepends = inform
 	checkdepends = ruby
-	source = punyinform-6.7.tar.gz::https://github.com/johanberntsson/PunyInform/archive/refs/tags/v6_7.tar.gz
+	source = punyinform-6.8.tar.gz::https://github.com/johanberntsson/PunyInform/archive/refs/tags/v6_8.tar.gz
 	source = punyinform.sh
-	sha256sums = fa0ef3b340c0bfc86035c746f464b29268209508ed0552cd9f5decb2e3fd2312
+	sha256sums = 5b7bc02161ff57d47fdafd08972cdb00fcf9aa4e4a9a02a2b262e78ae2cd862c
 	sha256sums = b2fafaddc1100ae9bda1b3ddb0bd269cee292fabedcaff123aa9928daed85b92
 
 pkgname = punyinform
