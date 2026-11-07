@@ -1,9 +1,9 @@
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 # Contributor: Honghao Li <hh.li99@outlook.com>
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
-# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=vcpkg-git
-pkgver=2023.06.20.r43.g288e8bebf4
+pkgver=2026.10.16.r377.g6fdd23fa0a
 pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=('curl' 'zip' 'unzip')
