@@ -1,0 +1,23 @@
+# Maintainer: Alexeyev Vitaly
+# Сгенерировано syngui package -f aur --workspace из syngui-release.toml — правки делать там.
+pkgname=syn-audio-recorder-bin
+pkgver=0.2.0
+pkgrel=1
+arch=('x86_64' 'aarch64')
+url='https://github.com/VitaminDB/synshell'
+license=('GPL-3.0-only')
+pkgdesc='synshell voice recorder'
+depends=('synshell-core')
+provides=('syn-audio-recorder')
+conflicts=('syn-audio-recorder' 'syn-audio-recorder-git')
+groups=('synshell-apps')
+options=('!strip' '!debug')
+noextract=('syn-audio-recorder-0.2.0-x86_64.tar.zst' 'syn-audio-recorder-0.2.0-aarch64.tar.zst')
+source_x86_64=("syn-audio-recorder-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v$pkgver/syn-audio-recorder-0.2.0-x86_64.tar.zst")
+sha256sums_x86_64=('aeb24d5169d747dab7cdca1b100ae764ff8b4bbe74992b88fa08aa8b626bf258')
+source_aarch64=("syn-audio-recorder-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v$pkgver/syn-audio-recorder-0.2.0-aarch64.tar.zst")
+sha256sums_aarch64=('78838f4a6df8a348eb29d659a0b28b6f47d5a7080624b5976b7c30caba4ab904')
+
+package() {
+    bsdtar -xpf "$srcdir/syn-audio-recorder-$pkgver-$CARCH.tar.zst" -C "$pkgdir"
+}
