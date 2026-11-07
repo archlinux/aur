@@ -1,7 +1,7 @@
 pkgbase = ultimate-bug-scanner
 	pkgdesc = Ultimate Bug Scanner meta-runner for multi-language bug scanning
 	pkgver = 5.5.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dicklesworthstone/ultimate_bug_scanner
 	arch = any
 	license = MIT

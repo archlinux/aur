@@ -1,7 +1,7 @@
 # Maintainer: Ultimate Bug Scanner AUR package
 pkgname=ultimate-bug-scanner
 pkgver=5.5.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultimate Bug Scanner meta-runner for multi-language bug scanning"
 arch=('any')
 url="https://github.com/Dicklesworthstone/ultimate_bug_scanner"
