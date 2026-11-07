@@ -1,6 +1,6 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=wavelog
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="Web-based amateur radio logging software - log your contacts from everywhere"
 arch=('any')
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/wavelog/wavelog/archive/ref
         'nginx.example.conf'
         'wavelog.tmpfiles'
         'fix-install-lock-path.patch')
-sha256sums=('2e5edb9fd433464d1d79bf6ad386ac150f682ce7f271c79da430bdb48dc91f60'
+sha256sums=('e7bc1262e74a10dd12905aa579379035b9df99b5a9800ec152a1d58029064cd5'
             '329d52839b7a46bb91742327941d809a5e416a618c7427aa774e737f2e9c6439'
             '8b91e5fc08206075ee2ec794295c3038904cc547d2f01de9df0da2df257b1566'
             '0612d8d873a5fe50e55e7a055956e10d48d25d5b83db751c121c8615fc372539'
