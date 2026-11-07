@@ -18,11 +18,8 @@
 # QoderWake service (https://qoder.com/).
 
 pkgname=qoderwake-bin
-# The runtime itself is upstream 1.2.12; the ".2" suffix is a packaging patch
-# level so AUR helpers and users see a new version without waiting for a
-# pkgrel bump to be noticed.
-_upstreamver=1.2.12
-pkgver=1.2.12.2
+_upstreamver=1.2.13
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="QoderWake local CLI and daemon (official prebuilt Linux runtime)"
 arch=('x86_64' 'aarch64')
@@ -40,8 +37,8 @@ source_x86_64=(
 source_aarch64=(
   "qoderwake-${_upstreamver}-linux-arm64.tar.gz::https://download.qoder.com/qoderwake/releases/${_upstreamver}/qoderwake_${_upstreamver}_linux_arm64.tar.gz"
 )
-sha256sums_x86_64=('5394e3ecc3b1437c7c26eeb81febaf2d383747bee52bcd663ae942e4fb780a3b')
-sha256sums_aarch64=('f38c7d216a41578e51c8d56680a047cd3fca40f7cdc779c7722fb0ee6f2cf030')
+sha256sums_x86_64=('7573a68803d23ef8c1da712a01e3d9c1d9f14802c91e8e41244a7736f7ad6aad')
+sha256sums_aarch64=('3bf90987b6f9b7512fea39f16204b5feb5c6937c1222f0fe7164554d1abac85e')
 
 package() {
   # The tarball has no top-level directory, so makepkg extracts it flat into
