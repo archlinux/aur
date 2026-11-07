@@ -1,5 +1,5 @@
 diff --git a/game/addons/sourcemod/scripting/sbpp_main.sp b/game/addons/sourcemod/scripting/sbpp_main.sp
-index fb22f95..2c0bb38 100644
+index fb22f95..42a11b6 100644
 --- a/game/addons/sourcemod/scripting/sbpp_main.sp
 +++ b/game/addons/sourcemod/scripting/sbpp_main.sp
 @@ -688,6 +688,15 @@ public Action CommandUnban(int client, int args)
@@ -11,7 +11,7 @@ index fb22f95..2c0bb38 100644
 +	char steam3[MAX_AUTHID_LENGTH];
 +	if (isSteamId && !Steam2ToSteam3(arg, steam3, sizeof(steam3)))
 +	{
-+		ReplyToCommand(client, "%sInvalid SteamID %s, expected STEAM_[01]:[01]:Z", Prefix, arg);
++		ReplyToCommand(client, "%s%t", Prefix, "Invalid SteamID", arg);
 +		return Plugin_Handled;
 +	}
 +
@@ -38,7 +38,7 @@ index fb22f95..2c0bb38 100644
  	} else {
  		Format(query, sizeof(query), "SELECT bid FROM %s_bans WHERE (type = 1 AND ip     = '%s') AND (length = '0' OR ends > UNIX_TIMESTAMP()) AND RemoveType IS NULL", DatabasePrefix, argEscaped);
  	}
-@@ -768,6 +781,14 @@ public Action CommandAddBan(int client, int args)
+@@ -768,6 +781,16 @@ public Action CommandAddBan(int client, int args)
  		return Plugin_Handled;
  	}
  
@@ -46,14 +46,16 @@ index fb22f95..2c0bb38 100644
 +	char steam3[MAX_AUTHID_LENGTH];
 +	if (!Steam2ToSteam3(authid, steam3, sizeof(steam3)))
 +	{
-+		ReplyToCommand(client, "%sInvalid SteamID %s, expected STEAM_[01]:[01]:Z", Prefix, authid);
++		ReplyToCommand(client, "%s%t", Prefix, "Invalid SteamID", authid);
 +		return Plugin_Handled;
 +	}
++	// Stored as STEAM_0, like the web panel stores SteamIDs
++	authid[6] = '0';
 +
  	if (!minutes && client && !(CheckCommandAccess(client, "sm_unban", ADMFLAG_UNBAN | ADMFLAG_ROOT)))
  	{
  		ReplyToCommand(client, "You do not have Perm Ban Permission");
-@@ -792,11 +813,13 @@ public Action CommandAddBan(int client, int args)
+@@ -792,11 +815,13 @@ public Action CommandAddBan(int client, int args)
  	dataPack.WriteString(adminAuth);
  	dataPack.WriteString(adminIp);
  
@@ -70,3 +72,50 @@ index fb22f95..2c0bb38 100644
  
  	DB.Query(SelectAddbanCallback, sQuery, dataPack, DBPrio_High);
  
+@@ -1445,19 +1470,19 @@ public void SelectUnbanCallback(Database db, DBResultSet results, const char[] e
+ 		return;
+ 	}
+ 
+-	// There is ban
+-	if (results != null && results.FetchRow())
++	// Every active ban that matches, as there can be more than one, e.g. of either universe: the connect
++	// check would still find one that's left
++	char bids[512];
++	for (int i = 0; results.FetchRow(); i++)
+ 	{
+-		// Get the values from the existing ban record
+-		int bid = results.FetchInt(0);
++		Format(bids, sizeof(bids), "%s%s%d", bids, i ? "," : "", results.FetchInt(0));
++	}
+ 
+-		char query[1024];
+-		Format(query, sizeof(query), "UPDATE %s_bans SET RemovedBy = (SELECT aid FROM %s_admins WHERE authid = '%s' OR authid REGEXP '^STEAM_[0-9]:%s$'), RemoveType = 'U', RemovedOn = UNIX_TIMESTAMP(), ureason = '%s' WHERE bid = %d",
+-			DatabasePrefix, DatabasePrefix, adminAuth, adminAuth[8], unbanReason, bid);
++	char query[1024];
++	Format(query, sizeof(query), "UPDATE %s_bans SET RemovedBy = (SELECT aid FROM %s_admins WHERE authid = '%s' OR authid REGEXP '^STEAM_[0-9]:%s$'), RemoveType = 'U', RemovedOn = UNIX_TIMESTAMP(), ureason = '%s' WHERE bid IN (%s)",
++		DatabasePrefix, DatabasePrefix, adminAuth, adminAuth[8], unbanReason, bids);
+ 
+-		db.Query(InsertUnbanCallback, query, dataPack);
+-	}
+-	return;
++	db.Query(InsertUnbanCallback, query, dataPack);
+ }
+ 
+ public void InsertUnbanCallback(Database db, DBResultSet results, const char[] error, DataPack dataPack)
+diff --git a/game/addons/sourcemod/translations/sbpp_main.phrases.txt b/game/addons/sourcemod/translations/sbpp_main.phrases.txt
+index 4f2e80f..b8db9b3 100644
+--- a/game/addons/sourcemod/translations/sbpp_main.phrases.txt
++++ b/game/addons/sourcemod/translations/sbpp_main.phrases.txt
+@@ -281,6 +281,12 @@
+ 		"pt"			"\"{1}\" removeu um banimento. (Filtro: {2}.) (Motivo: {3}.)"
+ 		"chi"			"\"{1}\" 移除了封禁 (过滤: {2}) (理由: {3})."
+ 	}
++	"Invalid SteamID"
++	{
++		"#format"		"{1:s}"
++		"en"			"{1} isn't a valid SteamID, expected STEAM_X:Y:Z."
++		"de"			"{1} ist keine gültige SteamID, erwartet wird STEAM_X:Y:Z."
++	}
+ 	"No Active Ban"
+ 	{
+ 		"en"			"No active ban found."
