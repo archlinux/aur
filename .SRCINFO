@@ -1,6 +1,6 @@
 pkgbase = stillmusic-bin
 	pkgdesc = Minimal black and white CLI music player powered by MPV (prebuilt binary)
-	pkgver = 0.3.0beta1
+	pkgver = 0.3.0beta2
 	pkgrel = 1
 	url = https://github.com/horizzon3507/stillmusic
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = stillmusic-bin
 	optdepends = yt-dlp: download music and videos
 	optdepends = ffmpeg: extract and convert downloaded audio
 	optdepends = tar: export and import backups
-	provides = stillmusic=0.3.0beta1
+	provides = stillmusic=0.3.0beta2
 	conflicts = stillmusic
 	conflicts = optionmusic
 	conflicts = optmusic
 	options = !strip
 	options = !lto
-	source = https://github.com/horizzon3507/stillmusic/releases/download/v0.3.0-beta.1/stillmusic-v0.3.0-beta.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = ffadb3b0b0dd99aedeac613d97295044b8d41aff284ba12f9dc121db28485840
+	source = https://github.com/horizzon3507/stillmusic/releases/download/v0.3.0-beta.2/stillmusic-v0.3.0-beta.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 1cb9fa8cfdd9e44eacde08faddbfed576ac1a67640a65644a3d3435dac62b196
 
 pkgname = stillmusic-bin

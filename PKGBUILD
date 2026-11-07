@@ -1,7 +1,7 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=stillmusic-bin
-pkgver=0.3.0beta1
-_tag=0.3.0-beta.1
+pkgver=0.3.0beta2
+_tag=0.3.0-beta.2
 pkgrel=1
 pkgdesc='Minimal black and white CLI music player powered by MPV (prebuilt binary)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("stillmusic=$pkgver")
 conflicts=('stillmusic' 'optionmusic' 'optmusic')
 options=('!strip' '!lto')
 source=("$url/releases/download/v$_tag/stillmusic-v$_tag-$CARCH-unknown-linux-gnu.tar.gz")
-sha256sums=('ffadb3b0b0dd99aedeac613d97295044b8d41aff284ba12f9dc121db28485840')
+sha256sums=('1cb9fa8cfdd9e44eacde08faddbfed576ac1a67640a65644a3d3435dac62b196')
 
 package() {
   install -Dm755 still "$pkgdir/usr/bin/still"
