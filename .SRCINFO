@@ -1,6 +1,6 @@
 pkgbase = jdk25-zulu-fx-bin
 	pkgdesc = Azul Zulu JDK 25 with JavaFX
-	pkgver = 25.36.205
+	pkgver = 25.38.109
 	pkgrel = 1
 	url = https://www.azul.com/downloads
 	install = jdk25-zulu-fx-bin.install
@@ -17,9 +17,9 @@ pkgbase = jdk25-zulu-fx-bin
 	provides = java-runtime-headless-openjdk=25
 	provides = java-openjfx=25
 	options = !strip
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu25.36.205-ca-fx-jdk25.0.4.1-linux_x64.tar.gz
-	sha256sums_x86_64 = dc541c82220402985ef4f646246235a55920f4493d79670eddaf33fa45a5c73c
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu25.36.205-ca-fx-jdk25.0.4.1-linux_aarch64.tar.gz
-	sha256sums_aarch64 = 5485d8302d3ef7a4c8e6baf9f914b5698fe9602226bdb30e5a5dd0c7975eaca2
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu25.38.109-ca-fx-jdk25.0.5.0.3-linux_x64.tar.gz
+	sha256sums_x86_64 = 58da871f1d12ff834e408cfa9c10ad3e5ca590bc4623dfb2421c449b1971518a
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu25.38.109-ca-fx-jdk25.0.5.0.3-linux_aarch64.tar.gz
+	sha256sums_aarch64 = d51b1dd9f0cdc43bb1236786506c3a7940e04afc6f7a34dbd1a5f48ef62512f1
 
 pkgname = jdk25-zulu-fx-bin
