@@ -1,13 +1,13 @@
 pkgbase = streamlink-ttvlol
 	pkgdesc = Streamlink Twitch plugin modified to work with the TTV.LOL API.
-	pkgver = 8.2.1_20260305
+	pkgver = 8.3.0_20260701
 	pkgrel = 1
 	url = https://github.com/2bc4/streamlink-ttvlol
 	install = streamlink-ttvlol.install
 	arch = any
 	license = BSD-2-Clause
 	depends = streamlink
-	source = streamlink-ttvlol-8.2.1-20260305.py::https://github.com/2bc4/streamlink-ttvlol/releases/download/8.2.1-20260305/twitch.py
-	sha256sums = f38cb99755a819216d34963efbc274c0fa82479215c4ba194bd79773762cab4e
+	source = streamlink-ttvlol-8.3.0-20260701.py::https://github.com/2bc4/streamlink-ttvlol/releases/download/8.3.0-20260701/twitch.py
+	sha256sums = 4d465380159ec59f7caef6cb6a28368bbbbd3abcf80886138182184c30f2fad0
 
 pkgname = streamlink-ttvlol
