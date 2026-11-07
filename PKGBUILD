@@ -57,6 +57,15 @@ package_vtium() {
   install -Dm644 "$srcdir/terminus.vtfrit" "$pkgdir/etc/vtium/fonts/terminus.vtfrit"
 }
 
+# The console's features while VTIUM_FEATURES is unset, and the default of
+# hwaccel. The tag v0.1.0-alpha.5 has no feature bidi, and its console
+# keeps the GPU path off by default. The move to v0.1.0-alpha.6 sets
+# _features='images logind gpu bidi' and _hwaccel=on with the new tag, as
+# vtium-git builds them, and ci/vtium/.no-auto-merge holds the watcher's
+# bump until a person makes that change.
+_features='images logind gpu'
+_hwaccel=off
+
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
 # aur-publish refuses a package whose copy differs from the other's.
 
@@ -72,23 +81,26 @@ prepare() {
 #
 #   - PREFIX=/usr, so the console starts its glyph helper at
 #     /usr/bin/vtium-config and its image helper at /usr/bin/vtium-image.
-#   - FEATURES, the console's features: images logind gpu, the build for an
-#     ordinary desktop or laptop (ADR-1500 D2, D8), while VTIUM_FEATURES is
-#     unset in makepkg's environment. VTIUM_FEATURES names other features,
-#     such as VTIUM_FEATURES='images logind', and set but empty, as in
+#   - FEATURES, the console's features: _features, set above, while
+#     VTIUM_FEATURES is unset in makepkg's environment (ADR-1500 D2, D8).
+#     VTIUM_FEATURES names other features, such as
+#     VTIUM_FEATURES='images logind', and set but empty, as in
 #     VTIUM_FEATURES= makepkg, it names none, so the console is the minspec
 #     build. Whatever it names, the package's dependencies and the two
 #     settings below stay those of the default build.
-#   - HWACCEL=off and DISPLAY_BUFFERS=3, the defaults the console and
-#     vtium-config read for hwaccel and display-buffers (ADR-1500 D8). The
-#     console draws on the CPU until a line hwaccel in /etc/vtium/vtium.conf
-#     turns the GPU path on, and keeps three buffers for each display.
+#   - HWACCEL, the default the console and vtium-config read for hwaccel:
+#     _hwaccel, set above (ADR-1500 D8). With hwaccel on, the console draws
+#     on the GPU path unless a line no-hwaccel in /etc/vtium/vtium.conf
+#     turns it off. With hwaccel off, it draws on the CPU until a line
+#     hwaccel turns the GPU path on.
+#   - DISPLAY_BUFFERS=3, the default of display-buffers: the console keeps
+#     three buffers for each display.
 #   - FRITS, the frits make install stages into /etc/vtium/fonts, which each
 #     console package's backup list names.
 #   - --frozen, because prepare() fetched the crates.
 _make() {
   CARGO_TARGET_DIR=target make -C "$srcdir/vtium" PREFIX=/usr \
-    FEATURES="${VTIUM_FEATURES-images logind gpu}" HWACCEL=off \
+    FEATURES="${VTIUM_FEATURES-$_features}" HWACCEL="$_hwaccel" \
     DISPLAY_BUFFERS=3 FRITS='desktop minspec-16 minspec-8' \
     CARGO_BUILD_FLAGS=--frozen "$@"
 }
