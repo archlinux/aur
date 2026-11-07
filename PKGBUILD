@@ -6,7 +6,7 @@ pkgver=5
 pkgdesc="Command line client for gofu"
 url="https://git.roshless.me/gofu/fup"
 arch=('x86_64' 'i686')
-license=("GPL")
+license=("GPL3-or-later")
 makedepends=('go')
 source=("https://git.roshless.me/gofu/$pkgname/archive/$pkgver.tar.gz")
 
