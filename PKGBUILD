@@ -2,9 +2,9 @@
 
 pkgname=dotool-git
 pkgver=1.6.r3.g27ec57e
-pkgrel=1
+pkgrel=2
 pkgdesc="Command to simulate input anywhere"
-arch=('any')
+arch=('x86_64')
 url="https://git.sr.ht/~geb/dotool"
 license=('GPL3')
 provides=('dotool')
