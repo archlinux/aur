@@ -123,6 +123,11 @@
 # Use this only if you have Turing+ GPU
 : "${_build_nvidia_open:=no}"
 
+# Builds the closed nvidia module of the 580xx legacy driver and package it into a own base
+# This does replace the requirement of nvidia-580xx-dkms
+# Use this for Maxwell, Pascal and Volta GPUs
+: "${_build_nvidia_580xx:=no}"
+
 # Builds the r8125 module and package it into its own package
 # Replaces requirement for r8125-dkms
 : "${_build_r8125:=no}"
@@ -151,7 +156,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.3
-_minor=1
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -191,9 +196,11 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=615.78.08
+_nv_ver=620.70.06
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
+_nv_580xx_ver=580.196.07
+_nv_580xx_pkg="NVIDIA-Linux-x86_64-${_nv_580xx_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"{,.asc}
     "config"
@@ -205,7 +212,9 @@ validpgpkeys=(
 
 # LLVM makedepends
 if _is_lto_kernel; then
-    makedepends+=(clang llvm lld)
+    # pahole needs the --lang_exclude fix for merged LTO CUs to generate
+    # BTF for Rust modules
+    makedepends+=(clang llvm lld 'pahole>=1:1.32-2')
     source+=("${_patchsource}/misc/dkms-clang.patch")
     BUILD_FLAGS=(
         CC=clang
@@ -234,6 +243,12 @@ if [ "$_build_nvidia_open" = "yes" ]; then
              "${_patchsource}/misc/nvidia/0004-Open-sysfs-config-from-the-userspace-root-on-7.3.patch")
 fi
 
+if [ "$_build_nvidia_580xx" = "yes" ]; then
+    source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_580xx_ver}/${_nv_580xx_pkg}.run"
+             "${_patchsource}/misc/nvidia-580xx/0001-Enable-atomic-kernel-modesetting-by-default.patch"
+             "${_patchsource}/misc/nvidia-580xx/0002-fix-hw-cursor-kde.patch")
+fi
+
 if [ "$_build_r8125" = "yes" ]; then
     source+=("git+https://github.com/aravance/r8125.git")
 fi
@@ -257,6 +272,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 _die() { error "$@" ; exit 1; }
 
 prepare() {
+    if [ "$_build_nvidia_580xx" = "yes" ]; then
+        sh "${_nv_580xx_pkg}.run" --extract-only
+    fi
+
     cd "$_srcname"
 
     echo "Setting version..."
@@ -272,6 +291,8 @@ prepare() {
         echo "Applying patch $src..."
         if [[ "$patch" == "${_patchsource}"/misc/nvidia/* ]]; then
             patch -Np1 < "../$src" -d "${srcdir}/${_nv_open_pkg}"
+        elif [[ "$patch" == "${_patchsource}"/misc/nvidia-580xx/* ]]; then
+            patch -Np1 < "../$src" -d "${srcdir}/${_nv_580xx_pkg}/kernel"
         else
             patch -Np1 < "../$src"
         fi
@@ -315,7 +336,7 @@ prepare() {
     ### Enable KCFI
     if [ "$_use_kcfi" = "yes" ]; then
         echo "Enabling kCFI"
-        scripts/config -e ARCH_SUPPORTS_CFI_CLANG -e CFI_CLANG -e CFI_AUTO_DEFAULT
+        scripts/config -e CFI
     fi
 
     ### Select LLVM level
@@ -329,12 +350,10 @@ prepare() {
 
     echo "Selecting '$_use_llvm_lto' LLVM level..."
 
-    if ! _is_lto_kernel; then
-        echo "Enabling QR Code Panic for GCC Kernels"
-        scripts/config --set-str DRM_PANIC_SCREEN qr_code -e DRM_PANIC_SCREEN_QR_CODE \
-            --set-str DRM_PANIC_SCREEN_QR_CODE_URL https://panic.archlinux.org/panic_report# \
-            --set-val CONFIG_DRM_PANIC_SCREEN_QR_VERSION 40
-    fi
+    echo "Enabling QR Code Panic"
+    scripts/config --set-str DRM_PANIC_SCREEN qr_code -e DRM_PANIC_SCREEN_QR_CODE \
+        --set-str DRM_PANIC_SCREEN_QR_CODE_URL https://panic.archlinux.org/panic_report# \
+        --set-val CONFIG_DRM_PANIC_SCREEN_QR_VERSION 40
 
     ### Select tick rate
     case "$_HZ_ticks" in
@@ -506,6 +525,11 @@ build() {
     if [ "$_build_nvidia_open" = "yes" ]; then
         cd "${srcdir}/${_nv_open_pkg}"
         MODULE_FLAGS+=(IGNORE_CC_MISMATCH=yes)
+        CFLAGS= CXXFLAGS= LDFLAGS= make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
+    fi
+
+    if [ "$_build_nvidia_580xx" = "yes" ]; then
+        cd "${srcdir}/${_nv_580xx_pkg}/kernel"
         CFLAGS= CXXFLAGS= LDFLAGS= make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
     fi
 
@@ -712,7 +736,7 @@ _package-nvidia-open(){
     pkgdesc="nvidia open modules of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
     provides=('NVIDIA-MODULE')
-    conflicts=("$pkgbase-nvidia")
+    conflicts=("$pkgbase-nvidia" "$pkgbase-nvidia-580xx")
     license=('MIT AND GPL-2.0-only')
 
     cd "$_srcname"
@@ -722,6 +746,25 @@ _package-nvidia-open(){
     install -dm755 "${modulesdir}"
     install -m644 kernel-open/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 COPYING
+
+    _sign_modules "${modulesdir}"
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
+}
+
+_package-nvidia-580xx(){
+    pkgdesc="nvidia module of ${_nv_580xx_ver} driver for the ${pkgbase} kernel"
+    depends=("$pkgbase=$_kernver" "nvidia-580xx-utils=${_nv_580xx_ver}" "libglvnd")
+    provides=('NVIDIA-MODULE')
+    conflicts=("$pkgbase-nvidia-open")
+    license=('custom')
+
+    cd "$_srcname"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)/extramodules"
+
+    cd "${srcdir}/${_nv_580xx_pkg}"
+    install -dm755 "${modulesdir}"
+    install -m644 kernel/*.ko "${modulesdir}"
+    install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
 
     _sign_modules "${modulesdir}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
@@ -752,6 +795,7 @@ pkgname=("$pkgbase")
 pkgname+=("$pkgbase-headers")
 [ "$_build_zfs" = "yes" ] && pkgname+=("$pkgbase-zfs")
 [ "$_build_nvidia_open" = "yes" ] && pkgname+=("$pkgbase-nvidia-open")
+[ "$_build_nvidia_580xx" = "yes" ] && pkgname+=("$pkgbase-nvidia-580xx")
 [ "$_build_r8125" = "yes" ] && pkgname+=("$pkgbase-r8125")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
@@ -760,6 +804,6 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('b744477e1202ae7c63020645fdd923625da6edd2bde61d01d9c7755e6d9628fc3fb00e615261f02a5c503d5c890cb9f8e1e9f068aea7ed01fda45b2d64e7216a'
+b2sums=('15dfdf1513a06b087a9f8b9fee00a1e48fa95ee80caefc55d646a14cab1d0050a7c0c0209164fa42d79d3281143e559b148bc7c623a85328d3dd70aa01579c90'
         'SKIP'
         'e21485bd3d917be15837eb51ddb9aeb4a0df5fb7b18ccbf1d520aff2340833935e441f634e4ae8482a21ff38a9dec9f320bec3459aedf15087909b6eb2cff7db')
