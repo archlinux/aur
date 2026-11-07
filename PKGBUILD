@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-scala
-pkgver=0.26.8
+pkgver=0.26.9
 pkgrel=1
 pkgdesc="Scala grammar for tree-sitter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-scala.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a88cd71f237ada3390268a35b355881151c4203fa618753075d14207494e8e3f')
+sha256sums=('07de1afa617768f750c71c7be86887c6c07381e1f37cb11c33fad6e407b196db')
 
 
 build() {
