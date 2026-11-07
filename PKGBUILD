@@ -3,7 +3,7 @@
 
 pkgname=fluorine-manager-bin
 pkgdesc='A native Linux mod manager for Bethesda and other games, built on MO2'
-pkgver=0.4.0 # renovate: datasource=github-tags depName=SulfurNitride/Fluorine-Manager versioning=semver
+pkgver=0.4.1 # renovate: datasource=github-tags depName=SulfurNitride/Fluorine-Manager versioning=semver
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/SulfurNitride/Fluorine-Manager'
@@ -18,7 +18,7 @@ _releaseArchive="fluorine-manager-${pkgver}.tar.gz"
 source=("${_releaseArchive}::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v${pkgver}/${_releaseArchive}"
         "LICENSE::https://raw.githubusercontent.com/SulfurNitride/Fluorine-Manager/refs/tags/v${pkgver}/LICENSE.txt"
         "disable-desktop-sync.patch")
-sha256sums=('ae048a1521b2e6b382b23c8b0b44ab3d8cc99cd4ccd028d5e21975f6b72ce5d1'
+sha256sums=('df4a734363aff2e5eaf0dc05a68c87f3281293ae07838f68553cd309c52b4585'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903'
             'f76a7e83ed721beccb23a36241f40485352045ac82632a594f319504a359bfec')
 noextract=("${_releaseArchive}")
