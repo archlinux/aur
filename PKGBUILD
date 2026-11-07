@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=pvz-portable
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A cross-platform community-driven reimplementation of Plants vs. Zombies: Game of the Year Edition, aiming to bring the 100% authentic PvZ experience to every platform."
 url="https://github.com/wszqkzqk/${pkgname}"
@@ -28,7 +28,7 @@ source=(
     # See archlinux/README.md in the source tree for instructions.
     "file://Plants_vs._Zombies_1.2.0.1073_EN.zip"
 )
-sha256sums=('62919002ebb87e84fb35a088dd0f7864912a0baa3f5b553a34d550982c81dd0e'
+sha256sums=('24920e91ed53167975abe66ae696ee736ed7c09ba236f5571124ee2b827d75c1'
             'SKIP')
 
 pkgver() {
