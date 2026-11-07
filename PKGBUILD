@@ -6,7 +6,7 @@ pkgver=1.21.2
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-license=("BSD")
+license=("MIT")
 install="$pkgname.install"
 source=(
     "https://git.skyjake.fi/skyjake/$pkgname/releases/download/v$pkgver/lagrange-$pkgver.tar.gz"
