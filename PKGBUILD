@@ -105,9 +105,11 @@ check() {
   composer install --no-interaction --prefer-dist --no-progress
 
   # A MariaDB server of the build's own, on a socket: the tests create their database; sourcebans-pp
-  # sets up one like an install
-  local _db="$srcdir/mariadb"
-  rm -rf "$_db"
+  # sets up one like an install. In /dev/shm, a tmpfs: the tests empty the tables before almost every
+  # test, and each TRUNCATE replaces the table's file, which a disk syncs (about 2 seconds a reset on
+  # btrfs, with or without copy-on-write, 30 milliseconds on a tmpfs)
+  local _db
+  _db=$(mktemp -d /dev/shm/sourcebans-pp-check.XXXXXX)
   mariadb-install-db --no-defaults --datadir="$_db/data" --auth-root-authentication-method=normal \
     --skip-test-db >/dev/null
   mariadbd --no-defaults --datadir="$_db/data" --socket="$_db/socket" --skip-networking \
@@ -117,6 +119,7 @@ check() {
   _check_with_mariadb "$_db/socket" || _status=$?
   kill "$_pid"
   wait "$_pid" || true
+  rm -rf "$_db"
   return "$_status"
 }
 
