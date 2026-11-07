@@ -1,6 +1,6 @@
 pkgbase = opencode-sandbox-bin
 	pkgdesc = Run OpenCode inside an isolated container (prebuilt release)
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/Antiquete/opencode-sandbox
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = opencode-sandbox-bin
 	optdepends = podman: Podman runtime
 	provides = opencode-sandbox
 	conflicts = opencode-sandbox-git
-	source = opencode-sandbox-1.8.0.tar.gz::https://github.com/Antiquete/opencode-sandbox/releases/download/v1.8.0/opencode-sandbox-1.8.0.tar.gz
-	sha256sums = 9c38bb475d056441b244d47f64af32eed883f60a8ea38d357d0b5e13251e4b8f
+	source = opencode-sandbox-1.9.0.tar.gz::https://github.com/Antiquete/opencode-sandbox/releases/download/v1.9.0/opencode-sandbox-1.9.0.tar.gz
+	sha256sums = 9ac6f331f24b5f42eadf11ba1a649be13ccc41e7c24f6aaaf80069f708401ff8
 
 pkgname = opencode-sandbox-bin
