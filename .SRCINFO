@@ -1,6 +1,6 @@
 pkgbase = lyrune-bin
 	pkgdesc = Fast native QQ Music desktop client built with Rust and GPUI (prebuilt binary)
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/amtoaer/lyrune
 	arch = x86_64
@@ -18,17 +18,17 @@ pkgbase = lyrune-bin
 	depends = vulkan-icd-loader
 	depends = wayland
 	optdepends = org.freedesktop.secrets: persist QQ Music credentials
-	provides = lyrune=1.7.3
+	provides = lyrune=1.7.4
 	conflicts = lyrune
 	options = !debug
 	options = !strip
-	source = lyrune.desktop::https://raw.githubusercontent.com/amtoaer/lyrune/v1.7.3/packaging/linux/lyrune.desktop
-	source = lyrune.svg::https://raw.githubusercontent.com/amtoaer/lyrune/v1.7.3/packaging/linux/lyrune.svg
+	source = lyrune.desktop::https://raw.githubusercontent.com/amtoaer/lyrune/v1.7.4/packaging/linux/lyrune.desktop
+	source = lyrune.svg::https://raw.githubusercontent.com/amtoaer/lyrune/v1.7.4/packaging/linux/lyrune.svg
 	sha256sums = 91ef70cfb609f0b32808f0cd40004f6800f43a176cb26a5819628d16c4af9f44
 	sha256sums = 68913e1ef3f2c4be855b046d7ec69d21371653cff22d40803a90c42cbf231abe
-	source_x86_64 = lyrune-v1.7.3-linux-amd64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.7.3/lyrune-v1.7.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = 3d166ffa1f40c339527327aa849f1c8c9199461e7b6c0bf009b1c851668f9678
-	source_aarch64 = lyrune-v1.7.3-linux-arm64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.7.3/lyrune-v1.7.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = ecf862fe55785e733d09ebede1cab4ef2a152ba02944eeff65b252313df80df2
+	source_x86_64 = lyrune-v1.7.4-linux-amd64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.7.4/lyrune-v1.7.4-linux-amd64.tar.gz
+	sha256sums_x86_64 = d4cb27e947456f46ea13c9c1bb4fbe88a983110517abb3e1e7915f2959b1052b
+	source_aarch64 = lyrune-v1.7.4-linux-arm64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.7.4/lyrune-v1.7.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 918971bb21a47fd636d602b0cba2b8363a982b0303047e69ec9abc6496480142
 
 pkgname = lyrune-bin
