@@ -1,7 +1,7 @@
 # Maintainer: lerentis <lerentis+aur@uploadfilter24.eu>
 # Ex-Maintainer:: Nikita Tarasov <nikatar@disroot.org>
 pkgname=krr
-pkgver=1.30.0
+pkgver=1.31.3
 pkgrel=1
 pkgdesc="Kubernetes requests recommendations"
 arch=('any')
@@ -17,7 +17,7 @@ provides=("krr=$pkgver")
 options=(!emptydirs !makeflags !strip !debug)
 source=("https://github.com/robusta-dev/krr/releases/download/v$pkgver/krr-ubuntu-latest-v$pkgver.zip")
 noextract=(krr-ubuntu-latest-v$pkgver.zip)
-sha256sums=('440808a7c513bccbd03429eb3d24d51c6a2a066ed7b3fdcd6438fd7d8c521429')
+sha256sums=('11e22ffd93aa53d3816a636ba61a42121108a48e7f4cc183779cf742a8c2033a')
 #validpgpkeys=('85F86E317555BECC1C2184BF2C45BA09ABC5D7DA')
 
 package() {
