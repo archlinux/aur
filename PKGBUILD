@@ -4,7 +4,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-git
-pkgver=3.18.1
+pkgver=3.18.3
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator"
 epoch=1
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/realh/roxterm"
 license=('GPL3')
 depends=('dbus-glib' 'vte3')
-makedepends=('cmake' 'git' 'docbook-xsl' 'xmlto' 'po4a' 'imagemagick' \
+makedepends=('cmake' 'git' 'docbook-xsl' 'xmlto' 'po4a' 'imagemagick'
   'librsvg' 'itstool' 'sed' 'pkgconf')
 provides=('roxterm')
 conflicts=('roxterm')
@@ -21,23 +21,23 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  vs=`git describe`
-  if echo "$vs" | grep -q "beta" ; then
-    vs=`git describe --match 'beta-[0-9]*'`
-    vl=`git describe --long --match 'beta-[0-9]*'`
+  vs=$(git describe)
+  if echo "$vs" | grep -q "beta"; then
+    vs=$(git describe --match 'beta-[0-9]*')
+    vl=$(git describe --long --match 'beta-[0-9]*')
     vs="${vs/beta-/}"
     vl="${vl/beta-/}"
   else
-    vs=`git describe --match '[0-9]*'`
-    vl=`git describe --long --match '[0-9]*'`
+    vs=$(git describe --match '[0-9]*')
+    vl=$(git describe --long --match '[0-9]*')
   fi
-  [ "$vs" = "$vl" ] && vs=`echo "$vs" | sed -r 's,([^-]*-g),r\1,;s,-,.,g'`
+  [ "$vs" = "$vl" ] && vs=$(echo "$vs" | sed -r 's,([^-]*-g),r\1,;s,-,.,g')
   echo $vs
 }
 
 prepare() {
   cd $pkgname
-  printf "$pkgver" > version
+  printf "$pkgver" >version
 }
 
 build() {
@@ -51,13 +51,13 @@ build() {
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DCMAKE_SKIP_RPATH='TRUE' 
+    -DCMAKE_SKIP_RPATH='TRUE'
   make
 }
 
 package() {
   cd $pkgname
   make -C build DESTDIR="${pkgdir}" install
-} 
+}
 
 # vim:set ts=2 sw=2 et:
