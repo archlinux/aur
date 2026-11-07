@@ -2,7 +2,7 @@
 
 _pkgname=virt-viewer
 pkgname="${_pkgname}"-git
-pkgver=10.0.37.g40eec08
+pkgver=11.0.r103.ga634fa8
 pkgrel=1
 pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS'
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --always | sed "s/^v//;s/-/./g"
+    git describe --always | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
