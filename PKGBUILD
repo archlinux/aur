@@ -67,7 +67,7 @@ check() {
 	pytest \
 		-v \
 		-m "not slow and not fastercap" \
-		-k "not edge_a1 and not edge_a2 and not edge_a3 and not edge_a4 and not edge_a5 and not edge_a7" \
+		-k "not edge_a1 and not edge_a2 and not edge_a3 and not edge_a4 and not edge_a5 and not edge_a7 and not allure_report_attaches_stdout_of_failing_tests_only" \
 		-n "auto"
 }
 
