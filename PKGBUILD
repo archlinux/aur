@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Modern terminal secrets manager compatible with KeePass vaults"
 
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,11 +33,11 @@ source=("CLI-${pkgver}.md::${_ghurlraw}/CLI.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('881c5ae9a44cab171645240ee463c5ad69c6ef970aa2d58894649a90ff6fe397'
-            '1bb2cfd5804ef3a83378d16a2e8fc77005ee74b661c2df0b9558f8e350855778'
-            'fb5ff11f4ccee6f2f524ee51d61f03182cecea1ed66873ecdce67de4d13b6061'
+            '8eeb8651d155553a9abf1be97fec23963b4da75c87d6aa00b5a7ec75a49892fd'
+            '83a526e78443c2a6037e674738181d7f8a1e9f62ac17386c20b76e9df4f9176e'
             '54cf7b716c85a4a5911a09de2fe15689f6b40d1c27ca0bb6153c800f54e71570')
-sha256sums_x86_64=('c9096ba8f45e38a8e5b965867cbe8d2aeeb0adf4a29d8652ed7c8550fdc34982')
-sha256sums_aarch64=('87040eceeb52ab7723bf1893ce8b51e941f162025599c119a5450e1c6c095754')
+sha256sums_x86_64=('55bce0bdf99b62965f4b7648dd3ed728936c66d7c9ef560f26b2f0f2c0334272')
+sha256sums_aarch64=('a569cafd08728cbf4f0869036d483290953cd090f7e9a1691a210ca1ed7e24b7')
 
 
 package() {
