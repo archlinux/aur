@@ -1,6 +1,6 @@
 # Maintainer: Chaos-Tic <58691435+Chaos-Tic@users.noreply.github.com>
 pkgname=chaostictool
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='Terminal and desktop interfaces for authorized security testing'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('cmake')
 # pre_remove(): notify about the external tools recorded in the manifest.
 install='chaostictool.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ae6dc6cb17c2ed3fe76f5ca7116a9c3115d680a3702bf166fecbf9e0be106bff')
+sha256sums=('fde9fa472abd685c54ee4c1e2eb66c2a4e5034ce06619d1e051a73e794bc2456')
 build() {
     cmake -S "Chaostic-Tool-$pkgver" -B build -DCMAKE_INSTALL_PREFIX=/usr
 }
