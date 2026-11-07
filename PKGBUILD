@@ -8,8 +8,8 @@ pkgdesc='SPICE server'
 arch=('x86_64' 'aarch64')
 url='https://www.spice-space.org'
 license=('LGPL-2.1-only')
-depends=('pixman' 'opus' 'libjpeg-turbo' 'glib2' 'libsasl' 'lz4')
-makedepends=('git' 'meson' 'spice-protocol-git' 'python-six' 'python-pyparsing' 'libcacard')
+depends=('pixman' 'gst-plugins-base-libs' 'opus' 'libjpeg-turbo')
+makedepends=('git' 'meson' 'python-pyparsing' 'glib2-devel' 'libcacard' 'spice-protocol-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://gitlab.freedesktop.org/spice/${_pkgname}.git"
@@ -24,15 +24,15 @@ pkgver() {
 
 prepare() {
     cd ${_pkgname}
-    # referring git submodules by relative paths doesn't seem to work in clean chroots
-    sed -i "s|url = ..|url = ${srcdir}|;s|.git$||" .gitmodules
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git submodule set-url subprojects/spice-common "${srcdir}"/spice-common
+    git -c protocol.file.allow=always submodule update subprojects/spice-common
 }
 
 build() {
     rm -Rf build && mkdir build
     cd ${_pkgname}
-    arch-meson ../build -D gstreamer=no
+    arch-meson ../build
     ninja -v -C ../build
 }
 
