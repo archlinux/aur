@@ -8,9 +8,9 @@ pkgdesc='SPICE client library using GLib and GTK+'
 arch=('x86_64' 'aarch64')
 url='https://www.spice-space.org/'
 license=('LGPL-2.1-only')
-depends=('polkit' 'pixman' 'libcacard' 'libepoxy' 'gtk3' 'opus' 'libjpeg-turbo' 'json-glib' 'phodav' 'gst-plugins-base-libs' 'gobject-introspection'
+depends=('libepoxy' 'phodav' 'libcacard' 'gst-plugins-base-libs' 'gtk3' 'json-glib' 'libjpeg-turbo' 'pixman' 'opus'
          'spice-protocol-git' 'usbredir-git')
-makedepends=('git' 'meson' 'python-six' 'python-pyparsing' 'vala' 'wayland-protocols')
+makedepends=('git' 'meson' 'vala' 'wayland-protocols' 'python-pyparsing' 'glib2-devel' 'gobject-introspection' 'gi-docgen')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://gitlab.freedesktop.org/spice/${_pkgname}.git"
@@ -25,8 +25,10 @@ pkgver() {
 
 prepare() {
     cd ${_pkgname}
-    sed -i "3 s|url = ..|url = ${srcdir}|;6 s|url = https://gitlab.com/keycodemap|url = ${srcdir}|;s|.git$||" .gitmodules
-    git -c protocol.file.allow=always submodule update --init
+    git submodule init
+    git submodule set-url subprojects/spice-common "${srcdir}"/spice-common
+    git submodule set-url subprojects/keycodemapdb "${srcdir}"/keycodemapdb
+    git -c protocol.file.allow=always submodule update subprojects/spice-common subprojects/keycodemapdb
 }
 
 build() {
