@@ -1,7 +1,6 @@
-src/
+hyprlogin/
+LICENSE-*
 pkg/
 *.pkg.tar.*
+src/
 *.tar.gz
-hyprlogin-*
-hyprlogin.conf
-LICENSE

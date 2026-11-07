@@ -1,34 +1,32 @@
 pkgbase = hyprlogin-bin
-	pkgdesc = Work-in-progress greetd greeter forked from hyprlock (pre-built binary)
-	pkgver = 0.3.0
+	pkgdesc = GPU-accelerated greetd greeter for Hyprland, forked from hyprlock (prebuilt)
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/AuthenticSm1les/hyprlogin
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = cairo
-	depends = gcc-libs
 	depends = glibc
-	depends = hyprgraphics
-	depends = hyprlang
-	depends = hyprutils
-	depends = libdrm
-	depends = mesa
-	depends = pango
-	depends = pam
-	depends = sdbus-cpp
-	depends = wayland
+	depends = libegl
+	depends = libgcc
+	depends = libgles
+	depends = libhyprgraphics.so=5-64
+	depends = libhyprlang.so=2-64
+	depends = libhyprutils.so=13-64
+	depends = libstdc++
 	depends = libxkbcommon
+	depends = wayland
 	optdepends = greetd: login manager integration
 	optdepends = hyprland: greeter compositor session
-	provides = hyprlogin
+	provides = hyprlogin=0.4.0
 	conflicts = hyprlogin
+	noextract = hyprlogin-0.4.0-x86_64.tar.gz
 	options = !debug
+	options = !strip
 	backup = etc/hyprlogin/hyprlogin.conf
-	source = hyprlogin-0.3.0::https://github.com/AuthenticSm1les/hyprlogin/releases/download/v0.3.0/hyprlogin
-	source = hyprlogin.conf::https://github.com/AuthenticSm1les/hyprlogin/raw/refs/tags/v0.3.0/assets/example.conf
-	source = LICENSE::https://github.com/AuthenticSm1les/hyprlogin/raw/refs/tags/v0.3.0/LICENSE
-	sha256sums = 6d7e1e8d6278b015e1a787f90b30c28b62eb5bfe025da383534d7b2826287007
-	sha256sums = b389671b92182995dc3313ce3a8f9ae0c062dc0c55c6d6341519c2294815b9dd
+	source = hyprlogin-0.4.0-x86_64.tar.gz::https://github.com/AuthenticSm1les/hyprlogin/releases/download/v0.4.0/hyprlogin-0.4.0-x86_64.tar.gz
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/AuthenticSm1les/hyprlogin/v0.4.0/LICENSE
+	sha256sums = 2ee1737f6aa95963c5bf5f6b90b64e7d1221ee379f1c5d0ecae824c16d26456d
 	sha256sums = 52d07f3457591b4496ae2e79b05efd63c7df72135666fa12428d83078c4c0de5
 
 pkgname = hyprlogin-bin
