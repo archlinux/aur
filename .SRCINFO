@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lilypad-git
 	pkgdesc = Modern, hyper-fast Vietnamese Telex/VNI Input Method for Fcitx5 (Wayland/X11)
-	pkgver = 2.3.6.r0.gc41892e
+	pkgver = 2.5.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/chiconcota/fcitx5-lilypad
 	install = fcitx5-lilypad.install
@@ -10,7 +10,7 @@ pkgbase = fcitx5-lilypad-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = go
+	makedepends = rust
 	makedepends = gettext
 	makedepends = libx11
 	depends = fcitx5
