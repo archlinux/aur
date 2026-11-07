@@ -272,7 +272,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.3
-_minor=1
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -284,21 +284,31 @@ _tagrel=1
 # 7.1.5-1-cachyos, which makes /var/crash/<ts>/uname.txt unambiguous about which
 # base a dump came from. Re-pin whenever the distro package's pkgrel moves.
 #
-# HAZARD, because the pin causes it: rebuilding without changing pkgrel means
-# installing REINSTALLS over the running kernel's own /usr/lib/modules/$(uname -r)
-# tree. The kernel in memory is then the old build while the modules on disk are
-# the new one, so anything not already loaded fails to load - which shows up as a
-# graphical login that will not start while root on a TTY still works. A normal
-# version bump is safe because the running kernel keeps its own directory; this
-# does not. Install only when the reboot follows immediately.
+# HAZARD, and a pkgrel bump does not remove it: installing ANY new build of this
+# kernel replaces or deletes the running kernel's own /usr/lib/modules/$(uname -r)
+# tree, so a module that is not already loaded fails to load until the reboot.
+# Both forms have been seen:
+#   - Equal pkgrel: the install REINSTALLS over the tree. The kernel in memory is
+#     the old build while the modules on disk are the new one, which showed up as
+#     a graphical login that would not start while root on a TTY still worked.
+#   - Higher pkgrel: pacman removes the old version's files, tree included.
+#     Measured 2026-11-06: upgrading 7.3.1-1 -> 7.3.1-2 under a running 7.3.1-1
+#     deleted /usr/lib/modules/7.3.1-1-cachyos-jetm, and mounting an exfat stick
+#     then failed with "Filesystem type exfat not configured in kernel".
+# Reboot straight after installing. Or install kernel-modules-hook (optdepends):
+# its pacman hooks copy the running kernel's tree aside before the transaction and
+# put it back after, and they trigger on usr/lib/modules/*/vmlinuz, which this
+# package ships, so the -cachyos-jetm suffix does not matter. That is from reading
+# its hook files; it has not been exercised on this package yet.
 #
 # pkgrel is set by update-version.sh to _tagrel plus the number of commits
 # CachyOS has made since that tag to the kernel-patches files this package
 # fetches, which matches how CachyOS numbered a patch-only rebuild (linux-cachyos
 # 7.3.0-2 -> 7.3.0-3). It is also kept at least one above the previous build at
-# the same kernel version, so a rebuild always installs as a new version
-# instead of reinstalling over the running kernel's module tree.
-pkgrel=2
+# the same kernel version, so every build has its own `uname -r` and installs as a
+# visible upgrade. That is all it does: it does not protect the running kernel's
+# module tree, see the HAZARD above.
+pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -991,7 +1001,8 @@ _package() {
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
-                'scx-scheds: to use sched-ext schedulers')
+                'scx-scheds: to use sched-ext schedulers'
+                "kernel-modules-hook: keeps the running kernel's /usr/lib/modules tree through an upgrade, so modules not yet loaded still load until the reboot")
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
     # No linux-cachyos-lto provides/replaces here: this package is meant to sit
     # permanently alongside stock linux-cachyos, not supersede it. The stock
@@ -1034,7 +1045,11 @@ _package-headers() {
     provides=(LINUX-HEADERS)
 
     if _is_lto_kernel; then
-        depends+=(clang llvm lld)
+        # The 1.32-2 floor mirrors upstream CachyOS. The 7.3 source itself needs
+        # pahole 1.22 for BTF (lib/Kconfig.debug) and 1.31 for the layout feature
+        # (scripts/Makefile.btf); why upstream pins the exact build is not
+        # recorded here. DKMS builds against these headers run pahole per module.
+        depends+=(clang llvm lld 'pahole>=1:1.32-2')
     fi
 
     cd "${_srcname}"
@@ -1223,7 +1238,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('b744477e1202ae7c63020645fdd923625da6edd2bde61d01d9c7755e6d9628fc3fb00e615261f02a5c503d5c890cb9f8e1e9f068aea7ed01fda45b2d64e7216a'
+b2sums=('15dfdf1513a06b087a9f8b9fee00a1e48fa95ee80caefc55d646a14cab1d0050a7c0c0209164fa42d79d3281143e559b148bc7c623a85328d3dd70aa01579c90'
         'SKIP'
         'ec368517f0f5bbe7d61e2e82f5d6e19262d2c1739f3322691c973eb75d17d23db8d10c73c07aa38f419278acc2287f63ba1c09496dda97c77368e4470eb8db81'
         '4103183a51f761fcc79e38dd6c48560a1bc7e7bd952bdaa5c2fbe0bf5e1ed593f896c00cfa2ce031ce720654c2078ecdb37d6c586417c75db7356569f44cb850'
