@@ -40,3 +40,8 @@ SPDX-License-Identifier = "Elastic-2.0"
 path = "plugin-validate-steamid.patch"
 SPDX-FileCopyrightText = "SourceBans++ Dev Team"
 SPDX-License-Identifier = "GPL-3.0-only"
+
+[[annotations]]
+path = "tests-offline-release-check.patch"
+SPDX-FileCopyrightText = "SourceBans++ Dev Team"
+SPDX-License-Identifier = "Elastic-2.0"

@@ -1,0 +1,79 @@
+diff --git a/web/tests/api/DispatcherTest.php b/web/tests/api/DispatcherTest.php
+index 4909e47..1b74d51 100644
+--- a/web/tests/api/DispatcherTest.php
++++ b/web/tests/api/DispatcherTest.php
+@@ -39,8 +39,9 @@ final class DispatcherTest extends ApiTestCase
+         // system.check_version is registered as public (it just hits a remote URL).
+         // We only assert that the dispatcher allows the call to proceed.
+         $env = $this->api('system.check_version', []);
+-        // External fetch may fail in CI; the envelope should still be OK
+-        // (the handler gracefully encodes "Error" strings).
++        // The bootstrap's SB_RELEASE_LATEST_URL makes the fetch fail; the
++        // envelope should still be OK (the handler gracefully encodes
++        // "Error" strings).
+         $this->assertTrue($env['ok'], 'expected ok envelope, got ' . json_encode($env));
+         $this->assertArrayHasKey('release_latest', $env['data']);
+     }
+diff --git a/web/tests/api/SystemTest.php b/web/tests/api/SystemTest.php
+index cc089d3..83b2e14 100644
+--- a/web/tests/api/SystemTest.php
++++ b/web/tests/api/SystemTest.php
+@@ -78,17 +78,11 @@ final class SystemTest extends ApiTestCase
+ 
+     public function testCheckVersionErrorWhenNoCacheAndUpstreamUnreachable(): void
+     {
+-        // Force the upstream URL to a port that nothing listens on so
+-        // the fetch fails immediately (ECONNREFUSED, no 5s wait), drop
+-        // the cache, and assert the handler reports the documented
+-        // degraded shape. SB_RELEASE_LATEST_URL is a constant; once
+-        // defined it sticks for the rest of the PHPUnit process. That's
+-        // fine: every other check_version test seeds a fresh cache
+-        // (TTL 1d) so they never reach the upstream-fetch branch.
++        // The bootstrap points SB_RELEASE_LATEST_URL at a port that
++        // nothing listens on, so the fetch fails immediately
++        // (ECONNREFUSED, no 5s wait). Drop the cache and assert the
++        // handler reports the documented degraded shape.
+         @unlink(SB_CACHE . 'github_release_latest.json');
+-        if (!defined('SB_RELEASE_LATEST_URL')) {
+-            define('SB_RELEASE_LATEST_URL', 'http://127.0.0.1:1/');
+-        }
+ 
+         $env = $this->api('system.check_version', []);
+ 
+@@ -106,17 +100,14 @@ final class SystemTest extends ApiTestCase
+         // payload anyway (NOT the `Error` envelope). Prime the cache
+         // with `cached_at` one second past the TTL so the in-TTL fast
+         // path is skipped and the handler falls into the upstream-fetch
+-        // branch; force the upstream URL to a refused port so that
+-        // fetch returns null; assert the handler returns the formatted
+-        // cached shape, not `release_latest: 'Error'`. Re-priming the
++        // branch, where the bootstrap's refused SB_RELEASE_LATEST_URL
++        // makes the fetch return null; assert the handler returns the
++        // formatted cached shape, not `release_latest: 'Error'`. Re-priming the
+         // cache here (rather than relying on a previously-primed file)
+         // makes the test order-independent: even if it runs after
+         // `testCheckVersionErrorWhenNoCacheAndUpstreamUnreachable`
+         // unlinked the file, the stale entry below is what the assertion
+         // depends on.
+-        if (!defined('SB_RELEASE_LATEST_URL')) {
+-            define('SB_RELEASE_LATEST_URL', 'http://127.0.0.1:1/');
+-        }
+         $this->primeReleaseCache('1.7.2', time() - 86401);
+ 
+         $env = $this->api('system.check_version', []);
+diff --git a/web/tests/bootstrap.php b/web/tests/bootstrap.php
+index 4df9cf3..cca213d 100644
+--- a/web/tests/bootstrap.php
++++ b/web/tests/bootstrap.php
+@@ -22,6 +22,11 @@ define('SB_DEMOS', ROOT . SB_DEMO_LOCATION);
+ define('SB_ICONS', ROOT . SB_ICON_LOCATION);
+ define('SB_THEMES', ROOT . 'themes/');
+ define('SB_CACHE',  ROOT . 'cache/');
++// system.check_version's upstream (api.github.com by default) is a port
++// nothing listens on, so no test reaches the network and an uncached
++// fetch fails at once (ECONNREFUSED, no 5s timeout). Tests that need a
++// release seed the cache instead.
++define('SB_RELEASE_LATEST_URL', 'http://127.0.0.1:1/');
+ define('MMDB_PATH', ROOT . 'data/GeoLite2-Country.mmdb');
+ 
+ define('DB_HOST',    getenv('DB_HOST')    ?: 'db');
