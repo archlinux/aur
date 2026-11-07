@@ -28,7 +28,7 @@ source=(
   "${pkgname}.install"
 )
 noextract=("${pkgname}-${pkgver}.jar")
-sha256sums=('a1c3c42a632dda51806451883ba2c8a47484bf24461625e475f5d27669213db3'   # mindustry-sdl3-bin-160.7.jar (compiled SDL3, published as a release asset)
+sha256sums=('e7fbd005154bcfec5a0a7dbdff5b45750acf222793d080449dbf1521ce8ac3e7'   # mindustry-sdl3-bin-160.7.jar (compiled SDL3, published as a release asset)
             '80aa3f58c2211188e9586b1ef47892956b0bb4042dcea7ea29e954b996ea786f'   # icon.icns (upstream)
             '7e5451947f90876b86ca8a96a285cdddaa7b426dbe71767c03c66dcfe2ddb966')  # mindustry-sdl3-bin.install
 
