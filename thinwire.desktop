@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Thinwire
+GenericName=Messenger
+Comment=Thin multi-protocol desktop messenger
+Exec=thinwire
+Icon=thinwire
+Terminal=false
+Categories=Network;InstantMessaging;Chat;
+Keywords=telegram;slack;discord;whatsapp;signal;chat;messenger;
+StartupWMClass=thinwire
+StartupNotify=true

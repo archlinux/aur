@@ -1,0 +1,6 @@
+# makepkg sources, build trees, and output
+/src/
+/pkg/
+*.pkg.tar*
+*.tar.gz
+*.log
