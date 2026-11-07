@@ -2,14 +2,14 @@
 
 pkgname=spin-git
 pkgver=6.5.2.r51.ge21106f
-pkgrel=1
+pkgrel=2
 pkgdesc='Explicit state logic model checking tool'
 depends=('glibc')
 optdepends=('tcl: ispin graphical interface'
             'ispin: GUI for Spin')
 arch=('x86_64')
 url='https://spinroot.com/'
-license=('custom:BSD3')
+license=('BSD-3-Clause')
 provides=('spin')
 conflicts=('spin')
 source=("$pkgname"::'git+https://github.com/nimble-code/Spin')
@@ -33,7 +33,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -Dm 755 Src/spin "${pkgdir}/usr/bin/spin"
-    install -Dm 644 Src/LICENSE "${pkgdir}/usr/share/licenses/spin/LICENSE"
+    install -Dm 644 Src/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 644 Man/spin.1.gz "${pkgdir}/usr/share/man/man1/spin.1.gz"
     install -d "${pkgdir}/usr/share/doc/spin/examples"
     find Examples/ -type f -exec chmod 644 {} +
