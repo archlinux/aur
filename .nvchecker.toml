@@ -1,0 +1,5 @@
+[imgview-bin]
+source = "github"
+github = "Ars-byte/Imgview"
+use_latest_release = true
+prefix = ""

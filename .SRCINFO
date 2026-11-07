@@ -1,0 +1,21 @@
+pkgbase = imgview-bin
+	pkgdesc = Image viewer for tty in C++
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Ars-byte/Imgview
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = imgview
+	conflicts = imgview
+	options = !strip
+	source = README-1.0.md::https://raw.githubusercontent.com/Ars-byte/Imgview/1.0/README.md
+	source = LICENSE-1.0::https://raw.githubusercontent.com/Ars-byte/Imgview/1.0/LICENSE
+	sha256sums = 941b29fd967a88631ea161737610d27e1388c6693df5a236a169a968a389fe67
+	sha256sums = af5a037bba0b2ccb70e9258bec14e7f6bc0f4295dcff9a3c067e6ee9c47e0328
+	source_x86_64 = imgview-x86_64-1.0.tgz::https://github.com/Ars-byte/Imgview/releases/download/1.0/imgview-x86_64.tar.gz
+	sha256sums_x86_64 = 36851d7d6a00f5f56b4eaa89f59469aea169e4ffcd279e0c0f17e6e3763ae30f
+
+pkgname = imgview-bin
