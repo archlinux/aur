@@ -1,15 +1,15 @@
 post_install() {
-    echo "==> To activate plasma-minimal-osd in your current session:"
-    echo "==>   export QML2_IMPORT_PATH=/usr/lib/plasma-minimal-osd/qt6/qml:\$QML2_IMPORT_PATH"
+    echo "==> To activate plasma-minimal-osd immediately in your current session:"
+    echo "==>   systemctl --user set-environment QML2_IMPORT_PATH=\"/usr/lib/plasma-minimal-osd/qt6/qml:\${QML2_IMPORT_PATH}\""
     echo "==>   systemctl --user restart plasma-plasmashell.service"
+    echo "==> (Or simply log out and log back in)"
 }
 
 post_upgrade() {
-    echo "==> Restarting plasmashell will load the updated OSD:"
-    echo "==>   systemctl --user restart plasma-plasmashell.service"
+    post_install
 }
 
 post_remove() {
-    echo "==> Default KDE Plasma OSD will be restored on next session."
-    echo "==> Or restart plasmashell now: systemctl --user restart plasma-plasmashell.service"
+    echo "==> Default KDE Plasma OSD will be restored on next login."
+    echo "==> Or revert immediately: systemctl --user unset-environment QML2_IMPORT_PATH && systemctl --user restart plasma-plasmashell.service"
 }
