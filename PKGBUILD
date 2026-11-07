@@ -1,6 +1,6 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.18.6
+pkgver=0.18.7
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ install=whoisthat.install
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kvunoff/whoisthat/archive/refs/tags/v${pkgver}.tar.gz")
 # The "Publish to AUR" workflow pins the real released-tag digest.
-sha256sums=('2d0fcaf7ab82151b00888d9fa1752f766663b2a9286f941665773410e5000189')
+sha256sums=('44696f7ae1bd7af517145ea82c4b3001eca0e62481c16027f18f41e4216246c1')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -42,4 +42,9 @@ package() {
     install -Dm644 pkg/whoisthat.desktop     "${pkgdir}/usr/share/applications/whoisthat.desktop"
     install -Dm644 pkg/whoisthat-url.desktop "${pkgdir}/usr/share/applications/whoisthat-url.desktop"
     install -Dm644 docs/public/logo.svg      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/whoisthat.svg"
+
+    "${pkgdir}/usr/bin/whoisthat" completions bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/whoisthat"
+    "${pkgdir}/usr/bin/whoisthat" completions zsh  | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_whoisthat"
+    "${pkgdir}/usr/bin/whoisthat" completions fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/whoisthat.fish"
+    "${pkgdir}/usr/bin/whoisthat" man             | install -Dm644 /dev/stdin "${pkgdir}/usr/share/man/man1/whoisthat.1"
 }
