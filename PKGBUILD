@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 
 pkgname=spirula-studio-git
-pkgver=2026.10.6.r3.gf113417
+pkgver=2026.10.30.r24.g41ad1d0
 pkgrel=1
 pkgdesc="End-to-end 3D Gaussian Splatting pipeline (Vulkan backend), git version"
 arch=('x86_64' 'aarch64')
@@ -30,6 +30,8 @@ optdepends=(
 )
 provides=("spirula-studio=$pkgver")
 conflicts=('spirula-studio')
+
+options=(!lto)
 
 _slangver=2026.12.0.1
 _imguiver=1.92.8
@@ -86,7 +88,7 @@ build() {
     -DSS_SLANGC="${srcdir}/slang/bin/slangc" \
     -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
     -DFETCHCONTENT_SOURCE_DIR_IMGUI="${srcdir}/imgui-${_imguiver}"
-  cmake --build build
+  cmake --build build --target spirula
 }
 
 package() {
