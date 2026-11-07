@@ -2,11 +2,11 @@
 
 pkgname=python-pypcap
 pkgver=1.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Python libpcap module"
 arch=('x86_64')
 url="https://github.com/pynetwork/pypcap"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('python' 'libpcap')
 makedepends=('python-setuptools' 'python-build' 'python-installer'
              'python-wheel' 'cython')
