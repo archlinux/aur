@@ -1,6 +1,6 @@
 pkgbase = elixiroffice-bin
 	pkgdesc = Offline office suite with a Microsoft Office-style interface (beta)
-	pkgver = 0.6.4
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://github.com/leag1234/elixiroffice
 	arch = x86_64
@@ -39,12 +39,12 @@ pkgbase = elixiroffice-bin
 	depends = systemd-libs
 	depends = util-linux-libs
 	depends = xdg-utils
-	provides = elixiroffice=0.6.4
+	provides = elixiroffice=0.6.5
 	conflicts = elixiroffice
-	noextract = ElixirOffice-0.6.4-linux-amd64.deb
+	noextract = ElixirOffice-0.6.5-linux-amd64.deb
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/leag1234/elixiroffice/releases/download/v0.6.4/ElixirOffice-0.6.4-linux-amd64.deb
-	sha256sums_x86_64 = 008abd34403e8aba45386802a3cd2696c6786f4e8a5d0125d55f29db4dc9b6a3
+	source_x86_64 = https://github.com/leag1234/elixiroffice/releases/download/v0.6.5/ElixirOffice-0.6.5-linux-amd64.deb
+	sha256sums_x86_64 = cd43c4213707ee881c04f3fdff6e12c1ee7f4b069180fa56740d94edee3a29ac
 
 pkgname = elixiroffice-bin
