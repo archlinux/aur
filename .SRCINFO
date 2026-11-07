@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-6.0
 	pkgver = 6.0.36.sdk136
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = dotnet-core-6.0
 	makedepends = llvm19
 	makedepends = lttng-ust2.12
 	makedepends = nodejs
-	makedepends = openssl
+	makedepends = openssl-3
 	makedepends = patchutils
 	makedepends = systemd
 	makedepends = zlib
@@ -46,7 +46,7 @@ pkgname = dotnet-runtime-6.0
 	depends = krb5
 	depends = libunwind
 	depends = zlib
-	depends = openssl
+	depends = openssl-3
 	optdepends = lttng-ust2.12: CoreCLR tracing
 	provides = dotnet-runtime=6.0
 

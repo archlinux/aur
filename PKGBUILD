@@ -13,7 +13,7 @@ pkgname=(
  dotnet-source-built-artifacts-6.0
 )
 pkgver=6.0.36.sdk136
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -33,7 +33,7 @@ makedepends=(
   llvm19
   lttng-ust2.12
   nodejs
-  openssl
+  openssl-3
   patchutils
   systemd
   zlib
@@ -66,6 +66,9 @@ build() {
   export COMPlus_LTTng=0
   export VERBOSE=1
   export OPENSSL_ENABLE_SHA1_SIGNATURES=1
+
+  # Use OpenSSL 3 headers and libraries alongside the system OpenSSL.
+  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 
   export PATH="/usr/lib/llvm19/bin:$PATH"
 
@@ -139,7 +142,7 @@ package_dotnet-runtime-6.0() {
     krb5
     libunwind
     zlib
-    openssl
+    openssl-3
   )
   optdepends=('lttng-ust2.12: CoreCLR tracing')
   provides=(dotnet-runtime=${pkgver%.*.sdk*})
