@@ -1,11 +1,13 @@
 diff -Npur a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml	2026-07-08 15:39:00.324235538 -0600
-+++ b/Cargo.toml	2026-07-08 15:40:11.149266658 -0600
-@@ -69,3 +69,6 @@ zbus = { version = "5.11.0", default-fea
- # iced_futures = { git = "https://github.com/pop-os/libcosmic//", branch = "theme-v2" }
- # cosmic-config = { git = "https://github.com/pop-os/libcosmic//", branch = "theme-v2" }
- # cosmic-theme = { git = "https://github.com/pop-os/libcosmic//", branch = "theme-v2" }
-+
+--- a/Cargo.toml	2026-11-07 11:25:32.118172499 -0700
++++ b/Cargo.toml	2026-11-07 11:27:08.446517483 -0700
+@@ -64,6 +64,9 @@ cctk = { package = "cosmic-client-toolki
+ calloop = "0.14.5"
+ calloop-wayland-source = "0.4.1"
+ 
 +[profile.release]
 +lto = "thin"
-Binary files a/.git/index and b/.git/index differ
++
+ # For development and testing purposes
+ # [patch.'https://github.com/pop-os/libcosmic']
+ # libcosmic = { git = "https://github.com/pop-os/libcosmic//", branch = "bundles" }
