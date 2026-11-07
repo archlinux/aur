@@ -1,0 +1,25 @@
+pkgbase = cbconvert-gtk3-bin
+	pkgdesc = CBconvert is a Comic Book converter (GTK3 version)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/gen2brain/cbconvert
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = pango
+	depends = at-spi2-core
+	depends = glibc
+	depends = glib2
+	conflicts = cbconvert-bin
+	conflicts = cbconvert-qt6-bin
+	source = cbconvert.desktop
+	sha256sums = 1e7bbaf6fca37f865f59d1f870386c63faab91a57a2d9ce60fa800ffcf4bea15
+	source_x86_64 = https://github.com/gen2brain/cbconvert/releases/download/v1.2.0/cbconvert-1.2.0-linux-x86_64-gtk3.tar.gz
+	sha256sums_x86_64 = d3599f5f384e0dbabf7ebd8727f4c84bce78ca69dc3075e403e24c495f6056e8
+	source_aarch64 = https://github.com/gen2brain/cbconvert/releases/download/v1.2.0/cbconvert-1.2.0-linux-aarch64-gtk3.tar.gz
+	sha256sums_aarch64 = d6aea3d6d0c252f7a20008df9b7f12c415b8b5454d6bf25247a6553fe037213b
+
+pkgname = cbconvert-gtk3-bin
