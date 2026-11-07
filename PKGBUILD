@@ -1,15 +1,15 @@
 # Maintainer: Douglas Moura <doug@douglasmoura.com>
 pkgname=winkel-git
 _pkgname=winkel
-pkgver=0.1.6.r0.g9c239db
+pkgver=0.2.0.r0.g17fc73d
 pkgrel=1
 pkgdesc="A metronome for Omarchy that follows the live theme (latest development version)"
 arch=(x86_64 aarch64)
 url="https://github.com/DouglasdeMoura/winkel"
 license=(MIT)
-depends=(quickshell alsa-lib gcc-libs glibc hicolor-icon-theme)
+depends=(alsa-lib gcc-libs glibc hicolor-icon-theme libxkbcommon libxkbcommon-x11 libxcb vulkan-icd-loader)
 optdepends=('ttf-jetbrains-mono-nerd: the default interface font')
-makedepends=(cargo git)
+makedepends=(cargo git clang vulkan-headers wayland wayland-protocols fontconfig freetype2)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -43,6 +43,7 @@ check() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   WINKEL_SILENT=1 cargo test --frozen
+  WINKEL_SILENT=1 cargo test -p winkel-ui --features test-support --frozen
 }
 
 package() {
