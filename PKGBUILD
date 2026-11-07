@@ -18,7 +18,7 @@ optdepends=(
     'lib32-vulkan-driver: 32-bit Vulkan driver for your GPU'
 )
 source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('d6454ca0c8f3ebebb2b6e7109d1dc235ca181ba04705183324524da006a9fa71')
 
 package() {
     cd "$pkgname-v$pkgver"
