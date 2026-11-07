@@ -1,13 +1,13 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.6.0` and the `@SHA256_*@` placeholders are
+# Prebuilt binary package. `0.7.0` and the `@SHA256_*@` placeholders are
 # substituted by .github/workflows/aur.yaml from the published release
 # assets, and the result is pushed to the AUR. Edit this template, never the
 # PKGBUILD in the AUR repository: that one is regenerated at every release.
 
 pkgname=git-wipe-bin
 _pkgname=git-wipe
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -30,9 +30,9 @@ options=('!strip' '!debug')
 # completions and service unit the bare binary cannot. makepkg extracts it into
 # `$srcdir/<crate>-$pkgver-<asset>/`, laid out as a prefix.
 source_x86_64=("git-wipe-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/git-wipe_${pkgver}_linux-amd64.tar.gz")
-sha256sums_x86_64=('51be3e1f3a4210b14095b314d28ea860fd8c0a9abc7d8807fd9d97f246b9702c')
+sha256sums_x86_64=('da125f4f127981f0d9e7dda941cb972ffc454acfcf7ad11344ca1f199d9e0d82')
 source_aarch64=("git-wipe-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/git-wipe_${pkgver}_linux-arm64.tar.gz")
-sha256sums_aarch64=('210bfd020ca7eb15d81af716417cf528933ed8ed11b2bb1d422d2c31a90aa92a')
+sha256sums_aarch64=('76f36dbdf93f5092a560510422a034abd9c04e1f105cf3b30e671682305966fa')
 
 package() {
 	case "$CARCH" in

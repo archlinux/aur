@@ -1,6 +1,6 @@
 pkgbase = git-wipe-bin
 	pkgdesc = Wipe out merged local branches and worktrees (prebuilt binary)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/noirbizarre/git-wipe
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = git-wipe-bin
 	depends = gcc-libs
 	depends = glibc
 	depends = git
-	provides = git-wipe=0.6.0
+	provides = git-wipe=0.7.0
 	conflicts = git-wipe
 	conflicts = git-synchronizer-bin
 	replaces = git-synchronizer-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = git-wipe-0.6.0-x86_64.tar.gz::https://github.com/noirbizarre/git-wipe/releases/download/0.6.0/git-wipe_0.6.0_linux-amd64.tar.gz
-	sha256sums_x86_64 = 51be3e1f3a4210b14095b314d28ea860fd8c0a9abc7d8807fd9d97f246b9702c
-	source_aarch64 = git-wipe-0.6.0-aarch64.tar.gz::https://github.com/noirbizarre/git-wipe/releases/download/0.6.0/git-wipe_0.6.0_linux-arm64.tar.gz
-	sha256sums_aarch64 = 210bfd020ca7eb15d81af716417cf528933ed8ed11b2bb1d422d2c31a90aa92a
+	source_x86_64 = git-wipe-0.7.0-x86_64.tar.gz::https://github.com/noirbizarre/git-wipe/releases/download/0.7.0/git-wipe_0.7.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = da125f4f127981f0d9e7dda941cb972ffc454acfcf7ad11344ca1f199d9e0d82
+	source_aarch64 = git-wipe-0.7.0-aarch64.tar.gz::https://github.com/noirbizarre/git-wipe/releases/download/0.7.0/git-wipe_0.7.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = 76f36dbdf93f5092a560510422a034abd9c04e1f105cf3b30e671682305966fa
 
 pkgname = git-wipe-bin
