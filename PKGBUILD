@@ -2,7 +2,7 @@
 # Upstream publishes ready Arch packages (nfpm): /opt/ely-office/ely-pdf plus
 # /usr/bin symlink, desktop entry and icon. Repack them verbatim.
 pkgname=ely-pdf-bin
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='ElyPDF, part of Ely Office - PDF reading and editing with OCR (prebuilt upstream package)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("LICENSE::$url/raw/v$pkgver/LICENSE")
 sha256sums=('6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1')
 source_x86_64=("ely-pdf-$pkgver-1-x86_64.pkg.tar.zst::$url/releases/download/v$pkgver/ely-pdf-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('8e5520ec4a85eba9d45c3e103d3d238b8e32a7449538eddd5396c88dd5711401')
+sha256sums_x86_64=('f7bea776c075c5441544d0e0facbc40578a497bdfc214c5617f7f372a0eabb54')
 
 package() {
 	cp -a "$srcdir/opt" "$srcdir/usr" "$pkgdir/"
