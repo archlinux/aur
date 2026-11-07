@@ -26,3 +26,8 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "ambuild-raw-string-escapes.patch"
+SPDX-FileCopyrightText = "AlliedModders LLC"
+SPDX-License-Identifier = "BSD-3-Clause"
