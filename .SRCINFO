@@ -1,6 +1,6 @@
 pkgbase = rayshot-git
 	pkgdesc = Fast screenshot and annotation tool for Linux (GNOME/Wayland)
-	pkgver = 0.3.0.r0.g4694c43
+	pkgver = 0.4.0.r0.g9eb69e8
 	pkgrel = 1
 	url = https://github.com/paranoica/rayshot
 	install = rayshot.install
@@ -13,6 +13,9 @@ pkgbase = rayshot-git
 	depends = xdg-desktop-portal
 	depends = vulkan-icd-loader
 	optdepends = gnome-shell: instant capture and the Print hotkey through the bundled extension
+	optdepends = tesseract: copy the text in a selection (Ctrl+Shift+C)
+	optdepends = tesseract-data-eng: English text recognition
+	optdepends = tesseract-data-rus: Russian text recognition
 	provides = rayshot
 	conflicts = rayshot
 	source = rayshot::git+https://github.com/paranoica/rayshot.git

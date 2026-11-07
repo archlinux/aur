@@ -1,14 +1,17 @@
 # Maintainer: paranoica <mitjumper@gmail.com>
 pkgname=rayshot-git
 _srcname=rayshot
-pkgver=0.3.0.r0.g4694c43
+pkgver=0.4.0.r0.g9eb69e8
 pkgrel=1
 pkgdesc="Fast screenshot and annotation tool for Linux (GNOME/Wayland)"
 arch=('x86_64')
 url="https://github.com/paranoica/rayshot"
 license=('MIT')
 depends=('wl-clipboard' 'xdg-desktop-portal' 'vulkan-icd-loader')
-optdepends=('gnome-shell: instant capture and the Print hotkey through the bundled extension')
+optdepends=('gnome-shell: instant capture and the Print hotkey through the bundled extension'
+            'tesseract: copy the text in a selection (Ctrl+Shift+C)'
+            'tesseract-data-eng: English text recognition'
+            'tesseract-data-rus: Russian text recognition')
 makedepends=('cargo' 'glib2' 'git')
 provides=('rayshot')
 conflicts=('rayshot')
