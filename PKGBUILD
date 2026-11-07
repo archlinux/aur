@@ -3,7 +3,7 @@
 pkgbase=deskwaifu-bin
 pkgname=('deskwaifu-bin' 'deskwaifu-ocr-bin')
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='DeskWaifu application and all default plugins'
 arch=('x86_64')
 url='https://github.com/ad2248/DeskWaifu'
@@ -35,7 +35,7 @@ package_deskwaifu-bin() {
 package_deskwaifu-ocr-bin() {
   pkgdesc='DeskWaifu in-process OCR module using system ONNX Runtime (no models or dictionaries)'
   license=('MIT' 'Apache-2.0')
-  depends=("deskwaifu-bin=$pkgver-$pkgrel" 'glibc' 'gcc-libs' 'qt6-base>=6.5' 'opencv' 'yaml-cpp' 'onnxruntime-cpu')
+  depends=("deskwaifu-bin>=$pkgver" 'glibc' 'gcc-libs' 'qt6-base>=6.5' 'opencv' 'yaml-cpp' 'onnxruntime-cpu')
   provides=("deskwaifu-ocr=$pkgver")
   conflicts=('deskwaifu-ocr')
   bsdtar -xpf "$srcdir/$_ocr" -C "$pkgdir" usr
