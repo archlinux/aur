@@ -6,7 +6,7 @@ _appname=oy
 pkgname=${_gitname}-bin
 pkgdesc="A diff viewer that works two ways: step through changes or review a classic scrollable diff"
 
-pkgver=0.1.71
+pkgver=0.1.72
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -58,7 +58,7 @@ sha256sums=('ada39b6fcd5ff630d02ab5b802a0000cc688ef6c1f1e05778e363db63d1df4a3'
             'e87471d7c2944cfe49c9e1254ac14fe8fc1dda5826b079d3a488c53dd314918b'
             'd81308529db4f60ab7b16e2c913c346808dc31c84b8e57ac602069e32e720b94'
             '2f10208524d1fe121283259377cad67b846a4ddde30a513968a355e468dde978')
-sha256sums_x86_64=('a6086288cb0839a82489eccc18fa08a962e3a88f4e79e804be5ab986c6c92e4d')
+sha256sums_x86_64=('a7db570c249f99db741ed64b38096e8c012c61e7eb5e02fdc6f6fda8c70298e3')
 
 
 package() {
