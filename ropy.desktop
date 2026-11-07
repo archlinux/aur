@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Ropy
+Comment=Clipboard manager
+Comment[zh_CN]=剪贴板管理器
+Exec=ropy --show
+Icon=ropy
+Terminal=false
+Categories=Utility;

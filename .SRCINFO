@@ -1,0 +1,27 @@
+pkgbase = ropy-bin
+	pkgdesc = A clipboard manager built with Rust and GPUI (prebuilt binary)
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/StudentWeis/ropy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libglvnd
+	depends = wayland
+	optdepends = xdg-desktop-portal: desktop-approved global shortcuts (requires a compatible backend)
+	provides = ropy=0.6.2
+	conflicts = ropy
+	options = !strip
+	options = !debug
+	source = ropy-0.6.2.png::https://github.com/StudentWeis/ropy/raw/refs/tags/0.6.2/assets/logo.png
+	source = ropy.desktop
+	sha256sums = b168d3d148545cecfcee795741048d2296f066ea48a03f064d6e0a6e159ab06f
+	sha256sums = 4246519d23a0b2b6399674d56690ed6b703f5f03671b31463441ebe63caa27ec
+	source_x86_64 = ropy-0.6.2-x86_64.tar.xz::https://github.com/StudentWeis/ropy/releases/download/0.6.2/ropy-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 6e1abc7e0e98cd77d0df4e9d479e422d6c9ad7d60f26cbc1de6c545aa137a025
+
+pkgname = ropy-bin
