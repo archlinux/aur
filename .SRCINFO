@@ -1,6 +1,6 @@
 pkgbase = ai-usagebar
 	pkgdesc = Omarchy/Waybar widgets + TUI for tracking multi-provider AI plan usage
-	pkgver = 1.48.3
+	pkgver = 1.49.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-usagebar
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ai-usagebar
 	conflicts = ai-usagebar-bin
 	options = !lto
 	options = !debug
-	source = ai-usagebar-1.48.3.tar.gz::https://github.com/akitaonrails/ai-usagebar/archive/refs/tags/v1.48.3.tar.gz
-	sha256sums = 2fa123c557dd04dd74879a95d96eee48b8107f0642360cb4fdb087d7181c88b5
+	source = ai-usagebar-1.49.0.tar.gz::https://github.com/akitaonrails/ai-usagebar/archive/refs/tags/v1.49.0.tar.gz
+	sha256sums = efdffb5c3172674ad9574bbfb693797b2d0d5698a409fcb890cc283adaccc03f
 
 pkgname = ai-usagebar
