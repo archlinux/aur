@@ -1,6 +1,6 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 pkgname=bitty
-pkgver=0.0.34
+pkgver=0.0.35
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal"
 arch=('x86_64' 'aarch64')
@@ -43,6 +43,7 @@ package() {
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   install -Dm644 packaging/run.bitty.Bitty.desktop "$pkgdir/usr/share/applications/run.bitty.Bitty.desktop"
   install -Dm644 packaging/run.bitty.Bitty.metainfo.xml "$pkgdir/usr/share/metainfo/run.bitty.Bitty.metainfo.xml"
+  install -Dm644 packaging/systemd/bittyd.service "$pkgdir/usr/lib/systemd/user/bittyd.service"
   for size in 16 32 64 128 256 512; do
     install -Dm644 "packaging/icons/hicolor/${size}x${size}/apps/bitty.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
   done
