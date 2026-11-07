@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=615.78.08
+pkgver=620.70.06
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '10-gsk.conf'
         'gsk-renderer.sh'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('3e3f6dddc2ee767a08185300af7be3cb286ece76698d2dde3524599782d07ffe'
+sha256sums=('29118e3abd08c07559bcca3d9c76238d039490af0362a2e5bcfcbe7204afd4b1'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             '8ed91802c2a2d5b46c0692c624caf01dcde62a885dc617dda6694f4666de4c8e'
             'f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07'
@@ -216,7 +216,9 @@ package_nvidia-utils-beta() {
     # NGX / DLSS
     install -D -m755 nvidia-ngx-updater -t "${pkgdir}/usr/bin"
     install -D -m755 "libnvidia-ngx.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    install -D -m755 libnvidia-ngx-builtin-dlssd.so.310.9.0 -t "${pkgdir}/usr/lib"
     install -D -m644 {,_}nvngx.dll -t "${pkgdir}/usr/lib/nvidia/wine"
+    install -D -m644 ngx-builtins/nvngx_dlssd.dll -t "${pkgdir}/usr/lib/nvidia/wine"
     
     # Optical flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
