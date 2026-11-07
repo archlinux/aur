@@ -117,6 +117,10 @@ package() {
         gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-snapshot/changelog.gz"
     fi
 
+    # Lets the unprivileged GUI take the single-instance lock: /run/lock is
+    # root-only on Arch.
+    install -Dm644 tmpfiles.d/mx-snapshot.conf "${pkgdir}/usr/lib/tmpfiles.d/mx-snapshot.conf"
+
     # namcap flags a declared license= with nothing under
     # /usr/share/licenses. The file is in the source; it was simply never
     # installed.
