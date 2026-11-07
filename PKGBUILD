@@ -2,8 +2,8 @@
 
 _pkgname='systemrescue'
 pkgname='libvirt-iso-systemrescue-bin'
-pkgver=13.02
-pkgrel=2
+pkgver=13.03
+pkgrel=1
 pkgdesc='Official SystemRescue live recovery ISO for libvirt'
 arch=('x86_64')
 url='https://www.system-rescue.org/'
@@ -23,7 +23,7 @@ source=(
 )
 noextract=("${_archive}")
 sha512sums=(
-	'76bd250b478cbfedf407c721a79270b1615f26ec486dbd7c8b78d7e1034853f2c31cc664752dce1678485bb1e7045167e5114802d5e28a84d29481854f8854b8'
+	'2be1fcc2c70ebe863e96d8df115098204495f64c321f01b6a04434367967f636a91b91e4ecb7eb4ea34e1bd9321cd5b6107b49e905a59a4fcae98e6d9d7b57c9'
 	'SKIP'
 	'SKIP'
 	'SKIP'
