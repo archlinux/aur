@@ -1,6 +1,6 @@
 pkgbase = gextant
 	pkgdesc = Updates GNOME Shell extensions from their repositories
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/AperteDev/gextant
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gextant
 	depends = glibc
 	optdepends = org.freedesktop.secrets: keep the access tokens in the system keyring
 	options = !lto
-	source = gextant-0.1.0.tar.gz::https://github.com/AperteDev/gextant/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 67040c288f3e7a9a08979220e2f70602044df8e57279b43611e1297abb5f6c71
+	source = gextant-0.2.0.tar.gz::https://github.com/AperteDev/gextant/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5abc8f57b5d098717ef6a1e33af383094cd483ad70a80e00af6828ac430ff90c
 
 pkgname = gextant

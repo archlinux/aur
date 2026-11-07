@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 pkgname=gextant
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Updates GNOME Shell extensions from their repositories'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'blueprint-compiler')
 # GCC's LTO objects of ring's bundled C code don't link with rustc's lld.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67040c288f3e7a9a08979220e2f70602044df8e57279b43611e1297abb5f6c71')
+sha256sums=('5abc8f57b5d098717ef6a1e33af383094cd483ad70a80e00af6828ac430ff90c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
