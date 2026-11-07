@@ -1,0 +1,17 @@
+pkgbase = crayoz-bin
+	pkgdesc = Simple file reader, written in Go
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Ars-byte/Crayoz
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = crayoz
+	conflicts = crayoz
+	options = !strip
+	source_x86_64 = crayoz-x86_64-2.0.0.tgz::https://github.com/Ars-byte/Crayoz/releases/download/v2.0.0/crayoz-linux-amd64.tar.gz
+	sha256sums_x86_64 = 96c8dbb0660e735877cc5158af50bb7fa29751234252157822695f2d1da31df3
+
+pkgname = crayoz-bin

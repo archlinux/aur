@@ -1,0 +1,5 @@
+[crayoz-bin]
+source = "github"
+github = "Ars-byte/Crayoz"
+use_latest_release = true
+prefix = "v"
