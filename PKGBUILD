@@ -1,6 +1,6 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 pkgname=refryt-bin
-pkgver=0.1.10
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A fast, native YouTube Music client (prebuilt upstream AppImage)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('refryt')
 conflicts=('refryt')
 source=("refryt-${pkgver}-x86_64.AppImage::https://github.com/gridoe/refryt/releases/download/v${pkgver}/refryt-${pkgver}-x86_64.AppImage"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/gridoe/refryt/v${pkgver}/LICENSE")
-sha256sums=('70253012ff60aa6f3f299282a401f02fcedc8eedd447009a4e9766a1ad187933'
+sha256sums=('d33561da526085940f3e2376df78e941be859cb10fb7a8b1e64ff53f61602a83'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 prepare() {
