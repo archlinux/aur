@@ -1,6 +1,6 @@
 pkgbase = spice-vdagent-git
 	pkgdesc = SPICE VDAgent for Linux
-	pkgver = 0.22.1.r3.gaa08162
+	pkgver = 0.23.0.r6.ge940b00
 	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = i686
@@ -16,6 +16,6 @@ pkgbase = spice-vdagent-git
 	source = spice-vdagent::git+https://gitlab.freedesktop.org/spice/linux/vd_agent.git
 	source = spice-vdagentd.conf.sample
 	sha256sums = SKIP
-	sha256sums = ab5231eb6375fee5baaf10a59559e7dea58def158fa0ab8e125e9b7340c5e4e8
+	sha256sums = f55b5a225cde8c2b2da27368682b3891f5acf9ccd40d344023ad6df8d01ec2bb
 
 pkgname = spice-vdagent-git
