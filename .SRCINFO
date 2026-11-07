@@ -1,6 +1,6 @@
 pkgbase = spice-gtk-git
 	pkgdesc = SPICE client library using GLib and GTK+
-	pkgver = 0.42.3.g7471e3e
+	pkgver = 0.43.r73.g54533b9
 	pkgrel = 1
 	url = https://www.spice-space.org/
 	arch = x86_64

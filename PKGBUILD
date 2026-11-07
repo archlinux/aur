@@ -2,7 +2,7 @@
 
 _pkgname=spice-gtk
 pkgname="${_pkgname}"-git
-pkgver=0.42.3.g7471e3e
+pkgver=0.43.r73.g54533b9
 pkgrel=1
 pkgdesc='SPICE client library using GLib and GTK+'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --always | sed 's|^v||;s|-|.|g'
+    git describe --always | sed 's|^v||;s|-|.r|;s|-|.|'
 }
 
 prepare() {
