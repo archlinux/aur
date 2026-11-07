@@ -1,7 +1,7 @@
 # Maintainer: Artem Shustrov <shustrov_a@inbox.ru>
 pkgname=evo-cli-bin
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI and MCP server for Cloud.ru Evolution'
 arch=('x86_64' 'aarch64')
 url='https://github.com/shatim-ops/evo-cli'
@@ -18,6 +18,14 @@ sha256sums_aarch64=('d5af8f53256c1436bdb4d1ca4c3589d67c3c38c6974381ad4cd764e3294
 package() {
     install -Dm755 "${srcdir}/evo" "${pkgdir}/usr/bin/evo"
     install -Dm755 "${srcdir}/cloudru-vm" "${pkgdir}/usr/bin/cloudru-vm"
+
+    install -d "${pkgdir}/usr/share/bash-completion/completions"
+    "${srcdir}/evo" completion bash > "${pkgdir}/usr/share/bash-completion/completions/evo"
+    chmod 644 "${pkgdir}/usr/share/bash-completion/completions/evo"
+
+    install -d "${pkgdir}/usr/share/zsh/site-functions"
+    "${srcdir}/evo" completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_evo"
+    chmod 644 "${pkgdir}/usr/share/zsh/site-functions/_evo"
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"

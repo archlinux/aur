@@ -1,7 +1,7 @@
 pkgbase = evo-cli-bin
 	pkgdesc = CLI and MCP server for Cloud.ru Evolution
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shatim-ops/evo-cli
 	arch = x86_64
 	arch = aarch64
