@@ -1,24 +1,24 @@
 # Maintainer:  Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=spice-vdagent
-pkgname=$_pkgname-git
+pkgname="${_pkgname}"-git
 pkgver=0.22.1.r3.gaa08162
 pkgrel=1
 pkgdesc='SPICE VDAgent for Linux'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://www.spice-space.org'
 license=('GPL-3.0-only')
 depends=('glib2' 'alsa-lib' 'libdrm' 'libxfixes' 'libxrandr' 'libxinerama' 'systemd' 'gtk3' 'dbus')
 makedepends=('git' 'spice-protocol')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://gitlab.freedesktop.org/spice/linux/vd_agent.git"
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://gitlab.freedesktop.org/spice/linux/vd_agent.git"
          spice-vdagentd.conf.sample)
-sha256sums=("SKIP"
-            ab5231eb6375fee5baaf10a59559e7dea58def158fa0ab8e125e9b7340c5e4e8)
+sha256sums=('SKIP'
+            'ab5231eb6375fee5baaf10a59559e7dea58def158fa0ab8e125e9b7340c5e4e8')
 
 pkgver() {
-    cd $_pkgname
+    cd ${_pkgname}
     git describe --always | sed 's:^spice-vdagent.::;s:-:.r:;s:-:.:'
 }
 
@@ -26,7 +26,7 @@ prepare() {
 
     # adjustment of several paths to the habits of Arch Linux
 
-    cd $_pkgname
+    cd ${_pkgname}
 
     # don't expect file providing command line options for spice-vdagentd in /etc/sysconfig
     sed -i 's:etc/sysconfig.*$:etc/spice/spice-vdagentd.conf:' data/spice-vdagentd.service
@@ -44,7 +44,7 @@ prepare() {
 }
 
 build() {
-    cd $_pkgname
+    cd ${_pkgname}
     autoreconf -fi
     ./configure \
         --prefix=/usr \
@@ -56,9 +56,9 @@ build() {
 }
 
 package() {
-    cd $_pkgname
-    make DESTDIR=$pkgdir install
+    cd ${_pkgname}
+    make DESTDIR="${pkgdir}" install
 
     # sample configuration file to pass command line options to spice-vdagentd
-    install -Dm644 -t $pkgdir/usr/share/doc/spice-vdagent/ $srcdir/spice-vdagentd.conf.sample
+    install -Dm644 "${srcdir}"/spice-vdagentd.conf.sample -t "${pkgdir}"/usr/share/doc/spice-vdagent/
 }
