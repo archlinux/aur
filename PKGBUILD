@@ -6,7 +6,7 @@ _appname=${_gitname%-filemanager}
 pkgname=${_appname}-bin
 pkgdesc="Fast, friendly file manager"
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,7 +31,7 @@ optdepends=('gvfs: network locations, Trash on other drives'
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tzst::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
-sha256sums_x86_64=('15f8bd991560c183c4fe604805c56847fe07e42786118eecceceb1e35f407287')
+sha256sums_x86_64=('7e6a36a8183032df77b9c2a2007f610178646c77fa19f02d9164dbaf3fa51d80')
 
 noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64[@]%%::*}")
 

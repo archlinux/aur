@@ -1,6 +1,6 @@
 pkgbase = tuck-bin
 	pkgdesc = Fast, friendly file manager
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/anuzdhk/tuck-filemanager
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = tuck-bin
 	optdepends = unrar: password-protected RAR archives
 	provides = tuck
 	conflicts = tuck
-	noextract = tuck-x86_64-0.1.3.tzst
+	noextract = tuck-x86_64-0.1.4.tzst
 	options = !strip
-	source_x86_64 = tuck-x86_64-0.1.3.tzst::https://github.com/anuzdhk/tuck-filemanager/releases/download/v0.1.3/tuck-0.1.3-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 15f8bd991560c183c4fe604805c56847fe07e42786118eecceceb1e35f407287
+	source_x86_64 = tuck-x86_64-0.1.4.tzst::https://github.com/anuzdhk/tuck-filemanager/releases/download/v0.1.4/tuck-0.1.4-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 7e6a36a8183032df77b9c2a2007f610178646c77fa19f02d9164dbaf3fa51d80
 
 pkgname = tuck-bin
