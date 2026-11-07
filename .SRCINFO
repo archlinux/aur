@@ -1,15 +1,14 @@
 pkgbase = tibasicc
 	pkgdesc = TI-BASIC (de-)compiler written in C++ with a decent preprocessor
 	pkgver = 1.2
-	pkgrel = 1
-	url = https://github.com/noahvogt/tibasicc.git
+	pkgrel = 2
+	url = https://github.com/noahvogt/tibasicc
 	arch = x86_64
+	arch = aarch64
 	license = ISC
-	provides = tibasicc
-	conflicts = tibasicc
-	source = https://github.com/noahvogt/tibasicc/releases/download/v1.2/tibasicc
-	source = https://github.com/noahvogt/tibasicc/archive/refs/tags/v1.2.tar.gz
-	sha256sums = 47e9340cf62661079aef554901c80470ed8e0267a0904cf9cb905b295ce72135
+	depends = gcc-libs
+	depends = glibc
+	source = tibasicc-1.2.tar.gz::https://github.com/noahvogt/tibasicc/archive/refs/tags/v1.2.tar.gz
 	sha256sums = 6eab541b7e31749d2406fff0f16c28fe503695540cb8296c3574f4c23c9e8aae
 
 pkgname = tibasicc
