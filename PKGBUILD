@@ -2,7 +2,7 @@
 # Fomer maintainer: Crawcik <crawcik@gmail.com>
 
 pkgname=flax
-pkgver=1.13.7012
+pkgver=1.13.7014
 pkgrel=1
 pkgdesc="Flax Engine – multi-platform 3D game engine"
 arch=('x86_64')
@@ -18,8 +18,8 @@ optdepends=('dotnet-sdk: Dotnet 8 SDK'
 source=(https://vps3.flaxengine.com/store/builds/Package_$(echo $pkgver | cut -d "." -f 1)_$(echo $pkgver | cut -d "." -f 2)_0$(echo $pkgver | cut -d "." -f 3)/{FlaxEditorLinux,Linux}.zip)
 noextract=({FlaxEditorLinux,Linux}.zip)
 conflicts=(flax-git)
-sha256sums=('cbd76dd7cd7fe54de2291045f99f0a257fd1c9729ef1d448e86f88cf49a03416'
-            'bda158b83ad9b4c7cdac795990b4b35b1910a5e5e77b97a19143893ef7c8b05e')
+sha256sums=('accc1057101870398d776faf653cd5f0541f4a716e2c502f937401d7e1345dac'
+            'f6a4743fc81b3f7b82493bf02deb174944a4fb6b363db891ea34837c6df08875')
 
 package() {
 	cd "$srcdir"

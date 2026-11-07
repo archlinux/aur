@@ -1,6 +1,6 @@
 pkgbase = flax
 	pkgdesc = Flax Engine – multi-platform 3D game engine
-	pkgver = 1.13.7012
+	pkgver = 1.13.7014
 	pkgrel = 1
 	url = https://flaxengine.com
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = flax
 	conflicts = flax-git
 	noextract = FlaxEditorLinux.zip
 	noextract = Linux.zip
-	source = https://vps3.flaxengine.com/store/builds/Package_1_13_07012/FlaxEditorLinux.zip
-	source = https://vps3.flaxengine.com/store/builds/Package_1_13_07012/Linux.zip
-	sha256sums = cbd76dd7cd7fe54de2291045f99f0a257fd1c9729ef1d448e86f88cf49a03416
-	sha256sums = bda158b83ad9b4c7cdac795990b4b35b1910a5e5e77b97a19143893ef7c8b05e
+	source = https://vps3.flaxengine.com/store/builds/Package_1_13_07014/FlaxEditorLinux.zip
+	source = https://vps3.flaxengine.com/store/builds/Package_1_13_07014/Linux.zip
+	sha256sums = accc1057101870398d776faf653cd5f0541f4a716e2c502f937401d7e1345dac
+	sha256sums = f6a4743fc81b3f7b82493bf02deb174944a4fb6b363db891ea34837c6df08875
 
 pkgname = flax
