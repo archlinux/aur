@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=modelstudio-cli-bin
 _pkgname=bl
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc='Official Model Studio CLI for AI agent frameworks, exposing models, search, multimodal, and workflows as tool calls'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('modelstudio-cli' 'modelstudio-cli-git')
 options=('!strip' '!debug')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=('0141d92387556dee918fe4639d5e72d409b3f9d6bcdd652a76abf295cf91e57a')
+sha256sums_x86_64=('e8d4133be2ba7d79a9396b05d8d6900210f1e2782dd985b0f3d2016730c161d0')
 
 package() {
     install -Dm755 "$srcdir/${_pkgname}-${pkgver}-linux-x64" "$pkgdir/usr/bin/${_pkgname}"
