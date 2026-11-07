@@ -1,7 +1,7 @@
 # Maintainer: Nasir <https://github.com/NasirA1991>
 pkgname=honrp-bin
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc='Discord Rich Presence for Heroes of Newerth (Juvio) on Linux/Steam Proton'
 arch=('x86_64')
 url='https://github.com/NasirA1991/honrp'
@@ -10,20 +10,16 @@ provides=('honrp')
 conflicts=('honrp')
 options=('!strip')
 source=(
-  "honrp-${pkgver}-x86_64-linux.tar.gz::https://github.com/NasirA1991/honrp/releases/download/v${pkgver}/honrp-v${pkgver}-x86_64-linux.tar.gz"
+  "honrp-${pkgver}-linux-x86_64::https://github.com/NasirA1991/honrp/releases/download/v${pkgver}/honrp-linux-x86_64"
+  "LICENSE::https://github.com/NasirA1991/honrp/raw/v${pkgver}/LICENSE"
+  "config.example.json::https://github.com/NasirA1991/honrp/raw/v${pkgver}/config.example.json"
 )
-sha256sums=('25c57288af6386348fd60029a0c6f293e4bfe80bf709cc08c441ad2e3b85422f')
-depends=('glibc' 'libxkbcommon' 'wayland' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'vulkan-icd-loader' 'hicolor-icon-theme')
+sha256sums=('de6c738d5b3712b167af8e40a0ddecb19011bf1ce2f42f23db6cb0ce5a980d7b' '8fcdd0dd9c0c06c3e94507870588dd73e04b460562ff01b9680e155d84c395a8' '4d53f8515828dc7c9a6e3e0e85389b1316d5e6e4dd11a13af7d4b25eb6d14c2a')
 
 package() {
-  tar -xzf "$srcdir/honrp-${pkgver}-x86_64-linux.tar.gz" -C "$srcdir"
-  install -Dm755 "$srcdir/honrp-linux-x86_64" "$pkgdir/usr/bin/honrp"
+  install -Dm755 "$srcdir/honrp-${pkgver}-linux-x86_64" "$pkgdir/usr/bin/honrp"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/config.example.json" "$pkgdir/usr/share/honrp/config.example.json"
-  install -Dm644 "$srcdir/honrp.desktop" "$pkgdir/usr/share/applications/honrp.desktop"
-  for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512; do
-    install -Dm644 "$srcdir/icons/hicolor/$size/apps/honrp.png" "$pkgdir/usr/share/icons/hicolor/$size/apps/honrp.png"
-  done
 }
 
 post_install() {
