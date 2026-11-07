@@ -5,14 +5,14 @@ pkgname=python-iptables-git
 pkgdesc='Python bindings for iptables'
 url='https://github.com/ldx/python-iptables'
 pkgver=1.2.0.r0.g2703efb
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=('python' 'iptables')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer'
              'python-wheel')
 checkdepends=()
 optdepends=()
-license=('Apache')
+license=('Apache-2.0')
 provides=('python-iptables')
 conflicts=('python-iptables')
 options=(!emptydirs)
@@ -23,7 +23,6 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git clean -xdf
     if git describe --long --tags >/dev/null 2>&1; then
         git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     else
