@@ -1,0 +1,23 @@
+pkgbase = acom2000-git
+	pkgdesc = Remote control software for ACOM 2000A linear amplifier.
+	pkgver = r24.457dcd6
+	pkgrel = 1
+	url = https://github.com/jmeloranta/acom2000
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = base-devel
+	depends = pkgconf
+	depends = gtk4
+	depends = glibc
+	depends = graphene
+	depends = pango
+	depends = glib2
+	depends = harfbuzz
+	depends = vulkan-icd-loader
+	depends = cairo
+	source = git+https://github.com/jmeloranta/acom2000.git
+	sha256sums = SKIP
+
+pkgname = acom2000-git
