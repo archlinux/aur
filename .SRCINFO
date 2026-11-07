@@ -1,12 +1,12 @@
 pkgbase = kanagawa-gtk-theme-git
 	pkgdesc = GTK theme with the Kanagawa colour palette
-	pkgver = r34.825ac8d9
+	pkgver = r47.55ca4ba2
 	pkgrel = 1
 	url = https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = sassc
+	makedepends = sassc
 	depends = gtk-engine-murrine
 	depends = gnome-themes-extra
 	source = kanagawa-gtk-theme-git::git+https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme.git

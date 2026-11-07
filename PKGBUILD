@@ -2,14 +2,14 @@
 
 pkgbase=kanagawa-gtk-theme-git
 pkgname=('kanagawa-icon-theme-git' 'kanagawa-gtk-theme-git')
-pkgver=r34.825ac8d9
+pkgver=r47.55ca4ba2
 pkgrel=1
 pkgdesc='GTK theme with the Kanagawa colour palette'
 arch=('any')
 url='https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme'
 license=('GPL3')
-depends=('sassc' 'gtk-engine-murrine' 'gnome-themes-extra')
-makedepends=('git')
+depends=('gtk-engine-murrine' 'gnome-themes-extra')
+makedepends=('git' 'sassc')
 source=("$pkgbase::git+https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme.git")
 sha256sums=('SKIP')
 
