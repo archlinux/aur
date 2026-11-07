@@ -1,7 +1,7 @@
 # Maintainer: qubeck <qubeck [AT] disroot [DOT] org>
 
 pkgname=libpdfium
-pkgver=156.0.8078.80
+pkgver=156.0.8078.81
 pkgrel=1
 pkgdesc='PDF rendering/manipulation library from Chromium'
 arch=(x86_64)
@@ -38,7 +38,7 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'increase-fortify-level.patch'
         'chromium-153-hermetic-python.patch'
         'chromium-156-revert-gn-check-includes.patch')
-sha256sums=('6c4dc0a9e809ed3ad44b69a9d4622f147f3b3f9b34740ec8fc9735a78bbde80b'
+sha256sums=('09621f39188030ae189a6e0316ac3f1b7bfe4165679ea1ec615918b85abfe4cb'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49'
@@ -268,15 +268,17 @@ package() {
   cd "chromium-${pkgver}"
 
   install -Dm755 out/Release/libpdfium.so \
-    -t "${pkgdir}/usr/lib"
+    "${pkgdir}/usr/lib/${pkgname}.so.${pkgver}"
+
+  ln -s "${pkgname}.so.${pkgver}" "${pkgdir}/usr/lib/${pkgname}.so"
 
   # Public headers use both "fpdfview.h" and "public/fpdfview.h" styles, so
   # install them under public/ and expose both include roots via pkg-config.
   install -dm755 "${pkgdir}/usr/include/${pkgname}/public/cpp"
   install -Dm644 third_party/pdfium/public/*.h \
-    -t "${pkgdir}/usr/include/${pkgname}/public/"
+    -t "${pkgdir}/usr/include/${pkgname}/public"
   install -Dm644 third_party/pdfium/public/cpp/*.h \
-    -t "${pkgdir}/usr/include/${pkgname}/public/cpp/"
+    -t "${pkgdir}/usr/include/${pkgname}/public/cpp"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/lib/pkgconfig/${pkgname}.pc" <<EOF
 prefix=/usr
