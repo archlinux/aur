@@ -4,8 +4,8 @@
 
 pkgname=sjmcl-bin
 pkgdesc='🌟 A Minecraft launcher from @SJMC-Dev'
-pkgver=1.4.0
-_github_pkgver=1.4.0
+pkgver=1.4.1
+_github_pkgver=1.4.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 license=(GPL-3.0,custom:LICENSE.EXTRA)
@@ -14,8 +14,8 @@ _baseurl="${url}/releases/download/v${_github_pkgver}"
 _source="SJMCL_${_github_pkgver}_linux_${CARCH}.deb"
 
 sha256sums=('a27ac3ee7cfc8a2956505d781d77695a179ffdbced5933779447b7022388ba6a')
-sha256sums_x86_64=('b7448eb76fb94ab3ca6a96a3b0ba00511a805f98bbf1d1bf53cdaff94633bcdf')
-sha256sums_aarch64=('1901e9e375a155941452fa155a0fa610f6cdf41bfc0b72adbbdae4e14e5a8be6')
+sha256sums_x86_64=('e3345856f555b7dbf2aa9e2df8dce18ce824ec11cad30510e35c1c4ba375b3e2')
+sha256sums_aarch64=('f359b4efd45766e1379b434da5948decc0bfc54d5e0a169c3d8f99db8788ad9f')
 
 source=('LICENSE.EXTRA')
 source_x86_64=("${_baseurl}/${_source}")
