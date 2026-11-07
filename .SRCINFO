@@ -1,0 +1,23 @@
+pkgbase = tmc-cli-rust-bin
+	pkgdesc = Command line client for TestMyCode and MOOC.fi (download, test and submit exercises) - prebuilt binary
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rage/tmc-cli-rust
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	optdepends = jdk-openjdk: Java exercises
+	optdepends = python: Python exercises
+	optdepends = bash-completion: bash completions
+	provides = tmc-cli-rust=1.2.0
+	provides = tmc
+	conflicts = tmc-cli-rust
+	noextract = tmc-cli-rust-1.2.0
+	options = !debug
+	source = tmc-cli-rust-1.2.0::https://download.mooc.fi/tmc-cli-rust/tmc-cli-rust-x86_64-unknown-linux-gnu-v1.2.0
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/rage/tmc-cli-rust/v1.2.0/LICENSE
+	sha256sums = a6225aed1ed65db46cdac7d5617a0413d09458237177a0d2db9878b0e488f9bb
+	sha256sums = 5f8dce79b1343567cfae3e8bfdf7f7e0ecca14107fd4748951d6b5808efb4b24
+
+pkgname = tmc-cli-rust-bin
