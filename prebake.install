@@ -1,0 +1,8 @@
+post_install() {
+    echo "Start prebake for your user with: systemctl --user enable --now prebake"
+    echo "Then check the setup with: prebake doctor"
+}
+
+post_upgrade() {
+    echo "Restart prebake to use the new version: systemctl --user restart prebake"
+}

@@ -1,0 +1,18 @@
+pkgbase = prebake
+	pkgdesc = Bakes Steam's Vulkan shader caches while you are away, so games start without shader processing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/guitaripod/prebake
+	install = prebake.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = vulkan-icd-loader
+	optdepends = steam: the games prebake bakes shaders for
+	optdepends = gamemode: pause for games registered with Feral GameMode too
+	source = prebake-0.1.0.tar.gz::https://github.com/guitaripod/prebake/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = bef4f7d3d804678e06f638fa9db6a339ede6668ce89de4b21a4d761923cac544
+
+pkgname = prebake
