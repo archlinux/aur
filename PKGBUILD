@@ -11,8 +11,8 @@ license=('MIT')
 depends=(
   'python>=3.11'
   'python-unicrypto>=0.0.11'
-  'python-asyauth>=0.0.16'
-  'python-asysocks>=0.2.9'
+  'python-asyauth>=0.0.25'
+  'python-asysocks>=0.2.11'
   'python-tqdm'
   'python-colorama'
   'python-asn1crypto'

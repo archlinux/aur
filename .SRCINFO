@@ -14,8 +14,8 @@ pkgbase = python-aardwolf
 	makedepends = git
 	depends = python>=3.11
 	depends = python-unicrypto>=0.0.11
-	depends = python-asyauth>=0.0.16
-	depends = python-asysocks>=0.2.9
+	depends = python-asyauth>=0.0.25
+	depends = python-asysocks>=0.2.11
 	depends = python-tqdm
 	depends = python-colorama
 	depends = python-asn1crypto
