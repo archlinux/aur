@@ -5,13 +5,28 @@
 pkgname=lib32-postgresql-libs
 _name=postgresql
 pkgver=18.6
-pkgrel=1
+pkgrel=2
 pkgdesc="PostgreSQL's client library, libpq, with its OAuth module (32-bit)"
 arch=(x86_64)
 url="https://www.postgresql.org/"
 license=(PostgreSQL)
 # postgresql-libs: the headers and libpq's translations; curl: the OAuth module
-depends=(lib32-curl lib32-gcc-libs lib32-glibc lib32-krb5 lib32-libldap lib32-openssl postgresql-libs)
+# The libraries' sonames as well, which makepkg versions (libssl.so=3-32): pacman then keeps a new,
+# incompatible soname from replacing a library this package was built against, until it's rebuilt
+# (lib32-libldap provides no soname)
+depends=(
+  lib32-curl
+  libcurl.so
+  lib32-gcc-libs
+  lib32-glibc
+  lib32-krb5
+  libgssapi_krb5.so
+  lib32-libldap
+  lib32-openssl
+  libcrypto.so
+  libssl.so
+  postgresql-libs
+)
 # The features of Arch's postgresql that multilib has 32-bit libraries for (the server's, built for
 # libpq's tests); llvm: LLVM's headers, which lib32-llvm shares
 makedepends=(
