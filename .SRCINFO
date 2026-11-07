@@ -1,10 +1,10 @@
 pkgbase = bgpdump
 	pkgdesc = Utility and C Library for parsing MRT files
 	pkgver = 1.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RIPE-NCC/bgpdump
 	arch = x86_64
-	license = GPL2
+	license = HPND AND GPL-2.0-or-later
 	depends = zlib
 	depends = bzip2
 	source = https://github.com/RIPE-NCC/bgpdump/archive/v1.6.2.tar.gz
