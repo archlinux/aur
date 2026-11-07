@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=10.2.0.0
+pkgver=10.3.0.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -38,7 +38,7 @@ options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'git+https://android.googlesource.com/platform/system/update_engine.git'
         'PixelFlasher.desktop')
-sha256sums=('853a5a4aa64f54eec79545210c0a4c7a8e2590062c03ec24fd53b40e3a9e7937'
+sha256sums=('0001d0efdaeb4738ebc2f0934bf018f0b807794e6853afebebb08bc0adb6c830'
             'SKIP'
             'cd96ad8759d7cb5b530aa7b542b422be5f08d92ad92f28fcdf8413d3015dc7cb')
 
@@ -59,9 +59,8 @@ package() {
   install -Dm755 bin/* -t "$pkgdir/opt/$pkgname/bin/"
 
   # Remove Windows & Mac binaries
-  rm "$pkgdir/opt/$pkgname/bin"/7z{.dll,.exe}
-  rm "$pkgdir/opt/$pkgname/bin"/erofs-extract-{macos,windows}-*
-  rm "$pkgdir/opt/$pkgname/bin"/pluck-{darwin,windows}-*
+  rm "$pkgdir/opt/$pkgname/bin"/*.{dll,exe}
+  rm "$pkgdir/opt/$pkgname/bin"/*{darwin,macos}*
 
   for f in *.py *.json *.pem *.crt; do
     install -m644 "${f}" -t "$pkgdir/opt/$pkgname/"
