@@ -1,0 +1,20 @@
+pkgbase = technitium-console-bin
+	pkgdesc = Modern admin console for Technitium DNS Server (prebuilt release bundle)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/byGarcia/technitium-console
+	install = technitium-console.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	provides = technitium-console
+	conflicts = technitium-console
+	conflicts = technitium-console-git
+	source = https://github.com/byGarcia/technitium-console/releases/download/v1.4.0/technitium-console.tar.gz
+	source = https://raw.githubusercontent.com/byGarcia/technitium-console/v1.4.0/install.sh
+	source = https://raw.githubusercontent.com/byGarcia/technitium-console/v1.4.0/LICENSE
+	sha256sums = 264db7e504977a2db64e22c5b3d2a91e97ca9ce0f1f49a6dce3b0e0c9a5856a4
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = technitium-console-bin
