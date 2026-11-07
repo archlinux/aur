@@ -1,0 +1,44 @@
+pkgbase = backtrack
+	pkgdesc = Browse your files as they were: backups you can step back through, built on Borg
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://backtrack.tools
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = glib2
+	makedepends = gtk4
+	makedepends = libadwaita
+	options = !lto
+	source = backtrack-0.1.0.tar.gz::https://github.com/keithvassallomt/backtrack/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 14ecd1fa8e2597a2ddbe3d8d6aff2974a721f321471598787d40028e5aff63d3
+
+pkgname = backtrack
+	depends = borg
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = libgcc
+	depends = pango
+	optdepends = backtrack-nautilus: Restore Previous Version in GNOME Files
+	optdepends = backtrack-dolphin: Restore Previous Version in Dolphin
+	optdepends = gvfs-smb: SMB shares as backup destinations
+
+pkgname = backtrack-nautilus
+	pkgdesc = Restore Previous Version in GNOME Files, for Backtrack
+	arch = any
+	depends = backtrack
+	depends = glib2
+	depends = python
+	depends = python-gobject
+	depends = python-nautilus
+
+pkgname = backtrack-dolphin
+	pkgdesc = Restore Previous Version in Dolphin, for Backtrack
+	arch = any
+	depends = backtrack
+	depends = dolphin
