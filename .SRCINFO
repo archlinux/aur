@@ -1,0 +1,26 @@
+pkgbase = plasma-minimal-osd
+	pkgdesc = A clean, minimal, and bottom-aligned OSD replacement for KDE Plasma 6
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lumexren/plasma-minimal-osd
+	install = plasma-minimal-osd.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = libplasma
+	makedepends = kwindowsystem
+	makedepends = wayland
+	makedepends = pkgconf
+	depends = plasma-workspace
+	depends = libplasma
+	depends = kwindowsystem
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = wayland
+	source = git+https://github.com/lumexren/plasma-minimal-osd.git#branch=6.x
+	sha256sums = SKIP
+
+pkgname = plasma-minimal-osd
