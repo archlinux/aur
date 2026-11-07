@@ -64,3 +64,6 @@ Changes since 2.3.3
     pSLtt_tigetstr function to read past the end of the string table.
 29. Additional unsigned int overflow checks added based upon an
     analysis by Anthropic/Claude provided by Miroslav Lichvar
+30. src/slang.c: When trace mode has been activated, turn off tracing
+    during the output of the trace informaton to avoid unnecessary
+    recursion
