@@ -2,7 +2,7 @@
 
 pkgname=mininet-git
 pkgver=2.3.1b4.r13.g6eb8973
-pkgrel=4
+pkgrel=5
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
          'libcgroup' 'openvswitch' 'psmisc')
@@ -14,7 +14,7 @@ makedepends=('git' 'help2man' 'python-setuptools' 'python-build'
              'python-installer' 'python-wheel')
 arch=('x86_64')
 url='https://github.com/mininet/mininet'
-license=('custom')
+license=('BSD-3-Clause')
 provides=('mininet')
 conflicts=('mininet')
 install=mininet.install
@@ -73,7 +73,7 @@ package() {
         --destdir="$pkgdir" \
         --compile-bytecode=1 \
         dist/*.whl
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/mininet/LICENSE"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: set sw=4 ts=4 et:
