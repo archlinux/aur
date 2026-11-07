@@ -1,0 +1,17 @@
+pkgbase = gusco-bin
+	pkgdesc = An opinionated, orthodox file manager distilled from Commanders past, written in pure Go
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://intestinate.com/gusco/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = gusco
+	conflicts = gusco
+	options = !strip
+	source_x86_64 = gusco-x86_64-1.9.3.tgz::https://gitlab.com/intestinate/gusco/-/releases/v1.9.3/downloads/gusco-1.9.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = f496839f9db3ed4d65ee81fb481038945f3bf122c5118b54bed758abff51a706
+	source_aarch64 = gusco-aarch64-1.9.3.tgz::https://gitlab.com/intestinate/gusco/-/releases/v1.9.3/downloads/gusco-1.9.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = f2722395647232ffe7b29efdcd9e01e7513495bd2a29ef6db529bbcd38b58d60
+
+pkgname = gusco-bin

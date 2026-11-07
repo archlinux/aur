@@ -1,0 +1,4 @@
+[gusco-bin]
+source = "regex"
+url = "https://intestinate.com/gusco/"
+regex = "<h2>Terminal Version <code>v([\\d\\.]*)</code></h2>"
