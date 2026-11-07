@@ -38,8 +38,10 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
-	env -u LDFLAGS  make install DESTDIR="${pkgdir}" PREFIX="/usr" VERSION="${pkgver}"
+	env -u LDFLAGS make install DESTDIR="${pkgdir}" PREFIX="/usr" VERSION="${pkgver}"
 
+	install -Dm644 "CLI.md" "${pkgdir}/usr/share/doc/${pkgname}/CLI.md"
+	install -Dm644 "TUI.md" "${pkgdir}/usr/share/doc/${pkgname}/TUI.md"
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
