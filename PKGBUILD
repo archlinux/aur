@@ -1,7 +1,7 @@
 # Maintainer: xscriptor xscriptordev x@xscriptor.com
 pkgname=xfetch-git
 _pkgname=xfetch
-pkgver=r163.5fb26a3
+pkgver=r186.280a964
 pkgrel=1
 pkgdesc="Custom system information tool for X (Rust)"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "$_pkgname"
