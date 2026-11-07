@@ -1,8 +1,8 @@
 # Maintainer: Nick <nickcardosoo123 at gmail dot com>
 
 pkgname=mimick
-pkgver=9.12.0
-pkgrel=2
+pkgver=9.13.0
+pkgrel=1
 pkgdesc='Unofficial Immich desktop client that backs up and browses your photos'
 arch=('x86_64' 'aarch64')
 url='https://mimick.nicx.dev'
@@ -27,7 +27,7 @@ depends=(
   'openssl'
   'pango'
 )
-makedepends=('cargo' 'clang' 'cmake' 'nasm')
+makedepends=('cargo' 'clang' 'cmake' 'gettext' 'nasm')
 optdepends=(
   'gst-plugins-good: play more video formats'
   'gst-libav: play H.264, HEVC, and other common video codecs'
@@ -37,7 +37,7 @@ optdepends=(
 )
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nicx17/mimick/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1d2338197d0ba1b654339a8992d4ef921a20d8a744a01597248972c989ab1395')
+sha256sums=('acca00ef5ce7a3b9c5570e4f91584b0c7fbe6b9d2f185a4d5e36ae93295d29af')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -63,8 +63,9 @@ package() {
   cd "$pkgname-$pkgver"
   local icons="$pkgdir/usr/share/icons/hicolor"
   install -Dm755 target/release/mimick -t "$pkgdir/usr/bin/"
-  install -Dm644 setup/dev.nicx.mimick.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 setup/metainfo/dev.nicx.mimick.metainfo.xml -t "$pkgdir/usr/share/metainfo/"
+  scripts/i18n.sh install "$pkgdir/usr/share/locale"
+  scripts/i18n.sh merge setup/dev.nicx.mimick.desktop "$pkgdir/usr/share/applications/dev.nicx.mimick.desktop"
+  scripts/i18n.sh merge setup/metainfo/dev.nicx.mimick.metainfo.xml "$pkgdir/usr/share/metainfo/dev.nicx.mimick.metainfo.xml"
   install -Dm644 src/assets/icon.svg "$icons/scalable/apps/dev.nicx.mimick.svg"
   install -Dm644 src/assets/256x256/apps/dev.nicx.mimick.png -t "$icons/256x256/apps/"
   install -Dm644 src/assets/512x512/apps/dev.nicx.mimick.png -t "$icons/512x512/apps/"

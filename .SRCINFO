@@ -1,7 +1,7 @@
 pkgbase = mimick
 	pkgdesc = Unofficial Immich desktop client that backs up and browses your photos
-	pkgver = 9.12.0
-	pkgrel = 2
+	pkgver = 9.13.0
+	pkgrel = 1
 	url = https://mimick.nicx.dev
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = mimick
 	makedepends = cargo
 	makedepends = clang
 	makedepends = cmake
+	makedepends = gettext
 	makedepends = nasm
 	depends = gdk-pixbuf2
 	depends = glib2
@@ -35,7 +36,7 @@ pkgbase = mimick
 	optdepends = gnome-keyring: store the API key in a Secret Service keyring (or another provider)
 	options = !lto
 	options = !debug
-	source = mimick-9.12.0.tar.gz::https://github.com/nicx17/mimick/archive/refs/tags/v9.12.0.tar.gz
-	sha256sums = 1d2338197d0ba1b654339a8992d4ef921a20d8a744a01597248972c989ab1395
+	source = mimick-9.13.0.tar.gz::https://github.com/nicx17/mimick/archive/refs/tags/v9.13.0.tar.gz
+	sha256sums = acca00ef5ce7a3b9c5570e4f91584b0c7fbe6b9d2f185a4d5e36ae93295d29af
 
 pkgname = mimick
