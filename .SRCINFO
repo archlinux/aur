@@ -5,6 +5,7 @@ pkgbase = dcmtk-git
 	url = https://dicom.offis.de/dcmtk
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = git
 	makedepends = cmake
