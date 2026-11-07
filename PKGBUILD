@@ -8,8 +8,8 @@ pkgdesc='SPICE VDAgent for Linux'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.spice-space.org'
 license=('GPL-3.0-only')
-depends=('glib2' 'alsa-lib' 'libdrm' 'libxfixes' 'libxrandr' 'libxinerama' 'systemd' 'gtk3' 'dbus')
-makedepends=('git' 'spice-protocol')
+depends=('alsa-lib' 'gtk4')
+makedepends=('git' 'spice-protocol-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.freedesktop.org/spice/linux/vd_agent.git"
@@ -51,7 +51,10 @@ build() {
         --sysconfdir=/etc \
         --sbindir=/usr/bin \
         --localstatedir=/var \
-        --with-init-script=systemd
+        --with-gtk4=yes \
+        --with-session-info=systemd \
+        --with-init-script=systemd \
+        --enable-year2038
     make
 }
 
