@@ -2,7 +2,7 @@
 # Contributor: chen-shuhan <2502820816@qq.com>
 
 pkgname=curfew
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Curfew - 电脑定时关机/睡眠工具，智能管理电脑使用时间"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-
 provides=('curfew')
 conflicts=('curfew')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3559b137ac990e7401c0c9f6ab9153c4aec31d75d7171cbee6ba8fd2be520df9')
+sha256sums=('21915b7d5ce63e470c37e7ee62fd0d643eacea5b226af0a25fcb0b53165a4b51')
 
 _github_repo=Curfew
 
