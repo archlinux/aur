@@ -1,0 +1,25 @@
+pkgbase = nib-pdf-git
+	pkgdesc = Complete PDF toolkit that runs entirely on your own machine (fill, OCR, redact, compare, sign, PDF/A) — git snapshot
+	pkgver = 2.50.4.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/daniel-alexander4/nib
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = go
+	makedepends = git
+	depends = hicolor-icon-theme
+	optdepends = chromium: UI in app mode (or any Chromium-family browser / firefox via xdg-open)
+	optdepends = xdg-utils: open-in-browser fallback
+	optdepends = libreoffice: Office → PDF conversion
+	optdepends = ghostscript: PDF/A conversion and PostScript import
+	optdepends = poppler: export the current page as SVG (pdftocairo)
+	optdepends = libheif: HEIC/HEIF photo import (heif-dec/heif-convert)
+	provides = nib
+	conflicts = nib
+	conflicts = nib-bin
+	conflicts = nib-git
+	source = git+https://github.com/daniel-alexander4/nib.git
+	sha256sums = SKIP
+
+pkgname = nib-pdf-git
