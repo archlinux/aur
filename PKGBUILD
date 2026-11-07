@@ -6,13 +6,26 @@ pkgname=lib32-mariadb-connector-c
 _name=mariadb-connector-c
 # The version of Connector/C that mariadb-libs bundles (mariadb_config --cc_version)
 pkgver=3.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="MariaDB Connector/C, the client library of MariaDB (32-bit)"
 arch=(x86_64)
 url="https://mariadb.com/docs/connectors/mariadb-connector-c"
 license=(LGPL-2.1-or-later)
 # mariadb-libs: the headers; zstd: the compression plugin
-depends=(lib32-gcc-libs lib32-glibc lib32-openssl lib32-zlib lib32-zstd mariadb-libs)
+# The libraries' sonames as well, which makepkg versions (libssl.so=3-32): pacman then keeps a new,
+# incompatible soname from replacing a library this package was built against, until it's rebuilt
+depends=(
+  lib32-gcc-libs
+  lib32-glibc
+  lib32-openssl
+  libcrypto.so
+  libssl.so
+  lib32-zlib
+  libz.so
+  lib32-zstd
+  libzstd.so
+  mariadb-libs
+)
 makedepends=(cmake git lib32-krb5)
 optdepends=('lib32-krb5: for gssapi authentication')
 provides=(libmariadb.so)
