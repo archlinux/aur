@@ -1,8 +1,8 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=mygo-music-bin
-pkgver=0.1.20
-pkgrel=2
+pkgver=0.1.22
+pkgrel=1
 pkgdesc="A native music player you extend with plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/egoist/mygo-music"
@@ -21,8 +21,8 @@ _deb_x86_64="mygo-music_${pkgver}_amd64.deb"
 _deb_aarch64="mygo-music_${pkgver}_arm64.deb"
 source=("LICENSE::${url}/raw/v${pkgver}/LICENSE")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
-sha256sums_x86_64=('ce83154bcc241d543202b90a138423a4097c951d7c83cf4ab37173f277a46398')
-sha256sums_aarch64=('d9081975ec91e0a5fd5613fb72989597fc5406fc0accab0e98ae5ca5e9279b7d')
+sha256sums_x86_64=('0a1b3b92bfd69e5a7fb9deeff504d3db7b193a433369bfcf3889be3a5b9718d8')
+sha256sums_aarch64=('907e8c8d87f2319c0257a4b531b155fd955ed2bf53c008a7b185a5e539ce823f')
 source_x86_64=("${_deb_x86_64}::${url}/releases/download/v${pkgver}/${_deb_x86_64}")
 source_aarch64=("${_deb_aarch64}::${url}/releases/download/v${pkgver}/${_deb_aarch64}")
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
