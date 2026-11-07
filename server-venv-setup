@@ -1,0 +1,73 @@
+#!/bin/sh
+# 创建/复用服务端的常驻 Python 环境。
+#
+# 服务端（server.py）的依赖只有 flask/toml/pypdf/PyMuPDF/packaging 这几个，
+# 但用 `uv run --with-requirements`（临时环境）启动时，uv 每次开机都要重新
+# 解析、联网确认依赖；PyPI 不可达时服务直接起不来（日志里出现过 pypi.org
+# DNS 失败导致 exit 2）。这里改成：
+#   - 首次启动在 /var/lib/zotero-pdf2zh/server-venv 建一个常驻 venv；
+#   - 之后只要依赖齐全就直接复用，完全不联网；
+#   - venv 被删/损坏、或 requirements 里出现缺包时才重建/补装（需要联网）。
+# 翻译环境（zotero-pdf2zh-next-venv 等）仍由上游代码在首次翻译时用 uv 创建，
+# 和这个脚本无关。
+
+set -eu
+
+data=/var/lib/zotero-pdf2zh
+venv=$data/server-venv
+python=$venv/bin/python
+req=/usr/lib/zotero-pdf2zh/requirements.txt
+
+# 服务端启动时真正会 import 的模块，能导入就说明环境可用。
+imports_ok() {
+	[ -x "$python" ] &&
+		"$python" -c 'import flask, toml, pypdf, fitz, packaging' >/dev/null 2>&1
+}
+
+# requirements.txt 里列出的发行包是否都已安装（查 metadata，避免靠模块名猜）。
+requirements_ok() {
+	[ -x "$python" ] && "$python" - "$req" <<'PY' >/dev/null 2>&1
+import re
+import sys
+from importlib.metadata import PackageNotFoundError, version
+
+for raw in open(sys.argv[1], encoding="utf-8"):
+    raw = raw.strip()
+    if not raw or raw.startswith("#"):
+        continue
+    name = re.split(r"[<>=!~\[; ]", raw, 1)[0]
+    try:
+        version(name)
+    except PackageNotFoundError:
+        raise SystemExit(1)
+PY
+}
+
+if imports_ok && requirements_ok; then
+	exit 0
+fi
+
+if [ ! -x "$python" ]; then
+	rm -rf "$venv"
+	echo "🔧 首次创建服务端 Python 环境（需要联网，约 100MB，请耐心等待）..."
+	uv venv --python 3.12 "$venv"
+fi
+
+# 网络失败时不要拖垮一个还能用的旧环境（例如升级后 requirements 变化但暂时离线）。
+UV_HTTP_TIMEOUT=${UV_HTTP_TIMEOUT:-30}
+UV_HTTP_RETRIES=${UV_HTTP_RETRIES:-3}
+export UV_HTTP_TIMEOUT UV_HTTP_RETRIES
+
+if ! uv pip install --python "$python" --requirements "$req"; then
+	if imports_ok; then
+		echo "⚠️ 服务端依赖更新失败，继续使用现有环境；网络恢复后重启服务会重试。" >&2
+		exit 0
+	fi
+	echo "❌ 无法创建服务端 Python 环境，请检查网络后重启服务。" >&2
+	exit 1
+fi
+
+if ! imports_ok; then
+	echo "❌ 服务端 Python 环境创建后仍无法导入依赖，删除 $venv 后重试。" >&2
+	exit 1
+fi

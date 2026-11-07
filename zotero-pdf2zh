@@ -4,8 +4,8 @@
 # 服务端把 config/、translated/ 和翻译环境都写在自己的目录下，所以这些脚本
 # 必须跑在 /var/lib/zotero-pdf2zh/app，而不是只读的 /usr/lib/zotero-pdf2zh。
 #
-# 服务端本身用系统 Python（依赖是 python-flask 等系统包）；uv 只在脚本内部
-# 创建 pdf2zh/pdf2zh_next 翻译环境时用到，不会在启动时联网装服务端依赖。
+# 服务端进程跑在常驻 venv（/var/lib/zotero-pdf2zh/server-venv）里，由 uv 在首次
+# 启动时创建一次；uv 同时负责首次翻译时创建 pdf2zh/pdf2zh_next 翻译环境。
 #
 #   sudo zotero-pdf2zh                            # 前台运行服务端（排查问题用）
 #   sudo zotero-pdf2zh manage_packages.py status  # 查看翻译环境状态
@@ -14,6 +14,7 @@
 set -eu
 
 app=/var/lib/zotero-pdf2zh/app
+venv=/var/lib/zotero-pdf2zh/server-venv
 script=${1:-server.py}
 if [ "$#" -gt 0 ]; then
 	shift
@@ -40,6 +41,8 @@ fi
 
 install -d -o zotero-pdf2zh -g zotero-pdf2zh -m 0755 /var/lib/zotero-pdf2zh
 runuser -u zotero-pdf2zh -- /usr/lib/zotero-pdf2zh/runtime-sync
+runuser -u zotero-pdf2zh -- env HOME=/var/lib/zotero-pdf2zh \
+	/usr/lib/zotero-pdf2zh/server-venv-setup
 exec runuser -u zotero-pdf2zh -- env HOME=/var/lib/zotero-pdf2zh \
 	PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 \
-	/usr/bin/python3 "$app/$script" "$@"
+	"$venv/bin/python" "$app/$script" "$@"

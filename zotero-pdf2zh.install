@@ -14,10 +14,15 @@ post_install() {
       app/            实际运行的代码副本（启动时从 /usr/lib/zotero-pdf2zh 同步）
       app/config/     配置文件；也可以只在 Zotero 插件里设置，插件会写到这里
       app/translated/ 翻译结果
-      .cache/uv       uv 下载的 Python 3.12 与翻译环境依赖缓存在这里
+      server-venv/    服务端自己的常驻 Python 环境（首次启动时由 uv 创建）
+      .cache/uv       uv 下载的 Python 与依赖缓存在这里
 
-    服务端本身用系统 Python 运行，依赖已由 pacman 装好，开机启动不需要联网。
-    第一次翻译时 uv 会自动创建 pdf2zh_next 翻译环境（几百 MB 到 1 GB 以上），
+    首次启动会由 uv 创建服务端的常驻环境（约 100MB，需要联网，之后不再联网）。
+    国内网络慢的话，可以在 /etc/conf.d/zotero-pdf2zh 里加一行换 PyPI 镜像：
+      UV_DEFAULT_INDEX=https://mirrors.ustc.edu.cn/pypi/simple
+    环境损坏或想强制重建时：sudo rm -rf /var/lib/zotero-pdf2zh/server-venv
+
+    第一次翻译时 uv 还会创建 pdf2zh_next 翻译环境（几百 MB 到 1 GB 以上），
     这段时间请耐心等待，进度可在 http://127.0.0.1:8890/ 上看到。
 
     注意：服务端自带的“启动时检查并更新源码”已关闭，版本由 pacman 管理。
@@ -31,6 +36,8 @@ post_upgrade() {
     配置、翻译结果和翻译环境都在 /var/lib/zotero-pdf2zh，升级不会动它们；
     已建好的翻译环境也不会因为升级而重建。
     重启服务以生效: sudo systemctl restart zotero-pdf2zh
+    若启动日志提示服务端依赖缺失，可删除 /var/lib/zotero-pdf2zh/server-venv
+    让服务在下次启动时用 uv 重建（需要联网）。
 EOF
 }
 

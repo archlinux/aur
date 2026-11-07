@@ -23,11 +23,16 @@ Environment=ZOTERO_PDF2ZH_PORT=8890
 EnvironmentFile=-/etc/conf.d/zotero-pdf2zh
 # 代码在 /usr/lib 是只读的，先同步到 /var/lib/zotero-pdf2zh/app 再运行
 ExecStartPre=/usr/lib/zotero-pdf2zh/runtime-sync
+# 服务端的常驻 venv：首次启动时由 uv 创建（需要联网下载约 100MB），之后直接复用。
+# 这一步放在 ExecStartPre，慢一点也不会被当成主进程启动超时。
+ExecStartPre=/usr/lib/zotero-pdf2zh/server-venv-setup
+# 首次创建 venv 可能要下载 Python 3.12 和依赖，把启动超时放宽。
+TimeoutStartSec=1800
 # --check_update false：服务端的源码更新由 pacman 管，且自更新会被下次启动时
 # 的同步覆盖回去，所以关掉它，避免出现“更新了又回退”的怪现象。
-# 服务端用系统 Python 运行（依赖是 python-flask 等系统包），开机启动不再需要
-# 访问 PyPI；uv 只在首次翻译时用来创建 pdf2zh/pdf2zh_next 环境。
-ExecStart=/usr/bin/python3 /var/lib/zotero-pdf2zh/app/server.py \
+# 服务端跑在常驻 venv 里，不再用 `uv run --with-requirements`（临时环境），
+# 所以开机启动不会再去 PyPI 解析依赖。
+ExecStart=/var/lib/zotero-pdf2zh/server-venv/bin/python /var/lib/zotero-pdf2zh/app/server.py \
           --host ${ZOTERO_PDF2ZH_HOST} --port ${ZOTERO_PDF2ZH_PORT} --check_update false
 Restart=on-failure
 RestartSec=5
