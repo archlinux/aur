@@ -1,0 +1,10 @@
+# Пакет службы не включает (правила Arch): только подсказывает, что включить.
+# Экран входа synlogin — если другой экран входа (display-manager.service) не выбран.
+
+post_install() {
+    echo ":: synshell: войти в сеанс — выберите «synshell» в своём экране входа (GDM, SDDM…)"
+    if [ ! -e /etc/systemd/system/display-manager.service ]; then
+        echo ":: или включите экран входа synshell: systemctl enable synlogin.service (и перезагрузите)"
+    fi
+    echo ":: журнал изменений файлов: systemctl enable --now synfsd (история — в «Свойствах» Проводника)"
+}
