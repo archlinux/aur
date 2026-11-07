@@ -1,0 +1,23 @@
+pkgbase = syn-remote-bin
+	pkgdesc = synshell remote control: IR blaster and smart TVs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	groups = synshell-apps
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = syn-remote
+	conflicts = syn-remote
+	conflicts = syn-remote-git
+	noextract = syn-remote-0.2.0-x86_64.tar.zst
+	noextract = syn-remote-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = syn-remote-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-remote-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = 8ad747c0b384712e4caa7ec75f498fd1ebdd2086d6a236ab45781e599d609d7a
+	source_aarch64 = syn-remote-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-remote-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 3496b10dd329daa4c9dd1e565c402ea7a1da7ce6b0e2cd105c93df24f2ac2500
+
+pkgname = syn-remote-bin
