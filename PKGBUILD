@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-git
-pkgver=1.5.0.r2.g209ea08
+pkgver=1.11.0.r27.gfede96f
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,8 @@ depends=(
   'adw-gtk-theme'
   'cosmic-icons-git'
   'cosmic-randr-git'
+  'cosmic-settings-daemon-git'
+  'cosmic-theme-bundles-git'
   'dav1d'
   'fontconfig'
   'iso-codes'
