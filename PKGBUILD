@@ -1,6 +1,6 @@
 # Maintainer: broroeror <54515333+broroeror@users.noreply.github.com>
 pkgname=pdsync
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Unofficial Proton Drive sync client with a tray app (third-party, not supported by Proton)"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('nodejs>=22' 'python' 'pyside6' 'qt6-svg' 'libsecret' 'glib2' 'systemd')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('120734299ae8cc5e7660752918de98e07a23b2c8ed6f46829729cf04df4d348f')
+sha256sums=('872d93ac4bfacc721ed390e0afd83034d5b157f7f59cd9dd25319432c3ec9e52')
 
 build() {
   cd "$pkgname-$pkgver"
