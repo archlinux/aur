@@ -4,7 +4,7 @@
 # fills in the version and checksum placeholders and pushes the result (with a
 # regenerated .SRCINFO) to the AUR on every release.
 pkgname=iptv-checker-gui
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="GUI for validating IPTV playlists and inspecting stream health"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/kristofferR/IPTVCh
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v${pkgver}/IPTV.Checker_${pkgver}_lin_x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v${pkgver}/IPTV.Checker_${pkgver}_lin_arm.deb")
 sha256sums=('508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1')
-sha256sums_x86_64=('e1199160f37086d22b18c727083bd9fba5e831bb2bad550286dfa22a77565f1c')
-sha256sums_aarch64=('37044dcacaebae3a06822fe9e773c934c71107e2060687dbf703a3d3a3529c7b')
+sha256sums_x86_64=('13863950bb421cf179c39eca6914771799034918a219412860ac77290bedb75a')
+sha256sums_aarch64=('4b4798f00d578dc556c0e588f4221a6de62a89da9e414e58bd62f0f1919401b9')
 
 package() {
     # makepkg already extracted the .deb into srcdir; unpack its payload.
