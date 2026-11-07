@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=capri-desktop-bin
-pkgver=0.8.5
+pkgver=0.8.5.1
 pkgrel=1
 pkgdesc="Unofficial Capri desktop companion: she sits on your windows, chats and does things for you (upstream binary)"
 arch=('x86_64')
