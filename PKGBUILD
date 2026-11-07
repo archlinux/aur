@@ -3,7 +3,7 @@
 # (scripts/aur-packages.mjs renders this template): the release's Linux .deb, unpacked.
 # Maintainer: Athan Clark <athan.clark@gmail.com>
 pkgname=openchronology-desktop-bin
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc='Exact timelines, shared on your terms: the OpenChronology desktop app'
 arch=('x86_64')
@@ -13,9 +13,9 @@ depends=('gmp' 'sqlite' 'webkit2gtk-4.1' 'gtk3')
 provides=('openchronology-desktop')
 conflicts=('openchronology-desktop')
 options=('!strip' '!debug')
-source=("openchronology-desktop-$pkgver.deb::https://github.com/openchronology/timeline-app/releases/download/v0.23.0/openchronology-desktop-linux-amd64.deb")
+source=("openchronology-desktop-$pkgver.deb::https://github.com/openchronology/timeline-app/releases/download/v0.23.1/openchronology-desktop-linux-amd64.deb")
 noextract=("openchronology-desktop-$pkgver.deb")
-sha256sums=('8f434f91f412d875b643d106bc7f898de4f478f8f4a0f30da240e0e7ef2ee68e')
+sha256sums=('088a1157f3c08fe52acc15075f33453e904bf4d516f7c4656600b7b812fbed01')
 
 package() {
   bsdtar -xOf "openchronology-desktop-$pkgver.deb" 'data.tar*' | bsdtar -xf - -C "$pkgdir"
