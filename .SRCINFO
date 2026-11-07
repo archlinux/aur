@@ -1,0 +1,19 @@
+pkgbase = technitium-console-git
+	pkgdesc = Modern admin console for Technitium DNS Server (built from git)
+	pkgver = 1.4.0.r1.g27dd0bf
+	pkgrel = 1
+	url = https://github.com/byGarcia/technitium-console
+	install = technitium-console.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = bash
+	provides = technitium-console
+	conflicts = technitium-console
+	conflicts = technitium-console-bin
+	source = git+https://github.com/byGarcia/technitium-console.git
+	sha256sums = SKIP
+
+pkgname = technitium-console-git
