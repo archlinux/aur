@@ -3,20 +3,25 @@ pkgbase = mindustry-sdl3-bin
 	pkgver = 160.7
 	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
-	arch = any
-	license = GPL-3.0-only
+	arch = x86_64
+	license = GPL3
 	makedepends = libicns
-	depends = alsa-lib
+	depends = java-runtime>=8
+	depends = sh
+	depends = hicolor-icon-theme
+	provides = mindustry
+	conflicts = mindustry
 	noextract = mindustry-sdl3-bin-160.7.jar
 	options = !debug
 	source = mindustry-sdl3-bin-160.7.jar::https://github.com/BlackCherryCat/my-aur/releases/download/v160.7/mindustry-sdl3-bin-160.7.jar
-	source = icon.icns::https://github.com/Anuken/Mindustry/raw/v160.7/core/assets/icons/icon.icns
+	source = mindustry-sdl3-bin.icns::https://github.com/Anuken/Mindustry/raw/v160.7/core/assets/icons/icon.icns
 	source = mindustry-sdl3-bin.install
+	source = mindustry-sdl3-bin.desktop
+	source = mindustry-sdl3-bin.sh
 	sha256sums = e7fbd005154bcfec5a0a7dbdff5b45750acf222793d080449dbf1521ce8ac3e7
 	sha256sums = 80aa3f58c2211188e9586b1ef47892956b0bb4042dcea7ea29e954b996ea786f
 	sha256sums = 7e5451947f90876b86ca8a96a285cdddaa7b426dbe71767c03c66dcfe2ddb966
+	sha256sums = e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b
+	sha256sums = 938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9
 
 pkgname = mindustry-sdl3-bin
-	depends = alsa-lib
-	depends = java-runtime>=
-	depends = hicolor-icon-theme
