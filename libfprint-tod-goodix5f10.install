@@ -1,0 +1,23 @@
+post_install() {
+  cat <<'EOF'
+
+To set the PSK file for the system fprintd service, run this command:
+sudo install -d -m 755 /etc/systemd/system/fprintd.service.d && printf '%s\n' '[Service]' 'Environment=GOODIX_5F10_PSK_FILE=/var/lib/fprint/goodix-5f10/psk' | sudo tee /etc/systemd/system/fprintd.service.d/goodix-5f10.conf >/dev/null && sudo systemctl daemon-reload && sudo systemctl restart fprintd
+
+The package includes the public author PSK at
+/var/lib/fprint/goodix-5f10/psk-default. This fallback works only if the sensor
+has already been provisioned with that key; package installation does not
+change the sensor. A recovered per-device PSK at /var/lib/fprint/goodix-5f10/psk
+takes precedence. Store it as root:root with mode 0600. For example:
+sudo install -D -o root -g root -m 600 /path/to/recovered/psk /var/lib/fprint/goodix-5f10/psk
+
+Each file must contain exactly 32 raw bytes, not hexadecimal text. The driver
+uses /var/lib/fprint/goodix-5f10/psk by default and falls back to psk-default
+only when that preferred file is absent. The systemd override is optional unless
+you use a different path.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,24 @@
+pkgbase = libfprint-tod-goodix5f10-git
+	pkgdesc = TOD module for the Goodix 27c6:5f10 fingerprint reader
+	pkgver = r4.gae212730
+	pkgrel = 1
+	url = https://github.com/kamazee/goodix-5f10-linux-driver
+	install = libfprint-tod-goodix5f10.install
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = libfprint-tod-git
+	depends = fprintd
+	depends = libfprint-tod-git
+	depends = glib2
+	depends = libgusb
+	depends = opencv
+	depends = openssl
+	source = goodix-5f10-linux-driver::git+https://github.com/kamazee/goodix-5f10-linux-driver.git#branch=main
+	sha256sums = SKIP
+
+pkgname = libfprint-tod-goodix5f10-git
