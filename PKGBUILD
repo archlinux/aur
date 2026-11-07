@@ -20,9 +20,7 @@ build() {
     LDFLAGS="-extldflags \"$LDFLAGS\" \
 	-X github.com/prometheus/common/version.Version=$pkgver \
 	-X github.com/prometheus/common/version.Revision=$pkgver \
-	-X github.com/prometheus/common/version.Branch=tarball \
-	-X github.com/prometheus/common/version.BuildUser=someone@builder \
-	-X github.com/prometheus/common/version.BuildDate=$(date -d@\"$SOURCE_DATE_EPOCH\" +%Y%m%d-%H:%M:%S)"
+	-X github.com/prometheus/common/version.Branch=tarball"
 
   go build \
     -trimpath \
