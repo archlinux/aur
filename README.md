@@ -17,6 +17,6 @@ makepkg -si
 ## Notes
 
 - Packaging-only repository.
-- Current packaged version is `2.10.3`.
+- Current packaged version is `2.10.6`.
 - Target architecture is `x86_64`.
 - Main files are `PKGBUILD` and `.SRCINFO`.
