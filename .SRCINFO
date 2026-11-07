@@ -1,11 +1,11 @@
 pkgbase = containernet-git
 	pkgdesc = Mininet fork adding support for container-based emulated hosts
 	pkgver = 3.1.r446.gc068942
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/containernet/containernet
 	install = containernet.install
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Mininet
 	makedepends = git
 	makedepends = help2man
 	makedepends = python-setuptools

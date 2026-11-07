@@ -5,7 +5,7 @@
 
 pkgname=containernet-git
 pkgver=3.1.r446.gc068942
-pkgrel=2
+pkgrel=3
 pkgdesc="Mininet fork adding support for container-based emulated hosts"
 _mn_deps=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf'
           'ethtool' 'libcgroup' 'openvswitch' 'psmisc')
@@ -20,7 +20,7 @@ makedepends=('git' 'help2man' 'python-setuptools' 'python-build'
              'python-installer' 'python-wheel')
 arch=('x86_64')
 url="https://github.com/containernet/containernet"
-license=('custom')
+license=('LicenseRef-Mininet')
 provides=('mininet' 'containernet')
 conflicts=('mininet' 'containernet')
 install="${pkgname%-git}.install"
@@ -82,7 +82,7 @@ package() {
         --destdir="$pkgdir" \
         --compile-bytecode=1 \
         dist/*.whl
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: set sw=4 ts=4 et:
