@@ -1,32 +1,32 @@
 # Maintainer: smiley <smiley@archlinux.org>
 
 pkgname=hyprlogin
-pkgver=0.3.0
-pkgrel=2
-pkgdesc='Work-in-progress greetd greeter forked from hyprlock'
+pkgver=0.4.0
+pkgrel=1
+pkgdesc='GPU-accelerated greetd greeter for Hyprland, forked from hyprlock'
 arch=('x86_64')
 url='https://github.com/AuthenticSm1les/hyprlogin'
 license=('BSD-3-Clause')
 depends=(
   'cairo'
-  'gcc-libs'
   'glibc'
   'hyprgraphics'
   'hyprlang'
   'hyprutils'
-  'libdrm'
-  'mesa'
-  'pango'
-  'pam'
-  'sdbus-cpp'
-  'wayland'
-  'wayland-protocols'
+  'libegl'
+  'libgcc'
+  'libgles'
+  'libstdc++'
   'libxkbcommon'
+  'wayland'
 )
 makedepends=(
   'cmake'
   'hyprwayland-scanner'
+  'libdrm'
+  'pango'
   'pkgconf'
+  'wayland-protocols'
 )
 optdepends=(
   'greetd: login manager integration'
@@ -35,33 +35,20 @@ optdepends=(
 backup=('etc/hyprlogin/hyprlogin.conf')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b12662f13d9dd55a87ddd6acbb8693f19bee005e775a9c501fcac6265302a40b')
-
-prepare() {
-  local staged_src="$srcdir/hyprlogin-src"
-  rm -rf "$staged_src"
-  mkdir -p "$staged_src"
-  tar -xf "$srcdir/$pkgname-$pkgver.tar.gz" -C "$staged_src" --strip-components=1
-}
+sha256sums=('e05e6238c674a75f08ead7867f0c47d397cffe66a82f91d3cfcb77558df14a1e')
 
 build() {
-  local staged_src="$srcdir/hyprlogin-src"
-  local build_dir="$srcdir/hyprlogin-build"
-
-  cmake -S "$staged_src" -B "$build_dir" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build "$build_dir" --target hyprlogin -j"$(nproc)"
+  cmake -S "$pkgname-$pkgver" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DHYPRLOGIN_COMMIT="v$pkgver" \
+    -DHYPRLOGIN_VERSION_COMMIT="v$pkgver"
+  cmake --build build --target hyprlogin
 }
 
 package() {
-  local staged_src="$srcdir/hyprlogin-src"
-  local build_dir="$srcdir/hyprlogin-build"
+  DESTDIR="$pkgdir" cmake --install build
 
-  DESTDIR="$pkgdir" cmake --install "$build_dir"
-
-  install -Dm644 "$staged_src/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$staged_src/assets/example.conf" \
-    "$pkgdir/etc/hyprlogin/hyprlogin.conf"
+  install -Dm644 "$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$pkgname-$pkgver/assets/example.conf" "$pkgdir/etc/hyprlogin/hyprlogin.conf"
 }
