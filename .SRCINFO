@@ -1,0 +1,22 @@
+pkgbase = bypass-bin
+	pkgdesc = Modern terminal secrets manager compatible with KeePass vaults
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/yaroshevych/bypass
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = keepassxc
+	provides = bypass
+	conflicts = bypass
+	options = !strip
+	source = README-0.2.1.md::https://raw.githubusercontent.com/yaroshevych/bypass/v0.2.1/README.md
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/yaroshevych/bypass/v0.2.1/LICENSE
+	sha256sums = fb5ff11f4ccee6f2f524ee51d61f03182cecea1ed66873ecdce67de4d13b6061
+	sha256sums = 54cf7b716c85a4a5911a09de2fe15689f6b40d1c27ca0bb6153c800f54e71570
+	source_x86_64 = bypass-x86_64-0.2.1.tgz::https://github.com/yaroshevych/bypass/releases/download/v0.2.1/bypass_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = c9096ba8f45e38a8e5b965867cbe8d2aeeb0adf4a29d8652ed7c8550fdc34982
+	source_aarch64 = bypass-aarch64-0.2.1.tgz::https://github.com/yaroshevych/bypass/releases/download/v0.2.1/bypass_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 87040eceeb52ab7723bf1893ce8b51e941f162025599c119a5450e1c6c095754
+
+pkgname = bypass-bin

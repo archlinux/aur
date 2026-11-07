@@ -1,0 +1,5 @@
+[bypass-bin]
+source = "github"
+github = "yaroshevych/bypass"
+use_latest_release = true
+prefix = "v"
