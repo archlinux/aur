@@ -2,7 +2,7 @@
 
 _pkgname=spice
 pkgname="${_pkgname}"-git
-pkgver=0.15.1.1.ga5d1d957
+pkgver=0.16.0.r111.g20cd2c19
 pkgrel=1
 pkgdesc='SPICE server'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd ${_pkgname}
-    git describe --always | sed 's|^v||;s|-|.|g'
+    git describe --always | sed 's|^v||;s|-|.r|;s|-|.|'
 }
 
 prepare() {
