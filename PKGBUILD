@@ -2,7 +2,7 @@
 
 _pkgname=hyprlogin
 pkgname=hyprlogin-git
-pkgver=0.0.0.r451.ae89278
+pkgver=0.0.0.r460.8fb5440
 pkgrel=1
 pkgdesc='Work-in-progress greetd greeter forked from hyprlock'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
   'cairo'
   'gcc-libs'
   'glibc'
+  'greetd'
   'hyprgraphics'
   'hyprlang'
   'hyprutils'
@@ -33,8 +34,7 @@ makedepends=(
   'pkgconf'
 )
 optdepends=(
-  'greetd: login manager integration'
-  'hyprland: greeter compositor session'
+  'hyprland: compositor used by the shipped greetd config (any Wayland compositor with ext-session-lock-v1 works)'
 )
 backup=('etc/hyprlogin/hyprlogin.conf')
 options=(!debug)
