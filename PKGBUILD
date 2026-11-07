@@ -1,11 +1,11 @@
 # 上游仓库：https://github.com/beangle/jstart
 # AUR 维护目录：~/aur-packages/jstart（本目录）
 #
-# 发布新版本：上游打 tag（v0.0.2）-> 改下面 pkgver -> makepkg --printsrcinfo > .SRCINFO
+# 发布新版本：上游打 tag（如 v0.0.4）-> 改下面 pkgver -> makepkg --printsrcinfo > .SRCINFO
 # -> git add -A && git commit && git push（AUR 只接受 master 分支上的 PKGBUILD/.SRCINFO）。
 
 pkgname=jstart
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Lightweight launcher for jar/war and native (tar.gz) Java artifacts"
 arch=('x86_64')
