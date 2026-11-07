@@ -1,6 +1,6 @@
 pkgbase = sub-store-bin
 	pkgdesc = Advanced Subscription Manager for QX, Loon, Surge, Stash, Egern and Shadowrocket
-	pkgver = 2.42.6
+	pkgver = 2.39.9
 	pkgrel = 1
 	url = https://github.com/sub-store-org/Sub-Store
 	arch = any
@@ -9,16 +9,16 @@ pkgbase = sub-store-bin
 	provides = sub-store
 	conflicts = sub-store
 	conflicts = sub-store-git
-	
-	source = https://github.com/sub-store-org/Sub-Store/releases/download/2.42.6/cron-sync-artifacts.min.js
-	source = https://github.com/sub-store-org/Sub-Store/releases/download/2.42.6/runtime-manifest.json
-	
+	source = https://github.com/sub-store-org/Sub-Store/releases/download/2.39.9/sub-store.bundle.js
+	source = https://github.com/sub-store-org/Sub-Store/releases/download/2.39.9/cron-sync-artifacts.min.js
+	source = https://github.com/sub-store-org/Sub-Store/releases/download/2.39.9/runtime-manifest.json
+	source = https://github.com/sub-store-org/Sub-Store/raw/2.39.9/LICENSE
 	source = sub-store@.service
 	source = sub-store.sysusers
 	source = sub-store.tmpfiles
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = c888d1483c10ae4917d6f859195b0272c50713dd94c7199688b170836553905a
+	sha256sums = 5682a4932f82e91e966a2f7cd8b9ad0526beefd7d6ae65c4041130ff76406888
+	sha256sums = d9df4366d648e30831dfcbaa0bdfd038fac39a8b4072e5edfa04f11fee8da521
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
