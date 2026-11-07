@@ -7,7 +7,7 @@ pkgname=${_appname}
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 url=${_ghurl}
 
-license=('MIT' 'GPL-3.0')
+license=('GPL-3.0-or-later' 'MIT')
 
 provides=("${_appname}")
 makedepends=('rust' 'cargo')
