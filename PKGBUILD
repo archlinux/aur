@@ -8,7 +8,7 @@
 #
 # Template note: the release workflow (`aur-bin` job) copies this file to the
 # AUR `bitty-bin` repository as `PKGBUILD`, substitutes `pkgver` with the
-# release tag version, and replaces `364b83d12f619bd468bc6c4a0c23b08175751da3536e0f1d92cba330445f1d26` below with
+# release tag version, and replaces `d9a464c793073ce6ac1dacde03a35898d54e1f4e394bbc0e919e0fea392d55e9` below with
 # the real sha256 from the published `.sha256` asset. The binary checksum must
 # never be `SKIP` in a published package.
 #
@@ -27,7 +27,7 @@
 # The metadata tarball below is not mirrored (only dist/* is), so it keeps the
 # GitHub archive URL. The binary sha256 is always verified by makepkg.
 pkgname=bitty-bin
-pkgver=0.0.34
+pkgver=0.0.35
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source_x86_64=(
   "${_bitty_src}::https://cdn.bitty.run/releases/v${pkgver}/${_bitty_asset}"
 )
 sha256sums_x86_64=(
-  '364b83d12f619bd468bc6c4a0c23b08175751da3536e0f1d92cba330445f1d26'
+  'd9a464c793073ce6ac1dacde03a35898d54e1f4e394bbc0e919e0fea392d55e9'
 )
 
 package() {
@@ -58,6 +58,7 @@ package() {
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
   install -Dm644 share/applications/run.bitty.Bitty.desktop "${pkgdir}/usr/share/applications/run.bitty.Bitty.desktop"
   install -Dm644 share/metainfo/run.bitty.Bitty.metainfo.xml "${pkgdir}/usr/share/metainfo/run.bitty.Bitty.metainfo.xml"
+  install -Dm644 share/systemd/user/bittyd.service "${pkgdir}/usr/lib/systemd/user/bittyd.service"
   for size in 16 32 64 128 256 512; do
     install -Dm644 "share/icons/hicolor/${size}x${size}/apps/bitty.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
   done
