@@ -48,6 +48,8 @@ profile makepkg-jail-build {
     /dev/ptmx rw,
     /dev/pts/ r,
     /dev/pts/** rw,
+    /dev/shm/ r,
+    /dev/shm/** rwkl,
 
     /run/ r,
 

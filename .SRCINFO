@@ -1,6 +1,6 @@
 pkgbase = makepkg-jail-local
 	pkgdesc = Local bubblewrap makepkg sandbox with AppArmor and a restricted paru adapter
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/makepkg-jail-local
 	install = makepkg-jail-local.install
@@ -35,8 +35,8 @@ pkgbase = makepkg-jail-local
 	sha256sums = 3da0a51a9decc3ffd9c05d194dd38baa32389d60fa76f6e1ce2457df6aa5d494
 	sha256sums = 66582b5f362112c1ea5bbda70334c50b00b0eea6fa20355050260ff1da6795a7
 	sha256sums = cffe63df95629b4871bc357c96b86e632cc316c3c93d7c3ab2f34314dd492f8e
-	sha256sums = c6a667a913b1d9fa745fec2e659c5c392c822093e1de9ad0ff3b03816611e001
-	sha256sums = 82671f29ce1fe024bc474ab3058427a4407376bd3cb920f4fac0b30cccdab1d8
+	sha256sums = d12cc9005cc17ee410b7727da5033c0482a1d0c5a2fd0b2ea660b4962b2284eb
+	sha256sums = 529a615d5230dd0e42d6e76f37c4de37a9527f91ad015b0e01c53226fb0f1c87
 	sha256sums = ea542fbd5da726cce8e3dc5efddc031415e3e8f799ec94c746dc5a2bbd6c5343
 
 pkgname = makepkg-jail-local

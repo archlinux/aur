@@ -37,6 +37,8 @@ profile makepkg-jail-setup flags=(enforce,attach_disconnected) {
   /dev/ptmx rw,
   /dev/pts/ r,
   /dev/pts/** rw,
+  /dev/shm/ r,
+  /dev/shm/** rwkl,
   /newroot/ rw,
   /newroot/** rw,
   /oldroot/ rw,
