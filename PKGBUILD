@@ -3,14 +3,14 @@
 
 pkgname=ydotool-git
 pkgver=1.0.4.r38.g708e96f
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Generic command-line automation tool (no X!)"
 depends=('glibc')
 makedepends=('git' 'cmake' 'ninja' 'scdoc' 'systemd')
 arch=('x86_64')
 url="https://github.com/ReimuNotMoe/ydotool"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 provides=('ydotool')
 conflicts=('ydotool')
 install=ydotool.install
