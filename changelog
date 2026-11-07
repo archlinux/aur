@@ -1,23 +1,18 @@
 ### Added
 
-* Support for WoW 'Forever'
-    - detected from `release.json` files, `_Camelot.toc` files and interface versions `16000` to `19999`
-    - Forever falls back to Retail when 'Strict' is unchecked
+* New addon directories with `_forever_` in their path default to the Forever game track, like `_classic_` does for Classic
 
 ### Changed
 
-* URLs are parsed more strictly, malformed URLs such as `http://` are no longer accepted
-* Linting now covers the whole project on every run, not just recently modified files
-* README game track priorities updated with Mists and Forever
+* Debug log at shutdown now describes each cleanup step instead of printing function objects
 
 ### Fixed
 
-* Interface versions with a two digit minor or patch version are converted correctly
-    - for example, `11507` is now `1.15.7` rather than `1.5.7`
-* The 'no release found' warning now names the addon host correctly when 'Strict' is unchecked
-* Deprecation warnings from newer JDK and JavaFX versions
-* Linting no longer hangs after a run with no warnings
-* Tests and linting no longer conflict with an X display already in use
-* A partially drawn log pane no longer appears over the installed addons after resizing the window
-* Remaining non-determinism in test `utils_test/with-lock--contention`
-    - the test now runs its scenario 300 times to catch any recurrence
+* 'Import addon' failing for addons with only a Forever release. 
+    - the selected addon directory's game track is now used instead of always Retail.
+    - thanks to @msromike for reporting this
+* Installed addons with several `.toc` files but none for the addon dir's game track or its fallbacks were hidden. 
+    - only possible in a Forever addon directory because they only fall back to Retail.
+* Linting issues detected by new version of Joker
+
+### Removed
