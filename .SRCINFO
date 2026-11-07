@@ -1,0 +1,22 @@
+pkgbase = bbdown
+	pkgdesc = 一款命令行式哔哩哔哩下载器
+	pkgver = 1.7.8
+	pkgrel = 1
+	url = https://github.com/aliveranme/BBDown
+	install = bbdown.install
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = clang
+	makedepends = aspnet-targeting-pack
+	depends = ffmpeg
+	depends = bento4
+	optdepends = aria2: 多线程分段下载
+	source = bbdown-1.7.8.tar.gz::https://github.com/aliveranme/BBDown/archive/refs/tags/v1.7.8.tar.gz
+	source = bbdown-xdg.patch
+	source = bbdown.sh
+	sha256sums = 9264e2468cc379ba369b5096107ef232f1f1234d2649668a1606072d3a17304c
+	sha256sums = 7fd078e65a4ea7832036a960fe187ea7204cd4417364dbe081f168c7b0bd27e8
+	sha256sums = 05882947ede7e705bc5770694bce651cabbe05dd363378c5ea3542393056ee82
+
+pkgname = bbdown

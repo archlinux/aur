@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+==> 本包与上游 BBDown 的差异：
+
+  · 登录凭据、下载历史、订阅数据改存于 $XDG_DATA_HOME/BBDown
+    （默认 ~/.local/share/BBDown）
+
+  · 配置文件从 $XDG_CONFIG_HOME/BBDown/BBDown.config 读取
+    （默认 ~/.config/BBDown/BBDown.config）
+
+  · 默认下载目录为 ~/Videos/BBDown
+    可用 --work-dir 指定其他目录
+
+  若你此前用其他方式使用过 BBDown，旧的 BBDown.data、BBDown.archives、
+  BBDownSubscriptions.json 仍在原程序目录，需自行复制到新位置。
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+

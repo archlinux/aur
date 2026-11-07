@@ -1,0 +1,131 @@
+diff --git a/BBDown/Application/Archive.cs b/BBDown/Application/Archive.cs
+index 3c39164..1939a82 100644
+--- a/BBDown/Application/Archive.cs
++++ b/BBDown/Application/Archive.cs
+@@ -17,7 +17,7 @@ internal partial class Program
+         await fileLock.WaitAsync(cancellationToken);
+         try
+         {
+-            string filePath = Path.Combine(APP_DIR, "BBDown.archives");
++            string filePath = Path.Combine(DATA_DIR, "BBDown.archives");
+             var dir = Path.GetDirectoryName(filePath);
+             if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                 Directory.CreateDirectory(dir);
+@@ -35,7 +35,7 @@ internal partial class Program
+         await fileLock.WaitAsync(cancellationToken);
+         try
+         {
+-            string filePath = Path.Combine(APP_DIR, "BBDown.archives");
++            string filePath = Path.Combine(DATA_DIR, "BBDown.archives");
+             if (!File.Exists(filePath)) return false;
+             Logger.LogDebug("文件路径：{0}", filePath);
+             var text = await File.ReadAllTextAsync(filePath, cancellationToken);
+diff --git a/BBDown/Application/Options.cs b/BBDown/Application/Options.cs
+index 9af60f1..3c411d5 100644
+--- a/BBDown/Application/Options.cs
++++ b/BBDown/Application/Options.cs
+@@ -452,23 +452,23 @@ internal partial class Program
+             ? myOption.AccessToken.Replace("access_token=", "")
+             : Config.Current.Token;
+ 
+-        if (string.IsNullOrEmpty(cookie) && File.Exists(Path.Combine(APP_DIR, "BBDown.data")))
++        if (string.IsNullOrEmpty(cookie) && File.Exists(Path.Combine(DATA_DIR, "BBDown.data")))
+         {
+             Logger.Log("加载本地cookie...");
+-            Logger.LogDebug("文件路径：{0}", Path.Combine(APP_DIR, "BBDown.data"));
+-            cookie = await File.ReadAllTextAsync(Path.Combine(APP_DIR, "BBDown.data"), cancellationToken);
++            Logger.LogDebug("文件路径：{0}", Path.Combine(DATA_DIR, "BBDown.data"));
++            cookie = await File.ReadAllTextAsync(Path.Combine(DATA_DIR, "BBDown.data"), cancellationToken);
+         }
+-        if (string.IsNullOrEmpty(token) && File.Exists(Path.Combine(APP_DIR, "BBDownTV.data")) && myOption.UseTvApi)
++        if (string.IsNullOrEmpty(token) && File.Exists(Path.Combine(DATA_DIR, "BBDownTV.data")) && myOption.UseTvApi)
+         {
+             Logger.Log("加载本地token...");
+-            Logger.LogDebug("文件路径：{0}", Path.Combine(APP_DIR, "BBDownTV.data"));
+-            token = (await File.ReadAllTextAsync(Path.Combine(APP_DIR, "BBDownTV.data"), cancellationToken)).Replace("access_token=", "");
++            Logger.LogDebug("文件路径：{0}", Path.Combine(DATA_DIR, "BBDownTV.data"));
++            token = (await File.ReadAllTextAsync(Path.Combine(DATA_DIR, "BBDownTV.data"), cancellationToken)).Replace("access_token=", "");
+         }
+-        if (string.IsNullOrEmpty(token) && File.Exists(Path.Combine(APP_DIR, "BBDownApp.data")) && myOption.UseAppApi)
++        if (string.IsNullOrEmpty(token) && File.Exists(Path.Combine(DATA_DIR, "BBDownApp.data")) && myOption.UseAppApi)
+         {
+             Logger.Log("加载本地token...");
+-            Logger.LogDebug("文件路径：{0}", Path.Combine(APP_DIR, "BBDownApp.data"));
+-            token = (await File.ReadAllTextAsync(Path.Combine(APP_DIR, "BBDownApp.data"), cancellationToken)).Replace("access_token=", "");
++            Logger.LogDebug("文件路径：{0}", Path.Combine(DATA_DIR, "BBDownApp.data"));
++            token = (await File.ReadAllTextAsync(Path.Combine(DATA_DIR, "BBDownApp.data"), cancellationToken)).Replace("access_token=", "");
+         }
+ 
+         return (cookie?.Trim() ?? "", token?.Trim() ?? "");
+diff --git a/BBDown/Infrastructure/BBDownLoginUtil.cs b/BBDown/Infrastructure/BBDownLoginUtil.cs
+index 40dddfa..c045bf6 100644
+--- a/BBDown/Infrastructure/BBDownLoginUtil.cs
++++ b/BBDown/Infrastructure/BBDownLoginUtil.cs
+@@ -120,6 +120,14 @@ internal static class BBDownLoginUtil
+     /// </summary>
+     private static async Task WriteOwnerOnlyFileAsync(string path, string content)
+     {
++        var dir = Path.GetDirectoryName(path);
++        if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
++        {
++            if (OperatingSystem.IsWindows())
++                Directory.CreateDirectory(dir);
++            else
++                Directory.CreateDirectory(dir, UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute);
++        }
+         var opts = new FileStreamOptions
+         {
+             Mode = FileMode.Create,
+@@ -205,7 +213,7 @@ internal static class BBDownLoginUtil
+                         Logger.LogError("登录成功但未取得有效凭证（SESSDATA 缺失），登录结果未保存；请重试或检查网络环境");
+                         return false;
+                     }
+-                    var cookiePath = Path.Combine(Program.APP_DIR, "BBDown.data");
++                    var cookiePath = Path.Combine(Program.DATA_DIR, "BBDown.data");
+                     await WriteOwnerOnlyFileAsync(cookiePath, merged);
+                     return true;
+                 }
+@@ -303,7 +311,7 @@ internal static class BBDownLoginUtil
+                     }
+                     Logger.Log("登录成功: AccessToken=" + SensitiveDataMasker.MaskValue(cc));
+                     //导出cookie
+-                    var tvTokenPath = Path.Combine(Program.APP_DIR, "BBDownTV.data");
++                    var tvTokenPath = Path.Combine(Program.DATA_DIR, "BBDownTV.data");
+                     await WriteOwnerOnlyFileAsync(tvTokenPath, "access_token=" + cc);
+                     return true;
+                 }
+diff --git a/BBDown/Infrastructure/SubscriptionStore.cs b/BBDown/Infrastructure/SubscriptionStore.cs
+index 481f753..58699b7 100644
+--- a/BBDown/Infrastructure/SubscriptionStore.cs
++++ b/BBDown/Infrastructure/SubscriptionStore.cs
+@@ -35,7 +35,7 @@ internal partial class SubscriptionJsonContext : JsonSerializerContext
+ public static class SubscriptionStore
+ {
+     /// <summary>存储根目录（程序目录）。internal 供测试注入临时目录，避免污染真实安装目录。</summary>
+-    internal static string StoreRoot = Program.APP_DIR;
++    internal static string StoreRoot = Program.DATA_DIR;
+ 
+     /// <summary>每个订阅保存在历史文件中的最大 avid 条数：超出后移除最旧的。
+     /// 足够大（正常订阅不会触顶），只是约束无界增长。</summary>
+diff --git a/BBDown/Program.cs b/BBDown/Program.cs
+index 203e8b0..6ad2d6a 100644
+--- a/BBDown/Program.cs
++++ b/BBDown/Program.cs
+@@ -44,6 +44,17 @@ partial class Program
+     // BaseDirectory 在 apphost、dotnet 宿主与 NativeAOT 单文件下都指向程序集所在目录。
+     public static readonly string APP_DIR = AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+ 
++    /// <summary>凭据/历史/订阅等可写数据的根目录（XDG_DATA_HOME 下的 BBDown）。</summary>
++    public static readonly string DATA_DIR = ResolveDataDir();
++
++    private static string ResolveDataDir()
++    {
++        var root = Environment.GetEnvironmentVariable("XDG_DATA_HOME");
++        if (string.IsNullOrEmpty(root))
++            root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".local", "share");
++        return Path.Combine(root, "BBDown");
++    }
++
+     private static string FormatTimeStamp(long ts, string format)
+     {
+         try
