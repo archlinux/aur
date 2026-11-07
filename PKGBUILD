@@ -9,7 +9,7 @@ export DEBUG_CXXFLAGS="-g1"
 
 _pkgname=exdesktop
 pkgname="$_pkgname-git"
-pkgver=7.3.3.9.r7.g4631a77
+pkgver=7.3.3.10.r1.g0d06ac0
 pkgrel=1
 pkgdesc='Unofficial Telegram Desktop fork with exteraGram features, channel feed and Python plugins (git version)'
 arch=('x86_64')
