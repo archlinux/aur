@@ -4,7 +4,7 @@ _pkgexec=mdedup
 _pkgauthor=kdeldycke
 _pkgname=mail-deduplicate
 pkgname=${_pkgname}-bin
-pkgver=9.5.0
+pkgver=9.6.0
 pkgrel=1
 pkgdesc='CLI to deduplicate mails from mail boxes'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,10 +21,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/license"
 source_x86_64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgexec}-linux-x64.bin")
 source_aarch64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgexec}-linux-arm64.bin")
 sha256sums=('8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
-            'faa8c709eb849e62150c61f6825e7ab51a7ee2fd5845c0549cd90ed460f2d22c'
-            '57e8c118987be1df36bdb1cf59240581b59273f5f95e6e30e8dd2f0c0458b6cd')
-sha256sums_x86_64=('1dd7f5e4e7eea69982d484b7666ed7ce5e11a66cef5112f5bd9458693400b2f5')
-sha256sums_aarch64=('1dd7f5e4e7eea69982d484b7666ed7ce5e11a66cef5112f5bd9458693400b2f5')
+            'c25019e1a51096a8dff4eb096f1d78d1edd750e053b870d9fd3b71b46b06b6d2'
+            'd5c495fb97b9fc02f59a0c75f6f513cfb3e86220435f80174652929fa7140939')
+sha256sums_x86_64=('8964564c8246fb3721f9356ddd28da01169f6179db1726c7e50e55b921527440')
+sha256sums_aarch64=('8964564c8246fb3721f9356ddd28da01169f6179db1726c7e50e55b921527440')
 
 package() {
   cd "${srcdir}/" || exit
