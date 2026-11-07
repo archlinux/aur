@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=9473
-_version=1.0.9473
+_tag=9616
+_version=1.0.9616
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -12,8 +12,7 @@ pkgdesc="Jitsi Meet Prosody Plugins nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=()
-optdepends=("prosody" "lua52" "lua52-sec" "lua52-zip" "lua52-event")
+depends=("prosody" "lua54-cjson" "lua54-inspect" "lua54-basexx" "lua54-luaossl")
 makedepends=(
         "git"
 )
@@ -33,4 +32,4 @@ package() {
         install -d "${pkgdir}/usr/lib"
         cp -Rv "resources/prosody-plugins" "${pkgdir}/usr/lib/${pkgname}"
 }
-sha256sums=('4956ecac03d8ab6de56e50b9dd108575055d59cb96fec387216399cd37eb7727')
+sha256sums=('62a69edf15c736e47411b2da2261bc8bb0b1de9b807ef7eec19b2ac6dc2b73e5')
