@@ -6,8 +6,9 @@
 # Source is the fork: upstream's release tag plus the commits in `git log vX..minimal`.
 
 pkgname=kdeconnect-minimal
-pkgver=26.08.2
+pkgver=26.08.3
 pkgrel=1
+_minimalrel=1
 pkgdesc='KDE Connect daemon and CLI without KIO, Kirigami, Bluetooth or the GUI apps'
 url='https://github.com/totti786/kdeconnect-minimal'
 arch=(x86_64)
@@ -29,15 +30,17 @@ depends=(dbus
          openssl
          pulseaudio-qt
          qt6-base
+         qt6-wayland
          solid
          wayland)
 makedepends=(extra-cmake-modules
              git
+             kiconthemes
              wayland-protocols)
 optdepends=('sshfs: browse the phone filesystem (sftp plugin)')
 provides=("kdeconnect=$pkgver")
 conflicts=(kdeconnect)
-source=("$pkgname::git+$url.git#tag=v$pkgver-minimal.$pkgrel")
+source=("$pkgname::git+$url.git#tag=v$pkgver-minimal.$_minimalrel")
 sha256sums=('SKIP')
 
 build() {
@@ -46,7 +49,8 @@ build() {
     -DWITH_X11=OFF \
     -DBLUETOOTH_ENABLED=OFF \
     -DINSTALL_UFW_APPLICATION_RULE=OFF
-  cmake --build build
+  # Parallelism is capped on purpose: unbounded jobs can OOM-kill the session on 8 GB machines.
+  cmake --build build --parallel "${KDECONNECT_JOBS:-2}"
 }
 
 package() {
