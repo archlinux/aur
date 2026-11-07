@@ -1,0 +1,22 @@
+pkgbase = syn-quitsmoke-bin
+	pkgdesc = QuitSmoke: quit smoking or vaping tracker — milestones, health recovery, savings
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = syn-quitsmoke
+	conflicts = syn-quitsmoke
+	conflicts = syn-quitsmoke-git
+	noextract = syn-quitsmoke-0.2.0-x86_64.tar.zst
+	noextract = syn-quitsmoke-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = syn-quitsmoke-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-quitsmoke-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = aa447a4fb87ec22d4841e9221fd3eedfb130eeeb0c3ba9cb4a2fd52597f6c9e8
+	source_aarch64 = syn-quitsmoke-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-quitsmoke-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = bda6dedbd8a023314c34a2f228348cdbde66c62dfe747e017da87c5e7de712d0
+
+pkgname = syn-quitsmoke-bin
