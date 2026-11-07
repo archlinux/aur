@@ -3,7 +3,7 @@
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=findent
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="Indent, beautify and relabel Fortran source, generates dependencies"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ url="https://www.ratrabbit.nl/ratrabbit/${pkgname}"
 license=(BSD-3-clause)
 depends=(bash)
 source=(https://www.ratrabbit.nl/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('2816d4290508d9978319adb28f3c3df975164b76566ce7c74269d329726991820907ee243d39e10e2f785e2c9b8dc511c40b19b32fdb17ebe1b9e77ef7eb9f5e')
+sha512sums=('616e9f91c4138134db2c2641c78e32c7e24342d325c93ca95fc69149dccdb5f081d2d38196c77e6042cb14d5f8932c5be2ad800aa4da53bfb686c4123c4f28af')
 
 build() {
   cd ${pkgname}-${pkgver}
