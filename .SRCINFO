@@ -1,0 +1,23 @@
+pkgbase = syn-maps-bin
+	pkgdesc = synshell maps
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	groups = synshell-apps
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = syn-maps
+	conflicts = syn-maps
+	conflicts = syn-maps-git
+	noextract = syn-maps-0.2.0-x86_64.tar.zst
+	noextract = syn-maps-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = syn-maps-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-maps-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = d470296773733bd17890581f943b8e046996a2a617cf40f089ed3489d995e57b
+	source_aarch64 = syn-maps-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-maps-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 7fab2ca64df4d948227d257824ff9ecf8a9df696ef5cf9333d11f47cea3eab89
+
+pkgname = syn-maps-bin
