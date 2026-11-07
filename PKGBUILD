@@ -2,7 +2,7 @@
 
 _pkgname=hyprlogin
 pkgname=hyprlogin-git
-pkgver=0.0.0.r460.8fb5440
+pkgver=0.0.0.r475.21c3add
 pkgrel=1
 pkgdesc='Work-in-progress greetd greeter forked from hyprlock'
 arch=('x86_64')
@@ -21,8 +21,6 @@ depends=(
   'libdrm'
   'mesa'
   'pango'
-  'pam'
-  'sdbus-cpp'
   'wayland'
   'wayland-protocols'
   'libxkbcommon'
