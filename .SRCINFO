@@ -1,0 +1,23 @@
+pkgbase = tinyhand-git
+	pkgdesc = A hand-on-a-stick presentation pointer and drawing overlay for Wayland
+	pkgver = 1.0.2.r39.g28f6d8c
+	pkgrel = 1
+	url = https://github.com/p4block/tinyhand
+	arch = any
+	license = MIT
+	checkdepends = desktop-file-utils
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libcanberra
+	optdepends = pipewire-pulse: tap sound through PipeWire
+	optdepends = pulseaudio: alternative tap sound server
+	provides = tinyhand
+	conflicts = tinyhand
+	source = tinyhand::git+https://github.com/p4block/tinyhand.git#branch=main
+	sha256sums = SKIP
+
+pkgname = tinyhand-git
