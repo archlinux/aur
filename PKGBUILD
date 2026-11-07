@@ -1,19 +1,19 @@
 # Maintainer: adogecheems <adogecheems@outlook.com>
 #
-# AUR source-build package for the 2.3.x series. Read USAGE.md at the
-# repository root before submitting. The source is pinned to the v2.3.2 release tag.
+# AUR source-build package for the 2.4.x series. Read MAINTENANCE.md at the
+# repository root before submitting. The source is pinned to the v2.4.0 release tag.
 # The package is published on AUR as panasonic-posture-manager.
 
 pkgname=panasonic-posture-manager
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Posture management and screen orientation for convertible Linux 2-in-1 laptops'
 arch=('x86_64')
 url='https://github.com/adogecheems/panasonic-posture-manager'
 license=('AGPL-3.0-or-later')
-# Python package (wheel) + GJS/GTK UI + desktop session integration.
+# Python package (wheel) + Python/GTK UI + desktop session integration.
 depends=(
-  'gjs'
+  'python-cairo'
   'gtk4>=4.12'
   'libadwaita>=1.4'
   'python>=3.11'
@@ -76,7 +76,7 @@ package() {
     python3 -m installer --destdir="${pkgdir}" "${wheel}"
   done
 
-  # GJS UI modules, posture illustrations and model profiles: data-only files
+  # Posture illustrations and model profiles: data-only files
   # that intentionally live outside the Python package.
   while IFS= read -r -d '' file; do
     install -Dm644 "${file}" "${datadir}/${file#data/}"
@@ -84,7 +84,7 @@ package() {
 
   # The desktop entry and notifications resolve the application icon by ID
   # from the standard hicolor theme, separately from the data-directory copy
-  # used by the GJS window when running from a source checkout.
+  # used by the Python window when running from a source checkout.
   install -Dm644 data/assets/work.mmoe.panasonic.PostureManager.png \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/work.mmoe.panasonic.PostureManager.png"
 
