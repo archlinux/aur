@@ -1,5 +1,5 @@
 pkgname=emu80-git
-_commit=5324f71
+_commit=a243b8e
 _pkgver=4.0.578
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
