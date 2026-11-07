@@ -2,7 +2,7 @@
 
 _pkgbase=gextant
 pkgname="$_pkgbase-bin"
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Updates GNOME Shell extensions from their repositories'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source_x86_64=("$_pkgbase-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgbase-$pkgver-x86_64.tar.gz")
 noextract=("$_pkgbase-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('30e23616b4def6a250d368ade5b44652d4919158e6e54e708017760b3c9d7f6f')
+sha256sums_x86_64=('2f15199dc4837f896c46aca2f856a5fab01c5e37f17b86bc7f9a995981efdb04')
 
 package() {
 	bsdtar -xf "$_pkgbase-$pkgver-x86_64.tar.gz" -C "$pkgdir" --no-same-owner
