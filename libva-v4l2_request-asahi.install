@@ -1,0 +1,7 @@
+post_upgrade() {
+  if [ "$(vercmp "$2" 2.0)" -lt 0 ]; then
+    echo ":: 2.0 renamed the driver from v4l2_request to asahi."
+    echo "   Update LIBVA_DRIVER_NAME=v4l2_request to LIBVA_DRIVER_NAME=asahi,"
+    echo "   e.g. in /etc/environment."
+  fi
+}

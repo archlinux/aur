@@ -3,9 +3,9 @@
 
 pkgname=libva-v4l2_request-asahi
 _pkgname=libva-v4l2_request
-pkgver=1.3
-pkgrel=2
-pkgdesc='VA-API implementation for V4L2 stateless video decoders (Asahi fork with Apple AVD fixes)'
+pkgver=2.0
+pkgrel=1
+pkgdesc='VA-API driver for V4L2 stateless video decoders on Apple Silicon (asahi-va-driver)'
 arch=(aarch64)
 url=https://github.com/sofus13/libva-v4l2_request
 license=(GPL-3.0-or-later)
@@ -19,10 +19,10 @@ makedepends=(
   linux-api-headers
   meson
 )
-provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
+install="$pkgname.install"
 source=("${_pkgname}::git+https://github.com/sofus13/libva-v4l2_request.git#tag=${pkgver}")
-b2sums=('08def9056d9d97e1cac1f5ee7d4819c14957819e2c31e5d9b70d0acd940d2d4ee384f0c06202326b834bc9b411233d51ca595cbae9039c54605128bd90a250c0')
+b2sums=('20cd1e8ac8821620e70d142971e8ca9a2445e5308d4ff4f844cabb72a7710ba7e6d24975ea14b542b6b5d9b9f6d3e9cdf94c47a90eefb3c73f20d79993c9d9f2')
 
 build() {
   arch-meson "${_pkgname}" build
