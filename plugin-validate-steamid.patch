@@ -103,10 +103,10 @@ index fb22f95..42a11b6 100644
  
  public void InsertUnbanCallback(Database db, DBResultSet results, const char[] error, DataPack dataPack)
 diff --git a/game/addons/sourcemod/translations/sbpp_main.phrases.txt b/game/addons/sourcemod/translations/sbpp_main.phrases.txt
-index 4f2e80f..b8db9b3 100644
+index 4f2e80f..8593822 100644
 --- a/game/addons/sourcemod/translations/sbpp_main.phrases.txt
 +++ b/game/addons/sourcemod/translations/sbpp_main.phrases.txt
-@@ -281,6 +281,12 @@
+@@ -281,6 +281,23 @@
  		"pt"			"\"{1}\" removeu um banimento. (Filtro: {2}.) (Motivo: {3}.)"
  		"chi"			"\"{1}\" 移除了封禁 (过滤: {2}) (理由: {3})."
  	}
@@ -114,7 +114,18 @@ index 4f2e80f..b8db9b3 100644
 +	{
 +		"#format"		"{1:s}"
 +		"en"			"{1} isn't a valid SteamID, expected STEAM_X:Y:Z."
++		"nl"			"{1} is geen geldige SteamID, verwacht wordt STEAM_X:Y:Z."
++		"fr"			"{1} n'est pas un SteamID valide, format attendu : STEAM_X:Y:Z."
++		"pl"			"{1} nie jest prawidłowym SteamID, oczekiwano STEAM_X:Y:Z."
++		"pt"			"{1} não é um SteamID válido, esperado STEAM_X:Y:Z."
 +		"de"			"{1} ist keine gültige SteamID, erwartet wird STEAM_X:Y:Z."
++		"ru"			"{1} не является действительным SteamID, ожидается STEAM_X:Y:Z."
++		"da"			"{1} er ikke et gyldigt SteamID, forventet STEAM_X:Y:Z."
++		"no"			"{1} er ikke en gyldig SteamID, forventet STEAM_X:Y:Z."
++		"hu"			"{1} nem érvényes SteamID, várt formátum: STEAM_X:Y:Z."
++		"chi"			"{1} 不是有效的 SteamID, 应为 STEAM_X:Y:Z."
++		"tr"			"{1} geçerli bir SteamID değil, beklenen biçim: STEAM_X:Y:Z."
++		"es"			"{1} no es un SteamID válido, se esperaba STEAM_X:Y:Z."
 +	}
  	"No Active Ban"
  	{
