@@ -1,7 +1,7 @@
 pkgbase = python-iptables-git
 	pkgdesc = Python bindings for iptables
-	pkgver = 1.0.1.r3.g5bb75df
-	pkgrel = 2
+	pkgver = 1.2.0.r0.g2703efb
+	pkgrel = 1
 	url = https://github.com/ldx/python-iptables
 	arch = any
 	license = Apache
@@ -14,7 +14,6 @@ pkgbase = python-iptables-git
 	depends = iptables
 	provides = python-iptables
 	conflicts = python-iptables
-	replaces = python-iptables
 	options = !emptydirs
 	source = python-iptables-git::git+https://github.com/ldx/python-iptables
 	source = python-iptables.conf
