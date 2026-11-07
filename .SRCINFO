@@ -1,7 +1,7 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
 	pkgver = 0.9.161
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rootapp.com
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -59,6 +59,7 @@ pkgbase = rootapp-bin
 	optdepends = pipewire: PipeWire daemon that feeds the portal ScreenCast capture
 	optdepends = pipewire-pulse: PulseAudio-compatible server for voice and audio devices
 	optdepends = dunst: org.freedesktop.Notifications daemon for sessions without one
+	optdepends = speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)
 	optdepends = vlc-plugin-ffmpeg: video and stream playback through LibVLC
 	optdepends = vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio
 	provides = rootapp

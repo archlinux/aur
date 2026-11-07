@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.161
-pkgrel=1
+pkgrel=2
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -54,7 +54,7 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31).
+# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
@@ -64,6 +64,7 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
+            'speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)'
             'vlc-plugin-ffmpeg: video and stream playback through LibVLC'
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio')
 options=('!strip' '!debug')
