@@ -1,0 +1,20 @@
+pkgbase = crossdock-git
+	pkgdesc = Publish packages as signed apt, pacman, RPM and GooGet repositories (with server and systemd units) (Git version)
+	pkgver = 0.2.0.r0.gde4df13
+	pkgrel = 1
+	url = https://github.com/jm2/crossdock
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = gnupg: sign with a GnuPG keyring or smartcard (signing.gnupg_home)
+	optdepends = firewalld: the bundled crossdock service definition
+	provides = crossdock=0.2.0.r0.gde4df13
+	conflicts = crossdock
+	backup = etc/crossdock/crossdock.yaml
+	source = crossdock-git::git+https://github.com/jm2/crossdock.git
+	sha256sums = SKIP
+
+pkgname = crossdock-git
