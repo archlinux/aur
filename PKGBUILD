@@ -2,7 +2,7 @@
 # pkgver and sha256sums are updated by .github/workflows/aur-release.yml
 # when a release tag (vX.Y.Z) is pushed.
 pkgname=mediasync
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Universal media session bridge: local MPRIS players and Jellyfin sessions behind one local API"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,11 @@ optdepends=(
   'keepassxc: Secret Service backend for Jellyfin tokens'
 )
 conflicts=('mediasync-git')
+# No -debug split package: it would conflict between mediasync and
+# mediasync-git (same file paths) when switching packages.
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arkaizn/mediasync/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('500527a951c02afdc0b4028039289954c2b50b9d7f97d8f31fe6005586be9f1e')
+sha256sums=('8f87f1256f60f9c3549bac86a92f498851fdc4d3404b7493c85b337630089bed')
 
 prepare() {
   cd "$pkgname-$pkgver"
