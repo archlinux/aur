@@ -1,7 +1,7 @@
 pkgbase = mygo-music-bin
 	pkgdesc = A native music player you extend with plugins
 	pkgver = 0.1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/egoist/mygo-music
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = mygo-music-bin
 	depends = webkit2gtk-4.1
 	optdepends = libayatana-appindicator: system tray icon
 	optdepends = libsecret: store account credentials in the system keyring
+	optdepends = gtk-layer-shell: Wayland layer-shell panels (mini player)
 	provides = mygo-music
 	conflicts = mygo-music
 	noextract = mygo-music_0.1.20_amd64.deb
