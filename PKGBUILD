@@ -3,7 +3,7 @@
 pkgname=sunsetr
 pkgver=0.12.6
 pkgrel=1
-pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland"
+pkgdesc="Automatic blue-light filter for Hyprland, Niri, and everything Wayland"
 arch=('x86_64')
 url="https://github.com/psi4j/sunsetr"
 license=('MIT')
