@@ -6,16 +6,16 @@
 # https://github.com/michaellass/AUR
 
 pkgname=dmidiplayer
-pkgver=1.7.5
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='MIDI file player based on Drumstick'
 arch=(x86_64)
 url='https://dmidiplayer.sourceforge.io/'
 license=('GPL-3.0-or-later')
-depends=(hicolor-icon-theme drumstick uchardet qt6-base qt6-5compat)
+depends=(drumstick glibc hicolor-icon-theme kdsingleapplication libgcc libstdc++ uchardet qt6-base qt6-5compat)
 makedepends=(cmake qt6-tools pandoc)
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('553b9373a9006066b720e64a0c23e3084f63d187fde17239423f2ed2bb920c223f5680eeb4746a746993edccfabda4496ec6108a4a76b3fb32c1d46200062e43')
+sha512sums=('a0571a0aa382c4fcc4a16d709848ea28351713230d0f982ccb1154067fa82d5d4d265c5d55073939755687df297da07b6fd65279f7e08b6bd314fa8cc9c9b3aa')
 #options=(debug)
 
 build() {
