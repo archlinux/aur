@@ -1,11 +1,11 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
-license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Apache-2.0' 'CC0-1.0')
+license=('GPL-3.0-only' 'BSD-3-Clause' 'MIT' 'Apache-2.0' 'CC0-1.0' 'OFL-1.1')
 depends=('aspnet-runtime>=10' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
          'fontconfig' 'libx11' 'libice' 'libsm' 'glib2' 'libsndfile' 'alsa-lib')
 makedepends=('dotnet-sdk>=10' 'dotnet-targeting-pack>=10' 'lv2' 'pkgconf' 'python' 'cargo')
@@ -34,7 +34,7 @@ _dfver=0.5.6
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz"
         "DeepFilterNet3_onnx-$_dfver.tar.gz::https://raw.githubusercontent.com/Rikorose/DeepFilterNet/v$_dfver/models/DeepFilterNet3_onnx.tar.gz")
 noextract=("DeepFilterNet3_onnx-$_dfver.tar.gz")
-sha256sums=('457acca6096e5ee38484cbdb2dcc0e30909c32b39c63ab90aa1fb9a7bb2c4157'
+sha256sums=('ad6778c638a1f10d5268cb65d3cda4b2d0dbd8f25d890519c95b9badc46c30ec'
             'c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616')
 
 # DeepFilterNet's noise removal is a Rust library linked into the native
@@ -147,6 +147,7 @@ WRAP
   install -Dm644 native/clap/LICENSE "$pkgdir/usr/share/licenses/$pkgname/clap/LICENSE"
   install -Dm644 native/vst3/LICENSE "$pkgdir/usr/share/licenses/$pkgname/vst3/LICENSE"
   install -Dm644 packaging/starter-sounds/CREDITS "$pkgdir/usr/share/licenses/$pkgname/starter-sounds/CREDITS"
+  install -Dm644 src/OpenXLR.UI/Assets/Fonts/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/fira-sans/OFL.txt"
 
   # Record every packaged path for openxlr doctor. Runs last, after the
   # whole payload is in place.
