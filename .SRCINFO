@@ -1,0 +1,20 @@
+pkgbase = cfr2-bin
+	pkgdesc = Cloudflare R2 CLI: encrypted push/pull, keyhole/OpenBao secrets, trash, checksums, yazi plugin
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/cfr2
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = age
+	optdepends = gnupg: --enc gpg
+	optdepends = fzf: yazi browser
+	optdepends = yazi: file manager plugin
+	provides = cfr2
+	conflicts = cfr2
+	source_x86_64 = cfr2-0.1.0-x86_64.tar.gz::https://github.com/j4y-w4lk3r/cfr2/releases/download/v0.1.0/cfr2_0.1.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7e38d33fd2a537fb08f6fb682786d8f76c356adebd44d611eb99bda00d0aeb1d
+	source_aarch64 = cfr2-0.1.0-aarch64.tar.gz::https://github.com/j4y-w4lk3r/cfr2/releases/download/v0.1.0/cfr2_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = fb5d073516591bb3db926314903eb6e723e5accb5351eb2a322475ae4ceb3ff6
+
+pkgname = cfr2-bin
