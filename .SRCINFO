@@ -1,0 +1,26 @@
+pkgbase = ultimate-bug-scanner
+	pkgdesc = Ultimate Bug Scanner meta-runner for multi-language bug scanning
+	pkgver = 5.5.26
+	pkgrel = 1
+	url = https://github.com/Dicklesworthstone/ultimate_bug_scanner
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = git
+	depends = jq
+	depends = ripgrep
+	depends = python>=3.9
+	depends = findutils
+	depends = sed
+	depends = gawk
+	depends = grep
+	depends = unzip
+	depends = rsync
+	depends = tar
+	optdepends = ast-grep: AST-powered JavaScript/TypeScript rules (auto-downloaded if absent)
+	source = ultimate-bug-scanner-5.5.26.tar.gz::https://github.com/Dicklesworthstone/ultimate_bug_scanner/archive/refs/tags/v5.5.26.tar.gz
+	sha256sums = 94ea7a42f8635dcf195942676e76b2a0c75fa3f3aad3b3a3a30da5ae82f9442e
+
+pkgname = ultimate-bug-scanner
