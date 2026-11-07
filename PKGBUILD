@@ -1,5 +1,5 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
+# Created with assistance from Qwen3.8 Flash Next.
 pkgname=opencadstudio
 pkgver=2026.44.0
 pkgrel=1
