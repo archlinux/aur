@@ -1,0 +1,23 @@
+pkgbase = syncamera-bin
+	pkgdesc = synshell camera: photos, video, night mode
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	groups = synshell-apps
+	license = GPL-3.0-only
+	depends = synshell-core
+	provides = syncamera
+	conflicts = syncamera
+	conflicts = syncamera-git
+	noextract = syncamera-0.2.0-x86_64.tar.zst
+	noextract = syncamera-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = syncamera-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syncamera-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = db7138f21e5b13cc20fdb5dc8fa553c4769242e0195b3d03e10c09943bad1f43
+	source_aarch64 = syncamera-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syncamera-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 59af137217a6adde2cffd80d556ad10e9fec502dfeafb641776c87cef8893f59
+
+pkgname = syncamera-bin
