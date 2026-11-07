@@ -1,10 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
-Categories=Programming,Utilities
+Categories=Development;TextEditor;Utility;
 Name=Notepad++
 Comment=The free source code editor
 Icon=notepad++
 Exec=notepad++
 Terminal=false
 Type=Application
-
+StartupWMClass=notepad++.exe
