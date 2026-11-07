@@ -1,0 +1,21 @@
+pkgbase = unidesk-git
+	pkgdesc = Welcome and academic configuration app for UniOS
+	pkgver = r129.dd9049b
+	pkgrel = 1
+	url = https://github.com/open-source-uom/unidesk
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-pyqt6
+	provides = unidesk
+	conflicts = unidesk
+	source = git+https://github.com/open-source-uom/unidesk.git
+	sha256sums = SKIP
+
+pkgname = unidesk-git
