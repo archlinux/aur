@@ -1,6 +1,7 @@
-*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
-!mindustry-sdl3.install
-!*.patch
+# Build leftovers — excluded by the KSX deploy-aur rsync filter (`--filter=':- .gitignore'`).
+# Must NOT use `*` + negation: rsync's gitignore negation is only approximated and
+# excludes everything here. List only the leftovers to skip.
+*.deb
+*.pkg.tar.*
+src/
+pkg/

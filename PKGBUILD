@@ -6,7 +6,7 @@
 _pkgname="mindustry"
 pkgbase="mindustry-sdl3-bin"
 pkgname="mindustry-sdl3-bin"
-pkgver=160.6
+pkgver=160.7
 pkgrel=1
 pkgdesc="SDL3 backend version of Mindustry."
 url="https://github.com/Anuken/Mindustry"
@@ -18,7 +18,7 @@ depends=(
   'alsa-lib'
 )
 makedepends=(
-  "java-environment=${_java_ver:?}"
+  "jdk${_java_ver}-openjdk"
   'libicns'
 )
 
@@ -32,10 +32,10 @@ source=(
   '0001-mindustry-use-sdl3-backend.patch'
   '0002-arc-sdl3-preserve-wheel-delta.patch'
 )
-sha256sums=('47c06c0f37bd1dba70e388316acf0b090e74188f21c0b417c5e9475036afff49'
-  '578f715c0b6afeb15924e6d1c2afed214a7bf70fae8e5283047fdc3b56533833'
-  '61959e61bd689970d56ca34d67d44a045bb56a1586fcfafa5f143aed889fa013'
-  'bb05ef13b95043139864ee689daa1e3972dd780cde8c23525ba19fb73b0ec215')
+sha256sums=('f86e7af47073a63e338ba53f8aaed1c2431b1e324f6f32c3da2c6e9bb8c03a9e'
+            '483888f05cc8bb2790d14029dd77854ee73a5d1636b773f299df8d7754207a07'
+            '61959e61bd689970d56ca34d67d44a045bb56a1586fcfafa5f143aed889fa013'
+            'bb05ef13b95043139864ee689daa1e3972dd780cde8c23525ba19fb73b0ec215')
 
 prepare() {
   ln -sf "$_pkgsrc_arc" Arc
@@ -94,7 +94,8 @@ END
       "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/$pkgname.png"
   done
 
-  install mindustry-sdl3.install
+  # .install file is a tracked file in the repo root (srcdir/..); makepkg extracts sources into $srcdir
+  install -Dm644 "$srcdir/../mindustry-sdl3.install" "$pkgdir/etc/pacman.d/mindustry-sdl3.install"
 
   install -Dm755 "desktop/build/libs/Mindustry.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 }
