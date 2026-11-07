@@ -1,0 +1,4 @@
+d /var/lib/bas 0750 bas beangle -
+d /var/lib/bas/.ems 0750 bas beangle -
+d /var/log/bas 0750 bas beangle -
+d /var/log/bas/bashub 2775 bas beangle -

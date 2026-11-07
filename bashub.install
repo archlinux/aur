@@ -1,0 +1,32 @@
+post_install() {
+  if ! getent group beangle >/dev/null 2>&1; then
+    groupadd -r beangle 2>/dev/null || :
+  fi
+  if ! getent passwd bas >/dev/null 2>&1; then
+    useradd -r -g beangle -d /var/lib/bas -s /bin/bash \
+      -c "Beangle bas service" bas 2>/dev/null || :
+  fi
+  usermod -g beangle bas 2>/dev/null || :
+
+  install -d -m0750 -o bas -g beangle /var/lib/bas /var/lib/bas/.ems
+  install -d -m0750 -o bas -g beangle /var/log/bas
+  install -d -m2775 -o bas -g beangle /var/log/bas/bashub
+
+  systemctl daemon-reload 2>/dev/null || :
+}
+
+post_upgrade() {
+  post_install
+  if systemctl is-active --quiet bashub.service 2>/dev/null; then
+    systemctl try-restart bashub.service 2>/dev/null || :
+  fi
+}
+
+pre_remove() {
+  systemctl stop bashub.service 2>/dev/null || :
+  systemctl disable bashub.service 2>/dev/null || :
+}
+
+post_remove() {
+  systemctl daemon-reload 2>/dev/null || :
+}

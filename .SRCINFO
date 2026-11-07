@@ -1,0 +1,23 @@
+pkgbase = bashub
+	pkgdesc = Beangle BAS console server
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/beangle/bashub
+	install = bashub.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = dub
+	makedepends = git
+	makedepends = ldc
+	depends = curl
+	depends = gcc-libs
+	depends = postgresql-libs
+	depends = zlib
+	source = git+https://github.com/beangle/bashub.git#tag=v0.0.8
+	source = bashub.sysusers
+	source = bashub.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 5f2b07b290434ed54b959fb0dc38a2b5d240a994184bf1e7753c99c2ce4dcb5c
+	sha256sums = 3520a6ef1a0dd4de7d7ff4a7b586f642847a0601ce0b2d642fe16deb5d3644c3
+
+pkgname = bashub
