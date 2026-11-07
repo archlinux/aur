@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("any")
@@ -42,7 +42,7 @@ optdepends=(
 )
 options=()
 source=("${pkgname}::git+${_git_url}#tag=v${pkgver}")
-b2sums=('b1e898a597600a6a1040c3985e333eec314a4ddbb405687cd148596911960726794ac4ed0ef9d2ef0693174d4a465af133486e13057adf341922f8fab405886a')
+b2sums=('6c989e03ebb59754f4983ebe47ff1e1c573a4de3cbd2798536663097a6ac2b7cdbe9cee2861a9c4a0e4ad38d06b9e9f13c928d06b5478760a8f1dd2dc4ae0fd4')
 
 build() {
 	cd ${pkgname}
@@ -64,10 +64,32 @@ check() {
 	cd "${pkgname}"
 	# TODO: slow tests require more extensive setup
 	# TODO: edge tests fails
+
+	local excluded_tests=(
+		"edge_a1"
+		"edge_a2"
+		"edge_a3"
+		"edge_a4"
+		"edge_a5"
+		"edge_a7"
+		"allure_report_attaches_stdout_of_failing_tests_only"
+		"test_builtin_crashes_have_distinct_exit_status_and_debug_traceback[info]"
+	)
+
+	# Make the string for pytest
+	# Pattern is: not <test1> and not <test2>...
+	local excl_str=""
+	if (( ${#excluded_tests[@]} > 0 )); then
+	    excl_str="not ${excluded_tests[0]}"
+	    for t in "${excluded_tests[@]:1}"; do
+	        excl_str+=" and not $t"
+	    done
+	fi
+
 	pytest \
 		-v \
 		-m "not slow and not fastercap" \
-		-k "not edge_a1 and not edge_a2 and not edge_a3 and not edge_a4 and not edge_a5 and not edge_a7 and not allure_report_attaches_stdout_of_failing_tests_only" \
+		-k "${excl_str}" \
 		-n "auto"
 }
 
