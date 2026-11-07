@@ -1,0 +1,14 @@
+# USB-сеть телефона поднимает systemd-networkd (/usr/lib/systemd/network/80-synlink-usb.network).
+_usb_net_hint() {
+    if ! systemctl is-enabled -q systemd-networkd 2>/dev/null && ! systemctl is-enabled -q NetworkManager 2>/dev/null; then
+        echo ":: USB-сеть телефона (synlink по кабелю): systemctl enable --now systemd-networkd"
+    fi
+}
+
+post_install() {
+    _usb_net_hint
+}
+
+post_upgrade() {
+    _usb_net_hint
+}
