@@ -2,7 +2,7 @@
 # Upstream publishes ready Arch packages (nfpm): /opt/ely-office/ely-tree plus
 # /usr/bin symlink, desktop entry and icon. Repack them verbatim.
 pkgname=ely-tree-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc='ElyTree, part of Ely Office - Git client (prebuilt upstream package)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("LICENSE::$url/raw/v$pkgver/LICENSE")
 sha256sums=('6f90eb4b2f3d6354ac31cdf330a711d9e43d8c95b968dc046f49443db956b2c1')
 source_x86_64=("ely-tree-$pkgver-1-x86_64.pkg.tar.zst::$url/releases/download/v$pkgver/ely-tree-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('4e5cecb91d5f5aae71c5d8658f25a9dd2691d9bcbdff7edb4cd1d5033b3d58c4')
+sha256sums_x86_64=('59cbf3fe953e2ecfc1120ba5466fc685453d91ce22d68e8cf3cf54c86f846a18')
 
 package() {
 	cp -a "$srcdir/opt" "$srcdir/usr" "$pkgdir/"
