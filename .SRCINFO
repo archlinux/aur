@@ -1,0 +1,23 @@
+pkgbase = synshell-ai-bin
+	pkgdesc = synshell: assistant — chats, voice mode, tools (needs the synaptix service)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = synshell-core
+	depends = synaptix
+	provides = synshell-ai
+	conflicts = synshell-ai
+	conflicts = synshell-ai-git
+	noextract = synshell-ai-0.2.0-x86_64.tar.zst
+	noextract = synshell-ai-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = synshell-ai-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synshell-ai-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = c903804c959bf1a408cf3723155a3fdef5d4137985d971657fde4ece4876199c
+	source_aarch64 = synshell-ai-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/synshell-ai-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 223a34b32c5dc230abf90c2a10efdfb874252fe687929927d2dd2f6e78441730
+
+pkgname = synshell-ai-bin
