@@ -72,9 +72,6 @@ package() {
   patchelf --set-rpath '$ORIGIN:$ORIGIN/..' \
     "${pkgdir}/usr/lib/manggo/bin/libsherpa-onnx-c-api.so"
 
-  # Keep the upstream executable name for desktop actions and plugin handling.
-  ln -s Manggo "${pkgdir}/usr/bin/manggo"
-
   install -Dm644 "${pkgdir}/usr/share/doc/Manggo/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${pkgdir}/usr/share/doc/Manggo/USER_AGREEMENT.zh-CN.txt" \
