@@ -2,11 +2,12 @@
 
 pkgname=aries-connect-git
 _pkgname=${pkgname%-git}
-pkgver=v0.3.0.r13.g1ba9e15
+pkgver=v0.4.0.r0.g544aa7f
 pkgrel=1
 pkgdesc="KDE Connect-compatible daemon exposing devices over D-Bus (no KDE/Qt dependencies)"
 arch=('x86_64')
-url="https://github.com/Frikilinux/aries-connect"
+# url="https://github.com/Frikilinux/aries-connect"
+url="https://gitlab.com/zotta/aries-connect"
 license=(GPL-2.0-or-later)
 depends=(
   glibc
