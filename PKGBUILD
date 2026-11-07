@@ -2,7 +2,7 @@
 
 pkgname=bimcraft-bin
 _pkgname=bimcraft
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Open-source building information modeling: plans, sections, 3D, schedules and IFC (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,8 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('22bc55f96df0e8da71d2c4536a1a9208051c4a5844fb2efa1ee7727ecaf6e744')
-sha256sums_aarch64=('d5b5ebd1bfe8aeae4098fab30f4da4df004cec44a4d2f6340f3b934bb3e40616')
+sha256sums_x86_64=('932a7c6c16bc3328b508b723f664760814bb23e03603f05a46da68eeef1e2341')
+sha256sums_aarch64=('a94d598d821b1da3366e6655147d318991a5a542c298da263f1fb97cc704d4c1')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"
