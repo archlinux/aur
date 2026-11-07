@@ -1,0 +1,104 @@
+diff --git a/profiles/input/device.c b/profiles/input/device.c
+index 5b1be2b169..7d30c03733 100644
+--- a/profiles/input/device.c
++++ b/profiles/input/device.c
+@@ -92,6 +92,7 @@ struct input_device {
+ static int idle_timeout = 0;
+ static uhid_state_t uhid_state = UHID_ENABLED;
+ static bool classic_bonded_only = true;
++static bool disable_force_active = true;
+ 
+ void input_set_idle_timeout(int timeout)
+ {
+@@ -122,6 +123,11 @@ bool input_get_classic_bonded_only(void)
+ 	return classic_bonded_only;
+ }
+ 
++void input_set_disable_force_active(bool state)
++{
++	disable_force_active = state;
++}
++
+ static void input_device_enter_reconnect_mode(struct input_device *idev);
+ static int connection_disconnect(struct input_device *idev, uint32_t flags);
+ 
+@@ -1237,6 +1243,23 @@ static void input_device_update_rec(struct input_device *idev)
+ 		device_set_refresh_discovery(idev->device, false);
+ }
+ 
++static void input_device_set_power(GIOChannel *io)
++{
++	struct bt_power pwr = {
++		.force_active = BT_POWER_FORCE_ACTIVE_OFF,
++	};
++	int fd;
++
++	if (!io || !disable_force_active)
++		return;
++
++	fd = g_io_channel_unix_get_fd(io);
++	if (setsockopt(fd, SOL_BLUETOOTH, BT_POWER, &pwr, sizeof(pwr)) < 0)
++		error("setsockopt(BT_POWER) failed: %s (%d)", strerror(errno), errno);
++	else
++		DBG("Disabled force_active on HID socket fd %d", fd);
++}
++
+ static int input_device_connected(struct input_device *idev)
+ {
+ 	int err;
+@@ -1244,6 +1267,9 @@ static int input_device_connected(struct input_device *idev)
+ 	if (idev->intr_io == NULL || idev->ctrl_io == NULL)
+ 		return -ENOTCONN;
+ 
++	input_device_set_power(idev->ctrl_io);
++	input_device_set_power(idev->intr_io);
++
+ 	/* Attempt to update SDP record if it had changed */
+ 	input_device_update_rec(idev);
+ 
+diff --git a/profiles/input/device.h b/profiles/input/device.h
+index 9056695026..b76555bdf7 100644
+--- a/profiles/input/device.h
++++ b/profiles/input/device.h
+@@ -24,6 +24,7 @@ void input_set_idle_timeout(int timeout);
+ void input_set_userspace_hid(char *state);
+ void input_set_classic_bonded_only(bool state);
+ bool input_get_classic_bonded_only(void);
++void input_set_disable_force_active(bool state);
+ 
+ int input_device_register(struct btd_service *service);
+ void input_device_unregister(struct btd_service *service);
+diff --git a/profiles/input/input.conf b/profiles/input/input.conf
+index d555d423e4..3f94cf80d6 100644
+--- a/profiles/input/input.conf
++++ b/profiles/input/input.conf
+@@ -29,3 +29,7 @@
+ # Enables upgrades of security automatically if required.
+ # Defaults to true to maximize device compatibility.
+ #LEAutoSecurity=true
++
++# Disable forcing active mode on HID connections to preserve Sniff Mode / polling rates.
++# Defaults to true
++#DisableForceActive=true
+diff --git a/profiles/input/manager.c b/profiles/input/manager.c
+index 1fd82d82f5..558e6416e7 100644
+--- a/profiles/input/manager.c
++++ b/profiles/input/manager.c
+@@ -116,6 +116,17 @@ static int input_init(void)
+ 		} else
+ 			g_clear_error(&err);
+ 
++		gboolean disable_force_active;
++
++		disable_force_active = g_key_file_get_boolean(config, "General",
++						"DisableForceActive", &err);
++		if (!err) {
++			DBG("input.conf: DisableForceActive=%s",
++					disable_force_active ? "true" : "false");
++			input_set_disable_force_active(disable_force_active);
++		} else
++			g_clear_error(&err);
++
+ 	}
+ 
+ 	if (config)
