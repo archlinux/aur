@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 
 pkgname=spirula-studio
-pkgver=2026.10.16
+pkgver=2026.10.30
 pkgrel=1
 pkgdesc="End-to-end 3D Gaussian Splatting pipeline (Vulkan backend)"
 arch=('x86_64' 'aarch64')
@@ -28,6 +28,8 @@ optdepends=(
   'zenity: native GTK file picker dialog'
 )
 
+options=(!lto)
+
 _slangver=2026.12.0.1
 _imguiver=1.92.8
 
@@ -46,7 +48,7 @@ source_aarch64=(
 noextract=(
   "slang-${_slangver}-linux-${CARCH}.tar.gz"
 )
-sha256sums=('22be781f65d9989b34a4897bf9b94ba6b295f845a3fe4961d949ba7aa47cb62b'
+sha256sums=('63445da8208d82422d3c9e3b2fba6764f1fe9af645d971e7e9115358f783aa0c'
             'fecb33d33930e12ff53a34064e9d3a06c8f7c3e04408f14cd36c80e3faac863b'
             'cf015b623bca66d6a55711bbf428b155d1cdd6c0656ef7c7d587ddf29f474de7'
             '9637abbeb17aa1fff2ba542ad17be4bd5d91b814008b620b2bedb950c2a7e0ca')
@@ -77,7 +79,7 @@ build() {
     -DSS_SLANGC="${srcdir}/slang/bin/slangc" \
     -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
     -DFETCHCONTENT_SOURCE_DIR_IMGUI="${srcdir}/imgui-${_imguiver}"
-  cmake --build build
+  cmake --build build --target spirula
 }
 
 package() {
