@@ -3,8 +3,8 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=26.10.18a
-pkgrel=2
+pkgver=26.11.06a
+pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='https://github.com/Hizoka76/MKV-Extractor-Qt6'
@@ -22,8 +22,8 @@ optdepends=('ffmpeg: for DTS conversion'
             'bdsup2subpp: SUP subtitle conversion')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("${pkgname}-${pkgver}::git+https://github.com/Hizoka76/MKV-Extractor-Qt6.git#tag=v26.10.18")
-sha256sums=('a558f84b651b47275f3647d7c1a8ae8cac3b0c84e671daf9d487fb65d03144dc')
+source=("${pkgname}-${pkgver}::git+https://github.com/Hizoka76/MKV-Extractor-Qt6.git#tag=v26.11.06")
+sha256sums=('5d04b0669df8f50ee3adbefb46c2bb3ee70d62a1247d2c5b29c199aa04776348')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
