@@ -17,6 +17,17 @@ major/minor/micro version numbers like `05` (it'd have to be just `5`).
 ### Fixed
 ### Security
 
+## [2026.11.7]
+
+### Added
+* Added support for Python 3.15.
+
+### Changed
+* Updated the ISO 639 data from SIL to the latest 2026-10-15 release.
+
+### Removed
+* Dropped support for Python 3.10.
+
 ## [2026.7.23]
 
 ### Changed

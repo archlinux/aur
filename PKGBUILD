@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-python-iso639
-pkgver=2026.7.23
+pkgver=2026.11.7
 pkgrel=1
 pkgdesc="Look-up utilities for ISO 639 language codes and names"
 license=(Apache-2.0)
@@ -11,8 +11,8 @@ depends=(python)
 checkdepends=(python-pytest)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ffb90f6c0fb0a08b428b6f6189e3516a33c238ca9a293e3a45341d269cebf6c0')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3fd112bcac61e125d0c9ac00235f6dfcc76cf278a83793a64595453ae11f7b29')
 
 build() {
     cd "iso639-$pkgver"
