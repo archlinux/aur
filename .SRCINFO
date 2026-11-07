@@ -1,0 +1,26 @@
+pkgbase = project-reclaimer-bin
+	pkgdesc = A rewrite of Bungie's Halo Games, including CE, 2, 3, and ODST.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/ProjectReclaimer/project-reclaimer-releases
+	arch = x86_64
+	license = none
+	depends = glibc>=2.36
+	depends = alsa-lib
+	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	optdepends = vulkan-radeon: Vulkan support for AMD GPUs
+	optdepends = vulkan-intel: Vulkan support for Intel GPUs
+	optdepends = nvidia-utils: Vulkan support for NVIDIA GPUs
+	optdepends = pipewire-alsa: Sound through PipeWire
+	optdepends = pulseaudio-alsa: Sound through PulseAudio
+	optdepends = wayland: Native Wayland window support
+	optdepends = libxkbcommon: Keyboard input for native Wayland
+	optdepends = libdecor: Client-side window decorations on Wayland
+	optdepends = xdg-utils: Opening invite links
+	provides = project-reclaimer
+	conflicts = project-reclaimer
+	source = https://github.com/ProjectReclaimer/project-reclaimer-releases/releases/download/v0.10.0/project-reclaimer-client-v0.10.0-linux-x86_64.tar.gz
+	sha256sums = d50c34a29a4d9bb7a6400886f4b353a485bff7348a35e5909e349cc8ea7654e7
+
+pkgname = project-reclaimer-bin
