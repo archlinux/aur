@@ -1,0 +1,17 @@
+pkgbase = switchworks
+	pkgdesc = Control plane for coding agents across your machines (swk, tray icon, systemd units)
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/jm2/switchworks
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = OFL-1.1
+	makedepends = go
+	depends = glibc
+	depends = hicolor-icon-theme
+	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
+	source = switchworks-0.1.7.tar.gz::https://github.com/jm2/switchworks/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = ef1ae092087341ee838d88904c5db0b000aa2d2668d380ddd7d6c30011ab1962
+
+pkgname = switchworks
