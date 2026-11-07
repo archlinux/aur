@@ -1,0 +1,21 @@
+pkgbase = crossdock-bin
+	pkgdesc = Publish packages as signed apt, pacman, RPM and GooGet repositories (with server and systemd units) (Pre-compiled Binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/jm2/crossdock
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	optdepends = gnupg: sign with a GnuPG keyring or smartcard (signing.gnupg_home)
+	optdepends = firewalld: the bundled crossdock service definition
+	provides = crossdock=0.2.0
+	conflicts = crossdock
+	options = !strip
+	options = !debug
+	backup = etc/crossdock/crossdock.yaml
+	source_x86_64 = crossdock-0.2.0-amd64.deb::https://github.com/jm2/crossdock/releases/download/v0.2.0/crossdock-amd64.deb
+	sha256sums_x86_64 = de1aa0da67337017ab89ef8846be3a85eab96b7a180a9f02cf48f41306c119a0
+	source_aarch64 = crossdock-0.2.0-arm64.deb::https://github.com/jm2/crossdock/releases/download/v0.2.0/crossdock-arm64.deb
+	sha256sums_aarch64 = 74892b0b340a0fd0624862bd54ce53d4e096dc356dbfd2bd4f47c440e50cdff7
+
+pkgname = crossdock-bin

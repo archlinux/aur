@@ -1,0 +1,7 @@
+/src/
+/pkg/
+*.pkg.tar.*
+*.deb
+*.tar.gz
+*.log
+/crossdock-bin/
