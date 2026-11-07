@@ -1,6 +1,6 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="MVSEP GUI - Music separation desktop application (prebuilt binary)"
 arch=('x86_64')
@@ -17,8 +17,8 @@ install=
 changelog=
 source=("MVSEP_${pkgver}_amd64.AppImage::${url}/releases/download/v${pkgver}/MVSEP_${pkgver}_amd64.AppImage"
         "mvsep-rs-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7b65d530c84dcc65302bece7b8e27b242dad67ded49670b49c5f41d015f82a29'
-            'd7430664c1de1940399fae14afc57d9f88cd5e0bbe96eb9f5598850682bc8c63')
+sha256sums=('0e484150976c49c968be9c14aae492156f4d0b42d791732cd82f271d9e13f314'
+            '7db925cbfe6b82a7bba72da93811e5dc3f12855cef857dffb6f6b52ac273a0ec')
 
 package() {
   cd "${srcdir}"
