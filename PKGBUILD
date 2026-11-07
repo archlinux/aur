@@ -65,12 +65,9 @@ build() {
     cargo build --frozen --release
 }
 
-check() {
-    cd pila
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --frozen --release
-}
+# No check(): the tests start pila headless, which needs EGL and Xwayland and
+# can fail in a VM, container or clean chroot where pila itself would run;
+# CI runs them on every push to main, which is what this package builds.
 
 package() {
     cd pila
