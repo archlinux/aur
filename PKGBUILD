@@ -46,7 +46,13 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}" || exit
-  cmake -G Ninja -B build -DCMAKE_INSTALL_PREFIX=/usr
+  # Local dictation on CPU: fetch the pinned whisper.cpp/parakeet instead of
+  # picking up whatever system copy happens to be installed.
+  cmake -G Ninja -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLOCAL_AI=ON \
+    -DUSE_SYSTEM_INFERENCE_ENGINES=OFF \
+    -DGGML_VULKAN=OFF
   cmake --build build
 }
 
