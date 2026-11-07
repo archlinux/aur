@@ -1,0 +1,27 @@
+pkgbase = pixpin-linux-git
+	pkgdesc = Smart Screenshot, Pin and Offline OCR tool for Linux (PixPin port, niri/wlroots variant)
+	pkgver = r20.eb501e5
+	pkgrel = 1
+	url = https://github.com/go1em/pixpin-linux-niri
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = qt6-base
+	depends = qt6-svg
+	depends = tesseract
+	depends = leptonica
+	optdepends = grim: Wayland screenshot fallback when no portal Screenshot backend exists (niri/sway/Hyprland)
+	optdepends = xdg-desktop-portal-gnome: Wayland screenshot via XDG Desktop Portal
+	optdepends = python: RapidOCR advanced scene text recognition
+	optdepends = python-pip: Install rapidocr_onnxruntime
+	provides = pixpin
+	conflicts = pixpin
+	conflicts = pixpin-linux
+	conflicts = pixpin-linux-bin
+	source = pixpin-linux-git::git+https://github.com/go1em/pixpin-linux-niri.git
+	sha256sums = SKIP
+
+pkgname = pixpin-linux-git
