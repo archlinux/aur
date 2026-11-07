@@ -1,0 +1,19 @@
+pkgbase = cosmic-theme-bundles-git
+	pkgdesc = Built-in theme bundles for the COSMIC desktop environment
+	pkgver = r4.792870f
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-theme-bundles
+	arch = x86_64
+	license = GPL-3.0-only AND CC-BY-NC-SA-4.0
+	makedepends = git
+	makedepends = just
+	depends = cosmic-icons-git
+	depends = noto-fonts
+	depends = ttf-opensans
+	provides = cosmic-theme-bundles
+	conflicts = cosmic-theme-bundles
+	options = !strip
+	source = git+https://github.com/pop-os/cosmic-theme-bundles.git
+	sha256sums = SKIP
+
+pkgname = cosmic-theme-bundles-git
