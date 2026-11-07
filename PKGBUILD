@@ -1,6 +1,6 @@
 # Maintainer: chenpi11 <chenpi11@users.noreply.github.com>
 pkgname=sub-store-git
-pkgver=2.39.9.r0.g0000000
+pkgver=2.42.6.r0.g1f0318bc
 pkgrel=1
 pkgdesc='Advanced Subscription Manager for QX, Loon, Surge, Stash, Egern and Shadowrocket (git)'
 arch=('any')
