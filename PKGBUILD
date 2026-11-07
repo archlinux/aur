@@ -13,7 +13,7 @@ conflicts=('fcitx5-lilypad-git' 'fcitx5-lilypad-bin')
 install=fcitx5-lilypad.install
 source=("https://github.com/chiconcota/fcitx5-lilypad/archive/refs/tags/v${pkgver}.tar.gz"
         "fcitx5-lilypad.install")
-sha256sums=('6a518ef742584c89c718459e2ca6a57906f76618c0897b71d5d4daa9bbf4f097'
+sha256sums=('4c0cfbece1516fe9a22251c10aba5fb26d31ed88b70ff24b1c5fb4f6408bf492'
             'a759df030c122306410f01750b82af66994d32e44a3e2d70352f0c65f411bf17')
 
 build() {
