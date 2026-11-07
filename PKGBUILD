@@ -9,17 +9,18 @@
 pkgname=perl-pdl
 _dist=PDL
 pkgver=2.106
-pkgrel=2
+pkgrel=3
 pkgdesc='The Perl Data Language'
-license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
-url="https://metacpan.org/release/$_dist"
-source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
+url="https://metacpan.org/dist/$_dist"
+_author=ETJ
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz"
         perldl.conf)
 sha256sums=('f500e740d327e221985ac35f38f5e1e42bf2e3a690c0ed927ac9ed17d9d8241b'
             'SKIP')
 
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(
   perl glibc
   perl-file-which
@@ -28,40 +29,6 @@ depends=(
   sharutils # replaces Convert::UU
   #--- PDL::IO::FastRaw, PDL::IO::FlexRaw
   perl-file-map
-
-  # NOTE: the following dependencies are optional, you may comment any
-  # section - BEFORE RUNNING MAKEPKG - that you'd like to do without.
-  # They must be included here as they affect which modules are built.
-  # The related modules will not be very useful without these dependencies.
-  #
-  # See https://metacpan.org/release/ETJ/PDL-2.095/source/DEPENDENCIES
-  # for more information
-
-  #-- Uncategorised
-  perl-term-readkey
-
-  #--- Inline::Pdlpp
-  perl-inline
-  perl-inline-c
-
-  #--- pdl2, perldl
-  # perl-devel-repl # pdl2 shell alternative backend
-  perl-term-readline-gnu # XS performance for perldl
-  perl-sys-sigaction
-
-  #--- PDL::Graphics::PGPLOT
-  pgplot
-  perl-pgplot
-
-  #--- PDL::IO::FITS
-  # WARN: a dependency does not build with gcc v15-16 (2026-06-07)
-  # https://github.com/Starlink/perl-Starlink-AST/issues/2
-  # https://github.com/asb-capfan/TkZinc/issues/26
-  perl-astro-fits-header
-
-  #--- PDL::IO::Pic
-  netpbm
-  ffmpeg
 )
 makedepends=(
   perl-devel-checklib
@@ -72,20 +39,35 @@ checkdepends=(
   perl-test-exception
   perl-test-warn
 )
+optdepends=(
+  perl-term-readkey
+  'perl-inline: Inline::Pdlpp'
+  'perl-inline-c: Inline::Pdlpp'
+  'perl-devel-repl: pdl2'
+  'perl-data-dump-streamer: pdl2 with Devel::REPL'
+  'perl-sys-sigaction: pdl2 with Devel::REPL'
+  'perl-term-readline-gnu: pdl2, perldl'
+
+  # WARN: a transitive dependency does not build with gcc v15-16 (2026-11-07)
+  # https://github.com/Starlink/perl-Starlink-AST/issues/2
+  'perl-astro-fits-header: PDL::IO::FITS'
+
+  'netpbm: PDL::IO::Pic'
+  'ffmpeg: PDL::IO::Pic'
+)
 options=('!emptydirs')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  /usr/bin/perl Makefile.PL PDLCONF="$srcdir/perldl.conf"
+  /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1 PDLCONF="$srcdir/perldl.conf"
   make
 }
 
 check() {
   cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make test
 }
 
@@ -94,6 +76,6 @@ package() {
   mkdir --parents "$pkgdir/usr/lib/perl5/$(perl -e '$^V =~ /v(\d+\.\d+)\.\d+/; print $1')/vendor_perl/$_dist"
 
   cd "$srcdir/$_dist-$pkgver"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
