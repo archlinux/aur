@@ -6,7 +6,7 @@
 # (via scripts/update-pkg.sh) -- pkgver and the sha256sums are rewritten by it.
 
 pkgname=botmux-bin
-pkgver=3.57.2
+pkgver=3.58.0
 pkgrel=1
 pkgdesc='Bridge IM chats (Feishu/Lark) to AI coding CLIs (Claude Code, Codex, ...) running in tmux'
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/deepcoldy/botmux/v
 source_x86_64=("botmux-${pkgver}-x86_64::https://github.com/deepcoldy/botmux/releases/download/v${pkgver}/botmux-linux-x64")
 source_aarch64=("botmux-${pkgver}-aarch64::https://github.com/deepcoldy/botmux/releases/download/v${pkgver}/botmux-linux-arm64")
 sha256sums=('7ea5cdd2b6c40102cd99b1bc4b1ca556288b384dd2dffd3f627b323f9baf2be4')
-sha256sums_x86_64=('876c0452c0844ccc7720f2c95d4c3e1effa0252a9b55fcd344cb9645df48853e')
-sha256sums_aarch64=('60339a310e6efb17320c45237938b2403d0607b987bdd768e6dd123a317e4ff2')
+sha256sums_x86_64=('997fb0c78e398a9dc8b83f65988fffa200bd1e6d5d3da2af62aaa9365ebfa81a')
+sha256sums_aarch64=('6b5c6b622533b3118466a51b794bc18943a9b19569cc7935b91e561d1145ca0c')
 
 package() {
   install -Dm755 "${srcdir}/botmux-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/botmux"
