@@ -4,7 +4,7 @@
 _gitname="kdtree"
 _pkgname="python-$_gitname"
 pkgname="$_pkgname"
-pkgver=0.17
+pkgver=1.0
 pkgrel=1
 pkgdesc='Construct, modify and search k-d trees'
 url='https://github.com/stefankoegl/kdtree'
@@ -20,11 +20,14 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
+checkdepends=(
+  'python-hypothesis'
+)
 
 _pkgsrc="$_gitname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('4a4c2ceda47f082cce52e05fea2692a7abfe3a91416cf24c548398fe7b4eed95')
+sha256sums=('c1196e726b256f7e0085e4876e14d5034fbec0be1bc200b8e75f2021b37d6641')
 
 build() {
   cd "$_pkgsrc"

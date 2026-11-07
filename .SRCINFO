@@ -1,16 +1,17 @@
 pkgbase = python-kdtree
 	pkgdesc = Construct, modify and search k-d trees
-	pkgver = 0.17
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/stefankoegl/kdtree
 	arch = any
 	license = ISC
+	checkdepends = python-hypothesis
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = kdtree-0.17.tar.gz::https://github.com/stefankoegl/kdtree/archive/v0.17.tar.gz
-	sha256sums = 4a4c2ceda47f082cce52e05fea2692a7abfe3a91416cf24c548398fe7b4eed95
+	source = kdtree-1.0.tar.gz::https://github.com/stefankoegl/kdtree/archive/v1.0.tar.gz
+	sha256sums = c1196e726b256f7e0085e4876e14d5034fbec0be1bc200b8e75f2021b37d6641
 
 pkgname = python-kdtree
