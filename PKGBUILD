@@ -1,7 +1,7 @@
 # Maintainer: Klaus Voelker <kavaunix@proton.me>
 pkgname=atrium
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland multiseat display manager"
 arch=('x86_64')
 url="https://github.com/kavau/atrium"
@@ -36,7 +36,7 @@ source=(
     "atrium.install"
 )
 sha256sums=('b854423bb46142ccda6f419aab6530eb2b1e48e074b097f9f8eab40ae205765d'
-            'a21c5a87f112a673c3338ade5732be4cde908c9c7ef7a851d52c517abaf8faf1')
+            '6e64c58f073ff4de69f4d147e850312eeb396ff18028d2327ccdd06d8a02e3a2')
 
 build() {
     cd "$pkgname-$pkgver"

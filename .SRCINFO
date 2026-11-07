@@ -1,7 +1,7 @@
 pkgbase = atrium
 	pkgdesc = Wayland multiseat display manager
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kavau/atrium
 	install = atrium.install
 	arch = x86_64
@@ -18,6 +18,6 @@ pkgbase = atrium
 	source = atrium-0.4.0.tar.gz::https://github.com/kavau/atrium/archive/refs/tags/v0.4.0.tar.gz
 	source = atrium.install
 	sha256sums = b854423bb46142ccda6f419aab6530eb2b1e48e074b097f9f8eab40ae205765d
-	sha256sums = a21c5a87f112a673c3338ade5732be4cde908c9c7ef7a851d52c517abaf8faf1
+	sha256sums = 6e64c58f073ff4de69f4d147e850312eeb396ff18028d2327ccdd06d8a02e3a2
 
 pkgname = atrium
