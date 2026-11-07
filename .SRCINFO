@@ -1,6 +1,6 @@
 pkgbase = maki
 	pkgdesc = An efficient AI coding agent extendable by neovim like Lua plugins
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/tontinton/maki
 	arch = x86_64
@@ -12,11 +12,9 @@ pkgbase = maki
 	depends = zlib
 	optdepends = rtk: for reduced token consumption
 	conflicts = maki-bin
-	source = maki-v0.7.0.tar.gz::https://github.com/tontinton/maki/archive/refs/tags/v0.7.0.tar.gz
+	source = maki-v0.7.1.tar.gz::https://github.com/tontinton/maki/archive/refs/tags/v0.7.1.tar.gz
 	source = maki-pr1287.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1287.patch
-	source = maki-pr1444.patch::https://patch-diff.githubusercontent.com/raw/tontinton/maki/pull/1444.patch
-	sha256sums = d05cdacd78963fb490aa4ac7c0ed0494177176577d191460177ec6ee0d08eea3
-	sha256sums = 3de8aeb4c5f2c6ff64cccd9adc5f63c558fb731f5aebf3f07af20a6e6ba47f18
-	sha256sums = 4f0b2d9ae430d4fb174a073ac8347fe513413b6790d60fd771b4c260fbcb5214
+	sha256sums = f2bde26015dccddd8c5a38424959248be16fd0a5ace0944724808f5df18fad6e
+	sha256sums = 6a0c9fb27c5decd7e04e1d16d05a6faaab4446ba422899cab0aecfbcdd859f1e
 
 pkgname = maki
