@@ -1,8 +1,10 @@
 # TEMPLATE ONLY: approved release source and checksum are required for each release.
 # Source/checksum approval is required before even metadata generation proceeds.
 pkgname=pivra
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
+# Prevent makepkg from generating a separate pivra-debug package.
+options=('!debug')
 pkgdesc='Native GNOME photo, animation and video viewer'
 arch=('x86_64')
 url='https://github.com/onbeskarakterli/Pivra'
@@ -11,7 +13,11 @@ license=('GPL-3.0-only')
 # Remaining provider ownership is still open: see README.md.
 depends=('gtk4>=4.16' 'libadwaita>=1.2' 'glib2' 'gdk-pixbuf2'
          'gnome-desktop-4' 'glycin' 'bubblewrap' 'libseccomp' 'lcms2'
-         'fontconfig' 'cairo' 'graphene' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
+         'fontconfig' 'cairo' 'graphene' 'glibc' 'gcc-libs' 'hicolor-icon-theme'
+         # Current Arch: -base-libs owns GL APIs AND libgstopengl.so.
+         'gstreamer>=1.24' 'gst-plugins-base-libs>=1.24'
+         # Retain existing stock codec/audio coverage; not the OpenGL owner.
+         'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad-libs' 'gst-libav')
 makedepends=('cargo' 'pkgconf' 'python>=3.11')
 checkdepends=('desktop-file-utils')
 _target='x86_64-unknown-linux-gnu'
@@ -69,6 +75,10 @@ build() {
   pkg-config --atleast-version=4.16 gtk4 || return 1
   pkg-config --atleast-version=1.2 libadwaita-1 || return 1
   pkg-config --exists gnome-desktop-4 gio-2.0 gobject-2.0 gdk-pixbuf-2.0 lcms2 libseccomp || return 1
+  pkg-config --atleast-version=1.24 gstreamer-gl-1.0 || return 1
+  pkg-config --exists gstreamer-video-1.0 gstreamer-allocators-1.0 gstreamer-pbutils-1.0 || return 1
+  bash packaging/linux/video-runtime-check.sh || return 1
+  bash packaging/arch/verify-video-dependencies.sh || return 1
   # Do not silently use a static LCMS fallback or an SDK override.
   if [[ -n ${LCMS2_STATIC+x} || -n ${LCMS2_LIB_DIR+x} ]]; then
     printf '%s\n' 'BLOCKED: LCMS2 overrides must not change the shared-library contract.' >&2
@@ -95,6 +105,7 @@ import sys
 if b'/out/pivra-thumbnail-factory' in pathlib.Path(sys.argv[1]).read_bytes():
     sys.exit('FAIL: viewer embeds a Cargo OUT_DIR thumbnail-helper path')
 PY
+  python packaging/linux/verify-video-binary.py "$CARGO_TARGET_DIR/$_target/release/pivra" || return 1
   test -x "$srcdir/build/pivra-thumbnail-factory" || return 1
   readelf -d "$CARGO_TARGET_DIR/$_target/release/pivra" > "$srcdir/build/pivra.dynamic" || return 1
   grep -F 'liblcms2.so.2' "$srcdir/build/pivra.dynamic" >/dev/null || return 1
@@ -142,8 +153,15 @@ package() {
     "$pkgdir/usr/share/doc/pivra/corresponding-source/release-source.conf" || return 1
   install -Dm644 "$srcdir/collect-licenses.py" \
     "$pkgdir/usr/share/doc/pivra/corresponding-source/collect-licenses.py" || return 1
+  install -d "$pkgdir/usr/share/licenses/pivra/video-adapter" \
+    "$pkgdir/usr/share/doc/pivra/corresponding-source/video-adapter" || return 1
+  install -m644 native/video/COPYING.LGPL-* "$pkgdir/usr/share/licenses/pivra/video-adapter/" || return 1
+  cp -r --no-preserve=ownership native/video/. \
+    "$pkgdir/usr/share/doc/pivra/corresponding-source/video-adapter/" || return 1
+  install -Dm644 docs/diagnostics/VIDEO_ADAPTER_REBUILD.md \
+    "$pkgdir/usr/share/doc/pivra/corresponding-source/VIDEO_ADAPTER_REBUILD.md" || return 1
   local doc
-  for doc in PIVRA_V0.2.4_RELEASE_NOTES.md; do
+  for doc in PIVRA_V0.2.5_RELEASE_NOTES.md PIVRA_V0.2.5_RC_VALIDATION.md; do
     install -Dm644 "docs/releases/$doc" "$pkgdir/usr/share/doc/pivra/$doc" || return 1
   done
 }
