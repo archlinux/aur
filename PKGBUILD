@@ -20,7 +20,7 @@ url=${_ghurl}
 license=('GPL-3.0-or-later')
 
 provides=("${_appname}")
-conflicts=("${pkgname%-bin}")
+conflicts=("${pkgname}-bin")
 
 makedepends=('cargo' 'git')
 depends=('glibc' 'libgcc' 'glib2' 'gtk4' 'vte4' 'libadwaita' 'gtksourceview5' 'poppler-glib' 'cairo' 'graphene' 'pango' 'libarchive' 'xz' 'hicolor-icon-theme')
