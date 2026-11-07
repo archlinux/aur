@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.108.1
+pkgver=1.108.2
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('x86_64' 'aarch64')
@@ -144,11 +144,12 @@ optdepends=('gunicorn: proxy'
 provides=("python-${pkgname}")
 options=(!lto !strip)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5347a8185f04d82f5d672d4335c951eabcc115f7c9e68c9ab0661f537c95e661')
+sha256sums=('7accaabc78022cb57ad1754890882546c92f62af277c09a18b065b8d7a2bd13e')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  sed -i 's/maturin==[0-9.]*/maturin/g' pyproject.toml
+  # Use the maturin version shipped by Arch
+  sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
 }
 
 build() {
