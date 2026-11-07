@@ -3,15 +3,15 @@
 
 pkgname=perl-pgplot
 _dist=PGPLOT
-pkgver=2.36
-pkgrel=2
+pkgver=2.37
+pkgrel=1
 pkgdesc='PGPLOT module for Perl'
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 
 url="https://metacpan.org/dist/$_dist"
 _author=ETJ
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('cccf53cd752ce01cd60a58475b33c2e2589b291e6911e300ab4614fd05644c98')
+sha256sums=('93e81cd313d1b98abe071374d7c297d850344689c171b6f47fd0fd1424ac142f')
 
 arch=(x86_64)
 depends=(
@@ -23,6 +23,9 @@ depends=(
 makedepends=(
   perl-devel-checklib
   perl-extutils-f77
+)
+optdepends=(
+  perl-pdl
 )
 options=('!emptydirs')
 
