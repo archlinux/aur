@@ -1,40 +1,47 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 pkgname=opencadstudio
-pkgver=2026.43.0
+pkgver=2026.44.0
 pkgrel=1
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
 arch=('x86_64')
 url="https://github.com/HakanSeven12/OpenCADStudio"
-license=('GPL-3.0')
-depends=()
+license=('GPL-3.0-only')
+depends=('glibc' 'gcc-libs')
 makedepends=(
   'rust'
   'cargo'
 )
 options=(!debug !lto)
-# The source tarball extracts to a directory named OpenCADStudio-2026.43
-source=("$pkgname-$pkgver.tar.gz::https://github.com/HakanSeven12/OpenCADStudio/archive/refs/tags/v2026.43.tar.gz")
-sha256sums=('54b7969f65ada43654ba850271a6dcc441c6283a20bd27e3fda20578900a84d7')
+# The tag drops the trailing .0: pkgver 2026.44.0 -> tag v2026.44 -> extracts to OpenCADStudio-2026.44
+source=("$pkgname-$pkgver.tar.gz::https://github.com/HakanSeven12/OpenCADStudio/archive/refs/tags/v${pkgver%.*}.tar.gz")
+sha256sums=('555d051a7e9e89fa83e5465f2f0c3ec5e978c43e80a9a22e93f0ea31a8397479')
 
-# Detected from tarball extraction: OpenCADStudio-2026.43
-_pkgdir="OpenCADStudio-2026.43"
+_pkgdir="OpenCADStudio-${pkgver%.*}"
 
 prepare() {
   cd "$_pkgdir"
-  # The iced crate uses a git dependency that may need to be available locally.
-  # If cargo fails to fetch iced, ensure it's cached or update the revision.
+  # Since v2026.44 the Cargo.toml still points cargo at the moved acadrust
+  # dependency: HakanSeven12/acadrust returns 404, the same repo (with the
+  # locked rev 24b037a) now lives under hakanaktt/acadrust. Redirect via git
+  # env config (makepkg runs with HOME=/dev/null, so no --global writes) and
+  # force cargo to shell out to git, which honours GIT_CONFIG_*. The locked
+  # checksums and revision stay untouched.
+  export GIT_CONFIG_COUNT=1
+  export GIT_CONFIG_KEY_0="url.https://github.com/hakanaktt/acadrust.insteadOf"
+  export GIT_CONFIG_VALUE_0="https://github.com/HakanSeven12/acadrust.git"
+  export CARGO_NET_GIT_FETCH_WITH_CLI=true
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$_pkgdir"
-  cargo build --release 2>&1 | tail -20
+  cargo build --release --locked
 }
 
 check() {
   cd "$_pkgdir"
-  cargo test --release 2>/dev/null || true
+  cargo test --release --locked 2>/dev/null || true
 }
 
 package() {
