@@ -1,0 +1,27 @@
+pkgbase = playvortex-appimage
+	pkgdesc = Play and create games on Vortex (playvortex.io; AppImage, self-updating)
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://playvortex.io
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = alsa-lib
+	depends = fuse3
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = pacman
+	depends = vulkan-icd-loader
+	optdepends = wayland: native Wayland support
+	provides = playvortex
+	conflicts = playvortex
+	conflicts = playvortex-bin
+	noextract = playvortex-appimage-0.9.6.AppImage
+	options = !strip
+	options = !debug
+	source = playvortex-appimage-0.9.6.AppImage::https://cdn.playvortex.io/releases/client/0.9.6/Vortex-linux
+	source = playvortex.sh
+	sha256sums = 707cdb8f1e6f548bc8612c0693094cc748c9ac8f74f18caad03ac3b4a80f8475
+	sha256sums = ef2c6c9b7534fec3e42475533476470a9024ea62ca5d12a9de096e6c3bc6c92e
+
+pkgname = playvortex-appimage
