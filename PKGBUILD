@@ -2,7 +2,7 @@
 # Contributor: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="osslsigncode"
-pkgver="2.14"
+pkgver="2.15"
 pkgrel=2
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'perl' 'python')
 checkdepends=('libfaketime')
 source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz"
         "support-for--python-cryptography-43.patch")
-sha512sums=('8a7b8118a6f62dee392079964b1aa8d737a881bf8c3e72d5a081980b3084ee683b9e05654db73bf0ce1aec440502f31ed3b2870bb72dc960b1885cceed96462e'
+sha512sums=('fda1f2c7671872a9931baef90ff05f45b2009aa4b76136bfe299838c0a361f57ed8d7f5e26f5137c89d63bee32dfc177ffe9b7cd345e344fba18f071715276a2'
             '987026a909418027081615a34cadff2aa93a2bc4b9c07dd695c4965853f3c01072c1fca6b1d4ef6f053d2e104df51562d63289427d8bdec3466e310ec2a43693')
 
 prepare() {
