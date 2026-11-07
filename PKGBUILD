@@ -1,7 +1,7 @@
 # Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
 _name='netaudio'
 pkgname='netaudio'
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Cross-platform control, automation, and monitoring for Dante network audio devices"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel'
 options=('!lto')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "netaudio-${pkgver}.service::https://raw.githubusercontent.com/chris-ritsen/network-audio-controller/v${pkgver}/systemd/netaudio.service")
-sha256sums=('fd7aa23b6252394bc4a7bdc40dd6a645e84413d6393625970d7dadc73e3300fe'
+sha256sums=('ca9be1f842dfe66f5d8eb45ab018485e644ef869eb0b8607b9031122c188d5c6'
             'de4e7a411fa6818436be641a2106d5c71cd77b7d3d1ac8659bc2e739e1364dcb')
 
 prepare() {
