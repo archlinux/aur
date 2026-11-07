@@ -2,9 +2,9 @@
 
 _pkgname=hyprlogin
 pkgname=hyprlogin-git
-pkgver=0.0.0.r475.21c3add
+pkgver=0.0.0.r482.dad9b70
 pkgrel=1
-pkgdesc='Work-in-progress greetd greeter forked from hyprlock'
+pkgdesc='GPU-accelerated greetd greeter for Hyprland, forked from hyprlock'
 arch=('x86_64')
 url='https://github.com/AuthenticSm1les/hyprlogin'
 license=('BSD-3-Clause')
@@ -12,27 +12,29 @@ provides=('hyprlogin')
 conflicts=('hyprlogin')
 depends=(
   'cairo'
-  'gcc-libs'
   'glibc'
-  'greetd'
   'hyprgraphics'
   'hyprlang'
   'hyprutils'
-  'libdrm'
-  'mesa'
-  'pango'
-  'wayland'
-  'wayland-protocols'
+  'libegl'
+  'libgcc'
+  'libgles'
+  'libstdc++'
   'libxkbcommon'
+  'wayland'
 )
 makedepends=(
   'cmake'
   'git'
   'hyprwayland-scanner'
+  'libdrm'
+  'pango'
   'pkgconf'
+  'wayland-protocols'
 )
 optdepends=(
-  'hyprland: compositor used by the shipped greetd config (any Wayland compositor with ext-session-lock-v1 works)'
+  'greetd: login manager integration'
+  'hyprland: greeter compositor session'
 )
 backup=('etc/hyprlogin/hyprlogin.conf')
 options=(!debug)
