@@ -7,7 +7,7 @@
 # Import the key once: gpg --import keys/pgp/*.asc, or
 # gpg --recv-keys 33F9B54FD2A4B6A4110749B3BA464FC9847A832A.
 # The console is built for an ordinary desktop or laptop, with the features
-# images logind gpu and hwaccel off (ADR-1500 D8), and VTIUM_FEATURES in
+# images logind gpu bidi and hwaccel on (ADR-1500 D8), and VTIUM_FEATURES in
 # makepkg's environment names other features (below).
 #
 # pkgver is the tag without its v and without the hyphen before a
@@ -16,9 +16,9 @@
 
 pkgbase=vtium
 pkgname=vtium
-_tag=v0.1.0-alpha.5
-pkgver=0.1.0alpha.5
-pkgrel=2
+_tag=v0.1.0-alpha.6
+pkgver=0.1.0alpha.6
+pkgrel=1
 pkgdesc='Terminal for the Linux console, drawn through KMS/DRM'
 arch=('x86_64')
 url='https://github.com/vtium/vtium'
@@ -58,13 +58,9 @@ package_vtium() {
 }
 
 # The console's features while VTIUM_FEATURES is unset, and the default of
-# hwaccel. The tag v0.1.0-alpha.5 has no feature bidi, and its console
-# keeps the GPU path off by default. The move to v0.1.0-alpha.6 sets
-# _features='images logind gpu bidi' and _hwaccel=on with the new tag, as
-# vtium-git builds them, and ci/vtium/.no-auto-merge holds the watcher's
-# bump until a person makes that change.
-_features='images logind gpu'
-_hwaccel=off
+# hwaccel, the same as vtium-git's from v0.1.0-alpha.6 on.
+_features='images logind gpu bidi'
+_hwaccel=on
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
 # aur-publish refuses a package whose copy differs from the other's.
