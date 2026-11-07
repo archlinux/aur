@@ -1,8 +1,8 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=openhue-cli
 pkgver=0.25
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for interacting with Philips Hue smart lighting systems'
 depends=()
 optdepends=()

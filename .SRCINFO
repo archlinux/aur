@@ -1,7 +1,7 @@
 pkgbase = openhue-cli
 	pkgdesc = CLI for interacting with Philips Hue smart lighting systems
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openhue.io/cli/openhue-cli
 	arch = x86_64
 	license = Apache-2.0
