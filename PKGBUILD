@@ -13,7 +13,7 @@ pkgname=(
  dotnet-source-built-artifacts-9.0
 )
 pkgver=9.0.22.sdk123
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://dotnet.microsoft.com
 license=(MIT)
@@ -33,7 +33,7 @@ makedepends=(
   llvm20
   lttng-ust2.12
   nodejs
-  openssl
+  openssl-3
   systemd
   zlib
 )
@@ -69,6 +69,9 @@ build() {
   export VERBOSE=1
   export OPENSSL_ENABLE_SHA1_SIGNATURES=1
 
+  # Use OpenSSL 3 headers and libraries alongside the system OpenSSL.
+  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+
   export PATH="/usr/lib/llvm20/bin:$PATH"
 
   # this uses malloc_usable_size, which is incompatible with fortification level 3
@@ -98,7 +101,7 @@ package_dotnet-runtime-9.0() {
     krb5
     libunwind
     zlib
-    openssl
+    openssl-3
   )
   optdepends=('lttng-ust2.12: CoreCLR tracing')
   provides=(dotnet-runtime=${pkgver%.*.sdk*})

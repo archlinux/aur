@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-9.0
 	pkgver = 9.0.22.sdk123
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dotnet.microsoft.com
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = dotnet-core-9.0
 	makedepends = llvm20
 	makedepends = lttng-ust2.12
 	makedepends = nodejs
-	makedepends = openssl
+	makedepends = openssl-3
 	makedepends = systemd
 	makedepends = zlib
 	optdepends = bash-completion: Bash completion support
@@ -38,7 +38,7 @@ pkgname = dotnet-runtime-9.0
 	depends = krb5
 	depends = libunwind
 	depends = zlib
-	depends = openssl
+	depends = openssl-3
 	optdepends = lttng-ust2.12: CoreCLR tracing
 	provides = dotnet-runtime=9.0
 
