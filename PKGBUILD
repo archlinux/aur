@@ -1,5 +1,5 @@
 pkgname=nagram-desktop
-pkgver=7.3.3.2
+pkgver=7.3.5.2
 _td_commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 _wallet_engine_ver=0.0.7
 pkgrel=1
@@ -122,7 +122,7 @@ source=(
   "git+https://gitlab.com/mnauw/cppgir.git"
   "git+https://github.com/martinmoene/expected-lite.git"
 )
-sha512sums=('f2ffc861fe6ff4061a2107ddcacb6a9ff0baefafc46af4ca46c10038156fa9a2b7fc85abf930f345665072cfe19ecb72ff6cde82fe694f7403042efb79251472'
+sha512sums=('a9b2dbcd6dd4b1c17e9a8283ed8390f390e5ae4cd4e53e866c48b093de176dad764d936cb5ccf29ea400bd801498584dde1cf6e76cda3a6a3dc491fd09d636a5'
             'dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2'
             'f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6'
             '79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b'
