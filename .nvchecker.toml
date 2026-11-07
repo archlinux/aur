@@ -1,0 +1,5 @@
+[bigcrock-bin]
+source = "github"
+github = "Ars-byte/Bigcrock"
+use_latest_release = true
+prefix = "v"
