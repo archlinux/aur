@@ -1,6 +1,6 @@
 # Maintainer: Ulises Jeremias <ulisescf.24@gmail.com>
 pkgname=veasel-code-bin
-pkgver=0.69.7.next.0
+pkgver=0.69.8.next.0
 pkgrel=1
 pkgdesc="V-native AI coding agent (official prebuilt Linux release)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 noextract=('veasel-Linux.tar.gz')
 sha256sums=(
-  '72e82c0c13021b285661762ec56a151e3ad0ddba8930bb7d78f6a3e0fa2a0222'
+  'b6b137a90a637ee7ab4f1155a3eea3efb3bcc7b60a05817a07169860dda7a128'
   'e150ff1e9cd21b388ec966f3d77ed4731e86e4731b17f127e879f72ff5b2e3d5'
 )
 
