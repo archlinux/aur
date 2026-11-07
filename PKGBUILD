@@ -2,9 +2,9 @@
 # Maintainer: liblaf <30631553+liblaf@users.noreply.github.com>
 
 pkgname=mihomo-smart-bin
-pkgver=1.19.34.alpha.smart.r4842.g77af480
+pkgver=1.19.34.alpha.smart.r4849.g96feb2a
 pkgrel=1
-_commit=77af480
+_commit=96feb2a
 pkgdesc='Mihomo proxy kernel with the Smart policy group and the large LightGBM model (x86-64-v3)'
 arch=('x86_64')
 url='https://github.com/vernesong/mihomo'
@@ -19,7 +19,7 @@ source=(
   "Model-large-${pkgver}-${pkgrel}.bin::https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin"
 )
 noextract=("mihomo-${_commit}.pkg.tar.zst")
-sha256sums=('ff4e667bb11e2172ffd2fe46ba9cfad225ba2574b70fef7ad1b13d28e9159a93'
+sha256sums=('ab6faa64b495892371a2b15a110c877d17ce0d03c3c0bc2a1973bf122c0b14ce'
             '832920df1290454710dd04aa4c7d4b5324edfd7816a7c9ad2272708b5d5a13a8')
 
 package() {
