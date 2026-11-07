@@ -1,15 +1,17 @@
 pkgbase = kocr-bin
-	pkgdesc = Offline OCR command-line tool (prebuilt binary)
-	pkgver = 0.4.1
+	pkgdesc = Offline OCR for images (prebuilt CLI)
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/KercyDing/kocr
 	arch = x86_64
-	license = Apache-2.0
+	arch = aarch64
+	license = MIT
 	depends = glibc
-	depends = gcc-libs
 	provides = kocr
 	conflicts = kocr
-	source = kocr-cli-0.4.1-linux-amd64.deb::https://github.com/KercyDing/kocr/releases/download/v0.4.1/kocr-cli-0.4.1-linux-amd64.deb
-	sha256sums = a5f104f11869a668c8600884c89e7382ceae927f96865302e39a82b74b8b4124
+	source_x86_64 = kocr-cli-0.5.0-linux-amd64.tar.gz::https://github.com/KercyDing/kocr/releases/download/v0.5.0/kocr-cli-0.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = bd4cac36fc854b03c57374626f93f9b78d4fed82b9c302abff01e97b8812028f
+	source_aarch64 = kocr-cli-0.5.0-linux-arm64.tar.gz::https://github.com/KercyDing/kocr/releases/download/v0.5.0/kocr-cli-0.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9b3b5e40359c084737a8859b0637fb31d936258ac84129d7250e062de5d98ed9
 
 pkgname = kocr-bin
