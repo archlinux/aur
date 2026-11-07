@@ -1,0 +1,81 @@
+Description: Port rbgen to Python 3
+ rbgen was written for Python 2: it used the removed string module
+ functions, the statement forms of exec and raise, and exec to assign
+ local variables, which Python 3 does not support inside a function.
+ Replace them with str methods, call syntax, and explicit assignments.
+ Required to build with --with-python=/usr/bin/python on systems
+ without Python 2. Applies on top of rbgen.in.patch.
+Forwarded: not-needed, upstream has been inactive since 2003
+Last-Update: 2026-11-07
+
+--- a/rbgen.in
++++ b/rbgen.in
+@@ -21,7 +21,7 @@
+ #
+ #
+ 
+-import sys, string, os
++import sys, os
+ 
+ fpin = sys.stdin
+ lineno = 0
+@@ -48,7 +48,7 @@
+     sbrk = static = 0
+     global lineno
+ 
+-    ext = string.find(filename, ".rb")
++    ext = filename.find(".rb")
+     if ext == -1:
+         sys.stderr.write("redblack: extension on %s doesn't look right.\n" % filename)
+         raise SyntaxError
+@@ -72,7 +72,7 @@
+                 lineno = lineno + 1
+                 if not line:
+                     break
+-                comment = string.find(line, "//")
++                comment = line.find("//")
+                 if comment > -1:
+                     line = line[:comment] + "\n"
+                 if line[0] == "\n":
+@@ -115,9 +115,17 @@
+                     fpout.write(fpin.read())
+                     return
+                 elif line[0] == "%":
+-                    tokens = string.split(line)
+-                    if tokens[0] in("%type","%cmp","%alloc","%free","%prefix"):
+-                        exec "rb_" + tokens[0][1:] + " = '" + tokens[1] + "'"
++                    tokens = line.split()
++                    if tokens[0] == "%type":
++                        rb_type = tokens[1]
++                    elif tokens[0] == "%cmp":
++                        rb_cmp = tokens[1]
++                    elif tokens[0] == "%alloc":
++                        rb_alloc = tokens[1]
++                    elif tokens[0] == "%free":
++                        rb_free = tokens[1]
++                    elif tokens[0] == "%prefix":
++                        rb_prefix = tokens[1]
+                     elif tokens[0] == "%access":
+                         if tokens[1] in ("inline", "pointer"):
+                             rb_access = tokens[1]
+@@ -137,7 +145,7 @@
+                     elif tokens[0] == "%static":
+                         static = 1
+                     else:
+-                        error("unknown directive %s" % string.split(line)[0])
++                        error("unknown directive %s" % line.split()[0])
+                 else:
+                     error("garbage on line beginning %s." % line[0])
+             else:
+@@ -169,9 +177,9 @@
+     for file in arguments:
+         try:
+             redblack(file, lines)
+-            raise SystemExit, 0
++            raise SystemExit(0)
+         except SyntaxError:
+-            raise SystemExit, 1
++            raise SystemExit(1)
+ 
+ # The following sets edit modes for GNU EMACS
+ # Local Variables:

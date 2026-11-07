@@ -1,0 +1,30 @@
+Description: Fix two rbgen runtime bugs
+ - rb_omit was only assigned when a %omit directive was present, so any
+   input without one crashed with UnboundLocalError. Default it to ().
+ - A missing comma in skelpath concatenated two strings into the single
+   path "@prefix@/share/@PACKAGE@/share/redblack", so the installed rbgen
+   never found the skeleton files that libredblack installs under
+   @prefix@/share/@PACKAGE@. Separate the two entries.
+ Applies on top of libredblack-1.3-rbgen-python3.patch.
+Forwarded: not-needed, upstream has been inactive since 2003
+Last-Update: 2026-11-07
+
+--- a/rbgen.in
++++ b/rbgen.in
+@@ -45,6 +45,7 @@
+ def redblack(filename, lines):
+     rb_type = rb_cmp = rb_alloc = rb_free = rb_access = None
+     rb_prefix = "rb"
++    rb_omit = ()
+     sbrk = static = 0
+     global lineno
+ 
+@@ -159,7 +160,7 @@
+     import getopt
+     (options, arguments) = getopt.getopt(sys.argv[1:], "lS:")
+     lines = 1;
+-    skelpath = [".", "@prefix@/share/@PACKAGE@" "/share/redblack"]
++    skelpath = [".", "@prefix@/share/@PACKAGE@", "/share/redblack"]
+     for (switch, val) in options:
+         if (switch == '-l'):
+             lines = 0
