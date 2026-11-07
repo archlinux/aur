@@ -2,7 +2,7 @@
 
 pkgname=hyprlogin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GPU-accelerated greetd greeter for Hyprland, forked from hyprlock'
 arch=('x86_64')
 url='https://github.com/AuthenticSm1les/hyprlogin'
@@ -10,6 +10,7 @@ license=('BSD-3-Clause')
 depends=(
   'cairo'
   'glibc'
+  'greetd'
   'hyprgraphics'
   'hyprlang'
   'hyprutils'
@@ -29,7 +30,6 @@ makedepends=(
   'wayland-protocols'
 )
 optdepends=(
-  'greetd: login manager integration'
   'hyprland: greeter compositor session'
 )
 backup=('etc/hyprlogin/hyprlogin.conf')
