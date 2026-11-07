@@ -1,6 +1,6 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar-git
-pkgver=1.0.1.r134.g92a0e6a
+pkgver=1.0.1.r153.g76d1212
 pkgrel=1
 pkgdesc='Development version of the Linux-native Wayland terminal built on Ghostty terminal core'
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   'git'
   'ncurses'
+  'vulkan-headers'
   'wayland-protocols>=1.49'
   'zig>=0.17.0'
 )
@@ -25,6 +26,7 @@ optdepends=(
   'noto-fonts-emoji: emoji support'
   'noto-fonts-cjk: CJK font support'
   'systemd: launch additional terminal windows as user services'
+  'vulkan-icd-loader: GPU rendering with renderer = vulkan'
   'xdg-desktop-portal: open links and files through a desktop portal'
   'xdg-utils: open links when a desktop portal is unavailable'
 )
