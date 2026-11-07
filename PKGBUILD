@@ -99,12 +99,11 @@ arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT GPL-2.0-only)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
-# v2.4.20: pending — the sha256 of the published v2.4.20 release
+# v2.4.20: finalized — the sha256 of the published v2.4.20 release
 # tarball (ramsleuth-2.4.20-x86_64.tar.zst) from the official GitHub
-# Release, taken from the published .sha256 sidecar. Will be finalized
-# after the release workflow publishes the artifact. Replaces the
+# Release, taken from the published .sha256 sidecar. Replaces the
 # v2.4.19 pin (2cc72a87588985fbd799e567458093cba040e7c468a20acf2d6d3e124884bbe7).
-sha256sums=('2cc72a87588985fbd799e567458093cba040e7c468a20acf2d6d3e124884bbe7')
+sha256sums=('776de5627d93e3dcf2c82fa8e21ded0a3b7dce464f02d86b58945dfbf0fc5e6b')
 install=ramsleuth-bin.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the

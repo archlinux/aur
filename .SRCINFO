@@ -19,6 +19,6 @@ pkgbase = ramsleuth-bin
 	conflicts = ramsleuth-intel-dkms
 	conflicts = ryzen-smu-dkms
 	source = https://github.com/MadGoatHaz/RamSleuth/releases/download/v2.4.20/ramsleuth-2.4.20-x86_64.tar.zst
-	sha256sums = 2cc72a87588985fbd799e567458093cba040e7c468a20acf2d6d3e124884bbe7
+	sha256sums = 776de5627d93e3dcf2c82fa8e21ded0a3b7dce464f02d86b58945dfbf0fc5e6b
 
 pkgname = ramsleuth-bin
