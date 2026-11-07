@@ -32,13 +32,13 @@ sha256sums=('fd7568325766b9de04f0ee9ed1220087ee02714cc286090927ab56c224b338e9')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
-	make build
+	env -u LDFLAGS make build VERSION="${pkgver}"
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
-	make install DESTDIR="${pkgdir}" PREFIX="/usr"
+	env -u LDFLAGS  make install DESTDIR="${pkgdir}" PREFIX="/usr" VERSION="${pkgver}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
