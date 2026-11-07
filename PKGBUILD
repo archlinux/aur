@@ -18,7 +18,7 @@ esac
 pkgbase=notepadpp
 pkgname=notepad++
 _pkgname=notepad-plus-plus
-pkgver=8.9.6.4
+pkgver=8.9.9
 pkgrel=1
 pkgdesc="A free source code editor for Windows"
 url="https://${_pkgname}.org/"
@@ -36,9 +36,9 @@ source=(notepad++
 sha256sums=('643713113d26d32b2e6d861e9cd6db8153a3359f3784dbd1710f12e89468654a'
             '98693e0f57a9fab55dd31dfaf9b3a13234f14e1b193b56ac52eff33c987d4354'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-	    '93f19ca5a5f2b857dd9397d080b5bfc3552e72bea26e4beb701efea2101f3ac0'
-	    'SKIP'
-	    '7b3618195757eed0d47debc28661fe998e68d3822a06a3621ee669ee358fc952'
+            '0a68764f708bf0aeaaeccd2ce111633bcf62b5891871849ffe38569a2552ba80'
+            'SKIP'
+            '96a8216930f5316ed5961663b2cc92a62ec7d303b6c3077b92a7cfc38a8761b7'
             'SKIP')
 
 noextract=("npp.${pkgver}.portable.zip"
@@ -53,8 +53,11 @@ package() {
 
     unzip "${srcdir}/npp.${pkgver}.portable${_archstr}.zip" -d "${pkgdir}/usr/share/${pkgname}"
 
-    rm -rf "${pkgdir}/usr/share/${pkgname}/updater" \
-           "${pkgdir}/usr/share/${pkgname}/license.txt" \
+    # Keep updater for Plugins Admin, but disable self-updating.
+    rm -f "${pkgdir}/usr/share/${pkgname}/license.txt"
+
+    install -m644 /dev/null \
+        "${pkgdir}/usr/share/${pkgname}/disableNppAutoUpdate.xml"
 
     find "${pkgdir}/usr/share/${pkgname}" -type d -exec chmod 755 "{}" \;
     find "${pkgdir}/usr/share/${pkgname}" -type f -exec chmod 644 "{}" \;
