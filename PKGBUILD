@@ -7,7 +7,7 @@ pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='Local IMAP/SMTP bridge for Tuta encrypted email (desktop app)'
 arch=('x86_64' 'aarch64')
-url='httpshttps://github.com/spartanz51/tutabridge'
+url='https://github.com/spartanz51/tutabridge'
 license=('GPL-3.0-or-later')
 depends=(webkit2gtk-4.1
          gtk3
