@@ -2,7 +2,7 @@
 
 _appname=throne
 pkgname=$_appname-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Cross-platform GUI proxy utility (Empowered by sing-box)'
 arch=(x86_64 aarch64)
@@ -23,8 +23,8 @@ source_x86_64=($_appname-$_appver-x86_64.zip::$_dlurl/$_appver/Throne-$_appver-l
 source_aarch64=($_appname-$_appver-aarch64.zip::$_dlurl/$_appver/Throne-$_appver-linux-arm64.zip)
 sha256sums=('1d7019ed30127fb3c7219016ed9e08bdc4809c65af13d2b02e59eed87a69082d'
             '91adcc748f6e80b4030baeb1f4a5a5271f503cdf2cbea22733dfb297cd171f61')
-sha256sums_x86_64=('e8a8def39cfe0799cfe7990bd5f639cac4a6da3bca64e97a62d0b7d741487551')
-sha256sums_aarch64=('655f482fb8afbc62deb5b9573e715d6610d62f4f61a0260b8fd38ff1fcbb615e')
+sha256sums_x86_64=('de114f4a9e10a20cae68b676a3a21f4569f469b5c02a86cbb7e7e2308a0076de')
+sha256sums_aarch64=('853a9bb1c13612b2c2569f04762823427aceeb3e1fe0410def1c4426a2d53635')
 
 package() {
   install -Dm755 Throne/Throne{,Core} -t "$pkgdir"/opt/Throne/
