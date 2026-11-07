@@ -5,7 +5,7 @@
 
 _pkgname="legcord"
 pkgname="$_pkgname"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
@@ -25,7 +25,7 @@ optdepends=(
 _pkgsrc="Legcord-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('bdaccce0f26106d35f0b89df4a1efb7aa4a073ae0514fc252c287ae6fb1df301')
+sha256sums=('a443140d8e3081e17ed498a3a978c9e08414cec07e5f64319841c5c5b6ae3ece')
 
 _electron_env() {
   [ -n "$ELECTRON_SKIP_BINARY_DOWNLOAD" ] && return

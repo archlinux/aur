@@ -1,5 +1,5 @@
 [legcord]
 source = "git"
 git = "https://github.com/Legcord/Legcord.git"
-include_regex = 'v[0-9.]+'
+include_regex = 'v[\d.]+'
 prefix = "v"
