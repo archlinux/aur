@@ -25,6 +25,7 @@ depends=(
   libxkbcommon # keyboard input, X11 and Wayland
   libxrandr
   wayland # winit Wayland backend
+  sjnmusicd-git
 )
 makedepends=(cargo rust git)
 options=(!lto) # LTO is set in gui-rs/Cargo.toml's release profile

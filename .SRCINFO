@@ -18,6 +18,7 @@ pkgbase = sjnmusic-gui-git
 	depends = libxkbcommon
 	depends = libxrandr
 	depends = wayland
+	depends = sjnmusicd-git
 	options = !lto
 	source = sjnmusic-gui-git::git+https://github.com/serverjonas/SJNmusic.git#branch=main
 	sha256sums = SKIP
