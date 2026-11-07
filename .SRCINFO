@@ -1,6 +1,6 @@
 pkgbase = keys-vault
 	pkgdesc = File-based encryption for sensitive directories via gocryptfs + GNOME Keyring
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/fkzys/keys-vault
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = keys-vault
 	optdepends = bash-completion: bash tab completions
 	optdepends = zsh: zsh tab completions
 	backup = etc/keys-vault.conf
-	source = keys-vault-1.0.0.tar.gz::https://github.com/fkzys/keys-vault/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = e38466966d7d0571a4beddb28cca180b69932981ef1a1477ba3a7eacc4397f9d
+	source = keys-vault-1.0.2.tar.gz::https://github.com/fkzys/keys-vault/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = ba5a6b115e3d93376794057bf2a2021c1e3d2810ea76dbe7b763878e1ed9f927
 
 pkgname = keys-vault
