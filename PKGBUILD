@@ -2,7 +2,7 @@
 
 _basename=jitsi
 _pkgname=meet
-_version=1.0.9473
+_version=1.0.9616
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}-web
@@ -34,8 +34,8 @@ conflicts=(${_pkgbase})
 build() {
         rm -rf ${_pkgbase}
         mkdir ${_pkgbase}
-        tar xJf data.tar.xz -C ${_pkgbase}
-        ar p "config_${_version}.deb" data.tar.xz | tar xJC ${_pkgbase}
+        tar xf data.tar.zst -C ${_pkgbase}
+        ar p "config_${_version}.deb" data.tar.zst | tar x -C ${_pkgbase} --zstd
 }
 
 package() {
@@ -64,5 +64,5 @@ package() {
 
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('d145fbea4798588f5db9dcec6dccb3da0de8b5b531bde6d9663ff856f20d4d1d'
-            'f5b2ef7f1c98b45eed97acf19569d4cb39c1c015e9f7e5c6f0b40c546e297dd6')
+sha256sums=('b021a6ea0cca4724b788d8039d80d147d91db2ad9c412a35a07496528e440ee8'
+            '6a9733088b1b0e67d462d07dfaed45c143d20778505740d66891a8916f6c2902')
