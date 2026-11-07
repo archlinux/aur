@@ -1,0 +1,10 @@
+post_upgrade() {
+  if (( $(vercmp "$2" 1.0.0) < 0 )); then
+    cat <<'NOTE'
+==> shiny-mirrors 1.0.0 reads its settings from /etc/shiny-mirrors.toml.
+    /etc/shiny-mirrors.conf is no longer read. If you edited it, pacman kept it as
+    /etc/shiny-mirrors.conf.pacsave: move your settings over by hand. The new file
+    documents every key, including the [refresh] defaults for the systemd timer.
+NOTE
+  fi
+}
