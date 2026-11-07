@@ -1,0 +1,2 @@
+g beangle -
+u bas - "Beangle bas service" /var/lib/bas /bin/bash

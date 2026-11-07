@@ -1,0 +1,44 @@
+post_install() {
+  # systemd 的 sysusers/tmpfiles hook 在事务结束时运行；这里先兜底创建账号与目录，
+  # 因为下面的 chown 不能等到 hook 之后。
+  if ! getent group beangle >/dev/null 2>&1; then
+    groupadd -r beangle 2>/dev/null || :
+  fi
+  if ! getent passwd bas >/dev/null 2>&1; then
+    useradd -r -g beangle -d /var/lib/bas -s /bin/bash \
+      -c "Beangle bas service" bas 2>/dev/null || :
+  fi
+
+  install -d -m0750 -o bas -g beangle /var/lib/bas /var/lib/bas/conf
+  install -d -m0755 -o bas -g beangle /var/lib/bas/bin
+  install -d -m0750 -o bas -g beangle /var/log/bas
+  install -d -m0700 -o bas -g beangle /var/log/bas/agent
+
+  # basctl.conf 是用户配置：只在缺失时从模板生成，升级与卸载都不覆盖或删除。
+  if [ ! -f /var/lib/bas/conf/basctl.conf ]; then
+    install -m0600 -o bas -g beangle /usr/share/basctl/basctl.conf \
+      /var/lib/bas/conf/basctl.conf
+  fi
+
+  chown -R bas:beangle /var/lib/bas/bin /var/lib/bas/conf 2>/dev/null || :
+  chmod 0755 /var/lib/bas/bin/*.sh 2>/dev/null || :
+  chmod 0600 /var/lib/bas/conf/basctl.conf 2>/dev/null || :
+  [ -e /var/lib/bas/logs ] || ln -s /var/log/bas /var/lib/bas/logs
+
+  systemctl daemon-reload 2>/dev/null || :
+  systemctl enable basagent.service 2>/dev/null || :
+}
+
+post_upgrade() {
+  post_install
+  systemctl try-restart basagent.service 2>/dev/null || :
+}
+
+pre_remove() {
+  systemctl stop basagent.service 2>/dev/null || :
+  systemctl disable basagent.service 2>/dev/null || :
+}
+
+post_remove() {
+  systemctl daemon-reload 2>/dev/null || :
+}

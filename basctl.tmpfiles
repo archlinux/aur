@@ -1,0 +1,6 @@
+d /var/lib/bas 0750 bas beangle -
+d /var/lib/bas/bin 0755 bas beangle -
+d /var/lib/bas/conf 0750 bas beangle -
+d /var/log/bas 0750 bas beangle -
+d /var/log/bas/agent 0700 bas beangle -
+L /var/lib/bas/logs - - - - /var/log/bas
