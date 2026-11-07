@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="python-termgraph"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A Python command-line and library that draws basic graphs in the terminal"
 
@@ -17,7 +17,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-colorama')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('8e0cad7433d531fb041f7cbd1189261b784a55488726f02aa29ffe9d565d099b')
+sha256sums=('3bf9f3684fcb0443735fd4625e43489ab7a2dbd828edc8bc9135fb1398e10410')
 
 
 build() {
