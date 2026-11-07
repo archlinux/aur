@@ -1,31 +1,41 @@
 pkgname=dispatch-workflows-bin
-pkgver=1.0.1
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Desktop runner for sequential GitHub Actions workflows'
+pkgdesc='Native Rust desktop runner for sequential GitHub Actions workflows'
 arch=('x86_64')
 url='https://github.com/skorotkiewicz/dispatch-workflows'
-license=('MIT')
-depends=('ca-certificates' 'gcc-libs' 'glibc' 'gtk3' 'libayatana-appindicator' 'webkit2gtk-4.1')
+license=('MIT' 'Apache-2.0' 'OFL-1.1')
+depends=(
+  'ca-certificates'
+  'fontconfig'
+  'freetype2'
+  'glibc'
+  'libgcc'
+  'libstdc++'
+  'libxcb'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'vulkan-driver'
+  'vulkan-icd-loader'
+  'wayland'
+  'xdg-utils'
+)
 optdepends=('github-cli: authenticate using gh auth login instead of a token')
 provides=("dispatch-workflows=${pkgver}")
 conflicts=('dispatch-workflows')
 options=('!strip' '!debug')
 
-_tag=v1.0.1
-source=('LICENSE' 'dispatch-workflows.desktop')
-source_x86_64=("${pkgname}-${pkgver}.tar.zst::${url}/releases/download/${_tag}/stable-linux-x64-Dispatch.tar.zst")
-sha256sums=('a9e9f7748e5191da4c9ecddcf2f2807b7c0339b08438773cf67c8359419d3945'
-            'ad2fee919d27116fee70435a9da9f107fea549ba6c46b173f241d8a1369ba4b3')
-sha256sums_x86_64=('b8840ec1bd384286e15b51ed0d70139e45f8bd4763ef7bf01e698b678a48307c')
+_tag=v0.2.0
+source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_tag}/dispatch-workflows-${pkgver}-linux-x64.tar.gz")
+sha256sums_x86_64=('e3ea79f60190f4dc4fce300bbb9aa41345ef11643862579db119da5a370eb025')
 
 package() {
-  install -dm755 "${pkgdir}/opt/dispatch-workflows" "${pkgdir}/usr/bin"
-  cp -a "${srcdir}/Dispatch/." "${pkgdir}/opt/dispatch-workflows/"
-  ln -s /opt/dispatch-workflows/bin/launcher "${pkgdir}/usr/bin/dispatch-workflows"
-  install -Dm644 "${srcdir}/dispatch-workflows.desktop" \
+  install -Dm755 "${srcdir}/Dispatch/dispatch" "${pkgdir}/usr/bin/dispatch-workflows"
+  install -Dm644 "${srcdir}/Dispatch/dispatch-workflows.desktop" \
     "${pkgdir}/usr/share/applications/dispatch-workflows.desktop"
-  install -Dm644 "${srcdir}/Dispatch/Resources/app/public/favicon.svg" \
+  install -Dm644 "${srcdir}/Dispatch/dispatch-workflows.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dispatch-workflows.svg"
-  install -Dm644 "${srcdir}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  for file in LICENSE LICENSE-APACHE OFL.txt THIRD_PARTY.md; do
+    install -Dm644 "${srcdir}/Dispatch/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
+  done
 }
