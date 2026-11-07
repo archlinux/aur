@@ -3,6 +3,7 @@ Description=Prometheus Pushgateway
 After=network.target
 
 [Service]
+Type=simple
 ExecStart=/usr/bin/pushgateway
 
 [Install]

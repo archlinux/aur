@@ -3,13 +3,13 @@
 
 pkgname=pushgateway
 pkgver=1.11.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Prometheus push acceptor for ephemeral and batch jobs."
 arch=('x86_64')
 url="https://github.com/prometheus/pushgateway"
 license=('Apache-2.0')
-depends=('glibc')
-makedepends=('go' 'git')
+
+makedepends=('go')
 options=('!lto')
 source=("https://github.com/prometheus/pushgateway/archive/v${pkgver}.tar.gz"
 	"pushgateway.service")
@@ -22,7 +22,7 @@ build() {
 	-X github.com/prometheus/common/version.Revision=$pkgver \
 	-X github.com/prometheus/common/version.Branch=tarball \
 	-X github.com/prometheus/common/version.BuildUser=someone@builder \
-	-X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)"
+	-X github.com/prometheus/common/version.BuildDate=$(date -d@\"$SOURCE_DATE_EPOCH\" +%Y%m%d-%H:%M:%S)"
 
   go build \
     -trimpath \
@@ -46,4 +46,4 @@ package() {
 
 
 sha512sums=('f3ba97119f90bf3f1a1e41f335aff6fd2c0671168ae46e4d7bd5732fd32794577905a9fa497b82f7101e2d299d6b85d17046c63e8afbbf28a48f7faf34d732ec'
-            'baf8f41a9643b7c8e9bdf59a38c6275df8861ed4c033de3ef3dd80ed8687d001724f43cad968d5f6c2d4c3541aa4d8b84d7c3a266f149e780c7168074b37f711')
+	'040b30881bca83fdbfabb5f62285a165325ab793abd9fbb103b92062d36d373d0e466f0e553a7c2caa63370a93c0030fd047dad5759bc5fad3ea20e4a83d9c89')
