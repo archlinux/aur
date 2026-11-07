@@ -10,7 +10,8 @@ From the AUR, with an AUR helper or by hand:
     cd openchronology-server && makepkg -si
 
 It builds och-convert and the pgmp extension for this system's PostgreSQL, and installs
-the server, the `openchronology` system user and its services. As Arch packages do, it
+the server, the `openchronology` system user (and `openchronology-logs`, the log
+importers') and its services. As Arch packages do, it
 leaves PostgreSQL and the database to you; finish with:
 
     sudo openchronology-setup
@@ -71,6 +72,13 @@ The journald follower (journald.md) streams this machine's systemd journal, or a
 machine's over SSH, into timelines. Configure it in /etc/openchronology/journald.env (the timeline or
 routes, and which units); then `sudo systemctl enable --now openchronology-journald`.
 
+The log importers run as their own system user, openchronology-logs, which cannot read
+openchronology.env or log in to the database (#501); the journald follower has the
+systemd-journal group as well. syslog.env and journald.env are root:openchronology-logs,
+mode 0640, and so must be the files they name (routes, the journald SSH key and known
+hosts): `sudo chown root:openchronology-logs FILE && sudo chmod 0640 FILE`. See syslog.md
+and journald.md, "Its own account".
+
 `och-import-logs` imports historic log files (log-import.md), with OCH_API_URL and
 OCH_API_KEY from the environment or syslog.env: `och-import-logs --help`.
 
@@ -93,17 +101,24 @@ stops the server and leaves the database and configuration as they are. It then 
 openchronology-migrate is safe to run more than once. `--no-restart` migrates only and starts
 nothing.
 
+Upgrading from a version before #501 moves syslog.env, journald.env and the files they name
+(SYSLOG_ROUTES, JOURNALD_ROUTES, JOURNALD_SSH_KEY, JOURNALD_KNOWN_HOSTS) from the
+openchronology user to openchronology-logs, keeping their modes: only regular files with one
+link, reached through no symbolic link, in folders only root can change. It lists what it
+moved and what it left for you to change.
+
 Remove
 ------
 
 `sudo pacman -R openchronology-server` stops and removes the server. The configuration
-(/etc/openchronology, including AUTH_ENCRYPTION_KEY), the database and the system user
+(/etc/openchronology, including AUTH_ENCRYPTION_KEY), the database and the system users
 remain; delete them with:
 
     sudo rm -rf /etc/openchronology /var/lib/openchronology /var/cache/openchronology
     sudo -u postgres dropdb openchronology
     sudo -u postgres dropuser openchronology
     sudo userdel openchronology
+    sudo userdel openchronology-logs
 
 Layout
 ------

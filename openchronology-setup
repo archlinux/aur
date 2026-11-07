@@ -20,22 +20,32 @@ fi
 systemd=
 [ -d /run/systemd/system ] && systemd=1
 
+# The log receivers' user is new in an upgrade from before #501, and pacman creates it
+# (sysusers.d) only once the upgrade is done: now, so their files can move to it.
+if ! getent passwd openchronology-logs >/dev/null; then
+  systemd-sysusers /usr/lib/sysusers.d/openchronology-server.conf || true
+fi
 install -d -m 0750 -o openchronology -g openchronology /var/lib/openchronology
-install -d -m 0750 -o root -g openchronology "$CONFIG_DIR"
+# Others may pass through to the log receivers' files (#501), but not list them; each is 0640.
+install -d -m 0751 -o root -g openchronology "$CONFIG_DIR"
 # Configuration files are created once and then belong to the administrator: upgrades never
 # rewrite them (each version's templates stay in /usr/share/openchronology to compare).
 new_config() {
   [ -e "$1" ] && return 0
-  sed "$2" "$3" >"$1.new"
-  chown root:openchronology "$1.new"
+  sed "$3" "$4" >"$1.new"
+  chown "root:$2" "$1.new"
   chmod 0640 "$1.new"
   mv "$1.new" "$1"
 }
 key=$(od -An -tx1 -N32 /dev/urandom | tr -d ' \n')
-new_config "$CONFIG" "s|^AUTH_ENCRYPTION_KEY=\$|AUTH_ENCRYPTION_KEY=$key|" \
+new_config "$CONFIG" openchronology "s|^AUTH_ENCRYPTION_KEY=\$|AUTH_ENCRYPTION_KEY=$key|" \
   "$EXAMPLES/openchronology.env.example"
-new_config "$CONFIG_DIR/syslog.env" "" "$EXAMPLES/syslog.env.example"
-new_config "$CONFIG_DIR/journald.env" "" "$EXAMPLES/journald.env.example"
+new_config "$CONFIG_DIR/syslog.env" openchronology-logs "" "$EXAMPLES/syslog.env.example"
+new_config "$CONFIG_DIR/journald.env" openchronology-logs "" "$EXAMPLES/journald.env.example"
+# From an installation before #501: the log receivers' configuration, and the files it names,
+# move from the openchronology user to theirs (openchronology-logs).
+sh /usr/lib/openchronology/bin/openchronology-log-files "$CONFIG_DIR" ||
+  echo "Moving the log receivers' files failed; see $DOCS." >&2
 if [ -n "$systemd" ]; then systemctl daemon-reload; fi
 
 psql_as_postgres() { runuser -u postgres -- psql -X -q -v ON_ERROR_STOP=1 "$@"; }

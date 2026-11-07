@@ -19,13 +19,27 @@ SuccessExitStatus=143
 RestartSec=5
 # Open live views keep the server from exiting promptly; do not wait long for them.
 TimeoutStopSec=10
+# Hardening: no privileges, devices, kernel or clock changes, namespaces or foreign system
+# calls, and files it creates private to it. AF_NETLINK is for Node's network interface list.
 NoNewPrivileges=yes
+CapabilityBoundingSet=
 PrivateTmp=yes
+PrivateDevices=yes
 ProtectSystem=strict
 ProtectHome=yes
 ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
 ProtectControlGroups=yes
+ProtectClock=yes
 RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+LockPersonality=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+UMask=0077
 # /var/cache/openchronology (CACHE_DIRECTORY), where downloads are cached (EXPORT_CACHE).
 CacheDirectory=openchronology
 

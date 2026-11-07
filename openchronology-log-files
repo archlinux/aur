@@ -1,0 +1,120 @@
+#!/bin/sh
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# Gives the log receivers' files to their own system user, openchronology-logs (#501), for every
+# server package's installation and upgrade: syslog.env and journald.env in the configuration
+# folder, and the files they name (SYSLOG_ROUTES, JOURNALD_ROUTES, JOURNALD_SSH_KEY,
+# JOURNALD_KNOWN_HOSTS). Of a file's owner and group, what is openchronology becomes
+# openchronology-logs; its mode stays. A file moves only when it is a regular file with one
+# link, reached through no symbolic link, in folders only root can change; anything else is left
+# as it is, with a note. The server's own configuration never moves, and the names in an
+# env file that openchronology could write are not followed. Safe to run again.
+# Usage, as root: openchronology-log-files <configuration folder>
+set -eu
+CONFIG_DIR=${1:?Usage: openchronology-log-files <configuration folder>}
+OLD=openchronology
+NEW=openchronology-logs
+SERVER_CONFIG=$CONFIG_DIR/openchronology.env
+
+note() { echo "openchronology-log-files: $*" >&2; }
+
+# A path's owner and group (IDs), mode (octal), links, and owner and group (names): GNU stat on
+# Linux, BSD stat on FreeBSD.
+if stat -c %u / >/dev/null 2>&1; then
+  info() { stat -c '%u %g %a %h %U %G' "$1"; }
+else
+  info() { stat -f '%u %g %Lp %l %Su %Sg' "$1"; }
+fi
+
+# Whether only root can change what $1 names: each folder above it belongs to root and no one
+# else may write to it (its group only when that is root's).
+root_folders() {
+  dir=$(dirname "$1")
+  while :; do
+    # shellcheck disable=SC2046
+    set -- $(info "$dir")
+    [ "$1" = 0 ] || return 1
+    [ $((0$3 & 02)) = 0 ] || return 1
+    [ "$2" = 0 ] || [ $((0$3 & 020)) = 0 ] || return 1
+    [ "$dir" = / ] && return 0
+    dir=$(dirname "$dir")
+  done
+}
+
+# Whether $1 is a file this script may change: a regular file with one link, at its own real
+# path, in folders only root can change, and not the server's configuration.
+movable() {
+  if [ -L "$1" ] || [ ! -f "$1" ]; then
+    note "$1 is not a regular file; left as it is."
+    return 1
+  fi
+  if [ "$1" -ef "$SERVER_CONFIG" ]; then
+    note "$1 is the server's configuration; left as it is."
+    return 1
+  fi
+  if [ "$(realpath "$1")" != "$1" ] || ! root_folders "$1"; then
+    note "$1 is reached through a symbolic link or a folder others can change; left as it is."
+    return 1
+  fi
+  # shellcheck disable=SC2046
+  set -- "$1" $(info "$1")
+  if [ "$5" != 1 ]; then
+    note "$1 has other hard links; left as it is."
+    return 1
+  fi
+}
+
+# Moves file $1 from openchronology to openchronology-logs: its owner, its group, or both.
+move() {
+  case $1 in
+    /*) ;;
+    # Relative to the services' working folder, the package's own: nothing of openchronology's.
+    *) return 0 ;;
+  esac
+  [ -e "$1" ] || [ -L "$1" ] || return 0
+  movable "$1" || return 0
+  # shellcheck disable=SC2046
+  set -- "$1" $(info "$1")
+  if [ "$6" = "$OLD" ]; then chown -h "$NEW" "$1"; fi
+  if [ "$7" = "$OLD" ]; then chgrp -h "$NEW" "$1"; fi
+  if [ "$6" = "$OLD" ] || [ "$7" = "$OLD" ]; then
+    echo "openchronology-log-files: $1 moved from $OLD to $NEW."
+  fi
+}
+
+# A setting's value in an env file: its last assignment, without surrounding quotes.
+setting() {
+  sed -n "s/^[[:space:]]*$2[[:space:]]*=[[:space:]]*//p" "$1" | tail -n 1 |
+    sed -e 's/[[:space:]]*$//' -e 's/^"\(.*\)"$/\1/' -e "s/^'\\(.*\\)'\$/\\1/"
+}
+
+# Whether env file $1's contents are root's: it belongs to root, and neither openchronology's
+# group nor anyone else may write it.
+roots() {
+  # shellcheck disable=SC2046
+  set -- $(info "$1")
+  [ "$1" = 0 ] && [ $((0$3 & 02)) = 0 ] && { [ "$6" != "$OLD" ] || [ $((0$3 & 020)) = 0 ]; }
+}
+
+if ! id "$NEW" >/dev/null 2>&1; then
+  note "there is no $NEW user yet; nothing moved."
+  exit 0
+fi
+for receiver in syslog journald; do
+  env=$CONFIG_DIR/$receiver.env
+  [ -e "$env" ] || [ -L "$env" ] || continue
+  movable "$env" || continue
+  if roots "$env"; then
+    case $receiver in
+      syslog) names=SYSLOG_ROUTES ;;
+      journald) names='JOURNALD_ROUTES JOURNALD_SSH_KEY JOURNALD_KNOWN_HOSTS' ;;
+    esac
+    for name in $names; do
+      value=$(setting "$env" "$name")
+      if [ -n "$value" ]; then move "$value"; fi
+    done
+  else
+    note "$env could be written by $OLD; the files it names are left as they are."
+  fi
+  move "$env"
+done
+exit 0

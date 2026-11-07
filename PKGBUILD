@@ -5,7 +5,7 @@
 # Arch's Node.js and PostgreSQL.
 # Maintainer: Athan Clark <athan.clark@gmail.com>
 pkgname=openchronology-server
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc='Exact timelines, shared on your terms: the OpenChronology platform server'
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug' '!lto')
 install=openchronology-server.install
 # The exact-rational type for PostgreSQL, pinned as the other packages pin it.
 _pgmp=1849585416f2bc3d070bf8cef6a659907687ec7f
-source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openchronology/timeline-app/releases/download/v0.23.0/openchronology-server-platform.tar.gz"
+source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openchronology/timeline-app/releases/download/v0.23.1/openchronology-server-platform.tar.gz"
         "pgmp-$_pgmp.tar.gz::https://codeload.github.com/dvarrazzo/pgmp/tar.gz/$_pgmp"
         'openchronology.service'
         'openchronology-mail.service'
@@ -31,27 +31,29 @@ source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openc
         'openchronology-migrate'
         'openchronology-reset-admin-password'
         'och-import-logs'
+        'openchronology-log-files'
         'openchronology-setup'
         'openchronology-server.sysusers'
         'openchronology-server.tmpfiles'
         'README.Arch')
 noextract=("openchronology-server-platform-$pkgver.tar.gz")
-sha256sums=('f02affeb346400742d93a7379e97b90ce4e5af31698451bcb638ee1648f5a662'
+sha256sums=('962b52d4ba0b9713446dd485140458dc3271b6ce7871f6b02160ff53a6cdbbcd'
             'cf7d04d364cadde4304e4130fd314525a637037c4f20f1406a3aa27d47a1302f'
-            '7d794e7517f2686e0d714f01a4bba4fcb9abc59b6f68d70882e53f28bf5daea8'
-            '9bc5061f00c3049011e2124147b81eb02e50945a5b17f40430cfe91de662796c'
-            '0efe9d4fb85fa3eda01e4e0d569dcc6fe690f3841e0cd13996d56d065e32e255'
-            'e9757422cf67c2de9024ff749a8933683387e34a1b24d69c1681625e00f4b3f3'
-            '833f498fe6781f4d9655aed39c46c94f8de88ee519789db6a3fbcc4bd5af6d72'
-            '283a6135fd3fe8c99e11abce054d44cbfb1bcb0cd08d36dac92bbead9bbf6f6b'
-            '624f78e4dae97437a173ea1bb3d62d1f4a9af3c62ce9b31ae55bdab52d05205a'
+            'bbdbd4512b6b067a0386db30e9063481f458efb8be1e5393e4902770e985258f'
+            '276dd4ed7abb74585d05c43c790fe8aa27aaca5261d5ee9ce4cb74d1f80d8b14'
+            '4babf7120ded1d7c6bfe50dc6f073e1b4ee0e3fef81d8d0352b525b4a8589462'
+            'c6f8bdc03ba86c93380b7f839f60abded956d9f6ab96cb420fbf494d8ff1d4f0'
+            '857aa840ea8d15fef8d047d56e84d41a53765fa30e9c2cb9932978b665100601'
+            '4f82142be7fd1b5277a8f227334f6095cfebf82a64eb60d9a19227b065c73d90'
+            '95cfdee08ff5c1dc7a85d52c76e8f3b3c5461cb29fe450f23a8f44865e659757'
             '197c993801448b311ba5d951c2c3b5a7c3a6bca2aefc8971ede0998efc68aca4'
             'd98214c2530b3de542750b6974d445574a83c178fe313511aecdde6df94f4514'
             '35cdb1780d80d6ca1f896afc969cb696c575e6986a8f8476320059c70093e73b'
-            '452bdb85fcbbd7a2a838dcdf41d0ecb81a428d0458d07359a6d509a60b7cb91a'
-            '0f58d2c4d54ba5107df36d82e6b3800744a57f9d2d4347aaea7cd6ce9323a7f6'
-            'c0b84b8772412a87a367e7d1350cb82e9f1696eb20c6c9d5131c4a0159683ffe'
-            '9a003fc29e2832868e6315f62070aba28f88e759eba1a5246541825dc609ff5d')
+            '3e121c1f5b4e3cd35eccf1d6ac7c84bc1291e311041d6401bb17c6072689057d'
+            '410e4a0e3ca53a48466ad27d6fae113b474b840548aeee24f16acd7b930a3943'
+            '7d80b2df15ba90c8fd6a08d0e4d2dad2edb30f2b7cbde59f0463861bab201baa'
+            'cadf04f84c702c178a565e3d088791a0987b03206ba005632075abfe5a48664f'
+            '310ad1daf20d2b127b7b2807f7d6e548a2343ac3277ca4fb8200ff5cb7bf523c')
 
 prepare() {
   # The archive has no top folder: into its own.
@@ -99,6 +101,7 @@ package() {
   install -Dm755 "$srcdir/openchronology-reset-admin-password" \
     "$pkgdir/usr/bin/openchronology-reset-admin-password"
   install -Dm755 "$srcdir/och-import-logs" "$pkgdir/usr/bin/och-import-logs"
+  install -Dm755 "$srcdir/openchronology-log-files" "$app/bin/openchronology-log-files"
   install -Dm644 "$srcdir/openchronology-server.sysusers" "$pkgdir/usr/lib/sysusers.d/openchronology-server.conf"
   install -Dm644 "$srcdir/openchronology-server.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/openchronology-server.conf"
 

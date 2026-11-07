@@ -7,8 +7,9 @@ After=network.target openchronology.service
 
 [Service]
 Type=simple
-User=openchronology
-Group=openchronology
+# Its own user (#501): it cannot read the server's configuration or log in to its database.
+User=openchronology-logs
+Group=openchronology-logs
 EnvironmentFile=/etc/openchronology/syslog.env
 Environment=NODE_ENV=production
 WorkingDirectory=/usr/lib/openchronology
@@ -17,10 +18,29 @@ Restart=on-failure
 # Node exits with 128 + SIGTERM when stopped; that is a clean stop, not a failure.
 SuccessExitStatus=143
 RestartSec=10
+# Hardening: no privileges, devices, kernel or clock changes, namespaces or foreign system
+# calls, and files it creates private to it. AF_NETLINK is for Node's network interface list.
 NoNewPrivileges=yes
+CapabilityBoundingSet=
 PrivateTmp=yes
+PrivateDevices=yes
 ProtectSystem=strict
 ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+LockPersonality=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+UMask=0077
+# Other users' processes are hidden from it.
+ProtectProc=invisible
 
 [Install]
 WantedBy=multi-user.target

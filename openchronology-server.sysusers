@@ -1,2 +1,5 @@
-# The OpenChronology server's system user (#331): its services run as it.
+# The OpenChronology server's system users: the server and mail worker run as openchronology
+# (#331), the log receivers as openchronology-logs, which has no access to the server's
+# configuration or database (#501).
 u openchronology - "OpenChronology server" /var/lib/openchronology
+u openchronology-logs - "OpenChronology log receivers" -
