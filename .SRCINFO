@@ -1,0 +1,24 @@
+pkgbase = syn-notes-bin
+	pkgdesc = synshell Notes: canvas pages, kanban, Gantt, mind maps, calendar, reminders
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synshell
+	arch = x86_64
+	arch = aarch64
+	groups = synshell-apps
+	license = GPL-3.0-only
+	depends = synshell-core
+	optdepends = poppler-glib: PDF in the reader
+	provides = syn-notes
+	conflicts = syn-notes
+	conflicts = syn-notes-git
+	noextract = syn-notes-0.2.0-x86_64.tar.zst
+	noextract = syn-notes-0.2.0-aarch64.tar.zst
+	options = !strip
+	options = !debug
+	source_x86_64 = syn-notes-0.2.0-x86_64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-notes-0.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = 48345c655f8836af40d960243a4303e60f9610a32e81522e812aa4c858bc0ed1
+	source_aarch64 = syn-notes-0.2.0-aarch64.tar.zst::https://github.com/VitaminDB/synshell/releases/download/v0.2.0/syn-notes-0.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = 53118d3894d10a310874aed72e244563c39e2764a506dffc31fb87fdcaa79ef3
+
+pkgname = syn-notes-bin
