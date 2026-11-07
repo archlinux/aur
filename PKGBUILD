@@ -1,6 +1,6 @@
 # Maintainer: chenpi11 <chenpi11@users.noreply.github.com>
 pkgname=sub-store-front-end-git
-pkgver=2.32.2.r0.g6284035
+pkgver=2.34.2.r0.g6d13e7e
 pkgrel=1
 pkgdesc='Sub-Store Progressive Web App (git)'
 arch=('any')
