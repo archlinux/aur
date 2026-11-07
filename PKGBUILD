@@ -6,7 +6,7 @@ pkgver=1.3.1
 pkgdesc="CLI tea manager"
 url="https://git.roshless.me/roshless/ttea"
 arch=('x86_64' 'i686')
-license=("GPL")
+license=("GPL3-or-later")
 source=("https://git.roshless.me/roshless/$pkgname/archive/$pkgver.tar.gz")
 makedepends=('meson')
 
