@@ -1,6 +1,6 @@
 pkgbase = corsix-th
 	pkgdesc = Reimplementation of the game engine of Theme Hospital
-	pkgver = 0.70.1
+	pkgver = 0.70.2
 	pkgrel = 1
 	url = https://corsixth.com/
 	install = corsix-th.install
@@ -27,7 +27,7 @@ pkgbase = corsix-th
 	depends = soundfont-fluid
 	depends = zlib
 	optdepends = timidity++: Alternative ALSA MIDI sequencer daemon for RtMidi output
-	source = corsix-th-0.70.1.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/refs/tags/v0.70.1.tar.gz
-	b2sums = 3ef0fdafeaff282edbf469a25fb5c2e870a07a96fae3bbfd2be1dfd5bd615c3c52c5ac673086e64a1c660ce39fe173ba0ae7114dd0c255696ba920aa85d44fc7
+	source = corsix-th-0.70.2.tar.gz::https://github.com/CorsixTH/CorsixTH/archive/refs/tags/v0.70.2.tar.gz
+	b2sums = bba0218e903294f41691529411e680549f549a887a4707df01b10e031e1fc2dc03806fe191d8ba0ddb2ed817aa1c565ad246d0ebd80c363e0b930041f5b445f4
 
 pkgname = corsix-th
