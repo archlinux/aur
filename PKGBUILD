@@ -2,7 +2,7 @@
 # https://github.com/hyperb1iss/blocksd
 
 pkgname=blocksd
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=2
 pkgdesc="Linux daemon for ROLI Blocks devices: keepalive, LED control, topology management"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'pnpm>=12.3.4'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyperb1iss/blocksd/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7fb1686ae15777b2d26d0ded97705a893bc343e59639b9ce69f6ccd0ad214940')
+sha256sums=('87b5cac6178d8946e396209be55914c18ecdec770cf13257144a11339ba52c6e')
 
 prepare() {
     cd "${pkgname}-${pkgver}/web"
