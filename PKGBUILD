@@ -1,6 +1,6 @@
 
 pkgname=nodejs-configurable-http-proxy
-pkgver=5.2.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="node-http-proxy plus a REST API"
 url="https://github.com/jupyterhub/configurable-http-proxy"
@@ -9,7 +9,7 @@ license=('BSD')
 makedepends=('npm')
 depends=('nodejs')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c7c8c7bb4f0f27dd4694f79d0c62f33dbfdb1ba60adabf2c6d7b2509755c3e3c')
+sha256sums=('c80779a77cb0d162a8598145735aef9622e177c092e08bbd1d13558d2395e8c5')
 _npmname=configurable-http-proxy
 
 package() {
