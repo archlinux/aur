@@ -1,12 +1,12 @@
 # Maintainer: adelmonte
 pkgname=xdg-desktop-portal-tui
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An xdg-desktop-portal file chooser: file-browser-tui in kitty as the Open and Save dialog"
 arch=('x86_64')
 url="https://github.com/adelmonte/xdg-desktop-portal-tui"
 license=('GPL-3.0-only')
-depends=('xdg-desktop-portal' 'file-browser-tui>=1.1.0' 'kitty' 'gcc-libs' 'glibc')
+depends=('xdg-desktop-portal' 'file-browser-tui>=1.1.3' 'kitty' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 install=xdg-desktop-portal-tui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
