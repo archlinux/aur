@@ -1,0 +1,23 @@
+post_install() {
+  # Opening a raw Ethernet socket needs CAP_NET_RAW; only roe gets it, so
+  # rnsd can keep running unprivileged.
+  setcap cap_net_raw+ep usr/bin/roe
+
+  cat <<'EOF'
+==> RoeInterface is already linked into /etc/reticulum/interfaces/ for a
+    system-wide Reticulum (/etc/reticulum/config). For a per-user one, link
+    it into your config directory, so that package updates reach it:
+      mkdir -p ~/.reticulum/interfaces
+      ln -s /usr/share/roe/RoeInterface.py ~/.reticulum/interfaces/
+==> Then add an interface to the Reticulum config:
+      [[Ethernet]]
+        type = RoeInterface
+        interface_enabled = Yes
+        device = eth0
+        binary = /usr/bin/roe
+EOF
+}
+
+post_upgrade() {
+  setcap cap_net_raw+ep usr/bin/roe
+}

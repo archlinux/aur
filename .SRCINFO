@@ -1,0 +1,21 @@
+pkgbase = reticulum-over-ethernet
+	pkgdesc = Reticulum over Ethernet: carries Reticulum packets directly in Ethernet frames, without IP
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ogarcia/roe
+	install = reticulum-over-ethernet.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later AND MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libcap
+	depends = libgcc
+	depends = python
+	optdepends = python-rns: Reticulum network stack, to use RoeInterface
+	options = !debug
+	source = git+https://github.com/ogarcia/roe.git#tag=0.1.0
+	b2sums = 0add20f97b729a0d9e409c6aad23c1784f2e36d37c494ca88be3dad4407791581d668d44a591c4fc0274da987085f70274d2da5885221d72c1fad34e3f6fa892
+
+pkgname = reticulum-over-ethernet
