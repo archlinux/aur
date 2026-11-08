@@ -1,6 +1,6 @@
 pkgbase = nightscout-menu-bar-bin
 	pkgdesc = Display live blood sugar data from Nightscout in your system tray
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/gabe565/nightscout-menu-bar
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = nightscout-menu-bar-bin
 	conflicts = nightscout-menu-bar
 	options = !debug
 	options = !strip
-	source_x86_64 = nightscout-menu-bar-bin_0.7.0_x86_64.tar.gz::https://github.com/gabe565/nightscout-menu-bar/releases/download/v0.7.0/nightscout-menu-bar_linux_amd64.tar.gz
-	sha256sums_x86_64 = ef4398926aa635c93e925a1f9a082cc68b13654b4b3cac7042cec13cb4b8edf3
-	source_aarch64 = nightscout-menu-bar-bin_0.7.0_aarch64.tar.gz::https://github.com/gabe565/nightscout-menu-bar/releases/download/v0.7.0/nightscout-menu-bar_linux_arm64.tar.gz
-	sha256sums_aarch64 = f20fa7db91fd3a0a6a89898515a18c70f9b4c83449edb6f2407236793446288a
+	source_x86_64 = nightscout-menu-bar-bin_0.7.1_x86_64.tar.gz::https://github.com/gabe565/nightscout-menu-bar/releases/download/v0.7.1/nightscout-menu-bar_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8c5b0495d6ee18b57f13e664749ab9c0430b01fc3c3d876fb0c20da76198b1c0
+	source_aarch64 = nightscout-menu-bar-bin_0.7.1_aarch64.tar.gz::https://github.com/gabe565/nightscout-menu-bar/releases/download/v0.7.1/nightscout-menu-bar_linux_arm64.tar.gz
+	sha256sums_aarch64 = 28caf903730a609518883566c272579de3195d2f66214dff33e746afa30a4eee
 
 pkgname = nightscout-menu-bar-bin
