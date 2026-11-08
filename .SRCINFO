@@ -1,6 +1,6 @@
 pkgbase = nyxuri-git
-	pkgdesc = Material You desktop suite — atomic deploy engine, unit blueprints and Nyxuri Shell
-	pkgver = 4.0.0.alpha.2.r1.g7adf8ba
+	pkgdesc = Material You desktop suite — atomic deploy engine, plugin blueprints and Nyxuri Shell
+	pkgver = 4.0.0.alpha.2.r108.ge03c449
 	pkgrel = 1
 	url = https://github.com/ech678/Nyxuri
 	install = nyxuri-git.install
@@ -27,6 +27,7 @@ pkgbase = nyxuri-git
 	optdepends = wl-clipboard: noctalia
 	optdepends = python-cairo: noctalia
 	optdepends = starship: starship
+	optdepends = adw-gtk-theme: Theme Templates
 	optdepends = xdg-desktop-portal: XDG Portals
 	optdepends = zed: Zed
 	optdepends = wlsunset: session toolchain

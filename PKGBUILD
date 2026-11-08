@@ -1,15 +1,15 @@
 # Maintainer: Yulliil <yulliil@qq.com>
 # Maintainer: Echoes678 <wrdu678@outlook.com>
-# nyxuri-git — rolling AUR package: engine + unit blueprints + Nyxuri Shell
+# nyxuri-git — rolling AUR package: engine + plugin blueprints + Nyxuri Shell
 # in one ship. Dependency policy (T1): `depends` is the engine runtime only;
-# every unit's packages are `optdepends` — `nyxuri on <unit>` discloses and
-# installs what it needs. catalog.toml never reaches this file (menu-only).
+# every plugin's packages are `optdepends` — `nyxuri on <plugin>` discloses and
+# installs what it needs.
 # Regenerate the generated blocks: python3 packaging/gen-deps.py --update
 
 pkgname=nyxuri-git
-pkgver=4.0.0.alpha.2.r1.g7adf8ba
+pkgver=4.0.0.alpha.2.r108.ge03c449
 pkgrel=1
-pkgdesc="Material You desktop suite — atomic deploy engine, unit blueprints and Nyxuri Shell"
+pkgdesc="Material You desktop suite — atomic deploy engine, plugin blueprints and Nyxuri Shell"
 arch=('any')
 url="https://github.com/ech678/Nyxuri"
 license=('GPL-3.0-only')
@@ -48,6 +48,7 @@ optdepends=(
   'wl-clipboard: noctalia'
   'python-cairo: noctalia'
   'starship: starship'
+  'adw-gtk-theme: Theme Templates'
   'xdg-desktop-portal: XDG Portals'
   'zed: Zed'
   'wlsunset: session toolchain'
@@ -82,24 +83,22 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
 
-    # Ship the engine (incl. nyxuri/launcher.sh), unit blueprints, the catalog
-    # and the changelog (engine get_version() reads it in system mode) — plus
-    # the full Nyxuri Shell tree so shell.* units are alive in package mode.
+    # Ship the engine (incl. nyxuri/launcher.sh), plugins and the changelog
+    # (engine get_version() reads it in system mode) — plus the full Nyxuri
+    # Shell tree so shell plugins are alive in package mode.
     install -d "$pkgdir/usr/share/nyxuri"
-    cp -a nyxuri units catalog.toml CHANGELOG.md shell "$pkgdir/usr/share/nyxuri/"
+    cp -a nyxuri plugins CHANGELOG.md shell "$pkgdir/usr/share/nyxuri/"
 
-    # Prune tracked-but-non-runtime Shell material: dev tooling, tests and
+    # Prune tracked-but-non-runtime Shell material: dev tooling and
     # process docs never execute from /usr/share (references/ is gitignored
     # and never reaches the build environment).
-    rm -rf "$pkgdir/usr/share/nyxuri/shell/tests" \
-           "$pkgdir/usr/share/nyxuri/shell/scripts/dev" \
+    rm -rf "$pkgdir/usr/share/nyxuri/shell/scripts/dev" \
            "$pkgdir/usr/share/nyxuri/shell/AGENTS.md" \
            "$pkgdir/usr/share/nyxuri/shell/ROADMAP.md" \
-           "$pkgdir/usr/share/nyxuri/shell/KNOWN-ISSUES.md" \
            "$pkgdir/usr/share/nyxuri/shell/README.md"
 
     # .system-install marker → run_mode="system" (§5.2). Must exist before the
-    # units/ dir probe so the package isn't mis-detected as 'repo'.
+    # plugins/ dir probe so the package isn't mis-detected as 'repo'.
     touch "$pkgdir/usr/share/nyxuri/.system-install"
 
     # CLI + shell entries → the dedicated launchers (the marker + these links
