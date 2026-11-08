@@ -1,7 +1,7 @@
 pkgbase = abclock
 	pkgdesc = gtklock with Beijing timezone wrapper, English+Chinese weekday (%ea) and 3-line lock layout
-	pkgver = 5.0.0
-	pkgrel = 3
+	pkgver = 5.0.1
+	pkgrel = 1
 	url = https://github.com/abcabc0330/abclock
 	arch = x86_64
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = abclock
 	provides = gtklock
 	conflicts = gtklock
 	backup = etc/pam.d/gtklock
-	source = abclock-5.0.0.tar.gz::https://github.com/abcabc0330/abclock/archive/v5.0.0.tar.gz
+	source = abclock-5.0.1.tar.gz::https://github.com/abcabc0330/abclock/archive/v5.0.1.tar.gz
 	source = gtklock-5.0.0.tar.gz::https://github.com/jovanlanik/gtklock/archive/v5.0.0.tar.gz
-	sha256sums = ce48f90e66fb88e79a3162f272c37d0fae5fee2db45bf01ecceac4548916f4ec
+	sha256sums = c845145215014a7c25c964d1c2a4f522b4dee10b4ee23837913e8874c3d2e086
 	sha256sums = 018c50cf1d7b626f823e797750e5b304511b3b359e7277e8abb3383c11e7aed9
 
 pkgname = abclock
