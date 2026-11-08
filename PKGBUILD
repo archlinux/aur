@@ -2,7 +2,7 @@
 pkgname=ember-p2p-bin
 _pkgname=ember
 _appname=Ember
-pkgver=1.7.6 # renovate: datasource=github-releases depName=untaimed18/Ember-P2P
+pkgver=1.7.7 # renovate: datasource=github-releases depName=untaimed18/Ember-P2P
 pkgrel=1
 pkgdesc="Modern eMule KAD client built with Rust and Tauri"
 arch=('x86_64')
@@ -59,4 +59,4 @@ package() {
 }
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('9a2e9a172834033e1ded191b55c336e3e1a4bcfeac0d06abc75f2f52f7dbfbc9')
+sha256sums_x86_64=('43bee72ea0b865bbded0906393ddbb04a001be794bc5083a97a254ac067daa45')
