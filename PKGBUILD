@@ -141,8 +141,8 @@ package() {
   # Desktop entry + AppStream metainfo.
   install -Dm644 "packaging/shared/${_pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "packaging/shared/dev.kappy.kappastream.metainfo.xml" \
-    "${pkgdir}/usr/share/metainfo/dev.kappy.kappastream.metainfo.xml"
+  install -Dm644 "packaging/shared/io.github.kappy7777.kappastream.metainfo.xml" \
+    "${pkgdir}/usr/share/metainfo/io.github.kappy7777.kappastream.metainfo.xml"
 
   # License (Arch convention: /usr/share/licenses/<pkgname>/).
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
