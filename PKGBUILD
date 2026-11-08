@@ -1,6 +1,6 @@
 # Maintainer: lisniper <liqiang0330@gmail.com>
 pkgname=abclock
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 _gtklockver=5.0.0
 pkgdesc='gtklock with Beijing timezone wrapper, English+Chinese weekday (%ea) and 3-line lock layout'
@@ -14,7 +14,7 @@ conflicts=('gtklock')
 backup=('etc/pam.d/gtklock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "gtklock-$_gtklockver.tar.gz::https://github.com/jovanlanik/gtklock/archive/v$_gtklockver.tar.gz")
-sha256sums=('56dd9e09a3ee53d2cd8db29ada1a61c2b33a23775344755b8b9b17bb5ace2e71'
+sha256sums=('fcd1d68433a5699c3f2b830b543845a0a5dd7d546e0798c6efb21a5503dc8cf3'
             '018c50cf1d7b626f823e797750e5b304511b3b359e7277e8abb3383c11e7aed9')
 
 prepare() {
