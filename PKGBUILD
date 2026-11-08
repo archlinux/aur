@@ -1,7 +1,7 @@
 # Maintainer: mizorewww <mizorewww@users.noreply.github.com>
 
 pkgname=gdirect-desktop-git
-pkgver=0.12.1.r19.gd9ea2b4
+pkgver=0.13.0.r1.g746e77f
 pkgrel=1
 pkgdesc="Desktop client for gdirect: browse, transfer and mount Google Drive"
 arch=('x86_64')
@@ -11,6 +11,7 @@ options=(!lto)
 depends=(
   'glibc'
   'gcc-libs'
+  'openssl'
   'libxkbcommon'
   'libxkbcommon-x11'
   'libxcb'
