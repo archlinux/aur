@@ -30,7 +30,7 @@
 # sched-ext management requires the source package.
 
 pkgname=kernel-manager-bin
-pkgver=1.30.2
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="Prebuilt x86_64 binary of kernel-manager (Qt6 GUI for kernel configuration, compilation, and sched-ext (BPF) scheduler management) — installs without building"
 arch=(x86_64)
@@ -50,8 +50,8 @@ provides=(cachyos-kernel-manager)
 # Mirrors source PKGBUILD:95 (names) + build-environment floors.
 # Initial values = the 2026-09-10 archlinux:base-devel capture;
 # re-captured from the release-bin CI audit artifact at each release
-# (plan §3 Step 7 item 3). v1.30.2 re-capture (run 35381347841, 2026-09-18)
-# confirms the same floors (glib-2.0 2.88.3, Qt6 .so.6, libalpm.so.16).
+# (plan §3 Step 7 item 3). Floors remain unchanged from the v1.30.2
+# re-capture (glib-2.0 2.88.3, Qt6 .so.6, libalpm.so.16).
 depends=("qt6-base>=6.11.2" "pacman>=7.1.0" "glib2>=2.88.3" "polkit>=127")
 
 # -bin model: package() installs a prebuilt, checksum-pinned tarball
@@ -69,12 +69,11 @@ install=kernel-manager.install
 source=("https://github.com/MadGoatHaz/kernel-manager/releases/download/v${pkgver}/kernel-manager-${pkgver}-x86_64.tar.zst")
 
 # Pinned via the project's standing double-fetch discipline (source
-# PKGBUILD:27-30; Work/Docs/AUR_PACKAGING.md:9) after the v1.30.2
-# release-bin build (run 35381347841, 2026-09-18, fired by the v1.30.2
-# tag push) uploaded the release assets (plan §3 Step 7 item 3: fetch
-# twice, cmp byte-identical, record). Re-pin per release (plan §3 Step 7
-# item 3) after each build publishes a new asset.
-sha256sums=("31dc46dfc9cf638143a29502a8ce5d94ba444d5feadb38c2238601ed0f8dd0ba")
+# PKGBUILD:27-30; Work/Docs/AUR_PACKAGING.md:9) after the v1.31.0
+# release-bin build (workflow_dispatch run 42456399934, 2026-11-08)
+# published the release assets (plan §3 Step 7 item 3: fetch twice,
+# cmp byte-identical, record).
+sha256sums=("aab7746412d84af2497efb617255ca4090b8fa813f1e2ce4e0002806d1fb6551")
 
 package() {
   # The tarball's root is `usr/`, so a plain extraction into $pkgdir
