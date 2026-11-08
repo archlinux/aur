@@ -1,0 +1,23 @@
+pkgbase = hoarder-bin
+	pkgdesc = Pixel-exact screenshots and a clipboard that outlives the app that set it, for Wayland (prebuilt)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CPT-Dawn/Hoarder
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	optdepends = xdg-utils: open a Capture from its notification
+	optdepends = hoarder-wl-compat: wl-copy and wl-paste served by Hoarder
+	provides = hoarder=1.0.0
+	conflicts = hoarder
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/CPT-Dawn/Hoarder/releases/download/v1.0.0/hoarder-1.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = db7796370408fbbbef555f344d4def6fc4505f6a6b7a90e3e6c2a6851d85f3fc
+	source_aarch64 = https://github.com/CPT-Dawn/Hoarder/releases/download/v1.0.0/hoarder-1.0.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 10b6420724edb524495fbcaf08e2429af169f8ed6647db626f7bb643dec615e1
+
+pkgname = hoarder-bin
