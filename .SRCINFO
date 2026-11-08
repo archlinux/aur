@@ -1,7 +1,7 @@
 pkgbase = qwen-minimal-desktop
 	pkgdesc = Single-file GTK4 chat client for Qwen and Kimi with local/cloud backends
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WgpArch/qwen-minimal-desktop
 	arch = any
 	license = GPL-3.0-only
