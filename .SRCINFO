@@ -1,11 +1,11 @@
 pkgbase = nemo-engrampa
 	pkgdesc = Archive management plugin for Nemo using engrampa
-	pkgver = 6.6.0
+	pkgver = 6.8.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = meson
 	makedepends = samurai
 	makedepends = glib2-devel
@@ -13,7 +13,7 @@ pkgbase = nemo-engrampa
 	depends = engrampa
 	options = !libtool
 	options = !emptydirs
-	source = nemo-extensions-6.6.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/6.6.0.tar.gz
-	sha256sums = ab610011ea77b00ba760fd151546f271ac92b525fcf1e4b603fbf46b85c3be30
+	source = nemo-extensions-6.8.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/6.8.0.tar.gz
+	sha256sums = 5ea1fcc3d1561d361b328cdb9acfa3a226177f326b1febd40b028f1fb212ee2d
 
 pkgname = nemo-engrampa
