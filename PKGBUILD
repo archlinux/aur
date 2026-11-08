@@ -1,17 +1,18 @@
 # Maintainer: vash909 <iu1bot@xzgroup.net>
 
 pkgname=shottino-bin
-pkgver=0.3.1
-pkgrel=3
+pkgver=0.4.3
+pkgrel=1
 # Shottino has its own version, independent of the containing Grappa release.
-_upstream_tag=v1.6.2
-_asset=shottino-0.3.1-1-x86_64.pkg.tar.zst
+_upstream_tag=v1.6.3
+_asset=shottino-0.4.3-1-x86_64.pkg.tar.zst
 pkgdesc='Terminal client and IRC bridge for Grappa with an ncurses interface (official binary)'
 arch=('x86_64')
 url='https://github.com/vjt/grappa-irc'
 license=('MIT')
 depends=('ca-certificates' 'glibc' 'ncurses' 'openssl')
 optdepends=('grappa-bin: run a local Grappa server'
+            'libsecret: store the encrypted-query key in the OS keyring'
             'ffmpeg: inline image, video and GIF previews'
             'chafa: enhanced terminal image rendering'
             'xdg-utils: open links in external applications')
@@ -21,7 +22,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${_upstream_tag}-${_asset}::${url}/releases/download/${_upstream_tag}/${_asset}"
         'README.md')
 noextract=("${pkgname}-${_upstream_tag}-${_asset}")
-sha256sums=('6247b161e3c25e5fbd083b1dcd0b0b5ace88dabb91452375f4eaedd58829a399'
+sha256sums=('99e0580d466c0b835d53bfbdf950a46f9cc204f67c0ff2c8889ba830a53cee91'
             '9e10e292cb2f14c8bb99fcbf5c65c20b7309d6ee8655a3a8d3212c38a1fdb8e6')
 
 package() {
