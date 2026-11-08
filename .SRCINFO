@@ -1,0 +1,18 @@
+pkgbase = tidefetch-bin
+	pkgdesc = A keyboard-first download manager for aria2
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Thre4dripper/tidefetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = aria2
+	provides = tidefetch
+	conflicts = tidefetch
+	options = !strip
+	source_x86_64 = tidefetch-x86_64-0.1.1.tgz::https://github.com/Thre4dripper/tidefetch/releases/download/v0.1.1/tidefetch_linux_amd64.tar.gz
+	sha256sums_x86_64 = 50caf3b8326b9ef3dad736449deeeb3f28fc244dde248b81fb528b73d4564c1a
+	source_aarch64 = tidefetch-aarch64-0.1.1.tgz::https://github.com/Thre4dripper/tidefetch/releases/download/v0.1.1/tidefetch_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2809876857b17313645b8c9096655dd0ed3e4051abd0b2d01ef1d2de89a9102c
+
+pkgname = tidefetch-bin

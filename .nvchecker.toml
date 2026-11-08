@@ -1,0 +1,5 @@
+[tidefetch-bin]
+source = "github"
+github = "Thre4dripper/tidefetch"
+use_latest_release = true
+prefix = "v"
