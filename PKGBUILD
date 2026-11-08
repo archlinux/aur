@@ -1,7 +1,7 @@
 # Maintainer: lisniper <liqiang0330@gmail.com>
 pkgname=abclock
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='gtklock with Beijing timezone wrapper, English+Chinese weekday (%ea) and 3-line lock layout'
 arch=('x86_64' 'aarch64')
 url='https://github.com/abcabc0330/abclock'
@@ -27,11 +27,15 @@ build() {
 }
 
 package() {
-	install -Dm755 build/gtklock "$pkgdir/usr/libexec/abclock/gtklock-bin"
+	meson install -C build --destdir "$pkgdir" --no-rebuild
+
+	# 上游把可执行文件装到 /usr/bin/gtklock；后端挪到 libexec，/usr/bin 让给包装器
+	install -d "$pkgdir/usr/libexec/abclock"
+	mv "$pkgdir/usr/bin/gtklock" "$pkgdir/usr/libexec/abclock/gtklock-bin"
 	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/gtklock" "$pkgdir/usr/bin/gtklock"
+
 	install -Dm644 "$srcdir/$pkgname-$pkgver/share/layout.xml" "$pkgdir/usr/share/abclock/layout.xml"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/share/config.ini.example" "$pkgdir/usr/share/abclock/config.ini.example"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/share/style.css.example" "$pkgdir/usr/share/abclock/style.css.example"
-	install -Dm644 "gtklock-$pkgver/pam/gtklock" "$pkgdir/etc/pam.d/gtklock"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
