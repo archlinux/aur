@@ -1,6 +1,6 @@
 pkgbase = vibrancegui-linux
 	pkgdesc = Unofficial VibranceGUI-style vkSumi color profile manager for Linux
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/NasirA1991/vibrancegui-linux
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = vibrancegui-linux
 	depends = gcc-libs
 	depends = glibc
 	depends = fontconfig
+	depends = openssl
 	depends = libglvnd
 	depends = wayland
 	depends = libxkbcommon
@@ -20,7 +21,7 @@ pkgbase = vibrancegui-linux
 	optdepends = vksumi: Vulkan color grading layer required to apply adjustments
 	optdepends = steam: Steam game library integration
 	optdepends = xdg-desktop-portal: native file picker for Add manually
-	source = vibrancegui-linux-0.2.5.tar.gz::https://github.com/NasirA1991/vibrancegui-linux/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 16bac085c296350c993bca1527259428ed0dca295226c02317370f010a23d18d
+	source = vibrancegui-linux-0.2.6.tar.gz::https://github.com/NasirA1991/vibrancegui-linux/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = 3a6102198a0f9e9302d913367dae12c3bd329ed837e4e2ab672e0014f1d2c7fb
 
 pkgname = vibrancegui-linux
