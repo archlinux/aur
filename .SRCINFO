@@ -1,0 +1,16 @@
+pkgbase = darmoshark-battery-dkms-git
+	pkgdesc = Darmoshark (MOJI) mouse battery exposed as a Linux power supply (DKMS)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ayasaki-exs/darmoshark-battery
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	depends = pahole
+	provides = darmoshark-battery-dkms
+	conflicts = darmoshark-battery-dkms
+	source = git+https://github.com/ayasaki-exs/darmoshark-battery.git
+	sha256sums = SKIP
+
+pkgname = darmoshark-battery-dkms-git
