@@ -1,6 +1,6 @@
 pkgname=tg-ws-proxy
 pkgver=1.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram Desktop WebSocket Bridge Proxy"
 arch=('any')
 url="https://github.com/Flowseal/tg-ws-proxy"
@@ -12,6 +12,7 @@ depends=(
   'python-cryptography'
   'python-customtkinter'
   'python-gobject'
+  'python-h2'
   'python-pillow'
   'python-psutil'
   'python-pyperclip'

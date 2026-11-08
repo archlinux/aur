@@ -1,7 +1,7 @@
 pkgbase = tg-ws-proxy
 	pkgdesc = Telegram Desktop WebSocket Bridge Proxy
 	pkgver = 1.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Flowseal/tg-ws-proxy
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = tg-ws-proxy
 	depends = python-cryptography
 	depends = python-customtkinter
 	depends = python-gobject
+	depends = python-h2
 	depends = python-pillow
 	depends = python-psutil
 	depends = python-pyperclip
