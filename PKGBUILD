@@ -1,9 +1,9 @@
 pkgname=fixplay-diagnosetool-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Cross-platform diagnostic tool for gaming consoles (AppImage release build)"
 arch=('x86_64')
-url="https://github.com/fabioudev/fixplay-diagnoseTool"
+url="https://github.com/fixplay-orga/fixplay-diagnoseTool"
 license=('custom:unknown')
 # libwayland-client.so.0 is NOT bundled in the AppImage — a bundled copy
 # breaks EGL (tauri#8541, blank window), so the release.yml repack step strips
@@ -22,8 +22,8 @@ conflicts=('fixplay-diagnosetool')
 # leaving only the ~900KB runtime → "This doesn't look like a squashfs image".
 options=('!strip' '!debug')
 source=(
-  "fixplay-diagnoseTool_${pkgver}_amd64.AppImage::https://github.com/fabioudev/fixplay-diagnoseTool/releases/download/v${pkgver}/fixplay-diagnoseTool_${pkgver}_amd64.AppImage"
-  "fixplay-diagnosetool.png::https://raw.githubusercontent.com/fabioudev/fixplay-diagnoseTool/v${pkgver}/src-tauri/icons/icon_256x256.png"
+  "fixplay-diagnoseTool_${pkgver}_amd64.AppImage::https://github.com/fixplay-orga/fixplay-diagnoseTool/releases/download/v${pkgver}/fixplay-diagnoseTool_${pkgver}_amd64.AppImage"
+  "fixplay-diagnosetool.png::https://raw.githubusercontent.com/fixplay-orga/fixplay-diagnoseTool/v${pkgver}/src-tauri/icons/icon_256x256.png"
 )
 sha256sums=('SKIP' 'SKIP')
 
