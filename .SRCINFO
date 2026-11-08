@@ -1,7 +1,7 @@
 pkgbase = msmp-foxwave
 	pkgdesc = MSMP FoxWave - streaming audio player for PC
-	pkgver = 6.1.1
-	pkgrel = 5
+	pkgver = 6.2.0
+	pkgrel = 6
 	url = https://github.com/maxsspeaker/MSMP-6
 	arch = x86_64
 	license = GPL3
@@ -19,7 +19,8 @@ pkgbase = msmp-foxwave
 	depends = qt6-declarative
 	depends = python-dbus-next
 	depends = python-numpy
-	source = git+https://github.com/maxsspeaker/MSMP-6.git#commit=d6ee3dad1cda705d5367
+	depends = python-yaml
+	source = git+https://github.com/maxsspeaker/MSMP-6.git#commit=d63a1d83c1d8dd469292
 	sha256sums = SKIP
 
 pkgname = msmp-foxwave
