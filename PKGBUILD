@@ -1,6 +1,6 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 pkgname=bitty
-pkgver=0.0.35
+pkgver=0.0.36
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,10 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked -p bitty-terminal
+  # `bittyd` is a separate workspace package (crates/bitty-daemon), so it is
+  # not built by `-p bitty-terminal`. Both binaries ship from one package; the
+  # daemon adds no system library beyond the terminal's own runtime deps.
+  cargo build --release --locked -p bitty-terminal -p bitty-daemon
 }
 
 check() {
@@ -32,6 +35,8 @@ check() {
   # disk-bound (rustc codegen ICE on a full disk), and `|| true` masked its
   # exit status anyway. Project CI owns the full test matrix.
   test "$(./target/release/bitty --version)" = "$pkgver"
+  # `bittyd --version` prints "bittyd <version> (service API <version>)".
+  test "$(./target/release/bittyd --version | cut -d' ' -f1-2)" = "bittyd $pkgver"
 }
 
 package() {
