@@ -1,9 +1,9 @@
 # Maintainer: Tim Falken <tim@timfalken.com>
 # CI (scripts/ci/publish-aur.sh) sets pkgver, _tag and sha256sums.
 pkgname=paperdoll-renderer-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
-_tag=v0.1.2
+_tag=v0.1.3
 pkgdesc='Paperdoll Renderer: sprite/paperdoll renders from glTF/FBX bodies with a live preview (prebuilt binary)'
 arch=('x86_64')
 url='https://git.timfalken.com/golden-age/paperdoll-renderer'
@@ -14,7 +14,7 @@ provides=('paperdoll-renderer')
 conflicts=('paperdoll-renderer')
 options=('!strip' '!debug')
 source=("paperdoll-renderer-${_tag}-amd64.deb::${url}/-/releases/${_tag}/assets/paperdoll-renderer-${_tag}-amd64.deb")
-sha256sums=('b7307c6da333eb0cf5b8f5fc63d27611278141c7b162ba78883d974f4d892d9f')
+sha256sums=('2bd50f38e2b3f649e84d2ceb6d7c7b34d9282057699895636844117d7edfcf19')
 noextract=("paperdoll-renderer-${_tag}-amd64.deb")
 
 prepare() {
