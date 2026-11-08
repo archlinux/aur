@@ -6,7 +6,7 @@
 # .github/scripts/generate_aur_files.sh --package zenith-bar-bin.
 pkgname=zenith-bar-bin
 _pkgname=zenith-bar
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="The lightest beautiful status bar for Wayland (prebuilt binary)"
 arch=('x86_64')
@@ -21,14 +21,15 @@ depends=(
   'gtk4-layer-shell'
   'pango'
 )
-optdepends=('ttf-inter: the recommended UI font')
+optdepends=('ttf-inter: the recommended UI font'
+            'hoarder: clipboard history for the clipboard module')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 # The release build is already stripped.
 options=('!strip' '!debug')
 install="${_pkgname}.install"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('d5c7f3dbd499c86174cebabb1741202c053798a2d7ced9a71a59e8d10190a539')
+sha256sums_x86_64=('8e6969b2a1367e38e5e2df9bb833905cde4d5cd067bd06db259a35c5edaf56b2')
 
 package() {
   cd "${_pkgname}-${pkgver}-x86_64"
