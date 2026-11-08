@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=1.11.7
+pkgver=1.12.2
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('custom')
 depends=(
   # Main Qt dependencies
-  'qt5-location' 'qt5-multimedia' 'qt5-networkauth' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-x11extras'
+  'qt6-multimedia' 'qt6-networkauth' 'qt6-svg'
   # libmdk dependency
   'libc++'
   # Plugin libs
@@ -23,14 +23,10 @@ conflicts=('xnviewmp')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-${pkgver}-linux-x64.tgz"
         'xnview.sh'
-        'XnView.desktop'
-        'qt5_std_fun_forwarder.S'
-        'qt5_std_fun_forwarder.lds')
-sha256sums=('8a2f3f50986acae25f6b517829327c81de4005fc0487c139a08c163ebbe094ca'
-            '87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141'
-            'f6b3a4aaa0a55b5f21d9b91ab6f3da3d6ee077ba7fdd17e7c4ab1c69ad2a9e3a'
-            'd4fc1e262f68b7b6b9767ca73870a78f06410035fb97a8bc495f4e1f28416563'
-            '3d6da484cd55eac8910d5cf87f9057e6eadeac842a249dcbda35e1c6f3fcdc0d')
+        'XnView.desktop')
+sha256sums=('66faa259a1377f5f055b089ea182b8596a0d495790778798b27d763344984e64'
+            'dfa7a714cc4f87d0ba26e5db4abf9b5ec633c9edb53bf3967ac814c4f8b44c30'
+            'f6b3a4aaa0a55b5f21d9b91ab6f3da3d6ee077ba7fdd17e7c4ab1c69ad2a9e3a')
 
 # There is a lot of useless files in the archive, only install those from that
 # list.
@@ -52,25 +48,6 @@ executable_files=(
   AddOn/exiftool
   XnView
 )
-
-build() {
-  # This is massive hack to work around an incompatibility with the system Qt5
-  # libraries. On 0.93.1, the dynamic linker fails to start XnView, complaining
-  # that:
-  #   symbol _ZNSt20bad_array_new_lengthD1Ev version Qt_5 not defined in file libQt5Gui.so.5 with link time reference
-  # (and other functions related to the std::bad_array_new_length class).
-  #
-  # It seems that the Qt5 libraries shipped in the archive changed in 0.93.1,
-  # and they now declare these functions, but our system libs on Arch don't!
-  # Since these are STL functions, the workaround is to manually define these
-  # functions in a tiny shared library, and implement them by calling the STL
-  # functions in libstdc++. This is frankly horrible, but it has worked fine
-  # since 0.93.1 so fingers crossed it will stay this way!
-  gcc -fPIC -shared -lstdc++ \
-    -Wl,--version-script="${srcdir}/qt5_std_fun_forwarder.lds" \
-    -o "${srcdir}/qt5_std_fun_forwarder.so" \
-    "${srcdir}/qt5_std_fun_forwarder.S"
-}
 
 package() {
   cd "${srcdir}/XnView"
@@ -108,10 +85,6 @@ package() {
   install -D -m644 "lib/libXMPFiles.so" -t "${pkg_opt_dir}/lib"
 
   install -m755 "${srcdir}/xnview.sh" "${pkg_opt_dir}"
-
-  # Install our "function forwarder library" (see build()). xnview.sh forces the
-  # dynamic linker to use it by adding it to LD_PRELOAD.
-  install -D -m644 "${srcdir}/qt5_std_fun_forwarder.so" -t "${pkg_opt_dir}/lib"
 
   install -d -m755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgname}/xnview.sh" "${pkgdir}/usr/bin/${_pkgname}"
