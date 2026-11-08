@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.11.0.r55.g7d844a7
+	pkgver = 0.12.0.r1077.gfabdca4
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = uutils-coreutils-git
 	depends = glibc
 	depends = libgcc
 	depends = openssl
-	depends = systemd-libs
 	provides = coreutils
 	conflicts = uutils-coreutils
 	conflicts = coreutils

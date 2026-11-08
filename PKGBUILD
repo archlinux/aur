@@ -3,13 +3,13 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.12.0.r534.g8123c25
+pkgver=0.12.0.r1077.gfabdca4
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
 license=('MIT')
 arch=('x86_64')
-depends=(glibc libgcc openssl systemd-libs)
+depends=(glibc libgcc openssl)
 makedepends=(git rust)
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
