@@ -2,7 +2,7 @@
 # Source-build package. CI (update-packaging.yml) rewrites pkgver/sha256sums.
 
 pkgname=bongo-cat-todo
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Tauri 2 desktop pet cat with a todo list and mail notifier (fork of BongoCat, source build)"
 arch=(x86_64 aarch64)
@@ -29,7 +29,7 @@ conflicts=(bongo-cat-todo-bin bongo-cat-todo-git)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256sums rewritten by CI at release time.
-sha256sums=('1e58d8be2a304bc3b4ed2cae2d810b88d9496cb5b47f51e604dd6a6bcb7071a7')
+sha256sums=('f73808bc65ff09b71bcd34125e8a8a4d75b612e7f3bef6df4163ade7bf5fc672')
 
 prepare() {
   cd "$srcdir/bongocat-todo-$pkgver"
