@@ -14,7 +14,7 @@ install=reticulum-over-ethernet.install
 # The release profile already strips the binary: no symbols for a -debug package.
 options=('!debug')
 source=("git+${url}.git#tag=${pkgver}")
-b2sums=('0add20f97b729a0d9e409c6aad23c1784f2e36d37c494ca88be3dad4407791581d668d44a591c4fc0274da987085f70274d2da5885221d72c1fad34e3f6fa892')
+b2sums=('a5b892a03e3272305cad25c6b0ab1d53fceea62ea4522f19d95f532a376cbf41a0e04f746ea8a2ab01b1dcf214793f9e4ff982436adb01ca553369f24eac9de4')
 
 prepare() {
   cd roe
