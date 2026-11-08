@@ -1,0 +1,23 @@
+pkgbase = hoarder-git
+	pkgdesc = Pixel-exact screenshots and a clipboard that outlives the app that set it, for Wayland (latest commit)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/CPT-Dawn/Hoarder
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	optdepends = xdg-utils: open a Capture from its notification
+	optdepends = hoarder-wl-compat: wl-copy and wl-paste served by Hoarder
+	provides = hoarder=0.1.0
+	conflicts = hoarder
+	options = !debug
+	options = !lto
+	source = hoarder::git+https://github.com/CPT-Dawn/Hoarder.git
+	sha256sums = SKIP
+
+pkgname = hoarder-git
