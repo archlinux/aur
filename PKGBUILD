@@ -8,7 +8,7 @@
 #
 # Template note: the release workflow (`aur-bin` job) copies this file to the
 # AUR `bitty-bin` repository as `PKGBUILD`, substitutes `pkgver` with the
-# release tag version, and replaces `d9a464c793073ce6ac1dacde03a35898d54e1f4e394bbc0e919e0fea392d55e9` below with
+# release tag version, and replaces `1194734e308a4975f4d73bb938e8064cd2eb2bbbcc8fda2dd62870c063124666` below with
 # the real sha256 from the published `.sha256` asset. The binary checksum must
 # never be `SKIP` in a published package.
 #
@@ -27,7 +27,7 @@
 # The metadata tarball below is not mirrored (only dist/* is), so it keeps the
 # GitHub archive URL. The binary sha256 is always verified by makepkg.
 pkgname=bitty-bin
-pkgver=0.0.35
+pkgver=0.0.36
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source_x86_64=(
   "${_bitty_src}::https://cdn.bitty.run/releases/v${pkgver}/${_bitty_asset}"
 )
 sha256sums_x86_64=(
-  'd9a464c793073ce6ac1dacde03a35898d54e1f4e394bbc0e919e0fea392d55e9'
+  '1194734e308a4975f4d73bb938e8064cd2eb2bbbcc8fda2dd62870c063124666'
 )
 
 package() {
