@@ -1,14 +1,21 @@
 # Maintainer: VLDG2712 <ddutu10@gmail.com>
 pkgname=nzxt-ctl-git
-pkgver=r20.c00099c
+pkgver=r23.9cc6fad
 pkgrel=1
-pkgdesc="Pump/fan curve control daemon and Kirigami GUI for the NZXT Kraken 2023 (CAM replacement)"
+pkgdesc="Pump/fan curve control daemon and GUI for the NZXT Kraken 2023 (CAM replacement)"
 arch=('x86_64')
 url="https://github.com/VLDG2712/nzxt-ctl"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-declarative' 'kirigami')
-makedepends=('git' 'cargo' 'cmake' 'extra-cmake-modules' 'clang')
-optdepends=('nvidia-utils: GPU temperature source via nvidia-smi')
+# GUI (Slint): fontconfig/freetype2 are linked; the windowing libraries
+# are dlopened by winit at runtime, so namcap won't see them - listed here
+# explicitly. X11 libraries are only needed outside a Wayland session.
+depends=('fontconfig' 'freetype2' 'libxkbcommon' 'wayland' 'libglvnd')
+makedepends=('git' 'cargo')
+optdepends=('nvidia-utils: GPU temperature source via nvidia-smi'
+            'libx11: GUI on X11 sessions'
+            'libxcursor: GUI on X11 sessions'
+            'libxi: GUI on X11 sessions'
+            'libxkbcommon-x11: GUI on X11 sessions')
 provides=('nzxt-ctl')
 conflicts=('nzxt-ctl')
 backup=('etc/nzxt-ctl/config.toml')
@@ -24,30 +31,18 @@ pkgver() {
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  # Distro hardening CFLAGS/CXXFLAGS/LDFLAGS (esp. -march=native) reliably
-  # broke the final cxx-qt-gui link with undefined-symbol errors from
-  # cxx-qt-lib/cxx-qt-lib-extras when built via makepkg, even though the
-  # exact same flags exported by hand in an interactive shell did not
-  # reproduce the failure - never fully root-caused, but reproduced 3/3
-  # via makepkg and fixed 1/1 by unsetting these before invoking cargo.
-  # Cargo/rustc manage their own optimization flags; letting the distro's
-  # C toolchain flags leak into a hybrid Rust/C++ (cc-rs) build is a known
-  # source of this class of bug for Rust AUR packages generally.
-  unset CFLAGS CXXFLAGS LDFLAGS
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  unset CFLAGS CXXFLAGS LDFLAGS
   cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  unset CFLAGS CXXFLAGS LDFLAGS
   cargo test --frozen --release --workspace
 }
 
