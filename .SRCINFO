@@ -1,6 +1,6 @@
 pkgbase = rustdesk-unattended-wayland
 	pkgdesc = RustDesk remote desktop - stable build with unattended access support on Wayland
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 4
 	url = https://github.com/rustdesk/rustdesk
 	install = rustdesk-unattended-wayland.install
@@ -23,7 +23,7 @@ pkgbase = rustdesk-unattended-wayland
 	conflicts = rustdesk
 	options = !strip
 	options = !debug
-	source_x86_64 = rustdesk-unattended-wayland-1.5.0-x86_64.deb::https://github.com/rustdesk/rustdesk/releases/download/1.5.0/rustdesk-unattended-wayland-1.5.0-x86_64.deb
-	sha256sums_x86_64 = 9eed5e9f4b47af8ed41585c399cb2c0d2870e801c99645330dea1063ad844e09
+	source_x86_64 = rustdesk-unattended-wayland-1.5.1-x86_64.deb::https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-unattended-wayland-1.5.1-x86_64.deb
+	sha256sums_x86_64 = f7760dad505b5eca1e99531f15b4de21e83acc7dbfce77a3ba456ef2afb0e961
 
 pkgname = rustdesk-unattended-wayland
