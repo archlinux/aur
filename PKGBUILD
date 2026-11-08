@@ -6,7 +6,7 @@ _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=0.37.4
 _pkgver="$pkgver-beta"
-pkgrel=2
+pkgrel=3
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'aarch64')
 url="https://opentubex.org"
@@ -16,12 +16,12 @@ optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; c
             'yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings')
 makedepends=('git' 'npm' 'pnpm' 'go')
 changelog=opentubex.changelog
-source=("$pkgname-$pkgver.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}-beta.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::${_ghurl}/archive/refs/tags/v${_pkgver}.tar.gz"
         opentubex.desktop
         opentubex.sh)
 sha256sums=('78712a8528ae5c41543d54b6c33c21324c87fe78bc3042fff954178d890f810d'
-            '63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d'
-            '4779a1453099f738e59efb59a6f13ce192aaa9cababdce7db000253144e7ff9a')
+            '70ef7749ceb85a37945e69eef29933cc48114e420f795f682d0031e74455dba2'
+            '06c5938a8fa979bc0f5fc34c14b4cdd6d938b3fccb997651e9354393b6bb6b92')
 
 prepare() {
   sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron44'," \
@@ -41,7 +41,13 @@ build() {
   export TMPDIR="$srcdir/tmp"
   mkdir -p "$TMPDIR"
   pnpm install --frozen-lockfile
-  pnpm build
+  pnpm run pack
+  # 0.37.4 builds for x64 unless it is given the architecture.
+  local build_arch=x64
+  if [[ $CARCH == aarch64 ]]; then
+    build_arch=arm64
+  fi
+  pnpm run build-release "$build_arch"
 }
 
 package() {
@@ -55,7 +61,7 @@ package() {
 
   cd "$_pkgname-$_pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/opentubex.svg"
+  install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/opentubex.svg"
   cd ..
   install -Dm644 "opentubex.desktop" "$pkgdir/usr/share/applications/opentubex.desktop"
 }
