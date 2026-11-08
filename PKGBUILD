@@ -7,7 +7,7 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=156.0
+pkgver=158.0.1
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
@@ -60,7 +60,7 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/7f68d5cdc3a1df09a441def8708d34ce5e511860
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/ba80c7c9f113c692579e23730dda466e30b04b16
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
         $commit/clang22-wasm32-wasip1.patch
         $commit/vendor-prefs.js
@@ -68,7 +68,6 @@ source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/th
         $commit/mozconfig.cfg
         $commit/metainfo.patch
         $commit/mozpkix-x11-success-macro.patch
-        $commit/rnp-botan-3.13-rsa-padding.patch
         $commit/org.mozilla.Thunderbird.desktop
 )
 validpgpkeys=(
@@ -188,7 +187,7 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('8fd524f9d622f007e9bd5e8bcc440f185427a928a04d3aae14fc476e011ff1c15b68607292624ea4c4e4d596722193dda88e233cdfb6bbf5d05bd180870532ba'
+sha512sums=('c3dddbe70483d86be8319ad3eb17c3856586994cd37529964f17957e8401cffa68845cc05732c00a5e6e9d45a665a77ce0eb60d23c039054440c27451df4564f'
             'SKIP'
             'b7097f0d620be87047f6f11f152bd096dc144b1745fe30dc75db7d7050242c4178382f7e504cc10ad3545a3455174ca17a83fa3113443dffe660f28de006cb0e'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
@@ -196,7 +195,6 @@ sha512sums=('8fd524f9d622f007e9bd5e8bcc440f185427a928a04d3aae14fc476e011ff1c15b6
             'f528f2645c44648a8a42015923e51b8626616e2c66cc3ff870c27223002c802c15616e570d639f9c79b3affa4b7f9e9f2c42c780bbcb42a55bd87edafa8352c5'
             '8373d45b594edea2aafd00151468e5c9491b1baa078882fea76669352d64843d5bdaa8ad87b0a9549e452aef7f246a5919b4b1e4c0c1deaf6ea65bc2dd120a32'
             '06334e2ec70d56bea8ad2690cba23769758892c543b26a7108ee05771c431bae784e526ae1e62728879fd8037c6d12b66c65994f8029286724cf6235b80a9ac0'
-            '923a125605087e9796927e1feeea408bc128fe1cc66b8c1223d28e844f577d7e274c4c5ed045f79ea0188e1f02af460ee53b47e855e6170c345d61ba1a054d5c'
             'fffeb73e2055408c5598439b0214b3cb3bb4e53dac3090b880a55f64afcbc56ba5d32d1187829a08ef06d592513d158ced1fde2f20e2f01e967b5fbd3b2fafd4'
             )
 
