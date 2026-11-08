@@ -2,15 +2,13 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=hyprlayout
 pkgver=1.1.1
-pkgrel=0
-pkgdesc="LÖVE GUI to configure Hyprland monitor layouts"
+pkgrel=1
+pkgdesc="LÖVE GUI to configure monitor layouts on wayland (hyprland, umbriel, etc)"
 arch=(any)
 url="https://github.com/fdev31/hyprlayout"
 license=('MIT')
 depends=('love')
-optdepends=('hyprland: to apply the monitor configuration (hyprctl)'
-    'grim: live screen preview'
-)
+optdepends=('grim: live screen preview')
 makedepends=('zip')
 source=("https://github.com/fdev31/hyprlayout/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('80ffdbd9526af5a0f1d69073c41ba3bd')
