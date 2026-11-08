@@ -1,6 +1,6 @@
 pkgbase = ny-cli
 	pkgdesc = Beautiful terminal anime streaming client with artwork display, cloud sync, and watch progress tracking
-	pkgver = 7.0.1
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/AnjishnuSengupta/ny-cli
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = ny-cli
 	depends = npm
 	optdepends = mpv: recommended video player with IPC support
 	optdepends = vlc: alternative video player
+	optdepends = ffmpeg: stream recording and subtitle muxing
+	optdepends = webtorrent-cli: torrent streaming and downloading support
 	optdepends = chafa: terminal image rendering for artwork display
-	optdepends = bun: enhanced terminal UI experience
-	source = ny-cli-7.0.1.tar.gz::https://github.com/AnjishnuSengupta/ny-cli/archive/v7.0.1.tar.gz
+	source = ny-cli-7.1.0.tar.gz::https://github.com/AnjishnuSengupta/ny-cli/archive/v7.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ny-cli
