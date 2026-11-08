@@ -1,6 +1,6 @@
 pkgbase = readmarks-bin
 	pkgdesc = TUI RSS Reader and Bookmarker
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/adsellor/readmarks
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = readmarks-bin
 	provides = readmarks
 	conflicts = readmarks
 	options = !strip
-	source = README-0.3.0.md::https://raw.githubusercontent.com/adsellor/readmarks/v0.3.0/README.md
-	sha256sums = 9de09d33653b093f9a018c0a0fa084cbfcb8d5b82c6a41bc43c30fcec979f4ee
-	source_x86_64 = readmarks-x86_64-0.3.0::https://github.com/adsellor/readmarks/releases/download/v0.3.0/readmarks-linux-x86_64
-	sha256sums_x86_64 = d153e1e86bb33ec251781ee5b9760fde37cff5691cf5786e0d01bf1e39f2d018
-	source_aarch64 = readmarks-aarch64-0.3.0::https://github.com/adsellor/readmarks/releases/download/v0.3.0/readmarks-linux-aarch64
-	sha256sums_aarch64 = 909cd9ae29b42b4cc9629f28af3bcf1af971aab1c56400fe7dc4bf93c88e0c47
+	source = README-0.3.2.md::https://raw.githubusercontent.com/adsellor/readmarks/v0.3.2/README.md
+	sha256sums = ded6537c1e401a8316ab891b179aaeec5e8579869a2ad2a0061ae51fd3904292
+	source_x86_64 = readmarks-x86_64-0.3.2::https://github.com/adsellor/readmarks/releases/download/v0.3.2/readmarks-linux-x86_64
+	sha256sums_x86_64 = 912dfaecf4b8df9773e6e908093e519fd6336af66c69c51a4fa4e03d13af1ba3
+	source_aarch64 = readmarks-aarch64-0.3.2::https://github.com/adsellor/readmarks/releases/download/v0.3.2/readmarks-linux-aarch64
+	sha256sums_aarch64 = 5f7767941f28b170e3ed4f892e47233570b50a4c5c0cbea29e2e7efff4d1406d
 
 pkgname = readmarks-bin
