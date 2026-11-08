@@ -1,7 +1,7 @@
 # Maintainer: tmtaxman <tmtaxman2 at gmail dot com>
 
 pkgname=omnidb-bin
-pkgver=5.4.2
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="OmniDB Desktop Application"
 arch=('x86_64')
@@ -17,9 +17,9 @@ source=("$pkgname-$pkgver.tar.gz::$_source/releases/download/v$pkgver/OmniDB-lin
     "$pkgname-LICENSE::https://raw.githubusercontent.com/heptau/omnidb/refs/heads/master/LICENSE"
     "omnidb.png::https://raw.githubusercontent.com/heptau/omnidb/master/wails-app/build/appicon.png"
 )
-sha256sums=('d74bd454ddf5e9b1dabe9fd44e4888a4845bb186c7acf28b9327afbf02c317f4'
+sha256sums=('d894a9f8b921ce63fd142683cc0d82d49ac614517cbdb0eab0bdf2dc9c6cc5fa'
             'f0d93a9344e68bfd296783b282d1fec6971a063ce44ced52f7dbd426ec68e4b6'
-            '12824039da10612b441a9d9a4f0ee6ad21577a9e1dba3ec5f05c8e34d77f7961')
+            '3e4202f15cda411ca517f31bcdbdc95530c28fc9f398ae3c0d22112ca1cece69')
 
 package() {
     cd "OmniDB-linux"
