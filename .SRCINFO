@@ -1,6 +1,6 @@
 pkgbase = ely-tree-app-bin
 	pkgdesc = ElyTree - file tree and document organizer from the Ely Office suite
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://office.elygpui.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ely-tree-app-bin
 	conflicts = ely-tree-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = ely-tree_0.1.14-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.14/ely-tree_0.1.14-1_amd64.deb
-	sha256sums_x86_64 = bcf1a45e6b652af7795b2c4e8f89705a84e5249f66ba2db7265c38f4de319f15
+	source_x86_64 = ely-tree_0.1.15-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v0.1.15/ely-tree_0.1.15-1_amd64.deb
+	sha256sums_x86_64 = 5ea47f3411414d0af8a8a710e505e06f5cbbb2d821c8bd4b908a2b8b3c34b8ed
 
 pkgname = ely-tree-app-bin
