@@ -5,10 +5,10 @@
 #export LG2=en
 
 pkgname=i2p
-pkgver=2.13.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="A distributed anonymous network"
-url="https://geti2p.net"
+url="https://i2p.net"
 license=('GPL2')
 arch=('any')
 depends=('java-runtime>=17' 'java-service-wrapper')
@@ -25,7 +25,7 @@ options=(!strip)
 validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8'
               '70D2060738BEF80523ACAFF7D75C03B39B5E14E1')
 
-_url="https://files.i2p-projekt.de/${pkgver}"
+_url="https://files.i2p.net/${pkgver}"
 #_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
@@ -35,7 +35,7 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         #upstream.patch::'https://github.com/i2p/i2p.i2p/commit/6c0e18d3.patch'
 )
 
-sha256sums=('4ea60401855d2dc3a0058b472829c9060291907bfe48c173c57dde6e7f5eb6ad'
+sha256sums=('b9c73f27ca801cf77127dfcd9390356686862684a61a609ac000d652a62c7a71'
             'SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
