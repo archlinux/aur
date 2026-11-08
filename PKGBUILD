@@ -3,14 +3,14 @@
 _build_rel='233'
 pkgname='hachimi-world-bin'
 pkgver='1.7.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A community-driven open-source meme culture music community, bin version.'
 arch=('x86_64')
 depends=('hicolor-icon-theme')
 url='https://hachimi.world/'
 license=('AGPL-3.0')
 source=(
-  "https://storage.hachimi.world/distribution/linux/hachimi-world-${pkgver}-${_build_hash}.deb"
+  "https://storage.hachimi.world/distribution/linux/hachimi-world-${pkgver}-${_build_rel}.deb"
   "hachimi_world.desktop"
 )
 sha256sums=(
