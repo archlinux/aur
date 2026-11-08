@@ -7,7 +7,7 @@
 _gitname='fenrir'
 pkgname="${_gitname}"
 pkgver=2026.10.31
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A user space console screen reader written in Go'
 arch=('x86_64' 'aarch64')
@@ -79,6 +79,8 @@ package()
   install -Dm644 docs/fenrir.1 "$pkgdir/usr/share/man/man1/fenrir.1"
   install -Dm644 README.md CREDITS docs/user.md docs/user.txt \
     -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 docs/audio-recovery.md \
+    "$pkgdir/usr/share/doc/$pkgname/docs/audio-recovery.md"
   install -Dm644 "$srcdir/fenrirscreenreader.service" \
     "$pkgdir/usr/lib/systemd/system/fenrirscreenreader.service"
 }
