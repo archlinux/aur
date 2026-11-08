@@ -47,7 +47,7 @@ build() {
 
   pnpm build
   cd src-tauri
-  cargo build --release --locked
+  cargo build --release --locked --offline || cargo build --release --offline
 }
 
 package() {
