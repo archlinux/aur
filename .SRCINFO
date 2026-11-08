@@ -1,6 +1,6 @@
 pkgbase = tscsync
 	pkgdesc = Pre-boot TSC sync for AMD (UEFI) so Linux keeps the TSC clocksource
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/Zanasin/tscsync
 	install = tscsync.install
@@ -19,9 +19,9 @@ pkgbase = tscsync
 	conflicts = tscsync-git
 	options = !strip
 	options = !lto
-	source = tscsync-2.2.2.tar.gz::https://github.com/Zanasin/tscsync/archive/refs/tags/v2.2.2.tar.gz
+	source = tscsync-2.2.3.tar.gz::https://github.com/Zanasin/tscsync/archive/refs/tags/v2.2.3.tar.gz
 	source = 0001-arch-usr-paths.patch
-	sha256sums = b37e81e3a99eb9038e41522fa868022b5b6759c9ba84639cc5b874bbb0fb542e
-	sha256sums = c220ba2b09414a4b6099ced814e11c0b1f524abe7eaeb6824476974430e80f65
+	sha256sums = d0e53df3c3938c185d7331a375a127a6ffc8f52d1e1c135022e0a5ebb7460faa
+	sha256sums = eb97a977731fe1e652be401a4f906f238bcf677b488b96c53ca7a374fb1cae0f
 
 pkgname = tscsync

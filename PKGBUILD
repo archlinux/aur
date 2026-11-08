@@ -1,10 +1,11 @@
 # Maintainer: Michael Scalet <michele.scalet at jlbbooks dot it>
 # Upstream: https://github.com/Zanasin/tscsync
 #
-# 0001 adapts upstream scripts/unit template to Arch /usr paths (tscsync-setup).
+# 0001 adapts upstream scripts/unit template to Arch /usr paths (tscsync-setup)
+# and sources install-policy.inc.sh from DATADIR.
 
 pkgname=tscsync
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Pre-boot TSC sync for AMD (UEFI) so Linux keeps the TSC clocksource'
 arch=('x86_64')
@@ -12,8 +13,8 @@ url='https://github.com/Zanasin/tscsync'
 license=('MIT')
 depends=('bash' 'util-linux' 'systemd')
 makedepends=('curl' 'binutils' 'gcc' 'make')
-# sbsigntools: optional — with Secure Boot off, upstream install.sh no longer
-# hard-fails on a leftover DKMS key without sbsign (v2.2.2 / Zanasin/tscsync#7).
+# sbsigntools: optional — SB off installs unsigned without sbsign (since 2.2.2);
+# SB on needs an enrolled key fingerprint in mokutil --db / --list-enrolled (#9).
 optdepends=(
   'sbsigntools: sign the EFI binary during tscsync-setup (needed if Secure Boot is on)'
   'sbctl: enroll/sign with your Secure Boot keys'
@@ -28,8 +29,8 @@ source=(
   '0001-arch-usr-paths.patch'
 )
 sha256sums=(
-  'b37e81e3a99eb9038e41522fa868022b5b6759c9ba84639cc5b874bbb0fb542e'
-  'c220ba2b09414a4b6099ced814e11c0b1f524abe7eaeb6824476974430e80f65'
+  'd0e53df3c3938c185d7331a375a127a6ffc8f52d1e1c135022e0a5ebb7460faa'
+  'eb97a977731fe1e652be401a4f906f238bcf677b488b96c53ca7a374fb1cae0f'
 )
 
 prepare() {
@@ -55,6 +56,8 @@ package() {
     "${pkgdir}/usr/lib/tscsync/custom.cfg.in"
   install -Dm644 boot/tscsync-report.service.in \
     "${pkgdir}/usr/lib/tscsync/tscsync-report.service.in"
+  install -Dm644 scripts/install-policy.inc.sh \
+    "${pkgdir}/usr/lib/tscsync/install-policy.inc.sh"
 
   install -Dm755 boot/tscsync-report \
     "${pkgdir}/usr/lib/tscsync/tscsync-report"
