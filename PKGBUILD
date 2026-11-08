@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname="netgen"
 pkgname="${_pkgname}-lvs"
-pkgver=1.5.327
+pkgver=1.5.328
 pkgrel=1
 pkgdesc="Layout Vs Schematic (LVS) for comparing SPICE or Verilog netlists"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 provides=('netgen-lvs')
 conflicts=("${pkgname}-git")
 source=("${_pkgname}::git+${_url}#tag=${pkgver}")
-b2sums=('b573bc26f949ce2ff51d0991dd51bfab9c63600ff650c7b159c69c1c33fda953a6db60c1dd5f27d5d29d54997ded5b2c7139d6213ca6a45acfaba28d0d542304')
+b2sums=('59a3882d8eadbd70d1d32937bfa0f201756d1a5cf92502157a8b7176dc49d7dce47e06a6963fa6c89d407b1de5ade1355648023a9e09dbd75decb73d0650c42c')
 
 build() {
     local custom_cflags=(
