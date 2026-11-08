@@ -1,7 +1,7 @@
 # Maintainer: bromigOS <packages@bromigos.org>
 # The standalone CLI, Textual console, adapters, catalog and provisioning.
 pkgname=bromigos-lab
-pkgver=0.1.0
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Standalone homelab console, adapters, model catalog and reviewed provisioning'
 arch=('any')
@@ -17,6 +17,7 @@ optdepends=('gnupg: verify signed model catalog updates'
             'sops: encrypt generated lab credentials without Vault'
             'age: recipients for encrypted lab credentials'
             'openssh: provision a Linux box over SSH'
+            'python-zeroconf: bromigos lab connect --find hears devices that announce themselves (mDNS)'
             'bromigos-homelab: desktop panels, live decks and VECTOR plugins'
             'bromigos-core: desktop target commands, art jobs and Den TV media tools'
             'kubectl: the kubernetes source (read-only kubeconfig)'
@@ -27,11 +28,11 @@ optdepends=('gnupg: verify signed model catalog updates'
             'python-boto3: s3 sources: bucket sizes (with a read-only key)'
             'poppler: the ocr job kind: PDF pages')
 makedepends=('python' 'gnupg')
-checkdepends=('python-textual' 'python-cairo' 'python-gobject' 'pango' 'python-psutil')
+checkdepends=('python-textual' 'python-cairo' 'python-gobject' 'pango' 'python-psutil' 'python-zeroconf')
 options=('!debug')
-_tag=bromigos-lab-v0.1.0
+_tag=bromigos-lab-v0.1.5
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('de6777141a90e03169535d414259aaa8b716dfc09e361d3363ef321b9f7a8a5f')
+sha256sums=('aed9b4c1dbd7fe257e5cade6429184ee385f0debef8fc3548c765a8788ff234a')
 _source_root() { printf '%s' "$srcdir/bromigOS-${_tag#v}"; }
 check() {
   _root=$(_source_root)
