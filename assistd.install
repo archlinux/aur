@@ -15,9 +15,9 @@ post_install() {
 ==> Enable and start the user service:
       systemctl --user enable --now assistd
 
-==> CUDA acceleration for whisper STT (NVIDIA, optional):
-      Rebuild from source with: cargo build --release --features cuda
-      Requires the 'cuda' package and an NVIDIA GPU.
+==> GPU speech-to-text (NVIDIA, optional):
+      Rebuild from source against sherpa-onnx's CUDA libraries; see the
+      README. Requires the 'cuda' and 'cudnn' packages.
 
 EOF
 }

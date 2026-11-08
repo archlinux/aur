@@ -1,7 +1,7 @@
 # Maintainer: gnolruf <112510094+gnolruf@users.noreply.github.com>
 
 pkgname=assistd
-pkgver=1.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A local-model agent daemon for Linux (LLM + voice + tools + WM integration)"
 arch=('x86_64')
@@ -16,7 +16,8 @@ depends=(
 )
 optdepends=(
   'llama.cpp: provides llama-server (required to run a local LLM backend)'
-  'piper-tts: Piper text-to-speech voice output'
+  'espeak-ng: phonemizer for Piper (vits) text-to-speech voices'
+  'searxng-git: provides searxng-run for the web search command'
   'maim: X11 full/region screenshot capture'
   'slop: maim --select region picker'
   'grim: Wayland full/region screenshot capture'
@@ -25,7 +26,7 @@ optdepends=(
   'sway: Wayland focused-window screenshot via swaymsg'
   'hyprland: Wayland focused-window screenshot via hyprctl'
   'bubblewrap: sandboxed bash command tool'
-  'pipewire-pulse: PulseAudio routing for audio playback (otherwise raw ALSA)'
+  'pipewire-alsa: route audio through PipeWire (otherwise raw ALSA)'
   'notification-daemon: desktop notifications from the tray'
 )
 makedepends=(
@@ -38,7 +39,7 @@ makedepends=(
 backup=('etc/assistd/config.toml')
 install=assistd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('30611516b6325135c60beee3f10e204a131a89eeb85db2dc9cc7542634429141')
+sha256sums=('6bb3decd6476d6f08fbd291a9c07b2072b29b84a6d250f37355fff5d531411d5')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -49,19 +50,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
-  export CARGO_TARGET_DIR=target
-
-  # x86-64-v3 baseline. Upstream GGML_NATIVE=ON would inject -march=native
-  # and tie the binary to the build host's CPU.
-  export GGML_NATIVE=OFF
-  export GGML_AVX=ON
-  export GGML_AVX2=ON
-  export GGML_FMA=ON
-
-  # TODO: drop once whisper-rs-sys bumps to a whisper.cpp with the const
-  # cast in ggml/src/ggml-cpu/arch/x86/repack.cpp fixed. GCC >= 15 rejects
-  # the current code as a hard error.
-  export CXXFLAGS="${CXXFLAGS:-} -fpermissive"
+  export CARGO_TARGET_DIR="$PWD/target"
 
   cargo build --release --frozen --locked
 }
@@ -70,6 +59,9 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm755 target/release/assistd "$pkgdir/usr/bin/assistd"
+  # sherpa-onnx for speech; the binary's runpath includes $ORIGIN/../lib/assistd.
+  install -Dm644 -t "$pkgdir/usr/lib/assistd" \
+    target/release/libsherpa-onnx-c-api.so target/release/libonnxruntime.so
 
   install -Dm644 config/config.sample.toml "$pkgdir/etc/assistd/config.toml"
 
@@ -81,7 +73,6 @@ package() {
 
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/architecture.md "$pkgdir/usr/share/doc/$pkgname/architecture.md"
-  install -Dm644 docs/tools.md "$pkgdir/usr/share/doc/$pkgname/tools.md"
   cp -r docs/wm "$pkgdir/usr/share/doc/$pkgname/wm"
   install -Dm644 config/config.sample.toml \
     "$pkgdir/usr/share/doc/$pkgname/config.sample.toml"
