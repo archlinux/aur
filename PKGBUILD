@@ -1,8 +1,8 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.56.2
-pkgrel=2
+pkgver=0.57.1
+pkgrel=1
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
 url='https://github.com/hyprwm/Hyprland'
@@ -20,6 +20,7 @@ depends=('aquamarine'
          'hyprutils'
          'hyprwire'
          'lcms2'
+         'libcanberra'
          'libdrm'
          'libei'
          'libgcc'
@@ -35,6 +36,7 @@ depends=('aquamarine'
          'pixman'
          're2'
          'readline'
+         'sdbus-cpp'
          'tomlplusplus'
          'util-linux-libs'
          'wayland')
@@ -58,22 +60,17 @@ conflicts=("${pkgname%-nox}")
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
-        "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git"
-        '91f29f23bb691462f8aa6171b964069aebc37910.patch')
-sha256sums=('ea03f0db7d00093c41d1ffcedf116ab3e0ae51e23a8672d03f88c1e7f1b05da2'
-            'SKIP'
-            'c2106bb51bc3bfa46168070336df36f5104edf5e9e0b7f7ffb7f3d153c43ba34')
+        "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
+sha256sums=('39f3fdb47a1d1a60e4b5aab99c7996a0eeed792b2c15887c8e768fe61196381f'
+            'SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
   git submodule init
   git submodule deinit subprojects/tracy
-  git submodule deinit subprojects/hyprland-protocols
   git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
   git -c protocol.file.allow=always submodule update
-
-  git apply "$srcdir/91f29f23bb691462f8aa6171b964069aebc37910.patch"
 }
 
 build() {
