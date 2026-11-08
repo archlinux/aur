@@ -18,15 +18,12 @@ makedepends=('git' 'npm' 'pnpm' 'go')
 changelog=opentubex.changelog
 source=("$pkgname-$pkgver.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}-beta.tar.gz"
         opentubex.desktop
-        opentubex.sh
-        default-build-architecture.patch)
+        opentubex.sh)
 sha256sums=('78712a8528ae5c41543d54b6c33c21324c87fe78bc3042fff954178d890f810d'
             '63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d'
-            '4779a1453099f738e59efb59a6f13ce192aaa9cababdce7db000253144e7ff9a'
-            '29decf1958ea0444e752db3b78434cbaa072a51b4976ef8b405d272c54c46125')
+            '4779a1453099f738e59efb59a6f13ce192aaa9cababdce7db000253144e7ff9a')
 
 prepare() {
-  patch -d "$srcdir/$_pkgname-$_pkgver" -Np1 -i "$srcdir/default-build-architecture.patch"
   sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron44'," \
     "$srcdir/$_pkgname-$_pkgver/_scripts/ebuilder.config.mjs"
   sed -i "/Platform\\.LINUX\\.createTarget/s/\\[[^]]*\\]/['dir']/" \

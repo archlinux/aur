@@ -17,10 +17,8 @@ pkgbase = opentubex
 	source = opentubex-0.37.4.tar.gz::https://github.com/OpenTubeX/OpenTubeX/archive/refs/tags/v0.37.4-beta.tar.gz
 	source = opentubex.desktop
 	source = opentubex.sh
-	source = default-build-architecture.patch
 	sha256sums = 78712a8528ae5c41543d54b6c33c21324c87fe78bc3042fff954178d890f810d
 	sha256sums = 63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d
 	sha256sums = 4779a1453099f738e59efb59a6f13ce192aaa9cababdce7db000253144e7ff9a
-	sha256sums = 29decf1958ea0444e752db3b78434cbaa072a51b4976ef8b405d272c54c46125
 
 pkgname = opentubex
