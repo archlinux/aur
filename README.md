@@ -80,23 +80,27 @@ The CLI's default-path discovery is a client convenience and does not change tha
 
 `systemctl reload oxiroute.service` sends `SIGHUP` to the active runtime. On the supervised path, the
 master re-reads the canonical configuration, watches and re-resolves imported native dependencies,
-and performs an authenticated replacement when the listener descriptor manifest is unchanged. On
-the direct path, the existing generation watcher is woken to apply the same configuration update.
+and performs an authenticated replacement. Listeners the new configuration adds are bound before
+traffic switches, listeners it removes stop accepting and drain the connections they already
+accepted (bounded by `OXIROUTE_RELOAD_DRAIN_SECONDS`, default 3 hours), and unchanged listeners keep
+serving. If a new listener cannot be bound, the current generation stays active and the master logs
+the reason. On the direct path, the existing generation watcher is woken to apply the same
+configuration update.
 Candidate activation is asynchronous, so use `oxiroute generation status` to confirm the new
 generation is active. A rejected candidate leaves the current generation active and available for
-`oxiroute generation rollback`. Listener bind or descriptor-topology changes require a service
-restart; they are not silently applied by reload.
+`oxiroute generation rollback`. Only a Unix listener that keeps its path and changes its filesystem
+mode requires a service restart; it is not silently applied by reload.
 
 ## Release source
 
 `PKGBUILD` expects the checksum-pinned release asset
-`https://github.com/brauliobo/oxiroute/releases/download/v0.5.1/oxiroute-0.5.1.tar.gz`. The asset is a
-deterministic archive of committed files with the `oxiroute-0.5.1/` prefix and without this
+`https://github.com/brauliobo/oxiroute/releases/download/v6.0.0/oxiroute-6.0.0.tar.gz`. The asset is a
+deterministic archive of committed files with the `oxiroute-6.0.0/` prefix and without this
 `packaging/arch` directory. Excluding untracked and ignored files prevents local build or benchmark
 artifacts from entering a release. Excluding the AUR recipe avoids making the source checksum depend
 on the checksum recorded inside the recipe.
 
-The v0.5.1 archive includes the supervised launcher and related workspace crates. Publish the release
+The v6.0.0 archive includes the supervised launcher and related workspace crates. Publish the release
 archive before using the recipe, then keep the source checksum synchronized with that exact asset and
 regenerate `.SRCINFO`.
 
@@ -112,7 +116,7 @@ Examples:
 
 ```sh
 ./build-local.sh
-./build-local.sh /path/to/oxiroute-0.5.1.tar.gz --cleanbuild
+./build-local.sh /path/to/oxiroute-6.0.0.tar.gz --cleanbuild
 ```
 
 Build products and source archives are written below `.makepkg/`, which is ignored by Git. Cargo's
