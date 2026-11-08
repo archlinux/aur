@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=treestamps
 pkgname=python-${_base}
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Create timestamp records for recursive operations on directory trees"
 url="https://github.com/ajslater/${_base}"
@@ -10,7 +10,7 @@ makedepends=(python-build python-installer python-uv-build)
 license=(GPL-3.0-or-later)
 arch=(any)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('564acd98af8999d57f54508c3be6e3e8bed064c3a9d42de96d46ff2096901716986b5cd3907fa5179d0fef5e246dbc0a61ec43512f64642f7ba6848759f00f9b')
+sha512sums=('cc51b1ac1bca2bc7b7c51e1c8d3e96029d66e27fb7f250e9d47aca09d03fb54191f7de7447ded80e75e3116f1d7706f581be6ab5452ba47e0d797445bd0747bd')
 
 build() {
   cd ${_base}-${pkgver}
