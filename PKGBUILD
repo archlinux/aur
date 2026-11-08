@@ -2,9 +2,9 @@
 # riptide-browser: built from the release tag, against the CEF build its cef crate pins.
 # The versions and checksum are updated at each release.
 pkgname=riptide-browser
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
-_cef=156.0.15+gcf671c0+chromium-156.0.8078.80
+_cef=156.0.26+g8ea0c73+chromium-156.0.8078.88
 pkgdesc="Keyboard-driven web browser with vim-like bindings, built on CEF"
 arch=('x86_64')
 url="https://joshzcold.github.io/riptide/"
@@ -19,7 +19,7 @@ source=("riptide::git+https://github.com/joshzcold/riptide.git#tag=v${pkgver}"
         "https://cef-builds.spotifycdn.com/cef_binary_${_cef}_linux64_minimal.tar.bz2")
 # The CEF index publishes SHA-1 checksums only.
 sha1sums=('SKIP'
-          '09235427222e026a4f34399742df27c5d98a4f8a')
+          'cacfbb7d7261fea682fb67c108de7e4347519ff7')
 
 prepare() {
     # Lay CEF out the way the cef-dll-sys build script expects it in CEF_PATH.
