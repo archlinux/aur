@@ -15,7 +15,7 @@ pkgbase = python-citeproc-py
 	makedepends = rnc2rng
 	depends = python
 	depends = python-lxml
-	optdepends = python-citeproc-styles: for more citation styles
+	optdepends = python-citeproc-py-styles: for more citation styles
 	source = python-citeproc-py::git+https://github.com/citeproc-py/citeproc-py.git#tag=ba46164947903d7bddf895924f910bca66497a82
 	source = csl-schema::git+https://github.com/citation-style-language/schema.git
 	source = csl-locales::git+https://github.com/citation-style-language/locales.git
