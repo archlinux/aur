@@ -1,6 +1,6 @@
 # Maintainer: CS2 Server Blocker contributors
 pkgname=cs2blocker
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Linux-native Counter-Strike 2 server blocker with an interactive world map"
 arch=('any')
