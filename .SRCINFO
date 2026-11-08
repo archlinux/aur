@@ -1,6 +1,6 @@
 pkgbase = mediasync
 	pkgdesc = Universal media session bridge: local MPRIS players and Jellyfin sessions behind one local API
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/arkaizn/mediasync
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = mediasync
 	optdepends = keepassxc: Secret Service backend for Jellyfin tokens
 	conflicts = mediasync-git
 	options = !debug
-	source = mediasync-0.2.2.tar.gz::https://github.com/arkaizn/mediasync/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = e7c5e899482d4c8124fdc1c7806681444fb098649473c39bb248bd797ce9ba60
+	source = mediasync-0.2.3.tar.gz::https://github.com/arkaizn/mediasync/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = c180b355e8b002abe33293fcc30d04c5a4bd6adfd0c83728ec2187c4e48cdb6d
 
 pkgname = mediasync
