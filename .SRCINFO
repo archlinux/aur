@@ -1,19 +1,27 @@
 pkgbase = oda-file-converter
 	pkgdesc = Converts files between the .dwg and .dxf file formats
-	pkgver = 27.1
+	pkgver = 27.10
 	pkgrel = 1
 	url = https://www.opendesign.com/guestfiles/oda_file_converter
 	arch = x86_64
 	license = custom
-	depends = qt5-base
 	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon-x11
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = glib2
 	conflicts = teigha-file-converter
 	replaces = teigha-file-converter
-	source = ODAFileConverter_QT6_lnxX64_8.3dll_27.1.deb::https://www.opendesign.com/guestfiles/get?filename=ODAFileConverter_QT6_lnxX64_8.3dll_27.1.deb
+	options = !strip
+	source = ODAFileConverter_QT6_lnxX64_11dll_27.10.deb::https://www.opendesign.com/guestfiles/get?filename=ODAFileConverter_QT6_lnxX64_11dll_27.10.deb
 	source = oda-file-converter
 	source = oda-file-converter.desktop
-	md5sums = cce7f2b1447d134abdc6fe127fed3585
-	md5sums = 9c4ac254a0fc8bbe099bc938f236ee64
-	md5sums = cf41b2da616f6d7b124cba80f644ecbe
+	md5sums = 4099d7b002eceadb007bf0dfa76b1128
+	md5sums = 6d8843a38923c50ac9c98c70ae34e327
+	md5sums = c52b1dc291e81a7cb44cfed76c39c610
 
 pkgname = oda-file-converter

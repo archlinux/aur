@@ -3,7 +3,7 @@
 # Contributor: Zanny <lordzanny@gmail.com>
 
 pkgname=oda-file-converter
-pkgver=27.1
+pkgver=27.10
 pkgrel=1
 pkgdesc="Converts files between the .dwg and .dxf file formats"
 arch=('x86_64')
@@ -11,25 +11,28 @@ url="https://www.opendesign.com/guestfiles/oda_file_converter"
 license=('custom')
 conflicts=('teigha-file-converter')
 replaces=('teigha-file-converter')
-depends=('qt5-base' 'hicolor-icon-theme')
-source=('ODAFileConverter_QT6_lnxX64_8.3dll_27.1.deb::https://www.opendesign.com/guestfiles/get?filename=ODAFileConverter_QT6_lnxX64_8.3dll_27.1.deb'
+depends=('hicolor-icon-theme' 'libglvnd' 'libx11' 'libxcb' 'libxkbcommon-x11'
+         'dbus' 'fontconfig' 'freetype2' 'glib2')
+options=('!strip')
+source=("ODAFileConverter_QT6_lnxX64_11dll_${pkgver}.deb::https://www.opendesign.com/guestfiles/get?filename=ODAFileConverter_QT6_lnxX64_11dll_${pkgver}.deb"
         'oda-file-converter'
         'oda-file-converter.desktop')
-md5sums=('cce7f2b1447d134abdc6fe127fed3585'
-         '9c4ac254a0fc8bbe099bc938f236ee64'
-         'cf41b2da616f6d7b124cba80f644ecbe')
+md5sums=('4099d7b002eceadb007bf0dfa76b1128'
+         '6d8843a38923c50ac9c98c70ae34e327'
+         'c52b1dc291e81a7cb44cfed76c39c610')
 _ogname='ODAFileConverter'
 
 package() {
     tar xJf 'data.tar.xz'
 
-    install -Dm755 "$srcdir/usr/bin/${_ogname}_$pkgver.0.0/$_ogname" "$pkgdir/opt/$pkgname/$pkgname"
-
-    for ext in '*.tx' '*.so'; do
-        for file in "$srcdir/usr/bin/${_ogname}_$pkgver.0.0/$ext"; do
-            install -m644 $file "$pkgdir/opt/$pkgname/"
-        done
-    done
+    # The package bundles its own Qt6 (lib/, plugins/, qt.conf) and finds it
+    # relative to the executable, so install the whole tree as-is.
+    install -d "$pkgdir/opt/$pkgname"
+    cp -r --no-preserve=ownership "$srcdir/usr/bin/${_ogname}_${pkgver}.0.0/." "$pkgdir/opt/$pkgname/"
+    rm -f "$pkgdir/opt/$pkgname/AppRun"
+    find "$pkgdir/opt/$pkgname" -type d -exec chmod 755 {} +
+    find "$pkgdir/opt/$pkgname" -type f -exec chmod 644 {} +
+    chmod 755 "$pkgdir/opt/$pkgname/$_ogname"
 
     install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -38,6 +41,7 @@ package() {
         install -Dm644 "$srcdir/usr/share/icons/hicolor/$res/apps/$_ogname.png" "$pkgdir/usr/share/icons/hicolor/$res/apps/$pkgname.png"
     done
 
-    # Freecad auto-detects Teigha by the "TeighaFileConverter" name
-    ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/TeighaFileConverter"
+    # FreeCAD looks for "ODAFileConverter" (or the legacy "TeighaFileConverter")
+    ln -s "$pkgname" "$pkgdir/usr/bin/$_ogname"
+    ln -s "$pkgname" "$pkgdir/usr/bin/TeighaFileConverter"
 }
