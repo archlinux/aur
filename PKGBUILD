@@ -1,6 +1,6 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=veila-bin
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Secure, elegant, and fast Wayland screen locker"
 arch=('x86_64')
@@ -9,29 +9,26 @@ license=('GPL-3.0-or-later')
 provides=('veila')
 conflicts=('veila' 'veila-git')
 options=('!debug')
-depends=('libxkbcommon' 'pam')
-optdepends=('systemd: enable the bundled user services with systemctl --user')
+depends=('libxkbcommon' 'pam' 'wayland')
+optdepends=('systemd: optional idle/sleep watcher via veila.service'
+            'fontconfig: resolve installed font families and script fallback fonts')
 backup=('etc/pam.d/veila')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Veila/releases/download/$pkgver/veila-$pkgver-x86_64-linux.tar.gz"
   "veila.pam"
 )
-sha256sums=('fbc94b3dc346e88a9797544e99683d0d893928f4324038a743c052313ad1037b'
+sha256sums=('0e634790cbeb9ecc5e16799a61e080ac186c39e79c5522f9fe8522693406e6dc'
             '2f9b7a7a8a8583ed40969240ee7d0d42ffba4a44b69a7d241bd60634795a8e84')
 
 package() {
   cd "veila-$pkgver-x86_64-linux"
 
   install -Dm755 bin/veila "$pkgdir/usr/bin/veila"
-  install -Dm755 bin/veilad "$pkgdir/usr/bin/veilad"
-  install -Dm755 bin/veila-curtain "$pkgdir/usr/bin/veila-curtain"
+  ln -s veila "$pkgdir/usr/bin/veilad"
 
-  install -Dm644 share/veila/systemd/veilad.service \
-    "$pkgdir/usr/lib/systemd/user/veilad.service"
-  if [[ -f share/veila/systemd/veila-idle.service ]]; then
-    install -Dm644 share/veila/systemd/veila-idle.service \
-      "$pkgdir/usr/lib/systemd/user/veila-idle.service"
-  fi
+  install -Dm644 share/veila/systemd/veila.service \
+    "$pkgdir/usr/lib/systemd/user/veila.service"
+  ln -s veila.service "$pkgdir/usr/lib/systemd/user/veilad.service"
   install -Dm644 "$srcdir/veila.pam" "$pkgdir/etc/pam.d/veila"
 
   local asset_dir asset_file
