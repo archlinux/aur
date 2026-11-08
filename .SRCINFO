@@ -1,0 +1,23 @@
+pkgbase = donuttaskmanager
+	pkgdesc = GTK4/libadwaita task manager and performance monitor for Linux (formerly Task Manager)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/DonutsDelivery/task-manager-linux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = dbus
+	depends = hicolor-icon-theme
+	optdepends = nvidia-utils: NVIDIA GPU monitoring via NVML
+	optdepends = lm_sensors: CPU temperature monitoring
+	provides = task-manager-linux
+	conflicts = task-manager-linux
+	conflicts = donuttaskmanager-bin
+	replaces = task-manager-linux
+	source = donuttaskmanager-0.4.0.tar.gz::https://github.com/DonutsDelivery/task-manager-linux/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = c3a45e9e8273db159f8b0c00407a559f3524d0a32b8cacc1861ad2c971f9ce18
+
+pkgname = donuttaskmanager
