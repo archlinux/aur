@@ -1,7 +1,7 @@
 # Maintainer: Mikołaj <mikolaj.q@wp.pl>
 
 pkgname=nudl-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Unofficial downloader for Hyundai, Kia and Genesis (HMG) infotainment navigation firmware (precompiled binary)"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ source_x86_64=(
   "$pkgname-$pkgver-x86_64.zip::https://github.com/chenxiaolong/nudl/releases/download/v$pkgver/nudl-$pkgver-x86_64-unknown-linux-musl.zip"
   "$pkgname-$pkgver-x86_64.ssh-sig::https://github.com/chenxiaolong/nudl/releases/download/v$pkgver/nudl-$pkgver-x86_64-unknown-linux-musl.zip.sig"
 )
-sha256sums_x86_64=('2e51392a7a0ef89b88139bf9b75e505a610281c9760f5b24a39ec547d6d1a82b'
-                   '6fa7f535b5aa5c30a9e6a1ba159d40662a830924cef7a4f63710df433bdaed65')
-sha256sums_aarch64=('50e87d01895f58c8a571b1c5cf461b1fbcfa8845ca77cc84e9c04637f4e6a5f6'
-                    '39a601ec34c499fd552fae8a0274ede7cb64251b6f7b97ca377184b2085af4bf')
+sha256sums_x86_64=('66d0e1c6ab35a5ca372ed47125bbb633d9a5c995347651910b535caff94ad028'
+                   '53b6661231ad81562ddbd01dc7c43156c1a0d630d39aed892564b548a6ae18f0')
+sha256sums_aarch64=('6053e9de1723306fd52e1ecba1696e51384b9b539d08ccb5e37784ad2ccf7e6a'
+                    '228267b6dcf6060b38389c08f3d2620a558bf5108c96961546d8f4b9dd519469')
 
 source_aarch64=(
   "$pkgname-$pkgver-aarch64.zip::https://github.com/chenxiaolong/nudl/releases/download/v$pkgver/nudl-$pkgver-aarch64-unknown-linux-musl.zip"
