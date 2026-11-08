@@ -1,0 +1,12 @@
+pkgbase = valafmt
+	pkgdesc = An opinionated code formatter for the Vala programming language
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Aylur/valafmt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = valafmt-0.3.0.tar.gz::https://static.crates.io/crates/valafmt/valafmt-0.3.0.crate
+	sha256sums = 9378a6e12675b649d5270f4e4eec35e2dea6d25fcf9f5067cfb133672a7741c7
+
+pkgname = valafmt
