@@ -1,0 +1,22 @@
+pkgbase = ezstream-git
+	pkgdesc = A streaming source client for Icecast
+	pkgver = 1.0.2.r17.g47757b6
+	pkgrel = 1
+	url = https://www.icecast.org/ezstream/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = check
+	makedepends = libshout
+	makedepends = libxml2
+	depends = glibc
+	depends = libshout.so
+	depends = libxml2.so
+	depends = taglib
+	provides = ezstream=1.0.2.r17.g47757b6
+	conflicts = ezstream
+	source = git+https://gitlab.xiph.org/xiph/ezstream.git
+	sha256sums = SKIP
+
+pkgname = ezstream-git
