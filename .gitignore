@@ -1,5 +1,3 @@
-src/
-pkg/
-LICENSE
-*.pkg.tar.*
-*.xpi
+*
+!/PKGBUILD
+!/.SRCINFO

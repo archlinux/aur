@@ -1,15 +1,15 @@
-# Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
+# Maintainer: Ireozar <ireo at ireo dot dev>
 
 _id=browserpass@maximbaz.com
 pkgname=browserpass-librewolf
-pkgver=3.9.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Librewolf extension for Browserpass, browser extension for zx2c4's pass (password manager)"
 arch=('any')
 url="https://github.com/browserpass/browserpass-extension"
 license=('ISC')
 depends=('browserpass')
-source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/4406417/browserpass-${pkgver}-fx.xpi"
+source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/4406417/browserpass_ce-${pkgver}.xpi"
         "https://raw.githubusercontent.com/browserpass/browserpass-extension/master/LICENSE")
 noextract=("${pkgname}-${pkgver}.xpi")
 sha256sums=('514c1a606d7bc82045d21bcbc6e5b1e5007446ab32aa01f0f17fbe0bde03ef0c'
