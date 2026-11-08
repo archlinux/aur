@@ -8,7 +8,7 @@ pkgdesc="Terminal dashboards for Python"
 _pypi_package=${pkgname#python-}
 _pypi_version=${pkgver}
 
-license=('LGPL-3.0')
+license=('LGPL-3.0-or-later')
 arch=('any')
 
 _url_pypi='https://pypi.org/project/dashing/'
@@ -25,6 +25,13 @@ source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_p
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('aeb56020ea2ae170a09498ff23f9c30cc76c02b83de3467e1262112578abbd9b')
 
+
+prepare() {
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
+
+    sed -i -e 's|requires = \[.*\]|requires = \[\"flit_core\"]|g' "./pyproject.toml"
+}
+
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
@@ -36,7 +43,5 @@ package() {
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    install -Dm644 "README.adoc" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSES/LGPL-3.0-or-later.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
