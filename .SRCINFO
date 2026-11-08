@@ -1,6 +1,6 @@
 pkgbase = qmlmaterial
 	pkgdesc = Material Design 3 for QML
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/hypengw/QmlMaterial
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = qmlmaterial
 	depends = qt6-declarative
 	depends = qt6-shadertools
 	provides = libqml_material.so
-	source = git+https://github.com/hypengw/QmlMaterial.git#tag=v0.6.1
-	sha256sums = aadd66c7ce52d5475597948a7fba7dbccd3ea1f06b6a131049aca384de259bf5
+	source = git+https://github.com/hypengw/QmlMaterial.git#tag=v0.7.0
+	sha256sums = 69cd07d637a291d3463907556a254c7d8322e97193e53de24e1bd42e40dd50fa
 
 pkgname = qmlmaterial
