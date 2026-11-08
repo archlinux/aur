@@ -4,7 +4,7 @@
 # Contributor: bartus <arch-user-repository]a[bartus.33mail.com
 
 pkgname=djv
-pkgver=3.7.5
+pkgver=3.7.6
 pkgrel=1
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
@@ -18,7 +18,7 @@ backup=()
 options=()
 source=("${pkgname}-${pkgver}.tgz::https://github.com/grizzlypeak3d/${pkgname^^}/archive/$pkgver.tar.gz" "0001-Don-t-unconditionally-include-libraw-in-package.patch" "0002-Honor-destdir-when-installing-navigation-doc.patch")
 noextract=()
-sha256sums=('15779b17aa382ac3923ac267238e0c6ce383d2f5599c70f526a22889cf404dbb'
+sha256sums=('462872e3c87391217c335bfe33bb72a5dc0d2f6abb8e64ffb9ce0f2c3cb907a4'
             'dffb16494d5e8b84d322502e516f965d57905d2b51f5cf87ac91b7e299233e09'
             '218fd3f8e4f5f7b969a34f19681f8ca373d4e51d8fb78182002d3636adc24458')
 
