@@ -1,7 +1,7 @@
 pkgbase = cs2blocker
 	pkgdesc = Linux-native Counter-Strike 2 server blocker with an interactive world map
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/NasirA1991/cs2-server-blocker
 	install = cs2blocker.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = cs2blocker
 	depends = gtk4
 	depends = libadwaita>=1.4
 	optdepends = ipset: iptables/ipset fallback when nftables is unavailable
-	source = cs2blocker::git+https://github.com/NasirA1991/cs2-server-blocker.git#tag=v0.1.0
+	source = cs2blocker::git+https://github.com/NasirA1991/cs2-server-blocker.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = cs2blocker

@@ -1,4 +1,5 @@
 post_install() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor >/dev/null 2>&1 || true
   systemctl daemon-reload >/dev/null 2>&1 || true
   cat <<'MSG'
 cs2blocker installed. Nothing was enabled or started.
@@ -13,6 +14,7 @@ MSG
 }
 
 post_upgrade() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor >/dev/null 2>&1 || true
   systemctl daemon-reload >/dev/null 2>&1 || true
 }
 
