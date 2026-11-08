@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="Shared PostgreSQL-backed control plane for Jobman."
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,9 +31,9 @@ backup=("etc/${_appname}/${_appname}.env")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_i686=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('e0dac73fbc2eb7b73cf05417a6c613d16fdb96c2469bbf5e8257185771d0e432')
-sha256sums_i686=('8f5c6f4f464a0d109c8ccbcc1112f63907c545e4edfce395f2f29f700779a015')
-sha256sums_aarch64=('47dcd8f344dc566d9aa2e0cca179dd0d47458dfa37ed5b6fcb85d820ef1aa386')
+sha256sums_x86_64=('003c9d81bd05f7753f36bc6ffdea7fc81e783c47ce532a5c88730c464c9619bc')
+sha256sums_i686=('785f19a4f3984a33a81a9da99cd3a645ce68abe0d1c91953a10565ed4ac3c8d7')
+sha256sums_aarch64=('605af6ac2047fae47e22347c9158acc20abbedf1774bbb154e13f2301f8938aa')
 
 
 prepare() {
