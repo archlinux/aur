@@ -1,0 +1,16 @@
+pkgbase = nenyactl-bin
+	pkgdesc = CLI tool for managing the Nenya AI API Gateway.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gumieri/nenyactl
+	license = MIT
+	conflicts = nenyactl
+	provides = nenyactl
+	arch = aarch64
+	source_aarch64 = nenyactl-bin_0.1.0_aarch64.tar.gz::https://github.com/gumieri/nenyactl/releases/download/v0.1.0/nenyactl_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1ccb1e3b066bf5ac023b9fbcef6355e2fce1b4eabe9851e0e892d205863c2d8a
+	arch = x86_64
+	source_x86_64 = nenyactl-bin_0.1.0_x86_64.tar.gz::https://github.com/gumieri/nenyactl/releases/download/v0.1.0/nenyactl_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c52e00f28859cd5a10f28b1719a659247137a70406c63ff83e0d71a130f2b3cf
+	
+pkgname = nenyactl-bin
