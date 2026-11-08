@@ -1,6 +1,6 @@
 pkgbase = mise-browser-bin
 	pkgdesc = Minimalist, privacy-focused, keyboard-centric web browser engineered for Linux
-	pkgver = 1.5.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/Rakosn1cek/Mise-browser
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = mise-browser-bin
 	sha256sums = ddef96e67b27c0d5e414b00eca783f6870035f355d1e951268b737b37bdaf068
 	sha256sums = f881e5cedbe81c2b4b2bc197837412f97498a9f546ba7c624b228a71b7e7504a
 	sha256sums = 6e87df509f054c560f1e228193a8dbc181f39847f12a8e24f1da862fe62390ea
-	source_x86_64 = https://github.com/Rakosn1cek/Mise-browser/releases/download/v1.5.0/mise-browser-1.5.0.tar.gz
-	sha256sums_x86_64 = 1b5ac622d620815f96107f247b22b2cce5f381cb730bdb07ca05e030e623acbc
+	source_x86_64 = https://github.com/Rakosn1cek/Mise-browser/releases/download/v1.6.1/mise-browser-1.6.1.tar.gz
+	sha256sums_x86_64 = ad781f6d4f0c7996c4d3fe5a91002d78282f0a2db3639f08f471e33c899deae2
 
 pkgname = mise-browser-bin
