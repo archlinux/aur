@@ -3,8 +3,8 @@
 pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=r13031.4842ee9e6
-pkgrel=5
+pkgver=0.37.4.r15.g02d0717ed
+pkgrel=1
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'aarch64')
 url="https://opentubex.org"
@@ -19,12 +19,14 @@ source=("git+$_ghurl"
         opentubex.desktop
         opentubex.sh)
 sha256sums=('SKIP'
-            '03448152a98649991bc6a1f1c74fa20fb43d729f5aa7d2a17d0b2074b22a08f2'
-            '6436422cf1dd8bd32bb2af550669aff232fc836e165ac995944b291c6c92d7a9')
+            '70ef7749ceb85a37945e69eef29933cc48114e420f795f682d0031e74455dba2'
+            'adafaa17c44e418469ab77c74a7d4d8de994a6e054c1e3ad035853bcf3365e47')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # v0.37.4-beta-10-ga2d164ad9 becomes 0.37.4.r10.ga2d164ad9.
+  git describe --long --tags --abbrev=9 --match 'v*-beta' \
+    | sed -E 's/^v//; s/-beta-([0-9]+)-g/.r\1.g/'
 }
 
 prepare() {
@@ -32,6 +34,11 @@ prepare() {
   # -git builds so we can keep package.json as the base SemVer.
   sed -i 's/NIGHTLY_VERSION_PATTERN.test(version) && commit.length > 0/commit.length > 0/' \
     "$srcdir/$_pkgname/src/renderer/helpers/versionDisplay.js"
+  grep -Fq 'return commit.length > 0' \
+    "$srcdir/$_pkgname/src/renderer/helpers/versionDisplay.js" || {
+    printf '%s\n' 'Failed to show the commit in About for -git builds' >&2
+    return 1
+  }
 
   sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron44'," \
     "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
@@ -65,7 +72,7 @@ package() {
 
   cd $_pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/opentubex.svg"
+  install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/opentubex.svg"
   cd ..
   install -Dm644 "opentubex.desktop" "$pkgdir/usr/share/applications/opentubex.desktop"
 }
