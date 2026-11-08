@@ -1,0 +1,18 @@
+pkgbase = eglantine-pgo-bin
+	pkgdesc = The Eglantine Nintendo Switch 2 emulator AppImage (PGO build).
+	pkgver = 0.1.0_rc3
+	pkgrel = 1
+	url = https://github.com/Eglantine-Community/Eglantine
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = eglantine
+	conflicts = eglantine
+	conflicts = eglantine-bin
+	conflicts = eglantine-git
+	options = !strip
+	source_x86_64 = eglantine-linux-x86_64-pgo.AppImage::https://github.com/Eglantine-Community/Eglantine/releases/download/v0.1.0-rc3/eglantine-linux-x86_64-pgo.AppImage
+	sha256sums_x86_64 = bda2b1bc32e9fd9273477a265b49d5d11829a6f8fec71b6d53f617bd27d5185a
+
+pkgname = eglantine-pgo-bin
