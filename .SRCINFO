@@ -1,0 +1,23 @@
+pkgbase = omawarden-app-dev-bin
+	pkgdesc = Omawarden desktop app for Bitwarden/Vaultwarden (development build)
+	pkgver = 0.4.0.dev.505499c
+	pkgrel = 1
+	url = https://github.com/omawarden/omawarden-app
+	install = omawarden-policy.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = libsecret
+	depends = polkit
+	depends = wl-clipboard
+	optdepends = libfido2: WebAuthn / Passkey / FIDO2 security key support
+	provides = omawarden-app
+	conflicts = omawarden-app
+	source_x86_64 = omawarden-app-x86_64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 52656d0efd6e327f963b44a19b66938181c6a229703e5db8337347eaca49778c
+	source_aarch64 = omawarden-app-aarch64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b2d3697c97e15e1660e2e944b0b8bba2318405eba90448ae527259b41cb134d9
+
+pkgname = omawarden-app-dev-bin
