@@ -1,6 +1,6 @@
 # Maintainer: N3oRay <n3oray77 at gmail dot com>
 pkgname=proton-autogen
-pkgver=3.4.4
+pkgver=3.4.5
 pkgrel=1
 pkgdesc="Automatic Proton/Wine launcher for Windows executables"
 arch=('any')
@@ -28,6 +28,7 @@ optdepends=(
     'gamescope: Micro-compositor'
     'dolphin: Dolphin file manager integration'
     'nemo: Nemo file manager integration'
+    'python-nautilus: Nautilus file manager integration'
 )
 
 makedepends=(
@@ -39,7 +40,7 @@ makedepends=(
 
 source=("proton-autogen-${pkgver}.tar.gz::https://github.com/N3oRay/proton-autogen/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('66cbc5c2cf7cd9179919e59c9e383a39f2e56936824165b06c4f305d817f8e77')
+sha256sums=('e77728ba604ad667836760b49db7133e9b453c89af537cc0c90c055421011956')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
