@@ -4,7 +4,7 @@
 pkgbase=bacularis
 pkgname=('bacularis-common' 'bacularis-web' 'bacularis-api' 'bacularis')
 pkgver=7.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Web interface and REST API for Bacula backup management'
 arch=('any')
 url='https://bacularis.app/'
@@ -26,11 +26,11 @@ source=(
 # Initial template: CI replaces all five SKIP values with verified SHA-256 sums.
 # Before manual AUR publication: makepkg -o && updpkgsums && makepkg -s.
 sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
+  '3fe79c7e805508bc0475f6322d89a73d1532fec67dc64a86ad767b36450f48de'
+  '219a6d819f9ddfe06723d3cc327d1d87e1793abf8b82503182d2e73c49da4f11'
+  'de769caa4c478c92feca9779695a89483df59408cb723dfb26993d65fed26427'
+  'd5a6cc516c3a02658dbfb6342c6383144873f61c5892f0d47039b41a01ec0f6d'
+  '6fec3d44ffd66572f11696c3c02366f2d0bf8b7850c21bf29b0f835439e60cec'
   '7786e7fd29240aa58f81cc9e68d3ce4013a45138e3237cb403d898368b524113'
   '38ba0ddfc9d152ba0acb01ae1bee69e93b64d34da1bf500082f8be9722b5898c'
   'b98385e7d167d2136ea6da405873f9ff48bbb697b9cfbff8349f28b233a12537'
