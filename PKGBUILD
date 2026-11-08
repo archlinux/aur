@@ -1,8 +1,8 @@
 # Maintainer: Remco Stoeten
 pkgname=kiekje-bin
-pkgver=0.1.0alpha12
+pkgver=0.1.0alpha13
 pkgrel=1
-_tag=0.1.0-alpha.12
+_tag=0.1.0-alpha.13
 pkgdesc='Capture, mark up and keep screenshots (release binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/remcostoeten/kiekje'
@@ -21,8 +21,8 @@ conflicts=('kiekje')
 options=('!strip' '!debug')
 source_x86_64=("kiekje-$_tag-x86_64-linux.tar.gz::$url/releases/download/v$_tag/kiekje-$_tag-x86_64-linux.tar.gz")
 source_aarch64=("kiekje-$_tag-aarch64-linux.tar.gz::$url/releases/download/v$_tag/kiekje-$_tag-aarch64-linux.tar.gz")
-sha256sums_x86_64=('78037ffcf251910e6bf36a30398f581066461e111395a0d8985a3cc0030b318e')
-sha256sums_aarch64=('dbd8f91f742c989c42f9fe560e6bc19a13c536e83671ef639071ffd3a6018c48')
+sha256sums_x86_64=('8dd1d1a0806bc7a526e9bc32aef444e1d5b715cd159f685dbf8202f4cd4724bd')
+sha256sums_aarch64=('01e05c56bbdd43d3a2894612a385d9495eb05088ff369f7b15bc9e471a0d36d6')
 
 package() {
     cd "kiekje-$_tag-$CARCH-linux"
