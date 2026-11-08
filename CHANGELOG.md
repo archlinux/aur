@@ -2,6 +2,35 @@
 
 All the changes made to runa are documented here.
 
+## [0.15.2] - 2026-11-08
+
+#### Pane backgrounds, entry colors in all panes and fixes.
+
+### Added
+- **Theme**:
+    - `[theme] bg` sets the background of all panes. `[theme.parent]` and `[theme.preview]` `bg` override it per pane.
+    - Override `[theme.entry]` per pane with `entry.fg` and `entry.bg` in `[theme.parent]` and `[theme.preview]`.
+
+### Fixed
+- **Theme**: `entry.bg` now correctly applies the background color to every entry and no longer fills the space around entries.
+- **Preview**: File previews no longer cut into the pane background.
+- **Tabs**: Switching to a tab for the first time no longer flashes `[Empty]`.
+
+### Changed
+- **Theme**:
+    - `[theme.entry]` now applies to all panes and colors the entry name and the default file and folder icons instead of the whole row. The selection bar still wins and colors the row.
+    - `[theme.parent] bg` now sets the parent pane background instead of the entry colors.
+    - `[theme.parent] fg` and `[theme.preview] fg` still work as an older name for `entry.fg`.
+
+### Internal
+- **Dependencies**:
+    - Updated `toml`, `unicode-width` and `trash`.
+    - Ran `cargo update`.
+
+
+---
+
+
 ## [0.15.1] - 2026-10-28
 
 #### Fix to tabs at startup.
