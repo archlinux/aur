@@ -1,7 +1,7 @@
 pkgbase = abclock
 	pkgdesc = gtklock with Beijing timezone wrapper, English+Chinese weekday (%ea) and 3-line lock layout
 	pkgver = 5.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/abcabc0330/abclock
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: lisniper <liqiang0330@gmail.com>
 pkgname=abclock
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='gtklock with Beijing timezone wrapper, English+Chinese weekday (%ea) and 3-line lock layout'
 arch=('x86_64' 'aarch64')
 url='https://github.com/abcabc0330/abclock'
@@ -33,6 +33,8 @@ package() {
 	install -d "$pkgdir/usr/libexec/abclock"
 	mv "$pkgdir/usr/bin/gtklock" "$pkgdir/usr/libexec/abclock/gtklock-bin"
 	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/gtklock" "$pkgdir/usr/bin/gtklock"
+
+	ln -sf gtklock "$pkgdir/usr/bin/abclock"
 
 	install -Dm644 "$srcdir/$pkgname-$pkgver/share/layout.xml" "$pkgdir/usr/share/abclock/layout.xml"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/share/config.ini.example" "$pkgdir/usr/share/abclock/config.ini.example"
