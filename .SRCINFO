@@ -1,6 +1,6 @@
 pkgbase = eric
 	pkgdesc = A full-featured Python editor and IDE
-	pkgver = 26.10
+	pkgver = 26.11
 	pkgrel = 1
 	url = https://eric-ide.python-projects.org/
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = eric
 	depends = qt6-serialport
 	depends = qt6-tools
 	depends = qt6-websockets
-	source = hg+https://hg.die-offenbachs.homelinux.org:52443/eric#tag=release-26.10
-	sha256sums = aaf1fdf8aa075eda85a914b924a5ac404049808c3b8eb6f440c5d80b8f8fd381
+	source = hg+https://hg.die-offenbachs.homelinux.org:42443/eric#tag=release-26.11
+	sha256sums = 9b89c235deaad9f0351e268e84ad4c62732614b74fa08fd7a5f98bff745cfa15
 
 pkgname = eric

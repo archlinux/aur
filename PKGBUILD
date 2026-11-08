@@ -7,7 +7,7 @@
 
 pkgname=eric
 _name=eric7
-pkgver=26.10
+pkgver=26.11
 _pkgver="$(sed 's/\([0-9]\+\)\.\([0-9]\)\b/\1.0\2/g' <<<"${pkgver}")"
 pkgrel=1
 pkgdesc="A full-featured Python editor and IDE"
@@ -39,8 +39,8 @@ depends=('python'
          'qt6-tools'
          'qt6-websockets')
 makedepends=('mercurial' 'python-build' 'python-installer' 'python-setuptools')
-source=("hg+https://hg.die-offenbachs.homelinux.org:52443/eric#tag=release-${_pkgver}")
-sha256sums=('aaf1fdf8aa075eda85a914b924a5ac404049808c3b8eb6f440c5d80b8f8fd381')
+source=("hg+https://hg.die-offenbachs.homelinux.org:42443/eric#tag=release-${_pkgver}")
+sha256sums=('9b89c235deaad9f0351e268e84ad4c62732614b74fa08fd7a5f98bff745cfa15')
 
 build() {
     cd "${pkgname}"
