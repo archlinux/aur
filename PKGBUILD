@@ -2,7 +2,7 @@
 # Ely Office desktop apps. Named *-app-bin because the standard ely-*-bin
 # names are already taken on AUR by another maintainer.
 pkgname=ely-show-app-bin
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="ElyShow - presentation app from the Ely Office suite"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('ely-show' 'ely-show-bin')
 
 options=('!strip' '!debug')
 source_x86_64=("ely-show_${pkgver}-1_amd64.deb::https://github.com/ELY-Open-Source/ElyOffice/releases/download/v${pkgver}/ely-show_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('6d28e0899c9754cce0a107b755a06e685430c2280ba7615c17c1e1d455353336')
+sha256sums_x86_64=('c0d9aae7be498ade92ab02a2f32a9b3244809515301bfc15611e5b3f69ee9705')
 
 package() {
     local _deb="ely-show_${pkgver}-1_amd64.deb"
