@@ -2,7 +2,7 @@
 
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
-pkgver=3.3.0.r7.g16e08c0
+pkgver=3.3.1.r624.g6e99d8d
 pkgrel=1
 pkgdesc="A GUI client for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
@@ -28,7 +28,12 @@ options=('!strip' '!lto')
 pkgver() {
   cd "${_pkgname_prefix}"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local version
+  version="$(awk -F '"' '
+    /^\[workspace.package\]$/ { in_workspace = 1; next }
+    in_workspace && /^version = / { print $2; exit }
+  ' Cargo.toml)"
+  printf '%s.r%s.g%s\n' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
