@@ -1,1 +1,18 @@
-../Shauns-Audio-Visualizer/shauns_audio_visualizer/.SRCINFO
+pkgbase = shauns_audio_visualizer
+	pkgdesc = A retro audio visualizer for Linux (console renderer)
+	pkgver = 1.0.0
+	pkgrel = 6
+	url = https://github.com/smccloud/Shauns_Audio_Visualizer
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	depends = dotnet-runtime-10.0
+	depends = dotnet-sdk-10.0
+	optdepends = pipewire: PipeWire audio support
+	optdepends = pulseaudio: PulseAudio audio support
+	options = !strip
+	source = shauns_audio_visualizer-1.0.0.tar.gz::https://github.com/smccloud/Shauns_Audio_Visualizer/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = shauns_audio_visualizer
