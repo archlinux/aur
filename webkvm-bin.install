@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'EOF'
+==> WebKVM setup:
+  sudo systemctl enable --now libvirtd.service webkvm.service
+  UI: http://127.0.0.1:8080 (localhost only; for LAN set Settings > Server > Bind address = 0.0.0.0 and restart)
+    plain HTTP until server.tls_cert/server.tls_key are set in Settings
+  Initial admin password: /opt/webkvm/admin-password.initial (removed automatically after the first password change)
+  VM networking (bridge/NAT): sudo /usr/share/webkvm/setup-network.sh
+    preview first: sudo WEBKVM_DETECT_ONLY=1 /usr/share/webkvm/setup-network.sh
+  In-app self-update is disabled; update via pacman.
+EOF
+}
+
+post_upgrade() {
+  echo "==> Restart to apply: sudo systemctl restart webkvm.service"
+}
