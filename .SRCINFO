@@ -1,6 +1,6 @@
 pkgbase = stratagram
 	pkgdesc = Network diagram editor: standardized stencils and line types, quick add and auto layout
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://stratagram.app/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = stratagram
 	depends = hicolor-icon-theme
 	optdepends = xdg-desktop-portal: the desktop's own open and save dialogs
 	options = !lto
-	source = stratagram-1.0.4.tar.gz::https://github.com/shinsterneck/stratagram/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = 3572a94f8c43bba18e21962b350219d24271e0cf6358e733edc6eb84ccb0c156
+	source = stratagram-1.0.5.tar.gz::https://github.com/shinsterneck/stratagram/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = cabad4d4c45601d759632d6293f9d08d6b477d4824a438adea10f4a5f21a71e1
 
 pkgname = stratagram
