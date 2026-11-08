@@ -1,7 +1,7 @@
 # Maintainer: cebem1nt <cebem1nt@gmail.com>
 
 pkgname=vettel
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Get different formula 1 statistics and info'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 makedepends=('python-setuptools')
 
 source=(https://github.com/cebem1nt/vettel/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('c8550bfe20b236fb1438c2889eed3d6ae495c4e54a413054b266977769ea46fd')
+sha256sums=('117dfc56c10d3efac4cd69f24c98816fc60042c0eeec1d5d13c86cc654bd6d11')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
