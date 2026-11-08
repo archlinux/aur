@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=aurascan
-pkgver=0.13.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="AI-assisted safety and recovery layer for Arch-family systems"
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   'xfsprogs: read-only XFS recovery diagnostics'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('995b8351969b9edfde4416f1499ad1aa7a6e7c5cc26f38bddcab50d9d4daa75b')
+sha256sums=('8187fb31034903daf7d6250e8bf4a70d3a6047478cc03eb413b815ce9275a035')
 
 build() {
   cd "AuraScan-$pkgver"
