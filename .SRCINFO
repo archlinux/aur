@@ -1,6 +1,6 @@
 pkgbase = file-browser-tui
 	pkgdesc = A Dolphin-like file manager for kitty
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/adelmonte/file-browser-tui
 	install = file-browser-tui.install
@@ -28,7 +28,7 @@ pkgbase = file-browser-tui
 	optdepends = kdeconnect: Send to Device and browsing phones
 	optdepends = glib2: file type icons for unusual files
 	optdepends = xdg-desktop-portal-tui: use as the Open and Save dialog for other programs
-	source = file-browser-tui-1.1.3.tar.gz::https://github.com/adelmonte/file-browser-tui/archive/refs/tags/v1.1.3.tar.gz
-	sha256sums = fb5e9294ebca31375b3275e0a611b10fb528010cd8a08bdba766899105c1236e
+	source = file-browser-tui-1.1.4.tar.gz::https://github.com/adelmonte/file-browser-tui/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = 8c183c05a2a83b6fc900a4fcec95116ebfb0e47142475cce2042f0aed5470ab4
 
 pkgname = file-browser-tui
