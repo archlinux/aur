@@ -1,9 +1,9 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=ak820-bin
 _pkgname=ak820
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Configurator for the AJAZZ AK820 Pro keyboard: lighting, per-key RGB, key remapping, macros, TFT screen (GUI + CLI, prebuilt)"
+pkgdesc="Configurator for the AJAZZ AK820 Pro and AK820 keyboards: lighting, per-key RGB, key remapping, macros, TFT screen (GUI + CLI, prebuilt)"
 arch=('x86_64')
 url="https://github.com/deddroid/ak820-rs"
 license=('MIT')
@@ -15,7 +15,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('73465bd637a214c3a75991b072366b4420d1111b67c30a0cb6c756e55e6233f0')
+sha256sums=('b1a0569d90ac700a1ae2284a80a7022e4962016a585405c5a00858a443402023')
 
 package() {
   cd "$_pkgname-v$pkgver-linux-x86_64"
