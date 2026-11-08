@@ -1,6 +1,6 @@
 pkgbase = plank-player
 	pkgdesc = Multimedia Player for playing local files on Plasma Bigscreen allowing navigation with just a remote control
-	pkgver = 26.10.0
+	pkgver = 26.11.0
 	pkgrel = 1
 	url = https://plasma-bigscreen.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = plank-player
 	depends = qt6-declarative
 	depends = qt6-multimedia
 	depends = hicolor-icon-theme
-	source = https://invent.kde.org/plasma-bigscreen/plank-player/-/archive/v26.10.0/plank-player-v26.10.0.tar.gz
-	b2sums = SKIP
+	source = https://invent.kde.org/plasma-bigscreen/plank-player/-/archive/v26.11.0/plank-player-v26.11.0.tar.gz
+	b2sums = 8e416d57e4eb6ee4e15b93de84aa4395e72b0c4dece5b0f158441574209d1eeed0adb23e87b67b3ce2bb91b91590af392d5c3c194da623813575c58acbbaeb4b
 
 pkgname = plank-player
