@@ -7,12 +7,12 @@
 # the version keeps builds reproducible. Upstream only ships x86_64 for Linux.
 
 pkgname=mimo-desktop-bin
-# Full version from the deb control archive ("26.1107.70703-211"): the Debian
-# revision is part of the upstream release, so keep it (Arch spells "-" as "_").
-pkgver=26.1107.70703_211
+# Version from the deb control archive. A Debian revision is part of the
+# upstream release when present ("26.1107.70703-211"); Arch spells "-" as "_".
+pkgver=26.1108.82201
 pkgrel=1
 # CDN file names omit the Debian revision.
-_srcver=26.1107.70703
+_srcver=26.1108.82201
 _appdir='Xiaomi MiMo'
 pkgdesc='Xiaomi MiMo desktop client with built-in AI assistant (official Linux build)'
 arch=('x86_64')
@@ -43,7 +43,7 @@ source_x86_64=("XiaomiMiMo-${_srcver}-x64.deb::https://mimocode-cdn.xiaomimimo.c
 noextract=("XiaomiMiMo-${_srcver}-x64.deb")
 sha256sums=('f5bd330f1ba5e2f17c2a1a0cbaeff95e9b279b92a0b0b55013b1e4290b5294d4'
             'e05c5d8eb276bb322f6134699c5c6eb5f43f2156953d1f9c704a109cd1c366a6')
-sha256sums_x86_64=('79c153ed818d37e81740cb4ac36e32baa90a8dc106a707618bc360bb4f3bcf8e')
+sha256sums_x86_64=('258b16a086126daa647ee093eb5f73312dc250e2eb10c612fbd2e1ae46e6bc87')
 
 build() {
   # Upstream serialises its built-in agent prompts (four ~37 KiB copies) plus
