@@ -2,13 +2,13 @@
 
 pkgname=pbtk-git
 _pkgname=pbtk
-pkgver=r150.ebcb2c4
+pkgver=r303.7bc64ba
 pkgrel=1
 pkgdesc='A toolset for reverse engineering and fuzzing Protobuf-based apps'
 url='https://github.com/marin-m/pbtk'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('pyside6' 'python-protobuf' 'python-requests' 'python-websocket-client' 'qt6-webengine' 'chromium' 'jre8-openjdk')
+depends=('python-gobject' 'libsoup3' 'libadwaita' 'gtk4' 'python-protobuf' 'python-websocket-client' 'chromium' 'jre8-openjdk')
 makedepends=(
   'git'
   'findutils'
@@ -55,7 +55,7 @@ package() {
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
-  cd "packaging/assets"
+  cd "src/pbtk/ui/assets"
   install -vDm644 "re.fossplant.pbtk.desktop" \
     "${pkgdir}/usr/share/applications/re.fossplant.pbtk.desktop"
   install -vDm644 "re.fossplant.pbtk.metainfo.xml" \
