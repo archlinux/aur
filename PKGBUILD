@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Pospelov <kupospelov@gmail.com>
 pkgname=bare
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='A lightweight vertical bar for Wayland compositors.'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ makedepends=('rust' 'make' 'scdoc')
 # GCC LTO objects from pipewire-native-spa cannot be linked by Rust's lld.
 options=('!debug' '!strip' '!emptydirs' '!lto')
 source=("https://github.com/kupospelov/bare/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9dffcd75a3b867b76889fbc0c8f311e58f3c08223132fb9bc62e9510657b3748')
+sha256sums=('f08f786d052a88877b4dd904f174985b3b3cf3abf04baa2cd95b32881fb81425')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
