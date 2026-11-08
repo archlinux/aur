@@ -1,0 +1,28 @@
+post_install() {
+  cat <<'EOF'
+VirtoMir services are not started automatically. To enable them:
+  sudo systemctl enable --now libvirtd.service
+  sudo systemctl enable --now virtomird.service
+
+Web UI: https://<host-address>:8420 (self-signed certificate).
+Sign in as root or an administrator in the wheel, sudo or libvirt group.
+The service runs as root and listens on all network interfaces by default.
+To restrict access to localhost, run:
+  sudo systemctl edit virtomird.service
+and add:
+  [Service]
+  ExecStart=
+  ExecStart=/usr/bin/virtomird -listen 127.0.0.1:8420
+Then run:
+  sudo systemctl restart virtomird.service
+
+PAM authentication follows /etc/pam.d/system-auth.
+After upgrades, merge /etc/pam.d/virtomir.pacnew if present and restart
+virtomird.service to use the updated binary. Services are not restarted
+by this package.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
