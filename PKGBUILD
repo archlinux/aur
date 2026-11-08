@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=kwi-git
-pkgver=r68.db0ecd3
+pkgver=r101.1df8741
 pkgrel=1
 epoch=
 pkgdesc="Kwi is a modern and fast terminal for KDE Plasma and other desktops built on libghostty-vt"
@@ -17,7 +17,7 @@ groups=()
 depends=('kirigami-app-components' 'glibc' 'qt6-declarative' 'kxmlgui' 'kparts'
 	 'kwindowsystem' 'kwidgetsaddons' 'kguiaddons' 'kdbusaddons' 'ki18n'
 	 'knotifications' 'kcoreaddons' 'qt6-base' 'kirigami' 'kirigami-addons'
-	 'hicolor-icon-theme' 'libstdc++' 'kconfig' 'kpty' 'ghostty>=1.4.0' 'union' 'kconfigwidgets' 'kio')
+	 'hicolor-icon-theme' 'libstdc++' 'kconfig' 'kpty' 'libghostty-vt' 'union' 'kconfigwidgets' 'kio')
 makedepends=('git' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers' 'qqc2-desktop-style' 'appstream')
 checkdepends=()
 optdepends=()
@@ -45,7 +45,8 @@ build() {
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_SKIP_INSTALL_RPATH=ON \
-	-DBUILD_COVERAGE=ON \
+	-DBUILD_COVERAGE=OFF \
+	-DBUILD_TESTING=OFF \
 	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG"
 
