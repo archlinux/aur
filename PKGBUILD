@@ -1,8 +1,8 @@
 # Maintainer: aNNiMON <annimon119 at gmail dot com>
 _pkgauthor=aNNiMON
 pkgname=effy
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A small and friendly terminal FFmpeg helper that simplifies common tasks"
 url="https://projects.annimon.com/projects/effy/"
 license=('MIT')
@@ -14,7 +14,7 @@ optdepends=('wl-clipboard: copy commands on Wayland'
 arch=('x86_64' 'aarch64')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('3daa388d58b5e04be22617691b793fce526ebf9f298d4dcedefb08ff8368a5c1d363705deab393482efbb988dbba1c261c837ee957a0c0cc4e83cabe0114d6ee')
+b2sums=('ba6c192ce91b4da19bb8d96e6d10b741e761909388a242b40937010a0a9fc15b9add11959793671023b3dd84b8eb4fee6399d8a3dbb8f03e6ff4461ea8fd5612')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
