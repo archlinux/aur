@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=The Last Guardian
+Comment=The Last Guardian (PC port)
+Exec=tlg-pc
+Icon=/opt/tlg-pc-git/launcher/tlg.png
+Terminal=false
+Categories=Game;
+StartupWMClass=tlg-pc
+
