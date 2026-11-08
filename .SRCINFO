@@ -1,0 +1,19 @@
+pkgbase = xidong-bin
+	pkgdesc = Lightweight CLI agent whose only tool is the shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Xidong-AI/xidong
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = zlib
+	depends = brotli
+	depends = zstd
+	provides = xidong
+	conflicts = xidong
+	source = xidong-0.1.0-x86_64::https://github.com/Xidong-AI/xidong/releases/download/v0.1.0/xidong-x86_64-unknown-linux-gnu
+	sha256sums = 4bebb8f280f8609769577acc8c1020881accfc3da7fb1717449cae0dc1ceee6d
+
+pkgname = xidong-bin
