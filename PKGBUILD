@@ -2,8 +2,8 @@
 
 pkgname=capella-bin
 provides=(${pkgname%-bin})
-pkgver=7.0.0.202407091438
-pkgrel=2
+pkgver=7.1.0.202606231255
+pkgrel=1
 pkgdesc='Model-Based Systems Engineering tool that implements the Arcadia method.'
 arch=('x86_64' 'aarch64')
 depends=(
@@ -26,8 +26,8 @@ license=('EPL-2.0')
 _name_tgz="${pkgname%-bin}-${pkgver}-linux-gtk-${arch}.tar.gz"
 source_x86_64=("https://mirror.umd.edu/eclipse/${pkgname%-bin}/core/products/releases/${pkgver:0:5}/${_name_tgz}")
 source_aarch64=("${source_x86_64[@]}") # copy of the other one
-sha512sums_x86_64=('a1da02b436fac1921308f540aed7e687189f1881a797f8579a1e45fdf344735d4a0a2cbf5c97f30f3ec42fbed6da596dc22fb23fc2bb7a1960a021308fc47f79')
-sha512sums_aarch64=('cc42e68784fe066567cf5202209be15d3016834232be128e06d04b2260ea598b29f432237ae572177a81d7b6b118db62ac47f1926f45703545da62727921b693')
+sha512sums_x86_64=('4b0ffb38896bb793dfc7fab151d6b7d8901e50dfea484bd91351190a3c8c59e36854e23c81b7f4305c4848f0beb211aa78a6ff0f6c3c8c0af439329eb6af241a')
+sha512sums_aarch64=('d4f449e6a0f8ff49a4fae1fa0217e17fd1afd12417633f100c021a03fb25979bc1369597240c00db6875fd052b8bdcc2b238d9be0770d1655a45773b0526f8e2')
 
 # icon from GitHub
 source=("${pkgname%-bin}.png::https://raw.githubusercontent.com/eclipse-capella/capella/refs/heads/master/releng/plugins/org.polarsys.capella.rcp/icons/Capella256x256.png")
