@@ -2,7 +2,7 @@
 _appname=qoder
 pkgname="${_appname}-ide"
 _pkgname='Qoder IDE'
-pkgver=1.38.0
+pkgver=1.39.1
 _electronversion=42
 pkgrel=1
 pkgdesc="AI native IDE for real-world software development."
@@ -31,7 +31,7 @@ source=(
     "qoder-ide.js"
     "qoder-ide.sh"
 )
-sha256sums=('a8eb8c6e09565d31916204ddbff972437d59cf6f7a2bc62838d52763d195535f'
+sha256sums=('a4fd72096a09080a9a25454739d3b89a335909d3790f28502b8053209943e4f6'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
@@ -60,9 +60,6 @@ prepare() {
     " "${srcdir}/qoder-ide.sh" "${srcdir}/qoder-ide.js"
     sed -i "s/\/usr\/share\/qoder-ide\///g" "${srcdir}/usr/share/applications/qoder-ide"*.desktop
     find "$(_get_app_dir)/resources/app" -type d \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) -exec rm -rf {} +
-    rm -rf \
-        "$(_get_app_dir)/resources/app/node_modules/windows-foreground-love" \
-        "$(_get_app_dir)/resources/app/node_modules/native-is-elevated"
 }
 package() {
     install -Dm755 "${srcdir}/qoder-ide.sh" "${pkgdir}/usr/bin/qoder-ide"
