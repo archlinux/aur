@@ -33,13 +33,11 @@ pkgbase = oh-my-pi
 	source = https://static.crates.io/crates/opus/opus-0.4.0.crate
 	source = skip-native-embed-for-aur.patch
 	source = system-grammars-for-aur.patch
-	source = pi-shell-stable-rust-for-aur.patch
 	source = relative-json-assets-for-aur.patch
 	sha256sums = 0a09d8f5f307d72ff4ced4fe8bd564eab024c243dd0fc72800b828bf4819cb94
 	sha256sums = 33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216
 	sha256sums = 0f4c3a662fac5dc6420d260c7439ab0399061a1501dbbc1692e8fdf3e8db1785
 	sha256sums = 724888738f0e886693d8a6aa6cfd5f6dba9a98122353e4636a9ca946ae1fa9e7
-	sha256sums = 8efebbee9b94c02ffaf08c51d4f895f31c34518c163a1834d695ea507a5d3361
 	sha256sums = aa9a59cc6d6edce378a79e6c1b9194f49318d8ee777c6f58caf92faac67cbdaf
 
 pkgname = oh-my-pi
