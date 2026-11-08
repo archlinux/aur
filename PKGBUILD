@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=doop-bin
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Open-source multiplayer design canvas where humans and AI agents design together (desktop shell)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source_x86_64=(
   "${_deb}::${url}/releases/download/desktop-v${pkgver}/${_deb}"
   "LICENSE::${url}/raw/desktop-v${pkgver}/LICENSE"
 )
-sha256sums_x86_64=('b739aa039a74a1c00cddf07d6f19e75b40db6ab489520d4c6335ef4eb1d2569d'
+sha256sums_x86_64=('3e2eb4429e5740fc5095f671e8976fa4d6d338c19105f5a3e8143b0c01419cc8'
                    '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 noextract=("${_deb}")
 
