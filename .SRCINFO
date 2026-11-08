@@ -1,4 +1,4 @@
-pkgbase = lagrange-common
+pkgbase = lagrange
 	pkgdesc = Beautiful Gemini Client
 	pkgver = 2.0.1
 	pkgrel = 2
@@ -16,14 +16,6 @@ pkgbase = lagrange-common
 	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v2.0.1/lagrange-2.0.1.tar.gz
 	sha256sums = abac39d4aff9716c9d4b3b10f85e83d762f8896ad83c1ffda74c7ed4b6521cfd
 
-pkgname = lagrange-common
-	depends = fribidi
-	depends = harfbuzz
-	depends = libunistring
-	depends = openssl
-	depends = pcre
-	depends = zlib
-
 pkgname = lagrange
 	depends = fribidi
 	depends = harfbuzz
@@ -35,6 +27,14 @@ pkgname = lagrange
 	depends = zlib
 	depends = mpg123
 	depends = lagrange-common
+
+pkgname = lagrange-common
+	depends = fribidi
+	depends = harfbuzz
+	depends = libunistring
+	depends = openssl
+	depends = pcre
+	depends = zlib
 
 pkgname = clagrange
 	depends = ncurses
