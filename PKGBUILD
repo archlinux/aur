@@ -7,7 +7,7 @@ _pkgname=Tmux-Plugin-Panel
 pkgname=${_pkgname,,}-bin
 pkgdesc="A full-fledged TUI plugin manager for tmux"
 
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,8 +25,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_pkgvername}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('c040ebdc96991b218297fc2a714a4a151dd900a7bf6ff125155ba254867f46eb')
-sha256sums_aarch64=('c040ebdc96991b218297fc2a714a4a151dd900a7bf6ff125155ba254867f46eb')
+sha256sums_x86_64=('675a377d1533b613a1a0150cbdbac5f19f77b661afeca937aaaf30a39c09a345')
+sha256sums_aarch64=('675a377d1533b613a1a0150cbdbac5f19f77b661afeca937aaaf30a39c09a345')
 
 
 case ${CARCH} in
