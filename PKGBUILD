@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Keyboard-first desktop Git client in Rust + GPUI"
 
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-linux-${arch[1]}.tar.gz")
 sha256sums=('991f14b8c10428cb89f0b9592049094022b4b844fca896c573b86df776870051'
             '4dceb15afbd70286259a0c40c6d4b323e259cb79d6d3feda44609c455e84793e')
-sha256sums_x86_64=('3ab3691322385335d3ec2e0bd21ed815c36d8a129411f34eb47e8a8fac697453')
-sha256sums_aarch64=('ea7312e98c1e752579a73be705b10e62f2ac3d94f74412a0d5e5e277686a33d8')
+sha256sums_x86_64=('eeec57f48056180e570b3f32b2107cca9090c2fb2ead153900b748395be8d225')
+sha256sums_aarch64=('0e1fc4ea6aa80d5f88209a04a25197a91596ca49d16fc480cd52e90c0204f7f1')
 
 
 prepare() {
