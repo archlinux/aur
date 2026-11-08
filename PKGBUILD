@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-typescript"
-pkgver="0.98.1"
+pkgver="0.99.1"
 pkgrel="1"
 pkgdesc="TypeScript and JavaScript code formatting plugin for dprint."
 arch=("any")
@@ -15,7 +15,7 @@ license=("MIT")
 depends=("dprint")
 makedepends=("rust" "rust-wasm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("4cdccd147ca166eb22729cbba97644ef616bbbda8e4341228c5cdce670caf830f188c748f451c444e9414d10706495dcc3791d64cf6acec9ca7ffcdd8c893eb0")
+sha512sums=("1ae7ff4ec002d62accb8e9c67de77bd747d3bdf1ec3836da7a4e9a14c75e0717407932070af6f8dcd02a411c868f8ed2ee6a24ba8b35e25644510bb1c068b929")
 
 prepare()
 {
