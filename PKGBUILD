@@ -3,7 +3,7 @@
 pkgname=wizardchat-bin
 _version=26.12.2
 pkgver=26.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, secure, magical Matrix client'
 arch=('x86_64')
 url='https://wizardchat.org'

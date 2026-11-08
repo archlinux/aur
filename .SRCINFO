@@ -1,7 +1,7 @@
 pkgbase = wizardchat-bin
 	pkgdesc = Simple, secure, magical Matrix client
 	pkgver = 26.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wizardchat.org
 	arch = x86_64
 	license = AGPL-3.0-only
