@@ -1,5 +1,5 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
-_versioncode=51
+_versioncode=52
 _pkgname=fluent-lyrics
 pkgname=${_pkgname}-bin
 pkgver="0.0.$_versioncode"
@@ -31,8 +31,8 @@ source_aarch64=(
 sha256sums=('29a9f40ec748ba132cd776862f99f84442f8018e1d4b6996691ee9ddf7ad917d'
             '22bda8e153e0a8b97c2657a1fb49c9d0907b93e0b83e2a15664019d14ae97f3e'
             '8e331b6e8925e78030fdc86417e7f8fbf987a30261d1cf09432e5baaff027282')
-sha256sums_x86_64=('bfc35d2d59e7744bd70d12d3eb6a7f2a23fd821a434cec75c4a4c717ae18adcf')
-sha256sums_aarch64=('e8376d57bcae182aabf5452289ea4cfdaaf797adec1490886b111f8e0d61350b')
+sha256sums_x86_64=('db033270567ee8e5a7cdf8ee5dacad0573add3fbb5e865188b3c272cdfb86436')
+sha256sums_aarch64=('842870d3d4de8064fbafc6550a8ca579d7c2b73ab39f7ab72e97113ab4061dac')
 
 package() {
   install -d "$pkgdir/usr/lib/fluent-lyrics"
