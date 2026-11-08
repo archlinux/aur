@@ -2,7 +2,7 @@
 # Contributor: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=centrifugo
-pkgver=6.10.2
+pkgver=6.10.3
 pkgrel=1
 pkgdesc='Scalable real-time messaging server'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         'centrifugo.service'
         'centrifugo.sysusers'
         'centrifugo.tmpfiles')
-sha256sums=('3b2ead1a3c25bf4eb6e86184ad932276fc11cb9103da2e1e25171f98d666220b'
+sha256sums=('842d22b53c2c77dd2bad4009a05b78b501afa48c87940cde25403ee03bf7326a'
             'f61eeb35bfa248be947b0da434bf82815d2a0396f10933e4aadac06a73462f9c'
             'dd656417db47b6dd5260a8a6b1f82005c80b6555ac65dd375a95e3aa5168e728'
             '3a4a5123db7293dc103187f406a168214ced95bda0c4f6c0f06508cf262a9718')
