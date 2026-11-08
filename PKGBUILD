@@ -133,10 +133,10 @@
 
 
 # Kernel version
-_kernel_major=7.2
-_kernel_minor=11
+_kernel_major=7.3
+_kernel_minor=3
 # Tachyon patches version
-_tachyon=7.2.11-1609
+_tachyon=7.3.3-1610
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -163,9 +163,9 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array
 sha256sums=(
-    "f9fef3d14c0df53819026f4be74459835c2a0b0dcbf5b5bbd9ea19f0829402b3"
+    "87363c24f10e06321eb362765521094e94471f6bff8bce2d6b3e40f39f004953"
     "SKIP"
-    "534895f65175db29e0635fecfef4d4e9cce7574bde3c144f090add61ab681817"
+    "4ebf04f150a2cfd11a435b3fbb1be1f2026dab1b42dc5921e4d86e8c4b23a72d"
     "SKIP"
 )
 
