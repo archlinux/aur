@@ -3,7 +3,7 @@
 
 pkgname=agentsroom-bin
 _pkgname=agentsroom
-pkgver=1.260.0
+pkgver=1.261.0
 pkgrel=1
 pkgdesc="Visual command center to run and coordinate multiple AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug' '!emptydirs')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/downloads/desktop_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${url}/downloads/desktop_${pkgver}_arm64.deb")
-sha512sums_x86_64=('8f087ca93d78c58abfee611624712132b829e9bcfe9370734035a0fb4c975b551618dd6812b5cc3f9a57c0ba2399a2bdb2e4b4a9ee728431ee356cd0f882a312')
-sha512sums_aarch64=('f8a6d77a019552ce7d1eac640b2795a24bc37fbbf3376a9424ed79353b3a7efc6f93adbf39eba3dbfd847e95d126e8d34a8cde2578368b0d66e4a3bddb744fa3')
+sha512sums_x86_64=('8763f4792fd36b6b5c8f8cb182bdd2afb2cdb6bbb5d2703df2f73e65e444a559ec50d383f3af448f424e4fef1540b08ea72383e4c48e77bce8b5e721b2f1c392')
+sha512sums_aarch64=('b10169ab1812e64ce983ab1c481f5bc25a98090df7c83ddbbcd13a3ee05725f5293d0cc91f56dac0f8a8ef0e46d705a20004b89c8f6e026355011797e0ad8054')
 # makepkg would only unwrap the outer `ar` archive; we unpack data.tar ourselves.
 noextract=("${pkgname}-${pkgver}-x86_64.deb" "${pkgname}-${pkgver}-aarch64.deb")
 install="${pkgname}.install"
