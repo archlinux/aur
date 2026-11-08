@@ -9,7 +9,6 @@ pkgbase = focal-git
 	makedepends = git
 	makedepends = cargo
 	makedepends = mesa
-	makedepends = pango
 	makedepends = wayland
 	depends = glibc
 	depends = gcc-libs
