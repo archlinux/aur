@@ -1,6 +1,6 @@
 # Maintainer: toshk0 <toshakosoga@gmail.com>
 pkgname=magicpods
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Control center for your Bluetooth headphones (AirPods, Beats, Galaxy Buds)"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/steam3d/MagicPodsLinux/archive/refs/tags/$pkgver.tar.gz"
   "app.magicpods.desktop"
 )
-sha256sums=('0158b7f3def63c74626727376fb504e6995ce6fb7fb9e2990364cb6d0bc2560e'
-  'SKIP')
+sha256sums=('639e7e73d7566bd8b15db6f5a3ef7858aff39d91a36f4f7bd8a167b5d75533bd'
+            '888797cc6355cbff5f24deb82b36e82274c793bd514bbe766eab372973d46772')
 
 build() {
   cd "MagicPodsLinux-$pkgver"
