@@ -3,7 +3,7 @@
 pkgname=mgcarpet
 pkgver=0.1.0alpha4
 _tag="${pkgver/alpha/_alpha}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Engine reimplementation of Magic Carpet 1 & 2 (requires original game data)'
 arch=('x86_64')
 url="https://github.com/raincz/${pkgname}"
@@ -19,6 +19,7 @@ depends=('alsa-lib'
          'vulkan-icd-loader'
          'wayland')
 makedepends=('cargo')
+options=(!lto)  # GCC LTO objects of C dependencies (zstd-sys) are unreadable by lld, which Rust links with
 install="${pkgname}.install"
 source=("${pkgname}-${_tag}.tar.gz::https://github.com/raincz/${pkgname}/archive/v${_tag}.tar.gz"
         'mgcarpet'
