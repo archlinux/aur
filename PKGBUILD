@@ -1,8 +1,8 @@
 # Maintainer: Shaun McCloud <smccloud@smccloud.com>
 pkgname=shauns_audio_visualizer
 pkgver=1.0.0
-pkgrel=6
-pkgdesc="A retro audio visualizer for Linux (console renderer)"
+pkgrel=7
+pkgdesc="A retro audio visualizer for Linux"
 arch=('x86_64')
 url="https://github.com/smccloud/Shauns-Audio-Visualizer"
 license=('MIT')
