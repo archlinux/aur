@@ -6,7 +6,7 @@
 ### 
 # Maintainer: Ganyu_Genshin XianYuPigeon@outlook.com
 pkgname=tempest-desktop-bin
-pkgver=3.17.5
+pkgver=3.17.6
 pkgrel=1
 pkgdesc="Cross-platform remote access client for SSH, RDP, VNC, SFTP and K8s (official binary)"
 arch=('x86_64' 'aarch64')
@@ -20,13 +20,13 @@ conflicts=('tempest-desktop')
 options=('!strip' '!debug')
 source_x86_64=("tempest-desktop_${pkgver}_amd64.deb::https://download.gotempest.app/tempest-desktop_${pkgver}_amd64.deb")
 # 上游公布值（Base64 格式的 SHA-512）:
-#   ZpdzhxbNCkgEp3fW6ivkE+ENyC1IeNVUqmQXFREtztlCaB0j58kcdwz8OecD9gSLpL1/nexOlarLm0BWpwSxOg==
-sha512sums_x86_64=('6697738716cd0a4804a777d6ea2be413e10dc82d4878d554aa641715112dced942681d23e7c91c770cfc39e703f6048ba4bd7f9dec4e95aacb9b4056a704b13a')
+#   r398J9SXNGANgT/diD+ag84GKt5aiFhCEkA3lqyoy7M1JMp7gcIO3AEXdzjdmcNPj4Ed/BhQwpLp9tEaQ5pIXQ==
+sha512sums_x86_64=('af7f7c27d49734600d813fdd883f9a83ce062ade5a88584212403796aca8cbb33524ca7b81c20edc01177738dd99c34f8f811dfc1850c292e9f6d11a439a485d')
 
 source_aarch64=("tempest-desktop_${pkgver}_arm64.deb::https://download.gotempest.app/tempest-desktop_${pkgver}_arm64.deb")
 # 上游公布值（Base64 格式的 SHA-512）:
-#   qaGxYB5ZlUoYMO8VlQInJn2ui8RpMsbsXXctqXkTgnWghl00lMJRfgvsd59Uw+HMr3vCj2lM4c4LEuQgsPTilA==
-sha512sums_aarch64=('a9a1b1601e59954a1830ef15950227267dae8bc46932c6ec5d772da979138275a0865d3494c2517e0bec779f54c3e1ccaf7bc28f694ce1ce0b12e420b0f4e294')
+#   Eaq4zzScn3Vtt+LmJ31CTKdKq3oyt/j3vs5Fo903uoH3gxi41xfvdNEB4JRWjfJn0C3VFGz/BSwrd3Cl0bpbRg==
+sha512sums_aarch64=('11aab8cf349c9f756db7e2e6277d424ca74aab7a32b7f8f7bece45a3dd37ba81f78318b8d717ef74d101e094568df267d02dd5146cff052c2b7770a5d1ba5b46')
 
 package() {
     # .deb 已在解包阶段由 makepkg 用 bsdtar 展开, 这里只取 data.tar.* 装入 pkgdir
