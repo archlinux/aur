@@ -1,0 +1,20 @@
+pkgbase = libigloo-git
+	pkgdesc = A generic C framework used by the Icecast project
+	pkgver = 0.9.5.r0.g1a4f575
+	pkgrel = 1
+	url = https://gitlab.xiph.org/xiph/icecast-libigloo
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = rhash
+	depends = glibc
+	depends = librhash.so
+	provides = libigloo=0.9.5.r0.g1a4f575
+	provides = libigloo.so
+	conflicts = libigloo
+	options = staticlibs
+	source = git+https://gitlab.xiph.org/xiph/icecast-libigloo.git
+	sha256sums = SKIP
+
+pkgname = libigloo-git
