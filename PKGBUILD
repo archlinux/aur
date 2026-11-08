@@ -2,15 +2,23 @@
 #
 # Unofficial Linux port: the WorkBuddy international edition (workbuddy.ai)
 # publishes no Linux build. This package converts the official macOS build to
-# a Linux Electron app on the user's machine; nothing proprietary is
-# redistributed. Conversion toolchain vendored from the MIT-licensed
-# community project workbuddy-linux (see LICENSE.port-tool); see DISCLAIMER.
+# a Linux Electron app on the user's machine. The app payload is taken from
+# that official macOS build; the session runtimes and the custom Electron
+# binary come from the official domestic-edition Linux deb (see the notes
+# below). Conversion toolchain vendored from the MIT-licensed community
+# project workbuddy-linux (see LICENSE.port-tool); see DISCLAIMER.
 #
 # The node/python session runtimes are taken from the official domestic-
 # edition Linux deb (download.codebuddy.cn): the international darwin build
 # bundles macOS/Windows runtimes only, while the app expects
 # resources/runtime/{node,python} on Linux. The runtimes are edition-
 # agnostic and pinned to their own upstream version.
+#
+# The same domestic deb also provides the custom Electron runtime. The
+# upstream Electron binary carries a proprietary "workbuddyStorage" native
+# binding that credential bootstrap depends on; the official electron
+# build lacks it, which makes every conversation fail with
+# CREDENTIAL_BOOTSTRAP_FAILED.
 
 pkgname=workbuddy-intl-agent
 _pkgver=5.9.4.42593613
@@ -19,7 +27,7 @@ _electronver=37.10.3
 _cn_pkgver=5.6.2.40046327
 _cn_build=c7b525f3
 pkgver=${_pkgver}_${_build}
-pkgrel=2
+pkgrel=3
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
@@ -110,14 +118,69 @@ build() {
 
   # 从国内版官方 Linux deb 提取会话运行时。国际版的 darwin 包只在
   # win32/darwin 条目下捆绑运行时，Linux 条目（node.tar.gz/python.tar.gz）
-  # 实际不存在；缺失时 daemon 反复退出并弹 "critical component" 警告
+  # 实际不存在；缺失时 daemon 反复退出并弹 "critical component" 警告。
+  # 同一个 deb 还带有定制 Electron：国际版应用的凭证 bootstrap 依赖
+  # workbuddyStorage 原生绑定，官方 electron 没有该绑定，会导致所有对话
+  # 以 CREDENTIAL_BOOTSTRAP_FAILED 失败。
   rm -rf "${srcdir}/cn-deb-extract"
   install -dm755 "${srcdir}/cn-deb-extract"
   bsdtar -C "${srcdir}/cn-deb-extract" -xf "${srcdir}/${cn_deb}"
-  bsdtar -C "${srcdir}/cn-deb-extract" -xf "${srcdir}/cn-deb-extract"/data.tar.* \
+  local cn_data
+  cn_data="$(find "${srcdir}/cn-deb-extract" -maxdepth 1 -name 'data.tar.*' -print)"
+  [[ "${cn_data}" != *$'\n'* && -f "${cn_data}" ]] || {
+    printf 'unexpected deb data archive: %s\n' "${cn_data}" >&2
+    return 1
+  }
+  bsdtar -C "${srcdir}/cn-deb-extract" -xf "${cn_data}" \
+    ./opt/WorkBuddy/workbuddy \
+    ./opt/WorkBuddy/version \
+    ./opt/WorkBuddy/chrome-sandbox \
+    ./opt/WorkBuddy/chrome_crashpad_handler \
+    ./opt/WorkBuddy/chrome_100_percent.pak \
+    ./opt/WorkBuddy/chrome_200_percent.pak \
+    ./opt/WorkBuddy/icudtl.dat \
+    ./opt/WorkBuddy/libEGL.so \
+    ./opt/WorkBuddy/libGLESv2.so \
+    ./opt/WorkBuddy/libffmpeg.so \
+    ./opt/WorkBuddy/libvk_swiftshader.so \
+    ./opt/WorkBuddy/libvulkan.so.1 \
+    ./opt/WorkBuddy/locales \
+    ./opt/WorkBuddy/resources.pak \
+    ./opt/WorkBuddy/snapshot_blob.bin \
+    ./opt/WorkBuddy/v8_context_snapshot.bin \
+    ./opt/WorkBuddy/vk_swiftshader_icd.json \
+    ./opt/WorkBuddy/LICENSE.electron.txt \
+    ./opt/WorkBuddy/LICENSES.chromium.html \
     ./opt/WorkBuddy/resources/runtime
 
-  local runtime_dir="${srcdir}/cn-deb-extract/opt/WorkBuddy/resources/runtime"
+  local cn_root="${srcdir}/cn-deb-extract/opt/WorkBuddy"
+  local cn_ver
+  cn_ver="$(cat "${cn_root}/version" 2>/dev/null)"
+  # 定制版版本形如 37.10.3-24；要求带修订号，避免 37.10.30 之类误匹配。
+  [[ "${cn_ver}" == "${_electronver}-"* ]] || {
+    printf 'unexpected domestic Electron version: %s\n' "${cn_ver}" >&2
+    return 1
+  }
+  grep -aq 'workbuddyStorage' "${cn_root}/workbuddy" || {
+    printf 'domestic deb Electron lacks the workbuddyStorage binding\n' >&2
+    return 1
+  }
+
+  # 用定制运行时替换官方 electron 二进制及其附属文件。locales 与
+  # resources.pak 属于该定制 build，必须成套替换，不能与官方包混搭。
+  install -Dm755 "${cn_root}/workbuddy" "${srcdir}/workbuddy-app/electron"
+  local _f
+  for _f in chrome-sandbox chrome_crashpad_handler chrome_100_percent.pak \
+    chrome_200_percent.pak icudtl.dat libEGL.so libGLESv2.so libffmpeg.so \
+    libvk_swiftshader.so libvulkan.so.1 resources.pak snapshot_blob.bin \
+    v8_context_snapshot.bin vk_swiftshader_icd.json version \
+    LICENSE.electron.txt LICENSES.chromium.html; do
+    cp -a "${cn_root}/${_f}" "${srcdir}/workbuddy-app/${_f}"
+  done
+  rm -rf "${srcdir}/workbuddy-app/locales"
+  cp -a "${cn_root}/locales" "${srcdir}/workbuddy-app/locales"
+
+  local runtime_dir="${cn_root}/resources/runtime"
   [[ -x "${runtime_dir}/node/bin/node" && -x "${runtime_dir}/python/bin/python3" ]] || {
     printf 'session runtimes missing from the domestic deb: %s\n' "${runtime_dir}" >&2
     return 1
