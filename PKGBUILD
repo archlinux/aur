@@ -6,43 +6,41 @@ pkgname=(
   'ndiff-git'
   'zenmap-git'
 )
-pkgver=7.99.r181.gb47e7f0
+pkgver=7.993.r8.g8b515f2
 pkgrel=1
 url="https://github.com/nmap/nmap"
-license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
-arch=('x86_64')
+license=(LicenseRef-Nmap-Public-Source-License-Version-0.95)
+arch=(x86_64)
 
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-setuptools-gettext'
-  'python-wheel'
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-setuptools-gettext
+  python-wheel
 
   # nmap
-  'libpcap'
-  'libssh2'
-  'lua54'
-  'openssl'
-  'pcre2'
-  'zlib'
+  libpcap
+  libssh2
+  lua54
+  openssl
+  pcre2
+  zlib
 
   # zenmap
-  'gtk3'
-  'python-cairo'
-  'python-gobject'
+  gdk-pixbuf2
+  glib2
+  gtk3
+  pango
+  python
+  python-cairo
+  python-gobject
 )
 
 _pkgsrc="nmap"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-  'nmap-ndiff-fix-tests.patch'
-)
-sha256sums=(
-  'SKIP'
-  '93653a3d7e16d02c8e9e0d2472449758186381d2210a42ca7fa367b4eb5913b8'
-)
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -67,14 +65,14 @@ prepare() {
   rm -r liblua libpcap libpcre macosx mswin32 libssh2 libz
 
   # Fix build
-  sed -e '/strlcat/d' -i libdnet-stripped/acconfig.h
+  #sed -e '/strlcat/d' -i libdnet-stripped/acconfig.h
 
   # Keep zenmap from installing ndiff; Arch packages it separately
   sed -e '/^ndiff = "ndiff:run_main"$/d' -e '/^py-modules = \["ndiff"\]$/d' -i zenmap/pyproject.toml
 
   # Remove usage of Python module imp (removed in Python 3.13) &
   # remove import-time unittest.main() invocation
-  patch -Np1 < ../nmap-ndiff-fix-tests.patch
+  #patch -Np1 < ../nmap-ndiff-fix-tests.patch
 
   # use pkexec for root
   sed -E \
@@ -101,10 +99,10 @@ build() {
   make
 
   echo "Building ndiff..."
-  python -m build --no-isolation --wheel ndiff
+  python -m build --wheel --no-isolation ndiff
 
   echo "Building zenmap..."
-  python -m build --no-isolation --wheel zenmap
+  python -m build --wheel --no-isolation zenmap
 }
 
 check() {
@@ -115,18 +113,19 @@ check() {
   python -m unittest discover -p '*.py'
 
   cd ../ndiff
-  python -m unittest discover -p '*.py'
+  python ndifftest.py
+  #python -m unittest discover -p '*.py'
 }
 
 package_nmap-git() {
   pkgdesc="Utility for network discovery and security auditing"
   depends=(
-    'libpcap'
-    'libssh2.so'
-    'lua54'
-    'openssl'
-    'pcre2'
-    'zlib'
+    libpcap
+    libssh2.so
+    lua54
+    openssl
+    pcre2
+    zlib
   )
 
   provides=("nmap")
@@ -142,17 +141,15 @@ package_ndiff-git() {
   pkgdesc="Compare two Nmap XML files and display a list of their differences"
   arch=('any')
 
-  depends=('python')
+  depends=(python)
 
   provides=("ndiff")
   conflicts=("ndiff")
 
   cd "$_pkgsrc"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-
-  cd "ndiff"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 docs/ndiff.1 -t "$pkgdir/usr/share/man/man1/"
+  python -m installer --destdir="$pkgdir" ndiff/dist/*.whl
+  install -Dm644 ndiff/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 ndiff/docs/ndiff.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 package_zenmap-git() {
@@ -160,11 +157,15 @@ package_zenmap-git() {
   arch=('any')
 
   depends=(
-    'gtk3'
-    'nmap'
-    'python'
-    'python-cairo'
-    'python-gobject'
+    gdk-pixbuf2
+    glib2
+    gtk3
+    ndiff
+    nmap
+    pango
+    python
+    python-cairo
+    python-gobject
   )
   optdepends=(
     'polkit: start zenmap as root'
@@ -174,22 +175,18 @@ package_zenmap-git() {
   conflicts=("zenmap")
 
   cd "$_pkgsrc"
-  install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
+  python -m installer --destdir="$pkgdir" zenmap/dist/*.whl
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-  cd "zenmap"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # icon
-  install -Dm644 "zenmapCore/data/pixmaps/zenmap.png" -t "$pkgdir/usr/share/pixmaps/"
-
-  cd "install_scripts/unix"
-  install -Dm755 "su-to-zenmap.sh" -t "$pkgdir/usr/bin/"
-  install -Dm644 "zenmap.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "zenmap-root.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
 
   ln -s zenmap "$pkgdir/usr/bin/nmapfe"
   ln -s zenmap "$pkgdir/usr/bin/xnmap"
+
+  install -Dm755 "zenmap/install_scripts/unix/su-to-zenmap.sh" -t "$pkgdir/usr/bin/"
+  install -Dm644 "zenmap/install_scripts/unix/zenmap.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "zenmap/install_scripts/unix/zenmap-root.desktop" -t "$pkgdir/usr/share/applications/"
+
+  install -Dm644 "zenmap/zenmapCore/data/pixmaps/zenmap.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
 
   # polkit policy
   install -Dm644 /dev/stdin "$pkgdir/usr/share/polkit-1/actions/org.gnome.pkexec.zenmap.policy" << END
