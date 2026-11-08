@@ -1,0 +1,22 @@
+pkgbase = kenlm-shared
+	pkgdesc = KenLM language model runtime with shared libraries
+	pkgver = 0.3.0.r20261108
+	pkgrel = 1
+	url = https://kheafield.com/code/kenlm/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = boost
+	depends = gcc-libs
+	depends = glibc
+	depends = boost-libs
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	provides = kenlm
+	conflicts = kenlm
+	source = kenlm-4cb443e60b7bf2c0ddf3c745378f76cb59e254e5.tar.gz::https://github.com/kpu/kenlm/archive/4cb443e60b7bf2c0ddf3c745378f76cb59e254e5.tar.gz
+	sha256sums = 11df4f929b175f0b3bd26be7a5a83b3c17cdefa83baecab0b6e69f77430184ea
+
+pkgname = kenlm-shared
