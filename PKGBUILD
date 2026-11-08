@@ -1,40 +1,45 @@
 # Maintainer:  kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Kujiu <kujiu+arch@kujiu.org>
+# Contributor: Renaud G. <renaud@rolisteam.org>
 
 pkgname=rolisteam
 _pkgname=rolisteam
-pkgver=1.10.0
-pkgrel=1
+pkgver=1.10
+pkgrel=3
 pkgdesc="Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.rolisteam.org"
 license=(GPL)
-depends=('qt5-svg' 'qt5-base' 'qt5-multimedia' 'zlib' 'qt5-webengine')
-makedepends=('qt5-tools' 'git')
-source=("https://invent.kde.org/rolisteam/rolisteam/-/archive/v${pkgver}/rolisteam-v${pkgver}.tar.gz"
-        "rolisteam.desktop")
-sha256sums=('b39015e8ac1d65bafa3ea7ced05eb0dcf3347ad30552a13a002f894567d6f2dd'
-            'ec7a7cf3b02899f3a4f6af80010d369a54faf8b03c24726bebc370bc3d36e660')
+depends=('qt6-svg' 'qt6-base' 'qt6-multimedia' 'qt6-webengine' 'qt6-quick3dphysics' 'qt6-quick3d' 'qt6-remoteobjects' 'qt6-scxml' 'qt6-translations' 'qt6-webchannel' 'qt6-httpserver' 'qt6-multimedia-ffmpeg')
+makedepends=('qt6-tools' 'git')
+source=("$pkgname::git+https://invent.kde.org/rolisteam/rolisteam.git#branch=release/${pkgver}"
+        "git+https://invent.kde.org/rolisteam/rolisteam-diceparser.git#branch=master")
+
+sha256sums=('SKIP' 'SKIP')
+
+prepare()
+{
+  cd $pkgname
+  git submodule init
+  git config submodule.src/libraries/diceparser.url "$srcdir"/rolisteam-diceparser
+  git -c protocol.file.allow=always submodule update
+}
 
 build()
 {
   cd "${srcdir}/${_pkgname}"
-  git submodule init
-  git submodule update
-  lrelease translations/*.ts
-  qmake-qt5 "PREFIX=/usr/bin"
-  make
+  mkdir -p build
+  cd build
+  cmake -S ../ -B . "-DBUILD_TESTING=OFF" "-DGENERATE_TS_FILES=ON" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr"
+  cmake --build . --target all --parallel 16
 }
 
 package()
 {
-  mkdir -p "${pkgdir}"/usr/share/applications
-  mkdir -p "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
-  install -Dm644 "rolisteam.desktop" "${pkgdir}/usr/share/applications/rolisteam.desktop"
   cd "${srcdir}/${_pkgname}"
-  INSTALL_ROOT="${pkgdir}" make install
-  cp resources/logo/256-icone.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/rolisteam.png
+  install -Dm644 resources/packaging/Linux/rolisteam.desktop "${pkgdir}/usr/share/applications/rolisteam.desktop"
+  install -Dm644 resources/packaging/Linux/rcse.desktop "${pkgdir}/usr/share/applications/rcse.desktop"
+  cd build
+  cmake --install .
   chmod -R g-w "${pkgdir}"/usr
 }
-
-
