@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-manager
-pkgver=4.14.9
+pkgver=4.14.10
 pkgrel=1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
@@ -30,7 +30,7 @@ source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
 )
 
-sha512sums=('70502e04e0773493ac3b59576399147530aa13602204055df1d8d426226ec7d5e8300e72960c7d0e51ee69a61495900e5db7df5958f1b52bef38c6a4ee952eae')
+sha512sums=('f71db57241ec42ef3e68c617edf010e516d85a217e7b2cc019edd945b49ae077bccc5e0ed031d848fd903a9c31a1522f007f9399956b694a4a34d7cad0a71f30')
 
 install=$pkgname.install
 
