@@ -308,7 +308,7 @@ _tagrel=1
 # the same kernel version, so every build has its own `uname -r` and installs as a
 # visible upgrade. That is all it does: it does not protect the running kernel's
 # module tree, see the HAZARD above.
-pkgrel=1
+pkgrel=2
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long

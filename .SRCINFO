@@ -1,7 +1,7 @@
 pkgbase = linux-cachyos-jetm
 	pkgdesc = CachyOS kernel tuned for Yocto/OE development on a desktop workstation rather than gaming
 	pkgver = 7.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only
