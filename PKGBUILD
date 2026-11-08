@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xepub
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Secure, comfortable, paginated EPUB reader"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=('desktop-file-utils')
 source=("git+https://github.com/xapp-project/xepub.git#tag=$pkgver")
-sha256sums=('dc9bcd911a51f4da9a28bc5201f9c8f722fcb4a6c543bae754703147a9c8cb3f')
+sha256sums=('c16175ac5c5131e699615e8e7791133c00fb054b4f964a52fb5dfea7efc55a0e')
 
 build() {
   arch-meson "$pkgname" build
