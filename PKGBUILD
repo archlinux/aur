@@ -6,7 +6,7 @@
 #
 # See docs/knowledgebase/concepts/releases.md for the release workflow.
 pkgname=tower-bin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Control and visibility for herds of coding agents"
 arch=("aarch64" "x86_64")
@@ -15,11 +15,16 @@ license=("MIT" "Apache-2.0")
 provides=("tower")
 conflicts=("tower" "tower-git")
 
-source_aarch64=("https://github.com/geoffjay/tower/releases/download/v0.8.0/tower-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('eac0d9cb71b8029298e661a2e6c896a3c03d3b2681ee39f6a616afcf759e9a77')
+# The local filename is version-qualified. The upstream tarball name is the
+# same in every release; makepkg/AUR helpers reuse an existing file of the
+# same name from SRCDEST or the helper's cache, so a bare name makes the next
+# upgrade fail the checksum with "One or more files did not pass the validity
+# check!".
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/geoffjay/tower/releases/download/v0.9.0/tower-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('f25ab79c85411da5fe9ee71876b928bb42852f3e317f1a8f8bd9937d58bdf92d')
 
-source_x86_64=("https://github.com/geoffjay/tower/releases/download/v0.8.0/tower-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('a0cf096f53b5f8373298a21fd573cdf8452d3d236391e43d5154a15eb9dac3aa')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/geoffjay/tower/releases/download/v0.9.0/tower-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('c630a71a831e9788c28fab07f75464fb6b21ebd988832abea4887a6e8df19247')
 
 package() {
     install -Dm755 "tower" "${pkgdir}/usr/bin/tower"
