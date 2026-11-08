@@ -1,6 +1,6 @@
 pkgbase = uu-remote-bin
 	pkgdesc = 非官方 UU 远程 Linux 被控端，纯 Rust 实现，可用官方客户端远程控制 Linux 桌面
-	pkgver = 0.2.53
+	pkgver = 0.2.55
 	pkgrel = 1
 	url = https://github.com/VallierDev/uu-remote-linux
 	install = uu-remote-bin.install
@@ -26,7 +26,7 @@ pkgbase = uu-remote-bin
 	sha256sums = 910d0627d7b1b7edc2408d9def0dacecf92db01e43c094f10f250a22e7efbdc6
 	sha256sums = ee8a778fe9367f1dffe2482940b70ec627e414dcaa409731560cd37481ed4feb
 	sha256sums = 822b332b88276aba6b91997a17c543e2d77656cbbfbda65dab0b1f827efe8b03
-	source_x86_64 = uu-remote-linux-v0.2.53-x86_64-linux.tar.gz::https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.53/uu-remote-linux-v0.2.53-x86_64-linux.tar.gz
-	sha256sums_x86_64 = da32486e1d1cead051ca56e68338cdb90b64a8c875c51ac8d2080befd1db2dec
+	source_x86_64 = uu-remote-linux-v0.2.55-x86_64-linux.tar.gz::https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.55/uu-remote-linux-v0.2.55-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 9d481374e85f89a92ecef8ef274a0af9e03792c30df7c88ce77dcff3f4092578
 
 pkgname = uu-remote-bin
