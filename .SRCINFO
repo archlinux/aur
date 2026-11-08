@@ -1,0 +1,19 @@
+pkgbase = yaa-bin
+	pkgdesc = Yet Another Agent: analyze and execute natural-language tasks (prebuilt)
+	pkgver = 2.13.1
+	pkgrel = 1
+	url = https://github.com/byte-tea/yaa
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = zlib
+	depends = brotli
+	depends = zstd
+	provides = yaa
+	conflicts = yaa
+	source = yaa-2.13.1-x86_64.zip::https://github.com/byte-tea/yaa/releases/download/v2.13.1/yaa_server_ubuntu-latest.zip.zip
+	sha256sums = 9dbf462d8e12e7fec8b6a59c4dded489297e231cef17b18ea03cb91a1dd9e026
+
+pkgname = yaa-bin
