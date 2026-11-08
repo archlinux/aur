@@ -21,3 +21,27 @@ EOF
 
 post_install() { _notice; }
 post_upgrade() { _notice; }
+
+# Package removal: take our insights hooks back out of each user's voxtype
+# config. Only hook strings recorded in that user's features.json
+# (managed_hooks) are removed; a user's own commands are never touched.
+# The wired commands are already uninstall-safe (they exit 0 when
+# voxtype-tui-hook is missing), so a failure here is harmless: it is
+# logged and ignored, and the daemon is never restarted from here.
+pre_remove() {
+    command -v voxtype-tui-hook >/dev/null 2>&1 || return 0
+    local f owner home
+    for f in /home/*/.config/voxtype-tui/features.json /root/.config/voxtype-tui/features.json; do
+        [ -f "$f" ] || continue
+        grep -q 'voxtype-tui-hook' "$f" 2>/dev/null || continue
+        owner=$(stat -c %U -- "$f") || continue
+        home=${f%/.config/voxtype-tui/features.json}
+        # A home's files are edited only as the user who owns them.
+        [ "$owner" = root ] && [ "$home" != /root ] && continue
+        timeout 20 runuser -u "$owner" -- env HOME="$home" XDG_CONFIG_HOME="$home/.config" \
+            voxtype-tui-hook --unwire >/dev/null 2>&1 \
+            && echo "==> voxtype-tui: removed its voxtype hooks for $owner" \
+            || echo "==> voxtype-tui: could not remove hooks for $owner (they are harmless without voxtype-tui)"
+    done
+    return 0
+}
