@@ -1,7 +1,7 @@
 pkgbase = perl-net-curl
 	pkgdesc = Perl interface for libcurl
-	pkgver = 0.58
-	pkgrel = 2
+	pkgver = 0.60
+	pkgrel = 1
 	url = https://metacpan.org/dist/Net-Curl
 	arch = x86_64
 	license = MIT
@@ -13,9 +13,7 @@ pkgbase = perl-net-curl
 	optdepends = perl-extutils-pkgconfig
 	optdepends = perl-xsloader
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SY/SYP/Net-Curl-0.58.tar.gz
-	source = https://patch-diff.githubusercontent.com/raw/sparky/perl-Net-Curl/pull/87.patch?full_index=1
-	sha256sums = 37c1585cc70e21579c7c733e306e97a46adc093a3777af6d8ba37d73986d7f5a
-	sha256sums = e95318d2de7a7d4d5a911f464d95cfbc6b0a5115646375eb61794ca9c461a9d1
+	source = https://cpan.metacpan.org/authors/id/S/SY/SYP/Net-Curl-0.60.tar.gz
+	sha256sums = f1a84e8ef4fde7759c8913b87c8b6582b795345d7012cae52392a8e1500433f8
 
 pkgname = perl-net-curl

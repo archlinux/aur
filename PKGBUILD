@@ -6,8 +6,8 @@
 _author=SYP
 _dist=Net-Curl
 pkgname=perl-${_dist@L}
-pkgver=0.58
-pkgrel=2
+pkgver=0.60
+pkgrel=1
 pkgdesc='Perl interface for libcurl'
 arch=('x86_64')
 url=https://metacpan.org/dist/$_dist
@@ -24,23 +24,8 @@ optdepends=(
     'perl-xsloader'
 )
 options=('!emptydirs')
-source=(
-    "https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz"
-
-    # https://github.com/sparky/perl-Net-Curl/issues/90
-    # https://github.com/sparky/perl-Net-Curl/pull/87
-    'https://patch-diff.githubusercontent.com/raw/sparky/perl-Net-Curl/pull/87.patch?full_index=1'
-)
-sha256sums=(
-    '37c1585cc70e21579c7c733e306e97a46adc093a3777af6d8ba37d73986d7f5a'
-    'e95318d2de7a7d4d5a911f464d95cfbc6b0a5115646375eb61794ca9c461a9d1'
-)
-
-prepare()
-{
-    cd "$_dist-$pkgver"
-    patch -Np1 -i '../87.patch?full_index=1'
-}
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('f1a84e8ef4fde7759c8913b87c8b6582b795345d7012cae52392a8e1500433f8')
 
 build()
 {
