@@ -1,6 +1,6 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=odyssey-ctl
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Control Samsung Odyssey monitors over DDC/CI: picture, game and lighting settings, presets, CLI and GUI"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('wayland: native Wayland window'
             'libx11: X11 window')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('927842dff6dca067faab4f8ec863c9b2448e2e8955ddfdf694b3e261926a77d0')
+sha256sums=('ceae067a6025776e6bdace498ed7fc668511eb98f6220865f894d163413c8b9e')
 
 prepare() {
   cd "$pkgname-$pkgver"
