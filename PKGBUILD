@@ -2,7 +2,7 @@
 _gitlab_repo="https://gitlab.com/saghm/xiba-mod-manager"
 
 pkgname=xiba
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A Baldur's Gate 3 mod manager for Linux"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$_gitlab_repo/-/archive/v${pkgver}/xiba-mod-manager-v${pkgver}.tar.gz")
-sha512sums=('5e4652c9b3112d740e6013f49c8fe0074b5341ddeae6af850a7c7cb78cd42279a1b839288850078f6095124017b537ad581f3f5dc49e2cea9835ada00e9a2f9a')
+sha512sums=('82181693813122abbe2fc62a362e834e7c104c4cb4f85acfcba79eb1f0fac5acb90ac3ff8230cbe9d3f0f7171423255c234b715cba9aa0b602d5f063305ce3f2')
 
 prepare() {
     cd "xiba-mod-manager-v$pkgver"
