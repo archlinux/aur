@@ -11,5 +11,11 @@ post_upgrade() {
 	echo "Bookmarks file format has changed. Your existing bookmarks will be imported to the new format. The old bookmarks.txt file can be found in the config directory and is writable only by v1.6 and earlier versions."
 	echo "Saved UI state format has changed. Downgrading will reset window state, close all tabs, and clear the navigation cache."
 	echo ""
+    elif [[ $1 = 2.0.1-1 ]]; then
+	echo ""
+	echo "Notes for update 2.0.0:"
+	echo "File format of user data files has been cleaned up. A new .lst format is used for text-based lists."
+	echo "Feed entries are serialized as binary into feeds.lgr. mimehooks.txt is not read any more; use tools.ini instead."
+	echo ""
     fi
 }
