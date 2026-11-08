@@ -1,0 +1,26 @@
+pkgbase = python-rich-click-1.9.9
+	pkgdesc = Format click help output nicely with rich. (Updated to 1.9.9 for pros-cli)
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://github.com/ewels/rich-click
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-inline-snapshot
+	checkdepends = ruff
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-typing_extensions
+	depends = python-rich
+	depends = python-importlib-metadata
+	provides = python-rich-click
+	conflicts = python-rich-click
+	source = git+https://github.com/ewels/rich-click.git#tag=v1.9.9
+	b2sums = 8ddb6506286b8f3ceecda72450fe307b181c94526aa5eab8cd359a68c4b8bc6470c7a4de647588a045e1a5296e9591539585f0fde67aac9a60f0948481287d02
+
+pkgname = python-rich-click-1.9.9
