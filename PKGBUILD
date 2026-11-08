@@ -6,7 +6,7 @@
 # (uses build/'s tarball instead of downloading). pkgver, sha256sums and
 # .SRCINFO are updated by `make aur`, which `make release` runs.
 pkgname=rg-helper-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Input helper for the RidiculousGnome GNOME Shell extension (evdev, system service)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=('etc/rg-helper.conf')
 options=('!strip' '!debug')
 install=rg-helper-bin.install
 source=("https://github.com/Zappo-II/ridiculousgnome/releases/download/v$pkgver/rg-helper-$pkgver-x86_64.tar.gz")
-sha256sums=('e09cf5b212c32d059fe39cc0aee563c0dd0f3ea810424b4c73942843a91f6b9d')
+sha256sums=('416cdd9fb603a98f52f522dcc607998cbfd8208dc27c53a6c919a437356fa64b')
 
 package() {
     cd "rg-helper-$pkgver"

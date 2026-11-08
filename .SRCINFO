@@ -1,6 +1,6 @@
 pkgbase = rg-helper-bin
 	pkgdesc = Input helper for the RidiculousGnome GNOME Shell extension (evdev, system service)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Zappo-II/ridiculousgnome
 	install = rg-helper-bin.install
@@ -15,7 +15,7 @@ pkgbase = rg-helper-bin
 	options = !strip
 	options = !debug
 	backup = etc/rg-helper.conf
-	source = https://github.com/Zappo-II/ridiculousgnome/releases/download/v1.0.0/rg-helper-1.0.0-x86_64.tar.gz
-	sha256sums = e09cf5b212c32d059fe39cc0aee563c0dd0f3ea810424b4c73942843a91f6b9d
+	source = https://github.com/Zappo-II/ridiculousgnome/releases/download/v1.0.1/rg-helper-1.0.1-x86_64.tar.gz
+	sha256sums = 416cdd9fb603a98f52f522dcc607998cbfd8208dc27c53a6c919a437356fa64b
 
 pkgname = rg-helper-bin
