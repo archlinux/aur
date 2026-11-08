@@ -1,6 +1,6 @@
 pkgbase = odyssey-ctl-bin
 	pkgdesc = Control Samsung Odyssey monitors over DDC/CI: picture, game and lighting settings, presets, CLI and GUI (prebuilt)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/deddroid/odyssey-ctl
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = odyssey-ctl-bin
 	options = !lto
 	options = !strip
 	options = !debug
-	source = https://github.com/deddroid/odyssey-ctl/releases/download/v0.3.0/odyssey-ctl-0.3.0-linux-x86_64.tar.gz
-	sha256sums = b5b2c509dea366f09cf5224975db6f25e8f8c0a421f2807b48d6ac189581ef59
+	source = https://github.com/deddroid/odyssey-ctl/releases/download/v0.4.0/odyssey-ctl-0.4.0-linux-x86_64.tar.gz
+	sha256sums = eb80aa41ffdf9e7bb1d271f4cd9d162b4323121670ab38ea3759493fb962420c
 
 pkgname = odyssey-ctl-bin
