@@ -2,7 +2,7 @@
 
 pkgname=freellmapi-desktop-bin
 pkgver=0.16.21
-pkgrel=2
+pkgrel=3
 pkgdesc="FreeLLMAPI menu-bar app — local OpenAI-compatible LLM router"
 arch=('x86_64')
 url="https://github.com/tashfeenahmed/freellmapi"
@@ -32,6 +32,7 @@ exec /opt/freellmapi-desktop-bin/freellmapi-desktop --no-sandbox "$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/freellmapi-desktop"
 
+  install -d "${pkgdir}/usr/share/applications"
   sed 's|^Exec=.*|Exec=freellmapi-desktop %U|' squashfs-root/freellmapi-desktop.desktop > "${pkgdir}/usr/share/applications/freellmapi-desktop.desktop"
   chmod 644 "${pkgdir}/usr/share/applications/freellmapi-desktop.desktop"
 
