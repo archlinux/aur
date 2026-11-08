@@ -1,7 +1,7 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
 # Created with assistance from Qwen3.8 Flash Next.
 pkgname=opencadstudio
-pkgver=2026.44.0
+pkgver=2026.45.0
 pkgrel=1
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
 arch=('x86_64')
@@ -15,22 +15,12 @@ makedepends=(
 options=(!debug !lto)
 # The tag drops the trailing .0: pkgver 2026.44.0 -> tag v2026.44 -> extracts to OpenCADStudio-2026.44
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HakanSeven12/OpenCADStudio/archive/refs/tags/v${pkgver%.*}.tar.gz")
-sha256sums=('555d051a7e9e89fa83e5465f2f0c3ec5e978c43e80a9a22e93f0ea31a8397479')
+sha256sums=('ee14cd2c72e4b5cc4e5e85d821279a4fc46613348831406078d07382d6baa276')
 
 _pkgdir="OpenCADStudio-${pkgver%.*}"
 
 prepare() {
   cd "$_pkgdir"
-  # Since v2026.44 the Cargo.toml still points cargo at the moved acadrust
-  # dependency: HakanSeven12/acadrust returns 404, the same repo (with the
-  # locked rev 24b037a) now lives under hakanaktt/acadrust. Redirect via git
-  # env config (makepkg runs with HOME=/dev/null, so no --global writes) and
-  # force cargo to shell out to git, which honours GIT_CONFIG_*. The locked
-  # checksums and revision stay untouched.
-  export GIT_CONFIG_COUNT=1
-  export GIT_CONFIG_KEY_0="url.https://github.com/hakanaktt/acadrust.insteadOf"
-  export GIT_CONFIG_VALUE_0="https://github.com/HakanSeven12/acadrust.git"
-  export CARGO_NET_GIT_FETCH_WITH_CLI=true
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
