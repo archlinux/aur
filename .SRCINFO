@@ -1,16 +1,19 @@
 pkgbase = vexa-git
-	pkgdesc = Modern cross-platform graphics framework in C++
-	pkgver = r125.g4d6c59d
-	pkgrel = 2
+	pkgdesc = Modern cross-platform graphics framework in C++23
+	pkgver = r163.g9688af4
+	pkgrel = 1
 	url = https://github.com/monjaris/vexa
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = xmake
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gcc-libs
 	provides = vexa
+	conflicts = vexa
 	source = vexa::git+https://github.com/monjaris/vexa.git
-	source = vexa-export-tfmt-symbols.patch
 	sha256sums = SKIP
-	sha256sums = b26f6da2f0e1c0bb29e0db763428c921f64b9e96fdea3e1d89beadbb0e546606
 
 pkgname = vexa-git
