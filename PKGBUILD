@@ -7,7 +7,7 @@
 pkgbase=trickster-bin
 pkgname=trickster-bin
 # Keep in sync with pubspec.yaml, Cli.appVersion, and packaging/arch.
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Flutter-native Wayland status bar (prebuilt binary)'
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   'gtk-layer-shell'
   'gtk3'
   'libglvnd'
+  'libpipewire'
   'libxkbcommon'
   'mesa'
   'systemd-libs'
@@ -33,7 +34,7 @@ options=('!strip' '!debug')
 source=(
   "https://github.com/dazemc/trickster/releases/download/v${pkgver}/trickster-${pkgver}-1-x86_64.pkg.tar.zst"
 )
-sha256sums=('eb825ab5b82e21411b80e60985c94d2da0df6f3a53bdebdefacd1d0bf8724c3d')
+sha256sums=('293a8e3e1aadc4e0b18fd86ae2934fcc503c8cf9e23afc1ed8fa0c0bf8ea222a')
 noextract=("trickster-${pkgver}-1-x86_64.pkg.tar.zst")
 
 package() {
