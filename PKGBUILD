@@ -3,7 +3,7 @@ pkgname=tomori-git
 pkgver=0.1.0.r8.g22a0cb5
 pkgrel=1
 pkgdesc='A cross-platform Minecraft launcher written in Go'
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/UruhaLushia/tomori'
 license=('GPL-3.0-only')
 depends=('gtk3')
@@ -30,14 +30,13 @@ pkgver() {
 build() {
 	cd "$srcdir/tomori"
 	CGO_ENABLED=0 go tool mygo build \
-		-platform linux/amd64 \
 		-skip-installer \
 		-skip-dmg \
 		-o "$srcdir/build"
 }
 
 package() {
-	install -Dm755 "$srcdir/build/linux-amd64/tomori" "$pkgdir/usr/bin/tomori"
+	install -Dm755 "$srcdir/build/linux-$(go env GOARCH)/tomori" "$pkgdir/usr/bin/tomori"
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/tomori.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
