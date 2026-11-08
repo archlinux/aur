@@ -1,11 +1,12 @@
 # Maintainer: Alexander Minges <alexander dot minges at gmail dot com>
 pkgname=libghostty-vt
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='portable, high-performance C library for terminal emulation'
 arch=(x86_64 aarch64)
 url='https://lib.ghostty.org/vt/'
 depends=(glibc)
+conflicts=(ghostty)
 license=(MIT)
 makedepends=(zig)
 source=("https://release.files.ghostty.org/libghostty-vt/$pkgver/libghostty-vt-$pkgver.tar.gz"

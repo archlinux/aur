@@ -1,13 +1,14 @@
 pkgbase = libghostty-vt
 	pkgdesc = portable, high-performance C library for terminal emulation
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lib.ghostty.org/vt/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = zig
 	depends = glibc
+	conflicts = ghostty
 	source = https://release.files.ghostty.org/libghostty-vt/1.0.0/libghostty-vt-1.0.0.tar.gz
 	source = https://release.files.ghostty.org/libghostty-vt/1.0.0/libghostty-vt-1.0.0-deps.tar.gz
 	sha256sums = 4a6ef758be721923e1969e7b81b443dcc92d8dd3fb5a39600c03a8817a753676
