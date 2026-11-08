@@ -1,4 +1,4 @@
-# Maintainer: Emiliano Gandini Outeda <emiliano.gandini@protonmail.com>
+# Maintainer: Emiliano Gandini Outeda <e@emiliano-go.com>
 pkgname=neurafly
 pkgver=0.2.0
 pkgrel=1
