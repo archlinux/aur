@@ -2,6 +2,24 @@
 
 All the changes made to runa are documented here.
 
+## [0.15.3] - 2026-11-08
+
+#### Fedora packaging through COPR.
+
+### Added
+- **Packaging**: runa is now available for Fedora through COPR: `sudo dnf copr enable alexm-dev/runa` and `sudo dnf install runa`.
+
+### Internal
+- **Packaging**: The AUR, Homebrew, Scoop, and Fedora packaging now live in `packaging/` in the runa repo.
+_The `runa-packaging` repo is now archived as it is no longer needed._
+
+- **Dependencies**:
+    - Updated `notify` to 8.2.2.
+
+
+---
+
+
 ## [0.15.2] - 2026-11-08
 
 #### Pane backgrounds, entry colors in all panes and fixes.
