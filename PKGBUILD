@@ -1,5 +1,6 @@
 # Maintainer: danalec
 pkgname=rgy-search-bin
+install='rgy-search-bin.install'
 pkgver=0.1.10.0
 pkgrel=3
 pkgdesc="Whole-filesystem name search and content search in one stack (binary release)"
