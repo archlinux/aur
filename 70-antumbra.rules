@@ -1,0 +1,4 @@
+# MediaTek BROM / Preloader / DA (VID 0e8d)
+# Grants access to the logged-in user (uaccess) and to the uucp group.
+SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0660", GROUP="uucp", TAG+="uaccess"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0e8d", MODE="0660", GROUP="uucp", TAG+="uaccess"

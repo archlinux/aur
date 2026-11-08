@@ -1,0 +1,22 @@
+pkgbase = antumbra
+	pkgdesc = TUI and CLI MTK flash tool for MediaTek based devices (Penumbra)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/shomykohai/penumbra
+	install = antumbra.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = libusb
+	depends = systemd-libs
+	options = !lto
+	source = penumbra-2.0.0.tar.gz::https://github.com/shomykohai/penumbra/archive/refs/tags/v2.0.0.tar.gz
+	source = 70-antumbra.rules
+	sha256sums = 89ec25b3df44b9da08398cf2bed7b3a4c1fd84d27a588b387420c12db30e8e80
+	sha256sums = 5cd831abf654c1a7b170677140b92381807e452e72d5ba6136d0f1c7e221a3c8
+
+pkgname = antumbra

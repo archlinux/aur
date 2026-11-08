@@ -1,0 +1,5 @@
+post_install() {
+  echo ":: udev rules for MediaTek devices (VID 0e8d) were installed to /usr/lib/udev/rules.d/70-antumbra.rules"
+  echo ":: If the device is not accessible from a non-seat session, add your user to the uucp group:"
+  echo "     sudo usermod -aG uucp \$USER"
+}
