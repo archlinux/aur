@@ -1,0 +1,26 @@
+pkgbase = nightscout-menu-bar-bin
+	pkgdesc = Display live blood sugar data from Nightscout in your system tray
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/gabe565/nightscout-menu-bar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = glib2
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = libsoup3
+	depends = libx11
+	depends = hicolor-icon-theme
+	optdepends = gnome-shell-extension-appindicator: tray icon support on GNOME
+	provides = nightscout-menu-bar
+	conflicts = nightscout-menu-bar
+	options = !debug
+	options = !strip
+	source_x86_64 = nightscout-menu-bar-bin_0.7.0_x86_64.tar.gz::https://github.com/gabe565/nightscout-menu-bar/releases/download/v0.7.0/nightscout-menu-bar_linux_amd64.tar.gz
+	sha256sums_x86_64 = ef4398926aa635c93e925a1f9a082cc68b13654b4b3cac7042cec13cb4b8edf3
+	source_aarch64 = nightscout-menu-bar-bin_0.7.0_aarch64.tar.gz::https://github.com/gabe565/nightscout-menu-bar/releases/download/v0.7.0/nightscout-menu-bar_linux_arm64.tar.gz
+	sha256sums_aarch64 = f20fa7db91fd3a0a6a89898515a18c70f9b4c83449edb6f2407236793446288a
+
+pkgname = nightscout-menu-bar-bin
