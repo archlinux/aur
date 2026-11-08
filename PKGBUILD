@@ -1,11 +1,11 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20@users.noreply.github.com>
 pkgname=swiftsim-git
-pkgver=0.1.0.r0.g03d490e
+pkgver=0.2.0.r0.gde1c983
 pkgrel=1
 pkgdesc='Fast SPICE circuit simulator with a schematic editor and waveform viewer (LTspice alternative; development version)'
 arch=('x86_64')
 url='https://github.com/RamazanBerk20/SwiftSim'
-license=('MIT OR Apache-2.0')
+license=('MIT OR Apache-2.0' 'OFL-1.1')
 depends=('gcc-libs' 'glibc' 'dbus' 'fontconfig' 'libglvnd' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
 makedepends=('cargo' 'git')
 options=('!lto')  # makepkg's GCC LTO objects from ring's C code can't be linked by rust-lld
@@ -50,6 +50,6 @@ package() {
     s=$(basename "$png" .png)
     install -Dm644 "$png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/swiftsim.png"
   done
-  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE-MIT LICENSE-APACHE LICENSE-OFL -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
