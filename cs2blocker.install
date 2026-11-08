@@ -1,0 +1,21 @@
+post_install() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  cat <<'MSG'
+cs2blocker installed. Nothing was enabled or started.
+
+Enable boot persistence:
+  sudo systemctl enable --now cs2blocker.service
+  sudo systemctl enable --now cs2blocker-refresh.timer
+
+Run the GUI:
+  cs2blocker-gui
+MSG
+}
+
+post_upgrade() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+  systemctl stop cs2blocker-monitor.service >/dev/null 2>&1 || true
+}
