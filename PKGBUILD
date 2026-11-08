@@ -1,7 +1,7 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgsubn=pwsp
 pkgname=pwsp
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Lets you play audio files through your microphone"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,8 @@ url="https://github.com/arabianq/pipewire-soundpad"
 license=('MIT')
 depends=('pipewire' 'alsa-lib' 'openssl')
 makedepends=(clang rust cargo cmake pipewire alsa-lib)
+# makepkg's C LTO flags break libspa's C wrappers when linking with rust-lld.
+options=('!lto')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
