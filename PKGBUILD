@@ -12,15 +12,17 @@
 #   tags (incl. v1.19.0) package the WRONG (CachyOS-branded) content and are
 #   not used.
 #
-#   The stable source below is pinned to the v1.30.2 release: the
-#   version-bump commit e120613de (`chore(chunk-2): bump VERSION to
-#   1.30.2`) is the TAG TARGET (the annotated tag v1.30.2 is cut on it)
-#   and the `_commit` this package fetches. Because `_commit` points at
-#   the version-bump commit (not at this re-pin), the archived source is
-#   a stable, non-circular snapshot. The v1.30.2 cycle: hardening — a
-#   buildDir with a trailing separator no longer yields an empty
-#   git-clone destination (stripped on read and write of the setting;
-#   root/separator-only values refused before the git invocation).
+#   The stable source below is pinned to the v1.31.0 release: the
+#   version-bump commit (the comprehensive v1.31.0 release commit) is the
+#   TAG TARGET (the annotated tag v1.31.0 is cut on it) and the `_commit`
+#   this package fetches. Because `_commit` points at the version-bump
+#   commit (not at this re-pin), the archived source is a stable,
+#   non-circular snapshot. The v1.31.0 cycle: comprehensive review,
+#   architectural refactor (TransactionWorker), security fixes, build
+#   system modernization, test suite overhaul, and documentation polish.
+#
+#   `_commit` and `sha256sums` below are pinned to the version-bump commit
+#   (double-fetch verified per the RELEASE PROCEDURE).
 #
 #   RELEASE PROCEDURE (v1.30.x and later):
 #     1. Bump the CMake VERSION — the version-bump commit is the tag target.
@@ -82,7 +84,7 @@
 #   conflict + provide make it drop-in replace the CachyOS package cleanly.
 
 pkgname=kernel-manager
-pkgver=1.30.2
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="Qt6 GUI for kernel configuration, compilation, and sched-ext (BPF) scheduler management"
 arch=(x86_64)
@@ -99,11 +101,11 @@ makedepends=(cmake make gcc git rust qt6-tools pkgconf python pacman glib2 polki
 # Defensive polkit reload so the shipped policy is picked up on (re)install.
 install=kernel-manager.install
 
-# Pinned v1.30.2 release commit (the version-bump commit, one before the
-# v1.30.2 tag — see the VERSIONING note above).
-_commit=e120613de5677f678ca2604a8930d03a2a790e18
+# Pinned v1.31.0 release commit (the version-bump commit, the tag target
+# for v1.31.0 — see the VERSIONING note above).
+_commit=202e5674d4c7ad899b2fe31ef9cacbd21bfe50ff
 source=("https://github.com/MadGoatHaz/kernel-manager/archive/${_commit}.tar.gz")
-sha256sums=("a2efa6f4305cd4885bf559a40d43da89ce56d2deca124ca0f859ce044de93aad")
+sha256sums=("39b0cc2f43f9b0c533b945a4f369616ab19257320fb096f6ab1a6fdd79e6c30c")
 
 # GitHub archive top dir for a commit is `<repo>-<full-sha>`.
 _srcdir="kernel-manager-${_commit}"
@@ -114,6 +116,13 @@ build() {
   # for Release builds in CMakeLists).
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
+
+  # T-146: reproducible builds — SOURCE_DATE_EPOCH makes timestamps in the
+  # built artifacts (e.g. embedded in the Rust staticlib, Qt resource qrc)
+  # deterministic. The git archive sets file mtimes to the commit date, so
+  # stat on any source file yields the same value across builds of the same
+  # tarball.
+  export SOURCE_DATE_EPOCH=$(stat -c %Y "$srcdir/$_srcdir/CMakeLists.txt")
 
   cd "$srcdir/$_srcdir"
   cmake -S . -B build \
