@@ -609,6 +609,14 @@ _build_plan() {
 prepare() {
     _launcher_setup
     _dist_decide
+
+    # makepkg --force (what pikaur runs) keeps src/, and a pkgrel-only bump
+    # reuses the same $_srcname directory. Extraction overwrites the files in
+    # the tarball but not the ones a patch created, so the next patch run hits
+    # "would create the file ... which already exists" and aborts. Start from
+    # the pristine tree whatever state src/ was left in.
+    rm -rf -- "$_srcname"
+    bsdtar -xf "${_srcname}.tar.gz"
     cd "$_srcname"
 
     echo "Setting version..."
