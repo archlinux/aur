@@ -1,0 +1,34 @@
+pkgbase = zfs-assistant
+	pkgdesc = Manage OpenZFS pools, datasets, snapshots and backups
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://gitlab.com/zfs-assistant/zfs-assistant
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = dbus
+	makedepends = pkgconf
+	makedepends = qt6-base
+	makedepends = qt6-svg
+	makedepends = qt6-tools
+	source = zfs-assistant-0.7.0.tar.gz::https://gitlab.com/zfs-assistant/zfs-assistant/-/archive/0.7.0/zfs-assistant-0.7.0.tar.gz
+	sha256sums = e9d5b43fca8f89c1299c35ccbd742d16b54d1001e3d56df61d52c4299a94401d
+
+pkgname = zfs-assistant
+	pkgdesc = Manage OpenZFS pools, datasets, snapshots and backups (desktop application, tray status and notifications)
+	depends = zfs-assistant-cli=0.7.0
+	depends = dbus
+	depends = qt6-base
+	depends = qt6-svg
+
+pkgname = zfs-assistant-cli
+	pkgdesc = Manage OpenZFS pools, datasets, snapshots and backups (helper and command line tool)
+	depends = dbus
+	depends = polkit
+	depends = zfs-utils
+	depends = util-linux
+	optdepends = cron: scheduled snapshots, scrubs and trims on systems without systemd (cronie provides it)
+	optdepends = openssh: copying snapshots to other machines
+	backup = etc/zfs-assistant/zfs-assistant.toml
