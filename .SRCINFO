@@ -1,0 +1,17 @@
+pkgbase = tomori-git
+	pkgdesc = A cross-platform Minecraft launcher written in Go
+	pkgver = r8.g22a0cb5
+	pkgrel = 1
+	url = https://github.com/UruhaLushia/tomori
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = gtk3
+	provides = tomori
+	conflicts = tomori
+	options = !debug
+	source = tomori::git+https://github.com/UruhaLushia/tomori.git
+	sha256sums = SKIP
+
+pkgname = tomori-git
