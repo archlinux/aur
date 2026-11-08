@@ -2,7 +2,7 @@
 
 pkgname=pandacode
 pkgver=0.3.102
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight coding agent workspace"
 arch=('x86_64' 'aarch64')
 url="https://github.com/aicodeking/pandacode"
@@ -39,5 +39,6 @@ EOF
   # icons
   if [[ -d squashfs-root/usr/share/icons ]]; then
     cp -a squashfs-root/usr/share/icons/. "${pkgdir}/usr/share/icons/"
+    chmod -R a+rX "${pkgdir}/usr/share/icons"
   fi
 }
