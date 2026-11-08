@@ -1,7 +1,7 @@
 # Maintainer: va2bbw <antelaurijssen@gmail.com>
 
 pkgname=yaac
-pkgver=1.0beta230
+pkgver=1.0beta231
 pkgrel=7
 pkgdesc="Yet Another APRS Client is a (mostly) platform-independent Java application for monitoring and contributing to the Automatic Packet Reporting System (APRS) network."
 arch=('any')
@@ -34,4 +34,5 @@ Type=Application
 Categories=HamRadio;Network;
 EOF
 }
-sha256sums=('a56c4037d1384e399290a1024e3b2d781a251257715528287db83a19429d5d5f')
+
+sha256sums=('2bfa9571bd8ec42f97bcb2f363d0c0a601641a5d00cf80c65a28e9c6b876ea29')
