@@ -16,7 +16,7 @@
 
 pkgbase=backtrack
 pkgname=(backtrack backtrack-nautilus backtrack-dolphin)
-_version=0.1.0
+_version=0.1.1
 pkgver=${_version//-/}
 pkgrel=1
 pkgdesc='Browse your files as they were: backups you can step back through, built on Borg'
@@ -33,7 +33,7 @@ makedepends=(cargo glib2 gtk4 libadwaita)
 # undefined. Rust code is unaffected; this turns it off for the C.
 options=(!lto)
 source=("$pkgbase-$_version.tar.gz::https://github.com/keithvassallomt/backtrack/archive/refs/tags/v$_version.tar.gz")
-sha256sums=('14ecd1fa8e2597a2ddbe3d8d6aff2974a721f321471598787d40028e5aff63d3')
+sha256sums=('6d18b02bd39f6bc87e2e061b9aea84e072b756fb5f831bacc09c24a970b442b7')
 
 prepare() {
   cd "$pkgbase-$_version"
