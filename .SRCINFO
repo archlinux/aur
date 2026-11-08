@@ -1,7 +1,7 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
 	pkgver = 0.9.161
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rootapp.com
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -62,6 +62,7 @@ pkgbase = rootapp-bin
 	optdepends = speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)
 	optdepends = vlc-plugin-ffmpeg: video and stream playback through LibVLC
 	optdepends = vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio
+	optdepends = curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)
 	provides = rootapp
 	conflicts = rootapp
 	options = !strip

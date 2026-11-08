@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.161
-pkgrel=2
+pkgrel=3
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -54,7 +54,7 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07).
+# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07); chrome_crashpad_handler dlopens libcurl.so.4/libcurl-gnutls.so.4/libcurl-nss.so.4 for crash report uploads, resolved to core/curl (2026-11-08).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
@@ -66,7 +66,8 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
             'speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)'
             'vlc-plugin-ffmpeg: video and stream playback through LibVLC'
-            'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio')
+            'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio'
+            'curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)')
 options=('!strip' '!debug')
 
 # single source: the aur.yml updater rewrites sha256sums to one hash (2026-10-31).
