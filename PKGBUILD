@@ -8,12 +8,12 @@ _gitname='crabber'
 _giturl="https://github.com/auf-gg/${_gitname}"
 
 pkgname=crabber-git
-pkgver=0.5.1.r0.g87c5b2f
+pkgver=0.5.1.r1.g845897f
 pkgrel=1
 pkgdesc='XMPP messenger built on GPUI (git version)'
 arch=('x86_64')
 url="$_giturl"
-license=('Apache-2.0')
+license=('MIT')
 makedepends=(
   'rust>=1.97'  # pinned in rust-toolchain.toml; gpui-pre needs >=1.93 (std::hint::cold_path)
   'clang'       # bindgen (gpui/blade)
