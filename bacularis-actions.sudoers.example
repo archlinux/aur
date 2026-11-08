@@ -1,6 +1,0 @@
-# OPTIONAL administrative actions described in the Bacularis docs.
-# Do NOT enable unless the Bacularis UI needs to control Bacula services.
-# Copy to /etc/sudoers.d/bacularis-actions, chmod 0440, visudo -cf ...
-# Keep only the actual systemd units installed on your Bacula host.
-Cmnd_Alias BACULARIS_SERVICE_ACTIONS = /usr/bin/systemctl start bacula-dir, /usr/bin/systemctl stop bacula-dir, /usr/bin/systemctl restart bacula-dir, /usr/bin/systemctl start bacula-sd, /usr/bin/systemctl stop bacula-sd, /usr/bin/systemctl restart bacula-sd, /usr/bin/systemctl start bacula-fd, /usr/bin/systemctl stop bacula-fd, /usr/bin/systemctl restart bacula-fd
-http ALL=(root) NOPASSWD: BACULARIS_SERVICE_ACTIONS

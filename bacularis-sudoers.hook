@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = bacula-*
+
+[Action]
+Description = Recalculate Bacularis API sudoers for installed Bacula components
+When = PostTransaction
+Exec = /usr/bin/bacularis-sudoers-update

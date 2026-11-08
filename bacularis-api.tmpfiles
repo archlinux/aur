@@ -1,0 +1,5 @@
+d /var/lib/bacularis 0750 http http -
+d /var/lib/bacularis/api-config 0700 http http -
+d /var/log/bacularis 0750 http http -
+d /var/log/bacularis/api 0700 http http -
+C /var/lib/bacularis/api-config/bacularis.users 0600 http http - /usr/share/webapps/bacularis/protected/samples/webserver/bacularis.users.sample

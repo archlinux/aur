@@ -1,0 +1,19 @@
+post_install() {
+  if [[ -x /usr/bin/bacularis-sudoers-update ]]; then
+    /usr/bin/bacularis-sudoers-update || echo 'WARNING: Unable to generate Bacularis sudoers' >&2
+  fi
+  echo 'Bacularis API installed. Review sudo -l -U http and configure API in its wizard.'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  # This file is generated, not package-owned. Preserve administrator overrides.
+  local file=/etc/sudoers.d/bacularis
+  if [[ -f "$file" ]] && grep -Fxq '# Managed by bacularis-api: bacularis-sudoers-update' "$file"; then
+    rm -f -- "$file"
+    echo 'Removed Bacularis-generated sudoers on API package removal.'
+  fi
+}

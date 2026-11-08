@@ -1,0 +1,6 @@
+# Shared working directories and caches for both API and Web.
+d /var/lib/bacularis 0750 http http -
+d /var/lib/bacularis/working 0700 http http -
+d /var/cache/bacularis 0750 http http -
+d /var/cache/bacularis/runtime 0700 http http -
+d /var/cache/bacularis/assets 0700 http http -
