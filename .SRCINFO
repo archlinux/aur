@@ -1,6 +1,6 @@
 pkgbase = owbox
 	pkgdesc = Stacking Wayland compositor based on Openbox, compatible with its config and themes (not Openbox itself)
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/SoleSoul/owbox
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = owbox
 	backup = etc/xdg/owbox/menu.xml
 	backup = etc/xdg/owbox/autostart
 	backup = etc/xdg/owbox/environment
-	source = owbox-0.8.0.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 057bccbbab7d370e20ea5f5dc60a2989b7ac55a0bd43c076eddac8a1e7e97d26
+	source = owbox-0.8.1.tar.gz::https://github.com/SoleSoul/owbox/archive/refs/tags/v0.8.1.tar.gz
+	sha256sums = 5c73cb17306d41990790c5e2ff7aee6113b9c346447038be7c3526208f04b5ae
 
 pkgname = owbox
