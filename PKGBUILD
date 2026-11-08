@@ -4,7 +4,7 @@
 # The nightly channel (docs/adr/0037-nightly-channel.md): builds main.
 pkgbase=irlume-git
 pkgname=(irlume-git irlume-kcm-git)
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Face authentication for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works (nightly: builds main)"
 arch=('x86_64')
