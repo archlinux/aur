@@ -1,0 +1,17 @@
+pkgbase = ctui
+	pkgdesc = C library of reusable ncursesw terminal user interface components
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/goabonga/ctui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = pkgconf
+	depends = ncurses
+	options = staticlibs
+	options = !debug
+	options = !lto
+	source = ctui-0.1.0.tar.gz::https://github.com/goabonga/ctui/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f2d3c2c024d17455c35235a2c29e6380e431064a6706225999e4da7038dfa006
+
+pkgname = ctui
