@@ -1,0 +1,19 @@
+pkgbase = rearchiver-bin
+	pkgdesc = Prepare Reaper projects for archiving by converting WAV to FLAC/WavPack
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/indiscipline/rearchiver
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = flac
+	optdepends = wavpack: 32/64-bit floating point support
+	provides = rearchiver
+	conflicts = rearchiver
+	options = !strip
+	source = rearchiver-0.2.0::https://github.com/indiscipline/rearchiver/releases/download/v0.2.0/rearchiver_linux
+	source = LICENSE-0.2.0::https://github.com/indiscipline/rearchiver/raw/v0.2.0/LICENSE.md
+	sha256sums = 1988d8d7f9cc53c4166c0b89255bf810aad7c56f99cbfe08c81010fe5f2b18c2
+	sha256sums = 72d6e1a0ffb74e5e95841061200da2f5e14b66bbe043f41e634ef9bc6070132a
+
+pkgname = rearchiver-bin
