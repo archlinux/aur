@@ -1,0 +1,20 @@
+pkgbase = anny-dock
+	pkgdesc = A modern, animated dock for Hyprland built with Rust and Bevy Engine
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/horberlan/anny-dock
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = libgcc
+	depends = glibc
+	depends = hyprland
+	depends = libxkbcommon
+	depends = systemd-libs
+	depends = vulkan-icd-loader
+	depends = wayland
+	source = anny-dock-0.1.0.tar.gz::https://static.crates.io/crates/anny-dock/anny-dock-0.1.0.crate
+	sha256sums = b83cf63a34633122ec7cbda9702a0f1dc8e4f59d86901fbf3d0c68b86c875211
+
+pkgname = anny-dock
