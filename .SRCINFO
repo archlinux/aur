@@ -1,10 +1,11 @@
 pkgbase = swiftsim
 	pkgdesc = Fast SPICE circuit simulator with a schematic editor and waveform viewer (LTspice alternative)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/SwiftSim
 	arch = x86_64
 	license = MIT OR Apache-2.0
+	license = OFL-1.1
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
@@ -22,7 +23,7 @@ pkgbase = swiftsim
 	optdepends = xdg-desktop-portal: Open/Save dialogs
 	optdepends = zenity: Open/Save dialogs without a desktop portal
 	options = !lto
-	source = swiftsim-0.1.0.tar.gz::https://github.com/RamazanBerk20/SwiftSim/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 77d1b2a959f831cad85f8f01cb4119e37de3046bdf17c0d223acd1b56b8c9a2f
+	source = swiftsim-0.2.0.tar.gz::https://github.com/RamazanBerk20/SwiftSim/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b4e768340be2f1ec2e722c494edf69088d3807804b739ac7a2d519e8d7127553
 
 pkgname = swiftsim
