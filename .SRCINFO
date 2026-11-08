@@ -1,0 +1,24 @@
+pkgbase = ices-git
+	pkgdesc = A source client for the Icecast streaming server
+	pkgver = 2.0.2.r66.g2ccd03a
+	pkgrel = 1
+	url = https://icecast.org/ices/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = libogg
+	makedepends = libshout
+	makedepends = libvorbis
+	makedepends = libxml2
+	depends = glibc
+	depends = libogg.so
+	depends = libshout.so
+	depends = libvorbis.so
+	depends = libxml2.so
+	provides = ices=2.0.2.r66.g2ccd03a
+	conflicts = ices
+	source = git+https://gitlab.xiph.org/xiph/icecast-ices.git
+	sha256sums = SKIP
+
+pkgname = ices-git
