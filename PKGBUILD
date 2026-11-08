@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.41.0.r921.g513d3407d4
+pkgver=0.42.0.r5.g55d3feb45c
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -44,6 +44,7 @@ depends=(
          'libdc1394'
          'libdrm'
          'libdvdnav'
+         'libdvdread'
          'libfdk-aac'
          'libgcrypt'
          'libgl'
@@ -377,6 +378,7 @@ prepare() {
     '-Dcdda=enabled'
     '-Dcplugins=enabled'
     '-Ddvbin=enabled'
+    '-Ddvda=enabled'
     '-Ddvdnav=enabled'
     '-Diconv=enabled'
     '-Djavascript=enabled'
