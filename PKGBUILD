@@ -12,8 +12,8 @@ provides=('keestone')
 conflicts=('keestone')
 source_x86_64=("$url/releases/download/v0.9.9-beta.4/KeeStone-v$pkgver-linux-x64.tar.gz")
 source_aarch64=("$url/releases/download/v0.9.9-beta.4/KeeStone-v$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('b35d2ab93d6f0fecb7eb8aa5d533d308672497e0dcda2328b30de836344c10e7')
-sha256sums_aarch64=('cc2b2af0c4ae2a62481ae17ac2b691a3ed5504f258f3460eeb3107a966075a47')
+sha256sums_x86_64=('7a874327320865adf1388d2b17ffb074974aadf32a899180e7325fcdb771fb76')
+sha256sums_aarch64=('93903db5681cca8fd2c859d590371605fc4fbe83112a23d1daf9001496ca6dd3')
 
 package() {
   cd "$srcdir"
