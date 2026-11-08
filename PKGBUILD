@@ -4,7 +4,7 @@ _repo=dux-greeter
 _binname=dms-greeter
 
 pkgname=dux-greeter-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Greetd login screen with the Dux Shell aesthetic (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -44,9 +44,9 @@ sha256sums=('0c4c01a73eb7d2d1286a7e60e580dd53b605636dc46a57c9c3318e8e23efc676'
             '3dc267a18f22d06f595a80fb77275db56fe88c48b838db364ba3a1d307572a50'
             '0376981f71a7331e3a8e5fdf71628f8c0e3881328969011f31fc1da6d54036c0'
             '1697f1cf527a911d08b7cd4dd935727ecc22cc2707819a5ef6253a2d59faee2b'
-            '15da39f94cf41b50ec1446a59df4d5f1d4057515885ba829000c7192114ee734')
-sha256sums_x86_64=('cacaf1906a862347cce1f7987dbe0b8515ae13a4a43e1045acdddbb92f4f6abf')
-sha256sums_aarch64=('8c4cecd34a64ae5b1fb672a20571dc7a5a8d6db1f4b71e1de4f3a0978203fb41')
+            'fac4f302a8551ec39d400f5d92ce596a68cf0112349ba9f51842fbe539f4dec6')
+sha256sums_x86_64=('61d70aa875e136f5124c67fe8517ac139ec61c88fb0b6b879b6c7f7e9e93dc95')
+sha256sums_aarch64=('fc39875dbe9c7ef53da46edef057fb2008aea47e8c7a969eabc005cd5257370e')
 
 package() {
   cd "${srcdir}" || exit 1
