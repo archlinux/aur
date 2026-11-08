@@ -1,0 +1,58 @@
+post_install() {
+    cat <<'EOF'
+rgy: READ THIS. Despite the name, searchctl is NOT a systemd service, is
+NOT part of systemd, and does NOT require systemd. It is a plain CLI: run
+it, it walks the tree you give --root, it exits. The searchd daemon is a
+separate, OPTIONAL binary. rgy-autostart uses a systemd USER unit on Linux
+only as one convenient way to start that daemon at login; nothing in rgy is
+installed into, or depends on, the system init. rgy works with no systemd,
+with systemd disabled, or with no init at all.
+
+  ============================================================
+  Do you want to install and configure the rgy search daemon NOW?
+  ============================================================
+
+  This package installs files as root and CANNOT register a daemon in
+  YOUR user session (a systemd user unit, a launchd agent, a login item).
+  Only you can do that, in your own terminal, as your own user:
+
+    YES -- enable the daemon (recommended on a desktop):
+        rgy-autostart install
+      This writes a systemd USER unit (rgy-searchd.service) and arms it with
+      `enable --now`: the daemon starts now and at every login, with a live
+      inotify change feed. No root, no elevation, no dialog.
+      Check:  rgy-autostart doctor
+      Undo:   rgy-autostart uninstall
+      The one-line installer can also do this after the fact, with no
+      download:  install.sh --activate
+
+    NO -- keep it daemon-free. Then be precise about what needs what:
+
+      * searchctl needs an INDEX, not a daemon. Index at least once:
+            searchctl --root ~ --reindex --count '*'
+        It walks the tree, builds the snapshot and saves it. Without a
+        daemon a later plain query reuses that snapshot for 30 minutes
+        (--max-age), then rebuilds on demand; --max-age 0 rebuilds every
+        query. Schedule the command daily with a systemd user timer
+        (see the README) to refresh it without any resident process.
+
+      * rgxy needs a RUNNING searchd, not an index. Indexing once does NOT
+        make rgxy work: with no daemon it says "no connection to the daemon".
+        To TRY it with nothing installed or configured, start searchd in the
+        foreground on a temporary endpoint and point rgxy at it:
+            searchd --root ~ --listen uds:/tmp/rgy-try.sock &
+            rgxy --endpoint uds:/tmp/rgy-try.sock --query invoice
+            rgxy --endpoint uds:/tmp/rgy-try.sock --tui
+        Stop it with Ctrl-C when done. No unit, no login entry, nothing
+        registered. For one question with no daemon at all, use searchctl:
+            searchctl --root ~ "invoice"
+
+  Do NOT run the daemon and a scheduled rebuild on the same tree: both
+  write the same index file, and a scheduled --reindex would overwrite
+  the daemon's live state.
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
