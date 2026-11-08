@@ -30,7 +30,7 @@ makedepends=(
 )
 _pkgsrc="${url##*/}"
 source=(
-  "${_pkgsrc}::git+${url}.git#tag=v${_pkgver}" #?signed"
+  "${_pkgsrc}::git+${url}.git#tag=v${_pkgver}?signed"
 )
 b2sums=('93fece5ea32570c23302449b7a5baf3b463e7bac637a5608d446103e8f0c61e8d1f9d48fffb615104585408136978c1bdd133971f72777241ef403171843795c')
 validpgpkeys=(

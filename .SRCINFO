@@ -17,7 +17,7 @@ pkgbase = librepods
 	depends = qt6-base
 	depends = qt6-connectivity
 	depends = qt6-declarative
-	source = librepods::git+https://github.com/librepods-org/librepods.git#tag=v1.0.4
+	source = librepods::git+https://github.com/librepods-org/librepods.git#tag=v1.0.4?signed
 	validpgpkeys = 2D58709F32193AA828ED43D72DBD7F9150AB7E67
 	b2sums = 93fece5ea32570c23302449b7a5baf3b463e7bac637a5608d446103e8f0c61e8d1f9d48fffb615104585408136978c1bdd133971f72777241ef403171843795c
 
