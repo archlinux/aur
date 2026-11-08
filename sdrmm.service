@@ -1,0 +1,15 @@
+[Unit]
+Description=SDRmm server
+Documentation=https://sdrmm.com/docs/server/configuration
+After=network.target
+
+[Service]
+# Loopback:8080 without authentication by default. Anything other machines can reach needs
+# SDRMM_TOKEN (put it in an override or the environment file below), see the documentation.
+EnvironmentFile=-%h/.config/sdrmm/env
+ExecStart=/usr/bin/sdrmm
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
