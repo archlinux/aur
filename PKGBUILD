@@ -1,6 +1,6 @@
 # Maintainer: mpsijm
 pkgname=browsers-bin
-pkgver=0.8.2
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Open the right browser at the right time"
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=("browsers=$pkgver")
 conflicts=("browsers-git")
 # Make source file name unique: https://wiki.archlinux.org/title/PKGBUILD#source
 source=("browsers_linux-$pkgver.tar.xz::https://github.com/Browsers-software/browsers/releases/download/$pkgver/browsers_linux.tar.xz")
-sha256sums=("34842d97ead56ffaf485c3113c7564afcc987fd733adbee9610e916df9439c9e")
+sha256sums=("197fe816f24644b03e2871931db5e39c4e33f77dbf1e88620f33cbca9b5e5df0")
 
 package() {
   bsdtar -xf "$srcdir/browsers_linux-$pkgver.tar.xz" -C "$srcdir"
