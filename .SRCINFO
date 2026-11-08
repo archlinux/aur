@@ -1,0 +1,32 @@
+pkgbase = repowise
+	pkgdesc = Codebase intelligence, CLI, MCP server and web dashboard for AI coding agents
+	pkgver = 0.60.1
+	pkgrel = 1
+	url = https://github.com/repowise-dev/repowise
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = uv
+	makedepends = npm
+	makedepends = patchelf
+	depends = python
+	depends = git
+	depends = sqlite
+	depends = nodejs>=20
+	depends = glibc
+	depends = gcc-libs
+	options = !strip
+	options = !debug
+	source = repowise-0.60.1.tar.gz::https://github.com/repowise-dev/repowise/archive/refs/tags/v0.60.1.tar.gz
+	source = system-install.patch
+	source = numpy-override.txt
+	source = collect-web-licenses.py
+	sha256sums = b40084756ccb47a940e916774d72ba6b366d91c2431a3d6941964ddeb144ad99
+	sha256sums = ab2496ba49c9f55eac941f70f392ba821e8747d677b809f1c7e936d55826799f
+	sha256sums = 38d150a56e1f1c4d011b91f167656e2093e872123d1dbb44ce6795bd985f2f74
+	sha256sums = b8eb4bfabc15976ccac077c97a7d3be8b03edc52ff7636c8c6fd13d10d03deda
+
+pkgname = repowise

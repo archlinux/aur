@@ -1,0 +1,10 @@
+# Repowise 0.60.1's universal uv.lock retains NumPy 1.26.4 because optional
+# graph-extra/graspologic needs NumPy <2 and Python <3.13. Exporting only the
+# runtime does not re-resolve this pin, but NumPy 1.26 only supports Python <=3.12.
+# SciPy 1.17.1 accepts NumPy >=1.26.4,<2.7; LanceDB 0.30.0 accepts >=1.24.
+# Apply this override only to the known 1.26.4 pin; remove it once upstream's
+# runtime lock supports system Python. Do not relax the application's version caps.
+# https://numpy.org/doc/stable/release/1.26.4-notes.html
+# Hash: PyPI's CPython 3.14 manylinux x86_64 wheel for NumPy 2.5.4.
+numpy==2.5.4 \
+    --hash=sha256:d549420b8858885cea8838a727842249218b9c1da24dd517e25c9c7a948310a3
