@@ -1,55 +1,22 @@
 pkgname=prizrak-box-bin
-_pkgname=Prizrak-Box
-pkgver=2.0.0_rc01
-_electronversion=41
+pkgver=2.0.0_rc02
 pkgrel=1
-pkgdesc="A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A Simple Mihomo GUI (prebuilt Rust + Slint build)"
 arch=('aarch64' 'x86_64')
-url="https://github.com/legiz-ru/prizrak-box"
+url="https://github.com/legiz-ru/Prizrak-Box"
 license=('GPL-3.0-only')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
-depends=("electron${_electronversion}")
-makedepends=('asar')
-source=("prizrak-box.sh")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.zst::${url}/releases/download/v2.0.0-rc01/linux-arm64-aur-electron.tar.zst")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.zst::${url}/releases/download/v2.0.0-rc01/linux-amd64-aur-electron.tar.zst")
-sha256sums=('4497d4c2cfb24ca0665cbeabf377a6bc850a8cfd6dd17469b0dc937a9ed6bf65')
-sha256sums_aarch64=('cfa4a3f547b0201961e58a023de86776213a0257389897975c64ad5c146d8d0d')
-sha256sums_x86_64=('0e27d9b25ee812bc75e2ece3ed657b0c5656d470e713d7ae587cdce85bc8d317')
+provides=('prizrak-box')
+conflicts=('prizrak-box')
+depends=('gtk3' 'libayatana-appindicator' 'libxkbcommon' 'libxkbcommon-x11' 'fontconfig' 'polkit' 'xdg-utils')
+options=('!strip' '!debug')
+install=prizrak-box.install
+source_aarch64=("prizrak-box-2.0.0_rc02-aarch64.tar.zst::https://github.com/legiz-ru/Prizrak-Box/releases/download/v2.0.0-rc02/linux-arm64-aur.tar.zst")
+source_x86_64=("prizrak-box-2.0.0_rc02-x86_64.tar.zst::https://github.com/legiz-ru/Prizrak-Box/releases/download/v2.0.0-rc02/linux-amd64-aur.tar.zst")
+sha256sums_aarch64=('c62cd064f306579f0ca7aae16799eef28a8ed9ed1a8e403e92ca7f97a4a6bcd2')
+sha256sums_x86_64=('31c6837af95b450a0645088cb6ce002a95d33d0a42fae26881d20cbd83e9974d')
 
-_get_electron_version() {
-  _elec_ver="$(strings "${srcdir}/usr/lib/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-  echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
-}
-
-prepare() {
-  sed -i -e "
-    s/@electronversion@/${_electronversion}/g
-    s/@appname@/${pkgname%-bin}/g
-    s/@runname@/app.asar/g
-    s/@cfgdirname@/${_pkgname}/g
-    s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-  " "${srcdir}/prizrak-box.sh"
-
-  _get_electron_version
-
-  sed -i -e "
-    s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
-    s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-  " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
-
-  asar e "${srcdir}/usr/lib/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-  find "${srcdir}/app.asar.unpacked/.vite" -type f -exec sed -i "s/process.resourcesPath/'\/usr\/lib\/${pkgname%-bin}'/g" {} +
-  asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-}
-
+# The source is the release's pacman package: makepkg unpacks it into
+# $srcdir, and its usr/ tree is the whole package.
 package() {
-  install -Dm755 "${srcdir}/prizrak-box.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-  install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-  install -Dm755 "${srcdir}/usr/lib/${_pkgname}/resources/px" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-  install -Dm755 "${srcdir}/usr/lib/${_pkgname}/resources/px-service" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-  install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-  install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-  install -Dm644 "${srcdir}/usr/share/doc/${_pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp -a "${srcdir}/usr" "${pkgdir}/"
 }

@@ -1,0 +1,124 @@
+function post_install() {
+#!/bin/sh
+# Runs as root after the package is unpacked (deb postinst / rpm %post /
+# pacman post_install|post_upgrade).
+#
+# Registers the desktop entry, icon and the prizrak-box:// scheme handler, then
+# registers the privileged TUN helper with systemd. Installing the service here —
+# where root is already available — is what the Windows MSI does too, and it means
+# TUN works out of the box instead of needing a pkexec prompt on first use.
+#
+# Deliberately free of `exit`: pacman wraps this script in a shell function it
+# sources, where exiting would abort the whole transaction script rather than just
+# this hook.
+set -e
+
+if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q /usr/share/applications || true
+fi
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
+fi
+
+# Every failure below is non-fatal: the app runs without the service (TUN stays
+# unavailable until the user installs it from the UI), and package installation
+# must not break in environments that have no running systemd — containers,
+# chroots and image builds among them.
+if [ -x /usr/lib/prizrak-box/px-service ]; then
+    if command -v systemctl >/dev/null 2>&1 && [ -d /run/systemd/system ]; then
+        # -install writes the unit with the correct ExecStart, reloads systemd,
+        # enables and starts it (src-service/installer_linux.go).
+        if /usr/lib/prizrak-box/px-service -install; then
+            :
+        else
+            echo "Prizrak-Box: could not register the TUN service; enable it later from the app's settings." >&2
+        fi
+    else
+        echo "Prizrak-Box: systemd is not running here, skipping TUN service registration." >&2
+    fi
+fi
+
+}
+
+function post_upgrade() {
+#!/bin/sh
+# Runs as root after the package is unpacked (deb postinst / rpm %post /
+# pacman post_install|post_upgrade).
+#
+# Registers the desktop entry, icon and the prizrak-box:// scheme handler, then
+# registers the privileged TUN helper with systemd. Installing the service here —
+# where root is already available — is what the Windows MSI does too, and it means
+# TUN works out of the box instead of needing a pkexec prompt on first use.
+#
+# Deliberately free of `exit`: pacman wraps this script in a shell function it
+# sources, where exiting would abort the whole transaction script rather than just
+# this hook.
+set -e
+
+if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q /usr/share/applications || true
+fi
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
+fi
+
+# Every failure below is non-fatal: the app runs without the service (TUN stays
+# unavailable until the user installs it from the UI), and package installation
+# must not break in environments that have no running systemd — containers,
+# chroots and image builds among them.
+if [ -x /usr/lib/prizrak-box/px-service ]; then
+    if command -v systemctl >/dev/null 2>&1 && [ -d /run/systemd/system ]; then
+        # -install writes the unit with the correct ExecStart, reloads systemd,
+        # enables and starts it (src-service/installer_linux.go).
+        if /usr/lib/prizrak-box/px-service -install; then
+            :
+        else
+            echo "Prizrak-Box: could not register the TUN service; enable it later from the app's settings." >&2
+        fi
+    else
+        echo "Prizrak-Box: systemd is not running here, skipping TUN service registration." >&2
+    fi
+fi
+
+}
+
+function pre_remove() {
+#!/bin/sh
+# Runs as root before the package's files are removed (deb prerm / rpm %preun /
+# pacman pre_remove). Unregisters the TUN helper while its binary is still on
+# disk.
+#
+# Only on a real removal, never on an upgrade: tearing the service down then would
+# interrupt TUN for no reason, since the new package's postinstall registers it
+# again.
+#
+# Deliberately free of `exit`: pacman wraps this script in a shell function it
+# sources, where exiting would abort the whole transaction script rather than just
+# this hook.
+set -e
+
+skip_removal=0
+
+# deb passes an action name.
+case "$1" in
+    upgrade|failed-upgrade)
+        skip_removal=1
+        ;;
+esac
+
+# rpm passes how many versions remain after the transaction: 0 on removal, 1 or
+# more on an upgrade. pacman passes a version string, which is not a number, so the
+# test fails and removal proceeds — correct, because a pacman upgrade runs
+# pre_upgrade instead of this hook.
+if [ -n "$1" ] && [ "$1" -gt 0 ] 2>/dev/null; then
+    skip_removal=1
+fi
+
+if [ "$skip_removal" = 0 ]; then
+    if [ -x /usr/lib/prizrak-box/px-service ] && command -v systemctl >/dev/null 2>&1; then
+        /usr/lib/prizrak-box/px-service -uninstall || true
+    fi
+fi
+
+}
+
