@@ -1,6 +1,6 @@
 pkgbase = donutmonitorcontrol
 	pkgdesc = Control monitor brightness, color and input over DDC/CI, with sun-based auto brightness
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/Auto-Brightness
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = donutmonitorcontrol
 	conflicts = monitor-remote-control
 	replaces = monitor-remote-control
 	backup = etc/donut-monitor-control/config.json
-	source = git+https://github.com/DonutsDelivery/Auto-Brightness.git#tag=v2.7.0
+	source = git+https://github.com/DonutsDelivery/Auto-Brightness.git#tag=v2.7.1
 	sha256sums = SKIP
 
 pkgname = donutmonitorcontrol
