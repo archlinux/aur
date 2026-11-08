@@ -4,7 +4,7 @@
 # The release workflow fills in pkgver (packaging/aur/render.sh).
 
 pkgname=hoarder-wl-compat
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='wl-copy and wl-paste served by Hoarder, in place of wl-clipboard'
 arch=('any')
