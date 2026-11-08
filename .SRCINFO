@@ -1,6 +1,6 @@
 pkgbase = cachy-auto-update
 	pkgdesc = Unattended background updates for CachyOS, aware of battery, gaming and manual package management
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/LoonixTools/cachy-auto-update
 	install = cachy-auto-update.install
@@ -24,7 +24,7 @@ pkgbase = cachy-auto-update
 	optdepends = python-gobject: progress bar in the desktop taskbar
 	backup = etc/cachy-auto-update/cachy-auto-update.conf
 	backup = etc/logrotate.d/cachy-auto-update
-	source = cachy-auto-update-1.6.0.tar.gz::https://github.com/LoonixTools/cachy-auto-update/archive/refs/tags/v1.6.0.tar.gz
-	sha256sums = 7d533616346896885fefb655c7100853a4d15a7f12a4ecf5c978399d44f488fe
+	source = cachy-auto-update-1.7.0.tar.gz::https://github.com/LoonixTools/cachy-auto-update/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = e357871a63f64ba6202819aa445fe426fd3567ae814c20b35043f13432d416c0
 
 pkgname = cachy-auto-update
