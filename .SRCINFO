@@ -6,6 +6,7 @@ pkgbase = comfy-desktop-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = patchelf
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo

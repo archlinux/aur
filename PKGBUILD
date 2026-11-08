@@ -34,6 +34,7 @@ depends=(
     'xdg-utils'
 )
 optdepends=('git: fallback for git operations if bundled pygit2 fails')
+makedepends=('patchelf')
 provides=('comfy-desktop')
 conflicts=('comfy-desktop' 'comfyui-desktop-2-beta')
 replaces=('comfyui-desktop-2-beta')
@@ -67,6 +68,23 @@ package() {
 
     # Remove deb-specific changelog
     rm -rf "$pkgdir/usr/share/doc"
+
+    # The bundled CPython/Tcl is built in a container whose dependency prefix
+    # leaks in as an absolute rpath (/tools/deps/lib) on libtcl9.0.so and
+    # libtcl9tk9.0.so. It resolves nowhere on a user system, and every library
+    # in this tree ships beside its siblings, so $ORIGIN is the correct
+    # relocatable value for an entry that is not already $ORIGIN-relative.
+    local _pylib="$pkgdir/opt/Comfy Desktop/resources/bootstrap-python/lib" _elf _rpath _entry _relative _entries
+    while IFS= read -r -d '' _elf; do
+        _rpath=$(readelf -d "$_elf" 2>/dev/null | sed -nE 's/.*\((RPATH|RUNPATH)\).*\[(.*)\]/\2/p')
+        [[ -n $_rpath ]] || continue
+        _relative=1
+        IFS=: read -ra _entries <<< "$_rpath"
+        for _entry in "${_entries[@]}"; do
+            [[ $_entry == '$ORIGIN'* ]] || _relative=0
+        done
+        (( _relative )) || patchelf --force-rpath --set-rpath '$ORIGIN' "$_elf"
+    done < <(find "$_pylib" -type f \( -name '*.so' -o -name '*.so.*' \) -print0)
 
     install -d "$pkgdir/usr/bin"
     ln -s '/opt/Comfy Desktop/comfyui-desktop-2' "$pkgdir/usr/bin/comfy-desktop"
