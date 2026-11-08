@@ -1,6 +1,6 @@
 pkgbase = jobman-bin
 	pkgdesc = A daemon-less command line job manager with flexible support for retries, timeouts, logging, notifications, and more...
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/ryancswallace/Jobman
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = jobman-bin
 	conflicts = jobman
 	options = !strip
 	backup = etc/jobman/jobman.yml
-	source_x86_64 = jobman-x86_64-1.9.1.tgz::https://github.com/ryancswallace/Jobman/releases/download/v1.9.1/jobman_1.9.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5ffc28312011fa9a54bea23ec8f3bc5f8bf643b61e2a31d336ce8c726e4b9e3f
-	source_i686 = jobman-i686-1.9.1.tgz::https://github.com/ryancswallace/Jobman/releases/download/v1.9.1/jobman_1.9.1_linux_386.tar.gz
-	sha256sums_i686 = fcc412dcdca858b024234925bc923f9d873c4e736bf021be1520bbf9b18f88cb
-	source_aarch64 = jobman-aarch64-1.9.1.tgz::https://github.com/ryancswallace/Jobman/releases/download/v1.9.1/jobman_1.9.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0f6d1495d05abaf6175ade716ca12cca0347cf440f58c221a253aa476917f712
+	source_x86_64 = jobman-x86_64-1.10.0.tgz::https://github.com/ryancswallace/Jobman/releases/download/v1.10.0/jobman_1.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 94be489f42e898ba36e74a4b40c25933fc42653677c2d95b51d12923d519aad5
+	source_i686 = jobman-i686-1.10.0.tgz::https://github.com/ryancswallace/Jobman/releases/download/v1.10.0/jobman_1.10.0_linux_386.tar.gz
+	sha256sums_i686 = 73252101df715c8ccc821d3090ac7b4be17cf1783b3b1d26051e0280175c6085
+	source_aarch64 = jobman-aarch64-1.10.0.tgz::https://github.com/ryancswallace/Jobman/releases/download/v1.10.0/jobman_1.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a24b6cc63f8f6af7fb048ccca663b11db970f448a3557d7d6966837431c096fd
 
 pkgname = jobman-bin
