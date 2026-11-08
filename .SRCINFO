@@ -6,11 +6,11 @@ pkgbase = oda-file-converter
 	arch = x86_64
 	license = custom
 	depends = hicolor-icon-theme
+	depends = qt6-base
 	depends = libglvnd
 	depends = libx11
 	depends = libxcb
 	depends = libxkbcommon-x11
-	depends = dbus
 	depends = fontconfig
 	depends = freetype2
 	depends = glib2
@@ -20,8 +20,10 @@ pkgbase = oda-file-converter
 	source = ODAFileConverter_QT6_lnxX64_11dll_27.10.deb::https://www.opendesign.com/guestfiles/get?filename=ODAFileConverter_QT6_lnxX64_11dll_27.10.deb
 	source = oda-file-converter
 	source = oda-file-converter.desktop
-	md5sums = 4099d7b002eceadb007bf0dfa76b1128
-	md5sums = 6d8843a38923c50ac9c98c70ae34e327
-	md5sums = c52b1dc291e81a7cb44cfed76c39c610
+	source = LICENSE
+	sha256sums = c432002cc688f89ddf6a68ad68e877cd16da1d99ab8729386009c552cf73beb5
+	sha256sums = c1a5bfca03b577a7f7e62dc41b4bfadd85941c5224628547d03ffa3358c3c2ac
+	sha256sums = 5fa2d6a8298bd9740dba27bf5c5af5c25536fc4b69a314f13517faba59f0db7b
+	sha256sums = e94d9a6b54e6ce2c5e91454819aea622d45269b315cee7a4b89828386969e18a
 
 pkgname = oda-file-converter
