@@ -15,7 +15,8 @@ Install with `yay -S grappa-bin`, or clone this AUR repository and run
 
 The package creates the `grappa` system user, state directories and a protected
 configuration file, generating missing secrets without replacing existing ones.
-It does not enable/start the service or run database migrations automatically.
+It does not enable or start the service automatically. Starting the service
+runs pending database migrations before the server starts (since 1.6.3).
 
 1. Edit `/etc/grappa/grappa.env` as root. Set `PHX_HOST` to the public hostname
    (without `https://`) and set `VAPID_SUBJECT` to your contact address.
@@ -65,7 +66,9 @@ Before uninstalling, run `sudo systemctl disable --now grappa.service`.
 This is a community-maintained binary package, not an upstream-maintained AUR
 submission. It conflicts with and provides `grappa`. Downloads use an explicit
 GitHub release tag and SHA-256 checksum. Only upstream's `usr/` payload is
-included; its package metadata and automatic service/database hooks are excluded.
+included; its package metadata and automatic upgrade hook are excluded. The service
+runs pending migrations on an explicit start or restart; package installation
+does not restart the service.
 Arch-specific installation instructions are in this file; the bundled upstream
 packaging documentation also describes other distribution formats.
 
