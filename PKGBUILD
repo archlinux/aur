@@ -1,6 +1,6 @@
 # Maintainer: lisniper <liqiang0330@gmail.com>
 pkgname=abclock
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 _gtklockver=5.0.0
 pkgdesc='gtklock with Beijing timezone wrapper, English+Chinese weekday (%ea) and 3-line lock layout'
@@ -14,7 +14,7 @@ conflicts=('gtklock')
 backup=('etc/pam.d/gtklock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "gtklock-$_gtklockver.tar.gz::https://github.com/jovanlanik/gtklock/archive/v$_gtklockver.tar.gz")
-sha256sums=('4a133f34f2d3983caffc59ffaf2de4890c271321eba4dd6c9a9038e6abc70805'
+sha256sums=('56dd9e09a3ee53d2cd8db29ada1a61c2b33a23775344755b8b9b17bb5ace2e71'
             '018c50cf1d7b626f823e797750e5b304511b3b359e7277e8abb3383c11e7aed9')
 
 prepare() {
@@ -30,7 +30,6 @@ build() {
 package() {
 	meson install -C build --destdir "$pkgdir" --no-rebuild
 
-	# 上游把可执行文件装到 /usr/bin/gtklock；后端挪到 libexec，/usr/bin 让给包装器
 	install -d "$pkgdir/usr/libexec/abclock"
 	mv "$pkgdir/usr/bin/gtklock" "$pkgdir/usr/libexec/abclock/gtklock-bin"
 	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/gtklock" "$pkgdir/usr/bin/gtklock"
