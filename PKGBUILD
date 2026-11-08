@@ -6,7 +6,7 @@ _iconname=dev.duxlabs.calendar
 _desktopid=dev.duxlabs.calendar
 
 pkgname=dux-calendar-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Local, Google, Microsoft, and CalDAV calendars for the Dux desktop (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -36,9 +36,9 @@ sha256sums=('a5b49222ed7b2e61fc82bc0d834be0729d9c4d4ed55798ff563c6ad0474178ad'
             '49ab0353bd4a915c43adae4d11ff49730e13a2af530aaf6b918a3d8e430c9acf'
             '4ca116a3853362bfe7513ebe10be3c06fb244520e5cca997c66d8d562d03fc12'
             'df7a0f965cc85e2e0d5b5dfa88b9b68b159a4bf846ef2906d7e05c3ca3c9ae39'
-            '40a2493d67948dab7218f330e2615407caae9206747d69e0363cc2e28a177986')
-sha256sums_x86_64=('73e9fe18286247714638508a96c6a40991c76fb61e9173d134108b1adc3dbae2')
-sha256sums_aarch64=('b4278b34ed3c3e616f5db836c6c13b5b25728aa77a612bfa6058a5be4febae1d')
+            '3dde3ba56b8bcb1ae01eaebb56ff4037966fa64b8ec64ef7744f563eedf5d4ef')
+sha256sums_x86_64=('e254dc65ce0e73f20a5fb3c3d7d4f463fb7f425be02f6a67e9e95a099c8488bb')
+sha256sums_aarch64=('3f418026e37bfc7b965fe3de6669cf49571b54011cbf383f4c3dffa463973544')
 
 # makepkg's mime sniffing does not reliably detect a gzipped ELF, so decompress it ourselves
 noextract=("${_binname}-${arch[0]}-${pkgver}.gz" "${_binname}-${arch[1]}-${pkgver}.gz")
