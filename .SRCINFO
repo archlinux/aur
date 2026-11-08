@@ -1,7 +1,7 @@
 pkgbase = whatsapp-linux-covenant
 	pkgdesc = WhatsApp Desktop for Linux (Covenant Edition) built with modern Electron
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/araujo791/Whatsapp-Linux-Covenant
 	arch = x86_64
 	license = MIT

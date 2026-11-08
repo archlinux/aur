@@ -3,7 +3,7 @@
 pkgname=whatsapp-linux-covenant
 _pkgname=Whatsapp-Linux-Covenant
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp Desktop for Linux (Covenant Edition) built with modern Electron"
 arch=('x86_64')
 url="https://github.com/araujo791/Whatsapp-Linux-Covenant"
@@ -17,12 +17,13 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  npm_config_cache="${srcdir}/npm-cache" npm install --no-audit --no-fund
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  npm_config_cache="${srcdir}/npm-cache" npm install
-  npx electron-builder build --x64 --linux dir
+  ./node_modules/.bin/tsc
+  ./node_modules/.bin/electron-builder build --x64 --linux dir
 }
 
 package() {
