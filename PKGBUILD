@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="rapidraw"
 pkgname="$_pkgname"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.6.7
+pkgver=1.6.9
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -29,7 +29,7 @@ options=('!lto')
 _pkgsrc="RapidRAW-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('62094ad48eee8272504671f4c8c8a518e21b4d44e6a90e5531eb7be29bd40ed7')
+sha256sums=('b3302f10df08dcf4bb5dfbb18505cb0a93126a185c177ec7404f8662ec2531c2')
 
 build() {
   local _units=$(($(nproc) > 16 ? $(nproc) : 16))
