@@ -3,11 +3,11 @@
 
 pkgname=eac-reboot-entry
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A script shim to make booting into an EAC kernel a bit easier"
 arch=('any')
 license=('Unlicense')
-depends=('linux-cachyos-eac' 'systemd' 'hicolor-icon-theme')
+depends=('linux-cachyos-eac' 'systemd' 'hicolor-icon-theme' 'kdialog')
 source=("reboot-eac"
         "reboot-eac.desktop")
 
