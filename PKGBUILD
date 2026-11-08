@@ -1,12 +1,12 @@
 # Maintainer: username227 {gfrank227 [at] gmail [dot] com}
 pkgname=viper4linux-re-git
-pkgver=1.1.0.r164.g31d9f48
+pkgver=1.1.2.r0.gf9c402c
 pkgrel=1
 pkgdesc='Reverse-engineered ViPERDSP effects for PipeWire with a Qt6 interface (development VCS build)'
 arch=('x86_64')
 url='https://github.com/username227/viper4linux-re'
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'qt6-base' 'pipewire' 'ladspa' 'python')
+depends=('glibc' 'gcc-libs' 'qt6-base' 'pipewire' 'ladspa' 'python' 'libx11')
 makedepends=('git' 'cmake' 'pkgconf')
 conflicts=('viper4linux-re' 'viper4linux' 'viper4linux-git')
 provides=('viper4linux-re')
