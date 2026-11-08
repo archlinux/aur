@@ -20,7 +20,9 @@ pre_remove() {
         USER_HOME=$(eval echo ~$SUDO_USER)
         USER_ID=$(id -u "$SUDO_USER")
 
-        rm -f "$USER_HOME/.config/hypr/conf.d/spotify.conf"
+        rm -f "$USER_HOME/.config/hypr/conf.d/spotify.conf" "$USER_HOME/.config/hypr/conf.d/spotify.lua"
+        # Lua config: drop loader line, or hyprland.lua would dofile() a missing file
+        sed -i '/conf\.d\/spotify\.lua/d' "$USER_HOME/.config/hypr/hyprland.lua" 2>/dev/null
         rm -f "$USER_HOME/.config/hypr/UserScripts/smart-close.sh"
         rm -f "$USER_HOME/.local/share/applications/spotify.desktop"
 
