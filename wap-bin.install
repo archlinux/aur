@@ -1,0 +1,28 @@
+_token_dir=/var/lib/wap/privileged-helper
+
+post_install() {
+  # Per-machine invoker token for the privileged helper (root-only, 0600),
+  # created the same way install.sh does for a direct system install.
+  install -d -m 0700 -o root -g root "$_token_dir"
+  if [ ! -f "$_token_dir/invoker-token" ]; then
+    (umask 077; od -An -N32 -tx1 /dev/urandom | tr -d ' \n' > "$_token_dir/invoker-token")
+  fi
+  chmod 0600 "$_token_dir/invoker-token"
+  chown root:root "$_token_dir/invoker-token"
+  cat <<'MSG'
+==> Wap installed. Run `wap-browser` to open the browser and `wap doctor` to check
+    the installation. Your profile and data live in ~/.wap-browser and ~/.wap.
+==> The privileged helper is available to members of the `wap` group (sudoers)
+    or through polkit admin authentication; no group is created automatically.
+MSG
+}
+
+post_upgrade() {
+  post_install >/dev/null
+}
+
+pre_remove() {
+  # Remove the generated token first so pacman can remove the package-owned
+  # state directories.
+  rm -f "$_token_dir/invoker-token"
+}
