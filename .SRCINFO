@@ -1,6 +1,6 @@
 pkgbase = python-dashing
 	pkgdesc = Terminal dashboards for Python
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/FedericoCeratto/dashing
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-dashing
 	provides = dashing
 	conflicts = python-python-dashing
 	replaces = python-python-dashing
-	source = https://files.pythonhosted.org/packages/source/d/dashing/dashing-0.1.0.tar.gz
-	sha256sums = 2514608e0f29a775dbd1b1111561219ce83d53cfa4baa2fe4101fab84fd56f1b
+	source = https://files.pythonhosted.org/packages/source/d/dashing/dashing-0.2.0.tar.gz
+	sha256sums = aeb56020ea2ae170a09498ff23f9c30cc76c02b83de3467e1262112578abbd9b
 
 pkgname = python-dashing

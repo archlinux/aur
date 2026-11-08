@@ -1,15 +1,12 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.1.0'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='dashing'
-
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="python-dashing"
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Terminal dashboards for Python"
+
+_pypi_package=${pkgname#python-}
+_pypi_version=${pkgver}
 
 license=('LGPL-3.0')
 arch=('any')
@@ -24,20 +21,20 @@ conflicts=("python-${pkgname}")
 depends=('python' 'python-blessed')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-# source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2514608e0f29a775dbd1b1111561219ce83d53cfa4baa2fe4101fab84fd56f1b')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('aeb56020ea2ae170a09498ff23f9c30cc76c02b83de3467e1262112578abbd9b')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "README.adoc" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
