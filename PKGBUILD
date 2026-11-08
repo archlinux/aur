@@ -6,7 +6,7 @@ _appid=dev.duxlabs.files
 _portalservice=org.freedesktop.impl.portal.desktop.dfiles.service
 
 pkgname=dux-files-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="File manager for Wayland from Dux Labs (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -53,9 +53,9 @@ sha256sums=('0c4c01a73eb7d2d1286a7e60e580dd53b605636dc46a57c9c3318e8e23efc676'
             '1cf796976f0381a7967dd8785ef326414d6b62eb0fde1ff3691e06a744577669'
             '705b8b9636c11c3ef62acffea7870000b92481df6dd73d6b1ffa4ae3d54863c6'
             'a01be1c1c3780f8ea3ff3df530374c23088fd78265e070fdf93e5d41ee53fd69'
-            '214183d7044c71f3a7dd382f8b3eb841e46841c0fee4a11c15d6b2d1c8170516')
-sha256sums_x86_64=('f66a5b5b52cab718946809db6e2b0767a00722f7030301fc00301248bbfbff9a')
-sha256sums_aarch64=('6c6301af90c8a61cee8681d88a9ce590515bd38a1d75536e33c6d9234b34e548')
+            '6baeb3eba328927bf20dc6288e49a7d1578a6fb169feddfa6d147ef6c4df162d')
+sha256sums_x86_64=('1b8522cee72137631bc93e7b087bbc5bc2335971865e163b4ec324592941ba1d')
+sha256sums_aarch64=('d58ae5d4b6b5fb06b0e9831327ea6141fdec06caa0c00933bcbdd537dcd9087c')
 
 # makepkg's mime sniffing does not reliably detect a gzipped ELF, so decompress it ourselves
 noextract=("${_binname}-${arch[0]}-${pkgver}.gz" "${_binname}-${arch[1]}-${pkgver}.gz")
