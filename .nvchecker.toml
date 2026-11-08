@@ -1,0 +1,5 @@
+[nephrite]
+source = "github"
+github = "Nephrite-Project/Nephrite"
+use_max_tag = true
+prefix = "v"

@@ -1,0 +1,1731 @@
+pkgbase = nephrite
+	pkgdesc = A fork of QEMU, the generic and open source machine emulator and virtualizer
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Nephrite-Project/Nephrite
+	arch = x86_64
+	license = BSD-2-Clause
+	license = BSD-2-Clause-Patent
+	license = BSD-3-Clause
+	license = CC0-1.0
+	license = FSFAP
+	license = GPL-1.0-or-later
+	license = GPL-2.0-only
+	license = GPL-2.0-only WITH Linux-syscall-note
+	license = GPL-2.0-only WITH Linux-syscall-note OR BSD-2-Clause
+	license = GPL-2.0-only WITH Linux-syscall-note OR BSD-3-Clause
+	license = GPL-2.0-or-later
+	license = GPL-2.0-or-later OR BSD-3-Clause
+	license = GPL-2.0-or-later WITH Linux-syscall-note
+	license = ISC
+	license = LGPL-2.1-only OR BSD-3-Clause
+	license = LGPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = LicenseRef-Public-Domain
+	license = MIT
+	makedepends = alsa-lib
+	makedepends = brltty
+	makedepends = bzip2
+	makedepends = cairo
+	makedepends = capstone
+	makedepends = curl
+	makedepends = dtc
+	makedepends = fuse3
+	makedepends = libgcc
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = glib2-devel
+	makedepends = gnutls
+	makedepends = gtk3
+	makedepends = jack
+	makedepends = keyutils
+	makedepends = libaio
+	makedepends = libbpf
+	makedepends = libcacard
+	makedepends = libcap-ng
+	makedepends = libcbor
+	makedepends = libepoxy
+	makedepends = libiscsi
+	makedepends = libnfs
+	makedepends = libpipewire
+	makedepends = libpng
+	makedepends = libpulse
+	makedepends = libsasl
+	makedepends = libseccomp
+	makedepends = libslirp
+	makedepends = libssh
+	makedepends = liburing
+	makedepends = libusb
+	makedepends = libx11
+	makedepends = libxdp
+	makedepends = libxml2
+	makedepends = libxkbcommon
+	makedepends = lzo
+	makedepends = mesa
+	makedepends = meson
+	makedepends = multipath-tools
+	makedepends = ncurses
+	makedepends = ndctl
+	makedepends = numactl
+	makedepends = pam
+	makedepends = pcre2
+	makedepends = python
+	makedepends = python-distlib
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = rdma-core
+	makedepends = rutabaga-ffi
+	makedepends = sdl2
+	makedepends = sdl2_image
+	makedepends = snappy
+	makedepends = spice-protocol
+	makedepends = spice
+	makedepends = systemd
+	makedepends = usbredir
+	makedepends = vde2
+	makedepends = virglrenderer
+	makedepends = vte3
+	makedepends = zlib
+	makedepends = zlib-static
+	makedepends = zstd
+	source = https://github.com/Nephrite-Project/Nephrite/releases/download/v0.3.0/nephrite-0.3.0.tar.xz
+	source = bridge.conf
+	source = qemu-ga.conf
+	source = 99-nephrite-guest-agent.rules
+	sha512sums = d75680182c4dc9e35febd0f90c87d9c36e36befd321c5fe5f59ce97fc3cd122e543dda1882a92c967e37f8796b8e1f648aa3f343f234ce5a3ce583185a819fb2
+	sha512sums = 7b412ffa5dcda47b0a4ec9e2c5e5e1d9eaaaf0a087b7ea3ead3e706ba4c9cafb919beadd088a0299b6f7aab753b81a5eafb545b4842ee5f26646d16544dd02a7
+	sha512sums = 080ce23f5eedda24c60d9c2c9cbb6d283076ef7907d82a78274bec59dc70ec74ad3e31e090a13295fe9933f008402a83d62bdaccea6f7a44164abeba0fb5ad45
+	sha512sums = 93b905046fcea8a0a89513b9259c222494ab3b91319dde23baebcb40dc17376a56661b159b99785d6e816831974a0f3cbd7b2f7d89e5fc3c258f88f4492f3839
+	b2sums = 48f1a36b0af369af53708057401a7e2a9bffbfe28ebea6dedd1621a03c48859aaaa40909416b1cfaa8ca62fa712744e2a5614eb08836897be4a1d1eddf069724
+	b2sums = b1eca364aa60f130ff5e649f5d004d3fcb75356d3421a4542efdfc410d39b40d9434d15e1dd7bbdbd315cb72b5290d3ea5f77f9c41961a5601cd28ef7bbe72e8
+	b2sums = 344ddf996ab1b4d38b06c809f35e0605c483b1423a9e7696ac347de6b046c5a55949c204f78b85e3ce22cc72fc605e7ea60a3a0af80dccb1d55c6e6f8978bf1f
+	b2sums = a9a2bdfeeb44eb86cbe88ac7c65f72800bdb2fd5cecb02f3a258cf9470b52832180aab43c89d481f7fd4d067342a9a27dd6c8a94d625b95d6e2b912e47d274e7
+
+pkgname = nephrite-common
+	depends = glibc
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = hicolor-icon-theme
+	depends = libcap-ng
+	depends = libcap-ng.so
+	backup = etc/nephrite/bridge.conf
+
+pkgname = nephrite-audio-alsa
+	pkgdesc = Nephrite ALSA audio driver
+	depends = alsa-lib
+	depends = libasound.so
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-audio-dbus
+	pkgdesc = Nephrite D-Bus audio driver
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libgcc
+	depends = libgobject-2.0.so
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-audio-jack
+	pkgdesc = Nephrite JACK audio driver
+	depends = glibc
+	depends = jack
+	depends = libgcc
+	depends = libjack.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-audio-oss
+	pkgdesc = Nephrite OSS audio driver
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-audio-pa
+	pkgdesc = Nephrite PulseAudio audio driver
+	depends = glibc
+	depends = libpulse
+	depends = libpulse.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-audio-pipewire
+	pkgdesc = Nephrite PipeWire audio driver
+	depends = glibc
+	depends = libpipewire
+	depends = libpipewire-0.3.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-audio-sdl
+	pkgdesc = Nephrite SDL audio driver
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+	depends = sdl2
+
+pkgname = nephrite-audio-spice
+	pkgdesc = Nephrite spice audio driver
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-ui-spice-core=0.3.0-1
+	depends = spice
+	depends = libspice-server.so
+
+pkgname = nephrite-block-curl
+	pkgdesc = Nephrite curl block driver
+	depends = curl
+	depends = libcurl.so
+	depends = glibc
+	depends = libgcc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-block-dmg
+	pkgdesc = Nephrite DMG block driver
+	depends = bzip2
+	depends = libbz2.so
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-block-iscsi
+	pkgdesc = Nephrite iSCSI block driver
+	depends = glibc
+	depends = libgcc
+	depends = libiscsi
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-block-nfs
+	pkgdesc = Nephrite NFS block driver
+	depends = glibc
+	depends = libgcc
+	depends = libnfs
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-block-ssh
+	pkgdesc = Nephrite SSH block driver
+	depends = glibc
+	depends = libgcc
+	depends = libssh
+	depends = libssh.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-chardev-baum
+	pkgdesc = Nephrite Baum chardev driver
+	depends = brltty
+	depends = libbrlapi.so
+	depends = glibc
+	depends = libgcc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-chardev-spice
+	pkgdesc = Nephrite spice chardev driver
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-ui-spice-core=0.3.0-1
+	depends = spice
+	depends = libspice-server.so
+
+pkgname = nephrite-docs
+	pkgdesc = A fork of QEMU, the generic and open source machine emulator and virtualizer - documentation
+
+pkgname = nephrite-guest-agent
+	pkgdesc = Nephrite Guest Agent
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = libgcc
+	depends = libgmodule-2.0.so
+	depends = glibc
+	depends = liburing
+	depends = liburing.so
+	depends = numactl
+	depends = libnuma.so
+	depends = sh
+	depends = systemd-libs
+	depends = libudev.so
+	conflicts = qemu-guest-agent
+	backup = etc/nephrite/qemu-ga.conf
+	backup = etc/nephrite/fsfreeze-hook
+
+pkgname = nephrite-hw-display-qxl
+	pkgdesc = Nephrite QXL display device
+	depends = glibc
+	depends = pixman
+	depends = libgcc
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-ui-spice-core=0.3.0-1
+	depends = spice
+	depends = libspice-server.so
+
+pkgname = nephrite-hw-display-virtio-gpu
+	pkgdesc = Nephrite virtio-gpu display device
+	depends = glibc
+	depends = libgcc
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-display-virtio-gpu-gl
+	pkgdesc = Nephrite virtio-gpu-gl display device
+	depends = glibc
+	depends = libgcc
+	depends = nephrite-common=0.3.0-1
+	depends = virglrenderer
+
+pkgname = nephrite-hw-display-virtio-gpu-rutabaga
+	pkgdesc = Nephrite virtio-gpu-rutabaga display device
+	depends = glibc
+	depends = pixman
+	depends = libgcc
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rutabaga-ffi
+
+pkgname = nephrite-hw-display-virtio-gpu-pci
+	pkgdesc = Nephrite virtio-gpu-pci display device
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-display-virtio-gpu-pci-gl
+	pkgdesc = Nephrite virtio-gpu-pci-gl display device
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-display-virtio-gpu-pci-rutabaga
+	pkgdesc = Nephrite virtio-gpu-pci-rutabaga display device
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-display-virtio-vga
+	pkgdesc = Nephrite virtio-vga display device
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-display-virtio-vga-gl
+	pkgdesc = Nephrite virtio-vga-gl display device
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-display-virtio-vga-rutabaga
+	pkgdesc = Nephrite virtio-vga-rutabaga display device
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-s390x-virtio-gpu-ccw
+	pkgdesc = Nephrite s390x-virtio-gpu-ccw display device
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-uefi-vars
+	pkgdesc = Nephrite UEFI vars handling
+	depends = glibc
+	depends = gnutls
+	depends = libgcc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-usb-host
+	pkgdesc = Nephrite USB host device
+	depends = glibc
+	depends = libgcc
+	depends = libusb
+	depends = libusb-1.0.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-hw-usb-redirect
+	pkgdesc = Nephrite usbredir device
+	depends = glibc
+	depends = libgcc
+	depends = nephrite-common=0.3.0-1
+	depends = usbredir
+
+pkgname = nephrite-hw-usb-smartcard
+	pkgdesc = Nephrite USB smartcard device
+	depends = libcacard
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-img
+	pkgdesc = Nephrite tooling for manipulating disk images
+	depends = fuse3
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = glibc
+	depends = gnutls
+	depends = libaio
+	depends = liburing
+	depends = liburing.so
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+
+pkgname = nephrite-pr-helper
+	pkgdesc = Nephrite persistent reservation utility
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = glibc
+	depends = gnutls
+	depends = libcap-ng
+	depends = libcap-ng.so
+	depends = liburing
+	depends = liburing.so
+	depends = multipath-tools
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = nephrite-common=0.3.0-1
+	depends = systemd-libs
+
+pkgname = nephrite-system-aarch64
+	pkgdesc = Nephrite system emulator for AARCH64
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = edk2-aarch64
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-alpha
+	pkgdesc = Nephrite system emulator for Alpha
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = nephrite-system-alpha-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-arm
+	pkgdesc = Nephrite system emulator for ARM
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = nephrite-system-arm-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-avr
+	pkgdesc = Nephrite system emulator for AVR
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+
+pkgname = nephrite-system-hexagon
+	pkgdesc = Nephrite system emulator for Hexagon
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+
+pkgname = nephrite-system-hppa
+	pkgdesc = Nephrite system emulator for HPPA
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = nephrite-system-hppa-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-loongarch64
+	pkgdesc = Nephrite system emulator for LoongArch64
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = systemd-libs
+
+pkgname = nephrite-system-m68k
+	pkgdesc = Nephrite system emulator for ColdFire (m68k)
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+
+pkgname = nephrite-system-microblaze
+	pkgdesc = Nephrite system emulator for Microblaze
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = nephrite-system-microblaze-firmware=0.3.0-1
+
+pkgname = nephrite-system-mips
+	pkgdesc = Nephrite system emulator for MIPS
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-or1k
+	pkgdesc = Nephrite system emulator for OpenRisc32
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = systemd-libs
+
+pkgname = nephrite-system-ppc
+	pkgdesc = Nephrite system emulator for PPC
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = nephrite-system-ppc-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-riscv
+	pkgdesc = Nephrite system emulator for RISC-V
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = edk2-riscv64
+	depends = nephrite-system-riscv-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-rx
+	pkgdesc = Nephrite system emulator for RX
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+
+pkgname = nephrite-system-s390x
+	pkgdesc = Nephrite system emulator for S390
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = nephrite-system-s390x-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-sh4
+	pkgdesc = Nephrite system emulator for SH4
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-sparc
+	pkgdesc = Nephrite system emulator for SPARC
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = nephrite-system-sparc-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-tricore
+	pkgdesc = Nephrite system emulator for tricore
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+
+pkgname = nephrite-system-x86
+	pkgdesc = Nephrite system emulator for x86
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = edk2-ovmf
+	depends = libcbor
+	depends = libcbor.so
+	depends = nephrite-system-x86-firmware=0.3.0-1
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-xtensa
+	pkgdesc = Nephrite system emulator for Xtensa
+	depends = capstone
+	depends = fuse3
+	depends = libgcc
+	depends = glibc
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = gnutls
+	depends = keyutils
+	depends = libaio
+	depends = libelf
+	depends = libbpf
+	depends = libbpf.so
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = libpng
+	depends = libsasl
+	depends = libseccomp
+	depends = libseccomp.so
+	depends = libslirp
+	depends = libslirp.so
+	depends = liburing
+	depends = liburing.so
+	depends = libxdp
+	depends = libxdp.so
+	depends = lzo
+	depends = ndctl
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = rdma-core
+	depends = snappy
+	depends = vde2
+	depends = zlib
+	depends = zstd
+	depends = libzstd.so
+	depends = dtc
+	depends = systemd-libs
+	depends = libudev.so
+
+pkgname = nephrite-system-alpha-firmware
+	pkgdesc = Firmware for Nephrite system emulator for Alpha
+	options = !strip
+
+pkgname = nephrite-system-arm-firmware
+	pkgdesc = Firmware for Nephrite system emulator for ARM
+	options = !strip
+
+pkgname = nephrite-system-hppa-firmware
+	pkgdesc = Firmware for Nephrite system emulator for HPPA
+	options = !strip
+
+pkgname = nephrite-system-microblaze-firmware
+	pkgdesc = Firmware for Nephrite system emulator for Microblaze
+	options = !strip
+
+pkgname = nephrite-system-ppc-firmware
+	pkgdesc = Firmware for Nephrite system emulator for PPC
+	options = !strip
+
+pkgname = nephrite-system-riscv-firmware
+	pkgdesc = Firmware for Nephrite system emulator for RISC-V
+	options = !strip
+
+pkgname = nephrite-system-s390x-firmware
+	pkgdesc = Firmware for Nephrite system emulator for S390
+	options = !strip
+
+pkgname = nephrite-system-sparc-firmware
+	pkgdesc = Firmware for Nephrite system emulator for SPARC
+	options = !strip
+
+pkgname = nephrite-system-x86-firmware
+	pkgdesc = Firmware for Nephrite system emulator for x86
+	options = !strip
+
+pkgname = nephrite-tests
+	pkgdesc = Nephrite tests
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-tools
+	pkgdesc = Nephrite tools
+	depends = curl
+	depends = libcurl.so
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = glibc
+	depends = libxkbcommon
+	depends = libxkbcommon.so
+	depends = python
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-ui-curses
+	pkgdesc = Nephrite curses UI driver
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = ncurses
+	depends = libncursesw.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-ui-dbus
+	pkgdesc = Nephrite D-Bus UI driver
+	depends = glib2
+	depends = libgcc
+	depends = libgio-2.0.so
+	depends = libgobject-2.0.so
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = libepoxy
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-ui-egl-headless
+	pkgdesc = Nephrite EGL headless UI driver
+	depends = glibc
+	depends = libepoxy
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-ui-opengl=0.3.0-1
+
+pkgname = nephrite-ui-gtk
+	pkgdesc = Nephrite GTK UI driver
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libgdk_pixbuf-2.0.so
+	depends = glib2
+	depends = libgobject-2.0.so
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = gtk3
+	depends = libgdk-3.so
+	depends = libgtk-3.so
+	depends = libepoxy
+	depends = libgcc
+	depends = libx11
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-ui-opengl
+	depends = vte3
+	depends = libvte-2.91.so
+
+pkgname = nephrite-ui-opengl
+	pkgdesc = Nephrite OpenGL UI driver
+	depends = glibc
+	depends = libgcc
+	depends = libepoxy
+	depends = mesa
+	depends = pixman
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-ui-sdl
+	pkgdesc = Nephrite SDL UI driver
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = libx11
+	depends = pixman
+	depends = libepoxy
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = sdl2_image
+	depends = sdl2
+
+pkgname = nephrite-ui-spice-app
+	pkgdesc = Nephrite spice app UI driver
+	depends = glib2
+	depends = libgio-2.0.so
+	depends = libglib-2.0.so
+	depends = glibc
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-chardev-spice=0.3.0-1
+	depends = nephrite-ui-spice-core=0.3.0-1
+
+pkgname = nephrite-ui-spice-core
+	pkgdesc = Nephrite spice core UI driver
+	depends = glibc
+	depends = pixman
+	depends = libgcc
+	depends = libpixman-1.so
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-ui-opengl=0.3.0-1
+	depends = spice
+	depends = libspice-server.so
+
+pkgname = nephrite-user
+	pkgdesc = Nephrite user mode emulation
+	depends = capstone
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = glibc
+	depends = gnutls
+	depends = libelf
+	depends = liburing
+	depends = liburing.so
+	depends = numactl
+	depends = libnuma.so
+	depends = nephrite-common=0.3.0-1
+	depends = zlib
+	optdepends = nephrite-user-binfmt: for binary format rules
+
+pkgname = nephrite-user-binfmt
+	pkgdesc = Binary format rules for Nephrite user mode emulation
+	depends = nephrite-user=0.3.0-1
+	provides = qemu-user-binfmt-provider
+	conflicts = qemu-user-binfmt-provider
+
+pkgname = nephrite-user-static
+	pkgdesc = Nephrite static user mode emulation
+	optdepends = nephrite-user-static-binfmt: for binary format rules
+
+pkgname = nephrite-user-static-binfmt
+	pkgdesc = Binary format rules for Nephrite static user mode emulation
+	depends = nephrite-user-static=0.3.0-1
+	provides = qemu-user-binfmt-provider
+	conflicts = qemu-user-binfmt-provider
+
+pkgname = nephrite-vhost-user-gpu
+	pkgdesc = Nephrite vhost-user-gpu display device
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = glibc
+	depends = pixman
+	depends = libepoxy
+	depends = libpixman-1.so
+	depends = mesa
+	depends = numactl
+	depends = libnuma.so
+	depends = nephrite-common=0.3.0-1
+	depends = virglrenderer
+
+pkgname = nephrite-vmsr-helper
+	pkgdesc = Nephrite virtual RAPL MSR helper
+	arch = x86_64
+	depends = glib2
+	depends = libgcc
+	depends = libglib-2.0.so
+	depends = libgmodule-2.0.so
+	depends = glibc
+	depends = gnutls
+	depends = libcap-ng
+	depends = libcap-ng.so
+	depends = liburing
+	depends = liburing.so
+	depends = numactl
+	depends = libnuma.so
+	depends = pam
+	depends = libpam.so
+	depends = nephrite-common=0.3.0-1
+
+pkgname = nephrite-base
+	pkgdesc = A basic Nephrite setup for headless environments
+	depends = nephrite-common=0.3.0-1
+	depends = nephrite-img=0.3.0-1
+	depends = nephrite-system-x86=0.3.0-1
+	depends = virtiofsd
+	optdepends = nephrite-user-static: for static user mode emulation of QEMU targets
+	optdepends = samba: for SMB/CIFS server support
+	optdepends = nephrite-block-iscsi: for iSCSI block driver
+	optdepends = nephrite-chardev-baum: for Baum chardev driver
+	optdepends = nephrite-docs: for documentation
+	optdepends = nephrite-emulators-full: for all system emulators
+	optdepends = nephrite-full: for a full Nephrite installation
+	optdepends = nephrite-hw-s390x-virtio-gpu-ccw: for s390x-virtio-gpu-ccw display device
+	optdepends = nephrite-pr-helper: for persistent reservation utility
+	optdepends = nephrite-system-aarch64: for AARCH64 system emulator
+	optdepends = nephrite-system-alpha: for Alpha system emulator
+	optdepends = nephrite-system-arm: for ARM system emulator
+	optdepends = nephrite-system-avr: for AVR system emulator
+	optdepends = nephrite-system-hexagon: for Hexagon system emulator
+	optdepends = nephrite-system-hppa: for HPPA system emulator
+	optdepends = nephrite-system-m68k: for ColdFire (m68k) system emulator
+	optdepends = nephrite-system-microblaze: for Microblaze system emulator
+	optdepends = nephrite-system-mips: for MIPS system emulator
+	optdepends = nephrite-system-or1k: for OpenRisc32 system emulator
+	optdepends = nephrite-system-ppc: for PPC system emulator
+	optdepends = nephrite-system-riscv: for RISC-V system emulator
+	optdepends = nephrite-system-rx: for RX system emulator
+	optdepends = nephrite-system-s390x: for S390 system emulator
+	optdepends = nephrite-system-sh4: for SH4 system emulator
+	optdepends = nephrite-system-sparc: for SPARC system emulator
+	optdepends = nephrite-system-tricore: for tricore system emulator
+	optdepends = nephrite-system-xtensa: for Xtensa system emulator
+	optdepends = nephrite-tests: for Nephrite tests
+	optdepends = nephrite-tools: for Nephrite tools
+	optdepends = nephrite-user: for user mode emulation of QEMU targets
+	optdepends = nephrite-audio-alsa: for ALSA audio driver
+	optdepends = nephrite-audio-dbus: for D-Bus audio driver
+	optdepends = nephrite-audio-jack: for JACK audio driver
+	optdepends = nephrite-audio-oss: for OSS audio driver
+	optdepends = nephrite-audio-pa: for PulseAudio audio driver
+	optdepends = nephrite-audio-pipewire: for PipeWire audio driver
+	optdepends = nephrite-audio-sdl: for SDL audio driver
+	optdepends = nephrite-audio-spice: for spice audio driver
+	optdepends = nephrite-block-curl: for curl block driver
+	optdepends = nephrite-block-dmg: for DMG block driver
+	optdepends = nephrite-block-nfs: for NFS block driver
+	optdepends = nephrite-block-ssh: for SSH block driver
+	optdepends = nephrite-chardev-spice: for the spice chardev driver
+	optdepends = nephrite-desktop: for dependencies commonly used on a desktop
+	optdepends = nephrite-hw-display-qxl: for the QXL display device
+	optdepends = nephrite-hw-display-virtio-vga: for the virtio-vga display device
+	optdepends = nephrite-hw-display-virtio-vga-gl: for the virtio-vga-gl display device
+	optdepends = nephrite-hw-display-virtio-vga-rutabaga: for the virtio-vga-rutabaga display device
+	optdepends = nephrite-hw-display-virtio-gpu: for the virtio-gpu display device
+	optdepends = nephrite-hw-display-virtio-gpu-gl: for the virtio-gpu-gl display device
+	optdepends = nephrite-hw-display-virtio-gpu-rutabaga: for the virtio-gpu-rutabaga display device
+	optdepends = nephrite-hw-display-virtio-gpu-pci: for the virtio-gpu-pci display device
+	optdepends = nephrite-hw-display-virtio-gpu-pci-gl: for the virtio-gpu-pci-gl display device
+	optdepends = nephrite-hw-display-virtio-gpu-pci-rutabaga: for the virtio-gpu-pci-rutabaga display device
+	optdepends = nephrite-hw-uefi-vars: for UEFI variable support
+	optdepends = nephrite-hw-usb-host: for host USB support
+	optdepends = nephrite-hw-usb-redirect: for USB redirect support
+	optdepends = nephrite-hw-usb-smartcard: for USB smartcard support
+	optdepends = nephrite-ui-curses: for ncurses UI driver
+	optdepends = nephrite-ui-dbus: for D-Bus UI driver
+	optdepends = nephrite-ui-egl-headless: for EGL headless UI driver
+	optdepends = nephrite-ui-gtk: for GTK UI driver
+	optdepends = nephrite-ui-opengl: for OpenGL UI driver
+	optdepends = nephrite-ui-sdl: for SDL UI driver
+	optdepends = nephrite-ui-spice-app: for spice app UI driver
+	optdepends = nephrite-ui-spice-core: for spice core UI driver
+	optdepends = nephrite-user: for user mode emulation of QEMU targets
+	optdepends = nephrite-vhost-user-gpu: for vhost-user-gpu display device
+	provides = nephrite=0.3.0
+	optdepends_x86_64 = nephrite-vmsr-helper: for accessing the Running Average Power Limit (RAPL) MSR
+
+pkgname = nephrite-desktop
+	pkgdesc = A Nephrite setup for desktop environments
+	depends = nephrite-base=0.3.0-1
+	depends = nephrite-audio-alsa=0.3.0-1
+	depends = nephrite-audio-dbus=0.3.0-1
+	depends = nephrite-audio-jack=0.3.0-1
+	depends = nephrite-audio-oss=0.3.0-1
+	depends = nephrite-audio-pa=0.3.0-1
+	depends = nephrite-audio-pipewire=0.3.0-1
+	depends = nephrite-audio-sdl=0.3.0-1
+	depends = nephrite-audio-spice=0.3.0-1
+	depends = nephrite-block-curl=0.3.0-1
+	depends = nephrite-block-dmg=0.3.0-1
+	depends = nephrite-block-nfs=0.3.0-1
+	depends = nephrite-block-ssh=0.3.0-1
+	depends = nephrite-chardev-spice=0.3.0-1
+	depends = nephrite-hw-display-qxl=0.3.0-1
+	depends = nephrite-hw-display-virtio-gpu=0.3.0-1
+	depends = nephrite-hw-display-virtio-gpu-gl=0.3.0-1
+	depends = nephrite-hw-display-virtio-gpu-rutabaga=0.3.0-1
+	depends = nephrite-hw-display-virtio-gpu-pci=0.3.0-1
+	depends = nephrite-hw-display-virtio-gpu-pci-gl=0.3.0-1
+	depends = nephrite-hw-display-virtio-gpu-pci-rutabaga=0.3.0-1
+	depends = nephrite-hw-display-virtio-vga=0.3.0-1
+	depends = nephrite-hw-display-virtio-vga-gl=0.3.0-1
+	depends = nephrite-hw-display-virtio-vga-rutabaga=0.3.0-1
+	depends = nephrite-hw-uefi-vars=0.3.0-1
+	depends = nephrite-hw-usb-host=0.3.0-1
+	depends = nephrite-hw-usb-redirect=0.3.0-1
+	depends = nephrite-hw-usb-smartcard=0.3.0-1
+	depends = nephrite-ui-curses=0.3.0-1
+	depends = nephrite-ui-dbus=0.3.0-1
+	depends = nephrite-ui-egl-headless=0.3.0-1
+	depends = nephrite-ui-gtk=0.3.0-1
+	depends = nephrite-ui-opengl=0.3.0-1
+	depends = nephrite-ui-sdl=0.3.0-1
+	depends = nephrite-ui-spice-app=0.3.0-1
+	depends = nephrite-ui-spice-core=0.3.0-1
+	depends = nephrite-vhost-user-gpu=0.3.0-1
+	optdepends = nephrite-user-static: for static user mode emulation of QEMU targets
+	optdepends = samba: for SMB/CIFS server support
+	optdepends = nephrite-block-iscsi: for iSCSI block driver
+	optdepends = nephrite-chardev-baum: for Baum chardev driver
+	optdepends = nephrite-docs: for documentation
+	optdepends = nephrite-emulators-full: for all system emulators
+	optdepends = nephrite-full: for a full Nephrite installation
+	optdepends = nephrite-hw-s390x-virtio-gpu-ccw: for s390x-virtio-gpu-ccw display device
+	optdepends = nephrite-pr-helper: for persistent reservation utility
+	optdepends = nephrite-system-aarch64: for AARCH64 system emulator
+	optdepends = nephrite-system-alpha: for Alpha system emulator
+	optdepends = nephrite-system-arm: for ARM system emulator
+	optdepends = nephrite-system-avr: for AVR system emulator
+	optdepends = nephrite-system-hexagon: for Hexagon system emulator
+	optdepends = nephrite-system-hppa: for HPPA system emulator
+	optdepends = nephrite-system-m68k: for ColdFire (m68k) system emulator
+	optdepends = nephrite-system-microblaze: for Microblaze system emulator
+	optdepends = nephrite-system-mips: for MIPS system emulator
+	optdepends = nephrite-system-or1k: for OpenRisc32 system emulator
+	optdepends = nephrite-system-ppc: for PPC system emulator
+	optdepends = nephrite-system-riscv: for RISC-V system emulator
+	optdepends = nephrite-system-rx: for RX system emulator
+	optdepends = nephrite-system-s390x: for S390 system emulator
+	optdepends = nephrite-system-sh4: for SH4 system emulator
+	optdepends = nephrite-system-sparc: for SPARC system emulator
+	optdepends = nephrite-system-tricore: for tricore system emulator
+	optdepends = nephrite-system-xtensa: for Xtensa system emulator
+	optdepends = nephrite-tests: for Nephrite tests
+	optdepends = nephrite-tools: for Nephrite tools
+	optdepends = nephrite-user: for user mode emulation of QEMU targets
+	provides = nephrite=0.3.0
+	optdepends_x86_64 = nephrite-vmsr-helper: for accessing the Running Average Power Limit (RAPL) MSR
+
+pkgname = nephrite-emulators-full
+	pkgdesc = All Nephrite user mode and system emulators
+	depends = nephrite-system-aarch64=0.3.0-1
+	depends = nephrite-system-alpha=0.3.0-1
+	depends = nephrite-system-arm=0.3.0-1
+	depends = nephrite-system-avr=0.3.0-1
+	depends = nephrite-system-hexagon=0.3.0-1
+	depends = nephrite-system-hppa=0.3.0-1
+	depends = nephrite-system-loongarch64=0.3.0-1
+	depends = nephrite-system-m68k=0.3.0-1
+	depends = nephrite-system-microblaze=0.3.0-1
+	depends = nephrite-system-mips=0.3.0-1
+	depends = nephrite-system-or1k=0.3.0-1
+	depends = nephrite-system-ppc=0.3.0-1
+	depends = nephrite-system-riscv=0.3.0-1
+	depends = nephrite-system-rx=0.3.0-1
+	depends = nephrite-system-s390x=0.3.0-1
+	depends = nephrite-system-sh4=0.3.0-1
+	depends = nephrite-system-sparc=0.3.0-1
+	depends = nephrite-system-tricore=0.3.0-1
+	depends = nephrite-system-x86=0.3.0-1
+	depends = nephrite-system-xtensa=0.3.0-1
+	depends = nephrite-user=0.3.0-1
+
+pkgname = nephrite-full
+	pkgdesc = A full Nephrite setup
+	depends = nephrite-audio-alsa=0.3.0-1
+	depends = nephrite-audio-dbus=0.3.0-1
+	depends = nephrite-audio-jack=0.3.0-1
+	depends = nephrite-audio-oss=0.3.0-1
+	depends = nephrite-audio-pa=0.3.0-1
+	depends = nephrite-audio-sdl=0.3.0-1
+	depends = nephrite-audio-spice=0.3.0-1
+	depends = nephrite-block-iscsi=0.3.0-1
+	depends = nephrite-chardev-baum=0.3.0-1
+	depends = nephrite-desktop=0.3.0-1
+	depends = nephrite-docs=0.3.0-1
+	depends = nephrite-emulators-full=0.3.0-1
+	depends = nephrite-hw-s390x-virtio-gpu-ccw=0.3.0-1
+	depends = nephrite-pr-helper=0.3.0-1
+	depends = nephrite-tests=0.3.0-1
+	depends = nephrite-tools=0.3.0-1
+	depends = nephrite-user=0.3.0-1
+	optdepends = nephrite-user-static: for static user mode emulation of QEMU targets
+	optdepends = samba: for SMB/CIFS server support
+	provides = nephrite=0.3.0
+	depends_x86_64 = nephrite-vmsr-helper=0.3.0-1
