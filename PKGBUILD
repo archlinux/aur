@@ -1,7 +1,7 @@
 # Maintainer: danalec
 pkgname=rgy-search-znver4-bin
 pkgver=0.1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Whole-filesystem name search and content search in one stack (AMD Zen 4 optimized binary release)"
 arch=('x86_64')
 url="https://github.com/danalec/rgy"
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 provides=('rgy-search-bin')
 conflicts=('rgy-search-bin' 'rgy-search-avx2-bin')
 source=("rgy-v${pkgver}-znver4-linux.tar.gz::https://github.com/danalec/rgy/releases/download/rgy-v${pkgver}/rgy-v${pkgver}-znver4-linux.tar.gz")
-sha256sums=('2d8a9ba39a0937a518aac2e0c692fc2dec31c9dfafa4305ba3a657ff22b6bc89')
+sha256sums=('a7b17081032ecedeb63823eb8df20daeea12610e94bf3f5de312fa7730afcba2')
 options=('!strip')
 
 package() {
