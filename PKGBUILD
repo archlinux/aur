@@ -4,7 +4,7 @@
 #   ssh://aur@aur.archlinux.org/siegefx-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=siegefx-bin
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Open-source reimplementation of the Dungeon Siege engine, in alpha (needs the original game data)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('openal' 'libgl' 'libxkbcommon' 'openssl' 'gcc-libs' 'glibc')
 optdepends=('xdg-desktop-portal: choosing a screenshots folder in Options')
 options=('!strip' '!debug')   # a self-contained .NET bundle: stripping breaks it
 source=("$url/releases/download/v$pkgver/SiegeFX-v$pkgver-linux-x64.tar.gz")
-sha256sums=('f6f5530c787ca5f937e371b2415803476e285ec00679de4250df84fb64c12eec')
+sha256sums=('430930f699cf9a1e1551b4a2b6692d1fcf35ac1c13c3e5134ad8d866c38d57b7')
 
 package() {
     local _src="$srcdir/SiegeFX-v$pkgver-linux-x64"
