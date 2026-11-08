@@ -1,6 +1,6 @@
 pkgbase = frostwire
 	pkgdesc = An easy to use cloud downloader, BitTorrent client
-	pkgver = 7.1.2
+	pkgver = 7.1.3
 	pkgrel = 1
 	url = https://www.frostwire.com
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = frostwire
 	makedepends = java-environment
 	depends = bash
 	depends = java-runtime
-	source = git+https://github.com/frostwire/frostwire.git#tag=frostwire-desktop-7.1.2-build-334
+	source = git+https://github.com/frostwire/frostwire.git#tag=frostwire-desktop-7.1.3-build-336
 	source = frostwire.sh
-	sha256sums = 75bdc42241cdbdbb6a1c5073f8669ef1a8fdc84269ab3bedb033e9eea164cc5c
+	sha256sums = dfe7a2d136fa3d3120a8d817d8c4739d8dde879681f859dae278c6d9086ee8f7
 	sha256sums = 40b5ba9e018022270c57b7cc7e11124b7829d2a50035dc07382e60409e2e0152
 
 pkgname = frostwire
