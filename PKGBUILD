@@ -3,7 +3,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay
-pkgver=0.0.102
+pkgver=0.0.104
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('nas: for Network Audio System sound driver'
 			'zlib: for compressed input files')
 source=("https://github.com/mmitch/gbsplay/archive/refs/tags/$pkgver.tar.gz"
         'do-not-update-database.patch')
-sha512sums=('fde81f5861777e1f5aadbe1608e5da105835215ea6c0bf07f6d0d96d17a179f43f60b93c1060ab0d86e432502b0536c612a4f6818d3ac200b78002d320655cc1'
+sha512sums=('5cb1476299afa5be59aa26add35b6a0f98f0c455dd3542fb09dfcc40841607873931b932c628ac34a4414084484a40ca1db488455119e3f34d67fecc154665bd'
             '2de20d227fe5cb17fd29b666fb55438560b6859a2bcccad910a631189a3698f220b29791493b5ab105fcabd92419b04edd220b85a4b5034723a63fe2f4b898ff')
 
 prepare() {
@@ -35,6 +35,7 @@ prepare() {
 }
 
 build() {
+
 	cd gbsplay-$pkgver
 	./configure --prefix=/usr --mandir=/usr/share/man
 	make
