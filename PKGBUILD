@@ -56,7 +56,7 @@ package() {
 		install -Dm644 ${man} "${pkgdir}/usr/share/man/man1/$(basename ${man})"
 	done
 
-	install -Dm644 assets/*svg -t "${pkgdir}/usr/share/${_appname}/"
+	install -Dm644 assets/*svg -t "${pkgdir}/usr/share/${_appname}/assets/"
 
 	install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
