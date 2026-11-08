@@ -1,13 +1,13 @@
 pkgbase = openhv
 	pkgdesc = An open-source pixel-art science-fiction real-time-strategy game.
-	pkgver = 20250725
+	pkgver = 20261108
 	pkgrel = 1
 	url = https://www.openhv.net
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = unzip
-	depends = dotnet-sdk-6.0
+	depends = dotnet-sdk-10.0
 	depends = openal
 	depends = libgl
 	depends = freetype2
@@ -19,7 +19,7 @@ pkgbase = openhv
 	depends = xdg-utils
 	depends = zenity
 	options = !debug
-	source = git+https://github.com/OpenHV/OpenHV.git#tag=20250725
-	sha512sums = SKIP
+	source = git+https://github.com/OpenHV/OpenHV.git#tag=20261108
+	sha256sums = 32b6c29a2cba76a12bc3ed0bdb7ac131480def0f86b6681ff5e5c322d6db6fa2
 
 pkgname = openhv
