@@ -3,62 +3,60 @@
 # SPDX-License-Identifier: MIT
 # Author: Suren <dev at behnamlal dot xyz>
 #
-# This script updates the PKGBUILD file to the latest version of oda-file-converter
-# and commits the changes to the repository.
+# Bumps pkgver in the PKGBUILD to the latest oda-file-converter release,
+# refreshes checksums and .SRCINFO, builds, and commits.
 #
-# dependencies: curl, pacman-contrib, git, makepkg,
+# The download page only links an unversioned file name
+# (ODAFileConverter_QT6_lnxX64_11dll.deb); the server answers it with a
+# redirect to the real, versioned file, which is where the version is read from.
+#
+# dependencies: curl, pacman-contrib, git, makepkg
 
+set -euo pipefail
 
-# Retrieve the webpage using curl
-webpage=$(curl -s "https://www.opendesign.com/guestfiles/oda_file_converter")
-deb_line=$(echo "$webpage" | grep -oP '/guestfiles/get\?filename=ODAFileConverter_QT6_lnxX64_[\w\.-]+dll_[\w\.-]+\.deb' | head -n 1)
-deb_url=$(echo "https://www.opendesign.com$deb_line")
+base="https://www.opendesign.com/guestfiles"
 
-# extract version from url by checking the digits before the .deb extension and after underscore
-# e.g. 8.3dll_24.4.deb -> 24.4
-latest_version=$(echo "$deb_url" | grep -oP '(?<=_)[0-9.]+(?=\.deb)')
+# Discover the current "<qt/dll tag>" from the download page (e.g. QT6_lnxX64_11dll)
+tag=$(curl -fsS "$base/oda_file_converter" \
+    | grep -oP '(?<=filename=)ODAFileConverter_\K[\w.-]+?dll(?=\.deb)' | head -n 1)
+if [ -z "$tag" ]; then
+    echo "Could not find the .deb link on the download page" >&2
+    exit 1
+fi
+
+# The unversioned name 301-redirects to the versioned file; read the version off it
+location=$(curl -sI "$base/get?filename=ODAFileConverter_${tag}.deb" \
+    | grep -i '^location:' | tr -d '\r')
+latest_version=$(echo "$location" | grep -oP "(?<=ODAFileConverter_${tag}_)[0-9]+(\.[0-9]+)*(?=\.deb)" | head -n 1)
+if [ -z "$latest_version" ]; then
+    echo "Could not determine the latest version (redirect: $location)" >&2
+    exit 1
+fi
 
 old_version=$(grep -oP '(?<=^pkgver=).*' ./PKGBUILD)
 
-echo "Latest oda-file-converter version: $latest_version"
+echo "Latest oda-file-converter version: $latest_version (current: $old_version)"
+
+if [ "$latest_version" = "$old_version" ] && grep -q "ODAFileConverter_${tag}_" PKGBUILD; then
+    echo "No updates found!"
+    exit 0
+fi
 
 sed -i "s#^pkgver=.*#pkgver=${latest_version}#" ./PKGBUILD
+sed -i "s#^pkgrel=.*#pkgrel=1#" ./PKGBUILD
+# keep the file name / tag in the source URL in sync with the page
+sed -i -E "s#ODAFileConverter_[A-Za-z0-9_.-]*dll_#ODAFileConverter_${tag}_#g" ./PKGBUILD
 
-# add file name to the source array before the deb url
-file_name=$(echo "$deb_url" | grep -oP '(?<=filename=)[\w\.-]+\.deb')
-deb_url="${file_name}::${deb_url}"
-
-sed -i "s#^source=.*#source=(\'${deb_url}\'#" ./PKGBUILD
-
-if ! git diff --quiet HEAD PKGBUILD; then
-
-	if pacman -Qi pacman-contrib > /dev/null 2>&1; then
-		updpkgsums
-	else
-		echo "Install pacman-contrib with 'pacman -S pacman-contrib'"
-		exit 1
-	fi
-
-	makepkg --printsrcinfo > .SRCINFO
-
-	makepkg
-
-	git add PKGBUILD .SRCINFO
-
-	# Read the PKGBUILD file and extract the maintainer's name and contact information
-	maintainer_line=$(grep -m1 '^# Maintainer:' PKGBUILD)
-	maintainer=${maintainer_line##*Maintainer:}
-	# Trim leading and trailing whitespace from the maintainer's name
-	maintainer=$(echo "$maintainer" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-
-	git commit -m "$old_version -> $latest_version : Upgrade package
-
-	This commit upgrades the package from version $old_version to $latest_version. This upgrade ensures that users have access to the latest version with the most up-to-date functionality.
-
-	Signed-off-by: $maintainer"
-
-	# git push origin master
-
-else
-	echo "No updates found!"
+if ! pacman -Qi pacman-contrib > /dev/null 2>&1; then
+    echo "Install pacman-contrib with 'pacman -S pacman-contrib'" >&2
+    exit 1
 fi
+
+updpkgsums
+makepkg --printsrcinfo > .SRCINFO
+makepkg -f
+
+git add PKGBUILD .SRCINFO
+git commit -m "$old_version -> $latest_version : Upgrade package"
+
+# git push origin master
