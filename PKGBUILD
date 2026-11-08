@@ -24,9 +24,11 @@ _release="2026b"
 _build="9029"
 _runfile="MWORKS.Syslab-${_release}-${pkgver}.${_build}-linux-x64.run"
 
-source=("https://releases.tongyuan.cc/installer/syslab/${_release}/${_runfile}")
+source=("https://releases.tongyuan.cc/installer/syslab/${_release}/${_runfile}"
+        "${pkgname}.desktop")
 noextract=("${_runfile}")
-sha256sums=('ba19cae7f3ecddca3d0d103754bbba94a7034428e4e67980ccc7a926da80a72c')
+sha256sums=('ba19cae7f3ecddca3d0d103754bbba94a7034428e4e67980ccc7a926da80a72c'
+            '1459a664b8564f1c2f3b1a8942da47c8427b876aeccd4a32b09b3cad66048217')
 
 _instdir="/opt/mworks-syslab"
 
@@ -128,6 +130,9 @@ case " $* " in
 esac
 exec ./syslab_docsearch "$@"
 EOF
+
+    # 桌面快捷方式（官方只在首次启动后才在用户目录生成，安装后搜索不到，故由包提供）
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # 许可证占位
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"

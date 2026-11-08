@@ -38,6 +38,8 @@ pkgbase = mworks-syslab
 	options = !strip
 	options = !emptydirs
 	source = https://releases.tongyuan.cc/installer/syslab/2026b/MWORKS.Syslab-2026b-26.8.0.9029-linux-x64.run
+	source = mworks-syslab.desktop
 	sha256sums = ba19cae7f3ecddca3d0d103754bbba94a7034428e4e67980ccc7a926da80a72c
+	sha256sums = 1459a664b8564f1c2f3b1a8942da47c8427b876aeccd4a32b09b3cad66048217
 
 pkgname = mworks-syslab
