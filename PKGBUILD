@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=pgstream
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='PostgreSQL replication with DDL changes'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc' 'postgresql-libs')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('910256b63eb68266cb734a1f5ef4ec253b51ecfd90d88d7c44daa225d8c361a9')
+sha256sums=('4b9cf2c14d4f448b265bddf259da1ae79da58099e8257670bd47f7d225a821dd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
