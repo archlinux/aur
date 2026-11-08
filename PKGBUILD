@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=open-markdown-lane-bin
-pkgver=0.24.4
+pkgver=0.24.5
 pkgrel=1
 pkgdesc="Local-first Markdown editor with live rendering and lossless source editing"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source_x86_64=(
   "${_deb}::${url}/releases/download/v${pkgver}/${_deb}"
   "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
-sha256sums_x86_64=('a92a64a50ea8fb7fc44843e53ea22c4da1374388b724500c713a411ee0434257'
+sha256sums_x86_64=('8faa8af9b2c7b22eb4aa4985ec4ee68721534d5f1d59cd7a08fd581be44c5b91'
                    '5d79448c87c049aae26920a462955ca3c67118b70f596fb907b987d7d892316e')
 noextract=("${_deb}")
 
