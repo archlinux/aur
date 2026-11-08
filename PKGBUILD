@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=herdr-app-desktop-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Native desktop workspace for terminals and coding agents that keep running (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=('!strip' '!debug')
 # releases.herdr.dev manifest and download URLs are version-pinned.
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://releases.herdr.dev/app/${pkgver}/herdr-app-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://releases.herdr.dev/app/${pkgver}/herdr-app-linux-aarch64.tar.gz")
-sha256sums_x86_64=('77b0be72a46ca14bb367365a04164641f914b3a69712bac391d39c56a959bef4')
-sha256sums_aarch64=('2e5bb05c47cffbad018ad34217ea4c816476d7eb842692f740798c9020f0281e')
+sha256sums_x86_64=('475a383f8f439e3191a86635b5c1286ce4dfd2d9fcdf1e7cbdfdd6c7176f8ff3')
+sha256sums_aarch64=('30a431ce95c17356efe8afed50c4eaf8888d83ef45acd9aa911094d51707d007')
 
 package() {
     install -Dm755 "${srcdir}/herdr-app/herdr-app" "${pkgdir}/usr/bin/herdr-app"
