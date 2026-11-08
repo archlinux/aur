@@ -8,8 +8,8 @@ pkgbase = pandacode
 	license = custom
 	options = !strip
 	source_x86_64 = PandaCode-Linux-x86_64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v0.3.102/PandaCode-Linux-x86_64.AppImage
-	sha256sums_x86_64 = 4902fda1f79cff4572697646a5b0e75308cd65ad493d3943fe18d0a70bc0f7d5
+	sha256sums_x86_64 = f842af78c8caca672ed608d62368b66aa24770a768323844f9c5a18d382c0fc0
 	source_aarch64 = PandaCode-Linux-aarch64.AppImage::https://github.com/aicodeking/pandacode/releases/download/v0.3.102/PandaCode-Linux-aarch64.AppImage
-	sha256sums_aarch64 = a7512183676cfaf0aaadc2bdc6c960d5cd1fe766a73c35dde4a8f520e4a3d99f
+	sha256sums_aarch64 = 605f89064563ad0e2e3657d46c040873f64bdff5b0a3becc15f39321d3759472
 
 pkgname = pandacode
