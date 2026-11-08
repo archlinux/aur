@@ -3,7 +3,7 @@
 _author=GWILLIAMS
 _dist=IRI
 pkgname=perl-${_dist@L}
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc='Internationalized Resource Identifiers'
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('e7fd840e68b55dfcfd25a81257898a8c5bb67159bbd8620bfd85b213557002c0')
+sha256sums=('68c873d84ea29c2e212c37edf37c3cfa4da125fcd81d72969db39ab57f1f25fd')
 
 build()
 {

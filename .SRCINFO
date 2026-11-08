@@ -1,6 +1,6 @@
 pkgbase = perl-iri
 	pkgdesc = Internationalized Resource Identifiers
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://metacpan.org/dist/IRI
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = perl-iri
 	depends = perl-type-tiny>=0.008
 	depends = perl>=5.10.1
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/IRI-0.15.tar.gz
-	sha256sums = e7fd840e68b55dfcfd25a81257898a8c5bb67159bbd8620bfd85b213557002c0
+	source = https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/IRI-0.16.tar.gz
+	sha256sums = 68c873d84ea29c2e212c37edf37c3cfa4da125fcd81d72969db39ab57f1f25fd
 
 pkgname = perl-iri
