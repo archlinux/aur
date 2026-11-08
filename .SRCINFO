@@ -1,7 +1,7 @@
 pkgbase = sdrmm
 	pkgdesc = Modular, client-server software-defined radio receiver
 	pkgver = 2.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sdrmm.com
 	arch = x86_64
 	arch = aarch64
@@ -48,6 +48,7 @@ pkgname = sdrmm-app
 	depends = glibc
 	depends = gtk3
 	depends = libsoup3
+	depends = sdrmm
 	depends = webkit2gtk-4.1
 	optdepends = soapysdr: radios through SoapySDR modules
 	optdepends = libsdrplay: SDRplay radios (SDRplay API, dlopened)

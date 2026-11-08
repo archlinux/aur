@@ -3,7 +3,7 @@
 pkgbase=sdrmm
 pkgname=(sdrmm sdrmm-app)
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular, client-server software-defined radio receiver"
 arch=('x86_64' 'aarch64')
 url="https://sdrmm.com"
@@ -13,10 +13,13 @@ license=('AGPL-3.0-or-later')
 # python: scripts/build-media.py; the GTK stack is for the Tauri desktop app only.
 makedepends=('rust' 'clang' 'cmake' 'nasm' 'pkgconf' 'python'
              'cairo' 'gdk-pixbuf2' 'gtk3' 'librsvg' 'libsoup3' 'pango' 'webkit2gtk-4.1')
-# namcap reports "Dependency ffmpeg detected and not included" for the media libraries in
-# /usr/lib/sdrmm: they carry the upstream FFmpeg sonames and are resolved through the binary's
-# DT_RPATH, so nothing needs the system ffmpeg. The same goes for the "lacks FULL RELRO" and
-# "may not be needed ('gcc-libs')" warnings.
+# The private media libraries ship once, in sdrmm, and sdrmm-app depends on it: both binaries
+# carry $ORIGIN/../lib/sdrmm in their DT_RPATH, so one directory serves both and the desktop
+# package does not duplicate 11 MB of FFmpeg.
+#
+# namcap reports "Dependency ffmpeg detected and not included" for those libraries: they carry
+# the upstream FFmpeg sonames and are resolved through DT_RPATH, so nothing needs the system
+# ffmpeg. The same goes for the "lacks FULL RELRO" and "may not be needed ('gcc-libs')" warnings.
 #
 # aws-lc-sys (rustls' provider, through the server's TLS and reqwest) builds a C archive, and
 # GCC -flto=auto from makepkg's lto option puts GCC bytecode in it, which rust-lld cannot read:
@@ -85,24 +88,31 @@ build() {
 
 check() {
     cd "$pkgbase-$pkgver-src"
-    # The media libraries must resolve through the binary's own RPATH, from the directory this
-    # package installs, and not from anything else on the build host.
+    # Both binaries must resolve the media libraries through their own DT_RPATH, out of the one
+    # directory the sdrmm package installs, and not from anything else on the build host.
     local tree; tree=$(mktemp -d)
-    install -Dm755 target/release/sdrmm "$tree/usr/bin/sdrmm"
+    local bin
+    for bin in sdrmm sdrmm-desktop; do
+        install -Dm755 "target/release/$bin" "$tree/usr/bin/$bin"
+    done
     install -d "$tree/usr/lib/sdrmm"
     cp -a "$srcdir/media/lib/"*.so* "$tree/usr/lib/sdrmm/"
     local resolved missing
-    resolved=$(ldd "$tree/usr/bin/sdrmm" | grep -E 'lib(avcodec|avformat|swresample|swscale)\.so')
-    missing=$(ldd "$tree/usr/bin/sdrmm" | grep 'not found' || true)
+    for bin in sdrmm sdrmm-desktop; do
+        resolved=$(ldd "$tree/usr/bin/$bin" | grep -E 'lib(avcodec|avformat|swresample|swscale)\.so')
+        missing=$(ldd "$tree/usr/bin/$bin" | grep 'not found' || true)
+        if [[ -n $missing ]]; then
+            printf '%s\n' "unresolved shared libraries in $bin:" "$missing" >&2
+            rm -rf "$tree"
+            return 1
+        fi
+        if ! grep -q "lib/sdrmm/libavcodec" <<< "$resolved"; then
+            printf '%s\n' "the media libraries of $bin did not resolve from /usr/lib/sdrmm:" "$resolved" >&2
+            rm -rf "$tree"
+            return 1
+        fi
+    done
     rm -rf "$tree"
-    if [[ -n $missing ]]; then
-        printf '%s\n' "unresolved shared libraries:" "$missing" >&2
-        return 1
-    fi
-    if ! grep -q "lib/sdrmm/libavcodec" <<< "$resolved"; then
-        printf '%s\n' "the media libraries did not resolve from /usr/lib/sdrmm:" "$resolved" >&2
-        return 1
-    fi
 }
 
 package_sdrmm() {
@@ -124,7 +134,7 @@ package_sdrmm() {
 
 package_sdrmm-app() {
     pkgdesc="Modular, client-server software-defined radio receiver (desktop app)"
-    depends=('cairo' 'dbus' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libsoup3' 'webkit2gtk-4.1')
+    depends=('cairo' 'dbus' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libsoup3' 'sdrmm' 'webkit2gtk-4.1')
     optdepends=('soapysdr: radios through SoapySDR modules'
                 'libsdrplay: SDRplay radios (SDRplay API, dlopened)'
                 'vulkan-icd-loader: GPU FFT (dlopened)')
@@ -132,8 +142,6 @@ package_sdrmm-app() {
 
     cd "$pkgbase-$pkgver-src"
     install -Dm755 target/release/sdrmm-desktop "$pkgdir/usr/bin/sdrmm-app"
-    install -d "$pkgdir/usr/lib/sdrmm-app"
-    cp -a "$srcdir/media/lib/"*.so* "$pkgdir/usr/lib/sdrmm-app/"
     install -Dm644 apps/desktop/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/dev.newspicel.sdrmm.png"
     install -Dm644 apps/desktop/icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/dev.newspicel.sdrmm.png"
     install -d "$pkgdir/usr/share/applications"
@@ -141,3 +149,4 @@ package_sdrmm-app() {
         packaging/linux/sdrmm-app.desktop > "$pkgdir/usr/share/applications/sdrmm-app.desktop"
     install -Dm644 LICENSE THIRD_PARTY_NOTICES.md -t "$pkgdir/usr/share/licenses/sdrmm-app/"
 }
+
