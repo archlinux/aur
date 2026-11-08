@@ -1,6 +1,6 @@
 pkgbase = artcraft-launcher-bin
 	pkgdesc = Install, update and launch the Craft App Suite (prebuilt binary)
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/storytold/craft-launcher
 	arch = x86_64
@@ -25,15 +25,15 @@ pkgbase = artcraft-launcher-bin
 	optdepends = vulkan-driver: GPU rendering through Vulkan
 	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
 	optdepends = cups: printing support
-	provides = artcraft-launcher=0.16.0
+	provides = artcraft-launcher=0.16.1
 	conflicts = artcraft-launcher
 	conflicts = artcraft-launcher-git
 	conflicts = artcraft-launcher-appimage
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/storytold/craft-launcher/releases/download/v0.16.0/artcraft-launcher-0.16.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = f322ce7d9b6ea455c2f12d2df8f52d9913def4842ed0c2767b2ae270b16f8116
-	source_aarch64 = https://github.com/storytold/craft-launcher/releases/download/v0.16.0/artcraft-launcher-0.16.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = c606496ac0035459747ffb22391fa24b15760aeb43fe4ae2cd18d2185c88448e
+	source_x86_64 = https://github.com/storytold/craft-launcher/releases/download/v0.16.1/artcraft-launcher-0.16.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5643cd4fa79aa43af00450b084f7d2932476c948558045cdc1c9d7f27d9a2da8
+	source_aarch64 = https://github.com/storytold/craft-launcher/releases/download/v0.16.1/artcraft-launcher-0.16.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 8772b0fd8771d454d24fcda84f2d6c5bcf079a71bfb1e1ae3758754528ca5003
 
 pkgname = artcraft-launcher-bin
