@@ -1,6 +1,6 @@
 pkgbase = tuxtalk
 	pkgdesc = Voice dictation for Linux: hold a key, talk, and your words are typed for you
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://tuxtalk.app/
 	install = tuxtalk.install
@@ -36,7 +36,7 @@ pkgbase = tuxtalk
 	conflicts = tuxtalk-appimage
 	conflicts = talktype-appimage
 	conflicts = talktype
-	source = tuxtalk-0.21.0.tar.gz::https://github.com/ronb1964/TuxTalk/archive/refs/tags/v0.21.0.tar.gz
-	sha256sums = 870ad9e21e2d8188e845b226bc7219e657f1d24dea5db203da4dea395275dade
+	source = tuxtalk-0.22.0.tar.gz::https://github.com/ronb1964/TuxTalk/archive/refs/tags/v0.22.0.tar.gz
+	sha256sums = b26e5ecd99038c7c12481d6cad0e2ef13304f54795d21c2093ace73863bfee68
 
 pkgname = tuxtalk
