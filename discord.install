@@ -1,0 +1,4 @@
+pre_remove() {
+  [ -f /opt/discord-canary-prerelease-patched-electron-bin/uninstall.py ] || return 0
+  python3 -I /opt/discord-canary-prerelease-patched-electron-bin/uninstall.py --package discord-canary-prerelease-patched-electron-bin
+}

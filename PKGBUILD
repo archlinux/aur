@@ -1,18 +1,19 @@
 # Maintainer: he3als <he3als@users.noreply.github.com>
 pkgname=discord-canary-prerelease-patched-electron-bin
-pkgver=20261101.181140
+pkgver=20261108.024415
 pkgrel=1
 pkgdesc='Discord Canary with patched Electron and Linux fixes (AVX2 required)'
 arch=('x86_64')
 url='https://github.com/discord-patched-electron/discord-patched-electron'
-license=(MIT BSD-3-Clause AGPL-3.0-only)
-depends=('glibc>=2.38' gcc-libs alsa-lib gtk3 libcups libxss libxtst libxcb nss libdrm mesa libpulse 'python>=3.11' ca-certificates gnupg brotli bash coreutils pipewire pipewire-audio zenity)
-optdepends=('xdg-desktop-portal: desktop screen selection' 'wireplumber: PipeWire session management' 'kdotool: KDE Plasma window labels')
+license=(MIT BSD-3-Clause AGPL-3.0-only GPL-2.0-or-later GPL-3.0-only LGPL-2.1-or-later)
+depends=('glibc>=2.38' gcc-libs alsa-lib gtk3 libcups libxss libxtst libxcb nss libdrm libva libcap mesa libpulse 'python>=3.11' ca-certificates gnupg brotli bash coreutils pipewire pipewire-audio zenity)
+optdepends=('xdg-desktop-portal: desktop screen selection' 'wireplumber: PipeWire session management' 'kdotool: KDE Plasma window labels' 'polkit: authorize DPE direct screen capture')
 options=('!strip' '!debug')
 provides=('discord-canary')
 conflicts=(discord-canary discord-canary-electron-bin)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261101181140.0.0-canary.b9f6d9e2eadcc6e2/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz")
-sha256sums=('fa6378f2382484ddb60a48195f902db42ad04e0533942b9ce6f2576f9fb3c686')
+install=discord.install
+source=("$pkgname-$pkgver.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261108024415.0.0-canary.aff82962c976622d/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz")
+sha256sums=('b6780c49a0419787c83bfcaccbf0c5177f9afeeec022e52a8bc1378de8ac2e90')
 
 package() {
   install -dm755 "$pkgdir/opt" "$pkgdir/usr/bin"
