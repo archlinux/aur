@@ -1,6 +1,6 @@
 # Maintainer: lisniper <liqiang0330@gmail.com>
 pkgname=abclock
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 _gtklockver=5.0.0
 pkgdesc='gtklock with Beijing timezone wrapper, English+Chinese weekday (%ea) and 3-line lock layout'
@@ -14,7 +14,7 @@ conflicts=('gtklock')
 backup=('etc/pam.d/gtklock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "gtklock-$_gtklockver.tar.gz::https://github.com/jovanlanik/gtklock/archive/v$_gtklockver.tar.gz")
-sha256sums=('fcd1d68433a5699c3f2b830b543845a0a5dd7d546e0798c6efb21a5503dc8cf3'
+sha256sums=('39150c4b3c748a67229732ab8b7662b92fa66831416b041da15af07f789c543b'
             '018c50cf1d7b626f823e797750e5b304511b3b359e7277e8abb3383c11e7aed9')
 
 prepare() {
@@ -34,6 +34,9 @@ package() {
 	mv "$pkgdir/usr/bin/gtklock" "$pkgdir/usr/libexec/abclock/gtklock-bin"
 	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/gtklock" "$pkgdir/usr/bin/gtklock"
 	ln -sf gtklock "$pkgdir/usr/bin/abclock"
+
+	# 独立严格 PAM 栈，覆盖上游的 `auth include login`（那条栈里有 pam_permit 兜底）
+	install -Dm644 "$srcdir/$pkgname-$pkgver/share/pam.d-gtklock" "$pkgdir/etc/pam.d/gtklock"
 
 	install -Dm644 "$srcdir/$pkgname-$pkgver/share/layout.xml" "$pkgdir/usr/share/abclock/layout.xml"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/share/config.ini.example" "$pkgdir/usr/share/abclock/config.ini.example"
