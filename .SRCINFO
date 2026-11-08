@@ -1,6 +1,6 @@
 pkgbase = ocaml-merlin-lib
 	pkgdesc = Low-level compiler interfaces and the standard higher-level merlin protocol library
-	pkgver = 5.9
+	pkgver = 5.9.1_505
 	pkgrel = 1
 	url = https://ocaml.github.io/merlin
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ocaml-merlin-lib
 	depends = ocaml
 	depends = ocaml-csexp
 	options = !strip
-	source = ocaml-merlin-lib-5.9.tar.gz::https://github.com/ocaml/merlin/archive/refs/tags/v5.9.tar.gz
-	b2sums = cd7d2e67c7190695d403af057d6d98927d11155db89cad62dc61d97c2f5831c010841ef7aab506946363908aab0e9f88f441653e34b40dc70e622111a2db3051
+	source = ocaml-merlin-lib-5.9.1_505.tar.gz::https://github.com/ocaml/merlin/archive/refs/tags/v5.9.1-505.tar.gz
+	b2sums = 146bf1502dcf2b5be132a1d1ef31f22a21b2f179b04e0cfec8adeeec0d38b4b6270a239cbe08394d942edfcc3aa4d3f15e0d89aeb6287ea7211de09259269013
 
 pkgname = ocaml-merlin-lib

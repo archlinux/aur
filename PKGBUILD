@@ -3,7 +3,8 @@
 
 _ocamlname=merlin-lib
 pkgname=ocaml-$_ocamlname
-pkgver=5.9
+_pkgver=5.9.1-505
+pkgver=${_pkgver/-/_} # No hypen in $pkgver
 pkgrel=1
 pkgdesc="Low-level compiler interfaces and the standard higher-level merlin protocol library"
 arch=('x86_64')
@@ -15,22 +16,22 @@ makedepends=(
 checkdepends=('jq' 'ocaml-menhir')
 url="https://ocaml.github.io/merlin"
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ocaml/merlin/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('cd7d2e67c7190695d403af057d6d98927d11155db89cad62dc61d97c2f5831c010841ef7aab506946363908aab0e9f88f441653e34b40dc70e622111a2db3051')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ocaml/merlin/archive/refs/tags/v${_pkgver}.tar.gz")
+b2sums=('146bf1502dcf2b5be132a1d1ef31f22a21b2f179b04e0cfec8adeeec0d38b4b6270a239cbe08394d942edfcc3aa4d3f15e0d89aeb6287ea7211de09259269013')
 options=('!strip')
 
 build() {
-    cd $srcdir/merlin-$pkgver
+    cd $srcdir/merlin-$_pkgver
     dune build -p merlin-lib
 }
 
 # check() {
-#     cd $srcdir/merlin-$pkgver
+#     cd $srcdir/merlin-$_pkgver
 #     dune test --release --verbose
 # }
 
 package() {
-    cd $srcdir/merlin-$pkgver
+    cd $srcdir/merlin-$_pkgver
 
     DESTDIR="${pkgdir}" dune install -p merlin-lib \
 	   --prefix "/usr" \
