@@ -1,0 +1,19 @@
+post_install() {
+  cat <<'MSG'
+Bacularis installed.
+  Application: /usr/share/webapps/bacularis
+  Persistent configuration: /var/lib/bacularis/{api-config,web-config}
+  Nginx example: /usr/share/doc/bacularis/nginx.conf.example
+  Sudoers: /etc/sudoers.d/bacularis (Bacula tools; check paths)
+  Actions (optional): /usr/share/doc/bacularis/bacularis-actions.sudoers.example
+  For full instructions see README.md in the AUR source package.
+  SECURITY: replace upstream default admin/admin credentials on first login.
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+Bacularis upgraded. Configuration is under /var/lib/bacularis and was not
+replaced by the package. Reload php-fpm and your web server as necessary.
+MSG
+}

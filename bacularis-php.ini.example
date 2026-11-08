@@ -1,0 +1,14 @@
+; Copy to /etc/php/conf.d/bacularis.ini only after checking that the
+; extensions are not already enabled in /etc/php/php.ini or conf.d.
+; These shared modules ship with the Arch Linux php / php-pgsql packages.
+extension=bcmath
+extension=curl
+extension=intl
+extension=ldap
+extension=pdo_mysql
+extension=pgsql
+extension=pdo_pgsql
+
+; Large Bacula catalogs and long restore operations benefit from these limits.
+memory_limit=512M
+max_execution_time=300

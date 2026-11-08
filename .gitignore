@@ -1,0 +1,7 @@
+*.pkg.tar.*
+*.src.tar.*
+src/
+pkg/
+*.log
+*.tar.gz
+!README.md

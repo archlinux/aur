@@ -1,0 +1,9 @@
+# Bacularis (https://bacularis.app/doc/brief/configuration.html)
+# On Arch Linux PHP-FPM normally runs as user 'http'.
+# Official Bacularis wizard requests these exact five Bacula tools.
+# Both /usr/bin and /usr/sbin spellings are allowed; choose the actual
+# executable location in the Bacularis wizard. Arch usually uses /usr/bin.
+# This grants full bconsole administrative power to the PHP-FPM identity.
+# Protect access to Bacularis and consider a dedicated PHP-FPM pool.
+Cmnd_Alias BACULARIS_TOOLS = /usr/bin/bconsole, /usr/bin/bdirjson, /usr/bin/bsdjson, /usr/bin/bfdjson, /usr/bin/bbconsjson, /usr/sbin/bconsole, /usr/sbin/bdirjson, /usr/sbin/bsdjson, /usr/sbin/bfdjson, /usr/sbin/bbconsjson
+http ALL=(root) NOPASSWD: BACULARIS_TOOLS
