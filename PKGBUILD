@@ -1,6 +1,6 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=odyssey-ctl
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Control Samsung Odyssey monitors over DDC/CI: picture, game and lighting settings, presets, CLI and GUI"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('wayland: native Wayland window'
             'libx11: X11 window')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ceae067a6025776e6bdace498ed7fc668511eb98f6220865f894d163413c8b9e')
+sha256sums=('5da7d1423b995b2e2ef73154c439183741cdcbaedcf9d4527de76dda5980573c')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -45,6 +45,9 @@ package() {
     install -Dm644 "assets/icon-$s.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/odyssey-ctl.png"
   done
   install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/odyssey-ctl.svg"
+  install -Dm644 packaging/systemd/odyssey-ctl-preset@.service -t "$pkgdir/usr/lib/systemd/user/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 README.md README.it.md CHANGELOG.md docs/PROTOCOL.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 packaging/systemd/odyssey-ctl-night.timer -t "$pkgdir/usr/share/doc/$pkgname/systemd/"
+  install -Dm755 packaging/systemd/odyssey-ctl-resume -t "$pkgdir/usr/share/doc/$pkgname/systemd/"
 }
