@@ -1,6 +1,6 @@
 pkgbase = phoenixbrowser
 	pkgdesc = A light and snappy web browser
-	pkgver = 0.95
+	pkgver = 0.95.1
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/phoenix/phoenix
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = phoenixbrowser
 	depends = libxss
 	depends = git
 	depends = bitwarden-cli
-	source = https://gitlab.com/linuxbombay/phoenix/phoenix/-/archive/0.95/phoenix-0.95.tar.bz2
-	sha256sums = a9840a371b977139b4f858a5f996a7ce38367a9c316526ffc413fee2ba3d8fc2
+	source = https://gitlab.com/linuxbombay/phoenix/phoenix/-/archive/0.95.1/phoenix-0.95.1.tar.bz2
+	sha256sums = 955834a482d02920fb9c4ed4a4184d0086c5f7567925bfc55894a153ca059432
 
 pkgname = phoenixbrowser
