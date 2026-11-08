@@ -1,6 +1,6 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=ak820
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Configurator for the AJAZZ AK820 Pro and AK820 keyboards: lighting, per-key RGB, key remapping, macros, TFT screen (GUI + CLI)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('xdg-desktop-portal: file picker in the GUI'
 conflicts=('ak820-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1d2b3eef0120439ae84e68c320e127e7dd3f934cdf4c1246d81a3682711d6b3')
+sha256sums=('4cd412fe444f117180f6e067e46aeaff04962273e9a3890b505d60c5f3f2fac1')
 
 prepare() {
   cd "ak820-rs-$pkgver"
