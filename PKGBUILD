@@ -3,10 +3,10 @@
 
 pkgname=vocalinux
 # AUR pkgver cannot contain hyphens (v0.14.0-beta -> 0.14.0beta).
-pkgver=0.18.5
-_tag=0.18.5
+pkgver=0.18.6
+_tag=0.18.6
 # PEP 440-normalized sdist version may differ from a prerelease tag.
-_version=0.18.5
+_version=0.18.6
 pkgrel=1
 pkgdesc="Free, offline voice dictation for Linux"
 arch=('any')
@@ -56,12 +56,13 @@ optdepends=(
   'xclip: X11 clipboard tools (copy/paste injection fallbacks)'
   'wl-clipboard: Wayland clipboard (wl-copy/wl-paste) injection fallbacks'
   'wtype: Wayland keystroke injection fallback'
+  'gtk-layer-shell: dictation overlay as a layer surface on KDE and wlroots Wayland'
 )
 conflicts=('vocalinux-git')
 source=("${pkgname}-${_version}.tar.gz::https://github.com/VocaHQ/vocalinux/releases/download/v${_tag}/${pkgname}-${_version}.tar.gz")
 # Canonical release sdist, also published on PyPI. prepare_aur_source.py verifies
 # its checksum/provenance before pinning the next version; publication never rehashes.
-sha256sums=('1def4d8f0f14f2df2f2fee64ca29e6865e3d82e551f7d465c2a78ec6d4d72b1d')
+sha256sums=('8f87b5280af924df6ce699a4cca6c7d0e6e39f666c77766d7792aaa27d93a8e0')
 
 build() {
   cd "${pkgname}-${_version}"
