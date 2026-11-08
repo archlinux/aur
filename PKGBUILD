@@ -1,11 +1,11 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Moritz Bunkus <moritz@bunkus.org>
 
-_author=MSTROUT
+_author=GETTY
 _dist=SQL-Abstract
 pkgname=perl-${_dist@L}
-pkgver=2.000001
-pkgrel=3
+pkgver=2.000003
+pkgrel=1
 pkgdesc='Generate SQL from Perl data structures'
 arch=('any')
 url=https://metacpan.org/dist/$_dist
@@ -32,7 +32,7 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('35a642662c349420d44be6e0ef7d8765ea743eb12ad14399aa3a232bb94e6e9a')
+sha256sums=('29713cb19949b420c1266a11630a9961552cd50943eaaff04c8b7aca44249592')
 
 build()
 {
