@@ -1,6 +1,6 @@
 pkgbase = gufo
 	pkgdesc = Fast inference engine for AMD Strix Halo (gfx1151)
-	pkgver = 0.31.0
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/gufo-org/gufo
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = gufo
 	depends = rocblas
 	options = !lto
 	options = !debug
-	source = gufo-0.31.0.tar.gz::https://github.com/gufo-org/gufo/archive/refs/tags/v0.31.0.tar.gz
-	sha256sums = 17e2b6d0539cc5c63a4e4ec92ea2ac3661b6cb99b2aec0bf1284199be7ddf8aa
+	source = gufo-0.32.0.tar.gz::https://github.com/gufo-org/gufo/archive/refs/tags/v0.32.0.tar.gz
+	sha256sums = 141286408d8d15009aca034945561e3065b775c7af7262922589d70909c979a6
 
 pkgname = gufo
