@@ -4,7 +4,7 @@
 _author=ETHER
 _dist=Web-Simple
 pkgname=perl-${_dist@L}
-pkgver=0.035
+pkgver=0.036
 pkgrel=1
 pkgdesc='A quick and easy way to build simple web applications'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('9b7cea77a2cb09e88a78f450a4f21458a62e71e4696e7bdf2a1181694fbea21c')
+sha256sums=('bdf6ba641274a37ffa8e36b1aac8df397c2428e2404856a46474561075bcc064')
 
 build()
 {

@@ -1,6 +1,6 @@
 pkgbase = perl-web-simple
 	pkgdesc = A quick and easy way to build simple web applications
-	pkgver = 0.035
+	pkgver = 0.036
 	pkgrel = 1
 	url = https://metacpan.org/dist/Web-Simple
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = perl-web-simple
 	optdepends = perl-devel-cycle
 	optdepends = perl-http-request-ascgi
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Web-Simple-0.035.tar.gz
-	sha256sums = 9b7cea77a2cb09e88a78f450a4f21458a62e71e4696e7bdf2a1181694fbea21c
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Web-Simple-0.036.tar.gz
+	sha256sums = bdf6ba641274a37ffa8e36b1aac8df397c2428e2404856a46474561075bcc064
 
 pkgname = perl-web-simple
