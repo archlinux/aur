@@ -1,4 +1,4 @@
-# Maintainer: Swastik Patel <CPT-Dawn at users dot noreply dot github dot com>
+# Maintainer: Swastik Patel <ping at cptdawn dot dev>
 #
 # Source of truth: packaging/aur/ in https://github.com/CPT-Dawn/Hoarder.
 
