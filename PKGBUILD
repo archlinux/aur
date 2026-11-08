@@ -2,7 +2,7 @@
 # Contributor: Massimiliano Torromeo <mtorromeo@archlinux.org>
 
 pkgname=sonora
-pkgver=0.48.0
+pkgver=0.48.1
 pkgrel=1
 pkgdesc='A native, familiar music streaming client'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
 makedepends=('rust' 'cmake')
 options=('!lto')
 source=("https://github.com/sonorahq/sonora/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fddb245bd602a02b5049c30a3a77ec43c9c7bccdbd078bd515b2ef52132fc842')
+sha256sums=('62d400f3f46450587f6505288c3a2a8a5fc1306d921eb35f7f9e5980fc05cf5e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
