@@ -1,0 +1,21 @@
+pkgbase = xmq-git
+	pkgdesc = A tool and language to work with xml/html/json/yaml and parse any other format using ixml.
+	pkgver = 4.2.0.r127.g8c7f3b3
+	pkgrel = 1
+	url = https://github.com/libxmq/xmq
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = libxml2
+	depends = libxslt
+	depends = zlib
+	optdepends = bash-completion: for xmq shell completion
+	provides = xmq
+	conflicts = xmq
+	options = staticlibs
+	source = xmq-git::git+https://github.com/libxmq/xmq.git
+	sha256sums = SKIP
+
+pkgname = xmq-git
