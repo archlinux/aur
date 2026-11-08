@@ -1,7 +1,7 @@
 # Maintainer: danalec
 pkgname=rgy-search-bin
 pkgver=0.1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Whole-filesystem name search and content search in one stack (binary release)"
 arch=('x86_64')
 url="https://github.com/danalec/rgy"
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 conflicts=('rgy-search-avx2-bin' 'rgy-search-znver4-bin')
 source=("rgy-v${pkgver}-x86_64-linux.tar.gz::https://github.com/danalec/rgy/releases/download/rgy-v${pkgver}/rgy-v${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('365d30c066f0e9a514a0ed7ad3481866b9a240e3331aeb940ded0eee3681195e')
+sha256sums=('a51bffb3a019281eb53d33cbaa7a8979b9995d9192f9967af79357e7b913d253')
 options=('!strip')
 
 package() {
