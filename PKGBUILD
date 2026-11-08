@@ -3,7 +3,7 @@
 
 pkgname=proton-mail
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=(any)
 url='https://proton.me/mail'
@@ -14,7 +14,7 @@ makedepends=(git jq nodejs-lts-krypton pnpm)
 source=(https://github.com/ProtonMail/WebClients/archive/proton-inbox-desktop@$pkgver/$pkgname-$pkgver.tar.gz
         proton-mail.desktop
         proton-mail.sh)
-b2sums=('86756f18495ad65b36696126d02cd8c4244965cea8e12585818dbaeb6dd891f63125a83532f897662193837d2f11c8186cd60f31423fbf8f5c9db77a3a882596'
+b2sums=('8557172b56bf64cc07dd5b24bfa9889d70ab3ffa0d3a4ca40cd081883d2bf335d7b4703d2620bc0fa213dcb07695f86fbcfe6c8c02b569ba1581ec5eafab7145'
         'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
         '45d089576f2260cc425b6c9bdde79e882b24c7dd4b8173f485fb67a0d0ccaf451dbba6f403f3bd8a0d622d99132d076da79984525ed8f89e97738557e8e23bad')
 
