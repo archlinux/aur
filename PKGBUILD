@@ -1,8 +1,8 @@
 #!/hint/bash
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 pkgname=rhine-git
-pkgver=r249.cc77e04
-pkgrel=2
+pkgver=r387.fa86f4c
+pkgrel=1
 pkgdesc="A modular window manager for river"
 arch=('x86_64')
 url="https://codeberg.org/sivecano/rhine"
@@ -27,7 +27,7 @@ build() {
 	--prefix /usr \
 	--search-prefix /usr \
 	-Dpie=true \
-	-Dnotify=true \
+	-Ddbus=true \
 	-Doptimize=ReleaseSafe
 }
 
