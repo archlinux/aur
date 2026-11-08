@@ -8,7 +8,7 @@
 # dir, and package() installs from there.
 
 pkgname=bongo-cat-todo-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Tauri 2 desktop pet cat with a todo list and mail notifier (fork of BongoCat, prebuilt binary)"
 arch=(x86_64 aarch64)
@@ -31,8 +31,8 @@ options=(!strip)
 source_x86_64=("$pkgname-$pkgver-amd64.deb::$url/releases/download/v$pkgver/BongoCat.Todo_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver-arm64.deb::$url/releases/download/v$pkgver/BongoCat.Todo_${pkgver}_arm64.deb")
 # sha256sums rewritten by CI at release time.
-sha256sums_x86_64=('414a432dbf80e428b7fa60c1b8192059e2a0b85ce85de48120f1c52b5abd8984')
-sha256sums_aarch64=('2be5a609bc15b93598d1d306407910528732679fc6305ad6a3e6c6d869649cf4')
+sha256sums_x86_64=('44179f6271618cabd13438207aed24472bd7b0cbbeb1c43fccb5ea52e4a63807')
+sha256sums_aarch64=('a7cf302f3ee3228566fc98bd81b0fd74b597aed73ac0306e8a6770f6db847dba')
 
 build() {
   # After makepkg auto-extracted the .deb, $srcdir contains data.tar.*
