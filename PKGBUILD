@@ -1,7 +1,7 @@
 # Maintainer: Ilyas Khallouki <khalloukielias@gmail.com>
 pkgname=hypruse-git
 _pkgname=hypruse
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server (git)"
 arch=('any')
@@ -29,6 +29,12 @@ pkgver() {
 build() {
   cd "$_pkgname"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_pkgname"
+  # the MCP server has to start against the python-mcp this system has
+  PYTHONPATH=src python -c 'from hypruse.server import build_app; build_app()'
 }
 
 package() {
