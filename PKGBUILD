@@ -1,9 +1,9 @@
 pkgname=fixplay-diagnosetool
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Cross-platform diagnostic tool for gaming consoles"
 arch=('x86_64')
-url="https://github.com/fabioudev/fixplay-diagnoseTool"
+url="https://github.com/fixplay-orga/fixplay-diagnoseTool"
 license=('custom:unknown')
 depends=(
   'webkit2gtk-4.1'
@@ -12,6 +12,7 @@ depends=(
   'hicolor-icon-theme'
   'hidapi'          # shared libhidapi-hidraw.so — see prepare()
   'systemd-libs'   # libudev.so, needed by the hidraw backend at runtime
+  'flashrom'       # the app shells out to `flashrom`; resolved via PATH at runtime
 )
 makedepends=('rust' 'cargo' 'npm' 'curl')
 provides=('fixplay-diagnosetool')
@@ -20,7 +21,7 @@ conflicts=('fixplay-diagnosetool-bin')
 # makepkg strip it. Matches the -bin PKGBUILD's !strip and guarantees the
 # installed fixplay-tauri is byte-identical to the build output.
 options=('!strip')
-source=("fixplay-diagnoseTool-v${pkgver}.tar.gz::https://github.com/fabioudev/fixplay-diagnoseTool/archive/refs/tags/v${pkgver}.tar.gz")
+source=("fixplay-diagnoseTool-v${pkgver}.tar.gz::https://github.com/fixplay-orga/fixplay-diagnoseTool/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
@@ -70,8 +71,13 @@ package() {
   install -Dm644 "src-tauri/resources/error_codes.json" \
     "${pkgdir}/usr/lib/fixplay-diagnosetool/resources/error_codes.json"
 
-  install -Dm755 "src-tauri/binaries/flashrom" \
-    "${pkgdir}/usr/lib/fixplay-diagnosetool/binaries/flashrom"
+  install -Dm644 "src-tauri/resources/xbox_error_codes.json" \
+    "${pkgdir}/usr/lib/fixplay-diagnosetool/resources/xbox_error_codes.json"
+
+  # NOTE: no bundled flashrom — the committed src-tauri/binaries/flashrom is a
+  # 12-byte dev placeholder stub that would fail every flash operation at
+  # spawn. The runtime placeholder guard skips it anyway, and the `flashrom`
+  # dependency above puts the real binary on PATH.
 
   install -Dm644 "src-tauri/icons/icon_256x256.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/fixplay-diagnosetool.png"
