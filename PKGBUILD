@@ -11,7 +11,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Easy, fast and local-first microVM runtime"
 
-pkgver=0.7.13
+pkgver=0.7.14
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -30,7 +30,7 @@ depends=('glibc' 'libgcc')
 options=('!strip' '!lto')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('a48c0d71742e29110b3f0f6111a94460cd980c876b5ec36533ff005f2c044fb1')
+sha256sums=('e0b26f0e6af173169b927ec8c69d9e8ed19a61847137616d8f4957ed885adb07')
 
 
 prepare() {
