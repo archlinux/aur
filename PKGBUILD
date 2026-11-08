@@ -3,7 +3,7 @@
 _pkgauthor=Disservin
 _pkgname=fastchess
 pkgname=${_pkgname}
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 _pkgver="${pkgver}-alpha"
 pkgdesc="A chess cli tool to run engine vs engine matches"
@@ -17,7 +17,7 @@ makedepends=('gcc' 'make')
 depends=('glibc' 'gcc-libs')
 
 source=("${_pkgname}-${_pkgver}.tgz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('9dad5dcea3009e65f3c9cfc6f901ab40d6b36d572368d95acea079812e3b9a88')
+sha256sums=('995d6b427013ba396a09a1c9bd52a32adf86de5b677fd8883312438d7ba4077a')
 
 build() {
 	cd ${pkgname}-${_pkgver} || exit 1
