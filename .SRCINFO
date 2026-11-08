@@ -1,6 +1,6 @@
 pkgbase = keeper-bin
 	pkgdesc = Agent-first cleanup for Arch: stale worktrees, AUR clones, caches and agent leftovers
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/cjber/keeper
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = keeper-bin
 	provides = keeper
 	conflicts = keeper
 	options = !strip
-	source = keeper-0.3.2.tar.gz::https://github.com/cjber/keeper/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 7155f400328ae984eb802375cc217634c2af7f6f542923bf02e222afd6bf002b
-	source_x86_64 = keeper-linux-x64-0.3.2::https://github.com/cjber/keeper/releases/download/v0.3.2/keeper-linux-x64
-	sha256sums_x86_64 = 7bec6a56dcb4506aada5921e055f849c644237f9071223557b7a44f8f60a7698
-	source_aarch64 = keeper-linux-arm64-0.3.2::https://github.com/cjber/keeper/releases/download/v0.3.2/keeper-linux-arm64
-	sha256sums_aarch64 = 15503c80c344d95dd9582c1c27ceb4c5ca21333fd6637bd83583ae4826349479
+	source = keeper-0.4.0.tar.gz::https://github.com/cjber/keeper/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 99b8f3fec6f5eeb689421f66e8391800fbb8cd5765adea532cff573da9a1968e
+	source_x86_64 = keeper-linux-x64-0.4.0::https://github.com/cjber/keeper/releases/download/v0.4.0/keeper-linux-x64
+	sha256sums_x86_64 = b4285f1e42273e3a3476be58a745969456326b0d22e23c08fa9f86409992e29d
+	source_aarch64 = keeper-linux-arm64-0.4.0::https://github.com/cjber/keeper/releases/download/v0.4.0/keeper-linux-arm64
+	sha256sums_aarch64 = e4b7b50cceb475a90ffd0960789e0368b74de6dae54d320642aa46afdec2b764
 
 pkgname = keeper-bin
