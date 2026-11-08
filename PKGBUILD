@@ -2,23 +2,19 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname="plank-player"
-pkgver=5.27.12
-_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgver=26.10.0
 pkgrel=1
 pkgdesc='Multimedia Player for playing local files on Plasma Bigscreen allowing navigation with just a remote control'
 arch=("x86_64")
 url='https://plasma-bigscreen.org/'
-license=(GPL2)
-# 6
-#depends=(kirigami ki18n qt6-multimedia qt6-graphicaleffects hicolor-icon-theme)
-# 5
-depends=(kirigami2 ki18n5 qt5-multimedia qt5-graphicaleffects hicolor-icon-theme)
+license=(GPL-2.0-or-later)
+depends=(bigscreen-ui-git kconfig ki18n kio kirigami qt6-base qt6-declarative qt6-multimedia hicolor-icon-theme)
 makedepends=(extra-cmake-modules)
-source=("https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz")
-b2sums=('bb7604f17b8b6e19c6a2490c4905f8fe07b4f7f06df1dfba5d403c0a51d97b1030c8272ff7627d682910c4fd75b63b532d1e86ef4aa8a45deb5882014b39defa')
+source=("https://invent.kde.org/plasma-bigscreen/plank-player/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+b2sums=('SKIP')
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S $pkgname-v$pkgver \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
