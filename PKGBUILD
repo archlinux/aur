@@ -2,8 +2,8 @@
 
 pkgname=gtm-player-bin
 _pkgname=gtm
-pkgver=0.2.96
-pkgrel=2
+pkgver=0.2.97
+pkgrel=1
 pkgdesc='Reimagined terminal audio player with background daemon, YouTube/Spotify, radio and podcasts (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://gtmd.dev'
@@ -18,8 +18,8 @@ source=("LICENSE-$pkgver::https://raw.githubusercontent.com/craftty-org/gtm/v$pk
 source_x86_64=("$_pkgname-arch-x86_64-$pkgver.tar.gz::https://github.com/craftty-org/gtm/releases/download/v$pkgver/gtm-arch-x86_64.tar.gz")
 source_aarch64=("$_pkgname-arch-aarch64-$pkgver.tar.gz::https://github.com/craftty-org/gtm/releases/download/v$pkgver/gtm-arch-aarch64.tar.gz")
 sha256sums=('74baee093d1aaf8c77670ceafecb2185b4ce18cbd3e4237e9cac60617f3b5d20')
-sha256sums_x86_64=('5d3517b7da422bb8ea87b4e425185080145eb1688bbd809a2fe9cd803a1ec3b8')
-sha256sums_aarch64=('d5dcb69598c3fdc82688a9d1b9b553c13232384eca30bfbf6e07ad7795e28b1d')
+sha256sums_x86_64=('c8ee00aaee8d1f3d25664ebb3d5379db6772d1e6299cc0849198c862c7122f87')
+sha256sums_aarch64=('3731b4b8e569af2963b3f3855d790d02324da92ceb890bf47ef2b11f462f8c8d')
 
 package() {
   cd "$srcdir/$_pkgname-arch-$CARCH"
