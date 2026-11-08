@@ -2,7 +2,7 @@
 # Contributor: zexadev (original author) <https://github.com/zexadev>
 
 pkgname=gw2api-bin
-pkgver=4.27.0
+pkgver=4.27.1
 pkgrel=1
 pkgdesc="Reverse Google Gemini web protocol into OpenAI-compatible API. Single binary with built-in admin dashboard."
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ install="${pkgname}.install"
 
 source_x86_64=("${url}/releases/download/v${pkgver}/gemini-web2api-go_v${pkgver}_linux_amd64")
 source_aarch64=("${url}/releases/download/v${pkgver}/gemini-web2api-go_v${pkgver}_linux_arm64")
-sha256sums_x86_64=('5320ff87c6158b648c074b9ae6c700a75b672c8f7119b62e6f22b034e970cfca')
-sha256sums_aarch64=('66392aa8c67151ead0f5e2baa1f686e97754f8cc54b856e3605ae1e26633af01')
+sha256sums_x86_64=('8e0e3df2de1881e35d8ce2395be95e94e5d0653a1013be5bcab5821fa236b5ac')
+sha256sums_aarch64=('e0ba98effeae4054c3571d9f0df6f0815eac03727ca0bffbc3a1a69c9a896b7a')
 
 package() {
     local _arch_suffix="${CARCH/x86_64/amd64}"
