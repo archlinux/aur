@@ -1,0 +1,33 @@
+pkgbase = miloinput-bin
+	pkgdesc = Milo Chinese Pinyin input method for Fcitx5 (prebuilt)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://miloinput.fay.wang
+	arch = x86_64
+	license = LicenseRef-MiloInput
+	license = BSD-3-Clause
+	license = BSD-2-Clause
+	license = Apache-2.0
+	license = MIT
+	license = BSL-1.0
+	license = GPL-3.0-only
+	license = CC-BY-4.0
+	depends = fcitx5>=5.1.23
+	depends = kenlm-shared=0.3.0.r20261108
+	depends = glibc
+	depends = gcc-libs
+	optdepends = fcitx5-configtool: Configure input methods
+	optdepends = fcitx5-gtk: GTK application integration
+	optdepends = fcitx5-qt: Qt application integration
+	optdepends = noto-fonts-cjk: Chinese glyph coverage
+	optdepends = noto-fonts-emoji: Emoji glyph coverage
+	provides = miloinput
+	provides = fcitx5-miloinput
+	conflicts = miloinput
+	conflicts = fcitx5-miloinput
+	options = !strip
+	options = !debug
+	source = https://miloinput.fay.wang/downloads/MiloInput-Linux-x64-v0.1.0_20261108_a0908ccf.zip
+	sha256sums = 4991302c2bd10a619e99f6acbb861a3a63ff358385023b392225c34b22cb2081
+
+pkgname = miloinput-bin
