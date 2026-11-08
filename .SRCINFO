@@ -1,6 +1,6 @@
 pkgbase = zenith-bar
 	pkgdesc = The lightest beautiful status bar for Wayland
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/CPT-Dawn/Zenith
 	install = zenith-bar.install
@@ -15,8 +15,9 @@ pkgbase = zenith-bar
 	depends = gtk4-layer-shell
 	depends = pango
 	optdepends = ttf-inter: the recommended UI font
+	optdepends = hoarder: clipboard history for the clipboard module
 	options = !lto
-	source = zenith-bar-2.2.0.tar.gz::https://github.com/CPT-Dawn/Zenith/archive/refs/tags/v2.2.0.tar.gz
-	sha256sums = a63039aa07e62ad3ee4a87901316cf005f4ca252c2ae5778fdad421287e67146
+	source = zenith-bar-2.3.0.tar.gz::https://github.com/CPT-Dawn/Zenith/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 094469c963aac78e9d75dc99064358e80b4165623ff998aab69210f59ece7543
 
 pkgname = zenith-bar
