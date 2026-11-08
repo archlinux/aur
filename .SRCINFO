@@ -1,7 +1,7 @@
 pkgbase = kcd-bin
 	pkgdesc = Lightweight, headless implementation of the KDE Connect protocol (v8) written in Go
 
-	pkgver = 1.22.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/bethropolis/kcd
 	license = MIT
@@ -18,13 +18,13 @@ pkgbase = kcd-bin
 	conflicts = kcd
 	provides = kcd
 	arch = aarch64
-	source_aarch64 = kcd-bin_1.22.3_aarch64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v1.22.3/kcd_1.22.3_linux_aarch64.tar.gz
-	sha256sums_aarch64 = 2f96d4fdb606c40e707b866222f512f7809c948d644b5b7fab3131b44d2a9a69
+	source_aarch64 = kcd-bin_2.0.0_aarch64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v2.0.0/kcd_2.0.0_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 7487447a4c5dd9b7f4eebac091bee6e0ca2d45030ca2e26ac653be10e4de0534
 	arch = armv7h
-	source_armv7h = kcd-bin_1.22.3_armv7h.tar.gz::https://github.com/bethropolis/kcd/releases/download/v1.22.3/kcd_1.22.3_linux_armv7.tar.gz
-	sha256sums_armv7h = b722cf6555835281e525f550cf033876902412f2fb22fbaef204ac1e843bd600
+	source_armv7h = kcd-bin_2.0.0_armv7h.tar.gz::https://github.com/bethropolis/kcd/releases/download/v2.0.0/kcd_2.0.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 2f613c26421f7040308f55afdd6689010913bc5715c825aa18a008a8dd5d38c6
 	arch = x86_64
-	source_x86_64 = kcd-bin_1.22.3_x86_64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v1.22.3/kcd_1.22.3_linux_x86_64.tar.gz
-	sha256sums_x86_64 = effe1b9ca1c69c8e8c5150cff3b6ddae8c59b88eaf2a12f9c214687af3c16e85
+	source_x86_64 = kcd-bin_2.0.0_x86_64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v2.0.0/kcd_2.0.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = e3be6266b42042fa90a45347045f7213bdc8fabc34a4bf706349d35bd995f250
 	
 pkgname = kcd-bin
