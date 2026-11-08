@@ -1,2 +1,5 @@
 #!/bin/sh
-LD_LIBRARY_PATH=/opt/oda-file-converter /opt/oda-file-converter/oda-file-converter $@
+# Only the xcb Qt platform plugin is shipped; pin it unless the user overrides.
+[ -n "$QT_QPA_PLATFORM" ] || QT_QPA_PLATFORM=xcb
+export QT_QPA_PLATFORM
+exec /opt/oda-file-converter/ODAFileConverter "$@"

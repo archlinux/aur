@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ODA File Converter
-Comment=ODA SDK® for .dwg files 22.10.0.0, Open Design Alliance Inc.
+Comment=ODA SDK® for .dwg files 27.10.0.0, Open Design Alliance Inc.
 Exec=/usr/bin/oda-file-converter
 Icon=oda-file-converter
 Terminal=false
