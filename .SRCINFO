@@ -1,6 +1,6 @@
 pkgbase = daftar-bin
 	pkgdesc = A native GTK app and a command line for an Obsidian vault in a Git repository
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/parham-alvani/notes-linux
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = daftar-bin
 	conflicts = daftar
 	conflicts = daftar-cli
 	conflicts = daftar-cli-bin
-	source = https://github.com/parham-alvani/notes-linux/releases/download/v0.19.0/daftar-0.19.0-x86_64.tar.gz
-	source = LICENSE-0.19.0::https://raw.githubusercontent.com/parham-alvani/notes-linux/v0.19.0/LICENSE
-	sha256sums = 7efad23c357779fa102d204113a5ae2ac5126283eccc067bed71d643fc5712ed
+	source = https://github.com/parham-alvani/notes-linux/releases/download/v0.19.1/daftar-0.19.1-x86_64.tar.gz
+	source = LICENSE-0.19.1::https://raw.githubusercontent.com/parham-alvani/notes-linux/v0.19.1/LICENSE
+	sha256sums = 2dfe145203fc5ff865530daa113e12314fcc3d89d04ae7cadf2f6501baed9c93
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = daftar-bin
