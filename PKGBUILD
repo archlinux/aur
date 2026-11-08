@@ -2,7 +2,7 @@
 
 pkgname=freellmapi-desktop-bin
 pkgver=0.16.21
-pkgrel=4
+pkgrel=5
 pkgdesc="FreeLLMAPI menu-bar app — local OpenAI-compatible LLM router"
 arch=('x86_64')
 url="https://github.com/tashfeenahmed/freellmapi"
@@ -40,4 +40,6 @@ EOF
     cp -a squashfs-root/usr/share/icons/. "${pkgdir}/usr/share/icons/"
     chmod -R a+rX "${pkgdir}/usr/share/icons"
   fi
+  install -Dm644 squashfs-root/freellmapi-desktop.png \
+    "${pkgdir}/usr/share/pixmaps/freellmapi-desktop.png"
 }
