@@ -1,6 +1,6 @@
 pkgbase = padtune-bin
 	pkgdesc = Unofficial configurator for BIGBIG WON controllers (Rainbow 2 Pro and family): buttons, sticks, triggers, lights, macros, polling rate (prebuilt)
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/deddroid/padtune
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = padtune-bin
 	options = !lto
 	options = !strip
 	options = !debug
-	source = https://github.com/deddroid/padtune/releases/download/v0.1.2/padtune-0.1.2-linux-x86_64.tar.gz
-	sha256sums = 879aace9ae3378e76e5d54d6294d32fce5fe38d1551a8e5be74afbbc96a25e85
+	source = https://github.com/deddroid/padtune/releases/download/v0.2.0/padtune-0.2.0-linux-x86_64.tar.gz
+	sha256sums = 202d3f01d3579bf67fefe54e0b172a8546377ff470cd30fb6ccdabb00204d939
 
 pkgname = padtune-bin
