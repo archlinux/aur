@@ -34,10 +34,13 @@ options=('!strip' '!debug')
 source=(
   "https://github.com/dazemc/trickster/releases/download/v${pkgver}/trickster-${pkgver}-1-x86_64.pkg.tar.zst"
 )
-sha256sums=('ba84f1420c84c41ef3be18c371ad5fba189cc289c0138d4a549899151574809b')
+sha256sums=('56d17dbddb9d5341a11c4ef6f70e6d1baa48bcc6bb78dfdb9a7c8afc52ad29a9')
 noextract=("trickster-${pkgver}-1-x86_64.pkg.tar.zst")
 
 package() {
   bsdtar -xpf "$srcdir/trickster-${pkgver}-1-x86_64.pkg.tar.zst" \
     -C "$pkgdir" --exclude .PKGINFO --exclude .BUILDINFO --exclude .MTREE
+  # The release asset may lose the execute bit in transit; both binaries run.
+  chmod 755 "$pkgdir/usr/lib/trickster/trickster" \
+    "$pkgdir/usr/lib/trickster/tricksterctl"
 }
