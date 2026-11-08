@@ -1,5 +1,5 @@
 pkgname=openomsi-bin
-pkgver=0.3.45
+pkgver=0.3.52
 pkgrel=1
 pkgdesc="OMSI 2 recreated from scratch in Rust, compatible with every map and mod; pre-built upstream binary"
 arch=('x86_64' 'aarch64')
@@ -41,8 +41,8 @@ source=('LICENSE')
 source_x86_64=("openOMSI-${pkgver}-linux-x64.zip::${_baseurl}/openOMSI-${pkgver}-linux-x64.zip")
 source_aarch64=("openOMSI-${pkgver}-linux-arm64.zip::${_baseurl}/openOMSI-${pkgver}-linux-arm64.zip")
 sha256sums=('4cfc1a0e645c6506a80022ac1423d598e0a4a27d62ebd3d8d96b518278b74525')
-sha256sums_x86_64=('ca1d6c18324017f4658dbad2db158c808ca4b2e0844ac806f09db1b59ce0d308')
-sha256sums_aarch64=('4dd49dc60aa753d9ce20b1917ce0a3101bc726d3bab536c9072a96683790629d')
+sha256sums_x86_64=('b36d8b8f8774b698fc86af95b6afba1a37770b752aeff44ebe793c585f7c4591')
+sha256sums_aarch64=('df534d4508ce341e7c21523ec04632ef3d17b1745868c9cddb47c5161dfdeccd')
 
 package() {
   cd "$srcdir"
