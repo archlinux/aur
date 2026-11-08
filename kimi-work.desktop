@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Kimi
+Name=Kimi Work
 Comment=Kimi Work desktop client
-Exec=kimi %U
-Icon=kimi
+Exec=kimi-work %U
+Icon=kimi-work
 Terminal=false
 Type=Application
 Categories=Office;Network;

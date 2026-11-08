@@ -8,7 +8,7 @@
 
 pkgname=kimi-work-bin
 pkgver=3.2.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Kimi Work desktop client, repackaged for the system Electron runtime'
 arch=('x86_64')
 url='https://www.kimi.com/products/kimi-work'
@@ -20,13 +20,12 @@ depends=(
   'uv'
 )
 makedepends=('7zip' 'asar')
-provides=('kimi')
 conflicts=('kimi-bin')
 options=('!strip')
 source=(
   'LICENSE'
-  'kimi.sh'
-  'kimi.desktop'
+  'kimi-work.sh'
+  'kimi-work.desktop'
   'daimon.sh'
   'node.sh'
 )
@@ -35,7 +34,7 @@ noextract=("kimi_${pkgver}.exe")
 sha256sums=(
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
   '5a2c99f51625b057dd0d3c561d67efce62b75d1bfd158def4d91ad83dd1b24a8'
-  '887af6c9d699222ed86772823abe646154ff130643c12be794f335bdd5f7c1c6'
+  'c47de36fda4c29968fac150b2d54fc91bede6233e1723f5a5762e17e9d0858a0'
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
 )
@@ -108,14 +107,14 @@ package() {
   find "${pkgdir}/usr/lib/electron43/resources/resources" \
     -type d -exec chmod 755 '{}' +
 
-  install -Dm755 "${srcdir}/kimi.sh" \
-    "${pkgdir}/usr/bin/kimi"
-  install -Dm644 "${srcdir}/kimi.desktop" \
-    "${pkgdir}/usr/share/applications/kimi.desktop"
+  install -Dm755 "${srcdir}/kimi-work.sh" \
+    "${pkgdir}/usr/bin/kimi-work"
+  install -Dm644 "${srcdir}/kimi-work.desktop" \
+    "${pkgdir}/usr/share/applications/kimi-work.desktop"
   # Upstream 3.2.26 only ships tray-sized PNGs; install the 64px one as-is so
   # hicolor finds a real asset instead of an upscaled placeholder.
   install -Dm644 "${srcdir}/app/assets/tray-icon@2x.png" \
-    "${pkgdir}/usr/share/icons/hicolor/64x64/apps/kimi.png"
+    "${pkgdir}/usr/share/icons/hicolor/64x64/apps/kimi-work.png"
   install -Dm644 "${srcdir}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
