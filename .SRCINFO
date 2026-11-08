@@ -1,6 +1,6 @@
 pkgbase = yaggui-bin
 	pkgdesc = Fast, cross-platform graphical Git client
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/SimonVanMello/yaggui
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = yaggui-bin
 	provides = yaggui
 	conflicts = yaggui
 	options = !debug
-	source = yaggui-0.14.0.deb::https://github.com/SimonVanMello/yaggui/releases/download/v0.14.0/yaggui_0.14.0_amd64.deb
-	sha256sums = 13531e76878a2a1200724ed796141cc6fa01e605903713ec60f590ed9986bcbb
+	source = yaggui-0.15.0.deb::https://github.com/SimonVanMello/yaggui/releases/download/v0.15.0/yaggui_0.15.0_amd64.deb
+	sha256sums = 498608d3460e352b23422f26140521545c495874476631f439ff8aa75189bc3d
 
 pkgname = yaggui-bin
