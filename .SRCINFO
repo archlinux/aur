@@ -1,0 +1,29 @@
+pkgbase = donutmonitorcontrol
+	pkgdesc = Control monitor brightness, color and input over DDC/CI, with sun-based auto brightness
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/DonutsDelivery/Auto-Brightness
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-pyqt6
+	depends = qt6-declarative
+	depends = kirigami
+	depends = ddcutil
+	depends = qt6-tools
+	depends = glib2
+	depends = hicolor-icon-theme
+	optdepends = breeze: Breeze style used by the GUI
+	optdepends = edid-decode: improved fullscreen detection on multi-monitor setups
+	optdepends = plasma-desktop: KDE ScreenBrightness integration and KWin fullscreen detection
+	optdepends = python-dbus: GNOME Wayland fullscreen detection
+	provides = monitor-remote-control
+	conflicts = monitor-remote-control
+	replaces = monitor-remote-control
+	backup = etc/donut-monitor-control/config.json
+	source = git+https://github.com/DonutsDelivery/Auto-Brightness.git#tag=v2.7.0
+	sha256sums = SKIP
+
+pkgname = donutmonitorcontrol
