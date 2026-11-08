@@ -1,6 +1,6 @@
 # Maintainer: undefined-ux <undefined_1@outlook.com>
 pkgname=rustconn-appimage
-pkgver=0.24.7
+pkgver=0.24.8
 pkgrel=1
 pkgdesc='Modern GTK4 connection manager for SSH, RDP, VNC and SPICE (AppImage)'
 arch=('x86_64')
@@ -68,7 +68,7 @@ source=(
 )
 noextract=("$_appimage")
 sha256sums=(
-  '065f11b01870c36fa781161e70fae0b344a58143619eecc64ddc5a3efb1751c3'
+  'a38b3e715d3f7640b8bf2493204bb8dc0efbdea425d64e934c3a73d1e7c7e39e'
   '6752641f8272fae15901cc4de4052514e846821fbeba797baa8d81850d508cda'
   'e833e539337e3a348f21a6757f015bfc7994df0789771880550350f0d04c45f0'
 )
