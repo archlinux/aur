@@ -6,7 +6,7 @@ _appname=${_gitname%-tui}
 pkgname=${_appname}-bin
 pkgdesc="A fast, keyboard-driven terminal UI for browsing AWS"
 
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('91228a17fbccbdaea9ea774a7e57a80875db2779a5cace0206201d402e8f162f')
-sha256sums_aarch64=('784f62a1ce8979b53a4757c359757bf75caa4788d8d1e4ff3ccdf30d1af9de81')
+sha256sums_x86_64=('afd40c98555863a013956702135912c886a9f6d64347fac9f23160724fdd7f5a')
+sha256sums_aarch64=('639a185056ca52dad106ce9d100416e8c411acffc891baa7e3bc7287f9de7648')
 
 
 package() {
