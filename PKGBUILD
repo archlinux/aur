@@ -6,7 +6,7 @@
 
 pkgname=unified-hifi-control-bin
 _pkgname=unified-hifi-control
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Hi-fi control bridge for Roon, LMS, HQPlayer, and hardware surfaces"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -30,9 +30,9 @@ source=("${_pkgname}.service"
 # Updated automatically by the release workflow.
 sha256sums=('7c8695dd38bb67c64ee8a428003b9f874f7718270d84597f7e8ed9ef061ddd73'
             'ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8')
-sha256sums_x86_64=('7f8d808fd8c0e7538fdeb5c8cfe581f63893fcd0089a6af0568ccc45ce358a69')
-sha256sums_aarch64=('e1d192854c94afa431472b9d0224c3a6eafba4f0ff556f33c64427fc130985d9')
-sha256sums_armv7h=('b766f10e4ac5a507a7bcfd01c1ba35e8997ce9d165d571f1b6f26f59b715b554')
+sha256sums_x86_64=('794848075973de8a48c29fb3e94b53251ed51a4234826773adf9a5a1d5d3c440')
+sha256sums_aarch64=('35b67adede6cef2a768e13ec21e4c91db02b7091cbb119d5977abce016bb7e5b')
+sha256sums_armv7h=('54830c9019138d5b603f3ca994ae567167f8d299f8b9c51292f06fb31b87f6cc')
 
 package() {
     cd "${srcdir}"
