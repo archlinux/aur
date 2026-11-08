@@ -66,12 +66,7 @@ update-version: clean ## Update the package version in PKGBUILD (use pkgver and 
 
 .PHONY: update-pkgbuild
 update-pkgbuild: update-version ## Update the checksums in the PKGBUILD
-	@if [ "$(pkgver)" = "$(current_pkgver)" ] && [ "$(pkgrel)" = "$(current_pkgrel)" ]; then
-		echo -e "${CC_YELLOW}==>${CC_WHITE} No updates to the checksums required${CC_END}";
-	else
-	  echo -e "${CC_YELLOW}==>${CC_WHITE} Update the checksums in PKGBUILD${CC_END}"
-	  updpkgsums
-	fi
+	@updpkgsums
 
 .PHONY: build
 build: update-pkgbuild ## Build the package (as a test)
