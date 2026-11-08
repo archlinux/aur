@@ -1,0 +1,23 @@
+pkgbase = donutcleaner
+	pkgdesc = System maintenance and package dependency manager for Linux, GTK4 and Rust (formerly SysClean)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/DonutsDelivery/Smart-Cleaner
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	depends = hicolor-icon-theme
+	optdepends = pacman-contrib: package cache cleanup with paccache
+	provides = donutcleaner
+	conflicts = donutcleaner-bin
+	conflicts = sysclean
+	replaces = sysclean
+	options = !lto
+	options = !debug
+	source = donutcleaner-0.2.0.tar.gz::https://github.com/DonutsDelivery/Smart-Cleaner/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 8589b6477ff2b85842eb67c8e41c0a95f2f2c1312a991b5bdd3638a94eb72250
+
+pkgname = donutcleaner
