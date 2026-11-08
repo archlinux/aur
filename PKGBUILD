@@ -1,7 +1,7 @@
 # Maintainer: pruefsumme <194605914+pruefsumme@users.noreply.github.com>
 
 pkgname=mavernix
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A lightweight Wayland desktop session with a classic look'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
   'xdg-desktop-portal-wlr: screen sharing'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('702840f393ce69ea63369e5d13f59125bece9d4640558316e50dc2097133071b')
+sha256sums=('9c6bbc32c9f8f421313b29e940feefa2a4b195f7184d82e13572a8302ec41fb8')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
