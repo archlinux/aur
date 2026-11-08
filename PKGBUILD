@@ -1,7 +1,7 @@
 # Maintainer: Ante Laurijssen <va2bbw@gmail.com>
 
 pkgname=modem73
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='KISS TNC frontend for the aicodix OFDM modem'
 arch=('x86_64')
@@ -23,4 +23,4 @@ package() {
     make -f packaging/Makefile.pkg install DESTDIR="${pkgdir}" PREFIX=/usr
 }
 
-sha256sums=('5c2c44e3b2af69f813cb9673d7943997a6a847b8ccb14a049047387fd694bcda')
+sha256sums=('e7586921f1fce0aa698241b7f5985b22da91a32e095a353226ad48c9d7e94f58')

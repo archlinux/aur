@@ -1,6 +1,6 @@
 pkgbase = modem73
 	pkgdesc = KISS TNC frontend for the aicodix OFDM modem
-	pkgver = 2.4.2
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/RFnexus/modem73
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = modem73
 	depends = ncurses
 	depends = hamlib
 	depends = hidapi
-	source = modem73-2.4.2.tar.gz::https://github.com/RFnexus/modem73/archive/refs/tags/v2.4.2.tar.gz
-	sha256sums = 5c2c44e3b2af69f813cb9673d7943997a6a847b8ccb14a049047387fd694bcda
+	source = modem73-2.5.0.tar.gz::https://github.com/RFnexus/modem73/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = e7586921f1fce0aa698241b7f5985b22da91a32e095a353226ad48c9d7e94f58
 
 pkgname = modem73
