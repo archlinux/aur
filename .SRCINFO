@@ -1,5 +1,5 @@
 pkgbase = rolisteam
-	pkgdesc = Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players.
+	pkgdesc = Virtual tabletop software for tabletop role playing games with remote players. Installs the client (rolisteam), the server (roliserver), a dice roller (dice), the character sheet editor (rcse) and a mindmap app (mindmap).
 	pkgver = 1.10
 	pkgrel = 3
 	url = http://www.rolisteam.org
