@@ -1,0 +1,26 @@
+pkgbase = mautrix-signal-nightly-bin
+	pkgdesc = A Matrix-Signal puppeting bridge (Golang version)
+	pkgver = 0.2610.0.r24340.34b4187e
+	pkgrel = 1
+	url = https://mau.dev/mautrix/signal/-/jobs
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = unzip
+	provides = mautrix-signal
+	conflicts = mautrix-signal
+	conflicts = mautrix-signal-bin
+	options = !debug
+	backup = etc/mautrix-signal/config.yaml
+	source = sysusers-mautrix-signal.conf
+	source = mautrix-signal.tmpfiles
+	source = mautrix-signal.service
+	sha256sums = 3384dd44aa72937047f03f4a524efdf92162029ab85e830f5c7d4747b40359d8
+	sha256sums = 2515ba90e73c054289c3877a86b01ae57117aaa8096348e69d4d0cbe01304a9d
+	sha256sums = 2582791c2210b568afcb916112299a929424c18b381ae8b6b57a2144d0f18b63
+	source_x86_64 = mautrix-signal-nightly-bin-x86_64.zip::https://mau.dev/mautrix/signal/-/jobs/122415/artifacts/download
+	sha256sums_x86_64 = 355ef5f997b86cd5de6890718c22acfcc9e569d677e878dda13525a17e54a550
+	source_aarch64 = mautrix-signal-nightly-bin-aarch64.zip::https://mau.dev/mautrix/signal/-/jobs/122416/artifacts/download
+	sha256sums_aarch64 = d97b5b552476866f43469773309211d6558d4cd730b09b53fb09b5c7ee4a4bca
+
+pkgname = mautrix-signal-nightly-bin
