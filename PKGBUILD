@@ -2,7 +2,7 @@
 # Maintainer: MexIT <mex (hereISdot) it (hereISdot) dev at gmail (hereISdot) com>
 _pkgname=multios-usb
 pkgname=multios-usb-bin
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Simple tool for creating GRUB multiboot USB with Secure Boot support.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('multios-usb' 'multios-usb-bin-git' 'multios-usb-git')
 provides=('multios-usb')
 source=("$_pkgname-v$pkgver.tar.gz::https://github.com/Mexit/MultiOS-USB/archive/refs/tags/v$pkgver.tar.gz"
 	"multios-usb-launcher.sh")
-sha256sums=('ed86e9f5402319e0725a3f42c34c62269f6a0261c671a58db0c8230a78f4e915'
+sha256sums=('daeb1d5f13e4ac4d7912b55212631307d5cb77f9560c44f2f640e744c9d069e6'
     '1b795c3590ee2867d2d9baea9897877a2d9f56b5cb49fcfbc67b91bab10d6d1b')
 
 prepare() {
