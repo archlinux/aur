@@ -1,6 +1,6 @@
 # Maintainer: seja-arcticfox <seja.czstudio@gmail.com>
 pkgname=vidcom
-pkgver=0.83
+pkgver=0.84
 pkgrel=1
 pkgdesc="Archive your videos"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/seja-arctic-fox/vidcom"
 license=('GPL-3.0-only')
 depends=('gtkmm-4.0' 'libadwaita' 'jsoncpp' 'ffmpeg')
 makedepends=('meson' 'ninja')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/seja-arctic-fox/vidcom/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f5fc0bd87ed7b7e4760225fe7f9a35bc6bf58e6f05b6aa9a58038a9509bc7198')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/seja-arctic-fox/vidcom/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('95dd666323fac65113b5a33095925c88b2f7dc8a01d870f3984e8669c831b973')
 
 build() {
 	cd "$pkgname-$pkgver"
