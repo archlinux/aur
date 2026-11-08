@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# v30
+# v35 новая логика
+#    если есть в  аргументах --default то
+#       main: удаляем слово --default из аргументов
+#       _run_packer: получаем sudo method удаляем ссылки /usr/local/bin/<links to pacman-tmpfs.sh>
+#       _run_packer: выполняем тупа ${PACKER_BIN} ${SCRIPT_ARGS} без всяких изменеий
+#       _cleanup   : восстанавливаем ссылки
+
+#   если обычный запуск
+#     внутри pacman yay paru есть перевызовы которые за счет /usr/local/bin/<links to pacman-tmpfs.sh>
+#     перевызывают сам pacman-tmpfs.sh и идет создание временных папок
 
 TMP_PACKER_DIR='/tmp/.packer_wrapper_tmp'
 TMP_PACKER_DIR=${ mktemp --dry-run ${TMP_PACKER_DIR}_${EUID}_XXXXXXXXXX; }
@@ -8,6 +17,8 @@ TMP_PACMAN_CACHE_DIR=${TMP_PACKER_DIR}/pacman_cache/
 TMP_PACMAN_CONF_PATH=${TMP_PACKER_DIR}/pacman_tmp.conf
 TMP_PACMAN_LOG_PATH=${TMP_PACKER_DIR}/pacman_tmp.log
 TMP_MAKEPKG_CONF_PATH=${TMP_PACKER_DIR}/makepkg_tmp.conf
+
+SUPPORTED_PACKAGERS_ARR=( pacman yay paru )
 
 # параметры запуска pacman (по умолчанию tmpfs)
 PACMAN_CMD_OPTIONS_ARRAY=(
@@ -17,15 +28,9 @@ PACMAN_CMD_OPTIONS_ARRAY=(
     '--color always'
 )
 
-# параметры запуска pacman  (для случая опции --default)
-PACMAN_CMD_OPTIONS_DEFAULT_ARRAY=(
-    "--config /etc/pacman.conf"
-    '--color  always'
-)
-
 # добавляемые опции во временный pacman.conf.
 # ПЕРЕРАБОТАТЬ: Как быть если составной параметр типа: ParallelDownloads = 5 ????
-# прям сдесь сделать комманду sed для замены ?
+# прям здесь сделать комманду sed для замены ?
 PACMAN_CONF_OPTIONS_ARRAY=(
     'Color'
     'VerbosePkgLists'
@@ -61,7 +66,6 @@ declare -rA ENV_FOLDERS_ARRAY=(
 )
 
 DEFAULT_OPTION_STR='--default'
-declare -i DEFAULT_FLAG=${DEFAULT_FLAG:=0}  # признак что запуск c default /etc/pacman.conf. может прилететь с перевывозом через env vars
 
 SCRIPT_ARGS=${*}
 CALLABLE_PACKER=${ basename ${0}; }
@@ -69,41 +73,35 @@ CALLABLE_PACKER=${ basename ${0}; }
 #-------------------------------------------------------------------------------
 function __main__ ()
 {
-    if (( DEFAULT_FLAG == 0 )); then
-        # ищем слово опции умолчаний в аргументах. contains in array: https://stackoverflow.com/a/28032613
-        if grep --quiet --word-regexp -- ${DEFAULT_OPTION_STR} <<< "${SCRIPT_ARGS}"; then
-            DEFAULT_FLAG=1
-        fi
-    fi
-
-    if (( DEFAULT_FLAG == 1 )); then
-        SCRIPT_ARGS=${SCRIPT_ARGS//${DEFAULT_OPTION_STR}/}                  # удаляем слово заменой умолчаний из параметров. from: https://github.com/koalaman/shellcheck/wiki/SC2001
-        PACMAN_CMD_OPTIONS_ARRAY=("${PACMAN_CMD_OPTIONS_DEFAULT_ARRAY[@]}") # назначаем опции для случая --default
+    # ищем слово опции умолчаний в аргументах. contains in array: https://stackoverflow.com/a/28032613
+    DEFAULT_FLAG=0
+    if grep --quiet --word-regexp -- ${DEFAULT_OPTION_STR} <<< "${SCRIPT_ARGS}"; then
+        DEFAULT_FLAG=1
+        SCRIPT_ARGS=${SCRIPT_ARGS//${DEFAULT_OPTION_STR}/} # удаляем слово заменой умолчаний из параметров. from: https://github.com/koalaman/shellcheck/wiki/SC2001
     fi
 
     local _pacman_cache_location=${ (( DEFAULT_FLAG == 0 )) && echo tmpfs || echo CacheDir: ${ pacman-conf CacheDir; }; }
     say ":: wrapper ${CALLABLE_PACKER} ${_pacman_cache_location}"
 
+    if [[ ${SCRIPT_ARGS} == *'-Sc'* ]]; then # просто очищаем локальные кеши
+        _get_available_sudo_method
+        _clear_all_local_caches
+        exit 0;
+    fi
+
     _check_packer_exist
-    trap _cleanup EXIT            # регистрируем обработчик сигнала EXIT типа Ctrl+C, список: trap -l
+    trap _cleanup EXIT                       # регистрируем обработчик сигнала EXIT типа Ctrl+C, список: trap -l
     _prepare_folders_and_configs
     _run_packer
 }
 
 #-------------------------------------------------------------------------------
-function _check_packer_exist ()
-{
-    PACKER_BIN="/usr/bin/${CALLABLE_PACKER}"
-    if ! command -v ${PACKER_BIN} > /dev/null 2>&1; then
-        warning ":: error: ${CALLABLE_PACKER}: packer command: /usr/bin/${CALLABLE_PACKER} not found. Not installed ? ... exit"
-        exit 1
-    fi
-}
-
-#-------------------------------------------------------------------------------
 function _cleanup ()
 {
-    (( DEFAULT_FLAG == 1 )) && return 0;
+    if (( DEFAULT_FLAG == 1 )); then
+        _restore_packagers_links
+        return 0;
+    fi
 
     say ':: cleaning'
     # pacman yay
@@ -119,12 +117,82 @@ function _cleanup ()
 }
 
 #-------------------------------------------------------------------------------
-#~function _get_available_sudo_method ()
-#~{
-    #~command -v sudo > /dev/null 2>&1 && { SUDO_METHOD='sudo'; return 0; }
-    #~command -v doas > /dev/null 2>&1 && { SUDO_METHOD='doas'; return 0; }
-    #~SUDO_METHOD='run0'
-#~}
+function _clear_all_local_caches ()
+{
+    say ':: cleaning local caches:'
+
+    local -a caches_path_arr=(
+        /var/cache/pacman/pkg/*
+    )
+
+    # get users homes from https://www.cyberciti.biz/faq/linux-list-users-command/
+    local _l="/etc/login.defs"
+    local _p="/etc/passwd"
+
+    ## get mini UID limit ##
+    local l=$(grep "^UID_MIN" $_l)
+
+    ## get max UID limit ##
+    local l1=$(grep "^UID_MAX" $_l)
+
+    ## use awk to print if UID >= $MIN and UID <= $MAX and shell is not /sbin/nologin   ##
+    local users_homes_str=${ awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{ if ( $3 >= min && $3 <= max  && $7 != "/sbin/nologin" ) print $6 }' "$_p"; }
+    users_homes_str+=$(echo -e '\n/root');
+    local h
+    for h in ${users_homes_str}; do
+        caches_path_arr+=(
+                # yay defaults
+                ${h}/.cache/yay/
+                ${h}/.config/yay/
+                # paru defaults
+                ${h}/.cache/paru/
+                ${h}/.local/state/paru/
+        )
+    done
+    # очистка
+    for h in ${caches_path_arr[@]}; do
+        ${SUDO_METHOD} rm -rf ${h} > /dev/null 2>&1 || true
+        echo ${h}
+    done
+    say ':: cleaning done.'
+}
+
+#-------------------------------------------------------------------------------
+function _remove_packagers_links ()
+{
+    local p
+    for p in ${SUPPORTED_PACKAGERS_ARR[@]}; do
+        ${SUDO_METHOD} rm -f /usr/local/bin/${p}
+    done
+}
+
+#-------------------------------------------------------------------------------
+function _restore_packagers_links ()
+{
+    local p
+    for p in ${SUPPORTED_PACKAGERS_ARR[@]}; do
+        ${SUDO_METHOD} ln -sf /usr/lib/pacman-tmpfs/pacman-tmpfs.sh /usr/local/bin/${p}
+    done
+}
+
+#-------------------------------------------------------------------------------
+function _check_packer_exist ()
+{
+    PACKER_BIN="/usr/bin/${CALLABLE_PACKER}"
+    if ! command -v ${PACKER_BIN} > /dev/null 2>&1; then
+        warning ":: error: ${CALLABLE_PACKER}: packer command: /usr/bin/${CALLABLE_PACKER} not found. Not installed ? ... exit"
+        exit 1
+    fi
+}
+
+
+#-------------------------------------------------------------------------------
+function _get_available_sudo_method ()
+{
+    command -v sudo > /dev/null 2>&1 && { SUDO_METHOD='sudo'; return 0; }
+    command -v doas > /dev/null 2>&1 && { SUDO_METHOD='doas'; return 0; }
+    SUDO_METHOD='run0'
+}
 
 #-------------------------------------------------------------------------------
 function _prepare_folders_and_configs ()
@@ -161,8 +229,12 @@ function _run_packer ()
 {
     local _aur_helper_addon='--pacman /usr/bin/pacman'           # for yay pacman direct call to avoid recall from /usr/local/bin
     [[ ${CALLABLE_PACKER} == 'pacman' ]] && _aur_helper_addon='' # для pacman не нужно указывать (выдаст ошибку)
+
     if (( DEFAULT_FLAG == 1 )); then
-        env DEFAULT_FLAG=1 ${PACKER_BIN} ${_aur_helper_addon} ${PACMAN_CMD_OPTIONS_ARRAY[*]} ${SCRIPT_ARGS}
+        _get_available_sudo_method
+        _remove_packagers_links
+        sync
+        ${PACKER_BIN} ${SCRIPT_ARGS}
     else
         env MAKEPKG_CONF=${TMP_MAKEPKG_CONF_PATH} ${ENV_FOLDERS_KEY_VALUE_STR} ${PACKER_BIN} ${_aur_helper_addon} ${PACMAN_CMD_OPTIONS_ARRAY[*]} ${SCRIPT_ARGS}
     fi

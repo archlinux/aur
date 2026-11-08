@@ -20,7 +20,7 @@ Usage:
     with tmpfs caches and automatically cleaning. Autocompletion is also working. For example:
         run0 pacman -Syu htop
         yay -Syu faugus-launcher
-        sudo paru -Rncus faugus-launcher
+        paru -Rncus faugus-launcher
 
     For huge packages or updates that cannot fit into memory tmpfs,
     you can use the --default option. For example:
@@ -33,14 +33,16 @@ Usage:
     /etc/{pacman.conf,makepkg.conf} and the standard caches on ssd/hdd (wish a long life!):
     ~/.cache/yay/ ~/.cache/paru/ /var/cache/pacman/pkg/
     They will not be automatically cleared with --default option!
-    For cleanup all caches (tmpfs and local) just update system like:
-        sudo pacman -Syu
+    For cleanup all local caches for all users do:
+        yay -Sc
+        # or
+        sudo pacman -Sc
 
 '
 #---------------------------------------------------------------------------------------------
 
 pkgname=pacman-tmpfs
-pkgver=2026.11.04
+pkgver=2026.11.09
 pkgrel=1
 
 pkgdesc='Wrapper for pacman, yay, paru using tmpfs for caches and auto cleaning.'
@@ -56,7 +58,7 @@ options=('!debug')
 source=(
     pacman-tmpfs.sh     # хранится в git aur. в source пересчитывает sha256sums
 )
-sha256sums=('f5c92d7daeaf29aea97d42ebb26e3db333678bcf74b772f91d3ac10adbe7caf9')
+sha256sums=('35334e54a08555760a37b133eea766289d1e41ab2517ba0eb7838dd730d25e54')
 
 #---------------------------------------------------------------------------------------------
 package() {
