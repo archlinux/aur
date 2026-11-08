@@ -1,5 +1,5 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
-# Contributor: Andrew Lorimer <andrew@lorimer.id.au>
+# Maintainer: Andrew Lorimer <andrew@lorimer.id.au>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=listmonk-bin
