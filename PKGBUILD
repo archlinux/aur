@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal UI for browsing and launching GitHub Copilot CLI sessions"
 
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('c8f2fe63c04b9212dbf5ff9a5989b42035d2e4525bf2cefd1feba7ae6d68c175')
-sha256sums_aarch64=('d4c974a07f42cc00df4875cd4ff2ef8c12db05e6538dd89bac448d9ec61d27e4')
+sha256sums_x86_64=('84d4bf35b3d3c6d8f6b7d4c6503d796839f41e847cd143fe72c89139452bb611')
+sha256sums_aarch64=('454deeb1a24beac802165516397a59fd7526e23fcb0fbd0473fb8725c38dd787')
 
 
 prepare() {
