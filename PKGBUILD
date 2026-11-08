@@ -1,15 +1,15 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
-pkgname=lagrange
+pkgname=(lagrange clagrange)
 pkgrel=1
 pkgver=2.0.1
-pkgdesc="Beautiful Gemini Client"
+pkgdesc='Beautiful Gemini Client'
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=("MIT")
-install="$pkgname.install"
+install="${pkgname[0]}.install"
 source=(
-    "https://git.skyjake.fi/skyjake/$pkgname/releases/download/v$pkgver/lagrange-$pkgver.tar.gz"
+    "https://git.skyjake.fi/skyjake/${pkgname[0]}/releases/download/v$pkgver/lagrange-$pkgver.tar.gz"
 )
 
 depends=(
@@ -23,6 +23,9 @@ depends=(
     "zlib"
     "mpg123"
 )
+cli_depends=(
+    "ncurses"
+)
 makedepends=(
     "cmake"
     "zip"
@@ -33,8 +36,10 @@ optdepends=(
 )
 
 build() {
-    cmake -B build -S "$pkgname-${pkgver}" \
+    cmake -B build -S "${pkgname[0]}-$pkgver" \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DENABLE_GUI=ON \
+        -DENABLE_TUI=ON \
         -DENABLE_KERNING=OFF \
         -DTFDN_ENABLE_WARN_ERROR=OFF \
         -DCMAKE_BUILD_TYPE=Release \
@@ -42,11 +47,21 @@ build() {
     make -C build
 }
 
-package() {
-    install -Dm644 $pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package_lagrange() {
+    install -Dm644 "lagrange-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/lagrange/LICENSE"
 
     cd build
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install COMPONENT=app
+    make DESTDIR="$pkgdir" install COMPONENT=gmget
+    make DESTDIR="$pkgdir" install COMPONENT=resources
+}
+
+package_clagrange() {
+    depends+=("${cli_depends[@]}")
+
+    cd build
+    make DESTDIR="$pkgdir" install COMPONENT=tui
+    make DESTDIR="$pkgdir" install COMPONENT=resources
 }
 
 sha256sums=('abac39d4aff9716c9d4b3b10f85e83d762f8896ad83c1ffda74c7ed4b6521cfd')

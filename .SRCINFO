@@ -26,3 +26,15 @@ pkgbase = lagrange
 	sha256sums = abac39d4aff9716c9d4b3b10f85e83d762f8896ad83c1ffda74c7ed4b6521cfd
 
 pkgname = lagrange
+
+pkgname = clagrange
+	depends = fribidi
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = libunistring
+	depends = openssl
+	depends = pcre
+	depends = sdl3
+	depends = zlib
+	depends = mpg123
+	depends = ncurses
