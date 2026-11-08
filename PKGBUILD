@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=codeburn-desktop-bin
-pkgver=0.9.27
+pkgver=0.9.28
 pkgrel=1
 pkgdesc="CodeBurn Desktop — Electron app fed by the codeburn CLI, for AI coding token/cost observability"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('codeburn-desktop')
 options=('!strip')
 source=("codeburn-desktop-${pkgver}.deb::https://github.com/getagentseal/codeburn/releases/download/desktop-v${pkgver}/codeburn-desktop_${pkgver}_amd64.deb"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/getagentseal/codeburn/desktop-v${pkgver}/LICENSE")
-sha256sums=('03cf6bc4bf9379b105ebdf3e77c8ce5c105a453bb99244a65dde552ccc52ddff'
+sha256sums=('771b6cba6027193cc4dde92cbc283c201decfa7d8b32d8296656d3197f0f4c96'
             '25dd3389bfc55f463f9745c6fa3f4193bb31b58157a6861836b62bf91f6b76e5')
 
 package() {
