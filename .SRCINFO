@@ -1,0 +1,14 @@
+pkgbase = hoarder-wl-compat
+	pkgdesc = wl-copy and wl-paste served by Hoarder, in place of wl-clipboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CPT-Dawn/Hoarder
+	arch = any
+	license = MIT
+	depends = hoarder
+	provides = wl-clipboard
+	conflicts = wl-clipboard
+	source = LICENSE
+	sha256sums = eaf1abbe531120536be536981f87c1ae1e035f3f80795b52f3e899f332189d34
+
+pkgname = hoarder-wl-compat
