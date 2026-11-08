@@ -1,7 +1,7 @@
 pkgbase = deskwaifu-bin
 	pkgdesc = DeskWaifu application and all default plugins
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/ad2248/DeskWaifu
 	arch = x86_64
 	license = LicenseRef-Live2D-Open-Software
@@ -9,14 +9,14 @@ pkgbase = deskwaifu-bin
 	license = BSD-3-Clause
 	license = MIT
 	license = Unlicense
-	noextract = upstream-deskwaifu-bin-0.2.2-1-x86_64.pkg.tar.zst
-	noextract = upstream-deskwaifu-ocr-bin-0.2.2-1-x86_64.pkg.tar.zst
+	noextract = upstream-deskwaifu-bin-0.2.3-1-x86_64.pkg.tar.zst
+	noextract = upstream-deskwaifu-ocr-bin-0.2.3-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = upstream-deskwaifu-bin-0.2.2-1-x86_64.pkg.tar.zst::https://github.com/ad2248/DeskWaifu/releases/download/0.2.2/deskwaifu-bin-0.2.2-1-x86_64.pkg.tar.zst
-	source = upstream-deskwaifu-ocr-bin-0.2.2-1-x86_64.pkg.tar.zst::https://github.com/ad2248/DeskWaifu/releases/download/0.2.2/deskwaifu-ocr-bin-0.2.2-1-x86_64.pkg.tar.zst
-	sha256sums = 79a69afd95a927d98b0535b0b4f55f0741bf714d71f9fe7f9d31d287431eed89
-	sha256sums = 003a7e0911f8eea910dc2697fa1035d7d4476aa47fe187c33e98ce32532b9224
+	source = upstream-deskwaifu-bin-0.2.3-1-x86_64.pkg.tar.zst::https://github.com/ad2248/DeskWaifu/releases/download/0.2.3/deskwaifu-bin-0.2.3-1-x86_64.pkg.tar.zst
+	source = upstream-deskwaifu-ocr-bin-0.2.3-1-x86_64.pkg.tar.zst::https://github.com/ad2248/DeskWaifu/releases/download/0.2.3/deskwaifu-ocr-bin-0.2.3-1-x86_64.pkg.tar.zst
+	sha256sums = 96f9b833a1e39e0bf0b49dc15495daa5e41284c8c47e0b0578ab4132c75628e3
+	sha256sums = 83b2fe89128709e6cc0f2bab75cbd6ea9e570c4e2f3cd43912f89ffe372d8536
 
 pkgname = deskwaifu-bin
 	depends = glibc
@@ -34,19 +34,19 @@ pkgname = deskwaifu-bin
 	depends = python
 	depends = psmisc
 	optdepends = deskwaifu-ocr-bin: optional in-process OCR module (models provisioned separately)
-	provides = deskwaifu=0.2.2
+	provides = deskwaifu=0.2.3
 	conflicts = deskwaifu
 
 pkgname = deskwaifu-ocr-bin
 	pkgdesc = DeskWaifu in-process OCR module using system ONNX Runtime (no models or dictionaries)
 	license = MIT
 	license = Apache-2.0
-	depends = deskwaifu-bin>=0.2.2
+	depends = deskwaifu-bin>=0.2.3
 	depends = glibc
 	depends = gcc-libs
 	depends = qt6-base>=6.5
 	depends = opencv
 	depends = yaml-cpp
 	depends = onnxruntime-cpu
-	provides = deskwaifu-ocr=0.2.2
+	provides = deskwaifu-ocr=0.2.3
 	conflicts = deskwaifu-ocr
