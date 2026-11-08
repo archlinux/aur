@@ -38,6 +38,21 @@ Shared libraries used by the binaries above, including
 `rolisteam/*.h`, `inja.hpp` and `json.hpp` are installed as well; they are
 part of the upstream CMake install and are not needed at runtime.
 
+## Translations
+
+Translations are shipped as `.po` files in `poqm/<lang>/rolisteam_qt.po`
+(34 languages). They are **not** committed as `.ts`/`.qm` files.
+
+- `prepare()` converts every `.po` to `.ts` (via `lconvert`) and `.qm`
+  (via `lrelease`) in the source tree.
+- This is required because upstream `translations/CMakeLists.txt` globs
+  `translations/*.qm` at CMake *configure* time; without the files present
+  beforehand, the binaries are built without any translations embedded.
+- `build()` always starts from a fresh build directory for the same reason:
+  a reused CMake cache keeps a stale translations resource file.
+- The compiled `.qm` resources are embedded in `rolisteam`, `roliserver`,
+  `rcse`, `mindmap` and `dice` under the `:/translations` resource prefix.
+
 ## Build notes
 
 - Sources are fetched from git: `rolisteam` (`release/1.10` branch) and
