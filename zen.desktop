@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Zen Bonsai
+GenericName=Web Browser
+Comment=Experience tranquillity while browsing the web
+Exec=/opt/zen-bonsai/zen %U
+Icon=/opt/zen-bonsai/browser/chrome/icons/default/default128.png
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+Categories=Network;WebBrowser;
+StartupWMClass=zen
