@@ -1,0 +1,26 @@
+pkgbase = ajuste-git
+	pkgdesc = Native control panel and CLI for the Fractal Scape wireless headset (battery, EQ, lighting, sidetone, ENC)
+	pkgver = r7.97db83b
+	pkgrel = 1
+	url = https://github.com/kddlb/ajuste
+	install = ajuste.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = vulkan-icd-loader
+	optdepends = libglvnd: EGL fallback when Vulkan is unavailable
+	provides = ajuste
+	conflicts = ajuste
+	options = !lto
+	source = ajuste::git+https://github.com/kddlb/ajuste.git
+	sha256sums = SKIP
+
+pkgname = ajuste-git
