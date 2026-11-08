@@ -20,8 +20,8 @@ conflicts=("$_pkgname" "${_pkgname}-git")
 options=('!strip')
 source_x86_64=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('')
-sha256sums_aarch64=('')
+sha256sums_x86_64=('8e9d528bdc72b82fc3da4912aa8b6c7601be0890fa1f03f9172b37d4798119df')
+sha256sums_aarch64=('91a2a47293ebc854132aa9f23ed026594ee34771fb1d81d11a7c2e073d7e4f07')
 
 package() {
   local _target _dir

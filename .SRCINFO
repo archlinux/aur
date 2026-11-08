@@ -12,8 +12,8 @@ pkgbase = niri-tracker-bin
 	conflicts = niri-tracker-git
 	options = !strip
 	source_x86_64 = niri-tracker-bin-0.1.1.tar.gz::https://github.com/Qiumix/niri-tracker/releases/download/v0.1.1/niri-tracker-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 
+	sha256sums_x86_64 = 8e9d528bdc72b82fc3da4912aa8b6c7601be0890fa1f03f9172b37d4798119df
 	source_aarch64 = niri-tracker-bin-0.1.1.tar.gz::https://github.com/Qiumix/niri-tracker/releases/download/v0.1.1/niri-tracker-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 
+	sha256sums_aarch64 = 91a2a47293ebc854132aa9f23ed026594ee34771fb1d81d11a7c2e073d7e4f07
 
 pkgname = niri-tracker-bin
