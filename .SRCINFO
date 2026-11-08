@@ -3,6 +3,7 @@ pkgbase = rgy-search-avx2-bin
 	pkgver = 0.1.10.0
 	pkgrel = 3
 	url = https://github.com/danalec/rgy
+	install = rgy-search-avx2-bin.install
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc
