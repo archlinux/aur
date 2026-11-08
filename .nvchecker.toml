@@ -1,0 +1,3 @@
+[python-pytest-skip-slow]
+source = "pypi"
+pypi = "pytest-skip-slow"
