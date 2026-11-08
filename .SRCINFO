@@ -1,0 +1,23 @@
+pkgbase = tlg-pc-bin
+	pkgdesc = Native PC port of The Last Guardian PS4 game
+	pkgver = 2026.10.27.4825a99
+	pkgrel = 1
+	url = https://github.com/HayatoG/tlg_pc
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = ffmpeg
+	depends = fmt
+	depends = libpng
+	depends = sdl3
+	depends = zydis
+	provides = tlg-pc
+	conflicts = tlg-pc
+	conflicts = tlg-pc-git
+	source = tlg-pc-bin-2026.10.27.4825a99.tar.gz::https://github.com/HayatoG/tlg_pc/releases/download/v2026.10.27-4825a99/tlg-linux-x86_64.tar.gz
+	source = tlg-pc
+	source = tlg-pc.desktop
+	sha256sums = d25e9b6ecd79d8d052c3bab7a2d6865a0c5b269cfb4fee72d57950b4fc22bcb2
+	sha256sums = 8e1c6a3d3ca7879234388327e24f967d4ea17a0bf3919fefb863b212a0c6df90
+	sha256sums = 9f4e1402dcad367b42d57967686571392ff8d33bb0344d8e1c83f468ddfdf6dd
+
+pkgname = tlg-pc-bin

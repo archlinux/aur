@@ -1,0 +1,2 @@
+#!/bin/sh
+"/opt/tlg-pc-bin/The Last Guardian" "$@"
