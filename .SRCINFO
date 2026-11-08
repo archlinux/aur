@@ -1,6 +1,6 @@
 pkgbase = squelch
 	pkgdesc = Push-to-talk speech-to-text on GPU: Parakeet/Whisper, mic-array beamforming, Menu-key dictation
-	pkgver = 0.7.9
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/ieatfood314/squelch
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = squelch
 	optdepends = aspell-en: learn your vocabulary and mishearings
 	optdepends = kanata: stop the trigger key doing its own job too
 	options = !debug
-	source = squelch-0.7.9.tar.gz::https://github.com/ieatfood314/squelch/archive/refs/tags/v0.7.9.tar.gz
+	source = squelch-0.8.0.tar.gz::https://github.com/ieatfood314/squelch/archive/refs/tags/v0.8.0.tar.gz
 	source = whisper.cpp::git+https://github.com/ggml-org/whisper.cpp.git#commit=0c7be696371069e0baa2515ed7aa08d5a5473aa6
-	sha256sums = 6b6b07be3b454ce2c9dd1472f66aea5d46599e40c258fc933ee0cda6330f543d
+	sha256sums = 157e2339f24ec5b82a7e23edf3cdf6addaca42bc0b8cd216f78f17aafb95835b
 	sha256sums = SKIP
 
 pkgname = squelch

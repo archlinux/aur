@@ -1,6 +1,6 @@
 # Maintainer: Aidan Heeney <aidan.heeney@proton.me>
 pkgname=squelch
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Push-to-talk speech-to-text on GPU: Parakeet/Whisper, mic-array beamforming, Menu-key dictation'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('aspell-en: learn your vocabulary and mishearings'
             'kanata: stop the trigger key doing its own job too')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "whisper.cpp::git+https://github.com/ggml-org/whisper.cpp.git#commit=0c7be696371069e0baa2515ed7aa08d5a5473aa6")
-sha256sums=('6b6b07be3b454ce2c9dd1472f66aea5d46599e40c258fc933ee0cda6330f543d'
+sha256sums=('157e2339f24ec5b82a7e23edf3cdf6addaca42bc0b8cd216f78f17aafb95835b'
             'SKIP')
 options=('!debug')
 
@@ -40,8 +40,10 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 src/squelch src/squelch-ptt src/squelch-parakeet-server \
     src/squelch-tray src/squelch-vram src/squelch-setup-models \
-    src/squelch-mic-reset -t "$pkgdir/usr/bin/"
-  install -Dm644 systemd/*.service -t "$pkgdir/usr/lib/systemd/user/"
+    src/squelch-mic-reset src/squelch-sync src/squelch-sync-server \
+    -t "$pkgdir/usr/bin/"
+  install -Dm644 systemd/*.service systemd/*.timer systemd/*.path \
+    -t "$pkgdir/usr/lib/systemd/user/"
   install -Dm644 systemd/system/squelch-mic-reset@.service -t \
     "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 polkit/50-squelch.rules -t \
