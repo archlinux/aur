@@ -1,6 +1,6 @@
 pkgbase = ednovas-cloud
 	pkgdesc = EdNovas Cloud Proxy Client. Official desktop client for EdNovas Cloud services.
-	pkgver = 1.1.93
+	pkgver = 1.1.94
 	pkgrel = 1
 	url = https://ednovas.org
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = ednovas-cloud
 	optdepends = libappindicator
 	options = !strip
 	options = !debug
-	source_x86_64 = https://storage.ednovas.org/desktop/1.1.93/EdNovas-Cloud-1.1.93-Linux-amd64.deb
-	sha512sums_x86_64 = 0e22701b6c12cc60c7012df42f812136f358850538c962542e792c05262389ab063c6ec7058804685bb3ab7990d40de4dd6039d90f96e17681018f4612f5a53d
-	source_aarch64 = https://storage.ednovas.org/desktop/1.1.93/EdNovas-Cloud-1.1.93-Linux-arm64.deb
-	sha512sums_aarch64 = 4e2cb543847a41aa8c6c704e1614fc80c88094ce99533bdad3c7c70aa66735221d15e384f9e5a86906dda70777275fc2ad9e052075a3caac9e58849b05db055f
+	source_x86_64 = https://storage.ednovas.org/desktop/1.1.94/EdNovas-Cloud-1.1.94-Linux-amd64.deb
+	sha512sums_x86_64 = e49bc0448717c63717650484ffc0e6fc78e530411ebd1663ba58e04249ff161daacb07df9e766d16a3eccff2c04c9a4bc3c2179d9af17a332e3ae59c95a69a7e
+	source_aarch64 = https://storage.ednovas.org/desktop/1.1.94/EdNovas-Cloud-1.1.94-Linux-arm64.deb
+	sha512sums_aarch64 = a36e3bcf88d8874c5872b28996328be5eda56a12b9f8388b86c05d8013a21856b0fc016bc793b570ae98b2cddd07347a63399315a39d7fc9d0ebc5baf6273238
 
 pkgname = ednovas-cloud
