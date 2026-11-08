@@ -1,6 +1,6 @@
 # Maintainer: MapleProjects <eportillo898v2@gmail.com>
 pkgname=animaple-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Anime streaming app — Flutter cross-platform client (prebuilt binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 source=(
     "$pkgname-$pkgver-$arch.tar.gz::$url/releases/download/v$pkgver/animaple-v$pkgver-linux-$arch.tar.gz"
 )
-sha256sums=('098cb90a67858221fab490ba9fbde8e64a6e1ad78b2e2e764b78357abdab816d')
+sha256sums=('b80d7d31e76c593b4e6b7fa788754df1793b20f98b9f6c7311645cfe71984640')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/animaple"
