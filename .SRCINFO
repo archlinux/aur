@@ -1,6 +1,6 @@
 pkgbase = whatsapp-linux-covenant
 	pkgdesc = WhatsApp Desktop for Linux (Covenant Edition) built with modern Electron (binary release)
-	pkgver = 1.4.9
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/araujo791/Whatsapp-Linux-Covenant
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = whatsapp-linux-covenant
 	provides = whatsapp-desktop-linux
 	provides = whatsapp-linux-covenant-bin
 	conflicts = whatsapp-desktop-linux
-	source = whatsapp-linux-covenant-1.4.9.tar.gz::https://github.com/araujo791/Whatsapp-Linux-Covenant/releases/download/v1.4.9/whatsapp-linux-covenant-1.4.9-x86_64.tar.gz
-	sha256sums = d27fdf6f1ed080514ff2606ff02c547bf58a104cb81744ff64375531056057c2
+	source = whatsapp-linux-covenant-1.5.0.tar.gz::https://github.com/araujo791/Whatsapp-Linux-Covenant/releases/download/v1.5.0/whatsapp-linux-covenant-1.5.0-x86_64.tar.gz
+	sha256sums = be4161c6bd08daf801064e310021861010951f395c04386eccdc1a28882f819a
 
 pkgname = whatsapp-linux-covenant
