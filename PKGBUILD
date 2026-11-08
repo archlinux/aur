@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=lightcraft-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='Photo library and non-destructive raw development (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ sha256sums=('3f441009b57339b31404e8b56ea4e2d32b74a0c1c9aa0276b947c8f1452adc09'
             'd516dfeae4a19d636c0d16f389d0a8593efd9dd259b8832bb06722a3dc09e0ce'
             '6426c23f529938deddfbaed543e7135e08b514fa6a75b330734331d877c78faf'
             '262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a')
-sha256sums_x86_64=('078f8e4fef6ca88afa257a70228630b14e21380cea58031fbb5c5a1942b406f0')
-sha256sums_aarch64=('9fdb661b64d8449b0f98b1677683eb4b33049896488bfd273c15406cead11657')
+sha256sums_x86_64=('9485d64bdbe98c6dafbad0ea7aac0fa49430d0a008b9a66ba43dfe77b7555289')
+sha256sums_aarch64=('5306502b4fb5835fa167cfc42113dd6816149c247aabb5bc06df87715b9482df')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-linux-$CARCH"
