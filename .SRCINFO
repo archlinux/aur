@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-cdt
 	pkgdesc = Constrained Delaunay Triangulation (C++) (mingw-w64)
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://artem-ogre.github.io/CDT/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mingw-w64-cdt
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://github.com/artem-ogre/CDT/archive/refs/tags/2.0.1.tar.gz
-	sha256sums = 5e3c45715e55b5f2d4390082c8c1ac026f635ddee233516fdcf94b197954367d
+	source = https://github.com/artem-ogre/CDT/archive/refs/tags/2.0.2.tar.gz
+	sha256sums = 43e22918907f354a300674222d63595afe121ec16ced8f6d2bac90a3db88892b
 
 pkgname = mingw-w64-cdt
