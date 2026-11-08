@@ -2,7 +2,7 @@
 # Maintainer: Marko Ivankovic <marko@ivankovic.me>
 
 pkgname=omnidiff
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Fast, robust, accurate content-aware diffing"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=(!lto !debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('82046f16077ecbb8122818bd9ea6ee1a0f01c0ca4650b037afbf610e155f33e5')
+sha256sums=('864d75c5689691fc84df540a55f467ed2783cdb974ca9b627316143e4ab4ecf3')
 
 prepare() {
 	cd "$pkgname-$pkgver"

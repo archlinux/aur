@@ -1,6 +1,6 @@
 pkgbase = omnidiff
 	pkgdesc = Fast, robust, accurate content-aware diffing
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ivankovic/omnidiff
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = omnidiff
 	depends = glibc
 	options = !lto
 	options = !debug
-	source = omnidiff-0.3.0.tar.gz::https://github.com/ivankovic/omnidiff/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 82046f16077ecbb8122818bd9ea6ee1a0f01c0ca4650b037afbf610e155f33e5
+	source = omnidiff-0.4.0.tar.gz::https://github.com/ivankovic/omnidiff/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 864d75c5689691fc84df540a55f467ed2783cdb974ca9b627316143e4ab4ecf3
 
 pkgname = omnidiff
