@@ -8,6 +8,7 @@ pkgbase = rusthound-ce
 	license = MIT
 	makedepends = rust
 	makedepends = git
+	makedepends = clang
 	depends = glibc
 	depends = libgcc
 	depends = krb5

@@ -14,6 +14,7 @@ depends=(
 makedepends=(
   'rust'
   'git'
+  'clang'
 )
 source=("git+$url#tag=v$pkgver")
 b2sums=('f8b29cc553c3216bc2d3ec0b9c3e38070d787ef4c5c90ef15e14163b8bc331e6f7c0286460f4144cd6566f3d4ca62f6fb4b40022db095bae4fda368d5fe6024d')
