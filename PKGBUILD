@@ -1,7 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 pkgname=satur8
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Per-game digital vibrance for Linux: compositor/scanout saturation boost, never injected into the game"
 arch=('x86_64')
 url="https://github.com/NtrpyDev/satur8"
@@ -15,11 +15,20 @@ optdepends=('kwin: KDE Plasma Wayland backend (saturation effect)'
             'gnome-shell: GNOME Wayland backend (Shell extension)'
             'gamescope: universal fallback backend for niche compositors'
             'nvidia-settings: NVIDIA X11 Digital Vibrance backend')
-source=("$pkgname-v$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz")
-sha256sums=('9edc70b28e6a02e8c46790a56068745e10b624752ea818003f8a91f5c206f797')
+source=("$pkgname-v$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-source.tar.gz"
+        "0001-gui-proton-running-apps.patch"
+        "0002-kwin-identity-black-screen.patch")
+sha256sums=('9edc70b28e6a02e8c46790a56068745e10b624752ea818003f8a91f5c206f797'
+            '0be723ef0f7ecab27448733b060d895cc2692d4f3ee9f987db7b7a43b8927ad5'
+            'e13c7c75b091496e0ed99b494a239b0630f84f3bc80b96ba05ec81dff0ed31fa')
 
 prepare() {
     cd "$pkgname-$pkgver"
+
+    # Upstream v0.3.3 fixes that are still pending upstream releases:
+    # the Wine-aware GUI picker (#14) and the KWin identity black screen (#15).
+    patch -Np1 -i "$srcdir/0001-gui-proton-running-apps.patch"
+    patch -Np1 -i "$srcdir/0002-kwin-identity-black-screen.patch"
 
     # KWin 6.8 changed OffscreenEffect::drawWindow to return bool. Apply the
     # compatibility change only while upstream still declares the old signature,

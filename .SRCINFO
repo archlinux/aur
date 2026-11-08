@@ -1,7 +1,7 @@
 pkgbase = satur8
 	pkgdesc = Per-game digital vibrance for Linux: compositor/scanout saturation boost, never injected into the game
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NtrpyDev/satur8
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,6 +21,10 @@ pkgbase = satur8
 	optdepends = gamescope: universal fallback backend for niche compositors
 	optdepends = nvidia-settings: NVIDIA X11 Digital Vibrance backend
 	source = satur8-v0.3.3-source.tar.gz::https://github.com/NtrpyDev/satur8/releases/download/v0.3.3/satur8-v0.3.3-source.tar.gz
+	source = 0001-gui-proton-running-apps.patch
+	source = 0002-kwin-identity-black-screen.patch
 	sha256sums = 9edc70b28e6a02e8c46790a56068745e10b624752ea818003f8a91f5c206f797
+	sha256sums = 0be723ef0f7ecab27448733b060d895cc2692d4f3ee9f987db7b7a43b8927ad5
+	sha256sums = e13c7c75b091496e0ed99b494a239b0630f84f3bc80b96ba05ec81dff0ed31fa
 
 pkgname = satur8

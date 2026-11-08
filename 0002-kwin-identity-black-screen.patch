@@ -1,0 +1,30 @@
+diff --git a/assets/kwin-effect/satur8_effect.cpp b/assets/kwin-effect/satur8_effect.cpp
+index ed8b76d..c59f344 100644
+--- a/assets/kwin-effect/satur8_effect.cpp
++++ b/assets/kwin-effect/satur8_effect.cpp
+@@ -118,7 +118,7 @@ void Satur8Effect::drawWindow(const KWin::RenderTarget &renderTarget,
+                                 const KWin::Region &deviceRegion,
+                                 KWin::WindowPaintData &data)
+ {
+-    if (m_shader && m_saturation != 1.0) {
++    if (m_shader) {
+         // We're inside a frame here, so the GL context is current and it is safe
+         // to bind the shader and push uniforms. Custom-named uniforms survive the
+         // standard uniform setup OffscreenEffect does for the redirected draw.
+diff --git a/crates/backends/kwin/src/lib.rs b/crates/backends/kwin/src/lib.rs
+index b8cb495..19e51d3 100644
+--- a/crates/backends/kwin/src/lib.rs
++++ b/crates/backends/kwin/src/lib.rs
+@@ -166,6 +166,12 @@ impl Backend for KwinBackend {
+     }
+ 
+     fn apply(&mut self, _output: &Output, saturation: Saturation) -> Result<(), BackendError> {
++        // Identity means "no change". Loading the effect at identity would
++        // leave an unnecessary compositor pass running, so unload instead.
++        if saturation.is_identity() {
++            let _ = self.unload();
++            return Ok(());
++        }
+         self.load()?;
+         self.set_saturation(saturation)
+     }
