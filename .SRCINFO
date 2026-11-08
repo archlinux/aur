@@ -1,0 +1,25 @@
+pkgbase = tmail-bin
+	pkgdesc = A fast terminal email client with a spatial conversation map (IMAP/SMTP, Maildir) - prebuilt binary
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/tuna4ll/tmail
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	optdepends = gnupg: message signing and encryption
+	optdepends = gnome-keyring: password storage in the system keyring
+	optdepends = kitty: inline images in HTML mail
+	optdepends = wezterm: inline images in HTML mail
+	provides = tmail=1.0.2
+	conflicts = tmail
+	options = !strip
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/tuna4ll/tmail/v1.0.2/LICENSE
+	sha256sums = 43808caf40d62fe06147fce77a1825d8952cc28340a72c2c3c5164559a74a585
+	source_x86_64 = tmail-1.0.2-x86_64.tar.gz::https://github.com/tuna4ll/tmail/releases/download/v1.0.2/tmail-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a446816a28442fd3ddc05a08512380a150cab6e3ada85d0ee85125f44e7a233c
+	source_aarch64 = tmail-1.0.2-aarch64.tar.gz::https://github.com/tuna4ll/tmail/releases/download/v1.0.2/tmail-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4a943e64b92f99dc6477aee6088a37f54b8d4e12f859a7a8f441e731c93a460d
+
+pkgname = tmail-bin
