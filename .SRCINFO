@@ -1,6 +1,6 @@
 pkgbase = dearsql
 	pkgdesc = Cross-platform SQL database client
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 3
 	url = https://github.com/dunkbing/dearsql
 	arch = x86_64
