@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
-pkgver=0.9.161
-pkgrel=3
+pkgver=0.9.162
+pkgrel=1
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -72,7 +72,7 @@ options=('!strip' '!debug')
 
 # single source: the aur.yml updater rewrites sha256sums to one hash (2026-10-31).
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
-sha256sums=('2e6f505a6da60952893a511a618544cb1875b12a349d962f48e5006ab2a4d7ad')
+sha256sums=('ffe6af0488a18cfcaa84c43db47e3c80788f85d640192f6a2b5ed3151789a580')
 prepare() {
     chmod +x "${srcdir}/Root-${pkgver}-x86_64.AppImage"
     "${srcdir}/Root-${pkgver}-x86_64.AppImage" --appimage-extract
