@@ -28,7 +28,7 @@ source=("https://releases.tongyuan.cc/installer/syslab/${_release}/${_runfile}"
         "${pkgname}.desktop")
 noextract=("${_runfile}")
 sha256sums=('ba19cae7f3ecddca3d0d103754bbba94a7034428e4e67980ccc7a926da80a72c'
-            '1459a664b8564f1c2f3b1a8942da47c8427b876aeccd4a32b09b3cad66048217')
+            '76d84eb8f64cb529980f50ba91d485af3e1c1883d26003c41bb4ebe7f1d55bc4')
 
 _instdir="/opt/mworks-syslab"
 
@@ -74,6 +74,10 @@ package() {
     grep -q '^# syslab-mcp-server-install.sh$' "$_init" || return 1
     grep -q '^# syslab-env.ini$' "$_init" || return 1
     sed -i '/^# syslab-mcp-server-install.sh$/,/^# syslab-env.ini$/ { /^# syslab-env.ini$/!d; }' "$_init"
+
+    # 屏蔽首次启动时在用户目录生成的快捷方式（已由包提供 /usr/share/applications 下的入口，避免菜单中出现两个）
+    grep -q '^# 生成快捷方式$' "$_init" || return 1
+    sed -i '/^# 生成快捷方式$/,/^echo "Initialization complete!"/ { /^echo "Initialization complete!"/!d; }' "$_init"
 
     # 修复"关于"对话框无法关闭的问题：
     # Arch Linux 的 /etc/os-release 没有 VERSION_ID 字段，

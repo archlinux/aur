@@ -1,7 +1,9 @@
 [Desktop Entry]
-Name=MWORKS.Syslab
-Exec=/opt/mworks-syslab/syslab.sh %U
-Icon=/opt/mworks-syslab/Install/config/logo.png
-Terminal=false
 Type=Application
+Name=MWORKS.Syslab 2026b
+Exec="/opt/mworks-syslab/Bin/desktop.sh"
+Icon=/opt/mworks-syslab/Install/config/logo.png
+StartupWMClass=MWORKS.Syslab 2026b
+Terminal=false
 Categories=Development;
+MimeType=x-scheme-handler/syslab;
