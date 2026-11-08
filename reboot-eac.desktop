@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Reboot into CachyOS EAC
+Comment=Reboot system into linux-cachyos-eac kernel
+Exec=reboot-eac
+Icon=folder-locked-symbolic
+Terminal=false
+Categories=Game;Utility;GameTool;
+Keywords=reboot;cachy;cachyos;eac;epic;gaming

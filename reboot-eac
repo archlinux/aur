@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if kdialog --title "CachyOS (EAC) Rebooter" --warningcontinuecancel "Are you sure you want to REBOOT into CachyOS (EAC)"; then
+    sleep 2
+    systemctl reboot --boot-loader-entry=cachyos-eac.conf
+else
+    exit 1
+fi

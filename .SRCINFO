@@ -1,0 +1,15 @@
+pkgbase = eac-reboot-entry
+	pkgdesc = A script shim to make booting into an EAC kernel a bit easier
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	depends = linux-cachyos-eac
+	depends = systemd
+	depends = hicolor-icon-theme
+	source = reboot-eac
+	source = reboot-eac.desktop
+	sha256sums = 05f53a118ec1c7572ccbb0aa44b1eb738709df29764f559e59e08ca92450b4ec
+	sha256sums = 726e5c11b86243e15cdfea0a23970eacb5bd0cecccec2e3bff91b9bb808fb6c9
+
+pkgname = eac-reboot-entry
