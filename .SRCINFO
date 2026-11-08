@@ -1,6 +1,6 @@
 pkgbase = keestone-bin
 	pkgdesc = A KeePass-compatible password manager built with Flutter
-	pkgver = 0.9.9beta.2
+	pkgver = 0.9.9beta.3
 	pkgrel = 1
 	url = https://github.com/lyj404/keestone
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = keestone-bin
 	depends = dbus
 	provides = keestone
 	conflicts = keestone
-	source_x86_64 = https://github.com/lyj404/keestone/releases/download/v0.9.9-beta.2/KeeStone-v0.9.9beta.2-linux-x64.tar.gz
-	sha256sums_x86_64 = 53a22e62ac2c6d147606946b50407aebc11f0963903d87e0923e0e4cacfc5655
-	source_aarch64 = https://github.com/lyj404/keestone/releases/download/v0.9.9-beta.2/KeeStone-v0.9.9beta.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0b60f8d8f3f498d2e6cc3100437ce42052499571f696716bffc2b1cb8740f97b
+	source_x86_64 = https://github.com/lyj404/keestone/releases/download/v0.9.9-beta.3/KeeStone-v0.9.9beta.3-linux-x64.tar.gz
+	sha256sums_x86_64 = 6bbeb39d0d3ed12c34a7027dbbcbcb5d8f19d7a4fe56d8c84e8b9d9867682ae9
+	source_aarch64 = https://github.com/lyj404/keestone/releases/download/v0.9.9-beta.3/KeeStone-v0.9.9beta.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 13d420e0d790acef8a848b685ff18cba267f2b664ec7feccb36ec8f4aa2ff826
 
 pkgname = keestone-bin
