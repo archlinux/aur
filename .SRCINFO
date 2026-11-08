@@ -1,19 +1,22 @@
-pkgbase = breitbandmessung-bin
+pkgbase = messverfahren-ravt
 	pkgdesc = Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de
-	pkgver = 3.12.1
-	pkgrel = 1
-	url = https://breitbandmessung.de/desktop-app
+	pkgver = 1.1.0
+	pkgrel = 63
+	url = https://www.breitbandmessung.de/festnetz/recht-auf-versorgung
 	arch = x86_64
 	license = custom:proprietary-zafaco-GmbH
 	makedepends = asar
 	depends = net-tools
-	provides = breitbandmessung=3.12.1
+	provides = breitbandmessung
+	provides = breitbandmessung-bin
 	conflicts = breitbandmessung
+	conflicts = breitbandmessung-bin
 	replaces = breitbandmessung<=3.9.0
+	replaces = breitbandmessung-bin<=3.12.0
 	options = !strip
-	source = breitbandmessung-3.12.1.deb::https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb
+	source = messverfahren-1.1.0.deb::https://download.breitbandmessung.de/ravt/Messverfahren-RaVT-linux.deb
 	source = LICENSE
-	sha256sums = b948331a4e8df0fcbdd6fbace588770e62b4c61e7e279c6a0f79ef581de080f1
+	sha256sums = 1009eb3967704f29a486f84eb99e73b4525a716aa951c2264c60223265d52cd8
 	sha256sums = SKIP
 
-pkgname = breitbandmessung-bin
+pkgname = messverfahren-ravt

@@ -2,21 +2,21 @@
 # Contributor: Posi <posi1981@gmail.com>
 # Contributor: Linus Dierheimer <Linus@Dierheimer.de>
 
-pkgname=breitbandmessung-bin
-pkgver=3.12.1
-pkgrel=1
+pkgname=messverfahren-ravt
+pkgver=1.1.0
+pkgrel=63
 pkgdesc="Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de"
 arch=('x86_64')
 license=('custom:proprietary-zafaco-GmbH')
-url="https://breitbandmessung.de/desktop-app"
+url="https://www.breitbandmessung.de/festnetz/recht-auf-versorgung"
 options=('!strip')
-source=("breitbandmessung-${pkgver}.deb::https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb" "LICENSE")
-sha256sums=("b948331a4e8df0fcbdd6fbace588770e62b4c61e7e279c6a0f79ef581de080f1" "SKIP")
+source=("messverfahren-${pkgver}.deb::https://download.breitbandmessung.de/ravt/Messverfahren-RaVT-linux.deb" "LICENSE")
+sha256sums=("1009eb3967704f29a486f84eb99e73b4525a716aa951c2264c60223265d52cd8" "SKIP")
 depends=("net-tools")
 makedepends=("asar")
-provides=("breitbandmessung=${pkgver}")
-conflicts=("breitbandmessung")
-replaces=("breitbandmessung<=3.9.0")
+provides=("breitbandmessung" "breitbandmessung-bin")
+conflicts=("breitbandmessung" "breitbandmessung-bin")
+replaces=("breitbandmessung<=3.9.0" "breitbandmessung-bin<=3.12.0")
 
 build() {
     _builddir="${srcdir}/${pkgver}-${pkgrel}"
@@ -24,7 +24,7 @@ build() {
 
     tar --extract --overwrite --file=data.tar.xz --directory="${_builddir}"
 
-    cd "${_builddir}/opt/Breitbandmessung/resources/"
+    cd "${_builddir}/opt/Messverfahren-RaVT/resources/"
 
     _unpatched="lsbRelease()"
     _patched='{ "distributorID": "Debian", "release": "8", "description": "Debian" }'
@@ -33,6 +33,9 @@ build() {
     sed -i "s/${_unpatched}/${_patched}/g" unpacked/build/electron.js
     asar p unpacked/ app.asar
     rm -rf unpacked/
+
+    mv ${_builddir}/usr/share/icons/hicolor/2x2 ${_builddir}/usr/share/icons/hicolor/36x36
+    mv ${_builddir}/usr/share/icons/hicolor/3x3 ${_builddir}/usr/share/icons/hicolor/54x54
 }
 
 package() {
@@ -40,7 +43,7 @@ package() {
 
     #Create /usr/bin symlink
     mkdir -p "${pkgdir}/usr/bin/"
-    ln -sf "/opt/Breitbandmessung/breitbandmessung" "${pkgdir}/usr/bin/breitbandmessung"
+    ln -sf "/opt/Messverfahren-RaVT/messverfahren-ravt" "${pkgdir}/usr/bin/messverfahren-ravt"
 
     chmod -R go-w "${pkgdir}/usr"
 
