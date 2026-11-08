@@ -2,7 +2,7 @@
 # Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=telegram-drive
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Turn your Telegram account into an unlimited, secure cloud storage drive"
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ conflicts=('telegram-drive-appimage')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caamer20/Telegram-Drive/archive/refs/tags/v${pkgver}.tar.gz")
 # codeload распаковывает архив в каталог с именем репозитория
 _src="Telegram-Drive-${pkgver}" 
-sha256sums=('dd8020b2a717cda8a2f2791cb43a1f4f777fdc4551c0b03b40cc77c3b0c3ab2d')
+sha256sums=('4663441cefdd2617b3dc3bcfeb27b789fdabe9ad05eb66b769e11fbd2461367f')
 
 build() {
     cd "${srcdir}/${_src}/app"
