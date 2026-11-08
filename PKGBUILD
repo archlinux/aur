@@ -3,13 +3,11 @@
 
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
-epoch=1
-_buildid_x86_64=20260922204113
-_buildid_i686=20260922203127
-_buildid_aarch64=20260922192904
-_buildid_loongarch64=20260922203827
-_date=2026.09.22
-pkgver=52.9.${_date}
+epoch=2
+_buildid_x86_64=20261101202235
+_buildid_i686=20261101191016
+_buildid_aarch64=20261102021204
+pkgver=2026.11.01
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
 url="https://www.basilisk-browser.org"
@@ -24,13 +22,11 @@ source=('basilisk.desktop')
 source_x86_64=(https://dl.basilisk-browser.org/basilisk-${_buildid_x86_64}.linux-x86_64-gtk3.tar.xz)
 source_aarch64=(https://dl.basilisk-browser.org/basilisk-${_buildid_aarch64}.linux-aarch64-gtk3.tar.xz)
 source_i686=(https://dl.basilisk-browser.org/basilisk-${_buildid_i686}.linux-i686-gtk3.tar.xz)
-source_loongarch64=(https://dl.basilisk-browser.org/basilisk-${_buildid_loongarch64}.linux-i686-gtk3.tar.xz)
 
 sha256sums=('c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
-sha256sums_x86_64=('386d4bba91ad8d24877d2f55d502b0c5f96d8f64b980ca987bac3ef14e95c2fe')
-sha256sums_aarch64=('91e347cef4bda9c5d4010e8bfc50aa9e7b0a768c67cbdc4dec2474de11edd86f')
-sha256sums_i686=('16f6f9ee723720a43664af627088454e68a534772f60822523442d8a4bcb51ee')
-sha256sums_loongarch64=('e38a82bb746301e90fcb62a518cbd716ce9643086b40f3a23cff2894fe210822')
+sha256sums_x86_64=('4c460ffe927f743dbef377489fe9f7d43aafad56732bab58e74cdd615ca5b8d6')
+sha256sums_aarch64=('eb025b927ed8b91eea10a33ccc90fa9bedb7c8919c8a1bd791c74b5a9e76a5b9')
+sha256sums_i686=('cd820aaca36bf4a8edd126d71b9958cd61e03ce082e52eba6be861d08460ffc2')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
