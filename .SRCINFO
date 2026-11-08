@@ -1,6 +1,6 @@
 pkgbase = trickster-bin
 	pkgdesc = Flutter-native Wayland status bar (prebuilt binary)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/dazemc/trickster
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = trickster-bin
 	provides = trickster
 	conflicts = trickster
 	conflicts = trickster-git
-	noextract = trickster-0.2.1-1-x86_64.pkg.tar.zst
+	noextract = trickster-0.2.2-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
 	backup = etc/trickster/session.conf
-	source = https://github.com/dazemc/trickster/releases/download/v0.2.1/trickster-0.2.1-1-x86_64.pkg.tar.zst
-	sha256sums = eb825ab5b82e21411b80e60985c94d2da0df6f3a53bdebdefacd1d0bf8724c3d
+	source = https://github.com/dazemc/trickster/releases/download/v0.2.2/trickster-0.2.2-1-x86_64.pkg.tar.zst
+	sha256sums = 56d17dbddb9d5341a11c4ef6f70e6d1baa48bcc6bb78dfdb9a7c8afc52ad29a9
 
 pkgname = trickster-bin
