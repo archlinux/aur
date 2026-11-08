@@ -5,7 +5,7 @@
 pkgname=messverfahren-ravt
 pkgver=1.1.0
 pkgrel=63
-pkgdesc="Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de"
+pkgdesc="Mit der Messverfahren-RaVT Desktop-App können Sie die Datenübertragungsrate Ihres Internetzugangs messen und dadurch die Leistungsfähigkeit Ihres stationären Internetzugangs ermitteln."
 arch=('x86_64')
 license=('custom:proprietary-zafaco-GmbH')
 url="https://www.breitbandmessung.de/festnetz/recht-auf-versorgung"
@@ -13,6 +13,7 @@ options=('!strip')
 source=("messverfahren-${pkgver}.deb::https://download.breitbandmessung.de/ravt/Messverfahren-RaVT-linux.deb" "LICENSE")
 sha256sums=("1009eb3967704f29a486f84eb99e73b4525a716aa951c2264c60223265d52cd8" "SKIP")
 depends=("net-tools")
+optdepends=('libappindicator: for systray icon')
 makedepends=("asar")
 provides=("breitbandmessung" "breitbandmessung-bin")
 conflicts=("breitbandmessung" "breitbandmessung-bin")
@@ -34,8 +35,11 @@ build() {
     asar p unpacked/ app.asar
     rm -rf unpacked/
 
-    mv ${_builddir}/usr/share/icons/hicolor/2x2 ${_builddir}/usr/share/icons/hicolor/36x36
-    mv ${_builddir}/usr/share/icons/hicolor/3x3 ${_builddir}/usr/share/icons/hicolor/54x54
+    rm -rf ${_builddir}/usr/share/icons/hicolor/36x36
+    mv -T ${_builddir}/usr/share/icons/hicolor/2x2 ${_builddir}/usr/share/icons/hicolor/36x36
+    rm -rf ${_builddir}/usr/share/icons/hicolor/54x54
+    mv -T ${_builddir}/usr/share/icons/hicolor/3x3 ${_builddir}/usr/share/icons/hicolor/54x54
+    echo "Keywords=breitbandmessung" >> ${_builddir}/usr/share/applications/messverfahren-ravt.desktop
 }
 
 package() {

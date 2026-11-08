@@ -1,5 +1,5 @@
 pkgbase = messverfahren-ravt
-	pkgdesc = Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de
+	pkgdesc = Mit der Messverfahren-RaVT Desktop-App können Sie die Datenübertragungsrate Ihres Internetzugangs messen und dadurch die Leistungsfähigkeit Ihres stationären Internetzugangs ermitteln.
 	pkgver = 1.1.0
 	pkgrel = 63
 	url = https://www.breitbandmessung.de/festnetz/recht-auf-versorgung
@@ -7,6 +7,7 @@ pkgbase = messverfahren-ravt
 	license = custom:proprietary-zafaco-GmbH
 	makedepends = asar
 	depends = net-tools
+	optdepends = libappindicator: for systray icon
 	provides = breitbandmessung
 	provides = breitbandmessung-bin
 	conflicts = breitbandmessung
