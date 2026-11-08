@@ -1,5 +1,5 @@
 pkgname=banchoxterm
-pkgver=1.3.2
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Multi-protocol terminal emulator and remote session manager'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'libsodium::git+https://github.com/jedisct1/libsodium.git'
   'libvncserver::git+https://github.com/LibVNC/libvncserver.git'
 )
-sha256sums=('e9901051562dd3fced4ee2bfea36e2f37ac8ddcfe0d5adc31f01d7fbadf3bf3d'
+sha256sums=('148b6cfc87a6b8016c9e28b8552061da1052e92bea9733809379a6ff2fcc3a63'
             'SKIP'
             'SKIP'
             'SKIP'
