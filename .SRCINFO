@@ -1,6 +1,6 @@
 pkgbase = herdr-app
 	pkgdesc = Native desktop workspace for terminals and coding agents that keep running
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/herdrdev/herdr-app
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = herdr-app
 	conflicts = herdr-app-bin
 	conflicts = herdr-app-desktop-bin
 	options = !lto
-	source = herdr-app-0.1.13.tar.gz::https://github.com/herdrdev/herdr-app/archive/refs/tags/v0.1.13.tar.gz
+	source = herdr-app-0.1.14.tar.gz::https://github.com/herdrdev/herdr-app/archive/refs/tags/v0.1.14.tar.gz
 	source = ghostty-291fd050b9e9c293c8adb6a140742649b7e42d3a.tar.gz::https://github.com/ghostty-org/ghostty/archive/291fd050b9e9c293c8adb6a140742649b7e42d3a.tar.gz
 	source = herdr-app.desktop
-	b2sums = dc0e7521db766ab6758f80c334f1bf160ab659bf27aaf32e7c6618146447216679f0f55ace6e08a3bdc6149f7dc6ccb8fed1217f87b7d97c75380e986aa41547
+	b2sums = 82fd256f9555a592bc247c9e57a8dbc701ded9e4b6b2b2bad7ee4572ab5d5ebe1fe94f5715874a6100afcf524f31c1f3458639d9869edf4b628ae23f87d6e03c
 	b2sums = 62450cf71d7015f092b6fea0e725fbced508107df5b068f2203145a63521ad11a73923182c7db4decbd0548729dfb064276a3edeec051a9841cb8889d6f6ebd0
 	b2sums = 3753c41a94a9e11021016006cfa2b6f61655d9feddbec72174550db4898bb2b9e311b19e5d8d276a580dc354d8f866021ec78e5f2fe62ebe52aaafda99bbba70
 
