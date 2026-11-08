@@ -54,6 +54,8 @@ package() {
 	install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 api/*.yaml -t "${pkgdir}/usr/share/doc/${pkgname}/api/"
+	install -Dm644 schemas/*.json -t "${pkgdir}/usr/share/doc/${pkgname}/schemas/"
+	install -Dm644 etc/jobman-control/*.example.json -t "${pkgdir}/usr/share/doc/${pkgname}/config/"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 THIRD_PARTY_NOTICES -t "${pkgdir}/usr/share/licenses/${pkgname}/"
