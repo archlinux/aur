@@ -5,7 +5,7 @@
 
 pkgname=hoarder-bin
 _pkgname=hoarder
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Pixel-exact screenshots and a clipboard that outlives the app that set it, for Wayland (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('db7796370408fbbbef555f344d4def6fc4505f6a6b7a90e3e6c2a6851d85f3fc')
-sha256sums_aarch64=('10b6420724edb524495fbcaf08e2429af169f8ed6647db626f7bb643dec615e1')
+sha256sums_x86_64=('2db46c0db5f93b993cb1e1dec88b8f27bc4a5a17f01c100932b6d7280ff3d60b')
+sha256sums_aarch64=('e9c18e52f77d32ca6e88c34297a8ee3afbbb902e146088b6a0b53a54071877ee')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-unknown-linux-gnu"
