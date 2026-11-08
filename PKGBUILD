@@ -2,8 +2,8 @@
 
 pkgname=whatsapp-linux-covenant
 _pkgname=whatsapp-desktop-linux
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="WhatsApp Desktop for Linux (Covenant Edition) built with modern Electron (binary release)"
 arch=('x86_64')
 url="https://github.com/araujo791/Whatsapp-Linux-Covenant"
@@ -12,7 +12,7 @@ depends=('gtk3' 'nss' 'alsa-lib')
 provides=('whatsapp-desktop-linux' 'whatsapp-linux-covenant-bin')
 conflicts=('whatsapp-desktop-linux')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/araujo791/Whatsapp-Linux-Covenant/releases/download/v${pkgver}/whatsapp-linux-covenant-${pkgver}-x86_64.tar.gz")
-sha256sums=('c137bb2a24a7a2d15bc9cd200766b8b0aabf2629d44c3f7f0eab5bf612bc9d81')
+sha256sums=('309df60e73888f38e7fbe01403bb9ba61bb8afd083084de570df4b06f5f9eb2d')
 
 package() {
   local _srcdir="${srcdir}/${_pkgname}-${pkgver}"
@@ -29,8 +29,12 @@ package() {
   install -Dm644 "${_srcdir}/resources/data/io.github.covenant.WhatsAppDesktop.appdata.xml" \
     "${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml"
 
-  install -Dm644 "${_srcdir}/resources/data/icons/hicolor/512x512/apps/io.github.covenant.WhatsAppDesktop.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.covenant.WhatsAppDesktop.png"
+  for _size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "${_srcdir}/resources/data/icons/hicolor/${_size}x${_size}/apps/io.github.covenant.WhatsAppDesktop.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/io.github.covenant.WhatsAppDesktop.png"
+    install -Dm644 "${_srcdir}/resources/data/icons/hicolor/${_size}x${_size}/apps/io.github.covenant.WhatsAppDesktop-unread.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/io.github.covenant.WhatsAppDesktop-unread.png"
+  done
 
   install -Dm644 "${_srcdir}/resources/data/icons/hicolor/scalable/apps/io.github.covenant.WhatsAppDesktop.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.covenant.WhatsAppDesktop.svg"
