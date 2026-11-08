@@ -1,6 +1,6 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=python-librelane
-pkgver=3.0.16
+pkgver=3.0.17
 pkgrel=1
 pkgdesc="An infrastructure for implementing chip design flows (successor to OpenLane)."
 arch=('any')
@@ -40,7 +40,7 @@ provides=("python-librelane-git")
 conflicts=("python-librelane-git")
 
 source=("librelane-${pkgver}.tar.gz::https://github.com/librelane/librelane/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4f3c2836c81155d9c17b13d051a266cc3e76bed9b0f4d1be6816e504b3813e96')
+sha256sums=('051a8088c8ba5f1e96b54d271dfa03c4a3ccd130ae323194dc08a9242c586593')
 
 build() {
     cd "librelane-${pkgver}"
