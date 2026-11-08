@@ -1,6 +1,6 @@
 _pkgname=rivu
 pkgname=rivu-git
-pkgver=0.2.14.r27.ee01766
+pkgver=0.2.17.r7.9e8efa4c
 pkgrel=1
 pkgdesc='a lightweight, local-first linux music player'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/rtgiskard/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'fontconfig' 'libpipewire>=1.2' 'libxkbcommon' 'wayland' 'libglvnd' 'vulkan-icd-loader' 'ttf-nerd-fonts-symbols-mono' 'hicolor-icon-theme')
 makedepends=('git' 'rust>=1.99' 'clang' 'cmake' 'pkgconf' 'ffmpeg>=9')
-optdepends=('ffmpeg>=9: optional FFmpeg decoding' 'onnxruntime>=1.23: native ONNX speech inference' 'xdg-desktop-portal: desktop file chooser')
+optdepends=('ffmpeg>=9: optional FFmpeg decoding' 'onnxruntime>=1.23: native ONNX speech inference' 'xdg-desktop-portal: desktop file chooser' 'python: neural audio-processing model setup' 'uv: isolated neural audio-processing Python environments')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!lto')
@@ -31,9 +31,5 @@ build() {
 
 package() {
 	cd ${_pkgname}
-	install -Dm755 .cache/target/release/rivu "$pkgdir/usr/bin/rivu"
-	install -Dm755 .cache/target/release/rivu-migrate "$pkgdir/usr/bin/rivu-migrate"
-	install -Dm644 data/applications/rivu.desktop "$pkgdir/usr/share/applications/rivu.desktop"
-	install -Dm644 data/icons/rivu.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/rivu.svg"
-	install -Dm644 data/icons/rivu.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/rivu.png"
+	make install-only PREFIX=/usr DESTDIR="$pkgdir" CARGO_TARGET_DIR=.cache/target
 }
