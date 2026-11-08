@@ -1,0 +1,25 @@
+pkgbase = onair-avsplus
+	pkgdesc = AVS+ (Guangdian) decoder add-on for OnAir: shared libavcodec/libavutil with the AVS+ profile, for Chinese DTMB TV
+	pkgver = 7.1.2
+	pkgrel = 2
+	url = https://github.com/adswill/OnAir
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	license = MIT
+	makedepends = nasm
+	makedepends = python
+	depends = glibc
+	depends = zlib
+	depends = xz
+	options = !lto
+	source = https://ffmpeg.org/releases/ffmpeg-7.1.2.tar.xz
+	source = cavs_dra.patch::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/eb94ceb887b47b6ecfbda9da43273dd65246df1e/ffmpeg-7.1.2_cavs_dra.patch
+	source = LICENSE::https://raw.githubusercontent.com/maliwen2015/ffmpeg_cavs_dra/eb94ceb887b47b6ecfbda9da43273dd65246df1e/LICENSE
+	source = split_cavs_patch.py
+	sha256sums = 089bc60fb59d6aecc5d994ff530fd0dcb3ee39aa55867849a2bbc4e555f9c304
+	sha256sums = 1d1cac53cc2d19af39de854db186985fb653e820b0d071844a1e529550c08e40
+	sha256sums = cac0ae34bd88bc4347c3901c3d6e9715ee64ae9b2ec8e027b0892ecd67db98f4
+	sha256sums = c82dd616f0f3f1f56176b6590b9b5c506265640182bc4c77c9d16247186d0dda
+
+pkgname = onair-avsplus
