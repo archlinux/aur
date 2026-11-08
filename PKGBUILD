@@ -10,7 +10,7 @@ pkgver=2.0.15
 pkgrel=1
 _gitversion=v${pkgver}
 
-arch=('any')
+arch=('x86_64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -21,24 +21,24 @@ license=('AGPL-3.0-only')
 provides=('openxplorer' 'winspace')
 conflicts=("${provides[@]}")
 
-depends=('bash' 'python' 'python-gobject' 'gtk3' 'glib2' 'libsecret' 'webkit2gtk-4.1' 'hicolor-icon-theme')
+depends=('glibc' 'libgcc' 'graphene' 'gst-plugins-base-libs' 'gtk4' 'glib2' 'gdk-pixbuf2' 'libsoup3' 'pango' 'gstreamer' 'sqlite' 'hicolor-icon-theme')
 
 options=('!strip')
 
-source=("${_appname}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_all.deb"
-		"README-${pkgver}.md::${_ghurlraw}/README.md"
+source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
-sha256sums=('4b91fe09e2bf0929ac96c85edd79b96cbdd1324a73035c80a34e7734137a7b4f'
-            'b5f26735a8fc465c06486437b2db09f71d9d5bde234813837eb60b51a80e2adc'
+source_x86_64=("${_gitname}-${pkgver}-${pkgrel}-${arch[0]}.tzst::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
+sha256sums=('b5f26735a8fc465c06486437b2db09f71d9d5bde234813837eb60b51a80e2adc'
             'fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260')
+sha256sums_x86_64=('eaedf061ced8780e0b7143371cface9211b3dca36dc0eec3c8da8de2d008f5b5')
+
+noextract=("${source_x86_64[@]%%::*}")
 
 
 package() {
-	cd "${pkgdir}"
+	cd "${pkgdir}/"
 
-	tar -xf ${srcdir}/data.tar.xz
-	install -dm755 ${pkgdir}/usr/share/doc/${pkgname}/
-	mv ${pkgdir}/usr/share/doc/${_gitname}/*.md ${pkgdir}/usr/share/doc/${pkgname}/ && rm -rf ${pkgdir}/usr/share/doc/${_gitname}/
+	tar --exclude=".*" --exclude="usr/share/licenses" --exclude="usr/share/doc" -xf "${srcdir}/${_gitname}-${pkgver}-${pkgrel}-${CARCH}.tzst"
 
 	install -Dm644 ${srcdir}/README-${pkgver}.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 
