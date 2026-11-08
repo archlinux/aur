@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2026 Zappo-II
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+# pacman's hooks create the user and reload systemd and D-Bus.
+
+post_install() {
+    echo "rg-helper starts with your next GNOME login (or now: systemctl start rg-helper)."
+    echo "Key labels show at most letter/digit classes; see /etc/rg-helper.conf."
+}
+
+post_upgrade() {
+    systemctl try-restart rg-helper.service
+}
+
+pre_remove() {
+    systemctl stop rg-helper.service
+}
