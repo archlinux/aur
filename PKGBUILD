@@ -1,11 +1,11 @@
 # Maintainer: RamazanBerk20 <119219364+RamazanBerk20@users.noreply.github.com>
 pkgname=swiftsim-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Fast SPICE circuit simulator with a schematic editor and waveform viewer (LTspice alternative; prebuilt)'
 arch=('x86_64')
 url='https://github.com/RamazanBerk20/SwiftSim'
-license=('MIT OR Apache-2.0')
+license=('MIT OR Apache-2.0' 'OFL-1.1')
 depends=('gcc-libs' 'glibc' 'dbus' 'fontconfig' 'libglvnd' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'wayland')
 optdepends=('vulkan-icd-loader: Vulkan rendering (OpenGL is used otherwise)'
             'xdg-desktop-portal: Open/Save dialogs'
@@ -13,7 +13,7 @@ optdepends=('vulkan-icd-loader: Vulkan rendering (OpenGL is used otherwise)'
 provides=('swiftsim')
 conflicts=('swiftsim')
 source=("swiftsim-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/swiftsim-linux-x86_64.tar.gz")
-sha256sums=('c93ee914038b3ff037254a0c337890310e2180e659dd908bdc1ff882b1612e31')
+sha256sums=('fab3bb48878c69e458f7f3d33872037a67aa4e061f69551f0537390fc1631ca3')
 
 package() {
   cd swiftsim-linux-x86_64
@@ -25,6 +25,6 @@ package() {
     s=$(basename "$png" .png)
     install -Dm644 "$png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/swiftsim.png"
   done
-  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE-MIT LICENSE-APACHE LICENSE-OFL -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
