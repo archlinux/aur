@@ -2,7 +2,7 @@
 
 pkgname=whatsapp-linux-covenant
 _pkgname=whatsapp-desktop-linux
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="WhatsApp Desktop for Linux (Covenant Edition) built with modern Electron (binary release)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'nss' 'alsa-lib')
 provides=('whatsapp-desktop-linux' 'whatsapp-linux-covenant-bin')
 conflicts=('whatsapp-desktop-linux')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/araujo791/Whatsapp-Linux-Covenant/releases/download/v${pkgver}/whatsapp-linux-covenant-${pkgver}-x86_64.tar.gz")
-sha256sums=('309df60e73888f38e7fbe01403bb9ba61bb8afd083084de570df4b06f5f9eb2d')
+sha256sums=('98286c95f4039ed35c6f9ff723e454ef14cefa8e04488868d871a5ccd66b6a03')
 
 package() {
   local _srcdir="${srcdir}/${_pkgname}-${pkgver}"
