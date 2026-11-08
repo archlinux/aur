@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=reticulum-over-ethernet
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Reticulum over Ethernet: carries Reticulum packets directly in Ethernet frames, without IP'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ install=reticulum-over-ethernet.install
 # The release profile already strips the binary: no symbols for a -debug package.
 options=('!debug')
 source=("git+${url}.git#tag=${pkgver}")
-b2sums=('a5b892a03e3272305cad25c6b0ab1d53fceea62ea4522f19d95f532a376cbf41a0e04f746ea8a2ab01b1dcf214793f9e4ff982436adb01ca553369f24eac9de4')
+b2sums=('3f35108a7a9c9fa6cb2014192971271db65a52688958bea65797e339e2f735c3654e05fbb074e63e31cd06ee1c55511acfbba37f140d53418c9b5ded72fbcefc')
 
 prepare() {
   cd roe
