@@ -1,6 +1,6 @@
 pkgbase = godoist-bin
 	pkgdesc = Todoist TUI and CLI for the terminal
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/biomassa/godoist
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = godoist-bin
 	provides = godoist
 	conflicts = godoist
 	options = !strip
-	source_x86_64 = godoist-x86_64-1.1.0.tgz::https://github.com/biomassa/godoist/releases/download/v1.1.0/godoist_1.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 646a6672840afaf48f003857c538d92b5b76eb003049d7d53401293ab1a51514
-	source_aarch64 = godoist-aarch64-1.1.0.tgz::https://github.com/biomassa/godoist/releases/download/v1.1.0/godoist_1.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 731b44fbeb7100c7a3c04d908491462a845cd1c9f04709d42f90577665244348
+	source_x86_64 = godoist-x86_64-1.2.0.tgz::https://github.com/biomassa/godoist/releases/download/v1.2.0/godoist_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3e53e2d6995e4acf839dfb6ed6c59d025f50502f828d5215996cf191bb8e5853
+	source_aarch64 = godoist-aarch64-1.2.0.tgz::https://github.com/biomassa/godoist/releases/download/v1.2.0/godoist_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 035b4c6c17bbbe6340a1f0cae9b9add37043178052e1548667ccae4e262c058e
 
 pkgname = godoist-bin
