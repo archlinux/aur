@@ -1,0 +1,25 @@
+pkgbase = uninews-git
+	pkgdesc = University news from Greek and international universities in one place
+	pkgver = 0.2.1.r49.g98e5d6c
+	pkgrel = 1
+	url = https://github.com/open-source-uom/UniNews
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-feedparser
+	depends = python-pyqt6
+	depends = python-requests
+	provides = UniNews
+	conflicts = UniNews
+	source = git+https://github.com/open-source-uom/UniNews.git
+	sha256sums = SKIP
+
+pkgname = uninews-git
