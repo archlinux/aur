@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=mega-man-x-regenesis
-pkgver=1.01.0
+pkgver=1.02.0
 pkgrel=1
 pkgdesc="A fan-made Mega Man X game set in an alternate timeline where Sigma has won"
 arch=('x86_64')
@@ -19,14 +19,14 @@ options=(!strip !debug)
 # The trailing number is the itch.io upload id for the Linux build.
 # It changes with every release; find the new one in the page source
 # (data-upload_id) or via: curl -s $url | grep -o 'data-upload_id="[0-9]*"'
-_upload_id=20163091
+_upload_id=20333491
 source=(
   "${pkgname}-${pkgver}.x86_64::itch://mmxregenesis/mega-man-x-regenesis/${_upload_id}"
   "${pkgname}.desktop"
   "${pkgname}.png"
   "itch-dl.sh"
 )
-b2sums=('10efd244a9d7c63d0c8c698b948f7ef325ec44ef88400e9dceaaf9a020cce23e4c067d1ade768c17b439175c286ecfb76dd08d0d2755c692a5be96bf96dd71cf'
+b2sums=('00fa4a88786db511c8558cf6b6ef3d0f32f76e843f78682b2985b2f4a4f430f0c9232b515e5a89cc8b5756e724f6e2ce11bc76f47bb3af3d46cdccf097ede557'
         'd8f2264a07d9d0dae799571da39194bfc9212b1096e84e0ee1b29f11c4d67e489b7e4b15d1e78e5b67b29291e165e22ebab07f9b88020ffbb0db4f16072c8e18'
         'af50b022103a57f46d324f773f748d326f8fc485326c778bb307d15f44279387ae0bab7fc38be99da676ab0f137188eba6a5e97ff7e518ffb5a29955c4fe1fbf'
         'c1ce296192f16c0050da40350dff2eb9573c9b75f48e0cd7a8b64a5fb7953d4243f3731fdcd012b11d4f15d42446882721a2eea1b36ef244f433fb72ed3d58de')
