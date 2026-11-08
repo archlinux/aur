@@ -5,7 +5,14 @@ post_install() {
   # created the same way install.sh does for a direct system install.
   install -d -m 0700 -o root -g root "$_token_dir"
   if [ ! -f "$_token_dir/invoker-token" ]; then
-    (umask 077; od -An -N32 -tx1 /dev/urandom | tr -d ' \n' > "$_token_dir/invoker-token")
+    _tmp="$_token_dir/.invoker-token.$$"
+    (umask 077; od -An -N32 -tx1 /dev/urandom | tr -d ' \n' > "$_tmp")
+    if [ "$(wc -c < "$_tmp")" -ne 64 ]; then
+      rm -f "$_tmp"
+      echo "wap: could not generate the privileged-helper invoker token" >&2
+      return 1
+    fi
+    mv "$_tmp" "$_token_dir/invoker-token"
   fi
   chmod 0600 "$_token_dir/invoker-token"
   chown root:root "$_token_dir/invoker-token"

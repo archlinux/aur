@@ -1,7 +1,7 @@
 # Maintainer: minpeter <minpeter@users.noreply.github.com>
 pkgname=wap-bin
 pkgver=0.0.50
-pkgrel=1
+pkgrel=2
 pkgdesc="Wap - Chromium-based browser with a local AI agent daemon and CLI (prebuilt)"
 arch=('x86_64')
 url="https://github.com/minpeter/wap"

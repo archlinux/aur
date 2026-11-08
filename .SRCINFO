@@ -1,7 +1,7 @@
 pkgbase = wap-bin
 	pkgdesc = Wap - Chromium-based browser with a local AI agent daemon and CLI (prebuilt)
 	pkgver = 0.0.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minpeter/wap
 	install = wap-bin.install
 	arch = x86_64
