@@ -1,19 +1,19 @@
 # Maintainer: uku <hi@uku.moe>
 pkgname=tyrolienne
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="simple tool to convert, upload, and embed videos to zipline"
 arch=("x86_64" "aarch64")
 url="https://git.uku3lig.net/uku/tyrolienne"
 license=("MPL-2.0")
-depends=("libadwaita>=1.7.0" "ffmpeg")
+depends=("libadwaita>=1.9.0" "ffmpeg")
 makedepends=("cargo" "imagemagick")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://git.uku3lig.net/uku/tyrolienne/archive/${pkgver}.tar.gz"
   "net.uku3lig.tyrolienne.desktop"
 )
 sha256sums=(
-  'e063429b2d6afad7fb565592407bb0cfd6c14884facd70666e9445f502108db4'
+  '9a0463b5660bc3be7cc31852ec2be465b281870b2f67b50afc93c233e48a80ca'
   'SKIP'
 )
 # fixes aws-lc-rs not linking
