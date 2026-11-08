@@ -2,7 +2,7 @@
 # Contributor: justanoobcoder <syaorancode@gmail.com>
 
 pkgname=mechvibes
-pkgver=3.5.0
+pkgver=3.5.6
 pkgrel=1
 pkgdesc="A modern mechanical keyboard sound simulator with customizable soundpacks"
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=('alsa-lib'
          'zstd')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hainguyents13/mechvibes/archive/v${pkgver}.tar.gz")
-sha256sums=('19b41ec4a625d39f283a6274009a0dd159c9a2dabc3b0b6e8ad2c3b2822229bc')
+sha256sums=('1e9caeea9b89a3b2b5502891212f296f77f83d1820c720149ed29fa0460acf07')
 
  prepare() {
     cd "${pkgname}-${pkgver}"
