@@ -1,17 +1,17 @@
 pkgbase = bloop
 	pkgdesc = Bloop gives you fast edit/compile/test workflows for Scala.
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://scalacenter.github.io/bloop/
 	arch = any
 	license = Apache
 	depends = java-environment>=8
 	depends = coursier>=2.0.16
-	source = bloop-coursier-channel-2.1.2::https://github.com/scalacenter/bloop/releases/download/v2.1.2/bloop-coursier.json
-	source = bloop-bash-2.1.2::https://github.com/scalacenter/bloop/releases/download/v2.1.2/bash-completions
-	source = bloop-zsh-2.1.2::https://github.com/scalacenter/bloop/releases/download/v2.1.2/zsh-completions
-	source = bloop-fish-2.1.2::https://github.com/scalacenter/bloop/releases/download/v2.1.2/fish-completions
-	sha256sums = 84fd5aea509ce7df0e9a8148c9ead88d78a23cb45d44901eecf0f049d98d8bb6
+	source = bloop-coursier-channel-2.1.3::https://github.com/scalacenter/bloop/releases/download/v2.1.3/bloop-coursier.json
+	source = bloop-bash-2.1.3::https://github.com/scalacenter/bloop/releases/download/v2.1.3/bash-completions
+	source = bloop-zsh-2.1.3::https://github.com/scalacenter/bloop/releases/download/v2.1.3/zsh-completions
+	source = bloop-fish-2.1.3::https://github.com/scalacenter/bloop/releases/download/v2.1.3/fish-completions
+	sha256sums = 45d2bf9e1004e8ab5013083af19716335d99a5124512ca913e0ab5781b98186d
 	sha256sums = da6b7ecd4109bd0ff98b1c452d9dd9d26eee0d28ff604f6c83fb8d3236a6bdd1
 	sha256sums = 58d32c3f005f7791237916d1b5cd3a942115236155a0b7eba8bf36391d06eff7
 	sha256sums = 445ea76716f0e2c2f008fe22aca24b602667964691744926a5890e1c1a1217ff
