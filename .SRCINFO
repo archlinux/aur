@@ -7,7 +7,6 @@ pkgbase = onair-avsplus
 	arch = aarch64
 	license = LGPL-2.1-or-later
 	license = MIT
-	makedepends = nasm
 	makedepends = python
 	depends = glibc
 	depends = zlib
@@ -21,5 +20,6 @@ pkgbase = onair-avsplus
 	sha256sums = 1d1cac53cc2d19af39de854db186985fb653e820b0d071844a1e529550c08e40
 	sha256sums = cac0ae34bd88bc4347c3901c3d6e9715ee64ae9b2ec8e027b0892ecd67db98f4
 	sha256sums = c82dd616f0f3f1f56176b6590b9b5c506265640182bc4c77c9d16247186d0dda
+	makedepends_x86_64 = nasm
 
 pkgname = onair-avsplus

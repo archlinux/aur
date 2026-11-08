@@ -35,7 +35,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/adswill/OnAir"
 license=('LGPL-2.1-or-later' 'MIT')  # FFmpeg without --enable-gpl, patched with MIT code
 depends=('glibc' 'zlib' 'xz')                     # verified with readelf after the build
-makedepends=('nasm' 'python')
+makedepends=('python')
+makedepends_x86_64=('nasm')  # FFmpeg's x86 asm; aarch64 builds need none
 # ffmpeg's x86 inline asm references static const tables (mask24r/g/b,
 # mmx_ff, ...) that LTO drops -> undefined references at link time.
 options=('!lto')
