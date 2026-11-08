@@ -1,6 +1,6 @@
 pkgbase = mygo-music
 	pkgdesc = MyGo Music - 原生桌面音乐播放器，播放本地文件与插件内容，不使用 WebView
-	pkgver = 0.1.21
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://mygo-music.egoist.dev
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = mygo-music
 	optdepends = gtk-layer-shell: Wayland 下的迷你播放器面板
 	conflicts = mygo-music-bin
 	options = !debug
-	source = git+https://github.com/egoist/mygo-music.git#tag=v0.1.21
+	source = git+https://github.com/egoist/mygo-music.git#tag=v0.1.22
 	sha256sums = SKIP
 
 pkgname = mygo-music

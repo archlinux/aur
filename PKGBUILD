@@ -1,7 +1,7 @@
 # Maintainer: xmengnet <my@liyp.cc>
 
 pkgname=mygo-music
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='MyGo Music - 原生桌面音乐播放器，播放本地文件与插件内容，不使用 WebView'
 arch=('x86_64' 'aarch64')
