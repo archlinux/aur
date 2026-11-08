@@ -7,7 +7,7 @@ pkgrel=1
 # Upstream tags desktop builds as <channel>-<build>; 6.0 desktop is only on beta so far.
 _channel=beta
 _build=${pkgver##*.}
-pkgdesc='Offline Bible study app (official desktop build)'
+pkgdesc='Offline Bible study app (beta channel)'
 arch=('x86_64')
 url='https://andbible.org'
 license=('GPL-3.0-or-later')
