@@ -1,0 +1,25 @@
+pkgbase = mailviewer
+	pkgdesc = EML & MSG mail viewer for GNOME written in Rust
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/alescdb/mailviewer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = cargo
+	makedepends = gettext
+	makedepends = glib2-devel
+	makedepends = meson
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gmime3
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	options = !lto
+	source = mailviewer-1.0.17.tar.gz::https://github.com/alescdb/mailviewer/archive/refs/tags/1.0.17.tar.gz
+	sha256sums = b4f1ddd90ff1508bc304e15bb80d44b69e1e9e7b88ac2cf329dfe30263cf498e
+
+pkgname = mailviewer
