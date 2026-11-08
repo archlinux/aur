@@ -1,6 +1,6 @@
 pkgbase = omnidb-server-bin
 	pkgdesc = OmniDB Server - web-based database management tool (headless server component)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://www.omnidb.net/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = omnidb-server-bin
 	conflicts = omnidb-bin
 	conflicts = omnidb-server
 	options = !debug
-	source = omnidb-server-bin-5.4.2.tar.gz::https://github.com/heptau/omnidb/releases/download/v5.4.2/OmniDB-linux-x64.tar.gz
+	source = omnidb-server-bin-5.5.0.tar.gz::https://github.com/heptau/omnidb/releases/download/v5.5.0/OmniDB-linux-x64.tar.gz
 	source = omnidb-server-bin-LICENSE::https://raw.githubusercontent.com/heptau/omnidb/refs/heads/master/LICENSE
-	sha256sums = d74bd454ddf5e9b1dabe9fd44e4888a4845bb186c7acf28b9327afbf02c317f4
+	sha256sums = d894a9f8b921ce63fd142683cc0d82d49ac614517cbdb0eab0bdf2dc9c6cc5fa
 	sha256sums = f0d93a9344e68bfd296783b282d1fec6971a063ce44ced52f7dbd426ec68e4b6
 
 pkgname = omnidb-server-bin
