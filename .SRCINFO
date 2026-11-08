@@ -1,0 +1,22 @@
+pkgbase = bkmk
+	pkgdesc = Bookmark format converter and Python library
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/infinity0/python-bkmk
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	source = https://files.pythonhosted.org/packages/source/b/bkmk/bkmk-0.1.tar.gz
+	sha256sums = 697c43fd88239ca58a221fd718b9fa4df5aefdeb084207b1026af5a520365a54
+
+pkgname = bkmk
+	pkgdesc = CLI bookmark format converter
+	depends = python-bkmk
+
+pkgname = python-bkmk
+	pkgdesc = Python library for bookmark format conversion
+	depends = python>=3.9
