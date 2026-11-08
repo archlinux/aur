@@ -1,6 +1,6 @@
 pkgbase = tuck-bin
 	pkgdesc = Fast, friendly file manager
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/anuzdhk/tuck-filemanager
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = tuck-bin
 	optdepends = ffmpeg: Video Compressor addon
 	provides = tuck
 	conflicts = tuck
-	noextract = tuck-x86_64-0.1.4.tzst
+	noextract = tuck-x86_64-0.1.5.tzst
 	options = !strip
-	source_x86_64 = tuck-x86_64-0.1.4.tzst::https://github.com/anuzdhk/tuck-filemanager/releases/download/v0.1.4/tuck-0.1.4-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 7e6a36a8183032df77b9c2a2007f610178646c77fa19f02d9164dbaf3fa51d80
+	source_x86_64 = tuck-x86_64-0.1.5.tzst::https://github.com/anuzdhk/tuck-filemanager/releases/download/v0.1.5/tuck-0.1.5-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 255b4a7627487411f35bde5ef66cbb7cb73d44acba63db78eb9c590bdb99ef12
 
 pkgname = tuck-bin
