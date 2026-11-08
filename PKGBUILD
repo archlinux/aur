@@ -5,7 +5,7 @@
 
 pkgname=ladybird
 pkgver=20261101
-pkgrel=1
+pkgrel=2
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
@@ -54,7 +54,7 @@ prepare() {
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     $use_linker \
-    -DVCPKG_OVERLAY_TRIPLETS="${srcdir}/ladybird/Meta/CMake/vcpkg/distribution-triplets" \
+    -DLADYBIRD_VCPKG_TYPE=distribution \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
     -DENABLE_INSTALL_HEADERS=OFF \
