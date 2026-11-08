@@ -1,6 +1,6 @@
 pkgbase = sweetbg-bin
 	pkgdesc = Small, lightweight and static Wayland wallpaper daemon
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/sweetwm/sweetbg
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sweetbg-bin
 	conflicts = sweetbg
 	conflicts = sweetbg-git
 	options = !debug
-	source = sweetbg-bin-0.4.0.tar.gz::https://github.com/sweetwm/sweetbg/releases/download/v0.4.0/sweetbg-0.4.0-x86_64-linux.tar.gz
-	sha256sums = 12f7153652ed3e65298a94b42e658ef2906e7dcb40af0ff0a0ef934dd9420f77
+	source = sweetbg-bin-0.4.1.tar.gz::https://github.com/sweetwm/sweetbg/releases/download/v0.4.1/sweetbg-0.4.1-x86_64-linux.tar.gz
+	sha256sums = 8ac961b6c921b7b9e59bac01723eb97fef67c1a96c3c14e2c4d395f59ee16183
 
 pkgname = sweetbg-bin
