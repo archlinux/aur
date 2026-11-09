@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 
 pkgname=uu-remote-linux
-pkgver=0.2.56
+pkgver=0.2.57
 pkgrel=1
 pkgdesc='Unofficial Linux host for NetEase UU Remote (remote desktop)'
 arch=('x86_64')
@@ -28,7 +28,10 @@ makedepends=(
 optdepends=(
   'hyprland: native Hyprland backend (hyprctl)'
   'libayatana-appindicator: tray icon on GNOME'
+  'libpulse: experimental microphone input (set UU_MICROPHONE=1)'
+  'opus: experimental microphone input (set UU_MICROPHONE=1)'
   'pciutils: GPU detection when choosing an encoder'
+  'pipewire-pulse: PulseAudio-compatible server for experimental microphone input'
   'wl-clipboard: clipboard integration on Wayland'
   'xclip: clipboard integration on X11'
   'xsel: clipboard integration on X11 (alternative to xclip)'
@@ -39,7 +42,7 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'uuremote-native.service'
         '60-uu-remote-linux-uinput.rules')
-sha256sums=('8286aa05f7196edcef361b944be13e854c3ead3c285c599e5e5e6a0461baa10b'
+sha256sums=('d97db5a93d6cfd71b1973a41694032d6b81d1f894f6359ffa93b3b2b871cb04b'
             '3cff7ebb654c1f9a2434bc80ce4442d5fd0b0e6ff79462f7e3a20271d05d3c98'
             '2752412c9c2ddbffa4d5882be06a2f10d7ee590c3d1f3b16bf37ea5c1b8d1f34')
 options=('!lto')
