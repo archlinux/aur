@@ -14,7 +14,7 @@
 # (ssh://aur@aur.archlinux.org/movie-planner.git), pushed there by
 # the release job, not from here.
 pkgname=movie-planner
-pkgver=1.37.5
+pkgver=1.37.6
 pkgrel=1
 pkgdesc="CLI that logs watched movies and syncs them to a CalDAV calendar"
 arch=('any')
@@ -29,6 +29,7 @@ depends=(
   'python-rapidfuzz'
   'python-tomlkit'
   'python-typer'
+  'python-yaml'
 )
 makedepends=(
   'python-build'
@@ -39,8 +40,23 @@ makedepends=(
 )
 _tag="movie-planner-v${pkgver}"
 _srcdir="movie-planner-${_tag}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alrayyes/movie-planner/archive/${_tag}.tar.gz")
-sha256sums=('75b1ebec6b693c67329fcad8416cee69f5b6c520899d1f104d2c79a9ad83c578')
+# Arch's python-caldav 3.7.0 imports calendaring_config but doesn't depend on
+# it, and no Arch or AUR package provides it (#491). A PKGBUILD can't depend
+# on a package that doesn't exist, so the pinned wheel is bundled here and
+# installed with the app. Remove this (source, checksum, install line, the
+# PYTHONPATH addition) once Arch ships the dependency or an AUR package
+# exists, since a bundled copy would then conflict with it.
+_ccver=0.5.0
+_ccwhl="calendaring_config-${_ccver}-py3-none-any.whl"
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/alrayyes/movie-planner/archive/${_tag}.tar.gz"
+  "https://files.pythonhosted.org/packages/5f/17/3e4e04e3a344b2260139e64f53d34e95163e02b128b6066753540d5df524/${_ccwhl}"
+)
+noextract=("${_ccwhl}")
+sha256sums=(
+  'eee0e0e722b02d879f13b1fc8b5e1f136fdc3e7d3eadbb716b09441c1f14d94d'
+  'c5e1f6ffaf428a59b0e1373d951eb8e7fd9f49924912e65548cc2803e73a8646'
+)
 
 build() {
   cd "$_srcdir"
@@ -49,7 +65,7 @@ build() {
 
 package() {
   cd "$_srcdir"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" "$srcdir/${_ccwhl}" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # One man page per command and subcommand, generated from the
@@ -62,7 +78,9 @@ package() {
   # shells out to `uv run`, which isn't part of this build at all.
   local mandir
   mandir="$(mktemp -d)"
-  PYTHONPATH="src" python -c "
+  local site
+  site="$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"
+  PYTHONPATH="src:${pkgdir}${site}" python -c "
 import datetime
 import typer.main
 from click_man.core import write_man_pages
