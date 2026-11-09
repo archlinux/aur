@@ -1,7 +1,7 @@
 # Maintainer: Atmosphera App <atmosphera-app@proton.me>
 
 pkgname=atmosphera
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 _gitname="$pkgname-$pkgver"
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
@@ -22,6 +22,8 @@ depends=(
   'python-dbus'
   'python-gobject'
   'wlr-randr'
+  'wl-clipboard'
+  'git'
 )
 optdepends=(
   'cliphist: For clipboard history support'
@@ -35,12 +37,17 @@ optdepends=(
   'qt6-5compat: required by some registry plugins (e.g. cookie-clock)'
   'qt6-websockets: required by some registry plugins (e.g. hassio)'
   'xdg-desktop-portal-gnome: screencast / screen-sharing support (niri cannot use -wlr)'
+  'fcitx5: input method framework (launched at session start by default)'
+  'bluez-utils: Bluetooth pairing with PIN entry and signal-strength polling'
+  'evolution-data-server: calendar events in the clock panel'
+  'python-dateutil: recurring monthly/yearly calendar events'
+  'qt6-webengine: PDF previews in the file chooser'
 )
 provides=('atmosphera' 'xdg-desktop-portal-impl')
 conflicts=('atmosphera-git')
 install=atmosphera.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e69dbb0aa3f8ba203859f3d8e0d57c067a3abf34e30cc4594a0c2006777c139c')
+sha256sums=('79bfb656eca4420d0a17495cf38253d4abde3da5634a58d3606e7febe62b6496')
 
 package() {
   cd "$srcdir/$_gitname"
