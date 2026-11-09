@@ -1,13 +1,14 @@
 pkgbase = nova-control
 	pkgdesc = Linux control app for the Arctis Nova 7 Gen 2: headset settings and PipeWire audio mixer
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/S-Zilean/nova-control
 	install = nova-control.install
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-gobject
+	depends = glib2
 	depends = gtk4
 	depends = libadwaita
 	depends = pipewire
