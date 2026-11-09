@@ -1,0 +1,24 @@
+pkgbase = clonaut
+	pkgdesc = Desktop GUI for rclone: remotes, transfers with progress, safety trash, dry runs and scheduled syncs
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/gradia64/Clonaut
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-pyqt6
+	depends = rclone
+	depends = hicolor-icon-theme
+	optdepends = pyside6: alternative Qt binding (used instead of PyQt6 when installed)
+	source = clonaut::git+https://github.com/gradia64/Clonaut.git#tag=v0.4.0?signed
+	validpgpkeys = 9F54724ACD0995BEC321BD30E6C5DCC0D49CCC6B
+	sha256sums = SKIP
+
+pkgname = clonaut
