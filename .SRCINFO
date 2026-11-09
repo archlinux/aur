@@ -1,6 +1,6 @@
 pkgbase = gdirect-bin
 	pkgdesc = Browse, download, upload and mount Google Drive
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://github.com/mizorewww/gdirect
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gdirect-bin
 	optdepends = fuse3: for mounting Google Drive
 	provides = gdirect
 	conflicts = gdirect
-	source_x86_64 = gdirect-bin-0.13.1.tar.gz::https://github.com/mizorewww/gdirect/releases/download/v0.13.1/gdirect-0.13.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5c216e957ad1c2e32c860d064cd645281a041f92834b094f71552d8a21d34f6d
+	source_x86_64 = gdirect-bin-0.13.2.tar.gz::https://github.com/mizorewww/gdirect/releases/download/v0.13.2/gdirect-0.13.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2b272e727a50ae3567b709964106260c59608e2c52e0be79bb7d9a0b4ea48511
 
 pkgname = gdirect-bin
