@@ -2,7 +2,7 @@
 
 pkgname=waka
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A front-end for libalpm, inspired by nala"
 url="https://github.com/Shisones/Waka"
 license=('GPL-3.0-only')
@@ -31,6 +31,7 @@ build() {
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
+    export NO_COLOR=1
     cd "$srcdir/$pkgname-$pkgver"
     cargo test --frozen --all-features
 }

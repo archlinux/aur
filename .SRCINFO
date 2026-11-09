@@ -1,7 +1,7 @@
 pkgbase = waka
 	pkgdesc = A front-end for libalpm, inspired by nala
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Shisones/Waka
 	arch = x86_64
 	license = GPL-3.0-only
