@@ -4,7 +4,7 @@
 # -bin). Installed under /opt/towerofatum; `towerofatum` (and the menu entry) opens the launcher, which shows what's new
 # and starts the game, and `towerofatum-server` hosts.
 pkgname=towerofatum-bin
-pkgver=0.9.38
+pkgver=0.9.39
 pkgrel=1
 pkgdesc="Prototype multiplayer game client"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("https://github.com/NickMarcha/TowerOfAtum-releases/releases/download/cl
         'towerofatum.desktop'
         'towerofatum.png'
         'LICENSE')
-sha256sums=('487dc6e4dded900e63169e51f21a7c8958d2b5a6bc2ff1d9a5af99e446ede005'
+sha256sums=('a88ba95f664b0040aef1c521b21c629a71b1868541c2b4eef7ad17a5eacc6526'
             '1f0d1bf26d859b00670be26b2deb5939a9dc2adef6d6756bf22b45faf8592511'
             '3801c09495ed6ae351ebb358d166cba64f87498205fefb3a97cbe52dd9dd1893'
             '1da8f3dcb1ee8baf66b181fbb74ab9c8087acff1f12a6e000c55209acd98df7f'
