@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ordoñez <marcus@midgarcorp.cc>
 pkgname=tailscode
-pkgver=1.80
+pkgver=1.82
 pkgrel=1
 pkgdesc="Coding agents over Tailscale — a GTK4 client for Claude Code and opencode"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 # produces rather than optdepends: the loader resolves them before main and the app never starts
 # without them.
 depends=('gtk4' 'libadwaita' 'glib2' 'gdk-pixbuf2' 'libepoxy' 'vte4' 'mpv' 'webkitgtk-6.0' 'libpulse'
-         'curl')
+         'gtk4-layer-shell' 'curl')
 # swift-bin is the AUR toolchain; a swiftly install on PATH satisfies this too.
 makedepends=('swift-bin' 'git')
 optdepends=('tailscale: reach the machine your agent runs on')
