@@ -1,10 +1,11 @@
 pkgbase = gufo
 	pkgdesc = Fast inference engine for AMD Strix Halo (gfx1151)
 	pkgver = 0.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gufo-org/gufo
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	makedepends = cmake
 	makedepends = hipcub
 	makedepends = pkgconf
