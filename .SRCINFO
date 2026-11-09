@@ -1,0 +1,32 @@
+pkgbase = stuff-git
+	pkgdesc = lightweight file manager
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/hyperpuncher/stuff
+	arch = x86_64
+	arch = aarch64
+	license = MIT AND Zlib AND ISC
+	makedepends = git
+	makedepends = just
+	makedepends = odin>=dev_2026_10
+	depends = dbus
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sdl3
+	depends = sdl3_image
+	depends = sdl3_ttf
+	depends = systemd-libs
+	depends = ttf-font
+	depends = udisks2
+	depends = wayland
+	depends = xdg-utils
+	optdepends = polkit-agent: authentication prompts for protected storage operations
+	optdepends = xdg-desktop-portal: application chooser and desktop font settings
+	provides = stuff=r0
+	conflicts = stuff
+	options = !debug
+	source = stuff::git+https://github.com/hyperpuncher/stuff.git#branch=main
+	sha256sums = SKIP
+
+pkgname = stuff-git
