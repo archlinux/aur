@@ -1,5 +1,5 @@
 pkgname="recomplauncher-bin"
-pkgver=0.90.0.22
+pkgver=0.90.0.24
 pkgrel=1
 pkgdesc="Recompiled games, native on PC."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL 3.0')
 
 source=("RecompLauncher.desktop" "https://github.com/elripalda/RecompLauncher/releases/download/v${pkgver%.*}-beta.${pkgver##*.}/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage")
 sha256sums=('3e775eee4f97fccac2bc634e042ecd0337ff487c49f20a00d758adb9a06e57cd'
-            'df7d2f72fd5e77c1f782b917fdbfbb289c64b5ac4d48d60a4312e55a637d6487')
+            '5a26b13a83ec276e778b52caccf9ca4a9cb164a50ae045c568d081773eddbaff')
 
 package(){
     install -dm755 "$pkgdir/usr/bin"
