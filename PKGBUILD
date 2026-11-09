@@ -46,8 +46,10 @@ source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
     'https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/949.patch' # For the new SteamRT3 build
 )
-sha256sums=('SKIP'
-            'e934cfcdf8eb01224abcd77c20e5689a8857020ab5921c0bda850da8287b7643')
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
 options=(!debug)
 install="${_pkgname}.install"
 
