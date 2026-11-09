@@ -2,73 +2,79 @@
 
 # This is a split package since most people only need the VST3 plugin
 pkgbase=chowtapemodel-git
-pkgname=('chowtapemodel-jack-git' 'chowtapemodel-clap-git' 'chowtapemodel-vst3-git' 'chowtapemodel-lv2-git')
+pkgname=(chowtapemodel-jack-git chowtapemodel-clap-git chowtapemodel-vst3-git chowtapemodel-lv2-git)
 _pkgname=AnalogTapeModel
 pkgver=2.11.4.r0.g604372e
-pkgrel=2
-pkgdesc="Physical modelling signal processing for analog tape recording"
-arch=('x86_64')
-url="https://github.com/jatinchowdhury18/AnalogTapeModel"
-license=('GPL3')
-depends=('freeglut' 'freetype2' 'libxcursor' 'libxinerama' 'libxrandr')
-makedepends=('git' 'cmake' 'alsa-lib' 'jack' 'webkit2gtk')
+pkgrel=3
+pkgdesc='Physical modelling signal processing for analog tape recording'
+arch=(x86_64)
+url='https://github.com/jatinchowdhury18/AnalogTapeModel'
+license=(GPL-3.0-only)
+depends=(glibc freetype2 libgcc libstdc++)
+makedepends=(alsa-lib cmake git jack ninja)
 # TODO: Remove this patch once the plugin is updated to JUCE 7
 source=('git+https://github.com/jatinchowdhury18/AnalogTapeModel.git'
-       'fix-missing-utility-include.patch::https://github.com/juce-framework/JUCE/commit/ce8aff22c31c4d932a8414bc6f6185381dc970db.patch')
+        'fix-missing-utility-include.patch::https://github.com/juce-framework/JUCE/commit/ce8aff22c31c4d932a8414bc6f6185381dc970db.patch')
 sha256sums=('SKIP'
             '8969747d67ebce627abc8ad325012ddf5ba147646102aab954ac831a5b16f8e0')
 
+
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
-    git submodule update --init --recursive -j 4
+  cd $_pkgname
+  git submodule update --init --recursive -j 4
 
-    # TODO: This patch is needed right now because JUCE 6 is missing an include
-    #       and doesn't build with GCC 12. The `|| true` is there to prevent
-    #       breaking the build when the plugin is updated to JUCE 7. When that
-    #       happens, this patch should be removed.
-    patch --directory='Plugin/modules/JUCE' --forward --strip=1 --input="${srcdir}/fix-missing-utility-include.patch" || true
+  # TODO: This patch is needed right now because JUCE 6 is missing an include
+  #       and doesn't build with GCC 12. The `|| true` is there to prevent
+  #       breaking the build when the plugin is updated to JUCE 7. When that
+  #       happens, this patch should be removed.
+  patch --directory='Plugin/modules/JUCE' --forward --strip=1 --input="$srcdir"/fix-missing-utility-include.patch || true
 }
 
 build() {
-    cd "$srcdir/$_pkgname/Plugin"
-    cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
-    make -C build CHOWTapeModel_Standalone CHOWTapeModel_CLAP CHOWTapeModel_VST3 CHOWTapeModel_LV2
+  cmake \
+    -S $_pkgname/Plugin \
+    -B build-$_pkgname \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX='/usr' \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -G Ninja \
+    -Wno-author
+  cmake --build build-$_pkgname
 }
 
 package_chowtapemodel-jack-git() {
-    depends+=('alsa-lib' 'jack')
-    provides=('chowtapemodel-jack')
+  depends+=(libasound.so 'jack')
+  provides=('chowtapemodel-jack')
 
-    cd "$srcdir/$_pkgname/Plugin/build/CHOWTapeModel_artefacts/Release"
-    install -dm755 "$pkgdir/usr/bin"
-    cp -r Standalone/CHOWTapeModel "$pkgdir/usr/bin"
+  cd build-$_pkgname/CHOWTapeModel_artefacts/Release
+  install -vDm 755 Standalone/CHOWTapeModel -t "$pkgdir"/usr/bin
 }
 
 package_chowtapemodel-clap-git() {
-    provides=('chowtapemodel-clap' 'chowtapemodel.clap' 'chowtapemodel.clap-git')
+  provides=(chowtapemodel-clap chowtapemodel.clap chowtapemodel.clap-git)
 
-    cd "$srcdir/$_pkgname/Plugin/build/CHOWTapeModel_artefacts/Release"
-    install -dm755 "$pkgdir/usr/lib/clap"
-    cp -r CLAP/CHOWTapeModel.clap "$pkgdir/usr/lib/clap"
+  cd build-$_pkgname/CHOWTapeModel_artefacts/Release
+  install -vdm 755 "$pkgdir/usr/lib/clap"
+  cp -r CLAP/CHOWTapeModel.clap "$pkgdir"/usr/lib/clap
 }
 
 package_chowtapemodel-vst3-git() {
-    provides=('chowtapemodel-vst3' 'chowtapemodel.vst3' 'chowtapemodel.vst3-git')
+  provides=(chowtapemodel-vst3 chowtapemodel.vst3 chowtapemodel.vst3-git)
 
-    cd "$srcdir/$_pkgname/Plugin/build/CHOWTapeModel_artefacts/Release"
-    install -dm755 "$pkgdir/usr/lib/vst3"
-    cp -r VST3/CHOWTapeModel.vst3 "$pkgdir/usr/lib/vst3"
+  cd build-$_pkgname/CHOWTapeModel_artefacts/Release
+  install -vdm 755 "$pkgdir/usr/lib/vst3"
+  cp -r VST3/CHOWTapeModel.vst3 "$pkgdir"/usr/lib/vst3
 }
 
 package_chowtapemodel-lv2-git() {
-    provides=('chowtapemodel-lv2' 'chowtapemodel.lv2' 'chowtapemodel.lv2-git')
+  provides=(chowtapemodel-lv2 chowtapemodel.lv2 chowtapemodel.lv2-git)
 
-    cd "$srcdir/$_pkgname/Plugin/build/CHOWTapeModel_artefacts/Release"
-    install -dm755 "$pkgdir/usr/lib/lv2"
-    cp -r LV2/CHOWTapeModel.lv2 "$pkgdir/usr/lib/lv2"
+  cd build-$_pkgname/CHOWTapeModel_artefacts/Release
+  install -vdm 755 "$pkgdir/usr/lib/lv2"
+  cp -r LV2/CHOWTapeModel.lv2 "$pkgdir"/usr/lib/lv2
 }
