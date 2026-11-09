@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/nexus-launcher/xodus-nexus "$@"

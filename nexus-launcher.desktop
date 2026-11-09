@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Nexus Launcher
+Comment=Xbox-inspired Microsoft Store game launcher for Linux
+Exec=nexus-launcher %U
+Icon=nexus-launcher
+Terminal=false
+Categories=Game;
+StartupWMClass=Nexus Launcher
