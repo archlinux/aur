@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 // Pin the MiniMax Code desktop bundle to one region and isolate its profile.
 //
-// The upstream Windows package ships a mainland-China build (REGION:"cn",
-// agent.minimax.cn). The renderer chunks inline every NEXT_PUBLIC_* URL and
-// carry a duplicated region module (webpack module 58291) exporting `a1`
-// (isOverseas, false). The intl build flips that flag and rewrites the inlined
-// endpoints; the cn build keeps the upstream values untouched. Both builds
-// rewrite package.json's name so Electron derives a distinct userData dir.
+// The two download channels carry region-specific installers that inline every
+// NEXT_PUBLIC_* URL. Through 3.1.11 the channel used here shipped the
+// mainland-China build (REGION:"cn", agent.minimax.cn) plus a duplicated region
+// module (webpack module 58291) exporting `a1` (isOverseas, false); the intl
+// build flipped that flag and rewrote the inlined endpoints. 3.1.12 already
+// ships the overseas build and dropped that module, so the flip is optional and
+// the region is asserted on .env.local. Both builds rewrite package.json's name
+// so Electron derives a distinct userData dir.
 //
 // The archive is rewritten in place (packed entries only, offsets recomputed)
 // because `asar extract` fails on this payload: its header marks Windows/macOS
@@ -83,24 +85,38 @@ function readEntry(fd, dataOffset, entry) {
 }
 
 let patched = 0;
+let regionModuleSeen = 0;
 let regionFlagFlipped = 0;
+let regionAlreadyOverseas = 0;
 
 function patchIntl(rel, source) {
   let out = source;
   for (const [from, to] of INTL_REPLACEMENTS) {
     if (out.includes(from)) out = out.split(from).join(to);
   }
-  // Flip the duplicated region module's a1/isOverseas export. Minified
-  // variable names differ per chunk, so resolve the export name first.
+  // Up to 3.1.11 the Windows installer carried a duplicated region module
+  // (webpack module 58291) exporting a1/isOverseas; the overseas build needs
+  // that flag flipped. Minified variable names differ per chunk, so resolve
+  // the export name first. 3.1.12 ships separate per-region installers and has
+  // no such module, in which case the region is asserted on .env.local below.
   if (out.includes('58291:function')) {
+    regionModuleSeen++;
     const start = out.indexOf('58291:function');
     const match = out.slice(start, start + 1200).match(/a1:function\(\)\{return (\w+)\}/);
     if (!match) throw new Error(`a1 export not found in ${rel}`);
     const name = match[1];
-    const idx = out.indexOf(`${name}=!1`, start);
-    if (idx < 0) throw new Error(`a1 assignment not found in ${rel}`);
-    out = out.slice(0, idx) + `${name}=!0` + out.slice(idx + name.length + 3);
-    regionFlagFlipped++;
+    const assign = new RegExp(`(?<![\\w$])${name}=!(\\d)`);
+    const found = assign.exec(out.slice(start));
+    if (!found) throw new Error(`a1 assignment not found in ${rel}`);
+    if (found[1] === '0') {
+      regionAlreadyOverseas++;
+    } else if (found[1] === '1') {
+      const idx = start + found.index;
+      out = out.slice(0, idx) + `${name}=!0` + out.slice(idx + name.length + 3);
+      regionFlagFlipped++;
+    } else {
+      throw new Error(`unexpected a1 assignment in ${rel}`);
+    }
   }
   if (out !== source) patched++;
   return out;
@@ -130,6 +146,10 @@ function main() {
     else if (mode === 'intl' && (isEnv || isJs)) out = patchIntl(item.rel, source);
     if (out !== source) {
       item.patched = Buffer.from(out, 'utf8');
+    } else if (mode === 'intl' && isEnv) {
+      // Already-overseas builds need no rewrite; keep the entry marked so the
+      // post-check below can verify its contents.
+      item.patched = Buffer.from(out, 'utf8');
     }
   }
 
@@ -139,11 +159,17 @@ function main() {
   }
 
   if (mode === 'intl') {
-    if (regionFlagFlipped === 0) throw new Error('no region module (58291) was flipped');
+    if (regionModuleSeen > 0 && regionFlagFlipped === 0 && regionAlreadyOverseas === 0) {
+      throw new Error('region module (58291) found but neither flipped nor overseas');
+    }
     const envItem = packed.find((i) => i.rel === '.env.local');
-    if (!envItem || !envItem.patched) throw new Error('.env.local was not rewritten');
-    if (!envItem.patched.toString('utf8').includes('https://agent.minimax.io')) {
+    if (!envItem || !envItem.patched) throw new Error('.env.local missing from the payload');
+    const envText = envItem.patched.toString('utf8');
+    if (!envText.includes('https://agent.minimax.io')) {
       throw new Error('.env.local still points at the cn domain');
+    }
+    if (envText.includes('minimax.cn')) {
+      throw new Error('.env.local still references minimax.cn endpoints');
     }
   }
 
@@ -204,7 +230,7 @@ function main() {
   fs.chmodSync(tmp, 0o644);
   fs.renameSync(tmp, asarPath);
 
-  console.log(`patched ${patched} packed entry(s) for ${mode} (region modules flipped: ${regionFlagFlipped})`);
+  console.log(`patched ${patched} packed entry(s) for ${mode} (region modules: ${regionModuleSeen}, flipped: ${regionFlagFlipped}, already overseas: ${regionAlreadyOverseas})`);
 }
 
 try {
