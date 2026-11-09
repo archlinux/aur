@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=neo-writing-bin
 _appname=neo-writing
-pkgver=1.5.1
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A distraction-free word processor for authors"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 _filename="NEO-${pkgver}.AppImage"
 source=("${_filename}::${url}/releases/download/v${pkgver}/${_filename}"
         "LICENSE::https://raw.githubusercontent.com/hughhowey/neo/v${pkgver}/LICENSE")
-sha256sums=('a7d629aa7afc692d7c31ba5b2ee778feda4fc1909b6df4b74037499c04fef590'
+sha256sums=('964807089ade35cf28e4b6ea02438ce22edf9ee28a9460c5ea8ae959c7e0565c'
             '2ca9751b685b12507fc5ce8e9cb172458d86c0e4db4baf95f950a911e29a975a')
 
 prepare() {

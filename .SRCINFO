@@ -1,6 +1,6 @@
 pkgbase = neo-writing-bin
 	pkgdesc = A distraction-free word processor for authors
-	pkgver = 1.5.1
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/hughhowey/neo
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = neo-writing-bin
 	conflicts = neo-writing
 	options = !strip
 	options = !debug
-	source = NEO-1.5.1.AppImage::https://github.com/hughhowey/neo/releases/download/v1.5.1/NEO-1.5.1.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/hughhowey/neo/v1.5.1/LICENSE
-	sha256sums = a7d629aa7afc692d7c31ba5b2ee778feda4fc1909b6df4b74037499c04fef590
+	source = NEO-1.6.4.AppImage::https://github.com/hughhowey/neo/releases/download/v1.6.4/NEO-1.6.4.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/hughhowey/neo/v1.6.4/LICENSE
+	sha256sums = 964807089ade35cf28e4b6ea02438ce22edf9ee28a9460c5ea8ae959c7e0565c
 	sha256sums = 2ca9751b685b12507fc5ce8e9cb172458d86c0e4db4baf95f950a911e29a975a
 
 pkgname = neo-writing-bin
