@@ -1,0 +1,10 @@
+post_install() {
+  cat <<'MSG'
+==> nimdow-wl desktop installed.
+  1. Enable networking:      sudo systemctl enable --now NetworkManager
+  2. Start the desktop from a TTY with:   river -c nimdow-wl
+     or install a login manager (sddm, greetd-tuigreet) and pick "nimdow-wl".
+  The default config (/etc/xdg/nimdow-wl/config.toml) is copied to
+  ~/.config/nimdow-wl/config.toml on first login; edit that copy.
+MSG
+}
