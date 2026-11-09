@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/digimezzo/dopamine"
 license=("GPL-3.0-only")
 depends=(
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'python'
 )
 makedepends=(
