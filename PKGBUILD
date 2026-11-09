@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname='grype'
-pkgver=0.121.2
+pkgver=0.121.3
 pkgrel=1
 pkgdesc='A vulnerability scanner for container images and filesystems.'
 url='https://github.com/anchore/grype'
@@ -10,7 +10,7 @@ arch=(aarch64 x86_64)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1b68dc6388cbf5287a7b055bf67b2c68e39a5f7abd159b0e2a1d155d3e89ccb2')
+sha256sums=('ced703b9f94606d33f346369ec3d2f84aaa420147232b633d8d847987f9c64bd')
 
 prepare() {
   cd "${pkgname}-${pkgver}/cmd/$pkgname"
