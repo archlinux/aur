@@ -1,7 +1,12 @@
 # Maintainer: Ken Tobias <kentobias@gmail.com>
+#
+# TEMPLATE -- rendered for a released tag by scripts/render_packaging.py (via
+# `just aur-publish <version>` or `just aur-render <version> <dir>`). Do not write a
+# concrete pkgver or sha256sums here: `just aur-check` refuses both, and `.SRCINFO` is
+# generated from the rendered file rather than tracked.
 
 pkgname=rusticprofile
-pkgver=0.2.56
+pkgver=0.2.60
 pkgrel=1
 pkgdesc="A local, per-machine scheduler and orchestrator for rustic backups"
 arch=('x86_64' 'aarch64')
@@ -12,7 +17,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'rustic')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b06db1c8bd60bbaa6837c5159b1a4f37f150ba5983a6945bad972571a9450554')
+sha256sums=('cb69082ef04f350ed6100cddbef1c496b674f82a8e5905d1bdbf24f3a60f125a')
 
 prepare() {
   cd "$pkgname-$pkgver"
