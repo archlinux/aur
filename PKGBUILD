@@ -1,9 +1,9 @@
 # Maintainer: srgooglo <srgooglo@ragestudio.net>
 pkgname=comty-desktop
 
-_electronversion=43
+_electronversion=45
 
-pkgver="0.12.1"
+pkgver="0.13.0"
 pkgrel=1
 pkgdesc="Official Comty Desktop application"
 arch=("x86_64")
