@@ -1,16 +1,18 @@
 pkgbase = dopamine-bin
 	pkgdesc = An elegant audio player which tries to make organizing and listening to music as simple and pretty as possible.
-	pkgver = 3.0.11
+	pkgver = 3.0.12
 	pkgrel = 1
 	url = https://digimezzo.github.io/site/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron38
-	provides = dopamine=3.0.11
+	depends = electron38-bin
+	provides = dopamine=3.0.12
 	conflicts = dopamine
-	source = dopamine-3.0.11.pacman::https://github.com/digimezzo/dopamine/releases/download/v3.0.11/Dopamine-3.0.11.pacman
+	source = dopamine-3.0.12.pacman::https://github.com/digimezzo/dopamine/releases/download/v3.0.12/Dopamine-3.0.12.pacman
+	source = dopamine.js
 	source = dopamine.sh
-	sha256sums = d70f64f9e8006850e246ee77d4f76a6b3be8a051c82336ccc404b203399cde91
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = a01e1e590c3c1078ba476ef36d327554b48deb36f611282017f2cec6da8c8e27
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 
 pkgname = dopamine-bin
