@@ -2,7 +2,7 @@
 
 _name=smithy-aws-event-stream
 pkgname=python-$_name
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Smithy components for Amazon Event Streams.'
 arch=('any')
@@ -10,13 +10,18 @@ _repo='https://github.com/smithy-lang/smithy-python'
 url="$_repo/tree/develop/packages/smithy-aws-event-stream"
 license=('Apache-2.0')
 depends=('python' 'python-smithy-core')
-makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel' 'git')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-freezegun' 'python-smithy-json')
-source=("$_name::git+$_repo.git#tag=$_name/v$pkgver")
-sha256sums=('68ebb6567862fffa9c31e5d5494064086b046967dd9f2ce5d2cada816b3679c6')
+makedepends=('python-hatchling'
+             'python-build'
+             'python-installer')
+checkdepends=('python-pytest'
+              'python-pytest-asyncio'
+              'python-freezegun'
+              'python-smithy-json')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
+sha256sums=('cfdb46e398d4f89c46ddeadaac8b79e3619cb59a3e3f9d71f23e675a09f03a1b')
 
 build() {
-  cd "$srcdir"/$_name/packages/$_name
+  cd "smithy-python-$_name-v$pkgver/packages/$_name"
   python -m build --wheel --no-isolation
 }
 
@@ -25,12 +30,14 @@ check() {
     -vv
     --disable-warnings
     --override-ini="addopts="
+    --import-mode=importlib
+    -o consider_namespace_packages=true
   )
-  cd "$srcdir"/$_name/packages/$_name
+  cd "smithy-python-$_name-v$pkgver/packages/$_name"
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/$_name/packages/$_name
+  cd "smithy-python-$_name-v$pkgver/packages/$_name"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
