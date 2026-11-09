@@ -3,7 +3,7 @@
 
 pkgname=mtgpu-s30-userland
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Moore Threads MTT S30 userland graphics and compute drivers (OpenGL, Vulkan, VA-API, MUSA)'
 arch=('x86_64')
 install='mtgpu-s30-userland.install'
