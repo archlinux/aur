@@ -2,7 +2,7 @@
 
 pkgname=chromium-extension-locals-git
 _pkgname=locals
-pkgver=r52.be18f06
+pkgver=r65.3fe6125
 pkgrel=1
 pkgdesc='λocals: Chromium extension that serves common CDN libraries from a local bundle (Decentraleyes/LocalCDN alike), loaded unpacked'
 arch=('any')
