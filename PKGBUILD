@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawd-on-desk-bin
 _pkgname='Clawd on Desk'
-pkgver=1.5.0
+pkgver=1.6.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A pixel desktop pet that watches Claude Code, Codex, Cursor & other AI coding agents — so you don't have to."
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8085a9e34a047af49904861a5cb627236fc5d1cd49373a335154a8dad50114d8'
+sha256sums=('968c63f6cf7f942303a42005c91e9112dd4fe1b972beb792691930d5fadc449d'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
