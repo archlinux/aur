@@ -1,0 +1,21 @@
+pkgbase = kuina-git-static
+	pkgdesc = Fish/bash/zsh shell prompt in the style of XMonad.
+	pkgver = 1d0ef3f
+	pkgrel = 1
+	url = https://codeberg.org/eviefp/kuina
+	arch = x86_64
+	license = PPL
+	makedepends = cabal-install
+	makedepends = ghc
+	makedepends = ghc-static
+	makedepends = ghc-libs
+	depends = gmp
+	depends = glibc
+	depends = inetutils
+	provides = kuina
+	conflicts = kuina
+	replaces = kuina
+	source = git+https://codeberg.org/eviefp/kuina.git
+	sha256sums = SKIP
+
+pkgname = kuina-git-static
