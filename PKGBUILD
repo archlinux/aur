@@ -5,7 +5,7 @@
 
 pkgname=kimi-code-intl-bin
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 _appname='Kimi Code'
 _prefix='/opt/kimi-code-intl'
 pkgdesc='Kimi Code Desktop, international build pinned to the global API'
@@ -33,6 +33,14 @@ source=(
   'patch-region.js'
   'kimi-code-intl.sh'
   'kimi-code-intl.desktop'
+  'kimi-code-intl-16.png'
+  'kimi-code-intl-24.png'
+  'kimi-code-intl-32.png'
+  'kimi-code-intl-48.png'
+  'kimi-code-intl-64.png'
+  'kimi-code-intl-128.png'
+  'kimi-code-intl-256.png'
+  'kimi-code-intl-512.png'
 )
 noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 sha256sums=(
@@ -40,6 +48,14 @@ sha256sums=(
   'ea518e5c5eae5f1e2c7d7a4e8dfa62609169d05845b8d9b7d3ae7c4500996f2d'
   'ab395aa009b442d4a30a2c682fe3ce07930abdf814b2fae59a41f20d032c9c55'
   'c2ce2c7e3267701aa192cae428bf9aebb356402c5bb04131c1d89a361d5f1457'
+  'dd64d29089377b6718b81eeb2e63c83c8e31d3f817d3893a3439c445b3b8d47f'
+  'dacb9f0687f7003444c2587716ae89eb9fb81a4f933934162880289f9a5d2da8'
+  '776043375559876bccf9a58b95de8863857338ad4b0b046b878a7d616535f7c9'
+  '34b289cc68a6c623b731e38e0ae8bdb46d39a3ae6928cddc44b813e63e3e8649'
+  'cea3db969116b4d584c12f7b552d1bf6ca0f20d1242f89265517a1878cfdee0a'
+  'fe90e2c0517bd140dd8d6b1d9fca22c93d442dbfdbfd7adfc41eeef2727bb1b4'
+  'aa3823fd955206bb4f41fa9f66b091d17bde468c4f452e7157a6889d3a8e3e44'
+  'b92b3f6010913466704593e429f2a51d4e64195571652b32d63305f181fb12dd'
 )
 
 prepare() {
@@ -77,9 +93,11 @@ package() {
   install -Dm755 "${srcdir}/kimi-code-intl.sh" "${pkgdir}/usr/bin/kimi-code"
   install -Dm644 "${srcdir}/kimi-code-intl.desktop" \
     "${pkgdir}/usr/share/applications/kimi-code-intl.desktop"
-  install -Dm644 \
-    "${srcdir}/payload/usr/share/icons/hicolor/512x512/apps/kimi-code.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/kimi-code-intl.png"
+  local _size
+  for _size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "${srcdir}/kimi-code-intl-${_size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/kimi-code-intl.png"
+  done
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "${_prefix}/LICENSE.electron.txt" \
