@@ -3,7 +3,7 @@
 pkgname=orchis-theme-fixed-git
 _name=orchis-theme
 _fixes=orchis
-pkgver=2026.07.07.r5.ga4c48a4.f7.0c09bae
+pkgver=2026.07.07.r5.ga4c48a4.f19.42fc4f2
 pkgrel=1
 pkgdesc="Orchis, a Material Design GTK theme, Dracula colors, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)"
 arch=('any')
@@ -88,11 +88,24 @@ prepare() {
   done
 }
 
+# Window buttons: macOS-style (red/yellow/green circles, a darker dot on hover) or Orchis' own
+# Material glyph buttons; the fixes take both from the theme's $mac_style, so the same package
+# serves either and the theme names do not change. mac_buttons=true|false makepkg decides without
+# asking; otherwise makepkg asks on the terminal (default: normal), and builds normal when there is
+# no terminal (chroot, CI, AUR helpers that detach it).
 package() {
   cd "${_name}"
+  local tweaks=(dracula) answer=
+  if [[ -z ${mac_buttons:-} ]] && { : </dev/tty; } 2>/dev/null; then
+    read -r -p "Orchis window buttons: [n]ormal or [m]ac? [N/m] " answer </dev/tty >/dev/tty || true
+    [[ ${answer,,} == m* ]] && mac_buttons=true
+  fi
+  if [[ ${mac_buttons:-} == true ]]; then
+    tweaks+=(macos)
+  fi
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   install -d "${pkgdir}/usr/share/themes"
   # every accent, Dracula colors, 12px corners
   # TERM: install.sh draws a spinner with tput, which fails without one (clean chroots)
-  TERM=${TERM:-dumb} ./install.sh -t all --tweaks dracula --round 12px -d "${pkgdir}/usr/share/themes"
+  TERM=${TERM:-dumb} ./install.sh -t all --tweaks "${tweaks[@]}" --round 12px -d "${pkgdir}/usr/share/themes"
 }
