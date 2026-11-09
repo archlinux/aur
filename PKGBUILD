@@ -5,7 +5,7 @@
 # .SRCINFO; see docs/release.md.
 pkgname=lazybw-bin
 _pkgname=lazybw
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A keyboard-first terminal UI for the Bitwarden vault (static binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('14451d69504a9bc12ab2fe77dae6d9adcde4de0fb4967bf545361692ad144a9d')
-sha256sums_aarch64=('77f2fcc7592ef338b0fcf75df50ffdaf1e1b6001a671ecec3a3c7cae78d468ef')
+sha256sums_x86_64=('17277478b082c01a40675702f1f1ba292330a98aa19fcd148bee751241b30712')
+sha256sums_aarch64=('784845ac3a30b299a91ae814afd2e4cc59f47b0075d9aa613513e2b61c1f97da')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-unknown-linux-musl"
