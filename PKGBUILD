@@ -2,7 +2,7 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/OrcaSlicer/OrcaSlicer"
@@ -25,8 +25,6 @@ prepare() {
 package() {
   install -d ${pkgdir}/opt/${pkgname%-bin}/
   cp -a squashfs-root/* ${pkgdir}/opt/${pkgname%-bin}/
-  find ${pkgdir}/opt/${pkgname%-bin}/ -type d -exec chmod 755 {} +
-  find ${pkgdir}/opt/${pkgname%-bin}/ -type f -exec chmod u+rw,g+r,o+r {} +
   rm -rf ${pkgdir}/opt/${pkgname%-bin}/{usr,com.orcaslicer.OrcaSlicer.desktop,OrcaSlicer.png}
 
   install -d $pkgdir/usr/bin
@@ -40,4 +38,6 @@ package() {
   cp -r squashfs-root/usr/share/icons/hicolor/ ${pkgdir}/usr/share/icons/
 
   chmod +x ${pkgdir}/opt/orca-slicer/libexec/orca-slicer-env
+  find ${pkgdir}/ -type d -exec chmod 755 {} +
+  find ${pkgdir}/ -type f -exec chmod u+rw,g+r,o+r {} +
 }
