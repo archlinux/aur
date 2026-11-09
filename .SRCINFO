@@ -1,7 +1,7 @@
 pkgbase = ente-photos-bin
 	pkgdesc = Desktop client for ente Photos (self-contained AppImage)
 	pkgver = 1.7.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ente.com/
 	arch = x86_64
 	license = AGPL-3.0-only

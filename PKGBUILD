@@ -2,7 +2,7 @@
 
 pkgname=ente-photos-bin
 pkgver=1.7.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for ente Photos (self-contained AppImage)"
 arch=('x86_64')
 url="https://ente.com/"
@@ -50,6 +50,7 @@ package() {
 
     install -d "$pkgdir/opt/ente"
     cp -a squashfs-root/. "$pkgdir/opt/ente/"
+    chmod -R a+rX "$pkgdir/opt/ente"
 
     install -Dm755 ente.sh "$pkgdir/usr/bin/ente"
 
