@@ -1,16 +1,16 @@
 pkgbase = launtui-bin
 	pkgdesc = A keyboard-driven launcher for the terminal
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/siliconwitch/launtui
 	license = MIT
 	conflicts = launtui
 	provides = launtui
 	arch = aarch64
-	source_aarch64 = launtui-bin_0.2.0_aarch64.tar.gz::https://github.com/siliconwitch/launtui/releases/download/v0.2.0/launtui_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4f2ae227d6eb0308b98468d796ba1b59a27bb0ea7199e287cdae0ffba2123b20
+	source_aarch64 = launtui-bin_0.3.0_aarch64.tar.gz::https://github.com/siliconwitch/launtui/releases/download/v0.3.0/launtui_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b01b4acf6d8bf811abae62a60d7c886282a6c8987e172b18b4cda6e29621d1b8
 	arch = x86_64
-	source_x86_64 = launtui-bin_0.2.0_x86_64.tar.gz::https://github.com/siliconwitch/launtui/releases/download/v0.2.0/launtui_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = bcda6f39fdc62e7bd9f2c2d4ad6c39ee68144325e3729c33bda214f47e619f0c
+	source_x86_64 = launtui-bin_0.3.0_x86_64.tar.gz::https://github.com/siliconwitch/launtui/releases/download/v0.3.0/launtui_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d2698ba4847f12c6b692ea1804b835b24cfadc03104fbe72e556d2bb48fc5d73
 	
 pkgname = launtui-bin

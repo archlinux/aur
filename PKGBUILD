@@ -2,7 +2,7 @@
 # Maintainer: Raj Nakarja <raj@siliconwitchery.com>
 
 pkgname='launtui-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A keyboard-driven launcher for the terminal'
 url='https://github.com/siliconwitch/launtui'
@@ -12,10 +12,10 @@ provides=('launtui')
 conflicts=('launtui')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/siliconwitch/launtui/releases/download/v${pkgver}/launtui_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4f2ae227d6eb0308b98468d796ba1b59a27bb0ea7199e287cdae0ffba2123b20')
+sha256sums_aarch64=('b01b4acf6d8bf811abae62a60d7c886282a6c8987e172b18b4cda6e29621d1b8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/siliconwitch/launtui/releases/download/v${pkgver}/launtui_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('bcda6f39fdc62e7bd9f2c2d4ad6c39ee68144325e3729c33bda214f47e619f0c')
+sha256sums_x86_64=('d2698ba4847f12c6b692ea1804b835b24cfadc03104fbe72e556d2bb48fc5d73')
 
 package() {
   install -Dm755 "./launtui" "${pkgdir}/usr/bin/launtui"
