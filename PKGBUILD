@@ -1,7 +1,7 @@
 # Maintainer: Siiire <siiire@pm.me>
 pkgname=jellium-desktop-bin
-pkgver=0.r1156.1b73a13
-pkgrel=4
+pkgver=0.r1161.ec4cba2
+pkgrel=1
 epoch=1
 pkgdesc="An unofficial desktop client for Jellyfin"
 arch=('x86_64')
