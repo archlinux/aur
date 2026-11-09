@@ -2,10 +2,10 @@
 # Contributor: Sebastian Meßlinger <sebastian.messlinger@posteo.de>
 pkgname=dnslookup-git
 pkgver=1.10.0.r1.gbbd6081
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
-arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'mips' 'mips64')
+arch=('x86_64')
 url="https://github.com/ameshkov/dnslookup"
 license=('MIT')
 depends=('glibc')
