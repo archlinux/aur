@@ -1,6 +1,6 @@
 pkgbase = mbv
 	pkgdesc = mpv/Emby and Audiobookshelf front-end
-	pkgver = 0.26.6
+	pkgver = 0.26.7
 	pkgrel = 1
 	url = https://github.com/slatkin/mbv
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mbv
 	depends = libxkbcommon
 	depends = fontconfig
 	optdepends = pinwin>=0.4.1: pinned panel support
-	source = mbv-0.26.6-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.26.6/mbv-0.26.6-linux-x86_64.tar.gz
-	sha256sums = 4011d004acdcfd413a64b08b512c34e34f41e9aee97253187a1acd19d87207cf
+	source = mbv-0.26.7-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.26.7/mbv-0.26.7-linux-x86_64.tar.gz
+	sha256sums = 2d874355e668b30539469b6a658c93b16f166de8b489865712977ccd8a3fce3e
 
 pkgname = mbv
