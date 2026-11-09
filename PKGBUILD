@@ -1,6 +1,6 @@
 # Maintainer: tryashtar <tryashtar@gmail.com>
 pkgname=minecraft-ttf-git
-pkgver=1.6.1.g1b1945b
+pkgver=1.6.1.08aa4736
 pkgrel=1
 pkgdesc="Pixel-accurate and complete TrueType fonts from Minecraft: Java Edition, generated automatically from the latest version of the game"
 url="https://github.com/tryashtar/minecraft-ttf"
@@ -19,7 +19,9 @@ pkgver() {
 
 build() {
    cd "$srcdir/minecraft-ttf"
-   cargo run --manifest-path ./minecraft-ttf/Cargo.toml -- vanilla generate latest --styles regular,bold,italic,bold-italic --identifiers default,alt,illageralt
+   cargo run --manifest-path ./minecraft-ttf/Cargo.toml -- generate --jar-latest --styles regular,bold,italic,bold-italic --identifier default
+   cargo run --manifest-path ./minecraft-ttf/Cargo.toml -- generate --jar-latest --styles regular,bold,italic,bold-italic --identifier alt
+   cargo run --manifest-path ./minecraft-ttf/Cargo.toml -- generate --jar-latest --styles regular,bold,italic,bold-italic --identifier illageralt
 }
 
 package() {
