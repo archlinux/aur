@@ -1,14 +1,14 @@
 # Maintainer: Cryolitia <cryolitia at gmail dot com>
 
 pkgname=fcitx5-theme-deepin
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=3
 pkgdesc="Deepin theme for fcitx5"
 arch=('any')
 url="https://github.com/linuxdeepin/fcitx5-theme-deepin"
 license=('CC-BY-SA-4.0')
-source=("https://github.com/linuxdeepin/fcitx5-theme-deepin/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('528c79534787ec5ad341f67724ead5610175ab37f1beac7a95d12c7e18606064892fc81e0cc3355fe70b319a29f6544e2818d1d4f7c923cf14f9b4e04d2474b7')
+source=("https://github.com/linuxdeepin/fcitx5-theme-deepin/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('ce6ba21ee8dda7074f728c1b85f1a74176e9ac95a37c19ece19dfef90a05b579b31615981b4e3bbabe64d73e6cc5abc10edb03e3beaaa602d9a160eac62b3c8c')
 
 package() {
   cd fcitx5-theme-deepin-$pkgver
