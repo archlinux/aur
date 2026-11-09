@@ -2,7 +2,7 @@
 # Maintainer: nickheyer
 
 pkgname='nebu-bin'
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Model storage, inference runtime management, and API gateway'
 url='https://github.com/nickheyer/nebu'
@@ -15,10 +15,10 @@ optdepends=('git: git model sources' 'cmake: building llama.cpp and stable-diffu
 backup=('etc/nebu/config.yaml')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nickheyer/nebu/releases/download/v${pkgver}/nebu_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('266d4d83bb29e1a2f9aadc59ba1eda27555fece22e91260e6f75ee0d08a818dc')
+sha256sums_aarch64=('a8225567f41f74823c45ee85d00d8d3e29c6ac326e6081a211f9f91e732040a4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nickheyer/nebu/releases/download/v${pkgver}/nebu_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('82e32cb563af200e9cea41ec8a3a8152d1a783d0f089efc115a669198788b434')
+sha256sums_x86_64=('e9dccbfc26895c5a9f7239f8265bcedf98f096c50483ffad4b7c1f5f6f21395b')
 
 package() {
   install -Dm755 nebu "${pkgdir}/usr/bin/nebu"
