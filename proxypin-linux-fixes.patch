@@ -206,7 +206,7 @@ index 256241a..2ca8f8a 100644
      ];
    }
 diff --git a/lib/ui/launch/launch.dart b/lib/ui/launch/launch.dart
-index 7c1b72b..52ce281 100644
+index 7c1b72b..802d8f1 100644
 --- a/lib/ui/launch/launch.dart
 +++ b/lib/ui/launch/launch.dart
 @@ -13,6 +13,7 @@
@@ -227,7 +227,14 @@ index 7c1b72b..52ce281 100644
    @override
    void initState() {
      super.initState();
-@@ -75,6 +79,7 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+@@ -72,9 +76,14 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+       windowManager.addListener(this);
+       windowManager.setPreventClose(true);
+       DesktopTrayManager.instance.setQuitHandler(appExit);
++
++      /// 桌面端启动时就注册托盘图标：上游只在“关闭时最小化到托盘”那一刻才初始化，
++      /// 正常启动后右上角没有任何图标，用户找不到入口（也看不到“退出”菜单）。
++      DesktopTrayManager.instance.ensureInitialized().ignore();
      }
  
      WidgetsBinding.instance.addObserver(this);
@@ -235,7 +242,7 @@ index 7c1b72b..52ce281 100644
      //启动代理服务器
      if (widget.startup) {
        start();
-@@ -108,27 +113,32 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+@@ -108,27 +117,32 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
  
    Future<void> _handleWindowClose() async {
      final appConfiguration = AppConfiguration.current;
@@ -281,7 +288,7 @@ index 7c1b72b..52ce281 100644
        }
      }
  
-@@ -160,13 +170,36 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+@@ -160,13 +174,36 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
    }
  
    Future<void> appExit() async {
