@@ -3,7 +3,7 @@
 pkgname=hydra-ade
 _pkgname=hydra
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Autonomous Development Environment for parallel AI agent fleets (Tauri v2 + Rust Core)"
 arch=('x86_64')
 url="https://github.com/renanbs/hydra"
@@ -43,11 +43,12 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR="src-tauri/target"
+  export CARGO_TARGET_DIR="${srcdir}/${_pkgname}-${pkgver}/src-tauri/target"
+  rm -rf "$CARGO_TARGET_DIR"
 
   pnpm build
   cd src-tauri
-  cargo build --release --locked --offline || cargo build --release --offline
+  cargo build --release --offline
 }
 
 package() {
