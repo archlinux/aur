@@ -3,7 +3,7 @@
 # Contributor: Amirul Fitri <tounghacker@gmail.com>
 
 pkgname=playit
-pkgver=1.2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Tool to make your locally running game server public'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -19,7 +19,7 @@ options=('!lto')
 _repo='playit-cloud/playit-agent'
 _source_dir="playit-agent-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('caa1510cc71fc0ea1bf1cd3763c9e136f8d3aa81f5c26f0145a5000d401d4cf5')
+sha256sums=('2aedca0689cef1bf96a0cda7e91c16280a51b7b764a9531dd05c69af77b68633')
 
 prepare() {
   cd "${srcdir}/${_source_dir}"

@@ -1,6 +1,6 @@
 pkgbase = playit
 	pkgdesc = Tool to make your locally running game server public
-	pkgver = 1.2.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://playit.gg
 	install = playit.install
@@ -14,7 +14,7 @@ pkgbase = playit
 	conflicts = playit-bin
 	conflicts = playit-bin-debug
 	options = !lto
-	source = playit-1.2.0.tar.gz::https://github.com/playit-cloud/playit-agent/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = caa1510cc71fc0ea1bf1cd3763c9e136f8d3aa81f5c26f0145a5000d401d4cf5
+	source = playit-2.0.1.tar.gz::https://github.com/playit-cloud/playit-agent/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 2aedca0689cef1bf96a0cda7e91c16280a51b7b764a9531dd05c69af77b68633
 
 pkgname = playit
