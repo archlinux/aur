@@ -3,7 +3,7 @@
 _pkgname=slimit
 pkgname=${_pkgname}-gpu-git
 pkgver=1.1.10.r4.g147873b
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="GUI NVidia GPU overclock, power limit and fan manager"
 arch=('x86_64')
