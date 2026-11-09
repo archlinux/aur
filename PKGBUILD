@@ -1,8 +1,8 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 pkgname=gufo
-pkgver=0.32.0
-pkgrel=2
+pkgver=0.33.0
+pkgrel=1
 pkgdesc="Fast inference engine for AMD Strix Halo (gfx1151)"
 arch=(x86_64)
 url='https://github.com/gufo-org/gufo'
@@ -37,7 +37,7 @@ options=(!lto !debug)
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('141286408d8d15009aca034945561e3065b775c7af7262922589d70909c979a6')
+sha256sums=('87fc52ddf929ab8d60db97aabae8b93fd9d1e75eebcafada45ed6fc973529fc1')
 
 build() {
   # HIP's __noinline__ macro conflicts with GCC 16's <format> attributes.
