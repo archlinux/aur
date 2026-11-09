@@ -1,6 +1,6 @@
 pkgbase = k0sctl-bin
 	pkgdesc = A bootstrapping and management tool for k0s clusters.
-	pkgver = 0.32.2
+	pkgver = 0.33.1
 	pkgrel = 1
 	url = https://github.com/k0sproject/k0sctl
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = k0sctl-bin
 	provides = k0sctl
 	conflicts = k0sctl
 	options = !strip
-	source = k0sctl-linux-amd64-0.32.2::https://github.com/k0sproject/k0sctl/releases/download/v0.32.2/k0sctl-linux-amd64
-	sha256sums = cb40948151451c68dfca16de000cf990ee112fb2ffb4f6a5d103e665cbb43d5e
+	source = k0sctl-linux-amd64-0.33.1::https://github.com/k0sproject/k0sctl/releases/download/v0.33.1/k0sctl-linux-amd64
+	sha256sums = bd5cd9125c93d8d30c33f7b2f3693fed0d74140a248d433dad74f2b7015295b5
 
 pkgname = k0sctl-bin
