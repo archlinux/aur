@@ -5,7 +5,7 @@
 # https://github.com/dffischer/gnome-shell-extensions
 
 pkgname=gnome-shell-extension-hidetopbar-git
-pkgver=127.r0.g53d75b8
+pkgver=129.r0.g835f343
 pkgrel=1
 pkgdesc="GNOME extension to hide the top bar except in overview mode"
 arch=(any)
