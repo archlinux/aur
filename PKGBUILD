@@ -1,27 +1,26 @@
 pkgname=mingw-w64-smpeg
 epoch=1
-pkgver=0.4.5
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="SDL MPEG Player Library (mingw-w64)"
 arch=(any)
 url="http://icculus.org/smpeg"
 license=("LGPL")
-makedepends=(mingw-w64-configure subversion)
-depends=(mingw-w64-sdl)
+makedepends=(mingw-w64-configure)
+depends=(mingw-w64-sdl2)
 options=('!buildflags' '!strip' 'staticlibs')
-source=("smpeg-$pkgver::svn://svn.icculus.org/smpeg/tags/release_${pkgver//./_}")
-sha256sums=('SKIP')
+source=("https://github.com/icculus/smpeg/archive/refs/tags/release_${pkgver//./_}.tar.gz")
+sha256sums=('fdd431bd607efcf0f35789fb3105d7535d4f0e8b46e673e9c0051726e8d1e701')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
-  cd "$srcdir/smpeg-$pkgver"
-  sed -i "s|-version-info|-no-undefined -version-info|g" Makefile.am
+  cd smpeg-release_${pkgver//./_}
   ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}/smpeg-$pkgver"
+  cd smpeg-release_${pkgver//./_}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     CFLAGS+=" -Wno-error=narrowing"
@@ -40,7 +39,7 @@ build() {
 package() {
   install -d "$pkgdir/usr/bin/"
   for _arch in ${_architectures}; do
-    cd "${srcdir}/smpeg-${pkgver}/build-${_arch}"
+    cd "${srcdir}/smpeg-release_${pkgver//./_}/build-${_arch}"
     make install DESTDIR="$pkgdir"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
