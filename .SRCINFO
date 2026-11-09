@@ -1,6 +1,6 @@
 pkgbase = kak-auto-pairs-git
 	pkgdesc = Automatically inserts closing pairs in Kakoune
-	pkgver = r116.cac6780
+	pkgver = r128.e812ee6
 	pkgrel = 1
 	url = https://github.com/alexherbo2/auto-pairs.kak
 	install = kak-auto-pairs-git.install
@@ -8,11 +8,9 @@ pkgbase = kak-auto-pairs-git
 	license = Unlicense
 	makedepends = git
 	depends = kakoune
-	depends = kakoune.cr
 	provides = kak-auto-pairs
 	conflicts = kak-auto-pairs
 	source = git+https://github.com/alexherbo2/auto-pairs.kak
 	sha256sums = SKIP
 
 pkgname = kak-auto-pairs-git
-

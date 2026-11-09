@@ -1,12 +1,12 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=kak-auto-pairs-git
-pkgver=r116.cac6780
+pkgver=r128.e812ee6
 pkgrel=1
 pkgdesc='Automatically inserts closing pairs in Kakoune'
 arch=(any)
 url="https://github.com/alexherbo2/auto-pairs.kak"
 license=(Unlicense)
-depends=(kakoune kakoune.cr)
+depends=(kakoune)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
