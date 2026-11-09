@@ -1,6 +1,6 @@
 # Update workflow (3 steps, run in order):
 # * `pkgrel=y pkgver=x.x.x make update-sources`              # pull, bump version, update upstream pins (update-pins.sh), verify sources, regenerate .SRCINFO
-# * `make test-install-and-remove`                          # build, install, smoke-test, remove
+# * `make test-install-and-remove`                          # build in a clean chroot, install, smoke-test, remove
 # * `make commit-push-clean`                                # commit, push to the AUR, clean the workspace
 
 MAKEFLAGS += --warn-undefined-variables
@@ -72,10 +72,18 @@ update-pkgbuild: update-version ## Update the upstream pins in the PKGBUILD and 
 	./update-pins.sh
 	makepkg --verifysource
 
+.PHONY: build
+build: ## Build the package in a clean chroot (needs devtools)
+	@echo -e "${CC_YELLOW}==>${CC_WHITE} Build the package in a clean chroot${CC_END}"
+	# upstream's build code runs as an unprivileged user in a systemd-nspawn
+	# container that can't see your home directory (so no ~/.ssh or AUR key);
+	# makechrootpkg's -c resets it from the clean root chroot in /var/lib/archbuild
+	extra-x86_64-build -- -c
+
 .PHONY: install
-install: ## Build and install the package
+install: build ## Build the package in a clean chroot and install it
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Install the package${CC_END}"
-	makepkg -si
+	sudo pacman -U $$(makepkg --packagelist)
 
 .PHONY: remove
 remove: ## Remove the installed package

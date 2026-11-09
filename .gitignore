@@ -5,3 +5,4 @@ node-v*.tar.gz
 strata-app-*.pkg.tar.zst
 pkg/
 src/
+*.log

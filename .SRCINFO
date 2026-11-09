@@ -1,6 +1,6 @@
 pkgbase = strata-app
 	pkgdesc = Strata Desktop - Local inference engine and GUI for frontier AI models
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/Niko1221/Strata
 	arch = x86_64
@@ -22,13 +22,13 @@ pkgbase = strata-app
 	options = !debug
 	options = staticlibs
 	options = !lto
-	source = strata-app-src::git+https://github.com/Niko1221/Strata.git#tag=v0.2.11
+	source = strata-app-src::git+https://github.com/Niko1221/Strata.git#tag=v0.2.12
 	source = strata-app-harness::git+https://github.com/deepseek-ai/deepseek-harness.git#commit=571902028a75c64c1d767f4ae5fd099485f0ddf0
 	source = cpython-3.12.15_20261009-x86_64-unknown-linux-gnu-install_only.tar.gz::https://github.com/astral-sh/python-build-standalone/releases/download/20261009/cpython-3.12.15%2B20261009-x86_64-unknown-linux-gnu-install_only.tar.gz
 	source = https://nodejs.org/dist/v24.12.0/node-v24.12.0-linux-x64.tar.gz
 	source = strata-desktop.desktop
 	source = disable-app-updater.patch
-	sha256sums = edaf51c6624155da4ada83db1e95c23004140075226aaf8912c3388dda9ad363
+	sha256sums = 97fae8fca33fc5ed7b019b1fdddb9a57e93250afbf0ed9b096731e37c29b0001
 	sha256sums = 0828e92122ddbae364d23b85b76ca24dd83de726734d43845a4c1b2c42f399c2
 	sha256sums = 5864001bf969db329fadc2b654c4878c6027d170c6bd77e28f88666260bcaf63
 	sha256sums = 6159227e0af7d7c3c6bb2fa900452b04a6cb8841a702a79acc613209d70b04d0
