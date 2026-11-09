@@ -1,0 +1,24 @@
+pkgbase = nimdow-wl-status-git
+	pkgdesc = Event-driven status bar feeder for the nimdow-wl window manager
+	pkgver = 0.3.0.r12.gf04820a
+	pkgrel = 1
+	url = https://github.com/Vyrnexis/nimdow-wl-status
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = nim
+	depends = glibc
+	optdepends = nimdow-wl-git: the window manager whose bar this feeds
+	optdepends = networkmanager: Wi-Fi SSID in the net segment (nmcli)
+	optdepends = pacman-contrib: scripts/updates.sh (checkupdates)
+	optdepends = libpulse: scripts/volume.sh (pactl)
+	optdepends = curl: scripts/weather.sh
+	provides = nimdow-wl-status
+	conflicts = nimdow-wl-status
+	source = nimdow-wl-status::git+https://github.com/Vyrnexis/nimdow-wl-status.git#branch=main
+	source = parsetoml-0.7.2.tar.gz::https://github.com/NimParsers/parsetoml/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = SKIP
+	sha256sums = 568acfd8193ca9e2bdb5f40ed71c2ccf35d4f50778bb25c8d26ed1e8896f89c8
+
+pkgname = nimdow-wl-status-git
