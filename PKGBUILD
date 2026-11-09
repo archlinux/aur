@@ -4,7 +4,7 @@ _pkgname=uTools
 # 更新日志 https://www.u-tools.cn/docs/guide/changelog.html
 pkgver=8.0.2
 _electronversion=34
-pkgrel=2
+pkgrel=3
 pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=('x86_64')
 url="https://www.u-tools.cn"
@@ -20,7 +20,7 @@ options=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://open.u-tools.cn/download/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE-${pkgver}.html::${url}/agreement.html"
+    "LICENSE-${pkgver}.html::${url}/docs/agreement.html"
 )
 sha256sums=('3904b1081ae0562cd1ae4c3f3d33592521f3a9001f72392b5b0228cde3c23056'
             '986625f2970528f051391a41b1ede526de70c896209fc5bf818934b88cc12cfd')
