@@ -1,8 +1,8 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=(lagrange lagrange-common clagrange)
-pkgrel=2
-pkgver=2.0.1
+pkgrel=1
+pkgver=2.0.2
 pkgdesc='Beautiful Gemini Client'
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -83,4 +83,4 @@ package_clagrange() {
     DESTDIR="$pkgdir" cmake --install . --prefix /usr --component tui
 }
 
-sha256sums=('abac39d4aff9716c9d4b3b10f85e83d762f8896ad83c1ffda74c7ed4b6521cfd')
+sha256sums=('7994b41daa6000dfe479a8f5328c36010dba53c873f2399274a029763a77a7a7')
