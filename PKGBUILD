@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=7.5.1
+pkgver=7.6.0
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('ef0f90b3426caf072ac2a5a41cee9ab5b82989254382a35f49436c08d7e43e63'
+sha256sums=('82d6b5947ce86f3de87cc20fa9c299f0d763528c5047840e18d033d8a59346bd'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
