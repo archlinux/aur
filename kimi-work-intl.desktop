@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kimi Work
+Comment=Kimi Work desktop client (international build, overseas region)
+Exec=kimi-work %U
+Icon=kimi-work-intl
+Terminal=false
+Type=Application
+Categories=Office;Network;
+StartupNotify=true
+StartupWMClass=kimi-work-intl

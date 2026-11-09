@@ -1,0 +1,12 @@
+Kimi Work desktop client (kimi-desktop) is proprietary software published by
+Beijing Moonshot Technology Co., Ltd. (北京月之暗面科技有限公司).
+
+This Arch Linux package only repackages the unmodified official installer
+published at:
+
+    https://www.kimi.com/products/kimi-work
+    https://kimi-img.moonshot.cn/app/download/windows/kimi_3.2.26.exe
+
+No license is granted by this package beyond the terms of use published by
+the upstream vendor. All files installed from the upstream payload remain
+subject to the upstream license and terms of service.
