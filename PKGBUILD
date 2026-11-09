@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=near
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="near, a LAN-only file transfer hub, builds from source"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ options=('!debug' '!lto')
 # GitHub archive. It is a gzipped tarball with a .crate extension.
 source=("near-lan-$pkgver.crate::https://static.crates.io/crates/near-lan/near-lan-$pkgver.crate")
 noextract=("near-lan-$pkgver.crate")
-sha256sums=('bc8a6a033e6d3d5717d31945ae3bcf9d536aa22989a59fc3700ad2acd0a440f6')
+sha256sums=('b5e831cde7371e73c64f1d45eb3e5ee63151f25757460828e81c07a5f45c098d')
 
 prepare() {
     rm -rf "$srcdir/build"
