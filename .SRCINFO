@@ -1,6 +1,6 @@
 pkgbase = ttdl
 	pkgdesc = Terminal ToDo List, a CLI tool to manage todo lists in todo.txt format.
-	pkgver = 6.2.3
+	pkgver = 6.2.5
 	pkgrel = 1
 	url = https://github.com/VladimirMarkelov/ttdl
 	install = ttdl.install
@@ -13,7 +13,7 @@ pkgbase = ttdl
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = ttdl-6.2.3.tar.gz::https://github.com/VladimirMarkelov/ttdl/archive/v6.2.3.tar.gz
-	b2sums = 64dd131f448b6531c3da3500a875c4960e4aacad89e15297947487909b5ba88695ae220c373430446c74fdbb8a96733049536eed0b24ed34b8869ba748bfd9d2
+	source = ttdl-6.2.5.tar.gz::https://github.com/VladimirMarkelov/ttdl/archive/v6.2.5.tar.gz
+	b2sums = ee79180cfe02600215f65d9aad73d8b92b89882b3586b17581bca52fdfb31f3173f838d36f09b782c50ddb2e182cf3b7b06b5e3625e019b3e935e602bbbf6e57
 
 pkgname = ttdl
