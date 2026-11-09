@@ -12,7 +12,7 @@
 # system this package runs on, including derivatives whose mirrors trail Arch.
 
 pkgname=chan-desktop-bin
-pkgver=0.125.0
+pkgver=0.126.0
 pkgrel=1
 pkgdesc='Supercharged terminal emulator, desktop app (prebuilt)'
 arch=('x86_64')
@@ -40,7 +40,7 @@ options=(!strip !debug)
 # arch=() admits only x86_64, so makepkg refuses any other $CARCH before the
 # URL is used.
 source=("https://github.com/fiorix/chan/releases/download/v$pkgver/chan-desktop-bin-$pkgver-$pkgrel-$CARCH.tar.zst")
-sha256sums=('951a6587b3efc7070c021cd8bbc85e91852a5de55620cda78775e5337fb966cf')
+sha256sums=('94a087040e2eef38621a45519fcdf0ee863b81a4b770d44f0cc96c5c4a9891d7')
 
 package() {
     cp -a usr "$pkgdir/"
