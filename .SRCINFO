@@ -1,6 +1,6 @@
 pkgbase = lianli-linux
 	pkgdesc = Open-source Linux replacement for L-Connect 3 for Lian Li devices
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/sgtaziz/lian-li-linux
 	install = lianli-linux.install
@@ -30,10 +30,10 @@ pkgbase = lianli-linux
 	conflicts = lianli-linux-git
 	options = !lto
 	options = !debug
-	source = lianli-linux-1.2.5.tar.gz::https://github.com/sgtaziz/lian-li-linux/archive/refs/tags/v1.2.5.tar.gz
+	source = lianli-linux-1.2.6.tar.gz::https://github.com/sgtaziz/lian-li-linux/archive/refs/tags/v1.2.6.tar.gz
 	source = tinyuz-1d74ffa4d453796df352df470733f45dfa099bb1.tar.gz::https://github.com/sisong/tinyuz/archive/1d74ffa4d453796df352df470733f45dfa099bb1.tar.gz
 	source = HDiffPatch-3b9dca715ca492873bf2c49e22e5d5b7d2a78620.tar.gz::https://github.com/sisong/HDiffPatch/archive/3b9dca715ca492873bf2c49e22e5d5b7d2a78620.tar.gz
-	sha256sums = 20e3a0c4d61961fcf68487e566d5eca5307e2bfe4776f30019457e4f9796bd35
+	sha256sums = a84a4b1847bb491b009502281568a29a3fbafa90b4ddc73d07f0a7d92668e04f
 	sha256sums = 307558ad57549d8ad55ba77add19cfca2e384c0857dfd4b6c2ff82b95172a033
 	sha256sums = 62378965f548feaf5d5c3e1e2e65e985fae33ff4c87432cb42e60250d7e0d670
 
