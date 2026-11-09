@@ -1,6 +1,6 @@
 pkgbase=skwd-suite-bin
 pkgname=(skwd-wall-v2-bin skwd-deck-bin skwd-paper-bin skwd-lens-bin)
-pkgver=1.0.0_beta.27
+pkgver=1.0.0_beta.28
 pkgrel=1
 pkgdesc='Prebuilt native Skwd wallpaper suite packages'
 arch=(x86_64)
@@ -8,22 +8,22 @@ url='https://github.com/liixini/skwd-wall'
 license=(MIT)
 options=(!debug !strip)
 source_x86_64=(
-  'skwd-wall-v2-1.0.0_beta.27-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.27/skwd-wall-v2-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
-  'skwd-deck-1.0.0_beta.27-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.27/skwd-deck-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
-  'skwd-paper-1.0.0_beta.27-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.27/skwd-paper-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
-  'skwd-lens-1.0.0_beta.27-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.27/skwd-lens-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
+  'skwd-wall-v2-1.0.0_beta.28-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.28/skwd-wall-v2-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
+  'skwd-deck-1.0.0_beta.28-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.28/skwd-deck-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
+  'skwd-paper-1.0.0_beta.28-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.28/skwd-paper-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
+  'skwd-lens-1.0.0_beta.28-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.28/skwd-lens-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
 )
 noextract=(
-  'skwd-wall-v2-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
-  'skwd-deck-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
-  'skwd-paper-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
-  'skwd-lens-1.0.0_beta.27-1-x86_64.pkg.tar.zst'
+  'skwd-wall-v2-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
+  'skwd-deck-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
+  'skwd-paper-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
+  'skwd-lens-1.0.0_beta.28-1-x86_64.pkg.tar.zst'
 )
 sha256sums_x86_64=(
-  '870227da1ba8a25c4eb57f36eae52f75264eb4327d0190e4dbebf7f1c6c018a6'
-  '1b0d4798f8e028ae65010be78f3553996638a1fbef3637b9a7474b37bfd2b84e'
-  '7275082e50d7aceae6a6549e222eb732741bb7d97260c7dad178bb40758f1612'
-  'a623cea34878ccf1af579e6fbfddc81df2a8ace69f8de132c1c7cca511cd47ad'
+  '7d3808d06cc80a1a0850f48a854dfba2f95de6c34f3cb09135e8ab2469467b41'
+  '7de5948cdeaa795e50c099b333fd6f73beac5b1025708e6cb2da263f49174b75'
+  'b7cbe3469c1f4b3bf99a897d849c92cce123594628830ecd3f30169d98be187b'
+  '3f2e28d3a60cb5d7ead8352fe42cd28e39d302388ea3f9ecac96fca911e231da'
 )
 
 prepare() {
@@ -33,10 +33,10 @@ prepare() {
     bsdtar -xf "$srcdir/$archive" -C "$srcdir/$component" \
       --exclude .BUILDINFO --exclude .MTREE --exclude .PKGINFO
   done <<EOF
-wall skwd-wall-v2-1.0.0_beta.27-1-x86_64.pkg.tar.zst
-deck skwd-deck-1.0.0_beta.27-1-x86_64.pkg.tar.zst
-paper skwd-paper-1.0.0_beta.27-1-x86_64.pkg.tar.zst
-lens skwd-lens-1.0.0_beta.27-1-x86_64.pkg.tar.zst
+wall skwd-wall-v2-1.0.0_beta.28-1-x86_64.pkg.tar.zst
+deck skwd-deck-1.0.0_beta.28-1-x86_64.pkg.tar.zst
+paper skwd-paper-1.0.0_beta.28-1-x86_64.pkg.tar.zst
+lens skwd-lens-1.0.0_beta.28-1-x86_64.pkg.tar.zst
 EOF
 }
 
@@ -60,16 +60,7 @@ package_skwd-deck-bin() {
   install=skwd-deck.install
   depends=(gcc-libs skwd-paper-bin)
   optdepends=('skwd-deck-steamworks: Steam Client Workshop backend' 'skwd-drawing-model: default models for Drawing' 'skwd-lens-bin: semantic wallpaper search' 'steamcmd: alternative Steam Workshop backend')
-  # Keep already-installed beta clients satisfiable during ordered updates.
-  # Their version-1 IPC contracts remain supported by this provider.
-  provides=(
-    "skwd-deck=$pkgver"
-    'skwd-deck-bin=1.0.0_beta.4'
-    'skwd-deck-bin=1.0.0_beta.5'
-    'skwd-deck-bin=1.0.0_beta.6'
-    'skwd-deck-bin=1.0.0_beta.7'
-    'skwd-deck-bin=1.0.0_beta.8'
-  )
+  provides=("skwd-deck=$pkgver")
   conflicts=(skwd-deck)
   _install_prebuilt deck
 }
@@ -78,16 +69,7 @@ package_skwd-paper-bin() {
   pkgdesc='Prebuilt still, video, and Wallpaper Engine renderers for Skwd'
   depends=(alsa-lib dav1d gcc-libs libdrm libglvnd libpulse libva libxkbcommon libyuv shaderc vulkan-icd-loader wayland zlib)
   
-  # Keep already-installed beta clients satisfiable during ordered updates.
-  # Their version-1 IPC contracts remain supported by this provider.
-  provides=(
-    "skwd-paper=$pkgver"
-    'skwd-paper-bin=1.0.0_beta.4'
-    'skwd-paper-bin=1.0.0_beta.5'
-    'skwd-paper-bin=1.0.0_beta.6'
-    'skwd-paper-bin=1.0.0_beta.7'
-    'skwd-paper-bin=1.0.0_beta.8'
-  )
+  provides=("skwd-paper=$pkgver")
   conflicts=(skwd-paper)
   _install_prebuilt paper
 }
