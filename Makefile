@@ -1,7 +1,7 @@
 # Update workflow (3 steps, run in order):
-# * `pkgrel=y pkgver=x.x.x make update-sources`              # pull, bump version, update upstream pins (update-pins.sh), verify sources, regenerate .SRCINFO
-# * `make test-install-and-remove`                          # build in a clean chroot, install, smoke-test, remove
-# * `make commit-push-clean`                                # commit, push to the AUR, clean the workspace
+# * `pkgrel=y pkgver=x.x.x make sources`              # pull, bump version, update upstream pins (update-pins.sh), verify sources, regenerate .SRCINFO
+# * `make test`                                       # build in a clean chroot, install, smoke-test, remove
+# * `make publish`                                    # commit, push to the AUR, clean the workspace
 
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
@@ -90,8 +90,8 @@ remove: ## Remove the installed package
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Removing the package${CC_END}"
 	sudo pacman -R $(use_pkgname)
 
-.PHONY: test-install-and-remove
-test-install-and-remove: install ## Install, test the binary, then remove the package
+.PHONY: test
+test: install ## Install, test the binary, then remove the package
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Using the binary ${CC_END}"
 	${use_binaryname} --self-test
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Removing the package${CC_END}"
@@ -102,8 +102,8 @@ update-srcinfo: ## Update the .SRCINFO file from the current PKGBUILD
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Update the .SRCINFO file${CC_END}"
 	makepkg --printsrcinfo > .SRCINFO
 
-.PHONY: update-sources
-update-sources: update-pkgbuild update-srcinfo ## Update PKGBUILD (pull/version/checksums) and regenerate .SRCINFO
+.PHONY: sources
+sources: update-pkgbuild update-srcinfo ## Update PKGBUILD (pull/version/checksums) and regenerate .SRCINFO
 
 .PHONY: commit
 commit: ## Commit the current PKGBUILD/.SRCINFO to the repository
@@ -122,5 +122,5 @@ push: ## Push the current commits up to the AUR
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Push the changes up to the AUR${CC_END}"
 	git push
 
-.PHONY: commit-push-clean
-commit-push-clean: commit push clean ## Commit, push to the AUR, and clean the workspace
+.PHONY: publish
+publish: commit push clean ## Commit, push to the AUR, and clean the workspace

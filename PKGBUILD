@@ -4,7 +4,7 @@ pkgname=strata-app
 _pkgname=strata
 _binaryname=strata-desktop
 pkgdesc="Strata Desktop - Local inference engine and GUI for frontier AI models"
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Niko1221/Strata"
@@ -37,7 +37,7 @@ optdepends=(
 conflicts=("${pkgname}-bin")
 
 # Upstream pins, written by ./update-pins.sh from Strata's source at the
-# release tag (run by `make update-sources`); the checksums are upstream's
+# release tag (run by `make sources`); the checksums are upstream's
 # recorded digests.
 #
 # DeepSeek Harness commit staged into the app, from
@@ -58,7 +58,7 @@ _node_version=24.12.0
 _node_sha256=6159227e0af7d7c3c6bb2fa900452b04a6cb8841a702a79acc613209d70b04d0
 # makepkg's checksums (a git archive of the ref) of the two git sources, which
 # have no upstream digest; they make a moved tag fail the build
-_src_sha256=97fae8fca33fc5ed7b019b1fdddb9a57e93250afbf0ed9b096731e37c29b0001
+_src_sha256=87ba613c244b597916c2560ed147ff3ab18a2b94f22d8a940b2ed599e0720b88
 _harness_sha256=0828e92122ddbae364d23b85b76ca24dd83de726734d43845a4c1b2c42f399c2
 
 _pbs_file="cpython-${_python_version}_${_pbs_release}-x86_64-unknown-linux-gnu-install_only.tar.gz"
