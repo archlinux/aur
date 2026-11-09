@@ -72,7 +72,12 @@ build() {
 check() {
 	cd "$_pkgname"
 	_dotnet_env
-	dotnet test Silkfly.sln --no-restore --configuration Release
+	dotnet test Silkfly.sln \
+		--no-restore \
+		--configuration Release \
+		--nologo \
+		--verbosity quiet \
+		--logger "console;verbosity=quiet"
 }
 
 package() {
