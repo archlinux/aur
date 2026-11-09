@@ -2,8 +2,8 @@
 
 pkgbase=btrsync
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=0.3
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="btrfs replication made easy"
 arch=('any')
 url="https://github.com/andreittr/btrsync"
@@ -18,7 +18,7 @@ makedepends=(
     'python-sphinx'
 )
 source=("$pkgname-$pkgver::git+${url}.git#tag=v${pkgver}")
-b2sums=('f18451c5f562107c8d576ad51e367d93404754a5d4fd01f1a4ec47e4d8978779cb3bbbb41a27b77e2c398088adf2f622f62fc12aa0750a216c7712d0be81f287')
+b2sums=('06a83f42e59bfcd86a44596a9e16a3d44aacd35586e3f42c9c91c1c5745acf6149b400017cb22368e3ff10e7af75aa4ae45de07d2f4e0b1639fb1bdb6741e686')
 
 build() {
     cd $pkgname-$pkgver
