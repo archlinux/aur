@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 pkgname=lokinet-bin
 _pkgname=lokinet
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc='Anonymous, decentralized and IP based overlay network for the internet. [LOKI, OXEN]'
 url='https://github.com/oxen-io/lokinet'
@@ -23,7 +23,7 @@ source=("${_pkgname}-$pkgver.tar.xz::$url/releases/download/v$pkgver/${_pkgname}
         'https://raw.githubusercontent.com/oxen-io/lokinet/dev/contrib/systemd-resolved/lokinet.rules'
         "https://raw.githubusercontent.com/oxen-io/lokinet/dev/LICENSE"
         'https://raw.githubusercontent.com/oxen-io/lokinet/dev/contrib/bootstrap/mainnet.signed')
-sha256sums=('c079d7857f659422dbac60ab2e89f93f877b48230a71999f17ba73f3d3e1c6a4'
+sha256sums=('4097f96779a007abf35f37a46394eb5af39debd27244c190ce6867caf7a5115d'
             'SKIP'
             '452bbb735d81fd92cb1a2cd2afafe99e05c0f2b4c08b05c5ca9c0f2c529c346c'
             'e5a679cc7c47390e8cea285401ebafcd9859f806833ef568463112d875572ccf'
