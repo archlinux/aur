@@ -1,0 +1,7 @@
+post_install() {
+    echo ">> Enable the service for your user: systemctl --user enable --now novactld"
+    echo ">> Replug the USB dongle so the udev rule applies."
+}
+post_upgrade() {
+    echo ">> Restart the service: systemctl --user restart novactld"
+}

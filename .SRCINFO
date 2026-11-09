@@ -1,0 +1,27 @@
+pkgbase = nova-control
+	pkgdesc = Linux control app for the Arctis Nova 7 Gen 2: headset settings and PipeWire audio mixer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/S-Zilean/nova-control
+	install = nova-control.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = pipewire
+	depends = pipewire-audio
+	depends = pipewire-pulse
+	depends = wireplumber
+	depends = libpulse
+	depends = gstreamer
+	depends = gst-plugins-good
+	depends = libmysofa
+	optdepends = noise-suppression-for-voice: microphone noise suppression
+	optdepends = swh-plugins: microphone compressor and night mode
+	optdepends = libnotify: desktop notifications
+	source = nova-control-v1.0.0.tar.gz::https://gitlab.com/S-Zilean/nova-control/-/archive/v1.0.0/nova-control-v1.0.0.tar.gz
+	sha256sums = 353e382a2a13f13cf14c09d12f5e9d9a5c4520ea71c6298ad5fbd10b5b6b63c5
+
+pkgname = nova-control
