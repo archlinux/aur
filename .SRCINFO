@@ -1,7 +1,7 @@
 pkgbase = nted
 	pkgdesc = Musical score editor
 	pkgver = 1.10.18
-	pkgrel = 8
+	pkgrel = 9
 	url = https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -50,6 +50,8 @@ pkgbase = nted
 	sha256sums = 622599ba493ef7849ca324d01aee39f7595fb5182184f340cb70634f370717e2
 
 pkgname = nted
+	optdepends = nted-docs: Documentation
+	optdepends = yelp: View documentation
 
 pkgname = nted-docs
 	pkgdesc = Musical score editor (HTML Documentation)

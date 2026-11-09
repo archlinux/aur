@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgbase=nted
 pkgver=1.10.18
-pkgrel=8
+pkgrel=9
 _deb_rel=13.1
 pkgdesc="Musical score editor"
 arch=('x86_64')
@@ -94,6 +94,11 @@ check() {
 }
 
 package_nted () {
+  optdepends=(
+    'nted-docs: Documentation'
+    'yelp: View documentation'
+  )
+
   pushd "$pkgbase-$pkgver"
   make DESTDIR="$pkgdir" install
   popd
