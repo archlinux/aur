@@ -1,0 +1,16 @@
+pkgbase = drydock
+	pkgdesc = A live TUI dashboard for a fleet of git repos
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/yetidevworks/drydock
+	arch = x86_64
+	license = MIT
+	checkdepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = drydock-1.3.1.tar.gz::https://github.com/yetidevworks/drydock/archive/v1.3.1/drydock-1.3.1.tar.gz
+	sha256sums = a22ee71cb99f98b6f3d2b769cccd7f629323c9f3463cbe1914de95c6042da229
+
+pkgname = drydock
