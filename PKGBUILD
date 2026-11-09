@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=evex-mpp-bin
 _pkgname=EvEX-MPP
-pkgver=0.10.0
+pkgver=0.12.0
 _electronversion=45
 pkgrel=1
 pkgdesc="Desktop XMPP client built for EVE Online communities: fleet pings, auto-join rooms, always-on-top alerts, EVE time and themes."
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AlexDeveOp/EvEX-MPP/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('236c42653da5f370dbbe26e6299938b40223da811b7072622d7ce2421655fb18'
+sha256sums=('4be5cdcbd377ef061043c06d4fb535b2ab73362001ff7eb78a849a8a3bbfe208'
             '94dfdcc87fdeac00abb85ee58b68abf53ea754afac459123e39ef21dbfba5865'
             'ef3b8fed44fdace077b976cc3a89a93bde368a9e445e4134efd7a44358676a27')
 _get_app_dir() {
