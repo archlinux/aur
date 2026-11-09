@@ -9,12 +9,12 @@ options=('!lto')
 pkgdesc='A static site generator for audio producers'
 pkgname=faircamp
 pkgrel=1
-pkgver=2.0.1
+pkgver=2.0.2
 url='https://faircamp.org'
 
 sha256sums=(
     '0986ca68182526ce56ea1474823cd5f057ff41720bf95cd43d724147a30a4bc6'
-    'c3518bb1a54609475ba7452f2e4b0fe82199818700083a0cd69d8997f59a4585'
+    '97046d78d8c09837067ae9290fe7aecf5dbb3eb107c1346583534fcb715349f0'
 )
 
 source=(
