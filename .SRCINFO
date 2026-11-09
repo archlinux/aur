@@ -1,0 +1,20 @@
+pkgbase = outlinux
+	pkgdesc = Wrapper desktop di Outlook Web basato su Electron
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AkusenArcade/outlinux
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = electron
+	depends = hicolor-icon-theme
+	optdepends = libappindicator-gtk3: icona nella tray su GNOME e desktop senza StatusNotifierItem
+	optdepends = libnotify: notifiche desktop
+	optdepends = hunspell-it: correttore ortografico italiano
+	optdepends = hunspell-en_us: correttore ortografico inglese
+	source = outlinux::git+https://github.com/AkusenArcade/outlinux.git#tag=v1.0.0
+	source = outlinux.sh
+	sha256sums = SKIP
+	sha256sums = 51cbd83e68f0d835afb2b7f9b5a8f52f78bdd353463e58e8a1b76266b92c0a15
+
+pkgname = outlinux
