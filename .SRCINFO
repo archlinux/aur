@@ -1,0 +1,25 @@
+pkgbase = mtgpu-s30-dkms
+	pkgdesc = Experimental Moore Threads 3.1.0 kernel port and firmware for MTT S30
+	pkgver = 3.1.0
+	pkgrel = 2
+	url = https://www.mthreads.com/product/drivers
+	arch = x86_64
+	license = GPL-2.0-only
+	license = MIT
+	license = LicenseRef-MooreThreads
+	makedepends = python
+	makedepends = libarchive
+	makedepends = patch
+	depends = dkms
+	conflicts = mtgpu-dkms
+	noextract = musa_3.1.0-pc_x86.deb
+	options = !strip
+	options = !debug
+	source = musa_3.1.0-pc_x86.deb::https://github.com/cont1nu1ty/mtt-s30-arch/releases/download/v3.1.0/musa_3.1.0-pc_x86.deb
+	source = linux-modern.patch
+	source = prepare.py
+	sha256sums = 04c286ba452fe0cfbea2c47465f0c48b0659c09b896f05f363feba680dd8efda
+	sha256sums = edde0ef52965529dfc87e4806fd78b7249c7684deee73de8ad73ded42890b136
+	sha256sums = 7ec612a122421c23c34f1efe7a25e16edf75298528b0a176a8d41e15329f9a9f
+
+pkgname = mtgpu-s30-dkms

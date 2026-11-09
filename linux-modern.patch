@@ -1,0 +1,2445 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,8 @@
+-OBJ_DIR := $(PWD)
+-KERNELDIR := /lib/modules/${KERNELVER}/build
+-KERNELSRC := /lib/modules/${KERNELVER}/source
++OBJ_DIR := $(if $(KBUILD_EXTMOD),$(KBUILD_EXTMOD),$(CURDIR))
++KERNELVER ?= $(shell uname -r)
++ARCH ?= x86_64
++KERNELDIR ?= /lib/modules/${KERNELVER}/build
++KERNELSRC ?= /lib/modules/${KERNELVER}/source
+ 
+ ifneq ($(wildcard $(KERNELSRC)),)
+ 	ccflags-y += -I$(KERNELSRC)
+@@ -89,7 +91,7 @@
+ 
+ ccflags-y := -D__linux__ -include config_kernel.h
+ ccflags-y += -include linux/version.h
+-ccflags-y += -include conftest.h
++ccflags-y += -include conftest.h -include arch_compat.h
+ ccflags-y += -I$(OBJ_DIR)/inc \
+ 	-I$(OBJ_DIR)/inc/pvr \
+ 	-I$(OBJ_DIR)/inc/pvr/generated \
+@@ -117,25 +119,27 @@
+ CONFTEST := $(OBJ_DIR)/conftest
+ 
+ MTGPU_BINARY := $(OBJ_DIR)/objs/$(ARCH)/mtgpu_core.o_binary
+-MTGPU_BINARY_O := $(OBJ_DIR)/objs/$(ARCH)/mtgpu_core.o
+-quiet_cmd_symlink = SYMLINK $@
+-cmd_symlink = ln -sf $< $@
+ 
+-all: $(MTGPU_BINARY_O) $(CONFTEST_H) $(MTGPU_ION_O)
+-	make -C $(KERNELDIR)   M=$(OBJ_DIR) modules
++all: $(CONFTEST_H) $(MTGPU_ION_O)
++	$(MAKE) -C $(KERNELDIR)   M=$(OBJ_DIR) modules
+ 	@echo "make all end"
+ 
+-$(MTGPU_BINARY_O): $(MTGPU_BINARY)
+-	$(call if_changed,symlink)
++# Use Kbuild bookkeeping for the precompiled vendor object. Modern modpost
++# reads every object's .cmd file even when the object was not compiled here.
++ifneq ($(KERNELRELEASE),)
++targets += objs/$(ARCH)/mtgpu_core.o
++$(obj)/objs/$(ARCH)/mtgpu_core.o: $(src)/objs/$(ARCH)/mtgpu_core.o_binary FORCE
++	$(call if_changed,copy)
++endif
+ 
+ $(CONFTEST_H): $(CONFTEST)
+ 	@$< -a $(ARCH) -k $(KERNELVER) -d $(KERNELDIR) -e $(KERNELSRC)
+ 	@ln -sf $(OBJ_DIR)/conftest.h $@
+ 
+ $(MTGPU_ION_O):
+-	make  -C $(KERNELDIR)   M=$(MTGPU_ION_DIR) modules
++	$(MAKE) -C $(KERNELDIR)   M=$(MTGPU_ION_DIR) modules
+ 	@cp $(MTGPU_ION_DIR)/Module.symvers  $(MTGPU_ION_DIR)/mt_ion.ko $(PWD)
+ 
+ clean:
+-	make  -C $(KERNELDIR)   M=$(OBJ_DIR) clean
++	$(MAKE) -C $(KERNELDIR)   M=$(OBJ_DIR) clean
+ 	@echo "make clean end"
+--- a/conftest
++++ b/conftest
+@@ -744,6 +744,11 @@
+ #   if @key is MY_FOO_TEST ==> #define OS_ENUM_MY_FOO_TEST_EXIST
+ #
+ TEST_ENUM_FIELDS=(
++    # OS_ENUM_WQ_PERCPU_EXIST
++    [WQ_PERCPU]="
++    #include <linux/workqueue.h>
++    "
++
+     # OS_ENUM_DRIVER_PRIME_EXIST
+     [DRIVER_PRIME]="
+     $(conftest_include drm/drmP.h)
+@@ -1168,7 +1173,7 @@
+     #if defined(__aarch64__)
+     #include <asm/kvm_mmu.h>
+     static int conftest_kvm_phys_addr_ioremap(struct kvm *kvm, phys_addr_t guest_ipa,
+-			                                  phys_addr_t pa, unsigned long size,
++                                                          phys_addr_t pa, unsigned long size,
+                                               bool writable, bool writecombine)
+     {
+         return kvm_phys_addr_ioremap(kvm, guest_ipa, pa, size, writable, writecombine);
+@@ -1180,9 +1185,9 @@
+     [get_user_pages_remote args has task]="
+     #include <linux/mm.h>
+     static long conftest_get_user_pages_remote(struct task_struct *tsk, struct mm_struct *mm,
+-				unsigned long start, unsigned long nr_pages,
+-				unsigned int gup_flags, struct page **pages,
+-				struct vm_area_struct **vmas, int *locked)
++                                unsigned long start, unsigned long nr_pages,
++                                unsigned int gup_flags, struct page **pages,
++                                struct vm_area_struct **vmas, int *locked)
+     {
+         return get_user_pages_remote(tsk, mm, start, nr_pages, gup_flags, pages, vmas, locked);
+     }
+@@ -1192,11 +1197,11 @@
+     [pin_user_pages_remote args has task]="
+     #include <linux/mm.h>
+     static long conftest_pin_user_pages_remote(struct task_struct *tsk, struct mm_struct *mm,
+-				unsigned long start, unsigned long nr_pages,
+-				unsigned int gup_flags, struct page **pages,
+-				struct vm_area_struct **vmas, int *locked)
+-    {
+-	return pin_user_pages_remote(tsk, mm, start, nr_pages, gup_flags, pages, vmas, locked);
++                                unsigned long start, unsigned long nr_pages,
++                                unsigned int gup_flags, struct page **pages,
++                                struct vm_area_struct **vmas, int *locked)
++    {
++        return pin_user_pages_remote(tsk, mm, start, nr_pages, gup_flags, pages, vmas, locked);
+     }
+     "
+ 
+@@ -1204,8 +1209,8 @@
+     [pin_user_pages_remote use vm_area_struct]="
+     #include <linux/mm.h>
+     long conftest_pin_user_pages_remote(struct mm_struct *mm, unsigned long start,
+-    					unsigned long nr_pages, unsigned int gup_flags,
+-					struct page **pages, struct vm_area_struct **vmas, int *locked)
++                                        unsigned long nr_pages, unsigned int gup_flags,
++                                        struct page **pages, struct vm_area_struct **vmas, int *locked)
+     {
+         return pin_user_pages_remote(mm, start, nr_pages, gup_flags, pages, vmas, locked);
+     }
+@@ -1236,9 +1241,9 @@
+     [fixup_user_fault args has task]="
+     #include <linux/mm.h>
+     static long conftest_fixup_user_fault(struct task_struct *tsk, struct mm_struct *mm,
+-				unsigned long address, unsigned int fault_flags, bool *unlocked)
+-    {
+-	return fixup_user_fault(tsk, mm, address, fault_flags, unlocked);
++                                unsigned long address, unsigned int fault_flags, bool *unlocked)
++    {
++        return fixup_user_fault(tsk, mm, address, fault_flags, unlocked);
+     }
+     "
+ 
+@@ -1247,7 +1252,7 @@
+     #include <linux/mm.h>
+     static void conftest_mm_struct_locked_vm_type_check(struct mm_struct *mm)
+     {
+-	atomic_long_add_return(1, &mm->locked_vm);
++        atomic_long_add_return(1, &mm->locked_vm);
+     }
+     "
+ 
+@@ -1255,12 +1260,12 @@
+     [xa_alloc use xa_limit]="
+     #include <linux/xarray.h>
+     static int conftest_xa_alloc_use_xa_limit_check(struct xarray *xa,
+-						    u32 *id,
+-						    void *entry,
+-						    struct xa_limit limit,
+-						    gfp_t gfp)
+-    {
+-	    return xa_alloc(xa, id, entry, limit, gfp);
++                                                    u32 *id,
++                                                    void *entry,
++                                                    struct xa_limit limit,
++                                                    gfp_t gfp)
++    {
++            return xa_alloc(xa, id, entry, limit, gfp);
+     }
+     "
+ 
+@@ -1269,10 +1274,10 @@
+     #include <drm/drm_syncobj.h>
+     #include <drm/drm_file.h>
+     static int conftest_drm_syncobj_find_fence_has_five_args(struct drm_file *file_private,
+-    							     u32 handle,
+-							     u64 point,
+-							     u64 flags,
+-							     struct dma_fence **fence)
++                                                             u32 handle,
++                                                             u64 point,
++                                                             u64 flags,
++                                                             struct dma_fence **fence)
+     {
+             return drm_syncobj_find_fence(file_private, handle, point, flags, fence);
+     }
+@@ -1282,11 +1287,11 @@
+     [vfs_mkdir use user_namespace]="
+     #include <linux/fs.h>
+     static int conftest_vfs_mkdir_use_user_namespace_check(struct user_namespace *mnt_userns,
+-							   struct inode *dir,
+-							   struct dentry *dentry,
+-							   umode_t mode)
+-    {
+-	return vfs_mkdir(mnt_userns, dir, dentry, mode);
++                                                           struct inode *dir,
++                                                           struct dentry *dentry,
++                                                           umode_t mode)
++    {
++        return vfs_mkdir(mnt_userns, dir, dentry, mode);
+     }
+     "
+ 
+@@ -1294,11 +1299,11 @@
+     [vfs_mkdir use mnt_idmap]="
+     #include <linux/fs.h>
+     static int conftest_vfs_mkdir_use_mnt_idmap_check(struct mnt_idmap *idmap,
+-						      struct inode *dir,
+-						      struct dentry *dentry,
+-						      umode_t mode)
+-    {
+-	return vfs_mkdir(idmap, dir, dentry, mode);
++                                                      struct inode *dir,
++                                                      struct dentry *dentry,
++                                                      umode_t mode)
++    {
++        return vfs_mkdir(idmap, dir, dentry, mode);
+     }
+     "
+ )
+@@ -1416,17 +1421,17 @@
+        [[ -e ${ARCH_HEADERS}/uapi/$file ]] || \
+        [[ -e ${ARCH_HEADERS}/generated/$file ]] || \
+        [[ -e ${ARCH_HEADERS}/generated/uapi/$file ]]; then
+-	return 0
++        return 0
+     elif [[ -e ${EXTRA_SOURCES} ]]; then
+-	if [[ -e ${EXTRA_HEADERS}/$file ]] || \
++        if [[ -e ${EXTRA_HEADERS}/$file ]] || \
+            [[ -e ${EXTRA_ARCH_HEADERS}/$file ]] || \
+            [[ -e ${EXTRA_ARCH_HEADERS}/uapi/$file ]] || \
+            [[ -e ${EXTRA_ARCH_HEADERS}/generated/$file ]] || \
+            [[ -e ${EXTRA_ARCH_HEADERS}/generated/uapi/$file ]]; then
+             return 0
+         else
+-	    return 1
+-	fi
++            return 1
++        fi
+     else
+         return 1
+     fi
+@@ -1694,6 +1699,12 @@
+     # detecting header file task to complete.
+     wait
+ 
++    # Resolve the DRM transaction rename before probing callback signatures.
++    conftest_test_type_exist 'struct drm_atomic_commit' '#include <drm/drm_atomic.h>'
++    if grep -q '^#define OS_STRUCT_DRM_ATOMIC_COMMIT_EXIST' "$CONFTEST_TGT"; then
++        CONFTEST_COMPILE_PREAMBLE+=$'\n#define drm_atomic_state drm_atomic_commit\n'
++    fi
++
+     for func in "${!TEST_FUNCS[@]}"; do
+     {
+         conftest_test_func_exist "$func" "${TEST_FUNCS[$func]}"
+@@ -1738,7 +1749,7 @@
+     local macro="${CONFTEST_MACRO_PREFIX}${tag}_$(uppercase "$symbol")"
+ 
+     if [ -e "$SOURCES_SYM_FILE" ]; then
+-	    sym_res="$(grep -w "$symbol" "$SOURCES_SYM_FILE")"
++            sym_res="$(grep -w "$symbol" "$SOURCES_SYM_FILE")"
+     fi
+ 
+     if [ -n "$sym_res" ]; then
+@@ -1760,7 +1771,7 @@
+ 
+ build_cflags()
+ {
+-    local base_cflags="-O2 -D__KERNEL__"
++    local base_cflags="-O2 -std=gnu11 -fms-extensions -D__KERNEL__"
+     base_cflags+=" -DKBUILD_BASENAME=\"#${CONFTEST_SRC_FILE}\" -DKBUILD_MODNAME=\"#${CONFTEST_SRC_FILE}\""
+     base_cflags+=" -nostdinc -isystem $($CC -print-file-name=include 2> /dev/null)"
+     base_cflags+=" -fno-pie -fno-strict-aliasing -ffreestanding -MD"
+@@ -1793,6 +1804,11 @@
+     fi
+ 
+     CFLAGS="$base_cflags -include $sys_autoconf_header -I${WORK_DIR}"
++    for header in linux/compiler-version.h linux/kconfig.h linux/compiler_types.h; do
++        if [ -f "$HEADERS/$header" ]; then
++            CFLAGS+=" -include $HEADERS/$header"
++        fi
++    done
+     CFLAGS+=" -I${HEADERS}"
+     CFLAGS+=" -I${HEADERS}/uapi"
+     CFLAGS+=" -I${HEADERS}/generated/uapi"
+@@ -1885,12 +1901,12 @@
+     # /lib/modules/xxx/build and /lib/modules/xxx/source both exist
+     EXTRA_SOURCES="$KERNELSRC"
+     if [ -e "$EXTRA_SOURCES" ]; then
+-	local extra_knl_arch_path="$EXTRA_SOURCES/arch/$KERNEL_ARCH"
+-	EXTRA_HEADERS="${EXTRA_SOURCES}/include"
+-	if [ ! -d "$extra_knl_arch_path" ]; then
+-	    conftest_log_err "$extra_knl_arch_path not found!"
+-	fi
+-	EXTRA_ARCH_HEADERS="${extra_knl_arch_path}/include"
++        local extra_knl_arch_path="$EXTRA_SOURCES/arch/$KERNEL_ARCH"
++        EXTRA_HEADERS="${EXTRA_SOURCES}/include"
++        if [ ! -d "$extra_knl_arch_path" ]; then
++            conftest_log_err "$extra_knl_arch_path not found!"
++        fi
++        EXTRA_ARCH_HEADERS="${extra_knl_arch_path}/include"
+     fi
+ 
+     # clear file
+@@ -1901,6 +1917,15 @@
+     fi
+ 
+     build_cflags
++    # A broken compiler environment must not silently turn into missing APIs.
++    local sanity_src="${WORK_DIR}/conftest_sanity.c"
++    local sanity_obj="${WORK_DIR}/conftest_sanity.o"
++    printf '#include <linux/kconfig.h>\n#include <linux/fs.h>\n#include <linux/mm.h>\nint probe(void) { return sizeof(struct file); }\n' > "$sanity_src"
++    if ! $CC $CFLAGS -c "$sanity_src" -o "$sanity_obj"; then
++        conftest_log_err "Kernel header sanity check failed; refusing feature detection"
++        exit 1
++    fi
++    rm -f "$sanity_src" "$sanity_obj" "${sanity_obj%.o}.d"
+ 
+     CONFTEST_COMPILE_PREAMBLE="
+     #include \"$CONFTEST_INC\"
+@@ -2021,4 +2046,58 @@
+     fi
+ }
+ 
++# Probe interfaces rather than guessing kernel version boundaries.
++TEST_TYPES['struct mempool']='#include <linux/mempool.h>'
++TEST_TYPE_FIELDS['struct dma_fence_ops.fence_value_str']='#include <linux/dma-fence.h>'
++TEST_TYPE_FIELDS['struct dma_fence_ops.timeline_value_str']='#include <linux/dma-fence.h>'
++TEST_CUSTOMS['timer_delete_sync callable']='
++#include <linux/timer.h>
++int probe(struct timer_list *timer) { return timer_delete_sync(timer); }
++'
++TEST_CUSTOMS['hrtimer_setup callable']='
++#include <linux/hrtimer.h>
++void probe(struct hrtimer *timer) { hrtimer_setup(timer, NULL, CLOCK_MONOTONIC, HRTIMER_MODE_REL); }
++'
++TEST_CUSTOMS['pci_resize_resource has four args']='
++#include <linux/pci.h>
++int probe(struct pci_dev *dev) { return pci_resize_resource(dev, 0, 0, 0); }
++'
++
++
++TEST_TYPE_FIELDS['struct drm_device.struct_mutex']='#include <drm/drm_device.h>'
++
++TEST_CUSTOMS['drm async check has flip']='
++#include <drm/drm_modeset_helper_vtables.h>
++int probe(struct drm_plane_helper_funcs *f, struct drm_plane *p, struct drm_atomic_state *s) { return f->atomic_async_check(p, s, false); }
++'
++TEST_CUSTOMS['drm connector mode valid const']='
++#include <drm/drm_modeset_helper_vtables.h>
++static enum drm_mode_status probe(struct drm_connector *c, const struct drm_display_mode *m) { return MODE_OK; }
++static const struct drm_connector_helper_funcs f = { .mode_valid = probe };
++'
++TEST_CUSTOMS['dma fence array four args']='
++#include <linux/dma-fence-array.h>
++void probe(struct dma_fence **f) { (void)dma_fence_array_create(1, f, 1, 1); }
++'
++TEST_CUSTOMS['vfs mkdir returns dentry']='
++#include <linux/fs.h>
++struct dentry *probe(struct inode *i, struct dentry *d) { return vfs_mkdir(&nop_mnt_idmap, i, d, 0755, NULL); }
++'
++TEST_CUSTOMS['iommu paging domain callable']='
++#include <linux/iommu.h>
++struct iommu_domain *probe(struct device *dev) { return iommu_paging_domain_alloc(dev); }
++'
++TEST_CUSTOMS['iommu domain alloc callable']='
++#include <linux/iommu.h>
++struct iommu_domain *probe(struct bus_type *bus) { return iommu_domain_alloc(bus); }
++'
++
++TEST_CUSTOMS['vfs mkdir dentry four args']='
++#include <linux/fs.h>
++struct dentry *probe(struct inode *i, struct dentry *d) { return vfs_mkdir(&nop_mnt_idmap, i, d, 0755); }
++'
++TEST_CUSTOMS['vfs unlink use mnt idmap']='
++#include <linux/fs.h>
++int probe(struct inode *i, struct dentry *d) { return vfs_unlink(&nop_mnt_idmap, i, d, NULL); }
++'
+ main $@
+--- /dev/null
++++ b/inc/arch_compat.h
+@@ -0,0 +1,56 @@
++/* Compatibility for interfaces removed after the vendor kernel range. */
++#ifndef MT_ARCH_COMPAT_H
++#define MT_ARCH_COMPAT_H
++#include <linux/version.h>
++#if defined(OS_VFS_MKDIR_RETURNS_DENTRY) || defined(OS_VFS_MKDIR_DENTRY_FOUR_ARGS)
++#define MT_VFS_MKDIR_RETURNS_DENTRY
++#endif
++#include <linux/printk.h>
++#include <linux/device.h>
++#ifdef OS_STRUCT_DRM_ATOMIC_COMMIT_EXIST
++#define drm_atomic_state drm_atomic_commit
++#define drm_atomic_state_get drm_atomic_commit_get
++#define drm_atomic_state_put drm_atomic_commit_put
++#define drm_atomic_state_alloc drm_atomic_commit_alloc
++#define drm_atomic_state_clear drm_atomic_commit_clear
++#endif
++#ifdef OS_TIMER_DELETE_SYNC_CALLABLE
++#define del_timer_sync timer_delete_sync
++#endif
++#ifndef from_timer
++#define from_timer(var, callback_timer, timer_field) container_of(callback_timer, typeof(*var), timer_field)
++#endif
++#include <drm/drm_print.h>
++#ifndef DRM_INFO
++#define DRM_INFO(fmt, ...) pr_info("[drm] " fmt, ##__VA_ARGS__)
++#define DRM_ERROR(fmt, ...) pr_err("[drm] " fmt, ##__VA_ARGS__)
++#define DRM_WARN(fmt, ...) pr_warn("[drm] " fmt, ##__VA_ARGS__)
++#define DRM_DEBUG(fmt, ...) pr_debug("[drm] " fmt, ##__VA_ARGS__)
++#define DRM_DEV_INFO(dev, fmt, ...) dev_info(dev, fmt, ##__VA_ARGS__)
++#define DRM_DEV_ERROR(dev, fmt, ...) dev_err(dev, fmt, ##__VA_ARGS__)
++#define DRM_DEV_WARN(dev, fmt, ...) dev_warn(dev, fmt, ##__VA_ARGS__)
++#define DRM_DEV_DEBUG(dev, fmt, ...) dev_dbg(dev, fmt, ##__VA_ARGS__)
++#endif
++#include <linux/dma-fence.h>
++static inline void mt_fence_value_str(struct dma_fence *f, char *buf, int size)
++{
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_FENCE_VALUE_STR
++	if (f->ops->fence_value_str) {
++		f->ops->fence_value_str(f, buf, size);
++		return;
++	}
++#endif
++	snprintf(buf, size, "%llu", (unsigned long long)f->seqno);
++}
++static inline void mt_timeline_value_str(struct dma_fence *f, char *buf, int size)
++{
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_TIMELINE_VALUE_STR
++	if (f->ops->timeline_value_str) {
++		f->ops->timeline_value_str(f, buf, size);
++		return;
++	}
++#endif
++	/* The current completed timeline value is no longer exposed by dma_fence. */
++	snprintf(buf, size, "ctx=%llu", (unsigned long long)f->context);
++}
++#endif
+--- a/inc/common/os-interface.h
++++ b/inc/common/os-interface.h
+@@ -517,7 +517,11 @@
+ typedef int mt_kref;
+ typedef int pci_power_t;
+ typedef unsigned long kernel_ulong_t;
++#ifdef OS_STRUCT_MEMPOOL_EXIST
++typedef struct mempool mempool_t;
++#else
+ typedef struct mempool_s mempool_t;
++#endif
+ typedef s64 ktime_t;
+ 
+ struct mt_file_operations {
+@@ -813,7 +817,7 @@
+ void os_put_task_struct(struct task_struct *t);
+ char *os_d_path(const struct path *p, char *param, int size);
+ 
+-struct path *os_get_exec_vma_file_path(struct mm_struct *mm);
++const struct path *os_get_exec_vma_file_path(struct mm_struct *mm);
+ 
+ unsigned long os_get_vm_area_struct_vm_start(struct vm_area_struct *vma);
+ unsigned long os_get_vm_area_struct_vm_end(struct vm_area_struct *vma);
+--- /dev/null
++++ b/inc/iommu_compat.h
+@@ -0,0 +1,58 @@
++#ifndef MT_IOMMU_COMPAT_H
++#define MT_IOMMU_COMPAT_H
++#include <linux/iommu.h>
++#include <linux/device/bus.h>
++#if defined(OS_IOMMU_PAGING_DOMAIN_CALLABLE) && !defined(OS_IOMMU_DOMAIN_ALLOC_CALLABLE)
++/* The binary ABI supplies only a bus. Recreate the old homogeneous-bus
++ * semantics, refusing a bus with more than one IOMMU driver owner. */
++struct mt_iommu_bus_scan {
++	struct device *dev;
++	const struct iommu_ops *owner;
++	bool ambiguous;
++};
++static int mt_iommu_scan_device(struct device *dev, void *data)
++{
++	struct mt_iommu_bus_scan *scan = data;
++	struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
++
++	if (!domain)
++		return 0;
++	if (!scan->dev) {
++		scan->dev = get_device(dev);
++		scan->owner = domain->owner;
++	} else if (domain->owner != scan->owner) {
++		scan->ambiguous = true;
++	}
++	return 0;
++}
++static inline bool mt_iommu_present(const struct bus_type *bus)
++{
++	struct mt_iommu_bus_scan scan = {};
++	bool found;
++
++	bus_for_each_dev(bus, NULL, &scan, mt_iommu_scan_device);
++	found = scan.dev != NULL;
++	put_device(scan.dev);
++	return found;
++}
++static inline struct iommu_domain *mt_iommu_domain_alloc(const struct bus_type *bus)
++{
++	struct mt_iommu_bus_scan scan = {};
++	struct iommu_domain *domain = NULL;
++
++	bus_for_each_dev(bus, NULL, &scan, mt_iommu_scan_device);
++	if (scan.dev && !scan.ambiguous) {
++		domain = iommu_paging_domain_alloc(scan.dev);
++		if (IS_ERR(domain))
++			domain = NULL;
++	} else if (scan.ambiguous) {
++		pr_err("mtgpu: cannot select an IOMMU from a heterogeneous bus\n");
++	}
++	put_device(scan.dev);
++	return domain;
++}
++#else
++#define mt_iommu_present iommu_present
++#define mt_iommu_domain_alloc iommu_domain_alloc
++#endif
++#endif
+--- a/inc/mtgpu/mtgpu_dispc_common.h
++++ b/inc/mtgpu/mtgpu_dispc_common.h
+@@ -132,6 +132,8 @@
+ 	struct mtgpu_dispc_debugfs debugfs;
+ 	u32 bandwidth;
+ 	bool active;
++	/* Open-source tail extension; no vendor-visible offsets change. */
++	struct drm_device *drm;
+ };
+ 
+ struct mtgpu_dispc_ops {
+--- a/inc/mtgpu/mtgpu_drm_drv.h
++++ b/inc/mtgpu/mtgpu_drm_drv.h
+@@ -7,6 +7,7 @@
+ #define _MTGPU_DRM_DRV_H_
+ 
+ #include <drm/drm_mm.h>
++#include <linux/mutex.h>
+ #include "pvr_drv.h"
+ #include "module_common.h"
+ 
+@@ -15,6 +16,12 @@
+ struct mtgpu_drm_private {
+ 	struct pvr_drm_private pvr_private;
+ 	struct mt_chip *chip;
++#ifndef OS_STRUCT_DRM_DEVICE_HAS_STRUCT_MUTEX
++	/* Serializes the vendor GEM dma-buf mmap wrapper. */
++	struct mutex gem_mmap_mutex;
++#endif
++	/* Tail extension: preserve every vendor-visible field offset. */
++	bool display_irqs_ready;
+ };
+ 
+ struct mtgpu_drm_file {
+@@ -32,5 +39,6 @@
+ 
+ int mtgpu_drm_init(void);
+ void mtgpu_drm_fini(void);
++void mtgpu_drm_sync_irqs(struct device *parent);
+ 
+ #endif /* _MTGPU_DRM_DRV_H_ */
+--- /dev/null
++++ b/inc/pfn_compat.h
+@@ -0,0 +1,20 @@
++#ifndef MT_PFN_COMPAT_H
++#define MT_PFN_COMPAT_H
++#if __has_include(<linux/pfn_t.h>)
++#include <linux/pfn_t.h>
++#else
++#include <linux/mm.h>
++#include <linux/pfn.h>
++/* All vendor callers use flags=0; modern mixed mappings use raw PFNs. */
++typedef unsigned long pfn_t;
++static inline pfn_t phys_to_pfn_t(phys_addr_t addr, unsigned long flags)
++{
++	WARN_ON_ONCE(flags);
++	return PHYS_PFN(addr);
++}
++#define pfn_t_to_pfn(pfn) (pfn)
++#define pfn_t_to_page(pfn) pfn_to_page(pfn)
++#define page_to_pfn_t(page) page_to_pfn(page)
++#define pfn_t_valid(pfn) pfn_valid(pfn)
++#endif
++#endif
+--- a/inc/pvr/include/pvrmodule.h
++++ b/inc/pvr/include/pvrmodule.h
+@@ -42,7 +42,9 @@
+ #ifndef	_PVRMODULE_H_
+ #define	_PVRMODULE_H_
+ 
+-#if defined(MODULE_IMPORT_NS)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++MODULE_IMPORT_NS("DMA_BUF");
++#elif defined(MODULE_IMPORT_NS)
+ MODULE_IMPORT_NS(DMA_BUF);
+ #endif
+ 
+--- a/inc/pvr/services/pvr_fence_trace.h
++++ b/inc/pvr/services/pvr_fence_trace.h
+@@ -47,6 +47,12 @@
+ 
+ #include <linux/tracepoint.h>
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 10, 0)
++# define ___assign_str(dst, src) __assign_str(dst);
++#else
++# define ___assign_str __assign_str
++#endif // KERNEL_VERSION
++
+ struct pvr_fence;
+ struct pvr_fence_context;
+ 
+@@ -61,7 +67,7 @@
+ 	),
+ 
+ 	TP_fast_assign(
+-		__assign_str(name, fctx->name)
++		___assign_str(name, fctx->name)
+ 		pvr_context_value_str(fctx, __entry->val,
+ 			sizeof(__entry->val));
+ 	),
+@@ -106,11 +112,11 @@
+ 	),
+ 
+ 	TP_fast_assign(
+-		__assign_str(driver,
+-			fence->base.ops->get_driver_name(&fence->base))
+-		__assign_str(timeline,
+-			fence->base.ops->get_timeline_name(&fence->base))
+-		fence->base.ops->fence_value_str(&fence->base,
++		___assign_str(driver,
++			fence->base.ops->get_driver_name(&fence->base))
++		___assign_str(timeline,
++			fence->base.ops->get_timeline_name(&fence->base))
++		mt_fence_value_str(&fence->base,
+ 			__entry->val, sizeof(__entry->val));
+ 		__entry->context = fence->base.context;
+ 	),
+@@ -165,27 +171,23 @@
+ 	),
+ 
+ 	TP_fast_assign(
+-		__assign_str(driver,
+-			fence->base.ops->get_driver_name(&fence->base))
+-		__assign_str(timeline,
+-			fence->base.ops->get_timeline_name(&fence->base))
+-		fence->base.ops->fence_value_str(&fence->base, __entry->val,
++		___assign_str(driver,
++			fence->base.ops->get_driver_name(&fence->base))
++		___assign_str(timeline,
++			fence->base.ops->get_timeline_name(&fence->base))
++		mt_fence_value_str(&fence->base, __entry->val,
+ 			sizeof(__entry->val));
+ 		__entry->context = fence->base.context;
+-		__assign_str(foreign_driver,
++		___assign_str(foreign_driver,
+ 			fence->fence->ops->get_driver_name ?
+ 			fence->fence->ops->get_driver_name(fence->fence) :
+ 			"unknown")
+-		__assign_str(foreign_timeline,
++		___assign_str(foreign_timeline,
+ 			fence->fence->ops->get_timeline_name ?
+ 			fence->fence->ops->get_timeline_name(fence->fence) :
+ 			"unknown")
+-		fence->fence->ops->fence_value_str ?
+-			fence->fence->ops->fence_value_str(
+-				fence->fence, __entry->foreign_val,
+-				sizeof(__entry->foreign_val)) :
+-			(void) strscpy(__entry->foreign_val,
+-				"unknown", sizeof(__entry->foreign_val));
++		mt_fence_value_str(fence->fence, __entry->foreign_val,
++				   sizeof(__entry->foreign_val));
+ 		__entry->foreign_context = fence->fence->context;
+ 	),
+ 
+--- a/inc/pvr/services/pvr_trace_events.h
++++ b/inc/pvr/services/pvr_trace_events.h
+@@ -49,6 +49,12 @@
+ #include <linux/tracepoint.h>
+ #include <linux/time.h>
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 10, 0)
++# define ___assign_str(dst, src) __assign_str(dst);
++#else
++# define ___assign_str __assign_str
++#endif // KERNEL_VERSION
++
+ #define show_secs_from_ns(ns) \
+ 	({ \
+ 		u64 t = ns + (NSEC_PER_USEC / 2); \
+@@ -89,9 +95,9 @@
+ 	),
+ 
+ 	TP_fast_assign(
+-		__assign_str(comm, comm);
+-		__assign_str(cmd, cmd);
+-		__assign_str(dm, dm);
++		___assign_str(comm, comm);
++		___assign_str(cmd, cmd);
++		___assign_str(dm, dm);
+ 		__entry->ctx_id = ctx_id;
+ 		__entry->offset = offset;
+ 		__entry->sync_fwaddr = sync_fwaddr;
+@@ -136,9 +142,9 @@
+ 	),
+ 
+ 	TP_fast_assign(
+-		__assign_str(comm, comm);
+-		__assign_str(cmd, cmd);
+-		__assign_str(dm, dm);
++		___assign_str(comm, comm);
++		___assign_str(cmd, cmd);
++		___assign_str(dm, dm);
+ 		__entry->ctx_id = ctx_id;
+ 		__entry->offset = offset;
+ 		__entry->sync_fwaddr = sync_fwaddr;
+@@ -176,7 +182,7 @@
+ 		__entry->ctx_id = ctx_id;
+ 		__entry->int_id = int_id;
+ 		__entry->ext_id = ext_id;
+-		__assign_str(kick_type, kick_type);
++		___assign_str(kick_type, kick_type);
+ 	),
+ 
+ 	TP_printk("ctx_id=%lu int_id=%lu ext_id=%lu kick_type=%s",
+@@ -205,7 +211,7 @@
+ 	),
+ 
+ 	TP_fast_assign(
+-		__assign_str(work_type, work_type);
++		___assign_str(work_type, work_type);
+ 		__entry->switch_type = switch_type;
+ 		__entry->timestamp = timestamp;
+ 		__entry->next_ctx_id = next_ctx_id;
+@@ -243,8 +249,8 @@
+ 	),
+ 
+ 	TP_fast_assign(
+-		__assign_str(comm, comm);
+-		__assign_str(dm, dm);
++		___assign_str(comm, comm);
++		___assign_str(dm, dm);
+ 		__entry->ctx_id = ctx_id;
+ 	),
+ 
+@@ -510,7 +516,7 @@
+ 
+ 	TP_fast_assign(
+ 		__entry->timestamp = timestamp;
+-		__assign_str(task, task);
++		___assign_str(task, task);
+ 		__entry->fw_event = fw_event;
+ 	),
+ 
+--- /dev/null
++++ b/inc/s30_runtime_compat.h
+@@ -0,0 +1,50 @@
++/* SPDX-License-Identifier: MIT */
++#ifndef MTGPU_S30_RUNTIME_COMPAT_H
++#define MTGPU_S30_RUNTIME_COMPAT_H
++
++#include <linux/io.h>
++#include <linux/iopoll.h>
++
++#define MT_S30_DISPC_CONTROL 0x00
++#define MT_S30_DISPC_STATUS  0x18
++#define MT_S30_DISPC_MASK    0x1c
++#define MT_S30_DISPC_ENABLE  BIT(0)
++#define MT_S30_DISPC_STOPPED BIT(8)
++
++/* Only for the reviewed SUDI/DB9000 firmware handover, before registering
++ * the ISR. The vendor stop() waits for an ISR which is not enabled yet.
++ * Observe the raw hardware completion instead; never synthesize disable_done.
++ */
++static int mtgpu_s30_stop_firmware(void __iomem *regs)
++{
++	u32 control, status;
++	int ret;
++
++	if (!regs)
++		return -EINVAL;
++	control = readl(regs + MT_S30_DISPC_CONTROL);
++	if (control == ~0U)
++		return -ENODEV;
++	/* Firmware interrupts must stay masked until DRM initialization. */
++	writel(0, regs + MT_S30_DISPC_MASK);
++	readl(regs + MT_S30_DISPC_MASK);
++	if (!(control & MT_S30_DISPC_ENABLE))
++		return 0;
++
++	/* W1C only a stale stop event, preserving unrelated status bits. */
++	writel(MT_S30_DISPC_STOPPED, regs + MT_S30_DISPC_STATUS);
++	readl(regs + MT_S30_DISPC_STATUS);
++	writel(control & ~MT_S30_DISPC_ENABLE, regs + MT_S30_DISPC_CONTROL);
++	readl(regs + MT_S30_DISPC_CONTROL);
++	ret = readl_poll_timeout(regs + MT_S30_DISPC_STATUS, status,
++				 status & MT_S30_DISPC_STOPPED, 1000, 500000);
++	if (ret)
++		return ret;
++	if (status == ~0U)
++		return -ENODEV;
++	writel(MT_S30_DISPC_STOPPED, regs + MT_S30_DISPC_STATUS);
++	readl(regs + MT_S30_DISPC_STATUS);
++	return 0;
++}
++
++#endif
+--- /dev/null
++++ b/inc/s30_vpu_compat.h
+@@ -0,0 +1,34 @@
++/* SPDX-License-Identifier: MIT */
++#ifndef MTGPU_S30_VPU_COMPAT_H
++#define MTGPU_S30_VPU_COMPAT_H
++
++/* Called only for PCI 1ed5:0102, native/host, using the pinned 3.1.0 blob.
++ * Three core windows end at 0xc000; the TOP page is 0xd000..0xdfff.
++ * The vendor's extra page at 0xe000 belongs to DISPC, not the VPU.
++ * Keep the vendor configuration/ABI intact; limit only the Linux mapping.
++ */
++static int mtgpu_s30_vpu_map_size(const struct mt_conf *conf,
++				u64 bar_size, u64 display_offset, u32 *size)
++{
++	unsigned int i;
++	const u32 end = 0xe000;
++
++	if (conf->type != TYPE_SUDI || conf->regs_base != 0x108000 ||
++	    conf->regs_chip_size != 0xf000 || conf->core_size != 3 ||
++	    conf->regs_top_offset != 0xd000 || conf->regs_ata_offset != 0 ||
++	    conf->product[0] != CODA980_CODE ||
++	    conf->product[1] != WAVE517_CODE ||
++	    conf->product[2] != WAVE627_CODE)
++		return -EINVAL;
++	for (i = 0; i < conf->core_size; i++)
++		if (conf->regs_core_size[i] != 0x4000)
++			return -EINVAL;
++	if (bar_size < conf->regs_base || end > bar_size - conf->regs_base ||
++	    display_offset != 0x116000 ||
++	    (u64)conf->regs_base + end > display_offset)
++		return -ERANGE;
++	*size = end;
++	return 0;
++}
++
++#endif
+--- /dev/null
++++ b/inc/workqueue_compat.h
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: MIT */
++#ifndef MT_WORKQUEUE_COMPAT_H
++#define MT_WORKQUEUE_COMPAT_H
++
++#include <linux/workqueue.h>
++
++static inline unsigned int mt_legacy_workqueue_flags(unsigned int flags)
++{
++#if defined(OS_ENUM_WQ_PERCPU_EXIST)
++	/* The vendor ABI predates explicit WQ_PERCPU. Preserve its bound
++	 * default, without changing callers that already select a queue type.
++	 * WQ_PERCPU is an enum, so detect it by compiling, not with #ifdef.
++	 */
++	if (!(flags & (WQ_PERCPU | WQ_UNBOUND)))
++		flags |= WQ_PERCPU;
++#endif
++	return flags;
++}
++
++#endif
+--- a/src/common/os-interface-drm.c
++++ b/src/common/os-interface-drm.c
+@@ -1,3 +1,5 @@
++#include <drm/drm_ioctl.h>
++#include "mtgpu_drm_drv.h"
+ /*
+  * @Copyright   Copyright (c) Moorethreads Technologies Ltd. All Rights Reserved
+  * @License     Dual MIT/GPLv2
+@@ -20,6 +22,7 @@
+ #endif
+ #include <drm/drm_edid.h>
+ #include <drm/drm_crtc.h>
++#include <drm/drm_edid.h>
+ #include <drm/drm_encoder.h>
+ #include <drm/drm_crtc_helper.h>
+ #include <drm/gpu_scheduler.h>
+@@ -98,7 +101,13 @@
+ 
+ struct mutex *os_get_drm_device_mutex(struct drm_device *drm)
+ {
++#ifdef OS_STRUCT_DRM_DEVICE_HAS_STRUCT_MUTEX
+ 	return &drm->struct_mutex;
++#else
++	struct mtgpu_drm_private *private = drm->dev_private;
++
++	return &private->gem_mmap_mutex;
++#endif
+ }
+ 
+ struct device *os_get_drm_device_base(struct drm_device *drm)
+--- a/src/common/os-interface.c
++++ b/src/common/os-interface.c
+@@ -1,3 +1,7 @@
++#include "iommu_compat.h"
++#if __has_include(<linux/filelock.h>)
++#include <linux/filelock.h>
++#endif
+ /*
+  * @Copyright   Copyright (c) Moorethreads Technologies Ltd. All Rights Reserved
+  * @License     Dual MIT/GPLv2
+@@ -43,6 +47,7 @@
+ #include <linux/mempool.h>
+ #include <linux/wait.h>
+ #include <linux/workqueue.h>
++#include "workqueue_compat.h"
+ #include <linux/interrupt.h>
+ #include <linux/uaccess.h>
+ #include <linux/semaphore.h>
+@@ -178,6 +183,10 @@
+ 	void *data;
+ };
+ 
++#ifndef PCI_IRQ_LEGACY
++#define PCI_IRQ_LEGACY PCI_IRQ_INTX
++#endif // PCI_IRQ_LEGACY
++
+ const u64 os_value[] = {
+ #define X(VALUE) VALUE,
+ 	DECLEAR_OS_VALUE
+@@ -770,7 +779,12 @@
+ 
+ void os_get_current_task_comm(char *to, int size)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++	WARN_ON(size < TASK_COMM_LEN);
++	sized_strscpy_pad(to, current->comm, size);
++#else
+ 	__get_task_comm(to, size, current);
++#endif // LINUX_VERSION
+ }
+ 
+ void *os_vmap(struct page **pages, unsigned int count)
+@@ -894,7 +908,7 @@
+ 	return d_path(p, param, size);
+ }
+ 
+-struct path *os_get_exec_vma_file_path(struct mm_struct *mm)
++const struct path *os_get_exec_vma_file_path(struct mm_struct *mm)
+ {
+ 	struct vm_area_struct *vma;
+ 
+@@ -902,14 +916,14 @@
+ 	MA_STATE(mas, &mm->mm_mt, 0, 0);
+ 
+ 	mas_for_each(&mas, vma, ULONG_MAX) {
+-		if ((vma->vm_flags & VM_EXEC) && !vma->vm_file)
++		if ((vma->vm_flags & VM_EXEC) && vma->vm_file)
+ 			return &vma->vm_file->f_path;
+ 	}
+ #else
+ 	vma = mm->mmap;
+ 
+ 	while (vma) {
+-		if ((vma->vm_flags & VM_EXEC) && !vma->vm_file)
++		if ((vma->vm_flags & VM_EXEC) && vma->vm_file)
+ 			return &vma->vm_file->f_path;
+ 
+ 		vma = vma->vm_next;
+@@ -1712,7 +1726,11 @@
+ 
+ struct file *os_get_fd_file(struct fd *fd)
+ {
++#ifdef fd_file
++	return fd_file(*fd);
++#else
+ 	return fd->file;
++#endif // fd_file
+ }
+ 
+ void os_kref_init(mt_kref *kref)
+@@ -1794,7 +1812,7 @@
+ 
+ struct workqueue_struct *os_alloc_workqueue(const char *fmt, unsigned int flags, int max_active)
+ {
+-	return alloc_workqueue(fmt, flags, max_active);
++	return alloc_workqueue(fmt, mt_legacy_workqueue_flags(flags), max_active);
+ }
+ 
+ struct workqueue_struct *os_alloc_ordered_workqueue(const char *fmt)
+@@ -2163,10 +2181,12 @@
+ 	return untagged_addr(addr);
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 10, 0)
+ int os_follow_pfn(struct vm_area_struct *vma, unsigned long address, unsigned long *pfn)
+ {
+ 	return follow_pfn(vma, address, pfn);
+ }
++#endif // LINUX_VERSION
+ 
+ int os_fixup_user_fault(struct task_struct *tsk, struct mm_struct *mm, unsigned long address,
+ 			unsigned int fault_flags, bool *unlocked)
+@@ -2815,7 +2835,11 @@
+ 
+ int os_del_timer_sync(struct timer_list *timer)
+ {
++#ifdef OS_TIMER_DELETE_SYNC_CALLABLE
++	return timer_delete_sync(timer);
++#else
+ 	return del_timer_sync(timer);
++#endif
+ }
+ 
+ void os_timer_setup(struct timer_list *timer, void (*function)(struct timer_list *),
+@@ -2840,9 +2864,13 @@
+ 
+ void os_hrtimer_init(struct hrtimer *timer, void *function)
+ {
++#ifdef OS_HRTIMER_SETUP_CALLABLE
++	hrtimer_setup(timer, (enum hrtimer_restart(*)(struct hrtimer *))function,
++		      CLOCK_MONOTONIC, HRTIMER_MODE_REL);
++#else
+ 	hrtimer_init(timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+-
+ 	timer->function = (enum hrtimer_restart(*)(struct hrtimer *))function;
++#endif
+ }
+ 
+ void os_hrtimer_start(struct hrtimer *timer, u64 periods)
+@@ -3239,7 +3267,11 @@
+ 
+ int os_pci_resize_resource(struct pci_dev *dev, int resno, int size)
+ {
+-	return pci_resize_resource(dev,  resno,  size);
++#ifdef OS_PCI_RESIZE_RESOURCE_HAS_FOUR_ARGS
++	return pci_resize_resource(dev, resno, size, 0);
++#else
++	return pci_resize_resource(dev, resno, size);
++#endif
+ }
+ 
+ void os_pci_assign_unassigned_bus_resources(struct pci_bus *bus)
+@@ -3569,7 +3601,7 @@
+ 
+ struct iommu_domain *os_iommu_domain_alloc(struct bus_type *bus)
+ {
+-	return iommu_domain_alloc(bus);
++	return mt_iommu_domain_alloc(bus);
+ }
+ 
+ void os_iommu_domain_free(struct iommu_domain *domain)
+@@ -3594,7 +3626,7 @@
+ 
+ bool os_iommu_present(struct bus_type *bus)
+ {
+-	return iommu_present(bus);
++	return mt_iommu_present(bus);
+ }
+ 
+ int os_iommu_group_for_each_dev(struct iommu_group *group, void *data,
+@@ -4253,16 +4285,31 @@
+ }
+ #endif
+ 
++struct mt_os_path {
++	struct path path;
++#ifdef MT_VFS_MKDIR_RETURNS_DENTRY
++	struct dentry *mkdir_result;
++	bool mkdir_called;
++#endif
++};
++
+ void *os_path_create(void)
+ {
+-	return os_kzalloc(sizeof(struct path));
++	return os_kzalloc(sizeof(struct mt_os_path));
+ }
+ 
+ struct dentry *os_kern_path_create(int dfd, const char *name,
+ 				   struct path *path,
+ 				   unsigned int lookup_flags)
+ {
++#ifdef MT_VFS_MKDIR_RETURNS_DENTRY
++	struct mt_os_path *ctx = container_of(path, struct mt_os_path, path);
++
++	ctx->mkdir_called = false;
++	return start_creating_path(dfd, name, path, lookup_flags);
++#else
+ 	return kern_path_create(dfd, name, path, lookup_flags);
++#endif
+ }
+ 
+ int os_kern_path(const char *name, unsigned int flags, struct path *path)
+@@ -4277,7 +4324,18 @@
+ 
+ int os_vfs_mkdir(struct path *path, struct dentry *dentry, umode_t mode)
+ {
+-#ifdef OS_VFS_MKDIR_USE_USER_NAMESPACE
++#ifdef MT_VFS_MKDIR_RETURNS_DENTRY
++	struct mt_os_path *ctx = container_of(path, struct mt_os_path, path);
++
++	ctx->mkdir_result = vfs_mkdir(mnt_idmap(path->mnt),
++				    d_inode(path->dentry), dentry, mode
++#ifdef OS_VFS_MKDIR_RETURNS_DENTRY
++				    , NULL
++#endif
++				    );
++	ctx->mkdir_called = true;
++	return PTR_ERR_OR_ZERO(ctx->mkdir_result);
++#elif defined(OS_VFS_MKDIR_USE_USER_NAMESPACE)
+ 	struct user_namespace *mnt_userns = current_user_ns();
+ 
+ 	return vfs_mkdir(mnt_userns, path->dentry->d_inode, dentry, mode);
+@@ -4290,7 +4348,16 @@
+ 
+ int os_vfs_unlink(struct inode *dir, struct dentry *dentry, struct inode **delegated_inode)
+ {
+-#if defined(OS_VFS_MKDIR_USE_MNT_IDMAP)
++#if defined(OS_VFS_MKDIR_RETURNS_DENTRY)
++	struct delegated_inode di = {};
++	int ret = vfs_unlink(&nop_mnt_idmap, dir, dentry,
++			     delegated_inode ? &di : NULL);
++#ifdef CONFIG_FILE_LOCKING
++	if (delegated_inode)
++		*delegated_inode = di.di_inode;
++#endif
++	return ret;
++#elif defined(OS_VFS_UNLINK_USE_MNT_IDMAP)
+ 	return vfs_unlink(&nop_mnt_idmap, dir, dentry, delegated_inode);
+ #elif defined(OS_VFS_MKDIR_USE_USER_NAMESPACE)
+ 	return vfs_unlink(current_user_ns(), dir, dentry, delegated_inode);
+@@ -4331,7 +4398,14 @@
+ 
+ void os_done_path_create(struct path *path, struct dentry *dentry)
+ {
++#ifdef MT_VFS_MKDIR_RETURNS_DENTRY
++	struct mt_os_path *ctx = container_of(path, struct mt_os_path, path);
++
++	end_creating_path(path, ctx->mkdir_called ? ctx->mkdir_result : dentry);
++	ctx->mkdir_called = false;
++#else
+ 	done_path_create(path, dentry);
++#endif
+ }
+ 
+ struct inode *os_get_inode_from_path(struct path *path)
+@@ -4734,8 +4808,12 @@
+ 	dma_ops->signaled = mt_ops->signaled;
+ 	dma_ops->wait = mt_ops->wait;
+ 	dma_ops->release = mt_ops->release;
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_FENCE_VALUE_STR
+ 	dma_ops->fence_value_str = mt_ops->fence_value_str;
++#endif
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_TIMELINE_VALUE_STR
+ 	dma_ops->timeline_value_str = mt_ops->timeline_value_str;
++#endif
+ 
+ 	*ops = dma_ops;
+ 
+@@ -5382,7 +5460,12 @@
+ 
+ char *os_strncpy(char *dest, const char *src, size_t count)
+ {
+-	return strncpy(dest, src, count);
++	/* Keep strncpy's fixed-width, zero-padding semantics for the binary core. */
++	size_t len = strnlen(src, count);
++
++	memcpy(dest, src, len);
++	memset(dest + len, 0, count - len);
++	return dest;
+ }
+ 
+ char *os_strchr(const char *s, int c)
+--- a/src/mtgpu/mtgpu_drm_atomic.c
++++ b/src/mtgpu/mtgpu_drm_atomic.c
+@@ -396,7 +396,11 @@
+ 	    !try_wait_for_completion(&old_plane_state->commit->hw_done))
+ 		return -EBUSY;
+ #if defined(OS_DRM_PLANE_HELPER_FUNCS_USE_DRM_ATOMIC_STATE)
+-	return funcs->atomic_async_check(plane, state);
++	return funcs->atomic_async_check(plane, state
++#ifdef OS_DRM_ASYNC_CHECK_HAS_FLIP
++					 , false
++#endif
++					 );
+ #else
+ 	return funcs->atomic_async_check(plane, new_plane_state);
+ #endif
+--- a/src/mtgpu/mtgpu_drm_dispc.c
++++ b/src/mtgpu/mtgpu_drm_dispc.c
+@@ -4,6 +4,8 @@
+  */
+ 
+ #include <linux/io.h>
++#include <linux/pci.h>
++#include "s30_runtime_compat.h"
+ #include <linux/wait.h>
+ #include <linux/workqueue.h>
+ #include <linux/component.h>
+@@ -13,6 +15,7 @@
+ #include <drm/drmP.h>
+ #endif
+ #include <drm/drm_atomic.h>
++#include <drm/drm_ioctl.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_fourcc.h>
+ #include <drm/drm_plane_helper.h>
+@@ -36,6 +39,7 @@
+ #include "mtgpu_dispc_common.h"
+ #include "mtgpu_drm_debugfs.h"
+ #include "mtgpu_drm_internal.h"
++#include "mtgpu_drm_drv.h"
+ #include "../mtgpu/mtgpu_drv.h"
+ #include "mtgpu_module_param.h"
+ #include "os-interface-drm.h"
+@@ -348,12 +352,20 @@
+ 
+ #if defined(OS_DRM_PLANE_HELPER_FUNCS_USE_DRM_ATOMIC_STATE)
+ static int mtgpu_plane_atomic_async_check(struct drm_plane *plane,
+-					  struct drm_atomic_state *atomic_state)
++					  struct drm_atomic_state *atomic_state
++#ifdef OS_DRM_ASYNC_CHECK_HAS_FLIP
++					  , bool flip
++#endif
++					  )
+ #else
+ static int mtgpu_plane_atomic_async_check(struct drm_plane *plane,
+ 					  struct drm_plane_state *plane_state)
+ #endif
+ {
++#ifdef OS_DRM_ASYNC_CHECK_HAS_FLIP
++	if (flip)
++		return -EINVAL;
++#endif
+ 	if (plane->type == DRM_PLANE_TYPE_CURSOR)
+ 		return 0;
+ 
+@@ -698,11 +710,19 @@
+ static void mtgpu_dispc_isr(void *data)
+ {
+ 	struct mtgpu_dispc *dispc = data;
++	struct mtgpu_drm_private *private;
+ 	u32 int_sts = 0;
+ 
+ 	if (dispc->core->isr)
+ 		int_sts = dispc->core->isr(&dispc->ctx);
+ 
++	/* Acknowledge hardware events even while DRM is being constructed or
++	 * torn down, but do not dereference an unpublished CRTC/vblank state.
++	 */
++	private = dispc->drm->dev_private;
++	if (!smp_load_acquire(&private->display_irqs_ready))
++		return;
++
+ 	if (int_sts & DISPC_INT_BIT_VSYNC)
+ 		drm_crtc_handle_vblank(dispc->crtc);
+ 
+@@ -718,6 +738,8 @@
+ {
+ 	struct drm_device *drm = data;
+ 	struct drm_plane *primary = NULL, *cursor = NULL;
++	struct drm_plane **planes = NULL;
++	u32 plane_count = 0;
+ 	struct mtgpu_dispc *dispc;
+ 	const struct mtgpu_layer_capability *layer_caps;
+ 	struct platform_device *pdev = to_platform_device(dev);
+@@ -725,10 +747,12 @@
+ 	struct mtgpu_dispc_platform_data *pdata = dev_get_platdata(dev);
+ 	int i, ret;
+ 	struct mtgpu_dispc_chip *chip;
++	bool irq_registered = false;
+ 
+ 	dispc = kzalloc(sizeof(*dispc), GFP_KERNEL);
+ 	if (!dispc)
+ 		return -ENOMEM;
++	dispc->drm = drm;
+ 
+ 	dispc->caps = kzalloc(sizeof(*dispc->caps), GFP_KERNEL);
+ 	if (!dispc->caps) {
+@@ -755,8 +779,8 @@
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dispc-regs");
+ 	if (res) {
+ 		dispc->ctx.regs = devm_ioremap(dev, res->start, resource_size(res));
+-		if (IS_ERR(dispc->ctx.regs)) {
+-			ret = PTR_ERR(dispc->ctx.regs);
++		if (!dispc->ctx.regs) {
++			ret = -ENOMEM;
+ 			goto err_free_dispc;
+ 		}
+ 	}
+@@ -765,8 +789,8 @@
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dispc-pre-regs");
+ 	if (res) {
+ 		dispc->ctx.pre_regs = devm_ioremap(dev, res->start, resource_size(res));
+-		if (IS_ERR(dispc->ctx.pre_regs)) {
+-			ret = PTR_ERR(dispc->ctx.pre_regs);
++		if (!dispc->ctx.pre_regs) {
++			ret = -ENOMEM;
+ 			goto err_free_dispc;
+ 		}
+ 	}
+@@ -775,8 +799,8 @@
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dispc-post-regs");
+ 	if (res) {
+ 		dispc->ctx.post_regs = devm_ioremap(dev, res->start, resource_size(res));
+-		if (IS_ERR(dispc->ctx.post_regs)) {
+-			ret = PTR_ERR(dispc->ctx.post_regs);
++		if (!dispc->ctx.post_regs) {
++			ret = -ENOMEM;
+ 			goto err_free_dispc;
+ 		}
+ 	}
+@@ -785,8 +809,8 @@
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "dispc-out-regs");
+ 	if (res) {
+ 		dispc->ctx.out_regs = devm_ioremap(dev, res->start, resource_size(res));
+-		if (IS_ERR(dispc->ctx.out_regs)) {
+-			ret = PTR_ERR(dispc->ctx.out_regs);
++		if (!dispc->ctx.out_regs) {
++			ret = -ENOMEM;
+ 			goto err_free_dispc;
+ 		}
+ 	}
+@@ -799,8 +823,8 @@
+ 	}
+ 
+ 	dispc->ctx.glb_regs = devm_ioremap(dev, res->start, resource_size(res));
+-	if (IS_ERR(dispc->ctx.glb_regs)) {
+-		ret = PTR_ERR(dispc->ctx.glb_regs);
++	if (!dispc->ctx.glb_regs) {
++		ret = -ENOMEM;
+ 		goto err_free_dispc;
+ 	}
+ 
+@@ -812,14 +836,6 @@
+ 	if (!res) {
+ 		DRM_DEV_ERROR(dev, "failed to get display irq number\n");
+ 		ret = -EIO;
+-		goto err_free_dispc;
+-	}
+-
+-	ret = mtgpu_register_interrupt(dev->parent->parent, res->start,
+-				       mtgpu_dispc_isr, dispc, "dispc");
+-	if (ret) {
+-		DRM_DEV_ERROR(dev, "failed to register dispc irq handler\n");
+-		ret = -EINVAL;
+ 		goto err_free_dispc;
+ 	}
+ 
+@@ -863,6 +879,19 @@
+ 			goto err_free_dispc;
+ 	}
+ 
++	if (pdata->soc_gen == GPU_SOC_GEN1 && dev_is_pci(dev->parent->parent)) {
++		struct pci_dev *pci = to_pci_dev(dev->parent->parent);
++
++		if (pci->vendor == 0x1ed5 && pci->device == 0x0102) {
++			ret = mtgpu_s30_stop_firmware(dispc->ctx.regs);
++			if (ret) {
++				DRM_DEV_ERROR(dev, "S30 firmware display stop failed: %d\n", ret);
++				goto err_ctx_deinit;
++			}
++			DRM_DEV_INFO(dev, "S30 firmware display quiesced before IRQ registration\n");
++		}
++	}
++
+ 	/* disable de configs like interrupts as firmware may config them,
+ 	 * which may lead OOPS in irq handler as drm has not finished
+ 	 * initial.
+@@ -870,13 +899,6 @@
+ 	if (dispc->core->deinit)
+ 		dispc->core->deinit(&dispc->ctx);
+ 
+-	ret = mtgpu_enable_interrupt(dev->parent->parent, res->start);
+-	if (ret) {
+-		DRM_DEV_ERROR(dev, "failed to enable dispc irq number: %d\n", (int)res->start);
+-		ret = -EINVAL;
+-		goto err_free_dispc;
+-	}
+-
+ 	dispc->glb = chip->glb;
+ 	if (!dispc->glb) {
+ 		DRM_ERROR("dispc glb ops is null\n");
+@@ -901,6 +923,11 @@
+ 	}
+ 
+ 	layer_caps = dispc->caps->layer_caps;
++	planes = kcalloc(dispc->caps->layer_count, sizeof(*planes), GFP_KERNEL);
++	if (!planes) {
++		ret = -ENOMEM;
++		goto err_ctx_deinit;
++	}
+ 
+ 	for (i = 0; i < dispc->caps->layer_count; i++) {
+ 		struct drm_plane *plane;
+@@ -924,6 +951,7 @@
+ 		}
+ 
+ 		drm_plane_helper_add(plane, &mtgpu_primary_helper_funcs);
++		planes[plane_count++] = plane;
+ 
+ 		mtgpu_plane_create_properties(plane, &layer_caps[i], i);
+ 
+@@ -934,8 +962,10 @@
+ 	}
+ 
+ 	dispc->crtc = os_create_drm_crtc();
+-	if (!dispc->crtc)
++	if (!dispc->crtc) {
++		ret = -ENOMEM;
+ 		goto err_ctx_deinit;
++	}
+ 
+ 	os_set_drm_crtc_drvdata(dispc->crtc, dispc);
+ 	ret = drm_crtc_init_with_planes(drm, dispc->crtc, primary, cursor,
+@@ -953,19 +983,45 @@
+ 
+ 	drm_crtc_helper_add(dispc->crtc, &mtgpu_crtc_helper_funcs);
+ 
++	/* Publish the handler only after all its component state exists. */
++	ret = mtgpu_register_interrupt(dev->parent->parent, dispc->ctx.irq,
++				       mtgpu_dispc_isr, dispc, "dispc");
++	if (ret)
++		goto err_crtc_cleanup;
++	irq_registered = true;
++	ret = mtgpu_enable_interrupt(dev->parent->parent, dispc->ctx.irq);
++	if (ret)
++		goto err_crtc_cleanup;
++
+ 	mtgpu_dispc_debugfs_create_files(dispc);
+ 
+ 	DRM_DEV_INFO(dev, "mtgpu display controller driver loaded successfully\n");
+ 
++	kfree(planes);
+ 	return 0;
+ 
++err_crtc_cleanup:
++	if (irq_registered) {
++		mtgpu_disable_interrupt(dev->parent->parent, dispc->ctx.irq);
++		mtgpu_drm_sync_irqs(dev->parent->parent);
++		mtgpu_unregister_interrupt(dev->parent->parent, dispc->ctx.irq);
++	}
++	drm_crtc_cleanup(dispc->crtc);
+ err_crtc_free:
+ 	os_destroy_drm_crtc(dispc->crtc);
+ 
+ err_ctx_deinit:
++	while (plane_count) {
++		struct drm_plane *plane = planes[--plane_count];
++
++		drm_plane_cleanup(plane);
++		kfree(plane);
++	}
++	kfree(planes);
+ 	if (dispc->core->ctx_deinit)
+ 		dispc->core->ctx_deinit(&dispc->ctx);
+ err_free_dispc:
++	dev_set_drvdata(dev, NULL);
+ 	kfree(dispc->ctx.waitq);
+ 	kfree(dispc->ctx.vm);
+ 	kfree(dispc->caps);
+@@ -984,6 +1040,7 @@
+ 	if (ret)
+ 		DRM_DEV_ERROR(dev, "failed to disable dispc irq %d\n", dispc->ctx.irq);
+ 
++	mtgpu_drm_sync_irqs(dev->parent->parent);
+ 	ret = mtgpu_unregister_interrupt(dev->parent->parent, dispc->ctx.irq);
+ 	if (ret)
+ 		DRM_DEV_ERROR(dev, "failed to deregister dispc irq %d handler\n", dispc->ctx.irq);
+@@ -999,6 +1056,7 @@
+ 	kfree(dispc->ctx.vm);
+ 	kfree(dispc->caps);
+ 	kfree(dispc);
++	dev_set_drvdata(dev, NULL);
+ 
+ 	DRM_DEV_INFO(dev, "unload mtgpu display controller driver\n");
+ }
+@@ -1024,9 +1082,20 @@
+ 	{ },
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _mtgpu_dispc_remove(struct platform_device *pdev)
++{
++	mtgpu_dispc_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ struct platform_driver mtgpu_dispc_driver = {
+ 	.probe    = mtgpu_dispc_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove   = _mtgpu_dispc_remove,
++#else
+ 	.remove   = mtgpu_dispc_remove,
++#endif // KERNEL_VERSION
+ 	.driver   = {
+ 		.owner  = THIS_MODULE,
+ 		.name   = "mtgpu-dispc-drv",
+--- a/src/mtgpu/mtgpu_drm_dp.c
++++ b/src/mtgpu/mtgpu_drm_dp.c
+@@ -219,7 +219,7 @@
+ }
+ 
+ static int mtgpu_dp_mode_supported_by_product(struct mtgpu_dp *dp,
+-					      struct drm_display_mode *mode)
++					      const struct drm_display_mode *mode)
+ {
+ 	int max_pclk;
+ 	struct mtgpu_dp_dsc_param *dp_dsc_param = &dp->ctx.dsc_param;
+@@ -276,7 +276,7 @@
+ }
+ 
+ static void mtgpu_dp_set_preferred_mode(struct drm_connector *connector,
+-					struct drm_display_mode *filtered_mode)
++					const struct drm_display_mode *filtered_mode)
+ {
+ 	struct drm_display_mode *mode;
+ 	struct drm_display_mode tmp_best_mode = {0};
+@@ -303,8 +303,13 @@
+ 		preferred_mode->type |= DRM_MODE_TYPE_PREFERRED;
+ }
+ 
++#ifdef OS_DRM_CONNECTOR_MODE_VALID_CONST
++static enum drm_mode_status mtgpu_dp_connector_mode_valid(struct drm_connector *connector,
++					 const struct drm_display_mode *mode)
++#else
+ static int mtgpu_dp_connector_mode_valid(struct drm_connector *connector,
+ 					 struct drm_display_mode *mode)
++#endif
+ {
+ 	int mode_status;
+ 	struct mtgpu_dp *dp = connector_to_mtgpu_dp(connector);
+@@ -722,7 +727,11 @@
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0)
++static int dsc_dev_match(struct device *dev, const void *name)
++#else
+ static int dsc_dev_match(struct device *dev, void *name)
++#endif
+ {
+ 	return !strncmp(dev_name(dev), (const char *)name, strlen((const char *)name));
+ }
+@@ -1056,9 +1065,20 @@
+ 	.freeze		= mtgpu_dp_suspend,
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _mtgpu_dp_remove(struct platform_device *pdev)
++{
++	mtgpu_dp_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ struct platform_driver mtgpu_dp_driver = {
+ 	.probe    = mtgpu_dp_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove   = _mtgpu_dp_remove,
++#else
+ 	.remove   = mtgpu_dp_remove,
++#endif // KERNEL_VERSION
+ 	.driver   = {
+ 		.owner  = THIS_MODULE,
+ 		.name   = "mtgpu-dp-drv",
+--- a/src/mtgpu/mtgpu_drm_drv.c
++++ b/src/mtgpu/mtgpu_drm_drv.c
+@@ -1,3 +1,4 @@
++#include "iommu_compat.h"
+ /*
+  * @Copyright   Copyright (c) Moorethreads Technologies Ltd. All Rights Reserved
+  * @License     Dual MIT/GPLv2
+@@ -5,6 +6,7 @@
+ 
+ #include <linux/module.h>
+ #include <linux/component.h>
++#include <linux/interrupt.h>
+ #include <linux/pci.h>
+ #include <linux/platform_device.h>
+ #include <linux/of.h>
+@@ -26,6 +28,9 @@
+ #include <linux/dma-mapping.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_drv.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++#include <drm/drm_fbdev_shmem.h>
++#endif
+ #include <drm/drm_vblank.h>
+ #include <drm/drm_atomic.h>
+ #include <drm/drm_atomic_helper.h>
+@@ -40,6 +45,17 @@
+ #if defined(OS_DRM_DRM_FBDEV_GENERIC_H_EXIST)
+ #include <drm/drm_fbdev_generic.h>
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 0, 0)
++#include <linux/aperture.h>
++#include <drm/drm_fourcc.h>
++#endif // LINUX_VERSION
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0)
++#include <drm/clients/drm_client_setup.h>
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++#include <drm/drm_client_setup.h>
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++#include <drm/drm_fbdev_shmem.h>
++#endif // LINUX_VERSION
+ #if defined(OS_DRM_DRM_SELF_REFRESH_HELPER_H_EXIST)
+ #include <drm/drm_self_refresh_helper.h>
+ #endif
+@@ -228,6 +244,9 @@
+ 	.read		= drm_read,
+ 	.llseek		= noop_llseek,
+ 	.mmap		= mtgpu_mmap,
++#ifdef FOP_UNSIGNED_OFFSET
++	.fop_flags = FOP_UNSIGNED_OFFSET,
++#endif // FOP_UNSIGNED_OFFSET
+ };
+ 
+ static int mtgpu_gem_show(struct seq_file *m, void *arg)
+@@ -316,10 +335,34 @@
+ 
+ 	.name				= DRIVER_NAME,
+ 	.desc				= DRIVER_DESC,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 14, 0)
+ 	.date				= DRIVER_DATE,
++#endif
+ 	.major				= DRIVER_MAJOR,
+ 	.minor				= DRIVER_MINOR,
+-};
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++	DRM_FBDEV_SHMEM_DRIVER_OPS,
++#endif // LINUX_VERSION
++};
++
++/* Logical interrupt IDs are not Linux IRQ numbers. Drain every allocated
++ * physical vector before a component's handler data or DRM state is freed.
++ */
++void mtgpu_drm_sync_irqs(struct device *parent)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(parent);
++	struct mtgpu_irq_info *info;
++	u32 i;
++
++	if (!mtdev)
++		return;
++	info = mtdev->irq_info;
++	if (!info || !info->irq_data)
++		return;
++	for (i = 0; i < info->irq_cnt; i++)
++		synchronize_irq(info->irq_data[i].host_irq);
++}
+ 
+ static int mtgpu_component_bind(struct device *dev)
+ {
+@@ -349,6 +392,9 @@
+ 		ret = -ENOMEM;
+ 		goto err_mode_config_cleanup;
+ 	}
++#ifndef OS_STRUCT_DRM_DEVICE_HAS_STRUCT_MUTEX
++	mutex_init(&private->gem_mmap_mutex);
++#endif
+ 	drm->dev_private = private;
+ 
+ 	mtgpu_mode_config_init(drm);
+@@ -367,6 +413,7 @@
+ 		DRM_ERROR("failed to complete vblank init (ret=%d)\n", ret);
+ 		goto err_unbind_all;
+ 	}
++	smp_store_release(&private->display_irqs_ready, true);
+ 
+ #if defined(OS_STRUCT_DRM_DEVICE_HAS_IRQ_ENABLED)
+ 	drm->irq_enabled = true;
+@@ -381,7 +428,13 @@
+ 		goto err_kms_helper_poll_fini;
+ 
+ 	if (!disable_fbdev)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++		drm_client_setup(drm, NULL);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++		drm_fbdev_shmem_setup(drm, 32);
++#else
+ 		drm_fbdev_generic_setup(drm, 32);
++#endif
+ 
+ 	DRM_INFO("MooreThreads GPU drm driver loaded successfully\n");
+ 
+@@ -390,6 +443,8 @@
+ err_kms_helper_poll_fini:
+ 	drm_kms_helper_poll_fini(drm);
+ err_unbind_all:
++	smp_store_release(&private->display_irqs_ready, false);
++	mtgpu_drm_sync_irqs(dev->parent);
+ 	drm_mode_config_cleanup(drm);
+ 	component_unbind_all(dev, drm);
+ err_free:
+@@ -403,10 +458,13 @@
+ static void mtgpu_component_unbind(struct device *dev)
+ {
+ 	struct drm_device *drm = dev_get_drvdata(dev);
++	struct mtgpu_drm_private *private = drm->dev_private;
+ 
+ 	drm_dev_unregister(drm);
+ 	drm_kms_helper_poll_fini(drm);
+ 	drm_atomic_helper_shutdown(drm);
++	smp_store_release(&private->display_irqs_ready, false);
++	mtgpu_drm_sync_irqs(dev->parent);
+ 	drm_mode_config_cleanup(drm);
+ 	component_unbind_all(dev, drm);
+ 
+@@ -587,7 +645,7 @@
+ 
+ 	if (comp_type == MTGPU_COMP_TYPE_DC &&
+ 	    !mtdev->display_device &&
+-	    iommu_present(dev->bus))
++	    device_iommu_mapped(dev))
+ 		mtdev->display_device = dev;
+ 
+ 	/* Add compnent device. */
+@@ -683,9 +741,20 @@
+ 	.restore = mtgpu_drm_resume,
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _mtgpu_drm_remove(struct platform_device *pdev)
++{
++	mtgpu_drm_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ static struct platform_driver mtgpu_drm_platform_driver = {
+ 	.probe		= mtgpu_drm_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove		= _mtgpu_drm_remove,
++#else
+ 	.remove		= mtgpu_drm_remove,
++#endif // KERNEL_VERSION
+ 	.driver		= {
+ 		.owner  = THIS_MODULE,
+ 		.name	= "mtgpu-drm-driver",
+@@ -697,7 +766,13 @@
+ /* WARNING: fb base/size should be acquired from pcie bar before pcie resize. */
+ int mtgpu_kick_out_firmware_fb(resource_size_t base, resource_size_t size)
+ {
+-#if defined(OS_FUNC_REMOVE_CONFLICTING_FRAMEBUFFERS_EXIST)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++	aperture_remove_conflicting_devices(
++		base,
++		size,
++		mtgpu_drm_driver.name
++	);
++#elif defined(OS_FUNC_REMOVE_CONFLICTING_FRAMEBUFFERS_EXIST)
+ 	struct apertures_struct *ap;
+ 
+ 	ap = alloc_apertures(1);
+--- a/src/mtgpu/mtgpu_drm_dsc.c
++++ b/src/mtgpu/mtgpu_drm_dsc.c
+@@ -185,9 +185,21 @@
+ 	{ },
+ };
+ 
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _mtgpu_dsc_remove(struct platform_device *pdev)
++{
++	mtgpu_dsc_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ struct platform_driver mtgpu_dsc_driver = {
+ 	.probe    = mtgpu_dsc_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove   = _mtgpu_dsc_remove,
++#else
+ 	.remove   = mtgpu_dsc_remove,
++#endif // KERNEL_VERSION
+ 	.driver   = {
+ 		.owner  = THIS_MODULE,
+ 		.name   = "mtgpu-dsc-drv",
+--- a/src/mtgpu/mtgpu_drm_dummy_connector.c
++++ b/src/mtgpu/mtgpu_drm_dummy_connector.c
+@@ -312,9 +312,21 @@
+ 	{ },
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _dummy_connector_remove(struct platform_device *pdev)
++{
++	dummy_connector_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
++
+ struct platform_driver dummy_connector_driver = {
+ 	.probe    = dummy_connector_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove   = _dummy_connector_remove,
++#else
+ 	.remove   = dummy_connector_remove,
++#endif // KERNEL_VERSION
+ 	.driver   = {
+ 		.owner  = THIS_MODULE,
+ 		.name   = "dummy-connector-drv",
+--- a/src/mtgpu/mtgpu_drm_dummy_crtc.c
++++ b/src/mtgpu/mtgpu_drm_dummy_crtc.c
+@@ -172,8 +172,13 @@
+ 	if (mtgpu_get_driver_mode() == MTGPU_DRIVER_MODE_GUEST) {
+ 		mtgpu_vgpu_ipc_vsync_status_on(dummy->dev->parent->parent);
+ 	} else {
++#ifdef OS_HRTIMER_SETUP_CALLABLE
++		hrtimer_setup(&dummy->vblank_hrtimer, dummy_vblank_simulate,
++			      CLOCK_MONOTONIC, HRTIMER_MODE_REL);
++#else
+ 		hrtimer_init(&dummy->vblank_hrtimer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+ 		dummy->vblank_hrtimer.function = &dummy_vblank_simulate;
++#endif
+ 		dummy->vblank_periods = dummy_vblank_periods_calculate(crtc);
+ 
+ 		if (dummy->vblank_periods)
+@@ -423,9 +428,20 @@
+ 	{ },
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _dummy_crtc_remove(struct platform_device *pdev)
++{
++	dummy_crtc_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ struct platform_driver dummy_crtc_driver = {
+ 	.probe    = dummy_crtc_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove   = _dummy_crtc_remove,
++#else
+ 	.remove   = dummy_crtc_remove,
++#endif // KERNEL_VERSION
+ 	.driver   = {
+ 		.owner  = THIS_MODULE,
+ 		.name   = "dummy-crtc-drv",
+--- a/src/mtgpu/mtgpu_drm_hdmi.c
++++ b/src/mtgpu/mtgpu_drm_hdmi.c
+@@ -212,8 +212,8 @@
+ 	return ret;
+ }
+ 
+-static int mtgpu_hdmi_mode_compare(struct drm_display_mode *a,
+-				   struct drm_display_mode *b)
++static int mtgpu_hdmi_mode_compare(const struct drm_display_mode *a,
++				   const struct drm_display_mode *b)
+ {
+ 	int diff;
+ 
+@@ -233,7 +233,7 @@
+ }
+ 
+ static bool mtgpu_hdmi_mode_supported_with_audio(struct mtgpu_hdmi *hdmi,
+-						 struct drm_display_mode *mode)
++						 const struct drm_display_mode *mode)
+ {
+ 	int idx;
+ 	int sad_count;
+@@ -264,7 +264,7 @@
+ }
+ 
+ static int mtgpu_hdmi_mode_supported_by_product(struct mtgpu_hdmi *hdmi,
+-						struct drm_display_mode *mode)
++						const struct drm_display_mode *mode)
+ {
+ 	if (mode->clock / 100 > hdmi->ctx.max_pclk_100khz)
+ 		return MODE_CLOCK_HIGH;
+@@ -279,7 +279,7 @@
+ }
+ 
+ static void mtgpu_hdmi_set_preferred_mode(struct drm_connector *connector,
+-					  struct drm_display_mode *filtered_mode)
++					  const struct drm_display_mode *filtered_mode)
+ {
+ 	struct drm_display_mode *mode;
+ 	struct drm_display_mode tmp_best_mode = {0};
+@@ -307,8 +307,13 @@
+ 		preferred_mode->type |= DRM_MODE_TYPE_PREFERRED;
+ }
+ 
++#ifdef OS_DRM_CONNECTOR_MODE_VALID_CONST
++static enum drm_mode_status mtgpu_hdmi_connector_mode_valid(struct drm_connector *connector,
++					   const struct drm_display_mode *mode)
++#else
+ static int mtgpu_hdmi_connector_mode_valid(struct drm_connector *connector,
+ 					   struct drm_display_mode *mode)
++#endif
+ {
+ 	struct mtgpu_hdmi *hdmi = connector_to_mtgpu_hdmi(connector);
+ 	int mode_status;
+@@ -1293,9 +1298,20 @@
+ 		hdmi->core->disable(&hdmi->ctx);
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _mtgpu_hdmi_remove(struct platform_device *pdev)
++{
++	mtgpu_hdmi_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ struct platform_driver mtgpu_hdmi_driver = {
+ 	.probe    = mtgpu_hdmi_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove   = _mtgpu_hdmi_remove,
++#else
+ 	.remove   = mtgpu_hdmi_remove,
++#endif // KERNEL_VERSION
+ 	.shutdown = mtgpu_hdmi_shutdown,
+ 	.driver   = {
+ 		.owner  = THIS_MODULE,
+--- a/src/mtgpu/mtgpu_drv.c
++++ b/src/mtgpu/mtgpu_drv.c
+@@ -23,6 +23,10 @@
+ #include <linux/debugfs.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
++#include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++#include <linux/aperture.h>
++#endif
+ 
+ #ifndef CONFIG_LOONGARCH
+ #include <asm/dmi.h>
+@@ -544,10 +548,26 @@
+ 	.restore_early = mtgpu_pm_resume_early,
+ };
+ 
++static int mtgpu_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
++{
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++	int ret;
++
++	/* The binary probe reserves WC memory before its later framebuffer
++	 * handoff. Release the firmware framebuffer before mapping or resizing
++	 * any BAR, while its original PCI address is still available.
++	 */
++	ret = aperture_remove_conflicting_pci_devices(pdev, DRIVER_NAME);
++	if (ret)
++		return ret;
++#endif
++	return mtgpu_probe(pdev, id);
++}
++
+ static struct pci_driver mtgpu_pci_driver = {
+ 	.name = DRIVER_NAME,
+ 	.id_table = mtgpu_pci_tbl,
+-	.probe = mtgpu_probe,
++	.probe = mtgpu_pci_probe,
+ 	.remove = mtgpu_remove,
+ 	.shutdown = mtgpu_shutdown,
+ 	.err_handler = &err_handler,
+@@ -572,9 +592,20 @@
+ 	SET_RUNTIME_PM_OPS(mtgpu_igpu_pm_suspend, mtgpu_igpu_pm_resume, NULL)
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _mtgpu_igpu_remove(struct platform_device *pdev)
++{
++	mtgpu_igpu_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ static struct platform_driver mtgpu_platform_driver = {
+ 	.probe = mtgpu_igpu_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove = _mtgpu_igpu_remove,
++#else
+ 	.remove = mtgpu_igpu_remove,
++#endif // KERNEL_VERSION
+ 	.driver = {
+ 		.name = DRIVER_NAME_IGPU,
+ 		.of_match_table = mtgpu_of_tbl,
+--- a/src/mtgpu/phy-mthreads-dp.c
++++ b/src/mtgpu/phy-mthreads-dp.c
+@@ -171,9 +171,20 @@
+ 	{ },
+ };
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _mtgpu_phy_remove(struct platform_device *pdev)
++{
++	mtgpu_phy_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ struct platform_driver mtgpu_phy_driver = {
+ 	.probe	= mtgpu_phy_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove	= _mtgpu_phy_remove,
++#else
+ 	.remove	= mtgpu_phy_remove,
++#endif // KERNEL_VERSION
+ 	.driver	= {
+ 		.owner  = THIS_MODULE,
+ 		.name	= "mtgpu-dp-phy-drv",
+--- a/src/mtsnd/eld.c
++++ b/src/mtsnd/eld.c
+@@ -11,7 +11,7 @@
+ #include <linux/init.h>
+ #include <linux/slab.h>
+ #include <sound/core.h>
+-#include <asm/unaligned.h>
++#include <linux/unaligned.h>
+ #include <sound/hda_chmap.h>
+ #include <sound/hdmi-codec.h>
+ 
+--- a/src/mtvpu/mtvpu_drv.c
++++ b/src/mtvpu/mtvpu_drv.c
+@@ -14,6 +14,7 @@
+ #include <linux/version.h>
+ #include <linux/moduleparam.h>
+ #include <linux/dma-mapping.h>
++#include <linux/vmalloc.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_drv.h>
+ #include <linux/acpi.h>
+@@ -41,6 +42,42 @@
+ #include "mtvpu_smmu.h"
+ 
+ #include "misc.h"
++#include "s30_vpu_compat.h"
++
++static int vpu_register_map_size(struct mt_chip *chip,
++				 struct mtgpu_device *mtdev, u32 *map_size)
++{
++	struct pci_dev *pci = chip->pdev;
++	u64 display_offset = ~0ULL;
++	u32 i;
++
++	*map_size = chip->conf.regs_chip_size;
++	if (!pci || pci->vendor != 0x1ed5 || pci->device != 0x0102 ||
++	    chip->driver_mode == MTGPU_DRIVER_MODE_GUEST)
++		return 0;
++
++	/* Validate against the actual child resources, not the current BAR
++	 * address (which may move on the next boot).
++	 */
++	for (i = 0; i < mtdev->disp_cnt; i++) {
++		struct resource *res;
++		u64 offset;
++
++		if (!mtdev->disp_dev[i])
++			continue;
++		res = platform_get_resource_byname(mtdev->disp_dev[i],
++						  IORESOURCE_MEM, "dispc-regs");
++		if (!res)
++			continue;
++		if (res->start < pci_resource_start(pci, 0))
++			return -ERANGE;
++		offset = res->start - pci_resource_start(pci, 0);
++		if (offset < display_offset)
++			display_offset = offset;
++	}
++	return mtgpu_s30_vpu_map_size(&chip->conf, pci_resource_len(pci, 0),
++				     display_offset, map_size);
++}
+ 
+ #ifndef MT_BUILD_VPU
+ #define MT_BUILD_VPU ""
+@@ -86,6 +123,7 @@
+ 	int boda_bit_offset = 14;
+ 	int i, j, ret;
+ 	int jpu_core_size = 0;
++	u32 map_size;
+ 	struct file_operations *vinfo, *fwinfo, *vpulog;
+ 
+ 	bool is_host = mtgpu_get_driver_mode() == MTGPU_DRIVER_MODE_HOST;
+@@ -130,6 +168,16 @@
+ 		if (vpu_init_conf(pcid->device, chip, is_guest))
+ 			goto err_timer;
+ 	}
++
++	ret = vpu_register_map_size(chip, mtdev, &map_size);
++	if (ret) {
++		vpu_err("VPU register layout rejected: %d\n", ret);
++		vpu_deinit_conf(chip);
++		goto err_timer;
++	}
++	if (map_size != chip->conf.regs_chip_size)
++		vpu_info("S30 VPU map: BAR0+0x%x size 0x%x; DISPC page excluded\n",
++			 chip->conf.regs_base, map_size);
+ 
+ 	chip->util_timer = os_create_timer_list();
+ 	if (!chip->util_timer)
+@@ -297,9 +345,9 @@
+ 
+ 	if (is_native || is_host) {
+ 		if (chip->soc_mode)
+-			chip->vaddr = ioremap(chip->conf.regs_base, chip->conf.regs_chip_size);
++			chip->vaddr = ioremap(chip->conf.regs_base, map_size);
+ 		else
+-			chip->vaddr = ioremap(pci_resource_start(pcid, 0) + chip->conf.regs_base, chip->conf.regs_chip_size);
++			chip->vaddr = ioremap(pci_resource_start(pcid, 0) + chip->conf.regs_base, map_size);
+ 
+ 		if (!chip->vaddr)
+ 			goto err_lock;
+@@ -477,6 +525,7 @@
+ 	kfree(chip->stat_timer);
+ 	vpu_deinit_conf(chip);
+ err_timer:
++	private->chip = NULL;
+ 	kfree(chip);
+ 	vpu_err("Init Error\n");
+ 	return -ENODEV;
+@@ -629,7 +678,11 @@
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void vpu_rpm_core_remove(struct platform_device *pdev)
++#else
+ static int vpu_rpm_core_remove(struct platform_device *pdev)
++#endif
+ {
+ 	struct mt_core *core = platform_get_drvdata(pdev);
+ 	struct mt_chip *chip = core->priv;
+@@ -639,7 +692,9 @@
+ 	if (core->fw)
+ 		vpu_hw_deinit(chip->conf.core_base + core->idx);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 11, 0)
+ 	return 0;
++#endif
+ }
+ 
+ static const struct component_ops mtvpu_component_ops = {
+@@ -679,6 +734,13 @@
+ 	.freeze  = vpu_suspend,
+ 	.restore = vpu_resume,
+ };
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _vpu_remove(struct platform_device *pdev)
++{
++	vpu_remove(pdev);
++}
++#endif // KERNEL_VERSION
+ 
+ struct platform_driver vpu_driver = {
+ 	.driver = {
+@@ -688,7 +750,11 @@
+ 		.acpi_match_table = vpu_acpi_id_tbl,
+ 	},
+ 	.probe = vpu_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove = _vpu_remove,
++#else
+ 	.remove = vpu_remove,
++#endif // KERNEL_VERSION
+ 	.id_table = vpu_id_tbl,
+ };
+ 
+@@ -717,6 +783,8 @@
+ 	.remove = vpu_rpm_core_remove,
+ };
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0))
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
++MODULE_IMPORT_NS("DMA_BUF");
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0))
+ MODULE_IMPORT_NS(DMA_BUF);
+ #endif
+--- a/src/mtvpu/mtvpu_gem.c
++++ b/src/mtvpu/mtvpu_gem.c
+@@ -7,6 +7,7 @@
+ #include <linux/device.h>
+ 
+ #include <linux/io.h>
++#include <linux/vmalloc.h>
+ #include <drm/drm_file.h>
+ #include <drm/drm_gem.h>
+ #if defined(OS_DRM_DRMP_H_EXIST)
+--- a/src/pvr/module_common.c
++++ b/src/pvr/module_common.c
+@@ -51,6 +51,7 @@
+ 
+ #include <linux/module.h>
+ #include <linux/slab.h>
++#include "workqueue_compat.h"
+ 
+ #if defined(CONFIG_DEBUG_FS)
+ #include "pvr_debugfs.h"
+@@ -406,7 +407,7 @@
+ 	PVRGpuTraceInitAppHintCallbacks(NULL);
+ #endif
+ 
+-	mtgpu_wq = alloc_workqueue("mtgpu-wq", 0, 0);
++	mtgpu_wq = alloc_workqueue("mtgpu-wq", mt_legacy_workqueue_flags(0), 0);
+ 	if (!mtgpu_wq)
+ 	{
+ 		return -ENOMEM;
+--- a/src/pvr/osfunc.c
++++ b/src/pvr/osfunc.c
+@@ -1,3 +1,4 @@
++#include "iommu_compat.h"
+ /*************************************************************************/ /*!
+ @File
+ @Title          Environment related functions
+@@ -75,6 +76,7 @@
+ #include <linux/uaccess.h>
+ #include <linux/spinlock.h>
+ #include <linux/workqueue.h>
++#include "workqueue_compat.h"
+ #include <linux/dmaengine.h>
+ #include <linux/kthread.h>
+ #include <linux/utsname.h>
+@@ -104,7 +106,7 @@
+ 
+ #include <linux/dma-buf.h>
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0))
+-#include <linux/pfn_t.h>
++#include "pfn_compat.h"
+ #include <linux/pfn.h>
+ #endif /* (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)) */
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0))
+@@ -708,8 +710,9 @@
+ static PVRSRV_ERROR _NativeSyncInit(void)
+ {
+ #if defined(PVRSRV_ENABLE_WORK_QUEUE_OPTIMIZATION)
+-	gpFenceStatusWq = alloc_workqueue("%s", __WQ_LEGACY | WQ_FREEZABLE | WQ_CPU_INTENSIVE |
+-					  WQ_MEM_RECLAIM, 1, "musa_fence_status");
++	gpFenceStatusWq = alloc_workqueue("%s", mt_legacy_workqueue_flags(
++					  __WQ_LEGACY | WQ_FREEZABLE | WQ_CPU_INTENSIVE |
++					  WQ_MEM_RECLAIM), 1, "musa_fence_status");
+ #else
+ 	gpFenceStatusWq = create_freezable_workqueue("musa_fence_status");
+ #endif
+@@ -1080,15 +1083,15 @@
+ 
+ #if defined(PVRSRV_ENABLE_WORK_QUEUE_OPTIMIZATION)
+ 	if (pszMisrName)
+-		psMISRData->psWorkQueue = alloc_workqueue("%s", __WQ_ORDERED |
++		psMISRData->psWorkQueue = alloc_workqueue("%s", mt_legacy_workqueue_flags(__WQ_ORDERED |
+ 							  __WQ_ORDERED_EXPLICIT |
+ 							  __WQ_LEGACY | WQ_MEM_RECLAIM |
+-							  WQ_CPU_INTENSIVE, 1, pszMisrName);
++							  WQ_CPU_INTENSIVE), 1, pszMisrName);
+ 	else
+-		psMISRData->psWorkQueue = alloc_workqueue("%s", __WQ_ORDERED |
++		psMISRData->psWorkQueue = alloc_workqueue("%s", mt_legacy_workqueue_flags(__WQ_ORDERED |
+ 							  __WQ_ORDERED_EXPLICIT |
+ 							  __WQ_LEGACY | WQ_MEM_RECLAIM |
+-							  WQ_CPU_INTENSIVE, 1, "MUSA_Misr");
++							  WQ_CPU_INTENSIVE), 1, "MUSA_Misr");
+ #else
+ 	if (pszMisrName)
+ 		psMISRData->psWorkQueue = create_singlethread_workqueue(pszMisrName);
+@@ -3489,7 +3492,9 @@
+ 	IMG_UINT32 ui32GpuFlags = 0;
+ 	struct vm_area_struct *psVMA;
+ 
++	mmap_read_lock(current->mm);
+ 	psVMA = find_vma(current->mm, untagged_addr(ui64Start));
++	mmap_read_unlock(current->mm);
+ 	if (unlikely(!psVMA))
+ 		return 0;
+ 
+@@ -3587,7 +3592,7 @@
+ 
+ IMG_BOOL OSIsIOMMUOn(struct bus_type *psBusType)
+ {
+-	return iommu_present(psBusType);
++	return mt_iommu_present(psBusType);
+ }
+ 
+ IMG_BOOL
+@@ -4523,7 +4528,7 @@
+ 
+ struct workqueue_struct *OSAllocWorkqueue(const IMG_CHAR *pszFormat, unsigned int flags, int max_active)
+ {
+-	return alloc_workqueue(pszFormat, flags, max_active);
++	return alloc_workqueue(pszFormat, mt_legacy_workqueue_flags(flags), max_active);
+ }
+ 
+ void OSFlushWorkqueue(struct workqueue_struct *psWorkQueue)
+@@ -4691,8 +4696,12 @@
+ 	dma_ops->signaled = mt_ops->signaled;
+ 	dma_ops->wait = mt_ops->wait;
+ 	dma_ops->release = mt_ops->release;
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_FENCE_VALUE_STR
+ 	dma_ops->fence_value_str = mt_ops->fence_value_str;
++#endif
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_TIMELINE_VALUE_STR
+ 	dma_ops->timeline_value_str = mt_ops->timeline_value_str;
++#endif
+ 
+ 	*ops = dma_ops;
+ 
+@@ -4805,7 +4814,11 @@
+ {
+ 	return dma_fence_array_create(num_fences, fences,
+ 				      dma_fence_context_alloc(1),
+-				      1, false);
++				      1
++#ifndef OS_DMA_FENCE_ARRAY_FOUR_ARGS
++				      , false
++#endif
++				      );
+ }
+ 
+ /* Change the linux kernel's mapping of this address to cpu uncached wc. */
+--- a/src/pvr/pmr_os.c
++++ b/src/pvr/pmr_os.c
+@@ -46,7 +46,7 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/version.h>
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0))
+-#include <linux/pfn_t.h>
++#include "pfn_compat.h"
+ #include <linux/pfn.h>
+ #endif
+ 
+--- a/src/pvr/pvr_counting_timeline.c
++++ b/src/pvr/pvr_counting_timeline.c
+@@ -121,7 +121,7 @@
+ 				  value, timeline->current_value);
+ 		list_for_each_entry(obj, &timeline->active_fences,
+ 				    active_list_entry) {
+-			obj->fence->ops->fence_value_str(obj->fence,
++			mt_fence_value_str(obj->fence,
+ 							 value, sizeof(value));
+ 			PVR_DUMPDEBUG_LOG(pfnDumpDebugPrintf, pvDumpDebugFile,
+ 					  " @%s: val=%llu", value, obj->value);
+--- a/src/pvr/pvr_drm.c
++++ b/src/pvr/pvr_drm.c
+@@ -342,7 +342,9 @@
+ 
+ 	.name			= PVR_DRM_DRIVER_NAME,
+ 	.desc			= PVR_DRM_DRIVER_DESC,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 14, 0)
+ 	.date			= PVR_DRM_DRIVER_DATE,
++#endif
+ 	.major			= PVRVERSION_MAJ,
+ 	.minor			= PVRVERSION_MIN,
+ 	.patchlevel		= PVRVERSION_BUILD,
+--- a/src/pvr/pvr_fence.c
++++ b/src/pvr/pvr_fence.c
+@@ -131,7 +131,7 @@
+ 		const char *timeline_value_str = "unknown timeline value";
+ 		const char *fence_value_str = "unknown fence value";
+ 
+-		pvr_fence->base.ops->fence_value_str(&pvr_fence->base, value,
++		mt_fence_value_str(&pvr_fence->base, value,
+ 						     sizeof(value));
+ 		PVR_DUMPDEBUG_LOG(pfnDumpDebugPrintf, pvDumpDebugFile,
+ 				  " @%s", value);
+@@ -139,8 +139,8 @@
+ 		if (is_pvr_fence(fence))
+ 			continue;
+ 
+-		if (fence->ops->timeline_value_str) {
+-			fence->ops->timeline_value_str(fence, value,
++		{
++			mt_timeline_value_str(fence, value,
+ 						       sizeof(value));
+ 			timeline_value_str = value;
+ 		}
+@@ -151,8 +151,8 @@
+ 				  timeline_value_str,
+ 				  fence->ops->get_driver_name(fence));
+ 
+-		if (fence->ops->fence_value_str) {
+-			fence->ops->fence_value_str(fence, value,
++		{
++			mt_fence_value_str(fence, value,
+ 						    sizeof(value));
+ 			fence_value_str = value;
+ 		}
+@@ -638,8 +638,12 @@
+ const struct dma_fence_ops pvr_fence_ops = {
+ 	.get_driver_name = pvr_fence_get_driver_name,
+ 	.get_timeline_name = pvr_fence_get_timeline_name,
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_FENCE_VALUE_STR
+ 	.fence_value_str = pvr_fence_fence_value_str,
++#endif
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_TIMELINE_VALUE_STR
+ 	.timeline_value_str = pvr_fence_timeline_value_str,
++#endif
+ 	.enable_signaling = pvr_fence_enable_signaling,
+ 	.signaled = pvr_fence_is_signaled,
+ 	.wait = dma_fence_default_wait,
+@@ -819,8 +823,12 @@
+ const struct dma_fence_ops pvr_fence_foreign_ops = {
+ 	.get_driver_name = pvr_fence_foreign_get_driver_name,
+ 	.get_timeline_name = pvr_fence_foreign_get_timeline_name,
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_FENCE_VALUE_STR
+ 	.fence_value_str = pvr_fence_foreign_fence_value_str,
++#endif
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_TIMELINE_VALUE_STR
+ 	.timeline_value_str = pvr_fence_foreign_timeline_value_str,
++#endif
+ 	.enable_signaling = pvr_fence_foreign_enable_signaling,
+ 	.wait = pvr_fence_foreign_wait,
+ 	.release = pvr_fence_foreign_release,
+--- a/src/pvr/pvr_platform_drv.c
++++ b/src/pvr/pvr_platform_drv.c
+@@ -143,6 +143,13 @@
+ MODULE_DEVICE_TABLE(platform, pvr_platform_ids);
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++static void _pvr_remove(struct platform_device *pdev)
++{
++	pvr_remove(pdev);
++}
++#endif // KERNEL_VERSION
++
+ struct platform_driver pvr_platform_driver = {
+ 	.driver = {
+ 		.name		= DRVNAME,
+@@ -153,7 +160,11 @@
+ 	},
+ 	.id_table		= pvr_platform_ids,
+ 	.probe			= pvr_probe,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 11, 0)
++	.remove			= _pvr_remove,
++#else
+ 	.remove			= pvr_remove,
++#endif // KERNEL_VERSION
+ 	.shutdown		= pvr_shutdown,
+ };
+ 
+--- a/src/pvr/pvr_sw_fence.c
++++ b/src/pvr/pvr_sw_fence.c
+@@ -142,8 +142,12 @@
+ static const struct dma_fence_ops pvr_sw_fence_ops = {
+ 	.get_driver_name = pvr_sw_fence_get_driver_name,
+ 	.get_timeline_name = pvr_sw_fence_get_timeline_name,
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_FENCE_VALUE_STR
+ 	.fence_value_str = pvr_sw_fence_value_str,
++#endif
++#ifdef OS_STRUCT_DMA_FENCE_OPS_HAS_TIMELINE_VALUE_STR
+ 	.timeline_value_str = pvr_sw_fence_timeline_value_str,
++#endif
+ 	.enable_signaling = pvr_sw_fence_enable_signaling,
+ 	.wait = dma_fence_default_wait,
+ 	.release = pvr_sw_fence_release,
+--- a/src/pvr/pvr_sync_file.c
++++ b/src/pvr/pvr_sync_file.c
+@@ -1136,7 +1136,7 @@
+ 	bool signaled = dma_fence_is_signaled(fence);
+ 	char time[16] = { '\0' };
+ 
+-	fence_ops->timeline_value_str(fence, time, sizeof(time));
++	mt_timeline_value_str(fence, time, sizeof(time));
+ 
+ 	PVR_DUMPDEBUG_LOG(dump_debug_printf,
+ 					  dump_debug_file,
