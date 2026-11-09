@@ -315,7 +315,7 @@ index 9f9b2f4..81f4803 100644
    @override
    Future<ProxyInfo?> _getSystemProxy(ProxyTypes types) async {
 diff --git a/lib/ui/desktop/ssl/cert_installer.dart b/lib/ui/desktop/ssl/cert_installer.dart
-index 2264fb4..681f833 100644
+index 2264fb4..b3f494f 100644
 --- a/lib/ui/desktop/ssl/cert_installer.dart
 +++ b/lib/ui/desktop/ssl/cert_installer.dart
 @@ -32,15 +32,7 @@ class CertInstaller {
@@ -335,7 +335,7 @@ index 2264fb4..681f833 100644
        }
  
        // 其他平台暂不支持
-@@ -51,6 +43,110 @@ class CertInstaller {
+@@ -51,6 +43,115 @@ class CertInstaller {
      }
    }
  
@@ -343,6 +343,7 @@ index 2264fb4..681f833 100644
 +  static const String _anchorFileName = 'proxypin-ca.crt';
 +  static const String _debianAnchorDir = '/usr/local/share/ca-certificates';
 +  static const String _p11kitAnchorDir = '/etc/ca-certificates/trust-source/anchors';
++  static const String _fedoraAnchorDir = '/etc/pki/ca-trust/source/anchors';
 +
 +  static String _certFileName(File certFile) {
 +    final name = certFile.uri.pathSegments.last;
@@ -350,13 +351,17 @@ index 2264fb4..681f833 100644
 +  }
 +
 +  /// Linux 没有统一的根证书库：
-+  ///  - Debian/Ubuntu: 拷贝到 /usr/local/share/ca-certificates 后 update-ca-certificates
-+  ///  - Arch/Fedora:   拷贝到 p11-kit 的 trust anchor 后 trust extract-compat
-+  /// 两种情况都要 root 权限，所以用 pkexec 触发 polkit 图形提权（只弹一次密码框）。
++  ///  - Fedora/RHEL/openSUSE(Tumbleweed): /etc/pki/ca-trust/source/anchors + update-ca-trust
++  ///  - Debian/Ubuntu: /usr/local/share/ca-certificates + update-ca-certificates
++  ///  - Arch:          p11-kit 的 trust anchor + trust extract-compat
++  /// 都需要 root，所以用 pkexec 触发 polkit 图形提权（只弹一次密码框）。
 +  static Future<bool> installLinuxCertificate(File certFile) async {
 +    String? anchorDir;
 +    List<String> refresh;
-+    if (File('/usr/bin/update-ca-certificates').existsSync()) {
++    if (File('/usr/bin/update-ca-trust').existsSync() && Directory(_fedoraAnchorDir).existsSync()) {
++      anchorDir = _fedoraAnchorDir;
++      refresh = ['update-ca-trust', 'extract'];
++    } else if (File('/usr/bin/update-ca-certificates').existsSync()) {
 +      anchorDir = _debianAnchorDir;
 +      refresh = ['update-ca-certificates'];
 +    } else if (File('/usr/bin/trust').existsSync()) {
@@ -446,7 +451,7 @@ index 2264fb4..681f833 100644
    /// 检查证书是否已安装
    static Future<bool> isCertInstalled(File filePath, X509CertificateData caCert) async {
      String commonName = caCert.subject['2.5.4.3'] ?? 'ProxyPin CA';
-@@ -76,19 +172,7 @@ class CertInstaller {
+@@ -76,19 +177,7 @@ class CertInstaller {
          }
          return false;
        } else if (Platform.isLinux) {
