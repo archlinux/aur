@@ -1,0 +1,5 @@
+# Set correct ownership and permisions for restic-backup-scripts config files and cache directory
+
+z /etc/restic-backup/restic.env  0640 root          restic-backup
+Z /etc/restic-backup             -    root          restic-backup
+d /var/cache/restic-backup       0750 restic-backup restic-backup

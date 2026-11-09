@@ -1,0 +1,24 @@
+pkgbase = restic-backup-scripts
+	pkgdesc = Scripts and systemd timer for automatic system backups using restic
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.kahveci-sw.de/ykahveci/restic-backup-scripts
+	install = restic-backup-scripts.install
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = bash
+	depends = restic
+	provides = restic-backup-scripts
+	conflicts = restic-backup-scripts
+	backup = etc/restic-backup/exclude.txt
+	backup = etc/restic-backup/include.txt
+	backup = etc/restic-backup/restic.env
+	source = restic-backup-scripts::git+https://gitlab.kahveci-sw.de/ykahveci/restic-backup-scripts.git#tag=v0.1.0
+	source = restic-backup-scripts.sysusers
+	source = restic-backup-scripts.tmpfiles
+	sha256sums = bbd06cc9d95c9de4c15b6060e25ad15f829052632a7634019715ccf15bd19592
+	sha256sums = ed3d4217864cd1d34c82adbce5c964d2f3a96ab35a6ed11db10a5b2f7813796f
+	sha256sums = 4b7d714c2f7f8fb69ed42eae9391f526ddb65899524864432cec6a6cb3a1341f
+
+pkgname = restic-backup-scripts

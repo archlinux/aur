@@ -1,0 +1,4 @@
+[restic-backup-scripts]
+source = "git"
+git = "https://gitlab.kahveci-sw.de/ykahveci/restic-backup-scripts.git"
+prefix = "v"

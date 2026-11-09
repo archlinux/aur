@@ -1,0 +1,5 @@
+src
+pkg
+*.pkg*
+restic-backup-scripts/
+*.log

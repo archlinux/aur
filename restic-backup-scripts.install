@@ -1,0 +1,7 @@
+post_install() {
+    echo -e "restic-backup-scripts requires further configuration:"
+    echo -e "- Configure the script in /etc/restic-backup"
+    echo -e "- Enable restic-backup-scripts.timer"
+    echo -e "- Important: Verify that your backup works and that you can restore it"
+    echo -e "\033[33;1mAbsolutely no warranty is implied. Test your backups regularly.\033[0m"
+}
