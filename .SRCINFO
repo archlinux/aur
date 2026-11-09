@@ -1,19 +1,22 @@
 pkgbase = kunyin-desktop-bin
 	pkgdesc = A desktop music player that aggregates multi-platform audio sources.聚合多平台音源的桌面音乐播放器
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/ikunshare/kunyin-desktop
 	arch = x86_64
 	license = MIT
-	makedepends = asar
 	depends = electron44
-	provides = kunyin-desktop=1.0.7
+	depends = nodejs
+	depends = ffmpeg
+	provides = kunyin-desktop=1.0.8
 	conflicts = kunyin-desktop
-	source = kunyin-desktop-1.0.7.deb::https://github.com/ikunshare/kunyin-desktop/releases/download/v1.0.7/kunyin-desktop_1.0.7_amd64.deb
-	source = LICENSE-1.0.7::https://raw.githubusercontent.com/ikunshare/kunyin-desktop/v1.0.7/LICENSE
+	source = kunyin-desktop-1.0.8.deb::https://github.com/ikunshare/kunyin-desktop/releases/download/v1.0.8/kunyin-desktop_1.0.8_amd64.deb
+	source = LICENSE-1.0.8::https://raw.githubusercontent.com/ikunshare/kunyin-desktop/v1.0.8/LICENSE
+	source = kunyin-desktop.js
 	source = kunyin-desktop.sh
-	sha256sums = c412d12fe9b4c3b176d20c4c006cf728d43834c049127c22a8f74ed0fcdeaefe
+	sha256sums = 6d43654ceadc566760a27a274b6aabe8cadc53e151540c184dfa879ef6a3376d
 	sha256sums = 1b19fe707eab955d1070c99dfed63f5984b1deee79b57c161979eefcf0b61763
-	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 
 pkgname = kunyin-desktop-bin
