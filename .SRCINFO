@@ -1,6 +1,6 @@
 pkgbase = omaread-bin
 	pkgdesc = A fast, keyboard-first EPUB reader for Omarchy (prebuilt)
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/sarrietav-dev/omaread
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = omaread-bin
 	depends = webkitgtk-6.0
 	depends = glibc
 	depends = gcc-libs
-	optdepends = speech-dispatcher: read aloud
+	depends = alsa-lib
+	optdepends = speech-dispatcher: read aloud with Piper
 	optdepends = hyphen-en: English hyphenation
 	optdepends = hyphen-es: Spanish hyphenation
 	provides = omaread
 	conflicts = omaread
 	options = !debug
-	source = https://github.com/sarrietav-dev/omaread/releases/download/v0.2.4/omaread-0.2.4-x86_64.tar.gz
-	sha256sums = 21c4ff0b2294b58eafd52d1024bd2f77efd4d289c61213268cc6d28f9e6dc844
+	source = https://github.com/sarrietav-dev/omaread/releases/download/v0.2.5/omaread-0.2.5-x86_64.tar.gz
+	sha256sums = cfc90514d2d277b54f5b706eb5af78ec850d896821e7978d4e85f0aa51be0ca0
 
 pkgname = omaread-bin
