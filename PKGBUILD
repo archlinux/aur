@@ -2,7 +2,7 @@
 
 _pkgname=cinnabar
 pkgname=$_pkgname-bin
-pkgver=0.1.31
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Unofficial client compatible with Minecraft: Bedrock Edition, written in Rust'
 arch=('x86_64')
@@ -38,7 +38,7 @@ options=('!debug' '!strip')
 _appimage=$_pkgname-$pkgver-x86_64.AppImage
 source=("$_appimage::$url/releases/download/v$pkgver/Cinnabar-x86_64.AppImage"
         "$_pkgname.sh")
-sha256sums=('ffddee0f190678106d2689ef8a52f6dfa07c3c62c3eb2ff1a2e18fd4ab27336f'
+sha256sums=('0a042102e8f11dc648ba9d251757e3bd06c143dbef085423296b768d7ab1d136'
             '7c5357b45eb23687940ebfdafce0c27b163a4c6a986a03bb757a272c3bd796a3')
 
 prepare() {
