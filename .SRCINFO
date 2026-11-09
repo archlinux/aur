@@ -1,6 +1,6 @@
 pkgbase = corrscope
 	pkgdesc = Python program to render wave files into oscilloscope views, featuring advanced correlation-based triggering algorithm
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/corrscope/corrscope
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = corrscope
 	depends = python-colorspacious
 	depends = python-qtpy
 	depends = python-pyqt6
-	source = corrscope-0.11.0.tar.gz::https://github.com/corrscope/corrscope/archive/refs/tags/0.11.0.tar.gz
+	source = corrscope-0.11.1.tar.gz::https://github.com/corrscope/corrscope/releases/download/0.11.1/corrscope-0.11.1.tar.gz
 	source = corrscope.png
 	source = corrscope.desktop
-	sha256sums = 2fe3379bc7432ed2744fb6797d7901e175e9d073ffe83c71704200df77621003
+	sha256sums = d1a5cf7807d7d4df72fd17cbe3ac8f3af85b771141fcc81c27565aa14c1c829c
 	sha256sums = 41777f8b4593e9154931bcbdb86e43e5c5d7b476be714a42affca0aee88e2cf8
 	sha256sums = bfb12bd87d93af48e0f80e2241493078ced904af339e17c0661fd7b8cd1ebdda
 
