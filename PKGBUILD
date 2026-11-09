@@ -2,7 +2,7 @@
 
 _name="libopenmpt"
 pkgname="lib32-${_name}"
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="A library to render tracker music to a PCM audio stream (32-bit)"
 arch=(
@@ -31,8 +31,8 @@ _pkgsrc="${_name}-${pkgver}+release.autotools"
 source=(
   "https://lib.openmpt.org/files/${_name}/src/${_pkgsrc}.tar.gz"
 )
-sha512sums=('f17eb759f21d22ac51cdc11d1785e5c025d912cd14154cde93a92b8d0752c63ea19890f0a289bc0b75c94a1910537dbbd6ce442f9f5210fadf7f2966e7d329a0')
-b2sums=('d21ee443317f4f0e11abb5bda1b771006387341a7dac6090efbcf5588ccdbf1fb90951f833997b062857801dd1b4815740c91800a2bfd5df9ef1bbbb73b785d9')
+sha512sums=('c6eba868e1f9b65a1c8a4829b461ffe8a1411527336de31131e1f2494f271d2f364ec6f884cbcd93bea7dedb85e18a601fb4537ebdee8f7a3c1eb6116ca7d592')
+b2sums=('64a287640f3aca1495a6f77391fdd7165c1b6c736bd7295595f9e7b8d3d0647c8c77eb9fc28427faa45541e178ad0a17f283770dd21882b2d9ed8e6d8759eb63')
 
 build() {
   export CFLAGS+=" -m32"
