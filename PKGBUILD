@@ -1,6 +1,6 @@
 # Maintainer: x70b1
 pkgname=('hyprland-plugin-hy3')
-pkgver='0.57.1'
+pkgver='0.57.2'
 pkgrel=1.1
 pkgdesc='A Hyprland plugin for i3 like tiling'
 arch=('x86_64')
