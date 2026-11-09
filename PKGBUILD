@@ -12,7 +12,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=59bddb64"
+  "git+$url.git#commit=97f7fbc6"
 )
 sha256sums=(
   'SKIP'
