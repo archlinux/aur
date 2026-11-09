@@ -1,7 +1,7 @@
 pkgbase = open-vm-tools-clipway
 	pkgdesc = open-vm-tools for VMware with clipway patch (Wayland sessions clipboard fix)
 	pkgver = 13.1.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 6
 	url = https://github.com/vmware/open-vm-tools
 	arch = x86_64
@@ -48,11 +48,13 @@ pkgbase = open-vm-tools-clipway
 	source = vmware-vmblock-fuse.service
 	source = clipway.patch
 	source = open-vm-tools-gcc16.patch
+	source = clipway.service
 	sha256sums = 916a09225a22653ec5e56b1df5bbfacc7f69b2b9e8ac734052936bcb75cde49a
 	sha256sums = 9848f4b621bb1134e463fea099f03933cf3f48f1ac5e580228abef264d26137e
 	sha256sums = 0626cc86232f75a7286c24c52d6b44260bba55e2e96c17fa22ed36decb61a4d9
 	sha256sums = 99e3cc1da20a751049144cc02dec77174a55109b5b5960e1facd78709da7724f
 	sha256sums = 53fc2dec9c0069d1fac804fee2fb6ccf2503f8470782e368aefc6d9f2209e5cb
 	sha256sums = 2c3b3fa378c86307223b9977c6b07ec1781d5b396c1526ee7fef73b7604a0c6d
+	sha256sums = 00cd9899ebfd22a58c5c289929f65e571a1227072f6a527c830f635434fd425c
 
 pkgname = open-vm-tools-clipway

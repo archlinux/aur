@@ -1,0 +1,16 @@
+[Unit]
+Description=clipway: open-vm-tools desktop daemon (Wayland clipboard backend)
+After=graphical-session.target
+PartOf=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=simple
+Environment=XDG_SESSION_TYPE=wayland
+UnsetEnvironment=DISPLAY
+ExecStart=/usr/bin/vmtoolsd -n vmusr --plugin-path /usr/lib/open-vm-tools/plugins/clipway
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target
