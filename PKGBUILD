@@ -1,39 +1,45 @@
-# Maintainer: alufers <alufers[at]wp[dot]pl>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: alufers <alufers[at]wp[dot]pl>
 
 pkgname=ltchiptool
-pkgver=4.11.4
+pkgver=4.15.0
+# lightweight tag -> tag is not signed, only the commit
+_commit=410874f66b60da1dd667dbba69f499acbf16eb03
 pkgrel=1
 pkgdesc='Universal, easy-to-use GUI flashing/dumping tool for BK7231, RTL8710B and RTL8720C.'
 url='https://github.com/libretiny-eu/ltchiptool'
 arch=('any')
 license=('MIT')
 depends=(
+  bk7231tools
+  ltchiptool-data
   python
-  python-datastruct
+  python-bitstruct
   python-click
   python-colorama
+  python-cryptography
+  python-datastruct
+  python-hexdump
   python-importlib-metadata
   python-prettytable
-  bk7231tools
-  python-xmodem
-  python-semantic-version
-  python-hexdump
-  python-bitstruct
+  python-pycryptodome
   python-requests
+  python-semantic-version
+  python-typer
+  python-wxpython
+  python-xmodem
+  python-zeroconf
 )
 makedepends=(
+  git
   python-build
   python-installer
   python-poetry-core
   python-wheel
 )
-optdepends=(
-  python-wxpython
-  python-zeroconf
-)
-source=(https://github.com/libretiny-eu/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('4689bbf91f0033c4c16fbfa19d69de544224639297a002de6f9f14636a0226db')
-b2sums=('e43be0f095f5cea436eac1e74ef10afbb1486ce550f8f65f31fd0832c791e19915a23542557a2253af2ff0d6a07fc67c1bc7fc98aa8b3ddad70e25df3be172ab')
+validpgpkeys=('A874B6246D23954F506CC60C43037AC62A600562') #  Kuba Szczodrzyński <kuba [this: @] szczodrzynski [and a dot] pl>
+source=("${pkgname}-${pkgver}::git+${url}.git#commit=$_commit?signed")
+b2sums=('SKIP')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -43,4 +49,5 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
