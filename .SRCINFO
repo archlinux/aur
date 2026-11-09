@@ -1,6 +1,6 @@
-pkgbase = em100
-	pkgdesc = Open source tool for the EM100 SPI flash emulator
-	pkgver = r247.a1d938f
+pkgbase = em100-git
+	pkgdesc = Open source tool for the EM100 SPI flash emulator (latest version from the branch)
+	pkgver = r257.0c07a11
 	pkgrel = 1
 	url = https://www.coreboot.org
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = em100
 	makedepends = git
 	depends = curl
 	depends = libusb
-	source = git+https://review.coreboot.org/em100#commit=a1d938f8b4253c76fb31e69de33266cb71bda141
+	provides = em100=r257.0c07a11
+	conflicts = em100
+	source = git+https://review.coreboot.org/em100
 	sha256sums = SKIP
 
-pkgname = em100
+pkgname = em100-git
