@@ -9,12 +9,12 @@ _gitname='crabber'
 _giturl="https://github.com/auf-gg/${_gitname}"
 
 pkgname=crabber-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='XMPP messenger built on GPUI (release binaries)'
 arch=('x86_64' 'aarch64')
 url="$_giturl"
-license=('Apache-2.0')
+license=('MIT')
 depends=(
   'libxkbcommon'
   'wayland'
@@ -33,10 +33,10 @@ conflicts=('crabber' 'crabber-git')
 # Tarballs produced by build.yml: crabber-<version>-<arch>-linux.tar.gz
 # containing the binary, .desktop file, icon and LICENSE.
 source_x86_64=("${_giturl}/releases/download/v${pkgver}/crabber-${pkgver}-x86_64-linux.tar.gz")
-sha256sums_x86_64=('0b63094093b816b218249139ed554e20cefeb429d10c5a687f2fb256887ed0c4')
+sha256sums_x86_64=('84451edbeb724be2a948c6a8069eb9a4b37fd5bae3684bfe8a6ef4a0d09bb722')
 
 source_aarch64=("${_giturl}/releases/download/v${pkgver}/crabber-${pkgver}-aarch64-linux.tar.gz")
-sha256sums_aarch64=('10985576ed11c369932be8665d5972231368b7f529efeed2a0399b17b71b7728')
+sha256sums_aarch64=('1eee276c181e43c5e20626b3054608204a61d88e42a87c59b492b26f894b2f84')
 
 package() {
   cd "crabber-${pkgver}-${CARCH}-linux"
