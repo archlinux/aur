@@ -2,7 +2,7 @@
 pkgname=stao-bin
 # pkgver uses underscore instead of plus (AUR requirement)
 # e.g., 1.2.0+5 becomes 1.2.0_5
-pkgver=1.6.0_17
+pkgver=1.6.3_20
 pkgrel=1
 pkgdesc="Standing desk reminder app - track your standing and sitting time"
 arch=('x86_64')
@@ -31,7 +31,7 @@ _appimage_name="stao-${_fullver}-linux.AppImage"
 
 source=("${_appimage_name}::https://downloads.stao.app/releases/v${_basever}/${_appimage_name}"
         "terms-of-service.html::https://www.stao.app/terms")
-sha256sums=('40b4239e98ba328cf393406f8af1a8596258e72a41d983f8f509930dd7293c98'
+sha256sums=('3069f9569581a51ad357ef101edd27415944df60ee1c89c9fd0a3e465b773f85'
             'SKIP')
 
 package() {
