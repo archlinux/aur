@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=5.7.21.r11.gd16a354
+pkgver=5.9.0.r9.g88856d1
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=('SKIP'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -63,12 +63,14 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_npm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -94,7 +96,8 @@ prepare() {
         --name="${pkgname%-git}" \
         --exec="${pkgname%-git} %U"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+    _set_npm_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     find ./ -type f -name "package-lock.json" -exec rm {} +
     export NODE_ENV=development
@@ -104,8 +107,9 @@ prepare() {
 }
 build() {
     cd "$(_get_project_dir)"
-    _set_build_env
     _ensure_local_nvm
+    _set_electron_build_env
+    _set_npm_build_env
     export NODE_ENV=production
     npm run clean
     npm run compile
