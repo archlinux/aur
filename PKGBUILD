@@ -2,7 +2,7 @@
 
 _name=pyqwest
 pkgname=python-$_name
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A modern, high-performance HTTP client for Python and Rust.'
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ checkdepends=('python-aiohttp'
 options=(!lto)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "pyvoy::git+https://github.com/curioswitch/pyvoy.git")
-sha256sums=('b35cf5e940b098ad657c8b521352d530b18f7eff187aa69d52658bccae1e3b71'
+sha256sums=('b3b5d35a05420d05f1c1cff97a0e357929d73a90dd9219dfc7bad976f4ee4e07'
             'SKIP')
 
 prepare() {
@@ -49,7 +49,7 @@ prepare() {
   sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
   # Use the standard library compression.zstd module instead of python-zstd
   sed -i 's/^import zstd\b.*/from compression import zstd/' tests/apps/asgi/kitchensink.py tests/apps/wsgi/kitchensink.py
-  cd "$srcdir/pyvoy"
+  cd "$srcdir"/pyvoy
   git checkout --quiet "$(git tag -l 'v*' --sort=-v:refname | head -1)"
   # Use the maturin version shipped by Arch
   sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
@@ -59,7 +59,7 @@ build() {
   cd "$_name-$pkgver"
   export ZSTD_SYS_USE_PKG_CONFIG=1
   RUSTFLAGS="$RUSTFLAGS --cfg reqwest_unstable --cfg tokio_unstable" python -m build --wheel --no-isolation
-  cd "$srcdir/pyvoy"
+  cd "$srcdir"/pyvoy
   python -m build --wheel --no-isolation
 }
 
