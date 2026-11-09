@@ -17,12 +17,12 @@ options=('!strip')
 # Wayland windows and fluxer:// links look the entry up by it.
 source=("app.fluxer.FluxerDesktopCanary.desktop")
 sha256sums=('51cd326b0e89ca07d9f54e901689ac4fa6792a3c520e9416ceb5e2c41ed0800f')
-sha256sums_x86_64=('2181dee40dfd947e84424cc027f52b621cff6494c09b3bba3f5e6e3c9bacec84')
-sha256sums_aarch64=('6adc92f3f3cd056e000b086d7d3225aabdc4bc555c865578110d05696d556d1a')
 
 source_x86_64=("fluxer-canary-${pkgver}-x64.tar.gz::https://pkgs.fluxer.com/desktop/canary/linux/x64/${pkgver}/tar_gz")
+sha256sums_x86_64=('2181dee40dfd947e84424cc027f52b621cff6494c09b3bba3f5e6e3c9bacec84')
 
 source_aarch64=("fluxer-canary-${pkgver}-arm64.tar.gz::https://pkgs.fluxer.com/desktop/canary/linux/arm64/${pkgver}/tar_gz")
+sha256sums_aarch64=('6adc92f3f3cd056e000b086d7d3225aabdc4bc555c865578110d05696d556d1a')
 
 package() {
     local _dir
