@@ -1,6 +1,6 @@
 # Maintainer: Braulio Oliveira <brauliobo@gmail.com>
 pkgname=pg_rum-git
-pkgver=1.3.15.r26.gb8a31e8
+pkgver=1.3.15.r28.g0d4ee3c
 pkgrel=1
 pkgdesc='RUM access method for PostgreSQL - inverted index with additional information in posting lists (git version)'
 arch=('x86_64')
