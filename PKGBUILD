@@ -3,7 +3,7 @@
 # Contributor: Laurent OF Fough
 
 pkgname=iptvnator-bin
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Video player for IPTV playlists (m3u, m3u8) with EPG, favorites, and TV archive support."
 arch=('x86_64')
@@ -54,7 +54,7 @@ conflicts=('iptvnator')
 options=('!strip' '!debug')
 
 source=("iptvnator-${pkgver}.pacman::${url}/releases/download/v${pkgver}/iptvnator-${pkgver}-linux-x64.pacman")
-sha256sums=('44e294f2b6c8540787b22368142046c5455348ba5858bb0d83ec656e55b0d5c5')
+sha256sums=('292781af3c6ea20aa6ff442735dcb0db6afd4c50def5684416e11174a8d5ece8')
 
 package() {
   bsdtar -xf "iptvnator-${pkgver}.pacman" -C "${pkgdir}"
