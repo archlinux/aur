@@ -12,7 +12,7 @@ license=('MPL-2.0')
 depends=('gcc-libs' 'glibc')
 options=(!strip !debug)
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-${_debrev}_amd64.deb")
-sha256sums=('3d899a7c5ba09e2a53184fd474f2c84a35198de697055e299b5894349fff9440')
+sha256sums=('d98271e9337627b479a5158bebdca646894dedb5709f64fc31f266d86e3713a6')
 
 build() {
   mkdir -p "$srcdir/deb/data"
