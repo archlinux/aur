@@ -6,7 +6,8 @@ pkgver=3.1.0
 pkgrel=1
 pkgdesc='Moore Threads MTT S30 userland graphics and compute drivers (OpenGL, Vulkan, VA-API, MUSA)'
 arch=('x86_64')
-url='https://www.mthreads.com/product/drivers'
+install='mtgpu-s30-userland.install'
+url='https://github.com/cont1nu1ty/mtt-s30-arch'
 license=('LicenseRef-MooreThreads' 'MIT' 'LGPL-2.1-or-later')
 depends=(
     'libdrm'
