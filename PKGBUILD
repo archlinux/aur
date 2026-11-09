@@ -3,7 +3,7 @@
 
 pkgname=notion-calendar-electron-fixed
 pkgver=1.142.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Notion Calendar Desktop Client - your calendar, tasks, and schedule in one place (official installer, electron41)"
 arch=(x86_64)
 url=https://www.notion.so/product/calendar
@@ -159,34 +159,40 @@ prepare() {
 
 	# --- rendering / backend guard ---------------------------------------
 	# A build that runs is not a build that renders correctly. The shipped
-	# launcher must (a) select a backend that exists on the target desktop
-	# and (b) tell Electron the device scale this desktop actually uses, or
-	# the app opens at half size with everything physically tiny on a 4K
-	# panel.
+	# launcher must (a) run on the backend that actually exists on the target
+	# desktop, and (b) let Electron use the scale that backend reports.
 	#
-	# The failure this guards against is silent: the window still opens, the
-	# calendar still loads, so only a render-level check can catch it.
-	#
-	# (a) is verified structurally: when WAYLAND_DISPLAY is set the launcher must
-	# NOT fall through to X11.
+	# The failures this guards against are silent: the window still opens, the
+	# calendar still loads, so only a file-level assertion on the launcher can
+	# catch them.
 	local _wrapper="$srcdir/notion-calendar-electron-fixed/notion-calendar"
 	if [[ ! -f "$_wrapper" ]]; then
 		echo "SMOKE TEST FAILED: launcher script missing from the package source" >&2
 		exit 1
 	fi
-	# The launcher must force native Wayland when a Wayland session is
-	# present, instead of silently running under XWayland.
+	# (a) The launcher must force native Wayland when a Wayland session is
+	# present, instead of silently running under XWayland. As a repack of a
+	# Windows installer this bundle inherits Chromium's X11 preference, and
+	# the session's OZONE hint is ignored when both sockets exist.
 	if ! grep -q -- '--ozone-platform=wayland' "$_wrapper"; then
 		echo "SMOKE TEST FAILED: launcher does not force a Wayland backend" >&2
 		exit 1
 	fi
-	# It must also set the device scale for that desktop, or the app renders
-	# at 1x on a 4K panel and everything is half size.
-	if ! grep -q -- '--force-device-scale-factor' "$_wrapper"; then
-		echo "SMOKE TEST FAILED: launcher does not set a device scale factor" >&2
+	# (b) It must NOT hardcode a device scale. The compositor scale is already
+	# what Electron should use: on this host (3840x2160 at scale 1) that is 1,
+	# matching every other app. A hardcoded --force-device-scale-factor=N
+	# multiplies that again and ships an oversized UI, so the guard fails
+	# rather than repeat that. A per-user override stays available through
+	# ~/.config/notion-calendar-flags.conf, which the launcher appends after
+	# these flags.
+	if grep -v '^[[:space:]]*#' "$_wrapper" | grep -q -- '--force-device-scale-factor'; then
+		echo "SMOKE TEST FAILED: launcher hardcodes a device scale factor" >&2
+		echo "  Electron must use the scale the backend reports. The panel here is" >&2
+		echo "  3840x2160 at compositor scale 1, so a forced factor doubles the" >&2
+		echo "  UI. Remove it and let the user override via notion-calendar-flags.conf." >&2
 		exit 1
 	fi
-	# And it must clear a stale single-instance lock, which on Linux is what
+	# It must also clear a stale single-instance lock, which on Linux is what
 	# leaves a second window stuck at the loading logo.
 	if ! grep -q 'SingletonLock' "$_wrapper"; then
 		echo "SMOKE TEST FAILED: launcher does not clear a stale single-instance lock" >&2
