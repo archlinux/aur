@@ -1,19 +1,19 @@
 pkgbase = poshtui-bin
 	pkgdesc = Gems documentation browser for Ruby developers
-	pkgver = 0.41.0
+	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://poshtui.com
 	license = custom
 	conflicts = posh
 	provides = posh
 	arch = aarch64
-	source_aarch64 = https://github.com/skatkov/homebrew-tap/releases/download/0.41.0/homebrew-tap_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 6cfaa2ec5ed850c6bafd3f852f1b67772e878d806639f68d71420e492a55ca92
+	source_aarch64 = https://github.com/skatkov/homebrew-tap/releases/download/0.42.0/homebrew-tap_Linux_arm64.tar.gz
+	sha256sums_aarch64 = de3de79673e289cb27750b741825067daed45321f9d8967ad8c5f6f9badbe76c
 	arch = i686
-	source_i686 = https://github.com/skatkov/homebrew-tap/releases/download/0.41.0/homebrew-tap_Linux_i386.tar.gz
-	sha256sums_i686 = 88eae67cd842a7d067df88f36e65d7f9cb3bf0f349833fed62939a3bdc49a801
+	source_i686 = https://github.com/skatkov/homebrew-tap/releases/download/0.42.0/homebrew-tap_Linux_i386.tar.gz
+	sha256sums_i686 = dd6b6571cc0f28cdb2667b6a886447e63fc394f72f8d0fa3906dac35f1d919e7
 	arch = x86_64
-	source_x86_64 = https://github.com/skatkov/homebrew-tap/releases/download/0.41.0/homebrew-tap_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a957994507c65927abacd9e768c00ecef0aec4e4786d030ef03029f5a4d1dc67
+	source_x86_64 = https://github.com/skatkov/homebrew-tap/releases/download/0.42.0/homebrew-tap_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b6d6456c951e4d882801c679228dce15b615d25faaebc58cfbe261a84c4fdc6f
 	
 pkgname = poshtui-bin
