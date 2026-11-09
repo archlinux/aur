@@ -1,6 +1,6 @@
 pkgbase = python-bokeh
 	pkgdesc = Interactive Web Plotting for Python
-	pkgver = 3.10.0
+	pkgver = 3.10.2
 	pkgrel = 1
 	url = http://bokeh.pydata.org/
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-bokeh
 	optdepends = python-sphinx: support sphinx documentation
 	optdepends = python-contourpy: contour plot
 	optdepends = python-pandas: dataframe
-	source = https://pypi.io/packages/source/b/bokeh/bokeh-3.10.0.tar.gz
-	sha256sums = 73f0b0c06d7925ca2b6d52b2dc51c2533a11f667cc6944f1f06c039ccc57c5ce
+	source = https://pypi.io/packages/source/b/bokeh/bokeh-3.10.2.tar.gz
+	sha256sums = d9fba1004fae149c6e6d54ba37410e52b8d4622ed5c6dad2220afa1b61362de0
 
 pkgname = python-bokeh
