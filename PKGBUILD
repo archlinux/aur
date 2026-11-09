@@ -1,20 +1,22 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_pkgname=MaterialCraft
 pkgname=materialcraft-git
-pkgver=0.5.0.r4.g6307ce2
+_pkgname=${pkgname%-git}
+pkgver=v0.1.2.r290.g7476e99
 pkgrel=1
-url="https://github.com/PiJellyPin/$_pkgname"
+url="https://getartcraft.com/apps/$_pkgname"
+_url="https://github.com/storytold/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Substance Designer (Git HEAD)'
 arch=(x86_64)
 license=(MIT Apache-2.0)
 depends=(glibc # libc.so libm.so
+         hicolor-icon-theme
          libgcc)
 makedepends=(cargo
              git)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
+source=("git+$_url.git")
 sha256sums=('SKIP')
 
 _srcenv() {
@@ -35,6 +37,8 @@ _srcenv() {
 	export RUSTUP_TOOLCHAIN=stable
 }
 
+_icons=(512 256 128 64 48 32 16)
+
 prepare() {
 	_srcenv
 	cargo fetch --locked --target host-tuple
@@ -48,13 +52,19 @@ pkgver() {
 
 build() {
 	_srcenv
-	cargo build --frozen --release --features gui
+	cargo build --frozen --release
 }
 
 package() {
 	depends+=(libgcc_s.so)
 	cd "$_pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"{,-gui}
-	install -Dm0644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"{,-cli}
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$_pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$_pkgname.mime.xml"
+	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$_pkgname.svg
+	for s in ${_icons[@]}; do
+		local dim="${s}x${s}"
+		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/app-icon/hicolor/$dim/apps/ai.storyteller.$_pkgname.png
+	done
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
