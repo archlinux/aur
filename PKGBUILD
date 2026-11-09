@@ -1,9 +1,9 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Linux-native Wayland terminal built on Ghostty terminal core'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/rockorager/monstar'
 license=('MIT')
 depends=(
@@ -17,18 +17,20 @@ depends=(
 )
 makedepends=(
   'ncurses'
+  'vulkan-headers'
   'wayland-protocols>=1.49'
-  'zig>=0.16.0'
+  'zig>=0.17.0'
 )
 optdepends=(
   'noto-fonts-emoji: emoji support'
   'noto-fonts-cjk: CJK font support'
-  'systemd: launch additional terminal windows'
+  'systemd: launch additional terminal windows as user services'
+  'vulkan-icd-loader: GPU rendering with renderer = vulkan'
   'xdg-desktop-portal: open links and files through a desktop portal'
   'xdg-utils: open links when a desktop portal is unavailable'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('a82209aaef3534407f29d860e3174974f19b4a7c10286212fdeacdcd1cb9049d')
+sha256sums=('9dbda03b5c63b02d3fc0f2d76c0e73505ba985a494f801b857e7e2772e46bfbe')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -42,7 +44,7 @@ build() {
   DESTDIR="$srcdir/monstar-build" zig build \
     --prefix /usr \
     --build-id=sha1 \
-    -Doptimize=ReleaseFast \
+    -Doptimize=fast \
     -Dcpu=baseline
 }
 
