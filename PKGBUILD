@@ -2,7 +2,7 @@
 
 _pkgname="monocle"
 pkgname="${_pkgname}-bin"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="See through all BGP data with a monocle"
 arch=(
@@ -36,8 +36,8 @@ source_x86_64=(
 )
 sha256sums=('0bea132446f415cc057d239964bc08a56a20e2de16f07dfe2f174256c7f13bb9'
             '2f7fe2af03db380114c5894a77181791be23b2cb12035669dfb38c09c47e104c')
-sha256sums_aarch64=('f57bf1c89ffdb0e6d46d20b7345af4f97311fbf580c1cc587feef3d3c5026cf3')
-sha256sums_x86_64=('06af4f8caf627b632d0c334768ac45698a9fc7ff8857ffb1c809dd089b449fe5')
+sha256sums_aarch64=('2550086cdd2edb94fb6e6e4889995ab5ec615f106d135906eed957d54ca885c5')
+sha256sums_x86_64=('f1ba30577af37b4865fc318898919df79c7db5a4d4a336ea8aa6623f12808e5e')
 
 package() {
   cd "${srcdir}"

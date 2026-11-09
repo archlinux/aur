@@ -1,6 +1,6 @@
 pkgbase = monocle-bin
 	pkgdesc = See through all BGP data with a monocle
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/bgpkit/monocle
 	arch = aarch64
@@ -10,13 +10,13 @@ pkgbase = monocle-bin
 	depends = libgcc
 	provides = monocle
 	conflicts = monocle
-	source = monocle-1.6.0-README.md::https://github.com/bgpkit/monocle/raw/refs/tags/v1.6.0/README.md
-	source = monocle-1.6.0-LICENSE::https://github.com/bgpkit/monocle/raw/refs/tags/v1.6.0/LICENSE
+	source = monocle-1.6.1-README.md::https://github.com/bgpkit/monocle/raw/refs/tags/v1.6.1/README.md
+	source = monocle-1.6.1-LICENSE::https://github.com/bgpkit/monocle/raw/refs/tags/v1.6.1/LICENSE
 	sha256sums = 0bea132446f415cc057d239964bc08a56a20e2de16f07dfe2f174256c7f13bb9
 	sha256sums = 2f7fe2af03db380114c5894a77181791be23b2cb12035669dfb38c09c47e104c
-	source_aarch64 = monocle-1.6.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/bgpkit/monocle/releases/download/v1.6.0/monocle-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f57bf1c89ffdb0e6d46d20b7345af4f97311fbf580c1cc587feef3d3c5026cf3
-	source_x86_64 = monocle-1.6.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/bgpkit/monocle/releases/download/v1.6.0/monocle-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 06af4f8caf627b632d0c334768ac45698a9fc7ff8857ffb1c809dd089b449fe5
+	source_aarch64 = monocle-1.6.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/bgpkit/monocle/releases/download/v1.6.1/monocle-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2550086cdd2edb94fb6e6e4889995ab5ec615f106d135906eed957d54ca885c5
+	source_x86_64 = monocle-1.6.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/bgpkit/monocle/releases/download/v1.6.1/monocle-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f1ba30577af37b4865fc318898919df79c7db5a4d4a336ea8aa6623f12808e5e
 
 pkgname = monocle-bin
