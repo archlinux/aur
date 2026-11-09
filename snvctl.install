@@ -7,3 +7,6 @@ post_upgrade() {
 
     systemctl restart slimitd.service
 }
+post_install() {
+    systemctl enable --now slimitd.service
+}
