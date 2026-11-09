@@ -3,7 +3,7 @@
 
 pkgname=notion-calendar-electron-fixed
 pkgver=1.142.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Notion Calendar Desktop Client - your calendar, tasks, and schedule in one place (official installer, electron41)"
 arch=(x86_64)
 url=https://www.notion.so/product/calendar
@@ -156,6 +156,42 @@ prepare() {
 		exit 1
 	fi
 	rm -rf "$srcdir/.verify"
+
+	# --- rendering / backend guard ---------------------------------------
+	# A build that runs is not a build that renders correctly. The shipped
+	# launcher must (a) select a backend that exists on the target desktop
+	# and (b) tell Electron the device scale this desktop actually uses, or
+	# the app opens at half size with everything physically tiny on a 4K
+	# panel.
+	#
+	# The failure this guards against is silent: the window still opens, the
+	# calendar still loads, so only a render-level check can catch it.
+	#
+	# (a) is verified structurally: when WAYLAND_DISPLAY is set the launcher must
+	# NOT fall through to X11.
+	local _wrapper="$srcdir/notion-calendar-electron-fixed/notion-calendar"
+	if [[ ! -f "$_wrapper" ]]; then
+		echo "SMOKE TEST FAILED: launcher script missing from the package source" >&2
+		exit 1
+	fi
+	# The launcher must force native Wayland when a Wayland session is
+	# present, instead of silently running under XWayland.
+	if ! grep -q -- '--ozone-platform=wayland' "$_wrapper"; then
+		echo "SMOKE TEST FAILED: launcher does not force a Wayland backend" >&2
+		exit 1
+	fi
+	# It must also set the device scale for that desktop, or the app renders
+	# at 1x on a 4K panel and everything is half size.
+	if ! grep -q -- '--force-device-scale-factor' "$_wrapper"; then
+		echo "SMOKE TEST FAILED: launcher does not set a device scale factor" >&2
+		exit 1
+	fi
+	# And it must clear a stale single-instance lock, which on Linux is what
+	# leaves a second window stuck at the loading logo.
+	if ! grep -q 'SingletonLock' "$_wrapper"; then
+		echo "SMOKE TEST FAILED: launcher does not clear a stale single-instance lock" >&2
+		exit 1
+	fi
 
 	echo "==> smoke test passed"
 }
