@@ -1,0 +1,34 @@
+# Package hooks run as root: never choose or impersonate a session user.
+# The service, its user (sysusers.d), the udev rule and the module list are
+# installed under /usr/lib and picked up by the systemd and udev hooks; the
+# hooks do not load the module nor re-apply the rule to /dev/uhid.
+apply_uhid() {
+  modprobe uhid 2>/dev/null || true
+  setfacl -b /dev/uhid 2>/dev/null || true
+  udevadm trigger /dev/uhid 2>/dev/null || true
+}
+
+post_install() {
+  apply_uhid
+  cat <<'MSG'
+==> bluetooth-gpd installed. BlueZ refuses the pairing requests, mask it:
+      systemctl mask --now bluetooth.service
+    Let your user reach the daemon, then log in again:
+      usermod -aG bluetooth <user>
+    Start the service (the uhid module and its udev rule are already applied):
+      systemctl enable --now bluetooth-daemon
+    As your normal user:
+      bluetooth
+MSG
+}
+
+post_upgrade() {
+  apply_uhid
+}
+
+post_remove() {
+  cat <<'MSG'
+==> The user and group bluetooth and /var/lib/bluetooth, which holds the
+    pairing keys, are kept: remove them by hand if you do not need them.
+MSG
+}
