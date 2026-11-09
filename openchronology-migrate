@@ -1,8 +1,8 @@
 #!/bin/sh
 # Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
 # Brings the OpenChronology database up to this package's schema, then (re)starts the server,
-# and the mail worker and the log importers (syslog, journald), each if it is enabled (an upgrade
-# stopped them all, #371, #374). Safe to run more than once.
+# and the mail worker and the log importers (syslog, GitHub, journald), each if it is enabled
+# (an upgrade stopped them all, #371, #374). Safe to run more than once.
 # Usage: sudo openchronology-migrate [--no-restart]   (--no-restart restarts nothing)
 set -eu
 APP=/usr/lib/openchronology
@@ -23,7 +23,8 @@ if [ "${1:-}" != "--no-restart" ] && [ -d /run/systemd/system ]; then
   systemctl restart openchronology.service
   echo "OpenChronology restarted."
   # Disabled until configured (README); an enabled one runs the new version too.
-  for worker in "mail:mail worker" "syslog:syslog receiver" "journald:journald follower"; do
+  for worker in "mail:mail worker" "syslog:syslog receiver" "github:GitHub receiver" \
+    "journald:journald follower"; do
     if systemctl is-enabled --quiet "openchronology-${worker%%:*}.service" 2>/dev/null; then
       systemctl restart "openchronology-${worker%%:*}.service"
       echo "OpenChronology ${worker#*:} restarted."

@@ -68,19 +68,28 @@ The syslog receiver (syslog.md) is configured in /etc/openchronology/syslog.env 
 in /etc/openchronology/syslog-routes.json; then
 `sudo systemctl enable --now openchronology-syslog`.
 
+The GitHub receiver (github.md) mirrors issues and pull requests into timelines from
+GitHub's webhooks, on 127.0.0.1:5580 behind your HTTPS reverse proxy. It is configured in
+/etc/openchronology/github.env (the API key and the webhook's secret) with routes in
+/etc/openchronology/github-routes.json; then
+`sudo systemctl enable --now openchronology-github`.
+
 The journald follower (journald.md) streams this machine's systemd journal, or another
 machine's over SSH, into timelines. Configure it in /etc/openchronology/journald.env (the timeline or
 routes, and which units); then `sudo systemctl enable --now openchronology-journald`.
 
 The log importers run as their own system user, openchronology-logs, which cannot read
 openchronology.env or log in to the database (#501); the journald follower has the
-systemd-journal group as well. syslog.env and journald.env are root:openchronology-logs,
-mode 0640, and so must be the files they name (routes, the journald SSH key and known
-hosts): `sudo chown root:openchronology-logs FILE && sudo chmod 0640 FILE`. See syslog.md
-and journald.md, "Its own account".
+systemd-journal group as well. syslog.env, github.env and journald.env are
+root:openchronology-logs, mode 0640, and so must be the files they name (routes, the
+journald SSH key and known hosts): `sudo chown root:openchronology-logs FILE && sudo chmod
+0640 FILE`. See syslog.md and journald.md, "Its own account".
 
 `och-import-logs` imports historic log files (log-import.md), with OCH_API_URL and
 OCH_API_KEY from the environment or syslog.env: `och-import-logs --help`.
+`och-import-github` imports a repository's existing issues and pull requests (github.md),
+with OCH_API_URL, OCH_API_KEY and GITHUB_TOKEN from the environment or github.env:
+`och-import-github --help`.
 
 Upgrade
 -------
@@ -95,8 +104,8 @@ stops the server and leaves the database and configuration as they are. It then 
   2. A backup:  sudo -u postgres pg_dump openchronology > openchronology.sql
   3. sudo openchronology-migrate, which migrates the database and starts the server, and
      each of the mail worker (openchronology-mail) and the log importers
-     (openchronology-syslog, openchronology-journald) that is enabled. Disabled ones stay
-     stopped.
+     (openchronology-syslog, openchronology-github, openchronology-journald) that is
+     enabled. Disabled ones stay stopped.
 
 openchronology-migrate is safe to run more than once. `--no-restart` migrates only and starts
 nothing.
@@ -129,8 +138,9 @@ Layout
   /usr/bin/openchronology-migrate    database migration
   /usr/bin/openchronology-reset-admin-password   the administrator's password, from the configuration
   /usr/bin/och-import-logs           log file import
+  /usr/bin/och-import-github         GitHub import
   /etc/openchronology                configuration (created by openchronology-setup)
   /usr/share/openchronology          configuration templates of the installed version
   /usr/lib/systemd/system            openchronology, openchronology-mail, openchronology-syslog,
-                                     openchronology-journald
+                                     openchronology-github, openchronology-journald
   /usr/lib/postgresql, /usr/share/postgresql/extension   pgmp for this system's PostgreSQL

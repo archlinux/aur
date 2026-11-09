@@ -1,0 +1,50 @@
+# The GitHub webhook receiver (docs/github.md) as a systemd service, configured in
+# /etc/openchronology/github.env (Debian and RPM packages).
+[Unit]
+Description=OpenChronology GitHub receiver
+Documentation=file:///usr/share/doc/openchronology-server/README.Debian
+After=network.target openchronology.service
+
+[Service]
+Type=simple
+# Its own user (#501): it cannot read the server's configuration or log in to its database.
+User=openchronology-logs
+Group=openchronology-logs
+EnvironmentFile=/etc/openchronology/github.env
+Environment=NODE_ENV=production
+WorkingDirectory=/usr/lib/openchronology
+ExecStart=/usr/lib/openchronology/node/bin/node server/github-receiver.mjs
+# /var/lib/openchronology-github, its own and writable: GITHUB_STATE keeps each item's board
+# column there across restarts.
+StateDirectory=openchronology-github
+StateDirectoryMode=0700
+Restart=on-failure
+# Node exits with 128 + SIGTERM when stopped; that is a clean stop, not a failure.
+SuccessExitStatus=143
+RestartSec=10
+# Hardening: no privileges, devices, kernel or clock changes, namespaces or foreign system
+# calls, and files it creates private to it. AF_NETLINK is for Node's network interface list.
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+LockPersonality=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+UMask=0077
+# Other users' processes are hidden from it.
+ProtectProc=invisible
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+#!/bin/sh
+# Copyright (c) 2026 Athan Clark. SPDX-License-Identifier: GPL-3.0-only
+# Imports GitHub issues and pull requests into OpenChronology timelines: och-import-github
+# --help, and /usr/share/doc/openchronology-server/github.md. OCH_API_URL, OCH_API_KEY and
+# GITHUB_TOKEN come from the environment or, when it has no API key and the file is readable,
+# /etc/openchronology/github.env.
+APP=/usr/lib/openchronology
+CONFIG=/etc/openchronology/github.env
+if [ -z "${OCH_API_KEY:-}" ] && [ -r "$CONFIG" ]; then
+  exec env OCH_CONFIG="$CONFIG" "$APP/node/bin/node" "$APP/server/import-github.mjs" "$@"
+fi
+exec "$APP/node/bin/node" "$APP/server/import-github.mjs" "$@"

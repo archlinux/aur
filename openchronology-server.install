@@ -2,7 +2,8 @@
 # pacman's scripts for openchronology-server (#331). Installing leaves PostgreSQL and the
 # database to the administrator, as Arch packages do: openchronology-setup does both. An
 # upgrade stops the services, which openchronology-migrate starts again on the new version.
-services='openchronology.service openchronology-mail.service openchronology-syslog.service openchronology-journald.service'
+services='openchronology.service openchronology-mail.service openchronology-syslog.service
+  openchronology-github.service openchronology-journald.service'
 
 post_install() {
   cat <<'MSG'

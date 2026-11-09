@@ -41,6 +41,7 @@ key=$(od -An -tx1 -N32 /dev/urandom | tr -d ' \n')
 new_config "$CONFIG" openchronology "s|^AUTH_ENCRYPTION_KEY=\$|AUTH_ENCRYPTION_KEY=$key|" \
   "$EXAMPLES/openchronology.env.example"
 new_config "$CONFIG_DIR/syslog.env" openchronology-logs "" "$EXAMPLES/syslog.env.example"
+new_config "$CONFIG_DIR/github.env" openchronology-logs "" "$EXAMPLES/github.env.example"
 new_config "$CONFIG_DIR/journald.env" openchronology-logs "" "$EXAMPLES/journald.env.example"
 # From an installation before #501: the log receivers' configuration, and the files it names,
 # move from the openchronology user to theirs (openchronology-logs).
@@ -139,7 +140,7 @@ if [ -n "$systemd" ]; then
   systemctl enable --quiet openchronology.service
   systemctl restart openchronology.service
   # The mail worker and the log importers, each if it is enabled (#371, #374).
-  for unit in mail syslog journald; do
+  for unit in mail syslog github journald; do
     if systemctl is-enabled --quiet "openchronology-$unit.service" 2>/dev/null; then
       systemctl restart "openchronology-$unit.service"
     fi
