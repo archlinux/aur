@@ -1,0 +1,18 @@
+pkgbase = way-ocr-git
+	pkgdesc = Lightning-fast, zero-dependency Screen OCR and text extractor for Wayland
+	pkgver = 0.1.0.r8.7622c4a
+	pkgrel = 1
+	url = https://github.com/apravint/way-ocr
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = slurp
+	depends = grim
+	depends = tesseract
+	depends = wl-clipboard
+	depends = libnotify
+	provides = way-ocr
+	source = git+https://github.com/apravint/way-ocr
+	md5sums = SKIP
+
+pkgname = way-ocr-git
