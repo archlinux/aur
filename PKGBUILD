@@ -2,13 +2,13 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=brotli
-_pkgver=1.3.2
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgdesc="A Compression Format Optimized for the Web"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=4
 
 arch=("i686" "x86_64")
 depends=(
@@ -28,7 +28,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('e4a14de978e10657db8ddc050bd9907840474c2b24968a21b64cea95084f68ed76d556ae9bf25073966105a1107eab1ec126eff96ac6752f8b6bf758aab0bb8e')
+b2sums=('0fb2d6173733ab48914edf3339164884b858e6888c1985f7b984f123e9094f5d02ca3b2e8204404fe36d584bb98e0f3b9f1d7a9a710062de3e58b8855ead7dd5')
 
 build() {
     mkdir -p "${srcdir}/build/"

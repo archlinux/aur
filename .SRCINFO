@@ -1,7 +1,7 @@
 pkgbase = r-brotli
 	pkgdesc = A Compression Format Optimized for the Web
-	pkgver = 1.3.2
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 4
 	url = https://cran.r-project.org/package=brotli
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-brotli
 	optdepends = r-microbenchmark
 	optdepends = r-rmarkdown
 	optdepends = r-ggplot2
-	source = https://cran.r-project.org/src/contrib/brotli_1.3.2.tar.gz
-	b2sums = e4a14de978e10657db8ddc050bd9907840474c2b24968a21b64cea95084f68ed76d556ae9bf25073966105a1107eab1ec126eff96ac6752f8b6bf758aab0bb8e
+	source = https://cran.r-project.org/src/contrib/brotli_1.4.0.tar.gz
+	b2sums = 0fb2d6173733ab48914edf3339164884b858e6888c1985f7b984f123e9094f5d02ca3b2e8204404fe36d584bb98e0f3b9f1d7a9a710062de3e58b8855ead7dd5
 
 pkgname = r-brotli
