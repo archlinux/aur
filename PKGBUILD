@@ -2,7 +2,7 @@
 
 pkgname=ente-bin
 pkgver=1.7.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for ente Photos (self-contained AppImage)"
 arch=('x86_64')
 url="https://ente.com/"
@@ -40,7 +40,7 @@ source=(
 sha256sums=(
     '9602c60cbe425fff6abf8fc2e77a83c82a1c848b3fc120583b409e88343fb8b6'
     '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-    '3c1a350419d3cae23eb4c2e3c31276e24daca6b53d77350a0246eca04709080b'
+    '8d95b56a646f4f7eaf2627c5a32e1e75611f60b77658ab252e43a4e91e5ede7d'
 )
 
 package() {
