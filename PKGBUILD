@@ -1,17 +1,18 @@
 pkgname=stealth-mission-89
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='A Rust/Bevy remake of DOS-era 3D flight simulations with multiplayer, dynamic realtime campaign and VR support'
 arch=('x86_64' 'aarch64')
 url='https://github.com/dividebysandwich/stealth-mission-89'
-license=('Apache-2.0')
+# Code GPL-3.0-only, assets CC BY-NC-SA 4.0; bundled fonts and CMUdict keep their own licences.
+license=('GPL-3.0-only' 'CC-BY-NC-SA-4.0' 'OFL-1.1' 'ISC' 'MIT' 'BSD-2-Clause')
 depends=('alsa-lib' 'glibc' 'hicolor-icon-theme' 'libx11' 'libxcursor' 'libxi' 'libgcc'
          'libxkbcommon' 'libxrandr' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
 makedepends=('cargo')
 optdepends=('openxr: VR headset support (--vr)')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cfe8a7ab750ff4be16cdd3b9a1f45f361b2bd47474fb74002931d4b39d345693')
+sha256sums=('48aa67c73275e8a7ecb44daee3bc1bce4040b03c13e822b56da505cf6bd8bc6b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -47,5 +48,7 @@ EOF
   install -Dm644 packaging/linux/$pkgname.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
   install -Dm644 packaging/linux/$pkgname.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 assets/LICENSE.md assets/LICENSE-cmudict.txt assets/fonts/LICENSE-lucide.txt \
+    -t "$pkgdir/usr/share/licenses/$pkgname/"
   cp -r --no-preserve=ownership docs/. "$pkgdir/usr/share/doc/$pkgname/"
 }
