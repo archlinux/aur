@@ -1,0 +1,24 @@
+pkgbase = chatpane
+	pkgdesc = Distraction-free desktop client for Facebook Messenger
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://chatpane.app/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = carrier
+	conflicts = carrier
+	replaces = carrier
+	options = !strip
+	options = !debug
+	source = LICENSE-3.1.0::https://raw.githubusercontent.com/kristofferR/Chatpane/v3.1.0/LICENSE
+	sha256sums = 957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d
+	source_x86_64 = chatpane-3.1.0-x86_64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.1.0/Chatpane_3.1.0_lin_x64.deb
+	sha256sums_x86_64 = b8fef9f0bf7e5f299b6d207f713314d20c28e2a782ac02203d91454a63d159a3
+	source_aarch64 = chatpane-3.1.0-aarch64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.1.0/Chatpane_3.1.0_lin_arm.deb
+	sha256sums_aarch64 = 76c71953dbf14116d273c8299b8e2846fb47e61b0d80480108d98d880ad1850e
+
+pkgname = chatpane
