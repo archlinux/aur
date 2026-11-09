@@ -1,18 +1,24 @@
-pkgbase = silkfly-bin
+pkgbase = silkfly-git
 	pkgdesc = Mod manager for Hollow Knight: Silksong
-	pkgver = r8.9a42cd8
+	pkgver = 0.1.1.r0.g9a42cd8
 	pkgrel = 1
 	url = https://github.com/Ishmael-GameDev/Silkfly
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = dotnet-sdk
-	provides = silkfly
+	makedepends = dotnet-sdk-10.0
+	depends = dotnet-runtime-10.0
+	depends = fontconfig
+	depends = libx11
+	depends = libice
+	depends = libsm
+	depends = hicolor-icon-theme
+	depends = sh
+	provides = silkfly=0.1.1.r0.g9a42cd8
 	conflicts = silkfly
-	noextract = silkfly-r8.9a42cd8.AppImage
 	options = !strip
 	options = !debug
 	source = silkfly::git+https://github.com/Ishmael-GameDev/Silkfly.git
 	sha256sums = SKIP
 
-pkgname = silkfly-bin
+pkgname = silkfly-git
