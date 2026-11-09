@@ -1,7 +1,7 @@
 # Maintainer: parasail ikunji@duck.com
 pkgname=shell360-bin
 _pkgname=Shell360
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Cross-platform SSH / SFTP client (official binary from .deb)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('shell360')
 conflicts=('shell360')
 _source_url=("${url}/releases/download/v${pkgver}/Shell360_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}-${pkgver}-amd64.deb::${_source_url}")
-sha256sums=('ae893af385ae6ecc5ca228e76f9d2db631be8d39439685569c8bfeda0a9fb74c')
+sha256sums=('b48361325a361e65a82b8f3b8cb362a005991c67dfe86bf1abe50aaa34f779d0')
 
 pkgver() {
     # 实时抓取最新 tag，去掉 v 前缀
