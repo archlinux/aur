@@ -1,10 +1,10 @@
 # Maintainer: vash909 <iu1bot@xzgroup.net>
 
 pkgname=grappa-bin
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
-_upstream_tag=v1.6.3
-_asset=grappa-1.6.3-1-x86_64.pkg.tar.zst
+_upstream_tag=v1.6.4
+_asset=grappa-1.6.4-1-x86_64.pkg.tar.zst
 pkgdesc='Always-on IRC bouncer with a REST/WebSocket API and bundled cicchetto web client (official binary)'
 arch=('x86_64')
 url='https://github.com/vjt/grappa-irc'
@@ -21,7 +21,7 @@ install=grappa.install
 source=("${pkgname}-${_upstream_tag}-${_asset}::${url}/releases/download/${_upstream_tag}/${_asset}"
         'README.md')
 noextract=("${pkgname}-${_upstream_tag}-${_asset}")
-sha256sums=('20a8f279c43dee84ee6e349659d7d075fe0384f946694f20de2627bbb72e60c6'
+sha256sums=('6c2177bb87abe1ac2ef4a2c081f838d516100fe92885f40a191a88645edf1106'
             '1d037e0e576fb87f6b7abe29004060184b874a9e7794dea1e1a32faa2878286c')
 
 package() {
