@@ -1,6 +1,6 @@
 pkgbase = snout-desktop-bin
 	pkgdesc = Native desktop workbench for Rime input method schemes, models, and themes
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/ca-x/snout
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = snout-desktop-bin
 	conflicts = snout-desktop
 	options = !strip
 	options = !debug
-	source = snout-LICENSE-0.4.0::https://raw.githubusercontent.com/ca-x/snout/v0.4.0/LICENSE
+	source = snout-LICENSE-0.4.1::https://raw.githubusercontent.com/ca-x/snout/v0.4.1/LICENSE
 	sha256sums = 7a4b84bc50888e3562c2436ed6acbd6171d92b8e91861934a89b874eba76cfbb
-	source_x86_64 = https://github.com/ca-x/snout/releases/download/v0.4.0/snout-desktop-v0.4.0-linux-x86_64-gnu.tar.gz
-	sha256sums_x86_64 = f273f4e64787487a536429525807f7c68dc33815d641fb130cdc3d944ee9a375
+	source_x86_64 = https://github.com/ca-x/snout/releases/download/v0.4.1/snout-desktop-v0.4.1-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = 4564c59601f7698caba8c2aa6bd8e013e13ceece1c77bfadb8af2cc1b7029bf6
 
 pkgname = snout-desktop-bin
