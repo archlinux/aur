@@ -1,6 +1,6 @@
 pkgbase = rustconn
 	pkgdesc = Modern connection manager for SSH, RDP, VNC, SPICE and more
-	pkgver = 0.24.6
+	pkgver = 0.24.9
 	pkgrel = 1
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = rustconn
 	optdepends = tigervnc: External VNC client fallback
 	optdepends = virt-viewer: External SPICE client fallback
 	optdepends = waypipe: Wayland application forwarding for SSH connections
-	source = RustConn-0.24.6.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.24.6.tar.gz
-	sha256sums = 28eb77647c607455605050ee0a26d7e13ba61967980478cb87718652d6a99fc6
+	source = RustConn-0.24.9.tar.gz::https://github.com/totoshko88/RustConn/archive/refs/tags/v0.24.9.tar.gz
+	sha256sums = 9b1ea10db1534f4c26be505810b1efa78179b9ecba9e355598578a2b591aa70f
 
 pkgname = rustconn
