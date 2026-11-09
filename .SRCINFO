@@ -1,13 +1,13 @@
 pkgbase = herokuish
 	pkgdesc = Utility for emulating Heroku build and runtime tasks in containers
-	pkgver = 0.11.24
+	pkgver = 0.11.25
 	pkgrel = 1
 	url = https://github.com/gliderlabs/herokuish
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = go-bindata
-	source = herokuish-0.11.24.tar.gz::https://github.com/gliderlabs/herokuish/archive/refs/tags/v0.11.24.tar.gz
-	sha256sums = e503a96205f4dda650190248798d24df7ea49a02c3dfbccdf85aab350edc70c9
+	source = herokuish-0.11.25.tar.gz::https://github.com/gliderlabs/herokuish/archive/refs/tags/v0.11.25.tar.gz
+	sha256sums = c985e4bb97720d744de5dd138e4fe0e305438ebd437abc46658a5091294c9a08
 
 pkgname = herokuish
