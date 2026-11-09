@@ -1,7 +1,7 @@
 # Maintainer: Guillaume VanderEst <gvanderest@gmail.com>
 pkgname=datadog-pup-cli-bin
 _binname=pup
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Datadog API CLI (pup) — OAuth2/API-key CLI for metrics, logs, monitors, traces across 30+ Datadog products (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('datadog-pup-cli' 'pup' 'pup-bin' 'pup-git')
 options=('!strip')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/${_binname}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/${_binname}_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('f84f72ade2b92cb46cf02e063467caaf00c63d0f8f9d5c1232ca558b42e971b1')
-sha256sums_aarch64=('4a3b0e8aa6425a0e29be31bf18ca36e50ae87941ae74c73a8e0596632b62b69a')
+sha256sums_x86_64=('b2f093c04f02398ac4dd0a5d1278bedd6f4ad1b81840ed2b186d9d2782e99782')
+sha256sums_aarch64=('d32e814ccc965dc5abef445c5c4247a3479e268cd5d2621cb8f2ea7bc0708e00')
 
 package() {
     install -Dm755 "$srcdir/pup" "$pkgdir/usr/bin/pup"
