@@ -1,6 +1,6 @@
 pkgbase = complgen
 	pkgdesc = Generate bash/fish/zsh completions from a single declarative grammar
-	pkgver = 0.8.3
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/adaszko/complgen
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = complgen
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = complgen-0.8.3.tar.gz::https://github.com/adaszko/complgen/archive/refs/tags/v0.8.3.tar.gz
-	b2sums = 9130091cc5677760fc7b8ef2b80424bc214efa8e8798c6d9f4694876b7c044a5e587a5826231b561c25f4d23eebfa31f9f275bd42a5b35ba6009442b460e7a8e
+	source = complgen-0.11.0.tar.gz::https://github.com/adaszko/complgen/archive/refs/tags/v0.11.0.tar.gz
+	b2sums = 4b4552809e45631bfc271948e59b2a8c45eaf4258bec0b9128a0f68b3b6fa792678ae1536f129a8d07d0d59257ef60aee9e8e27ccb9b1230cf96a5600fcb762a
 
 pkgname = complgen
