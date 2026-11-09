@@ -1,7 +1,7 @@
 
 # Maintainer: ssprea <ssprea@proton.me>
-_pkgname=slimit-gpu
-pkgname=${_pkgname}-git
+_pkgname=slimit
+pkgname=${_pkgname}-gpu-git
 pkgver=1.1.10.r4.g147873b
 pkgrel=1
 epoch=
