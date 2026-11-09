@@ -15,7 +15,6 @@ pkgbase = mtgpu-s30-userland
 	depends = spirv-tools
 	depends = libx11
 	depends = libxcb
-	depends = libx11-xcb
 	optdepends = libva: hardware video acceleration (VA-API)
 	optdepends = clinfo: OpenCL platform query
 	provides = vulkan-driver

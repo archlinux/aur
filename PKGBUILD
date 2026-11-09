@@ -17,7 +17,6 @@ depends=(
     'spirv-tools'
     'libx11'
     'libxcb'
-    'libx11-xcb'
 )
 optdepends=(
     'libva: hardware video acceleration (VA-API)'
