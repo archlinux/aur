@@ -1,7 +1,7 @@
 # Maintainer: arch-lsf <liangshengfeng@star-net.cn>
 
 pkgname=openidea-bin
-pkgver=0.1.37
+pkgver=0.1.39
 pkgrel=1
 pkgdesc="Open-source IntelliJ IDEA-style IDE rebuilt in Rust"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("LICENSE")
 source_x86_64=("OpenIDEA-${pkgver}-1.x86_64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v${pkgver}/OpenIDEA-${pkgver}-1.x86_64.rpm")
 source_aarch64=("OpenIDEA-${pkgver}-1.aarch64.rpm::https://github.com/l0ng-ai/openidea/releases/download/v${pkgver}/OpenIDEA-${pkgver}-1.aarch64.rpm")
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('3431181cccb1741f9eb546f40ad163afea8dc22bf363e0c4f50aa9c1d44335b5')
-sha256sums_aarch64=('d15872d3676dc503ff3698a0b285acde9b528cbb57614041b68470a355581639')
+sha256sums_x86_64=('df14dbef3b1fb320e9c4c3fa76921aaf54c4a076a5954f55ecbeb03f92ad51aa')
+sha256sums_aarch64=('752e2a9be100d0701f0ab8f53034eb58729d79faa24bf994d4bdbeeb72c56eac')
 
 package() {
     # The RPM payload already contains /usr/bin/openidea, the desktop entry
