@@ -1,6 +1,6 @@
 pkgbase = tutabridge-desktop
 	pkgdesc = Local IMAP/SMTP bridge for Tuta encrypted email (desktop app)
-	pkgver = 0.1.0_rc.16
+	pkgver = 0.2.0_rc.1
 	pkgrel = 1
 	url = https://github.com/spartanz51/tutabridge
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = tutabridge-desktop
 	optdepends = gnome-keyring: persist the Tuta session across reboots (Secret Service)
 	optdepends = kwallet: alternative Secret Service provider
 	options = !lto
-	source = tutabridge-desktop::git+https://github.com/spartanz51/tutabridge.git#tag=v0.1.0-rc.16
-	sha256sums = fe959ad3b24501737af94d17bc3e2a7806513e4c353d205e264bf4d26b33eda1
+	source = tutabridge-desktop::git+https://github.com/spartanz51/tutabridge.git#tag=v0.2.0-rc.1
+	sha256sums = 064a59d7fce5d6e9a0670bf69f7a7a51af9ecc0076b92803b060c332b62eff6d
 
 pkgname = tutabridge-desktop

@@ -1,6 +1,6 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
-_pkgver=0.1.0-rc.16
+_pkgver=0.2.0-rc.1
 
 pkgname=tutabridge-desktop
 pkgver=${_pkgver//-/_}
@@ -26,7 +26,7 @@ optdepends=('gnome-keyring: persist the Tuta session across reboots (Secret Serv
             'kwallet: alternative Secret Service provider')
 options=(!lto)
 source=($pkgname::git+https://github.com/spartanz51/tutabridge.git#tag=v$_pkgver)
-sha256sums=('fe959ad3b24501737af94d17bc3e2a7806513e4c353d205e264bf4d26b33eda1')
+sha256sums=('064a59d7fce5d6e9a0670bf69f7a7a51af9ecc0076b92803b060c332b62eff6d')
 
 prepare() {
   cd "$pkgname"
