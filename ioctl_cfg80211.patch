@@ -1,6 +1,13 @@
-405c405,407
-< #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 3, 0)
----
-> #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
->     cfg80211_ch_switch_notify(adapter->pnetdev, &chdef, 0);
-> #elif LINUX_VERSION_CODE >= KERNEL_VERSION(6, 3, 0)
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -402,7 +402,9 @@
+ 	if (ret != _SUCCESS)
+ 		goto exit;
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 3, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 9, 0)
++    cfg80211_ch_switch_notify(adapter->pnetdev, &chdef, 0);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(6, 3, 0)
+ 	cfg80211_ch_switch_notify(adapter->pnetdev, &chdef, 0, 0);
+ #elif LINUX_VERSION_CODE >= KERNEL_VERSION(5, 19, 2)
+ 	cfg80211_ch_switch_notify(adapter->pnetdev, &chdef, 0);

@@ -6,7 +6,7 @@ pkgver=r12.9dec829
 pkgrel=1
 pkgdesc="Linux driver for Realtek RTL8188GU"
 url="https://github.com/lwfinger/rtl8188gu"
-license=('unknown')
+license=('GPL-1.0-or-later')
 arch=('x86_64')
 depends=('dkms' 'bc' 'linux-headers')
 makedepends=('git')
@@ -14,7 +14,7 @@ conflicts=("${_pkgbase}-dkms")
 source=("git+https://github.com/lwfinger/rtl8188gu.git" "dkms.conf" "ioctl_cfg80211.patch")
 sha256sums=('SKIP'
             '214b8d7ee2968e49be23567d5fa8073cf3da593e71574154e0d41d11b1abd30e'
-            '0db704b739c19b7acf85085fc8ea1a262dd7c80e8c3cc7100d85c9438c331573')
+            '55e490451bb89f49c20583fa2b6e65357f16b1aefccf2ac1497d2031a091e0bc')
 
 pkgver() {
 	cd ${srcdir}/${_pkgbase}
