@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=lichii-bin
-pkgver=125
+pkgver=130
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch and Switch 2 emulator, fork of Eden (upstream AppImage)"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ _flavor="-pgo"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/build-${pkgver}/lichii-linux-x86_64${_flavor}.AppImage")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/build-${pkgver}/lichii-linux-aarch64${_flavor}.AppImage")
 noextract=("${pkgname}-${pkgver}-x86_64.AppImage" "${pkgname}-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('df1543328c448b07cc9871e70cee4491f5174b44c983a3e32d6223640e3f973c')
-sha256sums_aarch64=('f0c514b34c2c4ee33cecc0132f4cae2799b925505d22350f5d184b6902a076ef')
+sha256sums_x86_64=('7ac03030c7a66b4b7455ee4f46426fc139e870071a6968bae4a645401b770d9b')
+sha256sums_aarch64=('bd8f394347b45638b36c1bbec084815a97533f424dad7acac4d5c2eafd6c7640')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}-${CARCH}.AppImage"

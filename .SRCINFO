@@ -1,6 +1,6 @@
 pkgbase = lichii-bin
 	pkgdesc = Experimental Nintendo Switch and Switch 2 emulator, fork of Eden (upstream AppImage)
-	pkgver = 125
+	pkgver = 130
 	pkgrel = 1
 	url = https://github.com/zortos293/Lichii
 	arch = x86_64
@@ -30,13 +30,13 @@ pkgbase = lichii-bin
 	optdepends = gamemode: Feral GameMode support
 	provides = lichii
 	conflicts = lichii
-	noextract = lichii-bin-125-x86_64.AppImage
-	noextract = lichii-bin-125-aarch64.AppImage
+	noextract = lichii-bin-130-x86_64.AppImage
+	noextract = lichii-bin-130-aarch64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = lichii-bin-125-x86_64.AppImage::https://github.com/zortos293/Lichii/releases/download/build-125/lichii-linux-x86_64-pgo.AppImage
-	sha256sums_x86_64 = df1543328c448b07cc9871e70cee4491f5174b44c983a3e32d6223640e3f973c
-	source_aarch64 = lichii-bin-125-aarch64.AppImage::https://github.com/zortos293/Lichii/releases/download/build-125/lichii-linux-aarch64-pgo.AppImage
-	sha256sums_aarch64 = f0c514b34c2c4ee33cecc0132f4cae2799b925505d22350f5d184b6902a076ef
+	source_x86_64 = lichii-bin-130-x86_64.AppImage::https://github.com/zortos293/Lichii/releases/download/build-130/lichii-linux-x86_64-pgo.AppImage
+	sha256sums_x86_64 = 7ac03030c7a66b4b7455ee4f46426fc139e870071a6968bae4a645401b770d9b
+	source_aarch64 = lichii-bin-130-aarch64.AppImage::https://github.com/zortos293/Lichii/releases/download/build-130/lichii-linux-aarch64-pgo.AppImage
+	sha256sums_aarch64 = bd8f394347b45638b36c1bbec084815a97533f424dad7acac4d5c2eafd6c7640
 
 pkgname = lichii-bin
