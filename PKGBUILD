@@ -1,7 +1,7 @@
 # Maintainer: Shisones <shisones745@proton.me>
 
 pkgname=waka
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A front-end for libalpm, inspired by nala"
 url="https://github.com/Shisones/Waka"
@@ -12,7 +12,7 @@ makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'pacman')
 optdepends=('curl: for waka fetch')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c876f34ff7fb4122661d5850476ab2e03babc24295b58a85c04d1a21ad7c5805')
+sha256sums=('447db54c97851e4dffcd8d2b3dbddbcf83868347f10fdd4a705155ebbe06d13c')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
