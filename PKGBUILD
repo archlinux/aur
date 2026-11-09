@@ -2,7 +2,7 @@
 # Auto-updated by the release workflow in ractive/hyalo.
 pkgname=hyalo-bin
 _bin=hyalo
-pkgver=0.25.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="CLI for exploring and managing Markdown knowledge bases with YAML frontmatter"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ url="https://github.com/ractive/hyalo"
 license=('MIT')
 provides=("$_bin")
 conflicts=("$_bin")
-source_x86_64=("https://github.com/ractive/hyalo/releases/download/v${pkgver}/hyalo-v0.25.1-x86_64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('af68c24d65f059c4be9f0c61366b13541f6ca51583d5e339978a5d431a9e8fa6')
-source_aarch64=("https://github.com/ractive/hyalo/releases/download/v${pkgver}/hyalo-v0.25.1-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_aarch64=('948163b56f2aa4d8eb82f55903aa317b9c6cae37f86ee81702b71df444f527b9')
+source_x86_64=("https://github.com/ractive/hyalo/releases/download/v${pkgver}/hyalo-v0.26.0-x86_64-unknown-linux-musl.tar.gz")
+sha256sums_x86_64=('fbd8204fd577b22b9560acebe9fb4a80cc9cabfcb180199215e98d1ec0825ecc')
+source_aarch64=("https://github.com/ractive/hyalo/releases/download/v${pkgver}/hyalo-v0.26.0-aarch64-unknown-linux-musl.tar.gz")
+sha256sums_aarch64=('13c07678ee465d0806a039be673ab3af4ec584c86f6c837b867ffecf3b0846f5')
 
 package() {
   install -Dm755 "$_bin" "$pkgdir/usr/bin/$_bin"
