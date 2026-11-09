@@ -1,6 +1,6 @@
 # Maintainer: Xavier Olive <git@xoolive.org>
 pkgname=decode1090-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Decode and demodulate Mode S and ADS-B in Rust/Python"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('decode1090')
 
 source_x86_64=("decode1090-${pkgver}-x86_64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/decode1090-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("decode1090-${pkgver}-aarch64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/decode1090-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('1ae0f8e47db0840ce9106117ba8e31c3dd2d9775ca0caef0e26efaf6f54daf17')
-sha256sums_aarch64=('953fb5ce3b8317d78e9127e81552e9f25b24ccc18d3ac53bb0979928fabb344d')
+sha256sums_x86_64=('87ed33e16d7abbe95cb72506a77008761428bb37f12eeee31edbf59900dbac57')
+sha256sums_aarch64=('1da35528cafeb97ff5118cf6c863463b4bb7d4c49787fd4953b535f60866565e')
 
 package() {
     cd "decode1090-${CARCH}-unknown-linux-gnu"
