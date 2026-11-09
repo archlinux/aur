@@ -2,15 +2,15 @@
 
 pkgname=chromium-extension-locals-git
 _pkgname=locals
-pkgver=r0.0000000
-pkgrel=2
-pkgdesc='Chromium (MV3) extension that serves popular JS libraries, styles and fonts from a local copy instead of CDNs; learns from usage. Loaded unpacked'
+pkgver=r52.be18f06
+pkgrel=1
+pkgdesc='λocals: Chromium extension that serves common CDN libraries from a local bundle (Decentraleyes/LocalCDN alike), loaded unpacked'
 arch=('any')
 url='https://github.com/gaou-piou/locals'
 # MPL-2.0 for the extension; the bundled libraries are MIT, and the font packages
 # carry CC-BY-4.0 / OFL-1.1 (the licence text of each ships in libs/<name>/<version>/LICENSE).
 license=('MPL-2.0' 'MIT' 'CC-BY-4.0' 'OFL-1.1')
-depends=('nodejs')
+depends=('bash' 'nodejs')
 makedepends=('git' 'nodejs>=24' 'pnpm')
 provides=("chromium-extension-$_pkgname")
 conflicts=("chromium-extension-$_pkgname")
