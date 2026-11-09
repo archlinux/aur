@@ -1,6 +1,6 @@
 pkgname=pleazyng-bin
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex client with Jellyfin and Emby support, offline downloads, and HDR'
 arch=('x86_64' 'aarch64')
 url='https://github.com/snapetech-org/pleazyng'
@@ -12,7 +12,7 @@ provides=('pleazyng')
 source=('pleazyng.desktop' 'LICENSE')
 source_x86_64=("$pkgname-$pkgver-linux-x64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.7/pleazyng-linux-x64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/snapetech-org/pleazyng/releases/download/v3.0.7/pleazyng-linux-arm64.tar.gz")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('128aa0babfce8d659c4a407b59fb8af85138c630e0b53c69a3f2159b871f324b' '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 sha256sums_x86_64=('fbe98082916f0131981d71e4fee4dba900a2da1b62d9f82b9a3555e1da09fde9')
 sha256sums_aarch64=('6d02b9fc2d7fb142093e9b5b34846674339ae068c722e51db80f65413a31643d')
 noextract=("$pkgname-$pkgver-linux-x64.tar.gz" "$pkgname-$pkgver-linux-arm64.tar.gz")
