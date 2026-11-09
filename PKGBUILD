@@ -2,7 +2,7 @@
 
 _pypiname="lxst"
 pkgname="python-${_pypiname}"
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Lightweight Extensible Signal Transport for Reticulum"
 arch=(
@@ -16,8 +16,8 @@ license=(
 )
 depends=(
   'python>=3.13'
-  'python-rns>=1.2.0'
-  # 'python-lxmf>=1.1.0'
+  'python-rns>=1.6.0'
+  # 'python-lxmf>=1.3.0'
   'python-numpy>=2.3.4'
   'python-pycodec2>=4.1.0'
   'python-audioop-lts>=0.2.1'
@@ -42,7 +42,7 @@ source=(
 noextract=(
   "${source[@]##*/}"
 )
-sha256sums=('feadeb244d12378c27c35dbe48a251ff4db03faf3c8f55b769f9d7656d0adeb7')
+sha256sums=('c458b4d7461749b004de02821953b7d6782a65c1c481e95a36219768cd2ea004')
 
 package() {
   local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
