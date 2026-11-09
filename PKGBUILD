@@ -1,6 +1,6 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname="livebook-git"
-pkgver=0.9.2.r1688.g5190786bf
+pkgver=0.9.2.r1703.g8804d2866
 pkgrel=1
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks (git version)"
 arch=('any')
