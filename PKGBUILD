@@ -4,7 +4,7 @@
 # Contributor: ant32 < antreimer at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
 
-_pkgver=3.6.5
+_pkgver=3.5.9
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl-3
@@ -21,7 +21,7 @@ makedepends=('mingw-w64-gcc'
 [[ $pkgname =~ .*-clang-.* ]] && makedepends+=('mingw-w64-compiler-rt')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
-sha256sums=('a2157c2830efdec3788939b00c9b0638306d3f0bbb76dc4832ee503bb397df98'
+sha256sums=('603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a'
             'SKIP')
 validpgpkeys=('B146647E45A7B33947AB226B2A2C87D161692D40')
 
