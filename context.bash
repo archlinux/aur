@@ -10,7 +10,7 @@ _context() {
   command=${COMP_WORDS[1]-}
 
   if (( cword == 1 )); then
-    COMPREPLY=( $(compgen -W 'git stack mcp completions help -h --help' -- "$cur") )
+    COMPREPLY=( $(compgen -W 'git stack mcp agent completions help -h --help' -- "$cur") )
     return
   fi
 
@@ -36,6 +36,17 @@ _context() {
       fi
       return
       ;;
+    agent)
+      if (( cword == 2 )) && [[ $cur != -* ]]; then
+        COMPREPLY=( $(compgen -W 'tools call' -- "$cur") )
+        return
+      fi
+      opts='--json --help -h'
+      if [[ $cur == -* ]]; then
+        COMPREPLY=( $(compgen -W "$opts" -- "$cur") )
+      fi
+      return
+      ;;
     completions)
       if (( cword == 2 )) && [[ $cur != -* ]]; then
         COMPREPLY=( $(compgen -W 'bash fish zsh' -- "$cur") )
@@ -49,7 +60,7 @@ _context() {
       ;;
     help)
       if (( cword == 2 )) && [[ $cur != -* ]]; then
-        COMPREPLY=( $(compgen -W 'git stack mcp completions' -- "$cur") )
+        COMPREPLY=( $(compgen -W 'git stack mcp agent completions' -- "$cur") )
         return
       fi
       opts='--help -h'

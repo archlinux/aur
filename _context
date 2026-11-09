@@ -6,6 +6,7 @@ context_commands=(
   'git:Show branch context for the current repository'
   'stack:Detect the tech stack of a directory for agents'
   'mcp:Run the context MCP server over stdio'
+  'agent:List or run the Code Mode tools the OpenCode plugin registers'
   'completions:Generate shell completions'
   'help:Show context help'
 )
@@ -49,6 +50,14 @@ case $command in
       '{-h,--help}[Show this help message]' \
       '*::arg:->args'
     ;;
+  agent)
+    _arguments -S \
+      '--json[Print JSON (the only format)]' \
+      '{-h,--help}[Show this help message]' \
+      '1:tools to list the tools, or call to run one:(tools call)' \
+      '2:The tool to run, from context agent tools:(git stack)' \
+      '*::arg:->args'
+    ;;
   completions)
     _arguments -S \
       '{-h,--help}[Show this help message]' \
@@ -58,7 +67,7 @@ case $command in
   help)
     _arguments -S \
       '{-h,--help}[Show this help message]' \
-      '1:Optional command to show help for:(git stack mcp completions)' \
+      '1:Optional command to show help for:(git stack mcp agent completions)' \
       '*::arg:->args'
     ;;
 esac
