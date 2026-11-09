@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.14.10.r1
+pkgver=4.14.10.r4
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -12,7 +12,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=97f7fbc6"
+  "git+$url.git#commit=5e039a83"
 )
 sha256sums=(
   'SKIP'
@@ -27,19 +27,16 @@ conflicts=('rog-perf-tuner')
 depends=(
   'asusctl'
   'coreutils'
+  'curl'
   'hicolor-icon-theme'
   'hidapi'
   'konsole'
   'libusb'
   'power-profiles-daemon'
-  'python'
-  'python-yaml'
+  'psmisc'
   'qt6-base'
-  'qt6-charts'
-  'qt6-svg'
-  'qtermwidget'
-  'qtkeychain-qt6'
-  'openssl'
+  'util-linux'
+  'webkit2gtk-4.1'
 )
 makedepends=(
   'base-devel'
@@ -50,7 +47,8 @@ makedepends=(
   'npm'
   'pkgconf'
   'pnpm'
-  'qtcreator'
+  'python'
+  'rust'
   'unzip'
   'zip'
 )
@@ -72,30 +70,21 @@ prepare() {
 }
 
 build() {
-    clean_flags() {
-        echo "$1" \
-        | sed -E 's/(^| )-Wp,-D_FORTIFY_SOURCE=[0-9]+//g' \
-        | sed -E 's/(^| )-D_FORTIFY_SOURCE=[0-9]+//g' \
-        | sed -E 's/(^| )-O[0-9sfast]*//g' \
-        | tr -s ' ' \
-        | sed -E 's/-Wp, */-Wp,/g'
-    }
-
-    CFLAGS=$(clean_flags "$CFLAGS")
-    CXXFLAGS=$(clean_flags "$CXXFLAGS")
-
-    export CFLAGS="${CFLAGS}"
-    export CXXFLAGS="${CXXFLAGS}"
-
     cd "$srcdir/RogPerfTuner"
-    GIT_RELEASE=1 make pkgbuild
+
+    export CARGO_BUILD_JOBS=$(nproc)
+    if [ -z "$GITHUB_ACTIONS" ] && [ -z "$CI" ]; then
+        export RUSTFLAGS="-C target-cpu=native"
+    fi
+
+    GIT_RELEASE=1 make build
 }
 
 package() {
     cd "$srcdir/RogPerfTuner"
 
-    install -Dm755 build/RogPerfTuner/RogPerfTuner "$pkgdir/usr/bin/rog-perf-tuner"
-    
+    install -Dm755 src-tauri/target/release/rog-perf-tuner "$pkgdir/usr/bin/rog-perf-tuner"
+
     install -d "$pkgdir/usr/share/rog-perf-tuner"
     cp -r build/assets/* "$pkgdir/usr/share/rog-perf-tuner/"
     chmod -R 755 "$pkgdir/usr/share/rog-perf-tuner/"
@@ -105,6 +94,6 @@ package() {
 
     install -Dm755 resources/RogPerfTuner.desktop "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
 
-    install -Dm644 dist/completion-bash \
+    install -Dm644 resources/completion-bash \
         "$pkgdir/usr/share/bash-completion/completions/rog-perf-tuner"
 }
