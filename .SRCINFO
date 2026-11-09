@@ -1,6 +1,6 @@
 pkgbase = python-seafobj
 	pkgdesc = Python library for accessing seafile data model
-	pkgver = 13.0.25
+	pkgver = 13.0.29
 	pkgrel = 1
 	url = https://github.com/haiwen/seafobj
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = python-seafobj
 	depends = python-boto3
 	depends = python-pylibmc
 	depends = python-redis
-	source = https://github.com/haiwen/seafobj/archive/v13.0.25-server.tar.gz
+	source = https://github.com/haiwen/seafobj/archive/v13.0.29-server.tar.gz
 	source = pyproject.toml
-	sha256sums = a54513bbd8125af1f0064a31968b15bef384f7d1dc2502bb07a1ee93a508de19
-	sha256sums = 79860824052868ffc5fc48749b0a8db0440adab832cf25e26e98dbd8dedd336f
+	sha256sums = a2919dee8e2500fbad50a6b4b74291a89e734e2b6b07c13205612ea18fcd9e70
+	sha256sums = 9e1975919b4eadf4192b3485126c40e964ccd7499d9cdf15452e07d6984fcda9
 
 pkgname = python-seafobj
