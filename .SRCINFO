@@ -1,6 +1,6 @@
 pkgbase = skwd-wall-v2
 	pkgdesc = Native Skwd wallpaper suite v2 packages
-	pkgver = 1.0.0_beta.27
+	pkgver = 1.0.0_beta.28
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-wall/tree/v2
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = skwd-wall-v2
 	makedepends = wayland-protocols
 	options = !debug
 	options = !lto
-	source = skwd-suite-1.0.0-beta.27.tar.xz::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.27/skwd-suite-1.0.0-beta.27.tar.xz
-	sha256sums = 3337c85f91b2e8b61f1df5d31b9797379b8ac83e3824b17c910317826dfdb70a
+	source = skwd-suite-1.0.0-beta.28.tar.xz::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.28/skwd-suite-1.0.0-beta.28.tar.xz
+	sha256sums = b5acc2b9ad712f30111636f88237a4e0e3c429a9f2332b9e92f65cfb1c3f1016
 
 pkgname = skwd-wall-v2
 	pkgdesc = GPU-rendered graphical client for the Skwd wallpaper suite v2
