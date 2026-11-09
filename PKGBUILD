@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=thesio-bin
-pkgver=0.1.1
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A local-first workspace for academic research and writing"
 arch=('x86_64' 'aarch64')
@@ -31,9 +31,9 @@ source_aarch64=(
     "${_license}"
 )
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('30fcb201d870d86c263a425868d79b26f2723890115a084dc621c64babab785c'
+sha256sums_x86_64=('19e5a0daed91fc64c8bbce673c2c8f1c4c7a5f6faa666e3e6ed48dc771905e5d'
                    '5d875c8c75ce183223bae9d431cbc4869186c25e15ffce08996f47bc15e8209f')
-sha256sums_aarch64=('9cab896fd3b4066b3edb0f5a99f7fa01e0d2aa0452e0aba153f7b84006a63378'
+sha256sums_aarch64=('bb7d8c113cdc362ced675b71224ed66b28bcb8c2f7a7cd7d9d9d80c49975f667'
                     '5d875c8c75ce183223bae9d431cbc4869186c25e15ffce08996f47bc15e8209f')
 
 package() {
