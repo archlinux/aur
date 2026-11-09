@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=uu-remote-bin
-pkgver=0.2.55
+pkgver=0.2.57
 pkgrel=1
 pkgdesc="非官方 UU 远程 Linux 被控端，纯 Rust 实现，可用官方客户端远程控制 Linux 桌面"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source_x86_64=("uu-remote-linux-v${pkgver}-x86_64-linux.tar.gz::https://github.c
 sha256sums=('910d0627d7b1b7edc2408d9def0dacecf92db01e43c094f10f250a22e7efbdc6'
             'ee8a778fe9367f1dffe2482940b70ec627e414dcaa409731560cd37481ed4feb'
             '822b332b88276aba6b91997a17c543e2d77656cbbfbda65dab0b1f827efe8b03')
-sha256sums_x86_64=('9d481374e85f89a92ecef8ef274a0af9e03792c30df7c88ce77dcff3f4092578')
+sha256sums_x86_64=('f8893f63afafd239fcaaa177f64b9469e4d9f77b75357e5847a0726ad4dceeed')
 
 package() {
     local _dir="uu-remote-linux-v${pkgver}-x86_64-linux"
