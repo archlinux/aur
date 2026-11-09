@@ -1,7 +1,7 @@
 # Maintainer: Antoine Büsch <antoine dot busch at gmail dot com>
 
 pkgname=sinuous
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A simple TUI for controlling local Sonos speakers"
 url="https://github.com/abusch/sinuous"
@@ -12,7 +12,7 @@ makedepends=('cargo')
 # The release profile already strips the binary, so the debug package would be empty.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8449334b8dcd1e6e61ab93763b07caa3a7517b6f4d7e984b29910a4cc8248190')
+sha256sums=('b14c188ea5e0e0696ca255d5a7aaca33f282fb69d761ce38e5d5500742945faa')
 
 prepare() {
 	cd "$pkgname-$pkgver"
