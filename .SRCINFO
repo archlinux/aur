@@ -1,6 +1,6 @@
 pkgbase = roast
 	pkgdesc = Adversarial cross-model code review
-	pkgver = 1.4.1
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/bluesky-social/roast
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = roast
 	provides = roast
 	conflicts = roast-git
 	conflicts = roast-bin
-	source = https://github.com/bluesky-social/roast/archive/refs/tags/v1.4.1.zip
-	sha256sums = 234866d0a9ee914a1ad6bd69fe99436140cab9c039ae55beadc490523f942118
+	source = https://github.com/bluesky-social/roast/archive/refs/tags/v1.4.5.zip
+	sha256sums = cbff73674c1da2be267c129d28dfd4c7292cb18af7f25cc645cab3538a4ffa3c
 
 pkgname = roast
