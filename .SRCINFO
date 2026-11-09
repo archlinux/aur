@@ -1,7 +1,7 @@
 pkgbase = ferrumkix-bin
 	pkgdesc = Desktop music player with album-grouped playlists and Audio CD support
 	pkgver = 0.9.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Bitpainter75/FerrumKix
 	arch = x86_64
 	license = GPL-3.0-only
@@ -22,13 +22,13 @@ pkgbase = ferrumkix-bin
 	conflicts = ferrumplay
 	replaces = ferrumplay-bin
 	replaces = ferrumplay
-	noextract = FerrumKix-0.9.10-2-linux-x64.zip
+	noextract = FerrumKix-0.9.10-3-linux-x64.zip
 	options = !strip
-	source = FerrumKix-0.9.10-2-linux-x64.zip::https://github.com/Bitpainter75/FerrumKix/releases/download/latest/FerrumKix-0.9.10-2-linux-x64.zip
+	source = FerrumKix-0.9.10-3-linux-x64.zip::https://github.com/Bitpainter75/FerrumKix/releases/download/latest/FerrumKix-0.9.10-3-linux-x64.zip
 	source = io.github.Bitpainter75.FerrumKix.desktop
 	source = io.github.Bitpainter75.FerrumKix.png
-	sha256sums = b3a08d41e81244874c7dbc6b42736aa58ec2a4ed1a1a3a5848deec3330e51431
+	sha256sums = 7c21932d38194f1dc224877a32e3b8afe74262a5e0b20d73dd0ec88acf97d992
 	sha256sums = 7012e15c2b82d0e0c0446d0f751c95541307bce2205a6604965c8ede1e81cde4
-	sha256sums = c20d42ee7a0540237fc93744c125041f160b5e1235cbadd0ff47989c254f7783
+	sha256sums = 4ed005f86dcfe6221cbb169601161c10e07614b046c334d64c41927bb6c36690
 
 pkgname = ferrumkix-bin
