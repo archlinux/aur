@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A local-first Markdown editor. Write visually or in source, organize your own folders, and bring in AI when it helps. Local editing works without an account or an AI provider."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('e9088c775a980e4dc927a845aae061634d27728b9c8120ae833f579c93521da9')
+sha256sums=('d0518d6939f2b924130e02cfa76b5fbdc2e652e78f4caac33ee953935a3eab15')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
