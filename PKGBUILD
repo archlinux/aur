@@ -2,7 +2,7 @@
 
 _name=smithy-aws-core
 pkgname=python-$_name
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Core Smithy components for AWS services and protocols.'
 arch=('any')
@@ -15,23 +15,26 @@ depends=('python'
          'python-aws-sdk-signers')
 makedepends=('python-hatchling'
              'python-build'
-             'python-installer'
-             'python-wheel'
-             'git')
+             'python-installer')
 checkdepends=('python-pytest'
               'python-pytest-asyncio'
               'python-freezegun'
+              'python-smithy-checksums'
+              'python-smithy-aws-event-stream'
+              'python-smithy-json'
               'python-smithy-xml')
-optdepends=('python-smithy-aws-event-stream: eventstream'
+optdepends=('python-smithy-checksums: checksums'
+
+            'python-smithy-aws-event-stream: eventstream'
 
             'python-smithy-json: json'
 
             'python-smithy-xml: xml')
-source=("$_name::git+$_repo.git#tag=$_name/v$pkgver")
-sha256sums=('9355f1aed64cf1ea03806a76efc1c6c419d6caa2cf3733fa692153fb99e83abe')
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_name/v$pkgver.tar.gz")
+sha256sums=('0cd96c83945a2642899c066e48a803edf26edb76c7b38e63e97f2923153851a7')
 
 build() {
-  cd "$srcdir"/$_name/packages/$_name
+  cd "smithy-python-$_name-v$pkgver/packages/$_name"
   python -m build --wheel --no-isolation
 }
 
@@ -41,11 +44,11 @@ check() {
     --disable-warnings
     --override-ini="addopts="
   )
-  cd "$srcdir"/$_name/packages/$_name
+  cd "smithy-python-$_name-v$pkgver/packages/$_name"
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/$_name/packages/$_name
+  cd "smithy-python-$_name-v$pkgver/packages/$_name"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

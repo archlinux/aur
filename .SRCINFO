@@ -1,6 +1,6 @@
 pkgbase = python-smithy-aws-core
 	pkgdesc = Core Smithy components for AWS services and protocols.
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-aws-core
 	arch = any
@@ -8,20 +8,22 @@ pkgbase = python-smithy-aws-core
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-freezegun
+	checkdepends = python-smithy-checksums
+	checkdepends = python-smithy-aws-event-stream
+	checkdepends = python-smithy-json
 	checkdepends = python-smithy-xml
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = git
 	depends = python
 	depends = python-smithy-core
 	depends = python-smithy-http
 	depends = python-aws-sdk-signers
+	optdepends = python-smithy-checksums: checksums
 	optdepends = python-smithy-aws-event-stream: eventstream
 	optdepends = python-smithy-json: json
 	optdepends = python-smithy-xml: xml
-	source = smithy-aws-core::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-aws-core/v0.12.0
-	sha256sums = 9355f1aed64cf1ea03806a76efc1c6c419d6caa2cf3733fa692153fb99e83abe
+	source = smithy-aws-core-0.13.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-aws-core/v0.13.0.tar.gz
+	sha256sums = 0cd96c83945a2642899c066e48a803edf26edb76c7b38e63e97f2923153851a7
 
 pkgname = python-smithy-aws-core
