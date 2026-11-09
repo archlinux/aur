@@ -10,7 +10,7 @@
 # maintained by Alexis Belmonte. The build logic in this PKGBUILD, the launcher, desktop
 # entry, pacman hook and icon are copied from it, and its patches are taken automatically
 # from its newest release of each Unreal Engine version.
-# Patches in this package: upstream commit dc9aa87 (5.8.2, Alexis Belmonte)
+# Patches in this package: upstream commit d252bf6 (5.8.3, Alexis Belmonte)
 #
 # Per-minor parallel-install variant, published from:
 #   https://github.com/FinleyLaempe/aur-unreal-engine-src
@@ -19,7 +19,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine-src-5.8
 pkgver=5.8.4
-pkgrel=1
+pkgrel=2
 _uetag="${pkgver}-release"
 _ueminor="5.8"
 _ueminor_us="5_8"
