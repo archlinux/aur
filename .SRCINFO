@@ -1,10 +1,12 @@
 pkgbase = ubi_reader
 	pkgdesc = Collection of Python scripts for reading information about and extracting data from UBI and UBIFS images.
-	pkgver = 0.8.14
+	pkgver = 0.8.16
 	pkgrel = 1
 	url = https://github.com/onekey-sec/ubi_reader
 	arch = any
 	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -14,7 +16,7 @@ pkgbase = ubi_reader
 	depends = python-lzallright
 	depends = python-cryptography
 	depends = python-zstandard
-	source = ubi_reader-0.8.14.tar.gz::https://github.com/onekey-sec/ubi_reader/archive/refs/tags/0.8.14.tar.gz
-	b2sums = e84700ac83937850dc4237a2018fbafaa07642f2d540fcb3d36a2eb69fbf5eeb8d9bef3b1132cefa2272b1c47b013980ad3ae3473d6cd3416168aea01d2a52b4
+	source = ubi_reader-0.8.16.tar.gz::https://github.com/onekey-sec/ubi_reader/archive/refs/tags/0.8.16.tar.gz
+	b2sums = ec5b9c8191495955bbc64e1e86136f7f2c5cdb81913c730c81b42b74d43f9ac57e2e935deb749e29a3430f6d272b9aabe1308e10ed64713d18354817ef5cf3e6
 
 pkgname = ubi_reader
