@@ -5,7 +5,7 @@
 # The upstream .deb already bundles a trimmed Java runtime.
 
 pkgname=easypostman-bin
-pkgver=6.2.9
+pkgver=6.3.1
 pkgrel=1
 pkgdesc='An open-source API debugging and stress testing tool inspired by Postman and JMeter'
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=(
   "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'e0c20b5ee9b0f46a1f81c62020cb92190c46b95014d9e19ce389f758baaeb000'
+  '15692066fb68157c06edc89403dfee92b05998f76be2bfa034f143ac450bea2e'
   'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
 )
 
