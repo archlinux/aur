@@ -8,7 +8,7 @@ _gitname='cratty'
 _giturl="https://github.com/auf-gg/${_gitname}"
 
 pkgname=cratty-git
-pkgver=0.1.1.r1.g7e65ae4
+pkgver=0.2.0.r0.gbaac8d1
 pkgrel=1
 pkgdesc='Native GPU-rendered SSH client with an encrypted host vault (git version)'
 arch=('x86_64' 'aarch64')
