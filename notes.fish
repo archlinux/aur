@@ -26,6 +26,7 @@ complete -c notes -n '__fish_use_subcommand' -f -a 'handoff' -d 'Browse handoff-
 complete -c notes -n '__fish_use_subcommand' -f -a 'mcp' -d 'Run the notes MCP server over stdio'
 complete -c notes -n '__fish_use_subcommand' -f -a 'capture' -d 'Process a captured note through local OpenCode'
 complete -c notes -n '__fish_use_subcommand' -f -a 'daemon' -d 'Process captured notes through local OpenCode'
+complete -c notes -n '__fish_use_subcommand' -f -a 'agent' -d 'The Code Mode tools the OpenCode plugin registers'
 complete -c notes -n '__fish_use_subcommand; and not __fish_contains_opt all no-all' -l all -d 'Browse notes from every projects directory'
 complete -c notes -n '__fish_use_subcommand; and not __fish_contains_opt all no-all' -l no-all -d 'Disable all'
 complete -c notes -n '__fish_use_subcommand; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt all no-all' -f -a '--all' -d 'Browse notes from every projects directory'
@@ -189,5 +190,15 @@ complete -c notes -n '__fish_seen_subcommand_from daemon; and not __fish_contain
 complete -c notes -n '__fish_seen_subcommand_from daemon; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt config' -f -a '--config' -d 'Daemon YAML configuration path'
 complete -c notes -n '__fish_seen_subcommand_from daemon; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt once no-once' -f -a '--once' -d 'Process one queue snapshot and exit'
 complete -c notes -n '__fish_seen_subcommand_from daemon; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt once no-once' -f -a '--no-once' -d 'Disable once'
+complete -c notes -n '__fish_seen_subcommand_from agent; and not __fish_seen_subcommand_from tools call' -f
+complete -c notes -n '__fish_seen_subcommand_from agent; and not __fish_seen_subcommand_from tools call' -f -a 'tools' -d 'Print the Code Mode tools as JSON'
+complete -c notes -n '__fish_seen_subcommand_from agent; and not __fish_seen_subcommand_from tools call' -f -a 'call' -d 'Run a Code Mode tool in the current repository, with its input as JSON on stdin, and print its result as JSON'
+complete -c notes -n '__fish_seen_subcommand_from agent; and __fish_seen_subcommand_from tools' -f
+complete -c notes -n '__fish_seen_subcommand_from agent; and __fish_seen_subcommand_from tools; and not __fish_contains_opt json no-json' -l json -d 'Print JSON (the only format)'
+complete -c notes -n '__fish_seen_subcommand_from agent; and __fish_seen_subcommand_from tools; and not __fish_contains_opt json no-json' -l no-json -d 'Disable json'
+complete -c notes -n '__fish_seen_subcommand_from agent; and __fish_seen_subcommand_from tools; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt json no-json' -f -a '--json' -d 'Print JSON (the only format)'
+complete -c notes -n '__fish_seen_subcommand_from agent; and __fish_seen_subcommand_from tools; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt json no-json' -f -a '--no-json' -d 'Disable json'
+complete -c notes -n '__fish_seen_subcommand_from agent; and __fish_seen_subcommand_from call' -f
+complete -c notes -n '__fish_seen_subcommand_from agent; and __fish_seen_subcommand_from call' -r -f -a 'root context list search read targets handoffs write create delete move priority' -d 'The tool to run, from notes agent tools'
 
 ###-end-notes-completions-###

@@ -211,6 +211,10 @@ _notes()
         _notes_daemon "$i"
         return
         ;;
+      agent)
+        _notes_agent "$i"
+        return
+        ;;
     esac
   done
 
@@ -229,7 +233,7 @@ _notes()
     return
   fi
 
-  COMPREPLY=( $(compgen -W 'root context list search read write delete move create targets agents active-count priority open-agent handoffs handoff mcp capture daemon' -- "$cur") )
+  COMPREPLY=( $(compgen -W 'root context list search read write delete move create targets agents active-count priority open-agent handoffs handoff mcp capture daemon agent' -- "$cur") )
 }
 
 _notes_root()
@@ -833,6 +837,93 @@ _notes_daemon()
     return
   fi
 
+}
+
+_notes_agent()
+{
+  local cur prev words cword i
+  local _command_index="$1"
+  _init_completion -n "$COMP_WORDBREAKS" || return
+
+  # Subcommand dispatch
+  local cmd _skip_next=0
+  for ((i = _command_index + 1; i < cword; i++)); do
+    if (( _skip_next )); then
+      _skip_next=0
+      continue
+    fi
+    case "${words[i]}" in
+      tools)
+        _notes_agent_tools "$i"
+        return
+        ;;
+      call)
+        _notes_agent_call "$i"
+        return
+        ;;
+    esac
+  done
+
+  # Complete flags (filtered) and subcommands
+  if [[ "$cur" == -* ]]; then
+    return
+  fi
+
+  COMPREPLY=( $(compgen -W 'tools call' -- "$cur") )
+}
+
+_notes_agent_tools()
+{
+  local cur prev words cword i
+  local _command_index="$1"
+  _init_completion -n "$COMP_WORDBREAKS" || return
+
+  local _used_0=""
+  for ((i = 1; i < cword; i++)); do
+    case "${words[i]%%=*}" in
+      --json|--no-json) _used_0=1 ;;
+    esac
+  done
+  local _filtered_flags=""
+  [[ -n "$_used_0" ]] || _filtered_flags+=" --json --no-json"
+
+  # Complete flags (filtered) and subcommands
+  if [[ "$cur" == -* ]]; then
+    COMPREPLY=( $(compgen -W "$_filtered_flags" -- "$cur") )
+    return
+  fi
+
+}
+
+_notes_agent_call()
+{
+  local cur prev words cword i
+  local _command_index="$1"
+  _init_completion -n "$COMP_WORDBREAKS" || return
+
+  # Positional argument completions
+  local _position=0 _skip_next=0 _end_of_options=0
+  for ((i = _command_index + 1; i < cword; i++)); do
+    if (( _skip_next )); then
+      _skip_next=0
+      continue
+    fi
+    if (( _end_of_options )); then
+      ((_position += 1))
+      continue
+    fi
+    case "${words[i]}" in
+      --) _end_of_options=1 ;;
+      -*) ;;
+      *) ((_position += 1)) ;;
+    esac
+  done
+  case "$_position" in
+    0)
+      _notes--choices "$cur" "$_comp_word" 'root' 'context' 'list' 'search' 'read' 'targets' 'handoffs' 'write' 'create' 'delete' 'move' 'priority'
+      return
+      ;;
+  esac
 }
 
 complete -F _notes notes

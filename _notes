@@ -33,6 +33,7 @@ _notes() {
     'mcp:Run the notes MCP server over stdio'
     'capture:Process a captured note through local OpenCode'
     'daemon:Process captured notes through local OpenCode'
+    'agent:The Code Mode tools the OpenCode plugin registers'
   )
 
   local -a specs
@@ -107,6 +108,9 @@ _notes() {
           ;;
         daemon)
           _notes_daemon
+          ;;
+        agent)
+          _notes_agent
           ;;
       esac
       ;;
@@ -304,6 +308,58 @@ _notes_daemon() {
     '(--config)--config[Daemon YAML configuration path]:file:_files'
     '(--once --no-once)--once[Process one queue snapshot and exit]'
     '(--once --no-once)--no-once[Disable once]'
+  )
+  _arguments "${specs[@]}"
+}
+
+_notes_agent() {
+  local context state state_descr line
+  typeset -A opt_args
+
+  local -a commands
+  commands=(
+    'tools:Print the Code Mode tools as JSON'
+    'call:Run a Code Mode tool in the current repository, with its input as JSON on stdin, and print its result as JSON'
+  )
+
+  local -a specs
+  specs=(
+    '1:command:->command'
+    '*::arg:->args'
+  )
+
+  _arguments -C "${specs[@]}"
+
+  case "$state" in
+    command)
+      _describe -t commands 'commands' commands
+      ;;
+    args)
+      case "$words[1]" in
+        tools)
+          _notes_agent_tools
+          ;;
+        call)
+          _notes_agent_call
+          ;;
+      esac
+      ;;
+  esac
+}
+
+_notes_agent_tools() {
+  local -a specs
+  specs=(
+    '(--json --no-json)--json[Print JSON (the only format)]'
+    '(--json --no-json)--no-json[Disable json]'
+  )
+  _arguments "${specs[@]}"
+}
+
+_notes_agent_call() {
+  local -a specs
+  specs=(
+    ':The tool to run, from notes agent tools:(root context list search read targets handoffs write create delete move priority)'
   )
   _arguments "${specs[@]}"
 }
