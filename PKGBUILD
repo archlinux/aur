@@ -26,7 +26,7 @@ EOF
 #---------------------------------------------------------------------------------------------
 
 pkgname=gentoo-color-bash
-pkgver=2026.11.07          # 10-gentoo-color-r2.bash 2025-05-04 size: 2190
+pkgver=2026.11.09          # 10-gentoo-color-r2.bash 2025-05-04 size: 2190
 #_id=b39e66dce51adbe2ccef98dbd7e321c6c2e6b835
 pkgrel=1
 

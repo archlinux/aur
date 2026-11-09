@@ -6,5 +6,6 @@ function post_install() {
 
 #---------------------------------------------------------------------------------------------
 function post_upgrade() {
-    post_install
+    :
+    #post_install
 }
