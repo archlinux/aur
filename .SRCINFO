@@ -1,6 +1,6 @@
 pkgbase = xerahs-git
 	pkgdesc = Cross-platform screen capture and sharing tool
-	pkgver = 0.33.7.r5167.ge0944494
+	pkgver = 0.33.8.r5179.g4f6b6505
 	pkgrel = 1
 	url = https://github.com/KovaForge/XerahS
 	arch = x86_64
