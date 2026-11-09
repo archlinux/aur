@@ -1,9 +1,9 @@
 # Maintainer: srgooglo <srgooglo@ragestudio.net>
 pkgname=comty-desktop-bin
 
-_electronversion=43
+_electronversion=45
 
-pkgver="0.12.1"
+pkgver="0.13.0"
 pkgrel=1
 pkgdesc="Official Comty Desktop application bin"
 arch=("x86_64")
@@ -14,12 +14,12 @@ depends=("electron$_electronversion")
 source=(
     "comty.sh"
     "comty-desktop.desktop"
-    "https://b2-cdn.ragestudio.net/file/rs-static/comty-desktop/releases/linux/comty-desktop_${pkgver}_amd64.deb"
+    "https://github.com/ragestudio/comty/releases/download/desktop-v${pkgver}/comty-desktop_${pkgver}_amd64.deb"
 )
 sha256sums=(
     "02f24b7cd9558d0d308c3eb5fadb892faffc838162b536a0a713e02cf0c5f363"
     "a47c8763f0a4a354ac724ab9c067508f07495ed543568f99f8a36ba33bd35a5d"
-    "4d9ed3fa11b656fa8977e2500d4e82e384696072700557302afa47dadd14db27"
+    "33bdbcf3831445304c69081997daf121ea7cf77148a406b792b8fca46659d4d9"
 )
 
 prepare() {
