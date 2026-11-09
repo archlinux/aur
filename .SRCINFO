@@ -1,6 +1,6 @@
 pkgbase = donutcleaner-bin
 	pkgdesc = System maintenance and package dependency manager for Linux, GTK4 and Rust (formerly SysClean)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/Smart-Cleaner
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = donutcleaner-bin
 	conflicts = sysclean-bin
 	replaces = sysclean-bin
 	options = !debug
-	source = donutcleaner-0.2.1-x86_64.tar.gz::https://github.com/DonutsDelivery/Smart-Cleaner/releases/download/v0.2.1/donutcleaner-x86_64.tar.gz
-	sha256sums = f9cc1f98cbe04ce82d923d0b6620f199863a1260b25b28dc88bb9d015349985c
+	source = donutcleaner-0.2.2-x86_64.tar.gz::https://github.com/DonutsDelivery/Smart-Cleaner/releases/download/v0.2.2/donutcleaner-x86_64.tar.gz
+	sha256sums = 4b16770ca2bce70181c7d4aa6e0393e703f3ae38d472317392a4f4e61051c3df
 
 pkgname = donutcleaner-bin

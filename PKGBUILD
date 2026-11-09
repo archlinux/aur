@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery <admin@donutsdelivery.online>
 pkgname=donutcleaner-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="System maintenance and package dependency manager for Linux, GTK4 and Rust (formerly SysClean)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('donutcleaner' 'sysclean' 'sysclean-bin')
 conflicts=('donutcleaner' 'sysclean' 'sysclean-bin')
 replaces=('sysclean-bin')
 source=("donutcleaner-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/donutcleaner-x86_64.tar.gz")
-sha256sums=('f9cc1f98cbe04ce82d923d0b6620f199863a1260b25b28dc88bb9d015349985c')
+sha256sums=('4b16770ca2bce70181c7d4aa6e0393e703f3ae38d472317392a4f4e61051c3df')
 
 package() {
     cd "$srcdir/donutcleaner"
