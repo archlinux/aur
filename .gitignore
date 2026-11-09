@@ -1,0 +1,9 @@
+# ignore everything
+/*
+
+# except:
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/LICENSE
+!/mint-enable-theme.patch
