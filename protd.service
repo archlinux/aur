@@ -1,0 +1,13 @@
+[Unit]
+Description=prot development control plane daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/protd -gateway 127.0.0.1:8080 -admin 127.0.0.1:4400
+Restart=always
+RestartSec=2s
+LimitNOFILE=65535
+
+[Install]
+WantedBy=default.target

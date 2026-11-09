@@ -1,0 +1,9 @@
+post_install() {
+  echo ":: protd runs as a systemd user service. Start it now and on every login with:"
+  echo "     systemctl --user enable --now protd"
+}
+
+post_upgrade() {
+  echo ":: Restart the daemon to run the new version:"
+  echo "     systemctl --user restart protd"
+}
