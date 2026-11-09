@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=hookshot-bin
-pkgver=2.0.7
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="Builds a native PC port of Ocarina of Time (Switch 2) from your own copy of the game (upstream AppImage)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('hookshot')
 options=('!strip' '!debug' 'staticlibs')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Hookshot-v${pkgver}-x86_64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('bdcba42a6573bb9afee7ee5b6627ed15dde5933c396abaf22051e32a40b1c585')
+sha256sums=('cced69bf1b9fd4971f2bcad53e0354c48ad4cabcbe9d7ecc74a85a8f35a6e763')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}.AppImage"
