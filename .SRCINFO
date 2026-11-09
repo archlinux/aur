@@ -1,13 +1,18 @@
 pkgbase = dovewarden
 	pkgdesc = a Dovecot replication controller, bringing back replication to Dovecot 2.4+ servers
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dovewarden/dovewarden
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = dovecot
+	backup = etc/conf.d/dovewarden
 	source = dovewarden-0.1.1.tar.gz::https://github.com/dovewarden/dovewarden/archive/refs/tags/0.1.1.tar.gz
+	source = dovewarden.conf.d
+	source = dovewarden.service
 	sha256sums = bc717b5020e4565dda03a20be40044a175ffb91c98a412e1702f5a146f988c64
+	sha256sums = 1bb2c384e7362ed692de7098d2710360761a87962039bf023bd7233c7fa202e8
+	sha256sums = cb57bdf9c4fa8aa3b72a84727cf1ba70017c3c2f61192f0aa959c1c4e0241e4d
 
 pkgname = dovewarden
