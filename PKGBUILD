@@ -1,14 +1,14 @@
 # Maintainer: Adil Bouzit <adil.bouzit@gmail.com>
 pkgname=gog-galaxy-proton
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run GOG Galaxy with GE-Proton, with an update dialog, health check and rollback"
 arch=('any')
 url="https://gitlab.com/S-Zilean/gog-galaxy-proton"
 license=('MIT')
 depends=(
     'bash' 'coreutils' 'curl' 'findutils' 'grep' 'procps-ng' 'python' 'sed' 'tar' 'util-linux'
-    'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'lib32-glibc' 'zenity'
+    'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'lib32-glibc' 'zenity' 'hicolor-icon-theme'
 )
 optdepends=(
     'libnotify: desktop notifications'

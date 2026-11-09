@@ -1,7 +1,7 @@
 pkgbase = gog-galaxy-proton
 	pkgdesc = Run GOG Galaxy with GE-Proton, with an update dialog, health check and rollback
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/S-Zilean/gog-galaxy-proton
 	arch = any
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = gog-galaxy-proton
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-glibc
 	depends = zenity
+	depends = hicolor-icon-theme
 	optdepends = libnotify: desktop notifications
 	optdepends = polkit: create the install folder when its parent needs admin rights
 	optdepends = lib32-gnutls: TLS for the launcher under Wine
