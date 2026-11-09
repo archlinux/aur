@@ -1,0 +1,14 @@
+# Reload udev so a freshly installed/updated/removed USB-forwarding rule takes effect.
+# udev also watches its rules directories, but this covers installs where it is not (yet) running;
+# ignore failures on systems without udev (containers, minimal installs).
+post_install() {
+  udevadm control --reload 2>/dev/null || :
+}
+
+post_upgrade() {
+  udevadm control --reload 2>/dev/null || :
+}
+
+post_remove() {
+  udevadm control --reload 2>/dev/null || :
+}

@@ -1,0 +1,9 @@
+# Build/downloaded artifacts - never commit these to the AUR
+*.tar.gz
+*.pkg.tar.*
+*.log
+/LICENSE.txt
+/src/
+/pkg/
+# Accidental nested copies of this folder
+/nightjar-aur/
