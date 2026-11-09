@@ -1,10 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_pkgname=MaterialCraft
 pkgname=materialcraft
-pkgver=0.6.0
+pkgver=0.3.0
 pkgrel=1
-url="https://github.com/PiJellyPin/$_pkgname"
+url="https://getartcraft.com/apps/$pkgname"
+_url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Substance Designer'
 arch=(x86_64)
 license=(MIT Apache-2.0)
@@ -12,9 +12,9 @@ depends=(glibc # libc.so libm.so
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
-_archive="$_pkgname-$pkgver"
-source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
-sha256sums=('1d9485dfe01d200321c08880cac6953409d461c61adc8b952c501e29f05b2370')
+_archive="$pkgname-$pkgver"
+source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('4a6775625d1933fb34297a8b3c89ff6451e92cea8dc6ee3e1afc021bf106438e')
 
 _srcenv() {
 	cd "$_archive"
@@ -29,9 +29,12 @@ _srcenv() {
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
+
+_icons=(512 256 128 64 48 32 16)
 
 prepare() {
 	_srcenv
@@ -40,13 +43,19 @@ prepare() {
 
 build() {
 	_srcenv
-	cargo build --frozen --release --features gui
+	cargo build --frozen --release
 }
 
 package() {
 	depends+=(libgcc_s.so)
 	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-gui}
-	install -Dm0644 assets/logo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$pkgname.mime.xml"
+	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$pkgname.svg
+	for s in ${_icons[@]}; do
+		local dim="${s}x${s}"
+		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/app-icon/hicolor/$dim/apps/ai.storyteller.$pkgname.png
+	done
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
