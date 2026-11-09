@@ -12,6 +12,6 @@ pkgbase = waka-bin
 	provides = waka
 	conflicts = waka
 	source = waka-0.1.6-x86_64.tar.gz::https://github.com/Shisones/Waka/releases/download/v0.1.6/waka-0.1.6-x86_64.tar.gz
-	sha256sums = 19c67858d9862c8fa13759fe2664035688633da128ac3dfcedadc4aad9bb1011
+	sha256sums = 84e15d0148591a1b156e1ced8ff480eaac33297a20f20cb2ba1f53d71130df0a
 
 pkgname = waka-bin
