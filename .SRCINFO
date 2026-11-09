@@ -1,6 +1,6 @@
 pkgbase = qoder-cn-agent
 	pkgdesc = Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://qoder.cn
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = qoder-cn-agent
 	depends = nodejs
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder-cn=0.5.6
+	provides = qoder-cn=0.5.7
 	conflicts = qoder-cn
 	options = !emptydirs
 	options = !strip
-	source = qoder-cn-0.5.6.rpm::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.6/Qoder-CN-linux-x86_64.rpm
+	source = qoder-cn-0.5.7.rpm::https://qoder-app.oss-cn-beijing.aliyuncs.com/qoder-app/releases/0.5.7/Qoder-CN-linux-x86_64.rpm
 	source = LICENSE.html
 	source = qoder-cn.js
 	source = qoder-cn.sh
-	sha256sums = 6977044e07828511a76d8ef7ab830747fa2e97fff44154219988866d9b2b8e0f
+	sha256sums = 6543c8658232a638532b86030db4630b9d5f6babee220409e4d7ff47322ff9e1
 	sha256sums = 64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = 9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21
