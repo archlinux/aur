@@ -1,6 +1,6 @@
 pkgbase = pipeweaver-app-git
 	pkgdesc = An application wrapper for the Pipeweaver UI
-	pkgver = r456.840024f
+	pkgver = r680.006b045
 	pkgrel = 1
 	url = https://github.com/pipeweaver/pipeweaver
 	arch = x86_64

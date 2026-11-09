@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 _pkgname=pipeweaver
 pkgname=pipeweaver-app-git
-pkgver=r456.840024f
+pkgver=r680.006b045
 pkgrel=1
 pkgdesc="An application wrapper for the Pipeweaver UI"
 arch=('x86_64')
@@ -15,13 +15,23 @@ sha256sums=('SKIP')
 options=('!lto') # build fails with lto enabled
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked
+}
+
 build() {
-  cd "${srcdir}/${_pkgname}"
-  cargo build -p pipeweaver-app --release --locked
+    cd "${srcdir}/${_pkgname}"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build -p pipeweaver-app --release --frozen
 }
 
 package() {
@@ -30,19 +40,9 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -m755 "target/release/pipeweaver-app" "${pkgdir}/usr/bin/pipeweaver-app"
 
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # pipeweaver.svg is part of pipeweaver-git already. so skipping it here.
-  # install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  # install -m644 resources/pipeweaver.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pipeweaver.svg"
-  install -d "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
-  install -m644 app/resources/pipeweaver-icon.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/pipeweaver-icon.png"
-  install -d "${pkgdir}/usr/share/pixmaps"
-  install -m644 app/resources/pipeweaver-icon.png "${pkgdir}/usr/share/pixmaps/pipeweaver-icon.png"
   install -d "${pkgdir}/usr/share/applications"
   install -m644 app/resources/pipeweaver-app.desktop "${pkgdir}/usr/share/applications/pipeweaver-app.desktop"
+
+  # The README and LICENSE are provided by pipeweaver, so we don't need a specific install
 }
 
