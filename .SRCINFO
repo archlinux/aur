@@ -1,6 +1,6 @@
 pkgbase = python-rosettasciio
 	pkgdesc = Rosetta Scientific Input Output library
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = http://hyperspy.org/rosettasciio
 	arch = any
@@ -13,26 +13,26 @@ pkgbase = python-rosettasciio
 	checkdepends = python-pytest-xdist
 	makedepends = python-setuptools
 	depends = python
-	depends = python-dask>=2022.9.2
+	depends = python-dask>=2024.12.0
 	depends = python-dateutil
-	depends = python-h5py>=3.7
-	depends = python-numpy>=1.22.0
+	depends = python-h5py>=3.8.0
+	depends = python-numpy>=1.25.0
 	depends = python-pint>=0.8
 	depends = python-box>7.3.1
 	depends = python-yaml
-	optdepends = python-imageio>=2.16: images
+	optdepends = python-imageio>=2.27: images
 	optdepends = python-matplotlib>=3.6: scalebar in images
 	optdepends = python-matplotlib-scalebar: scalebar in images
-	optdepends = python-numba>=0.56: speed
-	optdepends = python-pillow>=9.0.1: images
-	optdepends = python-scikit-image>=0.20: blockfile
+	optdepends = python-numba>=0.58: speed
+	optdepends = python-pillow>=9.2.0: images
+	optdepends = python-scikit-image>=0.21.0: blockfile
 	optdepends = python-sparse: eds-stream
 	optdepends = python-tifffile>2026.2.24: tiff
 	optdepends = python-imagecodecs: tiff
 	optdepends = python-zarr<3: zspy
 	optdepends = python-msgpack: zspy
 	provides = rsciio
-	source = https://files.pythonhosted.org/packages/source/r/rosettasciio/rosettasciio-0.14.0.tar.gz
-	sha256sums = 4b21582f0d832f086e10236b1798b1c17e327dc6d610e845a8eddd4df817504f
+	source = https://files.pythonhosted.org/packages/source/r/rosettasciio/rosettasciio-0.15.0.tar.gz
+	sha256sums = fcf6e6e3675d766231e6eae59b951d2850e3363fd1c9a23957d8408f2833132f
 
 pkgname = python-rosettasciio
