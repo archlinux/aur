@@ -35,6 +35,7 @@ optdepends=(
   'starship: themed by the wallpaper-driven color pipeline'
   'vesktop: themed by the wallpaper-driven color pipeline'
   'sddm: crux ships a matching SDDM login theme (not installed by this package — see the crux repos SKILL.md/notes.md for the manual system-wide setup)'
+  'greetd: the crux login screen (greeter.qml); see the README'
   'sudo: passwordless DNS-provider switching in the Wifi popup (falls back to a polkit prompt every time without it)'
 )
 provides=('crux-shell')
@@ -61,7 +62,7 @@ package() {
   # Every top-level QML module directory has to be listed here. Missing one
   # doesn't fail the build — it fails at runtime, on the user's machine,
   # with `module "qs.<Name>" is not installed`.
-  cp -r shell.qml Commons Services Modules Widgets Assets bin "$dest/"
+  cp -r shell.qml greeter.qml Commons Services Modules Widgets Assets bin "$dest/"
 
   # bin/ holds a couple of Python/bash helper scripts crux shells out to
   # (matugen post-hooks, wallpaper-picker glue) — keep them executable.
@@ -74,4 +75,9 @@ package() {
   rm -f "$dest/bin/crux-dns"
   install -Dm755 bin/crux-dns "$pkgdir/usr/bin/crux-dns"
   install -Dm440 packaging/crux-dns.sudoers "$pkgdir/etc/sudoers.d/crux-dns"
+
+  # The login screen's greetd and compositor configs. greetd's own /etc/greetd/config.toml is left to the
+  # user (it belongs to the greetd package), and the compositor config is read from here so it updates with crux.
+  install -Dm644 packaging/greetd/config.toml "$pkgdir/usr/share/crux/greetd/config.toml"
+  install -Dm644 packaging/greetd/crux-hyprland.lua "$pkgdir/usr/share/crux/greetd/crux-hyprland.lua"
 }
