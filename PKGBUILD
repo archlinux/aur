@@ -2,7 +2,7 @@
 
 pkgname=gramtty-bin
 _pkgname=gramtty
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A terminal Telegram client (prebuilt binary, TDLib linked statically)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/methamphetaminelab/gramtty'
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++')
 optdepends=(
-  'mpv: playing video, video notes and voice messages'
+  'mpv: libmpv for playback inside the viewer, and the separate player (x)'
   'ffmpeg: video and sticker previews, upload thumbnails, voice encoding'
   'pipewire-audio: pw-record for voice messages, pw-play for notification sound'
   'opus-tools: opusenc for voice messages (alternative to ffmpeg)'
@@ -24,7 +24,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("https://github.com/methamphetaminelab/gramtty/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('96429b71929bbd5a456b48b796d1b5206d9bf2f4f057a61ff3e8e66533e9e026')
+sha256sums=('c0afb5fca220e8acd148ea1d3dfb17a4170360dd5920ba60924ac95f4b45625d')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64-linux"
