@@ -1,18 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=7.6.2
-_electronversion=41
+pkgver=8.1.0
 _nodeversion=24
 pkgrel=1
-pkgdesc="An open source Electron video player to learn Chinese,Cantonese,and Japanese.It can play all Youtube and HTML 5 supported format videos,and lots of supports on other subtitle formats.(Use system-wide electron)"
+pkgdesc="Free video player for learning Japanese, Mandarin, Cantonese and Vietnamese from what you watch. Click any subtitle word for its reading and offline dictionary meaning. Plays local files and YouTube, with dual subtitles, karaoke lyrics and Anki export."
 arch=('any')
 url="https://miteiru.hocky.id/"
 _ghurl="https://github.com/hockyy/miteiru"
 license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+	'gtk3'
+	'gdk-pixbuf2'
+	'webkit2gtk-4.1'
+	'libayatana-indicator'
+	'libappindicator'
 )
 makedepends=(
     'npm'
@@ -28,19 +31,18 @@ optdepends=(
     'yt-dlp'
     'mecab'
 )
-source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "${pkgname}.js"
-    "${pkgname}.sh"
-)
-sha256sums=('e6edd7782554a5ebf8fc7628f78b518dac990e7b0e3ca49c02076c55edc7addc'
-            '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('47e110926606635d00de746fcdcdcab8eda313e13abd41d76ab6975fc14371ed')
 _get_project_dir() {
-	local d
-	while IFS= read -r d; do
-		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
-	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+	find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
+		while read -r tauri_dir; do
+			[ -f "${tauri_dir}/Cargo.toml" ] || continue
+			local dir="${tauri_dir}"
+			until [ -f "${dir}/package.json" ] || [ "$dir" = "${srcdir}" ] || [ "$dir" = "/" ]; do
+				dir="$(dirname "$dir")"
+			done
+			[ -f "${dir}/package.json" ] && { echo "$dir"; return; }
+		done
 }
 _ensure_local_nvm() {
 	local NVM_DIR="${srcdir}/.nvm"
@@ -49,23 +51,9 @@ _ensure_local_nvm() {
 	nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
-		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
-}
-_get_electron_version() {
-	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
-		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
-		| grep -oE '[0-9]+' | head -1)
-	[[ -z "${_elec_ver}" ]] && return 1
-	(( _elec_ver == _electronversion )) && c=32 || c=31
-	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
+	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
 }
 _set_npm_build_env() {
-	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export ELECTRON_BUILDER_OFFLINE=true
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -77,13 +65,19 @@ _set_npm_build_env() {
 	export npm_config_registry="${NPM_CONFIG_REGISTRY:-${npm_config_registry:-https://registry.npmjs.org}}"
 	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
+_set_rust_build_env() {
+	export HOME="${srcdir}/.home"
+	export CARGO_HOME="${HOME}/.cargo"
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export CARGO_NET_RETRY=5
+	export CARGO_HTTP_MULTIPLEXING=false
+	export CARGO_INCREMENTAL=0
+	export CARGO_TERM_COLOR=never
+	export CARGO_PROFILE_RELEASE_STRIP=symbols
+	mkdir -p "${HOME}" "${CARGO_HOME}"
+}
 prepare() {
     cd "$(_get_project_dir)"
-    _get_electron_version
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname}/g
-    " "${srcdir}/${pkgname}.sh" "${srcdir}/${pkgname}.js"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -92,32 +86,27 @@ prepare() {
         --exec="${pkgname} %U"
     _ensure_local_nvm
     _set_npm_build_env
-    icotool -i 1 -x resources/icon.ico -o resources/icon.png
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
-    jq '.linux.icon = "resources/icon.png" | .linux.target = ["dir"] | .electronDist = "/usr/lib/electron'"${_electronversion}"'"' buildConfig/linux26.config.json > buildConfig/linux26.config.json.tmp
-    mv buildConfig/linux26.config.json.tmp buildConfig/linux26.config.json
-    sed -i 's/"moduleResolution": "bundler"/"moduleResolution": "node"/' renderer/tsconfig.json
+    _set_rust_build_env
+    jq '.bundle.active = false' src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
+    rustup update stable
+    rustup default stable
     export NODE_ENV=development
     npm install
-    jq '.exports["."] = {"types": "./dist/index.d.ts", "import": "./dist/index.module.js", "require": "./dist/index.js", "default": "./dist/index.module.js"}' node_modules/react-colorful/package.json > node_modules/react-colorful/package.json.tmp && mv node_modules/react-colorful/package.json.tmp node_modules/react-colorful/package.json
 }
 build() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
     _set_npm_build_env
+    _set_rust_build_env
     export NODE_ENV=production
-    npm run build:linux26
-    local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
-	find "$(_get_app_dir)" -type d \
-		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
-		-prune -exec rm -rf {} +
-    rm -rf "$(_get_app_dir)/resources/default_app.asar"
+    npm run tauri:build
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.js" -t "${pkgdir}/usr/lib/${pkgname}"
-	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname}/"
-    install -Dm644 "$(_get_project_dir)/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "$(_get_project_dir)/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "$(_get_project_dir)/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "$(_get_app_dir)/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 -d "${pkgdir}/usr/lib/${_pkgname}"
+    cp -a "$(_get_app_dir)/"{libmpv,live-captions,language-packs.json} "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm644 "$(_get_project_dir)/resources/icon.png" \
+			"${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
+	install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -Dm644 "$(_get_project_dir)/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
