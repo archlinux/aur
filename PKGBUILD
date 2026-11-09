@@ -5,7 +5,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=netron-bin
 _pkgname=Netron
-pkgver=9.3.4
+pkgver=9.3.5
 _electronversion=45
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models."
@@ -27,7 +27,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_x86_64=('9d8edc87fc05542fce7b5fd2689e91403e49440b1578cc522e34212723d1f90e')
+sha256sums_x86_64=('b86e1228158983483ef835fe5552994a03c5b5ef42a04f2d32154191058673aa')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
