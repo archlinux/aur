@@ -1,0 +1,40 @@
+post_install() {
+    # Ubuntu 23.10+ 默认限制非特权 user namespace，bubblewrap 需要 AppArmor
+    # profile 才能创建沙箱。只在系统确实开启限制且尚无同名 profile 时安装，
+    # 不改全局 sysctl。
+    local src=/usr/share/appclone/bwrap.apparmor
+    local dst=/etc/apparmor.d/bwrap
+
+    if [[ -r "${src}" && ! -e "${dst}" ]]; then
+        local restrict
+        restrict=$(cat /proc/sys/kernel/apparmor_restrict_unprivileged_userns 2>/dev/null || echo 0)
+        if [[ "${restrict}" == 1 ]]; then
+            local tmp=/etc/apparmor.d/.appclone-bwrap.new
+            if cp "${src}" "${tmp}" 2>/dev/null && chmod 0644 "${tmp}" 2>/dev/null; then
+                if mv -f "${tmp}" "${dst}" 2>/dev/null; then
+                    local parser
+                    parser=$(command -v apparmor_parser 2>/dev/null || true)
+                    [[ -z "${parser}" && -x /usr/sbin/apparmor_parser ]] && parser=/usr/sbin/apparmor_parser
+                    if [[ -n "${parser}" ]]; then
+                        "${parser}" -r "${dst}" >/dev/null 2>&1 || rm -f "${dst}" 2>/dev/null || true
+                    fi
+                fi
+            fi
+            rm -f "${tmp}" 2>/dev/null || true
+        fi
+    fi
+
+    command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database -q >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # 只清理由本包写入且没有被其他包拥有的 profile，避免误删系统/其他包的规则。
+    local dst=/etc/apparmor.d/bwrap
+    if [[ -e "${dst}" ]] && ! pacman -Qo "${dst}" >/dev/null 2>&1; then
+        rm -f "${dst}" 2>/dev/null || true
+    fi
+}

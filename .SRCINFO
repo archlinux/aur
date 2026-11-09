@@ -1,0 +1,24 @@
+pkgbase = appclone-bin
+	pkgdesc = 为任意 Linux 应用再开一个分身，只隔离它自己的数据（预编译版本）
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mensylisir/appclone
+	install = appclone-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = bubblewrap
+	depends = desktop-file-utils
+	depends = glib2
+	optdepends = apparmor: 在限制非特权 userns 的系统上放行 bubblewrap
+	provides = appclone=1.0.0
+	conflicts = appclone
+	options = !strip
+	source_x86_64 = appclone_1.0.0_linux_amd64.tar.gz::https://github.com/mensylisir/appclone/releases/download/v1.0.0/appclone_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 715be28820eaf56b4451e03d910135d1c0c3d7096e28e240cc3ffc18085eb5ec
+	source_aarch64 = appclone_1.0.0_linux_arm64.tar.gz::https://github.com/mensylisir/appclone/releases/download/v1.0.0/appclone_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = dc9fe5037e42b36ba840b8d8e37e9e07427d820d3d3a378901b06f96cb8d5953
+
+pkgname = appclone-bin
