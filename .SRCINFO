@@ -1,0 +1,22 @@
+pkgbase = qudelix-cli-bin
+	pkgdesc = A native macOS menu bar app for configuring the Qudelix 5K DAC/amp, over USB or Bluetooth.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/FrankieMa77/qudelix
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = dbus
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = qudelix
+	conflicts = qudelix
+	options = !strip
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/FrankieMa77/qudelix/refs/heads/main/LICENSE
+	sha256sums = bf471dedf60354a5ab065b9446dcdf99a047327e841a3ceca5182ef0f4cb4216
+	source_x86_64 = qudelix-cli_1.6.0_amd64.deb::https://github.com/FrankieMa77/qudelix/releases/download/v1.6.0/qudelix_1.6.0_amd64.deb
+	sha256sums_x86_64 = aef39778fffc26dd37a24c7c207c9b483f9c70a5a0b45e6d1e97b26e764510e2
+
+pkgname = qudelix-cli-bin
