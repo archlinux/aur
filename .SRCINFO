@@ -1,0 +1,32 @@
+pkgbase = stuff-bin
+	pkgdesc = lightweight file manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hyperpuncher/stuff
+	arch = x86_64
+	arch = aarch64
+	license = MIT AND Zlib AND ISC
+	depends = dbus
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sdl3
+	depends = sdl3_image
+	depends = sdl3_ttf
+	depends = systemd-libs
+	depends = ttf-font
+	depends = udisks2
+	depends = wayland
+	depends = xdg-utils
+	optdepends = polkit-agent: authentication prompts for protected storage operations
+	optdepends = xdg-desktop-portal: application chooser and desktop font settings
+	provides = stuff=0.1.0
+	conflicts = stuff
+	options = !strip
+	options = !debug
+	source_x86_64 = stuff-bin-0.1.0-linux-x64.tar.zst::https://github.com/hyperpuncher/stuff/releases/download/v0.1.0/stuff-linux-x64.tar.zst
+	sha256sums_x86_64 = fa822f2f219ed48b906bf3e98fd4c85283272833a1ef95a50ad5a5e59493ceb9
+	source_aarch64 = stuff-bin-0.1.0-linux-arm64.tar.zst::https://github.com/hyperpuncher/stuff/releases/download/v0.1.0/stuff-linux-arm64.tar.zst
+	sha256sums_aarch64 = b2a466ccc9d68fc8dd561efcc75df05f863b645be7644d0052441ebb22ce5126
+
+pkgname = stuff-bin
