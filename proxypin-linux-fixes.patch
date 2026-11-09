@@ -1,0 +1,551 @@
+diff --git a/lib/ui/desktop/ssl/cert_installer.dart b/lib/ui/desktop/ssl/cert_installer.dart
+index 2264fb4..681f833 100644
+--- a/lib/ui/desktop/ssl/cert_installer.dart
++++ b/lib/ui/desktop/ssl/cert_installer.dart
+@@ -32,15 +32,7 @@ class CertInstaller {
+       }
+ 
+       if (Platform.isLinux) {
+-        // Linux: 拷贝到 /usr/local/share/ca-certificates/ 并更新证书
+-        final certName = certFile.uri.pathSegments.last.endsWith('.crt')
+-            ? certFile.uri.pathSegments.last
+-            : '${certFile.uri.pathSegments.last}.crt';
+-        final destPath = '/usr/local/share/ca-certificates/$certName';
+-        await certFile.copy(destPath);
+-        final result = await Process.run('update-ca-certificates', []);
+-        logger.d('update-ca-certificates result: \\${result.stdout} \\${result.stderr}');
+-        return result.exitCode == 0;
++        return await installLinuxCertificate(certFile);
+       }
+ 
+       // 其他平台暂不支持
+@@ -51,6 +43,110 @@ class CertInstaller {
+     }
+   }
+ 
++  /// 安装到系统库时使用的固定文件名，避免和用户其它 ca.crt 撞名
++  static const String _anchorFileName = 'proxypin-ca.crt';
++  static const String _debianAnchorDir = '/usr/local/share/ca-certificates';
++  static const String _p11kitAnchorDir = '/etc/ca-certificates/trust-source/anchors';
++
++  static String _certFileName(File certFile) {
++    final name = certFile.uri.pathSegments.last;
++    return name.endsWith('.crt') ? name : '$name.crt';
++  }
++
++  /// Linux 没有统一的根证书库：
++  ///  - Debian/Ubuntu: 拷贝到 /usr/local/share/ca-certificates 后 update-ca-certificates
++  ///  - Arch/Fedora:   拷贝到 p11-kit 的 trust anchor 后 trust extract-compat
++  /// 两种情况都要 root 权限，所以用 pkexec 触发 polkit 图形提权（只弹一次密码框）。
++  static Future<bool> installLinuxCertificate(File certFile) async {
++    String? anchorDir;
++    List<String> refresh;
++    if (File('/usr/bin/update-ca-certificates').existsSync()) {
++      anchorDir = _debianAnchorDir;
++      refresh = ['update-ca-certificates'];
++    } else if (File('/usr/bin/trust').existsSync()) {
++      anchorDir = _p11kitAnchorDir;
++      refresh = ['trust', 'extract-compat'];
++    } else {
++      logger.w('No supported CA store found, please install ca-certificates-utils / ca-certificates');
++      return false;
++    }
++
++    if (!Directory(anchorDir).existsSync()) {
++      logger.w('CA anchor directory $anchorDir does not exist');
++      return false;
++    }
++
++    final target = '$anchorDir/$_anchorFileName';
++    final uid = (await Process.run('id', ['-u'])).stdout.toString().trim();
++    bool success;
++
++    if (uid == '0') {
++      // 已经以 root 运行（例如自己 sudo 启动），直接装
++      await certFile.copy(target);
++      final result = await Process.run(refresh.first, refresh.sublist(1));
++      logger.d('${refresh.first} result: ${result.stdout} ${result.stderr}');
++      success = result.exitCode == 0;
++    } else {
++      // 一条 shell 里完成“拷贝 + 刷新”，避免弹两次密码框
++      final refreshCommand = refresh.map((e) => "'$e'").join(' ');
++      final script = 'install -Dm644 "\$1" "\$2" && $refreshCommand';
++      try {
++        final result = await Process.run('pkexec', ['sh', '-c', script, 'sh', certFile.path, target]);
++        logger.d('pkexec install certificate (${result.exitCode}): ${result.stdout} ${result.stderr}');
++        success = result.exitCode == 0;
++        if (!success && (result.exitCode == 126 || result.exitCode == 127)) {
++          logger.w('pkexec authorization failed (no polkit agent?), fall back to manual install');
++        }
++      } on ProcessException catch (e) {
++        logger.e('pkexec not available: $e');
++        success = false;
++      }
++    }
++
++    if (success) {
++      await installToNssDatabase(certFile);
++    }
++    return success;
++  }
++
++  /// Chrome/Chromium 在 Linux 上读的是 NSS 用户库（~/.pki/nssdb）而不是系统根证书库，
++  /// 顺手装一份（这是用户级操作，不需要提权）。
++  static Future<void> installToNssDatabase(File certFile) async {
++    try {
++      final home = Platform.environment['HOME'];
++      if (home == null || !Directory('$home/.pki/nssdb').existsSync()) {
++        return;
++      }
++
++      final result = await Process.run('certutil', [
++        '-d',
++        'sql:$home/.pki/nssdb',
++        '-A',
++        '-t',
++        'C,,',
++        '-n',
++        'ProxyPin CA',
++        '-i',
++        certFile.path,
++      ]);
++      logger.d('certutil -A result: ${result.stdout} ${result.stderr}');
++    } catch (e) {
++      logger.w('Install certificate to NSS database skipped: $e');
++    }
++  }
++
++  static bool _isLinuxCertInstalled(File certFile) {
++    final legacyName = _certFileName(certFile);
++    final names = {_anchorFileName, legacyName};
++    const dirs = [
++      _p11kitAnchorDir,
++      '/etc/pki/trust/anchors', // openSUSE
++      _debianAnchorDir,
++      '/etc/ssl/certs',
++    ];
++    return dirs.any((dir) => names.any((name) => File('$dir/$name').existsSync()));
++  }
++
+   /// 检查证书是否已安装
+   static Future<bool> isCertInstalled(File filePath, X509CertificateData caCert) async {
+     String commonName = caCert.subject['2.5.4.3'] ?? 'ProxyPin CA';
+@@ -76,19 +172,7 @@ class CertInstaller {
+         }
+         return false;
+       } else if (Platform.isLinux) {
+-        // 只检查 /usr/local/share/ca-certificates/ 下是否有对应证书文件
+-        final certName = filePath.uri.pathSegments.last.endsWith('.crt')
+-            ? filePath.uri.pathSegments.last
+-            : '${filePath.uri.pathSegments.last}.crt';
+-
+-        var paths = [
+-          '/usr/local/share/ca-certificates/$certName',
+-          '/etc/ssl/certs/$certName',
+-        ];
+-        for (var p in paths) {
+-          if (await File(p).exists()) return true;
+-        }
+-        return false;
++        return _isLinuxCertInstalled(filePath);
+       }
+     } catch (_) {}
+     return false;
+diff --git a/lib/ui/desktop/ssl/pc_cert.dart b/lib/ui/desktop/ssl/pc_cert.dart
+index 256241a..2ca8f8a 100644
+--- a/lib/ui/desktop/ssl/pc_cert.dart
++++ b/lib/ui/desktop/ssl/pc_cert.dart
+@@ -171,26 +171,37 @@ class _PCCertState extends State<PCCert> with TickerProviderStateMixin {
+     final isCN = Localizations.localeOf(context) == const Locale.fromSubtags(languageCode: 'zh');
+ 
+     return [
+-      Text(isCN
+-          ? "安装证书到本系统，以Ubuntu为例 下载证书：\n"
+-              "先把证书复制到 /usr/local/share/ca-certificates/，然后执行 update-ca-certificates 即可。\n"
+-              "其他系统请网上搜索安装根证书"
+-          : "Install the certificate to this system), take Ubuntu as an example to download the certificate:\n"
+-              "First copy the certificate to /usr/local/share/ca-certificates/, and then execute update-ca-certificates.\n"
+-              "For other systems, please search online for installing root certificates."),
+-      const SizedBox(height: 5),
+       Text(
+           isCN
+-              ? "提示：FireFox有自己的信任证书库，所以要手动在设置中导入需要导入的证书。"
+-              : "Note: FireFox has its own trusted certificate library, so you need to manually import the required certificates in the settings.",
+-          style: TextStyle(fontSize: 12)),
+-      const SizedBox(height: 10),
++              ? "「自动」标签页会通过 pkexec 弹出系统授权框，把证书装进系统根证书库（需要 polkit 授权代理，KDE/GNOME 默认自带）。\n"
++                  "如果自动安装不可用，请按下面的发行版命令手动安装。"
++              : "The \"Automatic\" tab installs the certificate into the system trust store via pkexec\n"
++                  "(requires a polkit authentication agent, shipped by default with KDE/GNOME).\n"
++                  "If that is unavailable, run the commands for your distribution below.",
++          style: const TextStyle(fontSize: 13)),
++      const SizedBox(height: 12),
++      Text(isCN ? "Arch / Fedora / openSUSE" : "Arch / Fedora / openSUSE",
++          style: const TextStyle(fontWeight: FontWeight.w600)),
++      const SelectableText.rich(
++          textAlign: TextAlign.justify,
++          TextSpan(style: TextStyle(color: Color(0xff6a8759)), children: [
++            TextSpan(text: "  sudo cp ProxyPinCA.crt /etc/ca-certificates/trust-source/anchors/ \n"),
++            TextSpan(text: "  sudo trust extract-compat")
++          ])),
++      const SizedBox(height: 12),
++      Text(isCN ? "Debian / Ubuntu" : "Debian / Ubuntu", style: const TextStyle(fontWeight: FontWeight.w600)),
+       const SelectableText.rich(
+           textAlign: TextAlign.justify,
+           TextSpan(style: TextStyle(color: Color(0xff6a8759)), children: [
+             TextSpan(text: "  sudo cp ProxyPinCA.crt /usr/local/share/ca-certificates/ \n"),
+             TextSpan(text: "  sudo update-ca-certificates")
+           ])),
++      const SizedBox(height: 12),
++      Text(
++          isCN
++              ? "提示：Firefox 使用自己的证书库，需要在设置里手动导入；Chrome/Chromium 使用 NSS 用户库（~/.pki/nssdb），自动安装时会一并导入。"
++              : "Note: Firefox keeps its own store, import the certificate manually. Chrome/Chromium use the NSS user database (~/.pki/nssdb), which the automatic install also updates.",
++          style: const TextStyle(fontSize: 12)),
+       const SizedBox(height: 10)
+     ];
+   }
+diff --git a/lib/ui/launch/launch.dart b/lib/ui/launch/launch.dart
+index 7c1b72b..52ce281 100644
+--- a/lib/ui/launch/launch.dart
++++ b/lib/ui/launch/launch.dart
+@@ -13,6 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
++import 'dart:async';
+ import 'dart:io';
+ import 'dart:ui';
+ 
+@@ -65,6 +66,9 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+   AppLocalizations get localizations => AppLocalizations.of(context)!;
+   bool started = false;
+ 
++  /// 防止重复退出（onWindowClose / 托盘退出 / didRequestAppExit 可能同时触发）
++  bool _exiting = false;
++
+   @override
+   void initState() {
+     super.initState();
+@@ -75,6 +79,7 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+     }
+ 
+     WidgetsBinding.instance.addObserver(this);
++
+     //启动代理服务器
+     if (widget.startup) {
+       start();
+@@ -108,27 +113,32 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+ 
+   Future<void> _handleWindowClose() async {
+     final appConfiguration = AppConfiguration.current;
+-    if (Platforms.isDesktop() && appConfiguration?.minimizeToTray == null || appConfiguration?.minimizeToTray == true) {
+-      if (appConfiguration?.minimizeToTray == null) {
+-        final minimize = await _showTrayClosePrompt();
++    final desktop = Platforms.isDesktop();
++    final minimizeToTray = appConfiguration?.minimizeToTray;
++
++    // 只有“桌面端 + 用户确实选了最小化到托盘”才隐藏窗口。
++    if (desktop && (minimizeToTray == null || minimizeToTray)) {
++      var minimize = minimizeToTray;
++      if (minimize == null) {
++        minimize = await _showTrayClosePrompt();
+         if (!mounted) {
+           return;
+         }
+ 
+         appConfiguration?.minimizeToTray = minimize;
+         await appConfiguration?.flushConfig();
+-
+-        if (!minimize) {
+-          await appExit();
+-          return;
+-        }
+       }
+ 
+-      try {
+-        await DesktopTrayManager.instance.showToTray();
+-        return;
+-      } catch (e) {
+-        logger.e('show to tray failed, fallback to exit', error: e);
++      if (minimize) {
++        try {
++          // 托盘初始化失败时不要把窗口藏起来，否则 Linux 上会变成“点了关闭没反应、也没法退出”。
++          if (await DesktopTrayManager.instance.showToTray()) {
++            return;
++          }
++          logger.w('tray unavailable, exit on window close instead');
++        } catch (e) {
++          logger.e('show to tray failed, fallback to exit', error: e);
++        }
+       }
+     }
+ 
+@@ -160,13 +170,36 @@ class _SocketLaunchState extends State<SocketLaunch> with WindowListener, Widget
+   }
+ 
+   Future<void> appExit() async {
++    if (_exiting) {
++      return;
++    }
++    _exiting = true;
+     logger.d("appExit");
+-    await widget.proxyServer.stop();
++
++    // 停止代理可能因为还有活跃连接而卡住；加超时保证“退出”一定能退。
++    try {
++      await widget.proxyServer.stop().timeout(const Duration(seconds: 3));
++    } catch (e) {
++      logger.w('stop proxy server failed or timed out, force exit: $e');
++    }
++
+     started = false;
+     if (Platforms.isDesktop()) {
+-      await DesktopTrayManager.instance.exitApp();
+-      windowManager.setPreventClose(false);
+-      await windowManager.destroy();
++      try {
++        await DesktopTrayManager.instance.exitApp();
++      } catch (e) {
++        logger.w('tray cleanup failed during exit: $e');
++      }
++
++      // 注意：不要 await windowManager.destroy()。GTK 下（KDE Wayland 等组合）
++      // 关闭窗口后这个 Future 可能永远不返回，进程就变成“窗口没了但退不掉”，
++      // 只能靠 pkill。这里让它自生自灭，直接退出进程。
++      try {
++        unawaited(windowManager.setPreventClose(false));
++        unawaited(windowManager.destroy());
++      } catch (e) {
++        logger.w('window destroy failed during exit: $e');
++      }
+     }
+ 
+     if (!Platform.isWindows && !Platform.isLinux) {
+diff --git a/lib/utils/desktop_tray.dart b/lib/utils/desktop_tray.dart
+index c5990aa..e027ca5 100644
+--- a/lib/utils/desktop_tray.dart
++++ b/lib/utils/desktop_tray.dart
+@@ -1,7 +1,9 @@
+ import 'dart:async';
+ import 'dart:io';
+ 
++import 'package:flutter/services.dart';
+ import 'package:menu_base/menu_base.dart';
++import 'package:proxypin/network/util/logger.dart';
+ import 'package:tray_manager/tray_manager.dart';
+ import 'package:window_manager/window_manager.dart';
+ 
+@@ -11,43 +13,98 @@ class DesktopTrayManager with TrayListener {
+   DesktopTrayManager._();
+ 
+   bool _initialized = false;
++  bool _available = false;
+   Future<void> Function()? _quitHandler;
+ 
+   void setQuitHandler(Future<void> Function()? handler) {
+     _quitHandler = handler;
+   }
+ 
++  /// 托盘是否真的可用；不可用时“关闭时最小化到托盘”会把窗口藏起来却找不回来。
++  bool get isAvailable => _available;
++
+   String _text(String zh, String en) => Platform.localeName.startsWith('zh') ? zh : en;
+ 
+-  Future<void> ensureInitialized() async {
++  /// tray_manager 会把相对路径拼成 `<exe>/data/flutter_assets/<asset>`，Linux 的
++  /// AppIndicator 又只认真实图片文件；上游用的 .ico 在部分面板/主题下不渲染，
++  /// 这里统一改成 PNG，并在文件缺失时判定托盘不可用。
++  String? _resolveIconPath() {
++    if (!Platform.isLinux) {
++      return 'assets/icon.ico';
++    }
++
++    const iconAsset = 'assets/icon.png';
++    final exeDir = File(Platform.resolvedExecutable).parent.path;
++    final bundled = File('$exeDir/data/flutter_assets/$iconAsset');
++    if (!bundled.existsSync()) {
++      logger.w('tray icon ${bundled.path} not found, tray unavailable on Linux');
++      return null;
++    }
++    return iconAsset;
++  }
++
++  Future<bool> ensureInitialized() async {
+     if (_initialized) {
+-      return;
++      return _available;
+     }
+ 
+     _initialized = true;
+-    trayManager.addListener(this);
+-    await trayManager.setIcon('assets/icon.ico');
+-    await trayManager.setToolTip('ProxyPin');
+-    await trayManager.setContextMenu(
+-      Menu(
+-        items: [
+-          MenuItem(
+-            key: 'show_window',
+-            label: _text('显示窗口', 'Show window'),
+-          ),
+-          MenuItem.separator(),
+-          MenuItem(
+-            key: 'quit_app',
+-            label: _text('退出', 'Quit'),
+-          ),
+-        ],
+-      ),
+-    );
++    final iconPath = _resolveIconPath();
++    if (iconPath == null) {
++      return _available = false;
++    }
++
++    try {
++      trayManager.addListener(this);
++      await trayManager.setIcon(iconPath);
++      // tray_manager 的 Linux 实现没有 setToolTip，直接调用会抛 MissingPluginException，
++      // 进而让整个托盘初始化失败（结果就是“最小化到托盘”永远无效）。
++      try {
++        await trayManager.setToolTip('ProxyPin');
++      } on MissingPluginException {
++        // 该平台不支持 tooltip，忽略
++      }
++      await trayManager.setContextMenu(
++        Menu(
++          items: [
++            MenuItem(
++              key: 'show_window',
++              label: _text('显示窗口', 'Show window'),
++            ),
++            MenuItem.separator(),
++            MenuItem(
++              key: 'quit_app',
++              label: _text('退出', 'Quit'),
++            ),
++          ],
++        ),
++      );
++      _available = true;
++    } catch (e) {
++      logger.e('tray init failed, fall back to window close = exit', error: e);
++      _available = false;
++    }
++    return _available;
+   }
+ 
+-  Future<void> showToTray() async {
+-    await ensureInitialized();
+-    await windowManager.hide();
++  /// 最小化到托盘；托盘不可用（或窗口没真的藏起来）时返回 false，
++  /// 调用方应改为直接退出，避免出现“窗口关不掉也找不回来”的状态。
++  Future<bool> showToTray() async {
++    if (!await ensureInitialized()) {
++      return false;
++    }
++
++    // hide() 是通过 platform channel 调 GTK 的，在 delete-event 回调里可能不会立刻
++    // 生效，所以隔一小段时间再确认一次，确认失败也不要卡住用户。
++    for (var attempt = 0; attempt < 2; attempt++) {
++      await windowManager.hide();
++      await Future.delayed(Duration(milliseconds: 150 + attempt * 250));
++      if (!await windowManager.isVisible()) {
++        return true;
++      }
++      logger.w('window still visible after hide() attempt ${attempt + 1}');
++    }
++    return false;
+   }
+ 
+   Future<void> restoreWindow() async {
+diff --git a/linux/CMakeLists.txt b/linux/CMakeLists.txt
+index 1739998..8cd685c 100644
+--- a/linux/CMakeLists.txt
++++ b/linux/CMakeLists.txt
+@@ -13,6 +13,11 @@ set(APPLICATION_ID "com.network.proxy")
+ # versions of CMake.
+ cmake_policy(SET CMP0063 NEW)
+ 
++# Newer libayatana-appindicator (Arch / clang 19+ / gcc 15+ toolchains) marks the
++# legacy app_indicator_* API as deprecated; the bundled tray_manager plugin still
++# uses it, so do not let -Werror abort the build there.
++add_compile_options(-Wno-error=deprecated-declarations)
++
+ # Load bundled libraries from the lib/ directory relative to the binary.
+ set(CMAKE_INSTALL_RPATH "$ORIGIN/lib")
+ 
+@@ -56,6 +61,30 @@ pkg_check_modules(GTK REQUIRED IMPORTED_TARGET gtk+-3.0)
+ 
+ add_definitions(-DAPPLICATION_ID="${APPLICATION_ID}")
+ 
++# Dart API dynamic-lookup symbols for FFI plugins (code_forge / flutter_rust_bridge).
++# Current Flutter engines no longer export Dart_* from libflutter_linux_gtk.so, so
++# plugins such as libcode_forge.so cannot resolve Dart_InitializeApiDL and are
++# silently disabled unless the host executable provides those symbols. Compile
++# dart_api_dl.c from the Dart SDK into the app and export the dynamic symbol table.
++set(DART_API_DL_SOURCE "")
++if(NOT "$ENV{PROXYPIN_DART_API_DL_C}" STREQUAL "")
++  set(DART_API_DL_SOURCE "$ENV{PROXYPIN_DART_API_DL_C}")
++else()
++  find_program(_FLUTTER_EXECUTABLE NAMES flutter)
++  if(_FLUTTER_EXECUTABLE)
++    get_filename_component(_FLUTTER_BIN_DIR "${_FLUTTER_EXECUTABLE}" PATH)
++    get_filename_component(_FLUTTER_SDK_DIR "${_FLUTTER_BIN_DIR}" PATH)
++    set(DART_API_DL_SOURCE "${_FLUTTER_SDK_DIR}/bin/cache/dart-sdk/include/dart_api_dl.c")
++  endif()
++endif()
++if(EXISTS "${DART_API_DL_SOURCE}")
++  enable_language(C)
++  set_source_files_properties("${DART_API_DL_SOURCE}" PROPERTIES COMPILE_OPTIONS "-Wno-error")
++else()
++  message(WARNING "dart_api_dl.c not found: FFI plugins (code_forge) may fail to load")
++  set(DART_API_DL_SOURCE "")
++endif()
++
+ # Define the application target. To change its name, change BINARY_NAME above,
+ # not the value here, or `flutter run` will no longer work.
+ #
+@@ -64,12 +93,18 @@ add_executable(${BINARY_NAME}
+   "main.cc"
+   "my_application.cc"
+   "${FLUTTER_MANAGED_DIR}/generated_plugin_registrant.cc"
++  ${DART_API_DL_SOURCE}
+ )
+ 
+ # Apply the standard set of build settings. This can be removed for applications
+ # that need different build settings.
+ apply_standard_settings(${BINARY_NAME})
+ 
++# Export the Dart API DL symbols compiled above so FFI plugins can resolve them.
++if(DART_API_DL_SOURCE)
++  set_property(TARGET ${BINARY_NAME} APPEND_STRING PROPERTY LINK_FLAGS " -Wl,--export-dynamic")
++endif()
++
+ # Add dependency libraries. Add any application-specific dependencies here.
+ target_link_libraries(${BINARY_NAME} PRIVATE flutter)
+ target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
+diff --git a/linux/my_application.cc b/linux/my_application.cc
+index 4fd669e..54b5fbf 100644
+--- a/linux/my_application.cc
++++ b/linux/my_application.cc
+@@ -55,7 +55,19 @@ static void my_application_activate(GApplication* application) {
+   if (g_file_test("assets", G_FILE_TEST_IS_DIR)) {
+       gtk_window_set_icon_from_file(window, "assets/icon.png", NULL); // For debug mode
+   } else {
+-      gtk_window_set_icon_from_file(window, "/opt/proxypin/data/flutter_assets/assets/icon.png", NULL); // For release mode
++      // Resolve the icon relative to the release bundle instead of hardcoding a
++      // Debian-specific install path, so any prefix (/usr/lib/proxypin, /opt/...)
++      // works.
++      g_autofree gchar* exe_path = g_file_read_link("/proc/self/exe", NULL);
++      g_autofree gchar* exe_dir =
++          exe_path != NULL ? g_path_get_dirname(exe_path) : NULL;
++      g_autofree gchar* icon_path =
++          exe_dir != NULL
++              ? g_build_filename(exe_dir, "data", "flutter_assets", "assets",
++                                 "icon.png", NULL)
++              : NULL;
++      gtk_window_set_icon_from_file(
++          window, icon_path != NULL ? icon_path : "assets/icon.png", NULL);
+   }
+ 
+   g_autoptr(FlDartProject) project = fl_dart_project_new();

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=ProxyPin
+GenericName=HTTP(S) Capture
+Comment=Capture and rewrite HTTP/HTTPS traffic with an in-process MITM proxy
+Exec=proxypin
+TryExec=proxypin
+Icon=proxypin
+Terminal=false
+Categories=Development;Network;
+Keywords=proxy;http;https;capture;mitm;debug;
+StartupNotify=true
+StartupWMClass=com.network.proxy
