@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=opencie
-pkgver=0.5.4 # renovate: datasource=github-tags depName=M0Rf30/opencie extractVersion=^v(?<version>.+)$
+pkgver=0.5.5 # renovate: datasource=github-tags depName=M0Rf30/opencie extractVersion=^v(?<version>.+)$
 pkgrel=1
 pkgdesc="Digital signatures and verification with the Italian Electronic Identity Card (CIE)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('fvm' 'clang' 'cmake' 'ninja' 'pkgconf' 'git' 'patchelf')
 # Flutter SDK version to build with (matches upstream CI); fetched via fvm.
 _flutter=3.47.9 # renovate: datasource=github-tags depName=flutter/flutter
 source=("$pkgname-$pkgver.tar.gz::https://github.com/M0Rf30/opencie/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a1e4822ef5d365ae4ec776269196f10b8f13b0d845ab703d3a8ff09818f8c929')
+sha256sums=('588cdba4da0ce49977880904aca9fa613a6b608a89f6e6dcc17ff6a2f4fd8aa2')
 
 build() {
   cd "$pkgname-$pkgver"
