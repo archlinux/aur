@@ -1,0 +1,23 @@
+pkgbase = littera-bin
+	pkgdesc = Local voice dictation for Linux/Wayland (prebuilt binary)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/RouHim/littera
+	install = littera-bin.install
+	arch = x86_64
+	license = MIT
+	depends = glibc>=2.44
+	depends = alsa-lib
+	depends = vulkan-icd-loader
+	depends = blas
+	depends = cblas
+	optdepends = xdg-desktop-portal: bind the hotkey through the GlobalShortcuts portal
+	optdepends = pipewire: microphone capture through the ALSA plugin
+	optdepends = xdg-utils: open the model folder from the settings window
+	provides = littera
+	conflicts = littera
+	options = !strip
+	source_x86_64 = https://github.com/RouHim/littera/releases/download/v1.0.6/littera-1.0.6-x86_64.tar.gz
+	sha256sums_x86_64 = 4d739df9f0b17be03afe1a366001dd9efaa10fac47d87c7e4fe7b00970ed5304
+
+pkgname = littera-bin
