@@ -1,7 +1,7 @@
 #  Maintainer: ToKiNoBug <tokinobug@163.com>
 _pkgname=mc-schem
 pkgname=${_pkgname}
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A rust/c++ library to generate, load, manipulate and save minecraft schematic files."
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -21,10 +21,10 @@ depends=(
 optdepends=(
 )
 source=(
-	https://github.com/SlopeCraft/mc_schem/archive/refs/tags/v1.4.0.tar.gz
+	https://github.com/SlopeCraft/mc_schem/archive/refs/tags/v1.4.1.tar.gz
 )
 sha512sums=(
-	'ced200ed1f94e085a390458f88609e155269abf8b7061e1c6150aa782dd75b95b6874501397cede7a8236b74b08d0fb58df6553d3fea1c3aac44b9dfeb44079a'
+	'0a8979e5c259b344f0195e63d76f853ea282c2a909189569fcc5d31a9578538b26919b1aade629956d967f1c1258c87ba768e19de1dbdff824ec5d43abf3432a'
 )
 
 # prepare() {
