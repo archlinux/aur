@@ -1,0 +1,1555 @@
+diff --git i/libfprint/drivers/elan.c w/libfprint/drivers/elan.c
+index f9cc52f7..5e7e1fa4 100644
+--- i/libfprint/drivers/elan.c
++++ w/libfprint/drivers/elan.c
+@@ -40,6 +40,8 @@
+ 
+ #include "drivers_api.h"
+ #include "elan.h"
++#include "sigfm.h"
++#include <math.h>
+ 
+ static unsigned char
+ elan_get_pixel (struct fpi_frame_asmbl_ctx *ctx,
+@@ -83,6 +85,7 @@ struct _FpiDeviceElan
+   unsigned char   frame_height;
+   unsigned char   raw_frame_height;
+   int             num_frames;
++  gboolean        press_submitted;
+   GSList         *frames;
+   /* end state */
+ };
+@@ -110,6 +113,7 @@ elan_dev_reset_state (FpiDeviceElan *elandev)
+   g_slist_free_full (elandev->frames, g_free);
+   elandev->frames = NULL;
+   elandev->num_frames = 0;
++  elandev->press_submitted = FALSE;
+ }
+ 
+ static void
+@@ -314,6 +318,206 @@ elan_process_frame_thirds (unsigned short *raw_frame,
+   *frames = g_slist_prepend (*frames, frame);
+ }
+ 
++/* sum of absolute neighbour differences: higher means sharper ridges */
++static guint64
++elan_frame_sharpness (FpiDeviceElan *self, const unsigned short *f)
++{
++  guint64 s = 0;
++
++  for (int y = 0; y < self->frame_height - 1; y++)
++    for (int x = 0; x < self->frame_width - 1; x++)
++      {
++        int i = x + y * self->frame_width;
++        s += ABS (f[i + 1] - f[i]) + ABS (f[i + self->frame_width] - f[i]);
++      }
++  return s;
++}
++
++/* std dev of column means over std dev of all pixels: close to 1 for the
++ * vertical stripe noise some empty captures produce, well below for ridges */
++static double
++elan_stripe_ratio (const guint8 *px, int w, int h)
++{
++  double mean = 0, var = 0, cvar = 0;
++
++  for (int i = 0; i < w * h; i++)
++    mean += px[i];
++  mean /= w * h;
++  for (int i = 0; i < w * h; i++)
++    var += (px[i] - mean) * (px[i] - mean);
++
++  for (int x = 0; x < w; x++)
++    {
++      double c = 0;
++      for (int y = 0; y < h; y++)
++        c += px[x + y * w];
++      c = c / h - mean;
++      cvar += c * c;
++    }
++
++  if (var == 0)
++    return 1;
++  return sqrt ((cvar / w) / (var / (w * h)));
++}
++
++/* Press mode: the finger rests still on a square sensor, so stitching frames
++ * by estimated motion only produces garbage. Submit the sharpest settled frame. */
++static void
++elan_submit_press_image (FpImageDevice *dev)
++{
++  FpiDeviceElan *self = FPI_DEVICE_ELAN (dev);
++  unsigned int frame_size = self->frame_width * self->frame_height;
++  g_autoptr(FpImage) img = NULL;
++  unsigned short *best = NULL;
++  guint64 best_sharpness = 0;
++  GSList *frames = NULL;
++  struct fpi_frame *frame;
++  double stripes;
++  int n = 0;
++
++  G_DEBUG_HERE ();
++
++  /* runs while the finger is still down; self->frames is newest first, so
++   * the skipped landing frames are at the tail */
++  for (GSList *l = self->frames;
++       l && n < self->num_frames - ELAN_PRESS_SKIP_FRAMES;
++       l = l->next, n++)
++    {
++      guint64 s = elan_frame_sharpness (self, l->data);
++
++      if (s > best_sharpness)
++        {
++          best_sharpness = s;
++          best = l->data;
++        }
++    }
++
++  assembling_ctx.frame_width = self->frame_width;
++  assembling_ctx.frame_height = self->frame_height;
++  self->process_frame (best, &frames);
++  frame = frames->data;
++
++  img = fp_image_new (self->frame_width, self->frame_height);
++  memcpy (img->data, frame->data, frame_size);
++  g_slist_free_full (frames, g_free);
++
++  stripes = elan_stripe_ratio (img->data, img->width, img->height);
++  fp_dbg ("press image: sharpest of %d frames (%" G_GUINT64_FORMAT "), stripe ratio %.2f",
++          n, best_sharpness, stripes);
++  if (stripes > ELAN_PRESS_MAX_STRIPE_RATIO)
++    {
++      fpi_image_device_retry_scan (dev, FP_DEVICE_RETRY_CENTER_FINGER);
++      return;
++    }
++
++  img->flags |= FPI_IMAGE_PARTIAL;
++  fpi_image_device_image_captured (dev, g_steal_pointer (&img));
++}
++
++/* SIGFM data for one capture, stored as a one-element "aay" RAW print so
++ * fpi_print_add_print() can collect every enroll capture */
++static gboolean
++elan_sigfm_img_to_print (FpImageDevice *dev, FpImage *image,
++                         FpPrint *print, GError **error)
++{
++  SigfmImgInfo *info = sigfm_extract (image->data, image->width, image->height);
++  GVariantBuilder builder;
++  unsigned char *blob;
++  int kp, len;
++
++  if (!info)
++    {
++      *error = fpi_device_retry_new_msg (FP_DEVICE_RETRY_GENERAL, "SIGFM extraction failed");
++      return FALSE;
++    }
++
++  kp = sigfm_keypoints_count (info);
++  fp_dbg ("sigfm keypoints: %d", kp);
++  if (kp < ELAN_SIGFM_MIN_KEYPOINTS)
++    {
++      sigfm_free_info (info);
++      *error = fpi_device_retry_new (FP_DEVICE_RETRY_CENTER_FINGER);
++      return FALSE;
++    }
++
++  blob = sigfm_serialize_binary (info, &len);
++  sigfm_free_info (info);
++  if (!blob)
++    {
++      *error = fpi_device_retry_new_msg (FP_DEVICE_RETRY_GENERAL, "SIGFM serialization failed");
++      return FALSE;
++    }
++
++  fpi_print_set_type (print, FPI_PRINT_RAW);
++  g_variant_builder_init (&builder, G_VARIANT_TYPE ("aay"));
++  g_variant_builder_add_value (&builder,
++                               g_variant_new_fixed_array (G_VARIANT_TYPE_BYTE, blob, len, 1));
++  g_object_set (print, "fpi-data", g_variant_builder_end (&builder), NULL);
++  free (blob);
++  return TRUE;
++}
++
++/* load the i-th SIGFM blob of a RAW print; NULL when out of range */
++static SigfmImgInfo *
++elan_sigfm_nth (GVariant *data, gsize i)
++{
++  g_autoptr(GVariant) child = NULL;
++  const guchar *blob;
++  gsize len;
++
++  if (i >= g_variant_n_children (data))
++    return NULL;
++  child = g_variant_get_child_value (data, i);
++  blob = g_variant_get_fixed_array (child, &len, 1);
++  return sigfm_deserialize_binary (blob, len);
++}
++
++/* best score of the scan against any enrolled capture */
++static FpiMatchResult
++elan_sigfm_match (FpImageDevice *dev, FpPrint *template,
++                  FpPrint *print, GError **error)
++{
++  g_autoptr(GVariant) tdata = NULL;
++  g_autoptr(GVariant) pdata = NULL;
++  SigfmImgInfo *probe;
++  int best = 0;
++
++  g_object_get (template, "fpi-data", &tdata, NULL);
++  g_object_get (print, "fpi-data", &pdata, NULL);
++
++  /* prints enrolled before this patch are NBIS and carry no SIGFM data */
++  if (!tdata || !g_variant_is_of_type (tdata, G_VARIANT_TYPE ("aay")))
++    {
++      fp_warn ("stored print has no SIGFM data, re-enroll this finger");
++      return FPI_MATCH_FAIL;
++    }
++
++  probe = elan_sigfm_nth (pdata, 0);
++  if (!probe)
++    {
++      *error = fpi_device_error_new_msg (FP_DEVICE_ERROR_DATA_INVALID, "Bad SIGFM probe");
++      return FPI_MATCH_ERROR;
++    }
++
++  for (gsize i = 0; i < g_variant_n_children (tdata); i++)
++    {
++      SigfmImgInfo *enrolled = elan_sigfm_nth (tdata, i);
++      int score;
++
++      if (!enrolled)
++        continue;
++      score = sigfm_match_score (enrolled, probe);
++      sigfm_free_info (enrolled);
++      best = MAX (best, score);
++      if (best >= ELAN_SIGFM_THRESHOLD)
++        break;
++    }
++  sigfm_free_info (probe);
++
++  fp_dbg ("sigfm best score %d/%d", best, ELAN_SIGFM_THRESHOLD);
++  return best >= ELAN_SIGFM_THRESHOLD ? FPI_MATCH_SUCCESS : FPI_MATCH_FAIL;
++}
++
+ static void
+ elan_submit_image (FpImageDevice *dev)
+ {
+@@ -324,6 +528,12 @@ elan_submit_image (FpImageDevice *dev)
+ 
+   G_DEBUG_HERE ();
+ 
++  if (self->dev_type & ELAN_PRESS)
++    {
++      elan_submit_press_image (dev);
++      return;
++    }
++
+   raw_frames = g_slist_nth (self->frames, ELAN_SKIP_LAST_FRAMES);
+ 
+   assembling_ctx.frame_width = self->frame_width;
+@@ -575,12 +785,31 @@ capture_run_state (FpiSsm *ssm, FpDevice *dev)
+       break;
+ 
+     case CAPTURE_CHECK_ENOUGH_FRAMES:
++      /* Press mode keeps polling after the touch was reported until the
++       * finger lifts, so the next calibration does not see it as background. */
++      if (self->press_submitted)
++        {
++          self->cmd_timeout = ELAN_FINGER_TIMEOUT;
++          fpi_ssm_jump_to_state (ssm, CAPTURE_WAIT_FINGER);
++          break;
++        }
++
+       r = elan_save_img_frame (self);
+       if (r < 0)
+         {
+           fpi_ssm_mark_failed (ssm, fpi_device_error_new (FP_DEVICE_ERROR_GENERAL));
++          break;
+         }
+-      else if (self->num_frames < ELAN_MAX_FRAMES)
++
++      /* Report the touch while the finger is still down, so clients can
++       * tell the user to lift it. */
++      if ((self->dev_type & ELAN_PRESS) && self->num_frames >= ELAN_PRESS_FRAMES)
++        {
++          self->press_submitted = TRUE;
++          elan_submit_press_image (idev);
++        }
++
++      if (self->num_frames < ELAN_MAX_FRAMES || (self->dev_type & ELAN_PRESS))
+         {
+           /* quickly stop if finger is removed */
+           self->cmd_timeout = ELAN_FINGER_TIMEOUT;
+@@ -599,6 +828,8 @@ capture_complete (FpiSsm *ssm, FpDevice *_dev, GError *error)
+ {
+   FpImageDevice *dev = FP_IMAGE_DEVICE (_dev);
+   FpiDeviceElan *self = FPI_DEVICE_ELAN (_dev);
++  gboolean press = self->dev_type & ELAN_PRESS;
++  int min_frames = press ? ELAN_PRESS_FRAMES : ELAN_MIN_FRAMES;
+ 
+   G_DEBUG_HERE ();
+ 
+@@ -607,14 +838,14 @@ capture_complete (FpiSsm *ssm, FpDevice *_dev, GError *error)
+       (g_error_matches (error, G_USB_DEVICE_ERROR, G_USB_DEVICE_ERROR_TIMED_OUT) &&
+        fpi_ssm_get_cur_state (ssm) == CAPTURE_WAIT_FINGER))
+     {
+-      if (self->num_frames >= ELAN_MIN_FRAMES)
+-        {
+-          elan_submit_image (dev);
+-        }
+-      else
++      /* press mode reports the touch from the capture loop instead */
++      if (!press && self->num_frames >= min_frames)
++        elan_submit_image (dev);
++
++      if (!self->press_submitted && (press || self->num_frames < min_frames))
+         {
+-          fp_dbg ("swipe too short: want >= %d frames, got %d",
+-                  ELAN_MIN_FRAMES, self->num_frames);
++          fp_dbg ("finger lifted too soon: want >= %d frames, got %d",
++                  min_frames, self->num_frames);
+           fpi_image_device_retry_scan (dev, FP_DEVICE_RETRY_TOO_SHORT);
+         }
+       g_clear_error (&error);
+@@ -876,7 +1107,7 @@ activate_run_state (FpiSsm *ssm, FpDevice *dev)
+           self->frame_height++;
+           self->raw_frame_height = self->frame_height;
+         }
+-      if (self->frame_height > ELAN_MAX_FRAME_HEIGHT)
++      if (self->frame_height > ELAN_MAX_FRAME_HEIGHT && !(self->dev_type & ELAN_PRESS))
+         self->frame_height = ELAN_MAX_FRAME_HEIGHT;
+       fp_dbg ("sensor dimensions, WxH: %dx%d", self->frame_width,
+               self->raw_frame_height);
+@@ -944,6 +1175,14 @@ dev_init (FpImageDevice *dev)
+       break;
+     }
+ 
++  if (self->dev_type & ELAN_PRESS)
++    {
++      fpi_device_set_scan_type (FP_DEVICE (dev), FP_SCAN_TYPE_PRESS);
++      fpi_device_set_nr_enroll_stages (FP_DEVICE (dev), ELAN_PRESS_ENROLL_STAGES);
++      /* 96x96 is too small for NBIS minutiae; match ridge texture instead */
++      fpi_image_device_set_matcher (dev, elan_sigfm_img_to_print, elan_sigfm_match);
++    }
++
+   fpi_image_device_open_complete (dev, NULL);
+ }
+ 
+diff --git i/libfprint/drivers/elan.h w/libfprint/drivers/elan.h
+index 6bbaae04..c78bb128 100644
+--- i/libfprint/drivers/elan.h
++++ w/libfprint/drivers/elan.h
+@@ -32,6 +32,23 @@
+ #define ELAN_0C03 (1 << 1)
+ #define ELAN_0C42 (1 << 2)
+ #define ELAN_0C58 (1 << 3)
++/* square area sensors used press-and-hold: one averaged full frame, no stitching */
++#define ELAN_PRESS (1 << 4)
++
++/* press mode: frames read before the touch is reported (the finger is still
++ * down, so clients can prompt to lift it), and oldest frames to drop (finger
++ * still landing) */
++#define ELAN_PRESS_FRAMES 6
++#define ELAN_PRESS_SKIP_FRAMES 2
++/* reject captures whose column means carry most of the variance (stripe noise
++ * measured at 0.81, real ridges at most 0.65) */
++#define ELAN_PRESS_MAX_STRIPE_RATIO 0.75
++/* a small sensor sees a different patch each touch: enroll more of them */
++#define ELAN_PRESS_ENROLL_STAGES 15
++/* SIGFM: minimum keypoints per capture and match score threshold, from the
++ * GF511 work (64x80 sensor; impostor max 6). Recheck with impostor scans. */
++#define ELAN_SIGFM_MIN_KEYPOINTS 25
++#define ELAN_SIGFM_THRESHOLD 7
+ 
+ /* devices which don't require frame rotation before assembling */
+ #define ELAN_NOT_ROTATED ELAN_0C03
+@@ -204,7 +221,7 @@ static const FpIdEntry elan_id_table[] = {
+   {.vid = ELAN_VEND_ID,  .pid = 0x0c25, .driver_data = ELAN_ALL_DEV},
+   {.vid = ELAN_VEND_ID,  .pid = 0x0c26, .driver_data = ELAN_ALL_DEV},
+   {.vid = ELAN_VEND_ID,  .pid = 0x0c27, .driver_data = ELAN_ALL_DEV},
+-  {.vid = ELAN_VEND_ID,  .pid = 0x0c28, .driver_data = ELAN_ALL_DEV},
++  {.vid = ELAN_VEND_ID,  .pid = 0x0c28, .driver_data = ELAN_PRESS},
+   {.vid = ELAN_VEND_ID,  .pid = 0x0c29, .driver_data = ELAN_ALL_DEV},
+   {.vid = ELAN_VEND_ID,  .pid = 0x0c2a, .driver_data = ELAN_ALL_DEV},
+   {.vid = ELAN_VEND_ID,  .pid = 0x0c2b, .driver_data = ELAN_ALL_DEV},
+diff --git i/libfprint/drivers/sigfm.c w/libfprint/drivers/sigfm.c
+new file mode 100644
+index 00000000..38cdafb8
+--- /dev/null
++++ w/libfprint/drivers/sigfm.c
+@@ -0,0 +1,855 @@
++// SIGFM algorithm for libfprint — pure-C ORB replacement
++//
++// Copyright (C) 2022 Matthieu CHARETTE <matthieu.charette@gmail.com>
++// Copyright (c) 2022 Natasha England-Elbro <ashenglandelbro@protonmail.com>
++// Copyright (c) 2022 Timur Mangliev <tigrmango@gmail.com>
++// Copyright (c) 2026 libfprint contributors
++//
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++// Algorithm: FAST-9 corner detection + unsteered BRIEF-256 descriptors.
++// Geometric verification uses RANSAC rigid-transform estimation with
++// cross-check filtered descriptor matching and inlier counting.
++
++#include "sigfm.h"
++
++#include <math.h>
++#include <stdint.h>
++#include <stdlib.h>
++#include <string.h>
++
++/* -------------------------------------------------------------------------
++ * Data structures
++ * ---------------------------------------------------------------------- */
++
++typedef struct
++{
++  float x, y;
++  float response;
++} OrbKeypoint;
++
++struct SigfmImgInfo
++{
++  int n_kp;
++  OrbKeypoint *kp;
++  uint8_t *desc; /* n_kp × 32 bytes, 256-bit BRIEF descriptor per kp */
++};
++
++/* -------------------------------------------------------------------------
++ * BRIEF-256 bit-test pattern
++ * Pairs (x1,y1,x2,y2) in range ±PATCH_HALF, lazily initialised once.
++ * -------------------------------------------------------------------- */
++
++#define PATCH_HALF 7
++#define PATCH_SIZE (PATCH_HALF * 2 + 1) /* 15 */
++#define N_PAIRS 256
++#define DESC_BYTES 32 /* 256 / 8 */
++
++static int8_t brief_pattern[N_PAIRS][4];
++static int brief_inited = 0;
++
++static void
++init_brief_pattern(void)
++{
++  if (brief_inited)
++    return;
++
++  /* Deterministic hash-based pairs; covers all four quadrants of the patch. */
++  for (int i = 0; i < N_PAIRS; i++)
++    {
++      unsigned int s1 = (unsigned int)(i * 7741u + 1234567u);
++      unsigned int s2 = (unsigned int)(i * 3571u + 9876543u);
++      int r1 = (int)(s1 % (unsigned)(PATCH_SIZE * PATCH_SIZE));
++      int r2 = (int)(s2 % (unsigned)(PATCH_SIZE * PATCH_SIZE));
++      brief_pattern[i][0] = (int8_t)(r1 % PATCH_SIZE - PATCH_HALF); /* x1 */
++      brief_pattern[i][1] = (int8_t)(r1 / PATCH_SIZE - PATCH_HALF); /* y1 */
++      brief_pattern[i][2] = (int8_t)(r2 % PATCH_SIZE - PATCH_HALF); /* x2 */
++      brief_pattern[i][3] = (int8_t)(r2 / PATCH_SIZE - PATCH_HALF); /* y2 */
++    }
++  brief_inited = 1;
++}
++
++/* -------------------------------------------------------------------------
++ * 3×3 box blur (scratch buffer passed in to avoid allocation per-keypoint)
++ * ---------------------------------------------------------------------- */
++
++static void
++box3_blur(const uint8_t *src, uint8_t *dst, int w, int h)
++{
++  for (int y = 0; y < h; y++)
++    {
++      for (int x = 0; x < w; x++)
++        {
++          int sum = 0, cnt = 0;
++          for (int dy = -1; dy <= 1; dy++)
++            {
++              int ny = y + dy;
++              if (ny < 0 || ny >= h)
++                continue;
++              for (int dx = -1; dx <= 1; dx++)
++                {
++                  int nx = x + dx;
++                  if (nx < 0 || nx >= w)
++                    continue;
++                  sum += src[ny * w + nx];
++                  cnt++;
++                }
++            }
++          dst[y * w + x] = (uint8_t)(sum / cnt);
++        }
++    }
++}
++
++/* -------------------------------------------------------------------------
++ * FAST-9 corner detector
++ * ---------------------------------------------------------------------- */
++
++/* Bresenham circle radius-3 offsets (16 points) */
++static const int fast_dx[16] = { 0, 1, 2, 3, 3, 3, 2, 1, 0, -1, -2, -3, -3, -3, -2, -1 };
++static const int fast_dy[16] = { 3, 3, 2, 1, 0, -1, -2, -3, -3, -3, -2, -1, 0, 1, 2, 3 };
++
++/* Returns a score > 0 if (x,y) is a FAST-9 corner, 0 otherwise. */
++static int
++fast9_score(const uint8_t *img, int w, int x, int y, int threshold)
++{
++  int cx = img[y * w + x];
++  int v[16];
++
++  for (int i = 0; i < 16; i++)
++    v[i] = img[(y + fast_dy[i]) * w + (x + fast_dx[i])] - cx;
++
++  /* Compass quick-reject: need at least 2 of the 4 cardinal points
++   * to exceed the threshold in the same direction. */
++  int nb = 0, nd = 0;
++  for (int i = 0; i < 4; i++)
++    {
++      if (v[i * 4] > threshold)
++        nb++;
++      if (v[i * 4] < -threshold)
++        nd++;
++    }
++  if (nb < 2 && nd < 2)
++    return 0;
++
++  /* Full test: look for 9 consecutive pixels all brighter or darker. */
++  for (int start = 0; start < 16; start++)
++    {
++      int b = 1, d = 1;
++      for (int k = 0; k < 9; k++)
++        {
++          int val = v[(start + k) % 16];
++          if (val <= threshold)
++            b = 0;
++          if (val >= -threshold)
++            d = 0;
++        }
++      if (!b && !d)
++        continue;
++
++      /* Score = sum of absolute deviations (higher → stronger corner). */
++      int score = 0;
++      for (int i = 0; i < 16; i++)
++        score += abs(v[i]);
++      return score;
++    }
++  return 0;
++}
++
++/* -------------------------------------------------------------------------
++ * Detect keypoints: FAST-9 + 3×3 non-maximum suppression
++ * ---------------------------------------------------------------------- */
++
++#define FAST_THRESHOLD 10
++#define FAST_BORDER (3 + PATCH_HALF) /* avoid circle + patch OOB */
++#define FAST_BORDER_DETECT 4         /* FAST radius 3 + 1 for NMS only */
++#define MAX_KP 128
++#define MULTISCALE_DUP_DIST_SQ 16.0f /* 4px near-duplicate suppression */
++
++static int
++detect_keypoints_ex(const uint8_t *img, int w, int h, OrbKeypoint *kp_out, int max_kp,
++                    int border)
++{
++  /* Score map: 0 = not a corner */
++  int *scores = calloc((size_t)(w * h), sizeof(int));
++  if (!scores)
++    return 0;
++
++  /* Pass 1: compute FAST scores */
++  for (int y = border; y < h - border; y++)
++    {
++      for (int x = border; x < w - border; x++)
++        scores[y * w + x] = fast9_score(img, w, x, y, FAST_THRESHOLD);
++    }
++
++  /* Pass 2: 3×3 NMS — keep only local maxima */
++  int n = 0;
++  for (int y = border; y < h - border && n < max_kp; y++)
++    {
++      for (int x = border; x < w - border && n < max_kp; x++)
++        {
++          int s = scores[y * w + x];
++          if (s == 0)
++            continue;
++          int is_max = 1;
++          for (int dy = -1; dy <= 1 && is_max; dy++)
++            for (int dx = -1; dx <= 1 && is_max; dx++)
++              if (!(dx == 0 && dy == 0) && scores[(y + dy) * w + (x + dx)] > s)
++                is_max = 0;
++          if (is_max)
++            {
++              kp_out[n].x = (float)x;
++              kp_out[n].y = (float)y;
++              kp_out[n].response = (float)s;
++              n++;
++            }
++        }
++    }
++
++  free(scores);
++  return n;
++}
++
++/* Full-resolution detection with BRIEF clearance */
++static int
++detect_keypoints(const uint8_t *img, int w, int h, OrbKeypoint *kp_out, int max_kp)
++{
++  return detect_keypoints_ex(img, w, h, kp_out, max_kp, FAST_BORDER);
++}
++
++/* -------------------------------------------------------------------------
++ * 2× downsample via 2×2 average pooling (for multi-scale pyramid)
++ * ---------------------------------------------------------------------- */
++
++static void
++downsample_2x(const uint8_t *src, int w, int h, uint8_t *dst)
++{
++  int hw = w / 2, hh = h / 2;
++  for (int y = 0; y < hh; y++)
++    for (int x = 0; x < hw; x++)
++      {
++        int sx = x * 2, sy = y * 2;
++        dst[y * hw + x]
++            = (uint8_t)((src[sy * w + sx] + src[sy * w + sx + 1] + src[(sy + 1) * w + sx]
++                         + src[(sy + 1) * w + sx + 1] + 2)
++                        / 4);
++      }
++}
++
++/* -------------------------------------------------------------------------
++ * BRIEF-256 descriptor computation (no orientation steering)
++ * ---------------------------------------------------------------------- */
++
++static void
++compute_descriptor(const uint8_t *img, int w, const OrbKeypoint *kp,
++                   uint8_t *desc /* 32 bytes out */)
++{
++  int cx = (int)kp->x;
++  int cy = (int)kp->y;
++
++  memset(desc, 0, DESC_BYTES);
++  for (int i = 0; i < N_PAIRS; i++)
++    {
++      int x1 = cx + brief_pattern[i][0];
++      int y1 = cy + brief_pattern[i][1];
++      int x2 = cx + brief_pattern[i][2];
++      int y2 = cy + brief_pattern[i][3];
++      if (img[y1 * w + x1] < img[y2 * w + x2])
++        desc[i / 8] |= (uint8_t)(1u << (i % 8));
++    }
++}
++
++/* -------------------------------------------------------------------------
++ * Hamming distance between two 32-byte descriptors
++ * ---------------------------------------------------------------------- */
++
++static int
++hamming_dist(const uint8_t *a, const uint8_t *b)
++{
++  int dist = 0;
++  for (int i = 0; i < DESC_BYTES; i++)
++    {
++      uint8_t x = a[i] ^ b[i];
++      /* Brian Kernighan bit-count */
++      while (x)
++        {
++          dist++;
++          x &= (uint8_t)(x - 1u);
++        }
++    }
++  return dist;
++}
++
++/* -------------------------------------------------------------------------
++ * KNN matching (k=2) with Lowe ratio test
++ * ---------------------------------------------------------------------- */
++
++#define RATIO_TEST 0.80f
++#define MIN_MATCH 5
++
++typedef struct
++{
++  int qi, ti;
++  int dist;
++} Match;
++
++static int
++knn_match(const SigfmImgInfo *query, const SigfmImgInfo *train, Match *matches_out,
++          int max_matches)
++{
++  int n = 0;
++  for (int q = 0; q < query->n_kp && n < max_matches; q++)
++    {
++      const uint8_t *qd = query->desc + q * DESC_BYTES;
++      int best1 = 256, best2 = 256, best1_idx = -1;
++
++      for (int t = 0; t < train->n_kp; t++)
++        {
++          int d = hamming_dist(qd, train->desc + t * DESC_BYTES);
++          if (d < best1)
++            {
++              best2 = best1;
++              best1 = d;
++              best1_idx = t;
++            }
++          else if (d < best2)
++            {
++              best2 = d;
++            }
++        }
++
++      if (best1_idx >= 0 && best2 > 0 && (float)best1 < RATIO_TEST * (float)best2)
++        {
++          matches_out[n].qi = q;
++          matches_out[n].ti = best1_idx;
++          matches_out[n].dist = best1;
++          n++;
++        }
++    }
++  return n;
++}
++
++/* Cross-check filter: keep only matches (q,t) where t→q is also the
++ * best forward match in the reverse direction.  This eliminates many
++ * false descriptor matches and dramatically reduces impostor match
++ * counts, improving RANSAC discriminability.  */
++static int
++cross_check_filter(const SigfmImgInfo *query, const SigfmImgInfo *train, Match *matches,
++                   int n_matches)
++{
++  int out = 0;
++  for (int i = 0; i < n_matches; i++)
++    {
++      /* For train descriptor matches[i].ti, find best match in query */
++      const uint8_t *td = train->desc + matches[i].ti * DESC_BYTES;
++      int best_dist = 256, best_q = -1;
++      for (int q = 0; q < query->n_kp; q++)
++        {
++          int d = hamming_dist(td, query->desc + q * DESC_BYTES);
++          if (d < best_dist)
++            {
++              best_dist = d;
++              best_q = q;
++            }
++        }
++      /* Keep only if reverse best-match agrees */
++      if (best_q == matches[i].qi)
++        matches[out++] = matches[i];
++    }
++  return out;
++}
++
++/* -------------------------------------------------------------------------
++ * Geometric verification — RANSAC rigid-transform estimation
++ *
++ * Random 2-point sampling estimates rotation + translation; inliers
++ * are counted under a pixel-distance threshold.  Least-squares
++ * refinement from all inliers of the best model further improves the
++ * transform before final scoring.
++ * ---------------------------------------------------------------------- */
++
++#define RANSAC_ITERATIONS 200
++#define RANSAC_INLIER_THRESH 2.0f /* pixels */
++#define RANSAC_MIN_DIST_SQ 9.0f   /* reject sample pairs < 3 px apart */
++
++/* Simple xorshift32 PRNG — deterministic, no seed dependency on libc */
++static uint32_t
++xorshift32(uint32_t *state)
++{
++  uint32_t x = *state;
++  x ^= x << 13;
++  x ^= x >> 17;
++  x ^= x << 5;
++  *state = x;
++  return x;
++}
++
++/* Count inliers for a given rigid transform (cos,-sin,sin,cos,tx,ty). */
++static int
++count_inliers(const SigfmImgInfo *frame, const SigfmImgInfo *enrolled,
++              const Match *matches, int n_matches, float a, float b, float c, float d,
++              float tx, float ty, float eps_sq)
++{
++  int inliers = 0;
++  for (int m = 0; m < n_matches; m++)
++    {
++      float px = frame->kp[matches[m].qi].x;
++      float py = frame->kp[matches[m].qi].y;
++      float qx = enrolled->kp[matches[m].ti].x;
++      float qy = enrolled->kp[matches[m].ti].y;
++
++      float pred_x = a * px + b * py + tx;
++      float pred_y = c * px + d * py + ty;
++
++      float ex = pred_x - qx;
++      float ey = pred_y - qy;
++
++      if (ex * ex + ey * ey < eps_sq)
++        inliers++;
++    }
++  return inliers;
++}
++
++/* Least-squares refinement: re-estimate transform from inliers, re-count.
++ * Uses rigid model (rotation + translation) for the refinement step to
++ * prevent overfitting the affine model to noise. */
++static int
++ls_refine(const SigfmImgInfo *frame, const SigfmImgInfo *enrolled, const Match *matches,
++          int n_matches, float a, float b, float c, float d, float tx, float ty,
++          float eps_sq, float *out_a, float *out_b, float *out_c, float *out_d,
++          float *out_tx, float *out_ty)
++{
++  /* 1. Compute centroids of inlier correspondences */
++  float cx = 0, cy = 0, dx = 0, dy = 0;
++  int ni = 0;
++  for (int m = 0; m < n_matches; m++)
++    {
++      float px = frame->kp[matches[m].qi].x;
++      float py = frame->kp[matches[m].qi].y;
++      float qx = enrolled->kp[matches[m].ti].x;
++      float qy = enrolled->kp[matches[m].ti].y;
++
++      float pred_x = a * px + b * py + tx;
++      float pred_y = c * px + d * py + ty;
++      float ex = pred_x - qx;
++      float ey = pred_y - qy;
++
++      if (ex * ex + ey * ey < eps_sq)
++        {
++          cx += px;
++          cy += py;
++          dx += qx;
++          dy += qy;
++          ni++;
++        }
++    }
++  if (ni < 3)
++    return -1;
++
++  cx /= ni;
++  cy /= ni;
++  dx /= ni;
++  dy /= ni;
++
++  /* 2. Compute optimal rotation via cross-covariance */
++  float sum_cos = 0, sum_sin = 0;
++  for (int m = 0; m < n_matches; m++)
++    {
++      float px = frame->kp[matches[m].qi].x;
++      float py = frame->kp[matches[m].qi].y;
++      float qx = enrolled->kp[matches[m].ti].x;
++      float qy = enrolled->kp[matches[m].ti].y;
++
++      float pred_x = a * px + b * py + tx;
++      float pred_y = c * px + d * py + ty;
++      float ex = pred_x - qx;
++      float ey = pred_y - qy;
++
++      if (ex * ex + ey * ey < eps_sq)
++        {
++          float pcx = px - cx;
++          float pcy = py - cy;
++          float qcx = qx - dx;
++          float qcy = qy - dy;
++          sum_cos += pcx * qcx + pcy * qcy;
++          sum_sin += pcx * qcy - pcy * qcx;
++        }
++    }
++
++  float norm = sqrtf(sum_cos * sum_cos + sum_sin * sum_sin);
++  if (norm < 1e-6f)
++    return -1;
++
++  float ref_cos = sum_cos / norm;
++  float ref_sin = sum_sin / norm;
++  *out_a = ref_cos;
++  *out_b = -ref_sin;
++  *out_c = ref_sin;
++  *out_d = ref_cos;
++  *out_tx = dx - (ref_cos * cx - ref_sin * cy);
++  *out_ty = dy - (ref_sin * cx + ref_cos * cy);
++
++  /* 3. Re-count inliers with refined transform */
++  return count_inliers(frame, enrolled, matches, n_matches, *out_a, *out_b, *out_c,
++                       *out_d, *out_tx, *out_ty, eps_sq);
++}
++
++static int
++ransac_score(const SigfmImgInfo *frame, const SigfmImgInfo *enrolled,
++             const Match *matches, int n_matches)
++{
++  if (n_matches < 2)
++    return 0;
++
++  const float eps_sq = RANSAC_INLIER_THRESH * RANSAC_INLIER_THRESH;
++  int best_inliers = 0;
++  float best_a = 1, best_b = 0, best_c = 0, best_d = 1;
++  float best_tx = 0, best_ty = 0;
++
++  /* RANSAC: random 2-point sampling for rigid transform estimation */
++  uint32_t rng = 2654435761u;
++  for (int i = 0; i < n_matches && i < 8; i++)
++    rng ^= (uint32_t)(matches[i].dist * 31 + matches[i].qi * 97 + matches[i].ti * 53);
++  if (rng == 0)
++    rng = 1;
++
++  for (int iter = 0; iter < RANSAC_ITERATIONS; iter++)
++    {
++      int i1 = (int)(xorshift32(&rng) % (uint32_t)n_matches);
++      int i2 = (int)(xorshift32(&rng) % (uint32_t)(n_matches - 1));
++      if (i2 >= i1)
++        i2++;
++
++      float p1x = frame->kp[matches[i1].qi].x;
++      float p1y = frame->kp[matches[i1].qi].y;
++      float p2x = frame->kp[matches[i2].qi].x;
++      float p2y = frame->kp[matches[i2].qi].y;
++
++      float q1x = enrolled->kp[matches[i1].ti].x;
++      float q1y = enrolled->kp[matches[i1].ti].y;
++      float q2x = enrolled->kp[matches[i2].ti].x;
++      float q2y = enrolled->kp[matches[i2].ti].y;
++
++      float ddx = p2x - p1x, ddy = p2y - p1y;
++      float len1_sq = ddx * ddx + ddy * ddy;
++      if (len1_sq < RANSAC_MIN_DIST_SQ)
++        continue;
++
++      float edx = q2x - q1x, edy = q2y - q1y;
++      float cos_t = (ddx * edx + ddy * edy) / len1_sq;
++      float sin_t = (ddx * edy - ddy * edx) / len1_sq;
++      float scale_sq = cos_t * cos_t + sin_t * sin_t;
++      if (scale_sq < 0.64f || scale_sq > 1.44f)
++        continue;
++
++      float rtx = q1x - (cos_t * p1x - sin_t * p1y);
++      float rty = q1y - (sin_t * p1x + cos_t * p1y);
++
++      int inliers = count_inliers(frame, enrolled, matches, n_matches, cos_t, -sin_t,
++                                  sin_t, cos_t, rtx, rty, eps_sq);
++
++      if (inliers > best_inliers)
++        {
++          best_inliers = inliers;
++          best_a = cos_t;
++          best_b = -sin_t;
++          best_c = sin_t;
++          best_d = cos_t;
++          best_tx = rtx;
++          best_ty = rty;
++          if (best_inliers >= n_matches - 1)
++            break;
++        }
++    }
++
++  /* Least-squares refinement from all inliers of best model */
++  if (best_inliers >= 3)
++    {
++      float ra, rb, rc, rd, rtx, rty;
++      int refined
++          = ls_refine(frame, enrolled, matches, n_matches, best_a, best_b, best_c, best_d,
++                      best_tx, best_ty, eps_sq, &ra, &rb, &rc, &rd, &rtx, &rty);
++      if (refined > best_inliers)
++        best_inliers = refined;
++    }
++
++  return best_inliers;
++}
++
++/* -------------------------------------------------------------------------
++ * Public API
++ * ---------------------------------------------------------------------- */
++
++SigfmImgInfo *
++sigfm_extract(const SigfmPix *pix, int width, int height)
++{
++  init_brief_pattern();
++
++  /* Blur for stable keypoint detection, but compute descriptors on the
++   * original (unblurred) image to preserve discriminative pixel detail. */
++  uint8_t *blurred = malloc((size_t)(width * height));
++  if (!blurred)
++    return NULL;
++  box3_blur(pix, blurred, width, height);
++
++  /* --- Scale 0 (full resolution) --- */
++  OrbKeypoint raw_kp[MAX_KP];
++  int n = detect_keypoints(blurred, width, height, raw_kp, MAX_KP);
++
++  /* --- Scale 1 (half resolution, 2-level pyramid) --- */
++  int hw = width / 2, hh = height / 2;
++  if (hw >= 16 && hh >= 16 && n < MAX_KP)
++    {
++      uint8_t *half = malloc((size_t)(hw * hh));
++      if (half)
++        {
++          downsample_2x(blurred, width, height, half);
++
++          OrbKeypoint half_kp[MAX_KP];
++          int nh = detect_keypoints_ex(half, hw, hh, half_kp, MAX_KP, FAST_BORDER_DETECT);
++
++          /* Map half-res keypoints to full-res coords and merge */
++          for (int i = 0; i < nh && n < MAX_KP; i++)
++            {
++              float fx = half_kp[i].x * 2.0f + 0.5f;
++              float fy = half_kp[i].y * 2.0f + 0.5f;
++
++              /* BRIEF clearance check at full resolution */
++              if ((int)fx < PATCH_HALF || (int)fx >= width - PATCH_HALF
++                  || (int)fy < PATCH_HALF || (int)fy >= height - PATCH_HALF)
++                continue;
++
++              /* Near-duplicate suppression: skip if within 4px of
++               * an existing full-res keypoint */
++              int dup = 0;
++              for (int j = 0; j < n; j++)
++                {
++                  float ddx = raw_kp[j].x - fx;
++                  float ddy = raw_kp[j].y - fy;
++                  if (ddx * ddx + ddy * ddy < MULTISCALE_DUP_DIST_SQ)
++                    {
++                      dup = 1;
++                      break;
++                    }
++                }
++              if (!dup)
++                {
++                  raw_kp[n].x = fx;
++                  raw_kp[n].y = fy;
++                  raw_kp[n].response = half_kp[i].response;
++                  n++;
++                }
++            }
++          free(half);
++        }
++    }
++
++  free(blurred);
++
++  if (n == 0)
++    return NULL;
++
++  SigfmImgInfo *info = malloc(sizeof(SigfmImgInfo));
++  if (!info)
++    return NULL;
++
++  info->n_kp = n;
++  info->kp = malloc((size_t)n * sizeof(OrbKeypoint));
++  info->desc = malloc((size_t)n * DESC_BYTES);
++
++  if (!info->kp || !info->desc)
++    {
++      free(info->kp);
++      free(info->desc);
++      free(info);
++      return NULL;
++    }
++
++  memcpy(info->kp, raw_kp, (size_t)n * sizeof(OrbKeypoint));
++
++  /* Compute BRIEF descriptors on original image — the driver's unsharp
++   * mask has already enhanced ridge contrast; re-blurring would undo it. */
++  for (int i = 0; i < n; i++)
++    compute_descriptor(pix, width, &info->kp[i], info->desc + i * DESC_BYTES);
++
++  return info;
++}
++
++int
++sigfm_match_score(SigfmImgInfo *frame, SigfmImgInfo *enrolled)
++{
++  if (!frame || !enrolled || frame->n_kp == 0 || enrolled->n_kp == 0)
++    return 0;
++
++  int max_m = frame->n_kp;
++  Match *matches = malloc((size_t)max_m * sizeof(Match));
++  if (!matches)
++    return -1;
++
++  int n = knn_match(frame, enrolled, matches, max_m);
++  n = cross_check_filter(frame, enrolled, matches, n);
++  if (n < MIN_MATCH)
++    {
++      free(matches);
++      return 0;
++    }
++
++  int score = ransac_score(frame, enrolled, matches, n);
++  free(matches);
++  return score;
++}
++
++void
++sigfm_free_info(SigfmImgInfo *info)
++{
++  if (!info)
++    return;
++  free(info->kp);
++  free(info->desc);
++  free(info);
++}
++
++SigfmImgInfo *
++sigfm_copy_info(SigfmImgInfo *info)
++{
++  if (!info)
++    return NULL;
++
++  SigfmImgInfo *copy = malloc(sizeof(SigfmImgInfo));
++  if (!copy)
++    return NULL;
++
++  copy->n_kp = info->n_kp;
++  copy->kp = malloc((size_t)info->n_kp * sizeof(OrbKeypoint));
++  copy->desc = malloc((size_t)info->n_kp * DESC_BYTES);
++
++  if (!copy->kp || !copy->desc)
++    {
++      free(copy->kp);
++      free(copy->desc);
++      free(copy);
++      return NULL;
++    }
++
++  memcpy(copy->kp, info->kp, (size_t)info->n_kp * sizeof(OrbKeypoint));
++  memcpy(copy->desc, info->desc, (size_t)info->n_kp * DESC_BYTES);
++  return copy;
++}
++
++int
++sigfm_keypoints_count(SigfmImgInfo *info)
++{
++  return info ? info->n_kp : 0;
++}
++
++/* -------------------------------------------------------------------------
++ * Binary serialisation
++ *
++ * Format (little-endian):
++ *   [4]  magic  0x4D474653  ("SIGM")
++ *   [4]  version = 2  (1 was the C++ binary format)
++ *   [4]  n_kp
++ *   [n_kp * 12]  keypoints: float x, float y, float response
++ *   [n_kp * 32]  descriptors
++ * ---------------------------------------------------------------------- */
++
++#define SIGFM_MAGIC 0x4D474653u
++#define SIGFM_VERSION 2u
++
++static void
++write_u32_le(uint8_t *p, uint32_t v)
++{
++  p[0] = (uint8_t)(v & 0xffu);
++  p[1] = (uint8_t)((v >> 8) & 0xffu);
++  p[2] = (uint8_t)((v >> 16) & 0xffu);
++  p[3] = (uint8_t)((v >> 24) & 0xffu);
++}
++
++static uint32_t
++read_u32_le(const uint8_t *p)
++{
++  return (uint32_t)p[0] | ((uint32_t)p[1] << 8) | ((uint32_t)p[2] << 16)
++         | ((uint32_t)p[3] << 24);
++}
++
++unsigned char *
++sigfm_serialize_binary(SigfmImgInfo *info, int *outlen)
++{
++  if (!info)
++    return NULL;
++
++  int kp_bytes = info->n_kp * (int)(3 * sizeof(float));
++  int desc_bytes = info->n_kp * DESC_BYTES;
++  int total = 12 + kp_bytes + desc_bytes; /* 3 × u32 header */
++
++  uint8_t *buf = malloc((size_t)total);
++  if (!buf)
++    return NULL;
++
++  write_u32_le(buf + 0, SIGFM_MAGIC);
++  write_u32_le(buf + 4, SIGFM_VERSION);
++  write_u32_le(buf + 8, (uint32_t)info->n_kp);
++
++  uint8_t *p = buf + 12;
++  for (int i = 0; i < info->n_kp; i++)
++    {
++      memcpy(p, &info->kp[i].x, sizeof(float));
++      p += sizeof(float);
++      memcpy(p, &info->kp[i].y, sizeof(float));
++      p += sizeof(float);
++      memcpy(p, &info->kp[i].response, sizeof(float));
++      p += sizeof(float);
++    }
++  memcpy(p, info->desc, (size_t)desc_bytes);
++
++  *outlen = total;
++  return buf;
++}
++
++SigfmImgInfo *
++sigfm_deserialize_binary(const unsigned char *bytes, int len)
++{
++  if (!bytes || len < 12)
++    return NULL;
++
++  if (read_u32_le(bytes) != SIGFM_MAGIC || read_u32_le(bytes + 4) != SIGFM_VERSION)
++    return NULL;
++
++  int n_kp = (int)read_u32_le(bytes + 8);
++  if (n_kp <= 0 || n_kp > MAX_KP)
++    return NULL;
++
++  int kp_bytes = n_kp * (int)(3 * sizeof(float));
++  int desc_bytes = n_kp * DESC_BYTES;
++  if (len < 12 + kp_bytes + desc_bytes)
++    return NULL;
++
++  SigfmImgInfo *info = malloc(sizeof(SigfmImgInfo));
++  if (!info)
++    return NULL;
++
++  info->n_kp = n_kp;
++  info->kp = malloc((size_t)n_kp * sizeof(OrbKeypoint));
++  info->desc = malloc((size_t)desc_bytes);
++
++  if (!info->kp || !info->desc)
++    {
++      free(info->kp);
++      free(info->desc);
++      free(info);
++      return NULL;
++    }
++
++  const uint8_t *p = bytes + 12;
++  for (int i = 0; i < n_kp; i++)
++    {
++      memcpy(&info->kp[i].x, p, sizeof(float));
++      p += sizeof(float);
++      memcpy(&info->kp[i].y, p, sizeof(float));
++      p += sizeof(float);
++      memcpy(&info->kp[i].response, p, sizeof(float));
++      p += sizeof(float);
++    }
++  memcpy(info->desc, p, (size_t)desc_bytes);
++
++  return info;
++}
+diff --git i/libfprint/drivers/sigfm.h w/libfprint/drivers/sigfm.h
+new file mode 100644
+index 00000000..4c4ef213
+--- /dev/null
++++ w/libfprint/drivers/sigfm.h
+@@ -0,0 +1,89 @@
++// SIGFM algorithm for libfprint
++
++// Copyright (C) 2022 Matthieu CHARETTE <matthieu.charette@gmail.com>
++// Copyright (c) 2022 Natasha England-Elbro <ashenglandelbro@protonmail.com>
++// Copyright (c) 2022 Timur Mangliev <tigrmango@gmail.com>
++//
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++
++#pragma once
++
++#ifdef __cplusplus
++extern "C"
++{
++#endif
++  typedef unsigned char SigfmPix;
++  /**
++   * @brief Contains information used by the sigfm algorithm for matching
++   * @details Get one from sigfm_extract() and make sure to clean it up with
++   * sigfm_free_info()
++   * @struct SigfmImgInfo
++   */
++  typedef struct SigfmImgInfo SigfmImgInfo;
++
++  /**
++   * @brief Extracts information from an image for later use sigfm_match_score
++   *
++   * @param pix Pixels of the image must be width * height in length
++   * @param width Width of the image
++   * @param height Height of the image
++   * @return SigfmImgInfo* Info that can be used with the API
++   */
++  SigfmImgInfo *sigfm_extract(const SigfmPix *pix, int width, int height);
++
++  /**
++   * @brief Destroy an SigfmImgInfo
++   * @warning Call this instead of free() or you will get UB!
++   * @param info SigfmImgInfo to destroy
++   */
++  void sigfm_free_info(SigfmImgInfo *info);
++
++  /**
++   * @brief Score how closely a frame matches another
++   *
++   * @param frame Print to be checked
++   * @param enrolled Canonical print to verify against
++   * @return int Score of how closely they match, values <0 indicate error, 0 means always
++   * reject
++   */
++  int sigfm_match_score(SigfmImgInfo *frame, SigfmImgInfo *enrolled);
++
++  /**
++   * @brief Serialize an image info for storage
++   *
++   * @param info SigfmImgInfo to store
++   * @param outlen output: Length of the returned byte array
++   * @return unsigned* char byte array for storage, should be free'd by the callee
++   */
++  unsigned char *sigfm_serialize_binary(SigfmImgInfo *info, int *outlen);
++  /**
++   * @brief Deserialize an SigfmImgInfo from storage
++   *
++   * @param bytes Byte array to deserialize from
++   * @param len Length of the byte array
++   * @return SigfmImgInfo* Deserialized info, or NULL if deserialization failed
++   */
++  SigfmImgInfo *sigfm_deserialize_binary(const unsigned char *bytes, int len);
++
++  /**
++   * @brief Keypoints for an image. Low keypoints generally means the image is
++   * low quality for matching
++   *
++   * @param info
++   * @return int
++   */
++
++  int sigfm_keypoints_count(SigfmImgInfo *info);
++
++  /**
++   * @brief Copy an SigfmImgInfo
++   *
++   * @param info Source of copy
++   * @return SigfmImgInfo* Newly allocated and copied version of info
++   */
++  SigfmImgInfo *sigfm_copy_info(SigfmImgInfo *info);
++
++#ifdef __cplusplus
++}
++#endif
+diff --git i/libfprint/fp-image-device-private.h w/libfprint/fp-image-device-private.h
+index b075634a..51504b59 100644
+--- i/libfprint/fp-image-device-private.h
++++ w/libfprint/fp-image-device-private.h
+@@ -37,6 +37,10 @@ typedef struct
+   FpImage            *capture_image;
+ 
+   gint                bz3_threshold;
++
++  /* custom matcher, see fpi_image_device_set_matcher() */
++  FpiImageToPrintFunc img_to_print;
++  FpiImageMatchFunc   img_match;
+ } FpImageDevicePrivate;
+ 
+ 
+diff --git i/libfprint/fp-image-device.c w/libfprint/fp-image-device.c
+index ac88ffd9..4a0c9ed4 100644
+--- i/libfprint/fp-image-device.c
++++ w/libfprint/fp-image-device.c
+@@ -124,9 +124,11 @@ fp_image_device_start_capture_action (FpDevice *device)
+       FpPrint *enroll_print = NULL;
+ 
+       fpi_device_get_enroll_data (device, &enroll_print);
++      FpiPrintType want = priv->img_to_print ? FPI_PRINT_RAW : FPI_PRINT_NBIS;
++
+       g_object_get (enroll_print, "fpi-type", &print_type, NULL);
+-      if (print_type != FPI_PRINT_NBIS)
+-        fpi_print_set_type (enroll_print, FPI_PRINT_NBIS);
++      if (print_type != want)
++        fpi_print_set_type (enroll_print, want);
+     }
+ 
+   priv->enroll_stage = 0;
+diff --git i/libfprint/fpi-image-device.c w/libfprint/fpi-image-device.c
+index 87bdc600..313ca1b9 100644
+--- i/libfprint/fpi-image-device.c
++++ w/libfprint/fpi-image-device.c
+@@ -263,11 +263,19 @@ fpi_image_device_minutiae_detected (GObject *source_object, GAsyncResult *res, g
+           return;
+         }
+ 
+-      /* Replace error with a retry condition. */
+-      g_warning ("Failed to detect minutiae: %s", error->message);
+-      g_clear_pointer (&error, g_error_free);
++      /* A custom matcher does not use minutiae, only the normalized image. */
++      if (priv->img_to_print)
++        {
++          g_clear_pointer (&error, g_error_free);
++        }
++      else
++        {
++          /* Replace error with a retry condition. */
++          g_warning ("Failed to detect minutiae: %s", error->message);
++          g_clear_pointer (&error, g_error_free);
+ 
+-      error = fpi_device_retry_new_msg (FP_DEVICE_RETRY_GENERAL, "Minutiae detection failed, please retry");
++          error = fpi_device_retry_new_msg (FP_DEVICE_RETRY_GENERAL, "Minutiae detection failed, please retry");
++        }
+     }
+ 
+   action = fpi_device_get_current_action (device);
+@@ -281,9 +289,20 @@ fpi_image_device_minutiae_detected (GObject *source_object, GAsyncResult *res, g
+ 
+   if (!error)
+     {
++      gboolean ok;
++
+       print = fp_print_new (device);
+-      fpi_print_set_type (print, FPI_PRINT_NBIS);
+-      if (!fpi_print_add_from_image (print, image, &error))
++      if (priv->img_to_print)
++        {
++          ok = priv->img_to_print (self, image, print, &error);
++        }
++      else
++        {
++          fpi_print_set_type (print, FPI_PRINT_NBIS);
++          ok = fpi_print_add_from_image (print, image, &error);
++        }
++
++      if (!ok)
+         {
+           g_clear_object (&print);
+ 
+@@ -332,14 +351,25 @@ fpi_image_device_minutiae_detected (GObject *source_object, GAsyncResult *res, g
+       for (i = 0; !error && i < templates->len; i++)
+         {
+           FpPrint *template = g_ptr_array_index (templates, i);
++          FpiMatchResult match;
++
++          if (priv->img_match)
++            match = priv->img_match (self, template, print, &error);
++          else
++            match = fpi_print_bz3_match (template, print, priv->bz3_threshold, &error);
+ 
+-          if (fpi_print_bz3_match (template, print, priv->bz3_threshold, &error) == FPI_MATCH_SUCCESS)
++          if (match == FPI_MATCH_SUCCESS)
+             {
+               result = template;
+               break;
+             }
+         }
+ 
++      /* A custom-matched scan never equals the stored template; core would
++       * warn and drop it anyway, so do not report it on a match. */
++      if (result && priv->img_match)
++        g_clear_object (&print);
++
+       if (!error || error->domain == FP_DEVICE_RETRY)
+         fpi_device_identify_report (device, result, g_steal_pointer (&print), g_steal_pointer (&error));
+ 
+@@ -382,6 +412,31 @@ fpi_image_device_set_bz3_threshold (FpImageDevice *self,
+   priv->bz3_threshold = bz3_threshold;
+ }
+ 
++/**
++ * fpi_image_device_set_matcher:
++ * @self: a #FpImageDevice imaging fingerprint device
++ * @img_to_print: builds print data from a captured image
++ * @img_match: compares a scanned print with a stored template
++ *
++ * Replace NBIS minutiae matching for this device, for sensors whose
++ * images are too small to hold enough minutiae. Enrolled prints are
++ * FPI_PRINT_RAW; each enroll capture is appended to them. Call from the
++ * open callback.
++ */
++void
++fpi_image_device_set_matcher (FpImageDevice      *self,
++                              FpiImageToPrintFunc img_to_print,
++                              FpiImageMatchFunc   img_match)
++{
++  FpImageDevicePrivate *priv = fp_image_device_get_instance_private (self);
++
++  g_return_if_fail (FP_IS_IMAGE_DEVICE (self));
++  g_return_if_fail ((img_to_print == NULL) == (img_match == NULL));
++
++  priv->img_to_print = img_to_print;
++  priv->img_match = img_match;
++}
++
+ /**
+  * fpi_image_device_report_finger_status:
+  * @self: a #FpImageDevice imaging fingerprint device
+diff --git i/libfprint/fpi-image-device.h w/libfprint/fpi-image-device.h
+index 71472dbb..5ac48db8 100644
+--- i/libfprint/fpi-image-device.h
++++ w/libfprint/fpi-image-device.h
+@@ -119,6 +119,22 @@ struct _FpImageDeviceClass
+ void fpi_image_device_set_bz3_threshold (FpImageDevice *self,
+                                          gint           bz3_threshold);
+ 
++/* Fill @print (set its type, e.g. FPI_PRINT_RAW) from @image. A retry error
++ * rejects the capture. */
++typedef gboolean (*FpiImageToPrintFunc) (FpImageDevice *self,
++                                         FpImage       *image,
++                                         FpPrint       *print,
++                                         GError       **error);
++/* Compare a scanned @print against a stored @template. */
++typedef FpiMatchResult (*FpiImageMatchFunc) (FpImageDevice *self,
++                                             FpPrint       *template,
++                                             FpPrint       *print,
++                                             GError       **error);
++
++void fpi_image_device_set_matcher (FpImageDevice      *self,
++                                   FpiImageToPrintFunc img_to_print,
++                                   FpiImageMatchFunc   img_match);
++
+ void fpi_image_device_session_error (FpImageDevice *self,
+                                      GError        *error);
+ 
+diff --git i/libfprint/fpi-print.c w/libfprint/fpi-print.c
+index 6c5e20db..318c63fc 100644
+--- i/libfprint/fpi-print.c
++++ w/libfprint/fpi-print.c
+@@ -46,6 +46,37 @@
+ void
+ fpi_print_add_print (FpPrint *print, FpPrint *add)
+ {
++  /* RAW prints from a custom image matcher are "aay": one blob per capture */
++  if (print->type == FPI_PRINT_RAW)
++    {
++      GVariantBuilder builder;
++      GVariantIter iter;
++      GVariant *child;
++
++      g_return_if_fail (add->type == FPI_PRINT_RAW && add->data);
++
++      g_variant_builder_init (&builder, G_VARIANT_TYPE ("aay"));
++      if (print->data)
++        {
++          g_variant_iter_init (&iter, print->data);
++          while ((child = g_variant_iter_next_value (&iter)))
++            {
++              g_variant_builder_add_value (&builder, child);
++              g_variant_unref (child);
++            }
++        }
++      g_variant_iter_init (&iter, add->data);
++      while ((child = g_variant_iter_next_value (&iter)))
++        {
++          g_variant_builder_add_value (&builder, child);
++          g_variant_unref (child);
++        }
++
++      g_clear_pointer (&print->data, g_variant_unref);
++      print->data = g_variant_ref_sink (g_variant_builder_end (&builder));
++      return;
++    }
++
+   g_return_if_fail (print->type == FPI_PRINT_NBIS);
+   g_return_if_fail (add->type == FPI_PRINT_NBIS);
+ 
+diff --git i/libfprint/meson.build w/libfprint/meson.build
+index f11533ca..240bd979 100644
+--- i/libfprint/meson.build
++++ w/libfprint/meson.build
+@@ -119,7 +119,7 @@ driver_sources = {
+     'egismoc' : files('drivers/egismoc/egismoc.c'),
+     'egis_etu905' : files('drivers/egismoc/egis_etu905.c'),
+     'vfs0050' : files('drivers/vfs0050.c'),
+-    'elan' : files('drivers/elan.c'),
++    'elan' : files('drivers/elan.c', 'drivers/sigfm.c'),
+     'elanmoc' : files('drivers/elanmoc/elanmoc.c'),
+     'elanspi' : files('drivers/elanspi.c'),
+     'nb1010' : files('drivers/nb1010.c'),
