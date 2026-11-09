@@ -1,6 +1,6 @@
 pkgbase = python-smithy-http
 	pkgdesc = HTTP components for Smithy tooling.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-http
 	arch = any
@@ -9,20 +9,23 @@ pkgbase = python-smithy-http
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-freezegun
 	checkdepends = python-awscrt
-	checkdepends = python-yarl
-	checkdepends = python-smithy-json
+	checkdepends = python-smithy-cbor
 	checkdepends = python-aiohttp
+	checkdepends = python-yarl
+	checkdepends = python-urllib3
+	checkdepends = python-smithy-json
+	checkdepends = python-smithy-aws-event-stream
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = git
 	depends = python
 	depends = python-smithy-core
 	optdepends = python-awscrt: awscrt
+	optdepends = python-smithy-cbor: cbor
 	optdepends = python-aiohttp: aiohttp
 	optdepends = python-yarl: aiohttp
-	source = smithy-http::git+https://github.com/smithy-lang/smithy-python.git#tag=smithy-http/v0.6.0
-	sha256sums = 9355f1aed64cf1ea03806a76efc1c6c419d6caa2cf3733fa692153fb99e83abe
+	optdepends = python-urllib3: urllib3
+	source = smithy-http-0.7.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-http/v0.7.0.tar.gz
+	sha256sums = 78f5ade1ae0b61251eaa1892cde578ef211361a08914af9f8b2f14c240841437
 
 pkgname = python-smithy-http
