@@ -1,7 +1,7 @@
 pkgbase = r-gtfsio
 	pkgdesc = Read and Write General Transit Feed Specification (GTFS) Files
-	pkgver = 1.2.1
-	pkgrel = 4
+	pkgver = 1.2.2
+	pkgrel = 5
 	url = https://cran.r-project.org/package=gtfsio
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = r-gtfsio
 	depends = r-zip
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/gtfsio_1.2.1.tar.gz
-	b2sums = 54081c3eb97e4ccde4d37e536e23df6c6f7007408494b1373f4f724790f62ac8778ec1d68647025dea00856ebfaab02101ce33e0156d50f28754c2284090bcbe
+	source = https://cran.r-project.org/src/contrib/gtfsio_1.2.2.tar.gz
+	b2sums = 3892516704a7e854989a12d1bea691e4fe4c813a47b4e33c37e48d96b000cdc8bd6882d54bd9749a67728dea062714493a52089513110a53b24daadad0053f01
 
 pkgname = r-gtfsio
