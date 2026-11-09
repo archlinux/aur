@@ -1,6 +1,6 @@
 pkgbase = tutabridge-bin
 	pkgdesc = Local IMAP/SMTP bridge for Tuta encrypted email (prebuilt headless CLI/daemon)
-	pkgver = 0.1.0rc15
+	pkgver = 0.2.0rc1
 	pkgrel = 1
 	url = https://github.com/spartanz51/tutabridge
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = tutabridge-bin
 	provides = tutabridge
 	conflicts = tutabridge
 	options = !debug
-	source = tutabridge-0.1.0rc15::https://github.com/spartanz51/tutabridge/releases/download/v0.1.0-rc.15/tutabridge-linux-x86_64
-	source = tutabridge.service::https://raw.githubusercontent.com/spartanz51/tutabridge/v0.1.0-rc.15/packaging/systemd/tutabridge.service
-	source = LICENSE::https://raw.githubusercontent.com/spartanz51/tutabridge/v0.1.0-rc.15/LICENSE
-	sha256sums = 43b16e4e8d8d6122c8b34ce5c11a6e7f30f2ad4465c9d31620f500e677786917
+	source = tutabridge-0.2.0rc1::https://github.com/spartanz51/tutabridge/releases/download/v0.2.0-rc.1/tutabridge-linux-x86_64
+	source = tutabridge.service::https://raw.githubusercontent.com/spartanz51/tutabridge/v0.2.0-rc.1/packaging/systemd/tutabridge.service
+	source = LICENSE::https://raw.githubusercontent.com/spartanz51/tutabridge/v0.2.0-rc.1/LICENSE
+	sha256sums = 95ab4d1131e346883dca250b4404a557cf8e41ca830cda89431382d7db7c03b4
 	sha256sums = 9c398acf860036a8912a3f0686cfd6dc55cb714fc3ddbff68c21755777cd439f
 	sha256sums = 947215ddc328843b76022d5b77e1ca3b1152301778d33e24491e5064e92fc6cf
 
