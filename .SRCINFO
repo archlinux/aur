@@ -1,6 +1,6 @@
 pkgbase = anker-launcher-bin
 	pkgdesc = Desktop client for AnkerGames (upstream AppImage)
-	pkgver = 0.1.28
+	pkgver = 0.1.29
 	pkgrel = 1
 	url = https://github.com/zororver/anker-launcher
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = anker-launcher-bin
 	depends = libxcb
 	depends = zlib
 	optdepends = xdg-utils: desktop integration and browser URL opening
-	provides = anker-launcher=0.1.28
+	provides = anker-launcher=0.1.29
 	conflicts = anker-launcher
-	noextract = anker-launcher-bin-0.1.28.AppImage
+	noextract = anker-launcher-bin-0.1.29.AppImage
 	options = !strip
 	options = !debug
-	source = anker-launcher-bin-0.1.28.AppImage::https://github.com/zororver/anker-launcher/releases/download/v0.1.28/AnkerLauncher-0.1.28-x86_64.AppImage
-	sha256sums = ed529a8010c6dd9787c037aa6029e4cb9326bbd5563eeff0936bb16dd53f9950
+	source = anker-launcher-bin-0.1.29.AppImage::https://github.com/zororver/anker-launcher/releases/download/v0.1.29/AnkerLauncher-0.1.29-x86_64.AppImage
+	sha256sums = 207025902af929a301e221edf25e1c20685f115adeca1816dcca4c696f03c147
 
 pkgname = anker-launcher-bin
