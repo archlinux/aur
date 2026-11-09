@@ -2,7 +2,7 @@
 # Prebuilt binary from the upstream GitHub release. The archive carries
 # baseline-x86-64 code (TRANSCRIBE_X86_CONSERVATIVE), not -march=native.
 pkgname=littera-bin
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Local voice dictation for Linux/Wayland (prebuilt binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('littera')
 install=littera-bin.install
 options=(!strip)
 source_x86_64=("$url/releases/download/v$pkgver/littera-$pkgver-x86_64.tar.gz")
-sha256sums_x86_64=('4d739df9f0b17be03afe1a366001dd9efaa10fac47d87c7e4fe7b00970ed5304')
+sha256sums_x86_64=('17b8886feef74258a409bedeae78df2f8b8d8235d424543e480e2ab6d3046619')
 
 package() {
     local src="$srcdir/littera-$pkgver-x86_64"
