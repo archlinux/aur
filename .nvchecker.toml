@@ -1,0 +1,4 @@
+[texturecraft-git]
+source = "git"
+git = "https://github.com/storytold/texturecraft.git"
+prefix = "v"
