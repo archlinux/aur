@@ -1,6 +1,6 @@
 # Maintainer: Alexis Rossfelder <rossfelderalexis@gmail.com>
 pkgname=apps2samsung-bin
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="One-click app installer for Samsung TVs, projectors and smart monitors (Tizen) — Jellyfin, Moonlight and more"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=('!strip')
 source_x86_64=("Apps2Samsung-v${pkgver}-linux-x64.tar.gz::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v${pkgver}/Apps2Samsung-v${pkgver}-linux-x64.tar.gz")
 source_aarch64=("Apps2Samsung-v${pkgver}-linux-arm64.tar.gz::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v${pkgver}/Apps2Samsung-v${pkgver}-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('f93a285a7bec6204eea0011c8eae222d4e4ab0692c1b8aecc0393308232462a3')
-sha256sums_aarch64=('afbba1ada09080b38dfb9e470f00f0b1efe7a80f28480a3b461aa63a405cb100')
+sha256sums_x86_64=('b61be755e034643dcb93c24372b2df0adaac43877d19f4e7bdca2d5d8784f271')
+sha256sums_aarch64=('4546493bfeec74cb005dbf57b49ea023072bedab737638b47651372779ca70cd')
 
 package() {
 	install -d "$pkgdir/usr/lib/$pkgname"
