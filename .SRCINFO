@@ -1,14 +1,9 @@
 pkgbase = ssprea-nvidia-control
-	pkgdesc = GUI NVidia GPU overclock, power limit and fan manager
-	pkgver = 1.1.10
+	pkgdesc = Transitional package for the renamed slimit-gpu package
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ssprea/ssprea-nvidia-control
-	arch = x86_64
-	license = unknown
-	makedepends = git
-	makedepends = dotnet-sdk-9.0
-	options = !strip
-	source = ssprea-nvidia-control-1.1.10::git+https://github.com/ssprea/ssprea-nvidia-control.git#tag=1.1.10
-	sha256sums = SKIP
+	arch = any
+	depends = slimit-gpu
 
 pkgname = ssprea-nvidia-control
