@@ -1,7 +1,7 @@
 pkgbase = coredeck-bin
 	pkgdesc = Native desktop command center for the Android SDK (AVDs, system images, APK inspection)
 	pkgver = 0.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://coredeck.dev
 	arch = x86_64
 	arch = aarch64

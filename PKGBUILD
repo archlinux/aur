@@ -3,7 +3,7 @@
 pkgname=coredeck-bin
 _name=CoreDeck
 pkgver=0.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Native desktop command center for the Android SDK (AVDs, system images, APK inspection)'
 
 arch=('x86_64' 'aarch64')
@@ -33,15 +33,17 @@ package() {
     aarch64) _dir=coredeck-linux-arm64 ;;
   esac
 
-  install -dm755 "$pkgdir/opt/coredeck"
-  cp -r "$srcdir/$_dir/." "$pkgdir/opt/coredeck/"
-  chmod 755 "$pkgdir/opt/coredeck/$_name"
+  install -Dm755 "$srcdir/$_dir/$_name" "$pkgdir/usr/lib/coredeck/$_name"
+  install -dm755 "$pkgdir/usr/share/coredeck"
 
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/coredeck/$_name" "$pkgdir/usr/bin/coredeck"
+  cp -r "$srcdir/$_dir/assets" "$pkgdir/usr/share/coredeck/assets"
+  cp -r "$srcdir/$_dir/share/." "$pkgdir/usr/share/"
 
-  install -dm755 "$pkgdir/usr/share"
-  mv "$pkgdir/opt/coredeck/share/"* "$pkgdir/usr/share/"
-  rmdir "$pkgdir/opt/coredeck/share"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/coredeck" <<EOF
+#!/bin/sh
+export COREDECK_ASSETS_DIR=/usr/share/coredeck/assets
+exec /usr/lib/coredeck/$_name "\$@"
+EOF
+
   install -Dm644 "$srcdir/$_name-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
