@@ -1,6 +1,6 @@
 pkgbase = omniget-bin
 	pkgdesc = Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites.
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://t.me/OpenSelena
 	arch = aarch64
@@ -12,11 +12,11 @@ pkgbase = omniget-bin
 	depends = alsa-lib
 	depends = libayatana-indicator
 	depends = libappindicator
-	provides = omniget=0.14.0
+	provides = omniget=0.15.0
 	conflicts = omniget
-	source_aarch64 = omniget-0.14.0-aarch64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.14.0/OmniGet_0.14.0_arm64.deb
-	sha256sums_aarch64 = dbb60afd3e6d416df00ea0e39f62fac6f76e6cc2dbe4eb47194dda81b9dffb47
-	source_x86_64 = omniget-0.14.0-x86_64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.14.0/OmniGet_0.14.0_amd64.deb
-	sha256sums_x86_64 = 620ab4dcad9462958746185365931ca3b60dcdcc05d8a61b7d8c0b7ed7a43900
+	source_aarch64 = omniget-0.15.0-aarch64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.15.0/OmniGet_0.15.0_arm64.deb
+	sha256sums_aarch64 = 1498aad6e5409a74635721ca650c0749ed84176c2f057c3c475b4046270f6d65
+	source_x86_64 = omniget-0.15.0-x86_64.deb::https://github.com/OpenSelena/omniget/releases/download/v0.15.0/OmniGet_0.15.0_amd64.deb
+	sha256sums_x86_64 = 968348cb38016a09dcee9d134ec5f3c31d3df605a17d123004b465fbe49c5661
 
 pkgname = omniget-bin

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=omniget-bin
 _pkgname=OmniGet
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Open-source download manager for courses (Udemy/Hotmart), YouTube, music & 1,800+ sites."
 arch=(
@@ -23,8 +23,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('dbb60afd3e6d416df00ea0e39f62fac6f76e6cc2dbe4eb47194dda81b9dffb47')
-sha256sums_x86_64=('620ab4dcad9462958746185365931ca3b60dcdcc05d8a61b7d8c0b7ed7a43900')
+sha256sums_aarch64=('1498aad6e5409a74635721ca650c0749ed84176c2f057c3c475b4046270f6d65')
+sha256sums_x86_64=('968348cb38016a09dcee9d134ec5f3c31d3df605a17d123004b465fbe49c5661')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
