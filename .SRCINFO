@@ -1,6 +1,6 @@
 pkgbase = vellum
 	pkgdesc = Featherweight wallpaper manager for Wayland: a tiny daemon, CLI and TUI
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/CPT-Dawn/Vellum
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vellum
 	depends = libgcc
 	conflicts = vellum-bin
 	conflicts = vellum-git
-	source = vellum-2.0.1.tar.gz::https://github.com/CPT-Dawn/Vellum/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 4297c78abb7fcc8dcbd7277f9356096dd4a8088f1e992d97d70f4f71c3abcbf1
+	source = vellum-2.0.2.tar.gz::https://github.com/CPT-Dawn/Vellum/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 7565d2a19d56ee8e2b92f2c0d979dcbd5029908d27e05a7d3e853abc665a18d8
 
 pkgname = vellum
