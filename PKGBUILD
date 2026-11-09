@@ -1,7 +1,7 @@
 # Maintainer: x70b1
 pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprfocus')
 pkgbase='hyprland-plugins'
-pkgver='0.57.1'
+pkgver='0.57.2'
 pkgrel=1.1
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64' 'aarch64')
