@@ -2,7 +2,7 @@
 # Maintainer: William Petit <will.arcanadelirium@gmail.com>
 
 pkgname='conclave-bin'
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='Multi-agent pull request review with local coding agents'
 url='https://github.com/bornholm/conclave'
@@ -13,13 +13,13 @@ conflicts=('conclave')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v${pkgver}/conclave_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('a28ce1710b59c79b943ca033e7535cbbb4c4dbe01a7d97f7a0b50b2d4151e948')
+sha256sums_aarch64=('1a35299ca73fda14a75f0210e9d8ac509063c446c42fc4d9dfed1e7b9bea396e')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Bornholm/conclave/releases/download/v${pkgver}/conclave_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('6e57d5b0c58e0353f782a32b49770464bbf06b4466b041ffdae420671707d4b2')
+sha256sums_i686=('d16d89c0a6b1528f96d89d3c269353d71c19eae1172b5d04b76857d875b21114')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Bornholm/conclave/releases/download/v${pkgver}/conclave_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8a81d2b0cd59e3e6f99d7a3e27889ad4585d346f7d7f908671710e1a6caf71e9')
+sha256sums_x86_64=('4ed0c25c0fd8d0626c2a002406b9ece7a1ff69c6769a56be71f97175c513acb6')
 
 package() {
   install -Dm755 ./conclave "${pkgdir}/usr/bin/conclave"
