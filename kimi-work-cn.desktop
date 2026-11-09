@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kimi Work（中国）
+Comment=Kimi Work 桌面客户端（国内版，固定中国大陆区域）
+Exec=kimi-work-cn %U
+Icon=kimi-work-cn
+Terminal=false
+Type=Application
+Categories=Office;Network;
+StartupNotify=true
+StartupWMClass=kimi-work-cn
