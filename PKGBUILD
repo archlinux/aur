@@ -1,6 +1,6 @@
 # Maintainer: Peter <peternaame@gmail.com>
 pkgname=ytm-player-git
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A full-featured YouTube Music TUI client with vim-style navigation"
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
     'python-packaging'
     'python-pillow'
     'python-pycryptodomex'
+    'python-secretstorage>=3.3'
     'python-textual>=7.0'
     'python-textual<9.0'
     'python-ytmusicapi'
