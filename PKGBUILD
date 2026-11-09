@@ -9,7 +9,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -53,6 +53,7 @@ makedepends=(
   doxygen
   git
   hipblaslt
+  hipsparselt
   miopen-hip
   nccl
   ninja
@@ -66,7 +67,8 @@ makedepends=(
   python-yaml
   rocm-hip-sdk
   rocm-toolchain
-  rocprofiler
+  rocprofiler-sdk
+  rocshmem
   roctracer
   procps-ng
   oneccl
@@ -251,6 +253,11 @@ prepare() {
   # Skip building RowwiseScaledMM.cu and GroupMM.cu for sm_103f, it results in this error:
   # nvcc fatal   : The same GPU code (`sm_103f`) generated for non family-specific and family-specific GPU arch
   patch -p1 -i "${srcdir}/$pkgname-187006.patch"
+
+  # hipFile is required for ROCm >= 7.14, but is not packaged. Without it,
+  # the build disables USE_CUFILE.
+  sed -i 's/find_package_and_print_version(hipfile REQUIRED)/find_package_and_print_version(hipfile)/' \
+    cmake/public/LoadHIP.cmake
 
   cd "${srcdir}"
 
@@ -510,7 +517,7 @@ package_python-pytorch-opt-cuda() {
 
 package_python-pytorch-rocm() {
   pkgdesc+=" (with ROCm)"
-  depends+=(amdsmi rocm-hip-sdk hipblaslt rocprofiler roctracer miopen-hip onednn python-triton python-aotriton)
+  depends+=(amdsmi rocm-hip-sdk hipblaslt hipsparselt rocprofiler-sdk roctracer miopen-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -520,7 +527,7 @@ package_python-pytorch-rocm() {
 
 package_python-pytorch-opt-rocm() {
   pkgdesc+=" (with ROCm and AVX2 CPU optimizations)"
-  depends+=(amdsmi rocm-hip-sdk hipblaslt rocprofiler roctracer miopen-hip onednn python-triton python-aotriton)
+  depends+=(amdsmi rocm-hip-sdk hipblaslt hipsparselt rocprofiler-sdk roctracer miopen-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 
