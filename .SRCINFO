@@ -1,11 +1,12 @@
 pkgbase = python-guppy3
 	pkgdesc = Programming environment providing object and heap memory sizing, profiling and analysis
-	pkgver = 3.1.7
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://zhuyifei1999.github.io/guppy3/
 	arch = aarch64
 	arch = armv7h
 	arch = powerpc64le
+	arch = riscv64
 	arch = x86_64
 	license = MIT
 	makedepends = python-build
@@ -13,8 +14,8 @@ pkgbase = python-guppy3
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = glibc
-	depends = python>=3.10
-	source = python-guppy3-3.1.7-release.tar.gz::https://github.com/zhuyifei1999/guppy3/releases/download/v3.1.7/guppy3-3.1.7.tar.gz
-	sha256sums = 4933cf325837f9401a855b6dfa773e4e0972ecaacafb5d378a3a787024a622b4
+	depends = python>=3.11
+	source = python-guppy3-3.2.0-release.tar.gz::https://github.com/zhuyifei1999/guppy3/releases/download/v3.2.0/guppy3-3.2.0.tar.gz
+	sha256sums = 306d69a4335d8e9fa08fa1f5728a5488a6ea81960cda20c46bd3fa0eaad95c1f
 
 pkgname = python-guppy3

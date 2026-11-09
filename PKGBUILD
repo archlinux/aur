@@ -2,13 +2,14 @@
 
 _pypiname="guppy3"
 pkgname="python-${_pypiname}"
-pkgver=3.1.7
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Programming environment providing object and heap memory sizing, profiling and analysis"
 arch=(
   'aarch64'
   'armv7h'
   'powerpc64le'
+  'riscv64'
   'x86_64'
 )
 url="https://zhuyifei1999.github.io/guppy3/"
@@ -18,7 +19,7 @@ license=(
 )
 depends=(
   'glibc'
-  'python>=3.10'
+  'python>=3.11'
 )
 makedepends=(
   'python-build'
@@ -34,7 +35,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "python-${_pkgsrc}-release.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('4933cf325837f9401a855b6dfa773e4e0972ecaacafb5d378a3a787024a622b4')
+sha256sums=('306d69a4335d8e9fa08fa1f5728a5488a6ea81960cda20c46bd3fa0eaad95c1f')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -56,7 +57,7 @@ package() {
 
   install -vDm644 "ChangeLog" "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_pypiname}-${pkgver}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vsf "${site_packages}/${_pypiname}-${pkgver}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
