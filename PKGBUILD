@@ -1,7 +1,7 @@
 # Maintainer: let <let@notlet.dev>
 
 pkgname=img2stl
-pkgver=c24da96
+pkgver=v5.a65ef97
 pkgrel=1
 pkgdesc='Turns a two-color image into a 3D-print ready STL file'
 arch=('any')
@@ -15,7 +15,7 @@ options=('!debug')
 build() {
     cd "$srcdir/img2stl"
 
-    go build -ldflags "-X main.COMMIT=$(git rev-parse --short HEAD)" -o dist/$pkgname img2stl.go 
+    go build -ldflags "-X main.COMMIT=$pkgver" -o dist/$pkgname img2stl.go 
 }
 
 package() {
@@ -24,5 +24,5 @@ package() {
 
 pkgver() {
     cd "$srcdir/img2stl"
-    git describe --always
+    echo "v$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }

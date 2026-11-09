@@ -1,6 +1,6 @@
 pkgbase = img2stl
 	pkgdesc = Turns a two-color image into a 3D-print ready STL file
-	pkgver = c24da96
+	pkgver = v5.a65ef97
 	pkgrel = 1
 	url = https://github.com/notlet/img2stl
 	arch = any
