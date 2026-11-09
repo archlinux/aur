@@ -1,0 +1,21 @@
+pkgbase = opencmr2-git
+	pkgdesc = Open-source native Linux port of Colin McRae Rally 2.0
+	pkgver = 1.r2.gf1f89d8
+	pkgrel = 1
+	url = https://github.com/pablocpas/OpenCMR2
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = git
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = glslang
+	makedepends = spirv-cross
+	depends = sdl3
+	provides = opencmr2
+	conflicts = opencmr2
+	source = git+https://github.com/pablocpas/OpenCMR2.git
+	sha256sums = SKIP
+
+pkgname = opencmr2-git
