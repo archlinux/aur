@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!nexus-launcher
+!nexus-launcher.desktop
+!nexus-launcher.install

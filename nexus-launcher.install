@@ -1,0 +1,11 @@
+post_install() {
+  echo "Nexus Launcher needs a Wine/Proton runtime, which is installed and"
+  echo "updated per user from the app:"
+  echo "  Settings > Xodus backend > Standard runtime"
+}
+
+post_upgrade() {
+  echo "The Xodus backend and the runtimes are updated per user from the app,"
+  echo "not by pacman. Use \"Check for updates\" in:"
+  echo "  Settings > Xodus backend"
+}
