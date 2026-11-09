@@ -1,45 +1,50 @@
 pkgbase = sentencepiece-bin
 	pkgdesc = Unsupervised text tokenizer for Neural Network-based text generation
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
-	url = https://github.com/google/sentencepiece
+	url = https://google.github.io/sentencepiece/
+	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = python-installer
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	noextract = sentencepiece-0.2.2-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-	source = sentencepiece-0.2.2-README.md::https://github.com/google/sentencepiece/raw/refs/tags/v0.2.2/README.md
-	source = sentencepiece-0.2.2-LICENSE::https://github.com/google/sentencepiece/raw/refs/tags/v0.2.2/LICENSE
-	source = sentencepiece-0.2.2-multiple.intoto.jsonl::https://github.com/google/sentencepiece/releases/download/v0.2.2/multiple.intoto.jsonl
-	sha256sums = d5b3b8f0b79151e24069dfc10f68b1441ab91853a04afe4cb993379efa7bd7d6
+	noextract = sentencepiece-0.2.3-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl
+	noextract = sentencepiece-0.2.3-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	source = sentencepiece-0.2.3-README.md::https://github.com/google/sentencepiece/raw/refs/tags/v0.2.3/README.md
+	source = sentencepiece-0.2.3-LICENSE::https://github.com/google/sentencepiece/raw/refs/tags/v0.2.3/LICENSE
+	sha256sums = 12cf3d1c5b22ba2d486c5bd19f800a70707e1438d60b4385dfe9c4a17d398144
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	sha256sums = cc6f6011e50a3ed6099e0cdfe59ae517c16d2b40c74de76eebaa8e8426f0486b
-	source_x86_64 = https://github.com/google/sentencepiece/releases/download/v0.2.2/sentencepiece-0.2.2-Linux-x86_64.7z
-	source_x86_64 = https://github.com/google/sentencepiece/releases/download/v0.2.2/sentencepiece-0.2.2-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-	sha256sums_x86_64 = 0ba21fc7c82e5f9bf62306656e8afdee4367dd917fa8feb52c2af51d84277262
-	sha256sums_x86_64 = 8d44b20234905ff022b7d535f79d1f823ad7670c9851cc4f03cdc34787cdb3ab
+	source_aarch64 = https://github.com/google/sentencepiece/releases/download/v0.2.3/sentencepiece-0.2.3-Linux-aarch64.7z
+	source_aarch64 = https://github.com/google/sentencepiece/releases/download/v0.2.3/sentencepiece-0.2.3-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl
+	sha256sums_aarch64 = f77f2f5ae11490932ea0d75a5cfccda38edaa486d7a45ec21641509884f3a2bb
+	sha256sums_aarch64 = 9f77802993eb51a08e856278f73894615b9a6cc3244857fcf962bc657578f591
+	source_x86_64 = https://github.com/google/sentencepiece/releases/download/v0.2.3/sentencepiece-0.2.3-Linux-x86_64.7z
+	source_x86_64 = https://github.com/google/sentencepiece/releases/download/v0.2.3/sentencepiece-0.2.3-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	sha256sums_x86_64 = ee9b1ee64853f70aee2802f2a7d117c3422d9fa0baaad84a27628b18cf5b57f2
+	sha256sums_x86_64 = 22dce81a65b8a1819eef9fef4970d6581ea0cbde7f58fbbbb42521535eba15e2
 
 pkgname = sentencepiece-bin
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = libgomp
 	depends = protobuf
-	provides = sentencepiece=0.2.2
+	provides = sentencepiece=0.2.3
 	provides = libsentencepiece.so
 	provides = libsentencepiece_train.so
 	conflicts = sentencepiece
 
 pkgname = python-sentencepiece-bin
 	pkgdesc = Unsupervised text tokenizer for Neural Network-based text generation (Python bindings)
-	url = https://github.com/google/sentencepiece/tree/master/python
+	url = https://google.github.io/sentencepiece/python/
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = sentencepiece-bin>=0.2.2-1
+	depends = sentencepiece-bin>=0.2.3-1
 	depends = python>=3.14
 	optdepends = python-protobuf: return_type='proto'
 	optdepends = python-numpy: return_type='numpy'
-	provides = python-sentencepiece=0.2.2
+	provides = python-sentencepiece=0.2.3
 	conflicts = python-sentencepiece
