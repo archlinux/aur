@@ -1,49 +1,51 @@
-# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 # Contributor: Roman Porizka <artee@beer.cz>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Semen Soldatov <simplexe@mail.ru>
-# Contributor: tee < teeaur at duck dot com >
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=sqliteman
-pkgver=1.2.2
-pkgrel=13
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Graphical sqlite3 browser and editor'
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url='https://github.com/pvanek/sqliteman'
-license=('GPL-2.0-or-later AND LGPL-2.1-or-later')
-depends=('qt5-base' 'qscintilla-qt5')
+license=(GPL-3.0-or-later)
+depends=('glibc' 'libgcc' 'libstdc++' 'sqlite' 'qt6-base' 'qt6-tools' 'qscintilla-qt6' 'hicolor-icon-theme')
 makedepends=('cmake')
-source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "0001_qt5.patch"
-        "0002_lpthread.patch"
-        "0003_icons.patch")
-sha256sums=('2229e627528ec02a9cf7aba3a65bef8999272fc25eb22112dc3f8ee583eb5dfb'
-            '5cd44c0b5e4387758b3c485365ed97f2f766b69fff893d89767a19eda800f0ff'
-            'af99d278b6d0cda9f84487985afdb427f77edd6eff9a1a62edac906dcfd5487b'
-            'ba1aee6f1705d08a0507153e457e817bcd86ba65cce4f733b22120fc7acfb956')
+source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
+b2sums=('8cf698432eff149106ae24b0d5fb995f79906e074003190286e7016086a06ec06074d22b25314510396ecbd67ecdd9d8ea67e844def926fd10c47acc51d21091')
 
 prepare() {
-  mkdir build
-
-  cd "${pkgname}-${pkgver}"
-  patch -p1 -i ../0001_qt5.patch
-  patch -p1 -i ../0002_lpthread.patch
-  patch -p1 -i ../0003_icons.patch
-  sed -i -e 's OLD NEW ' -e 's \\\\  g' CMakeLists.txt
+  :
 }
 
 build() {
-  cd build
-
-  cmake ../"${pkgname}-${pkgver}" \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+  local DOCS=OFF
+  if [[ -x /bin/sphinx-build && -x /bin/myst-inv && -s /usr/share/licenses/python-sphinx-furo/LICENSE ]]; then
+    DOCS=ON
+  else
+    msg2 "python-sphinx-furo and python-myst-parser not found; docs won't be built"
+  fi
+  cmake "$pkgname-$pkgver" \
+    -Wno-author \
+    -B build \
+    -DSQLITEMAN_WITH_DOCS=$DOCS \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
-  make
+  cmake --build build
+  [[ $DOCS=ON ]] && cmake --build build --target docs
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  make -Cbuild DESTDIR="${pkgdir}" install
+  cmake --install build --prefix="$pkgdir"/usr
+  install -Dm644 "$pkgname-$pkgver"/README.md -t "$pkgdir/usr/share/docs/$pkgname/"
+  [[ -d build/docs/html ]] && cp -ar build/docs/html/* "$pkgdir/usr/share/docs/$pkgname/"
+  install -Dm644 "$pkgname-$pkgver"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
