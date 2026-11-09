@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MiniMax Code（中国）
+Comment=MiniMax Code 桌面客户端（国内版）
+Exec=minimax-code-cn %U
+Icon=minimax-code-cn
+Terminal=false
+Type=Application
+Categories=Development;Network;
+StartupNotify=true
+StartupWMClass=minimax-code-cn
