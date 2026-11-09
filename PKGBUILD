@@ -2,9 +2,9 @@
 
 pkgname=shottino-bin
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 # Shottino has its own version, independent of the containing Grappa release.
-_upstream_tag=v1.6.3
+_upstream_tag=v1.6.4
 _asset=shottino-0.4.3-1-x86_64.pkg.tar.zst
 pkgdesc='Terminal client and IRC bridge for Grappa with an ncurses interface (official binary)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${_upstream_tag}-${_asset}::${url}/releases/download/${_upstream_tag}/${_asset}"
         'README.md')
 noextract=("${pkgname}-${_upstream_tag}-${_asset}")
-sha256sums=('99e0580d466c0b835d53bfbdf950a46f9cc204f67c0ff2c8889ba830a53cee91'
+sha256sums=('a8f6de7d1ac6384ddcceb56633352f181e61f214df42c1c4635d9b4a16e9117d'
             '9e10e292cb2f14c8bb99fcbf5c65c20b7309d6ee8655a3a8d3212c38a1fdb8e6')
 
 package() {
