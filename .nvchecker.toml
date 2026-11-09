@@ -1,0 +1,5 @@
+[superxterminal-bin]
+source = "github"
+github = "waukeerules/SuperXTerminal"
+use_latest_release = true
+prefix = "v"
