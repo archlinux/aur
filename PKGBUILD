@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=forgetools-bin
 _pkgname=ForgeTools
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Offline developer utilities in one desktop app. Format, decode, convert and generate without anything you paste leaving your machine."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tengfone/forgetools/v${pkgver}/LICENSE"
 )
-sha256sums=('b2aa6ebb251c66f8460ed44cdc1f2978b46f6f866e6ded581172cfa360bcf11d'
+sha256sums=('68889e9a80be4b8d7d51129ad18b9e9e677d3d6d151f261b5f7d313c8c837158'
             '0dc10cba97dc9bc07084efac452895efbdd0b469dc4a384e9c10fedc1691617b')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
