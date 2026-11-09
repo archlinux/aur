@@ -8,11 +8,11 @@
 
 pkgname=zenworks
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 PACKAGER="Zenworks Delphi"
 # the source's tag: $pkgver, or a hotfix's own (0.1.9-2) for a pkgrel that
 # brings new source rather than a recipe fix alone — release.sh sets it
-_tag=$pkgver
+_tag=0.2.8-2
 pkgdesc="A desktop environment built on Quickshell and Hyprland"
 arch=('any')
 url="https://github.com/kbuckleys/Zenworks"
@@ -83,7 +83,7 @@ conflicts=('zen-browser')
 backup=('etc/xdg/xdg-desktop-portal-termfilechooser/ZENWORKS')
 install=zenworks.install
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('8e4e3b5e7e603db2d58df9bf7f47aba75ccc98f315d5dcd8ffafa4a0eb4423af')
+sha256sums=('1d68af024b97cf5dedc4a5c4b9bde9dd462ece67b8a657cdfa13f2d666376b68')
 
 package() {
   # the tarball's directory is named after the repository, as GitHub has
