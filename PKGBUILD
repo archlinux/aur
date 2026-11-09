@@ -2,8 +2,8 @@
 
 pkgname=chayuan-wps-addon-bin
 _pkgname=chayuan-wps-addon
-pkgver=6.1.0
-pkgrel=2
+pkgver=6.1.2
+pkgrel=1
 pkgdesc="Chayuan AI WPS Writer JS add-in & MCP sidecar"
 arch=('x86_64')
 url="https://aidooo.com/products/chayuan"
@@ -16,8 +16,8 @@ options=('!strip')
 source=("https://aidooo.com/downloads/chayuan/addon/linux-amd64/chayuan-${pkgver}-linux-x64.deb"
         "arch-user-init.sh"
         "chayuan-mcp.service")
-sha256sums=('878d3ff844b596e355f7c5f306daa2236b396ebfa7f592eacc59e21dcade2759'
-            'c12f0d995db23e8a0c8671a93ac4dd1ef82f5f4c6ba9ce69cb742badc589859a'
+sha256sums=('c9fe5264a4f37016c1d71b114a8bf48c364779b95591012b50aaab7a51789d2d'
+            'a35f9609f2b14fe8670fc05d59890aab98ea7c95ef0dbc4e31b2f9905078d7f5'
             '513e0763021d301f6cf618705c554cf280c7432988924df6238bf98acda29738')
 
 install=${pkgname}.install
