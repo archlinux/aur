@@ -1,4 +1,4 @@
-pkgbase = slimit-git
+pkgbase = slimit-gpu-git
 	pkgdesc = GUI NVidia GPU overclock, power limit and fan manager
 	pkgver = 1.1.10.r4.g147873b
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = slimit-git
 	source = git+https://github.com/ssprea/slimit.git
 	sha256sums = SKIP
 
-pkgname = slimit-git
+pkgname = slimit-gpu-git
