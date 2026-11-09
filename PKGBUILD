@@ -2,8 +2,8 @@
 _appname=trilium
 pkgname="${_appname}next-bin"
 _pkgname=TriliumNotes
-pkgver=0.106.1
-_electronversion=44
+pkgver=0.107.0
+_electronversion=45
 pkgrel=1
 pkgdesc="Build your personal knowledge base with TriliumNext Notes."
 arch=(
@@ -32,9 +32,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.rpm")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
-sha256sums_aarch64=('5af06ae1377d25a42c51d29f98422309591b311bb022dfc36644a5e7ff51a422')
-sha256sums_x86_64=('394a1937d4b6cb91ed08ec99159a1f167cf3cb51ce6abcde6d0936d823d64f87')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+sha256sums_aarch64=('ec86a940e34b17b8a3148101e95bdda8679aaf5322cb4a9c74746a8ee7c903be')
+sha256sums_x86_64=('f268d55895da840e2fcd95361631e7e73679035e630ddba0d9bb1b1e0a26ce81')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
