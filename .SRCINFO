@@ -1,6 +1,6 @@
 pkgbase = imsprog-git
 	pkgdesc = I2C, MicroWire and SPI EEPROM/Flash chip Programmer - is a program to read, write EEPROM chips use the CH341A programmer device and CH347T programmer device
-	pkgver = 1.8.6.r40.g41f65d8
+	pkgver = 1.9.1.r98.gc41d6d7
 	pkgrel = 1
 	url = https://github.com/bigbigmdm/IMSProg
 	arch = x86_64
@@ -17,7 +17,13 @@ pkgbase = imsprog-git
 	optdepends = ezp-chip-data-editor: QT based editor chip database for EZP2019, EZP2019+, EZP2020, EZP2023, EZP2025, MinPro programmer devices
 	optdepends = sfp-master: SFP-module programmer for CH341a devices
 	provides = imsprog
+	provides = imsprog-programmer
+	provides = imsprog-editor
+	provides = imsprog-database-update
 	conflicts = imsprog
+	conflicts = imsprog-programmer
+	conflicts = imsprog-editor
+	conflicts = imsprog-database-update
 	source = imsprog-git::git+https://github.com/bigbigmdm/IMSProg.git
 	sha256sums = SKIP
 
