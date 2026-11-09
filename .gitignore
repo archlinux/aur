@@ -1,0 +1,8 @@
+*.pkg.tar.zst
+src/
+pkg/
+picom/
+ws-direction/
+win-cause/
+*.patch
+*.log

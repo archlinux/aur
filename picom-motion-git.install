@@ -1,0 +1,28 @@
+post_install() {
+  cat <<'EOF'
+
+picom-motion-git is picom with two plugins: ws-direction (workspace transitions) and
+win-cause (window animations, i3 only). They do nothing until picom.conf names them.
+The lines for ~/.config/picom/picom.conf and your i3 config are on
+
+  https://jornc.github.io/picom-motion/install.html
+
+from "4. picom.conf" on. Steps 1 to 3 there build what this package installed.
+
+The styles are in /etc/xdg/picom/include/. To change one, copy it to
+~/.config/picom/include/ with the same path: picom looks there first.
+
+This picom is a fork that stages changes offered to picom. Report problems with it at
+https://github.com/JornC/picom-motion/issues, not to picom. Back to picom:
+
+  sudo pacman -S picom
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+picom reloads its config by itself, but not its own program: restart picom to run
+this version.
+EOF
+}

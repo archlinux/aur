@@ -1,0 +1,46 @@
+pkgbase = picom-motion-git
+	pkgdesc = picom with workspace and window animations for i3, from a fork that stages changes offered to picom
+	pkgver = 13.r2999.g7cbdb17
+	pkgrel = 1
+	url = https://jornc.github.io/picom-motion/
+	install = picom-motion-git.install
+	arch = x86_64
+	license = MPL-2.0 AND MIT
+	checkdepends = python
+	checkdepends = python-numpy
+	makedepends = asciidoctor
+	makedepends = git
+	makedepends = mesa
+	makedepends = meson
+	makedepends = ninja
+	makedepends = uthash
+	depends = hicolor-icon-theme
+	depends = libconfig
+	depends = libdbus
+	depends = libepoxy
+	depends = libev
+	depends = libgl
+	depends = libxcb
+	depends = pcre2
+	depends = pixman
+	depends = xcb-util-image
+	depends = xcb-util-renderutil
+	optdepends = i3-wm: win-cause needs i3; ws-direction works with any EWMH window manager
+	optdepends = dbus: for controlling picom via D-Bus
+	optdepends = python: for running picom-convgen.py
+	optdepends = rtkit: for realtime scheduling priority
+	optdepends = xorg-xprop: for picom-trans
+	optdepends = xorg-xwininfo: for picom-trans
+	provides = picom=13
+	conflicts = picom
+	backup = etc/xdg/picom.conf
+	source = picom::git+https://github.com/JornC/picom.git#branch=winanim
+	source = ws-direction::git+https://github.com/JornC/picom-ws-direction-plugin.git
+	source = win-cause::git+https://github.com/JornC/picom-win-cause-plugin.git
+	source = fix_black_screen_with_glx_backend.patch::https://github.com/yshui/picom/commit/676196359c15bb654696b05700330685db914710.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 660a5b48b7b44c5b3462378fd839f6fd42aff661ec729b11ff3cdba7dd397f6fd2185bc809d0d451243d1b0d86e9ad30c568f8f6292dea0aaf096b25424c5648
+
+pkgname = picom-motion-git
