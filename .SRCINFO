@@ -1,6 +1,6 @@
 pkgbase = business-network-wizard
 	pkgdesc = Configura e mantiene l'accesso alla rete aziendale: proxy NTLM, VPN, WiFi 802.1X, dischi di rete, stampanti
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/business-network-wizard
 	install = business-network-wizard.install
@@ -22,7 +22,7 @@ pkgbase = business-network-wizard
 	depends = pacman-contrib
 	depends = expac
 	options = !lto
-	source = business-network-wizard::git+https://github.com/AkusenArcade/business-network-wizard.git#tag=v0.8.0
+	source = business-network-wizard::git+https://github.com/AkusenArcade/business-network-wizard.git#tag=v0.8.1
 	sha256sums = SKIP
 
 pkgname = business-network-wizard

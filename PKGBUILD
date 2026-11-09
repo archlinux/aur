@@ -1,7 +1,7 @@
 # Maintainer: AkusenArcade <akudesyn@gmail.com>
 
 pkgname=business-network-wizard
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Configura e mantiene l'accesso alla rete aziendale: proxy NTLM, VPN, WiFi 802.1X, dischi di rete, stampanti"
 arch=('x86_64')
