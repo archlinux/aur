@@ -1,6 +1,6 @@
 pkgbase = folia-major
 	pkgdesc = Local music/navigation/third-party multi-platform online music player focusing on gorgeous lyrics animation effects.专注于绚丽的歌词动画效果的本地音乐/navidrome/第三方多平台在线音乐播放器.
-	pkgver = 0.7.26
+	pkgver = 0.7.27
 	pkgrel = 1
 	url = https://folia-site.cielaniska.top/
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = folia-major
 	depends = python-numpy
 	depends = python-psutil
 	depends = ffmpeg
-	source = folia-major-0.7.26.tar.gz::https://github.com/chthollyphile/folia-major/archive/refs/tags/v0.7.26.tar.gz
+	source = folia-major-0.7.27.tar.gz::https://github.com/chthollyphile/folia-major/archive/refs/tags/v0.7.27.tar.gz
 	source = folia-major.sh
-	sha256sums = 2393f37d485be1b1b5353cad22c8b31632b8c3b907f924fbaeacad051fb49816
+	sha256sums = cd7f0ec2a9536b741f15061239166dfd20040a6e9f993d948591039280e1d039
 	sha256sums = ef3b8fed44fdace077b976cc3a89a93bde368a9e445e4134efd7a44358676a27
 
 pkgname = folia-major

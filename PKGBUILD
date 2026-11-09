@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.26
+pkgver=0.7.27
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2393f37d485be1b1b5353cad22c8b31632b8c3b907f924fbaeacad051fb49816'
+sha256sums=('cd7f0ec2a9536b741f15061239166dfd20040a6e9f993d948591039280e1d039'
             'ef3b8fed44fdace077b976cc3a89a93bde368a9e445e4134efd7a44358676a27')
 _get_project_dir() {
 	local d
