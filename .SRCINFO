@@ -1,0 +1,24 @@
+pkgbase = hongguo-desktop-bin
+	pkgdesc = 红果短剧桌面版（预编译 AppImage）
+	pkgver = 0.2.159
+	pkgrel = 1
+	url = https://github.com/aston314/hongguo-tv-releases
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	optdepends = noto-fonts-cjk: 中文界面字体
+	optdepends = gst-plugins-ugly: 额外媒体格式解码
+	provides = hongguo-desktop
+	conflicts = hongguo-desktop
+	options = !strip
+	options = !debug
+	source = https://github.com/aston314/hongguo-tv-releases/releases/download/linux-v0.2.159-test.1/hongguo-desktop-0.2.159-x86_64.AppImage
+	sha256sums = 2f8761261cb66136aea75fd969aa739bc6fecd5f283ad06afa16814cdceb9e58
+
+pkgname = hongguo-desktop-bin
