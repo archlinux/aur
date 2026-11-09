@@ -4,9 +4,9 @@
 
 _browser=vivaldi-snapshot
 pkgname=${_browser}-ffmpeg-codecs
-pkgver=156.0.8078.91
-_vivaldi_major_version=8.3
-_commit=9db86ce5b5b454dfc96c435f9f0723012980c37f
+pkgver=158.0.8104.0
+_vivaldi_major_version=8.4
+_commit=5c85ff666b3434d9323b83437f910ad8431ab7c9
 #_commit=$(curl -sL "https://chromium.googlesource.com/chromium/src.git/+/refs/tags/${pkgver}/DEPS?format=TEXT" | base64 -d | grep -oP "'ffmpeg_revision': '\K[0-9a-f]{40}'" | tr -d \')
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for ${_browser}"
@@ -17,7 +17,7 @@ depends=(glibc)
 makedepends=(nasm git)
 options=(!debug)
 source=("chromium-ffmpeg::git+${url}.git#commit=${_commit}")
-sha256sums=('76616c10178fd61b669805fc1ef93221b6a85ca0c7b1d745ed051423ed09ffdc')
+sha256sums=('b18f55283d7ce5218bdacbfbdb3fde0755fe4aaa012fa1719501e4173336ee74')
 
 prepare() {
   cd chromium-ffmpeg
