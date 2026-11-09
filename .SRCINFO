@@ -1,0 +1,20 @@
+pkgbase = incrust-git
+	pkgdesc = A minimal incremental / idle terminal game about compiling stuff (git version)
+	pkgver = 1.0.0.r26.c49ebbb
+	pkgrel = 1
+	url = https://github.com/Antiz96/incrust
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = glibc
+	depends = libgcc
+	optdepends = genact: for compilation animations
+	provides = incrust
+	conflicts = incrust
+	source = git+https://github.com/Antiz96/incrust.git
+	sha256sums = SKIP
+
+pkgname = incrust-git
