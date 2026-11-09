@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-bin
 _pkgname=Publii
-pkgver=0.48.2
+pkgver=0.48.3
 _electronversion=43
 pkgrel=1
 pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites."
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2bad238ddadd99dbaba42d12e600cabda2aff133d98ec0b1c386c651b2e0ca1f'
+sha256sums=('cb1eccb2c351d2cd4f6534b51c50729b9dfd09c9080e360fa84d837bedc72e6d'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
@@ -55,7 +55,7 @@ prepare() {
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 	local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
 	find "$(_get_app_dir)" -type d \
 		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
@@ -66,5 +66,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _install_icons
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
