@@ -1,4 +1,14 @@
 # Changelog
+## [1:620.70.06-1] - 2026-11-09
+
+### Changed
+- Update the NVIDIA open kernel module source to 620.70.06 and migrate the Thunderbolt eGPU hotplug patchset
+- Remove the ReBAR bridge workaround from the general installation message; document it as an optional setting in the README
+
+### Fixed
+- Preserve surprise-removal checks in the GPU close paths using the flags available in 620.70.06
+- Adapt the GPU-loss guards to the 620 display lookup and GSP teardown interfaces
+
 ## [1:615.78.08-5] - 2026-10-11
 
 ### Added

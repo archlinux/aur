@@ -1,6 +1,6 @@
 # nvidia-open-egpu
 
-Arch Linux packages for NVIDIA's open kernel modules with Thunderbolt eGPU hotplug support. The current package is based on NVIDIA open-gpu-kernel-modules 615.78.08; see `PKGBUILD` for the package release and `CHANGELOG.md` for recent changes.
+Arch Linux packages for NVIDIA's open kernel modules with Thunderbolt eGPU hotplug support. The current package is based on NVIDIA open-gpu-kernel-modules 620.70.06; see `PKGBUILD` for the package release and `CHANGELOG.md` for recent changes.
 
 The patch set adds guards for GPU surprise removal and reconnect cleanup. Udev loads the NVIDIA modules when an NVIDIA display GPU appears and starts eGPU cleanup when a Thunderbolt device is removed. Cleanup tracks NVIDIA-classified external GPUs by PCI address and device nodes, so it can target the GPU that disappeared without relying on device numbering.
 
@@ -64,13 +64,13 @@ options nvidia NVreg_RegistryDwordsPerDevice="pci=0000:04:00.0;RmForceExternalGp
 
 Replace `0000:04:00.0` with the eGPU's PCI BDF. This per-device setting avoids forcing external mode on other NVIDIA GPUs.
 
-For systems that need the ReBAR bridge workaround, set the sibling PCI-to-PCI bridge BDF in `/etc/nvidia.env`:
+If an eGPU needs the optional ReBAR allocation workaround, set the sibling PCI-to-PCI bridge BDF in `/etc/nvidia.env`, replacing the example with the bridge for your system:
 
 ```ini
 NVIDIA_EGPU_DISABLE_BRIDGE=0000:03:04.0
 ```
 
-The handler temporarily removes that bridge around module loading and rescans PCI afterward. Use this only when the eGPU needs the workaround; the bridge's downstream devices are temporarily removed too.
+The handler temporarily removes that bridge around module loading and rescans PCI afterward. Its downstream devices are temporarily removed too. This setting does not enable or disable ReBAR.
 
 The package's modprobe configuration blacklists NVIDIA and Nouveau aliases so the eGPU udev handler controls module loading. On a system with an internal NVIDIA GPU, review `/usr/lib/modprobe.d/nvidia-open.conf`; an `/etc/modprobe.d/nvidia-open.conf` override can replace it. Keep NVIDIA modules out of the initramfs on eGPU-only systems, and include them there only when needed for an internal NVIDIA GPU.
 
