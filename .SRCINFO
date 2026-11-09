@@ -1,0 +1,19 @@
+pkgbase = ftx-for-linux
+	pkgdesc = Native GTK4/libadwaita FT8 and FT4 program for TCI radios (decoders ported from WSJT-X)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OK1BR/ftx-for-linux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = desktop-file-utils
+	makedepends = gtk-update-icon-cache
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = fftw
+	depends = libwebsockets
+	source = ftx-for-linux-0.1.0.tar.gz::https://github.com/OK1BR/ftx-for-linux/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 88fce89b7d1415d8f131e8b7204bc5c7cd10d86cab9df224ed7daedf12e68cf0
+
+pkgname = ftx-for-linux
