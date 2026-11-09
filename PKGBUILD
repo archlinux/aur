@@ -18,9 +18,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'asar'
-)
 options=(
     '!strip'
     '!emptydirs'
@@ -35,7 +32,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/downloa
 sha256sums=('f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_x86_64=('ce2197536d476c1f5e05350be009979b3173f12a90f475febfcdfdce8d4327fb')
+sha256sums_x86_64=('c78d719d22b32151afb34f1f2cf20f1628a2ea0fb7bec9e986f47171c53fbbaf')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
