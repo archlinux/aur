@@ -33,7 +33,7 @@ pkgbase = millennium-git
 	source = git+https://github.com/SteamClientHomebrew/Millennium.git#branch=main
 	source = https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/949.patch
 	sha256sums = SKIP
-	sha256sums = e934cfcdf8eb01224abcd77c20e5689a8857020ab5921c0bda850da8287b7643
+	sha256sums = SKIP
 
 pkgname = millennium-git
 
