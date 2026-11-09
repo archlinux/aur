@@ -2,11 +2,12 @@ post_upgrade() {
     if [ -f /etc/systemd/system/snvctl.service ]; then
         systemctl disable --now snvctl.service || true
         rm -f /etc/systemd/system/snvctl.service
-        systemctl daemon-reload
     fi
 
+    systemctl daemon-reload
     systemctl restart slimitd.service
 }
 post_install() {
+    systemctl daemon-reload
     systemctl enable --now slimitd.service
 }

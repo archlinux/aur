@@ -2,8 +2,8 @@
 # Maintainer: ssprea <ssprea@proton.me>
 _pkgname=ssprea-nvidia-control
 pkgname=${_pkgname}-git
-pkgver=1.1.10.r4.g147873b
-pkgrel=5
+pkgver=1.1.10.r97.gcc73e95
+pkgrel=6
 epoch=
 pkgdesc="GUI NVidia GPU overclock, power limit and fan manager"
 arch=('x86_64')
