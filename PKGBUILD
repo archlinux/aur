@@ -2,13 +2,13 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=r5r
-_pkgver=2.4.0
+_pkgver=2.5.0
 pkgname=r-${_pkgname,,}
 pkgdesc="Rapid Realistic Routing with ‘R5’"
 url="https://cran.r-project.org/package=r5r"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=9
 
 arch=("any")
 depends=(
@@ -48,7 +48,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('8996286d982c9e0b78e839db74ca878148e63965b21768018e4f64204980de00bf5a5e400d7a907064958411e1696ba5062ad41a86acddb6025b76fcf5be0d70')
+b2sums=('d42aa3a3441ee5884e262128b472e36dd00d14699587aebfb4980c19a88f789b7fb9155f370624b26eebfed69e7d7df0478f0840f674a2ed7f87a58bbffcf797')
 
 build() {
     mkdir -p "${srcdir}/build/"
