@@ -12,7 +12,7 @@ optdepends=('xdg-utils: easily use default application associated with a file ty
             'perl: for rawedit script')
 makedepends=('make' 'nim')
 source=("https://codeberg.org/jschlatow/taskopen/archive/v${pkgver}.tar.gz")
-sha256sums=("8fb69dae0663f2a6e894338e567b7af7bbcff45356c7c7308cf9912edc7c38d6")
+sha256sums=("e3cf7b505ec2f8f6c622f195628e45655df6a0496cbff9abf7ab78c0793eeb63")
 
 build() {
   cd "$srcdir/${pkgname}"
