@@ -1,6 +1,6 @@
 pkgbase = prot
 	pkgdesc = Your development servers, under control
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/terastal-hq/prot
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = prot
 	makedepends = gtk3
 	options = !lto
 	options = !debug
-	source = prot-0.1.0.tar.gz::https://github.com/terastal-hq/prot/archive/refs/tags/v0.1.0.tar.gz
+	source = prot-0.2.0.tar.gz::https://github.com/terastal-hq/prot/archive/refs/tags/v0.2.0.tar.gz
 	source = protd.service
 	source = protd.install
-	sha256sums = 42ff31e63e5dd72d0a40c6feca8cc4862579e0b8a2a05b15b8108357900e2c57
+	sha256sums = 949b4b8e4c1e404880b61244e61a31127d38adfed31beccbb47418251b51ba28
 	sha256sums = 92f46be2caef8d87f8b8292d71d621c99a3ace4434d4fdedb0b4610c0a5d042f
 	sha256sums = 0ac18ee1337c27194d3d61396c31b087f53d5d6fc42e7823817bfeb84c123568
 

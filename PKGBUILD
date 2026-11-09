@@ -7,7 +7,7 @@
 
 pkgbase=prot
 pkgname=(protd prot prot-desktop)
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Your development servers, under control"
 arch=(x86_64 aarch64)
@@ -17,7 +17,8 @@ makedepends=(go rust nodejs npm webkit2gtk-4.1 gtk3)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         protd.service
         protd.install)
-sha256sums=('42ff31e63e5dd72d0a40c6feca8cc4862579e0b8a2a05b15b8108357900e2c57'
+# The first checksum is filled in by `updpkgsums` once the v$pkgver tag exists on GitHub.
+sha256sums=('949b4b8e4c1e404880b61244e61a31127d38adfed31beccbb47418251b51ba28'
             '92f46be2caef8d87f8b8292d71d621c99a3ace4434d4fdedb0b4610c0a5d042f'
             '0ac18ee1337c27194d3d61396c31b087f53d5d6fc42e7823817bfeb84c123568')
 options=(!lto !debug)
