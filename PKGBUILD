@@ -2,18 +2,18 @@
 # Upstream: https://github.com/horizzon3507/stfu
 
 pkgname=stfu
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Kill switch for all microphones (PipeWire/WirePlumber)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/horizzon3507/stfu"
-license=('MIT')
+license=('Apache-2.0')
 depends=('gcc-libs' 'wireplumber' 'systemd')
 makedepends=('cargo')
 provides=('stfu')
 conflicts=('stfu-bin' 'stfu-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/horizzon3507/stfu/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('064b55dea1e2d18387f453f67f195a94e56cb4790b123dacd0190b4805fde4b0')
+sha256sums=('7bb89b14165acf95f51320c172e5ff181f90c652b4e41aca1b2e891fd7beae5f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

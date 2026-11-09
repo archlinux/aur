@@ -1,11 +1,11 @@
 pkgbase = stfu
 	pkgdesc = Kill switch for all microphones (PipeWire/WirePlumber)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/horizzon3507/stfu
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = Apache-2.0
 	makedepends = cargo
 	depends = gcc-libs
 	depends = wireplumber
@@ -13,7 +13,7 @@ pkgbase = stfu
 	provides = stfu
 	conflicts = stfu-bin
 	conflicts = stfu-git
-	source = stfu-0.2.0.tar.gz::https://github.com/horizzon3507/stfu/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 064b55dea1e2d18387f453f67f195a94e56cb4790b123dacd0190b4805fde4b0
+	source = stfu-0.2.1.tar.gz::https://github.com/horizzon3507/stfu/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 7bb89b14165acf95f51320c172e5ff181f90c652b4e41aca1b2e891fd7beae5f
 
 pkgname = stfu
