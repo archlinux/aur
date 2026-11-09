@@ -1,6 +1,6 @@
 # Maintainer: Seunghun Kim <seunghunkim at proton dot me>
 pkgname=clipcascade-bin
-pkgver=3.4.1
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Sync clipboard across multiple devices"
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
     'python-xxhash'
     'python-pyfiglet'
     'python-prompt_toolkit'
+    'python-keyring'
     'python-beautifulsoup4'
     'python-aiortc'
 )
@@ -37,7 +38,7 @@ source=(
     "clipcascade.sh"
     "fix-write-path.patch"
 )
-sha256sums=('947c56f66f679a9b096d06dcd352ab46f485578e5e268c94d6efe61488f429a0'
+sha256sums=('28291ebf340c09ec19fae6a82c482c6ea251ccdb66323c05b89a8b026bcfec4d'
             'b6bd10b3ea41fa8643947f3735256fb77b9d6e852736df61b13b0cb803d25d1e'
             '93e8a6c01a9454dc3bff053e46d44792a4d56687f94a24f534003d8a8dd77e4e'
             '7bf24291bf2b9ca51782c328ad37b35faea5b27c33f0bb1e6ef71c6744b4702d'
