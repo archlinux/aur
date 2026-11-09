@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=ferriskey
 # renovate: datasource=github-tags depName=ferriskey/ferriskey
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="open-source IAM solution designed for modern cloud-native environments, high-performance and written in Rust"
 arch=("x86_64")
@@ -42,4 +42,4 @@ package() {
   cp -r $pkgname-$pkgver/front/dist/. "$pkgdir"/usr/share/webapps/$pkgname
 }
 
-sha256sums=('1041dd45439459519453d32553198a670a7233767d74baf11b1105a264139cd5')
+sha256sums=('5e65698d9681b2f93e222b3e91c422f0aab1423e27ebb6cfaab182c12b3eec7c')
