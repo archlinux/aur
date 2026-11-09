@@ -1,13 +1,14 @@
 pkgbase = cluestering
 	pkgdesc = High-performance density-based weighted clustering library developed at CERN
-	pkgver = 2.14.0
+	pkgver = 2.14.2
 	pkgrel = 1
 	url = https://github.com/cms-patatrack/CLUEstering
 	arch = any
 	license = MPL-2.0
 	makedepends = cmake
+	depends = alpaka-cpp
 	depends = boost
-	source = https://github.com/cms-patatrack/CLUEstering/archive/refs/tags/2.14.0.tar.gz
-	sha256sums = 21e7b8b44a4c8e151573a7783497754f72e1a1b6f39b223b6060be4adbd60f30
+	source = https://github.com/cms-patatrack/CLUEstering/archive/refs/tags/2.14.2.tar.gz
+	sha256sums = ff95fac879eac511170f07f289b96bbfea447f5592ad9f0f418e709022f535ae
 
 pkgname = cluestering
