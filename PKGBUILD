@@ -1,7 +1,6 @@
-# Maintainer: LyuFifi <fifilyu@gmail.com>
 pkgname=hongguo-desktop-bin
 pkgver=0.2.159
-pkgrel=1
+pkgrel=2
 pkgdesc="红果短剧桌面版（预编译 AppImage）"
 arch=('x86_64')
 url="https://github.com/aston314/hongguo-tv-releases"
@@ -26,6 +25,8 @@ prepare() {
 package() {
   install -d "$pkgdir/opt/$pkgname"
   cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
+  chmod 755 "$pkgdir/opt/$pkgname"
+  find "$pkgdir/opt/$pkgname" -type d -exec chmod 755 {} +
 
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/hongguo-tv" <<'EOF'
