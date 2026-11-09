@@ -1,19 +1,20 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='payme'
 pkgname="${_pkgname}-git"
-pkgver=1.2.4.r3.g5425749
-pkgrel=2
 pkgdesc='QR code generator (ASCII and PNG) for SEPA payments (development version)'
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+pkgver=1.3.0.r0.ga81c4a1
+pkgrel=1
 url='https://github.com/jovandeginste/payme'
-license=('MIT')  # SPDX-License-Identifier: MIT
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-depends=('glibc')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+license=('MIT')
 makedepends=('git' 'go')
+depends=('glibc')
+provides=("$_pkgname")
+conflicts=("${provides[@]}")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -52,7 +53,8 @@ build() {
     -trimpath \
     -ldflags="-linkmode=external -X main.gitRefName=$_pkgver -X main.gitCommit=$_pkgrev" \
     -mod=readonly -modcacherw \
-    -o build
+    -o build/payme \
+      ./cmd/payme/main.go
 
   for _shell in bash fish zsh; do
     "build/$_pkgname" completion "$_shell" > "_completion.$_shell"
@@ -69,16 +71,20 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 build/payme "$pkgdir/usr/bin/payme"
-  install -vDm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -vDm0644 LICENSE     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0755 build/payme "$pkgdir/usr/bin/payme"
+  install -Dm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 LICENSE     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -vDm0644 _completion.bash \
+  install -Dm0644 _completion.bash \
     "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -vDm0644 _completion.fish \
+  install -Dm0644 _completion.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-  install -vDm0644 _completion.zsh \
+  install -Dm0644 _completion.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -sr "$pkgname" "$_pkgname"
+  done > /dev/null
 }
 
 # eof
