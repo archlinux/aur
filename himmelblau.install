@@ -101,13 +101,30 @@ _disable_greeter() {
     fi
 }
 
+_system_changes() {
+    cat <<'EOF'
+This package changes system configuration:
+  - /etc/nsswitch.conf: himmelblau added to passwd, group, shadow, initgroups
+  - /etc/pam.d: pam_himmelblau added by 'aad-tool configure-pam'
+  - /etc/pam.d/gdm-password (GDM only): keyring unlocks on PIN login
+  - dconf (if installed): enables the QR greeter GNOME extension
+  - /etc/ssh/sshd_config.d/30-himmelblau.conf: keyboard-interactive login,
+    effective when sshd restarts
+  - Chrome/Chromium managed policy: force-installs the Entra SSO extension
+To opt out of the sshd or browser changes, edit those files rather than
+deleting them (an empty policy is {}); pacman keeps your edits on upgrade.
+EOF
+}
+
 post_install() {
     _configure_nss
     _configure_pam
     _configure_keyring
     _enable_greeter
 
+    _system_changes
     cat <<'EOF'
+
 Set your Entra ID domain in /etc/himmelblau/himmelblau.conf, then start the
 daemons:
 
@@ -120,6 +137,14 @@ post_upgrade() {
     _configure_nss
     _configure_keyring
     _enable_greeter
+
+    # Versions before 4.0.8 had no install script, so these edits are new.
+    if [ "$(vercmp "$2" 4.0.8)" -lt 0 ]; then
+        _system_changes
+        echo "Upgrades redo the nsswitch, GDM and dconf steps. PAM is configured only"
+        echo "on first install; if yours isn't, see 'aad-tool configure-pam --help'."
+        echo
+    fi
 
     echo "Restart the daemons to run the new version:"
     echo "    systemctl try-restart himmelblaud himmelblaud-tasks"
