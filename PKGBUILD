@@ -58,6 +58,17 @@ pkgver() {
 prepare() {
     cd pila
     export RUSTUP_TOOLCHAIN=stable
+    # Cargo checks rust-version only after fetching the dependencies, and an
+    # older one fails earlier on smithay's manifests with an unrelated error
+    # ("feature `edition2024` is required"): say what's wrong here instead.
+    local need have
+    need="$(sed -n 's/^rust-version = "\(.*\)"/\1/p' Cargo.toml)"
+    have="$(cargo --version | cut -d' ' -f2)"
+    if [[ "$(printf '%s\n' "$need" "$have" | sort -V | head -n1)" != "$need" ]]; then
+        error 'pila needs Rust %s or newer, found %s (with rustup: rustup update stable)' \
+            "$need" "$have"
+        return 1
+    fi
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
