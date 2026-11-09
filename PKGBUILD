@@ -2,7 +2,7 @@
 # Co-Maintainer: NyaKang <CoderKang@hotmail.com>
 
 pkgname=nyaterm-bin
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Native GPUI terminal workspace with SSH, SFTP, RDP and VNC"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("LICENSE::$url/raw/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/NyaTerm_${pkgver}_linux_x64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/NyaTerm_${pkgver}_linux_arm64.deb")
 sha256sums=('e0360c0b8e0dc3d944033910279d7736d72a51a6639278ede8807e74fe4c1de9')
-sha256sums_x86_64=('289e1b50ab196b220f6d47faad5cd5754a1e4e250423b9e40c7882d544d139a6')
-sha256sums_aarch64=('ceead3386099b5c62eaf24d03d635570410e9a7a6318a22a0152500110d2efb1')
+sha256sums_x86_64=('11c5c17b7bc29a33339d3571e8ee56223d3da5eb705f0c619280de065ebf015a')
+sha256sums_aarch64=('2f0d3a20d864c409856087a3581bafcd19ee7f8af6874dc6ae8a7c7ff7c601ba')
 
 package() {
   local deb="$srcdir/$pkgname-$pkgver-$CARCH.deb"
