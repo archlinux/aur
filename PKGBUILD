@@ -6,7 +6,7 @@
 
 pkgname=subx-bin
 _pkgname=subx
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='All-in-one fansub toolkit: extract/clean/shift/mux/convert/translate subs (prebuilt static binary)'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('e92f7f21a2d0a5f801f9625376061874d992936e166d5fcff37df2db5f8883ab')
-sha256sums_aarch64=('ad095c1f3affd993ad122a32f604f2e20418783000cb5d8f1c3affad59eade3c')
+sha256sums_x86_64=('98746ad4ec4c2aa91c46278baf48f41d3d38129a72685e2721112078db85bb54')
+sha256sums_aarch64=('f2f8fe922ba7aa52d81473ef02af691cbf67fcf73b0c8ea0235460482b10a93a')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-unknown-linux-musl"
