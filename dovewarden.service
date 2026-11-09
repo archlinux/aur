@@ -1,0 +1,16 @@
+[Unit]
+Description=Dovecot replication
+After=network.target
+
+[Service]
+Type=simple
+User=dovewarden
+DynamicUser=yes
+EnvironmentFile=/etc/conf.d/dovewarden
+ExecStart=/usr/bin/dovewarden
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
