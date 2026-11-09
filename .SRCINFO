@@ -1,0 +1,17 @@
+pkgbase = fun-overlay-git
+	pkgdesc = A lightweight, draggable animated GIF overlay for Wayland compositors like Hyprland
+	pkgver = 0.1.0.r2.2bfddf4
+	pkgrel = 1
+	url = https://github.com/yunmikun2/fun_overlay
+	arch = x86_64
+	license = None
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-pillow
+	depends = gtk-layer-shell
+	provides = fun-overlay
+	source = git+https://github.com/yunmikun2/fun_overlay
+	md5sums = SKIP
+
+pkgname = fun-overlay-git
