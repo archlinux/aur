@@ -7,7 +7,7 @@
 
 _pkgname=cura
 pkgname=$_pkgname-bin
-pkgver=5.13.0
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
@@ -19,6 +19,7 @@ makedepends=('util-linux')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
+install=$pkgname.install
 
 source=(
   "https://github.com/Ultimaker/Cura/releases/download/${pkgver}/UltiMaker-Cura-${pkgver}-linux-X64.AppImage"
@@ -26,7 +27,7 @@ source=(
 )
 
 sha512sums=(
-  '349a3420d0e629a680929d1e61ac402f228c20bd0af160302742119b8b68f52b7211d48c5241646b3da229d887c53e31187182273f0fdbea21081df20b4fc52d'
+  '754bf0d0c36d5965841634e3072e999aa868aecd66f11d0babcfec4bec0c3d76a6cbf71f938dbe6d7d10b3d92679022af8ce684a7c0b1c29f3cab3eed86e8f86'
   'fd58d0df072b27bb541d8160ab4d0c21a7de2ee74835d72bc96dc46f1b78ca46df43aa027215974227912d064e4c9273dc7ae8f84ee0205241b80283ed095133'
 )
 
@@ -35,6 +36,7 @@ prepare() {
   chmod 755 UltiMaker-Cura-${pkgver}-linux-X64.AppImage
   ./UltiMaker-Cura-${pkgver}-linux-X64.AppImage --appimage-extract >/dev/null
   hardlink --content --maximize squashfs-root
+  find squashfs-root -type d -exec chmod 755 '{}' \; # Fix permissions
   cd squashfs-root
   sed -i 's|^Comment=.*|Comment=Cura converts 3D models into paths for a 3D printer. It prepares your print for maximum accuracy, minimum printing time and good reliability with many extra features that make your print come out great.|' com.ultimaker.cura.desktop
   sed -i 's|^Icon=|Icon=/usr/share/pixmaps/|' com.ultimaker.cura.desktop

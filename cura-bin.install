@@ -1,0 +1,6 @@
+pre_upgrade() {
+    if [[ -d /opt/ultimaker-cura ]]; then
+        printf '%s\n' 'Fixing permissions on /opt/ultimaker-cura directories'
+        find /opt/ultimaker-cura -type d -exec chmod 755 '{}' \;
+    fi
+}
