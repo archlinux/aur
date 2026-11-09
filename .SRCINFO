@@ -1,7 +1,7 @@
 pkgbase = calibraw-bin
 	pkgdesc = CalibRaw is a fast, non-destructive, GPU-accelerated RAW photo editor
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/Duecki1/CalibRaw
 	arch = x86_64
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = calibraw-bin
 	depends = hicolor-icon-theme
 	provides = CalibRaw
 	conflicts = calibraw
-	source_x86_64 = https://github.com/Duecki1/CalibRaw/releases/download/v1.4.0/CalibRaw-x86_64.AppImage
-	sha256sums_x86_64 = 4baa19518a6480f4387fc3462ca40e818d44b71b6205b8d75b85ba9eb5966965
-	source_aarch64 = https://github.com/Duecki1/CalibRaw/releases/download/v1.4.0/CalibRaw-aarch64.AppImage
-	sha256sums_aarch64 = ee1c39f06f335ac83af62ce653f13cd05025e018571dcfab04e8778279fd21d9
+	source_x86_64 = https://github.com/Duecki1/CalibRaw/releases/download/v1.4.1/CalibRaw-x86_64.AppImage
+	sha256sums_x86_64 = d6c7e8af76bd169041f2c71e063f4c7b8e682ad806d3a4d97fc95de12a49d019
+	source_aarch64 = https://github.com/Duecki1/CalibRaw/releases/download/v1.4.1/CalibRaw-aarch64.AppImage
+	sha256sums_aarch64 = 5e7d0a7af4d484ce43176fd6d62746a99667314cd36a8807e5ab11a59af4911f
 
 pkgname = calibraw-bin
