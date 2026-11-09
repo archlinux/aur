@@ -1,0 +1,18 @@
+pkgbase = jupyter-ruff-bin
+	pkgdesc = JupyterLab and Jupyter Notebook extension for formatting code with Ruff
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/leotaku/jupyter-ruff
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-installer
+	depends = jupyterlab>=4.5.2
+	depends = jupyterlab<5
+	depends = python
+	provides = jupyter-ruff=0.3.1
+	conflicts = jupyter-ruff
+	noextract = jupyter_ruff-0.3.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/j/jupyter-ruff/jupyter_ruff-0.3.1-py3-none-any.whl
+	sha256sums = 3380298e8012eb1f93b62b53e89f8c45f7ecee1a2dc133c415da261fc60e1f8f
+
+pkgname = jupyter-ruff-bin
