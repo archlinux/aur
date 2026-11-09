@@ -33,13 +33,13 @@ sha256sums=()
 validpgpkeys=()
 
 build() {
- 	cd "$_pkgname"
+ 	cd "$_pkgname-$pkgver"
 	make -j1 publish
 }
 
 
 package() {
-	cd "$_pkgname"
+	cd "$_pkgname-$pkgver"
 
 	make DESTDIR="$pkgdir/" installcli
 	make DESTDIR="$pkgdir/" installgui
