@@ -1,7 +1,7 @@
 # Maintainer: MMMaellon <mmmaellon at gmail dot com>
 # Openhouse created by YusufOzmen01
 pkgname="openhouse-bin"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Drop-in open-source replacement for SteamVR's lighthouse driver"
 arch=('x86_64')
@@ -20,10 +20,10 @@ source=("$pkgname-${pkgver}.tar.gz::https://github.com/YusufOzmen01/openhouse/re
         "openhouse-install"
         "openhouse-uninstall"
         "symlink-install.patch")
-sha256sums=('a8a7fae7cdc8a8aeb01fd3ffc2f25f08700f503854763354442c706ec705c396'
+sha256sums=('3bae514ad2a88667187df6da7af309bbff08e519fdfeab63d5d17a0e65df6252'
             '3548c697d2060c7a5507c85d2cac7c8b75a3380c5fe551109a20da184f963052'
             'fa4e3ef11a2b7c38fd4ba6347a4648993db2b787e92d71d93eecd1c374bf9f76'
-            'ec7415061be51f1da076b455808a8f21fd4b8958c1201eafce386c2c8c88a148')
+            '037c2fb60c3ee42cd7f36bb36b2921ef1486a76269dc0dd37eca7f916b08fe5c')
 
 prepare(){
     cd "openhouse-driver"
@@ -39,13 +39,7 @@ package() {
     install -d "$pkgdir/usr/share/licenses/openhouse-bin"
     mv "$pkgdir/usr/lib/openhouse/lh-licenses" "$pkgdir/usr/share/licenses/openhouse-bin/"
     mv "$pkgdir/usr/lib/openhouse/LICENSE.txt" "$pkgdir/usr/share/licenses/openhouse-bin/"
-    rm -rf "$pkgdir/usr/share/licenses/openhouse-bin/lh-licenses/systemd"
 
     install -Dm755 "$srcdir/openhouse-install" "$pkgdir/usr/bin/openhouse-install"
     install -Dm755 "$srcdir/openhouse-uninstall" "$pkgdir/usr/bin/openhouse-uninstall"
-
-    # Upstream ships these with a DT_NEEDED on liblh.so.1. There's no liblh.so.1 in the upstream tarball though, so these are unrunnable
-    # They also have some broken runpaths
-    rm "$pkgdir/usr/lib/openhouse/tools/lhtool"
-    rm "$pkgdir/usr/lib/openhouse/tools/openhouse-compare"
 }
