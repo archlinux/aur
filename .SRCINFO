@@ -8,6 +8,7 @@ pkgbase = remote-desktop-manager-em
 	license = Proprietary
 	depends = ca-certificates
 	depends = libsecret
+	depends = libudev.so=1-64
 	depends = vte3
 	depends = webkit2gtk-4.1
 	depends = xorg-server-xwayland

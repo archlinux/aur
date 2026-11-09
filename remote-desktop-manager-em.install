@@ -12,14 +12,30 @@ BOLD="$(tput bold)"
 BLUE="${BOLD}$(tput setaf 4)"
 YELLOW="${BOLD}$(tput setaf 3)"
 
+# Applies the YubiKey udev rule (usr/lib/udev/rules.d) to keys already plugged in, so Copy to YubiKey can reach
+# them without a replug; skipped where udev is not running (containers, chroots)
+reload_udev_rules() {
+    if [ -S /run/udev/control ] && command -v udevadm > /dev/null; then
+        udevadm control --reload-rules || true
+        udevadm trigger --subsystem-match=hidraw --action=change || true
+    fi
+}
+
 post_install() {
     if [ ! -d "/usr/share/.mono/new-certs/Trust" ]; then
         msg_blue "Extracting ca-anchors.."
         mkdir -p /usr/share/.mono/new-certs/Trust
         trust extract --filter=ca-anchors --format=pem-directory-hash --purpose=server-auth /usr/share/.mono/new-certs/Trust/
     fi
+
+    reload_udev_rules
 }
 
 post_upgrade() {
     post_install
+}
+
+# Stops the YubiKey udev rule from applying; access already granted to a plugged-in key lasts until it is unplugged
+post_remove() {
+    reload_udev_rules
 }

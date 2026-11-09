@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://remotedesktopmanager.com/"
 license=('Proprietary')
 groups=()
-depends=('ca-certificates' 'libsecret' 'vte3' 'webkit2gtk-4.1' 'xorg-server-xwayland')
+depends=('ca-certificates' 'libsecret' 'libudev.so=1-64' 'vte3' 'webkit2gtk-4.1' 'xorg-server-xwayland')
 optdepends=('fuse3: for copying files from an RDP connection'
             'libappindicator-gtk3: for system tray icon support'
             'lsof'
