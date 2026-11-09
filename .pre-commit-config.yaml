@@ -1,7 +1,9 @@
 # Checks of the AUR packages for pre-commit (https://pre-commit.com, the pre-commit package), run before
 # each commit after `pre-commit install`. Every package has a copy of this file (templates/package in
 # the repository of the packages), so it works on its own as well. The hooks use the tools of the Arch
-# Linux packages named in brackets, nothing is downloaded.
+# Linux packages named in brackets, nothing is downloaded. In the repository of the packages, the style
+# hooks leave out overrides/: Arch Linux's packages there keep Arch's style, so their updates merge
+# cleanly (an override with a copy of this file is checked fully, as a project of its own).
 repos:
   - repo: local
     hooks:
@@ -27,34 +29,37 @@ repos:
         language: system
         entry: shfmt --write
         files: (^|/)PKGBUILD$|\.install$
+        exclude: ^overrides/
       - id: shfmt
         name: shfmt (shfmt)
         language: system
         entry: shfmt --write
         types: [shell]
-        exclude: (^|/)PKGBUILD$
+        exclude: ^overrides/|(^|/)PKGBUILD$
       - id: shellcheck-pacman
         name: shellcheck, PKGBUILD and .install (shellcheck)
         language: system
         entry: shellcheck --shell=bash
         files: (^|/)PKGBUILD$|\.install$
+        exclude: ^overrides/
       - id: shellcheck
         name: shellcheck (shellcheck)
         language: system
         entry: shellcheck
         types: [shell]
-        exclude: (^|/)PKGBUILD$
+        exclude: ^overrides/|(^|/)PKGBUILD$
       - id: shellharden-pacman
         name: shellharden, PKGBUILD and .install (shellharden)
         language: system
         entry: shellharden --check
         files: (^|/)PKGBUILD$|\.install$
+        exclude: ^overrides/
       - id: shellharden
         name: shellharden (shellharden)
         language: system
         entry: shellharden --check
         types: [shell]
-        exclude: (^|/)PKGBUILD$
+        exclude: ^overrides/|(^|/)PKGBUILD$
       # termux-language-server exits with 0 on findings and has false positives so far, so it only runs on
       # request: pre-commit run --hook-stage manual termux-language-server
       - id: termux-language-server
@@ -64,35 +69,38 @@ repos:
           bash -c 'out=$(termux-language-server --check "$@" 2>&1); status=$?;
           [[ -z "$out" ]] || { printf "%s\n" "$out"; status=1; }; exit "$status"' --
         files: (^|/)PKGBUILD$|\.install$
+        exclude: ^overrides/
         stages: [manual]
-
       - id: ruff-check
         name: ruff check (ruff)
         language: system
         entry: ruff check --fix
         types: [python]
+        exclude: ^overrides/
       - id: ruff-format
         name: ruff format (ruff)
         language: system
         entry: ruff format
         types: [python]
-
+        exclude: ^overrides/
       - id: biome
         name: biome check (biome)
         language: system
         entry: biome check --write --no-errors-on-unmatched
         types_or: [javascript, ts, json]
-
+        exclude: ^overrides/
       - id: tombi-format
         name: tombi format (tombi)
         language: system
         entry: tombi format --offline
         types: [toml]
+        exclude: ^overrides/
       - id: tombi-lint
         name: tombi lint (tombi)
         language: system
         entry: tombi lint --offline
         types: [toml]
+        exclude: ^overrides/
 
       # systemd-lsp exits with 0 on findings
       - id: systemd-lsp
@@ -109,11 +117,13 @@ repos:
         language: system
         entry: rumdl fmt --config 'MD013.paragraphs = false'
         types: [markdown]
+        exclude: ^overrides/
       - id: rumdl-check
         name: rumdl check (rumdl)
         language: system
         entry: rumdl check --config 'MD013.paragraphs = false'
         types: [markdown]
+        exclude: ^overrides/
 
       # British English, settings in .typos.toml. --force-exclude: its excludes also apply to the files
       # the hook runner passes.
@@ -122,6 +132,7 @@ repos:
         language: system
         entry: typos --force-exclude
         types: [text]
+        exclude: ^overrides/
 
       # Mago in each file's directory, with the mago.toml of a package there (e.g. the stubs of what a
       # script loads at runtime, *.stub.php, which are only formatted); warnings fail as well
@@ -132,6 +143,7 @@ repos:
           bash -c 'status=0; for file; do (cd "$(dirname "$file")" && mago format "$(basename "$file")")
           || status=1; done; exit "$status"' --
         types: [php]
+        exclude: ^overrides/
       - id: mago-lint
         name: mago lint (mago)
         language: system
@@ -139,7 +151,7 @@ repos:
           bash -c 'status=0; for file; do (cd "$(dirname "$file")" && mago lint --minimum-fail-level warning
           "$(basename "$file")") || status=1; done; exit "$status"' --
         types: [php]
-        exclude: \.stub\.php$
+        exclude: ^overrides/|\.stub\.php$
       - id: mago-analyze
         name: mago analyze (mago)
         language: system
@@ -147,7 +159,7 @@ repos:
           bash -c 'status=0; for file; do (cd "$(dirname "$file")" && mago analyze --minimum-fail-level warning
           "$(basename "$file")") || status=1; done; exit "$status"' --
         types: [php]
-        exclude: \.stub\.php$
+        exclude: ^overrides/|\.stub\.php$
 
       # Errors stop pwsh, which otherwise exits with 0 without PSScriptAnalyzer or when it fails on a file
       - id: psscriptanalyzer
@@ -158,6 +170,7 @@ repos:
           foreach ($path in $args) { Invoke-ScriptAnalyzer -Path $path }; $results | Format-Table ScriptName,
           Line, Severity, RuleName, Message -AutoSize -Wrap | Out-String -Width 200; exit [int][bool]$results'
         types: [powershell]
+        exclude: ^overrides/
 
       # After the formatters, which change sources like scripts and patches as well. The checksums come
       # from .SRCINFO, which the srcinfo hook keeps up to date; remote sources aren't checked.
@@ -190,7 +203,7 @@ repos:
         language: system
         entry: editorconfig-checker -disable-indent-size
         types: [text]
-        exclude: (^|/)LICENSES/
+        exclude: ^overrides/|(^|/)LICENSES/
 
       - id: reuse
         name: reuse lint-file (reuse)
