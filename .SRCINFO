@@ -1,6 +1,6 @@
 pkgbase = atomic-agent-bin
 	pkgdesc = Local-first AI agent for the terminal: browses, edits files, runs approved commands, remembers (https://atomicagent.io)
-	pkgver = 0.6.13
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/AtomicBot-ai/atomic-agent
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = atomic-agent-bin
 	conflicts = atomic-agent
 	options = !strip
 	options = !debug
-	source_x86_64 = atomic-agent-0.6.13-linux-x64.tar.gz::https://github.com/AtomicBot-ai/atomic-agent/releases/download/v0.6.13/atomic-agent-linux-x64.tar.gz
-	sha256sums_x86_64 = 80a9727d635f1ad4cb99e4340cdb669ed55f9cfbf7b53d9ba8ceb5b846b6eb05
-	source_aarch64 = atomic-agent-0.6.13-linux-arm64.tar.gz::https://github.com/AtomicBot-ai/atomic-agent/releases/download/v0.6.13/atomic-agent-linux-arm64.tar.gz
-	sha256sums_aarch64 = 6b0b4eb01a1348e379b305c78c88b2f4c68f9aef8112f78c91f3fe1d7c1158b5
+	source_x86_64 = atomic-agent-0.7.0-linux-x64.tar.gz::https://github.com/AtomicBot-ai/atomic-agent/releases/download/v0.7.0/atomic-agent-linux-x64.tar.gz
+	sha256sums_x86_64 = 1b908d4c726e719df33c1b0c0fd538b2eddf2e6c8c144fed3d95f4665e10ba4e
+	source_aarch64 = atomic-agent-0.7.0-linux-arm64.tar.gz::https://github.com/AtomicBot-ai/atomic-agent/releases/download/v0.7.0/atomic-agent-linux-arm64.tar.gz
+	sha256sums_aarch64 = 475c1b4234e7ebf3ba43b4db6c3312153e8d9867ecedb3c589331fc252aa82ab
 
 pkgname = atomic-agent-bin
