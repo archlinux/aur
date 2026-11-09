@@ -1,19 +1,21 @@
 pkgbase = laradumps-bin
 	pkgdesc = A modern, feature-rich debugging tool that makes PHP development a breeze.
-	pkgver = 4.18.1
+	pkgver = 4.19.0
 	pkgrel = 1
 	url = https://laradumps.dev/
 	arch = x86_64
 	license = MIT
-	depends = electron41
+	depends = electron43
 	depends = nodejs
-	provides = laradumps=4.18.1
+	provides = laradumps=4.19.0
 	conflicts = laradumps
-	source = laradumps-4.18.1-x86_64.AppImage::https://github.com/laradumps/app/releases/download/v4.18.1/LaraDumps-4.18.1.AppImage
-	source = LICENSE-4.18.1::https://raw.githubusercontent.com/laradumps/app/v4.18.1/LICENSE
+	source = laradumps-4.19.0-x86_64.AppImage::https://github.com/laradumps/app/releases/download/v4.19.0/LaraDumps-4.19.0.AppImage
+	source = LICENSE-4.19.0::https://raw.githubusercontent.com/laradumps/app/v4.19.0/LICENSE
+	source = laradumps.js
 	source = laradumps.sh
-	sha256sums = c46b66dc275b004b9d31b88dfa74a33b68fefafd3536065300a0b7987b9629a9
+	sha256sums = e6124910c249da68a4e15589efff76622c57ba2acb345a05743b34f0722ecaf8
 	sha256sums = 012534ec9b9548dda44757815a0bf415a4d7d4df66a2b8dfbf25118c370c6649
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 
 pkgname = laradumps-bin
