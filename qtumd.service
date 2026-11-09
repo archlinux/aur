@@ -1,0 +1,40 @@
+[Unit]
+Description=Qtum daemon
+Documentation=https://github.com/qtumproject/qtum
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/qtumd -pid=/run/qtumd/qtumd.pid \
+                         -conf=/etc/qtum/qtum.conf \
+                         -datadir=/var/lib/qtumd \
+                         -startupnotify='systemd-notify --ready' \
+                         -shutdownnotify='systemd-notify --stopping'
+ExecStartPre=!/bin/chgrp qtum /etc/qtum
+
+Type=notify
+NotifyAccess=all
+PIDFile=/run/qtumd/qtumd.pid
+Restart=on-failure
+TimeoutStartSec=infinity
+TimeoutStopSec=600
+
+User=qtum
+Group=qtum
+RuntimeDirectory=qtumd
+RuntimeDirectoryMode=0710
+ConfigurationDirectory=qtum
+ConfigurationDirectoryMode=0710
+StateDirectory=qtumd
+StateDirectoryMode=0710
+
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+PrivateDevices=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
