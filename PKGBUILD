@@ -1,7 +1,7 @@
 # Maintainer: smiley <smiley@archlinux.org>
 
 pkgname=rusty-inbox
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Fast, native email client with a Rust engine, a Qt 6/QML interface and an optional AI assistant'
 arch=('x86_64' 'aarch64')
@@ -14,13 +14,17 @@ depends=(
   'hicolor-icon-theme'
   'qt6-base'
   'qt6-declarative'
+  'qt6-svg'
   'qt6-webengine'
 )
 makedepends=('cargo')
-optdepends=('ollama: run the AI assistant locally')
+optdepends=(
+  'ollama: run the AI assistant locally'
+  'xdg-utils: open links and set Rusty Inbox as the mailto handler'
+)
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1947444426100725c8dbe6739352bc92aa18c743febad3de3f7825fbca9ce05c')
+sha256sums=('5455aa40d12b16cb18426b6ac4b444fc310f9de514385b0737811306a04f6d47')
 
 prepare() {
   cd "$pkgname-$pkgver"

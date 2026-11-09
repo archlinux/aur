@@ -1,6 +1,6 @@
 pkgbase = rusty-inbox
 	pkgdesc = Fast, native email client with a Rust engine, a Qt 6/QML interface and an optional AI assistant
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/karem505/rusty-inbox
 	arch = x86_64
@@ -13,10 +13,12 @@ pkgbase = rusty-inbox
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	depends = qt6-declarative
+	depends = qt6-svg
 	depends = qt6-webengine
 	optdepends = ollama: run the AI assistant locally
+	optdepends = xdg-utils: open links and set Rusty Inbox as the mailto handler
 	options = !lto
-	source = rusty-inbox-0.2.0.tar.gz::https://github.com/karem505/rusty-inbox/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 1947444426100725c8dbe6739352bc92aa18c743febad3de3f7825fbca9ce05c
+	source = rusty-inbox-0.2.1.tar.gz::https://github.com/karem505/rusty-inbox/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 5455aa40d12b16cb18426b6ac4b444fc310f9de514385b0737811306a04f6d47
 
 pkgname = rusty-inbox
