@@ -1,6 +1,6 @@
 pkgbase = zenith-bar-bin
 	pkgdesc = The lightest beautiful status bar for Wayland (prebuilt binary)
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/CPT-Dawn/Zenith
 	install = zenith-bar.install
@@ -15,11 +15,11 @@ pkgbase = zenith-bar-bin
 	depends = pango
 	optdepends = ttf-inter: the recommended UI font
 	optdepends = hoarder: clipboard history for the clipboard module
-	provides = zenith-bar=2.3.0
+	provides = zenith-bar=2.3.1
 	conflicts = zenith-bar
 	options = !strip
 	options = !debug
-	source_x86_64 = zenith-bar-2.3.0-x86_64.tar.gz::https://github.com/CPT-Dawn/Zenith/releases/download/v2.3.0/zenith-bar-2.3.0-x86_64.tar.gz
-	sha256sums_x86_64 = 8e6969b2a1367e38e5e2df9bb833905cde4d5cd067bd06db259a35c5edaf56b2
+	source_x86_64 = zenith-bar-2.3.1-x86_64.tar.gz::https://github.com/CPT-Dawn/Zenith/releases/download/v2.3.1/zenith-bar-2.3.1-x86_64.tar.gz
+	sha256sums_x86_64 = 559550d1ed66fd09f8fa789840a58ae84d7061190e8e90b046db36eb8195c273
 
 pkgname = zenith-bar-bin

@@ -6,7 +6,7 @@
 # .github/scripts/generate_aur_files.sh --package zenith-bar-bin.
 pkgname=zenith-bar-bin
 _pkgname=zenith-bar
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="The lightest beautiful status bar for Wayland (prebuilt binary)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 install="${_pkgname}.install"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('8e6969b2a1367e38e5e2df9bb833905cde4d5cd067bd06db259a35c5edaf56b2')
+sha256sums_x86_64=('559550d1ed66fd09f8fa789840a58ae84d7061190e8e90b046db36eb8195c273')
 
 package() {
   cd "${_pkgname}-${pkgver}-x86_64"
