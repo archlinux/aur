@@ -4,7 +4,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=pencil-git
-pkgver=3.1.1.r31.gac71edf
+pkgver=4.0.0.r0.g3fc5856
 pkgrel=1
 pkgdesc="An open-source GUI prototyping tool"
 arch=('i686' 'x86_64')
