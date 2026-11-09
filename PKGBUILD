@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-nativeauthenticator-git
 pkgdesc="Authenticator for storing users in the JupyterHub database (Git version)"
-pkgver=1.3.0.r5.gf800bd3
+pkgver=1.4.0.r1.gf899019
 pkgrel=1
 url="https://github.com/jupyterhub/nativeauthenticator"
 license=('BSD-3-Clause')
@@ -19,9 +19,9 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
+  'python-hatch-requirements-txt'
   'python-installer'
-  'python-setuptools'
-  'python-wheel'
 )
 checkdepends=(
   'python-pytest'
