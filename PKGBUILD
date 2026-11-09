@@ -1,9 +1,9 @@
 # Maintainer: Winicius Cota <winicius.cota@gmail.com>
 pkgname=bsg-diaspora-sa-vr
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-_engine=e7e0727768bc98d47091ef2d0153dc3a57bed9b6
-pkgdesc="Battlestar Galactica: Diaspora on a modern FreeSpace Open engine with VR (OpenXR/Vulkan), 14 extra missions, HD textures"
+_engine=f25785d9cd3df9950705d7308452c1fa43d62c49
+pkgdesc="Battlestar Galactica: Diaspora on a modern FreeSpace Open engine with VR (OpenXR/Vulkan), 42 extra missions, canopy glass effects, HD textures"
 arch=('x86_64')
 url="https://github.com/winiciuscota/diaspora-vr-port"
 license=('CCPL' 'custom:fs2_open')
@@ -13,19 +13,20 @@ makedepends=('git' 'cmake' 'ninja' 'python' 'glslang' 'vulkan-headers' 'libx11' 
 optdepends=('wivrn-server: stream VR to a Quest headset'
             'monado: OpenXR runtime for PC VR headsets'
             'steam: SteamVR OpenXR runtime')
-_rel="https://github.com/winiciuscota/diaspora-vr-port/releases/download/v$pkgver"
+_rel="https://github.com/winiciuscota/bsg-diaspora-sa-vr/releases/download/v$pkgver"
+_relhd="https://github.com/winiciuscota/bsg-diaspora-sa-vr/releases/download/v1.0"   # the HD texture packs did not change
 source=("fs2open::git+https://github.com/winiciuscota/fs2open-diaspora-vr.git#commit=$_engine"
         "$_rel/diaspora-vr-mod-$pkgver.tar.gz"
-        "$_rel/diaspora-vr-hd-textures-2x.zip"
-        "$_rel/diaspora-vr-hd-cockpits-4x.zip"
-        "$_rel/diaspora-vr-voices.zip"
+        "$_relhd/diaspora-vr-hd-textures-2x.zip"
+        "$_relhd/diaspora-vr-hd-cockpits-4x.zip"
+        "$_rel/diaspora-vr-voices-$pkgver.zip"
         'http://diaspora.fs2downloads.com/Diaspora_R1_Linux.tar.lzma'
         'http://diaspora.fs2downloads.com/Diaspora_R1_Patch_1.1.tar.lzma'
         'http://diaspora.fs2downloads.com/Diaspora_R1_Patch_1.1.1.tar.lzma'
         'bsg-diaspora-sa-vr'
         'bsg-diaspora-sa-vr.desktop'
         'bsg-diaspora-sa-vr-vr.desktop')
-sha256sums=('SKIP' 'd3d75cfe3a709075e351bb1e25eb1e04f80fe60e271d3c1565ab147d599a443a' 'c527c6b77046e663292e7ca2a008c8582bba5bb1279e5a65f8d493948fdce88c' 'd2f627c64efc64e8c12707812c8899fcaa21175d709c72ef30af46fb4f3f5105' '35d4690fba66019a2a8ccf0d0ff5cc35516f1837e66cc736e5c312e05341ea98' '598910f2382ab2c8b10aa02cc6fb00c55ed4cd5a1a64d580deb1a0d4e521cf17' '759491c5614a4b814ff9199aaa59bd43d034c0ddf25070e94b2019571e127ba4' '1569d6990b110cbee240b76727b1a015188cd34c53ecdfea7e84d9de151ce7b4' 'e90dedf4f22c9df4de4f506ee9f550a1d7ed19074e2c1cda3833dffe1ff417a6' '2c62c57e43cb72431453ea59627885f600e502833db345d36226d00704ffe0a9' 'e66c78af5ef95960fd8454efbb08837859f65652b86484cf3a9924d69689be07')
+sha256sums=('SKIP' '97a492d93e0cff592f58f28bc0e0f8a6bbbd8597b8025a82c39a4758bf8ca6f5' 'c527c6b77046e663292e7ca2a008c8582bba5bb1279e5a65f8d493948fdce88c' 'd2f627c64efc64e8c12707812c8899fcaa21175d709c72ef30af46fb4f3f5105' 'def5b328278d24572e6fbfeeab21a0c79a06cfa24c2119546908d943c024da28' '598910f2382ab2c8b10aa02cc6fb00c55ed4cd5a1a64d580deb1a0d4e521cf17' '759491c5614a4b814ff9199aaa59bd43d034c0ddf25070e94b2019571e127ba4' '1569d6990b110cbee240b76727b1a015188cd34c53ecdfea7e84d9de151ce7b4' 'e90dedf4f22c9df4de4f506ee9f550a1d7ed19074e2c1cda3833dffe1ff417a6' '2c62c57e43cb72431453ea59627885f600e502833db345d36226d00704ffe0a9' 'e66c78af5ef95960fd8454efbb08837859f65652b86484cf3a9924d69689be07')
 # ~5 GiB of game data: compressing it again takes long and saves little
 PKGEXT='.pkg.tar'
 
