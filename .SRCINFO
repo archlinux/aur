@@ -1,0 +1,18 @@
+pkgbase = slimit-gpu
+	pkgdesc = GUI NVidia and AMD GPU overclock, power limit and fan manager
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ssprea/slimit
+	install = slimit.install
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = make
+	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-targeting-pack-10.0
+	makedepends = aspnet-targeting-pack-10.0
+	options = !strip
+	source = slimit-2.0.0::git+https://github.com/ssprea/slimit.git#tag=2.0.0
+	sha256sums = SKIP
+
+pkgname = slimit-gpu
