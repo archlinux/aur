@@ -8,7 +8,7 @@
 # `uur setup` (it is never redistributed by this package).
 
 pkgname=uur
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Native Linux companion for NetEase UU Remote (X11/Wayland input and capture bridge)"
 arch=('x86_64')
@@ -22,9 +22,11 @@ depends=(
     'curl'
     'pipewire'
     'wayland'
+    'libx11'
+    'libxext'
     'xdg-desktop-portal'
 )
-makedepends=('cargo' 'gcc' 'pkgconf' 'wayland' 'mingw-w64-gcc' 'mingw-w64-binutils')
+makedepends=('cargo' 'gcc' 'pkgconf' 'wayland' 'libx11' 'mingw-w64-gcc' 'mingw-w64-binutils')
 optdepends=(
     'osslsigncode: Authenticode verification of official updater downloads'
     'xdg-desktop-portal-gnome: GNOME, niri, and compatible Wayland capture/input'
@@ -41,7 +43,7 @@ optdepends=(
     'nvidia-utils: NVENC and NVDEC capability diagnostics on NVIDIA GPUs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("2b9bc2ed93c61d8bf05fad3dd77a2938bd354003203e646d055673be11b93a51")
+sha256sums=("a5c7e6c4aa9069be9aff46541c53652e59ad9cf07dd2a7722737d53da393a14e")
 install=uur.install
 
 build() {
@@ -50,6 +52,7 @@ build() {
     cargo build --release --locked
     ./hook/build.sh
     ./capture/build.sh
+    ./compat/build.sh
 }
 
 check() {
