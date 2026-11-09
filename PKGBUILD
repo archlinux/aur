@@ -5,7 +5,7 @@ pkgver=2026.04.27.r699.g0ec79e4
 pkgrel=1
 pkgdesc="Nintendo Switch emulator fork from citron (git version)"
 arch=('x86_64')
-url="https://github.com/citron-neo/emulator"
+url="https://git.mythrax-rs.org/Citron-NEO/emulator"
 license=('GPL-3.0-or-later')
 provides=('citron' 'citron-neo')
 conflicts=('citron' 'citron-git' 'citron-neo' 'citron-bin')
@@ -27,7 +27,7 @@ optdepends=(
 	'gamemode: gamemode support'
 )
 
-source=("git+https://github.com/citron-neo/emulator.git"
+source=("git+https://git.mythrax-rs.org/Citron-NEO/emulator.git"
 	"git+https://github.com/lsalzman/enet.git"
 	"git+https://github.com/mozilla/cubeb.git"
 	"git+https://github.com/xinitrcn1/dynarmic.git"
