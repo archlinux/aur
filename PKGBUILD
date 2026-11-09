@@ -3,8 +3,8 @@
 # Contributor: Samuel Corsi-House <chouse.samuel@gmail.com>
 
 pkgname=playit-bin
-pkgver=1.2.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Tool to make your locally running game server public (Binary Version)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://playit.gg'
@@ -45,18 +45,18 @@ source_i686=(
 
 sha256sums=('daa9b021f23bddaa04c29532088ab3f1967591bba11ed98eb8ced4d53e67858d'
             '0e22e81c51c31325dd2acff4ec7399ceede0e83384547457ef64ec52fa72cdd1'
-            '066b84e12162c344eb602cc4550447bf7ee05c8b6d2975ea94e356fc9977050d'
-            'fd6b309c4e1008b81675a2ad0ea27e709f02f405a502816c238a73c60b497da9'
+            '2a3c0dd7bd405d1e50be123534c87224e9da66aecbfe8a2ef596600a8624f773'
+            'eff35e0735583ab5c1043fc62823d25d217981510fe4e6cb91c99d13e583bfad'
             'a07e7ae69701e99224bfcd8a464b028c7e7eef241017900701b70ac903e42d39'
             'f9d32c6b4a6055b2bfa48543d68119efc46ea4606f0d9cc973cb273dcd59be9c')
-sha256sums_x86_64=('a10cd77866bdd81837848ad08b6629012637f2662e7c0b7d9310bcdb619feebd'
-                   '602dea3288d5bad4c3addba70ecf6535b9ae085b8d4f2fc2fe9cde913bda78d0')
-sha256sums_aarch64=('d4cc2cd2e6f4bc9614a2b764eba60a5e0656d71ff8a2720a061e2333daef8940'
-                    '3a6d69c348803c7041c49312345c18b1e9cb7dd7fc2adfbf2217e50d0d7c9a34')
-sha256sums_armv7h=('f5e8bb223d707e51b94a2a35dea038d02d6235295ef19f7bdabfedd39424c58d'
-                   'd6314b5e83318bf0b8731aae95e81f499ed4338d30e5e8a8bf866cdebcf6e8e0')
-sha256sums_i686=('34bf2c4ff47f70d5ae225c8e94866b53a88151f7c0c8ba0e0a57dc89d39696b0'
-                 '14e8d468565a0fdba14af436280af960b6fe189b5bfade132d68134a196a6dbb')
+sha256sums_x86_64=('2b705984ef2ddd870613cc0aa09ec5f6d81a7bfabe295942e34f2f35a59ce229'
+                   '4371752899125a6780c3ba134876e9ecdbea5f871490efdc62f62e8e5e822b2d')
+sha256sums_aarch64=('7ed5bb97aaa51cbc86596a2a55e836f7fa0dd1bfdc6a164f9bd2b6decd9ce223'
+                    '0b19a86605bcf5f8c5ddb2e74add74927f6f25174bf983deb9ba25abe97b103f')
+sha256sums_armv7h=('833fc2a2d0718ab925f1b3ef1d2eb88d92a5d8e32096d059584e5d21050c71c6'
+                   '2d60aee3eb24c3eadb73a46c08f815cfb3946ef7d9b7e3d8cb3d2129dd261555')
+sha256sums_i686=('41cff2221a958bc71547a408680fdaa204941e54150f2c4d8657d9d4ff03cc45'
+                 'f9ae81ac96ced8617ef6412d1cd59bbc89873639b14b54860ddfad7a2f436d8f')
 
 package() {
   local cli_bin

@@ -102,6 +102,34 @@ remove_legacy_unit_path() {
   rm -f "$legacy_unit"
 }
 
+# Lets whoever installed playit with sudo or pkexec use it right away. playitd reads the group
+# from the account database on each connection, so this works without logging out.
+add_installing_user_to_group() {
+  installing_user="${SUDO_USER:-}"
+  if [ -z "$installing_user" ] && [ -n "${PKEXEC_UID:-}" ]; then
+    installing_user="$(id -nu "$PKEXEC_UID" 2>/dev/null || true)"
+  fi
+
+  case "$installing_user" in
+    ""|root|"$PLAYIT_USER")
+      return 0
+      ;;
+  esac
+
+  if ! id -u "$installing_user" >/dev/null 2>&1; then
+    return 0
+  fi
+  if id -nG "$installing_user" 2>/dev/null | tr ' ' '\n' | grep -qx "$PLAYIT_GROUP"; then
+    return 0
+  fi
+
+  if have_command usermod; then
+    usermod -a -G "$PLAYIT_GROUP" "$installing_user" || true
+  elif have_command addgroup; then
+    addgroup "$installing_user" "$PLAYIT_GROUP" || true
+  fi
+}
+
 provision_user() {
   if have_command systemd-sysusers; then
     systemd-sysusers "$SYSUSERS_CONFIG"
@@ -154,6 +182,7 @@ configure_service() {
 
 post_install() {
   configure_service install
+  add_installing_user_to_group
 }
 
 post_upgrade() {
