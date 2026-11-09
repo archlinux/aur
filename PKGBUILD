@@ -2,7 +2,7 @@
 # Maintainer: Kaj Kowalski <info at kajkowalski dot nl>
 
 pkgname='actionlint-kjanat'
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork)'
 url='https://actionlint.kjanat.dev'
@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('shellcheck: check shell scripts in run steps' 'python-pyflakes: check Python scripts in run steps')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/kjanat/actionlint/releases/download/v${pkgver}/actionlint-${pkgver}.tar.gz")
-sha256sums=('af95f1518352372a937253f3e6af76cf6d9349b803967678d82b3b42c470b85b')
+sha256sums=('0b0f458f47ec10f2f999ee5be4801f8683359d817f7d2634821633d2e790ee89')
 prepare() {
   cd "actionlint-${pkgver}"
   go mod download
