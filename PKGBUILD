@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Khallouki <khalloukielias@gmail.com>
 pkgname=hypruse
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Computer use for Hyprland: semantic desktop state over IPC plus vision and native Wayland input, in one MCP server"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('wl-clipboard: opt-in clipboard tool (HYPRUSE_CLIPBOARD=1)'
             'imagemagick: numbered Set-of-Marks captures (marks tool)')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe8f0677351730231b4267dfc5c06f9c7c1c15e3e7720cafd958613b66f6a84b')
+sha256sums=('ea53263a4f9a6863ec44c1d38e82391dd775c384b061e215cc57d2423080f61c')
 
 build() {
   cd "$pkgname-$pkgver"
