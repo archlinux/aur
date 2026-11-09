@@ -2,8 +2,8 @@
 
 pkgname=python-doipclient
 _name=${pkgname#python-}
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 epoch=
 pkgdesc="A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
 arch=('any')
@@ -26,7 +26,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('d591816ed38e66ecf348fd9fd99e1cc44fe57e14ed6fa3a1371c85996d98f4e9')
+sha256sums=('4251368f300f1422aaa7bc2c37fea8dbab63b4e33e47fb0122834cb6915d96f6')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
