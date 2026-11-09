@@ -1,6 +1,6 @@
 pkgbase = r-liblinear
 	pkgdesc = Linear Predictive Models Based on the LIBLINEAR C/C++ Library
-	pkgver = 2.50.1
+	pkgver = 2.50.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=LiblineaR
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = r-liblinear
 	optdepends = r-sparsem
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/LiblineaR_2.50-1.tar.gz
-	md5sums = c7eda79b0c9256a973ef54109074e3a3
-	b2sums = 10b08b2f11593c432f2545a31826608f96f41ed6c27db52ab3f28c55616fe134501849ca6d75f3891ae33975e8ec589b12b3cbd7506874644bb7afc6316390c8
+	source = https://cran.r-project.org/src/contrib/LiblineaR_2.50-2.tar.gz
+	md5sums = 065aee428c08336d9c62f693ac8094a6
+	b2sums = 5bc996eaa87d207bb7902292dba779da013e631cd91ca5acad74486fb57ed0815651b6cc46a7cc72019517e74f96cfa0362a708f2d3634350038bd0d20383205
 
 pkgname = r-liblinear
