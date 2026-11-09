@@ -4,7 +4,7 @@
 # shellcheck shell=bash
 
 pkgname=yazi-nightly-bin
-pkgver=26.9.1.20261105.6882e1a
+pkgver=26.9.1.20261109.3ba8887
 pkgrel=1
 _date="$(date -u +%Y%m%d)"
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O."
