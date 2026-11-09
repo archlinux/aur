@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="qdl"
-pkgver=2.9
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
@@ -35,7 +35,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-b2sums=('ce6451eae6421c12a347ac0dacc54e3de4a9e4b45114464358fbeaaba9301651095b21ba4d3782cd94edd0e022587858b04a45c00185e3390476de668439645b')
+b2sums=('8de3a28dc9df29a3a32cd3ded9703b030f266eece4f9b536519f43395ab9854f3b77a1670b211565b00baf8b83d0299da7a108e908ca2777f2f03a1f53d9b1b9')
 
 build() {
   local meson_options=(
