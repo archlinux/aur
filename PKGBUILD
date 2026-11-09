@@ -1,14 +1,14 @@
 # Maintainer: Sebastian Arrieta <sarrietav.dev@gmail.com>
 pkgname=omaread-git
-pkgver=r18.5a3d237
+pkgver=r30.7a5cea9
 pkgrel=1
 pkgdesc="A fast, keyboard-first EPUB reader for Omarchy"
 arch=('x86_64')
 url="https://github.com/sarrietav-dev/omaread"
 license=('MIT')
-depends=('gtk4' 'libadwaita' 'webkitgtk-6.0')
+depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'alsa-lib')
 makedepends=('cargo' 'git' 'pkgconf')
-optdepends=('speech-dispatcher: read aloud'
+optdepends=('speech-dispatcher: read aloud with Piper'
             'hyphen-en: English hyphenation'
             'hyphen-es: Spanish hyphenation')
 provides=('omaread')

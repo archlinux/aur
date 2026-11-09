@@ -1,6 +1,6 @@
 pkgbase = omaread-git
 	pkgdesc = A fast, keyboard-first EPUB reader for Omarchy
-	pkgver = r18.5a3d237
+	pkgver = r30.7a5cea9
 	pkgrel = 1
 	url = https://github.com/sarrietav-dev/omaread
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = omaread-git
 	depends = gtk4
 	depends = libadwaita
 	depends = webkitgtk-6.0
-	optdepends = speech-dispatcher: read aloud
+	depends = alsa-lib
+	optdepends = speech-dispatcher: read aloud with Piper
 	optdepends = hyphen-en: English hyphenation
 	optdepends = hyphen-es: Spanish hyphenation
 	provides = omaread
