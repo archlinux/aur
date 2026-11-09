@@ -1,19 +1,21 @@
 pkgbase = altus-bin
-	pkgdesc = Desktop client for WhatsApp Web with themes, notifications and multiple account support.(Prebuilt version.Use system-wide electron)
-	pkgver = 5.8.1
+	pkgdesc = Desktop client for WhatsApp Web with themes, notifications and multiple account support.
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = https://github.com/amanharwara/altus
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron35
+	depends = electron35-bin
 	depends = nodejs
-	provides = altus=5.8.1
+	provides = altus=5.8.2
 	conflicts = altus
 	options = !strip
 	options = !emptydirs
-	source = altus-5.8.1-x86_64.AppImage::https://github.com/amanharwara/altus/releases/download/5.8.1/Altus-5.8.1.AppImage
+	source = altus-5.8.2-x86_64.AppImage::https://github.com/amanharwara/altus/releases/download/5.8.2/Altus-5.8.2.AppImage
+	source = altus.js
 	source = altus.sh
-	sha256sums = 152c97b3db614d0e53e5bbc27e0ffe4170593083b2a228c0c34754b2f2d1187f
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	sha256sums = 05f766776910b944f381d8ac1a7c36e49ba315bb1ae85ac9c25d88943ba0fa81
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 
 pkgname = altus-bin
