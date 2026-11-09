@@ -1,7 +1,7 @@
 # Maintainer: snowballons <snowballons@protonmail.com>
 pkgname=aurbreak-bin
 _pkgname=aurbreak
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A fast, offline-first desktop browser for the Arch User Repository (AUR)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 provides=('aurbreak' 'browse-arch')
 conflicts=('aurbreak')
 source=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('567d562b108d7219f298f3f75291e70c8c8eadaa24ed4b923356c378efa9e44f')
+sha256sums=('95b2abcc95b034a805c679ed70f349a08c76c57656a0d315038d16dbd8e05a92')
 
 package() {
     cd "${srcdir}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu"
