@@ -1,20 +1,20 @@
 pkgbase = selenium-ide-bin
 	pkgdesc = Open Source record and playback test automation for the web.
-	pkgver = 4.1.0_beta.2
+	pkgver = 4.1.0_beta.3
 	pkgrel = 1
 	url = https://selenium.dev/selenium-ide/
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron45
 	depends = nodejs
-	provides = selenium-ide=4.1.0_beta.2
+	provides = selenium-ide=4.1.0_beta.3
 	conflicts = selenium-ide
 	options = !strip
 	options = !emptydirs
-	source = selenium-ide-4.1.0_beta.2-x86_64.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/v4.1.0-beta.2/Selenium-IDE-4.1.0-beta.2.AppImage
+	source = selenium-ide-4.1.0_beta.3-x86_64.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/v4.1.0-beta.3/Selenium-IDE-4.1.0-beta.3.AppImage
 	source = selenium-ide.js
 	source = selenium-ide.sh
-	sha256sums = cc5ac60725f1b879d148b4a227681e9ff57d684612f2c6992925bdc7466e9743
+	sha256sums = 25bdc501cd967dfa268699ba53b345991cab5629678e5acd56b6a2c5623075c2
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
 

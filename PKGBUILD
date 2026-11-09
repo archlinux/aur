@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=selenium-ide-bin
 _pkgname=Selenium.IDE
-pkgver=4.1.0_beta.2
+pkgver=4.1.0_beta.3
 _electronversion=45
 pkgrel=1
 pkgdesc="Open Source record and playback test automation for the web."
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cc5ac60725f1b879d148b4a227681e9ff57d684612f2c6992925bdc7466e9743'
+sha256sums=('25bdc501cd967dfa268699ba53b345991cab5629678e5acd56b6a2c5623075c2'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
