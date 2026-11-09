@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=gridcraft-bin
 _pkgname=gridcraft
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Open-source native spreadsheet, Excel alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('14e9374555bc6d2d9c5bc41bb31150bc6a1cb6b4e83d5ab4163fd5d7611b0618')
-sha256sums_aarch64=('e0531c45b19b8bf92493abc1cecb1c485fd3e72811eb08a81e5be0e5f8604140')
+sha256sums_x86_64=('69205fd72e48e83e763c53c8f6ca3edc01d38ba8ba0d16e2b184a9c858a4cd5f')
+sha256sums_aarch64=('94554b3a3d4aa87acd5bfec36957ecc3d49cf317000d2f8c28bf9fa644c62d4d')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
