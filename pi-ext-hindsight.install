@@ -1,0 +1,29 @@
+post_install() {
+  cat <<'EOF'
+==> pi-ext-hindsight installed to /usr/share/pi/extensions/hindsight/
+
+To make it available to pi, symlink it into the extensions directory:
+
+    ln -s /usr/share/pi/extensions/hindsight ~/.pi/agent/extensions-ordered/00-hindsight
+
+For the hindsight-coding-agent SKILL to be discoverable, link it into a skills root:
+
+    ln -sfn /usr/share/pi/extensions/hindsight/skill ~/.pi/agent/skills/hindsight-coding-agent
+
+Then create the config -- nothing is remembered until it exists:
+
+    mkdir -p ~/.hindsight
+    cp /usr/share/pi-ext-hindsight/coding-agent.json.example ~/.hindsight/coding-agent.json
+
+Edit apiUrl to point at your Hindsight server (default in the example is
+http://127.0.0.1:8889), set optInPaths, and leave autoUpdate false: this copy is
+managed by pacman, and the adapter detects that and refuses to update itself.
+
+The Hindsight server itself is a separate package (hindsight-api). Memory is off
+for every project until a path appears in optInPaths.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

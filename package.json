@@ -1,0 +1,9 @@
+{
+  "name": "pi-ext-hindsight",
+  "version": "0.8.6",
+  "description": "Hindsight long-term memory for the pi coding agent",
+  "type": "module",
+  "pi": {
+    "extensions": ["./pi.js"]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "//": "Copy to ~/.hindsight/coding-agent.json and set apiUrl to your Hindsight server.",
+  "apiUrl": "http://127.0.0.1:8889",
+  "//optIn": "Only the paths listed here get memory. Without optInOnly every project does.",
+  "optInOnly": true,
+  "optInPaths": [],
+  "//autoUpdate": "This adapter is packaged by pacman, so it must not update itself.",
+  "autoUpdate": false
+}
