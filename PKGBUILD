@@ -1,8 +1,8 @@
 # Maintainer: CPT-Dawn <ping@cptdawn.dev>
 pkgname=lucent
 _reponame=Lucent
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="The lightest notification daemon for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/CPT-Dawn/Lucent"
@@ -12,8 +12,8 @@ optdepends=('wireplumber: lucent osd volume and mic'
             'brightnessctl: lucent osd brightness')
 makedepends=('cargo')
 provides=("lucent")
-source=("https://github.com/CPT-Dawn/Lucent/archive/refs/tags/v2.1.0.tar.gz")
-sha256sums=('467ee61e79096a7d2564f81e5a8c720728d07a4188b4c3e62f0b37035f574731')
+source=("https://github.com/CPT-Dawn/Lucent/archive/refs/tags/v2.1.1.tar.gz")
+sha256sums=('8636fb0b3e44c7bf70e0c59360f673ddfa73c18815971c27e139303b26c8056d')
 
 build() {
   cd "${_reponame}-${pkgver}"
