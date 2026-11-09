@@ -1,6 +1,6 @@
 pkgbase = chan
 	pkgdesc = Supercharged terminal emulator, headless server and CLI
-	pkgver = 0.125.0
+	pkgver = 0.126.0
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = chan
 	depends = systemd
 	conflicts = chan-desktop
 	options = !lto
-	source = chan-0.125.0.tar.gz::https://github.com/fiorix/chan/archive/v0.125.0.tar.gz
-	sha256sums = 3d18f7700565fa5d05ecc6058cd78fca44f50529b23d583b3b326624aa554630
+	source = chan-0.126.0.tar.gz::https://github.com/fiorix/chan/archive/v0.126.0.tar.gz
+	sha256sums = 493a868564372ea6aa54f714f533953c46582817e3c5d00f7e2eaf1364f5768b
 
 pkgname = chan
