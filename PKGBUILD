@@ -2,7 +2,7 @@
 
 _pkgname=opencloud
 pkgname=opencloud-git
-pkgver=7.1.0.r7.g4414bd0
+pkgver=9.0.0.r85.ga7970e7
 pkgrel=1
 pkgdesc="Open source platform for file management, sharing & collaboration - git build"
 url="https://opencloud.eu"
@@ -12,6 +12,7 @@ depends=(glibc sqlite)
 makedepends=(
   git
   go
+  nodejs
   pnpm
 )
 optdepends=("opencloud-web: if wanting to use a customized web interface")
