@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=daintree-bin
 _pkgname=Daintree
-pkgver=0.48.0
-_electronversion=42
+pkgver=0.49.0
+_electronversion=45
 pkgrel=1
 pkgdesc="A review-first desktop habitat for running AI coding agents in parallel."
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('1a0a96323876a27490123fc1d1b756c30a06626d751d02833d70e1923196d738'
+sha256sums=('1270486f25edd8bc256861e3c5e46636285d2c25d0178e9aeb1582ebdedcb461'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
