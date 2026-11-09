@@ -4,7 +4,7 @@
 
 pkgname=motrix
 _pkgname=Motrix
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A full-featured download manager"
 arch=('x86_64')
@@ -40,7 +40,7 @@ source=(
     'motrix.desktop'
     'system-electron.patch'
 )
-sha256sums=('e1f50ff98c7522bf56c025cdc6d56b3fb65b3165014dd9512e4810a80b3ba82d'
+sha256sums=('17113a6af607b83139ce77bd1d4cf622b876120bf06db3d2567004844696acc2'
             '026c1c4ebd4451274c737f21e9636a3c2250e667ef5e9f21913f5b9a7181a67f'
             'ddc5858228ed3b4d6222cc0ec55c48f8caf0215b8f9d0b7ca9eb6ffb6e92f6fb'
             'd67f5b77882cfa5c0d28ebf69a85681efaa445469f2503b891b1def589f7d669')
