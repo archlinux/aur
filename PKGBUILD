@@ -2,25 +2,30 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-holospy
 pkgshort=holospy
-pkgver=0.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Analysis of (off-axis) electron holography data with HyperSpy"
 arch=('any')
 url="http://hyperspy.org/holospy"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('python'
-         'python-hyperspy>=2.0rc0'
+         'python-hyperspy>=2.4'
+	 'python-lazy-loader>=0.1'
          'python-numpy>=1.20.0'
          'python-scipy>=1.5.0'
          )
 
 makedepends=('python-setuptools'
-             'python-setuptools-scm')
+             'python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             )
 
 provides=('holospy')
 
-source=(https://github.com/hyperspy/$pkgshort/archive/v$pkgver.tar.gz)
+source=(https://github.com/hyperspy/holospy/archive/v$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/$pkgshort-$pkgver"
@@ -33,4 +38,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('13af6a87a69580ab553bd43c9d65dd2a')
+sha256sums=('422395209d049e89e247f1eb153d6cbf9779ab247ee129cfe7ac05e37cd0e080')
