@@ -1,12 +1,12 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
-pkgver=0.9.162
+pkgver=0.9.163
 pkgrel=1
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# depends: DT_NEEDED of the 18 shipped ELFs plus by-name dlopen probes, resolved in core+extra; ca-certificates-mozilla from the /etc/ssl/cert.pem and /etc/ssl/certs opens in strace (2026-10-31).
+# depends: DT_NEEDED of the 19 shipped ELFs plus by-name dlopen probes, re-resolved in core+extra on 2026-11-09 (unchanged); ca-certificates-mozilla from the /etc/ssl/cert.pem and /etc/ssl/certs opens in strace (2026-10-31).
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -54,7 +54,7 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07); chrome_crashpad_handler dlopens libcurl.so.4/libcurl-gnutls.so.4/libcurl-nss.so.4 for crash report uploads, resolved to core/curl (2026-11-08).
+# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07); chrome_crashpad_handler dlopens libcurl.so.4/libcurl-gnutls.so.4/libcurl-nss.so.4 for crash report uploads, resolved to core/curl (2026-11-08); libvlc.so.5/libvlccore.so.9 P/Invoke probes resolved to extra/libvlc 3.0.24-1 (2026-11-09).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
@@ -65,14 +65,15 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
             'speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)'
-            'vlc-plugin-ffmpeg: video and stream playback through LibVLC'
-            'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio'
+            'libvlc: LibVLC runtime probed by the Root player (libvlc.so.5, libvlccore.so.9)'
+            'vlc-plugin-ffmpeg: video and stream codecs for LibVLC playback (pulls libvlc)'
+            'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio (pulls libvlc)'
             'curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)')
 options=('!strip' '!debug')
 
 # single source: the aur.yml updater rewrites sha256sums to one hash (2026-10-31).
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
-sha256sums=('ffe6af0488a18cfcaa84c43db47e3c80788f85d640192f6a2b5ed3151789a580')
+sha256sums=('af8ede1ca91a51e9f363e0e9f8229946412a98ac21ab13be272fbe7794f6a260')
 prepare() {
     chmod +x "${srcdir}/Root-${pkgver}-x86_64.AppImage"
     "${srcdir}/Root-${pkgver}-x86_64.AppImage" --appimage-extract

@@ -1,6 +1,6 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
-	pkgver = 0.9.162
+	pkgver = 0.9.163
 	pkgrel = 1
 	url = https://www.rootapp.com
 	arch = x86_64
@@ -60,14 +60,15 @@ pkgbase = rootapp-bin
 	optdepends = pipewire-pulse: PulseAudio-compatible server for voice and audio devices
 	optdepends = dunst: org.freedesktop.Notifications daemon for sessions without one
 	optdepends = speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)
-	optdepends = vlc-plugin-ffmpeg: video and stream playback through LibVLC
-	optdepends = vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio
+	optdepends = libvlc: LibVLC runtime probed by the Root player (libvlc.so.5, libvlccore.so.9)
+	optdepends = vlc-plugin-ffmpeg: video and stream codecs for LibVLC playback (pulls libvlc)
+	optdepends = vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio (pulls libvlc)
 	optdepends = curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)
 	provides = rootapp
 	conflicts = rootapp
 	options = !strip
 	options = !debug
-	source = Root-0.9.162-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
-	sha256sums = ffe6af0488a18cfcaa84c43db47e3c80788f85d640192f6a2b5ed3151789a580
+	source = Root-0.9.163-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
+	sha256sums = af8ede1ca91a51e9f363e0e9f8229946412a98ac21ab13be272fbe7794f6a260
 
 pkgname = rootapp-bin
