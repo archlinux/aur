@@ -11,7 +11,9 @@
 # a user who turned on ufw or firewalld got a page that loads and streams that
 # all die at ICE, because nothing had opened the media block. 48010:48033/udp
 # was that block up to 0.3.0, on Sunshine's RTSP port: an upgrade closes it.
-_mw_ports="443/tcp 80/tcp 48550:48573/udp"
+# The media block and the tunnel's ports in TCP are for passive ICE-TCP, how a
+# browser on a network that lets no UDP out gets in (see PORTS there).
+_mw_ports="443/tcp 80/tcp 48550:48573/udp 48550:48573/tcp 3478:3481/tcp 5349:5352/tcp 46000:46031/tcp"
 _mw_media=48550-48573
 _mw_sysctl=/etc/sysctl.d/60-moonlightweb.conf
 
