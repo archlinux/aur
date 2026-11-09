@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=sheprd
-pkgver=20261106.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
+pkgver=20261108.1 # renovate: datasource=github-releases depName=sheprd-labs/sheprd
 pkgrel=1
 pkgdesc="Native GPUI client for an installed Herdr daemon (formerly herdr-gpui)"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ conflicts=('herdr-gpui' "$pkgname-bin")
 replaces=('herdr-gpui')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('082469cef56b380f4cdffd689a66961338c3a0dd1c60faf3c0ac9c8d2bfa6e8a4f115a98c52c918afc71b181ff0fa47984f9f83cba31c3f568ee0568fb6ea795')
+b2sums=('417cec841a6de9474d05f583054ab0d76868951283d3ff0d83cb8156319835b3cc6e5372dfff251ddd3ea8e448254d17cd3afafd6557e7cb8aa155e65a12c455')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -78,8 +78,8 @@ package() {
 	ln -s sheprd-nearby "$pkgdir/usr/bin/herdr-nearby"
 	ln -s sheprd-remote-control "$pkgdir/usr/bin/herdr-remote-control"
 
-	install -Dm0644 scripts/release/so.pen.herdr-gpui.desktop \
-		"$pkgdir/usr/share/applications/so.pen.herdr-gpui.desktop"
+	install -Dm0644 scripts/release/org.sheprd.Sheprd.desktop \
+		"$pkgdir/usr/share/applications/org.sheprd.Sheprd.desktop"
 	install -Dm0644 assets/icons/sheprd-linux.svg \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/sheprd.svg"
 
