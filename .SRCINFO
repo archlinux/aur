@@ -1,7 +1,7 @@
 pkgbase = rhine
 	pkgdesc = A modular window manager for river
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/sivecano/rhine
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,6 @@ pkgbase = rhine
 	depends = glibc
 	provides = wayland-compositor
 	source = rhine::git+https://codeberg.org/sivecano/rhine.git#tag=0.5.0
-	sha256sums = 7ecac2143fb9e6c22706ba383d797b682e128a5a85e780b81e24dfdd8d75c4f1
+	sha256sums = 7a00a8038de7a72435da0da4480f787ca85d22f1d94c1dbb6ddb937b1dfc9fbb
 
 pkgname = rhine

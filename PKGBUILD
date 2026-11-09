@@ -3,7 +3,7 @@
 
 pkgname=rhine
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular window manager for river"
 arch=('x86_64')
 url="https://codeberg.org/sivecano/rhine"
@@ -14,7 +14,13 @@ provides=('wayland-compositor')
 source=(
 "$pkgname::git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('7ecac2143fb9e6c22706ba383d797b682e128a5a85e780b81e24dfdd8d75c4f1')
+sha256sums=('7a00a8038de7a72435da0da4480f787ca85d22f1d94c1dbb6ddb937b1dfc9fbb')
+
+prepare() {
+    cd $srcdir/$pkgname
+    # patch libtributary hash
+    sed -i 's|tributary-0.4.1-tqCfW4bDAACwvVYmVPiWYHhXCxpen4c1Noi89uaO0yit|tributary-0.5.1-tqCfW27DAAAHoFA0ZWGt3ItwHqlSzZ5bXXhvz4p76LKe|' build.zig.zon
+}
 
 build() {
 	cd $pkgname
