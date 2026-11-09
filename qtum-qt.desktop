@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Qtum Core
+Comment=Connect to the Qtum P2P Network
+Exec=qtum-qt %u
+Terminal=false
+Type=Application
+Icon=qtum-qt
+MimeType=x-scheme-handler/qtum;
+Categories=Office;Finance;P2P;Network;Qt;
+StartupWMClass=Qtum-qt
