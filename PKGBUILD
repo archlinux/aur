@@ -2,20 +2,22 @@
 
 pkgname=python-kicad-mcp-pro
 _name=${pkgname#python-}
-pkgver=3.15.0
-pkgrel=3
+pkgver=4.10.0
+pkgrel=1
 pkgdesc="A Model Context Protocol server for KiCad EDA workflows"
 provides=(${pkgname})
 conflicts=(${pkgname})
 arch=('any')
-url="https://github.com/oaslananka/kicad-mcp"
+url="https://github.com/oaslananka/kicad-mcp-pro"
 _pydeps=(
     anyio
     cairosvg
     click
+    cryptography
     dotenv
     httpx
     opentelemetry-api
+    opentelemetry-exporter-otlp
     opentelemetry-sdk
     packaging
     pillow
@@ -23,10 +25,13 @@ _pydeps=(
     pydantic-settings
     pystray
     rich
+    sexpdata
     starlette
     structlog
+    urllib3
     typer
     watchfiles
+    websockets
     yaml
     
     # AUR
@@ -37,6 +42,7 @@ _pydeps=(
 depends=(
     'python'
     "${_pydeps[@]/#/python-}"
+    uvicorn
 )
 makedepends=(
     'git'
@@ -49,15 +55,13 @@ makedepends=(
 optdepends=(
     'kicad'
     'python-numpy: simulation'
-    'python-httpx: http'
-    'uvicorn: http'
     'python-gitpython: vcs'
     'docker: freerouting'
     'freerouting'
 )
 license=('MIT')
-source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('88186cb327dd89efaea7a6ffe567e0e6e972eef34dc8c56de5242d27fc1b8e03')
+source=("${_name}::git+${url}.git#tag=kicad-mcp-gui-v$pkgver")
+sha256sums=('c1e56df106e458776d8dbbbec9b0888a296e1481a0154ff5315b02998a3e2939')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
