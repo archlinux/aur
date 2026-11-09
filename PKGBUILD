@@ -8,7 +8,7 @@
 # release tag pinned to a reviewed version. Prefer the tagged packages on
 # production systems.
 pkgname=aur-scanner-git
-pkgver=2.1.1.r6.g0cd9123
+pkgver=2.2.2.r6.gd4c95e1
 pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
@@ -65,6 +65,13 @@ _ks_trusted() {
     read -ra parents <<< "$(git rev-list --parents -n 1 "$commit")"
     (( ${#parents[@]} == 3 )) || return 1
     _ks_signed_by_release_key "${parents[2]}" || return 1
+
+    # A merge whose tree IS the release-key-signed head's tree carries nothing
+    # that signature does not cover (a commit signature covers its whole tree),
+    # so it is trusted on the same terms as a directly signed commit, whatever
+    # its first parent. This is what lets main recover after an unsigned PR
+    # head was merged by mistake: merging an up-to-date signed PR re-anchors it.
+    [[ $(git rev-parse "$commit^{tree}") == "$(git rev-parse "${parents[2]}^{tree}")" ]] && return 0
 
     local merged
     merged=$(git merge-tree --write-tree "${parents[1]}" "${parents[2]}" 2>/dev/null) || return 1
