@@ -1,6 +1,6 @@
 pkgbase = otterly-appimage
 	pkgdesc = Local-first, privacy-focused WYSIWYG Markdown vault with full-text search, wiki-links, and a rich editor (AppImage)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/ajkdrag/otterly
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = otterly-appimage
 	provides = otterly
 	conflicts = otterly
 	options = !strip
-	source = otterly-appimage-0.8.0.AppImage::https://github.com/ajkdrag/otterly/releases/download/v0.8.0/otterly_0.8.0_amd64.AppImage
+	source = otterly-appimage-0.9.0.AppImage::https://github.com/ajkdrag/otterly/releases/download/v0.9.0/otterly_0.9.0_amd64.AppImage
 	source = otterly.png::https://raw.githubusercontent.com/ajkdrag/otterly/main/src-tauri/icons/128x128@2x.png
 	source = otterly.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/otterly/otterly.desktop
-	sha256sums = fec7b685461b1455fb8181dad987355c5c8fb1d2e0fd4ca99769330f62260bdf
+	sha256sums = 9cea20deae3277f6cedf7ab483828f2c8f0938bd01f17ebb9681d3caec3f13f9
 	sha256sums = 00ada879ef2bce9a4cda5af2e1991ee0629d80633cedcc5a4192c504824263be
 	sha256sums = a5511166a03249bd60b86e95277073bdd0fb9143fad9308352a4786d8dfab416
 

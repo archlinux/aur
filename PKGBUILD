@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=otterly-appimage
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Local-first, privacy-focused WYSIWYG Markdown vault with full-text search, wiki-links, and a rich editor (AppImage)"
 url="https://github.com/ajkdrag/otterly"
@@ -14,7 +14,7 @@ options=("!strip")
 license=("MIT")
 
 source=("otterly-appimage-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/otterly_${pkgver}_amd64.AppImage" "otterly.png::https://raw.githubusercontent.com/ajkdrag/otterly/main/src-tauri/icons/128x128@2x.png" "otterly.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/otterly/otterly.desktop")
-sha256sums=('fec7b685461b1455fb8181dad987355c5c8fb1d2e0fd4ca99769330f62260bdf'
+sha256sums=('9cea20deae3277f6cedf7ab483828f2c8f0938bd01f17ebb9681d3caec3f13f9'
             '00ada879ef2bce9a4cda5af2e1991ee0629d80633cedcc5a4192c504824263be'
             'a5511166a03249bd60b86e95277073bdd0fb9143fad9308352a4786d8dfab416')
 
