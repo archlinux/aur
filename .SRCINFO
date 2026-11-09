@@ -1,0 +1,18 @@
+pkgbase = nuvoton-hid-isp-git
+	pkgdesc = Nuvoton USB HID ISP Programmer
+	pkgver = r2.151134b
+	pkgrel = 1
+	url = https://github.com/Jen-Chih-Liu/LINUX_HID_ISP_NUVOTON
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = libusb
+	provides = nuvoton-hid-isp
+	conflicts = nuvoton-hid-isp
+	source = nuvoton-hid-isp-git::git+https://github.com/Jen-Chih-Liu/LINUX_HID_ISP_NUVOTON.git
+	sha256sums = SKIP
+
+pkgname = nuvoton-hid-isp-git
