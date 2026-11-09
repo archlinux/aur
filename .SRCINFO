@@ -1,6 +1,6 @@
 pkgbase = float-app-bin
 	pkgdesc = Persistently float selected Hyprland windows (prebuilt binary)
-	pkgver = 20261027.0
+	pkgver = 20261109.0
 	pkgrel = 1
 	url = https://github.com/timmo001/float-app
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = float-app-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = float-app-20261027.0-linux-x86_64.tar.gz::https://github.com/timmo001/float-app/releases/download/20261027.0/float-app-20261027.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a468e7cd3c36a6cb6b1172f1bc8455db254e50e2ae3e87664d8ad6f1919e9f7e
-	source_aarch64 = float-app-20261027.0-linux-x86_64.tar.gz::https://github.com/timmo001/float-app/releases/download/20261027.0/float-app-20261027.0-linux-x86_64.tar.gz
-	sha256sums_aarch64 = 7166e0ebb7507d7875a6f2b37860b61830f1db43ade79ce1826240197ca558e3
+	source_x86_64 = float-app-20261109.0-linux-x86_64.tar.gz::https://github.com/timmo001/float-app/releases/download/20261109.0/float-app-20261109.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e70795bdefa5526b790bb3cbbba61a814fcb9172333f309648f1aaf5074d89f3
+	source_aarch64 = float-app-20261109.0-linux-x86_64.tar.gz::https://github.com/timmo001/float-app/releases/download/20261109.0/float-app-20261109.0-linux-x86_64.tar.gz
+	sha256sums_aarch64 = 5a9ee33110b8afb81e6283e7fb876270e34263b22e5c2db2ae00db01550991d7
 
 pkgname = float-app-bin
