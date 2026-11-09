@@ -1,6 +1,6 @@
 pkgbase = donutcleaner
 	pkgdesc = System maintenance and package dependency manager for Linux, GTK4 and Rust (formerly SysClean)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/Smart-Cleaner
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = donutcleaner
 	replaces = sysclean
 	options = !lto
 	options = !debug
-	source = donutcleaner-0.2.0.tar.gz::https://github.com/DonutsDelivery/Smart-Cleaner/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 8589b6477ff2b85842eb67c8e41c0a95f2f2c1312a991b5bdd3638a94eb72250
+	source = donutcleaner-0.2.1.tar.gz::https://github.com/DonutsDelivery/Smart-Cleaner/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 28adbe68f37083125f0c2dbb73e86d16c0fb073550dcea323d9582a06ad8ba2d
 
 pkgname = donutcleaner
