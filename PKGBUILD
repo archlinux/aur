@@ -3,10 +3,10 @@
 # pkgname, pkgver, pkgdesc, _tag and _debver per channel before publishing.
 pkgname=tabularis-nightly-bin
 _pkgname=tabularis
-pkgver=0.31.1.nightly3
+pkgver=0.31.1.nightly4
 pkgrel=1
-_tag=nightly-20261106-c7ce199
-_debver=0.31.1-3
+_tag=nightly-20261109-9491a09
+_debver=0.31.1-4
 pkgdesc="Open-source desktop SQL workspace for PostgreSQL, MySQL/MariaDB, SQLite and 15+ more databases, with a built-in MCP server (nightly build)"
 arch=('x86_64')
 url="https://github.com/TabularisDB/tabularis"
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl' 'libsecret')
 source=("${_pkgname}_${_debver}_amd64.deb::${url}/releases/download/${_tag}/${_pkgname}_${_debver}_amd64.deb")
-sha256sums=('efeb7e5313d3c95250883af64942fb0364717f1b3aa2679609fec222229b8531')
+sha256sums=('28f0d06623726808b2a8b5a215efdd9548309d5a24ee5bb85cbc118cd7438da3')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}"
