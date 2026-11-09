@@ -1,0 +1,18 @@
+pkgbase = crum-bs-bin
+	pkgdesc = Find and remove app leftovers, caches and system bloat (static binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/crumbs
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = crum-bs=0.2.0
+	conflicts = crum-bs
+	conflicts = crumbs
+	options = !strip
+	options = !debug
+	source = crumbs-0.2.0-LICENSE::https://github.com/asafelobotomy/crumbs/releases/download/v0.2.0/LICENSE
+	sha256sums = fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0
+	source_x86_64 = crumbs-0.2.0::https://github.com/asafelobotomy/crumbs/releases/download/v0.2.0/crumbs-0.2.0-x86_64-linux-musl
+	sha256sums_x86_64 = 05ebf5f773c172a939b1ee938d25f7931bb0d3b75121bdd49e203592637aec49
+
+pkgname = crum-bs-bin
