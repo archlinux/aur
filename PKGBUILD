@@ -1,7 +1,7 @@
 # Maintainer: Finn Künstner <finn dot kuenstner at gmail dot com>
 
 pkgname=cinnabar
-pkgver=0.1.31
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Unofficial client compatible with Minecraft: Bedrock Edition, written in Rust'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
 )
 options=('!debug' '!lto' '!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f04219c90ab15e6c99a2c88852c00caa95012a960e79018ef0d11574afbbef55')
+sha256sums=('918a54f8a1956da83f25eecf0f03c7d8bfe4c07e13582e331c102ea13c96dd84')
 
 prepare() {
   cd "$pkgname-$pkgver"

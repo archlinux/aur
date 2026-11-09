@@ -1,6 +1,6 @@
 pkgbase = cinnabar
 	pkgdesc = Unofficial client compatible with Minecraft: Bedrock Edition, written in Rust
-	pkgver = 0.1.31
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/cinnabar-mc/cinnabar
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = cinnabar
 	options = !debug
 	options = !lto
 	options = !strip
-	source = cinnabar-0.1.31.tar.gz::https://github.com/cinnabar-mc/cinnabar/archive/refs/tags/v0.1.31.tar.gz
-	sha256sums = f04219c90ab15e6c99a2c88852c00caa95012a960e79018ef0d11574afbbef55
+	source = cinnabar-0.2.1.tar.gz::https://github.com/cinnabar-mc/cinnabar/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 918a54f8a1956da83f25eecf0f03c7d8bfe4c07e13582e331c102ea13c96dd84
 
 pkgname = cinnabar
