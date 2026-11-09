@@ -2,12 +2,12 @@
 
 pkgname=nutool-usbtoserialport-git
 _pkgname=NuTool-USBtoSerialPort
-pkgver=1.02.r1.g5e0bd8f
-pkgrel=2
+pkgver=1.02.r2.g95978d9
+pkgrel=1
 epoch=
 pkgdesc="NuTool-USB to Serial Port is a host-side software, it passes through and montiors I2C, SPI and CAN data of Nu-Link2-Pro® adapter"
 arch=($CARCH)
-url="https://gitee.com/OpenNuvoton/NuTool-USB-to-Serial-Port"
+url="https://github.com/OpenNuvoton/NuTool-USB-to-Serial-Port"
 license=('GPL-3.0-only')
 groups=()
 depends=(
