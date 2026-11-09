@@ -4,11 +4,11 @@
 # Contributor: Piotr Rogoża <rogoza.piotr@gmail.com>
 # Contributor: Johannes Dewender <arch@JonnyJD.net>
 #
-# Pull Requests are welcome here: https://github.com/yurikoles-aur/obs-build
+# Pull requests are welcome on GitHub: https://github.com/yurikoles-aur/obs-build
 #
 
 pkgname=obs-build
-pkgver=20260901
+pkgver=20261016
 pkgrel=1
 license=(GPL-2.0-only GPL-3.0-only)
 pkgdesc='OBS build script, can be used with OBS or stand alone'
@@ -17,7 +17,7 @@ arch=(any)
 depends=(perl)
 checkdepends=(devscripts patchutils)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('921556c0c17bf0f2aae031636c64ff1da8b32e012f142cb056ca61ccdbc22ce0')
+sha256sums=('7172186729bfa4098e5e043ccda8b5103fe0d258d6e785e24165b747066067fd')
 
 check() {
   cd "${pkgname}-${pkgver}"
