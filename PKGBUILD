@@ -1,7 +1,7 @@
 # Maintainer: InTeaReable <leyn.the.cat@gmail.com>
 
 pkgname=matedit-bin
-pkgver=20261108
+pkgver=20261109
 pkgrel=1
 pkgdesc="Material editor for PrimeXT"
 arch=('x86_64')
@@ -12,11 +12,11 @@ provides=('matedit')
 conflicts=('matedit')
 
 source=(
-    "MatEdit-linux-x64-gcc-20261108-1.tar.gz::https://github.com/hgruntt/MatEdit/releases/download/nightly/MatEdit-linux-x64-gcc-20261108-1.tar.gz"
+    "MatEdit-linux-x64-gcc-20261109-1.tar.gz::https://github.com/hgruntt/MatEdit/releases/download/nightly/MatEdit-linux-x64-gcc-20261109-1.tar.gz"
     "icon.png::https://raw.githubusercontent.com/hgruntt/MatEdit/main/icon.png"
 )
 
-sha256sums=('712fe5d77615eb87eb7f88e0e9ebc6c66cd4dd47c7076e46a07a7eebdb38c3a9' 'SKIP')
+sha256sums=('813ac0ef6c7dba0a63f6a208d1b95729bb9a5d76caa0c02d2e85b3691c393547' 'SKIP')
 
 prepare() {
     mkdir -p "$srcdir/matedit"
