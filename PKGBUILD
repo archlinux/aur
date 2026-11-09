@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 depends=('gtk3'  'libsecret'  'libxkbfile'  'libxss'  'nss')
 source=(
   "$url/releases/download/v$pkgver/$_pkgname-linux-$pkgver.deb")
-sha256sums=('60eb7f15920f8a6b3be0d3363c9447dafa7379935b1537ffe442e562083b70a3')
+sha256sums=('08ca17b684668b0c5ef927b81ace69b2ba420e2e89a3fd7a9f192bab7443807d')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
