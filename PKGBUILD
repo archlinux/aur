@@ -3,7 +3,7 @@
 _name=smithy-core
 pkgname=python-$_name
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Core components for implementing Smithy tooling in Python.'
 arch=('any')
 _repo='https://github.com/smithy-lang/smithy-python'

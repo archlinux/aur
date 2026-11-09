@@ -1,7 +1,7 @@
 pkgbase = python-smithy-core
 	pkgdesc = Core components for implementing Smithy tooling in Python.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-core
 	arch = any
 	license = Apache-2.0
