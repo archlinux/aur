@@ -2,7 +2,7 @@
 
 pkgname="celestial-gtk-theme"
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, customizable GTK theme with multiple color variants.'
 arch=('any')
 url="https://github.com/zquestz/$pkgname"
@@ -18,7 +18,7 @@ conflicts=("${pkgname}-git")
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-b2sums=('f167b866ca6d1978631d29381634a792726472e70d36d674e79da6f2f8e1c61b70e79c113cea4be3d5254bbce487bdbf40db18f6b01d8967e9c4eb1d06ff72f0')
+b2sums=('e66bbca8b775479d7f86313ef061ec9a3fe1f0aef7411d570ead4e07ac69a2b749051a7fcfae0d64749414236d2fb2f53f11612589ae978ba3c23065fc63ce54')
 
 package() {
   cd "${pkgname}-${pkgver}"
