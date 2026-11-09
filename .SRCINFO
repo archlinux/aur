@@ -1,7 +1,7 @@
 pkgbase = python-niquests-git
-	pkgdesc = Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (latest commit)
-	pkgver = 3.13.1.r1.gd056ba10
-	pkgrel = 3
+	pkgdesc = Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (development version)
+	pkgver = 3.21.3.r1.gd326c469
+	pkgrel = 1
 	url = https://github.com/jawah/niquests
 	arch = any
 	license = Apache-2.0
@@ -17,6 +17,7 @@ pkgbase = python-niquests-git
 	optdepends = python-orjson: for speedups
 	provides = python-niquests
 	conflicts = python-niquests
+	options = !strip
 	source = git+https://github.com/jawah/niquests.git
 	sha256sums = SKIP
 
