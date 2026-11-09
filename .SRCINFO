@@ -1,6 +1,6 @@
 pkgbase = pig
 	pkgdesc = Pi coding agent ported to Go
-	pkgver = 0.4.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/MichaelKinsy/PiG
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = pig
 	optdepends = xdg-utils: open browser links
 	options = !strip
 	options = !emptydirs
-	source = pig-0.4.1-source.tar.gz::https://github.com/MichaelKinsy/PiG/releases/download/v0.4.1/pig-0.4.1-source.tar.gz
-	sha256sums = d2c7bcc58baa50faf2579fcf0d04b6679eece55385c0fc7618cd2ad841aaa733
+	source = pig-0.7.0-source.tar.gz::https://github.com/MichaelKinsy/PiG/releases/download/v0.7.0/pig-0.7.0-source.tar.gz
+	sha256sums = 0e39058a861dd0d76f7961fd5bbc4cacef6b9f0ab5ece0990b9969d6a7c950b8
 
 pkgname = pig

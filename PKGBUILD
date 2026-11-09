@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=pig
 appname=pig
-pkgver=0.4.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Pi coding agent ported to Go"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 	'xdg-utils: open browser links'
 )
 source=("${appname}-${pkgver}-source.tar.gz::${url}/releases/download/v${pkgver}/${appname}-${pkgver}-source.tar.gz")
-sha256sums=('d2c7bcc58baa50faf2579fcf0d04b6679eece55385c0fc7618cd2ad841aaa733')
+sha256sums=('0e39058a861dd0d76f7961fd5bbc4cacef6b9f0ab5ece0990b9969d6a7c950b8')
 options=('!strip' '!emptydirs')
 
 prepare() {
