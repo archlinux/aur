@@ -3,7 +3,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=kotlin-native-bin
-pkgver=2.3.0
+pkgver=2.4.21
 pkgrel=1
 pkgdesc="An LLVM based backend for the Kotlin compiler and native implementation of the Kotlin standard library"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-prebuilt-linux-x86_64-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '60d4f92af2cd06dacf3e01e574c433cecca2e4b22fddefadaae40c4f531a567e'
+  '4935d8c8da90a2d2a8ff51da7d2c264c0d6026e1d35a8f169e218d9209965678'
 )
 
 package() {
@@ -49,7 +49,6 @@ package() {
   ln -s /usr/lib/kotlin-native/bin/konan-lldb "${pkgdir}/usr/bin/konan-lldb"
   ln -s /usr/lib/kotlin-native/bin/klib "${pkgdir}/usr/bin/klib"
   ln -s /usr/lib/kotlin-native/bin/cinterop "${pkgdir}/usr/bin/cinterop"
-  ln -s /usr/lib/kotlin-native/bin/jsinterop "${pkgdir}/usr/bin/jsinterop"
   ln -s /usr/lib/kotlin-native/bin/run_konan "${pkgdir}/usr/bin/run_konan"
   ln -s /usr/lib/kotlin-native/bin/generate-platform "${pkgdir}/usr/bin/generate-platform"
 }
