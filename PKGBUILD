@@ -1,18 +1,18 @@
 # Maintainer: rahmerh <rahmerh@users.noreply.github.com>
 
 pkgname=sax-git
-pkgver=0.3.0.r22.g9f8e185
+pkgver=1.0.0.r37.g8b0ce80
 pkgrel=1
 pkgdesc="A simple but smart archiving and extraction tool (latest Git commit)"
 arch=('x86_64')
-url="https://github.com/rahmerh/sax"
+url="https://git.sr.ht/~rahmerh/sax"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=("sax=$pkgver")
 conflicts=('sax')
 options=('!lto')
-source=('sax::git+https://github.com/rahmerh/sax.git#branch=main')
+source=('sax::git+https://git.sr.ht/~rahmerh/sax#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {
