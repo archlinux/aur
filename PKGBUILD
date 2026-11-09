@@ -11,6 +11,16 @@
 # - the HSM PIN helper in /usr/lib/himmelblau instead of /usr/libexec
 # - a package-specific name for the display-manager drop-in
 # - every installed /etc file in backup, so local edits survive upgrades
+# - service units generated for systemd 257 rather than the build host's
+#   detected version, which falls back to weaker units (User=root) if detection
+#   fails; 257 is the newest feature the generator checks for
+# - tpm2-tools required, so the first HSM PIN setup can provision the TPM SRK:
+#   the setup unit runs only until a credential exists, so a host-key-only
+#   credential is never upgraded later
+# - no Debian AppArmor fragments: untested on Arch, and the unix-chkpwd one
+#   widens Arch's own profile (dac_override); the orchestrator they serve is
+#   not built
+# - PAM is not configured on install; the admin runs aad-tool configure-pam
 # Upstream does not sign its tags, so the archive checksum is the integrity check.
 
 pkgname=himmelblau
@@ -28,8 +38,9 @@ depends=(
   'openssl'
   'pam'
   'sqlite'
-  'systemd'
+  'systemd>=257'
   'systemd-libs'
+  'tpm2-tools'
   'tpm2-tss'
 )
 makedepends=(
@@ -45,7 +56,6 @@ makedepends=(
 checkdepends=('nodejs')
 # Mirrors the recommends and suggests the DEB and RPM packages declare.
 optdepends=(
-  'apparmor: AppArmor profile snippets in /etc/apparmor.d'
   'chromium: browser SSO via native messaging'
   'cronie: Intune policy scripts'
   'dconf: enables the QR greeter extension at install time'
@@ -54,7 +64,6 @@ optdepends=(
   'google-chrome: browser SSO via native messaging'
   'krb5: Kerberos ticket support'
   'openssh: SSH logon with MFA'
-  'tpm2-tools: TPM backed HSM pin'
 )
 # Single package: the DEB/RPM split has no equivalent on Arch, so the
 # subpackage names are recorded as provides.
@@ -69,12 +78,6 @@ provides=(
   'pam-himmelblau'
 )
 backup=(
-  'etc/apparmor.d/himmelblau-orchestrator-container'
-  'etc/apparmor.d/local/crun'
-  'etc/apparmor.d/local/fusermount3'
-  'etc/apparmor.d/local/runc'
-  'etc/apparmor.d/local/unix-chkpwd'
-  'etc/apparmor.d/local/usr.sbin.cupsd'
   'etc/chromium/native-messaging-hosts/linux_entra_sso.json'
   'etc/chromium/policies/managed/himmelblau.json'
   'etc/himmelblau/himmelblau.conf'
@@ -108,7 +111,7 @@ build() {
     --conf-example-output target/config/himmelblau.conf.example \
     --xml-dir src/common/docs-xml/himmelblauconf
 
-  python3 scripts/gen_servicefiles.py --out ./platform/opensuse/
+  python3 scripts/gen_servicefiles.py --out ./platform/opensuse/ --assume-version 257
 
   # `tpm` is defined by himmelblau_unix_common, so with an explicit package
   # selection it has to be requested as <crate>/<feature>.
@@ -241,18 +244,4 @@ package() {
     install -Dm644 "target/release/qr-greeter-build/$greeter/$asset" \
       "$pkgdir/usr/share/gnome-shell/extensions/$greeter/$asset"
   done
-
-  # AppArmor profiles, used only when the optional apparmor package is present
-  install -Dm644 platform/debian/apparmor.himmelblau-orchestrator-container \
-    "$pkgdir/etc/apparmor.d/himmelblau-orchestrator-container"
-  install -Dm644 platform/debian/apparmor.crun.local \
-    "$pkgdir/etc/apparmor.d/local/crun"
-  install -Dm644 platform/debian/apparmor.runc.local \
-    "$pkgdir/etc/apparmor.d/local/runc"
-  install -Dm644 platform/debian/apparmor.cupsd.local \
-    "$pkgdir/etc/apparmor.d/local/usr.sbin.cupsd"
-  install -Dm644 platform/debian/apparmor.unix-chkpwd.local \
-    "$pkgdir/etc/apparmor.d/local/unix-chkpwd"
-  install -Dm644 platform/debian/apparmor.fusermount3.local \
-    "$pkgdir/etc/apparmor.d/local/fusermount3"
 }

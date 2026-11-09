@@ -1,5 +1,9 @@
-# Wires up NSS, PAM, the GNOME keyring and the QR greeter, the same way the
-# Debian postinst and RPM scriptlets do.
+# Wires up NSS and the QR greeter, the same way the Debian postinst and RPM
+# scriptlets do. Unlike them, this AUR package leaves PAM to the administrator:
+# 'aad-tool configure-pam' puts pam_himmelblau first in the auth stack, so a
+# successful Entra sign-in skips pam_shells, pam_nologin and pam_faillock there.
+# Upstream's GDM keyring prelude ends gdm-password's auth stack the same way, so
+# it is not applied either.
 #
 # Enabling units, reloading systemd and replaying tmpfiles are left to the
 # pacman hooks shipped by systemd, so this script does not do any of that.
@@ -13,46 +17,6 @@ _configure_nss() {
     sed -i '/^group:/ {/himmelblau/! s/$/ himmelblau/}' "$conf"
     sed -i '/^shadow:/ {/himmelblau/! s/$/ himmelblau/}' "$conf"
     sed -i '/^initgroups:/ {/himmelblau/! s/$/ himmelblau/}' "$conf"
-}
-
-_configure_pam() {
-    if ! aad-tool configure-pam --really >/dev/null 2>&1; then
-        echo "warning: 'aad-tool configure-pam --really' failed, PAM is unconfigured"
-    fi
-}
-
-_configure_keyring() {
-    local conf=/etc/pam.d/gdm-password
-    local tmp
-
-    [ -f "$conf" ] || return 0
-
-    # Hand the auth token to pam_gnome_keyring, so the keyring unlocks the way
-    # it does on a local password login.
-    sed -i -E '/^[[:space:]]*auth[[:space:]]+optional[[:space:]]+pam_gnome_keyring\.so/ {/use_authtok/! s/$/ use_authtok/}' "$conf"
-
-    grep -q 'himmelblau-keyring-prelude' "$conf" && return 0
-
-    tmp=$(mktemp) || return 0
-
-    # The line patched above sits after `auth include system-local-login`, where
-    # aad-tool puts pam_himmelblau as `sufficient`. A successful Hello PIN login
-    # therefore returns from the whole auth stack before pam_gnome_keyring is
-    # reached, and the keyring never sees the PIN. Run the pair up front instead,
-    # and jump over it for anyone pam_himmelblau does not claim, so local
-    # password logins keep unlocking via the line further down.
-    awk '
-        !ins && /^[[:space:]]*auth[[:space:]]/ {
-            print "# himmelblau-keyring-prelude"
-            print "auth       [success=ok ignore=2 default=2] pam_himmelblau.so ignore_unknown_user set_authtok"
-            print "auth       optional                        pam_gnome_keyring.so use_authtok"
-            print "auth       [default=done]                  pam_permit.so"
-            ins = 1
-        }
-        { print }
-    ' "$conf" > "$tmp" && cat "$tmp" > "$conf"
-
-    rm -f "$tmp"
 }
 
 _enable_extension() {
@@ -105,21 +69,24 @@ _system_changes() {
     cat <<'EOF'
 This package changes system configuration:
   - /etc/nsswitch.conf: himmelblau added to passwd, group, shadow, initgroups
-  - /etc/pam.d: pam_himmelblau added by 'aad-tool configure-pam'
-  - /etc/pam.d/gdm-password (GDM only): keyring unlocks on PIN login
   - dconf (if installed): enables the QR greeter GNOME extension
   - /etc/ssh/sshd_config.d/30-himmelblau.conf: keyboard-interactive login,
     effective when sshd restarts
   - Chrome/Chromium managed policy: force-installs the Entra SSO extension
 To opt out of the sshd or browser changes, edit those files rather than
 deleting them (an empty policy is {}); pacman keeps your edits on upgrade.
+
+PAM is not configured. Preview the change, then apply it:
+    aad-tool configure-pam
+    aad-tool configure-pam --really
+It puts pam_himmelblau first in system-auth and system-login, so a successful
+Entra sign-in skips pam_shells, pam_nologin and pam_faillock in the auth stage.
+Review /etc/pam.d afterwards.
 EOF
 }
 
 post_install() {
     _configure_nss
-    _configure_pam
-    _configure_keyring
     _enable_greeter
 
     _system_changes
@@ -133,16 +100,13 @@ EOF
 }
 
 post_upgrade() {
-    # PAM is not reconfigured here, to preserve local edits to /etc/pam.d.
     _configure_nss
-    _configure_keyring
     _enable_greeter
 
     # Versions before 4.0.8 had no install script, so these edits are new.
     if [ "$(vercmp "$2" 4.0.8)" -lt 0 ]; then
         _system_changes
-        echo "Upgrades redo the nsswitch, GDM and dconf steps. PAM is configured only"
-        echo "on first install; if yours isn't, see 'aad-tool configure-pam --help'."
+        echo "Upgrades repeat the nsswitch and dconf steps."
         echo
     fi
 
