@@ -5,7 +5,7 @@
 
 pkgname=kimi-code-cn-bin
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 _appname='Kimi Code'
 _prefix='/opt/kimi-code-cn'
 pkgdesc='Kimi Code Desktop, mainland China build pinned to the China API'
@@ -32,6 +32,14 @@ source=(
   'patch-region.js'
   'kimi-code-cn.sh'
   'kimi-code-cn.desktop'
+  'kimi-code-cn-16.png'
+  'kimi-code-cn-24.png'
+  'kimi-code-cn-32.png'
+  'kimi-code-cn-48.png'
+  'kimi-code-cn-64.png'
+  'kimi-code-cn-128.png'
+  'kimi-code-cn-256.png'
+  'kimi-code-cn-512.png'
 )
 noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 sha256sums=(
@@ -39,6 +47,14 @@ sha256sums=(
   'ea518e5c5eae5f1e2c7d7a4e8dfa62609169d05845b8d9b7d3ae7c4500996f2d'
   '37c495e6f19acba4847361aff61dd9cdb4540adca2de51b315181a53967cb509'
   '85d85fd09213f93b5f05b36b366fa0198015ac37b6050b4e2779c4e33fbfd8c3'
+  '2c26abb1ca0208f866db6975a894570d55bd94cb08fb2f1feb183a9d98443ba8'
+  '884ac98a6e69847d68cc4ea3fb92d203ceccd1b4dd652c17fb74d0a824648f54'
+  '148c2ac9b3985f4d8f8c7167998d543d861aa7e54533d52aace9f8e8086b951d'
+  'd8eec165a90bc1f58c3ace00713ab1609af22c5ba91b12367fc58068405c1e6b'
+  '057eb3aea6fa95f87501b29109d5bef3ca650251f677fccd67b2e414aaf419b7'
+  'eec3d1f9ca77cfbbbf06d65213649e815aba4a2c4bce91d605af8a9a34d4fc1c'
+  'd3e41fdbab2249a67ae8a8febaed83bfe37c22440246ccc54b6c193713bb9790'
+  '719e62a25e3ce9644f727629f1e7d5c4f6f94a41046f7dc4bd749b5164129bd5'
 )
 
 prepare() {
@@ -82,9 +98,11 @@ package() {
   install -Dm755 "${srcdir}/kimi-code-cn.sh" "${pkgdir}/usr/bin/kimi-code-cn"
   install -Dm644 "${srcdir}/kimi-code-cn.desktop" \
     "${pkgdir}/usr/share/applications/kimi-code-cn.desktop"
-  install -Dm644 \
-    "${srcdir}/payload/usr/share/icons/hicolor/512x512/apps/kimi-code.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/kimi-code-cn.png"
+  local _size
+  for _size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "${srcdir}/kimi-code-cn-${_size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/kimi-code-cn.png"
+  done
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "${_prefix}/LICENSE.electron.txt" \
