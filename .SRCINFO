@@ -1,0 +1,20 @@
+pkgbase = texturecraft
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Substance 3D Painter
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://getartcraft.com/apps/texturecraft
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	source = https://github.com/storytold/texturecraft/archive/refs/tags/v0.5.0/texturecraft-0.5.0.tar.gz
+	sha256sums = 255a84846b5495abcc95e87539fd79044e770a03af91e091b85bce84b3fb6a60
+
+pkgname = texturecraft
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libgcc_s.so
