@@ -38,8 +38,8 @@ pkgbase = vantage-browser-bin
 	conflicts = vantage-browser
 	conflicts = vantage-browser-appimage
 	source_x86_64 = https://github.com/asystech-chen/Vantage/releases/download/v153.6.0-1/vantage_153.6.0-1_amd64.deb
-	sha256sums_x86_64 = bef140a1a96994029153dca8c00b1750b9a5a764fb9db2dc68d7bb40e8a29e8a
+	sha256sums_x86_64 = 51e4cd142c0d6feada6fbd580be540eb6851eec745ac873d7b4b3e04d29d763e
 	source_aarch64 = https://github.com/asystech-chen/Vantage/releases/download/v153.6.0-1/vantage_153.6.0-1_arm64.deb
-	sha256sums_aarch64 = bef140a1a96994029153dca8c00b1750b9a5a764fb9db2dc68d7bb40e8a29e8a
+	sha256sums_aarch64 = cf1c9c97888f63a4487b5cb22678d542ad783e4065f533a3338f6201f36244bd
 
 pkgname = vantage-browser-bin

@@ -44,8 +44,8 @@ conflicts=('vantage-browser' 'vantage-browser-appimage')
 # 上游 deb 按架构区分，使用关联数组形式
 source_x86_64=("https://github.com/asystech-chen/Vantage/releases/download/v${pkgver}-${pkgrel}/vantage_${pkgver}-${pkgrel}_amd64.deb")
 source_aarch64=("https://github.com/asystech-chen/Vantage/releases/download/v${pkgver}-${pkgrel}/vantage_${pkgver}-${pkgrel}_arm64.deb")
-sha256sums_x86_64=('bef140a1a96994029153dca8c00b1750b9a5a764fb9db2dc68d7bb40e8a29e8a')
-sha256sums_aarch64=('bef140a1a96994029153dca8c00b1750b9a5a764fb9db2dc68d7bb40e8a29e8a')
+sha256sums_x86_64=('51e4cd142c0d6feada6fbd580be540eb6851eec745ac873d7b4b3e04d29d763e')
+sha256sums_aarch64=('cf1c9c97888f63a4487b5cb22678d542ad783e4065f533a3338f6201f36244bd')
 
 package() {
   # deb 为 ar 归档，data.tar.xz 内含 /opt/vantage 等
