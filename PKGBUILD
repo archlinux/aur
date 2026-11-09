@@ -1,8 +1,8 @@
 # Maintainer: fishy <me at fishies dot dev>
 
 pkgname=godsvg-git
-pkgver=1.0.alpha13.7.gda354a12
-_godotver=4.6-stable
+pkgver=1.0.alpha17.22.g52ad7944
+_godotver=4.8-beta1
 _godotname="Godot_v${_godotver}_linux.x86_64"
 _templatename="Godot_v${_godotver}_export_templates"
 pkgrel=1
@@ -23,9 +23,9 @@ source=(
 )
 sha256sums=(
     "SKIP"
-    "02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd"
-    "1998af37f1387684e2c211cdb483daf492fc64dc6b12096bddcdca25b6910c86"
-    "c48cf5c2d298fc6638cced0c1d04f9665d7815b4042115a2748f2f2de0012be4"
+    "199b2d6a0daa3a74a697356f31c33347f997f65258ba7dd07ca8c1110757927d"
+    "74bc5e7396ec1a811070849da6931cc99b01b0861a659c22b97e8adecf96d71a"
+    "9e9617b00081a66017cefce99d82ac9ae937e613c08d5961e8f178b31ca62e77"
 )
 
 pkgver() {
@@ -37,9 +37,10 @@ build() {
     local workflow
     workflow=$(curl -s https://raw.githubusercontent.com/MewPurPur/GodSVG/refs/heads/main/.github/workflows/export-optimized.yml)
     local realgodotver
-    realgodotver=$(yq -r '.env.GODOT_VERSION' <<< "$workflow")-$(yq -r '.env.GODOT_RELEASE' <<< "$workflow")
+    realgodotver=$(yq -r '.env.GODOT_VERSION' <<< "$workflow")-$(yq -r '.env.GODOT_RELEASE_TYPE' <<< "$workflow")
 
     if [ "$realgodotver" != "$_godotver" ]; then
+    	printf "Godot version $realgodotver does not match target $_godotver"
         exit 1
     fi
 
@@ -53,7 +54,7 @@ build() {
 package() {
     install -Dm755 "GodSVG/export/godsvg" "${pkgdir}/usr/bin/godsvg"
     install -Dm644 "GodSVG/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm644 "GodSVG/assets/GodSVG.desktop" "${pkgdir}/usr/share/applications/godsvg.desktop"
+    install -Dm644 "GodSVG/no_export/distribution/com.godsvg.GodSVG.desktop" "${pkgdir}/usr/share/applications/com.godsvg.GodSVG.desktop"
     install -Dm644 "GodSVG/assets/logos/icon.png" "${pkgdir}/usr/share/pixmaps/godsvg.png"
     install -Dm644 "GodSVG/assets/logos/icon.svg" "${pkgdir}/usr/share/pixmaps/godsvg.svg"
 }
