@@ -2,7 +2,7 @@
 pkgname=oxideterm-bin
 _pkgname=OxideTerm
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-native workspace for local shells and remote machines.Zero Webview, zero OpenSSL, zero telemetry, and no app subscription."
 arch=(
     'aarch64'
@@ -41,7 +41,7 @@ _install_icons() {
 }
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}-native/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop"
+    sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}-native/${pkgname%-bin}-native/g" "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop"
     local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x86_64 || echo aarch64)
 	find "${srcdir}/opt/${pkgname%-bin}" -type f \
 		\( -name '*darwin*' -o -name '*android*' -o -name 'win32*' -o -name "*ia32*" -o -name "*${_archrem}*" \) \
@@ -50,7 +50,7 @@ prepare() {
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
     cp -a "${srcdir}/opt/${pkgname%-bin}/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}-native" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}-native" "${pkgdir}/usr/bin/${pkgname%-bin}-native"
     _install_icons
     install -Dm644 "${srcdir}/usr/share/applications/com.${pkgname%-bin}.app.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

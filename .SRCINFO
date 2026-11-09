@@ -1,7 +1,7 @@
 pkgbase = oxideterm-bin
 	pkgdesc = AI-native workspace for local shells and remote machines.Zero Webview, zero OpenSSL, zero telemetry, and no app subscription.
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oxideterm.app/
 	arch = aarch64
 	arch = x86_64
