@@ -1,11 +1,12 @@
-# Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
+# Maintainer: Scott <158021536+nathawatc@users.noreply.github.com>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=iweap
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure interactive IWD 802.1X profile generator"
 arch=('x86_64' 'aarch64')
-url="https://codeberg.org/nathawat/iweap"
+url="https://github.com/nathawatc/iweap"
 license=('GPL-3.0-or-later')
 depends=(
 	'dbus'
@@ -20,7 +21,7 @@ makedepends=('cargo')
 _tag=v${pkgver}
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('54ed9e0c836ef7b27e1a49f73ceda597ecbee390f5846272896f76a94ae5df3be7fccda25a0ef56172128d2b5434ff20453058cb469582886c858118a792e15b')
+b2sums=('b82605a61508cf674718378227dbbb7e441c43048268dae43e88d333f7e7530e1f73acaf532b0a76d9fb834b34531e6fdb8017cdfdd0b7d6c3f1b28e7686d00e')
 
 prepare() {
 	cd "${pkgname}"

@@ -1,8 +1,8 @@
 pkgbase = iweap
 	pkgdesc = Secure interactive IWD 802.1X profile generator
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = https://codeberg.org/nathawat/iweap
+	pkgrel = 2
+	url = https://github.com/nathawatc/iweap
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -13,7 +13,7 @@ pkgbase = iweap
 	depends = libgcc
 	depends = polkit
 	depends = systemd
-	source = iweap-1.0.1.tar.gz::https://codeberg.org/nathawat/iweap/archive/refs/tags/v1.0.1.tar.gz
-	b2sums = 54ed9e0c836ef7b27e1a49f73ceda597ecbee390f5846272896f76a94ae5df3be7fccda25a0ef56172128d2b5434ff20453058cb469582886c858118a792e15b
+	source = iweap-1.0.1.tar.gz::https://github.com/nathawatc/iweap/archive/refs/tags/v1.0.1.tar.gz
+	b2sums = b82605a61508cf674718378227dbbb7e441c43048268dae43e88d333f7e7530e1f73acaf532b0a76d9fb834b34531e6fdb8017cdfdd0b7d6c3f1b28e7686d00e
 
 pkgname = iweap
