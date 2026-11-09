@@ -1,5 +1,5 @@
 pkgbase = nimdow-wl-git
-	pkgver = 0.7.41.r544.g66eb016
+	pkgver = 0.7.41.r545.g7896c1b
 	pkgrel = 1
 	url = https://github.com/Vyrnexis/nimdow-wl
 	arch = x86_64
@@ -56,6 +56,7 @@ pkgname = nimdow-wl-desktop-git
 	depends = networkmanager
 	depends = ttf-meslo-nerd
 	depends = pacman-contrib
+	depends = rtkit
 	optdepends = pavucontrol: volume mixer
 	optdepends = nautilus: file manager
 	optdepends = adw-gtk-theme: GTK theme

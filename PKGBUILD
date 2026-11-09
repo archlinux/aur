@@ -12,7 +12,7 @@
 # build()).
 pkgbase=nimdow-wl-git
 pkgname=(nimdow-wl-git nimdow-wl-desktop-git)
-pkgver=0.7.41.r544.g66eb016
+pkgver=0.7.41.r545.g7896c1b
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Vyrnexis/nimdow-wl'
@@ -73,7 +73,7 @@ package_nimdow-wl-desktop-git() {
   depends=(nimdow-wl-git polkit-gnome mako swaybg xdg-desktop-portal-gtk xorg-xwayland
            gnome-keyring kitty nimlaunch-bin nimdow-wl-status wl-clipboard grim slurp
            libnotify pipewire pipewire-pulse wireplumber brightnessctl networkmanager
-           ttf-meslo-nerd pacman-contrib)
+           ttf-meslo-nerd pacman-contrib rtkit)
   optdepends=('pavucontrol: volume mixer'
               'nautilus: file manager'
               'adw-gtk-theme: GTK theme'
