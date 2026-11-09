@@ -1,0 +1,22 @@
+pkgbase = waymobar
+	pkgdesc = Wayland status bar written and configured in Haskell, with rivermonad widgets
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/waymobar
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = ghc
+	depends = ghc-libs
+	depends = haskell-network
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libpulse
+	optdepends = rivermonad: workspaces, layout and window title widgets
+	optdepends = ttf-nerd-fonts-symbols: icons
+	optdepends = libnotify: notifications when the configuration fails to compile
+	source = waymobar-0.1.0.tar.gz::https://github.com/prietus/waymobar/archive/v0.1.0.tar.gz
+	sha256sums = 77539a0593a6a174fcfd6ab359f709a6452e0af26852256f400300f41a34d6b1
+
+pkgname = waymobar
