@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ru
 	pkgdesc = Russian language pack for Firefox Nightly
-	pkgver = 162.0a1.20261108.091345
+	pkgver = 162.0a1.20261109.092106
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ru
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ru-162.0a1.20261108.091345.xpi
-	source = firefox-nightly-i18n-ru-162.0a1.20261108.091345.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-162.0a1.ru.langpack.xpi
-	sha256sums = 042e852ddc35e813b72618a17d9ace5bb883dfe5d919a9232481d101123ec485
+	noextract = firefox-nightly-i18n-ru-162.0a1.20261109.092106.xpi
+	source = firefox-nightly-i18n-ru-162.0a1.20261109.092106.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-162.0a1.ru.langpack.xpi
+	sha256sums = c9eff74ceb21ade5d0db6c064f10de611c47b151763bedc38cb5000c6e75d16f
 
 pkgname = firefox-nightly-i18n-ru
