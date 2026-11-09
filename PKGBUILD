@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=near-bin
-pkgver=0.1.0
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="near, a LAN-only file transfer hub, prebuilt binary"
 arch=('x86_64')
@@ -11,8 +11,8 @@ provides=('near')
 conflicts=('near')
 source=("near-$pkgver::https://github.com/CallMeAlphabet/near/releases/download/latest/near-x86_64-linux-musl"
         "near-$pkgver.sha256::https://github.com/CallMeAlphabet/near/releases/download/latest/near-x86_64-linux-musl.sha256")
-sha256sums=('a89c418cc49464afd2992d121904dfba69087736def657f881fc39719df25460'
-            'aff272046990d8d1e71715a3b3108615009b2797f68e036059d225275e8a7446')
+sha256sums=('0c826f0061513d1f7722a22f2a3a28c43de1a78c07fde03773e1b8e140a6f7a4'
+            '29adfd147bd49f5dfbbab351b2b287af71fca29edb605f4604af5bb89d878b2e')
 
 check() {
     cd "$srcdir"
