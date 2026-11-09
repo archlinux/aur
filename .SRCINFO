@@ -1,7 +1,7 @@
 pkgbase = channel
 	pkgdesc = An input manager for the river compositor
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/sivecano/channel
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,6 @@ pkgbase = channel
 	depends = river
 	depends = glibc
 	source = channel::git+https://codeberg.org/sivecano/channel.git#tag=0.5.2
-	sha256sums = 5572e77fc1fef4ff5d6081428a7ccde44f73ba2c1acb747a1c6dbf8613c5575b
+	sha256sums = b6fe29077350edfd1de7932ca5f83b04a9d0ae8c4e583825b43ed1346b85be97
 
 pkgname = channel

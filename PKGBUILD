@@ -3,7 +3,7 @@
 
 pkgname=channel
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An input manager for the river compositor"
 arch=('x86_64')
 url="https://codeberg.org/sivecano/channel"
@@ -13,7 +13,7 @@ makedepends=('zig' 'git')
 source=(
 "$pkgname::git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('5572e77fc1fef4ff5d6081428a7ccde44f73ba2c1acb747a1c6dbf8613c5575b')
+sha256sums=('b6fe29077350edfd1de7932ca5f83b04a9d0ae8c4e583825b43ed1346b85be97')
 
 build() {
 	cd $pkgname
