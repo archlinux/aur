@@ -8,13 +8,12 @@ pkgbase = ocaml-ppx_expect
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=3.11.0
-	depends = ocaml>=5.1.0
 	depends = ocaml-base>=0.17.0
-	depends = ocaml-js_of_ocaml>=5.8.0
 	depends = ocaml-ppx_here>=0.17.0
 	depends = ocaml-ppx_inline_test>=0.17.0
-	depends = ocaml-stdio>=0.17.0
 	depends = ocaml-ppxlib>=0.36.0
+	depends = ocaml-stdio>=0.17.0
+	depends = ocaml>=5.1.0
 	depends = zstd
 	options = !strip
 	source = ocaml-ppx_expect-0.17.3.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.17.3.tar.gz

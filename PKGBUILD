@@ -1,5 +1,7 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+
 _projectname='ppx_expect'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.3'
@@ -9,7 +11,15 @@ pkgdesc='Cram like framework for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-js_of_ocaml>=5.8.0' 'ocaml-ppx_here>=0.17.0' 'ocaml-ppx_inline_test>=0.17.0' 'ocaml-stdio>=0.17.0' 'ocaml-ppxlib>=0.36.0' 'zstd')
+depends=(
+    'ocaml-base>=0.17.0'
+    'ocaml-ppx_here>=0.17.0'
+    'ocaml-ppx_inline_test>=0.17.0'
+    'ocaml-ppxlib>=0.36.0'
+    'ocaml-stdio>=0.17.0'
+    'ocaml>=5.1.0'
+    'zstd'
+)
 makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -24,15 +34,25 @@ build() {
 
 # fails because of a circular dependency on ppx_jane, "Error: No rule found for negative-tests/inline_tests_runner"
 # and "Error: No rule found for negative-tests/inline_tests_runner.exe"
-# check() {
-# 	cd "$srcdir/$_sourcedirectory/"
-# 	dune runtest --release --verbose
-# }
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest --release --verbose
+}
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc/ocaml' --mandir '/usr/share/man' --release --verbose
+	DESTDIR="$pkgdir" \
+	       dune install \
+	       --prefix '/usr' \
+	       --libdir '/usr/lib/ocaml' \
+	       --docdir '/usr/share/doc/ocaml' \
+	       --mandir '/usr/share/man' \
+	       --release \
+	       --verbose
 
-	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/ocaml/$_projectname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/MIT"
+	install -dm755 \
+		"$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf \
+	   "/usr/share/doc/ocaml/$_projectname/LICENSE.md" \
+	   "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
