@@ -40,6 +40,10 @@ depends=(
 optdepends=(
   'libsecret: encrypted credential storage'
   'xdg-desktop-portal: global hotkey support'
+  'gnome-keyring: Secret Service daemon for encrypted credential storage'
+  'kwallet: KWallet daemon for encrypted credential storage (Plasma 6)'
+  'kwallet5: KWallet daemon for encrypted credential storage (Plasma 5)'
+
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" 'quaver-music' 'quaver-music-bin' 'quaver-music-appimage')
