@@ -2,7 +2,7 @@
 # Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname=lichii-git
-pkgver=0.r30389.gaae0b06
+pkgver=0.r30442.g0ab7736
 pkgrel=1
 pkgdesc='VERY experimental Nintendo Switch 2 emulator'
 arch=('x86_64')
@@ -54,7 +54,7 @@ pkgver() {
 
 build() {
   cmake -S "$srcdir/lichii" -B "$srcdir/build" -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_QT=ON \
@@ -65,7 +65,8 @@ build() {
     -DYUZU_USE_BUNDLED_SDL3=OFF \
     -DYUZU_USE_BUNDLED_FFMPEG=OFF \
     -DYUZU_TESTS=OFF \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DENABLE_WERROR=OFF
   cmake --build "$srcdir/build" --parallel
 }
 

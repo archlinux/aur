@@ -1,6 +1,6 @@
 pkgbase = lichii-git
 	pkgdesc = VERY experimental Nintendo Switch 2 emulator
-	pkgver = 0.r30389.gaae0b06
+	pkgver = 0.r30442.g0ab7736
 	pkgrel = 1
 	url = https://github.com/zortos293/Lichii
 	arch = x86_64
