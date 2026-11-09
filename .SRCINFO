@@ -1,6 +1,6 @@
 pkgbase = littera-bin
 	pkgdesc = Local voice dictation for Linux/Wayland (prebuilt binary)
-	pkgver = 1.0.8
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/RouHim/littera
 	install = littera-bin.install
@@ -17,7 +17,7 @@ pkgbase = littera-bin
 	provides = littera
 	conflicts = littera
 	options = !strip
-	source_x86_64 = https://github.com/RouHim/littera/releases/download/v1.0.8/littera-1.0.8-x86_64.tar.gz
-	sha256sums_x86_64 = 40e63f93f8a6df28134df2f07e19d4f50d95bc52a6dcf7f547d4f445786e25df
+	source_x86_64 = https://github.com/RouHim/littera/releases/download/v1.1.0/littera-1.1.0-x86_64.tar.gz
+	sha256sums_x86_64 = 57dc89e93dcfab2d3d64b28ef763740237a5792ead969d3375f4f5deacb0b67a
 
 pkgname = littera-bin
