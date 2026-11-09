@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.38.34
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -43,7 +43,7 @@ source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
         "cron_command.patch")
 sha256sums=('753286515333e5f9fe3979fe6c3c8db52067c7a16a64076a284acd38934e7247'
             'd614323822b83612688a1192daedb3f7bf69f0d1a0e1df08411f5c32e4adde05'
-            'e4e332854e812593718e8790340b8a42030312291bcc69dd85f6b4a2a694d095')
+            'e96401cdb368dbc5b979f0d5816381a5a6075c94944d1b8e7cdf3dd2e579e705')
 install="${pkgname}.install"
 
 build() {
