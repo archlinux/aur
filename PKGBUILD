@@ -6,8 +6,8 @@
 pkgname=okular-browser-url-open
 provides=(okular)
 conflicts=(okular)
-pkgver=26.04.3
-pkgrel=2
+pkgver=26.08.3
+pkgrel=1
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -60,7 +60,7 @@ source=(
     https://download.kde.org/stable/release-service/$pkgver/src/okular-$pkgver.tar.xz{,.sig}
     0001-open-http-links-with-desktop-browser.patch
 )
-sha256sums=('a6e4a571acd3b70bb67eec476834b009f710540b793091f51f707b53b6facbca'
+sha256sums=('8db527297b4e6aa17b3063739f8e1a4fe206691428ffc4ff544053e111187412'
             'SKIP'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
