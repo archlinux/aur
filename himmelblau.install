@@ -1,0 +1,134 @@
+# Wires up NSS, PAM, the GNOME keyring and the QR greeter, the same way the
+# Debian postinst and RPM scriptlets do.
+#
+# Enabling units, reloading systemd and replaying tmpfiles are left to the
+# pacman hooks shipped by systemd, so this script does not do any of that.
+
+_configure_nss() {
+    local conf=/etc/nsswitch.conf
+
+    [ -f "$conf" ] || return 0
+
+    sed -i '/^passwd:/ {/himmelblau/! s/$/ himmelblau/}' "$conf"
+    sed -i '/^group:/ {/himmelblau/! s/$/ himmelblau/}' "$conf"
+    sed -i '/^shadow:/ {/himmelblau/! s/$/ himmelblau/}' "$conf"
+    sed -i '/^initgroups:/ {/himmelblau/! s/$/ himmelblau/}' "$conf"
+}
+
+_configure_pam() {
+    if ! aad-tool configure-pam --really >/dev/null 2>&1; then
+        echo "warning: 'aad-tool configure-pam --really' failed, PAM is unconfigured"
+    fi
+}
+
+_configure_keyring() {
+    local conf=/etc/pam.d/gdm-password
+    local tmp
+
+    [ -f "$conf" ] || return 0
+
+    # Hand the auth token to pam_gnome_keyring, so the keyring unlocks the way
+    # it does on a local password login.
+    sed -i -E '/^[[:space:]]*auth[[:space:]]+optional[[:space:]]+pam_gnome_keyring\.so/ {/use_authtok/! s/$/ use_authtok/}' "$conf"
+
+    grep -q 'himmelblau-keyring-prelude' "$conf" && return 0
+
+    tmp=$(mktemp) || return 0
+
+    # The line patched above sits after `auth include system-local-login`, where
+    # aad-tool puts pam_himmelblau as `sufficient`. A successful Hello PIN login
+    # therefore returns from the whole auth stack before pam_gnome_keyring is
+    # reached, and the keyring never sees the PIN. Run the pair up front instead,
+    # and jump over it for anyone pam_himmelblau does not claim, so local
+    # password logins keep unlocking via the line further down.
+    awk '
+        !ins && /^[[:space:]]*auth[[:space:]]/ {
+            print "# himmelblau-keyring-prelude"
+            print "auth       [success=ok ignore=2 default=2] pam_himmelblau.so ignore_unknown_user set_authtok"
+            print "auth       optional                        pam_gnome_keyring.so use_authtok"
+            print "auth       [default=done]                  pam_permit.so"
+            ins = 1
+        }
+        { print }
+    ' "$conf" > "$tmp" && cat "$tmp" > "$conf"
+
+    rm -f "$tmp"
+}
+
+_enable_extension() {
+    cat > "$1" <<'EOF'
+[org/gnome/shell]
+enabled-extensions=['qr-greeter@himmelblau-idm.org']
+EOF
+}
+
+_enable_greeter() {
+    # The QR greeter is a GNOME Shell extension, and an extension stays inert
+    # until it is named in the dconf databases the greeter and the session read.
+    command -v dconf >/dev/null 2>&1 || return 0
+
+    install -d /etc/dconf/profile
+
+    if getent passwd gdm >/dev/null 2>&1; then
+        if [ ! -f /etc/dconf/profile/gdm ]; then
+            printf '%s\n' 'user-db:user' 'system-db:gdm' \
+                'file-db:/usr/share/gdm/greeter-dconf-defaults' \
+                > /etc/dconf/profile/gdm
+        fi
+
+        install -d /etc/dconf/db/gdm.d
+        _enable_extension /etc/dconf/db/gdm.d/01-himmelblau-qr-greeter
+    fi
+
+    # The same extension draws the QR code on the lock screen of a running
+    # session, which reads the local database instead of the greeter one.
+    if [ ! -f /etc/dconf/profile/user ]; then
+        printf '%s\n' 'user-db:user' 'system-db:local' > /etc/dconf/profile/user
+    fi
+
+    install -d /etc/dconf/db/local.d
+    _enable_extension /etc/dconf/db/local.d/01-himmelblau-qr-greeter
+
+    dconf update || echo "warning: 'dconf update' failed, the QR greeter is not enabled"
+}
+
+_disable_greeter() {
+    rm -f /etc/dconf/db/gdm.d/01-himmelblau-qr-greeter \
+        /etc/dconf/db/local.d/01-himmelblau-qr-greeter
+
+    if command -v dconf >/dev/null 2>&1; then
+        dconf update || :
+    fi
+}
+
+post_install() {
+    _configure_nss
+    _configure_pam
+    _configure_keyring
+    _enable_greeter
+
+    cat <<'EOF'
+Set your Entra ID domain in /etc/himmelblau/himmelblau.conf, then start the
+daemons:
+
+    systemctl enable --now himmelblaud himmelblaud-tasks
+EOF
+}
+
+post_upgrade() {
+    # PAM is not reconfigured here, to preserve local edits to /etc/pam.d.
+    _configure_nss
+    _configure_keyring
+    _enable_greeter
+
+    echo "Restart the daemons to run the new version:"
+    echo "    systemctl try-restart himmelblaud himmelblaud-tasks"
+}
+
+post_remove() {
+    _disable_greeter
+
+    echo "The pam_himmelblau.so lines in /etc/pam.d and the himmelblau entries in"
+    echo "/etc/nsswitch.conf are left in place, remove them by hand if Entra ID"
+    echo "logon is no longer wanted."
+}
