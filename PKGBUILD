@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=dosbox-pure-unleashed-bin
-pkgver=1.0_preview7
-pkgrel=2
+pkgver=1.0_preview8
+pkgrel=1
 pkgdesc="DOSBox reimagined with a friendly interface, ZIP loading and save states"
 arch=('x86_64')
 url="https://codeberg.org/schelling/dosbox-pure-unleashed"
@@ -14,7 +14,7 @@ _pkgver="${pkgver//_/-}"
 source=("dosbox-pure-unleashed-${pkgver}.zip::${url}/releases/download/${_pkgver}/dosbox_pure_unleashed-linux-x64-${_pkgver}.zip"
         "dosbox-pure-unleashed.png"
         "LICENSE::${url}/raw/tag/${_pkgver}/LICENSE")
-sha256sums=('800864ec91900af2c591f2e9e4311205f4ce5ac575524dbe9156387f773a9669'
+sha256sums=('7c9c67c909c66b1f904dc40cbbf418b54ee90f47c3f1e6f8cd0eddcdedaa6917'
             'dbc60121b55da42d2f4f2f19b92bc741d073be313d28a16699572ce3942a89dc'
             '61e0922747762a12e88a47ab66ef4ed026148361900440086b4863145973a374')
 
