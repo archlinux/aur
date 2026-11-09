@@ -1,12 +1,12 @@
 #  Maintainer: ToKiNoBug <tokinobug@163.com>
 _pkgname=slopecraft
 pkgname=${_pkgname}
-pkgver=5.4.1
-pkgrel=0
+pkgver=5.5.0
+pkgrel=1
 pkgdesc="Map Pixel Art Generator for Minecraft"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/SlopeCraft/SlopeCraft"
-license=('GPL3')
+license=('GPL-3.0-only')
 options=(!debug)
 makedepends=(
 	'clang' 'lld' 'cmake' 'ninja' 'git' 'llvm' # build tools
@@ -22,14 +22,15 @@ depends=(
 	'openmp'
 	'boost-libs'
 	'vulkan-icd-loader'
+	'mc-schem' # From AUR
 )
 optdepends=(
 	'vulkan-radeon: AMD GPU acceleration'
 	'vulkan-intel: Intel GPU acceleration'
 	'nvidia-utils: Nvidia GPU acceleration'
 )
-source=(https://github.com/SlopeCraft/SlopeCraft/archive/refs/tags/v5.4.1.tar.gz)
-b2sums=('f8831da0d474d11c0ae7c8f49484719bd45c442a8ea84d426c314021efb385d538347ceff97b0fb2914286931a1f6c0b6bf5e7dffdb6783610fb903feb625aa8')
+source=(https://github.com/SlopeCraft/SlopeCraft/archive/refs/tags/v5.5.0.tar.gz)
+sha512sums=('9f13058fc68e82db705e8e757d7279361a21ebc23df418c59dcedc3a645fed3e6e3064aa638cdcead9344210e13133667670a3572f845f60e222ddfe03cfd647')
 
 # STRONGLY suggested to use clang and lld because it's cool. Widely tested under linux+clang
 build() {
@@ -48,4 +49,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+	rm $pkgdir/usr/lib/libmc_schem.so
 }
