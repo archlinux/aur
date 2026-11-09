@@ -4,13 +4,13 @@
 
 pkgname=xsettingsd-git
 _pkgname=xsettingsd
-pkgver=1.0.2.r7.g86ce25f
-pkgrel=2
+pkgver=1.0.4.r0.gfd80291
+pkgrel=1
 pkgdesc="Provides settings to X11 applications via the XSETTINGS specification"
 arch=('i686' 'x86_64')
 url="https://codeberg.org/derat/xsettingsd"
 license=('BSD-3-Clause')
-depends=('libx11' 'gcc-libs')
+depends=('libx11' 'glibc' 'libgcc' 'libstdc++' 'libxfixes')
 makedepends=('git' 'cmake')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -30,6 +30,6 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 $_pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+    install -Dm644 $_pkgname/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
