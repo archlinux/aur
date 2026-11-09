@@ -1,6 +1,6 @@
 pkgbase = delta-app-bin
 	pkgdesc = Delta - AI-native code editor
-	pkgver = 0.24.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://delta.dev
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = delta-app-bin
 	conflicts = delta
 	options = !strip
 	options = !debug
-	source_x86_64 = delta-linux-x86_64.tar.gz::https://releases.delta.dev/releases/stable/0.24.0/delta-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 9d6991d0dd071bf9afc662c21889df06a745599ebbf02a8d512ab4108904ef5a
-	source_aarch64 = delta-linux-aarch64.tar.gz::https://releases.delta.dev/releases/stable/0.24.0/delta-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 84096b9542c81a4b7bb812130d3db392dac2806ba1c4ff8cc9ea290b78d35448
+	source_x86_64 = delta-linux-x86_64.tar.gz::https://releases.delta.dev/releases/stable/0.24.1/delta-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c515282a1b0a1d9b922b52807728bcbf92125147cc50a32227725811b2c09247
+	source_aarch64 = delta-linux-aarch64.tar.gz::https://releases.delta.dev/releases/stable/0.24.1/delta-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c7dc9b2ccaedff1cb0f6ad499bca856fd85d73a1ca8f72a13278c74e2c62808c
 
 pkgname = delta-app-bin
