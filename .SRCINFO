@@ -1,5 +1,5 @@
 pkgbase = shelly-cli
-	pkgver = 3.2.0r5129.ga1518d9
+	pkgver = 3.2.1r5277.ga1648fd
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shelly-cli
 	makedepends = gnupg
 	makedepends = git
 	makedepends = pkgconf
-	makedepends = zig=0.17.0
+	makedepends = zig=0.17.1
 	makedepends = flatpak
 	makedepends = ripgrep
 	makedepends = go-md2man
@@ -50,10 +50,10 @@ pkgname = shelly-cli
 
 pkgname = shelly-cli-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for the Shelly CLI beta
-	depends = shelly-cli=3.2.0r5129.ga1518d9-1
+	depends = shelly-cli=3.2.1r5277.ga1648fd-1
 	depends = flatpak
 	optdepends = 
-	provides = shelly-flatpak-backend=3.2.0r5129.ga1518d9
+	provides = shelly-flatpak-backend=3.2.1r5277.ga1648fd
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
