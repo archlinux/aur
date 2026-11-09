@@ -1,10 +1,10 @@
 # Maintainer: Ron Asimi <ron.asimi@gmail.com>
 pkgname=raveo-ttf-hinted
 _raveover=1.1
-_nfver=3.4.0
+_nfver=3.5.1
 _ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if main moved to another one
 pkgver="${_raveover}"
-pkgrel=6
+pkgrel=7
 pkgdesc='Raveo, a warmer modification of Inter with redrawn glyphs, tuned with fonttune, optionally Nerd Fonts patched'
 arch=('any')
 url='https://github.com/jakubfoglar/raveo'

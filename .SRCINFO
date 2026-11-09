@@ -1,7 +1,7 @@
 pkgbase = raveo-ttf-hinted
 	pkgdesc = Raveo, a warmer modification of Inter with redrawn glyphs, tuned with fonttune, optionally Nerd Fonts patched
 	pkgver = 1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jakubfoglar/raveo
 	arch = any
 	license = custom:OFL
@@ -15,9 +15,9 @@ pkgbase = raveo-ttf-hinted
 	makedepends = libarchive
 	depends = fontconfig
 	conflicts = raveo-ttf
-	noextract = font-patcher-3.4.0.zip
+	noextract = font-patcher-3.5.1.zip
 	source = Raveo.1.1.zip::https://github.com/jakubfoglar/raveo/releases/download/v1.1/Raveo.1.1.zip
-	source = font-patcher-3.4.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
+	source = font-patcher-3.5.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/FontPatcher.zip
 	source = fonttune::git+https://github.com/gaou-piou/fonttune.git#branch=main
 	sha256sums = 9c2adf3bd7cbeb39d335bf0e70c588c9c20e404d247bff21c403340040b77dfd
 	sha256sums = SKIP
