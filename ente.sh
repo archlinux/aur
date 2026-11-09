@@ -1,10 +1,9 @@
 #!/bin/sh
-# Electron defaults to native Wayland when ELECTRON_OZONE_PLATFORM_HINT=wayland,
-# and the Wayland backend ignores GDK_SCALE. Use the X11 backend by default,
-# like ente-desktop-bin, so XWayland honours the desktop's GDK_SCALE setting.
-# Override with ENTE_BIN_OZONE_PLATFORM=x11|wayland|auto.
+# Run with the backend Electron picks by default. On a Wayland session with
+# ELECTRON_OZONE_PLATFORM_HINT=wayland this renders natively at the compositor
+# scale. Override with ENTE_BIN_OZONE_PLATFORM=x11|wayland if needed.
 export APPDIR=/opt/ente
-case "${ENTE_BIN_OZONE_PLATFORM:-x11}" in
+case "${ENTE_BIN_OZONE_PLATFORM:-auto}" in
     x11)
         set -- --ozone-platform=x11 "$@"
         ;;
