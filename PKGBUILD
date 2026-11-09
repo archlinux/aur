@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -12,24 +12,24 @@ license=('GPL-3.0-or-later')
 
 depends=('python'
          'python-cloudpickle'
-         'python-dask>=2023.2.1'
+         'python-dask>=2024.12.0'
          'python-importlib-metadata>=3.6'
          'python-jinja'
          'python-matplotlib>=3.6'
          'python-natsort'
-         'python-numpy>=1.22.0'
+         'python-numpy>=1.25.0'
          'python-packaging'
          'python-pint>=0.10'
          'python-prettytable>=2.3'
          'python-yaml'
-         'python-rosettasciio'
-         'python-scipy>=1.8.0'
+         'python-rosettasciio>=0.12.0'
+         'python-scipy>=1.10.0'
          'python-sympy>=1.10'
          'python-tqdm>=4.59.0'
-         'python-traits>=6.4.0'
+         'python-traits>=7.0.0'
          )
 
-optdepends=('python-numba>=0.56: speed'
+optdepends=('python-numba>=0.58: speed'
             'python-numexpr>=2.8: speed'
             'python-dask-image: dask-image' # AUR
             'ipython: ipython>8.0'
@@ -74,4 +74,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('966e91acf25f8294a9663398b4fd397591723ceb15c2420b9d7ef8b0ae86fb1b')
+sha256sums=('a027d75686918ff6dbefb958208b555747aa18e785a3989bda0d38f3b83d4afa')
