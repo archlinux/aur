@@ -1,0 +1,17 @@
+pkgbase = python-smithy-cbor
+	pkgdesc = CBOR serialization and deserialization support for Smithy tooling.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-cbor
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-smithy-core
+	source = smithy-cbor-0.2.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-cbor/v0.2.0.tar.gz
+	sha256sums = fbad97a87711d3ae3a2fef0a9d446990e02d2f1970f2befc72995217b97257a0
+
+pkgname = python-smithy-cbor
