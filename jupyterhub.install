@@ -10,10 +10,11 @@ post_upgrade () {
     echo "service from this package."
   fi
 
-  # Warn about database schema changes.
-  if [ $(vercmp "$2" 5.0.0-1) -lt 0 ]; then
-    echo "Version 5.0.0 includes a database schema change. You will"
-    echo "need to upgrade your database before you can run it."
-    echo "See the JupyterHub documentation for details."
+  # Upgrading from pre-6.2.0: notify about automatic DB schema upgrade.
+  if [ $(vercmp "$2" 6.2.0-1) -lt 0 ]; then
+    echo "From 6.2.0 the JupyterHub database schema is upgraded at"
+    echo "startup by default. This can be disabled by setting"
+    echo "  c.JupyterHub.upgrade_db = False"
+    echo "in the configuration."
   fi
 }
