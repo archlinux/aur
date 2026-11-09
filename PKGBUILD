@@ -2,7 +2,7 @@
 
 _basename=word-sys-pdf-editor
 pkgname=${_basename}-bin
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='A simple and user-friendly PDF Editor'
 arch=(x86_64)
@@ -42,7 +42,7 @@ source_x86_64=(
 	"${_basename}_${pkgver}.LICENSE::https://raw.githubusercontent.com/word-sys/word-sys-pdf-editor/refs/heads/main/LICENSE"
 	"rectify_cmdline.patch"
 )
-b2sums_x86_64=('c924337ad0314c80bb71ef71e2815062edde24928c9077143c616a8e910375985ab33e8559995ce96ff075d1d54e51294fa3e123df486b2d92d739d416dc6b35'
+b2sums_x86_64=('6168e0e25a39ac9f869b8ef74fc55cbc23c543b0631508a89b7683a5b359ad0fd571cdf66220b27c189864e9aa88c32a7da3d7e944baef3ef5e0d0c1ed636e11'
                '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd'
                '6a5ea316641a5f0569ab9002dd6b2acf242599f7ae9ddd696cf37eb4918011559f2bed36138940d59705b2d15b21c6b00876e9c05434c7ce64c7c91336a105a6')
 
