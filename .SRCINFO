@@ -1,13 +1,13 @@
 pkgbase = zournal-bin
 	pkgdesc = A journal app for detective games
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SimoneFelici/Zournal
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = zournal
-	conflicts = zournal-bin-git
+	conflicts = zournal-git
 	source_x86_64 = zournal-x86_64-linux.tar.gz::https://github.com/SimoneFelici/Zournal/releases/download/v1.1.2/zournal-x86_64-linux.tar.gz
 	sha256sums_x86_64 = 6fd89fd9cadd6767c931fbe6f0a4757b9f77d09ad538249b8873dee172ca6ef5
 	source_aarch64 = zournal-aarch64-linux.tar.gz::https://github.com/SimoneFelici/Zournal/releases/download/v1.1.2/zournal-aarch64-linux.tar.gz

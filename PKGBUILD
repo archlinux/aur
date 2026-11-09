@@ -2,13 +2,13 @@
 
 pkgname=zournal-bin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A journal app for detective games"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SimoneFelici/Zournal"
 license=('MIT')
 provides=('zournal')
-conflicts=("${pkgname}-git")
+conflicts=('zournal-git')
 source_x86_64=("zournal-x86_64-linux.tar.gz::${url}/releases/download/v${pkgver}/zournal-x86_64-linux.tar.gz")
 source_aarch64=("zournal-aarch64-linux.tar.gz::${url}/releases/download/v${pkgver}/zournal-aarch64-linux.tar.gz")
 sha256sums_x86_64=('6fd89fd9cadd6767c931fbe6f0a4757b9f77d09ad538249b8873dee172ca6ef5')
