@@ -22,7 +22,7 @@ set -Eeuo pipefail
 : "${BUFFERUTIL_TGZ:?BUFFERUTIL_TGZ not set}"
 : "${UTF8_VALIDATE_TGZ:?UTF8_VALIDATE_TGZ not set}"
 : "${CATPAW_CLI_BIN:?CATPAW_CLI_BIN not set}"
-: "${AGENT_BROWSER_BIN:?AGENT_BROWSER_BIN not set}"
+: "${AGENT_BROWSER_TGZ:?AGENT_BROWSER_TGZ not set}"
 : "${OUT_DIR:?OUT_DIR not set}"
 : "${ELECTRON_VER:?ELECTRON_VER not set}"
 : "${NODE_VER:?NODE_VER not set}"
@@ -219,8 +219,13 @@ replace_native_modules() {
   pkg_extract "${FFMPEG_LINUX_TGZ}" "${nm}/@ffmpeg-installer/linux-x64"
   chmod 755 "${nm}/@ffmpeg-installer/linux-x64/ffmpeg"
 
-  # bundled agent-browser and catpaw-cli binaries
-  install -m755 "${AGENT_BROWSER_BIN}" "${nm}/agent-browser/bin/agent-browser-linux-x64"
+  # bundled agent-browser (npm package ships the platform binaries) and
+  # catpaw-cli binary matching the SDK version bundled in the app.
+  mkdir -p "${WORK_DIR}/agent-browser"
+  tar -xzf "${AGENT_BROWSER_TGZ}" -C "${WORK_DIR}/agent-browser" \
+    package/bin/agent-browser-linux-x64
+  install -m755 "${WORK_DIR}/agent-browser/package/bin/agent-browser-linux-x64" \
+    "${nm}/agent-browser/bin/agent-browser-linux-x64"
   install -m755 "${CATPAW_CLI_BIN}" "${nm}/@catpaw/agent-sdk/bin/catpaw-cli"
 
   # Normalize permissions: native modules must be readable/executable but the

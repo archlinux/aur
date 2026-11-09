@@ -1,8 +1,8 @@
 # Maintainer: mensylisir <710080675@qq.com>
 
 pkgname=catpaw-cn
-pkgver=2026.1016.1131
-pkgrel=2
+pkgver=2026.1030.1130
+pkgrel=1
 _electron=42.11.2
 _node=24.18.0
 _python=3.12.13
@@ -29,7 +29,7 @@ optdepends=(
 options=('!strip' '!debug' '!lto')
 
 source=(
-  "catpaw-cn-${pkgver}.exe::https://s3plus.meituan.net/catpaw-external-resources/ide/win32-x64/stable/${pkgver}/17921218834464910303_妙手-${pkgver}-x64.exe"
+  "catpaw-cn-${pkgver}.exe::https://s3plus.meituan.net/catpaw-external-resources/ide/win32-x64/stable/${pkgver}/17933315350539251937_妙手-${pkgver}-x64.exe"
   "electron-v${_electron}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron}/electron-v${_electron}-linux-x64.zip"
   "node-v${_electron}-headers.tar.gz::https://artifacts.electronjs.org/headers/dist/v${_electron}/node-v${_electron}-headers.tar.gz"
   "node-v${_node}-linux-x64.tar.gz::https://nodejs.org/dist/v${_node}/node-v${_node}-linux-x64.tar.gz"
@@ -45,8 +45,8 @@ source=(
   'canvas-linux-x64-gnu-1.0.8.tgz::https://registry.npmjs.org/@napi-rs/canvas-linux-x64-gnu/-/canvas-linux-x64-gnu-1.0.8.tgz'
   'wecom-cli-linux-x64-1.1.0.tgz::https://registry.npmjs.org/@wecom/cli-linux-x64/-/cli-linux-x64-1.1.0.tgz'
   'ffmpeg-linux-x64-4.1.0.tgz::https://registry.npmjs.org/@ffmpeg-installer/linux-x64/-/linux-x64-4.1.0.tgz'
-  'agent-browser-linux-x64::https://github.com/vercel-labs/agent-browser/releases/download/v0.27.3/agent-browser-linux-x64'
-  'catpaw-cli-linux-x64::https://s3plus.meituan.net/mcopilot-pub/cli/v1.2.0-beta.33/catpaw-cli-linux-x64'
+  'agent-browser-0.38.1.tgz::https://registry.npmjs.org/agent-browser/-/agent-browser-0.38.1.tgz'
+  'catpaw-cli-linux-x64-1.2.0-beta.45::https://s3plus.meituan.net/mcopilot-pub/cli/v1.2.0-beta.45/catpaw-cli-linux-x64'
   'convert.sh'
   'repack-asar.js'
   'patch-overlay-window.js'
@@ -70,7 +70,7 @@ source=(
   'innoextract-linux-amd64::https://github.com/crazy-max/innoextract/releases/download/v1.13.0/innoextract-linux-amd64'
 )
 sha256sums=(
-  'ba5a0f109a12ff743e890a6ed936f06d7a3ce5307269b6ce60a722827cb8c9dc'
+  '898f100638d1c36e295772d62ff759a586bf8263271dca8119ce247d7e5802ae'
   '1e0b2a6d59bb8836858a24dec454c36e15a904dd1000a1053c8e36ecc44333bc'
   'b586bf9cc6352053f9e075ed06a160a42653971742fd1746e8951e6942d55879'
   '783130984963db7ba9cbd01089eaf2c2efb055c7c1693c943174b967b3050cb8'
@@ -86,22 +86,22 @@ sha256sums=(
   '05032e8d7f5197bda600d3557facb51c7799811eaf4965d9b2d4d084ec13557d'
   '8da74fecd9b89a92876e72d663dad5e436c771c91bb051d99b2eb63a1d889516'
   'b836abe532912ae6c3388dbe713952af293a3d005fc9e4d34d52f14da99dda71'
-  '373f010e2f915c026f2a50b79f0676b8deace93372af43b82ce20a7737764353'
-  'e83b727a0a254bda3c4d0c70af9ceb13509eea6da414b4fa5be90e5ae679066d'
-  '9fc51c30eb67826d9656adce06cc0a83db0194b029f4c0f47902835efbc3ad1b'
+  '89a7df4761ff335e4dd5367e4cf04cecb9ba4e2cc130a0220f798d188414dc6c'
+  '668bd37e0952c9c15f73abdc42d8db352bb5732016645a8dcedb1f5f42cc1e48'
+  'c052136557d699398f3c4903f37279463e2ff9dc5bc370d15c8ac99149af28c0'
   'ef50b80ae1d55a5f48c94db21cf74c3543723af4e89f85eb9d80c0900b1efdf1'
   'f3e0d720d575cb6521f639754157d86b7aed60b993bc62708b99ac37ae8e1248'
   'ffa303d2f54724e538f4696cc7e108d7b73c254e92250f1cd2a0ac583aee22a6'
   '5a7bc6a574ef7ac498c45b4e81132ac769ec7c7235b7125e705d8e14764d9367'
   '88167f36a093afafaa9fd385b8f5ac9ea3486c4d1b70091ff658adaacaeb6974'
-  '1417ab53a79538a6ea2aadb15bb6828d6e499a9c9e69aa6d08fe0f886c4506b3'
-  '67cdc71e790ae8990b7df87a90b37201b86f90c5c7182b8be55f05405937f188'
-  '9ad1f9a0bb5d6bd3128abd29a4f1801d3739ec430d171bde95a0eda64dad5b65'
-  '4d8781235ff635581788c54c01a9e2af73ca78c4ab03266d8e3b8a4b26f61751'
-  '8d01a72cd4531678a5d58cbf06c4a388ef9a8c52af307ffb40574f1718e7c174'
-  'eab6bad262f114544788fae5879557b004a5c1edb69ac47b44a6ced7c7b99b57'
-  'b1588a93ec6e6c9f05b7a19c7a9b2ad7f3cfe8557b69bf5ce69f9e61dd97bf72'
-  '3e6cf4220a141f3d42a1b3140c9abcae60ae4bb250331a18d44a944c76b8d1e9'
+  '0e7405c818c498abe113c7e0acd8e2a6d451d5ad2d1d54475eb1dc5be38e0949'
+  '294fa22865db306ccdd93fe649644b675a09d59d537ea9d23ebbf35bbff84d50'
+  '729b0e4b129d5547ddced8b5420bd2d9ee21b7fa07f8d15ba8909d8f38f9dc05'
+  '687f69c7464a4cd8216bd4243a216f8674cf5ff9618d3abea09ce951b02ca391'
+  '3e1ba260cd50ad1d3c7c26987b2153c9d94858400d5d09c0a0d6651ad13fd1e3'
+  '919134d4b0f960789dcae39cf82e9f91ef2674e8715e164942b56ae55522e13a'
+  '5ca71e98b41dd4728ef1bd10e173d3a5998552eddac23fecb194ce93433f659a'
+  'e193aa185a22a2868ed53f898e5aff1330f6d0cfee48a0e144eb192ab30afcad'
   '8a8c57d9a0ca52cbf9a124410d2615fbdb5942d8239d5da15f26e3d01909d06d'
   'ff3fd1025ab5883825f6bf3f062a05bce6478acba8b75d305664096167241f42'
   'c898db2ecc282ff8d943e9868d03dd6f1fc6069ddd40430341b211f93826b360'
@@ -125,8 +125,8 @@ noextract=(
   'canvas-linux-x64-gnu-1.0.8.tgz'
   'wecom-cli-linux-x64-1.1.0.tgz'
   'ffmpeg-linux-x64-4.1.0.tgz'
-  'agent-browser-linux-x64'
-  'catpaw-cli-linux-x64'
+  'agent-browser-0.38.1.tgz'
+  'catpaw-cli-linux-x64-1.2.0-beta.45'
 )
 
 build() {
@@ -149,8 +149,8 @@ build() {
   export CANVAS_TGZ="$srcdir/canvas-linux-x64-gnu-1.0.8.tgz"
   export WECOM_TGZ="$srcdir/wecom-cli-linux-x64-1.1.0.tgz"
   export FFMPEG_LINUX_TGZ="$srcdir/ffmpeg-linux-x64-4.1.0.tgz"
-  export CATPAW_CLI_BIN="$srcdir/catpaw-cli-linux-x64"
-  export AGENT_BROWSER_BIN="$srcdir/agent-browser-linux-x64"
+  export CATPAW_CLI_BIN="$srcdir/catpaw-cli-linux-x64-1.2.0-beta.45"
+  export AGENT_BROWSER_TGZ="$srcdir/agent-browser-0.38.1.tgz"
   export WORK_DIR="$srcdir/build-work"
   export OUT_DIR="$srcdir/app-out"
   export ELECTRON_VER="$_electron"
