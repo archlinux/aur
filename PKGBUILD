@@ -2,7 +2,7 @@
 
 _pkgname=aster-mail
 pkgname="${_pkgname}"-bin
-pkgver=1.4.55
+pkgver=1.4.80
 pkgrel=1
 pkgdesc="Encrypted email client for Aster Mail"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=(
 )
 source=("$_pkgname-$pkgver-amd64.deb::$url/releases/download/v$pkgver/Aster-Mail-amd64.deb"
 		"https://raw.githubusercontent.com/Aster-Privacy/Aster-Mail/refs/heads/main/LICENSE")
-sha512sums=('0a53131bd871f57a89446e7a029e1f60b2ca41c0ffbce71ec0e8d43c2c96b921df2b06b54326866860dc23a27738d27a8c70dc800efcdbce246e1e4d8ada873e'
+sha512sums=('ee8c923d8fed5afbf97efd4d5765ca3309a8f628053887958bb106343943df5919d228bbd4d35b264a839e81f7ec825b17f6f5a8e948e14f93e22aadf44159fc'
             '3568a76677f3d55dbbc7fc33c4073b4714cc6f68d92cd842a9ca2b230e8bd2140e59c3fc3cce34be34ffed78d75ab6e9d991ba59bf7c4addde7fb96648d3375d')
 
 package() {
