@@ -1,0 +1,11 @@
+post_install() {
+    grep -qxF '/usr/bin/rush' etc/shells || echo '/usr/bin/rush' >> etc/shells
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    sed -i '\|^/usr/bin/rush$|d' etc/shells
+}

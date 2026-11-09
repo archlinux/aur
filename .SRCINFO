@@ -1,0 +1,20 @@
+pkgbase = rush-shell-bin
+	pkgdesc = POSIX-facing shell with modern interactive features
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://rush.horse
+	install = rush-shell.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rush-shell=0.1.2
+	conflicts = rush
+	conflicts = rush-shell
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/rockorager/rush/releases/download/v0.1.2/rush-0.1.2-x86_64-linux.tar.xz
+	sha256sums_x86_64 = 34e1d6376573d085f609e4c82d5e5644400dc57869bda21e004289c58364582f
+	source_aarch64 = https://github.com/rockorager/rush/releases/download/v0.1.2/rush-0.1.2-aarch64-linux.tar.xz
+	sha256sums_aarch64 = 52e294e03f90b6008fc5bf07710af73eff106d7e3654fe15a4cffcc065e21026
+
+pkgname = rush-shell-bin
