@@ -2,7 +2,7 @@
 # Contributor: weselben <bengottwaldi04 at gmail dot com>
 
 pkgname=gomodel-git
-pkgver=0.2.1.r7.gd3ab69f
+pkgver=0.2.3.r2.gfd62a7f
 pkgrel=1
 pkgdesc="High-performance AI gateway (git main build, quasi-nightly)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('bun: faster UI dependency install + build (auto-used when installed
             'redis: distributed rate limiting and response cache backend'
             'postgresql: cost/history storage backend')
 install=gomodel.install
-source=("${pkgname}::git+${url}.git#commit=d3ab69fcf460b579c81f4b4ac7fd2f46351bd4cf"
+source=("${pkgname}::git+${url}.git#commit=fd62a7fff55ac58c93c2b46282c44e1c05d2e426"
         "plugin-message-format-4.4.0.tgz::https://registry.npmjs.org/@inlang/plugin-message-format/-/plugin-message-format-4.4.0.tgz"
         "plugin-m-function-matcher-2.2.6.tgz::https://registry.npmjs.org/@inlang/plugin-m-function-matcher/-/plugin-m-function-matcher-2.2.6.tgz"
         "gomodel-user.service")
