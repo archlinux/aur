@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=maptiles
-_pkgver=0.12.0
+_pkgver=0.13.0
 pkgname=r-${_pkgname,,}
 pkgdesc="Download and Display Map Tiles"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL-3.0-only")
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 
 arch=("any")
 depends=(
@@ -19,7 +19,7 @@ depends=(
     "r-terra>=1.8.21"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('66658b9caf7099bafe3aaa70dcf1b1eda378e3ce8bec701d3a9454860a117c2d8c8de465dfb066b08d97cdec7d4d0ca972d5a399a6054e772f1d38c0333ab26d')
+b2sums=('238818d2590eded703b86df19fb1c43003c77db5e0efec0ba0751b93eb56c6b82e990d950c4461bd80e945d91d9059c2b5b23e9f74c2f24df34214a6cf9b4b50')
 
 build() {
     mkdir -p "${srcdir}/build/"

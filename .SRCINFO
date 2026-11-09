@@ -1,7 +1,7 @@
 pkgbase = r-maptiles
 	pkgdesc = Download and Display Map Tiles
-	pkgver = 0.12.0
-	pkgrel = 4
+	pkgver = 0.13.0
+	pkgrel = 5
 	url = https://cran.r-project.org/package=maptiles
 	arch = any
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = r-maptiles
 	depends = r-png
 	depends = r-sf
 	depends = r-terra>=1.8.21
-	source = https://cran.r-project.org/src/contrib/maptiles_0.12.0.tar.gz
-	b2sums = 66658b9caf7099bafe3aaa70dcf1b1eda378e3ce8bec701d3a9454860a117c2d8c8de465dfb066b08d97cdec7d4d0ca972d5a399a6054e772f1d38c0333ab26d
+	source = https://cran.r-project.org/src/contrib/maptiles_0.13.0.tar.gz
+	b2sums = 238818d2590eded703b86df19fb1c43003c77db5e0efec0ba0751b93eb56c6b82e990d950c4461bd80e945d91d9059c2b5b23e9f74c2f24df34214a6cf9b4b50
 
 pkgname = r-maptiles
