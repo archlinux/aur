@@ -3,7 +3,7 @@
 _pkgname=jupytext
 pkgname=python-$_pkgname
 pkgver=1.19.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
 depends=(
@@ -41,7 +41,7 @@ prepare() {
     mkdir -p bin
     corepack enable --install-directory bin yarn
     COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/yarn set version stable
-    bin/yarn install
+    COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/yarn install
 }
 
 build() {

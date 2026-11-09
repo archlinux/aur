@@ -1,7 +1,7 @@
 pkgbase = python-jupytext
 	pkgdesc = Jupyter notebooks as Markdown documents, Julia, Python or R scripts
 	pkgver = 1.19.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mwouts/jupytext
 	arch = any
 	license = MIT
