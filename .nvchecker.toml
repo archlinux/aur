@@ -1,0 +1,5 @@
+[kepubify-bin]
+source = "github"
+github = "pgaskin/kepubify"
+use_max_tag = true
+prefix = "v"
