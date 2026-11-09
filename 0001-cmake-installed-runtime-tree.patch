@@ -1,0 +1,61 @@
+From 4e0d069b50fdfecbed1dd9b380e8f31e4b3e2cf8 Mon Sep 17 00:00:00 2001
+From: basalt <basalt@localhost>
+Date: Tue, 3 Nov 2026 07:23:20 +0300
+Subject: [PATCH] cmake: the installed runtime tree and the engine path are
+ cache variables
+
+`basalt serve` has found its runtime tree at run time since 6bdf938c - the
+directory above the executable's own - but basalt-bench and basalt-probe still
+bake in the build tree: the engine they start ($<TARGET_FILE:basalt>) and the
+data/bench fixtures they read.  A packaged install does not keep that tree, so
+both become cache variables a packager points at the installed one:
+  -DBASALT_INSTALL_ROOT=/usr/lib/basalt -DBASALT_ENGINE_BIN=/usr/lib/basalt/bin/basalt
+A plain build is unchanged: the defaults are the values used now.
+---
+ CMakeLists.txt | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9ae3afd1..b560e333 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,11 @@ endif()
+ option(BUILD_TESTING "Build the tests and parity programs" OFF)
+ # Covers the project's own C++ and CUDA sources only; off by default so a newer compiler's new warning cannot break a user build.
+ option(WERROR "Treat compiler warnings as errors" OFF)
++# A packager installs the runtime tree somewhere other than the checkout it built in.  These name that tree - bin/,
++# serve/ and data/ side by side, which is what platform::install_root() finds above the executable - and the engine
++# basalt-bench and basalt-probe start.  A plain build keeps the values it uses today.
++set(BASALT_INSTALL_ROOT "${CMAKE_SOURCE_DIR}" CACHE PATH "the installed runtime tree: bin/, serve/ and data/ side by side")
++set(BASALT_ENGINE_BIN "$<TARGET_FILE:basalt>" CACHE STRING "the engine basalt-bench and basalt-probe start")
+ if(BUILD_TESTING)
+   enable_testing()
+ endif()
+@@ -577,10 +582,10 @@ target_include_directories(basalt-bench PRIVATE ${CMAKE_BINARY_DIR}/stamp)
+ target_link_libraries(basalt-bench PRIVATE engine_session platform warnings ${CMAKE_DL_LIBS})
+ basalt_embed_manifest(basalt-bench)
+ target_compile_definitions(basalt-bench PRIVATE
+-  BASALT_BENCH_ENGINE="$<TARGET_FILE:basalt>"
++  BASALT_BENCH_ENGINE="${BASALT_ENGINE_BIN}"
+   BASALT_BENCH_DEVICE="$<TARGET_FILE:basalt-device>"
+-  BASALT_BENCH_FIXTURES="${CMAKE_CURRENT_SOURCE_DIR}/data/bench"
+-  BASALT_BENCH_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
++  BASALT_BENCH_FIXTURES="${BASALT_INSTALL_ROOT}/data/bench"
++  BASALT_BENCH_SOURCE_DIR="${BASALT_INSTALL_ROOT}"
+   BASALT_BENCH_BUILD_TYPE="${CMAKE_BUILD_TYPE}"
+   BASALT_BENCH_CUDA="${CMAKE_CUDA_COMPILER_VERSION}")
+ 
+@@ -591,8 +596,8 @@ add_dependencies(basalt-probe basalt)
+ target_link_libraries(basalt-probe PRIVATE engine_session platform warnings ${CMAKE_DL_LIBS})
+ basalt_embed_manifest(basalt-probe)
+ target_compile_definitions(basalt-probe PRIVATE
+-  BASALT_BENCH_ENGINE="$<TARGET_FILE:basalt>"
+-  BASALT_BENCH_FIXTURES="${CMAKE_CURRENT_SOURCE_DIR}/data/bench")
++  BASALT_BENCH_ENGINE="${BASALT_ENGINE_BIN}"
++  BASALT_BENCH_FIXTURES="${BASALT_INSTALL_ROOT}/data/bench")
+ 
+ # closing the engine's stdin mid-request stops it (runs the real engine on a model pack:
+ # -DBASALT_STDIN_STOP_MODEL=<pack>, with python3)
+-- 
+2.56.0
+

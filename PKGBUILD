@@ -1,16 +1,18 @@
 # Maintainer: saber-nyan <saber-nyan@ya.ru>
 # Written by an LLM: Qwen3.8-Flash-Next (Qwen3.8-FN-GSQ-RCO-IQ3_S) served by basalt itself - the
 # engine this package builds - with a human driving, reviewing and running every build.
-# Tracks upstream main of https://github.com/jesdga95/basalt plus two local patches:
-#   0001-cmake-overridable-basalt-source-dir.patch  BASALT_SOURCE_DIR / engine path become cmake options
-#   ram-guard-mib.patch                             --ram-guard-mib N (0 = the RAM guard off)
-# Both apply cleanly (no offset, no 3-way needed) to upstream main through dc047a77, 3 commits past
-# v0.2.1, checked 2026-11-04.
+# Tracks upstream main of https://github.com/jesdga95/basalt plus one local patch:
+#   0001-cmake-installed-runtime-tree.patch   the installed runtime tree / engine path become cmake options
+# It applies cleanly (no offset, no 3-way needed) to upstream main through 9e8fb6a8, 50 commits past
+# v0.3.2, checked 2026-11-09.
+# There is no RAM-guard patch any more: ram-guard-mib.patch died with 0.3.2's guard rewrite.  The serve
+# guard's floor is now platform::ram_reserve(), which upstream's own --ram-reserve-mib sets and 0 turns
+# off, so the flag lives in the config file instead of in a patch that has to be rebased every release.
 # The package and its PATH commands are both basalt-inference-git: AUR already has
 # aur/basalt, aur/basalt-bin (a TUI for Obsidian), the vkBasalt family and basalt-monado.  The
 # runtime tree keeps upstream's own names under /usr/lib/basalt.
 pkgname=basalt-inference-git
-pkgver=0.2.1.3.gdc047a77
+pkgver=0.3.2.51.ga4685354
 pkgrel=1
 pkgdesc='Local inference engine for Qwen3.8-Flash-Next MoE packs (NVIDIA Blackwell, sm_120)'
 arch=(x86_64)
@@ -23,20 +25,19 @@ makedepends=(git cmake ninja)
 # decide to map tens of gigabytes and take a GPU
 install=basalt-inference.install
 source=("basalt::git+https://github.com/jesdga95/basalt.git#branch=main"
-        ram-guard-mib.patch
-        0001-cmake-overridable-basalt-source-dir.patch
+        0001-cmake-installed-runtime-tree.patch
         basalt-inference.service)
 sha256sums=('SKIP'
-            '6f0e1998e7eba8a0c4a854f51d13c12537d6b868b39641871d8ff0265df17eda'
-            'd065296aa095292902f3b02a87d9321c798c6f00972c17594a14a4f324747490'
+            '72296c351fff13205e82d00f1eea6fcd259198b98736d3425e2186cea86a6720'
             '629c96b83a3cbd2b6aa75165c7e1c33d78a656e3c487f302d791e99b7fb88f7f')
 
 # BASALT_DEBUG=1 makepkg -si builds with -g and splits off a basalt-inference-git-debug package (gdb
 # then reports file:line).  LTO is off there: -g plus -flto needs far more RAM than this builds in.
 [[ -n ${BASALT_DEBUG:-} ]] && options=('debug' '!lto')
 
-# The installed runtime tree: basalt serve chdirs here and runs `python3 -m serve.server`, and the
-# engine reads its expert profiles from $pkgdir$_prefix/data/profiles.
+# The installed runtime tree.  Since 0.3.2 basalt serve finds it at run time - the directory above the
+# executable's own - chdirs there, runs `python3 -m serve.server`, and reads its expert profiles from
+# $pkgdir$_prefix/data/profiles; this layout is what makes that the installed tree.
 _prefix=/usr/lib/basalt
 
 pkgver() {
@@ -53,25 +54,25 @@ prepare() {
   # build/ and bin/ are left alone, so an incremental rebuild still works.
   git checkout -q HEAD -- .
   find . -name '*.rej' -delete
-  for p in 0001-cmake-overridable-basalt-source-dir.patch ram-guard-mib.patch; do
-    if ! patch -Np1 --no-backup-if-mismatch -i "$srcdir/$p"; then
-      git checkout -q HEAD -- .
-      find . -name '*.rej' -delete
-      if ! git apply --3way "$srcdir/$p"; then
-        printf '%s does not apply to %s:\n' "$p" "$(git describe --tags --always)" >&2
-        printf '  the .rej files next to the sources show which hunks upstream moved.\n' >&2
-        printf '  1. in a scratch clone: git checkout <new-main>; git am --3way %s/%s\n' "$srcdir" "$p" >&2
-        printf '     if only docs/ and tests/ conflict: git checkout HEAD -- docs tests\n'
-        printf '     (the patch is source-only on purpose), otherwise fix the conflicts there; then\n'
-        printf '     git add them, git am --continue, and:\n' >&2
-        printf '     git format-patch -1 --stdout > %s/%s   (keep the patch file name)\n' "$srcdir" "$p" >&2
-        printf '  2. sha256sum that file, put the new sum in sha256sums[]\n' >&2
-        printf '  3. rm -rf src pkg && makepkg -si\n' >&2
-        printf 'A silently unpatched tree is worse than a failed build: the flag would just be missing.\n' >&2
-        return 1
-      fi
+  local p=0001-cmake-installed-runtime-tree.patch
+  if ! patch -Np1 --no-backup-if-mismatch -i "$srcdir/$p"; then
+    git checkout -q HEAD -- .
+    find . -name '*.rej' -delete
+    if ! git apply --3way "$srcdir/$p"; then
+      printf '%s does not apply to %s:\n' "$p" "$(git describe --tags --always)" >&2
+      printf '  the .rej files next to the sources show which hunks upstream moved.\n' >&2
+      printf '  1. in a scratch clone: git checkout <new-main>; git am --3way %s/%s\n' "$srcdir" "$p" >&2
+      printf '     the patch is CMakeLists-only, so a conflict is upstream moving one of its three places:\n'
+      printf '     the option() block (where the two set() cache variables sit) or the basalt-bench and\n'
+      printf '     basalt-probe target_compile_definitions blocks.  Fix it there, git add, git am --continue:\n'
+      printf '     git format-patch -1 --stdout > %s/%s   (keep the patch file name)\n' "$srcdir" "$p" >&2
+      printf '  2. sha256sum that file, put the new sum in sha256sums[]\n' >&2
+      printf '  3. rm -rf src pkg && makepkg -si\n' >&2
+      printf 'A silently unpatched tree is worse than a failed build: probe and bench would bake in the build\n' >&2
+      printf 'tree and refuse to run once makepkg deletes it.\n' >&2
+      return 1
     fi
-  done
+  fi
 }
 
 build() {
@@ -98,7 +99,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_CUDA_FLAGS="$cudaflags" \
-    -DBASALT_SOURCE_DIR="$_prefix" \
+    -DBASALT_INSTALL_ROOT="$_prefix" \
     -DBASALT_ENGINE_BIN="$_prefix/bin/basalt" \
     -DCMAKE_CUDA_ARCHITECTURES=120 \
     ${cuda_compiler[@]+"${cuda_compiler[@]}"} \
@@ -134,16 +135,16 @@ package() {
   install -Dm644 "$srcdir/basalt-inference.service" \
     "$pkgdir/usr/lib/systemd/user/basalt-inference.service"
 
-  # both patches must be baked into the installed engine, or the package is broken
-  if ! grep -aq -- '--ram-guard-mib' "$pkgdir$_prefix/bin/basalt"; then
-    printf 'ram-guard-mib.patch is not in the installed binary: the flag would be missing.\n' >&2
-    return 1
-  fi
-  if ! grep -aq "$_prefix" "$pkgdir$_prefix/bin/basalt"; then
-    printf 'BASALT_SOURCE_DIR is not %s: basalt serve would not find its tree.\n' "$_prefix" >&2
-    return 1
-  fi
-  # basalt-probe and basalt-bench bake in the engine they start and the fixtures they read
+  # basalt serve finds its tree by walking up from its own path, so the layout is the check: bin/ next
+  # to serve/ and data/, which is what the engine looks for and what -DBASALT_INSTALL_ROOT names.
+  for f in serve/server.py data/profiles data/bench; do
+    if [[ ! -e "$pkgdir$_prefix/$f" ]]; then
+      printf '%s is missing under %s: basalt serve would start and find nothing.\n' "$f" "$_prefix" >&2
+      return 1
+    fi
+  done
+  # the patch has to be baked into the two host-side programs: unpatched, they name a build tree that
+  # makepkg deletes, and "the engine binary ... does not exist" is what the user would then read.
   for b in basalt-probe basalt-bench; do
     if ! grep -aq "$_prefix/bin/basalt" "$pkgdir$_prefix/bin/$b"; then
       printf '%s still points at the build tree for its engine; it would need --engine.\n' "$b" >&2
