@@ -6,7 +6,7 @@
 
 pkgname=kimi-work-intl-bin
 pkgver=3.2.26
-pkgrel=1
+pkgrel=2
 _prefix='/opt/kimi-work-intl'
 pkgdesc='Kimi Work desktop client, international build pinned to the overseas region'
 arch=('x86_64')
@@ -29,6 +29,14 @@ source=(
   'kimi-work-intl.sh'
   'kimi-work-intl.desktop'
   'LICENSE'
+  'kimi-work-intl-16.png'
+  'kimi-work-intl-24.png'
+  'kimi-work-intl-32.png'
+  'kimi-work-intl-48.png'
+  'kimi-work-intl-64.png'
+  'kimi-work-intl-128.png'
+  'kimi-work-intl-256.png'
+  'kimi-work-intl-512.png'
 )
 source_x86_64=("kimi_${pkgver}.exe::https://kimi-img.moonshot.cn/app/download/windows/kimi_${pkgver}.exe")
 noextract=("kimi_${pkgver}.exe")
@@ -39,6 +47,14 @@ sha256sums=(
   'dc2c12c5fff0b616dd983b6fb07f426dcefa1167e0d05bbc807fc7346da0ef9b'
   '3f7d7bbc4b0f443344755ac0dee7d5752e3c51018134467f8748b0862b86f41a'
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
+  '0b3fd635d39ca19cf65ee9f0f0da0e849e247181e67dcefa06fbf52d4f11d91d'
+  '776895c61c5c4104bc79b8326ad815e8432087227f6aed26d717557a6f9fde27'
+  '82802d706349c1a490a1335fe782e4eb1c0002f5296c2444c789d573f01abd51'
+  'f1e5cc4aa55029472928fabc5cbdc5898cb6fe954d463e3ac106ca05542b763f'
+  '2ab7cbc702197c1e1c0a001df756a278b34b7e9aa43578c1c17c8e93489ce3d5'
+  'e6a18593bf98f987efb31f1cff26e0b4b6b20496706e7738a2a1cbf1342b7611'
+  '6eb3d22d134011b4abd6a1bca09ba4e1147a972873f457db3b8d96a262774e0e'
+  '00e33811cde3a6c40c14ff8ab9d7a2ed94492608bd93ca5a026ed1c24735c300'
 )
 sha256sums_x86_64=('cdaf24b59918379cd7e3f539f0434fbafbf92b0497968a0baf2a22dcb7f03e39')
 
@@ -111,8 +127,11 @@ package() {
   install -Dm755 "${srcdir}/kimi-work-intl.sh" "${pkgdir}/usr/bin/kimi-work"
   install -Dm644 "${srcdir}/kimi-work-intl.desktop" \
     "${pkgdir}/usr/share/applications/kimi-work-intl.desktop"
-  install -Dm644 "${srcdir}/app/assets/tray-icon@2x.png" \
-    "${pkgdir}/usr/share/icons/hicolor/64x64/apps/kimi-work-intl.png"
+  local _size
+  for _size in 16 24 32 48 64 128 256 512; do
+    install -Dm644 "${srcdir}/kimi-work-intl-${_size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/kimi-work-intl.png"
+  done
   install -Dm644 "${srcdir}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
