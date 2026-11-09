@@ -1,7 +1,7 @@
 pkgbase = hongguo-desktop-bin
 	pkgdesc = 红果短剧桌面版（预编译 AppImage）
 	pkgver = 0.2.159
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aston314/hongguo-tv-releases
 	arch = x86_64
 	license = unknown

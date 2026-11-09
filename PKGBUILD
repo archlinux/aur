@@ -1,6 +1,6 @@
 pkgname=hongguo-desktop-bin
 pkgver=0.2.159
-pkgrel=2
+pkgrel=3
 pkgdesc="红果短剧桌面版（预编译 AppImage）"
 arch=('x86_64')
 url="https://github.com/aston314/hongguo-tv-releases"
@@ -36,5 +36,5 @@ EOF
   chmod 755 "$pkgdir/usr/bin/hongguo-tv"
 
   install -Dm644 "$srcdir/squashfs-root/hongguo-tv.desktop" "$pkgdir/usr/share/applications/hongguo-tv.desktop"
-  install -Dm644 "$srcdir/squashfs-root/hongguo-tv.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/hongguo-tv.png"
+  install -Dm644 "$srcdir/squashfs-root/hongguo-tv.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/hongguo-tv.png"
 }
