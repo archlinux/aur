@@ -2,7 +2,7 @@
 
 _pkgname="qdl"
 pkgname="${_pkgname}-bin"
-pkgver=2.9
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
@@ -42,8 +42,8 @@ source_x86_64=(
 )
 sha256sums=('01b8598cec284ac16bf950b1856b0ea1023d5e2df3a0aa961ec550908922538c'
             '85814c88fc75be2523c03551ee2abefc0c30b423edda343197796e0c0e168058')
-sha256sums_aarch64=('a232781f1ca6951af5bc0bd6b01d8c7db3cee90001c4cdda6da27302c2e6fb1a')
-sha256sums_x86_64=('8fdbb0b03fe99f429506ad9828415c02ca6b95a6f453a8ffb3b5a17ef7f26dd0')
+sha256sums_aarch64=('517306dc7c762b121bda50b21741f287ac41965fb705f5eae160505c710d32e7')
+sha256sums_x86_64=('dc13cc536c84f2091e4751c65e3fbb373dae05edf9707435181813561227fee3')
 
 package() {
   local source_array="source_${CARCH}[0]"
