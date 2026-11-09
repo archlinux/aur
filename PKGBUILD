@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/dovewarden/dovewarden/archi
 	"dovewarden.conf.d"
 	"dovewarden.service")
 sha256sums=('bc717b5020e4565dda03a20be40044a175ffb91c98a412e1702f5a146f988c64'
-            '1bb2c384e7362ed692de7098d2710360761a87962039bf023bd7233c7fa202e8'
+            'd79af8005d7772fd1883c3778375ac7e281c4d3544d4d31f9a82d19bceb86d58'
             'cb57bdf9c4fa8aa3b72a84727cf1ba70017c3c2f61192f0aa959c1c4e0241e4d')
 
 build() {
