@@ -1,6 +1,6 @@
 # Maintainer: Rishabh Jha <jharishabh672003 at gmail dot com>
 pkgname=kcd-indicator
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='System tray indicator and window for the kcd KDE Connect daemon'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('zenity: file picker for Send file in the tray menu'
             'libnotify: pairing alerts')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e2cbbbef53fefe28c36d147dfb65146b41a100e8c4ca4442d6d9789ee2f796f3')
+sha256sums=('d72e4601a27bb4adcd0fbe1bca4d8cc62fa530d00f74214fe162d28517392714')
 
 prepare() {
   cd "$pkgname-$pkgver"

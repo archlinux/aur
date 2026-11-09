@@ -1,6 +1,6 @@
 pkgbase = kcd-indicator
 	pkgdesc = System tray indicator and window for the kcd KDE Connect daemon
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Rishabh672003/kcd-indicator
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kcd-indicator
 	depends = pango
 	optdepends = zenity: file picker for Send file in the tray menu
 	optdepends = libnotify: pairing alerts
-	source = kcd-indicator-0.1.0.tar.gz::https://github.com/Rishabh672003/kcd-indicator/archive/v0.1.0.tar.gz
-	sha256sums = e2cbbbef53fefe28c36d147dfb65146b41a100e8c4ca4442d6d9789ee2f796f3
+	source = kcd-indicator-0.2.0.tar.gz::https://github.com/Rishabh672003/kcd-indicator/archive/v0.2.0.tar.gz
+	sha256sums = d72e4601a27bb4adcd0fbe1bca4d8cc62fa530d00f74214fe162d28517392714
 
 pkgname = kcd-indicator
