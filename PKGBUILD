@@ -3,7 +3,7 @@
 pkgname=lavanda-gtk-theme-fixed-git
 _name=lavanda-gtk-theme
 _fixes=lavanda
-pkgver=2024.04.28.r17.g108131a.f22.39563e4
+pkgver=2024.04.28.r17.g108131a.f23.54c752e
 pkgrel=1
 pkgdesc="Lavanda GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)"
 arch=('any')
