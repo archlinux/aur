@@ -1,6 +1,6 @@
 # Maintainer: tryashtar <tryashtar@gmail.com>
 pkgname=minecraft-ttf-git
-pkgver=1.6.1.08aa4736
+pkgver=1.7
 pkgrel=1
 pkgdesc="Pixel-accurate and complete TrueType fonts from Minecraft: Java Edition, generated automatically from the latest version of the game"
 url="https://github.com/tryashtar/minecraft-ttf"
