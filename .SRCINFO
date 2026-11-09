@@ -1,11 +1,10 @@
 pkgbase = honk-core-bin
 	pkgdesc = Experimental eBPF transparent proxy engine (prebuilt release binary)
 	pkgver = 0.1.0beta.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daeuniverse/honk
 	install = honk-core-bin.install
 	arch = x86_64
-	arch = aarch64
 	license = GPL-3.0-only AND Apache-2.0 AND OFL-1.1 AND MIT
 	depends = glibc
 	depends = v2ray-geoip
@@ -25,7 +24,5 @@ pkgbase = honk-core-bin
 	depends_x86_64 = libgcc
 	depends_x86_64 = libstdc++
 	sha256sums_x86_64 = 7d52080e18b3ad172d9a41a4ea38a84ff09f3a48cd7daff9d0872c6d87ba4ca7
-	source_aarch64 = honk-core-v0.1.0-beta.6-aarch64-unknown-linux-gnu-full.tar.gz::https://github.com/daeuniverse/honk/releases/download/v0.1.0-beta.6/honk-core-v0.1.0-beta.6-aarch64-unknown-linux-gnu-full.tar.gz
-	sha256sums_aarch64 = b6f78dc5b55f297d40dff1bfc936375889f635d2cdcffca2a4a351c6fe10944d
 
 pkgname = honk-core-bin
