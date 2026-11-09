@@ -1,6 +1,6 @@
 pkgbase = gdirect-git
 	pkgdesc = Browse, download, upload and mount Google Drive
-	pkgver = 0.13.1.r1.g08a9476
+	pkgver = 0.13.2.r1.g987580c
 	pkgrel = 1
 	url = https://github.com/mizorewww/gdirect
 	arch = x86_64
