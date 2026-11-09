@@ -27,7 +27,7 @@ _electronver=37.10.3
 _cn_pkgver=5.6.2.40046327
 _cn_build=c7b525f3
 pkgver=${_pkgver}_${_build}
-pkgrel=3
+pkgrel=4
 pkgdesc='AI Agent for everyday office work - WorkBuddy international edition (unofficial Linux port)'
 arch=('x86_64' 'aarch64')
 url='https://www.workbuddy.ai'
@@ -49,6 +49,7 @@ source=(
   'workbuddy-international.desktop'
   'LICENSE.port-tool'
   'DISCLAIMER'
+  'workbuddy-intl-256.png'
 )
 source_x86_64=(
   "WorkBuddy-darwin-x64-${_pkgver}-${_build}.zip::https://download.codebuddy.ai/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${_pkgver}-${_build}.zip"
@@ -73,7 +74,8 @@ sha256sums=('a4f4bba61a2ed88da4a3e6d9e06990306d93d3053dbaed26ba3f739160549a6e'
             'f436d99d242064c905f06eb53f1a810e90e7be92a804015e4679cea1fcb62885'
             '6fcbfa4cba8e730e603b68fcca484c7963aacdaf56a3f6c5c47ff320a5189e85'
             '43164499524650222076bae69b7cb21d3e3e4a954c7c56426474267a554a2f33'
-            'aa036c1f37d070f14a551bcba2133390710da46bd91225dfd366711bb5a3b6ec')
+            'aa036c1f37d070f14a551bcba2133390710da46bd91225dfd366711bb5a3b6ec'
+            '631bd3aadd92f6e94797f299cfc9088149db3950e77fa99d090ccb6eff2253ee')
 sha256sums_x86_64=('57935f9578fed1ddf0ab0219a328d96f69494a45369e88aabf1f650242084e87'
                    'c0b4edd6bd9858cda4cf7ab299e69a2d3ecd2e5fcca78507bc0851ba35614660'
                    '12149ad8c0cd748fd5062d8f62c7827d688d8095427ada99b1ae9e7019897523')
@@ -204,9 +206,9 @@ package() {
     "${pkgdir}/usr/share/applications/WorkBuddy AI.desktop"
 
   # Icons: theme-integrated hicolor entry plus pixmaps fallback
-  install -Dm644 "${srcdir}/workbuddy-app/.workbuddy-linux/workbuddy.png" \
+  install -Dm644 "${srcdir}/workbuddy-intl-256.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/workbuddy-international.png"
-  install -Dm644 "${srcdir}/workbuddy-app/.workbuddy-linux/workbuddy.png" \
+  install -Dm644 "${srcdir}/workbuddy-intl-256.png" \
     "${pkgdir}/usr/share/pixmaps/workbuddy-international.png"
 
   # Launcher
