@@ -1,13 +1,13 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 _pkgname=pipeweaver
 pkgname=${_pkgname}-git
-pkgver=r456.840024f
+pkgver=r680.006b045
 pkgrel=1
 pkgdesc="An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind."
 arch=('x86_64')
 url="https://github.com/pipeweaver/pipeweaver"
 license=('MIT')
-depends=('pipewire')
+depends=('pipewire' 'hicolor-icon-theme'  'lilv')
 makedepends=('git' 'rust' 'cargo' 'clang' 'npm')
 optdepends=('pipeweaver-app-git: An application wrapper for the Pipeweaver UI')
 conflicts=("${_pkgname}")
@@ -22,6 +22,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --workspace --exclude pipeweaver-app --release --locked
 }
 
