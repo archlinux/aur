@@ -1,5 +1,5 @@
 
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Dylan Harkleroad <deehark87@gmail,com>
 
 pkgname=opencmr2-git
 pkgver=\1.r\2.gf1f89d8
