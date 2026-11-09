@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.251
+pkgver=1.4.254
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
@@ -36,8 +36,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('c50e0a73d12d90b11fcaa76e34acbae0d32c6dc911fd44773d993f1d81da7b62')
-sha256sums_x86_64=('679b99c30a17fdcda521edc67e9b69059b291c0d8f3bdf6405bd524faf70b460')
+sha256sums_aarch64=('909d4042b3df70a75e997bb46165d74503d62aea19c976e2e22ae54dbbffcbae')
+sha256sums_x86_64=('8d805b11fd5effa881af7896391c67ebcbd3983ce1aa7aa0b50206c3a261c0da')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
