@@ -4,7 +4,7 @@ pkgdesc="Zalo for Linux — unofficial port with ZaDark, running on system Elect
 arch=('x86_64' 'aarch64')
 url="https://github.com/doandat943/zalo-for-linux"
 license=('BSD-3-Clause')
-pkgver=26.11.10+26.3.r352.555a348
+pkgver=26.11.10+26.3.r386.784f24f
 pkgrel=1
 epoch=2
 provides=('zalo')
@@ -13,8 +13,6 @@ conflicts=('zalo' 'zalo-for-linux-bin')
 depends=(
     'electron22-bin'
     'glibc'
-    'xz'
-    'openssl'
     'hicolor-icon-theme'
     'python'
     'opus'
@@ -25,8 +23,8 @@ depends=(
 )
 
 makedepends=(
-    'git' 'nodejs' 'npm' 'make'
-    'gcc' '7zip' 'rust' 'wget'
+    'git' 'nodejs' 'npm'
+    '7zip' 'rust' 'wget'
 )
 
 optdepends=(
@@ -95,8 +93,6 @@ package() {
     install -d "$_lib" "$_lib/plugins"
     cp -a main.js package.json app plugins "$_lib/"
     cp -a native/engines/zcall "$_lib/zcall-native"
-    find "$_lib" -type d -name __pycache__ -prune -exec rm -rf {} +
-    find "$_lib" -type f -name '*.pyc' -delete
     # gulp leaves the o+w bit on app/pc-dist/zadark; packages must not be world-writable
     chmod -R o-w "$_lib"
     
