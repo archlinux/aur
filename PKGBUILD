@@ -2,13 +2,25 @@
 
 pkgname=saturn-bin
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform deezer client made in Flutter"
 arch=('x86_64')
 url="https://github.com/Sheathed/Saturn"
-license=('GPL3')
-depends=( flac libayatana-appindicator libnotify libxtst nss )
-optdepends=( libappindicator-gtk3 )
+license=('GPL-3.0-only')
+makedepends=('patchelf')
+depends=(
+    'gtk3'
+    'webkit2gtk-4.1'
+    'libsoup3'
+    'glib2'
+    'mpv'
+    'libx11'
+    'libxi'
+    'libepoxy'
+    'fontconfig'
+    'glibc'
+    'hicolor-icon-theme'
+)
 provides=( 'saturnmusic' )
 conflicts=('saturn-git')
 
@@ -21,6 +33,10 @@ package() {
 	tar -xf "${srcdir}/data.tar.zst"
 	install -dm755 "${pkgdir}/opt"
 	cp --preserve=mode -r 'opt' "${pkgdir}/"
+
+	for lib in "${pkgdir}"/opt/Saturn/lib/*.so; do
+		patchelf --set-rpath '$ORIGIN' "$lib"
+	done
 
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/opt/Saturn/Saturn" "${pkgdir}/usr/bin/saturn"
