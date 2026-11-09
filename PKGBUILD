@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-nativeauthenticator
 pkgdesc="Authenticator for storing users in the JupyterHub database"
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 url="https://github.com/jupyterhub/nativeauthenticator"
 license=('BSD-3-Clause')
@@ -15,9 +15,9 @@ depends=(
 )
 makedepends=(
   'python-build'
+  'python-hatchling'
+  'python-hatch-requirements-txt'
   'python-installer'
-  'python-setuptools'
-  'python-wheel'
 )
 checkdepends=(
   'python-pytest'
@@ -30,7 +30,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/j/$pkgname/$_pyname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '67d49d6a04658494a658466dbe4c6418b68ae6577324855afe5fc8abdf86ef89'
+  '13b5da3411fce1bf6c53641f1a41e689665ce7f6b4e959fa8b1aba76a99590e3'
 )
 
 build() {
@@ -40,6 +40,7 @@ build() {
 
 check() {
   cd "$_pyname-$pkgver"
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_pyname-$pkgver"-*.whl
   test-env/bin/python -m pytest -v
