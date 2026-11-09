@@ -1,6 +1,6 @@
 pkgbase = omokage-bin
 	pkgdesc = Measure how closely writing matches a learned author's style. Japanese & English, local-first CLI for LLMs and humans
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/nao1215/omokage
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = omokage-bin
 	provides = omokage
 	conflicts = omokage
 	options = !strip
-	source = omokage-0.6.3-checksums.txt::https://github.com/nao1215/omokage/releases/download/v0.6.3/checksums.txt
-	sha256sums = 49ebf8a70320687807af198a9d1e97834b62c34ca18bdf4d87d66a4d081ac6cc
-	source_x86_64 = omokage-0.6.3-x86_64.tgz::https://github.com/nao1215/omokage/releases/download/v0.6.3/omokage_0.6.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3ec7f1c48bd91b4d7d90190a219956c0f351aa15009e893457d16fb8fb91dc84
-	source_aarch64 = omokage-0.6.3-aarch64.tgz::https://github.com/nao1215/omokage/releases/download/v0.6.3/omokage_0.6.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 09d80842c49d1b4c4bc621714abc373956fff2d3bb773fa4f8017ac5d59eac7b
+	source = omokage-0.6.4-checksums.txt::https://github.com/nao1215/omokage/releases/download/v0.6.4/checksums.txt
+	sha256sums = 3537b8e5f182c7064c8654ddffd6f7dc51adc04336fb3389744f2f9df9461869
+	source_x86_64 = omokage-0.6.4-x86_64.tgz::https://github.com/nao1215/omokage/releases/download/v0.6.4/omokage_0.6.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5b1df87005776dd363e61d751c170cb538fedf0ab71c497400b9d715a8b4ea6d
+	source_aarch64 = omokage-0.6.4-aarch64.tgz::https://github.com/nao1215/omokage/releases/download/v0.6.4/omokage_0.6.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3a188d25da51a1a63458653abdde2f2459c147ef642dd52762362a7e2d247b3b
 
 pkgname = omokage-bin
