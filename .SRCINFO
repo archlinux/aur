@@ -1,6 +1,6 @@
 pkgbase = gostman-bin
 	pkgdesc = An API client for REST, GraphQL, gRPC and WebSocket that you, your CI pipeline and your coding agent share. Desktop app, web app and command line, no account.
-	pkgver = 1.15.3
+	pkgver = 1.15.4
 	pkgrel = 1
 	url = https://github.com/kunalgoesbyken/gostman
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gostman-bin
 	options = !strip
 	options = !emptydirs
 	options = !debug
-	source_x86_64 = gostman-1.15.3.deb::https://github.com/kunalgoesbyken/gostman/releases/download/v1.15.3/Gostman-linux-amd64.deb
-	b2sums_x86_64 = 6e2be744ad30a675d42428be7d1913014503abd759fc8184c58ae7a80595e568b36be0493a74cc5512d16b80a5dc681d1049e8bbf123fcfe73156cd6c9eb6471
+	source_x86_64 = gostman-1.15.4.deb::https://github.com/kunalgoesbyken/gostman/releases/download/v1.15.4/Gostman-linux-amd64.deb
+	b2sums_x86_64 = edf278a3425ab88f0386676ef2d0cabd0036e478018388300daacf1daf9026dc85c287f0f94f3acb5aaaf7b104e4cc440402028dfa8854bf60eaa4aace589866
 
 pkgname = gostman-bin
