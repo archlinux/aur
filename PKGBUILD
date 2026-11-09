@@ -1,6 +1,6 @@
 pkgbase=neon-lasertag
 pkgname=('neon-lasertag' 'neon-lasertag-server')
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Red vs Blue lasertag in procedurally generated neon arenas, in VR or on the flat screen'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'neon-lasertag-server.service'
         'neon-lasertag-server.conf')
-sha256sums=('1a5b2a22e4d4df025a93c041fbaf6499d7b7903381bfe7451e5a6203490aee7b'
+sha256sums=('fff488f2aff35d738ffc0c7be026d2d3004e583ba85d63bec492cb5499ca72de'
             '6154f26c3bbebc23bc454d68f5044dbee6a5fd3025cda1efddd5cb8b27045c0c'
             'b6a954668df79eeeb9923c6123a2fdbd97671c199f3ee2fa1d2ec273e9cef354')
 
