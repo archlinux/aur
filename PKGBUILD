@@ -1,7 +1,7 @@
 # Maintainer: nazze <nazze at qq dot com>
 # SPDX-License-Identifier: 0BSD
 pkgname=agentero-bin
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='Local-first research workspace (official desktop binary)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('agentero')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/Agentero_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::$url/raw/refs/tags/v$pkgver/LICENSE")
-sha256sums=('01b7e49cacedbafdbc72f118698a982489682c9ebacb118622acfea169202409'
+sha256sums=('4e088908d625107f00b50cf1ba1ec0e3713ee045a4f568d3a7070b51c375040f'
             'f2b7f0cc6fb11f63654ac171d46640de6a8f63407a1a9fa77181a5c43a841fcf')
 
 package() {
