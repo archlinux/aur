@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A terminal and session manager for teams who look after a lot of servers and network devices together."
 
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!emptydirs' '!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${_barch[0]}.deb")
-sha256sums=('e338ee7de919ea08a89025dfa9ade9ec7d3bd12aee1a47c9b11d5f4ce4a27576'
+sha256sums=('aead4ef34475381eee8a7e10125f6097f8608a41b4c6949dccf749bbd9a08d6d'
             '01a7f589f25b2f1a3421e9aaf9c239e4a72fd04b0157ad62099c0bc85b330d25')
-sha256sums_x86_64=('017cec883cb20603c866ebd882a58fe9d67d898a2f2637b5185208736bbf6c49')
+sha256sums_x86_64=('a5b901d8d12bdbda53a9ccf3ca8fc5611f32f096e6bbf0db7f19813b84aa42bc')
 
 
 package() {
