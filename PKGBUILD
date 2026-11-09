@@ -1,0 +1,57 @@
+
+# Maintainer: ssprea <ssprea@proton.me>
+_pkgname=slimit
+pkgname=${_pkgname}-git
+pkgver=1.1.10.r4.g147873b
+pkgrel=1
+epoch=
+pkgdesc="GUI NVidia GPU overclock, power limit and fan manager"
+arch=('x86_64')
+url="https://github.com/ssprea/slimit"
+license=('unknown')
+groups=()
+depends=()
+makedepends=(
+	'git'
+	'make'
+	'dotnet-sdk-10.0'
+	'dotnet-targeting-pack-10.0'
+	'aspnet-targeting-pack-10.0'
+)
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=(!strip)
+install=slimit.install
+changelog=
+source=("git+$url.git")
+noextract=()
+sha256sums=()
+validpgpkeys=()
+
+pkgver() {
+
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+ 	cd "$_pkgname"
+	make -j1 publish
+}
+
+
+package() {
+	cd "$_pkgname"
+
+	make DESTDIR="$pkgdir/" installcli
+	make DESTDIR="$pkgdir/" installgui
+	make DESTDIR="$pkgdir/" installdaemon
+}
+
+
+
+sha256sums=('SKIP')
