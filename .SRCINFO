@@ -1,0 +1,18 @@
+pkgbase = metamorph-bin
+	pkgdesc = Gym workout tracker (desktop app)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/swarnimcodes/metamorph
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = metamorph=0.1.6
+	conflicts = metamorph
+	options = !debug
+	source = metamorph-0.1.6.deb::https://github.com/swarnimcodes/metamorph/releases/download/v0.1.6/Metamorph-0.1.6-linux-amd64.deb
+	source = metamorph-0.1.6-LICENSE::https://raw.githubusercontent.com/swarnimcodes/metamorph/v0.1.6/LICENSE
+	sha256sums = 6d4ffabd37a04216be5acc2e9e2caa7f95fd43f598c895f24e5fcc499806be44
+	sha256sums = fca9b3ecac64f6a5f5c9f38de72e5d0974f1ef1a50782120d09f96e1ad0db2be
+
+pkgname = metamorph-bin
