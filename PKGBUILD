@@ -1,5 +1,5 @@
 pkgname=zed-globalization
-pkgver=1.26.2
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="Zed editor with globalization support (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!strip' '!debug')
 source_x86_64=("https://github.com/wenyinos/ZedG/releases/download/v${pkgver}/zedg-zh-cn-linux-x86_64-v${pkgver}.tar.gz")
 source_aarch64=("https://github.com/wenyinos/ZedG/releases/download/v${pkgver}/zedg-zh-cn-linux-aarch64-v${pkgver}.tar.gz")
 
-sha256sums_x86_64=('e6b9c8ebcb9cbc94b9a25fe9d04ed39f211730ef2ee39d0ef6ab53a033cd0a03')
-sha256sums_aarch64=('055b3dfa19268277c13bf750ee27df168ef83d77e4b4e55324b5687bbfd71f8b')
+sha256sums_x86_64=('f763d7569169bbd135098952e669437a514bce540ff9e37e105bd8c2e4228379')
+sha256sums_aarch64=('6a4b64f790345ee44559b03453d4fe2972e5a8453b11dc3c37fb3d370dfa8e81')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/"
