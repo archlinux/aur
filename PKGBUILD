@@ -2,7 +2,7 @@
 
 _pkgname=assimp
 pkgname=mingw-w64-${_pkgname}
-pkgver=6.0.5
+pkgver=6.0.6
 pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('mingw-w64-wine')
 url='http://www.assimp.org/'
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
 options=('!strip' '!buildflags' 'staticlibs') #'!lto'
-sha256sums=('edf3749559c2b7d1f758ffb66fc5bec62186221e623b7f2e8969f17ee46ecb6f')
+sha256sums=('5f7ed412b76575621df0525a762b31da5874afff352b3a890c6308db4ac7204c')
 _architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
@@ -25,12 +25,14 @@ _srcdir="${_pkgname}-${pkgver}"
 prepare()
 {
 	cd "${_srcdir}"
-	sed -i 's/fprintf(pFile, this->szPlainText.c_str());/std::fputs(this->szPlainText.c_str(), pFile);/' 'tools/assimp_view/LogWindow.cpp'
+	sed -i 's/fprintf(pFile, this->szPlainText.c_str());/std::fputs(this->szPlainText.c_str(), pFile);/' 'tools/assimp_view/code/LogWindow.cpp'
 	sed -i 's/set(LIBRARY_SUFFIX/#nope/' 'code/CMakeLists.txt'
 	sed -i 's/TARGET_LINK_LIBRARIES ( assimp_viewer/#nope/' 'code/CMakeLists.txt'
 	sed -i 's/LINK_DIRECTORIES/#nope/' 'tools/assimp_cmd/CMakeLists.txt'
 	sed -i 's/LINK_DIRECTORIES/#nope/' 'tools/assimp_view/CMakeLists.txt'
 	sed -i 's/LINK_DIRECTORIES/#nope/' 'test/CMakeLists.txt'
+
+	sed -i 's|\.\.\\\\|../|' 'tools/assimp_view/code/assimp_view.rc'
 
 	sed -i 's/add_test( unittests unit )/add_test( NAME unittests COMMAND unit )/' 'test/CMakeLists.txt'
 }
