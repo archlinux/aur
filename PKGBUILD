@@ -1,7 +1,7 @@
 # Maintainer: paranoica <mitjumper@gmail.com>
 pkgname=rayshot-git
 _srcname=rayshot
-pkgver=0.4.2.r0.g9e11c4e
+pkgver=0.4.3.r0.gd819d32
 pkgrel=1
 pkgdesc="Fast screenshot and annotation tool for Linux (GNOME/Wayland)"
 arch=('x86_64')
