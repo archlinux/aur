@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-kikuchipy
 pkgshort=kikuchipy
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Processing and analysis of electron backscatter diffraction (EBSD) patterns."
 arch=('any')
@@ -18,9 +18,9 @@ depends=('python'
 	 'python-imageio'
          'python-lazy-loader'
          'python-matplotlib>=3.6'
-         'python-numba>=0.57'
+         'python-numba>=0.58'
 	 'python-numpy>=1.23.0'
-	 'python-orix>=0.12.1'
+	 'python-orix>=0.15.0'
          'python-pyyaml'
          'python-rosettasciio>=0.3.0'
          'python-scikit-image>=0.16.2'
@@ -38,7 +38,7 @@ makedepends=('python-setuptools>=64'
 
 optdepends=('python-pooch>=1.3.0: download test data'
 	    'python-pyvista: visualization',
-            'python-pyebsdindex>=0.3.2: orientation indexing',
+            'python-pyebsdindex>=0.3.10: orientation indexing',
 	    'python-psygnal: triggering actions based on state changes',
 	    'python-ipywidgets: gui widgets',
 	    'ipython: gui widgets',
@@ -59,4 +59,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('f2ba315008f1d392db276724023558d79620abd72b541bcea3ee2e81f6741621')
+sha256sums=('4198b670410b6bb51250d12bec3b22b0b47fe9094208b3f7746b86ed7967487e')
