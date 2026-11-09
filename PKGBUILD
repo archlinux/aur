@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
 _pkgname='Eagle Animation'
-pkgver=2.19.2
+pkgver=2.19.3
 _electronversion=45
 pkgrel=1
 pkgdesc="An awesome, free and open-source animation software."
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5b9c5d46dc3ccac691a3fd32e8a80fa27ea160ca758450e43275759d25769154'
+sha256sums=('08e13dc37ce99db0103374064de83ec8d20b7c611aba25702e2297d0687a393d'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
