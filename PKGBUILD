@@ -1,7 +1,7 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=wolvenkit-cli-bin
-pkgver=9.1.0 # renovate: datasource=github-releases depName=WolvenKit/WolvenKit
+pkgver=9.1.1 # renovate: datasource=github-releases depName=WolvenKit/WolvenKit
 pkgrel=1
 pkgdesc='A modding tool for Cyberpunk 2077'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/${pkgver}/WolvenKit.ConsoleLinux-${pkgver}.zip"
 	"LICENSE::https://raw.githubusercontent.com/WolvenKit/WolvenKit/${pkgver}/LICENSE")
-b2sums=('8f82b72214f74a25c158e0e58dba1af61457396e3ff608bb948301deaaf979acf5f119119616b02cde3acb38105f6435cb700b31c79e4c4a6b77e4f4e49f7bce'
+b2sums=('6143eff81e0bab8afd4ddb63df1344a5d8c0f321c185c300bf03a79e87d1eeb8ac4451c1a7da96f04d9e08c8526e4da8ebe1da9f75adfccc83aba79f23fafda2'
 	'399283bc59e70998486f2ae7b0af9f2f241206dd660e50808be3cef500adef2a9e8d449304f506d93bd2281e6b0729b16145173591deeb105ef545b769453e10')
 
 package() {
