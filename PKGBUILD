@@ -2,7 +2,7 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.9.104
+pkgver=0.9.105
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
     'uvicorn: Streamable HTTP MCP server support'
     'python-neo4j: Neo4j export support'
     'python-falkordb: FalkorDB export support'
-    'python-pypdf>=6.19.0: PDF extraction support'
+    'python-pypdf>=6.21.4: PDF extraction support'
     'python-markdownify: PDF/HTML extraction support'
     'python-watchdog: File watching support'
     'python-matplotlib: SVG output support'
@@ -82,7 +82,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('01963f515fcdd2e369c179ee701a3865623c5ee6b7ff8dafa2f1929d5be0d1c6')
+sha256sums=('3633bd65a9ddfb2fb1b19030e0e70f4e46fec8c07fe4b1b9f9fdf86fad171ee3')
 
 build() {
     cd "${_name}-${pkgver}"
