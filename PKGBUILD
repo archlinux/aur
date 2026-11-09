@@ -1,6 +1,6 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=arbit-bin
-pkgver=0.6.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="DonutStudio (legacy codename: Arbit) — harmonic composition workstation and MIDI editor"
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=('arbit' 'donutstudio')
 conflicts=('donutstudio-bin')
 install="${pkgname}.install"
 source=("DonutStudio-linux-${pkgver}.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip")
-sha256sums=('78d517509f4ba69270d96844261f8a479f103a07355af9de30348baf9d1ac0e8')
+sha256sums=('612aa84cc412b0392667fce999bf23149d7c6ee2dcabec44f4e85ff86ef50003')
 
 package() {
   install -dm755 "${pkgdir}/opt/arbit"
@@ -44,6 +44,7 @@ package() {
 
   install -dm755 "${pkgdir}/usr/lib/clap"
   install -Dm755 "${srcdir}/DonutStudio.clap" "${pkgdir}/usr/lib/clap/DonutStudio.clap"
+  install -Dm755 "${srcdir}/ArbitPluginScanner" "${pkgdir}/usr/lib/clap/ArbitPluginScanner"
 
   install -dm755 "${pkgdir}/usr/lib/vst3"
   cp -a "${srcdir}/DonutStudio.vst3" "${pkgdir}/usr/lib/vst3/"
