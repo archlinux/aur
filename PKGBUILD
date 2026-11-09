@@ -3,7 +3,7 @@
 pkgname=lavanda-gtk-theme-fixed-git
 _name=lavanda-gtk-theme
 _fixes=lavanda
-pkgver=2024.04.28.r17.g108131a.f7.0c09bae
+pkgver=2024.04.28.r17.g108131a.f22.39563e4
 pkgrel=1
 pkgdesc="Lavanda GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)"
 arch=('any')
@@ -87,8 +87,24 @@ prepare() {
   done
 }
 
+# Window buttons: macOS-style (red/yellow/green circles, a darker dot on hover) or Lavanda's own
+# 24px glyph circles. Lavanda has no such option: $mac_buttons in its _options.scss (which install.sh
+# copies for every variant) switches the fixes, so the same package serves either and the theme
+# names do not change. mac_buttons=true|false makepkg decides without asking; otherwise makepkg asks
+# on the terminal (default: normal), and builds normal when there is no terminal (chroot, CI, AUR
+# helpers that detach it).
 package() {
   cd "${_name}"
+  local answer=
+  if [[ -z ${mac_buttons:-} ]] && { : </dev/tty; } 2>/dev/null; then
+    read -r -p "Lavanda window buttons: [n]ormal or [m]ac? [N/m] " answer </dev/tty >/dev/tty || true
+    [[ ${answer,,} == m* ]] && mac_buttons=true
+  fi
+  # package() may run again on the same sources (makepkg -R): the line goes, then comes back if asked
+  sed -i '/^\$mac_buttons:/d' src/sass/_options.scss
+  if [[ ${mac_buttons:-} == true ]]; then
+    printf '%s\n' "\$mac_buttons: 'true';" >> src/sass/_options.scss
+  fi
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -d "${pkgdir}/usr/share/themes"
   # light and dark, standard size

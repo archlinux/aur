@@ -1,6 +1,6 @@
 pkgbase = lavanda-gtk-theme-fixed-git
 	pkgdesc = Lavanda GTK theme, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)
-	pkgver = 2024.04.28.r17.g108131a.f7.0c09bae
+	pkgver = 2024.04.28.r17.g108131a.f22.39563e4
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Lavanda-gtk-theme
 	install = lavanda-gtk-theme-fixed.install
