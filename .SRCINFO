@@ -1,18 +1,17 @@
 pkgbase = dogdns
 	pkgdesc = Command-line DNS client with colourful output, DoT, DoH and JSON
-	pkgver = 0.8.2
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://github.com/l1a/dog
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	makedepends = pandoc
 	depends = gcc-libs
 	provides = dog
 	conflicts = dog
 	options = !lto
-	source = dogdns-0.8.2.tar.gz::https://github.com/l1a/dog/archive/refs/tags/v0.8.2.tar.gz
-	sha256sums = ddca9fc8021c511e989431e919e2bcaed4e6ccce469d8eb430c30f1d543ccd29
+	source = dogdns-0.8.6.tar.gz::https://github.com/l1a/dog/archive/refs/tags/v0.8.6.tar.gz
+	sha256sums = f0fcfacb8f3f6669fadfe87613582a545e5ee1c7ac3bdf74981fe5b4c429a0f7
 
 pkgname = dogdns
