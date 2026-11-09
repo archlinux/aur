@@ -1,0 +1,23 @@
+pkgbase = noti-fi
+	pkgdesc = Notification daemon (notifd), command line (notify) and control panel for KDE Plasma and Hyprland on Wayland
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/noti-fi
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = quickshell
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kirigami
+	depends = qqc2-desktop-style
+	depends = sqlite
+	depends = dbus
+	depends = pipewire
+	depends = python
+	optdepends = qt6-multimedia: audio and video players in popups
+	optdepends = flatpak: per-app notification permissions for Flatpak apps
+	source = noti-fi-0.18.1.tar.gz::https://github.com/asafelobotomy/noti-fi/releases/download/v0.18.1/noti-fi-0.18.1.tar.gz
+	sha256sums = 1f61ea9710d70c492526f4d9f1fee3fb933cb8082c831f6b0d25c50d21e20dad
+
+pkgname = noti-fi
