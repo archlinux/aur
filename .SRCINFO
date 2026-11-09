@@ -1,6 +1,6 @@
 pkgbase = yt-dlp-nightly-bin
 	pkgdesc = A youtube-dl fork with additional features and fixes (Nightly binary build)
-	pkgver = 2026.09.27.232945
+	pkgver = 2026.11.04.232659
 	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp-nightly-builds
 	arch = any
@@ -29,9 +29,9 @@ pkgbase = yt-dlp-nightly-bin
 	provides = yt-dlp
 	conflicts = yt-dlp
 	conflicts = yt-dlp-git
-	source = yt-dlp-2026.09.27.232945::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2026.09.27.232945/yt-dlp
-	source = yt-dlp-src-2026.09.27.232945.tar.gz::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2026.09.27.232945/yt-dlp.tar.gz
-	sha256sums = 36de87e6276c4bbaa2d9fd4d1295b25f4e824fe9bbfa20e05e175fd0cecee858
-	sha256sums = 895f2e80f60a9e54ca8ee40328c0e788794481444bd17698521cfafc4b318afc
+	source = yt-dlp-2026.11.04.232659::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2026.11.04.232659/yt-dlp
+	source = yt-dlp-src-2026.11.04.232659.tar.gz::https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2026.11.04.232659/yt-dlp.tar.gz
+	sha256sums = 21f87ead735de22248806d9a55202eefbff98da25ed3a054ee03ae55878920ac
+	sha256sums = 65e7239cc1967d058fb3d41871d3ce4f4a4f023e08dc8a6926ab363470815bd1
 
 pkgname = yt-dlp-nightly-bin
