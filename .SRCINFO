@@ -1,0 +1,27 @@
+pkgbase = yavcpdf
+	pkgdesc = A minimal, keyboard-driven PDF viewer
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/araaha/yavcpdf
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = dbus
+	depends = fontconfig
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxrender
+	depends = wayland
+	optdepends = xdg-desktop-portal: file chooser for Ctrl-t / :open
+	optdepends = xdg-utils: open links in a browser
+	conflicts = yavcpdf-bin
+	source = yavcpdf-0.3.0.tar.gz::https://github.com/araaha/yavcpdf/releases/download/v0.3.0/yavcpdf-0.3.0.tar.gz
+	sha256sums = f155afdc98dc6021c6c851a33efbeb0954eda42bde96287b602eef72a26d2a87
+
+pkgname = yavcpdf
