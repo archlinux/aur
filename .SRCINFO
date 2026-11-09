@@ -1,20 +1,20 @@
 pkgbase = yubico-authenticator-bin
 	pkgdesc = Cross-platform application for managing your YubiKey's second factor credentials (version 7)
-	pkgver = 7.4.1
-	pkgrel = 3
+	pkgver = 7.5.0
+	pkgrel = 1
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	license = Apache-2.0
 	depends = ccid
 	optdepends = gnome-screenshot: QR scanning feature on GNOME
 	optdepends = spectacle: QR scanning feature on KDE
-	provides = yubico-authenticator=7.4.1
+	provides = yubico-authenticator=7.5.0
 	conflicts = yubico-authenticator
 	options = !strip
-	source = https://github.com/Yubico/yubioath-flutter/releases/download/7.4.1/yubico-authenticator-7.4.1-linux.tar.gz
-	source = https://github.com/Yubico/yubioath-flutter/releases/download/7.4.1/yubico-authenticator-7.4.1-linux.tar.gz.sig
+	source = https://github.com/Yubico/yubioath-flutter/releases/download/7.5.0/yubico-authenticator-7.5.0-linux-x64.tar.gz
+	source = https://github.com/Yubico/yubioath-flutter/releases/download/7.5.0/yubico-authenticator-7.5.0-linux-x64.tar.gz.sig
 	validpgpkeys = 20EE325B86A81BCBD3E56798F04367096FBA95E8
-	sha256sums = 5c8f49cf3653ae9dd3911b53ca60475b03c8c957eb7385b1bd3d49ec4767ddac
+	sha256sums = 4fa2be54df0dd605ad19cc11db43cc08f5621513dba2e41c97cd1142c32289cb
 	sha256sums = SKIP
 
 pkgname = yubico-authenticator-bin
