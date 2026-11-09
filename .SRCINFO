@@ -1,6 +1,6 @@
 pkgbase = texturecraft-bin
 	pkgdesc = Paint PBR textures directly on 3D meshes (prebuilt binary)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/storytold/texturecraft
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = texturecraft-bin
 	provides = texturecraft
 	conflicts = texturecraft
 	options = !strip
-	source_x86_64 = texturecraft-0.4.0-linux-x86_64.tar.gz::https://github.com/storytold/texturecraft/releases/download/v0.4.0/texturecraft-0.4.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = ed84769ebbad2231666bd000dfce8a3791f2b107766f5d568a5545d5de0844cf
-	source_aarch64 = texturecraft-0.4.0-linux-aarch64.tar.gz::https://github.com/storytold/texturecraft/releases/download/v0.4.0/texturecraft-0.4.0-linux-aarch64.tar.gz
+	source_x86_64 = texturecraft-0.5.0-linux-x86_64.tar.gz::https://github.com/storytold/texturecraft/releases/download/v0.5.0/texturecraft-0.5.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0d564fe27d620850212a907711f307a0077e7d471d2277924431d5e91d40bb5f
+	source_aarch64 = texturecraft-0.5.0-linux-aarch64.tar.gz::https://github.com/storytold/texturecraft/releases/download/v0.5.0/texturecraft-0.5.0-linux-aarch64.tar.gz
 	depends_aarch64 = libxcb
 	optdepends_aarch64 = vulkan-icd-loader: GPU-accelerated rendering
-	sha256sums_aarch64 = 750b3954161e87f1f826b6e37ff00089a37583a6342bce845178cec94969f0bd
+	sha256sums_aarch64 = f03fbd48e1a44745be7ebbda9b475eb791638bf05ab4290022796a7edc8e4313
 
 pkgname = texturecraft-bin
