@@ -1,7 +1,7 @@
 # Maintainer: icyleaf <icyleaf.cn at gmail dot com>
 
 pkgname=omawarden-app-git-bin
-pkgver=0.4.0.dev.324f875
+pkgver=0.4.0.dev.ae60365
 pkgrel=1
 pkgdesc="Omawarden desktop app for Bitwarden/Vaultwarden (prebuilt development build)"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ provides=('omawarden-app' 'omawarden-app-dev-bin')
 conflicts=('omawarden-app' 'omawarden-app-dev-bin')
 install='omawarden-policy.install'
 source_x86_64=("omawarden-app-x86_64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8b55f645cd1ece2ccd227863d965c67018b40a9814a317d54022e3e5acf9806c')
+sha256sums_x86_64=('c624f81e06251266b978d0cf421b7c69c71b3cd680f5096db6e9bd5f2004c9c5')
 source_aarch64=("omawarden-app-aarch64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('5ba1c56293cc6e5fa01da377ae00b07451b71fdbf45c34590dca22130814a3b7')
+sha256sums_aarch64=('6760c2d8b75640f8d15282d2cbeba19a97b5f3d247189a845069516419ad7129')
 
 package() {
   local appdir
@@ -27,10 +27,10 @@ package() {
     error "omawarden-app package directory not found"
   fi
 
-  install -Dm755 "${appdir}/omawardenApp" "${pkgdir}/usr/lib/omawarden-app/omawardenApp"
+  install -Dm755 "${appdir}/Omawarden" "${pkgdir}/usr/lib/omawarden-app/Omawarden"
   cp -a "${appdir}/nsh" "${pkgdir}/usr/lib/omawarden-app/nsh"
   install -d "${pkgdir}/usr/bin"
-  ln -s /usr/lib/omawarden-app/omawardenApp "${pkgdir}/usr/bin/omawardenApp"
+  ln -s /usr/lib/omawarden-app/Omawarden "${pkgdir}/usr/bin/Omawarden"
 
   install -Dm644 "${appdir}/com.icyleaf.omawarden.desktop"     "${pkgdir}/usr/share/applications/com.icyleaf.omawarden.desktop"
   install -Dm644 "${appdir}/com.icyleaf.omawarden.png"     "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/com.icyleaf.omawarden.png"
