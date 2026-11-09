@@ -1,0 +1,4 @@
+[anicraft]
+source = "git"
+git = "https://github.com/storytold/AniCraft.git"
+prefix = "v"

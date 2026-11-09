@@ -1,0 +1,23 @@
+pkgbase = anicraft
+	pkgdesc = vibe coded clean-room reimplementation of Adobe Animate
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://getartcraft.com/apps/anicraft
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	source = https://github.com/storytold/AniCraft/archive/refs/tags/v0.1.0/AniCraft-0.1.0.tar.gz
+	sha256sums = 6759ed314e487c6e7c637ec17812f34a0425202262651703524e152efd881030
+
+pkgname = anicraft
+	depends = alsa-lib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libasound.so
+	depends = libgcc_s.so
