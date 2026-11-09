@@ -1,6 +1,6 @@
 pkgbase = subx-bin
 	pkgdesc = All-in-one fansub toolkit: extract/clean/shift/mux/convert/translate subs (prebuilt static binary)
-	pkgver = 1.3.6
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://github.com/andrizan/subx
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = subx-bin
 	conflicts = subx
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/andrizan/subx/releases/download/v1.3.6/subx-1.3.6-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = 98746ad4ec4c2aa91c46278baf48f41d3d38129a72685e2721112078db85bb54
-	source_aarch64 = https://github.com/andrizan/subx/releases/download/v1.3.6/subx-1.3.6-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = f2f8fe922ba7aa52d81473ef02af691cbf67fcf73b0c8ea0235460482b10a93a
+	source_x86_64 = https://github.com/andrizan/subx/releases/download/v1.3.7/subx-1.3.7-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 87c364c4d4a2cbe977c10db8a55fbbb97739c95190755ab7e5ca60f8ccaf26ac
+	source_aarch64 = https://github.com/andrizan/subx/releases/download/v1.3.7/subx-1.3.7-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 4507a340adbb28098c8afba27cdfcc54f65786b44a20388a55d3acc3d1a6d73c
 
 pkgname = subx-bin
