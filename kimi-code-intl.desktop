@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kimi Code
+Comment=Kimi Code Desktop (international build, global API)
+Exec=kimi-code %U
+Terminal=false
+Type=Application
+Icon=kimi-code-intl
+StartupWMClass=kimi-code-intl
+MimeType=x-scheme-handler/kimi-code;
+Categories=Development;
