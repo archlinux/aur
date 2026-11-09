@@ -120,8 +120,8 @@
 
 # ————————————————————————————— PKGBUILD —————————————————————————————————
 pkgname=chatto-bin
-pkgver=0.4.17
-pkgrel=1 
+pkgver=0.4.26
+pkgrel=1
 pkgdesc='A fully-featured team and group chat application that you can easily selfhost'
 arch=('x86_64' 'arm64')
 url="https://github.com/chattocorp/chatto"
@@ -130,8 +130,8 @@ provides=('chatto')
 conflicts=('chatto')
 source_x86_64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_x86_64.tar.gz")
 source_arm64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/chatto_Linux_arm64.tar.gz")
-sha256sums_x86_64=('2ae5916a2e09bbbeaf95ed4d4648c2b3d2e295037af0571d8cc2c2093d1ef5e5')
-sha256sums_arm64=('33e418a1e4aa984c5b3daa4e46a069fb88ca6fce67478021b3a83f2bde03e68d')
+sha256sums_x86_64=('bb053875d1314d40e1eb1dec1b1d2da775ff7323d76af0ba110a8deb36211852')
+sha256sums_arm64=('641fc681bd2303fba584d1825503b837a4a6bbc2607123b15cfbe2ec5ae182e1')
 
 package() {
     bsdtar -C "${pkgdir}" -xf *.tar.gz
