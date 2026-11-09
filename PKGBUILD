@@ -2,9 +2,9 @@
 # Contributor: Sean V Kelley <seanvk@posteo.de>
 pkgname=jitterdebugger-git
 pkgver=0.3.r70.g045a274
-pkgrel=1
+pkgrel=2
 pkgdesc="Real time response measurement tool"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/igaw/jitterdebugger"
 license=('MIT')
 depends=(
