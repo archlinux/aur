@@ -1,0 +1,14 @@
+pkgbase = ltchiptool-data
+	pkgdesc = LibreTiny board/family data snapshot for ltchiptool
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://docs.libretiny.eu
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	source = libretiny-1.4.0::git+https://github.com/libretiny-eu/libretiny.git#commit=c81bc9cef83ffd42fcffce32b8b08793b2400b9f?signed
+	validpgpkeys = A874B6246D23954F506CC60C43037AC62A600562
+	b2sums = SKIP
+
+pkgname = ltchiptool-data
