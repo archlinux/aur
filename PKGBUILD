@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=supermodel
-pkgver=0.3a_20261029_git_036af1c
+pkgver=0.4_20261108_git_239a77b
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-  '14551a32a3816687bf32815f3137a96e5a35338fb5f9f139da87985257206144cda4f87b76ca5b04a1e170d273a578b3692191391c4bb6df4dae6aa0860db496'
+  'bf77af66eae0074edda5aa543a7f84792b29c1faec0215c456ed26da599a88732c4567f5be5b4a3547991ed0d49fb10a67b410e85de609a0777cf383da1b3abb'
   'bf62d43965ae51db0ce2c7d62a5a38253ce468ed0682df627a0e648aadd7eb85a5b35fb82354cc6f4163a49627ae9419a47eae12a0a4d3c2da9f743539bd788c'
   '13266c13ecbaccc2a156c41d2d42a271d9bc4bffcfe794a875a10128e97981558302ee9f7b5b8dd8c87ef8b00c5b5216843a9576917f9dd37a13a0455a1bba69'
 )
