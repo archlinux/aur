@@ -9,9 +9,16 @@ post_install() {
   _reload
   echo ">>> Unplug and replug your mouse (or reboot) so the hidraw udev rule applies."
   echo ">>> Start OpenMouse Bridge from your launcher, then open https://control.openmouse.app"
-  echo ">>> Bridge's in-app updater is disabled; update by rebuilding this package from the AUR."
+  echo ">>> Bridge may announce new versions; update by upgrading this AUR package,"
+  echo ">>> not with the download link in Bridge."
 }
 
 post_upgrade() {
   _reload
+  if (( $(vercmp "$2" 1.0.0) < 0 )); then
+    echo ">>> The udev rule now covers every USB mouse and receiver instead of a vendor list."
+    echo ">>> Unplug and replug your mouse (or reboot) so it applies."
+    echo ">>> Bridge may announce new versions; update by upgrading this AUR package,"
+    echo ">>> not with the download link in Bridge."
+  fi
 }

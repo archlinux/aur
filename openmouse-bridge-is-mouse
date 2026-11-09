@@ -1,0 +1,90 @@
+#!/bin/sh
+# OpenMouse Bridge udev helper for /usr/lib/udev/rules.d/69-openmouse-bridge.rules;
+# safe to delete with it. Succeeds when the hidraw device at sysfs path $1
+# belongs to a USB device with a mouse interface: a boot-protocol mouse, or a
+# HID interface whose report descriptor has a Generic Desktop Mouse collection.
+dev=$(readlink -f "$1/device") || exit 1
+while [ ! -f "$dev/bNumInterfaces" ]; do
+    [ "$dev" != / ] || exit 1
+    dev=$(dirname "$dev")
+done
+interfaces="$dev/${dev##*/}:"
+want=$(($(cat "$dev/bNumInterfaces")))
+
+# Whether report descriptor $1 has a Generic Desktop Mouse application
+# collection. Parses HID items, so a Report ID between the Usage Page and the
+# Usage, or a 2-byte Usage Page, still counts. Short usages take the Usage
+# Page in force at the main item; 4-byte usages carry their own.
+is_mouse_descriptor() {
+    set -- $(od -An -tu1 -v "$1")
+    page=0
+    usages=""
+    while [ "$#" -gt 0 ]; do
+        prefix=$1
+        shift
+        if [ "$prefix" -eq 254 ]; then
+            [ "$#" -ge 2 ] || return 1
+            skip=$(($1 + 2))
+            [ "$#" -ge "$skip" ] || return 1
+            shift "$skip"
+            continue
+        fi
+        size=$((prefix & 3))
+        [ "$size" -eq 3 ] && size=4
+        [ "$#" -ge "$size" ] || return 1
+        value=0
+        byte=0
+        while [ "$byte" -lt "$size" ]; do
+            value=$((value | ($1 << (8 * byte))))
+            shift
+            byte=$((byte + 1))
+        done
+        kind=$(((prefix >> 2) & 3))
+        case "$kind:$((prefix >> 4))" in
+            1:0) page=$value ;;
+            2:0)
+                if [ "$size" -eq 4 ]; then usages="$usages $value"; else usages="$usages s$value"; fi
+                ;;
+            0:10)
+                if [ "$value" -eq 1 ]; then
+                    for usage in $usages; do
+                        case "$usage" in s*) usage=$(((page << 16) | ${usage#s})) ;; esac
+                        [ "$usage" -eq 65538 ] && return 0
+                    done
+                fi
+                ;;
+        esac
+        [ "$kind" -eq 0 ] && usages=""
+    done
+    return 1
+}
+
+# On hotplug the interfaces, and the report descriptors under them, appear
+# one by one: wait (up to a second) until every interface and every HID
+# interface's descriptor is there.
+complete() {
+    count=0
+    for interface in "$interfaces"*; do
+        [ -e "$interface" ] || return 1
+        count=$((count + 1))
+        [ "$(cat "$interface/bInterfaceClass" 2>/dev/null)" = 03 ] || continue
+        for descriptor in "$interface"/*/report_descriptor; do
+            [ -e "$descriptor" ] || return 1
+        done
+    done
+    [ "$count" -ge "$want" ]
+}
+tries=0
+until complete || [ "$tries" -ge 10 ]; do
+    tries=$((tries + 1))
+    sleep 0.1
+done
+
+for interface in "$interfaces"*; do
+    [ "$(cat "$interface/bInterfaceClass" 2>/dev/null)" = 03 ] || continue
+    [ "$(cat "$interface/bInterfaceProtocol" 2>/dev/null)" = 02 ] && exit 0
+    for descriptor in "$interface"/*/report_descriptor; do
+        [ -r "$descriptor" ] && is_mouse_descriptor "$descriptor" && exit 0
+    done
+done
+exit 1
