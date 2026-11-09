@@ -1,0 +1,20 @@
+pkgbase = hindsight-api
+	pkgdesc = Agent memory system: retain, recall and reflect server (slim, ONNX embeddings)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://hindsight.vectorize.io
+	install = hindsight-api.install
+	arch = x86_64
+	license = MIT
+	makedepends = uv
+	depends = python
+	optdepends = postgresql: external database backend
+	optdepends = pgvector: vector similarity extension, required by postgresql
+	source = hindsight-api.service
+	source = hindsight-api.env.example
+	source = LICENSE
+	sha256sums = 3d4387854567071c3a40e1d4dc1681851d9c6d480ba1cffb678f7ae122ecc64a
+	sha256sums = 64ce64a2751e72d720f0303bd21d9bc4f372c4611ecf97e0c2060eb6125d46e0
+	sha256sums = b5fa62099f279b85758e746fb4e20f7840f9009bebc6730d3e510918ca2ce3d8
+
+pkgname = hindsight-api

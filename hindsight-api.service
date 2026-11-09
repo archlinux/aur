@@ -1,0 +1,15 @@
+[Unit]
+Description=Hindsight agent memory API
+After=network.target
+
+[Service]
+# flashrank's own default cache is /tmp, which loses the reranker on reboot.
+Environment="HINDSIGHT_API_RERANKER_FLASHRANK_CACHE_DIR=%h/.cache/hindsight/flashrank"
+EnvironmentFile=-%h/.config/hindsight/hindsight-api.env
+ExecStart=/usr/bin/hindsight-api
+# Without a delay, a bad config restarts in a tight loop instead of failing visibly.
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

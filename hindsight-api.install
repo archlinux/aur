@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+==> Configuration template:
+    /usr/share/hindsight-api/hindsight-api.env.example
+    Copy it to ~/.config/hindsight/hindsight-api.env and edit.
+
+==> Before first start, the database must exist:
+    createdb hindsight
+    psql -d hindsight -c 'CREATE EXTENSION IF NOT EXISTS vector;'
+
+==> Then enable the user service:
+    systemctl --user daemon-reload
+    systemctl --user enable --now hindsight-api.service
+    journalctl --user -u hindsight-api.service -f
+
+==> The API listens on http://localhost:8888
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
