@@ -3,7 +3,7 @@
 # AUR package built from source. scripts/aur.sh fills in pkgver and the
 # checksum of the release tarball and writes .SRCINFO; see docs/release.md.
 pkgname=lazybw
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A keyboard-first terminal UI for the Bitwarden vault"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('cargo')
 # The release profile already strips the binary: a -debug package would be empty.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('65b153ed907490c0350abecf77ce8f7fca1c0d33b54c8d6efdb0815545e2e98c')
+sha256sums=('08376cd6496008fdbf4e59cfe7d51d563adab004ce8e76450f5318778613e9df')
 
 prepare() {
   cd "$pkgname-$pkgver"
