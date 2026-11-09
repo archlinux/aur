@@ -3,7 +3,7 @@
 _pkgname=slimit
 pkgname=${_pkgname}-gpu
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="GUI NVidia and AMD GPU overclock, power limit and fan manager"
 arch=('x86_64')
