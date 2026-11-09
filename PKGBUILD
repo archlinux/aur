@@ -2,10 +2,10 @@
 
 pkgname=gitee-cli-git
 pkgver=0.3.3.r0.gb9500a1
-pkgrel=1
+pkgrel=3
 pkgdesc="Gitee CLI is a tool which interact with gitee server seamlessly via terminal"
 arch=($CARCH)
-url="https://gitee.com/oschina/gitee-cli"
+url="https://github.com/oschina/gitee-cli"
 license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
