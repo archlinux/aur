@@ -1,7 +1,7 @@
 pkgbase = babeltrace2
 	pkgdesc = Trace manipulation toolkit
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://diamon.org/babeltrace
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,8 @@ pkgbase = babeltrace2
 	depends = libelf
 	depends = python
 	source = babeltrace2-2.1.2.tar.gz::https://www.efficios.com/files/babeltrace/babeltrace2-2.1.2.tar.bz2
+	source = swig-4.5-compat.patch
 	sha512sums = 5e6b1c5c91478f5323007a6e61dff88c53062f89e58c069803ccd12ed19bb2372d6d869ee3cf51d6138b9edcebff7c09e6898c0079867aa6372a49723fa6fbbb
+	sha512sums = 7896eed26a3473aa1156f39fc18cf76a6c1e97b9ae0555df230901e37db59f3558c56483a7d86f8121b9e3818a23d0b7b59aa157b550742fa360cad23271e364
 
 pkgname = babeltrace2
