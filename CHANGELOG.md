@@ -2,6 +2,20 @@
 
 All the changes made to runa are documented here.
 
+## [0.15.4] - 2026-11-09
+
+#### Fedora package built with Fedora's Rust macros.
+
+### Changed
+- **Packaging**:
+    - The Fedora package now builds with Fedora's Rust packaging macros.
+    - Debug info moved into separate `runa-debuginfo` and `runa-debugsource` packages.
+    - Bundled dependencies are now declared in the RPM metadata, and their licenses ship with the package.
+
+
+---
+
+
 ## [0.15.3] - 2026-11-08
 
 #### Fedora packaging through COPR.
