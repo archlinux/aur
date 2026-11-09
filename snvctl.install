@@ -5,5 +5,5 @@ post_upgrade() {
         systemctl daemon-reload
     fi
 
-    systemctl restart slimitd.service;
+    systemctl restart slimitd.service
 }
