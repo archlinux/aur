@@ -1,10 +1,10 @@
 # lito.lock
-_wavsen_commit=756437443d84905a027f115c75ec6ae6b19692e7
-_vrento_commit=5cc289e6511d86cf6207a4677b22da88a3592505
-_vectext_commit=d918972da5c08b5afc73b812062e855fce2d847d
+_wavsen_commit=92f37f4748a17a36f946e64c8a4a0880cc9fbe23
+_vrento_commit=550e3c1f44ccafc064eb6b4b0b320764f5b65692
+_vectext_commit=36fc965d8cb418f9dc17d31683dc268dabb52cb2
 
 pkgname=open-wallpaper-engine
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
@@ -20,10 +20,10 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "git+https://github.com/vecren/vrento.git#commit=$_vrento_commit"
         "git+https://github.com/vecren/vectext.git#commit=$_vectext_commit"
         "0001-lito-Use-system-cef.patch")
-sha256sums=('5b5120a021ef8506e3b8e8f654c799e4e5a68d705666c393495b34edee892990'
-            'c3eb7d0d83a534f2ab489bb6dbadfc208cf735ba7d31b4d4bdbdaa5d2e75dc26'
-            '19f7f845713810c1e12ed187512f8e312149a3439c65a35bf85cbe9864a24aa8'
-            'bded207cedf409fb14dfc8218ac501a5f4d7cd8e09f08c7d05655f68f0a17f0a'
+sha256sums=('ed5704d45ccf8cf6551bf33acb0d2b36b1af384090ce94ecffcf1c1a37019be5'
+            'b745db138636443c8fcdf08f3265580369d1fa3eafa64e5c0821b05a7070056c'
+            'fabb2fa38be16ff0f8facc1779249ce64bf5a9e05f4848082c27be8b16be0ef0'
+            'd710ad4ce7b565c8a07042f5e054545ffe732013919637fa824603d86eaad293'
             '3629af4ae0b17d055fa869f3613f9dc975e4c5e084fa9fc0e993f2f27d812212')
 
 prepare() {
