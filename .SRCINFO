@@ -1,6 +1,6 @@
 pkgbase = gdirect-desktop-git
 	pkgdesc = Desktop client for gdirect: browse, transfer and mount Google Drive
-	pkgver = 0.13.0.r1.g746e77f
+	pkgver = 0.13.1.r1.g08a9476
 	pkgrel = 1
 	url = https://github.com/mizorewww/gdirect
 	arch = x86_64
