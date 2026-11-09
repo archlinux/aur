@@ -1,6 +1,6 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 pkgname=bitty
-pkgver=0.0.36
+pkgver=0.0.37
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,10 @@ check() {
   # run here: it compiles every test target of the 16-crate workspace, is
   # disk-bound (rustc codegen ICE on a full disk), and `|| true` masked its
   # exit status anyway. Project CI owns the full test matrix.
-  test "$(./target/release/bitty --version)" = "$pkgver"
+  # `--version` prints `bitty <semver> (<channel> <commit>)`, so compare the
+  # first two fields; the whole-line form never matched and failed every real
+  # AUR build (bitty#3011).
+  test "$(./target/release/bitty --version | cut -d' ' -f1-2)" = "bitty $pkgver"
   # `bittyd --version` prints "bittyd <version> (service API <version>)".
   test "$(./target/release/bittyd --version | cut -d' ' -f1-2)" = "bittyd $pkgver"
 }
