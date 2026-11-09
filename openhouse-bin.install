@@ -1,0 +1,14 @@
+post_install() {
+    echo ">>> openhouse is installed but not yet active."
+    echo ">>> Close SteamVR/Monado, then run: openhouse-install"
+}
+
+post_upgrade() {
+    echo ">>> openhouse updated: ${2} -> ${1}"
+    echo ">>> If you have never ran the install command before, close SteamVR/Monado and run: openhouse-install"
+}
+
+post_remove() {
+    echo ">>> SteamVR is still loading the openhouse driver."
+    echo ">>> Run: openhouse-uninstall to restore SteamVR's lighthouse driver"
+}

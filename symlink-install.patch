@@ -1,0 +1,7 @@
+--- a/install.sh
++++ b/install.sh
+@@ -17,3 +17,3 @@
+ cp -a "$here/lh-libs/." "$dir/lh-libs/"
+-cp "$here/driver_lighthouse.so" "$target.new" && mv "$target.new" "$target"
++ln -sfn "$here/driver_lighthouse.so" "$target"
+ install_schema  # the openhouse page in SteamVR's settings
