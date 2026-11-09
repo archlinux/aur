@@ -1,0 +1,4 @@
+# Moore Threads MTT S30 GPU access rules
+# Managed by mtgpu-s30-userland
+
+KERNEL=="musa*", MODE="0666", TAG+="uaccess"
