@@ -1,6 +1,6 @@
 pkgbase = mistral-vibe
 	pkgdesc = Minimal CLI coding agent by Mistral
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/mistralai/mistral-vibe
 	arch = x86_64
@@ -50,8 +50,7 @@ pkgbase = mistral-vibe
 	depends = python-watchfiles
 	depends = python-websockets
 	depends = python-yaml
-	depends = python-zstandard
-	source = git+https://github.com/mistralai/mistral-vibe.git#tag=v3.1.0
+	source = git+https://github.com/mistralai/mistral-vibe.git#tag=v3.1.1
 	source = stretch_e2e_timeouts_when_builder_is_loaded.patch
 	sha256sums = SKIP
 	sha256sums = 38eaabbd231af198b4184d9d5d4cdb898ddb5365d6d5080a125054e294e6633c

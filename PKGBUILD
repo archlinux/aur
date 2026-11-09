@@ -2,7 +2,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -50,7 +50,6 @@ depends=(
     "python-watchfiles"
     "python-websockets"
     "python-yaml"
-    "python-zstandard"
 )
 # Upstream switched from hatchling to a custom maturin-based build backend in
 # v2.25.8: building the wheel now also compiles the Rust harness extension and
