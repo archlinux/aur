@@ -1,6 +1,6 @@
 # Maintainer: Tsaitang  <Tsaitang404 at gmail dot com>
 pkgname="trilium-next-server-bin"
-pkgver=0.105.0
+pkgver=0.107.0
 pkgrel=1
 pkgdesc="Trilium Notes Server Next version"
 arch=('x86_64')
