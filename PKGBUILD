@@ -6,7 +6,7 @@
 
 pkgname=hop-openhwp-bin
 _pkgname=hop-openhwp
-pkgver=0.4.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Open desktop editor for HWP and HWPX documents"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   "${url}/raw/v${pkgver}/LICENSE"
 )
 noextract=("$pkgname-$pkgver.deb")
-sha256sums=('4b93a65cc7afb51bd283fd7f6fd0cc7b6b9db2be6cba535b2ee3a45b86c2332a'
+sha256sums=('082223d32eb2e360d3487b85f03338abbd7cd97a43057cb20b9bf5a5bcb67055'
             '1c3a7d5643b163a3ead4965e1bea33b832caee5bfca265efe42afcd7bc696b5b')
 
 package() {
