@@ -3,7 +3,7 @@
 # below (and .SRCINFO) for a new tag, then publishes. the app inside updates through pacman, not itself
 pkgname=heatsync-chat-bin
 _name=heatsync-chat
-pkgver=0.3.6
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='twitch, kick and youtube chat in one native window, with heatsync emotes (prebuilt release)'
 url='https://github.com/mellen9999/heatsync-chat'
@@ -28,8 +28,8 @@ source_x86_64=("$_name-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_
 source_aarch64=("$_name-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_name-aarch64-linux.tar.gz")
 # >>> release files: packaging/aur.sh rewrites these lines, don't edit by hand
 arch=(x86_64 aarch64)
-sha256sums_x86_64=('dfd698bac0b6ee70ad4167205512e551315c3b3579c067c7aba1e29a104c5274')
-sha256sums_aarch64=('9230a81227beaf1e687699986ec8b1a8b904e25e58bb3d7422429058bd3f2e62')
+sha256sums_x86_64=('098bbc67c7c5b2d1defef98e7baaf1da18c07d8829ca7a6f63df3fb69bb80e5b')
+sha256sums_aarch64=('b3d89728d77f68c8ebbc4aafbf91a9c29e41723ee5bbeb24abadd318548bc9db')
 # <<<
 
 package() {
