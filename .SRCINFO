@@ -1,6 +1,6 @@
 pkgbase = bioma-shell
 	pkgdesc = A desktop shell for niri, built on Genoma: living surfaces rather than a bar
-	pkgver = 1.0.0beta65
+	pkgver = 1.0.0beta66
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Bioma
 	install = bioma-shell.install
@@ -10,7 +10,7 @@ pkgbase = bioma-shell
 	makedepends = cargo
 	makedepends = clang
 	depends = niri
-	depends = genoma>=0.1.2
+	depends = genoma>=0.1.3
 	depends = genoma<0.2.0
 	depends = python
 	depends = python-dateutil
@@ -67,7 +67,7 @@ pkgbase = bioma-shell
 	optdepends = gamemode: performance mode, on by itself while a game runs
 	options = !lto
 	backup = etc/xdg/autostart/bioma.desktop
-	source = bioma-shell-1.0.0beta65.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.65.tar.gz
-	sha256sums = 5a5ea01528a3d8b4df3aae671ae9612f8837c307532b5025179de0d0c79d06df
+	source = bioma-shell-1.0.0beta66.tar.gz::https://github.com/AkusenArcade/Bioma/archive/refs/tags/v1.0.0-beta.66.tar.gz
+	sha256sums = 3b8ff219af6172e377114d252cb7af4c17f31027c59392856273fda59e556cec
 
 pkgname = bioma-shell
