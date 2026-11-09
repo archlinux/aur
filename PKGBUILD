@@ -51,14 +51,14 @@ _htmldocs_enable=
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_major=7.2
+_major=7.3
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
 _lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=7.3.3.lqx1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -104,9 +104,9 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha512sums=('47e63679363261a864d271277340a6f2d45f544e1a056be4159df081f4f6537d0efa865c4af26611ab33a3079ee65db88ec2f6bc0e5fff43e0c043cde0cd91e1'
+sha512sums=('14b99ea7cc2adc0798a183ac5f3e184587f2496c3b2d1d53b625574389891c69e8be375b5d03875fe859b09ac9314aa15da604087274ba815671135bd6a0e590'
             'SKIP'
-            'b14376a527a725eb088c3259483a1de4e352d5bacef1ce45c213036c111542bcfad824a15308a919a096b1b95fc25e6bbc70982e592d1adbac05500d45cea56c')
+            '3aeaa3605cfa925e691092eb3578b97431202429a3086f0be5e8be24edea080f42058cddf185aa0cc8125001be8b24d948b5193e17be8bdac2f2bf859d842357')
 
 
 
