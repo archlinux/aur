@@ -3,7 +3,7 @@
 # Contributor: Asuka Minato
 _appname=teams-for-linux
 pkgname="${_appname}-electron-bin"
-pkgver=2.29.0
+pkgver=2.30.0
 _electronversion=44
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client."
@@ -34,8 +34,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('37659a35fa9c9ba21ca8de9163ed995cca50aacb2becb528cf15a832c7a20069')
-sha256sums_x86_64=('be156274cc3a04f3cdc7c98fd939855dd8fe945418e0aba4257c45fbc1c777d6')
+sha256sums_aarch64=('9ef1e145f0e65e5a248144ad7fd06137baa8280cf6c5c708124ee01f70bf4dbe')
+sha256sums_x86_64=('a747b846da046e70c09eb3dfd7d38b4607bc3b273b2e59fd10991c8540d0fcb4')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
