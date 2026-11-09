@@ -1,6 +1,6 @@
 # Maintainer: Paul Goessmann <paul.goessmann@proton.me>
 pkgname=pvpn-go
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc='Proton VPN client with TUI for Linux (WireGuard + Stealth)'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ install=pvpn-go.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 # Regenerated from the real tarball by the aur-publish job on every tag.
 # If you bump pkgver by hand, run `updpkgsums` so the two stay in step.
-sha256sums=('7a7ee38a37410985b30888c8892768338619b109f1dd7cc2c8316cfaef0cee66')
+sha256sums=('9747ddaf3e4f776775fc1f5a9625a5fb68480a9e0088615f3841d69b0883cdae')
 
 _srcdir="pVPN-${pkgver}"
 
