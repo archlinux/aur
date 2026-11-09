@@ -1,0 +1,17 @@
+pkgbase = mex
+	pkgdesc = A terminal UI for browsing mDNS traffic
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hrzlgnm/mex
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cargo-auditable
+	makedepends = git
+	makedepends = rust
+	options = !strip
+	options = !emptydirs
+	source = mex-0.2.0.tar.gz::https://github.com/hrzlgnm/mex/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 0e9197e645d195a298657d15052a81074f52d81569024e69f0a101d1626a9eb1
+
+pkgname = mex
