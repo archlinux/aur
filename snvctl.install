@@ -4,4 +4,8 @@ post_upgrade() {
         rm -f /etc/systemd/system/snvctl.service
         systemctl daemon-reload
     fi
+
+    if systemctl is-active --quiet slimitd.service; then
+        systemctl restart slimitd.service;
+    fi
 }
