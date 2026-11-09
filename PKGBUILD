@@ -1,7 +1,7 @@
 # Maintainer: methamphetaminelab <https://github.com/methamphetaminelab>
 
 pkgname=gramtty
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _tdlibrs=1.4.0
 _tdlib=1.8.61
@@ -15,7 +15,7 @@ makedepends=('cargo' 'libc++' 'libc++abi')
 # !debug: the release profile already strips the binary
 options=('!lto' '!debug')
 optdepends=(
-  'mpv: playing video, video notes and voice messages'
+  'mpv: libmpv for playback inside the viewer, and the separate player (x)'
   'ffmpeg: video and sticker previews, upload thumbnails, voice encoding'
   'pipewire-audio: pw-record for voice messages, pw-play for notification sound'
   'opus-tools: opusenc for voice messages (alternative to ffmpeg)'
@@ -29,7 +29,7 @@ optdepends=(
 # x86_64 only: tdlib-rs publishes it for linux-x86_64 and linux-aarch64.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/methamphetaminelab/gramtty/archive/refs/tags/v$pkgver.tar.gz"
         "tdlib-$_tdlib-linux-x86_64.zip::https://github.com/FedericoBruzzone/tdlib-rs/releases/download/v$_tdlibrs/tdlib-$_tdlib-linux-x86_64.zip")
-sha256sums=('456dba5abe0d6edf39d117a8ee673409bc0967147bd464103efd90d58703f71b'
+sha256sums=('433e09d51ceb30cddfd8a88353a5955d2f709b54adc119c5c3114ef7fc70a478'
             '997069633f54306ada33776d2c4a530017d2e7325a22e0f12701d52438c37383')
 
 prepare() {
