@@ -4,7 +4,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=blockdiag
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="Generate block-diagram images from text files"
 url="https://github.com/yuzutech/blockdiag"
@@ -16,7 +16,7 @@ checkdepends=('python-docutils' 'python-pytest' 'python-reportlab')
 optdepends=('python-reportlab: for PDF export'
             'python-docutils: for RST parser')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('55e91305ca0238a7d3505dfaa23eab6f434c3dca0bdfa02da763d8fc6306d990')
+sha256sums=('6738a82e27afa5180215f29c677834dc1b944baa347ec989bdff5ccc3b5307cc')
 
 build() {
   cd $pkgname-$pkgver

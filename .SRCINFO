@@ -1,6 +1,6 @@
 pkgbase = blockdiag
 	pkgdesc = Generate block-diagram images from text files
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://github.com/yuzutech/blockdiag
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = blockdiag
 	depends = python-webcolors
 	optdepends = python-reportlab: for PDF export
 	optdepends = python-docutils: for RST parser
-	source = https://github.com/yuzutech/blockdiag/archive/refs/tags/v3.4.2.tar.gz
-	sha256sums = 55e91305ca0238a7d3505dfaa23eab6f434c3dca0bdfa02da763d8fc6306d990
+	source = https://github.com/yuzutech/blockdiag/archive/refs/tags/v3.4.3.tar.gz
+	sha256sums = 6738a82e27afa5180215f29c677834dc1b944baa347ec989bdff5ccc3b5307cc
 
 pkgname = blockdiag
