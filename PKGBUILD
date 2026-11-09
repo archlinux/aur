@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=doriterm-bin
 _pkgname=Doriterm
-pkgver=0.1.13
+pkgver=0.1.14
 _electronversion=45
 pkgrel=1
 pkgdesc="Your devices, one terminal. Every machine you own, linked through an end-to-end encrypted mesh: the shells and coding agents on your machines in a browser tab, a phone and a desktop app, through a relay that only sees ciphertext."
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('e6bbc5f31353655c643c935ea0f316e195d90031c84470818fb1e9fa8cdf813f')
-sha256sums_x86_64=('fbbf5dccf37013970ecb2a8cb1e70b6cc3643cdfc168369c264b5fe24bd94b41')
+sha256sums_aarch64=('243b6a62c28fdaf2607daf787276282d8ed79c6035784151817f75a0da3761ff')
+sha256sums_x86_64=('6a6f3ce17f93980283b6a88b6b04297f5cd584a03387519dd3c159c7549bbfa6')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
