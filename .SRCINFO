@@ -1,6 +1,6 @@
 pkgbase = pdf4qt
 	pkgdesc = Open source PDF editor
-	pkgver = 1.6.0.0
+	pkgver = 1.7.0.0
 	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
@@ -19,11 +19,13 @@ pkgbase = pdf4qt
 	depends = onetbb
 	depends = lcms2
 	depends = blend2d
+	depends = clipper2
+	depends = sane
 	optdepends = flite: Text-To-Speech using flite synthesizer
 	optdepends = libspeechd: Text-To-Speech using speechd synthesizer
 	conflicts = pdf4qt
 	options = !strip
-	source = pdf4qt.git::git+https://github.com/JakubMelka/PDF4QT.git#tag=v1.6.0.0
-	sha256sums = f800dcccae4b1c89119832336461ea03b1a040b4b84e91d8c1ef494cec8c0a4c
+	source = pdf4qt-1.7.0.0.tar.gz::https://github.com/JakubMelka/PDF4QT/archive/refs/tags/v1.7.0.0.tar.gz
+	sha256sums = 01da732d172092a80a325f09cc3f64ed1298bccc76bcc2d7e108b3accccea931
 
 pkgname = pdf4qt
