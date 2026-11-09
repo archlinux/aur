@@ -1,0 +1,16 @@
+pkgbase = rowq-bin
+	pkgdesc = Query rows in tables, documents and databases from the terminal (pre-built binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/denisotree/rowq
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = rowq
+	conflicts = rowq
+	source_x86_64 = rowq-bin-1.0.0-x86_64.tar.gz::https://github.com/denisotree/rowq/releases/download/v1.0.0/rowq-v1.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7c4a769130633b5c2dccdcc921e04340322237725ecec4d6bba190779704876a
+	source_aarch64 = rowq-bin-1.0.0-aarch64.tar.gz::https://github.com/denisotree/rowq/releases/download/v1.0.0/rowq-v1.0.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4676aa1b301d690be418e6bc0b07808c03157b0e19e0ffe4d452494a777af4d1
+
+pkgname = rowq-bin
