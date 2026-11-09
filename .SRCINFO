@@ -1,15 +1,15 @@
 pkgbase = sax
 	pkgdesc = A simple but smart archiving and extraction tool
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/rahmerh/sax
+	pkgrel = 2
+	url = https://git.sr.ht/~rahmerh/sax
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	conflicts = sax-git
 	options = !lto
-	source = sax-1.0.0.tar.gz::https://github.com/rahmerh/sax/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = d1111a7f4f2b69ac4b2598d13f3fe64c4d196451008e307b1d5c1e96379a00a2
+	source = sax-1.0.0.tar.gz::https://git.sr.ht/~rahmerh/sax/archive/v1.0.0.tar.gz
+	sha256sums = f18eb645ccabee61364f23cc7eea8e724dc8b781a64127c479de31736750ab54
 
 pkgname = sax
