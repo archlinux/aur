@@ -3,7 +3,7 @@
 pkgname=orchis-theme-fixed-git
 _name=orchis-theme
 _fixes=orchis
-pkgver=2026.07.07.r5.ga4c48a4.f19.42fc4f2
+pkgver=2026.07.07.r5.ga4c48a4.f7.0c09bae
 pkgrel=1
 pkgdesc="Orchis, a Material Design GTK theme, Dracula colors, with GTK 3/4 geometry fixes (window buttons, headerbars, Nautilus, Electron/Chromium titlebars)"
 arch=('any')
