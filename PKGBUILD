@@ -2,7 +2,7 @@
 
 _pkgname=hylo
 pkgname=$_pkgname-git
-pkgver=0.0.9.r51.e674623d
+pkgver=0.0.9.r189.c6bec593
 pkgrel=1
 pkgdesc='Compiler for the Hylo programming language'
 arch=(x86_64 aarch64)
@@ -66,6 +66,18 @@ prepare() {
   git config submodule.Swifty-LLVM.url "$srcdir/Swifty-LLVM"
   git -c protocol.file.allow=always submodule update Swifty-LLVM
   printf 'internal let hyloVersion = "%s"\n' "$pkgver" >Sources/hc/Version.swift
+
+  # avoid embedding $srcdir
+  sed -i \
+    -e '/localStandardLibrarySources = URL/i\' \
+    -e '#if USE_BUNDLED_STANDARD_LIBRARY\' \
+    -e 'package let localStandardLibrarySources = bundledStandardLibrarySources\' \
+    -e '#else' \
+    -e '/localStandardLibrarySources/,/\.deletingLastPathComponent()/ {' \
+    -e '  /\.deletingLastPathComponent()/a\' \
+    -e '#endif' \
+    -e '}' \
+    StandardLibrary/StandardLibrary.swift
 
   _get_llvm
 }
