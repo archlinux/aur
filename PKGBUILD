@@ -4,7 +4,7 @@
 # pkgver, pkgrel and sha256sums with .github/scripts/generate_aur_files.sh.
 pkgname=zenith-bar
 _reponame=Zenith
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="The lightest beautiful status bar for Wayland"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('ttf-inter: the recommended UI font'
 options=('!lto')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('094469c963aac78e9d75dc99064358e80b4165623ff998aab69210f59ece7543')
+sha256sums=('7cd523be4f8d8497671aaaab7dac98259f8bea633e1fbc86ce89eaf87f67c23f')
 
 prepare() {
   cd "${_reponame}-${pkgver}"
