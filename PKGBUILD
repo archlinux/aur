@@ -9,7 +9,7 @@ _gitname='cratty'
 _giturl="https://github.com/auf-gg/${_gitname}"
 
 pkgname=cratty-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Native GPU-rendered SSH client with an encrypted host vault (release binaries)'
 arch=('x86_64' 'aarch64')
@@ -37,10 +37,10 @@ conflicts=('cratty' 'cratty-git')
 # Tarballs produced by build.yml: cratty-<version>-<arch>-linux.tar.gz
 # containing the binary, .desktop file, icons and LICENSE.
 source_x86_64=("${_giturl}/releases/download/v${pkgver}/cratty-${pkgver}-x86_64-linux.tar.gz")
-sha256sums_x86_64=('80dbc73223e33c72bbd57ad278f5f5eebd9ce705f3fa761ea1f54bd30e8314a6')
+sha256sums_x86_64=('0beeb346998287afecfbb97120946627abf6bd867b2957854f5519c3272fb504')
 
 source_aarch64=("${_giturl}/releases/download/v${pkgver}/cratty-${pkgver}-aarch64-linux.tar.gz")
-sha256sums_aarch64=('9593765fd2226c3b9a9c21e4b4ef8d66f583039d535306043da071f2d9226f4b')
+sha256sums_aarch64=('4b34239b2104f8bb7e080a6f0fbfe549b3b2364a9c4bb11ad978030db1973792')
 
 package() {
   cd "cratty-${pkgver}-${CARCH}-linux"
