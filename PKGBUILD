@@ -31,7 +31,7 @@ pkgname=(
   nephrite-vmsr-helper
   nephrite-{base,desktop,emulators-full,full}
 )
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A fork of QEMU, the generic and open source machine emulator and virtualizer"
 arch=(x86_64)
@@ -134,17 +134,17 @@ makedepends=(
 source=(
   https://github.com/Nephrite-Project/Nephrite/releases/download/v$pkgver/$pkgbase-$pkgver.tar.xz
   bridge.conf
-  qemu-ga.conf
+  nephrite-ga.conf
   99-nephrite-guest-agent.rules
 )
-sha512sums=('d75680182c4dc9e35febd0f90c87d9c36e36befd321c5fe5f59ce97fc3cd122e543dda1882a92c967e37f8796b8e1f648aa3f343f234ce5a3ce583185a819fb2'
+sha512sums=('e0247e94a3a23f4727874034df776db81f99648692bbc4ffedf0808ff199b740f2f8ce012a2ca4ee4bad164a41ff91f82e0ecb0f1a6768db2d6435424ae53d04'
             '7b412ffa5dcda47b0a4ec9e2c5e5e1d9eaaaf0a087b7ea3ead3e706ba4c9cafb919beadd088a0299b6f7aab753b81a5eafb545b4842ee5f26646d16544dd02a7'
-            '080ce23f5eedda24c60d9c2c9cbb6d283076ef7907d82a78274bec59dc70ec74ad3e31e090a13295fe9933f008402a83d62bdaccea6f7a44164abeba0fb5ad45'
-            '93b905046fcea8a0a89513b9259c222494ab3b91319dde23baebcb40dc17376a56661b159b99785d6e816831974a0f3cbd7b2f7d89e5fc3c258f88f4492f3839')
-b2sums=('48f1a36b0af369af53708057401a7e2a9bffbfe28ebea6dedd1621a03c48859aaaa40909416b1cfaa8ca62fa712744e2a5614eb08836897be4a1d1eddf069724'
+            '2f05da2f8f4a0b4ba2af2b1b191b6ac09d05a998dabc849805334ec0d7e479656a778c4e30fb840484d0f66d5ac87cdba09b7d0fab2f2eee29f0a4b3b4c52181'
+            'b9baac812dbe9b9154b6123e5d69f5d82c572e714255694ef0ead990e08ebe2c5721102b29bce9ab2fc6e126465c3a887a94e58fcb708c993e9bbcb1a3fb7924')
+b2sums=('0cbf5798065e1fd897e1a79e1c09a592198ab0cd19c1cbe44f810d86dd366e14b360b469bca98483b59b8b1c5ee2af36ae48e5940a55800ce79c1ef734c62601'
         'b1eca364aa60f130ff5e649f5d004d3fcb75356d3421a4542efdfc410d39b40d9434d15e1dd7bbdbd315cb72b5290d3ea5f77f9c41961a5601cd28ef7bbe72e8'
-        '344ddf996ab1b4d38b06c809f35e0605c483b1423a9e7696ac347de6b046c5a55949c204f78b85e3ce22cc72fc605e7ea60a3a0af80dccb1d55c6e6f8978bf1f'
-        'a9a2bdfeeb44eb86cbe88ac7c65f72800bdb2fd5cecb02f3a258cf9470b52832180aab43c89d481f7fd4d067342a9a27dd6c8a94d625b95d6e2b912e47d274e7')
+        'dccdcf35b9636802aa136414e96c16a110f25586539d0f7432f4d1135654e81c525d8e6975ea3cb43d0a5865118699fc2861acc10f7edb7a06be91e95b6ade88'
+        '6200f483136aaa27a3ddefde1e8122a512ad1047127a97ba4b76cc6faee086a4cdb0de0e7d37ca85990950c1dfdafd460af8898e1815bdf0212bc2b05bd91433')
 
 _nephrite_system_deps=(
   capstone
@@ -378,6 +378,7 @@ package_nephrite-common() {
   depends=(glibc glib2 libgcc libglib-2.0.so libgmodule-2.0.so hicolor-icon-theme libcap-ng libcap-ng.so)
   backup=(
     etc/$pkgbase/bridge.conf
+    etc/sasl2/$pkgbase.conf
   )
 
   # install static binaries
@@ -389,12 +390,8 @@ package_nephrite-common() {
   for _src in "$pkgdir/usr/bin/$pkgbase-"*; do
     mv -v "$_src" "$pkgdir/usr/bin/$(basename "$_src")-static"
   done
-  # The binfmt.d configs keep QEMU's entry names (qemu-<cpu>), which name
-  # Nephrite's programs as their interpreters: point copies of them at the
-  # static binaries, under file names of Nephrite's own
-  for _conf in "$pkgdir/usr/lib/binfmt.d/"qemu-*.conf; do
-    _cpu="$(basename "${_conf%.conf}")"
-    sed -E "s|(/usr/bin/$pkgbase-[^:]+):|\1-static:|" "$_conf" > "$pkgdir/usr/lib/binfmt.d/$pkgbase-${_cpu#qemu-}-static.conf"
+  for _conf in "$pkgdir/usr/lib/binfmt.d/"$pkgbase-*.conf; do
+    sed -E "s|(/usr/bin/$pkgbase-[^:]+):|\1-static:|" "$_conf" > "${_conf%.conf}-static.conf"
     rm -v "$_conf"
   done
 
@@ -403,14 +400,11 @@ package_nephrite-common() {
 
   install -vdm 755 "$pkgdir/usr/lib/binfmt.d/"
   $pkgbase-$pkgver/scripts/qemu-binfmt-conf.sh "${binfmt_conf_options[@]}"
-  for _conf in "$pkgdir/usr/lib/binfmt.d/"qemu-*.conf; do
-    mv -v "$_conf" "$pkgdir/usr/lib/binfmt.d/$pkgbase-${_conf##*/qemu-}"
-  done
 
   install -vDm 644 bridge.conf -t "$pkgdir/etc/$pkgbase/"
-  # Nephrite keeps SASL's application name, qemu, so its SASL configuration
-  # is QEMU's /etc/sasl2/qemu.conf, which qemu-common installs. Nephrite runs
-  # as no user of its own, so it has no sysusers.d configuration either.
+  install -vDm 644 $pkgbase-$pkgver/$pkgbase.sasl "$pkgdir/etc/sasl2/$pkgbase.conf"
+  # Nephrite runs as no user of its own, so it has no sysusers.d
+  # configuration.
 
   _install_licenses
 
@@ -728,17 +722,14 @@ package_nephrite-docs() {
 package_nephrite-guest-agent() {
   pkgdesc="Nephrite Guest Agent"
   depends=(glib2 libglib-2.0.so libgcc libgmodule-2.0.so glibc liburing liburing.so numactl libnuma.so sh systemd-libs libudev.so)
-  # Nephrite's agent keeps QEMU's systemd unit and serves QEMU's agent
-  # channel, so it takes the place of QEMU's
-  conflicts=(qemu-guest-agent)
   backup=(
-    etc/$pkgbase/qemu-ga.conf
+    etc/$pkgbase/$pkgbase-ga.conf
     etc/$pkgbase/fsfreeze-hook
   )
   mv -v $pkgname/* "$pkgdir"
-  install -vDm 644 $pkgbase-$pkgver/contrib/systemd/qemu-guest-agent.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -vDm 644 $pkgbase-$pkgver/contrib/systemd/$pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
   install -vDm 644 99-$pkgname.rules -t "$pkgdir/usr/lib/udev/rules.d/"
-  install -vDm 644 qemu-ga.conf -t "$pkgdir/etc/$pkgbase/"
+  install -vDm 644 $pkgbase-ga.conf -t "$pkgdir/etc/$pkgbase/"
   install -vDm 755 $pkgbase-$pkgver/scripts/qemu-guest-agent/fsfreeze-hook -t "$pkgdir/etc/$pkgbase/"
   install -vdm 755 "$pkgdir/etc/$pkgbase/fsfreeze-hook.d"
   _install_licenses
