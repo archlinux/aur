@@ -1,14 +1,14 @@
 # Maintainer: Ait contributors <https://github.com/ait-app/ait>
 
 pkgname=ait-bin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Local-first multi-agent manager with an Electron desktop and Rust daemon'
 arch=('x86_64')
 url='https://github.com/ait-app/ait'
 license=('Apache-2.0')
 depends=(
-  'alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'coreutils' 'dbus' 'expat'
+  'alsa-lib' 'at-spi2-core' 'bash' 'bubblewrap>=0.8.0' 'cairo' 'coreutils' 'dbus' 'expat'
   'libgcc' 'libstdc++' 'git' 'glib2' 'glibc' 'grep' 'gtk3' 'hicolor-icon-theme'
   'libcups' 'libnotify' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
   'libxfixes' 'libxkbcommon' 'libxrandr' 'libx11' 'mesa' 'nspr' 'nss'
@@ -28,7 +28,7 @@ source=(
 )
 noextract=("${_appimage}")
 sha256sums=(
-  '0879e3a978eb693d660eb7d75b43e74dcf31b108f35082ff560508e02c4bb49e'
+  '5fab5214266012d9a889b10906862ce243927dea0ea953ae7e0c351490624f0b'
   'c046b482bf9d9ba6ce161a6b242fa506798e908b5b5dfbf5e27776558e803cc0'
 )
 
