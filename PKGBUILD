@@ -1,6 +1,6 @@
 # Maintainer: deridray <deriday@gmail.com>
 pkgname=riff-player-bin
-pkgver=43.0.0
+pkgver=44.2.0
 pkgrel=1
 pkgdesc="A free, open-source desktop music player for YouTube Music, SoundCloud, and local files."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 
 _appimage="riff-${pkgver}-linux-x86_64.AppImage"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_appimage}")
-sha256sums_x86_64=('b35ec26f4d630e67a75ed6e3869441458d94e5727e4abf2c557915531b234bb5')
+sha256sums_x86_64=('9ee43f3ae0c571aebb6d73abf07caceae26277134156315f37a7be84bdc524bb')
 
 prepare() {
     chmod +x "${_appimage}"
