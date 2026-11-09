@@ -26,7 +26,7 @@ provides=("tuxmix=${pkgver}")
 conflicts=('tuxmix')
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/tuxmix-${pkgver}-x86_64.tar.gz")
-sha256sums=('c33e5dc3ff6b1d86ad9e6dfe27b6ce0207e4c4a8f479d6f0e12555d4f7d98e93')
+sha256sums=('730856a096965d1f31780f3db236ee550018e601b3c43d0c2e46b325910f60f6')
 
 package() {
     # The tarball is the installed tree (tools/release/package.sh).
