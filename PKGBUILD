@@ -2,7 +2,7 @@
 # Maintainer: Martin Wimpress <code@wimpress.io>
 
 pkgname='xfkey-wonkey-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Configure your XFKEY One Key Max on Linux.'
 url='https://github.com/wimpysworld/WonKey'
@@ -10,13 +10,12 @@ arch=('aarch64' 'x86_64')
 license=('BlueOak-1.0.0')
 provides=('wonkey')
 conflicts=('wonkey')
-depends=('curl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('2157e27f19252943023393b518bf7804ce7f54ecdc7ef9278f7469e6e93b1cba')
+sha256sums_aarch64=('3ccf720a8b1cb29844cd8bd80fd310ba83bce9dd42cffd7641855df6729cf1c6')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/wimpysworld/WonKey/releases/download/v${pkgver}/WonKey_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('78d20c8c9d4f88598e42be61e5335d49eac2da16e2f23e35ba60e6fdb9f76980')
+sha256sums_x86_64=('7bb256850e1878a5d825e89d507fe35cfccc397e1398b59e471af99fa4beb800')
 
 package() {
   install -Dm755 wonkey "${pkgdir}/usr/bin/wonkey"
