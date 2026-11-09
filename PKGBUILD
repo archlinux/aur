@@ -2,8 +2,8 @@
 
 pkgbase=ch9344ser-git
 pkgname=(ch9344ser-dkms-git)
-pkgver=r59.0450213
-pkgrel=4
+pkgver=r61.dc1b70a
+pkgrel=1
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
 arch=('any')
 arch=($CARCH)
