@@ -4,7 +4,7 @@
 _name="victoriametrics"
 _name_camel="VictoriaMetrics"
 pkgname="${_name}-cluster"
-pkgver='1.153.0'
+pkgver='1.156.0'
 pkgrel='1'
 pkgdesc='Fast, cost-effective monitoring solution and time series database'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${_name_camel}/ta
 	"vmauth.yml"
 	"${_name}.sysusers"
 	"${_name}.tmpfiles")
-sha256sums=('e0c444165176aa5ed5723d2c9d85fa78ab967842d21ff51f682b7d06fbedfa0d'
+sha256sums=('e12d9724e24edee3ec927222bf6f61da7aa4ed14b94e2af12d1bfc34ab5c9a2e'
             '459b40675c3b77b108a597e864d29b72c93870a0ef0d814d8a99f0c293addd54'
             '866078e2049a3e70196f649fec69130ffdc27c020777c83c9770e56d13224c10'
             '5144d6cb0732ae7d12e92ec4e13c36f3373407b7f826c44aedff6da50dd8d17a'
