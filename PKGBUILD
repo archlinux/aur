@@ -2,7 +2,7 @@
 _appname=qoder
 pkgname="${_appname}-ide"
 _pkgname='Qoder IDE'
-pkgver=1.39.1
+pkgver=1.39.2
 _electronversion=42
 pkgrel=1
 pkgdesc="AI native IDE for real-world software development."
@@ -30,11 +30,13 @@ source=(
     "LICENSE.html"
     "qoder-ide.js"
     "qoder-ide.sh"
+    "qoder-ide-512.png"
 )
-sha256sums=('a4fd72096a09080a9a25454739d3b89a335909d3790f28502b8053209943e4f6'
+sha256sums=('478bc9c751fed409a08f19aebc57d73be23df3179131a234eb2700eb5eb06633'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21')
+            '9417ba033cfc980d6723978dc5fca100cbec6da78e5494f9e64960e4efec8c21'
+            'eb3c6be5a67ca366fe1b15283535e2f5221e179b9dcd2cb1c914f5c3746b2fb1')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
@@ -65,7 +67,7 @@ package() {
     install -Dm755 "${srcdir}/qoder-ide.sh" "${pkgdir}/usr/bin/qoder-ide"
     install -Dm755 "${srcdir}/qoder-ide.js" -t "${pkgdir}/usr/lib/qoder-ide"
     cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/qoder-ide/"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/qoder-ide.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/qoder-ide-512.png" "${pkgdir}/usr/share/pixmaps/qoder-ide.png"
     install -Dm644 "${srcdir}/usr/share/applications/qoder-ide"* -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/appdata/qoder-ide.appdata.xml" -t "${pkgdir}/usr/share/appdata"
     install -Dm644 "${srcdir}/usr/share/mime/packages/qoder-ide-workspace.xml" -t "${pkgdir}/usr/share/mime/packages"
