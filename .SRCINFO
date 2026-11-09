@@ -1,6 +1,6 @@
 pkgbase = tephro-client-bin
 	pkgdesc = Self-hosted group chat client: text, voice, video and screen sharing (release build)
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://tephro.chat
 	install = tephro-client.install
@@ -24,7 +24,7 @@ pkgbase = tephro-client-bin
 	conflicts = tephro-client
 	options = !strip
 	options = !debug
-	source = tephro-client_0.22.1_amd64.deb::https://gitlab.com/encenillo/tephro/-/releases/client%2Fv0.22.1/downloads/tephro-client_0.22.1_amd64.deb
-	sha256sums = c6fe9c5d534a0998c65302a228aca6fef32e18322c6c43b06028548813923d64
+	source = tephro-client_0.23.0_amd64.deb::https://gitlab.com/encenillo/tephro/-/releases/client%2Fv0.23.0/downloads/tephro-client_0.23.0_amd64.deb
+	sha256sums = cdb9f2b895521efcf3910b4a26050f4722a97d43b6a7a979864d79954a47d5e8
 
 pkgname = tephro-client-bin
