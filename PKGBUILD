@@ -1,7 +1,7 @@
 # Maintainer: mizorewww <mizorewww@users.noreply.github.com>
 
 pkgname=gdirect-desktop-git
-pkgver=0.13.1.r1.g08a9476
+pkgver=0.13.2.r1.g987580c
 pkgrel=1
 pkgdesc="Desktop client for gdirect: browse, transfer and mount Google Drive"
 arch=('x86_64')
@@ -37,11 +37,9 @@ provides=('gdirect-desktop')
 conflicts=('gdirect-desktop')
 source=(
   "gdirect::git+https://github.com/mizorewww/gdirect.git"
-  "gpui-kit-material::git+https://github.com/mizorewww/gpui-kit-material.git"
   "aria2-1.37.0.tar.xz::https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   '60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b'
 )
@@ -56,10 +54,6 @@ prepare() {
   cd "${srcdir}/gdirect"
   mkdir -p target/vendor
   cp "${srcdir}/aria2-1.37.0.tar.xz" target/vendor/
-
-  local kit_rev
-  kit_rev="$(tr -d '[:space:]' < desktop/gpui-kit-material.rev)"
-  git -C "${srcdir}/gpui-kit-material" checkout --force "${kit_rev}"
 
   cd desktop
   export RUSTUP_TOOLCHAIN=stable
