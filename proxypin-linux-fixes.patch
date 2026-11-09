@@ -1,3 +1,118 @@
+diff --git a/lib/network/bin/server.dart b/lib/network/bin/server.dart
+index 597278e..81b4cd3 100644
+--- a/lib/network/bin/server.dart
++++ b/lib/network/bin/server.dart
+@@ -108,7 +108,10 @@ class ProxyServer {
+       logger.i("listen on $port");
+       this.server = server;
+       if (configuration.enableSystemProxy) {
+-        setSystemProxyEnable(true);
++        // 设置系统代理失败（如桌面环境不支持/命令缺失）不应影响代理本体是否可用。
++        setSystemProxyEnable(true).catchError((Object e) {
++          logger.w('enable system proxy failed: $e');
++        });
+       }
+ 
+       //初始化证书
+@@ -125,7 +128,12 @@ class ProxyServer {
+     }
+ 
+     if (configuration.enableSystemProxy) {
+-      await setSystemProxyEnable(false);
++      // 恢复系统代理失败也要继续关闭监听，否则会出现「界面显示已停止、端口还在监听」。
++      try {
++        await setSystemProxyEnable(false);
++      } catch (e) {
++        logger.w('restore system proxy failed, stopping listener anyway: $e');
++      }
+     }
+     logger.i("stop on $port");
+     await server?.stop();
+diff --git a/lib/network/util/system_proxy.dart b/lib/network/util/system_proxy.dart
+index 9f9b2f4..9bf85ed 100644
+--- a/lib/network/util/system_proxy.dart
++++ b/lib/network/util/system_proxy.dart
+@@ -371,16 +371,77 @@ class WindowsSystemProxy extends SystemProxy {
+ }
+ 
+ class LinuxSystemProxy extends SystemProxy {
++  static const String _schema = 'org.gnome.system.proxy';
++
++  /// Plasma 6 只提供 kwriteconfig6（kwriteconfig5 已被移除），而 proxy_manager 0.0.3
++  /// 在 XDG_CURRENT_DESKTOP=KDE 时写死调用 kwriteconfig5，会抛 ProcessException：
++  /// 表现为「点停止后提示失败，但代理其实还在监听」，设置系统代理时也会异步抛错。
++  /// 这里自己写 KIO 的配置并做版本兼容。
++  static Future<void> _kdeConfig(String key, String value) async {
++    final desktop = Platform.environment['XDG_CURRENT_DESKTOP'] ?? '';
++    if (!desktop.toUpperCase().contains('KDE')) {
++      return;
++    }
++
++    final home = Platform.environment['HOME'];
++    for (final tool in const ['kwriteconfig6', 'kwriteconfig5']) {
++      try {
++        final result = await Process.run(tool, [
++          '--file',
++          '$home/.config/kioslaverc',
++          '--group',
++          'Proxy Settings',
++          '--key',
++          key,
++          value,
++        ]);
++        if (result.exitCode == 0) {
++          return;
++        }
++        logger.w('$tool $key=$value exits with ${result.exitCode}: ${result.stderr}');
++      } on ProcessException {
++        // 该版本不存在，试下一个
++      }
++    }
++    logger.w('kwriteconfig6/5 not found, skip KDE proxy setting ($key)');
++  }
++
++  static Future<void> _gsettings(List<String> args) async {
++    try {
++      final result = await Process.run('gsettings', args);
++      if (result.exitCode != 0) {
++        logger.w('gsettings ${args.join(' ')} failed: ${result.stderr}');
++      }
++    } on ProcessException catch (e) {
++      logger.w('gsettings not available: $e');
++    }
++  }
++
+   @override
+   Future<void> _setSystemProxy(int port, bool sslSetting, String proxyPassDomains) async {
+-    ProxyManager manager = ProxyManager();
++    await _gsettings(['set', _schema, 'mode', 'manual']);
++    await _gsettings(['set', '$_schema.http', 'host', '127.0.0.1']);
++    await _gsettings(['set', '$_schema.http', 'port', '$port']);
++    if (sslSetting) {
++      await _gsettings(['set', '$_schema.https', 'host', '127.0.0.1']);
++      await _gsettings(['set', '$_schema.https', 'port', '$port']);
++    }
+ 
+-    await manager.setAsSystemProxy(ProxyTypes.http, "127.0.0.1", port);
+-    if (sslSetting) await manager.setAsSystemProxy(ProxyTypes.https, "127.0.0.1", port);
++    await _kdeConfig('ProxyType', '1');
++    await _kdeConfig('httpProxy', 'http://127.0.0.1:$port');
++    if (sslSetting) {
++      await _kdeConfig('httpsProxy', 'http://127.0.0.1:$port');
++    }
+ 
+     SystemProxy.setProxyPassDomains(proxyPassDomains);
+   }
+ 
++  @override
++  Future<void> _setProxyEnable(bool proxyEnable, bool sslSetting) async {
++    await _gsettings(['set', _schema, 'mode', 'none']);
++    await _kdeConfig('ProxyType', '0');
++  }
++
+   ///linux 获取代理
+   @override
+   Future<ProxyInfo?> _getSystemProxy(ProxyTypes types) async {
 diff --git a/lib/ui/desktop/ssl/cert_installer.dart b/lib/ui/desktop/ssl/cert_installer.dart
 index 2264fb4..681f833 100644
 --- a/lib/ui/desktop/ssl/cert_installer.dart
