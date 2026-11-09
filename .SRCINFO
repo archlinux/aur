@@ -1,6 +1,6 @@
 pkgbase = swiss-army-knife
 	pkgdesc = A collection of small but powerful command-line tools
-	pkgver = 1.1.0.5
+	pkgver = 1.2.0.0
 	pkgrel = 1
 	url = https://github.com/flajann2/swiss-army-knife
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = swiss-army-knife
 	makedepends = cabal-install
 	makedepends = zlib
 	makedepends = libgmp-static
-	source = swiss-army-knife-1.1.0.5.tar.gz::https://hackage.haskell.org/package/swiss-army-knife-1.1.0.5/swiss-army-knife-1.1.0.5.tar.gz
-	sha256sums = 940b528ff9c792bab000acceac3b40f59c9febd5988f40fe47a15d44d91febb1
+	source = swiss-army-knife-1.2.0.0.tar.gz::https://hackage.haskell.org/package/swiss-army-knife-1.2.0.0/swiss-army-knife-1.2.0.0.tar.gz
+	sha256sums = 7d102c1382e67708c5b5818eabef8af14e455ead37d82e313bc40796fd4ee008
 
 pkgname = swiss-army-knife
