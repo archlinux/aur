@@ -1,18 +1,9 @@
 pkgbase = ssprea-nvidia-control-git
-	pkgdesc = GUI NVidia GPU overclock, power limit and fan manager
-	pkgver = 1.1.10.r97.gcc73e95
-	pkgrel = 6
-	url = https://github.com/ssprea/ssprea-nvidia-control
-	install = snvctl.install
-	arch = x86_64
-	license = unknown
-	makedepends = git
-	makedepends = make
-	makedepends = dotnet-sdk-10.0
-	makedepends = dotnet-targeting-pack-10.0
-	makedepends = aspnet-targeting-pack-10.0
-	options = !strip
-	source = git+https://github.com/ssprea/ssprea-nvidia-control.git
-	sha256sums = SKIP
+	pkgdesc = Transitional package for the renamed slimit-gpu package
+	pkgver = 2.0.0
+	pkgrel = 20
+	url = https://github.com/ssprea/slimit
+	arch = any
+	depends = slimit-gpu-git
 
 pkgname = ssprea-nvidia-control-git

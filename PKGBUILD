@@ -1,57 +1,21 @@
+# Maintainer: ssprea
 
-# Maintainer: ssprea <ssprea@proton.me>
-_pkgname=ssprea-nvidia-control
-pkgname=${_pkgname}-git
-pkgver=1.1.10.r97.gcc73e95
-pkgrel=6
-epoch=
-pkgdesc="GUI NVidia GPU overclock, power limit and fan manager"
-arch=('x86_64')
-url="https://github.com/ssprea/ssprea-nvidia-control"
-license=('unknown')
-groups=()
-depends=()
-makedepends=(
-	'git'
-	'make'
-	'dotnet-sdk-10.0'
-	'dotnet-targeting-pack-10.0'
-	'aspnet-targeting-pack-10.0'
-)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!strip)
-install=snvctl.install
-changelog=
-source=("git+$url.git")
-noextract=()
-sha256sums=()
-validpgpkeys=()
-
-pkgver() {
-
-	cd "$_pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
- 	cd "$_pkgname"
-	make -j1 publish
-}
-
+pkgname=ssprea-nvidia-control-git
+pkgver=2.0.0
+pkgrel=20
+pkgdesc='Transitional package for the renamed slimit-gpu package'
+arch=('any')
+url='https://github.com/ssprea/slimit'
+# If your previous PKGBUILD declared a license, keep that same license array here.
+depends=('slimit-gpu-git')
 
 package() {
-	cd "$_pkgname"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/doc/$pkgname/README" <<'EOF_README'
+This is a transitional package.
 
-	make DESTDIR="$pkgdir/" installcli
-	make DESTDIR="$pkgdir/" installgui
-	make DESTDIR="$pkgdir/" installdaemon
+The project has been renamed to sLimit and the Arch package is now
+called slimit-gpu-git. The slimit-gpu-git package is installed as a dependency.
+
+You can safely remove this transitional package after migration.
+EOF_README
 }
-
-
-
-sha256sums=('SKIP')
