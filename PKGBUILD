@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -24,11 +24,12 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'soapyairspy: Airspy support through SoapySDR'
             'soapysdrplay: SDRplay support through SoapySDR'
             'onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)'
+            'onair-avsplus: AVS+ (Guangdian) video for Chinese DTMB TV, decoded natively (dlopened at run time)'
             'faad2: HE-AAC SBR/PS decoding for DAB/DAB+ (dlopened at run time)'
             'libfdk-aac: xHE-AAC (USAC) decoding for DRM (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('87e48836ea9ba289f7f9c41530bf59eded9e9304a94778176df91e34bc1c89a1')
+sha256sums=('dd5480287f4e5b57893f2c136125e83bf6bf3a05ecbcf547d77bbcebc1eca9c0')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
