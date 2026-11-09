@@ -4,7 +4,7 @@ pkgname=(
   'cutecosmic-union-git'
 )
 pkgbase=cutecosmic-git
-pkgver=0.2.0.r7.ge83cbd2
+pkgver=0.2.0.r12.g707244c
 pkgrel=1
 pkgdesc="Qt platform theme for the COSMIC™ Desktop environment"
 arch=('x86_64')
@@ -15,13 +15,13 @@ depends=(
   'libstdc++'
   'qt6-base'
   'qt6-declarative'
-  'union'
 )
 makedepends=(
   'cargo'
   'cmake'
   'corrosion'
   'git'
+  'union'
 )
 source=('git+https://github.com/IgKh/cutecosmic.git')
 sha256sums=('SKIP')
@@ -52,12 +52,6 @@ build() {
 }
 
 package_cutecosmic-git() {
-  depends=(
-    'libgcc'
-    'libstdc++'
-    'qt6-base'
-    'qt6-declarative'
-  )
   optdepends=('cutecosmic-union-git: KDE Union plugin')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
