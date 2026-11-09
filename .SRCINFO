@@ -1,8 +1,9 @@
 pkgbase = mtgpu-s30-dkms
-	pkgdesc = Experimental Moore Threads 3.1.0 kernel port and firmware for MTT S30
+	pkgdesc = Moore Threads MTT S30 kernel module and firmware (Linux 7.x+ DKMS port)
 	pkgver = 3.1.0
 	pkgrel = 2
-	url = https://www.mthreads.com/product/drivers
+	url = https://github.com/cont1nu1ty/mtt-s30-arch
+	install = mtgpu-s30-dkms.install
 	arch = x86_64
 	license = GPL-2.0-only
 	license = MIT

@@ -3,9 +3,10 @@
 pkgname=mtgpu-s30-dkms
 pkgver=3.1.0
 pkgrel=2
-pkgdesc='Experimental Moore Threads 3.1.0 kernel port and firmware for MTT S30'
+pkgdesc='Moore Threads MTT S30 kernel module and firmware (Linux 7.x+ DKMS port)'
 arch=('x86_64')
-url='https://www.mthreads.com/product/drivers'
+install='mtgpu-s30-dkms.install'
+url='https://github.com/cont1nu1ty/mtt-s30-arch'
 license=('GPL-2.0-only' 'MIT' 'LicenseRef-MooreThreads')
 depends=('dkms')
 makedepends=('python' 'libarchive' 'patch')
