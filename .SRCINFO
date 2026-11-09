@@ -1,6 +1,6 @@
 pkgbase = pacman-tmpfs
 	pkgdesc = Wrapper for pacman, yay, paru using tmpfs for caches and auto cleaning.
-	pkgver = 2026.11.09
+	pkgver = 2026.11.10
 	pkgrel = 1
 	url = https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=pacman-tmpfs
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = pacman-tmpfs
 	optdepends = paru: Feature packed AUR helper
 	options = !debug
 	source = pacman-tmpfs.sh
-	sha256sums = 35334e54a08555760a37b133eea766289d1e41ab2517ba0eb7838dd730d25e54
+	sha256sums = 0eaede6a64ee7523fc5bb12f90140fbde36547945ff951a97acb9adc8329603f
 
 pkgname = pacman-tmpfs

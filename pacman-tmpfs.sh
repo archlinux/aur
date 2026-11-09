@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# v35 новая логика
+# v38 новая логика
 #    если есть в  аргументах --default то
 #       main: удаляем слово --default из аргументов
 #       _run_packer: получаем sudo method удаляем ссылки /usr/local/bin/<links to pacman-tmpfs.sh>
@@ -122,7 +122,9 @@ function _clear_all_local_caches ()
     say ':: cleaning local caches:'
 
     local -a caches_path_arr=(
-        /var/cache/pacman/pkg/*
+        ${ pacman-conf CacheDir; }*
+        ${ pacman-conf DBPath;   }db.lck
+        ${ pacman-conf LogFile;  }
     )
 
     # get users homes from https://www.cyberciti.biz/faq/linux-list-users-command/
@@ -184,7 +186,6 @@ function _check_packer_exist ()
         exit 1
     fi
 }
-
 
 #-------------------------------------------------------------------------------
 function _get_available_sudo_method ()

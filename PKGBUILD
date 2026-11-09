@@ -33,7 +33,7 @@ Usage:
     /etc/{pacman.conf,makepkg.conf} and the standard caches on ssd/hdd (wish a long life!):
     ~/.cache/yay/ ~/.cache/paru/ /var/cache/pacman/pkg/
     They will not be automatically cleared with --default option!
-    For cleanup all local caches for all users do:
+    For cleanup database lock file, logs, all local caches for all users do, for example:
         yay -Sc
         # or
         sudo pacman -Sc
@@ -42,7 +42,7 @@ Usage:
 #---------------------------------------------------------------------------------------------
 
 pkgname=pacman-tmpfs
-pkgver=2026.11.09
+pkgver=2026.11.10
 pkgrel=1
 
 pkgdesc='Wrapper for pacman, yay, paru using tmpfs for caches and auto cleaning.'
@@ -58,7 +58,7 @@ options=('!debug')
 source=(
     pacman-tmpfs.sh     # хранится в git aur. в source пересчитывает sha256sums
 )
-sha256sums=('35334e54a08555760a37b133eea766289d1e41ab2517ba0eb7838dd730d25e54')
+sha256sums=('0eaede6a64ee7523fc5bb12f90140fbde36547945ff951a97acb9adc8329603f')
 
 #---------------------------------------------------------------------------------------------
 package() {
