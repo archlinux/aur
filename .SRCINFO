@@ -1,0 +1,11 @@
+pkgbase = uq-hyprland-pin
+	pkgdesc = Pins Hyprland to the release series uQ is tested against
+	pkgver = 0.56.2
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/uq
+	arch = any
+	license = MIT
+	depends = hyprland>=0.56.2
+	depends = hyprland<0.58.0
+
+pkgname = uq-hyprland-pin
