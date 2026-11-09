@@ -1,0 +1,19 @@
+pkgbase = python-smithy-checksums
+	pkgdesc = Checksum algorithms for Smithy tooling, with native acceleration.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/smithy-lang/smithy-python/tree/develop/packages/smithy-checksums
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = gcc-libs
+	depends = glibc
+	source = smithy-checksums-0.1.0.tar.gz::https://github.com/smithy-lang/smithy-python/archive/refs/tags/smithy-checksums/v0.1.0.tar.gz
+	sha256sums = 8933605127686a1e46c00c25f13641c94d2f5b37fbc88b2c1ae54791aaab63b6
+
+pkgname = python-smithy-checksums
