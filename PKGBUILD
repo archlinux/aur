@@ -16,38 +16,45 @@ sha256sums=('SKIP')
 options=('!lto') # build fails with lto enabled
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+    
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --workspace --exclude pipeweaver-app --release --locked
+    cd "${srcdir}/${_pkgname}"
+    
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --workspace --exclude pipeweaver-app --release --frozen
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-
-  install -d "${pkgdir}/usr/bin"
-  install -m755 "target/release/pipeweaver-daemon" "${pkgdir}/usr/bin/pipeweaver-daemon"
-  install -m755 "target/release/pipeweaver-client" "${pkgdir}/usr/bin/pipeweaver-client"
-
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -m644 daemon/resources/icons/pipeweaver.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pipeweaver.svg"
-  install -d "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
-  install -m644 daemon/resources/icons/pipeweaver.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/pipeweaver.png"
-  install -d "${pkgdir}/usr/share/pixmaps"
-  install -m644 daemon/resources/icons/pipeweaver-large.png "${pkgdir}/usr/share/pixmaps/pipeweaver.png"
-  install -d "${pkgdir}/usr/share/applications"
-  install -m644 daemon/resources/desktop/pipeweaver.desktop "${pkgdir}/usr/share/applications/pipeweaver.desktop"
+    cd "${srcdir}/${_pkgname}"
+    
+    install -d "${pkgdir}/usr/bin"
+    install -m755 "target/release/pipeweaver-daemon" "${pkgdir}/usr/bin/pipeweaver-daemon"
+    install -m755 "target/release/pipeweaver-client" "${pkgdir}/usr/bin/pipeweaver-client"
+    
+    install -d "${pkgdir}/usr/share/doc/${pkgname}"
+    install -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -m644 daemon/resources/icons/pipeweaver.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pipeweaver.svg"
+    install -d "${pkgdir}/usr/share/icons/hicolor/48x48/apps"
+    install -m644 daemon/resources/icons/pipeweaver.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/pipeweaver.png"
+    install -d "${pkgdir}/usr/share/pixmaps"
+    install -m644 daemon/resources/icons/pipeweaver-large.png "${pkgdir}/usr/share/pixmaps/pipeweaver.png"
+    install -d "${pkgdir}/usr/share/applications"
+    install -m644 daemon/resources/desktop/pipeweaver.desktop "${pkgdir}/usr/share/applications/pipeweaver.desktop"
 }
 
 
