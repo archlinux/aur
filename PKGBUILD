@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -16,14 +16,10 @@ optdepends=(
   "yt-dlp: automatic video downloads"
 )
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('78f815fde73b60b826152e901298089e1cf132e1c0c9af358e6a95340cb7dfe8')
+sha256sums=('0b1b1ad56fefe08703804a772ff3664cde2463de74f6f34a0e5f8dcd21f44917')
 
 prepare() {
   cd $pkgname
-
-  # fix failing test, remove on next release
-  git cherry-pick d907fe70302ea13e0adece539b623cd5a0559ee4
-
   export GOPATH="${srcdir}/gopath"
   go mod download
 }
