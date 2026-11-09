@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kimi Code（中国）
+Comment=Kimi Code 桌面版（国内版，固定中国大陆 API）
+Exec=kimi-code-cn %U
+Terminal=false
+Type=Application
+Icon=kimi-code-cn
+StartupWMClass=kimi-code-cn
+MimeType=x-scheme-handler/kimi-code-cn;
+Categories=Development;
