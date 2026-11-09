@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery <admin@donutsdelivery.online>
 pkgname=donutcleaner
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="System maintenance and package dependency manager for Linux, GTK4 and Rust (formerly SysClean)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('donutcleaner-bin' 'sysclean')
 replaces=('sysclean')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('28adbe68f37083125f0c2dbb73e86d16c0fb073550dcea323d9582a06ad8ba2d')
+sha256sums=('9691467abfc7fdad9a0bc4e7fe4df6d0f50935bb92aea682cac39c27d93ce8e8')
 
 prepare() {
     cd "Smart-Cleaner-$pkgver"
