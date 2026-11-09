@@ -1,15 +1,15 @@
 pkgbase = viff-bin
 	pkgdesc = A lightweight, native Git client, with a read-only project browser, an English/Chinese interface, and optional AI-written commit messages.
-	pkgver = 0.3.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/1lck/viff
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = viff=0.3.0
+	provides = viff=0.4.2
 	conflicts = viff
-	source = viff-0.3.0.deb::https://github.com/1lck/viff/releases/download/v0.3.0/viff-v0.3.0-linux-amd64.deb
-	sha256sums = aeacda73a2e14ce7025cbf9ed22cb7fe3481400bd233786d7f46f96ab6e31c74
+	source = viff-0.4.2.deb::https://github.com/1lck/viff/releases/download/v0.4.2/viff-v0.4.2-linux-amd64.deb
+	sha256sums = ee8a2844e4a404d929078ccc7f30e08ee4dcae56726458681db17202260d4649
 
 pkgname = viff-bin

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=viff-bin
 _pkgname=Viff
-pkgver=0.3.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A lightweight, native Git client, with a read-only project browser, an English/Chinese interface, and optional AI-written commit messages."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
     'hicolor-icon-theme'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-amd64.deb")
-sha256sums=('aeacda73a2e14ce7025cbf9ed22cb7fe3481400bd233786d7f46f96ab6e31c74')
+sha256sums=('ee8a2844e4a404d929078ccc7f30e08ee4dcae56726458681db17202260d4649')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
 	while IFS= read -r -d '' _icon; do
