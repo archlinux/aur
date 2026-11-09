@@ -12,6 +12,6 @@ pkgbase = waka
 	optdepends = curl: for waka fetch
 	options = !debug
 	source = waka-0.1.6.tar.gz::https://github.com/Shisones/Waka/archive/v0.1.6.tar.gz
-	sha256sums = 447db54c97851e4dffcd8d2b3dbddbcf83868347f10fdd4a705155ebbe06d13c
+	sha256sums = aeaa98e4e01b8b6052443a7cb7a2959b8bc1244db53f5a82eb3a7d96d1da0a26
 
 pkgname = waka
