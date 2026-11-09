@@ -1,7 +1,7 @@
 # Maintainer: Chris <goabonga@pm.me>
 
 pkgname=bluetooth-gpd
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Linux Bluetooth manager with a daemon, a terminal interface, SBC audio and an ALSA plugin'
 arch=('x86_64')
@@ -14,9 +14,10 @@ depends=('alsa-lib'
          'sbc')
 makedepends=('pkgconf')
 options=('!debug')
+backup=('etc/alsa/conf.d/99-bluetooth.conf')
 install=bluetooth-gpd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1dbf76a50fe4e710f424cb4b82c922a3d41415edfb8f85d571038297710b7abe')
+sha256sums=('1d91fbb7e122c4c874200d6868747424d910b48b6dd5dc66c87c2b0ff08f01bc')
 
 build() {
   cd "$pkgname-$pkgver"

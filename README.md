@@ -36,7 +36,7 @@ receives.
 | `/usr/lib/udev/rules.d/71-bluetooth-uhid.rules` | gives `/dev/uhid` to the group `bluetooth` |
 | `/usr/lib/modules-load.d/bluetooth-daemon.conf` | loads the `uhid` module at boot |
 | `/usr/lib/alsa-lib/libasound_module_pcm_bluetooth.so` | the `bluetooth` ALSA plugin |
-| `/usr/share/alsa/alsa.conf.d/99-bluetooth.conf` | the PCMs `bluetooth_out` and `bluetooth_in` |
+| `/etc/alsa/conf.d/99-bluetooth.conf` | the PCMs `bluetooth_out` and `bluetooth_in`, kept on upgrade |
 
 The keys, the control protocol and the audio PCMs are described in the
 [upstream README](https://github.com/goabonga/bluetooth-gpd#readme).

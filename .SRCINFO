@@ -1,6 +1,6 @@
 pkgbase = bluetooth-gpd
 	pkgdesc = Linux Bluetooth manager with a daemon, a terminal interface, SBC audio and an ALSA plugin
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/goabonga/bluetooth-gpd
 	install = bluetooth-gpd.install
@@ -13,7 +13,8 @@ pkgbase = bluetooth-gpd
 	depends = ncurses
 	depends = sbc
 	options = !debug
-	source = bluetooth-gpd-0.1.0.tar.gz::https://github.com/goabonga/bluetooth-gpd/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 1dbf76a50fe4e710f424cb4b82c922a3d41415edfb8f85d571038297710b7abe
+	backup = etc/alsa/conf.d/99-bluetooth.conf
+	source = bluetooth-gpd-0.1.1.tar.gz::https://github.com/goabonga/bluetooth-gpd/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 1d91fbb7e122c4c874200d6868747424d910b48b6dd5dc66c87c2b0ff08f01bc
 
 pkgname = bluetooth-gpd
