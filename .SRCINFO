@@ -1,0 +1,18 @@
+pkgbase = chromium-extension-xbrowsersync
+	pkgdesc = xBrowserSync: free, open-source, anonymous and secure bookmark sync (Chromium extension, loaded unpacked)
+	pkgver = 1.5.2
+	pkgrel = 2
+	url = https://www.xbrowsersync.org
+	install = chromium-extension-xbrowsersync.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = jq
+	makedepends = openssl
+	optdepends = chromium: a Chromium build that still supports Manifest V2 extensions
+	noextract = xbrowsersync-1.5.2-chrome.zip
+	source = xbrowsersync-1.5.2-chrome.zip::https://github.com/xbrowsersync/app/releases/download/v1.5.2/xbrowsersync_1.5.2_chrome.zip
+	source = xbrowsersync.pem
+	sha256sums = b5b50654fbc9eac4f8a40b5e50c9e6aa077ef55bc958b91452753cf41c26ef04
+	sha256sums = 10b0a0b5575f1c5b3cd94b3cd5420a380857e56bde59edb4d1835bcc8a865998
+
+pkgname = chromium-extension-xbrowsersync
