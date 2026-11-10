@@ -1,0 +1,31 @@
+post_install() {
+  cat <<'EOF'
+==> WowType 已安装。
+
+  1) 把 WowType 加进 fcitx5 的输入法列表（二选一）：
+     图形界面： fcitx5-configtool → 左下「添加」→「WowType 拼音」
+     命令行：   wowtype-config --add-to-group      # fcitx5 在跑时会自动重启它
+  2) Ctrl+空格 或 Ctrl+Shift 切到 WowType，输入 nihao 试一句。
+  3) 设置界面在应用菜单的「WowType 设置」（wowtype-config）。
+
+  提示——
+  · 环境变量建议（Hyprland/Sway 之外的 X11、Qt 程序尤其需要）：
+      GTK_IM_MODULE=fcitx  QT_IM_MODULE=fcitx  XMODIFIERS=@im=fcitx
+  · GNOME 下候选框需要 kimpanel 扩展；本包已随附 wowtype 主题与 GNOME Shell 扩展。
+  · 设置界面要 python-gobject / gtk4 / libadwaita；词库首次加载会在
+    ~/.cache/wowtype/ 生成缓存，第二次启动明显更快。
+  · Arch 上没有 im-config，别再照 Ubuntu 教程跑它。
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  cat <<'EOF'
+==> 卸载 WowType。
+  如果你的 fcitx5 输入法列表里还留着 WowType，下次启动 fcitx5 会报插件缺失；
+  先运行 wowtype-config（若还能用）把它删掉，或手动编辑 ~/.config/fcitx5/profile。
+EOF
+}

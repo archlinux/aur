@@ -1,0 +1,61 @@
+--- a/settings/wowtype-config
++++ b/settings/wowtype-config
+@@ -665,7 +665,7 @@
+     add("")
+     add("## 版本")
+     add(f"设置界面：{current_version()}")
+-    add(f"{ENGINE_PKG}：{dpkg_version(ENGINE_PKG) or '没用 deb 装'}")
++    add(f"{ENGINE_PKG}：{installed_version() or '没用系统包管理器装'}")
+     if dpkg_version(DATA_PKG):  # 0.3.3 及以前词库是单独的包
+         add(f"{DATA_PKG}：{dpkg_version(DATA_PKG)}")
+     try:
+@@ -799,6 +799,22 @@
+     return version if out.returncode == 0 and status.endswith(" installed") else None
+ 
+ 
++def pacman_version(package):
++    """已装 pacman 包的版本；没装（或不是 Arch 系）返回 None。"""
++    try:
++        out = subprocess.run(["pacman", "-Q", package],
++                             capture_output=True, text=True, timeout=10)
++    except (OSError, subprocess.SubprocessError):
++        return None
++    parts = out.stdout.split()
++    return parts[1] if out.returncode == 0 and len(parts) >= 2 else None
++
++
++def installed_version():
++    """不管用 deb 还是 pacman 装的，返回已装版本；都没有返回 None。"""
++    return pacman_version(ENGINE_PKG) or dpkg_version(ENGINE_PKG)
++
++
+ def distro_tag():
+     """和发布包文件名里的一样：ubuntu26.04、debian13。"""
+     info = {}
+@@ -908,7 +924,10 @@
+ def plan_update(release):
+     """要下载的包：[(文件名, 地址)]，和一段说明。装不了时列表为空，说明里写原因。"""
++    if pacman_version(ENGINE_PKG):
++        return [], ("WowType 是用 pacman（AUR）装的，"
++                    "请用你的 AUR 助手更新，例如 yay -Syu wowtype")
+     if dpkg_version(ENGINE_PKG) is None:
+-        return [], "当前不是用 deb 包安装的（比如从源码装的），请到下载页手动更新"
++        return [], "当前不是用系统包管理器安装的（比如从源码装的），请到下载页手动更新"
+     distro = distro_tag()
+     name = f"wowtype_{release['version']}_{distro}_{deb_arch()}.deb"
+     if name not in release["assets"]:
+@@ -1438,10 +1457,12 @@
+     def build_update(self):
+         page = Adw.PreferencesPage()
+         group = Adw.PreferencesGroup(title="版本")
+-        installed = dpkg_version(ENGINE_PKG)
++        installed = installed_version()
+         self.version_row = Adw.ActionRow(
+             title=f"当前版本 {current_version()}",
+-            subtitle="deb 包安装" if installed else "不是用 deb 包安装的，更新要手动装")
++            subtitle=("pacman 包安装" if pacman_version(ENGINE_PKG)
++                      else "deb 包安装" if installed
++                      else "不是用系统包管理器安装的，更新要手动装"))
+         group.add(self.version_row)
+ 
+         self.latest_row = Adw.ActionRow(title="正在检查更新…")
