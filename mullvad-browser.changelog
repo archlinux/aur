@@ -1,3 +1,11 @@
+Mullvad Browser 16.0.1 - November 10 2026
+ * All Platforms
+   * Updated Firefox to 153.7.0esr
+   * Updated NoScript to 13.6.38.1984
+   * Updated uBlock Origin to 1.76.0
+   * Bug 590: Rebase Mullvad Browser onto 153.7.0esr [mullvad-browser]
+   * Bug 45442: Backport Security Fixes from Firefox 160 [tor-browser]
+
 Mullvad Browser 16.0 - October 28 2026
  * All Platforms
    * Updated Firefox to 153.6.0esr
@@ -181,6 +189,10 @@ Mullvad Browser 16.0 - October 28 2026
      * Bug 41632: Ship Linux aarch64 builds in Alpha Release Channel [tor-browser-build]
      * Bug 41639: Remove linux-arm target [tor-browser-build]
      * Bug 41640: Clean the GCC config file [tor-browser-build]
+
+Mullvad Browser 15.0.26 - October 20 2026
+ * All Platforms
+   * Bug 45397: Update CA intermediates and other settings dumps [tor-browser]
 
 Mullvad Browser 15.0.25 - October 13 2026
  * All Platforms
