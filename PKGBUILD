@@ -3,8 +3,8 @@
 pkgname="libraven"
 pkgdesc="Lightweight multithreaded GUI library in C for editors and tools"
 url="https://github.com/oscar-soirey/Raven"
-license=("Apache-2.0" "OFL-1.1" "MIT OR Unlicense")
-pkgver="0.2.0"
+license=("Apache-2.0" "OFL-1.1" "MIT OR Unlicense" "Zlib" "MIT")
+pkgver="0.2.2"
 pkgrel=1
 arch=("x86_64")
 depends=(
@@ -13,9 +13,13 @@ depends=(
     "vulkan-icd-loader"
 )
 optdepends=(
+    "wayland: native Wayland windows"
+    "libxkbcommon: native Wayland windows"
+    "libdecor: window decorations on Wayland compositors without server-side ones"
+    "libxi: touch and pen input on X11"
     "zenity: system file dialogs"
     "kdialog: system file dialogs"
-    "dbus: accessibility through AT-SPI"
+    "dbus: accessibility through AT-SPI, notifications and tray"
     "curl: remote images in Markdown"
     "chromium: web pages (raven_web)"
     "python: Python bindings"
@@ -27,42 +31,38 @@ makedepends=(
 )
 checkdepends=(
     "python"
+    "wayland"
+    "libxkbcommon"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=("54e27d1bfa7f195d477dc82a6f8abca39bad3bc14e0eb5fae04671875cd1756382288a5b6fc8ce1549b59dfaea4da1d627ebade1459fc0aa71f4617a4b77089f")
-
-prepare() {
-    cd "Raven-$pkgver"
-
-    sed -i 's|${PROJECT_SOURCE_DIR}/include|/usr/include|' tools/CMakeLists.txt
-}
+b2sums=("ba58d97366b7f9dbfb552691ef266d6840743712188127de4d9f58f507cbd49568a70575e9e28f9dfa4fc43a45e990ce6bdf028c200d4c0356ff68dc598ccaf4")
 
 build() {
-    cd "Raven-$pkgver"
-
-    cmake -B build -S . -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
+    CFLAGS+=" -DNDEBUG"
+    cmake -B build -S "Raven-$pkgver" -G Ninja \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DRAVEN_BUILD_SHARED=ON \
         -DRAVEN_BUILD_TOOLS=ON \
         -DRAVEN_BUILD_TESTS=ON \
         -DRAVEN_BUILD_EXAMPLES=OFF \
-        -DRAVEN_FETCH_VULKAN_HEADERS=OFF
-    cmake --build build --parallel
+        -DRAVEN_WAYLAND=ON \
+        -DRAVEN_FETCH_VULKAN_HEADERS=OFF \
+        -Wno-dev
+    cmake --build build
 }
 
 check() {
-    cd "Raven-$pkgver"
-
-    mkdir -p build/share/raven
-    ln -sfn "$PWD/bindings" build/share/raven/bindings
     ctest --test-dir build --output-on-failure
 }
 
 package() {
+    DESTDIR="$pkgdir" cmake --install build
     cd "Raven-$pkgver"
 
-    DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 LICENSE NOTICE -t "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s /usr/share/raven/licenses "$pkgdir/usr/share/licenses/$pkgname/third_party"
+    local licenses="$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE NOTICE -t "$licenses"
+    install -Dm644 third_party/wayland-protocols/COPYING -t "$pkgdir/usr/share/raven/licenses/wayland-protocols"
+    install -Dm644 tools/designer/fonts/OFL-*.txt -t "$pkgdir/usr/share/raven/licenses/designer-fonts"
+    ln -s /usr/share/raven/licenses "$licenses/third_party"
 }
