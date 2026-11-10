@@ -1,20 +1,21 @@
 # Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=organicmaps
-pkgver=2026.06.29_3
+pkgver=2026.09.29_32
 _tag="${pkgver%%_*}-${pkgver##*_}-android"
 pkgrel=1
 pkgdesc="Offline Maps"
 arch=(x86_64)
 makedepends=(cmake jq gcc ninja mold)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
-  qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor hicolor-icon-theme libxinerama python)
+  qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor
+  hicolor-icon-theme libxinerama python)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
 license=("Apache-2.0")
 url="https://organicmaps.app"
 _source_url="https://github.com/organicmaps/organicmaps.git"
 source=(organicmaps.desktop)
-sha256sums=('a60443ee9a909b372f190ec8e1bde880fc2303da5d11261ef218e67c40c35c03')
+sha256sums=('a97b2d286c6f2d007552f6b28ed43b45db9d8f086e9f38d8b44b3a3ca7ba4030')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 prepare() {
   avail=$(df -P -B 1048576 $srcdir|awk 'NR>1 {print $4}')
@@ -36,8 +37,7 @@ prepare() {
       $src_url $pkgname
   fi
   if [ -n "$SOURCE_URL_REWRITER" ]; then
-    for submodule_path in $(git -C $pkgname submodule status|
-        awk '/icu/ || /harfbuzz/ || /expat/ {print $2}');
+    for submodule_path in $(git -C $pkgname submodule status|cut -d' ' -f2);
     do
       pin_commit=$(git -C $pkgname submodule status --cached $submodule_path|
         awk '{sub("^-",""); print $1}')
@@ -53,19 +53,19 @@ prepare() {
   fi
   cd $pkgname
   git -c protocol.file.allow=always submodule update --init --recursive --depth=1
-  rm -f 3party/boost/b2
-  bash ./configure.sh
 }
 build() {
   cd $pkgname
-  env CFLAGS="-fuse-ld=mold" CXXFLAGS="-fuse-ld=mold" CC=gcc CXX=g++ \
-    tools/unix/build_omim.sh -n $(nproc) -c -r desktop
+  unset LDFLAGS
+  export CFLAGS="-fuse-ld=mold" CXXFLAGS="-fuse-ld=mold" CC=gcc CXX=g++
+  cmake --preset release
+  cmake --build --preset release --target desktop
 }
 package() {
  install -dm755 "$pkgdir/usr/share/${pkgname}"
  cp -Lr "${pkgname}/data" "$pkgdir/usr/share/${pkgname}/"
- install -dm777 "$pkgdir/usr/share/${pkgname}/data/$(jq '.v' $pkgname/data/countries.txt)"
+ install -dm777 "$pkgdir/usr/share/${pkgname}/data/$(jq '.v' $pkgname/data/countries.json)"
  install -Dm644 "${pkgname}/android/.idea/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
- install -Dm755 "omim-build-release/OMaps" "$pkgdir/usr/bin/OMaps"
+ install -Dm755 "${pkgname}/build/release/OrganicMaps" "$pkgdir/usr/bin/OrganicMaps"
  install -Dm644 "organicmaps.desktop" -t "$pkgdir/usr/share/applications"
 }

@@ -1,6 +1,6 @@
 pkgbase = organicmaps
 	pkgdesc = Offline Maps
-	pkgver = 2026.06.29_3
+	pkgver = 2026.09.29_32
 	pkgrel = 1
 	url = https://organicmaps.app
 	arch = x86_64
@@ -34,6 +34,6 @@ pkgbase = organicmaps
 	conflicts = organicmaps-bin
 	conflicts = organicmaps-git
 	source = organicmaps.desktop
-	sha256sums = a60443ee9a909b372f190ec8e1bde880fc2303da5d11261ef218e67c40c35c03
+	sha256sums = a97b2d286c6f2d007552f6b28ed43b45db9d8f086e9f38d8b44b3a3ca7ba4030
 
 pkgname = organicmaps
