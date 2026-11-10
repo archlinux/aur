@@ -1,0 +1,26 @@
+pkgbase = swayprofile
+	pkgdesc = Switch sway power/performance profiles (refresh rate, power-profiles-daemon, LACT GPU, DND) manually, per window or on idle
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Syphdias/swayprofile
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-i3ipc
+	depends = sway
+	optdepends = python-dbus: power-profiles-daemon switching
+	optdepends = power-profiles-daemon: power profile switching
+	optdepends = swayidle: switching on idle
+	optdepends = swaync: do-not-disturb
+	optdepends = dunst: do-not-disturb
+	optdepends = mako: do-not-disturb
+	optdepends = lact: GPU control
+	optdepends = libnotify: desktop notifications
+	source = swayprofile-0.1.1.tar.gz::https://github.com/Syphdias/swayprofile/archive/v0.1.1.tar.gz
+	sha256sums = aeddde02e2fbbc9d57c82c2e79bbdbf1f3a111f47a357c80f6dc6d87a5622028
+
+pkgname = swayprofile
