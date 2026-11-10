@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-browser
-pkgver=2.9.10
+pkgver=2.9.11
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://github.com/hrzlgnm/mdns-browser"
 license=('MIT' 'OFL-1.1')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1' 'openssl')
 conflicts=('mdns-browser-bin')
-makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'nodejs' 'pnpm')
+makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'librsvg' 'base-devel' 'curl' 'rust' 'nodejs' 'pnpm')
 options=('!strip' '!emptydirs')
-source=("v2.9.10.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v2.9.10.tar.gz")
-sha256sums=('b9f7661e7a246120bc90326f6e62a52383dfba418ada62da42433fb6d1b7a311')
-_builddir="$pkgname-2.9.10"
+source=("v2.9.11.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v2.9.11.tar.gz")
+sha256sums=('c7620b57747d18bbcb0916b789d8f4aae2bcfa2f97e1e31855cf5130fba00d29')
+_builddir="$pkgname-2.9.11"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
     pnpm install --frozen-lockfile
