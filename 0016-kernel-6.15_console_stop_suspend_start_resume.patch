@@ -1,0 +1,35 @@
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2026-11-08 19:43:47.733031461 -0500
++++ b/driver/serial_core.c	2026-11-08 19:44:48.496106925 -0500
+@@ -2305,11 +2305,15 @@ int cti_uart_suspend_port(struct uart_dr
+ 
+ 	/*
+ 	 * Disable the console device before suspending.
+ 	 */
+ 	if (console_suspend_enabled && uart_console(uport))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,15,0))
+ 		console_stop(uport->cons);
++#else
++		console_suspend(uport->cons);
++#endif
+ 
+ 	if (console_suspend_enabled || !uart_console(uport))
+ 		uart_change_pm(state, UART_PM_STATE_OFF);
+ 
+ 	mutex_unlock(&port->mutex);
+@@ -2357,11 +2361,15 @@ int cti_uart_resume_port(struct uart_dri
+ 
+ 		if (console_suspend_enabled)
+ 			uart_change_pm(state, UART_PM_STATE_ON);
+ 		uport->ops->set_termios(uport, &termios, NULL);
+ 		if (console_suspend_enabled)
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,15,0))
+ 			console_start(uport->cons);
++#else
++			console_resume(uport->cons);
++#endif
+ 	}
+ #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,6,0))
+ 	if (port->flags & ASYNC_SUSPENDED) {
+ #else
+ 	if( tty_port_suspended(port)){

@@ -17,7 +17,7 @@ _opt_DKMS=1            # This can be toggled between installs
 set -u
 pkgname='connecttech-cti-serial'
 pkgver='1.46'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='https://connecttech.com/product/pci-express-bluestorm-express/'
@@ -45,6 +45,10 @@ source=(
   '0012-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
   '0013-kernel-6.10-platform_driver-remove-void-return.patch'
   '0014-kernel-6.13-irq_get_nr_irqs.patch'
+  '0015-kernel-6.14-device_find_child-const.patch'
+  '0016-kernel-6.15_console_stop_suspend_start_resume.patch'
+  '0017-kernel-6.16-from_timer.patch'
+  '0018-kernel-6.15-del_timer_sync.patch'
 )
 md5sums=('6e56f2b93611e4b0f367aec3a430a8f0'
          '9a93004eac4487957ea4a822cc1167a1'
@@ -59,7 +63,11 @@ md5sums=('6e56f2b93611e4b0f367aec3a430a8f0'
          'b76bc6e1f0bfe9353e9776c099f73daa'
          '0c10b25ea11b95873afb29663a657375'
          'ebe2874c60ae0c9b3b6ad06af269034f'
-         '8ecd628325af9a9015284a0f9569a9b6')
+         '8ecd628325af9a9015284a0f9569a9b6'
+         '58c8912bd64e8b754c6036ee60922243'
+         '8fc9c95a01a771f662e4daa65dc5a0a2'
+         '7165bce7e94d3f16940d42f77367e4fa'
+         'f4750967bf7c1fba5ad2108bd2daa600')
 sha256sums=('7c1d8ade5e605bc01f80e2ca0705d048b3c83e32e68422b836f32accb436925f'
             '1f569305d4478a0dd5e1a99f0f76bb39a7d70b3cf2480320fb57a062f0e1141d'
             'ccbc1d7cc70b7473a8c73609230a3b2fa28235e4f61d70b62049d126e0183449'
@@ -73,7 +81,11 @@ sha256sums=('7c1d8ade5e605bc01f80e2ca0705d048b3c83e32e68422b836f32accb436925f'
             '453f6a01b041e6f598b2de4467e3f346aaaa81cac041a5c02315f8b48aaff12a'
             '24cc0ed9d03806858ebdc34b1d95e3f8b5e18b69753dd489068297c7eae3d3b9'
             'a20bbf93ba04c297005f8976309601cb267c3a2b1e551a43a477c16348bfc159'
-            '6126618a2199cf06825acb284534a7ebe0a036ea4739bfca64c62d7f13beb840')
+            '6126618a2199cf06825acb284534a7ebe0a036ea4739bfca64c62d7f13beb840'
+            '965fdefb4a3e34bacd9e0228ca41fcc3190d29aebc7f631d1d0e550e3bcd8573'
+            '59f72411c14bcf99821a5ec7922fb18674917a3e653aba9c6e01936b0a0c1fde'
+            '14263b44348bd38dead2b68e09622ed9cec9809feb48f51dcd20f2f101c8ac3f'
+            '6feae69dc88607f22d5c444fd556a68e83ecd6b5aa19f8a52875f4ccca2be569')
 noextract=("${source[0]##*/}")
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -107,7 +119,7 @@ _install_check() {
 }
 
 prepare() {
-  set -u
+  local -; set -u
   _install_check
   if [ ! -d "${_srcdir}" ]; then
     mkdir "${_srcdir}"
@@ -166,6 +178,10 @@ prepare() {
   _patches+=('0012-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
   _patches+=('0013-kernel-6.10-platform_driver-remove-void-return.patch') # https://lore.kernel.org/lkml/2024060432-relieving-yonder-85ae@gregkh/T/
   _patches+=('0014-kernel-6.13-irq_get_nr_irqs.patch') # https://lore.kernel.org/all/20241015190953.1266194-3-bvanassche@acm.org/
+  _patches+=('0015-kernel-6.14-device_find_child-const.patch')
+  _patches+=('0016-kernel-6.15_console_stop_suspend_start_resume.patch')
+  _patches+=('0017-kernel-6.16-from_timer.patch')
+  _patches+=('0018-kernel-6.15-del_timer_sync.patch')
 
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
@@ -227,19 +243,17 @@ prepare() {
   test -s 'Makefile.Arch' && echo "${}"
 
   popd > /dev/null
-  set +u
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   make -C 'driver' -j1
   make -C 'utilities' -j1
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   if [ "${_opt_DKMS}" -eq 0 ]; then
@@ -337,7 +351,7 @@ BUILT_MODULE_NAME[0]="cti_8250_pci"
 BUILT_MODULE_LOCATION[0]="driver/"
 # Using all processors doesn't compile this tiny module any faster.
 MAKE[0]="make -C 'driver' -j1 DEBUG=n"
-CLEAN[0]="make -C 'driver' -j1 clean DEBUG=n"
+#CLEAN[0]="make -C 'driver' -j1 clean DEBUG=n"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 
@@ -350,7 +364,6 @@ EOF
     rm "${_dkms}/driver"/*_dr "${_dkms}/driver/readme.txt"
     make -C "${_dkms}/driver" clean
   fi
-  set +u
 }
 
 set +u

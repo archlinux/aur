@@ -1,0 +1,19 @@
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2026-11-08 20:00:10.357466959 -0500
++++ b/driver/serial_core.c	2026-11-08 20:02:14.323519507 -0500
+@@ -2230,11 +2230,15 @@ static void uart_change_pm(struct uart_s
+ struct uart_match {
+ 	struct uart_port *port;
+ 	struct uart_driver *driver;
+ };
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,14,0))
+ static int serial_match_port(struct device *dev, void *data)
++#else
++static int serial_match_port(struct device *dev, const void *data)
++#endif
+ {
+ 	struct uart_match *match = data;
+ 	struct tty_driver *tty_drv = match->driver->tty_driver;
+ 	dev_t devt = MKDEV(tty_drv->major, tty_drv->minor_start) +
+ 		match->port->line;

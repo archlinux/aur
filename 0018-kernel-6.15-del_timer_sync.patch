@@ -1,0 +1,19 @@
+diff -pNaru5 a/driver/8250_core.c b/driver/8250_core.c
+--- a/driver/8250_core.c	2026-11-08 19:56:16.622030364 -0500
++++ b/driver/8250_core.c	2026-11-08 19:56:57.061809294 -0500
+@@ -3164,11 +3164,15 @@ static void serial8250_shutdown(struct u
+ 	 * Read data port to reset things, and then unlink from
+ 	 * the IRQ chain.
+ 	 */
+ 	serial_port_in(port, UART_RX);
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,15,0))
+ 	del_timer_sync(&up->timer);
++#else
++	timer_delete_sync(&up->timer);
++#endif
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0))
+ 	up->timer.function = serial8250_timeout;
+ #else
+ 	timer_setup(&up->timer,serial8250_timeout,0);
+ #endif

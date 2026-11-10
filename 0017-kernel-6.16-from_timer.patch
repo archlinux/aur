@@ -1,0 +1,18 @@
+diff -pNaru5 a/driver/8250_core.c b/driver/8250_core.c
+--- a/driver/8250_core.c	2026-11-08 19:49:40.747806470 -0500
++++ b/driver/8250_core.c	2026-11-08 19:49:54.587709877 -0500
+@@ -2528,10 +2528,14 @@ static void serial8250_timeout(unsigned
+ {
+ 	struct uart_8250_port *up = (struct uart_8250_port *)data;
+ #else
+ static void serial8250_timeout(struct timer_list *tl)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,16,0)
++#define from_timer(var, callback_timer, timer_fieldname) \
++  container_of(callback_timer, typeof(*var), timer_fieldname)
++#endif
+ 	struct uart_8250_port *up = from_timer(up,tl,timer);
+ #endif
+ 
+ 	up->port.handle_irq(&up->port);
+ 	mod_timer(&up->timer, jiffies + uart_poll_timeout(&up->port));
