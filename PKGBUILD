@@ -5,10 +5,16 @@
 # already ship). Only `bulwarkctl` is packaged — the Tauri GUI needs WebKitGTK and
 # is distributed as Flatpak/Snap/AppImage instead.
 pkgname=bulwarkctl
-pkgver=0.8.8
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Linux host security and misconfiguration scanner (CLI)"
-arch=('x86_64')
+# Both architectures build from this one PKGBUILD unchanged — there is no arch-specific code
+# in bulwark-core or bulwarkctl, and the only native dependency is libsqlite3-sys, which
+# compiles SQLite from vendored C. Arch Linux ARM users build it themselves from this recipe,
+# so listing aarch64 costs no build here; what it must not do is claim an arch the upstream
+# release never proved, which is why scripts/check-packaging-consistency.sh ties this list to
+# release.yml's build matrix.
+arch=('x86_64' 'aarch64')
 url="https://github.com/vietanhdev/bulwark"
 license=('Apache-2.0')
 depends=('gcc-libs')
@@ -21,9 +27,11 @@ makedepends=('cargo')
 options=('!lto')
 # ClamAV powers the optional antivirus scan; everything else works without it and
 # Bulwark prints a distro-aware install hint when it is absent.
-optdepends=('clamav: antivirus scanning support')
+optdepends=('clamav: antivirus scanning support'
+            'openssh: monitoring other machines over SSH (bulwarkctl hosts)'
+            'curl: Telegram and e-mail alerts (bulwarkctl notify)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('729385e9796116d0cba5d0c9fb2955accad2ff9181cbd9d97c202bb494f7a535')
+sha256sums=('765d15a0052f9177697dc55d61ed96c4ba45b8143dd3437bf4cff12476138bb2')
 
 prepare() {
   cd "bulwark-$pkgver"
