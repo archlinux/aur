@@ -1,6 +1,6 @@
 # Maintainer: Bram <bram+sway@pescheck.io>
 pkgname=sway-mirror
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Fast zero-copy screen mirroring for Sway/wlroots"
 arch=('x86_64' 'aarch64')
