@@ -5,13 +5,13 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.28.4
+pkgver=5.28.5
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.28.4.tar.gz")
-sha256sums=('a511317387f9891a88600cbf61791fc14601ecb6733fa86400922eb907a8904e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.28.5.tar.gz")
+sha256sums=('5a26f6338943e33586c1531f5a2b46f7028cb6158afaaac20a2822e24a463f25')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -29,6 +29,7 @@ optdepends=('lm_sensors: broader temperature and fan sensor coverage'
             'ddcutil: external monitor brightness and power over DDC/CI')
 provides=('system-bridge')
 options=('!strip')
+install=system-bridge.install
 
 build() {
   ver="$pkgver"
@@ -88,6 +89,9 @@ package() {
   install -Dm644 system-bridge.fish "$pkgdir/usr/share/fish/vendor_completions.d/system-bridge.fish"
   install -Dm644 .scripts/linux/system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
   install -Dm644 .scripts/linux/60-system-bridge-rapl.rules "$pkgdir/usr/lib/udev/rules.d/60-system-bridge-rapl.rules"
+  if [ -f .scripts/linux/system-bridge.service ]; then
+    install -Dm644 .scripts/linux/system-bridge.service "$pkgdir/usr/lib/systemd/user/system-bridge.service"
+  fi
   install -Dm644 .resources/system-bridge-dimmed.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
   install -Dm644 .resources/system-bridge-dimmed-16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/system-bridge.png"
   install -Dm644 .resources/system-bridge-dimmed-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/system-bridge.png"
