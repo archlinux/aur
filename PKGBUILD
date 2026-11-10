@@ -2,7 +2,7 @@
 
 pkgname=voicefox
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 epoch=1
 _tag="v${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
