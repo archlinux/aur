@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=mini-downloader-git
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Lightweight native download manager (aria2 + yt-dlp, browser capture) — git build"
 arch=('x86_64')
