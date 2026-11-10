@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=mole-cli-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Deep clean and optimize your Linux desktop (CLI)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ _tarball_x86_64="mole-${pkgver}-linux-x86_64.tar.gz"
 _tarball_aarch64="mole-${pkgver}-linux-aarch64.tar.gz"
 source_x86_64=("${_tarball_x86_64}::${url}/releases/download/V${pkgver}-linux/${_tarball_x86_64}")
 source_aarch64=("${_tarball_aarch64}::${url}/releases/download/V${pkgver}-linux/${_tarball_aarch64}")
-sha256sums_x86_64=('e1c2352265ecdf9df9db6af0316783d682fb370c3179f0ef0371e962dc625d3d')
-sha256sums_aarch64=('7b90b46e9105b6a80dcd0ee8e43931af3a0466614c89bf5bd9dfd2031013e681')
+sha256sums_x86_64=('e9e57b3723bbe6446a1bdab85a664d88216eb69473d441e8b25c39754e3db572')
+sha256sums_aarch64=('90c13faa09dd76c75087139bd8c983d408927680ef0268f84b1863415441b07a')
 
 package() {
   local _srcdir="${srcdir}/mole-${pkgver}-linux-${CARCH}"
