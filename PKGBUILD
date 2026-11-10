@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=yetease-music-bin
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="A fast, clean third-party NetEase Cloud Music client — Rust core × Flutter UI (Linux-first)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ options=(!strip !debug)
 
 _deb="yetease-music_${pkgver}_amd64.deb"
 source_x86_64=("${_deb}::https://github.com/Gloridust/YetEaseMusic/releases/download/v${pkgver}/${_deb}")
-sha256sums_x86_64=('6e5f76522f81a755731324eb69e2236d51d5c16b430e34ad357349503466c945')
+sha256sums_x86_64=('5d288705c96deade0c97e3616689a491549f7b03f170e753b5a3e89e1abc58c4')
 noextract=("${_deb}")
 
 package() {
