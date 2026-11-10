@@ -4,7 +4,7 @@
 # (binary + LICENSE + .desktop + icons), i.e. releases after v0.2.2.
 
 pkgname=archtoys-bin
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="System-wide color picker for Linux, inspired by PowerToys (precompiled binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("archtoys=${pkgver}")
 conflicts=('archtoys')
 options=('!debug')
 source=("archtoys-linux-x86_64-v${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/releases/download/v${pkgver}/archtoys-linux-x86_64.tar.gz")
-sha256sums=('f226380a8c2f635315490a553cfdba872e02f219f61168bd2a0c6c8f56db33de')
+sha256sums=('7867f55f5c42ed2a1d4822ffa54236e471164da59cc80a7c8ff7c714ef049abe')
 
 package() {
   cd "${srcdir}"
@@ -28,6 +28,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 colornames-LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/colornames-LICENSE.txt"
   install -Dm644 archtoys.desktop "${pkgdir}/usr/share/applications/archtoys.desktop"
+  install -Dm644 io.github.Mujtaba1i.Archtoys.metainfo.xml "${pkgdir}/usr/share/metainfo/io.github.Mujtaba1i.Archtoys.metainfo.xml"
 
   for size in 16 22 24 32 48 64 128 256 512; do
     install -Dm644 "archtoys-${size}.png" \
