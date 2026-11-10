@@ -1,10 +1,11 @@
 pkgbase = blender-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)
-	pkgver = 5.2.3
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://blender.org
 	install = blender-bin.install
 	arch = x86_64
+	license = 0BSD
 	license = Apache-2.0
 	license = Bitstream-Vera
 	license = BSD-2-Clause
@@ -69,7 +70,7 @@ pkgbase = blender-bin
 	optdepends = hip-runtime-amd: HIP renderer AMD support
 	provides = blender
 	conflicts = blender
-	source = https://mirror.blender.org/release/Blender5.2/blender-5.2.3-linux-x64.tar.xz
-	sha256sums = 78486c018b4443efe5e75ab54c290ed8c15abafd249b862c2c9ce2530a918eec
+	source = https://mirror.blender.org/release/Blender5.3/blender-5.3.0-linux-x64.tar.xz
+	sha256sums = dacb8264197a3f7fda6001285a5a506fc97ee943881261c2c3bd63c882f22e05
 
 pkgname = blender-bin
