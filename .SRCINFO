@@ -1,0 +1,20 @@
+pkgbase = photoes
+	pkgdesc = A fast, minimal, AI-first photos app for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/siliconwitch/photoes
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = libjxl
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	source = photoes-0.1.0.tar.gz::https://github.com/siliconwitch/photoes/archive/v0.1.0.tar.gz
+	sha256sums = 37c1be01b0afc902eadf67232cc96f9b1308049845fdd0a52c17fa0ea0bc12f7
+
+pkgname = photoes
