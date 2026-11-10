@@ -14,7 +14,7 @@
 #   modifiche non ancora rilasciate)
 
 pkgname=klamav-py
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22"
 arch=('any')
@@ -50,6 +50,29 @@ sha256sums=('SKIP')
 # sue sottochiavi, quindi la rotazione della sottochiave di firma non
 # richiede modifiche qui.
 validpgpkeys=('EBEE3E80EFA38B42B147F1B99D7AA4F1971FEAA9') # gradia (KlamAV-Py release signing)
+# Sottochiavi che possono firmare i tag (TAG_SIGNING_SUBKEYS in
+# tools/release-keys.sh, tests/test_release_tools.py lo verifica): solo
+# quelle del maintainer, mai quella della CI.
+_tag_subkeys=('FDC222086F32BADB04034BAF707F1CD9C887FD2E')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  # makepkg accetta la firma di QUALUNQUE sottochiave della primaria in
+  # validpgpkeys, anche quella della CI che firma solo gli allegati della
+  # release. Qui si controlla dalla stessa riga VALIDSIG che il tag l'abbia
+  # firmato una sottochiave dei tag, come fa tools/verify-tag.sh.
+  local signer sub
+  signer="$(git verify-tag --raw "v$pkgver" 2>&1 \
+    | awk -v p="${validpgpkeys[0]}" '$2 == "VALIDSIG" && $NF == p { print $3 }')"
+  for sub in "${_tag_subkeys[@]}"; do
+    if [[ -n $signer && $signer == "$sub" ]]; then
+      return 0
+    fi
+  done
+  printf '==> ERRORE: tag v%s firmato da «%s», che non è una sottochiave dei tag (%s)\n' \
+    "$pkgver" "${signer:-nessuna firma valida}" "${_tag_subkeys[*]}" >&2
+  return 1
+}
 
 build() {
   cd "$srcdir/$pkgname"
