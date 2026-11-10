@@ -1,7 +1,7 @@
 # Maintainer: Gabriele Cabrini <gabrielecabrini@proton.me>
 
 pkgname=scalable-cli-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Command-line interface for Scalable Capital"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=('scalable-cli' 'sc')
 options=(!strip)
 source_x86_64=("${url}/releases/download/v${pkgver}/sc-v${pkgver}-linux-x86_64-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/sc-v${pkgver}-linux-aarch64-gnu.tar.gz")
-sha256sums_x86_64=('5a7b77c2bd5e66530ddc3fdab044b575adecf2ff13ec83898a82800a11e12f98')
-sha256sums_aarch64=('c4aaabf12632455f5249202f15a80e27efd6bae29c24a02dd703ea072a9537a8')
+sha256sums_x86_64=('309b0f0211c02d28391bd5db5f7745c98d5a2f47830b698cc5efb8095e0f7678')
+sha256sums_aarch64=('ead8313fc7defe6fdebd11a32d315071f28432f2127d33459b032cae03cfe2e7')
 
 package() {
   cd "sc-v${pkgver}-linux-${CARCH}-gnu"
