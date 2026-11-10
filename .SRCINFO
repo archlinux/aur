@@ -1,15 +1,15 @@
 pkgbase = lssh
 	pkgdesc = Simple SSH server manager
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Lecer69/LSSH
 	arch = x86_64
 	license = Unlicense
 	makedepends = cargo
-	makedepends = git
 	depends = openssh
 	depends = dbus
-	source = lssh::git+https://github.com/Lecer69/LSSH.git#branch=master
-	sha256sums = SKIP
+	options = !debug
+	source = lssh-0.4.1.tar.gz::https://github.com/Lecer69/LSSH/archive/v0.4.1.tar.gz
+	sha256sums = e55fe28113a26ba3c4f19164789ad1cc6ddf3479e207733a9f05ab00d9fcde12
 
 pkgname = lssh
