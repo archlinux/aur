@@ -2,15 +2,24 @@
 
 pkgname=or-tools
 pkgver=9.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
 url="https://github.com/google/or-tools"
 license=('Apache')
 depends=('coin-or-cbc' 'protobuf' 're2' 'abseil-cpp')
 makedepends=('cmake' 'pkgconf' 'git' 'eigen' 'gtest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha256sums=('6395a00a97ff30af878ee8d7fd5ad0ab1c7844f7219182c6d71acbee1b5f3026')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/google/or-tools/archive/v${pkgver}.tar.gz"
+        source-location-absl.patch)
+sha256sums=('6395a00a97ff30af878ee8d7fd5ad0ab1c7844f7219182c6d71acbee1b5f3026'
+            '4cef55e2990f1350fbd3c1277ef6a5c2295ae5910cfe99f521aa82343fe0a0fe')
+
+prepare() {
+    # Fix `absl::SourceLocation` ambiguity with abseil-cpp >= 20260526.
+    # https://github.com/google/or-tools/issues/5236
+    # https://github.com/google/or-tools/pull/5256 (unmerged, vendored)
+    patch -p1 -d "$pkgname-$pkgver" -i "$srcdir/source-location-absl.patch"
+}
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
