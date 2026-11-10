@@ -1,8 +1,8 @@
 # Maintainer: xander-lin <xander-lin@users.noreply.github.com>
 
 pkgname=screenshot-plain
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Lightweight wlroots Wayland screenshot tool — plain variant (normal screenshots, supports Niri/Hyprland/Sway/Wayfire/River) (prebuilt; x86_64 auto-selects v3/generic)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xander-lin/screenshot-niri"
@@ -14,10 +14,10 @@ source_x86_64=(
 )
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}-plain/${pkgname}-${pkgver}-aarch64.tar.gz")
 sha256sums_x86_64=(
-    '436faccc18b65b06e89214a990e343fca76cdd52ea3c706fb30d7eed3cf2f912'
-    'ac1cdec6c4e1c200440f062bbc64055d22cfa249964816c2437ffb31ed3e3afc'
+    '3db80169cf42032056e6dfc74000798b05e19fd6cb43be85dbeaf40a7eb0550a'
+    '2f1ca45382e90c7fe35fe277487c7305f87f0301c559bd9c7d7430b4ed7dffcc'
 )
-sha256sums_aarch64=('f834d128979a266deeea01f27355a7a800189b32387571d9063c6a6fa64a730b')
+sha256sums_aarch64=('b5f1857fd4bed037499f52dd97790d2e61e18bab90f565358c942c589a64ca5b')
 
 # Both x86_64 tarballs are downloaded; prepare() extracts only the one this CPU
 # can run. Keeping both in source_x86_64 makes .SRCINFO honest (it cannot
