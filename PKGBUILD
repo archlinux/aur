@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-cn-bin
 _pkgname=Qoder-CN
-pkgver=0.5.5
+pkgver=0.5.7
 _electronversion=43
 pkgrel=1
 pkgdesc="Qoder 全新形态，以编程智能体为核心引擎，从想法到实现，轻松搞定。"
