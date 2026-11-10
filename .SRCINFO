@@ -1,0 +1,26 @@
+pkgbase = silverscreen-git
+	pkgdesc = Native GTK4 YouTube client that plays videos with MPV
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/XSilverTH/SilverScreen
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = dotnet-sdk>=10
+	makedepends = blueprint-compiler
+	makedepends = glib2
+	makedepends = clang
+	makedepends = pkgconf
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = libsoup3
+	depends = mpv
+	depends = yt-dlp
+	depends = hicolor-icon-theme
+	provides = silverscreen
+	conflicts = silverscreen
+	source = git+https://github.com/XSilverTH/SilverScreen.git
+	sha256sums = SKIP
+
+pkgname = silverscreen-git
