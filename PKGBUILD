@@ -1,7 +1,7 @@
 # Maintainer: gradia <gradia@disroot.org>
 
 pkgname=plico
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Editor PDF nativo per Linux: pagine, cancellazione vera, moduli, OCR, firma (PySide6/Qt)"
 arch=('any')
