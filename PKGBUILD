@@ -1,7 +1,7 @@
 # Maintainer: Paulo Fino <somepaulo@duck.com>
 
 pkgname=scribe-bin
-pkgver=0.3.35
+pkgver=0.3.40
 pkgrel=1
 pkgdesc='A native GNOME Markdown editor that renders your document as you type (upstream binary)'
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
 )
 noextract=("$_debfile")
 sha256sums=(
-  '7d12eac0ddfc75125c5de38b7f672181cce57818fe40842aebb2bb6b5888818d'
+  'd13e3470ae1569bbab145205b6426d7f4f6977b717b50cccbb966d3f1e4cc2d6'
   '4c2870aeb700ce429d98e6e9a17229517d1bdf676c5a6043e76c4cecfc26e4eb'
 )
 
