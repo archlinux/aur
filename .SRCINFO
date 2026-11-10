@@ -1,7 +1,7 @@
 pkgbase = quba-bin
 	pkgdesc = A cross platform open source application to display structured (i.e., XML) and hybrid (Factur-X/ZUGFeRD PDF) electronic invoices.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZUGFeRD/quba-viewer
 	arch = x86_64
 	license = Apache-2.0
@@ -11,9 +11,10 @@ pkgbase = quba-bin
 	provides = quba=2.0.0
 	conflicts = quba
 	options = !emptydirs
+	options = !strip
 	source = quba-2.0.0-x86_64.deb::https://github.com/ZUGFeRD/quba-viewer/releases/download/2.0.0/Quba-2.0.0-linux-x64.deb
 	source = quba.sh
 	sha256sums = 37827826dad433ce02c46dddc852671b1dbd7cc1b6e4278ac6030cf7c5a08eaa
-	sha256sums = f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5
+	sha256sums = 32b37ffc525378a5ee197ee3b21e523ac5971f4dfe19c7a9c78484433033c16b
 
 pkgname = quba-bin
