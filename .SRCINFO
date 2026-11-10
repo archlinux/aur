@@ -1,0 +1,15 @@
+pkgbase = sidravia-bin
+	pkgdesc = 吉林大学 Dr.COM 5.2.0 D 认证客户端
+	pkgver = 0.3.0alpha1
+	pkgrel = 1
+	url = https://github.com/CaelestisAstesia/sidravia
+	install = sidravia-bin.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = bash
+	provides = sidravia
+	conflicts = sidravia
+	source = sidravia-0.3.0alpha1.tar.gz::https://github.com/CaelestisAstesia/sidravia/releases/download/v0.3.0-alpha.1/sidravia-v0.3.0-alpha.1-linux-amd64-core-portable.tar.gz
+	sha256sums = 2168b3fe3c12858d1500005cfecbe3723dac1f2461fade38dc1d873234b56180
+
+pkgname = sidravia-bin
