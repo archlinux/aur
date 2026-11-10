@@ -1,8 +1,8 @@
 # Maintainer: xander-lin <xander-lin@users.noreply.github.com>
 
 pkgname=screenshot-niri
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Screenshot tool for niri compositor — normal and long/scroll capture with frozen-background selection overlay (prebuilt; x86_64 auto-selects v3/generic)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xander-lin/screenshot-niri"
@@ -14,10 +14,10 @@ source_x86_64=(
 )
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}-niri/${pkgname}-${pkgver}-aarch64.tar.gz")
 sha256sums_x86_64=(
-    'ddb27842484fc5a16843d3405ea0bd6e5f8f67ec3acbeeb85c0e2bbc0a8a8f85'
-    '6915dd214b5d16bdecf3e2212d3b75b67a8311b6d7c0a03f5213a72c2a6c15df'
+    'e67b1fa4c1a7bd61a92348dc1e44047cd8926a83e38168ca758d4e72ae43f75c'
+    '0086b2d84ea8b9d3de5bbcf3d7c0ecaf51688b913a7846a37491766686045145'
 )
-sha256sums_aarch64=('1be57e788dae2976982e874ee9ebfe862a6a6f1d8271aeb93a1391f686ddf966')
+sha256sums_aarch64=('035287554c178fdcf43ccf35997be6d8324d9ebbb04430f2e1e2a8dcab20b272')
 
 # Both x86_64 tarballs are downloaded; prepare() extracts only the one this CPU
 # can run. Keeping both in source_x86_64 makes .SRCINFO honest (it cannot
