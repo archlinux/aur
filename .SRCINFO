@@ -1,6 +1,6 @@
 pkgbase = codeg-server-bin
 	pkgdesc = Standalone server of Codeg, a collaborative multi-agent AI coding workspace (prebuilt binary)
-	pkgver = 0.42.1
+	pkgver = 0.42.2
 	pkgrel = 1
 	url = https://github.com/xintaofei/codeg
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = codeg-server-bin
 	provides = codeg-server
 	conflicts = codeg-server
 	options = !strip
-	source = LICENSE-0.42.1::https://raw.githubusercontent.com/xintaofei/codeg/v0.42.1/LICENSE
+	source = LICENSE-0.42.2::https://raw.githubusercontent.com/xintaofei/codeg/v0.42.2/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = codeg-server-linux-x64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v0.42.1/codeg-server-linux-x64.tar.gz
-	sha256sums_x86_64 = b474572317170382fc16e8617cb7b6cf112b5c4dfeae22537eabe2ce12cd6ebe
-	source_aarch64 = codeg-server-linux-arm64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v0.42.1/codeg-server-linux-arm64.tar.gz
-	sha256sums_aarch64 = f958c55a1542813386216c154c2747ce2f85e5410b402ef3ac508f38c9ed9292
+	source_x86_64 = codeg-server-linux-x64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v0.42.2/codeg-server-linux-x64.tar.gz
+	sha256sums_x86_64 = c226cd8cedf639ba093968a2fe2f41acd9dea6dfe288bb1c8fe8fb78d86f393e
+	source_aarch64 = codeg-server-linux-arm64.tar.gz::https://github.com/xintaofei/codeg/releases/download/v0.42.2/codeg-server-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0d7f8e4d382e2b95720c2fca9b786291043d08833825a88815dcc340947ac066
 
 pkgname = codeg-server-bin
