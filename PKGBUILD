@@ -9,7 +9,10 @@ license=('AGPL-3.0-or-later')
 depends=(
 	'webkit2gtk-4.1'
 )
-optdepends=()
+optdepends=(
+	'ksshaskpass: to help with git over ssh in KDE Plasma'
+	'seahorse: to help with got over ssh in GNOME'
+)
 options=('!emptydirs' '!strip')
 makedepends=('libarchive') # For bsdtar
 
