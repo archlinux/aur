@@ -1,0 +1,11 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -71,7 +71,7 @@
+ 
+ [tool.setuptools.packages.find]
+ where = ["."]
+-exclude = ["cache"]
++exclude = ["cache", "examples", "examples.*", "tests", "tests.*"]
+ 
+ [tool.setuptools.package-data]
+ "draccus" = ["py.typed"]

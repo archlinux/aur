@@ -3,7 +3,7 @@
 pkgname=python-draccus
 _pkgname=draccus
 pkgver=0.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Slightly opinionated framework for simple dataclass-based configurations"
 arch=('any')
 url="https://github.com/dlwh/draccus"
@@ -28,15 +28,18 @@ checkdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'python314-argparse-types.patch'
+    'wheel-package-discovery.patch'
 )
 sha256sums=(
     'a9d501d0262b75e56b6b8fa3c0ee3414e4fdc66766493677d3ef2ec20419eca5'
     '57d3a28a0502eb3ba1aa9fdfe5182063d8a0fd4c0ca92fc7e4f7a92522edb4ea'
+    'ad2eca438a437cec3454ced67957fe8ea35b646cf439c9a94d0ae5d400efef2a'
 )
 
 prepare() {
     cd "$_pkgname-$pkgver"
     patch -Np1 -i ../python314-argparse-types.patch
+    patch -Np1 -i ../wheel-package-discovery.patch
 }
 
 build() {
@@ -71,10 +74,6 @@ check() {
 package() {
     cd "$_pkgname-$pkgver"
 
-    local site_packages
-    site_packages="$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"
-
     python -m installer --destdir="$pkgdir" dist/*.whl
-    rm -rf "$pkgdir$site_packages"/{examples,tests}
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = python-draccus
 	pkgdesc = Slightly opinionated framework for simple dataclass-based configurations
 	pkgver = 0.11.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dlwh/draccus
 	arch = any
 	license = MIT
@@ -18,7 +18,9 @@ pkgbase = python-draccus
 	depends = python-typing_inspect
 	source = python-draccus-0.11.6.tar.gz::https://github.com/dlwh/draccus/archive/refs/tags/v0.11.6.tar.gz
 	source = python314-argparse-types.patch
+	source = wheel-package-discovery.patch
 	sha256sums = a9d501d0262b75e56b6b8fa3c0ee3414e4fdc66766493677d3ef2ec20419eca5
 	sha256sums = 57d3a28a0502eb3ba1aa9fdfe5182063d8a0fd4c0ca92fc7e4f7a92522edb4ea
+	sha256sums = ad2eca438a437cec3454ced67957fe8ea35b646cf439c9a94d0ae5d400efef2a
 
 pkgname = python-draccus
