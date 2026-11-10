@@ -1,6 +1,6 @@
 pkgbase = angkorgit-bin
 	pkgdesc = A modern, fast, beautiful open-source Git client
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://angkorgit.app/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = angkorgit-bin
 	provides = angkorgit
 	conflicts = angkorgit
 	options = !strip
-	source = README-0.26.0.md::https://raw.githubusercontent.com/cheat2001/angkorgit/v0.26.0/README.md
-	source = LICENSE-0.26.0::https://raw.githubusercontent.com/cheat2001/angkorgit/v0.26.0/LICENSE
-	sha256sums = 13362c047701a02dc8a8103e8a920f1d0a7d021356599af94caf9b1e0bd932ab
+	source = README-0.27.0.md::https://raw.githubusercontent.com/cheat2001/angkorgit/v0.27.0/README.md
+	source = LICENSE-0.27.0::https://raw.githubusercontent.com/cheat2001/angkorgit/v0.27.0/LICENSE
+	sha256sums = f106fe4795fbe3f9af623ad8c5ae21377093b073643896378e983d82462db6b3
 	sha256sums = e2e20cd37ca31853f05df3cfdc3053208ead8f26279cea442fb6930bd4cc59fe
-	source_x86_64 = angkorgit-x86_64-0.26.0.deb::https://github.com/cheat2001/angkorgit/releases/download/v0.26.0/AngKorGit_0.26.0_amd64.deb
-	sha256sums_x86_64 = c39f29ca91e37f999bf8747c2df259c031e0a5cdac26a3f59ddfddcad24b67e8
+	source_x86_64 = angkorgit-x86_64-0.27.0.deb::https://github.com/cheat2001/angkorgit/releases/download/v0.27.0/AngKorGit_0.27.0_amd64.deb
+	sha256sums_x86_64 = 7ae24dff7f1e6472c56f902ceec79e790f15f3db7241f02c3e5b3c25295c9ff9
 
 pkgname = angkorgit-bin
