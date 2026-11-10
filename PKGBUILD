@@ -1,14 +1,14 @@
 pkgname=wl-gammactl-rust
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Change contrast, brightness, gamma & saturation on Wayland"
+pkgdesc="Change contrast, brightness, gamma, saturation & color temperature on Wayland"
 arch=('x86_64')
 url="https://github.com/Lecer69/wl-gammactl-rust"
 license=('Unlicense')
 depends=('wayland')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bed0182ac859317ff5c2c8aa3e2b0a94774b5bc771814d32cef951aae52e8391')
+sha256sums=('99f9bbe53d19cb2c0ff736161fe7806bf7fb81b6ed6f6aa0cb85ae73874d8651')
 
 build() {
     cd "$pkgname-$pkgver"
