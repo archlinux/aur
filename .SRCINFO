@@ -1,6 +1,6 @@
 pkgbase = clonaut
 	pkgdesc = Desktop GUI for rclone: remotes, transfers with progress, safety trash, dry runs and scheduled syncs
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/gradia64/Clonaut
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = clonaut
 	depends = rclone
 	depends = hicolor-icon-theme
 	optdepends = pyside6: alternative Qt binding (used instead of PyQt6 when installed)
-	source = clonaut::git+https://github.com/gradia64/Clonaut.git#tag=v0.4.0?signed
+	source = clonaut::git+https://github.com/gradia64/Clonaut.git#tag=v0.4.1?signed
 	validpgpkeys = 9F54724ACD0995BEC321BD30E6C5DCC0D49CCC6B
 	sha256sums = SKIP
 
