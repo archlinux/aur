@@ -9,6 +9,7 @@ arch=(x86_64 aarch64)
 url='https://github.com/zskamljic/tde-session'
 license=(GPL-3.0-or-later)
 depends=(
+  gdk-pixbuf2
   glibc
   layer-shell-qt
   libcanberra
@@ -45,6 +46,7 @@ makedepends=(
 optdepends=(
   'tde-ariadne: the file manager, which picks files for other programs too'
   'xorg-xwayland: X11 programs'
+  'wayvnc: reaching the desktop from another computer or a phone'
   'networkmanager: networks and Wi-Fi in the bar and the settings'
   'bluez: Bluetooth in the bar and the settings'
   'upower: the battery, and suspending sooner on it'
@@ -53,6 +55,9 @@ optdepends=(
   'gnome-keyring: remembering the passphrases of SSH keys'
   'fprintd: unlocking the screen with a finger'
   'brightnessctl: the keyboard light keys, where the keyboard does not change it itself'
+  'greetd: Charon, the login screen'
+  'accountsservice: names and pictures of people on the login screen'
+  'xorg-xinit: X11 sessions from the login screen'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
