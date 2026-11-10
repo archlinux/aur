@@ -3,7 +3,7 @@
 pkgbase=xwm-git
 pkgname=xwm-git
 pkgver=1.0.0.r11.g96d93c0
-pkgrel=8
+pkgrel=9
 pkgdesc="XWM (X light Window Manager) is a light-weight window manager for the X11 Window System"
 arch=($CARCH)
 url="https://gitee.com/xinligg/xwm"
@@ -17,7 +17,6 @@ depends=(
     bash
     glib2
     glibc
-    fribidi
     libpng
     libjpeg-turbo
     librsvg
@@ -27,7 +26,9 @@ depends=(
     libxrender
     libxmu
     libxinerama
-    libxpm)
+    libxpm
+    pango
+)
 makedepends=(
     autoconf
     automake
@@ -35,7 +36,8 @@ makedepends=(
     gettext
     git
     m4
-    pkgconf)
+    pkgconf
+)
 checkdepends=()
 optdepends=(
     'gnome-terminal: The GNOME Terminal Emulator'
@@ -57,12 +59,14 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "$srcdir/$pkgname"
+    autopoint --force
+    autoreconf -fiv -I m4
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
 
-    ./autogen.sh
     ./configure \
         --enable-nls \
         --prefix=/usr \
