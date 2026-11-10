@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=8.1.0
-_nodeversion=24
+pkgver=8.2.0
+_nodeversion=26
 pkgrel=1
 pkgdesc="Free video player for learning Japanese, Mandarin, Cantonese and Vietnamese from what you watch. Click any subtitle word for its reading and offline dictionary meaning. Plays local files and YouTube, with dual subtitles, karaoke lyrics and Anki export."
 arch=('any')
@@ -21,7 +21,6 @@ makedepends=(
     'npm'
     'nvm'
     'gendesk'
-    'icoutils'
     'git'
     'jq'
 )
@@ -32,7 +31,7 @@ optdepends=(
     'mecab'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('47e110926606635d00de746fcdcdcab8eda313e13abd41d76ab6975fc14371ed')
+sha256sums=('21ba33a83869f6a8a051950cbb171f047b3afeeafc27d1c3d3ba2b91b4f08c2a')
 _get_project_dir() {
 	find "${srcdir}" -name "src-tauri" -type d ! -path "*/node_modules/*" 2>/dev/null | \
 		while read -r tauri_dir; do

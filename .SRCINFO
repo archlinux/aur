@@ -1,6 +1,6 @@
 pkgbase = miteiru
 	pkgdesc = Free video player for learning Japanese, Mandarin, Cantonese and Vietnamese from what you watch. Click any subtitle word for its reading and offline dictionary meaning. Plays local files and YouTube, with dual subtitles, karaoke lyrics and Anki export.
-	pkgver = 8.1.0
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = https://miteiru.hocky.id/
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = miteiru
 	makedepends = npm
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = icoutils
 	makedepends = git
 	makedepends = jq
 	depends = gtk3
@@ -21,7 +20,7 @@ pkgbase = miteiru
 	optdepends = yt-dlp
 	optdepends = mecab
 	conflicts = miteiru
-	source = miteiru-8.1.0.tar.gz::https://github.com/hockyy/miteiru/archive/refs/tags/v8.1.0.tar.gz
-	sha256sums = 47e110926606635d00de746fcdcdcab8eda313e13abd41d76ab6975fc14371ed
+	source = miteiru-8.2.0.tar.gz::https://github.com/hockyy/miteiru/archive/refs/tags/v8.2.0.tar.gz
+	sha256sums = 21ba33a83869f6a8a051950cbb171f047b3afeeafc27d1c3d3ba2b91b4f08c2a
 
 pkgname = miteiru
