@@ -1,18 +1,22 @@
 pkgbase = t3-code-git
 	pkgdesc = Minimal web GUI for coding agents (desktop app, git build)
-	pkgver = 0.0.17.r54.gd22c6f5
-	pkgrel = 2
+	pkgver = 0.1.8.r59.g633438d
+	pkgrel = 1
 	url = https://github.com/pingdotgg/t3code
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = bun
-	makedepends = nodejs
+	makedepends = nodejs>=26.12.1
 	makedepends = npm
 	makedepends = python
 	makedepends = gcc
 	makedepends = make
+	makedepends = vite-plus>=1.4.0
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = imagemagick
 	depends = fuse2
+	depends = libsecret
 	provides = t3-code
 	conflicts = t3-code
 	options = !strip

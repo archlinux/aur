@@ -56,6 +56,9 @@ test_pkgver_excludes_nightly_tags() {
   done
 
   git -C "${tmpdir}/t3code" tag nightly-v0.0.18-nightly.20260416.46
+  git -C "${tmpdir}/t3code" tag v0.0.18-nightly.20260416.46
+  git -C "${tmpdir}/t3code" tag v0.0.18-preview.20260416.47
+  git -C "${tmpdir}/t3code" tag android-beta-784
   hash=$(git -C "${tmpdir}/t3code" rev-parse --short=7 HEAD)
   actual=$(srcdir="${tmpdir}" pkgver)
 
