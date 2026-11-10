@@ -1,6 +1,6 @@
 pkgbase = dshub-bin
 	pkgdesc = Native desktop application for monitoring and controlling industrial devices via TCP/UDP
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/skjafar/dshub
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = dshub-bin
 	optdepends = xdg-desktop-portal: native file dialogs
 	provides = dshub
 	conflicts = dshub
-	source = dshub-0.3.0-linux.tar.gz::https://github.com/skjafar/dshub/releases/download/v0.3.0/dshub-linux.tar.gz
-	source = dshub-0.3.0.tar.gz::https://github.com/skjafar/dshub/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 8aacef6e94fa0fc9e23bf7b2fe762c6c2301bb5c58c24f9710dc789a7050216e
-	sha256sums = d73c13c6966f2915cb23fb2e944c682dd0b3b86ad1d828a76a433a00a46585fb
+	source = dshub-0.3.1-linux.tar.gz::https://github.com/skjafar/dshub/releases/download/v0.3.1/dshub-linux.tar.gz
+	source = dshub-0.3.1.tar.gz::https://github.com/skjafar/dshub/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = aad88b6e4f0cacf461464dc8ed9bc828ab5ddea43a7a6cffaa525dc5ec70252d
+	sha256sums = 69460062c4ffe82d420e122a78bfe21dba0e8af5f3df2e9499a0a382e49e6519
 
 pkgname = dshub-bin
