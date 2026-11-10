@@ -1,7 +1,7 @@
 # Maintainer: Daniel Azevedo <daniazevedo77@posteo.net>
 
 pkgname=fabric-d77
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="GTK desktop shell for Wayland compositors, built on Fabric"
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
 )
 backup=('etc/pam.d/fabric-d77')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('82f796cbb961a4a7c24a024b8b2478633bd6144f65ff2abea42ac35e3a9ddc93')
+sha256sums=('2dc977c7659cf4f723dbacb453a1f83a70913b0a0981a885d2aff7617994c9b4')
 
 package() {
     cd "$pkgname-$pkgver"
