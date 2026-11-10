@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=open-orpheus
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host"
 arch=('x86_64')
@@ -49,14 +49,14 @@ makedepends=(
 )
 # Zig cannot use makepkg's default -flto=auto flag.
 options=('!debug' '!strip' '!lto')
-_wasm_bindgen_ver=0.2.129
+_wasm_bindgen_ver=0.2.130
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "wasm-bindgen-$_wasm_bindgen_ver.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl.tar.gz"
     "$pkgname.desktop"
 )
-sha256sums=('72720b90b39b80acba429967dba88704863478eb1f493d2eb158ab7b33bba6e1'
-            '82d12bb940e2d4e72e0d5605387fc1b8ca179044e012b620f0ce4e7440e8320e'
+sha256sums=('4d57ac2f5122e3e9a0b200c84f0b4e046d27dbb2a1a7addedc121c0884e73bc7'
+            '9687f3bb551b9f66f37ed32a40d7913a00f7962db653054e56857bc306c3227f'
             '259b39667fe1dce5d6ce45d4464b7499989c0b0d527c9b9d3597d519dd744e76')
 
 prepare() {

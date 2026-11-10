@@ -1,6 +1,6 @@
 pkgbase = open-orpheus
 	pkgdesc = An open-source implementation of Netease Cloud Music's Orpheus browser host
-	pkgver = 0.19.2
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/YUCLing/open-orpheus
 	arch = x86_64
@@ -42,11 +42,11 @@ pkgbase = open-orpheus
 	options = !debug
 	options = !strip
 	options = !lto
-	source = open-orpheus-0.19.2.tar.gz::https://github.com/YUCLing/open-orpheus/archive/refs/tags/v0.19.2.tar.gz
-	source = wasm-bindgen-0.2.129.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/0.2.129/wasm-bindgen-0.2.129-x86_64-unknown-linux-musl.tar.gz
+	source = open-orpheus-0.20.0.tar.gz::https://github.com/YUCLing/open-orpheus/archive/refs/tags/v0.20.0.tar.gz
+	source = wasm-bindgen-0.2.130.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/0.2.130/wasm-bindgen-0.2.130-x86_64-unknown-linux-musl.tar.gz
 	source = open-orpheus.desktop
-	sha256sums = 72720b90b39b80acba429967dba88704863478eb1f493d2eb158ab7b33bba6e1
-	sha256sums = 82d12bb940e2d4e72e0d5605387fc1b8ca179044e012b620f0ce4e7440e8320e
+	sha256sums = 4d57ac2f5122e3e9a0b200c84f0b4e046d27dbb2a1a7addedc121c0884e73bc7
+	sha256sums = 9687f3bb551b9f66f37ed32a40d7913a00f7962db653054e56857bc306c3227f
 	sha256sums = 259b39667fe1dce5d6ce45d4464b7499989c0b0d527c9b9d3597d519dd744e76
 
 pkgname = open-orpheus
