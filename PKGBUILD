@@ -3,7 +3,7 @@ pkgname=rakazo-bin
 _pkgname=Rakazo
 pkgver=0.8.0
 _electronversion=45
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Grok Bot alternative. Choose your own model and sandbox."
 arch=('x86_64')
 url="https://rakazo.com/"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('3cab94ff07e1b26ed491056f7bc859210e9cf05f1da5a0b1166af43308e32e5e'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
         | while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -66,5 +66,9 @@ package() {
 	install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
 	_install_icons
+	install -Dm644 "$(_get_app_dir)/resources/web/favicon-16x16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname%-bin}.png"
+	install -Dm644 "$(_get_app_dir)/resources/web/favicon-32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname%-bin}.png"
+	install -Dm644 "$(_get_app_dir)/resources/web/icon-192.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${pkgname%-bin}.png"
+	install -Dm644 "$(_get_app_dir)/resources/web/icon-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png"
 	install -Dm644 "$(_get_app_dir)/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
