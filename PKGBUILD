@@ -1,14 +1,14 @@
 # Maintainer: Selim Bucher <me@selim.one>
 pkgname=ni-wine
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Native Instruments software under Wine: setup, launch and product management"
-# ships a 32-bit Windows DLL built in build(), so not arch-independent
+# ships Windows binaries built in build(), so not arch-independent
 arch=('x86_64')
 url="https://github.com/selimbucher/native-instruments"
 license=('GPL-3.0-or-later')
 depends=('python' 'wine>=11' 'winetricks' 'cabextract' '7zip' 'msitools'
-         'procps-ng' 'xorg-server-xvfb' 'zenity' 'xdg-utils'
+         'alsa-lib' 'procps-ng' 'xorg-server-xvfb' 'zenity' 'xdg-utils'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
              'mingw-w64-gcc')
@@ -18,7 +18,7 @@ optdepends=('wine-staging: recommended Wine build for Native Instruments'
             'yad: nicer-looking setup progress dialog')
 # pinned to the release commit: GitHub's archive tarballs are not byte-stable
 # (v2.1.3's was regenerated in Aug 2026 with a different sha256)
-_commit=8a6259fa55b4e8ff69de682a7e8cfa420dee26e3
+_commit=dcbe9ac83cc301c7aeee18c0ffe1ac47e4f82491
 source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -27,20 +27,27 @@ build() {
   # the Kontakt installer msi shim (shim/README.md), built here, no binary shipped
   make -C shim CC=i686-w64-mingw32-gcc
   cp shim/msi_shim32.dll src/ni_wine/data/msi_shim32.dll
+  # NI controller support (hardware/README.md)
+  make -C hardware install CC=x86_64-w64-mingw32-gcc
+  # MK3 MIDI mode without NI's software (maschine/README.md)
+  make -C maschine
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$pkgname"
   python -m pytest
+  make -C maschine check
 }
 
 package() {
   cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm755 maschine/ni-maschine "$pkgdir/usr/bin/ni-maschine"
   install -Dm644 src/ni_wine/data/native-access.desktop \
     "$pkgdir/usr/share/applications/native-access.desktop"
   install -Dm644 src/ni_wine/data/native-access.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/native-access.svg"
+  install -Dm644 src/ni_wine/data/70-ni-wine.rules "$pkgdir/usr/lib/udev/rules.d/70-ni-wine.rules"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

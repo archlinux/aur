@@ -1,6 +1,6 @@
 pkgbase = ni-wine
 	pkgdesc = Native Instruments software under Wine: setup, launch and product management
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/selimbucher/native-instruments
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = ni-wine
 	depends = cabextract
 	depends = 7zip
 	depends = msitools
+	depends = alsa-lib
 	depends = procps-ng
 	depends = xorg-server-xvfb
 	depends = zenity
@@ -27,7 +28,7 @@ pkgbase = ni-wine
 	optdepends = wine-staging: recommended Wine build for Native Instruments
 	optdepends = xdotool: repositions off-screen windows on X11 desktops
 	optdepends = yad: nicer-looking setup progress dialog
-	source = ni-wine::git+https://github.com/selimbucher/native-instruments.git#commit=8a6259fa55b4e8ff69de682a7e8cfa420dee26e3
+	source = ni-wine::git+https://github.com/selimbucher/native-instruments.git#commit=dcbe9ac83cc301c7aeee18c0ffe1ac47e4f82491
 	sha256sums = SKIP
 
 pkgname = ni-wine
