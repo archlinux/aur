@@ -1,0 +1,23 @@
+pkgbase = lightforge
+	pkgdesc = Install, update and play World of Warcraft on Linux, and a home for all your other Battle.net games
+	pkgver = 1.0.0beta.11
+	pkgrel = 1
+	url = https://github.com/LightforgeProject/lightforge
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = systemd-libs
+	depends = python
+	optdepends = lib32-gnutls: 32-bit runtime for Battle.net (needs multilib)
+	optdepends = lib32-freetype2: 32-bit runtime for Battle.net (needs multilib)
+	optdepends = lib32-vulkan-icd-loader: 32-bit runtime for Battle.net (needs multilib)
+	optdepends = mangohud: the in-game overlay Lightforge can enable per game
+	conflicts = lightforge-bin
+	options = !lto
+	source = lightforge-1.0.0beta.11.tar.gz::https://github.com/LightforgeProject/lightforge/archive/refs/tags/v1.0.0-beta.11.tar.gz
+	sha256sums = f7d968c1d2fac0820cb1daf1167996ac8fe10e1fa65f9eeabe5cf2020ef66846
+
+pkgname = lightforge
