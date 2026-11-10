@@ -4,7 +4,7 @@
 # Certificate installed at /usr/share/adguard-cli/
 
 pkgname=adguard-cli-bin
-pkgver=1.5.0
+pkgver=1.5.1
 _pkgstatus=release
 pkgrel=1
 pkgdesc='Surf the Web ad-free and safely. Shields up'
@@ -19,7 +19,7 @@ _full_name="adguard-cli-${pkgver}-linux-${arch}"
 source=(
   "https://github.com/AdguardTeam/AdGuardCLI/releases/download/v${pkgver}/${_full_name}.tar.gz"
 )
-sha256sums=('e515de4a4b36d31067416731abe1450e494edd3743df766d9e4673b9ed9f3e28')
+sha256sums=('f37556565664cef0e4ad385f8496824aae79f43ac97f0117f23f79d434e83d00')
 
 package() {
   cd "${srcdir}/${_full_name}"
