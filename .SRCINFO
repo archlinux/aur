@@ -1,17 +1,17 @@
 pkgbase = rakazo-bin
 	pkgdesc = Open-source Grok Bot alternative. Choose your own model and sandbox.
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://rakazo.com/
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron45
-	provides = rakazo=0.8.0
+	provides = rakazo=0.9.0
 	conflicts = rakazo
-	source = rakazo-0.8.0-x86_64.AppImage::https://github.com/elie222/rakazo/releases/download/v0.8.0/Rakazo-0.8.0.AppImage
+	source = rakazo-0.9.0-x86_64.AppImage::https://github.com/elie222/rakazo/releases/download/v0.9.0/Rakazo-0.9.0.AppImage
 	source = rakazo.js
 	source = rakazo.sh
-	sha256sums = 3cab94ff07e1b26ed491056f7bc859210e9cf05f1da5a0b1166af43308e32e5e
+	sha256sums = 4af36fb4c472e5038d03d204190d6e17c660ea39c1a386131cf424a4b27abe1c
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
 	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
