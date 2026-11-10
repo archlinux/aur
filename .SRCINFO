@@ -1,6 +1,6 @@
 pkgbase = rgy-search-bin
 	pkgdesc = Whole-filesystem name search and content search in one stack (binary release)
-	pkgver = 0.1.10.2
+	pkgver = 0.1.10.3
 	pkgrel = 1
 	url = https://github.com/danalec/rgy
 	install = rgy-search-bin.install
@@ -11,7 +11,7 @@ pkgbase = rgy-search-bin
 	conflicts = rgy-search-avx2-bin
 	conflicts = rgy-search-znver4-bin
 	options = !strip
-	source = rgy-v0.1.10.2-x86_64-linux.tar.gz::https://github.com/danalec/rgy/releases/download/rgy-v0.1.10.2/rgy-v0.1.10.2-x86_64-linux.tar.gz
-	sha256sums = a4130ec180d7dcf415bb8f28a92befafc45aab025f5569b7a2b8f54eefa4c693
+	source = rgy-v0.1.10.3-x86_64-linux.tar.gz::https://github.com/danalec/rgy/releases/download/rgy-v0.1.10.3/rgy-v0.1.10.3-x86_64-linux.tar.gz
+	sha256sums = 302ba2c06cc396e8391e8da9ad8e4aafe1007c6b277c219c3d6d19b301cb8af3
 
 pkgname = rgy-search-bin
