@@ -1,6 +1,6 @@
 pkgbase = routinator-bin
 	pkgdesc = An RPKI Validator and RTR server written in Rust
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://nlnetlabs.nl/projects/routing/routinator/
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = routinator-bin
 	conflicts = routinator-git
 	options = !debug
 	backup = etc/routinator/routinator.conf
-	source = routinator_0.16.0.amd64.deb::https://packages.nlnetlabs.nl/linux/debian/pool/main/r/routinator/routinator_0.16.0-1trixie_amd64.deb
+	source = routinator_0.16.1.amd64.deb::https://packages.nlnetlabs.nl/linux/debian/pool/main/r/routinator/routinator_0.16.1-1trixie_amd64.deb
 	source = routinator-sysusers.conf
 	source = routinator-tmpfiles.conf
-	sha256sums = 7fa8456ec152eecff711c0456f49c26d5569a750e8ed627f25d758d2f02c3820
+	sha256sums = 92cb18110dba89911ed72cee6dc38ccf4b4dfe30c6261a638030ff1042912c5a
 	sha256sums = ac2dd416119d1c526bdffe792d0e204bc9dc91a7cc198754cafb7fdde646c96a
 	sha256sums = be4587d512bdf8ad98f3f93ac16b5cc1f5a423f4f16f088d66f960937b44c46f
 
