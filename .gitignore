@@ -1,0 +1,7 @@
+# Bare clone of the source repo made by updpkgsums and makepkg
+proton-vpn-qt-app/
+
+# makepkg build output
+src/
+pkg/
+*.pkg.tar.zst

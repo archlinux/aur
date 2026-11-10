@@ -1,3 +1,3 @@
 #!/bin/bash
 
-makepkg --printsrcinfo > .SRCINFO
+updpkgsums && makepkg --printsrcinfo > .SRCINFO
