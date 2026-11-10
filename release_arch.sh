@@ -58,7 +58,8 @@ mapfile -t TREE < <(git -C "$SRC" ls-tree -r --name-only "v$VER" -- pkg \
                     | grep -v '__pycache__')
 mapfile -t LISTED < <(grep -oE 'pkg/[A-Za-z0-9_./-]+' PKGBUILD | sort -u)
 
-is_listed()  { local f="$1"; local l; for l in "${LISTED[@]}"; do [ "$l" = "$f" ] && return 0; done; return 1; }
+# A listed DIRECTORY (cp -r pkg/.../vendor) covers every file under it.
+is_listed()  { local f="$1"; local l; for l in "${LISTED[@]}"; do [ "$l" = "$f" ] && return 0; [[ "$f" == "$l"/* ]] && return 0; done; return 1; }
 is_excused() {
     case "$1" in
         # Debian-only packaging metadata; pacman has install= instead.
@@ -74,23 +75,10 @@ is_excused() {
         # cambrian's state out of /dev/shm as a one-way read and imports
         # nothing from here, so shipping it would be dead weight.
         pkg/usr/share/hls-livecam-server/vendor/cambrian/*) return 0 ;;
-        # Vendored pyfakewebcam, which exists for Debian only: Debian and
-        # Ubuntu do not package it, so the .deb carries this copy instead of
-        # pip-installing it as root at install time. Arch declares
-        # python-pyfakewebcam as a dependency and broadcast-api prefers the
-        # distro copy, so the fallback never fires here and shipping it would
-        # be dead weight. If that dependency ever leaves the repos, package
-        # these instead of excusing them.
-        pkg/usr/share/hls-livecam-server/vendor/pyfakewebcam/*) return 0 ;;
-        pkg/usr/share/hls-livecam-server/vendor/README.md) return 0 ;;
-        # The timer has no .service in the tree -- systemd would default to
-        # livecam-sync.service, which pkg/ does not contain. Packaging the
-        # timer alone would ship a unit that cannot fire. Tracked as a gap
-        # in the source repo, not papered over here.
-        pkg/etc/systemd/system/livecam-sync.timer) return 0 ;;
-        # Referenced by nothing in pkg/ or hosts/. Shipping scripts no
-        # installed thing calls is how payloads grow unexamined.
-        pkg/usr/local/lib/livecam-tools/*) return 0 ;;
+        # Debian fetches the detector model at install time (postinst points
+        # at this script on failure); the Arch package carries the model as
+        # a checksummed source instead, so the script has nothing to do here.
+        pkg/usr/share/hls-livecam-server/fetch-model.sh) return 0 ;;
     esac
     return 1
 }

@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=laptop-livecam
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -16,7 +16,13 @@ conflicts=('hls-livecam-server')
 replaces=('hls-livecam-server')
 url="https://github.com/thefangeddeity/laptop-livecam"
 license=('GPL-3.0-or-later')
-depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow' 'python-numpy' 'python-opencv' 'python-pyfakewebcam' 'pyside6' 'v4l2loopback-dkms' 'smartmontools' 'v4l-utils' 'wget' 'ttf-dejavu')
+depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow' 'python-numpy' 'python-opencv' 'pyside6' 'v4l2loopback-dkms' 'smartmontools' 'v4l-utils' 'wget' 'ttf-dejavu' 'alsa-utils')
+# alsa-utils: setup finds the microphone with arecord -l and the publisher sets
+# capture levels with amixer. Without it a fresh node points AUDIO_DEVICE at
+# the hw:0,0 default, which is often the HDMI sink or the ALSA loopback.
+optdepends=('avahi: announce this node to peers over mDNS (livecam-capabilities)'
+            'tailscale: HTTPS on the tailnet (tailscale serve)'
+            'python-apprise: alert destinations other than Telegram')
 install=laptop-livecam.install
 # The detector model is fetched here, not carried in the repo. It used to be
 # a 12.3 MiB blob in every clone that NOTHING installed -- the file the nodes
@@ -30,7 +36,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livec
         "laptop-livecam.install"
         "$_model::https://github.com/thefangeddeity/laptop-livecam/releases/download/$_model_tag/$_model")
 noextract=("$_model")
-sha256sums=('1d56178918374f78bc86c0e1d9c897bcba4d11ef564a09df1c3635fa2dfe1c19'
+sha256sums=('33f68e5f9ae4c7bc743baa7394be2d9c831fd5068f2cc0442eba1441b9f38c1d'
             '1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c'
             'b2bc52f40e8e1c532427d5bde3575a5d5b571b739fab2c6df443733ed1589cbd')
 
@@ -70,10 +76,12 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/camdash-gui.desktop"
 
     # ── Shared data ──────────────────────────────────────────────────────────
-    install -Dm755 pkg/usr/share/hls-livecam-server/camdash \
-                   "$pkgdir/usr/share/hls-livecam-server/camdash"
-    install -Dm755 pkg/usr/share/hls-livecam-server/camstack \
-                   "$pkgdir/usr/share/hls-livecam-server/camstack"
+    # setup's shared half: the device.env merge, the alert-file stub and the
+    # post-install measurement, one implementation for Arch and Debian.
+    install -Dm755 pkg/usr/share/hls-livecam-server/llc-configure \
+                   "$pkgdir/usr/share/hls-livecam-server/llc-configure"
+    install -Dm644 pkg/usr/share/hls-livecam-server/device.env.legacy-comments \
+                   "$pkgdir/usr/share/hls-livecam-server/device.env.legacy-comments"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-setup-arch \
                    "$pkgdir/usr/share/hls-livecam-server/hls-livecam-setup"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-repair \
@@ -115,8 +123,14 @@ package() {
     # fresh Arch install left Chrome/Firefox viewers silently broken (no
     # crash -- the page guards every Hls reference -- just no video),
     # exactly the failure class the vendoring was meant to prevent.
-    install -Dm644 pkg/usr/share/hls-livecam-server/vendor/hls.min.js \
-                   "$pkgdir/usr/share/hls-livecam-server/vendor/hls.min.js"
+    # THE WHOLE vendor/ TREE, not a list. Listing files is how hls.min.js was
+    # missed once and pyfakewebcam was missed again: the deb shipped the
+    # vendored copy, this package depended on python-pyfakewebcam instead,
+    # and that distro build calls ndarray.tostring(), removed in numpy 2 --
+    # so on a current Arch no frame ever reached /dev/video10.
+    cp -r pkg/usr/share/hls-livecam-server/vendor "$pkgdir/usr/share/hls-livecam-server/"
+    install -Dm644 pkg/usr/share/hls-livecam-server/device.env.template \
+                   "$pkgdir/usr/share/hls-livecam-server/device.env.template"
     # VERSION and PRODUCT are read by broadcast-api at /api/info time. They
     # were never installed here, so an Arch node reported an empty version
     # tag in its header and fell back to the built-in product identity --
@@ -170,6 +184,22 @@ package() {
                    "$pkgdir/usr/lib/systemd/system/ffmpeg-cam-dark.service"
     install -Dm644 pkg/usr/lib/systemd/system/ffmpeg-cam.service \
                    "$pkgdir/usr/lib/systemd/system/ffmpeg-cam.service"
+
+    # Capability probe: writes capabilities.json to the web root and announces
+    # it over mDNS. Peers and the home page read it. Live on tanzania since
+    # Oct 15 from a hand copy in /usr/local/lib/livecam-tools -- which is why it
+    # is installed HERE instead: pacman refuses to install over unowned files,
+    # so claiming the hand copy's path made the upgrade fail on that node.
+    install -Dm755 pkg/usr/share/hls-livecam-server/livecam-tools/announce-capabilities \
+                   "$pkgdir/usr/share/hls-livecam-server/livecam-tools/announce-capabilities"
+    install -Dm755 pkg/usr/share/hls-livecam-server/livecam-tools/node-capabilities \
+                   "$pkgdir/usr/share/hls-livecam-server/livecam-tools/node-capabilities"
+    install -Dm755 pkg/usr/share/hls-livecam-server/livecam-tools/publish-capabilities \
+                   "$pkgdir/usr/share/hls-livecam-server/livecam-tools/publish-capabilities"
+    install -Dm644 pkg/etc/systemd/system/livecam-capabilities.service \
+                   "$pkgdir/usr/lib/systemd/system/livecam-capabilities.service"
+    install -Dm644 pkg/etc/systemd/system/livecam-capabilities.timer \
+                   "$pkgdir/usr/lib/systemd/system/livecam-capabilities.timer"
 
     # ── tmpfiles.d ───────────────────────────────────────────────────────────
     install -Dm644 pkg/usr/lib/tmpfiles.d/hls-livecam.conf \
