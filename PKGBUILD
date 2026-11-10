@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 pkgname=auggie
 _npmname=@augmentcode/auggie
-pkgver=0.37.0
+pkgver=0.37.1
 pkgrel=1
 pkgdesc="Augment Code's agentic AI CLI for context-aware code analysis and automation"
 arch=('any')
@@ -15,7 +15,7 @@ replaces=('auggie-bin')
 source=("https://registry.npmjs.org/${_npmname}/-/${pkgname}-${pkgver}.tgz"
         "auggie.js")
 noextract=("${pkgname}-${pkgver}.tgz")
-b2sums=('7bfd6a52d024fdc7925f85b3b11944c19e0a0daeb471b9748e4c1f25b5e339e219ebb01187cc03799625e1bb007a820d51afa953c13391a8668f263ec3d02d3d'
+b2sums=('09201d7a5d093e999809d6753d5564b7cbabf9b7a12b1eaa7690fff7ae47e3fa0c9f92f6f61f23d7ceb9c6c35e0f2faf19dba48c43a939e29be5a8e91d7c7837'
         '38b4443caf787bf354e9b64fe09eb3f1e995fa6d58502ca4a3f8a094585d44aab4370e326009d1938a790afd291138c7906f7a66ef2995720c98382b779ef3b5')
 
 check() {
