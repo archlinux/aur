@@ -1,0 +1,22 @@
+pkgbase = colibri-git
+	pkgdesc = Colibri hierarchical MoE inference engine (Git source, CPU, web dashboard)
+	pkgver = 2.1.0.r5150.g0a5504a1
+	pkgrel = 1
+	url = https://github.com/JustVugg/colibri
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = base-devel
+	makedepends = nodejs
+	makedepends = npm
+	depends = glibc
+	depends = gcc-libs
+	depends = python
+	provides = colibri
+	conflicts = colibri
+	conflicts = colibri-bin
+	options = !lto
+	source = colibri::git+https://github.com/JustVugg/colibri.git#branch=main
+	sha256sums = SKIP
+
+pkgname = colibri-git
