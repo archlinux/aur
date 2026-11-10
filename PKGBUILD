@@ -8,7 +8,7 @@
 pkgname=nhiicc
 epoch=1
 pkgver=20240710.1
-pkgrel=5
+pkgrel=6
 pkgdesc='台灣健保卡網路註冊憑證元件 (National Health Insurance IC Card)'
 arch=('x86_64')
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
@@ -31,21 +31,21 @@ source=("CMS_mNHIICC_Setup-${pkgver}.Linux.zip::https://cloudicweb.nhi.gov.tw/cl
 noextract=("CMS_mNHIICC_Setup-${pkgver}.Linux.zip")
 # The zip's MD5 is published on https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/Eventesting.aspx
 md5sums=('3bbad14d8ce82a504811319e06c3cdac'
-         '887fa3deba843a992f2551a93833baaa'
+         '8887f22f98d0eaf0027eba6738a743e6'
          '1631a0754212a002c6d0e79dfaa48592'
          'e4a249ff4e638527a0bde9deec6eeb5a'
          '97e402f39fffe35e411419d062f6baf8'
          '5d373515b2479352b4155a9c61e4d252'
          'd343e62fc9c833710bbbed25f27364c8')
 sha256sums=('fb3473fd1a1a8c65c0972d8a39570abdbbb537cc32cac5c4c51527b1c1fce196'
-            '062ece967e4fec05db38bcf1a56cbd39efa0b95b7fc3bf10ae79c43d79c9ded8'
+            'b8544a3242fa1387a5f4968adef3f541ec5057b2cf2d9eeef7c729d81a23039f'
             'ca419c2455b42e31d3b0d033fad9650bd294312ca2a2dfb36ffb9ba076b7a687'
             '9b61d872e67f81d46f43a8ebafa65eb283233d4e1edbf396ecf0ec37567b47aa'
             '317539908f0bbf6b41adf8f963b52aa44288a5a6ce9cb5e7bdd9fc52fa65b1d9'
             'f3cf7e345b86f8db1609bc1db96f744be175cc8d383003d0c6324ca5e16c3396'
             'c32913b33252e71190af2066f08115c69bc9fddadf3bf29296e20c835389841c')
 b2sums=('3464fc13d444ad99b948ca5703bc33c30857c470a5a92289292a3b84893b606db769bb2efcb7bb185b87b9dc3e5e98426fdafc45ab2195d3f5764d2fc22d6634'
-        '76a0e91dff9c08e9a64cb67acb5341a803685262af9e570b64030601572543909ab332bef79ac96715c694d1d3b253d9b1cb12d742499c2900896c9dda6c830a'
+        'cec4d55546191a54a92247109f886a10117a1841b9bb7261eeee9f850e37877f262b65ca99eac98db396d5f70ec5a6fac09784cb2c151c2aba6ee14ac0f2cd4e'
         'c56ff01b6ed480b6cad8c9f8650aeb93581db9335e355253e1a13d7c9de79612b691cb721dd18c8e4b61e0d9dff5ab70ba905f6b82782397dd3b82ba0848bb34'
         '259a15130384efbc458575b0399b6324abe78daa96fead85d988a09a44097cbdeff0743d3593d11e60d966034df59c7986eebc57b6bf30509fb1ccfcdc6116fb'
         '538394cf5e3cc8926debde97ed6022c9a64c80139e4af14f4aa7ab33d85464d45326f5e4ea9b64a0a8c9ac20874883722276e1f7e8935aa1e2f713bdf3c579ea'

@@ -1,5 +1,8 @@
 [Unit]
 Description=台灣健保卡網路註冊憑證元件 (National Health Insurance IC Card)
+# Talk to pcscd over its socket; pcscd itself is socket-activated on demand
+Wants=pcscd.socket
+After=pcscd.socket
 
 [Service]
 Type=simple
