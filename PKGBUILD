@@ -1,7 +1,7 @@
 pkgname=qudelix-cli-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="A native macOS menu bar app for configuring the Qudelix 5K DAC/amp, over USB or Bluetooth."
+pkgdesc="Unofficial command-line control for the Qudelix 5K: volume, DAC filter, EQ, presets, AutoEq"
 arch=('x86_64')
 url="https://github.com/FrankieMa77/qudelix"
 license=('MIT')
@@ -12,13 +12,13 @@ depends=(
     'libgcc'
     'libstdc++'
 )
-provides=('qudelix')
-conflicts=('qudelix')
+provides=('qudelix-cli')
+conflicts=('qudelix-cli')
 options=('!strip' '!debug')
-source=("LICENSE::https://raw.githubusercontent.com/FrankieMa77/qudelix/refs/heads/main/LICENSE")
+source=("LICENSE::https://raw.githubusercontent.com/FrankieMa77/qudelix/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname%-bin}_${pkgver}_amd64.deb::https://github.com/FrankieMa77/qudelix/releases/download/v${pkgver}/qudelix_${pkgver}_amd64.deb")
 sha256sums=('bf471dedf60354a5ab065b9446dcdf99a047327e841a3ceca5182ef0f4cb4216')
-sha256sums_x86_64=('aef39778fffc26dd37a24c7c207c9b483f9c70a5a0b45e6d1e97b26e764510e2')
+sha256sums_x86_64=('ec468a01848bc80045f833c3b9d3fa40c3eaecbc62e0bed06e6d8169f839df9a')
 
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${srcdir}/"
