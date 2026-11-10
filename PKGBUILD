@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=lemon-studio-git
-pkgver=r1253.gb7b4241f
+pkgver=r1420.g415eaf26
 pkgrel=1
 pkgdesc='A free and open-source digital audio workstation written in Rust'
 arch=('x86_64')
