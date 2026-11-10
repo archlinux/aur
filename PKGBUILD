@@ -44,6 +44,9 @@ backup=(
     etc/xdg/xdg-desktop-portal/pila-portals.conf
     etc/xdg/xdg-desktop-portal-wlr/pila
 )
+# Not stripped: a crash is logged with a backtrace (`main::log_panics`), whose
+# frames need the function names (about 9 MB of 26).
+options=(!strip)
 source=("pila::git+$url.git")
 sha256sums=(SKIP)
 

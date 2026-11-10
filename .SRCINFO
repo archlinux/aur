@@ -31,6 +31,7 @@ pkgbase = pila-git
 	optdepends = pciutils: the GPU and its driver in pila-report (lspci)
 	provides = pila
 	conflicts = pila
+	options = !strip
 	backup = etc/xdg/xdg-desktop-portal/pila-portals.conf
 	backup = etc/xdg/xdg-desktop-portal-wlr/pila
 	source = pila::git+https://github.com/igalmarino/pila.git
