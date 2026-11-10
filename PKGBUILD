@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=agx
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Terminal step-through debugger for AI agent traces (Claude Code, Codex, Gemini, LangChain, Vercel AI SDK, OpenTelemetry GenAI)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('cargo')
 _tag="agx-tui-v${pkgver}"
 _srcdir="${pkgname}-${_tag}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('fa361f95aac8addd7ee53985fb45423f2686f6451d62462e342776ace6426742')
+sha256sums=('232fad54a1b5abd2fce2e19dc5f61b58da227562064f6bde898bade534fd52f2')
 
 # latestver: track agx-tui release tags only (agx-core / agx-mcp tag
 # independently in the same monorepo). Maintainer-only — gh is not a build dep.
