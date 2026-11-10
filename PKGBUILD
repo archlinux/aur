@@ -10,8 +10,8 @@
 # Maintainer: Kordian Bruck <k@bruck.me>
 
 pkgname=android-studio
-pkgver=2026.2.2.8
-_vername="rabbit2"
+pkgver=2026.2.2.9
+_vername="rabbit2-patch1"
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$_vername-linux.tar.gz"
         "$pkgname.desktop"
         "license.html")
-b2sums=('5be11c433e591e36148fbcb11dea123760fd25e6ed629bbf212e65eed69b786897a432bce74133bad7870577a83be3b246dd43a91331b22bb4037ae05fae67e1'
+b2sums=('12379d1b1fc49c6ecdd9ee20d25d384c86641d39e8c256bfa083898e994bc8e83ef0cc20b7098ca8204158733e72e3725c6a89790b934c6bb9ad8223249a96f3'
         '0b978b7fdbcd277cf432080572b141a760ad169984c9cb09f11c6f3ca0be807483545685c86853329bc4622bf516c7a668148bd25ada906fa7289bb9a7c7ccf8'
         '43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67')
 
