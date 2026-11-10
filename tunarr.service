@@ -5,6 +5,7 @@ After=network-online.target
 
 [Service]
 Environment=TUNARR_MEILISEARCH_PATH=/usr/bin/tunarr-meilisearch
+Environment=TUNARR_ERSATZTV_NEXT_PATH=/usr/bin/tunarr-ersatztv
 EnvironmentFile=/etc/conf.d/tunarr
 User=tunarr
 Group=media
