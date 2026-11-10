@@ -25,7 +25,7 @@ declare -gA _soname_depends=(
 	["libgcc"]="libgcc_s.so"
 	["libstdc++"]="libstdc++.so"
 	["libxml2-legacy"]="libxml2.so"
-	["openssl"]="libcrypto.so libssl.so"
+	["openssl-3"]="libcrypto.so libssl.so"
 )
 checkdepends=(
 	"${_depends[@]}"
