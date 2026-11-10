@@ -1,6 +1,6 @@
 # Maintainer: Happilli <https://github.com/happilli>
 pkgname=ryu
-pkgver=0.0.50
+pkgver=0.0.51
 pkgrel=1
 pkgdesc="Collection of Qt6 QML plugins for ryu.."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('qt6-base' 'qt6-declarative' 'cliphist' 'wl-clipboard' 'pipewire')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-shadertools')
 url="https://github.com/Happilli/ryu"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/ryu/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8dcd450ffe9647bfe0ec69d3c39f563b6837786eea871c27e2f89ecf5c77a627')
+sha256sums=('48097d11eb8fc490a1e4e4b1bd42f8413a81cb4124c00a4630e51ff9ea37ce73')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -G Ninja && ninja -C build
