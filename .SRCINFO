@@ -1,0 +1,25 @@
+pkgbase = ragtime
+	pkgdesc = Chat and file transfer over HF with Data2G
+	pkgver = 0.2.0beta
+	pkgrel = 1
+	url = https://github.com/baitisj/ragtime
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = glib2
+	depends = gtk3
+	depends = hamlib
+	depends = libpipewire
+	depends = pango
+	depends = wxwidgets-common
+	depends = wxwidgets-gtk3
+	optdepends = data2g: data2g-host, the modem Ragtime talks to (can also run on another machine)
+	source = ragtime-0.2.0beta.tar.gz::https://github.com/baitisj/ragtime/archive/refs/tags/v0.2.0-beta.tar.gz
+	sha256sums = 13452092555fbf840970a0b61e141b0be0167cf48b8d6d74af6bc3a8bf47192f
+
+pkgname = ragtime
