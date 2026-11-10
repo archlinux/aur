@@ -1,0 +1,25 @@
+pkgbase = ducter-bin
+	pkgdesc = Personal AI that dispatches work to coding agents on your own machines and reports back
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://ducter.ai
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = git
+	optdepends = claude-code: an AI for tasks to run on, after `claude auth login`
+	optdepends = codex: alternative AI backend, after `codex login`
+	provides = ducter
+	conflicts = ducter
+	options = !strip
+	options = !debug
+	source_x86_64 = ducter-0.0.8-linux-x64.tar.gz::https://github.com/wey-gu/ducter/releases/download/v0.0.8/ducter-0.0.8-linux-x64.tar.gz
+	source_x86_64 = LICENSE::https://github.com/wey-gu/ducter/raw/v0.0.8/LICENSE
+	sha256sums_x86_64 = aef7d6481dae33cdcea776066c50bcadb2681fc6e80fb71a14ee6d6dcbdc3a61
+	sha256sums_x86_64 = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_aarch64 = ducter-0.0.8-linux-arm64.tar.gz::https://github.com/wey-gu/ducter/releases/download/v0.0.8/ducter-0.0.8-linux-arm64.tar.gz
+	source_aarch64 = LICENSE::https://github.com/wey-gu/ducter/raw/v0.0.8/LICENSE
+	sha256sums_aarch64 = 5f6ca037948d8398a82f8852076bd389254aaa728ae4eea6af2f07ec06822568
+	sha256sums_aarch64 = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+pkgname = ducter-bin
