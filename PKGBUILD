@@ -1,7 +1,7 @@
 # Maintainer: Adil Bouzit <adil.bouzit@gmail.com>
 pkgname=battlenet-proton
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Run Battle.net with GE-Proton, with an update dialog, health check and rollback"
 arch=('any')
 url="https://gitlab.com/S-Zilean/battlenet-proton"
@@ -18,7 +18,7 @@ optdepends=(
     'lib32-vulkan-driver: 32-bit Vulkan driver for your GPU'
 )
 source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('84caa50f9cfbf6f2c271061a8eb04727f050f11feb6dcb6793b405d2b79f8983')
+sha256sums=('d7426f57570c0aaa476f39c1fa5344a9bf48c616cc10084ab84fa7c71be28cc9')
 
 package() {
     cd "$pkgname-v$pkgver"
