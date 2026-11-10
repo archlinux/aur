@@ -1793,7 +1793,7 @@ index 00000000..9f0e7316
 +};
 diff --git a/ai/aiconversationpage.cpp b/ai/aiconversationpage.cpp
 new file mode 100644
-index 00000000..85a8ab5f
+index 00000000..04093ab0
 --- /dev/null
 +++ b/ai/aiconversationpage.cpp
 @@ -0,0 +1,412 @@
@@ -2186,7 +2186,7 @@ index 00000000..85a8ab5f
 +                // landed. Embedded inline; shown only in the chat, never
 +                // sent back to the model.
 +                html += QStringLiteral("<div style='padding:2px 10px;'>"
-+                                       "<img src='data:image/png;base64,%1' width='220'/></div>")
++                                       "<img src='data:image/png;base64,%1' width='150'/></div>")
 +                            .arg(QString::fromLatin1(entry.aimImage.toBase64()));
 +            }
 +            break;
