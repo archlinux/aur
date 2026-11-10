@@ -5,7 +5,7 @@
 _pkgname=nut
 pkgname=nut-monitor
 pkgver=2.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc='GUI to manage devices connected a NUT server'
 arch=(any)
 url=http://www.networkupstools.org/
@@ -51,9 +51,9 @@ build() {
     --datadir=/usr/share/nut
     --libexecdir=/usr/lib/nut
     --sbindir=/usr/bin
-    --sysconfdir=/etc/nut
     --with-altpidpath=/run/nut
     --with-cgipath=/usr/share/nut/cgi
+    --with-confdir=/etc/nut
     --with-drvpath=/usr/lib/nut
     --with-htmlpath=/usr/share/nut/html
     --with-pidpath=/run/nut
