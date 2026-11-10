@@ -1,7 +1,7 @@
 pkgbase = rgx-search-avx2-bin
 	pkgdesc = Ripgrep-compatible search inside PDFs, Office documents, archives, 3D models, LLM checkpoints, databases and e-mail (AVX2 optimized binary release)
 	pkgver = 0.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danalec/rgx
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,8 @@ pkgbase = rgx-search-avx2-bin
 	depends = gcc-libs
 	provides = rgx-search-bin
 	conflicts = rgx-search-bin
+	conflicts = rgx-search-v2-bin
+	conflicts = rgx-search-v4-bin
 	conflicts = rgx-search-znver4-bin
 	options = !strip
 	source = rgx-v0.1.10-avx2-linux.tar.gz::https://github.com/danalec/rgx/releases/download/rgx-v0.1.10/rgx-v0.1.10-avx2-linux.tar.gz

@@ -1,14 +1,14 @@
 # Maintainer: danalec
 pkgname=rgx-search-avx2-bin
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Ripgrep-compatible search inside PDFs, Office documents, archives, 3D models, LLM checkpoints, databases and e-mail (AVX2 optimized binary release)"
 arch=('x86_64')
 url="https://github.com/danalec/rgx"
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 provides=('rgx-search-bin')
-conflicts=('rgx-search-bin' 'rgx-search-znver4-bin')
+conflicts=('rgx-search-bin' 'rgx-search-v2-bin' 'rgx-search-v4-bin' 'rgx-search-znver4-bin')
 source=("rgx-v${pkgver}-avx2-linux.tar.gz::https://github.com/danalec/rgx/releases/download/rgx-v${pkgver}/rgx-v${pkgver}-avx2-linux.tar.gz")
 sha256sums=('f1332ba39ccad2b4df3274c5103652798f14c9d085e7ab41ea5a23209028a45e')
 options=('!strip')
