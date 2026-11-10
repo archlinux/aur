@@ -1,6 +1,6 @@
 pkgbase = yet-another-electron-term
 	pkgdesc = All-in-one remote connection manager. SSH/Telnet/WinRM/Serial terminals, SCP/FTP/SMB/WebDav/S3 file explorer, VNC/SPICE/RDP remote desktop.
-	pkgver = 7.6.0
+	pkgver = 7.7.0
 	pkgrel = 1
 	url = https://github.com/invince/YAET
 	arch = any
@@ -10,15 +10,15 @@ pkgbase = yet-another-electron-term
 	makedepends = git
 	makedepends = gendesk
 	makedepends = jq
-	depends = electron41
+	depends = electron42
 	depends = python
 	depends = libsecret
 	depends = nodejs
-	source = yet-another-electron-term-7.6.0.tar.gz::https://github.com/invince/YAET/archive/refs/tags/v7.6.0.tar.gz
+	source = yet-another-electron-term-7.7.0.tar.gz::https://github.com/invince/YAET/archive/refs/tags/v7.7.0.tar.gz
 	source = yet-another-electron-term.js
 	source = yet-another-electron-term.sh
-	sha256sums = 82d6b5947ce86f3de87cc20fa9c299f0d763528c5047840e18d033d8a59346bd
+	sha256sums = da822d72d3ff8b5437f505ee5aceb2b3ded8e7da04314d042673365bd62e1013
 	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
-	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = yet-another-electron-term

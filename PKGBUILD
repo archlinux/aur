@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=7.6.0
-_electronversion=41
+pkgver=7.7.0
+_electronversion=42
 _nodeversion=24
 pkgrel=1
 pkgdesc="All-in-one remote connection manager. SSH/Telnet/WinRM/Serial terminals, SCP/FTP/SMB/WebDav/S3 file explorer, VNC/SPICE/RDP remote desktop."
@@ -27,9 +27,9 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('82d6b5947ce86f3de87cc20fa9c299f0d763528c5047840e18d033d8a59346bd'
+sha256sums=('da822d72d3ff8b5437f505ee5aceb2b3ded8e7da04314d042673365bd62e1013'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
