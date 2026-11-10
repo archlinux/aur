@@ -4,7 +4,7 @@
 # release version, pkgrel, source location, and checksum into the AUR metadata.
 
 pkgname=chan-desktop
-pkgver=0.126.0
+pkgver=0.127.0
 pkgrel=1
 pkgdesc='Supercharged terminal emulator, desktop app'
 # Native CI builds both architectures; aarch64 is observed-only for v0.73.0.
@@ -33,8 +33,8 @@ conflicts=('chan')
 # Cargo owns thin LTO. makepkg's additional -flto=auto reaches native C/C++
 # dependencies and can leave rustc unable to resolve their symbols at link time.
 options=(!lto)
-source=('chan-0.126.0.tar.gz::https://github.com/fiorix/chan/archive/v0.126.0.tar.gz')
-sha256sums=('493a868564372ea6aa54f714f533953c46582817e3c5d00f7e2eaf1364f5768b')
+source=('chan-0.127.0.tar.gz::https://github.com/fiorix/chan/archive/v0.127.0.tar.gz')
+sha256sums=('f3314d97199b373383ef59a57642bcc42bfba25140aa3ed7b17ddeb8bb51c259')
 
 # RUSTUP_TOOLCHAIN keeps the tree's rust-toolchain.toml pin from making a
 # rustup-provided cargo download a second toolchain mid-build, per Arch's Rust
