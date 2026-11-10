@@ -1,0 +1,18 @@
+pkgbase = bsv-desktop-bin
+	pkgdesc = A cross-platform desktop wallet application for the BSV Blockchain, built with Electron and Vite. BSV Desktop provides a complete wallet interface with support for both self-custody (local) and remote storage options.
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/bsv-blockchain/bsv-desktop
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron41
+	provides = bsv-desktop=3.3.1
+	conflicts = bsv-desktop
+	source = bsv-desktop-3.3.1.deb::https://github.com/bsv-blockchain/bsv-desktop/releases/download/v3.3.1/bsv-desktop-electron_3.3.1_amd64.deb
+	source = bsv-desktop.js
+	source = bsv-desktop.sh
+	sha256sums = 3e000694b82b8da852142f5bc1b5266dab8de8c618ef6949e1f73b6a1d3ddbf3
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = bsv-desktop-bin
