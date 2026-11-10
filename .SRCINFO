@@ -1,14 +1,14 @@
 pkgbase = dux-calendar-git
 	pkgdesc = Local, Google, Microsoft, and CalDAV calendars for the Dux desktop (git)
 	pkgver = 2.1.0.r1.g1a731d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duxlabs-dev/dux-calendar
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	depends = quickshell
+	depends = dux-qt-base
 	depends = qt6-declarative
 	provides = dcal=2.1.0.r1.g1a731d7
 	provides = dux-calendar=2.1.0.r1.g1a731d7
