@@ -8,6 +8,7 @@ pkgbase = ttf-google-sans-hinted
 	makedepends = git
 	makedepends = python
 	makedepends = python-fonttools
+	makedepends = python-freetype-py
 	makedepends = parallel
 	makedepends = fontforge
 	makedepends = ttfautohint
