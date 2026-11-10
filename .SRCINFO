@@ -1,6 +1,6 @@
 pkgbase = defold-bin
 	pkgdesc = Defold is a completely free to use game engine for development of desktop, mobile and web games.
-	pkgver = 1.14.0.d295ed4
+	pkgver = 1.14.1.ee283d4
 	pkgrel = 1
 	url = https://defold.com/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = defold-bin
 	conflicts = defold
 	replaces = defold
 	options = !strip
-	source = defold-bin-1.14.0.d295ed4.tar.gz::https://d.defold.com/archive/stable/d295ed4edff2e49072719835713e625f409849f1/stable/editor2/Defold-x86_64-linux.tar.gz
-	source = defold-bin-1.14.0.d295ed4-LICENSE.txt::https://github.com/defold/defold/raw/d295ed4edff2e49072719835713e625f409849f1/LICENSE.txt
+	source = defold-bin-1.14.1.ee283d4.tar.gz::https://d.defold.com/archive/stable/ee283d4dad9fa451dd6399d83602e1dc25133681/stable/editor2/Defold-x86_64-linux.tar.gz
+	source = defold-bin-1.14.1.ee283d4-LICENSE.txt::https://github.com/defold/defold/raw/ee283d4dad9fa451dd6399d83602e1dc25133681/LICENSE.txt
 	source = Defold.desktop
-	sha256sums = 9fdb9d22fe6d970a27a705b5cf20a7e29db18521c12190be82c28fd6cf1579eb
+	sha256sums = 50012824c0dddd36e4bb461d86701780c38881f4f926b9794768a1775683df02
 	sha256sums = be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a
 	sha256sums = 915892954b9156c9cd8e8b85b959de897e240d438289192d973804c4cf04f9bf
 
