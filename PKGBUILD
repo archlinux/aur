@@ -79,6 +79,7 @@ package() {
         content=${content%x}
         rendered=${content//PEPPER/"$peppers"}
         rendered=${rendered//SIGNINGKEYS/"$keys"}
+        mkdir -p "$pkgdir/etc"
         printf '%s' "$rendered" > "$pkgdir/etc/indielinks.toml"
         chmod 600 "$pkgdir/etc/indielinks.toml"
     else
