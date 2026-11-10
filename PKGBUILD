@@ -14,7 +14,7 @@
 
 pkgname=ivar-bin
 _pkgname=ivar
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Multi-repo worktrees for coding agents: one feature across repos, on one branch, one PR per repo (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -38,12 +38,12 @@ source=(
     "$_pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/mnzsss/$_pkgname/v$pkgver/LICENSE"
     "$_pkgname-$pkgver-NOTICE::https://raw.githubusercontent.com/mnzsss/$_pkgname/v$pkgver/NOTICE"
 )
-sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30' 'ab849d302d516ef62a39d65a01205355bf73e3cac4041cf77c3cfaeeaf4da748')
+sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30' '1e7b87100a718e00eddad62c6b0f28b1d6c7fe59421b62f7e504e956981947ec')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64")
-sha256sums_x86_64=('5be6ae2486c45731d905938da59b6921f762d45e4bc99458dc6ff444defbf56c')
+sha256sums_x86_64=('2514a671d10b7a818da89dbc4c311b5934b49a0d30dcc1ecbea89dcbce612b5c')
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64")
-sha256sums_aarch64=('a13bdce06e0ff6b0d6eec7d6c2f21de0d7171167a7d265e4798cbbcd175a9e93')
+sha256sums_aarch64=('2d6eb659d4988e062ff31e13e3da19ac961e4ee80819e2c77717c14ccae008bd')
 
 package() {
     install -Dm0755 "$srcdir/$_pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"
