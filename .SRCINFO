@@ -1,6 +1,6 @@
 pkgbase = grut-bin
 	pkgdesc = A terminal file explorer with full Git and GitHub integration, AI chat, and reactive panels that stay in sync as you navigate
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/jongio/grut
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = grut-bin
 	provides = grut
 	conflicts = grut
 	options = !strip
-	source_x86_64 = grut-x86_64-0.10.0.tgz::https://github.com/jongio/grut/releases/download/v0.10.0/grut_0.10.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 858ce2a841f25d9d4cc86cd1d80ad385833632d31ce2b5e5084f93eb6acb0163
-	source_aarch64 = grut-aarch64-0.10.0.tgz::https://github.com/jongio/grut/releases/download/v0.10.0/grut_0.10.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 62d6b9e2218d47d552da65c470ed620863ae1e7a5050d70ab75626150d0ac8ca
+	source_x86_64 = grut-x86_64-0.10.1.tgz::https://github.com/jongio/grut/releases/download/v0.10.1/grut_0.10.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 46d8bdfe950373d4698c550b32a6533f8c5f6e66a49d60b085657c82c15d8486
+	source_aarch64 = grut-aarch64-0.10.1.tgz::https://github.com/jongio/grut/releases/download/v0.10.1/grut_0.10.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = cfd51e2ad4620a7ecb4b324945931512bcfd7ac560a756b6ea9753a395dc4746
 
 pkgname = grut-bin
