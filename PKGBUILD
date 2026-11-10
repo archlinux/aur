@@ -35,7 +35,7 @@ package() {
   # Install MIME type icons
   for icon in "${pkgdir}"/usr/share/icons/hicolor/scalable/mimetypes/studioapp8/*; do
     iconname=$(basename "${icon}")
-    ln -s -f "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/studioapp8/${iconname}" \
+    ln -s -r -f "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/studioapp8/${iconname}" \
       "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/${iconname}"
   done
 
