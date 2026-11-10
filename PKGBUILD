@@ -2,7 +2,7 @@
 # Built by packaging/linux/build-package.sh arch, which sets pkgver from
 # Cargo.toml. For the AUR, aur.sh fills in the release tarball's checksum.
 pkgname=lyapunov
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Save an activity as a card and resume it later'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
     'qt6-wayland: native Wayland window'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f05b78ff8607f3101f5a5b3aea522424019e7a843bab09e8ad6e74c296799f03')
+sha256sums=('103e64d52f00756d799aab0c4447333b75efef9da1b21240fd74df85e9a66199')
 
 build() {
     cd "Lyapunov-$pkgver"
