@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=pdfcraft
-pkgver=0.18.2
+pkgver=0.20.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -17,7 +17,7 @@ conflicts=(printcraft)
 replaces=(printcraft)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('59c862360ac738456ae12dafc2bf0b479bfae798f1115a6b6ff17661e3fcadb1')
+sha256sums=('5d5461e3b35f54d0e7b4f265d8cfb7d59910401f4ff8880aadf5f8c2b4c44747')
 
 _srcenv() {
 	cd "$_archive"
@@ -45,7 +45,10 @@ prepare() {
 
 build() {
 	_srcenv
-	cargo build --frozen --release
+	# Cannot build in frozen mode due to pinned Git deps
+	# c.f. https://github.com/storytold/pdfcraft/issues/6823
+	# cargo build --frozen --release
+	cargo build --locked --release
 }
 
 package() {
