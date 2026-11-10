@@ -1,41 +1,48 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=frugalrgb
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Lightweight standalone RGB controller for PC hardware (no bloat, just LEDs)"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/emaspa/frugalRGB"
-license=('MIT')
-depends=('python' 'tk' 'python-customtkinter' 'python-ctkcolorpicker'
-         'python-hidapi' 'python-pystray' 'python-pillow' 'python-smbus2')
-optdepends=('python-gobject: native transparent system tray icon (StatusNotifier)'
-            'libayatana-appindicator: native transparent system tray icon (StatusNotifier)')
+license=('AGPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'fontconfig' 'systemd-libs' 'libxkbcommon' 'wayland'
+         'libx11' 'libxcursor' 'libxi' 'libxrandr')
+makedepends=('cargo')
 install=frugalrgb.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('deb12d09667e6fdaa5278d5e7ecaef5e5bde7cc91795ba7afb483c7a6ee033bf')
+sha256sums=('914e89ed573ad0625d25a5743ca045bc3d04445bb4a24b093d626bbe39a4e975')
+
+# The same flags for build and check, or check compiles everything again.
+# The remap keeps the build directory out of the binary.
+_cargo_env() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/build"
+}
+
+prepare() {
+  cd "frugalRGB-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
   cd "frugalRGB-$pkgver"
-  # Render the app icon (frugalrgb/icon.py is PIL-only)
-  python -c "from frugalrgb.icon import create_app_icon; create_app_icon(256).save('frugalrgb.png')"
+  _cargo_env
+  cargo build --frozen --release -p frugalrgb
+}
+
+check() {
+  cd "frugalRGB-$pkgver"
+  _cargo_env
+  cargo test --frozen --release -p frugalrgb-core
 }
 
 package() {
   cd "frugalRGB-$pkgver"
 
-  # Application code
-  install -d "$pkgdir/usr/lib/frugalrgb"
-  cp -r --no-preserve=ownership frugalrgb "$pkgdir/usr/lib/frugalrgb/frugalrgb"
-  find "$pkgdir/usr/lib/frugalrgb" -name __pycache__ -type d -exec rm -rf {} +
-  install -Dm644 main.pyw "$pkgdir/usr/lib/frugalrgb/main.pyw"
-
-  # Launcher
-  install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/frugalrgb" <<'EOF'
-#!/bin/sh
-exec /usr/bin/python /usr/lib/frugalrgb/main.pyw "$@"
-EOF
-  chmod 755 "$pkgdir/usr/bin/frugalrgb"
+  install -Dm755 target/release/frugalrgb "$pkgdir/usr/bin/frugalrgb"
 
   # Device access + kernel modules for DRAM RGB
   install -Dm644 70-frugalrgb.rules "$pkgdir/usr/lib/udev/rules.d/70-frugalrgb.rules"
@@ -45,7 +52,7 @@ EOF
 
   # Desktop integration
   install -Dm644 packaging/frugalrgb.desktop "$pkgdir/usr/share/applications/frugalrgb.desktop"
-  install -Dm644 frugalrgb.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/frugalrgb.png"
+  install -Dm644 packaging/frugalrgb.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/frugalrgb.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
