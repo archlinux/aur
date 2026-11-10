@@ -1,7 +1,7 @@
 # Maintainer: joegoldin <joe@joegold.in>
 pkgname=zen-bonsai-browser-bin
 _pkgname=zen-bonsai
-pkgver=1.25t_bonsai.1
+pkgver=1.25t_bonsai.2
 pkgrel=1
 pkgdesc="Zen Bonsai: an unofficial fork of Zen Browser with native tree-style tabs"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.xz::https://github.com/joegoldin/zen-bonsai-browse
 # The release job's updpkgsums rewrites both entries against the published
 # tarball before anything is pushed to the AUR; the first one cannot be known
 # until that release exists.
-sha256sums=('f09d800ff823f8de79a84201dceacc0ef6d92828fc2ec770e729a4b7659726e1'
+sha256sums=('9b5cb8b5018f96e878a49be15ee0de47a1f7bb81c599e8f6ae4ff00403922003'
             'fffca8e74f7fa4f6b89f74361cae8ee3e9347cbe52dc46ce208484a35d5f3b1d')
 
 package() {

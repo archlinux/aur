@@ -1,6 +1,6 @@
 pkgbase = zen-bonsai-browser-bin
 	pkgdesc = Zen Bonsai: an unofficial fork of Zen Browser with native tree-style tabs
-	pkgver = 1.25t_bonsai.1
+	pkgver = 1.25t_bonsai.2
 	pkgrel = 1
 	url = https://github.com/joegoldin/zen-bonsai-browser
 	arch = x86_64
@@ -12,15 +12,15 @@ pkgbase = zen-bonsai-browser-bin
 	depends = nss
 	depends = ttf-font
 	depends = libpulse
-	provides = zen-browser=1.25t_bonsai.1
+	provides = zen-browser=1.25t_bonsai.2
 	conflicts = zen-browser
 	conflicts = zen-browser-bin
 	conflicts = zen-browser-tst-bin
 	replaces = zen-browser-tst-bin
 	options = !strip
-	source = zen-bonsai-browser-bin-1.25t_bonsai.1.tar.xz::https://github.com/joegoldin/zen-bonsai-browser/releases/download/1.25t-bonsai.1/zen.linux-x86_64.tar.xz
+	source = zen-bonsai-browser-bin-1.25t_bonsai.2.tar.xz::https://github.com/joegoldin/zen-bonsai-browser/releases/download/1.25t-bonsai.2/zen.linux-x86_64.tar.xz
 	source = zen.desktop
-	sha256sums = f09d800ff823f8de79a84201dceacc0ef6d92828fc2ec770e729a4b7659726e1
+	sha256sums = 9b5cb8b5018f96e878a49be15ee0de47a1f7bb81c599e8f6ae4ff00403922003
 	sha256sums = fffca8e74f7fa4f6b89f74361cae8ee3e9347cbe52dc46ce208484a35d5f3b1d
 
 pkgname = zen-bonsai-browser-bin
