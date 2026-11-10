@@ -4,7 +4,7 @@ _ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if 
 _flexver=3.200
 _nfver=3.5.1
 pkgver="${_flexver}"
-pkgrel=7
+pkgrel=8
 pkgdesc='Roboto Flex, the 13-axis variable Roboto, tuned with fonttune, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/roboto-flex'
@@ -36,6 +36,8 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
 # italic is slnt=-10. Tuning (hinting, gasp, features baked into calt, ...) is
 # done by fonttune, which asks in prepare(); every key can be preset as
 # FONTTUNE_<KEY>. Local testing: `FONTTUNE_DEV=true` (see _ft_local).
+# fonttune hints only the statics: the variable font stays unhinted, since
+# hints fit its default instance and distort the others under hintfull.
 # See README.md for the measurements and FEATURES.md for the axis reference.
 #
 #   FLEX_VARIANT=variable|static  default variable (asked on a TTY)
@@ -48,7 +50,10 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
 #                  ("Roboto Flex Condensed"). Default 100
 #   STATIC_ITALIC=true|false      also cut slnt=-10 italics (default true)
 #   STATIC_OPSZ=N|auto            fixed optical size 8-144 (default auto: the GNOME
-#                                 interface size in points, what Pango gives the VF)
+#                                 interface size in points, what Pango gives the VF,
+#                                 read when it builds: a clean chroot or a non-GNOME
+#                                 desktop reads GNOME's default, 11; set N for a fixed
+#                                 cut). The value used is in /usr/share/doc/$pkgname/STATIC_OPSZ
 #   NERD_PATCH=true               patch with Nerd Fonts glyphs (default false);
 #                                 implies FLEX_VARIANT=static
 #   ITALIC_FIX=true|false         enable 81-roboto-flex-italic.conf by default
@@ -134,6 +139,7 @@ prepare() {
     FLEX_VARIANT=static
   fi
   rm -rf "$srcdir/selected" "$srcdir/font-patcher"; mkdir -p "$srcdir/selected"
+  local _opsz=          # static only: the optical size cut, recorded in the package
   # roboto-flex-fonts.zip: roboto-flex-fonts/fonts/variable/RobotoFlex[GRAD,XOPQ,...,wght].ttf
   local _vf
   _vf=$(find "$srcdir/roboto-flex-fonts/fonts/variable" -maxdepth 1 -name 'RobotoFlex*.ttf' | head -n1)
@@ -143,7 +149,13 @@ prepare() {
     cp "$_vf" "$srcdir/selected/RobotoFlex-Variable.ttf"
   else
     local _weights="${STATIC_WEIGHTS:-100 200 300 400 500 600 700 800 900 1000}"
-    local _widths="${STATIC_WIDTHS:-100}" _opsz="${STATIC_OPSZ:-auto}"
+    local _widths="${STATIC_WIDTHS:-100}"
+    _opsz="${STATIC_OPSZ:-auto}"
+    if [[ "${_opsz,,}" == auto ]]; then
+      _opsz=$(PYTHONPATH="$(_ft)" python -c 'from fonttune.system import font_pt; print(f"{font_pt():g}")') ||
+        { echo "Error: this fonttune cannot resolve STATIC_OPSZ=auto; update it or set STATIC_OPSZ=N." >&2; exit 1; }
+      echo "==> STATIC_OPSZ auto: $_opsz pt (this machine's GNOME interface font size)"
+    fi
     _ask STATIC_ITALIC "Also cut the italic (slnt=-10)" y
     local _d _name
     local -a _sfx
@@ -167,7 +179,7 @@ prepare() {
     done
   fi
   compgen -G "$srcdir/selected/*" >/dev/null || { echo "Error: no fonts produced." >&2; exit 1; }
-  printf '%s\n%s\n' "$NERD_PATCH" "$FLEX_VARIANT" > "$srcdir/.opts"
+  printf '%s\n%s\n%s\n' "$NERD_PATCH" "$FLEX_VARIANT" "$_opsz" > "$srcdir/.opts"
   if [[ "$NERD_PATCH" == true ]]; then
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
@@ -203,6 +215,8 @@ package() {
   install -d "$pkgdir/usr/share/doc/$pkgname"
   _ft_rev > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
   install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
+  local _opsz; _opsz=$(sed -n 3p "$srcdir/.opts")
+  [[ -z "$_opsz" ]] || echo "$_opsz" > "$pkgdir/usr/share/doc/$pkgname/STATIC_OPSZ"
 
   # The variable font only: italics through slnt (enabled by default, see the
   # header) and the opt-in width/grade family presets.
@@ -216,7 +230,8 @@ package() {
     fi
   fi
 
-  if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
+  # fonttune leaves variable fonts unhinted, so only statics get the snippet
+  if [[ "$(sed -n 2p "$srcdir/.opts")" == static ]] && grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
     install -d "$pkgdir/usr/share/fontconfig/conf.avail"
     python "$(_ft)/bin/fonttune" hintconf --name "$pkgname" \
       -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" "$_fontdir/"*.ttf

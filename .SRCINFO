@@ -1,7 +1,7 @@
 pkgbase = ttf-roboto-flex-hinted
 	pkgdesc = Roboto Flex, the 13-axis variable Roboto, tuned with fonttune, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)
 	pkgver = 3.200
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/googlefonts/roboto-flex
 	arch = any
 	license = OFL-1.1

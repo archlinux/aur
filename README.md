@@ -1,9 +1,10 @@
 # ttf-roboto-flex-hinted
 
 [Roboto Flex](https://github.com/googlefonts/roboto-flex) 3.200, the 13-axis
-variable Roboto, hinted with ttfautohint for FreeType, with working italics on
-Linux and fontconfig presets for its axes. Optionally cut into static fonts
-and Nerd Fonts patched. Build options are documented in the header of
+variable Roboto with working italics on Linux and fontconfig presets for its
+axes. Optionally cut into static fonts, hinted with ttfautohint for FreeType,
+and Nerd Fonts patched. The variable font stays unhinted, as upstream ships it
+(fonttune does not hint variable fonts, see "Hinting a variable font"). Build options are documented in the header of
 `PKGBUILD`, the full axis and feature reference is in `FEATURES.md`.
 
 This file covers **what the package changes, why, and the settings that
@@ -27,7 +28,7 @@ features). The AUR's `ttf-roboto-flex` installs that file as it is.
 
 | | upstream / `ttf-roboto-flex` | this package |
 |---|---|---|
-| Hinting | none → FreeType's autohinter | ttfautohint bytecode, preset `balanced` (measured below) |
+| Hinting | none → FreeType's autohinter | variable: the same; static: ttfautohint bytecode, preset `balanced` (measured below) |
 | "Roboto Flex Italic" in GTK/pango | **renders upright** | real 10° italic (`81-roboto-flex-italic.conf`) |
 | Axis presets by name | – | `Roboto Flex Condensed`, `… Dark`, … (opt-in) |
 | Static fonts / Nerd Fonts | – | `FLEX_VARIANT=static`, `NERD_PATCH=true` |
@@ -38,7 +39,6 @@ Files installed (default build):
 ```
 /usr/share/fonts/roboto-flex/RobotoFlex-Variable.ttf
 /usr/share/fontconfig/conf.avail/79-roboto-flex-families.conf   (opt-in)
-/usr/share/fontconfig/conf.avail/80-ttf-roboto-flex-hinted.conf (opt-in)
 /usr/share/fontconfig/conf.avail/81-roboto-flex-italic.conf
 /usr/share/fontconfig/conf.default/81-roboto-flex-italic.conf  → enabled by pacman's fontconfig hook
 ```
@@ -55,7 +55,7 @@ needs to change:
 |---|---|---|
 | gsettings `org.gnome.desktop.interface` | `font-rendering 'manual'`, `font-hinting 'medium'`, `font-antialiasing 'grayscale'` | In `automatic` GTK4 forces hintslight, which ignores the hints |
 | `~/.config/gtk-4.0/settings.ini` | `gtk-hint-font-metrics=false` | Whole-pixel advances give uneven gaps |
-| fontconfig | global `hintmedium` + `autohint=false`, **or** symlink `80-ttf-roboto-flex-hinted.conf` | For clients that read hinting from fontconfig (Firefox, Chromium, Qt, kitty/foot). GTK3/GTK4 in manual mode take the hint style from gsettings and ignore fontconfig's `hintstyle` |
+| fontconfig | static build: global `hintmedium` + `autohint=false`, **or** symlink `80-ttf-roboto-flex-hinted.conf` (shipped only with a hint preset) | For clients that read hinting from fontconfig (Firefox, Chromium, Qt, kitty/foot). GTK3/GTK4 in manual mode take the hint style from gsettings and ignore fontconfig's `hintstyle` |
 | fontconfig | `prgname` → `hintslight` for chrome, chromium, electron, code, … | Chromium rounds advances at hintmedium (sibling README §10). The 80- snippet already excludes them |
 | fontconfig | keep `81-roboto-flex-italic.conf` enabled (default) | Otherwise italics render upright, see below |
 | Firefox `user.js` | `gfx.text.subpixel-position.force-enabled = true` | Firefox rounds advances at hintmedium (sibling README §9) |
@@ -205,6 +205,11 @@ instead: glued 20 vs 24, deviation 11.70 vs 11.31. No real difference.
 
 ### Hinting a variable font
 
+fonttune no longer hints variable fonts: the variable build ships unhinted and
+FreeType autohints it. The measurements below are from when it did. Roboto
+Flex held up, but on Inter the default-instance hints added 64% ink at wght
+100 under hintfull, so the static build is the way to get bytecode hints.
+
 ttfautohint keeps `fvar`, `gvar`, `avar`, `STAT`, `MVAR`, the feature
 variations and all 20 instances. Its blue zones (the heights it snaps to) are
 taken from the **default master** (opsz 14, wght 400, wdth 100), while
@@ -226,7 +231,8 @@ design's overshoots. Hinting stops above 48 px (`--hinting-limit`).
 
 The static build (`FLEX_VARIANT=static`) hints each instance on its own, so
 its blue zones match that exact instance. The price is that the optical size
-is frozen (`STATIC_OPSZ`, default 14) and the axes are gone.
+is frozen (`STATIC_OPSZ`, default `auto`: the GNOME interface size in points,
+read at build time) and the axes are gone.
 
 ### hintslight ignores the hints
 
