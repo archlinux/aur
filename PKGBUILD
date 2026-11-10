@@ -2,7 +2,7 @@
 # pkgver and sha256sums are rewritten by .github/workflows/release.yml on every tag.
 # The tarballs are built by the same workflow and attached to the GitHub release.
 pkgname=opensynapse-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Remap buttons, set DPI and lighting on Razer mice from Linux (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=('opensynapse')
 conflicts=('opensynapse')
 source_x86_64=("$url/releases/download/v$pkgver/opensynapse-$pkgver-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/opensynapse-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('95192ed2a2914b0c941d81b80665491e839c9b754203a0016b6cc25748e6cae9')
-sha256sums_aarch64=('2cbad5871c53b6246b20c6b70dd3273102910d3eee7e9feb038d21146859b98a')
+sha256sums_x86_64=('9509b316e5b0780fcae7b93b5decf299ec22e637c8dc16a79826d03f8e6c14bf')
+sha256sums_aarch64=('dbd1f8a580e7a66b1159920a3a82977aa132a129639c50d801cc5d9ebf5b1de5')
 
 package() {
   cd "opensynapse-$pkgver"
@@ -29,4 +29,10 @@ package() {
   install -Dm644 PROTOCOL.md "$pkgdir/usr/share/doc/opensynapse/PROTOCOL.md"
   install -Dm644 -t "$pkgdir/usr/share/doc/opensynapse/protocols" devices/protocols/*.md
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # releases before 0.2.2 have no completions in the tarball
+  if [ -d completions ]; then
+    install -Dm644 completions/opensynapse.bash "$pkgdir/usr/share/bash-completion/completions/opensynapse"
+    install -Dm644 completions/_opensynapse "$pkgdir/usr/share/zsh/site-functions/_opensynapse"
+    install -Dm644 completions/opensynapse.fish "$pkgdir/usr/share/fish/vendor_completions.d/opensynapse.fish"
+  fi
 }
