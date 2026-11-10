@@ -13,7 +13,7 @@ pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git nm-cloud-setup-git)
 pkgver=1.59.0dev+r1+g12965c9f6f
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Management daemon and user application"
 arch=(x86_64)
 url=https://networkmanager.dev/
@@ -49,7 +49,6 @@ build() {
         -D more_logging=false \
         -D more_asserts=no \
         -D bluez5_dun=false \
-        -D ebpf=auto \
         -D docs=true \
         -D introspection=true \
         -D ld_gc=true \
@@ -84,7 +83,6 @@ build() {
         -D qt=false \
         -D nbft=false \
         -D clat=false \
-        -D ifcfg_rh=false \
         -D ifupdown=false \
         -D netconfig=no \
         -D vapi=true

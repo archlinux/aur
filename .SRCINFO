@@ -1,7 +1,7 @@
 pkgbase = networkmanager-git
 	pkgdesc = Network Management daemon and user application
 	pkgver = 1.59.0dev+r1+g12965c9f6f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://networkmanager.dev/
 	arch = x86_64
 	license = GPL-2.0-or-later
