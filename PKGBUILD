@@ -7,7 +7,7 @@ pkgname=(sourcemod-dev-scripting sourcemod-dev sourcemod-dev-src)
 # SourceMod's development builds: the tags of master's builds (1.13, released by upstream as
 # prereleases), <version>.<build>, the build being the number of commits, which SourceMod's
 # versioning counts with git
-pkgver=1.13.0.7488
+pkgver=1.13.0.7491
 pkgrel=1
 pkgdesc="SourceMod, the scripting and administration platform for Source engine game servers (development builds)"
 arch=(x86_64 aarch64)
@@ -66,7 +66,7 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   geoip-libmaxminddb.patch
   source-sdk.txt
   spcomp.sh)
-sha512sums=('9ae7cf890e8ff6c0e159144116c4d5fcca0a67edb6fab36a334c494acb180b767055f396a7fc368d0d014d760d0689c64e811aea5ba2588a4f26b37a115e208b'
+sha512sums=('3261cf69923c752933b27e992abcac724a991e6ee871864dd76dab850360763cc482f82dd88a84e2e8bad503c6e5a2e10916d4339c3f9ff4b6c4e9b7b66aa438'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -91,7 +91,7 @@ sha512sums=('9ae7cf890e8ff6c0e159144116c4d5fcca0a67edb6fab36a334c494acb180b76705
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3'
   '3a4c60a485304553ee1ca87ac0e96ba636cb8f0a311c71a0a73b3926964a3ff700c7cca6d24ddef04547dd90bd58f6dec26d137da6286d1c409ebcd6e6ed2bf2')
-b2sums=('634600bee8d425a563f89373a7b896d70698a90036dbdb2e4584ca5ddac4b2e45b0a1237d3e76359088e3e5807f1cd174b02932dba6da9aa93178e20573433db'
+b2sums=('1293f582ae4b3722cca7b33328d78dc52f23a117029035595383496c0244720e961192129d888fcf7bc1489a953c75ce8ff449a6d42e98762b186a541d044c33'
   'SKIP'
   'SKIP'
   'SKIP'
