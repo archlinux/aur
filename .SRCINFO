@@ -1,7 +1,7 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
 	pkgver = 0.10.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/neutrinolabs/xrdp
 	install = xrdp.install
 	arch = i686
@@ -31,10 +31,12 @@ pkgbase = xrdp
 	backup = etc/default/xrdp
 	source = https://github.com/neutrinolabs/xrdp/releases/download/v0.10.6.1/xrdp-0.10.6.1.tar.gz
 	source = arch-config.diff
+	source = bitmap.patch
 	source = sysusers.d
 	source = tmpfiles.d
 	sha256sums = 2f7beb5a3b2529c8d72dc0df9b8cdca31ab0e0c14d1e3421210f5e6ec0ab3b75
-	sha256sums = c69bdcf3b7f7e5ef1dad8caab0e5a438f0857c1e36a7b2b5aa1e6dcf5e45882c
+	sha256sums = a0d47d824f34088f3c819f7e5de53c2581fe0a1a0c0c1df4c41e09ded19cee80
+	sha256sums = 1d901d06727ff740e6f485005157a8a082aef9f3910577f377851d057732acbc
 	sha256sums = 72f2e1d945d91ddf7034fbe9b64d55e8fbe88d737b0cc3cedd779321b63d05c1
 	sha256sums = d75eb05321d247ce792471a9f5176b1b03cf6166673d6bdd110da8fb7e8bd856
 

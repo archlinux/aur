@@ -31,19 +31,6 @@ diff -uNr a/sesman/startwm.sh b/sesman/startwm.sh
    if [ -r /etc/X11/Xsession ]; then
      pre_start
 
-diff -uNr a/tests/xrdp/test_bitmap_load.c b/tests/xrdp/test_bitmap_load.c
---- a/tests/xrdp/test_bitmap_load.c
-+++ b/tests/xrdp/test_bitmap_load.c
-@@ -43,7 +43,7 @@
-  *
-  * This is the Pythagorean distance we allow between two colors for them to
-  * be considered close enough to each other */
--#define MAX_SIMILAR_COLOR_DISTANCE 3
-+#define MAX_SIMILAR_COLOR_DISTANCE 160
-
- /* Time to allow some large bitmap test suites to run on slower platforms */
- #define LARGE_BM_TEST_SUITE_TIMEOUT 10
-
 diff -uNr a/xrdp/xrdp.ini.in b/xrdp/xrdp.ini.in
 --- a/xrdp/xrdp.ini.in
 +++ b/xrdp/xrdp.ini.in
