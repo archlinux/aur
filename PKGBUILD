@@ -1,8 +1,8 @@
-# Maintainer: <INSERT NAME> <INSERT EMAIL>
+# Maintainer: Idigo Luwum luwum@pm.me
 # Contributor: Matthew Lam
 
 pkgname=pi-gui-bin
-pkgver=0.1.0.beta28
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Codex-style desktop shell for pi - prebuilt binary"
 arch=('x86_64')
@@ -11,9 +11,9 @@ license=('MIT')
 depends=('gtk3' 'libxss' 'nss' 'libnotify' 'alsa-lib' 'libcups')
 provides=('pi-gui')
 conflicts=('pi-gui')
-source=("https://github.com/minghinmatthewlam/pi-gui/releases/download/v0.1.0-beta.28/pi-gui-0.1.0-beta.28-x86_64.AppImage"
-        "https://github.com/minghinmatthewlam/pi-gui/raw/v0.1.0-beta.28/LICENSE")
-sha256sums=('57f30da25653ed23bd1d96b00d4690da4df335c3a4f860d62562fe23c7049cc0'
+source=("https://github.com/minghinmatthewlam/pi-gui/releases/download/v1.0.1/pi-gui-1.0.1-x86_64.AppImage"
+        "https://github.com/minghinmatthewlam/pi-gui/raw/v1.0.1/LICENSE")
+sha256sums=('581c965d96a3c2f0db3f1e88e91a3c3d11f1353dd3158a57cbe5cb989d537681'
             '887989ae1d3323becad917f0cdc9ca67f6c185416304b65f85c471fdbfbf798c')
 
 package() {
