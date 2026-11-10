@@ -1,0 +1,284 @@
+#!/bin/bash
+set -euo pipefail
+
+GENERATOR=/usr/share/hermes-agent-hardening/hermes-hardening-config
+
+usage() {
+    cat >&2 <<'EOF'
+Usage: hermes-instance COMMAND [OPTIONS] [INSTANCE]
+
+Commands:
+  enable       Create instance user, generate hardening, enable service
+  disable      Disable service
+  remove       Stop, disable, remove user, home and generated files
+  regenerate   Regenerate hardening from config
+
+Options:
+  --now        Start/stop the service immediately
+  --dashboard  Also enable the dashboard user service (implies lingering)
+  --all        Apply to all enabled instances (regenerate only)
+  --adopt      Adopt the current hermes user
+
+INSTANCE defaults to "hermes".
+
+Examples:
+  hermes-instance enable --now
+  hermes-instance enable --now --dashboard hermes-work
+  hermes-instance regenerate hermes
+  hermes-instance regenerate --all
+  hermes-instance disable --now hermes-work
+  hermes-instance remove hermes-work
+
+Run "hermes-instance remove NAME" before uninstalling this package,
+otherwise generated files are cleaned up by the package post-remove hook.
+EOF
+    exit 1
+}
+
+[[ $# -ge 1 ]] || usage
+ACTION=$1
+shift
+
+NOW=0
+DASHBOARD=0
+ALL=0
+ADOPT=0
+INSTANCE=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --now)       NOW=1 ;;
+        --dashboard) DASHBOARD=1 ;;
+        --all)       ALL=1 ;;
+        --adopt)     ADOPT=1 ;;
+        -*)          usage ;;
+        *)           INSTANCE=$1 ;;
+    esac
+    shift
+done
+
+[[ -n "$INSTANCE" ]] || INSTANCE="hermes"
+
+list_instances() {
+    systemctl list-unit-files --no-legend 'hermes-gateway@*.service' 2>/dev/null \
+        | awk '$2 == "enabled" {print $1}' \
+        | sed 's/^hermes-gateway@//; s/\.service$//'
+}
+
+enable_instance() {
+    local name=$1 adopt=$2
+
+    if id "$name" &>/dev/null; then
+        if (( adopt )); then
+            echo "Adopting existing user '$name'..."
+        else
+            echo "error: user '$name' already exists. Use --adopt to use an existing user." >&2
+            exit 1
+        fi
+    else
+        echo "Creating system user '$name' with home /var/lib/$name..."
+        useradd -r -U -d "/var/lib/$name" -s /usr/bin/nologin -m "$name"
+    fi
+
+    # Validate home and primary group match what the templates require.
+    local actual_home actual_group
+    actual_home=$(getent passwd "$name" | cut -d: -f6)
+    actual_group=$(id -gn "$name")
+    if [[ "$actual_home" != "/var/lib/$name" ]]; then
+        echo "error: $name has home '$actual_home', expected /var/lib/$name" >&2
+        exit 1
+    fi
+    if [[ "$actual_group" != "$name" ]]; then
+        echo "error: $name has primary group '$actual_group', expected '$name'" >&2
+        exit 1
+    fi
+
+    # Writable by the instance user.
+    local -a writable_dirs=(
+        "/var/lib/$name/workspace"
+        "/var/lib/$name/.config"
+        "/var/lib/$name/.local"
+        "/var/lib/$name/.local/share"
+    )
+
+    # Root-owned configuration boundaries. ReadOnlyPaths= in the service
+    # units is the actual runtime enforcement.
+    local -a protected_dirs=(
+        "/var/lib/$name/.config/environment.d"
+        "/var/lib/$name/.local/share/systemd"
+    )
+
+    # The user-manager unit tree, handled separately below because
+    # "systemctl --user enable" legitimately creates content in it.
+    local config_systemd="/var/lib/$name/.config/systemd"
+    local config_systemd_user="$config_systemd/user"
+    local dashboard_wants="$config_systemd_user/default.target.wants"
+    local dashboard_link="$dashboard_wants/hermes-dashboard@${name}.service"
+
+    # Refuse symlinks on the exact paths this script will modify.
+    # Existing npm/uv/broot links elsewhere are left untouched.
+    local p
+    for p in "/var/lib/$name" "${writable_dirs[@]}" "${protected_dirs[@]}" \
+        "$config_systemd" "$config_systemd_user"; do
+        if [[ -L "$p" ]]; then
+            echo "error: $p is a symlink; refusing to modify it as root" >&2
+            exit 1
+        fi
+    done
+
+    # Protected trees must not exist as regular files.
+    for p in "${protected_dirs[@]}" "$config_systemd" "$config_systemd_user"; do
+        if [[ -e "$p" && ! -d "$p" ]]; then
+            echo "error: $p exists but is not a directory" >&2
+            exit 1
+        fi
+    done
+
+    # The only acceptable content in the user-manager tree is the layout
+    # "systemctl --user enable" creates for the dashboard unit.
+    if [[ -n "$(find "$config_systemd" -xdev -mindepth 1 \
+            ! \( -path "$config_systemd_user" -type d \) \
+            ! \( -path "$dashboard_wants" -type d \) \
+            ! \( -path "$dashboard_link" -type l \) \
+            -print -quit 2>/dev/null)" ]]; then
+        echo "error: unexpected content in $config_systemd:" >&2
+        find "$config_systemd" -xdev -mindepth 1 -maxdepth 3 -print >&2
+        echo "Move or remove the above before running --adopt." >&2
+        exit 1
+    fi
+    if [[ -L "$dashboard_link" ]] && \
+       [[ "$(readlink -f "$dashboard_link")" != \
+          "/usr/lib/systemd/user/hermes-dashboard@.service" ]]; then
+        echo "error: $dashboard_link points to an unexpected target" >&2
+        exit 1
+    fi
+
+    # Remaining protected trees: no symlinks, no content.
+    for p in "${protected_dirs[@]}"; do
+        if [[ -n "$(find "$p" -xdev -mindepth 1 -type l -print -quit 2>/dev/null)" ]]; then
+            echo "error: symlink found inside protected path $p" >&2
+            exit 1
+        fi
+        if [[ -n "$(find "$p" -xdev -mindepth 1 -print -quit 2>/dev/null)" ]]; then
+            echo "error: unexpected content in protected path $p:" >&2
+            find "$p" -xdev -mindepth 1 -maxdepth 3 -print >&2
+            echo "Move or remove the above before running --adopt." >&2
+            exit 1
+        fi
+    done
+
+    mkdir -p "${writable_dirs[@]}" "${protected_dirs[@]}" \
+             "$config_systemd" "$config_systemd_user"
+
+    for p in "${writable_dirs[@]}"; do
+        chown "$name:$name" "$p"
+        chmod 0750 "$p"
+    done
+
+    for p in "${protected_dirs[@]}" "$config_systemd"; do
+        chown root:root "$p"
+        chmod 0755 "$p"
+    done
+
+    # The user manager writes wants symlinks into .config/systemd/user when
+    # enabling user units, so that leaf must be writable by the instance.
+    chown "$name:$name" "$config_systemd_user"
+    chmod 0750 "$config_systemd_user"
+
+    echo "Generating hardening configuration..."
+    python "$GENERATOR" generate "$name"
+
+    systemctl daemon-reload
+    if (( NOW )); then
+        systemctl enable --now "hermes-gateway@${name}.service"
+        echo "Enabled and started hermes-gateway@${name}.service"
+    else
+        systemctl enable "hermes-gateway@${name}.service"
+        echo "Enabled hermes-gateway@${name}.service"
+        echo "Configure /var/lib/$name/.hermes/config.yaml, then:"
+        echo "  systemctl start hermes-gateway@${name}.service"
+    fi
+
+    if (( DASHBOARD )); then
+        loginctl enable-linger "$name"
+        local ready=0
+        for _ in 1 2 3 4 5 6 7 8 9 10; do
+            if systemctl is-active "user@$(id -u "$name").service" &>/dev/null; then
+                ready=1
+                break
+            fi
+            sleep 1
+        done
+        if (( ! ready )); then
+            echo "error: user manager for $name did not start within 10s;" >&2
+            echo "       the gateway is enabled, the dashboard is not." >&2
+            exit 1
+        fi
+        systemctl --machine="${name}@.host" --user daemon-reload
+        if (( NOW )); then
+            systemctl --machine="${name}@.host" --user enable --now \
+                "hermes-dashboard@${name}.service"
+        else
+            systemctl --machine="${name}@.host" --user enable \
+                "hermes-dashboard@${name}.service"
+        fi
+        echo "Enabled hermes-dashboard@${name}.service (linger on)"
+    fi
+}
+
+case "$ACTION" in
+    enable)
+        enable_instance "$INSTANCE" "$ADOPT"
+        ;;
+
+    disable)
+        if (( NOW )); then
+            systemctl disable --now "hermes-gateway@${INSTANCE}.service"
+        else
+            systemctl disable "hermes-gateway@${INSTANCE}.service"
+        fi
+        if (( DASHBOARD )); then
+            systemctl --machine="${INSTANCE}@.host" --user disable --now \
+                "hermes-dashboard@${INSTANCE}.service" 2>/dev/null || true
+                loginctl disable-linger "$INSTANCE" 2>/dev/null || true
+        fi
+        ;;
+
+
+    remove)
+        echo "Stopping and disabling services for '$INSTANCE'..."
+        systemctl disable --now "hermes-gateway@${INSTANCE}.service" 2>/dev/null || true
+        systemctl --machine="${INSTANCE}@.host" --user disable --now \
+            "hermes-dashboard@${INSTANCE}.service" 2>/dev/null || true
+        loginctl disable-linger "$INSTANCE" 2>/dev/null || true
+
+        echo "Removing generated hardening files..."
+        python "$GENERATOR" remove "$INSTANCE"
+
+        if id "$INSTANCE" &>/dev/null; then
+            echo "Removing user '$INSTANCE' and home /var/lib/$INSTANCE..."
+            userdel -r "$INSTANCE" 2>/dev/null || {
+                echo "  could not remove home automatically; remove it manually:"
+                echo "    rm -rf /var/lib/$INSTANCE"
+            }
+        fi
+        echo "Instance '$INSTANCE' removed."
+        ;;
+
+    regenerate)
+        if (( ALL )); then
+            found=0
+            for name in $(list_instances || true); do
+                found=1
+                python "$GENERATOR" generate "$name"
+            done
+            (( found )) || echo "No enabled instances found."
+        else
+            python "$GENERATOR" generate "$INSTANCE"
+        fi
+        ;;
+
+    *)
+        usage
+        ;;
+esac

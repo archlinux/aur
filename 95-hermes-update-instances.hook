@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = hermes-agent
+
+[Action]
+Description = Regenerating Hermes instance hardening after hermes-agent update
+When = PostTransaction
+Exec = /usr/bin/hermes-instance regenerate --all

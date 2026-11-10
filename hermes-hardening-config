@@ -1,0 +1,333 @@
+#!/usr/bin/env python3
+"""
+hermes-hardening-config: generate per-instance hardening for Hermes Agent.
+
+Usage:
+    hermes-hardening-config generate NAME
+    hermes-hardening-config remove NAME
+    hermes-hardening-config --check-config
+"""
+import json
+import os
+import pwd
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+from string import Template
+
+ROOT = Path(os.environ.get("HERMES_HARDENING_ROOT", "/"))
+
+CONFIG_DIR = ROOT / "etc/hermes-agent-hardening"
+DEFAULT_CONF = CONFIG_DIR / "default.conf"
+INSTANCES_DIR = CONFIG_DIR / "instances"
+
+SHARE_DIR = Path("/usr/share/hermes-agent-hardening")
+APPARMOR_TMPL = SHARE_DIR / "hermes-agent-hardening.apparmor.tmpl"
+
+SUBSYSTEMS = ("AppArmor", "Limits", "Network")
+
+NETWORK_DENY = (
+    "10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 169.254.0.0/16 100.64.0.0/10 "
+    "fc00::/7 fe80::/10 ff00::/8"
+)
+
+def parse_conf(path):
+    sections = {}
+    if not path.exists():
+        return sections
+    current = None
+    for raw in path.read_text().splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or line.startswith(";"):
+            continue
+        if line.startswith("[") and line.endswith("]"):
+            current = line[1:-1].strip()
+            sections.setdefault(current, {})
+            continue
+        if current is None or "=" not in line:
+            continue
+        key, val = line.split("=", 1)
+        key = key.strip()
+        val = val.split("#", 1)[0].strip()
+        bucket = sections[current]
+        if key in bucket:
+            existing = bucket[key]
+            if isinstance(existing, list):
+                existing.append(val)
+            else:
+                bucket[key] = [existing, val]
+        else:
+            bucket[key] = val
+    return sections
+
+
+def as_list(value):
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return value
+    return [value]
+
+
+def load_config(instance):
+    glob = parse_conf(DEFAULT_CONF)
+    inst = parse_conf(INSTANCES_DIR / f"{instance}.conf")
+    merged = {}
+    for sub in SUBSYSTEMS:
+        values = dict(glob.get(sub, {}))
+        for key, val in inst.get(sub, {}).items():
+            values[key] = val
+        merged[sub] = values
+    return merged
+
+
+def get_uid(instance):
+    try:
+        return pwd.getpwnam(instance).pw_uid
+    except KeyError:
+        print(f"error: user '{instance}' not found", file=sys.stderr)
+        sys.exit(1)
+
+
+def rooted(path):
+    """Prefix an absolute path with ROOT."""
+    return ROOT / Path(path).relative_to("/")
+
+def write(path, content, mode=0o644):
+    path = rooted(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content)
+    os.chmod(path, mode)
+    print(f"  wrote {path}")
+
+
+def run(cmd):
+    if ROOT != Path("/"):
+        return  # skip live system commands when using a fake root
+    subprocess.run(cmd, shell=True, check=False)
+
+
+def venv_path(instance):
+    installs = rooted(f"/var/lib/{instance}/.hermes/installs")
+    if not installs.is_dir():
+        return None
+    facts_files = sorted(
+        installs.glob("*/facts.json"),
+        key=lambda p: p.stat().st_mtime,
+        reverse=True,
+    )
+    for facts in facts_files:
+        try:
+            data = json.loads(facts.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        venv = data.get("packages", {}).get("venv", {}).get("environment", "")
+        if venv and rooted(venv).is_dir():
+            return venv
+    return None
+
+def generate_apparmor(instance, cfg):
+    mode = cfg["AppArmor"].get("Mode", "complain")
+    if mode not in ("complain", "enforce"):
+        print(f"error: invalid AppArmor Mode='{mode}', must be 'complain' or 'enforce'", file=sys.stderr)
+        sys.exit(1)
+    extra_read = as_list(cfg["AppArmor"].get("ExtraRead"))
+    extra_write = as_list(cfg["AppArmor"].get("ExtraWrite"))
+
+    mode_flags = ",complain" if mode == "complain" else ""
+
+    extra_rules = ""
+    for path in extra_read:
+        extra_rules += f"  {path}/** r,\n"
+    for path in extra_write:
+        extra_rules += f"  {path}/** rwk,\n"
+
+    # Find template: installed path first, fall back to current directory
+    tmpl_path = APPARMOR_TMPL if APPARMOR_TMPL.exists() else Path("hermes-agent-hardening.apparmor.tmpl")
+    tmpl = Template(tmpl_path.read_text())
+    profile = tmpl.substitute(
+        INSTANCE=instance,
+        MODE_FLAGS=mode_flags,
+        EXTRA_RULES=extra_rules,
+    )
+    write(f"/etc/apparmor.d/hermes-agent-hardening-{instance}", profile)
+    run(f"apparmor_parser -r {rooted(f'/etc/apparmor.d/hermes-agent-hardening-{instance}')}")
+
+
+def generate_systemd(instance, uid, cfg):
+    limits = cfg["Limits"]
+    allow = as_list(cfg["Network"].get("Allow"))
+
+    gw_dir = f"/etc/systemd/system/hermes-gateway@{instance}.service.d"
+
+    write(
+        f"{gw_dir}/50-limits.conf",
+        "[Service]\n"
+        f"CPUWeight={limits.get('CPUWeight', '50')}\n"
+        f"MemoryHigh={limits.get('MemoryHigh', '3G')}\n"
+        f"MemoryMax={limits.get('MemoryMax', '4G')}\n"
+        f"TasksMax={limits.get('TasksMax', '1024')}\n",
+    )
+
+    network_body = f"IPAddressDeny={NETWORK_DENY}\n"
+    
+    allow_lines = "".join(f"IPAddressAllow={addr}\n" for addr in allow)
+    write(
+        f"{gw_dir}/60-network.conf",
+        f"[Service]\n{allow_lines}{network_body}",
+    )
+
+    venv = venv_path(instance)
+    if venv:
+        write(f"{gw_dir}/readonly-env.conf",
+              f"[Service]\nReadOnlyPaths={venv}\n")
+    else:
+        stale = rooted(f"{gw_dir}/readonly-env.conf")
+        if stale.exists():
+            stale.unlink()
+            print(f"  removed stale {stale}")
+        print(f"  note: no managed venv found for {instance}, "
+              f"readonly-env.conf disabled")
+
+    dash_dir = f"/etc/systemd/user/hermes-dashboard@{instance}.service.d"
+    write(
+        f"{dash_dir}/70-usermanager.conf",
+        "[Service]\n"
+        f"ReadOnlyPaths=/var/lib/{instance}/.config/systemd "
+        f"/var/lib/{instance}/.config/environment.d "
+        f"/var/lib/{instance}/.local/share/systemd\n"
+        f"InaccessiblePaths=/run/user/{uid}/bus /run/user/{uid}/systemd\n",
+    )
+
+    if venv:
+        write(f"{dash_dir}/readonly-env.conf",
+              f"[Service]\nReadOnlyPaths={venv}\n")
+    else:
+        stale = rooted(f"{dash_dir}/readonly-env.conf")
+        if stale.exists():
+            stale.unlink()
+            print(f"  removed stale {stale}")
+
+    # Slice limits AND network (both generated from config)
+    slice_dir = f"/etc/systemd/system/user-{uid}.slice.d"
+    write(
+        f"{slice_dir}/50-limits.conf",
+        "[Slice]\n"
+        f"CPUWeight={limits.get('CPUWeight', '50')}\n"
+        f"MemoryHigh={limits.get('SliceMemoryHigh', '6G')}\n"
+        f"MemoryMax={limits.get('SliceMemoryMax', '7G')}\n"
+        f"TasksMax={limits.get('TasksMax', '1024')}\n",
+    )
+
+    slice_network = f"[Slice]\n{allow_lines}IPAddressDeny={NETWORK_DENY}\n"
+
+    write(f"{slice_dir}/60-network.conf", slice_network)
+
+def generate_sudoers(instance):
+    path = f"/etc/sudoers.d/hermes-logs-{instance}"
+    write(
+        path,
+        f"{instance} ALL=(root) NOPASSWD: /usr/bin/hermes-logs\n",
+        mode=0o440,
+    )
+    if ROOT == Path("/"):
+        result = subprocess.run(
+            ["visudo", "-c", "-f", str(rooted(path))],
+            capture_output=True,
+        )
+        if result.returncode != 0:
+            print(f"  WARNING: visudo rejected {path}: "
+                  f"{result.stderr.decode().strip()}")
+
+
+def generate(instance):
+    cfg = load_config(instance)
+    uid = get_uid(instance)
+    print(f"Generating hardening for '{instance}' (UID={uid})...")
+    generate_apparmor(instance, cfg)
+    generate_systemd(instance, uid, cfg)
+    generate_sudoers(instance)
+    run("systemctl daemon-reload")
+    print("Done.")
+
+
+def remove(instance):
+    uid = get_uid(instance)
+    print(f"Removing generated hardening for '{instance}' (UID={uid})...")
+
+    targets = [
+        rooted(f"/etc/apparmor.d/hermes-agent-hardening-{instance}"),
+        rooted(f"/etc/sudoers.d/hermes-logs-{instance}"),
+        rooted(f"/etc/systemd/system/hermes-gateway@{instance}.service.d"),
+        rooted(f"/etc/systemd/user/hermes-dashboard@{instance}.service.d"),
+    ]
+    for target in targets:
+        if target.is_dir():
+            shutil.rmtree(target)
+            print(f"  removed {target}/")
+        elif target.exists():
+            target.unlink()
+            print(f"  removed {target}")
+
+    slice_dir = rooted(f"/etc/systemd/system/user-{uid}.slice.d")
+    for fname in ("50-limits.conf", "60-network.conf"):
+        f = slice_dir / fname
+        if f.exists():
+            f.unlink()
+            print(f"  removed {f}")
+    try:
+        slice_dir.rmdir()
+        print(f"  removed {slice_dir}")
+    except OSError:
+        pass
+
+    profile = f"hermes-agent-hardening-{instance}"
+    run(f"printf '%s' '{profile}' > /sys/kernel/security/apparmor/.remove")
+    run("systemctl daemon-reload")
+    print("Done.")
+
+
+def check_config():
+    default = DEFAULT_CONF if DEFAULT_CONF.exists() else Path("default.conf")
+    tmpl = APPARMOR_TMPL if APPARMOR_TMPL.exists() else Path("hermes-agent-hardening.apparmor.tmpl")
+
+    errors = 0
+    sections = parse_conf(default)
+    print(f"default.conf: {default}")
+    print(f"  sections: {', '.join(sections) or '(none)'}")
+    for sub in SUBSYSTEMS:
+        if sub not in sections:
+            print(f"  WARNING: missing [{sub}] section")
+
+    if not tmpl.exists():
+        print(f"  ERROR: missing AppArmor template: {tmpl}")
+        errors += 1
+    else:
+        print(f"  template: {tmpl} OK")
+        try:
+            t = Template(tmpl.read_text())
+            t.substitute(INSTANCE="test", MODE_FLAGS="", EXTRA_RULES="")
+            print("  template substitution: OK")
+        except Exception as e:
+            print(f"  ERROR: template substitution failed: {e}")
+            errors += 1
+
+    return errors
+
+
+def main():
+    args = sys.argv[1:]
+    if len(args) == 2 and args[0] == "generate":
+        generate(args[1])
+    elif len(args) == 2 and args[0] == "remove":
+        remove(args[1])
+    elif args and args[0] == "--check-config":
+        sys.exit(check_config())
+    else:
+        print(__doc__, file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

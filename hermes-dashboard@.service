@@ -1,0 +1,77 @@
+[Unit]
+Description=Hermes Agent Dashboard (%i)
+After=hermes-gateway@%i.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/%i
+Environment="HOME=/var/lib/%i"
+Environment=HERMES_DISABLE_LAZY_INSTALLS=1
+ExecStart=/usr/bin/hermes dashboard --host 127.0.0.1 --port 9119 --no-open
+Restart=on-failure
+RestartSec=10s
+
+# AppArmor profile — not supported for user services (systemd limitation).
+# Only the gateway is AppArmor-confined. To confine the dashboard,
+# run it as a system service with User=%i instead of a user unit.
+#AppArmorProfile=hermes-agent-hardening-%i
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hermes-dashboard-%i
+
+# === Core Security (mirrored from hermes-gateway.service) ===
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+# === Filesystem Protection ===
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/%i/
+
+# === Kernel Protection ===
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProcSubset=pid
+
+# === Device Access ===
+# NOTE: dashboard spawns interactive agent sessions needing ptys — full
+# PrivateDevices breaks chat ("out of pty devices"). Keep default device access.
+#PrivateDevices=yes
+#DevicePolicy=closed
+
+# === Network Restrictions ===
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+# === Memory Protection ===
+# DO NOT USE MemoryDenyWriteExecute=yes - breaks Python JIT
+LockPersonality=yes
+
+# === Privilege Restrictions ===
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+RemoveIPC=yes
+
+# === Capability Restrictions ===
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+# === System Call Filtering ===
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @obsolete @debug @mount @swap @reboot @module @raw-io
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+
+# === Misc Hardening ===
+UMask=0077
+KeyringMode=private
+
+[Install]
+WantedBy=default.target

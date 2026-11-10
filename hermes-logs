@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -euo pipefail
+
+export SYSTEMD_PAGER='' SYSTEMD_COLORS=0
+target="${1:-}"; lines="${2:-200}"
+[[ "$lines" =~ ^[0-9]{1,4}$ ]] || { echo "lines must be 1-9999" >&2; exit 2; }
+case "$target" in
+  kernel) exec /usr/bin/journalctl --system --no-pager -k -b -n "$lines" ;;
+  errors) exec /usr/bin/journalctl --system --no-pager -b -p err -n "$lines" ;;
+  *) [[ "$target" =~ ^[A-Za-z0-9][A-Za-z0-9@._-]*$ ]] || { echo "usage: hermes-logs kernel|errors|UNIT [lines]" >&2; exit 2; }
+     exec /usr/bin/journalctl --system --no-pager -u "$target" -n "$lines" ;;
+esac

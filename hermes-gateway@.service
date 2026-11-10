@@ -1,0 +1,79 @@
+[Unit]
+Description=Hermes Agent Gateway (%i)
+Documentation=https://hermes-agent.nousresearch.com
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=%i
+Group=%i
+WorkingDirectory=/var/lib/%i
+Environment="HOME=/var/lib/%i"
+Environment=HERMES_DISABLE_LAZY_INSTALLS=1
+ExecStart=/usr/bin/hermes gateway run
+Restart=on-failure
+RestartSec=10s
+
+# AppArmor profile
+AppArmorProfile=hermes-agent-hardening-%i
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hermes-agent-%i
+
+# === Core Security ===
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+# === Filesystem Protection ===
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/%i/
+
+# === Kernel Protection ===
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProcSubset=pid
+
+# === Device Access ===
+PrivateDevices=yes
+DevicePolicy=closed
+
+# === Network Restrictions ===
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+# Remove AF_UNIX if you don't need Docker socket access
+
+# === Memory Protection ===
+# DO NOT USE MemoryDenyWriteExecute=yes - breaks Python JIT
+LockPersonality=yes
+
+# === Privilege Restrictions ===
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+RemoveIPC=yes
+
+# === Capability Restrictions ===
+CapabilityBoundingSet=
+AmbientCapabilities=
+# If Docker backend needed, add: CapabilityBoundingSet=CAP_DAC_OVERRIDE
+
+# === System Call Filtering ===
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @obsolete @debug @mount @swap @reboot @module @raw-io
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+
+# === Misc Hardening ===
+UMask=0077
+KeyringMode=private
+
+[Install]
+WantedBy=multi-user.target

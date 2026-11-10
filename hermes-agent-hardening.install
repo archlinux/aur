@@ -1,0 +1,67 @@
+post_install() {
+    echo ""
+    echo "==> hermes-agent-hardening installed."
+    echo ""
+    echo "    This package manages systemd units, AppArmor profiles and limits"
+    echo "    for Hermes Agent instances. It does not start anything by itself."
+    echo ""
+    echo "    Create an instance:"
+    echo "      sudo hermes-instance enable --now hermes"
+    echo ""
+    echo "    If the 'hermes' user already exists, use --adopt:"
+    echo "      sudo hermes-instance enable --adopt --now hermes"
+    echo ""
+    echo "    If you already run Hermes with your own hermes-gateway.service,"
+    echo "    stop and disable it first:"
+    echo "      systemctl stop hermes-gateway.service"
+    echo "      systemctl disable hermes-gateway.service"
+    echo ""
+    echo "    Add the dashboard as well (enables lingering for the instance user):"
+    echo "      sudo hermes-instance enable --now --dashboard hermes"
+    echo ""
+    echo "    Configuration:"
+    echo "      /etc/hermes-agent-hardening/default.conf"
+    echo "      /etc/hermes-agent-hardening/instances/NAME.conf"
+    echo ""
+    echo "    AppArmor profiles are generated per instance in complain mode."
+    echo "    Only the gateway is AppArmor-confined (systemd does not support"
+    echo "    AppArmorProfile for user services)."
+    echo "    Review the logs, then switch to enforce in the config and regenerate."
+    echo ""
+    echo "    To remove an instance before uninstalling:"
+    echo "      sudo hermes-instance remove NAME"
+}
+
+post_upgrade() {
+    /usr/bin/hermes-instance regenerate --all 2>/dev/null || true
+    systemctl daemon-reload
+}
+
+post_remove() {
+    # The helper scripts are already gone at this point, so clean up inline.
+    for profile in /etc/apparmor.d/hermes-agent-hardening-*; do
+        [[ -e "$profile" ]] || continue
+        name="${profile#/etc/apparmor.d/hermes-agent-hardening-}"
+        printf '%s' "hermes-agent-hardening-$name" \
+            > /sys/kernel/security/apparmor/.remove 2>/dev/null || true
+        rm -f "$profile" "/etc/sudoers.d/hermes-logs-$name"
+        # Clean up slice drop-ins for this instance
+        uid=$(getent passwd "$name" | cut -d: -f3)
+        if [[ -n "$uid" ]]; then
+            rm -f "/etc/systemd/system/user-${uid}.slice.d/50-limits.conf" \
+                  "/etc/systemd/system/user-${uid}.slice.d/60-network.conf"
+            rmdir "/etc/systemd/system/user-${uid}.slice.d" 2>/dev/null || true
+        fi
+    done
+    rm -rf /etc/systemd/system/hermes-gateway@*.service.d
+    rm -rf /etc/systemd/user/hermes-dashboard@*.service.d
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo ""
+    echo "==> hermes-agent-hardening removed."
+    echo "    Generated hardening files were cleaned up."
+    echo "    Instance users and homes were left in place."
+    echo "    Remove them manually if no longer needed:"
+    echo "      userdel -r NAME"
+    echo ""
+}

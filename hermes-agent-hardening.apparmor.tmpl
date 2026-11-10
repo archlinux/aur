@@ -1,0 +1,62 @@
+#include <tunables/global>
+
+profile hermes-agent-hardening-$INSTANCE /opt/hermes-agent/venv/bin/python flags=(attach_disconnected$MODE_FLAGS) {
+  # Core runtime support.
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  # Personal-data boundary. These explicit denies override any future broad
+  # allow rule by mistake.
+  audit deny /home/ rwlkmx,
+  audit deny /home/** rwlkmx,
+  audit deny /root/ rwlkmx,
+  audit deny /root/** rwlkmx,
+
+  # Never permit access to local password databases or their backup variants.
+  audit deny /etc/shadow rwlkmx,
+  audit deny /etc/shadow- rwlkmx,
+  audit deny /etc/gshadow rwlkmx,
+  audit deny /etc/gshadow- rwlkmx,
+
+  # Hermes Agent packaged runtime and its Python virtual environment.
+  /opt/hermes-agent/** mr,
+  # The launcher execs the venv interpreter; ix preserves the profile.
+  /opt/hermes-agent/venv/bin/python ix,
+
+  # Hermes WebUI application source, static assets, and server code.
+  /usr/share/hermes-webui/** r,
+
+  # Hermes-owned state: config, memory, sessions, WebUI state, SSH key,
+  # known_hosts, and its dedicated workspace.
+  owner /var/lib/$INSTANCE/** rwkm,
+$EXTRA_RULES
+  # Python/system shared libraries.
+  /usr/lib/** mr,
+  /lib/** mr,
+  /lib64/** mr,
+
+  # Hermes is intentionally a terminal agent. Child commands inherit this
+  # profile via ix, retaining the filesystem restrictions above.
+  /usr/bin/** ix,
+  /bin/** ix,
+  /usr/sbin/** ix,
+  /sbin/** ix,
+
+  # Read-only host inspection.
+  /etc/** r,
+  /var/log/** r,
+  /proc/** r,
+  /sys/** r,
+
+  # Temporary working files.
+  /tmp/** rwk,
+  /var/tmp/** rwk,
+
+  # Model API access, DNS, local IPC, and SSH to geeHTPC.
+  network inet stream,
+  network inet6 stream,
+  network inet dgram,
+  network inet6 dgram,
+  network unix stream,
+  network unix dgram,
+}
