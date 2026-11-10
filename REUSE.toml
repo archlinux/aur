@@ -38,6 +38,7 @@ path = [
   "sqlite-system.patch",
   "geoip-libmaxminddb.patch",
   "sourcemod-delete-noexcept.patch",
+  "sourcemod-gamebin-executable-path.patch",
 ]
 SPDX-FileCopyrightText = "AlliedModders LLC"
 SPDX-License-Identifier = "GPL-3.0-only"
@@ -61,3 +62,8 @@ SPDX-License-Identifier = "Zlib"
 path = "zydis-amalgamate-paths.patch"
 SPDX-FileCopyrightText = ["Florian Bernd", "Joel Höner"]
 SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "amtl-hash-unsigned.patch"
+SPDX-FileCopyrightText = ["David Anderson", "AlliedModders LLC"]
+SPDX-License-Identifier = "BSD-3-Clause"

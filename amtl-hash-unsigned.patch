@@ -1,0 +1,20 @@
+--- a/amtl/am-hashtable.h
++++ b/amtl/am-hashtable.h
+@@ -602,7 +602,7 @@
+ 
+ // From http://burtleburtle.net/bob/hash/integer.html
+ static inline uint32_t
+-HashInt32(int32_t a)
++HashInt32(uint32_t a)
+ {
+     a = (a ^ 61) ^ (a >> 16);
+     a = a + (a << 3);
+@@ -614,7 +614,7 @@
+ 
+ // From http://www.cris.com/~Ttwang/tech/inthash.htm
+ static inline uint32_t
+-HashInt64(int64_t key)
++HashInt64(uint64_t key)
+ {
+     key = (~key) + (key << 18); // key = (key << 18) - key - 1;
+     key = key ^ (uint64_t(key) >> 31);
