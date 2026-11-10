@@ -1,6 +1,6 @@
 pkgbase = oxiroute-bin
-	pkgdesc = Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt binary)
-	pkgver = 6.0.0
+	pkgdesc = Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt, profile-guided release binaries)
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://github.com/brauliobo/oxiroute
 	install = oxiroute.install
@@ -9,16 +9,31 @@ pkgbase = oxiroute-bin
 	depends = ca-certificates
 	depends = gcc-libs
 	depends = glibc
-	depends = openssl
+	depends = systemd>=257
 	optdepends = certbot: provide certificate lineages consumed by configured Certbot sources
-	provides = oxiroute=6.0.0
+	provides = oxiroute=6.3.1
 	conflicts = oxiroute
-	noextract = oxiroute-6.0.0-1-x86_64.pkg.tar.zst
-	options = !strip
+	options = !debug
 	backup = etc/oxiroute/oxiroute.env
 	backup = etc/oxiroute/oxiroute.kdl
 	backup = etc/oxiroute/oxiroute.lua
-	source = oxiroute-6.0.0-1-x86_64.pkg.tar.zst::https://github.com/brauliobo/oxiroute/releases/download/v6.0.0/oxiroute-6.0.0-1-x86_64.pkg.tar.zst
-	sha256sums = 125542a71abd64d9d6dffa3396d827229b1dc8a9a4b771c9377d649715eba05f
+	source = oxiroute-6.3.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/brauliobo/oxiroute/releases/download/v6.3.1/oxiroute-6.3.1-x86_64-unknown-linux-gnu.tar.gz
+	source = management-cli-6.3.1.md::https://raw.githubusercontent.com/brauliobo/oxiroute/v6.3.1/docs/MANAGEMENT_CLI.md
+	source = oxiroute.service
+	source = oxiroute.sysusers
+	source = oxiroute.tmpfiles
+	source = oxiroute.env
+	source = oxiroute.kdl
+	source = oxiroute.lua
+	source = README.md
+	sha256sums = 2e1bdbd2beecbe326ab0ec62c46fb3d9c2840deedf98eabc37457d309e8ff0ba
+	sha256sums = ffb543ff6043239bd1ceb86395a5de51a6571438485ab3f3b027893baee5884b
+	sha256sums = 574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b
+	sha256sums = ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72
+	sha256sums = 502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356
+	sha256sums = d56db017915b82ad6204bb4de1aa268cc41586eafcbbf35194366b32ed02f19a
+	sha256sums = 57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9
+	sha256sums = f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564
+	sha256sums = 0e5b03433c4b8c52d4b4128d7d0eb7d26504e88bf344e5f0b15340b459e02651
 
 pkgname = oxiroute-bin

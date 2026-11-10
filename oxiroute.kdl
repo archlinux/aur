@@ -1,0 +1,27 @@
+(array)cache_stores {
+}
+(array)certificates {
+}
+(array)forward_proxy_services {
+}
+(array)http_services {
+}
+(array)l4_services {
+}
+(array)listeners {
+}
+management #null
+max_connections #null
+(array)rtmp_services {
+}
+(object)stats {
+  admin_token_file #null
+  (array)binds {
+    - "127.0.0.1:8404"
+  }
+}
+(array)tls_profiles {
+}
+(array)upstream_pools {
+}
+version 1
