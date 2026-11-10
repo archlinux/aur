@@ -1,6 +1,6 @@
 pkgbase = devbox-bin
 	pkgdesc = A command-line tool that lets you easily create isolated shells for development.
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://www.jetify.com/devbox/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = devbox-bin
 	license = Apache-2.0
 	depends = docker
 	depends = nix
-	provides = devbox=0.19.0
+	provides = devbox=0.20.0
 	conflicts = devbox
-	source_aarch64 = devbox-0.19.0-aarch64.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.19.0/devbox_0.19.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = f5328264fcc42da5429765039753fa49377432681e063e9b4eb432b7b29a9b9b
-	source_armv7h = devbox-0.19.0-armv7h.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.19.0/devbox_0.19.0_linux_armv7l.tar.gz
-	sha256sums_armv7h = 31c175fc8c0240cc3cccdab100e3388776fb62fb652b331664f5c533d873f3d6
-	source_i686 = devbox-0.19.0-i686.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.19.0/devbox_0.19.0_linux_386.tar.gz
-	sha256sums_i686 = 388e108e4ac7bd7a02bd50b41bed20374344bb999f5e52af5ae78d0b2f7b2a20
-	source_x86_64 = devbox-0.19.0-x86_64.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.19.0/devbox_0.19.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 13a9c9ca15ffef279f5c37694e7feeeeaed93d7ab7b0a69c7b4301a06bcd21ba
+	source_aarch64 = devbox-0.20.0-aarch64.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.20.0/devbox_0.20.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f213ed1e0f614531a8b771810e334e638afb44005a3e4034e3d8bffd072b1b7d
+	source_armv7h = devbox-0.20.0-armv7h.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.20.0/devbox_0.20.0_linux_armv7l.tar.gz
+	sha256sums_armv7h = f85fd41e1d77740ed54b3a16aa909acd9a69652b1861bce7053f32ccb9966672
+	source_i686 = devbox-0.20.0-i686.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.20.0/devbox_0.20.0_linux_386.tar.gz
+	sha256sums_i686 = 5b92760b5bb2cc2f0d6109ce30140436a6e3a9edc04734c99ca595d3719ed84c
+	source_x86_64 = devbox-0.20.0-x86_64.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.20.0/devbox_0.20.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = daf8fdf5fb64f47dc586b78c95e6429eeaada2bb501c1f138aa14ecf0bc2c773
 
 pkgname = devbox-bin
