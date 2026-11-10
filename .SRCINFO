@@ -1,7 +1,7 @@
 pkgbase = bambu-studio
 	pkgdesc = PC Software for BambuLab and other 3D printers
 	pkgver = 2.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -16,6 +16,7 @@ pkgbase = bambu-studio
 	depends = at-spi2-core
 	depends = bzip2
 	depends = cairo
+	depends = curl
 	depends = dbus
 	depends = ffmpeg
 	depends = fontconfig
