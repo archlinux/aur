@@ -1,6 +1,6 @@
 # Maintainer: Renat Gorbushin <lis@lis314.ru>
 pkgname=kaeru-mcp
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Cross-agent cognitive engine for LLM agents"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'clang' 'git')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "kaeru-mcp.service")
-sha256sums=('20e5aed11213cfb48283996f5a2ea21f132219402a19a8eb63b7444b90cc0a85'
+sha256sums=('8d83789a97c59e0c6864ce9ae11cac5d987cfb65c5b7478c1dbfcfdadd0c1e83'
             '7903bf86742dee200aaf362888a9446282aecd113dbbbb29768fd8ef5044c1ad')
 
 build() {
