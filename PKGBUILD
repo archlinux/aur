@@ -179,13 +179,13 @@ prepare() {
   # computed in unsigned arithmetic: in signed, their multiplications and shifts overflow, which is
   # undefined. Clang with LTO folds such a hash differently where a key is a constant, so a table
   # doesn't find an entry it added: DHooks never called detours' pre-callbacks (CHook's handlers by
-  # HOOKTYPE_PRE). The hash values change, which only matters within a process. (upstream report
-  # pending: alliedmodders/amtl)
+  # HOOKTYPE_PRE). The hash values change, which only matters within a process.
+  # (https://github.com/alliedmodders/amtl/pull/142)
   patch -Np1 -d public/amtl -i "$srcdir/amtl-hash-unsigned.patch"
   # Gamedata of the engine's library ("library" "engine") on games based on CS:GO's engine, like Day of
   # Infamy and Insurgency: their dedicated servers' EXECUTABLE_PATH is the server's root, not bin/
-  # with engine_srv.so, so SourceMod searches bin/ under it as well. (upstream report pending:
-  # alliedmodders/sourcemod)
+  # with engine_srv.so, so SourceMod searches bin/ under it as well.
+  # (https://github.com/alliedmodders/sourcemod/pull/2611)
   patch -Np1 -i "$srcdir/sourcemod-gamebin-executable-path.patch"
   # The GeoIP extension with the system's libmaxminddb, linked dynamically, instead of the bundled
   # 1.5.2
