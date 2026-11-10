@@ -3,7 +3,7 @@
 # Contributor: Xavier <shiningxc[at]gmail[dot]com>
 
 pkgname=savage2
-pkgver=2.2.5.0
+pkgver=2.2.5.1
 pkgrel=1
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 install=
 source=('https://masterserver1.talesofnewerth.com/lr1/x86_64/latest/Savage2CE.tar.gz' \
 'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop')
-b2sums=('be6f1718d4c4818ab7c3071461176e13d929abbf856aa4a8655fff8631f7408acf0afe3ebd52605998c9e7e4747ce3b093cf638778b3bae96b970ac1a5fe01b9'
+b2sums=('a385648ff1f94cf6e728874b73633c8ba67de004af9723c96f55643cc5e81abf9c5501248de327c6d79db6018326dfead7c1201af9311923bb0b9470f656d762'
         '51557c346c55a29a397d21b05e56e92c62fa2e296f20387d16f66a1fd1edf77d31650806b5d2593f1c35fb26a67e11fd7aa35b797fee4ee9ca3fc420a5fff00c'
         'c2976cfa829eac67ca76856983f284c2a9e9479657c20ee75a8a627c4f74b78c4da7baf4e92f447530ffe5514f5cade9be09f8c2c52a8cf91a8cd79aae34a3be'
         '8a7200cf07be782656ebec265c40fdfb3430e1d0147893aabd3e1b9635090c70f4f599fcfa1057d30e2be0c19bc684a3daea150aca07807798776a19702abfbb'
