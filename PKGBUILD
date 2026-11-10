@@ -3,7 +3,7 @@
 _pkgbase=openocd-nuvoton
 pkgname=${_pkgbase}-git
 pkgver=0.9.0.r476.g849799e6
-pkgrel=2
+pkgrel=3
 pkgdesc='Fork of OpenOCD that has Nuvoton devices support'
 arch=('x86_64')
 url='https://github.com/OpenNuvoton/OpenOCD-Nuvoton'
@@ -13,7 +13,7 @@ makedepends=('git' 'automake>=1.9' 'autoconf>=2.64' 'libtool' 'tcl')
 options=()
 
 source=(
-    "$pkgname::git+https://github.com/ufbycd/OpenOCD-Nuvoton.git")
+    "$pkgname::git+https://github.com/OpenNuvoton/OpenOCD-Nuvoton.git")
 
 md5sums=('SKIP')
 
