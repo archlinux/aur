@@ -1,6 +1,6 @@
 pkgbase = paperdoll-renderer-bin
 	pkgdesc = Paperdoll Renderer: sprite/paperdoll renders from glTF/FBX bodies with a live preview (prebuilt binary)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://git.timfalken.com/golden-age/paperdoll-renderer
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = paperdoll-renderer-bin
 	depends = zenity
 	provides = paperdoll-renderer
 	conflicts = paperdoll-renderer
-	noextract = paperdoll-renderer-v0.1.5-amd64.deb
+	noextract = paperdoll-renderer-v0.1.6-amd64.deb
 	options = !strip
 	options = !debug
-	source = paperdoll-renderer-v0.1.5-amd64.deb::https://git.timfalken.com/golden-age/paperdoll-renderer/-/releases/v0.1.5/assets/paperdoll-renderer-v0.1.5-amd64.deb
-	sha256sums = 40cd4bf3edec122060d797473fc6dfe62b48667216d8c746f4acf479a9c80066
+	source = paperdoll-renderer-v0.1.6-amd64.deb::https://git.timfalken.com/golden-age/paperdoll-renderer/-/releases/v0.1.6/assets/paperdoll-renderer-v0.1.6-amd64.deb
+	sha256sums = dc33eedb593c3e05d516e6276bbd5d48a037e1e672bdaaa0ed59ec83ebc70e9a
 
 pkgname = paperdoll-renderer-bin
