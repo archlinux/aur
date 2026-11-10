@@ -2,7 +2,7 @@
 # Contributor: pikl <me@pikl.uk>
 # Contributor: CountMurphy (sarif)
 pkgname=immich-machine-learning
-pkgver=3.3.6
+pkgver=3.4.0
 pkgrel=1
 _model_commit=8bf3fd1b44b0c8608f52fb6e50ddff52826576d8
 pkgdesc="Machine learning server for the Immich photo management system"
@@ -30,6 +30,7 @@ depends=('python>=3.11' # 'python<4' not recommended by python
 	'python-tokenizers<1.0'
 	'uvicorn<1.0'
 	'python-rapidocr'
+	'python-pillow-jpegxl-plugin'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-httpx' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-pytest-mock')
@@ -45,7 +46,7 @@ source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/r
 	"ml-models-${_model_commit}.tar.gz::https://github.com/immich-app/ml-models/archive/${_model_commit}.tar.gz"
 	'immich-machine-learning.service'
 	'opencv.patch')
-b2sums=('6bd869ec688ae27351765c8c600b98bedae55ec369283f354ec4d1fc4942567c2d0261bc16e8ac8776320d78552802448cd932a2f6135e054604e06b2b9c8e4a'
+b2sums=('c008798b4a3a42d07b87cdbe086b16a0b0b51dbf2173375ce14de2a4f07d01a3884b3077f8152c0bcc220d856c2f6cba645504c04bd56d8266510faa3609b861'
         '10a6ff3903a65855dca3f621fcbb60843b17c24ae587caef40f3c1791d8da5d0f5ba5b0aba3187763423793efeec58d3c8cdbd35024072d670bd6b6861f6c4dd'
         '2097cfbe79d07d32f696be0ec4998f987976cd3031ad5f693e84619a5da758c78a4a25171eb983b08a9b9ab567159e9be51f56226ad66ab0ea0c01d4d167d2f6'
         '2c18901487a3f279b0bfa19f875c6def44386bc0fdb283990ca4e9b86a928ca085093db6ff1f1833be3c93b3ae99e91044a6196a88d456d1698d2ed7f7be0481')
