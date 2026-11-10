@@ -1,0 +1,5 @@
+[mob3-bin]
+source = "github"
+github = "mob3net/mob3"
+use_latest_release = true
+prefix = "v"
