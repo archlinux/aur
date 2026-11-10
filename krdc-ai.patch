@@ -56,10 +56,10 @@ index ab7dc20b..e55bb982 100644
      KF6::Bookmarks
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..4b196d84
+index 00000000..a37fed9e
 --- /dev/null
 +++ b/ai/aiconfig.cpp
-@@ -0,0 +1,158 @@
+@@ -0,0 +1,170 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -181,6 +181,10 @@ index 00000000..4b196d84
 +        "the user approves the action from that and a zoomed crop of the spot.\n"
 +        "- If an action needs a password or would delete or overwrite something, stop and let "
 +        "the user do it or confirm it.\n"
++        "- After typing text that matters, check a later screenshot to confirm it arrived correctly. "
++        "If characters are missing or wrong, retype with method \"keys\" and a delay_ms double what "
++        "was used before (the assistant remembers that pacing for the rest of the conversation), "
++        "or say so and let the user paste it.\n"
 +        "- Keep working until the goal is verifiably done: never end a turn by only describing "
 +        "an action you were about to take - take it with a tool call instead. Finish only when "
 +        "the goal is reached, when a rule above says to stop, or when you are genuinely blocked "
@@ -196,6 +200,14 @@ index 00000000..4b196d84
 +                          "image accordingly."),
 +            QStringLiteral("Point tools take coordinates in this image's pixels and are mapped to the real screen "
 +                           "for you; do not scale coordinates yourself."));
++    }
++    if (prompt.contains(QLatin1String("embedded in KRDC")) && !prompt.contains(QLatin1String("remembers that pacing"))) {
++        // Saved copies predate the self-correcting typing rule.
++        prompt.replace(QLatin1String("- Keep working until"),
++                       QStringLiteral("- After typing text that matters, check a later screenshot to confirm it "
++                                      "arrived correctly; if characters are missing, retype with method \"keys\" and "
++                                      "a larger delay_ms.\n"
++                                      "- Keep working until"));
 +    }
 +    if (prompt.contains(QLatin1String("embedded in KRDC")) && !prompt.contains(QLatin1String("Keep working until"))) {
 +        // Saved copies predate the persistence rule that stops the assistant
@@ -287,10 +299,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..863319ec
+index 00000000..4f56e5c8
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,1391 @@
+@@ -0,0 +1,1399 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1376,6 +1388,12 @@ index 00000000..863319ec
 +        }
 +
 +        const int delay = clampInt(args.value(QStringLiteral("delay_ms")).toDouble(0), 0, MaxTypeDelayMs, 0);
++        if (delay > 0) {
++            // The model passed a delay because it saw text arrive badly:
++            // remember the slowest pacing it has asked for and keep it for
++            // the rest of this conversation.
++            m_learnedTypeDelay = qMax(m_learnedTypeDelay, delay);
++        }
 +
 +        // Keys are always paced: remote input queues drop synthetic events
 +        // arriving in bursts, and nested sessions drop even more.
@@ -1486,11 +1504,13 @@ index 00000000..863319ec
 +    }
 +
 +    if (m_typeRemainder.isEmpty()) {
-+        finishTool(m_typeCall, QStringLiteral("Typed text."));
++        finishTool(m_typeCall, QStringLiteral("Typed text (paced at %1 ms per character).")
++                                   .arg(qMax(qMax(m_typeDelay, MinTypeCharDelayMs), m_learnedTypeDelay)));
 +        m_queueIndex++;
 +        processQueue();
 +    } else {
-+        QTimer::singleShot(qMax(m_typeDelay, MinTypeCharDelayMs), this, &AiConversation::typeNextChunk);
++        QTimer::singleShot(qMax(qMax(m_typeDelay, MinTypeCharDelayMs), m_learnedTypeDelay),
++                           this, &AiConversation::typeNextChunk);
 +    }
 +}
 +
@@ -1684,10 +1704,10 @@ index 00000000..863319ec
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..b17a1789
+index 00000000..829508d6
 --- /dev/null
 +++ b/ai/aiconversation.h
-@@ -0,0 +1,208 @@
+@@ -0,0 +1,209 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1881,6 +1901,7 @@ index 00000000..b17a1789
 +    bool m_awaiting = false;
 +    bool m_pasteActive = false; ///< clipboard paste keystroke pending
 +    AiToolCall m_pasteCall;
++    int m_learnedTypeDelay = 0; ///< slowest delay_ms the model asked for this conversation
 +    bool m_roundCapReached = false;
 +    QPixmap m_aimCrop; ///< set by runTool before a pointer action lands
 +    bool m_denied = false;
@@ -6161,7 +6182,7 @@ index 2a9ff838..e6cd0137 100644
      void initializeDisplay(RdpContext *krdp, DispClientContext *disp);
      void destroyClipboard();
 diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
-index 09bb26d6..01e93be8 100644
+index 09bb26d6..3dafd15e 100644
 --- a/rdp/rdpview.cpp
 +++ b/rdp/rdpview.cpp
 @@ -10,8 +10,10 @@
@@ -6175,7 +6196,15 @@ index 09bb26d6..01e93be8 100644
  
  #include <KMessageDialog>
  #include <KPasswordDialog>
-@@ -34,6 +36,14 @@
+@@ -20,6 +22,7 @@
+ 
+ #include <QChar>
+ #include <QDir>
++#include <QMimeData>
+ #include <QEvent>
+ #include <QInputDialog>
+ #include <QKeyEvent>
+@@ -34,6 +37,14 @@
  
  #include "rdpmonitorview.h"
  
@@ -6190,7 +6219,7 @@ index 09bb26d6..01e93be8 100644
  RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, const QString &user, const QString &domain, const QString &password)
      : RemoteView(parent)
      , m_user(user)
-@@ -74,6 +84,27 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
+@@ -74,6 +85,27 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
      }
  
      m_hostPreferences = std::make_unique<RdpHostPreferences>(configGroup);
@@ -6218,7 +6247,7 @@ index 09bb26d6..01e93be8 100644
  }
  
  RdpView::~RdpView()
-@@ -646,6 +677,64 @@ QPixmap RdpView::takeScreenshot()
+@@ -646,6 +678,64 @@ QPixmap RdpView::takeScreenshot()
      return QPixmap{};
  }
  
@@ -6283,7 +6312,7 @@ index 09bb26d6..01e93be8 100644
  bool RdpView::supportsScaling() const
  {
      return true;
-@@ -810,16 +899,23 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -810,16 +900,23 @@ void RdpView::paintEvent(QPaintEvent *event)
  
      const auto &image = *m_session->videoBuffer();
  
@@ -6310,7 +6339,7 @@ index 09bb26d6..01e93be8 100644
      const qreal outputScale = m_session->outputScale();
      scaledImage.setDevicePixelRatio(outputScale);
  
-@@ -831,6 +927,73 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -831,6 +928,73 @@ void RdpView::paintEvent(QPaintEvent *event)
      painter.end();
  }
  
@@ -6384,7 +6413,7 @@ index 09bb26d6..01e93be8 100644
  void RdpView::handleKeyEvent(QKeyEvent *event)
  {
      if (m_session) {
-@@ -862,6 +1025,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
+@@ -862,6 +1026,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
  
  void RdpView::onRectangleUpdated(const QRect &remoteRect, const QSize &remoteSize)
  {
