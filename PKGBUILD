@@ -3,7 +3,7 @@
 _pkgbase=ae-code
 pkgname="$_pkgbase-git"
 pkgver=2026.11.10.1.r0.g3dbd0ce
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop GUI for coding agents (fork of T3 Code), latest commit'
 arch=('x86_64')
 url='https://github.com/SelfRef/ae-code'
@@ -107,7 +107,7 @@ EOF
 	local size
 	for size in 16 22 24 32 48 64 128 256 512; do
 		install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
-		magick assets/prod/black-universal-1024.png -resize "${size}x${size}" \
+		magick assets/dev/blueprint-universal-1024.png -resize "${size}x${size}" \
 			"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/ae-code.png"
 	done
 
