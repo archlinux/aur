@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=pdf-math-reader-bin
-pkgver=0.1.14
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Read scientific documents in your language, in realtime, on any platform"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source_x86_64=(
   "PDFMathReader-linux-x64.tar.gz::https://github.com/PDFMathTranslate/PDFMathReader/releases/download/v${pkgver}/PDFMathReader-linux-x64.tar.gz"
   "pdf-math-reader.png"
 )
-sha256sums_x86_64=('ea3d5f129ee076f269fab767f2dfb67111d78e6105d7945994876f07868b62f8'
+sha256sums_x86_64=('629c929a573de67f80d604c5e927bc493171c851ca4b1960ea1326b9a33c1858'
                    '710e0cde4e5a31a846f358ce702b68d84385c1282017bda83fc547e36726bb91')
 
 package() {
