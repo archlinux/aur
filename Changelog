@@ -1,17 +1,45 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.6.0 ➙ 6.8.0
-              : 2026-10-03 ➙ 2026-11-01
+ Tags         : 6.6.0 ➙ HEAD
+              : 2026-10-03 ➙ 2026-11-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-11-01   : 6.8.0
+ 2026-11-09   : HEAD
+              - **6.11.0**
+            
+                * When using new (but currently unused) timeout option to run an executable, forward parent signals.
+                  A keyboard interrupt, for example, is now passed to the child process group.
+                * Split run_cmd_output.c into smaller files (readability)
+                * Add manual section discussing posix_spawn vs fork/exec
+            
+                **6.10.0**
+            
+                * Improve output format from subprocesses by capture of child process stdout/stderr
+                  and formatting appropriately indented.
+                * Openssl 4.x requires different valgrind suppression rules 3.x
+                  to silence its global allocated cache not being freed.
+                * Tidy ups to keep clang-tidy 23.1.4 happy
+                * clang-format to enforce consistent style.
+
+ 2026-11-09   : 6.11.0
+              - **6.10.0**
+                * Improve output format from subprocesses by capture of child process stdout/stderr
+                and formatting appropriately indented.
+              - **6.9.0**
+                * Improve output format from subprocess (sbctl).
+                * Openssl 4.x requires different valgrind suppression rules 3.x
+                  to silence its global allocated cache not being freed.
+                * Tidy ups to keep clang-tidy 23.1.4 happy
+                * clang-format to enforce consistent style.
+
+ 2026-11-01   : 6.8.0, origin/master
               - **6.8.0**
             
                 * Update manual on using sd-boot with Arch kernels
                 * Add a couple more defensive memory checks for find_boot_mounts.
 
- 2026-10-10   : 6.7.0, origin/master
+ 2026-10-10   : 6.7.0
               - 6.6.1 : Update man page for sd-boot-find-boot-mounts
 
  2026-10-03   : 6.6.0
@@ -21,6 +49,3 @@
                   * Expand secure boot section
                   * Add section on systemd validation of the kernel (sysetmd-tpm2-setup)
                   * Add section on the (benign) systemd TPM2 warning: **Failed to start Early TPM SRK Setup**
- 2026-09-29   ⋯
-              - minor doc tweaks
-              - more doc updates
