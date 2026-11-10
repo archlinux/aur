@@ -20,19 +20,13 @@ depends=(curl
          gtk3
          libnotify
          libsecret
-         libxss
          nspr
          nss
-         org.freedesktop.secrets
-         unzip)
-optdepends=('github-cli: CLI interface for GitHub'
-            'hub: CLI interface for GitHub')
-makedepends=(python-setuptools
+         org.freedesktop.secrets)
+optdepends=('github-cli: CLI interface for GitHub')
+makedepends=(python
              'nodejs-lts-krypton'
-             npm
-             util-linux
-             xorg-server-xvfb
-             yarn)
+             npm)
 source=("$pkgname::git+https://github.com/desktop-plus/desktop-plus.git"
         'git+https://github.com/github/gemoji.git'
         'git+https://github.com/github/gitignore.git'
@@ -62,8 +56,6 @@ prepare() {
     git config submodule."app/static/common/gitignore".url "$srcdir/gitignore"
     git config submodule."app/static/common/choosealicense.com".url "$srcdir/choosealicense.com"
     git -c protocol.file.allow=always submodule update
-    # https://github.com/shiftkey/desktop/issues/809#issuecomment-1348815685
-    sed -e '/compile:prod/s/4096/4096 --openssl-legacy-provider/' -i package.json
 }
 
 build() {
@@ -71,7 +63,7 @@ build() {
     cd "$pkgname"
     # https://github.com/nodejs/node/issues/48444
     export UV_USE_IO_URING=0
-    xvfb-run yarn install
+    npm ci
 
     # These can be extracted trivially from the app, so there is no point in trying to hide them.
     # Obfuscate them slightly in the PKGBUILD to prevent bots from easily scraping them.    
@@ -85,7 +77,7 @@ build() {
     export "$(_deobfuscate "G@R@E@B@E@D@O@C@_@T@E@R@C@E@S@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "q@u@j@c@h@i@y@y@c@w@x@d@n@x@s@l@l@c@s@h@5@p@c@a@y@l@a@t@y@5@p@d@f@a@2@e@t@7@k@d@r@k@i@2@d@d@i@x@i@w@5@u@_@o@t@g@")"
     export "$(_deobfuscate "A@E@T@I@G@_@D@I@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "6@2@a@5@d@e@5@1@4@d@c@3@-@9@b@5@b@-@9@c@a@4@-@8@d@1@b@-@3@5@4@9@c@2@5@6@")"
     export "$(_deobfuscate "A@E@T@I@G@_@T@E@R@C@E@S@_@T@N@E@I@L@C@_@H@T@U@A@O@_@P@O@T@K@S@E@D@")"="$(_deobfuscate "a@6@6@k@y@t@a@7@3@3@4@d@6@y@7@v@3@q@5@h@7@y@s@z@p@e@n@j@g@w@a@u@h@l@5@h@y@n@l@j@p@b@j@b@l@k@i@5@3@c@2@i@_@o@t@g@")"
-    xvfb-run yarn build:prod
+    npm run build:prod
 }
 
 package() {
