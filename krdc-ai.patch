@@ -287,10 +287,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..8fa0e795
+index 00000000..863319ec
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,1348 @@
+@@ -0,0 +1,1391 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -329,6 +329,9 @@ index 00000000..8fa0e795
 +constexpr int MaxToolRounds = 25;
 +constexpr int MaxHistoryEntries = 200;
 +constexpr int MaxTypeDelayMs = 200;
++// Gap between announcing the clipboard contents and sending Ctrl+V, so the
++// clipboard channel's announcement reaches the server before the paste.
++constexpr int PasteDelayMs = 120;
 +// The Windows input queue inside an RDP session drops synthetic key events
 +// that arrive in bursts; nothing human types 64 characters in one synchronous
 +// loop. Lost keystrokes and lost Shift transitions showed up as missing
@@ -694,7 +697,7 @@ index 00000000..8fa0e795
 +
 +    // Same continuation rule as processQueue(): if the tool handed work to an
 +    // async step, its slot advances the queue when it reports back.
-+    if (m_client.busy() || !m_typeRemainder.isEmpty() || m_waitActive) {
++    if (m_client.busy() || !m_typeRemainder.isEmpty() || m_waitActive || m_pasteActive) {
 +        return;
 +    }
 +    m_queueIndex++;
@@ -1021,7 +1024,7 @@ index 00000000..8fa0e795
 +        // paced typing or a wait timer. In those cases the continuation
 +        // happens in a slot; stop here so we do not run later calls out of
 +        // order.
-+        if (m_client.busy() || !m_typeRemainder.isEmpty() || m_waitActive) {
++        if (m_client.busy() || !m_typeRemainder.isEmpty() || m_waitActive || m_pasteActive) {
 +            return;
 +        }
 +        m_queueIndex++;
@@ -1343,17 +1346,39 @@ index 00000000..8fa0e795
 +            return;
 +        }
 +
-+        const int delay = clampInt(args.value(QStringLiteral("delay_ms")).toDouble(0), 0, MaxTypeDelayMs, 0);
-+        if (delay == 0) {
-+            if (view->aiTypeText(text)) {
-+                finishTool(call, QStringLiteral("Typed %1 characters.").arg(text.length()));
-+            } else {
-+                finishTool(call, QStringLiteral("Typed %1 characters, but some characters could not be injected.").arg(text.length()));
-+            }
++        QString method = args.value(QStringLiteral("method")).toString().trimmed().toLower();
++        if (method.isEmpty()) {
++            method = QStringLiteral("auto");
++        }
++        if (method != QLatin1String("keys") && method != QLatin1String("paste") && method != QLatin1String("auto")) {
++            failTool(call, QStringLiteral("Unknown typing method “%1”. Use auto, keys or paste.").arg(method));
 +            return;
 +        }
 +
-+        // Paced typing: send in chunks on a timer so the remote field keeps up.
++        // Clipboard paste carries the whole text as one payload and one
++        // Ctrl+V, so intermediate input queues - a remote session nested
++        // inside another remote session especially - have no per-character
++        // events to lose. Short strings still type as keys so the remote
++        // clipboard is not overwritten unnecessarily.
++        const bool preferPaste = method == QLatin1String("paste")
++            || (method == QLatin1String("auto") && text.length() > 8);
++        if (preferPaste && view->aiSetClipboard(text)) {
++            m_pasteCall = call;
++            m_pasteActive = true;
++            // Give the clipboard announcement a beat to reach the server
++            // before the paste keystroke.
++            QTimer::singleShot(PasteDelayMs, this, &AiConversation::pasteNow);
++            return;
++        }
++        if (method == QLatin1String("paste")) {
++            failTool(call, QStringLiteral("This connection has no clipboard channel; type with method \"keys\" instead."));
++            return;
++        }
++
++        const int delay = clampInt(args.value(QStringLiteral("delay_ms")).toDouble(0), 0, MaxTypeDelayMs, 0);
++
++        // Keys are always paced: remote input queues drop synthetic events
++        // arriving in bursts, and nested sessions drop even more.
 +        m_typeCall = call;
 +        m_typeDelay = delay;
 +        m_typeRemainder = text;
@@ -1420,6 +1445,24 @@ index 00000000..8fa0e795
 +    }
 +
 +    failTool(call, QStringLiteral("Unknown tool “%1”.").arg(name));
++}
++
++void AiConversation::pasteNow()
++{
++    m_pasteActive = false;
++    RemoteView *view = m_view;
++    if (!view || !m_busy) {
++        return;
++    }
++
++    QString error;
++    if (sendChord(view, {QStringLiteral("ctrl"), QStringLiteral("v")}, &error)) {
++        finishTool(m_pasteCall, QStringLiteral("Pasted the text through the remote clipboard."));
++    } else {
++        failTool(m_pasteCall, error);
++    }
++    m_queueIndex++;
++    processQueue();
 +}
 +
 +void AiConversation::typeNextChunk()
@@ -1641,10 +1684,10 @@ index 00000000..8fa0e795
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..28a8da21
+index 00000000..b17a1789
 --- /dev/null
 +++ b/ai/aiconversation.h
-@@ -0,0 +1,205 @@
+@@ -0,0 +1,208 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1793,6 +1836,7 @@ index 00000000..28a8da21
 +    void onReply(const QString &content, const QList<AiToolCall> &toolCalls);
 +    void onFailed(const QString &message);
 +    void typeNextChunk();
++    void pasteNow();
 +
 +private:
 +    struct PendingTool {
@@ -1835,6 +1879,8 @@ index 00000000..28a8da21
 +    QList<PendingTool> m_queue;
 +    int m_queueIndex = 0;
 +    bool m_awaiting = false;
++    bool m_pasteActive = false; ///< clipboard paste keystroke pending
++    AiToolCall m_pasteCall;
 +    bool m_roundCapReached = false;
 +    QPixmap m_aimCrop; ///< set by runTool before a pointer action lands
 +    bool m_denied = false;
@@ -3684,10 +3730,10 @@ index 00000000..d0a21673
 +}
 diff --git a/ai/aitools.cpp b/ai/aitools.cpp
 new file mode 100644
-index 00000000..3f51fe09
+index 00000000..622dbb0a
 --- /dev/null
 +++ b/ai/aitools.cpp
-@@ -0,0 +1,527 @@
+@@ -0,0 +1,535 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -3994,11 +4040,19 @@ index 00000000..3f51fe09
 +                                   QStringLiteral("The text to type at the current remote focus. Use \\n for Enter.")));
 +        properties.insert(QStringLiteral("delay_ms"),
 +                          property(QStringLiteral("integer"),
-+                                   QStringLiteral("Milliseconds to pause between characters. Use 50 or more for terminals "
-+                                                  "and search boxes that drop characters.")));
++                                   QStringLiteral("Milliseconds to pause between keystrokes when typing character by "
++                                                  "character. Use 50 or more on slow or nested remote sessions.")));
++        properties.insert(QStringLiteral("method"),
++                          property(QStringLiteral("string"),
++                                   QStringLiteral("auto (default): text longer than a few characters goes through the "
++                                                  "remote clipboard and is pasted, which survives nested remote sessions; "
++                                                  "keys: type every character as keystrokes (use for fields that reject "
++                                                  "pasting, like password boxes); paste: always use the clipboard.")));
 +        tools.append(wrapped(QStringLiteral("type_text"),
 +                             QStringLiteral("Type text into whatever has the keyboard focus on the remote machine. Click the "
-+                                            "field first so focus is where you expect."),
++                                            "field first so focus is where you expect. If the text arrives garbled or with "
++                                            "missing characters, retry with method \"keys\" and delay_ms 60, or take a "
++                                            "screenshot to check before retrying."),
 +                             properties,
 +                             {QStringLiteral("text")}));
 +    }
@@ -4309,10 +4363,10 @@ index 3a3bec37..6f6e8c1a 100644
        <default>#00417F</default>
      </entry>
 diff --git a/core/remoteview.cpp b/core/remoteview.cpp
-index cfb54769..340940f3 100644
+index cfb54769..070cc895 100644
 --- a/core/remoteview.cpp
 +++ b/core/remoteview.cpp
-@@ -383,6 +383,74 @@ bool RemoteView::acceptPasswordDialog(const KPasswordDialog &dialog)
+@@ -383,6 +383,79 @@ bool RemoteView::acceptPasswordDialog(const KPasswordDialog &dialog)
      return dialog.keepPassword();
  }
  
@@ -4353,6 +4407,11 @@ index cfb54769..340940f3 100644
 +    return false;
 +}
 +
++bool RemoteView::aiSetClipboard(const QString &)
++{
++    return false;
++}
++
 +void RemoteView::setKeyboardGrabSuspended(bool suspended)
 +{
 +    if (m_keyboardGrabSuspended == suspended) {
@@ -4387,7 +4446,7 @@ index cfb54769..340940f3 100644
  QString RemoteView::readWalletPassword(bool fromUserNameOnly)
  {
      return readWalletPasswordForKey(fromUserNameOnly ? m_url.userName() : m_url.toDisplayString(QUrl::StripTrailingSlash));
-@@ -492,7 +560,7 @@ QCursor RemoteView::localDefaultCursor() const
+@@ -492,7 +565,7 @@ QCursor RemoteView::localDefaultCursor() const
  
  void RemoteView::focusInEvent(QFocusEvent *event)
  {
@@ -4396,7 +4455,7 @@ index cfb54769..340940f3 100644
          m_keyboardIsGrabbed = true;
          grabKeyboard();
      }
-@@ -550,6 +618,14 @@ bool RemoteView::event(QEvent *event)
+@@ -550,6 +623,14 @@ bool RemoteView::event(QEvent *event)
      case QEvent::MouseButtonPress:
      case QEvent::MouseButtonRelease:
      case QEvent::MouseMove:
@@ -4412,10 +4471,10 @@ index cfb54769..340940f3 100644
          return true;
          break;
 diff --git a/core/remoteview.h b/core/remoteview.h
-index fa3c9ef1..bd03c50c 100644
+index fa3c9ef1..1dd73943 100644
 --- a/core/remoteview.h
 +++ b/core/remoteview.h
-@@ -298,6 +298,79 @@ public:
+@@ -298,6 +298,87 @@ public:
       */
      QUrl url();
  
@@ -4471,6 +4530,14 @@ index fa3c9ef1..bd03c50c 100644
 +    virtual bool aiTypeText(const QString &text);
 +
 +    /**
++     * Places @p text on the remote machine's clipboard without touching the
++     * local one. The view can then paste it with one keystroke, which beats
++     * per-character injection over lossy or nested connections.
++     * @return false when the view has no clipboard channel.
++     */
++    virtual bool aiSetClipboard(const QString &text);
++
++    /**
 +     * Temporarily gives up an exclusive keyboard grab, e.g. while the user is
 +     * typing into a widget outside the remote view such as the AI chat panel.
 +     * Unlike setGrabAllKeys() this does not change the user's setting: the
@@ -4495,7 +4562,7 @@ index fa3c9ef1..bd03c50c 100644
  public Q_SLOTS:
      /**
       * Called to enable or disable scaling.
-@@ -494,6 +567,7 @@ protected:
+@@ -494,6 +575,7 @@ protected:
      bool m_canceledByUser = false;
      bool m_viewOnly;
      bool m_grabAllKeys;
@@ -6094,7 +6161,7 @@ index 2a9ff838..e6cd0137 100644
      void initializeDisplay(RdpContext *krdp, DispClientContext *disp);
      void destroyClipboard();
 diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
-index 09bb26d6..fe632c80 100644
+index 09bb26d6..01e93be8 100644
 --- a/rdp/rdpview.cpp
 +++ b/rdp/rdpview.cpp
 @@ -10,8 +10,10 @@
@@ -6151,7 +6218,7 @@ index 09bb26d6..fe632c80 100644
  }
  
  RdpView::~RdpView()
-@@ -646,6 +677,52 @@ QPixmap RdpView::takeScreenshot()
+@@ -646,6 +677,64 @@ QPixmap RdpView::takeScreenshot()
      return QPixmap{};
  }
  
@@ -6201,10 +6268,22 @@ index 09bb26d6..fe632c80 100644
 +    return m_session->aiTypeText(text) == 0;
 +}
 +
++bool RdpView::aiSetClipboard(const QString &text)
++{
++    if (!m_session) {
++        return false;
++    }
++    QMimeData *mimeData = new QMimeData;
++    mimeData->setText(text);
++    const bool sent = m_session->sendClipboard(mimeData);
++    delete mimeData;
++    return sent;
++}
++
  bool RdpView::supportsScaling() const
  {
      return true;
-@@ -810,16 +887,23 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -810,16 +899,23 @@ void RdpView::paintEvent(QPaintEvent *event)
  
      const auto &image = *m_session->videoBuffer();
  
@@ -6231,7 +6310,7 @@ index 09bb26d6..fe632c80 100644
      const qreal outputScale = m_session->outputScale();
      scaledImage.setDevicePixelRatio(outputScale);
  
-@@ -831,6 +915,73 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -831,6 +927,73 @@ void RdpView::paintEvent(QPaintEvent *event)
      painter.end();
  }
  
@@ -6305,7 +6384,7 @@ index 09bb26d6..fe632c80 100644
  void RdpView::handleKeyEvent(QKeyEvent *event)
  {
      if (m_session) {
-@@ -862,6 +1013,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
+@@ -862,6 +1025,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
  
  void RdpView::onRectangleUpdated(const QRect &remoteRect, const QSize &remoteSize)
  {
@@ -6314,7 +6393,7 @@ index 09bb26d6..fe632c80 100644
          const QRect intersection = remoteRect.intersected(m_fullscreenMonitorRect);
          if (intersection.isEmpty()) {
 diff --git a/rdp/rdpview.h b/rdp/rdpview.h
-index 5ccd2aca..8730468e 100644
+index 5ccd2aca..96ba046a 100644
 --- a/rdp/rdpview.h
 +++ b/rdp/rdpview.h
 @@ -17,6 +17,7 @@
@@ -6325,7 +6404,7 @@ index 5ccd2aca..8730468e 100644
  #include <QUrl>
  
  #define TCP_PORT_RDP 3389
-@@ -60,6 +61,14 @@ public:
+@@ -60,6 +61,15 @@ public:
  
      QPixmap takeScreenshot() override;
  
@@ -6335,12 +6414,13 @@ index 5ccd2aca..8730468e 100644
 +    void aiMouseWheel(const QPoint &pos, const QPoint &angleDelta) override;
 +    void aiKeyPress(int key, Qt::KeyboardModifiers modifiers, bool pressed) override;
 +    bool aiTypeText(const QString &text) override;
++    bool aiSetClipboard(const QString &text) override;
 +    void setDarkModeFilter(bool enabled) override;
 +
  public Q_SLOTS:
      void scaleResize(int w, int h) override;
      void onAuthRequested();
-@@ -89,6 +98,23 @@ private:
+@@ -89,6 +99,23 @@ private:
      void handleError(unsigned int error);
      void updateRemoteCursor();
  
