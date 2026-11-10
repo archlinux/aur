@@ -4,7 +4,7 @@
 # Contributor: strawberry <strawberry@puppygock.gay>
 
 pkgname=conduit
-pkgver=0.10.15
+pkgver=0.10.16
 pkgrel=1
 pkgdesc='A simple, fast and reliable chat server powered by Matrix'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!lto')
 backup=("etc/${pkgname}.toml")
 source=("${pkgname}::git+https://gitlab.com/famedly/${pkgname}.git#tag=v${pkgver}"
         "${pkgname}.service")
-b2sums=('ba009fd8d45cf8408c4bbd5eb6e2ffbd1f0a980be2d3dab3dffa369c51c038c988a572c4ee8960a0c088703ab7a6fbeff65ac7494399d589a87e514940c897b6'
+b2sums=('d3701bde068905137fdd28709fd0f05977860bea0b4e7a900b440ca0f1e4e2cdac0b79b4783c832fa984f2631f2dc7f2eb0a838d3b9d0e5685f287ccdd7a1bd9'
         '2fb72123f70b2521134a5cd92ff62d62f6122e2bae52ce02d821c3716f40bd92c59819bf82a84ebe80e4b9b066b98c7e6309359aeac734ae0f20d63b41906d56')
 
 prepare() {
