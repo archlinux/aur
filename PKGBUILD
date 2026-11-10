@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/chrome-for-testing-bin
 
 pkgname=chrome-for-testing-bin
-pkgver=157.0.8103.38 # renovate: datasource=custom.chrome-for-testing depName=chrome-for-testing versioning=loose
+pkgver=157.0.8103.50 # renovate: datasource=custom.chrome-for-testing depName=chrome-for-testing versioning=loose
 pkgrel=1
 pkgdesc="Official Google Chrome for Testing browser"
 arch=('x86_64')
@@ -40,7 +40,7 @@ options=('!emptydirs' '!strip')
 source=(
   "chrome-for-testing-${pkgver}-linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/chrome-linux64.zip"
 )
-sha256sums=('8cdeb344e9b2cefe59f4aea8d1d93d5d93054c03cde217665c16fc1f62e72a66')
+sha256sums=('d17167bc092eb495a3b768c7467f27e35f625aa03834233a1663af67dcb668c9')
 
 package() {
   local _install_dir="$pkgdir/opt/chrome-for-testing"

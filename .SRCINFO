@@ -1,6 +1,6 @@
 pkgbase = chrome-for-testing-bin
 	pkgdesc = Official Google Chrome for Testing browser
-	pkgver = 157.0.8103.38
+	pkgver = 157.0.8103.50
 	pkgrel = 1
 	url = https://googlechromelabs.github.io/chrome-for-testing/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = chrome-for-testing-bin
 	depends = xdg-utils
 	options = !emptydirs
 	options = !strip
-	source = chrome-for-testing-157.0.8103.38-linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/157.0.8103.38/linux64/chrome-linux64.zip
-	sha256sums = 8cdeb344e9b2cefe59f4aea8d1d93d5d93054c03cde217665c16fc1f62e72a66
+	source = chrome-for-testing-157.0.8103.50-linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/157.0.8103.50/linux64/chrome-linux64.zip
+	sha256sums = d17167bc092eb495a3b768c7467f27e35f625aa03834233a1663af67dcb668c9
 
 pkgname = chrome-for-testing-bin
