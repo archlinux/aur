@@ -12,7 +12,15 @@
  
  ifneq ($(wildcard $(KERNELSRC)),)
  	ccflags-y += -I$(KERNELSRC)
-@@ -89,7 +91,7 @@
+@@ -24,6 +26,7 @@
+ mtgpu-objs += src/common/os-interface.o \
+ 	src/common/os-interface-drm.o \
+ 	src/mtgpu/mtgpu_drv.o \
++	src/mtgpu/mtgpu_hwmon.o \
+ 	src/mtgpu/mtgpu_module_param.o \
+ 	src/mtgpu/drm_compatibility.o \
+ 	src/mtgpu/mtgpu_drm_dsc.o \
+@@ -89,7 +92,7 @@
  
  ccflags-y := -D__linux__ -include config_kernel.h
  ccflags-y += -include linux/version.h
@@ -21,7 +29,7 @@
  ccflags-y += -I$(OBJ_DIR)/inc \
  	-I$(OBJ_DIR)/inc/pvr \
  	-I$(OBJ_DIR)/inc/pvr/generated \
-@@ -117,25 +119,27 @@
+@@ -117,25 +120,27 @@
  CONFTEST := $(OBJ_DIR)/conftest
  
  MTGPU_BINARY := $(OBJ_DIR)/objs/$(ARCH)/mtgpu_core.o_binary
@@ -555,6 +563,23 @@
 +void mtgpu_drm_sync_irqs(struct device *parent);
  
  #endif /* _MTGPU_DRM_DRV_H_ */
+--- /dev/null
++++ b/inc/mtgpu/mtgpu_hwmon.h
+@@ -0,0 +1,14 @@
++/*
++ * MTT S30 Hardware Monitoring (hwmon) support
++ * Exposes temperature, fan speed, clock frequencies, power, and VRAM usage.
++ */
++
++#ifndef __MTGPU_HWMON_H__
++#define __MTGPU_HWMON_H__
++
++#include <linux/pci.h>
++
++int mtgpu_hwmon_init(struct pci_dev *pdev);
++void mtgpu_hwmon_fini(struct pci_dev *pdev);
++
++#endif /* __MTGPU_HWMON_H__ */
 --- /dev/null
 +++ b/inc/pfn_compat.h
 @@ -0,0 +1,20 @@
@@ -1907,7 +1932,7 @@
  		.owner  = THIS_MODULE,
 --- a/src/mtgpu/mtgpu_drv.c
 +++ b/src/mtgpu/mtgpu_drv.c
-@@ -23,6 +23,10 @@
+@@ -23,12 +23,18 @@
  #include <linux/debugfs.h>
  #include <linux/platform_device.h>
  #include <linux/pm_runtime.h>
@@ -1918,15 +1943,22 @@
  
  #ifndef CONFIG_LOONGARCH
  #include <asm/dmi.h>
-@@ -544,10 +548,26 @@
+ #else
+ #include "dmi_loongarch.h"
+ #endif
++
++#include "mtgpu_hwmon.h"
+ 
+ #if defined(CONFIG_MTRR)
+ #include <asm/mtrr.h>
+@@ -544,11 +550,37 @@
  	.restore_early = mtgpu_pm_resume_early,
  };
  
 +static int mtgpu_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 +{
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
 +	int ret;
-+
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0)
 +	/* The binary probe reserves WC memory before its later framebuffer
 +	 * handoff. Release the firmware framebuffer before mapping or resizing
 +	 * any BAR, while its original PCI address is still available.
@@ -1935,18 +1967,31 @@
 +	if (ret)
 +		return ret;
 +#endif
-+	return mtgpu_probe(pdev, id);
++	ret = mtgpu_probe(pdev, id);
++	if (ret)
++		return ret;
++
++	mtgpu_hwmon_init(pdev);
++	return 0;
++}
++
++static void mtgpu_pci_remove(struct pci_dev *pdev)
++{
++	mtgpu_hwmon_fini(pdev);
++	mtgpu_remove(pdev);
 +}
 +
  static struct pci_driver mtgpu_pci_driver = {
  	.name = DRIVER_NAME,
  	.id_table = mtgpu_pci_tbl,
 -	.probe = mtgpu_probe,
+-	.remove = mtgpu_remove,
 +	.probe = mtgpu_pci_probe,
- 	.remove = mtgpu_remove,
++	.remove = mtgpu_pci_remove,
  	.shutdown = mtgpu_shutdown,
  	.err_handler = &err_handler,
-@@ -572,9 +592,20 @@
+ 	.driver.pm = &mtgpu_pm_ops,
+@@ -572,9 +604,20 @@
  	SET_RUNTIME_PM_OPS(mtgpu_igpu_pm_suspend, mtgpu_igpu_pm_resume, NULL)
  };
  
@@ -1967,6 +2012,346 @@
  	.driver = {
  		.name = DRIVER_NAME_IGPU,
  		.of_match_table = mtgpu_of_tbl,
+--- /dev/null
++++ b/src/mtgpu/mtgpu_hwmon.c
+@@ -0,0 +1,337 @@
++/*
++ * MTT S30 Hardware Monitoring (hwmon) support
++ * Integrates Moore Threads S30 telemetry with Linux standard hwmon subsystem.
++ * Supports KDE System Monitor, btop, lm-sensors, MangoHud, etc.
++ */
++
++#include <linux/device.h>
++#include <linux/hwmon.h>
++#include <linux/hwmon-sysfs.h>
++#include <linux/pci.h>
++#include <linux/types.h>
++
++#include "mtgpu.h"
++#include "mtgpu_drv.h"
++#include "mtgpu_smc.h"
++#include "uapi_common.h"
++#include "mtgpu_hwmon.h"
++
++extern void mtgpu_get_global_mem_stats(struct mtgpu_device *mtdev, DEVICE_DRIVER_STATS_INFO *stats);
++
++/* --- Temperature Sensors --- */
++
++static ssize_t temp1_input_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	u32 temp = 0;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	ret = mtgpu_smc_get_temp(mtdev->dev, 1000, &temp);
++	if (ret)
++		return ret;
++
++	/* hwmon temperature is reported in millidegrees Celsius */
++	return scnprintf(buf, PAGE_SIZE, "%u\n", temp * 1000);
++}
++
++static ssize_t temp1_label_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return scnprintf(buf, PAGE_SIZE, "GPU Core\n");
++}
++
++static ssize_t temp1_max_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	struct ipc_msg_thermal_limit_info tinfo;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	memset(&tinfo, 0, sizeof(tinfo));
++	ret = mtgpu_smc_get_temp_limit(mtdev->dev, &tinfo);
++	if (!ret && tinfo.cur_slowdown)
++		return scnprintf(buf, PAGE_SIZE, "%u\n", tinfo.cur_slowdown * 1000);
++	if (!ret && tinfo.def_slowdown)
++		return scnprintf(buf, PAGE_SIZE, "%u\n", tinfo.def_slowdown * 1000);
++
++	return scnprintf(buf, PAGE_SIZE, "95000\n");
++}
++
++static ssize_t temp1_crit_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	struct ipc_msg_thermal_limit_info tinfo;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	memset(&tinfo, 0, sizeof(tinfo));
++	ret = mtgpu_smc_get_temp_limit(mtdev->dev, &tinfo);
++	if (!ret && tinfo.cur_shutdown)
++		return scnprintf(buf, PAGE_SIZE, "%u\n", tinfo.cur_shutdown * 1000);
++	if (!ret && tinfo.def_shutdown)
++		return scnprintf(buf, PAGE_SIZE, "%u\n", tinfo.def_shutdown * 1000);
++
++	return scnprintf(buf, PAGE_SIZE, "105000\n");
++}
++
++/* --- Fan Control & PWM --- */
++
++static ssize_t pwm1_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	u32 duty = 0;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	ret = mtgpu_smc_get_fan_speed(mtdev->dev, 1, 0, &duty);
++	if (ret)
++		return ret;
++
++	if (duty > 100)
++		duty = 100;
++
++	/* Scale duty percentage (0-100) to standard hwmon PWM (0-255) */
++	return scnprintf(buf, PAGE_SIZE, "%u\n", (duty * 255) / 100);
++}
++
++static ssize_t pwm1_enable_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return scnprintf(buf, PAGE_SIZE, "2\n"); /* 2 = automatic */
++}
++
++/* --- Clock Frequencies --- */
++
++static ssize_t freq1_input_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	u64 freq = 0;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	ret = mtgpu_smc_get_freq(mtdev->dev, 1000, &freq);
++	if (ret)
++		return ret;
++
++	return scnprintf(buf, PAGE_SIZE, "%llu\n", freq);
++}
++
++static ssize_t freq1_label_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return scnprintf(buf, PAGE_SIZE, "GPU Core Clock\n");
++}
++
++static ssize_t freq2_input_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	u64 freq = 0;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	ret = mtgpu_smc_get_freq(mtdev->dev, 1001, &freq);
++	if (ret)
++		return ret;
++
++	return scnprintf(buf, PAGE_SIZE, "%llu\n", freq);
++}
++
++static ssize_t freq2_label_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return scnprintf(buf, PAGE_SIZE, "VRAM Clock\n");
++}
++
++/* --- Power and Voltage --- */
++
++static ssize_t power1_average_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	u32 power = 0;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	ret = mtgpu_smc_get_power(mtdev->dev, 0, &power);
++	if (ret)
++		return ret;
++
++	/* Power reported in microwatts */
++	return scnprintf(buf, PAGE_SIZE, "%llu\n", (u64)power * 1000);
++}
++
++static ssize_t power1_label_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return scnprintf(buf, PAGE_SIZE, "GPU Power\n");
++}
++
++static ssize_t in0_input_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	u32 voltage = 0;
++	int ret;
++
++	if (!mtdev || !mtdev->dev)
++		return -ENODEV;
++
++	ret = mtgpu_smc_get_voltage(mtdev->dev, 0, &voltage);
++	if (ret)
++		return ret;
++
++	return scnprintf(buf, PAGE_SIZE, "%u\n", voltage);
++}
++
++static ssize_t in0_label_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return scnprintf(buf, PAGE_SIZE, "GPU Core Voltage\n");
++}
++
++/* --- VRAM Metrics in hwmon --- */
++
++static ssize_t vram_total_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++
++	if (!mtdev)
++		return -ENODEV;
++
++	return scnprintf(buf, PAGE_SIZE, "%llu\n", mtgpu_get_vram_size(mtdev));
++}
++
++static ssize_t vram_used_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	DEVICE_DRIVER_STATS_INFO stats;
++
++	if (!mtdev)
++		return -ENODEV;
++
++	memset(&stats, 0, sizeof(stats));
++	mtgpu_get_global_mem_stats(mtdev, &stats);
++
++	return scnprintf(buf, PAGE_SIZE, "%llu\n", stats.ui64MemUsageAllocGPUMemLMA);
++}
++
++/* Device sysfs hooks for DRM device (matched by KDE System Monitor and btop) */
++static ssize_t dev_vram_total_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++
++	if (!mtdev)
++		return -ENODEV;
++
++	return scnprintf(buf, PAGE_SIZE, "%llu\n", mtgpu_get_vram_size(mtdev));
++}
++
++static ssize_t dev_vram_used_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	struct mtgpu_device *mtdev = dev_get_drvdata(dev);
++	DEVICE_DRIVER_STATS_INFO stats;
++
++	if (!mtdev)
++		return -ENODEV;
++
++	memset(&stats, 0, sizeof(stats));
++	mtgpu_get_global_mem_stats(mtdev, &stats);
++
++	return scnprintf(buf, PAGE_SIZE, "%llu\n", stats.ui64MemUsageAllocGPUMemLMA);
++}
++
++static DEVICE_ATTR(temp1_input, 0444, temp1_input_show, NULL);
++static DEVICE_ATTR(temp1_label, 0444, temp1_label_show, NULL);
++static DEVICE_ATTR(temp1_max, 0444, temp1_max_show, NULL);
++static DEVICE_ATTR(temp1_crit, 0444, temp1_crit_show, NULL);
++
++static DEVICE_ATTR(pwm1, 0444, pwm1_show, NULL);
++static DEVICE_ATTR(pwm1_enable, 0444, pwm1_enable_show, NULL);
++
++static DEVICE_ATTR(freq1_input, 0444, freq1_input_show, NULL);
++static DEVICE_ATTR(freq1_label, 0444, freq1_label_show, NULL);
++static DEVICE_ATTR(freq2_input, 0444, freq2_input_show, NULL);
++static DEVICE_ATTR(freq2_label, 0444, freq2_label_show, NULL);
++
++static DEVICE_ATTR(power1_average, 0444, power1_average_show, NULL);
++static DEVICE_ATTR(power1_label, 0444, power1_label_show, NULL);
++
++static DEVICE_ATTR(in0_input, 0444, in0_input_show, NULL);
++static DEVICE_ATTR(in0_label, 0444, in0_label_show, NULL);
++
++static DEVICE_ATTR(vram_total, 0444, vram_total_show, NULL);
++static DEVICE_ATTR(vram_used, 0444, vram_used_show, NULL);
++
++static struct attribute *mtgpu_hwmon_attrs[] = {
++	&dev_attr_temp1_input.attr,
++	&dev_attr_temp1_label.attr,
++	&dev_attr_temp1_max.attr,
++	&dev_attr_temp1_crit.attr,
++	&dev_attr_pwm1.attr,
++	&dev_attr_pwm1_enable.attr,
++	&dev_attr_freq1_input.attr,
++	&dev_attr_freq1_label.attr,
++	&dev_attr_freq2_input.attr,
++	&dev_attr_freq2_label.attr,
++	&dev_attr_power1_average.attr,
++	&dev_attr_power1_label.attr,
++	&dev_attr_in0_input.attr,
++	&dev_attr_in0_label.attr,
++	&dev_attr_vram_total.attr,
++	&dev_attr_vram_used.attr,
++	NULL
++};
++
++ATTRIBUTE_GROUPS(mtgpu_hwmon);
++
++/* Device-level attributes for DRM device (/sys/class/drm/card0/device/mem_info_vram_*) */
++static struct device_attribute dev_attr_mem_info_vram_total =
++	__ATTR(mem_info_vram_total, 0444, dev_vram_total_show, NULL);
++
++static struct device_attribute dev_attr_mem_info_vram_used =
++	__ATTR(mem_info_vram_used, 0444, dev_vram_used_show, NULL);
++
++int mtgpu_hwmon_init(struct pci_dev *pdev)
++{
++	struct mtgpu_device *mtdev = pci_get_drvdata(pdev);
++	struct device *hwmon_dev;
++	int ret;
++
++	if (!mtdev)
++		return -EINVAL;
++
++	/* 1. Register with hwmon subsystem */
++	hwmon_dev = devm_hwmon_device_register_with_groups(&pdev->dev, "mtgpu",
++							   mtdev, mtgpu_hwmon_groups);
++	if (IS_ERR(hwmon_dev)) {
++		dev_warn(&pdev->dev, "Failed to register mtgpu hwmon device: %ld\n",
++			 PTR_ERR(hwmon_dev));
++		/* non-fatal */
++	} else {
++		dev_info(&pdev->dev, "Registered mtgpu hwmon sensors\n");
++	}
++
++	/* 2. Create device-level VRAM attributes for DRM tooling */
++	ret = device_create_file(&pdev->dev, &dev_attr_mem_info_vram_total);
++	if (ret)
++		dev_dbg(&pdev->dev, "Failed to create dev mem_info_vram_total sysfs\n");
++
++	ret = device_create_file(&pdev->dev, &dev_attr_mem_info_vram_used);
++	if (ret)
++		dev_dbg(&pdev->dev, "Failed to create dev mem_info_vram_used sysfs\n");
++
++	return 0;
++}
++
++void mtgpu_hwmon_fini(struct pci_dev *pdev)
++{
++	device_remove_file(&pdev->dev, &dev_attr_mem_info_vram_used);
++	device_remove_file(&pdev->dev, &dev_attr_mem_info_vram_total);
++}
 --- a/src/mtgpu/phy-mthreads-dp.c
 +++ b/src/mtgpu/phy-mthreads-dp.c
 @@ -171,9 +171,20 @@
