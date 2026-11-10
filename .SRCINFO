@@ -1,0 +1,22 @@
+pkgbase = silly-simple-git
+	pkgdesc = Chat with AI characters on your own computer. No account, no terminal, nothing to set up.
+	pkgver = 0.1.7.r5.g6e3315b
+	pkgrel = 1
+	url = https://sillysimple.app
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron44
+	source = silly-simple.git::git+https://github.com/VivienG-Dev/sillysimple.git
+	source = silly-simple.js
+	source = silly-simple.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = silly-simple-git
