@@ -1,7 +1,7 @@
 # Maintainer: JW <j101r at outlook dot com>
 # Contributor: Vasili Novikov (replace "vvv" with "v" in email) vvvasya.novikov+cm3513git@gmail.com
 pkgname=rua-fork
-pkgver=0.20.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc='Opinionated fork of rua, an AUR helper written in Rust that provides control, review, patch application, and safe build options'
 url='https://github.com/J101R/rua'
@@ -23,7 +23,7 @@ conflicts=(${pkgname%-*})
 # see https://aur.archlinux.org/packages/rua#comment-861014
 options=('!lto')
 
-sha256sums=(096bc18129e437453e93f2a8664fb54675cb1454e62c53b42b81a1181e223719)
+sha256sums=(0c28688bf7aa504c918c45ec21a152ab70af57c4d79e35f78e1b15a1c3f7a280)
 
 #options+=(!strip)  # uncomment if you want readable stack traces
 
