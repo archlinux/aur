@@ -5,7 +5,7 @@
 _pkgname=mfem
 pkgname=${_pkgname}-palace
 pkgver=4.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods - With Palace EM Solver patches"
 arch=(x86_64)
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -45,6 +45,7 @@ source=(
   "0005-mfem_pr5531.diff::https://patch-diff.githubusercontent.com/raw/mfem/mfem/pull/5531.diff"
   "0006-mfem_pr5639.diff::https://patch-diff.githubusercontent.com/raw/mfem/mfem/pull/5639.diff"
   "0007-mfem_pr5698.diff::https://patch-diff.githubusercontent.com/raw/mfem/mfem/pull/5698.diff"
+  "0008-mfem_pr5731.diff::https://patch-diff.githubusercontent.com/raw/mfem/mfem/pull/5731.diff"
   "0010-enable-MPI_C-interface.patch"
 )
 
@@ -56,6 +57,7 @@ b2sums=('9b37057a242f5867e1961c998252995f977b539e1487f8f6d8148b8be9a2200c4f66802
         '5abd6a284095196b9c0f8b089929606d4b29424a41db33219dbf1368a3b0b0f3ffbe41d1b3cec3a83e7e73fe6d1f95e75cb980c7d265ca997c68d14860d693df'
         '85b58e90df2972f9b6dcb1d9c5da6c3a5ff20bb6d3c76bfcc191ec0bfd811ef522386ab97c8ac7055bc342c4796228755a24a2a43d38579dee4e45129f74edbd'
         '56793cc9dfb3f30f9924086428e25c60022280fcd1bfe04aad21135430b762f004cb0903acdd15360054356d9767f75f489224f9155b37230de770ff01440b3c'
+        'fa3917244acb77e83ff93bf3e67bf6e311fa1ae0c0cbfafeb0dce5cedbc9791e3d2ba4921ebb4c8d33ba267e827997e859ee4a9dcb1164dfc1f35ca6167d6dc8'
         '4618e8739b4c0e8fedb77858ecf13ec3961d08e274c11a3df1a04a528104af37f5e6e95ce6f342cdafe7eeadf319cdb3b3a166eab28eb1647796d9693e55b394')
 
 prepare() {
@@ -89,6 +91,10 @@ prepare() {
   # Patch 7: "Add NCMesh::GetRootTransforms and NCMesh::GetElementCornerNodes"
   # https://github.com/mfem/mfem/pull/5698
   patches+=("0007-mfem_pr5698.diff")
+
+  # Patch 8: "Add SuperLUSolver setters for the relaxed and maximum supernode sizes"
+  # https://github.com/mfem/mfem/pull/5731
+  patches+=("0008-mfem_pr5731.diff")
 
   # ArchLinux specific patches!
   # For Strumpack support, we need the MPI-C interface as well as Fortran
