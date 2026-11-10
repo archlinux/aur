@@ -1,7 +1,7 @@
 pkgbase = cockpit-sensors
 	pkgdesc = Module for Cockpit that displays all data reported by lm-sensors
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocristopfer/cockpit-sensors
 	arch = x86_64
 	license = GPL-2.0
@@ -9,6 +9,7 @@ pkgbase = cockpit-sensors
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = gettext
+	makedepends = git
 	depends = cockpit
 	depends = lm_sensors
 	source = git+https://github.com/ocristopfer/cockpit-sensors.git#tag=2.4.0
