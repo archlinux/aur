@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=leggio
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Sheet music viewer built for use at arm's length"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=()
 # auto-generated archive: the workflow publishes the checksum of this exact
 # file, so there is no ambiguity about which tarball the sum belongs to.
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('94ec99dbad4a2a33d279fb63223233838520c5ba0e40cee4792f5534ddb06c63')
+sha256sums=('85f43bd4e34546f6460ad60e9c253c193a3f95bae053f5a9eed272d215d463fd')
 
 package() {
   cd "$pkgname-$pkgver"
