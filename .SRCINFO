@@ -30,7 +30,7 @@ pkgbase = ramsleuth
 	conflicts = ramsleuth-bin
 	conflicts = ramsleuth-intel-dkms
 	conflicts = ryzen-smu-dkms
-	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=12fe4a2d1ce849ee4f9b31e84b10e1faad09cc49
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=58c1d495b269637e73fc57727e2bdfa51712d076
 	sha256sums = 40626347b19844c159c0fdac2dddab3f08e247387f7d983853e91a9eb0dcdb25
 
 pkgname = ramsleuth
