@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A terminal file explorer with full Git and GitHub integration, AI chat, and reactive panels that stay in sync as you navigate"
 
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ depends=('git' 'github-cli')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('791467840f9b3740ad2097614dcc17c527c61d2b1d367ddc2ebd609c23a7a681')
+sha256sums=('024a10cfcdbb02837fb0a0bf664729511dc325de29711b049f50852eb6d647d1')
 
 
 prepare() {
