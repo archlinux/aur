@@ -3,7 +3,7 @@
 # AUR page: https://aur.archlinux.org/packages/rowq
 
 pkgname=rowq
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Query rows in tables, documents and databases from the terminal"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('62fcb0ae3558bbbf59408d2c03b56fab9612ef38d0262768bc089e4525090b2f')
+sha256sums=('9b39fc33da3f41e6a6638a66ea400e48fc9b6b8a42a03eab47459540a218355d')
 
 prepare() {
     cd "$pkgname-$pkgver"
