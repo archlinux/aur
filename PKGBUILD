@@ -5,7 +5,7 @@
 # For a build-from-source VCS package, see tutabridge-git.
 
 pkgname=tutabridge-bin
-pkgver=0.2.0rc1
+pkgver=0.2.0rc2
 pkgrel=1
 pkgdesc="Local IMAP/SMTP bridge for Tuta encrypted email (prebuilt headless CLI/daemon)"
 arch=('x86_64')
@@ -20,11 +20,11 @@ conflicts=('tutabridge')
 # symbols into one, and it would hold the same /usr/lib/debug file as
 # tutabridge-git-debug, so switching between -bin and -git would fail.
 options=(!debug)
-_tag=v0.2.0-rc.1
+_tag=v0.2.0-rc.2
 source=("tutabridge-$pkgver::$url/releases/download/$_tag/tutabridge-linux-x86_64"
         "tutabridge.service::https://raw.githubusercontent.com/spartanz51/tutabridge/$_tag/packaging/systemd/tutabridge.service"
         "LICENSE::https://raw.githubusercontent.com/spartanz51/tutabridge/$_tag/LICENSE")
-sha256sums=('95ab4d1131e346883dca250b4404a557cf8e41ca830cda89431382d7db7c03b4'
+sha256sums=('af9133e3a8d46010a78319c18d24477da75f7d210cc7354bb0345911bb25c8c1'
             '9c398acf860036a8912a3f0686cfd6dc55cb714fc3ddbff68c21755777cd439f'
             '947215ddc328843b76022d5b77e1ca3b1152301778d33e24491e5064e92fc6cf')
 
