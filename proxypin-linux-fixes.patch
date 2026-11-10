@@ -1,3 +1,589 @@
+diff --git a/lib/l10n/app_en.arb b/lib/l10n/app_en.arb
+index a653fc8..449e3eb 100644
+--- a/lib/l10n/app_en.arb
++++ b/lib/l10n/app_en.arb
+@@ -516,5 +516,18 @@
+   "pinnedDragSort": "Pinned (drag to reorder)",
+   "pinToolsHint": "All tools (tap + to pin to toolbar)",
+   "image": "Image",
+-  "filtered": "Filtered"
++  "filtered": "Filtered",
++  "captureListDensity": "Capture list density",
++  "captureListDensitySubtitle": "Row height of captured requests",
++  "densityComfortable": "Comfortable",
++  "densityCompact": "Compact",
++  "densityDense": "Dense",
++  "codeFont": "Code font",
++  "codeFontSubtitle": "Font used by request/response body and script editors",
++  "codeFontFollowUi": "Follow UI font",
++  "codeFontSystemMono": "System monospace",
++  "codeFontCustom": "Custom font…",
++  "codeFontFamily": "Font family",
++  "codeFontSize": "Code font size",
++  "codeFontSizeSubtitle": "Font size of code editors"
+ }
+diff --git a/lib/l10n/app_es.arb b/lib/l10n/app_es.arb
+index e4c3d8a..4fd115c 100644
+--- a/lib/l10n/app_es.arb
++++ b/lib/l10n/app_es.arb
+@@ -272,5 +272,18 @@
+   "statusPaused": "En pausa",
+   "pause": "Pausar",
+   "resume": "Reanudar",
+-  "overview": "Vista general"
++  "overview": "Vista general",
++  "captureListDensity": "Densidad de la lista",
++  "captureListDensitySubtitle": "Altura de cada fila capturada",
++  "densityComfortable": "Cómoda",
++  "densityCompact": "Compacta",
++  "densityDense": "Densa",
++  "codeFont": "Fuente de código",
++  "codeFontSubtitle": "Fuente del cuerpo de petición/respuesta y editores de script",
++  "codeFontFollowUi": "Seguir la fuente de la interfaz",
++  "codeFontSystemMono": "Monoespaciada del sistema",
++  "codeFontCustom": "Fuente personalizada…",
++  "codeFontFamily": "Familia tipográfica",
++  "codeFontSize": "Tamaño de fuente del código",
++  "codeFontSizeSubtitle": "Tamaño de fuente de los editores de código"
+ }
+diff --git a/lib/l10n/app_id.arb b/lib/l10n/app_id.arb
+index fb88903..0bd6dd6 100644
+--- a/lib/l10n/app_id.arb
++++ b/lib/l10n/app_id.arb
+@@ -272,5 +272,15 @@
+   "statusPaused": "Dijeda",
+   "pause": "Jeda",
+   "resume": "Lanjutkan",
+-  "overview": "Ringkasan"
++  "overview": "Ringkasan",
++  "captureListDensity": "Kepadatan daftar",
++  "densityComfortable": "Longgar",
++  "densityCompact": "Ringkas",
++  "densityDense": "Padat",
++  "codeFont": "Font kode",
++  "codeFontFollowUi": "Ikuti font antarmuka",
++  "codeFontSystemMono": "Monospace sistem",
++  "codeFontCustom": "Font khusus…",
++  "codeFontFamily": "Nama font",
++  "codeFontSize": "Ukuran font kode"
+ }
+diff --git a/lib/l10n/app_localizations.dart b/lib/l10n/app_localizations.dart
+index 1de1d33..d433c2b 100644
+--- a/lib/l10n/app_localizations.dart
++++ b/lib/l10n/app_localizations.dart
+@@ -2943,6 +2943,84 @@ abstract class AppLocalizations {
+   /// In en, this message translates to:
+   /// **'Filtered'**
+   String get filtered;
++
++  /// No description provided for @captureListDensity.
++  ///
++  /// In en, this message translates to:
++  /// **'Capture list density'**
++  String get captureListDensity;
++
++  /// No description provided for @captureListDensitySubtitle.
++  ///
++  /// In en, this message translates to:
++  /// **'Row height of captured requests'**
++  String get captureListDensitySubtitle;
++
++  /// No description provided for @densityComfortable.
++  ///
++  /// In en, this message translates to:
++  /// **'Comfortable'**
++  String get densityComfortable;
++
++  /// No description provided for @densityCompact.
++  ///
++  /// In en, this message translates to:
++  /// **'Compact'**
++  String get densityCompact;
++
++  /// No description provided for @densityDense.
++  ///
++  /// In en, this message translates to:
++  /// **'Dense'**
++  String get densityDense;
++
++  /// No description provided for @codeFont.
++  ///
++  /// In en, this message translates to:
++  /// **'Code font'**
++  String get codeFont;
++
++  /// No description provided for @codeFontSubtitle.
++  ///
++  /// In en, this message translates to:
++  /// **'Font used by request/response body and script editors'**
++  String get codeFontSubtitle;
++
++  /// No description provided for @codeFontFollowUi.
++  ///
++  /// In en, this message translates to:
++  /// **'Follow UI font'**
++  String get codeFontFollowUi;
++
++  /// No description provided for @codeFontSystemMono.
++  ///
++  /// In en, this message translates to:
++  /// **'System monospace'**
++  String get codeFontSystemMono;
++
++  /// No description provided for @codeFontCustom.
++  ///
++  /// In en, this message translates to:
++  /// **'Custom font…'**
++  String get codeFontCustom;
++
++  /// No description provided for @codeFontFamily.
++  ///
++  /// In en, this message translates to:
++  /// **'Font family'**
++  String get codeFontFamily;
++
++  /// No description provided for @codeFontSize.
++  ///
++  /// In en, this message translates to:
++  /// **'Code font size'**
++  String get codeFontSize;
++
++  /// No description provided for @codeFontSizeSubtitle.
++  ///
++  /// In en, this message translates to:
++  /// **'Font size of code editors'**
++  String get codeFontSizeSubtitle;
+ }
+ 
+ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+diff --git a/lib/l10n/app_localizations_en.dart b/lib/l10n/app_localizations_en.dart
+index 91aadd1..1ecb4c5 100644
+--- a/lib/l10n/app_localizations_en.dart
++++ b/lib/l10n/app_localizations_en.dart
+@@ -1476,4 +1476,43 @@ class AppLocalizationsEn extends AppLocalizations {
+ 
+   @override
+   String get filtered => 'Filtered';
++
++  @override
++  String get captureListDensity => 'Capture list density';
++
++  @override
++  String get captureListDensitySubtitle => 'Row height of captured requests';
++
++  @override
++  String get densityComfortable => 'Comfortable';
++
++  @override
++  String get densityCompact => 'Compact';
++
++  @override
++  String get densityDense => 'Dense';
++
++  @override
++  String get codeFont => 'Code font';
++
++  @override
++  String get codeFontSubtitle => 'Font used by request/response body and script editors';
++
++  @override
++  String get codeFontFollowUi => 'Follow UI font';
++
++  @override
++  String get codeFontSystemMono => 'System monospace';
++
++  @override
++  String get codeFontCustom => 'Custom font…';
++
++  @override
++  String get codeFontFamily => 'Font family';
++
++  @override
++  String get codeFontSize => 'Code font size';
++
++  @override
++  String get codeFontSizeSubtitle => 'Font size of code editors';
+ }
+diff --git a/lib/l10n/app_localizations_es.dart b/lib/l10n/app_localizations_es.dart
+index e88e855..899b05c 100644
+--- a/lib/l10n/app_localizations_es.dart
++++ b/lib/l10n/app_localizations_es.dart
+@@ -1471,4 +1471,43 @@ class AppLocalizationsEs extends AppLocalizations {
+ 
+   @override
+   String get filtered => 'Filtered';
++
++  @override
++  String get captureListDensity => 'Densidad de la lista';
++
++  @override
++  String get captureListDensitySubtitle => 'Altura de cada fila capturada';
++
++  @override
++  String get densityComfortable => 'Cómoda';
++
++  @override
++  String get densityCompact => 'Compacta';
++
++  @override
++  String get densityDense => 'Densa';
++
++  @override
++  String get codeFont => 'Fuente de código';
++
++  @override
++  String get codeFontSubtitle => 'Fuente del cuerpo de petición/respuesta y editores de script';
++
++  @override
++  String get codeFontFollowUi => 'Seguir la fuente de la interfaz';
++
++  @override
++  String get codeFontSystemMono => 'Monoespaciada del sistema';
++
++  @override
++  String get codeFontCustom => 'Fuente personalizada…';
++
++  @override
++  String get codeFontFamily => 'Familia tipográfica';
++
++  @override
++  String get codeFontSize => 'Tamaño de fuente del código';
++
++  @override
++  String get codeFontSizeSubtitle => 'Tamaño de fuente de los editores de código';
+ }
+diff --git a/lib/l10n/app_localizations_id.dart b/lib/l10n/app_localizations_id.dart
+index 9cf2db2..b566ea0 100644
+--- a/lib/l10n/app_localizations_id.dart
++++ b/lib/l10n/app_localizations_id.dart
+@@ -1472,4 +1472,43 @@ class AppLocalizationsId extends AppLocalizations {
+ 
+   @override
+   String get filtered => 'Filtered';
++
++  @override
++  String get captureListDensity => 'Kepadatan daftar';
++
++  @override
++  String get captureListDensitySubtitle => 'Row height of captured requests';
++
++  @override
++  String get densityComfortable => 'Longgar';
++
++  @override
++  String get densityCompact => 'Ringkas';
++
++  @override
++  String get densityDense => 'Padat';
++
++  @override
++  String get codeFont => 'Font kode';
++
++  @override
++  String get codeFontSubtitle => 'Font used by request/response body and script editors';
++
++  @override
++  String get codeFontFollowUi => 'Ikuti font antarmuka';
++
++  @override
++  String get codeFontSystemMono => 'Monospace sistem';
++
++  @override
++  String get codeFontCustom => 'Font khusus…';
++
++  @override
++  String get codeFontFamily => 'Nama font';
++
++  @override
++  String get codeFontSize => 'Ukuran font kode';
++
++  @override
++  String get codeFontSizeSubtitle => 'Font size of code editors';
+ }
+diff --git a/lib/l10n/app_localizations_pt.dart b/lib/l10n/app_localizations_pt.dart
+index 04dc04c..c6ff583 100644
+--- a/lib/l10n/app_localizations_pt.dart
++++ b/lib/l10n/app_localizations_pt.dart
+@@ -1476,6 +1476,45 @@ class AppLocalizationsPt extends AppLocalizations {
+ 
+   @override
+   String get filtered => 'Filtered';
++
++  @override
++  String get captureListDensity => 'Densidade da lista';
++
++  @override
++  String get captureListDensitySubtitle => 'Row height of captured requests';
++
++  @override
++  String get densityComfortable => 'Confortável';
++
++  @override
++  String get densityCompact => 'Compacta';
++
++  @override
++  String get densityDense => 'Densa';
++
++  @override
++  String get codeFont => 'Fonte do código';
++
++  @override
++  String get codeFontSubtitle => 'Font used by request/response body and script editors';
++
++  @override
++  String get codeFontFollowUi => 'Seguir a fonte da interface';
++
++  @override
++  String get codeFontSystemMono => 'Monoespaçada do sistema';
++
++  @override
++  String get codeFontCustom => 'Fonte personalizada…';
++
++  @override
++  String get codeFontFamily => 'Família da fonte';
++
++  @override
++  String get codeFontSize => 'Tamanho da fonte do código';
++
++  @override
++  String get codeFontSizeSubtitle => 'Font size of code editors';
+ }
+ 
+ /// The translations for Portuguese, as used in Brazil (`pt_BR`).
+diff --git a/lib/l10n/app_localizations_th.dart b/lib/l10n/app_localizations_th.dart
+index 8ec9b43..ef65af7 100644
+--- a/lib/l10n/app_localizations_th.dart
++++ b/lib/l10n/app_localizations_th.dart
+@@ -1470,4 +1470,43 @@ class AppLocalizationsTh extends AppLocalizations {
+ 
+   @override
+   String get filtered => 'Filtered';
++
++  @override
++  String get captureListDensity => 'ความหนาแน่นของรายการ';
++
++  @override
++  String get captureListDensitySubtitle => 'Row height of captured requests';
++
++  @override
++  String get densityComfortable => 'สบายตา';
++
++  @override
++  String get densityCompact => 'กะทัดรัด';
++
++  @override
++  String get densityDense => 'แน่น';
++
++  @override
++  String get codeFont => 'ฟอนต์โค้ด';
++
++  @override
++  String get codeFontSubtitle => 'Font used by request/response body and script editors';
++
++  @override
++  String get codeFontFollowUi => 'ใช้ฟอนต์ของหน้าจอ';
++
++  @override
++  String get codeFontSystemMono => 'ฟอนต์โมโนของระบบ';
++
++  @override
++  String get codeFontCustom => 'ฟอนต์กำหนดเอง…';
++
++  @override
++  String get codeFontFamily => 'ชื่อฟอนต์';
++
++  @override
++  String get codeFontSize => 'ขนาดฟอนต์โค้ด';
++
++  @override
++  String get codeFontSizeSubtitle => 'Font size of code editors';
+ }
+diff --git a/lib/l10n/app_localizations_vi.dart b/lib/l10n/app_localizations_vi.dart
+index 1880b6c..7ed8d10 100644
+--- a/lib/l10n/app_localizations_vi.dart
++++ b/lib/l10n/app_localizations_vi.dart
+@@ -1470,4 +1470,43 @@ class AppLocalizationsVi extends AppLocalizations {
+ 
+   @override
+   String get filtered => 'Filtered';
++
++  @override
++  String get captureListDensity => 'Mật độ danh sách';
++
++  @override
++  String get captureListDensitySubtitle => 'Row height of captured requests';
++
++  @override
++  String get densityComfortable => 'Thoáng';
++
++  @override
++  String get densityCompact => 'Gọn';
++
++  @override
++  String get densityDense => 'Dày';
++
++  @override
++  String get codeFont => 'Phông chữ mã';
++
++  @override
++  String get codeFontSubtitle => 'Font used by request/response body and script editors';
++
++  @override
++  String get codeFontFollowUi => 'Theo phông giao diện';
++
++  @override
++  String get codeFontSystemMono => 'Monospace hệ thống';
++
++  @override
++  String get codeFontCustom => 'Phông tùy chỉnh…';
++
++  @override
++  String get codeFontFamily => 'Tên phông';
++
++  @override
++  String get codeFontSize => 'Cỡ chữ mã';
++
++  @override
++  String get codeFontSizeSubtitle => 'Font size of code editors';
+ }
+diff --git a/lib/l10n/app_localizations_zh.dart b/lib/l10n/app_localizations_zh.dart
+index 2989571..06d5fa2 100644
+--- a/lib/l10n/app_localizations_zh.dart
++++ b/lib/l10n/app_localizations_zh.dart
+@@ -1461,6 +1461,45 @@ class AppLocalizationsZh extends AppLocalizations {
+ 
+   @override
+   String get filtered => '过滤';
++
++  @override
++  String get captureListDensity => '抓包列表密度';
++
++  @override
++  String get captureListDensitySubtitle => '抓包列表每行的高度';
++
++  @override
++  String get densityComfortable => '宽松';
++
++  @override
++  String get densityCompact => '紧凑';
++
++  @override
++  String get densityDense => '极紧凑';
++
++  @override
++  String get codeFont => '代码字体';
++
++  @override
++  String get codeFontSubtitle => '请求体/响应体、脚本编辑器等代码窗口使用的字体';
++
++  @override
++  String get codeFontFollowUi => '跟随界面字体';
++
++  @override
++  String get codeFontSystemMono => '系统等宽';
++
++  @override
++  String get codeFontCustom => '自定义字体…';
++
++  @override
++  String get codeFontFamily => '字体名称';
++
++  @override
++  String get codeFontSize => '代码字号';
++
++  @override
++  String get codeFontSizeSubtitle => '代码编辑器字号';
+ }
+ 
+ /// The translations for Chinese, using the Han script (`zh_Hant`).
+diff --git a/lib/l10n/app_pt.arb b/lib/l10n/app_pt.arb
+index a038c3e..20cc725 100644
+--- a/lib/l10n/app_pt.arb
++++ b/lib/l10n/app_pt.arb
+@@ -9,6 +9,15 @@
+   "statusPaused": "Pausado",
+   "pause": "Pausar",
+   "resume": "Retomar",
+-  "overview": "Visão geral"
++  "overview": "Visão geral",
++  "captureListDensity": "Densidade da lista",
++  "densityComfortable": "Confortável",
++  "densityCompact": "Compacta",
++  "densityDense": "Densa",
++  "codeFont": "Fonte do código",
++  "codeFontFollowUi": "Seguir a fonte da interface",
++  "codeFontSystemMono": "Monoespaçada do sistema",
++  "codeFontCustom": "Fonte personalizada…",
++  "codeFontFamily": "Família da fonte",
++  "codeFontSize": "Tamanho da fonte do código"
+ }
+-
+diff --git a/lib/l10n/app_th.arb b/lib/l10n/app_th.arb
+index fd963e0..202f38f 100644
+--- a/lib/l10n/app_th.arb
++++ b/lib/l10n/app_th.arb
+@@ -272,5 +272,15 @@
+   "statusPaused": "หยุดชั่วคราว",
+   "pause": "หยุดชั่วคราว",
+   "resume": "ทำงานต่อ",
+-  "overview": "ภาพรวม"
++  "overview": "ภาพรวม",
++  "captureListDensity": "ความหนาแน่นของรายการ",
++  "densityComfortable": "สบายตา",
++  "densityCompact": "กะทัดรัด",
++  "densityDense": "แน่น",
++  "codeFont": "ฟอนต์โค้ด",
++  "codeFontFollowUi": "ใช้ฟอนต์ของหน้าจอ",
++  "codeFontSystemMono": "ฟอนต์โมโนของระบบ",
++  "codeFontCustom": "ฟอนต์กำหนดเอง…",
++  "codeFontFamily": "ชื่อฟอนต์",
++  "codeFontSize": "ขนาดฟอนต์โค้ด"
+ }
+diff --git a/lib/l10n/app_vi.arb b/lib/l10n/app_vi.arb
+index b5b015d..61d1e47 100644
+--- a/lib/l10n/app_vi.arb
++++ b/lib/l10n/app_vi.arb
+@@ -272,5 +272,15 @@
+   "statusPaused": "Đã tạm dừng",
+   "pause": "Tạm dừng",
+   "resume": "Tiếp tục",
+-  "overview": "Tổng quan"
++  "overview": "Tổng quan",
++  "captureListDensity": "Mật độ danh sách",
++  "densityComfortable": "Thoáng",
++  "densityCompact": "Gọn",
++  "densityDense": "Dày",
++  "codeFont": "Phông chữ mã",
++  "codeFontFollowUi": "Theo phông giao diện",
++  "codeFontSystemMono": "Monospace hệ thống",
++  "codeFontCustom": "Phông tùy chỉnh…",
++  "codeFontFamily": "Tên phông",
++  "codeFontSize": "Cỡ chữ mã"
+ }
+diff --git a/lib/l10n/app_zh.arb b/lib/l10n/app_zh.arb
+index af28f0f..94029fc 100644
+--- a/lib/l10n/app_zh.arb
++++ b/lib/l10n/app_zh.arb
+@@ -492,5 +492,18 @@
+   "pinnedDragSort": "已固定（拖拽排序）",
+   "pinToolsHint": "全部功能（点 + 固定到工具栏）",
+   "image": "图片",
+-  "filtered": "过滤"
++  "filtered": "过滤",
++  "captureListDensity": "抓包列表密度",
++  "captureListDensitySubtitle": "抓包列表每行的高度",
++  "densityComfortable": "宽松",
++  "densityCompact": "紧凑",
++  "densityDense": "极紧凑",
++  "codeFont": "代码字体",
++  "codeFontSubtitle": "请求体/响应体、脚本编辑器等代码窗口使用的字体",
++  "codeFontFollowUi": "跟随界面字体",
++  "codeFontSystemMono": "系统等宽",
++  "codeFontCustom": "自定义字体…",
++  "codeFontFamily": "字体名称",
++  "codeFontSize": "代码字号",
++  "codeFontSizeSubtitle": "代码编辑器字号"
+ }
 diff --git a/lib/network/bin/server.dart b/lib/network/bin/server.dart
 index 597278e..81b4cd3 100644
 --- a/lib/network/bin/server.dart
@@ -314,6 +900,804 @@ index 9f9b2f4..81f4803 100644
    ///linux 获取代理
    @override
    Future<ProxyInfo?> _getSystemProxy(ProxyTypes types) async {
+diff --git a/lib/ui/component/code_font_setting.dart b/lib/ui/component/code_font_setting.dart
+new file mode 100644
+index 0000000..e009008
+--- /dev/null
++++ b/lib/ui/component/code_font_setting.dart
+@@ -0,0 +1,201 @@
++import 'package:flutter/material.dart';
++import 'package:proxypin/l10n/app_localizations.dart';
++import 'package:proxypin/ui/configuration.dart';
++import 'package:proxypin/utils/system_fonts.dart';
++
++/// 「代码字体」列表项：请求体 / 响应体 / 脚本编辑器等代码窗口共用的字体族。
++class CodeFontFamilyTile extends StatefulWidget {
++  final TextStyle? titleStyle;
++  final TextStyle? subtitleStyle;
++  final bool showSubtitle;
++
++  const CodeFontFamilyTile({super.key, this.titleStyle, this.subtitleStyle, this.showSubtitle = true});
++
++  @override
++  State<CodeFontFamilyTile> createState() => _CodeFontFamilyTileState();
++}
++
++class _CodeFontFamilyTileState extends State<CodeFontFamilyTile> {
++  static const String _systemMono = '__system_mono__';
++  static const String _custom = '__custom__';
++
++  List<String> _families = const [];
++  bool _loading = true;
++
++  @override
++  void initState() {
++    super.initState();
++    SystemFonts.monospaceFamilies().then((families) {
++      if (!mounted) {
++        return;
++      }
++      setState(() {
++        _families = families;
++        _loading = false;
++      });
++    });
++  }
++
++  @override
++  Widget build(BuildContext context) {
++    final localizations = AppLocalizations.of(context)!;
++    final config = AppConfiguration.current;
++    final current = config?.editorFontFamily;
++
++    // 当前值是自定义/不常见字体时也要能显示出来
++    final items = <DropdownMenuItem<String?>>[
++      DropdownMenuItem(value: null, child: Text(localizations.codeFontFollowUi)),
++      DropdownMenuItem(value: _systemMono, child: Text(localizations.codeFontSystemMono)),
++      ..._families.map((family) => DropdownMenuItem(value: family, child: Text(family))),
++      if (current != null && current.isNotEmpty && current != SystemFonts.systemMonospaceFamily && !_families.contains(current))
++        DropdownMenuItem(value: current, child: Text(current)),
++      DropdownMenuItem(value: _custom, child: Text(localizations.codeFontCustom)),
++    ];
++
++    var value = current == null || current.isEmpty ? null : current;
++    if (value == SystemFonts.systemMonospaceFamily) {
++      value = _systemMono;
++    }
++
++    return ListTile(
++      contentPadding: EdgeInsets.zero,
++      title: Text(localizations.codeFont, style: widget.titleStyle),
++      subtitle: widget.showSubtitle
++          ? Text(localizations.codeFontSubtitle, style: widget.subtitleStyle ?? const TextStyle(fontSize: 12))
++          : null,
++      trailing: DropdownButton<String?>(
++        value: value,
++        focusColor: Colors.transparent,
++        hint: _loading ? const SizedBox(width: 12, height: 12, child: CircularProgressIndicator(strokeWidth: 2)) : null,
++        onChanged: (selected) async {
++          if (selected == _custom) {
++            final family = await _askFontFamily(context, current);
++            if (family == null) {
++              return;
++            }
++            config?.applyDisplaySetting(() => config.editorFontFamily = family.trim().isEmpty ? null : family.trim());
++          } else if (selected == _systemMono) {
++            config?.applyDisplaySetting(() => config.editorFontFamily = SystemFonts.systemMonospaceFamily);
++          } else {
++            config?.applyDisplaySetting(() => config.editorFontFamily = selected);
++          }
++          if (mounted) {
++            setState(() {});
++          }
++        },
++        items: items,
++      ),
++    );
++  }
++
++  Future<String?> _askFontFamily(BuildContext context, String? current) async {
++    final localizations = AppLocalizations.of(context)!;
++    final controller = TextEditingController(text: current ?? '');
++    final result = await showDialog<String>(
++      context: context,
++      builder: (context) {
++        return AlertDialog(
++          title: Text(localizations.codeFontCustom),
++          content: SizedBox(
++            width: 320,
++            child: TextField(
++              controller: controller,
++              autofocus: true,
++              decoration: InputDecoration(
++                labelText: localizations.codeFontFamily,
++                hintText: 'JetBrains Mono',
++              ),
++              onSubmitted: (value) => Navigator.pop(context, value),
++            ),
++          ),
++          actions: [
++            TextButton(onPressed: () => Navigator.pop(context), child: Text(localizations.cancel)),
++            FilledButton(
++                onPressed: () => Navigator.pop(context, controller.text), child: Text(localizations.confirm)),
++          ],
++        );
++      },
++    );
++    controller.dispose();
++    return result;
++  }
++}
++
++/// 「代码字体」列表项：字号。
++class CodeFontSizeTile extends StatelessWidget {
++  final TextStyle? titleStyle;
++  final TextStyle? subtitleStyle;
++  final bool showSubtitle;
++
++  const CodeFontSizeTile({super.key, this.titleStyle, this.subtitleStyle, this.showSubtitle = true});
++
++  static const List<double> sizes = [10, 11, 12, 12.5, 13, 13.5, 14, 15, 16, 18, 20];
++
++  @override
++  Widget build(BuildContext context) {
++    final localizations = AppLocalizations.of(context)!;
++    final config = AppConfiguration.current;
++    final current = config?.editorFontSize ?? 13;
++    final values = sizes.contains(current) ? sizes : ([...sizes, current]..sort());
++
++    return ListTile(
++      contentPadding: EdgeInsets.zero,
++      title: Text(localizations.codeFontSize, style: titleStyle),
++      subtitle: showSubtitle
++          ? Text(localizations.codeFontSizeSubtitle, style: subtitleStyle ?? const TextStyle(fontSize: 12))
++          : null,
++      trailing: DropdownButton<double>(
++        value: current,
++        focusColor: Colors.transparent,
++        onChanged: (size) {
++          if (size == null) {
++            return;
++          }
++          config?.applyDisplaySetting(() => config.editorFontSize = size);
++        },
++        items: values
++            .map((size) => DropdownMenuItem<double>(
++                value: size, child: Text(size == size.roundToDouble() ? '${size.toInt()}' : '$size')))
++            .toList(),
++      ),
++    );
++  }
++}
++
++/// 「抓包列表密度」列表项（宽松 / 紧凑 / 极紧凑）。
++class CaptureDensityTile extends StatelessWidget {
++  final TextStyle? titleStyle;
++  final TextStyle? subtitleStyle;
++  final bool showSubtitle;
++
++  const CaptureDensityTile({super.key, this.titleStyle, this.subtitleStyle, this.showSubtitle = true});
++
++  @override
++  Widget build(BuildContext context) {
++    final localizations = AppLocalizations.of(context)!;
++    final config = AppConfiguration.current;
++
++    return ListTile(
++      contentPadding: EdgeInsets.zero,
++      title: Text(localizations.captureListDensity, style: titleStyle),
++      subtitle: showSubtitle
++          ? Text(localizations.captureListDensitySubtitle, style: subtitleStyle ?? const TextStyle(fontSize: 12))
++          : null,
++      trailing: DropdownButton<String>(
++        value: config?.captureListDensity ?? 'comfortable',
++        focusColor: Colors.transparent,
++        onChanged: (value) {
++          if (value == null) {
++            return;
++          }
++          config?.applyDisplaySetting(() => config.captureListDensity = value);
++        },
++        items: [
++          DropdownMenuItem(value: 'comfortable', child: Text(localizations.densityComfortable)),
++          DropdownMenuItem(value: 'compact', child: Text(localizations.densityCompact)),
++          DropdownMenuItem(value: 'dense', child: Text(localizations.densityDense)),
++        ],
++      ),
++    );
++  }
++}
+diff --git a/lib/ui/component/code_style.dart b/lib/ui/component/code_style.dart
+new file mode 100644
+index 0000000..2866087
+--- /dev/null
++++ b/lib/ui/component/code_style.dart
+@@ -0,0 +1,21 @@
++import 'package:flutter/material.dart';
++import 'package:proxypin/ui/configuration.dart';
++
++/// 代码窗口（请求体/响应体/脚本编辑器/JSON 视图…）统一使用的字体样式。
++///
++/// 字体族与字号来自偏好设置里的「代码字体」，未设置时跟随界面字体，
++/// 保证不填也能保持原有观感。
++TextStyle codeTextStyle({double? size, Color? color, double? height, FontWeight? fontWeight}) {
++  final config = AppConfiguration.current;
++  final family = config?.editorFontFamily;
++  return TextStyle(
++    fontFamily: family == null || family.isEmpty ? null : family,
++    fontSize: size ?? config?.editorFontSize ?? 13,
++    height: height,
++    color: color,
++    fontWeight: fontWeight,
++  );
++}
++
++/// 当前生效的代码字号（供需要单独计算的场景使用）
++double get codeFontSize => AppConfiguration.current?.editorFontSize ?? 13;
+diff --git a/lib/ui/component/json/json_text.dart b/lib/ui/component/json/json_text.dart
+index 066cf56..b9123bb 100644
+--- a/lib/ui/component/json/json_text.dart
++++ b/lib/ui/component/json/json_text.dart
+@@ -34,6 +34,9 @@ class JsonText extends StatefulWidget {
+   final SearchTextController? searchController;
+   final EditableTextContextMenuBuilder? contextMenuBuilder;
+ 
++  /// 基础字体（来自偏好设置里的「代码字体」），为空时用默认等宽字体
++  final TextStyle? textStyle;
++
+   const JsonText({
+     super.key,
+     required this.json,
+@@ -42,6 +45,7 @@ class JsonText extends StatefulWidget {
+     this.scrollController,
+     this.searchController,
+     this.contextMenuBuilder,
++    this.textStyle,
+   });
+ 
+   @override
+@@ -115,7 +119,7 @@ class _JsonTextState extends State<JsonText> {
+                 textHeightBehavior:
+                     const TextHeightBehavior(applyHeightToFirstAscent: false, applyHeightToLastDescent: false),
+                 strutStyle: const StrutStyle(forceStrutHeight: true, height: 1.393),
+-                style: TextStyle(fontFamily: fonts.regular),
++                style: widget.textStyle ?? TextStyle(fontFamily: fonts.regular),
+               );
+             },
+           )));
+diff --git a/lib/ui/component/json/json_viewer.dart b/lib/ui/component/json/json_viewer.dart
+index a20dab6..ae7356a 100644
+--- a/lib/ui/component/json/json_viewer.dart
++++ b/lib/ui/component/json/json_viewer.dart
+@@ -31,14 +31,17 @@ class JsonViewer extends StatelessWidget {
+   final ColorTheme colorTheme;
+   final SearchTextController? searchController;
+ 
+-  const JsonViewer(this.jsonObj, {super.key, required this.colorTheme, this.searchController});
++  /// 基础字体（来自偏好设置里的「代码字体」）
++  final TextStyle? textStyle;
++
++  const JsonViewer(this.jsonObj, {super.key, required this.colorTheme, this.searchController, this.textStyle});
+ 
+   @override
+   Widget build(BuildContext context) {
+     final matchKeys = <GlobalKey>[];
+     if (searchController == null) {
+       return DefaultTextStyle.merge(
+-          style: const TextStyle(fontWeight: FontWeight.w600),
++          style: const TextStyle(fontWeight: FontWeight.w600).merge(textStyle),
+           child: getContentWidget(jsonObj, matchTotalCount: ValueWrap.of(0), matchKeys: matchKeys));
+     }
+     return AnimatedBuilder(
+@@ -47,7 +50,7 @@ class JsonViewer extends StatelessWidget {
+           final matchTotalCount = ValueWrap.of(0);
+           matchKeys.clear();
+           final contentWidget = DefaultTextStyle.merge(
+-              style: const TextStyle(fontWeight: FontWeight.w600),
++              style: const TextStyle(fontWeight: FontWeight.w600).merge(textStyle),
+               child: getContentWidget(jsonObj, matchTotalCount: matchTotalCount, matchKeys: matchKeys));
+           WidgetsBinding.instance.addPostFrameCallback((_) {
+             searchController?.updateMatchCount(matchTotalCount.get()!);
+diff --git a/lib/ui/component/utils.dart b/lib/ui/component/utils.dart
+index c571e11..7e22412 100644
+--- a/lib/ui/component/utils.dart
++++ b/lib/ui/component/utils.dart
+@@ -116,12 +116,12 @@ TextSpan? graphqlOperationSpan(HttpRequest request, {double? fontSize, bool fixA
+   );
+ }
+ 
+-Widget getIcon(HttpResponse? response, {Color? color}) {
++Widget getIcon(HttpResponse? response, {Color? color, double width = 18, double size = 16, double? imageWidth}) {
+   if (response == null) {
+-    return SizedBox(width: 18, child: Icon(Icons.question_mark, size: 16, color: color ?? Colors.green));
++    return SizedBox(width: width, child: Icon(Icons.question_mark, size: size, color: color ?? Colors.green));
+   }
+   if (response.status.code < 0) {
+-    return SizedBox(width: 18, child: Icon(Icons.error, size: 16, color: color ?? Colors.red));
++    return SizedBox(width: width, child: Icon(Icons.error, size: size, color: color ?? Colors.red));
+   }
+ 
+   var contentType = response.contentType;
+@@ -131,13 +131,12 @@ Widget getIcon(HttpResponse? response, {Color? color}) {
+     var body = response.body!;
+     return Image.memory(
+       body is Uint8List ? body : Uint8List.fromList(body),
+-      width: Platforms.isDesktop() ? 19 : 26,
+-      errorBuilder: (context, error, stackTrace) => Icon(Icons.image, size: 16, color: color ?? Colors.green),
++      width: imageWidth ?? (Platforms.isDesktop() ? 19 : 26),
++      errorBuilder: (context, error, stackTrace) => Icon(Icons.image, size: size, color: color ?? Colors.green),
+     );
+   }
+ 
+-  return SizedBox(
+-      width: 18, child: Icon(contentMap[contentType] ?? Icons.http, size: 16, color: color ?? Colors.green));
++  return SizedBox(width: width, child: Icon(contentMap[contentType] ?? Icons.http, size: size, color: color ?? Colors.green));
+ }
+ 
+ //展示报文大小
+diff --git a/lib/ui/configuration.dart b/lib/ui/configuration.dart
+index 12333ce..991a672 100644
+--- a/lib/ui/configuration.dart
++++ b/lib/ui/configuration.dart
+@@ -94,6 +94,15 @@ class AppConfiguration {
+   /// 清空抓包前确认
+   bool clearConfirm = false;
+ 
++  /// 抓包列表行密度：comfortable(宽松，默认) / compact(紧凑) / dense(极紧凑)
++  String captureListDensity = "comfortable";
++
++  /// 代码窗口字体族（请求体/响应体/脚本编辑器等），null 或空表示跟随界面字体
++  String? editorFontFamily;
++
++  /// 代码窗口字号
++  double editorFontSize = 13;
++
+   //桌面window大小
+   Size? windowSize;
+ 
+@@ -127,6 +136,73 @@ class AppConfiguration {
+ 
+   final ValueNotifier<List<String>> toolbarPins = ValueNotifier(defaultToolbarPins);
+ 
++  /// 抓包列表可选的密度
++  static const List<String> captureDensities = ["comfortable", "compact", "dense"];
++
++  /// 抓包列表行的尺寸参数：由 [captureListDensity] 推导
++  CaptureRowMetrics get captureRowMetrics {
++    switch (captureListDensity) {
++      case "compact":
++        return const CaptureRowMetrics(
++            leftWithDomain: 10,
++            leftIndent: 22,
++            leftSelection: 4,
++            right: 8,
++            top: 3,
++            bottom: 3,
++            titleSize: 12.5,
++            metaSize: 10.5,
++            titleMaxLines: 1,
++            showMeta: true,
++            gap: 1,
++            iconGap: 8,
++            iconWidth: 16,
++            iconSize: 14,
++            imageSize: 16);
++      case "dense":
++        return const CaptureRowMetrics(
++            leftWithDomain: 8,
++            leftIndent: 18,
++            leftSelection: 3,
++            right: 6,
++            top: 1.5,
++            bottom: 1.5,
++            titleSize: 12,
++            metaSize: 10,
++            titleMaxLines: 1,
++            showMeta: false,
++            gap: 0,
++            iconGap: 6,
++            iconWidth: 14,
++            iconSize: 12,
++            imageSize: 14);
++      default:
++        return const CaptureRowMetrics(
++            leftWithDomain: 12,
++            leftIndent: 26,
++            leftSelection: 6,
++            right: 10,
++            top: 7,
++            bottom: 7,
++            titleSize: 13,
++            metaSize: 11,
++            titleMaxLines: 2,
++            showMeta: true,
++            gap: 3,
++            iconGap: 10,
++            iconWidth: 18,
++            iconSize: 16,
++            imageSize: 19);
++    }
++  }
++
++  /// 修改显示类配置后立即重建界面并落盘
++  void applyDisplaySetting(VoidCallback mutate) {
++    mutate();
++    globalChange.value = !globalChange.value;
++    flushConfig();
++  }
++
+   AppConfiguration._();
+ 
+   /// 单例
+@@ -235,6 +311,14 @@ class AppConfiguration {
+       autoReadEnabled = config['autoReadEnabled'] ?? true;
+       clearConfirm = config['clearConfirm'] ?? false;
+ 
++      var density = config['captureListDensity'];
++      captureListDensity = density is String && captureDensities.contains(density) ? density : "comfortable";
++
++      var fontFamily = config['editorFontFamily'];
++      editorFontFamily = fontFamily is String && fontFamily.trim().isNotEmpty ? fontFamily.trim() : null;
++      var fontSize = config['editorFontSize'];
++      editorFontSize = fontSize is num && fontSize >= 8 && fontSize <= 32 ? fontSize.toDouble() : 13;
++
+       windowSize =
+           config['windowSize'] == null ? null : Size(config['windowSize']['width'], config['windowSize']['height']);
+       windowPosition = config['windowPosition'] == null
+@@ -291,6 +375,9 @@ class AppConfiguration {
+       "headerViewMode": headerViewMode,
+       "autoReadEnabled": autoReadEnabled,
+       "clearConfirm": clearConfirm,
++      "captureListDensity": captureListDensity,
++      "editorFontFamily": editorFontFamily,
++      "editorFontSize": editorFontSize,
+       if (memoryCleanupThreshold != null) 'memoryCleanupThreshold': memoryCleanupThreshold,
+       if (Platforms.isMobile()) 'pipEnabled': pipEnabled.value,
+       if (Platforms.isMobile()) 'pipIcon': pipIcon.value ? true : null,
+@@ -311,3 +398,45 @@ class AppConfiguration {
+     };
+   }
+ }
++
++/// 抓包列表行的尺寸参数（由 [AppConfiguration.captureListDensity] 推导）
++class CaptureRowMetrics {
++  final double leftWithDomain;
++  final double leftIndent;
++  final double leftSelection;
++  final double right;
++  final double top;
++  final double bottom;
++  final double titleSize;
++  final double metaSize;
++  final int titleMaxLines;
++  final bool showMeta;
++  final double gap;
++  final double iconGap;
++  final double iconWidth;
++  final double iconSize;
++  final double imageSize;
++
++  const CaptureRowMetrics({
++    required this.leftWithDomain,
++    required this.leftIndent,
++    required this.leftSelection,
++    required this.right,
++    required this.top,
++    required this.bottom,
++    required this.titleSize,
++    required this.metaSize,
++    required this.titleMaxLines,
++    required this.showMeta,
++    required this.gap,
++    required this.iconGap,
++    required this.iconWidth,
++    required this.iconSize,
++    required this.imageSize,
++  });
++
++  EdgeInsets padding({required bool displayDomain, required bool selectedInSelectionMode}) {
++    final left = selectedInSelectionMode ? leftSelection : (displayDomain ? leftWithDomain : leftIndent);
++    return EdgeInsets.only(left: left, right: right, top: top, bottom: bottom);
++  }
++}
+diff --git a/lib/ui/content/body.dart b/lib/ui/content/body.dart
+index b26bef9..b2efead 100644
+--- a/lib/ui/content/body.dart
++++ b/lib/ui/content/body.dart
+@@ -31,6 +31,7 @@ import 'package:proxypin/network/components/manager/rewrite_rule.dart';
+ import 'package:proxypin/network/http/content_type.dart';
+ import 'package:proxypin/network/http/http.dart';
+ import 'package:proxypin/network/util/logger.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/json/json_viewer.dart';
+ import 'package:proxypin/ui/component/json/theme.dart';
+ import 'package:proxypin/ui/component/multi_window.dart';
+@@ -794,6 +795,7 @@ class _BodyState extends State<_Body> {
+     if (type == ViewType.formUrl) {
+       return HighlightTextWidget(
+           text: _formatTextBodyIsolate({'type': type.name, 'body': message.getBodyString()}),
++          style: codeTextStyle(),
+           searchController: widget.searchController,
+           contextMenuBuilder: bodyContextMenu);
+     }
+@@ -808,12 +810,13 @@ class _BodyState extends State<_Body> {
+               colorTheme: ColorTheme.of(context),
+               searchController: widget.searchController,
+               scrollController: widget.scrollController,
+-              contextMenuBuilder: bodyContextMenu);
++              contextMenuBuilder: bodyContextMenu,
++              textStyle: codeTextStyle());
+         }
+ 
+         if (type == ViewType.json) {
+           return JsonViewer(json.decode(body),
+-              colorTheme: ColorTheme.of(context), searchController: widget.searchController);
++              colorTheme: ColorTheme.of(context), searchController: widget.searchController, textStyle: codeTextStyle());
+         }
+ 
+         return _buildTextBodyViewer(type, body, message: message);
+@@ -822,7 +825,10 @@ class _BodyState extends State<_Body> {
+       }
+ 
+       return HighlightTextWidget(
+-          text: body, searchController: widget.searchController, contextMenuBuilder: bodyContextMenu);
++          text: body,
++          style: codeTextStyle(),
++          searchController: widget.searchController,
++          contextMenuBuilder: bodyContextMenu);
+     });
+   }
+ 
+@@ -863,6 +869,7 @@ class _BodyState extends State<_Body> {
+           return VirtualizedHighlightText(
+             text: formattedText,
+             language: language,
++            style: codeTextStyle(),
+             searchController: widget.searchController,
+             scrollController: widget.scrollController,
+           );
+@@ -871,6 +878,7 @@ class _BodyState extends State<_Body> {
+         return HighlightTextWidget(
+             language: language,
+             text: formattedText,
++            style: codeTextStyle(),
+             searchController: widget.searchController,
+             contextMenuBuilder: bodyContextMenu);
+       },
+diff --git a/lib/ui/desktop/preference.dart b/lib/ui/desktop/preference.dart
+index 69d20f3..fbf4ea4 100644
+--- a/lib/ui/desktop/preference.dart
++++ b/lib/ui/desktop/preference.dart
+@@ -18,6 +18,7 @@ import 'package:flutter/services.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:proxypin/network/bin/configuration.dart';
+ import 'package:proxypin/network/util/logger.dart';
++import 'package:proxypin/ui/component/code_font_setting.dart';
+ import 'package:proxypin/ui/component/widgets.dart';
+ import 'package:proxypin/ui/configuration.dart';
+ 
+@@ -158,6 +159,13 @@ class _PreferenceState extends State<Preference> {
+                         appConfiguration.clearConfirm = value;
+                         appConfiguration.flushConfig();
+                       })),
++              const Divider(),
++              // 抓包列表行密度：宽松 / 紧凑 / 极紧凑
++              CaptureDensityTile(titleStyle: titleStyle, subtitleStyle: subtitleStyle),
++              // 代码窗口字体（请求体/响应体/脚本编辑器共用）
++              CodeFontFamilyTile(titleStyle: titleStyle, subtitleStyle: subtitleStyle),
++              CodeFontSizeTile(titleStyle: titleStyle, subtitleStyle: subtitleStyle),
++              const Divider(),
+               ListTile(
+                   contentPadding: EdgeInsets.zero,
+                   title: Text(localizations.memoryCleanup, style: titleStyle),
+diff --git a/lib/ui/desktop/request/request.dart b/lib/ui/desktop/request/request.dart
+index 32b0131..d8c7b3e 100644
+--- a/lib/ui/desktop/request/request.dart
++++ b/lib/ui/desktop/request/request.dart
+@@ -190,6 +190,24 @@ class _RequestWidgetState extends State<RequestWidget> {
+     // 内容沿用旧版（类型图标 + 「METHOD path」标题 + 「#编号 时间 - [状态] 类型 大小 耗时」副行 + 右侧 app 图标）。
+     // Material+InkWell：hover/水波纹由组件自身处理，不触发整行 setState 重建
+     //（之前 MouseRegion+setState 会让图片缩略图每次 hover 都重新解码，闪烁且费性能）。
++    // 行密度来自偏好设置（抓包列表密度）：宽松 / 紧凑 / 极紧凑
++    final metrics = (AppConfiguration.current?.captureRowMetrics ?? const CaptureRowMetrics(
++        leftWithDomain: 12,
++        leftIndent: 26,
++        leftSelection: 6,
++        right: 10,
++        top: 7,
++        bottom: 7,
++        titleSize: 13,
++        metaSize: 11,
++        titleMaxLines: 2,
++        showMeta: true,
++        gap: 3,
++        iconGap: 10,
++        iconWidth: 18,
++        iconSize: 16,
++        imageSize: 19));
++
+     return Material(
+         color: selected ? primarySoftBg(theme) : Colors.transparent,
+         child: InkWell(
+@@ -202,43 +220,49 @@ class _RequestWidgetState extends State<RequestWidget> {
+             onSecondaryTapDown: (details) => contextualMenu(details),
+             hoverColor: rowHoverColor(theme),
+             child: Container(
+-                padding: EdgeInsets.only(
+-                    left: selectedInSelectionMode ? 6 : (widget.displayDomain ? 12 : 26),
+-                    right: 10,
+-                    top: 7,
+-                    bottom: 7),
++                padding: metrics.padding(
++                    displayDomain: widget.displayDomain, selectedInSelectionMode: selectedInSelectionMode),
+                 child: Row(children: [
+                   if (selectedInSelectionMode) ...[
+-                    Icon(Icons.check_box_outlined, size: 18, color: theme.colorScheme.primary),
++                    Icon(Icons.check_box_outlined, size: metrics.iconWidth, color: theme.colorScheme.primary),
+                     const SizedBox(width: 4),
+                   ],
+-                  getIcon(response, color: requestColor),
+-                  const SizedBox(width: 10),
++                  getIcon(response,
++                      color: requestColor,
++                      width: metrics.iconWidth,
++                      size: metrics.iconSize,
++                      imageWidth: metrics.imageSize),
++                  SizedBox(width: metrics.iconGap),
+                   Expanded(
+                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                     Text.rich(
+-                        maxLines: 2,
++                        maxLines: metrics.titleMaxLines,
+                         overflow: TextOverflow.ellipsis,
+                         TextSpan(children: [
+                           TextSpan(text: '${request.method.name} '),
+                           TextSpan(text: path.fixAutoLines()),
+                           if (operationName != null) graphqlOperationSpan(request, fixAutoLines: true)!,
+                         ]),
+-                        style: TextStyle(fontSize: 13, height: 1.25, color: requestColor)),
+-                    const SizedBox(height: 3),
+-                    Text.rich(
+-                        maxLines: 1,
+-                        overflow: TextOverflow.ellipsis,
+-                        TextSpan(children: [
+-                          TextSpan(text: '#${widget.index} ', style: const TextStyle(fontSize: 11, color: Colors.teal)),
+-                          TextSpan(text: '$time - ', style: TextStyle(fontSize: 11, color: text3Color(theme))),
+-                          TextSpan(
+-                              text: '[${response?.status.code ?? ''}]',
+-                              style: TextStyle(fontSize: 11, color: text3Color(theme))),
+-                          TextSpan(
+-                              text: '  $contentType $packagesSize ${response?.costTime() ?? ''}',
+-                              style: TextStyle(fontSize: 11, color: text3Color(theme))),
+-                        ])),
++                        style: TextStyle(fontSize: metrics.titleSize, height: 1.25, color: requestColor)),
++                    if (metrics.showMeta) ...[
++                      SizedBox(height: metrics.gap),
++                      Text.rich(
++                          maxLines: 1,
++                          overflow: TextOverflow.ellipsis,
++                          TextSpan(children: [
++                            TextSpan(
++                                text: '#${widget.index} ',
++                                style: TextStyle(fontSize: metrics.metaSize, color: Colors.teal)),
++                            TextSpan(
++                                text: '$time - ', style: TextStyle(fontSize: metrics.metaSize, color: text3Color(theme))),
++                            TextSpan(
++                                text: '[${response?.status.code ?? ''}]',
++                                style: TextStyle(fontSize: metrics.metaSize, color: text3Color(theme))),
++                            TextSpan(
++                                text: '  $contentType $packagesSize ${response?.costTime() ?? ''}',
++                                style: TextStyle(fontSize: metrics.metaSize, color: text3Color(theme))),
++                          ])),
++                    ],
+                   ])),
+                   if (widget.trailing != null) ...[const SizedBox(width: 8), widget.trailing!],
+                 ]))));
+diff --git a/lib/ui/desktop/request/request_editor.dart b/lib/ui/desktop/request/request_editor.dart
+index 54a3adf..4a160e8 100644
+--- a/lib/ui/desktop/request/request_editor.dart
++++ b/lib/ui/desktop/request/request_editor.dart
+@@ -18,6 +18,7 @@ import 'dart:convert';
+ import 'dart:io';
+ 
+ import 'package:code_forge/code_forge.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+@@ -657,7 +658,7 @@ class _HttpState extends State<_HttpWidget> {
+                     enableGuideLines: false,
+                     selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+                     editorTheme: editorTheme,
+-                    textStyle: const TextStyle(fontSize: 14.2),
++                    textStyle: codeTextStyle(size: 14.2),
+                     finderBuilder: (c, controller) => FindPanelView(controller: controller),
+                   ),
+                 ),
+diff --git a/lib/ui/desktop/setting/request_map/map_scipt.dart b/lib/ui/desktop/setting/request_map/map_scipt.dart
+index c995381..64dbdc0 100644
+--- a/lib/ui/desktop/setting/request_map/map_scipt.dart
++++ b/lib/ui/desktop/setting/request_map/map_scipt.dart
+@@ -1,6 +1,7 @@
+ import 'package:flutter/material.dart';
+ import 'package:code_forge/code_forge.dart';
+ import 'package:re_highlight/styles/monokai-sublime.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/search/finder.dart';
+ import 'package:re_highlight/languages/javascript.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+@@ -62,7 +63,7 @@ async function onRequest(context, request) {
+           language: langJavascript,
+           editorTheme: monokaiSublimeTheme,
+           finderBuilder: (c, controller) => FindPanelView(controller: controller),
+-          textStyle: const TextStyle(fontSize: 13),
++          textStyle: codeTextStyle(size: 13),
+         ));
+   }
+ }
+diff --git a/lib/ui/desktop/setting/rewrite/rewrite_replace.dart b/lib/ui/desktop/setting/rewrite/rewrite_replace.dart
+index 2c67893..ffd2a9b 100644
+--- a/lib/ui/desktop/setting/rewrite/rewrite_replace.dart
++++ b/lib/ui/desktop/setting/rewrite/rewrite_replace.dart
+@@ -22,6 +22,7 @@ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+ import 'package:re_highlight/styles/atom-one-dark.dart';
+ import 'package:re_highlight/styles/atom-one-light.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:proxypin/network/components/manager/rewrite_rule.dart';
+ import 'package:proxypin/ui/component/state_component.dart';
+@@ -249,7 +250,7 @@ class RewriteReplaceState extends State<DesktopRewriteReplace> {
+                 enableGuideLines: false,
+                 selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+                 editorTheme: Theme.brightnessOf(context) == Brightness.dark ? atomOneDarkTheme : atomOneLightTheme,
+-                textStyle: const TextStyle(fontSize: 14),
++                textStyle: codeTextStyle(size: 14),
+                 finderBuilder: (c, controller) => FindPanelView(controller: controller),
+               );
+             }))
+diff --git a/lib/ui/desktop/setting/rewrite/rewrite_update.dart b/lib/ui/desktop/setting/rewrite/rewrite_update.dart
+index b8c03ae..12b741b 100644
+--- a/lib/ui/desktop/setting/rewrite/rewrite_update.dart
++++ b/lib/ui/desktop/setting/rewrite/rewrite_update.dart
+@@ -18,6 +18,7 @@ import 'package:code_forge/code_forge.dart';
+ import 'package:flutter/material.dart';
+ import 'package:flutter_toastr/flutter_toastr.dart';
+ import 'package:get/get.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:proxypin/network/components/manager/rewrite_rule.dart';
+ import 'package:proxypin/network/http/http.dart';
+@@ -298,7 +299,7 @@ class _RewriteUpdateAddState extends State<RewriteUpdateAddDialog> {
+                         editorTheme:
+                             Theme.brightnessOf(context) == Brightness.dark ? atomOneDarkTheme : atomOneLightTheme,
+                         enableGuideLines: false,
+-                        textStyle: const TextStyle(fontSize: 14),
++                        textStyle: codeTextStyle(size: 14),
+                       )),
+                 ]))));
+   }
+diff --git a/lib/ui/desktop/setting/script.dart b/lib/ui/desktop/setting/script.dart
+index cd9eaf9..96c5e76 100644
+--- a/lib/ui/desktop/setting/script.dart
++++ b/lib/ui/desktop/setting/script.dart
+@@ -17,6 +17,7 @@
+ import 'dart:convert';
+ import 'dart:io';
+ 
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:file_picker/file_picker.dart';
+ import 'package:flutter/gestures.dart';
+@@ -670,7 +671,7 @@ class _ScriptEditState extends State<ScriptEdit> {
+                                     autoFocus: true,
+                                     enableGuideLines: false,
+                                     finderBuilder: (c, controller) => FindPanelView(controller: controller),
+-                                    textStyle: const TextStyle(fontSize: 13, color: Colors.white),
++                                    textStyle: codeTextStyle(size: 13, color: Colors.white),
+                                   ),
+                                   if (_useRemote && script.text.trim().isEmpty)
+                                     Positioned.fill(
 diff --git a/lib/ui/desktop/ssl/cert_installer.dart b/lib/ui/desktop/ssl/cert_installer.dart
 index 2264fb4..b3f494f 100644
 --- a/lib/ui/desktop/ssl/cert_installer.dart
@@ -650,6 +2034,299 @@ index 7c1b72b..802d8f1 100644
      }
  
      if (!Platform.isWindows && !Platform.isLinux) {
+diff --git a/lib/ui/mobile/request/request.dart b/lib/ui/mobile/request/request.dart
+index 2de0ba0..51807de 100644
+--- a/lib/ui/mobile/request/request.dart
++++ b/lib/ui/mobile/request/request.dart
+@@ -149,10 +149,16 @@ class RequestRowState extends State<RequestRow> {
+ 
+     var highlightColor = color(url);
+ 
++    // 行密度来自偏好设置（抓包列表密度）
++    var metrics = AppConfiguration.current?.captureRowMetrics;
++    var titleSize = (metrics?.titleSize ?? 13) + 1;
++
+     return GestureDetector(
+         onLongPressStart: menu,
+         child: ListTile(
+           visualDensity: const VisualDensity(vertical: -4),
++          dense: metrics != null && !metrics.showMeta,
++          minVerticalPadding: metrics != null && metrics.top <= 3 ? 0 : 4,
+           minLeadingWidth: 5,
+           selected: selected ||
+               (widget.selectionController.isSelectionMode && widget.selectionController.contains(request.requestId)),
+@@ -160,21 +166,26 @@ class RequestRowState extends State<RequestRow> {
+           selectedColor: highlightColor,
+           leading: rowLeading(),
+           title: Text.rich(
+-              maxLines: 2,
++              maxLines: metrics?.titleMaxLines ?? 2,
+               overflow: TextOverflow.ellipsis,
+-              TextSpan(style: const TextStyle(fontSize: 14), children: [
++              TextSpan(style: TextStyle(fontSize: titleSize), children: [
+                 TextSpan(text: title.fixAutoLines()),
+-                if (operationName != null) graphqlOperationSpan(request, fontSize: 14, fixAutoLines: true)!,
+-              ])),
+-          subtitle: Text.rich(
+-              maxLines: 1,
+-              TextSpan(children: [
+-                TextSpan(text: '#${widget.index} ', style: const TextStyle(fontSize: 11, color: Colors.teal)),
+-                TextSpan(text: subTitle, style: const TextStyle(fontSize: 11, color: Colors.grey)),
++                if (operationName != null) graphqlOperationSpan(request, fontSize: titleSize, fixAutoLines: true)!,
+               ])),
++          subtitle: metrics != null && !metrics.showMeta
++              ? null
++              : Text.rich(
++                  maxLines: 1,
++                  TextSpan(children: [
++                    TextSpan(
++                        text: '#${widget.index} ',
++                        style: TextStyle(fontSize: metrics?.metaSize ?? 11, color: Colors.teal)),
++                    TextSpan(text: subTitle, style: TextStyle(fontSize: metrics?.metaSize ?? 11, color: Colors.grey)),
++                  ])),
+           trailing: request.protocolVersion == 'MQTT'
+               ? const Icon(Icons.hub_outlined, color: Colors.teal)
+-              : getIcon(response, color: highlightColor),
++              : getIcon(response,
++                  color: highlightColor, width: metrics?.iconWidth ?? 18, size: metrics?.iconSize ?? 16),
+           contentPadding:
+               Platform.isIOS ? const EdgeInsets.symmetric(horizontal: 8) : const EdgeInsets.only(left: 3, right: 5),
+           onTap: () {
+diff --git a/lib/ui/mobile/request/request_editor.dart b/lib/ui/mobile/request/request_editor.dart
+index 030fe00..203a6ca 100644
+--- a/lib/ui/mobile/request/request_editor.dart
++++ b/lib/ui/mobile/request/request_editor.dart
+@@ -21,6 +21,7 @@ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+ import 'package:re_highlight/styles/atom-one-dark.dart';
+ import 'package:re_highlight/styles/atom-one-light.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:flutter_toastr/flutter_toastr.dart';
+ import 'package:proxypin/network/bin/server.dart';
+@@ -638,7 +639,7 @@ class _HttpState extends State<_HttpWidget> with SingleTickerProviderStateMixin,
+                   enableGuideLines: false,
+                   selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+                   editorTheme: editorTheme,
+-                  textStyle: const TextStyle(fontSize: 13),
++                  textStyle: codeTextStyle(size: 13),
+                   finderBuilder: (c, controller) => FindPanelView(controller: controller),
+                 ),
+               ),
+diff --git a/lib/ui/mobile/setting/preference.dart b/lib/ui/mobile/setting/preference.dart
+index c98559a..b389f90 100644
+--- a/lib/ui/mobile/setting/preference.dart
++++ b/lib/ui/mobile/setting/preference.dart
+@@ -7,6 +7,7 @@ import 'package:proxypin/network/bin/configuration.dart';
+ import 'package:proxypin/network/bin/server.dart';
+ import 'package:proxypin/network/util/logger.dart';
+ import 'package:proxypin/ui/component/widgets.dart';
++import 'package:proxypin/ui/component/code_font_setting.dart';
+ import 'package:proxypin/ui/configuration.dart';
+ import 'package:proxypin/ui/mobile/setting/theme.dart';
+ 
+@@ -142,6 +143,12 @@ class _PreferenceState extends State<Preference> {
+                       })),
+             ]),
+             const SizedBox(height: 12),
++            section([
++              CaptureDensityTile(showSubtitle: true),
++              CodeFontFamilyTile(),
++              CodeFontSizeTile(),
++            ]),
++            const SizedBox(height: 12),
+             section([
+               ListTile(
+                   title: Text(localizations.memoryCleanup),
+diff --git a/lib/ui/mobile/setting/request_map/map_scipt.dart b/lib/ui/mobile/setting/request_map/map_scipt.dart
+index 4a62570..2b13b3c 100644
+--- a/lib/ui/mobile/setting/request_map/map_scipt.dart
++++ b/lib/ui/mobile/setting/request_map/map_scipt.dart
+@@ -1,6 +1,7 @@
+ import 'package:code_forge/code_forge.dart';
+ import 'package:flutter/material.dart';
+ import 'package:re_highlight/styles/monokai-sublime.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:re_highlight/languages/javascript.dart';
+ 
+@@ -60,7 +61,7 @@ async function onRequest(context, request) {
+         editorTheme: monokaiSublimeTheme,
+         enableGuideLines: false,
+         autoFocus: true,
+-        textStyle: const TextStyle(fontSize: 13),
++        textStyle: codeTextStyle(size: 13),
+       ),
+     );
+   }
+diff --git a/lib/ui/mobile/setting/rewrite/rewrite_replace.dart b/lib/ui/mobile/setting/rewrite/rewrite_replace.dart
+index 5e17b2c..254da74 100644
+--- a/lib/ui/mobile/setting/rewrite/rewrite_replace.dart
++++ b/lib/ui/mobile/setting/rewrite/rewrite_replace.dart
+@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+ import 'package:re_highlight/styles/atom-one-dark.dart';
+ import 'package:re_highlight/styles/atom-one-light.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:proxypin/network/components/manager/rewrite_rule.dart';
+ import 'package:proxypin/ui/component/search/finder.dart';
+@@ -242,7 +243,7 @@ class RewriteReplaceState extends State<MobileRewriteReplace> {
+                 enableGuideLines: false,
+                 selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+                 editorTheme: Theme.brightnessOf(context) == Brightness.dark ? atomOneDarkTheme : atomOneLightTheme,
+-                textStyle: const TextStyle(fontSize: 14),
++                textStyle: codeTextStyle(size: 14),
+                 finderBuilder: (c, controller) => FindPanelView(controller: controller),
+               );
+             }))
+diff --git a/lib/ui/mobile/setting/rewrite/rewrite_update.dart b/lib/ui/mobile/setting/rewrite/rewrite_update.dart
+index 0556ac9..e165937 100644
+--- a/lib/ui/mobile/setting/rewrite/rewrite_update.dart
++++ b/lib/ui/mobile/setting/rewrite/rewrite_update.dart
+@@ -23,6 +23,7 @@ import 'package:re_highlight/styles/atom-one-dark.dart';
+ import 'package:re_highlight/styles/atom-one-light.dart';
+ import 'package:flutter_toastr/flutter_toastr.dart';
+ import 'package:get/get.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:proxypin/network/components/manager/rewrite_rule.dart';
+ import 'package:proxypin/network/http/http.dart';
+@@ -293,7 +294,7 @@ class _RewriteUpdateAddState extends State<RewriteUpdateEdit> {
+                     selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+                     editorTheme: Theme.brightnessOf(context) == Brightness.dark ? atomOneDarkTheme : atomOneLightTheme,
+                     enableGuideLines: false,
+-                    textStyle: const TextStyle(fontSize: 14),
++                    textStyle: codeTextStyle(size: 14),
+                   )),
+             ])));
+   }
+diff --git a/lib/ui/mobile/setting/script.dart b/lib/ui/mobile/setting/script.dart
+index da87a33..c5a4bc8 100644
+--- a/lib/ui/mobile/setting/script.dart
++++ b/lib/ui/mobile/setting/script.dart
+@@ -22,6 +22,7 @@ import 'package:flutter/services.dart';
+ import 'package:code_forge/code_forge.dart';
+ import 'package:http/http.dart' as http;
+ import 'package:get/get.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:re_highlight/styles/monokai-sublime.dart';
+ import 'package:flutter_toastr/flutter_toastr.dart';
+@@ -761,7 +762,7 @@ class _ScriptEditState extends State<ScriptEdit> {
+                                         editorTheme: monokaiSublimeTheme,
+                                         readOnly: _useRemote,
+                                         enableGuideLines: false,
+-                                        textStyle: const TextStyle(fontSize: 13, color: Colors.white),
++                                        textStyle: codeTextStyle(size: 13, color: Colors.white),
+                                       )),
+                                   if (_useRemote && script.text.trim().isEmpty)
+                                     Positioned.fill(
+diff --git a/lib/ui/toolbox/js_run.dart b/lib/ui/toolbox/js_run.dart
+index 2c41357..a4c4645 100644
+--- a/lib/ui/toolbox/js_run.dart
++++ b/lib/ui/toolbox/js_run.dart
+@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+ import 'package:code_forge/code_forge.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/l10n/app_localizations.dart';
+ import 'package:re_highlight/styles/monokai-sublime.dart';
+ import 'package:flutter_js/flutter_js.dart';
+@@ -142,7 +143,7 @@ class _JavaScriptState extends State<JavaScript> {
+                     autoFocus: true,
+                     enableGuideLines: false,
+                     finderBuilder: (c, controller) => FindPanelView(controller: controller),
+-                    textStyle: const TextStyle(fontSize: 13),
++                    textStyle: codeTextStyle(size: 13),
+                   )),
+               Row(children: [
+                 const SizedBox(width: 10),
+diff --git a/lib/ui/toolbox/json_viewer.dart b/lib/ui/toolbox/json_viewer.dart
+index 2ef025f..66c01f8 100644
+--- a/lib/ui/toolbox/json_viewer.dart
++++ b/lib/ui/toolbox/json_viewer.dart
+@@ -18,6 +18,7 @@ import 'dart:convert';
+ import 'dart:io';
+ 
+ import 'package:code_forge/code_forge.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:file_picker/file_picker.dart';
+ import 'package:flutter/material.dart';
+@@ -319,7 +320,7 @@ class _JsonViewerPageState extends State<JsonViewerPage> with SingleTickerProvid
+           language: HighlightLanguages.getLanguage(ContentType.json),
+           enableGuideLines: false,
+           editorTheme: editorTheme,
+-          textStyle: const TextStyle(fontSize: 13),
++          textStyle: codeTextStyle(size: 13),
+           finderBuilder: (c, controller) => FindPanelView(controller: controller),
+           selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+         ),
+diff --git a/lib/ui/toolbox/text_diff.dart b/lib/ui/toolbox/text_diff.dart
+index 1493fdf..d00177b 100644
+--- a/lib/ui/toolbox/text_diff.dart
++++ b/lib/ui/toolbox/text_diff.dart
+@@ -17,6 +17,7 @@
+ import 'dart:io';
+ 
+ import 'package:code_forge/code_forge.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:file_picker/file_picker.dart';
+ import 'package:flutter/material.dart';
+@@ -460,7 +461,7 @@ class _TextDiffPageState extends State<TextDiffPage> {
+             lineWrap: _wrap,
+             enableGuideLines: false,
+             editorTheme: editorTheme,
+-            textStyle: const TextStyle(fontSize: 14.5),
++            textStyle: codeTextStyle(size: 14.5),
+             matchHighlightStyle: matchStyle,
+             finderBuilder: (c, controller) => FindPanelView(controller: controller),
+             selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+diff --git a/lib/ui/toolbox/text_editor.dart b/lib/ui/toolbox/text_editor.dart
+index f3b2b13..9020351 100644
+--- a/lib/ui/toolbox/text_editor.dart
++++ b/lib/ui/toolbox/text_editor.dart
+@@ -20,6 +20,7 @@ import 'dart:convert';
+ import 'dart:io';
+ 
+ import 'package:code_forge/code_forge.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:file_picker/file_picker.dart';
+ import 'package:flutter/material.dart';
+@@ -363,7 +364,7 @@ class _TextEditorPageState extends State<TextEditorPage> {
+           language: _lang.mode,
+           enableGuideLines: false,
+           editorTheme: editorTheme,
+-          textStyle: const TextStyle(fontSize: 13),
++          textStyle: codeTextStyle(size: 13),
+           finderBuilder: (c, controller) => FindPanelView(controller: controller),
+           selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+         ),
+diff --git a/lib/ui/toolbox/xml_viewer.dart b/lib/ui/toolbox/xml_viewer.dart
+index e56c260..7172214 100644
+--- a/lib/ui/toolbox/xml_viewer.dart
++++ b/lib/ui/toolbox/xml_viewer.dart
+@@ -18,6 +18,7 @@ import 'dart:convert';
+ import 'dart:io';
+ 
+ import 'package:code_forge/code_forge.dart';
++import 'package:proxypin/ui/component/code_style.dart';
+ import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:file_picker/file_picker.dart';
+ import 'package:flutter/material.dart';
+@@ -240,7 +241,7 @@ class _XmlViewerPageState extends State<XmlViewerPage> {
+           language: HighlightLanguages.getLanguage(ContentType.xml),
+           enableGuideLines: false,
+           editorTheme: editorTheme,
+-          textStyle: const TextStyle(fontSize: 13),
++          textStyle: codeTextStyle(size: 13),
+           finderBuilder: (c, controller) => FindPanelView(controller: controller),
+           selectionStyle: CodeSelectionStyle(cursorColor: Theme.of(context).colorScheme.primary),
+         ),
 diff --git a/lib/utils/desktop_tray.dart b/lib/utils/desktop_tray.dart
 index c5990aa..e027ca5 100644
 --- a/lib/utils/desktop_tray.dart
@@ -786,6 +2463,87 @@ index c5990aa..e027ca5 100644
    }
  
    Future<void> restoreWindow() async {
+diff --git a/lib/utils/system_fonts.dart b/lib/utils/system_fonts.dart
+new file mode 100644
+index 0000000..96ec849
+--- /dev/null
++++ b/lib/utils/system_fonts.dart
+@@ -0,0 +1,75 @@
++import 'dart:io';
++
++/// 系统字体探测（目前只用于「代码字体」下拉框）
++class SystemFonts {
++  SystemFonts._();
++
++  static List<String>? _monospaceCache;
++
++  /// 常见等宽字体：fontconfig 不可用时兜底
++  static const List<String> commonMonospace = [
++    'JetBrains Mono',
++    'Fira Code',
++    'Cascadia Code',
++    'Source Code Pro',
++    'IBM Plex Mono',
++    'Hack',
++    'Inconsolata',
++    'Victor Mono',
++    'Roboto Mono',
++    'Ubuntu Mono',
++    'DejaVu Sans Mono',
++    'Liberation Mono',
++    'Noto Sans Mono',
++    'Sarasa Mono SC',
++    'Consolas',
++    'Menlo',
++    'Monaco',
++    'Courier New',
++  ];
++
++  /// 「系统等宽」对应的字体族：各平台的通用等宽别名
++  static String get systemMonospaceFamily {
++    if (Platform.isMacOS) {
++      return 'Menlo';
++    }
++    if (Platform.isWindows) {
++      return 'Consolas';
++    }
++    return 'monospace';
++  }
++
++  /// 已安装的等宽字体族（Linux 用 fontconfig 枚举，其它平台返回常见列表）
++  static Future<List<String>> monospaceFamilies() async {
++    final cached = _monospaceCache;
++    if (cached != null) {
++      return cached;
++    }
++
++    final families = <String>{};
++    if (Platform.isLinux) {
++      try {
++        final result = await Process.run('fc-list', [':spacing=mono', 'family']);
++        if (result.exitCode == 0) {
++          for (final line in result.stdout.toString().split('\n')) {
++            for (final name in line.split(',')) {
++              final family = name.trim();
++              if (family.isNotEmpty) {
++                families.add(family);
++              }
++            }
++          }
++        }
++      } catch (_) {
++        // fc-list 不可用就走常见列表
++      }
++    }
++
++    if (families.isEmpty) {
++      families.addAll(commonMonospace);
++    }
++    final list = families.toList()..sort((a, b) => a.toLowerCase().compareTo(b.toLowerCase()));
++    _monospaceCache = list;
++    return list;
++  }
++}
 diff --git a/linux/CMakeLists.txt b/linux/CMakeLists.txt
 index 1739998..8cd685c 100644
 --- a/linux/CMakeLists.txt
