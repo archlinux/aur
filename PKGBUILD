@@ -15,7 +15,7 @@ depends=('alsa-lib' 'wayland' 'sdbus-cpp' 'gcc-libs' 'glibc' 'fontconfig'
 optdepends=('jack' 'pipewire' 'vulkan-icd-loader' 'vulkan-driver' 'ffmpeg8.1' 'avahi')
 provides=('clap-host' 'vst3-host')
 conflicts=('studio-one-7')
-options=(!strip)
+options=(!strip !debug)
 # Note: Please download "Installer for Linux (deb)" (studiopro8-x86_64.deb) manually from https://my.fender.com/products/detail/1781
 source=("studiopro8-x86_64.deb::local://studiopro8-x86_64.deb")
 sha256sums=('df2bc17d41c1374d53f82f760ca365548fa71f939317226bbbd5b969db847457')
