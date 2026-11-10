@@ -1,10 +1,10 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=cfetch-agent
-pkgver=0.10.3
-pkgrel=2
+pkgver=0.10.4
+pkgrel=1
 pkgdesc="Cited, trust-tiered memory for AI coding agents over plain Markdown"
 arch=('x86_64' 'aarch64')
-url="https://git.corbet.ch/corbet-libs/cfetch"
+url="https://git.corbet.ch/corbet-fsl/cfetch"
 license=('LicenseRef-FSL-1.1-ALv2')
 provides=('cfetch')
 conflicts=('cfetch')
@@ -13,7 +13,7 @@ conflicts=('cfetch')
 # the archive links "successfully empty" and every sqlite3_* symbol goes missing.
 options=('!lto')
 makedepends=('cargo' 'git')
-source=("$pkgname::git+https://git.corbet.ch/corbet-libs/cfetch.git#tag=v$pkgver")
+source=("$pkgname::git+https://git.corbet.ch/corbet-fsl/cfetch.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {

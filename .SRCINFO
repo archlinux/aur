@@ -1,8 +1,8 @@
 pkgbase = cfetch-agent
 	pkgdesc = Cited, trust-tiered memory for AI coding agents over plain Markdown
-	pkgver = 0.10.3
-	pkgrel = 2
-	url = https://git.corbet.ch/corbet-libs/cfetch
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://git.corbet.ch/corbet-fsl/cfetch
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-FSL-1.1-ALv2
@@ -11,7 +11,7 @@ pkgbase = cfetch-agent
 	provides = cfetch
 	conflicts = cfetch
 	options = !lto
-	source = cfetch-agent::git+https://git.corbet.ch/corbet-libs/cfetch.git#tag=v0.10.3
+	source = cfetch-agent::git+https://git.corbet.ch/corbet-fsl/cfetch.git#tag=v0.10.4
 	sha256sums = SKIP
 
 pkgname = cfetch-agent
