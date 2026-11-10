@@ -4,14 +4,14 @@ pkgname=dux-greeter-git
 _pkgname=dux-greeter
 _binname=dms-greeter
 pkgver=2.1.0.r0.gcc00abd
-pkgrel=2
+pkgrel=3
 pkgdesc='Greetd login screen with the Dux Shell aesthetic (git)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/duxlabs-dev/$_pkgname"
 license=('MIT')
 depends=(
     'greetd'
-    'dux-qt-base'
+    'libdux-qt-base.so'
     'qt6-declarative'
 )
 optdepends=(
