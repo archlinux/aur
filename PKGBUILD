@@ -1,11 +1,10 @@
-
 # Maintainer: Stefan Gruenberger <stefan.gruenberger at gmail dot com>
 # Contributor: cheapl <cheapl@icloud.com>
 
 pkgname=onedrivegui
 _pkgname=OneDriveGUI
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
 license=("GPL-3.0-or-later")
 depends=(
@@ -20,6 +19,7 @@ makedepends=(
   "python-build"
   "python-installer"
   "python-wheel"
+  "python-setuptools"
 )
 conflicts=("onedrivegui-git")
 provides=("onedrivegui")
@@ -29,7 +29,7 @@ url="https://github.com/bpozdena/${_pkgname}"
 _tag="v${pkgver}"
 source=("git+$url.git#tag=$_tag" "onedrivegui.desktop")
 sha256sums=('5327b485a85bdf77c618f5282abe4dbcfaaf2096916ea24de396a961336c11e1'
-            'd26149240e17b6a99d865026b9fdfe53475d430fc2ca2e516965489061e9feae')
+  'd26149240e17b6a99d865026b9fdfe53475d430fc2ca2e516965489061e9feae')
 
 build() {
   cd "${_pkgname}"
