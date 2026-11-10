@@ -9,7 +9,7 @@
 
 pkgbase=skwir-git
 pkgname=(skwir-git skwir-mermaid-git skwir-mupdf-git)
-pkgver=0.3.1.r0.g1c246df
+pkgver=0.4.0.r0.gdea1d2a
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents (its last commit)'
 arch=('x86_64' 'aarch64')
@@ -58,6 +58,7 @@ build() {
   cd skwir
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  . tools/build/order-link-env.sh
   # shellcheck disable=SC2046 # one `-p name` per program
   cargo build --frozen --profile dist $(sed 's/^/-p /' tools/package/programs)
 }
