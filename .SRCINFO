@@ -1,6 +1,6 @@
 pkgbase = sfptool
 	pkgdesc = Desktop utility for reading and programming SFP and QSFP transceivers
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://jonasled.dev/jonasled/sfp-tool
 	arch = x86_64
@@ -29,10 +29,10 @@ pkgbase = sfptool
 	depends = libayatana-appindicator
 	provides = sfptool
 	conflicts = sfptool-bin
-	source = sfp-tool-v1.8.2.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.8.2/sfp-tool-v1.8.2.tar.gz
+	source = sfp-tool-v1.9.0.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v1.9.0/sfp-tool-v1.9.0.tar.gz
 	source = transceivertool-811da32d7b3bc7b8138fee5b18ae847da470c161.tar.gz::https://github.com/robinchrist/TransceiverTool/archive/811da32d7b3bc7b8138fee5b18ae847da470c161.tar.gz
 	source = cppcodec-v0.2.tar.gz::https://github.com/tplgy/cppcodec/archive/refs/tags/v0.2.tar.gz
-	sha256sums = 65e99fbafa14c68cac1cdcbfadacd9808f5bd8cebd6f608bc74a1b7ceff8cba2
+	sha256sums = dafdfe9ea6224e2b91f8ac5c4981b596fb0f991195ea2afc547886b5b4ec3107
 	sha256sums = f1e568c1e4dcf1e8e02d4e90d53e285457a8a77db7c39a54ba3ea6106545f6d0
 	sha256sums = 0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482
 
