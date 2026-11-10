@@ -10,7 +10,8 @@ arch=('x86_64')
 url='https://www.fender.com/redirects/studiopro_product_page'
 license=('custom')
 depends=('alsa-lib' 'wayland' 'sdbus-cpp' 'gcc-libs' 'glibc' 'fontconfig'
-         'openssl' 'util-linux-libs' 'libunistring' 'libglvnd' 'libxkbcommon')
+         'openssl-3' 'util-linux-libs' 'libunistring' 'libglvnd' 'libxkbcommon'
+         'hicolor-icon-theme')
 optdepends=('jack' 'pipewire' 'vulkan-icd-loader' 'vulkan-driver' 'ffmpeg8.1' 'avahi')
 provides=('clap-host' 'vst3-host')
 conflicts=('studio-one-7')
