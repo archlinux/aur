@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://github.com/minghinmatthewlam/pi-gui'
 license=('MIT')
 depends=('gtk3' 'libxss' 'nss' 'libnotify' 'alsa-lib' 'libcups')
+makedepends=('7zip')
 provides=('pi-gui')
 conflicts=('pi-gui')
 source=("https://github.com/minghinmatthewlam/pi-gui/releases/download/v1.0.1/pi-gui-1.0.1-x86_64.AppImage"
@@ -19,8 +20,12 @@ sha256sums=('581c965d96a3c2f0db3f1e88e91a3c3d11f1353dd3158a57cbe5cb989d537681'
 package() {
   cd "$srcdir"
 
-  chmod +x pi-gui-*.AppImage
-  ./pi-gui-*.AppImage --appimage-extract
+  # The embedded AppImage runtime's own --appimage-extract fails to locate
+  # the squashfs offset for this build (it mis-detects the ELF size because
+  # of the extra update/signature sections electron-builder appends), and
+  # it also requires FUSE access that clean build chroots don't grant.
+  # Extract the appended squashfs filesystem directly instead.
+  7z x pi-gui-*.AppImage -osquashfs-root -y
 
   cd squashfs-root
 
