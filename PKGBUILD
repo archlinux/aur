@@ -1,7 +1,7 @@
 # Maintainer: Snug Linux
 pkgname=colibri-git
 pkgver=2.1.0.r5150.g0a5504a1
-pkgrel=3
+pkgrel=4
 pkgdesc='Colibri hierarchical MoE inference engine (Git source, CPU, web dashboard)'
 arch=('x86_64')
 url='https://github.com/JustVugg/colibri'
@@ -14,16 +14,16 @@ source=('colibri::git+https://github.com/JustVugg/colibri.git#branch=main'
         'colibri@.service'
         'colibri-instance'
         'qwen3-coder-30b.conf.example'
-        'qwen36.conf.example'
+        'qwen36-35b.conf.example'
         'README-uk.md'
         'README.md')
 sha256sums=('SKIP'
-            '0c07d5039b809f9c77962fe5a7d25484504b294f1bc0c165fefd8c19a33593df'
+            '39be17741d126dfc234b0b95423da578b6c61ee25ec216b947e7c0ae60afac4a'
             'a1b986ba67171653b4eba95abac2e6e970a2a04fb45efba082d832ca507264a2'
             '1badbf946a26d164049beef4db143f7706b7f66f1fa97471b9185063c082f2af'
-            'ef8e4df278db90613cdb42e6ae7f7ed6866765cdbf93ca7763e84da33a7117fa'
-            '31c6f4630cd5e5af3568c126caf542d981417a5ddefcd779b9468b1b6801b8cd'
-            '96aa76f1bacadd63da36d3060751116c4ad260a2d26040c7a2750c3ba5d6717d')
+            'b11d0c7f3e3bc5877c15861ee7deb19a2926b07c826e4d6be22aed1c4267efd6'
+            '641c311cf9f1ab38eceb84c06716a6120d5193f8e9a9dc6eb12fb6ea59aff6e5'
+            '69028bcaa7f654faa5099c391d8ee13cc93a7d1b5891f57a7f298063c8bec177')
 options=('!lto')
 
 pkgver() {
@@ -76,7 +76,7 @@ package() {
   install -Dm644 "$srcdir/colibri@.service" "$pkgdir/usr/lib/systemd/system/colibri@.service"
   install -Dm755 "$srcdir/colibri-instance" "$pkgdir/usr/lib/colibri/colibri-instance"
   install -Dm644 "$srcdir/qwen3-coder-30b.conf.example" "$pkgdir/usr/share/$pkgname/qwen3-coder-30b.conf.example"
-  install -Dm644 "$srcdir/qwen36.conf.example" "$pkgdir/usr/share/$pkgname/qwen36.conf.example"
+  install -Dm644 "$srcdir/qwen36-35b.conf.example" "$pkgdir/usr/share/$pkgname/qwen36-35b.conf.example"
   install -Dm644 "$srcdir/README-uk.md" "$pkgdir/usr/share/doc/$pkgname/README-uk.md"
   install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
@@ -88,7 +88,7 @@ package() {
 
   [[ -d "$pkgdir/etc/colibri" ]]
   [[ -f "$pkgdir/usr/share/$pkgname/qwen3-coder-30b.conf.example" ]]
-  [[ -f "$pkgdir/usr/share/$pkgname/qwen36.conf.example" ]]
+  [[ -f "$pkgdir/usr/share/$pkgname/qwen36-35b.conf.example" ]]
   [[ -f "$pkgdir/usr/lib/systemd/system/colibri@.service" ]]
   [[ -x "$pkgdir/usr/lib/colibri/colibri-instance" ]]
 

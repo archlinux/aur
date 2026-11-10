@@ -1,106 +1,73 @@
-# colibri-git для Arch Linux / Snug Linux
+# colibri-git
 
-[English README](README.md) · [Оригінальний README upstream](README.upstream.md)
+Пакет Colibri, зібраний із гілки Git `main` для Arch Linux та сумісних дистрибутивів. Містить CPU-рушії, команду `coli`, локальний веб/API-сервер і шаблон systemd для незалежного запуску моделей.
 
-Виправлено розміщення внутрішніх компонентів:
+Англійська документація: [README.md](README.md).
 
-- `/usr/bin/coli` — символічне посилання на `../lib/colibri/coli`;
-- `/usr/lib/colibri/coli` — справжній Python-скрипт запуску;
-- `/usr/lib/colibri/qwen36` та інші рушії — скомпільовані CPU-бінарники;
-- `/usr/lib/colibri/*.py`, `tools/`, `web/dist/` — службові модулі та вебпанель.
+## Склад пакета
 
-Це важливо: upstream-скрипт використовує `os.path.realpath(__file__)` і знаходить
-інші компоненти поруч зі справжнім файлом. Тому просто перенести рушії до
-`/usr/lib/colibri` і залишити звичайний скрипт у `/usr/bin` було б неправильно.
+| Шлях | Призначення |
+| --- | --- |
+| `/usr/bin/coli` | Символьне посилання на `/usr/lib/colibri/coli` |
+| `/usr/lib/colibri/` | Рушії та службові компоненти |
+| `/usr/lib/colibri/colibri-instance` | Скрипт запуску екземпляра |
+| `/usr/lib/systemd/system/colibri@.service` | Шаблон systemd |
+| `/usr/share/colibri-git/*.conf.example` | Приклади конфігурацій |
+| `/etc/colibri/` | Каталог локальних конфігурацій адміністратора |
+| `/usr/share/doc/colibri-git/` | Документація |
 
-## Збірка (на llm-node01 від користувача kh, не root)
+Реальний файл `coli` розташований у `/usr/lib/colibri/`, оскільки upstream визначає шляхи до рушіїв відносно розташування скрипта. Файли моделей до пакета не входять.
 
-```bash
-sudo pacman -S --needed base-devel git python nodejs npm
-mkdir -p ~/builds/colibri-git
-cd ~/builds/colibri-git
-# Поклади сюди PKGBUILD із цього архіву
-makepkg -s --cleanbuild --log
-```
+## Налаштування екземплярів
 
-Пакет залишається НЕ встановленим після `makepkg`. Встановлення конфліктує з
-`colibri-bin`, тому спершу зупини Colibri, перевір резервну копію налаштувань
-і тільки тоді окремо встановлюй зібраний пакет через `pacman -U`.
+Каталог `/etc/colibri/` створює пакет. Робочі конфігурації моделей адміністратор створює окремо на основі прикладів:
 
-## Перевірка вмісту перед встановленням
-
-```bash
-pacman -Qlp ./colibri-git-*.pkg.tar.zst | grep -E '/(bin/coli|lib/colibri/(coli|qwen36|family_registry.py|web/dist/index.html))$'
-```
-
-Збережені моделі `/var/lib/llama/models/colibri` і конфігурація
-`/root/.local/share/colibri` не включаються до цього пакета.
-
-## Обмеження
-
-- Код береться з рухомої гілки `main` — зафіксуй коміт `git` для відтворюваності.
-- Налаштування компіляції — CPU-only `ARCH=x86-64-v3`, що підходить для Ryzen 7950X.
-- Збірку `makepkg` на твоєму сервері ще не виконували, тому можливі зміни upstream
-  у залежностях або цілях збірки.
-- Пакет підміняє `colibri-bin` лише ПІСЛЯ явного встановлення; автоматичного
-  перенесення чи зміни налаштувань сервісу не виконує.
-
-## Універсальні systemd-сервіси (додано у pkgrel=2)
-
-Пакет постачає `/usr/lib/systemd/system/colibri@.service` і
-`/usr/lib/colibri/colibri-instance`. Конфігурації користувача мають бути
-у `/etc/colibri/<instance>.conf` і **не входять до пакета**; сам каталог `/etc/colibri` створюється пакетом: це дозволяє
-оновлювати пакет без перезапису налаштувань.
-
-Приклади лежать у `/usr/share/colibri-git/*.conf.example`.
-Вони не вмикають автозапуск самі по собі.
-
-### Налаштування Qwen3-Coder на 8091
-
-Виконай на `llm-node01` від root після встановлення пакета:
-
-```bash
+```sh
 install -m 600 /usr/share/colibri-git/qwen3-coder-30b.conf.example /etc/colibri/qwen3-coder-30b.conf
-# Поки працює фоновий coli start на 8091, не запускай systemd-сервіс.
-coli stop
-ss -ltnp | grep ':8091' || true
-systemctl daemon-reload
+install -m 600 /usr/share/colibri-git/qwen36-35b.conf.example /etc/colibri/qwen36-35b.conf
+```
+
+| Екземпляр | Каталог моделі | Адреса | Порт |
+| --- | --- | --- | --- |
+| `qwen3-coder-30b` | `/var/lib/llama/models/colibri/qwen3-coder-30b` | `127.0.0.1` | `8091` |
+| `qwen36-35b` | `/var/lib/llama/models/colibri/qwen36-35b` | `127.0.0.1` | `8090` |
+
+Перед запуском перевірте наявність каталогу моделі, обсяг доступної RAM та параметри CPU/OpenMP. Ім'я екземпляра відповідає файлу `/etc/colibri/<екземпляр>.conf`. Для інших моделей створюйте окремі файли конфігурацій.
+
+## Керування systemd
+
+Приклад запуску Qwen3-Coder-30B:
+
+```sh
 systemctl enable --now colibri@qwen3-coder-30b.service
-systemctl status colibri@qwen3-coder-30b.service --no-pager
+systemctl status colibri@qwen3-coder-30b.service
+journalctl -u colibri@qwen3-coder-30b.service -f
+```
+
+Запуск Qwen3.6-35B:
+
+```sh
+systemctl enable --now colibri@qwen36-35b.service
+```
+
+Пакет не вмикає і не запускає служби автоматично. Шаблон наразі використовує `User=root` для сумісності з попередніми ручними запусками. Автоматичного обмеження одночасного запуску моделей за обсягом RAM немає.
+
+Якщо існує локальний шаблон `/etc/systemd/system/colibri@.service`, він має пріоритет над `/usr/lib/systemd/system/colibri@.service` з пакета. Перевірте дієвий шаблон командою `systemctl cat colibri@qwen3-coder-30b.service` перед змінами локальних файлів.
+
+## Перевірка API
+
+За умови запущеної служби Qwen3-Coder:
+
+```sh
 curl -fsS http://127.0.0.1:8091/health
+curl -fsS http://127.0.0.1:8091/v1/models
 ```
 
-**Важливо:** `coli stop` зупиняє екземпляр, зареєстрований у поточному
-`coli setup`, тому перед виконанням перевір, що це саме модель на 8091.
-Не запускай два процеси на одному порту.
+Адреса OpenAI-сумісного API для цього прикладу: `http://127.0.0.1:8091/v1`. Обидва приклади за замовчуванням приймають з'єднання лише з localhost.
 
-### Додавання іншої моделі
+## Зауваження
 
-Скопіюй відповідний приклад до `/etc/colibri/назва.conf`, зміни
-`COLI_MODEL` (реальний каталог моделі), `COLI_PORT` і за потреби CPU-параметри.
-Потім виконай `systemctl enable --now colibri@назва.service`.
-
-Приклад `qwen36.conf.example` містить **неперевірений шлях** до моделі;
-перед запуском його потрібно уточнити. Кілька важких моделей одночасно
-можуть перевищити обсяг RAM. Цей шаблон **не** забезпечує автоматичного
-взаємного виключення.
-
-### Конфлікт ручного шаблону
-
-Якщо раніше вручну створено `/etc/systemd/system/colibri@.service`, він має
-пріоритет над пакунковим `/usr/lib/systemd/system/colibri@.service`.
-Порівняй файли командою `systemctl cat colibri@qwen3-coder-30b.service`,
-створи резервну копію ручного файлу й тільки після цього прибирай його.
-
-### Перевірка вмісту зібраного пакета
-
-```bash
-pacman -Qlp ./colibri-git-*.pkg.tar.zst | grep -E 'colibri@\.service|colibri-instance|\.conf\.example|README'
-```
-
-### Зауваження
-
-- Шаблон запускає процес як root для сумісності з попереднім ручним запуском; можна обмежити права окремим доопрацюванням.
-- Параметри `COLI_*` передаються в `coli web`, `OMP_*` і налаштування рушія успадковуються через середовище.
-- `--auto-tier` визначає розміщення моделі в RAM; systemd не гарантує миттєвий запуск.
-- Сервіс не змінює механіку prefill або довгий системний промпт Open WebUI.
+- Збирання налаштоване на CPU та `x86-64-v3`; точні параметри містить `PKGBUILD`.
+- Каталоги моделей, кеші рушія й конфігурації `/etc/colibri/*.conf` не включені до пакета.
+- Перед запуском служби зупиніть будь-який ручний процес, що використовує той самий порт.
+- Шаблон systemd не усуває затримок обробки довгого промпту або проблем повторного використання KV-кешу.

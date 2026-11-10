@@ -1,6 +1,6 @@
 [Unit]
 Description=Colibri inference server (%i)
-Documentation=file:/usr/share/doc/colibri-git/README-uk.md
+Documentation=file:/usr/share/doc/colibri-git/README.md
 Wants=network-online.target
 After=network-online.target
 

@@ -1,91 +1,75 @@
-# colibri-git for Arch Linux / Snug Linux
+# colibri-git
 
-[Українська документація](README-uk.md) · [Original upstream README](README.upstream.md)
+Colibri inference engine, built from the upstream Git `main` branch for Arch Linux-compatible distributions. This package provides CPU binaries, the `coli` CLI, a local web/API server, and a templated systemd unit for running independent model instances.
 
-This package builds the Colibri inference engine from its Git `main` branch for CPU-only Linux hosts and installs a reusable systemd template for independent model instances.
+For Ukrainian instructions, see [README-uk.md](README-uk.md).
 
-## Package layout
+## Package contents
 
-| Path | Purpose |
+| Path | Description |
 | --- | --- |
-| `/usr/bin/coli` | Symlink to `../lib/colibri/coli` |
-| `/usr/lib/colibri/coli` | Actual Python launcher |
-| `/usr/lib/colibri/qwen36` and other binaries | Compiled inference engines |
-| `/usr/lib/colibri/colibri-instance` | Instance launcher used by systemd |
-| `/usr/lib/systemd/system/colibri@.service` | Generic systemd template |
-| `/usr/share/colibri-git/*.conf.example` | Configuration examples |
-| `/etc/colibri/` | Empty directory created by the package; per-model settings are created manually |
+| `/usr/bin/coli` | CLI symlink to `/usr/lib/colibri/coli` |
+| `/usr/lib/colibri/` | Engines, launcher and support files |
+| `/usr/lib/colibri/colibri-instance` | systemd instance launcher |
+| `/usr/lib/systemd/system/colibri@.service` | systemd template unit |
+| `/usr/share/colibri-git/*.conf.example` | Example instance configuration files |
+| `/etc/colibri/` | Directory for administrator-managed instance configuration |
+| `/usr/share/doc/colibri-git/` | Package documentation |
 
-The launcher must stay alongside its internal components: upstream resolves its own location using `os.path.realpath(__file__)`.
+The actual `coli` launcher stays under `/usr/lib/colibri/` because upstream resolves paths relative to the real script location. The package does not install or update model weights.
 
-## Build the package
+## Configuration
 
-On the build host, as a regular user (not root):
+The package creates `/etc/colibri/`, but does not populate it with live instance configurations. Copy an example and edit its values:
 
-```bash
-sudo pacman -S --needed base-devel git python nodejs npm
-mkdir -p ~/builds/colibri-git
-cd ~/builds/colibri-git
-# Put the PKGBUILD and its local source files into this directory.
-makepkg -s --cleanbuild --log
+```sh
+install -m 600 /usr/share/colibri-git/qwen3-coder-30b.conf.example /etc/colibri/qwen3-coder-30b.conf
+install -m 600 /usr/share/colibri-git/qwen36-35b.conf.example /etc/colibri/qwen36-35b.conf
 ```
 
-`makepkg` only creates a package. Review it before installing:
+The example instances use these defaults:
 
-```bash
-pacman -Qlp ./colibri-git-*.pkg.tar.zst | grep -E 'colibri@\.service|colibri-instance|\.conf\.example|README'
-```
+| Instance | Model directory | Listen address | Port |
+| --- | --- | --- | --- |
+| `qwen3-coder-30b` | `/var/lib/llama/models/colibri/qwen3-coder-30b` | `127.0.0.1` | `8091` |
+| `qwen36-35b` | `/var/lib/llama/models/colibri/qwen36-35b` | `127.0.0.1` | `8090` |
 
-The package conflicts with `colibri-bin`. Stop any active Colibri processes and back up your local configuration before installing the new package explicitly with `pacman -U`. Model files in `/var/lib/llama/models/colibri` and existing Colibri state in `/root/.local/share/colibri` are not packaged.
+Verify that the model directory exists and review CPU affinity, OpenMP settings and memory requirements before starting a service. Instance names match `/etc/colibri/<instance>.conf`. Additional instances can be configured by creating further `.conf` files.
 
-## Run Qwen3-Coder-30B on port 8091
+## systemd
 
-On `llm-node01`, as root, after installing the built package:
+To start one instance:
 
-```bash
-install -m 600 /usr/share/colibri-git/qwen3-coder-30b.conf.example \
-  /etc/colibri/qwen3-coder-30b.conf
-```
-
-Review `/etc/colibri/qwen3-coder-30b.conf`, especially `COLI_MODEL`, `COLI_PORT`, `COLI_CPU_AFFINITY`, and the OpenMP settings. Before enabling the service, stop any manually started process on the same port. `coli stop` stops the instance registered by the current `coli setup`; verify which instance it targets first.
-
-```bash
-ss -ltnp | grep ':8091' || true
-systemctl daemon-reload
+```sh
 systemctl enable --now colibri@qwen3-coder-30b.service
-systemctl status colibri@qwen3-coder-30b.service --no-pager
-curl -fsS http://127.0.0.1:8091/health
-```
-
-## Additional model instances
-
-A second example, `qwen36.conf.example`, targets port `8090`, but its model directory is a **placeholder**. Verify and replace `COLI_MODEL` before enabling it:
-
-```bash
-install -m 600 /usr/share/colibri-git/qwen36.conf.example /etc/colibri/qwen36.conf
-# Edit /etc/colibri/qwen36.conf to use the real local model directory.
-systemctl enable --now colibri@qwen36.service
-```
-
-Each instance uses `/etc/colibri/<instance>.conf` and can be managed independently:
-
-```bash
-systemctl start colibri@qwen3-coder-30b.service
-systemctl stop colibri@qwen3-coder-30b.service
-systemctl restart colibri@qwen3-coder-30b.service
+systemctl status colibri@qwen3-coder-30b.service
 journalctl -u colibri@qwen3-coder-30b.service -f
 ```
 
-The generic service does **not** prevent concurrent models from exhausting RAM. It does not automatically enable or start any model instance at package installation time. The current unit runs as `root` for compatibility with the existing manual installation.
+For the other example:
 
-## Existing hand-written units
+```sh
+systemctl enable --now colibri@qwen36-35b.service
+```
 
-A previously created `/etc/systemd/system/colibri@.service` takes precedence over the packaged `/usr/lib/systemd/system/colibri@.service`. Use `systemctl cat colibri@qwen3-coder-30b.service` to inspect which unit is active. Back up any existing local unit before replacing or removing it.
+The package does **not** enable or start services at installation time. The template currently runs as `root` to preserve the runtime environment used by an existing root-managed Colibri installation. It does not enforce mutual exclusion between large models. Ensure enough memory is available before running multiple instances.
 
-## Notes and limitations
+A manually created `/etc/systemd/system/colibri@.service` takes precedence over the packaged unit. Inspect the effective unit with `systemctl cat colibri@qwen3-coder-30b.service` and remove or migrate the local override only after reviewing it.
 
-- The source follows a moving Git `main` branch; record a commit for reproducible builds.
-- CPU compilation is configured for `ARCH=x86-64-v3` (suitable for AMD Ryzen 9 7950X).
-- This source package has not been compiled or installed on your server as part of these documentation changes.
-- `--auto-tier` controls the model's RAM/VRAM tiering; service startup and prefill can still take time.
-- A systemd service does not resolve long-context prefill performance or oversized Open WebUI prompts.
+## API
+
+With the example Qwen3-Coder instance running:
+
+```sh
+curl -fsS http://127.0.0.1:8091/health
+curl -fsS http://127.0.0.1:8091/v1/models
+```
+
+The OpenAI-compatible endpoint is `http://127.0.0.1:8091/v1` for that example. Both example services bind to localhost by default.
+
+## Notes
+
+- The package uses a CPU-oriented `x86-64-v3` build; consult `PKGBUILD` for the exact build flags.
+- Model files, runtime caches, and per-instance `/etc/colibri/*.conf` files are not included in the package.
+- Existing manually started instances must release their listen ports before the matching systemd instance can start.
+- systemd management does not change Colibri's prompt-prefill or KV-cache performance.
