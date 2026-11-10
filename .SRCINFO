@@ -1,8 +1,8 @@
 pkgbase = sweetidle-bin
 	pkgdesc = Lightweight idle management daemon for Wayland compositors
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/naurissteins/sweetidle
+	url = https://github.com/sweetwm/sweetidle
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
@@ -12,7 +12,7 @@ pkgbase = sweetidle-bin
 	conflicts = sweetidle
 	options = !debug
 	options = !strip
-	source = sweetidle-bin-0.1.0.tar.xz::https://github.com/naurissteins/sweetidle/releases/download/v0.1.0/sweetidle-0.1.0-x86_64-linux.tar.xz
-	sha256sums = 611696a1aede232a4aea532f6d479257a9d78a71844a23289da65512735fa55a
+	source = sweetidle-bin-0.2.0.tar.xz::https://github.com/sweetwm/sweetidle/releases/download/v0.2.0/sweetidle-0.2.0-x86_64-linux.tar.xz
+	sha256sums = 59332e40ece4e5b2bc4b845ba6f2c0f9db9e49e046470d90a7eb5aaee980c8f1
 
 pkgname = sweetidle-bin
