@@ -1,6 +1,6 @@
 pkgbase = schemat
 	pkgdesc = Code formatter for Scheme, Lisp, and any S-expressions
-	pkgver = 0.5.13
+	pkgver = 0.5.14
 	pkgrel = 1
 	url = https://github.com/raviqqe/schemat
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = schemat
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = schemat-0.5.13.tar.gz::https://github.com/raviqqe/schemat/archive/v0.5.13.tar.gz
-	b2sums = ec494b80beb7709e875345729c1984d21b479efaca5c76d6eb7becd964c809569dff8a1b3e2b70faf6511c7ec893c6b14e910ae8f5dbe25e45b70e9fa97db8c3
+	source = schemat-0.5.14.tar.gz::https://github.com/raviqqe/schemat/archive/v0.5.14.tar.gz
+	b2sums = 632007959c88034facdf40e600c09c343c04b82ed6d45b02978e22bb05f688e28f0e436dedc525c79bec8a8185da090e6ddcd4903cc897992182995423c340f4
 
 pkgname = schemat
