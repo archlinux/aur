@@ -5,7 +5,7 @@
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.28.4.r7342.ge631937
+pkgver=5.28.6.r7384.g934e834
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -28,6 +28,7 @@ optdepends=('lm_sensors: broader temperature and fan sensor coverage'
             'ddcutil: external monitor brightness and power over DDC/CI')
 provides=('system-bridge')
 options=('!strip')
+install=system-bridge.install
 
 pkgver() {
   cd "$pkgname"
@@ -79,6 +80,7 @@ package() {
   install -Dm644 system-bridge.fish "$pkgdir/usr/share/fish/vendor_completions.d/system-bridge.fish"
   install -Dm644 .scripts/linux/system-bridge.desktop "$pkgdir/usr/share/applications/system-bridge.desktop"
   install -Dm644 .scripts/linux/60-system-bridge-rapl.rules "$pkgdir/usr/lib/udev/rules.d/60-system-bridge-rapl.rules"
+  install -Dm644 .scripts/linux/system-bridge.service "$pkgdir/usr/lib/systemd/user/system-bridge.service"
   install -Dm644 .resources/system-bridge-dimmed.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/system-bridge.svg"
   install -Dm644 .resources/system-bridge-dimmed-16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/system-bridge.png"
   install -Dm644 .resources/system-bridge-dimmed-32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/system-bridge.png"

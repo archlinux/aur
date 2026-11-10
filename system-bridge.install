@@ -1,0 +1,63 @@
+# Install script for the Arch packages. They ship a user service,
+# system-bridge.service, that nothing enables: an upgrade restarts it for the
+# user who ran the upgrade when it's running, so the backend never stays on
+# the replaced binary.
+
+post_install() {
+  _system_bridge_user_systemctl daemon-reload
+
+  cat <<'EOF'
+system-bridge: installed the user service system-bridge.service, not enabled.
+
+To run the backend with your desktop session, run:
+  systemctl --user enable --now system-bridge.service
+
+Upgrades restart it while it's running.
+EOF
+}
+
+post_upgrade() {
+  _system_bridge_user_systemctl daemon-reload
+  _system_bridge_user_systemctl try-restart system-bridge.service
+}
+
+pre_remove() {
+  _system_bridge_user_systemctl disable --now system-bridge.service
+}
+
+# The user who ran the install through sudo or pkexec, if not root.
+_system_bridge_installing_user() {
+  local user="${SUDO_USER:-}"
+
+  if [ -z "$user" ] && [ -n "${PKEXEC_UID:-}" ]; then
+    user="$(id -nu "$PKEXEC_UID" 2>/dev/null)" || user=""
+  fi
+
+  if [ -n "$user" ] && [ "$user" != "root" ]; then
+    printf "%s" "$user"
+  fi
+}
+
+# Runs systemctl --user for the installing user, if they have a running user session.
+_system_bridge_user_systemctl() {
+  local user
+  local uid
+  local runtime_dir
+  local bus_path
+
+  user="$(_system_bridge_installing_user)"
+  [ -n "$user" ] || return 0
+
+  uid="$(id -u "$user" 2>/dev/null)" || return 0
+  runtime_dir="/run/user/$uid"
+  bus_path="$runtime_dir/bus"
+
+  if [ ! -S "$bus_path" ]; then
+    return 0
+  fi
+
+  runuser -u "$user" -- env \
+    XDG_RUNTIME_DIR="$runtime_dir" \
+    DBUS_SESSION_BUS_ADDRESS="unix:path=$bus_path" \
+    systemctl --user "$@" >/dev/null 2>&1 || true
+}
