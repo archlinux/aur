@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Recompia
+Comment=Set up and play your own copy of Pokopia
+Exec=recompia
+Icon=recompia
+Terminal=false
+Categories=Game;
+Keywords=Pokopia;Pokemon;Recompilation;

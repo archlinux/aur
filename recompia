@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Upstream downloads tools and builds the game beside its launcher.
+# Refresh only shipped files on package upgrades; keep saves and local tools.
+release=/opt/recompia
+data="${XDG_DATA_HOME:-$HOME/.local/share}/recompia"
+if ! cmp -s "$release/.package-version" "$data/.package-version"; then
+  mkdir -p "$data"
+  cp -r --no-preserve=ownership "$release/"* "$data/"
+  # Write the marker last so an interrupted copy is retried next time.
+  cp "$release/.package-version" "$data/.package-version"
+fi
+
+cd "$data"
+exec "$data/PokopiaLauncher.AppImage" "$@"
