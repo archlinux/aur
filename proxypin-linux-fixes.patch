@@ -1,8 +1,8 @@
 diff --git a/lib/l10n/app_en.arb b/lib/l10n/app_en.arb
-index a653fc8..5d533b6 100644
+index a653fc8..d14a83a 100644
 --- a/lib/l10n/app_en.arb
 +++ b/lib/l10n/app_en.arb
-@@ -516,5 +516,25 @@
+@@ -516,5 +516,26 @@
    "pinnedDragSort": "Pinned (drag to reorder)",
    "pinToolsHint": "All tools (tap + to pin to toolbar)",
    "image": "Image",
@@ -27,7 +27,8 @@ index a653fc8..5d533b6 100644
 +  "appFontScale": "Interface font scale",
 +  "appFontScaleSubtitle": "Scale the whole UI text up or down",
 +  "uiDensity": "Interface density",
-+  "uiDensitySubtitle": "Spacing of buttons, lists and menus"
++  "uiDensitySubtitle": "Spacing of buttons, lists and menus",
++  "noOutputHint": "Click Run to see output here"
  }
 diff --git a/lib/l10n/app_es.arb b/lib/l10n/app_es.arb
 index e4c3d8a..6c179fa 100644
@@ -82,10 +83,10 @@ index fb88903..0bd6dd6 100644
 +  "codeFontSize": "Ukuran font kode"
  }
 diff --git a/lib/l10n/app_localizations.dart b/lib/l10n/app_localizations.dart
-index 1de1d33..e247673 100644
+index 1de1d33..3412045 100644
 --- a/lib/l10n/app_localizations.dart
 +++ b/lib/l10n/app_localizations.dart
-@@ -2943,6 +2943,126 @@ abstract class AppLocalizations {
+@@ -2943,6 +2943,132 @@ abstract class AppLocalizations {
    /// In en, this message translates to:
    /// **'Filtered'**
    String get filtered;
@@ -209,14 +210,20 @@ index 1de1d33..e247673 100644
 +  /// In en, this message translates to:
 +  /// **'Spacing of buttons, lists and menus'**
 +  String get uiDensitySubtitle;
++
++  /// No description provided for @noOutputHint.
++  ///
++  /// In en, this message translates to:
++  /// **'Click Run to see output here'**
++  String get noOutputHint;
  }
  
  class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
 diff --git a/lib/l10n/app_localizations_en.dart b/lib/l10n/app_localizations_en.dart
-index 91aadd1..fe68411 100644
+index 91aadd1..bc3146a 100644
 --- a/lib/l10n/app_localizations_en.dart
 +++ b/lib/l10n/app_localizations_en.dart
-@@ -1476,4 +1476,64 @@ class AppLocalizationsEn extends AppLocalizations {
+@@ -1476,4 +1476,67 @@ class AppLocalizationsEn extends AppLocalizations {
  
    @override
    String get filtered => 'Filtered';
@@ -280,12 +287,15 @@ index 91aadd1..fe68411 100644
 +
 +  @override
 +  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
++
++  @override
++  String get noOutputHint => 'Click Run to see output here';
  }
 diff --git a/lib/l10n/app_localizations_es.dart b/lib/l10n/app_localizations_es.dart
-index e88e855..af6ca7c 100644
+index e88e855..3086e0f 100644
 --- a/lib/l10n/app_localizations_es.dart
 +++ b/lib/l10n/app_localizations_es.dart
-@@ -1471,4 +1471,64 @@ class AppLocalizationsEs extends AppLocalizations {
+@@ -1471,4 +1471,67 @@ class AppLocalizationsEs extends AppLocalizations {
  
    @override
    String get filtered => 'Filtered';
@@ -349,12 +359,15 @@ index e88e855..af6ca7c 100644
 +
 +  @override
 +  String get uiDensitySubtitle => 'Espaciado de botones, listas y menús';
++
++  @override
++  String get noOutputHint => 'Click Run to see output here';
  }
 diff --git a/lib/l10n/app_localizations_id.dart b/lib/l10n/app_localizations_id.dart
-index 9cf2db2..ad2b522 100644
+index 9cf2db2..e22f26f 100644
 --- a/lib/l10n/app_localizations_id.dart
 +++ b/lib/l10n/app_localizations_id.dart
-@@ -1472,4 +1472,64 @@ class AppLocalizationsId extends AppLocalizations {
+@@ -1472,4 +1472,67 @@ class AppLocalizationsId extends AppLocalizations {
  
    @override
    String get filtered => 'Filtered';
@@ -418,12 +431,15 @@ index 9cf2db2..ad2b522 100644
 +
 +  @override
 +  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
++
++  @override
++  String get noOutputHint => 'Click Run to see output here';
  }
 diff --git a/lib/l10n/app_localizations_pt.dart b/lib/l10n/app_localizations_pt.dart
-index 04dc04c..2ba2d55 100644
+index 04dc04c..bce7f1c 100644
 --- a/lib/l10n/app_localizations_pt.dart
 +++ b/lib/l10n/app_localizations_pt.dart
-@@ -1476,6 +1476,66 @@ class AppLocalizationsPt extends AppLocalizations {
+@@ -1476,6 +1476,69 @@ class AppLocalizationsPt extends AppLocalizations {
  
    @override
    String get filtered => 'Filtered';
@@ -487,14 +503,17 @@ index 04dc04c..2ba2d55 100644
 +
 +  @override
 +  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
++
++  @override
++  String get noOutputHint => 'Click Run to see output here';
  }
  
  /// The translations for Portuguese, as used in Brazil (`pt_BR`).
 diff --git a/lib/l10n/app_localizations_th.dart b/lib/l10n/app_localizations_th.dart
-index 8ec9b43..9d0c424 100644
+index 8ec9b43..639bb7c 100644
 --- a/lib/l10n/app_localizations_th.dart
 +++ b/lib/l10n/app_localizations_th.dart
-@@ -1470,4 +1470,64 @@ class AppLocalizationsTh extends AppLocalizations {
+@@ -1470,4 +1470,67 @@ class AppLocalizationsTh extends AppLocalizations {
  
    @override
    String get filtered => 'Filtered';
@@ -558,12 +577,15 @@ index 8ec9b43..9d0c424 100644
 +
 +  @override
 +  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
++
++  @override
++  String get noOutputHint => 'Click Run to see output here';
  }
 diff --git a/lib/l10n/app_localizations_vi.dart b/lib/l10n/app_localizations_vi.dart
-index 1880b6c..56779c4 100644
+index 1880b6c..81fc172 100644
 --- a/lib/l10n/app_localizations_vi.dart
 +++ b/lib/l10n/app_localizations_vi.dart
-@@ -1470,4 +1470,64 @@ class AppLocalizationsVi extends AppLocalizations {
+@@ -1470,4 +1470,67 @@ class AppLocalizationsVi extends AppLocalizations {
  
    @override
    String get filtered => 'Filtered';
@@ -627,12 +649,15 @@ index 1880b6c..56779c4 100644
 +
 +  @override
 +  String get uiDensitySubtitle => 'Spacing of buttons, lists and menus';
++
++  @override
++  String get noOutputHint => 'Click Run to see output here';
  }
 diff --git a/lib/l10n/app_localizations_zh.dart b/lib/l10n/app_localizations_zh.dart
-index 2989571..0714191 100644
+index 2989571..bb8ec6a 100644
 --- a/lib/l10n/app_localizations_zh.dart
 +++ b/lib/l10n/app_localizations_zh.dart
-@@ -1461,6 +1461,66 @@ class AppLocalizationsZh extends AppLocalizations {
+@@ -1461,6 +1461,69 @@ class AppLocalizationsZh extends AppLocalizations {
  
    @override
    String get filtered => '过滤';
@@ -696,6 +721,9 @@ index 2989571..0714191 100644
 +
 +  @override
 +  String get uiDensitySubtitle => '按钮、列表与菜单的间距';
++
++  @override
++  String get noOutputHint => '点「Run」运行后，输出会显示在这里';
  }
  
  /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -764,10 +792,10 @@ index b5b015d..61d1e47 100644
 +  "codeFontSize": "Cỡ chữ mã"
  }
 diff --git a/lib/l10n/app_zh.arb b/lib/l10n/app_zh.arb
-index af28f0f..f91b213 100644
+index af28f0f..e40dcfd 100644
 --- a/lib/l10n/app_zh.arb
 +++ b/lib/l10n/app_zh.arb
-@@ -492,5 +492,25 @@
+@@ -492,5 +492,26 @@
    "pinnedDragSort": "已固定（拖拽排序）",
    "pinToolsHint": "全部功能（点 + 固定到工具栏）",
    "image": "图片",
@@ -792,7 +820,8 @@ index af28f0f..f91b213 100644
 +  "appFontScale": "界面字号",
 +  "appFontScaleSubtitle": "整体界面文字放大/缩小",
 +  "uiDensity": "界面密度",
-+  "uiDensitySubtitle": "按钮、列表与菜单的间距"
++  "uiDensitySubtitle": "按钮、列表与菜单的间距",
++  "noOutputHint": "点「Run」运行后，输出会显示在这里"
  }
 diff --git a/lib/main.dart b/lib/main.dart
 index 2d69c27..2cea993 100644
@@ -1999,10 +2028,10 @@ index b26bef9..b2efead 100644
              contextMenuBuilder: bodyContextMenu);
        },
 diff --git a/lib/ui/desktop/desktop.dart b/lib/ui/desktop/desktop.dart
-index 6781bf0..f2206ba 100644
+index 6781bf0..83aff2c 100644
 --- a/lib/ui/desktop/desktop.dart
 +++ b/lib/ui/desktop/desktop.dart
-@@ -30,9 +30,11 @@ import 'package:proxypin/network/http/http.dart';
+@@ -30,9 +30,12 @@ import 'package:proxypin/network/http/http.dart';
  import 'package:proxypin/network/http/websocket.dart';
  import 'package:proxypin/storage/histories.dart';
  import 'package:proxypin/ui/component/memory_cleanup.dart';
@@ -2010,11 +2039,12 @@ index 6781bf0..f2206ba 100644
  import 'package:proxypin/ui/component/utils.dart';
  import 'package:proxypin/ui/component/widgets.dart';
  import 'package:proxypin/ui/configuration.dart';
++import 'package:window_manager/window_manager.dart';
 +import 'package:proxypin/utils/navigator.dart';
  import 'package:proxypin/ui/content/panel.dart';
  import 'package:proxypin/ui/desktop/left_menus/favorite.dart';
  import 'package:proxypin/ui/desktop/left_menus/history.dart';
-@@ -117,6 +119,16 @@ class _DesktopHomePagePageState extends State<DesktopHomePage> implements EventL
+@@ -117,6 +120,16 @@ class _DesktopHomePagePageState extends State<DesktopHomePage> implements EventL
          logger.e('MCP auto-start failed: $e');
        }));
      }
@@ -2025,12 +2055,42 @@ index 6781bf0..f2206ba 100644
 +        return;
 +      }
 +      navigator.push(MaterialPageRoute(
-+          builder: (_) => multiWindow('0', {'name': widgetName, ...?args})));
++          builder: (_) => InAppWindowHost(child: multiWindow('0', {'name': widgetName, ...?args}))));
 +    };
 +
      panel = NetworkTabController(tabStyle: const TextStyle(fontSize: 12.5), proxyServer: proxyServer);
      _remoteHistorySubscription = HistoryStorage.onRemoteImported.listen((_) {
        if (mounted) {
+@@ -240,3 +253,29 @@ class _DesktopHomePagePageState extends State<DesktopHomePage> implements EventL
+   }
+ }
+ 
++/// 内嵌（Linux）打开的“子窗口”页面宿主：主窗口是无边框的，路由盖住自绘工具栏后
++/// 就没法拖动窗口了，这里在页面顶部叠一层透明的标题栏拖动区。
++/// 用 translucent 行为，点击仍然落到页面自己的返回/操作按钮上，只有拖动才移动窗口。
++class InAppWindowHost extends StatelessWidget {
++  final Widget child;
++
++  const InAppWindowHost({super.key, required this.child});
++
++  @override
++  Widget build(BuildContext context) {
++    return Stack(children: [
++      child,
++      Positioned(
++        top: 0,
++        left: 0,
++        right: 0,
++        height: 40,
++        child: GestureDetector(
++          behavior: HitTestBehavior.translucent,
++          onPanStart: (_) => windowManager.startDragging(),
++          child: const SizedBox.expand(),
++        ),
++      ),
++    ]);
++  }
++}
 diff --git a/lib/ui/desktop/preference.dart b/lib/ui/desktop/preference.dart
 index 69d20f3..1430479 100644
 --- a/lib/ui/desktop/preference.dart
@@ -2803,7 +2863,7 @@ index da87a33..c5a4bc8 100644
                                    if (_useRemote && script.text.trim().isEmpty)
                                      Positioned.fill(
 diff --git a/lib/ui/toolbox/js_run.dart b/lib/ui/toolbox/js_run.dart
-index 2c41357..a4c4645 100644
+index 2c41357..cc9df43 100644
 --- a/lib/ui/toolbox/js_run.dart
 +++ b/lib/ui/toolbox/js_run.dart
 @@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
@@ -2823,6 +2883,34 @@ index 2c41357..a4c4645 100644
                    )),
                Row(children: [
                  const SizedBox(width: 10),
+@@ -161,15 +162,19 @@ class _JavaScriptState extends State<JavaScript> {
+                   child: Container(
+                       width: double.infinity,
+                       padding: const EdgeInsets.all(10),
+-                      color: Colors.grey.shade800,
+-                      child: Scrollbar(
+-                          controller: outputScrollController,
+-                          thumbVisibility: true,
+-                          trackVisibility: true,
+-                          child: SingleChildScrollView(
++                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
++                      child: outLines.isEmpty
++                          ? Text(localizations.noOutputHint,
++                              style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onSurfaceVariant))
++                          : Scrollbar(
+                               controller: outputScrollController,
+-                              child: SelectionArea(
+-                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: outLines)))))),
++                              thumbVisibility: true,
++                              trackVisibility: true,
++                              child: SingleChildScrollView(
++                                  controller: outputScrollController,
++                                  child: SelectionArea(
++                                      child:
++                                          Column(crossAxisAlignment: CrossAxisAlignment.start, children: outLines)))))),
+             ])));
+   }
+ }
 diff --git a/lib/ui/toolbox/json_viewer.dart b/lib/ui/toolbox/json_viewer.dart
 index 2ef025f..66c01f8 100644
 --- a/lib/ui/toolbox/json_viewer.dart
@@ -3172,7 +3260,7 @@ index 0000000..94928ec
 +  }
 +}
 diff --git a/linux/CMakeLists.txt b/linux/CMakeLists.txt
-index 1739998..8cd685c 100644
+index 1739998..1f65084 100644
 --- a/linux/CMakeLists.txt
 +++ b/linux/CMakeLists.txt
 @@ -13,6 +13,11 @@ set(APPLICATION_ID "com.network.proxy")
@@ -3237,6 +3325,20 @@ index 1739998..8cd685c 100644
  # Add dependency libraries. Add any application-specific dependencies here.
  target_link_libraries(${BINARY_NAME} PRIVATE flutter)
  target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
+@@ -137,3 +172,13 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
+   install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+     COMPONENT Runtime)
+ endif()
++
++# flutter_js 依赖的 quickjs 桥接库是 pub 包里预编译的 .so，由插件自己的 install
++# 规则安装；不同构建组合下它会落到错误前缀（干净构建时 bundle 里就没有它，
++# 运行时报 “Failed to load dynamic library 'libquickjs_c_bridge_plugin.so'”，
++# JS 工具与脚本拦截器全部不可用）。这里在 prefix 已经确定之后再兜底装一次。
++set(QUICKJS_BRIDGE
++  "${CMAKE_CURRENT_SOURCE_DIR}/flutter/ephemeral/.plugin_symlinks/flutter_js/linux/shared/libquickjs_c_bridge_plugin.so")
++if(EXISTS "${QUICKJS_BRIDGE}")
++  install(FILES "${QUICKJS_BRIDGE}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}" COMPONENT Runtime)
++endif()
 diff --git a/linux/my_application.cc b/linux/my_application.cc
 index 4fd669e..54b5fbf 100644
 --- a/linux/my_application.cc
