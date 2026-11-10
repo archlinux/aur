@@ -3,7 +3,7 @@
 
 _pkgname=timm
 pkgname=python-timm
-pkgver=1.0.30
+pkgver=1.0.31
 pkgrel=1
 pkgdesc='PyTorch Image Models'
 arch=('any')
@@ -27,7 +27,7 @@ makedepends=(
   python-wheel
 )
 checkdepends=('python-pytest')
-source=('source::git+https://github.com/huggingface/pytorch-image-models.git#commit=0df212b369a5385b16dfe513d5143a7311ea1ddc')
+source=('source::git+https://github.com/huggingface/pytorch-image-models.git#commit=43b549bfe9d680bc94284cfd0b611152d18e97d7')
 sha256sums=('SKIP')
 
 build() {
@@ -41,7 +41,7 @@ check() {
   _site=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')
   python -m installer --destdir="$srcdir/check-root" dist/*.whl
   mkdir -p "$srcdir/test-run"
-  cp -a tests pyproject.toml "$srcdir/test-run/"
+  cp -a tests train.py pyproject.toml "$srcdir/test-run/"
   cd "$srcdir/test-run"
   # Cover factories, checkpoint loading and core layers on CPU. The exhaustive
   # model matrix and network-hosted pretrained weights are outside this check.
