@@ -1,0 +1,20 @@
+pkgbase = datarig-bin
+	pkgdesc = A full-featured database client that lives in your terminal: light, fast, and safe by default
+	pkgver = 0.40.2
+	pkgrel = 1
+	url = https://github.com/DokaDev/datarig
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = datarig
+	conflicts = datarig
+	options = !strip
+	source_x86_64 = datarig-x86_64-0.40.2.tgz::https://github.com/DokaDev/datarig/releases/download/v0.40.2/datarig-v0.40.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 24f0efac890fd0ada6024bef764eba2d464de97d9ec253db925d67d8ecb0d988
+	source_aarch64 = datarig-aarch64-0.40.2.tgz::https://github.com/DokaDev/datarig/releases/download/v0.40.2/datarig-v0.40.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = def3cecded448ae29caa635b1319be47c3f5eb97a3c5280052548eb0b9881816
+
+pkgname = datarig-bin

@@ -1,0 +1,5 @@
+[datarig-bin]
+source = "github"
+github = "DokaDev/datarig"
+use_latest_release = true
+prefix = "v"
