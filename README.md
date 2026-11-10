@@ -13,8 +13,8 @@ This package builds the Colibri inference engine from its Git `main` branch for 
 | `/usr/lib/colibri/qwen36` and other binaries | Compiled inference engines |
 | `/usr/lib/colibri/colibri-instance` | Instance launcher used by systemd |
 | `/usr/lib/systemd/system/colibri@.service` | Generic systemd template |
-| `/usr/share/doc/colibri-git/*.conf.example` | Configuration examples |
-| `/etc/colibri/<instance>.conf` | Locally maintained per-model settings (create manually) |
+| `/usr/share/colibri-git/*.conf.example` | Configuration examples |
+| `/etc/colibri/` | Empty directory created by the package; per-model settings are created manually |
 
 The launcher must stay alongside its internal components: upstream resolves its own location using `os.path.realpath(__file__)`.
 
@@ -43,8 +43,7 @@ The package conflicts with `colibri-bin`. Stop any active Colibri processes and 
 On `llm-node01`, as root, after installing the built package:
 
 ```bash
-install -d -m 755 /etc/colibri
-install -m 600 /usr/share/doc/colibri-git/qwen3-coder-30b.conf.example \
+install -m 600 /usr/share/colibri-git/qwen3-coder-30b.conf.example \
   /etc/colibri/qwen3-coder-30b.conf
 ```
 
@@ -63,7 +62,7 @@ curl -fsS http://127.0.0.1:8091/health
 A second example, `qwen36.conf.example`, targets port `8090`, but its model directory is a **placeholder**. Verify and replace `COLI_MODEL` before enabling it:
 
 ```bash
-install -m 600 /usr/share/doc/colibri-git/qwen36.conf.example /etc/colibri/qwen36.conf
+install -m 600 /usr/share/colibri-git/qwen36.conf.example /etc/colibri/qwen36.conf
 # Edit /etc/colibri/qwen36.conf to use the real local model directory.
 systemctl enable --now colibri@qwen36.service
 ```

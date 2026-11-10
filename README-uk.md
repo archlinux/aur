@@ -1,5 +1,7 @@
 # colibri-git для Arch Linux / Snug Linux
 
+[English README](README.md) · [Оригінальний README upstream](README.upstream.md)
+
 Виправлено розміщення внутрішніх компонентів:
 
 - `/usr/bin/coli` — символічне посилання на `../lib/colibri/coli`;
@@ -47,10 +49,10 @@ pacman -Qlp ./colibri-git-*.pkg.tar.zst | grep -E '/(bin/coli|lib/colibri/(coli|
 
 Пакет постачає `/usr/lib/systemd/system/colibri@.service` і
 `/usr/lib/colibri/colibri-instance`. Конфігурації користувача мають бути
-у `/etc/colibri/<instance>.conf` і **не входять до пакета**: це дозволяє
+у `/etc/colibri/<instance>.conf` і **не входять до пакета**; сам каталог `/etc/colibri` створюється пакетом: це дозволяє
 оновлювати пакет без перезапису налаштувань.
 
-Приклади лежать у `/usr/share/doc/colibri-git/*.conf.example`.
+Приклади лежать у `/usr/share/colibri-git/*.conf.example`.
 Вони не вмикають автозапуск самі по собі.
 
 ### Налаштування Qwen3-Coder на 8091
@@ -58,8 +60,7 @@ pacman -Qlp ./colibri-git-*.pkg.tar.zst | grep -E '/(bin/coli|lib/colibri/(coli|
 Виконай на `llm-node01` від root після встановлення пакета:
 
 ```bash
-install -d -m 755 /etc/colibri
-install -m 600 /usr/share/doc/colibri-git/qwen3-coder-30b.conf.example /etc/colibri/qwen3-coder-30b.conf
+install -m 600 /usr/share/colibri-git/qwen3-coder-30b.conf.example /etc/colibri/qwen3-coder-30b.conf
 # Поки працює фоновий coli start на 8091, не запускай systemd-сервіс.
 coli stop
 ss -ltnp | grep ':8091' || true
@@ -94,7 +95,7 @@ curl -fsS http://127.0.0.1:8091/health
 ### Перевірка вмісту зібраного пакета
 
 ```bash
-pacman -Qlp ./colibri-git-*.pkg.tar.zst | grep -E 'colibri@\.service|colibri-instance|\.conf\.example|README-uk.md'
+pacman -Qlp ./colibri-git-*.pkg.tar.zst | grep -E 'colibri@\.service|colibri-instance|\.conf\.example|README'
 ```
 
 ### Зауваження
