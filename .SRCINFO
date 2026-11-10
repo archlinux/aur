@@ -1,6 +1,6 @@
 pkgbase = microsoft-edge-dev-bin
 	pkgdesc = A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier
-	pkgver = 158.0.4357.0
+	pkgver = 159.0.4378.0
 	pkgrel = 1
 	url = https://www.microsoftedgeinsider.com/en-us/download
 	arch = x86_64
@@ -22,14 +22,14 @@ pkgbase = microsoft-edge-dev-bin
 	optdepends = libunity: for download progress on KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs - CRBug #369991
 	optdepends = xdg-utils
-	provides = microsoft-edge=158.0.4357.0
+	provides = microsoft-edge=159.0.4378.0
 	conflicts = microsoft-edge
 	options = !strip
 	options = !zipman
-	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_158.0.4357.0-1_amd64.deb
+	source = https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_159.0.4378.0-1_amd64.deb
 	source = microsoft-edge-dev.sh
 	source = Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf
-	sha256sums = b997a31b1a30a980ee53ba391deaaa2b69ae34ed403d455c47c367fd4c3916f2
+	sha256sums = 209f54a27eb99cacf9243f626ffe80adb2ad8f7c16bdb033a964d90e219b133d
 	sha256sums = 285afe53b2cd617ae7f4930a1d0befe12a97ae31c30cfad74e97bf695c6f6a8a
 	sha256sums = edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e
 
