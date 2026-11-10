@@ -25,6 +25,10 @@ makedepends=(
 )
 optdepends=(
   'udisks2: mounting and ejecting drives, unlocking encrypted ones'
+  'exfatprogs: formatting drives as exFAT'
+  'dosfstools: formatting drives as FAT'
+  'ntfs-3g: formatting drives as NTFS'
+  'btrfs-progs: formatting drives as Btrfs'
   'gvfs-mtp: phones and cameras'
   'gvfs-smb: Windows shares (gvfs itself covers SFTP, FTP and WebDAV)'
   'papers: PDF and comic book thumbnails'
