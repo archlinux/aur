@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 pkgname=notav
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Notes and a journal kept in your Nextcloud'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'blueprint-compiler' 'gettext')
 # GCC's LTO objects of ring's bundled C code don't link with rustc's lld.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0a690fe02d9c18bee61cad99fbac9fedd8d0227f5460ce845777107b8fd60bce')
+sha256sums=('391cbe0f9e681be52f7741ed38a0abe42fb7e50710f46b789441d88ffe76bc18')
 
 prepare() {
 	cd "$pkgname-$pkgver"
