@@ -8,12 +8,14 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v0.23.0
-_commit=2bd378ed1b8d6bf2192cb26e0a55ff3091e6bd19
+_pkgver_tag=v0.23.1
+_commit=3b421578588243f920886e6fe79a6faa87ea026e
 # Arch's Electron runtime: the major upstream locks, or a newer one (README).
 # prepare() points the launcher and its test at it.
 _electron=electron44
-pkgver=0.23.0
+# pm's pnpm pin (pm/lock.json); prepare() stops when it moves.
+_pnpmver=12.15.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Desktop UI for Hermes Agent (chat, voice, files, settings)"
 arch=('x86_64')
@@ -37,7 +39,7 @@ depends=(
 optdepends=(
   'libayatana-appindicator: tray indicator support'
 )
-makedepends=('npm' 'nodejs')
+makedepends=('nodejs')
 checkdepends=('nodejs')
 conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
@@ -50,12 +52,23 @@ source=(
   'launcher.test.cjs'
 )
 # Run updpkgsums after editing a local file.
-sha256sums=('4879a10c7f125281ad88e9f2c339c807fd59c6f40588bdcd652781e9425320fd'
+sha256sums=('52a8eb321f368576034f40595491abf9646b60c3861eee0cf45f610e5faa9bb6'
             '10568d3fd03b5511a8f2f2e9cbea6a3bd0239fe012814fe08d7c9095e6b71074'
             '412ad7b2b6bc5149a8d236ad2cb9be54d2ac0ab78dbd3c8e16deb4f4e683713f'
             'ac4077eb2846f90d36858c69d8fe99988606caa0059e85a9606273bb7bc29077'
             'cb85a2dba205970130edf4a55c6a094c6e9f64f14f62c998258e2008a50a509f'
             '01700c07523710df165b72bbc0c2931415d118576e78868b1b02eec6bffda034')
+# pnpm as upstream pins it (pm/lock.json): the native executable and the
+# launcher package, whose dist/ holds the node-gyp the executable runs, the
+# two artifacts pm installs.
+source_x86_64=(
+  "pnpm-exe-${_pnpmver}.tgz::https://registry.npmjs.org/@pnpm/exe.linux-x64/-/exe.linux-x64-${_pnpmver}.tgz"
+  "pnpm-${_pnpmver}.tgz::https://registry.npmjs.org/pnpm/-/pnpm-${_pnpmver}.tgz"
+)
+# Both archives wrap their files in package/; prepare() unpacks them.
+noextract=("pnpm-exe-${_pnpmver}.tgz" "pnpm-${_pnpmver}.tgz")
+sha256sums_x86_64=('402f7045b1e0587acb1542f18d38afbccb6babf3c7451394e6fb3d9f0160c6ca'
+                   'f5173f6127cc505cdb36ec17719fe54a8511c6fd8560c7ceb4bf7c73e3b4458b')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
@@ -66,16 +79,36 @@ _extract_dir() {
   echo "${srcdir}/hermes-agent-${_pkgver_tag#v}"
 }
 
-_set_npm_env() {
-  export npm_config_cache="${srcdir}/npm-cache"
-  export npm_config_update_notifier=false
-  export npm_config_audit=false
-  export npm_config_fund=false
+# The pinned pnpm, laid out like pm's store entry (pm/packages.py, Pnpm).
+_pnpm_dir() {
+  echo "${srcdir}/pnpm-${_pnpmver}"
+}
+
+# The pinned pnpm first on PATH: upstream's build scripts refuse any other
+# version. Its store, metadata cache and state stay in $srcdir.
+_set_pnpm_env() {
+  export PATH="$(_pnpm_dir):${PATH}"
+  export pnpm_config_store_dir="${srcdir}/pnpm-cache/store"
+  export pnpm_config_cache_dir="${srcdir}/pnpm-cache/cache"
+  export pnpm_config_state_dir="${srcdir}/pnpm-cache/state"
+  export pnpm_config_update_notifier=false
 }
 
 prepare() {
   cd "$(_extract_dir)"
-  _set_npm_env
+  # The executable and the launcher's dist/ in one directory, as pm unpacks
+  # them.
+  local pin
+  pin="$(node -p 'require("./pm/lock.json").packages.pnpm.version')"
+  if [[ "${pin}" != "${_pnpmver}" ]]; then
+    printf 'ERROR: upstream pins pnpm %s (pm/lock.json), PKGBUILD downloads %s: move _pnpmver and sha256sums_x86_64\n' "${pin}" "${_pnpmver}"
+    return 1
+  fi
+  rm -rf "$(_pnpm_dir)"
+  mkdir -p "$(_pnpm_dir)"
+  bsdtar -xf "${srcdir}/pnpm-exe-${_pnpmver}.tgz" -C "$(_pnpm_dir)" --strip-components 1
+  bsdtar -xf "${srcdir}/pnpm-${_pnpmver}.tgz" -C "$(_pnpm_dir)" --strip-components 1 package/dist
+  _set_pnpm_env
   # Tailwind's source scan reads the .gitignore files of the directories
   # above when it finds no git checkout, and an AUR clone's .gitignore
   # excludes src/: the renderer would ship without its utility classes
@@ -98,19 +131,25 @@ prepare() {
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/harden-hud-modifier-monitor.patch"
   # Keep desktop metadata aligned with the Agent release, not the separately
   # versioned upstream desktop package.json.
-  npm pkg set version=${pkgver} --prefix apps/desktop
+  pnpm --dir apps/desktop pkg set "version=${pkgver}"
   # The source archive has no .git directory. Pin the peeled release commit
   # locally so the bundled install stamp is reproducible and does not require
   # another network lookup during prepare()/build().
   export GITHUB_SHA="${_commit}" GITHUB_REF_NAME="${_pkgver_tag}"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  npm ci --prefer-offline --no-audit --ignore-scripts
+  # Every workspace project, as upstream's Desktop CI installs them: check()'s
+  # typecheck also covers tests-js and tests/install (tsconfig.e2e.json). The
+  # frozen lockfile's release-age gate was checked by upstream's CI when it
+  # wrote the lock (--trust-lockfile, as in scripts/build/node-deps.mjs). No
+  # dependency build scripts here: node-pty is built below, Electron comes
+  # from Arch.
+  pnpm install --frozen-lockfile --trust-lockfile --prod=false --ignore-scripts
 
   # Keep the locked Electron npm package for its TypeScript declarations and
   # tooling, but make any build helper that resolves `require('electron')` use
-  # Arch's versioned runtime instead of downloading a second copy. npm hoists
-  # it to the root node_modules since v0.22.5 (apps/desktop/node_modules
-  # before), so take the copy apps/desktop resolves.
+  # Arch's versioned runtime instead of downloading a second copy. pnpm links
+  # it into apps/desktop/node_modules from its virtual store: take the copy
+  # apps/desktop resolves (its real path in the virtual store).
   local electron_dir
   electron_dir="$(cd apps/desktop && node -p 'path.dirname(require.resolve("electron/package.json"))')"
   # Only the build tree's own copy may be replaced below: without it (say,
@@ -136,35 +175,50 @@ prepare() {
       "${locked_electron}" "${system_electron}"
   fi
 
-  rm -rf "${electron_dir}/dist"
-  ln -s "/usr/lib/${_electron}" "${electron_dir}/dist"
+  # The virtual store's files are hard links into pnpm's store: replace,
+  # never write through them. Upstream's `--dir` packaging copies this
+  # runtime instead of downloading one: it refuses links that leave dist/
+  # (apps/desktop/scripts/prepared-packaging.mjs) and admits only a
+  # dist/version that names the locked Electron
+  # (scripts/build/electron-runtime.mjs). So dist/ is a real copy of Arch's
+  # files, and only that version file names the lock. package() keeps none
+  # of the staged Electron; the launcher runs _electron.
+  rm -rf "${electron_dir}/dist" "${electron_dir}/path.txt"
+  mkdir "${electron_dir}/dist"
+  cp -r "/usr/lib/${_electron}/." "${electron_dir}/dist/"
+  rm "${electron_dir}/dist/version"
+  printf '%s\n' "${locked_electron}" > "${electron_dir}/dist/version"
   printf '%s' 'electron' > "${electron_dir}/path.txt"
   test -x "${electron_dir}/dist/electron"
 
-  # Build node-pty's Linux native addon locally. Its npm lifecycle uses
-  # node-gyp on Linux. Explicitly export makepkg's build flags because npm
-  # otherwise leaves them as unexported shell variables, producing an addon
-  # without Arch's full RELRO hardening. --offline keeps npm off the
-  # registry; node-gyp takes Node's headers from the nodejs package
-  # (/usr/include/node) instead of downloading them from nodejs.org.
+  # Build node-pty's Linux native addon locally (allowBuilds in
+  # pnpm-workspace.yaml admits its install script). It runs node-gyp from the
+  # launcher's dist/. Explicitly export makepkg's build flags because they
+  # are otherwise unexported shell variables, producing an addon without
+  # Arch's full RELRO hardening. node-gyp takes Node's headers from the
+  # nodejs package (/usr/include/node) instead of downloading them from
+  # nodejs.org. The filter keeps the rebuild to the Desktop's dependency
+  # graph; without trust_lockfile it would check the whole lockfile's release
+  # ages against the registry again.
   export CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
-  npm_config_nodedir=/usr npm rebuild node-pty --offline
+  pnpm_config_trust_lockfile=true npm_config_nodedir=/usr \
+    pnpm --filter '{./apps/desktop}...' rebuild node-pty
 }
 
 build() {
   cd "$(_extract_dir)/apps/desktop"
-  _set_npm_env
-  export npm_config_offline=true
+  _set_pnpm_env
+  export pnpm_config_offline=true
   # makepkg runs build() in a separate subshell from prepare().
   export GITHUB_SHA="${_commit}" GITHUB_REF_NAME="${_pkgver_tag}"
   # The X11 HUD modifier monitor is compiled with cc during the build; it
   # takes these flags from the environment (harden-hud-modifier-monitor.patch).
   export CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
   # Keep upstream's package.json and lockfile pins intact for deterministic
-  # npm ci. electron-builder still prepares a throwaway Electron zip for the
-  # packager; package() keeps only the app resources and the launcher runs
-  # Arch's ${_electron}.
-  npm run build
+  # frozen installs. electron-builder still prepares a throwaway Electron zip
+  # for the packager; package() keeps only the app resources and the launcher
+  # runs Arch's ${_electron}.
+  pnpm run build
 
   # Upstream writes the wall clock into the bundled install stamp. Normalize it
   # to makepkg's reproducible-build epoch before electron-builder consumes it.
@@ -179,7 +233,7 @@ build() {
   # and rejects `-c.electronVersion=...` overrides. Omit --x64: an explicit
   # arch flag stages into build/native-deps-<platform>-<arch>, which
   # productOutput does not allow; the host arch reuses build/native-deps.
-  npm run builder -- --linux --dir
+  pnpm run builder --linux --dir
 }
 
 # Whether a patched path (from the repository root) can change the renderer's
@@ -216,8 +270,8 @@ _reaches_renderer() {
 
 check() {
   cd "$(_extract_dir)"
-  _set_npm_env
-  export npm_config_offline=true
+  _set_pnpm_env
+  export pnpm_config_offline=true
   # Hermes desktop tests expect English timestamps and isolated temporary git
   # repositories; the default Hermes scratch directory sits inside a git repo.
   export LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -245,7 +299,7 @@ check() {
   # import, so a patched file outside it reaches neither. A file list this
   # cannot read counts as reached.
   local program reaches_renderer=0
-  program="$(cd apps/desktop && npx tsc -p . --listFilesOnly)" || program=
+  program="$(cd apps/desktop && pnpm exec tsc -p . --listFilesOnly)" || program=
   if [[ "${program}" != *"${PWD}/apps/desktop/src/"* ]]; then
     reaches_renderer=1
   fi
@@ -259,8 +313,8 @@ check() {
     echo 'check(): no patched file reaches the renderer: no renderer typecheck, no ui tests'
 
   # Upstream's typecheck script; its renderer part only when a patch reaches
-  # the renderer. npm exec -c keeps node_modules/.bin ahead of the system's
-  # PATH, like npm run.
+  # the renderer. pnpm exec -c keeps node_modules/.bin ahead of the system's
+  # PATH, like pnpm run.
   local typecheck renderer='tsc -p . --noEmit'
   typecheck="$(node -p 'require("./apps/desktop/package.json").scripts.typecheck')"
   if [[ "${typecheck}" != "${renderer} && "* ]]; then
@@ -268,7 +322,7 @@ check() {
     return 1
   fi
   (( reaches_renderer )) || typecheck="${typecheck#"${renderer} && "}"
-  (cd apps/desktop && npm exec -c "${typecheck}")
+  (cd apps/desktop && pnpm exec -c "${typecheck}")
 
   # Without HERMES_PYTHON, vitest's global setup installs Hermes' Python test
   # environment (a CPython, ffmpeg, node and the Python dependencies, from the
@@ -279,9 +333,18 @@ check() {
   # upstream adds later.
   # Absolute paths, set before the cd: apps/shared files lie outside vitest's
   # root.
-  local projects=() related=("${patched[@]/#/${PWD}/}")
+  # Upstream's update-script tests can reach the script's notification
+  # fallback (notify-send, then zenity or kdialog), which would show up in the
+  # builder's desktop session; the full suite did so. Keep vitest out of the
+  # session: no display, a dead session bus and an empty runtime directory
+  # (GDBus falls back to the bus socket there, Wayland clients to wayland-0).
+  local projects=() related=("${patched[@]/#/${PWD}/}") runtime_dir
   (( reaches_renderer )) || projects=(--project '!ui')
-  (cd apps/desktop && HERMES_PYTHON=python3 npx vitest related --run --passWithNoTests "${projects[@]}" "${related[@]}")
+  runtime_dir="$(mktemp -d)"
+  (cd apps/desktop && env -u DISPLAY -u WAYLAND_DISPLAY \
+    DBUS_SESSION_BUS_ADDRESS=unix:path=/nonexistent XDG_RUNTIME_DIR="${runtime_dir}" \
+    HERMES_PYTHON=python3 pnpm exec vitest related --run --passWithNoTests "${projects[@]}" "${related[@]}")
+  rm -rf "${runtime_dir}"
 
   # Tailwind v4 skips sources that a parent directory's .gitignore excludes
   # when the build directory is no git checkout (this repository ignores
