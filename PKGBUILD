@@ -1,14 +1,14 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
-makedepends=('meson' 'gtk3' 'gtk2' 'git')
+makedepends=('meson' 'gtk3' 'git')
 
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
 pkgver=24.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Gtk module for exporting menus"
-depends=('gtk3' 'gtk2')
+depends=('gtk3')
 provides=(appmenu-gtk-module)
 conflicts=(appmenu-gtk-module)
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  meson build "${srcdir}/${_pkgbase}/${_path}" --prefix=/usr --libexecdir=lib
+  arch-meson build "${srcdir}/${_pkgbase}/${_path}" -Dgtk=3
   meson compile -C build
 }
 
