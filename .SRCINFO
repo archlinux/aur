@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-scala
 	pkgdesc = Scala grammar for tree-sitter
-	pkgver = 0.26.10
+	pkgver = 0.26.11
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-scala
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-tree-sitter-scala
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tree-sitter
-	source = python-tree-sitter-scala-0.26.10-9e930d6f3a3b3626778b53549a661fbaef643d8e.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/9e930d6f3a3b3626778b53549a661fbaef643d8e.tar.gz
-	sha256sums = 54c095e8dbe6d75c473b1c7328a20ae2d5a58eb5654c6210a820b8e8f40f7b17
+	source = python-tree-sitter-scala-0.26.11-b22db807e45caca5cc2fa55a9067b49f119c3183.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/b22db807e45caca5cc2fa55a9067b49f119c3183.tar.gz
+	sha256sums = 5424cff37c1a0f6d0c9746b3f611383229acee3a5ae17b667edb3aa7b8567135
 
 pkgname = python-tree-sitter-scala
