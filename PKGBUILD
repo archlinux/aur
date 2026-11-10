@@ -3,7 +3,7 @@
 _pkgbase=ae-code
 pkgname="$_pkgbase-git"
 pkgver=2026.11.10.1.r0.g3dbd0ce
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop GUI for coding agents (fork of T3 Code), latest commit'
 arch=('x86_64')
 url='https://github.com/SelfRef/ae-code'
@@ -98,7 +98,7 @@ TryExec=ae-code
 Terminal=false
 Type=Application
 Icon=ae-code
-StartupWMClass=ae-code
+StartupWMClass=dev.aperte.AECode
 Categories=Development;
 MimeType=x-scheme-handler/t3code;
 EOF

@@ -1,7 +1,7 @@
 pkgbase = ae-code-git
 	pkgdesc = Desktop GUI for coding agents (fork of T3 Code), latest commit
 	pkgver = 2026.11.10.1.r0.g3dbd0ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SelfRef/ae-code
 	arch = x86_64
 	license = MIT
