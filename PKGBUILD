@@ -6,7 +6,7 @@ _system_dotnet=false
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.1.0.r12.g4310f7287
+pkgver=3.2.0.r0.g1eeeae7ec
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -27,8 +27,6 @@ source=(
     'git+https://github.com/BeyondDimension/Credentials-Public'
     'watt-toolkit.desktop'
     'set-cap.hook'
-    '0001-fix-MsgPack.diff'
-    '0002-fix-X509CertificatePackable-to-byte[].diff'
     'environment_check.sh'
     # Submodules
     'git+https://github.com/BeyondDimension/DirectoryPackages.git'
@@ -58,8 +56,6 @@ sha256sums=('SKIP'
             'SKIP'
             '971f095988215965ba7256158a2c23af8be27222ea4f50655acd6c3bf3c4a23a'
             'ee4c5a20eb3a44f9af37b67cc6b5f91e646ac8a35bb1b8be784413dad2ed34ea'
-            '382f314cebeba3346c5d59344f72b0e05db6293e3a10185e3f5ceee0c73cbe81'
-            'a822f7fb11aa94e7aed682f8f85272a820e20b3169c3856c9ddba6782e514743'
             'da96b337ef8f79f170fb5976dffee4c52ecf5bc842e3dac9d8479a198887b8b1'
             'SKIP'
             'SKIP'
@@ -87,15 +83,15 @@ sha256sums=('SKIP'
 
 
 declare -Ag _plugins=(
-    #[BD.WTTS.Client.Plugins.Accelerator]=Accelerator
-    #[BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
-    #[BD.WTTS.Client.Plugins.Authenticator]=Authenticator
-    #[BD.WTTS.Client.Plugins.GameAccount]=GameAccount
-    #[BD.WTTS.Client.Plugins.GameList]=GameList
-    #[BD.WTTS.Client.Plugins.GameTools]=GameTools
-    #[BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
-    #[BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
-    #[BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
+    [BD.WTTS.Client.Plugins.Accelerator]=Accelerator
+    [BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
+    [BD.WTTS.Client.Plugins.Authenticator]=Authenticator
+    [BD.WTTS.Client.Plugins.GameAccount]=GameAccount
+    [BD.WTTS.Client.Plugins.GameList]=GameList
+    [BD.WTTS.Client.Plugins.GameTools]=GameTools
+    [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
+    [BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
+    [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
     #[BD.WTTS.Client.Plugins.Update]=Update
 )
 
@@ -186,12 +182,6 @@ prepare(){
     local _platform
     _platform="$(< _platform)"
     cd "${srcdir}/SteamTools"
-    # SteamTools/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs(4,22): error MsgPack003: Type must be marked with MessagePackObjectAttribute: global::BD.WTTS.Models.PlatformSettings (https://github.com/MessagePack-CSharp/MessagePack-CSharp/blob/master/doc/analyzers/MsgPack003.md)
-    # SteamTools/src/BD.WTTS.Client.Plugins.Accelerator/Settings/GameAcceleratorSettings.cs(34,49): error MsgPack004: Properties and fields of MessagePackObject-attributed types require either KeyAttribute or IgnoreMemberAttribute: global::BD.WTTS.Settings.GameAcceleratorSettings_.MyGames (https://github.com/MessagePack-CSharp/MessagePack-CSharp/blob/master/doc/analyzers/MsgPack004.md)
-    patch -Np1 -i ../0001-fix-MsgPack.diff
-    # SteamTools/src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/Services/Certificate/ICertificateManager.cs(31,63): error CS1503: Argument 1: cannot convert from 'System.Runtime.Serialization.Formatters.X509CertificatePackable' to 'byte[]'
-    patch -Np1 -i ../0002-fix-X509CertificatePackable-to-byte[].diff
-
     # error NU3012: Package 'Splat 19.3.1' from source 'https://api.nuget.org/v3/index.json': The author primary signature found a chain building issue: Revoked: certificate revoked
     export NUGET_CERT_REVOCATION_MODE=offline
     dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
