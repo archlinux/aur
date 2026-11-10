@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru-bin
 _pkgname=Miteiru
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="Free video player for learning Japanese, Mandarin, Cantonese and Vietnamese from what you watch. Click any subtitle word for its reading and offline dictionary meaning. Plays local files and YouTube, with dual subtitles, karaoke lyrics and Anki export."
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/hockyy/miteiru/v${pkgver}/LICENSE.md"
 )
-sha256sums=('de8bd0c0ffe73d64c4efe2e1e078e43a830eb4f266d2964f3d88fac6f481994e'
+sha256sums=('bb426a9b0caa2587068507c1265a1f6110f3370fb8ee982a46e389eeef0c3e52'
             '32b8056672bc415bbd3829a9a737d776795f6b73af61ce0934107ed81ee8a7a0')
 _install_icons() {
 	local _src="${1:-${srcdir}}" _name="${pkgname%-bin}" _icon _ext _size _dest
