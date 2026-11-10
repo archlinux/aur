@@ -28,7 +28,9 @@ build() {
 }
 
 check() {
-	ctest --test-dir build --output-on-failure
+	# Desktop theme plugins can replace the QFileDialog that GUI tests drive.
+	QT_QPA_PLATFORM=offscreen QT_QPA_PLATFORMTHEME= \
+		ctest --test-dir build --output-on-failure
 }
 
 package() {
