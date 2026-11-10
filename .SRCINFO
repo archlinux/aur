@@ -30,7 +30,7 @@ pkgbase = proxypin-git
 	source = proxypin-linux-fixes.patch
 	source = proxypin.desktop
 	sha256sums = SKIP
-	sha256sums = ec32ad26cb8ab724a9d1120c54b9d400ab1d76e22e4efc409ab03dbd99020f98
+	sha256sums = 1d5c66df2e66253ffd15b6ec507d3d4448ef284b0b0a323433f4b9a2424f0108
 	sha256sums = 354e22fa87a7720a39890234c36975dd2fab989e2531b22b60a432b033cf4c7e
 
 pkgname = proxypin-git
