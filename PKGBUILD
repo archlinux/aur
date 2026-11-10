@@ -1,14 +1,14 @@
 # Maintainer: Matt M <numbernine dot archlinux at complexnumber dot net>
 
 pkgname=kops
-pkgver=1.36.3
+pkgver=1.37.0
 pkgrel=1
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kubernetes/kops/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2eb48960da215b1cdaab1edf3ee079509b9564390af07009eb47ec259c018fe2')
+sha256sums=('3e393baa5e8461429cca56118f4dd2c371735d7750429bf7792d4e83bb8feb93')
 makedepends=('go')
 
 build() {
