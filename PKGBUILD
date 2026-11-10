@@ -2,7 +2,7 @@
 _pkgname=mindustry-server
 pkgname=${_pkgname}-bin
 pkgver=160.7
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Server of a sandbox tower defense game written in Java"
 arch=("x86_64")
@@ -13,16 +13,15 @@ makedepends=("libicns")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}-${pkgver}.jar::https://github.com/Anuken/Mindustry/releases/download/v${pkgver}/server-release.jar"
-        "${pkgname}.icns::https://github.com/Anuken/Mindustry/raw/v${pkgver}/core/assets/icons/icon.icns"
         "${pkgname}.sh"
         "${pkgname}.desktop")
 sha256sums=('f7b899a4038b95b14a824d5f8993984f79d73baa3254c385b6538327f9c0befd'
-            '16fcae782b13a8460e631d265c505f56393acd14700b016904744bd44aa290eb'
             '679727847ba70773cee4f902114345e095b27f425aa00c4d3860d247705ed1f0'
             '053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241')
 noextract=("${pkgname}-${pkgver}.jar")
 
 build() {
+  bsdtar -xOf "${pkgname}-${pkgver}.jar" icons/icon.icns > "${pkgname}.icns"
   icns2png --extract "${pkgname}.icns"
 }
 
