@@ -1,7 +1,7 @@
 # Maintainer: OxiRoute maintainers <https://github.com/oxiroute/oxiroute/issues>
 
 pkgname=oxiroute
-pkgver=6.0.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime'
 arch=('x86_64')
@@ -23,14 +23,14 @@ source=("oxiroute-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/oxiroute
         'oxiroute.kdl'
         'oxiroute.lua'
         'README.md')
-sha256sums=('549ca49859f42adf6ca2af13555b878cdf5bb077e697676302192c595f0bb403'
+sha256sums=('9759604c05f1e7811fb42cb2e84706478c7da8701260e3c637a9669d48fe4ed6'
              '574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b'
             'ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72'
              '502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356'
              'd56db017915b82ad6204bb4de1aa268cc41586eafcbbf35194366b32ed02f19a'
             '57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9'
             'f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564'
-             '06bf37ccd5ba1b24a0f9e1ac4aa16cf084b7b08cdba3b3867c9102119d4be587')
+             '0e5b03433c4b8c52d4b4128d7d0eb7d26504e88bf344e5f0b15340b459e02651')
 
 prepare() {
   cd "oxiroute-${pkgver}"
@@ -41,7 +41,7 @@ build() {
   cd "oxiroute-${pkgver}"
   export CARGO_NET_OFFLINE=true
   export OPENSSL_NO_VENDOR=1
-  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}"
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname} --remap-path-prefix=${CARGO_HOME:-${HOME}/.cargo}=/usr/src/debug/${pkgname}/cargo"
   cargo build --frozen --release \
     --package oxiroute \
     --package oxiroute-supervisor-process \

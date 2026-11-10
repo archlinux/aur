@@ -94,13 +94,13 @@ mode requires a service restart; it is not silently applied by reload.
 ## Release source
 
 `PKGBUILD` expects the checksum-pinned release asset
-`https://github.com/brauliobo/oxiroute/releases/download/v6.0.0/oxiroute-6.0.0.tar.gz`. The asset is a
-deterministic archive of committed files with the `oxiroute-6.0.0/` prefix and without this
+`https://github.com/brauliobo/oxiroute/releases/download/v6.3.1/oxiroute-6.3.1.tar.gz`. The asset is a
+deterministic archive of committed files with the `oxiroute-6.3.1/` prefix and without this
 `packaging/arch` directory. Excluding untracked and ignored files prevents local build or benchmark
 artifacts from entering a release. Excluding the AUR recipe avoids making the source checksum depend
 on the checksum recorded inside the recipe.
 
-The v6.0.0 archive includes the supervised launcher and related workspace crates. Publish the release
+The v6.3.1 archive includes the supervised launcher and related workspace crates. Publish the release
 archive before using the recipe, then keep the source checksum synchronized with that exact asset and
 regenerate `.SRCINFO`.
 
@@ -116,7 +116,7 @@ Examples:
 
 ```sh
 ./build-local.sh
-./build-local.sh /path/to/oxiroute-6.0.0.tar.gz --cleanbuild
+./build-local.sh /path/to/oxiroute-6.3.1.tar.gz --cleanbuild
 ```
 
 Build products and source archives are written below `.makepkg/`, which is ignored by Git. Cargo's
@@ -185,3 +185,23 @@ creating that token with restrictive permissions.
 After changing a drop-in, run `systemctl daemon-reload` and restart the service. Do not add writable
 access for Certbot or static-content trees unless the configured application explicitly needs to
 modify them.
+
+## Profile-guided builds
+
+This recipe builds from source with whatever `rust>=1.97` the builder has and applies no profile, so the package is a
+plain optimised build (`codegen-units = 1`, fat LTO). The binaries attached to a GitHub release are built with
+profile-guided optimization by the release workflow, which is 14 to 27% cheaper per request. A source build can use
+the same recipe (`scripts/build-release-binaries.sh`, `docs/developer/RELEASING.md`), but only with the compiler that
+trained the profile: the profile is keyed by symbol names that rustc hashes with its own version, and a mismatching
+build ignores it (the script then fails instead of producing a plain binary). The recipe does not set it up and its
+checksums, sources and `makepkg` behaviour are unchanged.
+
+## Binary package
+
+`bin/` holds the `oxiroute-bin` recipe. It installs the profile-guided release tarball
+`oxiroute-<version>-x86_64-unknown-linux-gnu.tar.gz` (checksum: its `.sha256` release asset) instead of building, and
+provides and conflicts with `oxiroute`. It ships the same launcher, service, sysusers, tmpfiles, environment, KDL, Lua,
+`.install` hook and documentation as the source package; the shared files in `bin/` are byte-identical copies and
+`verify-checksums.sh` rejects any drift. The release tarball cannot exist before the tag, so `bin/PKGBUILD` is pinned
+after the release workflow has published it (`pin-bin-release.sh <version>`), while the source recipe is pinned before.
+`verify-checksums.sh` checks the local-file checksums and `.SRCINFO` of both recipes.
