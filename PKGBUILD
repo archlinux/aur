@@ -1,7 +1,7 @@
 # Maintainer: Zan Skamljic <zan.skamljic@gmail.com>
 
 pkgname=tde-session
-pkgver=0.3.11
+pkgver=0.3.12
 pkgrel=1
 pkgdesc='The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings'
 arch=(x86_64 aarch64)
@@ -58,7 +58,7 @@ optdepends=(
   'xorg-xinit: X11 sessions from the login screen'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('03d627eec85cdcd9401f4604c8666268d9ae875fdc16fca717c19d36859748f7')
+sha256sums=('798c1d7288252b7f1cbfa5471a9cff6469723eb057fba51b26215c89906eeff3')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" -G Ninja \
