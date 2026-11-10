@@ -1,6 +1,6 @@
 pkgbase = skwd-deck-steamworks-bin
 	pkgdesc = Prebuilt optional Steam Client Workshop backend for Skwd Deck
-	pkgver = 1.0.0_beta.28
+	pkgver = 1.0.0_beta.29
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-wall
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = skwd-deck-steamworks-bin
 	depends = glibc
 	depends = skwd-deck
 	optdepends = steam: running Steam client used by the backend
-	provides = skwd-deck-steamworks=1.0.0_beta.28
+	provides = skwd-deck-steamworks=1.0.0_beta.29
 	conflicts = skwd-deck-steamworks
-	noextract = skwd-deck-steamworks-1.0.0_beta.28-1-x86_64.pkg.tar.zst
+	noextract = skwd-deck-steamworks-1.0.0_beta.29-1-x86_64.pkg.tar.zst
 	options = !debug
 	options = !strip
-	source_x86_64 = skwd-deck-steamworks-1.0.0_beta.28-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.28/skwd-deck-steamworks-1.0.0_beta.28-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = a49648bc3558f982255efb4a13f4c0055ac9fe83e33b19b88b6e885f30d55e32
+	source_x86_64 = skwd-deck-steamworks-1.0.0_beta.29-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.29/skwd-deck-steamworks-1.0.0_beta.29-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 2b2d12227047bec30332dffb6cb09ccb27ed04ec1a749d8973df2658da49f025
 
 pkgname = skwd-deck-steamworks-bin
