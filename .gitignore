@@ -1,0 +1,4 @@
+*.xpi
+*.pkg.*
+pkg/
+src/
