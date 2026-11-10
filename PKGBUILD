@@ -2,7 +2,7 @@
 
 pkgname=beardrive-bin
 _pkgname=beardrive
-pkgver=0.18.6
+pkgver=0.18.7
 pkgrel=1
 pkgdesc='Synced file system for AI agents to mount, sync, and track folders'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ optdepends=(
 _base="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_base}/beardrive_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_base}/beardrive_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('f9212fb3d0b37107915e8744d9db5cd92ef637fd0776744ce82d8907c447a8c1')
-sha256sums_aarch64=('db26f74908c43b4e360406ff4254e2a988e1f29e05416e76eb3d77d99384982b')
+sha256sums_x86_64=('9f775786d4ec18a836018e82c7508aeab8bf7e4f11a1870fcb39887b1fb866e2')
+sha256sums_aarch64=('2ed2c4959d2798bf37641dc83fa091107ee7841399f317c105e0d117301dd9a4')
 
 package() {
     install -Dm755 bdrive "${pkgdir}/usr/bin/bdrive"
