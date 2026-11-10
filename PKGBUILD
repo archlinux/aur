@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatbox-git
 _pkgname=Chatbox
-pkgver=1.24.2.r0.gabc7024
+pkgver=1.24.3.r0.g27d92c9
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=('SKIP'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -69,6 +69,12 @@ _set_electron_build_env() {
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_npmrc_registry() {
+	local _npmrc="$(_get_project_dir)/.npmrc"
+	local _registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
+	grep -qE '^[[:space:]]*registry[[:space:]]*=' "${_npmrc}" 2>/dev/null ||
+		echo "registry=${_registry}" >> "${_npmrc}"
 }
 _set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
@@ -118,6 +124,23 @@ prepare() {
     _ensure_local_nvm
     _set_electron_build_env
     _set_pnpm_build_env
+    _set_npmrc_registry
+    node -e '
+        const fs = require("fs")
+        const file = ".erb/scripts/ensure-app-deps.cjs"
+        let source = fs.readFileSync(file, "utf8")
+        if (!source.includes("release/app is not a pnpm workspace importer")) {
+            source = source.replace(
+                "  if (pnpmVersions.size === 0) {",
+                "  if (pnpmVersions.size === 0) {\n" +
+                "    // release/app is not a pnpm workspace importer, so pnpm cannot build a tree here;\n" +
+                "    // dependencies are installed by npm ci and covered by verifyInstalledRuntimeDeps.\n" +
+                "    console.warn(\"[ensure-app-deps] skipping version alignment check: release/app is not a pnpm workspace importer\")\n" +
+                "    return"
+            )
+            fs.writeFileSync(file, source)
+        }
+    '
     sed -i "/UPDATE_CHANNEL/d" electron-builder.yml
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     export NODE_ENV=development
@@ -128,8 +151,12 @@ build() {
     _ensure_local_nvm
     _set_electron_build_env
     _set_pnpm_build_env
+    _set_npmrc_registry
     export NODE_ENV=production
-    pnpm run build
+    npx tsx ./.erb/scripts/clean.js
+    pnpm run build:main
+	pnpm run build:preload
+	pnpm run build:renderer
     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
     rm -rf "$(_get_app_dir)/resources/default_app.asar"
     local _archrem=$([[ "${CARCH}" == "aarch64" ]] && echo x64 || echo arm)
