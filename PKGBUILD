@@ -1,27 +1,29 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+_pkgauthor="Duecki1"
 _pkgname="CalibRaw"
 pkgname="${_pkgname,,}-bin"
 pkgver=1.4.1
 pkgrel=1
 pkgdesc="CalibRaw is a fast, non-destructive, GPU-accelerated RAW photo editor"
 
-url="https://github.com/Duecki1/CalibRaw"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 
+makedepends=('libappimage')
 depends=('glibc' 'libgcc' 'libstdc++' 'glib2' 'pcre2' 'libjpeg-turbo' 'libgomp' 'zlib' 'hicolor-icon-theme')
 
 provides=("${_pkgname}")
 conflicts=("${pkgname%-bin}")
 
-source_x86_64=("$url/releases/download/v${pkgver}/CalibRaw-${arch[0]}.AppImage")
-source_aarch64=("$url/releases/download/v${pkgver}/CalibRaw-${arch[1]}.AppImage")
+source_x86_64=("$url/releases/download/v${pkgver}/${_pkgname}-${arch[0]}.AppImage")
+source_aarch64=("$url/releases/download/v${pkgver}/${_pkgname}-${arch[1]}.AppImage")
 
-sha256sums_x86_64=('d6c7e8af76bd169041f2c71e063f4c7b8e682ad806d3a4d97fc95de12a49d019')
-sha256sums_aarch64=('5e7d0a7af4d484ce43176fd6d62746a99667314cd36a8807e5ab11a59af4911f')
+sha256sums_x86_64=('cd9b663a2902c7ebfd120e676eee993dd0a3c86da995f0a1444a40cdfee06455')
+sha256sums_aarch64=('27a71b95703059ac3d952e9dddf0dbe83e3e42eb15ed5fe05d2f568eca04e934')
 
-_appimagefile="CalibRaw-${CARCH}.AppImage"
+_appimagefile="${_pkgname}-${CARCH}.AppImage"
 _root='squashfs-root'
 
 prepare() {
