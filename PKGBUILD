@@ -1,6 +1,6 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=kuina-git-static
-pkgver=1d0ef3f
+pkgver=9651d37
 _pkgname=kuina
 pkgrel=1
 pkgdesc="Fish/bash/zsh shell prompt in the style of XMonad."
@@ -10,9 +10,9 @@ license=('PPL')
 depends=("gmp" "glibc" "inetutils")
 # Change this and comment out makedepends if you are using Haskell outside of the official repos
 # Underneath is an example using ghcup
-#_cabal_path="$HOME/.ghcup/bin/cabal-3.16.1.0"
-_cabal_path="cabal"
-makedepends=("cabal-install" "ghc" "ghc-static" "ghc-libs")
+_cabal_path="$HOME/.ghcup/bin/cabal-3.16.1.0"
+# _cabal_path="cabal"
+# makedepends=("cabal-install" "ghc" "ghc-static" "ghc-libs")
 conflicts=($_pkgname)
 replaces=($_pkgname)
 provides=($_pkgname)
@@ -40,5 +40,6 @@ build(){
 package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/$_pkgname" LICENSE
-	$_cabal_path install --install-method=copy --installdir "$pkgdir/usr/bin"
+	$_cabal_path install exe:kuina --install-method=copy --installdir "$pkgdir/usr/bin"
+	$_cabal_path install lib:kuina --install-method=copy --installdir "$pkgdir/usr/lib"
 }
