@@ -1,7 +1,7 @@
 pkgbase = dux-greeter-git
 	pkgdesc = Greetd login screen with the Dux Shell aesthetic (git)
 	pkgver = 2.1.0.r0.gcc00abd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duxlabs-dev/dux-greeter
 	install = dux-greeter.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dux-greeter-git
 	makedepends = git
 	makedepends = go
 	depends = greetd
-	depends = quickshell
+	depends = dux-qt-base
 	depends = qt6-declarative
 	optdepends = niri: Niri compositor support
 	optdepends = hyprland: Hyprland compositor support
