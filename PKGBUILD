@@ -3,7 +3,7 @@
 _pkgname='zvm'
 pkgname="$_pkgname-bin"
 pkgver='0.9.5'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Version manager for Zig compilers (binary version)'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -39,7 +39,7 @@ sha256sums_loong64=('0d43ef76efd666869c4c50cfc5d5276a388f3c040fd50e4bdb856c6a9e9
 sha256sums_powerpc64le=('cddc2450da1f9a0345b303df2611482fe862fd4e7bde262a234b29e5cb2a8faf')
 
 package() {
-  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm755 zvm.bash "$pkgdir/usr/bin/zvm"
   install -Dm755 zvm -t "$pkgdir/usr/lib/$_pkgname/self"
 }

@@ -1,7 +1,7 @@
 pkgbase = zvm-bin
 	pkgdesc = Version manager for Zig compilers (binary version)
 	pkgver = 0.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tristanisham/zvm
 	install = path.install
 	arch = x86_64
