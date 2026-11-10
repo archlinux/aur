@@ -1,7 +1,7 @@
 # Maintainer: fam007e <faisalmoshiur+secpasswdmgmt@gmail.com>
 pkgname=securepasswd_mgmt
-pkgver=2026.11.03
-pkgrel=2
+pkgver=2026.11.10
+pkgrel=1
 pkgdesc="A secure, cross-platform password manager with TOTP support"
 arch=('x86_64')
 url="https://github.com/fam007e/SecurePasswd_MGMT"
