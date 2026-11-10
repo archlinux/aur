@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -10,8 +10,8 @@ url='https://github.com/G-grbz/Lurviko'
 license=('GPL-3.0-or-later' 'CC-BY-4.0')
 depends=(
   'gcc-libs' 'glibc'
-  'qt6-base>=6.9' 'qt6-declarative>=6.9' 'qt6-multimedia>=6.9'
-  'qt6-networkauth>=6.9' 'qt6-svg>=6.9'
+  'qt6-base>=6.8' 'qt6-declarative>=6.8' 'qt6-multimedia>=6.8'
+  'qt6-networkauth>=6.8' 'qt6-svg>=6.8'
   'kio' 'kservice' 'kwallet' 'kiconthemes' 'karchive' 'kwindowsystem' 'kcoreaddons'
   'openssl>=3.2' 'ffmpeg' 'hicolor-icon-theme'
 )
@@ -24,6 +24,8 @@ checkdepends=(
 optdepends=(
   'git: repository management, synchronization and status badges'
   'samba: authenticated folder sharing in Properties'
+  'udisks2: mounting disk images (ISO, IMG, SquashFS, ...) from the context menu'
+  'qemu-img: mounting qcow2, VMDK, VDI, VHD and VHDX images (qemu-nbd)'
   'python-cryptography: standalone vault recovery tool'
   'qt6-wayland: Wayland desktop sessions'
   'qt6-imageformats: additional image formats'
@@ -45,8 +47,8 @@ optdepends=(
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar")
-# SHA-256 of the reproducible v1.5.2 source archive.
-sha256sums=('d806a9e39475334f3fa396cba8adbe60a82f7c45da4b2ec3ac8f1c552eb9c55d')
+# SHA-256 of the reproducible v1.6.0 source archive.
+sha256sums=('55a680562e6a1c2a725f90fa45ac6933f9241260ceb99daa1ddfd9cfc7906db6')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
