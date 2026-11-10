@@ -48,5 +48,5 @@ package() {
   install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/pg-schema-diff"
   install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/pg-schema-diff.fish"
   install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_pg-schema-diff"
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
