@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=lody
-pkgver=0.110.1
+pkgver=0.111.0
 pkgrel=1
 pkgdesc="Lody Desktop - run AI coding agents in parallel with isolated Git worktrees, live diff review and GitHub integration"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('alsa-lib' 'avahi' 'dbus' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' '
 optdepends=('libappindicator: system tray support')
 makedepends=('libarchive')
 source=("Lody-${pkgver}-amd64.deb::https://updates.lody.ai/production/Lody-${pkgver}-amd64.deb")
-sha256sums=('d7a6d03c294d3b099dce97105bc1ec0bbbb53a53a8f83bf7e062fd3c7f6d8407')
+sha256sums=('684c5f4205b8a33bafa1a45d6bd3c948150ec1abcc02e954e5ee3c1c385a4804')
 
 package() {
     # Dynamically select the data archive member in case the deb compression changes
