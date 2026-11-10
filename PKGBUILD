@@ -1,6 +1,6 @@
 # Maintainer: hzxiaxz <hzxiaxz at gmail dot com>
 pkgname=koushi-matrix-bin
-pkgver=0.34.1
+pkgver=0.34.2
 pkgrel=1
 pkgdesc="Koushi (光子・格子) — Matrix desktop client built on Tauri and matrix-rust-sdk (binary release)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('koushi-desktop')
 conflicts=('koushi-desktop')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Koushi-linux-x64.deb")
-sha256sums=('33eca18c075fa0d85e02958b1346ef20f1e2fef0598f61b0b0ae93fbb930cd79')
+sha256sums=('66dc6f945485b262e5ff0acc592410e8bf02de0a721e7048d6efac1a14dc5f08')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"
