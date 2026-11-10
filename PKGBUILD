@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=bibavpn-desktop
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="BibaVPN desktop GUI (Tauri): DPI-resistant SOCKS5/HTTP tunnel over TLS+WebSocket"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('cargo' 'npm' 'cmake' 'clang' 'git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('2b1a5f1fae8a572b34d8d1a55c3e802977163b02bb20cabf9ea2df9d0b12150b'
+sha256sums=('6dad421fd9b90f839bddaef4bf9634c6cf75a7f92665e01c9afcc21e60d0638a'
             '9206b96bb3ead05c48b6f28da7a4931f4a6a6b7f3cebd809006d5b6f4bd73171')
 
 latestver() {
