@@ -1,0 +1,32 @@
+pkgbase = parmmg
+	pkgdesc = Parallel remesher built on Mmg: distributed tetrahedral mesh adaptation
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/MmgTools/ParMmg
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = git
+	makedepends = netcdf
+	makedepends = proj
+	makedepends = qt6-base
+	makedepends = glew
+	makedepends = python
+	makedepends = libogg
+	makedepends = libtheora
+	makedepends = fmt
+	makedepends = onetbb
+	depends = glibc
+	depends = openmpi
+	depends = mmg
+	depends = metis
+	depends = scotch
+	depends = vtk
+	depends = hdf5-openmpi
+	source = ParMmg-1.5.0.tar.gz::https://github.com/MmgTools/ParMmg/archive/refs/tags/v1.5.0.tar.gz
+	source = testparmmg::git+https://gitlab.inria.fr/ParMmg/testparmmg.git#commit=5091f86924742f90eed744d231984a4fdbfc2a31
+	sha256sums = 0baec7914e49a26bdbb849ab64dcd92147eff79ac02ef3b2599cb05104901a7a
+	sha256sums = 72c9fa9514dc67be3eaeef072c8ca02a9fe869a790bcfaea4af0a53d56ecc9c1
+
+pkgname = parmmg
