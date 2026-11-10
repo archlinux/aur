@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsoup3' 'mpv' 'yt-dlp' 'hicolor-
 provides=('silverscreen')
 conflicts=('silverscreen')
 source=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/silverscreen-v$pkgver-x86_64.tar.zst")
-sha256sums=('SKIP')
+sha256sums=('aafac83bf0968eea6be617e34c77c04974b9c23431ac515f93a243e2676670c3')
 
 package() {
   cd "$srcdir"
