@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
 _pkgname=WooCommerce-POS
-pkgver=1.11.11
-_electronversion=43
+pkgver=2.0.0
+_electronversion=45
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8cbb352561979f85c0e3842eb4568918aeba2fe4ab37df003e2f92525114a63e'
+sha256sums=('2aadead65a34f45c998d2b3732f27adf6e1e2c7c917cd6ad8d6de05b08bed6c1'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_app_dir() {
