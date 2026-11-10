@@ -1,0 +1,25 @@
+pkgbase = spaceknife-bin
+	pkgdesc = A modern, cross-platform disk usage analyzer: a live treemap that shows what fills your drives.现代化的跨平台硬盘占用分析工具，实时树图
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://spaceknife.kaltsit.dev
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = electron44
+	provides = spaceknife=0.3.4
+	conflicts = spaceknife
+	options = !emptydirs
+	source = spaceknife-0.3.4.png::https://raw.githubusercontent.com/DuskXi/SpaceKnife/v0.3.4/site/public/icon-512.png
+	source = spaceknife.js
+	source = spaceknife.sh
+	sha256sums = fe565afa07a5cc5977f66594f3942f9019b19edcddd94f3984b00cd3dfd607bc
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = spaceknife-0.3.4-aarch64.tar.gz::https://github.com/DuskXi/SpaceKnife/releases/download/v0.3.4/SpaceKnife-0.3.4-linux-arm64-portable.tar.gz
+	sha256sums_aarch64 = 28f3368cce1964fffab79ef9800e77a4d2b0fe70fc7b3b1130161523ff9c83ff
+	source_x86_64 = spaceknife-0.3.4-x86_64.tar.gz::https://github.com/DuskXi/SpaceKnife/releases/download/v0.3.4/SpaceKnife-0.3.4-linux-x64-portable.tar.gz
+	sha256sums_x86_64 = c0fa2e138d978bed80bd57682cc3dd85941ceb722614aa33daa9ca33ffa3d64f
+
+pkgname = spaceknife-bin
