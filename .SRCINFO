@@ -1,6 +1,6 @@
 pkgbase = lightcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Lightroom
-	pkgver = 0.18.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/lightcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = lightcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/lightcraft/archive/refs/tags/v0.18.1/lightcraft-0.18.1.tar.gz
-	sha256sums = da592ba01b21c8a281067e223826b62e3988a0c93032297c9b23e7b8fb844baa
+	source = https://github.com/storytold/lightcraft/archive/refs/tags/v0.20.0/lightcraft-0.20.0.tar.gz
+	sha256sums = a528687d7a3431e1a20018cb1c9f75222fbddaf72c703275c1acca79b0f87a2c
 
 pkgname = lightcraft
 	depends = glibc

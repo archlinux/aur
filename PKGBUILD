@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lightcraft
-pkgver=0.18.1
+pkgver=0.20.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('da592ba01b21c8a281067e223826b62e3988a0c93032297c9b23e7b8fb844baa')
+sha256sums=('a528687d7a3431e1a20018cb1c9f75222fbddaf72c703275c1acca79b0f87a2c')
 
 _srcenv() {
 	cd "$_archive"
@@ -28,9 +28,10 @@ _srcenv() {
 		export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	fi
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	CFLAGS+=' -fno-lto'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -fno-lto'
 }
 
 _icons=(512 256 128 64 48 32 16)
