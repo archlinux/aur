@@ -2,7 +2,7 @@
 
 _npmname=lat.md
 pkgname=lat.md
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A knowledge graph for your codebase, written in markdown"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('npm' 'jq')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('e0e4a77b0b9b3aca51457d8771f8c8ae339d5a97e0cdbe0150efc952fbe44eaa')
+sha256sums=('44825016354980ff88e510b4d84398674cb0e68dcf4dd4bc578f288b334e8c80')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version'
