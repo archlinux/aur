@@ -2,7 +2,7 @@
 
 _pkgname=gufo
 pkgname=${_pkgname}-git
-pkgver=0.29.0.r4.g6c1ac518
+pkgver=0.33.0.r9.gb62b1674
 pkgrel=1
 pkgdesc="The Open Source Strix Halo AI engine (git version)."
 arch=(x86_64)
@@ -26,12 +26,14 @@ depends=(
   libsndfile
   libsoxr
   libwebp
+  openmp
   openssl
   rocblas
   rocprofiler
 )
 makedepends=(
   cmake
+  cargo
   git
   hipcub
   pkgconf
