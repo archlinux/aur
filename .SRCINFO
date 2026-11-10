@@ -4,11 +4,7 @@ pkgbase = islet
 	pkgrel = 1
 	url = https://github.com/3m44n/iSLET
 	arch = x86_64
-	arch = aarch64
 	license = MIT
-	makedepends = cargo
-	makedepends = git
-	makedepends = pkgconf
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = libadwaita
@@ -16,7 +12,9 @@ pkgbase = islet
 	depends = wireplumber
 	provides = islet
 	conflicts = islet-git
-	source = islet::git+https://github.com/3m44n/iSLET.git#tag=v0.1.0
-	sha256sums = SKIP
+	conflicts = islet-bin
+	options = !strip
+	source = islet-0.1.0.tar.gz::https://github.com/3m44n/iSLET/releases/download/v0.1.0/islet-v0.1.0-x86_64-linux.tar.gz
+	sha256sums = f88b31595ba795f618833d8158c63c3e809e427b0ed26e81c471961aba89d427
 
 pkgname = islet
