@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=runa
-pkgver=0.15.5
+pkgver=0.15.6
 pkgrel=1
 pkgdesc="A fast and lightweight terminal file manager written in Rust"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d14f08428af80aefe88e648784d60bed6998fc4aab6fb0fcaaec8237079b8be0')
+sha256sums=('897788945d37869263b221608c99f9ae21fa9ecf921bad8cec11205e3a5f2e68')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
