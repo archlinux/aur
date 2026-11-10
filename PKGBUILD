@@ -2,7 +2,7 @@
 
 pkgname='python-rotary-embedding-torch'
 _module='rotary-embedding-torch'
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Rotary Embedding - Pytorch"
 url="https://github.com/lucidrains/rotary-embedding-torch"
@@ -12,10 +12,10 @@ makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel'
 checkdepends=('python-pytest')
 license=('MIT')
 arch=('any')
-_commit=9a46f1a58a40ad752a647b91b6003290249ef3b5
+_commit=6d7071e10d8aefa651526b797c00d33d106f1473
 _src_folder="rotary-embedding-torch-$_commit"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('53788db6501028110267f006a6650054484778a5aabe9a78a64a14ab90909aea')
+sha256sums=('a2cd6dcae6876f62e8ab91b7fc2a61d1d25e6b457756a4f71fe43202de0bee4c')
 
 build() {
     cd "${srcdir}/${_src_folder}"

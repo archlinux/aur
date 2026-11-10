@@ -1,6 +1,6 @@
 pkgbase = python-rotary-embedding-torch
 	pkgdesc = Rotary Embedding - Pytorch
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/lucidrains/rotary-embedding-torch
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-rotary-embedding-torch
 	depends = python-pytorch>=2.4
 	depends = python-einops>=0.8
 	optdepends = python-triton: fused FlashAttention kernels
-	source = python-rotary-embedding-torch-0.9.1.tar.gz::https://github.com/lucidrains/rotary-embedding-torch/archive/9a46f1a58a40ad752a647b91b6003290249ef3b5.tar.gz
-	sha256sums = 53788db6501028110267f006a6650054484778a5aabe9a78a64a14ab90909aea
+	source = python-rotary-embedding-torch-0.9.2.tar.gz::https://github.com/lucidrains/rotary-embedding-torch/archive/6d7071e10d8aefa651526b797c00d33d106f1473.tar.gz
+	sha256sums = a2cd6dcae6876f62e8ab91b7fc2a61d1d25e6b457756a4f71fe43202de0bee4c
 
 pkgname = python-rotary-embedding-torch
