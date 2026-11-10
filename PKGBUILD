@@ -1,7 +1,7 @@
 # Maintainer: xiliuya <xiliuya@aliyun.com>
 
 pkgname=v2ray-bin
-pkgver=5.55.0
+pkgver=5.56.0
 pkgrel=1
 pkgdesc="A platform for building proxies to bypass network restrictions"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 options=('!debug')
 source=("${pkgname%-bin}_${pkgver}.zip::https://github.com/v2fly/v2ray-core/releases/download/v${pkgver}/v2ray-linux-64.zip"
 	LICENSE)
-sha512sums=('9a6c14bc5cd866cbe28b01519ffe161581553f6da7a163055442499cdbd4b769cc7b847956e747706b8c0c267e6a86e66782e0ba39aec908542fc0e1f5ea9522'
+sha512sums=('275e13a9ece84cbe38479e2fc9ba23939699f0b6250dc3aa659523294ec9bb8afadd86205e0b851575980191aed4373679b61a38ba842e58a36dcb69b193527a'
 	'866fed989ae66146085718c7d12dcff81de0e3f6be426a8407ddf8c7da4dc68f71e3ff1324621a25e8f6edfdad3fc6ff2e6f72971731a0ff248a35808a6599c9')
 
 package() {
