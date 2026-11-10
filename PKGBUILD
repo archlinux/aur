@@ -4,7 +4,7 @@ _ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if 
 _flexver=3.200
 _nfver=3.5.1
 pkgver="${_flexver}"
-pkgrel=6
+pkgrel=7
 pkgdesc='Roboto Flex, the 13-axis variable Roboto, tuned with fonttune, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/roboto-flex'
@@ -47,7 +47,8 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
 #                  150 151. Non-100 widths become their own family
 #                  ("Roboto Flex Condensed"). Default 100
 #   STATIC_ITALIC=true|false      also cut slnt=-10 italics (default true)
-#   STATIC_OPSZ=N                 fixed optical size 8-144 (default 14)
+#   STATIC_OPSZ=N|auto            fixed optical size 8-144 (default auto: the GNOME
+#                                 interface size in points, what Pango gives the VF)
 #   NERD_PATCH=true               patch with Nerd Fonts glyphs (default false);
 #                                 implies FLEX_VARIANT=static
 #   ITALIC_FIX=true|false         enable 81-roboto-flex-italic.conf by default
@@ -142,7 +143,7 @@ prepare() {
     cp "$_vf" "$srcdir/selected/RobotoFlex-Variable.ttf"
   else
     local _weights="${STATIC_WEIGHTS:-100 200 300 400 500 600 700 800 900 1000}"
-    local _widths="${STATIC_WIDTHS:-100}" _opsz="${STATIC_OPSZ:-14}"
+    local _widths="${STATIC_WIDTHS:-100}" _opsz="${STATIC_OPSZ:-auto}"
     _ask STATIC_ITALIC "Also cut the italic (slnt=-10)" y
     local _d _name
     local -a _sfx
