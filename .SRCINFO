@@ -1,0 +1,17 @@
+pkgbase = p4est
+	pkgdesc = Parallel adaptive mesh refinement on forests of octrees
+	pkgver = 2.8.7
+	pkgrel = 1
+	url = https://github.com/cburstedde/p4est
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = openmpi
+	depends = metis
+	depends = blas
+	depends = lapack
+	depends = zlib
+	source = https://github.com/cburstedde/p4est/releases/download/v2.8.7/p4est-2.8.7.tar.gz
+	sha256sums = 0a1e912f3529999ca6d62fee335d51f24b5650b586e95a03ef39ebf73936d7f4
+
+pkgname = p4est
