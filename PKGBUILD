@@ -6,13 +6,14 @@ pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tools for working with chess engines"
 arch=('x86_64')
-url="https://github.com/cutechess/cutechess"
+url="https://github.com/${_pkgname}/${_pkgname}"
 license=('GPL-3.0')
 
 conflicts=($_pkgname)
 provides=($_pkgname)
-depends=(zlib bash libx11 libgpg-error glibc libglvnd freetype2 fontconfig gmp libxcb gcc-libs e2fsprogs)
+
 makedepends=(libappimage)
+depends=(zlib bash libx11 libgpg-error glibc libglvnd freetype2 fontconfig gmp libxcb gcc-libs e2fsprogs)
 
 source=("${url}/releases/download/v${pkgver}/Cute_Chess-${pkgver}-${arch[0]}.AppImage"
         "$_pkgname.bash"
