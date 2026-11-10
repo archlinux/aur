@@ -1,7 +1,7 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wave Link replacement for Linux: a PipeWire mixer with effects and an OpenDeck plugin for any microphone, plus full control of Elgato XLR interfaces and Wave microphones"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
@@ -45,6 +45,11 @@ prepare() {
   install -Dm644 "$srcdir/DeepFilterNet3_onnx-$_dfver.tar.gz" \
     native/deepfilter/model/DeepFilterNet3_onnx.tar.gz
   cd native/deepfilter
+  # build() keeps Cargo's intermediates beside this PKGBUILD, so an update
+  # reuses the compiled crates. A release tarball dates its files to the
+  # tag, older than that cache, and Cargo would keep a stale DeepFilterNet
+  # library; fresh timestamps make it rebuild the two local crates.
+  find . -type f -exec touch {} +
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -53,6 +58,7 @@ build() {
   cd "$pkgname-$pkgver/src"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
   export DEEPFILTER=1 RUSTUP_TOOLCHAIN=stable CARGO_NET_OFFLINE=true
+  export CARGO_BUILD_BUILD_DIR="$startdir/cargo-build"
   dotnet publish OpenXLR.Daemon -c Release -r linux-x64 --self-contained false \
     -p:EnableNativeLv2Host=true -o "$srcdir/out/daemon"
   dotnet publish OpenXLR.UI -c Release -r linux-x64 --self-contained false -o "$srcdir/out/ui"
