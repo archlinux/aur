@@ -1,7 +1,7 @@
 pkgbase = herdr-core
 	pkgdesc = Run programs and coding agents in terminals that stay alive after you leave
-	pkgver = 0.1.19
-	pkgrel = 2
+	pkgver = 0.1.20
+	pkgrel = 1
 	url = https://github.com/herdrdev/herdr-core
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = herdr-core
 	conflicts = herbstluftwm
 	conflicts = herdr-core-bin
 	conflicts = herdr-core-git
-	source = herdr-core-0.1.19.tar.gz::https://github.com/herdrdev/herdr-core/archive/refs/tags/v0.1.19.tar.gz
+	source = herdr-core-0.1.20.tar.gz::https://github.com/herdrdev/herdr-core/archive/refs/tags/v0.1.20.tar.gz
 	source = ghostty-1e5cdb865807abc990181efb8ebfa9122955cce2.tar.gz::https://github.com/ghostty-org/ghostty/archive/1e5cdb865807abc990181efb8ebfa9122955cce2.tar.gz
-	b2sums = 6c779f91e960a55fea3f66a82e6aa003031035653d5000cfe03e53e8a512cd1b25da610cd77d4f89420f1be6500fc04b7cc7aa5b71b04e95035ca41b259eb594
+	b2sums = 3129087cdf42bf28a4e5d6ed6f19e0acdf1cb0c6a8abae1027d5bfa67f4edf0ab3be7fe2055e793893408711ea78528d5dcef8604561f3bd971d23dfb0fb6a73
 	b2sums = b56600fcae921bd22438e855d90d95bf9bee0b80755a1fae89268f68f66b4ce1e4178141b8f6ae9b83922822fa76ce70fc1be6c61bb357e442c259e2709bcc5a
 
 pkgname = herdr-core

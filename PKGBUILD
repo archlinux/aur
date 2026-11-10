@@ -1,8 +1,8 @@
 # Maintainer: chadsr <git at ross dot ch>
 
 pkgname=herdr-core
-pkgver=0.1.19 # renovate: datasource=github-tags depName=herdrdev/herdr-core
-pkgrel=2
+pkgver=0.1.20 # renovate: datasource=github-tags depName=herdrdev/herdr-core
+pkgrel=1
 pkgdesc="Run programs and coding agents in terminals that stay alive after you leave"
 arch=('x86_64' 'aarch64')
 url='https://github.com/herdrdev/herdr-core'
@@ -19,7 +19,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"ghostty-$_ghostty_sha1.tar.gz::https://github.com/ghostty-org/ghostty/archive/$_ghostty_sha1.tar.gz"
 )
-b2sums=('6c779f91e960a55fea3f66a82e6aa003031035653d5000cfe03e53e8a512cd1b25da610cd77d4f89420f1be6500fc04b7cc7aa5b71b04e95035ca41b259eb594'
+b2sums=('3129087cdf42bf28a4e5d6ed6f19e0acdf1cb0c6a8abae1027d5bfa67f4edf0ab3be7fe2055e793893408711ea78528d5dcef8604561f3bd971d23dfb0fb6a73'
 	'b56600fcae921bd22438e855d90d95bf9bee0b80755a1fae89268f68f66b4ce1e4178141b8f6ae9b83922822fa76ce70fc1be6c61bb357e442c259e2709bcc5a')
 
 prepare() {
