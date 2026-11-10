@@ -3,12 +3,12 @@
 pkgname=python-unsloth-zoo
 _pkgname=unsloth_zoo
 _archive=unsloth-zoo
-pkgver=2026.11.1
+pkgver=2026.11.4
 # Upstream does not tag releases. This is the version-bump commit immediately
 # preceding the PyPI upload.
-_commit=f0e92d10c9ab2a02ee9ec3b4a54e2d63582edf1a
-# Match the Unsloth 2026.11.1 source release used as the staged test companion.
-_unsloth_commit=bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b
+_commit=be64da73196f9ceba40a8df40f05e538a6c539e8
+# Match the Unsloth 2026.11.3 source release used as the staged test companion.
+_unsloth_commit=47179dc94e1cc3ecc42854bddcfa9f9523dd2c24
 _source="${_archive}-${_commit}"
 _unsloth_source="unsloth-${_unsloth_commit}"
 pkgrel=1
@@ -84,8 +84,8 @@ source=(
     'preserve-installed-triton.patch'
     'arch-torchvision-pair.patch'
 )
-sha256sums=('a69ee405fcd5b8a10712a65890a69507212ffbec515058bfd5cf42b03200e5a4'
-            '75b1902bcbb06d28111200d10af9ca1d8b1c968c6940d0a8a1263e67d7980792'
+sha256sums=('2b97be42ed9abce89fb7ef9e7b33a832dd8be2001b20cfd87a2e1fb70205825d'
+            '33f993660aefe0d041f53551e5eedae174debd5a76d077e95934065a7b5c5358'
             '9cf5a611d5e2490dbd7e77726c8c4115202b675221392676682b8d25388eda69'
             '6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba')
 
@@ -112,7 +112,7 @@ build() {
     python -m build --wheel --no-isolation
 
     # Zoo's import guard requires Unsloth to be discoverable. Build the exact
-    # same-release upstream commit as a staged test companion only.
+    # current upstream release commit as a staged test companion only.
     cd "$srcdir/$_unsloth_source"
     python -m build --wheel --no-isolation
 }

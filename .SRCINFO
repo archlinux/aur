@@ -1,6 +1,6 @@
 pkgbase = python-unsloth-zoo
 	pkgdesc = Utility functions for Unsloth fine-tuning framework
-	pkgver = 2026.11.1
+	pkgver = 2026.11.4
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth-zoo
 	arch = any
@@ -59,12 +59,12 @@ pkgbase = python-unsloth-zoo
 	optdepends = python-bitsandbytes: 4-bit/8-bit quantization and LoRA merging
 	optdepends = python-fastapi: diffusion-studio HTTP service
 	optdepends = uvicorn: diffusion-studio HTTP service
-	source = unsloth-zoo-f0e92d10c9ab2a02ee9ec3b4a54e2d63582edf1a.tar.gz::https://github.com/unslothai/unsloth-zoo/archive/f0e92d10c9ab2a02ee9ec3b4a54e2d63582edf1a.tar.gz
-	source = unsloth-bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b.tar.gz::https://github.com/unslothai/unsloth/archive/bbee0dc04fb3c3c8485fc02c0e88da48d2c4dc7b.tar.gz
+	source = unsloth-zoo-be64da73196f9ceba40a8df40f05e538a6c539e8.tar.gz::https://github.com/unslothai/unsloth-zoo/archive/be64da73196f9ceba40a8df40f05e538a6c539e8.tar.gz
+	source = unsloth-47179dc94e1cc3ecc42854bddcfa9f9523dd2c24.tar.gz::https://github.com/unslothai/unsloth/archive/47179dc94e1cc3ecc42854bddcfa9f9523dd2c24.tar.gz
 	source = preserve-installed-triton.patch
 	source = arch-torchvision-pair.patch
-	sha256sums = a69ee405fcd5b8a10712a65890a69507212ffbec515058bfd5cf42b03200e5a4
-	sha256sums = 75b1902bcbb06d28111200d10af9ca1d8b1c968c6940d0a8a1263e67d7980792
+	sha256sums = 2b97be42ed9abce89fb7ef9e7b33a832dd8be2001b20cfd87a2e1fb70205825d
+	sha256sums = 33f993660aefe0d041f53551e5eedae174debd5a76d077e95934065a7b5c5358
 	sha256sums = 9cf5a611d5e2490dbd7e77726c8c4115202b675221392676682b8d25388eda69
 	sha256sums = 6f76ab18ae09ee637f89058bedafcf3c031f31e289922e78e23d83af9c3b4fba
 
