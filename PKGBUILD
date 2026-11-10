@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ofdgo-git
-pkgver=r1065.9d20ecd
-pkgrel=4
+pkgver=r1075.be69e2a
+pkgrel=1
 pkgdesc="Native cross-platform pure-Go OFD / PDF rendering and viewing tool"
 arch=($CARCH)
 url="https://github.com/xiaoqidun/ofdgo"
@@ -26,9 +26,6 @@ sha256sums=('SKIP')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
-
-    #     cd "${srcdir}/${pkgname%-git}"
-    #     git tag --delete nightly
 }
 
 pkgver() {
