@@ -1,6 +1,6 @@
 # Maintainer: DBeidachazi <a269502169@gmail.com>
 pkgname=apifox-appimage
-pkgver=2.8.53
+pkgver=2.8.54
 pkgrel=1
 pkgdesc="Apifox - API documentation, debugging, mocking, and testing tool (AppImage in Zip) API 文档、API 调试、API Mock、API 自动化测试"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=('!strip')
 # 使用自动校验并镜像到 GitHub Release 的版本固定安装包
 source_x86_64=("apifox-${pkgver}-linux.zip::https://github.com/DBeidachazi/apifox-appimage/releases/download/v${pkgver}/Apifox-linux-${pkgver}.zip")
 source_aarch64=("apifox-${pkgver}-linux-arm64.zip::https://github.com/DBeidachazi/apifox-appimage/releases/download/v${pkgver}/Apifox-linux-${pkgver}-arm64.zip")
-sha256sums_x86_64=('7654468f479c3cdd19513c4e568f4f22210c882a7f0835b347996baa1463dac4')
-sha256sums_aarch64=('7f69d1d5ebb9f8b5f5071448a46d43da76a697cf24e5cd9af71dc8f670aacf45')
+sha256sums_x86_64=('7fd0ee96cce95cf3803fbce01385a30b00d75ef4ade13d3859aa6e22a21a314f')
+sha256sums_aarch64=('64396d9d85d9d322b3ab7f36b65779583f3c062240f2a4de7f9a2ed022997056')
 
 prepare() {
     # 1. 自动解压后，我们需要找到那个 AppImage 文件
