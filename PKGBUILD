@@ -2,7 +2,7 @@
 
 pkgname=python-typeshed-client
 _name=typeshed_client
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc='Library for accessing and resolving type stubs from typeshed'
 arch=('any')
@@ -23,7 +23,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  '5495d4e5047fc9c7f7b6eef10b0a0b82a24fbaca9dcd5811456c549312fa17d7'
+  'da4b00c94b8ba8af8ec33ac7bf16779e4cbf528f49cb4705662b1a93a2096a95'
   'febc00dc5a0557ca8afbcdc6d3896731dc42f4cecabd87e6c98326212f8dbf36'
 )
 
