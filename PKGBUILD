@@ -1,7 +1,7 @@
 # Maintainer: jarbowski <jarbowski@laposte.net>
 pkgname=tape16-bin
-pkgver=0.9.530
-pkgrel=4
+pkgver=0.9.540
+pkgrel=1
 pkgdesc="Destructive tape-style 16-track DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
 url="https://emrmusicgroup.com/tape16/"
@@ -34,11 +34,11 @@ conflicts=('tape16' 'tape16-wayland-bin' 'tape16-x11-bin')
 options=('!strip' '!debug')
 install=tape16-bin.install
 source=("TAPE-16-v${pkgver}-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-16-Public-Releases/releases/download/${pkgver}/TAPE-16-v${pkgver}-Linux-Release.zip")
-sha256sums=('8470388e51acbfc3ff38a3f90fc81758249c867201b04cbb4900008ec8fd03a4')
+sha256sums=('a354c79e55ed5a2cd6d58bb22be9250877068b457e10ac4adc59d5de78bcefb9')
 
 package() {
   # Note: upstream folder is TAPE-16-v${pkgver}-10-Linux-Release (extra -10)
-  local deb="${srcdir}/TAPE-16-v${pkgver}-10-Linux-Release/TAPE 16 Wayland Deb/INSTALL-TAPE16.deb"
+  local deb="${srcdir}/TAPE-16-v${pkgver}-Linux-Release/TAPE 16 Wayland Deb/INSTALL-TAPE16.deb"
   local extract="${srcdir}/deb-extract"
 
   mkdir -p "$extract"
