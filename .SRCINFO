@@ -1,6 +1,6 @@
 pkgbase = senden-bin
 	pkgdesc = Desktop client for Senden, the chat platform
-	pkgver = 0.1.146
+	pkgver = 0.1.147
 	pkgrel = 1
 	url = https://senden.chat
 	arch = x86_64
@@ -38,15 +38,15 @@ pkgbase = senden-bin
 	optdepends = libpipewire: screen share audio capture
 	optdepends = libpulse: screen share audio capture
 	optdepends = libappindicator-gtk3: tray icon
-	provides = senden=0.1.146
+	provides = senden=0.1.147
 	conflicts = senden
-	noextract = senden-0.1.146-x86_64.zip
-	noextract = senden-0.1.146-aarch64.zip
+	noextract = senden-0.1.147-x86_64.zip
+	noextract = senden-0.1.147-aarch64.zip
 	options = !strip
 	options = !debug
-	source_x86_64 = senden-0.1.146-x86_64.zip::https://senden-releases.objects.eplg.cloud/desktop/senden-electron-0.1.146.zip
-	sha256sums_x86_64 = 8420eda4b0d63569e6162ebf9e66434d0290cd5a64b27d71c2f3a72ff711117d
-	source_aarch64 = senden-0.1.146-aarch64.zip::https://senden-releases.objects.eplg.cloud/desktop/senden-electron-0.1.146-arm64.zip
-	sha256sums_aarch64 = d2201ced1513c4f62d0710eec38234a0b80098f457f4bea174efeb8700f064c7
+	source_x86_64 = senden-0.1.147-x86_64.zip::https://senden-releases.objects.eplg.cloud/desktop/senden-electron-0.1.147.zip
+	sha256sums_x86_64 = d15abd2b144d82487b89d61cbb819cb3cb94f07f57689011a62bdef6e0d1cd81
+	source_aarch64 = senden-0.1.147-aarch64.zip::https://senden-releases.objects.eplg.cloud/desktop/senden-electron-0.1.147-arm64.zip
+	sha256sums_aarch64 = f530aa8a628f113c0ca73752bf5ee7bcddca6cbbd26102193a57f07d1ddceda1
 
 pkgname = senden-bin
