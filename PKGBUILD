@@ -1,6 +1,6 @@
 # Maintainer: Vinay <vinayydv343@gmail.com>
 pkgname=ghostty-rpc
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Discord Rich Presence integration for Ghostty terminal"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/vinayydv3695/ghostty-rpc"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git')
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
