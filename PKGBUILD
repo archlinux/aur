@@ -1,6 +1,6 @@
 # Maintainer: Vinay <vinayydv343@gmail.com>
 pkgname=ghostty-rpc-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Discord Rich Presence integration for Ghostty terminal (pre-compiled binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('ghostty-rpc')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/ghostty-rpc-v$pkgver-x86_64.tar.gz"
                "service::$url/raw/v$pkgver/assets/ghostty-rpc.service"
                "config.example::$url/raw/v$pkgver/assets/config.toml.example")
-sha256sums_x86_64=('1cfd66c8e90950577ef00ce42972882cfc29afe5a97564fe4f28c0cad6f9555b'
+sha256sums_x86_64=('72e539f0eb72dc668c8526468e4de81cf955a4f2f7b28525682f4856f1d7a425'
                    'SKIP'
                    'SKIP')
 
