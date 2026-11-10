@@ -2,7 +2,7 @@
 
 pkgname=pixez-bin
 _pkgname=pixez
-pkgver=0.9.113
+pkgver=0.9.114
 pkgrel=1
 pkgdesc="Pixiv third-party client written in Flutter"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source_x86_64=(
     "com.perol.pixez.desktop"
 )
 sha256sums_x86_64=(
-    '41e9a5c8e622847cc667bad06524405a92aad11832040b3b80de183ce6947d33'
+    'e63fe9378d26fc9821be0d6bb1bf98cb21a81a7e39e1aaab98e06831b02f870a'
     '5fdaf6fc794b119cabf91836976b1f75c43128adce3d32ee0b6be0281b3b438e'
 )
 
