@@ -1,7 +1,7 @@
 # Maintainer: Anany Sachan <ananysachan2005@gmail.com>
 pkgname=openmausbot-bin
 _pkgname=OpenMausBot
-pkgver=0.1.150
+pkgver=0.1.151
 pkgrel=1
 pkgdesc="Local-first chat app for running a team of AI agents"
 arch=('x86_64')
@@ -42,7 +42,7 @@ conflicts=('openmausbot')
 # Bundled binaries are prebuilt; stripping changes cua-driver's checksum from the one in release.json
 options=('!debug' '!strip')
 source=("${_pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
-sha256sums=('5f365fbb29821146e68b7892d2d2c24c2adb9df019b50c3146af1e0eaf0255d5')
+sha256sums=('b7ea8a9b3f9cf2023eee180c293a675906b4442ccdfefdd8e8f6d2b8f8dc152d')
 
 package() {
 	bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
