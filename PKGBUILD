@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mex
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A terminal UI for browsing mDNS traffic"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo' 'cargo-auditable' 'git' 'rust')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0e9197e645d195a298657d15052a81074f52d81569024e69f0a101d1626a9eb1')
+sha256sums=('8be9147f08ab9ffd809c9d583b0f28d94f5cf925f1749cd6820cc2dc0c6c34d2')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
