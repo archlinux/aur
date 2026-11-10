@@ -1,7 +1,7 @@
 # Maintainer: Til Kaiser <mail at tk154 dot de>
 pkgname=windscribe-v2-bin
-pkgver=2.24.13
-pkgrel=2
+pkgver=2.25.8
+pkgrel=1
 pkgdesc="Windscribe GUI tool for Linux"
 arch=('x86_64')
 url="https://windscribe.com/guides/linux"
@@ -12,7 +12,7 @@ conflicts=('windscribe-cli' 'windscribe')
 options=('!strip')
 install=windscribe-v2-bin.install
 source=("https://github.com/Windscribe/Desktop-App/releases/download/v${pkgver}/windscribe_${pkgver}_amd64.pkg.tar.zst")
-sha1sums=('b56aa9a434bb4977ce90142f0eafe2ad1ab5e14f')
+sha1sums=('ea59b8607b7feeff80415230ec403b8e54640b16')
 
 package() {
 	mv ${srcdir}/etc ${pkgdir}
