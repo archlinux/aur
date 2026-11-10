@@ -23,6 +23,6 @@ pkgbase = misterdownloadmanager-bin
 	conflicts = misterdownloadmanager
 	options = !strip
 	source = MisterDownloadManager-0.5.2-linux-x86_64.tar.gz::https://github.com/anefzaoui/misterdownloadmanager/releases/download/v0.5.2/MisterDownloadManager-0.5.2-linux-x86_64.tar.gz
-	sha256sums = fc0f3948ee223b7d3706c4a8dc74180b9d5042d8c0b7dab5637a6c8892011171
+	sha256sums = 3327ebd6b5565186c3e1286bbfdc85ffc95fa681cc2a57a51b0bc07ff42a009f
 
 pkgname = misterdownloadmanager-bin
