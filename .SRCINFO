@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-eventcalendar
 	pkgdesc = KDE Plasma 6 plasmoid for a calendar+agenda with weather that syncs to Google Calendar
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/lenonk/plasma6-applet-eventcalendar
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = plasma6-applets-eventcalendar
 	optdepends = libpulse: sound playback fallback via paplay
 	optdepends = qt6-positioning: weather location detection
 	optdepends = geoclue: weather location detection
-	source = https://github.com/lenonk/plasma6-applet-eventcalendar/archive/refs/tags/v1.0.5.tar.gz
+	source = https://github.com/lenonk/plasma6-applet-eventcalendar/archive/refs/tags/v1.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = plasma6-applets-eventcalendar
