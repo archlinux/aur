@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=hatoba-bin
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Open-source desktop SSH client with an AI assistant and end-to-end encrypted sync through your own Cloudflare account"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('hatoba')
 conflicts=('hatoba')
 options=('!strip' '!debug')
 source_x86_64=("Hatoba_${pkgver}_linux-x64.deb::https://github.com/scarletkc/Hatoba/releases/download/v${pkgver}/Hatoba_${pkgver}_linux-x64.deb")
-sha256sums_x86_64=('c382b1b4139d3301958d641a1fe69545d50bbf13f55117de0e41224ec98dbb7c')
+sha256sums_x86_64=('a75ee691f7fe72bd6af931dda8eb0f27ef89160e8759b033c161a4a4dd88220a')
 
 package() {
     local _deb="Hatoba_${pkgver}_linux-x64.deb"
