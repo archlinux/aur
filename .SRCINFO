@@ -1,0 +1,18 @@
+pkgbase = pamgen
+	pkgdesc = Parallel inline mesh generator for hexahedral and quadrilateral meshes (from Trilinos)
+	pkgver = 17.3.0
+	pkgrel = 1
+	url = https://github.com/trilinos/Trilinos
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = python
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openmpi
+	conflicts = trilinos
+	source = Trilinos-17.3.0.tar.gz::https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-17-3-0.tar.gz
+	sha256sums = 8094740da60bf75b675ad556ed00e337c8547be0dc9603893c4894f4abf0396b
+
+pkgname = pamgen
