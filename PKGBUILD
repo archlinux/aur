@@ -2,7 +2,7 @@
 
 _name=jsonschema-rs
 pkgname=python-$_name
-pkgver=0.61.0
+pkgver=0.61.1
 pkgrel=1
 pkgdesc="A high-performance JSON Schema validator for Python."
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ checkdepends=('python-flask'
 options=(!strip lto)
 source=("$_name::git+$url.git#tag=python-v$pkgver"
         "git+https://github.com/json-schema-org/JSON-Schema-Test-Suite#commit=5b0ee16")
-sha256sums=('5a78d437c9494612507b0a7d593fd2583411fc4a20880c5cb34dc7e777494138'
+sha256sums=('a97841de3c54d437ea31626d36fa3f23f99a894bca3f63edf55abeb445437b6d'
             '5477d894cb15fc844862d0baf5d0dfbd26b5a5f112087350a6802289b089c3b1')
 
 prepare() {
@@ -30,7 +30,10 @@ prepare() {
   git submodule init crates/jsonschema/tests/suite
   git config submodule.testsuite.url "$srcdir"/JSON-Schema-Test-Suite
   git -c protocol.file.allow=always submodule update crates/jsonschema/tests/suite
+  # Use the maturin version shipped by Arch
+  sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' crates/${_name//-rs/-py}/pyproject.toml crates/${_name//-rs/-testsuite-pyo3}/pyproject.toml
 }
+
 build() {
   cd "$_name"
   export RUSTFLAGS="$RUSTFLAGS -Clink-arg=-fuse-ld=mold"
@@ -54,4 +57,5 @@ check() {
 package() {
   cd "$_name"
   python -m installer --destdir="$pkgdir" crates/${_name//-rs/-py}/dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
