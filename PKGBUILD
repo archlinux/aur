@@ -3,7 +3,7 @@
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 epoch=1
 _tag="v${pkgver}"
 _srcdir="${_pkgname}-${pkgver}"
@@ -16,7 +16,7 @@ depends=(
 	"glibc"
 	"hicolor-icon-theme"
 	"libgcc"
-	"openssl"
+	"openssl-3"
 	"mpv"
 )
 optdepends=(

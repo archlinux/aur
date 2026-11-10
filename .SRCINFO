@@ -1,7 +1,7 @@
 pkgbase = voicefox-bin
 	pkgdesc = Rust + ratatui + libmpv 驱动的键盘优先终端音乐播放器：多音源、歌词、本地音乐、下载、收藏与歌单。
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = voicefox-bin
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	depends = openssl
+	depends = openssl-3
 	depends = mpv
 	optdepends = nodejs>=23.5.0: support for custom JS music source
 	provides = voicefox=1:0.8.1
