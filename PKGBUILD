@@ -1,5 +1,5 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
-# pkgver and sha256sums are rewritten by .github/workflows/aur.yml on every tag.
+# pkgver and sha256sums are rewritten by .github/workflows/release.yml on every tag.
 pkgname=opensynapse
 pkgver=0.1.1
 pkgrel=1
