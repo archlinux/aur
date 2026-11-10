@@ -1,6 +1,6 @@
 # Maintainer: Basecamp <support@basecamp.com>
 pkgname=basecamp-cli
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="CLI for Basecamp project management"
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ optdepends=(
   'zsh: for zsh shell completions'
   'fish: for fish shell completions'
 )
-source_x86_64=("https://github.com/basecamp/basecamp-cli/releases/download/v0.25.0/basecamp_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("https://github.com/basecamp/basecamp-cli/releases/download/v0.25.0/basecamp_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('6229c1d6c236d824018834ebc77532f0f4fa15394bcc01cf8f645a54daaae0ef')
-sha256sums_aarch64=('5e7160bffd75b0bd939cfe60c76c5eb3f5c17e554cff748a74366b7714462cf9')
+source_x86_64=("https://github.com/basecamp/basecamp-cli/releases/download/v0.26.0/basecamp_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/basecamp/basecamp-cli/releases/download/v0.26.0/basecamp_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('7f8f1d35d92f7461f95d5c1e479ba0e3a96af31c75cf0c61c18183d48c2cdc08')
+sha256sums_aarch64=('db9b3b8154a5b69dfd070c4c269d6b1a1000c61485b247b2269cbbc5eb347a3f')
 
 package() {
   install -Dm755 "basecamp" "${pkgdir}/usr/bin/basecamp"
