@@ -5,7 +5,7 @@ _gmver=4.000
 _gfcommit=2750b521bd22ce141f12617194ab0e04cf5d12d5
 _nfver=3.5.1
 pkgver="${_gmver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='TikTok Sans (Google Fonts), a four-axis (opsz, slnt, wdth, wght) sans with Greek and Cyrillic, tuned with fonttune (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://fonts.google.com/specimen/TikTok+Sans'
@@ -30,13 +30,14 @@ sha256sums=('0e7f0a3e924c9a86478fc6fc2946de2e4ab8fc704ed72ee40434ade94bb9b0c6'
 
 # TikTok Sans (TikTok Inc.; Grilli Type, Contrast Foundry, Type Network) is
 # shipped as ONE variable font with four axes: opsz 12-36 (default 36), slnt
-# -6-0 (default 0, the italic), wdth 75-150 (default 100) and wght 300-900
+# -6-0 (default 0, upright; -6 is the italic), wdth 75-150 (default 100) and wght 300-900
 # (default 300). Latin (incl. Vietnamese), Cyrillic and modern monotonic Greek.
 # The source is pinned to the google/fonts commit above. Unlike most Google
 # fonts it ships already hinted by ttfautohint (see README.md section 3 for how
 # that compares with re-hinting). Tuning (hinting, gasp, features baked into
 # calt, ...) is done by fonttune, which asks in prepare(); every key can be
 # preset as FONTTUNE_<KEY>. Local testing: `FONTTUNE_DEV=true` (see _ft_local).
+# fonttune re-hints only the statics: the variable font keeps upstream's hints.
 #
 #   TS_VARIANT=variable|static  default variable (asked on a TTY)
 #                  variable  the four-axis font (upright + slant)
@@ -47,7 +48,10 @@ sha256sums=('0e7f0a3e924c9a86478fc6fc2946de2e4ab8fc704ed72ee40434ade94bb9b0c6'
 #                  become their own family (Condensed, Expanded, ExtraExpanded)
 #   STATIC_ITALIC=true|false      also cut slnt=-6 italics (default true)
 #   STATIC_OPSZ=N|auto            fixed optical size 12-36 (default auto: the GNOME
-#                                 interface size in points, what Pango gives the VF)
+#                                 interface size in points, what Pango gives the VF,
+#                                 read when it builds: a clean chroot or a non-GNOME
+#                                 desktop reads GNOME's default, 11; set N for a fixed
+#                                 cut). The value used is in /usr/share/doc/$pkgname/STATIC_OPSZ
 #   NERD_PATCH=true               patch with Nerd Fonts glyphs (default false);
 #                                 implies TS_VARIANT=static
 
@@ -127,12 +131,19 @@ prepare() {
     TS_VARIANT=static
   fi
   rm -rf "$srcdir/selected" "$srcdir/font-patcher"; mkdir -p "$srcdir/selected"
+  local _opsz=          # static only: the optical size cut, recorded in the package
   local _vf="$srcdir/TikTokSansVF.ttf"
   if [[ "$TS_VARIANT" == variable ]]; then
     cp "$_vf" "$srcdir/selected/TikTokSansVariable.ttf"
   else
     local _weights="${STATIC_WEIGHTS:-300 400 500 600 700 800 900}"
-    local _widths="${STATIC_WIDTHS:-100}" _opsz="${STATIC_OPSZ:-auto}"
+    local _widths="${STATIC_WIDTHS:-100}"
+    _opsz="${STATIC_OPSZ:-auto}"
+    if [[ "${_opsz,,}" == auto ]]; then
+      _opsz=$(PYTHONPATH="$(_ft)" python -c 'from fonttune.system import font_pt; print(f"{font_pt():g}")') ||
+        { echo "Error: this fonttune cannot resolve STATIC_OPSZ=auto; update it or set STATIC_OPSZ=N." >&2; exit 1; }
+      echo "==> STATIC_OPSZ auto: $_opsz pt (this machine's GNOME interface font size)"
+    fi
     _ask STATIC_ITALIC "Also cut the italic (slnt=-6)" y
     local _d _name
     local -a _sfx
@@ -154,7 +165,7 @@ prepare() {
     done
   fi
   compgen -G "$srcdir/selected/*" >/dev/null || { echo "Error: no fonts produced." >&2; exit 1; }
-  printf '%s\n%s\n' "$NERD_PATCH" "$TS_VARIANT" > "$srcdir/.opts"
+  printf '%s\n%s\n%s\n' "$NERD_PATCH" "$TS_VARIANT" "$_opsz" > "$srcdir/.opts"
   if [[ "$NERD_PATCH" == true ]]; then
     mkdir -p "$srcdir/font-patcher"
     bsdtar xf "$srcdir/font-patcher-${_nfver}.zip" -C "$srcdir/font-patcher"
@@ -190,8 +201,11 @@ package() {
   install -d "$pkgdir/usr/share/doc/$pkgname"
   _ft_rev > "$pkgdir/usr/share/doc/$pkgname/FONTTUNE_REV" 2>/dev/null || true
   install -m644 "$srcdir/fonttune.toml" "$pkgdir/usr/share/doc/$pkgname/fonttune.toml"
+  local _opsz; _opsz=$(sed -n 3p "$srcdir/.opts")
+  [[ -z "$_opsz" ]] || echo "$_opsz" > "$pkgdir/usr/share/doc/$pkgname/STATIC_OPSZ"
 
-  if grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
+  # fonttune leaves variable fonts unhinted, so only statics get the snippet
+  if [[ "$(sed -n 2p "$srcdir/.opts")" == static ]] && grep -q '^hint = "[a-z]' "$srcdir/fonttune.toml"; then
     install -d "$pkgdir/usr/share/fontconfig/conf.avail"
     python "$(_ft)/bin/fonttune" hintconf --name "$pkgname" \
       -o "$pkgdir/usr/share/fontconfig/conf.avail/80-$pkgname.conf" "$_fontdir/"*.ttf

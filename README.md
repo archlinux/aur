@@ -32,7 +32,7 @@ Fonts. Τα χαρακτηριστικά (features, κάλυψη, Ελληνικ
 
 Παραδείγματα:
 
-    TS_VARIANT=static makepkg -si                       # 7 βάρη + πλάγια, opsz 14, wdth 100
+    TS_VARIANT=static makepkg -si                       # 7 βάρη + πλάγια, opsz auto, wdth 100
     TS_VARIANT=static STATIC_WIDTHS="75 100" STATIC_OPSZ=12 makepkg -si
     TS_VARIANT=static FONTTUNE_HINT=balanced makepkg -si
 
@@ -53,10 +53,13 @@ Chromium και τα Electron εξαιρούνται με `prgname`: σε device
   τιμές, εντολές σε 999 από 1167 περιγράμματα) και `cvar`.
 - **Static:** κάθε στυλ κόβεται με τον instancer του fontTools (άξονες wght, wdth,
   opsz, slnt καρφωμένοι) και hint-άρεται χωριστά με τα presets του πακέτου.
-- **Variable:** με την προεπιλογή του fonttune (`hint` κενό) μένει το upstream
-  hinting. Αν διαλέξεις hint preset, το fonttune ξαναπερνά ttfautohint· σημείωση:
-  το `cvar` δεν αφαιρείται πια (το παλιό PKGBUILD το αφαιρούσε), οπότε για το
-  variable προτιμήστε να μην ξανα-hint-άρετε.
+- **Variable:** μένει το upstream hinting σε κάθε περίπτωση: το fonttune δεν
+  hint-άρει variable fonts (τα hints ταιριάζουν μόνο στο default instance), ακόμη
+  κι αν διαλέξεις hint preset. Για ξανά-hinting διάλεξε static.
+- **STATIC_OPSZ:** προεπιλογή `auto`, το μέγεθος της γραμματοσειράς διεπαφής του
+  GNOME σε pt (ό,τι δίνει το Pango στο opsz του variable), διαβασμένο στο
+  build· σε καθαρό chroot ή εκτός GNOME είναι το 11 του GNOME. Η τιμή που
+  χρησιμοποιήθηκε γράφεται στο `/usr/share/doc/ttf-tiktok-sans-hinted/STATIC_OPSZ`.
 - Το Nerd Fonts patching αναγκάζει static και ξανά-hinting, γιατί το
   font-patcher πετά το bytecode.
 
