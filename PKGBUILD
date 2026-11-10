@@ -1,7 +1,7 @@
 # Maintainer: Nick <nickcardosoo123 at gmail dot com>
 
 pkgname=mimick
-pkgver=9.13.0
+pkgver=9.15.0
 pkgrel=1
 pkgdesc='Unofficial Immich desktop client that backs up and browses your photos'
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ optdepends=(
 )
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nicx17/mimick/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('acca00ef5ce7a3b9c5570e4f91584b0c7fbe6b9d2f185a4d5e36ae93295d29af')
+sha256sums=('9d37aba4c12bfbaecffeb9f907e564f9935c03f91607046a85698f7f121a496a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -70,5 +70,4 @@ package() {
   install -Dm644 src/assets/256x256/apps/dev.nicx.mimick.png -t "$icons/256x256/apps/"
   install -Dm644 src/assets/512x512/apps/dev.nicx.mimick.png -t "$icons/512x512/apps/"
   install -Dm644 src/assets/symbolic/apps/dev.nicx.mimick-symbolic.svg -t "$icons/symbolic/apps/"
-  install -Dm644 THIRD_PARTY_LICENSES.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
