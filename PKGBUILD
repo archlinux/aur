@@ -1,5 +1,5 @@
 pkgname=astrolith
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Local-first editor for Astro Markdown and MDX content'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('git: Git integration')
 # Cargo enables Rust ThinLTO. GCC LTO objects from native crates cannot link with rust-lld.
 options=('!strip' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa2920abb6972f4c6c8a48842b089831c095fb1d04b576a5f9c4069885aa92a5')
+sha256sums=('3a953d761427660de7c1adf771069521c6b15413238cac96b2e084a39e81d80c')
 
 prepare() {
   cd "Astrolith-$pkgver"

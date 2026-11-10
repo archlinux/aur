@@ -1,6 +1,6 @@
 pkgbase = astrolith
 	pkgdesc = Local-first editor for Astro Markdown and MDX content
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/MareDevi/Astrolith
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = astrolith
 	optdepends = git: Git integration
 	options = !strip
 	options = !lto
-	source = astrolith-0.1.0.tar.gz::https://github.com/MareDevi/Astrolith/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = aa2920abb6972f4c6c8a48842b089831c095fb1d04b576a5f9c4069885aa92a5
+	source = astrolith-0.1.1.tar.gz::https://github.com/MareDevi/Astrolith/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 3a953d761427660de7c1adf771069521c6b15413238cac96b2e084a39e81d80c
 
 pkgname = astrolith
