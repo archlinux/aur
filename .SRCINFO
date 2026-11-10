@@ -1,0 +1,26 @@
+pkgbase = kettu-bin
+	pkgdesc = All your coding agents, side by side in one window that looks good and feels right.
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = https://www.kettu.sh
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = electron44
+	depends = nodejs
+	depends = python
+	depends = python-gobject
+	depends = git
+	depends = github-cli
+	provides = kettu=0.0.35
+	conflicts = kettu
+	source = kettu.js
+	source = kettu.sh
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = kettu-0.0.35-aarch64.AppImage::https://github.com/KettuAI/Kettu/releases/download/v0.0.35/Kettu-arm64.AppImage
+	sha256sums_aarch64 = c34ccb5e89f5d22535e38fc14a6549cbb476f984d27bc7b04f2e0de6140f0e80
+	source_x86_64 = kettu-0.0.35-x86_64.AppImage::https://github.com/KettuAI/Kettu/releases/download/v0.0.35/Kettu-x86_64.AppImage
+	sha256sums_x86_64 = a7a47753bd19526c205b595773cb072768e1f2b835bab39103ba52e35e8b7aaf
+
+pkgname = kettu-bin
