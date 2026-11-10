@@ -20,7 +20,7 @@ optdepends=('7zip: zip/7z/rar/iso and encrypted archives'
             'libsecret: remember encrypted drive passphrases'
             'polkit: Open as Administrator')
 provides=('loaf-fm' 'loaf')
-conflicts=('loaf-fm' 'loaf-fm-bin' 'loaf-fm-git' 'loaf')
+conflicts=('loaf-fm' 'loaf-fm-bin' 'loaf-fm-git' 'loaf-fm-nightly-git' 'loaf')
 options=('!strip')
 # Rolling release: upstream overwrites this file on every nightly run,
 # so the checksum cannot be pinned.

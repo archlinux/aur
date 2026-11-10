@@ -24,6 +24,7 @@ pkgbase = loaf-fm-nightly-bin
 	conflicts = loaf-fm
 	conflicts = loaf-fm-bin
 	conflicts = loaf-fm-git
+	conflicts = loaf-fm-nightly-git
 	conflicts = loaf
 	noextract = loaf-nightly-x86_64.pkg.tar.zst
 	options = !strip
