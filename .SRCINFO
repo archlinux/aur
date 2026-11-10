@@ -1,6 +1,6 @@
 pkgbase = leetrs-bin
 	pkgdesc = A blazing-fast, Rust-powered CLI engine that makes solving LeetCode problems from the terminal a first-class developer experience
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/shadowmkj/leetrs
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = leetrs-bin
 	options = !strip
 	source = LICENSE
 	sha256sums = 79536e46cb36efdcc053b0505358b4635eaed1ba94bb1e671cc51c2bc0224b7c
-	source_x86_64 = leetrs-x86_64-1.2.1.txz::https://github.com/shadowmkj/leetrs/releases/download/v1.2.1/leetrs-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = dbc431707ed552ae6064d5a91d74b4b2dab2ec9f1932bf5269401804aa26b0df
-	source_aarch64 = leetrs-aarch64-1.2.1.txz::https://github.com/shadowmkj/leetrs/releases/download/v1.2.1/leetrs-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = c4427a363b718d80c937f611bab534d0447f898d3e3ce2ae065bd45523dfe087
+	source_x86_64 = leetrs-x86_64-1.2.2.txz::https://github.com/shadowmkj/leetrs/releases/download/v1.2.2/leetrs-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 9354110398a11b656686204764fe8ba667c9e8704a5b8b03c54d004e1601b322
+	source_aarch64 = leetrs-aarch64-1.2.2.txz::https://github.com/shadowmkj/leetrs/releases/download/v1.2.2/leetrs-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = ad0dfc0cc354db5ffeebb694afc93e35606122d9f92a44637e0c2d349fd7ba3a
 
 pkgname = leetrs-bin
