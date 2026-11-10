@@ -4,7 +4,7 @@ post_install() {
      systemctl enable --now dnclient.service
      dnclient enroll -code <enrollment code>
    Additional named networks run as dnclient@<name>.service.
-   Documentation: https://docs.defined.net
+   Documentation: https://defined.net/docs
 EOF
 }
 

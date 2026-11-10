@@ -1,6 +1,6 @@
 [Unit]
 Description=Defined Networking Client (%i)
-Documentation=https://docs.defined.net
+Documentation=https://defined.net/docs
 After=network.target
 Before=network-online.target
 Wants=network.target

@@ -1,6 +1,6 @@
 # Maintainer: Defined Networking, Inc. <support@defined.net>
 pkgname=dnclient
-pkgver=0.9.10
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Managed Nebula client for Defined Networking overlay networks"
 arch=('x86_64' 'aarch64')
@@ -18,12 +18,12 @@ source_x86_64=("https://dl.defined.net/stable/apt/dnclient/dnclient_${pkgver}_am
 source_aarch64=("https://dl.defined.net/stable/apt/dnclient/dnclient_${pkgver}_arm64.deb")
 noextract=("dnclient_${pkgver}_amd64.deb"
            "dnclient_${pkgver}_arm64.deb")
-sha256sums=('ebc3679e59c50233f81be93de9232928adcd6c2b9a37d19ca8bb3614c3d55e3f'
-            'dce83e9fdb6cf1b2e42b726f768afea556af42472b428a2da839cbc64b5abf37'
+sha256sums=('615e58a3a8d05e1a8de9ecbde0c491df150d4c7c0b000b959d8ef82908346d4a'
+            '6b9f46edf3641d106f3d8e375ddbc8d4d89705842311ba6e51c5a662e264c83e'
             'ecdce0108e62d88853513bc5ec0e95601293558bc16738f7e2cbcf174ffd0d74'
             '7f753320cbb045dd01674a227acb69368baa92dfb3da50bcd4a9c5598bcb8d7c')
-sha256sums_x86_64=('fd8f87c90140ca2d5c095b679e34f8df19b5f15211a33fed3aaf426260fe0bde')
-sha256sums_aarch64=('313ec0e101441bfd48617b9494ae28b4ce2ab9a93d8333657335e97b65c3b5f4')
+sha256sums_x86_64=('d5e9210bf045dfe2b25fb8caa47253f52aa133eafff68bb360e27c344d39acbd')
+sha256sums_aarch64=('9180a9b1001458a71308796dfe199317c63e4f2b9d844c4a8c52280258d3a764')
 
 case "$CARCH" in
 	x86_64) _debarch=amd64 ;;
