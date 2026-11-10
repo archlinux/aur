@@ -1,6 +1,6 @@
 pkgbase = bdinfo-rs-bin
 	pkgdesc = Memory-safe command-line Blu-ray disc analyzer — a drop-in replacement for BDInfo
-	pkgver = 4.0.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/agentjp/bdinfo-rs
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = bdinfo-rs-bin
 	conflicts = bdinfo-rs
 	options = !strip
 	options = !debug
-	source_x86_64 = bdinfo-rs-4.0.0-x86_64.tar.gz::https://github.com/agentjp/bdinfo-rs/releases/download/v4.0.0/bdinfo-rs-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = f1806556e0b65454ebf97dcc3a34d76b91d9894e9e4de30775fee8bf26e3fc82
-	source_aarch64 = bdinfo-rs-4.0.0-aarch64.tar.gz::https://github.com/agentjp/bdinfo-rs/releases/download/v4.0.0/bdinfo-rs-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = c1de7400f06525be2dce9193ec873bdb3dec0cee0f888b754bc6b79dd42bc342
+	source_x86_64 = bdinfo-rs-5.0.0-x86_64.tar.gz::https://github.com/agentjp/bdinfo-rs/releases/download/v5.0.0/bdinfo-rs-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 1533c1abdc88fc557b50a6cee6255d1769b7d5998581a64a2417f3f1a8a0c184
+	source_aarch64 = bdinfo-rs-5.0.0-aarch64.tar.gz::https://github.com/agentjp/bdinfo-rs/releases/download/v5.0.0/bdinfo-rs-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 9b33d80fdd2fe6b001b1f70f0c1ce32882c349ee922505987df43c48f9b55db1
 
 pkgname = bdinfo-rs-bin

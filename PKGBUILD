@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: 0BSD (this PKGBUILD; the packaged software is LGPL-2.1-or-later)
 #
 # Template for the AUR `bdinfo-rs-bin` package. The `packages.yml` aur job seds
-# 4.0.0 to the release version, then KSXGitHub/github-actions-deploy-aur runs
+# 5.0.0 to the release version, then KSXGitHub/github-actions-deploy-aur runs
 # `updpkgsums` (filling in the real per-arch sha256sums) and pushes it to the AUR.
 # This repackages the prebuilt static-musl release tarballs — no compilation.
 pkgname=bdinfo-rs-bin
 _pkgname=bdinfo-rs
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Memory-safe command-line Blu-ray disc analyzer — a drop-in replacement for BDInfo'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ conflicts=('bdinfo-rs')
 options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('f1806556e0b65454ebf97dcc3a34d76b91d9894e9e4de30775fee8bf26e3fc82')
-sha256sums_aarch64=('c1de7400f06525be2dce9193ec873bdb3dec0cee0f888b754bc6b79dd42bc342')
+sha256sums_x86_64=('1533c1abdc88fc557b50a6cee6255d1769b7d5998581a64a2417f3f1a8a0c184')
+sha256sums_aarch64=('9b33d80fdd2fe6b001b1f70f0c1ce32882c349ee922505987df43c48f9b55db1')
 
 package() {
     # Each release tarball extracts to a `bdinfo-rs-<triple>/` directory; CARCH is
