@@ -20,7 +20,6 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname,,}"{,-cli})
-conflicts=("${pkgname%-bin}")
 
 makedepends=('cargo')
 depends=('glibc' 'libgcc' 'hicolor-icon-theme')

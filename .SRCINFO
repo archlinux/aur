@@ -11,7 +11,6 @@ pkgbase = matlivre
 	depends = hicolor-icon-theme
 	provides = matlivre
 	provides = matlivre-cli
-	conflicts = matlivre
 	options = !lto
 	options = !strip
 	source = matlivre-0.1.7.tgz::https://github.com/campuslivre/matlivre/archive/v0.1.7.tar.gz
