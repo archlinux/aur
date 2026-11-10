@@ -1,6 +1,6 @@
 # Maintainer: afkdev8 <mail@afkdev8.com>
 pkgname=qrcode-pretty
-pkgver=1.0.4
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A tool which generates pretty QR codes"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/mrinfinidy/qrcode-pretty"
 license=('MIT')
 depends=('python' 'python-qrcode' 'python-pillow')
 makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
-source=("git+https://github.com/mrinfinidy/qrcode-pretty.git")
+source=("git+https://github.com/mrinfinidy/qrcode-pretty.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 pkgver() {
