@@ -1,6 +1,6 @@
 pkgbase = tequilashot-bin
 	pkgdesc = Tequilashot - screenshots and screen recording for Wayland
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/chmouel/tequilashot
 	license = Apache 2.0
@@ -13,7 +13,7 @@ pkgbase = tequilashot-bin
 	conflicts = sway-easyshot-bin
 	provides = tequilashot
 	arch = x86_64
-	source_x86_64 = tequilashot-bin_0.5.0_x86_64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v0.5.0/tequilashot_0.5.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = aec224639a0cf1013194db9b53600149518788da3ca2339d6f7ec7e683af0acb
+	source_x86_64 = tequilashot-bin_0.5.1_x86_64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v0.5.1/tequilashot_0.5.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 476a4295968ae09481686c799508913284d61d6a82d370cc6502986b6a01410c
 	
 pkgname = tequilashot-bin
