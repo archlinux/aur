@@ -2,7 +2,7 @@
 
 pkgname=gramtty-bin
 _pkgname=gramtty
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A terminal Telegram client (prebuilt binary, TDLib linked statically)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("https://github.com/methamphetaminelab/gramtty/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
-sha256sums=('27b68c837fadfed6ff3c3f0cfa36f04c58446bb72db93161a8c963edd7a8e71b')
+sha256sums=('1c0d1e1aae73830051da16d3749ca42d094ff4ac6199077ef85a987310aa096c')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64-linux"
