@@ -12,9 +12,9 @@ pkgbase = screenshot-plain
 	noextract = screenshot-plain-0.2.2-aarch64.tar.gz
 	source_x86_64 = screenshot-plain-0.2.2-x86_64.tar.gz::https://github.com/xander-lin/screenshot-niri/releases/download/v0.2.2-plain/screenshot-plain-0.2.2-x86_64.tar.gz
 	source_x86_64 = screenshot-plain-0.2.2-x86_64-generic.tar.gz::https://github.com/xander-lin/screenshot-niri/releases/download/v0.2.2-plain/screenshot-plain-0.2.2-x86_64-generic.tar.gz
-	sha256sums_x86_64 = 3db80169cf42032056e6dfc74000798b05e19fd6cb43be85dbeaf40a7eb0550a
-	sha256sums_x86_64 = 2f1ca45382e90c7fe35fe277487c7305f87f0301c559bd9c7d7430b4ed7dffcc
+	sha256sums_x86_64 = e8aac694c2505a558cc239dc8b4c1663d5521895e02dec028611c1cfd746f743
+	sha256sums_x86_64 = 89266097753ccce23254c44f92c8709ccbcdb57b16532cfb291fcfe13fe91688
 	source_aarch64 = screenshot-plain-0.2.2-aarch64.tar.gz::https://github.com/xander-lin/screenshot-niri/releases/download/v0.2.2-plain/screenshot-plain-0.2.2-aarch64.tar.gz
-	sha256sums_aarch64 = b5f1857fd4bed037499f52dd97790d2e61e18bab90f565358c942c589a64ca5b
+	sha256sums_aarch64 = 96264b1141eb115df902b7729fd11291de72c6f39358869e84b6f6cb87d318d3
 
 pkgname = screenshot-plain
