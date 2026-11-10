@@ -1,7 +1,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 # pkgver and sha256sums are rewritten by .github/workflows/release.yml on every tag.
 pkgname=opensynapse
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Remap buttons, set DPI and lighting on Razer mice from Linux"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'libxkbcommon' 'wayland' 'libglvnd')
 optdepends=('xdg-desktop-portal: file picker for profile import/export in the GUI')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b72fd4822fa570aa2cca8c207ca1d77cdced6c1c91e240c88d09e763610609e')
+sha256sums=('2766b5df4c7946dbab3a552bce8ee94fe2dc84ccae231069f1414361ce0b67c3')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -45,4 +45,7 @@ package() {
   install -Dm644 PROTOCOL.md "$pkgdir/usr/share/doc/$pkgname/PROTOCOL.md"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/protocols" devices/protocols/*.md
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 contrib/completions/opensynapse.bash "$pkgdir/usr/share/bash-completion/completions/opensynapse"
+  install -Dm644 contrib/completions/_opensynapse "$pkgdir/usr/share/zsh/site-functions/_opensynapse"
+  install -Dm644 contrib/completions/opensynapse.fish "$pkgdir/usr/share/fish/vendor_completions.d/opensynapse.fish"
 }
