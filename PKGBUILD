@@ -93,17 +93,17 @@
 # daemon starts and serves N/A (DriverMissing) sections with exit 0.
 
 pkgname=ramsleuth-bin
-pkgver=2.4.28   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
-pkgrel=3
+pkgver=2.4.29   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
+pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT GPL-2.0-only)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
-# v2.4.28: finalized — the sha256 of the published v2.4.28 release
-# tarball (ramsleuth-2.4.28-x86_64.tar.zst) from the official GitHub
+# v2.4.29: finalized — the sha256 of the published v2.4.29 release
+# tarball (ramsleuth-2.4.29-x86_64.tar.zst) from the official GitHub
 # Release, taken from the published .sha256 sidecar.
-sha256sums=('5f7edf754fc960a587bdd724885c5f3d0dca2b9e5cba449f44519f074db4b82a')
+sha256sums=('cfabd8fdebf24d46d4f94ee7851f92575d05743f4d6f81569f57dc6290ad72c6')
 install=ramsleuth-bin.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
