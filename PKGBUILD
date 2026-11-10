@@ -36,8 +36,9 @@
 #                                   step (12) ships it to
 #                                   /usr/share/ramsleuth-intel-dkms/src/)
 #   packaging/ryzen-smu-dkms/     — the vendored ryzen_smu DKMS module
-#   vendor/ryzen-smu/             source tree (the 6 module files frozen at
-#                                 upstream d298366, GPL-2.0-only — a separate
+#   vendor/ryzen-smu/             source tree (the 8 module files (6 frozen
+#                                 at upstream d298366 + 2 APOB additions),
+#                                 GPL-2.0-only — a separate
 #                                 work; + vendor/SUMS.sha256 + vendor/
 #                                 NOTICE.md). Lands in the v2.4.6 re-cut (the
 #                                 sha256sums pin below re-pins to the new
@@ -92,17 +93,17 @@
 # daemon starts and serves N/A (DriverMissing) sections with exit 0.
 
 pkgname=ramsleuth-bin
-pkgver=2.4.26   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
-pkgrel=1
+pkgver=2.4.27   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
+pkgrel=2
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT GPL-2.0-only)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
-# v2.4.26: finalized — the sha256 of the published v2.4.26 release
-# tarball (ramsleuth-2.4.26-x86_64.tar.zst) from the official GitHub
+# v2.4.27: finalized — the sha256 of the published v2.4.27 release
+# tarball (ramsleuth-2.4.27-x86_64.tar.zst) from the official GitHub
 # Release, taken from the published .sha256 sidecar.
-sha256sums=('2417f065660495f9ee1483692d76d17f9d4bfcf0155fd4f26c9328f8bd63000f')
+sha256sums=('060f0325cdca284d25f995e78a3aac27969a6ca3e390f371a4a9ed5e398362f1')
 install=ramsleuth-bin.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
@@ -245,8 +246,9 @@ package() {
     # vendor-first, every file verified against the sibling vendor/SUMS.sha256
     # before any build — zero network; this is what makes the in-app one-click
     # work on a clean ramsleuth-bin install without the extra). The release
-    # tarball carries packaging/ryzen-smu-dkms/vendor/ (the 6 module files
-    # frozen at upstream d298366 + SUMS.sha256 + NOTICE.md) by the release
+    # tarball carries packaging/ryzen-smu-dkms/vendor/ (the 8 module files
+    # (6 frozen at upstream d298366 + 2 APOB additions) + SUMS.sha256 +
+    # NOTICE.md) by the release
     # workflow contract; it lands in the v2.4.6 re-cut (the sha256sums pin
     # above re-pins to the new asset). GUARDED with an existence test: a
     # build against the published v2.4.5 tarball (pre-re-cut, no vendor tree)
