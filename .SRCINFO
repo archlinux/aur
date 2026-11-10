@@ -1,6 +1,6 @@
 pkgbase = camofox-browser
 	pkgdesc = Stealth browser for AI agents with advanced fingerprint spoofing
-	pkgver = 1.18.1
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/jo-inc/camofox-browser
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = camofox-browser
 	depends = sh
 	depends = bash
 	optdepends = yt-dlp: YouTube transcript extraction (fast path)
-	source = camofox-browser-1.18.1.tar.gz::https://github.com/jo-inc/camofox-browser/archive/refs/tags/v1.18.1.tar.gz
-	sha256sums = c511b0d80b0ed088caec171658198dd99aef6e889b07d101b23913a58bb33f5d
+	source = camofox-browser-1.19.0.tar.gz::https://github.com/jo-inc/camofox-browser/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = 9e32d23acbd0c225d95e1e382147f8cb1c71f7669f0a9c7bce7595e2621a8484
 
 pkgname = camofox-browser

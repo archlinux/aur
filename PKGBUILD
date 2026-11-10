@@ -1,7 +1,7 @@
 # Maintainer: Trumpetrespas <email [at] trumpetrespas [dot] com>
 
 pkgname=camofox-browser
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Stealth browser for AI agents with advanced fingerprint spoofing"
 # Other arches may be supported, but are untested. Let me know if another one
@@ -20,7 +20,7 @@ makedepends=('npm')
 optdepends=('yt-dlp: YouTube transcript extraction (fast path)')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jo-inc/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c511b0d80b0ed088caec171658198dd99aef6e889b07d101b23913a58bb33f5d')
+sha256sums=('9e32d23acbd0c225d95e1e382147f8cb1c71f7669f0a9c7bce7595e2621a8484')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
