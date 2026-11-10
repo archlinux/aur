@@ -5,7 +5,7 @@
 pkgname=sourcemod-steamworks
 _name=SM-SteamWorks
 pkgver=1.2.167
-pkgrel=1
+pkgrel=2
 pkgdesc="SteamWorks, a SourceMod extension exposing Steamworks functions (in the addons folder of sourcemod)"
 arch=(x86_64)
 url="https://github.com/alliedmodders/SM-SteamWorks"
@@ -14,8 +14,10 @@ url="https://github.com/alliedmodders/SM-SteamWorks"
 license=(GPL-3.0-only LicenseRef-SourceMod-exception LicenseRef-Steamworks-SDK)
 # libsteam_api.so is the game's (bin/libsteam_api.so)
 depends=(glibc lib32-gcc-libs lib32-glibc libgcc sourcemod)
-# The sources of the installed SourceMod and Metamod:Source, which it's built against
-makedepends=(ambuild clang metamod-source-src python sourcemod-src)
+# The sources of the installed SourceMod and Metamod:Source, which it's built against; SourceMod's
+# from -6 on, whose SafetyHook (the extension's detours) has its fixes (the bundled Zydis.h, no
+# unaligned accesses)
+makedepends=(ambuild clang metamod-source-src python 'sourcemod-src>=1.12.0.7260-6')
 checkdepends=(sourcemod-scripting)
 # The Steamworks SDK upstream builds with (STEAMWORKS_SDK_COMMIT of its CI), 1.32: the extension is
 # written against its API and looks up the newer interfaces it uses itself

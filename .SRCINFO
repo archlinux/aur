@@ -1,7 +1,7 @@
 pkgbase = sourcemod-steamworks
 	pkgdesc = SteamWorks, a SourceMod extension exposing Steamworks functions (in the addons folder of sourcemod)
 	pkgver = 1.2.167
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alliedmodders/SM-SteamWorks
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,7 +12,7 @@ pkgbase = sourcemod-steamworks
 	makedepends = clang
 	makedepends = metamod-source-src
 	makedepends = python
-	makedepends = sourcemod-src
+	makedepends = sourcemod-src>=1.12.0.7260-6
 	depends = glibc
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
