@@ -1,0 +1,4 @@
+[cockpit-sensors]
+source = "github"
+github = "ocristopfer/cockpit-sensors"
+use_latest_release = true
