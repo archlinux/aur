@@ -5,14 +5,14 @@
 # .SRCINFO generated next to it, into the AUR git repository.
 pkgname=sift-reader
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Read the web, aloud, with Kokoro'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sarrietav-dev/sift'
 license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-webengine' 'qt6-wayland')
 makedepends=('git' 'gcc' 'make')
-conflicts=('sift' 'sift-bin' 'sift-git')
+conflicts=('sift' 'sift-bin' 'sift-git' 'sift-reader-bin')
 options=('!debug')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
