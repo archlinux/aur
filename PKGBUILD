@@ -37,14 +37,14 @@ options=(!emptydirs !debug)
 
 source=(
     "$pkgname::git+https://github.com/doandat943/zalo-for-linux.git"
-    "integrate-zadark.js"
     "zalo.sh"
     "zalo.desktop"
 )
-sha256sums=('SKIP'
-    '28722496bda8cfc8f4ca5c310713bf003449b6c7a7f8f72ea1a5e9d42316083e'
+sha256sums=(
+    'SKIP'
     '277f7b54fc65deb7d524537ac73a110c23aab771aabff092d19c114abd305c91'
-'9c692898a06c7d311e1cd2cbe53a4b0a0e5b46a42c69c8320318dce12d48bb47')
+    '9c692898a06c7d311e1cd2cbe53a4b0a0e5b46a42c69c8320318dce12d48bb47'
+)
 
 pkgver() {
     local _src="$srcdir/$pkgname"
@@ -83,7 +83,7 @@ build() {
     node scripts/prepare-zadark.js
     node scripts/prepare-app.js
     node scripts/clean-unused.js
-    node "$srcdir/integrate-zadark.js"
+    node scripts/integrate-zadark.js
 }
 
 package() {
