@@ -1,6 +1,6 @@
 # Maintainer: Grigory Romodanovskiy <greg2008200@gmail.com>
 pkgname=eddiscovery
-pkgver=20.0.5
+pkgver=20.0.6
 pkgrel=1
 epoch=
 pkgdesc="Captains log and 3d star map for Elite Dangerous"
@@ -22,7 +22,7 @@ changelog=
 source=("${pkgname}-${pkgver}::git+${url}#tag=Release_$pkgver"
         "eddiscovery"
         "eddiscovery.desktop")
-md5sums=('a72667b61498786cafff92252195f30f'
+md5sums=('0c00fa69749e3467546a7752d53b2a06'
          '764d0276476fb60618d87c918baca9e3'
          'a81a935726d655d8369897dae396ea53')
 noextract=()
@@ -39,7 +39,7 @@ build() {
   nuget restore
   #sed -i 's/Debug/Release/g' monobuild
   #./monobuild
-  msbuild /p:Configuration=Release EDDiscovery.sln "/p:DefineConstants=\"NO_SYSTEM_SPEECH;MONO\""
+  msbuild /p:Configuration=Release EDDiscovery.sln "/p:DefineConstants=\"NO_SYSTEM_SPEECH;MONO\"" /t:EDDiscovery
   mkdir -p icons
   icotool -x EDDiscovery/Resources/edlogo_3mo_icon.ico -o icons/
 }
