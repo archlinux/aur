@@ -3,8 +3,8 @@
 # Contributor: Jack Chen <redchenjs@live.com>
 
 pkgname=motrix-bin
-pkgver=1.8.19
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 
 pkgdesc="A full-featured download manager (binary version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('gtk3' 'libxcb' 'nss')
 changelog="changelog.md"
 
 source=("https://github.com/agalwood/Motrix/releases/download/v${pkgver}/Motrix_${pkgver}_amd64.deb")
-sha512sums=('8a3dab9c731268c2291f286d8efa7815046bbe00046deb938db061863d3ad3e14ddcb50ba4a7e44ada2c11d196d660bb6a762af4e6e589ddb38692266010e61a')
+sha512sums=('16d3527e3a132250b25b057c513d56958b50edbb633be9b798b3fa674f08b42c93639bbbe1437321ec4e9ba53e23fc49812235feeb95a711a832c280c7113d5f')
 
 package() {
 	tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"

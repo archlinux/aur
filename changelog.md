@@ -1,98 +1,52 @@
-# Name: Motrix v1.8.19 
-### URL: https://github.com/agalwood/Motrix/releases/tag/v1.8.19
-### published at '2023-05-03T07:13:13Z' by agalwood
+# Name: v2.4.1
+### URL: https://github.com/agalwood/Motrix/releases/tag/v2.4.1
+### published at '2026-11-09T17:07:13Z' by github-actions[bot]
 ---
-![release-v1 8 x-banner](https://user-images.githubusercontent.com/1032175/235918777-7063ab93-ff2d-4f4b-a0b5-6a0ef83adc76.png)
+# Motrix 2.4.1
 
-## Release Note
+English | [简体中文](https://github.com/agalwood/Motrix/blob/main/docs/release-notes/2.4.1.zh-CN.md)
 
-* feat: App sidebar adds vibrancy effect on macOS @shatyuka
-* feat: Supports hiding tray icon on macOS @agalwood
-* feat: The download and upload speeds in the basic settings of the preferences support custom input speeds @SammCheese
-* feat: The advanced settings of the preferences support the setting of the RPC listening port @agalwood
-* feat: Show built-in aria2.conf path in advanced settings of preferences @agalwood
-* feat: Add log level settings in advanced settings of preferences @agalwood
-* feat: Release Linux version supporting arm32/arm64 architecture @agalwood
-* feat: Improve preferences, there will be a confirmation prompt when leaving the page without saving the settings @shatyuka
-* feat: Added macOS Universal version, Linux armv7l, arm64 version @agalwood
-* feat: Added Norwegian Bokmal translation @rubjo
-* feat: Added Thai translation @nxanywhere
-* feat: Dutch translation added @nickbouwhuis
-* feat: When the URL input box is not empty when creating a new task, the add task dialog will not be closed by mistake when pressing the Esc key or clicking the mask @shatyuka
-* feat: Support selecting directory from history directory when creating new task @agalwood
-* feat: Support cURL commands with Cookie/Referer information when creating new task @CW-B-W
-* feat: Support adding HTTP authorization request header when creating a new task @RaymondSalim
-* feat: The taskbar shows the overall download progress @shatyuka
+## Changes since 2.4.0
 
-* fix: Tray icon display issue in older versions of macOS @shatyuka
-* fix: There are old wrong items in the task details file list, add a switch to download seeds automatically @dicarne
-* fix: The basic settings of the preference settings failed to modify "Automatically download magnet and torrent content" @agalwood
-* fix: Application interface rendering issue under Linux @agalwood
-* fix: Remove the tooltip of tray on macOS @shatyuka
-* fix: Restarting the app twice when saving preferences @agalwood
-* fix: Improved German translation @nickbouwhuis, @MagicLike
-* fix: Improved Persian translation @eshagh79
-* fix: Improved Traditional Chinese translation @tso1158687, @5idereal
-* fix: Improve English translation @nesaku
-* fix: Improved Spanish translation @ez-me
-* fix: Improve Vietnamese translation @CDzungx
-* fix: Improve Korean translation @quiple
-* fix: Parsing issues about Cookie/Referer when creating a new task @CW-B-W
-* fix: Showing apps doesn't restore minimized windows @shatyuka
-* fix: Update overall dependencies, Electron upgrade to version 22 @agalwood
-* fix: The border color is not changed after the task item is selected in dark mode @agalwood
-* fix: App window resizing issue @shatyuka
-* fix: The event processing problem of canceling the update during automatic update @agalwood
+- Bundle **aria2 1.37.0-motrix.24**. On Windows, the engine tries the remaining resolved addresses for a host after a connection fails. It reports a network error if all candidates fail. Existing DNS and IPv6 defaults are preserved.
+- Upgrade to **i18next 27.0.1** and **react-i18next 18.0.1**. The desktop app, Web UI and Server CLI continue to fall back to `en-US` for missing translations.
+- Refresh the form validation, IP database, proxy and WebSocket dependencies, along with the Vite build tools and the jsdom test environment.
 
-* refactor: Optimized aria2.conf default configuration @agalwood
-* refactor: The built-in Aria2 is upgraded to version 1.36, and it is compatible with various system architectures of Windows, macOS, and Linux @agalwood
-* refactor: Improved auto-update progress bar display @agalwood
+## Upgrade compatibility
 
-**Full Changelog**: https://github.com/agalwood/Motrix/compare/v1.6.11...v1.8.19
+**Back up your profile and download files before upgrading.** The bundled engine
+uses SQLite **schema 6**. When upgrading an older engine database, retain its
+complete pre-upgrade backup; older engines cannot open schema 6. Stop all engines
+before restoring a verified backup to a separate path for a downgrade. Do not
+reset or delete the upgraded database as a substitute for recovery.
 
-## 更新日志
+Users migrating from Motrix v1 should follow the
+[migration guide](https://github.com/agalwood/Motrix/blob/v2.4.1/docs/legacy-migration.md)
+and retain the original profile and engine database backups.
 
-* 新特性: macOS 版支持隐藏托盘图标 @agalwood
-* 新特性: macOS 版本应用侧边栏增加 vibrancy 效果 @shatyuka
-* 新特性: 偏好设置的基础设置里下载和上传速度支持自定义输入速度 @SammCheese
-* 新特性: 偏好设置的进阶设置支持 RPC 监听端口的设置 @agalwood
-* 新特性: 偏好设置的进阶设置里显示内置的 aria2.conf 路径 @agalwood
-* 新特性: 偏好设置的进阶设置里添加日志级别设置 @agalwood
-* 新特性: 发布支持 arm32/arm64 架构的 Linux 版本 @agalwood
-* 新特性: 改进偏好设置，设置未保存离开页面时会有确认提示 @shatyuka
-* 新特性: 新增 macOS Universal 版本、Linux armv7l、arm64 版本 @agalwood
-* 新特性: 新增挪威博克马尔语翻译 @rubjo
-* 新特性: 新增泰语翻译 @nxanywhere
-* 新特性: 新增荷兰语翻译 @nickbouwhuis
-* 新特性: 新建任务时URL输入框不为空的情况下，按下esc键或点击遮罩时不会误关闭弹层 @shatyuka
-* 新特性: 新建任务时支持从历史目录选择目录 @agalwood
-* 新特性: 新建任务时支持带有 Cookie/Referer 信息的的 cURL 命令 @CW-B-W
-* 新特性: 新建任务时支持添加 HTTP 授权请求头 @RaymondSalim
-* 新特性: 任务栏显示整体下载进度 @shatyuka
+## Downloads and updates
 
-* 修复: 在旧版本 macOS 托盘图标的显示问题 @shatyuka
-* 修复: 任务详情文件列表有旧的错误项目，增加自动下载种子的开关 @dicarne
-* 修复: 偏好设置的基础设置修改“自动开始下载磁力链接、种子内的文件”失效的问题 @agalwood
-* 修复: 在 Linux 下 应用界面渲染错误问题 @agalwood
-* 修复: 移除了 macOS 版本托盘图标提示 @shatyuka
-* 修复: 在保存偏好设置时重新启动应用程序两次的问题 @agalwood
-* 修复: 改进德语翻译 @nickbouwhuis, @MagicLike
-* 修复: 改进波斯语翻译 @eshagh79
-* 修复: 改进繁体中文翻译 @tso1158687, @5idereal
-* 修复: 改进英文翻译 @nesaku
-* 修复: 改进西班牙语翻译 @ez-me
-* 修复: 改进越南语翻译 @CDzungx
-* 修复: 改进韩语翻译 @quiple
-* 修复: 新建任务时关于 Cookie/Referer 的解析问题 @CW-B-W
-* 修复: 显示应用时不会还原最小化的窗口 @shatyuka
-* 修复: 更新整体依赖，Electron 升级到 22 版本 @agalwood
-* 修复: 深色模式下任务项选定之后边框颜色不显示的问题 @agalwood
-* 修复: 应用窗口大小调整问题 @shatyuka
-* 修复: 自动更新时取消更新的事件处理问题 @agalwood
+Desktop packages support macOS 13 or later, Windows 10 or later, and Linux, with
+native x64 and ARM64 builds. No 32-bit desktop packages are provided. Official
+macOS packages require signing and notarization. Windows NSIS installers and ZIP
+archives are unsigned and may trigger SmartScreen; use official Release downloads.
 
-* 重构: 优化了 aria2.conf 默认配置 @agalwood
-* 重构: 内置的 Aria2 升级为 1.36 版本，并适配了 Windows、macOS、Linux 多种系统架构 @agalwood
-* 重构: 改善了自动更新进度条显示 @agalwood
+Stable publication updates both `latest*.yml` and `beta*.yml` feeds to 2.4.1.
+Flatpak bundles and Native Host companions remain separate downloads. Snap
+availability requires verified Store publication to edge and promotion of the
+same amd64/arm64 revisions through candidate to stable.
 
-**完整变更日志**: https://github.com/agalwood/Motrix/compare/v1.6.11...v1.8.19
+Server images use `docker.io/motrixapp/motrix-server:2.4.1` and
+`ghcr.io/agalwood/motrix-server:2.4.1`. After public multi-platform runtime
+verification, `2.4`, `2`, `stable`, and `latest` advance to the same verified digest.
+See the [Docker Server guide](https://github.com/agalwood/Motrix/blob/v2.4.1/docs/docker-server.md).
 
+[Full changelog](https://github.com/agalwood/Motrix/compare/v2.4.0...v2.4.1)
+
+
+## What's Changed
+* fix(engine): bundle aria2 with windows connect failover by @agalwood in https://github.com/agalwood/Motrix/pull/2515
+* chore(release): upgrade translation dependencies and prepare 2.4.1 by @agalwood in https://github.com/agalwood/Motrix/pull/2516
+
+
+**Full Changelog**: https://github.com/agalwood/Motrix/compare/v2.4.0...v2.4.1
