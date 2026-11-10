@@ -1,7 +1,7 @@
 pkgbase = dux-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO (git)
 	pkgver = 2.1.0.r0.g7627111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duxlabs-dev/dux-shell
 	install = dux-shell-git.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dux-shell-git
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	depends = quickshell
+	depends = dux-qt-base
 	depends = accountsservice
 	optdepends = dux-gop: System monitoring backend for the process list and resource widgets
 	optdepends = cava: Audio visualizer

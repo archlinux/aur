@@ -4,12 +4,12 @@ pkgname=dux-shell-git
 _pkgname=dux-shell
 _binname=dms
 pkgver=2.1.0.r0.g7627111
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO (git)'
 arch=(x86_64 aarch64)
 url="https://github.com/duxlabs-dev/$_pkgname"
 license=(MIT)
-depends=(quickshell
+depends=(dux-qt-base
          accountsservice)
 optdepends=('dux-gop: System monitoring backend for the process list and resource widgets'
             'cava: Audio visualizer'
