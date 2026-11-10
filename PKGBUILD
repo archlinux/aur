@@ -2,29 +2,28 @@
 
 pkgname=i3status-rust-full-git
 shortname="${pkgname%-full-*}"
-pkgver=0.35.0.r3635.g8f1bb3303
+pkgver=0.40.1.r3756.g13deff832
 pkgrel=1
-pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
+pkgdesc='Very resource-friendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
 license=('GPL-3.0-only')
 depends=('libpulse' 'lm_sensors' 'libpipewire' 'notmuch')
-makedepends=('git' 'rust' 'pandoc' 'clang')
+makedepends=('git' 'rust' 'pandoc' 'clang' 'cmake')
 optdepends=('alsa-utils: for the volume block'
             'bluez: for the bluetooth block'
-            'fakeroot: for the pacman block to show pending updates'
+            'fakeroot: for the packages block (pacman) to show pending updates'
+            'fontconfig: for the --doctor option to inspect installed fonts'
             'kdeconnect: for the kdeconnect block'
             'pipewire: for the privacy block'
             'powerline-fonts: for all themes using the powerline arrow char'
             'pulseaudio: for the volume block'
-            'speedtest-cli: for the speedtest block'
             'otf-font-awesome: for the awesome icons'
             'upower: for the battery block')
 provides=("${shortname}")
 conflicts=("${shortname}")
 install="${shortname}.install"
 source=("${shortname}::git+$url")
-options=('!lto')
 sha1sums=('SKIP')
 options=(!lto)
 
@@ -44,7 +43,7 @@ build() {
   export CARGO_TARGET_DIR=target
     myflags=(
     --release
-    --features 'pulseaudio maildir pipewire icu_calendar notmuch'
+    --features 'pulseaudio maildir pipewire icu_calendar notmuch speedtest'
     --no-default-features
   )
   cargo build "${myflags[@]}" --package i3status-rs --package xtask
