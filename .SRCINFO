@@ -1,7 +1,7 @@
 pkgbase = ttf-tiktok-sans-hinted
 	pkgdesc = TikTok Sans (Google Fonts), a four-axis (opsz, slnt, wdth, wght) sans with Greek and Cyrillic, tuned with fonttune (optionally static / Nerd Fonts patched)
 	pkgver = 4.000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.google.com/specimen/TikTok+Sans
 	arch = any
 	license = OFL-1.1

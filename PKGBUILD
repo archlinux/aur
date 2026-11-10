@@ -5,7 +5,7 @@ _gmver=4.000
 _gfcommit=2750b521bd22ce141f12617194ab0e04cf5d12d5
 _nfver=3.5.1
 pkgver="${_gmver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='TikTok Sans (Google Fonts), a four-axis (opsz, slnt, wdth, wght) sans with Greek and Cyrillic, tuned with fonttune (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://fonts.google.com/specimen/TikTok+Sans'
@@ -46,7 +46,8 @@ sha256sums=('0e7f0a3e924c9a86478fc6fc2946de2e4ab8fc704ed72ee40434ade94bb9b0c6'
 #   STATIC_WIDTHS="100"           wdth values 75 100 125 150 (default 100). Others
 #                  become their own family (Condensed, Expanded, ExtraExpanded)
 #   STATIC_ITALIC=true|false      also cut slnt=-6 italics (default true)
-#   STATIC_OPSZ=N                 fixed optical size 12-36 (default 14)
+#   STATIC_OPSZ=N|auto            fixed optical size 12-36 (default auto: the GNOME
+#                                 interface size in points, what Pango gives the VF)
 #   NERD_PATCH=true               patch with Nerd Fonts glyphs (default false);
 #                                 implies TS_VARIANT=static
 
@@ -131,7 +132,7 @@ prepare() {
     cp "$_vf" "$srcdir/selected/TikTokSansVariable.ttf"
   else
     local _weights="${STATIC_WEIGHTS:-300 400 500 600 700 800 900}"
-    local _widths="${STATIC_WIDTHS:-100}" _opsz="${STATIC_OPSZ:-14}"
+    local _widths="${STATIC_WIDTHS:-100}" _opsz="${STATIC_OPSZ:-auto}"
     _ask STATIC_ITALIC "Also cut the italic (slnt=-6)" y
     local _d _name
     local -a _sfx
