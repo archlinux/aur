@@ -1,7 +1,7 @@
 pkgbase = hyprliquid
 	pkgdesc = A plugin for Hyprland that brings Liquid Glass, Acrylic, Mica, and Aero material effects to windows and layer surfaces.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zaregototsukai/hyprliquid
 	arch = x86_64
 	license = BSD 3-Clause
@@ -9,7 +9,7 @@ pkgbase = hyprliquid
 	makedepends = stb
 	makedepends = hyprwayland-scanner
 	depends = hyprland>=0.57.0
-	source = hyprliquid-0.3.0-2.tar.gz::https://github.com/zaregototsukai/hyprliquid/archive/refs/tags/v0.3.0.tar.gz
+	source = hyprliquid-0.3.0-3.tar.gz::https://github.com/zaregototsukai/hyprliquid/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = adbf9b8fea4f280f878796d15c1d6305f3b61ba7891f7fb5884164019052b657
 
 pkgname = hyprliquid

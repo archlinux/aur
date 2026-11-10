@@ -2,7 +2,7 @@
 
 pkgname=hyprliquid
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A plugin for Hyprland that brings Liquid Glass, Acrylic, Mica, and Aero material effects to windows and layer surfaces."
 arch=('x86_64')
 depends=('hyprland>=0.57.0')
