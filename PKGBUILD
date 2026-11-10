@@ -1,7 +1,7 @@
 # Maintainer: nazze <nazze at qq dot com>
 # SPDX-License-Identifier: 0BSD
 pkgname=agentero-cli-bin
-pkgver=0.15.3
+pkgver=0.15.4
 pkgrel=1
 pkgdesc='Headless Vault and Catalog CLI for Agentero (official binary)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('agentero-cli')
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/agentero-cli-$pkgver-x86_64-unknown-linux-gnu.tar.gz"
         "LICENSE-$pkgver::$url/raw/refs/tags/v$pkgver/LICENSE")
-sha256sums=('52ddff3004232df5007792f0aa4c8a6a7dbf9f5a13d2e723717a9e395fc7cb16'
+sha256sums=('755967f2f198ad0b52c4dacfd8acb35124d15e4be98eb6abcd95272870a03fbd'
             'f2b7f0cc6fb11f63654ac171d46640de6a8f63407a1a9fa77181a5c43a841fcf')
 
 package() {
