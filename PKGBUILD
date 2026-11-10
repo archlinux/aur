@@ -23,9 +23,10 @@ sha256sums_i686=('defb8cb764927f446172af910627e2539bb82ce3c28c41a94289c1e99cb2c8
 sha256sums_armv7h=('e0a21ff0b05a1c4b08515a9450a4fdf4a5282b6f77ac55c9410f8347b021dca7')
 sha256sums_aarch64=('754c0d2cf63b6ff24c5108a813adc2f75358955d3a9a3c0ec5e5a08dcd096578')
 sha256sums_armeabi=('3285c4ea086fa1136b5a54049a5afd66babe927d97948e56f32b0842c7b2c3ed')
+_source="${provides}_${pkgver}_*.deb"
 
 package() {
-    bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
+    bsdtar -Oxf ${_source} data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
 
     mv "${pkgdir}/usr/sbin/nordvpnd" "${pkgdir}/usr/bin"
     rm -r "${pkgdir}/etc/init.d"
