@@ -157,7 +157,7 @@ prepare() {
       echo "==> STATIC_OPSZ auto: $_opsz pt (this machine's GNOME interface font size)"
     fi
     # what statics cuts (it clamps to the axis), so the recorded value is the real one
-    _opsz=$(python -c 'import math, sys; v = float(sys.argv[1]); assert math.isfinite(v); print(f"{min(max(v, 8), 144):g}")' "$_opsz" 2>/dev/null) ||
+    _opsz=$(python -c 'import math, sys; v = float(sys.argv[1]); math.isfinite(v) or sys.exit(1); print(f"{min(max(v, 8), 144):g}")' "$_opsz" 2>/dev/null) ||
       { echo "Error: STATIC_OPSZ='${STATIC_OPSZ}' is not a number or auto." >&2; exit 1; }
     _ask STATIC_ITALIC "Also cut the italic (slnt=-10)" y
     local _d _name
