@@ -2,8 +2,8 @@
 # Contributor: Bruce Zhang
 pkgname=sqlark-bin
 _pkgname=SQLark
-pkgver=4.2
-_subver=902112
+pkgver=4.3
+_subver=116657
 _electronversion=40
 pkgrel=1
 pkgdesc="SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis."
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://download.sqlark.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_x86_64.rpm")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('d1147106172d46fdf5e45f7385b892463aca81a1e2ea51292130451c7dad2434')
-sha256sums_x86_64=('e085e33e0342f9b48438e0933adeb05024b5e26971b0b18c95d7ef14db2987e5')
+sha256sums_aarch64=('20687b7625cdf839095b3a08fb162f2a287201b6f9e164f1c63ac014513773f3')
+sha256sums_x86_64=('47de4f3f0913aad7ed09bd412b3d3f310dc038e536dce014d6341a3b61807bf9')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
