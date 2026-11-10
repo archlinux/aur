@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=skykeep-bin
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="Native iCloud apps: Notes, Reminders, Calendar, Contacts, Drive and Photos, offline and in sync (upstream binary)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('skykeep')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Skykeep_${pkgver}_amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('410b381b24f7f346220ae5471fa8adcbf11af21a4216e0bdd91ff08f6e7438f9')
+sha256sums=('dc7928d900dfc204790d507719233b37f68aebce4daf8ecc8753dc9c5298a31b')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
