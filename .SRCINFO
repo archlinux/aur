@@ -1,0 +1,21 @@
+pkgbase = prot-desktop
+	pkgdesc = prot desktop app for managing development servers
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/terastal-hq/prot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	depends = prot
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	options = !lto
+	options = !debug
+	source = prot-desktop-0.2.1.tar.gz::https://github.com/terastal-hq/prot/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 8681ab4cacde3a8cd919f8c11ae918a104bfd04a9b34a189c1de2b8eceb35fae
+
+pkgname = prot-desktop
