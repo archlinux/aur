@@ -101,8 +101,7 @@ license=(MIT GPL-2.0-only)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
 # v2.4.25: finalized — the sha256 of the published v2.4.25 release
 # tarball (ramsleuth-2.4.25-x86_64.tar.zst) from the official GitHub
-# Release, taken from the published .sha256 sidecar. Replaces the
-# v2.4.24 pin (ff0588b6cd479b8ea0b99eb5d24e1900c4cc6e154e44c1cd10ba709bc94007b7).
+# Release, taken from the published .sha256 sidecar.
 sha256sums=('c173de9bcaac9b643f35bb048ea78f4bcb249aa1c0785847bb8b22f63f4b4c8d')
 install=ramsleuth-bin.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
