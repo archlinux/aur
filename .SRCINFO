@@ -1,6 +1,6 @@
 pkgbase = superset-bin
 	pkgdesc = Code Editor for the AI Agents Era - Run an army of Claude Code, Codex, etc. on your machine
-	pkgver = 2.0.6
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://superset.sh
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = superset-bin
 	depends = hicolor-icon-theme
 	provides = superset-desktop
 	conflicts = superset-desktop-bin
-	noextract = superset-2.0.6-x86_64.AppImage
+	noextract = superset-2.0.8-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = superset-2.0.6-x86_64.AppImage::https://github.com/ParadevAI/Paradev/releases/download/desktop-v2.0.6/superset-2.0.6-x86_64.AppImage
-	sha256sums = 9796fd0900e4944786a237c2aec8c0b080afeb4d9731ca7f7763279aa2b3895e
+	source = superset-2.0.8-x86_64.AppImage::https://github.com/ParadevAI/Paradev/releases/download/desktop-v2.0.8/superset-2.0.8-x86_64.AppImage
+	sha256sums = ad4641f9eeab84534855a64f6c1935496337f1cb1295681e33caaf8681cc33ee
 
 pkgname = superset-bin
