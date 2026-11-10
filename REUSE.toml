@@ -78,3 +78,8 @@ SPDX-License-Identifier = "BSD-3-Clause"
 path = ["safetyhook-zydis-header.patch", "safetyhook-thunk-unaligned.patch"]
 SPDX-FileCopyrightText = "cursey"
 SPDX-License-Identifier = "BSL-1.0"
+
+[[annotations]]
+path = "sourcepawn-byte-buffer.patch"
+SPDX-FileCopyrightText = "David Anderson"
+SPDX-License-Identifier = "GPL-3.0-or-later"

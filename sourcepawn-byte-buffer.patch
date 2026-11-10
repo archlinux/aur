@@ -1,0 +1,22 @@
+--- a/sourcepawn/shared/byte-buffer.h
++++ b/sourcepawn/shared/byte-buffer.h
+@@ -45,7 +45,7 @@
+   bool write(const T& value) {
+     if (!ensureSpace(sizeof(value)))
+       return false;
+-    *reinterpret_cast<T*>(buffer_pos_) = value;
++    memcpy(buffer_pos_, &value, sizeof(value));
+     buffer_pos_ += sizeof(value);
+     return true;
+   }
+@@ -53,7 +53,9 @@
+   bool writeBytes(const void* data, size_t length) {
+     if (!ensureSpace(length))
+       return false;
+-    memcpy(buffer_pos_, data, length);
++    // Empty sections pass no data, and memcpy must not be passed a null pointer even for 0 bytes
++    if (length)
++      memcpy(buffer_pos_, data, length);
+     buffer_pos_ += length;
+     return true;
+   }
