@@ -1,7 +1,7 @@
 # Maintainer: Joomzie <tntecyu74 at mozmail dot com>
 pkgname=bbhost-desktop-bin
 _pkgname=bbhost
-pkgver=0.2.29
+pkgver=0.2.30
 pkgrel=1
 pkgdesc="Definitive Bloodborne PC Experience"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=("vulkan-icd-loader" "curl" "zlib")
 provides=('bbhost')
 source=("https://github.com/droogie/bbhost/releases/download/v${pkgver}/bbhost-linux-v${pkgver}.tar.gz"
         "bbhost.png")
-sha256sums=('e0395412164f87faf429f82fc5da81d56839d62a7edeecd3758c6615582e43cd'
+sha256sums=('b90cd9430ade7ce053a9963963fcf429e14b1f0bb4c9b5d5baaf831292bdc458'
             '67816f5b2a1ce724baa48a49cf55b5119bd5108bfae8ad4441fa3d48b133b16f')
 
 prepare() {
@@ -39,6 +39,8 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/${_pkgname}
     ln -s /opt/${_pkgname}/LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/
     ln -s /opt/${_pkgname}/licenses/dxc "$pkgdir"/usr/share/licenses/${_pkgname}/
+    ln -s /opt/${_pkgname}/licenses/ngx_bridge "$pkgdir"/usr/share/licenses/${_pkgname}/
+    ln -s /opt/${_pkgname}/licenses/upscaler_bridge "$pkgdir"/usr/share/licenses/${_pkgname}/
 
     # Install icon (Credit: aetherium. @ steamgriddb.com) and .desktop file
     install -Dm644 "bbhost.png" -t "$pkgdir/usr/share/pixmaps"
