@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 pkgdesc="Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config"
@@ -37,8 +37,8 @@ backup=(etc/pam.d/uq-lock etc/pam.d/uq-lock-fingerprint)
 # The release asset, not GitHub's /archive/ tarball: that one is generated on demand and its bytes
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
-# Replaced with the release asset's sha256 for each tag (docs/releasing.md); SKIP until v0.2.0.
-sha256sums=('e26496850b444ba0f3d5aae0291bbf9db69e403c1354078ccd1d0161d16ab0a1')
+# The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
+sha256sums=('c87c9d3b7770df91e20b568a3383933371c1c63cbd5750ed8ac12d4069f1ef54')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
