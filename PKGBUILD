@@ -3,8 +3,8 @@
 
 _pkgname=hermes-agent
 pkgname=python-${_pkgname}
-tag=0.23.0
-pkgver=0.23.0
+tag=0.23.1
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
@@ -45,7 +45,7 @@ source=(
     "${url}/archive/refs/tags/v${tag}.tar.gz"
 )
 sha256sums=(
-    '4879a10c7f125281ad88e9f2c339c807fd59c6f40588bdcd652781e9425320fd'
+    '52a8eb321f368576034f40595491abf9646b60c3861eee0cf45f610e5faa9bb6'
 )
 
 prepare() {
