@@ -1,5 +1,5 @@
 pkgname=diylc
-pkgver=6.9.0
+pkgver=6.10.0
 pkgrel=1
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
     "diylc.desktop"
     "bancika-diylc.xml"
 )
-sha256sums=('c545caa6211cb4c9c3523d47963e85e658a8353855d613d7e3bc15a7bfcc1a92'
+sha256sums=('630b80ed0158dfe1d93a4bc76e9fe65761f3046e22635e2aad816d27f03e00c6'
             '74ab218dcf32c54b518614705127cfe22596754a73da80afa147d764cc7bd1df'
             'ab080ea3c5baf0dc310f13ae269b9ff81944bb1e6c24173269c047887ebf33b1'
             '17463b5025126faf458a9eda0a84f38dbc1e084470c9633ba9660ef4eb3fcca8')
