@@ -4,8 +4,8 @@
 
 pkgname=dotnet-azure-core
 _nugetid=Azure.Core
-pkgver=1.64.0
-pkgrel=2
+pkgver=1.65.0
+pkgrel=1
 pkgdesc="Shared primitives, abstractions and helpers for .NET Azure SDK client libraries, Azure.Core (NuGet package)"
 arch=(any)
 url='https://github.com/Azure/azure-sdk-for-net'
@@ -22,7 +22,7 @@ makedepends=(
 checkdepends=("aspnet-runtime-$_dotnetsdkver")
 # The commit the package was published from (tag Azure.Core_1.64.0), and the official build of it,
 # see the file version 1.6400.26.52605 of its assemblies (encoding the date and build number)
-_commit="254a1b693af968afee40958e77d0762b44a1b13c"
+_commit="8523f10892616eea21961bae699420ddd2366b6a"
 _officialbuildid="20261026.5"
 # The recordings the tests play back, which upstream keeps in a separate repository, see
 # sdk/core/Azure.Core/assets.json
@@ -30,10 +30,10 @@ _assetscommit="3adf93d405a7f3fcb2f99fe9dd519fa4d86eb480"
 source=("azure-sdk-for-net-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "azure-sdk-assets-$_assetscommit.tar.gz::https://github.com/Azure/azure-sdk-assets/archive/$_assetscommit.tar.gz"
   "azure-core-tests-no-broker.patch")
-sha512sums=('8392aaf82ef21544a9eae17501eaff12085fbd5f3d70bb3d4854b01a30cbaf66340e64eb83819b19cce5256638459075f7b650cc33e07887d3561d123edc4abe'
+sha512sums=('3eb63b86ff4a3a63ee7c249837a9296806aed3328b43d764b7bb3c49c1a1349170476e1aff2e4cf4e98b1e63438e07221f5d018334a769d4eeb3b643751ae694'
   '05c66fd5fd5ec24b7dee5642c9ec7aaaf871d7ff92c6790ad997bac591c1526b173623fe125a0188c221c53ee947e6881036d3bae63fc551f0ad2f8e0cd21485'
   '9821a7e046bbf11c4bc1e2e065d26a23c45fa946902efa0b3b046f861e05b1aa0463f8b0ea721d39ce15bb90627bd6d00e858bff4a26b414a77d86646a4648d3')
-b2sums=('1045e4f6a071a58fd858cb44212bd25c308fcdc391667f25e9b68f51b62b3ceec13411fb6957c3f9c37127f2b7d60cc23d6dae0d7f547eabe2896dea8e3cbeba'
+b2sums=('8b0c5180ae502583c6eb72538ced2162952f5062eddfef555df8ed2056d37fb683ffe1f2117ce5301c58dc65ae50701de112040d99e8986a62e28aadd3c54488'
   'ed564f1dc84dfbdd2b47b51b428d9a23115fd052cd64eb42a0211543da022b568dae2359cf6b755f9d35987a4d58a3a63570b1a7231a68996c92302c66618eae'
   'b4c5b6b0e9ea0b8c58b876875a8a54c78a0bb628bcc756580b3eaf583870c4c0030e13d686e453ceefb09e17c11448a4db97e2c71352e995ad94b23a65539099')
 
