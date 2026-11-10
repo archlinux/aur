@@ -26,7 +26,7 @@ package() {
   install -Dm644 "${srcdir}/license.html" "${pkgdir}/usr/share/licenses/$pkgname/license.html"
 
   install -d "${pkgdir}/etc/profile.d/"
-  echo 'append_path "/opt/android-sdk/platform-tools"' >"${pkgdir}/etc/profile.d/${pkgname}.sh"
+  echo 'append_path "/opt/android-sdk/platform-tools"' >"${pkgdir}/etc/profile.d/${_pkgname}.sh"
   echo 'setenv PATH "${PATH}:/opt/android-sdk/platform-tools"' >"${pkgdir}/etc/profile.d/${_pkgname}.csh"
   chmod 755 "${pkgdir}/etc/profile.d/${_pkgname}".{sh,csh}
 }
