@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.4.12
+pkgver=3.4.13
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -37,10 +37,10 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('e73f0d3dc6fa50a63f1f7f3c4d5f0b57e075db5333db4009a426b26d1970a758'
+sha256sums=('0613470742cc0c94cdbc5e392a0343d71c0b8888f0a5e0c00258353d412359ff'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -100,6 +100,7 @@ prepare() {
     npm run bootstrap -- --scope=web
     npm run bootstrap -- --scope=desktop
     cd "$(_get_project_dir)/apps/desktop"
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     npm install sqlite-better-trigram
 }
 build() {
@@ -110,7 +111,6 @@ build() {
     export NODE_ENV=production
     npm run tx @notesnook/web:build:desktop
     cd apps/desktop
-    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     npm run bundle
     cp -r "$(_get_project_dir)/apps/web/build" "$(_get_project_dir)/apps/desktop"
     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config=electron-builder.config.js"
