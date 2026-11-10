@@ -14,6 +14,7 @@ Environment=HERMES_DISABLE_LAZY_INSTALLS=1
 ExecStart=/usr/bin/hermes gateway run
 Restart=on-failure
 RestartSec=10s
+TimeoutStopSec=90s
 
 # AppArmor profile
 AppArmorProfile=hermes-agent-hardening-%i

@@ -35,7 +35,13 @@ post_install() {
 post_upgrade() {
     /usr/bin/hermes-instance regenerate --all 2>/dev/null || true
     systemctl daemon-reload
+    echo ""
+    echo "==> hermes-agent-hardening upgraded."
+    echo "    Restart the gateway to apply unit and profile changes:"
+    echo "      systemctl restart hermes-gateway@hermes.service"
+    echo ""
 }
+
 
 post_remove() {
     # The helper scripts are already gone at this point, so clean up inline.

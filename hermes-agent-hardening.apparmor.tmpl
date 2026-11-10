@@ -20,6 +20,7 @@ profile hermes-agent-hardening-$INSTANCE /opt/hermes-agent/venv/bin/python flags
 
   # Hermes Agent packaged runtime and its Python virtual environment.
   /opt/hermes-agent/** mr,
+  /opt/hermes-agent/ r,
   # The launcher execs the venv interpreter; ix preserves the profile.
   /opt/hermes-agent/venv/bin/python ix,
 
@@ -29,6 +30,16 @@ profile hermes-agent-hardening-$INSTANCE /opt/hermes-agent/venv/bin/python flags
   # Hermes-owned state: config, memory, sessions, WebUI state, SSH key,
   # known_hosts, and its dedicated workspace.
   owner /var/lib/$INSTANCE/** rwkm,
+  /var/lib/$INSTANCE/ r,
+  # Hermes venv interpreters and entry-point scripts.
+  # Glob covers all install hashes and all environment UUIDs so this
+  # doesn't break on agent updates.
+  /var/lib/$INSTANCE/.hermes/installs/*/environments/*/venv/bin/hermes ix,
+  /var/lib/$INSTANCE/.hermes/installs/*/environments/*/venv/bin/python* ix,
+
+  # uv-managed tool binaries (e.g. graphify-mcp visible in hermes-agent-nas)
+  /var/lib/hermes/.local/share/uv/tools/*/bin/* ix,
+
 $EXTRA_RULES
   # Python/system shared libraries.
   /usr/lib/** mr,
@@ -42,9 +53,16 @@ $EXTRA_RULES
   /usr/sbin/** ix,
   /sbin/** ix,
 
+  # TTY access for interactive shell operations.
+  /dev/tty rw,
+
+  # System-installed hermes binary (package-manager installed).
+  /usr/bin/hermes r,
+
   # Read-only host inspection.
   /etc/** r,
   /var/log/** r,
+  /proc/ r,
   /proc/** r,
   /sys/** r,
 

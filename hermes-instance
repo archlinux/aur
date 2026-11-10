@@ -60,9 +60,8 @@ done
 [[ -n "$INSTANCE" ]] || INSTANCE="hermes"
 
 list_instances() {
-    systemctl list-unit-files --no-legend 'hermes-gateway@*.service' 2>/dev/null \
-        | awk '$2 == "enabled" {print $1}' \
-        | sed 's/^hermes-gateway@//; s/\.service$//'
+    command ls /etc/systemd/system/multi-user.target.wants/hermes-gateway@*.service 2>/dev/null \
+        | sed 's/.*hermes-gateway@//; s/\.service$//'
 }
 
 enable_instance() {
