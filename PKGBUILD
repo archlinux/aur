@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=2.0.9.r1432.g42e95e5
-_electronversion=44
+pkgver=2.0.9.r1758.gfe8c911
+_electronversion=45
 _nodeversion=24
 pkgrel=1
 pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
@@ -41,7 +41,7 @@ source=(
 )
 sha256sums=('SKIP'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
