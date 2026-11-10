@@ -1,6 +1,6 @@
 pkgbase = designcraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe InDesign
-	pkgver = 0.17.2
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://getartcraft.com/apps/designcraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = designcraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/designcraft/archive/refs/tags/v0.17.2/designcraft-0.17.2.tar.gz
-	sha256sums = 73fde84d7142ab05d9069bdbf9929aaa4747b1ce3c6a820c3317c79f5d0653fe
+	source = https://github.com/storytold/designcraft/archive/refs/tags/v0.19.0/designcraft-0.19.0.tar.gz
+	sha256sums = b67858d003db4cc3324bbafebf077b3ffa7314dc37fa4cffbd190876a7a0e4da
 
 pkgname = designcraft
 	depends = glibc
