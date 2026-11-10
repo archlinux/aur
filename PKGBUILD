@@ -50,7 +50,7 @@ sha256sums=('0e7f0a3e924c9a86478fc6fc2946de2e4ab8fc704ed72ee40434ade94bb9b0c6'
 #   STATIC_OPSZ=N|auto            fixed optical size 12-36 (default auto: the GNOME
 #                                 interface size in points, what Pango gives the VF,
 #                                 read when it builds: a clean chroot or a non-GNOME
-#                                 desktop reads GNOME's default, 11; set N for a fixed
+#                                 desktop reads GNOME's default 11, cut at 12; set N for a fixed
 #                                 cut). The value used is in /usr/share/doc/$pkgname/STATIC_OPSZ
 #   NERD_PATCH=true               patch with Nerd Fonts glyphs (default false);
 #                                 implies TS_VARIANT=static
@@ -144,6 +144,9 @@ prepare() {
         { echo "Error: this fonttune cannot resolve STATIC_OPSZ=auto; update it or set STATIC_OPSZ=N." >&2; exit 1; }
       echo "==> STATIC_OPSZ auto: $_opsz pt (this machine's GNOME interface font size)"
     fi
+    # what statics cuts (it clamps to the axis), so the recorded value is the real one
+    _opsz=$(python -c 'import sys; v = float(sys.argv[1]); assert v == v; print(f"{min(max(v, 12), 36):g}")' "$_opsz" 2>/dev/null) ||
+      { echo "Error: STATIC_OPSZ='${STATIC_OPSZ}' is not a number or auto." >&2; exit 1; }
     _ask STATIC_ITALIC "Also cut the italic (slnt=-6)" y
     local _d _name
     local -a _sfx

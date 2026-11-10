@@ -58,7 +58,7 @@ Chromium και τα Electron εξαιρούνται με `prgname`: σε device
   κι αν διαλέξεις hint preset. Για ξανά-hinting διάλεξε static.
 - **STATIC_OPSZ:** προεπιλογή `auto`, το μέγεθος της γραμματοσειράς διεπαφής του
   GNOME σε pt (ό,τι δίνει το Pango στο opsz του variable), διαβασμένο στο
-  build· σε καθαρό chroot ή εκτός GNOME είναι το 11 του GNOME. Η τιμή που
+  build· σε καθαρό chroot ή εκτός GNOME είναι το 11 του GNOME, που κόβεται στο 12 (το ελάχιστο του άξονα). Η τιμή που
   χρησιμοποιήθηκε γράφεται στο `/usr/share/doc/ttf-tiktok-sans-hinted/STATIC_OPSZ`.
 - Το Nerd Fonts patching αναγκάζει static και ξανά-hinting, γιατί το
   font-patcher πετά το bytecode.
