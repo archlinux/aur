@@ -1,7 +1,7 @@
 pkgbase = android-sdk-cmdline-tools-latest
 	pkgdesc = Android SDK Command-line Tools (latest)
 	pkgver = 23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio
 	install = android-sdk-cmdline-tools-latest.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = android-sdk-cmdline-tools-latest
 	source = android-sdk-cmdline-tools-latest.csh
 	source = package.xml
 	sha1sums = e025545c62a8e64c7559119566a569fb1dec5f60
-	sha1sums = cbcfb844067eb40d7cab029c481f3f94f31f0518
+	sha1sums = 0687a19fc6b62fbc52207e4674bd2a99a44ff45a
 	sha1sums = f71b94781633743850c760322dc3b370bc63fcaa
 	sha1sums = ab8ba18b0815bda3000c57e63e99b841aed2739b
 
