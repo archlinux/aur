@@ -5,7 +5,7 @@ _gmver=4.000
 _gfcommit=2750b521bd22ce141f12617194ab0e04cf5d12d5
 _nfver=3.5.1
 pkgver="${_gmver}"
-pkgrel=4
+pkgrel=5
 pkgdesc='TikTok Sans (Google Fonts), a four-axis (opsz, slnt, wdth, wght) sans with Greek and Cyrillic, tuned with fonttune (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://fonts.google.com/specimen/TikTok+Sans'
@@ -51,7 +51,8 @@ sha256sums=('0e7f0a3e924c9a86478fc6fc2946de2e4ab8fc704ed72ee40434ade94bb9b0c6'
 #                                 interface size in points, what Pango gives the VF,
 #                                 read when it builds: a clean chroot or a non-GNOME
 #                                 desktop reads GNOME's default 11, cut at 12; set N for a fixed
-#                                 cut). The value used is in /usr/share/doc/$pkgname/STATIC_OPSZ
+#                                 cut). Unset on a terminal, the build asks, with the numbers.
+#                                 The value used is in /usr/share/doc/$pkgname/STATIC_OPSZ
 #   NERD_PATCH=true               patch with Nerd Fonts glyphs (default false);
 #                                 implies TS_VARIANT=static
 
@@ -138,6 +139,9 @@ prepare() {
   else
     local _weights="${STATIC_WEIGHTS:-300 400 500 600 700 800 900}"
     local _widths="${STATIC_WIDTHS:-100}"
+    if [[ -z "${STATIC_OPSZ:-}" && -t 0 ]]; then  # explained choice; the answer comes back in a file
+      python "$(_ft)/bin/fonttune" ask opsz "$_vf" --out "$srcdir/.opsz" && STATIC_OPSZ=$(<"$srcdir/.opsz")
+    fi
     _opsz="${STATIC_OPSZ:-auto}"
     if [[ "${_opsz,,}" == auto ]]; then
       _opsz=$(PYTHONPATH="$(_ft)" python -c 'from fonttune.system import font_pt; print(f"{font_pt():g}")') ||
