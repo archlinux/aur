@@ -5,7 +5,7 @@ pkgver=0.1.0.r31.g0aa9338
 pkgrel=1
 pkgdesc='Beacon status-page client with Waybar JSON output'
 arch=('x86_64' 'aarch64')
-url='https://github.com/kguzek/beacon'
+url='https://git.guzek.uk/kguzek/beacon'
 license=('AGPL-3.0-only')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
@@ -13,7 +13,7 @@ optdepends=('waybar: display status in a custom module')
 provides=("beacon-cli=${pkgver}")
 conflicts=('beacon-cli')
 options=('!lto' '!debug')
-source=('beacon::git+https://github.com/kguzek/beacon.git')
+source=('beacon::git+https://git.guzek.uk/kguzek/beacon.git')
 sha256sums=('SKIP')
 
 pkgver() {

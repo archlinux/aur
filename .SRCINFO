@@ -2,7 +2,7 @@ pkgbase = beacon-cli-git
 	pkgdesc = Beacon status-page client with Waybar JSON output
 	pkgver = 0.1.0.r31.g0aa9338
 	pkgrel = 1
-	url = https://github.com/kguzek/beacon
+	url = https://git.guzek.uk/kguzek/beacon
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-only
@@ -15,7 +15,7 @@ pkgbase = beacon-cli-git
 	conflicts = beacon-cli
 	options = !lto
 	options = !debug
-	source = beacon::git+https://github.com/kguzek/beacon.git
+	source = beacon::git+https://git.guzek.uk/kguzek/beacon.git
 	sha256sums = SKIP
 
 pkgname = beacon-cli-git
