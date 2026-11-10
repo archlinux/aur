@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${COLI_MODEL:?COLI_MODEL must be set in /etc/colibri/<instance>.conf}"
+: "${COLI_PORT:?COLI_PORT must be set in /etc/colibri/<instance>.conf}"
+
+COLI_HOST="${COLI_HOST:-127.0.0.1}"
+COLI_BIN="${COLI_BIN:-/usr/bin/coli}"
+
+[[ -d "$COLI_MODEL" ]] || { echo "Model directory missing: $COLI_MODEL" >&2; exit 1; }
+[[ -x "$COLI_BIN" ]] || { echo "Colibri executable missing: $COLI_BIN" >&2; exit 1; }
+[[ "$COLI_PORT" =~ ^[0-9]+$ ]] && ((10#$COLI_PORT > 0 && 10#$COLI_PORT <= 65535)) || { echo "Invalid COLI_PORT: $COLI_PORT" >&2; exit 1; }
+
+args=(web --model "$COLI_MODEL" --host "$COLI_HOST" --port "$COLI_PORT" --no-browser)
+
+if [[ "${COLI_AUTO_TIER:-1}" == "1" ]]; then args+=(--auto-tier); fi
+if [[ -n "${COLI_CTX:-}" ]]; then args+=(--ctx "$COLI_CTX"); fi
+if [[ -n "${COLI_POLICY:-}" ]]; then args+=(--policy "$COLI_POLICY"); fi
+if [[ -n "${COLI_KV_SLOTS:-}" ]]; then args+=(--kv-slots "$COLI_KV_SLOTS"); fi
+if [[ -n "${COLI_MODEL_ID:-}" ]]; then args+=(--model-id "$COLI_MODEL_ID"); fi
+if [[ -n "${COLI_CAP:-}" ]]; then args+=(--cap "$COLI_CAP"); fi
+if [[ -n "${COLI_RAM:-}" ]]; then args+=(--ram "$COLI_RAM"); fi
+if [[ -n "${COLI_EXTRA_FLAGS:-}" ]]; then
+    echo "COLI_EXTRA_FLAGS is not supported: use explicit COLI_* options" >&2
+    exit 1
+fi
+
+printf 'Starting Colibri model=%s host=%s port=%s\n' "$COLI_MODEL" "$COLI_HOST" "$COLI_PORT"
+if [[ -n "${COLI_CPU_AFFINITY:-}" ]]; then
+    exec /usr/bin/taskset -c "$COLI_CPU_AFFINITY" "$COLI_BIN" "${args[@]}"
+fi
+exec "$COLI_BIN" "${args[@]}"

@@ -1,0 +1,25 @@
+[Unit]
+Description=Colibri inference server (%i)
+Documentation=file:/usr/share/doc/colibri-git/README-uk.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Environment=HOME=/root
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/etc/colibri/%i.conf
+ExecStart=/usr/lib/colibri/colibri-instance
+WorkingDirectory=/var/lib/llama/models/colibri
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=90
+KillMode=control-group
+LimitNOFILE=65535
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

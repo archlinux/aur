@@ -1,0 +1,15 @@
+# Copy to /etc/colibri/qwen36.conf, then set COLI_MODEL to the actual local directory.
+# Do not enable without checking the path and available RAM.
+COLI_MODEL=/var/lib/llama/models/colibri/qwen36
+COLI_HOST=127.0.0.1
+COLI_PORT=8090
+COLI_AUTO_TIER=1
+COLI_CPU_AFFINITY=0-5
+OMP_NUM_THREADS=6
+OMP_DYNAMIC=FALSE
+OMP_PROC_BIND=TRUE
+OMP_PLACES=cores
+COLI_LOOKUP=0
+COLI_KV_PREFIX=1
+COLI_PREFIX_LOG=1
+COLI_NO_OMP_TUNE=1
