@@ -1,5 +1,5 @@
 pkgname=nekomote
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="A native 2D model runtime and live wallpaper for Linux."
 arch=(x86_64)
@@ -15,7 +15,7 @@ optdepends=('libplasma: Use the KDE Wallpaper'
             'libxrandr: Using wallpaper in the X11 session')
 source=("git+https://github.com/Chocola-X/NekoMote.git#tag=v${pkgver}"
         "0003-fix-test-flags.diff")
-sha256sums=('5c83ea4ebc56d3092664e4a3d025829ee2a04bbe314fa12ebb10987a41d1e28a'
+sha256sums=('1da3d65033b38ca144c2b24c90c5be6f538ffec3edb67546e5efecf264c37a00'
             'ea311d5381df1d1076ee728d25309322738b83fb72531c2072a76b78acc862ad')
 
 
