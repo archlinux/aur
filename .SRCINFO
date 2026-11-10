@@ -1,37 +1,25 @@
 pkgbase = prot
 	pkgdesc = Your development servers, under control
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/terastal-hq/prot
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	makedepends = rust
-	makedepends = nodejs
-	makedepends = npm
-	makedepends = webkit2gtk-4.1
-	makedepends = gtk3
 	options = !lto
 	options = !debug
-	source = prot-0.2.0.tar.gz::https://github.com/terastal-hq/prot/archive/refs/tags/v0.2.0.tar.gz
+	source = prot-0.2.1.tar.gz::https://github.com/terastal-hq/prot/archive/refs/tags/v0.2.1.tar.gz
 	source = protd.service
 	source = protd.install
-	sha256sums = 949b4b8e4c1e404880b61244e61a31127d38adfed31beccbb47418251b51ba28
+	sha256sums = 8681ab4cacde3a8cd919f8c11ae918a104bfd04a9b34a189c1de2b8eceb35fae
 	sha256sums = 92f46be2caef8d87f8b8292d71d621c99a3ace4434d4fdedb0b4610c0a5d042f
 	sha256sums = 0ac18ee1337c27194d3d61396c31b087f53d5d6fc42e7823817bfeb84c123568
 
 pkgname = protd
 	pkgdesc = prot daemon: process supervisor, .localhost reverse proxy and API
 	install = protd.install
-	depends = 
 
 pkgname = prot
 	pkgdesc = prot command line interface and MCP server
 	depends = protd
-
-pkgname = prot-desktop
-	pkgdesc = prot desktop app for managing development servers
-	depends = prot
-	depends = webkit2gtk-4.1
-	depends = gtk3

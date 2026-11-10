@@ -1,24 +1,25 @@
 # Maintainer: Aditya Gupta <mail@adityagupta.dev>
 #
-# One build, three packages:
-#   protd         the daemon and its systemd user unit
-#   prot          the CLI (depends on protd)
-#   prot-desktop  the Tauri desktop app (depends on prot)
+# One build, two packages (Go only, so there is no Rust, Node or WebKit in the build):
+#   protd  the daemon and its systemd user unit
+#   prot   the CLI and MCP server (depends on protd)
+#
+# The desktop app is a separate package, prot-desktop, so that installing prot does not compile it.
 
 pkgbase=prot
-pkgname=(protd prot prot-desktop)
-pkgver=0.2.0
+pkgname=(protd prot)
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Your development servers, under control"
 arch=(x86_64 aarch64)
 url="https://github.com/terastal-hq/prot"
 license=(MIT)
-makedepends=(go rust nodejs npm webkit2gtk-4.1 gtk3)
+makedepends=(go)
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         protd.service
         protd.install)
-# The first checksum is filled in by `updpkgsums` once the v$pkgver tag exists on GitHub.
-sha256sums=('949b4b8e4c1e404880b61244e61a31127d38adfed31beccbb47418251b51ba28'
+# The first checksum is filled in by the publish workflow (or `updpkgsums`) once the v$pkgver tag exists on GitHub.
+sha256sums=('8681ab4cacde3a8cd919f8c11ae918a104bfd04a9b34a189c1de2b8eceb35fae'
             '92f46be2caef8d87f8b8292d71d621c99a3ace4434d4fdedb0b4610c0a5d042f'
             '0ac18ee1337c27194d3d61396c31b087f53d5d6fc42e7823817bfeb84c123568')
 options=(!lto !debug)
@@ -29,37 +30,19 @@ prepare() {
   cd "$(_srcdir)"
   export GOFLAGS="-modcacherw"
   go mod download
-
-  (cd apps/desktop && npm ci --no-audit --no-fund)
-  (cd apps/desktop/src-tauri && cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')")
 }
 
 build() {
   cd "$(_srcdir)"
-  local triple
-  triple="$(rustc -vV | sed -n 's/host: //p')"
-
   export CGO_ENABLED=0
   export GOFLAGS="-trimpath -mod=readonly -modcacherw"
   local ldflags="-s -w -X github.com/terastal-hq/prot/internal/daemon.Version=$pkgver"
   mkdir -p build
   go build -ldflags "$ldflags" -o build/ ./cmd/prot ./cmd/protd
-
-  # Tauri's build script requires the configured sidecars to exist. The desktop package does not
-  # install them; it relies on the prot and protd packages instead.
-  mkdir -p apps/desktop/src-tauri/binaries
-  cp build/prot "apps/desktop/src-tauri/binaries/prot-$triple"
-  cp build/protd "apps/desktop/src-tauri/binaries/protd-$triple"
-
-  (cd apps/desktop && npm run build)
-  (cd apps/desktop/src-tauri &&
-    RUSTFLAGS="$RUSTFLAGS --remap-path-prefix=$srcdir=src" CARGO_TARGET_DIR=../../../build/target \
-    cargo build --release --frozen)
 }
 
 package_protd() {
   pkgdesc="prot daemon: process supervisor, .localhost reverse proxy and API"
-  depends=()
   install=protd.install
 
   cd "$(_srcdir)"
@@ -74,24 +57,9 @@ package_prot() {
 
   cd "$(_srcdir)"
   install -Dm755 build/prot "$pkgdir/usr/bin/prot"
+  install -Dm644 completions/prot.bash "$pkgdir/usr/share/bash-completion/completions/prot"
+  install -Dm644 completions/_prot "$pkgdir/usr/share/zsh/site-functions/_prot"
+  install -Dm644 completions/prot.fish "$pkgdir/usr/share/fish/vendor_completions.d/prot.fish"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_prot-desktop() {
-  pkgdesc="prot desktop app for managing development servers"
-  depends=(prot webkit2gtk-4.1 gtk3)
-
-  cd "$(_srcdir)"
-  install -Dm755 build/target/release/prot-desktop "$pkgdir/usr/bin/prot-desktop"
-  install -Dm644 packaging/linux/prot-desktop.desktop "$pkgdir/usr/share/applications/prot-desktop.desktop"
-
-  local size
-  for size in 16 24 32 48 64 128 256 512; do
-    if [ -f "packaging/linux/icons/${size}x${size}/prot-desktop.png" ]; then
-      install -Dm644 "packaging/linux/icons/${size}x${size}/prot-desktop.png" \
-        "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/prot-desktop.png"
-    fi
-  done
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
