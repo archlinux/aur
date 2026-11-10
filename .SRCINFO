@@ -1,0 +1,25 @@
+pkgbase = mint-themes-libadwaita
+	pkgdesc = libadwaita theme stylesheets for mint-themes
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://github.com/linuxmint/mint-themes
+	arch = any
+	license = GPL-3.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = mint-themes=2.4.3
+	makedepends = sassc
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = glib2-devel
+	makedepends = libadwaita>=1:1.10
+	makedepends = libadwaita<1:1.11
+	optdepends = libadwaita-mintpatch: enable mint theme support in libadwaita
+	options = !strip
+	options = !debug
+	source = https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.9.4/libadwaita-1.9.4.tar.gz
+	source = gen-stylesheet-supplement.py
+	sha256sums = ca5e60def9423bfc13c49d45c6de576a5b2dcae3beec880a23628ba101bdd4f1
+	sha256sums = SKIP
+
+pkgname = mint-themes-libadwaita
+	depends = mint-themes
