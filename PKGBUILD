@@ -1,6 +1,6 @@
 # Maintainer: Alex Dujardin <contact@alexcrea.xyz>
 pkgname=paintdotnet-wine-experimental
-pkgver=5.200.9793.3533
+pkgver=5.200.9810.36543
 pkgrel=1
 pkgdesc="Experimental Paint.NET with wine specific changes"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/paintdotnet/Paint.NET-on-WINE"
 license=('LicenseRef-custom')
 
 # mesa required for llvmpipe as asked by paint.net for software rendering
-depends=('wine>=11.20' winetricks bash mesa)
+depends=('wine>=11.21' winetricks bash mesa)
 makedepends=(icoutils)
 noextract=("${pkgname}-${pkgver}.zip")
 
@@ -18,7 +18,7 @@ source=(
   "${pkgname}.desktop"
 )
 
-sha256sums=('68c0477242036e53937bbef1da890758b7ad9eac2d682826817ca217e14b0281'
+sha256sums=('2458a55fca099ccb28d1866b87699a9d4e631b7288cbb7ed6726498c4fe441c2'
             '99427d61744e6f7f80a6b6f32a80d31c36e629c100b5eee385034dd525c0a213'
             '2344898406e25f5d8f2fef4ecb4313bbb48ffd69eb85983e32209ba19b5cecff')
 
