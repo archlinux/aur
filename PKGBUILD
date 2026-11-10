@@ -1,6 +1,6 @@
 # Maintainer: 4s3ti <4s3ti@4s3ti.net>
 
-_pkgver=1.11.0
+_pkgver=1.12.0
 _appimage="Bazecor-${_pkgver}-x64.AppImage"
 
 _appname="bazecor"
