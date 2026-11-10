@@ -1,0 +1,21 @@
+pkgbase = book-studio-git
+	pkgdesc = Write, read, annotate and print a book written in markdown. Free, open source, offline.
+	pkgver = 2.2.0.r11.gc9157ca
+	pkgrel = 1
+	url = https://github.com/tlacerdap/book-studio
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron45
+	source = book-studio.git::git+https://github.com/tlacerdap/book-studio.git
+	source = book-studio.js
+	source = book-studio.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = book-studio-git
