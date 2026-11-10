@@ -1,6 +1,6 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 pkgname=aur-scanner
-pkgver=2.2.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
@@ -62,12 +62,16 @@ package() {
     "target/release/aur-scan" completions zsh  > "$pkgdir/usr/share/zsh/site-functions/_aur-scan"
     "target/release/aur-scan" completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/aur-scan.fish"
 
-    # Shipped rules.d files (example plus the built-in permission rules). Glob so
-    # a release that adds a rules file can't silently drop it from the package.
+    # Shipped rules.d files (the built-in permission rules). Glob so a release
+    # that adds a rules file can't silently drop it from the package.
     install -d "$pkgdir/usr/share/aur-scanner/rules.d"
     for _rule in install/rules.d/*.toml; do
         install -Dm644 "$_rule" "$pkgdir/usr/share/aur-scanner/rules.d/$(basename "$_rule")"
     done
+
+    # Example community rule, for authors to copy. Installed outside rules.d/
+    # so it is never loaded.
+    install -Dm644 "install/example-rule.toml" "$pkgdir/usr/share/aur-scanner/example-rule.toml"
 
     # pacman hook, shipped as an opt-in example (NOT auto-enabled). It runs after
     # makepkg has already built the package -- prefer the shell integration above.
