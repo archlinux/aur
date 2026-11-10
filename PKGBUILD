@@ -1,7 +1,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 # Builds the latest main. pkgver is recomputed by makepkg from git describe.
 pkgname=opensynapse-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Remap buttons, set DPI and lighting on Razer mice from Linux (latest main)"
 arch=('x86_64' 'aarch64')
