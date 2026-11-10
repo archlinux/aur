@@ -1,19 +1,19 @@
 # Maintainer: ddfabc <liqiang0330@gmail.com>
 pkgname=abcclock
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Hover desktop clock: analog dial, weekday, date, three timezones and weather (Qt5 on Linux, Qt6 on macOS)"
+pkgdesc="Hover desktop clock: analog dial, weekday, date, three timezones and weather (Qt6; native Wayland layer-shell, X11 fallback)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/abcabc0330/abcclock"
 license=('MIT')
-depends=('qt5-base' 'dbus' 'libxcb')
+depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'dbus' 'libxcb')
 makedepends=('make' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('115da1a910827aecd15f541e42819a06a34e0ba808fbb885b81193cb00cb161a')
+sha256sums=('25ce0419ae26f9749e89dd7f32b2167028b2d50eb3d8e26c9152b7395d98c482')
 
 build() {
     cd "$pkgname-$pkgver"
-    qmake-qt5 abcclock.pro PREFIX=/usr
+    qmake6 abcclock.pro PREFIX=/usr
     make
 }
 
