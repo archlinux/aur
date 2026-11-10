@@ -1,0 +1,15 @@
+pkgbase = zotero-wakatime
+	pkgdesc = WakaTime time tracking integration for Zotero
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/wakatime/zotero-wakatime
+	arch = any
+	groups = zotero-addons
+	license = AGPL-3.0-or-later
+	optdepends = wakatime: provide the CLI
+	source = zotero-waka-time-0.2.2.xpi::https://github.com/wakatime/zotero-wakatime/releases/download/zotero-wakatime-v0.2.2/zotero-waka-time.xpi
+	source = LICENSE::https://raw.githubusercontent.com/wakatime/zotero-wakatime/zotero-wakatime-v0.2.2/LICENSE
+	sha256sums = 9030e33716c2657d74a3208bc9c575e2c724df5bb9c7e2abade5803ef7137217
+	sha256sums = 76a97c878c9c7a8321bb395c2b44d3fe2f8d81314d219b20138ed0e2dddd5182
+
+pkgname = zotero-wakatime
