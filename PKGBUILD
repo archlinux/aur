@@ -1,7 +1,7 @@
 # Maintainer: methamphetaminelab <https://github.com/methamphetaminelab>
 
 pkgname=gramtty
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 _tdlibrs=1.4.0
 _tdlib=1.8.61
@@ -29,7 +29,7 @@ optdepends=(
 # x86_64 only: tdlib-rs publishes it for linux-x86_64 and linux-aarch64.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/methamphetaminelab/gramtty/archive/refs/tags/v$pkgver.tar.gz"
         "tdlib-$_tdlib-linux-x86_64.zip::https://github.com/FedericoBruzzone/tdlib-rs/releases/download/v$_tdlibrs/tdlib-$_tdlib-linux-x86_64.zip")
-sha256sums=('433e09d51ceb30cddfd8a88353a5955d2f709b54adc119c5c3114ef7fc70a478'
+sha256sums=('541c1f56d7ec7d3302301705672e32cf08ba24791e2f37b17929e6575ec14333'
             '997069633f54306ada33776d2c4a530017d2e7325a22e0f12701d52438c37383')
 
 prepare() {
