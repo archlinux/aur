@@ -1,6 +1,6 @@
 pkgbase = opensynapse-git
 	pkgdesc = Remap buttons, set DPI and lighting on Razer mice from Linux (latest main)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/khaosdoctor/opensynapse
 	arch = x86_64
