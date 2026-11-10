@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast, robust, accurate diffing"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('11ba8a8d4436b297988e73fbb1e39b2492718c5f00e55ab0dee78f49167518ed')
-sha256sums_aarch64=('bb4f297ae834c5bad0b8a9997fb8d91ec19a0294c742aaaf6b02971642beb9dd')
+sha256sums_x86_64=('41df963d3c520762ab5fe9490ddad4d4023e488a7455c27fd23cf62134f45965')
+sha256sums_aarch64=('4dcf8c0d393d5c7e185cd0363caf2a72c8847662064dce4a2bf201ea05c5516b')
 
 
 build() {
