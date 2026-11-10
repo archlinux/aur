@@ -8,13 +8,14 @@
 # same files as in hermes-agent-bin, whose CI builds this PKGBUILD under that
 # name (https://github.com/jabla/hermes-agent-bin).
 pkgname=hermes-agent
-_pkgver_tag=v0.23.0
-_commit=2bd378ed1b8d6bf2192cb26e0a55ff3091e6bd19
+_pkgver_tag=v0.23.1
+_commit=3b421578588243f920886e6fe79a6faa87ea026e
 _tagver=${_pkgver_tag#v}           # tag without the leading v — GitHub strips it from the archive dir
 _optname=hermes-agent              # fixed install dir (pkgname-independent, matches source pkg)
 _pyver=3.14                        # Arch's python minor; keep depends=() in step
 _uvmin=0.13.5                      # pm's uv pin (pm/lock.json); check() stops when it moves
-pkgver=0.23.0
+_pnpmver=12.15.0                   # pm's pnpm pin (pm/lock.json); prepare() stops when it moves
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -22,7 +23,8 @@ url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
   'python>=3.14' 'python<3.15'   # the minor in _pyver
-  'nodejs>=26' 'npm' "uv>=${_uvmin}" 'ripgrep' 'ffmpeg'
+  # the tools of pm's store (system-tools.py)
+  'nodejs>=26' 'npm' 'pnpm' "uv>=${_uvmin}" 'ripgrep' 'ffmpeg'
   # the libraries of pm's Chromium (`hermes pm install chromium`)
   'nss' 'atk' 'at-spi2-core' 'cups' 'libdrm' 'libxkbcommon' 'mesa' 'pango'
   'cairo' 'alsa-lib' 'libxcomposite' 'libxdamage' 'libxrandr'
@@ -44,15 +46,42 @@ source=(
   'system-tools.py'
   'hermes_agent_env.py'
 )
-sha256sums=('4879a10c7f125281ad88e9f2c339c807fd59c6f40588bdcd652781e9425320fd'
+sha256sums=('52a8eb321f368576034f40595491abf9646b60c3861eee0cf45f610e5faa9bb6'
             'f6824d0250926db151b0a06043a8385a642d83048e2b73967625362076b7d818'
-            '107cf7f981e7a96466d7c3f2a2cc1b8cdf2c1a5db797c22087b27f2e7f64541f'
+            '0d7ba134037ee7565f40091262eee82b18d089a63238a6bdca7c88d7f5eb324d'
             '196ba6f200257073a5f02bab284a11594e67bfe1e10470a83ab0fc9437ef777b'
-            '5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d'
+            'b079df6f6162180615ba92e67dae6062d7a22600462e76341d29b963aad25571'
             'c8a782bbee797b064db590d7b6e01963e0c31db7eea7ce2be13fe33a11726b6a')
+# pnpm as upstream pins it (pm/lock.json): the native executable and the
+# launcher package, whose dist/ holds the node-gyp the executable runs, the
+# two artifacts pm installs. Only the build runs it: the package's pm store
+# takes the system pnpm.
+source_x86_64=(
+  "pnpm-exe-${_pnpmver}.tgz::https://registry.npmjs.org/@pnpm/exe.linux-x64/-/exe.linux-x64-${_pnpmver}.tgz"
+  "pnpm-${_pnpmver}.tgz::https://registry.npmjs.org/pnpm/-/pnpm-${_pnpmver}.tgz"
+)
+# Both archives wrap their files in package/; prepare() unpacks them.
+noextract=("pnpm-exe-${_pnpmver}.tgz" "pnpm-${_pnpmver}.tgz")
+sha256sums_x86_64=('402f7045b1e0587acb1542f18d38afbccb6babf3c7451394e6fb3d9f0160c6ca'
+                   'f5173f6127cc505cdb36ec17719fe54a8511c6fd8560c7ceb4bf7c73e3b4458b')
 
 _extract_dir() {
   echo "${srcdir}/hermes-agent-${_tagver}"
+}
+
+# The pinned pnpm, laid out like pm's store entry (pm/packages.py, Pnpm).
+_pnpm_dir() {
+  echo "${srcdir}/pnpm-${_pnpmver}"
+}
+
+# The pinned pnpm first on PATH: node-deps.mjs refuses any other version.
+# Its store, metadata cache and state stay in $srcdir.
+_pnpm_env() {
+  export PATH="$(_pnpm_dir):${PATH}"
+  export pnpm_config_store_dir="${srcdir}/pnpm-cache/store"
+  export pnpm_config_cache_dir="${srcdir}/pnpm-cache/cache"
+  export pnpm_config_state_dir="${srcdir}/pnpm-cache/state"
+  export pnpm_config_update_notifier=false
 }
 
 prepare() {
@@ -73,6 +102,19 @@ prepare() {
   # browser_exec falls back to a system Chrome, Chromium or Brave instead of
   # needing browser.executable_path.
   patch --batch --fuzz=0 -Np1 -i "${srcdir}/system-browser-fallback.patch"
+
+  # The executable and the launcher's dist/ in one directory, as pm unpacks
+  # them.
+  local pin
+  pin="$(node -p 'require("./pm/lock.json").packages.pnpm.version')"
+  if [[ "${pin}" != "${_pnpmver}" ]]; then
+    printf 'ERROR: upstream pins pnpm %s (pm/lock.json), PKGBUILD downloads %s: move _pnpmver and sha256sums_x86_64\n' "${pin}" "${_pnpmver}"
+    return 1
+  fi
+  rm -rf "$(_pnpm_dir)"
+  mkdir -p "$(_pnpm_dir)"
+  bsdtar -xf "${srcdir}/pnpm-exe-${_pnpmver}.tgz" -C "$(_pnpm_dir)" --strip-components 1
+  bsdtar -xf "${srcdir}/pnpm-${_pnpmver}.tgz" -C "$(_pnpm_dir)" --strip-components 1 package/dist
 }
 
 build() {
@@ -82,14 +124,20 @@ build() {
   # read .gitignore files. Creating an empty .git directory stops the scan.
   [ ! -d .git ] && mkdir .git
 
-  npm ci --ignore-scripts --no-fund --no-audit --progress=false --include=dev
-  npm run build --workspace web
-  npm run build:ink --workspace ui-tui
-  npm run build --workspace ui-tui
+  _pnpm_env
+  # Upstream's install of a product's workspaces (scripts/build/node-deps.mjs):
+  # the frozen lockfile, whose release-age gate upstream's CI checked when it
+  # wrote the lock (--trust-lockfile). The bundles need no dependency build
+  # scripts.
+  pnpm install --frozen-lockfile --trust-lockfile --prod=false --ignore-scripts \
+    --filter '{./web}...' --filter '{./ui-tui}...'
+  pnpm --dir web run build
+  pnpm --dir ui-tui run build:ink
+  pnpm --dir ui-tui run build
   # The browser-hosted Desktop (`hermes webapp`, new after v0.22.5). Hermes
   # would build it into its install root on first use, which is root-owned
   # here; HERMES_WEBAPP_DIST (launcher and hermes_agent_env.py) makes it
-  # serve this bundle as it is. Its private npm workspace (.build/) stays out
+  # serve this bundle as it is. Its private pnpm workspace (.build/) stays out
   # of the package.
   node apps/desktop/scripts/build-webapp.mjs
 
@@ -151,7 +199,7 @@ package() {
 
   rsync -a --exclude='__pycache__' --exclude='.git' \
     --exclude='node_modules' --exclude='web/src' \
-    --exclude='web/package.json' --exclude='web/package-lock.json' \
+    --exclude='web/package.json' \
     --exclude='web/vite.config.ts' --exclude='web/tsconfig*.json' \
     --exclude='web/eslint.config.js' --exclude='web/README.md' \
     --exclude='ui-tui/src' --exclude='ui-tui/node_modules' \

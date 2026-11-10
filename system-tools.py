@@ -6,9 +6,10 @@ Since v0.21.6 Hermes resolves node, npm, ffmpeg, ripgrep, python and uv
 through its package manager (pm), which never counts a PATH copy: without a
 pm store the TUI and npx/uvx MCP servers fail (lazy installs are disabled
 here), and a partial per-user store makes every start warn "install out of
-sync". Each tool in TOOLS gets a store entry of symlinks into the system bin
-dir, recorded in facts.json under the pin the lockfile names, so pm treats
-the tools from depends=() as installed. A manifest.json beside the store
+sync". pnpm, which installs upstream's JS workspaces, joined them after
+v0.23.0. Each tool in TOOLS gets a store entry of symlinks into the system
+bin dir, recorded in facts.json under the pin the lockfile names, so pm
+treats the tools from depends=() as installed. A manifest.json beside the store
 selects pm's bundled layout: optional tools (browser, ...) still go to the
 user's own ~/.hermes/tools.
 
@@ -45,6 +46,7 @@ from pm.store import tree_digest  # noqa: E402
 TOOLS = {
     "node": ("node",),
     "npm": ("npm", "npx"),
+    "pnpm": ("pnpm",),
     "ffmpeg": ("ffmpeg", "ffprobe"),
     "ripgrep": ("rg",),
     "python": ("python3",),

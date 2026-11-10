@@ -1,6 +1,6 @@
 pkgbase = hermes-agent
 	pkgdesc = Locally-run AI agent with tool use, web browsing, and automation
-	pkgver = 0.23.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = hermes-agent
 	depends = python<3.15
 	depends = nodejs>=26
 	depends = npm
+	depends = pnpm
 	depends = uv>=0.13.5
 	depends = ripgrep
 	depends = ffmpeg
@@ -33,19 +34,25 @@ pkgbase = hermes-agent
 	optdepends = google-chrome: system browser for browser_exec (browser.executable_path, AUR)
 	optdepends = brave-bin: system browser for browser_exec (browser.executable_path, AUR)
 	conflicts = hermes-agent-bin
+	noextract = pnpm-exe-12.15.0.tgz
+	noextract = pnpm-12.15.0.tgz
 	options = !debug
 	options = !strip
-	source = hermes-agent-0.23.0.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v0.23.0.tar.gz
+	source = hermes-agent-0.23.1.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v0.23.1.tar.gz
 	source = keep-venv-interpreter.patch
 	source = release-date-from-stamp.patch
 	source = system-browser-fallback.patch
 	source = system-tools.py
 	source = hermes_agent_env.py
-	sha256sums = 4879a10c7f125281ad88e9f2c339c807fd59c6f40588bdcd652781e9425320fd
+	sha256sums = 52a8eb321f368576034f40595491abf9646b60c3861eee0cf45f610e5faa9bb6
 	sha256sums = f6824d0250926db151b0a06043a8385a642d83048e2b73967625362076b7d818
-	sha256sums = 107cf7f981e7a96466d7c3f2a2cc1b8cdf2c1a5db797c22087b27f2e7f64541f
+	sha256sums = 0d7ba134037ee7565f40091262eee82b18d089a63238a6bdca7c88d7f5eb324d
 	sha256sums = 196ba6f200257073a5f02bab284a11594e67bfe1e10470a83ab0fc9437ef777b
-	sha256sums = 5950d73a49526767dfac20084d8c5597b7ebf5c16e7bff99e31dc4d7fe0d139d
+	sha256sums = b079df6f6162180615ba92e67dae6062d7a22600462e76341d29b963aad25571
 	sha256sums = c8a782bbee797b064db590d7b6e01963e0c31db7eea7ce2be13fe33a11726b6a
+	source_x86_64 = pnpm-exe-12.15.0.tgz::https://registry.npmjs.org/@pnpm/exe.linux-x64/-/exe.linux-x64-12.15.0.tgz
+	source_x86_64 = pnpm-12.15.0.tgz::https://registry.npmjs.org/pnpm/-/pnpm-12.15.0.tgz
+	sha256sums_x86_64 = 402f7045b1e0587acb1542f18d38afbccb6babf3c7451394e6fb3d9f0160c6ca
+	sha256sums_x86_64 = f5173f6127cc505cdb36ec17719fe54a8511c6fd8560c7ceb4bf7c73e3b4458b
 
 pkgname = hermes-agent
