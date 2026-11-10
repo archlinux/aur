@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=daintree-bin
 _pkgname=Daintree
-pkgver=0.49.0
+pkgver=0.50.0
 _electronversion=45
 pkgrel=1
 pkgdesc="A review-first desktop habitat for running AI coding agents in parallel."
@@ -23,9 +23,9 @@ source=(
 	"${pkgname%-bin}.js"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('1270486f25edd8bc256861e3c5e46636285d2c25d0178e9aeb1582ebdedcb461'
+sha256sums=('75f2ea3034e526117a97cbb4860ba2ce089ac13e1bc8232290918a11b7a83140'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
