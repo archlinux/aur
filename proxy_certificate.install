@@ -2,7 +2,7 @@ install_proxy_cert(){
    mkdir -p etc/dane-proxy
    cd etc/dane-proxy/
    if [ ! -f dnssec.cer ] || [ ! -f dnssec.key ] || [ ! -s dnssec.key ] || [ ! -s dnssec.cer ]; then
-   umask 077
+   umask 0077
    openssl genrsa -out dnssec.key 4096
    openssl req \
        -x509 \
