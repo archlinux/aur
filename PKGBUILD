@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=1
+pkgrel=2
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -54,7 +54,7 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07); chrome_crashpad_handler dlopens libcurl.so.4/libcurl-gnutls.so.4/libcurl-nss.so.4 for crash report uploads, resolved to core/curl (2026-11-08); libvlc.so.5/libvlccore.so.9 P/Invoke probes resolved to extra/libvlc 3.0.24-1 (2026-11-09).
+# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07); chrome_crashpad_handler dlopens libcurl.so.4/libcurl-gnutls.so.4/libcurl-nss.so.4 for crash report uploads, resolved to core/curl (2026-11-08); libvlc.so.5/libvlccore.so.9 P/Invoke probes resolved to extra/libvlc 3.0.24-1 (2026-11-09); dlopen probes libcuda.so.1/libnvcuvid.so.1/libnvidia-encode.so.1/libGLX_nvidia.so.0 (NVIDIA hardware video decode/encode) all resolve to extra/nvidia-utils (2026-11-10).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
@@ -68,7 +68,8 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'libvlc: LibVLC runtime probed by the Root player (libvlc.so.5, libvlccore.so.9)'
             'vlc-plugin-ffmpeg: video and stream codecs for LibVLC playback (pulls libvlc)'
             'vlc-plugin-pulse: audio output for LibVLC playback on PipeWire and PulseAudio (pulls libvlc)'
-            'curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)')
+            'curl: crash report uploads for the bundled Chromium crash handler (chrome_crashpad_handler dlopens libcurl.so.4)'
+            'nvidia-utils: hardware video decode/encode on NVIDIA GPUs (provides libcuda.so.1, libnvcuvid.so.1, libnvidia-encode.so.1, libGLX_nvidia.so.0)')
 options=('!strip' '!debug')
 
 # single source: the aur.yml updater rewrites sha256sums to one hash (2026-10-31).
