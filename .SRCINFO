@@ -1,7 +1,7 @@
 pkgbase = nuphyctl-bin
 	pkgdesc = Rust CLI for sending NuPhy keyboard HID commands
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/fldc/nuphyctl
 	arch = x86_64
 	arch = aarch64
@@ -10,13 +10,9 @@ pkgbase = nuphyctl-bin
 	provides = nuphyctl
 	conflicts = nuphyctl
 	options = !strip
-	source_x86_64 = nuphyctl-bin-0.6.2-linux-x86_64.tar.gz::https://github.com/fldc/nuphyctl/releases/download/v0.6.2/nuphyctl-v0.6.2-linux-x86_64.tar.gz
-	source_x86_64 = https://github.com/fldc/nuphyctl/releases/download/v0.6.2/nuphyctl-v0.6.2-linux-x86_64-notices.tar.gz
-	sha256sums_x86_64 = 8474df709fa279694e29117a9771d5a40dd07fc46eab880083c853690aecceff
-	sha256sums_x86_64 = 4da8d8f6f0d895b986cd8db56d59898772e5b85adc71f669b10fa42f45f5c47d
-	source_aarch64 = nuphyctl-bin-0.6.2-linux-aarch64.tar.gz::https://github.com/fldc/nuphyctl/releases/download/v0.6.2/nuphyctl-v0.6.2-linux-aarch64.tar.gz
-	source_aarch64 = https://github.com/fldc/nuphyctl/releases/download/v0.6.2/nuphyctl-v0.6.2-linux-aarch64-notices.tar.gz
-	sha256sums_aarch64 = 4207d427c49577336134d1d2d7fc8781246ba48f1e9261852831ff13f36d2dc0
-	sha256sums_aarch64 = a1c025ca97aea38e057dd5ac1c97a03204c1752cc6abb3face1447b46dda6421
+	source_x86_64 = nuphyctl-bin-0.7.0-linux-x86_64.tar.gz::https://github.com/fldc/nuphyctl/releases/download/v0.7.0/nuphyctl-v0.7.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 1cb4d05a0faf359531fd96d01c5a114dead3cc2d640437195db3a4a18fb1fd88
+	source_aarch64 = nuphyctl-bin-0.7.0-linux-aarch64.tar.gz::https://github.com/fldc/nuphyctl/releases/download/v0.7.0/nuphyctl-v0.7.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5a71edf2a6060edb0a351e4feeaf4f49535e79cf181ac1ddd7d094d021c15086
 
 pkgname = nuphyctl-bin
