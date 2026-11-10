@@ -1,0 +1,24 @@
+pkgbase = mister-download-manager-bin
+	pkgdesc = Open-source download manager with multi-connection downloads, browser integration, video and torrent support
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://misterdownloadmanager.com
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = ca-certificates
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	provides = misterdownloadmanager
+	conflicts = misterdownloadmanager
+	noextract = MisterDownloadManager-0.5.2-linux-x86_64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = MisterDownloadManager-0.5.2-linux-x86_64.deb::https://github.com/anefzaoui/misterdownloadmanager/releases/download/v0.5.2/MisterDownloadManager-0.5.2-linux-x86_64.deb
+	sha256sums_x86_64 = 9d330d9684a0819cea987cae7601b1c5078fc7752095ea6e6b2f2fef035a92e1
+
+pkgname = mister-download-manager-bin
