@@ -5,7 +5,7 @@ _pkg_arch=armv7a-eabi
 _android_arch=armeabi-v7a
 _android_platform_arch=arch-arm
 _pkgname=openssl
-_pkgver=3.6.3
+_pkgver=4.1.0
 
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
@@ -21,10 +21,11 @@ makedepends=('android-environment' 'android-sdk-build-tools')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
-sha256sums=('243a86649cf6f23eeb6a2ff2456e09e5d77dd9018a54d3d96b0c6bdd6ba6c7f1'
+sha256sums=('50c17baf54cb008f6ce42d50deb4b28050a1aad711636cabd4b241c7e90cc2fd'
             'SKIP')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
-              'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
+              'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF'
+              'B146647E45A7B33947AB226B2A2C87D161692D40')
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
@@ -44,9 +45,6 @@ build() {
     threads \
     shared \
     android-${_android_platform_arch##arch-}
-
-  # get rid of debug printing so the library doesn't depend on stdio (no-stdio and no-ui are not entirely sufficient)
-  sed -i -e 's/\#define TEST_ENG_OPENSSL_RC4_P_INIT//' crypto/engine/eng_openssl.c
 
   # build only libraries
   # note: Setting SHLIB_EXT in accordance with qtbase/src/network/ssl/qsslsocket_openssl_symbols.cpp to avoid loading
