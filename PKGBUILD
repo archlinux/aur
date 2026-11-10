@@ -7,7 +7,7 @@ _appid=io.winspace.Development
 pkgname=${_gitname}-bin
 pkgdesc="Windows File Explorer-inspired file manager for Linux"
 
-pkgver=2.0.15
+pkgver=2.0.16
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -40,9 +40,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-${arch[0]}.tzst::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
-sha256sums=('b5f26735a8fc465c06486437b2db09f71d9d5bde234813837eb60b51a80e2adc'
+sha256sums=('bcea9da3a1ba585aaac78cd541556d2a9b4834a3790585d67a3626a2f8d026d8'
             'fa330b7ec7715da6050bb6cd8cc5ec86c61d0671da711fcc79460cf69193d260')
-sha256sums_x86_64=('eaedf061ced8780e0b7143371cface9211b3dca36dc0eec3c8da8de2d008f5b5')
+sha256sums_x86_64=('556b77669122b2524b777accfbc3bebc90590c1bd7ca49f64bbdb00863c16ad1')
 
 noextract=("${source_x86_64[@]%%::*}")
 
