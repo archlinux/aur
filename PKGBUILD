@@ -2,7 +2,7 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=8.0.0
+pkgver=8.1.0
 _electronversion=45
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.js"
     "${pkgname}.sh"
 )
-sha256sums=('a606f98d0510a6debbaf8f65884be26a6e11384f10f8f5ebb10a728c762d76df'
+sha256sums=('96302ed18107e7eeee4a84ee00ac7c760a4731ab2bed75754bc374b1a208e985'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
