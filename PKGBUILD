@@ -1,9 +1,9 @@
 # Maintainer: Hash-AK <HashAKAUR [at] duck [dot] com>
 
 pkgname=slick-mod-bundled
-pkgver=2.0.154
+pkgver=2.0.155
 pkgrel=1
-_tag=154
+_tag=155
 pkgdesc="The most powerful and versatile Slack client mod (bundled Electron version)"
 arch=('x86_64')
 url="https://github.com/3kh0/slick"
@@ -24,7 +24,7 @@ source=(
     "slick-mod-bundled.install"
     "dev.slick.byoe.desktop"
 )
-sha256sums=('731264289633cd252cd285bb7dc46ce8d5e06a12d5cf41ce70385d4879959cfe'
+sha256sums=('191fb059e668786b152a0813a5c9a89c4afdd6d3ae1dcd12b6eeb8d314076b21'
             'f2ec4e5998de279b20d7dff0003d10e49d05e56f4b8e9a22cf5f9b1818b0666a'
             '2473a343df0139faaeaa66a2bb1ca2ee77997499c40e3954944fba2c57313a9e')
 options=('!debug')
