@@ -1,0 +1,14 @@
+pkgbase = umsfuse
+	pkgdesc = FUSE driver and programs for UMSDOS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fossil.chungy.name/umsfuse
+	arch = x86_64
+	license = ISC
+	checkdepends = python
+	makedepends = texinfo
+	depends = fuse3
+	source = https://fossil.chungy.name/umsfuse/tarball/version-1.0.0/umsfuse-1.0.0.tar.gz
+	b2sums = 9e118094e3ff4943e4e8ee2ceb24748ffa6700ce47eb176fc20fda9f1c41a01d2be4d9e771206aacf5dbe2ce8a5443525a5ee5df3750d22bdcfb33cf0915ef4c
+
+pkgname = umsfuse
