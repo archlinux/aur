@@ -1,0 +1,19 @@
+pkgbase = opensynapse-bin
+	pkgdesc = Remap buttons, set DPI and lighting on Razer mice from Linux (prebuilt)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/khaosdoctor/opensynapse
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	depends = wayland
+	depends = libglvnd
+	optdepends = xdg-desktop-portal: file picker for profile import/export in the GUI
+	provides = opensynapse
+	conflicts = opensynapse
+	source = opensynapse-0.1.1-x86_64.tar.gz::https://github.com/khaosdoctor/opensynapse/releases/download/v0.1.1/opensynapse-0.1.1-x86_64.tar.gz
+	sha256sums = 023a067dfe00780894709415719fc61a943642818f8c92c9ad213cec65a5c6d5
+
+pkgname = opensynapse-bin
