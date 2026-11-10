@@ -1,6 +1,6 @@
 # Maintainer: Michael E. Gruen <contact@michaelgruen.com>
 pkgname=tailport-bin
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="TUI to share local ports on your tailnet or publicly (Funnel, Caddy, Cloudflare) (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -25,9 +25,9 @@ source_aarch64=("tailport-$pkgver-aarch64::https://github.com/gruen/tailport/rel
 # The per-arch binary digests are published alongside the assets as
 # tailport-linux-amd64.sha256 / tailport-linux-arm64.sha256 (see build.yml).
 sha256sums=('6ab5a1c9312683bea5942efc33876a1fcef67cfa065029f2939c14392ee9ed7a'
-            'e21477ece686c7478055f24666582649c76ca1e3ea1687221371c74fd3dea252')
-sha256sums_x86_64=('0711e99407d1053ea1fbe3e8371bfd535ce2b426117bbbf3cac466233a84802f')
-sha256sums_aarch64=('55180bed04c4876be126735749a63e2db40a51f09fcdf2b9d7f9dcc38e2063a1')
+            '7f815208821a5cbfaa8eda30566f965f4bbc04c4d9db7f8079079d1093adc224')
+sha256sums_x86_64=('25a39e5e1cdc40eef1f15fe1c6a68fc2277c1197111a28cee67b5b868a98c389')
+sha256sums_aarch64=('489b66f4684e7182473e03a33e17a08779448209b6a6a5a20c2753727d3bac86')
 
 package() {
   install -Dm755 "$srcdir/tailport-$pkgver-$CARCH" "$pkgdir/usr/bin/tailport"
