@@ -1,6 +1,6 @@
 pkgbase = crossmacro
 	pkgdesc = Mouse and keyboard macro recorder with hotkeys, scheduling, and text expansion
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/alper-han/CrossMacro
 	install = crossmacro.install
@@ -29,10 +29,10 @@ pkgbase = crossmacro
 	depends = libxkbcommon
 	depends = icu
 	options = !strip
-	source = crossmacro-1.5.2.tar.gz::https://github.com/alper-han/CrossMacro/archive/9f89a9689e7bc4984497acec41ee23899b5b95de.tar.gz
+	source = crossmacro-1.5.3.tar.gz::https://github.com/alper-han/CrossMacro/archive/bcb2e9dcfbc250a87c7eb40a52a97cadc6632ef0.tar.gz
 	source = crossmacro.sysusers
 	source = crossmacro-modules.conf
-	sha256sums = 6ca83bf987f7feac99b57201104e3d6a598660dc42c199a9f142dbec7039b318
+	sha256sums = c4c7671619ce937269114b9703e20f49d82e78a0014508bb852aad0ec3327a1b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
