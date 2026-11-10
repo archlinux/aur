@@ -1,5 +1,5 @@
 pkgname=openssh-gui-bin
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Binary version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/frequency403/OpenSSH-GUI/v${pkgver}/LICENSE"
 )
 
-sha256sums=('71af89cec9b7d6b12ba465d916c653ed507555464a74e7d33c4171a1a8c3c49a'
+sha256sums=('6fa0e5bc29b20069b24da7095ad2dcf749ee61353a5b97987eb71d3aeedfcf91'
             '19d7c119dcd8aaf1b2bac47325ebf73ac4b32bb3f757e62276a154845be49774'
             '0f53f092ae5b6a8547d016d3c4130c9352fe4af688e0eaaee7c94efdadb78470'
             '04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a')
