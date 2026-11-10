@@ -3,7 +3,7 @@
 _pkgname=opentubex
 _ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-nightly-bin
-pkgver=0.37.4.nightly.2901
+pkgver=0.37.4.nightly.2969
 pkgrel=1
 # Nightlies follow the release they are numbered after, so 0.37.0.nightly.2527
 # sorts between 0.37.0 and 0.37.1. Earlier versions of this package used epoch 1.
@@ -20,7 +20,7 @@ arch=('x86_64' 'aarch64')
 url='https://opentubex.org'
 license=('AGPL-3.0-or-later')
 options=('!strip')
-depends=('alsa-lib' 'at-spi2-core' 'gtk3' 'libnotify' 'libsecret' 'libxss'
+depends=('ttf-liberation' 'alsa-lib' 'at-spi2-core' 'gtk3' 'libnotify' 'libsecret' 'libxss'
          'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
 optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; configurable later in Settings'
             'yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings')
@@ -38,5 +38,5 @@ package() {
     ln -s "/opt/OpenTubeX/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('60f2cb54a943e338df61914808e4019b0808a93c1b95003e5223e4823e84058f')
-sha256sums_aarch64=('d1d291e30b0805962dd110688f290e1e3c5a9f142cbb90f81081c0192277a574')
+sha256sums_x86_64=('bde6d74e76702bef3bba5d2b8c351e62c309a344d345a5351445bfac33874510')
+sha256sums_aarch64=('f2d67dc76f04f7a0d90b69dce803358e803a3f06bd18c8587b9211d86df593f7')
