@@ -254,7 +254,7 @@ package() {
     # each file present in the tarball.
     if [ -d "packaging/ryzen-smu-dkms/vendor/ryzen-smu" ]; then
         local f
-        for f in LICENSE Makefile dkms.conf drv.c smu.c smu.h; do
+        for f in LICENSE Makefile dkms.conf drv.c smu.c smu.h apob.c apob.h; do
             if [ -f "packaging/ryzen-smu-dkms/vendor/ryzen-smu/$f" ]; then
                 install -Dm644 "packaging/ryzen-smu-dkms/vendor/ryzen-smu/$f" \
                     "$pkgdir/usr/share/ryzen-smu-dkms/vendor/ryzen-smu/$f"
