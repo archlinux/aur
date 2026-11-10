@@ -9,6 +9,7 @@ pkgbase = nerd-fonts-apple-hinted
 	makedepends = p7zip
 	makedepends = python
 	makedepends = python-fonttools
+	makedepends = python-freetype-py
 	makedepends = python-skia-pathops
 	makedepends = parallel
 	makedepends = fontforge
