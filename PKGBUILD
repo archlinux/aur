@@ -9,7 +9,7 @@
 # pushes it. Do not hand-edit those three fields in the AUR checkout.
 
 pkgname=ivar
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Multi-repo worktrees for coding agents: one feature across repos, on one branch, one PR per repo"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ conflicts=('ivar-bin')
 #   -debug split package to carry.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('31f547186aefe53702053b9482adcc1fcd60c54c0b05f13a5e53c3bd35516791')
+sha256sums=('117863bebf681651bc8be6a6f79dce0b64c3b6375079d34318b5995a24f71f75')
 
 prepare() {
     cd "$pkgname-$pkgver"
