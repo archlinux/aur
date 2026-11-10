@@ -58,7 +58,8 @@
 #     /usr/share/ramsleuth-intel-dkms/src/ (the path the Intel helper resolves as its
 #     installed copy; GUARDED: absent in pre-Intel tags)
 #   - the vendored ryzen_smu DKMS module source tree packaging/ryzen-smu-dkms/
-#     vendor/ (the 6 module files frozen at upstream d298366, GPL-2.0-only —
+#     vendor/ (the 8 module files (6 frozen at upstream d298366 + 2 APOB
+#     additions), GPL-2.0-only —
 #     a separate work; + vendor/SUMS.sha256 + vendor/NOTICE.md) ->
 #     /usr/share/ryzen-smu-dkms/vendor/ (the path the AMD helper (step 4)
 #     resolves as its offline vendored source — every file SUMS-verified
@@ -85,8 +86,8 @@
 # comments below.
 
 pkgname=ramsleuth
-pkgver=2.4.26   # FIXED — taken from the git tag v$pkgver (no pkgver())
-pkgrel=1
+pkgver=2.4.27   # FIXED — taken from the git tag v$pkgver (no pkgver())
+pkgrel=2
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
@@ -94,14 +95,14 @@ license=(MIT GPL-2.0-only)
 # git-commit source: makepkg clones the repo and checks out the pinned
 # immutable v$pkgver release commit via the #commit= fragment.
 # The "$pkgname::" rename extracts to $srcdir/ramsleuth (see header note above).
-source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=555901223581541600476246c702a981952b6b3a")
+source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=c8aa343838833e95d080b3f7a8d51cff8fbee13f")
 # Content-addressed VCS pin: the sha256 of `git archive --format tar
 # <commit>` for the immutable #commit= ref above — exactly what makepkg
 # 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
 # its integrity gate verifies (a *sums entry per source; '-' fails the
 # gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
 # generates for #commit fragments).
-sha256sums=('7383c91f83e5d11b87b79fb980f6214327ad1e2a4ce4fc89f7ae080287d0692e')
+sha256sums=('0dd041c5a4c7397c9f84bcee34c59b544d2de576c4de21a5ba6f15ab450407a6')
 install=ramsleuth.install
 # The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
 # and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
@@ -246,8 +247,9 @@ package() {
     # vendor-first, every file verified against the sibling vendor/SUMS.sha256
     # before any build — zero network; this is what makes the in-app one-click
     # work on a clean source-package install without the extra). The git-tag
-    # source carries packaging/ryzen-smu-dkms/vendor/ (the 6 module files
-    # frozen at upstream d298366 + SUMS.sha256 + NOTICE.md) from the vendor
+    # source carries packaging/ryzen-smu-dkms/vendor/ (the 8 module files
+    # (6 frozen at upstream d298366 + 2 APOB additions) + SUMS.sha256 +
+    # NOTICE.md) from the vendor
     # landing on v2-development; GUARDED with an existence test: a build
     # against a pre-vendor tag (no packaging/ryzen-smu-dkms/vendor/) skips it
     # cleanly — the no-panic contract; the per-file guards cover each file
