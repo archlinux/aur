@@ -1,0 +1,21 @@
+pkgbase = update-notify
+	pkgdesc = Desktop notifications for pending repo and AUR updates
+	pkgver = 3.13
+	pkgrel = 2
+	url = https://git.shouldnt.work/fuxino/update-notify
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = bats
+	checkdepends = bats-assert
+	checkdepends = bats-support
+	makedepends = git
+	depends = pacman-contrib
+	depends = libnotify
+	optdepends = aurutils: to check AUR packages in the local repo for updates
+	optdepends = fwupd: to check for firmware updates
+	optdepends = git-monitor: to check git repos for updates
+	source = git+https://git.shouldnt.work/fuxino/update-notify?signed#tag=3.13
+	validpgpkeys = 7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514
+	sha256sums = 56bfe7f4a8f8d5c311fe6c7c07f01614111e5c899043d038ce0a1c11362b4a71
+
+pkgname = update-notify
