@@ -1,16 +1,16 @@
 pkgbase = tabdance-test-bin
 	pkgdesc = Headless terminal testing
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/tab-dance/tabdance-test
-	license = custom
+	license = MIT
 	conflicts = tabdance-test
 	provides = tabdance-test
 	arch = aarch64
-	source_aarch64 = tabdance-test-bin_0.0.6_aarch64.tar.gz::https://github.com/tab-dance/tabdance-test/releases/download/v0.0.6/tabdance-test_0.0.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = 12644e422912e0f45962a92c6f19d721e036e0bfa3ae18fb401e02b00e64c046
+	source_aarch64 = tabdance-test-bin_0.0.7_aarch64.tar.gz::https://github.com/tab-dance/tabdance-test/releases/download/v0.0.7/tabdance-test_0.0.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 92411d9375622eadabb7090f169ad32391b9a4d959450dcba6e117d672056c29
 	arch = x86_64
-	source_x86_64 = tabdance-test-bin_0.0.6_x86_64.tar.gz::https://github.com/tab-dance/tabdance-test/releases/download/v0.0.6/tabdance-test_0.0.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = b2ffc0d81dcb9ef673dcfb19586e672b00bf1158fe72e5f5e8977f8794a17d97
+	source_x86_64 = tabdance-test-bin_0.0.7_x86_64.tar.gz::https://github.com/tab-dance/tabdance-test/releases/download/v0.0.7/tabdance-test_0.0.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 592ab4b5e8e0ce964661e70d57f271ae752a4498f47a5ba3c8e7163e55663be6
 	
 pkgname = tabdance-test-bin

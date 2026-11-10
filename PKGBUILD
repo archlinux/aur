@@ -2,20 +2,20 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='tabdance-test-bin'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Headless terminal testing'
 url='https://github.com/tab-dance/tabdance-test'
 arch=('aarch64' 'x86_64')
-license=('custom')
+license=('MIT')
 provides=('tabdance-test')
 conflicts=('tabdance-test')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tab-dance/tabdance-test/releases/download/v${pkgver}/tabdance-test_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('12644e422912e0f45962a92c6f19d721e036e0bfa3ae18fb401e02b00e64c046')
+sha256sums_aarch64=('92411d9375622eadabb7090f169ad32391b9a4d959450dcba6e117d672056c29')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tab-dance/tabdance-test/releases/download/v${pkgver}/tabdance-test_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('b2ffc0d81dcb9ef673dcfb19586e672b00bf1158fe72e5f5e8977f8794a17d97')
+sha256sums_x86_64=('592ab4b5e8e0ce964661e70d57f271ae752a4498f47a5ba3c8e7163e55663be6')
 
 package() {
   install -Dm755 "./tt" "${pkgdir}/usr/bin/tt"
