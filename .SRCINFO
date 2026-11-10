@@ -1,6 +1,6 @@
 pkgbase = islet
 	pkgdesc = Dynamic Island / Floating Media HUD for wlroots and Smithay Wayland compositors
-	pkgver = 1.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/3m44n/iSLET
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = islet
 	conflicts = islet-git
 	conflicts = islet-bin
 	options = !strip
-	source = islet-1.0.0.tar.gz::https://github.com/3m44n/iSLET/releases/download/v1.0.0/islet-v1.0.0-x86_64-linux.tar.gz
-	sha256sums = 1aca6a7fc723178ff4a7eada3dce58e2fac95abbd1a661818a90489a6cc6dad2
+	source = islet-0.1.0.tar.gz::https://github.com/3m44n/iSLET/releases/download/v0.1.0/islet-v0.1.0-x86_64-linux.tar.gz
+	sha256sums = 251fbbee8f79c6c95a08dd52e06075315c6f8dce329d346243d49085d15cf20e
 
 pkgname = islet
