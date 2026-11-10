@@ -1,6 +1,6 @@
 pkgbase = wowtype-bin
 	pkgdesc = WeType-style pinyin input method for fcitx5, with the bundled dictionary and language model
-	pkgver = 0.3.6
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://github.com/Gloridust/WowType
 	arch = x86_64
@@ -22,12 +22,12 @@ pkgbase = wowtype-bin
 	optdepends = gnome-shell: 绿色主题与语音浮条用的 GNOME 扩展
 	provides = wowtype
 	conflicts = wowtype
-	noextract = wowtype_0.3.6_ubuntu24.04_amd64.deb
+	noextract = wowtype_0.3.10_ubuntu24.04_amd64.deb
 	options = !strip
 	options = !debug
-	source = wowtype_0.3.6_ubuntu24.04_amd64.deb::https://github.com/Gloridust/WowType/releases/download/v0.3.6/wowtype_0.3.6_ubuntu24.04_amd64.deb
+	source = wowtype_0.3.10_ubuntu24.04_amd64.deb::https://github.com/Gloridust/WowType/releases/download/v0.3.10/wowtype_0.3.10_ubuntu24.04_amd64.deb
 	source = Unicode-3.0.txt::https://www.unicode.org/license.txt
-	sha256sums = 218c6621b18f7ed38a04117af01e14a73ac630806eaee28b9102ccc26faaa200
+	sha256sums = 011b5005b2c11cc5f5ae20dbbfbb776e031dcf7eedfc57fa6131935c76842d47
 	sha256sums = e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96
 
 pkgname = wowtype-bin
