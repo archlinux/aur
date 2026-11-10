@@ -2,7 +2,7 @@
 
 pkgname=radsecproxy
 pkgver=1.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc='a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS'
 arch=('i686' 'x86_64')
 url='https://radsecproxy.github.io/'
@@ -19,6 +19,8 @@ sha256sums=('65c269b745b77bbc5da8d4ac1318a91eca22ed879add46d5964bef370900d345'
 
 prepare() {
   cd ${pkgname}-${pkgver}/
+
+  sed -i s/ASN1_STRING_length/ASN1_STRING_get_length/ tlscommon.h tlscommon.c
 
   autoreconf -fi
 }

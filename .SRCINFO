@@ -1,7 +1,7 @@
 pkgbase = radsecproxy
 	pkgdesc = a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS
 	pkgver = 1.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://radsecproxy.github.io/
 	arch = i686
 	arch = x86_64
