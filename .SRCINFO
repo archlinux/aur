@@ -1,6 +1,6 @@
 pkgbase = rufin-bin
 	pkgdesc = Native music player for Jellyfin, Navidrome/OpenSubsonic, Plex, and Emby servers; local folders, WebDAV including a direct Nextcloud browser login path, Samba and NAS shares.
-	pkgver = 0.16.6
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/screwys/Rufin
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = rufin-bin
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = libadwaita
-	provides = rufin=0.16.6
+	provides = rufin=0.17.0
 	conflicts = rufin
 	conflicts = rufin-git
 	replaces = rufin
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/screwys/Rufin/releases/download/v0.16.6/rufin-0.16.6-archlinux-x86_64.tar.zst
-	sha256sums_x86_64 = 1a0985366030109de9a9128a0eb31c66542f588ccfd2edcb0ef43e6f9427979e
+	source_x86_64 = https://github.com/screwys/Rufin/releases/download/v0.17.0/rufin-0.17.0-archlinux-x86_64.tar.zst
+	sha256sums_x86_64 = 0bd148049e726fad88f814180bab07ce1f0208621dd84d49c44b611f0afe9c13
 
 pkgname = rufin-bin
