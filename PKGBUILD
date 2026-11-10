@@ -2,7 +2,7 @@
 pkgname=apifox-bin
 _pkgname=Apifox
 # 从以下网址确定版本 https://docs.apifox.com/changelog
-pkgver=2.8.53
+pkgver=2.8.54
 _electronversion=37
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
@@ -28,8 +28,8 @@ source=("LICENSE.html")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::https://file-assets.apifox.com/download/${_pkgname}-linux-arm64-latest.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://file-assets.apifox.com/download/${_pkgname}-linux-latest.zip")
 sha256sums=('3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('7f69d1d5ebb9f8b5f5071448a46d43da76a697cf24e5cd9af71dc8f670aacf45')
-sha256sums_x86_64=('7654468f479c3cdd19513c4e568f4f22210c882a7f0835b347996baa1463dac4')
+sha256sums_aarch64=('64396d9d85d9d322b3ab7f36b65779583f3c062240f2a4de7f9a2ed022997056')
+sha256sums_x86_64=('7fd0ee96cce95cf3803fbce01385a30b00d75ef4ade13d3859aa6e22a21a314f')
 pkgver() {
 	cat "${srcdir}/.pkgver" 2>/dev/null || echo "${pkgver}"
 }
