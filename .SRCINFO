@@ -1,6 +1,6 @@
 pkgbase = plasma-fusion
 	pkgdesc = Plasma Fusion desktop for KDE Plasma 6
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/archledger/plasma-fusion
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = plasma-fusion
 	makedepends = systemsettings
 	makedepends = layer-shell-qt
 	makedepends = tesseract
-	source = plasma-fusion::git+https://github.com/archledger/plasma-fusion.git#tag=v0.6.0?signed
+	source = plasma-fusion::git+https://github.com/archledger/plasma-fusion.git#tag=v0.7.0?signed
 	validpgpkeys = F35053398E3C80FE20891B82C10B8492BD7F30C6
 	sha256sums = SKIP
 
@@ -70,6 +70,7 @@ pkgname = plasma-fusion
 	depends = python-pillow
 	depends = fontconfig
 	depends = glib2
+	depends = qt6-declarative
 	optdepends = plasma-fusion-decoration: the Plasma Fusion window decoration
 	optdepends = plasma-fusion-settings: the Plasma Fusion page in System Settings
 	optdepends = plasma-fusion-quicklook: Quick Look (Space in Dolphin previews files)
@@ -93,7 +94,7 @@ pkgname = plasma-fusion
 pkgname = plasma-fusion-decoration
 	pkgdesc = Plasma Fusion window decoration (KDecoration3 plugin)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.6.0
+	depends = plasma-fusion=0.7.0
 	depends = kdecoration
 	depends = kcoreaddons
 	depends = kconfig
@@ -106,7 +107,7 @@ pkgname = plasma-fusion-settings
 	pkgdesc = Plasma Fusion settings page for System Settings
 	license = GPL-2.0-or-later
 	license = CC-BY-SA-4.0
-	depends = plasma-fusion=0.6.0
+	depends = plasma-fusion=0.7.0
 	depends = systemsettings
 	depends = plasma-workspace
 	depends = kirigami
@@ -122,7 +123,7 @@ pkgname = plasma-fusion-settings
 pkgname = plasma-fusion-navigation
 	pkgdesc = Plasma Fusion tablet navigation gestures (KWin effect; rebuild after every kwin update)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.6.0
+	depends = plasma-fusion=0.7.0
 	depends = kwin
 	depends = plasma-activities
 	depends = kconfigwidgets
@@ -137,7 +138,7 @@ pkgname = plasma-fusion-navigation
 pkgname = plasma-fusion-quicklook
 	pkgdesc = Plasma Fusion Quick Look: preview files without opening them (Space in Dolphin)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.6.0
+	depends = plasma-fusion=0.7.0
 	depends = kio
 	depends = kdbusaddons
 	depends = kservice
@@ -162,7 +163,7 @@ pkgname = plasma-fusion-quicklook
 pkgname = plasma-fusion-copytext
 	pkgdesc = Plasma Fusion copy text: its own selection overlay (instead of Spectacle's)
 	license = GPL-2.0-or-later
-	depends = plasma-fusion=0.6.0
+	depends = plasma-fusion=0.7.0
 	depends = layer-shell-qt
 	depends = ki18n
 	depends = qt6-declarative

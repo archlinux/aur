@@ -11,7 +11,7 @@
 pkgbase=plasma-fusion
 pkgname=(plasma-fusion plasma-fusion-decoration plasma-fusion-settings plasma-fusion-navigation plasma-fusion-quicklook
          plasma-fusion-copytext)
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Plasma Fusion desktop for KDE Plasma 6"
 arch=(x86_64)
@@ -32,6 +32,7 @@ build() {
   env -u DISPLAY -u WAYLAND_DISPLAY -u XAUTHORITY -u DBUS_SESSION_BUS_ADDRESS QT_QPA_PLATFORM=offscreen \
     STAGE="$srcdir/stage" bash tools/build.sh
   QT_QPA_PLATFORM=offscreen bash generators/plymouth/build.sh "$srcdir/plymouth/plasma-fusion"
+  bash packages/sddm-theme/build.sh "$srcdir/sddm"
   local p
   for p in decoration kcm navigation quicklook; do
     cmake -S packages/$p-cpp -B "$srcdir/build-$p" -G Ninja -DCMAKE_BUILD_TYPE=None \
@@ -50,7 +51,7 @@ package_plasma-fusion() {
   pkgdesc="Plasma Fusion desktop for KDE Plasma 6 (themes, widgets, icons, fonts, setup tools)"
   depends=(plasma-workspace plasma-desktop libplasma kwin aurorae plasma5support kscreenlocker
            'breeze-icons>=6.30' kconfig kdbusaddons systemd polkit util-linux bash python python-pillow
-           fontconfig glib2)
+           fontconfig glib2 qt6-declarative)
   optdepends=('plasma-fusion-decoration: the Plasma Fusion window decoration'
               'plasma-fusion-settings: the Plasma Fusion page in System Settings'
               'plasma-fusion-quicklook: Quick Look (Space in Dolphin previews files)'
@@ -68,7 +69,7 @@ package_plasma-fusion() {
   cd plasma-fusion
   # Arch has no /usr/libexec (package guidelines): the helpers live in /usr/lib/plasma-fusion.
   bash packaging/install-tree.sh --stage "$srcdir/stage" --plymouth "$srcdir/plymouth/plasma-fusion" \
-    --destdir "$pkgdir" --prefix /usr --libexecdir /usr/lib
+    --sddm "$srcdir/sddm/plasmafusion" --destdir "$pkgdir" --prefix /usr --libexecdir /usr/lib
   install -d "$pkgdir/usr/share/plasma-fusion/built-against"
   # After a kwin or kdecoration upgrade: which compiled part needs a rebuild.
   install -Dm0644 packaging/arch/plasma-fusion-rebuild.hook -t "$pkgdir/usr/share/libalpm/hooks/"
