@@ -1,7 +1,7 @@
 # Maintainer: bobo <https://aur.archlinux.org/account/bobosingle>
 
 pkgname=manis-pocket-bin
-pkgver=2.7.123
+pkgver=2.7.124
 pkgrel=1
 pkgdesc='Manis Pocket GTK4 clipboard manager and Wayland sync client'
 arch=('x86_64')
@@ -14,9 +14,9 @@ conflicts=('manis-pocket' 'manis-pocket-wayland' 'manis-pocket-wayland-git')
 options=('!debug' '!strip')
 _upstream_pkgrel=1
 source_x86_64=(
-  "manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/build-2.7.123/manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
+  "manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst::https://github.com/kaigedong/Manis-Pocket/releases/download/build-2.7.124/manis-pocket-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
 )
-sha256sums_x86_64=('a9bd10e5478225655c9fa7cb46856ce1cd93ad2e7a66a97afc126052e0d19fae')
+sha256sums_x86_64=('a00b80ba0dde02f227454a81c72e57a7a2fff04e2d8c5fa1dea794cf5f871caa')
 
 package() {
   install -Dm755 "$srcdir/usr/bin/manis-pocket" \
