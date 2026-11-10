@@ -36,7 +36,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   cmake --build build
-  [[ $DOCS == ON ]] && cmake --build build --target docs
+  if [[ $DOCS == ON ]]; then
+    cmake --build build --target docs
+  fi
 }
 
 check() {
