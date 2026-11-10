@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=face-unlock-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Face ID for Linux: the lock screen, sudo and admin prompts by face, on Plasma, GNOME, Hyprland and Niri (upstream binary)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=('!debug')
 _tarball="face-unlock-${pkgver}-arch-${CARCH}.tar.zst"
 source=("${_tarball}::${url}/releases/download/v${pkgver}/${_tarball}")
 noextract=("${_tarball}")
-sha256sums=('b3b48a2c40650cc00ecbde713b86275fe8aef4885ba005c1de6d040974555393')
+sha256sums=('b1217744c79241a3f506db7f8d8abb0cac04d3c869b9fc59ab1ca595717580a5')
 
 package() {
   # extracted here and not by makepkg, so the files keep the root owner
