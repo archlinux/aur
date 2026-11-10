@@ -1680,10 +1680,10 @@ index a20dab6..ae7356a 100644
            WidgetsBinding.instance.addPostFrameCallback((_) {
              searchController?.updateMatchCount(matchTotalCount.get()!);
 diff --git a/lib/ui/component/multi_window.dart b/lib/ui/component/multi_window.dart
-index 18eaccf..4d30df4 100644
+index 18eaccf..db55f87 100644
 --- a/lib/ui/component/multi_window.dart
 +++ b/lib/ui/component/multi_window.dart
-@@ -228,6 +228,18 @@ class MultiWindow {
+@@ -228,6 +228,20 @@ class MultiWindow {
        return WindowController.fromWindowId('0'); // Dummy controller
      }
  
@@ -1692,7 +1692,9 @@ index 18eaccf..4d30df4 100644
 +    // 用路由打开同样的页面，顺带也去掉了“GTK 标题栏 + 页面标题栏”的双标题栏。
 +    if (Platform.isLinux) {
 +      if (onOpenWindow != null) {
-+        onOpenWindow!(widgetName, args);
++        // 子窗口路径是 jsonEncode 后传给新 engine 的，内嵌路径同样先归一化，
++        // 免得多窗口页面收到的是 HttpRequest/HttpMessage 对象而不是 Map。
++        onOpenWindow!(widgetName, args == null ? null : jsonDecode(jsonEncode(args)) as Map<String, dynamic>);
 +      } else {
 +        logger.w('MultiWindow.onOpenWindow not registered, cannot open $widgetName');
 +      }
@@ -1702,8 +1704,52 @@ index 18eaccf..4d30df4 100644
      if (_singletonWidgets.contains(widgetName)) {
        var existing = await _focusSingletonWindow(widgetName);
        if (existing != null) return existing;
+@@ -418,11 +432,8 @@ Future<void> encodeWindow(EncoderType type, BuildContext context, [String? text]
+ 
+   if (!context.mounted) return;
+   final title = AppLocalizations.of(context)!.encode;
+-  await DesktopMultiWindow.createWindow(
+-    jsonEncode({'name': 'EncoderWidget', 'type': type.name, 'text': text}),
+-    title: title,
+-    size: const Size(900, 600),
+-  );
++  await MultiWindow.openWindow(title, 'EncoderWidget',
++      size: const Size(900, 600), args: {'type': type.name, 'text': text});
+ }
+ 
+ ///打开 AES 窗口
+@@ -432,26 +443,10 @@ Future<void> openAesWindow(BuildContext context, String text) async {
+     return;
+   }
+ 
+-  await DesktopMultiWindow.createWindow(
+-    jsonEncode({'name': 'AesPage', 'text': text}),
+-    title: 'AES',
+-    size: const Size(700, 672),
+-  );
++  await MultiWindow.openWindow('AES', 'AesPage', size: const Size(700, 672), args: {'text': text});
+ }
+ 
+ Future<void> openScriptConsoleWindow() async {
+-  // 单例窗口：已存在则前置；查询/前置异常或正在创建中，按新窗口处理/忽略
+-  var existing = await MultiWindow._focusSingletonWindow('ScriptConsoleWidget');
+-  if (existing != null) return;
+-  if (!MultiWindow._openingWidgets.add('ScriptConsoleWidget')) return;
+-
+-  try {
+-    await DesktopMultiWindow.createWindow(
+-      jsonEncode({'name': 'ScriptConsoleWidget'}),
+-      title: 'Script Console',
+-      size: const Size(900, 650),
+-    );
+-  } finally {
+-    MultiWindow._openingWidgets.remove('ScriptConsoleWidget');
+-  }
++  // 单例：WindowController.openWindow 内部会去重（_singletonWidgets），Linux 上退化成内嵌路由
++  await MultiWindow.openWindow('Script Console', 'ScriptConsoleWidget', size: const Size(900, 650));
+ }
 diff --git a/lib/ui/component/multi_window_compat.dart b/lib/ui/component/multi_window_compat.dart
-index e3da6c9..93f196a 100644
+index e3da6c9..55d9c9d 100644
 --- a/lib/ui/component/multi_window_compat.dart
 +++ b/lib/ui/component/multi_window_compat.dart
 @@ -5,6 +5,7 @@ import 'package:desktop_multi_window/desktop_multi_window.dart';
@@ -1714,18 +1760,20 @@ index e3da6c9..93f196a 100644
  import 'package:screen_retriever/screen_retriever.dart';
  import 'package:window_manager/window_manager.dart';
  
-@@ -340,6 +341,15 @@ class DesktopMultiWindow {
+@@ -340,6 +341,17 @@ class DesktopMultiWindow {
  
  extension WindowControllerCompat on WindowController {
    Future<void> close() {
 +    // windowId == '0' 表示“没有真实子窗口”（Linux 内嵌打开 / 移动端）：
 +    // 直接关掉当前路由，页面里的关闭按钮才有反应。
 +    if (windowId == '0') {
++      // 内嵌路由：直接关闭当前路由；没有可关的页面时静默忽略（不要走 platform channel，
++      // 否则会抛 WindowChannelException: CHANNEL_UNREGISTERED）。
 +      final navigator = navigatorHelper.navigatorKey.currentState;
 +      if (navigator != null && navigator.canPop()) {
 +        navigator.pop();
-+        return Future.value();
 +      }
++      return Future.value();
 +    }
      return _invokeWindowMethod('window_close');
    }
@@ -1964,7 +2012,7 @@ index 12333ce..5f0be45 100644
 +  }
 +}
 diff --git a/lib/ui/content/body.dart b/lib/ui/content/body.dart
-index b26bef9..b2efead 100644
+index b26bef9..985007f 100644
 --- a/lib/ui/content/body.dart
 +++ b/lib/ui/content/body.dart
 @@ -31,6 +31,7 @@ import 'package:proxypin/network/components/manager/rewrite_rule.dart';
@@ -1975,7 +2023,22 @@ index b26bef9..b2efead 100644
  import 'package:proxypin/ui/component/json/json_viewer.dart';
  import 'package:proxypin/ui/component/json/theme.dart';
  import 'package:proxypin/ui/component/multi_window.dart';
-@@ -794,6 +795,7 @@ class _BodyState extends State<_Body> {
+@@ -589,10 +590,11 @@ class HttpBodyState extends State<HttpBodyWidget> {
+   void openNew() async {
+     if (Platforms.isDesktop()) {
+       var size = MediaQuery.of(context).size;
+-      await DesktopMultiWindow.createWindow(
+-        jsonEncode({'name': 'HttpBodyWidget', 'httpMessage': widget.httpMessage, 'inNewWindow': true}),
+-        title: widget.httpMessage is HttpRequest ? localizations.requestBody : localizations.responseBody,
++      await MultiWindow.openWindow(
++        widget.httpMessage is HttpRequest ? localizations.requestBody : localizations.responseBody,
++        'HttpBodyWidget',
+         size: Size(800, size.height),
++        args: {'httpMessage': widget.httpMessage, 'inNewWindow': true},
+       );
+       return;
+     }
+@@ -794,6 +796,7 @@ class _BodyState extends State<_Body> {
      if (type == ViewType.formUrl) {
        return HighlightTextWidget(
            text: _formatTextBodyIsolate({'type': type.name, 'body': message.getBodyString()}),
@@ -1983,7 +2046,7 @@ index b26bef9..b2efead 100644
            searchController: widget.searchController,
            contextMenuBuilder: bodyContextMenu);
      }
-@@ -808,12 +810,13 @@ class _BodyState extends State<_Body> {
+@@ -808,12 +811,13 @@ class _BodyState extends State<_Body> {
                colorTheme: ColorTheme.of(context),
                searchController: widget.searchController,
                scrollController: widget.scrollController,
@@ -1999,7 +2062,7 @@ index b26bef9..b2efead 100644
          }
  
          return _buildTextBodyViewer(type, body, message: message);
-@@ -822,7 +825,10 @@ class _BodyState extends State<_Body> {
+@@ -822,7 +826,10 @@ class _BodyState extends State<_Body> {
        }
  
        return HighlightTextWidget(
@@ -2011,7 +2074,7 @@ index b26bef9..b2efead 100644
      });
    }
  
-@@ -863,6 +869,7 @@ class _BodyState extends State<_Body> {
+@@ -863,6 +870,7 @@ class _BodyState extends State<_Body> {
            return VirtualizedHighlightText(
              text: formattedText,
              language: language,
@@ -2019,7 +2082,7 @@ index b26bef9..b2efead 100644
              searchController: widget.searchController,
              scrollController: widget.scrollController,
            );
-@@ -871,6 +878,7 @@ class _BodyState extends State<_Body> {
+@@ -871,6 +879,7 @@ class _BodyState extends State<_Body> {
          return HighlightTextWidget(
              language: language,
              text: formattedText,
@@ -2091,6 +2154,36 @@ index 6781bf0..83aff2c 100644
 +    ]);
 +  }
 +}
+diff --git a/lib/ui/desktop/left_menus/favorite.dart b/lib/ui/desktop/left_menus/favorite.dart
+index cf624ee..0f15ce9 100644
+--- a/lib/ui/desktop/left_menus/favorite.dart
++++ b/lib/ui/desktop/left_menus/favorite.dart
+@@ -15,10 +15,9 @@
+  */
+ 
+ import 'dart:collection';
+-import 'dart:convert';
+ 
+ import 'package:date_format/date_format.dart';
+-import 'package:proxypin/ui/component/multi_window_compat.dart';
++import 'package:proxypin/ui/component/multi_window.dart';
+ import 'package:file_picker/file_picker.dart';
+ import 'package:flutter/gestures.dart';
+ import 'package:flutter/material.dart';
+@@ -287,11 +286,8 @@ class _FavoriteItemState extends State<_FavoriteItem> {
+   Future<void> requestEdit(HttpRequest request) async {
+     var size = MediaQuery.of(context).size;
+ 
+-    await DesktopMultiWindow.createWindow(
+-      jsonEncode({'name': 'RequestEditor', 'request': request}),
+-      title: localizations.requestEdit,
+-      size: Size(960, size.height),
+-    );
++    await MultiWindow.openWindow(localizations.requestEdit, 'RequestEditor',
++        size: Size(960, size.height), args: {'request': request});
+   }
+ 
+   //点击事件
 diff --git a/lib/ui/desktop/preference.dart b/lib/ui/desktop/preference.dart
 index 69d20f3..1430479 100644
 --- a/lib/ui/desktop/preference.dart
@@ -2124,10 +2217,22 @@ index 69d20f3..1430479 100644
                    contentPadding: EdgeInsets.zero,
                    title: Text(localizations.memoryCleanup, style: titleStyle),
 diff --git a/lib/ui/desktop/request/request.dart b/lib/ui/desktop/request/request.dart
-index 32b0131..d8c7b3e 100644
+index 32b0131..6997a18 100644
 --- a/lib/ui/desktop/request/request.dart
 +++ b/lib/ui/desktop/request/request.dart
-@@ -190,6 +190,24 @@ class _RequestWidgetState extends State<RequestWidget> {
+@@ -13,11 +13,9 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-import 'dart:convert';
+ 
+ import 'package:date_format/date_format.dart';
+ 
+-import 'package:proxypin/ui/component/multi_window_compat.dart';
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+ import 'package:proxypin/ui/component/context_menu.dart';
+@@ -190,6 +188,24 @@ class _RequestWidgetState extends State<RequestWidget> {
      // 内容沿用旧版（类型图标 + 「METHOD path」标题 + 「#编号 时间 - [状态] 类型 大小 耗时」副行 + 右侧 app 图标）。
      // Material+InkWell：hover/水波纹由组件自身处理，不触发整行 setState 重建
      //（之前 MouseRegion+setState 会让图片缩略图每次 hover 都重新解码，闪烁且费性能）。
@@ -2152,7 +2257,7 @@ index 32b0131..d8c7b3e 100644
      return Material(
          color: selected ? primarySoftBg(theme) : Colors.transparent,
          child: InkWell(
-@@ -202,43 +220,49 @@ class _RequestWidgetState extends State<RequestWidget> {
+@@ -202,43 +218,49 @@ class _RequestWidgetState extends State<RequestWidget> {
              onSecondaryTapDown: (details) => contextualMenu(details),
              hoverColor: rowHoverColor(theme),
              child: Container(
@@ -2226,6 +2331,21 @@ index 32b0131..d8c7b3e 100644
                    ])),
                    if (widget.trailing != null) ...[const SizedBox(width: 8), widget.trailing!],
                  ]))));
+@@ -551,11 +573,9 @@ class _RequestWidgetState extends State<RequestWidget> {
+   Future<void> requestEdit() async {
+     var size = MediaQuery.of(context).size;
+ 
+-    await DesktopMultiWindow.createWindow(
+-      jsonEncode({'name': 'RequestEditor', 'request': widget.request, 'proxyPort': widget.proxyServer.port}),
+-      title: localizations.requestEdit,
+-      size: Size(960, size.height),
+-    );
++    await MultiWindow.openWindow(localizations.requestEdit, 'RequestEditor',
++        size: Size(960, size.height),
++        args: {'request': widget.request, 'proxyPort': widget.proxyServer.port});
+   }
+ 
+   // 新窗口打开详情
 diff --git a/lib/ui/desktop/request/request_editor.dart b/lib/ui/desktop/request/request_editor.dart
 index 54a3adf..4a160e8 100644
 --- a/lib/ui/desktop/request/request_editor.dart

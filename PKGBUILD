@@ -45,7 +45,7 @@ source=(
   'proxypin.desktop'
 )
 sha256sums=('SKIP'
-            '4477a1fd3cf3213a6f3ee82bd6a5a38c22e8d930cdb89087934e8c7f2fe38a2c'
+            'ec32ad26cb8ab724a9d1120c54b9d400ab1d76e22e4efc409ab03dbd99020f98'
             '354e22fa87a7720a39890234c36975dd2fab989e2531b22b60a432b033cf4c7e')
 
 pkgver() {
