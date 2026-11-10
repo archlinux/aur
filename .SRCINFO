@@ -1,6 +1,6 @@
 pkgbase = jotty-git
 	pkgdesc = An opinionated, Wayland-native terminal emulator that supports both CPU and GPU renderer
-	pkgver = 2.0.0.r5.gc55c274
+	pkgver = 2.1.0.r0.g0b30e06
 	pkgrel = 1
 	url = https://github.com/justanoobcoder/jotty
 	arch = x86_64
