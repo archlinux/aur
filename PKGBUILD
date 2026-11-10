@@ -4,7 +4,7 @@
 
 _pkgname=android-emulator
 pkgname="${_pkgname}-dummy"
-pkgver=36.1.9
+pkgver=37.2.13
 pkgrel=1
 _pkgdesc='Google Android Emulator'
 pkgdesc="${_pkgdesc}, dummy package"
@@ -19,7 +19,7 @@ conflicts=("${_pkgname}")
 install="${pkgname}.install"
 source=("${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.sh?h=${_pkgname}"
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}")
-sha1sums=('80c9b3ffc8865b5f8e55b1ffed36c08ee7a9d8ad'
+sha1sums=('7e6d0b8932c816d26aa21aa5b44fc361a96c0d5a'
           'e1485ef14463f275005cae43a0a1e43ce52354ca')
 
 package() {
