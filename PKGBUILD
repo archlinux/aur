@@ -2,7 +2,7 @@
 
 pkgname=icon-browser-git
 pkgver=r19.68c7343 # Can't be empty, will be set dynamically
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse system installed icon themes"
 arch=(x86_64)
 license=('MIT')
@@ -28,6 +28,12 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$pkgname" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "$pkgname" || exit
+	# Upstream sets Exec to a relative bin/ path; binary is in $PATH
+	sed -i "s|'EXEC': bindir / meson.project_name()|'EXEC': meson.project_name()|" meson.build
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = icon-browser-git
 	pkgdesc = Browse system installed icon themes
 	pkgver = r19.68c7343
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aylur/icon-browser
 	arch = x86_64
 	license = MIT
