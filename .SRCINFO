@@ -1,6 +1,6 @@
 pkgbase = lichii-shader-sync-bin
 	pkgdesc = Downloads shared Vulkan shader caches into Lichii and Eden, so games stutter less on first play (upstream binary)
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/oceanpacificpeace/lichii-shader-sync
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lichii-shader-sync-bin
 	conflicts = lichii-shader-sync
 	options = !strip
 	options = !debug
-	source = lichii-sync-1.1.2::https://github.com/oceanpacificpeace/lichii-shader-sync/releases/download/v1.1.2/lichii-sync-linux-amd64
-	sha256sums = fd37dc83a2d74fa02bb96afc5e8cc57f8e05157a3073a3f1f1e79fd3c2d1aeae
+	source = lichii-sync-1.2.0::https://github.com/oceanpacificpeace/lichii-shader-sync/releases/download/v1.2.0/lichii-sync-linux-amd64
+	sha256sums = 01582551e6df1c503ef5dec483a27ac3f9757e90adc5710590ef4393d3c2fefc
 
 pkgname = lichii-shader-sync-bin
