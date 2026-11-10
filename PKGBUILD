@@ -13,7 +13,7 @@
 
 pkgname=openssh-selinux
 pkgver=10.6p1
-pkgrel=2
+pkgrel=3
 pkgdesc="SSH protocol implementation for remote login, command execution and file transfer, with SELinux support"
 arch=(x86_64 aarch64)
 url='https://www.openssh.com/portable.html'
@@ -137,7 +137,6 @@ build() {
     --with-privsep-path=/usr/share/empty.sshd
     --with-privsep-user=nobody
     --with-security-key-builtin
-    --with-ssl-engine
     --with-xauth=/usr/bin/xauth
     --without-zlib-version-check
     --with-selinux

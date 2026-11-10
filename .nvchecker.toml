@@ -1,7 +1,7 @@
 [openssh]
-source = "git"
-git = "https://github.com/openssh/openssh-portable"
-from_pattern = 'V_(\d+)_(\d+)_P(\d+)'
-to_pattern = '\1.\2p\3'
-# V_10_0_P2 was tagged accidentally; not a proper release.
-exclude_regex = 'V_10_0_P2'
+source = "regex"
+regex = 'openssh-\d+\.\d+p\d+\.tar.gz'
+url = "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"
+prefix = "openssh-"
+from_pattern = '\.tar\.gz'
+to_pattern = ''
