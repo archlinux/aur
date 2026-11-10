@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.255
+pkgver=1.4.256
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -33,6 +33,7 @@ depends=(
   'python-gobject'
   'systemd-libs'
   'wayland'
+  'vulkan-icd-loader'
   'zlib'
 )
 optdepends=(
@@ -61,7 +62,7 @@ _electronmajor=43
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=084ce0eebbdda3f665251984804f2238be666296
+_commit=baed35a2a2def0b84615c589042e75df97b3a5d5
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -82,7 +83,7 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
-  '603968b606f4470846638c73a4639ce70d92f616e04b240497c3289dd86a9d5e'
+  '879a2c000185edd3b940f613e12d0dde5f0ffc5fc20b76662ca1d1dd3c852431'
   'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
   'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
   '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -471,66 +472,56 @@ package() {
     return 1
   }
 
-  # Upstream sherpa-onnx binaries may contain architecture-specific absolute
-  # CI paths in RPATH/RUNPATH. Keep only $ORIGIN-relative components without
-  # changing the ELF string-table size; an already-clean path is a no-op.
-  local sherpa
-  local sherpa_bins=()
-  mapfile -d '' sherpa_bins < <(
-    find "$pkgdir/usr/lib/$pkgname" -type f -name 'sherpa-onnx.node' -print0
-  )
-  if [[ ${#sherpa_bins[@]} -eq 0 ]]; then
-    printf 'ERROR: packaged sherpa-onnx native module is missing\n' >&2
+  local speech_modules="$pkgdir/usr/lib/$pkgname/node_modules"
+  local transcribe_cpp="$speech_modules/transcribe-cpp"
+  [[ -f "$transcribe_cpp/package.json" ]] || {
+    printf 'ERROR: packaged transcribe-cpp runtime is missing\n' >&2
     return 1
-  fi
-  for sherpa in "${sherpa_bins[@]}"; do
-    python - "$sherpa" <<'PY'
-from pathlib import Path
-import os
-import re
-import subprocess
-import sys
+  }
+  [[ -f "$transcribe_cpp/dist/index.js" ]] || {
+    printf 'ERROR: packaged transcribe-cpp entry point is missing\n' >&2
+    return 1
+  }
+  [[ -f "$speech_modules/koffi/package.json" ]] || {
+    printf 'ERROR: packaged koffi dependency is missing\n' >&2
+    return 1
+  }
 
-path = Path(sys.argv[1])
-result = subprocess.run(
-    ["readelf", "-d", path],
-    check=True,
-    capture_output=True,
-    text=True,
-    env={**os.environ, "LC_ALL": "C"},
-)
-matches = re.findall(
-    r"Library (?:rpath|runpath): \[(.*?)\]",
-    result.stdout,
-    flags=re.IGNORECASE,
-)
-if len(matches) != 1:
-    raise SystemExit(
-        f"expected one sherpa-onnx RPATH/RUNPATH, found {len(matches)}: {path}"
-    )
-
-current = matches[0]
-components = current.split(":")
-kept = [
-    component
-    for component in components
-    if component == "$ORIGIN" or component.startswith("$ORIGIN/")
-]
-if not kept:
-    raise SystemExit(f"sherpa-onnx path has no $ORIGIN component: {path}: {current}")
-
-cleaned = ":".join(kept)
-if current != cleaned:
-    data = path.read_bytes()
-    needle = current.encode() + b"\0"
-    if data.count(needle) != 1:
-        raise SystemExit(
-            f"expected one sherpa-onnx path string, found {data.count(needle)}: {path}"
-        )
-    replacement = cleaned.encode() + b"\0" * (len(needle) - len(cleaned))
-    path.write_bytes(data.replace(needle, replacement, 1))
-PY
-  done
+  local koffi_native
+  local transcribe_native
+  case $CARCH in
+    x86_64)
+      koffi_native='@koromix/koffi-linux-x64'
+      transcribe_native='@transcribe-cpp/linux-x64-cpu-vulkan'
+      ;;
+    aarch64)
+      koffi_native='@koromix/koffi-linux-arm64'
+      transcribe_native='@transcribe-cpp/linux-arm64-cpu-vulkan'
+      ;;
+    *)
+      printf 'ERROR: unsupported transcribe-cpp architecture %s\n' "$CARCH" >&2
+      return 1
+      ;;
+  esac
+  local koffi_native_dir="$speech_modules/$koffi_native"
+  rm -rf "$koffi_native_dir"/musl_*
+  find "$koffi_native_dir" -type f -name 'koffi.node' -size +0c -print -quit |
+    grep -q . || {
+    printf 'ERROR: packaged glibc koffi addon is missing: %s\n' \
+      "$koffi_native" >&2
+    return 1
+  }
+  local transcribe_native_dir="$speech_modules/$transcribe_native"
+  [[ -f "$transcribe_native_dir/package.json" ]] || {
+    printf 'ERROR: packaged transcribe-cpp native package is missing: %s\n' \
+      "$transcribe_native" >&2
+    return 1
+  }
+  find "$transcribe_native_dir" -type f -size +0c -print -quit | grep -q . || {
+    printf 'ERROR: packaged transcribe-cpp native package is empty: %s\n' \
+      "$transcribe_native" >&2
+    return 1
+  }
 
   install -Dm755 "$srcdir/stably-orca.sh" "$pkgdir/usr/bin/stably-orca"
   install -Dm755 "$srcdir/orca-ide.sh" "$pkgdir/usr/bin/orca-ide"
