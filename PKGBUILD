@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.127.20
+pkgver=0.127.25
 _electronversion=45
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker."
@@ -22,12 +22,16 @@ options=(
     '!strip'
     '!emptydirs'
 )
-source=("${pkgname%-bin}.sh")
+source=(
+    "${pkgname%-bin}.js"
+    "${pkgname%-bin}.sh"
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
-sha256sums=('ef3b8fed44fdace077b976cc3a89a93bde368a9e445e4134efd7a44358676a27')
-sha256sums_aarch64=('bc4ee970f8103739448655a9c0899e0ff815dd49679be365c5f4263113be85b5')
-sha256sums_x86_64=('64c43bb654c8e8bb0f60e20f354fcddbc92b232d7af291e558ed09af51b6325c')
+sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
+sha256sums_aarch64=('7cb38a20f13bf032ca82fb66354629e1665f4ff396c21c21df52402e5c90befb')
+sha256sums_x86_64=('e5be027d5b05134b6f26aabc245bd0ccdbcb2c938a2b37d4b7f3b5afbf2765a1')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
@@ -55,7 +59,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh" "${srcdir}/${pkgname%-bin}.js"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\/usr\/lib\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
@@ -66,7 +70,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
 	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
