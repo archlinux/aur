@@ -1,7 +1,7 @@
 # Maintainer: joegoldin <joe@joegold.in>
 pkgname=zen-bonsai-browser-bin
 _pkgname=zen-bonsai
-pkgver=1.24.1b_bonsai.1
+pkgver=1.25t_bonsai.1
 pkgrel=1
 pkgdesc="Zen Bonsai: an unofficial fork of Zen Browser with native tree-style tabs"
 arch=('x86_64')
@@ -24,15 +24,15 @@ source=("$pkgname-$pkgver.tar.xz::https://github.com/joegoldin/zen-bonsai-browse
 # The release job's updpkgsums rewrites both entries against the published
 # tarball before anything is pushed to the AUR; the first one cannot be known
 # until that release exists.
-sha256sums=('3912a9afa8e41d105f83a95b512a71140974e743775605d9bd39d17ab0ee5fac'
-            '05529f659ed3810d81cb2660c19365f4893fd4641261b7802c5cc22ee9c729b6')
+sha256sums=('f09d800ff823f8de79a84201dceacc0ef6d92828fc2ec770e729a4b7659726e1'
+            'fffca8e74f7fa4f6b89f74361cae8ee3e9347cbe52dc46ce208484a35d5f3b1d')
 
 package() {
-  install -d "$pkgdir/opt/$_pkgname"
-  cp -r "$srcdir/zen/." "$pkgdir/opt/$_pkgname"
+  install -d "$pkgdir/usr/lib/$_pkgname"
+  cp -r "$srcdir/zen/." "$pkgdir/usr/lib/$_pkgname"
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$_pkgname/zen" "$pkgdir/usr/bin/zen"
+  ln -s "/usr/lib/$_pkgname/zen" "$pkgdir/usr/bin/zen"
   install -Dm644 "$srcdir/zen.desktop" "$pkgdir/usr/share/applications/zen.desktop"
-  install -Dm644 "$pkgdir/opt/$_pkgname/browser/chrome/icons/default/default128.png" \
+  install -Dm644 "$pkgdir/usr/lib/$_pkgname/browser/chrome/icons/default/default128.png" \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/zen.png"
 }
