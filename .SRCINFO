@@ -1,6 +1,6 @@
 pkgbase = waywallen
 	pkgdesc = Wallpaper Manager for Linux.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/waywallen/waywallen
 	arch = x86_64
@@ -31,18 +31,22 @@ pkgbase = waywallen
 	depends = zstd
 	optdepends = waywallen-display: Required for layer-shell based compositors
 	options = !lto
-	source = git+https://github.com/waywallen/waywallen.git#tag=v0.5.0
-	source = git+https://github.com/litocpp/luato.git#commit=df0c6f2d1cce2051b4711d36067619eda7933683
-	source = git+https://github.com/hypengw/ncrequest.git#commit=2ba60ef6321f5e7f5bccc5fe086d2682bcaccf40
-	source = git+https://github.com/hypengw/wavsen.git#commit=756437443d84905a027f115c75ec6ae6b19692e7
-	source = git+https://github.com/hypengw/QExtra.git#commit=b3fd790bb4a5c5cf7c0cc0384cc140e78e627609
-	source = git+https://github.com/hypengw/QmlMaterial.git#commit=f1464c52d42732acb1363122b9b1a2360fd505b3
-	sha256sums = 6848347a43cde869a273715f6b5793493fca53c819a2ed379c1d92aab14c16e2
-	sha256sums = 255e260360f8a29c42e33e10549a1bc2caea8cabd568eb7ad81d08b38526e7c3
-	sha256sums = a2d7f3aebfeaea2b0e0ee95b3486660135c52cf275ede014f916915dbb1000d1
-	sha256sums = c3eb7d0d83a534f2ab489bb6dbadfc208cf735ba7d31b4d4bdbdaa5d2e75dc26
-	sha256sums = 3bc4fde742f1aa956c3e6f5b1791228a421c5b24186b8eaba3baabe55656e34e
-	sha256sums = 906a8ffc16c671e6d9f6c7dae92c113b3863adfcb0084cbd3383f617bb0af298
+	source = git+https://github.com/waywallen/waywallen.git#tag=v0.6.0
+	source = git+https://github.com/litocpp/luato.git#commit=e146c282593b6ee723d9d785789f260b45980967
+	source = git+https://github.com/hypengw/wavsen.git#commit=92f37f4748a17a36f946e64c8a4a0880cc9fbe23
+	source = git+https://github.com/hypengw/QExtra.git#commit=3fcb45c1722ca434d3abb89832f79d28756ab93f
+	source = git+https://github.com/vecren/vecgltf.git#commit=93d66944c5cb4e2897b6bf2eca79fc3fc714b66b
+	source = git+https://github.com/vecren/vrento.git#commit=550e3c1f44ccafc064eb6b4b0b320764f5b65692
+	source = https://www.lua.org/ftp/lua-5.5.1.tar.gz
+	source = git+https://github.com/hypengw/QmlMaterial.git#commit=bdb63fb3e61ae03923c484c58183cf17f68cbae4
+	sha256sums = 65cb05a050161dea9cf512c9d6b8b69e402b6ebe7406f93b20cd29dba96cd776
+	sha256sums = e9626311e57131634532b1d62fda9942d28f07b42c60114b2e4dd6032f9e91e1
+	sha256sums = b745db138636443c8fcdf08f3265580369d1fa3eafa64e5c0821b05a7070056c
+	sha256sums = 812baccdb561e94c52a47bf13ef40d2474c2ca2877a1fbbd92f6a98bed1e4a5e
+	sha256sums = c874640d5d896e4487b042324767faee09e2dafe373e03d706ab6582d5fd148d
+	sha256sums = fabb2fa38be16ff0f8facc1779249ce64bf5a9e05f4848082c27be8b16be0ef0
+	sha256sums = 1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce
+	sha256sums = 69cd07d637a291d3463907556a254c7d8322e97193e53de24e1bd42e40dd50fa
 
 pkgname = waywallen
 	depends = libgcc
