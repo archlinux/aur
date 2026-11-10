@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=v0.0.2.r21.g4ba5850
+pkgver=v0.0.2.r22.gd9e1ece
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -47,11 +47,15 @@ build() {
 
 package() {
     cd "$_pkgname"
-    install -Dm755 target/release/indielinksd        "$pkgdir/usr/bin/indielinksd"
-    install -Dm755 target/release/indic              "$pkgdir/usr/bin/indic"
-    install -Dm755 target/release/indielinks-schemas "$pkgdir/usr/bin/indielinks-schemas"
-    install -Dm755 scripts/indielinks-ctl            "$pkgdir/usr/bin/indielinks-ctl"
-    install -Dm755 scripts/indielinks-post-install   "$pkgdir/usr/bin/indielinks-post-install"
+    install -Dm755 target/release/indielinksd            "$pkgdir/usr/bin/indielinksd"
+    install -Dm755 target/release/indic                  "$pkgdir/usr/bin/indic"
+    install -Dm755 target/release/indielinks-schemas     "$pkgdir/usr/bin/indielinks-schemas"
+    install -Dm755 scripts/indielinks-ctl                "$pkgdir/usr/bin/indielinks-ctl"
+    install -Dm755 scripts/indielinks-post-install       "$pkgdir/usr/bin/indielinks-post-install"
+    install -Dm644 indielinks/assets/about.md            "$pkgdir/usr/share/indielinks/templates/about.md"
+    install -Dm644 indielinks/assets/docs.md             "$pkgdir/usr/share/indielinks/templates/docs.md"
+    install -Dm644 indielinks/assets/privacy-policy.md   "$pkgdir/usr/share/indielinks/templates/privacy-policy.md"
+    install -Dm644 indielinks/assets/terms-of-service.md "$pkgdir/usr/share/indielinks/templates/terms-of-service.md"
     
     cd indielinks-fe/dist
     wasm=$(ls -1 indielinks-fe*.wasm)
