@@ -1,4 +1,4 @@
 [lib32-libcanberra]
 source = "git"
-git = "https://git.0pointer.net/clone/libcanberra.git"
+git = "https://github.com/Distrotech/libcanberra.git"
 prefix = "v"

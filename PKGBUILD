@@ -4,7 +4,7 @@
 
 pkgname=lib32-libcanberra
 pkgver=0.30+r2+gc0620e4
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 url="https://0pointer.net/lennart/projects/libcanberra/"
@@ -17,7 +17,7 @@ provides=(lib32-libcanberra-pulse libcanberra{,-gtk3}.so)
 replaces=("lib32-libcanberra-pulse<0.30+2+gc0620e4-4")
 options=(libtool)
 _commit=c0620e432650e81062c1967cc669829dbd29b310  # master
-source=("git+https://git.0pointer.net/clone/libcanberra.git#commit=$_commit"
+source=("git+https://github.com/Distrotech/libcanberra.git#commit=$_commit"
         libcanberra-multi-backend.patch)
 sha256sums=('SKIP'
             'de146cae3e40a16b38c8edb4f1a3a423c64eb9c5000e36c316b677e9909c9b06')
