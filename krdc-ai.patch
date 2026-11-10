@@ -56,10 +56,10 @@ index ab7dc20b..e55bb982 100644
      KF6::Bookmarks
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
-index 00000000..7111c80a
+index 00000000..4b196d84
 --- /dev/null
 +++ b/ai/aiconfig.cpp
-@@ -0,0 +1,145 @@
+@@ -0,0 +1,158 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -181,6 +181,10 @@ index 00000000..7111c80a
 +        "the user approves the action from that and a zoomed crop of the spot.\n"
 +        "- If an action needs a password or would delete or overwrite something, stop and let "
 +        "the user do it or confirm it.\n"
++        "- Keep working until the goal is verifiably done: never end a turn by only describing "
++        "an action you were about to take - take it with a tool call instead. Finish only when "
++        "the goal is reached, when a rule above says to stop, or when you are genuinely blocked "
++        "and need to ask the user something you cannot find out yourself.\n"
 +        "- Keep answers short. Report what you did and what the screen now shows.");
 +    if (prompt.contains(QLatin1String("If the reported image size differs"))) {
 +        // The old wording made the model rescale coordinates itself, and
@@ -192,6 +196,15 @@ index 00000000..7111c80a
 +                          "image accordingly."),
 +            QStringLiteral("Point tools take coordinates in this image's pixels and are mapped to the real screen "
 +                           "for you; do not scale coordinates yourself."));
++    }
++    if (prompt.contains(QLatin1String("embedded in KRDC")) && !prompt.contains(QLatin1String("Keep working until"))) {
++        // Saved copies predate the persistence rule that stops the assistant
++        // from narrating a next step and stopping instead of taking it.
++        prompt.replace(QLatin1String("- Keep answers short."),
++                       QStringLiteral("- Keep working until the goal is verifiably done: never end a turn by only "
++                                      "describing an action you were about to take - take it with a tool call "
++                                      "instead.\n"
++                                      "- Keep answers short."));
 +    }
 +    if (prompt.contains(QLatin1String("embedded in KRDC")) && !prompt.contains(QLatin1String("hover tool"))) {
 +        // Saved copies of a previous default predate the hover tool; append
@@ -274,10 +287,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..e33d7c97
+index 00000000..8fa0e795
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,1313 @@
+@@ -0,0 +1,1348 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -433,6 +446,13 @@ index 00000000..e33d7c97
 +    m_client.setConfig(m_config);
 +    connect(&m_client, &AiHttpClient::replyReceived, this, &AiConversation::onReply);
 +    connect(&m_client, &AiHttpClient::requestFailed, this, &AiConversation::onFailed);
++    connect(&m_client, &AiHttpClient::infoNote, this, [this](const QString &message) {
++        Entry note;
++        note.role = Role::Note;
++        note.text = message;
++        m_entries.append(note);
++        Q_EMIT entriesChanged();
++    });
 +
 +    if (m_config.rememberHistory) {
 +        load();
@@ -634,6 +654,27 @@ index 00000000..e33d7c97
 +    m_entries.append(entry);
 +
 +    m_rounds = 0;
++    m_roundCapReached = false;
++    m_client.resetTokenBudget();
++    setBusy(true);
++    Q_EMIT entriesChanged();
++    sendToModel();
++}
++
++void AiConversation::continueAfterCap()
++{
++    if (!m_roundCapReached || busy() || m_awaiting) {
++        return;
++    }
++    m_roundCapReached = false;
++    m_rounds = 0; // a fresh batch of rounds
++    m_client.resetTokenBudget();
++
++    Entry entry;
++    entry.role = Role::User;
++    entry.text = tr("Continue");
++    m_entries.append(entry);
++
 +    setBusy(true);
 +    Q_EMIT entriesChanged();
 +    sendToModel();
@@ -906,9 +947,16 @@ index 00000000..e33d7c97
 +    }
 +
 +    if (++m_rounds > MaxToolRounds) {
++        // Keep the history valid for the next request: the calls this reply
++        // announced were never run, so they must not sit in the transcript
++        // without answers. The Continue button has the model pick it up again.
++        if (!m_entries.isEmpty() && m_entries.last().role == Role::Assistant) {
++            m_entries.last().toolCalls.clear();
++        }
++        m_roundCapReached = true;
 +        Entry note;
 +        note.role = Role::Note;
-+        note.text = i18n("Too many tool calls in a row; stopping to avoid a loop. Ask me again if you want me to continue.");
++        note.text = i18n("Too many tool calls in a row; stopping to avoid a loop. Press Continue to give me %1 more rounds.").arg(MaxToolRounds);
 +        m_entries.append(note);
 +        setBusy(false);
 +        Q_EMIT entriesChanged();
@@ -1593,10 +1641,10 @@ index 00000000..e33d7c97
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..9f0e7316
+index 00000000..28a8da21
 --- /dev/null
 +++ b/ai/aiconversation.h
-@@ -0,0 +1,194 @@
+@@ -0,0 +1,205 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1690,6 +1738,16 @@ index 00000000..9f0e7316
 +    /** True for the tools that aim the pointer at coordinates. */
 +    static bool isPointingTool(const QString &name);
 +
++    /** True when the last turn stopped at the tool-round limit; the page
++     * shows a Continue button while it holds. */
++    bool roundCapReached() const
++    {
++        return m_roundCapReached;
++    }
++
++    /** Grants another batch of tool rounds after roundCapReached(). */
++    void continueAfterCap();
++
 +    void setConfig(const AiConfig &config);
 +    const AiConfig &config() const;
 +
@@ -1777,6 +1835,7 @@ index 00000000..9f0e7316
 +    QList<PendingTool> m_queue;
 +    int m_queueIndex = 0;
 +    bool m_awaiting = false;
++    bool m_roundCapReached = false;
 +    QPixmap m_aimCrop; ///< set by runTool before a pointer action lands
 +    bool m_denied = false;
 +    bool m_busy = false;
@@ -1793,10 +1852,10 @@ index 00000000..9f0e7316
 +};
 diff --git a/ai/aiconversationpage.cpp b/ai/aiconversationpage.cpp
 new file mode 100644
-index 00000000..04093ab0
+index 00000000..422430d5
 --- /dev/null
 +++ b/ai/aiconversationpage.cpp
-@@ -0,0 +1,412 @@
+@@ -0,0 +1,419 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1928,8 +1987,13 @@ index 00000000..04093ab0
 +    m_sendButton = new QPushButton(i18n("Send"), this);
 +    m_stopButton = new QPushButton(i18n("Stop"), this);
 +    m_stopButton->setVisible(false);
++    m_continueButton = new QPushButton(i18n("Continue"), this);
++    m_continueButton->setToolTip(i18n("The assistant stopped after too many tool calls in a row. "
++                                      "This grants another batch of rounds and lets it carry on."));
++    m_continueButton->setVisible(false);
 +    inputButtons->addWidget(m_sendButton);
 +    inputButtons->addWidget(m_stopButton);
++    inputButtons->addWidget(m_continueButton);
 +    inputRow->addLayout(inputButtons);
 +    layout->addLayout(inputRow);
 +
@@ -1961,6 +2025,7 @@ index 00000000..04093ab0
 +        m_conversation->deny();
 +    });
 +    connect(m_sendButton, &QPushButton::clicked, this, &AiConversationPage::send);
++    connect(m_continueButton, &QPushButton::clicked, this, [this] { m_conversation->continueAfterCap(); });
 +    connect(inputEdit, &SubmitOnEnterEdit::submit, this, &AiConversationPage::send);
 +    connect(m_stopButton, &QPushButton::clicked, this, [this] {
 +        m_conversation->cancel();
@@ -2040,6 +2105,7 @@ index 00000000..04093ab0
 +    }
 +
 +    m_approvalBar->setVisible(awaiting);
++    m_continueButton->setVisible(m_conversation && m_conversation->roundCapReached() && !m_conversation->busy());
 +    m_input->setEnabled(m_conversation && !m_conversation->busy() && !awaiting);
 +}
 +
@@ -2211,10 +2277,10 @@ index 00000000..04093ab0
 +#include "aiconversationpage.moc"
 diff --git a/ai/aiconversationpage.h b/ai/aiconversationpage.h
 new file mode 100644
-index 00000000..bf2615aa
+index 00000000..663b0248
 --- /dev/null
 +++ b/ai/aiconversationpage.h
-@@ -0,0 +1,67 @@
+@@ -0,0 +1,68 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2280,14 +2346,15 @@ index 00000000..bf2615aa
 +    QToolButton *m_screenshotButton;
 +    QPushButton *m_sendButton;
 +    QPushButton *m_stopButton;
++    QPushButton *m_continueButton;
 +    QLabel *m_statusLabel;
 +};
 diff --git a/ai/aihttpclient.cpp b/ai/aihttpclient.cpp
 new file mode 100644
-index 00000000..ed935fa3
+index 00000000..09d7ae5f
 --- /dev/null
 +++ b/ai/aihttpclient.cpp
-@@ -0,0 +1,288 @@
+@@ -0,0 +1,361 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2340,12 +2407,14 @@ index 00000000..ed935fa3
 +    payload.insert(QStringLiteral("model"), m_config.model);
 +    payload.insert(QStringLiteral("messages"), messages);
 +    payload.insert(QStringLiteral("temperature"), m_config.temperature);
-+    payload.insert(QStringLiteral("max_tokens"), m_config.maxTokens);
++    payload.insert(QStringLiteral("max_tokens"), qMax(m_config.maxTokens, m_effectiveMaxTokens));
 +    payload.insert(QStringLiteral("stream"), false);
 +    if (!tools.isEmpty()) {
 +        payload.insert(QStringLiteral("tools"), tools);
 +        payload.insert(QStringLiteral("tool_choice"), QStringLiteral("auto"));
 +    }
++    m_lastMessages = messages;
++    m_lastTools = tools;
 +
 +    QNetworkRequest request{QUrl{m_config.chatUrl()}};
 +    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/json"));
@@ -2428,6 +2497,78 @@ index 00000000..ed935fa3
 +
 +    qCDebug(KRDC) << "discovered" << ids.count() << "models";
 +    Q_EMIT modelsReceived(ids);
++}
++
++void AiHttpClient::resetTokenBudget()
++{
++    m_effectiveMaxTokens = 0;
++}
++
++void AiHttpClient::handleLengthCutoff()
++{
++    if (!m_ctxProbed) {
++        // Learn what the server can hold before growing the answer room past
++        // its context. Do it once per endpoint; failures just keep the
++        // conservative ceiling.
++        m_ctxProbed = true;
++        QNetworkRequest request{QUrl{m_config.modelsUrl()}};
++        if (!m_config.apiKey.isEmpty()) {
++            request.setRawHeader("Authorization", QStringLiteral("Bearer %1").arg(m_config.apiKey).toUtf8());
++        }
++        request.setTransferTimeout(std::chrono::seconds(10));
++        m_ctxReply = m_network->get(request);
++        connect(m_ctxReply, &QNetworkReply::finished, this, &AiHttpClient::onContextFinished);
++        return;
++    }
++    // Ceiling: the server's advertised context when known (never above the
++    // settings dialog's hard maximum), else that maximum.
++    const int ceiling = m_contextCeiling > 0 ? qMin(m_contextCeiling, 32768) : 32768;
++    const int current = qMax(m_config.maxTokens, m_effectiveMaxTokens);
++    if (current >= ceiling) {
++        Q_EMIT requestFailed(QStringLiteral("The answer was cut off at %1 tokens, the most this endpoint will take. "
++                                            "Try a shorter question or fewer screenshots.")
++                                 .arg(ceiling));
++        return;
++    }
++    m_effectiveMaxTokens = qMin(current * 2, ceiling);
++    Q_EMIT infoNote(QStringLiteral("The answer hit the token limit; retrying with room for %1 tokens.").arg(m_effectiveMaxTokens));
++    request(m_lastMessages, m_lastTools);
++}
++
++void AiHttpClient::onContextFinished()
++{
++    if (!m_ctxReply) {
++        return;
++    }
++
++    QNetworkReply *reply = m_ctxReply.data();
++    m_ctxReply.clear();
++    reply->deleteLater();
++
++    if (reply->error() == QNetworkReply::NoError) {
++        const QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
++        const QJsonArray data = document.object().value(QStringLiteral("data")).toArray();
++        for (const QJsonValue &value : data) {
++            const QJsonObject model = value.toObject();
++            if (model.value(QStringLiteral("id")).toString() != m_config.model) {
++                continue;
++            }
++            // Every server names its context window differently.
++            for (const QString &key : {QStringLiteral("context_length"), QStringLiteral("context_window"),
++                                       QStringLiteral("max_context_length"), QStringLiteral("max_model_len"),
++                                       QStringLiteral("n_ctx"), QStringLiteral("max_position_embeddings")}) {
++                const int found = model.value(key).toInt(0);
++                if (found > 0) {
++                    m_contextCeiling = found;
++                    break;
++                }
++            }
++            break;
++        }
++    }
++
++    qCDebug(KRDC) << "server context ceiling:" << m_contextCeiling;
++    handleLengthCutoff();
 +}
 +
 +static QString contentToText(const QJsonValue &content)
@@ -2565,11 +2706,10 @@ index 00000000..ed935fa3
 +    if (content.isEmpty() && toolCalls.isEmpty()) {
 +        const QString finish = choice.value(QStringLiteral("finish_reason")).toString();
 +        if (finish == QLatin1String("length")) {
-+            Q_EMIT requestFailed(QStringLiteral("The answer was cut off at the token limit. Increase the answer length in the "
-+                                                "assistant settings."));
-+        } else {
-+            Q_EMIT requestFailed(QStringLiteral("The model answered with an empty message."));
++            handleLengthCutoff();
++            return;
 +        }
++        Q_EMIT requestFailed(QStringLiteral("The model answered with an empty message."));
 +        return;
 +    }
 +
@@ -2578,10 +2718,10 @@ index 00000000..ed935fa3
 +}
 diff --git a/ai/aihttpclient.h b/ai/aihttpclient.h
 new file mode 100644
-index 00000000..d6372667
+index 00000000..e6feb02c
 --- /dev/null
 +++ b/ai/aihttpclient.h
-@@ -0,0 +1,65 @@
+@@ -0,0 +1,83 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2625,6 +2765,10 @@ index 00000000..d6372667
 +    void request(const QJsonArray &messages, const QJsonArray &tools);
 +    void cancel();
 +
++    /** Forgets any grown token budget; the next request uses the configured
++     * limit again. Called when a new user turn starts. */
++    void resetTokenBudget();
++
 +    /**
 +     * Asks the server's /models endpoint which models it is serving.
 +     * Independent of the chat request state, so it can run while a
@@ -2635,17 +2779,31 @@ index 00000000..d6372667
 +Q_SIGNALS:
 +    void replyReceived(const QString &content, const QList<AiToolCall> &toolCalls);
 +    void requestFailed(const QString &message);
++    /** Progress the user should see but that is not an error, e.g. the
++     * answer room being grown after a cutoff. */
++    void infoNote(const QString &message);
 +    void modelsReceived(const QStringList &modelIds);
 +    void modelsFailed(const QString &message);
 +
 +private:
 +    void onFinished();
 +    void onModelsFinished();
++    void onContextFinished();
++    /** Called when a reply came back cut off at the token limit: discovers
++     * the server's context size once, then doubles the answer room and
++     * retries, or gives up at the ceiling. */
++    void handleLengthCutoff();
 +
 +    QNetworkAccessManager *m_network;
 +    QPointer<QNetworkReply> m_reply;
 +    QPointer<QNetworkReply> m_modelsReply;
++    QPointer<QNetworkReply> m_ctxReply;
 +    AiConfig m_config;
++    int m_effectiveMaxTokens = 0; ///< 0 = use the configured limit
++    int m_contextCeiling = 0; ///< from the server, 0 = unknown
++    bool m_ctxProbed = false;
++    QJsonArray m_lastMessages;
++    QJsonArray m_lastTools;
 +};
 diff --git a/ai/aikeys.cpp b/ai/aikeys.cpp
 new file mode 100644
