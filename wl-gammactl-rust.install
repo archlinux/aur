@@ -1,0 +1,29 @@
+# Older README versions told users to install manually into /usr/local.
+# /usr/local/bin comes before /usr/bin in PATH (and /usr/local/share before
+# /usr/share for desktop entries), so a leftover copy silently shadows this
+# package. pacman must not delete files it doesn't own, so we tell the user.
+
+_stale_files="/usr/local/bin/wl-gammactl-rust
+/usr/local/share/applications/wl-gammactl-rust.desktop
+/usr/local/share/pixmaps/wl-gammactl-rust.png"
+
+_warn_stale_install() {
+    found=""
+    for f in $_stale_files; do
+        [ -e "$f" ] && found="$found $f"
+    done
+    [ -z "$found" ] && return 0
+
+    echo "==> WARNING: An old manual install of wl-gammactl-rust was found in /usr/local."
+    echo "    It takes priority over this package, so you would keep running the old version."
+    echo "    Remove it with:"
+    echo "      sudo rm -f$found"
+}
+
+post_install() {
+    _warn_stale_install
+}
+
+post_upgrade() {
+    _warn_stale_install
+}
