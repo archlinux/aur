@@ -99,7 +99,7 @@ package() {
   #    (the exact path the C21-08 helper verifies with SUMS.sha256
   #    before any build).
   local v
-  for v in LICENSE Makefile dkms.conf drv.c smu.c smu.h; do
+  for v in LICENSE Makefile dkms.conf drv.c smu.c smu.h apob.c apob.h; do
     install -Dm644 "$srcdir/ramsleuth/packaging/ryzen-smu-dkms/vendor/ryzen-smu/$v" \
       "$pkgdir/usr/share/ryzen-smu-dkms/vendor/ryzen-smu/$v"
   done
