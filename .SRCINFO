@@ -1,0 +1,18 @@
+pkgbase = vardefm
+	pkgdesc = Open high-speed data modem for FM radios (VARA FM alternative)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/notepid/vardeFM
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	optdepends = hamlib: Hamlib rigctld PTT support
+	source = vardefm-0.3.1.tar.gz::https://github.com/notepid/vardeFM/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = c312574dd6aafd813ab357a0a0992d19019e36e43ee5439730cc413d45c6aa19
+
+pkgname = vardefm
