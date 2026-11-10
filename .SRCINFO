@@ -1,6 +1,6 @@
 pkgbase = wf-dock-plus
-	pkgdesc = Dock for Wayfire with pinned launchers, app grouping and a places menu, based on wf-dock
-	pkgver = 0.1.0
+	pkgdesc = Dock for Wayfire with pinned launchers, app grouping, a places menu and a trash, based on wf-dock
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mkay/wf-dock-plus
 	arch = aarch64
@@ -18,7 +18,8 @@ pkgbase = wf-dock-plus
 	depends = libsigc++-3.0
 	depends = wayland
 	depends = wf-config>=0.7.0
-	source = wf-dock-plus-0.1.0.tar.gz::https://github.com/mkay/wf-dock-plus/archive/v0.1.0.tar.gz
-	sha256sums = 6efd0565c2dc6096b4e93124fe7b9e137b6ded6636dd2eccba9b93664b038b99
+	optdepends = gvfs: trash button
+	source = wf-dock-plus-0.2.0.tar.gz::https://github.com/mkay/wf-dock-plus/archive/v0.2.0.tar.gz
+	sha256sums = a243a12c65d1a555c30fc6eeada49c4a8e78d7ebfdecce8b9ef43546eaa95a5d
 
 pkgname = wf-dock-plus
