@@ -4,7 +4,7 @@ _ftapi=1       # fonttune API this PKGBUILD was written for; the build stops if 
 _flexver=3.200
 _nfver=3.5.1
 pkgver="${_flexver}"
-pkgrel=8
+pkgrel=9
 pkgdesc='Roboto Flex, the 13-axis variable Roboto, tuned with fonttune, with working italics and fontconfig axis presets (optionally static / Nerd Fonts patched)'
 arch=('any')
 url='https://github.com/googlefonts/roboto-flex'
@@ -53,7 +53,8 @@ sha256sums=('6b2b14e11308c7d3e8388b623cf740c46b872e7519198e0cff8062e52b75239b'
 #                                 interface size in points, what Pango gives the VF,
 #                                 read when it builds: a clean chroot or a non-GNOME
 #                                 desktop reads GNOME's default, 11; set N for a fixed
-#                                 cut). The value used is in /usr/share/doc/$pkgname/STATIC_OPSZ
+#                                 cut). Unset on a terminal, the build asks, with the numbers.
+#                                 The value used is in /usr/share/doc/$pkgname/STATIC_OPSZ
 #   NERD_PATCH=true               patch with Nerd Fonts glyphs (default false);
 #                                 implies FLEX_VARIANT=static
 #   ITALIC_FIX=true|false         enable 81-roboto-flex-italic.conf by default
@@ -150,6 +151,9 @@ prepare() {
   else
     local _weights="${STATIC_WEIGHTS:-100 200 300 400 500 600 700 800 900 1000}"
     local _widths="${STATIC_WIDTHS:-100}"
+    if [[ -z "${STATIC_OPSZ:-}" && -t 0 ]]; then  # explained choice; the answer comes back in a file
+      python "$(_ft)/bin/fonttune" ask opsz "$_vf" --out "$srcdir/.opsz" && STATIC_OPSZ=$(<"$srcdir/.opsz")
+    fi
     _opsz="${STATIC_OPSZ:-auto}"
     if [[ "${_opsz,,}" == auto ]]; then
       _opsz=$(PYTHONPATH="$(_ft)" python -c 'from fonttune.system import font_pt; print(f"{font_pt():g}")') ||
