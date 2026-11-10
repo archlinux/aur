@@ -1,6 +1,6 @@
 pkgbase = stickies
 	pkgdesc = Local sticky notes for Linux Wayland with Layer Shell v4+
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/0atxl/stickies
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = stickies
 	depends = sqlite
 	depends = librsvg
 	options = !debug
-	source = https://github.com/0atxl/stickies/releases/download/v0.10.2/stickies-0.10.2-src.tar.gz
-	sha256sums = be70277da10a4ab870006c6e3bd203ac6e176e91076e0ec2c54559284293211c
+	source = https://github.com/0atxl/stickies/releases/download/v0.10.3/stickies-0.10.3-src.tar.gz
+	sha256sums = 7590abe5071cd04b2339d11e2f70e1b512b6b04c758d055b066d3f5dfa054dab
 
 pkgname = stickies

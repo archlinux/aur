@@ -1,5 +1,5 @@
 pkgname=stickies
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='Local sticky notes for Linux Wayland with Layer Shell v4+'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('cairo' 'dbus' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'graphene'
          'libgcc' 'pango>=1.56' 'sqlite' 'librsvg')
 makedepends=('rust>=1:1.92' 'pkgconf' 'desktop-file-utils')
 options=('!debug')
-source=("https://github.com/0atxl/stickies/releases/download/v0.10.2/stickies-${pkgver}-src.tar.gz")
-sha256sums=('be70277da10a4ab870006c6e3bd203ac6e176e91076e0ec2c54559284293211c')
+source=("https://github.com/0atxl/stickies/releases/download/v0.10.3/stickies-${pkgver}-src.tar.gz")
+sha256sums=('7590abe5071cd04b2339d11e2f70e1b512b6b04c758d055b066d3f5dfa054dab')
 _target=x86_64-unknown-linux-gnu
 
 prepare() {
