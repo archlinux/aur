@@ -1,0 +1,19 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2026-11-08 14:50:29.505403880 -0500
++++ b/nslink.c	2026-11-08 14:52:00.341868093 -0500
+@@ -5149,11 +5149,15 @@ static int free_si_box(int boxid)
+                         return -EBUSY;
+                 }
+         }
+ 
+         if (timer_pending(&si->timer))
++#if LINUX_VERSION_CODE < VERSION_CODE(6,15,0)
+                 del_timer(&si->timer);
++#else
++                timer_delete(&si->timer);
++#endif
+ 
+         conc_state[boxid] = 0;
+ 
+         for (i = 0; i < si->num_ports; i++) {
+                 info = nrp_table[i + si->base_port];

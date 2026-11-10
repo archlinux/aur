@@ -1,0 +1,18 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2024-06-28 17:35:43.000000000 -0400
++++ b/nslink.c	2026-11-08 14:47:27.495721739 -0500
+@@ -411,10 +411,14 @@ static long hdlc_ack_time = 100;		//HZ/1
+ # define timer_setup(timer, callback, flags) setup_timer((timer), (callback), (unsigned long)(timer))
+ # define callback_param_type  unsigned long
+ #else
+ # define callback_param_type  struct timer_list *
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,16,0)
++#define from_timer(var, callback_timer, timer_fieldname) \
++  container_of(callback_timer, typeof(*var), timer_fieldname)
++#endif
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,20,0)
+ // TIOCGSERIAL ioctl stops working.
+ # define NEED_GETSET_SERIAL_FUNCTION
+ #endif

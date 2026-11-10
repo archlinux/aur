@@ -1,0 +1,32 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2026-11-08 15:32:52.154474710 -0500
++++ b/nslink.c	2026-11-08 15:33:17.457689629 -0500
+@@ -4037,11 +4037,11 @@ static int get_box_config(struct si_box_
+                 return -EINVAL;
+ 
+         tmp.num_ports = si->num_ports;
+         tmp.state = si->state;
+         memcpy(tmp.ether_addr, si->ether_addr, 6);
+-        strncpy(tmp.interface, si->dev->name, sizeof(tmp.interface));
++        strscpy(tmp.interface, si->dev->name, sizeof(tmp.interface));
+ 
+         if (copy_to_user(retinfo, &tmp, sizeof(tmp)))
+                 return -EFAULT;
+         return 0;
+ }
+diff -pNaru5 a/nslinkd.c b/nslinkd.c
+--- a/nslinkd.c	2026-11-08 15:32:52.154474710 -0500
++++ b/nslinkd.c	2026-11-08 15:32:59.221108298 -0500
+@@ -714,11 +714,11 @@ void *Service(void *arg)
+   unsigned long long loopcount = 0;
+   int maxfd;
+ 
+   conn = (struct secureConnection *)arg;
+   tcpSock = conn->tcpSock;
+-  strncpy(addrstr, (conn->unixAddr.sun_path)+1, sizeof(addrstr));
++  strscpy(addrstr, (conn->unixAddr.sun_path)+1, sizeof(addrstr));
+   syslog(LOG_INFO, "Unix socket name %s\n", addrstr);
+ #ifdef PACKET_DEBUG
+   char tcpname[256];
+   int tid;
+   tid = (-1);

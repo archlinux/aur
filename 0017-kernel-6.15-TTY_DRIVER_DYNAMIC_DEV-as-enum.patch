@@ -1,0 +1,16 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2026-11-08 14:53:55.281579534 -0500
++++ b/nslink.c	2026-11-08 14:55:45.067943060 -0500
+@@ -5811,11 +5811,11 @@ int register_tty_driver(tBoxPortCount *u
+         nslink_driver->init_termios.c_cflag = B9600 | CS8 | CREAD | HUPCL | CLOCAL;
+         nslink_driver->init_termios.c_ispeed = 9600;
+         nslink_driver->init_termios.c_ospeed = 9600;
+ #if defined(TTY_DRIVER_NO_DEVFS)
+         nslink_driver->flags = TTY_DRIVER_REAL_RAW | TTY_DRIVER_NO_DEVFS;
+-#elif defined(TTY_DRIVER_DYNAMIC_DEV)
++#elif defined(TTY_DRIVER_DYNAMIC_DEV) || LINUX_VERSION_CODE >= VERSION_CODE(6,15,0)
+         nslink_driver->flags = TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV;
+ #else
+ # error "Ouch.  Somebody pulled the rug out from under us: don't know how to register dynamic serial devices"
+ #endif
+ 

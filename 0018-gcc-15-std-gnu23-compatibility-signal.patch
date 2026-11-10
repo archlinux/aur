@@ -1,0 +1,16 @@
+diff -pNaru5 a/nslinkd.c b/nslinkd.c
+--- a/nslinkd.c	2024-06-28 17:35:44.000000000 -0400
++++ b/nslinkd.c	2026-11-08 15:14:31.017154191 -0500
+@@ -456,11 +456,11 @@ static void sigterm_handler(int signum)
+         }
+ 	syslog(LOG_INFO,"sigterm child (%u) exit\n", getpid());
+         exit(0);
+ }
+ 
+-static void sighup_handler()
++static void sighup_handler(int sig)
+ {
+         syslog(LOG_INFO, "sighup (%u)\n", getpid());
+         signal(SIGHUP, sighup_handler);
+         return;
+ }

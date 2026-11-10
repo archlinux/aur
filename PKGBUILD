@@ -3,7 +3,7 @@
 _opt_DKMS=1            # This can be toggled between installs
 _opt_defaultmode='660' # default: 620
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/vmlinuz))"
 
 # Todo: Test secure mode
 
@@ -27,7 +27,7 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='8.12'; _dl='1833783f'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -65,6 +65,11 @@ source=(
   '0012-kernel-6.6-struct-tty_operations-write-size_t.patch'
   '0013-kernel-6.3-tty_port_operations-int-to-bool.patch'
   '0014-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
+  '0015-kernel-6.16-from_timer.patch'
+  '0016-kernel-6.15-del_timer_timer_delete.patch'
+  '0017-kernel-6.15-TTY_DRIVER_DYNAMIC_DEV-as-enum.patch'
+  '0018-gcc-15-std-gnu23-compatibility-signal.patch'
+  '0019-kernel-7.2-strncpy-strscpy.patch'
 )
 md5sums=('e5d1a3959fb63c2c70bab9da47af3bb4'
          'e3ffb36acfdd321c919e44d477f0774a'
@@ -81,7 +86,12 @@ md5sums=('e5d1a3959fb63c2c70bab9da47af3bb4'
          '98788ff1378604e9fda43eb6ef9e9e3d'
          'feb1ccc7522a6ac2b33326c7f648edb2'
          '1ff77ae8edbcd654c680999eadd4911b'
-         'ed93e16d8cbac647e69a473359991c2d')
+         'ed93e16d8cbac647e69a473359991c2d'
+         '08e14d936df2715a78d15e95e62012af'
+         '80a6a15fdd60037497815b681aa66a6a'
+         'b77dee2729be800587a04b4019b48a56'
+         '3e52771288caa257053e94dfc40cc7ee'
+         'a50f23db3a00c122bf44c41b47c6a11a')
 sha256sums=('0d3e75732edda607006f04baa50d8d3c1b44df26e4535de47dffb341da9e99d1'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
@@ -97,7 +107,12 @@ sha256sums=('0d3e75732edda607006f04baa50d8d3c1b44df26e4535de47dffb341da9e99d1'
             '7f181d1542b542989b319caf85621725389d7681cf2d5c3bb57dc774d14f1b76'
             '5a62d3658d716c8140de65c2ac2e2560ca33f0f2a58212e29df74eadb821b6ce'
             '4c605df9b08ea2be3b3c94a2dab8554902ff15576a7075c597453306c275e3e2'
-            '4ec33cda5131d1502ad46a26de68f0ae579e050e9ed7a111d7f9285caf972221')
+            '4ec33cda5131d1502ad46a26de68f0ae579e050e9ed7a111d7f9285caf972221'
+            '1ed9bb74e23b071d8ec8d7a3c89d78b20b47a8ae042da8917adcf839b5e9499f'
+            'ff85d4edf3505eac7632f940075c8725b20df18038c232eac0dc795ec4fe9d6d'
+            '55805018a491eb327d9a9e2f34ed916f00507bee817a4bc0af34fe50be64549e'
+            'd37123e1f6bdd4a32e1ba1988f175ccd17231d4f726dcc042da422f44bd36310'
+            '95b8cb4050974bc357ab79ad964252e429320cf9acc3e3fdb93f35949d09756f')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -106,7 +121,7 @@ else
 fi
 
 prepare() {
-  set -u
+  local -; set -u
   set -x
   # Pacman v7.0.0 makepkg won't unpack zip files
   bsdtar -xf "${source[0]%%::*}"
@@ -152,6 +167,11 @@ prepare() {
   #_patches+=('0012-kernel-6.6-struct-tty_operations-write-size_t.patch')
   #_patches+=('0013-kernel-6.3-tty_port_operations-int-to-bool.patch')
   #_patches+=('0014-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
+  _patches+=('0015-kernel-6.16-from_timer.patch')
+  _patches+=('0016-kernel-6.15-del_timer_timer_delete.patch')
+  _patches+=('0017-kernel-6.15-TTY_DRIVER_DYNAMIC_DEV-as-enum.patch')
+  _patches+=('0018-gcc-15-std-gnu23-compatibility-signal.patch')
+  _patches+=('0019-kernel-7.2-strncpy-strscpy.patch')
 
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
@@ -263,13 +283,11 @@ prepare() {
   # Patch usage and help into command line tool
   #diff -pNau5 dmupdate.py{.orig,} > '../dmupdate.py.usage.patch'
   patch -Nup0 -i "${srcdir}/dmupdate.py.usage.patch"
-  set +u
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
-  set +u
   if ! make -j1 QUIET=0 all nslink; then
     warning 'a no such file or directory error means you need to reboot to load the updated kernel'
     false
@@ -277,7 +295,7 @@ build() {
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   if [ "${_opt_DKMS}" -eq 0 ]; then
@@ -340,7 +358,7 @@ BUILT_MODULE_NAME[0]="nslink"
 BUILT_MODULE_LOCATION[0]=""
 # Using all processors doesn't compile this tiny module any faster.
 MAKE[0]="make -j1 all QUIET=1"
-CLEAN[0]="make -j1 clean"
+#CLEAN[0]="make -j1 clean"
 # Placing the DKMS generated module in a different location than the standard install prevents conflicts when PKGBUILD _opt_DKMS is toggled
 DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
@@ -368,7 +386,6 @@ Categories=Application;Utilities;
 MimeType=application/x-executable
 EOF
   ) "${pkgdir}/usr/share/applications/DM-Firmware-Updater.py.desktop"
-  set +u
 }
 
 set +u
