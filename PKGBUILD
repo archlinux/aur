@@ -10,7 +10,7 @@
 
 pkgname=sudo-selinux
 _sudover=1.9.17p2
-pkgrel=6
+pkgrel=7
 pkgver=${_sudover/p/.p}
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
 arch=('x86_64' 'aarch64')
@@ -28,19 +28,22 @@ backup=('etc/pam.d/sudo'
 install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo_logsrvd.service
-        sudo.pam)
+        sudo.pam
+        openssl-4.patch)
 sha256sums=('4a38a1ab3adb1199257edc2a7c4a2bd714665eb605b04368843b06dada2cfcfb'
             'SKIP'
             'bd4bc2f5d85cbe14d7e7acc5008cb4fe62c38de7d42dc6876c87bfaa273c0a6e'
-            '7ec1c668c10e0f83d00e25f336872212fe04ce2c2563e1d661d34d28852f4649')
+            '7ec1c668c10e0f83d00e25f336872212fe04ce2c2563e1d661d34d28852f4649'
+            'cc992ceed4268f91656ba5e0071d0e452354cbe64200f3d7eb4d89aa1c5e0022')
 validpgpkeys=('59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB')
 
 prepare() {
-  cd "${pkgname/-selinux}-$_sudover"
+  cd "${pkgname/-selinux}-${_sudover}"
+  patch -Np1 -i "$srcdir/openssl-4.patch"
 }
 
 build() {
-  cd "${pkgname/-selinux}-$_sudover"
+  cd "${pkgname/-selinux}-${_sudover}"
 
   ./configure \
     --prefix=/usr \
@@ -59,18 +62,23 @@ build() {
     --with-secure-path-value=/usr/local/sbin:/usr/local/bin:/usr/bin \
     --with-all-insults \
     --with-selinux
+
+  # Prevent excessive overlinking due to libtool; for details, please refer to
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/sudo/-/merge_requests/3.
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
 check() {
-  cd "${pkgname/-selinux}-$_sudover"
-  make check
+  make -C "${pkgname/-selinux}-${_sudover}" check
 }
 
 package() {
   depends+=('libcrypto.so' 'libssl.so')
 
-  cd "$srcdir/${pkgname/-selinux}-$_sudover"
+  cd "$srcdir/${pkgname/-selinux}-${_sudover}"
+
   make DESTDIR="$pkgdir" install
 
   # sudo_logsrvd service file (taken from sudo-logsrvd-1.9.0-1.el8.x86_64.rpm)
