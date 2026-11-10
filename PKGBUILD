@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clockenstein
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Calendar application with local, Google and CalDAV support"
 arch=('any')
@@ -37,7 +37,7 @@ makedepends=(
 optdepends=('gnome-online-accounts-gtk')
 checkdepends=('desktop-file-utils')
 source=("git+https://github.com/xapp-project/clockenstein.git#tag=$pkgver")
-sha256sums=('96c8d8f330ae418a5be42a5b389c5b0a8e924246dc89bdc3e3dfa812cddccf0f')
+sha256sums=('cb70a796ee67c2a4f23bffac2036911f8b6adb62c263208c0cc07e4d3829503a')
 
 build() {
   arch-meson "$pkgname" build
