@@ -27,3 +27,8 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "metamod-ubsan.patch"
+SPDX-FileCopyrightText = "Metamod:Source Development Team"
+SPDX-License-Identifier = "Zlib"

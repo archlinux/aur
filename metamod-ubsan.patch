@@ -1,0 +1,103 @@
+--- a/core/sourcehook/sh_asm.h
++++ b/core/sourcehook/sh_asm.h
+@@ -48,16 +48,17 @@
+ 
+ 					unsigned char *newBuf;
+ 					newBuf = reinterpret_cast<unsigned char*>(ms_Allocator.Alloc(m_AllocatedSize));
+-					ms_Allocator.SetRW(newBuf);
+ 					if (!newBuf)
+ 					{
+ 						SH_ASSERT(0, ("bad_alloc: couldn't allocate 0x%08X bytes of memory\n", m_AllocatedSize));
+ 						return;
+ 					}
++					ms_Allocator.SetRW(newBuf);
+ 					memset((void*)newBuf, 0xCC, m_AllocatedSize);			// :TODO: remove this !
+-					memcpy((void*)newBuf, (const void*)m_pData, m_Size);
+ 					if (m_pData)
+ 					{
++						// Only with old data: memcpy must not be passed a null pointer, even for 0 bytes
++						memcpy((void*)newBuf, (const void*)m_pData, m_Size);
+ 						ms_Allocator.SetRE(reinterpret_cast<void*>(m_pData));
+ 						ms_Allocator.SetRW(newBuf);
+ 						ms_Allocator.Free(reinterpret_cast<void*>(m_pData));
+--- a/core/sourcehook/sourcehook_impl_cvfnptr.cpp
++++ b/core/sourcehook/sourcehook_impl_cvfnptr.cpp
+@@ -8,6 +8,8 @@
+ * ============================
+ */
+ 
++#include <cstdint>
++#include <cstring>
+ #include "sourcehook_impl.h"
+ 
+ namespace SourceHook
+@@ -58,20 +60,19 @@
+ 				if (offset >= INT_MIN && offset <= INT_MAX)
+ 				{
+ 					*(thunkBase + 0) = 0xE9;		// offset jump, immediate operand
+-					ptrdiff_t *offsetAddr = reinterpret_cast<ptrdiff_t*>(thunkBase + 1);
+ 				
+ 					// destination = src + offset + 5
+ 					// <=>  offset = destination - src - 5
+-					*offsetAddr = offset;
++					// (32 bits, unaligned: with memcpy)
++					std::int32_t rel32 = static_cast<std::int32_t>(offset);
++					memcpy(thunkBase + 1, &rel32, sizeof(rel32));
+ 				}
+ 				else
+ 				{
+ 					// mov rax, m_origEntry
+ 					*(thunkBase + 0) = 0x48;
+ 					*(thunkBase + 1) = 0xB8;
+-					void **offsetAddr = reinterpret_cast<void**>(thunkBase + 2);
+-
+-					*offsetAddr = m_OrigEntry;
++					memcpy(thunkBase + 2, &m_OrigEntry, sizeof(m_OrigEntry));
+ 
+ 					// jmp rax
+ 					*(thunkBase + 10) = 0xFF;
+--- a/core/sourcehook/test/testoddthunks.cpp
++++ b/core/sourcehook/test/testoddthunks.cpp
+@@ -1,4 +1,6 @@
+ #include <string>
++#include <cstdint>
++#include <cstring>
+ #include <stdint.h>
+ #include <stddef.h>
+ #include "sourcehook_test.h"
+@@ -105,18 +107,16 @@
+ 		if (offset >= INT_MIN && offset <= INT_MAX)
+ 		{
+ 			*(base + 0) = 0xE9;		// offset jump, immediate operand
+-			ptrdiff_t *offsetAddr = reinterpret_cast<ptrdiff_t*>(base + 1);
+-
+-			*offsetAddr = offset;
++			// 32 bits, unaligned: with memcpy
++			std::int32_t rel32 = static_cast<std::int32_t>(offset);
++			memcpy(base + 1, &rel32, sizeof(rel32));
+ 		}
+ 		else
+ 		{
+ 			// mov rax, origEntry
+ 			*(base + 0) = 0x48;
+ 			*(base + 1) = 0xB8;
+-			void **offsetAddr = reinterpret_cast<void**>(reinterpret_cast<char*>(base) + 2);
+-
+-			*offsetAddr = origEntry;
++			memcpy(base + 2, &origEntry, sizeof(origEntry));
+ 
+ 			// jmp rax
+ 			*(base + 10) = 0xFF;
+--- a/core/provider/provider_ep2.cpp
++++ b/core/provider/provider_ep2.cpp
+@@ -822,7 +822,9 @@
+ 	/* Patch in relative jump to our Error() detour */
+ 	SetMemAccess(target, sizeof(orig_bytes), SH_MEM_READ|SH_MEM_WRITE|SH_MEM_EXEC);
+ 	target[0] = IA32_JMP_IMM32;
+-	*(int32_t *)&target[1] = (int32_t)(detour - (target + 5));
++	/* The offset is unaligned: write it with memcpy */
++	int32_t rel32 = (int32_t)(detour - (target + 5));
++	memcpy(&target[1], &rel32, sizeof(rel32));
+ 
+ 	/* This is where longjmp() will end up */
+ 	if (setjmp(usermsg_end))

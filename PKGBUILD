@@ -7,7 +7,7 @@ pkgname=(metamod-source metamod-source-src)
 # Metamod:Source's version: the stable branch's tag, <version>.<build>, the build being the number of
 # commits, which its versioning counts with git
 pkgver=1.12.0.1229
-pkgrel=1
+pkgrel=2
 pkgdesc="Metamod:Source, the plugin loader of SourceMod, for Source engine game servers, for the games of hl2sdk with Linux servers (the addons folder of a server)"
 arch=(x86_64)
 url="https://www.metamodsource.net"
@@ -19,14 +19,17 @@ makedepends=(ambuild clang git hl2sdk python)
 source=("git+https://github.com/alliedmodders/metamod-source.git#tag=$pkgver"
   "git+https://github.com/alliedmodders/amtl.git"
   "git+https://github.com/alliedmodders/hl2sdk-manifests.git"
+  metamod-ubsan.patch
   source-sdk.txt)
 sha512sums=('b0cd1b9fae5f7e6e463775748a5cf9b3c1ded6f9a5442e1d27af175cea664cc96fbff41ffab4782ce684528e7e4a26ae680cf896b3c3475b23485295cd2bb60c'
   'SKIP'
   'SKIP'
+  '3dec8a576592e58891b1b2d3eacfa6b62822c501d828b459c1b8e1e4dcd8e2770fd3b95e4fc67468963f63ae782f0caa0acb57829ca77292d2c989907193e3a1'
   'f427709e7137dd0249070ffa3aedaf9c04b434172d56d8d453ada2d0c439c2b31a9c82551da5c993468fc286edba756d86073268894394ba5190fc1475ca09b3')
 b2sums=('e9bd2d1442d3cca1df7a42394d07d3117de790f1ce72651c579da12b9f6fbaaba12ece78b13a069ecc168436edaf9b00adb5e2acb86da63e4c2457c11115d5bf'
   'SKIP'
   'SKIP'
+  'a05c033d5fe6580d545d7caaf3333bfb78d87b023e1ce02303b7aa929c8426e4f8eb3267d6221c46b38cdbbf85318f346c1066b4166b7cb168c50b3772c8288e'
   'b856088fc19f7c921a5e2b3320a776e27b10a8d3d77c21041cb59348b2efde62491163c57227080c0091eb77e74c0d1fc2c0b72a01e0770df27777dc077ad600')
 
 # Clang, like upstream's builds: the code builds with -Werror
@@ -44,6 +47,14 @@ prepare() {
   # --force: on a rebuild makepkg only resets the main checkout, the submodules would keep the
   # previous build's changes
   git -c protocol.file.allow=always submodule update --force third_party/amtl hl2sdk-manifests
+
+  # Without the undefined behaviour UBSan reports: SourceHook's code generator copies no null
+  # buffer on its first write (and checks its allocation before using it), and its thunks for odd
+  # vtable entries write the jump's 32-bit offset and the 64-bit address with memcpy rather than
+  # through unaligned pointers (on x86_64 the offset was written as 8 bytes), as does the
+  # temporary detour of tier0's Error() at start. Upstream replaced SourceHook with KHook after
+  # 1.12; the detour is still there.
+  patch -Np1 -i "$srcdir/metamod-ubsan.patch"
 }
 
 build() {
