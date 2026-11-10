@@ -3,7 +3,7 @@
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
 pkgver=2.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -43,7 +43,7 @@ build() {
   export CARGO_HOME=${srcdir}/.cargo
   export RUST_VERSION=1.91.0
   export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep -o "[^ ]*-$_jdkver-[^ ]*" | head -n 1 | tr -d '[:space:]')/
-  export PATH="$JAVA_HOME/bin/:$PATH"
+  export PATH="$JAVA_HOME/bin/:/usr/lib/emscripten:$PATH"
 
   echo "==== BUILDING MCP SERVER"
   cd "${srcdir}/${_pkgbase}-${pkgver}/mcp"
@@ -80,7 +80,6 @@ build() {
   rustup target add wasm32-unknown-emscripten
 
   CURRENT_HASH=$(echo $sha256sums[0] | head -c 7) \
-  PATH=$PATH:/usr/lib/emscripten \
     ./scripts/build $pkgver
 
   echo "==== BUILDING EXPORTER"
