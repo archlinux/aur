@@ -4,7 +4,7 @@
 # copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=pila-git
-pkgver=0.4.2.r340.gc0abc70
+pkgver=0.5.0.r384.gd18e82b
 pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
