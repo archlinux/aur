@@ -93,13 +93,12 @@ package_metamod-source() {
   # The games' 32-bit and 64-bit servers
   depends=(gcc-libs glibc lib32-gcc-libs lib32-glibc)
 
-  cd "$pkgbase/build/package" || exit
-
   # The addons folder of a game (e.g. doi/addons), with metamod.vdf, which loads Metamod:Source, to
   # copy into a server: the same for each game, with the binaries of every game (metamod.2.<game>.so,
-  # bin/linux64 for the 64-bit servers). In /usr/lib, as it's mostly libraries.
+  # bin/linux64 for the 64-bit servers). In /usr/lib, as it's mostly libraries. Without a cd, which
+  # namcap's parser, running the package functions in a restricted shell, can't do.
   install -d "$pkgdir/usr/lib/metamod"
-  cp -r --no-preserve=ownership addons "$pkgdir/usr/lib/metamod/"
+  cp -r --no-preserve=ownership "$srcdir/$pkgbase/build/package/addons" "$pkgdir/usr/lib/metamod/"
 
   local _licenses="$pkgdir/usr/share/licenses/${FUNCNAME[0]#package_}"
   install -Dm644 "$srcdir/$pkgbase/LICENSE.txt" -t "$_licenses"
