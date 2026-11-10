@@ -1,6 +1,6 @@
 pkgbase = chatgtk_client-git
 	pkgdesc = GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools
-	pkgver = 0.2.263.g2b938e1
+	pkgver = 0.2.278.g1bb3aa0
 	pkgrel = 2
 	url = https://github.com/rabfulton/ChatGTK
 	arch = any
