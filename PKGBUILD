@@ -5,7 +5,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
 arch=('i686' 'x86_64')
@@ -13,23 +13,17 @@ url="http://sumo.dlr.de"
 license=('EPL-2.0')
 depends=('openscenegraph' 'proj' 'fox' 'xerces-c' 'gdal' 'gl2ps' 'flake8' 'autopep8' 'python-pyproj' 'python-pandas' 'python-scipy' 'ffmpeg' 'python-matplotlib')
 makedepends=('cmake' 'help2man' 'swig' 'gtest' 'gmock' 'python-setuptools' 'python-build' 'eigen' 'jdk-openjdk' 'maven' 'git' 'python-pip')
-source=("https://sumo.dlr.de/releases/${pkgver}/sumo-src-${pkgver}.tar.gz"
-        "0001-fix-arrow-cpp20.patch::https://github.com/eclipse-sumo/sumo/commit/d88e2a935fc4c1ece19b0decc8c17444c6796d5e.patch")
+source=("https://sumo.dlr.de/releases/${pkgver}/sumo-src-${pkgver}.tar.gz")
 
-sha256sums=('8befa700b6b0a02c79733e15ad5c891be421a1649ab973d266d2556c9f6f79ff'
-            'SKIP')
+sha256sums=('d36b3a72b879bd38d1e0981d86d52a8730396cd37dc65a80bf77b4683fbad194')
 
 prepare() {
-    # example tests still fails
+    # example tests still fail
     sed -i '/exampletest/d' "$pkgname-$pkgver"/CMakeLists.txt
-    # Backport C++20/Arrow>=24 compatibility fix
-    # https://github.com/eclipse-sumo/sumo/commit/d88e2a935fc4c1ece19b0decc8c17444c6796d5e
-    # Upstream patch does not apply cleanly to 1.26.0 (hunk 3 references ENABLE_PARQUET),
-    # so apply with fuzz and skip the incompatible hunk
-    patch -Np1 -d "$pkgname-$pkgver" --fuzz=5 --reject-file=- -i "$srcdir/0001-fix-arrow-cpp20.patch" || true
     cmake -B build -S "$pkgname-$pkgver" \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DCMAKE_BUILD_TYPE=Release
 }
 
@@ -48,10 +42,11 @@ package_sumo() {
     # Installs just the bin files
     cmake --build build -- DESTDIR="${pkgdir}/" install
 
-    cd ${pkgbase}-${pkgver}
-    install -Dm644 data/logo/sumo-128x138.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
-    install -Dm644 build_config/package/*.desktop -t ${pkgdir}/usr/share/applications/
-    install -Dm644 build_config/package/*sh -t ${pkgdir}/etc/profile.d/
+    # Installs desktop files, icons, MIME info and profile scripts
+    DESTDIR="${pkgdir}/" cmake --install build --component linux_integration
+
+    # Man pages are shipped in sumo-doc
+    rm -rf "${pkgdir}/usr/share/man"
 }
 
 package_sumo-doc() {

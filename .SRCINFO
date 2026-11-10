@@ -1,6 +1,6 @@
 pkgbase = sumo
 	pkgdesc = Traffic simulation modelling road vehicles, public transport and pedestrians.
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = http://sumo.dlr.de
 	arch = i686
@@ -31,10 +31,8 @@ pkgbase = sumo
 	depends = python-scipy
 	depends = ffmpeg
 	depends = python-matplotlib
-	source = https://sumo.dlr.de/releases/1.26.0/sumo-src-1.26.0.tar.gz
-	source = 0001-fix-arrow-cpp20.patch::https://github.com/eclipse-sumo/sumo/commit/d88e2a935fc4c1ece19b0decc8c17444c6796d5e.patch
-	sha256sums = 8befa700b6b0a02c79733e15ad5c891be421a1649ab973d266d2556c9f6f79ff
-	sha256sums = SKIP
+	source = https://sumo.dlr.de/releases/1.28.0/sumo-src-1.28.0.tar.gz
+	sha256sums = d36b3a72b879bd38d1e0981d86d52a8730396cd37dc65a80bf77b4683fbad194
 
 pkgname = sumo
 	optdepends = java-runtime-common: for executing Jar files like TraCI4J
