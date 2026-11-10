@@ -34,11 +34,15 @@ psscriptanalyzer = "psscriptanalyzer"
 quantize = "quantize"
 
 [default.extend-words]
-# The terms of software, also in British English: build artifacts, .NET's (Roslyn) analyzers
+# The terms of software, also in British English: build artifacts, .NET's (Roslyn) analyzers, the
+# compilers' sanitizers (-fsanitize, UndefinedBehaviorSanitizer)
 analyzer = "analyzer"
 analyzers = "analyzers"
 artifact = "artifact"
 artifacts = "artifacts"
+sanitize = "sanitize"
+sanitizer = "sanitizer"
+sanitizers = "sanitizers"
 
 [files]
 extend-exclude = [
