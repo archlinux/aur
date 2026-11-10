@@ -15,7 +15,7 @@
 
 pkgbase=skwir
 pkgname=(skwir skwir-mermaid skwir-mupdf)
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='An augmented file manager, for humans and agents'
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,7 @@ source_x86_64=("pdfium-linux-x64-$_pdfium.tgz::https://github.com/bblanchon/pdfi
 source_aarch64=("pdfium-linux-arm64-$_pdfium.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F$_pdfium/pdfium-linux-arm64.tgz")
 # skwir's: filled by aur-prepare after the release tag is pushed; PDFium's: as
 # tools/package/pdfium.lock pins them.
-sha256sums=('2ad6f576bdf59fe5c8ee9822f27185cb751429262c3f1347f22be92c4fdb2b4c')
+sha256sums=('a3613f8b77f88a507165129ee7e0bd9684fbd95bc3188bdd2bcb6b71c52006f0')
 sha256sums_x86_64=('e1c3ce6e270cb5e0c20816b379ad9f2c1309972697c505f508de92bf5e7d6659')
 sha256sums_aarch64=('8b8818f2ec57d1b213d952ca6d7f0ffeca9d0110487d0e20ad83ba918bc92efa')
 
@@ -53,6 +53,7 @@ build() {
   cd "$pkgbase-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  . tools/build/order-link-env.sh
   # shellcheck disable=SC2046 # one `-p name` per program
   cargo build --frozen --profile dist $(sed 's/^/-p /' tools/package/programs)
 }
