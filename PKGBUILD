@@ -1,13 +1,13 @@
 # Maintainer: Jaroslav Bolek <jarris@post.cz>
 pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
-pkgver=1.5.5
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
 url="git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/${pkgver}"
 license=('GPL3')
-depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-charts" "protobuf" "cuda" "pkgconf" "rust")
+depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-declarative" "protobuf" "cuda" "pkgconf" "rust" "nvidia-utils")
 source=("$pkgname-$pkgver::$url")
 sha256sums=('SKIP')
 install=default.install
@@ -48,7 +48,10 @@ package() {
   # log, data are shared with group legion (root:legion 2770), set by systemd-tmpfiles after the group is created
   chmod 750 $pkgdir/opt/$pkgname-$pkgver/log
   chmod 750 $pkgdir/opt/$pkgname-$pkgver/data
-  printf 'd /opt/%s/log  2770 root legion -\nd /opt/%s/data 2770 root legion -\n' "$pkgname-$pkgver" "$pkgname-$pkgver" > $pkgdir/usr/lib/tmpfiles.d/lenovo-legion.conf
+  # daemon modules (.so) are loaded by the root daemon: root only, the daemon refuses group/other writable files
+  chmod 755 $pkgdir/opt/$pkgname-$pkgver/modules
+  chmod 644 $pkgdir/opt/$pkgname-$pkgver/modules/*.so
+  printf 'd /opt/%s/log  2770 root legion -\nd /opt/%s/data 2770 root legion -\nd /opt/%s/modules 0755 root root -\n' "$pkgname-$pkgver" "$pkgname-$pkgver" "$pkgname-$pkgver" > $pkgdir/usr/lib/tmpfiles.d/lenovo-legion.conf
 
   #daemon setings
   cp $srcdir/$pkgname-$pkgver/$srcname/$srcname-Daemon/lenovo-legion-daemon.service $pkgdir/usr/lib/systemd/system/
