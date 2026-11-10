@@ -1,7 +1,7 @@
 pkgbase = colibri-git
 	pkgdesc = Colibri hierarchical MoE inference engine (Git source, CPU, web dashboard)
 	pkgver = 2.1.0.r5150.g0a5504a1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/JustVugg/colibri
 	arch = x86_64
 	license = Apache-2.0
@@ -12,11 +12,24 @@ pkgbase = colibri-git
 	depends = glibc
 	depends = gcc-libs
 	depends = python
+	depends = util-linux
 	provides = colibri
 	conflicts = colibri
 	conflicts = colibri-bin
 	options = !lto
 	source = colibri::git+https://github.com/JustVugg/colibri.git#branch=main
+	source = colibri@.service
+	source = colibri-instance
+	source = qwen3-coder-30b.conf.example
+	source = qwen36-35b.conf.example
+	source = README-uk.md
+	source = README.md
 	sha256sums = SKIP
+	sha256sums = 39be17741d126dfc234b0b95423da578b6c61ee25ec216b947e7c0ae60afac4a
+	sha256sums = a1b986ba67171653b4eba95abac2e6e970a2a04fb45efba082d832ca507264a2
+	sha256sums = 1badbf946a26d164049beef4db143f7706b7f66f1fa97471b9185063c082f2af
+	sha256sums = b11d0c7f3e3bc5877c15861ee7deb19a2926b07c826e4d6be22aed1c4267efd6
+	sha256sums = 641c311cf9f1ab38eceb84c06716a6120d5193f8e9a9dc6eb12fb6ea59aff6e5
+	sha256sums = 69028bcaa7f654faa5099c391d8ee13cc93a7d1b5891f57a7f298063c8bec177
 
 pkgname = colibri-git
