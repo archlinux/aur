@@ -1,6 +1,6 @@
 pkgbase = notekpr-cli-bin
 	pkgdesc = Command-line client for notekpr, end-to-end encrypted Markdown notes
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://notekpr.md
 	license = AGPL-3.0-or-later
@@ -8,10 +8,10 @@ pkgbase = notekpr-cli-bin
 	conflicts = notekpr-cli
 	provides = notekpr-cli
 	arch = aarch64
-	source_aarch64 = notekpr-cli-bin_0.15.1_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.15.1/notekpr-cli_0.15.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0f95bff70d4f5fee851d0409ac99d3511a4b08d82abcd5caf20944e8b447917b
+	source_aarch64 = notekpr-cli-bin_0.16.0_aarch64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.16.0/notekpr-cli_0.16.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e720578e292301558eb750aa2d9d580ea54def2b035d9e80eee918d358a230e2
 	arch = x86_64
-	source_x86_64 = notekpr-cli-bin_0.15.1_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.15.1/notekpr-cli_0.15.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1b3400872ced95425070a1e613e23b82b9fe79015d8c85b63c2efc823525c988
+	source_x86_64 = notekpr-cli-bin_0.16.0_x86_64.tar.gz::https://github.com/coolapso/notekpr/releases/download/v0.16.0/notekpr-cli_0.16.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d5b80619ca35544ce2c92d64874451c85a5454aea060ec7b365517244d7fa766
 	
 pkgname = notekpr-cli-bin
