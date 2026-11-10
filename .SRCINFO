@@ -1,0 +1,14 @@
+pkgbase = revolve
+	pkgdesc = Optimal checkpointing schedules for adjoint computations (PETSc's fork of Revolve)
+	pkgver = 20201003
+	pkgrel = 1
+	url = https://bitbucket.org/caidao22/pkg-revolve
+	arch = x86_64
+	license = CPL-1.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	source = revolve-20201003.tar.gz::https://bitbucket.org/caidao22/pkg-revolve/get/40a0ea2a36058b9ae94920b9479c856371935276.tar.gz
+	sha256sums = 8fdbe164d677621e529fe3d5d9123969fc1f30a5606a8fa5bbd1d73b9c101769
+
+pkgname = revolve
