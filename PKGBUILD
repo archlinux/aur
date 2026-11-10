@@ -2,7 +2,7 @@
 
 pkgname="python-petl"
 _name="petl"
-pkgver=1.7.31
+pkgver=1.7.32
 pkgrel=1
 pkgdesc="Python Extract Transform and Load Tables of Data"
 arch=(any)
@@ -30,7 +30,7 @@ optdepends=("python-fastavro: avro files"
             "python-lxml: XPath")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-setuptools-scm" "python-wheel")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-b2sums=('d97c21d05cdf68071f6c58bad3d003ba41f7ad59db9a34e88b653ec86ddd08ef83b5fd1769bb408da0f63e92b86c3826f6c973a553d4dd584d1c54400d540af9')
+b2sums=('52376b8c6a04ed14d00c6d0618c1acfedbd422d3631f34e088c53abad7d79d944015af05db308d252464dc64b78d88de650362a280b89817dcd7d1e5b20f94bc')
 options=("!strip")
 
 build(){
