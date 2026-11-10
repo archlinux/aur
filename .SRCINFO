@@ -1,6 +1,6 @@
 pkgbase = gramtty
 	pkgdesc = A terminal Telegram client (TDLib linked statically)
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/methamphetaminelab/gramtty
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = gramtty
 	optdepends = kitty: recommended terminal for inline images (kitty graphics protocol)
 	options = !lto
 	options = !debug
-	source = gramtty-1.2.0.tar.gz::https://github.com/methamphetaminelab/gramtty/archive/refs/tags/v1.2.0.tar.gz
+	source = gramtty-1.3.0.tar.gz::https://github.com/methamphetaminelab/gramtty/archive/refs/tags/v1.3.0.tar.gz
 	source = tdlib-1.8.61-linux-x86_64.zip::https://github.com/FedericoBruzzone/tdlib-rs/releases/download/v1.4.0/tdlib-1.8.61-linux-x86_64.zip
-	sha256sums = 7455dd62b41243ac5ec624983237ce60f29ff792d324ad3fce166fe5a39647e7
+	sha256sums = cf6cdf08f08679ee04da3cda23a71a5a768706e0586319d961f6959218ba3258
 	sha256sums = 997069633f54306ada33776d2c4a530017d2e7325a22e0f12701d52438c37383
 
 pkgname = gramtty
