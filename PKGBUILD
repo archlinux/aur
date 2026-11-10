@@ -1,10 +1,10 @@
 # Maintainer: Jochem Kuipers <jochem@kuipers.cc>
-# Template: the Release workflow fills 2026.11.9 and 5f7b6d496cdb5dacf7733f0bf1f2971f33a897ad2b3af012f1aacc4eea4649be and pushes the result to
+# Template: the Release workflow fills 2026.11.10 and 5a9c4659cbfb01f40bd6ff6342fdb27c61b7bc70dc7ba44b408dfbb286eddb97 and pushes the result to
 # https://aur.archlinux.org/packages/steamrip-desktop-bin. Repacks the released .deb, so there is one
 # binary for every distro.
 pkgname=steamrip-desktop-bin
 _pkgname=steamrip-desktop
-pkgver=2026.11.9
+pkgver=2026.11.10
 pkgrel=1
 pkgdesc="Tray app that keeps a steamrip.com game library synced, installed, launched (Proton via umu) and updated"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip') # the .NET single-file bundle must stay byte-for-byte intact
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-1_amd64.deb")
-sha256sums=('5f7b6d496cdb5dacf7733f0bf1f2971f33a897ad2b3af012f1aacc4eea4649be')
+sha256sums=('5a9c4659cbfb01f40bd6ff6342fdb27c61b7bc70dc7ba44b408dfbb286eddb97')
 
 package() {
     bsdtar -xOf "$_pkgname-$pkgver.deb" 'data.tar.*' | bsdtar -xf - -C "$pkgdir"
