@@ -1,7 +1,7 @@
 --- a/system/defines.php	2026-06-17 01:13:20.000000000 +0200
 +++ b/system/defines.php	2026-06-23 21:44:13.000000000 +0200
 @@ -13,6 +13,12 @@
- define('GRAV_SCHEMA', '1.7.53_2026-06-09_0');
+ define('GRAV_SCHEMA', '1.7.53_2026-10-31_0');
  define('GRAV_TESTING', false);
  
 +define('GRAV_ROOT', '/usr/share/webapps/grav');
@@ -104,16 +104,10 @@
 +    if ($query_string ~* "(<|%3C)([^s]*s)+cript.*(>|%3E)") { return 403; }
 +    if ($query_string ~  "GLOBALS(=|\[|\%[0-9A-Z]{0,2})")  { return 403; }
 +    if ($query_string ~  "_REQUEST(=|\[|\%[0-9A-Z]{0,2})") { return 403; }
+     # deny hidden files and directories at any depth, except ACME challenges
+     location ~ (^|/)\.(?!well-known(?:/|$)) { return 403; }
      # deny all direct access for these folders
-     location ~* /(\.git|cache|bin|logs|backup|tests)/.*$ { return 403; }
-     # deny all direct access to these sensitive user folders, whatever the file type
-@@ -40,20 +98,32 @@
-     location ~* /user/.*\.(txt|md|json|yaml|yml|php|php2|php3|php4|php5|phar|phtml|pl|py|cgi|twig|sh|bat)$ { return 403; }
-     # deny access to specific files in the root folder
-     location ~ /(LICENSE\.txt|composer\.lock|composer\.json|nginx\.conf|web\.config|htaccess\.txt|\.htaccess) { return 403; }
-+    # deny all files and folder beginning with a dot (hidden files & folders)
-+    location ~ (^|/)\. { return 403; }
-     ## End - Security
+@@ -52,16 +110,19 @@
  
      ## Begin - PHP
      location ~ \.php$ {
@@ -141,12 +135,5 @@
 +    #     fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
 +    # }
      ## End - PHP
--}
- 
-+    ## Begin - Static content
-+    location ~ \.(?:css|js|svg|gif|jpe?g|png|woff2?)$ {
-+        expires 7d;
-+        access_log off;
-+    }
-+    ## End - Static content
-+}
+ }
+-
