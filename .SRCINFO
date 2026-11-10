@@ -1,11 +1,11 @@
 pkgbase = vultisig
 	pkgdesc = Seedless multi-chain crypto wallet based on threshold signatures (MPC/TSS)
 	pkgver = 1.0.80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vultisig/vultisig-windows
 	arch = x86_64
 	license = Apache-2.0
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = glib2

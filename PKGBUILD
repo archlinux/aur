@@ -1,13 +1,13 @@
 # Maintainer: Necromortis <necromortis(a)protonmail.com>
 pkgname=vultisig
 pkgver=1.0.80
-pkgrel=1
+pkgrel=2
 pkgdesc="Seedless multi-chain crypto wallet based on threshold signatures (MPC/TSS)"
 arch=('x86_64')
 url="https://github.com/vultisig/vultisig-windows"
 license=('Apache-2.0')
 # Direct ELF dependencies of the bundled binary (nothing is shipped inside the AppImage)
-depends=('webkit2gtk' 'gtk3' 'gdk-pixbuf2' 'glib2' 'hicolor-icon-theme')
+depends=('webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'glib2' 'hicolor-icon-theme')
 _appimage="$pkgname-v$pkgver.AppImage"
 source=("$_appimage::$url/releases/download/v$pkgver/$_appimage")
 noextract=("$_appimage")
@@ -23,7 +23,7 @@ package() {
     cd squashfs-root
 
     # The AppImage bundles no libraries, only a single Wails binary linked
-    # against system webkit2gtk-4.0/gtk3. Install that binary directly and
+    # against system webkit2gtk-4.1/gtk3. Install that binary directly and
     # skip the AppImage runtime (no FUSE dependency, no unpacking on launch).
     install -Dm755 usr/bin/vultisig "$pkgdir/usr/lib/$pkgname/vultisig"
 
