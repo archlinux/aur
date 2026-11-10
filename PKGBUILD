@@ -1,8 +1,8 @@
 # Maintainer: Wallun <wallun CAT disroot DOG org>
 
 pkgname=nginx-mainline-mod-acme
-pkgver=0.4.1
-pkgrel=5
+pkgver=0.4.2
+pkgrel=1
 pkgdesc='Nginx module with the implementation of ACME protocol'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nginx/nginx-acme/'
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('cargo' 'clang' 'nginx-mainline' 'nginx-mainline-src')
 source=("${pkgname}-${pkgver}.tar.gz::${url}archive/v${pkgver}/nginx-acme-${pkgver}.tar.gz")
-sha256sums=('b4f99f971bd0bebc89b2037f3afeaa3281004fe434de558df87d69cab2be1f22')
+sha256sums=('60973cf002764fa0c01730068a8d14c2d469781a60902d8e74a8fb59593ffb35')
 
 prepare() {
 	cd "nginx-acme-${pkgver}"

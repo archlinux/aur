@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-acme
 	pkgdesc = Nginx module with the implementation of ACME protocol
-	pkgver = 0.4.1
-	pkgrel = 5
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/nginx/nginx-acme/
 	arch = x86_64
 	arch = aarch64
@@ -13,8 +13,8 @@ pkgbase = nginx-mainline-mod-acme
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
-	source = nginx-mainline-mod-acme-0.4.1.tar.gz::https://github.com/nginx/nginx-acme/archive/v0.4.1/nginx-acme-0.4.1.tar.gz
-	sha256sums = b4f99f971bd0bebc89b2037f3afeaa3281004fe434de558df87d69cab2be1f22
+	source = nginx-mainline-mod-acme-0.4.2.tar.gz::https://github.com/nginx/nginx-acme/archive/v0.4.2/nginx-acme-0.4.2.tar.gz
+	sha256sums = 60973cf002764fa0c01730068a8d14c2d469781a60902d8e74a8fb59593ffb35
 
 pkgname = nginx-mainline-mod-acme
 	depends = gcc-libs
