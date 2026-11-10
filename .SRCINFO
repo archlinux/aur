@@ -1,18 +1,19 @@
 pkgbase = wavy-bin
-	pkgdesc = A simple protocol testing tool that supports various connection types(now serial port only).(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.1
-	pkgrel = 6
-	url = https://github.com/novrain/wavy
+	pkgdesc = YouTube Music als Desktop-App: Equalizer, Live-Wallpaper, Karaoke-Lyrics, Discord-Status, Zusammen hören, RGB im Beat.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/JedPlayYT/wavy
 	arch = x86_64
-	license = MIT
-	depends = electron28
-	provides = wavy=1.0.1
+	license = LicenseRef-unknown
+	depends = electron33-bin
+	depends = python
+	provides = wavy=1.1.0
 	conflicts = wavy
-	source = wavy-1.0.1.rpm::https://github.com/novrain/wavy/releases/download/1.0.1/wavy-1.0.0-1.x86_64.rpm
-	source = LICENSE-1.0.1::https://raw.githubusercontent.com/novrain/wavy/1.0.1/LICENSE
+	source = wavy-1.1.0.deb::https://github.com/JedPlayYT/wavy/releases/download/v1.1.0/Wavy-1.1.0-amd64.deb
+	source = wavy.js
 	source = wavy.sh
-	sha256sums = b4015812bfa72fb8b453c1130291d3312b00a4b536ff3108967da574b9d402ca
-	sha256sums = 9f1a32e4c028facd2d42a3e5bb8c0bf6af386e3d48d2c205bb253694826f57be
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 9b357323e48aa78ce6198fa417a2f729700ec984a4d7bdcc96dd58d6328a81a8
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
 
 pkgname = wavy-bin
