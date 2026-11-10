@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rayburst-git
 _pkgname=Rayburst
-pkgver=4.1.0.beta.5.r0.g63d2ec6
+pkgver=4.1.2.r0.g0c880e5
 _nodeversion=24
 pkgrel=1
 pkgdesc="Redefining the open-source download manager."
@@ -41,18 +41,21 @@ _get_project_dir() {
 		done
 }
 pkgver() {
-    cd "$(_get_project_dir)"
-    set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$(_get_project_dir)"
+	set -o pipefail
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    local NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodeversion}"
-    nvm use "${_nodeversion}"
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
 }
-_set_build_env() {
+_get_app_dir() {
+	find "$(_get_project_dir)" -type d -name "release" -exec test -d "{}/.fingerprint" -a -d "{}/deps" \; -print -quit 2>/dev/null
+}
+_set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -68,32 +71,38 @@ _set_build_env() {
 	export pnpm_config_update_notifier=false
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
-    export CARGO_HOME="${HOME}/.cargo"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _detected=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_detected="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_detected}" ]; then
+			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		fi
+	fi
+	local _ver="${_pnpmver:-${_detected}}"
+	if [ -n "${_ver}" ]; then
+		npm install -g "pnpm@${_ver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
+	fi
+}
+_set_rust_build_env() {
+	export HOME="${srcdir}/.home"
+	export CARGO_HOME="${HOME}/.cargo"
 	export CARGO_NET_GIT_FETCH_WITH_CLI=true
 	export CARGO_NET_RETRY=5
 	export CARGO_HTTP_MULTIPLEXING=false
 	export CARGO_INCREMENTAL=0
 	export CARGO_TERM_COLOR=never
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
-	mkdir -p "${HOME}" "${CARGO_HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
-	export PATH="${PNPM_HOME}:${PATH}"
-	local _pnpmver=""
-	local _pkgjson="$(_get_project_dir)/package.json"
-	if [ -f "${_pkgjson}" ]; then
-		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
-		if [ -z "${_pnpmver}" ]; then
-			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
-		fi
-	fi
-	if [ -n "${_pnpmver}" ]; then
-		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
-			--registry "${COREPACK_NPM_REGISTRY}"
-	fi
+	mkdir -p "${HOME}" "${CARGO_HOME}"
 }
 prepare() {
     cd "$(_get_project_dir)"
     _ensure_local_nvm
-    _set_build_env
+    _set_pnpm_build_env
+    _set_rust_build_env
     jq '.bundle.active = false' src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
     sed -i -e "
         s/{{categories}}/Network;/g
@@ -110,19 +119,21 @@ prepare() {
 }
 build() {
 	cd "$(_get_project_dir)"
+    _ensure_local_nvm
+    _set_pnpm_build_env
+    _set_rust_build_env
     export NODE_ENV=production
     pnpm run tauri build
 }
 package() {
-    local _targetdir="$(_get_project_dir)/src-tauri"
-    install -Dm755 "${_targetdir}/target/release/"{aria2-next,"${pkgname%-git}","${pkgname%-git}-browser-launcher"} -t "${pkgdir}/usr/lib/${_pkgname}/bin"
+    install -Dm755 "$(_get_app_dir)/"{aria2-next,"${pkgname%-git}","${pkgname%-git}-browser-launcher"} -t "${pkgdir}/usr/lib/${_pkgname}/bin"
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${_pkgname}/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-    cp -a "${_targetdir}/data" "${pkgdir}/usr/lib/${_pkgname}"
-    install -Dm644 "${_targetdir}/linux/${pkgname%-git}.desktop.hbs" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+    cp -a "$(_get_app_dir)/data" "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm644 "$(_get_project_dir)/src-tauri/linux/${pkgname%-git}.desktop.hbs" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     _icon_sizes=(32x32 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${_targetdir}/icons/${_icons}.png" \
+        install -Dm644 "$(_get_project_dir)/src-tauri/icons/${_icons}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
