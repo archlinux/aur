@@ -14,8 +14,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/things3-c
 	'things3-server.service'
 	'70-things3-cloud-restart.hook')
 sha256sums=('ea5257cc444c4436bb8aea85d55890532c69801f3bf9d5afcb0e96ed059ca346'
-            '129ebb7615a0d26cb900f511e708910e471ee15af6f3b1735afe11fbc7d9c5e6'
-            'b2668bec2eb6dbb39480a699c25b557ff83f0a19e29526bf8879abf3316314da')
+	'129ebb7615a0d26cb900f511e708910e471ee15af6f3b1735afe11fbc7d9c5e6'
+	'b2668bec2eb6dbb39480a699c25b557ff83f0a19e29526bf8879abf3316314da')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
