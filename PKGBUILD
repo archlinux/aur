@@ -156,6 +156,9 @@ prepare() {
         { echo "Error: this fonttune cannot resolve STATIC_OPSZ=auto; update it or set STATIC_OPSZ=N." >&2; exit 1; }
       echo "==> STATIC_OPSZ auto: $_opsz pt (this machine's GNOME interface font size)"
     fi
+    # what statics cuts (it clamps to the axis), so the recorded value is the real one
+    _opsz=$(python -c 'import sys; v = float(sys.argv[1]); assert v == v; print(f"{min(max(v, 8), 144):g}")' "$_opsz" 2>/dev/null) ||
+      { echo "Error: STATIC_OPSZ='${STATIC_OPSZ}' is not a number or auto." >&2; exit 1; }
     _ask STATIC_ITALIC "Also cut the italic (slnt=-10)" y
     local _d _name
     local -a _sfx

@@ -49,7 +49,8 @@ Files installed (default build):
 
 The same as for the sibling packages, so if `ttf-inter-hinted` or
 `nerd-fonts-apple-hinted` already render with their bytecode hints, nothing
-needs to change:
+needs to change. The bytecode is in the static build only; the variable build
+is autohinted under these settings (see below the table):
 
 | Where | Setting | Why |
 |---|---|---|
@@ -65,26 +66,27 @@ gsettings set org.gnome.desktop.interface font-rendering manual
 gsettings set org.gnome.desktop.interface font-hinting medium
 gsettings set org.gnome.desktop.interface font-antialiasing grayscale
 # gtk-4.0/settings.ini: gtk-hint-font-metrics=false
-# only if hintmedium is not your global fontconfig default:
+# static build with a hint preset, only if hintmedium is not your global fontconfig default:
 sudo ln -s /usr/share/fontconfig/conf.avail/80-ttf-roboto-flex-hinted.conf /etc/fonts/conf.d/
 # optional, the named axis presets:
 sudo ln -s /usr/share/fontconfig/conf.avail/79-roboto-flex-families.conf /etc/fonts/conf.d/
 ```
 
-**What the upstream font gets instead.** It has an (empty) `prep` table but no
-glyph instructions. fontconfig reports `fonthashint=False`, while FreeType
-treats the face as hinted and does **not** autohint it at hintmedium: the
-bitmaps are hash-identical to `NO_HINTING` (`NORMAL` = `NORMAL|NO_AUTOHINT` =
-`NO_HINTING` ≠ `NORMAL|FORCE_AUTOHINT`, 13 px). A `fonthashint=false →
-hintslight` fontconfig rule (present in this machine's `fonts.conf`) helps
-Firefox, but GTK in manual mode ignores fontconfig's hintstyle. So with
-`font-hinting medium`, upstream Roboto Flex renders **completely unhinted** in
-every GTK app (row "hintmedium, upstream" in §3). The hinted build gets
-hintmedium with its own bytecode:
+**What the variable build gets.** fonttune does not hint variable fonts, so
+the default build has upstream's glyphs: a `prep` table that only sets the
+scan converter, no `fpgm`, no glyph instructions, and fontconfig reports
+`fonthashint=False`. On FreeType 2.15 (measured 2026-11-10 with the system
+library) hintmedium then runs FreeType's autohinter on it: the bitmaps are
+identical to `NORMAL|FORCE_AUTOHINT` at 13 and 16 px. The 2.14.3 measurement
+of 2026-10-02 found them identical to `NO_HINTING` instead (row "hintmedium,
+upstream" in §3, taken through freetype-py). The bytecode rows of §3 and the
+80- snippet apply to the static build (`FLEX_VARIANT=static` with a hint
+preset), whose fonts carry their own instructions:
 
 ```sh
 fc-match -v 'Roboto Flex:pixelsize=14.67' file hintstyle autohint fonthashint
-# expected: …/roboto-flex/RobotoFlex-Variable.ttf, hintstyle 2, autohint False, fonthashint True
+# static build: …/roboto-flex/RobotoFlex-Regular.ttf, hintstyle 2, autohint False, fonthashint True
+# variable build: …/roboto-flex/RobotoFlex-Variable.ttf, fonthashint False
 ```
 
 ---
@@ -179,7 +181,7 @@ italic, 10–20 px.
 
 | Rendering | glued (of 726) | glued at Regular | height | deviation |
 |---|---|---|---|---|
-| hintmedium, upstream font (= no hinting, what GTK shows) | 241 | – | 74 | 0.8 |
+| hintmedium, upstream font (= no hinting on 2.14.3; 2.15 autohints it) | 241 | – | 74 | 0.8 |
 | hintslight (autohinter), upstream font | 113 | 21 | 0 | 9.9 |
 | bytecode `natural` (n) | 47 | 4 | 0 | 10.1 |
 | **bytecode `balanced` (q), default** | **20** | **0** | **0** | 11.2 |
@@ -316,7 +318,7 @@ Two things are different from the other packages here:
 ## Verifying on your own system
 
 ```sh
-# 1. hinted file, hintmedium, bytecode
+# 1. hinted file, hintmedium, bytecode (static build)
 fc-match -v 'Roboto Flex:pixelsize=14.67' file hintstyle autohint fonthashint
 # 2. the italic rule is active (expect slnt=-10)
 fc-match 'Roboto Flex:italic' --format='%{family[0]} %{style[0]} %{fontvariations}\n'
