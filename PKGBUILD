@@ -1,6 +1,6 @@
 # Maintainer: Zhiqiang ZHOU <aur@strrl.dev>
 pkgname=raft-desktop-bin
-pkgver=1.21.61
+pkgver=1.21.62
 pkgrel=1
 pkgdesc='Collaborative human and AI messaging desktop app'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('raft-desktop')
 conflicts=('raft-desktop')
 options=('!strip' '!debug')
 source=("https://github.com/botiverse/desktop/releases/download/v${pkgver}/Raft-Desktop-${pkgver}-amd64.deb")
-sha256sums=('689c707709856b2023960bc82bc0c0c22fadf16f99148eedd802a4a81f9ea756')
+sha256sums=('ec363dcdeea5320fceecaf1f5cfd9c1c32e00f0952b55d0fb6dc0005d4ad409a')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir"
