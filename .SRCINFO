@@ -1,6 +1,6 @@
 pkgbase = tde-session-bin
 	pkgdesc = The TDE desktop session: a wlroots compositor, overview, bar, lock screen and settings
-	pkgver = 0.3.11
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/zskamljic/tde-session
 	arch = x86_64
@@ -45,10 +45,10 @@ pkgbase = tde-session-bin
 	optdepends = greetd: Charon, the login screen
 	optdepends = accountsservice: names and pictures of people on the login screen
 	optdepends = xorg-xinit: X11 sessions from the login screen
-	provides = tde-session=0.3.11
+	provides = tde-session=0.3.12
 	conflicts = tde-session
-	noextract = tde-session-0.3.11-x86_64.tar.zst
-	source = tde-session-0.3.11-x86_64.tar.zst::https://github.com/zskamljic/tde-session/releases/download/v0.3.11/tde-session-0.3.11-x86_64.tar.zst
-	sha256sums = 55e32222d33b1c1e24be4444ca3f2d3d23cc85da2976aa1ef80fb1ebf5cb352d
+	noextract = tde-session-0.3.12-x86_64.tar.zst
+	source = tde-session-0.3.12-x86_64.tar.zst::https://github.com/zskamljic/tde-session/releases/download/v0.3.12/tde-session-0.3.12-x86_64.tar.zst
+	sha256sums = 222f45039b6fbf3a184e3399595adfc7bfddb9b52b3fd20e000869e41e598c02
 
 pkgname = tde-session-bin
