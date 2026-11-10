@@ -1,0 +1,22 @@
+pkgbase = zero-beat-bin
+	pkgdesc = Terminal music player for NetEase Cloud Music and Bilibili (prebuilt binary)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/Sheyiyuan/zero-beat
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = ffmpeg
+	depends = alsa-lib
+	depends = libpulse
+	provides = zero-beat
+	conflicts = zero-beat
+	conflicts = zero-beat-git
+	options = !strip
+	options = !debug
+	source_x86_64 = zero_0.7.0_linux_amd64.tar.gz::https://github.com/Sheyiyuan/zero-beat/releases/download/v0.7.0/zero_0.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 917bd0e740cf2d043d95c4dfc0f75f55c83a55ab6066ea05247868d5d7279090
+	source_aarch64 = zero_0.7.0_linux_arm64.tar.gz::https://github.com/Sheyiyuan/zero-beat/releases/download/v0.7.0/zero_0.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5c1d6c43f58a65e00b4f805199af1916a77f12681b9acc80f43a0166c2f1550d
+
+pkgname = zero-beat-bin
