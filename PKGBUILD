@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://github.com/XSilverTH/SilverScreen'
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsoup3' 'mpv' 'yt-dlp' 'hicolor-icon-theme')
-optdepends=('libmpv: embedded video playback')
 provides=('silverscreen')
 conflicts=('silverscreen')
 source=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/silverscreen-v$pkgver-x86_64.tar.zst")
