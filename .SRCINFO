@@ -1,6 +1,6 @@
 pkgbase = hop-openhwp-bin
 	pkgdesc = Open desktop editor for HWP and HWPX documents
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/golbin/hop
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = hop-openhwp-bin
 	depends = gtk3
 	provides = hop-openhwp
 	conflicts = hop-openhwp
-	noextract = hop-openhwp-bin-0.5.1.deb
+	noextract = hop-openhwp-bin-0.5.2.deb
 	options = !strip
 	options = !debug
-	source = hop-openhwp-bin-0.5.1.deb::https://github.com/golbin/hop/releases/download/v0.5.1/HOP-linux-x64.deb
-	source = https://github.com/golbin/hop/raw/v0.5.1/LICENSE
-	sha256sums = 082223d32eb2e360d3487b85f03338abbd7cd97a43057cb20b9bf5a5bcb67055
+	source = hop-openhwp-bin-0.5.2.deb::https://github.com/golbin/hop/releases/download/v0.5.2/HOP-linux-x64.deb
+	source = https://github.com/golbin/hop/raw/v0.5.2/LICENSE
+	sha256sums = 17c12318abb5099b32fca274c1582fd030469bca7f5505d3bc46260e4041ad31
 	sha256sums = 1c3a7d5643b163a3ead4965e1bea33b832caee5bfca265efe42afcd7bc696b5b
 
 pkgname = hop-openhwp-bin
