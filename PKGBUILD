@@ -1,6 +1,6 @@
 # Maintainer: Hannes Körber <hannes@hkoerber.de>
 pkgname='screencfg'
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Automatically configure your screen setup'
 arch=('x86_64')
