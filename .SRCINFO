@@ -1,0 +1,22 @@
+pkgbase = islet
+	pkgdesc = Dynamic Island / Floating Media HUD for wlroots and Smithay Wayland compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/3m44n/iSLET
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libadwaita
+	depends = pipewire
+	depends = wireplumber
+	provides = islet
+	conflicts = islet-git
+	source = islet::git+https://github.com/3m44n/iSLET.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = islet
