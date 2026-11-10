@@ -1,0 +1,30 @@
+pkgbase = cxstudy-bin
+	pkgdesc = Third-party Linux client for ChaoXing Study.第三方超星学习通 Linux 客户端
+	pkgver = 1.4.5.7
+	pkgrel = 1
+	url = https://www.chaoxing.com/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-douyin
+	depends = electron39
+	depends = nodejs
+	depends = python
+	depends = python-fonttools
+	depends = libusb
+	depends = perl
+	provides = cxstudy=1.4.5.7
+	conflicts = cxstudy
+	options = !strip
+	options = !emptydirs
+	source = LICENSE.html::https://homewh.chaoxing.com/agree/userAgreement?appId=900001
+	source = cxstudy.js
+	source = cxstudy.sh
+	sha256sums = 028a07f8411d27d0ecd3bc19707e41b406a339eca31eb56aacd791c9545de5ce
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e
+	source_aarch64 = cxstudy-1.4.5.7-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/cxstudy-1.4.5.7/com.chaoxing.cxstudy_1.4.5.7_arm64.deb
+	sha256sums_aarch64 = d19bf2cda99b768beeac5ba2668687ac8ae960f1bfe8fd12b796239f433f8306
+	source_x86_64 = cxstudy-1.4.5.7-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/cxstudy-1.4.5.7/com.chaoxing.cxstudy_1.4.5.7_amd64.deb
+	sha256sums_x86_64 = 28d946b77321d975230204cdef569371b3d6ed49ecf6d34bbe1d8a5f0ae5e609
+
+pkgname = cxstudy-bin
