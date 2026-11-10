@@ -1,8 +1,8 @@
 # Maintainer: NetExperts <support@netexperts.com.au>
 pkgname=netexperts-support-bin
-pkgver=1.5.4.1
+pkgver=1.5.4.2
 pkgrel=1
-pkgdesc="NetExperts Remote Support with automatic relay fallback and staff access enabled by default (based on RustDesk)"
+pkgdesc="NetExperts Remote Support with automatic relay fallback and staff access enabled by default"
 arch=('x86_64')
 url="https://netexperts.com.au/source-code.html"
 license=('AGPL-3.0-only')
@@ -19,7 +19,7 @@ source=("https://netexperts.com.au/opensource/netexperts-support-${pkgver}-x86_6
         "https://netexperts.com.au/opensource/NetExpertsSupport-${pkgver}-linux-source.tar.gz"
         'netexpertssupport.service')
 noextract=("NetExpertsSupport-${pkgver}-linux-source.tar.gz")
-sha256sums=('8dac9cac85c4f1b5e004ac6864a77ccefe75de21d0986db80a8cf845331feaa4' 'fdd7a7dc6e4c0de17a9f651f52e3f4284fe78d22ff66a5f7f964bb78a55e6e3a' '9e78d6f83f918235d9004cc7adabf0b13bacaed0151a2e328cdc37d2d11cb3f3')
+sha256sums=('1c1a65d3b775634c6cb77a55b2c61b18b0adb9a3d35ca75f906c750fb40a04b1' '1b314f56eaeabe40cea25abeca38c050139cdc9a6ed583b661cb7c8bf7e9829e' '9e78d6f83f918235d9004cc7adabf0b13bacaed0151a2e328cdc37d2d11cb3f3')
 
 package() {
     install -dm755 "${pkgdir}/usr/lib/netexperts-support"
