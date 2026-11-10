@@ -2,7 +2,7 @@
 
 pkgname=dux-qt-base-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 # the prebuilt library links private Qt headers, so each arch only runs against the Qt it was built with
 _qtver_x86_64=6.12.0
@@ -39,8 +39,8 @@ source_x86_64=("$_pkgname-$pkgver-qt$_qtver_x86_64-x86_64.tar.zst::$_urlrel/$_pk
 source_aarch64=("$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst::$_urlrel/$_pkgname-$pkgver-qt$_qtver_aarch64-aarch64.tar.zst")
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118'
             '1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68')
-sha256sums_x86_64=('bd0329cbf49d13d24e5d1604705bb76c0fe2f1a725b0411db956d30d73e7c666')
-sha256sums_aarch64=('5e1b25030c724312258f35e9f0255a7c65603e18c36cf62e844b8ae3eb49c9e5')
+sha256sums_x86_64=('9159776851d965cfe0fabd06e1adfff061848f21bf0a92a3ef44ed818c271147')
+sha256sums_aarch64=('d66cc495783b89a77a6312b110331cad7778e0e1ef10d8abe0b8cb675a66879d')
 
 package() {
 	cp -a "$srcdir/usr" "$pkgdir/"
