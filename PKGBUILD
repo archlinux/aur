@@ -16,7 +16,7 @@ source=('https://dl.google.com/android/repository/emulator-linux_x64-16740729.zi
         "${pkgname}.csh"
         'package.xml')
 sha1sums=('f41f9e31eb5ca64926603c03265c50bbc0ff4172'
-          '80c9b3ffc8865b5f8e55b1ffed36c08ee7a9d8ad'
+          '7e6d0b8932c816d26aa21aa5b44fc361a96c0d5a'
           'e1485ef14463f275005cae43a0a1e43ce52354ca'
           'ea6bce6c5b82591750fc4100efea63a002ec8605')
 
