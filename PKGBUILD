@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname='Swarm Desktop'
-pkgver=0.56.2
+pkgver=0.56.3
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('a733f50f53093787779cf111e338fac61d06399de48640328d48f31c197f4dcf'
+sha256sums=('4384dd9c7041da4585dd625e0e09c6763eba7fd62654fb1eaf7c1dbae2001afa'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
