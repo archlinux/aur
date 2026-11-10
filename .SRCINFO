@@ -1,6 +1,6 @@
 pkgbase = android-sdk-platform-tools-dummy
 	pkgdesc = Platform-Tools for Google Android SDK (adb and fastboot), dummy package
-	pkgver = 28.0.1
+	pkgver = 37.0.1
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	install = android-sdk-platform-tools-dummy.install
@@ -19,4 +19,3 @@ pkgbase = android-sdk-platform-tools-dummy
 	sha256sums = a7f3a259290ae6a5dc61bd34ecae36e2b7e2f644865ddc3c7fde5d248b8a7cef
 
 pkgname = android-sdk-platform-tools-dummy
-

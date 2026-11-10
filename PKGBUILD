@@ -4,7 +4,7 @@
 
 _pkgname=android-sdk-platform-tools
 pkgname="${_pkgname}-dummy"
-pkgver=28.0.1
+pkgver=37.0.1
 pkgrel=1
 _pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot)'
 pkgdesc="${_pkgdesc}, dummy package"
@@ -26,7 +26,7 @@ package() {
   install -Dm644 "${srcdir}/license.html" "${pkgdir}/usr/share/licenses/$pkgname/license.html"
 
   install -d "${pkgdir}/etc/profile.d/"
-  echo 'export PATH="${PATH}:/opt/android-sdk/platform-tools"' >"${pkgdir}/etc/profile.d/${_pkgname}.sh"
+  echo 'append_path "/opt/android-sdk/platform-tools"' >"${pkgdir}/etc/profile.d/${pkgname}.sh"
   echo 'setenv PATH "${PATH}:/opt/android-sdk/platform-tools"' >"${pkgdir}/etc/profile.d/${_pkgname}.csh"
   chmod 755 "${pkgdir}/etc/profile.d/${_pkgname}".{sh,csh}
 }
