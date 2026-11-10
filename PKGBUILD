@@ -1,15 +1,17 @@
 # Maintainer: screwy <screwygit@proton.me>
+# Maintainer: Seppia <$(base64 -d <<< 'YXJjaGxpbnV4QHNlcHBpYS5uZXQK')>
 # shellcheck shell=bash disable=SC2034
 
+_reponame="Rufin"
 pkgname=rufin
-pkgver=0.9.0
+pkgver=0.17.0
 pkgrel=1
-pkgdesc='Native GTK4/libadwaita music client for Jellyfin, Subsonic, Navidrome and local libraries written in Rust'
+pkgdesc='Native music player for Jellyfin, Navidrome/OpenSubsonic, Plex, and Emby servers;  local folders,  WebDAV including a direct Nextcloud browser login path, Samba and NAS shares.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/screwys/Rufin'
 license=('GPL-3.0-or-later')
 depends=(
-  'gcc-libs'
+  'libgcc_s.so'
   'glib2'
   'glibc'
   'gst-libav'
@@ -25,53 +27,41 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'cmake'
   'gettext'
+  'git'
+  'ninja'
   'pkgconf'
 )
-conflicts=('rufin-git')
+provides=('rufin')
 options=('!lto')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7f065f6c9eb7f4a039f996ea0ae556e21a7fc393dd8c376fdc4fa4895b6f98d9')
+source=("https://github.com/screwys/${_reponame}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4326f8555cdd0109f47400be2825dfe5a7d5fd9c75be70e7b551bac80c67a5d0')
 
 prepare() {
-  cd "Rufin-${pkgver}" || return
+  cd ${_reponame}-${pkgver}
 
   export CARGO_TARGET_DIR=target
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
 }
 
 build() {
-  cd "Rufin-${pkgver}" || return
+  cd ${_reponame}-${pkgver}
 
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release -p rufin
+  cmake \
+    -S . \
+    -B build-cmake \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DRUFIN_BUILD_IDENTITY=stable \
+    -DRUFIN_CARGO_FROZEN=ON
+  cmake --build build-cmake --target rufin
 }
 
 package() {
-  cd "Rufin-${pkgver}" || return
+  cd ${_reponame}-${pkgver}
 
-  install -Dm755 target/release/rufin "$pkgdir/usr/bin/rufin"
-  install -Dm644 data/io.github.screwys.Rufin.desktop \
-    "$pkgdir/usr/share/applications/io.github.screwys.Rufin.desktop"
-  install -Dm644 data/io.github.screwys.Rufin.metainfo.xml \
-    "$pkgdir/usr/share/metainfo/io.github.screwys.Rufin.metainfo.xml"
-  install -Dm644 data/icons/hicolor/scalable/apps/io.github.screwys.Rufin.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.screwys.Rufin.svg"
-  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/actions" \
-    data/icons/hicolor/scalable/actions/*.svg
-  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/status" \
-    data/icons/hicolor/scalable/status/*.svg
-  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/512x512/apps" \
-    data/icons/hicolor/512x512/apps/*.png
-  install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/64x64/apps" \
-    data/icons/hicolor/64x64/apps/*.png
-
-  local lang po_file
-  for po_file in crates/localization/locales/*.po; do
-    [[ -f $po_file ]] || continue
-    lang=${po_file##*/}
-    lang=${lang%.po}
-    install -dm755 "$pkgdir/usr/share/locale/$lang/LC_MESSAGES"
-    msgfmt "$po_file" -o "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/rufin.mo"
-  done
+  DESTDIR="$pkgdir" cmake --install build-cmake
 }
