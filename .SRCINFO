@@ -1,6 +1,6 @@
 pkgbase = chatpane
-	pkgdesc = Distraction-free desktop client for Facebook Messenger
-	pkgver = 3.1.0
+	pkgdesc = Unofficial desktop app for Facebook Messenger
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://chatpane.app/
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = chatpane
 	replaces = carrier
 	options = !strip
 	options = !debug
-	source = LICENSE-3.1.0::https://raw.githubusercontent.com/kristofferR/Chatpane/v3.1.0/LICENSE
+	source = LICENSE-3.2.0::https://raw.githubusercontent.com/kristofferR/Chatpane/v3.2.0/LICENSE
 	sha256sums = 957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d
-	source_x86_64 = chatpane-3.1.0-x86_64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.1.0/Chatpane_3.1.0_lin_x64.deb
-	sha256sums_x86_64 = b8fef9f0bf7e5f299b6d207f713314d20c28e2a782ac02203d91454a63d159a3
-	source_aarch64 = chatpane-3.1.0-aarch64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.1.0/Chatpane_3.1.0_lin_arm.deb
-	sha256sums_aarch64 = 76c71953dbf14116d273c8299b8e2846fb47e61b0d80480108d98d880ad1850e
+	source_x86_64 = chatpane-3.2.0-x86_64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.2.0/Chatpane_3.2.0_lin_x64.deb
+	sha256sums_x86_64 = d4c189fb684b78e345d6899722c26e4d85a1dada769f4363a55578e1d1894c07
+	source_aarch64 = chatpane-3.2.0-aarch64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.2.0/Chatpane_3.2.0_lin_arm.deb
+	sha256sums_aarch64 = d322185b638eff398e970897eb6e326adfe50d6b2762286b5b5d71d3a6a43b3e
 
 pkgname = chatpane
