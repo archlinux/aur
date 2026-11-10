@@ -1,6 +1,6 @@
 pkgbase = codex-auth
 	pkgdesc = A CLI tool to switch and manage Codex accounts
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Loongphy/codex-auth
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = codex-auth
 	makedepends = zig
 	depends = glibc
 	optdepends = openai-codex: adding accounts easier
-	source = codex-auth::git+https://github.com/Loongphy/codex-auth.git#tag=v0.3.1
-	sha512sums = c9a7ea4f57e19b6613947a85a2d3f3f742d43225b9248d16bdd5d352556dc8112ad57d748540f5b6e72065700cc4a92911f078e8fd6fb6e84cac34f0ec5e7d28
+	source = codex-auth::git+https://github.com/Loongphy/codex-auth.git#tag=v0.4.0
+	sha512sums = a2d16568eb253cd8adda3fa181aa09c80704cfa287c50f470c60c4c70161349898130c4f2f3026ca528df91d080d0ca1e61300b564e86c3f2158951dffbfa793
 
 pkgname = codex-auth
