@@ -1,5 +1,5 @@
 pkgname=dispatch-workflows-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Native Rust desktop runner for sequential GitHub Actions workflows'
 arch=('x86_64')
@@ -25,9 +25,9 @@ provides=("dispatch-workflows=${pkgver}")
 conflicts=('dispatch-workflows')
 options=('!strip' '!debug')
 
-_tag=v0.2.1
+_tag=v0.2.2
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_tag}/dispatch-workflows-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=('54dc936fa5acf04733e0d3ed38d864d40253195d23ceb6a1ecb63928d9ce0c33')
+sha256sums_x86_64=('57dfe00bace30f064dc7afc50e4f68945fc89c6e05d6c3232f999cf10c209e19')
 
 package() {
   install -Dm755 "${srcdir}/Dispatch/dispatch" "${pkgdir}/usr/bin/dispatch-workflows"

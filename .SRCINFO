@@ -1,6 +1,6 @@
 pkgbase = dispatch-workflows-bin
 	pkgdesc = Native Rust desktop runner for sequential GitHub Actions workflows
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/dispatch-workflows
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = dispatch-workflows-bin
 	depends = wayland
 	depends = xdg-utils
 	optdepends = github-cli: authenticate using gh auth login instead of a token
-	provides = dispatch-workflows=0.2.1
+	provides = dispatch-workflows=0.2.2
 	conflicts = dispatch-workflows
 	options = !strip
 	options = !debug
-	source_x86_64 = dispatch-workflows-bin-0.2.1.tar.gz::https://github.com/skorotkiewicz/dispatch-workflows/releases/download/v0.2.1/dispatch-workflows-0.2.1-linux-x64.tar.gz
-	sha256sums_x86_64 = 54dc936fa5acf04733e0d3ed38d864d40253195d23ceb6a1ecb63928d9ce0c33
+	source_x86_64 = dispatch-workflows-bin-0.2.2.tar.gz::https://github.com/skorotkiewicz/dispatch-workflows/releases/download/v0.2.2/dispatch-workflows-0.2.2-linux-x64.tar.gz
+	sha256sums_x86_64 = 57dfe00bace30f064dc7afc50e4f68945fc89c6e05d6c3232f999cf10c209e19
 
 pkgname = dispatch-workflows-bin
