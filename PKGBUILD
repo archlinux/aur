@@ -4,7 +4,8 @@
 
 pkgname=rohc
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
+pkgref='8d00cde3bc79740f15ed1062269ae046c8558702' # v2.3.1 is not tagged, use commit hash instead
 pkgdesc="RObust Header Compression (ROHC) library"
 arch=('x86_64' 'aarch64')
 url='https://rohc-lib.org'
@@ -12,13 +13,13 @@ license=('LGPL2.1')
 depends=('glibc')
 makedepends=('libpcap' 'cmocka')
 provides=('librohc.so=3-64')
-source=("$pkgname-$pkgver.tar.xz::https://rohc-lib.org/download/$pkgname-2.3.x/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('e5c3808518239a6a4673c0c595356d5054b208f32e39015a487a0490d03f9bec')
+source=("git+https://github.com/didier-barvaux/rohc.git#commit=$pkgref")
+sha256sums=('984b8fcb50d2779a88b60d0e609719c445fdb12a8b2d7ed173d1e7b12d8876f6')
 
 PURGE_TARGETS=(usr/share/doc/rohc/*)
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	./autogen.sh
 	./configure \
 		--prefix=/usr \
@@ -30,11 +31,11 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make check || true
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 }
