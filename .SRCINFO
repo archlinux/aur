@@ -1,6 +1,6 @@
 pkgbase = misterdownloadmanager-bin
 	pkgdesc = The ultimate open-source download manager (prebuilt binary)
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/anefzaoui/misterdownloadmanager
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = misterdownloadmanager-bin
 	provides = misterdownloadmanager
 	conflicts = misterdownloadmanager
 	options = !strip
-	source = MisterDownloadManager-0.5.0-linux-x86_64.tar.gz::https://github.com/anefzaoui/misterdownloadmanager/releases/download/v0.5.0/MisterDownloadManager-0.5.0-linux-x86_64.tar.gz
+	source = MisterDownloadManager-0.5.2-linux-x86_64.tar.gz::https://github.com/anefzaoui/misterdownloadmanager/releases/download/v0.5.2/MisterDownloadManager-0.5.2-linux-x86_64.tar.gz
 	sha256sums = fc0f3948ee223b7d3706c4a8dc74180b9d5042d8c0b7dab5637a6c8892011171
 
 pkgname = misterdownloadmanager-bin
