@@ -1,7 +1,7 @@
 pkgbase = ansilove
 	pkgdesc = A program to convert ANSI and artscene related file formats into PNG images
-	pkgver = 4.2.2
-	pkgrel = 3
+	pkgver = 4.2.3
+	pkgrel = 1
 	url = https://ansilove.org/
 	arch = x86_64
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = ansilove
 	makedepends = cmake
 	makedepends = gcc
 	depends = gd
-	source = https://github.com/ansilove/ansilove/releases/download/4.2.2/ansilove-4.2.2.tar.gz
-	source = https://github.com/ansilove/libansilove/releases/download/1.4.2/libansilove-1.4.2.tar.gz
-	sha256sums = 443e1d8b6d94851cb9563f530b56fb5ef8ffba4b1eda6fd2c3cafaa38adb62d3
-	sha256sums = 8bd4d0775ff558aacfebd7e7e284baa96d781183bf767283bf8410f44a2e2434
+	source = https://github.com/ansilove/ansilove/releases/download/4.2.3/ansilove-4.2.3.tar.gz
+	source = https://github.com/ansilove/libansilove/releases/download/1.4.4/libansilove-1.4.4.tar.gz
+	sha256sums = 18ff3eb554860a7af8b0627f21ee409d30d9552ce650532dd173183fb69e0b42
+	sha256sums = c07a20bd3bf4d495cc831206ec8fd4a64fdd899241893a771df6776e4109f912
 
 pkgname = ansilove

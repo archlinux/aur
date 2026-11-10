@@ -1,9 +1,9 @@
 # Maintainer: epitron <chris AT ill-logic.com>
 
 pkgname=ansilove
-pkgver=4.2.2
-pkgrel=3
-libver=1.4.2
+pkgver=4.2.3
+pkgrel=1
+libver=1.4.4
 pkgdesc='A program to convert ANSI and artscene related file formats into PNG images'
 url='https://ansilove.org/'
 license=('BSD')
@@ -13,8 +13,8 @@ source=(
   "https://github.com/ansilove/ansilove/releases/download/${pkgver}/ansilove-${pkgver}.tar.gz"
   "https://github.com/ansilove/libansilove/releases/download/${libver}/libansilove-${libver}.tar.gz"
 )
-sha256sums=('443e1d8b6d94851cb9563f530b56fb5ef8ffba4b1eda6fd2c3cafaa38adb62d3'
-            '8bd4d0775ff558aacfebd7e7e284baa96d781183bf767283bf8410f44a2e2434')
+sha256sums=('18ff3eb554860a7af8b0627f21ee409d30d9552ce650532dd173183fb69e0b42'
+            'c07a20bd3bf4d495cc831206ec8fd4a64fdd899241893a771df6776e4109f912')
 arch=('x86_64' 'i686')
 
 build() {
@@ -36,7 +36,7 @@ package() {
 
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/ansilove/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/ansilove/README.md"
-  install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/ansilove/Changelog"
+  install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/ansilove/ChangeLog"
   cp -r examples "${pkgdir}/usr/share/doc/ansilove/examples/"
 }
 
