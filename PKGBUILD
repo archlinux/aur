@@ -1,25 +1,48 @@
-# Maintainer: CPT-Dawn <dawnsp0456@gmail.com>
+# Maintainer: CPT Dawn <ping@cptdawn.dev>
 pkgname=nexus-nm
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A beautiful modern TUI WiFi manager for Arch Linux"
+pkgdesc='A network manager for Wayland desktops: a user daemon and a TUI over NetworkManager'
 arch=('x86_64' 'aarch64')
-url="https://github.com/CPT-Dawn/Nexus"
+url='https://github.com/CPT-Dawn/Nexus'
 license=('MIT')
-depends=('glibc' 'networkmanager' 'dbus')
-makedepends=('cargo' 'rust')
-source=("nexus-nm-1.0.1.tar.gz::https://github.com/CPT-Dawn/Nexus/archive/refs/tags/v1.0.1.tar.gz")
-sha256sums=('2c07b2a8f526672f91267e6b6c89a656289d0431bcef1bf8713e0bc80ecf03c0')
+depends=('glibc' 'gcc-libs' 'networkmanager')
+makedepends=('cargo')
+optdepends=('polkit: authorise Wi-Fi and Profile changes (see /usr/share/doc/nexus/POLKIT.md)'
+            'iw: count the stations joined to a Hotspot'
+            'xdg-utils: open a Portal login page in the browser (xdg-open)'
+            'xdg-terminal-exec: open a terminal from notification actions (else $TERMINAL is used)')
+provides=('nexus')
+conflicts=('nexus' 'nexus-nm-bin')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/CPT-Dawn/Nexus/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ed2d9d24b18e8e7775b95b366b48cd80c5ff206e45311eab044e0c571d05be6b')
+
+prepare() {
+  cd "Nexus-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cd "Nexus-1.0.1"
-  export CARGO_TARGET_DIR="${srcdir}/target"
-  cargo build --release --locked
+  cd "Nexus-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release -p nexus
+}
+
+check() {
+  cd "Nexus-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  # The e2e suite needs a private dbus-daemon and optional tools; only the
+  # self-contained packaging tests run here.
+  cargo test --frozen --release -p nexus --test generate
 }
 
 package() {
-  cd "Nexus-1.0.1"
-  install -Dm755 "${srcdir}/target/release/nexus" "${pkgdir}/usr/bin/nexus"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/nexus-nm/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/nexus-nm/README.md"
+  cd "Nexus-$pkgver"
+  packaging/stage.sh target/release/nexus "$pkgdir"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/nexus/README.md"
+  install -Dm644 docs/polkit.md "$pkgdir/usr/share/doc/nexus/POLKIT.md"
 }
