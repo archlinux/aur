@@ -274,10 +274,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..063fb3d6
+index 00000000..c50c00d0
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,1247 @@
+@@ -0,0 +1,1282 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -304,6 +304,7 @@ index 00000000..063fb3d6
 +#include <QPainter>
 +#include <QPixmap>
 +#include <QRegularExpression>
++#include <QSet>
 +#include <QStandardPaths>
 +#include <QTimer>
 +
@@ -762,6 +763,11 @@ index 00000000..063fb3d6
 +QJsonArray AiConversation::buildMessages() const
 +{
 +    QJsonArray messages;
++    // Tool results are only legal right after the assistant message that
++    // requested them; a result whose call is gone (history saved by an older
++    // version, or a history window cut between the pair) makes strict
++    // OpenAI-compatible servers answer HTTP 400.
++    QSet<QString> openToolCallIds;
 +
 +    QString system = m_config.systemPrompt.trimmed();
 +    if (system.isEmpty()) {
@@ -816,13 +822,20 @@ index 00000000..063fb3d6
 +                    function.insert(QStringLiteral("arguments"), QString::fromUtf8(QJsonDocument(call.arguments).toJson(QJsonDocument::Compact)));
 +                    object.insert(QStringLiteral("function"), function);
 +                    calls.append(object);
++                    openToolCallIds.insert(call.id);
 +                }
 +                message.insert(QStringLiteral("tool_calls"), calls);
++            } else {
++                openToolCallIds.clear();
 +            }
 +            messages.append(message);
 +            break;
 +        }
 +        case Role::Tool: {
++            if (!openToolCallIds.remove(entry.toolCallId)) {
++                qCWarning(KRDC) << "Dropping orphaned tool result from history for call id" << entry.toolCallId;
++                break;
++            }
 +            QJsonObject message;
 +            message.insert(QStringLiteral("role"), QStringLiteral("tool"));
 +            message.insert(QStringLiteral("tool_call_id"), entry.toolCallId);
@@ -1461,6 +1474,15 @@ index 00000000..063fb3d6
 +        }
 +        entry.toolCallId = object.value(QStringLiteral("tool_call_id")).toString();
 +        entry.toolName = object.value(QStringLiteral("tool")).toString();
++        const QJsonArray calls = object.value(QStringLiteral("tool_calls")).toArray();
++        for (const QJsonValue &callValue : calls) {
++            const QJsonObject callObject = callValue.toObject();
++            AiToolCall call;
++            call.id = callObject.value(QStringLiteral("id")).toString();
++            call.name = callObject.value(QStringLiteral("name")).toString();
++            call.arguments = QJsonDocument::fromJson(callObject.value(QStringLiteral("arguments")).toString().toUtf8()).object();
++            entry.toolCalls.append(call);
++        }
 +        const QString image = object.value(QStringLiteral("image")).toString();
 +        if (!image.isEmpty()) {
 +            entry.image = QByteArray::fromBase64(image.toLatin1());
@@ -1504,6 +1526,19 @@ index 00000000..063fb3d6
 +        }
 +        if (!entry.toolName.isEmpty()) {
 +            object.insert(QStringLiteral("tool"), entry.toolName);
++        }
++        // The assistant's tool calls must survive the round trip: a saved
++        // tool result without its matching call poisons every later request.
++        if (entry.role == Role::Assistant && !entry.toolCalls.isEmpty()) {
++            QJsonArray calls;
++            for (const AiToolCall &call : entry.toolCalls) {
++                QJsonObject callObject;
++                callObject.insert(QStringLiteral("id"), call.id);
++                callObject.insert(QStringLiteral("name"), call.name);
++                callObject.insert(QStringLiteral("arguments"), QString::fromUtf8(QJsonDocument(call.arguments).toJson(QJsonDocument::Compact)));
++                calls.append(callObject);
++            }
++            object.insert(QStringLiteral("tool_calls"), calls);
 +        }
 +        // Screenshots are not persisted: they are large, go stale instantly,
 +        // and the model can always take a fresh one.
@@ -6174,10 +6209,10 @@ index 1600b660..4fcfc2a4 100644
  endif()
 diff --git a/test/aiengine_test.cpp b/test/aiengine_test.cpp
 new file mode 100644
-index 00000000..0624ab6f
+index 00000000..4787a47b
 --- /dev/null
 +++ b/test/aiengine_test.cpp
-@@ -0,0 +1,727 @@
+@@ -0,0 +1,827 @@
 +/*
 +    Standalone test for the AI conversation engine. Not built by default; see
 +    test_ai.sh. Drives AiConversation against a mock OpenAI-compatible server
@@ -6195,7 +6230,11 @@ index 00000000..0624ab6f
 +#include <KLocalizedString>
 +
 +#include <QApplication>
++#include <QCryptographicHash>
 +#include <QDateTime>
++#include <QDir>
++#include <QFile>
++#include <QStandardPaths>
 +#include <QTimer>
 +#include <QTextStream>
 +
@@ -6856,6 +6895,100 @@ index 00000000..0624ab6f
 +    check(other.entries().isEmpty(), "a different connection key starts with an empty chat");
 +}
 +
++static void testToolHistoryRoundTrip(AiConfig config)
++{
++    out << "\n== tool calls round-trip through saved history ==" << Qt::endl;
++
++    config.rememberHistory = true;
++    config.autoExecute = true;
++
++    const QString key = QStringLiteral("tool-history-host");
++    {
++        AiConversation conversation{key};
++        conversation.setConfig(config);
++        conversation.ask(QStringLiteral("click there"), false);
++        waitUntil([&] { return !conversation.busy(); }, 12000);
++    }
++
++    AiConversation reopened{key};
++    reopened.setConfig(config);
++    waitUntil([&] { return !reopened.entries().isEmpty(); }, 2000);
++
++    bool assistantCarriesCall = false;
++    bool resultAnswersIt = false;
++    for (const auto &entry : reopened.entries()) {
++        for (const auto &call : entry.toolCalls) {
++            if (!call.id.isEmpty()) {
++                assistantCarriesCall = true;
++            }
++        }
++        if (entry.role == AiConversation::Role::Tool && !entry.toolCallId.isEmpty()) {
++            resultAnswersIt = true;
++        }
++    }
++    check(assistantCarriesCall, "the saved history keeps the assistant's tool calls");
++    check(resultAnswersIt, "the saved history keeps the matching tool result");
++
++    // Asking again must still work: the mock server answers HTTP 400 when a
++    // tool result arrives without its assistant tool call, exactly like the
++    // strict OpenAI-compatible servers do.
++    reopened.ask(QStringLiteral("and now?"), false);
++    waitUntil([&] { return !reopened.busy(); }, 12000);
++    bool answered = false;
++    for (const auto &entry : reopened.entries()) {
++        if (entry.role == AiConversation::Role::Assistant
++            && entry.text.contains(QStringLiteral("Tool results came back"))) {
++            answered = true;
++        }
++    }
++    check(answered, "a follow-up request with the reloaded tool pair is accepted");
++}
++
++static void testOrphanedToolResultsDropped(AiConfig config)
++{
++    out << "\n== orphaned tool results from old histories are dropped ==" << Qt::endl;
++
++    config.rememberHistory = true;
++    config.autoExecute = true;
++
++    const QString key = QStringLiteral("legacy-history-host");
++
++    // Write a history file in the old format: the tool result is saved but
++    // the assistant message that requested it has no tool_calls, because the
++    // version that saved it did not persist them.
++    const QString directory = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/ai");
++    QDir().mkpath(directory);
++    const QString digest = QString::fromLatin1(QCryptographicHash::hash(key.toUtf8(), QCryptographicHash::Sha1).toHex());
++    QFile file(directory + QLatin1Char('/') + digest + QStringLiteral(".json"));
++    if (!file.open(QIODevice::WriteOnly)) {
++        check(false, "the legacy history file can be written");
++        return;
++    }
++    file.write(R"({"key":"legacy-history-host","entries":[
++        {"role":"user","text":"click there"},
++        {"role":"assistant","text":""},
++        {"role":"tool","tool_call_id":"call_9","tool":"mouse_click","text":"Clicked."}
++    ]})");
++    file.close();
++
++    AiConversation conversation{key};
++    conversation.setConfig(config);
++    waitUntil([&] { return !conversation.entries().isEmpty(); }, 2000);
++
++    // buildMessages() must drop the orphaned result; otherwise the strict
++    // mock server 400s the request and no answer ever arrives.
++    conversation.ask(QStringLiteral("and now?"), false);
++    waitUntil([&] { return !conversation.busy(); }, 12000);
++    bool answered = false;
++    for (const auto &entry : conversation.entries()) {
++        if (entry.role == AiConversation::Role::Assistant
++            && entry.text.contains(QStringLiteral("Tool results came back"))) {
++            answered = true;
++        }
++    }
++    check(answered, "the request carrying an old orphaned tool result still went through");
++}
++
 +static void testUnknownToolIsReported(AiConfig config)
 +{
 +    out << "\n== unknown tools are reported, not crashed on ==" << Qt::endl;
@@ -6897,6 +7030,8 @@ index 00000000..0624ab6f
 +    testDangerousAlwaysAsks(config);
 +    testSafeToolRunsImmediately(config);
 +    testHistoryRoundTrip(config);
++    testToolHistoryRoundTrip(config);
++    testOrphanedToolResultsDropped(config);
 +    testUnknownToolIsReported(config);
 +
 +    out << "\n" << (failures == 0 ? "ALL TESTS PASSED" : "TESTS FAILED") << Qt::endl;
@@ -6907,10 +7042,10 @@ index 00000000..0624ab6f
 +}
 diff --git a/test/run_ai_test.sh b/test/run_ai_test.sh
 new file mode 100755
-index 00000000..9c6f7974
+index 00000000..dc0ed2b6
 --- /dev/null
 +++ b/test/run_ai_test.sh
-@@ -0,0 +1,96 @@
+@@ -0,0 +1,113 @@
 +#!/usr/bin/env bash
 +# SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +# SPDX-License-Identifier: GPL-2.0-or-later
@@ -6953,6 +7088,23 @@ index 00000000..9c6f7974
 +    def do_POST(self):
 +        body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0)) or b"{}"))
 +        messages = body.get("messages", [])
++        # Act like a strict OpenAI-compatible server: every tool result must
++        # answer a tool call in the assistant message before it.
++        for i, m in enumerate(messages):
++            if m.get("role") == "tool":
++                prev = next((x for x in reversed(messages[:i])
++                             if x.get("role") == "assistant"), None)
++                ids = [c.get("id") for c in (prev or {}).get("tool_calls", [])]
++                if m.get("tool_call_id") not in ids:
++                    raw = json.dumps({"error": {"message":
++                        "No tool call found for function call output with call_id %s"
++                        % m.get("tool_call_id")}}).encode()
++                    self.send_response(400)
++                    self.send_header("Content-Type", "application/json")
++                    self.send_header("Content-Length", str(len(raw)))
++                    self.end_headers()
++                    self.wfile.write(raw)
++                    return
 +        user_text = " ".join(
 +            m["content"] if isinstance(m.get("content"), str) else json.dumps(m.get("content"))
 +            for m in messages if m.get("role") == "user"
