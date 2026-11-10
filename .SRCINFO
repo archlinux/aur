@@ -1,0 +1,17 @@
+pkgbase = tui-chart-git
+	pkgdesc = High resolution live charts for the terminal
+	pkgver = 0.2.0.r0.ged21c70
+	pkgrel = 1
+	url = https://github.com/c0m4r/tui-chart
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = gcc-libs
+	provides = tui-chart
+	conflicts = tui-chart
+	source = tui-chart-git::git+https://github.com/c0m4r/tui-chart
+	sha256sums = SKIP
+
+pkgname = tui-chart-git
