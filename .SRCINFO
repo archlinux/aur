@@ -1,6 +1,6 @@
 pkgbase = serie-bin
 	pkgdesc = A rich git commit graph in your terminal, like magic
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/lusingander/serie
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = serie-bin
 	provides = serie
 	conflicts = serie
 	options = !strip
-	source = README-0.10.1.md::https://raw.githubusercontent.com/lusingander/serie/v0.10.1/README.md
-	source = LICENSE-0.10.1::https://raw.githubusercontent.com/lusingander/serie/v0.10.1/LICENSE
+	source = README-0.10.2.md::https://raw.githubusercontent.com/lusingander/serie/v0.10.2/README.md
+	source = LICENSE-0.10.2::https://raw.githubusercontent.com/lusingander/serie/v0.10.2/LICENSE
 	sha256sums = e6006ff37d3c0311121b2aca21a78bebc9d3771af29173309983464fab3204d3
 	sha256sums = cb706d2a8b5063d7fd2fe7f9a3bb8f4fd32ce1829c51dfeb77b5977586d981f2
-	source_x86_64 = serie-x86_64-0.10.1.tgz::https://github.com/lusingander/serie/releases/download/v0.10.1/serie-0.10.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = fe14c73688c8fefa7d5bf65b2eb355d5b68099a14b536661c10e12fc3a7955fe
-	source_aarch64 = serie-aarch64-0.10.1.tgz::https://github.com/lusingander/serie/releases/download/v0.10.1/serie-0.10.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 5f31ca8836d5cf329a3527f5074fd10576dabc4c0dd5bc87879923a3c7e17457
+	source_x86_64 = serie-x86_64-0.10.2.tgz::https://github.com/lusingander/serie/releases/download/v0.10.2/serie-0.10.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 500ab76e2f8e2c2ef986916e18f6c7048134868115a00c65555575fb17c4f672
+	source_aarch64 = serie-aarch64-0.10.2.tgz::https://github.com/lusingander/serie/releases/download/v0.10.2/serie-0.10.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9cda9e05549f879a5b50db1b1b77350ae7b9231b3d31a9796590768fae3d52cc
 
 pkgname = serie-bin

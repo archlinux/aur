@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A rich git commit graph in your terminal, like magic"
 
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('e6006ff37d3c0311121b2aca21a78bebc9d3771af29173309983464fab3204d3'
             'cb706d2a8b5063d7fd2fe7f9a3bb8f4fd32ce1829c51dfeb77b5977586d981f2')
-sha256sums_x86_64=('fe14c73688c8fefa7d5bf65b2eb355d5b68099a14b536661c10e12fc3a7955fe')
-sha256sums_aarch64=('5f31ca8836d5cf329a3527f5074fd10576dabc4c0dd5bc87879923a3c7e17457')
+sha256sums_x86_64=('500ab76e2f8e2c2ef986916e18f6c7048134868115a00c65555575fb17c4f672')
+sha256sums_aarch64=('9cda9e05549f879a5b50db1b1b77350ae7b9231b3d31a9796590768fae3d52cc')
 
 
 package() {
