@@ -1,7 +1,7 @@
 pkgbase = alol
 	pkgdesc = Arizona RP and Rodina RP for Linux with a Material 3 Expressive interface
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Velmi1337/ALOL
 	arch = x86_64
 	license = Apache-2.0
@@ -19,6 +19,7 @@ pkgbase = alol
 	depends = glibc
 	depends = gcc-libs
 	depends = fontconfig
+	depends = xdg-utils
 	optdepends = gamemode: optional CPU and scheduler optimisations while playing
 	optdepends = wine-staging: alternative to Proton, with a separate Wine prefix
 	optdepends = winetricks: components for the system Wine runner

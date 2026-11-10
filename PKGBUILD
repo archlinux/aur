@@ -2,12 +2,12 @@
 # Stable source release; see https://github.com/Velmi1337/ALOL
 pkgname=alol
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Arizona RP and Rodina RP for Linux with a Material 3 Expressive interface'
 arch=('x86_64')
 url='https://github.com/Velmi1337/ALOL'
 license=('Apache-2.0' 'OFL-1.1')
-depends=('gtk3' 'glib2' 'cairo' 'libarchive' 'curl' 'umu-launcher' 'polkit' 'glibc' 'gcc-libs' 'fontconfig')
+depends=('gtk3' 'glib2' 'cairo' 'libarchive' 'curl' 'umu-launcher' 'polkit' 'glibc' 'gcc-libs' 'fontconfig' 'xdg-utils')
 makedepends=('rust' 'python')
 checkdepends=('desktop-file-utils')
 optdepends=(
