@@ -3,7 +3,7 @@
 _org='gepetto'
 _pkgname='example-robot-data'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD-2-Clause')
 depends=('pinocchio')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('961db1b713173aad39335d5ad99804da0e394d23eac2a8e101d6295152b1088c')
+sha256sums=('10e2e6081a69b91dffad568f64173f025320d886d2f866f193384f2026495524')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
