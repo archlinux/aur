@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-zh-tw
 	pkgdesc = Chinese (Traditional) language pack for Firefox Nightly
-	pkgver = 162.0a1.20261109.092106
+	pkgver = 162.0a1.20261109.214446
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-zh-tw
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-zh-TW-162.0a1.20261109.092106.xpi
-	source = firefox-nightly-i18n-zh-TW-162.0a1.20261109.092106.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-162.0a1.zh-TW.langpack.xpi
-	sha256sums = 53faad16e7d7716fea1f52bc067eaf17275f34069ea99117fcb985229e59e967
+	noextract = firefox-nightly-i18n-zh-TW-162.0a1.20261109.214446.xpi
+	source = firefox-nightly-i18n-zh-TW-162.0a1.20261109.214446.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-162.0a1.zh-TW.langpack.xpi
+	sha256sums = fc4dd09f707097cf111230c60a22c6c32f1959b9d2b14b256738717f9f88714e
 
 pkgname = firefox-nightly-i18n-zh-tw
