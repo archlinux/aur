@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Keyboard-driven terminal email client written in Rust (prebuilt static binary)'
 arch=('x86_64')
 url='https://github.com/HiFiveJazz/jerc'
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('ca-certificates')
 optdepends=(
   'poppler: render PDF attachment previews with pdftoppm'
