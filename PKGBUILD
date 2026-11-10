@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=kdeglance-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 # Upstream's own package release in the asset name, synced by pkg.sh. It moves
 # when upstream rebuilds a version that has already shipped.
@@ -35,7 +35,7 @@ install=kdeglance.install
 # The release asset is a pacman package built by upstream on CachyOS from its
 # packaging/arch/PKGBUILD. makepkg extracts it, only its usr/ is taken.
 source=("${url}/releases/download/v${pkgver}/kdeglance-${pkgver}-${_relver}-x86_64.pkg.tar.zst")
-sha256sums=('4557e74e2bed503ca14b319570f51c4bd2d552007216032d2c0efb172964b165')
+sha256sums=('ec446a49f0e4e37840982dc99894ef8a0ed96d11e29920a613b8059851f12232')
 
 prepare() {
   # The viewer is built for x86-64-v3, and glibc refuses to start it on an
