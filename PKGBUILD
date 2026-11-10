@@ -5,9 +5,9 @@
 # hooks; upstream is otherwise untouched. Patch applies to the pinned commit;
 # to refresh, re-diff against a newer upstream commit at ../krdc.
 pkgname=krdc-ai
-_commit=5876dc366adc24f0751eaae6ef81cee742ce04e6
+_commit=b6755c569da2d0bcb2afc41682247eeb3e0b85d8
 pkgver=26.11.70
-pkgrel=32
+pkgrel=38
 pkgdesc="KDE Remote Desktop Client with an integrated AI assistant panel and a client-side dark mode filter"
 arch=('x86_64')
 url="https://invent.kde.org/network/krdc"

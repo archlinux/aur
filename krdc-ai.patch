@@ -1,17 +1,17 @@
+diff --git a/.gitignore b/.gitignore
+index f9dc289d..93448f99 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -27,3 +27,4 @@ CMakeLists.txt.user*
+ .idea
+ /cmake-build*
+ .cache
++devplugins/krdc/*.so
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f99b39e2..6750798e 100644
+index ab7dc20b..e55bb982 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -26,7 +26,7 @@ include(KDEClangFormat)
- include(KDEGitCommitHooks)
- include(ECMInstallIcons)
- 
--find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui)
-+find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Network)
- if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
-     find_package(Qt6GuiPrivate ${QT_MIN_VERSION} REQUIRED NO_MODULE)
- endif()
-@@ -90,6 +90,8 @@ option(WITH_RDP "Enable RDP support using FreeRDP" ON)
+@@ -91,6 +91,8 @@ option(WITH_RDP "Enable RDP support using FreeRDP" ON)
  add_feature_info(RDP WITH_RDP "Building with support for the RDP protocol. Disable with -DWITH_RDP=NO")
  option(WITH_SPICE "Enable SPICE support." ON)
  add_feature_info(SPICE WITH_SPICE "Building with support for the SPICE protocol. Disable with -DWITH_SPICE=NO")
@@ -20,7 +20,7 @@ index f99b39e2..6750798e 100644
  
  ecm_set_disabled_deprecation_versions(QT 6.8
       KF 6.12
-@@ -207,6 +209,33 @@ ecm_qt_declare_logging_category(krdc
+@@ -215,6 +217,33 @@ ecm_qt_declare_logging_category(krdc
      EXPORT KRDC
  )
  
@@ -52,8 +52,8 @@ index f99b39e2..6750798e 100644
 +    KRDC_PLUGIN_INSTALL_DIR="$<TARGET_FILE_DIR:krdc>/../${KDE_INSTALL_QTPLUGINDIR}")
 +
  target_link_libraries(krdc
+     Qt::Network
      KF6::Bookmarks
-     KF6::BookmarksWidgets
 diff --git a/ai/aiconfig.cpp b/ai/aiconfig.cpp
 new file mode 100644
 index 00000000..7111c80a
@@ -4033,27 +4033,27 @@ index 00000000..0e9e547d
 +QString dangerReason(const QString &name, const QJsonObject &arguments);
 +}
 diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
-index 778c1375..b1ba4f53 100644
+index f47b05ee..3bf1318c 100644
 --- a/core/CMakeLists.txt
 +++ b/core/CMakeLists.txt
-@@ -10,6 +10,7 @@ target_sources(krdccore PRIVATE
-     remoteviewfactory.cpp
+@@ -11,6 +11,7 @@ target_sources(krdccore PRIVATE
      remoteview.cpp
      hostpreferences.cpp
+     connectionerror.cpp
 +    smartinvert.cpp
  )
  
  kconfig_add_kcfg_files(krdccore settings.kcfgc)
-@@ -68,6 +69,7 @@ set(krdccore_HDRS
-     remoteviewfactory.h
+@@ -70,6 +71,7 @@ set(krdccore_HDRS
      remoteview.h
      hostpreferences.h
+     connectionerror.h
 +    smartinvert.h
  )
  
  install(FILES ${krdccore_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/krdc COMPONENT Devel)
 diff --git a/core/krdc.kcfg b/core/krdc.kcfg
-index 55c7d275..219b4b87 100644
+index 3a3bec37..6f6e8c1a 100644
 --- a/core/krdc.kcfg
 +++ b/core/krdc.kcfg
 @@ -30,6 +30,9 @@
@@ -4067,11 +4067,11 @@ index 55c7d275..219b4b87 100644
        <default>#00417F</default>
      </entry>
 diff --git a/core/remoteview.cpp b/core/remoteview.cpp
-index bd87d910..71fc0f86 100644
+index cfb54769..340940f3 100644
 --- a/core/remoteview.cpp
 +++ b/core/remoteview.cpp
-@@ -327,6 +327,74 @@ QUrl RemoteView::url()
-     return m_url;
+@@ -383,6 +383,74 @@ bool RemoteView::acceptPasswordDialog(const KPasswordDialog &dialog)
+     return dialog.keepPassword();
  }
  
 +QString RemoteView::connectionKey() const
@@ -4145,7 +4145,7 @@ index bd87d910..71fc0f86 100644
  QString RemoteView::readWalletPassword(bool fromUserNameOnly)
  {
      return readWalletPasswordForKey(fromUserNameOnly ? m_url.userName() : m_url.toDisplayString(QUrl::StripTrailingSlash));
-@@ -417,7 +485,7 @@ QCursor RemoteView::localDefaultCursor() const
+@@ -492,7 +560,7 @@ QCursor RemoteView::localDefaultCursor() const
  
  void RemoteView::focusInEvent(QFocusEvent *event)
  {
@@ -4154,7 +4154,7 @@ index bd87d910..71fc0f86 100644
          m_keyboardIsGrabbed = true;
          grabKeyboard();
      }
-@@ -475,6 +543,14 @@ bool RemoteView::event(QEvent *event)
+@@ -550,6 +618,14 @@ bool RemoteView::event(QEvent *event)
      case QEvent::MouseButtonPress:
      case QEvent::MouseButtonRelease:
      case QEvent::MouseMove:
@@ -4170,10 +4170,10 @@ index bd87d910..71fc0f86 100644
          return true;
          break;
 diff --git a/core/remoteview.h b/core/remoteview.h
-index a988f504..1620f348 100644
+index fa3c9ef1..bd03c50c 100644
 --- a/core/remoteview.h
 +++ b/core/remoteview.h
-@@ -291,6 +291,79 @@ public:
+@@ -298,6 +298,79 @@ public:
       */
      QUrl url();
  
@@ -4253,8 +4253,8 @@ index a988f504..1620f348 100644
  public Q_SLOTS:
      /**
       * Called to enable or disable scaling.
-@@ -473,6 +546,7 @@ protected:
-     int m_port;
+@@ -494,6 +567,7 @@ protected:
+     bool m_canceledByUser = false;
      bool m_viewOnly;
      bool m_grabAllKeys;
 +    bool m_keyboardGrabSuspended = false;
@@ -4977,18 +4977,6 @@ index 00000000..74adf254
 + */
 +KRDCCORE_EXPORT void apply(QImage &image);
 +}
-diff --git a/devplugins/krdc/krdc_rdpplugin.so b/devplugins/krdc/krdc_rdpplugin.so
-new file mode 100755
-index 00000000..05b7e7b7
-Binary files /dev/null and b/devplugins/krdc/krdc_rdpplugin.so differ
-diff --git a/devplugins/krdc/krdc_spiceplugin.so b/devplugins/krdc/krdc_spiceplugin.so
-new file mode 100755
-index 00000000..f4a1d53b
-Binary files /dev/null and b/devplugins/krdc/krdc_spiceplugin.so differ
-diff --git a/devplugins/krdc/krdc_vncplugin.so b/devplugins/krdc/krdc_vncplugin.so
-new file mode 100755
-index 00000000..7831f2d0
-Binary files /dev/null and b/devplugins/krdc/krdc_vncplugin.so differ
 diff --git a/krdcui.rc b/krdcui.rc
 index 8dbfd755..9928190d 100644
 --- a/krdcui.rc
@@ -5003,7 +4991,7 @@ index 8dbfd755..9928190d 100644
  </MenuBar>
  <ToolBar fullWidth="false" name="krdc_remote_view_toolbar" newline="false"><text>Remote View Toolbar</text>
 diff --git a/mainwindow.cpp b/mainwindow.cpp
-index aff87fa6..8ce0a8ef 100644
+index d510551f..86487038 100644
 --- a/mainwindow.cpp
 +++ b/mainwindow.cpp
 @@ -7,6 +7,9 @@
@@ -5016,7 +5004,7 @@ index aff87fa6..8ce0a8ef 100644
  #include "bookmarkmanager.h"
  #include "config/preferencesdialog.h"
  #include "connectiondelegate.h"
-@@ -32,6 +35,9 @@
+@@ -33,6 +36,9 @@
  #include <KToolBar>
  
  #include <QAbstractItemView>
@@ -5026,7 +5014,7 @@ index aff87fa6..8ce0a8ef 100644
  #include <QClipboard>
  #include <QDockWidget>
  #include <QFontMetrics>
-@@ -100,6 +106,42 @@ MainWindow::MainWindow(QWidget *parent)
+@@ -102,6 +108,42 @@ MainWindow::MainWindow(QWidget *parent)
  
      createDockWidget();
  
@@ -5069,7 +5057,7 @@ index aff87fa6..8ce0a8ef 100644
      setupGUI(ToolBar | Keys | Save | Create);
  
      connect(m_tabWidget, &QTabWidget::currentChanged, this, &MainWindow::tabChanged);
-@@ -209,6 +251,22 @@ void MainWindow::setupActions()
+@@ -211,6 +253,22 @@ void MainWindow::setupActions()
  
  void MainWindow::loadAllPlugins()
  {
@@ -5092,15 +5080,15 @@ index aff87fa6..8ce0a8ef 100644
      const QVector<KPluginMetaData> offers = KPluginMetaData::findPlugins(QStringLiteral("krdc"));
      const KConfigGroup conf = KSharedConfig::openConfig()->group(QStringLiteral("Plugins"));
  
-@@ -347,6 +405,7 @@ void MainWindow::newConnection(const QUrl &newUrl, bool switchFullscreenWhenConn
-         m_tabWidget->addTab(scrollArea, QIcon::fromTheme(QStringLiteral("krdc")), tabName.isEmpty() ? url.toDisplayString(QUrl::StripTrailingSlash) : tabName);
+@@ -449,6 +507,7 @@ void MainWindow::openConnection(const QUrl &newUrl,
+         insertIndex >= 0 ? m_tabWidget->insertTab(insertIndex, scrollArea, tabIcon, tabTitle) : m_tabWidget->addTab(scrollArea, tabIcon, tabTitle);
      m_tabWidget->setCurrentIndex(newIndex);
      m_remoteViewMap.insert(m_tabWidget->widget(newIndex), view);
 +    view->setDarkModeFilter(Settings::darkModeFilter());
      tabChanged(newIndex); // force to update m_currentRemoteView (tabChanged is not emitted when start page has been disabled)
  
      view->start();
-@@ -543,6 +602,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -652,6 +711,11 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          m_savedGrabStatesBeforeFullscreen.clear();
  
          m_remoteDesktopsDockWidget->setVisible(m_guiItemsState.dockWidget);
@@ -5112,7 +5100,7 @@ index aff87fa6..8ce0a8ef 100644
          menuBar()->setVisible(m_guiItemsState.menuBar);
          statusBar()->setVisible(m_guiItemsState.statusBar);
          toolBars().first()->setVisible(m_guiItemsState.toolBar);
-@@ -575,7 +639,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -684,7 +748,12 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          m_guiItemsState = {.dockWidget = !m_remoteDesktopsDockWidget->isHidden(),
                             .menuBar = !menuBar()->isHidden(),
                             .statusBar = !statusBar()->isHidden(),
@@ -5126,7 +5114,7 @@ index aff87fa6..8ce0a8ef 100644
  
          // Keep the group while autosaving is disabled: autoSaveConfigGroup()
          // returns an invalid group until autosaving is enabled again.
-@@ -586,6 +655,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
+@@ -695,6 +764,9 @@ void MainWindow::applyFullscreenState(bool fullscreen)
          }
  
          m_remoteDesktopsDockWidget->setVisible(false);
@@ -5136,27 +5124,19 @@ index aff87fa6..8ce0a8ef 100644
          menuBar()->setVisible(false);
          statusBar()->setVisible(false);
          toolBars().first()->setVisible(false);
-@@ -676,6 +748,9 @@ void MainWindow::disconnectHost()
-     m_remoteViewMap.remove(widgetToDelete);
-     m_savedGrabStatesBeforeFullscreen.remove(view);
- 
-+#ifdef BUILD_AI_ASSISTANT
-+    m_aiPanel->removeConnection(view->connectionKey());
-+#endif
-     saveHostPrefs(view);
-     view->startQuitting(); // some deconstructors can't properly quit, so quit early
-     m_tabWidget->removePage(widgetToDelete);
-@@ -706,6 +781,9 @@ void MainWindow::closeTab(int index)
+@@ -861,6 +933,11 @@ void MainWindow::closeTab(int index)
              return;
          }
-         m_savedGrabStatesBeforeFullscreen.remove(view);
+         // else: an error tab whose view is gone
 +#ifdef BUILD_AI_ASSISTANT
-+        m_aiPanel->removeConnection(view->connectionKey());
++        if (view) {
++            m_aiPanel->removeConnection(view->connectionKey());
++        }
 +#endif
-         view->startQuitting();
          widget->deleteLater();
      }
-@@ -1284,6 +1362,12 @@ void MainWindow::tabChanged(int index)
+ 
+@@ -1428,6 +1505,12 @@ void MainWindow::tabChanged(int index)
      const QString tabTitle = m_tabWidget->tabText(index).remove(QLatin1Char('&'));
      setCaption(tabTitle == i18n("New Connection") ? QString() : tabTitle);
  
@@ -5170,10 +5150,10 @@ index aff87fa6..8ce0a8ef 100644
  }
  
 diff --git a/mainwindow.h b/mainwindow.h
-index 843afd29..55961461 100644
+index c7070f0d..ae414338 100644
 --- a/mainwindow.h
 +++ b/mainwindow.h
-@@ -28,6 +28,9 @@ class RemoteDesktopsModel;
+@@ -30,6 +30,9 @@ class RemoteDesktopsModel;
  class RemoteView;
  class SystemTrayIcon;
  class TabbedViewWidget;
@@ -5183,7 +5163,7 @@ index 843afd29..55961461 100644
  
  class QDockWidget;
  class QScrollArea;
-@@ -121,12 +124,18 @@ private:
+@@ -133,12 +136,18 @@ private:
      RemoteDesktopsModel *m_remoteDesktopsModel;
      QWidget *m_newConnectionWidget;
      QDockWidget *m_remoteDesktopsDockWidget;
@@ -5203,7 +5183,7 @@ index 843afd29..55961461 100644
      GuiItemsState m_guiItemsState{};
      bool m_fullscreenActive = false;
 diff --git a/rdp/CMakeLists.txt b/rdp/CMakeLists.txt
-index 5e37a59c..c9fa694a 100644
+index f25734f0..53c8c193 100644
 --- a/rdp/CMakeLists.txt
 +++ b/rdp/CMakeLists.txt
 @@ -1,6 +1,7 @@
@@ -5470,7 +5450,7 @@ index 00000000..a1960f89
 +QVector<DWORD> modifierVirtualKeys(Qt::KeyboardModifiers modifiers);
 +}
 diff --git a/rdp/rdpsession.cpp b/rdp/rdpsession.cpp
-index 963f448c..60aeaaf9 100644
+index 4a5a4a51..61e98b39 100644
 --- a/rdp/rdpsession.cpp
 +++ b/rdp/rdpsession.cpp
 @@ -4,6 +4,7 @@
@@ -5481,7 +5461,7 @@ index 963f448c..60aeaaf9 100644
  #include "rdpcliprdr.h"
  #include "rdpdisp.h"
  #include "rdpgraphics.h"
-@@ -639,6 +640,35 @@ int RdpSession::clientContextStart(rdpContext *context)
+@@ -701,6 +702,35 @@ int RdpSession::clientContextStart(rdpContext *context)
      if (!freerdp_settings_set_bool(settings, FreeRDP_FrameMarkerCommandEnabled, true)) {
          return -1;
      }
@@ -5517,8 +5497,8 @@ index 963f448c..60aeaaf9 100644
      if (!freerdp_settings_set_bool(settings, FreeRDP_SupportDynamicChannels, true)) {
          return -1;
      }
-@@ -1585,6 +1615,304 @@ void RdpSession::setState(RdpSession::State newState)
-     Q_EMIT stateChanged();
+@@ -1743,6 +1773,304 @@ bool RdpSession::onAuthenticateGateway(char **username, char **password, char **
+     return true;
  }
  
 +bool RdpSession::aiInputReady() const
@@ -5823,10 +5803,10 @@ index 963f448c..60aeaaf9 100644
  {
      Q_UNUSED(domain);
 diff --git a/rdp/rdpsession.h b/rdp/rdpsession.h
-index 807a04fa..6e7fc6c4 100644
+index 2a9ff838..e6cd0137 100644
 --- a/rdp/rdpsession.h
 +++ b/rdp/rdpsession.h
-@@ -117,6 +117,44 @@ public:
+@@ -147,6 +147,44 @@ public:
      bool sendEvent(QEvent *event, QWidget *source, const QRect &remoteRect);
      bool syncKeyState();
  
@@ -5872,7 +5852,7 @@ index 807a04fa..6e7fc6c4 100644
      void initializeDisplay(RdpContext *krdp, DispClientContext *disp);
      void destroyClipboard();
 diff --git a/rdp/rdpview.cpp b/rdp/rdpview.cpp
-index 90dd3a0e..5dba3599 100644
+index 09bb26d6..fe632c80 100644
 --- a/rdp/rdpview.cpp
 +++ b/rdp/rdpview.cpp
 @@ -10,8 +10,10 @@
@@ -5886,7 +5866,7 @@ index 90dd3a0e..5dba3599 100644
  
  #include <KMessageDialog>
  #include <KPasswordDialog>
-@@ -33,6 +35,14 @@
+@@ -34,6 +36,14 @@
  
  #include "rdpmonitorview.h"
  
@@ -5901,7 +5881,7 @@ index 90dd3a0e..5dba3599 100644
  RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, const QString &user, const QString &domain, const QString &password)
      : RemoteView(parent)
      , m_user(user)
-@@ -73,6 +83,27 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
+@@ -74,6 +84,27 @@ RdpView::RdpView(QWidget *parent, const QUrl &url, KConfigGroup configGroup, con
      }
  
      m_hostPreferences = std::make_unique<RdpHostPreferences>(configGroup);
@@ -5929,7 +5909,7 @@ index 90dd3a0e..5dba3599 100644
  }
  
  RdpView::~RdpView()
-@@ -403,6 +434,52 @@ QPixmap RdpView::takeScreenshot()
+@@ -646,6 +677,52 @@ QPixmap RdpView::takeScreenshot()
      return QPixmap{};
  }
  
@@ -5982,7 +5962,7 @@ index 90dd3a0e..5dba3599 100644
  bool RdpView::supportsScaling() const
  {
      return true;
-@@ -572,16 +649,23 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -810,16 +887,23 @@ void RdpView::paintEvent(QPaintEvent *event)
  
      const auto &image = *m_session->videoBuffer();
  
@@ -6009,7 +5989,7 @@ index 90dd3a0e..5dba3599 100644
      const qreal outputScale = m_session->outputScale();
      scaledImage.setDevicePixelRatio(outputScale);
  
-@@ -593,6 +677,73 @@ void RdpView::paintEvent(QPaintEvent *event)
+@@ -831,6 +915,73 @@ void RdpView::paintEvent(QPaintEvent *event)
      painter.end();
  }
  
@@ -6083,7 +6063,7 @@ index 90dd3a0e..5dba3599 100644
  void RdpView::handleKeyEvent(QKeyEvent *event)
  {
      if (m_session) {
-@@ -624,6 +775,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
+@@ -862,6 +1013,7 @@ void RdpView::handleWheelEvent(QWheelEvent *event)
  
  void RdpView::onRectangleUpdated(const QRect &remoteRect, const QSize &remoteSize)
  {
@@ -6092,7 +6072,7 @@ index 90dd3a0e..5dba3599 100644
          const QRect intersection = remoteRect.intersected(m_fullscreenMonitorRect);
          if (intersection.isEmpty()) {
 diff --git a/rdp/rdpview.h b/rdp/rdpview.h
-index da117287..ce81b3ac 100644
+index 5ccd2aca..8730468e 100644
 --- a/rdp/rdpview.h
 +++ b/rdp/rdpview.h
 @@ -17,6 +17,7 @@
@@ -6115,10 +6095,10 @@ index da117287..ce81b3ac 100644
 +    bool aiTypeText(const QString &text) override;
 +    void setDarkModeFilter(bool enabled) override;
 +
-     void savePassword(const QString &password);
- 
  public Q_SLOTS:
-@@ -90,6 +99,23 @@ private:
+     void scaleResize(int w, int h) override;
+     void onAuthRequested();
+@@ -89,6 +98,23 @@ private:
      void handleError(unsigned int error);
      void updateRemoteCursor();
  
