@@ -1,0 +1,23 @@
+diff --git a/composeApp/build.gradle.kts b/composeApp/build.gradle.kts
+index e61622cc..6cc29632 100644
+--- a/composeApp/build.gradle.kts
++++ b/composeApp/build.gradle.kts
+@@ -585,6 +585,18 @@ nucleus.application {
+         // a second ~30 MB copy as a resource
+         buildArgs.add("-H:+UnlockExperimentalVMOptions")
+         buildArgs.add("-H:ExcludeResources=.*skiko-[^/]*\\.(so|dylib|dll)")
++        var cflags = System.getenv("CFLAGS")
++        if (!cflags.isNullOrBlank()) {
++            cflags.splitToSequence(Regex("\\s+"))
++                .filter { it.isNotBlank() }
++                .forEach { buildArgs.add("--native-compiler-options=$it") }
++        }
++        var ldflags = System.getenv("LDFLAGS")
++        if (!ldflags.isNullOrBlank()) {
++            ldflags.splitToSequence(Regex("\\s+"))
++                .filter { it.isNotBlank() }
++                .forEach { buildArgs.add("--native-compiler-options=$it") }
++        }
+     }
+ }
+ 

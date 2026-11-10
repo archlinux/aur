@@ -1,7 +1,7 @@
-src
-pkg
-*.pkg.tar.*
-*.tar.gz
-*.tar.xz
-*.log
-*.diff
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!0001-remove-compose-webview-non-linux.diff
+!0002-remove-spotube-non-linux.diff
+!0003-apply-build-flags.diff
