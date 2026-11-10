@@ -1,7 +1,7 @@
 pkgbase = nagram-desktop
 	pkgdesc = An independent Telegram client built with Qt.
 	pkgver = 7.3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NextAlone/Nagram-Qt
 	arch = x86_64
 	license = GPL-3.0-or-later WITH OpenSSL-exception
