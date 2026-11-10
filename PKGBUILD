@@ -1,6 +1,6 @@
 # Maintainer: Collen Jones <collenjones@gmail.com>
 pkgname=goose-lang
-pkgver=2026.3
+pkgver=2026.4
 pkgrel=1
 pkgdesc="Memory-safe systems language with no heap allocator, GC, or lifetime annotations"
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,15 @@ optdepends=('gcc: goose build (native executables)'
   'git: fetching packages into ~/.goose')
 conflicts=('goose' 'goose-bin' 'goose-cli' 'goose-cli-bin' 'goose-desktop' 'liamstask-goose-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('73ef9aeced4a4a3d93dbb3cb0b65a9a1ec3c0efa6c3d4fa4298211919023a5a4')
+sha256sums=('943d785fb191de7b52539e9cf16715701babcacd339323f786729c2132343d9b')
 
 build() {
   cmake -S "goose-$pkgver" -B build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGOOSE_BUILTIN_LIBS=""
+    -DGOOSE_BUILTIN_LIBS="" \
+    -DGOOSE_VERSION="v$pkgver" \
+    -DGOOSE_TCC_LIB_PATH="/usr/lib/$pkgname/tcclib" \
+    -DGOOSE_STDLIB_PATH="/usr/lib/$pkgname/stdlib"
   cmake --build build
 }
 
