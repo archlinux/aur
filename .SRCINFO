@@ -1,6 +1,6 @@
 pkgbase = nagram-desktop-bin
 	pkgdesc = Independent Telegram client based on Telegram Desktop (release binary)
-	pkgver = 7.3.5.2
+	pkgver = 7.4.1.3
 	pkgrel = 1
 	url = https://github.com/NextAlone/Nagram-qt
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = nagram-desktop-bin
 	conflicts = nagram-desktop
 	options = !strip
 	options = !debug
-	source = Nagram-7.3.5.2-linux-x86_64.tar.xz::https://github.com/NextAlone/Nagram-qt/releases/download/v7.3.5.2/Nagram-7.3.5.2-linux-x86_64.tar.xz
-	sha256sums = b8534aae4da1d61fe79db44dea145ed79ff1efd7fc51299e0402c4cfaa45b802
+	source = Nagram-7.4.1.3-linux-x86_64.tar.xz::https://github.com/NextAlone/Nagram-qt/releases/download/v7.4.1.3/Nagram-7.4.1.3-linux-x86_64.tar.xz
+	sha256sums = 480348df2828ba51932c6a99819119e56b32ebc09f0ee1f39a5ef7effd2f17f4
 
 pkgname = nagram-desktop-bin
