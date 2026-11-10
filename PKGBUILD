@@ -18,7 +18,7 @@ depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls3' 'rnnoise
 makedepends=('cef' 'cmake' 'libfdk-aac' 'x264' 'swig' 'sndio' 'nlohmann-json'
              'ffnvcodec-headers' 'websocketpp' 'asio' 'extra-cmake-modules'
              'git' 'rust')
-_tag="$_obs_studio-rust-v$pkgver"
+_tag="$_obs_studio-rust-v${pkgver/beta/-beta}"
 source=(
   "$pkgbase::git+$url/$_obs_studio.git#tag=$_tag"
   "${pkgbase}-libdshowcapture::git+$url/libdshowcapture.git"
