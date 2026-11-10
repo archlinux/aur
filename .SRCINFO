@@ -1,6 +1,6 @@
 pkgbase = vulkanscenegraph
 	pkgdesc = Vulkan & C++17 based Scene Graph Project
-	pkgver = 1.1.15
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://github.com/vsg-dev/VulkanSceneGraph
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = vulkanscenegraph
 	depends = glslang
 	depends = libxcb
 	depends = vulkan-icd-loader
-	source = vulkanscenegraph-1.1.15.tar.gz::https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v1.1.15.tar.gz
-	sha256sums = a272709905b688eb306f84931479e29e173d35a394744f656d0fba366a811ced
+	source = vulkanscenegraph-1.1.16.tar.gz::https://github.com/vsg-dev/VulkanSceneGraph/archive/refs/tags/v1.1.16.tar.gz
+	sha256sums = f8066e31668f457592fed6fdee610553d46287e5f7a2694ef1ee48ab73d353cc
 
 pkgname = vulkanscenegraph
