@@ -1,0 +1,24 @@
+pkgbase = tommy-git
+	pkgdesc = Your own crew of AI agents, on your own server, in your pocket.One server runs your agents day and night.
+	pkgver = 0.59.0.r15.g77ec989
+	pkgrel = 1
+	url = https://github.com/jbaehova/tommy
+	arch = any
+	license = PolyForm-Noncommercial-1.0.0
+	makedepends = bun
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	depends = electron44
+	depends = nodejs
+	provides = tommy=0.59.0
+	conflicts = tommy
+	source = tommy.git::git+https://github.com/jbaehova/tommy.git
+	source = tommy.js
+	source = tommy.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = tommy-git
