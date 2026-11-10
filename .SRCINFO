@@ -1,0 +1,25 @@
+pkgbase = nexus-nm-bin
+	pkgdesc = A network manager for Wayland desktops: a user daemon and a TUI over NetworkManager (prebuilt)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/CPT-Dawn/Nexus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = networkmanager
+	optdepends = polkit: authorise Wi-Fi and Profile changes (see /usr/share/doc/nexus/POLKIT.md)
+	optdepends = iw: count the stations joined to a Hotspot
+	optdepends = xdg-utils: open a Portal login page in the browser (xdg-open)
+	optdepends = xdg-terminal-exec: open a terminal from notification actions (else $TERMINAL is used)
+	provides = nexus
+	provides = nexus-nm=2.0.0
+	conflicts = nexus
+	conflicts = nexus-nm
+	source_x86_64 = nexus-2.0.0-x86_64.tar.gz::https://github.com/CPT-Dawn/Nexus/releases/download/v2.0.0/nexus-2.0.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6154f0f4b0b5d90c84e8fb2c1d3f82df59158ca73baae8f318cbdb8a4c8f09d4
+	source_aarch64 = nexus-2.0.0-aarch64.tar.gz::https://github.com/CPT-Dawn/Nexus/releases/download/v2.0.0/nexus-2.0.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 4f9d76dcf3fed84196142a9af91088117e57c899773fa22181d2afa100b88846
+
+pkgname = nexus-nm-bin
