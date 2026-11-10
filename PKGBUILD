@@ -1,23 +1,21 @@
 # Maintainer: Filip <denuvo at tuta dot io>
 
 pkgname=xprinter-cups
-pkgver=3.13.55
-pkgrel=2
+pkgver=3.13.26
+pkgrel=1
 pkgdesc="Xprinter Drivers for Linux (ESC/POS and TSPL)"
 arch=('x86_64')
-url="https://www.xprintertech.com/drivers-2"
+url="https://www.xprintertech.com/download.html"
 depends=('cups')
-makedepends=('dpkg' 'unzip')
+makedepends=('dpkg')
 options=('!strip')
 
-source=("${pkgname}-${pkgver}.zip::https://www.xprintertech.com/label-printer-linux-1")
-sha256sums=('56da6a61aff7e9e51174e99f63debb690cf4864f5b45fe4325c02bc7f6d54d4c')
+source=("${pkgname}-${pkgver}.deb::https://github.com/hotline1337/aur/raw/refs/heads/main/xprinter-cups/printer-driver-xprinter_3.13.26_all.deb")
+b2sums=('928f1c12140bb6b4441f287c34556ead0312033c94862bd9c85bd2795bbc60cdb43bdaf1c0b3018a410094ad50315713c13620d9b1ad410b941e67cb1d663bb6')
 
 prepare() {
-    local deb_file=("printer-driver-xprinter_${pkgver}_all.deb")
-
     cd "$srcdir"
-    dpkg -x "${deb_file[0]}" extracted_deb
+    dpkg -x "${source[0]%%::*}" extracted_deb
     mkdir -p prepared_ppds
 
     for ppd in extracted_deb/usr/share/cups/model/xprinter/*.ppd; do
