@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=kimi-code-desktop-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Kimi Code Desktop - GUI client for the Kimi Code agent (prebuilt binary)'
 arch=('x86_64')
@@ -17,8 +17,8 @@ options=('!strip')
 # its bundled Electron runtime from this exact /opt path. The local filename is
 # version-tagged so makepkg's SRCDEST cannot hand back the previous version's
 # .deb under a version-independent vendor name.
-source_x86_64=("KimiCode-${pkgver}-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.3.2/KimiCode-1.3.2-linux-amd64.deb")
-sha512sums_x86_64=('d755b284eeba27a477dd63828b4c77336f21906c67284d3dc7f960d7f7442859407d8adb42810df42ebdeeb27ba9a26e060d23099f1cadfbf08d249fa9145b29')
+source_x86_64=("KimiCode-${pkgver}-linux-amd64.deb::https://code.kimi.com/kimi-code/desktop/binaries/1.3.3/KimiCode-1.3.3-linux-amd64.deb")
+sha512sums_x86_64=('44f4f7f8bd202936a8005aed0f717b12d369ef6288b39a2553f0f218e80203f51a71dd80565eda4fb4514e52b7650c8cb65f4a4ece5e61f7618630aa54a5d354')
 # Keep makepkg from unpacking the .deb itself (bsdtar would scatter its ar
 # members across $srcdir); package() unpacks data.tar deliberately.
 noextract=("KimiCode-${pkgver}-linux-amd64.deb")
