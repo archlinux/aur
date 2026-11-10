@@ -1,6 +1,6 @@
 # Maintainer: jarbowski <jarbowski@laposte.net>
 pkgname=tape24-bin
-pkgver=0.9.530
+pkgver=0.9.540
 pkgrel=1
 pkgdesc="Destructive tape-style 24-track DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
@@ -34,11 +34,11 @@ conflicts=('tape24' 'tape24-wayland-bin' 'tape24-x11-bin')
 options=('!strip' '!debug')
 install=tape24-bin.install
 source=("TAPE-24-v${pkgver}-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-24-Public-Releases/releases/download/${pkgver}/TAPE-24-v${pkgver}-Linux-Release.zip")
-sha256sums=('a26389a633aa08cde080e030a88d35e0c2f45dada878f6fea88055b32f7eed38')
+sha256sums=('519d13753b6ec86bb979d0bff5e787da1dac12e569fd747b77a45c4a4538343f')
 
 package() {
   # Note: upstream folder is TAPE-24-v${pkgver}-2-Linux-Release (extra -2)
-  local deb="${srcdir}/TAPE-24-v${pkgver}-2-Linux-Release/TAPE 24 Wayland Deb/INSTALL-TAPE24.deb"
+  local deb="${srcdir}/TAPE-24-v${pkgver}-Linux-Release/TAPE 24 Wayland Deb/INSTALL-TAPE24.deb"
   local extract="${srcdir}/deb-extract"
 
   mkdir -p "$extract"

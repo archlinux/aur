@@ -1,6 +1,6 @@
 pkgbase = tape24-bin
 	pkgdesc = Destructive tape-style 24-track DAW (X11-backed, XWayland on Wayland sessions)
-	pkgver = 0.9.530
+	pkgver = 0.9.540
 	pkgrel = 1
 	url = https://emrmusicgroup.com/tape24/
 	install = tape24-bin.install
@@ -31,7 +31,7 @@ pkgbase = tape24-bin
 	conflicts = tape24-x11-bin
 	options = !strip
 	options = !debug
-	source = TAPE-24-v0.9.530-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-24-Public-Releases/releases/download/0.9.530/TAPE-24-v0.9.530-Linux-Release.zip
-	sha256sums = a26389a633aa08cde080e030a88d35e0c2f45dada878f6fea88055b32f7eed38
+	source = TAPE-24-v0.9.540-Linux-Release.zip::https://github.com/jackpaterson1/TAPE-24-Public-Releases/releases/download/0.9.540/TAPE-24-v0.9.540-Linux-Release.zip
+	sha256sums = 519d13753b6ec86bb979d0bff5e787da1dac12e569fd747b77a45c4a4538343f
 
 pkgname = tape24-bin
