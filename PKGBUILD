@@ -3,8 +3,8 @@
 # Contributor: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=17.0.5035.5
-_remRevision=3
+pkgver=17.0.5045.3
+_remRevision=4
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc="Microsoft SQL Server 2025 for Linux"
@@ -28,7 +28,7 @@ _debfile="${pkgname}_${_prodver}_amd64.deb"
 source=("https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/${pkgname}/${_debfile}"
         "${pkgname}.sysusers")
 noextract=("${_debfile}")
-sha256sums=('ff7b9be8555cec33bb647e4cc4590bff1ded75b2714cb296a78e03858f67f119'
+sha256sums=('85543621947eeb58e186acb64cfbdbf572955785f2c0101680712b5b97cacf95'
             '92e34c7fbbb1fd9860fae32a54f4374b660e7834fca85b0afc626bc19157d71f')
 
 # Everything below is linked directly by /opt/mssql/bin/sqlservr, except python
