@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sbe-bin
-pkgver=3.9.2
+pkgver=3.9.3
 _electronversion=45
 pkgrel=1
 pkgdesc="An unofficial Scrapbox desktop app."
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('12d537adffcb5383afa797b4e598d84961438efff62e00f09b37d6e876dfa0a1'
+sha256sums=('14868cf6ee94e7959a715ee9a1fa80d7faedcd0679e5ee578f3fbed0c6400cf0'
             '0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
