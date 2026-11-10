@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+Quad-Views-Foveated/
+pkg/
+src/
