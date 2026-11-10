@@ -1,6 +1,9 @@
 # Maintainer: 4s3ti <4s3ti@4s3ti.net>
 
 _pkgver=1.11.0
+# _tag and _appimage are rewritten by precommit.sh from the actual GitHub release,
+# because upstream tag/asset naming is inconsistent. Only bump _pkgver by hand.
+_tag="v${_pkgver}"
 _appimage="Bazecor-${_pkgver}-x64.AppImage"
 
 pkgname="bazecor"
@@ -17,7 +20,7 @@ options=(!strip)
 noextract=("${_appimage}")
 
 # https://github.com/Dygmalab/Bazecor/releases/download/v1.4.0-rc4/Bazecor-1.4.0-rc.4-x64.AppImage
-source=("${url}/releases/download/v${_pkgver}/${_appimage}"
+source=("${url}/releases/download/${_tag}/${_appimage}"
   "10-dygma.rules")
 sha256sums=('f264d31222a105dab20cc2899f6e5733a43421311aebf3f67e616f9762f6b1c3'
             'aba17eabd0f8cbb5118d6d1013e40f3991e5e7c38f97e68f3053f8f5d098ff3c')
