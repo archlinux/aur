@@ -2,6 +2,35 @@
 
 All the changes made to runa are documented here.
 
+## [0.15.5] - 2026-11-10
+
+#### Pane update fix and powerpc64le builds.
+
+### Added
+- **Releases**:
+    - Added powerpc64le into the Packit builds for the COPR. Relevant: [#69](https://github.com/runa-fm/runa/issues/69).
+    - Added powerpc64le binaries to CI/CD and GitHub releases.
+
+### Fixed
+- **Watcher Thread**: Panes are now correctly updated for directory changes.
+- **Panes**: Empty directories and filters without results no longer flash on reload, for example after deleting the last file in a directory.
+
+### Changed
+- **Rust version**: Changed `rust-version` (MSRV) to `1.91`.
+
+### Internal
+- **Packaging**: Added `packaging/check-licenses.sh`, which checks that the License tag in `runa.spec` matches the licenses of the dependencies. CI runs it after every push and PR.
+- **Performance**:
+    - Watcher: Pending directories are allocated once, reducing allocations from 4020 to 4 for 10k events.
+- **CI**:
+    - Added clippy checks for each OS.
+    - Dependabot now also checks GitHub actions weekly.
+    - Added MSRV checks to `rust.yml`.
+
+
+---
+
+
 ## [0.15.4] - 2026-11-09
 
 #### Fedora package built with Fedora's Rust macros.
