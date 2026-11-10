@@ -1,7 +1,7 @@
 pkgbase = coreutils-selinux
 	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support
 	pkgver = 9.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
 	arch = aarch64
@@ -19,8 +19,8 @@ pkgbase = coreutils-selinux
 	depends = libcap
 	depends = libselinux
 	depends = openssl
-	provides = coreutils=9.12-2
-	provides = selinux-coreutils=9.12-2
+	provides = coreutils=9.12-3
+	provides = selinux-coreutils=9.12-3
 	conflicts = coreutils
 	conflicts = selinux-coreutils
 	options = !lto
