@@ -1,7 +1,7 @@
 # Maintainer: Ait contributors <https://github.com/ait-app/ait>
 
 pkgname=ait-git
-pkgver=0.1.9.r648.g808b9bc
+pkgver=0.2.6.r874.g253cb2e
 pkgrel=1
 pkgdesc='Local-first multi-agent manager with an Electron desktop and Rust daemon (Git main)'
 arch=('x86_64')
@@ -41,6 +41,8 @@ _build_env() {
   export CARGO_TARGET_DIR="$srcdir/target"
   export AIT_SERVER_BIN="$CARGO_TARGET_DIR/release/daemon"
   export CI=1 EXPO_NO_TELEMETRY=1
+  # Keep sharp on the locked prebuilt binaries even when system libvips is installed.
+  export SHARP_IGNORE_GLOBAL_LIBVIPS=1
 }
 
 prepare() {
