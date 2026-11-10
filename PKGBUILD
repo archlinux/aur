@@ -193,6 +193,7 @@ prepare() {
   # with memcpy instead of a cast to an int32_t or pointer, and no memcpy from a null pointer for a
   # function without any instructions: both undefined behaviour, which UBSan reports on every start
   # (memcpy compiles to the same moves)
+  # (https://github.com/alliedmodders/sourcepawn/pull/1214)
   patch -Np1 -i "$srcdir/sourcepawn-jit-unaligned.patch"
   # spcomp's number literals and the negation of constants in unsigned arithmetic, so that they wrap
   # around like the VM's (0xFFFFFFFF, -(-2147483648)) instead of overflowing, which is undefined.
@@ -210,6 +211,7 @@ prepare() {
   # memory tables (BaseMemTable, behind the phrases, the admin cache and others) align their blocks
   # like malloc does, as callers keep structures in them; the string tables' hash reads its bytes one
   # by one; the JIT helpers of extensions (JitWriter) write with memcpy
+  # (https://github.com/alliedmodders/sourcemod/pull/2612)
   patch -Np1 -i "$srcdir/sourcemod-unaligned-access.patch"
   # AMTL's integer hashes (HashInt32, HashInt64, behind every hash table with integer or pointer keys)
   # computed in unsigned arithmetic: in signed, their multiplications and shifts overflow, which is
@@ -244,6 +246,7 @@ prepare() {
   # SafetyHook's inline hooks with the amalgamated Zydis.h of the Zydis.c built with it, rather than
   # one of the system's include path: their ZydisDecoder differs between Zydis 4.0 and 4.1, and the
   # decoder overwrote SafetyHook's stack, which crashed SourceMod 1.13's SDKTools at start
+  # (https://github.com/alliedmodders/safetyhook/pull/12)
   patch -Np1 -d public/safetyhook -i "$srcdir/safetyhook-zydis-header.patch"
   # The rel32 of a call to a PIC thunk, at the start of a hooked function, read and written with
   # byte copies instead of unaligned int32_t accesses, which are undefined behaviour. SafetyHook's
