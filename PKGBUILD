@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=airi-bin
 _pkgname=AIRI
-pkgver=0.14.1
+pkgver=0.15.2
 _electronversion=43
 pkgrel=1
 pkgdesc="💖🧸 Self hosted, you owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude."
@@ -33,8 +33,8 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/down
 sha256sums=('f334260edf0508041280b534ca9d0abd5a02a9626c1d2e20a556ac4eb72b07f9'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
             'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
-sha256sums_aarch64=('3ee4b1cb2fbb0ec22a2a6531f8afc8a84310fa95bfd74bef2dc06293fa68bece')
-sha256sums_x86_64=('790ccd048510a3f6f0ef82e8fffefe1c41fe1e63b29df472857f38734176aa87')
+sha256sums_aarch64=('12322e3f8c972cf97d72c3e3b9d67ec878b864074821ea9e5284adaa061870dd')
+sha256sums_x86_64=('728c5c80d13447e6887242ec4cd70663bccf9b95646e8e139a63205421060bc2')
 _get_app_dir() {
 	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
 		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
