@@ -104,8 +104,9 @@ post_upgrade() {
     # the helper's self-heal removes the old one. This runs as root during the
     # pacman transaction, so no sudo re-exec is needed. All guarded: a failure
     # here never breaks the package transaction (no-panic contract).
-    local old_version="${1:-}"
-    local new_version="${2:-}"
+    # pacman post_upgrade args: $1 = NEW version, $2 = OLD version
+    local new_version="${1:-}"
+    local old_version="${2:-}"
     # pacman passes the full version (pkgver-pkgrel); the DKMS version is the
     # pure pkgver (everything before the first hyphen).
     local old_pkgver="${old_version%%-*}"
@@ -116,9 +117,14 @@ post_upgrade() {
         if command -v dkms >/dev/null 2>&1 && \
            dkms status 2>/dev/null | grep -q "^ryzen_smu/"; then
             echo "ramsleuth: RamSleuth updated ($old_pkgver → $new_pkgver) — rebuilding the ryzen_smu DKMS module…"
+            local log_file="/var/log/ramsleuth-dkms-rebuild.log"
             if command -v /usr/bin/ramsleuth-install-ryzen-smu-dkms >/dev/null 2>&1; then
-                /usr/bin/ramsleuth-install-ryzen-smu-dkms --version "$new_pkgver" >/dev/null 2>&1 || \
-                    echo "ramsleuth: WARNING: ryzen_smu DKMS auto-rebuild failed — run: sudo ramsleuth-install-ryzen-smu-dkms" >&2
+                if ! /usr/bin/ramsleuth-install-ryzen-smu-dkms --version "$new_pkgver" 2>&1 | tee -a "$log_file"; then
+                    echo "ramsleuth: WARNING: ryzen_smu DKMS auto-rebuild failed (see $log_file)"
+                    echo "ramsleuth:   run manually: sudo ramsleuth-install-ryzen-smu-dkms" >&2
+                else
+                    echo "ramsleuth: ryzen_smu DKMS module rebuilt successfully"
+                fi
             else
                 echo "ramsleuth: WARNING: ramsleuth-install-ryzen-smu-dkms not found — cannot auto-rebuild the DKMS module" >&2
             fi
