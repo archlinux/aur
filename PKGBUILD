@@ -47,7 +47,7 @@
 
 pkgname=ryzen-smu-dkms
 pkgver=1.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Provisioning tools for the optional ryzen_smu DKMS module (RamSleuth live AMD subtimings)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
