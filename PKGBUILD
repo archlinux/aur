@@ -11,9 +11,9 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-: ${_ffsrcvername:=153.6.0esr}
-: ${_ffbuild:=2}
-: ${_lwrelver:=102}
+: ${_ffsrcvername:=153.7.0esr}
+: ${_ffbuild:=1}
+: ${_lwrelver:=100}
 : ${_l10n_commit=1e95d1c5f519c3fbde715345ae7beb56a2c79077}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
@@ -151,14 +151,14 @@ source=(
   "security-state--intermediates-${_tag}.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
 )
 noextract=("security-state--intermediates-${_tag}.zip")
-sha256sums=('974b0b1ee4d069449e829aa92d0ec9b28e2e345b436a02c55c17d830de9a9909'
-            '91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25'
+sha256sums=('dff62dd014e755fa20d57d3cb44cd579791d673a8c6414c201cefdd9ae3e3d43'
+            '7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0'
             'SKIP'
             '5cda6675c1d51c6b16395a6be861f980968ed884a404d68d465e8fea87009ef5'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             'c683b93bcb843da6de51ee49dd163c6eb9889f27988357aba3ca8766abd76f2e'
-            'ae8968444be8a77b69f219cd6b35eded970010727fef812820df19f254b860ad')
+            '287b560ff3eec30a563bf365083cf818b2d257882da6891784610ec6dbec2a40')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -276,9 +276,6 @@ build() {
   export MOZ_NOSPAM=1
   export MOZ_REQUIRE_SIGNING=
 
-  # Work around https://bugzilla.mozilla.org/show_bug.cgi?id=1969383
-  export RUST_MIN_STACK=33554432
-
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
@@ -316,7 +313,7 @@ END
     cp "browser/components/enterprisepolicies/defaults/policies.json" "$srcdir/policies.json"
     jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "browser/components/enterprisepolicies/defaults/policies.json"
     # temporarily enable nimbus telemetry for profiling
-    sed -i 's#^.*nimbus\.#// \0#' "browser/app/profile/librewolf.cfg"
+    grep -ih '^pref("[^"]*nimbus\.[^"]*enabled' "${_srcdir}/browser/app/profile/"*.js | sed 's/false/true/' > "browser/app/profile/librewolf.cfg"
 
     echo "Building instrumented browser..."
 
@@ -383,7 +380,7 @@ END
 
     # restore addon loading
     cp "$srcdir/policies.json" "browser/components/enterprisepolicies/defaults/policies.json"
-    # disable nimbus telemetry
+    # re-disable nimbus telemetry
     mv "$srcdir/src/browser/app/profile/librewolf.cfg" browser/app/profile/librewolf.cfg
 
   else
