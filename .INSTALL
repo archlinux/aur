@@ -39,7 +39,7 @@ post_install() {
 
 pre_remove() {
     local _pkgver="$1"
-    indielinks-ctl stop
+    systemctl disable --now indielinks.service
 }
 
 post_remove() {
@@ -51,4 +51,5 @@ post_remove() {
     if getent group "$group" >/dev/null; then
         groupdel "$group"
     fi
+    systemctl daemon-reload
 }

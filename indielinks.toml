@@ -5,8 +5,11 @@ public-address = "0.0.0.0:20676"
 private-address = "127.0.0.1:20677"
 raft-grpc-address = "127.0.0.1:20678"
 user-agent = "indielinks/0.0.1; +sp1ff@pobox.com"
-collection-page-size = 64
 assets = "/usr/share/indielinks/assets"
+collection-page-size = 64
+contact-email = "admin@indiemark.local"
+default-page-size = 16
+templates = "/usr/share/indielinks/templates"
 
 [otlp-export]
 endpoint = "http://localhost:9090/api/v1/otlp/v1/metrics"

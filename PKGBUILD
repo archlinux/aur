@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=v0.0.1.r10.g3e0f1d0
+pkgver=v0.0.2.r21.g4ba5850
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${_pkgname}::git+https://github.com/sp1ff/indielinks.git"
         'indielinks.toml'
         'indielinks.service')
 sha256sums=('SKIP'
-            'b7dd7ba57da5bc2a37c2e9d3c00643766b860279ea81930121cdbe75ecaf29e6'
+            '6ce07bf80bf9a31019a41f8bd671b1a4a5fc958bebb3116b6690da4660a83c66'
             '4254ea7c35897861c280e540d2a467227ac66451c3b19730ef59efb512848493')
 _nproc=$(($(nproc)/4))
 if [ $_nproc -eq 0 ]; then
@@ -42,7 +42,7 @@ build() {
     cargo build --release -j ${_nproc}
     cd indielinks-fe
     tailwindcss -i style.css -o tailwind.css
-    INDIELINKS_FE_API="http://localhost:20676" INDIELINKS_BASE="" INDIELINKS_PAGE_SIZE="20" trunk build --release
+    INDIELINKS_BASE="" INDIELINKS_PAGE_SIZE="20" trunk build --release
 }
 
 package() {
@@ -70,8 +70,21 @@ package() {
     install -Dm644 indielinks-fe.wasm "$pkgdir/usr/share/indielinks/assets/indielinks-fe.wasm"
 
     cd ../../..
-    install -Dm644 indielinks.toml    "$pkgdir/etc/indielinks.toml"
     install -Dm644 indielinks.service "$pkgdir/usr/lib/systemd/system/indielinks.service"
+
+    if [ -f /etc/indielinks.toml  ]; then
+        peppers=$(grep -m1 -A1 -e '^\[pepper.peppers\]' /etc/indielinks.toml 2>/dev/null || true)
+        keys=$(grep -m1 -A1 -e '^\[signing-keys.signing-keys.keys\]' /etc/indielinks.toml 2>/dev/null || true)
+        content=$(cat indielinks.toml; printf x)
+        content=${content%x}
+        rendered=${content//PEPPER/"$peppers"}
+        rendered=${rendered//SIGNINGKEYS/"$keys"}
+        printf '%s' "$rendered" > "$pkgdir/etc/indielinks.toml"
+        chmod 600 "$pkgdir/etc/indielinks.toml"
+    else
+        install -Dm600 indielinks.toml "$pkgdir/etc/indielinks.toml"
+        $pkgdir/usr/bin/indielinks-schemas secrets "$pkgdir/etc/indielinks.toml"
+    fi
 }
 
 backup=('etc/indielinks.toml')
