@@ -1,0 +1,21 @@
+pkgbase = codex-x-bin
+	pkgdesc = OpenAI Codex 桌面端/CLI 的可视化管理工具，具有 Provider/API 切换、会话同步、提示词注入、Skills/MCP 管理、TOML 配置可视化
+	pkgver = 0.3.33
+	pkgrel = 1
+	url = https://github.com/yynxxxxx/Codex-X
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = codex-x
+	conflicts = codex-x
+	source = codex-x-bin-0.3.33.deb::https://github.com/yynxxxxx/Codex-X/releases/download/v0.3.33/Codex-X-0.3.33-linux-x64.deb
+	source = LICENSE::https://github.com/yynxxxxx/Codex-X/raw/v0.3.33/LICENSE
+	sha256sums = 68b974a82a8ba7edf3dd783457748201f7c5918c79a25b63a4efb2b48dc39438
+	sha256sums = 7003c0131cc654fc3aae1633fcd0c2ee53d75b945b25d9dbd7070f9abe6b3c0c
+
+pkgname = codex-x-bin
