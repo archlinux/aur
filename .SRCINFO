@@ -1,6 +1,6 @@
 pkgbase = ant-browser-bin
 	pkgdesc = Multi-profile anti-detect browser launcher with proxy management
-	pkgver = 1.8.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/black-ant/Ant-Browser
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ant-browser-bin
 	conflicts = ant-browser
 	options = !strip
 	options = !debug
-	source = ant-browser-bin-1.8.0.zip::https://github.com/black-ant/Ant-Browser/releases/download/V1.8.0/ant-browser-linux-amd64.zip
-	sha256sums = 79aa5a51e7fd30ea9f783e0f8d53ab49d3e630243056f8d14b8f40a24cf66d25
+	source = ant-browser_1.9.1_amd64.deb::https://github.com/black-ant/Ant-Browser/releases/download/v1.9.1/ant-browser_1.9.1_amd64.deb
+	sha256sums = cc1cc9936fb7b884e4d385836dd1fd935fbcac4efcf1f78b616f13fcd1b7ef7f
 
 pkgname = ant-browser-bin

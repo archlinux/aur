@@ -1,8 +1,8 @@
 # Maintainer: Fangru Shao <matrixc7p@gmail.com>
 _pkgname=ant-browser
 pkgname="${_pkgname}-bin"
-pkgver=1.8.0
-_tag="V1.8.0"
+pkgver=1.9.1
+_tag="v1.9.1"
 pkgrel=1
 pkgdesc="Multi-profile anti-detect browser launcher with proxy management"
 arch=('x86_64')
@@ -20,11 +20,16 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 
-source=("${pkgname}-${pkgver}.zip::https://github.com/black-ant/Ant-Browser/releases/download/${_tag}/ant-browser-linux-amd64.zip")
-sha256sums=('79aa5a51e7fd30ea9f783e0f8d53ab49d3e630243056f8d14b8f40a24cf66d25')
+# 上游自 1.9.x 起不再发布 ant-browser-linux-amd64.zip（也不再内嵌 deb），
+# 直接提供 ant-browser_<ver>_amd64.deb。这里直接取 deb：它带 .desktop、
+# 全套 hicolor 图标和 AppStream metainfo，而 tar.gz 只有应用本体；
+# 且 deb 的 data.tar.zst 顶层就是 opt/ 和 usr/share/，正好对应 $pkgdir。
+source=("ant-browser_${pkgver}_amd64.deb::https://github.com/black-ant/Ant-Browser/releases/download/${_tag}/ant-browser_${pkgver}_amd64.deb")
+sha256sums=('cc1cc9936fb7b884e4d385836dd1fd935fbcac4efcf1f78b616f13fcd1b7ef7f')
 
 prepare() {
-    # Extract Debian package archive
+    # makepkg 通常会把 .deb 当普通归档解开，data.tar.zst 已在 $srcdir；这里再显式
+    # 抽一次，使构建不依赖该自动解包行为。两种情况下产物都一样。
     bsdtar -xf "ant-browser_${pkgver}_amd64.deb" data.tar.zst
 }
 
