@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Name=WeQ
+Name[zh_CN]=WeQ
+GenericName=QQ 聊天记录工具
+GenericName[zh_CN]=QQ 聊天记录工具
+Comment=QQ NT 本地聊天记录解密、导出、查看与年度报告
+Comment[zh_CN]=QQ NT 本地聊天记录解密、导出、查看与年度报告
+Exec=weq %U
+TryExec=weq
+Icon=weq
+Terminal=false
+Categories=Network;InstantMessaging;
+Keywords=QQ;NT;chat;export;
+# 实测窗口 WM_CLASS 是 `weq-desktop`：Electron 用 package.json 的 `name`
+# （`@weq/desktop`）生成，把 `@` / `/` 换成 `-`。写 `weQ` 会和窗口对不上，
+# 任务栏按应用合并且分组会失效（官方 AppImage 的 .desktop 目前就是这么写的）。
+StartupWMClass=weq-desktop

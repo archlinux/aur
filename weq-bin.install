@@ -1,0 +1,9 @@
+# 安装 / 升级后刷新桌面数据库缓存，让菜单里立刻出现 WeQ。
+post_install() {
+  update-desktop-database -q /usr/share/applications 2>/dev/null || true
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+}
+
+post_upgrade() {
+  post_install
+}
