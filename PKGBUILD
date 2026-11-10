@@ -1,6 +1,6 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar-git
-pkgver=1.1.0.r0.g989374e
+pkgver=1.1.1.r0.gb787d5c
 pkgrel=1
 pkgdesc='Development version of the Linux-native Wayland terminal built on Ghostty terminal core'
 arch=('x86_64' 'aarch64')
