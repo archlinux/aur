@@ -1,7 +1,7 @@
 # Maintainer: Valens.dev <info@valens.dev>
 pkgname=shotivo-bin
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Free screenshots. Free sharing. (precompiled)"
 arch=('x86_64' 'aarch64')
 url="https://shotivo.app"
@@ -16,8 +16,8 @@ backup=('etc/xdg/autostart/dev.valens.shotivo.desktop')
 
 source_x86_64=("shotivo-${pkgver}-linux-x86_64.tar.gz::https://shotivo.app/downloads/releases/${pkgver}/linux/x86_64/shotivo-linux-x86_64.tar.gz")
 source_aarch64=("shotivo-${pkgver}-linux-aarch64.tar.gz::https://shotivo.app/downloads/releases/${pkgver}/linux/aarch64/shotivo-linux-aarch64.tar.gz")
-sha256sums_x86_64=('4f1fc46df7aa413e5e17e634a33535cb6d6b016ceca54d5452e9965e0f3bc93c')
-sha256sums_aarch64=('5040a6e87d2ae9e5c42df7e82cde29c7861ddb6b52d1c15db526e910d05f9e3f')
+sha256sums_x86_64=('5d469f83dbe42bbaeb9edd6ae9656d2cb77ff4208713d9e73e163e53fb477f51')
+sha256sums_aarch64=('d7e4cf6bee46bba068007d49b1af7f9cfd19bf09920c825b63e19cafecb5728e')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
