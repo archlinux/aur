@@ -1,6 +1,6 @@
 pkgbase = frankmdfast-bin
 	pkgdesc = Native desktop rewrite of FrankMD: markdown notes with live preview, Vim mode and AI tools (prebuilt binary)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/akitaonrails/FrankMDFast
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = frankmdfast-bin
 	conflicts = frankmdfast
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/akitaonrails/FrankMDFast/releases/download/v0.1.1/frankmdfast-0.1.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 406351c326fe4d8962dcb452f3aa959ccbbda7cdf08b393e3b6f219f17848e81
-	source_aarch64 = https://github.com/akitaonrails/FrankMDFast/releases/download/v0.1.1/frankmdfast-0.1.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = fb6b242ef1921a90cd1f41f25991862ec479e2e6eba2fc129711eac39a32d32f
+	source_x86_64 = https://github.com/akitaonrails/FrankMDFast/releases/download/v0.1.2/frankmdfast-0.1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c3219a4d733ca7cb91158d272b1777b128ab8b78a646aca1f99d4d0d6611cab3
+	source_aarch64 = https://github.com/akitaonrails/FrankMDFast/releases/download/v0.1.2/frankmdfast-0.1.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 60c34b2e104d8d648c961f431f1a17120899ae8718e82500122e96a7490366e7
 
 pkgname = frankmdfast-bin
