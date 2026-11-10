@@ -1,2 +1,4 @@
 expert/
+src/
+pkg/
 *.zst
