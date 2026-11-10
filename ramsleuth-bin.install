@@ -97,6 +97,33 @@ post_upgrade() {
     # changed with the package): make the branded org.freedesktop.
     # ramsleuth.setup action live without a reboot. Guarded: non-fatal.
     systemctl restart polkit 2>/dev/null || true
+
+    # Auto-rebuild the ryzen_smu DKMS module when the RamSleuth version changes.
+    # The DKMS version now tracks the RamSleuth version (the helper's
+    # detect_ramsleuth_version), so a version bump produces a new DKMS entry;
+    # the helper's self-heal removes the old one. This runs as root during the
+    # pacman transaction, so no sudo re-exec is needed. All guarded: a failure
+    # here never breaks the package transaction (no-panic contract).
+    local old_version="${1:-}"
+    local new_version="${2:-}"
+    # pacman passes the full version (pkgver-pkgrel); the DKMS version is the
+    # pure pkgver (everything before the first hyphen).
+    local old_pkgver="${old_version%%-*}"
+    local new_pkgver="${new_version%%-*}"
+    if [ -n "$new_pkgver" ] && [ "$old_pkgver" != "$new_pkgver" ]; then
+        # Only rebuild if the module is actually registered with DKMS (the
+        # user opted in at some point). Otherwise this is a no-op.
+        if command -v dkms >/dev/null 2>&1 && \
+           dkms status 2>/dev/null | grep -q "^ryzen_smu/"; then
+            echo "ramsleuth-bin: RamSleuth updated ($old_pkgver → $new_pkgver) — rebuilding the ryzen_smu DKMS module…"
+            if command -v /usr/bin/ramsleuth-install-ryzen-smu-dkms >/dev/null 2>&1; then
+                /usr/bin/ramsleuth-install-ryzen-smu-dkms --version "$new_pkgver" >/dev/null 2>&1 || \
+                    echo "ramsleuth-bin: WARNING: ryzen_smu DKMS auto-rebuild failed — run: sudo ramsleuth-install-ryzen-smu-dkms" >&2
+            else
+                echo "ramsleuth-bin: WARNING: ramsleuth-install-ryzen-smu-dkms not found — cannot auto-rebuild the DKMS module" >&2
+            fi
+        fi
+    fi
 }
 
 pre_remove() {
