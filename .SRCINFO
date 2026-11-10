@@ -1,0 +1,21 @@
+pkgbase = beacon-cli-git
+	pkgdesc = Beacon status-page client with Waybar JSON output
+	pkgver = 0.1.0.r31.g0aa9338
+	pkgrel = 1
+	url = https://github.com/kguzek/beacon
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = waybar: display status in a custom module
+	provides = beacon-cli=0.1.0.r31.g0aa9338
+	conflicts = beacon-cli
+	options = !lto
+	options = !debug
+	source = beacon::git+https://github.com/kguzek/beacon.git
+	sha256sums = SKIP
+
+pkgname = beacon-cli-git
