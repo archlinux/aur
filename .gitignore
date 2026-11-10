@@ -1,3 +1,7 @@
+# Allow only the files that belong in the AUR repo. makepkg leaves
+# src/, pkg/, the downloaded AppImage and *.pkg.tar.zst in the working
+# directory; none of those may be committed.
+*
 !.gitignore
 !PKGBUILD
 !.SRCINFO
