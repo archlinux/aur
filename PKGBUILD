@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.8.9
+_pkgname=SiYuan
+pkgver=3.8.10
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -35,9 +36,9 @@ source=(
     "${pkgname}.js"
 	"${pkgname}.sh"
 )
-sha256sums=('c19fe24131179e78130b52b838dfdbca9075740ad6d739ded37f186c72e87a1f'
+sha256sums=('fe25d7e116d90e17cb42d533ff8a1dc0150e94a69a32840e9fd9e2209d3d6211'
             '562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            '0f4675ddc96a032accf82723c7b6b66007bafd18aa8d919b61e983a68fd25328')
+            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
 _get_project_dir() {
 	local d
 	while IFS= read -r d; do
@@ -62,12 +63,14 @@ _get_electron_version() {
 	(( _elec_ver == _electronversion )) && c=32 || c=31
 	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
 }
-_set_build_env() {
+_set_electron_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export ELECTRON_BUILDER_OFFLINE=true
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+}
+_set_pnpm_build_env() {
 	export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_CONFIG_HOME="${HOME}/.config"
@@ -83,7 +86,24 @@ _set_build_env() {
 	export pnpm_config_update_notifier=false
 	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
 	export COREPACK_HOME="${HOME}/.corepack"
-    export HOME="${srcdir}/.home"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _detected=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_detected="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_detected}" ]; then
+			_detected="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		fi
+	fi
+	local _ver="${_pnpmver:-${_detected}}"
+	if [ -n "${_ver}" ]; then
+		npm install -g "pnpm@${_ver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
+	fi
+}
+_set_go_build_env() {
+	export HOME="${srcdir}/.home"
 	export GOPATH="${HOME}/go"
 	export GOCACHE="${HOME}/go-build"
 	export GOENV="${HOME}/go/env"
@@ -96,21 +116,9 @@ _set_build_env() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	export GOTOOLCHAIN=local
 	export GOWORK=off
-	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
-    : > "${GOENV}"
-	export PATH="${PNPM_HOME}:${PATH}"
-	local _pnpmver=""
-	local _pkgjson="$(_get_project_dir)/package.json"
-	if [ -f "${_pkgjson}" ]; then
-		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
-		if [ -z "${_pnpmver}" ]; then
-			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
-		fi
-	fi
-	if [ -n "${_pnpmver}" ]; then
-		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
-			--registry "${COREPACK_NPM_REGISTRY}"
-	fi
+	mkdir -p "${HOME}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
+	: > "${GOENV}"
+	export PATH="${GOPATH}/bin:${PATH}"
 }
 prepare() {
     cd "$(_get_project_dir)/app"
@@ -127,7 +135,9 @@ prepare() {
         --exec="${pkgname} %U" \
         --custom="Name[zh_CN]=思源笔记"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+	_set_pnpm_build_env
+	_set_go_build_env
     jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
     export NODE_ENV=development
     pnpm install --no-frozen-lockfile
@@ -135,23 +145,17 @@ prepare() {
 build() {
     cd "$(_get_project_dir)/app"
     _ensure_local_nvm
-    _set_build_env
+    _set_electron_build_env
+	_set_pnpm_build_env
+	_set_go_build_env
     export NODE_ENV=production
     pnpm run build
+	local _archbuild=$([[ "${CARCH}" == "aarch64" ]] && echo linux-arm64 || echo linux)
     cd "$(_get_project_dir)/kernel"
-    case "${CARCH}" in
-        aarch64)
-            _CFG_FILE=electron-builder-linux-arm64.yml
-            _KERNEL_DIR=kernel-linux-arm64
-            ;;
-        x86_64)
-            _CFG_FILE=electron-builder-linux.yml
-            _KERNEL_DIR=kernel-linux
-            ;;
-    esac
-    go build --tags fts5 -o "../app/${_KERNEL_DIR}/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
+    go build --tags fts5 -o "../app/kernel-${_archbuild}/${_pkgname}-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "$(_get_project_dir)/app"
-    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config=${_CFG_FILE} "
+	unset CGO_CFLAGS CGO_CXXFLAGS CGO_CPPFLAGS CGO_LDFLAGS
+    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder-${_archbuild}.yml "
 	rm -rf "$(_get_app_dir)/resources/default_app.asar"
 }
 package() {
