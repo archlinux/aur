@@ -1,0 +1,34 @@
+_users() {
+  loginctl list-users --no-legend 2>/dev/null | while read -r uid name _; do
+    [ "${uid:-0}" -ge 1000 ] 2>/dev/null && echo "$name"
+  done
+}
+
+_user_systemctl() {
+  _name=$1
+  shift
+  systemctl --user --machine="$_name@" "$@" >/dev/null 2>&1 || true
+}
+
+post_install() {
+  systemctl --global enable easyshot.service >/dev/null 2>&1 || true
+  for u in $(_users); do
+    _user_systemctl "$u" daemon-reload
+    _user_systemctl "$u" start easyshot.service
+  done
+}
+
+post_upgrade() {
+  systemctl --global enable easyshot.service >/dev/null 2>&1 || true
+  for u in $(_users); do
+    _user_systemctl "$u" daemon-reload
+    _user_systemctl "$u" try-restart easyshot.service
+  done
+}
+
+pre_remove() {
+  for u in $(_users); do
+    _user_systemctl "$u" stop easyshot.service
+  done
+  systemctl --global disable easyshot.service >/dev/null 2>&1 || true
+}
