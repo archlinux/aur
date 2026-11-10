@@ -1,7 +1,7 @@
 # Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-parsl
-pkgver=2026.11.2
+pkgver=2026.11.9
 pkgrel=1
 pkgdesc='Parallel Python workflows with data dependency tracking'
 arch=(any)
@@ -10,10 +10,10 @@ license=(Apache-2.0)
 depends=('python' 'python-pyzmq' 'python-typeguard' 'python-typing_extensions' 'python-dill' 'python-tblib' 'python-requests' 'python-sortedcontainers' 'python-psutil' 'python-setproctitle' 'python-filelock')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-sqlalchemy' 'python-numpy' 'python-pandas')
-_commit=538eef21381b62c1bd3531df5eab1dcfcada3310
+_commit=bbfefb75118b9586bf276732e3cb5f9948242a6f
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
         pytest9-path-hook.patch)
-sha256sums=('b5df457032c350a28a9fb18d41a9dadd3f02a7e3f0a702f9dcdb3bad39280b79'
+sha256sums=('dcc1aea39baa9c9dd32fe30a887c0474717087d81b45d2eb0f4a631c92b0c4bc'
             'a51ee1f7da5aab4b907e0536efc3c6285e0b50930a6dca4f7e18b98836fbce43')
 optdepends=('python-sqlalchemy: workflow monitoring' 'python-boto3: AWS execution' 'python-kubernetes: Kubernetes execution' 'python-google-api-python-client: Google Cloud execution' 'python-globus-sdk: Globus data transfers' 'python-networkx: workflow visualization' 'python-pydot: workflow visualization' 'python-flask: workflow visualization' 'python-flask-sqlalchemy: workflow visualization' 'python-pandas: workflow visualization' 'python-plotly: workflow visualization' 'python-daemon: visualization server')
 prepare() {
