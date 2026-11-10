@@ -1,0 +1,22 @@
+--- a/src-tauri/src/main.rs
++++ b/src-tauri/src/main.rs
+@@ -210,14 +210,17 @@
+             let main_window = builder
+                 .on_web_resource_request(|request, response| {
+                     // Vivliostyle's bundled Knockout UI compiles data-bind expressions.
+-                    // Enable this only in the viewer document, not in Angular or book HTML.
++                    // Its built-in user-agent.xml is fetched from a data: URL.
++                    // Enable these only in the viewer document, not in Angular or book HTML.
+                     if request.uri().path() == "/vivliostyle/index.html" {
+                         if let Some(policy) = response
+                             .headers()
+                             .get("Content-Security-Policy")
+                             .and_then(|v| v.to_str().ok())
+                         {
+-                            let policy = policy.replace("script-src ", "script-src 'unsafe-eval' ");
++                            let policy = policy
++                                .replace("script-src ", "script-src 'unsafe-eval' ")
++                                .replace("connect-src ", "connect-src data: ");
+                             if let Ok(value) = policy.parse() {
+                                 response
+                                     .headers_mut()

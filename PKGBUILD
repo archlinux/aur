@@ -1,29 +1,39 @@
 # Maintainer: David Kantun <dkantun@gmail.com>
 
 pkgname=libria
-pkgver=2.1.1
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
+pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, spell checking, and offline voice dictation"
 arch=('x86_64')
 url="https://github.com/Gargadon/libria"
 license=('AGPL-3.0-only')
-depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libsecret' 'ghostscript' 'nodejs' 'nss' 'alsa-lib')
+depends=('webkit2gtk-4.1' 'gtk3' 'openssl' 'libsecret' 'ghostscript' 'nodejs' 'nss' 'alsa-lib' 'vosk-api')
 makedepends=('bun' 'rust' 'npm' 'python' 'pkgconf')
 optdepends=('chromium: PDF export (one compatible browser required)'
             'google-chrome: PDF export (alternative browser)'
             'brave-bin: PDF export (alternative browser)'
+            'brave-origin-bin: PDF export (alternative browser)'
             'opera: PDF export (alternative browser)'
             'vivaldi: PDF export (alternative browser)')
 provides=("${pkgname}")
 # GCC LTO objects from ring cannot be linked by Rust's lld linker.
 options=('!lto')
-source=("${url}/archive/v${pkgver}.tar.gz" 'system-browser.patch')
-sha256sums=('5f92a31ff521fc52bcf951051da564cb3c683777580c8be1391b4374618306a8'
-            'a42cb5f76fe73df5c4db57ad5a82a0dae1e506dc6567ef702a847ae93c9f2446')
+source=("${url}/archive/v${pkgver}.tar.gz" 'system-browser.patch' 'vivliostyle-csp.patch')
+sha256sums=('013ccf783f0627f8687fc2487d62a5083950e2285d0b9150472e07717184b48e'
+            '7b6e68c2643cef3f1a6e008914bac871047f1b6f8de62157f20b83a505776c9c'
+            'cc1ab2feba278b2c7dbb62d0f617b487e9d168501b8bb9a3291e75ca4fe1faf3')
 
 prepare() {
   cd "${srcdir}/libria-${pkgver}"
+  # Release archives may use CRLF; the packaging patches use LF.
+  python - <<'PY'
+from pathlib import Path
+for filename in ('scripts/pdf-export.mjs', 'src-tauri/src/main.rs'):
+    path = Path(filename)
+    path.write_bytes(path.read_bytes().replace(b'\r\n', b'\n'))
+PY
   patch -Np1 -i "${srcdir}/system-browser.patch"
+  patch -Np1 -i "${srcdir}/vivliostyle-csp.patch"
   # Use the system browser instead of downloading a private Chrome runtime.
   python - <<'PY'
 import json
@@ -38,7 +48,16 @@ PY
 
 build() {
   cd "${srcdir}/libria-${pkgver}"
-  bun run tauri:build -- --no-bundle
+  # Use Arch Vosk; bundle all six small language models at build time.
+  LIBRIA_VOSK_SYSTEM_ENGINE=1 bun run tauri:build -- --no-bundle
+}
+
+check() {
+  cd "${srcdir}/libria-${pkgver}"
+  # All six models must load offline with the Vosk library supplied by Arch.
+  test ! -d build/tauri-resources/vosk/engine || return 1
+  test ! -d build/tauri-resources/vosk/host || return 1
+  src-tauri/target/release/libria --verify-dictation-resources build/tauri-resources/vosk
 }
 
 package() {
@@ -46,11 +65,15 @@ package() {
 
   # Aplicación
   install -Dm755 src-tauri/target/release/libria "${pkgdir}/usr/bin/libria"
-  install -dm755 "${pkgdir}/usr/lib/libria/runtime"
+  # Tauri resolves Linux resources using productName, whose spelling is "Libria".
+  local _runtime="${pkgdir}/usr/lib/Libria/runtime"
+  install -dm755 "${_runtime}"
   # Exclude bundled runtimes, including leftovers from previous builds.
   tar -C build/tauri-resources --exclude='./node' --exclude='./browsers' \
-    --exclude='./browser.json' -cf - . | tar --no-same-owner -C "${pkgdir}/usr/lib/libria/runtime" -xf -
-  ln -s /usr/bin/node "${pkgdir}/usr/lib/libria/runtime/node"
+    --exclude='./browser.json' --exclude='./vosk/engine' --exclude='./vosk/host' -cf - . | tar --no-same-owner -C "${_runtime}" -xf -
+  # Release 2.3.0 retained mkdtemp's 0700 mode for vosk/. Correct it for root-owned installation.
+  chmod -R u=rwX,go=rX "${_runtime}"
+  ln -s /usr/bin/node "${_runtime}/node"
 
   # Desktop entry
   install -dm755 "${pkgdir}/usr/share/applications"
@@ -85,4 +108,5 @@ MIME
 
   # Licencias
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/libria/LICENSE"
+  cp -a build/licenses/. "${pkgdir}/usr/share/licenses/libria/"
 }
