@@ -1,7 +1,7 @@
 pkgbase = ae-code-bin
 	pkgdesc = Desktop GUI for coding agents (fork of T3 Code), prebuilt release
-	pkgver = 2026.11.10.1
-	pkgrel = 2
+	pkgver = 2026.11.10.2
+	pkgrel = 1
 	url = https://github.com/SelfRef/ae-code
 	arch = x86_64
 	license = MIT
@@ -40,19 +40,19 @@ pkgbase = ae-code-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	depends = zlib
-	provides = ae-code=2026.11.10.1
+	provides = ae-code=2026.11.10.2
 	conflicts = ae-code
 	conflicts = ae-code-git
-	noextract = ae-code-bin-2026.11.10.1.tar.gz
+	noextract = ae-code-bin-2026.11.10.2.tar.gz
 	options = !debug
 	options = !strip
-	source = ae-code-bin-2026.11.10.1.tar.gz::https://github.com/SelfRef/ae-code/releases/download/v2026.11.10.1/ae-code-desktop-linux-x64.tar.gz
-	source = ae-code-bin-2026.11.10.1-LICENSE::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.1/LICENSE
-	source = ae-code-bin-2026.11.10.1-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.1/assets/prod/black-universal-1024.png
-	source = ae-code-bin-2026.11.10.1-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.1/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml
-	sha256sums = 6b48d64b536f9c569405703dc4e7eaf5f71d5237d9475f8ace56289e354230e5
+	source = ae-code-bin-2026.11.10.2.tar.gz::https://github.com/SelfRef/ae-code/releases/download/v2026.11.10.2/ae-code-desktop-linux-x64.tar.gz
+	source = ae-code-bin-2026.11.10.2-LICENSE::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.2/LICENSE
+	source = ae-code-bin-2026.11.10.2-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.2/assets/dev/blueprint-universal-1024.png
+	source = ae-code-bin-2026.11.10.2-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.2/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml
+	sha256sums = c5542982de7d9a90a5348f671c2e900b5888d1afc8eb01f4df1c912a09ad78cc
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
-	sha256sums = e052052874561bdc486eb7bb70f330774133a8b76afde4c90cebbe9b82c3c6a3
+	sha256sums = cac4f61215631ce6d4686c9a95329602e329a3fb6f670f1dabf97abcf5baf925
 	sha256sums = 2c5ed7334f9c35280794378a9f8672a635b99898caa5138022e95e44f63d1fa1
 
 pkgname = ae-code-bin

@@ -2,8 +2,8 @@
 
 _pkgbase=ae-code
 pkgname="$_pkgbase-bin"
-pkgver=2026.11.10.1
-pkgrel=2
+pkgver=2026.11.10.2
+pkgrel=1
 pkgdesc='Desktop GUI for coding agents (fork of T3 Code), prebuilt release'
 arch=('x86_64')
 url='https://github.com/SelfRef/ae-code'
@@ -51,13 +51,13 @@ options=('!debug' '!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgbase-desktop-linux-x64.tar.gz"
 	"$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/SelfRef/ae-code/v$pkgver/LICENSE"
-	"$pkgname-$pkgver-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v$pkgver/assets/prod/black-universal-1024.png"
+	"$pkgname-$pkgver-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v$pkgver/assets/dev/blueprint-universal-1024.png"
 	"$pkgname-$pkgver-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v$pkgver/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml"
 )
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('6b48d64b536f9c569405703dc4e7eaf5f71d5237d9475f8ace56289e354230e5'
+sha256sums=('c5542982de7d9a90a5348f671c2e900b5888d1afc8eb01f4df1c912a09ad78cc'
             '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43'
-            'e052052874561bdc486eb7bb70f330774133a8b76afde4c90cebbe9b82c3c6a3'
+            'cac4f61215631ce6d4686c9a95329602e329a3fb6f670f1dabf97abcf5baf925'
             '2c5ed7334f9c35280794378a9f8672a635b99898caa5138022e95e44f63d1fa1')
 
 prepare() {
