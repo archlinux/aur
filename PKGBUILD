@@ -2,7 +2,7 @@
 # pkgver is rewritten from the git tag by .github/workflows/release.yml.
 
 pkgname=archtoys
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="System-wide color picker for Linux, inspired by PowerToys"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('tesseract: Text Extractor (Archtoys can also install it when you tu
             'tesseract-data-osd: lets Text Extractor find the writing system by itself')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('64976d8f159fa2a9aa7fab77227e9f95e3cd09070690e81e4291807167610d07')
+sha256sums=('bc73403089d5d4d02e6f43ae7ce34bd2189c740445906d25cc8ac19168fd0bfe')
 
 prepare() {
   cd "Archtoys-${pkgver}"
@@ -43,6 +43,7 @@ exec /usr/lib/archtoys/archtoys-bin "$@"
 WRAP
 
   install -Dm644 packaging/archtoys.desktop "${pkgdir}/usr/share/applications/archtoys.desktop"
+  install -Dm644 packaging/io.github.Mujtaba1i.Archtoys.metainfo.xml "${pkgdir}/usr/share/metainfo/io.github.Mujtaba1i.Archtoys.metainfo.xml"
 
   install -Dm644 packaging/archtoys.png "${pkgdir}/usr/share/pixmaps/archtoys.png"
   ln -sf archtoys.png "${pkgdir}/usr/share/pixmaps/archtoys-bin.png"
