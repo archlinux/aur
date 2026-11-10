@@ -274,10 +274,10 @@ index 00000000..09f2fe6d
 +};
 diff --git a/ai/aiconversation.cpp b/ai/aiconversation.cpp
 new file mode 100644
-index 00000000..c50c00d0
+index 00000000..e33d7c97
 --- /dev/null
 +++ b/ai/aiconversation.cpp
-@@ -0,0 +1,1282 @@
+@@ -0,0 +1,1313 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -315,8 +315,13 @@ index 00000000..c50c00d0
 +// Safety limits so a confused model cannot spin forever or stall the UI.
 +constexpr int MaxToolRounds = 25;
 +constexpr int MaxHistoryEntries = 200;
-+constexpr int TypeChunkSize = 64;
 +constexpr int MaxTypeDelayMs = 200;
++// The Windows input queue inside an RDP session drops synthetic key events
++// that arrive in bursts; nothing human types 64 characters in one synchronous
++// loop. Lost keystrokes and lost Shift transitions showed up as missing
++// characters, lowercase capitals, stray caps and PSReadLine-redrawn lines.
++// Type one character per tick with a floor on the gap instead.
++constexpr int MinTypeCharDelayMs = 15;
 +constexpr double MaxWaitSeconds = 30.0;
 +// Remote menus open submenus on a hover timer (Windows: SM_MENU_SHOWDELAY,
 +// ~400ms), and the opened submenu only reaches our screenshot after the RDP
@@ -502,6 +507,17 @@ index 00000000..c50c00d0
 +    if (name != QLatin1String("mouse_click") && name != QLatin1String("mouse_drag") && name != QLatin1String("mouse_scroll")) {
 +        return {};
 +    }
++    return aimCrop(name, pending.call.arguments);
++}
++
++bool AiConversation::isPointingTool(const QString &name)
++{
++    return name == QLatin1String("mouse_click") || name == QLatin1String("mouse_drag")
++        || name == QLatin1String("mouse_scroll");
++}
++
++QPixmap AiConversation::aimCrop(const QString &name, const QJsonObject &args) const
++{
 +    if (!m_view || m_view->status() != RemoteView::Connected) {
 +        return {};
 +    }
@@ -514,7 +530,6 @@ index 00000000..c50c00d0
 +        return {};
 +    }
 +
-+    const QJsonObject args = pending.call.arguments;
 +    QList<QPoint> points;
 +    const QSize aim = aimSize();
 +    auto read = [&args, &aim](const QString &xName, const QString &yName) -> QPoint {
@@ -997,6 +1012,14 @@ index 00000000..c50c00d0
 +    entry.toolCallId = call.id;
 +    entry.toolName = call.name;
 +    entry.image = image;
++    if (isPointingTool(call.name) && !m_aimCrop.isNull()) {
++        QByteArray png;
++        QBuffer buffer{&png};
++        buffer.open(QIODevice::WriteOnly);
++        m_aimCrop.save(&buffer, "PNG");
++        entry.aimImage = png;
++        m_aimCrop = QPixmap{};
++    }
 +    m_entries.append(entry);
 +    Q_EMIT entriesChanged();
 +}
@@ -1018,6 +1041,14 @@ index 00000000..c50c00d0
 +void AiConversation::runTool(const PendingTool &pending)
 +{
 +    const AiToolCall &call = pending.call;
++
++    // Grab the crosshair crop before the action lands, so the chat can show
++    // where the pointer was aimed even when the click needed no approval.
++    if (isPointingTool(call.name)) {
++        m_aimCrop = aimCrop(call.name, call.arguments);
++    } else {
++        m_aimCrop = QPixmap{};
++    }
 +    const QString name = call.name;
 +    const QJsonObject &args = call.arguments;
 +
@@ -1351,7 +1382,7 @@ index 00000000..c50c00d0
 +        return;
 +    }
 +
-+    const QString chunk = m_typeRemainder.left(TypeChunkSize);
++    const QString chunk = m_typeRemainder.left(1);
 +    m_typeRemainder.remove(0, chunk.length());
 +
 +    const bool ok = view->aiTypeText(chunk);
@@ -1368,7 +1399,7 @@ index 00000000..c50c00d0
 +        m_queueIndex++;
 +        processQueue();
 +    } else {
-+        QTimer::singleShot(m_typeDelay, this, &AiConversation::typeNextChunk);
++        QTimer::singleShot(qMax(m_typeDelay, MinTypeCharDelayMs), this, &AiConversation::typeNextChunk);
 +    }
 +}
 +
@@ -1562,10 +1593,10 @@ index 00000000..c50c00d0
 +}
 diff --git a/ai/aiconversation.h b/ai/aiconversation.h
 new file mode 100644
-index 00000000..cd22f606
+index 00000000..9f0e7316
 --- /dev/null
 +++ b/ai/aiconversation.h
-@@ -0,0 +1,184 @@
+@@ -0,0 +1,194 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -1616,6 +1647,9 @@ index 00000000..cd22f606
 +        QString toolCallId; ///< Role::Tool: which call this answers
 +        QString toolName; ///< display only, for Role::Tool and Role::Assistant
 +        QByteArray image; ///< Role::User: JPEG bytes
++        QByteArray aimImage; ///< Role::Tool: PNG crosshair crop of where a
++                             ///< pointer action aimed. Display only: never
++                             ///< sent to the model, never saved to history.
 +        QList<AiToolCall> toolCalls; ///< Role::Assistant
 +        QString detail; ///< Role::Note: extra explanation
 +        /** When this happened, for the chat log. Defaults to "now"; load()
@@ -1652,6 +1686,9 @@ index 00000000..cd22f606
 +     * pending call is not a point action or no screen is available.
 +     */
 +    QPixmap pendingPreview() const;
++
++    /** True for the tools that aim the pointer at coordinates. */
++    static bool isPointingTool(const QString &name);
 +
 +    void setConfig(const AiConfig &config);
 +    const AiConfig &config() const;
@@ -1706,6 +1743,9 @@ index 00000000..cd22f606
 +    };
 +
 +    QJsonArray buildMessages() const;
++    /** Screenshot crop with crosshairs at the coordinates a pointer tool
++     * targets; empty when nothing can be shown. */
++    QPixmap aimCrop(const QString &name, const QJsonObject &arguments) const;
 +    void sendToModel();
 +    void processQueue();
 +    void runTool(const PendingTool &pending);
@@ -1737,6 +1777,7 @@ index 00000000..cd22f606
 +    QList<PendingTool> m_queue;
 +    int m_queueIndex = 0;
 +    bool m_awaiting = false;
++    QPixmap m_aimCrop; ///< set by runTool before a pointer action lands
 +    bool m_denied = false;
 +    bool m_busy = false;
 +    int m_rounds = 0;
@@ -1752,10 +1793,10 @@ index 00000000..cd22f606
 +};
 diff --git a/ai/aiconversationpage.cpp b/ai/aiconversationpage.cpp
 new file mode 100644
-index 00000000..5c162ed5
+index 00000000..85a8ab5f
 --- /dev/null
 +++ b/ai/aiconversationpage.cpp
-@@ -0,0 +1,404 @@
+@@ -0,0 +1,412 @@
 +/*
 +    SPDX-FileCopyrightText: 2026 TJ Griffiths <teej.d.man@gmail.com>
 +
@@ -2140,6 +2181,14 @@ index 00000000..5c162ed5
 +        case AiConversation::Role::Tool: {
 +            html += QStringLiteral("<div style='%1'><small>%2</small></div>")
 +                        .arg(bubbleStyle(ToolBubble), escape(entry.text.left(400)));
++            if (!entry.aimImage.isEmpty()) {
++                // Where a pointer action was aimed, taken just before it
++                // landed. Embedded inline; shown only in the chat, never
++                // sent back to the model.
++                html += QStringLiteral("<div style='padding:2px 10px;'>"
++                                       "<img src='data:image/png;base64,%1' width='220'/></div>")
++                            .arg(QString::fromLatin1(entry.aimImage.toBase64()));
++            }
 +            break;
 +        }
 +        case AiConversation::Role::Note: {
