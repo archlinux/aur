@@ -2,7 +2,7 @@
 
 _pkgname=git-changelog
 pkgname=python-git-changelog
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Automatic changelog generator using Jinja2 templates"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/pawamoy/git-changelog"
 license=('ISC')
 depends=(
     'git'
-    'python>=3.10'
+    'python>=3.11'
     'python-jinja>=3.0'
     'python-packaging>=26.0'
     'python-platformdirs>=4.4'
@@ -33,7 +33,7 @@ checkdepends=(
     'python-tomli-w>=1.2'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pawamoy/git-changelog/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7def1588c3a89c4b6af1c17690f7b1f41c43cf06a0db3c6b9698a461b2aee4aa')
+sha256sums=('99a0d8f38476ee3628ab1c12f2fbbbd2a69b997fa58b87ca69d825c11bc49ccb')
 
 build() {
     cd "$_pkgname-$pkgver"
