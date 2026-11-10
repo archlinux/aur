@@ -2,7 +2,7 @@
 
 pkgname=pwm-d77
 _name=pwm
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc="PipaWindowManager, a Penrose Lib Tiling Window Manager"
 arch=('x86_64')
@@ -14,6 +14,8 @@ depends=('libx11' 'libxft' 'dmenu' 'st' 'wireless_tools' 'dbus' 'gcc-libs' 'glib
 makedepends=('cargo' 'pkgconf')
 optdepends=(
   'slock: default screen locker'
+  'xorg-setxkbmap: [keyboard] layout in config.toml'
+  'xorg-xset: [keyboard] key repeat in config.toml'
   'libpulse: volume keys (pactl)'
   'feh: wallpaper in startup.sh'
   'conky: system monitor in startup.sh'
@@ -27,7 +29,7 @@ optdepends=(
 )
 backup=('etc/xdg/pwm/startup.sh')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('46a4b635e8c6142071c6dfb6ccf95d128f935f7c370aef88b8790b1f7c73ff61')
+sha256sums=('828dc82cce6bdac43b407b94028c91c0b906bddf7a61d521fc70428587742829')
 
 prepare() {
     cd "$_name-$pkgver"
