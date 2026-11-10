@@ -1,0 +1,22 @@
+pkgbase = matlivre-bin
+	pkgdesc = A fast live script editor and runtime for MATLAB code.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/campuslivre/matlivre
+	arch = x86_64
+	license = MIT
+	makedepends = libappimage
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	provides = matlivre
+	conflicts = matlivre
+	options = !strip
+	source = README-0.1.7.md::https://raw.githubusercontent.com/campuslivre/matlivre/v0.1.7/README.md
+	source = LICENSE-0.1.7::https://raw.githubusercontent.com/campuslivre/matlivre/v0.1.7/LICENSE
+	sha256sums = 3288b47285918889ce0d5a2024993db1111d922376798bbbe30c57fa53e7730d
+	sha256sums = 63d91bd964e2a05a54f39d2f70ba9f5f9308146e858382f90bc7486bca3e5d7b
+	source_x86_64 = MatLivre-x86_64-0.1.7.AppImage::https://github.com/campuslivre/matlivre/releases/download/v0.1.7/matlivre.AppImage
+	sha256sums_x86_64 = dc0e66bef6e1cabcabb6f7e0c8de7847b762e0b874bd2f233a7a5c4ece610934
+
+pkgname = matlivre-bin
