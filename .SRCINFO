@@ -1,6 +1,6 @@
 pkgbase = setcolors-git
 	pkgdesc = Allows you to set the linux VT101 default color palette
-	pkgver = 1.0.0.r10.geeb8e8e
+	pkgver = 1.0.0.r11.g65e9e10
 	pkgrel = 1
 	url = https://github.com/evanpurkhiser/linux-vt-setcolors
 	arch = i686
