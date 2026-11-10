@@ -5,7 +5,7 @@ _appname=teams-for-linux
 pkgname="${_appname}-electron-bin"
 pkgver=2.30.0
 _electronversion=44
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Microsoft Teams for Linux client."
 arch=(
 	'aarch64'
@@ -33,7 +33,7 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
 sha256sums=('562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627'
-            'ace275e253744ca62d2572776df26b947f3c89616239985003126db635fc300e')
+            'd1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904')
 sha256sums_aarch64=('9ef1e145f0e65e5a248144ad7fd06137baa8280cf6c5c708124ee01f70bf4dbe')
 sha256sums_x86_64=('a747b846da046e70c09eb3dfd7d38b4607bc3b273b2e59fd10991c8540d0fcb4')
 _get_app_dir() {
