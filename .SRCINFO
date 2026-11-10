@@ -7,7 +7,6 @@ pkgbase = rgx-search-bin
 	license = Apache-2.0
 	depends = glibc
 	depends = gcc-libs
-	conflicts = rgx-search-bin
 	conflicts = rgx-search-v2-bin
 	conflicts = rgx-search-avx2-bin
 	conflicts = rgx-search-v4-bin

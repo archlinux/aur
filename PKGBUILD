@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 source=("rgx-v${pkgver}-x86_64-linux-gnu.tar.gz::https://github.com/danalec/rgx/releases/download/rgx-v${pkgver}/rgx-v${pkgver}-x86_64-linux-gnu.tar.gz")
 sha256sums=('a47153015ae6136fb31b4cd57424d84323aad655d93a61c838820a5062ebcd38')
-conflicts=('rgx-search-bin' 'rgx-search-v2-bin' 'rgx-search-avx2-bin' 'rgx-search-v4-bin' 'rgx-search-znver4-bin')
+conflicts=('rgx-search-v2-bin' 'rgx-search-avx2-bin' 'rgx-search-v4-bin' 'rgx-search-znver4-bin')
 options=('!strip')
 
 package() {
