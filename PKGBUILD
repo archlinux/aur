@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=opendj-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Free, open-source DJ software: decks, stems, effects and controllers"
 arch=('x86_64')
@@ -32,7 +32,7 @@ options=('!strip' '!debug')
 _deb="opendj_${pkgver}_amd64.deb"
 source_x86_64=("${_deb}::https://github.com/sebastian-beca/opendj/releases/download/v${pkgver}/${_deb}")
 noextract=("${_deb}")
-sha256sums_x86_64=('15660b9697415d913ac9c3c17003636ff19ab2fe2b86b269380117590f03bc10')
+sha256sums_x86_64=('ad00cbda69e4228e6c1ee1c472d5e7ad18b4a02bd6ba023d085d3236df1c3994')
 
 package() {
     local _data_member
