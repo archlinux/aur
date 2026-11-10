@@ -1,6 +1,6 @@
 pkgbase = ghidra-extension-kuna-bin
 	pkgdesc = Ghidra extension running kuna as the native decompiler core behind the stock Ghidra GUI
-	pkgver = 1.993
+	pkgver = 1.994
 	pkgrel = 1
 	url = https://github.com/Noelo-Lab/kuna
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = ghidra-extension-kuna-bin
 	provides = ghidra-extension-kuna
 	conflicts = ghidra-extension-kuna
 	options = !strip
-	source = https://github.com/Noelo-Lab/kuna/releases/download/v1.993/kuna-v1.993-KunaDecompiler-ghidra_12.1.2.zip
-	source = kuna-1.993-LICENSE::https://github.com/Noelo-Lab/kuna/raw/v1.993/LICENSE
-	source = kuna-1.993-NOTICE::https://github.com/Noelo-Lab/kuna/raw/v1.993/NOTICE
-	sha256sums = 4a31a8f253345d89e9e81c7f1610b35194aa8425bc49aedd813981fafe42126b
+	source = https://github.com/Noelo-Lab/kuna/releases/download/v1.994/kuna-v1.994-KunaDecompiler-ghidra_12.1.2.zip
+	source = kuna-1.994-LICENSE::https://github.com/Noelo-Lab/kuna/raw/v1.994/LICENSE
+	source = kuna-1.994-NOTICE::https://github.com/Noelo-Lab/kuna/raw/v1.994/NOTICE
+	sha256sums = b6b26fde7cd838c3a5611576dd8401344f21fb7002ee0279bab2fd95cc8d09b1
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	sha256sums = 19c1091563a3d968453cf4b3276da9fed3cad583af6a9b53ba38d9545656fb87
+	sha256sums = a23de4e1bd5fe3c89e74e7b3c2343b132b4461a7e25b39fda5116d3b669b35b1
 
 pkgname = ghidra-extension-kuna-bin
