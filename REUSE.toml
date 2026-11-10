@@ -39,6 +39,7 @@ path = [
   "geoip-libmaxminddb.patch",
   "sourcemod-delete-noexcept.patch",
   "sourcemod-gamebin-executable-path.patch",
+  "sourcemod-unaligned-access.patch",
 ]
 SPDX-FileCopyrightText = "AlliedModders LLC"
 SPDX-License-Identifier = "GPL-3.0-only"
@@ -54,7 +55,12 @@ SPDX-FileCopyrightText = "AlliedModders LLC"
 SPDX-License-Identifier = "GPL-3.0-or-later"
 
 [[annotations]]
-path = "sourcepawn-source-date-epoch.patch"
+path = "sourcepawn-jit-unaligned.patch"
+SPDX-FileCopyrightText = "AlliedModders LLC"
+SPDX-License-Identifier = "GPL-3.0-only AND GPL-3.0-or-later"
+
+[[annotations]]
+path = ["sourcepawn-source-date-epoch.patch", "sourcepawn-compiler-overflow.patch"]
 SPDX-FileCopyrightText = ["ITB CompuPhase", "AlliedModders LLC"]
 SPDX-License-Identifier = "Zlib"
 
@@ -67,3 +73,8 @@ SPDX-License-Identifier = "MIT"
 path = "amtl-hash-unsigned.patch"
 SPDX-FileCopyrightText = ["David Anderson", "AlliedModders LLC"]
 SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = ["safetyhook-zydis-header.patch", "safetyhook-thunk-unaligned.patch"]
+SPDX-FileCopyrightText = "cursey"
+SPDX-License-Identifier = "BSL-1.0"

@@ -1,0 +1,17 @@
+--- a/src/inline_hook.cpp
++++ b/src/inline_hook.cpp
+@@ -1,9 +1,11 @@
+ #include <iterator>
+ 
+-#if __has_include("Zydis/Zydis.h")
+-#include "Zydis/Zydis.h"
+-#elif __has_include("Zydis.h")
++// The amalgamated Zydis.h next to the Zydis.c that is built with it first, so that a Zydis of the
++// system's include path, whose structures may differ, doesn't take its place
++#if __has_include("Zydis.h")
+ #include "Zydis.h"
++#elif __has_include("Zydis/Zydis.h")
++#include "Zydis/Zydis.h"
+ #else
+ #error "Zydis not found"
+ #endif

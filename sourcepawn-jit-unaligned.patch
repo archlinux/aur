@@ -1,0 +1,144 @@
+--- a/sourcepawn/vm/assembler.h
++++ b/sourcepawn/vm/assembler.h
+@@ -36,6 +36,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ #include <limits.h>
++#include <string.h>
+ #include "label.h"
+ 
+ class AssemblerBase
+@@ -93,7 +94,7 @@
+   template <typename T>
+   void write(const T& t) {
+     assertCanWrite(sizeof(T));
+-    *reinterpret_cast<T*>(pos_) = t;
++    memcpy(pos_, &t, sizeof(T));
+     pos_ += sizeof(T);
+   }
+ 
+--- a/sourcepawn/vm/x86/assembler-x86.h
++++ b/sourcepawn/vm/x86/assembler-x86.h
+@@ -288,7 +288,7 @@
+   }
+   void modrm_disp32(uint8_t rm, int32_t disp) {
+     modrm(kModeDisp32, rm);
+-    *reinterpret_cast<int32_t*>(bytes_ + 1) = disp;
++    memcpy(bytes_ + 1, &disp, sizeof(disp));
+   }
+   void sib(uint8_t mode, Scale scale, uint8_t index, uint8_t base) {
+     modrm(mode, kSIB);
+@@ -307,7 +307,7 @@
+   }
+   void sib_disp32(Scale scale, uint8_t index, uint8_t base, int32_t disp) {
+     sib(kModeDisp32, scale, index, base);
+-    *reinterpret_cast<int32_t*>(bytes_ + 2) = disp;
++    memcpy(bytes_ + 2, &disp, sizeof(disp));
+   }
+ 
+  private:
+@@ -767,9 +767,10 @@
+       ptrdiff_t delta = pos_ - (buffer() + offset);
+       assert(delta >= INT_MIN && delta <= INT_MAX);
+ 
+-      int32_t* p = reinterpret_cast<int32_t*>(buffer() + offset - 4);
+-      status = *p;
+-      *p = delta;
++      uint8_t* p = buffer() + offset - 4;
++      int32_t delta32 = int32_t(delta);
++      memcpy(&status, p, sizeof(status));
++      memcpy(p, &delta32, sizeof(delta32));
+     }
+     target->bind(pc());
+   }
+@@ -779,7 +780,8 @@
+       return;
+     if (address->used()) {
+       uint32_t offset = CodeLabel::ToOffset(address->status());
+-      *reinterpret_cast<int32_t*>(buffer() + offset - 4) = position() - int32_t(offset);
++      int32_t delta = position() - int32_t(offset);
++      memcpy(buffer() + offset - 4, &delta, sizeof(delta));
+     }
+     address->bind(pc());
+   }
+@@ -894,7 +896,7 @@
+ 
+   static void PatchRel32Absolute(uint8_t* ip, void* ptr) {
+     int32_t delta = uint32_t(ptr) - uint32_t(ip);
+-    *reinterpret_cast<int32_t*>(ip - 4) = delta;
++    memcpy(ip - 4, &delta, sizeof(delta));
+   }
+ 
+   void emitToExecutableMemory(void* code) {
+@@ -905,7 +907,9 @@
+     memcpy(base, buffer(), length());
+     for (size_t i = 0; i < external_refs_.size(); i++) {
+       size_t offset = external_refs_[i];
+-      PatchRel32Absolute(base + offset, *reinterpret_cast<void**>(base + offset - 4));
++      void* ptr;
++      memcpy(&ptr, base + offset - 4, sizeof(ptr));
++      PatchRel32Absolute(base + offset, ptr);
+     }
+ 
+     // Relocate everything we emitted as an abs32 with an internal offset. Note
+@@ -913,8 +917,10 @@
+     // and CodeLabel.
+     for (size_t i = 0; i < local_refs_.size(); i++) {
+       size_t offset = local_refs_[i];
+-      int32_t delta = *reinterpret_cast<int32_t*>(base + offset - 4);
+-      *reinterpret_cast<void**>(base + offset - 4) = base + offset + delta;
++      int32_t delta;
++      memcpy(&delta, base + offset - 4, sizeof(delta));
++      void* ptr = base + offset + delta;
++      memcpy(base + offset - 4, &ptr, sizeof(ptr));
+     }
+   }
+ 
+--- a/sourcepawn/vm/x86/jit_x86.cpp
++++ b/sourcepawn/vm/x86/jit_x86.cpp
+@@ -1763,7 +1763,8 @@
+ void
+ CompilerBase::PatchCallThunk(uint8_t* pc, void* target)
+ {
+-  *(intptr_t*)(pc - 4) = intptr_t(target) - intptr_t(pc);
++  int32_t delta = int32_t(intptr_t(target) - intptr_t(pc));
++  memcpy(pc - 4, &delta, sizeof(delta));
+ }
+ 
+ } // namespace sp
+--- a/sourcepawn/vm/environment.cpp
++++ b/sourcepawn/vm/environment.cpp
+@@ -27,6 +27,7 @@
+ #include "builtins.h"
+ #include "debugging.h"
+ #include <stdarg.h>
++#include <string.h>
+ 
+ using namespace sp;
+ using namespace SourcePawn;
+@@ -264,10 +265,10 @@
+ static inline void
+ SwapLoopEdge(uint8_t* code, LoopEdge& e)
+ {
+-  int32_t* loc = reinterpret_cast<int32_t*>(code + e.offset - 4);
++  uint8_t* loc = code + e.offset - 4;
+   int32_t new_disp32 = e.disp32;
+-  e.disp32 = *loc;
+-  *loc = new_disp32;
++  memcpy(&e.disp32, loc, sizeof(e.disp32));
++  memcpy(loc, &new_disp32, sizeof(new_disp32));
+ }
+ 
+ void
+--- a/sourcepawn/vm/jit.cpp
++++ b/sourcepawn/vm/jit.cpp
+@@ -207,7 +207,8 @@
+ 
+   std::unique_ptr<FixedArray<CipMapEntry>> cipmap(
+     new FixedArray<CipMapEntry>(cip_map_.size()));
+-  memcpy(cipmap->buffer(), cip_map_.data(), cip_map_.size() * sizeof(CipMapEntry));
++  if (!cip_map_.empty())
++    memcpy(cipmap->buffer(), cip_map_.data(), cip_map_.size() * sizeof(CipMapEntry));
+ 
+   assert(error_ == SP_ERROR_NONE);
+   return new CompiledFunction(code, pcode_start_, edges.release(), cipmap.release());

@@ -1,0 +1,23 @@
+--- a/sourcepawn/compiler/lexer.cpp
++++ b/sourcepawn/compiler/lexer.cpp
+@@ -1685,7 +1685,8 @@
+         if (c == '_')
+             continue;
+ 
+-        value = (value * base) + digit;
++        // Wrap around like the VM does, rather than overflow
++        value = cell(ucell(value) * base + digit);
+         ndigits++;
+     }
+ 
+--- a/sourcepawn/compiler/semantics.cpp
++++ b/sourcepawn/compiler/semantics.cpp
+@@ -621,7 +621,7 @@
+                 unary->set_userop();
+             } else if (out_val.ident == iCONSTEXPR) {
+                 /* the negation of a fixed point number is just an integer negation */
+-                out_val.set_constval(-out_val.constval());
++                out_val.set_constval(cell(-ucell(out_val.constval())));
+             }
+             break;
+         default:

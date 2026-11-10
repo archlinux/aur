@@ -1,0 +1,117 @@
+--- a/public/jit/jit_helpers.h
++++ b/public/jit/jit_helpers.h
+@@ -34,6 +34,7 @@
+ 
+ #include <sp_vm_types.h>
+ #include <sp_vm_api.h>
++#include <string.h>
+ 
+ #if defined HAVE_STDINT_H && !defined WIN32
+ #include <stdint.h>
+@@ -87,7 +88,7 @@
+ 	{
+ 		if (outbase)
+ 		{
+-			*(unsigned short *)outptr = c;
++			memcpy(outptr, &c, sizeof(c));
+ 		}
+ 		outptr += sizeof(unsigned short);
+ 	}
+@@ -103,7 +104,7 @@
+ 	{
+ 		if (outbase)
+ 		{
+-			*(jit_int32_t *)outptr = c;
++			memcpy(outptr, &c, sizeof(c));
+ 		}
+ 		outptr += sizeof(jit_int32_t);
+ 	}
+@@ -111,7 +112,7 @@
+ 	{
+ 		if (outbase)
+ 		{
+-			*(jit_uint32_t *)outptr = c;
++			memcpy(outptr, &c, sizeof(c));
+ 		}
+ 		outptr += sizeof(jit_uint32_t);
+ 	}
+@@ -119,7 +120,7 @@
+ 	{
+ 		if (outbase)
+ 		{
+-			*(jit_int64_t *)outptr = c;
++			memcpy(outptr, &c, sizeof(c));
+ 		}
+ 		outptr += sizeof(jit_int64_t);
+ 	}
+@@ -127,7 +128,7 @@
+ 	{
+ 		if (outbase)
+ 		{
+-			*(jit_uint64_t *)outptr = c;
++			memcpy(outptr, &c, sizeof(c));
+ 		}
+ 		outptr += sizeof(jit_uint64_t);
+ 	}
+--- a/core/sm_memtable.h
++++ b/core/sm_memtable.h
+@@ -32,6 +32,7 @@
+ #ifndef _INCLUDE_SOURCEMOD_CORE_STRINGTABLE_H_
+ #define _INCLUDE_SOURCEMOD_CORE_STRINGTABLE_H_
+ 
++#include <stddef.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -57,6 +58,10 @@
+ 	 */
+ 	int CreateMem(unsigned int addsize, void **addr)
+ 	{
++		/* Align each block like malloc() does, as callers store structures in them */
++		const unsigned int align = alignof(max_align_t);
++		tail = (tail + align - 1) & ~(align - 1);
++
+ 		int idx = (int)tail;
+ 
+ 		while (tail + addsize >= size) {
+--- a/public/sm_memtable.h
++++ b/public/sm_memtable.h
+@@ -32,6 +32,7 @@
+ #ifndef _INCLUDE_SOURCEMOD_CORE_STRINGTABLE_H_
+ #define _INCLUDE_SOURCEMOD_CORE_STRINGTABLE_H_
+ 
++#include <stddef.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -57,6 +58,10 @@
+ 	 */
+ 	int CreateMem(unsigned int addsize, void **addr)
+ 	{
++		/* Align each block like malloc() does, as callers store structures in them */
++		const unsigned int align = alignof(max_align_t);
++		tail = (tail + align - 1) & ~(align - 1);
++
+ 		int idx = (int)tail;
+ 
+ 		while (tail + addsize >= size) {
+--- a/core/logic/sm_symtable.h
++++ b/core/logic/sm_symtable.h
+@@ -84,15 +84,10 @@
+ 
+ 	static inline uint32_t HashString(const char *data, size_t len)
+ 	{
++		/* Read the bytes one by one, as the data needn't be aligned */
+ 		#undef get16bits
+-		#if (defined(__GNUC__) && defined(__i386__)) || defined(__WATCOMC__) \
+-				|| defined(_MSC_VER) || defined (__BORLANDC__) || defined (__TURBOC__)
+-			#define get16bits(d) (*((const uint16_t *) (d)))
+-		#endif
+-		#if !defined (get16bits)
+-			#define get16bits(d) ((((uint32_t)(((const uint8_t *)(d))[1])) << 8)\
++		#define get16bits(d) ((((uint32_t)(((const uint8_t *)(d))[1])) << 8)\
+ 											 +(uint32_t)(((const uint8_t *)(d))[0]) )
+-		#endif
+ 		uint32_t hash = len, tmp;
+ 		int rem;
+ 

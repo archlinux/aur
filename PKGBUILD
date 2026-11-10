@@ -7,7 +7,7 @@ pkgname=(sourcemod-scripting sourcemod sourcemod-src)
 # SourceMod's version: the stable branch's tag, <version>.<build>, the build being the number of
 # commits, which SourceMod's versioning counts with git
 pkgver=1.12.0.7260
-pkgrel=4
+pkgrel=5
 pkgdesc="SourceMod, the scripting and administration platform for Source engine game servers"
 arch=(x86_64 aarch64)
 url="https://www.sourcemod.net"
@@ -56,7 +56,12 @@ source=("git+https://github.com/alliedmodders/sourcemod.git#tag=$_tag"
   sourcepawn-zlib.patch
   sourcepawn-source-date-epoch.patch
   sourcepawn-shell-jit-define.patch
+  sourcepawn-jit-unaligned.patch
+  sourcepawn-compiler-overflow.patch
   sourcemod-delete-noexcept.patch
+  sourcemod-unaligned-access.patch
+  safetyhook-zydis-header.patch
+  safetyhook-thunk-unaligned.patch
   amtl-hash-unsigned.patch
   sourcemod-gamebin-executable-path.patch
   geoip-libmaxminddb.patch
@@ -79,7 +84,12 @@ sha512sums=('783fe9bb0dd53f3f751871e89a03e52911afc4fbfaddd73c03c16291a9bdd6e9fe4
   'd57a24d7cea93a0ef35ed452c865095ffce638fa9cf020592a18afe9f03d6d23b607aa16ed0a94d0d180380a2ec84d16cf43aed520c1f638785690215d4af423'
   '8ebf49c8a2e777cfde0fe0563cdccdd5c5b01072f5b1f513f1b9e42695ec32432358ee08d53c2f514dc5e0b6756a270c3598968f3706a05e10ae7cff507f9380'
   '9e429ffbac68a20afaeb324e63b2e688fcbb063d7132b8cc1e16855861225f13298ec67e55fe74ec64290c2e2930e1e19d487ca653b0cb64bb42c607cf4c666c'
+  'c3fb463b7339d385c19a438f508ce92012eee16e36dc7710ef665354001f5c0faec1ca2ad2dda6e061d1dac5bfacaa8518e58e5d5594e473615fe564935b6253'
+  'cb6add9fa39df78498055be1aeb4230fbd55e8bef9f92d37c049a1a3d00f776d7df3e4a248397c06db8c54d0be4fb8cd4d301b349903f74796b9ea753c6e751c'
   '5634114e3418e894506206b30030af9a4465fdb2d4c8f15e5e81eaadb086c7fdce8c54835309548d42b7776ee1803c638fc2e2aa23f3363cfc395ffffd741a3e'
+  'fa0f84749e31ded529bf9e947ac0fe3fbbe46aafae2309c82189d87b361987aa8ba9a8aace9bbbf656dbc0d966e60a5c60b3ef5199b2cd7a2853c98b6e1356ae'
+  '4452b0b5fe7952cc16633322e3a868cf3a5794c0346d3e5e6b9dcc100227c73cd64f456039252c703ce8545d19377ecd6f7f2cd1246c192d99b28a9be385b4e9'
+  'a2c3a01249155bb5b82648a74b9f4ebe6a5363cb198c4d6d9460605587bd730e8dddeaa13592c7a388b496cbda32355606ba093f979790de29b34d52c3a67e15'
   'a834c36896e324de7c1694b36a381686738a786583dedb18d708fe29276737810bb654656cac2f9513fd370855f738d42b50a4aee9ce0b6f06748c92d8859ab8'
   'cef50ea9e5ee165b1c7d9342e3e472ba967f7d75e854337a784978b8e1f4c0c1d855eeed12c40a340ed814e4693571f253fb3c692b442de99233310b1158b4b5'
   '084afa36685393c0806165c8c897553c0df876e6aaa86d28020064f40f3cc25d0ad69163d3abe183c898df6fc92f5ff4685969bb7a9cdf477efbb4b8eb986cda'
@@ -102,7 +112,12 @@ b2sums=('80681ad0378521bc27756add78ac4c66c81d53b28016efc37b4f1a7d82b598a370bd6a9
   '75ec7373286f5d7cd778e6738609679c95aff00ce13eb9b451a3156dcd1da3191862f587b8b01ff4f056c1348529267fe34246bf63574aeb7f10b13a7b6db612'
   '4493c5b2a1196497e8f54ee009ad29863545e4afff94ff23b0f19d33cdb479d4f5ebfd6c0c028a649d198a054a11dfdd570ba673be64da0562a13143bb013457'
   'a2d51f38244b4ce2fbc05d4d8a15e724d2ce014ce47a3be63586fe21a07a8f24a9ba0cb41b55a9366b528c1e55b25c194a0c409e781eddc1fc477eb2ff9704e5'
+  '5f91ab88356ec857e805ffda9f3ce63f2e3dcbdd538b1f772ea2a1588c3cfb7a27923690ad703af2ca3209e5d337e5635c9d7304505d60200632fdbabc0074cc'
+  '402321cd85e0a1ee6cfb67d75b64ebe0fadc09d521e823049c5859f8585e159376e4f776edd5083d0dd395d49e6fe3f8aa94644c319854be45a2e11b355d890a'
   'f86955655433526c10e56495e57ac546620a5fe7fe9e804669a80823bf7a782667907276ed06bd4905a05b640f947f6cad7a8b087acd26bbd7d191cb90ebe457'
+  '1752e3dc7bc710c20befbf830bf42b6849741bff30d768832643a54b5d3cb26239e3ce99e063a4e122367fbbfee2caa386f911c32d268b54d73b9123d041234e'
+  '937f24ed626f9726388b3c3b52b2051df8aecd324e145aebf5b2c9ae714368e13b26473183378ba994c0fd9dcf0c051dfa7050c0c54c8e31f6d2b22ce2e3d065'
+  '2657284b743f511006ed47f551fe42e6e04008b4233d2691506fba4d4e70e211b9c1ac8903c7ae551d6f00cf08630510d90ef6b2b5b735daae468791ca54737f'
   'd2b777f0a3fd93ba69bd52026a802e16936930e7766cce6276c92652cd65a2a8538c3247ef8b5a50d90c063285e471454812b010a0f7103664e75324e036a04c'
   '8605e4d0f04090cf9e53805260a2a93e19e3363e47b3e5ed069b61a51916ed3bb4b03fb1e94530ec0f8f6fbffc65adcb5b3338e6e4ea2b729f4af5c0c12f4bb7'
   '6a7a7c578f22af05c0a6617a621c36add3f6f287f73d64d127dc91952acf5a1c71c619b3513fdb8ab4bb5767c57dee81fbbcd616f4f6c9163189f9d6002f8fad'
@@ -171,10 +186,24 @@ prepare() {
   # that its Environment class is the same in them as in the VM library they link (GCC's LTO
   # reports the ODR violation). Upstream fixed it for 1.13 (alliedmodders/sourcepawn@bfdd959).
   patch -Np1 -i "$srcdir/sourcepawn-shell-jit-define.patch"
+  # The JIT's writes of displacements and addresses into its code buffer, which are rarely aligned,
+  # with memcpy instead of a cast to an int32_t or pointer, and no memcpy from a null pointer for a
+  # function without any instructions: both undefined behaviour, which UBSan reports on every start
+  # (memcpy compiles to the same moves)
+  patch -Np1 -i "$srcdir/sourcepawn-jit-unaligned.patch"
+  # spcomp's number literals and the negation of constants in unsigned arithmetic, so that they wrap
+  # around like the VM's (0xFFFFFFFF, -(-2147483648)) instead of overflowing, which is undefined.
+  # SourcePawn 1.13's compiler doesn't have this code anymore.
+  patch -Np1 -i "$srcdir/sourcepawn-compiler-overflow.patch"
   # The replacement operator delete of extensions and logic.so declared noexcept, like the
   # standard's (implicitly so already; GCC warns about the different exception specifier)
   # (https://github.com/alliedmodders/sourcemod/pull/2607)
   patch -Np1 -i "$srcdir/sourcemod-delete-noexcept.patch"
+  # No unaligned accesses, which are undefined behaviour and which UBSan reports on every start: the
+  # memory tables (BaseMemTable, behind the phrases, the admin cache and others) align their blocks
+  # like malloc does, as callers keep structures in them; the string tables' hash reads its bytes one
+  # by one; the JIT helpers of extensions (JitWriter) write with memcpy
+  patch -Np1 -i "$srcdir/sourcemod-unaligned-access.patch"
   # AMTL's integer hashes (HashInt32, HashInt64, behind every hash table with integer or pointer keys)
   # computed in unsigned arithmetic: in signed, their multiplications and shifts overflow, which is
   # undefined. Clang with LTO folds such a hash differently where a key is a constant, so a table
@@ -204,6 +233,15 @@ prepare() {
   rm extensions/pgsql/{libpq-fe.h,postgres_ext.h}
   rm extensions/geoip/{data-pool.{c,h},maxminddb{.c,.h,_config.h,-compat-util.h},osdefs.h}
   rm tools/vtable_scanner/libiberty.a tools/batchtool/compile.exe
+
+  # SafetyHook's inline hooks with the amalgamated Zydis.h of the Zydis.c built with it, rather than
+  # one of the system's include path: their ZydisDecoder differs between Zydis 4.0 and 4.1, and the
+  # decoder overwrote SafetyHook's stack, which crashed SourceMod 1.13's SDKTools at start
+  patch -Np1 -d public/safetyhook -i "$srcdir/safetyhook-zydis-header.patch"
+  # The rel32 of a call to a PIC thunk, at the start of a hooked function, read and written with
+  # byte copies instead of unaligned int32_t accesses, which are undefined behaviour. SafetyHook's
+  # main rewrote it without them (alliedmodders/safetyhook@e519cea), which SourceMod doesn't use yet.
+  patch -Np1 -d public/safetyhook -i "$srcdir/safetyhook-thunk-unaligned.patch"
 
   # SafetyHook's Zydis, amalgamated from Zydis and Zycore at the release's commits by Zydis's
   # script, with the static build defines SafetyHook's copy starts with (without them, Zydis
