@@ -1,6 +1,6 @@
 pkgbase = battlenet-proton
 	pkgdesc = Run Battle.net with GE-Proton, with an update dialog, health check and rollback
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://gitlab.com/S-Zilean/battlenet-proton
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = battlenet-proton
 	optdepends = lib32-gnutls: TLS for Battle.net under Wine
 	optdepends = vulkan-driver: Vulkan driver for your GPU
 	optdepends = lib32-vulkan-driver: 32-bit Vulkan driver for your GPU
-	source = battlenet-proton-v0.3.0.tar.gz::https://gitlab.com/S-Zilean/battlenet-proton/-/archive/v0.3.0/battlenet-proton-v0.3.0.tar.gz
-	sha256sums = d7426f57570c0aaa476f39c1fa5344a9bf48c616cc10084ab84fa7c71be28cc9
+	source = battlenet-proton-v0.3.1.tar.gz::https://gitlab.com/S-Zilean/battlenet-proton/-/archive/v0.3.1/battlenet-proton-v0.3.1.tar.gz
+	sha256sums = 4def3ba9c39c77a6f8b788a6db01dccc24dbc7a0492890e6efeea8672d660101
 
 pkgname = battlenet-proton
