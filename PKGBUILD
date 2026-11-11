@@ -4,7 +4,7 @@ _repo=shift
 _user=shift-editor
 _appname=Shift
 pkgname=${_user}-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A cross-platform font editor built in Rust and TypeScript'
 arch=('x86_64')
@@ -33,7 +33,6 @@ depends=(
   'nspr'
   'nss'
   'pango'
-  'sqlite'
   'systemd-libs'
   'xdg-utils'
 )
@@ -45,7 +44,7 @@ options=('!strip' '!debug')
 _deb="${_appname}-${pkgver}-Linux-x64.deb"
 source=("${_deb}::${url}/releases/download/v${pkgver}/${_deb}")
 noextract=("${_deb}")
-sha256sums=('051ad355ab274b614bd065e6865619db8e59603c2d741fe919e9da803a79aff2')
+sha256sums=('4b8a93f03048247cb6d64e3e8b1d7377d666394533c322fff02adfe75bf5822d')
 
 prepare() {
   mkdir -p deb
