@@ -3,7 +3,7 @@
 pkgname=zigfetch-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Zigfetch is a minimal neofetch/fastfetch like system information tool.'
 arch=('x86_64')
 url='https://github.com/utox39/zigfetch'
@@ -18,7 +18,7 @@ depends=('pciutils')
 source=(
 	"${url}/releases/download/v${pkgver}/zigfetch-${arch}-linux.zip"
 	"LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
-	"${_ghurlraw}/README.md"
+	"README-${pkgver}.md::${_ghurlraw}/README.md"
 	"${_ghurlraw}/config.json"
 )
 sha256sums=('a6c008a2cbde197efaf512317e2c43170eae45b134f6fc10044630448ec8c9ea'
@@ -31,6 +31,6 @@ package() {
 
 	install -Dm755 "${_pkgname}-${arch}-linux" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 config.json "${pkgdir}/usr/share/doc/${pkgname}/examples/config.json"
 }
