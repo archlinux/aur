@@ -1,0 +1,27 @@
+pkgbase = reviewforge-git
+	pkgdesc = Local-first code review and feedback resolution with GitHub Copilot.
+	pkgver = 2.1.2.r1.ge38989d
+	pkgrel = 1
+	url = https://github.com/ascube/ReviewForge
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	makedepends = zip
+	depends = electron45
+	depends = nodejs
+	depends = perl
+	depends = git
+	provides = reviewforge=2.1.2
+	conflicts = reviewforge
+	options = !strip
+	source = reviewforge.git::git+https://github.com/ascube/ReviewForge.git
+	source = reviewforge.js
+	source = reviewforge.sh
+	sha256sums = SKIP
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+
+pkgname = reviewforge-git
