@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="11.1.1.0"
-pkgrel="2"
+pkgver="11.1.2.0"
+pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('de3cf6ed0532991a571bc8c9dd2415e6fe52930e763afaf67dd55a796616decf')
+sha256sums=('e22a4e9bf57d32ab53b1a685804188b816074a4b0cdba628f1defc71d44bb8de')
 
 prepare()
 {
@@ -43,20 +43,6 @@ package()
 
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_Broker_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.Broker.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_Desktop_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.Desktop.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Identity_Client_NativeInterop_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Identity.Client.NativeInterop.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_IdentityModel_Abstractions_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.IdentityModel.Abstractions.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Web_WebView2_Core_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Web.WebView2.Core.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Web_WebView2_WinForms_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Web.WebView2.WinForms.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_Microsoft_Web_WebView2_Wpf_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/Microsoft.Web.WebView2.Wpf.dll"
- install -Dm644 "$srcdir/FID_MSAL_RT_x64" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/runtimes/win-x64/native/msalruntime.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_System_Buffers_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Buffers.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_System_Diagnostics_DiagnosticSource_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Diagnostics.DiagnosticSource.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_System_Memory_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Memory.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_System_Numerics_Vectors_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Numerics.Vectors.dll"
- install -Dm644 "$srcdir/FID_MSAL_DLL_System_Runtime_CompilerServices_Unsafe_dll" "$pkgdir${_installdir}/$pkgname/${_programname}/MSAL/System.Runtime.CompilerServices.Unsafe.dll"
  install -Dm644 "$srcdir/FID_AzureRMS64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/AzureRMS.pvp"
  install -Dm644 "$srcdir/FID_Bookmarks64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/Bookmarks.pvp"
  install -Dm644 "$srcdir/FID_Box64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/BoxFileSys.pvp"
