@@ -1,0 +1,153 @@
+--- a/common/http.py
++++ b/common/http.py
+@@ -39,8 +39,10 @@
+ 
+ 
+ def text(value: str, name: str = "query", maximum: int = 2000) -> str:
++    if any(ord(c) < 32 for c in value):
++        raise ValueError(f"{name} must contain 1-{maximum} characters without control characters")
+     value = value.strip()
+-    if not value or len(value) > maximum or any(ord(c) < 32 for c in value):
++    if not value or len(value) > maximum:
+         raise ValueError(f"{name} must contain 1-{maximum} characters without control characters")
+     return value
+ 
+--- a/servers/bgee_mcp/api.py
++++ b/servers/bgee_mcp/api.py
+@@ -35,6 +35,7 @@
+ 
+ 
+ async def _query(select: str, where: str, limit: int, offset: int) -> dict:
++    page(limit, offset)
+     query = f"{PREFIXES}SELECT DISTINCT {select} WHERE {{ {where} }} LIMIT {limit} OFFSET {offset}"
+     data, source = await json_response(
+         ENDPOINT, {"query": query, "format": "application/sparql-results+json"})
+--- a/servers/bigg_mcp/api.py
++++ b/servers/bigg_mcp/api.py
+@@ -28,6 +28,7 @@
+ 
+     Results are paged locally; the upstream list endpoint has no pagination.
+     """
++    page(limit, offset)
+     return _slice(await _get("/models"), limit, offset)
+ 
+ 
+@@ -41,6 +42,7 @@
+ 
+     Results are paged locally; the upstream list endpoint has no pagination.
+     """
++    page(limit, offset)
+     _id(model_bigg_id, "model_bigg_id")
+     return _slice(await _get(f"/models/{model_bigg_id}/reactions"), limit, offset)
+ 
+@@ -50,6 +52,7 @@
+ 
+     Results are paged locally; the upstream list endpoint has no pagination.
+     """
++    page(limit, offset)
+     _id(model_bigg_id, "model_bigg_id")
+     return _slice(await _get(f"/models/{model_bigg_id}/metabolites"), limit, offset)
+ 
+--- a/servers/depmap_mcp/api.py
++++ b/servers/depmap_mcp/api.py
+@@ -1,7 +1,7 @@
+ """DepMap portal datasets, cell lines, genes and drug sensitivity."""
+ from __future__ import annotations
+ 
+-from common.api import local_page
++from common.api import local_page, page
+ from common.http import identifier, text, get_json
+ 
+ API_BASE = "https://depmap.org/portal/api"
+@@ -18,6 +18,7 @@
+ 
+ async def depmap_datasets(limit: int = 20, offset: int = 0) -> dict:
+     """List matrix datasets available for custom download with local paging."""
++    page(limit, offset)
+     rows = await get_json(f"{API_BASE}/download/datasets")
+     return local_page(rows, limit, offset, source_url=f"{API_BASE}/download/datasets")
+ 
+--- a/servers/hpa_mcp/api.py
++++ b/servers/hpa_mcp/api.py
+@@ -7,7 +7,7 @@
+ """
+ from __future__ import annotations
+ 
+-from common.api import json_response, local_page
++from common.api import json_response, local_page, page
+ from common.http import identifier, text
+ 
+ BASE = "https://www.proteinatlas.org/search"
+@@ -80,6 +80,7 @@
+     Slices the byte-bounded upstream result locally; consult the licence
+     (https://www.proteinatlas.org/about/licence) before redistributing content.
+     """
++    page(limit, offset)
+     rows, source = await _rows(text(query, "query", 500))
+     return {**local_page(rows, limit, offset), "source_url": source}
+ 
+--- a/servers/kegg_mcp/api.py
++++ b/servers/kegg_mcp/api.py
+@@ -7,7 +7,7 @@
+ 
+ import re
+ 
+-from common.api import choice, local_page
++from common.api import choice, local_page, page
+ from common.http import identifier, request, text
+ 
+ BASE = "https://rest.kegg.jp"
+@@ -64,6 +64,7 @@
+ 
+     Locally slices the byte-bounded upstream list; results carry local pagination.
+     """
++    page(limit, offset)
+     database = _db(database)
+     organism = _organism(organism) if organism is not None else None
+     body, source = await _get_text(f"list/{database}" + (f"/{organism}" if organism else ""))
+@@ -76,6 +77,7 @@
+ 
+     Options formula, exact_mass, mol_weight and nop apply only to compound and drug.
+     """
++    page(limit, offset)
+     database = _db(database)
+     query = text(query, "query", 200)
+     if option is not None:
+--- a/servers/msigdb_mcp/api.py
++++ b/servers/msigdb_mcp/api.py
+@@ -1,7 +1,7 @@
+ """MSigDB gene set collections, gene set details and curated gene members."""
+ from __future__ import annotations
+ 
+-from common.api import local_page
++from common.api import local_page, page as validate_page
+ from common.http import identifier, identifiers, request, text
+ 
+ BASE = "https://www.gsea-msigdb.org/gsea/msigdb"
+@@ -83,6 +83,7 @@
+ async def msigdb_gene_set_genes(species: str, gene_set: str, limit: int = 100,
+                                 offset: int = 0) -> dict:
+     """List the curated gene members of one gene set with local pagination."""
++    validate_page(limit, offset)
+     result = await _fetch_gene_set(species, gene_set)
+     genes = result.pop("genes")
+     page = local_page(genes, limit, offset)
+--- a/servers/panglao_mcp/api.py
++++ b/servers/panglao_mcp/api.py
+@@ -14,7 +14,7 @@
+ import io
+ from typing import Any
+ 
+-from common.api import choice, local_page
++from common.api import choice, local_page, page
+ from common.http import identifier, request, text
+ 
+ BASE = "https://panglaodb.se"
+@@ -128,6 +128,7 @@
+     Matching is case-insensitive and bounded locally; data come from the static
+     marker snapshot (2020-03-27).
+     """
++    page(limit, offset)
+     needle = text(query, "query", 150).lower()
+     codes = _species_filter(species)
+     matched = []

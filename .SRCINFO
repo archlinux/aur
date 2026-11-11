@@ -1,0 +1,24 @@
+pkgbase = bioinformatics-mcp
+	pkgdesc = Independent MCP servers for bioinformatics data services
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/imjiaoyuan/bioinformatics-mcp
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling>=1.32
+	makedepends = python-hatchling<2
+	depends = python>=3.10
+	depends = python-mcp>=2
+	depends = python-mcp<3
+	depends = python-httpx>=0.28.1
+	depends = python-httpx<1
+	optdepends = uv: generate client configurations that install on demand with uvx
+	source = bioinformatics-mcp-0.1.1.tar.gz::https://github.com/imjiaoyuan/bioinformatics-mcp/archive/v0.1.1.tar.gz
+	source = validate-before-request.patch
+	sha256sums = 6fc43d3139d0a9e505aa1affe239ff0ac181d90be36bbd02f541ea4e4298ecc2
+	sha256sums = 190c18a8e7fdc2d117fa6a9084e385c97ed7cd905888b441e0bc82888707b3a0
+
+pkgname = bioinformatics-mcp
