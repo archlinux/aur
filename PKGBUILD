@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=artcraft-launcher
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 url="https://github.com/storytold/${pkgname#art}"
 pkgdesc='install and launch ArtCraft apps'
@@ -13,7 +13,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="${pkgname#art}-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('be159616efbc750a7430e7ce95a731ee8ee5dda3cebbeaeaeda15df2bc40a646')
+sha256sums=('dcd4b4459b0aa86b1a7a10f4ced9258b34ff155c2ebec6e2e4ba76b16a1e9682')
 
 _srcenv() {
 	cd "$_archive"
