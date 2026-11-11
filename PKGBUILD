@@ -2,7 +2,7 @@
 #
 pkgname=python-dynesty
 _name=${pkgname#python-}
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A dynamic nested sampling package for computing Bayesian posteriors and evidences."
 arch=(any)
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=(python-build python-installer python-wheel)
 conflicts=("${pkgname}-git")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('851717431f04f749bca45e86704c28fecf9f3b10f85a2a69820b26e42cefab68')
+sha256sums=('177ca0eade6d8ffff2d5ab2cca3d710d1045385840f3bdc402f748e53d72098a')
 
 build() {
     cd "$srcdir/$_name-$pkgver"

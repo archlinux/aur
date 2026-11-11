@@ -1,6 +1,6 @@
 pkgbase = python-dynesty
 	pkgdesc = A dynamic nested sampling package for computing Bayesian posteriors and evidences.
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/joshspeagle/dynesty
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-dynesty
 	optdepends = python-h5py: save likelihood evaluation history
 	optdepends = python-tqdm: allow for a nice progress bar
 	conflicts = python-dynesty-git
-	source = https://files.pythonhosted.org/packages/source/d/dynesty/dynesty-3.1.0.tar.gz
-	sha256sums = 851717431f04f749bca45e86704c28fecf9f3b10f85a2a69820b26e42cefab68
+	source = https://files.pythonhosted.org/packages/source/d/dynesty/dynesty-3.2.0.tar.gz
+	sha256sums = 177ca0eade6d8ffff2d5ab2cca3d710d1045385840f3bdc402f748e53d72098a
 
 pkgname = python-dynesty
