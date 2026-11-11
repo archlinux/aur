@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 pkgname=cc-switch
-pkgver=4.0.28
+pkgver=4.0.29
 pkgrel=1
 pkgdesc='All-in-One assistant tool for Claude Code, Codex, OpenCode, openclaw & Gemini CLI'
 arch=('x86_64')
@@ -29,11 +29,16 @@ makedepends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('b1b8ffc84663dc75edd4650e28218d2f068c35f286e92ff0eaf79f17bf768674')
+sha256sums=('51885f0e63e452ff61380934c468347e46982fcbe00e5f4d7b97a5cd013f82cd')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd "${pkgname}-${pkgver}"
+  # openssl-sys <0.9.114 / openssl <0.10.78 don't support OpenSSL 4 (Arch core
+  # is 4.1 now); bump the lock beyond the pinned versions. || true keeps the
+  # build working if upstream drops these transitive deps in a future release.
+  cargo update --manifest-path src-tauri/Cargo.toml -p openssl-sys --precise 0.9.118 || true
+  cargo update --manifest-path src-tauri/Cargo.toml -p openssl --precise 0.10.82 || true
   cargo fetch --locked --target host-tuple --manifest-path src-tauri/Cargo.toml
 }
 
