@@ -1,7 +1,7 @@
 # Maintainer: Vojta Biberle <https://github.com/vojtabiberle>
 pkgname=open-webui-tether-bin
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop companion for Open WebUI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/open-webui/tether'
@@ -20,6 +20,7 @@ sha256sums_aarch64=('f81fb64756998a7d7ffbaea8479260be590a72f04558ae251d1c6043fd3
 package() {
   local app='opt/Open WebUI Tether'
   bsdtar --no-same-owner -xf data.tar.xz -C "$pkgdir"
+  chmod -R go-w "$pkgdir"
   chmod 755 "$pkgdir/$app/chrome-sandbox"
 
   install -d "$pkgdir/usr/bin"
