@@ -1,8 +1,8 @@
 # Maintainer: ARKye03 <rafa03-dev@proton.me>
 
 pkgname=icon-browser-git
-pkgver=r19.68c7343 # Can't be empty, will be set dynamically
-pkgrel=2
+pkgver=r25.c211573 # Can't be empty, will be set dynamically
+pkgrel=1
 pkgdesc="Browse system installed icon themes"
 arch=(x86_64)
 license=('MIT')
@@ -18,8 +18,8 @@ makedepends=(
 	gobject-introspection
 	meson
 	ninja
-	npm
-	esbuild
+	nodejs
+	pnpm
 	desktop-file-utils
 )
 source=("$pkgname::git+$url")
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
 	cd "$pkgname" || exit
-	npm install
+	pnpm install --frozen-lockfile
 	arch-meson --prefix /usr build
 	meson compile -C build
 }
