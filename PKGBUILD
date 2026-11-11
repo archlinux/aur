@@ -3,7 +3,7 @@
 
 pkgname=runa-bin
 _name=runa
-pkgver=0.15.5
+pkgver=0.15.6
 pkgrel=1
 pkgdesc="A fast and lightweight terminal file manager written in Rust"
 arch=(x86_64 aarch64 ppc64le)
@@ -16,9 +16,9 @@ changelog=CHANGELOG.md
 source_x86_64=("$pkgname-$pkgver-x86_64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-x86_64-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-aarch64-gnu.tar.gz")
 source_ppc64le=("$pkgname-$pkgver-ppc64le-gnu.tar.gz::$url/releases/download/v$pkgver/runa-linux-ppc64le-gnu.tar.gz")
-sha256sums_x86_64=('fd995ef9e45e5b82f0a18da2311d9a3cab152b27034ac9e2a2b89e6e1140114d')
-sha256sums_aarch64=('0fe679756763916d5a814fcb058148e8f9be69cc650f78183997d0db86c5cac0')
-sha256sums_ppc64le=('462f096d6b45ba0620246151675d0972a782e9cbeb8f7a9e3c2deb4753c53219')
+sha256sums_x86_64=('5900a2ffcace843cc8eb906af5e87629dcbfc367c26b628bbdccf7349ccf5163')
+sha256sums_aarch64=('d494aa0c98dcf47da4d7e2afa4f37825faf9fb62fd8d2a76f22f04706e55fdc4')
+sha256sums_ppc64le=('f49f622b5adbdfa4029a7ed3675cff7812e43fe04867d74c37851e577208dbf3')
 
 package() {
     cd "runa-linux-$CARCH-gnu"
