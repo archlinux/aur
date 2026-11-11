@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Chatto
+GenericName=Internet Messager
+Exec=/usr/bin/chatto-desktop %U
+Terminal=false
+Type=Application
+Icon=chatto-desktop
+StartupWMClass=Chatto
+Comment=Team and group chat application
+MimeType=x-scheme-handler/chatto;
+Categories=Internet;Chat;Network;InstantMessaging

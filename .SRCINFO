@@ -1,0 +1,20 @@
+pkgbase = chatto-desktop-bin
+	pkgdesc = Team and group chat desktop application
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/chattocorp/chatto
+	arch = x86_64
+	arch = arm64
+	license = AGPL-3.0,Apache-2.0,MIT,OFL,Unicode
+	depends = cef
+	depends = vulkan-icd-loader
+	provides = chatto-desktop
+	conflicts = chatto-desktop
+	source = chatto-desktop.desktop
+	sha256sums = 43e3c9b72fc187f6c0b3c9515369513258426c0642e202982efac337e43eb84f
+	source_x86_64 = https://github.com/chattocorp/chatto/releases/download/v0.5.0/chatto-desktop_0.5.0_Linux_X64.tar.gz
+	sha256sums_x86_64 = 40d01de1a3f6a230f69f6369ddb3bf03734ee9eb6547c26b4ee1163325ecebc4
+	source_arm64 = https://github.com/chattocorp/chatto/releases/download/v0.5.0/chatto-desktop_0.5.0_Linux_ARM64.tar.gz
+	sha256sums_arm64 = a1aaeb591ef6c3b29b9454b2b2f09cb0d72fdc88249e688f9124888361fc92ba
+
+pkgname = chatto-desktop-bin
