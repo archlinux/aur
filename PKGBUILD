@@ -3,7 +3,7 @@ pkgver=0.90.0.37
 pkgrel=1
 pkgdesc="Recompiled games, native on PC."
 arch=('x86_64')
-url="https://github.com/elripalda/RecompStore"
+url="https://github.com/elripalda/RecompLauncher"
 license=('GPL 3.0')
 
 source=("RecompLauncher.desktop" "https://github.com/elripalda/RecompLauncher/releases/download/v${pkgver%.*}-beta.${pkgver##*.}/RecompLauncher_${pkgver%.*}-beta.${pkgver##*.}_amd64.AppImage")
