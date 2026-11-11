@@ -1,6 +1,6 @@
 pkgbase = openviking-bin
 	pkgdesc = Self-evolving context database for AI agents (upstream wheel with a private virtualenv)
-	pkgver = 0.5.4
+	pkgver = 0.5.4.1
 	pkgrel = 1
 	url = https://github.com/volcengine/OpenViking
 	install = openviking-bin.install
@@ -19,9 +19,9 @@ pkgbase = openviking-bin
 	source = openviking.sysusers
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = openviking-0.5.4-cp310-abi3-manylinux_2_31_x86_64.whl::https://files.pythonhosted.org/packages/26/b1/8782be0d1013b0cdd549be1a86e23c858d41c7386d52e3d0e7094842f3e5/openviking-0.5.4-cp310-abi3-manylinux_2_31_x86_64.whl
-	sha256sums_x86_64 = 90a785466f8199580ac1b8e8a7fb5c6988beacef50197e912e6e6ba0cbe91eae
-	source_aarch64 = openviking-0.5.4-cp310-abi3-manylinux_2_31_aarch64.whl::https://files.pythonhosted.org/packages/ac/f1/65317dc158714c71b168b7372507ee984c3e667f3e069cb4f1e1c8ef0af0/openviking-0.5.4-cp310-abi3-manylinux_2_31_aarch64.whl
-	sha256sums_aarch64 = 866d9dc71f8683ba6fecbdee193a0a6ee5873da51d669ca5a13fbc4d7f8cc72e
+	source_x86_64 = openviking-0.5.4.1-cp310-abi3-manylinux_2_31_x86_64.whl::https://files.pythonhosted.org/packages/47/13/e6aa96c7d123773bd225639b9c111cbbed787fcabdeade0dd3237781116b/openviking-0.5.4.1-cp310-abi3-manylinux_2_31_x86_64.whl
+	sha256sums_x86_64 = 8162ac5363063c625b1b0986b65ee192d63d9bd12510217fc6981ed3fabfbecc
+	source_aarch64 = openviking-0.5.4.1-cp310-abi3-manylinux_2_31_aarch64.whl::https://files.pythonhosted.org/packages/77/56/e25973b6243e6147d95cdda5a2a9b946bb17fa41b36950faf3d79330ad68/openviking-0.5.4.1-cp310-abi3-manylinux_2_31_aarch64.whl
+	sha256sums_aarch64 = 3b13bc41bfd8d46b558585d3597c02492f3f3d10d3cd836eb7e72ec6a989f624
 
 pkgname = openviking-bin
