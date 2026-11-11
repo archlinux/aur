@@ -1,6 +1,6 @@
 pkgbase = wayinhibit
 	pkgdesc = A small Wayland idle inhibitor written in Rust
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/MedCy1/wayinhibit
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = wayinhibit
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	source = wayinhibit-1.3.1.tar.gz::https://github.com/MedCy1/wayinhibit/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = 3e06d995d8708e04900be0010d9f6bf32db963dafb4a4b4b2b418eee257c2ce6
-	source_x86_64 = wayinhibit-1.3.1-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.3.1/wayinhibit-x86_64
-	sha256sums_x86_64 = 8079b751c7a12024a29f45ad33129298b8be1dc2d114b12ced4c5793cd96616c
-	source_aarch64 = wayinhibit-1.3.1-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.3.1/wayinhibit-aarch64
-	sha256sums_aarch64 = 596737664918a5511408e9166a0cf19234b3365508e6546f64138bbaf05a8540
+	source = wayinhibit-1.3.2.tar.gz::https://github.com/MedCy1/wayinhibit/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = 549622d71a728bbee4637ec387469b6ca529be90b70294a4777a572974b47baf
+	source_x86_64 = wayinhibit-1.3.2-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.3.2/wayinhibit-x86_64
+	sha256sums_x86_64 = 797b003b644b4820d3825979d08a45de8cd3dcc39918fe02410e670b8ed37096
+	source_aarch64 = wayinhibit-1.3.2-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.3.2/wayinhibit-aarch64
+	sha256sums_aarch64 = 545f2e6f6ede152b3ce2708ba315f34d54f5fa13004ce2b90499428135b33721
 
 pkgname = wayinhibit

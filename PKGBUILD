@@ -1,6 +1,6 @@
 # Maintainer: MedCy1 <mederick.roge@epitech.eu>
 pkgname=wayinhibit
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A small Wayland idle inhibitor written in Rust"
 arch=('x86_64' 'aarch64')
@@ -17,13 +17,13 @@ source_aarch64=(
     "wayinhibit-$pkgver-bin::https://github.com/MedCy1/wayinhibit/releases/download/v$pkgver/wayinhibit-aarch64"
 )
 sha256sums=(
-    '3e06d995d8708e04900be0010d9f6bf32db963dafb4a4b4b2b418eee257c2ce6'
+    '549622d71a728bbee4637ec387469b6ca529be90b70294a4777a572974b47baf'
 )
 sha256sums_x86_64=(
-    '8079b751c7a12024a29f45ad33129298b8be1dc2d114b12ced4c5793cd96616c'
+    '797b003b644b4820d3825979d08a45de8cd3dcc39918fe02410e670b8ed37096'
 )
 sha256sums_aarch64=(
-    '596737664918a5511408e9166a0cf19234b3365508e6546f64138bbaf05a8540'
+    '545f2e6f6ede152b3ce2708ba315f34d54f5fa13004ce2b90499428135b33721'
 )
 
 package() {
