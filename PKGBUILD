@@ -1,6 +1,6 @@
 pkgname=xfce4-fsguard-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.0.r21.g289fd3d
+pkgver=1.2.0.r22.g9b25798
 pkgrel=1
 pkgdesc='File system usage monitor plugin for the Xfce4 panel'
 arch=('i686' 'x86_64')
