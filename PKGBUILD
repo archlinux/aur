@@ -1,6 +1,6 @@
 # Maintainer: Bryan
 pkgname=slopengine
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="First-person boomer shooter game engine (raylib/flecs/s7)"
 arch=('x86_64')
