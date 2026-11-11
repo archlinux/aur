@@ -8,8 +8,8 @@ pkgname=(
     "${pkgbase}"
     "${pkgbase}-unused-libs"
 )
-pkgver=5.4
-pkgrel=2
+pkgver=5.5
+pkgrel=1
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -27,11 +27,11 @@ source=(
 )
 # shellcheck disable=SC2059
 source_i686=(
-    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20260822075341 i386)"
+    "eID_klient_${pkgver}_i386.tar.gz::$(printf "${_url}" 20261111155815 i386)"
 )
 # shellcheck disable=SC2059
 source_x86_64=(
-    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20260822075321 x86_64)"
+    "eID_klient_${pkgver}_x86_64.tar.gz::$(printf "${_url}" 20261111155802 x86_64)"
 )
 sha256sums=(
     SKIP
@@ -41,10 +41,10 @@ sha256sums=(
 )
 # https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_release_notes.txt
 sha256sums_i686=(
-    b4edb10201d2b9515f2dadb6ead0c0ec5a8d219c34e8a6019d4eb89125348d21
+    904e6d2efbaa5c1284fac426aa8180f4ec0c6c977d4a769ccbb0312e3c0adfbf
 )
 sha256sums_x86_64=(
-    2a02d1987d063eb6af7e947845d3a5c97204817ff75c1d95d37eb86063de2f73
+    039a8a797f4d402b0a2d381a1cbf77dfbc28b9870017ce670a4299602a565752
 )
 options=(
     !debug
@@ -60,6 +60,8 @@ prepare() {
     cd "eID_klient_${pkgver}"
 
     ../"${_appimage}" --appimage-extract
+
+    find squashfs-root -type d -exec chmod 755 {} +
 
     mv squashfs-root/Licenses .
     mkdir -p {squashfs-root,unused-libs}/Licenses
