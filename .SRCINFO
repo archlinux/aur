@@ -1,0 +1,18 @@
+pkgbase = servio-bin
+	pkgdesc = HTTP server for static files, with live reload, built with axum
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/alexylon/servio
+	arch = x86_64
+	license = MIT
+	provides = servio
+	conflicts = servio
+	options = !strip
+	source = README-0.7.0.md::https://raw.githubusercontent.com/alexylon/servio/v0.7.0/README.md
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/alexylon/servio/v0.7.0/LICENSE
+	sha256sums = b5460bc76a4618b8a36fb429fecf433797fae8acbca52c5bf344394196066e29
+	sha256sums = 418fabb5bb641aeaffc695232d699a1f593c24718d68e5604e0b752f6fe84d79
+	source_x86_64 = servio-x86_64-0.7.0.tgz::https://github.com/alexylon/servio/releases/download/v0.7.0/servio-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = cd947698b899ab37d9b402cf4557a9c02d775a07766bff12cb1e14a933d02c10
+
+pkgname = servio-bin

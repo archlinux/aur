@@ -1,0 +1,5 @@
+[servio-bin]
+source = "github"
+github = "alexylon/servio"
+use_latest_release = true
+prefix = "v"
