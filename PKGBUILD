@@ -4,7 +4,7 @@
 # Contributor: Peter Reschenhofer <peterreschenhofer at gmail dot com>
 
 pkgname=gams
-pkgver=54.6.1
+pkgver=54.7.0
 pkgrel=1
 pkgdesc='A high-level modeling system for mathematical optimization'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 # Official GAMS CDN, as linked from https://gams.com/download/
 source=("$pkgname-$pkgver.exe::https://d37drm4t2jghv5.cloudfront.net/distributions/$pkgver/linux/linux_x64_64_sfx.exe"
   "gams-studio.desktop")
-sha256sums=('ac198c6262ec781b351336f4fa7fe7afe3316c5db5c0593ea2d4e7579fd34eb1'
+sha256sums=('9cbb7c11da0bce51825c3e67985bb149214a7a415c8c42c2c639a0919a1b4bd2'
             'e05cf76f5980b5a44c35dd812afafde262a53a00fc9fa89bcbca68e26a8edb16')
 
 package() {
