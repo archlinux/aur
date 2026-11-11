@@ -1,7 +1,7 @@
 # Maintainer: Boris Brock <gabrielborisbrock@gmail.com>
 pkgname=soundhive
 _appname=SoundHive
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Fast browser for large sound effect libraries: search, audition, tag and drag sounds'
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,12 @@ depends=('alsa-lib' 'cairo' 'dbus' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk
 makedepends=('cargo' 'nodejs' 'npm')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e44c1ca758ed8259d43cc8e18ff5a27f85a7d7efc071e19ab3b1d8e32baa2ef3')
+sha256sums=('bc63a57ea710871bf9f30e96a1b3bd1f0a364e65c843ad41366d4d7124592205')
 
 prepare() {
   cd "$_appname-$pkgver"
+  # The source tarball doesn't carry the version, the release tag does
+  tools/set-version.sh "$pkgver"
   npm ci --no-audit --no-fund
   cargo fetch --locked --manifest-path src-tauri/Cargo.toml --target "$(rustc -vV | sed -n 's/host: //p')"
 }
