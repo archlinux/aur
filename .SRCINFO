@@ -1,6 +1,6 @@
 pkgbase = ae-code-bin
 	pkgdesc = Desktop GUI for coding agents (fork of T3 Code), prebuilt release
-	pkgver = 2026.11.10.4
+	pkgver = 2026.11.11
 	pkgrel = 1
 	url = https://github.com/SelfRef/ae-code
 	arch = x86_64
@@ -40,17 +40,17 @@ pkgbase = ae-code-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	depends = zlib
-	provides = ae-code=2026.11.10.4
+	provides = ae-code=2026.11.11
 	conflicts = ae-code
 	conflicts = ae-code-git
-	noextract = ae-code-bin-2026.11.10.4.tar.gz
+	noextract = ae-code-bin-2026.11.11.tar.gz
 	options = !debug
 	options = !strip
-	source = ae-code-bin-2026.11.10.4.tar.gz::https://github.com/SelfRef/ae-code/releases/download/v2026.11.10.4/ae-code-desktop-linux-x64.tar.gz
-	source = ae-code-bin-2026.11.10.4-LICENSE::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.4/LICENSE
-	source = ae-code-bin-2026.11.10.4-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.4/assets/dev/blueprint-universal-1024.png
-	source = ae-code-bin-2026.11.10.4-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.10.4/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml
-	sha256sums = a36233a6f7882ca68ca728245fe453c3cc1af630d0a4c7c1fa53296cbb438fa1
+	source = ae-code-bin-2026.11.11.tar.gz::https://github.com/SelfRef/ae-code/releases/download/v2026.11.11/ae-code-desktop-linux-x64.tar.gz
+	source = ae-code-bin-2026.11.11-LICENSE::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.11/LICENSE
+	source = ae-code-bin-2026.11.11-icon.png::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.11/assets/dev/blueprint-universal-1024.png
+	source = ae-code-bin-2026.11.11-metainfo.xml::https://raw.githubusercontent.com/SelfRef/ae-code/v2026.11.11/apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml
+	sha256sums = 9e0cb411f7f4fb5f3d6b0c28fd37cb281ecc116e669457348c30014f2a822a49
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
 	sha256sums = cac4f61215631ce6d4686c9a95329602e329a3fb6f670f1dabf97abcf5baf925
 	sha256sums = 2c5ed7334f9c35280794378a9f8672a635b99898caa5138022e95e44f63d1fa1
