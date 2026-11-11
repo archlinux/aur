@@ -1,6 +1,6 @@
 pkgbase = sunshine-store
 	pkgdesc = Microsoft-Store-style app shop for Arch: pacman, AUR, Flatpak, AppImage and Snap with instant search
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/tak0dan/sunshine-store
 	arch = any
@@ -14,10 +14,14 @@ pkgbase = sunshine-store
 	optdepends = archlinux-appstream-data: app names, icons and categories for repository packages
 	optdepends = yay: install AUR packages
 	optdepends = flatpak: install Flatpak apps
+	optdepends = wine: run Windows apps and games
+	optdepends = umu-launcher: run Windows games with Proton
+	optdepends = pacman-contrib: count of pending updates (checkupdates)
+	optdepends = icoutils: program icons for Windows apps
 	optdepends = snapd: install Snap packages
 	optdepends = inter-font: interface font
 	optdepends = ttf-cormorant: heading font
-	source = sunshine-store-0.2.0.tar.gz::https://github.com/tak0dan/sunshine-store/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 9f17c9249a63abfb5cd174729d28aea306cc227c2b41ef776a49b80879699d4f
+	source = sunshine-store-0.3.0.tar.gz::https://github.com/tak0dan/sunshine-store/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 35f85484a0df051c7699658dc7e6cc46d8cac4dfac67b7673ea91ac494f5b70d
 
 pkgname = sunshine-store
