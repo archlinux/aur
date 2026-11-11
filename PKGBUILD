@@ -3,7 +3,7 @@ pkgname=passwordsecure-bin
 _pkgname=PasswordSecure
 pkgver=1.2026.11.11
 pkgrel=1
-pkgdesc="A cross-platform password manager that uses strong AES-256 encryption.(Prebuilt version)"
+pkgdesc="A cross-platform password manager that uses strong AES-256 encryption."
 arch=(
     'aarch64'
     'x86_64'
