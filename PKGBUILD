@@ -1,6 +1,6 @@
 # Maintainer: Wisbendji Fimerlus <archledger236@gmail.com>
 pkgname=(irlume irlume-kcm)
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Face authentication for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works"
 arch=('x86_64')
@@ -9,10 +9,8 @@ license=('GPL-3.0-or-later')
 # Arch ships onnxruntime 1.24+ but SPLIT into onnxruntime-cpu / -cuda / -rocm,
 # each Provides=onnxruntime. Depend on the virtual 'onnxruntime' so any variant
 # the user has satisfies it (no conflict); a fresh install prompts to pick one,
-# choose onnxruntime-cpu unless you want GPU execution providers.
+# choose onnxruntime-cpu.
 depends=('onnxruntime' 'tpm2-tss' 'pam' 'polkit' 'dbus')
-optdepends=('fprintd: fingerprint companion factor')
-backup=('etc/pam.d/irlume-retry-reset')
 # clang: v4l2-sys-mit generates its V4L2 bindings with bindgen, which needs
 # libclang at build time; without it makepkg fails on a clean system.
 makedepends=('rust' 'cargo' 'gcc' 'clang' 'cmake' 'extra-cmake-modules' 'qt6-base' 'qt6-declarative' 'kcmutils' 'kcoreaddons' 'kio')
@@ -46,7 +44,6 @@ sha256sums=('SKIP'
             'df80cea7228b92562692e56aac965d35766c77399159798c552fb3c77b410c72'
             'dd3abcdbc0f35a9466a682358955ac3826a9a81590cd6b8abcf98548e17bd311')
 validpgpkeys=('F35053398E3C80FE20891B82C10B8492BD7F30C6') # archledger, signs the release tags
-install=irlume.install
 
 prepare() {
     cd "$srcdir/irlume"
@@ -68,12 +65,19 @@ build() {
 }
 
 package_irlume() {
+    optdepends=('fprintd: fingerprint companion factor')
+    backup=('etc/pam.d/irlume-retry-reset')
+    # irlume's alone: set globally, the KCM package carried the hooks too, and
+    # removing only irlume-kcm ran pre_remove, which stops and disables
+    # irlumed while irlume stays installed.
+    install=irlume.install
     cd "$srcdir/irlume"
     install -Dm0755 target/release/irlumed "$pkgdir/usr/bin/irlumed"
     install -Dm0755 target/release/irlume  "$pkgdir/usr/bin/irlume"
     install -Dm0644 packaging/desktop/io.github.archledger.Irlume.desktop "$pkgdir/usr/share/applications/io.github.archledger.Irlume.desktop"
     install -Dm0644 packaging/desktop/io.github.archledger.Irlume.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.archledger.Irlume.svg"
     install -Dm0644 target/release/libpam_irlume.so "$pkgdir/usr/lib/security/pam_irlume.so"
+    install -Dm0644 target/release/libpam_irlume_view.so "$pkgdir/usr/lib/security/pam_irlume_view.so"
     # KDE wallet handoff helper. Not in /usr/bin: it is not a command a user
     # runs, it takes a secret on stdin, and it is only meaningful inside a PAM
     # transaction.
@@ -120,11 +124,20 @@ package_irlume() {
     install -Dm0644 packaging/systemd/irlume-reconcile.path "$pkgdir/usr/lib/systemd/system/irlume-reconcile.path"
     install -Dm0644 packaging/systemd/irlume-reconcile.service "$pkgdir/usr/lib/systemd/system/irlume-reconcile.service"
     install -Dm0644 packaging/systemd/irlume-reconcile.timer "$pkgdir/usr/lib/systemd/system/irlume-reconcile.timer"
+    install -Dm0644 packaging/systemd/irlume-lightdm-prepare.service "$pkgdir/usr/lib/systemd/system/irlume-lightdm-prepare.service"
+    install -Dm0644 packaging/systemd/irlume-lightdm-refresh.service "$pkgdir/usr/lib/systemd/system/irlume-lightdm-refresh.service"
+    install -Dm0644 packaging/systemd/irlume-lightdm-refresh.path "$pkgdir/usr/lib/systemd/system/irlume-lightdm-refresh.path"
+    install -Dm0644 packaging/systemd/irlume-lightdm-refresh.timer "$pkgdir/usr/lib/systemd/system/irlume-lightdm-refresh.timer"
+    install -Dm0644 packaging/lightdm/50-irlume-pam.conf "$pkgdir/usr/lib/systemd/system/lightdm.service.d/50-irlume-pam.conf"
     # tmpfiles.d: the setgid root:video lock directory for the IR-emitter
     # exclusion locks (#542). The daemon's bounding set has no CAP_CHOWN, so
     # the group must be inherited at creation, not corrected in-process.
     # irlume.install applies it before any daemon start.
     install -Dm0644 packaging/tmpfiles.d/irlume.conf "$pkgdir/usr/lib/tmpfiles.d/irlume.conf"
+    # udev: descriptor-attested YUYV IR nodes without illumination records lose
+    # the seat-user uaccess tag (#1069, ADR-0031 section 4); applies at the
+    # next plug or boot.
+    install -Dm0644 packaging/udev/72-irlume-ir-nodes.rules "$pkgdir/usr/lib/udev/rules.d/72-irlume-ir-nodes.rules"
     # AppArmor profile for the daemon. Arch does not run AppArmor by default, so
     # it sits inert unless the user boots with `lsm=...,apparmor`; irlume.install
     # loads it only when apparmor_parser is present. The profile confines the
