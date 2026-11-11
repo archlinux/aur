@@ -7,9 +7,9 @@ pkgname=(
   gtk4-phoenix-docs
   gtk-update-icon-cache-phoenix
 )
-_commit=a5f19b1546a1b39399e244b5b15cc5ec07619c73
+_commit=d8d96d111067a3372a0f33feaab3c5cd2270680e
 pkgver=4.25.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A fork of gtk with support for per-monitor fractional scaling on X11"
 url="https://github.com/dec05eba/gtk"
@@ -84,7 +84,7 @@ source=(
   gtk-update-icon-cache.{hook,script}
   gtk4-querymodules.{hook,script}
 )
-b2sums=('9c16817d1422ea67b09c1ae0c674dec659094b88af7a4249d8a590d4e7edea19e7a0cd794a0c074e76150fbedcbca5f262d9e5c42c10cefc334af32873acaea3'
+b2sums=('56b1f5b53550637b36779c46cfdfa317c362022abed5984aa5c29b3564a9f3e15bc7304e9a52986217cd3746182c4bda2fd8a5cee041a5c7c1ac5a846288803d'
         '136bdb410c46daf769175e8e8837286576391797a4762b8cf388217e893dd6c5087c5c91c347cbdf7d3e9dcd2c978c2fb275b5af1f3425c9f7979fbc65a81324'
         '6bcd839ef82296d864587e0cc7acc0145bdea8e5235af304747cf3c0e564c2757cc67c0373dc044bec83dccfc57dc899546c2fccea96cff2bba22f09978a3814'
         'dd589bd1ad2b13f0e06f6899776a083f20a1aac24d4308d666ffd0d1cff38457b8257b8366f92e767b4233b3d86b6b54fa50339faf84c4801a824986366dce30'
