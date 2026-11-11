@@ -14,7 +14,7 @@
 pkgname=strata-terminal-bin
 _relver=0.2.13
 pkgver=0.1.59.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Strata Terminal: run Qwen3.8-Flash-Next and DeepSeek V4.1-Flash locally with an OpenAI/Anthropic-compatible API (prebuilt)'
 arch=('x86_64')
 url='https://github.com/Niko1221/Strata'
