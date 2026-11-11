@@ -1,6 +1,6 @@
 pkgbase = slskr-bin
 	pkgdesc = Rust Soulseek daemon with bundled Web UI
-	pkgver = 0.2.86
+	pkgver = 0.2.90
 	pkgrel = 3
 	url = https://github.com/snapetech-org/slskr
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = slskr-bin
 	sha256sums = 308ec26e906beb290ae7a18ca3a8f1a898cee0591923da3ac0d66d0791d9da25
 	sha256sums = 384dc783fd133eadcee6d9575eb41209fd231bd0728b815a5cf4af2ff6c43629
 	sha256sums = efbe26e7b0765a17276981f4694d30d3174cba6799588e7ae6590acdd1fe73d9
-	source_x86_64 = slskr-v0.2.86-x86_64-unknown-linux-gnu.tar.gz::https://github.com/snapetech-org/slskr/releases/download/v0.2.86/slskr-v0.2.86-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c9878466be8dd224baf1038fc1dc3874a3d6dd755af23d885ef19df99034a2c4
-	source_aarch64 = slskr-v0.2.86-aarch64-unknown-linux-gnu.tar.gz::https://github.com/snapetech-org/slskr/releases/download/v0.2.86/slskr-v0.2.86-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 6b24aad46283d50f1a33a71f90e9a708a190d30449212b167672c42683cbb5c6
+	source_x86_64 = slskr-v0.2.90-x86_64-unknown-linux-gnu.tar.gz::https://github.com/snapetech-org/slskr/releases/download/v0.2.90/slskr-v0.2.90-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = eb89a0025c9b214dd36eae4fa26a45d1152684cce1b30430d581ed9947636bf6
+	source_aarch64 = slskr-v0.2.90-aarch64-unknown-linux-gnu.tar.gz::https://github.com/snapetech-org/slskr/releases/download/v0.2.90/slskr-v0.2.90-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a008616316f8fd805d145221d6092c01a286d2dfb3ce7f3dbf693819f5daa02a
 
 pkgname = slskr-bin
