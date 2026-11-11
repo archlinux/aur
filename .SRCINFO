@@ -1,0 +1,14 @@
+pkgbase = git-ad-git
+	pkgdesc = Displays one of three fictional advertisements for git add typos.
+	pkgver = r3.d721f62
+	pkgrel = 1
+	url = https://github.com/supurazako/git-ad
+	arch = any
+	license = MIT OR Apache-2.0
+	depends = git
+	provides = git-ad=r3.d721f62
+	conflicts = git-ad
+	source = git+https://github.com/supurazako/git-ad#branch=main
+	sha256sums = SKIP
+
+pkgname = git-ad-git
