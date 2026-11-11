@@ -1,8 +1,8 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=lightdm-kde-greeter
-pkgver=6.1.7
-pkgrel=2
+pkgver=6.1.8
+pkgrel=1
 pkgdesc='LightDM Greeter for KDE'
 arch=(x86_64)
 url='https://invent.kde.org/plasma/lightdm-kde-greeter'
@@ -12,7 +12,7 @@ makedepends=(git cmake extra-cmake-modules qt6-tools gtk2-compat vulkan-headers)
 optdepends=('orca: screen reader support'
             'xorg-server: for lightdm-kde-greeter-x11')
 source=("git+https://invent.kde.org/plasma/lightdm-kde-greeter.git#tag=v${pkgver}")
-sha512sums=('a24a83eff17d83c0288c33a51a8c5c06e072db42015f9458fbbbddbed2ccda7fceae64975ae71a801ca3c06008237e6fa0809a9a736175550941d852d4581258')
+sha512sums=('67500aae2a5bc297f59d9a47a1d3425087f04a0f9ae77f1fb62e27bebf6395df31801c4c0dd3d7b5726aff9faa8a99fe5bdf7216a5e118dd0fd7274cc0af1d91')
 backup=('etc/lightdm/lightdm-kde-greeter.conf')
 
 prepare() {
