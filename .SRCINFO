@@ -1,6 +1,6 @@
 pkgbase = crabber-git
 	pkgdesc = XMPP messenger built on GPUI (git version)
-	pkgver = 0.7.6.r2.g8288d08
+	pkgver = 0.8.0.r0.g5f25b75
 	pkgrel = 1
 	url = https://github.com/auf-gg/crabber
 	arch = x86_64
