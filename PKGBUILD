@@ -2,7 +2,7 @@
 pkgname=ieumoffice-bin
 _name=IeumOffice
 pkgver=0.12.12
-pkgrel=1
+pkgrel=2
 pkgdesc='IeumOffice - desktop office suite for DOCX/XLSX/PPTX/PDF/HWP/Markdown (prebuilt binary)'
 arch=('x86_64')
 url='https://ieumoffice.com'

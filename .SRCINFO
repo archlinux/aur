@@ -1,7 +1,7 @@
 pkgbase = ieumoffice-bin
 	pkgdesc = IeumOffice - desktop office suite for DOCX/XLSX/PPTX/PDF/HWP/Markdown (prebuilt binary)
 	pkgver = 0.12.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ieumoffice.com
 	arch = x86_64
 	license = Apache-2.0
