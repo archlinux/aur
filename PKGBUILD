@@ -2,7 +2,7 @@
 # pkgver and sha256sums are rewritten by .github/workflows/release.yml on every tag.
 # The tarballs are built by the same workflow and attached to the GitHub release.
 pkgname=opensynapse-bin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Remap buttons, set DPI and lighting on Razer mice from Linux (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=('opensynapse')
 conflicts=('opensynapse')
 source_x86_64=("$url/releases/download/v$pkgver/opensynapse-$pkgver-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/opensynapse-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('73a07ec48aec6a3ea00b92832d08265cf5055b1a03f69b44e97128d7f38684e9')
-sha256sums_aarch64=('f71d10011de31d35a76141602b1361ca150b1d8522b4deb5dc81fbb02b7cb92c')
+sha256sums_x86_64=('3c8a7552768d47a54981b633936b222cd31488bf91ebe2a6c490a9edbbc2bad3')
+sha256sums_aarch64=('b08adc45e46b8f1a4103b7beb2368fdabcdaed30c440d13a5c9a762a426d7437')
 
 package() {
   cd "opensynapse-$pkgver"
