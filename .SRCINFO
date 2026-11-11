@@ -1,9 +1,8 @@
 pkgbase = keysharp-git
 	pkgdesc = Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. Compatible with X11 and Wayland.
-	pkgver = v0.0.0.18.r0.g54af9a3
+	pkgver = v0.0.0.18.r104.gc5fc41f
 	pkgrel = 1
 	url = https://github.com/keysharp-org/Keysharp/
-	install = keysharp.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -25,8 +24,8 @@ pkgbase = keysharp-git
 	optdepends = keysharp-desktop-git: Desktop interfaces
 	provides = keysharp
 	conflicts = keysharp
-	source = keysharp::git+https://github.com/Descolada/keysharp
-	source = Eto::git+https://github.com/Descolada/Eto
+	source = keysharp::git+https://github.com/keysharp-org/keysharp
+	source = Eto::git+https://github.com/keysharp-org/Eto#branch=Keysharp
 	sha256sums = SKIP
 	sha256sums = SKIP
 

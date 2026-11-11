@@ -3,7 +3,7 @@
 
 # Maintainer: minerharry <miner.harry567@gmail.com>
 pkgname=keysharp-git
-pkgver=v0.0.0.18.r0.g54af9a3
+pkgver=v0.0.0.18.r104.gc5fc41f
 pkgrel=1
 pkgdesc="Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. Compatible with X11 and Wayland."
 arch=('x86_64')
@@ -24,15 +24,31 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-install=keysharp.install
-source=("keysharp::git+https://github.com/Descolada/keysharp"
-        "Eto::git+https://github.com/Descolada/Eto")
+source=("keysharp::git+https://github.com/keysharp-org/keysharp"
+        "Eto::git+https://github.com/keysharp-org/Eto#branch=Keysharp")
 noextract=()
 sha256sums=('SKIP' 'SKIP')
 
+#escape string for sed replacement
+quoteSubst() {
+  sed 's/[&/\]/\\&/g' <<< "$1"
+}
 
 # Please refer to the USING VCS SOURCES section of the PKGBUILD man page for
 # a description of each element in the source array.
+prepare() {
+  cd "keysharp"
+
+  inst_sh=Keysharp.Install/linux/install.sh
+  sed -i "s/\"\/usr/\"$(quoteSubst "${pkgdir}")\/usr/g" $inst_sh
+  sed -i "s/\/etc/$(quoteSubst "${pkgdir}")\/etc/g" $inst_sh #NOTE: since no preceding quote, this is not stable on re-modification
+  sed -i '/^set_mime_default application/d' $inst_sh #don't override defaults on install, pacman will reload mime apps
+  sed -i '/maybe_run update-desktop-database/d' $inst_sh
+  sed -i '/maybe_run update-mime-database/d' $inst_sh
+  sed -i '/maybe_run gtk-update-icon-cache/d' $inst_sh
+  sed -i '/udevadm/d' $inst_sh #don't update udev, pacman will reload udev rules
+}
+
 
 pkgver() {
   # only using the keysharp commits as version #s since the Eto fork is updated much less frequently. TODO: multiplex commits somehow? 
@@ -61,12 +77,13 @@ build() {
 
 package() {
   cd "keysharp/dist/staging/linux-x64/keysharp-linux-x64"
-  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/keysharp/{}" \;
+  INSTALL_DEPS=0 bash install.sh
+#  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/keysharp/{}" \;
 
 
   #make install/uninstall scripts executable
-  chmod +x "${pkgdir}/usr/share/keysharp/install.sh"
-  chmod +x "${pkgdir}/usr/share/keysharp/uninstall.sh"
+#  chmod +x "${pkgdir}/usr/share/keysharp/install.sh"
+#  chmod +x "${pkgdir}/usr/share/keysharp/uninstall.sh"
 
   #actual installation/uninstallation happens in keysharp.install
 }
