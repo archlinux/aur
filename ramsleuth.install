@@ -119,11 +119,13 @@ post_upgrade() {
             echo "ramsleuth: RamSleuth updated ($old_pkgver → $new_pkgver) — rebuilding the ryzen_smu DKMS module…"
             local log_file="/var/log/ramsleuth-dkms-rebuild.log"
             if command -v /usr/bin/ramsleuth-install-ryzen-smu-dkms >/dev/null 2>&1; then
-                if ! /usr/bin/ramsleuth-install-ryzen-smu-dkms --version "$new_pkgver" 2>&1 | tee -a "$log_file"; then
+                # Run helper with output to log file (not a pipe) so the exit
+                # status is the helper's, not tee's.
+                if /usr/bin/ramsleuth-install-ryzen-smu-dkms --version "$new_pkgver" >>"$log_file" 2>&1; then
+                    echo "ramsleuth: ryzen_smu DKMS module rebuilt successfully"
+                else
                     echo "ramsleuth: WARNING: ryzen_smu DKMS auto-rebuild failed (see $log_file)"
                     echo "ramsleuth:   run manually: sudo ramsleuth-install-ryzen-smu-dkms" >&2
-                else
-                    echo "ramsleuth: ryzen_smu DKMS module rebuilt successfully"
                 fi
             else
                 echo "ramsleuth: WARNING: ramsleuth-install-ryzen-smu-dkms not found — cannot auto-rebuild the DKMS module" >&2
