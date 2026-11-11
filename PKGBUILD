@@ -2,7 +2,7 @@
 # Maintainer: hypevhs <hackgammavision at gmail dot com>
 
 pkgname='oscgoesbrrr'
-pkgver=2.1.30
+pkgver=2.1.34
 pkgrel=1
 pkgdesc='Make haptics in real life go BRRR from VRChat'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("OscGoesBrrr-$pkgver.tar.gz::https://github.com/OscToys/OscGoesBrrr/arch
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/OscToys/OscGoesBrrr/refs/tags/v$pkgver/LICENSE"
         'oscgoesbrrr'
         'OscGoesBrrr.desktop')
-sha256sums=('75c544d1f6f150ad9cec17b64bb8c63e43d21844c0e676517ec578b1f4dfd46a'
-            'fc17405da5786602c4667eb9b69e4bff644be78f5d96c489ae0fc7ddb9b5fd1d'
+sha256sums=('e2251dcf92dbe2c398060f30748e272487ee14fb259a03c9752528a98e7f50c9'
+            'd1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa'
             '1d4e12d6aa0e615a90ad025acbb83e61580276c5329e3109e6b0beae983a1178'
             '4285dd7c558811c1f46c2313753490c8d35f0e83ee5c2ed898b191d440d98bb9')
 
