@@ -1,13 +1,17 @@
 # Maintainer: Jaroslav Bolek <jarris@post.cz>
 pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
-pkgver=2.3.1
+# Development package of the current state of the repository (the release package is lenovo-legion-linux-toolkit-release
+# in the AUR, built from the tag release/<version>), version by pkgver(): <last release>.r<commits>.g<commit>
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
 url="git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/${pkgver}"
 license=('GPL3')
-depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-declarative" "protobuf" "cuda" "pkgconf" "rust" "nvidia-utils")
+depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-declarative" "protobuf" "hidapi" "cuda" "pkgconf" "rust" "nvidia-utils")
+makedepends=("git")
+conflicts=("lenovo-legion-linux-toolkit")
 source=("$pkgname-$pkgver::$url")
 sha256sums=('SKIP')
 install=default.install
@@ -31,6 +35,8 @@ package() {
 
   #dms driver
   cp $srcdir/$pkgname-$pkgver/$srcname-dkms/* $pkgdir/usr/src/$pkgname-$pkgver
+  # version of the DKMS package and of the kernel modules (MODULE_VERSION)
+  sed -i "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"$pkgver\"/" $pkgdir/usr/src/$pkgname-$pkgver/dkms.conf
 
   #settings
   cp $srcdir/$pkgname-$pkgver/$srcname-dkms/blacklist-lenovo-legion.conf $pkgdir/etc/modprobe.d/
