@@ -1,0 +1,27 @@
+pkgbase = xtermium-nightly-bin
+	pkgdesc = Cross-platform terminal and session manager with web/file browsers and AI (nightly build)
+	pkgver = 20261110.035328
+	pkgrel = 1
+	url = https://xtermium.com
+	arch = x86_64
+	license = Apache-2.0
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = systemd-libs
+	depends = webkit2gtk-4.1
+	provides = xtermium
+	conflicts = xtermium
+	options = !strip
+	options = !debug
+	source = xtermium-20261110.035328.deb::https://github.com/xtermium/xtermium/releases/download/nightly/xtermium_nightly_amd64.deb
+	sha256sums = d39db270a58238f05b8b1404771ace9c16885279d9eee1125e61192a6bc4ec46
+
+pkgname = xtermium-nightly-bin
