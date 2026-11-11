@@ -1,0 +1,21 @@
+pkgbase = wecom-bin
+	pkgdesc = 企业微信 Linux 桌面端（腾讯官方原生构建，非 Wine）
+	pkgver = 3.5.0.2599
+	pkgrel = 1
+	url = https://work.weixin.qq.com/
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = libxcb
+	depends = libx11
+	depends = noto-fonts
+	depends = noto-fonts-cjk
+	provides = wecom
+	conflicts = wecom
+	conflicts = com.qq.weixin.work.deepin
+	conflicts = com.qq.weixin.work.deepin.gitee
+	options = !strip
+	options = !debug
+	source_x86_64 = weworklocal-3.5.0.2599-x86_64.deb::https://work.weixin.qq.com/wework_admin/local_download/realdownload?platform=linux_x86&app_logo=qywx&package_type=deb
+	sha256sums_x86_64 = 682a1c2ee2fb88375c610355eabb3e3cde65b795af10834698490bf4092c8aa6
+
+pkgname = wecom-bin
