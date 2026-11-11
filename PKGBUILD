@@ -1,6 +1,6 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
-_pkgver=0.2.0-rc.1
+_pkgver=0.2.0-rc.2
 
 pkgname=tutabridge-desktop
 pkgver=${_pkgver//-/_}
@@ -11,6 +11,8 @@ url='https://github.com/spartanz51/tutabridge'
 license=('GPL-3.0-or-later')
 depends=(webkit2gtk-4.1
          gtk3
+         glib2
+         hicolor-icon-theme
          dbus
          libayatana-appindicator)
 makedepends=(python
@@ -26,7 +28,7 @@ optdepends=('gnome-keyring: persist the Tuta session across reboots (Secret Serv
             'kwallet: alternative Secret Service provider')
 options=(!lto)
 source=($pkgname::git+https://github.com/spartanz51/tutabridge.git#tag=v$_pkgver)
-sha256sums=('064a59d7fce5d6e9a0670bf69f7a7a51af9ecc0076b92803b060c332b62eff6d')
+sha256sums=('09e2e16b60786a5ceb4a329e7a4c9614147d95489958c1b7e7212306d489e202')
 
 prepare() {
   cd "$pkgname"
