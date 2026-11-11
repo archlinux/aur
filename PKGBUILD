@@ -1,7 +1,7 @@
 # Maintainer: Vojta Biberle <https://github.com/vojtabiberle>
 pkgname=open-webui-tether-bin
 pkgver=0.1.13
-pkgrel=3
+pkgrel=4
 pkgdesc='Desktop companion for Open WebUI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/open-webui/tether'
@@ -26,7 +26,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/$app/tether" "$pkgdir/usr/bin/open-webui-tether"
   mv "$pkgdir/usr/share/applications/"{tether,open-webui-tether}.desktop
-  sed -i 's|^Exec=.*|Exec=open-webui-tether %U|; s|^Icon=tether$|Icon=open-webui-tether|' \
+  sed -i 's|^Exec=.*|Exec=open-webui-tether %U|; s|^Icon=tether$|Icon=/usr/share/pixmaps/open-webui-tether.png|' \
     "$pkgdir/usr/share/applications/open-webui-tether.desktop"
   install -d "$pkgdir/usr/share/pixmaps"
   mv "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/tether.png" \
