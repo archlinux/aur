@@ -1,8 +1,8 @@
 # Maintainer: Remy Huang <me@remya.top>
 pkgname=remya-settings-bin
 _app_id=remya_settings
-_upstream_ver=0.1.0-dev.20261109.0
-pkgver=0.1.0_dev.20261109.0
+_upstream_ver=0.1.0-dev.20261111.0
+pkgver=0.1.0_dev.20261111.0
 pkgrel=1
 pkgdesc="A Material Design 3 Expressive system settings application for Hyprland on Linux"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=("remya-settings=${pkgver}")
 conflicts=('remya-settings')
 options=('!strip')
 source=("${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst::${url}/releases/download/v${_upstream_ver}/${_app_id}-${_upstream_ver}-linux-x86_64.tar.zst")
-sha256sums=('8072522d6f519d877df8b94eb7bf27116e0fa126fb811c247467065bee94dec9')
+sha256sums=('94e2a25e1e706d26a110681bd9a4765f5aa5bdfb51ac29580b0de8c18520c270')
 
 package() {
   cd "${srcdir}/${_app_id}-${_upstream_ver}-linux-x86_64"

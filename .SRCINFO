@@ -1,6 +1,6 @@
 pkgbase = remya-settings-bin
 	pkgdesc = A Material Design 3 Expressive system settings application for Hyprland on Linux
-	pkgver = 0.1.0_dev.20261109.0
+	pkgver = 0.1.0_dev.20261111.0
 	pkgrel = 1
 	url = https://github.com/remyhuang03/remya-settings
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = remya-settings-bin
 	depends = pacman-contrib
 	depends = glibc
 	depends = gcc-libs
-	provides = remya-settings=0.1.0_dev.20261109.0
+	provides = remya-settings=0.1.0_dev.20261111.0
 	conflicts = remya-settings
 	options = !strip
-	source = remya_settings-0.1.0-dev.20261109.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-settings/releases/download/v0.1.0-dev.20261109.0/remya_settings-0.1.0-dev.20261109.0-linux-x86_64.tar.zst
-	sha256sums = 8072522d6f519d877df8b94eb7bf27116e0fa126fb811c247467065bee94dec9
+	source = remya_settings-0.1.0-dev.20261111.0-linux-x86_64.tar.zst::https://github.com/remyhuang03/remya-settings/releases/download/v0.1.0-dev.20261111.0/remya_settings-0.1.0-dev.20261111.0-linux-x86_64.tar.zst
+	sha256sums = 94e2a25e1e706d26a110681bd9a4765f5aa5bdfb51ac29580b0de8c18520c270
 
 pkgname = remya-settings-bin
