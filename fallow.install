@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables an update check by default: in a terminal, fallow asks"
+  echo "  api.fallow.cloud for the latest version once a day."
+  echo "  Disable it with FALLOW_UPDATE_CHECK=off or DO_NOT_TRACK=1."
+}
