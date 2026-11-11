@@ -1,6 +1,6 @@
 pkgbase = zxc
 	pkgdesc = Asymmetric lossless compression CLI — ultra-fast decode, 40%+ faster than LZ4 on ARM64 (source build)
-	pkgver = 0.15.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/hellobertrand/zxc
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = zxc
 	makedepends = cmake
 	makedepends = gcc
 	depends = glibc
+	depends = bash
 	options = !debug
-	source = zxc-0.15.0.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = 1af49a9d40e644740dca75f176c03535e123f6d0ba81833552b77a70e6eeabaa
+	source = zxc-1.0.0.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = cec96f983f6ba41e2c95723d27d44698f54e67828a97bfaf1569f5fcdf18180d
 
 pkgname = zxc
