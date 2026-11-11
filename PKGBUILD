@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=concat
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine"
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('!debug' '!lto')
 # Only tags that start with a version are packaged, and pkgver drops their
 # hyphens (v0.2.2-alpha.1 -> 0.2.2alpha.1), which pacman sorts older than a
 # later plain 0.2.2, so no epoch is needed. See pkg.sh.
-_tag="v0.2.9"
+_tag="v0.2.10"
 # skia-bindings, behind Slint's Skia renderer, does not build Skia: it
 # downloads prebuilt Skia libraries from its own release page unless it is
 # handed them. Handing them over keeps that binary under makepkg's checksums
@@ -46,7 +46,7 @@ _skia_key="b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-p
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/${_tag}.tar.gz"
         "https://github.com/rust-skia/skia-binaries/releases/download/${_skia}/skia-binaries-${_skia_key}.tar.gz")
 noextract=("skia-binaries-${_skia_key}.tar.gz")
-sha256sums=('2e9b92e40c54a9b18ea6b2f3fc58d834735d766192ed09809f2756941351a176' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
+sha256sums=('0f49016c9a681417e5391da5abac791d996a86594842e39038124ffeb8326d5a' '9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3')
 
 # GitHub names the tarball's top folder after the repository, so it carries
 # upstream's capitalisation: "Concat" since the repository was renamed after

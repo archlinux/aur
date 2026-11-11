@@ -1,6 +1,6 @@
 pkgbase = concat
 	pkgdesc = Free and open-source CapCut replacement, a video editor with a Rust engine
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/jub0t/Concat
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = concat
 	noextract = skia-binaries-b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan.tar.gz
 	options = !debug
 	options = !lto
-	source = concat-0.2.9.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/v0.2.9.tar.gz
+	source = concat-0.2.10.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/v0.2.10.tar.gz
 	source = https://github.com/rust-skia/skia-binaries/releases/download/0.153.3/skia-binaries-b7f043e0b1e2a850e702-x86_64-unknown-linux-gnu-ganesh-gl-jpegd-jpege-pdf-vulkan.tar.gz
-	sha256sums = 2e9b92e40c54a9b18ea6b2f3fc58d834735d766192ed09809f2756941351a176
+	sha256sums = 0f49016c9a681417e5391da5abac791d996a86594842e39038124ffeb8326d5a
 	sha256sums = 9ebe4c448cc9f789bad241cbd11739cdf759e27db5719c23a7635e096d5807b3
 
 pkgname = concat
