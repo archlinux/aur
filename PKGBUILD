@@ -3,7 +3,7 @@
 # Co-Maintainer: zoorat <zoorat [at] protonmail [dot] com>
 
 pkgname=aurutils
-pkgver=21.1.2
+pkgver=22
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
