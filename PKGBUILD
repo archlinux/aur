@@ -3,7 +3,7 @@
 _name=openinference-semantic-conventions
 pkgname=python-$_name
 pkgver=0.1.44
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenInference Semantic Conventions."
 arch=('any')
 _repo="https://github.com/Arize-ai/openinference"

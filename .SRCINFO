@@ -1,7 +1,7 @@
 pkgbase = python-openinference-semantic-conventions
 	pkgdesc = OpenInference Semantic Conventions.
 	pkgver = 0.1.44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arize-ai/openinference/tree/main/python/openinference-semantic-conventions
 	arch = any
 	license = Apache-2.0
