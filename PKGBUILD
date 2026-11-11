@@ -1,18 +1,18 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=opencloud-web
-pkgver=8.2.1
+pkgver=8.2.2
 pkgrel=1
 pkgdesc="Web UI for OpenCloud"
 url="https://github.com/opencloud-eu/web"
 arch=('aarch64' 'x86_64')
 license=('AGPL-3.0-only')
-makedepends=('git' 'pnpm')
+makedepends=('git' 'nodejs' 'pnpm')
 install="opencloud-web.install"
 backup=("var/lib/opencloud-web/config.json")
 source=("${pkgname}::git+https://github.com/opencloud-eu/web.git#tag=v${pkgver/_/-}"
         "config.json")
-sha512sums=('b9a379fbfd25a9c3b01cb0c4da0700f8c961ce8e19a93073b33c9c93203a5f794c6fc74a581fcde02a30832cc2b4ad4bc39bb9e14de08cfe49ad4e3bae02ce1d'
+sha512sums=('ae57002da8e896c66e44b3b52b56fc22dd084d3a38988108a7042ce5b63025e7d2e013ec8ee163d26512bcb92ac630c2e0c1950d79264b9fa113474a0d7f866e'
             'c3692ff7d3f42af2c42d97d633cd14094c3b6421099b7eb74372ba9959ceca95f69c38da679b908802b7b5a5c2199484bb42ddc028e9e1372fb040fe51683e27')
 
 
