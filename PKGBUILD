@@ -58,7 +58,11 @@ package_vtium() {
 }
 
 # The console's features while VTIUM_FEATURES is unset, and the default of
-# hwaccel, the same as vtium-git's from v0.1.0-alpha.6 on.
+# hwaccel, the same as vtium-git's from v0.1.0-alpha.6 on, apart from
+# libseat: the console of v0.1.0-alpha.6 has no feature libseat, so
+# vtium-git alone builds it. The move to the first release that has it adds
+# libseat here, seatd to depends and makedepends, and etc/pam.d/vtium to
+# backup, as in vtium-git.
 _features='images logind gpu bidi'
 _hwaccel=on
 
@@ -112,7 +116,9 @@ build() {
 # /etc/vtium/fonts, the example udev rules and hwdb fragment, and LICENSE.
 # With images, also the image helper /usr/bin/vtium-image, the sysusers file
 # that creates its account, and the picture gallery tool
-# /usr/bin/vtium-gallery, a bash script.
+# /usr/bin/vtium-gallery, a bash script. With libseat and logind, also seat
+# mode's unit vtium-seat@.service and the PAM file /etc/pam.d/vtium, which
+# opens vtium's own session in seat mode (ADR-1400 D3).
 # The recipe installs COPYING and the two license texts it points to beside
 # LICENSE itself, so that a package built from a tag whose make install
 # stages LICENSE alone still carries them. COPYING holds the notices for the

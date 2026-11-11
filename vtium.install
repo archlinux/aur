@@ -1,15 +1,18 @@
 # What pacman runs and shows when vtium is installed, upgraded or removed,
 # the same for every console package (ADR-1500 D3, D5, D7).
 #
-# A first install gives vtium the free VTs: it runs vtium console enable
-# --all, which gives vtium every VT that no other program holds, and passes
-# by and names each VT that a display manager, a greeter, a graphical
-# session or kmscon holds. A removal gives them back first, with vtium
-# console disable --all, while /usr/bin/vtium is still installed. An
-# upgrade changes no VT, so a user who gave the VTs back keeps them back.
-# Nothing here starts, stops or restarts a unit: a restart hangs up every
-# session on that VT, so the claim and a new build take effect at each VT's
-# next start.
+# A first install gives vtium the free VTs in direct mode: it runs vtium
+# console enable --direct --all, which gives vtium every VT that no other
+# program holds, and passes by and names each VT that a display manager, a
+# greeter, a graphical session or kmscon holds. vtium console makes systemd
+# start vtium at boot on each VT it claims, through vtium@.service. Seat
+# mode, through vtium-seat@.service, is the user's choice, and the install
+# never turns it on. A removal gives the VTs back first, with vtium console
+# disable --all, which turns off whichever mode each VT has, while
+# /usr/bin/vtium is still installed. An upgrade changes no VT, so a user who
+# gave the VTs back keeps them back. Nothing here starts, stops or restarts
+# a unit: a restart hangs up every session on that VT, so the claim and a
+# new build take effect at each VT's next start.
 #
 # A refused claim never fails the install or the removal. vtium console
 # refuses while kmscon holds the template link autovt@.service, while
@@ -27,20 +30,21 @@
 # The README, whose sections the messages point to.
 _vtium_readme=https://github.com/vtium/vtium-arch
 
-# _vtium_console VERB: runs vtium console VERB --all and prints what it
-# said, standard error included, indented and wrapped to fit 78 columns.
-# Its status is vtium console's, and only the callers read it.
+# _vtium_console WORDS...: runs vtium console WORDS and prints what it said,
+# standard error included, indented and wrapped to fit 78 columns. Its
+# status is vtium console's, and only the callers read it.
 _vtium_console() {
   local out status=0
-  out=$(vtium console "$1" --all 2>&1) || status=$?
+  out=$(vtium console "$@" 2>&1) || status=$?
   [ -z "$out" ] || printf '%s\n' "$out" | fold -s -w 72 | sed -e 's/ *$//' -e 's/^/      /'
   return "$status"
 }
 
-# The VTs whose vtium@ runs now, one name a line, or nothing.
+# The units of vtium that run now, in direct mode (vtium@ttyN.service) or
+# in seat mode (vtium-seat@ttyN.service), one name a line, or nothing.
 _vtium_running() {
-  systemctl list-units 'vtium@*' --state=running --plain --no-legend 2>/dev/null |
-    awk '$1 ~ /^vtium@tty[0-9]+\.service$/ { print $1 }'
+  systemctl list-units 'vtium@*' 'vtium-seat@*' --state=running --plain --no-legend 2>/dev/null |
+    awk '$1 ~ /^vtium(-seat)?@tty[0-9]+\.service$/ { print $1 }'
 }
 
 # The VTs whose vtium still runs the build it started with, under a heading,
@@ -54,44 +58,97 @@ _vtium_still_running() {
   printf '      %s\n' $running
 }
 
-# The links to vtium@.service under /etc/systemd/system, one path a line,
-# or nothing. Each outlives the package and then names a unit that is gone,
-# until another vtium console package installs it again.
+# The links to vtium's units, vtium@.service and vtium-seat@.service, under
+# /etc/systemd/system, one path a line, or nothing: the template link, each
+# VT's own link, and each VT's want at boot. Each outlives the package and
+# then names a unit that is gone, until another vtium console package
+# installs it again.
 _vtium_links() {
-  local l
-  for l in /etc/systemd/system/autovt@.service /etc/systemd/system/autovt@tty*.service /etc/systemd/system/getty.target.wants/vtium@tty*.service; do
-    [ -L "$l" ] && [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium@.service ] && printf '%s\n' "$l"
+  local l d=/etc/systemd/system
+  for l in "$d"/autovt@.service "$d"/autovt@tty*.service \
+    "$d"/getty.target.wants/vtium@tty*.service "$d"/getty.target.wants/vtium-seat@tty*.service; do
+    [ -L "$l" ] || continue
+    case $(readlink "$l") in
+    /usr/lib/systemd/system/vtium@.service | /usr/lib/systemd/system/vtium-seat@.service)
+      printf '%s\n' "$l" ;;
+    esac
   done
   return 0
+}
+
+# A note on the VTs from 2 to 5 that vtium holds through the template link
+# /etc/systemd/system/autovt@.service alone, with no link of their own and
+# no unit that wants them at boot, as on a machine claimed before vtium
+# console started vtium at boot on each VT it claims; or nothing. Nothing
+# holds such a VT open until someone switches to it, so a display manager
+# that picks the first free VT can put a desktop session there. logind
+# holds VT 6 open itself. The note names the command that starts vtium at
+# boot on those VTs, in the mode the template link names, and changes
+# nothing. vtium console status names the same VTs.
+_vtium_boot_note() {
+  local d=/etc/systemd/system n w mode list them vts=()
+  case $(readlink "$d/autovt@.service" 2>/dev/null) in
+  /usr/lib/systemd/system/vtium@.service) mode=--direct ;;
+  /usr/lib/systemd/system/vtium-seat@.service) mode=--seat ;;
+  *) return 0 ;;
+  esac
+  for n in 2 3 4 5; do
+    if [ -L "$d/autovt@tty$n.service" ] || [ -e "$d/autovt@tty$n.service" ]; then
+      continue
+    fi
+    for w in "$d"/*.wants/*@"tty$n".service; do
+      if [ -L "$w" ] || [ -e "$w" ]; then
+        continue 2
+      fi
+    done
+    vts+=("$n")
+  done
+  case ${#vts[@]} in
+  0) return 0 ;;
+  1) list="VT ${vts[0]}" ;;
+  2) list="VTs ${vts[0]} and ${vts[1]}" ;;
+  *) list="VTs $(printf '%s, ' "${vts[@]:0:${#vts[@]}-1}")and ${vts[-1]}" ;;
+  esac
+  them=them
+  [ "${#vts[@]}" -gt 1 ] || them=it
+  printf '%s\n' "vtium does not start at boot on $list. It holds $them through the template link autovt@.service alone, as an earlier install of vtium left $them, so nothing holds $them open until you switch to $them, and a display manager can put a desktop session there. The package changed no VT. To start vtium at boot on each VT it holds, run this; vtium console status shows what each VT runs:" |
+    fold -s -w 74 | sed -e 's/ *$//' -e '1s/^/==> /' -e '2,$s/^/    /'
+  printf '%s\n' "      sudo vtium console enable $mode --all"
 }
 
 # The claim of the free VTs, and what it did or why it did nothing.
 _vtium_claim() {
   local said status=0
-  said=$(_vtium_console enable) || status=$?
+  said=$(_vtium_console enable --direct --all) || status=$?
   if [ "$status" = 0 ]; then
-    printf '%s\n' "==> vtium now runs on every free VT. vtium console enable --all said:"
+    printf '%s\n' "==> vtium now holds every free VT in direct mode. vtium console enable"
+    printf '%s\n' "    --direct --all said:"
     [ -z "$said" ] || printf '%s\n' "$said"
     cat <<'EOF'
-    Nothing was started now. Each VT starts vtium from its next start: VT 1
-    at the next boot when no display manager is enabled, and the other VTs
-    the first time you switch to them. vtium console status lists what each
-    VT runs. To take every VT back, or to give vtium one VT, VT 3 here, once
-    the others are back:
+    Nothing was started now. systemd starts vtium at boot on each VT that
+    vtium holds, so the change takes effect at the next boot. To start it
+    on one VT before then, VT 3 here, run this from another VT or over ssh;
+    it ends every session on that VT:
+      sudo systemctl start vtium@tty3.service
+    vtium console status lists what each VT runs. To take every VT back, or
+    to give vtium one VT, VT 3 here, once the others are back:
       sudo vtium console disable --all
-      sudo vtium console enable 3
+      sudo vtium console enable --direct 3
 EOF
   else
-    printf '%s\n' "==> vtium claimed no VT: vtium console enable --all stopped, and said:"
+    printf '%s\n' "==> vtium claimed no VT: vtium console enable --direct --all stopped, and"
+    printf '%s\n' "    said:"
     [ -z "$said" ] || printf '%s\n' "$said"
     cat <<'EOF'
     The package is installed all the same. Once the reason is gone, run this
     to give vtium every free VT:
-      sudo vtium console enable --all
+      sudo vtium console enable --direct --all
 EOF
   fi
   cat <<EOF
-    To share VTs with kmscon, or to move from kmscon to vtium, read:
+    vtium can also run in seat mode, which is your choice. To see which mode
+    fits this machine, run vtium console enable with no mode; it changes
+    nothing. To share VTs with kmscon, or to move from kmscon to vtium, read:
       $_vtium_readme#sharing-vts-with-kmscon
 EOF
 }
@@ -108,16 +165,18 @@ post_install() {
   if [ -n "$links" ]; then
     cat <<'EOF'
 ==> vtium already holds VTs on this machine, through these links, which an
-    earlier install of vtium left. They name vtium@.service, which this
+    earlier install of vtium left. They name vtium's units, which this
     package installs, so those VTs stay vtium's, and this install gives
-    vtium no other VT. You do not need to change anything:
+    vtium no other VT:
 EOF
     # shellcheck disable=SC2086 # one path a word
     printf '      %s\n' $links
     cat <<'EOF'
     vtium console status lists them. sudo vtium console disable --all gives
-    them back, and sudo vtium console enable --all gives vtium every free VT.
+    them back, and sudo vtium console enable --direct --all gives vtium every
+    free VT.
 EOF
+    _vtium_boot_note
   else
     _vtium_claim
   fi
@@ -134,6 +193,8 @@ EOF
   return 0
 }
 
+# An upgrade changes no VT. It names each vtium that still runs the old
+# build, and the VTs that vtium holds but does not start at boot on.
 post_upgrade() {
   cat <<'EOF'
 ==> vtium was upgraded, and no running vtium was restarted: a restart ends
@@ -143,6 +204,7 @@ post_upgrade() {
       sudo systemctl restart vtium@tty3.service
 EOF
   _vtium_still_running
+  _vtium_boot_note
   return 0
 }
 
@@ -150,7 +212,7 @@ EOF
 # each vtium that still runs.
 pre_remove() {
   local said status=0 running
-  said=$(_vtium_console disable) || status=$?
+  said=$(_vtium_console disable --all) || status=$?
   if [ "$status" = 0 ]; then
     printf '%s\n' "==> vtium gave the VTs back. vtium console disable --all said:"
     [ -z "$said" ] || printf '%s\n' "$said"
@@ -171,10 +233,10 @@ pre_remove() {
   printf '%s\n' "    sudo systemctl stop vtium@ttyN.service stops one, which ends every"
   printf '%s\n' "    session on that VT."
   if [ -n "$(_vtium_links)" ]; then
-    printf '%s\n' "    A VT whose link still names vtium@.service then has no console unit;"
-    printf '%s\n' "    pacman lists those links when the removal ends. If pacman removes this"
-    printf '%s\n' "    package to install another vtium console package, that package"
-    printf '%s\n' "    installs vtium@.service again, the links stay valid, and you do not need"
+    printf '%s\n' "    A VT whose link still names one of vtium's units then has no console"
+    printf '%s\n' "    unit; pacman lists those links when the removal ends. If pacman removes"
+    printf '%s\n' "    this package to install another vtium console package, that package"
+    printf '%s\n' "    installs vtium's units again, the links stay valid, and you do not need"
     printf '%s\n' "    to do anything."
   fi
   return 0
@@ -183,7 +245,7 @@ pre_remove() {
 post_remove() {
   # The links that vtium console disable --all could not give back, or that
   # were made by hand, outlive the package and now point at nothing, until
-  # another vtium console package installs vtium@.service again; this names
+  # another vtium console package installs vtium's units again; this names
   # each one and changes nothing. A getty comes back through add-wants,
   # which makes only its getty.target want: systemctl enable
   # getty@ttyN.service would also link autovt@ttyN.service to the getty, and
@@ -204,13 +266,13 @@ post_remove() {
   left+=$getty
   [ -n "$left" ] || return 0
   printf '%s\n' "==> If pacman removed this package to install another vtium console package,"
-  printf '%s\n' "    such as vtium-minspec in place of vtium, that package installs"
-  printf '%s\n' "    vtium@.service again, the links below stay valid, and you do not need to"
-  printf '%s\n' "    do anything. Otherwise vtium is removed, but these links to"
-  printf '%s\n' "    vtium@.service are left and point at nothing, so logind would start"
-  printf '%s\n' "    nothing on those VTs. Remove each, and enable its VT's getty at boot"
-  printf '%s\n' "    again. Where kmscon served a VT, skip that VT's add-wants line and link"
-  printf '%s\n' "    the VT to kmscon instead, as shown below:"
+  printf '%s\n' "    such as vtium-minspec in place of vtium, that package installs vtium's"
+  printf '%s\n' "    units again, the links below stay valid, and you do not need to do"
+  printf '%s\n' "    anything. Otherwise vtium is removed, but these links to vtium's units,"
+  printf '%s\n' "    vtium@.service and vtium-seat@.service, are left and point at nothing,"
+  printf '%s\n' "    so logind would start nothing on those VTs. Remove each, and enable its"
+  printf '%s\n' "    VT's getty at boot again. Where kmscon served a VT, skip that VT's"
+  printf '%s\n' "    add-wants line and link the VT to kmscon instead, as shown below:"
   printf '%s' "$left"
   printf '%s\n' "    The kmscon link, for a VT that kmscon served:"
   printf '%s\n' "      sudo ln -s /usr/lib/systemd/system/kmsconvt@.service \\"
