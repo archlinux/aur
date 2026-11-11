@@ -1,12 +1,12 @@
 # Maintainer: René Preuß <hello@ghostzero.de>
 pkgname=gleem-crossfade
 _pkgsrc=crossfade
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Dual-mix virtual audio mixer for PipeWire"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gleem-gg/crossfade"
-license=('MIT')
+license=('Apache-2.0')
 depends=('gtk4' 'libadwaita' 'libpulse' 'alsa-lib' 'pipewire-pulse' 'hicolor-icon-theme')
 makedepends=('cargo')
 checkdepends=('desktop-file-utils')
@@ -18,7 +18,7 @@ provides=('openwave-mixer')
 conflicts=('openwave-mixer')
 replaces=('openwave-mixer')
 source=("$_pkgsrc-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d50329b171e11d9fe3378e6d4f8c5b75cdd03f718a952fce06046315216257e')
+sha256sums=('778832ffbe6a4d2ac36798c96af70837a8f46ca9b7dd4c030d814aa040cb7c37')
 
 prepare() {
   cd "$_pkgsrc-$pkgver"
