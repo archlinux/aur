@@ -1,6 +1,6 @@
 pkgbase = mujoco
 	pkgdesc = Multi-Joint dynamics with Contact. A general purpose physics simulator.
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://www.mujoco.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mujoco
 	makedepends = mold
 	depends = libgcc_s.so
 	depends = libstdc++.so
-	source = mujoco::git+https://github.com/deepmind/mujoco.git#tag=4.0.0
-	sha256sums = 75946f4a7cf1aefd196f8ffdae440341eabdd6b61eb8e0f71beafda468181823
+	source = mujoco::git+https://github.com/deepmind/mujoco.git#tag=4.0.1
+	sha256sums = 9e0e68f9f0acd4783d6ef0d539b00b6f11e50a57a858306c708747800177274a
 
 pkgname = mujoco
