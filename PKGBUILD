@@ -1,7 +1,7 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=agentsight
 pkgver=1.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="eBPF-based observability for AI agent sessions, prompts, process trees, files, network activity, and token usage"
 arch=('x86_64')
 url="https://github.com/eunomia-bpf/agentsight"
@@ -10,7 +10,7 @@ depends=('glibc' 'zstd' 'sqlite3')
 makedepends=('cargo')
 # rust-lld, the default linker since rustc 1.90, cannot read the GCC LTO
 # objects the `lto` makepkg option injects into CFLAGS, which breaks ring.
-options=('!lto')
+options=('!lto' '!debug')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/eunomia-bpf/agentsight/archive/refs/tags/v${pkgver}.tar.gz"
     'system-libsqlite3.patch'
