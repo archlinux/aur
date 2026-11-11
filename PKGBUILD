@@ -1,6 +1,6 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=velocity-speedtest
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A simple speedtest app"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("velocity-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db70356db2e45090d3f2802312af679b186c45bc733efb5982a18892c18bade0')
+sha256sums=('07cd1bd2901bfa66ba3ad6308e52c1f19b6d6242da03fe051764ef322e40323b')
 
 build() {
   cd "velocity-${pkgver}"
