@@ -4,8 +4,8 @@
 # (repository is being renamed to claude-desktop-extra; the old URL redirects)
 
 pkgname=claude-desktop-extra
-pkgver=4.23118.1
-pkgrel=6
+pkgver=5.1231.2
+pkgrel=1
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -58,10 +58,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.23118.1-6/claude-desktop-4.23118.1-linux.tar.gz")
-sha256sums_x86_64=('d8dd8d3c304be66c77b67e4a82ebfe3757e58e6c5f8a90b1100f91ff4ebfd986')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v4.23118.1-6/claude-desktop-4.23118.1-linux-aarch64.tar.gz")
-sha256sums_aarch64=('dc965b9384fc47e4819adabf925ef4e5babf7b5902b2586f7d2eeaf0a2fb960f')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v5.1231.2/claude-desktop-5.1231.2-linux.tar.gz")
+sha256sums_x86_64=('a4e9784fb35ac829dbf34c264a9f83934d6f52497d1f6fdc93267177d58f36fb')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v5.1231.2/claude-desktop-5.1231.2-linux-aarch64.tar.gz")
+sha256sums_aarch64=('7da02a1869b5fa0352220c5e493d23c66a9a79c1e2c2b2c887417f2f5ecce3fe')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -122,7 +122,7 @@ package() {
 Name=Claude
 Comment=Desktop application for Claude.ai
 GenericName=AI Assistant
-Keywords=AI;Chat;Assistant;Claude;Code;LLM;
+Keywords=AI;Chat;Assistant;Code;LLM;
 Exec=claude-desktop %U
 Icon=claude-desktop
 Type=Application
