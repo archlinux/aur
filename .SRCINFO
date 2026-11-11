@@ -1,13 +1,13 @@
 pkgbase = openspec
 	pkgdesc = AI-native system for spec-driven development
-	pkgver = 1.17.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Fission-AI/OpenSpec
 	arch = any
 	license = MIT
 	makedepends = pnpm
 	depends = nodejs
-	source = openspec-1.17.0.tar.gz::https://github.com/Fission-AI/OpenSpec/archive/v1.17.0.tar.gz
-	sha256sums = 2a4e49e709905ec6bacf8df2ea100a6ee819008d093d591780607c3c1003f871
+	source = openspec-2.0.0.tar.gz::https://github.com/Fission-AI/OpenSpec/archive/v2.0.0.tar.gz
+	sha256sums = 7d8b15d1bea7ddb1a09dc6d026eec0bd257e666e0a5922b308179178f007ee55
 
 pkgname = openspec
