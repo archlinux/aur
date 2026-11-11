@@ -18,7 +18,7 @@
 # So `yay -Syu` picks up a new Notion release without a PKGBUILD edit.
 
 pkgname=notion-app-electron-bin
-pkgver=7.42.3  # fallback; overridden by pkgver()
+pkgver=7.43.0  # fallback; overridden by pkgver()
 pkgrel=1
 pkgdesc="Your connected workspace for wiki, docs & projects (official app, repacked)"
 arch=(x86_64)

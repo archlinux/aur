@@ -1,6 +1,6 @@
 pkgbase = notion-app-electron-bin
 	pkgdesc = Your connected workspace for wiki, docs & projects (official app, repacked)
-	pkgver = 7.42.3
+	pkgver = 7.43.0
 	pkgrel = 1
 	url = https://www.notion.so/desktop
 	install = notion-app-electron-bin.install
@@ -20,7 +20,7 @@ pkgbase = notion-app-electron-bin
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libpipewire
-	provides = notion-app-electron=7.42.3
+	provides = notion-app-electron=7.43.0
 	conflicts = notion-app-electron
 	options = !emptydirs
 	options = !strip
