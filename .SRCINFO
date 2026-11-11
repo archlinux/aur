@@ -1,0 +1,22 @@
+pkgbase = tcb
+	pkgdesc = Alternative password shadowing scheme
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://www.openwall.com/tcb/
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	license = GPL-1.0-or-later
+	makedepends = libxcrypt
+	makedepends = pam
+	depends = glibc
+	depends = libcrypt.so
+	depends = libpam.so
+	options = staticlibs
+	source = tcb-1.2-src.tar.gz::https://www.openwall.com/tcb/tcb-1.2.tar.gz
+	source = tcb-1.2-src.tar.gz.sign::https://www.openwall.com/tcb/tcb-1.2.tar.gz.sign
+	validpgpkeys = 297AD21CF86C948081520C1805C027FD4BDC136E
+	sha256sums = 53b1a17cb85afd273136e5a6f49f0202af80a4e2c54383bc409c96444a250bd4
+	sha256sums = SKIP
+
+pkgname = tcb
