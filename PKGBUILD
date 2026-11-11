@@ -1,6 +1,6 @@
 pkgname=zaptide-git
-pkgver=0.8.0.r410.geb45336
-pkgrel=2
+pkgver=0.8.0.r450.gba4312e
+pkgrel=1
 pkgdesc="Native WhatsApp client built with GTK4 and libadwaita (Git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/luminusOS/zaptide"

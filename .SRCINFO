@@ -1,7 +1,7 @@
 pkgbase = zaptide-git
 	pkgdesc = Native WhatsApp client built with GTK4 and libadwaita (Git version)
-	pkgver = 0.8.0.r410.geb45336
-	pkgrel = 2
+	pkgver = 0.8.0.r450.gba4312e
+	pkgrel = 1
 	url = https://github.com/luminusOS/zaptide
 	arch = x86_64
 	arch = aarch64
@@ -33,7 +33,7 @@ pkgbase = zaptide-git
 	optdepends = gst-libav: additional video codecs
 	optdepends = org.freedesktop.secrets: store the archive encryption key
 	optdepends = xdg-desktop-portal: desktop integration and attachment selection
-	provides = zaptide=0.8.0.r410.geb45336
+	provides = zaptide=0.8.0.r450.gba4312e
 	conflicts = zaptide
 	conflicts = zaptide-bin
 	options = !debug
