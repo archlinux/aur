@@ -1,12 +1,12 @@
 # Maintainer: Zachary Kessler <zacksynack@gmail.com>
 pkgname=doubletap-git
-pkgver=r26.1ea0f71
+pkgver=r79.e5cc7ed
 pkgrel=1
 pkgdesc="SOCD-cleaning keyboard input daemon for rhythm games (osu!)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zakack/doubletap"
 license=('MIT')
-depends=('libevdev' 'libyaml' 'libpipewire')
+depends=('libevdev' 'libyaml' 'libpipewire' 'libsndfile' 'libsamplerate')
 makedepends=('git' 'cmake' 'pkgconf')
 optdepends=('realtime-privileges: SCHED_FIFO realtime scheduling for the daemon'
             'pipewire: click sound playback')

@@ -1,6 +1,6 @@
 pkgbase = doubletap-git
 	pkgdesc = SOCD-cleaning keyboard input daemon for rhythm games (osu!)
-	pkgver = r26.1ea0f71
+	pkgver = r79.e5cc7ed
 	pkgrel = 1
 	url = https://github.com/zakack/doubletap
 	install = doubletap.install
@@ -13,6 +13,8 @@ pkgbase = doubletap-git
 	depends = libevdev
 	depends = libyaml
 	depends = libpipewire
+	depends = libsndfile
+	depends = libsamplerate
 	optdepends = realtime-privileges: SCHED_FIFO realtime scheduling for the daemon
 	optdepends = pipewire: click sound playback
 	provides = doubletap
