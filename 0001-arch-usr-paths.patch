@@ -1,6 +1,6 @@
 diff -Naur a/boot/tscsync-report.service.in b/boot/tscsync-report.service.in
---- a/boot/tscsync-report.service.in	2026-11-08 20:57:02.000000000 +0100
-+++ b/boot/tscsync-report.service.in	2026-11-08 21:02:40.680576956 +0100
+--- a/boot/tscsync-report.service.in	2026-11-10 11:24:09.133962955 +0100
++++ b/boot/tscsync-report.service.in	2026-11-11 20:53:41.864135685 +0100
 @@ -11,7 +11,7 @@
  
  [Service]
@@ -11,8 +11,8 @@ diff -Naur a/boot/tscsync-report.service.in b/boot/tscsync-report.service.in
  [Install]
  WantedBy=multi-user.target system-update.target
 diff -Naur a/scripts/install.sh b/scripts/install.sh
---- a/scripts/install.sh	2026-11-08 20:57:02.000000000 +0100
-+++ b/scripts/install.sh	2026-11-08 21:02:40.680429909 +0100
+--- a/scripts/install.sh	2026-11-11 20:53:29.138436419 +0100
++++ b/scripts/install.sh	2026-11-11 20:53:41.863967115 +0100
 @@ -4,7 +4,7 @@
  # Reinstalling (for example after git pull) keeps the current mode, measure or
  # sync with its options, unless tscsync was off; then it starts in measure.
@@ -32,9 +32,9 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  #                  <grub-dir>/custom.cfg           sourced by grub.cfg (41_custom)
  #                  grubenv: tscsync_enable=1 tscsync_mode=mode=measure tscsync_pending=0
 @@ -24,19 +24,20 @@
- #                  <ESP>/EFI/tscsync/options       "mode=measure"
+ #                  <ESP>/EFI/tscsync/options       "mode=measure" (+ optional display tokens)
  #   rEFInd:        <refind-dir>/drivers_x64/tscsyncx64.efi
- #                  <ESP>/EFI/tscsync/options       "mode=measure exit=success"
+ #                  <ESP>/EFI/tscsync/options       "mode=measure exit=success" (+ optional display tokens)
 -#   all:          /usr/local/libexec/tscsync-report     clears the hang guard after boot
 -#                  /usr/local/bin/tscsync-status         status command
 -#                  /etc/systemd/system/tscsync-report.service
@@ -57,7 +57,7 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  note() { echo "== $*"; }
  
  KEY= CERT= NOSIGN=0 ESP= GRUB_DIR= REFIND_DIR= LOADER= CUSTOM= RESET=0
-@@ -94,7 +95,9 @@
+@@ -98,7 +99,9 @@
  EFIVARS=${TSCSYNC_EFIVARS:-/sys/firmware/efi/efivars}	# override only for tests
  GV=8be4df61-93ca-11d2-aa0d-00e098032b8c	# EFI global variable GUID
  # shellcheck source=install-policy.inc.sh
@@ -68,7 +68,7 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  # Evidence (BootCurrent / LoaderInfo) first, then grub.cfg, then a rEFInd
  # install on the ESP (see install-policy.inc.sh).
  tscsync_detect_loader
-@@ -103,12 +106,12 @@
+@@ -107,12 +110,12 @@
  *) die "--loader must be grub, systemd-boot or refind" ;;
  esac
  [ -n "${OLD_LOADER:-}" ] && [ "$OLD_LOADER" != "$LOADER" ] &&
@@ -85,7 +85,7 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  if strings -el "$EFI_BIN" | grep -q 'TEST BUILD'; then
  	die "$EFI_BIN is the VM test build; rebuild with: make clean all"
  fi
-@@ -259,12 +262,12 @@
+@@ -263,12 +266,12 @@
  	[ -e "$GRUBENV" ] || "$EDITENV" "$GRUBENV" create
  	install -d "$ESP/EFI/tscsync"
  	install -m 0644 "$tmp/tscsync.efi" "$ESP/EFI/tscsync/tscsync.efi"
@@ -100,7 +100,7 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  LOADER=grub
  GRUB_DIR=$GRUB_DIR
  GRUBENV=$GRUBENV
-@@ -284,7 +287,7 @@
+@@ -288,7 +291,7 @@
  	printf '%s%s\n' "$MODE" "$EXIT_TOK" >"$STATE_DIR/options"
  	install -m 0644 "$tmp/tscsync.efi" "$DRIVER"
  	cat >"$tmp/tscsync.conf" <<EOF
@@ -109,7 +109,7 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  LOADER=$LOADER
  ESP=$ESP
  ESP_UUID=$ESP_UUID
-@@ -293,8 +296,6 @@
+@@ -297,8 +300,6 @@
  EOF
  fi
  install -m 0644 "$tmp/tscsync.conf" /etc/tscsync.conf
@@ -118,7 +118,7 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  # Hang guard lives on grubenv (GRUB) or EFI/tscsync on the ESP (drivers).
  # Hardcoding /boot breaks installs whose ESP is /boot/efi or /efi.
  if [ "$LOADER" = grub ]; then
-@@ -303,10 +304,9 @@
+@@ -307,10 +308,9 @@
  	REQUIRES_MOUNTS=$(findmnt -no TARGET -T "$STATE_DIR")
  fi
  [ -n "$REQUIRES_MOUNTS" ] || die "cannot find the mount point for the hang guard"
@@ -130,7 +130,7 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
  	/etc/systemd/system/tscsync-report.service 2>/dev/null || true
  systemctl daemon-reload
  systemctl reenable tscsync-report.service
-@@ -335,5 +335,5 @@
+@@ -339,5 +339,5 @@
  Next:
    1. Shut down fully, then power on.
    2. Run: tscsync-status
@@ -138,10 +138,10 @@ diff -Naur a/scripts/install.sh b/scripts/install.sh
 +  3. If it shows APs out of sync, switch to sync: sudo tscsync-set-mode sync
  EOF
 diff -Naur a/scripts/set-mode.sh b/scripts/set-mode.sh
---- a/scripts/set-mode.sh	2026-11-08 20:57:02.000000000 +0100
-+++ b/scripts/set-mode.sh	2026-11-08 21:02:40.680494571 +0100
-@@ -9,7 +9,7 @@
- set -euo pipefail
+--- a/scripts/set-mode.sh	2026-11-11 20:53:29.138436419 +0100
++++ b/scripts/set-mode.sh	2026-11-11 20:53:41.864039252 +0100
+@@ -27,7 +27,7 @@
+ }
  
  [ "$(id -u)" = 0 ] || { echo "run with sudo" >&2; exit 1; }
 -[ -r /etc/tscsync.conf ] || { echo "tscsync is not installed (run scripts/install.sh)" >&2; exit 1; }
@@ -150,8 +150,8 @@ diff -Naur a/scripts/set-mode.sh b/scripts/set-mode.sh
  . /etc/tscsync.conf
  
 diff -Naur a/scripts/uninstall.sh b/scripts/uninstall.sh
---- a/scripts/uninstall.sh	2026-11-08 20:57:02.000000000 +0100
-+++ b/scripts/uninstall.sh	2026-11-08 21:02:40.680538634 +0100
+--- a/scripts/uninstall.sh	2026-11-10 11:24:09.135538268 +0100
++++ b/scripts/uninstall.sh	2026-11-11 20:53:41.864095839 +0100
 @@ -1,10 +1,11 @@
  #!/usr/bin/bash
  # SPDX-License-Identifier: MIT
