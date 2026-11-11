@@ -11,7 +11,7 @@ options=(!strip)
 _appimage="FreeLLMAPI-${pkgver}.AppImage"
 
 source=("FreeLLMAPI-${pkgver}.AppImage::https://github.com/tashfeenahmed/freellmapi/releases/download/v${pkgver}/FreeLLMAPI-${pkgver}.AppImage")
-sha256sums=('fb76f88cc88b51c33e66c074520459ba2a1bbbd6ef87797715c4a9ccb57d998a')
+sha256sums=('1c619340a3b45d907f9858dc444081f6e1bf9cd204b108a98b741b85db481bf5')
 prepare() {
   cd "${srcdir}"
   chmod +x "${_appimage}"
