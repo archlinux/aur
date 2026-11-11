@@ -1,0 +1,17 @@
+pkgbase = leboiko-markdown-reader
+	pkgdesc = Terminal Markdown reader with Mermaid and LaTeX rendering
+	pkgver = 1.35.4
+	pkgrel = 1
+	url = https://github.com/leboiko/markdown-reader
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = git+https://github.com/leboiko/markdown-reader.git#tag=v1.35.4
+	sha256sums = SKIP
+
+pkgname = leboiko-markdown-reader
