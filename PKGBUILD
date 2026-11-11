@@ -1,7 +1,7 @@
 # Maintainer: The_Seventh <gustavo.gianeli13@gmail.com>
 pkgname=post-install-arch-full
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Advanced Arch Linux post-installation automation, intelligent multimedia codecs detection, and system setup."
 arch=('any')
 url="https://github.com/GustavoGianeli/post-install-arch-full"
@@ -21,7 +21,7 @@ source=(
 
 # Use 'updpkgsums' para preencher isso automaticamente // Use 'updpkgsums' to automatically fill this in.
 
-sha256sums=('ea440c906483b44970db0f494eff68e6c1584f0e3f4227f28bfcb498fed1df3d'
+sha256sums=('79039f52c5cdb835cc9c5c57f898fff693de97a6f7e26410ab716bc7908f2b04'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '564e03dd6a591134a2c748fc8d47efc1bbd2022ffdcdea8e5c7f322de56e78b6'
             '8529b988d4e3e6ef611ad5ef2124fafa2cbe416b78698c9596845d5471d93651')

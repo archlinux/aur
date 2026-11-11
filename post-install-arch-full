@@ -250,21 +250,21 @@ CHAMAR_MENU_OPCOES() {
             "${CYAN_NEON}1) - Script Principiante / Estándar:${NC}\n   Instala todo lo que tu arch necesita por defecto para que puedas usarlo\n   (como códecs multimedia, lectura de archivos, optimización de hardware).\n"
         
         echo ""
-        sleep 0.3    
+        sleep 0.1    
       
         msg "${CYAN_NEON}2) - Para Avançados/Intermediários:${NC}\n   Chama blocos para você escolher o que quer instalar dentro da lista disponível.\n" \
             "${CYAN_NEON}2) - For Advanced/Intermediate:${NC}\n   Calls blocks for you to choose what to install from the available list.\n" \
             "${CYAN_NEON}2) - Para Avanzados/Intermedios:${NC}\n   Llama bloques para que elijas qué instalar dentro de la lista disponible.\n"
         
         echo ""
-        sleep 0.3    
+        sleep 0.1    
       
         msg "${CYAN_NEON}3) - Opções Pré-definidas:${NC}\n    Escolha uma opção pré-definida para deixar seu Arch pronto para um propósito:\n\n   ${YELLOW_NEON}GAME${NC}   : Deixa seu Arch pronto para jogos com instalação de pacotes e bibliotecas próprias para jogar.\n\n   ${YELLOW_NEON}DEV${NC}    : Baixa e deixa pronto seu Arch para programação, instalando as principais\n            linguagens, compiladores e VMs.\n\n   ${RED_NEON}HACKER${NC} : (Opção instável) Habilita os repositórios do BlackArch e baixa as\n            principais ferramentas, deixando seu Arch pronto para pentest.\n" \
             "${CYAN_NEON}3) - Pre-defined Options:${NC}\n    Choose a pre-defined option to ready your Arch for a specific purpose:\n\n   ${YELLOW_NEON}GAME${NC}   : Gets your Arch ready for gaming by installing specific packages and libraries for games. .\n\n   ${YELLOW_NEON}DEV${NC}    : Readies your Arch for programming by downloading the main languages,\n            compilers, and VMs.\n\n   ${RED_NEON}HACKER${NC} : (Unstable option) Enables BlackArch repos and downloads the main\n            tools, leaving your Arch ready for pentesting.\n" \
             "${CYAN_NEON}3) - Opciones Predefinidas:${NC}\n    Elija una opción predefinida para preparar su Arch para un propósito:\n\n   ${YELLOW_NEON}GAME${NC}   : Prepara tu Arch para juegos instalando paquetes y librerías propias for game.\n\n   ${YELLOW_NEON}DEV${NC}    : Prepara tu Arch para programación descargando los lenguajes principales,\n            compiladores y VMs.\n\n   ${RED_NEON}HACKER${NC} : (Opción inestable) Habilita los repositorios de BlackArch y descarga\n            las herramientas principales, dejándolo listo para pentest.\n"
         
         echo ""
-        sleep 0.3
+        sleep 0.1
      
         msg "${RED_NEON}4) - Sair do script${NC}" \
             "${RED_NEON}4) - Exit script${NC}" \
@@ -7217,7 +7217,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
     ${RED_NEON}3) Modo Pré-definido: Hacker/Pentest ${NC} 
     Prepara o sistema para testes de invasão, habilita o repositório do BlackArch e instala as principais ferramentas.
 
-    ${CYAN_NEON}4) Voltar ao menu principal${NC}" \
+    ${YELLOW_NEON}4) Sair do programa ou Voltar ao menu principal${NC}" \
         "${CYAN_NEON}1) Preset Mode: Gamer ${NC} 
     Installs all necessary packages to get your Arch ready for gaming via Steam, Lutris, and Heroic.
 
@@ -7227,7 +7227,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
     ${RED_NEON}3) Preset Mode: Hacker/Pentest ${NC} 
     Prepares the system for penetration testing, enables BlackArch repositories, and installs top tools.
 
-    ${CYAN_NEON}4) Return to main menu${NC}" \
+    ${YELLOW_NEON}4) Exit program or Return to main menu${NC}" \
         "${CYAN_NEON}1) Modo Predefinido: Gamer ${NC} 
     Instala todos los paquetes necesarios para dejar tu Arch listo para jugar vía Steam, Lutris y Heroic.
 
@@ -7237,7 +7237,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
     ${RED_NEON}3) Modo Predefinido: Hacker/Pentest ${NC} 
     Prepara el sistema para pentesting, habilita los repositorios de BlackArch e instala las herramientas principales.
 
-    ${CYAN_NEON}4) Volver al menú principal${NC}"
+    ${YELLOW_NEON}4) Salir del programa o Volver al menú principal${NC}"
     echo ""
     msg "\nEscolha uma opção [1-2-3-4]:" \
         "\nChoose an option [1-2-3-4]:" \
