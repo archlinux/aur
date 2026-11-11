@@ -13,9 +13,9 @@ makedepends=(
   'clang'
   'cmake'
   'git'
-  'maturin'
   'python-build'
   'python-installer'
+  'python-maturin'
 )
 options=('!lto')
 source=("https://files.pythonhosted.org/packages/source/w/wreq/wreq-${pkgver}.tar.gz")
