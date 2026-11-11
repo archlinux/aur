@@ -1,7 +1,7 @@
 pkgbase = libtcod
 	pkgdesc = Roguelike graphics/utility library
-	pkgver = 2.2.2
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://github.com/libtcod/libtcod
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -10,12 +10,13 @@ pkgbase = libtcod
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = libutf8proc
 	depends = sdl3
 	depends = zlib
 	provides = libtcod.so
-	source = https://github.com/libtcod/libtcod/archive/refs/tags/2.2.2.tar.gz
-	source = 001-config-include-dir.patch
-	sha256sums = 69f30fe65df1c84049a8f4f4b1ea0894191221da3a671be61832e33e75df898e
-	sha256sums = ec893e291545269fee8da5920d97a5e05946d9291c774b052cfc948791e04240
+	source = https://github.com/libtcod/libtcod/archive/refs/tags/2.3.1.tar.gz
+	source = 001-system-utf8proc.patch
+	sha256sums = dbde843dfdc117bc77a35f6f7321b2aca95196702f468c40286b27996e900ac7
+	sha256sums = 119ed5d079a66f3990651ae118f46c2807cff9cee15e0b226f8274c8411aa37a
 
 pkgname = libtcod

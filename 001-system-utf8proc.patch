@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -154,8 +154,17 @@
+     add_subdirectory("src/vendor/utf8proc")
+     target_link_libraries(${PROJECT_NAME} PRIVATE utf8proc::utf8proc)
+ elseif(LIBTCOD_UTF8PROC)
+-    FetchContent_MakeAvailable(utf8proc)
+-    target_link_libraries(${PROJECT_NAME} PRIVATE utf8proc::utf8proc)
++    # utf8proc's Makefile build installs only a pkg-config file, no CMake config
++    find_package(PkgConfig QUIET)
++    if(PKG_CONFIG_FOUND)
++        pkg_check_modules(libutf8proc QUIET IMPORTED_TARGET libutf8proc)
++    endif()
++    if(TARGET PkgConfig::libutf8proc)
++        target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::libutf8proc)
++    else()
++        FetchContent_MakeAvailable(utf8proc)
++        target_link_libraries(${PROJECT_NAME} PRIVATE utf8proc::utf8proc)
++    endif()
+ else()
+     target_compile_definitions(${PROJECT_NAME} PUBLIC TCOD_NO_UNICODE)
+ endif()
