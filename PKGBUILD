@@ -1,7 +1,7 @@
 # Maintainer: illusory <becomeillusory@gmail.com>
 
 pkgname=honk-bin
-pkgver=0.1.0beta.3
+pkgver=0.1.0beta.6
 pkgrel=1
 pkgdesc='Experimental Linux eBPF transparent proxy engine (prebuilt musl static full build)'
 arch=('x86_64' 'aarch64')
@@ -24,11 +24,11 @@ backup=('etc/honk/config.dae')
 install="${pkgname}.install"
 options=('!strip' '!debug')
 
-_upver='0.1.0-beta.3'
+_upver='0.1.0-beta.6'
 # Literal directory names keep .SRCINFO architecture-correct regardless of which
 # host generated it (${CARCH} inside source= would resolve at build time only).
-_dir_x86_64="honk-core-v${_upver}-x86_64-unknown-linux-musl-full"
-_dir_aarch64="honk-core-v${_upver}-aarch64-unknown-linux-musl-full"
+_dir_x86_64="honk-core-v0.1.0-beta.6-x86_64-unknown-linux-musl-full"
+_dir_aarch64="honk-core-v0.1.0-beta.6-aarch64-unknown-linux-musl-full"
 
 # Release assets cannot go through jsDelivr/Fastly: those CDNs only serve files
 # committed inside a repository, so the tarball path returns 404 there (verified
@@ -68,8 +68,8 @@ sha256sums=('ce16fa1bb208e289fc456945c8eee56df7590e5d2abbffdf405fdee9ed664398'
             '95ef7759d5883f4b0ed43815eed6d1248ab636baad7b46470e0e5abacca5453a'
             'cba5c54fdc2ad776e8df3ac6094af3b6010554508925172b6e240a645630be13'
             '50d1ddbcc901d4e477f5e67ea2092ba364667dea24588929fbf9b2583035679b')
-sha256sums_x86_64=('101b1f9bed80eff0a9287fbb7a6d9b933f30e8d9b511fad738d48c501cb8e55c')
-sha256sums_aarch64=('9b782c6fcf2594a78aeac309371ec8026dcf3d460e457559e992d6bd91431c50')
+sha256sums_x86_64=('2783b8f0856fc1aecd1cd1d911d9a904c593cd507cf61e5fa24fbd7075317244')
+sha256sums_aarch64=('5e4c0359950e0f19fac53e31ef9ffbe9f0aafca92331c3fa81e5b56212950a6e')
 
 prepare() {
   # Upstream's example still points at the pre-0.1 legacy data root and at an
