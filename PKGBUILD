@@ -2,7 +2,7 @@
 pkgname=bluepill
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="BluePill — Native Linux Qt6/QML desktop & CLI client for iMessage, RCS, and SMS (with macOS chat.db relay & BlueBubbles support)"
+pkgdesc="BluePill — Native Linux/Wayland Qt6/QML desktop & CLI client for iMessage, RCS, and SMS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nertwork/bluepill"
 license=('MIT')
@@ -10,7 +10,7 @@ provides=('imsg')
 replaces=('imsg')
 conflicts=('imsg')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'libnotify')
-makedepends=('qt6-base' 'qt6-declarative')
+makedepends=('qt6-base' 'qt6-declarative' 'git')
 checkdepends=('libheif' 'imagemagick')
 optdepends=(
     'libheif: Fast HEIC/HEIF photo attachment decoding'
@@ -19,20 +19,21 @@ optdepends=(
     'pipewire-pulse: Notification sound playback (paplay)'
 )
 options=('!debug')
-source=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nertwork/bluepill/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('443821dea7e723e79f31ecd903e0f50828640c922dbc991d4c25f99c6bf42d66')
 
 build() {
-    cd "$startdir/.."
+    cd "$srcdir/bluepill-${pkgver}"
     ./bin/build
 }
 
 check() {
-    cd "$startdir/.."
+    cd "$srcdir/bluepill-${pkgver}"
     QT_QPA_PLATFORM=offscreen ./bin/test
 }
 
 package() {
-    cd "$startdir/.."
+    cd "$srcdir/bluepill-${pkgver}"
     install -Dm755 build/bluepill "$pkgdir/usr/bin/bluepill"
     ln -sf bluepill "$pkgdir/usr/bin/imsg"
     install -Dm644 pkgbuild/bluepill.service "$pkgdir/usr/lib/systemd/user/bluepill.service"
