@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=kuna-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.995 # renovate: datasource=github-releases depName=Noelo-Lab/kuna
+pkgver=1.996 # renovate: datasource=github-releases depName=Noelo-Lab/kuna
 pkgrel=1
 pkgdesc="Agent-first decompiler, ported from Ghidra to Rust, designed to be refined by other agents"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ _dl="${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}"
 source=("${_dl}-specs.tar.gz")
 source_x86_64=("${_dl}-linux-x86_64.tar.gz")
 source_aarch64=("${_dl}-linux-arm64.tar.gz")
-sha256sums=('19bd23cf08ecbfd115f016cd3f6417483599890ddc0c4ed1db30ff1d40255454')
-sha256sums_x86_64=('f506d8fcdfb3c9952f94dfd44d7b5d928cf966f4fb55f80a30ec708cabb8d075')
-sha256sums_aarch64=('e4c071192ecb477a2135ed681c59ef14e335bca8aaa790619bcf1bdae18ab7e1')
+sha256sums=('12ff4163100e0d2f979bf0c882b0de4cc1966e57ca2d1f5d9803edb3079a5142')
+sha256sums_x86_64=('3e612d42676d282e206f9adee8c74aff81c19832e766b8f85001919bdd5985b9')
+sha256sums_aarch64=('e020e7986b6a07bdb13d038d7ac0cf6b7117e67614a94fd6998ebaa60f471b35')
 
 package() {
   local _dist="${srcdir}/${_pkgname}-v${pkgver}-linux-${CARCH/aarch64/arm64}"
