@@ -1,3 +1,13 @@
+post_upgrade() {
+	# $2: previously installed version
+	if (( $(vercmp "$2" 11.0) < 0 )); then
+		echo ":: rsbackup 11.0 changes the database format."
+		echo "   The database (default: /var/log/backup/backups.db) is upgraded"
+		echo "   automatically on first write access. Downgrading to 10.x afterwards"
+		echo "   is unsupported - make a copy of the database before the next run."
+	fi
+}
+
 pre_remove() {
 	# Clean up empty tmpfiles.d files and folders
 	[ -s /etc/rsbackup/local ] || rm -f /etc/rsbackup/local

@@ -1,0 +1,73 @@
+diff -ru a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -48,7 +48,7 @@
+     PKG_CHECK_MODULES([SQLITE3],[sqlite3])
+     ;;
+ esac
+-boost="-lboost_filesystem"
++boost=""
+ AC_SUBST([BOOST_LIBS],[${boost}])
+ AC_CHECK_LIB([pthread],[pthread_create])
+ AC_CHECK_LIB([iconv],[iconv_open])
+diff -ru a/src/Conf.cc b/src/Conf.cc
+--- a/src/Conf.cc
++++ b/src/Conf.cc
+@@ -16,7 +16,8 @@
+ #include <cerrno>
+ #include <regex>
+ #include <sstream>
+-#include <boost/filesystem.hpp>
++#include <filesystem>
++#include <unistd.h>
+ #include <algorithm>
+ #include "rsbackup.h"
+ #include "Location.h"
+@@ -344,7 +345,7 @@
+ // tries to read it.
+ void Conf::includeFile(const std::string &path) {
+   D("Conf::includeFile %s", path.c_str());
+-  if(boost::filesystem::is_directory(path)) {
++  if(std::filesystem::is_directory(path)) {
+     std::vector<std::string> files;
+     Directory::getFiles(path, files);
+     for(auto &name: files) {
+@@ -352,7 +353,7 @@
+          || name.find('~') != std::string::npos)
+         continue;
+       std::string fullname = path + PATH_SEP + name;
+-      if(boost::filesystem::is_regular_file(fullname))
++      if(std::filesystem::is_regular_file(fullname))
+         readOneFile(fullname);
+     }
+   } else
+diff -ru a/src/MakeBackup.cc b/src/MakeBackup.cc
+--- a/src/MakeBackup.cc
++++ b/src/MakeBackup.cc
+@@ -21,7 +21,7 @@
+ #include <fcntl.h>
+ #include <fnmatch.h>
+ #include <boost/range/adaptor/reversed.hpp>
+-#include <boost/filesystem.hpp>
++#include <filesystem>
+ #include <sysexits.h>
+ #include <thread>
+ #include <condition_variable>
+@@ -218,7 +218,7 @@
+   void go(EventLoop *, ActionList *al) override {
+     try {
+       mb->what = "creating volume directory";
+-      boost::filesystem::create_directories(mb->volumePath);
++      std::filesystem::create_directories(mb->volumePath);
+       // Create the .incomplete flag file
+       mb->what = "creating .incomplete file";
+       IO ifile;
+@@ -226,7 +226,7 @@
+       ifile.close();
+       // Create backup directory
+       mb->what = "creating backup directory";
+-      boost::filesystem::create_directories(mb->backupPath);
++      std::filesystem::create_directories(mb->backupPath);
+     } catch(std::runtime_error &e) {
+       // TODO refactor
+       mb->log += "ERROR: ";

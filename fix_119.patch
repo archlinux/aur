@@ -1,0 +1,263 @@
+From 29b12c8d9f6b7acaf36b5071279284e6e8eff5b0 Mon Sep 17 00:00:00 2001
+From: bbx0 <39773919+bbx0@users.noreply.github.com>
+Date: Mon, 21 Apr 2025 09:58:39 +0200
+Subject: [PATCH 1/3] Don't throw on error #119
+
+---
+ src/Host.cc | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/Host.cc b/src/Host.cc
+index cf75ec716c0b971fb3ac70e4028e518cf610c898..a44309058be28284704607784061728c0bb266a1 100644
+--- a/src/Host.cc
++++ b/src/Host.cc
+@@ -141,8 +141,7 @@ int Host::invoke(std::string *capture, const char *cmd, ...) const {
+   Subprocess sp(args);
+   if(capture) {
+     sp.capture(1, capture);
+-    return sp.runAndWait(Subprocess::THROW_ON_ERROR
+-                         | Subprocess::THROW_ON_CRASH);
++    return sp.runAndWait(Subprocess::THROW_ON_CRASH);
+   } else {
+     sp.nullChildFD(1);
+     sp.nullChildFD(2);
+
+From 5295172257a93443f3c7e05fe7453d53d95bb96f Mon Sep 17 00:00:00 2001
+From: bbx0 <39773919+bbx0@users.noreply.github.com>
+Date: Tue, 22 Apr 2025 21:23:52 +0200
+Subject: [PATCH 2/3] Handle `stderr` as a warning
+
+---
+ src/Host.cc        | 15 +++++++++------
+ src/Host.h         |  5 +++--
+ src/Makefile.am    |  2 +-
+ src/Utils.h        |  5 +++++
+ src/Volume.cc      | 16 +++++++++++-----
+ src/trimNewline.cc | 31 +++++++++++++++++++++++++++++++
+ 6 files changed, 60 insertions(+), 14 deletions(-)
+ create mode 100644 src/trimNewline.cc
+
+diff --git a/src/Host.cc b/src/Host.cc
+index a44309058be28284704607784061728c0bb266a1..43228797682759653aa0bf3ad937a50ba82b8bef 100644
+--- a/src/Host.cc
++++ b/src/Host.cc
+@@ -64,7 +64,7 @@ bool Host::available() const {
+   if(hostCheck.at(0) == "always-up")
+     return true;
+   if(hostCheck.at(0) == "ssh")
+-    return invoke(nullptr, "true", (const char *)nullptr) == 0;
++    return invoke(nullptr, nullptr, "true", (const char *)nullptr) == 0;
+   if(hostCheck.at(0) == "command") {
+     std::vector<std::string> args(hostCheck.begin() + 1, hostCheck.end());
+     args.push_back(hostname);
+@@ -119,7 +119,7 @@ void Host::write(std::ostream &os, int step, bool verbose) const {
+   }
+ }
+ 
+-int Host::invoke(std::string *capture, const char *cmd, ...) const {
++int Host::invoke(std::string *stdout, std::string *stderr, const char *cmd, ...) const {
+   std::vector<std::string> args;
+   const char *arg;
+   va_list ap;
+@@ -139,14 +139,17 @@ int Host::invoke(std::string *capture, const char *cmd, ...) const {
+     args.push_back(arg);
+   va_end(ap);
+   Subprocess sp(args);
+-  if(capture) {
+-    sp.capture(1, capture);
+-    return sp.runAndWait(Subprocess::THROW_ON_CRASH);
++  if(stdout) {
++    sp.capture(1, stdout);
+   } else {
+     sp.nullChildFD(1);
++  }
++  if(stderr) {
++    sp.capture(2, stderr);
++  } else {
+     sp.nullChildFD(2);
+-    return sp.runAndWait(Subprocess::THROW_ON_CRASH);
+   }
++  return sp.runAndWait(Subprocess::THROW_ON_CRASH);
+ }
+ 
+ ConfBase *Host::getParent() const {
+diff --git a/src/Host.h b/src/Host.h
+index bcaa62be6a615c6614c9f695993476f817645b90..51e5465a762fa96275bd696dd6d329166362f17f 100644
+--- a/src/Host.h
++++ b/src/Host.h
+@@ -111,12 +111,13 @@ class Host: public ConfBase {
+   static bool valid(const std::string &n);
+ 
+   /** @brief Invoke a command on the host and return its exit status
+-   * @param capture Where to put capture stdout, or null pointer
++   * @param stdout Where to capture stdout, or null pointer
++   * @param stderr Where to capture stderr, or null pointer
+    * @param cmd Command to invoke
+    * @param ... Arguments to command, terminatd by a null pointer
+    * @return Exit status
+    */
+-  int invoke(std::string *capture, const char *cmd, ...) const;
++  int invoke(std::string *stdout, std::string *stderr, const char *cmd, ...) const;
+ 
+   ConfBase *getParent() const override;
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index d56db041359c7cb1023474cad3ca882e076bf1ed..c685fb76fd19300c0830dff949974b53886c2e62 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -35,7 +35,7 @@ RetireDevices.cc RetireVolumes.cc Store.cc stylesheet.cc	\
+ Subprocess.cc Text.cc Unicode.cc Volume.cc Command.h Conf.h Date.h	\
+ Defaults.h DeviceAccess.h Document.h Email.h Errors.h FileLock.h IO.h	\
+ rsbackup.h Store.h Subprocess.h Utils.h ConfBase.cc		\
+-toLines.cc globFiles.cc Database.h Database.cc Report.h			\
++toLines.cc trimNewline.cc globFiles.cc Database.h Database.cc Report.h			\
+ parseInteger.cc split.cc EventLoop.cc EventLoop.h nonblock.cc		\
+ Action.cc Action.h BulkRemove.h Selection.h Selection.cc Color.h 	\
+ Color.cc parseFloat.cc Render.h Render.cc HistoryGraph.h	\
+diff --git a/src/Utils.h b/src/Utils.h
+index 816463aa47e44378c6acb1040547d3c4dfb77029..958bb1fa17ca82d5aa527a348c18799369370608 100644
+--- a/src/Utils.h
++++ b/src/Utils.h
+@@ -65,6 +65,11 @@ void progressBar(IO &stream, const char *prompt, size_t done, size_t total);
+  */
+ size_t toLines(std::vector<std::string> &lines, const std::string &s);
+ 
++/** @brief Remove newline from the end of a string
++  * @param s Input string
++ */
++void trimNewline(std::string *s);
++
+ /** @brief Expand a filename glob pattern
+  * @param files List of filenames
+  * @param pattern Pattern
+diff --git a/src/Volume.cc b/src/Volume.cc
+index 051d86cb0b5b56ecb6787a534a8b3d4857e6d786..c76a2ef273f66ab9e46f183871d2f23aacddf951 100644
+--- a/src/Volume.cc
++++ b/src/Volume.cc
+@@ -136,12 +136,15 @@ const Backup *Volume::mostRecentFailedBackup(const Device *device) const {
+ 
+ bool Volume::available() const {
+   if(checkMounted) {
+-    std::string os, stats;
++    std::string os, os_err, stats, stats_err;
+     std::string parent_directory = path + "/..";
+     const char *option;
+     // Guess which version of stat to use based on uname.
+-    if(parent->invoke(&os, "uname", "-s", (const char *)nullptr) != 0)
++    if(parent->invoke(&os, &os_err, "uname", "-s", (const char *)nullptr) != 0) {
++      trimNewline(&os_err);
++      warning(WARNING_ALWAYS, "'uname' failed on %s - %s", parent->hostname.c_str(), os_err.c_str());
+       return false;
++    }
+     if(os == "Darwin"
+        || (os.size() >= 3 && os.compare(os.size() - 3, 3, "BSD") == 0)) {
+       option = "-f";
+@@ -150,9 +153,12 @@ bool Volume::available() const {
+       option = "-c";
+     }
+     // Get the device numbers for path and its parent
+-    if(parent->invoke(&stats, "stat", option, "%d", path.c_str(),
+-                      parent_directory.c_str(), (const char *)nullptr))
++    if(parent->invoke(&stats, &stats_err, "stat", option, "%d", path.c_str(),
++                      parent_directory.c_str(), (const char *)nullptr) != 0) {
++      trimNewline(&stats_err);
++      warning(WARNING_ALWAYS, "'stat' failed on %s - '%s'", parent->hostname.c_str(), stats_err.c_str());
+       return false;
++    }
+     // Split output into lines
+     std::vector<std::string> lines;
+     toLines(lines, stats);
+@@ -165,7 +171,7 @@ bool Volume::available() const {
+   if(checkFile.size()) {
+     std::string file =
+         (checkFile[0] == '/' ? checkFile : path + "/" + checkFile);
+-    if(parent->invoke(nullptr, "test", "-e", file.c_str(),
++    if(parent->invoke(nullptr, nullptr, "test", "-e", file.c_str(),
+                       (const char *)nullptr)
+        != 0)
+       return false;
+diff --git a/src/trimNewline.cc b/src/trimNewline.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..09206c965b80095f515668746b0a01bd3dac5b39
+--- /dev/null
++++ b/src/trimNewline.cc
+@@ -0,0 +1,31 @@
++// Copyright © 2014, 2015 Richard Kettlewell.
++//
++// This program is free software: you can redistribute it and/or modify
++// it under the terms of the GNU General Public License as published by
++// the Free Software Foundation, either version 3 of the License, or
++// (at your option) any later version.
++//
++// This program is distributed in the hope that it will be useful,
++// but WITHOUT ANY WARRANTY; without even the implied warranty of
++// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++// GNU General Public License for more details.
++//
++// You should have received a copy of the GNU General Public License
++// along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#include <config.h>
++#include "Utils.h"
++
++void trimNewline(std::string *s) {
++  if (s->empty())
++  {
++      return;
++  }
++  if (s->back() == '\n') 
++  {
++      s->pop_back();
++  }
++  if (s->back() == '\r') 
++  {
++      s->pop_back();
++  }
++}
+
+From 7f465bb2b960773beb1dda846dd0e37b10d427d3 Mon Sep 17 00:00:00 2001
+From: bbx0 <39773919+bbx0@users.noreply.github.com>
+Date: Tue, 22 Apr 2025 22:16:25 +0200
+Subject: [PATCH 3/3] Formatting
+
+---
+ src/Makefile.am | 2 +-
+ src/Volume.cc   | 6 ++++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c685fb76fd19300c0830dff949974b53886c2e62..b23274e3c0ceea9b92c12642ce98d9ba8db7fc77 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -35,7 +35,7 @@ RetireDevices.cc RetireVolumes.cc Store.cc stylesheet.cc	\
+ Subprocess.cc Text.cc Unicode.cc Volume.cc Command.h Conf.h Date.h	\
+ Defaults.h DeviceAccess.h Document.h Email.h Errors.h FileLock.h IO.h	\
+ rsbackup.h Store.h Subprocess.h Utils.h ConfBase.cc		\
+-toLines.cc trimNewline.cc globFiles.cc Database.h Database.cc Report.h			\
++toLines.cc trimNewline.cc globFiles.cc Database.h Database.cc Report.h	\
+ parseInteger.cc split.cc EventLoop.cc EventLoop.h nonblock.cc		\
+ Action.cc Action.h BulkRemove.h Selection.h Selection.cc Color.h 	\
+ Color.cc parseFloat.cc Render.h Render.cc HistoryGraph.h	\
+diff --git a/src/Volume.cc b/src/Volume.cc
+index c76a2ef273f66ab9e46f183871d2f23aacddf951..16bd27222fb24de5e9d0d1b56e78d18c0e11327c 100644
+--- a/src/Volume.cc
++++ b/src/Volume.cc
+@@ -142,7 +142,8 @@ bool Volume::available() const {
+     // Guess which version of stat to use based on uname.
+     if(parent->invoke(&os, &os_err, "uname", "-s", (const char *)nullptr) != 0) {
+       trimNewline(&os_err);
+-      warning(WARNING_ALWAYS, "'uname' failed on %s - %s", parent->hostname.c_str(), os_err.c_str());
++      warning(WARNING_ALWAYS, "'uname' failed on %s - %s",
++              parent->hostname.c_str(), os_err.c_str());
+       return false;
+     }
+     if(os == "Darwin"
+@@ -156,7 +157,8 @@ bool Volume::available() const {
+     if(parent->invoke(&stats, &stats_err, "stat", option, "%d", path.c_str(),
+                       parent_directory.c_str(), (const char *)nullptr) != 0) {
+       trimNewline(&stats_err);
+-      warning(WARNING_ALWAYS, "'stat' failed on %s - '%s'", parent->hostname.c_str(), stats_err.c_str());
++      warning(WARNING_ALWAYS, "'stat' failed on %s - %s",
++              parent->hostname.c_str(), stats_err.c_str());
+       return false;
+     }
+     // Split output into lines
