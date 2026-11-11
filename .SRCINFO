@@ -1,6 +1,6 @@
 pkgbase = lib32-gstreamer
 	pkgdesc = Multimedia graph framework (32-bit)
-	pkgver = 1.28.7
+	pkgver = 1.28.9
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -65,10 +65,10 @@ pkgbase = lib32-gstreamer
 	makedepends = lib32-zlib
 	makedepends = meson
 	makedepends = wayland-protocols
-	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=1.28.7
+	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=1.28.9
 	source = 0001-HACK-meson-Disable-broken-tests.patch
 	validpgpkeys = D637032E45B8C6585B9456565D2EEE6F6F349D7C
-	b2sums = 1ec502cf77daffc5886cb4c315d00272d4fcea68fdd2ad3796655b20d35ecbe493d9322fecffa550bfccaa74b7d6391ba54aae60aa2fb697244c83a9227baf9b
+	b2sums = 515aff0af4cc758c52bcbf4604e1db7b15888b7e339c657ade0211384b579b03d9bfb6283287afe588ff5b571f5bdd9ee739623d4c79b30257607740b1e4aa44
 	b2sums = f6c0042f2d171d93f3aadc5fed50fa4a83a901371ce914cb44d614ac0510e0c5c2e10334a9011acad80f86ab08d7a953cce8d331660bca49bbfcaabbce9bee6b
 
 pkgname = lib32-gstreamer
@@ -85,7 +85,7 @@ pkgname = lib32-gstreamer
 
 pkgname = lib32-gst-plugins-base-libs
 	pkgdesc = Multimedia graph framework (32-bit) - base
-	depends = lib32-gstreamer=1.28.7-1
+	depends = lib32-gstreamer=1.28.9-1
 	depends = gst-plugins-base-libs
 	depends = lib32-gcc-libs
 	depends = lib32-glib2
@@ -107,8 +107,8 @@ pkgname = lib32-gst-plugins-base-libs
 
 pkgname = lib32-gst-plugins-base
 	pkgdesc = Multimedia graph framework (32-bit) - base plugins
-	depends = lib32-gst-plugins-base-libs=1.28.7-1
-	depends = lib32-gstreamer=1.28.7-1
+	depends = lib32-gst-plugins-base-libs=1.28.9-1
+	depends = lib32-gstreamer=1.28.9-1
 	depends = gst-plugins-base
 	depends = lib32-alsa-lib
 	depends = lib32-cairo
@@ -124,8 +124,8 @@ pkgname = lib32-gst-plugins-base
 
 pkgname = lib32-gst-plugins-good
 	pkgdesc = Multimedia graph framework (32-bit) - good plugins
-	depends = lib32-gst-plugins-base-libs=1.28.7-1
-	depends = lib32-gstreamer=1.28.7-1
+	depends = lib32-gst-plugins-base-libs=1.28.9-1
+	depends = lib32-gstreamer=1.28.9-1
 	depends = gst-plugins-good
 	depends = lib32-aalib
 	depends = lib32-bzip2
