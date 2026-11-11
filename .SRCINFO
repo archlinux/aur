@@ -1,6 +1,6 @@
 pkgbase = python-spotapi
 	pkgdesc = A sleek API wrapper for Spotify's private API
-	pkgver = 1.2.8
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://pypi.org/project/spotapi/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-spotapi
 	optdepends = python-pymongo: pymongo extra
 	optdepends = python-redis: redis extra
 	optdepends = python-websockets: websocket extra
-	source = https://files.pythonhosted.org/packages/source/s/spotapi/spotapi-1.2.8.tar.gz
-	sha512sums = 390ad4d3268c5c22dd8234b503211700388058a97dffe711c74769c644ed92d78cc140b6637846078c26617ba3fbf973711cad8467153449448ca19caaf07190
+	source = https://files.pythonhosted.org/packages/source/s/spotapi/spotapi-2.0.0.tar.gz
+	sha512sums = cd115da8b99b1b4b17a7df7fd2d30a061b733170455a6b2d7bb3022ee01ca43bf94f9276ec9230daab27026b9c401f70466e951c188a16a84166dded01bee075
 
 pkgname = python-spotapi
