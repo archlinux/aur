@@ -39,6 +39,7 @@ depends=(
     'libutf8proc'
     'fontconfig'
     'nlohmann-json'
+    'pugixml'
     'libpipewire'
     'alsa-lib'
     'tbb'

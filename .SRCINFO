@@ -39,6 +39,7 @@ pkgbase = mayaflux-dev-bin
 	depends = libutf8proc
 	depends = fontconfig
 	depends = nlohmann-json
+	depends = pugixml
 	depends = libpipewire
 	depends = alsa-lib
 	depends = tbb
