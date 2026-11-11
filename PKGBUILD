@@ -13,7 +13,7 @@ arch=("x86_64")
 provides=("rust-motd")
 conflicts=("rust-motd")
 source=("https://github.com/rust-motd/rust-motd/releases/download/v$pkgver/rust-motd-$pkgver-archlinux-x86_64.tar.gz")
-sha256sums=("85d3bf1cc48eee2f5d43e98c613105ff62aeb0c151617023509727484c0a7036")
+sha256sums=("2d1c3be5aa414b9c237b5c5dacbc7d78075e48ce2256fba9a6e3bb214c0facc4")
 
 package() {
     install -Dm755 rust-motd -t "$pkgdir/usr/bin"
