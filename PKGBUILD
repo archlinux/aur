@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=deckcraft-bin
 _pkgname=deckcraft
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Open-source native presentation app, PowerPoint alternative (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('a61a05095a52a80990aa8990b447100553e99c8fa6edc8754aa52740a1a6f9b0')
-sha256sums_aarch64=('23ca94384bd08a9742eba17b162b3cb48d520eac80628fc23b79a551a15c3706')
+sha256sums_x86_64=('d1f129af8c12f1250bcc17dbcdbaac380900c91381c84a4ada6ee7b480a4db06')
+sha256sums_aarch64=('b76c4a0c09f2205d4a6c8a669e9fb36fe36bd54f4897c91fee1a8e34951efe21')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
