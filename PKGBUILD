@@ -4,7 +4,7 @@
 
 pkgname='alice-vision'
 pkgver=3.3.7
-pkgrel=1
+pkgrel=2
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
@@ -12,12 +12,13 @@ url="https://alicevision.org/"
 license=('MPL-2.0' 'MIT')
 depends=('boost-libs' 'geogram' 'coin-or-clp' 'coin-or-coinutils' 'coin-or-lemon' 'ceres-solver' 'openmesh' 'jemalloc' 'zlib'
          'alembic' 'popsift' 'assimp' 'onnxruntime' 'openimageio' 'usd' 'flann' 'python-numpy')
-makedepends=('boost' 'eigen' 'freetype2' 'flann' 'cctag' 'onnx' 'swig' 'expat'
+makedepends=('boost' 'eigen' 'freetype2' 'flann' 'onnx' 'swig' 'expat'
              'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann' 'metis' 'libe57format')
 optdepends=('apriltag: Recognition of Apriltags'
-			'libe57format: e57 3d imaging format I/O'
-			'cuda: enables CUDA backend for depthMap computation'
-			'adaptivecpp: enables SYCL backend for depthMap computation')
+	    'cctag: Recognition of CCtags (must be compiled in)'
+	    'libe57format: e57 3d imaging format I/O'
+	    'cuda: enables CUDA backend for depthMap computation'
+	    'adaptivecpp: enables SYCL backend for depthMap computation')
 source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "fix-default-ocio-path.patch"
