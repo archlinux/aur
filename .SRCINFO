@@ -1,6 +1,6 @@
 pkgbase = mlt-git
 	pkgdesc = Multimedia Framework
-	pkgver = 7.22.0.r27.30115615
+	pkgver = 7.42.0.r61.2a51ed9c
 	pkgrel = 1
 	url = https://github.com/mltframework/mlt
 	arch = i686
@@ -32,7 +32,9 @@ pkgbase = mlt-git
 	provides = mlt
 	conflicts = mlt
 	source = mlt::git+https://github.com/mltframework/mlt.git
-	source = git+https://gitlab.com/mattbas/glaxnimate.git
+	source = git+https://github.com/KDE/glaxnimate.git
+	source = thorvg::git+https://github.com/mbasaglia/thorvg.git
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 

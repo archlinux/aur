@@ -6,7 +6,7 @@ _srcname='mlt'
 pkgbase=$_gitname-git
 pkgname=('mlt-git')
 pkgdesc='Multimedia Framework'
-pkgver=7.22.0.r27.30115615 
+pkgver=7.42.0.r61.2a51ed9c 
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/mltframework/${_srcname}" license=('LGPL2.1')
@@ -39,9 +39,10 @@ makedepends=( 	'ladspa'
 
 provides=("${pkgname[0]%-git}") conflicts=("${pkgname[0]%-git}")
 source=(	"${_gitname}::git+${url}.git"
-		"git+https://gitlab.com/mattbas/glaxnimate.git"
+		"git+https://github.com/KDE/glaxnimate.git"
+		"thorvg::git+https://github.com/mbasaglia/thorvg.git"
 		)
-sha512sums=(	'SKIP' 'SKIP'
+sha512sums=(	'SKIP' 'SKIP' 'SKIP'
 		)
 pkgver() {
    		 git -C $_gitname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
@@ -52,9 +53,21 @@ prepare(){ 	cd "${srcdir}/${_gitname}"
 		git submodule init
 
 		echo "Updating git submodule paths"
-		git config submodule.src/external/glaxnimate.url "$srcdir/glaxnimate"
+		sub=$(git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
+			awk '$2 ~ /glaxnimate$/ {print $1}' | sed 's/^submodule\.//; s/\.path$//')
+		if [ -n "$sub" ]; then
+			git config "submodule.$sub.url" "$srcdir/glaxnimate"
+		else
+			echo "WARNING: no glaxnimate submodule found in .gitmodules"
+		fi
 
 		echo "Updating git submodules"
+		git -c protocol.file.allow=always submodule update
+
+		echo "Updating glaxnimate's own submodules"
+		cd "src/modules/glaxnimate/glaxnimate"
+		git submodule init
+		git config submodule.external/thorvg/thorvg.url "$srcdir/thorvg"
 		git -c protocol.file.allow=always submodule update
 		}
 
