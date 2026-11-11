@@ -1,12 +1,12 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=2
+pkgrel=3
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# depends: DT_NEEDED of the 19 shipped ELFs plus by-name dlopen probes, re-resolved in core+extra on 2026-11-09 (unchanged); ca-certificates-mozilla from the /etc/ssl/cert.pem and /etc/ssl/certs opens in strace (2026-10-31).
+# deps re-derived from payload 2026-11-10 (DT_NEEDED + dlopen probes vs core/extra files indexes; runtime-verified in clean archlinux:latest container)
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -45,7 +45,7 @@ depends=('alsa-lib'
          'mesa'
          'nspr'
          'nss'
-         'openssl'
+         'openssl-3'
          'pango'
          'pciutils'
          'systemd-libs'
@@ -54,7 +54,6 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-# optdepends: portal, LibVLC, PipeWire and org.freedesktop.Notifications calls seen at runtime (2026-10-31); libspeechd.so.2 by-name probe resolved to extra/libspeechd, served by extra/speech-dispatcher (2026-11-07); chrome_crashpad_handler dlopens libcurl.so.4/libcurl-gnutls.so.4/libcurl-nss.so.4 for crash report uploads, resolved to core/curl (2026-11-08); libvlc.so.5/libvlccore.so.9 P/Invoke probes resolved to extra/libvlc 3.0.24-1 (2026-11-09); dlopen probes libcuda.so.1/libnvcuvid.so.1/libnvidia-encode.so.1/libGLX_nvidia.so.0 (NVIDIA hardware video decode/encode) all resolve to extra/nvidia-utils (2026-11-10).
 optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
@@ -64,6 +63,9 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
+            'gnome-shell-extension-appindicator: org.kde.StatusNotifierItem tray host on GNOME'
+            'snixembed: StatusNotifierItem-to-XEmbed bridge for trays on minimal X11 sessions'
+            'waybar: org.kde.StatusNotifierWatcher tray host on wlroots compositors'
             'speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)'
             'libvlc: LibVLC runtime probed by the Root player (libvlc.so.5, libvlccore.so.9)'
             'vlc-plugin-ffmpeg: video and stream codecs for LibVLC playback (pulls libvlc)'
@@ -72,7 +74,6 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'nvidia-utils: hardware video decode/encode on NVIDIA GPUs (provides libcuda.so.1, libnvcuvid.so.1, libnvidia-encode.so.1, libGLX_nvidia.so.0)')
 options=('!strip' '!debug')
 
-# single source: the aur.yml updater rewrites sha256sums to one hash (2026-10-31).
 source=("Root-${pkgver}-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage")
 sha256sums=('af8ede1ca91a51e9f363e0e9f8229946412a98ac21ab13be272fbe7794f6a260')
 prepare() {
@@ -100,7 +101,6 @@ package() {
     fi
 
     install -dm755 "${pkgdir}/usr/bin"
-    # Payload mkdirs "Root Communications", "Sentry" and ".sentry-native" beside its exe, so it needs a user-writable runtime dir (strace, 2026-10-29).
     cat > "${pkgdir}/usr/bin/rootapp" <<'WRAPPER_EOF'
 #!/bin/sh
 set -eu
