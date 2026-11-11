@@ -2,7 +2,7 @@
 
 _name=gds2palace
 pkgname=python-${_name}
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Create AWS Palace (FEM Solver) model from GDSII layout files"
 arch=(any)
@@ -32,7 +32,7 @@ optdepends=(
 
 # FIXME: v0.9.1 isn't tagged, use the commit directly)
 source=("${_name}::git+${url}#tag=v${pkgver}")
-b2sums=('c42306eb1a69fb5ef9a6b8856b281f205553784cf237062e51f847b3e4e16a678998878b5c4197fd335c3f63abd12ccb0885bf3d4e27fb52b368e2bccb8f3e0b')
+b2sums=('05ea7ed450ae5005d51e3fd3d089644e4a0002dabbbff0dc7b5b5ab28d6f75e696edc2f2e787c9aaf5f49c6c440e4e6aef9c24d241a33f64b391ecfb9329afa3')
 
 build() {
     cd "${_name}"

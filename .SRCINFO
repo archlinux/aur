@@ -1,6 +1,6 @@
 pkgbase = python-gds2palace
 	pkgdesc = Create AWS Palace (FEM Solver) model from GDSII layout files
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/VolkerMuehlhaus/gds2palace_ihp_sg13g2
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-gds2palace
 	optdepends = paraview: To view field-dump output
 	optdepends = palace: Primary FEM solver
 	optdepends = elmerfem: Alternative FEM solver
-	source = gds2palace::git+https://github.com/VolkerMuehlhaus/gds2palace_ihp_sg13g2#tag=v0.10.1
-	b2sums = c42306eb1a69fb5ef9a6b8856b281f205553784cf237062e51f847b3e4e16a678998878b5c4197fd335c3f63abd12ccb0885bf3d4e27fb52b368e2bccb8f3e0b
+	source = gds2palace::git+https://github.com/VolkerMuehlhaus/gds2palace_ihp_sg13g2#tag=v0.10.2
+	b2sums = 05ea7ed450ae5005d51e3fd3d089644e4a0002dabbbff0dc7b5b5ab28d6f75e696edc2f2e787c9aaf5f49c6c440e4e6aef9c24d241a33f64b391ecfb9329afa3
 
 pkgname = python-gds2palace
