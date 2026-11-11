@@ -2,7 +2,7 @@
 
 pkgname=bettbox
 _pkgname=Bettbox
-pkgver=1.19.7
+pkgver=1.19.8
 pkgrel=1
 pkgdesc="A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core."
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop" "bettbox.install")
-sha256sums=('4d9e9aee91557d4866ee0ec52f6600fabded81e7ea03bcb4d41cc63a9d0c59d9'
+sha256sums=('7b912446c618fd22418fe29e77bbeb849c1666ce0a3a08c3053a2102cdf10c64'
             '03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2'
             'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f'
             'c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b')
