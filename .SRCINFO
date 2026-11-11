@@ -1,6 +1,6 @@
 pkgbase = cloud-hypervisor
 	pkgdesc = A Virtual Machine Monitor for modern Cloud workloads
-	pkgver = 54.0
+	pkgver = 54.1
 	pkgrel = 1
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = cloud-hypervisor
 	optdepends = virtiofsd: rust implementation of virtiofsd
 	options = !lto
 	options = !debug
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v54.0/cloud-hypervisor-54.0.tar.gz
-	sha512sums = d13b26b9b076bf4060a186d33205262bf462cfd1c49b00e0b8f4b1a6c33d09cab54070e397b71aa704dd27e2efa63d0e5c88aa0f58c6d4e06394b6afaf428e88
-	b2sums = 977c6686dad1909fc52b342b30bcabe8d7d015f09a298ed4b008cde5cb7b18c62cedc00be7497aa74f52e62dd0142c16a5d0479913c10986fb99568fabd5afab
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v54.1/cloud-hypervisor-54.1.tar.gz
+	sha512sums = fe24eab2ab00332d81e77dbf40e67d8c86a8819f5b649d525a1e2982475a1c294a07a6b6eb349eaf880d5402ef557399717a598281dc0216900feba1287aa138
+	b2sums = 936464d13cd49a503f57cd0ac844469e6cc156eaa3f6fe7ca5765c8cb1a1ff67a1b0bf42188e7be2a929edca7e4bb3771b5ad97e773467261e58df30b3f3e15d
 
 pkgname = cloud-hypervisor
