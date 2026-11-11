@@ -3,7 +3,7 @@
 
 pkgname=mtgpu-s30-userland
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Moore Threads MTT S30 userland graphics and compute drivers (OpenGL, Vulkan, VA-API, MUSA)'
 arch=('x86_64')
 install='mtgpu-s30-userland.install'
@@ -33,17 +33,19 @@ source=(
     '50_mtt_mesa.json'
     '10-mtt-s30.conf'
     '70-mtgpu.rules'
+    'plasma-plasmashell-mtt-s30.conf'
+    'chromium-flags.conf'
 )
 noextract=("musa_3.1.0-pc_x86.deb")
-sha256sums=(
-    '04c286ba452fe0cfbea2c47465f0c48b0659c09b896f05f363feba680dd8efda'
-    '7a42ba27ef3a03d277f73c80aaa3c190a6215dcc30dfd67b6330d59800939a0d'
-    'c39f1838e97a1e05e851ddc1f7dba0e68b44d04327701c1c26301ba2f89c2a6f'
-    'cbc7737f218356ae47be277105708e9d72db6b07df79f19def55fb7ed700761e'
-    'f5b45c307aff65303d72297184fd05900e83c7613772c0c04e0bfe62c23df7a9'
-    '71aefb8cd1fbad9a1dd65abe6797f82344345373745b45345e0a5602f5510cba'
-    '0435a924991e6e0a4e75f4fd9534195c5927026766bad3863de515bffdc05be8'
-)
+sha256sums=('04c286ba452fe0cfbea2c47465f0c48b0659c09b896f05f363feba680dd8efda'
+            '7a42ba27ef3a03d277f73c80aaa3c190a6215dcc30dfd67b6330d59800939a0d'
+            'c39f1838e97a1e05e851ddc1f7dba0e68b44d04327701c1c26301ba2f89c2a6f'
+            'cbc7737f218356ae47be277105708e9d72db6b07df79f19def55fb7ed700761e'
+            'f5b45c307aff65303d72297184fd05900e83c7613772c0c04e0bfe62c23df7a9'
+            'e70c7dbe4a1a3d4d5d7c05932b32012c41b7f81a762fac4af504f6e8033f3cb7'
+            '0435a924991e6e0a4e75f4fd9534195c5927026766bad3863de515bffdc05be8'
+            'e37b7b255b1e3dd4d88e82220beb1bb80ef76838b6c4cae1b3ef4f7047bf5b1c'
+            '434c9f3309436f92abd3a8b02a4a128e13883ca8b12d146931db5925a91bb6d9')
 
 prepare() {
     rm -rf "$srcdir/deb-data"
@@ -107,6 +109,14 @@ package() {
     # 8. Environment and sysctl/modprobe configuration
     install -d "$pkgdir/etc/environment.d"
     install -m644 "$srcdir/10-mtt-s30.conf" "$pkgdir/etc/environment.d/"
+
+    install -d "$pkgdir/etc"
+    install -m644 "$srcdir/chromium-flags.conf" "$pkgdir/etc/chromium-flags.conf"
+    install -m644 "$srcdir/chromium-flags.conf" "$pkgdir/etc/chrome-flags.conf"
+
+    install -d "$pkgdir/usr/lib/systemd/user/plasma-plasmashell.service.d"
+    install -m644 "$srcdir/plasma-plasmashell-mtt-s30.conf" \
+        "$pkgdir/usr/lib/systemd/user/plasma-plasmashell.service.d/10-mtt-s30.conf"
 
     install -d "$pkgdir/etc/modprobe.d"
     install -m644 "$deb/etc/modprobe.d/mtgpu.conf" "$pkgdir/etc/modprobe.d/"
