@@ -5,7 +5,7 @@ _pkgname=tcpulse
 pkgname=${_pkgname}-bin
 pkgdesc="A TCP/UDP load generator that provides fine-grained, flow-level control in Go"
 
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('e54f829bd822c2aa73f9e753c55e886e2e0113646887689bf4c0eed9d77f6ca5')
-sha256sums_aarch64=('c8ffec71654e22151df372f3196541f39e9e90d8479fe536b5ac7fba27d2756a')
+sha256sums_x86_64=('459f42f53bf2015959b51f204e3ea5dc39ca8ff201876dbeacb26eaecc7ecf40')
+sha256sums_aarch64=('6b2f56cf9b1219ba16a956a8b54b251fdc8c4729becb2bedfab4e05a15e02a74')
 
 
 package() {
