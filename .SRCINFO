@@ -18,8 +18,8 @@ pkgbase = jotty-bin
 	options = !debug
 	options = !strip
 	source_x86_64 = https://github.com/justanoobcoder/jotty/releases/download/v2.1.0/jotty-2.1.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 47274d072b59344b0727ce9732f1ad2e6299e6196fd4121dbba49e2c01c81d94
+	sha256sums_x86_64 = 8e63bcc4b6de1b8c4b45bec57e0db0ce3d2454eb94bc14f2d47374b19001e598
 	source_aarch64 = https://github.com/justanoobcoder/jotty/releases/download/v2.1.0/jotty-2.1.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = c3d9521eb5bde763d842e4686d645f865a6c48bf6a78ffc881eea37fb65c42d5
+	sha256sums_aarch64 = 480138c50e6ab9ea8f8041150b80f19a590b4fbd388a45ba058f043ec2742ec8
 
 pkgname = jotty-bin
