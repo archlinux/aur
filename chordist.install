@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'MSG'
+==> Start the service for your user:  systemctl --user enable --now chordistd
+==> Then restart Plasma (systemctl --user restart plasma-plasmashell) and add
+    the Chordist widget to a panel. `chordist doctor` shows what works here.
+MSG
+}
+
+post_upgrade() {
+  echo '==> Restart the service to load the new version: systemctl --user restart chordistd'
+}
