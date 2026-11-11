@@ -1,7 +1,7 @@
 # Maintainer: Chaser <ch4ser@users.noreply.github.com>
 
 pkgname=devo-bin
-pkgver=0.2.16
+pkgver=0.2.18
 pkgrel=1
 pkgdesc="Open-source, provider-agnostic coding agent that lives in your terminal"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ optdepends=(
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/devo-tui-v${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/devo-tui-v${pkgver}-aarch64-linux-musl.tar.gz")
 
-sha256sums_x86_64=('0b4c59a1a4b22f35c932eaf5ef73d7fdb5a82bd7ea84ce70fefcb0e4bf3c06f2')
-sha256sums_aarch64=('5f8c114775cb2a714c7306395bc0b954df83b0413b1b27844709ca6b3b8c81f4')
+sha256sums_x86_64=('56a971d7c3dba0b177a16115950a8d1cb07b334421e74a396a1aadb8f89ef8d5')
+sha256sums_aarch64=('ffabd244233688393b415ac414f791b4e417ff536dc539b799e0eec92ee098ca')
 
 package() {
 	local _srcdir="${srcdir}/devo-tui-v${pkgver}-${CARCH}-linux-musl"
