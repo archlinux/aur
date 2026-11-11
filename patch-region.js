@@ -58,7 +58,46 @@ source =
   `function _0x2a4383() {\n  return "${region}";\n}` +
   source.slice(end + 1);
 
-// 2. 资源路径：Electron 的 process.resourcesPath 指向系统 electron43，
+// 2. RegionState 初始化：启动时真正决定区域的是 _0x343da5，原实现优先使用
+//    持久化的 lastEffective 和按系统 locale 推断的 seed。locale=en-US 的机器
+//    即使打了上面的补丁，初始化和 KimiEnv 域名覆盖阶段仍会判成 overseas。
+const initNeedle =
+  '_0x4cdb08 = _0x17938a["manual"], _0x49144b = _0x17938a[_0x53db3d(19484)];';
+const initHits = source.split(initNeedle).length - 1;
+if (initHits !== 1) {
+  console.error(`RegionState 初始化补丁点数量异常: ${initHits}`);
+  process.exit(1);
+}
+source = source.replace(initNeedle, `_0x4cdb08 = null, _0x49144b = "${region}";`);
+
+// 3. 默认关闭 launcher 全局快捷键：Linux/Wayland 下注册 Ctrl+Shift+Space 会
+//    触发 XDG GlobalShortcuts portal，GNOME 随即弹出 “Add Keyboard Shortcut”。
+//    用户仍可在设置里主动开启该项。
+const launcherDefault = '"launcherEnabled": !![], "launcherShortcut": _0x1465b7';
+const launcherDefaultHits = source.split(launcherDefault).length - 1;
+if (launcherDefaultHits !== 1) {
+  console.error(`launcherEnabled 默认值补丁点数量异常: ${launcherDefaultHits}`);
+  process.exit(1);
+}
+source = source.replace(
+  launcherDefault,
+  '"launcherEnabled": ![], "launcherShortcut": _0x1465b7'
+);
+
+// 未写入过设置时原逻辑按 `!== false` 视为开启，必须同时改为仅在显式 true 时开启。
+const launcherPersisted =
+  '"launcherEnabled": _0x29b04e[_0x34ff6c(3738)] !== ![],';
+const launcherPersistedHits = source.split(launcherPersisted).length - 1;
+if (launcherPersistedHits !== 1) {
+  console.error(`launcherEnabled 读取逻辑补丁点数量异常: ${launcherPersistedHits}`);
+  process.exit(1);
+}
+source = source.replace(
+  launcherPersisted,
+  '"launcherEnabled": _0x29b04e[_0x34ff6c(3738)] === !![],'
+);
+
+// 4. 资源路径：Electron 的 process.resourcesPath 指向系统 electron43，
 //    这里改为优先读取 KIMI_WORK_RESOURCES（由包装脚本指向独立的 /opt 前缀）。
 const needle = '_0x91d9c1 = process["resourcesPath"]';
 const hits = source.split(needle).length - 1;
@@ -71,7 +110,7 @@ source = source.replace(
   '_0x91d9c1 = (process.env["KIMI_WORK_RESOURCES"] || process["resourcesPath"])'
 );
 
-// 3. 窗口类名：运行时用配置里的 appId 推导 desktop 文件名并调用
+// 5. 窗口类名：运行时用配置里的 appId 推导 desktop 文件名并调用
 //    app.setDesktopName()，这会覆盖 package.json 的 desktopName，
 //    两版沿用同一个 appId 时任务栏会把窗口合并到同一个应用。
 const desktopNeedle = 'const _0x1bf09b = _0x1c0ac9["appId"] + ".desktop";';
