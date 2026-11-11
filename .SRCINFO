@@ -1,6 +1,6 @@
 pkgbase = hookshot-bin
 	pkgdesc = Builds a native PC port of Ocarina of Time (Switch 2) from your own copy of the game (upstream AppImage)
-	pkgver = 2.0.14
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/NotRexed/Hookshot
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = hookshot-bin
 	optdepends = zenity: error dialog when no game is built yet
 	provides = hookshot
 	conflicts = hookshot
-	noextract = hookshot-bin-2.0.14.AppImage
+	noextract = hookshot-bin-2.1.0.AppImage
 	options = !strip
 	options = !debug
 	options = staticlibs
-	source = hookshot-bin-2.0.14.AppImage::https://github.com/NotRexed/Hookshot/releases/download/v2.0.14/Hookshot-v2.0.14-x86_64.AppImage
-	sha256sums = a6964ac29b732ce7f7989cd436e7c35834cf3ca18c2c6dc32109c63a53b43419
+	source = hookshot-bin-2.1.0.AppImage::https://github.com/NotRexed/Hookshot/releases/download/v2.1.0/Hookshot-v2.1.0-x86_64.AppImage
+	sha256sums = c0b2e958ae00dc560072154f890b9be422724abd9bb522d6afd9922788b86e02
 
 pkgname = hookshot-bin
