@@ -1,0 +1,18 @@
+pkgbase = gator-bin
+	pkgdesc = Suite of authorship tools for Gatekeeper policies (prebuilt)
+	pkgver = 3.23.1
+	pkgrel = 1
+	url = https://github.com/open-policy-agent/gatekeeper
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = gator=3.23.1
+	conflicts = gator
+	source = gator-3.23.1-NOTICE::https://raw.githubusercontent.com/open-policy-agent/gatekeeper/v3.23.1/NOTICE
+	sha256sums = 7d4302ff15270639b7f8d25e9dbfb988b6d4075a36d0e47fdb0d4a91661b18d7
+	source_x86_64 = https://github.com/open-policy-agent/gatekeeper/releases/download/v3.23.1/gator-v3.23.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = c268d7b809c9fe59a110ab0bf7c296ab00b0b6c894c209cd15e94194590291bb
+	source_aarch64 = https://github.com/open-policy-agent/gatekeeper/releases/download/v3.23.1/gator-v3.23.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2d4bd0e28e708c2893a66fdca652f1d775b23fc5a3c07571fd314ba06d19ff2b
+
+pkgname = gator-bin
