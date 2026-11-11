@@ -5,6 +5,7 @@ pkgver=0.1.4.r3.g4e1d839
 pkgrel=1
 pkgdesc="A CLI application for displaying images"
 arch=('x86_64')
+options=('!debug')
 url="https://github.com/SilinMeng0510/imgcatr"
 license=('MIT')
 depends=('gcc-libs' 'glibc')

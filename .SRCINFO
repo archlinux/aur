@@ -11,6 +11,7 @@ pkgbase = imgcatr-git
 	depends = glibc
 	provides = imgcatr
 	conflicts = imgcatr
+	options = !debug
 	source = imgcatr-git::git+https://github.com/SilinMeng0510/imgcatr
 	sha256sums = SKIP
 
