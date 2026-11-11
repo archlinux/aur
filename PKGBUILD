@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Push files fast. Sync only what changed."
 
-pkgver=0.16.6
+pkgver=0.17.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.deb")
-sha256sums=('89fa42eb81de16b5e079c5d3e86225bd4f4419fe4b522b6aed1ab814f34a6228'
+sha256sums=('f7f0d5a12f8209b5445d1e948f73ade0a227901d6b35900a88fd7559b9b69751'
             'de1b680e8cf8ebf3641646e14f5c0730f726da2d9d6d211d498032c20d0d9e2c')
-sha256sums_x86_64=('ddc45ebb3ca914e6a93d0066cc18d3c4a241931a9751ca1e000c6a0e62905fd1')
+sha256sums_x86_64=('698db0de9d197203c04b5e6cc12da18bd187e0eae4c783c9de288a5c48b1a9c7')
 
 
 prepare() {

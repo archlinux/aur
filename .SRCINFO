@@ -1,6 +1,6 @@
 pkgbase = diskpush-bin
 	pkgdesc = Push files fast. Sync only what changed.
-	pkgver = 0.16.6
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/profullstack/diskpush
 	arch = x86_64
@@ -35,11 +35,11 @@ pkgbase = diskpush-bin
 	provides = diskpush
 	conflicts = diskpush
 	options = !strip
-	source = README-0.16.6.md::https://raw.githubusercontent.com/profullstack/diskpush/v0.16.6/README.md
-	source = LICENSE-0.16.6::https://raw.githubusercontent.com/profullstack/diskpush/v0.16.6/LICENSE
-	sha256sums = 89fa42eb81de16b5e079c5d3e86225bd4f4419fe4b522b6aed1ab814f34a6228
+	source = README-0.17.1.md::https://raw.githubusercontent.com/profullstack/diskpush/v0.17.1/README.md
+	source = LICENSE-0.17.1::https://raw.githubusercontent.com/profullstack/diskpush/v0.17.1/LICENSE
+	sha256sums = f7f0d5a12f8209b5445d1e948f73ade0a227901d6b35900a88fd7559b9b69751
 	sha256sums = de1b680e8cf8ebf3641646e14f5c0730f726da2d9d6d211d498032c20d0d9e2c
-	source_x86_64 = diskpush-x86_64-0.16.6.deb::https://github.com/profullstack/diskpush/releases/download/v0.16.6/diskpush-0.16.6-linux-amd64.deb
-	sha256sums_x86_64 = ddc45ebb3ca914e6a93d0066cc18d3c4a241931a9751ca1e000c6a0e62905fd1
+	source_x86_64 = diskpush-x86_64-0.17.1.deb::https://github.com/profullstack/diskpush/releases/download/v0.17.1/diskpush-0.17.1-linux-amd64.deb
+	sha256sums_x86_64 = 698db0de9d197203c04b5e6cc12da18bd187e0eae4c783c9de288a5c48b1a9c7
 
 pkgname = diskpush-bin
