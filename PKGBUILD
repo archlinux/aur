@@ -1,17 +1,17 @@
 # Maintainer: Ignacio Galmarino <igalmarino@gmail.com>
 #
-# Kept in pila's repository (packaging/aur/pila-git); the AUR repository is a
+# Kept in Pila's repository (packaging/aur/pila-git); the AUR repository is a
 # copy of this file and its .SRCINFO (makepkg --printsrcinfo > .SRCINFO).
 
 pkgname=pila-git
-pkgver=0.5.0.r384.gd18e82b
+pkgver=0.5.1.r417.g5a0bc32
 pkgrel=1
 pkgdesc='A stacking Wayland compositor built on Smithay'
 arch=(x86_64 aarch64)
 url='https://github.com/igalmarino/pila'
 license=(GPL-3.0-or-later)
-# The libraries pila links (readelf -d), EGL (loaded at runtime through
-# libglvnd), Xwayland, which pila starts for X11 apps, and bash for
+# The libraries Pila links (readelf -d), EGL (loaded at runtime through
+# libglvnd), Xwayland, which Pila starts for X11 apps, and bash for
 # pila-session and pila-report.
 depends=(
     bash
