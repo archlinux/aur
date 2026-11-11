@@ -10,6 +10,7 @@ pkgbase = jj-git
 	depends = glibc
 	provides = jj
 	conflicts = jj
+	options = !debug
 	source = jj-git::git+https://github.com/tidwall/jj
 	sha256sums = SKIP
 

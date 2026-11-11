@@ -4,6 +4,7 @@ pkgver=1.9.2.r3.gab3eb1e
 pkgrel=1
 pkgdesc="JSON Stream Editor (command line utility)"
 arch=('x86_64')
+options=('!debug')
 url="https://github.com/tidwall/jj"
 license=('MIT')
 depends=('glibc')
