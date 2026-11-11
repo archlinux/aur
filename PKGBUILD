@@ -2,15 +2,16 @@
 
 pkgname=('ignition' 'ignition-validate')
 pkgbase=ignition
-pkgver=2.12.0
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='First boot installer and configuration tool'
 arch=('x86_64')
 url='https://coreos.github.io/ignition/'
-license=('APACHE')
+license=('Apache-2.0')
+depends=('glibc')
 makedepends=('go')
 source=("https://github.com/coreos/ignition/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4477546bbf9c9149deef5ac080bf425c3713093bb2f0292a3df5f8d811e91dda')
+sha256sums=('a2ff1a2aafc1a54fedd535487c4b0cf2afad5945a788edfb85140420a1f772de')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -42,7 +43,7 @@ check() {
 }
 
 package_ignition() {
-    depends=(dracut)
+    depends+=('libgcc' 'util-linux-libs' 'dracut')
 
     cd "$pkgbase-$pkgver"
 
