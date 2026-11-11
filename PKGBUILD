@@ -1,8 +1,8 @@
 # Maintainer: Nasir A. <NasirA1991@users.noreply.github.com>
-# Template consumed by .github/workflows/release.yml; 2.2.1 and 0709b302aeb635f431816310ca830431c0d7ec041e8ad7fcf614a63f20dc35ff
+# Template consumed by .github/workflows/release.yml; 2.2.2 and a6a6bcc3d05b9024df4c05098baed69f29e52aa08b744f24f886c7f1c41fa00e
 # are filled in only for the generated AUR package.
 pkgname=gsp370-tray
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Tray and Plasma widget for the Sennheiser/EPOS GSP 370 (battery and sidetone)'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('libnotify: low-battery notifications'
 options=('!debug')
 install=gsp370-tray.install
 source=("$pkgname-$pkgver-source.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('0709b302aeb635f431816310ca830431c0d7ec041e8ad7fcf614a63f20dc35ff')
+sha256sums=('a6a6bcc3d05b9024df4c05098baed69f29e52aa08b744f24f886c7f1c41fa00e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
