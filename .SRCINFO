@@ -1,7 +1,7 @@
 pkgbase = mtgpu-s30-dkms
 	pkgdesc = Moore Threads MTT S30 kernel module and firmware (Linux 7.x+ DKMS port)
 	pkgver = 3.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cont1nu1ty/mtt-s30-arch
 	install = mtgpu-s30-dkms.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mtgpu-s30-dkms
 	source = linux-modern.patch
 	source = prepare.py
 	sha256sums = 04c286ba452fe0cfbea2c47465f0c48b0659c09b896f05f363feba680dd8efda
-	sha256sums = ad17c7e782da149058ea35ea00e89f2933c8125636725b0d8fb264dba5eb46f0
+	sha256sums = 2eafba17c99e0c5d3555c5e7ab1c8b9b79c5fe7b67c0d9bf90f078c259cc4f75
 	sha256sums = 7ec612a122421c23c34f1efe7a25e16edf75298528b0a176a8d41e15329f9a9f
 
 pkgname = mtgpu-s30-dkms

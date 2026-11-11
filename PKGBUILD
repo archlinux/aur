@@ -2,7 +2,7 @@
 # Place the reviewed vendor archive beside this recipe before building.
 pkgname=mtgpu-s30-dkms
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Moore Threads MTT S30 kernel module and firmware (Linux 7.x+ DKMS port)'
 arch=('x86_64')
 install='mtgpu-s30-dkms.install'
@@ -15,7 +15,8 @@ options=('!strip' '!debug')
 source=("musa_3.1.0-pc_x86.deb::https://github.com/cont1nu1ty/mtt-s30-arch/releases/download/v3.1.0/musa_3.1.0-pc_x86.deb" 'linux-modern.patch' 'prepare.py')
 noextract=("musa_3.1.0-pc_x86.deb")
 sha256sums=('04c286ba452fe0cfbea2c47465f0c48b0659c09b896f05f363feba680dd8efda'
-            'ad17c7e782da149058ea35ea00e89f2933c8125636725b0d8fb264dba5eb46f0' '7ec612a122421c23c34f1efe7a25e16edf75298528b0a176a8d41e15329f9a9f')
+            '2eafba17c99e0c5d3555c5e7ab1c8b9b79c5fe7b67c0d9bf90f078c259cc4f75'
+            '7ec612a122421c23c34f1efe7a25e16edf75298528b0a176a8d41e15329f9a9f')
 prepare() {
     # makepkg symlinks local sources; prepare.py resolves its own directory.
     # Keep a real script copy beside the patch directory it expects.
