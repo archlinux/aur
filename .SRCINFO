@@ -17,6 +17,7 @@ pkgbase = jitterdebugger-git
 	provides = jittersamples
 	conflicts = jitterdebugger
 	options = !emptydirs
+	options = !debug
 	source = jitterdebugger-git::git+https://github.com/igaw/jitterdebugger
 	sha256sums = SKIP
 
