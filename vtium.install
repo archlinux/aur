@@ -89,7 +89,11 @@ _vtium_boot_note() {
   local d=/etc/systemd/system n w mode list them vts=()
   case $(readlink "$d/autovt@.service" 2>/dev/null) in
   /usr/lib/systemd/system/vtium@.service) mode=--direct ;;
-  /usr/lib/systemd/system/vtium-seat@.service) mode=--seat ;;
+  /usr/lib/systemd/system/vtium-seat@.service)
+    # Without seat mode's unit, those VTs have no console unit at all,
+    # which post_install names, and --seat cannot run.
+    [ -e /usr/lib/systemd/system/vtium-seat@.service ] || return 0
+    mode=--seat ;;
   *) return 0 ;;
   esac
   for n in 2 3 4 5; do
@@ -153,16 +157,60 @@ EOF
 EOF
 }
 
+# The links among those _vtium_links prints that name seat mode's unit,
+# when this package does not ship it, one path a line, or nothing. A console
+# built without libseat and logind, such as a minspec one, ships no
+# vtium-seat@.service, so a VT whose link names it has no console unit.
+_vtium_seat_orphans() {
+  [ -e /usr/lib/systemd/system/vtium-seat@.service ] && return 0
+  local l
+  while IFS= read -r l; do
+    [ -n "$l" ] || continue
+    [ "$(readlink "$l")" = /usr/lib/systemd/system/vtium-seat@.service ] && printf '%s\n' "$l"
+  done <<<"$1"
+  return 0
+}
+
 # A first install claims the free VTs. When vtium already holds VTs through
 # links that an earlier install left, or that were made by hand, those VTs
 # stay vtium's and the install claims no more, so a choice made earlier
-# stands. A vtium that still runs keeps the build it started with until it
-# restarts.
+# stands. A link to seat mode's unit, when this package does not ship it,
+# leaves its VTs with no console unit, and the message says how to give
+# them to vtium in direct mode. A vtium that still runs keeps the build it
+# started with until it restarts.
 post_install() {
-  local links running
+  local links running orphans direct
   links=$(_vtium_links)
   running=$(_vtium_running)
-  if [ -n "$links" ]; then
+  orphans=$(_vtium_seat_orphans "$links")
+  if [ -n "$orphans" ]; then
+    direct=$(grep -vxF -f <(printf '%s\n' "$orphans") <<<"$links" || true)
+    cat <<'EOF'
+==> vtium already holds VTs on this machine, through links that an earlier
+    install of vtium left, so this install gives vtium no other VT.
+EOF
+    if [ -n "$direct" ]; then
+      cat <<'EOF'
+    These links name vtium@.service, which this package installs, so those
+    VTs stay vtium's:
+EOF
+      # shellcheck disable=SC2086 # one path a word
+      printf '      %s\n' $direct
+    fi
+    cat <<'EOF'
+    These links name seat mode's unit, vtium-seat@.service, which this
+    package does not ship, so the VTs they name have no console unit:
+EOF
+    # shellcheck disable=SC2086 # one path a word
+    printf '      %s\n' $orphans
+    cat <<'EOF'
+    To give those VTs to vtium in direct mode, run this for each one, with
+    its number as N, or give vtium every free VT with --all:
+      sudo vtium console enable --direct N
+      sudo vtium console enable --direct --all
+    vtium console status lists what each VT runs.
+EOF
+  elif [ -n "$links" ]; then
     cat <<'EOF'
 ==> vtium already holds VTs on this machine, through these links, which an
     earlier install of vtium left. They name vtium's units, which this
