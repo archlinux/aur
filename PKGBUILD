@@ -1,7 +1,7 @@
 # Maintainer: icyleaf <icyleaf.cn at gmail dot com>
 
 pkgname=omawarden-app-git-bin
-pkgver=0.4.0.dev.6ac6d25
+pkgver=0.4.0.dev.dc92978
 pkgrel=1
 pkgdesc="Omawarden desktop app for Bitwarden/Vaultwarden (prebuilt development build)"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ provides=('omawarden-app' 'omawarden-app-dev-bin')
 conflicts=('omawarden-app' 'omawarden-app-dev-bin')
 install='omawarden-policy.install'
 source_x86_64=("omawarden-app-x86_64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('cdb096c2b55b6e0336cef77ee352f28372bc5ecc5fc69bbc676aebe9cd35991f')
+sha256sums_x86_64=('f6419cd756e7d6f917ebf00c984ed596444b45e77e57913cdaf7e9e2cf658c7b')
 source_aarch64=("omawarden-app-aarch64.tar.gz::https://github.com/omawarden/omawarden-app/releases/download/dev/omawarden-app-0.4.0-dev-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('69d644e9c4a74c47213a2672b9fd92480dd5871ce0af76bccbdb0bd02e83b588')
+sha256sums_aarch64=('876c352b937997928c610b6529eeb186dba237950debfada5466958c9760c03e')
 
 package() {
   local appdir
