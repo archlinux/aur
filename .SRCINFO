@@ -1,0 +1,20 @@
+pkgbase = libbsc-cuda
+	pkgdesc = High-performance block-sorting data compressor with CUDA
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/IlyaGrebnov/libbsc
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cccl
+	makedepends = cmake
+	makedepends = git
+	depends = cuda
+	depends = gcc-libs
+	depends = glibc
+	optdepends = nvidia-utils: CUDA support for NVIDIA GPUs
+	provides = libbsc=3.4.0
+	conflicts = libbsc
+	source = git+https://github.com/IlyaGrebnov/libbsc.git#tag=v3.4.0
+	sha256sums = d2595f2bb2f34b46fd11407e8010910da201e7a5c59083575a3e911db7fd59a6
+
+pkgname = libbsc-cuda
