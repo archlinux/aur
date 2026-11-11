@@ -1,0 +1,6 @@
+[zigfetch-bin]
+source = "github"
+github = "utox39/zigfetch"
+use_max_release = true
+exclude_regex = ".*(alpha|beta|rc).*"
+prefix = "v"
