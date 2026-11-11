@@ -1,6 +1,6 @@
 pkgbase = wolf-lang
 	pkgdesc = The wolf systems language: the wolfgang compiler, its runtime and the C importer
-	pkgver = 0.2.38
+	pkgver = 0.2.39
 	pkgrel = 1
 	url = https://github.com/wolffe-lang/wolf-lang
 	install = wolf-lang.install
@@ -21,8 +21,8 @@ pkgbase = wolf-lang
 	conflicts = wolf-lang-bin
 	conflicts = wolf
 	options = !debug
-	source = git+https://github.com/wolffe-lang/wolf-lang.git#tag=v0.2.38
-	source = wolf-std::git+https://github.com/wolffe-lang/wolf-std.git#commit=d4a4d4cab358e1e8c174f0206f9e13ad5cfe6c61
+	source = git+https://github.com/wolffe-lang/wolf-lang.git#tag=v0.2.39
+	source = wolf-std::git+https://github.com/wolffe-lang/wolf-std.git#commit=2411d868ee5c7ce6aee272c0475f049f29bab65d
 	sha256sums = SKIP
 	sha256sums = SKIP
 
