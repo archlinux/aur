@@ -1,0 +1,17 @@
+pkgbase = pulsemodel-git
+	pkgdesc = a model compiler and decompiler for MDL v49, with support for HL2, TF2, L4D2, GMod, CS:S, and SFM. git version.
+	pkgver = 0.25.1.r1.r49.g17cf09b2
+	pkgrel = 2
+	url = https://github.com/ToppiOfficial/PulseModel
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = pulsemodel
+	conflicts = pulsemodel
+	source = git+https://github.com/ToppiOfficial/PulseModel.git
+	sha256sums = SKIP
+
+pkgname = pulsemodel-git
