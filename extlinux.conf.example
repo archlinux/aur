@@ -10,12 +10,12 @@ label l0
         initrd /initramfs-linux
         fdt /mnt-reform.dtb
 
-        append   ro root=/dev/nvme0n1p1 no_console_suspend cryptomgr.notests ${bootargs} console=tty1 loglevel=3
+        append   ro root=LABEL=ROOT no_console_suspend cryptomgr.notests ${bootargs} console=tty1 loglevel=3
 
 label l0r
         menu label Arch mnt-reform-arm64 (rescue target)
         linux /Image-old
         initrd /initramfs-linux-old
         fdt /mnt-reform-old.dtb
-        append   ro root=/dev/nvme0n1p1 no_console_suspend cryptomgr.notests ${bootargs} console=tty1 loglevel=3
+        append   ro root=LABEL=ROOT no_console_suspend cryptomgr.notests ${bootargs} console=tty1 loglevel=3
 

@@ -25,7 +25,7 @@ source_x86_64=(
   "headers-${pkgver}-x86_64.tar.gz::https://github.com/cetola/mnt-build/releases/download/${pkgver}-x86_64/headers-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '8a15cec00fc571b7b62dba4ad9aa7b0132fe837dca3a424828bb19a37f5d3e58'
+  '19f4c4f1606daa548e5b8b9f007f76f11b57a205f6fb8217540858eafe132ee7'
   'b83f9be0434e00b3237746722a7120f0d147847d509109c580a09fa5f62b5e21'
   '24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e'
   '0442b7dfd35d5a4cf746aa696c88412f133459d423c712427cdc8398bf4e0354'
