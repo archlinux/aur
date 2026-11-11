@@ -3,7 +3,7 @@
 pkgname=bc250-control-center-git
 # pkgver() rewrites this from the cloned main branch on every build; the
 # value here is only what the AUR shows until publish-aur.sh refreshes it.
-pkgver=1.22.3.r140.ga414c42
+pkgver=1.22.4.r144.g12ae021
 pkgrel=1
 pkgdesc='BC-250 monitoring, tuning and recovery control center'
 arch=('any')
