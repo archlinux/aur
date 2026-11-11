@@ -1,8 +1,9 @@
+#!/bin/bash
 # install.sh and manual copies are invisible to pacman, and --overwrite can
 # bypass pacman's own file-conflict check. A file pacman already owns is an
 # upgrade/reinstall and must pass.
 pre_install() {
-    for bin in /usr/bin/whoisthat /usr/bin/whoisthat-core; do
+    for bin in /usr/bin/whoisthat /usr/bin/whoisthat-core /usr/bin/whoisthat-runner; do
         [ -e "$bin" ] || continue
         if ! pacman -Qo "$bin" >/dev/null 2>&1; then
             echo ":: WhoisThat is already installed outside pacman (install.sh or a manual copy)." >&2
@@ -13,13 +14,36 @@ pre_install() {
     done
 }
 
+whoisthat_init_services() {
+    [ -x /usr/lib/whoisthat/install-init ] || return 0
+    local user="${SUDO_USER:-}"
+    if [ -z "$user" ] || [ "$user" = root ]; then
+        /usr/lib/whoisthat/install-init cgroup enable >/dev/null 2>&1 || true
+        echo ":: WARNING: no target user detected (pacman was run as root)."
+        echo "::   Run: sudo /usr/lib/whoisthat/install-init runner enable <user> <home>"
+        return 0
+    fi
+    local home
+    home=$(getent passwd "$user" | cut -d: -f6)
+    /usr/lib/whoisthat/cgroup-setup "$user" >/dev/null 2>&1 || true
+    /usr/lib/whoisthat/install-init cgroup enable >/dev/null 2>&1 || true
+    /usr/lib/whoisthat/install-init runner enable "$user" "$home" >/dev/null 2>&1 || true
+    /usr/lib/whoisthat/install-init core enable "$user" "$home" >/dev/null 2>&1 || true
+}
+
 post_install() {
     setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core 2>/dev/null || {
         echo ":: WARNING: Could not set capabilities on whoisthat-core."
         echo "   TUN mode requires: sudo setcap cap_net_admin,cap_net_raw,cap_setpcap=+ep /usr/bin/whoisthat-core"
     }
+    whoisthat_init_services
 }
 
 post_upgrade() {
     post_install
+}
+
+pre_remove() {
+    [ -x /usr/lib/whoisthat/install-init ] &&
+        /usr/lib/whoisthat/install-init remove >/dev/null 2>&1 || true
 }
