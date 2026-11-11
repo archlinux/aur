@@ -1,0 +1,16 @@
+pkgbase = somad
+	pkgdesc = A client for streaming SomaFM radio channels
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/samuelb/somad
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = alsa-lib
+	depends = ca-certificates
+	source = somad-0.19.1.tar.gz::https://github.com/samuelb/somad/releases/download/v0.19.1/somad-0.19.1.tar.gz
+	sha256sums = ece9167d053cf44720ba3efd70b84402e01e6ae6bf7f066594122d9cb2e2e7f6
+
+pkgname = somad
