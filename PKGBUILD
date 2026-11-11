@@ -1,9 +1,9 @@
 # Maintainer: Pierpaolo Spadafora <pierpaolospadafora@proton.me>
 pkgname=vesta-bin
 _pkgname=vesta
-_srcname=vesta 
+_srcname=vesta
 _appid=com.vesta.desktop
-pkgver=0.30.1
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Video Extraction, Sync & Translation for Anki"
 arch=('x86_64')
@@ -30,14 +30,14 @@ depends=(
     'vulkan-icd-loader'
 )
 
-provides=("${_pkgname}" "vesta" "Vesta" "vesta")
-conflicts=("${_pkgname}" "vesta" "Vesta" "vesta")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 options=('!debug')
 
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_srcname}_${pkgver}_amd64.deb"
         "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 
-sha256sums=('7ab112a2f6d97a339e4526b850e8a9242843614f27ae742ab30e6d5c1c5e3249'
+sha256sums=('40636d06c31a8a672d2df2e1c58b697f4b95393d4183baa81c84c4b59e88a653'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
