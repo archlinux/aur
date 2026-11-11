@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=webdav-git
-pkgver=r316.2b742d0
+pkgver=r317.b6c41e4
 pkgrel=1
 pkgdesc='Standalone WebDAV server (git version)'
 arch=('x86_64' 'aarch64')
