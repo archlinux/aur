@@ -2,7 +2,7 @@
 # ============================================================================
 #  MoonlightWeb — AUR package (TEMPLATE, not a valid PKGBUILD as it stands).
 #
-#  0.4.2 / cd1c8a2fb9b013735b34b88f7624bc715f504b7150aec21214deb59b7bb6a723 are substituted by the `aur` job in
+#  0.4.3 / e4648c821b9a84b6846bb7a57d5c6e9405634eccda73434b60b4a635affe8c0f are substituted by the `aur` job in
 #  .github/workflows/release.yml, which pushes the result — together with the
 #  matching .SRCINFO, rendered from the same values — to
 #  ssh://aur@aur.archlinux.org/moonlightweb-bin.git. Edit this file, not the
@@ -20,7 +20,7 @@
 #  single extraction and the app appears in KDE Discover like any other.
 # ============================================================================
 pkgname=moonlightweb-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Stream your gaming PC to any device with a browser"
 arch=('x86_64')
@@ -51,7 +51,7 @@ install=moonlightweb-bin.install
 options=('!strip' '!debug')
 
 source=("moonlightweb-${pkgver}.deb::https://github.com/linckosz/moonlight-web/releases/download/v${pkgver}/moonlightweb-${pkgver}-linux-x64.deb")
-sha256sums=('cd1c8a2fb9b013735b34b88f7624bc715f504b7150aec21214deb59b7bb6a723')
+sha256sums=('e4648c821b9a84b6846bb7a57d5c6e9405634eccda73434b60b4a635affe8c0f')
 
 package() {
     # makepkg hands .deb to libarchive, which unpacks it into its ar members;
