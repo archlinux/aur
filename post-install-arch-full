@@ -45,11 +45,15 @@ gerar_log_pdf() {
     exec > /dev/tty 2>&1
 
     echo ""
-    echo "[ODIN LOG] Finalizando gravação do log em formato PDF..."
+    msg "${YELLOW_NEON}[ODIN LOG] Finalizando gravação do log em formato PDF...${NC}"\
+        "${YELLOW_NEON}[ODIN LOG] Finalizing log recording in PDF format...${NC}" \
+        "${YELLOW_NEON}[ODIN LOG] Finalizando la grabación del registro en formato PDF...${NC}"
 
     # Garante as dependências necessárias no Arch Linux
     if ! command -v enscript &>/dev/null || ! command -v ps2pdf &>/dev/null || ! command -v iconv &>/dev/null; then
-        echo "[ODIN LOG] Instalando dependências ('enscript', 'ghostscript', 'glibc')..."
+        msg "${GREEN_NEON}[ODIN LOG] Instalando dependências ('enscript', 'ghostscript', 'glibc')...${NC}"\
+            "${GREEN_NEON}[ODIN LOG] Installing dependencies ('enscript', 'ghostscript', 'glibc')...${NC}" \
+            "${GREEN_NEON}[ODIN LOG] Instalando dependencias ('enscript', 'ghostscript', 'glibc')...${NC}"
         sudo pacman -S --noconfirm --needed enscript ghostscript glibc >/dev/null 2>&1
     fi
 
@@ -62,11 +66,15 @@ gerar_log_pdf() {
     fi
 
     if [[ -f "$LOG_PDF" ]]; then
-        echo "[ODIN LOG] Logs gravados com sucesso em:"
+        msg "${YELLOW_NEON}[ODIN LOG] Logs gravados com sucesso em:${NC}"\
+            "${YELLOW_NEON}[ODIN LOG] Logs successfully saved at:${NC}" \
+            "${YELLOW_NEON}[ODIN LOG] Registros guardados con éxito en:${NC}"
         echo "  - TXT: $LOG_TXT"
         echo "  - PDF: $LOG_PDF"
     else
-        echo "[ODIN LOG] Falha ao gerar PDF. O log TXT está disponível em: $LOG_TXT"
+        msg "${RED_NEON}[ODIN LOG] Falha ao gerar PDF. O log TXT está disponível em${NC}: $LOG_TXT"\
+            "${RED_NEON}[ODIN LOG] Failed to generate PDF. The TXT log is available at${NC}: $LOG_TXT" \
+            "${RED_NEON}[ODIN LOG] Error al generar PDF. El registro TXT está disponible en${NC}: $LOG_TXT"
     fi
 }
 
@@ -190,7 +198,7 @@ MENU_CABECALHO() {
     msg "${CYAN_NEON}Bem-vindo ao Odin -  Pós-Instalação Arch Linux 🐧${NC}"\
         "${CYAN_NEON}Welcome to Odin - Post-Installation Arch Linux Installer 🐧${NC}" \
         "${CYAN_NEON}Bienvenido a Odin - Post-Instalación Arch Linux 🐧${NC}"
-    sleep 1.5
+    sleep 1
     echo -e "                                                        \e[38;5;32m▗\e[38;5;81m▄▄\e[38;5;25m▄\e[0m"
     echo -e "                                                    \e[38;5;38m▄\e[38;5;81m▄\e[48;5;38m \e[48;5;45m▀ \e[38;5;38;48;5;25m▐▀\e[38;5;45;48;5;32m▐\e[48;5;81m▄▄\e[38;5;32;49m▙\e[38;5;81m▄\e[0m"
     echo -e "                                                 \e[38;5;38m▄\e[38;5;81m▟\e[48;5;45m▀ \e[38;5;25m▄\e[38;5;18;48;5;32m▄\e[38;5;19;48;5;25m▄\e[48;5;18m▄▄█\e[48;5;25m▙▄\e[38;5;38;48;5;18m▘\e[38;5;25;48;5;45m▄\e[38;5;38m▖\e[38;5;81m▝\e[38;5;32m▀\e[38;5;81;49m▄\e[0m"
@@ -219,7 +227,6 @@ MENU_CABECALHO() {
     echo -e "        \e[38;5;51m▙▘ ▛▄ ▐▝▚ ▙▞   ▌ ▌▌ ▌▌ ▌ ▐ ▌  ▌   ▌   ▌ ▌▌ ▌ ▌ ▛▖▌ ▗▜▚ ▛▞▌ ▞▖ ▞▝▖\e[0m"
     echo -e "        \e[38;5;45m▌▞ ▌ ▌▐▚\e[38;5;39m▖ \e[38;5;45m▌▚   ▛▀ ▛▛ ▌ ▌ ▐ ▛▀ ▌   ▌   ▌ ▌▌ ▌ ▌ ▌▝▌  ▐  ▛▝▌▝\e[38;5;39m▖\e[38;5;45m▞ ▞▞\e[38;5;39m▖\e[0m"
     echo -e "        \e[38;5;39m▛  ▌ ▌▐ ▝ ▌ ▘  ▌  ▌▝\e[38;5;33m▖\e[38;5;39m▚\e[38;5;33m▄\e[38;5;39m▘▚▞ \e[38;5;33m▙▄▖\e[38;5;39m▚\e[38;5;33m▄▖ \e[38;5;39m▌   ▚\e[38;5;33m▄\e[38;5;39m▘\e[38;5;33m▙▄\e[38;5;39m▘\e[38;5;33m▄▙▖\e[38;5;39m▌ ▌  ▐  ▌ ▌ ▝  ▌ ▌\e[0m"
-    sleep 0.7
     echo "" 
     echo -e "  ${PINK_NEON}─────────────────────────────── ${RED_NEON}< PROJECT-ODIN -V: 1.0 >${PINK_NEON} ────────────────────────────────${NC}"
     echo ""
@@ -228,7 +235,7 @@ MENU_CABECALHO() {
     echo -e "${RED_NEON}By: 𝕿𝖍𝖊 𝑺𝖊𝖛𝖊𝖓𝖙𝖍 🐧 ${NC}"
     echo -e "${RED_NEON}--------------------------------${NC}"
     echo ""
-    sleep 1.7
+    sleep 1
 }
 
 
@@ -294,7 +301,7 @@ CHAMAR_MENU_OPCOES() {
                         echo ""
                         # Loop de contagem regressiva de 5 a 0
                         MENSAGEM_FINAL
-                        sleep 2
+                        sleep 1
                         for i in {5..0}; do
                             msg "Encerrando em $i..." "Exiting in $i..." "Cerrando en $i..."
                             sleep 1
@@ -308,7 +315,7 @@ CHAMAR_MENU_OPCOES() {
                         msg "\n${RED_NEON}[ERRO] Opção inválida! Retornando ao menu principal...${NC}" \
                             "\n${RED_NEON}[ERROR] Invalid option! Returning to main menu...${NC}" \
                             "\n${RED_NEON}[ERROR] ¡Opción inválida! Volviendo al menú principal...${NC}"
-                        sleep 2
+                        sleep 1
                         ;;
                 esac
                 ;;
@@ -421,9 +428,6 @@ FUNCAO_CORE(){
         local pkg out=""
         local -a pkgs_ok=() pkgs_ignorados=() pkgs_falha=() pkgs_instalados=()
 
-        # Uma única consulta -Si separa o que existe do que não existe (renomeado,
-        # removido, repo desativado). Saída 0 = todos existem. Se falhar, a mensagem
-        # do pacman aponta os ausentes; se ela vier em formato inesperado, confere um a um.
         if out=$(LC_ALL=C pacman -Si -- "$@" 2>&1 >/dev/null); then
             pkgs_ok=("$@")
         else
@@ -522,8 +526,6 @@ FUNCAO_CORE(){
         fi
     }
 
-    # Barra de progresso: $1 = atual, $2 = total. Redesenha na mesma linha: o "\c"
-    # do echo -e (usado pelo msg) suprime a quebra de linha.
     _core_draw_bar() {
         local atual=$1 total=$2 largura=20 eq=0 cheio="" vazio="" pct=""
         (( total > 0 )) || total=1
@@ -986,7 +988,6 @@ FUNCAO_CORE(){
     _core_ln
 
     # [13/15] pacotes base + headers (uma única consulta ao pacman)
-    sleep 0.7
     echo ""
     _core_sep
     echo ""
@@ -997,11 +998,9 @@ FUNCAO_CORE(){
         "${CYAN_NEON}[13/15]: Installing base packages and kernel headers:${NC} ${base_pkgs[*]}..." \
         "${CYAN_NEON}[13/15]: Instalando paquetes base y cabeceras del kernel:${NC} ${base_pkgs[*]}..."
     _core_ln
-    sleep 0.7
     _core_install "${base_pkgs[@]}"
 
     # [14/15] Timeshift (somente raiz ext4)
-    sleep 0.7
     echo ""
     root_fs=$(findmnt -n -o FSTYPE / 2>/dev/null)
     echo ""
@@ -1046,7 +1045,7 @@ FUNCAO_CORE(){
             msg "$linha" "$linha" "$linha"
         done
         _core_ln 86 - "$CYAN_NEON"
-        sleep 1.5
+        sleep 1
     fi
 
     # [15/15] fim
@@ -1082,7 +1081,6 @@ FUNCAO_OTIMIZACAO() {
 
     # Instala pacotes: _ot_ins <qtd_essenciais> <pacotes...> (os essenciais vêm primeiro)
     _ot_ins() {
-        sleep 0.5
         local n="$1" p="" i=0
         local -a ot_ok=() ot_ign=() ot_falta=() ot_opc=()
         shift
@@ -1865,8 +1863,6 @@ FUNCAO_AUR_HELPER() {
         return 0
     }
 
-    # Instala yay-bin ou paru-bin pelo AUR: _ah_bin <yay|paru> <0|1 = complementar>
-    # Retorna 1 só se não conseguir criar o diretório temporário; falha de build não é erro.
     _ah_bin() {
         local n="$1" dep=go
         [[ $n == paru ]] && dep=rust
@@ -2063,7 +2059,7 @@ FUNCAO_AUR_HELPER() {
             msg "${CYAN_NEON}Gostaria de instalar o pamac? (muito bom pra iniciante) Trata-se de um helper visual desenvolvido e mantido pela equipe do Manjaro Linux.${NC}" \
                 "${CYAN_NEON}Would you like to install pamac? (great for beginners) It is a visual helper developed and maintained by the Manjaro Linux team.${NC}" \
                 "${CYAN_NEON}¿Desea instalar pamac? (muy bueno para principiantes) Se trata de un helper visual desarrollado y mantenido por el equipo de Manjaro Linux.${NC}"
-            sleep 0.7
+            sleep 1
             echo ""
             msg "1) Sim" \
                 "1) Yes" \
@@ -2319,7 +2315,7 @@ FUNCAO_INSTALAR_NAVEGADORES() {
             _nv_opt "0) Concluir / Seguir com o script" \
                 "0) Finish / Proceed with script" \
                 "0) Finalizar / Continuar con el script"
-            _nv_ask op "Escolha / Choice / Opción: 1-2-3-4-5-6-0 " || return 1
+            _nv_ask op "Escolha / Choice / Opción: 1-2-3-4-5-6-0: =>  " || return 1
 
             case "$op" in
                 1|firefox) sel=(1) ;;
@@ -2337,13 +2333,14 @@ FUNCAO_INSTALAR_NAVEGADORES() {
                         _nv_opt "${CYAN_NEON}Digite os números dos navegadores que quer instalar (de 1 a 5):${NC}" \
                             "${CYAN_NEON}Enter the numbers of the browsers you want to install (from 1 to 5):${NC}" \
                             "${CYAN_NEON}Introduce los números de los navegadores que quieres instalar (del 1 al 5):${NC}"
+                        echo ""    
                         _nv_opt "Exemplos: 1 4 2  |  1,3,5  |  1-2-3-4-5  |  12345  (qualquer ordem, repetidos são ignorados)" \
                             "Examples: 1 4 2  |  1,3,5  |  1-2-3-4-5  |  12345  (any order, repeated ones are ignored)" \
-                            "Ejemplos: 1 4 2  |  1,3,5  |  1-2-3-4-5  |  12345  (cualquier orden, los repetidos se ignoran)"
+                            "Ejemplos: 1 4 2  |  1,3,5  |  1-2-3-4-5  |  12345  (cualquier orden, los repetidos se ignoran)"    
                         _nv_opt "0) Voltar ao menu" \
                             "0) Back to menu" \
                             "0) Volver al menú"
-                        read -rp "Escolha / Choice / Opción: " mu || return 1
+                        read -rp "Escolha / Choice / Opción: =>  " mu || return 1
                         _nv_ln
                         mu="${mu,,}"
 
@@ -2477,6 +2474,7 @@ FUNCAO_INSTALAR_NAVEGADORES() {
                         _nv_opt "${CYAN_NEON}Deseja instalar um AUR helper agora para prosseguir?${NC}" \
                             "${CYAN_NEON}Do you want to install an AUR helper now to proceed?${NC}" \
                             "${CYAN_NEON}¿Desea instalar un AUR helper ahora para continuar?${NC}"
+                        echo ""    
                         _nv_opt "1) Instalar 'yay'" \
                             "1) Install 'yay'" \
                             "1) Instalar 'yay'"
@@ -2569,7 +2567,7 @@ FUNCAO_INSTALAR_NAVEGADORES() {
                             _nv_opt "0) Cancelar instalação dos pacotes do AUR" \
                                 "0) Cancel the AUR packages installation" \
                                 "0) Cancelar la instalación de los paquetes del AUR"
-                            _nv_ask hc "Escolha / Choice / Opción: 1-2-0 " 107 || return 1
+                            _nv_ask hc "Escolha / Choice / Opción: 1-2-0 : => " 107 || return 1
                             if [[ $hc == @(1|yay) ]]; then
                                 helper=yay; break
                             elif [[ $hc == @(2|paru) ]]; then
@@ -2683,7 +2681,7 @@ FUNCAO_INSTALAR_ARCH_UPDATE_FULL() {
             "${CYAN_NEON}Arch-update-full es una herramienta altamente recomendada para verificar las actualizaciones disponibles en el sistema y mantener tu Arch siempre actualizado y limpio. ¿Deseas instalarla ahora? (s/n):${NC}"
         echo -e "${NEON_BLUE}-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------${NC}"
         echo ""
-        if ! read -rp "Opção / Choice / Opción [s/y/n]: " resp_update; then
+        if ! read -rp "Opção / Choice / Opción [s/y/n]: =>  " resp_update; then
             return 1
         fi
         resp_update="${resp_update//[[:space:]]/}"
@@ -2911,7 +2909,7 @@ FUNCAO_INSTALAR_WALLPAPERS() {
             "${CYAN_NEON}Do you want to install Project Odin's custom wallpapers? (y/n):${NC}" \
             "${CYAN_NEON}¿Deseas instalar los fondos de pantalla personalizados del Proyecto Odin? (s/n):${NC}"
         echo ""
-        if ! read -rp "Opção / Choice / Opción [s/y/n]: " resp_wall; then
+        if ! read -rp "Opção / Choice / Opción [s/y/n]: =>  " resp_wall; then
             return 1
         fi
         resp_wall="${resp_wall//[[:space:]]/}"
@@ -3326,7 +3324,7 @@ ESCOLHA_ENTRE_MODOS() {
             "${WHITE_NEON}Escriba la opción deseada [1 o 2]:${NC}"
         echo ""
 
-        read -rp ">> " opcao_metapacote || return 1
+        read -rp ">>  " opcao_metapacote || return 1
         echo ""
 
         opcao_metapacote="${opcao_metapacote//[[:space:]]/}"
@@ -3389,7 +3387,7 @@ ESCOLHA_ENTRE_MODOS() {
             "${WHITE_NEON}Elija una opción del ${YELLOW_NEON}1 al 3${WHITE_NEON} o ${RED_NEON}0${WHITE_NEON} para omitir:${NC}"
         echo ""
 
-        read -rp ">> " opcao_escolha || return 1
+        read -rp ">>  " opcao_escolha || return 1
         echo ""
 
         opcao_escolha="${opcao_escolha//[[:space:]]/}"
@@ -3641,7 +3639,7 @@ GAME_MODE() {
                 msg "${YELLOW_NEON}[AVISO] Ambos os AUR helpers (yay e paru) foram detectados. Escolha digitando o número [1 ou 2] ou o nome [yay ou paru]:${NC}\n[1] yay\n[2] paru" \
                     "${YELLOW_NEON}[WARNING] Both AUR helpers (yay and paru) were detected. Choose by typing the number [1 or 2] or name [yay or paru]:${NC}\n[1] yay\n[2] paru" \
                     "${YELLOW_NEON}[AVISO] Ambos los AUR helpers (yay y paru) fueron detectados. Elija escribiendo el número [1 o 2] o el nombre [yay o paru]:${NC}\n[1] yay\n[2] paru"
-                _gm_ask gm_op ">> " || return 1
+                _gm_ask gm_op ">>  " || return 1
                 if [[ $gm_op == @(1|yay) ]]; then
                     gm_helper="yay"; break
                 elif [[ $gm_op == @(2|paru) ]]; then
@@ -3852,7 +3850,7 @@ GAME_MODE() {
                 "${YELLOW_NEON}¿Deseas instalar MangoHud y lib32-mangohud para monitoreo de FPS y rendimiento? Escribe [1] para Sí o [2] para No (o sim/no):${NC}\n[1] Sim / Yes\n[2] Não / No"
             _gm_ln 177
             echo ""
-            _gm_ask gm_op ">> " || return 1
+            _gm_ask gm_op ">>  " || return 1
 
             if [[ $gm_op == @(1|s|sim|y|yes|si) ]]; then
                 if pacman -Q mangohud lib32-mangohud &>/dev/null; then
@@ -3884,7 +3882,7 @@ GAME_MODE() {
                 msg "${RED_NEON}[ERRO] Opção inválida! Digite [1] para sim ou [2] para não.${NC}" \
                     "${RED_NEON}[ERROR] Invalid option! Type [1] for yes or [2] for no.${NC}" \
                     "${RED_NEON}[ERROR] ¡Opción inválida! Escriba [1] para sí o [2] para no.${NC}"
-                sleep 1.5
+                sleep 1
             fi
         done
         echo ""
@@ -4134,7 +4132,6 @@ DEV_MODE() {
         fi
     }
 
-    # O nome é um grupo de pacotes? (provided = todos os membros instalados; official = falta algum)
     _dv_grp() {
         local g="" m=""
         g=$(pacman -Sgq -- "$1" 2>/dev/null) || return 1
@@ -4169,7 +4166,6 @@ DEV_MODE() {
         return 0
     }
 
-    # O pacote está instalado (ou provido por outro / grupo completo)? Usa o cache e confirma ao vivo
     _dv_ok() {
         local g="" m=""
         [[ $dv_in == *$'\n'"$1"$'\n'* ]] && return 0
@@ -4319,7 +4315,6 @@ DEV_MODE() {
             "${dv_tc[@]}" "$1" "$2" >/dev/null 2>&1
     }
 
-    # <comando> <flag> responde? (uma nova tentativa após 1s; o resultado fica em cache para não repetir node/npm/dotnet)
     _dv_cmd() {
         local k="$1 $2"
         if [[ $1 == pkg ]]; then _dv_ok "$2"; return; fi
@@ -4363,7 +4358,6 @@ DEV_MODE() {
         fi
     }
 
-    # Mantém o sudo "quente" durante a execução (o sleep filho morre junto com o laço)
     _dv_kas() {
         local pai=$$ s=""
         (
@@ -4379,7 +4373,6 @@ DEV_MODE() {
         return 0
     }
 
-    # Adiciona o usuário a <grupo> (SUDO_USER se rodando via sudo; avisa se não for possível)
     _dv_grupo() {
         local g="$1" u="${SUDO_USER:-${USER:-}}" gn="" gm="" fnd=0 has=0
         if [[ -z $u || $u == root ]]; then
@@ -4428,7 +4421,6 @@ DEV_MODE() {
         fi
     }
 
-    # Rede NAT "default" do libvirt: existe? ativa? inicia automaticamente? (listas por nome, sem depender do idioma)
     _dv_rede() {
         local all="" act="" i=0
         for ((i = 0; i < 5; i++)); do
@@ -4455,7 +4447,6 @@ DEV_MODE() {
         fi
     }
 
-    # A CPU expõe VT-x/AMD-V (vmx/svm)? Sem isso as VMs ficam lentas ou nem iniciam
     _dv_hw() {
         local c=""
         [[ -r /proc/cpuinfo ]] || return 0
@@ -5276,7 +5267,7 @@ HACKER_MODE() {
 
     # Lê uma linha em $1. EOF => abortar=1 e retorno 1.
     _hk_ler() {
-        IFS= read -r -p ">> " "$1" && return 0
+        IFS= read -r -p ">>  " "$1" && return 0
         abortar=1
         return 1
     }
@@ -6978,7 +6969,7 @@ PERGUNTAR_REINICIAR() {
     
     echo ""
 
-    read -rp " > " RESPOSTA
+    read -rp " =>  " RESPOSTA
 
     case "$RESPOSTA" in
         [Ss]|[Yy])
@@ -6989,7 +6980,7 @@ PERGUNTAR_REINICIAR() {
 
             for i in {5..1}; do
                 echo -ne " ${CYAN_NEON}Reboot $i...${NC}\r"
-                sleep 1
+                sleep 0.7
             done
             echo ""
             sudo reboot
@@ -7000,7 +6991,7 @@ PERGUNTAR_REINICIAR() {
             msg "${CYAN_NEON} [i] Reinicialização ignorada. Voltando ao menu...${NC}" \
                 "${CYAN_NEON} [i] Reboot skipped. Returning to menu...${NC}" \
                 "${CYAN_NEON} [i] Reinicio omitido. Volviendo al menú...${NC}"
-            sleep 1.5
+            sleep 1
             ;;
 
         *)
@@ -7008,7 +6999,7 @@ PERGUNTAR_REINICIAR() {
             msg "${RED_NEON} [!] Opção inválida. Retornando ao menu por segurança...${NC}" \
                 "${RED_NEON} [!] Invalid option. Returning to menu for safety...${NC}" \
                 "${RED_NEON} [!] Opción inválida. Volviendo al menú por seguridad...${NC}"
-            sleep 1.5
+            sleep 1
             ;;
     esac
 }
@@ -7104,7 +7095,7 @@ OPCAO_INICIANTE_SCRIPT_PADRAO() {
         "${CYAN_NEON}Executing hardware optimization function to improve the system with specific libraries for your hardware...${NC}" \
         "${CYAN_NEON}Ejecutando la función de optimización de hardware para mejorar el sistema con bibliotecas específicas para su hardware..${NC}"
     echo -e "${NEON_BLUE}============================================================================================================================${NC}"
-    sleep 2
+    sleep 1.5
     echo ""
         FUNCAO_OTIMIZACAO
     echo ""    
@@ -7114,7 +7105,7 @@ OPCAO_INICIANTE_SCRIPT_PADRAO() {
         "${CYAN_NEON}Executing CODECS function to install multimedia codecs...${NC}" \
         "${CYAN_NEON}Ejecutando función CODECS para instalar códecs multimedia...${NC}"
     echo -e "${NEON_BLUE}===========================================================================================${NC}"    
-    sleep 2 
+    sleep 1.5 
     echo ""  
         CODECS_MULTIMIDIA_CORE
     echo "" 
@@ -7124,7 +7115,7 @@ OPCAO_INICIANTE_SCRIPT_PADRAO() {
         "${CYAN_NEON}Starting function to install an AUR helper, extremely important and necessary to download packages from AUR...${NC}" \
         "${CYAN_NEON}Iniciando función para instalar un AUR helper, extremadamente importante y necesario para descargar paquetes de AUR...${NC}"
     echo -e "${NEON_BLUE}==========================================================================================================================${NC}"
-    sleep 2
+    sleep 1.5
     echo ""
         FUNCAO_AUR_HELPER
     echo ""
@@ -7134,7 +7125,7 @@ OPCAO_INICIANTE_SCRIPT_PADRAO() {
         "${CYAN_NEON}Loading browser installation module. Now you can, if you want, install a highly recommended internet browser to browse the web...${NC}" \
         "${CYAN_NEON}Cargando módulo de instalación de navegador. Ahora puedes, si lo deseas, instalar un navegador de internet altamente recomendado para navegar por la red...${NC}"
     echo -e "${NEON_BLUE}======================================================================================================================================================================${NC}"
-    sleep 2
+    sleep 1.5
     echo ""
         FUNCAO_INSTALAR_NAVEGADORES
     echo ""    
@@ -7144,7 +7135,7 @@ OPCAO_INICIANTE_SCRIPT_PADRAO() {
         "${CYAN_NEON}The Arch base has been configured. Would you like to install a tool to always keep your system updated and clean? And custom wallpapers?${NC}" \
         "${CYAN_NEON}La base de Arch ha sido configurada. ¿Te gustaría instalar una herramienta para mantener siempre tu sistema actualizado y limpio? ¿Y fondos de pantalla personalizados?${NC}"
     echo -e "${NEON_BLUE}======================================================================================================================================================================${NC}"
-    sleep 2
+    sleep 1.5
     echo ""
         FUNCAO_INSTALAR_ARCH_UPDATE_FULL
         sleep 1
@@ -7159,7 +7150,7 @@ OPCAO_INICIANTE_SCRIPT_PADRAO() {
     sleep 0.7
     echo ""
     MENSAGEM_FINAL
-    sleep 2
+    sleep 1
     PERGUNTAR_REINICIAR
 }
 
@@ -7223,7 +7214,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
     ${CYAN_NEON}2) Modo Pré-definido: Dev${NC} 
     Instala as principais linguagens de programação, compiladores e o editor de sua preferência (VS Code, Code - OSS, Zed).
 
-    ${CYAN_NEON}3) Modo Pré-definido: Hacker/Pentest ${NC} 
+    ${RED_NEON}3) Modo Pré-definido: Hacker/Pentest ${NC} 
     Prepara o sistema para testes de invasão, habilita o repositório do BlackArch e instala as principais ferramentas.
 
     ${CYAN_NEON}4) Voltar ao menu principal${NC}" \
@@ -7233,7 +7224,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
     ${CYAN_NEON}2) Preset Mode: Dev ${NC} 
     Installs the main programming languages, compilers, and your preferred editor (VS Code, Code - OSS, Zed).
 
-    ${CYAN_NEON}3) Preset Mode: Hacker/Pentest ${NC} 
+    ${RED_NEON}3) Preset Mode: Hacker/Pentest ${NC} 
     Prepares the system for penetration testing, enables BlackArch repositories, and installs top tools.
 
     ${CYAN_NEON}4) Return to main menu${NC}" \
@@ -7243,7 +7234,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
     ${CYAN_NEON}2) Modo Predefinido: Dev ${NC} 
     Instala los principales lenguajes de programación, compiladores y el editor de tu preferencia (VS Code, Code - OSS, Zed).
 
-    ${CYAN_NEON}3) Modo Predefinido: Hacker/Pentest ${NC} 
+    ${RED_NEON}3) Modo Predefinido: Hacker/Pentest ${NC} 
     Prepara el sistema para pentesting, habilita los repositorios de BlackArch e instala las herramientas principales.
 
     ${CYAN_NEON}4) Volver al menú principal${NC}"
@@ -7266,7 +7257,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
             msg "${CYAN_NEON}[MODO GAME]${NC} Iniciando protocolo de preparação para jogos..." \
                 "${CYAN_NEON}[GAME MODE]${NC} Starting gaming preparation protocol..." \
                 "${CYAN_NEON}[MODO JUEGO]${NC} Iniciando protocolo de preparación para juegos..."
-            sleep 2
+            sleep 1.5
             echo ""    
             FUNCAO_CORE
             sleep 1
@@ -7393,7 +7384,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
             1|sim|yes|si)
                 echo ""
                 MENSAGEM_FINAL
-                sleep 2
+                sleep 1
                 for i in {5..0}; do
                     msg "Encerrando em $i..." "Exiting in $i..." "Cerrando en $i..."
                     sleep 1
@@ -7409,7 +7400,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
                 msg "\n${RED_NEON}[ERRO] Opção inválida! Retornando ao menu principal...${NC}" \
                     "\n${RED_NEON}[ERROR] Invalid option! Returning to main menu...${NC}" \
                     "\n${RED_NEON}[ERROR] ¡Opción inválida! Volviendo al menú principal...${NC}"
-                sleep 2
+                sleep 1
                 ;;
         esac
         ;;
@@ -7417,7 +7408,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
             msg "\n${RED_NEON}[ERRO] Opção inválida! Tente novamente...${NC}" \
                 "\n${RED_NEON}[ERROR] Invalid option! Try again...${NC}" \
                 "\n${RED_NEON}[ERROR] ¡Opción inválida! Intente de nuevo...${NC}"
-            sleep 1.5
+            sleep 1
             ;;
     esac    
 
