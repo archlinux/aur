@@ -1,0 +1,10 @@
+#!/bin/sh
+# Native install4j launcher replacement for a source-built Arch package.
+# Keep the upstream OpenWebStart stage-1 launcher (JVM selection, security, forking).
+JAVA=/usr/lib/jvm/java-11-openjdk/bin/java
+JAR=/usr/share/java/openwebstart/openwebstart.jar
+exec "$JAVA" \
+  -Dinstall4j.exeDir=/usr/bin \
+  -Dinstall4j.appDir=/usr/share/java/openwebstart \
+  -cp "$JAR" \
+  com.openwebstart.launcher.OpenWebStartLauncher "$@"

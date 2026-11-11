@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OpenWebStart Settings
+Comment=Configure OpenWebStart and manage JVMs
+Exec=itw-settings
+TryExec=itw-settings
+Icon=openwebstart
+Terminal=false
+Categories=Settings;Java;

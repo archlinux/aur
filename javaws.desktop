@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OpenWebStart
+Comment=Launch Java Web Start (JNLP) applications
+Exec=javaws %u
+TryExec=javaws
+Icon=openwebstart
+Terminal=false
+Categories=Network;Java;
+MimeType=application/x-java-jnlp-file;
+NoDisplay=true

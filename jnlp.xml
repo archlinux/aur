@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-java-jnlp-file">
+    <comment>Java Network Launch Protocol</comment>
+    <glob pattern="*.jnlp"/>
+    <glob pattern="*.jnlpx"/>
+  </mime-type>
+</mime-info>

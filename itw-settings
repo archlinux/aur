@@ -1,0 +1,8 @@
+#!/bin/sh
+JAVA=/usr/lib/jvm/java-11-openjdk/bin/java
+JAR=/usr/share/java/openwebstart/openwebstart.jar
+exec "$JAVA" \
+  -Dinstall4j.exeDir=/usr/bin \
+  -Dinstall4j.appDir=/usr/share/java/openwebstart \
+  -cp "$JAR" \
+  com.openwebstart.launcher.ControlPanelLauncher "$@"
