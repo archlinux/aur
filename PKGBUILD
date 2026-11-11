@@ -1,4 +1,5 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
+# Issues and fixes: https://github.com/shbernal/aur-packages
 
 _repo=shift
 _user=shift-editor
