@@ -1,7 +1,7 @@
 pkgbase = zigfetch-bin
 	pkgdesc = Zigfetch is a minimal neofetch/fastfetch like system information tool.
 	pkgver = 0.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/utox39/zigfetch
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = zigfetch-bin
 	conflicts = zigfetch
 	options = !debug
 	source = https://github.com/utox39/zigfetch/releases/download/v0.31.0/zigfetch-x86_64-linux.zip
-	source = https://raw.githubusercontent.com/utox39/zigfetch/v0.31.0/LICENSE
+	source = LICENSE-0.31.0::https://raw.githubusercontent.com/utox39/zigfetch/v0.31.0/LICENSE
 	source = https://raw.githubusercontent.com/utox39/zigfetch/v0.31.0/README.md
 	source = https://raw.githubusercontent.com/utox39/zigfetch/v0.31.0/config.json
 	sha256sums = fa0ba31960675cf9eef731bf39eee190c278eae5333fd8bbb1671117795646d7
