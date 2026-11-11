@@ -1,0 +1,5 @@
+[ferrocrypt-bin]
+source = "github"
+github = "alexylon/ferrocrypt"
+use_latest_release = true
+prefix = "v"
