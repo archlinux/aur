@@ -1,7 +1,7 @@
 pkgbase = qwenimage-ncnn-vulkan-bin
 	pkgdesc = Text-to-image generation and image editing with Qwen-Image and ncnn Vulkan
 	pkgver = 20261010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nihui/qwenimage-ncnn-vulkan
 	arch = x86_64
 	license = Apache-2.0
@@ -16,6 +16,7 @@ pkgbase = qwenimage-ncnn-vulkan-bin
 	conflicts = qwenimage-ncnn-vulkan
 	conflicts = qwenimage-ncnn-vulkan-git
 	options = !strip
+	options = !debug
 	source = qwenimage-ncnn-vulkan-20261010-linux.zip::https://github.com/nihui/qwenimage-ncnn-vulkan/releases/download/20261010/qwenimage-ncnn-vulkan-20261010-linux.zip
 	source = qwenimage-ncnn-vulkan-20261010.LICENSE::https://raw.githubusercontent.com/nihui/qwenimage-ncnn-vulkan/20261010/LICENSE
 	sha256sums = 8bcc171133e4fa28cec621e56ccca20e2b2f4a92739b537bf39f2e2abd551e5b
