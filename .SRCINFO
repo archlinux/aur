@@ -6,7 +6,9 @@ pkgbase = ddcci-probe-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = ddcci-driver-linux-dkms-git
+	optdepends = ddcci-driver-linux-dkms-git: for ddcci driver support (Recommended driver)
+	provides = ddcci-probe
+	conflicts = ddcci-probe
 	source = ddcci-probe-git::git+https://github.com/kobe-koto/ddcci-probe.git
 	sha256sums = SKIP
 
