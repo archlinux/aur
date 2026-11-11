@@ -1,6 +1,6 @@
 pkgbase = libria
 	pkgdesc = Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, spell checking, and offline voice dictation
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/Gargadon/libria
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = libria
 	optdepends = vivaldi: PDF export (alternative browser)
 	provides = libria
 	options = !lto
-	source = https://github.com/Gargadon/libria/archive/v2.3.0.tar.gz
+	source = https://github.com/Gargadon/libria/archive/v2.3.1.tar.gz
 	source = system-browser.patch
 	source = vivliostyle-csp.patch
-	sha256sums = 013ccf783f0627f8687fc2487d62a5083950e2285d0b9150472e07717184b48e
+	sha256sums = 18391f3eee9eba381b8ad486d5c8d52063e7937db1bbdcc5bf881de08a092ae8
 	sha256sums = 7b6e68c2643cef3f1a6e008914bac871047f1b6f8de62157f20b83a505776c9c
 	sha256sums = cc1ab2feba278b2c7dbb62d0f617b487e9d168501b8bb9a3291e75ca4fe1faf3
 
