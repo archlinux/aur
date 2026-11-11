@@ -1,19 +1,19 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=ferrite
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.'
 arch=('x86_64' 'aarch64')
 options=(!lto)
 url=https://github.com/OlaProeis/Ferrite
 license=('MIT')
-depends=(glibc gcc-libs zlib hicolor-icon-theme fontconfig freetype2)
+depends=(glibc gcc-libs zlib hicolor-icon-theme fontconfig freetype2 gdk-pixbuf2 gtk3 webkit2gtk-4.1)
 makedepends=(cargo)
 conflicts=("$pkgname-bin")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('b349528ab128dc230e6203f7efb98f3634541647236fad542ddea2cb074901be')
+sha256sums=('1e68f986f4e1e32afa7bac977ae2a5f54ec0b5ae11c3a41d373d5eef66f6ddf5')
 
 prepare() {
   cd ${pkgname^}-$pkgver
