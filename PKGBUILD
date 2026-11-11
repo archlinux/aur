@@ -3,9 +3,9 @@
 # Following: https://wiki.archlinux.org/title/Rust_package_guidelines
 # Take the commit from the releases at https://github.com/stackabletech/stackablectl/releases/
 
-_commit=6357a127771c5cce1df7d4466684dfbde8a8d17f
+_commit=6222f3219c260ad50231c313ce843dd7d7f13938
 pkgname=stackablectl
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 # We moved to epoch=1 because we moved from CalVer to SemVer
 epoch=1
@@ -21,7 +21,7 @@ conflicts=('stackablectl-bin' 'stackablectl-git')
 # Needed due to https://github.com/briansmith/ring/issues/1444 & https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 source=("$pkgname::git+https://github.com/stackabletech/stackablectl.git#commit=$_commit")
-b2sums=('07518f4bdb566f5f68894dfe739344ec4dbe7eb6970403587a80d2af7525cded09baacd692002c6189452b3c83114ae9fe6b2972229c392ab8242d7f343fb194')
+b2sums=('e650a53bbaaed3f20b41b468cb1e0fbf39f4cabcc6498a3e9e75a82c9a410bf3dddcdb5d716c3464acdf1dca1aa16cb0946147e62f72309b5a026db0a804e0eb')
 
 prepare() {
   cd "$pkgname"
