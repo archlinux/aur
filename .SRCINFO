@@ -1,6 +1,6 @@
 pkgbase = onair-bin
 	pkgdesc = SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/adswill/OnAir
 	arch = x86_64
@@ -21,13 +21,13 @@ pkgbase = onair-bin
 	optdepends = soapyairspy: Airspy support through SoapySDR
 	provides = onair
 	conflicts = onair
-	noextract = onair_3.8.0_amd64.deb
-	noextract = onair_3.8.0_arm64.deb
+	noextract = onair_3.9.0_amd64.deb
+	noextract = onair_3.9.0_arm64.deb
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/adswill/OnAir/releases/download/v3.8.0/onair_3.8.0_amd64.deb
-	sha256sums_x86_64 = 03921c389f8368ae9afbdc4540727bd432a875c4cd9f704898127e4bbd45a226
-	source_aarch64 = https://github.com/adswill/OnAir/releases/download/v3.8.0/onair_3.8.0_arm64.deb
-	sha256sums_aarch64 = d4e8e9dd842d50ecb420618ae45af1680c72e146f2a9f26ce6265e1ddb013bd8
+	source_x86_64 = https://github.com/adswill/OnAir/releases/download/v3.9.0/onair_3.9.0_amd64.deb
+	sha256sums_x86_64 = e3769cdff26be2c652afde71b4a708ca6ed45631db429da40f3758ea7c329bfa
+	source_aarch64 = https://github.com/adswill/OnAir/releases/download/v3.9.0/onair_3.9.0_arm64.deb
+	sha256sums_aarch64 = 6703a8d97b50d645d25c6524fedcad42c8f88d70124bc1fbe7ec58575bd6aff0
 
 pkgname = onair-bin
