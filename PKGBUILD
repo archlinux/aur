@@ -25,7 +25,7 @@
 
 pkgname=himmelblau
 pkgver=4.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Azure Entra ID authentication for Linux (daemon, PAM, NSS, broker, SSO)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/himmelblau-idm/himmelblau"
