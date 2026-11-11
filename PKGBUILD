@@ -2,7 +2,7 @@
 
 _gemname=event_stream_parser
 pkgname=ruby-${_gemname}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Ruby gem for a lightweight, fully spec-compliant parser for the event stream format'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/Shopify/${_gemname}"
 license=('MIT')
 depends=('ruby' 'rubygems')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4bc703ac7eb778de92ad5d933f15f5e87bd76b93538ccff5735877b4a383d495')
+sha256sums=('6bfa2379b72ff5fe788befd70f2146faf52f3b3a3a32f3484b658d08a475f92f')
 
 build() {
   cd "${_gemname}-${pkgver}"
