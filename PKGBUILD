@@ -1,7 +1,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 # pkgver and sha256sums are rewritten by .github/workflows/release.yml on every tag.
 pkgname=opensynapse
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Remap buttons, set DPI and lighting on Razer mice from Linux"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'libxkbcommon' 'wayland' 'libglvnd')
 optdepends=('xdg-desktop-portal: file picker for profile import/export in the GUI')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8c3c1126479c00043a11b6e7452e9c5fa34d08d36591f32fb8102277d1c2f437')
+sha256sums=('e6bd53876f74f67694c727768e038dd9a0ddd9a42ecc37493ef787abf32c4eae')
 
 prepare() {
   cd "$pkgname-$pkgver"
