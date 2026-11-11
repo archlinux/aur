@@ -1,0 +1,22 @@
+pkgbase = tcb-git
+	pkgdesc = Alternative password shadowing scheme
+	pkgver = 1.2.r65.gf7afc3c
+	pkgrel = 1
+	url = https://www.openwall.com/tcb/
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	license = GPL-1.0-or-later
+	makedepends = git
+	makedepends = libxcrypt
+	makedepends = pam
+	depends = glibc
+	depends = libcrypt.so
+	depends = libpam.so
+	provides = tcb=1.2.r65.gf7afc3c
+	conflicts = tcb
+	options = staticlibs
+	source = git+https://github.com/openwall/tcb.git
+	sha256sums = SKIP
+
+pkgname = tcb-git
