@@ -1,6 +1,6 @@
 pkgbase = hex-bin
 	pkgdesc = Hex voice dictation app by Anomaly: hold a key, speak, and it types (Linux beta; not the hex dump tool)
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/anomalyco/hex
 	install = hex-bin.install
@@ -49,9 +49,9 @@ pkgbase = hex-bin
 	sha256sums = 02f6dd00cadaf344b22f1be1d26d3afb59eebaa6bc94da442bf4f81b0579454b
 	sha256sums = c6715346520daf5d991760d3b2016d014e48329fc31af7b621e807a895df2194
 	sha256sums = bbb18f2474a4d5343b401353bc223e18394a0a386616aba3485b140c2313aaa8
-	source_x86_64 = hex-3.3.0-linux-x64::https://anoma.ly/release/hex/files/e8c7b3a2ebeb1d7da5d6276d5f25145891d52178e3636347cb3ac331f7662622/hex
-	sha256sums_x86_64 = e8c7b3a2ebeb1d7da5d6276d5f25145891d52178e3636347cb3ac331f7662622
-	source_aarch64 = hex-3.3.0-linux-arm64::https://anoma.ly/release/hex/files/a8a28cb8bc922f8e11fd5996e090d88aa143a2c3a65b07f1962435d0b15a24d1/hex
-	sha256sums_aarch64 = a8a28cb8bc922f8e11fd5996e090d88aa143a2c3a65b07f1962435d0b15a24d1
+	source_x86_64 = hex-3.4.0-linux-x64::https://anoma.ly/release/hex/files/7f8132a2202338c1b52c36113d23d7403cf91f220bcdbd9eec82bc726f5f8029/hex
+	sha256sums_x86_64 = 7f8132a2202338c1b52c36113d23d7403cf91f220bcdbd9eec82bc726f5f8029
+	source_aarch64 = hex-3.4.0-linux-arm64::https://anoma.ly/release/hex/files/bd549e896874c417b841cd8e1e724bbaca59046978e0ad2b7e72921de4101e0c/hex
+	sha256sums_aarch64 = bd549e896874c417b841cd8e1e724bbaca59046978e0ad2b7e72921de4101e0c
 
 pkgname = hex-bin
