@@ -1,6 +1,6 @@
 # Maintainer: thefangeddeity
 pkgname=laptop-livecam
-pkgver=7.2.1
+pkgver=7.2.2
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -24,6 +24,9 @@ optdepends=('avahi: announce this node to peers over mDNS (livecam-capabilities)
             'tailscale: HTTPS on the tailnet (tailscale serve)'
             'python-apprise: alert destinations other than Telegram')
 install=laptop-livecam.install
+# A node that edits its nginx file (tina's carries its TLS server blocks) keeps
+# it: pacman writes the new one as .pacnew instead of replacing it.
+backup=('etc/nginx/conf.d/hls-livecam.conf')
 # The detector model is fetched here, not carried in the repo. It used to be
 # a 12.3 MiB blob in every clone that NOTHING installed -- the file the nodes
 # loaded was hand-placed and `pacman -Qo` reported it owned by no package. As
@@ -36,8 +39,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/laptop-livec
         "laptop-livecam.install"
         "$_model::https://github.com/thefangeddeity/laptop-livecam/releases/download/$_model_tag/$_model")
 noextract=("$_model")
-sha256sums=('33f68e5f9ae4c7bc743baa7394be2d9c831fd5068f2cc0442eba1441b9f38c1d'
-            '1aabda15394c709a908009494229da99cba6826f77618f056c20033b2656c93c'
+sha256sums=('98ab3f13b790f533a986043e280297e90cddf45b79feacec3299f2efa529ad75'
+            '8841120a91604403eac4fc5ee27ec05dcb970284cf17b34693ffe151dc4dafda'
             'b2bc52f40e8e1c532427d5bde3575a5d5b571b739fab2c6df443733ed1589cbd')
 
 package() {

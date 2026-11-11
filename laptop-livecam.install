@@ -58,7 +58,7 @@ post_upgrade() {
     # says so.
     if [ -d /var/www/hls-livecam ] && [ -f /usr/share/hls-livecam-server/index.html ]; then
         cp /usr/share/hls-livecam-server/index.html /var/www/hls-livecam/index.html
-        sed -i "s/@HOSTNAME@/$(hostname)/g" /var/www/hls-livecam/index.html
+        sed -i "s/@HOSTNAME@/$(hostnamectl hostname 2>/dev/null || cat /etc/hostname)/g" /var/www/hls-livecam/index.html
         chmod 0644 /var/www/hls-livecam/index.html
         [ -f /usr/share/hls-livecam-server/brand.png ] && \
             cp /usr/share/hls-livecam-server/brand.png /var/www/hls-livecam/brand.png

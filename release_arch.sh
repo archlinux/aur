@@ -132,7 +132,7 @@ done
 echo "  payload spot-checks present"
 
 # --- 4. Install and verify -------------------------------------------
-say "Installing on $(hostname)"
+say "Installing on $(hostnamectl hostname 2>/dev/null || cat /etc/hostname)"
 sudo pacman -U --noconfirm "$PKG"
 sudo systemctl restart broadcast-api
 
