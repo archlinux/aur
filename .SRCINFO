@@ -1,0 +1,27 @@
+pkgbase = python-liblore-git
+	pkgdesc = Shared library for public-inbox / lore.kernel.org access. (git version)
+	pkgver = 0.10.1.r0.g6e8d825
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/utils/liblore/liblore.git
+	arch = any
+	license = GPL-2.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-responses
+	checkdepends = python-requests
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	source = python-liblore-git::git+https://git.kernel.org/pub/scm/utils/liblore/liblore.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-liblore-git
+	pkgdesc = Shared library for public-inbox / lore.kernel.org access. (git version)
+	depends = python
+	depends = python-requests
+	optdepends = python-authheaders: for adding Authentication-Results headers to fetched messages
+	provides = python-liblore=0.10.1.r0.g6e8d825-1
+	conflicts = python-liblore
+	conflicts = python-liblore-debug
