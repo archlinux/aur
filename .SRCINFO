@@ -1,0 +1,19 @@
+pkgbase = all-smi
+	pkgdesc = Command-line utility for monitoring GPU hardware
+	pkgver = 0.28.1
+	pkgrel = 1
+	url = https://github.com/lablup/all-smi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = protobuf
+	depends = glibc
+	depends = libdrm
+	depends = libgcc
+	options = !lto
+	backup = etc/default/all-smi
+	source = all-smi-0.28.1.tar.gz::https://github.com/lablup/all-smi/archive/refs/tags/v0.28.1.tar.gz
+	sha256sums = 611fd1efb0909fdbbb8371612988578a9fa515eb99f4b3200b2237eaf17c82aa
+
+pkgname = all-smi
