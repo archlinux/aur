@@ -6,10 +6,10 @@ export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
 
 pkgname=layaair-ide
-pkgver=3.4.2
-_upstream_ver=3.4.2
-_url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.2.AppImage
-pkgrel=3
+pkgver=3.4.3
+_upstream_ver=3.4.3
+_url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.3.AppImage
+pkgrel=1
 pkgdesc='LayaAir IDE (repacked from official AppImage)'
 arch=('x86_64')
 url='https://layaair.com/'
@@ -19,7 +19,7 @@ install="${pkgname}.install"
 # whenever a file with this name already exists in the build dir, so the name
 # must change whenever the upstream checksum can change.
 source=("LayaAirIDE-${pkgver}-${pkgrel}.AppImage::$_url")
-sha256sums=('05a2ab7911d481b3c31846d23f2a81e435ecdfe36afc9ffb82f7dc1f338b78dc')
+sha256sums=('a53963db204d756e0b857edabec9922b9d4d1622b98adfca2aac76fc3fa1123e')
 
 prepare() {
   cd "$srcdir"
