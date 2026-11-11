@@ -1,0 +1,17 @@
+_hint() {
+    printf '\033[31m%s\033[0m\n' \
+"普通用户从源码编译时，默认没有配置BGM_APP_SECRET，程序虽然可以构建出来，但 
+Bangumi 登录时的 token 换取和后续刷新会受影响"
+}
+
+# pacman dispatches by transaction kind: post_install only fires for a package
+# that was not installed before, post_upgrade for an upgrade *or a reinstall of
+# the same version* (`pacman -U` over an existing install). Bind both, or the
+# hint is silently skipped in the by-far-most-common case.
+post_install() {
+    _hint
+}
+
+post_upgrade() {
+    _hint
+}
