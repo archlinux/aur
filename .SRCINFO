@@ -1,6 +1,6 @@
 pkgbase = easyshot-bin
 	pkgdesc = Screenshot, annotation and screen-recording app for Linux/Wayland (prebuilt)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://easyshot.site
 	install = easyshot.install
@@ -30,7 +30,7 @@ pkgbase = easyshot-bin
 	conflicts = easyshot
 	options = !strip
 	options = !debug
-	source = https://github.com/mah3uz/easyshot/releases/download/v0.1.0/easyshot-0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 811db0c8e5406fa1a5d464f34933efc4a74b739f1afbf8c20d31df5ff844a1e1
+	source = https://github.com/mah3uz/easyshot/releases/download/v0.2.0/easyshot-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a380c29f0f0e08aba2b3d2debfcd985b068ea8f1daaa7b19652194ec8f9b8f95
 
 pkgname = easyshot-bin
