@@ -1,0 +1,19 @@
+pkgbase = atomdrift-scan-bin
+	pkgdesc = 0-day malware detection for binaries, source & scripts (that doesn't suck)
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://github.com/atomdrift-project/scan
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	optdepends = 7zip: 7-Zip / CAB / tar archive extraction
+	optdepends = upx: UPX-packed executable detection
+	optdepends = innoextract: Inno Setup installer extraction
+	optdepends = rizin: binary disassembly and import/export analysis
+	conflicts = atomdrift-scan
+	source = https://github.com/atomdrift-project/scan/releases/download/v2.13.0/atomscan-2.13.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = adfa8d9cec948a08164c6e30793e9d3f001873f4a86b28b7b250de1dc3be0026
+
+pkgname = atomdrift-scan-bin
