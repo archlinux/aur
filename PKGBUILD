@@ -17,7 +17,7 @@ optdepends=(
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nertwork/imsg/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('025aee701cfce5edafb8e8316b6cc58eba1f17145022fd33b8c2c4f5e3bc0b4c')
+sha256sums=('66f14d0306ff5b429c0550b1ae64c6ab1bfc216e7be79901ca1cdb93d6e5f829')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
