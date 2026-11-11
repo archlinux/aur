@@ -1,7 +1,7 @@
 # Maintainer: Pavel Dobiáš <git at paveldobias dot eu>
 
 pkgname=floating-sandbox
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc="Mass-spring network in C++, simulating physical bodies floating in water and sinking"
 arch=('x86_64')
@@ -27,6 +27,7 @@ makedepends=(
     'git'
     'make'
     'gcc'
+    'patch'
 )
 
 source=(
@@ -40,16 +41,14 @@ source=(
     "git+https://github.com/SFML/SFML.git#tag=2.6.2"
 )
 
-sha256sums=(
-    'aa3800b629de788d5df30777d41a16ce3f46b218c8252086722dfa849a43a597'
-    '15cc756fd0abb38d62058744422e60fce08d02377f34394d814ec72f08c8fbcb'
-    '7f2d22ac951fd72fd6dbfd5ffad94abf32db82e4e4d907dbd1af7380ac06a657'
-    '8dd20c9553f09df9ac283db1ba51f99a62f585dce47007f4517e523dffbefd28'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('aa3800b629de788d5df30777d41a16ce3f46b218c8252086722dfa849a43a597'
+            '15cc756fd0abb38d62058744422e60fce08d02377f34394d814ec72f08c8fbcb'
+            '7f2d22ac951fd72fd6dbfd5ffad94abf32db82e4e4d907dbd1af7380ac06a657'
+            '497e2e5dd3523a0ffeb38649355e40bdcf498b175837bd7ba03ace91f6a00d5c'
+            '902d3d0cf05af66c5b8fa655cdee297b5e63c3ded6d6c44086ca06f97f38fa38'
+            'afad2bf4f1ffd9ef8bdc0277a9884a6acf3b7f57dda31ace4012d40b130cdf63'
+            '91cea03b0782cae2b259be6361677ae17bf46315efac77597c9ce973b04eca7d'
+            '666021800fb047d1464f5e470acdf9a7f0e029bcf234764c06f4dcbe7655495a')
 
 prepare() {
     mkdir -p "${srcdir}/libs"
