@@ -1,0 +1,98 @@
+diff --git a/tests/test_instrumentor.py b/tests/test_instrumentor.py
+--- a/tests/test_instrumentor.py
++++ b/tests/test_instrumentor.py
+@@ -3047,12 +3047,12 @@ def test_image_generation_url(
+                 prompt_template_variables=prompt_template_variables,
+             ):
+                 litellm.image_generation(
+-                    model="dall-e-2",
++                    model="gpt-image-1",
+                     prompt="a sunrise over the mountains",
+                 )
+         else:
+             litellm.image_generation(
+-                model="dall-e-2",
++                model="gpt-image-1",
+                 prompt="a sunrise over the mountains",
+             )
+ 
+@@ -3061,7 +3061,7 @@ def test_image_generation_url(
+     span = spans[0]
+     assert span.name == "image_generation"
+     attributes = dict(cast(Mapping[str, AttributeValue], span.attributes))
+-    assert attributes.get(SpanAttributes.LLM_MODEL_NAME) == "dall-e-2"
++    assert attributes.get(SpanAttributes.LLM_MODEL_NAME) == "gpt-image-1"
+     assert attributes.get(SpanAttributes.INPUT_VALUE) == "a sunrise over the mountains"
+ 
+     assert attributes.get(ImageAttributes.IMAGE_URL) == "https://dummy-url"
+@@ -3115,12 +3115,12 @@ def test_image_generation_b64json(
+                 prompt_template_variables=prompt_template_variables,
+             ):
+                 litellm.image_generation(
+-                    model="dall-e-2",
++                    model="gpt-image-1",
+                     prompt="a sunrise over the mountains",
+                 )
+         else:
+             litellm.image_generation(
+-                model="dall-e-2",
++                model="gpt-image-1",
+                 prompt="a sunrise over the mountains",
+             )
+ 
+@@ -3129,7 +3129,7 @@ def test_image_generation_b64json(
+     span = spans[0]
+     assert span.name == "image_generation"
+     attributes = dict(cast(Mapping[str, AttributeValue], span.attributes))
+-    assert attributes.get(SpanAttributes.LLM_MODEL_NAME) == "dall-e-2"
++    assert attributes.get(SpanAttributes.LLM_MODEL_NAME) == "gpt-image-1"
+     assert attributes.get(SpanAttributes.INPUT_VALUE) == "a sunrise over the mountains"
+ 
+     assert attributes.get(ImageAttributes.IMAGE_URL) == "dummy_b64_json"
+@@ -3210,12 +3210,12 @@ async def test_aimage_generation(
+                 prompt_template_variables=prompt_template_variables,
+             ):
+                 await litellm.aimage_generation(
+-                    model="dall-e-2",
++                    model="gpt-image-1",
+                     prompt="a sunrise over the mountains",
+                 )
+         else:
+             await litellm.aimage_generation(
+-                model="dall-e-2",
++                model="gpt-image-1",
+                 prompt="a sunrise over the mountains",
+             )
+ 
+@@ -3224,7 +3224,7 @@ async def test_aimage_generation(
+     span = spans[0]
+     assert span.name == "aimage_generation"
+     attributes = dict(cast(Mapping[str, AttributeValue], span.attributes))
+-    assert attributes.get(SpanAttributes.LLM_MODEL_NAME) == "dall-e-2"
++    assert attributes.get(SpanAttributes.LLM_MODEL_NAME) == "gpt-image-1"
+     assert attributes.get(SpanAttributes.INPUT_VALUE) == "a sunrise over the mountains"
+ 
+     assert attributes.get(ImageAttributes.IMAGE_URL) == "https://dummy-url"
+diff --git a/tests/test_streaming_transparency.py b/tests/test_streaming_transparency.py
+--- a/tests/test_streaming_transparency.py
++++ b/tests/test_streaming_transparency.py
+@@ -427,6 +427,9 @@ class _FakeResponsesStream(ResponsesAPIStreamingIterator):
+             raise event
+         return event
+ 
++    async def aclose(self) -> None:
++        pass
++
+ 
+ async def _drain_aresponses(events: List[Any]) -> None:
+     original_func = LiteLLMInstrumentor.original_litellm_funcs["aresponses"]
+@@ -518,6 +521,9 @@ class _FakeSyncResponsesStream(SyncResponsesAPIStreamingIterator):
+             raise event
+         return event
+ 
++    def close(self) -> None:
++        pass
++
+ 
+ async def test_aresponses_stream_cancelled_mid_stream_ends_span_with_error(
+     in_memory_span_exporter: InMemorySpanExporter,
