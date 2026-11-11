@@ -3,7 +3,7 @@
 _pkgbase=ae-code
 pkgname="$_pkgbase-git"
 pkgver=2026.11.10.1.r0.g3dbd0ce
-pkgrel=3
+pkgrel=4
 pkgdesc='Desktop GUI for coding agents (fork of T3 Code), latest commit'
 arch=('x86_64')
 url='https://github.com/SelfRef/ae-code'
@@ -110,6 +110,9 @@ EOF
 		magick assets/dev/blueprint-universal-1024.png -resize "${size}x${size}" \
 			"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/ae-code.png"
 	done
+
+	install -Dm644 assets/dev/blueprint-linux.svg \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/ae-code.svg"
 
 	install -Dm644 apps/desktop/resources/linux/com.t3tools.t3code.metainfo.xml \
 		"$pkgdir/usr/share/metainfo/dev.aperte.AECode.metainfo.xml"
