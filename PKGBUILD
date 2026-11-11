@@ -2,7 +2,7 @@ pkgname=firefox-extension-adguard
 pkgver=5.5.4
 #_tag=v${pkgver%.*}+${pkgver##*.}.build.20251216080045
 _tag=v$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="AdGuard browser extension."
 arch=("any")
 url="https://adguard.com/adguard-browser-extension/overview.html"
@@ -16,7 +16,7 @@ _version=${_version#v}
 
 prepare() {
     cd "$srcdir/AdguardBrowserExtension-${_version}"
-    sed -i 's/<11/<12/' package.json
+    sed -i 's/<11/<13/' package.json
     sed -i '/\/dnr-rulesets/ s/~6.0.20261109004305/5.0.20261013160024/' package.json
     pnpm clean --lockfile
     pnpm install --ignore-scripts
