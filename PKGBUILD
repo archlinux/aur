@@ -1,7 +1,7 @@
 # Maintainer: Joël Müller <mail@joelmueller.ch>
 
 pkgname=dopeiptv
-pkgver=1.4.0
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Linux IPTV player with Xtream Codes, M3U, EPG, timeshift, recording and multiview'
 arch=('any')
@@ -41,7 +41,7 @@ source=(
     "dopeIPTV::git+https://github.com/slimture/dopeIPTV.git#tag=v${pkgver}"
 )
 
-sha256sums=('c45868f1ea07088aa3bc407776ce2e7cff04c87b4633453e5cd6a92a0d51e10d')
+sha256sums=('8a03754135bade5428ed5c05f3272b5725be0873c195413cd62283c82007881b')
 
 build() {
     cd "${srcdir}/dopeIPTV"
