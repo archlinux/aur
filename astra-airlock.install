@@ -37,7 +37,7 @@ EOF
     astra-airlock -k hyprland
 
     # Sync the current user's active Caelestia scheme as the "dynamic" scheme
-	astra-airlock -s || echo "warning: caelestia scheme sync skipped"
+    astra-airlock -s || echo "warning: caelestia scheme sync skipped"
 
     # Set the profile picture from the default ~/.face path
     astra-airlock --set-pfp '~/.face' || echo "warning: no ~/.face found, profile picture not set"
