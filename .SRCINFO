@@ -13,6 +13,7 @@ pkgbase = flamelens-git
 	optdepends = py-spy: Display a live flamegraph of a running Python program using py-spy as the profiler
 	provides = flamelens
 	conflicts = flamelens
+	options = !debug
 	source = flamelens-git::git+https://github.com/YS-L/flamelens
 	sha256sums = SKIP
 
