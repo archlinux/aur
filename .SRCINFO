@@ -1,0 +1,14 @@
+pkgbase = udon
+	pkgdesc = Minimalistic CLI based End to End Encrypted (E2EE) message passing tool/service.
+	pkgver = 0.04
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/treedavies/udon
+	arch = any
+	license = GPL
+	depends = openssl
+	depends = python-pip
+	source = https://github.com/treedavies/udon/archive/refs/tags/udon-v0.04.tar.gz
+	sha256sums = 574cb92f4b98af1ff776e8e079ef4919e9650c485be99c5d4ef0ad63e6fe3ef3
+
+pkgname = udon
