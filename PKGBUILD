@@ -2,7 +2,7 @@
 
 pkgname=g0v0
 _pkgname=${pkgname%-bin}
-pkgver=2026.1101.0
+pkgver=2026.1111.1
 _pkgtag=v${pkgver}-g0v0
 pkgrel=1
 pkgdesc="g0v0! -- free and open rhythm experience!"
@@ -27,7 +27,7 @@ source=(
   "g0v0-uri-handler.desktop"
   "g0v0"
 )
-sha256sums=('d437427fe693ab96ebd5aac3872e37a6d6e6598c631a1933133ee527b2c85ae5'
+sha256sums=('df24dfadec8381d8ed31d51f64ae32bea9c63c5a383c3103b1ebcf5b9821d4ae'
             'c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '96276add86bd921e64255ce7e5487599dbe13e6e48e96a6af1a58cc99c187648'
             'b1d3d8ad2b05ff2f461d15ff8fd73ce6ffbb75568dae2bd123b0599292259c53'
