@@ -1,0 +1,22 @@
+pkgbase = python-wreq
+	pkgdesc = An ergonomic, privacy-aware Python HTTP Client
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/0x676e67/wreq-python
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = maturin
+	makedepends = python-build
+	makedepends = python-installer
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	options = !lto
+	source = https://files.pythonhosted.org/packages/source/w/wreq/wreq-0.13.0.tar.gz
+	sha512sums = 0ab03d1753c94bbefa00756166cd24d0dfe896a41b3f995d05b48e610983aa78c8c273e9618cb6bacb7d773e44050c290a3155ccd2826814a794d67381576bcb
+
+pkgname = python-wreq
