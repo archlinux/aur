@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=arch-native-client
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Client-side tools for arch-native: package list sync and repo upgrade helper"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('rsync' 'pacman' 'python')
 install=arch-native-client.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-client-v${pkgver}.tar.gz")
-sha256sums=('37e7c56f81f769c10e3ffab268f14fe3b8a2119f595f6baa04396d78863f4fa2')
+sha256sums=('4f513589331aa9bc474758a8559fc76867e9e6389d7fc4f7ccd9d03bad1068c0')
 
 package() {
     cd "$srcdir/arch-native-arch-native-client-v${pkgver}/arch-native-client"
