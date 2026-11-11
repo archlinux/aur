@@ -16,12 +16,12 @@ pkgrel=1
 pkgdesc='A greeter for greetd on X11, drawn with GPUI'
 arch=('x86_64')
 url='https://github.com/crazyboycjr/gpui-greeter'
-# TODO(release): the licence of gpui-greeter's own code is still to be
-# chosen; Apache-2.0 is gpui's, whose backends are vendored. The bundled
-# fonts are under the SIL Open Font License, whose texts are installed.
+# gpui-greeter's code is under Apache-2.0, as is gpui's, whose backends are
+# vendored. The bundled fonts are under the SIL Open Font License, whose
+# texts are installed.
 license=('Apache-2.0' 'OFL-1.1')
-depends=('bash' 'glibc' 'greetd' 'greetd-agreety' 'libgcc' 'libxcb'
-         'libxkbcommon' 'libxkbcommon-x11' 'pam' 'systemd'
+depends=('bash' 'glibc' 'greetd' 'greetd-agreety' 'hicolor-icon-theme'
+         'libgcc' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'pam' 'systemd'
          'vulkan-driver' 'vulkan-icd-loader' 'xorg-server' 'xorg-xinit')
 # fontconfig for a build script of gpui's font loading, which the greeter
 # does not use at run time.
@@ -38,8 +38,7 @@ backup=("etc/$pkgname/config.toml" "etc/greetd/$pkgname.toml" "etc/pam.d/$pkgnam
 install=$pkgname.install
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-# TODO(release): SKIP until the tag v1.0.0 is on GitHub; then updpkgsums.
-sha256sums=('SKIP')
+sha256sums=('4e0f92a0f2470e44b3cb88bea620479d8779d81eaacb25fd47c71b2597cc4d1b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -80,10 +79,14 @@ package() {
   install -Dm644 dist/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   install -Dm644 "dist/$pkgname-settings.desktop" \
     "$pkgdir/usr/share/applications/$pkgname-settings.desktop"
+  # The icon the desktop file names, in every size it is drawn at.
+  local file
+  while IFS= read -r -d '' file; do
+    install -Dm644 "$file" "$pkgdir/usr/share/icons/${file#assets/icon/linux/}"
+  done < <(find assets/icon/linux/hicolor -type f -print0)
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" assets/fonts/OFL-*.txt
   # The skill for designing themes with an agent, and its example theme.
-  local file
   while IFS= read -r -d '' file; do
     install -Dm644 "$file" "$pkgdir/usr/share/$pkgname/$file"
   done < <(find skills -type f -print0)

@@ -13,6 +13,7 @@ pkgbase = gpui-greeter
 	depends = glibc
 	depends = greetd
 	depends = greetd-agreety
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libxcb
 	depends = libxkbcommon
@@ -37,6 +38,6 @@ pkgbase = gpui-greeter
 	backup = etc/greetd/gpui-greeter.toml
 	backup = etc/pam.d/gpui-greeter-lock
 	source = gpui-greeter-1.0.0.tar.gz::https://github.com/crazyboycjr/gpui-greeter/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 4e0f92a0f2470e44b3cb88bea620479d8779d81eaacb25fd47c71b2597cc4d1b
 
 pkgname = gpui-greeter
