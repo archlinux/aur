@@ -1,0 +1,14 @@
+pkgbase = evernote2md
+	pkgdesc = Convert Evernote .enex export files to Markdown
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/wormi4ok/evernote2md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = evernote2md-0.23.0.tar.gz::https://github.com/wormi4ok/evernote2md/archive/refs/tags/v0.23.0.tar.gz
+	sha256sums = 14615324b12362e6ee15bf5354cf2db8ea6ce37016fb409126cf334062ab36ee
+
+pkgname = evernote2md
