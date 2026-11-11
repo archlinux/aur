@@ -2,7 +2,7 @@
 pkgname=bluepill
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="BluePill — Native Linux Qt6/QML desktop & CLI client for iMessage, RCS, and SMS (with macOS chat.db relay & BlueBubbles support)"
+pkgdesc="BluePill — Native Linux/Wayland Qt6/QML desktop & CLI client for iMessage, RCS, and SMS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nertwork/bluepill"
 license=('MIT')
