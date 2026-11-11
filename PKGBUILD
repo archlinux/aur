@@ -1,7 +1,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=10.0.0.rc1.1.r631.gdb0744f369
+pkgver=10.99.0.r6417.g1b68b15659
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
@@ -31,7 +31,6 @@ build() {
   cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKICAD_USE_EGL=ON \
     -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold \
     -DKICAD_USE_PCH=OFF \
     -DKICAD_USE_CMAKE_FINDPROTOBUF=0
