@@ -11,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.13.4
+pkgver=4.13.5
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -32,25 +32,31 @@ makedepends=('openldap'
              'sssd>=1.13.0'
              'python-jinja'
              'python-pyasn1-modules'
-             'python-systemd')
+             'python-systemd'
+             'git')
 options=(emptydirs)
 validpgpkeys=(
 	'D756764D4D7E297C6DAD117269876F72A6E2D34F'
 	'0E63D716D76AC080A4A33513F40800B6298EB963'
 	'4B7E7AFBB0AAA98947CA2427F17E2569BEE3800C'
 	'B40A78FBA576C4A3FC7D7BBC359FAF777296F653')
-source=("https://codeberg.org/${pkgbase}/${pkgbase}/releases/download/release-${pkgver//./-}/${pkgbase}-${pkgver}.tar.gz"{,.asc}
+source=("git+https://codeberg.org/freeipa/freeipa.git?signed#tag=release-${pkgver//./-}"
+        'git+https://github.com/freeipa/freeipa-webui.git'
         'nis-domainname.service'
         'ipaplatform.tar.gz')
-sha256sums=('b2f24d763875a9b5677384f7c6232291c641f5c3c2412614a8b8548b47416023'
+sha256sums=('e0145669c4af2bb98d3042be354c907f13276d00260031b4390880ea8ecbc520'
             'SKIP'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
             '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e')
 
-_srcdir="${pkgbase}-${pkgver}"
+_srcdir="${pkgbase}"
 
 prepare() {
 	cd "${_srcdir}"
+
+	git submodule init
+	git config 'submodule.install/freeipa-webui.url' "$srcdir/freeipa-webui"
+	git -c 'protocol.file.allow=always' submodule update
 
 	rm -rf ipaplatform/arch
 
