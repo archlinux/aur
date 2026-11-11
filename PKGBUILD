@@ -1,4 +1,6 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
+# Issues and fixes: https://github.com/shbernal/aur-packages
+
 pkgname=och
 pkgver=0.1.8
 pkgrel=1
