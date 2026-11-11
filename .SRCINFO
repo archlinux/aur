@@ -1,6 +1,6 @@
 pkgbase = recompia-bin
 	pkgdesc = Pokopia recompilation launcher with multiplayer support (requires game files)
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/Dittobyte/Recompia
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = recompia-bin
 	conflicts = recompia
 	options = !strip
 	options = !debug
-	source = PokopiaRecomp-0.10.2-linux-x64.tar.gz::https://github.com/Dittobyte/Recompia/releases/download/v0.10.2/PokopiaRecomp-0.10.2-linux-x64.tar.gz
+	source = PokopiaRecomp-0.10.3-linux-x64.tar.gz::https://github.com/Dittobyte/Recompia/releases/download/v0.10.3/PokopiaRecomp-0.10.3-linux-x64.tar.gz
 	source = recompia
 	source = recompia.desktop
-	sha256sums = a28e9a3bfc52986f0e666a009e13f32c19ed140b1a7978d37b883d7526adf73e
+	sha256sums = 65dfbf25b6e046f7fce11f7bfd9481c60b395265e031cf69131f162333f4217f
 	sha256sums = daf607e9694adffb76a967c6863c4bc959a7bb274a59e9fbbeca2a1bb44f5806
 	sha256sums = 9e5e3c9c8cb09a8e65b35031c3c1ab91cee072871fe1e22fa8611defeec1dbb0
 
