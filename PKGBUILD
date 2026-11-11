@@ -22,6 +22,8 @@ optdepends=(
   'bash-completion: completions for bash shell'
   'fish: completions for fish shell'
   'slirp4netns: Namespaced networking stack'
+  'passt: Another namespace network stack with extra features'
+  'flatpak-xdg-utils: open files from sandbox with xdg-desktop-portals'
 )
 makedepends=(
   'meson'
