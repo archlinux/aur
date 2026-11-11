@@ -8,7 +8,7 @@
 
 pkgname=xrdp
 pkgver=0.10.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
 arch=(i686 x86_64 armv6h armv7l aarch64)
@@ -31,7 +31,7 @@ source=("https://github.com/neutrinolabs/xrdp/releases/download/v${pkgver//_/-}/
 	'sysusers.d'
 	'tmpfiles.d')
 sha256sums=('2f7beb5a3b2529c8d72dc0df9b8cdca31ab0e0c14d1e3421210f5e6ec0ab3b75'
-            'a0d47d824f34088f3c819f7e5de53c2581fe0a1a0c0c1df4c41e09ded19cee80'
+            'c784d7ce358a600d1847df39fdcdd37222755270e479f5434834d36799b6b992'
             '1d901d06727ff740e6f485005157a8a082aef9f3910577f377851d057732acbc'
             '72f2e1d945d91ddf7034fbe9b64d55e8fbe88d737b0cc3cedd779321b63d05c1'
             'd75eb05321d247ce792471a9f5176b1b03cf6166673d6bdd110da8fb7e8bd856')
