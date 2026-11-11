@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-bin
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
@@ -45,7 +45,7 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 # packaging/aur/build-release-tarball.sh). No makedepends, no build() — this
 # is a pure -bin repackage.
 source=("${_repo}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums=('2e21d1f0c4165290e2aecc744e9ac35484223568a17ea879b08f3a83463f2ba4')
+sha256sums=('752a8779802ba1117d44336fbc36411e6f9d7b27934c078196e1845b7130bbaf')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-x86_64"
@@ -56,7 +56,7 @@ package() {
 
 	# Desktop entry + AppStream metainfo.
 	install -Dm644 "${_pkgname}.desktop"                   "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm644 "dev.kappy.kappastream.metainfo.xml"    "${pkgdir}/usr/share/metainfo/dev.kappy.kappastream.metainfo.xml"
+	install -Dm644 "io.github.kappy7777.kappastream.metainfo.xml"    "${pkgdir}/usr/share/metainfo/io.github.kappy7777.kappastream.metainfo.xml"
 
 	# Icons (hicolor). Sizes mirror the -git package.
 	install -Dm644 "32x32.png"      "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
