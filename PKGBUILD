@@ -1,7 +1,7 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/codearts-agent-bin
 pkgname=codearts-agent-bin
-pkgver=26.10.300
+pkgver=26.11.100
 pkgrel=1
 pkgdesc=AI-powered\ coding\ assistant\ and\ IDE\ by\ Huawei\ Cloud
 arch=(x86_64 aarch64 )
@@ -18,10 +18,10 @@ validpgpkeys=()
 
 source=(LICENSE )
 sha256sums=('e106bf05e0a1abbbcaa65d1d8f9d67ab1c020ee623dfcab780ff05a8e91ba117')
-sha256sums_x86_64=('9ffbedd2c20efebf3b0dd499aa2aeddf9906fa670bd5c90876c872aa685b7b79')
-sha256sums_aarch64=('685319a274000db9400d624805407e3e3f7df55bf0ec8121ceeb7204c70200ed')
-source_x86_64=(codearts-agent-bin-26.10.300-x86_64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-x64-26.10.300-64f7d6a.deb )
-source_aarch64=(codearts-agent-bin-26.10.300-aarch64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-arm64-26.10.300-64f7d6a.deb )
+sha256sums_x86_64=('7eefe18d04583eb0b41f56d803c960aaf2f0bc2ac0e76d7f6ee14a623690b6cb')
+sha256sums_aarch64=('9152dd1b65afe065aab10b79d20671dee037d99660f992ca2eb09d75f4f71df6')
+source_x86_64=(codearts-agent-bin-26.11.100-x86_64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-x64-26.11.100-39f41d5.deb )
+source_aarch64=(codearts-agent-bin-26.11.100-aarch64.deb::https://codearts-agent-obs-cdn.huaweicloud.com/codearts/ai/latest/codearts-agent-linux-arm64-26.11.100-39f41d5.deb )
 
 _deb_relocate_usr_local=false
 _install_bin_path=/usr/bin/codearts-agent
@@ -35,8 +35,8 @@ _license_files=(LICENSE )
 prepare() {
     local _deb_source_file
     case "$CARCH" in
-        x86_64) _deb_source_file=codearts-agent-bin-26.10.300-x86_64.deb ;;
-        aarch64) _deb_source_file=codearts-agent-bin-26.10.300-aarch64.deb ;;
+        x86_64) _deb_source_file=codearts-agent-bin-26.11.100-x86_64.deb ;;
+        aarch64) _deb_source_file=codearts-agent-bin-26.11.100-aarch64.deb ;;
         *)
             echo "Unsupported architecture: $CARCH" >&2
             return 1
