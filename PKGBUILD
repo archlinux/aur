@@ -1,7 +1,7 @@
 # Maintainer: Kotsasmin
 
 pkgname=kotsasmin-toolkit-git
-pkgver=r25.c491bef
+pkgver=r26.6532eb0
 pkgrel=1
 pkgdesc="A collection of system optimization, security, and media scripts by Kotsasmin"
 arch=('any')
@@ -19,10 +19,9 @@ optdepends=(
 makedepends=('git')
 provides=('kotsasmin-toolkit' 'toolkit')
 conflicts=('kotsasmin-toolkit' 'toolkit')
-source=("git+https://github.com/Kotsasmin/toolkit.git"
-        "toolkit.sh")
-sha256sums=('SKIP'
-            'SKIP')
+# Everything comes from the GitHub repository, this package only installs it.
+source=("git+https://github.com/Kotsasmin/toolkit.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/toolkit"
@@ -33,8 +32,12 @@ package() {
     cd "${srcdir}/toolkit"
 
     install -dm755 "${pkgdir}/usr/lib/toolkit"
-    cp -r media optimization ptero security "${pkgdir}/usr/lib/toolkit/"
-    install -Dm755 "${srcdir}/toolkit.sh" "${pkgdir}/usr/lib/toolkit/toolkit.sh"
+    cp -r lib media optimization ptero security "${pkgdir}/usr/lib/toolkit/"
+    install -Dm755 toolkit.sh "${pkgdir}/usr/lib/toolkit/toolkit.sh"
+    # No .git in the package, so the launcher reads its version from this file.
+    echo "${pkgver}" > "${pkgdir}/usr/lib/toolkit/VERSION"
+    find "${pkgdir}/usr/lib/toolkit" -name '*.sh' -exec chmod 755 {} +
+    chmod 644 "${pkgdir}/usr/lib/toolkit/lib/ui.sh"
 
     install -dm755 "${pkgdir}/usr/bin"
     ln -s /usr/lib/toolkit/toolkit.sh "${pkgdir}/usr/bin/toolkit"
