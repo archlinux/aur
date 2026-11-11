@@ -1,0 +1,29 @@
+From 3b66f3f718aa4c9b5017b3561d79170a004680e6 Mon Sep 17 00:00:00 2001
+From: Leo <i@hardrain980.com>
+Date: Fri, 13 Nov 2026 16:17:25 +0800
+Subject: [PATCH 12/13] use blosc provided by package manager, explicitly link
+ blosc shared lib to openvdb
+
+---
+ deps/OpenVDB/OpenVDB.cmake | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/deps/OpenVDB/OpenVDB.cmake b/deps/OpenVDB/OpenVDB.cmake
+index e6816a98a..1b0621939 100644
+--- a/deps/OpenVDB/OpenVDB.cmake
++++ b/deps/OpenVDB/OpenVDB.cmake
+@@ -27,6 +27,11 @@ bambustudio_add_cmake_project(OpenVDB
+         -DCMAKE_POSITION_INDEPENDENT_CODE=ON 
+         -DOPENVDB_BUILD_PYTHON_MODULE=OFF
+         -DUSE_BLOSC=ON
++        -DBLOSC_USE_STATIC_LIBS=OFF
++        -DBlosc_INCLUDE_DIR=/usr/include
++        -DBlosc_LIBRARY_RELEASE=/usr/lib/libblosc.so.1
++    # archlinux does not ship .cmake files for blosc (1.x) package
++    # we need manually make it discoverable by cmake
+         -DOPENVDB_CORE_SHARED=${_build_shared} 
+         -DOPENVDB_CORE_STATIC=${_build_static}
+         -DOPENVDB_ENABLE_RPATH:BOOL=OFF
+-- 
+2.56.1
+

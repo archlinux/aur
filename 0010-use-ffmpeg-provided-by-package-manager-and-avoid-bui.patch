@@ -1,0 +1,58 @@
+From ccc121a599bf47194bced4c7c929a9035a03d696 Mon Sep 17 00:00:00 2001
+From: Leo <i@hardrain980.com>
+Date: Thu, 12 Nov 2026 00:56:48 +0800
+Subject: [PATCH 10/13] use ffmpeg provided by package manager and avoid
+ build/install ffmpeg shared libs
+
+---
+ CMakeLists.txt     | 14 --------------
+ src/CMakeLists.txt | 10 ----------
+ 2 files changed, 24 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index af5e682a5..62ecc0d1b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -923,18 +923,4 @@ else ()
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
+ endif ()
+ 
+-if (CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT FLATPAK)
+-    set(LIBRARY_FILES
+-    ${LIBDIR_BIN}/libavcodec.so.61
+-    ${LIBDIR_BIN}/libavcodec.so.61.3.100
+-    ${LIBDIR_BIN}/libavutil.so.59
+-    ${LIBDIR_BIN}/libavutil.so.59.8.100
+-    ${LIBDIR_BIN}/libswresample.so.5
+-    ${LIBDIR_BIN}/libswresample.so.5.1.100
+-    ${LIBDIR_BIN}/libswscale.so.8
+-    ${LIBDIR_BIN}/libswscale.so.8.1.100
+-    )
+-    install(FILES ${LIBRARY_FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+-endif ()
+-
+ configure_file(${LIBDIR}/platform/unix/fhs.hpp.in ${LIBDIR_BIN}/platform/unix/fhs.hpp)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6f96ac470..669d5f573 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -274,16 +274,6 @@ if (WIN32)
+ 
+ 
+ else ()
+-    if (NOT APPLE AND NOT FLATPAK)
+-        set(output_sos_Release "")
+-        set(output_sos_Debug "")
+-        add_custom_target(BambuStudioSosCopy ALL DEPENDS BambuStudio)
+-        if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+-            bambustudio_copy_sos(BambuStudioSosCopy "Debug" "d" output_sos_Debug)
+-        else()
+-            bambustudio_copy_sos(BambuStudioSosCopy "Release" "" output_sos_Release)
+-        endif()
+-    endif()
+     if (APPLE AND NOT CMAKE_MACOSX_BUNDLE)
+         # On OSX, the name of the binary matches the name of the Application.
+         add_custom_command(TARGET BambuStudio POST_BUILD
+-- 
+2.56.1
+

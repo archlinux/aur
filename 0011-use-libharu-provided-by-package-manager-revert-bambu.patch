@@ -1,0 +1,26 @@
+From 6a5155281b58ade28f9256c251c35b5e49aa412c Mon Sep 17 00:00:00 2001
+From: Leo <i@hardrain980.com>
+Date: Thu, 12 Nov 2026 01:51:31 +0800
+Subject: [PATCH 11/13] use libharu provided by package manager, revert
+ bambu-prefixed (`hpdf/`) libharu header path
+
+---
+ src/slic3r/GUI/Overview/AssemblyStepsUtils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/slic3r/GUI/Overview/AssemblyStepsUtils.cpp b/src/slic3r/GUI/Overview/AssemblyStepsUtils.cpp
+index 734dbd623..1b7012932 100644
+--- a/src/slic3r/GUI/Overview/AssemblyStepsUtils.cpp
++++ b/src/slic3r/GUI/Overview/AssemblyStepsUtils.cpp
+@@ -37,7 +37,7 @@
+ #include <unordered_set>
+ #include <type_traits>
+ 
+-#include <hpdf/hpdf.h>
++#include <hpdf.h>
+ 
+ #include <GL/glew.h>
+ #include <wx/glcanvas.h>
+-- 
+2.56.1
+

@@ -1,0 +1,41 @@
+From a92e3b687a47549b1a59249b629425e3b2b25f34 Mon Sep 17 00:00:00 2001
+From: Leo <i@hardrain980.com>
+Date: Sun, 15 Nov 2026 01:44:38 +0800
+Subject: [PATCH 13/13] patch boost locale source group to fix failed deps
+ building
+
+---
+ deps/Boost/0010-boost-locale-source-group.patch | 5 +++++
+ deps/Boost/Boost.cmake                          | 4 +++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+ create mode 100644 deps/Boost/0010-boost-locale-source-group.patch
+
+diff --git a/deps/Boost/0010-boost-locale-source-group.patch b/deps/Boost/0010-boost-locale-source-group.patch
+new file mode 100644
+index 000000000..4e67b56be
+--- /dev/null
++++ b/deps/Boost/0010-boost-locale-source-group.patch
+@@ -0,0 +1,5 @@
++--- a/libs/locale/CMakeLists.txt
+++++ b/libs/locale/CMakeLists.txt
++@@ -215,1 +215,1 @@
++-source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/include/boost/locale" PREFIX "headers" FILES ${sources_inc})
+++source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/include/boost" PREFIX "headers" FILES ${sources_inc})
+diff --git a/deps/Boost/Boost.cmake b/deps/Boost/Boost.cmake
+index 0f870d55f..3328c4891 100644
+--- a/deps/Boost/Boost.cmake
++++ b/deps/Boost/Boost.cmake
+@@ -52,7 +52,9 @@ bambustudio_add_cmake_project(Boost
+     URL "https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.gz"
+     URL_HASH SHA256=4d27e9efed0f6f152dc28db6430b9d3dfb40c0345da7342eaa5a987dde57bd95
+     LIST_SEPARATOR |
+-    PATCH_COMMAND git apply --verbose --ignore-space-change --whitespace=fix ${CMAKE_CURRENT_LIST_DIR}/0001-FIX-OBS-cannot-start-streaming-on-MAC.patch
++    PATCH_COMMAND git apply --unidiff-zero --verbose --ignore-space-change --whitespace=fix
++        ${CMAKE_CURRENT_LIST_DIR}/0001-FIX-OBS-cannot-start-streaming-on-MAC.patch
++        ${CMAKE_CURRENT_LIST_DIR}/0010-boost-locale-source-group.patch
+     CMAKE_ARGS
+         -DBOOST_EXCLUDE_LIBRARIES:STRING=contract|fiber|numpy|wave|test${_boost_ec_extra_excludes}
+         -DBOOST_LOCALE_ENABLE_ICU:BOOL=OFF # do not link to libicu, breaks compatibility between distros
+-- 
+2.56.1
+

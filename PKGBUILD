@@ -3,18 +3,18 @@ _raw_pkgver=02.09.01.70
 
 pkgname=bambu-studio
 pkgver=2.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="PC Software for BambuLab and other 3D printers"
 arch=('x86_64')
 url="https://github.com/bambulab/BambuStudio"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=(
-	'at-spi2-core' 'bzip2' 'cairo' 'curl' 'dbus' 'ffmpeg' 'fontconfig'
-	'gdk-pixbuf2' 'glib2' 'glibc' 'glu' 'glslang' 'gstreamer' 'gtk3'
-	'harfbuzz' 'imath' 'libgcc' 'libglvnd' 'libice' 'libjpeg-turbo'
-	'libsecret' 'libsm' 'libsoup3' 'libstdc++' 'libtiff' 'libx11' 'libxext'
-	'mesa' 'openssl' 'pango' 'wayland' 'webkit2gtk-4.1' 'xz' 'zlib' 'zstd'
+	'at-spi2-core' 'blosc' 'bzip2' 'cairo' 'curl' 'dbus' 'expat' 'ffmpeg' 'fontconfig' 'ffmpeg' 'freetype2'
+	'gdk-pixbuf2' 'glfw' 'glib2' 'glibc' 'glu' 'glslang' 'gmp' 'gstreamer' 'gtk3' 'harfbuzz' 'imath'
+	'libgcc' 'libglvnd' 'libharu' 'libice' 'libjpeg-turbo' 'libpng' 'libsecret' 'libsm' 'libsoup3'
+	'libstdc++' 'libtiff' 'libx11' 'libxext' 'mesa' 'mpfr' 'openssl' 'pango' 'wayland' 'webkit2gtk-4.1'
+	'xz' 'zlib' 'zstd'
 )
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxkbcommon' 'libxkbcommon-x11' 'wayland-protocols' 'nasm' 'yasm')
 # add '!lto' or ffmpeg build fails exact the same way described in this thread
@@ -24,18 +24,37 @@ source=(
 	"BambuStudio-$_raw_pkgver.tar.gz::https://github.com/bambulab/BambuStudio/archive/refs/tags/v$_raw_pkgver.tar.gz"
 	'BambuStudio.desktop'
 	'0001-src-slic3r-CMakeLists.txt-avoid-linking-to-the-depre.patch'
+	'0010-use-ffmpeg-provided-by-package-manager-and-avoid-bui.patch'
+	'0011-use-libharu-provided-by-package-manager-revert-bambu.patch'
+	'0012-use-blosc-provided-by-package-manager-explicitly-lin.patch'
+	'0013-patch-boost-locale-source-group-to-fix-failed-deps-b.patch'
+	'FindBlosc.cmake::https://raw.githubusercontent.com/AcademySoftwareFoundation/openvdb/v8.2.0/cmake/FindBlosc.cmake'
 	'https://github.com/bambulab/BambuStudio/pull/12925.patch'
+	'cgal-fix-boost-mpl-include.patch'
 )
 sha256sums=(
 	'39175631bcd01e942e0936fd3610a9c4bd43b5920768eda0bb365b00985537b0'
 	SKIP
 	SKIP
+	SKIP
+	SKIP
+	SKIP
+	SKIP
+	'ccba05deae648ae608d6c089cb25af4674083ce83ddbd18cecde2107f43e3364'
 	'824a8f709f04a353d017362526b56db3c9cdd073a0b58d080f1e6e6095a186fe'
+	SKIP
 )
 
 prepare() {
 	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0001-src-slic3r-CMakeLists.txt-avoid-linking-to-the-depre.patch
+	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0010-use-ffmpeg-provided-by-package-manager-and-avoid-bui.patch
+	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0011-use-libharu-provided-by-package-manager-revert-bambu.patch
+	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0012-use-blosc-provided-by-package-manager-explicitly-lin.patch
+	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/0013-patch-boost-locale-source-group-to-fix-failed-deps-b.patch
 	patch -Np1 -d $srcdir/BambuStudio-$_raw_pkgver < $srcdir/12925.patch
+	install -Dm644 \
+		"$srcdir/FindBlosc.cmake" \
+		"$srcdir/BambuStudio-$_raw_pkgver/cmake/modules/FindBlosc.cmake"
 	mkdir -p \
 		$srcdir/BambuStudio_deps \
 		$srcdir/BambuStudio-$_raw_pkgver/build \
@@ -53,9 +72,22 @@ build() {
 		-DDESTDIR=$srcdir/BambuStudio_deps \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DDEP_WX_GTK3=1 \
+		-DDEP_BUILD_PNG=0 \
+		-DDEP_BUILD_JPEG=0 \
+		-DDEP_BUILD_TIFF=0 \
+		-DDEP_BUILD_FREETYPE=0 \
+		-DDEP_BUILD_FFMPEG=0 \
+		-DDEP_BUILD_LIBHARU=0 \
+		-DDEP_BUILD_GLFW=0 \
+		-DDEP_BUILD_GMP=0 \
+		-DDEP_BUILD_MPFR=0 \
 		-DDEP_BUILD_OPENSSL=0 \
-		-DCURL_FOUND=1
+		-DDEP_BUILD_BLOSC=0 \
+		-DCURL_FOUND=1 \
+		-DEXPAT_FOUND=1 \
+		-DZLIB_FOUND=1
 	make
+	patch -Np1 -d "$srcdir/BambuStudio_deps/usr/local/include" < "$srcdir/cgal-fix-boost-mpl-include.patch"
 
 	cd $srcdir/BambuStudio-$_raw_pkgver/build
 	cmake ../ \
