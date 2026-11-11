@@ -1,5 +1,5 @@
 pkgbase = openspec-bin
-	pkgdesc = A fast static code analyzer & language server for Python
+	pkgdesc = Spec-driven development (SDD) for AI coding assistants.
 	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/Fission-AI/OpenSpec

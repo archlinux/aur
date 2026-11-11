@@ -4,7 +4,7 @@ pkgname=openspec-bin
 _pkgname=openspec
 pkgver=1.17.0 # datasource=github-releases depName=Fission-AI/OpenSpec
 pkgrel=1
-pkgdesc='A fast static code analyzer & language server for Python'
+pkgdesc='Spec-driven development (SDD) for AI coding assistants.'
 arch=('aarch64' 'x86_64')
 depends=('glibc')
 options=('!strip')
