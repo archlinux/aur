@@ -1,0 +1,5 @@
+[anicraft-bin]
+source = "github"
+github = "storytold/anicraft"
+use_latest_release = true
+prefix = "v"
