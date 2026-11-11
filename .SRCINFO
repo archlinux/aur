@@ -1,7 +1,7 @@
 pkgbase = libgnt
 	pkgdesc = GLib Ncurses Toolkit
-	pkgver = 2.14.4
-	pkgrel = 2
+	pkgver = 2.15.0
+	pkgrel = 1
 	url = https://keep.imfreedom.org/libgnt/libgnt
 	arch = x86_64
 	license = GPL
@@ -11,10 +11,10 @@ pkgbase = libgnt
 	depends = glib2
 	depends = libxml2
 	depends = ncurses
-	source = https://downloads.sourceforge.net/project/pidgin/libgnt/2.14.4/libgnt-2.14.4-dev.tar.xz
-	source = https://downloads.sourceforge.net/project/pidgin/libgnt/2.14.4/libgnt-2.14.4-dev.tar.xz.asc
+	source = https://downloads.sourceforge.net/project/pidgin/libgnt/2.15.0/libgnt-2.15.0.tar.xz
+	source = https://downloads.sourceforge.net/project/pidgin/libgnt/2.15.0/libgnt-2.15.0.tar.xz.asc
 	validpgpkeys = 40DE1DC7288FE3F50AB938C548F66AFFD9BDB729
-	sha256sums = 195933a9a731d3575791b881ba5cc0ad2a715e1e9c4c23ccaaa2a17e164c96ec
+	sha256sums = 6dce3d4f2fb33c242d8223ddda5f1042f3dfb0ad7c395d4e33a73f92423a58a3
 	sha256sums = SKIP
 
 pkgname = libgnt
