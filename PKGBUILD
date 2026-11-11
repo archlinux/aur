@@ -1,34 +1,85 @@
-# Maintainer: Alper Ortac <alportac@gmail.com>
+# Maintainer: Ghostex <support@ghostex.app>
+# Maintainer: Alper Ortac <alportac@gmail.com> (created this AUR package)
+#
+# Generated from tooling/packaging/aur/ghostex-bin/PKGBUILD.template in the Ghostex
+# repository by tooling/release-gpui/publish-aur.mjs, which also derives the
+# matching .SRCINFO by parsing this file, so the two can never diverge. Edit the
+# template, never the published copy.
+#
+# Keep every field above package() as a plain `key=value` or `key=(...)` line:
+# that is the only shape the .SRCINFO generator accepts.
+
 pkgname=ghostex-bin
-pkgver=11.3.0
+pkgver=11.4.0
 pkgrel=1
-pkgdesc='Native AI agent workspaces with terminals and an embedded browser (prebuilt)'
+pkgdesc="Ghostty-based desktop workspace for AI agent CLIs, with persistent terminals, browser panes, and a built-in IDE"
 arch=('x86_64')
-url='https://github.com/maddada/Ghostex'
+url="https://ghostex.dev"
 license=('MIT')
+# Mirrors the Depends list of the official .deb (tooling/release-gpui/linux-deb.sh),
+# translated to the packages that own each shared library on Arch. Several of
+# these are pulled in transitively by gtk3; they are listed explicitly anyway so
+# the bundled CEF and Ghostty payloads cannot silently lose a direct dependency.
+# at-spi2-core covers all three of the deb's atk/atk-bridge/atspi entries: Arch
+# merged atk and at-spi2-atk into it. `dbus` owns libdbus-1.so.3 (the short-lived
+# `libdbus` split was folded back in). hicolor-icon-theme is not in the deb list;
+# it owns the theme directory this package drops its icon into, which is also
+# what makes pacman's gtk-update-icon-cache hook fire. `bash` runs the
+# /usr/bin/ghostex wrapper; libxkbcommon-x11 is the deb's libxkbcommon-x11-0
+# (namcap flags both when they are missing).
 depends=(
-  'bash' 'glibc' 'libgcc' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11'
-  'gtk3' 'nss' 'nspr' 'mesa' 'alsa-lib' 'at-spi2-core' 'libcups'
-  'libdrm' 'libxcomposite' 'libxdamage' 'libxrandr' 'libxshmfence'
-  'pango' 'cairo' 'fontconfig' 'wmctrl' 'hicolor-icon-theme'
+  'alsa-lib'
+  'at-spi2-core'
+  'bash'
+  'cairo'
+  'dbus'
+  'expat'
+  'ffmpeg'
+  'fontconfig'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libdrm'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'libxrandr'
+  'libxshmfence'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
 )
-provides=("ghostex=$pkgver")
+optdepends=('wmctrl: raise the running Ghostex window from the ghostex command on X11')
+provides=("ghostex=${pkgver}")
 conflicts=('ghostex')
 options=('!strip' '!debug')
-source=("ghostex-${pkgver}-linux-x64.tar.zst::$url/releases/download/v${pkgver}/ghostex-${pkgver}-linux-x64.tar.zst"
-        "ghostex-${pkgver}-LICENSE::https://raw.githubusercontent.com/maddada/Ghostex/v${pkgver}/LICENSE")
-sha256sums=('fb93749cbd4ed248d4599293be51775d100f03ba3289bad10c3db354e8273c9b'
-            '50c3e6ee30c68e93ebed3e549770999eaee10b88618588d57c9d5355d0996509')
+install="ghostex-bin.install"
+# Arch expects the MIT license text installed, and the release tarball carries
+# none, so it is the release tag's own LICENSE. The AUR repository's LICENSE is
+# the 0BSD license of this packaging (Alp's) and is never touched by the publisher.
+source=(
+  "ghostex-${pkgver}-LICENSE::https://raw.githubusercontent.com/maddada/Ghostex/v${pkgver}/LICENSE"
+  "https://github.com/maddada/Ghostex/releases/download/v${pkgver}/ghostex-${pkgver}-linux-x64.tar.zst"
+)
+sha256sums=(
+  '50c3e6ee30c68e93ebed3e549770999eaee10b88618588d57c9d5355d0996509'
+  '3423bf876d76a1b598207c0e17982a0beb62e0853a0046ed4f2329db654ac829'
+)
 
 package() {
-  install -d "$pkgdir/opt" "$pkgdir/usr/bin"
-  cp -a "$srcdir/opt/ghostex" "$pkgdir/opt/"
-  install -Dm755 "$srcdir/usr/bin/ghostex" "$pkgdir/usr/bin/ghostex"
-  ln -s ghostex "$pkgdir/usr/bin/gx"
-  install -Dm644 "$srcdir/usr/share/applications/ghostex.desktop" \
-    "$pkgdir/usr/share/applications/ghostex.desktop"
-  install -Dm644 "$srcdir/usr/share/icons/hicolor/256x256/apps/ghostex.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/ghostex.png"
-  install -Dm644 "$srcdir/ghostex-${pkgver}-LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # The release tarball is already a prefix-preserving tree (opt/, usr/) and the
+  # Ghostex binaries hardcode /opt/ghostex, so nothing may be relocated: install
+  # it verbatim. `cp -a` is what keeps the usr/bin/gx -> ghostex symlink a
+  # symlink and preserves the payload's executable bits.
+  cp -a "${srcdir}/opt" "${pkgdir}/opt"
+  cp -a "${srcdir}/usr" "${pkgdir}/usr"
+  install -Dm644 "${srcdir}/ghostex-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
