@@ -3,13 +3,13 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 #_opt_OpenSSL='-1.1'
-_opt_OpenSSL=''
+_opt_OpenSSL='-3'
 
 set -u
 pkgname='proftpd'
 #pkgname+='-git'
 pkgver=1.3.9e
-pkgrel=1
+pkgrel=2
 epoch='2'
 pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
 arch=('x86_64' 'i686')
@@ -163,7 +163,7 @@ _configure() {
     #CC=gcc-9 CXX=g++-9
   )
   if [ ! -z "${_opt_OpenSSL}" ]; then
-    _conf+=(--with-openssl-cmdline="/usr/bin/openssl${_opt_OpenSSL}")
+    #_conf+=(--with-openssl-cmdline="/usr/bin/openssl${_opt_OpenSSL}")
     #LIBS+=" -lopenssl${_opt_OpenSSL}"
     LDFLAGS+=" -L/usr/lib/openssl${_opt_OpenSSL}"
     CPPFLAGS+=" -I/usr/include/openssl${_opt_OpenSSL}"
