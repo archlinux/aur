@@ -1,0 +1,710 @@
+diff -ruN patchA/OPAL-2024.1.0/CMakeLists.txt pg/OPAL-2024.1.0/CMakeLists.txt
+--- a/CMakeLists.txt	2024-07-02 16:52:19.000000000 +0800
++++ b/CMakeLists.txt	2026-11-11 17:39:06.251169936 +0800
+@@ -56,7 +56,6 @@
+ add_compile_options (-Wall)
+ add_compile_options (-Wunused)
+ add_compile_options (-Wextra)
+-add_compile_options (-Werror)
+ 
+ add_compile_options (-funroll-loops)
+ add_compile_options (-fstrict-aliasing)
+@@ -137,7 +136,9 @@
+     if (NOT ${BUILD_FOR_PRODUCTION})
+         add_compile_options(-Wp,-D_GLIBCXX_ASSERTIONS)
+     endif()
+-    enable_language (Fortran OPTIONAL)
++    # Fortran is only needed for the optional AMReX based AMR solver; enabling it
++    # unconditionally breaks builds on systems without gfortran because the
++    # HDF5 CMake package then re-runs find_dependency(MPI) for Fortran as well.
+ else ()
+     message (STATUS "Unknown C++ compiler. Please use the GNU or Intel compiler, if you are having problems.")
+ endif ()
+@@ -160,7 +161,7 @@
+ find_package (H5Hut REQUIRED)
+ 
+ if (NOT ${WILL_BUILD_SHARED_LIBRARY})
+-    set (HDF5_USE_STATIC_LIBRARIES ON)
++    set (HDF5_USE_STATIC_LIBRARIES OFF)
+ endif ()
+ set (HDF5_PREFER_PARALLEL ON)
+ find_package (HDF5 REQUIRED)
+@@ -174,7 +175,7 @@
+ 
+ set (BOOSTROOT $ENV{BOOST_DIR})
+ if (NOT ${WILL_BUILD_SHARED_LIBRARY})
+-    set (Boost_USE_STATIC_LIBS ON)
++    set (Boost_USE_STATIC_LIBS OFF)
+ endif ()
+ set (Boost_USE_MULTITHREADED OFF)
+ set (Boost_USE_STATIC_RUNTIME OFF)
+@@ -320,6 +321,6 @@
+ 
+ install (
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config_install.cmake
+-    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
++    DESTINATION "lib/cmake/${PROJECT_NAME}"
+     RENAME ${PROJECT_NAME}Config.cmake
+     )
+diff -ruN patchA/OPAL-2024.1.0/ippl/CMakeLists.txt pg/OPAL-2024.1.0/ippl/CMakeLists.txt
+--- a/ippl/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/CMakeLists.txt	2026-11-11 17:39:06.252833038 +0800
+@@ -26,6 +26,6 @@
+ 
+ install (
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config_install.cmake
+-    DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
++    DESTINATION "lib/cmake/${PROJECT_NAME}"
+     RENAME ${PROJECT_NAME}Config.cmake
+     )
+\ 文件末尾没有换行符
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/AmrParticle/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/AmrParticle/CMakeLists.txt
+--- a/ippl/src/AmrParticle/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/AmrParticle/CMakeLists.txt	2026-11-11 17:39:06.252812700 +0800
+@@ -15,4 +15,4 @@
+ ADD_IPPL_SOURCES (${_SRCS})
+ ADD_IPPL_HEADERS (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/AmrParticle)
++install (FILES ${_HDRS} DESTINATION include/opalx/AmrParticle)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/AppTypes/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/AppTypes/CMakeLists.txt
+--- a/ippl/src/AppTypes/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/AppTypes/CMakeLists.txt	2026-11-11 17:39:06.252796185 +0800
+@@ -24,4 +24,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/AppTypes)
++install (FILES ${_HDRS} DESTINATION include/opalx/AppTypes)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/CMakeLists.txt
+--- a/ippl/src/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/CMakeLists.txt	2026-11-11 17:39:06.252777224 +0800
+@@ -89,4 +89,4 @@
+ target_link_libraries(ippl)
+ 
+ install (TARGETS ippl DESTINATION lib)
+-install (FILES ${IPPL_BASEDIR_HDRS} DESTINATION include)
++install (FILES ${IPPL_BASEDIR_HDRS} DESTINATION include/opalx)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/DataSource/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/DataSource/CMakeLists.txt
+--- a/ippl/src/DataSource/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/DataSource/CMakeLists.txt	2026-11-11 17:39:06.252748277 +0800
+@@ -34,4 +34,4 @@
+ ADD_IPPL_SOURCES (${_SRCS})
+ ADD_IPPL_HEADERS (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/DataSource)
++install (FILES ${_HDRS} DESTINATION include/opalx/DataSource)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/DomainMap/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/DomainMap/CMakeLists.txt
+--- a/ippl/src/DomainMap/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/DomainMap/CMakeLists.txt	2026-11-11 17:39:06.252727234 +0800
+@@ -13,4 +13,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/DomainMap)
++install (FILES ${_HDRS} DESTINATION include/opalx/DomainMap)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/FFT/FFTBase.hpp pg/OPAL-2024.1.0/ippl/src/FFT/FFTBase.hpp
+--- a/ippl/src/FFT/FFTBase.hpp	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/FFT/FFTBase.hpp	2026-11-11 17:39:06.254459580 +0800
+@@ -87,7 +87,7 @@
+     out << "---------------FFT Object Dump Begin-------------------" << std::endl;
+     // Output the user-defined names for transform directions:
+     out << "Map of transform direction names:" << std::endl;
+-    std::map<char*,unsigned>::const_iterator mi, m_end = directions_m.end();
++    std::map<const char*,int>::const_iterator mi, m_end = directions_m.end();
+     for (mi = directions_m.begin(); mi != m_end; ++mi)
+         out << "[" << (*mi).first << "," << (*mi).second << "]" << std::endl;
+     // Output type of transform
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Field/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Field/CMakeLists.txt
+--- a/ippl/src/Field/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Field/CMakeLists.txt	2026-11-11 17:39:06.252710359 +0800
+@@ -41,4 +41,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Field)
++install (FILES ${_HDRS} DESTINATION include/opalx/Field)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/FieldLayout/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/FieldLayout/CMakeLists.txt
+--- a/ippl/src/FieldLayout/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/FieldLayout/CMakeLists.txt	2026-11-11 17:39:06.252691003 +0800
+@@ -21,4 +21,4 @@
+ ADD_IPPL_SOURCES (${_SRCS})
+ ADD_IPPL_HEADERS (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/FieldLayout)
++install (FILES ${_HDRS} DESTINATION include/opalx/FieldLayout)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Index/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Index/CMakeLists.txt
+--- a/ippl/src/Index/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Index/CMakeLists.txt	2026-11-11 17:39:06.252673866 +0800
+@@ -23,4 +23,4 @@
+ ADD_IPPL_SOURCES (${_SRCS})
+ ADD_IPPL_HEADERS (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Index)
++install (FILES ${_HDRS} DESTINATION include/opalx/Index)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Meshes/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Meshes/CMakeLists.txt
+--- a/ippl/src/Meshes/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Meshes/CMakeLists.txt	2026-11-11 17:39:06.252656418 +0800
+@@ -22,4 +22,4 @@
+ ADD_IPPL_SOURCES (${_SRCS})
+ ADD_IPPL_HEADERS (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Meshes)
++install (FILES ${_HDRS} DESTINATION include/opalx/Meshes)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Message/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Message/CMakeLists.txt
+--- a/ippl/src/Message/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Message/CMakeLists.txt	2026-11-11 17:39:06.252639411 +0800
+@@ -32,4 +32,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Message)
+\ 文件末尾没有换行符
++install (FILES ${_HDRS} DESTINATION include/opalx/Message)
+\ 文件末尾没有换行符
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Particle/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Particle/CMakeLists.txt
+--- a/ippl/src/Particle/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Particle/CMakeLists.txt	2026-11-11 17:39:06.252604118 +0800
+@@ -52,7 +52,7 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Particle)
++install (FILES ${_HDRS} DESTINATION include/opalx/Particle)
+ 
+ add_subdirectory (PairBuilder)
+ 
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Particle/PairBuilder/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Particle/PairBuilder/CMakeLists.txt
+--- a/ippl/src/Particle/PairBuilder/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Particle/PairBuilder/CMakeLists.txt	2026-11-11 17:39:06.252582095 +0800
+@@ -18,4 +18,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Particle/PairBuilder)
++install (FILES ${_HDRS} DESTINATION include/opalx/Particle/PairBuilder)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/PETE/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/PETE/CMakeLists.txt
+--- a/ippl/src/PETE/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/PETE/CMakeLists.txt	2026-11-11 17:39:06.252621164 +0800
+@@ -15,4 +15,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/PETE)
++install (FILES ${_HDRS} DESTINATION include/opalx/PETE)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Region/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Region/CMakeLists.txt
+--- a/ippl/src/Region/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Region/CMakeLists.txt	2026-11-11 17:39:06.252565097 +0800
+@@ -16,4 +16,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Region)
++install (FILES ${_HDRS} DESTINATION include/opalx/Region)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/SubField/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/SubField/CMakeLists.txt
+--- a/ippl/src/SubField/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/SubField/CMakeLists.txt	2026-11-11 17:39:06.252548109 +0800
+@@ -20,4 +20,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/SubField)
++install (FILES ${_HDRS} DESTINATION include/opalx/SubField)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/SubParticle/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/SubParticle/CMakeLists.txt
+--- a/ippl/src/SubParticle/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/SubParticle/CMakeLists.txt	2026-11-11 17:39:06.252525464 +0800
+@@ -16,4 +16,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/SubParticle)
++install (FILES ${_HDRS} DESTINATION include/opalx/SubParticle)
+diff -ruN patchA/OPAL-2024.1.0/ippl/src/Utility/CMakeLists.txt pg/OPAL-2024.1.0/ippl/src/Utility/CMakeLists.txt
+--- a/ippl/src/Utility/CMakeLists.txt	2024-07-01 21:54:40.000000000 +0800
++++ b/ippl/src/Utility/CMakeLists.txt	2026-11-11 17:39:06.252503902 +0800
+@@ -73,4 +73,4 @@
+ add_ippl_sources (${_SRCS})
+ add_ippl_headers (${_HDRS})
+ 
+-install (FILES ${_HDRS} DESTINATION include/Utility)
++install (FILES ${_HDRS} DESTINATION include/opalx/Utility)
+diff -ruN patchA/OPAL-2024.1.0/src/AbstractObjects/CMakeLists.txt pg/OPAL-2024.1.0/src/AbstractObjects/CMakeLists.txt
+--- a/src/AbstractObjects/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/AbstractObjects/CMakeLists.txt	2026-11-11 17:39:06.252453550 +0800
+@@ -45,4 +45,4 @@
+     ValueDefinition.h
+ )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/AbstractObjects")
++install (FILES ${HDRS} DESTINATION "include/opalx/AbstractObjects")
+diff -ruN patchA/OPAL-2024.1.0/src/Algorithms/CMakeLists.txt pg/OPAL-2024.1.0/src/Algorithms/CMakeLists.txt
+--- a/src/Algorithms/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Algorithms/CMakeLists.txt	2026-11-11 17:39:06.252425729 +0800
+@@ -35,4 +35,4 @@
+     ThickTracker.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Algorithms")
++install (FILES ${HDRS} DESTINATION "include/opalx/Algorithms")
+diff -ruN patchA/OPAL-2024.1.0/src/Amr/CMakeLists.txt pg/OPAL-2024.1.0/src/Amr/CMakeLists.txt
+--- a/src/Amr/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Amr/CMakeLists.txt	2026-11-11 17:39:06.252406093 +0800
+@@ -26,4 +26,4 @@
+     BoxLibParticle.hpp
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Amr")
++install (FILES ${HDRS} DESTINATION "include/opalx/Amr")
+diff -ruN patchA/OPAL-2024.1.0/src/Attributes/CMakeLists.txt pg/OPAL-2024.1.0/src/Attributes/CMakeLists.txt
+--- a/src/Attributes/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Attributes/CMakeLists.txt	2026-11-11 17:39:06.252387371 +0800
+@@ -42,4 +42,4 @@
+     UpperCaseStringArray.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Attributes")
+\ 文件末尾没有换行符
++install (FILES ${HDRS} DESTINATION "include/opalx/Attributes")
+\ 文件末尾没有换行符
+diff -ruN patchA/OPAL-2024.1.0/src/BasicActions/CMakeLists.txt pg/OPAL-2024.1.0/src/BasicActions/CMakeLists.txt
+--- a/src/BasicActions/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/BasicActions/CMakeLists.txt	2026-11-11 17:39:06.252366636 +0800
+@@ -36,4 +36,4 @@
+     Value.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/BasicActions")
++install (FILES ${HDRS} DESTINATION "include/opalx/BasicActions")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/AbsBeamline/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/AbsBeamline/CMakeLists.txt
+--- a/src/Classic/AbsBeamline/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/AbsBeamline/CMakeLists.txt	2026-11-11 17:39:06.252295894 +0800
+@@ -99,4 +99,4 @@
+ 
+ add_opal_sources (${_SRCS})
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/AbsBeamline")
++install (FILES ${HDRS} DESTINATION "include/opalx/AbsBeamline")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/AbsBeamline/EndFieldModel/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/AbsBeamline/EndFieldModel/CMakeLists.txt
+--- a/src/Classic/AbsBeamline/EndFieldModel/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/AbsBeamline/EndFieldModel/CMakeLists.txt	2026-11-11 17:39:06.252266648 +0800
+@@ -18,4 +18,4 @@
+     AsymmetricEnge.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/AbsBeamline/EndFieldModel/")
++install (FILES ${HDRS} DESTINATION "include/opalx/AbsBeamline/EndFieldModel/")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/AbsBeamline/MultipoleTFunctions/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/AbsBeamline/MultipoleTFunctions/CMakeLists.txt
+--- a/src/Classic/AbsBeamline/MultipoleTFunctions/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/AbsBeamline/MultipoleTFunctions/CMakeLists.txt	2026-11-11 17:39:06.252249166 +0800
+@@ -28,4 +28,4 @@
+     TwoPolynomial.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/AbsBeamline/MultipoleTFunctions/")
++install (FILES ${HDRS} DESTINATION "include/opalx/AbsBeamline/MultipoleTFunctions/")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Algebra/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Algebra/CMakeLists.txt
+--- a/src/Classic/Algebra/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/Algebra/CMakeLists.txt	2026-11-11 17:39:06.252229607 +0800
+@@ -30,6 +30,6 @@
+     VpsMap.h
+     )
+ 
+-install (FILES ${HDRS}  DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Algebra")
++install (FILES ${HDRS}  DESTINATION "include/opalx/Algebra")
+ # Some source files included in header files
+-install (FILES ${_SRCS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Algebra")
++install (FILES ${_SRCS} DESTINATION "include/opalx/Algebra")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Algorithms/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Algorithms/CMakeLists.txt
+--- a/src/Classic/Algorithms/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/Algorithms/CMakeLists.txt	2026-11-11 17:39:06.252209562 +0800
+@@ -52,4 +52,4 @@
+     list(APPEND HDRS AmrPartBunch.h)
+ endif ()
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Algorithms")
++install (FILES ${HDRS} DESTINATION "include/opalx/Algorithms")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/BeamlineCore/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/BeamlineCore/CMakeLists.txt
+--- a/src/Classic/BeamlineCore/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/BeamlineCore/CMakeLists.txt	2026-11-11 17:39:06.252183540 +0800
+@@ -70,4 +70,4 @@
+ 
+ add_opal_sources (${_SRCS})
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/BeamlineCore")
++install (FILES ${HDRS} DESTINATION "include/opalx/BeamlineCore")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/BeamlineGeometry/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/BeamlineGeometry/CMakeLists.txt
+--- a/src/Classic/BeamlineGeometry/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/BeamlineGeometry/CMakeLists.txt	2026-11-11 17:39:06.252153300 +0800
+@@ -32,4 +32,4 @@
+     Vector3D.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/BeamlineGeometry")
++install (FILES ${HDRS} DESTINATION "include/opalx/BeamlineGeometry")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Beamlines/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Beamlines/CMakeLists.txt
+--- a/src/Classic/Beamlines/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/Beamlines/CMakeLists.txt	2026-11-11 17:39:06.252132245 +0800
+@@ -21,4 +21,4 @@
+     TBeamline.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Beamlines")
++install (FILES ${HDRS} DESTINATION "include/opalx/Beamlines")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Channels/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Channels/CMakeLists.txt
+--- a/src/Classic/Channels/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/Classic/Channels/CMakeLists.txt	2026-11-11 17:39:06.252110828 +0800
+@@ -18,4 +18,4 @@
+     IndirectChannel.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Channels")
++install (FILES ${HDRS} DESTINATION "include/opalx/Channels")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Fields/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Fields/CMakeLists.txt
+--- a/src/Classic/Fields/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Fields/CMakeLists.txt	2026-11-11 17:39:06.252093355 +0800
+@@ -91,4 +91,4 @@
+     StaticMagneticField.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Fields")
+\ 文件末尾没有换行符
++install (FILES ${HDRS} DESTINATION "include/opalx/Fields")
+\ 文件末尾没有换行符
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Fields/Interpolation/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Fields/Interpolation/CMakeLists.txt
+--- a/src/Classic/Fields/Interpolation/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Fields/Interpolation/CMakeLists.txt	2026-11-11 17:39:06.252064504 +0800
+@@ -36,5 +36,5 @@
+     VectorMap.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Interpolation")
++install (FILES ${HDRS} DESTINATION "include/opalx/Interpolation")
+ 
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Filters/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Filters/CMakeLists.txt
+--- a/src/Classic/Filters/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Filters/CMakeLists.txt	2026-11-11 17:39:06.252044441 +0800
+@@ -20,4 +20,4 @@
+     Stencil.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Filters")
++install (FILES ${HDRS} DESTINATION "include/opalx/Filters")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/FixedAlgebra/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/FixedAlgebra/CMakeLists.txt
+--- a/src/Classic/FixedAlgebra/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/FixedAlgebra/CMakeLists.txt	2026-11-11 17:39:06.252026735 +0800
+@@ -36,6 +36,6 @@
+     TransportMap.hpp
+     )
+ 
+-install (FILES ${HDRS}  DESTINATION "${CMAKE_INSTALL_PREFIX}/include/FixedAlgebra")
++install (FILES ${HDRS}  DESTINATION "include/opalx/FixedAlgebra")
+ # Some source files included in header files
+-install (FILES ${_SRCS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/FixedAlgebra")
++install (FILES ${_SRCS} DESTINATION "include/opalx/FixedAlgebra")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/FixedAlgebra/TransportFun.hpp pg/OPAL-2024.1.0/src/Classic/FixedAlgebra/TransportFun.hpp
+--- a/src/Classic/FixedAlgebra/TransportFun.hpp	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/FixedAlgebra/TransportFun.hpp	2026-11-11 17:39:06.253525622 +0800
+@@ -393,7 +393,7 @@
+ 
+ template <class T, int N>
+ std::ostream &TransportFun<T, N>::put(std::ostream &os) const {
+-    os << "Tps " << this->itsRep->max << ' ' << this->itsRep->trc << ' ' << N
++    os << "Tps " << 2 << ' ' << 2 << ' ' << N
+        << std::endl;
+     std::streamsize old_prec = os.precision(14);
+     os.setf(std::ios::scientific, std::ios::floatfield);
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/MemoryManagement/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/MemoryManagement/CMakeLists.txt
+--- a/src/Classic/MemoryManagement/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/MemoryManagement/CMakeLists.txt	2026-11-11 17:39:06.252004547 +0800
+@@ -13,4 +13,4 @@
+     RCObject.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/MemoryManagement")
++install (FILES ${HDRS} DESTINATION "include/opalx/MemoryManagement")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Parser/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Parser/CMakeLists.txt
+--- a/src/Classic/Parser/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Parser/CMakeLists.txt	2026-11-11 17:39:06.251986581 +0800
+@@ -25,4 +25,4 @@
+     TokenStream.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Parser")
+\ 文件末尾没有换行符
++install (FILES ${HDRS} DESTINATION "include/opalx/Parser")
+\ 文件末尾没有换行符
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Physics/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Physics/CMakeLists.txt
+--- a/src/Classic/Physics/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Physics/CMakeLists.txt	2026-11-11 17:39:06.251967897 +0800
+@@ -15,4 +15,4 @@
+     Physics.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Physics")
++install (FILES ${HDRS} DESTINATION "include/opalx/Physics")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Solvers/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Solvers/CMakeLists.txt
+--- a/src/Classic/Solvers/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Solvers/CMakeLists.txt	2026-11-11 17:39:06.251950147 +0800
+@@ -22,4 +22,4 @@
+     WakeFunction.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Solvers")
++install (FILES ${HDRS} DESTINATION "include/opalx/Solvers")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Structure/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Structure/CMakeLists.txt
+--- a/src/Classic/Structure/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Structure/CMakeLists.txt	2026-11-11 17:39:06.251931295 +0800
+@@ -19,4 +19,4 @@
+     ValueRange.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Structure")
+\ 文件末尾没有换行符
++install (FILES ${HDRS} DESTINATION "include/opalx/Structure")
+\ 文件末尾没有换行符
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/TrimCoils/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/TrimCoils/CMakeLists.txt
+--- a/src/Classic/TrimCoils/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/TrimCoils/CMakeLists.txt	2026-11-11 17:39:06.251913947 +0800
+@@ -22,4 +22,4 @@
+     TrimCoilMirrored.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/TrimCoils")
++install (FILES ${HDRS} DESTINATION "include/opalx/TrimCoils")
+diff -ruN patchA/OPAL-2024.1.0/src/Classic/Utilities/CMakeLists.txt pg/OPAL-2024.1.0/src/Classic/Utilities/CMakeLists.txt
+--- a/src/Classic/Utilities/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Classic/Utilities/CMakeLists.txt	2026-11-11 17:39:06.251895483 +0800
+@@ -96,4 +96,4 @@
+     Util.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Utilities")
++install (FILES ${HDRS} DESTINATION "include/opalx/Utilities")
+diff -ruN patchA/OPAL-2024.1.0/src/CMakeLists.txt pg/OPAL-2024.1.0/src/CMakeLists.txt
+--- a/src/CMakeLists.txt	2024-07-01 21:54:41.000000000 +0800
++++ b/src/CMakeLists.txt	2026-11-11 17:39:06.252335851 +0800
+@@ -149,7 +149,7 @@
+         ${CMAKE_DL_LIBS}
+         pthread
+     )
+-    install (TARGETS libOPALstatic DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
++    install (TARGETS libOPALstatic DESTINATION "lib")
+ endif()
+ 
+ if (WILL_BUILD_SHARED_LIBRARY)
+@@ -161,7 +161,7 @@
+         ${OPAL_LIBS}
+         "-rdynamic"
+     )
+-    install (TARGETS libOPALdynamic DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
++    install (TARGETS libOPALdynamic DESTINATION "lib")
+ endif()
+ 
+ if (BUILD_OPAL_PYTHON)
+@@ -174,8 +174,8 @@
+     target_link_libraries(libOPALstatic ${MITHRA_LIBRARY_DIR}/libmithra.a)
+ endif()
+ 
+-install (TARGETS ${TEST_EXE} RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+-install (TARGETS opal RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
++install (TARGETS ${TEST_EXE} RUNTIME DESTINATION "bin")
++install (TARGETS opal RUNTIME DESTINATION "bin")
+ 
+ set (HDRS
+     OPALconfig.h
+@@ -184,4 +184,4 @@
+     changes.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/src")
++install (FILES ${HDRS} DESTINATION "include/opalx/src")
+diff -ruN patchA/OPAL-2024.1.0/src/Distribution/CMakeLists.txt pg/OPAL-2024.1.0/src/Distribution/CMakeLists.txt
+--- a/src/Distribution/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Distribution/CMakeLists.txt	2026-11-11 17:39:06.251868212 +0800
+@@ -21,4 +21,4 @@
+     SigmaGenerator.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Distribution")
++install (FILES ${HDRS} DESTINATION "include/opalx/Distribution")
+diff -ruN patchA/OPAL-2024.1.0/src/Elements/CMakeLists.txt pg/OPAL-2024.1.0/src/Elements/CMakeLists.txt
+--- a/src/Elements/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Elements/CMakeLists.txt	2026-11-11 17:39:06.251849378 +0800
+@@ -115,4 +115,4 @@
+ 
+ add_opal_sources (${_SRCS})
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Elements/OpalOffset")
++install (FILES ${HDRS} DESTINATION "include/opalx/Elements/OpalOffset")
+diff -ruN patchA/OPAL-2024.1.0/src/Expressions/CMakeLists.txt pg/OPAL-2024.1.0/src/Expressions/CMakeLists.txt
+--- a/src/Expressions/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Expressions/CMakeLists.txt	2026-11-11 17:39:06.251816592 +0800
+@@ -46,4 +46,4 @@
+     TFunction2.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Expressions")
++install (FILES ${HDRS} DESTINATION "include/opalx/Expressions")
+diff -ruN patchA/OPAL-2024.1.0/src/Lines/CMakeLists.txt pg/OPAL-2024.1.0/src/Lines/CMakeLists.txt
+--- a/src/Lines/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Lines/CMakeLists.txt	2026-11-11 17:39:06.251796233 +0800
+@@ -24,4 +24,4 @@
+     SequenceTemplate.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Lines")
++install (FILES ${HDRS} DESTINATION "include/opalx/Lines")
+diff -ruN patchA/OPAL-2024.1.0/src/OpalConfigure/CMakeLists.txt pg/OPAL-2024.1.0/src/OpalConfigure/CMakeLists.txt
+--- a/src/OpalConfigure/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/OpalConfigure/CMakeLists.txt	2026-11-11 17:39:06.251778250 +0800
+@@ -12,4 +12,4 @@
+     Configure.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/OpalConfigure")
++install (FILES ${HDRS} DESTINATION "include/opalx/OpalConfigure")
+diff -ruN patchA/OPAL-2024.1.0/src/OpalParser/CMakeLists.txt pg/OPAL-2024.1.0/src/OpalParser/CMakeLists.txt
+--- a/src/OpalParser/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/OpalParser/CMakeLists.txt	2026-11-11 17:39:06.251761448 +0800
+@@ -24,4 +24,4 @@
+     WhileStatement.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/OpalParser")
++install (FILES ${HDRS} DESTINATION "include/opalx/OpalParser")
+diff -ruN patchA/OPAL-2024.1.0/src/Optimize/CMakeLists.txt pg/OPAL-2024.1.0/src/Optimize/CMakeLists.txt
+--- a/src/Optimize/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Optimize/CMakeLists.txt	2026-11-11 17:39:06.251743595 +0800
+@@ -19,4 +19,4 @@
+     Constraint.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Optimize")
++install (FILES ${HDRS} DESTINATION "include/opalx/Optimize")
+diff -ruN patchA/OPAL-2024.1.0/src/Sample/CMakeLists.txt pg/OPAL-2024.1.0/src/Sample/CMakeLists.txt
+--- a/src/Sample/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Sample/CMakeLists.txt	2026-11-11 17:39:06.251693351 +0800
+@@ -30,4 +30,4 @@
+     Uniform.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Sample")
++install (FILES ${HDRS} DESTINATION "include/opalx/Sample")
+diff -ruN patchA/OPAL-2024.1.0/src/Solvers/AMR_MG/CMakeLists.txt pg/OPAL-2024.1.0/src/Solvers/AMR_MG/CMakeLists.txt
+--- a/src/Solvers/AMR_MG/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Solvers/AMR_MG/CMakeLists.txt	2026-11-11 17:39:06.251674146 +0800
+@@ -44,4 +44,4 @@
+     )
+ 
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Solvers/AMR_MG/")
++install (FILES ${HDRS} DESTINATION "include/opalx/Solvers/AMR_MG/")
+diff -ruN patchA/OPAL-2024.1.0/src/Solvers/CMakeLists.txt pg/OPAL-2024.1.0/src/Solvers/CMakeLists.txt
+--- a/src/Solvers/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Solvers/CMakeLists.txt	2026-11-11 17:39:06.251652352 +0800
+@@ -59,4 +59,4 @@
+ 
+ add_opal_sources (${_SRCS})
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Solvers")
++install (FILES ${HDRS} DESTINATION "include/opalx/Solvers")
+diff -ruN patchA/OPAL-2024.1.0/src/Steppers/CMakeLists.txt pg/OPAL-2024.1.0/src/Steppers/CMakeLists.txt
+--- a/src/Steppers/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Steppers/CMakeLists.txt	2026-11-11 17:39:06.251628093 +0800
+@@ -17,4 +17,4 @@
+     Steppers.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Steppers")
++install (FILES ${HDRS} DESTINATION "include/opalx/Steppers")
+diff -ruN patchA/OPAL-2024.1.0/src/Structure/CMakeLists.txt pg/OPAL-2024.1.0/src/Structure/CMakeLists.txt
+--- a/src/Structure/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Structure/CMakeLists.txt	2026-11-11 17:39:06.251610392 +0800
+@@ -65,4 +65,4 @@
+ 
+ add_opal_sources (${_SRCS})
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Structure")
++install (FILES ${HDRS} DESTINATION "include/opalx/Structure")
+diff -ruN patchA/OPAL-2024.1.0/src/Tables/CMakeLists.txt pg/OPAL-2024.1.0/src/Tables/CMakeLists.txt
+--- a/src/Tables/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Tables/CMakeLists.txt	2026-11-11 17:39:06.251586330 +0800
+@@ -16,4 +16,4 @@
+     Selector.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Tables")
++install (FILES ${HDRS} DESTINATION "include/opalx/Tables")
+diff -ruN patchA/OPAL-2024.1.0/src/Track/CMakeLists.txt pg/OPAL-2024.1.0/src/Track/CMakeLists.txt
+--- a/src/Track/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Track/CMakeLists.txt	2026-11-11 17:39:06.251569146 +0800
+@@ -20,4 +20,4 @@
+     TrackRun.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Track")
++install (FILES ${HDRS} DESTINATION "include/opalx/Track")
+diff -ruN patchA/OPAL-2024.1.0/src/Utilities/CMakeLists.txt pg/OPAL-2024.1.0/src/Utilities/CMakeLists.txt
+--- a/src/Utilities/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/Utilities/CMakeLists.txt	2026-11-11 17:39:06.251550514 +0800
+@@ -20,4 +20,4 @@
+     Timer.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/Utilities")
++install (FILES ${HDRS} DESTINATION "include/opalx/Utilities")
+diff -ruN patchA/OPAL-2024.1.0/src/ValueDefinitions/CMakeLists.txt pg/OPAL-2024.1.0/src/ValueDefinitions/CMakeLists.txt
+--- a/src/ValueDefinitions/CMakeLists.txt	2024-07-01 21:54:42.000000000 +0800
++++ b/src/ValueDefinitions/CMakeLists.txt	2026-11-11 17:39:06.251525154 +0800
+@@ -20,4 +20,4 @@
+     StringConstant.h
+     )
+ 
+-install (FILES ${HDRS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ValueDefinitions")
++install (FILES ${HDRS} DESTINATION "include/opalx/ValueDefinitions")
+diff -ruN patchA/OPAL-2024.1.0/tools/BandRF/CMakeLists.txt pg/OPAL-2024.1.0/tools/BandRF/CMakeLists.txt
+--- a/tools/BandRF/CMakeLists.txt	2024-07-01 21:54:43.000000000 +0800
++++ b/tools/BandRF/CMakeLists.txt	2026-11-11 17:39:06.251462017 +0800
+@@ -14,5 +14,5 @@
+ 
+ install (
+     TARGETS ascii2h5block
+-    RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin"
++    RUNTIME DESTINATION "bin"
+ )
+diff -ruN patchA/OPAL-2024.1.0/tools/mslang/CMakeLists.txt pg/OPAL-2024.1.0/tools/mslang/CMakeLists.txt
+--- a/tools/mslang/CMakeLists.txt	2024-07-01 21:54:43.000000000 +0800
++++ b/tools/mslang/CMakeLists.txt	2026-11-11 17:39:06.251421618 +0800
+@@ -28,4 +28,4 @@
+ add_executable (mslang mslang.cpp)
+ target_link_libraries (mslang ${MSLANG_LIBS})
+ 
+-install (TARGETS mslang RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
++install (TARGETS mslang RUNTIME DESTINATION "bin")
+diff -ruN patchA/OPAL-2024.1.0/tools/opal2sdds/CMakeLists.txt pg/OPAL-2024.1.0/tools/opal2sdds/CMakeLists.txt
+--- a/tools/opal2sdds/CMakeLists.txt	2024-07-01 21:54:43.000000000 +0800
++++ b/tools/opal2sdds/CMakeLists.txt	2026-11-11 17:39:06.251401126 +0800
+@@ -32,4 +32,4 @@
+ add_executable (opal2sdds main.cpp)
+ target_link_libraries (opal2sdds ${SDDS_LIBS})
+ 
+-INSTALL(TARGETS opal2sdds RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
++INSTALL(TARGETS opal2sdds RUNTIME DESTINATION "bin")
+diff -ruN patchA/OPAL-2024.1.0/tools/sdds2opal/CMakeLists.txt pg/OPAL-2024.1.0/tools/sdds2opal/CMakeLists.txt
+--- a/tools/sdds2opal/CMakeLists.txt	2024-07-01 21:54:43.000000000 +0800
++++ b/tools/sdds2opal/CMakeLists.txt	2026-11-11 17:39:06.251377979 +0800
+@@ -24,4 +24,4 @@
+ ADD_EXECUTABLE( sdds2opal main.cpp )
+ TARGET_LINK_LIBRARIES( sdds2opal ${SDDS_LIBS} )
+ 
+-INSTALL(TARGETS sdds2opal RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
++INSTALL(TARGETS sdds2opal RUNTIME DESTINATION "bin")
+diff -ruN patchA/OPAL-2024.1.0/tools/SDDSReader/CMakeLists.txt pg/OPAL-2024.1.0/tools/SDDSReader/CMakeLists.txt
+--- a/tools/SDDSReader/CMakeLists.txt	2024-07-01 21:54:43.000000000 +0800
++++ b/tools/SDDSReader/CMakeLists.txt	2026-11-11 17:39:06.251444775 +0800
+@@ -40,4 +40,4 @@
+ add_executable (SDDSReader main.cpp ${SRCS})
+ target_link_libraries (SDDSReader ${LIBS})
+ 
+-install (TARGETS SDDSReader RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
++install (TARGETS SDDSReader RUNTIME DESTINATION "bin")
