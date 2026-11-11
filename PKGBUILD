@@ -20,7 +20,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nertwork/bluepill/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a00294902cf4b3a8c0637a8ace3dd836010aeec2dc38681b4a9e3c0a0a35dff4')
+sha256sums=('7e5e7246b579feb23f1e88281e445299005c02284fc2fa11094e856ad3744da0')
 
 build() {
     cd "$srcdir/bluepill-${pkgver}"
