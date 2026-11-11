@@ -1,7 +1,7 @@
 pkgbase = niri-spicy-git
 	pkgdesc = Scrollable-tiling Wayland compositor, with some out of tree spice
 	pkgver = 26.04.r220.g1bfaa83
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/niri-wm/niri
 	arch = x86_64
 	arch = aarch64
