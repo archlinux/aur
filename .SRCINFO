@@ -1,0 +1,14 @@
+pkgbase = gator
+	pkgdesc = Suite of authorship tools for Gatekeeper policies
+	pkgver = 3.23.1
+	pkgrel = 1
+	url = https://github.com/open-policy-agent/gatekeeper
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = gatekeeper-3.23.1.tar.gz::https://github.com/open-policy-agent/gatekeeper/archive/refs/tags/v3.23.1.tar.gz
+	sha256sums = 8d49585365c26e809754850b4119b0f97eaba608071b1c99bc3e68b41038272e
+
+pkgname = gator
