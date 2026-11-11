@@ -1,7 +1,7 @@
 pkgbase = nagram-desktop
 	pkgdesc = An independent Telegram client built with Qt.
-	pkgver = 7.3.5.2
-	pkgrel = 2
+	pkgver = 7.4.1.3
+	pkgrel = 1
 	url = https://github.com/NextAlone/Nagram-Qt
 	arch = x86_64
 	license = GPL-3.0-or-later WITH OpenSSL-exception
@@ -69,7 +69,7 @@ pkgbase = nagram-desktop
 	optdepends = webkit2gtk-4.1: embedded browser features provided by webkit2gtk-4.1 (gtk3)
 	optdepends = webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)
 	optdepends = xdg-desktop-portal: desktop integration
-	source = git+https://github.com/NextAlone/Nagram-Qt.git#tag=v7.3.5.2
+	source = git+https://github.com/NextAlone/Nagram-Qt.git#tag=v7.4.1.3
 	source = git+https://github.com/tdlib/td.git#commit=c15d3f5a5de6e3ba5839822c451152e5e18bb700
 	source = wallet-engine-0.0.7.tar.gz::https://github.com/i582/wallet-engine/archive/refs/tags/v0.0.7.tar.gz
 	source = https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch
@@ -109,12 +109,18 @@ pkgbase = nagram-desktop
 	source = git+https://github.com/PJK/libcbor.git
 	source = git+https://github.com/Yubico/libfido2.git
 	source = git+https://github.com/tsyrogit/zxcvbn-c.git
+	source = git+https://github.com/TelegramMessenger/twidget.git
+	source = git+https://github.com/TelegramMessenger/widget-sandbox.git
 	source = git+https://gitlab.com/mnauw/cppgir.git
 	source = git+https://github.com/martinmoene/expected-lite.git
-	sha512sums = a9b2dbcd6dd4b1c17e9a8283ed8390f390e5ae4cd4e53e866c48b093de176dad764d936cb5ccf29ea400bd801498584dde1cf6e76cda3a6a3dc491fd09d636a5
+	source = git+https://github.com/TelegramMessenger/quickjs.git
+	sha512sums = e1ae5f775fdb312d94ccc83d8fb170847ffed8e0c2e4b412e45b5da5a1aa8d75b16e6d9cc11d27730bf35a90312afb642acc26fdb04f92e31441975a09b9afe7
 	sha512sums = dd4741b3621c5e76ba7c9eee44ffd41b1e6b6c24fdb19988efd780d307aff79a9dcfd710be9ad63db6857cbbd71c273c54d82be524a5326fc22f1233d9eb6ca2
 	sha512sums = f1a38de20459c5b780c98aaab037fdf34357980e7f3b93c4b523636d016ca4ffc9d9679c2ee4a246b138ef0474b8190d2db1874b204c006b0f30b3c950c62ff6
-	sha512sums = 79460145f706d3eb244335700a30be2e6862db2bcda042244cf45ec5227956130a366c54a4240167327e33fde4c9fa671305a7f942acedd17e994d24e0612a2b
+	sha512sums = 2a404adbebf7a2c6ca5b014e0979ea3f3d8e4f14a8b7bd7143076be8a7e1109c1d01dd181367431d0a10eb6b76d255291a9af19580967e5628cfee3c5989ad1c
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
