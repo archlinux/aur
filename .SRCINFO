@@ -1,0 +1,26 @@
+pkgbase = imsg
+	pkgdesc = Native Linux Qt6/QML desktop & CLI client for iMessage, RCS, and SMS backed by BlueBubbles
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nertwork/imsg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = libheif
+	checkdepends = imagemagick
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = libnotify
+	optdepends = libheif: Fast HEIC/HEIF photo attachment decoding
+	optdepends = imagemagick: Fallback HEIC/AVIF image conversion
+	optdepends = libsecret: Secret Service keyring lookup via secret-tool
+	optdepends = pipewire-pulse: Notification sound playback (paplay)
+	options = !debug
+	source = imsg-1.0.0.tar.gz::https://github.com/nertwork/imsg/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 025aee701cfce5edafb8e8316b6cc58eba1f17145022fd33b8c2c4f5e3bc0b4c
+
+pkgname = imsg
