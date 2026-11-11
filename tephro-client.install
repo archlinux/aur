@@ -13,7 +13,7 @@ _offer_aur() {
   echo
   echo 'Tephro will not update by itself from this download.'
   echo 'To get updates with your system updates, switch to the AUR package:'
-  echo '  yay -S tephro-client-bin'
+  echo '  yay -S tephro-client-bin    (or: paru -S tephro-client-bin)'
   echo 'It replaces this one; your chats and settings stay. New versions would'
   echo 'come from the AUR and GitLab when you update, and install as root.'
   echo
