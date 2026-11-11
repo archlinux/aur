@@ -1,7 +1,7 @@
 pkgbase = qamp
 	pkgdesc = A modernized Winamp style audio player with vector and classic skins
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/remanifest/qamp
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -17,6 +17,6 @@ pkgbase = qamp
 	optdepends = xdg-utils: make qamp the default player for audio files from its menu
 	options = !debug
 	source = qamp-0.0.4.tar.gz::https://gitlab.com/remanifest/qamp/-/archive/v0.0.4/qamp-v0.0.4.tar.gz
-	sha256sums = 81654fdd1dccdfa256fea3eb75db9bfa2101093be5319203813f7a63824cf5c2
+	sha256sums = ac24f9a2d15f42de413b84c8dad87a31629cd4adb7e9aafb0214a3325e68405b
 
 pkgname = qamp
