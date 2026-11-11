@@ -1,6 +1,6 @@
 pkgbase = ramsleuth
 	pkgdesc = Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients
-	pkgver = 2.4.29
+	pkgver = 2.4.30
 	pkgrel = 1
 	url = https://github.com/MadGoatHaz/RamSleuth
 	install = ramsleuth.install
@@ -30,7 +30,7 @@ pkgbase = ramsleuth
 	conflicts = ramsleuth-bin
 	conflicts = ramsleuth-intel-dkms
 	conflicts = ryzen-smu-dkms
-	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=38fb0a042449925be3a97d3b3065aba17519ccce
-	sha256sums = cd10479b24475dfe036ab978ff23bb871cd09dfac175b5b1177098084a70617b
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=89cf3dc856fba1918dcd4328884f303c5662f531
+	sha256sums = a34f04bb85206e6aeb8d15e0743398d7f61d72c3cafd826ab54003c9ce90a03b
 
 pkgname = ramsleuth
