@@ -25,6 +25,6 @@ pkgbase = bluepill
 	replaces = imsg
 	options = !debug
 	source = bluepill-1.1.0.tar.gz::https://github.com/nertwork/bluepill/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = fde345c6cf4774251f000626ea67fed4a5a2104c2b53e46151d51f834b6e2bb7
+	sha256sums = 7d3f00d895aeca32342ea8f899c942b8925ab272395e163a89763fe07bde5b8d
 
 pkgname = bluepill
