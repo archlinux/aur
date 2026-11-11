@@ -1,0 +1,5 @@
+[rat-commander-bin]
+source = "github"
+github = "dividebysandwich/rat-commander"
+use_latest_release = true
+prefix = "v"
