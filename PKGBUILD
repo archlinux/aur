@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=materialcraft-bin
 _pkgname=materialcraft
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Design procedural PBR materials with node graphs (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('d1439d1f073e2bacd8e18a123d7b8c24c0c41743919b3ccae32a932183f76285')
-sha256sums_aarch64=('264679e4a62612aba7f102699fb67646c993060492b2f18fd3faa8aa3618dd55')
+sha256sums_x86_64=('ac6a742386a92c4adbd1452d5530f0c2449078fdc9e070333e833e6d2bdf8cf7')
+sha256sums_aarch64=('c0bb304df206d68af0866d7e6679beb8f0cdfdcd9689b54e5903d18a439d388a')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"

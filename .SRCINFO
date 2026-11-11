@@ -1,6 +1,6 @@
 pkgbase = materialcraft-bin
 	pkgdesc = Design procedural PBR materials with node graphs (prebuilt binary)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/storytold/materialcraft
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = materialcraft-bin
 	provides = materialcraft
 	conflicts = materialcraft
 	options = !strip
-	source_x86_64 = materialcraft-0.3.0-linux-x86_64.tar.gz::https://github.com/storytold/materialcraft/releases/download/v0.3.0/materialcraft-0.3.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d1439d1f073e2bacd8e18a123d7b8c24c0c41743919b3ccae32a932183f76285
-	source_aarch64 = materialcraft-0.3.0-linux-aarch64.tar.gz::https://github.com/storytold/materialcraft/releases/download/v0.3.0/materialcraft-0.3.0-linux-aarch64.tar.gz
+	source_x86_64 = materialcraft-0.4.0-linux-x86_64.tar.gz::https://github.com/storytold/materialcraft/releases/download/v0.4.0/materialcraft-0.4.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ac6a742386a92c4adbd1452d5530f0c2449078fdc9e070333e833e6d2bdf8cf7
+	source_aarch64 = materialcraft-0.4.0-linux-aarch64.tar.gz::https://github.com/storytold/materialcraft/releases/download/v0.4.0/materialcraft-0.4.0-linux-aarch64.tar.gz
 	depends_aarch64 = libxcb
 	optdepends_aarch64 = vulkan-icd-loader: GPU-accelerated rendering
-	sha256sums_aarch64 = 264679e4a62612aba7f102699fb67646c993060492b2f18fd3faa8aa3618dd55
+	sha256sums_aarch64 = c0bb304df206d68af0866d7e6679beb8f0cdfdcd9689b54e5903d18a439d388a
 
 pkgname = materialcraft-bin
