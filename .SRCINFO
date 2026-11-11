@@ -1,6 +1,6 @@
 pkgbase = stripe-cli-bin
 	pkgdesc = A command-line tool for Stripe
-	pkgver = 1.55.10
+	pkgver = 1.55.11
 	pkgrel = 1
 	url = https://stripe.com/docs/stripe-cli
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = stripe-cli-bin
 	provides = stripe
 	provides = stripe-cli
 	conflicts = stripe-cli
-	source_x86_64 = https://github.com/stripe/stripe-cli/releases/download/v1.55.10/stripe_1.55.10_linux_x86_64.tar.gz
-	b2sums_x86_64 = 264fb319edcc07db789bf36ea59d2a3161b110e22e50320333f80c6f35a67556608ddc99625e5f427e31abc2a60cb4248262d32dcfc3f2225c0bba79f3b2471a
-	source_aarch64 = https://github.com/stripe/stripe-cli/releases/download/v1.55.10/stripe_1.55.10_linux_arm64.tar.gz
-	b2sums_aarch64 = 107a400007a977031d50d63105a8b92f6d906319350c88d28559e67eef769d8bebc2706248f5dc7674cb85531737c73c40c5e69b9ee026c408cced088c6c91d5
+	source_x86_64 = https://github.com/stripe/stripe-cli/releases/download/v1.55.11/stripe_1.55.11_linux_x86_64.tar.gz
+	b2sums_x86_64 = ca548ba1e8c6b1a30e26421417eb0fb8af8ba39a8582650b9c5bfbe2c173c8ec1504261718cd1551a34855b0a295b3844fc2ccc50b74fd3a542c17acd50060cc
+	source_aarch64 = https://github.com/stripe/stripe-cli/releases/download/v1.55.11/stripe_1.55.11_linux_arm64.tar.gz
+	b2sums_aarch64 = 862dd95016f4534bb1d882567801d0bf21e84271e4da8bfd1d4241549cc31d31407b3b5480a9523afb42c7164503f896719b0c9d78b83c2cc20a8a9a12a6d3c5
 
 pkgname = stripe-cli-bin
