@@ -1,0 +1,14 @@
+pkgbase = kubecm
+	pkgdesc = Manage your kubeconfig more easily
+	pkgver = 0.36.0
+	pkgrel = 1
+	url = https://github.com/sunny0826/kubecm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = kubecm-0.36.0.tar.gz::https://github.com/sunny0826/kubecm/archive/refs/tags/v0.36.0.tar.gz
+	sha256sums = ae03e76d4401c1d705a4a2684d5ba2eef8e8eb47a30df5bb80abfb65ba19f34a
+
+pkgname = kubecm
