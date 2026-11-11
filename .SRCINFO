@@ -1,6 +1,6 @@
 pkgbase = resonance-bin
 	pkgdesc = A local-first, zero-account API client with excellent user experience
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/db-mobile/resonance
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = resonance-bin
 	provides = resonance
 	conflicts = resonance
 	options = !strip
-	source = resonance-3.6.0-source.tar.gz::https://github.com/db-mobile/resonance/archive/refs/tags/v3.6.0.tar.gz
-	sha256sums = 17a07f0d10cfe20485218c3637a776a94c2bcf8eaa700024dae913be15265a52
-	source_x86_64 = resonance-3.6.0-amd64.deb::https://github.com/db-mobile/resonance/releases/download/v3.6.0/resonance_3.6.0_amd64.deb
-	sha256sums_x86_64 = 6d9fb1d1bb37e5329aa1014d1f21a71daabb2faf8762b0c642c1e1d07636f86c
-	source_aarch64 = resonance-3.6.0-arm64.deb::https://github.com/db-mobile/resonance/releases/download/v3.6.0/resonance_3.6.0_arm64.deb
-	sha256sums_aarch64 = a19f671676e684da7b2cff5ee515854ca03b31031cb2670e498aba2678206049
+	source = resonance-3.6.1-source.tar.gz::https://github.com/db-mobile/resonance/archive/refs/tags/v3.6.1.tar.gz
+	sha256sums = 0a05b43c8ecc49335d2b520e1bb759d7d4c5a343e23b75f8f8fd2fd4fa584f70
+	source_x86_64 = resonance-3.6.1-amd64.deb::https://github.com/db-mobile/resonance/releases/download/v3.6.1/resonance_3.6.1_amd64.deb
+	sha256sums_x86_64 = e44e6b0f20e72ed5b951a10ea9300e8d50c708cbb65d3d2463639d84fda1d8fe
+	source_aarch64 = resonance-3.6.1-arm64.deb::https://github.com/db-mobile/resonance/releases/download/v3.6.1/resonance_3.6.1_arm64.deb
+	sha256sums_aarch64 = 1c975fb4882c4c3424a442fcb88148ed61b1bac756ae5883ca3847b26d826317
 
 pkgname = resonance-bin
