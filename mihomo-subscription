@@ -448,6 +448,10 @@ def normalize_node(node: dict[str, Any]) -> dict[str, Any]:
         for field in ("up", "down"):
             if node.get(field) is None:
                 node.pop(field, None)
+    # A null VLESS flow also fails inline decoding; an omitted flow uses the
+    # core's default while preserving explicit values such as xtls-rprx-vision.
+    if node.get("type") == "vless" and node.get("flow") is None:
+        node.pop("flow", None)
     return node
 
 

@@ -2,7 +2,7 @@
 
 pkgname=mihomo-webui-config
 pkgver=0.1.0
-pkgrel=19
+pkgrel=20
 pkgdesc="Mihomo and MetaCubeXD integration with safe subscription updates"
 arch=('any')
 url="https://github.com/ntr5uki/mihomo-config-setup"
@@ -31,9 +31,9 @@ source=(
   'mihomo-webui.conf'
 )
 sha256sums=('5d0b23f5be4daaf82ce9c9ff07f371065c62c61b69d34d2c1ad73022b18ddcd2'
-            '746083a83819bb34294de451d5c92f7db5c2160ee8ffa2cdec47057ac7b0d176'
+            'e651f82b2cba6017304969d676096786ef148effc9401c3e27acc0f30df3b4e6'
             '9be8c83dfab4e6fa9d9d6af7f2e177578c7bfd3f36d4f228500cf18b7f557171'
-            'fa8955e7e52541663b64cb9eef36fa77ac9e4b5ed980a703491a8ab067ecbc8a'
+            '28eaf61a6cbeb7760609841f6507494e0fce305cdbc548c8c6bbe5d6b7070fc8'
             '63a6f538b9b05d6830c741afe309f1e20ed55b5a7357d206d4fc3d68620c4e78'
             '27d2654ebd1699218b5a110b858b8d0325e37f4d328b47a8fae39e0668a24e03'
             '7f2779bdb39ad7e247eaebaba530ec94adf35cce20080b7adce678f5579154cd'
