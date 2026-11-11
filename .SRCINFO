@@ -1,6 +1,6 @@
 pkgbase = python-databricks-sdk
 	pkgdesc = Databricks SDK for Python (Beta).
-	pkgver = 0.164.0
+	pkgver = 0.165.0
 	pkgrel = 1
 	url = https://github.com/databricks/databricks-sdk-py
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-databricks-sdk
 	optdepends = python-httpx: openai
 	optdepends = python-protobuf: sandbox
 	optdepends = python-grpcio: sandbox
-	source = databricks-sdk-0.164.0.tar.gz::https://github.com/databricks/databricks-sdk-py/archive/refs/tags/v0.164.0.tar.gz
-	sha256sums = ee120cabbb653e0629dfc647b32018fca516eb2b277ddc7cce71bee241e2fbc6
+	source = databricks-sdk-0.165.0.tar.gz::https://github.com/databricks/databricks-sdk-py/archive/refs/tags/v0.165.0.tar.gz
+	sha256sums = d6504063bc60d776314c50ffe42c982e531365013b5ef87c0b610904ee89bcf0
 
 pkgname = python-databricks-sdk
