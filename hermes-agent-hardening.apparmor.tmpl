@@ -38,7 +38,7 @@ profile hermes-agent-hardening-$INSTANCE /opt/hermes-agent/venv/bin/python flags
   /var/lib/$INSTANCE/.hermes/installs/*/environments/*/venv/bin/python* ix,
 
   # uv-managed tool binaries (e.g. graphify-mcp visible in hermes-agent-nas)
-  /var/lib/hermes/.local/share/uv/tools/*/bin/* ix,
+  /var/lib/$INSTANCE/.local/share/uv/tools/*/bin/* ix,
 
 $EXTRA_RULES
   # Python/system shared libraries.
