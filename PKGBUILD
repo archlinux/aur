@@ -3,7 +3,7 @@
 # canonical forge repository is the source, so this recipe and the crates.io crate (clck-kiosk;
 # crates.io `clck` is taken) are built from the same commit. The binary stays `clck`.
 pkgname=clck
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Wayland session locker with live kiosk outputs"
 arch=('x86_64')

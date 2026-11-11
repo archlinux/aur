@@ -1,6 +1,6 @@
 pkgbase = clck
 	pkgdesc = Wayland session locker with live kiosk outputs
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://git.corbet.ch/corbet-fsl/clck
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = clck
 	conflicts = clck-bin
 	replaces = nixlock-bin
 	replaces = nixlock
-	source = clck::git+https://git.corbet.ch/corbet-fsl/clck.git#tag=v0.2.0
+	source = clck::git+https://git.corbet.ch/corbet-fsl/clck.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = clck
