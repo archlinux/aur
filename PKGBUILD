@@ -3,9 +3,10 @@
 pkgname=claude-cage-bin
 pkgver=0.1.7rc.1
 _upver=0.1.7-rc.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Isolated Claude development workspace with a local virtual machine'
 arch=('x86_64')
+options=('!debug')
 url='https://github.com/Lee-xeo/Claude-Cage'
 license=('MIT' 'Apache-2.0' 'BSD-2-Clause' 'BSD-3-Clause' 'GPL-3.0-only' 'ISC' 'MPL-2.0')
 depends=('ca-certificates' 'cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'json-glib' 'pango' 'webkit2gtk-4.1')
