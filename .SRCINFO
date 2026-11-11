@@ -1,6 +1,6 @@
 pkgbase = simplescreenrecorder-mqtt-git
 	pkgdesc = A simple but powerful recording tool for X11, OpenGL and V4L2. (Git version with MQTT remote control support)
-	pkgver = 0.4.4.mqtt.r25.ga7ce3ad
+	pkgver = 0.4.4.mqtt.r26.ge9c36b9
 	pkgrel = 1
 	url = https://www.maartenbaert.be/simplescreenrecorder/
 	install = simplescreenrecorder-mqtt-git.install
