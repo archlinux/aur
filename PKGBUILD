@@ -1,12 +1,13 @@
 # Maintainer: mensylisir <710080675@qq.com>
 
 # Kimi Work 官方 Windows 客户端的 Linux 重打包，国内版：区域判定被固定为
-# china，不随登录账号或区域标记切换。应用资源放在独立 /opt 前缀，
+# china，不随登录账号或区域标记切换；同时默认关闭 launcher 全局快捷键，
+# 避免 Wayland 下触发 GNOME 的快捷键授权弹窗。应用资源放在独立 /opt 前缀，
 # 通过系统 electron43 运行，与国际版、kimi-work-bin 可并存。
 
 pkgname=kimi-work-cn-bin
 pkgver=3.2.26
-pkgrel=2
+pkgrel=3
 _prefix='/opt/kimi-work-cn'
 pkgdesc='Kimi Work desktop client, mainland China build pinned to the China region'
 arch=('x86_64')
@@ -42,7 +43,7 @@ noextract=("kimi_${pkgver}.exe")
 sha256sums=(
   '85e9c4268a8ee267755f0f3faa4b7cd957db27d57d0c22d53cb2c691d34f0ec2'
   '817e0d47bca30dfb87aa2e9df40fb94ba1d3704305d2b6b0f2b4359e4ab7e304'
-  '2c7d8e52e5f4793d8e456ea31c9b151dbd0ff40ce124d6253804cbdc538257e9'
+  '73fc4ef5255fe978966ef37705ac99de07411c14c08f2983bff1626d1a00790e'
   '51c1c2a95bc83082315531565fdb240af49967614c6eb098e339ae8594782e6f'
   '45c7624addd5a291ee020b20f7f890608c9291306a9d65905371583636648e41'
   'ab973d8d007cfed09bf051378baf4fd220f545a5533ab5e9269aad8674e7f468'
@@ -109,6 +110,10 @@ prepare() {
 
   node "${srcdir}/patch-region.js" "${srcdir}/app" china kimi-desktop-cn
   grep -qF 'return "china";' "${srcdir}/app/out/main/index.js"
+  grep -qF '_0x4cdb08 = null, _0x49144b = "china";' \
+    "${srcdir}/app/out/main/index.js"
+  grep -qF '"launcherEnabled": ![], "launcherShortcut": _0x1465b7' \
+    "${srcdir}/app/out/main/index.js"
   grep -qF 'const _0x1bf09b = "kimi-work-cn.desktop";' \
     "${srcdir}/app/out/main/index.js"
 
