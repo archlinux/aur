@@ -1,6 +1,6 @@
 # Maintainer: LeafEvans <leafevans@foxmail.com>
 pkgname=go-fuck
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='A blazingly fast reimplementation of thefuck in Go'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/leafevans/go-fuck'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3de212401ec0bcc3ba6893cc7cbae5182cd8c9fb10b2e2954367487f769dfe8e')
+sha256sums=('ecff035925511377aa94ece17f87259dce71c52b841574cb62fed996cbfd94f8')
 
 build() {
   cd "$pkgname-$pkgver"
