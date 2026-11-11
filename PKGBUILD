@@ -1,7 +1,7 @@
 # Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
 
 pkgname=jkey
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Python library for password management and TOTP verification"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('python-jkey')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools>=61.0')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('401c1081ec1a2b546397a3493c9d22c7be62b63f72aed49399fd3482f36cbf81')
+sha256sums=('a9177648607f1af88ade3daa647d507dbd325773c2702f79aa422c11cf391523')
 
 build() {
     cd "jkey-$pkgver"
