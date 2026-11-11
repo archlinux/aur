@@ -47,7 +47,7 @@
 
 pkgname=ryzen-smu-dkms
 pkgver=1.0
-pkgrel=19
+pkgrel=20
 pkgdesc="Provisioning tools for the optional ryzen_smu DKMS module (RamSleuth live AMD subtimings)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
@@ -64,7 +64,7 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # The installed files come from the RamSleuth repo tree (P5-03 dkms.conf, P5-04 helper,
 # C21-07 vendor/).
 # git-commit source: makepkg clones the repo and checks out the pinned
-# immutable v2.4.30 release commit via the #commit= fragment (standard VCS
+# immutable v2.4.31 release commit via the #commit= fragment (standard VCS
 # form), with sha256sums the content-addressed checksum of that commit's
 # git-archive tarball (what makepkg 7.x generates for #commit sources).
 # The package keeps its own 1.0 pkgver (not the ramsleuth workspace
@@ -73,14 +73,14 @@ conflicts=('ramsleuth' 'ramsleuth-bin')
 # this first AUR submission the source tracked the moving v2-development
 # branch (the pre-v2.4.5 integrity-gap class, closed for the siblings in
 # the v2.4.5 re-cut).
-source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=89cf3dc856fba1918dcd4328884f303c5662f531")
+source=("ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#commit=4b2df1f80439cbc82485c6a3225ab46a1aa20d6a")
 # Content-addressed VCS pin: the sha256 of `git archive --format tar
 # <commit>` for the immutable #commit= ref above — exactly what makepkg
 # 7.x generates for tag/commit-pinned git sources (makepkg -g) and what
 # its integrity gate verifies (a *sums entry per source; '-' fails the
 # gate on 7.x, and SKIP passes only as a no-op — not the form 7.x
 # generates for #commit fragments).
-sha256sums=('a34f04bb85206e6aeb8d15e0743398d7f61d72c3cafd826ab54003c9ce90a03b')
+sha256sums=('4265ca10c02a1079496e52e9e43b31222e046261c6d5c4b01c0c1798856053f7')
 
 package() {
   # 1) DKMS config (sourced by DKMS on the target; not at build time).
