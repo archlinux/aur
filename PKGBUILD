@@ -4,8 +4,8 @@
 #   2. add 'aarch64' to arch=()
 #   3. extend the CARCH switch in package() below
 pkgname=lzc-client-bin
-pkgver=2.0.30
-pkgrel=5
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='懒猫微服桌面客户端（LCMD），扫码登录后管理微服应用、文件与远程访问'
 arch=('x86_64')
 url='https://lazycat.cloud/'
@@ -41,7 +41,7 @@ depends=(
 )
 makedepends=('zstd')
 source_x86_64=("lzc-client-desktop_${pkgver}_x86_64.tar.zst::https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_v${pkgver}.tar.zst")
-sha256sums_x86_64=('4a1a14bd73c41fd59250ef9d77da5dfcad7735019c6a8bfee851ba4090890d00')
+sha256sums_x86_64=('eccfd1fd4b5dddfe1033ba42d0c58013743364a57ff325b602f1c9084ccbd11e')
 
 package() {
     cd "${srcdir}"
