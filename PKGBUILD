@@ -44,6 +44,7 @@ check() {
     cd "$srcdir/dane_without_root"
     DANE_WITHOUT_ROOT_SYSTEM_VALID_DOMAIN_FILE=./implementation/valid_dane_domain.txt \
     DNSSEC_WITHOUT_ROOT_DIRECTORY=./dnssec_keys/usr/share/dnssec-keys/ \
+    DANE_WITHOUT_ROOT_IS_REPLAY=1 \
     cargo test --frozen --features capi,wrapper_rustls,wrapper_openssl,client,doh
 }
 package() {
