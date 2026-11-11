@@ -17,6 +17,7 @@ license=('GPL2')
 depends=('dkms')
 makedepends=('git')
 conflicts=("ddcci-driver-linux" "ddcci-driver-linux-dkms")
+provides=("ddcci-driver-linux" "ddcci-driver-linux-dkms")
 source=("git+https://gitlab.com/ClemaX/ddcci-driver-linux.git")
 b2sums=('SKIP')
 
