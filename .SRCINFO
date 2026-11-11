@@ -1,15 +1,16 @@
 pkgbase = dhcpcd8-git
 	pkgdesc = A DHCP and DHCPv6 client (8.x releases)
 	pkgver = 8.1.9.r7.g9095f26a
-	pkgrel = 9
+	pkgrel = 10
 	url = https://roy.marples.name/projects/dhcpcd/
 	arch = i686
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = git
+	makedepends = systemd-libs
 	depends = glibc
+	depends = libudev.so
 	depends = sh
-	depends = systemd-libs
 	optdepends = openresolv: resolvconf support
 	provides = dhcpcd=8.1.9.r7.g9095f26a
 	provides = dhcp-client
