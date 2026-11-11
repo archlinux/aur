@@ -1,8 +1,8 @@
 pkgbase = f-droid
 	pkgdesc = Official F-Droid Android GUI Client and compatibility runner for Linux
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://github.com/gerliczkowalczuk/f-droid-linux
+	pkgrel = 2
+	url = https://github.com/gerliczkowalczuk/fdroid-linux
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
@@ -13,7 +13,7 @@ pkgbase = f-droid
 	optdepends = pipewire: low-latency direct audio routing
 	provides = fdroid
 	conflicts = fdroid
-	source = f-droid-linux-0.2.0.tar.gz::https://github.com/gerliczkowalczuk/f-droid-linux/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 20dfe6a8804eb9c21be98028ea99ed99fedd8e335b0fea8ace3231ce1c34b82c
+	source = fdroid-linux-0.2.0.tar.gz::https://github.com/gerliczkowalczuk/fdroid-linux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 64315d7ae60927908c613ac594ff15275205cf58524453e4cbb815472579abd2
 
 pkgname = f-droid

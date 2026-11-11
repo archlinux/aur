@@ -1,9 +1,9 @@
 # Maintainer: Oskar Gerlicz-Kowalczuk <oskar@gerlicz.space>
 
 pkgname=f-droid
-_pkgname=f-droid-linux
+_pkgname=fdroid-linux
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official F-Droid Android GUI Client and compatibility runner for Linux"
 arch=('x86_64')
 url="https://github.com/gerliczkowalczuk/$_pkgname"
@@ -18,7 +18,7 @@ optdepends=(
 provides=('fdroid')
 conflicts=('fdroid')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20dfe6a8804eb9c21be98028ea99ed99fedd8e335b0fea8ace3231ce1c34b82c')
+sha256sums=('64315d7ae60927908c613ac594ff15275205cf58524453e4cbb815472579abd2')
 
 prepare() {
   cd "$_pkgname-$pkgver"
