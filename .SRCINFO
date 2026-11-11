@@ -25,9 +25,13 @@ pkgbase = libgweather-4-precipitation
 	source = git+https://gitlab.gnome.org/fluhus/libgweather.git#branch=amit
 	b2sums = SKIP
 
-pkgname = libgweather-4
+pkgname = libgweather-4-precipitation
+	provides = libgweather-4=4.6.0
 	provides = libgweather-4.so
+	conflicts = libgweather-4
 
-pkgname = libgweather-4-docs
+pkgname = libgweather-4-precipitation-docs
 	pkgdesc = Location and timezone database and weather-lookup library (documentation)
 	depends = 
+	provides = libgweather-4-docs=4.6.0
+	conflicts = libgweather-4-docs

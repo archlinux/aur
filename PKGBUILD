@@ -3,8 +3,8 @@
 
 pkgbase=libgweather-4-precipitation
 pkgname=(
-  libgweather-4
-  libgweather-4-docs
+  libgweather-4-precipitation
+  libgweather-4-precipitation-docs
 )
 pkgver=4.6.0
 pkgrel=1
@@ -59,8 +59,9 @@ check() {
   meson test -C build --print-errorlogs --exclude metar
 }
 
-package_libgweather-4() {
-  provides=(libgweather-4.so)
+package_libgweather-4-precipitation() {
+  provides=("libgweather-4=$pkgver" libgweather-4.so)
+  conflicts=(libgweather-4)
 
   meson install -C build --destdir "$pkgdir"
 
@@ -68,7 +69,9 @@ package_libgweather-4() {
   mv {"$pkgdir",doc}/usr/share/doc
 }
 
-package_libgweather-4-docs() {
+package_libgweather-4-precipitation-docs() {
+  provides=("libgweather-4-docs=$pkgver")
+  conflicts=(libgweather-4-docs)
   pkgdesc+=" (documentation)"
   depends=()
 
