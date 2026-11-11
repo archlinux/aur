@@ -1,7 +1,7 @@
 # Maintainer: Avenge Media <avengemediallc at gmail dot com>
 
 pkgname=dux-qt-base
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Quickshell QML runtime as a shared library with a C entry point'
 arch=(x86_64 aarch64)
@@ -33,7 +33,7 @@ optdepends=('qt6-svg: svg images and icons')
 provides=(libdux-qt-base.so)
 conflicts=("$pkgname-git" "$pkgname-bin")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9f301c7a545465a747bbcdb5e6e671c55cfc38f2f28451c6ec74aacaab26cd6')
+sha256sums=('0e36c0dcecddab7f708b81aa648b34d7604f157cd8fcb3c1acb6aa31a7cbb8ae')
 
 build() {
 	cmake -GNinja -S "$pkgname-$pkgver" -B build \
