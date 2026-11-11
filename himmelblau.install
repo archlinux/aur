@@ -82,6 +82,9 @@ PAM is not configured. Preview the change, then apply it:
 It puts pam_himmelblau first in system-auth and system-login, so a successful
 Entra sign-in skips pam_shells, pam_nologin and pam_faillock in the auth stage.
 Review /etc/pam.d afterwards.
+
+On Omarchy, 'omarchy-himmelblau setup' configures PAM; don't run
+'aad-tool configure-pam'.
 EOF
 }
 
