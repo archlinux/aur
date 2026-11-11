@@ -1,0 +1,49 @@
+Use libtirpc for NNTI's XDR serializer. glibc no longer ships the Sun RPC
+headers, so the XDR probe can't find <rpc/xdr.h> and NNTI silently falls
+back to Cereal. Look up libtirpc with pkg-config, probe with its include
+path and library, then build and link nnti against it.
+
+diff --git a/src/nnti/CMakeLists.txt b/src/nnti/CMakeLists.txt
+index f1fa963..33a08fb 100644
+--- a/src/nnti/CMakeLists.txt
++++ b/src/nnti/CMakeLists.txt
+@@ -303,11 +303,17 @@ if( Faodel_ENABLE_MPI_SUPPORT )
+   LIST( APPEND NNTI_imports MPI::MPI_CXX )
+ endif()
+ LIST( APPEND NNTI_imports ${NNTI_TRANSPORT_TARGETS} )
++if( NNTI_USE_XDR )
++  LIST( APPEND NNTI_imports ${TIRPC_LIBRARIES} )
++endif()
+ 
+ set_source_files_properties(transport_factory.cpp PROPERTIES COMPILE_FLAGS "-O0 -g")
+ 
+ add_library(nnti ${HEADERS} ${SOURCES})
+ target_link_libraries( nnti ${NNTI_imports} )
++if( NNTI_USE_XDR )
++  target_include_directories( nnti PUBLIC ${TIRPC_INCLUDE_DIRS} )
++endif()
+ 
+ if( NNTI_USE_XDR )
+   include(nntiProcessXDR.cmake)
+diff --git a/src/nnti/nntiProbeXDR.cmake b/src/nnti/nntiProbeXDR.cmake
+index 40d4940..bba4186 100644
+--- a/src/nnti/nntiProbeXDR.cmake
++++ b/src/nnti/nntiProbeXDR.cmake
+@@ -1,6 +1,11 @@
+ INCLUDE(CheckIncludeFile)
+ INCLUDE(CheckFunctionExists)
+ 
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(TIRPC REQUIRED libtirpc)
++set(CMAKE_REQUIRED_INCLUDES ${TIRPC_INCLUDE_DIRS})
++set(CMAKE_REQUIRED_LIBRARIES ${TIRPC_LINK_LIBRARIES})
++
+ CHECK_INCLUDE_FILE("rpc/types.h" NNTI_HAVE_RPC_TYPES_H)
+ CHECK_INCLUDE_FILE("rpc/xdr.h"   NNTI_HAVE_RPC_XDR_H)
+ 
+@@ -27,3 +32,5 @@ endif()
+ 
+ SET( NNTI_HAVE_XDR ${NNTI_HAVE_XDR} CACHE BOOL "Does XDR exist on this system?" )
+ 
++unset(CMAKE_REQUIRED_INCLUDES)
++unset(CMAKE_REQUIRED_LIBRARIES)
