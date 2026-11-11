@@ -1,7 +1,7 @@
 # Maintainer: Evgeny Cherkashin <eugeneai@irnok.net>
 
 pkgname=simplescreenrecorder-mqtt-git
-pkgver=0.4.4.mqtt.r26.ge9c36b9
+pkgver=0.4.4.mqtt.r28.g25e9780
 pkgrel=1
 pkgdesc="A simple but powerful recording tool for X11, OpenGL and V4L2. (Git version with MQTT remote control support)"
 arch=("x86_64")
