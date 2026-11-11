@@ -1,0 +1,31 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: tune-server
+Source: https://github.com/renesenses/tune-server-rust
+
+Files: *
+Copyright: Mozaiklabs
+License: BUSL-1.1
+
+Files: opt/tune/ffmpeg
+Copyright: The FFmpeg developers
+License: LGPL-2.1+
+ Le ffmpeg embarqué est une construction minimale distribuée sous LGPL 2.1
+ ou ultérieure. Le texte complet de la licence est livré à côté du binaire,
+ dans /opt/tune/FFMPEG-LICENSE.txt.
+
+Files: opt/tune/librespot
+Copyright: 2015 Paul Lietar, et les contributeurs de librespot
+License: MIT
+ librespot (https://github.com/librespot-org/librespot), version 0.8.0,
+ construit par la CI de Tune depuis crates.io pour la lecture Spotify. Le
+ texte complet de la licence est livré à côté du binaire, dans
+ /opt/tune/LIBRESPOT-LICENSE.txt. librespot n'est pas un client officiel de
+ Spotify : la lecture Spotify reste désactivée par défaut dans Tune.
+
+License: BUSL-1.1
+ Business Source License 1.1. Le texte complet est le fichier LICENSE du
+ dépôt source : https://github.com/renesenses/tune-server-rust/blob/main/LICENSE
+
+License: LGPL-2.1+
+ Le texte complet de la GNU Lesser General Public License version 2.1 est
+ disponible sur ce système dans /usr/share/common-licenses/LGPL-2.1.
