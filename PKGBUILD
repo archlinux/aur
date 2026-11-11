@@ -4,7 +4,7 @@ pkgname=thinwire-nightly-bin
 _pkgname=thinwire
 # scripts/aur-nightly.sh in thinwire rewrites pkgver= and pkgrel= every
 # day, then runs updpkgsums and makepkg --printsrcinfo. Keep both lines plain.
-pkgver=0.1.0.r323.gdaf71f0
+pkgver=0.1.0.r331.ge45fb98
 pkgrel=1
 pkgdesc='Thin multi-protocol desktop messenger (nightly build of main)'
 arch=('x86_64')
@@ -42,7 +42,7 @@ source=(
   'thinwire.svg'
 )
 noextract=("thinwire-linux-x86_64-${pkgver}.tar.gz")
-sha256sums=('47e8fa3164fe88228ad146330c768b685674f8e11c8b05c9d6876d5a0a9da0ec'
+sha256sums=('6ea0da96e4cdf875b3a64fbedb8e1d1592ddff5b535aa6c3a7299550216e6919'
             'ab5aee42e19c83ef29d941cdf2de29a24c5b198a3b49e750ffe802274605a26d'
             '98f6e18715c5cba816fa30e26b22f18582a2ac2d4e68ab38aa9701f8a5e615e6')
 
