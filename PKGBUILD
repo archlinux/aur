@@ -8,7 +8,7 @@
 # If publishing under `routine-gnome-bin`, rename pkgname and adjust conflicts/provides.
 
 pkgname=routine-bin
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='GNOME time-blocking client with local routine-server (prebuilt)'
 url='https://gitlab.gnome.org/wit3k/routine'
@@ -18,6 +18,7 @@ depends=(
   'gtk4'
   'libadwaita'
   'hicolor-icon-theme'
+  'dbus'
 )
 provides=('routine')
 conflicts=('routine')
@@ -27,7 +28,7 @@ _gl_api='https://gitlab.gnome.org/api/v4/projects/wit3k%2Froutine/packages/gener
 source=(
   "routine-${pkgver}-x86_64.tar.zst::${_gl_api}/${pkgver}/routine-${pkgver}-x86_64.tar.zst"
 )
-sha256sums=('999ea9a1fac6b1dc6e2eda53fa527fc46882550871af578b42967d08b8bfe93a')
+sha256sums=('65ffabe95abf5aebf84ba8e7d50421048b40d2561f2fc2840438a55aadac8246')
 
 package() {
   cp -a "$srcdir"/usr "$pkgdir"/
