@@ -2,7 +2,7 @@
 
 pkgname=easyshot
 _repo=mah3uz/easyshot
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Screenshot, annotation and screen-recording app for Linux/Wayland'
 install=easyshot.install
@@ -27,7 +27,7 @@ provides=('easyshot')
 conflicts=('easyshot-bin')
 options=('!lto' '!strip' '!debug')
 source=("$pkgname-$pkgver.tar.zst::https://github.com/$_repo/releases/download/v$pkgver/$pkgname-$pkgver-vendored.tar.zst")
-sha256sums=('f7cbb65d1f631c62aa5c81935a4f340a70a2c439d0e9a9d488bf03015141b2c6')
+sha256sums=('182cde67e322655b6d16638981e7a222177373400b600be88be07b1b1d46539d')
 
 _toolchain() { sed -n 's/^channel = "\(.*\)"/\1/p' rust-toolchain.toml; }
 
