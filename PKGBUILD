@@ -1,7 +1,7 @@
 # Maintainer: koh11235813 <koh11235813@gmail.com>
 # Contributor: shinya-saita <>
 pkgname='bokuchi'
-pkgver='1.2.0'
+pkgver='1.2.1'
 pkgrel=1
 pkgdesc="A lightweight, cross-platform Markdown editor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!lto' '!debug')
 depends=('webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'dbus' 'libsoup3')
 makedepends=('jq' 'npm' 'rust' 'openssl' 'librsvg')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e8c8f8bd7904648e926aa03478c612ae0f735c8482a0d3a2914158b14cf51320')
+sha256sums=('126dcf871484b49f233828f6f0c4f215395107c42a21ec94fcf02ac724e40885')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
