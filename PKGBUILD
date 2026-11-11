@@ -1,6 +1,6 @@
 # Maintainer: faywong
 pkgname=miloinput-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Milo Chinese Pinyin input method for Fcitx5 (prebuilt)'
 arch=('x86_64')
@@ -15,9 +15,9 @@ optdepends=('fcitx5-configtool: Configure input methods'
 provides=('miloinput' 'fcitx5-miloinput')
 conflicts=('miloinput' 'fcitx5-miloinput')
 options=('!strip' '!debug')
-_archive=MiloInput-Linux-x64-v${pkgver}-arch_20261111_46e1df41.zip
+_archive=MiloInput-Linux-x64-v${pkgver}-arch_20261111_659aa25d.zip
 source=("https://miloinput.fay.wang/downloads/${_archive}")
-sha256sums=('b74d512f04aaeeda5c35352dd28033f5d2f806f088ce7882a779c7338d701b49')
+sha256sums=('dd0cbdaa03f19a266b0d68a08d8aaa2deb3a24cb0bc9d23354668b8ca1622b91')
 
 package() {
     cp -a usr "$pkgdir/"
