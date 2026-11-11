@@ -2,16 +2,14 @@
 
 pkgname=bongo
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bangla phonetic input method with native fcitx5 and IBus frontends"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mehedishakeel/Bongo"
 license=('MPL-2.0')
-depends=('gtk4' 'hicolor-icon-theme' 'python' 'python-gobject')
+depends=('fcitx5' 'fcitx5-configtool' 'gtk4' 'hicolor-icon-theme' 'python' 'python-gobject')
 makedepends=('cargo' 'cmake' 'fcitx5' 'ninja' 'pkgconf')
 optdepends=(
-    'fcitx5: native fcitx5 addon (KDE Plasma, Hyprland, Omarchy, Sway)'
-    'fcitx5-configtool: add Bongo to the fcitx5 input method list'
     'ibus: IBus engine (GNOME)'
 )
 provides=('fcitx5-bongo' 'ibus-bongo')
