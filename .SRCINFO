@@ -1,6 +1,6 @@
 pkgbase = remotepower-agent
 	pkgdesc = RemotePower fleet-management agent: reports host telemetry to a RemotePower server and runs authorized admin tasks
-	pkgver = 7.5.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/tyxak/remotepower
 	install = remotepower-agent.install
@@ -10,10 +10,10 @@ pkgbase = remotepower-agent
 	optdepends = python-psutil: CPU/memory/disk/network metrics in heartbeats
 	optdepends = smartmontools: SMART disk-health reporting
 	optdepends = lm_sensors: temperature telemetry
-	source = remotepower-agent-7.5.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v7.5.0/remotepower-7.5.0.tar.gz
-	source = remotepower-agent-7.5.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v7.5.0/remotepower-7.5.0.tar.gz.asc
+	source = remotepower-agent-8.0.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v8.0.0/remotepower-8.0.0.tar.gz
+	source = remotepower-agent-8.0.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v8.0.0/remotepower-8.0.0.tar.gz.asc
 	validpgpkeys = E7B5AD456728B8462A8B54BFD488AF115D2CCDBF
-	sha256sums = 21fc001d58577a432fd6078f4b7b4fdb366482b36e099d31d9279b13d3b84606
+	sha256sums = 740468233b14059feffc8e68ebaa473415178fb06a029a4fa47cc3cb13856a27
 	sha256sums = SKIP
 
 pkgname = remotepower-agent
