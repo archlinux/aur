@@ -1,6 +1,6 @@
 pkgbase = routine
 	pkgdesc = GNOME time-blocking client with local routine-server
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/wit3k/routine
 	install = routine.install
@@ -21,7 +21,7 @@ pkgbase = routine
 	depends = dbus
 	conflicts = routine-bin
 	options = !lto
-	source = git+https://gitlab.gnome.org/wit3k/routine.git#tag=v0.2.1
+	source = git+https://gitlab.gnome.org/wit3k/routine.git#tag=v0.2.2
 	sha256sums = SKIP
 
 pkgname = routine

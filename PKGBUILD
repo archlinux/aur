@@ -8,7 +8,7 @@
 # After each upstream tag: bump pkgver, makepkg --printsrcinfo.
 
 pkgname=routine
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='GNOME time-blocking client with local routine-server'
 url='https://gitlab.gnome.org/wit3k/routine'
