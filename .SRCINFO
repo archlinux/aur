@@ -1,0 +1,26 @@
+pkgbase = kiri-desktop-lite-bin
+	pkgdesc = Tiny, fast container runtime speaking the Docker API (engine only)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://runkiri.com
+	install = kiri-desktop-lite-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	optdepends = docker: docker CLI to talk to the engine
+	optdepends = polkit: pkexec for kiri host-access
+	conflicts = kiri-git
+	conflicts = kiri-bin
+	conflicts = kiri-lite-bin
+	conflicts = kiri-desktop-bin
+	noextract = kiri-lite-0.2.0-x86_64.deb
+	noextract = kiri-lite-0.2.0-aarch64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = kiri-lite-0.2.0-x86_64.deb::https://github.com/libracoder/kiri/releases/download/v0.2.0/kiri-lite_0.2.0_amd64.deb
+	sha256sums_x86_64 = 274fbb272a5ec7673ea82ef1917630fb4a30720d2eff46560c1393d44684bc52
+	source_aarch64 = kiri-lite-0.2.0-aarch64.deb::https://github.com/libracoder/kiri/releases/download/v0.2.0/kiri-lite_0.2.0_arm64.deb
+	sha256sums_aarch64 = 4ed50d79b86bb5d5332efc376b2f93db0c6984c5b5198b4f2833520e665a05ee
+
+pkgname = kiri-desktop-lite-bin
