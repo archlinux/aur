@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Record voice-overs with a studio-like review workflow"
 
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ options=('!strip')
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LAUNCHER.desktop" "ICON.png")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
-sha256sums=('a62f03c66556759fb4d126eb9c5fd30b279f57f34d9ef1de725f503bd98474c0'
+sha256sums=('3d401e04f8fcbcc92e1309d910588623a2f8ba3998c10fcd6e00a0ead4384ec8'
             'f67dd6a822120135c1d517531cc03947ee8b96f212dcda8067bd8664e3a2e1ce'
             '4762cf1d2e0985a18fcda771f54d3965c4814a851be22a674d2b649804ce0179')
-sha256sums_x86_64=('95e09e55f93e316ef7fd8258ef688ae15268efc6b9880dff58a8be71511792ab')
+sha256sums_x86_64=('f141513adf8f800f27d2a6129f3e126dc379c0bb11872014e23653fb7b39f053')
 
 
 package() {

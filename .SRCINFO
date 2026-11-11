@@ -1,6 +1,6 @@
 pkgbase = parts-of-speech-bin
 	pkgdesc = Record voice-overs with a studio-like review workflow
-	pkgver = 0.4.5
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/vmargb/parts-of-speech
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = parts-of-speech-bin
 	provides = parts-of-speech
 	conflicts = parts-of-speech
 	options = !strip
-	source = README-0.4.5.md::https://raw.githubusercontent.com/vmargb/parts-of-speech/v0.4.5/README.md
+	source = README-0.5.0.md::https://raw.githubusercontent.com/vmargb/parts-of-speech/v0.5.0/README.md
 	source = LAUNCHER.desktop
 	source = ICON.png
-	sha256sums = a62f03c66556759fb4d126eb9c5fd30b279f57f34d9ef1de725f503bd98474c0
+	sha256sums = 3d401e04f8fcbcc92e1309d910588623a2f8ba3998c10fcd6e00a0ead4384ec8
 	sha256sums = f67dd6a822120135c1d517531cc03947ee8b96f212dcda8067bd8664e3a2e1ce
 	sha256sums = 4762cf1d2e0985a18fcda771f54d3965c4814a851be22a674d2b649804ce0179
-	source_x86_64 = parts-of-speech-x86_64-0.4.5::https://github.com/vmargb/parts-of-speech/releases/download/v0.4.5/parts-of-speech-linux-x64
-	sha256sums_x86_64 = 95e09e55f93e316ef7fd8258ef688ae15268efc6b9880dff58a8be71511792ab
+	source_x86_64 = parts-of-speech-x86_64-0.5.0::https://github.com/vmargb/parts-of-speech/releases/download/v0.5.0/parts-of-speech-linux-x64
+	sha256sums_x86_64 = f141513adf8f800f27d2a6129f3e126dc379c0bb11872014e23653fb7b39f053
 
 pkgname = parts-of-speech-bin
