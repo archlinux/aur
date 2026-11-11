@@ -8,3 +8,4 @@ Type=Application
 Categories=Development;Network;
 StartupNotify=true
 StartupWMClass=minimax-code-cn
+MimeType=x-scheme-handler/minimax-cn;

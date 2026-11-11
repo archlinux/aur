@@ -113,6 +113,45 @@ function patchPackageName(rel, source) {
   return `${JSON.stringify(pkg, null, 2)}\n`;
 }
 
+// Electron 在 Linux 上不会触发 Tray 的 right-click 事件，popUpContextMenu()
+// 也不可用（仅 macOS/Windows），上游只靠 right-click 弹出的“打开小窗/退出”
+// 菜单因此永远打不开，托盘图标只能靠 kill 结束。Linux 必须改用
+// setContextMenu()，StatusNotifierItem/AppIndicator 才会暴露菜单。
+const TRAY_ORIGINAL = `    // Don't use setContextMenu — it intercepts left-click on macOS
+    t.setContextMenu(null);
+    t.on('click', () => {
+        (0, window_1.bringToFront)();
+    });
+    t.on('right-click', () => {
+        t.popUpContextMenu(createContextMenu());
+    });`;
+
+const TRAY_PATCHED = `    if (process.platform === 'linux') {
+        t.setContextMenu(createContextMenu());
+        t.on('click', () => {
+            (0, window_1.bringToFront)();
+        });
+    }
+    else {
+        // Don't use setContextMenu — it intercepts left-click on macOS
+        t.setContextMenu(null);
+        t.on('click', () => {
+            (0, window_1.bringToFront)();
+        });
+        t.on('right-click', () => {
+            t.popUpContextMenu(createContextMenu());
+        });
+    }`;
+
+function patchTray(rel, source) {
+  const hits = source.split(TRAY_ORIGINAL).length - 1;
+  if (hits !== 1) {
+    throw new Error(`tray patch point count ${hits} in ${rel}`);
+  }
+  patched++;
+  return source.replace(TRAY_ORIGINAL, TRAY_PATCHED);
+}
+
 function main() {
   const { fd, header, dataOffset } = readHeader(asarPath);
   const packed = collectPacked(header);
@@ -128,6 +167,7 @@ function main() {
     let out = source;
     if (isPkg) out = patchPackageName(item.rel, source);
     else if (mode === 'intl' && (isEnv || isJs)) out = patchIntl(item.rel, source);
+    if (item.rel === 'dist/main/modules/tray/index.js') out = patchTray(item.rel, out);
     if (out !== source) {
       item.patched = Buffer.from(out, 'utf8');
     }
@@ -136,6 +176,11 @@ function main() {
   const pkgItem = packed.find((i) => i.rel === 'package.json');
   if (!pkgItem || !pkgItem.patched) {
     throw new Error('package.json was not rewritten (asar layout changed)');
+  }
+
+  const trayItem = packed.find((i) => i.rel === 'dist/main/modules/tray/index.js');
+  if (!trayItem || !trayItem.patched) {
+    throw new Error('tray module was not patched (asar layout changed)');
   }
 
   if (mode === 'intl') {
