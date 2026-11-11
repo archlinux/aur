@@ -1,0 +1,20 @@
+pkgbase = rhwp_bin
+	pkgdesc = HWP/HWPX viewer and editor CLI (Rust/WASM, prebuilt binary)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/edwardkim/rhwp
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	provides = rhwp
+	conflicts = rhwp
+	options = !strip
+	options = !debug
+	source = https://github.com/edwardkim/rhwp/releases/download/v0.9.0/rhwp-v0.9.0-linux-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/edwardkim/rhwp/v0.9.0/LICENSE
+	sha512sums = 198cd7a4101b5d7c1d093abb338f538072a51d46e17b6f3bbc83bfaa16377ef7808c21ad30fb7d3946761dd8a4cde46b10b02ebb925a7bcb7a1badc237635210
+	sha512sums = 8887f2d117a8cec00bee39b8b2d4c238f29323b4653b5e38396778a1510067e5697342ce819e765bfdffc626bc483178e4bfa067421a6bbb0711303d264c39bc
+
+pkgname = rhwp_bin
