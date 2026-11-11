@@ -19,5 +19,24 @@ post_upgrade() {
 }
 
 pre_remove() {
-  systemctl stop cs2blocker-monitor.service >/dev/null 2>&1 || true
+  if [ -x /usr/lib/cs2blocker/cs2blocker-helper ]; then
+    /usr/lib/cs2blocker/cs2blocker-helper clear >/dev/null 2>&1 || true
+  fi
+  if command -v nft >/dev/null 2>&1; then
+    nft delete table inet cs2blocker >/dev/null 2>&1 || true
+  fi
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl disable --now cs2blocker.service cs2blocker-refresh.timer >/dev/null 2>&1 || true
+    systemctl stop cs2blocker-monitor.service >/dev/null 2>&1 || true
+  fi
+}
+
+post_remove() {
+  # Only reached on an actual removal, not on upgrade. The firewall table is
+  # already gone from pre_remove; remove the saved config/state too so a later
+  # reinstall does not resurrect stale rules.
+  rm -rf /etc/cs2blocker /var/lib/cs2blocker
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+  fi
 }
