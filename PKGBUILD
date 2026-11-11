@@ -1,15 +1,15 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.78.1
+# Release notes https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.79.0
 pkgname=mesh-llm
 pkgdesc="Mesh LLM lets you pool spare GPU capacity across machines and expose the result as one OpenAI-compatible API."
-pkgver=0.78.1
-_pkgver=0.78.1
+pkgver=0.79.0
+_pkgver=0.79.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Mesh-LLM/mesh-llm'
 license=('Apache-2.0')
-makedepends=('just' 'cmake' 'lld' 'pnpm' 'cargo' 'sccache')
+makedepends=('just' 'cmake' 'mold' 'pnpm' 'cargo' 'sccache')
 depends=('patchelf')
 provides=('mesh-llm')
 conflicts=('mesh-llm-rocm' 'mesh-llm-cuda' 'mesh-llm-vulkan')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-'f357109751e0fb67294c8e76dfdd5d7932a79a939dda9f7780b6046079a041ad'
+'60666ab66e50844a658ac0dbbdd9ad206ef7927275e6050619f1634ba96ab569'
 )
 
 build() {
