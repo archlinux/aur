@@ -1,7 +1,7 @@
 # Maintainer: Pavel Dobiáš <mail at paveldobias dot eu>
 
 pkgname=cubyz
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='An open-world adventure game where creativity knows no bounds!'
 arch=('x86_64' 'aarch64')
@@ -21,11 +21,9 @@ source=(
   "cubyz.desktop"
   "$pkgname-$pkgver.zip::https://github.com/PixelGuys/Cubyz/archive/refs/tags/$pkgver.zip"
 )
-sha256sums=(
-  '3799316ca24be445daa96fda427f71e67d895ec00b33a93b3e62991e2fc30b6b'
-  'ec3d1bc6c14c1d0c3cbfaf1a998301d81ad28ce1ead86186a49a67d0b8e5873b'
-  'c39777d1c8010d6485da4bea481e2940c91675507617a8d4b892fbd275ed2d47'
-)
+sha256sums=('3799316ca24be445daa96fda427f71e67d895ec00b33a93b3e62991e2fc30b6b'
+            'ec3d1bc6c14c1d0c3cbfaf1a998301d81ad28ce1ead86186a49a67d0b8e5873b'
+            'd9c649f0c9a022c473c724ec406449d4d7426327b138b614bde8a2d8791ce6db')
 
 build() {
   cd "$srcdir/Cubyz-$pkgver"
