@@ -1,6 +1,6 @@
 pkgbase = opencloud-bin
 	pkgdesc = Open source platform for file management, sharing & collaboration - upstream built binary
-	pkgver = 9.0.0
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://opencloud.eu
 	install = opencloud.install
@@ -19,9 +19,9 @@ pkgbase = opencloud-bin
 	sha512sums = 62e701e9630aae725ef978198cce706ffdaa6be02ce509ef5b0051cc6b01a9e8374431a9b6fc5189432d3ecfe25edcbb4cc934d8908b1c1ae773e2f6aa55b62d
 	sha512sums = bd4c449165e0b314cde60437b30214286a0605ccf8ae233fa587d904c16f9225cb822d8636d182b11f91224aa42969f28fc99400b692c2265c47b51b49e2d188
 	sha512sums = db82871e0f1e57cf852d4ad10116505c62b46d5dab5c87a15628847cdde16331e09cc7968ed7e1ad0bed266ba30e22b48a9673e2a334e6c7b1be709fe6fd986a
-	source_aarch64 = opencloud-9.0.0-aarch64::https://github.com/opencloud-eu/opencloud/releases/download/v9.0.0/opencloud-9.0.0-linux-arm64
-	sha512sums_aarch64 = 6f41ffcaf1ef8768496487aaa0a01f703000ba6023b06b4b3b04c3fca982f84afa6449461befe1deb6de775323523e72601058fd2c72884e5e638d0b93c72460
-	source_x86_64 = opencloud-9.0.0-x86_64::https://github.com/opencloud-eu/opencloud/releases/download/v9.0.0/opencloud-9.0.0-linux-amd64
-	sha512sums_x86_64 = c45a30ca2efc0cd09b3486e770d5351ca523d1b03ae027e03db7a9e0eab0449fa3d9b1a248bd9b488c33023e91ec2d92276234c7bf6944a2c5989a49e0be614c
+	source_aarch64 = opencloud-9.1.0-aarch64::https://github.com/opencloud-eu/opencloud/releases/download/v9.1.0/opencloud-9.1.0-linux-arm64
+	sha512sums_aarch64 = f8b948a1369da9c0901f9563b2c4851b9c2f9014791fe8188e793d0c40e52d4a4e882669f6e09fc99e0d4eb4ff7785cd23cd7a18806acd9b9cc2a49bd1249298
+	source_x86_64 = opencloud-9.1.0-x86_64::https://github.com/opencloud-eu/opencloud/releases/download/v9.1.0/opencloud-9.1.0-linux-amd64
+	sha512sums_x86_64 = cf4c8888aa9d98d35a591ab8f03abc848c070db1714338929967ce6c2f1a1770a731f59fddb0a2e9cc2b5776730fc742dd2c723b105ace7b743c54ccefd7f950
 
 pkgname = opencloud-bin
