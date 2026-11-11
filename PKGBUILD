@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=arch-native
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Rebuild installed pacman packages from source with CPU-optimized compiler flags"
 arch=('any')
@@ -14,13 +14,13 @@ optdepends=(
 backup=('etc/arch-native.conf')
 install=arch-native.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adelmonte/arch-native/archive/refs/tags/arch-native-v${pkgver}.tar.gz")
-sha256sums=('e6606bbd6266a22ce8847f3acad552497e65c4566e6c3e2eec3f27b3c3ba981c')
+sha256sums=('23d13d8125abb822a80828fd73563cd337a24d17cc89774fe871bfc6231eda30')
 
 package() {
     cd "$srcdir/arch-native-arch-native-v${pkgver}/arch-native"
 
     install -Dm755 buildbot                  "$pkgdir/usr/bin/buildbot"
-    install -Dm644 buildbot_lib.py           "$pkgdir/usr/lib/arch-native/buildbot_lib.py"
+    install -Dm644 -t "$pkgdir/usr/lib/arch-native/arch_native" arch_native/*.py
     install -Dm644 arch-native.service       "$pkgdir/usr/lib/systemd/system/arch-native.service"
     install -Dm755 artix-meson               "$pkgdir/usr/share/arch-native/artix-meson"
     install -Dm644 artix-mirrorlist          "$pkgdir/usr/share/arch-native/artix-mirrorlist"
