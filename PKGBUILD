@@ -1,6 +1,6 @@
 # Maintainer: Douglas Moura <doug@douglasmoura.com>
 pkgname=winkel
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A metronome for Omarchy that follows the live theme (Rust + GPUI)"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ depends=(alsa-lib gcc-libs glibc hicolor-icon-theme libxkbcommon libxkbcommon-x1
 optdepends=('ttf-jetbrains-mono-nerd: the default interface font')
 makedepends=(cargo clang vulkan-headers wayland wayland-protocols fontconfig freetype2)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('016c66f3fd051a6aba70350809651e063a21cad3643b7bd1f343ee7faab3ba25')
+sha256sums=('6d291b949d623db256f01c63160ec1445ccff3a0cdf7aef05ab4e5465d8cea0d')
 
 prepare() {
   cd "$pkgname-$pkgver"
