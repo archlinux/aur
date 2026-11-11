@@ -1,5 +1,5 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from GLM 5.3 Flash.
+# Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=zxc-full
 pkgver=0.15.0
