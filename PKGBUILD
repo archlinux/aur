@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp-git
-pkgver=0.3.0.r34.gcefd870
+pkgver=0.3.0.r38.g0e3d137
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
 arch=($CARCH)
@@ -11,9 +11,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    gcc-libs
-    glibc
-    libusb
+    libgcc
     systemd-libs
 )
 makedepends=(
@@ -21,7 +19,7 @@ makedepends=(
     rust
 )
 backup=()
-options=('!lto')
+options=('!lto' '!strip' '!debug')
 install=
 source=("${pkgname}::git+$url.git")
 sha256sums=('SKIP')
