@@ -1,7 +1,9 @@
+# Maintainer: Kotsasmin
+
 pkgname=kotsasmin-toolkit-git
-pkgver=r24.b26cb3b
+pkgver=r25.c491bef
 pkgrel=1
-pkgdesc="A collection of system optimization, security, and media scripts"
+pkgdesc="A collection of system optimization, security, and media scripts by Kotsasmin"
 arch=('any')
 url="https://github.com/Kotsasmin/toolkit"
 license=('MIT')
@@ -12,6 +14,7 @@ optdepends=(
     'docker: for security container audits'
     'npm: for node vulnerability audits'
     'screen: for running SCX P2DQ in background'
+    'xdg-utils: for opening kotsasmin.net from the menu'
 )
 makedepends=('git')
 provides=('kotsasmin-toolkit' 'toolkit')

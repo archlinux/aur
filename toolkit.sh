@@ -10,6 +10,8 @@ while [ -h "$SOURCE" ]; do
 done
 TOOLKIT_ROOT="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
+WEBSITE_URL="https://kotsasmin.net"
+
 MEDIA_DIR="$TOOLKIT_ROOT/media"
 OPT_DIR="$TOOLKIT_ROOT/optimization"
 SEC_DIR="$TOOLKIT_ROOT/security"
@@ -35,6 +37,7 @@ show_banner() {
     echo "     ██║   ╚██████╔╝╚██████╔╝███████╗██║  ██╗██║   ██║   "
     echo "     ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   "
     echo -e "${NC}${DIM}       System Optimization, Security & Media Toolkit${NC}"
+    echo -e "       Created by ${BOLD}Kotsasmin${NC} ${DIM}- ${WEBSITE_URL}${NC}"
     echo -e "${DIM}       Path: ${TOOLKIT_ROOT}${NC}"
     echo ""
 }
@@ -72,6 +75,29 @@ execute_script() {
     fi
 
     return $exit_code
+}
+
+open_website() {
+    local opener=""
+    for cmd in xdg-open gio open; do
+        if command -v "$cmd" &>/dev/null; then
+            opener="$cmd"
+            break
+        fi
+    done
+
+    # A graphical session is needed to open a browser; on servers just show the link.
+    if [ -n "$opener" ] && { [ -n "${DISPLAY:-}" ] || [ -n "${WAYLAND_DISPLAY:-}" ] || [ "$(uname -s)" = "Darwin" ]; }; then
+        echo -e "${CYAN}[+] Opening ${WEBSITE_URL}...${NC}"
+        if [ "$opener" = "gio" ]; then
+            gio open "$WEBSITE_URL" &>/dev/null &
+        else
+            "$opener" "$WEBSITE_URL" &>/dev/null &
+        fi
+        disown 2>/dev/null || true
+    else
+        echo -e "${YELLOW}[!] No browser available here. Visit: ${BOLD}${WEBSITE_URL}${NC}"
+    fi
 }
 
 menu_optimization() {
@@ -159,9 +185,10 @@ main_menu() {
         echo -e "  ${GREEN}2)${NC} System Optimization ${DIM}(Supertune, TCP, SCX, Hugepages)${NC}"
         echo -e "  ${GREEN}3)${NC} Security & Auditing ${DIM}(Malware, Network, SUID, NPM audits)${NC}"
         echo -e "  ${GREEN}4)${NC} Pterodactyl Tools ${DIM}(Wings install prep & debugger)${NC}"
+        echo -e "  ${GREEN}5)${NC} Visit kotsasmin.net ${DIM}(Open the creator's website)${NC}"
         echo -e "  ${RED}0)${NC} Exit"
         echo ""
-        read -rp "Select an option [0-4]: " main_choice
+        read -rp "Select an option [0-5]: " main_choice
 
         case $main_choice in
             1)
@@ -175,6 +202,11 @@ main_menu() {
                 ;;
             4)
                 menu_ptero
+                ;;
+            5)
+                open_website
+                echo ""
+                read -rp "Press [Enter] to return to menu..."
                 ;;
             0|q|Q|exit)
                 echo -e "\n${CYAN}Goodbye!${NC}"
@@ -190,6 +222,7 @@ main_menu() {
 
 show_help() {
     echo -e "${BOLD}Toolkit CLI${NC} - Fast execution for system tools"
+    echo -e "Created by ${BOLD}Kotsasmin${NC} - ${WEBSITE_URL}"
     echo ""
     echo -e "${BOLD}Usage:${NC}"
     echo "  ./toolkit.sh                     Launch interactive TUI menu"
@@ -197,6 +230,7 @@ show_help() {
     echo "  ./toolkit.sh optimize <action>   Run optimization script"
     echo "  ./toolkit.sh security <action>   Run security audit script"
     echo "  ./toolkit.sh ptero <action>      Run Pterodactyl tool"
+    echo "  ./toolkit.sh website             Open kotsasmin.net"
     echo "  ./toolkit.sh help                Show this help screen"
     echo ""
     echo -e "${BOLD}Optimization actions:${NC}"
@@ -283,6 +317,9 @@ else
                     exit 1
                     ;;
             esac
+            ;;
+        website|web|site)
+            open_website
             ;;
         help|--help|-h)
             show_help

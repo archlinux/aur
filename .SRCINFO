@@ -1,6 +1,6 @@
 pkgbase = kotsasmin-toolkit-git
-	pkgdesc = A collection of system optimization, security, and media scripts
-	pkgver = r24.b26cb3b
+	pkgdesc = A collection of system optimization, security, and media scripts by Kotsasmin
+	pkgver = r25.c491bef
 	pkgrel = 1
 	url = https://github.com/Kotsasmin/toolkit
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = kotsasmin-toolkit-git
 	optdepends = docker: for security container audits
 	optdepends = npm: for node vulnerability audits
 	optdepends = screen: for running SCX P2DQ in background
+	optdepends = xdg-utils: for opening kotsasmin.net from the menu
 	provides = kotsasmin-toolkit
 	provides = toolkit
 	conflicts = kotsasmin-toolkit
