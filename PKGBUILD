@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=aurascan
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="AI-assisted safety and recovery layer for Arch-family systems"
 arch=('any')
@@ -46,8 +46,10 @@ optdepends=(
   'xfsprogs: read-only XFS recovery diagnostics'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Source archive for the public v0.16.0 tag.
-sha256sums=('be5518e2ecf3cf401d22c27fe8f0e4347b59330878726ddd389b72f1dd75a717')
+# Source archive for the public v0.16.1 tag. The digest is pinned only after
+# that tag is public: `packaging/arch/pin-release-checksum.sh` replaces the
+# placeholder digest line in place and refuses to guess.
+sha256sums=('d4194ff825455ee182f0531165ff2ad91440ee9d1fa0040c6f76064489f765f1')
 
 build() {
   cd "AuraScan-$pkgver"
