@@ -1,7 +1,7 @@
 # Maintainer: araaha <ara.ahady at gmail dot com>
 pkgname=yavcpdf-bin
 _name=yavcpdf
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A minimal, keyboard-driven PDF viewer (release binary)'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 provides=("yavcpdf=$pkgver")
 conflicts=('yavcpdf')
 source=("$_name-v$pkgver-x86_64-linux.tar.gz::https://github.com/araaha/yavcpdf/releases/download/v$pkgver/$_name-v$pkgver-x86_64-linux.tar.gz")
-sha256sums=('4a91435fec9a722a93208545e3e362bdef9685f911d4fb7f9f0d06238c31b732')
+sha256sums=('76a54d890128cf87f3fa1057a0ef736e4f74781cf8b91aeadb237b9bf9e1fd51')
 
 package() {
   cd "$_name-v$pkgver-x86_64-linux"

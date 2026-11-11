@@ -1,6 +1,6 @@
 pkgbase = yavcpdf-bin
 	pkgdesc = A minimal, keyboard-driven PDF viewer (release binary)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/araaha/yavcpdf
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = yavcpdf-bin
 	depends = wayland
 	optdepends = xdg-desktop-portal: file chooser for Ctrl-t / :open
 	optdepends = xdg-utils: open links in a browser
-	provides = yavcpdf=0.4.0
+	provides = yavcpdf=0.5.0
 	conflicts = yavcpdf
-	source = yavcpdf-v0.4.0-x86_64-linux.tar.gz::https://github.com/araaha/yavcpdf/releases/download/v0.4.0/yavcpdf-v0.4.0-x86_64-linux.tar.gz
-	sha256sums = 4a91435fec9a722a93208545e3e362bdef9685f911d4fb7f9f0d06238c31b732
+	source = yavcpdf-v0.5.0-x86_64-linux.tar.gz::https://github.com/araaha/yavcpdf/releases/download/v0.5.0/yavcpdf-v0.5.0-x86_64-linux.tar.gz
+	sha256sums = 76a54d890128cf87f3fa1057a0ef736e4f74781cf8b91aeadb237b9bf9e1fd51
 
 pkgname = yavcpdf-bin
