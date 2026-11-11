@@ -1,0 +1,5 @@
+[yamldiff-bin]
+source = "github"
+github = "sahilm/yamldiff"
+use_latest_release = true
+prefix = ""
