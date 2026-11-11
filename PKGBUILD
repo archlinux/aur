@@ -7,8 +7,8 @@
 pkgname=mpv-phoenix
 epoch=1
 pkgver=0.41.0
-pkgrel=3
-_commit=ad0e943a93854a888d1bea22ed25e6b1f2dc1b18
+pkgrel=4
+_commit=cfbb33214201d4d48c3b09739bdf9cfe8a31717c
 _srcname=mpv-${_commit}
 pkgdesc='A fork of mpv with HDR support on X11'
 arch=('x86_64')
@@ -28,7 +28,7 @@ provides=("mpv=${epoch}:${pkgver}" 'libmpv.so')
 conflicts=('mpv')
 options=('!emptydirs')
 source=("${_srcname}.tar.gz::https://github.com/dec05eba/mpv/archive/${_commit}.tar.gz")
-sha256sums=('1aae7a3948bdf589b17a5a61b2bb7af692a80fa88450e36bc0be2057348a65d0')
+sha256sums=('c26b1984a6660bab979b40a2d1286bf5a383d9e2425f79c336b3518e4032ff4a')
 
 build() {
   local _meson_options=(
