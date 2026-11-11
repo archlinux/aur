@@ -1,0 +1,6 @@
+# makepkg 的工作目录与产物
+src/
+pkg/
+*.pkg.tar*
+# VCS 源的本地镜像（makepkg 从 GitHub 拉的裸仓库）
+finallyshell/
