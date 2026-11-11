@@ -1,9 +1,10 @@
+# Maintainer: vyzu <vyzu at vyzu dot net>
 # Maintainer: skynet2077 <fancykittens at gmx dot com>
 # Contributor: Oleksandr Natalenko <oleksandr at natalenko dot name>
 # Contributor: gryffyn <evanmicahp at gmail dot com>
 
 pkgname=encrypted-dns
-pkgver=0.9.17
+pkgver=0.9.22
 pkgrel=1
 pkgdesc="A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)"
 url="https://github.com/DNSCrypt/encrypted-dns-server"
@@ -16,7 +17,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/DNSCrypt/encrypted-dns-s
 	$pkgname.service
 	$pkgname-sysusers.conf
 	$pkgname-tmpfiles.conf)
-sha256sums=('ed3b2bde825d2b2c8f6db3fc7d964c39956cb826054279498d7ae7c7b27bb47e'
+sha256sums=('775b2ca8e3e31288bc8b95c0e1e9441d3b1554f99c911e0575b2d1d8ffe5fe0c'
             '5f819e7faa3c8775f62fd2fa23d3d2e85de223015111a67e11e3e46ee9d6f7c1'
             '158f60a15356ec45aed4c27a0264d8520969f8aa19b2117f7e969c958f71c502'
             '2981c6e78d272e404a51a19155ed9158321079ffc3d9de58750767e5b9159e6d')
