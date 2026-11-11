@@ -2,7 +2,7 @@
 
 pkgname=g0v0-bin
 _pkgname=${pkgname%-bin}
-pkgver=2026.1101.0
+pkgver=2026.1111.1
 _pkgtag=v${pkgver}-g0v0
 pkgrel=1
 pkgdesc="g0v0! -- free and open rhythm experience!"
@@ -37,8 +37,8 @@ sha256sums=('c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             'b1d3d8ad2b05ff2f461d15ff8fd73ce6ffbb75568dae2bd123b0599292259c53'
             'dfbe774cb090a23f4000859dd9bb6c79717e20d091737893b915a55db5b4965a'
             'ad8ea338fc18ee17415ffef151b4a28fb223e12bee2ae836c263e9cfcfe33370')
-sha256sums_x86_64=('14452694e7f225e72f1aa740530d4b8a92b12d4dfa2cfa514b97afdea96fa65f')
-sha256sums_aarch64=('c7a3d727d11c3844318663e9da05f3133138bb8b90cc68e37358540c6c090062')
+sha256sums_x86_64=('a16b7e3d18fcad039241bb0085735d893688910dbb8c75c6dab9b918e98ba82e')
+sha256sums_aarch64=('6276acf2540c0d8e2c0863bc61716632e098a1d7e99fcfec88f01c6923e76c19')
 
 package() {
   cd "$srcdir"
