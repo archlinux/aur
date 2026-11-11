@@ -2041,8 +2041,8 @@ diff -Nurp a/src/mtgpu/mtgpu_drv.c b/src/mtgpu/mtgpu_drv.c
  		.of_match_table = mtgpu_of_tbl,
 diff -Nurp a/src/mtgpu/mtgpu_hwmon.c b/src/mtgpu/mtgpu_hwmon.c
 --- a/src/mtgpu/mtgpu_hwmon.c	1970-01-01 08:00:00.000000000 +0800
-+++ b/src/mtgpu/mtgpu_hwmon.c	2026-11-10 16:56:53.779063440 +0800
-@@ -0,0 +1,384 @@
++++ b/src/mtgpu/mtgpu_hwmon.c	2026-11-11 11:20:00.000000000 +0800
+@@ -0,0 +1,495 @@
 +/*
 + * MTT S30 Hardware Monitoring (hwmon) support
 + * Integrates Moore Threads S30 telemetry with Linux standard hwmon subsystem.
@@ -2060,6 +2060,7 @@ diff -Nurp a/src/mtgpu/mtgpu_hwmon.c b/src/mtgpu/mtgpu_hwmon.c
 +#include "mtgpu_smc.h"
 +#include "mtgpu_board_cfg.h"
 +#include "uapi_common.h"
++#include "pvrsrv.h"
 +#include "mtgpu_hwmon.h"
 +
 +extern void mtgpu_get_global_mem_stats(struct mtgpu_device *mtdev, DEVICE_DRIVER_STATS_INFO *stats);
@@ -2356,6 +2357,67 @@ diff -Nurp a/src/mtgpu/mtgpu_hwmon.c b/src/mtgpu/mtgpu_hwmon.c
 +static DEVICE_ATTR(in0_input, 0444, in0_input_show, NULL);
 +static DEVICE_ATTR(in0_label, 0444, in0_label_show, NULL);
 +
++/* Helper to retrieve PowerVR / MUSA device node for utilization stats */
++static PVRSRV_DEVICE_NODE *mtgpu_get_pvr_node(void)
++{
++	PVRSRV_DEVICE_NODE *node = PVRSRVGetDeviceInstanceByOSId(128);
++	int i;
++
++	if (node)
++		return node;
++
++	node = PVRSRVGetDeviceInstanceByOSId(0);
++	if (node)
++		return node;
++
++	for (i = 129; i < 136; i++) {
++		node = PVRSRVGetDeviceInstanceByOSId(i);
++		if (node)
++			return node;
++	}
++
++	for (i = 1; i < 8; i++) {
++		node = PVRSRVGetDeviceInstanceByOSId(i);
++		if (node)
++			return node;
++	}
++
++	return NULL;
++}
++
++static ssize_t dev_gpu_busy_percent_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	PVRSRV_DEVICE_NODE *psDeviceNode = mtgpu_get_pvr_node();
++	DEVICE_STATUS_INFO status_info;
++	PVRSRV_ERROR eError;
++	u32 busy_percent = 0;
++
++	if (psDeviceNode) {
++		memset(&status_info, 0, sizeof(status_info));
++		eError = GpuStatusExport(psDeviceNode, &status_info);
++		if (eError == PVRSRV_OK) {
++			busy_percent = status_info.aui32GpuUtil[GPU_UTIL_ITEM_IDX_OVERALL_UTIL];
++			if (busy_percent > 100)
++				busy_percent = 100;
++		}
++	}
++
++	return scnprintf(buf, PAGE_SIZE, "%u\n", busy_percent);
++}
++
++static ssize_t util1_input_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return dev_gpu_busy_percent_show(dev, attr, buf);
++}
++
++static ssize_t util1_label_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return scnprintf(buf, PAGE_SIZE, "GPU Usage\n");
++}
++
++static DEVICE_ATTR(util1_input, 0444, util1_input_show, NULL);
++static DEVICE_ATTR(util1_label, 0444, util1_label_show, NULL);
++
 +static DEVICE_ATTR(vram_total, 0444, vram_total_show, NULL);
 +static DEVICE_ATTR(vram_used, 0444, vram_used_show, NULL);
 +
@@ -2378,12 +2440,47 @@ diff -Nurp a/src/mtgpu/mtgpu_hwmon.c b/src/mtgpu/mtgpu_hwmon.c
 +	&dev_attr_in0_label.attr,
 +	&dev_attr_vram_total.attr,
 +	&dev_attr_vram_used.attr,
++	&dev_attr_util1_input.attr,
++	&dev_attr_util1_label.attr,
 +	NULL
 +};
 +
 +ATTRIBUTE_GROUPS(mtgpu_hwmon);
 +
 +/* Device-level attributes for DRM device (/sys/class/drm/card0/device/mem_info_vram_*) */
++static ssize_t dev_pp_dpm_sclk_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	char fbuf[32];
++	ssize_t ret = freq1_input_show(dev, attr, fbuf);
++	s64 freq = 1300000000LL;
++
++	if (ret > 0)
++		(void)kstrtos64(strim(fbuf), 10, &freq);
++
++	return scnprintf(buf, PAGE_SIZE, "0: %lluMhz *\n", div_u64(freq > 0 ? freq : 1300000000LL, 1000000ULL));
++}
++
++static ssize_t dev_pp_dpm_mclk_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	char fbuf[32];
++	ssize_t ret = freq2_input_show(dev, attr, fbuf);
++	s64 freq = 4250000000LL;
++
++	if (ret > 0)
++		(void)kstrtos64(strim(fbuf), 10, &freq);
++
++	return scnprintf(buf, PAGE_SIZE, "0: %lluMhz *\n", div_u64(freq > 0 ? freq : 4250000000LL, 1000000ULL));
++}
++
++static struct device_attribute dev_attr_pp_dpm_sclk =
++	__ATTR(pp_dpm_sclk, 0444, dev_pp_dpm_sclk_show, NULL);
++
++static struct device_attribute dev_attr_pp_dpm_mclk =
++	__ATTR(pp_dpm_mclk, 0444, dev_pp_dpm_mclk_show, NULL);
++
++static struct device_attribute dev_attr_gpu_busy_percent =
++	__ATTR(gpu_busy_percent, 0444, dev_gpu_busy_percent_show, NULL);
++
 +static struct device_attribute dev_attr_mem_info_vram_total =
 +	__ATTR(mem_info_vram_total, 0444, dev_vram_total_show, NULL);
 +
@@ -2419,6 +2516,17 @@ diff -Nurp a/src/mtgpu/mtgpu_hwmon.c b/src/mtgpu/mtgpu_hwmon.c
 +	if (ret)
 +		dev_dbg(&pdev->dev, "Failed to create dev mem_info_vram_used sysfs\n");
 +
++	ret = device_create_file(&pdev->dev, &dev_attr_gpu_busy_percent);
++	if (ret)
++		dev_dbg(&pdev->dev, "Failed to create dev gpu_busy_percent sysfs\n");
++	ret = device_create_file(&pdev->dev, &dev_attr_pp_dpm_sclk);
++	if (ret)
++		dev_dbg(&pdev->dev, "Failed to create dev pp_dpm_sclk sysfs\n");
++
++	ret = device_create_file(&pdev->dev, &dev_attr_pp_dpm_mclk);
++	if (ret)
++		dev_dbg(&pdev->dev, "Failed to create dev pp_dpm_mclk sysfs\n");
++
 +	return 0;
 +}
 +
@@ -2426,6 +2534,9 @@ diff -Nurp a/src/mtgpu/mtgpu_hwmon.c b/src/mtgpu/mtgpu_hwmon.c
 +{
 +	device_remove_file(&pdev->dev, &dev_attr_mem_info_vram_used);
 +	device_remove_file(&pdev->dev, &dev_attr_mem_info_vram_total);
++	device_remove_file(&pdev->dev, &dev_attr_gpu_busy_percent);
++	device_remove_file(&pdev->dev, &dev_attr_pp_dpm_mclk);
++	device_remove_file(&pdev->dev, &dev_attr_pp_dpm_sclk);
 +}
 diff -Nurp a/src/mtgpu/phy-mthreads-dp.c b/src/mtgpu/phy-mthreads-dp.c
 --- a/src/mtgpu/phy-mthreads-dp.c	2025-05-16 13:04:56.000000000 +0800
