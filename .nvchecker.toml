@@ -1,0 +1,4 @@
+[ignition]
+source = "git"
+git = "https://github.com/coreos/ignition.git"
+prefix = "v"
