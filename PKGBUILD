@@ -2,7 +2,7 @@
 # Builds from the main branch of the upstream repository.
 pkgname=slicenv-git
 pkgver=0.1.1.r80.g7bf7230
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast native 3D printing slicer front-end for OrcaSlicer and Bambu Studio engines (git)'
 arch=('x86_64')
 url='https://github.com/arximus88/slicenv'
@@ -42,8 +42,14 @@ build() {
 check() {
   cd slicenv
   export CARGO_TARGET_DIR=${CARGO_TARGET_DIR:-target}
-  "$CARGO_TARGET_DIR/release/slicenv" --version
-  "$CARGO_TARGET_DIR/release/slicenv-mcp" --version
+  # Throwaway HOME: the check must not touch the build user's configuration.
+  local home
+  home=$(mktemp -d)
+  HOME=$home XDG_CONFIG_HOME=$home/config XDG_DATA_HOME=$home/data XDG_CACHE_HOME=$home/cache \
+    "$CARGO_TARGET_DIR/release/slicenv" --version
+  HOME=$home XDG_CONFIG_HOME=$home/config XDG_DATA_HOME=$home/data XDG_CACHE_HOME=$home/cache \
+    "$CARGO_TARGET_DIR/release/slicenv-mcp" --version
+  rm -rf "$home"
 }
 
 package() {
