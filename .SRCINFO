@@ -1,0 +1,18 @@
+pkgbase = pangene
+	pkgdesc = Pangenome gene graph construction from protein-to-genome alignments
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/lh3/pangene
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	optdepends = miniprot: generate protein-to-genome alignments
+	optdepends = k8: gene graph analysis with pangene.js
+	source = pangene-1.1.tar.gz::https://github.com/lh3/pangene/archive/v1.1.tar.gz
+	source = LICENSE
+	sha256sums = 9fbb6faa4d53b1e163a186375ca01bbac4395aa4c88d1ca00d155e751fb89cf8
+	sha256sums = 1a9cb163c73ee434a815ff7d894c2812aca5943f1f7d1741d4b55cf04ff741ab
+
+pkgname = pangene
