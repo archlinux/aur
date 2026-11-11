@@ -1,7 +1,7 @@
 # Maintainer: ycna07 <aozakitouko at foxmail dot com>
 pkgname=reinamanager-bin
 _pkgname=ReinaManager
-pkgver=0.32.2
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="A lightweight galgame/visual-novel manager,Under development..."
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}-git" "${pkgname%-bin}")
 source_x86_64=("${_pkgname}_${pkgver}_x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}_${pkgver}_arm64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
-sha256sums_x86_64=('018893ea19e5d7ef4bcc6fa0cbec7b615aeca38aa5a75bd3dc31869d492a338e')
-sha256sums_aarch64=('f79121c3078f5dfbc672713ed28219c11aa7468c6cda5ecfd00f9b7185169617')
+sha256sums_x86_64=('dc288f5136082b37d4286c724efe7e42f804e446b743be7da2ca4afa9c11cb4e')
+sha256sums_aarch64=('bb6a88364a906f490c9d842ea8166888ba2349685d2683aeb054ed6376430e11')
 
 
 package() {
