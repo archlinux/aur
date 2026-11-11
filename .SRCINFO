@@ -1,0 +1,27 @@
+pkgbase = xtermium-bin
+	pkgdesc = Cross-platform terminal and session manager with web/file browsers and AI
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://xtermium.com
+	arch = x86_64
+	license = Apache-2.0
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = systemd-libs
+	depends = webkit2gtk-4.1
+	provides = xtermium
+	conflicts = xtermium
+	options = !strip
+	options = !debug
+	source = https://github.com/xtermium/xtermium/releases/download/v0.9.0/xtermium_0.9.0_amd64.deb
+	sha256sums = a2a461a751bd8a5d4630b65f8c1c24454ef20a4ac72b93ae182ef7808ea80384
+
+pkgname = xtermium-bin
