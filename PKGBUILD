@@ -1,7 +1,7 @@
 # Maintainer: Asempere <asempere158@gmail.com>
 
 pkgname=anicli-esp
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Ver anime subtitulado en Español desde el terminal"
 arch=('x86_64')
@@ -30,4 +30,4 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('20a268244c5ed2c0a5828755fde54fd30659b5a61b13757a5db09fc32af4f2f3')
+sha256sums=('28ee8cec2e3fb3136558a8d3c11df9025107bd947c0f1b5fd203a4fd3153de52')
