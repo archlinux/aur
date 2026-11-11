@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-scala
 	pkgdesc = Scala grammar for tree-sitter
-	pkgver = 0.26.10
+	pkgver = 0.26.11
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-scala
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = tree-sitter-scala
 	depends = glibc
 	provides = libtree-sitter-scala.so
 	options = staticlibs
-	source = tree-sitter-scala-0.26.10-src.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/refs/tags/v0.26.10.tar.gz
-	sha256sums = f88fbcba7523a0cba46ec3d036ee3cefcfe5e8e67130f62970b59f35cf97873e
+	source = tree-sitter-scala-0.26.11-src.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/refs/tags/v0.26.11.tar.gz
+	sha256sums = 0aff675b82ae80da93d64b137f646f613402a2b48e22241202443d0081d54ce6
 
 pkgname = tree-sitter-scala
