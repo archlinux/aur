@@ -1,11 +1,11 @@
 # Maintainer: Pink Pixel <admin@pinkpixel.dev>
 pkgname=flikka
 _npmname=@pinkpixel/flikka
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 # flikka-voice (your own voices) and flikka-cursor (the pointer in Wayland screen recordings) come in one archive
 # with its own releases (DOCS/RELEASING.md).
-_voicever=0.2.0
+_voicever=0.3.0
 pkgdesc='Screen recorder and video editor for AI agents on Linux: record browsers, terminals and desktops, then edit, narrate and render from the CLI'
 arch=('x86_64')
 url='https://github.com/pinkpixel-dev/flikka'
@@ -21,8 +21,8 @@ source=("https://registry.npmjs.org/${_npmname}/-/${pkgname}-${pkgver}.tgz"
         'flikka.desktop'
         'flikka.png')
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('531e247bc31b112c9f4c70eb95b5b658cac9c2f691faacd6bacfda83e62db9d5'
-            '8303bdc2e53a961172a400e7cdc8a2a7f37325709ed131b319ee9b6eb44852ef'
+sha256sums=('bfe6613fcf9577f25bceaae57352b5726654c6116c7cf5a56d01dfff9dea79a6'
+            '8dbdaf985432a8d2d35695becb3188ee3bb98b5fabea72ae32acfc9c4b2ce695'
             '3b37f8674b8ff59d756a557a90d119c0f9ff2b97a0d14e483c4bb917f3d34d82'
             'cccf5481d81f8ce7c58e4888518d6e063b68df349049046c6d71601c6d19d7f5')
 
