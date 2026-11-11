@@ -1,0 +1,15 @@
+pkgbase = keep-sorted
+	pkgdesc = Language-agnostic formatter that sorts lines between two markers in a larger file
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/google/keep-sorted
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = keep-sorted::git+https://github.com/google/keep-sorted.git#tag=v0.10.0
+	sha256sums = 9149a3485f922fc5bf5a3d26db2330b5fad01fd008f172bdc24c535af53f8732
+
+pkgname = keep-sorted
