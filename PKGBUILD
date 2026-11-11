@@ -2,7 +2,7 @@
 pkgname=reel
 _app_id=dev.arsfeld.Reel
 pkgver=0.7.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern GTK frontend for Plex and other media servers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arsfeld/reel"
@@ -20,7 +20,7 @@ depends=(
   'libadwaita'
   'libsecret'
   'mpv'
-  'openssl'
+  'openssl-3'
   'sqlite'
   'zstd'
 )
@@ -50,8 +50,10 @@ prepare() {
 
 build() {
   cd "$pkgname"
+  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
   export GETTEXT_SYSTEM=true
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export OPENSSL_NO_VENDOR=1
   export ZSTD_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
