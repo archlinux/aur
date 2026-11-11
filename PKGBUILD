@@ -29,6 +29,7 @@ build() {
   else
     msg2 "python-sphinx-furo and python-myst-parser not found; docs won't be built"
   fi
+  DOCS=OFF
   cmake "$pkgname-$pkgver" \
     -Wno-author \
     -B build \
@@ -47,7 +48,7 @@ check() {
 
 package() {
   cmake --install build --prefix="$pkgdir"/usr
-  install -Dm644 "$pkgname-$pkgver"/README.md -t "$pkgdir/usr/share/docs/$pkgname/"
-  [[ -d build/docs/html ]] && cp -ar build/docs/html/* "$pkgdir/usr/share/docs/$pkgname/"
+  install -Dm644 "$pkgname-$pkgver"/README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  [[ -d build/docs/html ]] && cp -ar build/docs/html/* "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 "$pkgname-$pkgver"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
