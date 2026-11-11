@@ -6,22 +6,66 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r14921.g8119cb11c
-pkgrel=2
+pkgver=r16055.gb1dfd6b46
+pkgrel=1
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
-license=(GPL2 CCPL)
+license=(GPL-2.0-or-later)
 groups=(pro-audio)
-depends=(gcc-libs glibc flac gtk3 wxwidgets-gtk3 wxwidgets-common libid3tag lilv lv2 portsmf suil libmad twolame
-         vamp-plugin-sdk libsoxr soundtouch portaudio jack portmidi libebml libmatroska libzip jsoncpp
-
-         # namcap implicit depends
-         libogg expat hicolor-icon-theme glib2 libsndfile sqlite lame libvorbis
-)
-makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg nasm chrpath python)
+depends=(
+    expat
+    flac
+    glib2
+    glibc
+    gtk3
+    hicolor-icon-theme
+    jack #
+    jsoncpp #
+    lame
+    libebml
+    libgcc
+    libid3tag
+    libmad #
+    libmatroska
+    libogg
+    libsndfile
+    libsoxr
+    libstdc++
+    libvorbis
+    libzip
+    lilv
+    lv2
+    mpg123
+    opus
+    opusfile
+    portaudio
+    portmidi
+    portsmf
+    soundtouch
+    sqlite
+    suil
+    twolame
+    vamp-plugin-sdk
+    wavpack
+    wxwidgets-common
+    wxwidgets-gtk3
+    )
+makedepends=(
+    #chrpath
+    cmake
+    ffmpeg
+    git
+    gst-plugins-bad-libs
+    gstreamer
+    libnotify
+    libsoup
+    nasm
+    python
+    rapidjson
+    sdl2
+    )
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
@@ -33,14 +77,13 @@ sha256sums=('SKIP'
 pkgver() {
   cd tenacity
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd tenacity
   git submodule init
   git config submodule.vcpkg.update none
+  git config submodule.linux/flatpak/shared-modules.update none
   git config submodule.lib-src/libnyquist.url "${srcdir}/tenacity-libnyquist"
   git -c protocol.file.allow=always submodule update
 
@@ -51,30 +94,33 @@ prepare() {
     test -f tenacity.png && mv tenacity.png apps
     cd ..
   done
-  cd ../..
-  mkdir -p build
 }
 
 build() {
-  cd tenacity/build
-  CC=clang CXX=clang++ cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  export CC=/usr/bin/gcc CXX=/usr/bin/g++
+
+  local _flags=(
+    -DCMAKE_SKIP_RPATH=ON
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
+  )
+
+  cmake -B build -S "tenacity" -Wno-author \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
-    -Wno-dev \
-    ..
-  cmake --build .
-  make .
+    "${_flags[@]}"
+
+  cmake --build build
+
 }
 
 package() {
-  cd tenacity/build
-  make DESTDIR="${pkgdir}" install
-  test -f ${pkgdir}/usr/tenacity && rm ${pkgdir}/usr/tenacity # remove unused launch script
+  DESTDIR="${pkgdir}" cmake --install build
 
-  mv "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-audacity-project.xpm" \
-     "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-tenacity-project.xpm"
+  #test -f ${pkgdir}/usr/tenacity && rm ${pkgdir}/usr/tenacity # remove unused launch script
 
-  chrpath --delete "${pkgdir}"/usr/lib/tenacity/*.so
-  chrpath --delete "${pkgdir}"/usr/lib/tenacity/modules/*.so
+  #mv "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-audacity-project.xpm" \
+  #   "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-tenacity-project.xpm"
+
+  #chrpath --delete "${pkgdir}"/usr/lib/tenacity/*.so
+  #chrpath --delete "${pkgdir}"/usr/lib/modules/*.so
 }
