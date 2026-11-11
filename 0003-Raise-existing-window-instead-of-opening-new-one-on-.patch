@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 21 Apr 2025 23:36:44 +0200
+Subject: [PATCH] Raise existing window instead of opening new one on
+ activation
+
+Multiple main windows are not supported.
+---
+ src/app/application.ts | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/app/application.ts b/src/app/application.ts
+index 27b720347fb7..69c0766d8ef8 100644
+--- a/src/app/application.ts
++++ b/src/app/application.ts
+@@ -79,18 +79,18 @@ export class WeatherApplication extends Adw.Application {
+     }
+ 
+     private onShowLocation(location?: GWeather.Location): void {
+-        const win = this.createWindow();
++        const win = this.mainWindow ?? this.createWindow();
+ 
+         const info = location
+             ? this.model?.addNewLocation(location)
+             : undefined;
+ 
+         win.showInfo(info);
+         this.showWindowWhenReady(win);
+     }
+ 
+     private onShowSearch(text: string): void {
+-        const win = this.createWindow();
++        const win = this.mainWindow ?? this.createWindow();
+ 
+         win.showSearch(text);
+         this.showWindowWhenReady(win);
+@@ -262,6 +262,11 @@ export class WeatherApplication extends Adw.Application {
+     }
+ 
+     public vfunc_activate(): void {
++        if (this.mainWindow) {
++            this.mainWindow.present();
++            return;
++        }
++
+         const win = this.createWindow();
+         win.showDefault();
+         this.showWindowWhenReady(win);

@@ -1,0 +1,224 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 21 Apr 2025 22:15:34 +0200
+Subject: [PATCH] Allow to configure automatic location setting
+
+Add back a setting and menu item to toggle the 'automatic-location'
+setting of the Shell. It was always turned on since commit
+f2eaf09e9bdd8c343a9dfc7ada0ba44a63cc7e9f
+
+Closes: https://gitlab.gnome.org/GNOME/gnome-weather/-/issues/384
+---
+ data/org.gnome.Weather.gschema.xml   |  8 +++++
+ data/window.ui                       |  6 ++++
+ src/app/application.ts               |  5 ++++
+ src/app/currentLocationController.ts | 45 +++++++++++++++++++++++++---
+ src/app/shell.ts                     |  9 ++++--
+ src/shared/world.ts                  |  8 ++++-
+ 6 files changed, 74 insertions(+), 7 deletions(-)
+
+diff --git a/data/org.gnome.Weather.gschema.xml b/data/org.gnome.Weather.gschema.xml
+index d8942607579c..eaff52f8419e 100644
+--- a/data/org.gnome.Weather.gschema.xml
++++ b/data/org.gnome.Weather.gschema.xml
+@@ -1,6 +1,14 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <schemalist gettext-domain="org.gnome.Weather">
+   <schema id="org.gnome.Weather" path="/org/gnome/Weather/">
++    <key name="automatic-location" type="b">
++      <default>true</default>
++      <summary>Automatic location</summary>
++      <description>
++        The automatic location is the value of automatic-location switch which decides whether
++        to fetch current location or not.
++      </description>
++    </key>
+     <key name="locations" type="av">
+       <default>[]</default>
+       <summary>Configured cities to show weather for</summary>
+diff --git a/data/window.ui b/data/window.ui
+index b11aa03a6b28..bb8115f1287e 100644
+--- a/data/window.ui
++++ b/data/window.ui
+@@ -2,6 +2,12 @@
+ <interface>
+   <requires lib="gtk" version="4.0" />
+   <menu id="primary-menu">
++    <section>
++      <item>
++        <attribute name="label" translatable="yes">Automatic _Location</attribute>
++        <attribute name="action">app.automatic-location</attribute>
++      </item>
++    </section>
+     <section>
+       <attribute translatable="yes" name="label">Temperature Unit</attribute>
+       <item>
+diff --git a/src/app/application.ts b/src/app/application.ts
+index 5fe52aab4d60..a9ceef4c2781 100644
+--- a/src/app/application.ts
++++ b/src/app/application.ts
+@@ -140,6 +140,11 @@ export class WeatherApplication extends Adw.Application {
+         });
+         this.add_action(showSearchAction);
+ 
++        const settings = new Gio.Settings({schema_id: 'org.gnome.Weather'});
++
++        const autoLocationAction = settings.create_action('automatic-location');
++        this.add_action(autoLocationAction);
++
+         const gwSettings = new Gio.Settings({schema_id: 'org.gnome.GWeather4'});
+         // Sync settings changes to the legacy GTK3 GWeather interface if it is
+         // available
+diff --git a/src/app/currentLocationController.ts b/src/app/currentLocationController.ts
+index 3cf14f79751d..95309f3b9127 100644
+--- a/src/app/currentLocationController.ts
++++ b/src/app/currentLocationController.ts
+@@ -21,21 +21,35 @@ import GWeather from 'gi://GWeather';
+ import Geoclue from 'gi://Geoclue';
+ import Gio from 'gi://Gio';
+ 
++import * as Util from '../misc/util.js';
+ import {WorldModel} from '../shared/world.js';
+ 
+ export class CurrentLocationController {
+     private world: WorldModel;
++    private settings: Gio.Settings;
+     private simple?: Geoclue.Simple;
++    private processStarted?: boolean;
++    private locationUpdatedId?: number;
+ 
+     private currentLocation?: GWeather.Location;
+ 
+     public constructor(world: WorldModel) {
+         this.world = world;
++        this.settings = Util.getSettings('org.gnome.Weather');
+ 
+-        this.startGeolocationService();
++        this.settings.connect('changed::automatic-location', () => {
++            this.autoLocationChanged(
++                this.settings.get_boolean('automatic-location')
++            );
++        });
++
++        this.autoLocationChanged(
++            this.settings.get_boolean('automatic-location')
++        );
+     }
+ 
+     private startGeolocationService(): void {
++        this.processStarted = true;
+         if (Geoclue.Simple.new_with_thresholds) {
+             Geoclue.Simple.new_with_thresholds(
+                 pkg.name,
+@@ -87,25 +101,48 @@ export class CurrentLocationController {
+     }
+ 
+     private findLocation(): void {
+-        this.simple?.connect('notify::location', (simple: Geoclue.Simple) => {
+-            this.onLocationUpdated(simple);
+-        });
++        this.locationUpdatedId = this.simple?.connect(
++            'notify::location',
++            (simple: Geoclue.Simple) => {
++                this.onLocationUpdated(simple);
++            }
++        );
+ 
+         this.onLocationUpdated(this.simple);
+     }
+ 
+     private onLocationUpdated(simple?: Geoclue.Simple): void {
+         this.currentLocation = undefined;
+         const geoclueLocation = simple?.get_location();
+         const world = GWeather.Location.get_world();
+ 
+         if (geoclueLocation && world) {
+             this.currentLocation = world.find_nearest_city(
+                 geoclueLocation.latitude,
+                 geoclueLocation.longitude
+             );
+         }
+ 
+         this.world.currentLocationChanged(this.currentLocation);
+     }
++
++    private autoLocationChanged(active: boolean): void {
++        if (active) {
++            if (!this.processStarted) {
++                this.startGeolocationService();
++            }
++        } else {
++            if (this.locationUpdatedId)
++                this.simple?.disconnect(this.locationUpdatedId);
++            this.locationUpdatedId = 0;
++            this.simple = undefined;
++            this.processStarted = false;
++
++            GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
++                this.world.currentLocationChanged(undefined);
++                return GLib.SOURCE_REMOVE;
++            });
++            this.currentLocation = undefined;
++        }
++    }
+ }
+diff --git a/src/app/shell.ts b/src/app/shell.ts
+index 2e588a22dc1f..b67cdf9924b8 100644
+--- a/src/app/shell.ts
++++ b/src/app/shell.ts
+@@ -37,25 +37,30 @@ export class ShellIntegration {
+ 
+         this.settings = new Gio.Settings({schema_id: 'org.gnome.Weather'});
+ 
++        this.settings.connect('changed::automatic-location', () => {
++            this.impl.emit_property_changed(
++                'AutomaticLocation',
++                new GLib.Variant('b', this.AutomaticLocation)
++            );
++        });
+         this.settings.connect('changed::locations', () => {
+             this.impl.emit_property_changed(
+                 'Locations',
+                 new GLib.Variant('av', this.Locations)
+             );
+         });
+     }
+ 
+     public export(connection: Gio.DBusConnection, path: string): void {
+         return this.impl.export(connection, path);
+     }
+ 
+     public unexport(connection: Gio.DBusConnection): void {
+         return this.impl.unexport_from_connection(connection);
+     }
+ 
+     public get AutomaticLocation(): boolean {
+-        // We follow whether the user has location services on.
+-        return true;
++        return this.settings.get_boolean('automatic-location');
+     }
+ 
+     public get Locations(): GLib.Variant[] {
+diff --git a/src/shared/world.ts b/src/shared/world.ts
+index 5129c8147a45..b818230e313a 100644
+--- a/src/shared/world.ts
++++ b/src/shared/world.ts
+@@ -119,11 +119,17 @@ export class WorldModel extends GObject.Object {
+     }
+ 
+     public currentLocationChanged(location?: GWeather.Location): void {
++        if (this.currentLocationInfo)
++            this.currentLocationInfo._isCurrentLocation = false;
++
++        this.currentLocationInfo = undefined;
++
+         if (location) {
+             this.currentLocationInfo = this.buildInfo(location);
+             this.addCurrentLocation(this.currentLocationInfo);
+-            this.invalidate();
+         }
++
++        this.invalidate();
+     }
+ 
+     public getRecent(): GWeatherInfoData | undefined {

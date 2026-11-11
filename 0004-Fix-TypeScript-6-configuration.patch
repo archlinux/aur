@@ -1,0 +1,15 @@
+diff --git a/tsconfig.json b/tsconfig.json
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -3,7 +3,10 @@
+         "experimentalDecorators": true,
+         "strict": true,
+         "target": "ES2022",
+-        "baseUrl": ".",
++        "rootDir": "src",
++        "paths": {
++            "src/*": ["./src/*"]
++        },
+         "moduleResolution": "bundler",
+         "module": "ES2022",
+         "lib": [
