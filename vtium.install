@@ -1,35 +1,40 @@
-# Messages pacman shows after vtium is installed, upgraded or removed, the
-# same for every console package. Nothing here starts, stops,
-# restarts, enables or disables a unit: a restart hangs up every session on
-# that VT, so a new build takes effect at each VT's next start, and which
-# VTs run vtium is the user's choice, made with vtium console (ADR-1500 D3,
-# D5, D7).
+# What pacman runs and shows when vtium is installed, upgraded or removed,
+# the same for every console package (ADR-1500 D3, D5, D7).
+#
+# A first install gives vtium the free VTs: it runs vtium console enable
+# --all, which gives vtium every VT that no other program holds, and passes
+# by and names each VT that a display manager, a greeter, a graphical
+# session or kmscon holds. A removal gives them back first, with vtium
+# console disable --all, while /usr/bin/vtium is still installed. An
+# upgrade changes no VT, so a user who gave the VTs back keeps them back.
+# Nothing here starts, stops or restarts a unit: a restart hangs up every
+# session on that VT, so the claim and a new build take effect at each VT's
+# next start.
+#
+# A refused claim never fails the install or the removal. vtium console
+# refuses while kmscon holds the template link autovt@.service, while
+# loginctl cannot say which sessions run, and on a host not booted with
+# systemd, such as a chroot. Each function here returns 0 whatever vtium
+# console did, and its message gives vtium console's own words and the
+# command to run once the reason is gone.
 #
 # pacman removes a console package that another one conflicts with the way
 # it removes one on request, scriptlets included, and the scriptlets cannot
-# tell the two apart. So the removal messages say what holds when another
-# vtium console package takes this one's place, and post_install says what
-# the replaced package left.
+# tell the two apart. So the removal gives the VTs back when another vtium
+# console package takes this one's place too, and that package's install
+# then claims the free VTs again.
 
-_vtium_enable() {
-  cat <<'EOF'
-==> vtium runs on no VT until you turn it on, the same as the kmscon package.
-    vtium console gives vtium a VT, or every VT, and takes them back:
-      vtium console status
-      sudo vtium console enable 3
-      sudo vtium console enable --all
-    enable --all is for a machine whose autovt@.service link does not name
-    kmscon. vtium console starts nothing: it changes which console starts on
-    a VT next time, and prints the command that starts vtium there now, which
-    ends every session on that VT. enable 3 refuses a VT that kmscon, a
-    display manager or a graphical session holds, and enable --all passes
-    such a VT by and names it. To give VTs back, which you also do before you
-    remove vtium:
-      sudo vtium console disable 3
-      sudo vtium console disable --all
-    To share VTs with kmscon, or to move from kmscon to vtium, read the README:
-      https://github.com/vtium/vtium-arch#sharing-vts-with-kmscon
-EOF
+# The README, whose sections the messages point to.
+_vtium_readme=https://github.com/vtium/vtium-arch
+
+# _vtium_console VERB: runs vtium console VERB --all and prints what it
+# said, standard error included, indented and wrapped to fit 78 columns.
+# Its status is vtium console's, and only the callers read it.
+_vtium_console() {
+  local out status=0
+  out=$(vtium console "$1" --all 2>&1) || status=$?
+  [ -z "$out" ] || printf '%s\n' "$out" | fold -s -w 72 | sed -e 's/ *$//' -e 's/^/      /'
+  return "$status"
 }
 
 # The VTs whose vtium@ runs now, one name a line, or nothing.
@@ -60,32 +65,61 @@ _vtium_links() {
   return 0
 }
 
-# A first install says that vtium runs on no VT. When this package takes the
-# place of another vtium console package, the links that gave vtium its VTs
-# are still there and name vtium@.service, which this package installs
-# again, so those VTs stay vtium's, and a vtium that still runs keeps the
-# build it started with until it restarts.
+# The claim of the free VTs, and what it did or why it did nothing.
+_vtium_claim() {
+  local said status=0
+  said=$(_vtium_console enable) || status=$?
+  if [ "$status" = 0 ]; then
+    printf '%s\n' "==> vtium now runs on every free VT. vtium console enable --all said:"
+    [ -z "$said" ] || printf '%s\n' "$said"
+    cat <<'EOF'
+    Nothing was started now. Each VT starts vtium from its next start: VT 1
+    at the next boot when no display manager is enabled, and the other VTs
+    the first time you switch to them. vtium console status lists what each
+    VT runs. To take every VT back, or to give vtium one VT, VT 3 here, once
+    the others are back:
+      sudo vtium console disable --all
+      sudo vtium console enable 3
+EOF
+  else
+    printf '%s\n' "==> vtium claimed no VT: vtium console enable --all stopped, and said:"
+    [ -z "$said" ] || printf '%s\n' "$said"
+    cat <<'EOF'
+    The package is installed all the same. Once the reason is gone, run this
+    to give vtium every free VT:
+      sudo vtium console enable --all
+EOF
+  fi
+  cat <<EOF
+    To share VTs with kmscon, or to move from kmscon to vtium, read:
+      $_vtium_readme#sharing-vts-with-kmscon
+EOF
+}
+
+# A first install claims the free VTs. When vtium already holds VTs through
+# links that an earlier install left, or that were made by hand, those VTs
+# stay vtium's and the install claims no more, so a choice made earlier
+# stands. A vtium that still runs keeps the build it started with until it
+# restarts.
 post_install() {
   local links running
   links=$(_vtium_links)
   running=$(_vtium_running)
-  if [ -z "$links" ] && [ -z "$running" ]; then
-    _vtium_enable
-    return 0
-  fi
   if [ -n "$links" ]; then
     cat <<'EOF'
-==> vtium already holds VTs on this machine, through these links, which the
-    console package this one replaced, or an earlier install, left. They
-    name vtium@.service, which this package installs, so those VTs stay
-    vtium's and you do not need to change anything:
+==> vtium already holds VTs on this machine, through these links, which an
+    earlier install of vtium left. They name vtium@.service, which this
+    package installs, so those VTs stay vtium's, and this install gives
+    vtium no other VT. You do not need to change anything:
 EOF
     # shellcheck disable=SC2086 # one path a word
     printf '      %s\n' $links
     cat <<'EOF'
-    vtium console status lists them, and sudo vtium console disable --all
-    gives them back.
+    vtium console status lists them. sudo vtium console disable --all gives
+    them back, and sudo vtium console enable --all gives vtium every free VT.
 EOF
+  else
+    _vtium_claim
   fi
   if [ -n "$running" ]; then
     cat <<'EOF'
@@ -96,16 +130,8 @@ EOF
       sudo systemctl restart vtium@tty3.service
 EOF
     _vtium_still_running
-    if [ -z "$links" ]; then
-      cat <<'EOF'
-    No link gives vtium these VTs at their next start, so each goes back to
-    what it had before once its vtium stops. vtium console makes vtium start
-    there again, and vtium console status lists what each VT starts:
-      vtium console status
-      sudo vtium console enable 3
-EOF
-    fi
   fi
+  return 0
 }
 
 post_upgrade() {
@@ -117,10 +143,25 @@ post_upgrade() {
       sudo systemctl restart vtium@tty3.service
 EOF
   _vtium_still_running
+  return 0
 }
 
+# The removal gives the VTs back before the package's files go, and names
+# each vtium that still runs.
 pre_remove() {
-  local running
+  local said status=0 running
+  said=$(_vtium_console disable) || status=$?
+  if [ "$status" = 0 ]; then
+    printf '%s\n' "==> vtium gave the VTs back. vtium console disable --all said:"
+    [ -z "$said" ] || printf '%s\n' "$said"
+  else
+    printf '%s\n' "==> vtium gave no VT back: vtium console disable --all stopped, and said:"
+    [ -z "$said" ] || printf '%s\n' "$said"
+    printf '%s\n' "    The package is removed all the same. pacman lists the links to vtium"
+    printf '%s\n' "    that are left when the removal ends."
+  fi
+  printf '%s\n' "    If pacman removes this package to install another vtium console"
+  printf '%s\n' "    package, that package gives vtium the free VTs again when it installs."
   running=$(_vtium_running)
   [ -n "$running" ] || return 0
   printf '%s\n' "==> vtium is being removed while these run; each keeps running from memory"
@@ -136,17 +177,18 @@ pre_remove() {
     printf '%s\n' "    installs vtium@.service again, the links stay valid, and you do not need"
     printf '%s\n' "    to do anything."
   fi
+  return 0
 }
 
 post_remove() {
-  # The links that vtium console made, or that were made by hand, outlive the
-  # package and now point at nothing, until another vtium console package
-  # installs vtium@.service again; this names each one and changes nothing.
-  # vtium console disable --all, run before the removal, gives each back as
-  # it was. A getty comes back through add-wants, which makes only its
-  # getty.target want: systemctl enable getty@ttyN.service would also link
-  # autovt@ttyN.service to the getty, and vtium console enable N refuses a VT
-  # whose own link names another console.
+  # The links that vtium console disable --all could not give back, or that
+  # were made by hand, outlive the package and now point at nothing, until
+  # another vtium console package installs vtium@.service again; this names
+  # each one and changes nothing. A getty comes back through add-wants,
+  # which makes only its getty.target want: systemctl enable
+  # getty@ttyN.service would also link autovt@ttyN.service to the getty, and
+  # vtium console enable N refuses a VT whose own link names another
+  # console.
   local l vt left='' getty='' records=/var/lib/vtium/console
   while IFS= read -r l; do
     [ -n "$l" ] || continue
@@ -183,6 +225,5 @@ post_remove() {
     printf '%s\n' "    Or put back exactly what vtium console recorded in $records:"
     printf '%s\n' "    install vtium again, run sudo vtium console disable --all, then remove it."
   fi
-  printf '%s\n' "    Next time, run sudo vtium console disable --all before you remove vtium's"
-  printf '%s\n' "    console package."
+  return 0
 }
