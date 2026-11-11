@@ -1,6 +1,6 @@
 # Maintainer: Christopher Patrick Fair <christopherpatrickfair@gmail.com>
 pkgname=wscreensavers
-pkgver=1.1.23
+pkgver=1.1.24
 pkgrel=1
 pkgdesc="Native Wayland version of XScreenSaver with 25 built-in WebGL/Canvas ports, XScreenSaver XML bridge, PAM lock screen, and live desktop wallpaper mode"
 arch=('x86_64' 'aarch64')
@@ -8,6 +8,7 @@ url="https://github.com/chrisfair/wscreensavers"
 license=('GPL-3.0-or-later')
 depends=('gtk3' 'webkit2gtk-4.1' 'gtk-layer-shell' 'pam' 'xscreensaver' 'xorg-server-xvfb' 'ffmpeg')
 optdepends=(
+  'celestia: Real-time 3D astronomy engine for Celestia 1.6 Solar System Grand Tour'
   'rss-glx: Really Slick Screensavers 3D OpenGL collection'
   'wlr-randr: Multi-monitor output detection on wlroots compositors'
   'hyprlock: Optional external Wayland lock provider'
@@ -17,7 +18,7 @@ makedepends=('go' 'nodejs' 'npm' 'pkgconf')
 provides=('wscreensavers')
 conflicts=('wscreensavers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chrisfair/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6b0a1a78e7573e4ee2bc51f645c29e652969d48ac3d03b91b55d8f7c50bc6371')
+sha256sums=('37faf6295bf2802e1a86dcfce6f323c2532f5ebc18d83f8cddac23dffb00f46c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
