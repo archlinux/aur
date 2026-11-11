@@ -1,0 +1,15 @@
+# makepkg build directories and logs
+/src/
+/pkg/
+/*.log
+
+# Built packages, source archives and signatures
+/*.pkg.tar*
+/*.src.tar*
+
+# Downloads and fetch-script temporary files
+/downloads/
+/*.AppImage
+/release.json
+/argon-version
+/.argon-fetch.*/
