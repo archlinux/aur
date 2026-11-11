@@ -1,7 +1,7 @@
 pkgbase = qt6-base-phoenix
 	pkgdesc = A fork of Qt Base with support for per-monitor fractional scaling on X11
 	pkgver = 6.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dec05eba/qtbase
 	arch = x86_64
 	groups = qt6
@@ -87,7 +87,7 @@ pkgbase = qt6-base-phoenix
 	sha256sums = d97ef157dc50bdf0425337e9adede8135ab508a4ab2f1abae7e9cfc42c5f86db
 	sha256sums = 5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
-	sha256sums = 2fd6387e2244021928eec8e1932770eac2693120fecafa7ae2c1e47cc3c762f2
+	sha256sums = 6171ceb0131c6303c172307938c029ce408b05c573879a0d7eec32e8df17b7a4
 
 pkgname = qt6-base-phoenix
 	depends = brotli

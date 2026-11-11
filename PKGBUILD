@@ -8,7 +8,7 @@ pkgname=(qt6-base-phoenix
          qt6-xcb-private-headers-phoenix)
 _pkgver=6.12.0
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://github.com/dec05eba/qtbase'
 license=(GPL-3.0-only
@@ -96,7 +96,7 @@ source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver
 sha256sums=('d97ef157dc50bdf0425337e9adede8135ab508a4ab2f1abae7e9cfc42c5f86db'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
-            '2fd6387e2244021928eec8e1932770eac2693120fecafa7ae2c1e47cc3c762f2')
+            '6171ceb0131c6303c172307938c029ce408b05c573879a0d7eec32e8df17b7a4')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
