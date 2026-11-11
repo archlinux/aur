@@ -1,8 +1,8 @@
 # Maintainer: Borys Kharchenko (https://github.com/arximus88)
 # Builds from the main branch of the upstream repository.
 pkgname=slicenv-git
-pkgver=0.1.1.r80.g7bf7230
-pkgrel=2
+pkgver=0.1.2.r86.g1845289
+pkgrel=1
 pkgdesc='Fast native 3D printing slicer front-end for OrcaSlicer and Bambu Studio engines (git)'
 arch=('x86_64')
 url='https://github.com/arximus88/slicenv'
