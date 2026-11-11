@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=okc
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Command-line client for the Muse Spark Open Kernel Challenge"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,9 @@ optdepends=('git: "okc serve init" fetches the pinned SGLang with git')
 # Already stripped upstream; !strip keeps the installed file byte-identical to upstream's SHA256SUMS.
 options=('!strip' '!debug')
 source_x86_64=("okc_${pkgver}_x86_64.gz::https://openkernelchallenge.dev/okc/${pkgver}/okc-linux-amd64.gz")
-sha256sums_x86_64=('151719b64903bc996abc37b9f09a05c658f2e4665d0dc15a25ff6cc78f124a49')
+sha256sums_x86_64=('caba3f3baf982006c5a70719df3844db7dd9471b8a4ca5f0f446d39ce6599635')
+sha256sums_aarch64=('b32b709ec0bee445ce457a2145cf3c472118c7e2f2efd0af8e5411c2298b6945')
 source_aarch64=("okc_${pkgver}_aarch64.gz::https://openkernelchallenge.dev/okc/${pkgver}/okc-linux-arm64.gz")
-sha256sums_aarch64=('cf51ce9defe357712ed050e4d35b883e3e2f3ec1ea6df5b4852d9b0493fd9653')
 
 latestver() {
   curl -fsSL https://openkernelchallenge.dev/okc/latest
