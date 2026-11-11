@@ -1,0 +1,27 @@
+pkgbase = python-ezgb-git
+	pkgdesc = A standalone Python library for working with git-bug repositories. (git version)
+	pkgver = 0.2.1.r0.g55634c6
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/utils/ezgb/ezgb.git
+	arch = any
+	license = GPL-2.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-typing_extensions
+	checkdepends = git-bug
+	checkdepends = python-pygit2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	source = python-ezgb-git::git+https://git.kernel.org/pub/scm/utils/ezgb/ezgb.git#branch=master
+	sha256sums = SKIP
+
+pkgname = python-ezgb-git
+	pkgdesc = A standalone Python library for working with git-bug repositories. (git version)
+	depends = python
+	depends = python-pygit2
+	optdepends = git-bug: for write operations and the cached bug listing
+	provides = python-ezgb=0.2.1.r0.g55634c6-1
+	conflicts = python-ezgb
+	conflicts = python-ezgb-debug
