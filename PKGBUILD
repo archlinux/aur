@@ -25,15 +25,15 @@
 : ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
 ## update
-_icver="153.6.0-2"
-_commit="06bc11d237bb1dd0d556cbb5b83b77c99fbf9b4d"
-_ffsum="91cb675ddfc678255f57ecd7aad498501961577686d19c1947a82b14edea7f25"
+_icver="153.7.0-1"
+_commit="6e1dcc3e2b75cb650324ff3d4754361b5c00cd88"
+_ffsum="7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0"
 
 ## package
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="${_icver%%-*}"
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
