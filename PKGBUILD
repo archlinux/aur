@@ -6,7 +6,7 @@
 
 pkgname=agent-sessions-bin
 _pkgname=agent-sessions
-pkgver=1.3.9
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Desktop GUI to browse and manage agentic coding sessions (Claude Code, Codex CLI, OpenCode)'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source=('LICENSE')
 source_x86_64=("$_pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("$_pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_arm64.deb")
 sha256sums=('ffcca38841adb694b6f380647e15f17c446a4d1656fed51a1e2041d064c94cc8')
-sha256sums_x86_64=('b40cb626c386d49ba7dcf43babb9153f7bef3002bc031a2015be3b452847cd36')
-sha256sums_aarch64=('94dfecca1ebc799127e4c397d98f7669c8ee885ac3ab62125cd118b15d495cc0')
+sha256sums_x86_64=('8c2bedb9e0688be914f5fc8d92c3e3a99aefb6dbf5ac5f8971ed300e55d59710')
+sha256sums_aarch64=('5c48671f2caea3c7d6ced8d3ee26d1c7dd15e0adf9a98270e22b981e19880ef8')
 
 package() {
   # makepkg unpacks the .deb into debian-binary, control.tar.* and data.tar.*.
