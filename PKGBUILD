@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <sihaogang at gmail dot com>
 pkgname=xfce4-smartbookmark-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=0.6.0.r123.g700eb23
+pkgver=0.6.0.r124.g9056cf4
 pkgrel=1
 pkgdesc='Plugin for the Xfce4 panel that lets you quicksearch from selected websites'
 arch=('i686' 'x86_64')
