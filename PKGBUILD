@@ -16,7 +16,7 @@ pkgrel=1
 pkgdesc='Crypto library written in C++ (legacy version)'
 arch=(x86_64)
 url='https://botan.randombit.net/'
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(
   glibc
 )
