@@ -2,7 +2,7 @@
 
 pkgname=andbible-dev-bin
 _pkgname=andbible
-pkgver=6.0.1261
+pkgver=6.0.1263
 pkgrel=1
 # Upstream tags releases as <channel>-<build>, e.g. beta-1257.
 _channel=beta
@@ -27,7 +27,7 @@ conflicts=("$_pkgname")
 # Prebuilt jpackage image with its own Java runtime and Chromium (CEF).
 options=('!strip' '!debug')
 source=("https://github.com/AndBible/and-bible/releases/download/${_channel}-${_build}/${_pkgname}-desktop-${_channel}-${_build}-amd64.deb")
-sha256sums=('460bc6c20d809130efd969df18ad9917391c72f63be8241be69f0033809b9e07')
+sha256sums=('42abdd20fc6e50fa0d942605526cb8e7ac21e6a2ed02e28403ff9474ce24558c')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"

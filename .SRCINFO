@@ -1,6 +1,6 @@
 pkgbase = andbible-dev-bin
 	pkgdesc = Offline Bible study app (beta channel)
-	pkgver = 6.0.1261
+	pkgver = 6.0.1263
 	pkgrel = 1
 	url = https://andbible.org
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = andbible-dev-bin
 	conflicts = andbible
 	options = !strip
 	options = !debug
-	source = https://github.com/AndBible/and-bible/releases/download/beta-1261/andbible-desktop-beta-1261-amd64.deb
-	sha256sums = 460bc6c20d809130efd969df18ad9917391c72f63be8241be69f0033809b9e07
+	source = https://github.com/AndBible/and-bible/releases/download/beta-1263/andbible-desktop-beta-1263-amd64.deb
+	sha256sums = 42abdd20fc6e50fa0d942605526cb8e7ac21e6a2ed02e28403ff9474ce24558c
 
 pkgname = andbible-dev-bin
