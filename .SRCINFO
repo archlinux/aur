@@ -1,6 +1,6 @@
 pkgbase = dux-qt-base-bin
 	pkgdesc = Quickshell QML runtime as a shared library with a C entry point (prebuilt)
-	pkgver = 0.3.9
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/duxlabs-dev/dux-qt-base
 	arch = x86_64
@@ -18,23 +18,23 @@ pkgbase = dux-qt-base-bin
 	depends = polkit
 	depends = wayland
 	optdepends = qt6-svg: svg images and icons
-	provides = dux-qt-base=0.3.9
+	provides = dux-qt-base=0.4.0
 	provides = libdux-qt-base.so
 	conflicts = dux-qt-base
 	conflicts = dux-qt-base-git
-	source = LICENSE-0.3.9::https://raw.githubusercontent.com/duxlabs-dev/dux-qt-base/v0.3.9/LICENSE
-	source = LICENSE-GPL-0.3.9::https://raw.githubusercontent.com/duxlabs-dev/dux-qt-base/v0.3.9/LICENSE-GPL
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/duxlabs-dev/dux-qt-base/v0.4.0/LICENSE
+	source = LICENSE-GPL-0.4.0::https://raw.githubusercontent.com/duxlabs-dev/dux-qt-base/v0.4.0/LICENSE-GPL
 	sha256sums = e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118
 	sha256sums = 1b3782ccad7b8614100cda30d3faf42fc39f2e97932908c543005053b654ca68
-	source_x86_64 = dux-qt-base-0.3.9-qt6.12.0-x86_64.tar.zst::https://github.com/duxlabs-dev/dux-qt-base/releases/download/v0.3.9/dux-qt-base-0.3.9-qt6.12.0-x86_64.tar.zst
+	source_x86_64 = dux-qt-base-0.4.0-qt6.12.0-x86_64.tar.zst::https://github.com/duxlabs-dev/dux-qt-base/releases/download/v0.4.0/dux-qt-base-0.4.0-qt6.12.0-x86_64.tar.zst
 	depends_x86_64 = qt6-base=6.12.0
 	depends_x86_64 = qt6-declarative=6.12.0
 	depends_x86_64 = qt6-wayland=6.12.0
-	sha256sums_x86_64 = 3f59e5d7bc7be055f28c69f43bf5cdd994d5de1b73e7d73841747370b41c0953
-	source_aarch64 = dux-qt-base-0.3.9-qt6.12.0-aarch64.tar.zst::https://github.com/duxlabs-dev/dux-qt-base/releases/download/v0.3.9/dux-qt-base-0.3.9-qt6.12.0-aarch64.tar.zst
+	sha256sums_x86_64 = 1eb1e2d7bf86d7998663a9a42198bcaa354056ab86aea2949b121764bc79a4aa
+	source_aarch64 = dux-qt-base-0.4.0-qt6.12.0-aarch64.tar.zst::https://github.com/duxlabs-dev/dux-qt-base/releases/download/v0.4.0/dux-qt-base-0.4.0-qt6.12.0-aarch64.tar.zst
 	depends_aarch64 = qt6-base=6.12.0
 	depends_aarch64 = qt6-declarative=6.12.0
 	depends_aarch64 = qt6-wayland=6.12.0
-	sha256sums_aarch64 = d714a8c894821901b08ddf820cccfa127c605de65ea1e520eda10c2c9a1fcc4d
+	sha256sums_aarch64 = ee8b567a8b1c79feea07740ff2dec04c353f105bd2871f969cce121c8906b94c
 
 pkgname = dux-qt-base-bin
