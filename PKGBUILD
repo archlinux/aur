@@ -1,7 +1,7 @@
 # Maintainer: Clément Hamada <clementhamada@protonmail.com>
 pkgname=menu-qalc-wayland-git
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A calculator for Wofi/fuzzel/dmenu(2) using libqalculate"
 arch=('any')
 url="https://github.com/ClemaX/menu-qalc-wayland"
