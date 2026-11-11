@@ -1,8 +1,8 @@
 # Maintainer: Marco Scardovi <scardracs at disroot dot org>
 
 pkgname=orbis-reframe
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Native Linux editor for Insta360 360° footage: stitch, stabilize and reframe'
 arch=('x86_64')
 url='https://github.com/Schabo/orbis-reframe'
@@ -41,8 +41,8 @@ source=(
   'system-ncnn.patch'
 )
 sha256sums=(
-  'aa61a8c2f903b0bf3c6071feee9f94e9c38f46019849e586fa120779d6ff0106'
-  'e089ecbbbf3edb65c8e0368c7139c1df77a226cb750745efd99a537b5223bf68'
+  '48215163f457f9a18d88539774da7e0f6c383750fc9570e6fd0ea84ff4b07c22'
+  '09495c9dcbf81236bf4156a2762fbcc63fda3560128ce5609f705681aae8a2c5'
 )
 # Wayland + Vulkan GPU required at runtime (NVIDIA tested upstream; AMD/Intel best-effort).
 
