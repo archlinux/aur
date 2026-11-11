@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Modern terminal secrets manager compatible with KeePass vaults"
 
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,12 +32,12 @@ source=("CLI-${pkgver}.md::${_ghurlraw}/CLI.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('881c5ae9a44cab171645240ee463c5ad69c6ef970aa2d58894649a90ff6fe397'
-            '8eeb8651d155553a9abf1be97fec23963b4da75c87d6aa00b5a7ec75a49892fd'
-            '83a526e78443c2a6037e674738181d7f8a1e9f62ac17386c20b76e9df4f9176e'
+sha256sums=('2891097225592209e98119937406eab6b0f6b290ebe6a99aed741c0dd166b3ba'
+            '9f1bf0d6eb64653651346cf9fb4605f3f7f9265ff8abc22dd3d3bd427e9a238a'
+            'cf9acdc9fe8968d3a8a39fe77be2724b7678d854d221a6f1eb12754ca40c2690'
             '54cf7b716c85a4a5911a09de2fe15689f6b40d1c27ca0bb6153c800f54e71570')
-sha256sums_x86_64=('55bce0bdf99b62965f4b7648dd3ed728936c66d7c9ef560f26b2f0f2c0334272')
-sha256sums_aarch64=('a569cafd08728cbf4f0869036d483290953cd090f7e9a1691a210ca1ed7e24b7')
+sha256sums_x86_64=('332fe59ac7955fd1590a3918efd411bcabe650ddd419d2fa83467a96582b3e99')
+sha256sums_aarch64=('702857b66212a666e90ddeba84d54f907edb0009a247bfcf3fe8e754c8fd4d6f')
 
 
 package() {
