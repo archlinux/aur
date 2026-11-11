@@ -11,6 +11,7 @@ pkgbase = vtium-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = libxkbcommon
+	makedepends = seatd
 	makedepends = systemd-libs
 	options = !debug
 	source = vtium::git+https://github.com/vtium/vtium.git#branch=main
@@ -26,6 +27,7 @@ pkgname = vtium-git
 	depends = libglvnd
 	depends = libxkbcommon
 	depends = mesa
+	depends = seatd
 	depends = systemd-libs
 	depends = vtium-terminfo-git
 	optdepends = vtium-fonts: the fonts the shipped frits name
@@ -33,6 +35,7 @@ pkgname = vtium-git
 	optdepends = kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon
 	provides = vtium=0.1.0alpha.5.r0.g2f54fa7
 	conflicts = vtium
+	backup = etc/pam.d/vtium
 	backup = etc/vtium/fonts/desktop.vtfrit
 	backup = etc/vtium/fonts/minspec-16.vtfrit
 	backup = etc/vtium/fonts/minspec-8.vtfrit

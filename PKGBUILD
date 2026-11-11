@@ -5,8 +5,9 @@
 # vtium-terminfo-git package, which a recipe of its own builds (ADR-1500 D8).
 # VTIUM_GIT_URL and VTIUM_GIT_BRANCH point the build at another repository
 # and branch, such as a local checkout. The console is built for an
-# ordinary desktop or laptop, with the features images logind gpu bidi and
-# hwaccel on (ADR-1500 D8), and VTIUM_FEATURES names other features (below):
+# ordinary desktop or laptop, with the features images logind gpu bidi
+# libseat and hwaccel on (ADR-1500 D8), and VTIUM_FEATURES names other
+# features (below):
 #
 #   VTIUM_GIT_URL=file:///path/to/vtium VTIUM_GIT_BRANCH=my-branch makepkg -f
 #
@@ -25,7 +26,7 @@ url='https://github.com/vtium/vtium'
 # tables made from Unicode's data (Unicode-3.0) and X.Org's color names
 # (MIT-open-group and MIT), which COPYING lists.
 license=('MIT' 'OFL-1.1' 'Unicode-3.0' 'MIT-open-group')
-makedepends=('cargo' 'git' 'libxkbcommon' 'systemd-libs')
+makedepends=('cargo' 'git' 'libxkbcommon' 'seatd' 'systemd-libs')
 options=('!debug')
 source=("vtium::git+${VTIUM_GIT_URL:-https://github.com/vtium/vtium.git}#branch=${VTIUM_GIT_BRANCH:-main}"
         'terminus.vtfrit')
@@ -46,8 +47,10 @@ pkgver() {
 }
 
 package_vtium-git() {
-  depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'systemd-libs'
-           'vtium-terminfo-git')
+  # seatd holds libseat.so, which the console links with libseat; installing
+  # it enables no seatd daemon.
+  depends=('bash' 'glibc' 'libgcc' 'libglvnd' 'libxkbcommon' 'mesa' 'seatd'
+           'systemd-libs' 'vtium-terminfo-git')
   optdepends=('vtium-fonts: the fonts the shipped frits name'
               'kbd: console fonts, which vtium draws when no frit is set'
               'kmscon-terminfo: the terminfo entry kmscon, for sessions run with term=kmscon')
@@ -57,9 +60,10 @@ package_vtium-git() {
   # console package at a time.
   provides=("vtium=$pkgver")
   conflicts=('vtium')
-  # The frits _make names in FRITS, and the Terminus frit, which keep a
-  # user's edits across an upgrade (ADR-1500 D8).
-  backup=('etc/vtium/fonts/desktop.vtfrit'
+  # The frits _make names in FRITS, the Terminus frit and seat mode's PAM
+  # file, which keep a user's edits across an upgrade (ADR-1500 D8).
+  backup=('etc/pam.d/vtium'
+          'etc/vtium/fonts/desktop.vtfrit'
           'etc/vtium/fonts/minspec-16.vtfrit'
           'etc/vtium/fonts/minspec-8.vtfrit'
           'etc/vtium/fonts/terminus.vtfrit')
@@ -73,8 +77,9 @@ package_vtium-git() {
 
 # The console's features while VTIUM_FEATURES is unset, and the default of
 # hwaccel: the build for an ordinary desktop or laptop, with right-to-left
-# text and the GPU path on by default (ADR-1500 D8).
-_features='images logind gpu bidi'
+# text, seat mode through libseat and logind, and the GPU path on by
+# default (ADR-1500 D8).
+_features='images logind gpu bidi libseat'
 _hwaccel=on
 
 # Everything below is the same in vtium-git/PKGBUILD and vtium/PKGBUILD;
@@ -127,7 +132,9 @@ build() {
 # /etc/vtium/fonts, the example udev rules and hwdb fragment, and LICENSE.
 # With images, also the image helper /usr/bin/vtium-image, the sysusers file
 # that creates its account, and the picture gallery tool
-# /usr/bin/vtium-gallery, a bash script.
+# /usr/bin/vtium-gallery, a bash script. With libseat and logind, also seat
+# mode's unit vtium-seat@.service and the PAM file /etc/pam.d/vtium, which
+# opens vtium's own session in seat mode (ADR-1400 D3).
 # The recipe installs COPYING and the two license texts it points to beside
 # LICENSE itself, so that a package built from a tag whose make install
 # stages LICENSE alone still carries them. COPYING holds the notices for the
