@@ -1,6 +1,6 @@
 pkgbase = linuxvr-viewshot
 	pkgdesc = Take photos in VR with a hand-frame gesture on Linux (WiVRn / Monado) - OpenXR API layer + desktop app
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/LinuxVR-ViewShot
 	install = linuxvr-viewshot.install
@@ -25,8 +25,9 @@ pkgbase = linuxvr-viewshot
 	optdepends = spectacle: desktop screenshot with a key (KDE Plasma)
 	optdepends = glib2: move deleted photos to the trash via gio (fallback)
 	optdepends = wl-clipboard: copy from the VR panel when only the background service runs
+	optdepends = ffmpeg: Converter – turn videos into GIFs
 	options = !lto
-	source = linuxvr-viewshot-1.0.8.tar.gz::https://github.com/yakuda-stack/LinuxVR-ViewShot/archive/refs/tags/v1.0.8.tar.gz
-	sha256sums = 16668167638fdb5ee4166c50885b246ac5c226143f72b8e2fe819c0b32a1adc7
+	source = linuxvr-viewshot-1.0.9.tar.gz::https://github.com/yakuda-stack/LinuxVR-ViewShot/archive/refs/tags/v1.0.9.tar.gz
+	sha256sums = 596aeb908b878022268f393008045a7b10d5aaa266d1e485e60eea874883aab5
 
 pkgname = linuxvr-viewshot
