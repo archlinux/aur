@@ -1,7 +1,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 # Builds the latest main. pkgver is recomputed by makepkg from git describe.
 pkgname=opensynapse-git
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Remap buttons, set DPI and lighting on Razer mice from Linux (latest main)"
 arch=('x86_64' 'aarch64')
@@ -50,6 +50,7 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/opensynapse/README.md"
   install -Dm644 PROTOCOL.md "$pkgdir/usr/share/doc/opensynapse/PROTOCOL.md"
   install -Dm644 -t "$pkgdir/usr/share/doc/opensynapse/protocols" devices/protocols/*.md
+  install -Dm644 -t "$pkgdir/usr/share/opensynapse/devices" devices/*.jsonc
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 contrib/completions/opensynapse.bash "$pkgdir/usr/share/bash-completion/completions/opensynapse"
   install -Dm644 contrib/completions/_opensynapse "$pkgdir/usr/share/zsh/site-functions/_opensynapse"
