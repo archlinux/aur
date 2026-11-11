@@ -6,15 +6,16 @@ pkgdesc="mpv/Emby and Audiobookshelf front-end"
 arch=('x86_64')
 url="https://github.com/slatkin/mbv"
 license=('MIT')
-depends=('mpv' 'openssl' 'pipewire' 'wayland' 'libxkbcommon' 'fontconfig')
+depends=('mpv' 'openssl' 'pipewire' 'wayland' 'libxkbcommon' 'fontconfig' 'webkit2gtk-4.1')
 optdepends=('pinwin>=0.4.1: pinned panel support')
 source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('ae55542363b9848b389d99479a754fcce50455624df77677c64d4ddd9cd312c4')
+sha256sums=('9c843ecd30b92f9d6a4f80479fd099ccc64160aa75db381481ca5b77aedb9b49')
 
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 "mbvd" "${pkgdir}/usr/bin/mbvd"
+    install -Dm755 "mbv-gui" "${pkgdir}/usr/bin/mbv-gui"
     install -Dm644 "mbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "mbv.lua" "${pkgdir}/usr/share/${pkgname}/scripts/mbv.lua"

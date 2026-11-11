@@ -11,8 +11,9 @@ pkgbase = mbv
 	depends = wayland
 	depends = libxkbcommon
 	depends = fontconfig
+	depends = webkit2gtk-4.1
 	optdepends = pinwin>=0.4.1: pinned panel support
 	source = mbv-0.26.8-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.26.8/mbv-0.26.8-linux-x86_64.tar.gz
-	sha256sums = ae55542363b9848b389d99479a754fcce50455624df77677c64d4ddd9cd312c4
+	sha256sums = 9c843ecd30b92f9d6a4f80479fd099ccc64160aa75db381481ca5b77aedb9b49
 
 pkgname = mbv
