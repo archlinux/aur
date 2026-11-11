@@ -1,11 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=anicraft
-_pkgname=AniCraft
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
-_url="https://github.com/storytold/$_pkgname"
+_url="https://github.com/storytold/$pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Adobe Animate'
 arch=(x86_64)
 license=(MIT Apache-2.0)
@@ -14,9 +13,9 @@ depends=(alsa-lib
          hicolor-icon-theme
          libgcc)
 makedepends=(cargo)
-_archive="$_pkgname-$pkgver"
+_archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('6759ed314e487c6e7c637ec17812f34a0425202262651703524e152efd881030')
+sha256sums=('e9ecd6c0705746e95a651e711c3799c950a843be247a5e20f33c6a691406809c')
 
 _srcenv() {
 	cd "$_archive"
@@ -48,12 +47,12 @@ package() {
 	          libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"{,-cli}
-	# install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$pkgname.desktop"
-	# install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$pkgname.mime.xml"
-	# install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$pkgname.svg
-	# for s in ${_icons[@]}; do
-	# 	local dim="${s}x${s}"
-	# 	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/app-icon/hicolor/$dim/apps/ai.storyteller.$pkgname.png
-	# done
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "packaging/linux/ai.storyteller.$pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "packaging/linux/ai.storyteller.$pkgname.mime.xml"
+	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/" assets/app-icon/hicolor/scalable/apps/ai.storyteller.$pkgname.svg
+	for s in ${_icons[@]}; do
+		local dim="${s}x${s}"
+		install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/$dim/apps/" assets/app-icon/hicolor/$dim/apps/ai.storyteller.$pkgname.png
+	done
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
 }
