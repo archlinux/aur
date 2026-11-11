@@ -1,0 +1,36 @@
+pkgbase = localflow-bin
+	pkgdesc = Private, native dictation with local speech recognition and text cleanup (prebuilt)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/radiumcoders/localflow
+	arch = x86_64
+	license = LicenseRef-Localflow
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = alsa-lib
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = libglvnd
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	optdepends = pipewire-alsa: recording through PipeWire
+	optdepends = wl-clipboard: clipboard access on Wayland
+	optdepends = wtype: paste keystrokes on Wayland
+	optdepends = xclip: clipboard access on X11
+	optdepends = xdotool: paste keystrokes on X11
+	optdepends = vulkan-driver: GPU acceleration for transcription and cleanup
+	provides = localflow=0.5.0
+	conflicts = localflow
+	noextract = localflow-0.5.0-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source = localflow-0.5.0-x86_64.AppImage::https://github.com/radiumcoders/localflow/releases/download/v0.5.0/localflow-0.5.0-x86_64.AppImage
+	source = localflow-0.5.0-README.md::https://raw.githubusercontent.com/radiumcoders/localflow/v0.5.0/README.md
+	sha256sums = 4bcfa658ccc9938af6f4cb9268be5836d5d42f715354ca7841f579a1fafb74aa
+	sha256sums = c1a0c41a62ad63e005cc19c6a5830c016dab72493fc57090cc15328b5b764ffa
+
+pkgname = localflow-bin
