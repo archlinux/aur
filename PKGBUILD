@@ -6,6 +6,7 @@ pkgrel=2
 epoch=1
 pkgdesc="Simple command line utility to make DNS lookups to the specified server"
 arch=('x86_64')
+options=('!debug')
 url="https://github.com/ameshkov/dnslookup"
 license=('MIT')
 depends=('glibc')

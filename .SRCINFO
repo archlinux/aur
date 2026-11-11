@@ -11,6 +11,7 @@ pkgbase = dnslookup-git
 	depends = glibc
 	provides = dnslookup
 	conflicts = dnslookup
+	options = !debug
 	source = dnslookup-git::git+https://github.com/ameshkov/dnslookup
 	sha256sums = SKIP
 
