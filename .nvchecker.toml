@@ -1,0 +1,5 @@
+[mailcraft-bin]
+source = "github"
+github = "UCS-Care-Group/mailcraft"
+use_latest_release = true
+prefix = "v"
