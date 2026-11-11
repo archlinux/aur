@@ -1,0 +1,16 @@
+pkgbase = uutils-glob-git
+	pkgdesc = uutils cp, ln, mv and rm that expand their own file name patterns
+	pkgver = 0.1.0.4.g7436af3
+	pkgrel = 1
+	url = https://github.com/quininer/uutils-glob
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	depends = cargo
+	provides = uutils-glob
+	conflicts = uutils-glob
+	source = uutils-glob-git::git+https://github.com/quininer/uutils-glob
+	sha256sums = SKIP
+
+pkgname = uutils-glob-git
