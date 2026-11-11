@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mex
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Terminal UI to browse and debug mDNS/DNS-SD on the local link — live services, records, queries, and raw packets"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo' 'cargo-auditable' 'git' 'rust')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5931e261e7b80b05b6b01b9fe1e70c490919ca13905e26fcb03749812a473851')
+sha256sums=('0cce67aa1cdfc7d9b038eba79feda06bacfc90605455ca8de0092943a6932f38')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
