@@ -1,7 +1,7 @@
 # Maintainer: Abubakar Omer <aur@aolabs.dev>
 
 pkgname=talanoa-bin
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Talanoa is a modern email client that is designed to be fast, secure, and easy to use"
 arch=('x86_64')
@@ -12,28 +12,12 @@ optdepends=('libgnome-keyring')
 options=('!debug' '!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/talanoa-email/desktop-releases/releases/download/v${pkgver}/talanoa_${pkgver}_amd64.deb")
-sha224sums=('d7d0741d2b4138e9800900831bdb2e4ff896486d5fed92f84f24f5a5')
+sha224sums=('028a4dc2945610623a7012329a2817fe61cd2e605ba438be9a527b78')
 
 package(){
-    tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
+    tar -xJf data.tar.xz -C "${pkgdir}"
     cd "${pkgdir}"
     install -D -m644 "usr/lib/talanoa/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "usr/share/doc/talanoa/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
     rm -rf "usr/share/doc"
 }
-sha224sums=('0ffcdfaa2cbe1fbae2044a952845a478be49d40e715e4872c1f42b27')
-sha224sums=('67575151f8d062f925e2cd448d2a4dca6be5524210ebad343b6a794c')
-sha224sums=('e7be40e1bcc5acb79ba14735fac864ea707fbfb07efb392ac026f478')
-sha224sums=('837ad1ee15e1ec757da018a9d27eaf07882af424f2dd2d00d8b38a9a')
-sha224sums=('cc9b9b6127907b0796f3585c5f12f6a21eac321f85927dd9114865c3')
-sha224sums=('847e949577801c2b03bdebcff8c3c5ca2a7d4e69cca760d7599bf888')
-sha224sums=('475515d689a5012674935dfc03be223e7d9f4fa7b35518aa8fbb9125')
-sha224sums=('96d7e8f071de49af82630dfee7c49ef1e1a41e27be5b4fc47c183edf')
-sha224sums=('49c24c677b272c548de27517f90ece7466180bacbc27fba6e4b76fcc')
-sha224sums=('7f048bb933719a0cc18360c2aae991e51fdd0d85a22d657944019c64')
-sha224sums=('5d03272c061a7b778ed4cb091da680d96047b09b579c164cf2a01748')
-sha224sums=('85351b740e5a906f06a569ff2465de350e6e07f8969a838b5946d9fd')
-sha224sums=('bb455cab99a868a8dc76a802a2a2f89fff49f4712d4e609ef02cd0c5')
-sha224sums=('d1af7690310fd4ce718d7416cdaca0223e87726a3bb918f60a9c1bac')
-sha224sums=('14da5fa1ca26cf4d44b970fa9b7b3d9fccfbeb46880af1ae3a67974c')
-sha224sums=('0b8c60e8ebc15aa74b4d974901323af086f5ad46dad48823089232f4')
