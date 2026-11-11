@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Gandini Outeda <e@emiliano-go.com>
 
 pkgname=trustsight
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='Audits AUR PKGBUILD updates before install: structure, commands, novelty'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'python-tldextract>=5.0'
   'python-rich>=13.0'
   'python-typer>=0.12'
+  'python-pydantic>=2.0'
   'python-cryptography>=42.0'
   'python-yaml>=6.0'
 )
@@ -46,8 +47,8 @@ validpgpkeys=('F759D6D49B0A395AB922414A5CC3B4C50D37E793')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.sig")
 
-sha256sums=('aa85dbce5d1879f844f68f96ec36c523b22a57d03747c1e66dccac4acdebbc4a'
-            'ed984f73ff71ed06e8c48a5241c591b4332fa65255c5caef0270be4e0befead8')
+sha256sums=('c87f186125a53dafafb10c68b47914421ae9427adbe63bdcc63956dde11b0bab'
+            '3089a6d8ab41d77fc56c83a5ac21ea658613e47f636ec06ead493aed64fa4051')
 
 build() {
   cd "$pkgname-$pkgver"
