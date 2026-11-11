@@ -2,7 +2,7 @@
 
 pkgname=openspec-bin
 _pkgname=openspec
-pkgver=1.16.1 # datasource=github-releases depName=Fission-AI/OpenSpec
+pkgver=1.17.0 # datasource=github-releases depName=Fission-AI/OpenSpec
 pkgrel=1
 pkgdesc='A fast static code analyzer & language server for Python'
 arch=('aarch64' 'x86_64')
@@ -16,8 +16,8 @@ conflicts=($_pkgname "${_pkgname}-git")
 source_aarch64=("openspec-${pkgver}-arm64.tgz::${url}/releases/download/v${pkgver}/openspec-linux-arm64.tar.gz")
 source_x86_64=("openspec-${pkgver}-x64.tgz::${url}/releases/download/v${pkgver}/openspec-linux-x64.tar.gz")
 
-sha256sums_aarch64=('06d2a38a322b4da993500edd6726a3b554adfe565d7e4834d140f72102c5c0b3')
-sha256sums_x86_64=('9e5215b8f9a7024fa635f693a6a691d82220703868f1949927e675b87503c608')
+sha256sums_aarch64=('c70fc5f9c982caddbbb0e4c9d51739c40879c7f82c26d3f0096d7b8e525e1d20')
+sha256sums_x86_64=('eb3dd48f337afe0af23747bd2b7803c185ff53e69994c56da247ec9512234413')
 
 package() {
 

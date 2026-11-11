@@ -1,6 +1,6 @@
 pkgbase = openspec-bin
 	pkgdesc = A fast static code analyzer & language server for Python
-	pkgver = 1.16.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/Fission-AI/OpenSpec
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = openspec-bin
 	conflicts = openspec
 	conflicts = openspec-git
 	options = !strip
-	source_aarch64 = openspec-1.16.1-arm64.tgz::https://github.com/Fission-AI/OpenSpec/releases/download/v1.16.1/openspec-linux-arm64.tar.gz
-	sha256sums_aarch64 = 06d2a38a322b4da993500edd6726a3b554adfe565d7e4834d140f72102c5c0b3
-	source_x86_64 = openspec-1.16.1-x64.tgz::https://github.com/Fission-AI/OpenSpec/releases/download/v1.16.1/openspec-linux-x64.tar.gz
-	sha256sums_x86_64 = 9e5215b8f9a7024fa635f693a6a691d82220703868f1949927e675b87503c608
+	source_aarch64 = openspec-1.17.0-arm64.tgz::https://github.com/Fission-AI/OpenSpec/releases/download/v1.17.0/openspec-linux-arm64.tar.gz
+	sha256sums_aarch64 = c70fc5f9c982caddbbb0e4c9d51739c40879c7f82c26d3f0096d7b8e525e1d20
+	source_x86_64 = openspec-1.17.0-x64.tgz::https://github.com/Fission-AI/OpenSpec/releases/download/v1.17.0/openspec-linux-x64.tar.gz
+	sha256sums_x86_64 = eb3dd48f337afe0af23747bd2b7803c185ff53e69994c56da247ec9512234413
 
 pkgname = openspec-bin
