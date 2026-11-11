@@ -1,6 +1,6 @@
 pkgbase = linux-boot-analyzer-bin
 	pkgdesc = A terminal UI that analyses boot time and manages systemd services
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/06ergin06/linux_boot_analyzer_tui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = linux-boot-analyzer-bin
 	conflicts = linux-boot-analyzer
 	conflicts = linux-boot-analyzer-git
 	options = !strip
-	source_x86_64 = https://github.com/06ergin06/linux_boot_analyzer_tui/releases/download/v1.2.0/linux-boot-analyzer-1.2.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 5b809b63a9322a5b16be5f151e63a33b8b00c6c29526ee2f1582cf3fbe100780
-	source_aarch64 = https://github.com/06ergin06/linux_boot_analyzer_tui/releases/download/v1.2.0/linux-boot-analyzer-1.2.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 7fef1d578df018e83a4f784e8a1f1b143e4b180ee562726519f871a6a1e1199c
+	source_x86_64 = https://github.com/06ergin06/linux_boot_analyzer_tui/releases/download/v1.3.0/linux-boot-analyzer-1.3.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = a1ea3d62dd178ceee1e807d983c0282188d4a7908f314ab01179488e3192ee03
+	source_aarch64 = https://github.com/06ergin06/linux_boot_analyzer_tui/releases/download/v1.3.0/linux-boot-analyzer-1.3.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 6dd54d75a7810ebb01f9c47831359a39a58d5aaa3f66fb13a20ae490a6e7a84d
 
 pkgname = linux-boot-analyzer-bin
