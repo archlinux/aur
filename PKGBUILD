@@ -1,12 +1,13 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_name=Trilinos
 pkgname=pamgen
 pkgver=17.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel inline mesh generator for hexahedral and quadrilateral meshes (from Trilinos)"
 arch=('x86_64')
-url="https://github.com/trilinos/$_name"
+_name=Trilinos
+_repo="https://github.com/trilinos/$_name"
+url="$_repo/tree/develop/packages/$pkgname"
 license=('LGPL-2.1-or-later')
 depends=('glibc'
          'libgcc'
@@ -14,9 +15,8 @@ depends=('glibc'
          'openmpi')
 makedepends=('cmake'
              'python')
-conflicts=('trilinos')
 _tag=trilinos-release-${pkgver//./-}
-source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
+source=("$_name-$pkgver.tar.gz::$_repo/archive/refs/tags/$_tag.tar.gz")
 sha256sums=('8094740da60bf75b675ad556ed00e337c8547be0dc9603893c4894f4abf0396b')
 
 build() {
