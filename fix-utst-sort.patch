@@ -1,0 +1,25 @@
+From 2adf30b514529dbb065e4b930fa29afbf67843e0 Mon Sep 17 00:00:00 2001
+From: Tarika-S <tarikaa2609@gmail.com>
+Date: Tue, 29 Sep 2026 09:17:15 +0530
+Subject: [PATCH] Fix invalid array access in Utst_sort (#945)
+
+---
+ packages/seacas/libraries/ioss/src/utest/Utst_sort.C | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/packages/seacas/libraries/ioss/src/utest/Utst_sort.C b/packages/seacas/libraries/ioss/src/utest/Utst_sort.C
+index a7672704a..190190790 100644
+--- a/packages/seacas/libraries/ioss/src/utest/Utst_sort.C
++++ b/packages/seacas/libraries/ioss/src/utest/Utst_sort.C
+@@ -129,7 +129,7 @@ TEST_CASE("sort")
+ 
+     DYNAMIC_SECTION("back-half reversed" << n << m << dist)
+     {
+-      std::reverse(&x[n / 2], &x[n]); // Back half reversed
++      std::reverse(x.begin() + n / 2, x.end()); // Back half reversed
+       Ioss::sort(x);
+       CHECK(verify_sorted(x));
+       DYNAMIC_SECTION("already sorted" << n << m << dist)
+-- 
+2.43.0
+
