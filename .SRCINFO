@@ -1,6 +1,6 @@
 pkgbase = proc-cli
 	pkgdesc = Semantic CLI tool for process management. Target by port, PID, name or path.
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/yazeed/proc-cli
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = proc-cli
 	replaces = proc
 	options = !lto
 	options = !strip
-	source = proc-cli-2.3.0.tgz::https://github.com/yazeed/proc-cli/archive/v2.3.0.tar.gz
-	sha256sums = ce18519b473b00190e19dab6726c91d10b699a62d7bd6851a2dd60a50312d789
+	source = proc-cli-2.4.0.tgz::https://github.com/yazeed/proc-cli/archive/v2.4.0.tar.gz
+	sha256sums = de95b86568cdc32b958334255dccced9cfd0d3930ccf566ba216d4451dfcd585
 
 pkgname = proc-cli
