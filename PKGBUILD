@@ -8,7 +8,7 @@
 # After each upstream tag: bump pkgver, makepkg --printsrcinfo.
 
 pkgname=routine
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='GNOME time-blocking client with local routine-server'
 url='https://gitlab.gnome.org/wit3k/routine'
@@ -18,6 +18,7 @@ depends=(
   'gtk4'
   'libadwaita'
   'hicolor-icon-theme'
+  'dbus'
 )
 makedepends=(
   'meson'
@@ -28,6 +29,7 @@ makedepends=(
   'protobuf'
   'clang'
   'git'
+  'dbus'
 )
 conflicts=('routine-bin')
 install=routine.install

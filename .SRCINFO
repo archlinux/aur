@@ -1,6 +1,6 @@
 pkgbase = routine
 	pkgdesc = GNOME time-blocking client with local routine-server
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/wit3k/routine
 	install = routine.install
@@ -14,12 +14,14 @@ pkgbase = routine
 	makedepends = protobuf
 	makedepends = clang
 	makedepends = git
+	makedepends = dbus
 	depends = gtk4
 	depends = libadwaita
 	depends = hicolor-icon-theme
+	depends = dbus
 	conflicts = routine-bin
 	options = !lto
-	source = git+https://gitlab.gnome.org/wit3k/routine.git#tag=v0.1.0
+	source = git+https://gitlab.gnome.org/wit3k/routine.git#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = routine
