@@ -1,8 +1,8 @@
 # Maintainer: Martin Rys <https://rys.rs/contact>
 
 pkgname=bookstack
-pkgver=26.09.2
-pkgrel=2
+pkgver=26.09.3
+pkgrel=1
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
 url="https://codeberg.org/bookstack/bookstack"
@@ -23,7 +23,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://codeberg.org/bookstack/bookstack/archive/v${pkgver}.tar.gz"
 	'bookstack.conf'
 )
-sha256sums=('177de3a2490eff753fbbe2f471a279ca1794d347ef42de3858848458d4e4d7cd'
+sha256sums=('4dff65ed44082162cf7d3d64fca7a8bc487c3fdd7dec01e620218a737741f199'
             '82152fc91366d1bd623c559c03240f070e08d45a084a4c6e2e211f671bee8c78')
 options=('!strip')
 backup=("etc/webapps/${pkgname}/config.env")

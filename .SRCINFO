@@ -1,7 +1,7 @@
 pkgbase = bookstack
 	pkgdesc = A simple, self-hosted, easy-to-use platform for organising and storing information
-	pkgver = 26.09.2
-	pkgrel = 2
+	pkgver = 26.09.3
+	pkgrel = 1
 	url = https://codeberg.org/bookstack/bookstack
 	arch = any
 	license = MIT
@@ -14,9 +14,9 @@ pkgbase = bookstack
 	optdepends = nginx: webserver
 	options = !strip
 	backup = etc/webapps/bookstack/config.env
-	source = bookstack-26.09.2.tar.gz::https://codeberg.org/bookstack/bookstack/archive/v26.09.2.tar.gz
+	source = bookstack-26.09.3.tar.gz::https://codeberg.org/bookstack/bookstack/archive/v26.09.3.tar.gz
 	source = bookstack.conf
-	sha256sums = 177de3a2490eff753fbbe2f471a279ca1794d347ef42de3858848458d4e4d7cd
+	sha256sums = 4dff65ed44082162cf7d3d64fca7a8bc487c3fdd7dec01e620218a737741f199
 	sha256sums = 82152fc91366d1bd623c559c03240f070e08d45a084a4c6e2e211f671bee8c78
 
 pkgname = bookstack
