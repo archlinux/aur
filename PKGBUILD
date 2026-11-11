@@ -1,7 +1,7 @@
 # Maintainer: Athulkrishna <athulkrishnasv2015@gmail.com>
 pkgname=texturecraft-bin
 _pkgname=texturecraft
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Paint PBR textures directly on 3D meshes (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("$_pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('0d564fe27d620850212a907711f307a0077e7d471d2277924431d5e91d40bb5f')
-sha256sums_aarch64=('f03fbd48e1a44745be7ebbda9b475eb791638bf05ab4290022796a7edc8e4313')
+sha256sums_x86_64=('931865846ea6a8202bb3c25897be61e0afaf8ed3264c268d5d5bada973fd772e')
+sha256sums_aarch64=('d73229f6cebb1e7a32349000c3904fa6fa57fe3afd2cb387baf109345f613091')
 
 package() {
 	local _root="$srcdir/$_pkgname-$pkgver-linux-$CARCH"
