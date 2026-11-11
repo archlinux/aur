@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=file-browser-tui
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A Dolphin-like file manager for kitty"
 arch=('x86_64')
@@ -20,13 +20,13 @@ optdepends=(
     'xdg-utils: opening files with their default app'
     'zip: Compress to zip'
     'udisks2: mounting, unlocking and safely removing drives'
-    'kdeconnect: Send to Device and browsing phones'
+    'kdeconnect: Send to Device and browsing phones over Wi-Fi'
     'glib2: file type icons for unusual files'
     'xdg-desktop-portal-tui: use as the Open and Save dialog for other programs'
 )
 install=file-browser-tui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d84002a5d52ed3dff1509a846819675138761b9d47e4c876ebb8216dcf726880')
+sha256sums=('d87c79402fe63b5047e7757312b085a27a4740358fd5766ef3a2b49a51f06551')
 
 prepare() {
     cd "$pkgname-$pkgver"
