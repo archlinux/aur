@@ -2,7 +2,7 @@
 
 pkgname=xerahs-bin
 _pkgname=xerahs
-pkgver=0.33.8
+pkgver=0.33.11
 pkgrel=1
 pkgdesc='Cross-platform screen capture and sharing tool (stable release binaries)'
 arch=('x86_64' 'aarch64')
@@ -38,8 +38,8 @@ noextract=("$_pkgname-$pkgver-x86_64.tar.gz" "$_pkgname-$pkgver-aarch64.tar.gz")
 sha256sums=('58384ad8fc044828d2be88004990e77133b58a971b28012508f02b97bc884154'
             'c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271'
             'a353e325c68735317350165374da19152f246869ecf624f99c9a86d09aa6e311')
-sha256sums_x86_64=('4ee5984e197cb0459f09a2d5fa7aa6885d169faa471d0705734b6276f6dc776b')
-sha256sums_aarch64=('afe18335b65af5f5a801fc4a431c7a09a14b781492af2aa92530c33f1300ab34')
+sha256sums_x86_64=('75efffd3f902bcaf874d53613000b201ca25bbdafbab2059bbd4dfc18807fd39')
+sha256sums_aarch64=('08336fb406de8a3bd9d1caaec9ed19a1c1f2322a322dd4c2f3dbea4d332926b1')
 
 package() {
     local dest="$pkgdir/usr/lib/$_pkgname"
