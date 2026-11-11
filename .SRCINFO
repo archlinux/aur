@@ -1,6 +1,6 @@
 pkgbase = tuwunel
 	pkgdesc = Featureful Matrix homeserver
-	pkgver = 1.9.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/matrix-construct/tuwunel
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = tuwunel
 	provides = tuwunel
 	options = !lto
 	backup = etc/tuwunel/tuwunel.toml
-	source = git+https://github.com/matrix-construct/tuwunel#tag=v1.9.4
-	sha256sums = 530e12ebc116cef040341eab28161104e642a3d9535764290b3d7128cc4db4db
+	source = git+https://github.com/matrix-construct/tuwunel#tag=v2.0.0
+	sha256sums = af5d4c78eea1bdf74590c6ab9e84eb2c045480edad6f4a957ebc5a1caf93bd63
 
 pkgname = tuwunel
