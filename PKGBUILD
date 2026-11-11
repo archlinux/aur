@@ -5,7 +5,7 @@
 # the bump (aur.yml) has run.
 pkgname=xtermium-nightly-bin
 _pkgname=xtermium
-pkgver=20261110.035328
+pkgver=20261111.082504
 pkgrel=1
 pkgdesc='Cross-platform terminal and session manager with web/file browsers and AI (nightly build)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.deb::https://github.com/xtermium/xtermium/releases/download/nightly/${_pkgname}_nightly_amd64.deb")
-sha256sums=('d39db270a58238f05b8b1404771ace9c16885279d9eee1125e61192a6bc4ec46')
+sha256sums=('bcf10e6d33e883ef619598ff5ddfa9c1e5d7680ea30975a4aecb652ab58d404e')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"
