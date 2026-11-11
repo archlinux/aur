@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MiniMax Code
+Comment=MiniMax Code desktop app repackaged from the official macOS release
+Exec=minimax-code-desktop %U
+Icon=minimax-code-desktop
+Terminal=false
+StartupNotify=true
+StartupWMClass=MiniMaxCode
+Categories=Development;
+Keywords=AI;MiniMax;Code;Agent;
+MimeType=x-scheme-handler/minimax-cn;
