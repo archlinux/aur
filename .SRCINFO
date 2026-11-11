@@ -1,6 +1,6 @@
 pkgbase = jerc-bin
 	pkgdesc = Keyboard-driven terminal email client written in Rust (prebuilt static binary)
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/HiFiveJazz/jerc
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = jerc-bin
 	conflicts = jerc
 	options = !debug
 	options = !strip
-	source_x86_64 = jerc-v0.6.1-x86_64-unknown-linux-musl.tar.gz::https://github.com/HiFiveJazz/jerc/releases/download/v0.6.1/jerc-v0.6.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = f71be521121f5f4a5cfec6182c355771bb52663560288fb9f73ed6ed2f5868fd
+	source_x86_64 = jerc-v0.6.2-x86_64-unknown-linux-musl.tar.gz::https://github.com/HiFiveJazz/jerc/releases/download/v0.6.2/jerc-v0.6.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = c635d94960a720fbcd668f1854e217a9e46b780b9b370f2be8f0306c83e1a4b2
 
 pkgname = jerc-bin
