@@ -1,0 +1,22 @@
+pkgbase = xidle-inhibit
+	pkgdesc = Honor org.freedesktop.ScreenSaver inhibit requests by blocking xautolock or xss-lock
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://git.shouldnt.work/fuxino/xidle-inhibit
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = dbus
+	checkdepends = python-pytest
+	makedepends = git
+	depends = glib2
+	depends = libx11
+	depends = libxss
+	depends = python
+	depends = python-gobject
+	optdepends = xautolock: xautolock backend
+	optdepends = xss-lock: xss-lock backend
+	source = git+https://git.shouldnt.work/fuxino/xidle-inhibit?signed#tag=0.4.2
+	validpgpkeys = 7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514
+	sha256sums = e768123eee2cc9620c999d92c805794f8d45cb0f7ca3fdcfcf126ff83a13eaf6
+
+pkgname = xidle-inhibit
