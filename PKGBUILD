@@ -2,7 +2,7 @@
 
 pkgname=gui.for.singbox
 _name=GUI.for.SingBox
-pkgver=1.28.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="GUI.for.SingBox A GUI program developed by vue3 + wails."
 arch=($CARCH)
@@ -12,18 +12,13 @@ provides=(${pkgname} ${pkgname//./-})
 conflicts=(${pkgname} ${pkgname//./-})
 # replaces=(${pkgname})
 depends=(
-    gdk-pixbuf2
-    glib2
-    gtk3
     hicolor-icon-theme
-    libsoup3
-    webkit2gtk-4.1
 )
 makedepends=(
     pnpm
     git
     go
-    wails
+    nodejs
 )
 optdepends=(
     'sing-box: The universal proxy platform'
@@ -37,7 +32,7 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('e937d2d67f167cc3c5ae8059500fe750823163c0e400096f3237fcca57b403f1'
+sha256sums=('2d596e9312a7e018b89e675010dceb2e92e0b23696c5b655f8f93c0d99b7dd05'
             'c89a7b9740039857f57d6294d28a39854067ddd8469c7f1b5efc62b91cdf772a'
             '8d51fea0925c08e33150be47b4100d145dee7998f241b02f5de42770cf5dfbb2'
             'feb47230c930ff09fc2fdebdf07aa0f76692bda24eeab32727b2286a93516671')
@@ -68,11 +63,7 @@ build() {
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
 
-    wails build \
-        -m -s -trimpath -skipbindings \
-        -devtools \
-        -tags webkit2_41 \
-        -o ${_name}
+    go build -o "build/bin/${_name}" .
 }
 
 package() {
