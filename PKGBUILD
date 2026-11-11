@@ -2,7 +2,7 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=lurviko
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Qt Quick file manager with media libraries, cloud storage and an encrypted vault'
 arch=('x86_64')
@@ -31,6 +31,9 @@ optdepends=(
   'qt6-imageformats: additional image formats'
   'ffmpegthumbnailer: video thumbnails'
   'poppler: PDF thumbnails'
+  'kimageformats: HEIC, AVIF, JXL, PSD, KRA, XCF and camera RAW thumbnails'
+  'ghostscript: PostScript and EPS thumbnails'
+  'djvulibre: DjVu thumbnails'
   '7zip: additional archive extraction formats'
   'libarchive: creating ZIP, 7z and tar archives'
   'squashfs-tools: AppImage icon previews'
@@ -47,8 +50,8 @@ optdepends=(
 )
 install=lurviko.install
 source=("Lurviko-${pkgver}-${pkgrel}.tar::${url}/releases/download/v${pkgver}/Lurviko-${pkgver}.tar")
-# SHA-256 of the reproducible v1.6.0 source archive.
-sha256sums=('55a680562e6a1c2a725f90fa45ac6933f9241260ceb99daa1ddfd9cfc7906db6')
+# SHA-256 of the reproducible v1.6.1 source archive.
+sha256sums=('8c2a0c4e45e7483e1484e7423bf6fbf5736782067215e05bf1392ebf2da7f313')
 
 prepare() {
   # Installed workers are found in /usr/share/Lurviko. Do not embed the
@@ -94,8 +97,8 @@ package() {
   rmdir "${pkgdir}/usr/share/dbus-1/services" "${pkgdir}/usr/share/dbus-1"
 
   install -Dm644 "Lurviko-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "Lurviko-${pkgver}/assets/LICENSE-FontAwesome.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-FontAwesome.txt"
+  install -Dm644 "Lurviko-${pkgver}/assets/LICENSE-FluentUI.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-FluentUI.txt"
   install -Dm644 "Lurviko-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "Lurviko-${pkgver}/THIRD_PARTY.md" "${pkgdir}/usr/share/doc/${pkgname}/THIRD_PARTY.md"
   install -d "${pkgdir}/usr/share/doc/${pkgname}/docs"
