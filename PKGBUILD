@@ -2,9 +2,9 @@
 
 pkgname=snishaper-bin
 pkgver=1.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Local proxy to bypass SNI blocking via ECH injection, TLS fragmentation, QUIC and a TUN device (prebuilt binary)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/SnishaperTeam/SniShaper'
 license=('AGPL-3.0-only')
 # Wails v3 + GTK4 + WebKitGTK 6.0 frontend. The TUN/route plumbing speaks
@@ -22,7 +22,9 @@ options=('!strip')
 # fails on every upgrade.
 #
 # The icon and LICENSE come from the repo at the release tag (see [extras] in
-# metadata.toml); their URLs and checksums are filled in by the updater.
+# metadata.toml); their URLs and checksums are filled in by the updater. They
+# are arch-independent but must be listed in each arch array: makepkg uses only
+# the array matching $CARCH, so there is no duplicate-download conflict.
 source_x86_64=(
     "snishaper-${pkgver}-linux-x64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.30.0/snishaper-linux-x64.tar.gz"
     "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.0/Assets/AppList.targetsize-256_altform-unplated.png"
@@ -30,6 +32,16 @@ source_x86_64=(
 )
 sha256sums_x86_64=(
     'cfb18d93e6b4304e6859baf5327c1b2c44956050e7bc67c22a09603ba7ad5c7e'
+    'c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b'
+    '48be7d67a45ae8e41d3da4d9f2779b7ebbb3ddc10c7d099ff8c8f51cdcb3f080'
+)
+source_aarch64=(
+    "snishaper-${pkgver}-linux-arm64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.30.0/snishaper-linux-arm64.tar.gz"
+    "snishaper-${pkgver}-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.0/Assets/AppList.targetsize-256_altform-unplated.png"
+    "snishaper-${pkgver}-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.0/LICENSE"
+)
+sha256sums_aarch64=(
+    '69f58ae5e364f297fb26823724da0738505ffeb7f5b2117604a03771694d687b'
     'c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b'
     '48be7d67a45ae8e41d3da4d9f2779b7ebbb3ddc10c7d099ff8c8f51cdcb3f080'
 )

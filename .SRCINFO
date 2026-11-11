@@ -1,9 +1,10 @@
 pkgbase = snishaper-bin
 	pkgdesc = Local proxy to bypass SNI blocking via ECH injection, TLS fragmentation, QUIC and a TUN device (prebuilt binary)
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SnishaperTeam/SniShaper
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
 	depends = gtk4
 	depends = webkitgtk-6.0
@@ -17,5 +18,11 @@ pkgbase = snishaper-bin
 	sha256sums_x86_64 = cfb18d93e6b4304e6859baf5327c1b2c44956050e7bc67c22a09603ba7ad5c7e
 	sha256sums_x86_64 = c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b
 	sha256sums_x86_64 = 48be7d67a45ae8e41d3da4d9f2779b7ebbb3ddc10c7d099ff8c8f51cdcb3f080
+	source_aarch64 = snishaper-1.30.0-linux-arm64.tar.gz::https://github.com/SnishaperTeam/SniShaper/releases/download/v1.30.0/snishaper-linux-arm64.tar.gz
+	source_aarch64 = snishaper-1.30.0-icon.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.0/Assets/AppList.targetsize-256_altform-unplated.png
+	source_aarch64 = snishaper-1.30.0-LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/v1.30.0/LICENSE
+	sha256sums_aarch64 = 69f58ae5e364f297fb26823724da0738505ffeb7f5b2117604a03771694d687b
+	sha256sums_aarch64 = c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b
+	sha256sums_aarch64 = 48be7d67a45ae8e41d3da4d9f2779b7ebbb3ddc10c7d099ff8c8f51cdcb3f080
 
 pkgname = snishaper-bin
