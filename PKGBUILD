@@ -4,7 +4,7 @@
 
 pkgname='entrance'
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An EFL based display manager"
 url='https://github.com/wltjr/entrance'
 license=('GPL-3.0-or-later')
@@ -14,6 +14,7 @@ makedepends=('meson' 'ninja')
 depends=('systemd-libs' 'efl' 'pam' 'libxcb')
 
 conflicts=('entrance-git')
+backup=('etc/entrance/entrance.conf')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wltjr/entrance/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('3dbf6fc4ee18171ed88a6a047387f6024ae67dbd6ebdd67f82be2474ecd33f6d')
@@ -25,7 +26,10 @@ function prepare {
       -e '/"shutdown"/ s|:.*|: "/usr/bin/systemctl poweroff";|' \
       -e '/"reboot"/ s|:.*|: "/usr/bin/systemctl reboot";|' \
       -e '/"suspend"/ s|:.*|: "/usr/bin/systemctl suspend";|' \
-      -i "data/entrance.conf.in"
+      -i data/entrance.conf.in
+
+  sed -e '/ExecStart=/ s|=.*|=/usr/bin/entrance|' \
+      -i data/entrance.service.in
 }
 
 function build {
@@ -33,8 +37,8 @@ function build {
 
   meson setup --reconfigure \
     --buildtype release \
-    --prefix "/usr" \
-    --licensedir "share/licenses" \
+    --prefix /usr \
+    --sbindir /usr/bin \
     -Dpam=true \
     -Dlogind=true \
     build .

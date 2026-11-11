@@ -1,7 +1,7 @@
 pkgbase = entrance
 	pkgdesc = An EFL based display manager
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wltjr/entrance
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,6 +12,7 @@ pkgbase = entrance
 	depends = pam
 	depends = libxcb
 	conflicts = entrance-git
+	backup = etc/entrance/entrance.conf
 	source = entrance-3.0.0.tar.gz::https://github.com/wltjr/entrance/archive/refs/tags/v3.0.0.tar.gz
 	sha256sums = 3dbf6fc4ee18171ed88a6a047387f6024ae67dbd6ebdd67f82be2474ecd33f6d
 
