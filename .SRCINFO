@@ -1,6 +1,6 @@
 pkgbase = sunshine-store
-	pkgdesc = Microsoft-Store-style app shop for Arch: pacman, AUR and Flatpak in one search
-	pkgver = 0.1.0
+	pkgdesc = Microsoft-Store-style app shop for Arch: pacman, AUR, Flatpak, AppImage and Snap with instant search
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/tak0dan/sunshine-store
 	arch = any
@@ -9,9 +9,15 @@ pkgbase = sunshine-store
 	depends = python-pyqt6
 	depends = polkit
 	depends = pacman
+	optdepends = libjxl: icons of repository apps
+	optdepends = qt6-imageformats: extra image formats
+	optdepends = archlinux-appstream-data: app names, icons and categories for repository packages
 	optdepends = yay: install AUR packages
 	optdepends = flatpak: install Flatpak apps
-	source = sunshine-store-0.1.0.tar.gz::https://github.com/tak0dan/sunshine-store/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c8fb8ace50e576db38408b19792aa2627801d5d580becf506967c3f283ed92c6
+	optdepends = snapd: install Snap packages
+	optdepends = inter-font: interface font
+	optdepends = ttf-cormorant: heading font
+	source = sunshine-store-0.2.0.tar.gz::https://github.com/tak0dan/sunshine-store/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9f17c9249a63abfb5cd174729d28aea306cc227c2b41ef776a49b80879699d4f
 
 pkgname = sunshine-store
