@@ -1,6 +1,6 @@
 # Maintainer: Kevin Diu <kevindiujp@gmail.com>
 pkgname=go-bin
-pkgver=1.27.3
+pkgver=1.27.4
 pkgrel=1
 pkgdesc='Go programming language (binary release)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,9 +13,9 @@ options=('!strip' 'staticlibs')
 source_x86_64=("https://go.dev/dl/go${pkgver}.linux-amd64.tar.gz")
 source_aarch64=("https://go.dev/dl/go${pkgver}.linux-arm64.tar.gz")
 source_armv7h=("https://go.dev/dl/go${pkgver}.linux-armv6l.tar.gz")
-sha256sums_x86_64=('65efbc80fdc1fa2cd2631cad5b481777a68e8725f34e89f50fc6ac714e379b40')
-sha256sums_aarch64=('a06e99309dbcbdca1a8ccd2282c3ee146e55930886e26b4f1193269587165f49')
-sha256sums_armv7h=('d6f4e11dd7157030d7ac11c51c8f73201a2db932d593c3106b1da11cc32bfdf8')
+sha256sums_x86_64=('7226736c2339719cda28fbf3a54d71aa63bcefe376e98cef00034268dab24840')
+sha256sums_aarch64=('3392582988a273a87ab5043ee1b2c9c17a2c3c00580bf9326c47a2e0aaaeac92')
+sha256sums_armv7h=('e50964c41c6e187375387939e2f380de7250eba44e2259dfeb75c540d9d585c3')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib"
