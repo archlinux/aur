@@ -1,6 +1,6 @@
 pkgbase = wingdrive-bin
 	pkgdesc = WingDrive desktop file manager
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/bernardopg/wingdrive
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = wingdrive-bin
 	conflicts = wingdrive-nightly
 	options = !strip
 	options = !debug
-	source = WingDrive-3.0.1-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v3.0.1/WingDrive-3.0.1-x86_64.AppImage
-	source = LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v3.0.1/LICENSE
-	sha256sums = 1526fd71ac6963c1651c5d59544a9188974a166862b2add8ccda1afd5dda3d00
+	source = WingDrive-3.1.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v3.1.0/WingDrive-3.1.0-x86_64.AppImage
+	source = LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v3.1.0/LICENSE
+	sha256sums = fa1e921730a6e9147618aec7755fd97e512f291a2d35b4528e9e0316b0b7400f
 	sha256sums = 57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8
 
 pkgname = wingdrive-bin
