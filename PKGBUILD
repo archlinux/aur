@@ -1,7 +1,7 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-nightly-bin
-pkgver=0.1.10_nightly.20261111.4529
+pkgver=0.1.10_nightly.20261111.4544
 pkgrel=1
 pkgdesc='Nightly desktop control surface for local coding agents'
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=(
   "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${_upstream_version}/LICENSE"
 )
 sha256sums=(
-  '08324ab3c1ff06a3cb2ade8873424269b219b4deca234ed73f1c789965991cd0' # AppImage
+  '4cd6a06de928d488d76f194dab6db1cff0b52e2eaf9ad3ec1a42ff28bb48ac50' # AppImage
   '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
 )
 
@@ -95,7 +95,7 @@ TryExec=t3code-nightly
 Terminal=false
 Type=Application
 Icon=t3code-nightly
-StartupWMClass=t3code
+StartupWMClass=com.t3tools.T3Code
 Categories=Development;
 MimeType=x-scheme-handler/t3code;
 EOF
