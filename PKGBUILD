@@ -2,7 +2,7 @@
 # Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=b4-bin
-pkgver=1.90.0
+pkgver=1.90.1
 pkgrel=1
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
@@ -28,14 +28,14 @@ source_ppc64=("${pkgname}-${pkgver}-ppc64.tar.gz::${_baseurl}/b4-linux-ppc64.tar
 source_ppc64le=("${pkgname}-${pkgver}-ppc64le.tar.gz::${_baseurl}/b4-linux-ppc64le.tar.gz")
 source_s390x=("${pkgname}-${pkgver}-s390x.tar.gz::${_baseurl}/b4-linux-s390x.tar.gz")
 
-sha256sums_x86_64=('051677f876a51ac08b323fc85204fba8e8b8885c0743958b8e14deccc5880ce1')
-sha256sums_i686=('e70b432c6920e59e591a91ed03690f412a21e745caed50c7ed1977faf6387770')
-sha256sums_aarch64=('168c73955021158579be324da7f741a5b9527f477b44cc3331f5e0637269a3d1')
-sha256sums_riscv64=('e8628cff079581c58b43c7911d62dc43654a4ee9b2175aeeef55cc8216e092eb')
-sha256sums_loong64=('0c8b7b15a406b963fc2ecb90c6560539f61690047e11c802c05f43dd7053800c')
-sha256sums_ppc64=('ad453b03b90d41c1d21e069e10e37a503808ea230edcfe52e81555b7bdacb560')
-sha256sums_ppc64le=('f8c3b35a44bbf71c3720d46b02e44f49ec85a23a64d1c1b3580f0928da495c39')
-sha256sums_s390x=('9d56a38e2eefc57728fd57ecb64df49a68ea1f9f9877cedd4cb0b1f15c15e70a')
+sha256sums_x86_64=('6f41945cb32fdd275d4a3c2239d7d18f7a8413e3282fb1115957ecefacfb7fd2')
+sha256sums_i686=('2ba389157ce7d8a45d2abbe0a913a62c6d72f445f11d78c106585a84c7b12af7')
+sha256sums_aarch64=('1b8321c7eca61a36f323057539e6033ea1cb7a0fa4a0ee13ea1c24f042ffbe4f')
+sha256sums_riscv64=('2150c8b0bcc310533e25f0a658cf8b9fd98408af62901f47a166013e0140c47a')
+sha256sums_loong64=('2785704f6739ddea0154645e8b8ec74a220d6eed8df72a087c7e5bc8f8674c7a')
+sha256sums_ppc64=('047826df67caefe4dba21ffa6cc1ab30e941e2356355178d7a46630c0dc3d3e2')
+sha256sums_ppc64le=('1e566c2c269a93157e0206b2dc80d8b25a4c3f6f424a46991d2052a360cc7917')
+sha256sums_s390x=('d63fd5f81bb4f5946bc37cb98defaee2e56977c98f7e0796ecf25a2b070d7205')
 
 backup=('etc/b4/b4.json')
 
