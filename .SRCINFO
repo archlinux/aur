@@ -23,6 +23,6 @@ pkgbase = wowtype-core
 	provides = wowtype
 	conflicts = wowtype
 	source = wowtype-0.3.10-1-x86_64.pkg.tar.zst::https://gh-proxy.com/https://github.com/Gloridust/WowType/releases/download/v0.3.10/wowtype-0.3.10-1-x86_64.pkg.tar.zst
-	sha256sums = SKIP
+	sha256sums = 4e8c81c4d0b3c44e650aa29168bfc1791005b57d6c18b3a5ce985680b71a6dae
 
 pkgname = wowtype-core

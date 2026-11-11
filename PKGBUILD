@@ -23,17 +23,8 @@ _pkgfile="wowtype-$pkgver-1-x86_64.pkg.tar.zst"
 source=(
   "$_pkgfile::${_gh_mirror}https://github.com/Gloridust/WowType/releases/download/v$pkgver/$_pkgfile"
 )
-# 版本连日变，校验和对不固定版本无意义；上游二进制包自带 .MTREE/.BUILDINFO，
-# pacman 安装时会校验包内元数据。
-sha256sums=('SKIP')
-
-# 动态跟随 releases/latest：paru/yay 等 helper 会在检查更新时执行本函数，
-# 发现新 tag 即提示升级并更新 pkgver 后重新构建。
-pkgver() {
-  curl -fsSL https://api.github.com/repos/Gloridust/WowType/releases/latest \
-    | sed -n 's/.*"tag_name"[[:space:]]*:[[:space:]]*"v\([^"]*\)".*/\1/p' \
-    | head -n1
-}
+# checksum 由 aur-auto-update 定期跟随 releases/latest 更新
+sha256sums=('4e8c81c4d0b3c44e650aa29168bfc1791005b57d6c18b3a5ce985680b71a6dae')
 
 package() {
   # 官方 .pkg.tar.zst 已被 makepkg 自动解压到 srcdir，只把 usr/ 树收进 pkgdir
