@@ -1,7 +1,7 @@
 # Maintainer: Borys Kharchenko (https://github.com/arximus88)
 # Prebuilt release (tar.gz built by tools/package.sh tar in the upstream repository).
 pkgname=slicenv-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Fast native 3D printing slicer front-end for OrcaSlicer and Bambu Studio engines'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('slicenv')
 conflicts=('slicenv' 'slicenv-git')
 options=('!strip' '!debug')
 source_x86_64=("https://github.com/arximus88/slicenv/releases/download/v${pkgver}/slicenv-${pkgver}-${CARCH}-linux.tar.gz")
-sha256sums_x86_64=('590941045eb54788b87ca1a02363b02d0d299d4a54774e531f85c67eecc785d5')
+sha256sums_x86_64=('a1cd9b4836d8584ea51068ea6df3ba60504659fd2ccb48bd1705b4832d031d6f')
 
 package() {
   cd "slicenv-${pkgver}-${CARCH}-linux"
