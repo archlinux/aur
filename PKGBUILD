@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.256
-pkgrel=1
+pkgrel=2
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -62,7 +62,7 @@ _electronmajor=43
 # changes the payload, so pin the peeled commit of tag v$pkgver instead.
 # Version bumps must resolve `git ls-remote $url "refs/tags/v<ver>^{}"` and
 # update _commit together with pkgver and the source checksum.
-_commit=baed35a2a2def0b84615c589042e75df97b3a5d5
+_commit=6ea47e7342dbf44fb3842c598aaac0be9af76180
 source=(
   "$pkgname-$pkgver-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
   "pnpm-$_pnpmver.tgz::https://registry.npmjs.org/pnpm/-/pnpm-$_pnpmver.tgz"
@@ -83,7 +83,7 @@ source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
 sha256sums=(
-  '879a2c000185edd3b940f613e12d0dde5f0ffc5fc20b76662ca1d1dd3c852431'
+  'df762136470c556194080219bd6e3cd242b5246bc9342636578e7b930123e7cb'
   'ea206e35474bf87be9564a85ca70ed1c8ebdc45da55aafb0a3bf09d1ba69b179'
   'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
   '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -136,6 +136,18 @@ prepare() {
   ORCA_COMMIT="$_commit" python - <<'PY'
 import os
 from pathlib import Path
+# Keep the plain-Node usage/error checks on slow builders, including emulation.
+# Only the build-time deadline changes; hung entries still fail closed.
+vite_config = Path("electron.vite.config.ts")
+vite_data = vite_config.read_text()
+guard_call = "createPlainNodeEntryGuardPlugin(),"
+if vite_data.count(guard_call) != 1:
+    raise SystemExit("unexpected plain-Node entry guard config shape")
+vite_config.write_text(vite_data.replace(
+    guard_call,
+    "createPlainNodeEntryGuardPlugin({ timeoutMs: 120_000, killGraceMs: 2_000 }),",
+))
+
 path = Path("config/electron-builder.config.cjs")
 data = path.read_text()
 
