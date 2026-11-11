@@ -1,6 +1,6 @@
 pkgname=mingw-w64-zlib
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Compression library implementing the deflate compression method found in gzip and PKZIP (mingw-w64)"
 arch=('any')
 license=(Zlib)
@@ -9,7 +9,8 @@ makedepends=(mingw-w64-cmake)
 url="https://www.zlib.net/"
 options=(!strip !buildflags staticlibs)
 source=(https://github.com/madler/zlib/releases/download/v$pkgver/zlib-$pkgver.tar.xz{,.asc})
-sha256sums=('d7a0654783a4da529d1bb793b7ad9c3318020af77667bcae35f95d0e42a792f3' 'SKIP')
+sha256sums=('4f11c512053d7bab8d9e9b89bde3575add3e4c50a383b42ef6cb837035fc5a7c'
+            'SKIP')
 validpgpkeys=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA')  # Mark Adler <madler@alumni.caltech.edu>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
