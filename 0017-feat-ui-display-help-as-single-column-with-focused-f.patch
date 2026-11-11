@@ -1,0 +1,452 @@
+From afbd442f9f9ec28167f6afb4a13eb93f89d2d444 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Wed, 4 Nov 2026 23:22:15 +0100
+Subject: [PATCH 17/23] feat(ui): display help as single column with focused
+ fzf filter
+
+---
+ docs/UI.md              |   2 +-
+ src/app/ex.rs           |   4 +-
+ src/app/mod.rs          |  18 ++---
+ src/app/palette.rs      |  73 ++++++++++++++---
+ src/app/render.rs       |   7 +-
+ src/ui/overlays/help.rs | 171 ++++++++++++++++++++++++++++++----------
+ 6 files changed, 209 insertions(+), 66 deletions(-)
+
+diff --git a/docs/UI.md b/docs/UI.md
+index e7766c252c6708ad1bc001e0d1ad8ca757140116..548d622ec54e1d4af595e3daf39bb69c4d93299f 100644
+--- a/docs/UI.md
++++ b/docs/UI.md
+@@ -86,7 +86,7 @@ Provides hypervisor-level resource monitoring:
+ 
+ ## Overlays & Modals
+ 
+-- **Help Overlay (`ui::overlays::help.rs`)**: Opened with `?`. Displays a comprehensive multi-column list of all available key bindings. Dynamically reflects any custom key remappings defined in `keymap.toml`.
++- **Help Overlay (`ui::overlays::help.rs`)**: Opened with `?`. Displays a categorized single-column list of all available key bindings with an interactive bottom fuzzy search input (like fzf) and keyboard navigation. Dynamically reflects any custom key remappings defined in `keymap.toml`.
+ - **Command Palette (`ui::overlays::palette.rs`)**: Opened with `Ctrl-p`. Provides a fuzzy-searchable list of all virsh-tui actions and virsh commands using the `nucleo-matcher` engine. Displays assigned shortcut badges.
+ - **New Domain Wizard (`ui::overlays::wizard.rs`)**: Opened with `Space n`. A 6-step guided modal to configure and launch a new virtual machine:
+   1. Operating System & Source (ISO, URL, existing disk).
+diff --git a/src/app/ex.rs b/src/app/ex.rs
+index ac5285048577957bd989db895ff13f12e473771c..8cb7aee6cbd6c24945a12904f37ec5f9ddd56a17 100644
+--- a/src/app/ex.rs
++++ b/src/app/ex.rs
+@@ -14,7 +14,7 @@ pub(super) async fn run_ex_line(
+     messages: &mut Vec<String>,
+     dry_run: bool,
+     demo: bool,
+-    help_filter: &mut Option<String>,
++    help_state: &mut Option<crate::ui::overlays::help::HelpState>,
+     config: &mut Config,
+     theme: &mut Theme,
+     confirm: &mut Option<crate::command::plan::PendingConfirm>,
+@@ -24,7 +24,7 @@ pub(super) async fn run_ex_line(
+     match crate::input::ex::parse(line) {
+         Ok(crate::input::ex::ExCommand::Quit | crate::input::ex::ExCommand::QuitAll) => return true,
+         Ok(crate::input::ex::ExCommand::Help(topic)) => {
+-            *help_filter = Some(topic);
++            *help_state = Some(crate::ui::overlays::help::HelpState::new(&topic));
+         }
+         Ok(crate::input::ex::ExCommand::Set(key, value)) => {
+             dash.message = apply_setting(uri, config, theme, &key, &value);
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index ec37b58bcbd30bb03f5f1d96e541d55a869f5f97..b4be2dcac34bf771a3ccf833f931fd782a6f76c3 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -177,7 +177,7 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+     let wizard: Option<ui::overlays::wizard::WizardState> = None;
+     let settings: Option<ui::views::settings::SettingsState> = None;
+     let palette: Option<ui::overlays::palette::PaletteState> = None;
+-    let help_filter: Option<String> = None;
++    let help_state: Option<ui::overlays::help::HelpState> = None;
+     let events_rx = if cli.demo || !dash.connected {
+         None
+     } else {
+@@ -262,7 +262,7 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         wizard,
+         settings,
+         palette,
+-        help_filter,
++        help_state,
+         events_rx,
+         view,
+         pending_quit_z,
+@@ -356,7 +356,7 @@ struct App {
+     wizard: Option<ui::overlays::wizard::WizardState>,
+     settings: Option<ui::views::settings::SettingsState>,
+     palette: Option<ui::overlays::palette::PaletteState>,
+-    help_filter: Option<String>,
++    help_state: Option<ui::overlays::help::HelpState>,
+     events_rx: Option<tokio::sync::mpsc::Receiver<crate::model::LibvirtEvent>>,
+     view: View,
+     pending_quit_z: bool,
+@@ -599,7 +599,7 @@ impl App {
+             if self.confirm.is_some()
+                 || self.wizard.is_some()
+                 || self.palette.is_some()
+-                || self.help_filter.is_some()
++                || self.help_state.is_some()
+             {
+                 crate::ui::widgets::modal::dim_background(f, &self.theme);
+             }
+@@ -625,8 +625,8 @@ impl App {
+             if let Some(st) = &self.settings {
+                 crate::ui::views::settings::render(f, &self.theme, &self.config, st);
+             }
+-            if let Some(filter) = &self.help_filter {
+-                crate::ui::overlays::help::render(f, &self.theme, filter, self.engine.map());
++            if let Some(help) = &self.help_state {
++                crate::ui::overlays::help::render(f, &self.theme, help, self.engine.map());
+             }
+         }
+         crate::ui::widgets::modal::apply_transparency(f, &self.theme);
+@@ -934,7 +934,7 @@ impl App {
+                             &mut self.messages,
+                             self.dry_run,
+                             self.demo,
+-                            &mut self.help_filter,
++                            &mut self.help_state,
+                             &mut self.config,
+                             &mut self.theme,
+                             &mut self.confirm,
+@@ -989,7 +989,7 @@ impl App {
+         {
+             return false;
+         }
+-        if self.help_filter.is_some() && handle_help_key(key, &mut self.help_filter) {
++        if self.help_state.is_some() && handle_help_key(key, &mut self.help_state) {
+             return false;
+         }
+         // Settings captures navigation while open.
+@@ -1282,7 +1282,7 @@ impl App {
+                     continue;
+                 }
+                 (_, A::Help) => {
+-                    self.help_filter = Some(String::new());
++                    self.help_state = Some(ui::overlays::help::HelpState::default());
+                     continue;
+                 }
+                 (_, A::Settings) => {
+diff --git a/src/app/palette.rs b/src/app/palette.rs
+index 759bea877c3f56c96edbb56120a53f13cd50a99d..f250e8c254e1c1f009d1c6589573aa45909679ed 100644
+--- a/src/app/palette.rs
++++ b/src/app/palette.rs
+@@ -139,25 +139,74 @@ pub(super) async fn run_palette_enter(
+     }
+ }
+ 
+-/// Help overlay keys (live `/` filter). Returns true when consumed.
+-pub(super) fn handle_help_key(key: KeyEvent, help_filter: &mut Option<String>) -> bool {
+-    let Some(filter) = help_filter else {
++/// Help overlay keys (fzf-style live filter & scroll). Returns true when consumed.
++pub(super) fn handle_help_key(key: KeyEvent, help_state: &mut Option<ui::overlays::help::HelpState>) -> bool {
++    let Some(st) = help_state.as_mut() else {
+         return false;
+     };
++    let ctrl = key.modifiers.contains(KeyModifiers::CONTROL);
+     match key.code {
+         KeyCode::Esc => {
+-            *help_filter = None;
+-            return true;
++            *help_state = None;
++            true
++        }
++        KeyCode::Up | KeyCode::Char('k') | KeyCode::Char('p') if ctrl || key.code == KeyCode::Up => {
++            st.scroll = st.scroll.saturating_sub(1);
++            true
++        }
++        KeyCode::Down | KeyCode::Char('j') | KeyCode::Char('n') if ctrl || key.code == KeyCode::Down => {
++            st.scroll = st.scroll.saturating_add(1);
++            true
++        }
++        KeyCode::PageUp | KeyCode::Char('u') if ctrl || key.code == KeyCode::PageUp => {
++            st.scroll = st.scroll.saturating_sub(10);
++            true
++        }
++        KeyCode::PageDown | KeyCode::Char('d') if ctrl || key.code == KeyCode::PageDown => {
++            st.scroll = st.scroll.saturating_add(10);
++            true
++        }
++        KeyCode::Left => {
++            st.input.move_left();
++            true
++        }
++        KeyCode::Right => {
++            st.input.move_right();
++            true
++        }
++        KeyCode::Home => {
++            while st.input.cursor() > 0 {
++                st.input.move_left();
++            }
++            true
++        }
++        KeyCode::End => {
++            while st.input.cursor() < st.input.value().len() {
++                st.input.move_right();
++            }
++            true
+         }
+         KeyCode::Backspace => {
+-            filter.pop();
+-            return true;
++            st.input.backspace();
++            st.scroll = 0;
++            true
+         }
+-        KeyCode::Char(c) if key.modifiers.is_empty() => {
+-            filter.push(c);
+-            return true;
++        KeyCode::Char('w') if ctrl => {
++            let val = st.input.value().to_string();
++            let trimmed = val.trim_end();
++            if let Some(idx) = trimmed.rfind(' ') {
++                st.input.set(&val[..=idx]);
++            } else {
++                st.input.set("");
++            }
++            st.scroll = 0;
++            true
++        }
++        KeyCode::Char(c) if !ctrl && !key.modifiers.contains(KeyModifiers::ALT) => {
++            st.input.insert(c);
++            st.scroll = 0;
++            true
+         }
+-        _ => {}
++        _ => true,
+     }
+-    false
+ }
+diff --git a/src/app/render.rs b/src/app/render.rs
+index dd635d2dc940526969241f9de9d9eb075e0ea03f..cb0309c30b37bb2eac7f981e3d490bebd3b55498 100644
+--- a/src/app/render.rs
++++ b/src/app/render.rs
+@@ -164,7 +164,12 @@ pub(super) fn dump_frame(
+             "help" => {
+                 ui::views::dashboard::render(f, theme, dash);
+                 ui::widgets::modal::dim_background(f, theme);
+-                ui::overlays::help::render(f, theme, "", &crate::input::keymap::default_map());
++                ui::overlays::help::render(
++                    f,
++                    theme,
++                    &ui::overlays::help::HelpState::default(),
++                    &crate::input::keymap::default_map(),
++                );
+             }
+             _ => ui::views::dashboard::render(f, theme, dash),
+         }
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index 9ae101eed82c55932a6a8771d56276623bec679e..91d1444b2deadc3a1e49aabd77d815250012d3ff 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -280,18 +280,32 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+     ]
+ }
+ 
+-/// Help overlay state (live `/` filter).
++/// Help overlay state (fzf-style filter with single-line text input and scrolling).
+ #[derive(Debug, Clone, Default)]
+ pub struct HelpState {
+-    pub filter: String,
++    pub input: crate::input::textinput::TextInput,
++    pub scroll: usize,
+ }
+ 
+-/// Render the help modal (156×37, 4 columns).
+-pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
++impl HelpState {
++    pub fn new(filter: &str) -> Self {
++        Self {
++            input: crate::input::textinput::TextInput::with(filter),
++            scroll: 0,
++        }
++    }
++
++    pub fn query(&self) -> &str {
++        self.input.value()
++    }
++}
++
++/// Render the help modal (single-column categorized list with fzf-style text input at bottom).
++pub fn render(frame: &mut Frame, theme: &Theme, state: &HelpState, map: &Keymap) {
+     let t = &theme.tokens;
+     let area = frame.area();
+-    let w = 156u16.min(area.width.saturating_sub(4));
+-    let h = 37u16.min(area.height.saturating_sub(4));
++    let w = 82u16.min(area.width.saturating_sub(4));
++    let h = 34u16.min(area.height.saturating_sub(4));
+     let modal = Rect::new(
+         area.x + (area.width - w) / 2,
+         area.y + (area.height - h) / 2,
+@@ -305,29 +319,61 @@ pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
+         .border_style(Style::default().fg(t.blue).bg(t.bg))
+         .style(theme.base())
+         .title(Span::styled(" ? Keybindings ", theme.panel_title(true)))
+-        .title_top(Line::from(Span::styled(" / search · ⎋ close ", theme.dim())).right_aligned());
++        .title_top(Line::from(Span::styled(" ⎋ close ", theme.dim())).right_aligned());
+     frame.render_widget(block, modal);
+-    let inner = Rect::new(modal.x + 2, modal.y + 1, modal.width - 4, modal.height - 2);
+-    let cols = Layout::default()
+-        .direction(Direction::Horizontal)
+-        .constraints([
+-            Constraint::Percentage(25),
+-            Constraint::Percentage(25),
+-            Constraint::Percentage(25),
+-            Constraint::Percentage(25),
+-        ])
+-        .spacing(1)
+-        .split(Rect::new(
+-            inner.x,
+-            inner.y,
+-            inner.width,
+-            inner.height.saturating_sub(2),
+-        ));
++
++    let inner = Rect::new(
++        modal.x + 1,
++        modal.y + 1,
++        modal.width.saturating_sub(2),
++        modal.height.saturating_sub(2),
++    );
++    if inner.width < 4 || inner.height < 3 {
++        return;
++    }
++
++    let rows = Layout::default()
++        .direction(Direction::Vertical)
++        .constraints([Constraint::Min(1), Constraint::Length(1), Constraint::Length(1)])
++        .split(inner);
++
++    let query = state.query().trim();
+     let sections = sections(map);
+-    let groups: [&[Section]; 4] = [&sections[0..2], &sections[2..4], &sections[4..6], &sections[6..8]];
+-    for (col, group) in cols.iter().zip(groups) {
+-        let mut lines: Vec<Line> = Vec::new();
+-        for sec in group {
++    let mut matcher = nucleo_matcher::Matcher::new(nucleo_matcher::Config::DEFAULT);
++
++    let mut total_rows = 0;
++    let mut matching_rows = 0;
++    let mut lines: Vec<Line> = Vec::new();
++
++    let mut first_sec = true;
++    for sec in &sections {
++        let mut matched_in_sec: Vec<&(String, String, bool)> = Vec::new();
++        for row in &sec.rows {
++            total_rows += 1;
++            let (k, d, _) = row;
++            let haystack = format!("{} {} {}", sec.title, k, d);
++            let matches = if query.is_empty() || haystack.to_lowercase().contains(&query.to_lowercase()) {
++                true
++            } else {
++                let mut haystack_buf = Vec::new();
++                let mut needle_buf = Vec::new();
++                let h_utf = nucleo_matcher::Utf32Str::new(&haystack, &mut haystack_buf);
++                let n_utf = nucleo_matcher::Utf32Str::new(query, &mut needle_buf);
++                matcher.fuzzy_match(h_utf, n_utf).is_some()
++            };
++
++            if matches {
++                matching_rows += 1;
++                matched_in_sec.push(row);
++            }
++        }
++
++        if !matched_in_sec.is_empty() {
++            if !first_sec {
++                lines.push(Line::from(""));
++            }
++            first_sec = false;
++
+             let color = match sec.color {
+                 "blue" => t.blue,
+                 "green" => t.green,
+@@ -338,16 +384,18 @@ pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
+                 "yellow" => t.yellow,
+                 _ => t.fg,
+             };
++
+             lines.push(Line::from(vec![Span::styled(
+-                sec.title.clone(),
++                format!("  {}", sec.title),
+                 Style::default().fg(color).bg(t.bg).add_modifier(Modifier::BOLD),
+             )]));
+-            for (k, d, destructive) in &sec.rows {
+-                if !filter.is_empty() && !format!("{k} {d}").to_lowercase().contains(&filter.to_lowercase()) {
+-                    continue;
+-                }
++
++            for (k, d, destructive) in matched_in_sec {
++                let k_len = unicode_width::UnicodeWidthStr::width(k.as_str());
++                let pad = " ".repeat(16usize.saturating_sub(k_len));
+                 lines.push(Line::from(vec![
+-                    Span::styled(format!("{k:<12}"), theme.key()),
++                    Span::raw("    "),
++                    Span::styled(format!("{k}{pad}"), theme.key()),
+                     Span::styled(
+                         d.clone(),
+                         if *destructive {
+@@ -358,14 +406,55 @@ pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
+                     ),
+                 ]));
+             }
+-            lines.push(Line::from(""));
+         }
+-        frame.render_widget(Paragraph::new(lines).style(theme.base()), *col);
+     }
+-    let footer = Line::from(vec![Span::styled(
+-        "● asks for confirmation",
+-        Style::default().fg(t.red).bg(t.bg),
+-    )]);
+-    let footer_area = Rect::new(inner.x, inner.y + inner.height - 1, inner.width, 1);
+-    frame.render_widget(Paragraph::new(footer).style(theme.base()), footer_area);
++
++    if lines.is_empty() {
++        lines.push(Line::from(""));
++        lines.push(Line::from(Span::styled(
++            "    no matching keybindings",
++            theme.dim(),
++        )));
++    }
++
++    // Scrollable list area
++    let list_h = rows[0].height as usize;
++    let max_scroll = lines.len().saturating_sub(list_h);
++    let scroll = state.scroll.min(max_scroll);
++    let visible_lines: Vec<Line> = lines.into_iter().skip(scroll).take(list_h).collect();
++    frame.render_widget(Paragraph::new(visible_lines).style(theme.base()), rows[0]);
++
++    // Separator with legend
++    let legend = "── ● asks for confirmation ";
++    let sep_len = (inner.width as usize).saturating_sub(legend.chars().count());
++    let sep_line = Line::from(vec![
++        Span::styled("── ", Style::default().fg(t.hl)),
++        Span::styled("● asks for confirmation ", Style::default().fg(t.red)),
++        Span::styled("─".repeat(sep_len), Style::default().fg(t.hl)),
++    ]);
++    frame.render_widget(Paragraph::new(sep_line), rows[1]);
++
++    // Bottom single-line text input
++    let text = state.input.value();
++    let cur = state.input.cursor().min(text.len());
++    let (before, rest) = text.split_at(cur);
++    let mut rest_chars = rest.chars();
++    let at_cursor = rest_chars.next().map_or(String::from(" "), String::from);
++    let after: String = rest_chars.collect();
++
++    let left = vec![
++        Span::styled(
++            "  ❯ ",
++            Style::default().fg(t.magenta).add_modifier(Modifier::BOLD),
++        ),
++        Span::styled(
++            before.to_string(),
++            Style::default().fg(t.fg).add_modifier(Modifier::BOLD),
++        ),
++        Span::styled(at_cursor, Style::default().fg(t.bg).bg(t.fg)),
++        Span::styled(after, Style::default().fg(t.fg).add_modifier(Modifier::BOLD)),
++    ];
++    let count = format!("{} / {}  ", matching_rows, total_rows);
++    let right = vec![Span::styled(count, Style::default().fg(t.comment).bg(t.bg2))];
++    crate::ui::chrome::render_split(frame, rows[2], left, right, Style::default().bg(t.bg2));
+ }

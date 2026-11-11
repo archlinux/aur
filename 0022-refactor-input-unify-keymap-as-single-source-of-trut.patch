@@ -1,0 +1,750 @@
+From 843274a289c5a145a9e50a4e17b6fdbbb8439bc1 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Thu, 5 Nov 2026 00:15:48 +0100
+Subject: [PATCH 22/23] refactor(input): unify keymap as single source of truth
+ across help and detail view
+
+---
+ book/src/keys.md        |   5 +-
+ src/app/detail.rs       | 254 ++++++++++++++++++++--------------------
+ src/app/mod.rs          |  14 +--
+ src/app/networks.rs     |   2 +-
+ src/app/storage.rs      |   2 +-
+ src/input/engine.rs     |  14 ++-
+ src/input/keymap.rs     |   6 +-
+ src/ui/overlays/help.rs | 199 +++++++++++++++++--------------
+ 8 files changed, 267 insertions(+), 229 deletions(-)
+
+diff --git a/book/src/keys.md b/book/src/keys.md
+index 5aa9075039106df8004d52c8f3bb52733c51ac1b..3929bde614cd24e3a1bb4176a9c813c59290089b 100644
+--- a/book/src/keys.md
++++ b/book/src/keys.md
+@@ -72,8 +72,11 @@ key map, so it reflects your `keymap.toml`. Type to filter it.
+ | `V` | visual selection | `visual` |
+ | `o` | cycle sort | `sort_cycle` |
+ | `t` | history window 60 s / 5 min / 1 h | `window_cycle` |
+-| `Tab` | cycle panel focus (Networks, Storage) | `cycle_focus` |
++| `Tab` / `Shift-Tab` | cycle panel focus (Networks, Storage, Hardware) | `cycle_focus` / `cycle_focus_prev` |
++| `i` | edit field (hardware editor) | `edit_field` |
+ | `u` | undo field (hardware editor) | `undo_field` |
++| `d` | detach device (hardware editor) | `device_detach` |
++| `J` / `K` | boot order down / up (hardware editor) | `boot_order` / `boot_order_prev` |
+ | `gx` | go to the XML tab | `goto_xml` |
+ 
+ ### App
+diff --git a/src/app/detail.rs b/src/app/detail.rs
+index 055a13e899aa3c29d6abc7f3083bbbbe5b7d554c..66d23111a103f5ad0b55a973edf7deaf75c9f787 100644
+--- a/src/app/detail.rs
++++ b/src/app/detail.rs
+@@ -4,146 +4,71 @@
+ 
+ use super::*;
+ 
+-/// Hardware-tab keys (NORMAL + INSERT). Returns true when consumed.
++/// Hardware-tab keys in INSERT mode (raw editing, bypass the engine, except Esc).
++/// Returns true when consumed.
+ pub(super) fn handle_hardware_key(
+     key: KeyEvent,
+     detail: &mut Option<ui::views::detail::DetailState>,
+-    confirm: &mut Option<crate::command::plan::PendingConfirm>,
+-    ex_line: &mut Option<crate::input::textinput::TextInput>,
+     engine: &mut crate::input::engine::KeyEngine,
+ ) -> bool {
+     use crate::input::key::KeySeq;
+     let Some(d) = detail else { return false };
+-    if d.tab != crate::ui::views::detail::DetailTab::Hardware {
++    if d.tab != crate::ui::views::detail::DetailTab::Hardware || !d.hw_insert {
+         return false;
+     }
+     // INSERT mode: raw editing, bypass the engine (except Esc).
+-    if d.hw_insert {
+-        if key.code == KeyCode::Esc {
+-            d.hw_insert = false;
+-            d.message.clear();
+-            engine.feed(&KeySeq::parse("Esc"));
+-            return true;
+-        }
+-        let dev_id = d.hw.selected_device().id.to_string();
+-        match key.code {
+-            KeyCode::Enter | KeyCode::Tab => {
+-                if let Some(form) = d.hw.forms.get_mut(dev_id.as_str()) {
+-                    form.move_focus(1);
+-                }
+-                return true;
+-            }
+-            KeyCode::BackTab => {
+-                if let Some(form) = d.hw.forms.get_mut(dev_id.as_str()) {
+-                    form.move_focus(-1);
+-                }
+-                return true;
+-            }
+-            KeyCode::Backspace => {
+-                edit_focused(&mut d.hw, &dev_id, EditOp::Pop);
+-                return true;
+-            }
+-            KeyCode::Char(c) if key.modifiers.contains(KeyModifiers::CONTROL) && (c == 'a' || c == 'x') => {
+-                edit_focused(&mut d.hw, &dev_id, EditOp::Adjust(if c == 'a' { 1 } else { -1 }));
+-                return true;
+-            }
+-            KeyCode::Char(c) if key.modifiers.is_empty() => {
+-                let is_number =
+-                    d.hw.forms
+-                        .get(dev_id.as_str())
+-                        .and_then(|f| f.fields.get(f.focus))
+-                        .is_some_and(|f| {
+-                            matches!(
+-                                f.kind,
+-                                crate::ui::widgets::form::FieldKind::Number { .. }
+-                                    | crate::ui::widgets::form::FieldKind::Size
+-                            )
+-                        });
+-                if is_number && matches!(c, 'h' | 'l' | 'H' | 'L') {
+-                    let delta = match c {
+-                        'h' => -1,
+-                        'l' => 1,
+-                        'H' => -10,
+-                        'L' => 10,
+-                        _ => 0,
+-                    };
+-                    edit_focused(&mut d.hw, &dev_id, EditOp::Adjust(delta));
+-                } else {
+-                    edit_focused(&mut d.hw, &dev_id, EditOp::Push(c));
+-                }
+-                return true;
+-            }
+-            _ => return false,
+-        }
++    if key.code == KeyCode::Esc {
++        d.hw_insert = false;
++        d.message.clear();
++        engine.feed(&KeySeq::parse("Esc"));
++        return true;
+     }
+-    // NORMAL mode hardware keys.
+-    let tok = KeySeq::from_event(&key);
+-    match tok.token() {
+-        "j" => {
+-            d.hw.selected = (d.hw.selected + 1).min(d.hw.devices.len() - 1);
+-            true
+-        }
+-        "k" => {
+-            d.hw.selected = d.hw.selected.saturating_sub(1);
+-            true
+-        }
+-        "i" => {
+-            d.hw_insert = true;
+-            d.message = String::from("-- INSERT --");
+-            true
+-        }
+-        "a" => {
+-            let dev = d.hw.selected_device().id.to_string();
+-            let prefix = if dev.starts_with("disk") {
+-                "attach-disk <src> <target>"
+-            } else if dev.starts_with("nic") {
+-                "attach-nic <source> <model>"
+-            } else {
+-                "attach-hostdev "
+-            };
+-            *ex_line = Some(crate::input::textinput::TextInput::with(prefix));
+-            true
+-        }
+-        "d" => {
+-            stage_detach(d, confirm);
+-            true
+-        }
+-        "J" => {
+-            boot_reorder(d, 1);
+-            true
+-        }
+-        "K" => {
+-            boot_reorder(d, -1);
+-            true
+-        }
+-        "Tab" => {
+-            let dev = d.hw.selected_device().id.to_string();
+-            if let Some(form) = d.hw.forms.get_mut(dev.as_str()) {
++    let dev_id = d.hw.selected_device().id.to_string();
++    match key.code {
++        KeyCode::Enter | KeyCode::Tab => {
++            if let Some(form) = d.hw.forms.get_mut(dev_id.as_str()) {
+                 form.move_focus(1);
+             }
+             true
+         }
+-        "S-Tab" => {
+-            let dev = d.hw.selected_device().id.to_string();
+-            if let Some(form) = d.hw.forms.get_mut(dev.as_str()) {
++        KeyCode::BackTab => {
++            if let Some(form) = d.hw.forms.get_mut(dev_id.as_str()) {
+                 form.move_focus(-1);
+             }
+             true
+         }
+-        "u" => {
+-            let dev = d.hw.selected_device().id.to_string();
+-            undo_focused(d, &dev);
++        KeyCode::Backspace => {
++            edit_focused(&mut d.hw, &dev_id, EditOp::Pop);
++            true
++        }
++        KeyCode::Char(c) if key.modifiers.contains(KeyModifiers::CONTROL) && (c == 'a' || c == 'x') => {
++            edit_focused(&mut d.hw, &dev_id, EditOp::Adjust(if c == 'a' { 1 } else { -1 }));
+             true
+         }
+-        "y" => {
+-            let text =
+-                d.hw.will_run(&d.domain)
+-                    .iter()
+-                    .flat_map(|p| p.steps.iter().map(crate::command::display::display))
+-                    .collect::<Vec<_>>()
+-                    .join("\n");
+-            copy_text(&text);
+-            d.message = String::from("copied will-run commands");
++        KeyCode::Char(c) if key.modifiers.is_empty() => {
++            let is_number =
++                d.hw.forms
++                    .get(dev_id.as_str())
++                    .and_then(|f| f.fields.get(f.focus))
++                    .is_some_and(|f| {
++                        matches!(
++                            f.kind,
++                            crate::ui::widgets::form::FieldKind::Number { .. }
++                                | crate::ui::widgets::form::FieldKind::Size
++                        )
++                    });
++            if is_number && matches!(c, 'h' | 'l' | 'H' | 'L') {
++                let delta = match c {
++                    'h' => -1,
++                    'l' => 1,
++                    'H' => -10,
++                    'L' => 10,
++                    _ => 0,
++                };
++                edit_focused(&mut d.hw, &dev_id, EditOp::Adjust(delta));
++            } else {
++                edit_focused(&mut d.hw, &dev_id, EditOp::Push(c));
++            }
+             true
+         }
+         _ => false,
+@@ -490,6 +415,8 @@ pub(super) async fn dispatch_detail(
+     action: crate::input::engine::KeyAction,
+     detail: &mut Option<ui::views::detail::DetailState>,
+     view: &mut View,
++    confirm: &mut Option<crate::command::plan::PendingConfirm>,
++    ex_line: &mut Option<crate::input::textinput::TextInput>,
+     uri: &str,
+     dry_run: bool,
+     demo: bool,
+@@ -497,6 +424,86 @@ pub(super) async fn dispatch_detail(
+     use crate::input::engine::KeyAction as A;
+     use crate::ui::views::detail::{DetailTab, SnapModal};
+     let Some(d) = detail else { return false };
++    if d.tab == DetailTab::Hardware && !d.hw_insert {
++        match action {
++            A::MoveDown => {
++                d.hw.selected = (d.hw.selected + 1).min(d.hw.devices.len().saturating_sub(1));
++                return false;
++            }
++            A::MoveUp => {
++                d.hw.selected = d.hw.selected.saturating_sub(1);
++                return false;
++            }
++            A::GoTop => {
++                d.hw.selected = 0;
++                return false;
++            }
++            A::GoBottom => {
++                d.hw.selected = d.hw.devices.len().saturating_sub(1);
++                return false;
++            }
++            A::CycleFocus => {
++                let dev = d.hw.selected_device().id.to_string();
++                if let Some(form) = d.hw.forms.get_mut(dev.as_str()) {
++                    form.move_focus(1);
++                }
++                return false;
++            }
++            A::CycleFocusPrev => {
++                let dev = d.hw.selected_device().id.to_string();
++                if let Some(form) = d.hw.forms.get_mut(dev.as_str()) {
++                    form.move_focus(-1);
++                }
++                return false;
++            }
++            A::EditField | A::Open => {
++                d.hw_insert = true;
++                d.message = String::from("-- INSERT --");
++                return false;
++            }
++            A::UndoField => {
++                let dev = d.hw.selected_device().id.to_string();
++                undo_focused(d, &dev);
++                return false;
++            }
++            A::DeviceDetach => {
++                stage_detach(d, confirm);
++                return false;
++            }
++            A::BootOrder => {
++                boot_reorder(d, 1);
++                return false;
++            }
++            A::BootOrderPrev => {
++                boot_reorder(d, -1);
++                return false;
++            }
++            A::YankCmd => {
++                let text =
++                    d.hw.will_run(&d.domain)
++                        .iter()
++                        .flat_map(|p| p.steps.iter().map(crate::command::display::display))
++                        .collect::<Vec<_>>()
++                        .join("\n");
++                copy_text(&text);
++                d.message = String::from("copied will-run commands");
++                return false;
++            }
++            A::Autostart => {
++                let dev = d.hw.selected_device().id.to_string();
++                let prefix = if dev.starts_with("disk") {
++                    "attach-disk <src> <target>"
++                } else if dev.starts_with("nic") {
++                    "attach-nic <source> <model>"
++                } else {
++                    "attach-hostdev "
++                };
++                *ex_line = Some(crate::input::textinput::TextInput::with(prefix));
++                return false;
++            }
++            _ => {}
++        }
++    }
+     if d.tab == DetailTab::Snapshots && d.snap_modal == SnapModal::None {
+         match action {
+             A::MoveDown => {
+@@ -557,15 +564,6 @@ pub(super) async fn dispatch_detail(
+         A::NextTab => d.next_tab(),
+         A::PrevTab => d.prev_tab(),
+         A::GotoXml => d.tab = ui::views::detail::DetailTab::Xml,
+-        A::UndoField if d.tab == ui::views::detail::DetailTab::Hardware && !d.hw_insert => {
+-            let dev = d.hw.selected_device().id.to_string();
+-            if let Some(form) = d.hw.forms.get(dev.as_str())
+-                && let Some(field) = form.fields.get(form.focus)
+-            {
+-                let id = field.id.clone();
+-                d.hw.undo_field(&dev, &id);
+-            }
+-        }
+         A::EditXml if d.tab == ui::views::detail::DetailTab::Xml => {
+             d.message = edit_domain_xml(uri, &d.domain, &d.xml, dry_run, demo).await;
+             if !demo {
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 7aac56ff3fe872d7563b30ade4e5e94e2ec776c5..dc5daea7f380bf4edd6eac4a3aceb78600cc3d27 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -1045,16 +1045,8 @@ impl App {
+         {
+             return false;
+         }
+-        // Hardware tab keys bypass the engine (INSERT raw editing, J/K, Tab…).
+-        if self.view == View::Detail
+-            && handle_hardware_key(
+-                key,
+-                &mut self.detail,
+-                &mut self.confirm,
+-                &mut self.ex_line,
+-                &mut self.engine,
+-            )
+-        {
++        // Hardware tab keys bypass the engine only in INSERT mode (raw editing, Esc).
++        if self.view == View::Detail && handle_hardware_key(key, &mut self.detail, &mut self.engine) {
+             return false;
+         }
+         if key.code == KeyCode::Esc && self.dash.visual_anchor.is_some() {
+@@ -1429,6 +1421,8 @@ impl App {
+                     resolved.action,
+                     &mut self.detail,
+                     &mut self.view,
++                    &mut self.confirm,
++                    &mut self.ex_line,
+                     &self.uri,
+                     self.dry_run,
+                     self.demo,
+diff --git a/src/app/networks.rs b/src/app/networks.rs
+index 21aaa66a50ca47d1f205618d5098f9e3ae66fccb..22acdb311138743b247bc21fdf6de28f31c88bb7 100644
+--- a/src/app/networks.rs
++++ b/src/app/networks.rs
+@@ -29,7 +29,7 @@ pub(super) async fn dispatch_networks(
+                 load_net_selection(uri, nets).await;
+             }
+         }
+-        A::CycleFocus => {
++        A::CycleFocus | A::CycleFocusPrev => {
+             nets.focus = if nets.focus == NetFocus::Leases {
+                 NetFocus::Networks
+             } else {
+diff --git a/src/app/storage.rs b/src/app/storage.rs
+index 132d309a37e22226d1ba093fa7df9425fe9f634f..a091b2e47502553f3c2c7d6f86ec5b35d50a1bb6 100644
+--- a/src/app/storage.rs
++++ b/src/app/storage.rs
+@@ -310,7 +310,7 @@ pub(super) async fn dispatch_storage(
+                 store.vol_selected = store.vol_selected.saturating_sub(1);
+             }
+         }
+-        A::CycleFocus => {
++        A::CycleFocus | A::CycleFocusPrev => {
+             store.focus_pools = !store.focus_pools;
+         }
+         A::Open => {
+diff --git a/src/input/engine.rs b/src/input/engine.rs
+index c081b3a7ab219da15493bfcf5424359ae1c6011e..1157d8c8e4af84a9d0348519ab6262bd0d69e015 100644
+--- a/src/input/engine.rs
++++ b/src/input/engine.rs
+@@ -78,6 +78,10 @@ pub enum KeyAction {
+     NicAttach,
+     NicLink,
+     BootOrder,
++    BootOrderPrev,
++    EditField,
++    DeviceDetach,
++    CycleFocusPrev,
+     ConfirmYes,
+     ConfirmNo,
+     PrevTab,
+@@ -156,6 +160,10 @@ impl KeyAction {
+         (Self::NicAttach, "nic_attach"),
+         (Self::NicLink, "nic_link"),
+         (Self::BootOrder, "boot_order"),
++        (Self::BootOrderPrev, "boot_order_prev"),
++        (Self::EditField, "edit_field"),
++        (Self::DeviceDetach, "device_detach"),
++        (Self::CycleFocusPrev, "cycle_focus_prev"),
+         (Self::ConfirmYes, "confirm_yes"),
+         (Self::ConfirmNo, "confirm_no"),
+         (Self::PrevTab, "prev_tab"),
+@@ -271,6 +279,10 @@ impl KeyAction {
+             Self::NicAttach => "NIC attach",
+             Self::NicLink => "NIC link",
+             Self::BootOrder => "boot order",
++            Self::BootOrderPrev => "boot order up",
++            Self::EditField => "edit field (INSERT)",
++            Self::DeviceDetach => "detach device",
++            Self::CycleFocusPrev => "cycle focus backwards",
+             Self::ConfirmYes => "confirm yes",
+             Self::ConfirmNo => "confirm no",
+             Self::PrevTab => "prev tab",
+@@ -290,7 +302,7 @@ impl KeyAction {
+     pub fn is_destructive(self) -> bool {
+         matches!(
+             self,
+-            Self::Destroy | Self::Reset | Self::Undefine | Self::SnapshotDelete
++            Self::Destroy | Self::Reset | Self::Undefine | Self::SnapshotDelete | Self::DeviceDetach
+         )
+     }
+ }
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index 6521c9d5d263d7051b73d8f9b34edb3aee2c5ff9..059c02489aaa3c86ad31e9bcb5e61a1e18ebb21e 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -60,7 +60,7 @@ pub const DEFAULT_BINDINGS: &[(&[&str], KeyAction)] = &[
+     (&["m"], KeyAction::Mark),
+     (&["V"], KeyAction::Visual),
+     (&["Tab"], KeyAction::CycleFocus),
+-    (&["S-Tab"], KeyAction::CycleFocus),
++    (&["S-Tab"], KeyAction::CycleFocusPrev),
+     (&["h"], KeyAction::PrevTab),
+     (&["l"], KeyAction::NextTab),
+     (&["H"], KeyAction::PrevTab),
+@@ -68,6 +68,10 @@ pub const DEFAULT_BINDINGS: &[(&[&str], KeyAction)] = &[
+     (&["["], KeyAction::PrevTab),
+     (&["]"], KeyAction::NextTab),
+     (&["u"], KeyAction::UndoField),
++    (&["i"], KeyAction::EditField),
++    (&["d"], KeyAction::DeviceDetach),
++    (&["J"], KeyAction::BootOrder),
++    (&["K"], KeyAction::BootOrderPrev),
+     (&["g", "x"], KeyAction::GotoXml),
+     // View tabs: instant 1-5 view switches.
+     (&["1"], KeyAction::ViewDomains),
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index 4a46d8cee83968c27617ee06a2c327d7e5ed1adf..9c2375c2616003b4d61f1402779b403436ff7397 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -101,18 +101,64 @@ fn live_label(map: &Keymap, actions: &[A]) -> Option<String> {
+     Some(parts.join(" / "))
+ }
+ 
+-fn sec(map: &Keymap, title: &str, color: &'static str, rows: &[(&str, &str, bool, &[A])]) -> Section {
++/// Definition of a row in the help overlay.
++#[derive(Debug, Clone, Copy)]
++pub enum RowDef {
++    /// Action-backed row: the key labels are derived 100% dynamically from `Keymap`.
++    Action {
++        actions: &'static [A],
++        desc: &'static str,
++        critical: bool,
++    },
++    /// Static informative row (e.g. ex commands, mode indicators) with no KeyAction binding.
++    Static {
++        key: &'static str,
++        desc: &'static str,
++        critical: bool,
++    },
++}
++
++const fn act(actions: &'static [A], desc: &'static str) -> RowDef {
++    RowDef::Action {
++        actions,
++        desc,
++        critical: false,
++    }
++}
++
++const fn act_crit(actions: &'static [A], desc: &'static str) -> RowDef {
++    RowDef::Action {
++        actions,
++        desc,
++        critical: true,
++    }
++}
++
++const fn info(key: &'static str, desc: &'static str) -> RowDef {
++    RowDef::Static {
++        key,
++        desc,
++        critical: false,
++    }
++}
++
++fn sec(map: &Keymap, title: &str, color: &'static str, rows: &[RowDef]) -> Section {
+     Section {
+         title: title.to_string(),
+         color,
+         rows: rows
+             .iter()
+-            .map(|(k, d, c, acts)| {
+-                (
+-                    live_label(map, acts).unwrap_or_else(|| k.to_string()),
+-                    d.to_string(),
+-                    *c,
+-                )
++            .map(|row| match row {
++                RowDef::Action {
++                    actions,
++                    desc,
++                    critical,
++                } => (
++                    live_label(map, actions).unwrap_or_else(|| String::from("—")),
++                    desc.to_string(),
++                    *critical,
++                ),
++                RowDef::Static { key, desc, critical } => (key.to_string(), desc.to_string(), *critical),
+             })
+             .collect(),
+     }
+@@ -127,15 +173,12 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             "Navigation",
+             "blue",
+             &[
+-                ("j / k", "down / up", false, &[A::MoveDown, A::MoveUp]),
+-                ("gg / G", "top / bottom", false, &[A::GoTop, A::GoBottom]),
+-                ("C-d / C-u", "half page", false, &[A::HalfDown, A::HalfUp]),
+-                ("Tab", "cycle focus", false, &[A::CycleFocus]),
+-                ("h / l", "prev / next tab", false, &[A::PrevTab, A::NextTab]),
+-                (
+-                    "1 … 5",
+-                    "switch view",
+-                    false,
++                act(&[A::MoveDown, A::MoveUp], "down / up"),
++                act(&[A::GoTop, A::GoBottom], "top / bottom"),
++                act(&[A::HalfDown, A::HalfUp], "half page"),
++                act(&[A::CycleFocus], "cycle focus"),
++                act(&[A::PrevTab, A::NextTab], "prev / next tab"),
++                act(
+                     &[
+                         A::ViewDomains,
+                         A::ViewHost,
+@@ -143,11 +186,12 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+                         A::ViewStorage,
+                         A::ViewEvents,
+                     ],
++                    "switch view",
+                 ),
+-                ("⏎", "open", false, &[A::Open]),
+-                ("⌫ / q", "back", false, &[A::Back]),
+-                ("/", "filter", false, &[A::Filter]),
+-                ("n / N", "next / prev match", false, &[A::NextMatch, A::PrevMatch]),
++                act(&[A::Open], "open"),
++                act(&[A::Back], "back"),
++                act(&[A::Filter], "filter"),
++                act(&[A::NextMatch, A::PrevMatch], "next / prev match"),
+             ],
+         ),
+         sec(
+@@ -155,13 +199,13 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             "Modes",
+             "green",
+             &[
+-                ("i / a", "edit field (INSERT)", false, &[]),
+-                ("⎋", "back to NORMAL", false, &[]),
+-                ("V", "visual select", false, &[A::Visual]),
+-                ("m", "mark / unmark", false, &[A::Mark]),
+-                (":", "ex command", false, &[A::Ex]),
+-                (": ⇥", "complete in : line", false, &[]),
+-                ("C-p", "command palette", false, &[A::Palette]),
++                act(&[A::EditField], "edit field (INSERT)"),
++                info("⎋", "back to NORMAL"),
++                act(&[A::Visual], "visual select"),
++                act(&[A::Mark], "mark / unmark"),
++                act(&[A::Ex], "ex command"),
++                info(": ⇥", "complete in : line"),
++                act(&[A::Palette], "command palette"),
+             ],
+         ),
+         sec(
+@@ -169,18 +213,18 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             "Domain",
+             "magenta",
+             &[
+-                ("s", "start", false, &[A::Start]),
+-                ("S", "shutdown (ACPI)", false, &[A::Shutdown]),
+-                ("D", "destroy (force off)", true, &[A::Destroy]),
+-                ("r", "reboot", false, &[A::Reboot]),
+-                ("R", "reset", true, &[A::Reset]),
+-                ("p", "pause / resume", false, &[A::Pause]),
+-                ("Z", "suspend to disk", false, &[A::ManagedSave]),
+-                ("a", "toggle autostart", false, &[A::Autostart]),
+-                ("c", "serial console", false, &[A::Console]),
+-                ("v", "graphical viewer", false, &[A::Viewer]),
+-                ("e", "edit XML ($EDITOR)", false, &[A::EditXml]),
+-                ("X", "undefine", true, &[A::Undefine]),
++                act(&[A::Start], "start"),
++                act(&[A::Shutdown], "shutdown (ACPI)"),
++                act_crit(&[A::Destroy], "destroy (force off)"),
++                act(&[A::Reboot], "reboot"),
++                act_crit(&[A::Reset], "reset"),
++                act(&[A::Pause], "pause / resume"),
++                act(&[A::ManagedSave], "suspend to disk"),
++                act(&[A::Autostart], "toggle autostart"),
++                act(&[A::Console], "serial console"),
++                act(&[A::Viewer], "graphical viewer"),
++                act(&[A::EditXml], "edit XML ($EDITOR)"),
++                act_crit(&[A::Undefine], "undefine"),
+             ],
+         ),
+         sec(
+@@ -188,10 +232,10 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             "Yank",
+             "cyan",
+             &[
+-                ("yy", "name", false, &[A::YankName]),
+-                ("yu", "uuid", false, &[A::YankUuid]),
+-                ("yi", "ip address", false, &[A::YankIp]),
+-                ("yc", "last virsh command", false, &[A::YankCmd]),
++                act(&[A::YankName], "name"),
++                act(&[A::YankUuid], "uuid"),
++                act(&[A::YankIp], "ip address"),
++                act(&[A::YankCmd], "last virsh command"),
+             ],
+         ),
+         sec(
+@@ -199,36 +243,19 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             &leader_title(map),
+             "orange",
+             &[
+-                ("␣n", "new domain", false, &[A::NewDomain]),
+-                ("␣c", "clone", false, &[A::Clone]),
+-                ("␣r", "rename", false, &[A::Rename]),
+-                ("␣M", "migrate", false, &[A::Migrate]),
+-                (
+-                    "␣s c/r/d",
+-                    "snapshot new/revert/del",
+-                    false,
++                act(&[A::NewDomain], "new domain"),
++                act(&[A::Clone], "clone"),
++                act(&[A::Rename], "rename"),
++                act(&[A::Migrate], "migrate"),
++                act(
+                     &[A::SnapshotNew, A::SnapshotRevert, A::SnapshotDelete],
++                    "snapshot new/revert/del",
+                 ),
+-                (
+-                    "␣mi / ␣me",
+-                    "insert / eject ISO",
+-                    false,
+-                    &[A::InsertMedia, A::EjectMedia],
+-                ),
+-                (
+-                    "␣da / ␣dr",
+-                    "disk attach / resize",
+-                    false,
+-                    &[A::DiskAttach, A::DiskResize],
+-                ),
+-                (
+-                    "␣ia / ␣il",
+-                    "NIC attach / link",
+-                    false,
+-                    &[A::NicAttach, A::NicLink],
+-                ),
+-                ("␣x", "export XML", false, &[A::ExportXml]),
+-                ("␣b", "boot order", false, &[A::BootOrder]),
++                act(&[A::InsertMedia, A::EjectMedia], "insert / eject ISO"),
++                act(&[A::DiskAttach, A::DiskResize], "disk attach / resize"),
++                act(&[A::NicAttach, A::NicLink], "NIC attach / link"),
++                act(&[A::ExportXml], "export XML"),
++                act(&[A::BootOrder], "boot order"),
+             ],
+         ),
+         sec(
+@@ -236,8 +263,8 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             "Monitor",
+             "teal",
+             &[
+-                ("t", "60s · 5m · 1h", false, &[A::WindowCycle]),
+-                ("o", "cycle sort", false, &[A::SortCycle]),
++                act(&[A::WindowCycle], "60s · 5m · 1h"),
++                act(&[A::SortCycle], "cycle sort"),
+             ],
+         ),
+         sec(
+@@ -245,14 +272,14 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             "Ex commands",
+             "yellow",
+             &[
+-                (":start", "arch-dev", false, &[]),
+-                (":setmem", "arch-dev 8G --live", false, &[]),
+-                (":attach-iso", "arch-dev ~/iso/…", false, &[]),
+-                (":connect", "qemu+ssh://h/system", false, &[]),
+-                (":theme", "tokyo-night", false, &[]),
+-                (":sort", "cpu | mem | name", false, &[]),
+-                (":w / :q", "apply / close", false, &[]),
+-                (":!virsh", "raw passthrough", false, &[]),
++                info(":start", "arch-dev"),
++                info(":setmem", "arch-dev 8G --live"),
++                info(":attach-iso", "arch-dev ~/iso/…"),
++                info(":connect", "qemu+ssh://h/system"),
++                info(":theme", "tokyo-night"),
++                info(":sort", "cpu | mem | name"),
++                info(":w / :q", "apply / close"),
++                info(":!virsh", "raw passthrough"),
+             ],
+         ),
+         sec(
+@@ -260,11 +287,11 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             "App",
+             "blue",
+             &[
+-                ("?", "this help", false, &[A::Help]),
+-                (",", "settings", false, &[A::Settings]),
+-                ("C-r", "force refresh", false, &[A::Refresh]),
+-                ("C-l", "redraw", false, &[A::Redraw]),
+-                ("ZZ / :qa", "quit", false, &[]),
++                act(&[A::Help], "this help"),
++                act(&[A::Settings], "settings"),
++                act(&[A::Refresh], "force refresh"),
++                act(&[A::Redraw], "redraw"),
++                info("ZZ / :qa", "quit"),
+             ],
+         ),
+     ]

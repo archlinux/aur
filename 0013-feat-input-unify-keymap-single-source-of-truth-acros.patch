@@ -1,0 +1,999 @@
+From 51119b543761d4b0867e4dcae12153d17f79ab72 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Tue, 3 Nov 2026 01:21:51 +0100
+Subject: [PATCH 13/23] feat(input): unify keymap single source of truth across
+ engine, which-key, and help
+
+---
+ docs/DECISIONS.md          |   7 ++
+ src/app/mod.rs             |   2 +-
+ src/app/render.rs          |   9 +-
+ src/input/engine.rs        | 130 ++++++++++++++++++++
+ src/input/keymap.rs        | 240 +++++++++++++++++++++++++------------
+ src/ui/overlays/help.rs    | 109 ++++++++++++++---
+ src/ui/overlays/palette.rs |  76 ++++++++++--
+ src/ui/widgets/whichkey.rs | 145 +++++++++++++++++-----
+ tests/p12_palette.rs       |  57 +++++++++
+ 9 files changed, 632 insertions(+), 143 deletions(-)
+
+diff --git a/docs/DECISIONS.md b/docs/DECISIONS.md
+index 11870eb9d414890615646cc07818dc40bf45e256..6813de366fbf7a28611c42d1e4388ff8639590ad 100644
+--- a/docs/DECISIONS.md
++++ b/docs/DECISIONS.md
+@@ -171,3 +171,10 @@
+ - **Deferred alternate screen and raw mode:** Previously, `enable_raw_mode()` and `EnterAlternateScreen` were called immediately in `main.rs` before `app::run`. When virsh connected to an unauthorized socket (e.g. non-root `qemu:///system`), PolicyKit's textual agent (`pkttyagent`) opened `/dev/tty` while the terminal was already in raw mode. In raw mode, `\n` without `\r` produced staircase formatting, canonical line input/echo was disabled so users could not type responses, and `terminal.clear()` timed out querying the cursor position (`The cursor position could not be read within a normal duration`). Terminal initialization is now managed by an RAII `TerminalGuard` in `app::run` after the initial connection and state preflight, so startup Polkit prompts display with proper line breaks and accept interactive identity and password input.
+ - **Detached controlling TTY during active TUI session:** Once the TUI is active, `exec::set_detach_tty(true)` ensures background commands and event streams (in `exec::run`, `exec::run_blocking`, `command::exec::execute`, and `events::stream_once`) run in a new session (`setsid()` on Unix). If permission is denied while the TUI is running or unauthorized, child processes fail immediately with an authentication error without opening `/dev/tty` or corrupting the ratatui interface.
+ - **Actionable authentication error messages:** `friendly_first_line` in `exec.rs` recognizes Polkit denial messages (e.g., `authentication unavailable`, `access denied by policy`, `polkit`) and appends `(not in the libvirt group?)`, matching `PLAN.md` §14 error UX.
++
++## Keymap single source of truth (2026-11-03)
++
++- **Unified key binding definitions:** `input::keymap::DEFAULT_BINDINGS` is now the single source of truth for all default key sequences. Changing a key sequence in `DEFAULT_BINDINGS` automatically updates the key engine behavior, the which-key leader popup, the help overlay, and the curated palette shortcuts without needing edits across multiple files.
++- **Dynamic which-key popup:** `ui::widgets::whichkey` was previously hardcoded with static string slices for `"Space"`, `"Space s"`, `"g"`, etc. It now derives its items, sub-prefixes (e.g. `s …`, `m …`), and labels dynamically from the active keymap (`KeyEngine::map()`), respecting user `keymap.toml` overrides and developer binding adjustments while preserving default ordering.
++- **Dynamic help overlay labels:** `ui::overlays::help` previously had disconnected static rows with empty action slices (e.g., `⌫ / q`, `1 … 5`, and static leader titles). All rows are now connected to their corresponding `KeyAction`s and dynamically format bound sequences, multi-key group compacting (`␣s c/r/d`), sequential tab ranges, and dynamic leader prefixes.
++- **Curated command palette synchronization:** Curated palette actions in `ui::overlays::palette::curated_with_map` now resolve their key shortcut strings from the keymap via `input::keymap::action_key_label`, ensuring palette shortcut badges stay in sync.
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index f40304314ce0c283352fa0378b7b71e782149cdc..5b96d19249c3f98a6530bb11862cac25d8263537 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -592,7 +592,7 @@ impl App {
+                 }
+             }
+             if let Some(prefix) = self.engine.pending_prefix() {
+-                render_which_key(f, &self.theme, &prefix);
++                render_which_key(f, &self.theme, &prefix, self.engine.map());
+             }
+             if let Some(wz) = &self.wizard {
+                 crate::ui::overlays::wizard::render(f, &self.theme, wz);
+diff --git a/src/app/render.rs b/src/app/render.rs
+index 67a6aff3992893767bb262a243a16f15772021f1..dd635d2dc940526969241f9de9d9eb075e0ea03f 100644
+--- a/src/app/render.rs
++++ b/src/app/render.rs
+@@ -5,8 +5,13 @@
+ use super::*;
+ 
+ /// Render the which-key popup bottom-right for a pending prefix.
+-pub(super) fn render_which_key(f: &mut ratatui::Frame, theme: &Theme, prefix: &str) {
+-    crate::ui::widgets::whichkey::render(f, theme, prefix);
++pub(super) fn render_which_key(
++    f: &mut ratatui::Frame,
++    theme: &Theme,
++    prefix: &str,
++    map: &std::collections::HashMap<Vec<String>, crate::input::engine::KeyAction>,
++) {
++    crate::ui::widgets::whichkey::render(f, theme, prefix, map);
+ }
+ 
+ pub(super) fn parse_size(size: &str) -> (u16, u16) {
+diff --git a/src/input/engine.rs b/src/input/engine.rs
+index ceed20d9f7d8b00ffe225dfbb378d8bb7bf54efe..220df0f9f32db966bc2f92c1c0971ce28d5a1f5e 100644
+--- a/src/input/engine.rs
++++ b/src/input/engine.rs
+@@ -204,6 +204,136 @@ impl KeyAction {
+                 | Self::SnapshotDelete
+         )
+     }
++
++    /// Human-readable description (used in help overlay, etc.).
++    pub fn description(self) -> &'static str {
++        match self {
++            Self::MoveUp => "up",
++            Self::MoveDown => "down",
++            Self::GoTop => "top",
++            Self::GoBottom => "bottom",
++            Self::HalfDown => "half page",
++            Self::HalfUp => "half page",
++            Self::Open => "open",
++            Self::Back => "back",
++            Self::Filter => "filter",
++            Self::NextMatch => "next match",
++            Self::PrevMatch => "prev match",
++            Self::Start => "start",
++            Self::Shutdown => "shutdown (ACPI)",
++            Self::Destroy => "destroy (force off)",
++            Self::Reboot => "reboot",
++            Self::Reset => "reset",
++            Self::Pause => "pause / resume",
++            Self::ManagedSave => "suspend to disk",
++            Self::ManagedSaveRemove => "remove saved state",
++            Self::Autostart => "toggle autostart",
++            Self::Console => "serial console",
++            Self::Viewer => "graphical viewer",
++            Self::EditXml => "edit XML ($EDITOR)",
++            Self::Undefine => "undefine",
++            Self::Rename => "rename",
++            Self::Clone => "clone",
++            Self::Migrate => "migrate",
++            Self::SendKey => "send key",
++            Self::ExportXml => "export XML",
++            Self::NewDomain => "new domain",
++            Self::YankName => "name",
++            Self::YankUuid => "uuid",
++            Self::YankIp => "ip address",
++            Self::YankCmd => "last virsh command",
++            Self::Mark => "mark / unmark",
++            Self::Visual => "visual select",
++            Self::SortCycle => "cycle sort",
++            Self::ChipCycle => "cycle filter chips",
++            Self::ChipCycleBack => "cycle filter chips back",
++            Self::WindowCycle => "60s · 5m · 1h",
++            Self::LeaseFocus => "lease focus",
++            Self::LeasePin => "lease pin",
++            Self::LeaseUnpin => "lease unpin",
++            Self::Ex => "ex command",
++            Self::Palette => "command palette",
++            Self::Help => "this help",
++            Self::Settings => "settings",
++            Self::Refresh => "force refresh",
++            Self::Redraw => "redraw",
++            Self::Quit => "quit",
++            Self::QuitAll => "quit all",
++            Self::SnapshotNew => "snapshot new",
++            Self::SnapshotRevert => "revert",
++            Self::SnapshotDelete => "delete",
++            Self::InsertMedia => "insert ISO",
++            Self::EjectMedia => "eject",
++            Self::DiskAttach => "disk attach",
++            Self::DiskResize => "disk resize",
++            Self::NicAttach => "NIC attach",
++            Self::NicLink => "NIC link",
++            Self::BootOrder => "boot order",
++            Self::ConfirmYes => "confirm yes",
++            Self::ConfirmNo => "confirm no",
++            Self::PrevTab => "prev tab",
++            Self::NextTab => "next tab",
++            Self::UndoField => "undo field",
++            Self::GotoXml => "goto XML",
++            Self::ViewDomains => "domains view",
++            Self::ViewHost => "host view",
++            Self::ViewNetworks => "networks view",
++            Self::ViewStorage => "storage view",
++            Self::ViewEvents => "events view",
++            Self::Noop => "",
++        }
++    }
++
++    /// Concise label shown in WhichKey popup.
++    pub fn whichkey_label(self) -> &'static str {
++        match self {
++            Self::NewDomain => "new domain",
++            Self::Clone => "clone",
++            Self::Rename => "rename",
++            Self::Migrate => "migrate",
++            Self::SnapshotNew => "snapshot new",
++            Self::SnapshotRevert => "revert",
++            Self::SnapshotDelete => "delete",
++            Self::InsertMedia => "insert ISO",
++            Self::EjectMedia => "eject",
++            Self::DiskAttach => "disk attach",
++            Self::DiskResize => "disk resize",
++            Self::NicAttach => "NIC attach",
++            Self::NicLink => "NIC link",
++            Self::BootOrder => "boot order",
++            Self::ExportXml => "export XML",
++            Self::LeasePin => "lease pin",
++            Self::LeaseUnpin => "lease unpin",
++            Self::GoTop => "top",
++            Self::GoBottom => "bottom",
++            Self::GotoXml => "goto XML",
++            Self::YankName => "name",
++            Self::YankUuid => "uuid",
++            Self::YankIp => "ip",
++            Self::YankCmd => "command",
++            Self::Start => "start",
++            Self::Shutdown => "shutdown",
++            Self::Destroy => "destroy",
++            Self::Reboot => "reboot",
++            Self::Reset => "reset",
++            Self::Pause => "pause",
++            Self::ManagedSave => "suspend",
++            Self::Autostart => "autostart",
++            Self::Console => "console",
++            Self::Viewer => "viewer",
++            Self::EditXml => "edit XML",
++            Self::Undefine => "undefine",
++            _ => self.description(),
++        }
++    }
++
++    /// True for destructive actions (e.g. prompt / confirm or highlighted in red).
++    pub fn is_destructive(self) -> bool {
++        matches!(
++            self,
++            Self::Destroy | Self::Reset | Self::Undefine | Self::SnapshotDelete
++        )
++    }
+ }
+ 
+ /// A resolved action with count.
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index 478fb7f03214e1f29c168ae577c33a651dbf3a67..fa338aa02cf1c07c8adf8b9c53e62730ef027977 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -4,6 +4,148 @@ use std::collections::HashMap;
+ 
+ use super::engine::KeyAction;
+ 
++/// Single source of truth for all default key bindings.
++pub const DEFAULT_BINDINGS: &[(&[&str], KeyAction)] = &[
++    // Navigation.
++    (&["j"], KeyAction::MoveDown),
++    (&["k"], KeyAction::MoveUp),
++    (&["g", "g"], KeyAction::GoTop),
++    (&["G"], KeyAction::GoBottom),
++    (&["C-d"], KeyAction::HalfDown),
++    (&["C-u"], KeyAction::HalfUp),
++    (&["Enter"], KeyAction::Open),
++    (&["Backspace"], KeyAction::Back),
++    (&["q"], KeyAction::Back),
++    (&["/"], KeyAction::Filter),
++    (&["n"], KeyAction::NextMatch),
++    (&["N"], KeyAction::PrevMatch),
++    // Domain lifecycle.
++    (&["s"], KeyAction::Start),
++    (&["S"], KeyAction::Shutdown),
++    (&["D"], KeyAction::Destroy),
++    (&["r"], KeyAction::Reboot),
++    (&["R"], KeyAction::Reset),
++    (&["p"], KeyAction::Pause),
++    (&["Z"], KeyAction::ManagedSave),
++    (&["a"], KeyAction::Autostart),
++    (&["c"], KeyAction::Console),
++    (&["v"], KeyAction::Viewer),
++    (&["e"], KeyAction::EditXml),
++    (&["X"], KeyAction::Undefine),
++    // Yank.
++    (&["y", "y"], KeyAction::YankName),
++    (&["y", "u"], KeyAction::YankUuid),
++    (&["y", "i"], KeyAction::YankIp),
++    (&["y", "c"], KeyAction::YankCmd),
++    // Leader.
++    (&["Space", "n"], KeyAction::NewDomain),
++    (&["Space", "c"], KeyAction::Clone),
++    (&["Space", "r"], KeyAction::Rename),
++    (&["Space", "M"], KeyAction::Migrate),
++    (&["Space", "s", "c"], KeyAction::SnapshotNew),
++    (&["Space", "s", "r"], KeyAction::SnapshotRevert),
++    (&["Space", "s", "d"], KeyAction::SnapshotDelete),
++    (&["Space", "m", "i"], KeyAction::InsertMedia),
++    (&["Space", "m", "e"], KeyAction::EjectMedia),
++    (&["Space", "d", "a"], KeyAction::DiskAttach),
++    (&["Space", "d", "r"], KeyAction::DiskResize),
++    (&["Space", "i", "a"], KeyAction::NicAttach),
++    (&["Space", "i", "l"], KeyAction::NicLink),
++    (&["Space", "b"], KeyAction::BootOrder),
++    (&["Space", "x"], KeyAction::ExportXml),
++    (&["Space", "l"], KeyAction::LeasePin),
++    (&["Space", "L"], KeyAction::LeaseUnpin),
++    // Monitor / views.
++    (&["t"], KeyAction::WindowCycle),
++    (&["o"], KeyAction::SortCycle),
++    (&["f"], KeyAction::ChipCycle),
++    (&["F"], KeyAction::ChipCycleBack),
++    (&["m"], KeyAction::Mark),
++    (&["V"], KeyAction::Visual),
++    (&["l"], KeyAction::LeaseFocus),
++    (&["H"], KeyAction::PrevTab),
++    (&["L"], KeyAction::NextTab),
++    (&["["], KeyAction::PrevTab),
++    (&["]"], KeyAction::NextTab),
++    (&["u"], KeyAction::UndoField),
++    (&["g", "x"], KeyAction::GotoXml),
++    // View tabs: instant 1-5 view switches.
++    (&["1"], KeyAction::ViewDomains),
++    (&["2"], KeyAction::ViewHost),
++    (&["3"], KeyAction::ViewNetworks),
++    (&["4"], KeyAction::ViewStorage),
++    (&["5"], KeyAction::ViewEvents),
++    // Modes.
++    (&[":"], KeyAction::Ex),
++    (&["C-p"], KeyAction::Palette),
++    (&["?"], KeyAction::Help),
++    (&[","], KeyAction::Settings),
++    (&["C-r"], KeyAction::Refresh),
++    (&["C-l"], KeyAction::Redraw),
++];
++
++/// Multi-key prefix groups with their human-readable labels.
++pub const PREFIX_GROUPS: &[(&[&str], &str)] = &[
++    (&["Space", "s"], "snapshot"),
++    (&["Space", "m"], "media"),
++    (&["Space", "d"], "disk"),
++    (&["Space", "i"], "NIC"),
++];
++
++/// Human-readable label for a multi-key group prefix.
++pub fn prefix_group_description(prefix: &[String]) -> &'static str {
++    for &(group, desc) in PREFIX_GROUPS {
++        if prefix.len() == group.len() && prefix.iter().zip(group.iter()).all(|(a, b)| a == *b) {
++            return desc;
++        }
++    }
++    match prefix.last().map(|s| s.as_str()) {
++        Some("s") => "snapshot",
++        Some("m") => "media",
++        Some("d") => "disk",
++        Some("i") => "NIC",
++        _ => "…",
++    }
++}
++
++/// Format key sequence tokens into display string (`["Space", "n"]` -> `"␣n"`).
++pub fn format_seq(seq: &[String]) -> String {
++    seq.iter()
++        .map(|t| match t.as_str() {
++            "Space" => "␣",
++            "Enter" => "⏎",
++            "Backspace" => "⌫",
++            "Esc" => "⎋",
++            other => other,
++        })
++        .collect()
++}
++
++/// Primary sequence display string for an action in a map (e.g. `␣n`).
++pub fn action_key_label(map: &HashMap<Vec<String>, KeyAction>, action: KeyAction) -> Option<String> {
++    let seqs = action_key_labels(map, action);
++    seqs.into_iter().next()
++}
++
++/// All sequence display strings for an action in a map (e.g. `["⌫", "q"]`).
++pub fn action_key_labels(map: &HashMap<Vec<String>, KeyAction>, action: KeyAction) -> Vec<String> {
++    let mut seqs: Vec<(usize, String)> = map
++        .iter()
++        .filter(|(_, a)| **a == action)
++        .map(|(k, _)| {
++            let pos = DEFAULT_BINDINGS
++                .iter()
++                .position(|(keys, a)| {
++                    *a == action && keys.len() == k.len() && keys.iter().zip(k.iter()).all(|(x, y)| x == y)
++                })
++                .unwrap_or(usize::MAX);
++            (pos, format_seq(k))
++        })
++        .collect();
++    seqs.sort_by_key(|(pos, s)| (*pos, s.chars().count(), s.clone()));
++    seqs.into_iter().map(|(_, s)| s).collect()
++}
++
+ fn seq(keys: &[&str]) -> Vec<String> {
+     keys.iter().map(|s| s.to_string()).collect()
+ }
+@@ -11,85 +153,9 @@ fn seq(keys: &[&str]) -> Vec<String> {
+ /// Default bindings: sequence -> action.
+ pub fn default_map() -> HashMap<Vec<String>, KeyAction> {
+     let mut m: HashMap<Vec<String>, KeyAction> = HashMap::new();
+-    let mut bind = |keys: &[&str], a: KeyAction| {
++    for &(keys, a) in DEFAULT_BINDINGS {
+         m.insert(seq(keys), a);
+-    };
+-    // Navigation.
+-    bind(&["j"], KeyAction::MoveDown);
+-    bind(&["k"], KeyAction::MoveUp);
+-    bind(&["g", "g"], KeyAction::GoTop);
+-    bind(&["G"], KeyAction::GoBottom);
+-    bind(&["C-d"], KeyAction::HalfDown);
+-    bind(&["C-u"], KeyAction::HalfUp);
+-    bind(&["Enter"], KeyAction::Open);
+-    bind(&["Backspace"], KeyAction::Back);
+-    bind(&["q"], KeyAction::Back);
+-    bind(&["/"], KeyAction::Filter);
+-    bind(&["n"], KeyAction::NextMatch);
+-    bind(&["N"], KeyAction::PrevMatch);
+-    // Domain lifecycle.
+-    bind(&["s"], KeyAction::Start);
+-    bind(&["S"], KeyAction::Shutdown);
+-    bind(&["D"], KeyAction::Destroy);
+-    bind(&["r"], KeyAction::Reboot);
+-    bind(&["R"], KeyAction::Reset);
+-    bind(&["p"], KeyAction::Pause);
+-    bind(&["Z"], KeyAction::ManagedSave);
+-    bind(&["a"], KeyAction::Autostart);
+-    bind(&["c"], KeyAction::Console);
+-    bind(&["v"], KeyAction::Viewer);
+-    bind(&["e"], KeyAction::EditXml);
+-    bind(&["X"], KeyAction::Undefine);
+-    // Yank.
+-    bind(&["y", "y"], KeyAction::YankName);
+-    bind(&["y", "u"], KeyAction::YankUuid);
+-    bind(&["y", "i"], KeyAction::YankIp);
+-    bind(&["y", "c"], KeyAction::YankCmd);
+-    // Leader.
+-    bind(&["Space", "n"], KeyAction::NewDomain);
+-    bind(&["Space", "c"], KeyAction::Clone);
+-    bind(&["Space", "r"], KeyAction::Rename);
+-    bind(&["Space", "M"], KeyAction::Migrate);
+-    bind(&["Space", "s", "c"], KeyAction::SnapshotNew);
+-    bind(&["Space", "s", "r"], KeyAction::SnapshotRevert);
+-    bind(&["Space", "s", "d"], KeyAction::SnapshotDelete);
+-    bind(&["Space", "m", "i"], KeyAction::InsertMedia);
+-    bind(&["Space", "m", "e"], KeyAction::EjectMedia);
+-    bind(&["Space", "d", "a"], KeyAction::DiskAttach);
+-    bind(&["Space", "d", "r"], KeyAction::DiskResize);
+-    bind(&["Space", "i", "a"], KeyAction::NicAttach);
+-    bind(&["Space", "i", "l"], KeyAction::NicLink);
+-    bind(&["Space", "x"], KeyAction::ExportXml);
+-    bind(&["Space", "b"], KeyAction::BootOrder);
+-    // Monitor / views.
+-    bind(&["t"], KeyAction::WindowCycle);
+-    bind(&["o"], KeyAction::SortCycle);
+-    bind(&["f"], KeyAction::ChipCycle);
+-    bind(&["F"], KeyAction::ChipCycleBack);
+-    bind(&["m"], KeyAction::Mark);
+-    bind(&["V"], KeyAction::Visual);
+-    bind(&["l"], KeyAction::LeaseFocus);
+-    bind(&["Space", "l"], KeyAction::LeasePin);
+-    bind(&["Space", "L"], KeyAction::LeaseUnpin);
+-    bind(&["H"], KeyAction::PrevTab);
+-    bind(&["L"], KeyAction::NextTab);
+-    bind(&["["], KeyAction::PrevTab);
+-    bind(&["]"], KeyAction::NextTab);
+-    bind(&["u"], KeyAction::UndoField);
+-    bind(&["g", "x"], KeyAction::GotoXml);
+-    // View tabs: instant 1-5 view switches.
+-    bind(&["1"], KeyAction::ViewDomains);
+-    bind(&["2"], KeyAction::ViewHost);
+-    bind(&["3"], KeyAction::ViewNetworks);
+-    bind(&["4"], KeyAction::ViewStorage);
+-    bind(&["5"], KeyAction::ViewEvents);
+-    // Modes.
+-    bind(&[":"], KeyAction::Ex);
+-    bind(&["C-p"], KeyAction::Palette);
+-    bind(&["?"], KeyAction::Help);
+-    bind(&[","], KeyAction::Settings);
+-    bind(&["C-r"], KeyAction::Refresh);
+-    bind(&["C-l"], KeyAction::Redraw);
++    }
+     // Confirm modal keys (y/n) are handled by the modal itself, not the global map,
+     // so that yank sequences (yy/yu/yi/yc) keep working.
+     // Quit keys (q/ZZ/C-c) are handled at the app level for the same reason:
+@@ -178,4 +244,22 @@ mod tests {
+         assert_eq!(warnings.len(), 1);
+         assert_eq!(KeyAction::from_name("snapshot_new"), Some(KeyAction::SnapshotNew));
+     }
++
++    #[test]
++    fn single_source_of_truth_binds_all_default_actions() {
++        let map = default_map();
++        assert_eq!(map.len(), DEFAULT_BINDINGS.len());
++        assert_eq!(
++            map.get(&vec![String::from("Space"), String::from("n")]),
++            Some(&KeyAction::NewDomain)
++        );
++        assert_eq!(
++            action_key_label(&map, KeyAction::NewDomain),
++            Some(String::from("␣n"))
++        );
++        assert_eq!(
++            action_key_labels(&map, KeyAction::Back),
++            vec![String::from("⌫"), String::from("q")]
++        );
++    }
+ }
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index 378cd07019689f81d330d244cb08ce51c5614585..ab5add08824c2637e35d12704fe9ae0ccfd81ea7 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -23,17 +23,19 @@ pub struct Section {
+     pub rows: Vec<(String, String, bool)>,
+ }
+ 
+-/// Display form of a bound sequence (`Space s c` → `␣sc`, `g g` → `gg`).
+-fn seq_label(seq: &[String]) -> String {
+-    seq.iter()
+-        .map(|t| match t.as_str() {
++fn leader_title(map: &Keymap) -> String {
++    // Dynamic leader title e.g. "Leader  ␣" based on actual leader token bound to NewDomain
++    if let Some((seq, _)) = map.iter().find(|(_, a)| **a == A::NewDomain)
++        && seq.len() >= 2
++    {
++        let leader_sym = match seq[0].as_str() {
+             "Space" => "␣",
+             "Enter" => "⏎",
+-            "Backspace" => "⌫",
+-            "Esc" => "⎋",
+             other => other,
+-        })
+-        .collect()
++        };
++        return format!("Leader  {leader_sym}");
++    }
++    String::from("Leader  ␣")
+ }
+ 
+ /// Keys bound to `actions` in the live map, `a / b` joined; `None` if the
+@@ -42,18 +44,46 @@ fn live_label(map: &Keymap, actions: &[A]) -> Option<String> {
+     if actions.is_empty() {
+         return None;
+     }
++    // Check if the actions represent the 5 view switching actions
++    if actions.len() == 5
++        && actions
++            == [
++                A::ViewDomains,
++                A::ViewHost,
++                A::ViewNetworks,
++                A::ViewStorage,
++                A::ViewEvents,
++            ]
++    {
++        let seqs: Vec<Option<String>> = actions
++            .iter()
++            .map(|a| crate::input::keymap::action_key_label(map, *a))
++            .collect();
++        if seqs
++            == [
++                Some("1".into()),
++                Some("2".into()),
++                Some("3".into()),
++                Some("4".into()),
++                Some("5".into()),
++            ]
++        {
++            return Some("1 … 5".to_string());
++        }
++    }
++
+     let parts: Vec<String> = actions
+         .iter()
+         .map(|a| {
+-            let mut seqs: Vec<String> = map
+-                .iter()
+-                .filter(|(_, v)| *v == a)
+-                .map(|(k, _)| seq_label(k))
+-                .collect();
+-            seqs.sort_by_key(|s| (s.chars().count(), s.clone()));
+-            seqs.first().cloned().unwrap_or_else(|| String::from("—"))
++            let labels = crate::input::keymap::action_key_labels(map, *a);
++            if actions.len() == 1 && labels.len() > 1 {
++                labels.join(" / ")
++            } else {
++                labels.into_iter().next().unwrap_or_else(|| String::from("—"))
++            }
+         })
+         .collect();
++
+     // `␣sc / ␣sr / ␣sd` → `␣s c/r/d` when only the last key differs.
+     if parts.len() > 2 {
+         let prefix: String = parts[0]
+@@ -106,9 +136,20 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+                 ("C-d / C-u", "half page", false, &[A::HalfDown, A::HalfUp]),
+                 ("h / l", "focus pane ← →", false, &[]),
+                 ("H / L", "prev / next tab", false, &[A::PrevTab, A::NextTab]),
+-                ("1 … 5", "switch view", false, &[]),
++                (
++                    "1 … 5",
++                    "switch view",
++                    false,
++                    &[
++                        A::ViewDomains,
++                        A::ViewHost,
++                        A::ViewNetworks,
++                        A::ViewStorage,
++                        A::ViewEvents,
++                    ],
++                ),
+                 ("⏎", "open", false, &[A::Open]),
+-                ("⌫ / q", "back", false, &[]),
++                ("⌫ / q", "back", false, &[A::Back]),
+                 ("/", "filter", false, &[A::Filter]),
+                 ("n / N", "next / prev match", false, &[A::NextMatch, A::PrevMatch]),
+             ],
+@@ -159,7 +200,7 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+         ),
+         sec(
+             map,
+-            "Leader  ␣",
++            &leader_title(map),
+             "orange",
+             &[
+                 ("␣n", "new domain", false, &[A::NewDomain]),
+@@ -328,3 +369,35 @@ pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
+     let footer_area = Rect::new(inner.x, inner.y + inner.height - 1, inner.width, 1);
+     frame.render_widget(Paragraph::new(footer).style(theme.base()), footer_area);
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn sections_reflect_default_keymap() {
++        let map = crate::input::keymap::default_map();
++        let secs = sections(&map);
++        let nav = secs.iter().find(|s| s.title == "Navigation").unwrap();
++        assert!(nav.rows.iter().any(|(k, d, _)| k == "⌫ / q" && d == "back"));
++        assert!(
++            nav.rows
++                .iter()
++                .any(|(k, d, _)| k == "1 … 5" && d == "switch view")
++        );
++
++        let leader = secs.iter().find(|s| s.title == "Leader  ␣").unwrap();
++        assert!(leader.rows.iter().any(|(k, d, _)| k == "␣n" && d == "new domain"));
++    }
++
++    #[test]
++    fn sections_reflect_key_changes() {
++        let mut map = crate::input::keymap::default_map();
++        map.retain(|_, a| *a != A::NewDomain);
++        map.insert(vec!["Space".into(), "v".into()], A::NewDomain);
++        let secs = sections(&map);
++        let leader = secs.iter().find(|s| s.title == "Leader  ␣").unwrap();
++        assert!(leader.rows.iter().any(|(k, d, _)| k == "␣v" && d == "new domain"));
++        assert!(!leader.rows.iter().any(|(k, _d, _)| k == "␣n"));
++    }
++}
+diff --git a/src/ui/overlays/palette.rs b/src/ui/overlays/palette.rs
+index 4011ca04a97d4b7e067348b8ed050776b2616268..201ac8173c978c7c4805d718beb9a21c69aea501 100644
+--- a/src/ui/overlays/palette.rs
++++ b/src/ui/overlays/palette.rs
+@@ -62,31 +62,81 @@ pub struct PaletteItem {
+     pub virsh_cmd: String,
+ }
+ 
+-/// Curated app actions.
+-pub fn curated() -> Vec<PaletteItem> {
++/// Curated app actions with keys resolved from the provided keymap.
++pub fn curated_with_map(
++    map: &std::collections::HashMap<Vec<String>, crate::input::engine::KeyAction>,
++) -> Vec<PaletteItem> {
++    use crate::input::engine::KeyAction as A;
++    use crate::input::keymap::action_key_label;
++
++    let resolve = |action: A, fallback: &'static str| {
++        action_key_label(map, action).unwrap_or_else(|| fallback.to_string())
++    };
++
+     [
+-        ("◆", "Snapshot", "snapshot: create…", "␣sc", "snapshot-create-as"),
+-        ("◆", "Snapshot", "snapshot: revert…", "␣sr", "snapshot-revert"),
+-        ("◆", "Snapshot", "snapshot: delete…", "␣sd", "snapshot-delete"),
+-        ("◆", "Snapshot", "snapshot: tree view", "gs", "snapshot-list"),
+-        ("●", "Domain", "start", "s", "start"),
+-        ("●", "Domain", "shutdown", "S", "shutdown"),
+-        ("◎", "Media", "attach ISO", "␣mi", "change-media"),
+-        ("◫", "Storage", "volume: create", "n", "vol-create-as"),
+-        ("▣", "CPU", "set vcpus", "", "setvcpus"),
+-        ("▤", "Memory", "set live", "", "setmem"),
++        (
++            "◆",
++            "Snapshot",
++            "snapshot: create…",
++            resolve(A::SnapshotNew, "␣sc"),
++            "snapshot-create-as",
++        ),
++        (
++            "◆",
++            "Snapshot",
++            "snapshot: revert…",
++            resolve(A::SnapshotRevert, "␣sr"),
++            "snapshot-revert",
++        ),
++        (
++            "◆",
++            "Snapshot",
++            "snapshot: delete…",
++            resolve(A::SnapshotDelete, "␣sd"),
++            "snapshot-delete",
++        ),
++        (
++            "◆",
++            "Snapshot",
++            "snapshot: tree view",
++            String::from("gs"),
++            "snapshot-list",
++        ),
++        ("●", "Domain", "start", resolve(A::Start, "s"), "start"),
++        ("●", "Domain", "shutdown", resolve(A::Shutdown, "S"), "shutdown"),
++        (
++            "◎",
++            "Media",
++            "attach ISO",
++            resolve(A::InsertMedia, "␣mi"),
++            "change-media",
++        ),
++        (
++            "◫",
++            "Storage",
++            "volume: create",
++            String::from("n"),
++            "vol-create-as",
++        ),
++        ("▣", "CPU", "set vcpus", String::new(), "setvcpus"),
++        ("▤", "Memory", "set live", String::new(), "setmem"),
+     ]
+     .into_iter()
+     .map(|(icon, category, title, key, virsh_cmd)| PaletteItem {
+         icon,
+         category: category.to_string(),
+         title: title.to_string(),
+-        key: key.to_string(),
++        key,
+         virsh_cmd: virsh_cmd.to_string(),
+     })
+     .collect()
+ }
+ 
++/// Curated app actions.
++pub fn curated() -> Vec<PaletteItem> {
++    curated_with_map(&crate::input::keymap::default_map())
++}
++
+ /// Palette state.
+ #[derive(Debug, Clone)]
+ pub struct PaletteState {
+diff --git a/src/ui/widgets/whichkey.rs b/src/ui/widgets/whichkey.rs
+index aa5e258d418bd06097866ab4d5ba6dbd40ecf3a7..f953258863009f4fba645e14778e5d71f9d5704b 100644
+--- a/src/ui/widgets/whichkey.rs
++++ b/src/ui/widgets/whichkey.rs
+@@ -1,6 +1,8 @@
+ //! whichkey widget (PLAN.md section 7).
+ //! WhichKey popup (PLAN.md 7.16).
+ 
++use std::collections::HashMap;
++
+ use ratatui::{
+     Frame,
+     layout::Rect,
+@@ -10,50 +12,117 @@ use ratatui::{
+ };
+ use unicode_width::UnicodeWidthStr;
+ 
++use crate::input::engine::KeyAction;
+ use crate::theme::Theme;
+ 
+ pub const TRIGGER_DELAY_MS: u64 = 300;
+ 
+-/// Return key and description pairs for a given pending prefix.
+-pub fn entries_for(prefix: &str) -> &'static [(&'static str, &'static str)] {
+-    match prefix {
+-        "Space" => &[
+-            ("n", "new domain"),
+-            ("c", "clone"),
+-            ("r", "rename"),
+-            ("M", "migrate"),
+-            ("s …", "snapshot"),
+-            ("m …", "media"),
+-            ("d …", "disk"),
+-            ("i …", "NIC"),
+-            ("b", "boot order"),
+-            ("x", "export XML"),
+-            ("l", "lease pin"),
+-            ("L", "lease unpin"),
+-        ],
+-        "Space s" => &[("c", "snapshot new"), ("r", "revert"), ("d", "delete")],
+-        "Space m" => &[("i", "insert ISO"), ("e", "eject")],
+-        "Space d" => &[("a", "disk attach"), ("r", "disk resize")],
+-        "Space i" => &[("a", "NIC attach"), ("l", "NIC link")],
+-        "g" => &[("g", "top"), ("x", "goto XML"), ("1-5", "views")],
+-        "y" => &[("y", "name"), ("u", "uuid"), ("i", "ip"), ("c", "command")],
+-        _ => &[("…", "…")],
++/// Return key and description pairs for a given pending prefix from a live keymap.
++pub fn entries_for_map(map: &HashMap<Vec<String>, KeyAction>, prefix: &str) -> Vec<(String, String)> {
++    let prefix_tokens: Vec<&str> = prefix.split_whitespace().collect();
++    if prefix_tokens.is_empty() {
++        return Vec::new();
++    }
++
++    // Special case for "g": vim tab switches 1-5
++    if prefix == "g" {
++        let mut res = Vec::new();
++        if let Some((_, a)) = map.iter().find(|(k, _)| k.as_slice() == ["g", "g"]) {
++            res.push(("g".to_string(), a.whichkey_label().to_string()));
++        } else {
++            res.push(("g".to_string(), "top".to_string()));
++        }
++        if let Some((_, a)) = map.iter().find(|(k, _)| k.as_slice() == ["g", "x"]) {
++            res.push(("x".to_string(), a.whichkey_label().to_string()));
++        }
++        res.push(("1-5".to_string(), "views".to_string()));
++        return res;
++    }
++
++    // Collect all candidate tokens immediately following prefix_tokens
++    let mut next_tokens: Vec<String> = Vec::new();
++    for seq in map.keys() {
++        if seq.len() > prefix_tokens.len()
++            && seq[..prefix_tokens.len()]
++                .iter()
++                .zip(prefix_tokens.iter())
++                .all(|(a, b)| a == *b)
++        {
++            let tok = seq[prefix_tokens.len()].clone();
++            if !next_tokens.contains(&tok) {
++                next_tokens.push(tok);
++            }
++        }
++    }
++
++    if next_tokens.is_empty() {
++        return vec![("…".to_string(), "…".to_string())];
+     }
++
++    // Rank next_tokens using crate::input::keymap::DEFAULT_BINDINGS order so that
++    // standard layout (n, c, r, M, s …, m …, etc.) is preserved.
++    next_tokens.sort_by_key(|tok| {
++        let pos = crate::input::keymap::DEFAULT_BINDINGS
++            .iter()
++            .position(|(keys, _)| {
++                keys.len() > prefix_tokens.len()
++                    && keys[..prefix_tokens.len()] == prefix_tokens[..]
++                    && keys[prefix_tokens.len()] == tok.as_str()
++            })
++            .unwrap_or(usize::MAX);
++        (pos, tok.clone())
++    });
++
++    let mut result = Vec::new();
++    for tok in next_tokens {
++        // Check if all bindings with this tok are leaf bindings or sub-prefixes
++        let mut sub_seqs: Vec<(&Vec<String>, &KeyAction)> = map
++            .iter()
++            .filter(|(k, _)| {
++                k.len() > prefix_tokens.len()
++                    && k[..prefix_tokens.len()]
++                        .iter()
++                        .zip(prefix_tokens.iter())
++                        .all(|(a, b)| a == *b)
++                    && k[prefix_tokens.len()] == tok
++            })
++            .collect();
++
++        sub_seqs.sort_by_key(|(k, _)| k.len());
++
++        let is_subgroup = sub_seqs.iter().any(|(k, _)| k.len() > prefix_tokens.len() + 1);
++
++        if is_subgroup {
++            let mut full_sub = prefix_tokens.iter().map(|s| s.to_string()).collect::<Vec<_>>();
++            full_sub.push(tok.clone());
++            let group_name = crate::input::keymap::prefix_group_description(&full_sub);
++            result.push((format!("{tok} …"), group_name.to_string()));
++        } else if let Some((_, action)) = sub_seqs.first() {
++            result.push((tok, action.whichkey_label().to_string()));
++        }
++    }
++
++    result
+ }
+ 
+-/// Render the which-key popup bottom-right for a pending prefix.
+-pub fn render(f: &mut Frame, theme: &Theme, prefix: &str) {
++/// Return key and description pairs for a given pending prefix using the default keymap.
++pub fn entries_for(prefix: &str) -> Vec<(String, String)> {
++    entries_for_map(&crate::input::keymap::default_map(), prefix)
++}
++
++/// Render the which-key popup bottom-right for a pending prefix and live keymap.
++pub fn render(f: &mut Frame, theme: &Theme, prefix: &str, map: &HashMap<Vec<String>, KeyAction>) {
+     let area = f.area();
+     if area.width < 10 || area.height < 5 {
+         return;
+     }
+     let t = &theme.tokens;
+-    let rows = entries_for(prefix);
++    let rows = entries_for_map(map, prefix);
+     let lines: Vec<Line> = rows
+         .iter()
+         .map(|(k, d)| {
+             Line::from(vec![
+-                Span::styled(*k, theme.key()),
++                Span::styled(k.as_str(), theme.key()),
+                 Span::styled(format!("  {d}"), theme.dim()),
+             ])
+         })
+@@ -71,7 +140,7 @@ pub fn render(f: &mut Frame, theme: &Theme, prefix: &str) {
+ 
+     let max_len = rows
+         .iter()
+-        .map(|(k, d)| UnicodeWidthStr::width(*k) + 2 + UnicodeWidthStr::width(*d))
++        .map(|(k, d)| UnicodeWidthStr::width(k.as_str()) + 2 + UnicodeWidthStr::width(d.as_str()))
+         .max()
+         .unwrap_or(20);
+     let title_len = UnicodeWidthStr::width(title.as_str());
+@@ -110,7 +179,7 @@ mod tests {
+     #[test]
+     fn leader_entries_complete() {
+         let rows = entries_for("Space");
+-        let keys: Vec<&str> = rows.iter().map(|(k, _)| *k).collect();
++        let keys: Vec<&str> = rows.iter().map(|(k, _)| k.as_str()).collect();
+         assert!(keys.contains(&"n"));
+         assert!(keys.contains(&"c"));
+         assert!(keys.contains(&"r"));
+@@ -133,14 +202,28 @@ mod tests {
+         assert_eq!(entries_for("Space i").len(), 2);
+     }
+ 
++    #[test]
++    fn dynamic_whichkey_reflects_map() {
++        let mut map = crate::input::keymap::default_map();
++        map.retain(|_, a| *a != KeyAction::NewDomain);
++        map.insert(vec!["Space".into(), "v".into()], KeyAction::NewDomain);
++        let rows = entries_for_map(&map, "Space");
++        let keys: Vec<&str> = rows.iter().map(|(k, _)| k.as_str()).collect();
++        assert!(keys.contains(&"v"));
++        assert!(!keys.contains(&"n"));
++        let v_entry = rows.iter().find(|(k, _)| k == "v").unwrap();
++        assert_eq!(v_entry.1, "new domain");
++    }
++
+     #[test]
+     fn render_smoke_test() {
+         let theme = crate::theme::builtin::by_name("tokyo-night");
+         let backend = TestBackend::new(120, 36);
+         let mut terminal = Terminal::new(backend).unwrap();
++        let map = crate::input::keymap::default_map();
+         terminal
+             .draw(|f| {
+-                render(f, &theme, "Space");
++                render(f, &theme, "Space", &map);
+             })
+             .unwrap();
+         let buffer = terminal.backend().buffer();
+diff --git a/tests/p12_palette.rs b/tests/p12_palette.rs
+index 6848673982152a3fcb9149bf772f6263e059d3be..078e212da0baba54a59ab1399d81c7c53347a47a 100644
+--- a/tests/p12_palette.rs
++++ b/tests/p12_palette.rs
+@@ -41,6 +41,63 @@ fn keymap_sections_cover_defaults() {
+     );
+ }
+ 
++#[test]
++fn single_source_of_truth_keymap_rebind_reflected_everywhere() {
++    use virsh_tui::input::engine::{KeyAction, KeyEngine};
++    use virsh_tui::input::key::KeySeq;
++    use virsh_tui::ui::overlays::help::sections;
++    use virsh_tui::ui::overlays::palette::curated_with_map;
++    use virsh_tui::ui::widgets::whichkey::entries_for_map;
++
++    let mut map = virsh_tui::input::keymap::default_map();
++
++    // Rebind NewDomain from Space n to Space a
++    map.retain(|_, a| *a != KeyAction::NewDomain);
++    map.insert(
++        vec![String::from("Space"), String::from("a")],
++        KeyAction::NewDomain,
++    );
++
++    // 1. Behavior in KeyEngine
++    let mut engine = KeyEngine::with_map(map.clone());
++    assert!(engine.feed(&KeySeq::parse("Space")).is_empty());
++    let resolved = engine.feed(&KeySeq::parse("a"));
++    assert_eq!(resolved.len(), 1);
++    assert_eq!(resolved[0].action, KeyAction::NewDomain);
++
++    // 2. Leader key pop-up (WhichKey)
++    let wk_entries = entries_for_map(&map, "Space");
++    assert!(wk_entries.iter().any(|(k, d)| k == "a" && d == "new domain"));
++    assert!(!wk_entries.iter().any(|(k, _)| k == "n"));
++
++    // 3. Help overlay
++    let secs = sections(&map);
++    let leader_sec = secs.iter().find(|s| s.title.starts_with("Leader")).unwrap();
++    assert!(
++        leader_sec
++            .rows
++            .iter()
++            .any(|(k, d, _)| k == "␣a" && d == "new domain")
++    );
++    assert!(!leader_sec.rows.iter().any(|(k, _, _)| k == "␣n"));
++
++    // Rebind Shutdown from S to Space q
++    map.retain(|_, a| *a != KeyAction::Shutdown);
++    map.insert(
++        vec![String::from("Space"), String::from("q")],
++        KeyAction::Shutdown,
++    );
++
++    // 4. WhichKey shows shutdown under Space
++    let wk_entries = entries_for_map(&map, "Space");
++    assert!(wk_entries.iter().any(|(k, d)| k == "q" && d == "shutdown"));
++
++    // 5. Command palette shows ␣q for shutdown
++    let pal_items = curated_with_map(&map);
++    let shutdown_item = pal_items.iter().find(|i| i.title == "shutdown").unwrap();
++    assert_eq!(shutdown_item.key, "␣q");
++}
++
+ #[test]
+ fn events_filter() {
+     use virsh_tui::ui::views::events::{EventFilter, EventsState};

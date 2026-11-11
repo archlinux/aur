@@ -1,0 +1,58 @@
+From 8045939af84757e30c8c10b168c6ac0b33619dad Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 2 Nov 2026 23:07:17 +0100
+Subject: [PATCH 08/23] docs: document remote libvirt telemetry, fidelity, and
+ usage
+
+Document remote host telemetry via nodecpustats/nodememstats in
+DECISIONS.md, update the Host monitor fidelity entry, and sync the user
+book documentation.
+---
+ book/src/views/host.md | 4 ++--
+ docs/DECISIONS.md      | 9 +++++++++
+ docs/FIDELITY.md       | 2 +-
+ 3 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/book/src/views/host.md b/book/src/views/host.md
+index d81c86e388b24767bb674fdc8616069ae628a9fe..54a7d4a692fe899e090c6d6484836318502521f6 100644
+--- a/book/src/views/host.md
++++ b/book/src/views/host.md
+@@ -17,6 +17,6 @@ The running domains are sorted by CPU use, busiest first.
+ 
+ Per-thread CPU meters, temperatures and memory details are read from `/proc`
+ and `/sys`, so they are only shown for local connections. For a remote URI
+-the view shows what libvirt itself reports (`virsh nodeinfo`, pools,
+-networks). Per-thread sampling can be turned off with
++the view shows what libvirt itself reports (`virsh nodeinfo`, `virsh nodecpustats`,
++`virsh nodememstats`, pools, networks). Per-thread sampling can be turned off with
+ `monitoring.thread_sampling = false`.
+diff --git a/docs/DECISIONS.md b/docs/DECISIONS.md
+index 6d41e76525c2e2113e07e5290cdc47f58ead1d80..a6ff7cc61b1fcb0e7f06776803d8c0852a144bdd 100644
+--- a/docs/DECISIONS.md
++++ b/docs/DECISIONS.md
+@@ -156,3 +156,12 @@
+ - **Full-frame background fill:** The root frame draw and individual views now render a background `Block` with `theme.base()` covering the full area, and `panel::block` sets `.style(theme.base())`. Previously, unpainted frame cells (column margins, panel gutters, empty rows below paragraphs and modals) defaulted to `Color::Reset`, which caused transparent gaps in transparent terminals while text elements rendered with opaque background colors.
+ - **Truecolor detection and nearest 256-color matching:** `truecolor()` previously only checked `COLORTERM=truecolor|24bit`, which is not set by default on Windows terminals (Windows Terminal, PowerShell, CMD) or terminals setting `TERM_PROGRAM` / 24-bit `TERM`, causing the app to unnecessarily downgrade all themes to xterm-256 indexed colors. Additionally, `xterm256()` previously bypassed the 24 greyscale ramp for non-monochrome RGBs and used rough thresholds, mapping Dracula (`#282a36`) to xterm 17 (VESA navy blue) and Everforest (`#2d353b`) to xterm 23 (VESA teal/green). `truecolor()` now recognizes Windows console subsystem, `WT_SESSION`, `TERM_PROGRAM`, and 24-bit `TERM`, and `xterm256()` implements true Euclidean distance nearest match across the entire 6×6×6 cube and 24 greyscale ramp.
+ - **Help modal render ordering:** In `ui::overlays::help`, the outer modal `Block` is rendered before the inner column paragraphs and footer line. When `.style(theme.base())` was added to the block, calling `render_widget(block, modal)` at the end of the function wiped the inner foreground spans back to default text style.
++
++
++## Remote libvirt functionality (2026-11-02)
++
++- **Remote host telemetry without /proc:** When connecting to a remote hypervisor (`!is_local_uri(uri)`), virsh-tui no longer accesses local client `/proc` or `/sys` files. Instead, `virsh nodecpustats --percent` measures remote CPU utilization, and `virsh nodememstats` measures total, free, and available memory in KiB. Per-thread meters, core frequencies, and temperatures are cleanly hidden, displaying remote CPU model and count (`NN% · N CPUs`).
++- **Concurrent host polling:** Because `virsh nodecpustats --percent` blocks 1 second, it is polled concurrently alongside `domains_with_stats()` via `tokio::join!`, ensuring domain statistics are delivered without delay.
++- **Session-based remote domain uptimes:** For remote connections where PID files in `/run/libvirt/qemu/` are inaccessible, the poller tracks when running domains were first observed during the session and displays uptimes prefixed with `≥ ` (e.g. `≥ 5m`, `≥ 1h 20m`), matching `PLAN.md` §4.2.
++- **Dynamic hypervisor hostname and live chrome:** `LIVE` chrome state in `ui::chrome` uses `RwLock` so hostname and refresh interval update dynamically. `virsh hostname` queries the remote hypervisor's hostname at startup and on connection change, displaying the remote hostname across the top bar and views.
++- **Complete `:connect <uri>` lifecycle:** Executing `:connect <uri>` updates URIs across all views (`dash`, `host`, `networks`, `storage`, `events`), re-subscribes the live libvirt event stream (`virsh event --loop`), clears stale domains/selection, and restarts background polling.
+diff --git a/docs/FIDELITY.md b/docs/FIDELITY.md
+index 8a0b260abdba7580e06b3cefb6419baca01d142d..6b6f26ee0c8c1ec345d531f6cf9b3f81f36c7ae4 100644
+--- a/docs/FIDELITY.md
++++ b/docs/FIDELITY.md
+@@ -35,7 +35,7 @@ Tracks per-screen comparison against `docs/mockups/*.dc.html`.
+ - [x] Row C: System, Storage pools gauges, Networks sparklines
+ - [x] Status bar: mode pill, breadcrumb `host › running`, hints (exact), `history 60s`
+ - [x] Message line sampling text
+-- [ ] Deviations (with reason): Row A is Length(13) not Length(12) — 6 braille + per-thread + 3 meter + index + 2 borders = 13; demo message uses the virConnect string (live uses the virsh string).
++- [ ] Deviations (with reason): Row A is Length(13) not Length(12) — 6 braille + per-thread + 3 meter + index + 2 borders = 13; demo message uses the virConnect string (live uses the virsh string); remote hypervisors hide per-thread meters, temp, and freq per PLAN.md §4.2 and show nodecpustats + nodememstats.
+ 
+ ## 03 Domain detail shell (mockup: docs/mockups/Detail.dc.html, P6 tabs)
+ - [x] Header: breadcrumb, name, state, uptime, inner tabs, H/L hint, back hint

@@ -1,0 +1,315 @@
+From 97c85ba08a04d687bf2837160e09a9e59475f399 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 2 Nov 2026 22:22:29 +0100
+Subject: [PATCH 01/23] fix(live): harden disconnected state and optimize
+ allocation hotpaths
+
+---
+ docs/DECISIONS.md         |  9 ++++++++
+ src/app/live.rs           | 23 +++++++++++++++----
+ src/app/mod.rs            | 27 ++++++++++++++++++----
+ src/command/tempxml.rs    |  2 +-
+ src/metrics/store.rs      |  7 +++---
+ src/ui/views/dashboard.rs | 48 +++++++++++++++++++++++++++++++++------
+ src/ui/views/events.rs    | 11 +++++----
+ 7 files changed, 102 insertions(+), 25 deletions(-)
+
+diff --git a/docs/DECISIONS.md b/docs/DECISIONS.md
+index c1ac74744a63d5f13d27eea923ca67b84f6a3f98..6ff09220ac7a90056afe64bda397a2d72341ee82 100644
+--- a/docs/DECISIONS.md
++++ b/docs/DECISIONS.md
+@@ -140,3 +140,12 @@
+ - **Known limitation.** Actions are awaited inside key handling, so a long job (migration, wipe) keeps the UI
+   busy until it finishes. Moving executions to background tasks with progress in the message line is the next
+   structural step.
++
++
++## Disconnection and performance hardening (2026-11-02)
++
++- **Bogus demo data removal when disconnected:** In live mode without `--demo`, if the libvirt connection fails at startup or drops, the dashboard no longer instantiates `DashboardState::demo()`. Instead, `from_summaries(&[])` initializes a clean live state with `connected: false`, preventing fake mock domains, fake host specs, demo Braille charts, and mockup events from appearing.
++- **Empty domain selection handling:** `render_right` and `render_overview` guard against empty domain selections (`sel.name.is_empty()`) when no domains exist or when disconnected, showing clean disconnection notices rather than fabricated demo metrics.
++- **Filter and sort allocations:** `visible_rows()` now borrows names as string slices during sorting instead of cloning `String` on every comparator invocation. Filter queries are lowercased once outside the loop.
++- **Event query search:** `EventsState::visible()` searches event fields directly without allocating intermediate combined strings per event.
++- **Metrics store retains:** Linear O(N*M) retain checks in `MetricsStore::ingest_domains` are replaced with O(N+M) set lookups, and unnecessary clones of previous counters are avoided.
+diff --git a/src/app/live.rs b/src/app/live.rs
+index 6a691940500b0c75e8be39d4f82b0f9e7aa17550..93b7118798ee601e2d575978b735802937662572 100644
+--- a/src/app/live.rs
++++ b/src/app/live.rs
+@@ -12,7 +12,14 @@ pub(super) async fn fill_live_host(uri: &str) -> ui::views::host::HostState {
+     host.connected = true;
+     host.system = host_system_facts(uri).await;
+     let backend = VirshBackend::new(uri);
+-    if let Ok(pools) = backend.pools().await {
++    let pools_res = backend.pools().await;
++    let nets_res = backend.networks().await;
++    let doms_res = backend.list_domains().await;
++    host.connected = pools_res.is_ok() || nets_res.is_ok() || doms_res.is_ok();
++    if !host.connected {
++        host.message = String::from("disconnected");
++    }
++    if let Ok(pools) = pools_res {
+         host.pools_active = format!(
+             "{}/{} active",
+             pools.iter().filter(|p| p.state == "running").count(),
+@@ -34,7 +41,7 @@ pub(super) async fn fill_live_host(uri: &str) -> ui::views::host::HostState {
+             })
+             .collect();
+     }
+-    if let Ok(nets) = backend.networks().await {
++    if let Ok(nets) = nets_res {
+         host.nets_active = format!(
+             "{}/{} active",
+             nets.iter().filter(|n| n.state == "active").count(),
+@@ -58,7 +65,7 @@ pub(super) async fn fill_live_host(uri: &str) -> ui::views::host::HostState {
+         }
+         host.nets = rows;
+     }
+-    if let Ok(domains) = backend.list_domains().await {
++    if let Ok(domains) = doms_res {
+         let running: Vec<_> = domains
+             .iter()
+             .filter(|d| d.state == crate::model::DomainState::Running)
+@@ -274,7 +281,10 @@ pub(super) async fn fill_live_nets(uri: &str) -> ui::views::networks::NetworksSt
+                 });
+             }
+         }
+-        Err(e) => st.message = format!("✗ {}", first_line(&e.to_string())),
++        Err(e) => {
++            st.connected = false;
++            st.message = format!("✗ {}", first_line(&e.to_string()));
++        }
+     }
+     st.selected = 0;
+     load_net_selection(uri, &mut st).await;
+@@ -555,7 +565,10 @@ pub(super) async fn fill_live_store(uri: &str) -> ui::views::storage::StorageSta
+                 }
+             }
+         }
+-        Err(e) => st.message = format!("✗ {}", first_line(&e.to_string())),
++        Err(e) => {
++            st.connected = false;
++            st.message = format!("✗ {}", first_line(&e.to_string()));
++        }
+     }
+     st.pool_selected = 0;
+     load_pool_volumes(uri, &mut st).await;
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 4936c6fd159882e92a0e352886e27a5577546cce..3679ce3990c5c25ff4cae4e627c2b84a928d34c6 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -79,10 +79,14 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         use crate::backend::{Backend, virsh::VirshBackend};
+         let backend = VirshBackend::new(&cli.connect);
+         match backend.list_domains().await {
+-            Ok(summaries) => ui::views::dashboard::DashboardState::from_summaries(&summaries),
++            Ok(summaries) => {
++                let mut d = ui::views::dashboard::DashboardState::from_summaries(&summaries);
++                d.connected = true;
++                d
++            }
+             Err(e) => {
+-                let mut d = ui::views::dashboard::DashboardState::demo();
+-                d.rows.clear();
++                let mut d = ui::views::dashboard::DashboardState::from_summaries(&[]);
++                d.connected = false;
+                 d.message = format!(
+                     "✗ virsh list failed: {}",
+                     e.to_string().lines().next().unwrap_or("")
+@@ -94,7 +98,13 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+ 
+     // Host/Networks/Storage need dozens of virsh calls: they load in the
+     // background after the first frame (see `spawn_load`).
+-    let loading_note = || String::from("loading…");
++    let loading_note = || {
++        if dash.connected {
++            String::from("loading…")
++        } else {
++            String::from("disconnected")
++        }
++    };
+     let mut host = if cli.demo {
+         ui::views::host::HostState::demo()
+     } else {
+@@ -121,6 +131,7 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+     };
+     let mut events_state = ui::views::events::EventsState::demo();
+     if !cli.demo {
++        let connected = dash.connected;
+         // Live mode starts with an empty log; the stream fills it.
+         events_state.events.clear();
+         for (u, c) in [
+@@ -131,7 +142,7 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+             (&mut events_state.uri, &mut events_state.connected),
+         ] {
+             *u = cli.connect.clone();
+-            *c = true;
++            *c = connected;
+         }
+     }
+     let wizard: Option<ui::overlays::wizard::WizardState> = None;
+@@ -613,6 +624,12 @@ impl App {
+ 
+     /// Apply live data from the poller.
+     fn on_live(&mut self, msg: LiveMsg) {
++        if let LiveMsg::Failed(_) = &msg {
++            self.host.connected = false;
++            self.nets.connected = false;
++            self.store.connected = false;
++            self.events_state.connected = false;
++        }
+         apply_live_msg(&self.uri, &mut self.dash, msg);
+         // Drain whatever else is ready so one redraw covers it all.
+         while let Some(msg) = self.poller.as_mut().and_then(|p| p.rx.try_recv().ok()) {
+diff --git a/src/command/tempxml.rs b/src/command/tempxml.rs
+index 72fc7b72bada7f2b976d220c4e36ee155bb0d7ff..e72b30fe66d6525933ceb2b2fde0cda68f9d6a74 100644
+--- a/src/command/tempxml.rs
++++ b/src/command/tempxml.rs
+@@ -41,7 +41,7 @@ pub fn path_arg(file: &NamedTempFile) -> String {
+     file.path().to_string_lossy().into_owned()
+ }
+ 
+-#[cfg(test)]
++#[cfg(all(test, unix))]
+ mod tests {
+     use std::os::unix::fs::PermissionsExt;
+ 
+diff --git a/src/metrics/store.rs b/src/metrics/store.rs
+index e3154cbcd484206f444ac9e3fa73f5bb49568d0f..3a833fcee615f18f24cec71c47831a6ab33ab441 100644
+--- a/src/metrics/store.rs
++++ b/src/metrics/store.rs
+@@ -237,10 +237,11 @@ impl MetricsStore {
+     /// domains that stopped or disappeared are dropped so a restart starts clean.
+     pub fn ingest_domains(&mut self, stats: &[RawDomainStats], now: Instant) {
+         let running: Vec<&RawDomainStats> = stats.iter().filter(|s| is_running(s)).collect();
++        let running_names: std::collections::HashSet<&str> =
++            running.iter().map(|s| s.domain.as_str()).collect();
+         self.domains
+-            .retain(|name, _| running.iter().any(|s| &s.domain == name));
+-        self.prev
+-            .retain(|name, _| running.iter().any(|s| &s.domain == name));
++            .retain(|name, _| running_names.contains(name.as_str()));
++        self.prev.retain(|name, _| running_names.contains(name.as_str()));
+         for s in running {
+             let cur = counters(s);
+             let series = self.domains.entry(s.domain.clone()).or_default();
+diff --git a/src/ui/views/dashboard.rs b/src/ui/views/dashboard.rs
+index f710534a2b5737a31c896805f7fca783278ecd63..8c1e24bc4677c843ec833e1fefadbb959a20d4fb 100644
+--- a/src/ui/views/dashboard.rs
++++ b/src/ui/views/dashboard.rs
+@@ -294,18 +294,19 @@ impl DashboardState {
+     }
+     /// Rows after chip + text filter + sort (selection indexes into this list).
+     pub fn visible_rows(&self) -> Vec<&DomainRow> {
++        let filter_lower = self.filter.to_lowercase();
+         let mut out: Vec<&DomainRow> = self
+             .rows
+             .iter()
+             .filter(|r| self.chip.matches(r.state))
+-            .filter(|r| self.filter.is_empty() || r.name.to_lowercase().contains(&self.filter.to_lowercase()))
++            .filter(|r| filter_lower.is_empty() || r.name.to_lowercase().contains(&filter_lower))
+             .collect();
+         match self.sort {
+-            Sort::State => out.sort_by_key(|r| (state_rank(r.state), r.name.clone())),
+-            Sort::Name => out.sort_by_key(|r| r.name.clone()),
++            Sort::State => out.sort_by_key(|r| (state_rank(r.state), r.name.as_str())),
++            Sort::Name => out.sort_by_key(|r| r.name.as_str()),
+             Sort::Cpu => out.sort_by(|a, b| b.cpu_frac.total_cmp(&a.cpu_frac).then(a.name.cmp(&b.name))),
+-            Sort::Mem => out.sort_by_key(|r| (u64::MAX - r.mem_sort_mib, r.name.clone())),
+-            Sort::Uptime => out.sort_by_key(|r| r.uptime.clone()),
++            Sort::Mem => out.sort_by_key(|r| (u64::MAX - r.mem_sort_mib, r.name.as_str())),
++            Sort::Uptime => out.sort_by_key(|r| r.uptime.as_str()),
+         }
+         out
+     }
+@@ -886,7 +887,14 @@ fn render_events(frame: &mut Frame, theme: &Theme, state: &DashboardState, area:
+         })
+         .collect();
+     if lines.is_empty() {
+-        lines.push(Line::from(Span::styled("waiting for events…", theme.dim())));
++        lines.push(Line::from(Span::styled(
++            if !state.connected {
++                "disconnected"
++            } else {
++                "waiting for events…"
++            },
++            theme.dim(),
++        )));
+     }
+     let block = panel_block(theme, false, "Events", Some("libvirt event stream"));
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+@@ -936,7 +944,14 @@ fn render_host(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: R
+         lines.push(Line::from(spans));
+     }
+     if lines.is_empty() {
+-        lines.push(Line::from(Span::styled("collecting…", theme.dim())));
++        lines.push(Line::from(Span::styled(
++            if !state.connected {
++                "disconnected"
++            } else {
++                "collecting…"
++            },
++            theme.dim(),
++        )));
+     }
+     let (title, right) = if state.live {
+         (format!("Host · {}", state.hostname), state.host_title.clone())
+@@ -951,6 +966,22 @@ fn render_host(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: R
+ }
+ 
+ fn render_right(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Rect) {
++    let sel = state.selected();
++    if sel.name.is_empty() {
++        let block = panel_block(theme, false, "Overview", None);
++        let msg = if !state.connected {
++            "disconnected from libvirt daemon"
++        } else {
++            "no domains"
++        };
++        frame.render_widget(
++            Paragraph::new(Line::from(Span::styled(msg, theme.dim())))
++                .block(block)
++                .style(theme.base()),
++            area,
++        );
++        return;
++    }
+     // Overview: borders, five info rows, a blank line, then the action rows.
+     // The CPU graph gives up to two rows when the terminal is short, so the
+     // chips keep their spacing.
+@@ -1047,6 +1078,9 @@ fn action_chips(theme: &Theme, state: DomainState, width: usize) -> Vec<Line<'st
+ 
+ fn render_overview(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Rect) {
+     let sel = state.selected();
++    if sel.name.is_empty() {
++        return;
++    }
+     let t = &theme.tokens;
+     let st = state_style(theme, sel.state);
+     let title_right = Line::from(Span::styled(
+diff --git a/src/ui/views/events.rs b/src/ui/views/events.rs
+index a5abfedcc1e16ec09edb30437655423bc86d5314..a7298ccd7bc6005db52aa7d177601dd08b0e8ab1 100644
+--- a/src/ui/views/events.rs
++++ b/src/ui/views/events.rs
+@@ -137,15 +137,18 @@ impl EventsState {
+ 
+     /// Visible events after filter + search.
+     pub fn visible(&self) -> Vec<&LibvirtEvent> {
++        let q = self.query.to_lowercase();
+         self.events
+             .iter()
+             .rev()
+             .filter(|e| self.filter.matches(e))
+             .filter(|e| {
+-                self.query.is_empty()
+-                    || format!("{} {} {} {} {}", e.timestamp, e.kind, e.object, e.event, e.detail)
+-                        .to_lowercase()
+-                        .contains(&self.query.to_lowercase())
++                q.is_empty()
++                    || e.timestamp.to_lowercase().contains(&q)
++                    || e.kind.to_lowercase().contains(&q)
++                    || e.object.to_lowercase().contains(&q)
++                    || e.event.to_lowercase().contains(&q)
++                    || e.detail.to_lowercase().contains(&q)
+             })
+             .collect()
+     }

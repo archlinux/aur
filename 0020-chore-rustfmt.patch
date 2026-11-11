@@ -1,0 +1,1201 @@
+From e0c3933343606fa1b2c294bd25f94ad80260066e Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Wed, 4 Nov 2026 23:30:26 +0100
+Subject: [PATCH 20/23] chore: rustfmt
+
+---
+ rustfmt.toml                     |  4 ++++
+ src/app/detail.rs                | 14 ++++++++++----
+ src/app/domains.rs               |  8 ++++++--
+ src/app/ex.rs                    | 11 +++++++----
+ src/app/external.rs              |  1 -
+ src/app/live.rs                  | 12 ++++++++----
+ src/app/mod.rs                   | 24 ++++++++++++++----------
+ src/app/mode.rs                  |  3 +--
+ src/app/palette.rs               |  4 +++-
+ src/app/poller.rs                |  7 +++----
+ src/app/render.rs                |  4 +++-
+ src/backend/demo/mod.rs          |  3 +--
+ src/backend/mod.rs               |  3 +--
+ src/backend/virsh/exec.rs        |  4 ++--
+ src/backend/virsh/mod.rs         |  6 ++----
+ src/backend/virsh/parse_list.rs  |  4 ++--
+ src/backend/virsh/parse_xml.rs   |  8 +++++---
+ src/command/display.rs           |  7 +++----
+ src/command/exec.rs              |  4 ++--
+ src/command/tempxml.rs           |  3 +--
+ src/config.rs                    |  4 +++-
+ src/input/engine.rs              |  3 +--
+ src/input/keymap.rs              |  7 ++++---
+ src/main.rs                      |  7 +++++--
+ src/metrics/store.rs             |  5 ++---
+ src/theme/load.rs                |  4 ++--
+ src/ui/chrome.rs                 | 13 +++++--------
+ src/ui/layout.rs                 |  8 +++-----
+ src/ui/mod.rs                    | 11 ++++-------
+ src/ui/overlays/confirm.rs       | 13 +++++--------
+ src/ui/overlays/help.rs          | 16 ++++++----------
+ src/ui/overlays/palette.rs       | 15 ++++++---------
+ src/ui/overlays/wizard.rs        | 17 ++++++++---------
+ src/ui/views/dashboard.rs        | 20 +++++++++-----------
+ src/ui/views/detail/hardware.rs  | 16 ++++++----------
+ src/ui/views/detail/mod.rs       | 16 ++++++----------
+ src/ui/views/detail/snapshots.rs | 13 +++++--------
+ src/ui/views/events.rs           | 13 +++++--------
+ src/ui/views/gallery.rs          | 16 ++++++----------
+ src/ui/views/host.rs             | 16 +++++++---------
+ src/ui/views/networks.rs         | 19 +++++++------------
+ src/ui/views/settings.rs         | 13 +++++--------
+ src/ui/views/storage.rs          | 13 +++++--------
+ src/ui/widgets/modal.rs          |  4 ++--
+ src/ui/widgets/panel.rs          |  9 +++------
+ src/ui/widgets/whichkey.rs       | 18 +++++++-----------
+ src/xml/edit.rs                  |  3 ++-
+ src/xml/highlight.rs             |  4 ++--
+ 48 files changed, 209 insertions(+), 241 deletions(-)
+
+diff --git a/rustfmt.toml b/rustfmt.toml
+index 284d219685e70d8ef3bd03f9303738c2fda54a98..8e3292be0b0656d41650b493d0e102c8055efffa 100644
+--- a/rustfmt.toml
++++ b/rustfmt.toml
+@@ -1 +1,5 @@
++edition = "2024"
++unstable_features = true
++imports_granularity = "Module"
++group_imports = "One"
+ max_width = 110
+diff --git a/src/app/detail.rs b/src/app/detail.rs
+index fd6aafd24a74a831d8dddded557ae2f8ddb64ab3..055a13e899aa3c29d6abc7f3083bbbbe5b7d554c 100644
+--- a/src/app/detail.rs
++++ b/src/app/detail.rs
+@@ -288,7 +288,8 @@ pub(super) async fn handle_snap_modal(
+     history: &mut crate::command::history::History,
+     messages: &mut Vec<String>,
+ ) -> bool {
+-    use crate::ui::views::detail::{SnapModal, snapshots::AfterRevert};
++    use crate::ui::views::detail::SnapModal;
++    use crate::ui::views::detail::snapshots::AfterRevert;
+     let Some(d) = detail else { return false };
+     match d.snap_modal {
+         SnapModal::None => return false,
+@@ -467,7 +468,8 @@ pub(super) async fn open_detail(
+ 
+ /// Reload the snapshot tree (and the current snapshot) of the detail domain.
+ pub(super) async fn refresh_snapshots(uri: &str, d: &mut ui::views::detail::DetailState) {
+-    use crate::backend::{Backend, virsh::VirshBackend};
++    use crate::backend::Backend;
++    use crate::backend::virsh::VirshBackend;
+     let Ok(snaps) = VirshBackend::new(uri).snapshots(&d.domain).await else {
+         return;
+     };
+@@ -772,7 +774,9 @@ pub(super) async fn set_description(
+     }
+     let xml = match crate::backend::virsh::exec::run(uri, &["dumpxml", domain, "--inactive"]).await {
+         Ok(x) => x,
+-        Err(e) => return format!("✗ dumpxml failed: {}", e.to_string().lines().next().unwrap_or("")),
++        Err(e) => {
++            return format!("✗ dumpxml failed: {}", e.to_string().lines().next().unwrap_or(""));
++        }
+     };
+     let new_xml = set_description_text(&xml, text);
+     let Ok(tmp) = crate::command::tempxml::write(domain, &new_xml) else {
+@@ -819,7 +823,9 @@ pub(super) async fn attach_hostdev(uri: &str, domain: &str, node: &str, dry_run:
+     }
+     let dev_xml = match crate::backend::virsh::exec::run(uri, &["nodedev-dumpxml", node]).await {
+         Ok(x) => x,
+-        Err(e) => return format!("✗ nodedev failed: {}", e.to_string().lines().next().unwrap_or("")),
++        Err(e) => {
++            return format!("✗ nodedev failed: {}", e.to_string().lines().next().unwrap_or(""));
++        }
+     };
+     let hostdev = match hostdev_xml(&dev_xml) {
+         Some(x) => x,
+diff --git a/src/app/domains.rs b/src/app/domains.rs
+index b44a7e796bc0fde4766ced346fcdf5b53b68f7f6..c3832d6e382f65e2d158d12263b20e13303a60cc 100644
+--- a/src/app/domains.rs
++++ b/src/app/domains.rs
+@@ -506,7 +506,9 @@ pub(super) fn prefill_command(
+             Some(d) => format!("vol-resize {} ", d.source),
+             None => return None,
+         },
+-        A::NicAttach => format!("attach-interface {domain} network default --model virtio --config{live}"),
++        A::NicAttach => {
++            format!("attach-interface {domain} network default --model virtio --config{live}")
++        }
+         A::NicLink => {
+             let nic = cfg.and_then(|c| c.nics.first())?;
+             let iface = if nic.target.is_empty() {
+@@ -516,7 +518,9 @@ pub(super) fn prefill_command(
+             };
+             format!("domif-setlink {domain} {iface} down")
+         }
+-        A::Migrate => format!("migrate {domain} qemu+ssh://HOST/system --live --persistent --verbose"),
++        A::Migrate => {
++            format!("migrate {domain} qemu+ssh://HOST/system --live --persistent --verbose")
++        }
+         _ => return None,
+     })
+ }
+diff --git a/src/app/ex.rs b/src/app/ex.rs
+index 8cb7aee6cbd6c24945a12904f37ec5f9ddd56a17..044f7ba7274d34b8b65b820fb41bfe4bd5722330 100644
+--- a/src/app/ex.rs
++++ b/src/app/ex.rs
+@@ -19,10 +19,11 @@ pub(super) async fn run_ex_line(
+     theme: &mut Theme,
+     confirm: &mut Option<crate::command::plan::PendingConfirm>,
+ ) -> bool {
+-    use crate::command::builders::hardware as hardware_ext;
+-    use crate::command::builders::lifecycle;
++    use crate::command::builders::{hardware as hardware_ext, lifecycle};
+     match crate::input::ex::parse(line) {
+-        Ok(crate::input::ex::ExCommand::Quit | crate::input::ex::ExCommand::QuitAll) => return true,
++        Ok(crate::input::ex::ExCommand::Quit | crate::input::ex::ExCommand::QuitAll) => {
++            return true;
++        }
+         Ok(crate::input::ex::ExCommand::Help(topic)) => {
+             *help_state = Some(crate::ui::overlays::help::HelpState::new(&topic));
+         }
+@@ -246,7 +247,9 @@ pub(super) async fn run_ex_line(
+                             crate::model::sanitize(first.trim()),
+                             lines.len() - 1
+                         ),
+-                        Some(first) => format!("✓ {}  ── {shown}", crate::model::sanitize(first.trim())),
++                        Some(first) => {
++                            format!("✓ {}  ── {shown}", crate::model::sanitize(first.trim()))
++                        }
+                         None => format!("✓ done  ── {shown}"),
+                     };
+                     refresh_live(uri, dash).await;
+diff --git a/src/app/external.rs b/src/app/external.rs
+index d176fa71302632e60e0c668da8ef85a66e9cfbde..1fdaea185dbadd9fe4dfe505b230a34c12bd8f84 100644
+--- a/src/app/external.rs
++++ b/src/app/external.rs
+@@ -1,7 +1,6 @@
+ //! External programs that take over the terminal ($EDITOR, console) or run detached.
+ 
+ use std::io::Write;
+-
+ use std::sync::atomic::{AtomicBool, Ordering};
+ 
+ /// Set while an external program owns the terminal: the input thread stops
+diff --git a/src/app/live.rs b/src/app/live.rs
+index 62516028e6d5a05432255e60acfaae27158d6e3a..4f9bc29b528f007b40d7242e7af7251463f8b36d 100644
+--- a/src/app/live.rs
++++ b/src/app/live.rs
+@@ -6,7 +6,8 @@ use super::*;
+ 
+ /// Build live host state: local /proc data plus virsh pools/networks/domains.
+ pub(super) async fn fill_live_host(uri: &str) -> ui::views::host::HostState {
+-    use crate::backend::{Backend, virsh::VirshBackend};
++    use crate::backend::Backend;
++    use crate::backend::virsh::VirshBackend;
+     let mut host = if is_local_uri(uri) {
+         ui::views::host::HostState::live_local().await
+     } else {
+@@ -291,7 +292,8 @@ pub(super) fn spawn_load(uri: &str, view: View, tx: &tokio::sync::mpsc::Unbounde
+ /// Build live networks state: definitions, host interfaces, and the
+ /// selected network's leases/attachments.
+ pub(super) async fn fill_live_nets(uri: &str) -> ui::views::networks::NetworksState {
+-    use crate::backend::{Backend, virsh::VirshBackend};
++    use crate::backend::Backend;
++    use crate::backend::virsh::VirshBackend;
+     use crate::ui::views::networks::{NetRow, NetworksState};
+     let backend = VirshBackend::new(uri);
+     let mut st = NetworksState::demo();
+@@ -358,7 +360,8 @@ pub(super) async fn reload_nets(uri: &str, st: &mut ui::views::networks::Network
+ /// Leases (with static hosts and owning domains) and attached interfaces of
+ /// the selected network.
+ pub(super) async fn load_net_selection(uri: &str, st: &mut ui::views::networks::NetworksState) {
+-    use crate::backend::{Backend, virsh::VirshBackend};
++    use crate::backend::Backend;
++    use crate::backend::virsh::VirshBackend;
+     use crate::ui::views::networks::LeaseRow;
+     st.leases.clear();
+     st.attached.clear();
+@@ -552,7 +555,8 @@ pub(super) async fn read_ifaces() -> Vec<crate::ui::views::networks::IfaceRow> {
+ /// Build live storage state: pools, every domain's disk sources, the volumes
+ /// of the selected pool, and the ISO library across all active pools.
+ pub(super) async fn fill_live_store(uri: &str) -> ui::views::storage::StorageState {
+-    use crate::backend::{Backend, virsh::VirshBackend};
++    use crate::backend::Backend;
++    use crate::backend::virsh::VirshBackend;
+     use crate::ui::views::storage::{IsoEntry, PoolRow, StorageState};
+     let backend = VirshBackend::new(uri);
+     let mut st = StorageState::demo();
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 9640cf65b770a4dac08e7b587d7c682f08bb1daf..1d4aeecf8ce12554962ad1791be44a1de59ae6af 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -16,28 +16,27 @@ mod settings;
+ mod storage;
+ mod wizard;
+ 
+-use color_eyre::Result;
+-use crossterm::event::{Event, KeyCode, KeyEvent, KeyModifiers};
+-use ratatui::Terminal;
+-use ratatui::backend::CrosstermBackend;
+-use std::time::Duration;
+-use tokio::time::interval;
+-
+ use crate::cli::Cli;
+ use crate::config::Config;
+ use crate::theme::Theme;
+ use crate::ui::{self, ChromeState};
++use color_eyre::Result;
++use crossterm::event::{Event, KeyCode, KeyEvent, KeyModifiers};
+ use detail::*;
+ use domains::*;
+ use ex::*;
+ use live::*;
+ use networks::*;
+ use palette::*;
++use ratatui::Terminal;
++use ratatui::backend::CrosstermBackend;
+ use ratatui::layout::Rect;
+ use ratatui::style::Style;
+ use render::*;
+ use settings::*;
++use std::time::Duration;
+ use storage::*;
++use tokio::time::interval;
+ use wizard::*;
+ 
+ /// Build the working theme from config (builtin/custom + appearance flags).
+@@ -98,7 +97,8 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         ui::views::dashboard::DashboardState::demo()
+     } else {
+         // Live mode: read-only fetch at startup.
+-        use crate::backend::{Backend, virsh::VirshBackend};
++        use crate::backend::Backend;
++        use crate::backend::virsh::VirshBackend;
+         let backend = VirshBackend::new(&cli.connect);
+         match backend.list_domains().await {
+             Ok(summaries) => {
+@@ -428,7 +428,9 @@ impl App {
+ 
+     /// Tab (or Shift-Tab) on the `:` line: start or cycle completion.
+     fn tab_complete(&mut self, back: bool) {
+-        let Some(ex) = self.ex_line.as_mut() else { return };
++        let Some(ex) = self.ex_line.as_mut() else {
++            return;
++        };
+         if let Some(c) = self.completion.as_mut() {
+             let n = c.items.len();
+             c.idx = if back {
+@@ -459,7 +461,9 @@ impl App {
+                 .clone()
+         };
+         let (start, items) = crate::input::complete::complete(&line, &ctx, &flags);
+-        let Some(ex) = self.ex_line.as_mut() else { return };
++        let Some(ex) = self.ex_line.as_mut() else {
++            return;
++        };
+         match items.len() {
+             0 => self.dash.message = String::from("no completions"),
+             1 => {
+diff --git a/src/app/mode.rs b/src/app/mode.rs
+index a1d4ad4ee78be5db19e7e0d06df64993663cca8f..2c7f5d3050ba84a702d939b6a6e46b68da81ea8d 100644
+--- a/src/app/mode.rs
++++ b/src/app/mode.rs
+@@ -1,8 +1,7 @@
+ //! Modes: NORMAL / INSERT / VISUAL / COMMAND / PALETTE / PICKER / CONFIRM.
+ 
+-use ratatui::style::{Color, Style};
+-
+ use crate::theme::Theme;
++use ratatui::style::{Color, Style};
+ 
+ /// App mode.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+diff --git a/src/app/palette.rs b/src/app/palette.rs
+index f250e8c254e1c1f009d1c6589573aa45909679ed..13da70b1011577c0d5aef3d570c635368a802896 100644
+--- a/src/app/palette.rs
++++ b/src/app/palette.rs
+@@ -39,7 +39,9 @@ pub(super) async fn handle_palette_key(
+     demo: bool,
+     ex_line: &mut Option<crate::input::textinput::TextInput>,
+ ) -> bool {
+-    let Some(pal) = palette.as_mut() else { return false };
++    let Some(pal) = palette.as_mut() else {
++        return false;
++    };
+     let ctrl = key.modifiers.contains(KeyModifiers::CONTROL);
+     match key.code {
+         KeyCode::Esc => {
+diff --git a/src/app/poller.rs b/src/app/poller.rs
+index 8e790c28bfd1c3fb02d41a669babaf4ccd03f047..95edebcdcff1b5027554ffc3ce539e6403c0b290 100644
+--- a/src/app/poller.rs
++++ b/src/app/poller.rs
+@@ -4,14 +4,13 @@
+ //! handling never wait on a subprocess. Results arrive as `LiveMsg`s and are
+ //! applied to the state in one cheap, synchronous step.
+ 
++use crate::backend::virsh::VirshBackend;
++use crate::backend::{Backend, RawDomainStats};
++use crate::model::{DomainConfig, DomainSummary, PoolSummary};
+ use std::collections::{HashMap, HashSet};
+ use std::time::{Duration, Instant};
+-
+ use tokio::sync::mpsc;
+ 
+-use crate::backend::{Backend, RawDomainStats, virsh::VirshBackend};
+-use crate::model::{DomainConfig, DomainSummary, PoolSummary};
+-
+ /// Telemetry from a remote hypervisor host.
+ #[derive(Debug, Clone, PartialEq)]
+ pub struct RemoteHostSample {
+diff --git a/src/app/render.rs b/src/app/render.rs
+index cb0309c30b37bb2eac7f981e3d490bebd3b55498..9e9e892795e4cb45d7a774d52c1362923e7443a1 100644
+--- a/src/app/render.rs
++++ b/src/app/render.rs
+@@ -194,7 +194,9 @@ pub(super) fn buffer_to_ansi(buffer: &ratatui::buffer::Buffer, w: u16, h: u16) -
+     for y in 0..h {
+         let mut last: Option<(Color, Color, Modifier)> = None;
+         for x in 0..w {
+-            let Some(cell) = buffer.cell((x, y)) else { continue };
++            let Some(cell) = buffer.cell((x, y)) else {
++                continue;
++            };
+             let key = (cell.fg, cell.bg, cell.modifier);
+             if last != Some(key) {
+                 out.push_str("\x1b[0m");
+diff --git a/src/backend/demo/mod.rs b/src/backend/demo/mod.rs
+index 311d56104caccd2d33fb2c65b7b29a79502885e0..7a231fd5a3f45b021c2023fc1e1c7e03c845b58e 100644
+--- a/src/backend/demo/mod.rs
++++ b/src/backend/demo/mod.rs
+@@ -3,10 +3,9 @@
+ pub mod fixtures;
+ pub mod sim;
+ 
+-use color_eyre::Result;
+-
+ use super::{Backend, RawDomainStats};
+ use crate::model::{DhcpLease, DomainSummary, HostInfo, NetworkSummary, PoolSummary, Snapshot};
++use color_eyre::Result;
+ 
+ /// Fully in-memory backend reproducing the mockup data exactly.
+ pub struct DemoBackend;
+diff --git a/src/backend/mod.rs b/src/backend/mod.rs
+index d44d19365a5f00fd2fe952d9fa75f5f7e9c2690a..91d86a7256b1bb71e25e35b24e677067ffa4ad3c 100644
+--- a/src/backend/mod.rs
++++ b/src/backend/mod.rs
+@@ -3,9 +3,8 @@
+ pub mod demo;
+ pub mod virsh;
+ 
+-use color_eyre::Result;
+-
+ use crate::model::{DhcpLease, DomainSummary, HostInfo, NetworkSummary, PoolSummary, Snapshot};
++use color_eyre::Result;
+ 
+ /// Raw per-domain stats from `virsh domstats --raw`.
+ #[derive(Debug, Clone, Default, PartialEq)]
+diff --git a/src/backend/virsh/exec.rs b/src/backend/virsh/exec.rs
+index 553f7cca4a40d3a6fbfa3a303355533b0ad29442..f611695263e7901ab85b20846ab3203b89b8a12b 100644
+--- a/src/backend/virsh/exec.rs
++++ b/src/backend/virsh/exec.rs
+@@ -1,8 +1,8 @@
+ //! Process spawning: LC_ALL=C, explicit URI, timeouts, stderr capture.
+ 
++use color_eyre::Result;
++use color_eyre::eyre::eyre;
+ use std::sync::atomic::{AtomicBool, Ordering};
+-
+-use color_eyre::{Result, eyre::eyre};
+ use tokio::process::Command;
+ 
+ static DETACH_TTY: AtomicBool = AtomicBool::new(false);
+diff --git a/src/backend/virsh/mod.rs b/src/backend/virsh/mod.rs
+index e4c9eca844af5b1f145401263d4662875dd67965..a633f66a3480ca8998c36dd623d743a7b595932e 100644
+--- a/src/backend/virsh/mod.rs
++++ b/src/backend/virsh/mod.rs
+@@ -10,12 +10,10 @@ pub mod parse_list;
+ pub mod parse_nodestats;
+ pub mod parse_xml;
+ 
+-pub use exec::{ensure_virsh_available, is_virsh_available};
+-
+-use color_eyre::Result;
+-
+ use super::{Backend, RawDomainStats};
+ use crate::model::{DhcpLease, DomainSummary, HostInfo, NetworkSummary, PoolSummary, Snapshot};
++use color_eyre::Result;
++pub use exec::{ensure_virsh_available, is_virsh_available};
+ 
+ /// Real backend: runs `virsh -c <uri> ...` with `LC_ALL=C`.
+ pub struct VirshBackend {
+diff --git a/src/backend/virsh/parse_list.rs b/src/backend/virsh/parse_list.rs
+index 9486f8e42d017cda32a05dd81a6a832aaab82e6d..ca312572ce8b6d172f4fa9e89e6f2e846b65f70c 100644
+--- a/src/backend/virsh/parse_list.rs
++++ b/src/backend/virsh/parse_list.rs
+@@ -1,8 +1,8 @@
+ //! Table parsers: virsh list, net-list, pool-list, snapshot-list.
+ 
+-use color_eyre::{Result, eyre::eyre};
+-
+ use crate::model::{DomainState, NetworkSummary, PoolSummary, Snapshot};
++use color_eyre::Result;
++use color_eyre::eyre::eyre;
+ 
+ /// Row of `virsh list --all`.
+ #[derive(Debug, Clone, PartialEq, Eq)]
+diff --git a/src/backend/virsh/parse_xml.rs b/src/backend/virsh/parse_xml.rs
+index 810c4fe10bdaef1a88ee9061244fd8776ccee1ff..640678a73082d2762ba00e4338f91b6f91ce96dc 100644
+--- a/src/backend/virsh/parse_xml.rs
++++ b/src/backend/virsh/parse_xml.rs
+@@ -1,8 +1,8 @@
+ //! Domain XML parsing with roxmltree.
+ 
+-use color_eyre::{Result, eyre::eyre};
+-
+ use crate::model::{DiskInfo, DomainConfig, GraphicsInfo, NicInfo};
++use color_eyre::Result;
++use color_eyre::eyre::eyre;
+ 
+ fn child_text<'a, 'input>(node: roxmltree::Node<'a, 'input>, tag: &str) -> Option<String> {
+     node.children()
+@@ -268,7 +268,9 @@ pub fn parse_volume_xml(text: &str) -> Result<(String, u64, u64, Option<String>)
+     let doc = roxmltree::Document::parse(text).map_err(|e| eyre!("bad xml: {e}"))?;
+     let root = doc.root_element();
+     let bytes = |tag: &str| -> u64 {
+-        let Some(n) = find_child(root, tag) else { return 0 };
++        let Some(n) = find_child(root, tag) else {
++            return 0;
++        };
+         let v: f64 = n.text().and_then(|t| t.trim().parse().ok()).unwrap_or(0.0);
+         let mult: f64 = match n.attribute("unit").unwrap_or("bytes") {
+             "KiB" | "K" | "k" => 1024.0,
+diff --git a/src/command/display.rs b/src/command/display.rs
+index 94e4bcca8a03018ff69f5923d1edb6839cb1e55b..3af7250a5e535ffcaf94de5f935d9a29add36d3b 100644
+--- a/src/command/display.rs
++++ b/src/command/display.rs
+@@ -3,11 +3,10 @@
+ //! Style: `$ ` comment · program green · subcommand blue · object fg ·
+ //! flags cyan · numerics orange · paths yellow.
+ 
+-use ratatui::{style::Style, text::Span};
+-
+-use crate::theme::Theme;
+-
+ use super::plan::CommandStep;
++use crate::theme::Theme;
++use ratatui::style::Style;
++use ratatui::text::Span;
+ 
+ /// Plain-text display with shell quoting for copy-to-clipboard.
+ pub fn display(step: &CommandStep) -> String {
+diff --git a/src/command/exec.rs b/src/command/exec.rs
+index 396d060ea64e0c1aa14143625069cf49afda0874..223922373fe6d06413e26994ad331c0f823e9312 100644
+--- a/src/command/exec.rs
++++ b/src/command/exec.rs
+@@ -1,9 +1,9 @@
+ //! Plan execution: sequential steps, dry-run, timeouts, message formatting.
+ 
+-use color_eyre::{Result, eyre::eyre};
+-
+ use super::display::display;
+ use super::plan::CommandPlan;
++use color_eyre::Result;
++use color_eyre::eyre::eyre;
+ 
+ static DEMO: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+ 
+diff --git a/src/command/tempxml.rs b/src/command/tempxml.rs
+index 9a9dab2ac3403bbb8dc17ffabee289195b268f60..77baf51c5f0027961932927e1be89517727d3aac 100644
+--- a/src/command/tempxml.rs
++++ b/src/command/tempxml.rs
+@@ -5,9 +5,8 @@
+ //! so other local users cannot pre-create or swap them (symlink/TOCTOU attacks),
+ //! and the file is removed when the returned handle is dropped.
+ 
+-use std::io::Write;
+-
+ use color_eyre::Result;
++use std::io::Write;
+ use tempfile::NamedTempFile;
+ 
+ /// Write `xml` to a new private temp file. Keep the handle alive while the
+diff --git a/src/config.rs b/src/config.rs
+index 52c47b97ee11835169414db9c87b04f3fe95c6aa..191e553e324c633f167b8d436c60a651a8e0f8c0 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -191,7 +191,9 @@ impl Config {
+     }
+ 
+     fn load_from(path: Option<std::path::PathBuf>) -> Self {
+-        let Some(path) = path else { return Self::default() };
++        let Some(path) = path else {
++            return Self::default();
++        };
+         let mut cfg: Self = match std::fs::read_to_string(&path) {
+             Err(_) => Self::default(),
+             Ok(text) => match toml::from_str(&text) {
+diff --git a/src/input/engine.rs b/src/input/engine.rs
+index d3051706df783d54bfd66c24c7c4337af7e74aaa..c081b3a7ab219da15493bfcf5424359ae1c6011e 100644
+--- a/src/input/engine.rs
++++ b/src/input/engine.rs
+@@ -4,9 +4,8 @@
+ //! `ResolvedAction`. A partial match waits (caller shows which-key after
+ //! 300 ms). `Esc` clears the buffer.
+ 
+-use std::collections::HashMap;
+-
+ use super::key::KeySeq;
++use std::collections::HashMap;
+ 
+ /// Mutating marker: `.` repeats only these.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index 81893a54f8dfc170391a3d2bad08c62d6c798d77..dfda3cd9f96cccd6d7ae6df8e3e82683b572fa66 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -1,8 +1,7 @@
+ //! Default keymap (DESIGN.md section 6) plus TOML overrides.
+ 
+-use std::collections::HashMap;
+-
+ use super::engine::KeyAction;
++use std::collections::HashMap;
+ 
+ /// Single source of truth for all default key bindings.
+ pub const DEFAULT_BINDINGS: &[(&[&str], KeyAction)] = &[
+@@ -197,7 +196,9 @@ pub fn apply_overrides(
+     }
+     for table in tables {
+         for (name, keys) in table {
+-            let Some(keys) = keys.as_array() else { continue };
++            let Some(keys) = keys.as_array() else {
++                continue;
++            };
+             let Some(action) = KeyAction::from_name(name) else {
+                 warnings.push(format!("keymap.toml: unknown action `{name}`"));
+                 continue;
+diff --git a/src/main.rs b/src/main.rs
+index bd98a4af1b04817aa0255210c80c393758ad433a..edcae6142caf42d8f676296ac7d4d12a4a73710e 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -3,7 +3,9 @@
+ use clap::Parser;
+ use color_eyre::Result;
+ use tracing_subscriber::EnvFilter;
+-use virsh_tui::{app, cli::Cli, config::Config};
++use virsh_tui::app;
++use virsh_tui::cli::Cli;
++use virsh_tui::config::Config;
+ 
+ fn main() -> Result<()> {
+     color_eyre::install()?;
+@@ -35,7 +37,8 @@ fn main() -> Result<()> {
+ 
+ /// Read-only probe: print parsed domains, host info, networks, and pools as JSON.
+ async fn probe(cli: &Cli) -> Result<()> {
+-    use virsh_tui::backend::{Backend, virsh::VirshBackend};
++    use virsh_tui::backend::Backend;
++    use virsh_tui::backend::virsh::VirshBackend;
+     let backend = VirshBackend::new(&cli.connect);
+     let domains = backend.list_domains().await?;
+     let host = backend.host_info().await.unwrap_or(virsh_tui::model::HostInfo {
+diff --git a/src/metrics/store.rs b/src/metrics/store.rs
+index a64f0f35fbd3849cb719c0982a6de5985136edfe..23074cd8174b4d5fa3fa1ad32090e978685515e5 100644
+--- a/src/metrics/store.rs
++++ b/src/metrics/store.rs
+@@ -1,13 +1,12 @@
+ //! Live metrics store: turns periodic `virsh domstats --raw` and `/proc/stat`
+ //! samples into per-domain and host histories.
+ 
+-use std::collections::HashMap;
+-use std::time::Instant;
+-
+ use super::ring::Ring;
+ use super::sampler::{cpu_pct, mem_used_kib, rate};
+ use crate::backend::RawDomainStats;
+ use crate::backend::virsh::host_local::{CpuTimes, cpu_busy_fraction, parse_proc_stat};
++use std::collections::HashMap;
++use std::time::Instant;
+ 
+ /// Default chart window: 60 samples (60 s at the default 1 s refresh).
+ pub const HISTORY: usize = 60;
+diff --git a/src/theme/load.rs b/src/theme/load.rs
+index 888814b5c059f73abb334fb7e214f9b1a9c769e3..69b1a6a8b0a62ff15e2c71ccfeb68ceb1c9bd151 100644
+--- a/src/theme/load.rs
++++ b/src/theme/load.rs
+@@ -1,8 +1,8 @@
+ //! Custom theme loading from ~/.config/virsh-tui/themes/<name>.toml.
+ 
+-use color_eyre::{Result, eyre::eyre};
+-
+ use super::{IconSet, Theme, ThemeTokens, rgb};
++use color_eyre::Result;
++use color_eyre::eyre::eyre;
+ 
+ const KEYS: [&str; 16] = [
+     "bg", "bg2", "hl", "sel", "gutter", "comment", "fg", "fg2", "blue", "cyan", "magenta", "green", "yellow",
+diff --git a/src/ui/chrome.rs b/src/ui/chrome.rs
+index 594bc06807d3956b008cc9edfecb68c0b6a2c364..8932a3ae7ed5aaf4d657fc0212db1d36791fd2a3 100644
+--- a/src/ui/chrome.rs
++++ b/src/ui/chrome.rs
+@@ -4,15 +4,12 @@
+ //! message colouring are identical everywhere. In live mode the hostname and
+ //! clock are real; demo/tests keep the mockup values (`forge`, frozen time).
+ 
+-use ratatui::{
+-    Frame,
+-    layout::Rect,
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::Paragraph,
+-};
+-
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::Rect;
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::Paragraph;
+ 
+ /// Live chrome facts (set once at startup in live mode).
+ #[derive(Debug, Clone)]
+diff --git a/src/ui/layout.rs b/src/ui/layout.rs
+index ae57823978d8ac6dcfde0b948818b69898d4b63d..a9413c5a62b9b4ff0e7911580150e7b589ab9b9a 100644
+--- a/src/ui/layout.rs
++++ b/src/ui/layout.rs
+@@ -35,11 +35,9 @@ pub fn centered(area: ratatui::layout::Rect, w: u16, h: u16) -> ratatui::layout:
+ 
+ /// Too-small terminal panel.
+ pub fn render_too_small(frame: &mut ratatui::Frame, theme: &crate::theme::Theme) {
+-    use ratatui::{
+-        style::{Modifier, Style},
+-        text::{Line, Span},
+-        widgets::{Block, Borders, Paragraph},
+-    };
++    use ratatui::style::{Modifier, Style};
++    use ratatui::text::{Line, Span};
++    use ratatui::widgets::{Block, Borders, Paragraph};
+     let area = frame.area();
+     frame.render_widget(ratatui::widgets::Block::default().style(theme.base()), area);
+     let w = area.width;
+diff --git a/src/ui/mod.rs b/src/ui/mod.rs
+index b83801dfb616ece104430aab21c3a62039b63e5a..6541682195e16c2a05a13f5022d261a86d8c3e4b 100644
+--- a/src/ui/mod.rs
++++ b/src/ui/mod.rs
+@@ -6,14 +6,11 @@ pub mod overlays;
+ pub mod views;
+ pub mod widgets;
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-};
+-
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
+ 
+ /// Minimal P0 app state: chrome only.
+ #[derive(Debug, Clone)]
+diff --git a/src/ui/overlays/confirm.rs b/src/ui/overlays/confirm.rs
+index 3a6f8592f7fd6d59fc3c5a5974a7a2fdac62f4cd..76a1e83827a9bb4e215f46ad7fd1db72d4180a42 100644
+--- a/src/ui/overlays/confirm.rs
++++ b/src/ui/overlays/confirm.rs
+@@ -1,14 +1,11 @@
+ //! CONFIRM modal (red border, CONFIRM mode).
+ 
+-use ratatui::{
+-    Frame,
+-    layout::Rect,
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Borders, Clear, Padding, Paragraph, Wrap},
+-};
+-
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::Rect;
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Borders, Clear, Padding, Paragraph, Wrap};
+ 
+ /// Pending confirmation.
+ #[derive(Debug, Clone)]
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index 91d1444b2deadc3a1e49aabd77d815250012d3ff..80ceb54a095173da7b9aff21a87c41ccc31d2981 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -1,16 +1,12 @@
+ //! Keybindings overlay (PLAN.md section 9.8, P12): generated from the live keymap.
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Borders, Clear, Paragraph},
+-};
+-
+-use crate::theme::Theme;
+-
+ use crate::input::engine::KeyAction as A;
++use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Borders, Clear, Paragraph};
+ 
+ /// Live keymap: key sequence -> action.
+ pub type Keymap = std::collections::HashMap<Vec<String>, A>;
+diff --git a/src/ui/overlays/palette.rs b/src/ui/overlays/palette.rs
+index 201ac8173c978c7c4805d718beb9a21c69aea501..bafe261099eeb8ddc8ff6624b19d601cd2f7591c 100644
+--- a/src/ui/overlays/palette.rs
++++ b/src/ui/overlays/palette.rs
+@@ -1,15 +1,12 @@
+ //! Command palette (PLAN.md section 9.7, P12): fuzzy actions + virsh reference.
+ 
+-use nucleo_matcher::{Config, Matcher, Utf32Str};
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Clear, Paragraph},
+-};
+-
+ use crate::theme::Theme;
++use nucleo_matcher::{Config, Matcher, Utf32Str};
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Clear, Paragraph};
+ 
+ /// Fuzzy-rank items by query (best first). Empty query keeps order.
+ pub fn fuzzy_rank(query: &str, items: &[&str]) -> Vec<String> {
+diff --git a/src/ui/overlays/wizard.rs b/src/ui/overlays/wizard.rs
+index 61b4bd291e432543dd9d3a68d7b3eb3945b2df39..55143d3994cf8ea956de4ce2d4ad5ab0767f35b1 100644
+--- a/src/ui/overlays/wizard.rs
++++ b/src/ui/overlays/wizard.rs
+@@ -4,15 +4,12 @@
+ //! rendering, key handling, validation and the `virt-install` command, and the
+ //! "Equivalent command" panel shows exactly the argv that will run.
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Clear, Paragraph},
+-};
+-
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Clear, Paragraph};
+ 
+ /// Wizard step index.
+ pub const STEP_NAMES: [&str; 6] = [
+@@ -578,7 +575,9 @@ impl WizardState {
+                 true
+             }
+             WKind::Number { max, .. } => {
+-                let Some(d) = c.to_digit(10) else { return false };
++                let Some(d) = c.to_digit(10) else {
++                    return false;
++                };
+                 if let Some(n) = self.num_mut(f) {
+                     *n = (n.saturating_mul(10) + d).min(max);
+                 }
+diff --git a/src/ui/views/dashboard.rs b/src/ui/views/dashboard.rs
+index 2ef11d0a2906d2b326c4213660fd563875ad0ff7..cb772af201ed6eb12f820dae0b5ef414bf23e348 100644
+--- a/src/ui/views/dashboard.rs
++++ b/src/ui/views/dashboard.rs
+@@ -2,20 +2,16 @@
+ //!
+ //! Layout at 174x43: top bar, body (left 101 cols + right), status bar, message line.
+ 
+-use std::collections::HashSet;
+-
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Paragraph},
+-};
+-
+ use crate::backend::demo::fixtures;
+ use crate::model::DomainState;
+ use crate::theme::Theme;
+ use crate::ui::widgets::charts::{self, BrailleMode};
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Paragraph};
++use std::collections::HashSet;
+ 
+ /// State filter chip.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+@@ -391,7 +387,9 @@ impl DashboardState {
+ 
+     /// In VISUAL mode, the marks are exactly the rows between anchor and cursor.
+     pub fn update_visual(&mut self) {
+-        let Some(anchor) = self.visual_anchor else { return };
++        let Some(anchor) = self.visual_anchor else {
++            return;
++        };
+         let (a, b) = (anchor.min(self.selection), anchor.max(self.selection));
+         let names: Vec<String> = self
+             .visible_rows()
+diff --git a/src/ui/views/detail/hardware.rs b/src/ui/views/detail/hardware.rs
+index 903c1a360d1c0032e013bc8a927fdd24f39ffe0b..5c1214623e26a911f5464d30b5bee68720c1a25c 100644
+--- a/src/ui/views/detail/hardware.rs
++++ b/src/ui/views/detail/hardware.rs
+@@ -3,18 +3,14 @@
+ //! Three columns: Devices (38) | editor (min) | right stack (60).
+ //! Changes accumulate per domain until `:w`.
+ 
+-use std::collections::{HashMap, HashSet};
+-
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Paragraph},
+-};
+-
+ use crate::theme::Theme;
+ use crate::ui::widgets::form::{Field, FieldKind, Form};
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Paragraph};
++use std::collections::{HashMap, HashSet};
+ 
+ /// Device entry.
+ #[derive(Debug, Clone)]
+diff --git a/src/ui/views/detail/mod.rs b/src/ui/views/detail/mod.rs
+index 1dc9c557264648875c4c33a15b4f0c117dfc31df..fb414a2b87e8238b8d222ea34d8045b1f0edc6fe 100644
+--- a/src/ui/views/detail/mod.rs
++++ b/src/ui/views/detail/mod.rs
+@@ -3,19 +3,15 @@
+ pub mod hardware;
+ pub mod snapshots;
+ 
+-use std::collections::HashSet;
+-
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Paragraph},
+-};
+-
+ use crate::model::{DomainConfig, DomainState};
+ use crate::theme::Theme;
+ use crate::ui::widgets::charts::{self, BrailleMode};
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Paragraph};
++use std::collections::HashSet;
+ 
+ /// Inner tabs in order.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+diff --git a/src/ui/views/detail/snapshots.rs b/src/ui/views/detail/snapshots.rs
+index 58cf78f3e08ce69208e65d7a341c94d60d818875..3ad9f205fa52bb8640abf62db233ccb607961697 100644
+--- a/src/ui/views/detail/snapshots.rs
++++ b/src/ui/views/detail/snapshots.rs
+@@ -1,15 +1,12 @@
+ //! Snapshots tab (PLAN.md section 9.9, P8): tree, details, create/revert/delete.
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Borders, Clear, Paragraph},
+-};
+-
+ use crate::model::Snapshot;
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Borders, Clear, Paragraph};
+ 
+ /// One tree row.
+ #[derive(Debug, Clone)]
+diff --git a/src/ui/views/events.rs b/src/ui/views/events.rs
+index 7fd6fee2cba75b53c26f565c05b43c361dc6fad4..8c9a508f701f9b985366e03fde152737575ef549 100644
+--- a/src/ui/views/events.rs
++++ b/src/ui/views/events.rs
+@@ -1,15 +1,12 @@
+ //! Events view (tab 5, PLAN.md section 9.12, P12, not mocked).
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::Paragraph,
+-};
+-
+ use crate::model::LibvirtEvent;
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::Paragraph;
+ 
+ /// Event filter chip.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+diff --git a/src/ui/views/gallery.rs b/src/ui/views/gallery.rs
+index 10844ca8342b19ac5f094bb179611e517b00a5e6..a37ab6f4a9705e2d2e5f275527d4f48e2bf39265 100644
+--- a/src/ui/views/gallery.rs
++++ b/src/ui/views/gallery.rs
+@@ -1,15 +1,11 @@
+ //! Gallery screen (P1): shows every widget with demo data.
+ use crate::theme::Theme;
+-use crate::ui::widgets::{
+-    charts::{self, BrailleMode},
+-    gauge, hbar,
+-};
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout},
+-    text::Line,
+-    widgets::Paragraph,
+-};
++use crate::ui::widgets::charts::{self, BrailleMode};
++use crate::ui::widgets::{gauge, hbar};
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout};
++use ratatui::text::Line;
++use ratatui::widgets::Paragraph;
+ 
+ /// Render the gallery demo.
+ pub fn render(frame: &mut Frame, theme: &Theme) {
+diff --git a/src/ui/views/host.rs b/src/ui/views/host.rs
+index 9b4ec9c2d10008bec725102553e935543db7e844..ed66d206087ee762c2a963833944c608d6ce6a23 100644
+--- a/src/ui/views/host.rs
++++ b/src/ui/views/host.rs
+@@ -1,16 +1,13 @@
+ //! Host monitor (screen 02, PLAN.md section 9.4).
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Paragraph},
+-};
+-
+ use crate::app::poller::is_local_uri;
+ use crate::theme::Theme;
+ use crate::ui::widgets::charts::{self, BrailleMode};
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Paragraph};
+ 
+ /// One running-domain row.
+ #[derive(Debug, Clone)]
+@@ -148,7 +145,8 @@ impl HostState {
+ 
+     /// Live state for a remote hypervisor host (queries virsh, no local /proc access).
+     pub async fn live_remote(uri: &str) -> Self {
+-        use crate::backend::{Backend, virsh::VirshBackend};
++        use crate::backend::Backend;
++        use crate::backend::virsh::VirshBackend;
+         let backend = VirshBackend::new(uri);
+         let info = backend.host_info().await.unwrap_or_default();
+         let (_cpu_pct, node_mem) = backend.node_stats().await.unwrap_or((None, None));
+diff --git a/src/ui/views/networks.rs b/src/ui/views/networks.rs
+index f1095c6ea351b99da302de808d95b7a61cebc149..2aeada0ab8b3e59caa024da6b9dd8c100495032f 100644
+--- a/src/ui/views/networks.rs
++++ b/src/ui/views/networks.rs
+@@ -1,18 +1,13 @@
+ //! Networks view (screen 07, PLAN.md section 9.10, P9).
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Paragraph},
+-};
+-
+ use crate::theme::Theme;
+-use crate::ui::widgets::{
+-    charts::{self, BrailleMode},
+-    form::{Field, FieldKind, Form},
+-};
++use crate::ui::widgets::charts::{self, BrailleMode};
++use crate::ui::widgets::form::{Field, FieldKind, Form};
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Paragraph};
+ 
+ /// Virtual network row.
+ #[derive(Debug, Clone)]
+diff --git a/src/ui/views/settings.rs b/src/ui/views/settings.rs
+index 683c18eb221bd1c6f515bc6d9fa8f2593baaf43e..a398fbca98d9edcf2dce5e002c38f3d8d9c6ce64 100644
+--- a/src/ui/views/settings.rs
++++ b/src/ui/views/settings.rs
+@@ -1,16 +1,13 @@
+ //! Settings view (screen 10, PLAN.md section 9.13, P13, `,` replaces the body).
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Paragraph},
+-};
+-
+ use crate::config::Config;
+ use crate::theme::{IconSet, Theme, builtin};
+ use crate::ui::widgets::charts;
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Paragraph};
+ 
+ /// Settings category.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+diff --git a/src/ui/views/storage.rs b/src/ui/views/storage.rs
+index eeeb3212e08a25e5ef265657b405b7b848f927d2..fdc786b86d2dea77503b346c3e8121c8f8c89171 100644
+--- a/src/ui/views/storage.rs
++++ b/src/ui/views/storage.rs
+@@ -1,15 +1,12 @@
+ //! Storage view (screen 08, PLAN.md section 9.11, P10): pools, volumes, media picker.
+ 
+-use ratatui::{
+-    Frame,
+-    layout::{Constraint, Direction, Layout, Rect},
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, Paragraph},
+-};
+-
+ use crate::theme::Theme;
+ use crate::ui::widgets::charts;
++use ratatui::Frame;
++use ratatui::layout::{Constraint, Direction, Layout, Rect};
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Paragraph};
+ 
+ /// Storage pool row (2 lines).
+ #[derive(Debug, Clone)]
+diff --git a/src/ui/widgets/modal.rs b/src/ui/widgets/modal.rs
+index d262f128887d0a08ddde4f7e157e9b34fda888d4..2c4993916e8d0ae3a0d049f3c1ca3fa9a493ed34 100644
+--- a/src/ui/widgets/modal.rs
++++ b/src/ui/widgets/modal.rs
+@@ -1,8 +1,8 @@
+ //! Modal helpers (PLAN.md 7.13).
+ 
+-use ratatui::{Frame, style::Modifier};
+-
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::style::Modifier;
+ 
+ /// Centered rect of at most `w`×`h` inside `area`.
+ pub fn centered(area: ratatui::layout::Rect, w: u16, h: u16) -> ratatui::layout::Rect {
+diff --git a/src/ui/widgets/panel.rs b/src/ui/widgets/panel.rs
+index 18334b9bc0be4149d403ccf9b7fc1c723b1084a0..6eafbf6e566773318e8d0e260164cc9aa6986b85 100644
+--- a/src/ui/widgets/panel.rs
++++ b/src/ui/widgets/panel.rs
+@@ -4,13 +4,10 @@
+ //! optional right title top-right, and optional footers on the bottom border.
+ //! Every view builds its panels through `block` so the chrome stays identical.
+ 
+-use ratatui::{
+-    layout::Rect,
+-    text::{Line, Span},
+-    widgets::{Block, Borders, Padding, Paragraph},
+-};
+-
+ use crate::theme::Theme;
++use ratatui::layout::Rect;
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, Borders, Padding, Paragraph};
+ 
+ /// Build a panel block.
+ pub fn block(
+diff --git a/src/ui/widgets/whichkey.rs b/src/ui/widgets/whichkey.rs
+index 00b53fc14cd9f998ccde7c242ac5b4df90f22597..4e5bd250533ae097b26e82e4bbe44791a43ed8a8 100644
+--- a/src/ui/widgets/whichkey.rs
++++ b/src/ui/widgets/whichkey.rs
+@@ -1,19 +1,15 @@
+ //! whichkey widget (PLAN.md section 7).
+ //! WhichKey popup (PLAN.md 7.16).
+ 
+-use std::collections::HashMap;
+-
+-use ratatui::{
+-    Frame,
+-    layout::Rect,
+-    style::{Modifier, Style},
+-    text::{Line, Span},
+-    widgets::{Block, BorderType, Borders, Clear, Paragraph},
+-};
+-use unicode_width::UnicodeWidthStr;
+-
+ use crate::input::engine::KeyAction;
+ use crate::theme::Theme;
++use ratatui::Frame;
++use ratatui::layout::Rect;
++use ratatui::style::{Modifier, Style};
++use ratatui::text::{Line, Span};
++use ratatui::widgets::{Block, BorderType, Borders, Clear, Paragraph};
++use std::collections::HashMap;
++use unicode_width::UnicodeWidthStr;
+ 
+ pub const TRIGGER_DELAY_MS: u64 = 300;
+ 
+diff --git a/src/xml/edit.rs b/src/xml/edit.rs
+index e850145709efa8717339c43d9abe8088e0530ae4..8f9432fb9a2d26e52d8610360ecd26821524e1e1 100644
+--- a/src/xml/edit.rs
++++ b/src/xml/edit.rs
+@@ -1,6 +1,7 @@
+ //! Typed XML edit operations on xmltree (define path).
+ 
+-use color_eyre::{Result, eyre::eyre};
++use color_eyre::Result;
++use color_eyre::eyre::eyre;
+ use xmltree::{Element, XMLNode};
+ 
+ fn parse(xml: &str) -> Result<Element> {
+diff --git a/src/xml/highlight.rs b/src/xml/highlight.rs
+index ddab3ed459fa28f3ec0b4f64b8a1765617afe4d6..c5c01bd291561c0c76b304a6f38e3b0e1a04d824 100644
+--- a/src/xml/highlight.rs
++++ b/src/xml/highlight.rs
+@@ -1,8 +1,8 @@
+ //! XML syntax highlighting for the XML tab.
+ 
+-use ratatui::{style::Style, text::Line, text::Span};
+-
+ use crate::theme::Theme;
++use ratatui::style::Style;
++use ratatui::text::{Line, Span};
+ 
+ /// Highlight one XML line: tags blue, values yellow, comments dim.
+ pub fn highlight_line(theme: &Theme, line: &str) -> Line<'static> {

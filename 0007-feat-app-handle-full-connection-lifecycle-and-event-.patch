@@ -1,0 +1,99 @@
+From 3594cde476c871e69ca99e654f46a3a57d607d7b Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 2 Nov 2026 23:07:08 +0100
+Subject: [PATCH 07/23] feat(app): handle full connection lifecycle and event
+ re-subscription on :connect
+
+Sync URI to all view states on :connect, re-subscribe the live libvirt
+event stream, update dynamic hypervisor hostname, and reset stale domain
+selection and detail state.
+---
+ src/app/domains.rs | 28 ++++++++++++++++++++++------
+ src/app/mod.rs     | 21 +++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 6 deletions(-)
+
+diff --git a/src/app/domains.rs b/src/app/domains.rs
+index adf084f56ea9219a4e39f7e3d9a1065e7e787ffa..b44a7e796bc0fde4766ced346fcdf5b53b68f7f6 100644
+--- a/src/app/domains.rs
++++ b/src/app/domains.rs
+@@ -93,12 +93,28 @@ pub(super) fn apply_demo_transition(
+ 
+ /// Re-fetch live domains after a mutation.
+ pub(super) async fn refresh_live(uri: &str, dash: &mut crate::ui::views::dashboard::DashboardState) {
+-    if let Ok((summaries, _)) = crate::backend::virsh::VirshBackend::new(uri)
+-        .domains_with_stats()
+-        .await
+-    {
+-        dash.apply_summaries(&summaries);
+-        dash.apply_metrics();
++    let backend = crate::backend::virsh::VirshBackend::new(uri);
++    match backend.domains_with_stats().await {
++        Ok((summaries, _)) => {
++            dash.apply_summaries(&summaries);
++            dash.apply_metrics();
++            dash.connected = true;
++            dash.uri = uri.to_string();
++            dash.message.clear();
++            if let Ok(h) = backend.hostname().await {
++                dash.hostname = h.clone();
++                crate::ui::chrome::set_live(crate::ui::chrome::LiveChrome {
++                    hostname: h,
++                    refresh_secs: 1,
++                });
++            }
++        }
++        Err(e) => {
++            dash.apply_summaries(&[]);
++            dash.connected = false;
++            dash.uri = uri.to_string();
++            dash.message = format!("✗ connection to {uri} failed ({e})");
++        }
+     }
+ }
+ 
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 113650db4df0fc3c8cc3366357cb36d3093269a6..e33de054ed29e71fc09cc7770eff135a1224baf9 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -82,6 +82,13 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+             Ok(summaries) => {
+                 let mut d = ui::views::dashboard::DashboardState::from_summaries(&summaries);
+                 d.connected = true;
++                if let Ok(h) = backend.hostname().await {
++                    d.hostname = h.clone();
++                    crate::ui::chrome::set_live(crate::ui::chrome::LiveChrome {
++                        hostname: h,
++                        refresh_secs: config.general.refresh_interval_secs.max(1),
++                    });
++                }
+                 d
+             }
+             Err(e) => {
+@@ -605,6 +612,15 @@ impl App {
+             ));
+             self.poller_uri.clone_from(&self.uri);
+             self.sent_selection = None;
++            self.events_rx = Some(crate::backend::virsh::events::subscribe(&self.uri));
++            self.dash.uri.clone_from(&self.uri);
++            self.host.uri.clone_from(&self.uri);
++            self.nets.uri.clone_from(&self.uri);
++            self.store.uri.clone_from(&self.uri);
++            self.events_state.uri.clone_from(&self.uri);
++            self.detail = None;
++            self.virsh_index = None;
++            self.virsh_flags.clear();
+         }
+         // Tell the poller which domain is selected (config + IP are fetched for it).
+         if let Some(p) = &self.poller {
+@@ -633,6 +649,11 @@ impl App {
+             self.nets.connected = false;
+             self.store.connected = false;
+             self.events_state.connected = false;
++        } else {
++            self.host.connected = self.dash.connected;
++            self.nets.connected = self.dash.connected;
++            self.store.connected = self.dash.connected;
++            self.events_state.connected = self.dash.connected;
+         }
+         apply_live_msg(&self.uri, &mut self.dash, msg);
+         // Drain whatever else is ready so one redraw covers it all.

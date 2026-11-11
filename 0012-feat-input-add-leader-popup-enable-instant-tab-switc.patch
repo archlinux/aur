@@ -1,0 +1,569 @@
+From 7fc266506c01fe01fe6e597fb0209e8f9478031d Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Tue, 3 Nov 2026 00:22:52 +0100
+Subject: [PATCH 12/23] feat(input): add leader popup, enable instant tab
+ switching, and remove counts and dot-repeat
+
+---
+ src/app/mod.rs                                |  28 +---
+ src/app/render.rs                             |  37 +----
+ src/input/engine.rs                           |  66 +-------
+ src/input/keymap.rs                           |   4 +-
+ src/ui/overlays/help.rs                       |   9 +-
+ src/ui/widgets/whichkey.rs                    | 154 ++++++++++++++++++
+ tests/p4_input_command.rs                     |  12 +-
+ tests/p5_host.rs                              |  19 +--
+ .../p12_snapshots__help_overlay.snap          |   2 +-
+ tests/snapshots/p14_compact__help_120x36.snap |   2 +-
+ 10 files changed, 185 insertions(+), 148 deletions(-)
+
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 751c9c56e58189fd8a73f721cc1389905d27e7a0..f40304314ce0c283352fa0378b7b71e782149cdc 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -238,7 +238,6 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         messages.extend(keymap_warnings.iter().cloned());
+     }
+     let last_key = std::time::Instant::now();
+-    let which_key_since: Option<std::time::Instant> = None;
+     let detail: Option<ui::views::detail::DetailState> = None;
+     let poller: Option<poller::Poller> = None;
+     let poller_uri = String::new();
+@@ -276,7 +275,6 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         ex_line,
+         messages,
+         last_key,
+-        which_key_since,
+         detail,
+         poller,
+         poller_uri,
+@@ -305,9 +303,6 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+             } => app.on_live(msg),
+             Some(loaded) = loads_rx.recv() => app.on_loaded(loaded),
+             _ = ticker.tick() => app.on_tick().await,
+-            _ = tokio::time::sleep(Duration::from_millis(100)), if app.engine.has_pending_digits() => {
+-                app.on_digit_timeout();
+-            }
+             maybe = events.recv() => {
+                 match maybe {
+                     Some(Event::Key(key)) => {
+@@ -353,7 +348,6 @@ struct App {
+     ex_line: Option<crate::input::textinput::TextInput>,
+     messages: Vec<String>,
+     last_key: std::time::Instant,
+-    which_key_since: Option<std::time::Instant>,
+     detail: Option<ui::views::detail::DetailState>,
+     poller: Option<poller::Poller>,
+     poller_uri: String,
+@@ -597,11 +591,7 @@ impl App {
+                     render_completion(f, &self.theme, c);
+                 }
+             }
+-            if let Some(prefix) = self.engine.pending_prefix()
+-                && self
+-                    .which_key_since
+-                    .is_some_and(|t| t.elapsed().as_millis() >= 300)
+-            {
++            if let Some(prefix) = self.engine.pending_prefix() {
+                 render_which_key(f, &self.theme, &prefix);
+             }
+             if let Some(wz) = &self.wizard {
+@@ -769,15 +759,6 @@ impl App {
+         }
+     }
+ 
+-    /// Resolve pending count digits after the 300 ms timeout.
+-    fn on_digit_timeout(&mut self) {
+-        if self.last_key.elapsed().as_millis() >= 300 {
+-            for resolved in self.engine.flush() {
+-                switch_view(resolved.action, &mut self.view);
+-            }
+-        }
+-    }
+-
+     /// Handle one key press. Returns true when the app should quit.
+     async fn on_key(&mut self, key: KeyEvent) -> bool {
+         let before = self.messages.len();
+@@ -818,9 +799,6 @@ impl App {
+             return false;
+         }
+         self.last_key = std::time::Instant::now();
+-        if self.engine.pending_prefix().is_some() && self.which_key_since.is_none() {
+-            self.which_key_since = Some(std::time::Instant::now());
+-        }
+         // C-c always quits; `q`/`ZZ` are checked only after the overlays that
+         // take text input (ex line, palette, wizard, confirm, forms) had their turn.
+         if key.modifiers.contains(KeyModifiers::CONTROL) && key.code == KeyCode::Char('c') {
+@@ -1441,9 +1419,7 @@ impl App {
+             }
+             if self.demo {}
+         }
+-        if self.engine.pending_prefix().is_none() {
+-            self.which_key_since = None;
+-        }
++
+         false
+     }
+ }
+diff --git a/src/app/render.rs b/src/app/render.rs
+index 426df24da31a6bcd8717e5265ca1315db7ffc225..67a6aff3992893767bb262a243a16f15772021f1 100644
+--- a/src/app/render.rs
++++ b/src/app/render.rs
+@@ -6,42 +6,7 @@ use super::*;
+ 
+ /// Render the which-key popup bottom-right for a pending prefix.
+ pub(super) fn render_which_key(f: &mut ratatui::Frame, theme: &Theme, prefix: &str) {
+-    use ratatui::text::{Line, Span};
+-    use ratatui::widgets::{Block, BorderType, Borders, Paragraph};
+-    let t = &theme.tokens;
+-    let rows: &[(&str, &str)] = match prefix {
+-        "Space" => &[
+-            ("n", "new domain"),
+-            ("c", "clone"),
+-            ("r", "rename"),
+-            ("s …", "snapshot"),
+-            ("m …", "media"),
+-            ("x", "export XML"),
+-        ],
+-        "Space s" => &[("c", "snapshot new"), ("r", "revert"), ("d", "delete")],
+-        "Space m" => &[("i", "insert ISO"), ("e", "eject")],
+-        "g" => &[("g", "top"), ("1-5", "views")],
+-        "y" => &[("y", "name"), ("u", "uuid"), ("i", "ip"), ("c", "command")],
+-        _ => &[("…", "…")],
+-    };
+-    let lines: Vec<Line> = rows
+-        .iter()
+-        .map(|(k, d)| {
+-            Line::from(vec![
+-                Span::styled(*k, theme.key()),
+-                Span::styled(format!("  {d}"), theme.dim()),
+-            ])
+-        })
+-        .collect();
+-    let w = 22u16;
+-    let h = (lines.len() as u16 + 2).min(f.area().height);
+-    let area = f.area();
+-    let rect = ratatui::layout::Rect::new(area.x + area.width - w - 1, area.y + area.height - h - 2, w, h);
+-    let block = Block::default()
+-        .borders(Borders::ALL)
+-        .border_type(BorderType::Rounded)
+-        .border_style(Style::default().fg(t.gutter).bg(t.bg));
+-    f.render_widget(Paragraph::new(lines).block(block).style(theme.base()), rect);
++    crate::ui::widgets::whichkey::render(f, theme, prefix);
+ }
+ 
+ pub(super) fn parse_size(size: &str) -> (u16, u16) {
+diff --git a/src/input/engine.rs b/src/input/engine.rs
+index 098bd1ac759aaa052c5221a18a9fc589f917520b..ceed20d9f7d8b00ffe225dfbb378d8bb7bf54efe 100644
+--- a/src/input/engine.rs
++++ b/src/input/engine.rs
+@@ -217,8 +217,6 @@ pub struct ResolvedAction {
+ pub struct KeyEngine {
+     map: HashMap<Vec<String>, KeyAction>,
+     pending: Vec<String>,
+-    count_buf: String,
+-    last_mutating: Option<(KeyAction, u32)>,
+ }
+ 
+ impl KeyEngine {
+@@ -237,34 +235,14 @@ impl KeyEngine {
+         Self {
+             map,
+             pending: Vec::new(),
+-            count_buf: String::new(),
+-            last_mutating: None,
+         }
+     }
+ 
+     /// Feed one normalized token. Returns resolved actions (0 or 1).
+-    ///
+-    /// Digits always accumulate as a count prefix (single `1`-`5` become view
+-    /// switches only via [`KeyEngine::flush`] after an idle timeout).
+     pub fn feed(&mut self, key: &KeySeq) -> Vec<ResolvedAction> {
+         let tok = key.token().to_string();
+         if tok == "Esc" {
+             self.pending.clear();
+-            self.count_buf.clear();
+-            return vec![];
+-        }
+-        if tok.chars().all(|c| c.is_ascii_digit()) && self.pending.is_empty() {
+-            self.count_buf.push_str(&tok);
+-            return vec![];
+-        }
+-        // Dot thirst: repeat last mutating action — but "." is also bound to repeat,
+-        // handle explicitly.
+-        if tok == "." && self.pending.is_empty() {
+-            if let Some((action, _)) = self.last_mutating {
+-                let count = self.take_count();
+-                self.last_mutating = Some((action, count));
+-                return vec![ResolvedAction { action, count }];
+-            }
+             return vec![];
+         }
+         let mut candidate = self.pending.clone();
+@@ -278,7 +256,6 @@ impl KeyEngine {
+         }
+         // No match: reset and try the token alone.
+         self.pending.clear();
+-        self.count_buf.clear();
+         if self.is_full_binding(&[key.token().to_string()]) {
+             return self.resolve(vec![key.token().to_string()]);
+         }
+@@ -294,25 +271,13 @@ impl KeyEngine {
+         }
+     }
+ 
+-    /// True while digits wait for a command or the idle timeout.
++    /// True while digits wait for a command (always false: count system removed).
+     pub fn has_pending_digits(&self) -> bool {
+-        !self.count_buf.is_empty() && self.pending.is_empty()
++        false
+     }
+ 
+-    /// Idle-timeout flush: a lone digit resolves through the keymap (by default
+-    /// `1`-`5` switch views); anything else (multi-digit counts with no command)
+-    /// is cancelled.
++    /// Idle-timeout flush stub (count system removed).
+     pub fn flush(&mut self) -> Vec<ResolvedAction> {
+-        if !self.pending.is_empty() {
+-            return vec![];
+-        }
+-        if self.count_buf.len() == 1 {
+-            let seq = vec![self.count_buf.clone()];
+-            if self.is_full_binding(&seq) {
+-                return self.resolve(seq);
+-            }
+-        }
+-        self.count_buf.clear();
+         vec![]
+     }
+ 
+@@ -326,23 +291,10 @@ impl KeyEngine {
+             .any(|k| k.len() > seq.len() && k[..seq.len()] == *seq)
+     }
+ 
+-    fn take_count(&mut self) -> u32 {
+-        if self.count_buf.is_empty() {
+-            1
+-        } else {
+-            self.count_buf.parse().unwrap_or(1)
+-        }
+-    }
+-
+     fn resolve(&mut self, seq: Vec<String>) -> Vec<ResolvedAction> {
+         let action = self.map[&seq];
+         self.pending.clear();
+-        let count = self.take_count();
+-        self.count_buf.clear();
+-        if action.mutating() {
+-            self.last_mutating = Some((action, count));
+-        }
+-        vec![ResolvedAction { action, count }]
++        vec![ResolvedAction { action, count: 1 }]
+     }
+ }
+ 
+@@ -358,12 +310,12 @@ mod tests {
+     use crate::input::key::KeySeq;
+ 
+     #[test]
+-    fn counts_and_repeat() {
++    fn instant_view_tabs() {
+         let mut eng = KeyEngine::new();
+-        assert!(eng.feed(&KeySeq::parse("3")).is_empty());
+-        let a = eng.feed(&KeySeq::parse("j"));
+-        assert_eq!(a[0].count, 3);
+-        assert_eq!(a[0].action, KeyAction::MoveDown);
++        let a = eng.feed(&KeySeq::parse("1"));
++        assert_eq!(a[0].action, KeyAction::ViewDomains);
++        let a = eng.feed(&KeySeq::parse("2"));
++        assert_eq!(a[0].action, KeyAction::ViewHost);
+     }
+ 
+     #[test]
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index 1f0f31a3963024c394d3d33c2c56ee138c305882..478fb7f03214e1f29c168ae577c33a651dbf3a67 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -77,8 +77,7 @@ pub fn default_map() -> HashMap<Vec<String>, KeyAction> {
+     bind(&["]"], KeyAction::NextTab);
+     bind(&["u"], KeyAction::UndoField);
+     bind(&["g", "x"], KeyAction::GotoXml);
+-    // View tabs: single digits resolve via KeyEngine::flush after an idle
+-    // timeout, so counts (15j) keep working while plain 1-5 switch views.
++    // View tabs: instant 1-5 view switches.
+     bind(&["1"], KeyAction::ViewDomains);
+     bind(&["2"], KeyAction::ViewHost);
+     bind(&["3"], KeyAction::ViewNetworks);
+@@ -91,7 +90,6 @@ pub fn default_map() -> HashMap<Vec<String>, KeyAction> {
+     bind(&[","], KeyAction::Settings);
+     bind(&["C-r"], KeyAction::Refresh);
+     bind(&["C-l"], KeyAction::Redraw);
+-    // "." repeat is handled explicitly by the engine before map lookup.
+     // Confirm modal keys (y/n) are handled by the modal itself, not the global map,
+     // so that yank sequences (yy/yu/yi/yc) keep working.
+     // Quit keys (q/ZZ/C-c) are handled at the app level for the same reason:
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index 94d9084c28828de2ff75d1fe0d33db8fb167f16e..378cd07019689f81d330d244cb08ce51c5614585 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -321,11 +321,10 @@ pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
+         }
+         frame.render_widget(Paragraph::new(lines).style(theme.base()), *col);
+     }
+-    let footer = Line::from(vec![
+-        Span::styled("● asks for confirmation  ", Style::default().fg(t.red).bg(t.bg)),
+-        Span::styled("3j counts work everywhere  ", theme.key()),
+-        Span::styled(". repeats last action", theme.dim()),
+-    ]);
++    let footer = Line::from(vec![Span::styled(
++        "● asks for confirmation",
++        Style::default().fg(t.red).bg(t.bg),
++    )]);
+     let footer_area = Rect::new(inner.x, inner.y + inner.height - 1, inner.width, 1);
+     frame.render_widget(Paragraph::new(footer).style(theme.base()), footer_area);
+ }
+diff --git a/src/ui/widgets/whichkey.rs b/src/ui/widgets/whichkey.rs
+index 4983f8820d3d31cb424431ca0efb13d72d6f62ae..aa5e258d418bd06097866ab4d5ba6dbd40ecf3a7 100644
+--- a/src/ui/widgets/whichkey.rs
++++ b/src/ui/widgets/whichkey.rs
+@@ -1,3 +1,157 @@
+ //! whichkey widget (PLAN.md section 7).
+ //! WhichKey popup (PLAN.md 7.16).
++
++use ratatui::{
++    Frame,
++    layout::Rect,
++    style::{Modifier, Style},
++    text::{Line, Span},
++    widgets::{Block, BorderType, Borders, Clear, Paragraph},
++};
++use unicode_width::UnicodeWidthStr;
++
++use crate::theme::Theme;
++
+ pub const TRIGGER_DELAY_MS: u64 = 300;
++
++/// Return key and description pairs for a given pending prefix.
++pub fn entries_for(prefix: &str) -> &'static [(&'static str, &'static str)] {
++    match prefix {
++        "Space" => &[
++            ("n", "new domain"),
++            ("c", "clone"),
++            ("r", "rename"),
++            ("M", "migrate"),
++            ("s …", "snapshot"),
++            ("m …", "media"),
++            ("d …", "disk"),
++            ("i …", "NIC"),
++            ("b", "boot order"),
++            ("x", "export XML"),
++            ("l", "lease pin"),
++            ("L", "lease unpin"),
++        ],
++        "Space s" => &[("c", "snapshot new"), ("r", "revert"), ("d", "delete")],
++        "Space m" => &[("i", "insert ISO"), ("e", "eject")],
++        "Space d" => &[("a", "disk attach"), ("r", "disk resize")],
++        "Space i" => &[("a", "NIC attach"), ("l", "NIC link")],
++        "g" => &[("g", "top"), ("x", "goto XML"), ("1-5", "views")],
++        "y" => &[("y", "name"), ("u", "uuid"), ("i", "ip"), ("c", "command")],
++        _ => &[("…", "…")],
++    }
++}
++
++/// Render the which-key popup bottom-right for a pending prefix.
++pub fn render(f: &mut Frame, theme: &Theme, prefix: &str) {
++    let area = f.area();
++    if area.width < 10 || area.height < 5 {
++        return;
++    }
++    let t = &theme.tokens;
++    let rows = entries_for(prefix);
++    let lines: Vec<Line> = rows
++        .iter()
++        .map(|(k, d)| {
++            Line::from(vec![
++                Span::styled(*k, theme.key()),
++                Span::styled(format!("  {d}"), theme.dim()),
++            ])
++        })
++        .collect();
++
++    let title = match prefix {
++        "Space" => " Leader  ␣ ".to_string(),
++        "Space s" => " Leader  ␣ s ".to_string(),
++        "Space m" => " Leader  ␣ m ".to_string(),
++        "Space d" => " Leader  ␣ d ".to_string(),
++        "Space i" => " Leader  ␣ i ".to_string(),
++        p if p.starts_with("Space ") => format!(" Leader  ␣ {} ", &p[6..]),
++        _ => format!(" {prefix} "),
++    };
++
++    let max_len = rows
++        .iter()
++        .map(|(k, d)| UnicodeWidthStr::width(*k) + 2 + UnicodeWidthStr::width(*d))
++        .max()
++        .unwrap_or(20);
++    let title_len = UnicodeWidthStr::width(title.as_str());
++    let inner_w = (max_len.max(title_len) as u16) + 2;
++    let w = (inner_w + 2).max(22).min(area.width.saturating_sub(2));
++    let h = (lines.len() as u16 + 2).min(area.height.saturating_sub(2));
++
++    let rect = Rect::new(
++        area.x + area.width.saturating_sub(w + 1),
++        area.y + area.height.saturating_sub(h + 2),
++        w,
++        h,
++    );
++
++    let title_line = Line::from(vec![Span::styled(
++        title,
++        Style::default().fg(t.orange).add_modifier(Modifier::BOLD),
++    )]);
++
++    let block = Block::default()
++        .title(title_line)
++        .borders(Borders::ALL)
++        .border_type(BorderType::Rounded)
++        .border_style(Style::default().fg(t.gutter).bg(t.bg));
++
++    f.render_widget(Clear, rect);
++    f.render_widget(Paragraph::new(lines).block(block).style(theme.base()), rect);
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use ratatui::Terminal;
++    use ratatui::backend::TestBackend;
++
++    #[test]
++    fn leader_entries_complete() {
++        let rows = entries_for("Space");
++        let keys: Vec<&str> = rows.iter().map(|(k, _)| *k).collect();
++        assert!(keys.contains(&"n"));
++        assert!(keys.contains(&"c"));
++        assert!(keys.contains(&"r"));
++        assert!(keys.contains(&"M"));
++        assert!(keys.contains(&"s …"));
++        assert!(keys.contains(&"m …"));
++        assert!(keys.contains(&"d …"));
++        assert!(keys.contains(&"i …"));
++        assert!(keys.contains(&"b"));
++        assert!(keys.contains(&"x"));
++        assert!(keys.contains(&"l"));
++        assert!(keys.contains(&"L"));
++    }
++
++    #[test]
++    fn sub_prefix_entries() {
++        assert_eq!(entries_for("Space s").len(), 3);
++        assert_eq!(entries_for("Space m").len(), 2);
++        assert_eq!(entries_for("Space d").len(), 2);
++        assert_eq!(entries_for("Space i").len(), 2);
++    }
++
++    #[test]
++    fn render_smoke_test() {
++        let theme = crate::theme::builtin::by_name("tokyo-night");
++        let backend = TestBackend::new(120, 36);
++        let mut terminal = Terminal::new(backend).unwrap();
++        terminal
++            .draw(|f| {
++                render(f, &theme, "Space");
++            })
++            .unwrap();
++        let buffer = terminal.backend().buffer();
++        let text = buffer
++            .content()
++            .iter()
++            .map(|cell| cell.symbol())
++            .collect::<String>();
++        assert!(text.contains("Leader"));
++        assert!(text.contains("new domain"));
++        assert!(text.contains("clone"));
++        assert!(text.contains("migrate"));
++    }
++}
+diff --git a/tests/p4_input_command.rs b/tests/p4_input_command.rs
+index 3c6696cdb09c3c13795686d237a3e3f74ca5c643..bdaf1b55aeb836408313d325d853eacd8f9152ed 100644
+--- a/tests/p4_input_command.rs
++++ b/tests/p4_input_command.rs
+@@ -1,15 +1,19 @@
+ //! P4 input + command tests (RED first).
+ 
+ #[test]
+-fn key_engine_count_and_sequence() {
++fn key_engine_instant_tab_and_sequence() {
+     use virsh_tui::input::{engine::KeyEngine, key::KeySeq};
+     let mut eng = KeyEngine::new();
+-    // 3j => count 3, action MoveDown.
++    // 3 switches to Networks tab instantly
+     let actions = eng.feed(&KeySeq::parse("3"));
+-    assert!(actions.is_empty());
++    assert_eq!(actions.len(), 1);
++    assert_eq!(
++        actions[0].action,
++        virsh_tui::input::engine::KeyAction::ViewNetworks
++    );
+     let actions = eng.feed(&KeySeq::parse("j"));
+     assert_eq!(actions.len(), 1);
+-    assert_eq!(actions[0].count, 3);
++    assert_eq!(actions[0].action, virsh_tui::input::engine::KeyAction::MoveDown);
+ }
+ 
+ #[test]
+diff --git a/tests/p5_host.rs b/tests/p5_host.rs
+index 4a9b24df4559144d946b023272c29bafe72490a5..0c2361789970c6d87a1998ad04626a440736cff0 100644
+--- a/tests/p5_host.rs
++++ b/tests/p5_host.rs
+@@ -17,23 +17,12 @@ fn parse_meminfo_total() {
+ }
+ 
+ #[test]
+-fn engine_digit_flush_switches_view() {
++fn engine_digit_switches_view_instantly() {
+     use virsh_tui::input::{engine::KeyEngine, key::KeySeq};
+     let mut eng = KeyEngine::new();
+-    assert!(eng.feed(&KeySeq::parse("2")).is_empty());
+-    let flushed = eng.flush();
+-    assert_eq!(flushed.len(), 1);
+-    assert_eq!(flushed[0].action, virsh_tui::input::engine::KeyAction::ViewHost);
+-}
+-
+-#[test]
+-fn engine_multidigit_count_still_works() {
+-    use virsh_tui::input::{engine::KeyEngine, key::KeySeq};
+-    let mut eng = KeyEngine::new();
+-    assert!(eng.feed(&KeySeq::parse("1")).is_empty());
+-    assert!(eng.feed(&KeySeq::parse("5")).is_empty());
+-    let a = eng.feed(&KeySeq::parse("j"));
+-    assert_eq!(a[0].count, 15);
++    let actions = eng.feed(&KeySeq::parse("2"));
++    assert_eq!(actions.len(), 1);
++    assert_eq!(actions[0].action, virsh_tui::input::engine::KeyAction::ViewHost);
+ }
+ 
+ #[test]
+diff --git a/tests/snapshots/p12_snapshots__help_overlay.snap b/tests/snapshots/p12_snapshots__help_overlay.snap
+index 406053d76372e5d4382db7572580f0f116083c34..ee0cb16dc59320d3e6312fc7888ea2510963dc1c 100644
+--- a/tests/snapshots/p12_snapshots__help_overlay.snap
++++ b/tests/snapshots/p12_snapshots__help_overlay.snap
+@@ -40,5 +40,5 @@ expression: "buffer_text(174, 43, |f|\noverlays::help::render(f, &th, \"\", &vir
+          │                                                                                                                                                          │         
+          │                                                                                                                                                          │         
+          │                                                                                                                                                          │         
+-         │ ● asks for confirmation  3j counts work everywhere  . repeats last action                                                                                │         
++         │ ● asks for confirmation                                                                                                                                  │         
+          ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+diff --git a/tests/snapshots/p14_compact__help_120x36.snap b/tests/snapshots/p14_compact__help_120x36.snap
+index 8fed6f5d0ca39d3decaa7d226885962fdbc599fc..959ad54a8c3abc3ba20e95623762dab3b1577411 100644
+--- a/tests/snapshots/p14_compact__help_120x36.snap
++++ b/tests/snapshots/p14_compact__help_120x36.snap
+@@ -34,5 +34,5 @@ expression: "shot(120, 36, |f|\noverlays::help::render(f, &th, \"\", &virsh_tui:
+   │                                                                                                                  │  
+   │                                                                                                                  │  
+   │                                                                                                                  │  
+-  │ ● asks for confirmation  3j counts work everywhere  . repeats last action                                        │  
++  │ ● asks for confirmation                                                                                          │  
+   ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

@@ -1,0 +1,270 @@
+From 316ca2f4777841be3380f43e23fc9f5a2c3bae07 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Wed, 4 Nov 2026 23:53:00 +0100
+Subject: [PATCH 21/23] feat(input): use PrevTab/NextTab (h/l) for filter
+ cycling and clamp help scrolling
+
+---
+ book/src/keys.md          |  3 +--
+ book/src/views/events.md  |  2 +-
+ docs/INPUT_AND_KEYMAP.md  |  2 +-
+ src/app/domains.rs        |  6 +-----
+ src/app/mod.rs            |  9 +++++++--
+ src/app/palette.rs        | 10 ++++++----
+ src/input/keymap.rs       |  4 ++--
+ src/ui/overlays/help.rs   | 28 +++++++++++++++++++++-------
+ src/ui/views/dashboard.rs | 12 ++++++++++++
+ src/ui/views/events.rs    |  2 +-
+ 10 files changed, 53 insertions(+), 25 deletions(-)
+
+diff --git a/book/src/keys.md b/book/src/keys.md
+index c06f4ef2b54ed7180f87a5a0f9c8e73f4ae8dd8b..5aa9075039106df8004d52c8f3bb52733c51ac1b 100644
+--- a/book/src/keys.md
++++ b/book/src/keys.md
+@@ -19,7 +19,7 @@ key map, so it reflects your `keymap.toml`. Type to filter it.
+ | `Backspace`, `q` | back (`q` quits from the top level) | `back` |
+ | `/` | filter | `filter` |
+ | `n` / `N` | next / previous match | `next_match` / `prev_match` |
+-| `H` / `L`, `[` / `]` | previous / next tab | `prev_tab` / `next_tab` |
++| `h` / `l`, `H` / `L`, `[` / `]` | previous / next tab | `prev_tab` / `next_tab` |
+ | `1` … `5` | Domains, Host, Networks, Storage, Events | `view_domains` … `view_events` |
+ 
+ ### Domain actions
+@@ -71,7 +71,6 @@ key map, so it reflects your `keymap.toml`. Type to filter it.
+ | `m` | mark / unmark | `mark` |
+ | `V` | visual selection | `visual` |
+ | `o` | cycle sort | `sort_cycle` |
+-| `f` / `F` | cycle filter chips | `chip_cycle` / `chip_cycle_back` |
+ | `t` | history window 60 s / 5 min / 1 h | `window_cycle` |
+ | `Tab` | cycle panel focus (Networks, Storage) | `cycle_focus` |
+ | `u` | undo field (hardware editor) | `undo_field` |
+diff --git a/book/src/views/events.md b/book/src/views/events.md
+index 84cc115e28d9478f8d0009648180197349d5c8b3..b943b1cec0e943a3eb2f544af548659fc1623c7c 100644
+--- a/book/src/views/events.md
++++ b/book/src/views/events.md
+@@ -10,7 +10,7 @@ connections, balloon changes, media changes, network and pool state changes.
+ | Key | Action |
+ |-----|--------|
+ | `j` / `k` | move through the log |
+-| `Tab` | filter by type: all, lifecycle, devices, jobs, network, storage, app |
++| `h` / `l` | filter by type: all, lifecycle, devices, jobs, network, storage, app |
+ | `/` | search the log |
+ | `Enter` | jump to the object of the event |
+ 
+diff --git a/docs/INPUT_AND_KEYMAP.md b/docs/INPUT_AND_KEYMAP.md
+index 40bafb4209da296e066554d814f7c0011be03120..d05972b2bb0535179aaff1a4bde28eb7dc810a33 100644
+--- a/docs/INPUT_AND_KEYMAP.md
++++ b/docs/INPUT_AND_KEYMAP.md
+@@ -56,7 +56,6 @@ virsh-tui uses `Tab` and `Shift+Tab` (`BackTab`) mapped to `KeyAction::CycleFocu
+ 
+ - **Networks View (Tab 3)**: Cycles focus between the virtual networks table and the active DHCP leases table.
+ - **Storage View (Tab 4)**: Cycles focus between the storage pools table and the volumes table.
+-- **Events View (Tab 5)**: Cycles filter chips (all, lifecycle, devices, jobs, network, storage, app).
+ - **Settings View**: Cycles focus between the settings category list and the configuration options panel.
+ 
+ This consistent focus model avoids conflicting with vim cursor navigation (`h`/`l`/`j`/`k`).
+@@ -68,6 +67,7 @@ This consistent focus model avoids conflicting with vim cursor navigation (`h`/`
+ | Key | Action | Scope |
+ |-----|--------|-------|
+ | `j` / `k` or `Down` / `Up` | Move cursor down / up | Global lists & tables |
++| `h` / `l` or `[` / `]` | Previous / next inner tab or filter | Dashboard, Detail, Events |
+ | `g g` / `G` | Jump to first / last item | Global lists & tables |
+ | `Tab` / `Shift+Tab` | Cycle focus between panels | Multi-panel views |
+ | `Enter` | Open selected item / detail view | Selection-dependent |
+diff --git a/src/app/domains.rs b/src/app/domains.rs
+index c3832d6e382f65e2d158d12263b20e13303a60cc..54f7ad2c93c1261cde68b0f431cbb8e85bb0a5db 100644
+--- a/src/app/domains.rs
++++ b/src/app/domains.rs
+@@ -192,11 +192,7 @@ pub(super) async fn dispatch_action(
+         A::HalfUp => dash.move_selection(-10),
+         A::SortCycle => dash.cycle_sort(),
+         A::ChipCycle => dash.cycle_chip(),
+-        A::ChipCycleBack => {
+-            for _ in 0..4 {
+-                dash.cycle_chip();
+-            }
+-        }
++        A::ChipCycleBack => dash.cycle_chip_back(),
+         A::Mark => dash.toggle_mark(),
+         A::Visual => {
+             dash.toggle_visual();
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 1d4aeecf8ce12554962ad1791be44a1de59ae6af..7aac56ff3fe872d7563b30ade4e5e94e2ec776c5 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -1164,10 +1164,15 @@ impl App {
+                         ev.selected = ev.selected.saturating_sub(10);
+                         true
+                     }
+-                    A::CycleFocus => {
++                    A::PrevTab | A::NextTab => {
+                         let all = ui::views::events::EventFilter::ALL;
+                         let i = all.iter().position(|f| *f == ev.filter).unwrap_or(0);
+-                        let next = (i + 1) % all.len();
++                        let len = all.len();
++                        let next = if resolved.action == A::NextTab {
++                            (i + 1) % len
++                        } else {
++                            (i + len - 1) % len
++                        };
+ 
+                         ev.filter = all[next];
+                         ev.selected = 0;
+diff --git a/src/app/palette.rs b/src/app/palette.rs
+index 13da70b1011577c0d5aef3d570c635368a802896..39f939c8ae10ccc7e70002e00628d199e3e423c1 100644
+--- a/src/app/palette.rs
++++ b/src/app/palette.rs
+@@ -153,19 +153,21 @@ pub(super) fn handle_help_key(key: KeyEvent, help_state: &mut Option<ui::overlay
+             true
+         }
+         KeyCode::Up | KeyCode::Char('k') | KeyCode::Char('p') if ctrl || key.code == KeyCode::Up => {
+-            st.scroll = st.scroll.saturating_sub(1);
++            st.scroll_up(1);
+             true
+         }
+         KeyCode::Down | KeyCode::Char('j') | KeyCode::Char('n') if ctrl || key.code == KeyCode::Down => {
+-            st.scroll = st.scroll.saturating_add(1);
++            st.scroll_down(1);
+             true
+         }
+         KeyCode::PageUp | KeyCode::Char('u') if ctrl || key.code == KeyCode::PageUp => {
+-            st.scroll = st.scroll.saturating_sub(10);
++            let step = st.page_step();
++            st.scroll_up(step);
+             true
+         }
+         KeyCode::PageDown | KeyCode::Char('d') if ctrl || key.code == KeyCode::PageDown => {
+-            st.scroll = st.scroll.saturating_add(10);
++            let step = st.page_step();
++            st.scroll_down(step);
+             true
+         }
+         KeyCode::Left => {
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index dfda3cd9f96cccd6d7ae6df8e3e82683b572fa66..6521c9d5d263d7051b73d8f9b34edb3aee2c5ff9 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -57,12 +57,12 @@ pub const DEFAULT_BINDINGS: &[(&[&str], KeyAction)] = &[
+     // Monitor / views.
+     (&["t"], KeyAction::WindowCycle),
+     (&["o"], KeyAction::SortCycle),
+-    (&["f"], KeyAction::ChipCycle),
+-    (&["F"], KeyAction::ChipCycleBack),
+     (&["m"], KeyAction::Mark),
+     (&["V"], KeyAction::Visual),
+     (&["Tab"], KeyAction::CycleFocus),
+     (&["S-Tab"], KeyAction::CycleFocus),
++    (&["h"], KeyAction::PrevTab),
++    (&["l"], KeyAction::NextTab),
+     (&["H"], KeyAction::PrevTab),
+     (&["L"], KeyAction::NextTab),
+     (&["["], KeyAction::PrevTab),
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index 80ceb54a095173da7b9aff21a87c41ccc31d2981..4a46d8cee83968c27617ee06a2c327d7e5ed1adf 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -131,7 +131,7 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+                 ("gg / G", "top / bottom", false, &[A::GoTop, A::GoBottom]),
+                 ("C-d / C-u", "half page", false, &[A::HalfDown, A::HalfUp]),
+                 ("Tab", "cycle focus", false, &[A::CycleFocus]),
+-                ("H / L", "prev / next tab", false, &[A::PrevTab, A::NextTab]),
++                ("h / l", "prev / next tab", false, &[A::PrevTab, A::NextTab]),
+                 (
+                     "1 … 5",
+                     "switch view",
+@@ -238,12 +238,6 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+             &[
+                 ("t", "60s · 5m · 1h", false, &[A::WindowCycle]),
+                 ("o", "cycle sort", false, &[A::SortCycle]),
+-                (
+-                    "f / F",
+-                    "cycle filter chips",
+-                    false,
+-                    &[A::ChipCycle, A::ChipCycleBack],
+-                ),
+             ],
+         ),
+         sec(
+@@ -281,6 +275,8 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+ pub struct HelpState {
+     pub input: crate::input::textinput::TextInput,
+     pub scroll: usize,
++    pub max_scroll: std::cell::Cell<usize>,
++    pub viewport_height: std::cell::Cell<usize>,
+ }
+ 
+ impl HelpState {
+@@ -288,12 +284,28 @@ impl HelpState {
+         Self {
+             input: crate::input::textinput::TextInput::with(filter),
+             scroll: 0,
++            max_scroll: std::cell::Cell::new(0),
++            viewport_height: std::cell::Cell::new(25),
+         }
+     }
+ 
+     pub fn query(&self) -> &str {
+         self.input.value()
+     }
++
++    pub fn scroll_up(&mut self, delta: usize) {
++        let max = self.max_scroll.get();
++        self.scroll = self.scroll.min(max).saturating_sub(delta);
++    }
++
++    pub fn scroll_down(&mut self, delta: usize) {
++        let max = self.max_scroll.get();
++        self.scroll = self.scroll.min(max).saturating_add(delta).min(max);
++    }
++
++    pub fn page_step(&self) -> usize {
++        (self.viewport_height.get() / 2).max(1)
++    }
+ }
+ 
+ /// Render the help modal (single-column categorized list with fzf-style text input at bottom).
+@@ -416,6 +428,8 @@ pub fn render(frame: &mut Frame, theme: &Theme, state: &HelpState, map: &Keymap)
+     // Scrollable list area
+     let list_h = rows[0].height as usize;
+     let max_scroll = lines.len().saturating_sub(list_h);
++    state.max_scroll.set(max_scroll);
++    state.viewport_height.set(list_h);
+     let scroll = state.scroll.min(max_scroll);
+     let visible_lines: Vec<Line> = lines.into_iter().skip(scroll).take(list_h).collect();
+     frame.render_widget(Paragraph::new(visible_lines).style(theme.base()), rows[0]);
+diff --git a/src/ui/views/dashboard.rs b/src/ui/views/dashboard.rs
+index cb772af201ed6eb12f820dae0b5ef414bf23e348..a3fe3d9f0027f266d54701d580d6cec8b493db3f 100644
+--- a/src/ui/views/dashboard.rs
++++ b/src/ui/views/dashboard.rs
+@@ -339,6 +339,18 @@ impl DashboardState {
+         self.selection = 0;
+     }
+ 
++    /// Cycle state chip backward.
++    pub fn cycle_chip_back(&mut self) {
++        self.chip = match self.chip {
++            Chip::All => Chip::Off,
++            Chip::Off => Chip::Crashed,
++            Chip::Crashed => Chip::Paused,
++            Chip::Paused => Chip::Running,
++            Chip::Running => Chip::All,
++        };
++        self.selection = 0;
++    }
++
+     /// Cycle sort column.
+     pub fn cycle_sort(&mut self) {
+         let selected = self.selected().name.clone();
+diff --git a/src/ui/views/events.rs b/src/ui/views/events.rs
+index 8c9a508f701f9b985366e03fde152737575ef549..f9b4478264ab2a698b07a66927c406642a3d9507 100644
+--- a/src/ui/views/events.rs
++++ b/src/ui/views/events.rs
+@@ -281,7 +281,7 @@ pub fn render(frame: &mut Frame, theme: &Theme, state: &EventsState) {
+             Style::default().fg(t.bg2).bg(t.blue).add_modifier(Modifier::BOLD),
+         ),
+         Span::styled(" events ", Style::default().fg(t.fg2).bg(t.hl)),
+-        Span::styled("  j/k move  Tab filter  / search  ⏎ jump to object", theme.dim()),
++        Span::styled("  j/k move  h/l filter  / search  ⏎ jump to object", theme.dim()),
+     ]);
+     frame.render_widget(Paragraph::new(status).style(theme.topbar()), rows[2]);
+     crate::ui::chrome::message_line(frame, theme, rows[3], "");

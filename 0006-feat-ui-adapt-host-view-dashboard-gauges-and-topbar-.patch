@@ -1,0 +1,346 @@
+From 7c2fbd70456da1d48e5b14fc0310a86e1a9b3da2 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 2 Nov 2026 23:06:59 +0100
+Subject: [PATCH 06/23] feat(ui): adapt host view, dashboard gauges, and topbar
+ for remote hosts
+
+Initialize remote host states via HostState::live_remote without /proc,
+render remote CPU and RAM gauges in the dashboard host panel, hide
+per-thread meters, frequency and temperatures on remote hosts, and allow
+dynamic hostname updates in the live topbar chrome.
+---
+ src/app/live.rs      |  58 ++++++++++++++++++-
+ src/ui/chrome.rs     |  16 ++---
+ src/ui/views/host.rs | 135 +++++++++++++++++++++++++++++++++----------
+ 3 files changed, 171 insertions(+), 38 deletions(-)
+
+diff --git a/src/app/live.rs b/src/app/live.rs
+index 93b7118798ee601e2d575978b735802937662572..62516028e6d5a05432255e60acfaae27158d6e3a 100644
+--- a/src/app/live.rs
++++ b/src/app/live.rs
+@@ -7,7 +7,11 @@ use super::*;
+ /// Build live host state: local /proc data plus virsh pools/networks/domains.
+ pub(super) async fn fill_live_host(uri: &str) -> ui::views::host::HostState {
+     use crate::backend::{Backend, virsh::VirshBackend};
+-    let mut host = ui::views::host::HostState::live_local().await;
++    let mut host = if is_local_uri(uri) {
++        ui::views::host::HostState::live_local().await
++    } else {
++        ui::views::host::HostState::live_remote(uri).await
++    };
+     host.uri = uri.to_string();
+     host.connected = true;
+     host.system = host_system_facts(uri).await;
+@@ -101,6 +105,7 @@ pub(super) fn apply_live_msg(uri: &str, dash: &mut ui::views::dashboard::Dashboa
+             proc_stat,
+             uptimes,
+             ifaces,
++            remote_host,
+             at,
+         } => {
+             dash.metrics.ingest_ifaces(&ifaces, at);
+@@ -113,6 +118,10 @@ pub(super) fn apply_live_msg(uri: &str, dash: &mut ui::views::dashboard::Dashboa
+             dash.metrics.ingest_domains(&stats, at);
+             if let Some(stat) = proc_stat {
+                 dash.metrics.ingest_proc_stat(&stat);
++            } else if let Some(rh) = &remote_host
++                && let Some(cpu_pct) = rh.cpu_pct
++            {
++                dash.metrics.host.cpu.push(cpu_pct as f32);
+             }
+             dash.apply_metrics();
+             dash.check_shutdowns();
+@@ -123,6 +132,8 @@ pub(super) fn apply_live_msg(uri: &str, dash: &mut ui::views::dashboard::Dashboa
+             dash.connected = true;
+             if is_local_uri(uri) {
+                 update_host_gauges(dash);
++            } else if let Some(rh) = &remote_host {
++                update_remote_host_gauges(dash, rh);
+             }
+         }
+         LiveMsg::Failed(e) => {
+@@ -214,6 +225,45 @@ pub(super) fn update_host_gauges(dash: &mut ui::views::dashboard::DashboardState
+     dash.host_gauges = g;
+ }
+ 
++/// Host panel gauges from remote telemetry plus cached pool gauges.
++pub(super) fn update_remote_host_gauges(
++    dash: &mut ui::views::dashboard::DashboardState,
++    rh: &poller::RemoteHostSample,
++) {
++    let gib = |kib: u64| kib as f64 / 1024.0 / 1024.0;
++    let frac = |used: u64, total: u64| {
++        if total == 0 {
++            0.0
++        } else {
++            used as f64 / total as f64
++        }
++    };
++    let cpu = f64::from(dash.metrics.host.cpu.last().unwrap_or(0.0)) / 100.0;
++    let mut g = vec![(String::from("CPU"), cpu, format!("{:.0}%", cpu * 100.0))];
++    if let Some(mem) = &rh.mem
++        && mem.total_kib > 0
++    {
++        let used = mem.total_kib.saturating_sub(mem.available_kib);
++        g.push((
++            String::from("RAM"),
++            frac(used, mem.total_kib),
++            format!("{:.1}/{:.0}G", gib(used), gib(mem.total_kib)),
++        ));
++    }
++    let mut it = dash.host_pools.clone().into_iter();
++    if let Some(p) = it.next() {
++        g.insert(1, p);
++    }
++    if let Some(p) = it.next() {
++        if g.len() >= 3 {
++            g.insert(3, p);
++        } else {
++            g.push(p);
++        }
++    }
++    dash.host_gauges = g;
++}
++
+ /// A heavy view state loaded in the background, tagged with its URI.
+ pub(super) enum Loaded {
+     Host(String, Box<ui::views::host::HostState>),
+@@ -799,6 +849,12 @@ async fn host_system_facts(uri: &str) -> Vec<(String, String)> {
+             String::from("uptime   "),
+             crate::backend::virsh::host_local::fmt_uptime(up as u64),
+         ));
++    } else if let Ok(nodeinfo) = crate::backend::virsh::exec::run(uri, &["nodeinfo"]).await {
++        let info = crate::backend::virsh::host_local::parse_nodeinfo(&nodeinfo, "remote");
++        out.push((
++            String::from("cpus     "),
++            format!("{} threads · {}", info.threads, info.cpu_model),
++        ));
+     }
+     out
+ }
+diff --git a/src/ui/chrome.rs b/src/ui/chrome.rs
+index 963db8d5913ac7cea0775356f82c55fbb24e025d..594bc06807d3956b008cc9edfecb68c0b6a2c364 100644
+--- a/src/ui/chrome.rs
++++ b/src/ui/chrome.rs
+@@ -4,8 +4,6 @@
+ //! message colouring are identical everywhere. In live mode the hostname and
+ //! clock are real; demo/tests keep the mockup values (`forge`, frozen time).
+ 
+-use std::sync::OnceLock;
+-
+ use ratatui::{
+     Frame,
+     layout::Rect,
+@@ -23,16 +21,18 @@ pub struct LiveChrome {
+     pub refresh_secs: u64,
+ }
+ 
+-static LIVE: OnceLock<LiveChrome> = OnceLock::new();
++static LIVE: std::sync::RwLock<Option<LiveChrome>> = std::sync::RwLock::new(None);
+ 
+ /// Switch the chrome to live values (real hostname + wall clock).
+ pub fn set_live(info: LiveChrome) {
+-    let _ = LIVE.set(info);
++    if let Ok(mut g) = LIVE.write() {
++        *g = Some(info);
++    }
+ }
+ 
+ /// True once live mode is active (false in demo and tests).
+ pub fn is_live() -> bool {
+-    LIVE.get().is_some()
++    LIVE.read().ok().and_then(|g| g.clone()).is_some()
+ }
+ 
+ const TABS: [(&str, &str); 5] = [
+@@ -78,8 +78,8 @@ pub fn topbar(
+         ));
+         left.push(Span::styled(format!(" {label} "), label_style));
+     }
+-    let (host, refresh, time) = match LIVE.get() {
+-        Some(l) => (l.hostname.clone(), format!("{}s", l.refresh_secs), now_hms()),
++    let (host, refresh, time) = match LIVE.read().ok().and_then(|g| g.clone()) {
++        Some(l) => (l.hostname, format!("{}s", l.refresh_secs), now_hms()),
+         None => (String::from("forge"), String::from("1s"), demo_time.to_string()),
+     };
+     let dim = Style::default().fg(t.comment).bg(t.bg2);
+@@ -122,7 +122,7 @@ pub fn topbar_settings(frame: &mut Frame, theme: &Theme, area: Rect, demo_time:
+             Style::default().fg(t.comment).bg(t.bg2),
+         ));
+     }
+-    let time = if LIVE.get().is_some() {
++    let time = if is_live() {
+         now_hms()
+     } else {
+         demo_time.to_string()
+diff --git a/src/ui/views/host.rs b/src/ui/views/host.rs
+index a7e4b15a3aa3a64dd71305d48c9ee9d8db990b4b..9b4ec9c2d10008bec725102553e935543db7e844 100644
+--- a/src/ui/views/host.rs
++++ b/src/ui/views/host.rs
+@@ -8,6 +8,7 @@ use ratatui::{
+     widgets::{Block, Paragraph},
+ };
+ 
++use crate::app::poller::is_local_uri;
+ use crate::theme::Theme;
+ use crate::ui::widgets::charts::{self, BrailleMode};
+ 
+@@ -145,6 +146,55 @@ impl HostState {
+         }
+     }
+ 
++    /// Live state for a remote hypervisor host (queries virsh, no local /proc access).
++    pub async fn live_remote(uri: &str) -> Self {
++        use crate::backend::{Backend, virsh::VirshBackend};
++        let backend = VirshBackend::new(uri);
++        let info = backend.host_info().await.unwrap_or_default();
++        let (_cpu_pct, node_mem) = backend.node_stats().await.unwrap_or((None, None));
++        let gib = |k: u64| (k as f64 / 1024.0 / 1024.0 * 10.0).round() / 10.0;
++
++        let (mem_total, mem_used, mem_free) = if let Some(m) = node_mem {
++            (
++                gib(m.total_kib),
++                gib(m.total_kib.saturating_sub(m.available_kib)),
++                gib(m.available_kib),
++            )
++        } else {
++            (gib(info.mem_kib), 0.0, gib(info.mem_kib))
++        };
++
++        Self {
++            cpu_model: short_model(&info.cpu_model),
++            cpu_frac: 0.0,
++            ghz: 0.0,
++            temp_c: None,
++            load: (0.0, 0.0, 0.0),
++            threads: vec![],
++            threads_total: info.threads,
++            mem_total_gib: mem_total,
++            mem_used_gib: mem_used,
++            mem_free_gib: mem_free,
++            rss_by_domain: vec![],
++            hugepages: String::from("—"),
++            ksm: String::from("—"),
++            swap: String::from("—"),
++            domains: vec![],
++            vcpu_total: 0,
++            pools: vec![],
++            pools_active: String::from("—"),
++            nets: vec![],
++            nets_active: String::from("—"),
++            system: vec![],
++            cpu_hist: Some(Vec::new()),
++            live: true,
++            selected: 0,
++            message: String::from("-- sampling virsh domstats every 1000 ms --"),
++            uri: uri.to_string(),
++            connected: true,
++        }
++    }
++
+     /// Refresh from the shared live metrics (called every tick while visible).
+     pub fn apply_live(&mut self, dash: &crate::ui::views::dashboard::DashboardState) {
+         use crate::metrics::store::{fmt_bits_rate, fmt_bytes_rate, normalize};
+@@ -164,14 +214,25 @@ impl HostState {
+             self.threads.clone_from(&m.host.threads);
+             self.threads_total = self.threads.len() as u32;
+         }
+-        let mem = crate::backend::virsh::host_local::parse_meminfo(
+-            &std::fs::read_to_string("/proc/meminfo").unwrap_or_default(),
+-        );
+-        if mem.total_kib > 0 {
+-            let gib = |k: u64| (k as f64 / 1024.0 / 1024.0 * 10.0).round() / 10.0;
+-            self.mem_total_gib = gib(mem.total_kib);
+-            self.mem_used_gib = gib(mem.total_kib.saturating_sub(mem.available_kib));
+-            self.mem_free_gib = gib(mem.available_kib);
++        if is_local_uri(&self.uri) {
++            let mem = crate::backend::virsh::host_local::parse_meminfo(
++                &std::fs::read_to_string("/proc/meminfo").unwrap_or_default(),
++            );
++            if mem.total_kib > 0 {
++                let gib = |k: u64| (k as f64 / 1024.0 / 1024.0 * 10.0).round() / 10.0;
++                self.mem_total_gib = gib(mem.total_kib);
++                self.mem_used_gib = gib(mem.total_kib.saturating_sub(mem.available_kib));
++                self.mem_free_gib = gib(mem.available_kib);
++            }
++        } else if let Some((_, _, val)) = dash.host_gauges.iter().find(|(k, _, _)| k == "RAM") {
++            let val = val.trim();
++            if let Some((used_s, total_s)) = val.split_once('/') {
++                let used = used_s.trim().parse::<f64>().unwrap_or(0.0);
++                let total = total_s.trim_end_matches('G').trim().parse::<f64>().unwrap_or(0.0);
++                self.mem_total_gib = total;
++                self.mem_used_gib = used;
++                self.mem_free_gib = (total - used).max(0.0);
++            }
+         }
+         self.rss_by_domain = m
+             .rss_by_domain()
+@@ -583,31 +644,47 @@ fn render_cpu(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect, m
+             ])
+         })
+         .collect();
+-    lines.push(Line::from(Span::styled(
+-        format!("per-thread {}", "─".repeat(inner_w)),
+-        theme.dim(),
+-    )));
+-    if meters && !state.threads.is_empty() {
+-        render_meters(theme, state, inner_w, &mut lines);
+-    } else if meters {
++    let local = is_local_uri(&state.uri);
++    if local {
+         lines.push(Line::from(Span::styled(
+-            "     per-thread sampling is off (Settings › Monitoring)",
++            format!("per-thread {}", "─".repeat(inner_w)),
++            theme.dim(),
++        )));
++        if meters && !state.threads.is_empty() {
++            render_meters(theme, state, inner_w, &mut lines);
++        } else if meters {
++            lines.push(Line::from(Span::styled(
++                "     per-thread sampling is off (Settings › Monitoring)",
++                theme.dim(),
++            )));
++        }
++    } else {
++        lines.push(Line::from(Span::styled(
++            "     per-thread meters, temperature, and frequency are unavailable on remote hosts",
+             theme.dim(),
+         )));
+     }
+-    let temp = state
+-        .temp_c
+-        .map(|c| format!("{c:.0}°C"))
+-        .unwrap_or_else(|| String::from("—"));
+-    let right = format!(
+-        "{}% · {:.1} GHz · {} · load {:.2} {:.2} {:.2}",
+-        (state.cpu_frac * 100.0).round() as u32,
+-        state.ghz,
+-        temp,
+-        state.load.0,
+-        state.load.1,
+-        state.load.2
+-    );
++    let right = if local {
++        let temp = state
++            .temp_c
++            .map(|c| format!("{c:.0}°C"))
++            .unwrap_or_else(|| String::from("—"));
++        format!(
++            "{}% · {:.1} GHz · {} · load {:.2} {:.2} {:.2}",
++            (state.cpu_frac * 100.0).round() as u32,
++            state.ghz,
++            temp,
++            state.load.0,
++            state.load.1,
++            state.load.2
++        )
++    } else {
++        format!(
++            "{}% · {} CPUs",
++            (state.cpu_frac * 100.0).round() as u32,
++            state.threads_total
++        )
++    };
+     let title = format!("CPU · {}", state.cpu_model);
+     let block = panel_block(theme, false, &title, Some(right));
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);

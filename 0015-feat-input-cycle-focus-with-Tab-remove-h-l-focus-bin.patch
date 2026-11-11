@@ -1,0 +1,496 @@
+From 9ba3d4ec40b983f8b47dab2a9f6d8ca05e13d972 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Wed, 4 Nov 2026 22:30:19 +0100
+Subject: [PATCH 15/23] feat(input): cycle focus with Tab, remove h/l focus
+ bindings, and fix help in tab 3
+
+---
+ docs/DECISIONS.md                             |  5 ++
+ docs/DESIGN.md                                |  2 +-
+ src/app/mod.rs                                | 74 ++++++++++---------
+ src/app/networks.rs                           |  2 +-
+ src/app/settings.rs                           |  8 +-
+ src/app/storage.rs                            |  7 +-
+ src/input/engine.rs                           | 52 ++-----------
+ src/input/keymap.rs                           |  2 +-
+ src/ui/overlays/help.rs                       |  2 +-
+ src/ui/views/networks.rs                      |  2 +-
+ src/ui/views/settings.rs                      |  2 +-
+ src/ui/widgets/whichkey.rs                    | 29 ++++----
+ tests/p12_palette.rs                          |  6 +-
+ .../p12_snapshots__help_overlay.snap          |  2 +-
+ .../p13_snapshots__settings_174x43.snap       |  2 +-
+ tests/snapshots/p14_compact__help_120x36.snap |  2 +-
+ .../p14_compact__settings_120x36.snap         |  2 +-
+ .../p9_snapshots__networks_120x36.snap        |  2 +-
+ .../p9_snapshots__networks_174x43.snap        |  2 +-
+ 19 files changed, 87 insertions(+), 118 deletions(-)
+
+diff --git a/docs/DECISIONS.md b/docs/DECISIONS.md
+index 6813de366fbf7a28611c42d1e4388ff8639590ad..67e8a6848076aa98006308aefbac63056d2ea6e0 100644
+--- a/docs/DECISIONS.md
++++ b/docs/DECISIONS.md
+@@ -178,3 +178,8 @@
+ - **Dynamic which-key popup:** `ui::widgets::whichkey` was previously hardcoded with static string slices for `"Space"`, `"Space s"`, `"g"`, etc. It now derives its items, sub-prefixes (e.g. `s …`, `m …`), and labels dynamically from the active keymap (`KeyEngine::map()`), respecting user `keymap.toml` overrides and developer binding adjustments while preserving default ordering.
+ - **Dynamic help overlay labels:** `ui::overlays::help` previously had disconnected static rows with empty action slices (e.g., `⌫ / q`, `1 … 5`, and static leader titles). All rows are now connected to their corresponding `KeyAction`s and dynamically format bound sequences, multi-key group compacting (`␣s c/r/d`), sequential tab ranges, and dynamic leader prefixes.
+ - **Curated command palette synchronization:** Curated palette actions in `ui::overlays::palette::curated_with_map` now resolve their key shortcut strings from the keymap via `input::keymap::action_key_label`, ensuring palette shortcut badges stay in sync.
++
++## Focus movement & tab 3 help (2026-11-04)
++
++- **Focus cycling via `Tab`:** Removed `h` and `l` for focus movement across views and panes. Added `Tab` / `S-Tab` binding mapped to `KeyAction::CycleFocus`. In Networks (tab 3), `l` was removed and `Tab` cycles focus between Networks and DHCP Leases. In Storage (tab 4), `Tab` cycles focus between Pools and Volumes. In Settings, `Tab` / `BackTab` cycles between category and option panes.
++- **Global overlay dispatch in Networks view:** Moved `View::Networks` action handling to the standard match arm after global overlay checks (`Help`, `Palette`, `Settings`, `Ex`), resolving an issue where `?` help was swallowed before reaching the help overlay handler.
+diff --git a/docs/DESIGN.md b/docs/DESIGN.md
+index 11b12f64e01bbfcf2a48bb7bcc583ca1902ad10c..e14828d5b35ee9d720ad5497b5f522afeb48d74d 100644
+--- a/docs/DESIGN.md
++++ b/docs/DESIGN.md
+@@ -185,7 +185,7 @@ History windows: `t` cycles 60 s → 5 min → 1 h (ring buffers per domain per
+ 
+ ## 6. Keymap (default — all remappable in `keymap.toml`)
+ 
+-**Navigation**: `j/k` · `gg/G` · `C-d/C-u` · `h/l` focus pane · `H/L` prev/next inner tab · `1…5` views · `⏎` open · `⌫`/`q` back · `/` filter · `n/N` next/prev match.
++**Navigation**: `j/k` · `gg/G` · `C-d/C-u` · `Tab` cycle focus · `H/L` prev/next inner tab · `1…5` views · `⏎` open · `⌫`/`q` back · `/` filter · `n/N` next/prev match.
+ **Modes**: `i`/`a` edit field (INSERT) · `⎋` NORMAL · `V` visual select · `m` mark · `:` ex · `C-p` palette.
+ **Domain**: `s` start · `S` shutdown · `D` destroy● · `r` reboot · `R` reset● · `p` pause/resume · `Z` managed-save · `a` autostart · `c` console · `v` viewer · `e` edit XML · `X` undefine●.
+ **Yank**: `yy` name · `yu` uuid · `yi` ip · `yc` last command.
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 3af9ef7efa78ae1f5fa45ef698af53bac9d5f60f..23978018ad05b8c2e6f535188c377576259c8163 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -1210,41 +1210,6 @@ impl App {
+             {
+                 continue;
+             }
+-            if self.view == View::Networks {
+-                if dispatch_networks(
+-                    resolved.action,
+-                    &mut self.nets,
+-                    &mut self.detail,
+-                    &mut self.view,
+-                    &self.uri,
+-                    self.dry_run,
+-                    self.demo,
+-                    &mut self.history,
+-                    &mut self.messages,
+-                    &mut self.confirm,
+-                )
+-                .await
+-                {
+-                    return true;
+-                }
+-                // ⏎ on a lease: open the owning domain's detail view.
+-                if let Some(dom) = self.nets.pending_open.take() {
+-                    self.dash.select_name(&dom);
+-                    if self.dash.selected().name == dom {
+-                        self.view = View::Dashboard;
+-                        open_detail(
+-                            &mut self.detail,
+-                            &mut self.view,
+-                            &self.dash,
+-                            &self.host,
+-                            &self.uri,
+-                            self.demo,
+-                        )
+-                        .await;
+-                    }
+-                }
+-                continue;
+-            }
+             match (self.view, resolved.action) {
+                 (_, A::InsertMedia) => {
+                     open_picker(&mut self.store, &self.detail, &self.dash, &self.uri, self.demo).await;
+@@ -1303,6 +1268,10 @@ impl App {
+                     self.dash.detail_tab = (self.dash.detail_tab + 1) % 5;
+                     continue;
+                 }
++                (_, A::Ex) => {
++                    self.ex_line = Some(crate::input::textinput::TextInput::new());
++                    continue;
++                }
+                 (_, A::Palette) => {
+                     let ctx = self
+                         .detail
+@@ -1332,6 +1301,41 @@ impl App {
+                     .await;
+                     continue;
+                 }
++                (View::Networks, _) => {
++                    if dispatch_networks(
++                        resolved.action,
++                        &mut self.nets,
++                        &mut self.detail,
++                        &mut self.view,
++                        &self.uri,
++                        self.dry_run,
++                        self.demo,
++                        &mut self.history,
++                        &mut self.messages,
++                        &mut self.confirm,
++                    )
++                    .await
++                    {
++                        return true;
++                    }
++                    // ⏎ on a lease: open the owning domain's detail view.
++                    if let Some(dom) = self.nets.pending_open.take() {
++                        self.dash.select_name(&dom);
++                        if self.dash.selected().name == dom {
++                            self.view = View::Dashboard;
++                            open_detail(
++                                &mut self.detail,
++                                &mut self.view,
++                                &self.dash,
++                                &self.host,
++                                &self.uri,
++                                self.demo,
++                            )
++                            .await;
++                        }
++                    }
++                    continue;
++                }
+                 (View::Storage, _) => {
+                     if dispatch_storage(
+                         resolved.action,
+diff --git a/src/app/networks.rs b/src/app/networks.rs
+index deb8c540e0a95a4f2bcb6bc49f0614c90e6dc761..21aaa66a50ca47d1f205618d5098f9e3ae66fccb 100644
+--- a/src/app/networks.rs
++++ b/src/app/networks.rs
+@@ -29,7 +29,7 @@ pub(super) async fn dispatch_networks(
+                 load_net_selection(uri, nets).await;
+             }
+         }
+-        A::LeaseFocus => {
++        A::CycleFocus => {
+             nets.focus = if nets.focus == NetFocus::Leases {
+                 NetFocus::Networks
+             } else {
+diff --git a/src/app/settings.rs b/src/app/settings.rs
+index a81978acaf37ec3564b0ca66b56f5a15c41b5ff7..b8a0b231fd8b28b22e5d030178983716e9baeda0 100644
+--- a/src/app/settings.rs
++++ b/src/app/settings.rs
+@@ -27,12 +27,12 @@ pub(super) fn handle_settings_key(
+             move_settings(st, -1, config, theme);
+             return true;
+         }
+-        KeyCode::Char('h') if key.modifiers.is_empty() => {
+-            cycle_pane(st, -1);
++        KeyCode::Tab => {
++            cycle_pane(st, 1);
+             return true;
+         }
+-        KeyCode::Char('l') if key.modifiers.is_empty() => {
+-            cycle_pane(st, 1);
++        KeyCode::BackTab => {
++            cycle_pane(st, -1);
+             return true;
+         }
+         KeyCode::Enter if key.modifiers.is_empty() => {
+diff --git a/src/app/storage.rs b/src/app/storage.rs
+index 11a27c2ab86c83d08f9e03ebd047d6e9308f93b4..132d309a37e22226d1ba093fa7df9425fe9f634f 100644
+--- a/src/app/storage.rs
++++ b/src/app/storage.rs
+@@ -73,10 +73,6 @@ pub(super) async fn handle_storage_key(
+     let tok = KeySeq::from_event(&key);
+     match tok.token() {
+         "j" | "k" => false,
+-        "h" | "l" => {
+-            store.focus_pools = !store.focus_pools;
+-            true
+-        }
+         "n" => {
+             *ex_line = Some(crate::input::textinput::TextInput::with("vol-create-as "));
+             true
+@@ -314,6 +310,9 @@ pub(super) async fn dispatch_storage(
+                 store.vol_selected = store.vol_selected.saturating_sub(1);
+             }
+         }
++        A::CycleFocus => {
++            store.focus_pools = !store.focus_pools;
++        }
+         A::Open => {
+             if let Some(v) = store.selected_vol()
+                 && v.name.ends_with(".iso")
+diff --git a/src/input/engine.rs b/src/input/engine.rs
+index 220df0f9f32db966bc2f92c1c0971ce28d5a1f5e..3e2f4eda31ef212705f324dbb10bf2856bd1b29f 100644
+--- a/src/input/engine.rs
++++ b/src/input/engine.rs
+@@ -58,7 +58,7 @@ pub enum KeyAction {
+     ChipCycle,
+     ChipCycleBack,
+     WindowCycle,
+-    LeaseFocus,
++    CycleFocus,
+     LeasePin,
+     LeaseUnpin,
+     Ex,
+@@ -136,7 +136,7 @@ impl KeyAction {
+         (Self::ChipCycle, "chip_cycle"),
+         (Self::ChipCycleBack, "chip_cycle_back"),
+         (Self::WindowCycle, "window_cycle"),
+-        (Self::LeaseFocus, "lease_focus"),
++        (Self::CycleFocus, "cycle_focus"),
+         (Self::LeasePin, "lease_pin"),
+         (Self::LeaseUnpin, "lease_unpin"),
+         (Self::Ex, "ex"),
+@@ -181,6 +181,9 @@ impl KeyAction {
+ 
+     /// Parse a keymap.toml action name.
+     pub fn from_name(name: &str) -> Option<Self> {
++        if name == "lease_focus" {
++            return Some(Self::CycleFocus);
++        }
+         Self::NAMES.iter().find(|(_, n)| *n == name).map(|(a, _)| *a)
+     }
+ 
+@@ -248,7 +251,7 @@ impl KeyAction {
+             Self::ChipCycle => "cycle filter chips",
+             Self::ChipCycleBack => "cycle filter chips back",
+             Self::WindowCycle => "60s · 5m · 1h",
+-            Self::LeaseFocus => "lease focus",
++            Self::CycleFocus => "cycle focus",
+             Self::LeasePin => "lease pin",
+             Self::LeaseUnpin => "lease unpin",
+             Self::Ex => "ex command",
+@@ -284,49 +287,6 @@ impl KeyAction {
+         }
+     }
+ 
+-    /// Concise label shown in WhichKey popup.
+-    pub fn whichkey_label(self) -> &'static str {
+-        match self {
+-            Self::NewDomain => "new domain",
+-            Self::Clone => "clone",
+-            Self::Rename => "rename",
+-            Self::Migrate => "migrate",
+-            Self::SnapshotNew => "snapshot new",
+-            Self::SnapshotRevert => "revert",
+-            Self::SnapshotDelete => "delete",
+-            Self::InsertMedia => "insert ISO",
+-            Self::EjectMedia => "eject",
+-            Self::DiskAttach => "disk attach",
+-            Self::DiskResize => "disk resize",
+-            Self::NicAttach => "NIC attach",
+-            Self::NicLink => "NIC link",
+-            Self::BootOrder => "boot order",
+-            Self::ExportXml => "export XML",
+-            Self::LeasePin => "lease pin",
+-            Self::LeaseUnpin => "lease unpin",
+-            Self::GoTop => "top",
+-            Self::GoBottom => "bottom",
+-            Self::GotoXml => "goto XML",
+-            Self::YankName => "name",
+-            Self::YankUuid => "uuid",
+-            Self::YankIp => "ip",
+-            Self::YankCmd => "command",
+-            Self::Start => "start",
+-            Self::Shutdown => "shutdown",
+-            Self::Destroy => "destroy",
+-            Self::Reboot => "reboot",
+-            Self::Reset => "reset",
+-            Self::Pause => "pause",
+-            Self::ManagedSave => "suspend",
+-            Self::Autostart => "autostart",
+-            Self::Console => "console",
+-            Self::Viewer => "viewer",
+-            Self::EditXml => "edit XML",
+-            Self::Undefine => "undefine",
+-            _ => self.description(),
+-        }
+-    }
+-
+     /// True for destructive actions (e.g. prompt / confirm or highlighted in red).
+     pub fn is_destructive(self) -> bool {
+         matches!(
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index fa338aa02cf1c07c8adf8b9c53e62730ef027977..4474a85ace76b740f2750897bb039aab30b53ba3 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -62,7 +62,7 @@ pub const DEFAULT_BINDINGS: &[(&[&str], KeyAction)] = &[
+     (&["F"], KeyAction::ChipCycleBack),
+     (&["m"], KeyAction::Mark),
+     (&["V"], KeyAction::Visual),
+-    (&["l"], KeyAction::LeaseFocus),
++    (&["Tab"], KeyAction::CycleFocus),
+     (&["H"], KeyAction::PrevTab),
+     (&["L"], KeyAction::NextTab),
+     (&["["], KeyAction::PrevTab),
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index ab5add08824c2637e35d12704fe9ae0ccfd81ea7..b3ea6611c0b1cd01aa018ca469d5aa2911b938e6 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -134,7 +134,7 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+                 ("j / k", "down / up", false, &[A::MoveDown, A::MoveUp]),
+                 ("gg / G", "top / bottom", false, &[A::GoTop, A::GoBottom]),
+                 ("C-d / C-u", "half page", false, &[A::HalfDown, A::HalfUp]),
+-                ("h / l", "focus pane ← →", false, &[]),
++                ("Tab", "cycle focus", false, &[A::CycleFocus]),
+                 ("H / L", "prev / next tab", false, &[A::PrevTab, A::NextTab]),
+                 (
+                     "1 … 5",
+diff --git a/src/ui/views/networks.rs b/src/ui/views/networks.rs
+index 742a065b66a85d9be9342dc4275da53db417a2e0..f1095c6ea351b99da302de808d95b7a61cebc149 100644
+--- a/src/ui/views/networks.rs
++++ b/src/ui/views/networks.rs
+@@ -758,7 +758,7 @@ fn render_statusbar(frame: &mut Frame, theme: &Theme, state: &NetworksState, are
+             Style::default().fg(t.fg2).bg(t.hl),
+         ),
+         Span::styled(
+-            "  j/k move  l leases  s start  D destroy  a autostart  e edit xml  n new  X undefine",
++            "  j/k move  Tab focus  s start  D destroy  a autostart  e edit xml  n new  X undefine",
+             theme.dim(),
+         ),
+     ];
+diff --git a/src/ui/views/settings.rs b/src/ui/views/settings.rs
+index e5b0b7a1918558479b59d3e4e7f172c7ee00f5c5..683c18eb221bd1c6f515bc6d9fa8f2593baaf43e 100644
+--- a/src/ui/views/settings.rs
++++ b/src/ui/views/settings.rs
+@@ -653,7 +653,7 @@ fn render_statusbar(frame: &mut Frame, theme: &Theme, state: &SettingsState, are
+             Style::default().fg(t.fg2).bg(t.hl),
+         ),
+         Span::styled(
+-            "  j/k preview theme  ⏎ apply  h/l pane  ⎋ revert & close",
++            "  j/k preview theme  ⏎ apply  Tab pane  ⎋ revert & close",
+             theme.dim(),
+         ),
+     ];
+diff --git a/src/ui/widgets/whichkey.rs b/src/ui/widgets/whichkey.rs
+index f953258863009f4fba645e14778e5d71f9d5704b..edc3216c7d9e1429ce6a4f2422584067db771679 100644
+--- a/src/ui/widgets/whichkey.rs
++++ b/src/ui/widgets/whichkey.rs
+@@ -24,21 +24,6 @@ pub fn entries_for_map(map: &HashMap<Vec<String>, KeyAction>, prefix: &str) -> V
+         return Vec::new();
+     }
+ 
+-    // Special case for "g": vim tab switches 1-5
+-    if prefix == "g" {
+-        let mut res = Vec::new();
+-        if let Some((_, a)) = map.iter().find(|(k, _)| k.as_slice() == ["g", "g"]) {
+-            res.push(("g".to_string(), a.whichkey_label().to_string()));
+-        } else {
+-            res.push(("g".to_string(), "top".to_string()));
+-        }
+-        if let Some((_, a)) = map.iter().find(|(k, _)| k.as_slice() == ["g", "x"]) {
+-            res.push(("x".to_string(), a.whichkey_label().to_string()));
+-        }
+-        res.push(("1-5".to_string(), "views".to_string()));
+-        return res;
+-    }
+-
+     // Collect all candidate tokens immediately following prefix_tokens
+     let mut next_tokens: Vec<String> = Vec::new();
+     for seq in map.keys() {
+@@ -98,7 +83,7 @@ pub fn entries_for_map(map: &HashMap<Vec<String>, KeyAction>, prefix: &str) -> V
+             let group_name = crate::input::keymap::prefix_group_description(&full_sub);
+             result.push((format!("{tok} …"), group_name.to_string()));
+         } else if let Some((_, action)) = sub_seqs.first() {
+-            result.push((tok, action.whichkey_label().to_string()));
++            result.push((tok, action.description().to_string()));
+         }
+     }
+ 
+@@ -202,6 +187,18 @@ mod tests {
+         assert_eq!(entries_for("Space i").len(), 2);
+     }
+ 
++    #[test]
++    fn g_prefix_entries() {
++        let rows = entries_for("g");
++        assert_eq!(
++            rows,
++            vec![
++                ("g".to_string(), "top".to_string()),
++                ("x".to_string(), "goto XML".to_string()),
++            ]
++        );
++    }
++
+     #[test]
+     fn dynamic_whichkey_reflects_map() {
+         let mut map = crate::input::keymap::default_map();
+diff --git a/tests/p12_palette.rs b/tests/p12_palette.rs
+index 078e212da0baba54a59ab1399d81c7c53347a47a..eeb3521be7eae823523fa3968be9a2f9b53692b6 100644
+--- a/tests/p12_palette.rs
++++ b/tests/p12_palette.rs
+@@ -90,7 +90,11 @@ fn single_source_of_truth_keymap_rebind_reflected_everywhere() {
+ 
+     // 4. WhichKey shows shutdown under Space
+     let wk_entries = entries_for_map(&map, "Space");
+-    assert!(wk_entries.iter().any(|(k, d)| k == "q" && d == "shutdown"));
++    assert!(
++        wk_entries
++            .iter()
++            .any(|(k, d)| k == "q" && d.starts_with("shutdown"))
++    );
+ 
+     // 5. Command palette shows ␣q for shutdown
+     let pal_items = curated_with_map(&map);
+diff --git a/tests/snapshots/p12_snapshots__help_overlay.snap b/tests/snapshots/p12_snapshots__help_overlay.snap
+index ee0cb16dc59320d3e6312fc7888ea2510963dc1c..2216202610835e7663e619958b1cd39132297384 100644
+--- a/tests/snapshots/p12_snapshots__help_overlay.snap
++++ b/tests/snapshots/p12_snapshots__help_overlay.snap
+@@ -10,7 +10,7 @@ expression: "buffer_text(174, 43, |f|\noverlays::help::render(f, &th, \"\", &vir
+          │ j / k       down / up                 s           start                      ␣n          new domain                :start      arch-dev                  │         
+          │ gg / G      top / bottom              S           shutdown (ACPI)            ␣c          clone                     :setmem     arch-dev 8G --live        │         
+          │ C-d / C-u   half page                 D           destroy (force off)        ␣r          rename                    :attach-iso arch-dev ~/iso/…          │         
+-         │ h / l       focus pane ← →            r           reboot                     ␣M          migrate                   :connect    qemu+ssh://h/system       │         
++         │ Tab         cycle focus               r           reboot                     ␣M          migrate                   :connect    qemu+ssh://h/system       │         
+          │ H / L       prev / next tab           R           reset                      ␣s c/r/d    snapshot new/revert/del   :theme      tokyo-night               │         
+          │ 1 … 5       switch view               p           pause / resume             ␣mi / ␣me   insert / eject ISO        :sort       cpu | mem | name          │         
+          │ ⏎           open                      Z           suspend to disk            ␣da / ␣dr   disk attach / resize      :w / :q     apply / close             │         
+diff --git a/tests/snapshots/p13_snapshots__settings_174x43.snap b/tests/snapshots/p13_snapshots__settings_174x43.snap
+index b9ad50d16de519153b769c893b145060704f5bfe..2800aca1c6937f36831b7c42a8175b3d337e10f0 100644
+--- a/tests/snapshots/p13_snapshots__settings_174x43.snap
++++ b/tests/snapshots/p13_snapshots__settings_174x43.snap
+@@ -43,5 +43,5 @@ expression: text
+  │                           │ │                                                │ │                                                                                         │ 
+  │                           │ │                                                │ │                                                                                         │ 
+  ╰───────────────────────────╯ ╰────────────────────────────────────────────────╯ ╰─────────────────────────────────────────────────────────────────────────────────────────╯ 
+- NORMAL  settings › appearance › theme   j/k preview theme  ⏎ apply  h/l pane  ⎋ revert & close                                                                               
++ NORMAL  settings › appearance › theme   j/k preview theme  ⏎ apply  Tab pane  ⎋ revert & close                                                                               
+ saved to ~/.config/virsh-tui/config.toml · theme = "tokyo-night"
+diff --git a/tests/snapshots/p14_compact__help_120x36.snap b/tests/snapshots/p14_compact__help_120x36.snap
+index 959ad54a8c3abc3ba20e95623762dab3b1577411..d68129abf55dd6bc5074a51b200f7493f2f22ea4 100644
+--- a/tests/snapshots/p14_compact__help_120x36.snap
++++ b/tests/snapshots/p14_compact__help_120x36.snap
+@@ -9,7 +9,7 @@ expression: "shot(120, 36, |f|\noverlays::help::render(f, &th, \"\", &virsh_tui:
+   │ j / k       down / up       s           start            ␣n          new domain      :start      arch-dev        │  
+   │ gg / G      top / bottom    S           shutdown (ACPI)  ␣c          clone           :setmem     arch-dev 8G --l │  
+   │ C-d / C-u   half page       D           destroy (force o ␣r          rename          :attach-iso arch-dev ~/iso/ │  
+-  │ h / l       focus pane ← →  r           reboot           ␣M          migrate         :connect    qemu+ssh://h/sy │  
++  │ Tab         cycle focus     r           reboot           ␣M          migrate         :connect    qemu+ssh://h/sy │  
+   │ H / L       prev / next tab R           reset            ␣s c/r/d    snapshot new/re :theme      tokyo-night     │  
+   │ 1 … 5       switch view     p           pause / resume   ␣mi / ␣me   insert / eject  :sort       cpu | mem | nam │  
+   │ ⏎           open            Z           suspend to disk  ␣da / ␣dr   disk attach / r :w / :q     apply / close   │  
+diff --git a/tests/snapshots/p14_compact__settings_120x36.snap b/tests/snapshots/p14_compact__settings_120x36.snap
+index ed6e21d477bf91551195774047926e1e1273ceb4..f6cfd568abeffc4111e91a0dc80cd62f6402638b 100644
+--- a/tests/snapshots/p14_compact__settings_120x36.snap
++++ b/tests/snapshots/p14_compact__settings_120x36.snap
+@@ -36,5 +36,5 @@ expression: "shot(120, 36, |f| settings::render(f, &th, &cfg, &state))"
+  │                           │ │                                                │ │                                   │ 
+  │                           │ │                                                │ │                                   │ 
+  ╰───────────────────────────╯ ╰────────────────────────────────────────────────╯ ╰───────────────────────────────────╯ 
+- NORMAL  settings › appearance › theme   j/k preview theme  ⏎ apply  h/l pane  ⎋ revert & close                         
++ NORMAL  settings › appearance › theme   j/k preview theme  ⏎ apply  Tab pane  ⎋ revert & close                         
+ saved to ~/.config/virsh-tui/config.toml · theme = "tokyo-night"
+diff --git a/tests/snapshots/p9_snapshots__networks_120x36.snap b/tests/snapshots/p9_snapshots__networks_120x36.snap
+index b8dfc18811b702ec1add04c25cc6238ffd5aed98..832ae7ed188112a60857678734cc8db512be6daa 100644
+--- a/tests/snapshots/p9_snapshots__networks_120x36.snap
++++ b/tests/snapshots/p9_snapshots__networks_120x36.snap
+@@ -36,5 +36,5 @@ expression: "buffer_text(120, 36, &state)"
+  │                                                                                                                    │ 
+  │                                                                                                                    │ 
+  ╰──────────────────────────────────────────────────────────────────────────────────────── net-update · live + config ╯ 
+- NORMAL  networks › default   j/k move  l leases  s start  D destroy  a autostart  e edit xml  n new  X undefine        
++ NORMAL  networks › default   j/k move  Tab focus  s start  D destroy  a autostart  e edit xml  n new  X undefine       
+ ── virsh net-dhcp-leases default
+diff --git a/tests/snapshots/p9_snapshots__networks_174x43.snap b/tests/snapshots/p9_snapshots__networks_174x43.snap
+index c3885d412f7f83295fbfc13b38e1d40b583a0ed2..48a5ef102d11e27c7cd137af159ba707894be1b0 100644
+--- a/tests/snapshots/p9_snapshots__networks_174x43.snap
++++ b/tests/snapshots/p9_snapshots__networks_174x43.snap
+@@ -43,5 +43,5 @@ expression: "buffer_text(174, 43, &state)"
+  │                                                                      │ │                                                                                                 │ 
+  │                                                                      │ │                                                                                                 │ 
+  ╰──────────────────────────────────────────────────────────────────────╯ ╰───────────────────────────────────────────────────────────────────── net-update · live + config ╯ 
+- NORMAL  networks › default   j/k move  l leases  s start  D destroy  a autostart  e edit xml  n new  X undefine                                                              
++ NORMAL  networks › default   j/k move  Tab focus  s start  D destroy  a autostart  e edit xml  n new  X undefine                                                             
+ ── virsh net-dhcp-leases default

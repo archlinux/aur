@@ -1,0 +1,1589 @@
+diff --git a/src/backend/virsh/exec.rs b/src/backend/virsh/exec.rs
+index 553f7cc..b6ae64c 100644
+--- a/src/backend/virsh/exec.rs
++++ b/src/backend/virsh/exec.rs
+@@ -192,3 +192,51 @@ pub fn run_blocking(uri: &str, args: &[&str]) -> Result<String> {
+         Err(eyre!("virsh failed"))
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn is_virsh_available_returns_boolean() {
++        let _ = is_virsh_available();
++    }
++
++    #[test]
++    fn ensure_virsh_available_matches_is_virsh_available() {
++        if is_virsh_available() {
++            assert!(ensure_virsh_available().is_ok());
++        } else {
++            let err = ensure_virsh_available().unwrap_err();
++            assert!(err.to_string().contains("not found in PATH"));
++        }
++    }
++
++    #[test]
++    fn friendly_first_line_polkit_hints() {
++        assert_eq!(
++            friendly_first_line(b"error: authentication unavailable: no polkit agent available"),
++            "error: authentication unavailable: no polkit agent available (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: failed to connect: access denied by policy\nmore details"),
++            "error: failed to connect: access denied by policy (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: authentication failed"),
++            "error: authentication failed (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: failed to connect to socket: Permission denied"),
++            "error: failed to connect to socket: Permission denied (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: failed to connect to the hypervisor"),
++            "error: failed to connect to the hypervisor (is libvirtd running?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: unknown domain 'foo'"),
++            "error: unknown domain 'foo'"
++        );
++    }
++}
+diff --git a/src/backend/virsh/host_local.rs b/src/backend/virsh/host_local.rs
+index 46de334..068d616 100644
+--- a/src/backend/virsh/host_local.rs
++++ b/src/backend/virsh/host_local.rs
+@@ -207,3 +207,28 @@ pub fn local_mem_total_kib() -> Option<u64> {
+     }
+     None
+ }
++
++#[cfg(test)]
++mod uptime_tests {
++    #[test]
++    fn parses_stat_with_spaces_in_comm() {
++        // starttime (field 22) = 1000 ticks = 10 s after boot; host up 3610 s.
++        let stat = "123 (qemu system x) S 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 1000 20";
++        assert_eq!(super::proc_uptime_secs(stat, 3610.0, 100.0), Some(3600));
++        assert_eq!(super::fmt_uptime(3600), "1h 00m");
++        assert_eq!(super::fmt_uptime(3 * 86_400 + 4 * 3600), "3d 04h");
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::parse_nodeinfo;
++
++    #[test]
++    fn parses_fixture() {
++        let text = std::fs::read_to_string("tests/fixtures/virsh/nodeinfo.txt").unwrap();
++        let info = parse_nodeinfo(&text, "forge");
++        assert!(info.threads > 0);
++        assert!(info.mem_kib > 0);
++    }
++}
+diff --git a/src/backend/virsh/parse_domstats.rs b/src/backend/virsh/parse_domstats.rs
+index bd25671..af95073 100644
+--- a/src/backend/virsh/parse_domstats.rs
++++ b/src/backend/virsh/parse_domstats.rs
+@@ -25,3 +25,19 @@ pub fn parse_domstats_raw(text: &str) -> Result<Vec<RawDomainStats>> {
+     }
+     Ok(out)
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::parse_domstats_raw;
++
++    #[test]
++    fn parses_fixture_and_running() {
++        let text = std::fs::read_to_string("tests/fixtures/virsh/domstats_raw.txt").unwrap();
++        let stats = parse_domstats_raw(&text).unwrap();
++        assert_eq!(stats.len(), 3);
++        assert_eq!(stats[0].u64("vcpu.current"), Some(1));
++        let running = std::fs::read_to_string("tests/fixtures/virsh/domstats_running.txt").unwrap();
++        let running = parse_domstats_raw(&running).unwrap();
++        assert_eq!(running[0].u64("net.0.rx.bytes"), Some(125_000_000));
++    }
++}
+diff --git a/src/backend/virsh/parse_help.rs b/src/backend/virsh/parse_help.rs
+index efd4c3b..815ff84 100644
+--- a/src/backend/virsh/parse_help.rs
++++ b/src/backend/virsh/parse_help.rs
+@@ -178,3 +178,24 @@ pub fn parse_help_cmd(text: &str) -> HelpDoc {
+         options,
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{parse_help_cmd, parse_help_index};
++
++    #[test]
++    fn index_has_many_commands() {
++        let text = std::fs::read_to_string("tests/fixtures/virsh/help_index.txt").unwrap();
++        let entries = parse_help_index(&text);
++        assert!(entries.len() > 200, "got {} entries", entries.len());
++        assert!(entries.iter().any(|e| e.name == "domstats"));
++    }
++
++    #[test]
++    fn domstats_doc_parses() {
++        let text = std::fs::read_to_string("tests/fixtures/virsh/help_domstats.txt").unwrap();
++        let doc = parse_help_cmd(&text);
++        assert_eq!(doc.name, "domstats");
++        assert!(doc.options.iter().any(|o| o.flag == "--raw"));
++    }
++}
+diff --git a/src/backend/virsh/parse_leases.rs b/src/backend/virsh/parse_leases.rs
+index 9a7864e..7a1a06b 100644
+--- a/src/backend/virsh/parse_leases.rs
++++ b/src/backend/virsh/parse_leases.rs
+@@ -42,3 +42,19 @@ pub fn parse_leases(text: &str) -> Vec<DhcpLease> {
+     }
+     out
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::parse_leases;
++
++    #[test]
++    fn empty_and_sample() {
++        let empty = std::fs::read_to_string("tests/fixtures/virsh/net_leases_default.txt").unwrap();
++        assert!(parse_leases(&empty).is_empty());
++        let sample = std::fs::read_to_string("tests/fixtures/virsh/net_leases_sample.txt").unwrap();
++        let leases = parse_leases(&sample);
++        assert_eq!(leases.len(), 2);
++        assert_eq!(leases[0].ip, "192.168.122.48");
++        assert_eq!(leases[0].expiry, "2026-10-06 14:32:07");
++    }
++}
+diff --git a/src/backend/virsh/parse_list.rs b/src/backend/virsh/parse_list.rs
+index 9486f8e..d1fe718 100644
+--- a/src/backend/virsh/parse_list.rs
++++ b/src/backend/virsh/parse_list.rs
+@@ -132,3 +132,32 @@ pub fn parse_snapshot_list(text: &str) -> Vec<Snapshot> {
+     }
+     out
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{parse_list_all, parse_net_list, parse_pool_list, parse_snapshot_list};
++
++    fn fixture(name: &str) -> String {
++        std::fs::read_to_string(format!("tests/fixtures/virsh/{name}.txt")).unwrap()
++    }
++
++    #[test]
++    fn list_all_has_three_shutoff() {
++        let rows = parse_list_all(&fixture("list_all")).unwrap();
++        assert_eq!(rows.len(), 3);
++        assert!(rows.iter().all(|r| r.id.is_none()));
++    }
++
++    #[test]
++    fn net_and_pool_parse() {
++        assert_eq!(parse_net_list(&fixture("net_list_details")).unwrap().len(), 2);
++        assert_eq!(parse_pool_list(&fixture("pool_list")).unwrap().len(), 1);
++    }
++
++    #[test]
++    fn snapshot_sample_parents() {
++        let snaps = parse_snapshot_list(&fixture("snapshot_list_sample"));
++        assert_eq!(snaps.len(), 3);
++        assert_eq!(snaps[1].parent.as_deref(), Some("snap-base"));
++    }
++}
+diff --git a/src/backend/virsh/parse_nodestats.rs b/src/backend/virsh/parse_nodestats.rs
+index d43585a..e761469 100644
+--- a/src/backend/virsh/parse_nodestats.rs
++++ b/src/backend/virsh/parse_nodestats.rs
+@@ -108,3 +108,42 @@ pub fn parse_nodememstats(text: &str) -> Option<NodeMemStats> {
+ 
+     Some(stats)
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn parses_nodememstats_fixture() {
++        let text = include_str!("../../../tests/fixtures/virsh/nodememstats.txt");
++        let stats = parse_nodememstats(text).expect("should parse nodememstats fixture");
++        assert_eq!(stats.total_kib, 8067340);
++        assert_eq!(stats.free_kib, 628472);
++        assert_eq!(stats.available_kib, 4726880);
++        assert_eq!(stats.buffers_kib, 118296);
++        assert_eq!(stats.cached_kib, 4127836);
++    }
++
++    #[test]
++    fn parses_nodememstats_without_available() {
++        let text = "total: 1000 KiB\nfree: 200 KiB\nbuffers: 100 KiB\ncached: 300 KiB\n";
++        let stats = parse_nodememstats(text).expect("should parse");
++        assert_eq!(stats.total_kib, 1000);
++        assert_eq!(stats.free_kib, 200);
++        assert_eq!(stats.available_kib, 600); // 200 + 100 + 300
++    }
++
++    #[test]
++    fn parses_nodecpustats_usage() {
++        let text = "usage: 24.5%\nuser: 14.2%\nsystem: 10.3%\nidle: 75.5%\n";
++        let pct = parse_nodecpustats_percent(text).expect("should parse");
++        assert!((pct - 24.5).abs() < 0.001);
++    }
++
++    #[test]
++    fn parses_nodecpustats_idle_fallback() {
++        let text = "user: 10.0%\nsystem: 5.0%\nidle: 80.0%\n";
++        let pct = parse_nodecpustats_percent(text).expect("should parse");
++        assert!((pct - 20.0).abs() < 0.001);
++    }
++}
+diff --git a/src/backend/virsh/parse_xml.rs b/src/backend/virsh/parse_xml.rs
+index 810c4fe..edbaac3 100644
+--- a/src/backend/virsh/parse_xml.rs
++++ b/src/backend/virsh/parse_xml.rs
+@@ -302,3 +302,44 @@ fn netmask_prefix(mask: &str) -> String {
+         .sum::<u32>()
+         .to_string()
+ }
++
++#[cfg(test)]
++mod net_tests {
++    #[test]
++    fn parses_default_network() {
++        let xml = "<network><name>default</name><uuid>u</uuid>\
++            <forward mode='nat' dev='enp6s0'><nat><port start='1024' end='65535'/></nat></forward>\
++            <bridge name='virbr0' stp='on' delay='0'/><mtu size='1500'/><domain name='lab.local'/>\
++            <ip address='192.168.122.1' netmask='255.255.255.0'><dhcp>\
++            <range start='192.168.122.2' end='192.168.122.254'/>\
++            <host mac='52:54:00:11:c0:01' name='k8s-cp-01' ip='192.168.122.10'/></dhcp></ip></network>";
++        let c = super::parse_network_xml(xml).unwrap();
++        assert_eq!(c.forward_mode, "nat");
++        assert_eq!(c.forward_dev, "enp6s0");
++        assert_eq!(c.ipv4.as_deref(), Some("192.168.122.1/24"));
++        assert_eq!(c.static_hosts.len(), 1);
++        assert_eq!(c.dns_domain, "lab.local");
++        let iso =
++            super::parse_network_xml("<network><name>x</name><bridge name='virbr1'/></network>").unwrap();
++        assert_eq!(iso.forward_mode, "isolated");
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::parse_domain_xml;
++
++    #[test]
++    fn parses_arch_fixture() {
++        let text = std::fs::read_to_string("tests/fixtures/virsh/dumpxml_arch.txt").unwrap();
++        let cfg = parse_domain_xml(&text).unwrap();
++        assert_eq!(cfg.name, "archlinux-install");
++        assert_eq!(cfg.vcpus, 2);
++        assert_eq!(cfg.machine, "pc-q35-11.0");
++        assert_eq!(cfg.os_label(), "archlinux rolling");
++        assert_eq!(cfg.firmware_label(), "UEFI");
++        assert_eq!(cfg.cpu_mode, "host-passthrough");
++        assert!(cfg.has_agent);
++        assert!(cfg.acpi);
++    }
++}
+diff --git a/src/command/builders/hardware.rs b/src/command/builders/hardware.rs
+index f2de3fe..06a2b13 100644
+--- a/src/command/builders/hardware.rs
++++ b/src/command/builders/hardware.rs
+@@ -221,3 +221,31 @@ pub fn define(domain: &str) -> CommandPlan {
+         &format!("Defined {domain}"),
+     )
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{attach_disk, change_media, define, set_memory, set_vcpus};
++
++    #[test]
++    fn native_commands() {
++        let plans = set_vcpus("d", 8, 16, true, true, true);
++        let argv: Vec<String> = plans
++            .iter()
++            .flat_map(|p| p.steps.iter().flat_map(|s| s.argv.clone()))
++            .collect();
++        assert!(argv.contains(&"--maximum".to_string()));
++        assert!(argv.contains(&"--live".to_string()));
++        assert!(
++            attach_disk("d", "/x.qcow2", "vdb", true, true).steps[0]
++                .argv
++                .contains(&"--live".to_string())
++        );
++        assert!(
++            change_media("d", "sda", None, true).steps[0]
++                .argv
++                .contains(&"--eject".to_string())
++        );
++        assert!(!set_memory("d", "8G", "16G", true, true).is_empty());
++        assert!(define("d").steps[0].argv[1].contains("vt-d.xml"));
++    }
++}
+diff --git a/src/command/builders/install.rs b/src/command/builders/install.rs
+index 10b40c6..3d4c4dc 100644
+--- a/src/command/builders/install.rs
++++ b/src/command/builders/install.rs
+@@ -119,3 +119,35 @@ fn disk_size_gib(s: &str) -> String {
+         None => s.trim_end_matches(['G', 'g']).to_string(),
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::virt_install;
++    use crate::ui::overlays::wizard::{MediaKind, WizardState};
++
++    #[test]
++    fn full_argv() {
++        let plan = virt_install(&WizardState::demo_step3());
++        let argv = plan.steps[0].argv.join(" ");
++        assert!(argv.contains("--name=fedora-42-ws"));
++        assert!(argv.contains("--disk=pool=nvme-fast,size=30,format=qcow2,bus=virtio"));
++        assert!(argv.contains("--noautoconsole"));
++    }
++
++    #[test]
++    fn defaults_are_valid() {
++        let mut st = WizardState {
++            name: String::from("vm"),
++            iso_path: String::from("/isos/archlinux-2026.10.01-x86_64.iso"),
++            ..Default::default()
++        };
++        let argv = virt_install(&st).steps[0].argv.join(" ");
++        assert!(argv.contains("--osinfo=detect=on,require=off"), "{argv}");
++        assert!(argv.contains("--memory=4096,maxmemory=8192"));
++        st.media = MediaKind::None;
++        st.firmware = String::from("bios");
++        st.net_source = String::from("none");
++        let argv = virt_install(&st).steps[0].argv.join(" ");
++        assert!(argv.contains("--import") && argv.contains("--network=none") && !argv.contains("--boot"));
++    }
++}
+diff --git a/src/command/builders/lifecycle.rs b/src/command/builders/lifecycle.rs
+index d71c5d5..4183914 100644
+--- a/src/command/builders/lifecycle.rs
++++ b/src/command/builders/lifecycle.rs
+@@ -146,3 +146,38 @@ pub fn migrate(domain: &str, dest_uri: &str, undefinesource: bool) -> CommandPla
+         summary: format!("Migrated {domain}"),
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{autostart, clone_domain, destroy, migrate, rename, send_key, shutdown, start, undefine};
++
++    #[test]
++    fn exact_argv() {
++        assert_eq!(start("d").steps[0].argv, vec!["start", "d"]);
++        assert_eq!(shutdown("d").steps[0].argv, vec!["shutdown", "d"]);
++        assert_eq!(destroy("d").steps[0].argv, vec!["destroy", "d"]);
++        assert_eq!(
++            send_key("d").steps[0].argv,
++            vec!["send-key", "d", "KEY_LEFTCTRL", "KEY_LEFTALT", "KEY_DELETE"]
++        );
++        assert_eq!(
++            clone_domain("d", "n").steps[0].argv,
++            vec!["--original", "d", "--name", "n", "--auto-clone"]
++        );
++        assert_eq!(rename("d", "n").steps[0].argv, vec!["domrename", "d", "n"]);
++        assert!(
++            undefine("d", true, false, false).steps[0]
++                .argv
++                .contains(&"--remove-all-storage".to_string())
++        );
++        assert_eq!(
++            autostart("d", false).steps[0].argv,
++            vec!["autostart", "d", "--disable"]
++        );
++        assert!(
++            migrate("d", "qemu+ssh://h/system", true).steps[0]
++                .argv
++                .contains(&"--undefinesource".to_string())
++        );
++    }
++}
+diff --git a/src/command/builders/network.rs b/src/command/builders/network.rs
+index 2acf5ee..1d83815 100644
+--- a/src/command/builders/network.rs
++++ b/src/command/builders/network.rs
+@@ -138,3 +138,28 @@ pub fn gateway_of(network_addr: &str) -> String {
+         network_addr.to_string()
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{define_xml, pin_lease, start};
++
++    #[test]
++    fn exact() {
++        assert_eq!(start("default").steps[0].argv, vec!["net-start", "default"]);
++        assert!(
++            pin_lease("n", "m", "h", "1.2.3.4").steps[0]
++                .argv
++                .contains(&"--live".to_string())
++        );
++        let xml = define_xml(
++            "lab",
++            "isolated",
++            "virbr9",
++            "10.10.0.0/24",
++            "10.10.0.2",
++            "10.10.0.254",
++            "",
++        );
++        assert!(xml.contains("<name>lab</name>") && xml.contains("10.10.0.1"));
++    }
++}
+diff --git a/src/command/builders/snapshot.rs b/src/command/builders/snapshot.rs
+index 7490116..6956ff9 100644
+--- a/src/command/builders/snapshot.rs
++++ b/src/command/builders/snapshot.rs
+@@ -64,3 +64,36 @@ pub fn delete(domain: &str, snap: &str, children: bool, children_only: bool, met
+     }
+     CommandPlan::single("virsh", argv, &format!("Deleted snapshot {snap} on {domain}"))
+ }
++
++#[cfg(test)]
++mod revert_flag_tests {
++    #[test]
++    fn after_flag_accepts_both_spellings() {
++        for after in ["running", "--running"] {
++            let plan = super::revert("d", "s", Some(after), false, false);
++            assert_eq!(plan.steps[0].argv, vec!["snapshot-revert", "d", "s", "--running"]);
++        }
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::{create, delete, revert};
++
++    #[test]
++    fn exact() {
++        assert!(
++            create("d", "s", "", true, false).steps[0]
++                .argv
++                .contains(&"--atomic".to_string())
++        );
++        let r = revert("d", "s", Some("running"), false, true);
++        assert_eq!(r.steps.len(), 2);
++        assert!(r.steps[1].argv.contains(&"--running".to_string()));
++        assert!(
++            delete("d", "s", true, false, false).steps[0]
++                .argv
++                .contains(&"--children".to_string())
++        );
++    }
++}
+diff --git a/src/command/builders/storage.rs b/src/command/builders/storage.rs
+index 12e78bc..ba93bf2 100644
+--- a/src/command/builders/storage.rs
++++ b/src/command/builders/storage.rs
+@@ -127,3 +127,28 @@ pub fn vol_delete(pool: &str, vol: &str) -> CommandPlan {
+         &format!("Deleted {vol} from {pool}"),
+     )
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{pool_start, vol_create, vol_resize, vol_wipe};
++
++    #[test]
++    fn exact() {
++        assert_eq!(pool_start("p").steps[0].argv, vec!["pool-start", "p"]);
++        assert!(
++            vol_create("p", "v", "10G", "qcow2", None).steps[0]
++                .argv
++                .contains(&"vol-create-as".to_string())
++        );
++        assert!(
++            vol_resize("p", "v", "20G", false).steps[0]
++                .argv
++                .contains(&"vol-resize".to_string())
++        );
++        assert!(
++            vol_wipe("p", "v", "zero").steps[0]
++                .argv
++                .contains(&"--algorithm".to_string())
++        );
++    }
++}
+diff --git a/src/command/tempxml.rs b/src/command/tempxml.rs
+index 9a9dab2..e72b30f 100644
+--- a/src/command/tempxml.rs
++++ b/src/command/tempxml.rs
+@@ -40,3 +40,18 @@ pub fn write(prefix: &str, xml: &str) -> Result<NamedTempFile> {
+ pub fn path_arg(file: &NamedTempFile) -> String {
+     file.path().to_string_lossy().into_owned()
+ }
++
++#[cfg(all(test, unix))]
++mod tests {
++    use std::os::unix::fs::PermissionsExt;
++
++    #[test]
++    fn private_and_sanitized() {
++        let f = super::write("../../etc/passwd", "<x/>").unwrap();
++        let name = f.path().file_name().unwrap().to_string_lossy().into_owned();
++        assert!(name.starts_with("vt-______etc_passwd-"), "{name}");
++        let mode = std::fs::metadata(f.path()).unwrap().permissions().mode() & 0o777;
++        assert_eq!(mode, 0o600);
++        assert_eq!(std::fs::read_to_string(f.path()).unwrap(), "<x/>");
++    }
++}
+diff --git a/src/config.rs b/src/config.rs
+index 52c47b9..957277a 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -218,3 +218,27 @@ impl Config {
+         Ok(())
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::Config;
++
++    #[test]
++    fn defaults_match_spec() {
++        let cfg = Config::default();
++        assert_eq!(cfg.general.default_uri, "qemu:///system");
++        assert_eq!(cfg.appearance.theme, "tokyo-night");
++    }
++
++    #[test]
++    fn missing_file_gives_defaults() {
++        let path = std::path::PathBuf::from("/nonexistent-virsh-tui.toml");
++        let cfg = Config::load_from(Some(path.clone()));
++        assert_eq!(cfg.general, Config::default().general);
++        assert_eq!(
++            cfg.source,
++            Some(path),
++            "save() writes back to the file it came from"
++        );
++    }
++}
+diff --git a/src/input/complete.rs b/src/input/complete.rs
+index 96a84e1..b0ef258 100644
+--- a/src/input/complete.rs
++++ b/src/input/complete.rs
+@@ -214,3 +214,54 @@ pub fn complete(
+     };
+     (start, filter(current, items))
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    fn ctx() -> Context {
++        Context {
++            domains: vec![
++                ("arch-dev".into(), "running".into()),
++                ("alpine".into(), "shut off".into()),
++            ],
++            networks: vec!["default".into()],
++            pools: vec!["isos".into()],
++            themes: vec!["tokyo-night".into(), "tokyo-night-day".into(), "nord".into()],
++            uris: vec!["qemu:///system".into()],
++            virsh: vec![("snapshot-create-as".into(), "create a snapshot".into())],
++        }
++    }
++
++    fn no_flags(_: &str) -> Vec<(String, String)> {
++        Vec::new()
++    }
++
++    #[test]
++    fn completes_commands_and_theme_names() {
++        let (start, items) = complete("th", &ctx(), &no_flags);
++        assert_eq!(start, 0);
++        assert_eq!(items[0].value, "theme");
++        let (start, items) = complete("theme ", &ctx(), &no_flags);
++        assert_eq!(start, 6);
++        assert_eq!(items.len(), 3);
++        let (_, items) = complete("theme tok", &ctx(), &no_flags);
++        assert_eq!(
++            items.iter().map(|i| i.value.as_str()).collect::<Vec<_>>(),
++            ["tokyo-night", "tokyo-night-day"]
++        );
++    }
++
++    #[test]
++    fn completes_domains_networks_and_flags() {
++        let (_, items) = complete("start a", &ctx(), &no_flags);
++        assert_eq!(items.len(), 2);
++        let (_, items) = complete("net-start ", &ctx(), &no_flags);
++        assert_eq!(items[0].value, "default");
++        let (_, items) = complete("snapshot-create-as arch-dev --", &ctx(), &|c| {
++            assert_eq!(c, "snapshot-create-as");
++            vec![("--name".into(), "name".into()), ("--atomic".into(), "".into())]
++        });
++        assert_eq!(items.len(), 2);
++    }
++}
+diff --git a/src/input/ex.rs b/src/input/ex.rs
+index 38052a6..152deca 100644
+--- a/src/input/ex.rs
++++ b/src/input/ex.rs
+@@ -162,3 +162,37 @@ fn req_arg(word: &str, args: &str, f: impl Fn(String) -> ExCommand) -> Result<Ex
+         Ok(f(args.split_whitespace().next().unwrap_or("").to_string()))
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{ExCommand, parse};
++
++    #[test]
++    fn commands() {
++        assert_eq!(parse(":qa").unwrap(), ExCommand::QuitAll);
++        assert_eq!(parse(":42").unwrap(), ExCommand::Jump(42));
++        assert_eq!(
++            parse(":connect qemu:///session").unwrap(),
++            ExCommand::Connect("qemu:///session".to_string())
++        );
++    }
++}
++
++#[cfg(test)]
++mod passthrough_tests {
++    use super::{ExCommand, parse};
++
++    #[test]
++    fn full_virsh_syntax_is_not_rejected() {
++        let line = "attach-disk vm /x.qcow2 vdb --driver qemu --config";
++        assert_eq!(parse(line), Ok(ExCommand::RawVirsh(line.to_string())));
++        assert!(matches!(
++            parse("attach-disk vm /x.qcow2 vdb"),
++            Ok(ExCommand::AttachDisk(..))
++        ));
++        assert!(matches!(
++            parse("attach-iso vm /iso/a.iso"),
++            Ok(ExCommand::Media(..))
++        ));
++    }
++}
+diff --git a/src/input/key.rs b/src/input/key.rs
+index 706cab7..9942b48 100644
+--- a/src/input/key.rs
++++ b/src/input/key.rs
+@@ -65,3 +65,14 @@ fn event_token(key: &KeyEvent) -> String {
+     };
+     if base == " " { "Space".to_string() } else { base }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::KeySeq;
++
++    #[test]
++    fn parses_leader_and_ctrl() {
++        assert_eq!(KeySeq::parse("␣").token(), "Space");
++        assert_eq!(KeySeq::parse("C-d").token(), "C-d");
++    }
++}
+diff --git a/src/input/textinput.rs b/src/input/textinput.rs
+index 8446ce4..5fb4c47 100644
+--- a/src/input/textinput.rs
++++ b/src/input/textinput.rs
+@@ -82,3 +82,21 @@ impl TextInput {
+         self.cursor
+     }
+ }
++
++#[cfg(test)]
++mod utf8_tests {
++    use super::TextInput;
++
++    #[test]
++    fn cursor_moves_by_chars() {
++        let mut t = TextInput::with("é␣");
++        t.move_left();
++        t.insert('x');
++        assert_eq!(t.value(), "éx␣");
++        t.move_left();
++        t.move_left();
++        t.move_right();
++        t.insert('y');
++        assert_eq!(t.value(), "éyx␣");
++    }
++}
+diff --git a/src/metrics/ring.rs b/src/metrics/ring.rs
+index 4422c1c..73cf916 100644
+--- a/src/metrics/ring.rs
++++ b/src/metrics/ring.rs
+@@ -52,3 +52,17 @@ impl Ring {
+         self.data.iter().copied().collect()
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::Ring;
++
++    #[test]
++    fn evicts_oldest() {
++        let mut r = Ring::new(3);
++        for i in 0..5 {
++            r.push(i as f32);
++        }
++        assert_eq!(r.all(), vec![2.0, 3.0, 4.0]);
++    }
++}
+diff --git a/src/metrics/sampler.rs b/src/metrics/sampler.rs
+index 6a1ec5a..3f7c1ec 100644
+--- a/src/metrics/sampler.rs
++++ b/src/metrics/sampler.rs
+@@ -26,3 +26,20 @@ pub fn rate(before: u64, after: u64, wall_secs: f64) -> f64 {
+ pub fn mem_used_kib(available: u64, unused: u64) -> u64 {
+     available.saturating_sub(unused)
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{cpu_pct, mem_used_kib, rate};
++
++    #[test]
++    fn cpu_clamps() {
++        assert_eq!(cpu_pct(0, 10, 0, 1), 0.0);
++        assert!(cpu_pct(0, u64::MAX, 1, 1) <= 100.0);
++    }
++
++    #[test]
++    fn counter_reset_gives_zero() {
++        assert_eq!(rate(100, 50, 1.0), 0.0);
++        assert_eq!(mem_used_kib(100, 200), 0);
++    }
++}
+diff --git a/src/model/mod.rs b/src/model/mod.rs
+index 8ed2d38..92e9599 100644
+--- a/src/model/mod.rs
++++ b/src/model/mod.rs
+@@ -247,3 +247,14 @@ pub struct LibvirtEvent {
+     #[serde(default)]
+     pub scope: String,
+ }
++
++#[cfg(test)]
++mod sanitize_tests {
++    #[test]
++    fn strips_escape_sequences() {
++        assert_eq!(
++            super::sanitize("evil\x1b]52;c;AAAA\x07host"),
++            "evil\u{fffd}]52;c;AAAA\u{fffd}host"
++        );
++    }
++}
+diff --git a/src/xml/diff.rs b/src/xml/diff.rs
+index 8ce875f..4e6ce05 100644
+--- a/src/xml/diff.rs
++++ b/src/xml/diff.rs
+@@ -100,3 +100,15 @@ pub fn diff_lines(before: &str, after: &str) -> Vec<DiffLine> {
+     }
+     out
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{DiffKind, diff_lines};
++
++    #[test]
++    fn minus_plus() {
++        let d = diff_lines("<a>1</a>\n", "<a>2</a>\n");
++        assert!(d.iter().any(|l| l.kind == DiffKind::Minus));
++        assert!(d.iter().any(|l| l.kind == DiffKind::Plus));
++    }
++}
+diff --git a/src/xml/edit.rs b/src/xml/edit.rs
+index e850145..a0d0ff9 100644
+--- a/src/xml/edit.rs
++++ b/src/xml/edit.rs
+@@ -185,3 +185,33 @@ pub fn move_boot_device(devices: &mut Vec<String>, from: usize, to: usize) {
+     let dev = devices.remove(from);
+     devices.insert(to, dev);
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::{auto_topology, move_boot_device, set_boot_order, set_memory, set_topology, set_vcpus};
++
++    fn arch() -> String {
++        std::fs::read_to_string("tests/fixtures/virsh/dumpxml_arch.txt").unwrap()
++    }
++
++    #[test]
++    fn vcpus_and_topology() {
++        let out = set_vcpus(&arch(), 8, 16).unwrap();
++        assert!(out.contains(">16<") && out.contains("current=\"8\"") || out.contains("current='8'"));
++        let (s, c, t) = auto_topology(16);
++        assert_eq!((s, c, t), (1, 8, 2));
++        let topo = set_topology(&arch(), 1, 8, 2).unwrap();
++        assert!(topo.contains("cores=\"8\"") || topo.contains("cores='8'"));
++        let mem = set_memory(&arch(), 8 * 1024 * 1024, 16 * 1024 * 1024).unwrap();
++        assert!(mem.contains("16777216"));
++    }
++
++    #[test]
++    fn boot_reorder() {
++        let mut devs = vec![String::from("hd"), String::from("cdrom"), String::from("network")];
++        move_boot_device(&mut devs, 2, 0);
++        assert_eq!(devs[0], "network");
++        let xml = set_boot_order(&arch(), &["hd", "cdrom"]).unwrap();
++        assert!(xml.contains("dev=\"hd\"") || xml.contains("dev='hd'"));
++    }
++}
+diff --git a/src/xml/mod.rs b/src/xml/mod.rs
+index 69de8eb..4778cd8 100644
+--- a/src/xml/mod.rs
++++ b/src/xml/mod.rs
+@@ -23,3 +23,11 @@ pub fn escape(s: &str) -> String {
+     }
+     out
+ }
++
++#[cfg(test)]
++mod escape_tests {
++    #[test]
++    fn escapes_markup() {
++        assert_eq!(super::escape("a'/><x y='&"), "a&apos;/&gt;&lt;x y=&apos;&amp;");
++    }
++}
+diff --git a/tests/fixtures/virsh/domstats_raw.txt b/tests/fixtures/virsh/domstats_raw.txt
+new file mode 100644
+index 0000000..aa7a0b9
+--- /dev/null
++++ b/tests/fixtures/virsh/domstats_raw.txt
+@@ -0,0 +1,42 @@
++Domain: 'metasploitable2'
++  state.state=5
++  state.reason=0
++  balloon.current=524288
++  balloon.maximum=524288
++  vcpu.current=1
++  vcpu.maximum=1
++  block.count=1
++  block.0.name=hda
++  block.0.path=/var/lib/libvirt/images/metasploitable2.qcow2
++  block.0.allocation=1894670336
++  block.0.capacity=8589934592
++  block.0.physical=1928069120
++
++Domain: 'fedora-install'
++  state.state=5
++  state.reason=0
++  balloon.current=1048576
++  balloon.maximum=1048576
++  vcpu.current=2
++  vcpu.maximum=2
++  block.count=1
++  block.0.name=vda
++  block.0.path=/var/lib/libvirt/images/fedora-vm.qcow2
++  block.0.allocation=2012778496
++  block.0.capacity=21474836480
++  block.0.physical=2012807168
++
++Domain: 'archlinux-install'
++  state.state=5
++  state.reason=0
++  balloon.current=2097152
++  balloon.maximum=2097152
++  vcpu.current=2
++  vcpu.maximum=2
++  block.count=1
++  block.0.name=vda
++  block.0.path=/var/lib/libvirt/images/archlinux-vm.qcow2
++  block.0.allocation=5885460480
++  block.0.capacity=21474836480
++  block.0.physical=5885460480
++
+diff --git a/tests/fixtures/virsh/domstats_running.txt b/tests/fixtures/virsh/domstats_running.txt
+new file mode 100644
+index 0000000..271584b
+--- /dev/null
++++ b/tests/fixtures/virsh/domstats_running.txt
+@@ -0,0 +1,30 @@
++Domain: 'arch-dev'
++  state.state=1
++  state.reason=1
++  cpu.time=123456789000
++  balloon.current=16777216
++  balloon.maximum=16777216
++  balloon.available=16000000
++  balloon.unused=4000000
++  balloon.rss=13000000
++  vcpu.current=8
++  vcpu.maximum=8
++  vcpu.0.state=1
++  vcpu.0.time=15000000000
++  block.count=1
++  block.0.name=vda
++  block.0.path=/var/lib/libvirt/images/arch-dev.qcow2
++  block.0.rd.bytes=104857600
++  block.0.rd.reqs=1200
++  block.0.wr.bytes=52428800
++  block.0.wr.reqs=800
++  net.count=1
++  net.0.name=vnet3
++  net.0.rx.bytes=125000000
++  net.0.rx.pkts=100000
++  net.0.rx.errs=0
++  net.0.rx.drop=0
++  net.0.tx.bytes=62500000
++  net.0.tx.pkts=80000
++  net.0.tx.errs=0
++  net.0.tx.drop=0
+diff --git a/tests/fixtures/virsh/dumpxml_arch.txt b/tests/fixtures/virsh/dumpxml_arch.txt
+new file mode 100644
+index 0000000..0e826ea
+--- /dev/null
++++ b/tests/fixtures/virsh/dumpxml_arch.txt
+@@ -0,0 +1,178 @@
++<domain type='kvm'>
++  <name>archlinux-install</name>
++  <uuid>f9707ccf-54cc-4310-bf40-6f68d3b814a2</uuid>
++  <metadata>
++    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
++      <libosinfo:os id="http://archlinux.org/archlinux/rolling"/>
++    </libosinfo:libosinfo>
++  </metadata>
++  <memory unit='KiB'>2097152</memory>
++  <currentMemory unit='KiB'>2097152</currentMemory>
++  <vcpu placement='static'>2</vcpu>
++  <resource>
++    <partition>/machine</partition>
++  </resource>
++  <os firmware='efi'>
++    <type arch='x86_64' machine='pc-q35-11.0'>hvm</type>
++    <firmware>
++      <feature enabled='no' name='enrolled-keys'/>
++      <feature enabled='no' name='secure-boot'/>
++    </firmware>
++    <loader readonly='yes' type='pflash' format='raw'>/usr/share/OVMF/OVMF_CODE_4M.fd</loader>
++    <nvram template='/usr/share/OVMF/OVMF_VARS_4M.fd' templateFormat='raw' format='raw'>/var/lib/libvirt/qemu/nvram/archlinux-install_VARS.fd</nvram>
++    <boot dev='hd'/>
++  </os>
++  <features>
++    <acpi/>
++    <apic/>
++    <vmport state='off'/>
++  </features>
++  <cpu mode='host-passthrough' check='none' migratable='on'/>
++  <clock offset='utc'>
++    <timer name='rtc' tickpolicy='catchup'/>
++    <timer name='pit' tickpolicy='delay'/>
++    <timer name='hpet' present='no'/>
++  </clock>
++  <on_poweroff>destroy</on_poweroff>
++  <on_reboot>destroy</on_reboot>
++  <on_crash>destroy</on_crash>
++  <pm>
++    <suspend-to-mem enabled='no'/>
++    <suspend-to-disk enabled='no'/>
++  </pm>
++  <devices>
++    <emulator>/usr/bin/qemu-system-x86_64</emulator>
++    <disk type='file' device='disk'>
++      <driver name='qemu' type='qcow2'/>
++      <source file='/var/lib/libvirt/images/archlinux-vm.qcow2'/>
++      <backingStore/>
++      <target dev='vda' bus='virtio'/>
++      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
++    </disk>
++    <controller type='usb' index='0' model='qemu-xhci' ports='15'>
++      <address type='pci' domain='0x0000' bus='0x02' slot='0x00' function='0x0'/>
++    </controller>
++    <controller type='pci' index='0' model='pcie-root'/>
++    <controller type='pci' index='1' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='1' port='0x10'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0' multifunction='on'/>
++    </controller>
++    <controller type='pci' index='2' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='2' port='0x11'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x1'/>
++    </controller>
++    <controller type='pci' index='3' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='3' port='0x12'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x2'/>
++    </controller>
++    <controller type='pci' index='4' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='4' port='0x13'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x3'/>
++    </controller>
++    <controller type='pci' index='5' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='5' port='0x14'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x4'/>
++    </controller>
++    <controller type='pci' index='6' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='6' port='0x15'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x5'/>
++    </controller>
++    <controller type='pci' index='7' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='7' port='0x16'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x6'/>
++    </controller>
++    <controller type='pci' index='8' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='8' port='0x17'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x7'/>
++    </controller>
++    <controller type='pci' index='9' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='9' port='0x18'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0' multifunction='on'/>
++    </controller>
++    <controller type='pci' index='10' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='10' port='0x19'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x1'/>
++    </controller>
++    <controller type='pci' index='11' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='11' port='0x1a'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x2'/>
++    </controller>
++    <controller type='pci' index='12' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='12' port='0x1b'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x3'/>
++    </controller>
++    <controller type='pci' index='13' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='13' port='0x1c'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x4'/>
++    </controller>
++    <controller type='pci' index='14' model='pcie-root-port'>
++      <model name='pcie-root-port'/>
++      <target chassis='14' port='0x1d'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x5'/>
++    </controller>
++    <controller type='sata' index='0'>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x1f' function='0x2'/>
++    </controller>
++    <controller type='virtio-serial' index='0'>
++      <address type='pci' domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
++    </controller>
++    <interface type='network'>
++      <mac address='52:54:00:67:76:42'/>
++      <source network='default'/>
++      <model type='virtio'/>
++      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
++    </interface>
++    <serial type='pty'>
++      <target type='isa-serial' port='0'>
++        <model name='isa-serial'/>
++      </target>
++    </serial>
++    <console type='pty'>
++      <target type='serial' port='0'/>
++    </console>
++    <channel type='unix'>
++      <target type='virtio' name='org.qemu.guest_agent.0'/>
++      <address type='virtio-serial' controller='0' bus='0' port='1'/>
++    </channel>
++    <input type='tablet' bus='usb'>
++      <address type='usb' bus='0' port='1'/>
++    </input>
++    <input type='mouse' bus='ps2'/>
++    <input type='keyboard' bus='ps2'/>
++    <graphics type='vnc' port='5900' autoport='no' listen='0.0.0.0' keymap='pt'>
++      <listen type='address' address='0.0.0.0'/>
++    </graphics>
++    <sound model='ich9'>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x1b' function='0x0'/>
++    </sound>
++    <audio id='1' type='none'/>
++    <video>
++      <model type='virtio' heads='1' primary='yes' device='virtio-vga'/>
++      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
++    </video>
++    <watchdog model='itco' action='reset'/>
++    <memballoon model='virtio'>
++      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
++    </memballoon>
++    <rng model='virtio'>
++      <backend model='random'>/dev/urandom</backend>
++      <address type='pci' domain='0x0000' bus='0x06' slot='0x00' function='0x0'/>
++    </rng>
++  </devices>
++  <seclabel type='dynamic' model='apparmor' relabel='yes'/>
++  <seclabel type='dynamic' model='dac' relabel='yes'/>
++</domain>
++
+diff --git a/tests/fixtures/virsh/help_domstats.txt b/tests/fixtures/virsh/help_domstats.txt
+new file mode 100644
+index 0000000..aebbabb
+--- /dev/null
++++ b/tests/fixtures/virsh/help_domstats.txt
+@@ -0,0 +1,35 @@
++  NAME
++    domstats - get statistics about one or multiple domains
++
++  SYNOPSIS
++    domstats [--state] [--cpu-total] [--balloon] [--vcpu] [--interface] [--block] [--perf] [--iothread] [--memory] [--dirtyrate] [--vm] [--list-active] [--list-inactive] [--list-persistent] [--list-transient] [--list-running] [--list-paused] [--list-shutoff] [--list-other] [--raw] [--enforce] [--backing] [--nowait] [<domain>]...
++
++  DESCRIPTION
++    Gets statistics about one or more (or all) domains
++
++  OPTIONS
++    --state          report domain state
++    --cpu-total      report domain physical cpu usage
++    --balloon        report domain balloon statistics
++    --vcpu           report domain virtual cpu information
++    --interface      report domain network interface information
++    --block          report domain block device statistics
++    --perf           report domain perf event statistics
++    --iothread       report domain IOThread information
++    --memory         report domain memory usage
++    --dirtyrate      report domain dirty rate information
++    --vm             report hypervisor-specific statistics
++    --list-active    list only active domains
++    --list-inactive  list only inactive domains
++    --list-persistent  list only persistent domains
++    --list-transient  list only transient domains
++    --list-running   list only running domains
++    --list-paused    list only paused domains
++    --list-shutoff   list only shutoff domains
++    --list-other     list only domains in other states
++    --raw            do not pretty-print the fields
++    --enforce        enforce requested stats parameters
++    --backing        add backing chain information to block stats
++    --nowait         report only stats that are accessible instantly
++    [--domain] <string>...  list of domains to get stats for
++
+diff --git a/tests/fixtures/virsh/help_index.txt b/tests/fixtures/virsh/help_index.txt
+new file mode 100644
+index 0000000..0599221
+--- /dev/null
++++ b/tests/fixtures/virsh/help_index.txt
+@@ -0,0 +1,318 @@
++Grouped commands:
++
++ Domain Management (help keyword 'domain'):
++    attach-device                  attach device from an XML file
++    attach-disk                    attach disk device
++    attach-interface               attach network interface
++    autostart                      autostart a domain
++    blkdeviotune                   Set or query a block device I/O tuning parameters.
++    domthrottlegroupset            Add or update a throttling group.
++    domthrottlegroupdel            Delete a throttling group.
++    domthrottlegroupinfo           Get a throttling group.
++    domthrottlegrouplist           list all domain throttlegroups.
++    blkiotune                      Get or set blkio parameters
++    blockcommit                    Start a block commit operation.
++    blockcopy                      Start a block copy operation.
++    blockjob                       Manage active block operations
++    blockpull                      Populate a disk from its backing image.
++    blockresize                    Resize block device of domain.
++    change-media                   Change media of CD or floppy drive
++    console                        connect to the guest console
++    cpu-stats                      show domain cpu statistics
++    create                         create a domain from an XML file
++    define                         define (but don't start) a domain from an XML file
++    desc                           show or set domain's description or title
++    destroy                        destroy (stop) a domain
++    detach-device                  detach device from an XML file
++    detach-device-alias            detach device from an alias
++    detach-disk                    detach disk device
++    detach-interface               detach network interface
++    domdisplay                     domain display connection URI
++    domfsfreeze                    Freeze domain's mounted filesystems.
++    domfsthaw                      Thaw domain's mounted filesystems.
++    domfsinfo                      Get information of domain's mounted filesystems.
++    domfstrim                      Invoke fstrim on domain's mounted filesystems.
++    domhostname                    print the domain's hostname
++    domid                          convert a domain name or UUID to domain id
++    domifannounce                  trigger domain to announce virtual interface to network
++    domif-setlink                  set link state of a virtual interface
++    domiftune                      get/set parameters of a virtual interface
++    domjobabort                    abort active domain job
++    domjobinfo                     domain job information
++    domlaunchsecinfo               Get domain launch security info
++    domsetlaunchsecstate           Set domain launch security state
++    domname                        convert a domain id or UUID to domain name
++    domrename                      rename a domain
++    dompmsuspend                   suspend a domain gracefully using power management functions
++    dompmwakeup                    wakeup a domain from pmsuspended state
++    domuuid                        convert a domain name or id to domain UUID
++    domxml-from-native             Convert native config to domain XML
++    domxml-to-native               Convert domain XML to native config
++    dump                           dump the core of a domain to a file for analysis
++    dumpxml                        domain information in XML
++    edit                           edit XML configuration for a domain
++    get-user-sshkeys               list authorized SSH keys for given user (via agent)
++    inject-nmi                     Inject NMI to the guest
++    iothreadinfo                   view domain IOThreads
++    iothreadpin                    control domain IOThread affinity
++    iothreadadd                    add an IOThread to the guest domain
++    iothreadset                    modifies an existing IOThread of the guest domain
++    iothreaddel                    delete an IOThread from the guest domain
++    send-key                       Send keycodes to the guest
++    send-process-signal            Send signals to processes
++    lxc-enter-namespace            LXC Guest Enter Namespace
++    managedsave                    managed save of a domain state
++    managedsave-remove             Remove managed save of a domain
++    managedsave-edit               edit XML for a domain's managed save state file
++    managedsave-dumpxml            Domain information of managed save state file in XML
++    managedsave-define             redefine the XML for a domain's managed save state file
++    memtune                        Get or set memory parameters
++    perf                           Get or set perf event
++    metadata                       show or set domain's custom XML metadata
++    migrate                        migrate domain to another host
++    migrate-setmaxdowntime         set maximum tolerable downtime
++    migrate-getmaxdowntime         get maximum tolerable downtime
++    migrate-compcache              get/set compression cache size
++    migrate-setspeed               Set the maximum migration bandwidth
++    migrate-getspeed               Get the maximum migration bandwidth
++    migrate-postcopy               Switch running migration from pre-copy to post-copy
++    numatune                       Get or set numa parameters
++    qemu-attach                    QEMU Attach
++    qemu-monitor-command           QEMU Monitor Command
++    qemu-monitor-event             QEMU Monitor Events
++    qemu-agent-command             QEMU Guest Agent Command
++    guest-agent-timeout            Set the guest agent timeout
++    reboot                         reboot a domain
++    reset                          reset a domain
++    restore                        restore a domain from a saved state in a file
++    resume                         resume a domain
++    save                           save a domain state to a file
++    save-image-define              redefine the XML for a domain's saved state file
++    save-image-dumpxml             saved state domain information in XML
++    save-image-edit                edit XML for a domain's saved state file
++    schedinfo                      show/set scheduler parameters
++    screenshot                     take a screenshot of a current domain console and store it into a file
++    set-lifecycle-action           change lifecycle actions
++    set-user-sshkeys               manipulate authorized SSH keys file for given user (via agent)
++    set-user-password              set the user password inside the domain
++    setmaxmem                      change maximum memory limit
++    setmem                         change memory allocation
++    setvcpus                       change number of virtual CPUs
++    shutdown                       gracefully shutdown a domain
++    start                          start a (previously defined) inactive domain
++    suspend                        suspend a domain
++    ttyconsole                     tty console
++    undefine                       undefine a domain
++    update-device                  update device from an XML file
++    update-memory-device           update memory device of a domain
++    vcpucount                      domain vcpu counts
++    vcpuinfo                       detailed domain vcpu information
++    vcpupin                        control or query domain vcpu affinity
++    emulatorpin                    control or query domain emulator affinity
++    vncdisplay                     vnc display
++    guestvcpus                     query or modify state of vcpu in the guest (via agent)
++    setvcpu                        attach/detach vcpu or groups of threads
++    domblkthreshold                set the threshold for block-threshold event for a given block device or it's backing chain element
++    guestinfo                      query information about the guest (via agent)
++    domdirtyrate-calc              Calculate a vm's memory dirty rate
++    dom-fd-associate               associate a FD with a domain
++    domdisplay-reload              Reload domain's graphics display certificates
++
++ Domain Monitoring (help keyword 'monitor'):
++    domblkerror                    Show errors on block devices
++    domblkinfo                     domain block device size information
++    domblklist                     list all domain blocks
++    domblkstat                     get device block stats for a domain
++    domcontrol                     domain control interface state
++    domif-getlink                  get link state of a virtual interface
++    domifaddr                      Get network interfaces' addresses for a running domain
++    domiflist                      list all domain virtual interfaces
++    domifstat                      get network interface stats for a domain
++    dominfo                        domain information
++    dommemstat                     get memory statistics for a domain
++    domstate                       domain state
++    domstats                       get statistics about one or multiple domains
++    domtime                        domain time
++    list                           list domains
++
++ Domain Events (help keyword 'events'):
++    event                          Domain Events
++    await                          await a domain event
++
++ Host and Hypervisor (help keyword 'host'):
++    allocpages                     Manipulate pages pool size
++    capabilities                   capabilities
++    cpu-baseline                   compute baseline CPU
++    cpu-compare                    compare host CPU with a CPU described by an XML file
++    cpu-models                     CPU models
++    domcapabilities                domain capabilities
++    freecell                       NUMA free memory
++    freepages                      NUMA free pages
++    hostname                       print the hypervisor hostname
++    hypervisor-cpu-baseline        compute baseline CPU usable by a specific hypervisor
++    hypervisor-cpu-compare         compare a CPU with the CPU created by a hypervisor on the host
++    hypervisor-cpu-models          Hypervisor reported CPU models
++    maxvcpus                       connection vcpu maximum
++    node-memory-tune               Get or set node memory parameters
++    nodecpumap                     node cpu map
++    nodecpustats                   Prints cpu stats of the node.
++    nodeinfo                       node information
++    nodememstats                   Prints memory stats of the node.
++    nodesevinfo                    node SEV information
++    nodesuspend                    suspend the host node for a given time duration
++    sysinfo                        print the hypervisor sysinfo
++    uri                            print the hypervisor canonical URI
++    version                        show version
++
++ Checkpoint (help keyword 'checkpoint'):
++    checkpoint-create              Create a checkpoint from XML
++    checkpoint-create-as           Create a checkpoint from a set of args
++    checkpoint-delete              Delete a domain checkpoint
++    checkpoint-dumpxml             Dump XML for a domain checkpoint
++    checkpoint-edit                edit XML for a checkpoint
++    checkpoint-info                checkpoint information
++    checkpoint-list                List checkpoints for a domain
++    checkpoint-parent              Get the name of the parent of a checkpoint
++
++ Interface (help keyword 'interface'):
++    iface-begin                    create a snapshot of current interfaces settings, which can be later committed (iface-commit) or restored (iface-rollback)
++    iface-bridge                   create a bridge device and attach an existing network device to it
++    iface-commit                   commit changes made since iface-begin and free restore point
++    iface-define                   define an inactive persistent physical host interface or modify an existing persistent one from an XML file
++    iface-destroy                  destroy a physical host interface (disable it / "if-down")
++    iface-dumpxml                  interface information in XML
++    iface-edit                     edit XML configuration for a physical host interface
++    iface-list                     list physical host interfaces
++    iface-mac                      convert an interface name to interface MAC address
++    iface-name                     convert an interface MAC address to interface name
++    iface-rollback                 rollback to previous saved configuration created via iface-begin
++    iface-start                    start a physical host interface (enable it / "if-up")
++    iface-unbridge                 undefine a bridge device after detaching its device(s)
++    iface-undefine                 undefine a physical host interface (remove it from configuration)
++
++ Network Filter (help keyword 'filter'):
++    nwfilter-define                define or update a network filter from an XML file
++    nwfilter-dumpxml               network filter information in XML
++    nwfilter-edit                  edit XML configuration for a network filter
++    nwfilter-list                  list network filters
++    nwfilter-undefine              undefine a network filter
++    nwfilter-binding-create        create a network filter binding from an XML file
++    nwfilter-binding-delete        delete a network filter binding
++    nwfilter-binding-dumpxml       network filter information in XML
++    nwfilter-binding-list          list network filter bindings
++
++ Networking (help keyword 'network'):
++    net-autostart                  autostart a network
++    net-create                     create a network from an XML file
++    net-define                     define an inactive persistent virtual network or modify an existing persistent one from an XML file
++    net-desc                       show or set network's description or title
++    net-destroy                    destroy (stop) a network
++    net-dhcp-leases                print lease info for a given network
++    net-dumpxml                    network information in XML
++    net-edit                       edit XML configuration for a network
++    net-event                      Network Events
++    net-info                       network information
++    net-list                       list networks
++    net-metadata                   show or set network's custom XML metadata
++    net-name                       convert a network UUID to network name
++    net-start                      start a (previously defined) inactive network
++    net-undefine                   undefine a persistent network
++    net-update                     update parts of an existing network's configuration
++    net-uuid                       convert a network name to network UUID
++    net-port-list                  list network ports
++    net-port-create                create a network port from an XML file
++    net-port-dumpxml               network port information in XML
++    net-port-delete                delete the specified network port
++
++ Node Device (help keyword 'nodedev'):
++    nodedev-create                 create a device defined by an XML file on the node
++    nodedev-destroy                destroy (stop) a device on the node
++    nodedev-detach                 detach node device from its device driver
++    nodedev-dumpxml                node device details in XML
++    nodedev-list                   enumerate devices on this host
++    nodedev-reattach               reattach node device to its device driver
++    nodedev-reset                  reset node device
++    nodedev-event                  Node Device Events
++    nodedev-define                 Define or modify a device by an xml file on a node
++    nodedev-undefine               Undefine an inactive node device
++    nodedev-start                  Start an inactive node device
++    nodedev-autostart              autostart a defined node device
++    nodedev-info                   node device information
++    nodedev-update                 Update a active and/or inactive node device
++
++ Secret (help keyword 'secret'):
++    secret-define                  define or modify a secret from an XML file
++    secret-dumpxml                 secret attributes in XML
++    secret-event                   Secret Events
++    secret-get-value               Output a secret value
++    secret-list                    list secrets
++    secret-set-value               set a secret value
++    secret-undefine                undefine a secret
++
++ Snapshot (help keyword 'snapshot'):
++    snapshot-create                Create a snapshot from XML
++    snapshot-create-as             Create a snapshot from a set of args
++    snapshot-current               Get or set the current snapshot
++    snapshot-delete                Delete a domain snapshot
++    snapshot-dumpxml               Dump XML for a domain snapshot
++    snapshot-edit                  edit XML for a snapshot
++    snapshot-info                  snapshot information
++    snapshot-list                  List snapshots for a domain
++    snapshot-parent                Get the name of the parent of a snapshot
++    snapshot-revert                Revert a domain to a snapshot
++
++ Backup (help keyword 'backup'):
++    backup-begin                   Start a disk backup of a live domain
++    backup-dumpxml                 Dump XML for an ongoing domain block backup job
++
++ Storage Pool (help keyword 'pool'):
++    find-storage-pool-sources-as   find potential storage pool sources
++    find-storage-pool-sources      discover potential storage pool sources
++    pool-autostart                 autostart a pool
++    pool-build                     build a pool
++    pool-create-as                 create a pool from a set of args
++    pool-create                    create a pool from an XML file
++    pool-define-as                 define a pool from a set of args
++    pool-define                    define an inactive persistent storage pool or modify an existing persistent one from an XML file
++    pool-delete                    delete a pool
++    pool-destroy                   destroy (stop) a pool
++    pool-dumpxml                   pool information in XML
++    pool-edit                      edit XML configuration for a storage pool
++    pool-info                      storage pool information
++    pool-list                      list pools
++    pool-name                      convert a pool UUID to pool name
++    pool-refresh                   refresh a pool
++    pool-start                     start a (previously defined) inactive pool
++    pool-undefine                  undefine an inactive pool
++    pool-uuid                      convert a pool name to pool UUID
++    pool-event                     Storage Pool Events
++    pool-capabilities              storage pool capabilities
++
++ Storage Volume (help keyword 'volume'):
++    vol-clone                      clone a volume.
++    vol-create-as                  create a volume from a set of args
++    vol-create                     create a vol from an XML file
++    vol-create-from                create a vol, using another volume as input
++    vol-delete                     delete a vol
++    vol-download                   download volume contents to a file
++    vol-dumpxml                    vol information in XML
++    vol-info                       storage vol information
++    vol-key                        returns the volume key for a given volume name or path
++    vol-list                       list vols
++    vol-name                       returns the volume name for a given volume key or path
++    vol-path                       returns the volume path for a given volume name or key
++    vol-pool                       returns the storage pool for a given volume key or path
++    vol-resize                     resize a vol
++    vol-upload                     upload file contents to a volume
++    vol-wipe                       wipe a vol
++
++ Virsh itself (help keyword 'virsh'):
++    cd                             change the current directory
++    echo                           echo arguments. Used for internal testing.
++    exit                           quit this interactive terminal
++    help                           print help
++    pwd                            print the current directory
++    quit                           quit this interactive terminal
++    connect                        (re)connect to hypervisor
++
++
+diff --git a/tests/fixtures/virsh/list_all.txt b/tests/fixtures/virsh/list_all.txt
+new file mode 100644
+index 0000000..1fda009
+--- /dev/null
++++ b/tests/fixtures/virsh/list_all.txt
+@@ -0,0 +1,6 @@
++ Id   Name                State
++------------------------------------
++ -    archlinux-install   shut off
++ -    fedora-install      shut off
++ -    metasploitable2     shut off
++
+diff --git a/tests/fixtures/virsh/net_leases_default.txt b/tests/fixtures/virsh/net_leases_default.txt
+new file mode 100644
+index 0000000..c095b50
+--- /dev/null
++++ b/tests/fixtures/virsh/net_leases_default.txt
+@@ -0,0 +1,3 @@
++ Expiry Time   MAC address   Protocol   IP address   Hostname   Client ID or DUID
++-----------------------------------------------------------------------------------
++
+diff --git a/tests/fixtures/virsh/net_leases_sample.txt b/tests/fixtures/virsh/net_leases_sample.txt
+new file mode 100644
+index 0000000..6ce7f41
+--- /dev/null
++++ b/tests/fixtures/virsh/net_leases_sample.txt
+@@ -0,0 +1,4 @@
++ Expiry Time   MAC address   Protocol   IP address   Hostname   Client ID or DUID
++-----------------------------------------------------------------------------------
++ 2026-10-06 14:32:07   52:54:00:a3:1f:7c   ipv4   192.168.122.48/24   arch-dev   -
++ 2026-10-06 13:00:00   52:54:00:11:22:33   ipv4   192.168.122.51/24   -   -
+diff --git a/tests/fixtures/virsh/net_list_details.txt b/tests/fixtures/virsh/net_list_details.txt
+new file mode 100644
+index 0000000..aeb5c93
+--- /dev/null
++++ b/tests/fixtures/virsh/net_list_details.txt
+@@ -0,0 +1,5 @@
++ Name           State    Autostart   Persistent
++-------------------------------------------------
++ default        active   yes         yes
++ msf-isolated   active   yes         yes
++
+diff --git a/tests/fixtures/virsh/nodeinfo.txt b/tests/fixtures/virsh/nodeinfo.txt
+new file mode 100644
+index 0000000..6970649
+--- /dev/null
++++ b/tests/fixtures/virsh/nodeinfo.txt
+@@ -0,0 +1,9 @@
++CPU model:           x86_64
++CPU(s):              6
++CPU frequency:       2596 MHz
++CPU socket(s):       1
++Core(s) per socket:  3
++Thread(s) per core:  2
++NUMA cell(s):        1
++Memory size:         8067340 KiB
++
+diff --git a/tests/fixtures/virsh/nodememstats.txt b/tests/fixtures/virsh/nodememstats.txt
+new file mode 100644
+index 0000000..40f1909
+--- /dev/null
++++ b/tests/fixtures/virsh/nodememstats.txt
+@@ -0,0 +1,6 @@
++total    :   8067340 KiB
++free     :    628472 KiB
++available:   4726880 KiB
++buffers  :    118296 KiB
++cached   :   4127836 KiB
++
+diff --git a/tests/fixtures/virsh/pool_list.txt b/tests/fixtures/virsh/pool_list.txt
+new file mode 100644
+index 0000000..4372134
+--- /dev/null
++++ b/tests/fixtures/virsh/pool_list.txt
+@@ -0,0 +1,4 @@
++ Name      State     Autostart   Persistent   Capacity     Allocation   Available
++-----------------------------------------------------------------------------------
++ default   running   yes         yes          236.03 GiB   181.31 GiB   54.72 GiB
++
+diff --git a/tests/fixtures/virsh/snapshot_list_sample.txt b/tests/fixtures/virsh/snapshot_list_sample.txt
+new file mode 100644
+index 0000000..69b156f
+--- /dev/null
++++ b/tests/fixtures/virsh/snapshot_list_sample.txt
+@@ -0,0 +1,5 @@
++ Name                 Creation Time               State       Parent            Children   Descendants
++-----------------------------------------------------------------------------------------------------
++ snap-base            2026-09-01 10:00:00 +0000   shutoff     -                 1          2
++ snap-desktop         2026-09-20 12:00:00 +0000   shutoff     snap-base         1          1
++ snap-before-upgrade  2026-10-01 09:00:00 +0000   shutoff     snap-desktop      0          0

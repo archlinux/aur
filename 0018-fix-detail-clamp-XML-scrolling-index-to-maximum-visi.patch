@@ -1,0 +1,72 @@
+From 97cf225aee983dc3bd2e90914d06e2b586e2890a Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Wed, 4 Nov 2026 23:24:21 +0100
+Subject: [PATCH 18/23] fix(detail): clamp XML scrolling index to maximum
+ visible top
+
+---
+ src/app/detail.rs          | 16 ++++++++++------
+ src/ui/views/detail/mod.rs |  3 +++
+ 2 files changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/src/app/detail.rs b/src/app/detail.rs
+index e5ee0acc9b0bb4ce2bad298178f24a4ec2b6148f..fd6aafd24a74a831d8dddded557ae2f8ddb64ab3 100644
+--- a/src/app/detail.rs
++++ b/src/app/detail.rs
+@@ -534,18 +534,22 @@ pub(super) async fn dispatch_detail(
+         }
+     }
+     if d.tab == DetailTab::Xml {
+-        // Scroll the XML (top visible line; clamped when rendering).
+-        let last = d.xml.lines().count().saturating_sub(1);
++        // Scroll the XML (top visible line; bounded by the visible window).
++        let lines_count = d.xml.lines().count();
++        let visible = d.xml_viewport_height.get().max(1);
++        let max_top = lines_count.saturating_sub(visible);
++        let step = (visible / 2).max(1);
+         let top = &mut d.xml_cursor;
+         match action {
+-            A::MoveDown => *top = (*top + 1).min(last),
++            A::MoveDown => *top = (*top + 1).min(max_top),
+             A::MoveUp => *top = top.saturating_sub(1),
+-            A::HalfDown => *top = (*top + 15).min(last),
+-            A::HalfUp => *top = top.saturating_sub(15),
++            A::HalfDown => *top = (*top + step).min(max_top),
++            A::HalfUp => *top = top.saturating_sub(step),
+             A::GoTop => *top = 0,
+-            A::GoBottom => *top = last,
++            A::GoBottom => *top = max_top,
+             _ => {}
+         }
++        *top = (*top).min(max_top);
+     }
+     match action {
+         A::NextTab => d.next_tab(),
+diff --git a/src/ui/views/detail/mod.rs b/src/ui/views/detail/mod.rs
+index 66408f9eb3fb9314f7d9333b7f33c720399d790d..1dc9c557264648875c4c33a15b4f0c117dfc31df 100644
+--- a/src/ui/views/detail/mod.rs
++++ b/src/ui/views/detail/mod.rs
+@@ -118,6 +118,7 @@ pub struct DetailState {
+     pub xml: String,
+     pub fold: XmlFold,
+     pub xml_cursor: usize,
++    pub xml_viewport_height: std::cell::Cell<usize>,
+     pub message: String,
+     pub uri: String,
+     pub connected: bool,
+@@ -155,6 +156,7 @@ impl DetailState {
+             xml,
+             fold: XmlFold::new(lines),
+             xml_cursor: 0,
++            xml_viewport_height: std::cell::Cell::new(25),
+             message: String::new(),
+             uri: String::from("qemu:///system"),
+             connected: true,
+@@ -711,6 +713,7 @@ fn render_xml(frame: &mut Frame, theme: &Theme, state: &DetailState, area: Rect)
+     }
+     // Keep the last page full: never scroll past the end.
+     let visible = area.height.saturating_sub(2) as usize;
++    state.xml_viewport_height.set(visible);
+     let top = state.xml_cursor.min(lines.len().saturating_sub(visible));
+     let right = format!(
+         "{}–{} of {} · j/k scroll · e edit",

@@ -1,0 +1,820 @@
+From 225c9a0d93041e5580ac5ed598f8e369badbf96b Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Thu, 5 Nov 2026 00:46:30 +0100
+Subject: [PATCH 24/24] Replace boxed panels with pane and separator layout
+
+---
+ book/src/interface.md            |  3 ++
+ docs/UI.md                       | 12 +++++
+ src/ui/views/dashboard.rs        | 73 ++++++++++++++++-------------
+ src/ui/views/detail/hardware.rs  |  9 ++--
+ src/ui/views/detail/mod.rs       | 12 +++--
+ src/ui/views/detail/snapshots.rs |  7 +--
+ src/ui/views/events.rs           |  4 +-
+ src/ui/views/host.rs             | 16 ++++---
+ src/ui/views/networks.rs         | 28 +++++++----
+ src/ui/views/settings.rs         | 10 ++--
+ src/ui/views/storage.rs          | 14 ++++--
+ src/ui/widgets/panel.rs          | 80 ++++++++++++++++++++++++++++++--
+ 12 files changed, 196 insertions(+), 72 deletions(-)
+
+diff --git a/book/src/interface.md b/book/src/interface.md
+index 50a7b79922aeaa3993ed8591bdb3d88c563e4ef5..09695ef5cc7a0ad2b9386ed13ae453fb1c6d926a 100644
+--- a/book/src/interface.md
++++ b/book/src/interface.md
+@@ -64,6 +64,9 @@ Inside multi-panel views (Networks, Storage, and Settings), pressing `Tab` or
+ `Shift-Tab` cycles focus between the available tables and option lists, allowing
+ seamless keyboard navigation without conflicting with vim movement keys.
+ 
++Panes are separated by thin rules instead of boxes. The focused pane is the one
++with a blue rule, a bold blue title and a `▌` marker before the title.
++
+ ## Every action shows its command
+ 
+ virsh-tui builds each mutation as a plan of one or more `virsh` (or
+diff --git a/docs/UI.md b/docs/UI.md
+index 548d622ec54e1d4af595e3daf39bb69c4d93299f..aafe7db5485c5e4083ede38e29814cb4a6d6670e 100644
+--- a/docs/UI.md
++++ b/docs/UI.md
+@@ -38,6 +38,18 @@ The application frame is divided vertically into three regions:
+ 
+ ---
+ 
++## Pane Layout
++
++Views are built from borderless **panes** separated by rules rather than boxed panels (`ui::widgets::panel`):
++
++- `panel::pane` renders a top rule that carries the pane title (left) and right title/footers (right). The rule doubles as the separator from the pane above.
++- `panel::vseps` draws a vertical rule (with a tee into the top rules) in the 1-column gap between side-by-side panes.
++- **Focus**: the focused pane has a blue rule, a bold blue title and a leading `▌` marker; unfocused panes use the gutter colour and a dim title.
++- Modals and popups (Help, Palette, Wizard, Confirm, pickers, which-key) keep full boxes via `panel::block`.
++- The `borders` setting selects the rule glyph set (rounded/plain/double/thick).
++
++---
++
+ ## Primary Views
+ 
+ ### 1. Domains Dashboard (`ui::views::dashboard.rs`)
+diff --git a/src/ui/views/dashboard.rs b/src/ui/views/dashboard.rs
+index a3fe3d9f0027f266d54701d580d6cec8b493db3f..7be8e62767f345ee4e07351f695a95e5829a5432 100644
+--- a/src/ui/views/dashboard.rs
++++ b/src/ui/views/dashboard.rs
+@@ -491,7 +491,7 @@ fn render_topbar(frame: &mut Frame, theme: &Theme, area: Rect, uri: &str, connec
+ }
+ 
+ fn panel_block(theme: &Theme, focused: bool, title: &str, right: Option<&str>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         focused,
+         title,
+@@ -525,6 +525,7 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: R
+         .split(body);
+     render_left(frame, theme, state, cols[0]);
+     render_right(frame, theme, state, cols[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &cols);
+ }
+ 
+ /// Compact layout (100-152 terminal cols): domains table, one tabbed detail panel
+@@ -535,22 +536,29 @@ fn render_compact(frame: &mut Frame, theme: &Theme, state: &DashboardState, area
+         .constraints([
+             Constraint::Min(8),
+             Constraint::Length(11),
+-            Constraint::Length(6),
+             Constraint::Length(5),
++            Constraint::Length(4),
+         ])
+         .split(area);
+     render_domains(frame, theme, state, rows[0]);
+     const TABS: [&str; 5] = ["Overview", "CPU", "Mem", "Disk", "Net"];
+     let running = state.selected().state == DomainState::Running;
++    // The tab strip takes the panel's last row.
++    let panel = Rect::new(
++        rows[1].x,
++        rows[1].y,
++        rows[1].width,
++        rows[1].height.saturating_sub(1),
++    );
+     match state.detail_tab {
+-        0 => render_overview(frame, theme, state, rows[1]),
+-        _ if !running => render_not_running(frame, theme, state, rows[1]),
+-        1 => render_cpu(frame, theme, state, rows[1]),
+-        2 => render_memory(frame, theme, state, rows[1]),
+-        3 => render_disk(frame, theme, state, rows[1]),
+-        _ => render_network(frame, theme, state, rows[1]),
++        0 => render_overview(frame, theme, state, panel),
++        _ if !running => render_not_running(frame, theme, state, panel),
++        1 => render_cpu(frame, theme, state, panel),
++        2 => render_memory(frame, theme, state, panel),
++        3 => render_disk(frame, theme, state, panel),
++        _ => render_network(frame, theme, state, panel),
+     }
+-    // Tab strip on the panel's bottom border.
++    // Tab strip below the panel.
+     let mut spans = vec![Span::styled(" ", theme.dim())];
+     for (i, tab) in TABS.iter().enumerate() {
+         let style = if i == state.detail_tab {
+@@ -564,9 +572,9 @@ fn render_compact(frame: &mut Frame, theme: &Theme, state: &DashboardState, area
+         spans.push(Span::styled(format!(" {tab} "), style));
+     }
+     let strip = Rect::new(
+-        rows[1].x + 2,
++        rows[1].x + 1,
+         rows[1].y + rows[1].height.saturating_sub(1),
+-        rows[1].width.saturating_sub(4),
++        rows[1].width.saturating_sub(2),
+         1,
+     );
+     frame.render_widget(Paragraph::new(Line::from(spans)), strip);
+@@ -577,7 +585,7 @@ fn render_compact(frame: &mut Frame, theme: &Theme, state: &DashboardState, area
+ fn render_left(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Rect) {
+     let rows = Layout::default()
+         .direction(Direction::Vertical)
+-        .constraints([Constraint::Min(20), Constraint::Length(6), Constraint::Length(5)])
++        .constraints([Constraint::Min(20), Constraint::Length(5), Constraint::Length(4)])
+         .split(area);
+     render_domains(frame, theme, state, rows[0]);
+     render_events(frame, theme, state, rows[1]);
+@@ -673,7 +681,7 @@ fn render_domains(frame: &mut Frame, theme: &Theme, state: &DashboardState, area
+         }
+         chips.extend(group);
+     }
+-    let inner_w = area.width.saturating_sub(4) as usize;
++    let inner_w = area.width.saturating_sub(2) as usize;
+     let chips_w: usize = chips.iter().map(|s| s.width()).sum();
+     let pad = inner_w.saturating_sub(filter.width() + chips_w);
+     let mut first = vec![filter, Span::raw(" ".repeat(pad))];
+@@ -700,7 +708,7 @@ fn render_domains(frame: &mut Frame, theme: &Theme, state: &DashboardState, area
+         "─".repeat(inner_w),
+         Style::default().fg(t.hl).bg(t.bg),
+     )));
+-    let body_h = (area.height as usize).saturating_sub(2 + lines.len());
++    let body_h = (area.height as usize).saturating_sub(1 + lines.len());
+     let start = scroll_offset(state.selection, visible.len(), body_h);
+     for (i, r) in visible.iter().enumerate().skip(start).take(body_h) {
+         let selected = i == state.selection;
+@@ -787,7 +795,7 @@ fn render_domains(frame: &mut Frame, theme: &Theme, state: &DashboardState, area
+         format!("{pos}/{} · {} marked", visible.len(), state.marks.len())
+     };
+     let footer_left = format!("sort: {}", state.sort.label());
+-    let block = crate::ui::widgets::panel::block(
++    let block = crate::ui::widgets::panel::pane(
+         theme,
+         true,
+         "Domains",
+@@ -993,24 +1001,24 @@ fn render_right(frame: &mut Frame, theme: &Theme, state: &DashboardState, area:
+         );
+         return;
+     }
+-    // Overview: borders, five info rows, a blank line, then the action rows.
++    // Overview: rule, five info rows, a blank line, then the action rows.
+     // The CPU graph gives up to two rows when the terminal is short, so the
+     // chips keep their spacing.
+     let chip_rows = action_chips(
+         theme,
+         state.selected().state,
+-        area.width.saturating_sub(4) as usize,
++        area.width.saturating_sub(2) as usize,
+     )
+     .len();
+-    let overview_h = (2 + 5 + 1 + chip_rows) as u16;
+-    let cpu_h = area.height.saturating_sub(overview_h + 8 + 9).clamp(9, 11);
++    let overview_h = (1 + 5 + 1 + chip_rows) as u16;
++    let cpu_h = area.height.saturating_sub(overview_h + 7 + 8).clamp(8, 10);
+     let rows = Layout::default()
+         .direction(Direction::Vertical)
+         .constraints([
+             Constraint::Length(overview_h),
+             Constraint::Length(cpu_h),
+-            Constraint::Length(8),
+-            Constraint::Min(9),
++            Constraint::Length(7),
++            Constraint::Min(8),
+         ])
+         .split(area);
+     render_overview(frame, theme, state, rows[0]);
+@@ -1032,6 +1040,7 @@ fn render_right(frame: &mut Frame, theme: &Theme, state: &DashboardState, area:
+         .split(rows[2]);
+     render_memory(frame, theme, state, mid[0]);
+     render_disk(frame, theme, state, mid[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &mid);
+     render_network(frame, theme, state, rows[3]);
+ }
+ 
+@@ -1214,13 +1223,13 @@ fn render_overview(frame: &mut Frame, theme: &Theme, state: &DashboardState, are
+             ),
+         ]));
+     }
+-    let chips = action_chips(theme, sel.state, area.width.saturating_sub(4) as usize);
++    let chips = action_chips(theme, sel.state, area.width.saturating_sub(2) as usize);
+     // A blank line separates the info rows from the actions when it fits.
+-    if (area.height as usize).saturating_sub(2 + lines.len()) > chips.len() {
++    if (area.height as usize).saturating_sub(1 + lines.len()) > chips.len() {
+         lines.push(Line::from(""));
+     }
+     lines.extend(chips);
+-    let block = crate::ui::widgets::panel::block(theme, false, &sel.name, Some(title_right), None, None);
++    let block = crate::ui::widgets::panel::pane(theme, false, &sel.name, Some(title_right), None, None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+@@ -1271,7 +1280,7 @@ fn selected_series(state: &DashboardState) -> Option<&crate::metrics::store::Dom
+ 
+ fn render_cpu(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Rect) {
+     use crate::metrics::store::padded;
+-    let width = (area.width.saturating_sub(4 + 5) as usize).clamp(10, 60);
++    let width = (area.width.saturating_sub(2 + 5) as usize).clamp(10, 60);
+     let (data, right) = match selected_series(state) {
+         Some(s) => {
+             let v: Vec<f64> = s.cpu.values().iter().map(|x| f64::from(*x) / 100.0).collect();
+@@ -1296,7 +1305,7 @@ fn render_cpu(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Re
+     };
+     // The graph takes what the panel leaves after its borders and the time
+     // axis (8 rows at the reference size, fewer on short terminals).
+-    let graph_h = (area.height.saturating_sub(3) as usize).clamp(3, 8);
++    let graph_h = (area.height.saturating_sub(2) as usize).clamp(3, 8);
+     let rows = charts::area(theme.graphs, &data, width, graph_h, BrailleMode::Fill);
+     let t = &theme.tokens;
+     let colors = theme.chart_rows(&[
+@@ -1340,14 +1349,14 @@ fn render_cpu(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Re
+         Span::styled(pct.to_string(), theme.accent().add_modifier(Modifier::BOLD)),
+         Span::styled(format!(" {rest}"), theme.dim()),
+     ]);
+-    let block = crate::ui::widgets::panel::block(theme, false, "CPU", Some(right_line), None, None);
++    let block = crate::ui::widgets::panel::pane(theme, false, "CPU", Some(right_line), None, None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+ fn render_memory(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Rect) {
+     use crate::metrics::store::{normalize, padded};
+     let t = &theme.tokens;
+-    let width = (area.width.saturating_sub(4) as usize).min(28);
++    let width = (area.width.saturating_sub(2) as usize).min(28);
+     let gib = |kib: u64| kib as f64 / 1024.0 / 1024.0;
+     let (frac, data, used, max, foot) = match selected_series(state) {
+         Some(s) => {
+@@ -1406,14 +1415,14 @@ fn render_memory(frame: &mut Frame, theme: &Theme, state: &DashboardState, area:
+         Span::styled(used_txt, Style::default().fg(t.magenta)),
+         Span::styled(max_txt, theme.dim()),
+     ]);
+-    let block = crate::ui::widgets::panel::block(theme, false, "Memory", Some(right), None, None);
++    let block = crate::ui::widgets::panel::pane(theme, false, "Memory", Some(right), None, None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+ fn render_disk(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Rect) {
+     use crate::metrics::store::{fmt_bytes_rate, normalize, padded};
+     let t = &theme.tokens;
+-    let width = (area.width.saturating_sub(4) as usize).min(28);
++    let width = (area.width.saturating_sub(2) as usize).min(28);
+     let (rd, wr, rd_txt, wr_txt, title, iops) = match selected_series(state) {
+         Some(s) => {
+             // Read and write share one scale (min. full scale 1 MiB/s).
+@@ -1487,7 +1496,7 @@ fn render_disk(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: R
+ fn render_network(frame: &mut Frame, theme: &Theme, state: &DashboardState, area: Rect) {
+     use crate::metrics::store::{fmt_bits_rate, fmt_bytes, normalize, padded};
+     let t = &theme.tokens;
+-    let width = (area.width.saturating_sub(4) as usize).min(64);
++    let width = (area.width.saturating_sub(2) as usize).min(64);
+     let (rx, tx, rx_txt, tx_txt, title, foot) = match selected_series(state) {
+         Some(s) => {
+             // 1 Mb/s minimum full scale so idle links stay flat.
+@@ -1557,7 +1566,7 @@ fn render_network(frame: &mut Frame, theme: &Theme, state: &DashboardState, area
+         Span::styled("  ", theme.dim()),
+         Span::styled(format!("↑ {tx_txt}"), Style::default().fg(t.yellow)),
+     ]);
+-    let block = crate::ui::widgets::panel::block(theme, false, &title, Some(right), None, None);
++    let block = crate::ui::widgets::panel::pane(theme, false, &title, Some(right), None, None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+diff --git a/src/ui/views/detail/hardware.rs b/src/ui/views/detail/hardware.rs
+index 5c1214623e26a911f5464d30b5bee68720c1a25c..74bbca27366edf5ffa42f8774dee6fde61f353c3 100644
+--- a/src/ui/views/detail/hardware.rs
++++ b/src/ui/views/detail/hardware.rs
+@@ -680,7 +680,7 @@ impl HardwareState {
+ }
+ 
+ fn panel_block(theme: &Theme, focused: bool, title: &str, right: Option<String>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         focused,
+         title,
+@@ -714,10 +714,11 @@ pub fn render(frame: &mut Frame, theme: &Theme, hw: &HardwareState, domain: &str
+     render_editor(frame, theme, hw, insert, cols[1]);
+     let right = Layout::default()
+         .direction(Direction::Vertical)
+-        .constraints([Constraint::Min(0), Constraint::Length(12)])
++        .constraints([Constraint::Min(0), Constraint::Length(11)])
+         .split(cols[2]);
+     render_diff(frame, theme, hw, right[0]);
+     render_will_run(frame, theme, hw, domain, right[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &cols);
+     let _ = t;
+ }
+ 
+@@ -936,7 +937,7 @@ fn render_editor(frame: &mut Frame, theme: &Theme, hw: &HardwareState, insert: b
+     } else {
+         None
+     };
+-    let block = crate::ui::widgets::panel::block(theme, true, &dev.name, right, None, None);
++    let block = crate::ui::widgets::panel::pane(theme, true, &dev.name, right, None, None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+@@ -945,7 +946,7 @@ fn render_diff(frame: &mut Frame, theme: &Theme, hw: &HardwareState, area: Rect)
+     let lines: Vec<Line> = hw
+         .diff()
+         .into_iter()
+-        .take(area.height.saturating_sub(2) as usize)
++        .take(area.height.saturating_sub(1) as usize)
+         .map(|l| {
+             let (prefix, style) = match l.kind {
+                 crate::xml::diff::DiffKind::Minus => ("", Style::default().fg(t.red).bg(t.bg)),
+diff --git a/src/ui/views/detail/mod.rs b/src/ui/views/detail/mod.rs
+index fb414a2b87e8238b8d222ea34d8045b1f0edc6fe..a4d212728df502ee83533068bb723c406884f575 100644
+--- a/src/ui/views/detail/mod.rs
++++ b/src/ui/views/detail/mod.rs
+@@ -205,7 +205,7 @@ fn render_topbar(frame: &mut Frame, theme: &Theme, area: Rect, uri: &str, connec
+ }
+ 
+ fn panel_block(theme: &Theme, title: &str, right: Option<&str>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         false,
+         title,
+@@ -494,13 +494,14 @@ fn render_monitor_breakdown(frame: &mut Frame, theme: &Theme, state: &DetailStat
+             .style(theme.base()),
+         cols[2],
+     );
++    crate::ui::widgets::panel::vseps(frame, theme, &cols);
+ }
+ 
+ fn render_monitor(frame: &mut Frame, theme: &Theme, state: &DetailState, area: Rect) {
+     // Charts on top, per-vCPU / disk / NIC breakdown below.
+     let split = Layout::default()
+         .direction(Direction::Vertical)
+-        .constraints([Constraint::Min(8), Constraint::Length(7)])
++        .constraints([Constraint::Min(8), Constraint::Length(6)])
+         .split(area);
+     render_monitor_breakdown(frame, theme, state, split[1]);
+     let area = split[0];
+@@ -519,8 +520,8 @@ fn render_monitor(frame: &mut Frame, theme: &Theme, state: &DetailState, area: R
+         .direction(Direction::Vertical)
+         .constraints([Constraint::Percentage(50), Constraint::Percentage(50)])
+         .split(grid[1]);
+-    let w = (left[0].width.saturating_sub(4) as usize).max(10);
+-    let h = (left[0].height.saturating_sub(2) as usize).max(2);
++    let w = (left[0].width.saturating_sub(2) as usize).max(10);
++    let h = (left[0].height.saturating_sub(1) as usize).max(2);
+     let n = w * 2;
+     // (cpu, mem, rd, wr, rx, tx) as 0–1 series + titles.
+     let (cpu, mem, rd, wr, rx, tx, titles) = match &state.live_series {
+@@ -661,6 +662,7 @@ fn render_monitor(frame: &mut Frame, theme: &Theme, state: &DetailState, area: R
+         let block = panel_block(theme, title, Some(&right));
+         frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+     }
++    crate::ui::widgets::panel::vseps(frame, theme, &grid);
+ }
+ 
+ fn render_console(frame: &mut Frame, theme: &Theme, state: &DetailState, area: Rect) {
+@@ -708,7 +710,7 @@ fn render_xml(frame: &mut Frame, theme: &Theme, state: &DetailState, area: Rect)
+         lines.push(Line::from(spans));
+     }
+     // Keep the last page full: never scroll past the end.
+-    let visible = area.height.saturating_sub(2) as usize;
++    let visible = area.height.saturating_sub(1) as usize;
+     state.xml_viewport_height.set(visible);
+     let top = state.xml_cursor.min(lines.len().saturating_sub(visible));
+     let right = format!(
+diff --git a/src/ui/views/detail/snapshots.rs b/src/ui/views/detail/snapshots.rs
+index 3ad9f205fa52bb8640abf62db233ccb607961697..3dba03b3ddfba422c7a999cac6b8a56cfa8bf794 100644
+--- a/src/ui/views/detail/snapshots.rs
++++ b/src/ui/views/detail/snapshots.rs
+@@ -240,7 +240,7 @@ impl SnapshotState {
+ }
+ 
+ fn panel_block(theme: &Theme, focused: bool, title: &str, right: Option<String>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         focused,
+         title,
+@@ -259,6 +259,7 @@ pub fn render(frame: &mut Frame, theme: &Theme, st: &SnapshotState, area: Rect)
+         .split(area);
+     render_tree(frame, theme, st, cols[0]);
+     render_details(frame, theme, st, cols[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &cols);
+ }
+ 
+ fn render_tree(frame: &mut Frame, theme: &Theme, st: &SnapshotState, area: Rect) {
+@@ -290,7 +291,7 @@ fn render_tree(frame: &mut Frame, theme: &Theme, st: &SnapshotState, area: Rect)
+             }
+             // Fixed columns (mockup grid): name (rest) | date 12 | state 9 | kind 10.
+             let used: usize = spans.iter().map(|s| s.width()).sum();
+-            let name_w = (area.width as usize).saturating_sub(4 + 12 + 9 + 10 + 3);
++            let name_w = (area.width as usize).saturating_sub(2 + 12 + 9 + 10 + 3);
+             spans.push(Span::raw(" ".repeat(name_w.saturating_sub(used).max(1))));
+             spans.push(Span::styled(
+                 format!("{:<12} ", r.date),
+@@ -308,7 +309,7 @@ fn render_tree(frame: &mut Frame, theme: &Theme, st: &SnapshotState, area: Rect)
+         })
+         .collect();
+     let right = format!("{} snapshots · internal", st.rows.len());
+-    let block = crate::ui::widgets::panel::block(
++    let block = crate::ui::widgets::panel::pane(
+         theme,
+         true,
+         "Snapshot tree",
+diff --git a/src/ui/views/events.rs b/src/ui/views/events.rs
+index f9b4478264ab2a698b07a66927c406642a3d9507..791f341ad3d8f4787e77ac7a8fb3260edcc8b1b2 100644
+--- a/src/ui/views/events.rs
++++ b/src/ui/views/events.rs
+@@ -211,7 +211,7 @@ pub fn render(frame: &mut Frame, theme: &Theme, state: &EventsState) {
+             .add_modifier(Modifier::BOLD),
+     )));
+     let visible = state.visible();
+-    let body_h = (body.height as usize).saturating_sub(4);
++    let body_h = (body.height as usize).saturating_sub(3);
+     let sel = state.selected.min(visible.len().saturating_sub(1));
+     let start = sel.saturating_sub(body_h.saturating_sub(3));
+     for (i, ev) in visible.iter().enumerate().skip(start).take(body_h) {
+@@ -265,7 +265,7 @@ pub fn render(frame: &mut Frame, theme: &Theme, state: &EventsState) {
+     } else {
+         format!("/{}", state.query)
+     };
+-    let block = crate::ui::widgets::panel::block(
++    let block = crate::ui::widgets::panel::pane(
+         theme,
+         true,
+         "Events",
+diff --git a/src/ui/views/host.rs b/src/ui/views/host.rs
+index ed66d206087ee762c2a963833944c608d6ce6a23..f088eeb586ffcb1371ff77846a9d80c62bd02e1a 100644
+--- a/src/ui/views/host.rs
++++ b/src/ui/views/host.rs
+@@ -555,7 +555,7 @@ fn render_topbar(frame: &mut Frame, theme: &Theme, area: Rect, uri: &str, connec
+ }
+ 
+ fn panel_block(theme: &Theme, focused: bool, title: &str, right: Option<String>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         focused,
+         title,
+@@ -583,10 +583,10 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect)
+         let rows = Layout::default()
+             .direction(Direction::Vertical)
+             .constraints([
+-                Constraint::Length(9),
+                 Constraint::Length(8),
+-                Constraint::Min(0),
+                 Constraint::Length(7),
++                Constraint::Min(0),
++                Constraint::Length(6),
+             ])
+             .split(body);
+         render_cpu(frame, theme, state, rows[0], false);
+@@ -597,8 +597,8 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect)
+     }
+     let rows = Layout::default()
+         .direction(Direction::Vertical)
+-        // Row A is 13, not 12: 6 braille + per-thread + 3 meter + index + 2 borders.
+-        .constraints([Constraint::Length(13), Constraint::Min(0), Constraint::Length(7)])
++        // Row A is 12: 6 braille + per-thread + 3 meter + index + 1 rule.
++        .constraints([Constraint::Length(12), Constraint::Min(0), Constraint::Length(6)])
+         .split(body);
+     let top = Layout::default()
+         .direction(Direction::Horizontal)
+@@ -607,6 +607,7 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect)
+         .split(rows[0]);
+     render_cpu(frame, theme, state, top[0], true);
+     render_memory(frame, theme, state, top[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &top);
+     render_domains(frame, theme, state, rows[1]);
+     let bottom = Layout::default()
+         .direction(Direction::Horizontal)
+@@ -620,6 +621,7 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect)
+     render_system(frame, theme, state, bottom[0]);
+     render_pools(frame, theme, state, bottom[1]);
+     render_networks(frame, theme, state, bottom[2]);
++    crate::ui::widgets::panel::vseps(frame, theme, &bottom);
+ }
+ 
+ fn render_cpu(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect, meters: bool) {
+@@ -628,7 +630,7 @@ fn render_cpu(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect, m
+         Some(h) => crate::metrics::store::padded(h, crate::metrics::store::window_len()),
+         None => charts::series(5, 120, 0.38, 0.2, 0.08),
+     };
+-    let inner_w = (area.width.saturating_sub(4).max(10) - 5).max(10) as usize;
++    let inner_w = (area.width.saturating_sub(2).max(10) - 5).max(10) as usize;
+     let rows = charts::area(theme.graphs, &data, inner_w.min(92), 6, BrailleMode::Fill);
+     let colors = theme.chart_rows(&[t.red, t.magenta, t.blue, t.blue, t.cyan, t.teal]);
+     let labels = ["100%", "", "", " 50%", "", "  0%"];
+@@ -727,7 +729,7 @@ fn render_meters(theme: &Theme, state: &HostState, inner_w: usize, lines: &mut V
+ 
+ fn render_memory(frame: &mut Frame, theme: &Theme, state: &HostState, area: Rect) {
+     let t = &theme.tokens;
+-    let inner_w = area.width.saturating_sub(4) as usize;
++    let inner_w = area.width.saturating_sub(2) as usize;
+     let total: f64 = state.rss_by_domain.iter().map(|(_, v)| v).sum();
+     let palette = [
+         t.orange, t.blue, t.magenta, t.cyan, t.green, t.yellow, t.teal, t.red, t.fg2,
+diff --git a/src/ui/views/networks.rs b/src/ui/views/networks.rs
+index 2aeada0ab8b3e59caa024da6b9dd8c100495032f..dab7e060ff66302b392ecad624b9176ab05e27a9 100644
+--- a/src/ui/views/networks.rs
++++ b/src/ui/views/networks.rs
+@@ -362,7 +362,7 @@ fn render_topbar(frame: &mut Frame, theme: &Theme, area: Rect, uri: &str, connec
+ }
+ 
+ fn panel_block(theme: &Theme, focused: bool, title: &str, right: Option<String>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         focused,
+         title,
+@@ -378,7 +378,7 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &NetworksState, area: Re
+         // Compact: stack (ifaces move to the leases view in follow-up).
+         let rows = Layout::default()
+             .direction(Direction::Vertical)
+-            .constraints([Constraint::Length(9), Constraint::Length(9), Constraint::Min(0)])
++            .constraints([Constraint::Length(8), Constraint::Length(8), Constraint::Min(0)])
+             .split(body);
+         render_net_list(frame, theme, state, rows[0]);
+         let mid = Layout::default()
+@@ -388,6 +388,7 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &NetworksState, area: Re
+             .split(rows[1]);
+         render_net_detail(frame, theme, state, mid[0]);
+         render_traffic(frame, theme, state, mid[1]);
++        crate::ui::widgets::panel::vseps(frame, theme, &mid);
+         render_leases(frame, theme, state, rows[2]);
+         return;
+     }
+@@ -398,13 +399,13 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &NetworksState, area: Re
+         .split(body);
+     let left = Layout::default()
+         .direction(Direction::Vertical)
+-        .constraints([Constraint::Length(10), Constraint::Min(0)])
++        .constraints([Constraint::Length(9), Constraint::Min(0)])
+         .split(cols[0]);
+     render_net_list(frame, theme, state, left[0]);
+     render_ifaces(frame, theme, state, left[1]);
+     let right = Layout::default()
+         .direction(Direction::Vertical)
+-        .constraints([Constraint::Length(10), Constraint::Min(0)])
++        .constraints([Constraint::Length(9), Constraint::Min(0)])
+         .split(cols[1]);
+     let top = Layout::default()
+         .direction(Direction::Horizontal)
+@@ -414,6 +415,8 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &NetworksState, area: Re
+     render_net_detail(frame, theme, state, top[0]);
+     render_traffic(frame, theme, state, top[1]);
+     render_leases(frame, theme, state, right[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &top);
++    crate::ui::widgets::panel::vseps(frame, theme, &cols);
+ }
+ 
+ fn render_net_list(frame: &mut Frame, theme: &Theme, state: &NetworksState, area: Rect) {
+@@ -617,13 +620,13 @@ fn render_net_detail(frame: &mut Frame, theme: &Theme, state: &NetworksState, ar
+             )],
+         ),
+     ];
+-    let block = crate::ui::widgets::panel::block(theme, false, &title, right, None, None);
++    let block = crate::ui::widgets::panel::pane(theme, false, &title, right, None, None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+ fn render_traffic(frame: &mut Frame, theme: &Theme, state: &NetworksState, area: Rect) {
+     let t = &theme.tokens;
+-    let w = (area.width.saturating_sub(4) as usize).min(38);
++    let w = (area.width.saturating_sub(2) as usize).min(38);
+     let (rx_d, tx_d, rx_t, tx_t, iface) = match &state.traffic {
+         Some(tr) => (
+             crate::metrics::store::padded(&tr.rx, crate::metrics::store::window_len()),
+@@ -673,7 +676,7 @@ fn render_traffic(frame: &mut Frame, theme: &Theme, state: &NetworksState, area:
+     } else {
+         format!("Traffic · {iface}")
+     };
+-    let block = crate::ui::widgets::panel::block(theme, false, &title, Some(right), None, None);
++    let block = crate::ui::widgets::panel::pane(theme, false, &title, Some(right), None, None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+@@ -730,7 +733,7 @@ fn render_leases(frame: &mut Frame, theme: &Theme, state: &NetworksState, area:
+         Span::styled(" ⏎ go to domain ", Style::default().fg(t.fg2).bg(t.hl)),
+     ]));
+     let right = format!("{} leases · {statics} static", state.leases.len());
+-    let block = crate::ui::widgets::panel::block(
++    let block = crate::ui::widgets::panel::pane(
+         theme,
+         state.focus == NetFocus::Leases,
+         "DHCP leases",
+@@ -808,6 +811,13 @@ fn render_new_form(frame: &mut Frame, theme: &Theme, state: &NetworksState) {
+         Span::raw("  "),
+         Span::styled(" ⎋ cancel ", Style::default().fg(t.fg2).bg(t.hl)),
+     ]));
+-    let block = panel_block(theme, false, "New network", Some(String::from("net-define")));
++    let block = crate::ui::widgets::panel::block(
++        theme,
++        false,
++        "New network",
++        Some(crate::ui::widgets::panel::right("net-define", theme)),
++        None,
++        None,
++    );
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), modal);
+ }
+diff --git a/src/ui/views/settings.rs b/src/ui/views/settings.rs
+index a398fbca98d9edcf2dce5e002c38f3d8d9c6ce64..cd780a1e6cde7d48c7c42b873f16b8e8aa0c909e 100644
+--- a/src/ui/views/settings.rs
++++ b/src/ui/views/settings.rs
+@@ -296,7 +296,7 @@ fn render_topbar(frame: &mut Frame, theme: &Theme, area: Rect) {
+ }
+ 
+ fn panel_block(theme: &Theme, focused: bool, title: &str, right: Option<String>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         focused,
+         title,
+@@ -323,15 +323,17 @@ fn render_body(frame: &mut Frame, theme: &Theme, config: &Config, state: &Settin
+             cols[1].height,
+         );
+         render_category(frame, theme, config, state, cat, rest);
++        crate::ui::widgets::panel::vseps(frame, theme, &[cols[0], rest]);
+         return;
+     }
+     render_list(frame, theme, config, state, cols[1]);
+     let right = Layout::default()
+         .direction(Direction::Vertical)
+-        .constraints([Constraint::Length(12), Constraint::Min(0)])
++        .constraints([Constraint::Length(11), Constraint::Min(0)])
+         .split(cols[2]);
+     render_appearance(frame, theme, config, state, right[0]);
+     render_preview(frame, theme, state, right[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &cols);
+ }
+ 
+ fn render_cats(frame: &mut Frame, theme: &Theme, state: &SettingsState, area: Rect) {
+@@ -352,7 +354,7 @@ fn render_cats(frame: &mut Frame, theme: &Theme, state: &SettingsState, area: Re
+             ])
+         })
+         .collect();
+-    let block = panel_block(theme, false, "Settings", None);
++    let block = panel_block(theme, state.pane == SettingsPane::Categories, "Settings", None);
+     frame.render_widget(Paragraph::new(lines).block(block).style(theme.base()), area);
+ }
+ 
+@@ -459,7 +461,7 @@ fn render_category(
+     } else {
+         None
+     };
+-    let block = crate::ui::widgets::panel::block(theme, focused, name, None, None, footer);
++    let block = crate::ui::widgets::panel::pane(theme, focused, name, None, None, footer);
+     frame.render_widget(
+         Paragraph::new(lines)
+             .block(block)
+diff --git a/src/ui/views/storage.rs b/src/ui/views/storage.rs
+index fdc786b86d2dea77503b346c3e8121c8f8c89171..2bea3e826fbb7939f19523b28bc5d991c8199e2d 100644
+--- a/src/ui/views/storage.rs
++++ b/src/ui/views/storage.rs
+@@ -284,7 +284,7 @@ pub fn used_by(path: &str, attachments: &[(&str, &str)]) -> String {
+ }
+ 
+ fn panel_block(theme: &Theme, focused: bool, title: &str, right: Option<String>) -> Block<'static> {
+-    crate::ui::widgets::panel::block(
++    crate::ui::widgets::panel::pane(
+         theme,
+         focused,
+         title,
+@@ -352,7 +352,7 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &StorageState, area: Rec
+         // Compact: pools above volumes.
+         let rows = Layout::default()
+             .direction(Direction::Vertical)
+-            .constraints([Constraint::Length(12), Constraint::Min(0)])
++            .constraints([Constraint::Length(11), Constraint::Min(0)])
+             .split(body);
+         render_pools(frame, theme, state, rows[0]);
+         render_volumes(frame, theme, state, rows[1]);
+@@ -365,6 +365,7 @@ fn render_body(frame: &mut Frame, theme: &Theme, state: &StorageState, area: Rec
+         .split(body);
+     render_pools(frame, theme, state, cols[0]);
+     render_volumes(frame, theme, state, cols[1]);
++    crate::ui::widgets::panel::vseps(frame, theme, &cols);
+ }
+ 
+ fn render_pools(frame: &mut Frame, theme: &Theme, state: &StorageState, area: Rect) {
+@@ -541,7 +542,14 @@ fn render_picker(frame: &mut Frame, theme: &Theme, state: &StorageState, picker:
+     );
+     frame.render_widget(Clear, modal);
+     let right = format!("{} › {} (cdrom, {})", picker.domain, picker.target, picker.bus);
+-    let block = panel_block(theme, false, "◎ Insert media", Some(right));
++    let block = crate::ui::widgets::panel::block(
++        theme,
++        false,
++        "◎ Insert media",
++        Some(crate::ui::widgets::panel::right(right, theme)),
++        None,
++        None,
++    );
+     let inner = Rect::new(modal.x + 2, modal.y + 1, modal.width - 4, modal.height - 2);
+     let isos = state.picker_isos();
+     let total = isos.len();
+diff --git a/src/ui/widgets/panel.rs b/src/ui/widgets/panel.rs
+index 6eafbf6e566773318e8d0e260164cc9aa6986b85..19ff2e3ed77a55ed7b794d6a9d037b8baf2c2413 100644
+--- a/src/ui/widgets/panel.rs
++++ b/src/ui/widgets/panel.rs
+@@ -1,8 +1,9 @@
+ //! Panel container (PLAN.md section 7.1 / DESIGN.md "Panel").
+ //!
+-//! Rounded border (`gutter`, or `blue` when focused), bold title top-left,
+-//! optional right title top-right, and optional footers on the bottom border.
+-//! Every view builds its panels through `block` so the chrome stays identical.
++//! Views use borderless [`pane`]s separated by rules; modals and popups use the
++//! boxed [`block`]: rounded border (`gutter`, or `blue` when focused), bold title
++//! top-left, optional right title top-right, and optional footers on the bottom
++//! border. Every view builds its chrome through these so it stays identical.
+ 
+ use crate::theme::Theme;
+ use ratatui::layout::Rect;
+@@ -39,6 +40,79 @@ pub fn block(
+     b
+ }
+ 
++/// Build a borderless pane header.
++///
++/// Panes are separated by rules instead of being boxed: the block only has a
++/// top rule carrying the title (and optional right title), which doubles as
++/// the separator from whatever sits above. Side-by-side panes are separated
++/// by a vertical rule drawn with [`vseps`]. Focus is shown by a blue rule, a
++/// blue bold title and a leading `▌` marker; unfocused panes use the gutter
++/// colour and a dim title.
++pub fn pane(
++    theme: &Theme,
++    focused: bool,
++    title: &str,
++    title_right: Option<Line<'static>>,
++    footer_left: Option<&str>,
++    footer_right: Option<&str>,
++) -> Block<'static> {
++    let mut b = Block::default()
++        .borders(Borders::TOP)
++        .border_type(theme.border)
++        .border_style(theme.panel_border(focused))
++        .padding(Padding::horizontal(1))
++        .style(theme.base());
++    let marker = if focused { "▌" } else { " " };
++    b = b.title(Line::from(vec![
++        Span::styled(marker, theme.panel_border(true)),
++        Span::styled(format!("{title} "), theme.panel_title(focused)),
++    ]));
++    // No bottom rule exists, so footers share the top rule with the right title.
++    let mut right_spans: Vec<Span<'static>> = Vec::new();
++    if let Some(rt) = title_right {
++        right_spans.extend(rt.spans.into_iter().map(|s| s.patch_style(theme.dim())));
++    }
++    for f in [footer_left, footer_right].into_iter().flatten() {
++        if !right_spans.is_empty() {
++            right_spans.push(Span::styled(" · ", theme.dim()));
++        }
++        right_spans.push(Span::styled(f.to_string(), theme.dim()));
++    }
++    if !right_spans.is_empty() {
++        right_spans.insert(0, Span::styled(" ", theme.dim()));
++        right_spans.push(Span::styled(" ", theme.dim()));
++        b = b.title_top(Line::from(right_spans).right_aligned());
++    }
++    b
++}
++
++/// Draw a vertical separator in the gap column between horizontally adjacent
++/// panes. `areas` are the pane rects returned by a `.spacing(1)` split; the
++/// rule joins the panes' top rules with a `┬` tee.
++pub fn vseps(frame: &mut ratatui::Frame, theme: &Theme, areas: &[Rect]) {
++    let set = theme.border.to_border_set();
++    let style = theme.panel_border(false);
++    let tee = match theme.border {
++        ratatui::widgets::BorderType::Double => "╦",
++        ratatui::widgets::BorderType::Thick => "┳",
++        _ => "┬",
++    };
++    for pair in areas.windows(2) {
++        let (a, b) = (pair[0], pair[1]);
++        let x = a.right();
++        if b.x <= x || a.height == 0 {
++            continue;
++        }
++        let buf = frame.buffer_mut();
++        for y in a.y..a.bottom() {
++            let sym = if y == a.y { tee } else { set.vertical_left };
++            if let Some(cell) = buf.cell_mut((x, y)) {
++                cell.set_symbol(sym).set_style(style);
++            }
++        }
++    }
++}
++
+ /// Plain right-title helper (dim text).
+ pub fn right(text: impl Into<String>, theme: &Theme) -> Line<'static> {
+     Line::from(Span::styled(text.into(), theme.dim()))

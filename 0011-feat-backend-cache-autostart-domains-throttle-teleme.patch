@@ -1,0 +1,233 @@
+From d077fdfbc413cc2047654605aa10bda660d9aa56 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Tue, 3 Nov 2026 00:04:30 +0100
+Subject: [PATCH 11/23] feat(backend): cache autostart domains, throttle
+ telemetry, and check virsh availability
+
+---
+ src/app/mod.rs            |  3 +++
+ src/app/poller.rs         | 36 ++++++++++++++++++++++++++++++-----
+ src/backend/virsh/exec.rs | 38 +++++++++++++++++++++++++++++++++++++
+ src/backend/virsh/mod.rs  | 40 ++++++++++++++++++++++++++++++---------
+ src/main.rs               |  4 ++++
+ 5 files changed, 107 insertions(+), 14 deletions(-)
+
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index fcd732c2ab51465f9cbaf7d4920da16949153831..751c9c56e58189fd8a73f721cc1389905d27e7a0 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -75,6 +75,9 @@ impl Drop for TerminalGuard {
+ 
+ /// Run the TUI until quit.
+ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
++    if !cli.demo {
++        crate::backend::virsh::ensure_virsh_available()?;
++    }
+     let mut config = config.clone();
+     if let Some(theme) = &cli.theme {
+         config.appearance.theme = theme.clone();
+diff --git a/src/app/poller.rs b/src/app/poller.rs
+index a8469af87f586d02d4fa09c6f35336f7505b2f12..14bdbd70fb7d104e77eec819d9da6927b205f5df 100644
+--- a/src/app/poller.rs
++++ b/src/app/poller.rs
+@@ -105,6 +105,8 @@ pub fn spawn(uri: &str, interval_secs: u64, balloon_period: Option<u64>) -> Poll
+         let mut ip_due = true;
+         let mut ballooned: HashSet<String> = HashSet::new();
+         let mut first_seen_running: HashMap<String, Instant> = HashMap::new();
++        let mut cached_autostart: Option<HashSet<String>> = None;
++        let mut cached_remote_host: Option<RemoteHostSample> = None;
+         loop {
+             let mut sample_now = false;
+             tokio::select! {
+@@ -135,11 +137,31 @@ pub fn spawn(uri: &str, interval_secs: u64, balloon_period: Option<u64>) -> Poll
+                 continue;
+             }
+             tick += 1;
++            // Autostart configuration rarely changes; cache it for 30 ticks (30s)
++            // to eliminate redundant subprocess calls on every tick.
++            if (tick == 1 || tick.is_multiple_of(30) || cached_autostart.is_none())
++                && let Ok(auto) = backend.autostart_domains().await
++            {
++                cached_autostart = Some(auto);
++            }
++            // Throttle remote node telemetry (nodecpustats --percent blocks for 1 second).
++            // Sample every 3 ticks (~3s) on remote URIs, reusing cached metrics in between.
++            let sample_remote_node =
++                !local && (tick == 1 || tick.is_multiple_of(3) || cached_remote_host.is_none());
+             let (dom_res, node_res) = if local {
+-                (backend.domains_with_stats().await, None)
+-            } else {
+-                let (d, n) = tokio::join!(backend.domains_with_stats(), backend.node_stats());
++                (
++                    backend.domains_with_stats_cached(cached_autostart.as_ref()).await,
++                    None,
++                )
++            } else if sample_remote_node {
++                let (d, n) = tokio::join!(
++                    backend.domains_with_stats_cached(cached_autostart.as_ref()),
++                    backend.node_stats()
++                );
+                 (d, Some(n))
++            } else {
++                let d = backend.domains_with_stats_cached(cached_autostart.as_ref()).await;
++                (d, None)
+             };
+             let msg = match dom_res {
+                 Ok((summaries, stats)) => {
+@@ -203,14 +225,18 @@ pub fn spawn(uri: &str, interval_secs: u64, balloon_period: Option<u64>) -> Poll
+                         remote_host: if local {
+                             None
+                         } else {
+-                            let (cpu_pct, mem) = node_res.and_then(Result::ok).unwrap_or((None, None));
+-                            Some(RemoteHostSample { cpu_pct, mem })
++                            if let Some(Ok((cpu_pct, mem))) = node_res {
++                                cached_remote_host = Some(RemoteHostSample { cpu_pct, mem });
++                            }
++                            cached_remote_host.clone()
+                         },
+                         at: Instant::now(),
+                     }
+                 }
+                 Err(e) => {
+                     failures += 1;
++                    cached_autostart = None;
++                    cached_remote_host = None;
+                     next_try = Instant::now() + Duration::from_secs(super::backoff::delay_secs(failures));
+                     LiveMsg::Failed(e.to_string().lines().next().unwrap_or("").to_string())
+                 }
+diff --git a/src/backend/virsh/exec.rs b/src/backend/virsh/exec.rs
+index 8d1c069b104a28a4075d5483f3d71716dc78b20d..b6ae64c845616f62e1245896b5f84c397ffdef00 100644
+--- a/src/backend/virsh/exec.rs
++++ b/src/backend/virsh/exec.rs
+@@ -61,6 +61,29 @@ pub fn detach_controlling_tty_sync(cmd: &mut std::process::Command) {
+     }
+ }
+ 
++/// Check if the `virsh` binary is available and executable in PATH.
++pub fn is_virsh_available() -> bool {
++    std::process::Command::new("virsh")
++        .arg("-v")
++        .stdin(std::process::Stdio::null())
++        .stdout(std::process::Stdio::null())
++        .stderr(std::process::Stdio::null())
++        .output()
++        .map(|out| out.status.success())
++        .unwrap_or(false)
++}
++
++/// Verify that `virsh` is available in PATH, returning an actionable error if missing.
++pub fn ensure_virsh_available() -> Result<()> {
++    if is_virsh_available() {
++        Ok(())
++    } else {
++        Err(eyre!(
++            "'virsh' not found in PATH. Please install libvirt client tools (virsh) to use virsh-tui, or run with --demo for demonstration mode."
++        ))
++    }
++}
++
+ /// How long a virsh subcommand may run. Long jobs (migration, cloning, wiping,
+ /// snapshots with memory, uploads) get hours; everything else 30 s.
+ pub fn timeout_for(program: &str, sub: &str) -> std::time::Duration {
+@@ -174,6 +197,21 @@ pub fn run_blocking(uri: &str, args: &[&str]) -> Result<String> {
+ mod tests {
+     use super::*;
+ 
++    #[test]
++    fn is_virsh_available_returns_boolean() {
++        let _ = is_virsh_available();
++    }
++
++    #[test]
++    fn ensure_virsh_available_matches_is_virsh_available() {
++        if is_virsh_available() {
++            assert!(ensure_virsh_available().is_ok());
++        } else {
++            let err = ensure_virsh_available().unwrap_err();
++            assert!(err.to_string().contains("not found in PATH"));
++        }
++    }
++
+     #[test]
+     fn friendly_first_line_polkit_hints() {
+         assert_eq!(
+diff --git a/src/backend/virsh/mod.rs b/src/backend/virsh/mod.rs
+index 6b5e8d177bfa23fee7f16c47ceb11924b360ac46..e4c9eca844af5b1f145401263d4662875dd67965 100644
+--- a/src/backend/virsh/mod.rs
++++ b/src/backend/virsh/mod.rs
+@@ -10,6 +10,8 @@ pub mod parse_list;
+ pub mod parse_nodestats;
+ pub mod parse_xml;
+ 
++pub use exec::{ensure_virsh_available, is_virsh_available};
++
+ use color_eyre::Result;
+ 
+ use super::{Backend, RawDomainStats};
+@@ -31,22 +33,42 @@ impl VirshBackend {
+         &self.uri
+     }
+ 
++    /// Fetch domain names configured for autostart.
++    pub async fn autostart_domains(&self) -> Result<std::collections::HashSet<String>> {
++        let text = exec::run(&self.uri, &["list", "--all", "--autostart", "--name"]).await?;
++        Ok(text
++            .lines()
++            .map(str::trim)
++            .filter(|l| !l.is_empty())
++            .map(str::to_string)
++            .collect())
++    }
++
+     /// One refresh: domain summaries plus the raw stats they were built from.
+     ///
+     /// `virsh domstats --raw` lists every domain (active and inactive) with its
+     /// state, so a single call feeds both the table and the metrics store.
+     pub async fn domains_with_stats(&self) -> Result<(Vec<DomainSummary>, Vec<RawDomainStats>)> {
++        self.domains_with_stats_cached(None).await
++    }
++
++    /// One refresh: domain summaries plus raw stats, reusing a cached autostart domain set.
++    ///
++    /// If `cached_autostart` is `None`, queries `virsh list --all --autostart --name`.
++    pub async fn domains_with_stats_cached(
++        &self,
++        cached_autostart: Option<&std::collections::HashSet<String>>,
++    ) -> Result<(Vec<DomainSummary>, Vec<RawDomainStats>)> {
+         let stats_text = exec::run(&self.uri, &["domstats", "--raw"]).await?;
+         let stats = parse_domstats::parse_domstats_raw(&stats_text)?;
+-        let autostart: std::collections::HashSet<String> =
+-            exec::run(&self.uri, &["list", "--all", "--autostart", "--name"])
+-                .await
+-                .unwrap_or_default()
+-                .lines()
+-                .map(str::trim)
+-                .filter(|l| !l.is_empty())
+-                .map(str::to_string)
+-                .collect();
++        let fallback_autostart;
++        let autostart: &std::collections::HashSet<String> = match cached_autostart {
++            Some(cached) => cached,
++            None => {
++                fallback_autostart = self.autostart_domains().await.unwrap_or_default();
++                &fallback_autostart
++            }
++        };
+         let summaries = stats
+             .iter()
+             .map(|s| DomainSummary {
+diff --git a/src/main.rs b/src/main.rs
+index 5947f91e1cd1ed999856e57893b66351b6e9780a..bd98a4af1b04817aa0255210c80c393758ad433a 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -19,6 +19,10 @@ fn main() -> Result<()> {
+         cli.connect = config.general.default_uri.clone();
+     }
+ 
++    if !cli.demo {
++        virsh_tui::backend::virsh::ensure_virsh_available()?;
++    }
++
+     if cli.probe {
+         let runtime = tokio::runtime::Builder::new_current_thread()
+             .enable_all()

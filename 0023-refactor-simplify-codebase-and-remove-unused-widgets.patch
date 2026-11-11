@@ -1,0 +1,798 @@
+From 8e8626f7344daee2c432941d9e1a477e4b91a7a0 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Thu, 5 Nov 2026 00:36:07 +0100
+Subject: [PATCH 23/23] refactor: simplify codebase and remove unused widgets
+ and heuristics
+
+---
+ src/app/backoff.rs              |  6 ---
+ src/app/mod.rs                  | 73 ++++++++++++++++-----------------
+ src/app/poller.rs               |  2 +-
+ src/app/render.rs               |  1 -
+ src/backend/virsh/events.rs     |  2 +-
+ src/command/builders/install.rs | 12 +++---
+ src/input/keymap.rs             |  8 +---
+ src/ui/overlays/help.rs         | 72 ++------------------------------
+ src/ui/overlays/wizard.rs       | 51 ++---------------------
+ src/ui/views/gallery.rs         | 42 -------------------
+ src/ui/views/mod.rs             |  1 -
+ src/ui/widgets/braille.rs       |  3 --
+ src/ui/widgets/charts.rs        | 23 -----------
+ src/ui/widgets/chips.rs         |  5 ---
+ src/ui/widgets/fuzzy_list.rs    |  5 ---
+ src/ui/widgets/gauge.rs         |  8 ----
+ src/ui/widgets/hbar.rs          |  8 ----
+ src/ui/widgets/keyhints.rs      |  9 ----
+ src/ui/widgets/mod.rs           | 18 +-------
+ src/ui/widgets/modal.rs         |  9 ----
+ src/ui/widgets/slider.rs        | 10 -----
+ src/ui/widgets/sparkline.rs     |  3 --
+ src/ui/widgets/stacked_bar.rs   | 16 --------
+ src/ui/widgets/table.rs         |  8 ----
+ src/ui/widgets/thread_meters.rs |  5 ---
+ src/ui/widgets/tree.rs          |  6 ---
+ src/ui/widgets/whichkey.rs      | 15 +------
+ src/ui/widgets/xmlview.rs       |  4 --
+ 28 files changed, 53 insertions(+), 372 deletions(-)
+ delete mode 100644 src/app/backoff.rs
+ delete mode 100644 src/ui/views/gallery.rs
+ delete mode 100644 src/ui/widgets/braille.rs
+ delete mode 100644 src/ui/widgets/chips.rs
+ delete mode 100644 src/ui/widgets/fuzzy_list.rs
+ delete mode 100644 src/ui/widgets/gauge.rs
+ delete mode 100644 src/ui/widgets/hbar.rs
+ delete mode 100644 src/ui/widgets/keyhints.rs
+ delete mode 100644 src/ui/widgets/slider.rs
+ delete mode 100644 src/ui/widgets/sparkline.rs
+ delete mode 100644 src/ui/widgets/stacked_bar.rs
+ delete mode 100644 src/ui/widgets/table.rs
+ delete mode 100644 src/ui/widgets/thread_meters.rs
+ delete mode 100644 src/ui/widgets/tree.rs
+ delete mode 100644 src/ui/widgets/xmlview.rs
+
+diff --git a/src/app/backoff.rs b/src/app/backoff.rs
+deleted file mode 100644
+index 51fcd0a3cf96f7f6ab907cd0783549042df7cad1..0000000000000000000000000000000000000000
+--- a/src/app/backoff.rs
++++ /dev/null
+@@ -1,6 +0,0 @@
+-//! Reconnect backoff for lost libvirt connections.
+-
+-/// Delay in seconds before retry N (1, 2, 4, … capped at 30).
+-pub fn delay_secs(failures: u32) -> u64 {
+-    (1u64 << failures.min(5)).min(30)
+-}
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index dc5daea7f380bf4edd6eac4a3aceb78600cc3d27..ff4b47a21972cbfa0831c6d45697d541ec7efc3d 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -1,10 +1,14 @@
+ //! App: main loop, tick, and input.
+ 
+-pub mod backoff;
+ pub mod external;
+ pub mod mode;
+ pub mod poller;
+ 
++/// Delay in seconds before retry N (1, 2, 4, … capped at 30).
++pub fn delay_secs(failures: u32) -> u64 {
++    (1u64 << failures.min(5)).min(30)
++}
++
+ mod detail;
+ mod domains;
+ mod ex;
+@@ -194,7 +198,6 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         "host" => View::Host,
+         "networks" => View::Networks,
+         "storage" => View::Storage,
+-        "gallery" => View::Gallery,
+         _ => View::Dashboard,
+     };
+ 
+@@ -585,7 +588,6 @@ impl App {
+             f.area(),
+         );
+         match self.view {
+-            View::Gallery => ui::views::gallery::render(f, &self.theme),
+             View::Host => ui::views::host::render(f, &self.theme, &self.host),
+             View::Networks => ui::views::networks::render(f, &self.theme, &self.nets),
+             View::Events => ui::views::events::render(f, &self.theme, &self.events_state),
+@@ -599,40 +601,38 @@ impl App {
+                 }
+             }
+         }
+-        if !matches!(self.view, View::Gallery) {
+-            if self.confirm.is_some()
+-                || self.wizard.is_some()
+-                || self.palette.is_some()
+-                || self.help_state.is_some()
+-            {
+-                crate::ui::widgets::modal::dim_background(f, &self.theme);
+-            }
+-            if let Some((c, _, _)) = &self.confirm {
+-                crate::ui::overlays::confirm::render(f, &self.theme, f.area(), c);
+-            }
+-            if let Some(ex) = &self.ex_line {
+-                render_ex_line(f, &self.theme, ex);
+-                if let Some(c) = &self.completion {
+-                    render_completion(f, &self.theme, c);
+-                }
+-            }
+-            if let Some(prefix) = self.engine.pending_prefix() {
+-                render_which_key(f, &self.theme, &prefix, self.engine.map());
+-            }
+-            if let Some(wz) = &self.wizard {
+-                crate::ui::overlays::wizard::render(f, &self.theme, wz);
+-                render_wizard_status(f, &self.theme, wz);
+-            }
+-            if let Some(pal) = &self.palette {
+-                crate::ui::overlays::palette::render(f, &self.theme, pal);
+-            }
+-            if let Some(st) = &self.settings {
+-                crate::ui::views::settings::render(f, &self.theme, &self.config, st);
+-            }
+-            if let Some(help) = &self.help_state {
+-                crate::ui::overlays::help::render(f, &self.theme, help, self.engine.map());
++        if self.confirm.is_some()
++            || self.wizard.is_some()
++            || self.palette.is_some()
++            || self.help_state.is_some()
++        {
++            crate::ui::widgets::modal::dim_background(f, &self.theme);
++        }
++        if let Some((c, _, _)) = &self.confirm {
++            crate::ui::overlays::confirm::render(f, &self.theme, f.area(), c);
++        }
++        if let Some(ex) = &self.ex_line {
++            render_ex_line(f, &self.theme, ex);
++            if let Some(c) = &self.completion {
++                render_completion(f, &self.theme, c);
+             }
+         }
++        if let Some(prefix) = self.engine.pending_prefix() {
++            render_which_key(f, &self.theme, &prefix, self.engine.map());
++        }
++        if let Some(wz) = &self.wizard {
++            crate::ui::overlays::wizard::render(f, &self.theme, wz);
++            render_wizard_status(f, &self.theme, wz);
++        }
++        if let Some(pal) = &self.palette {
++            crate::ui::overlays::palette::render(f, &self.theme, pal);
++        }
++        if let Some(st) = &self.settings {
++            crate::ui::views::settings::render(f, &self.theme, &self.config, st);
++        }
++        if let Some(help) = &self.help_state {
++            crate::ui::overlays::help::render(f, &self.theme, help, self.engine.map());
++        }
+         crate::ui::widgets::modal::apply_transparency(f, &self.theme);
+     }
+ 
+@@ -1199,7 +1199,7 @@ impl App {
+                     continue;
+                 }
+             }
+-            if matches!(self.view, View::Host | View::Events | View::Gallery)
++            if matches!(self.view, View::Host | View::Events)
+                 && !matches!(
+                     resolved.action,
+                     A::Ex | A::Palette | A::Help | A::Settings | A::NewDomain | A::InsertMedia
+@@ -1466,7 +1466,6 @@ enum View {
+     Networks,
+     Storage,
+     Events,
+-    Gallery,
+     Detail,
+ }
+ 
+diff --git a/src/app/poller.rs b/src/app/poller.rs
+index 95edebcdcff1b5027554ffc3ce539e6403c0b290..8cd16c028c07b72cc01fcec107cffc64b09a23fb 100644
+--- a/src/app/poller.rs
++++ b/src/app/poller.rs
+@@ -236,7 +236,7 @@ pub fn spawn(uri: &str, interval_secs: u64, balloon_period: Option<u64>) -> Poll
+                     failures += 1;
+                     cached_autostart = None;
+                     cached_remote_host = None;
+-                    next_try = Instant::now() + Duration::from_secs(super::backoff::delay_secs(failures));
++                    next_try = Instant::now() + Duration::from_secs(super::delay_secs(failures));
+                     LiveMsg::Failed(e.to_string().lines().next().unwrap_or("").to_string())
+                 }
+             };
+diff --git a/src/app/render.rs b/src/app/render.rs
+index 9e9e892795e4cb45d7a774d52c1362923e7443a1..a6f55654f7f917a910a98a35f8807d7f49d688c7 100644
+--- a/src/app/render.rs
++++ b/src/app/render.rs
+@@ -113,7 +113,6 @@ pub(super) fn dump_frame(
+     terminal.draw(|f| {
+         f.render_widget(ratatui::widgets::Block::default().style(theme.base()), f.area());
+         match screen {
+-            "gallery" => ui::views::gallery::render(f, theme),
+             "chrome" => ui::render(f, theme, state),
+             "host" => ui::views::host::render(f, theme, host),
+             "networks" => ui::views::networks::render(f, theme, nets),
+diff --git a/src/backend/virsh/events.rs b/src/backend/virsh/events.rs
+index f47f47265a3c351e9c6290e36b5575f895604da1..c69b7360d8dc03a62fc8057d0a4fe0a711be6b6b 100644
+--- a/src/backend/virsh/events.rs
++++ b/src/backend/virsh/events.rs
+@@ -122,7 +122,7 @@ pub fn subscribe(uri: &str) -> mpsc::Receiver<crate::model::LibvirtEvent> {
+                 }
+                 // Always back off before respawning: a stream that ends immediately
+                 // (daemon down, bad URI) must not turn into a busy loop.
+-                let secs = crate::app::backoff::delay_secs(failures.max(1));
++                let secs = crate::app::delay_secs(failures.max(1));
+                 tokio::time::sleep(std::time::Duration::from_secs(secs)).await;
+             }
+         });
+diff --git a/src/command/builders/install.rs b/src/command/builders/install.rs
+index 10b40c6029e436c1ee756ee2b92f586d31b552cd..3d35e68659826573610334c3f4528673842137a2 100644
+--- a/src/command/builders/install.rs
++++ b/src/command/builders/install.rs
+@@ -4,16 +4,14 @@
+ //! is shown is what runs.
+ 
+ use super::super::plan::CommandPlan;
+-use crate::ui::overlays::wizard::{MediaKind, WizardState, detect_os};
++use crate::ui::overlays::wizard::{MediaKind, WizardState};
+ 
+-/// `--osinfo` value: explicit, detected from the ISO name, or virt-install detection.
++/// `--osinfo` value: explicit or virt-install detection.
+ pub fn osinfo(st: &WizardState) -> String {
+     if !st.os_id.trim().is_empty() {
+-        return st.os_id.trim().to_string();
+-    }
+-    match (st.media, detect_os(&st.iso_path)) {
+-        (MediaKind::Iso, Some(os)) => os,
+-        _ => String::from("detect=on,require=off"),
++        st.os_id.trim().to_string()
++    } else {
++        String::from("detect=on,require=off")
+     }
+ }
+ 
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index 059c02489aaa3c86ad31e9bcb5e61a1e18ebb21e..a7593afee4d510e3b54c93d4fe00a4a3ee507730 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -103,13 +103,7 @@ pub fn prefix_group_description(prefix: &[String]) -> &'static str {
+             return desc;
+         }
+     }
+-    match prefix.last().map(|s| s.as_str()) {
+-        Some("s") => "snapshot",
+-        Some("m") => "media",
+-        Some("d") => "disk",
+-        Some("i") => "NIC",
+-        _ => "…",
+-    }
++    "…"
+ }
+ 
+ /// Format key sequence tokens into display string (`["Space", "n"]` -> `"␣n"`).
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index 9c2375c2616003b4d61f1402779b403436ff7397..66adf4d1ec009e434d74a989b8b9f51d90a5975b 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -19,19 +19,8 @@ pub struct Section {
+     pub rows: Vec<(String, String, bool)>,
+ }
+ 
+-fn leader_title(map: &Keymap) -> String {
+-    // Dynamic leader title e.g. "Leader  ␣" based on actual leader token bound to NewDomain
+-    if let Some((seq, _)) = map.iter().find(|(_, a)| **a == A::NewDomain)
+-        && seq.len() >= 2
+-    {
+-        let leader_sym = match seq[0].as_str() {
+-            "Space" => "␣",
+-            "Enter" => "⏎",
+-            other => other,
+-        };
+-        return format!("Leader  {leader_sym}");
+-    }
+-    String::from("Leader  ␣")
++fn leader_title(_map: &Keymap) -> String {
++    String::from("Leader")
+ }
+ 
+ /// Keys bound to `actions` in the live map, `a / b` joined; `None` if the
+@@ -40,34 +29,6 @@ fn live_label(map: &Keymap, actions: &[A]) -> Option<String> {
+     if actions.is_empty() {
+         return None;
+     }
+-    // Check if the actions represent the 5 view switching actions
+-    if actions.len() == 5
+-        && actions
+-            == [
+-                A::ViewDomains,
+-                A::ViewHost,
+-                A::ViewNetworks,
+-                A::ViewStorage,
+-                A::ViewEvents,
+-            ]
+-    {
+-        let seqs: Vec<Option<String>> = actions
+-            .iter()
+-            .map(|a| crate::input::keymap::action_key_label(map, *a))
+-            .collect();
+-        if seqs
+-            == [
+-                Some("1".into()),
+-                Some("2".into()),
+-                Some("3".into()),
+-                Some("4".into()),
+-                Some("5".into()),
+-            ]
+-        {
+-            return Some("1 … 5".to_string());
+-        }
+-    }
+-
+     let parts: Vec<String> = actions
+         .iter()
+         .map(|a| {
+@@ -80,24 +41,6 @@ fn live_label(map: &Keymap, actions: &[A]) -> Option<String> {
+         })
+         .collect();
+ 
+-    // `␣sc / ␣sr / ␣sd` → `␣s c/r/d` when only the last key differs.
+-    if parts.len() > 2 {
+-        let prefix: String = parts[0]
+-            .chars()
+-            .take(parts[0].chars().count().saturating_sub(1))
+-            .collect();
+-        if !prefix.is_empty()
+-            && parts
+-                .iter()
+-                .all(|p| p.starts_with(&prefix) && p.chars().count() == prefix.chars().count() + 1)
+-        {
+-            let lasts: Vec<String> = parts
+-                .iter()
+-                .map(|p| p.chars().last().unwrap_or(' ').to_string())
+-                .collect();
+-            return Some(format!("{prefix} {}", lasts.join("/")));
+-        }
+-    }
+     Some(parts.join(" / "))
+ }
+ 
+@@ -178,16 +121,7 @@ pub fn sections(map: &Keymap) -> Vec<Section> {
+                 act(&[A::HalfDown, A::HalfUp], "half page"),
+                 act(&[A::CycleFocus], "cycle focus"),
+                 act(&[A::PrevTab, A::NextTab], "prev / next tab"),
+-                act(
+-                    &[
+-                        A::ViewDomains,
+-                        A::ViewHost,
+-                        A::ViewNetworks,
+-                        A::ViewStorage,
+-                        A::ViewEvents,
+-                    ],
+-                    "switch view",
+-                ),
++                info("1 … 5", "switch view"),
+                 act(&[A::Open], "open"),
+                 act(&[A::Back], "back"),
+                 act(&[A::Filter], "filter"),
+diff --git a/src/ui/overlays/wizard.rs b/src/ui/overlays/wizard.rs
+index 55143d3994cf8ea956de4ce2d4ad5ab0767f35b1..55ec21da3dd6d5b5ae99defe2b12a78a4f755cb4 100644
+--- a/src/ui/overlays/wizard.rs
++++ b/src/ui/overlays/wizard.rs
+@@ -30,25 +30,6 @@ pub fn valid_name(name: &str, existing: &[&str]) -> bool {
+         && !existing.contains(&name)
+ }
+ 
+-/// Auto-detect OS variant from an ISO filename.
+-pub fn detect_os(iso: &str) -> Option<String> {
+-    let lower = iso.rsplit('/').next().unwrap_or(iso).to_lowercase();
+-    if lower.contains("fedora") {
+-        let digits: String = lower.chars().filter(|c| c.is_ascii_digit()).take(2).collect();
+-        return Some(format!("fedora{digits}"));
+-    }
+-    if lower.contains("arch") {
+-        return Some(String::from("archlinux"));
+-    }
+-    if lower.contains("ubuntu") {
+-        return Some(String::from("ubuntu24.04"));
+-    }
+-    if lower.contains("debian") {
+-        return Some(String::from("debian13"));
+-    }
+-    None
+-}
+-
+ /// Install media kind.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq, Default, serde::Serialize, serde::Deserialize)]
+ pub enum MediaKind {
+@@ -455,14 +436,9 @@ impl WizardState {
+         use WField as F;
+         match f {
+             F::Name => String::from("letters, digits, . _ - · must be unique"),
+-            F::Os => match detect_os(&self.iso_path) {
+-                Some(os) if self.os_id.is_empty() => {
+-                    format!("empty: virt-install detects it (ISO looks like {os})")
+-                }
+-                _ => String::from(
+-                    "e.g. fedora42, ubuntu24.04, archlinux, win11 · empty: detect from the media",
+-                ),
+-            },
++            F::Os => {
++                String::from("e.g. fedora42, ubuntu24.04, archlinux, win11 · empty: detect from the media")
++            }
+             F::Iso => {
+                 if self.host.isos.is_empty() {
+                     String::from("absolute path to the ISO")
+@@ -964,7 +940,6 @@ fn render_step_form(frame: &mut Frame, theme: &Theme, st: &WizardState, area: Re
+     ];
+     let fields = st.fields();
+     let focus = st.focus.min(fields.len() - 1);
+-    let slider_w = 30usize;
+     for (i, &f) in fields.iter().enumerate() {
+         let cur = i == focus;
+         let row_bg = if cur { t.sel } else { t.bg };
+@@ -990,26 +965,6 @@ fn render_step_form(frame: &mut Frame, theme: &Theme, st: &WizardState, area: Re
+                 spans.push(Span::styled(" ", Style::default().bg(t.hl)));
+             }
+             WKind::Number { max, .. } => {
+-                if matches!(f, WField::Vcpus | WField::Mem) {
+-                    let cap = if f == WField::Vcpus {
+-                        st.host.threads.max(1)
+-                    } else {
+-                        (st.host.free_gib.ceil() as u32).max(st.mem_gib).max(1)
+-                    };
+-                    let n: u32 = value.parse().unwrap_or(0);
+-                    let filled = (n.min(cap) as usize * slider_w / cap.max(1) as usize).min(slider_w);
+-                    let col = if f == WField::Vcpus { t.blue } else { t.magenta };
+-                    spans.push(Span::styled("━".repeat(filled), Style::default().fg(col)));
+-                    spans.push(Span::styled(
+-                        "●",
+-                        Style::default().fg(col).add_modifier(Modifier::BOLD),
+-                    ));
+-                    spans.push(Span::styled(
+-                        "─".repeat(slider_w - filled),
+-                        Style::default().fg(t.gutter),
+-                    ));
+-                    spans.push(Span::raw(" "));
+-                }
+                 spans.push(Span::styled(
+                     format!(" {value:>3} "),
+                     Style::default().fg(t.fg).bg(t.hl),
+diff --git a/src/ui/views/gallery.rs b/src/ui/views/gallery.rs
+deleted file mode 100644
+index a37ab6f4a9705e2d2e5f275527d4f48e2bf39265..0000000000000000000000000000000000000000
+--- a/src/ui/views/gallery.rs
++++ /dev/null
+@@ -1,42 +0,0 @@
+-//! Gallery screen (P1): shows every widget with demo data.
+-use crate::theme::Theme;
+-use crate::ui::widgets::charts::{self, BrailleMode};
+-use crate::ui::widgets::{gauge, hbar};
+-use ratatui::Frame;
+-use ratatui::layout::{Constraint, Direction, Layout};
+-use ratatui::text::Line;
+-use ratatui::widgets::Paragraph;
+-
+-/// Render the gallery demo.
+-pub fn render(frame: &mut Frame, theme: &Theme) {
+-    let area = frame.area();
+-    frame.render_widget(ratatui::widgets::Block::default().style(theme.base()), area);
+-    let rows = Layout::default()
+-        .direction(Direction::Vertical)
+-        .constraints([
+-            Constraint::Length(8),
+-            Constraint::Length(5),
+-            Constraint::Length(3),
+-            Constraint::Min(0),
+-        ])
+-        .split(area);
+-    let cpu = charts::series(7, 90, 0.42, 0.22, 0.1);
+-    let braille_rows = charts::braille(&cpu, 60, 8, BrailleMode::Fill);
+-    // Clamp to available rows.
+-    let text: Vec<Line> = braille_rows
+-        .iter()
+-        .take(rows[0].height as usize)
+-        .map(|s| Line::from(s.clone()))
+-        .collect();
+-    frame.render_widget(Paragraph::new(text).style(theme.base()), rows[0]);
+-    let mem = charts::series(11, 60, 0.74, 0.06, 0.2);
+-    let spark = charts::spark_rows(&mem, 28, 3);
+-    let spark_text: Vec<Line> = spark.iter().map(|s| Line::from(s.clone())).collect();
+-    frame.render_widget(Paragraph::new(spark_text).style(theme.base()), rows[1]);
+-    let (fill, rest) = hbar::hbar(0.42, 16);
+-    let (on, off) = gauge::lg(0.38, 22);
+-    let line = format!("hbar {fill}{rest} 42%   gauge {on}{off} 38%");
+-    frame.render_widget(Paragraph::new(line).style(theme.base()), rows[2]);
+-    let chips = " all 15  \u{25cf} running 9  \u{2016} paused 1  \u{2717} crashed 1  \u{25cb} off 4";
+-    frame.render_widget(Paragraph::new(chips).style(theme.base()), rows[3]);
+-}
+diff --git a/src/ui/views/mod.rs b/src/ui/views/mod.rs
+index 739af0fb9088f9ba27a36ceb599d6f5c366c350f..08a89b0b3b303433102074e82b0cc1a83715f266 100644
+--- a/src/ui/views/mod.rs
++++ b/src/ui/views/mod.rs
+@@ -2,7 +2,6 @@
+ pub mod dashboard;
+ pub mod detail;
+ pub mod events;
+-pub mod gallery;
+ pub mod host;
+ pub mod networks;
+ pub mod settings;
+diff --git a/src/ui/widgets/braille.rs b/src/ui/widgets/braille.rs
+deleted file mode 100644
+index 7cd7db6803afdc837cdaf5d0652341bad6ac0064..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/braille.rs
++++ /dev/null
+@@ -1,3 +0,0 @@
+-//! braille widget (PLAN.md section 7).
+-//! Braille chart widget: thin wrapper over charts::braille.
+-pub use super::charts::{BrailleMode, braille, grad, sample};
+diff --git a/src/ui/widgets/charts.rs b/src/ui/widgets/charts.rs
+index 9914c5e2ee92983d10e76262580247eb57a23688..0a3cb696bec3ffbb676c525ac958af9f7e28876b 100644
+--- a/src/ui/widgets/charts.rs
++++ b/src/ui/widgets/charts.rs
+@@ -205,26 +205,3 @@ pub fn lg(v: f64, w: usize) -> (String, String) {
+     let n = n.min(w);
+     ("━".repeat(n), "━".repeat(w - n))
+ }
+-
+-/// Level colour token name.
+-pub fn lvl(v: f64) -> &'static str {
+-    if v < 0.5 {
+-        "green"
+-    } else if v < 0.8 {
+-        "yellow"
+-    } else {
+-        "red"
+-    }
+-}
+-
+-/// Gradient: assign each row a colour from top to bottom.
+-pub fn grad(rows: Vec<String>, colors: &[&str]) -> Vec<(String, String)> {
+-    let n = rows.len().max(1);
+-    rows.into_iter()
+-        .enumerate()
+-        .map(|(i, t)| {
+-            let idx = (i * colors.len() / n).min(colors.len() - 1);
+-            (t, colors[idx].to_string())
+-        })
+-        .collect()
+-}
+diff --git a/src/ui/widgets/chips.rs b/src/ui/widgets/chips.rs
+deleted file mode 100644
+index f57d1208e03bb04bb31cc3ff349dfd22d6256053..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/chips.rs
++++ /dev/null
+@@ -1,5 +0,0 @@
+-//! chips widget (PLAN.md section 7).
+-//! Chips (PLAN.md 7.11).
+-pub fn chip(text: &str) -> String {
+-    format!(" {text} ")
+-}
+diff --git a/src/ui/widgets/fuzzy_list.rs b/src/ui/widgets/fuzzy_list.rs
+deleted file mode 100644
+index 239e3b9b5480a21318a534fd4000cbdb5ede739e..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/fuzzy_list.rs
++++ /dev/null
+@@ -1,5 +0,0 @@
+-//! fuzzy_list widget (PLAN.md section 7).
+-//! FuzzyList (PLAN.md 7.17).
+-pub fn matched_ranges(_query: &str, _target: &str) -> Vec<(usize, usize)> {
+-    vec![]
+-}
+diff --git a/src/ui/widgets/gauge.rs b/src/ui/widgets/gauge.rs
+deleted file mode 100644
+index e889ad938177db0635640fbf1503cb0f3aa58362..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/gauge.rs
++++ /dev/null
+@@ -1,8 +0,0 @@
+-//! gauge widget (PLAN.md section 7).
+-//! LineGauge widget: thin wrapper over charts::lg.
+-pub use super::charts::{lg, lvl};
+-/// Render a line gauge cell.
+-pub fn cell(v: f64, w: usize, value: &str) -> String {
+-    let (on, off) = lg(v, w);
+-    format!("{on}{off} {value}")
+-}
+diff --git a/src/ui/widgets/hbar.rs b/src/ui/widgets/hbar.rs
+deleted file mode 100644
+index 827224341ccdcc55255037066cdc3e99ab0143ce..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/hbar.rs
++++ /dev/null
+@@ -1,8 +0,0 @@
+-//! hbar widget (PLAN.md section 7).
+-//! HBar widget: thin wrapper over charts::hbar.
+-pub use super::charts::hbar;
+-/// Render an HBar cell: bar + right-aligned percent.
+-pub fn cell(v: f64, w: usize) -> String {
+-    let (fill, rest) = hbar(v, w);
+-    format!("{fill}{rest}{:>5}", format!("{}%", (v * 100.0).round() as u32))
+-}
+diff --git a/src/ui/widgets/keyhints.rs b/src/ui/widgets/keyhints.rs
+deleted file mode 100644
+index 1391b9e561a0eb46cd870ab67bd2368a2ee07be3..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/keyhints.rs
++++ /dev/null
+@@ -1,9 +0,0 @@
+-//! keyhints widget (PLAN.md section 7).
+-//! KeyHints (PLAN.md 7.15).
+-pub fn hints(pairs: &[(&str, &str)]) -> String {
+-    pairs
+-        .iter()
+-        .map(|(k, l)| format!("{k} {l}"))
+-        .collect::<Vec<_>>()
+-        .join("  ")
+-}
+diff --git a/src/ui/widgets/mod.rs b/src/ui/widgets/mod.rs
+index eb37fb07d9f8268307e9b5a78265a776a664fd62..7c49433533b16d4b7bafd599f3adcf15a9e3d74c 100644
+--- a/src/ui/widgets/mod.rs
++++ b/src/ui/widgets/mod.rs
+@@ -1,21 +1,7 @@
+-//! Reusable widgets (PLAN.md section 7).
++//! Reusable widgets.
+ 
+-pub mod braille;
+-pub mod chips;
++pub mod charts;
+ pub mod form;
+-pub mod fuzzy_list;
+-pub mod gauge;
+-pub mod hbar;
+-pub mod keyhints;
+ pub mod modal;
+ pub mod panel;
+-pub mod slider;
+-pub mod sparkline;
+-pub mod stacked_bar;
+-pub mod table;
+-pub mod thread_meters;
+-pub mod tree;
+ pub mod whichkey;
+-
+-pub mod charts;
+-pub mod xmlview;
+diff --git a/src/ui/widgets/modal.rs b/src/ui/widgets/modal.rs
+index 2c4993916e8d0ae3a0d049f3c1ca3fa9a493ed34..a576e84d01df6f220ad3fad0940a7618972df7bd 100644
+--- a/src/ui/widgets/modal.rs
++++ b/src/ui/widgets/modal.rs
+@@ -4,15 +4,6 @@ use crate::theme::Theme;
+ use ratatui::Frame;
+ use ratatui::style::Modifier;
+ 
+-/// Centered rect of at most `w`×`h` inside `area`.
+-pub fn centered(area: ratatui::layout::Rect, w: u16, h: u16) -> ratatui::layout::Rect {
+-    let w = w.min(area.width.saturating_sub(4));
+-    let h = h.min(area.height.saturating_sub(4));
+-    let x = area.x + (area.width - w) / 2;
+-    let y = area.y + (area.height - h) / 2;
+-    ratatui::layout::Rect::new(x, y, w, h)
+-}
+-
+ /// "Dim behind modals": recolour everything drawn so far to `gutter` on a flat
+ /// background. Call right before drawing a modal. No-op when disabled.
+ pub fn dim_background(frame: &mut Frame, theme: &Theme) {
+diff --git a/src/ui/widgets/slider.rs b/src/ui/widgets/slider.rs
+deleted file mode 100644
+index 29bc4e5c2af9cfd742ce040487c82a49b21f36d4..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/slider.rs
++++ /dev/null
+@@ -1,10 +0,0 @@
+-//! slider widget (PLAN.md section 7).
+-//! Slider widget (PLAN.md 7.10).
+-pub fn render(v: f64, w: usize) -> String {
+-    let n = (v * w as f64).round() as usize;
+-    format!(
+-        "{}\u{25cf}{}",
+-        "\u{2501}".repeat(n),
+-        "\u{2500}".repeat(w.saturating_sub(n))
+-    )
+-}
+diff --git a/src/ui/widgets/sparkline.rs b/src/ui/widgets/sparkline.rs
+deleted file mode 100644
+index 4fcbf2c00e1ab9f616f5824151af528f0720e0a9..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/sparkline.rs
++++ /dev/null
+@@ -1,3 +0,0 @@
+-//! sparkline widget (PLAN.md section 7).
+-//! Sparkline widget: thin wrapper over charts::spark_rows.
+-pub use super::charts::{spark, spark_rows};
+diff --git a/src/ui/widgets/stacked_bar.rs b/src/ui/widgets/stacked_bar.rs
+deleted file mode 100644
+index be5ecb98673086e905fd0b17478589be05cba2f5..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/stacked_bar.rs
++++ /dev/null
+@@ -1,16 +0,0 @@
+-//! stacked_bar widget (PLAN.md section 7).
+-//! Stacked bar (PLAN.md 7.9).
+-pub const PALETTE: [&str; 9] = [
+-    "orange", "blue", "magenta", "cyan", "green", "yellow", "teal", "red", "fg2",
+-];
+-/// Widths for segments of total width w, each at least 1.
+-pub fn widths(values: &[f64], w: usize) -> Vec<usize> {
+-    let total: f64 = values.iter().sum();
+-    if total <= 0.0 {
+-        return vec![0; values.len()];
+-    }
+-    values
+-        .iter()
+-        .map(|v| ((v / total * w as f64).round() as usize).max(1))
+-        .collect()
+-}
+diff --git a/src/ui/widgets/table.rs b/src/ui/widgets/table.rs
+deleted file mode 100644
+index cb2cd067aa2a01b60b31770d74c27038d98065db..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/table.rs
++++ /dev/null
+@@ -1,8 +0,0 @@
+-//! table widget (PLAN.md section 7).
+-//! Table widget (PLAN.md 7.2): header + hl separator + rows + selection marker.
+-pub const SELECT_MARK: char = '\u{258c}';
+-pub const MARK_GLYPH: char = '\u{25c6}';
+-/// Build a header separator line.
+-pub fn header_separator(width: usize) -> String {
+-    "\u{2500}".repeat(width)
+-}
+diff --git a/src/ui/widgets/thread_meters.rs b/src/ui/widgets/thread_meters.rs
+deleted file mode 100644
+index 36ab48d70098faba52bcd266faca56a4077e7347..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/thread_meters.rs
++++ /dev/null
+@@ -1,5 +0,0 @@
+-//! thread_meters widget (PLAN.md section 7).
+-//! Per-thread meters (PLAN.md 7.8).
+-pub fn columns_for_width(inner_width: usize) -> usize {
+-    inner_width / 3
+-}
+diff --git a/src/ui/widgets/tree.rs b/src/ui/widgets/tree.rs
+deleted file mode 100644
+index b7e2879109e2b9882e9534416123cf91a13119a4..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/tree.rs
++++ /dev/null
+@@ -1,6 +0,0 @@
+-//! tree widget (PLAN.md section 7).
+-//! Tree prefixes (PLAN.md 7.14).
+-pub const BRANCH: &str = "\u{251c}\u{2500} ";
+-pub const LAST: &str = "\u{2514}\u{2500} ";
+-pub const THROUGH: &str = "\u{2502}  ";
+-pub const GAP: &str = "   ";
+diff --git a/src/ui/widgets/whichkey.rs b/src/ui/widgets/whichkey.rs
+index 4e5bd250533ae097b26e82e4bbe44791a43ed8a8..05e66752fa021109444fd86c239d88c1907f2685 100644
+--- a/src/ui/widgets/whichkey.rs
++++ b/src/ui/widgets/whichkey.rs
+@@ -86,11 +86,6 @@ pub fn entries_for_map(map: &HashMap<Vec<String>, KeyAction>, prefix: &str) -> V
+     result
+ }
+ 
+-/// Return key and description pairs for a given pending prefix using the default keymap.
+-pub fn entries_for(prefix: &str) -> Vec<(String, String)> {
+-    entries_for_map(&crate::input::keymap::default_map(), prefix)
+-}
+-
+ /// Render the which-key popup bottom-right for a pending prefix and live keymap.
+ pub fn render(f: &mut Frame, theme: &Theme, prefix: &str, map: &HashMap<Vec<String>, KeyAction>) {
+     let area = f.area();
+@@ -109,15 +104,7 @@ pub fn render(f: &mut Frame, theme: &Theme, prefix: &str, map: &HashMap<Vec<Stri
+         })
+         .collect();
+ 
+-    let title = match prefix {
+-        "Space" => " Leader  ␣ ".to_string(),
+-        "Space s" => " Leader  ␣ s ".to_string(),
+-        "Space m" => " Leader  ␣ m ".to_string(),
+-        "Space d" => " Leader  ␣ d ".to_string(),
+-        "Space i" => " Leader  ␣ i ".to_string(),
+-        p if p.starts_with("Space ") => format!(" Leader  ␣ {} ", &p[6..]),
+-        _ => format!(" {prefix} "),
+-    };
++    let title = format!(" {prefix} ");
+ 
+     let max_len = rows
+         .iter()
+diff --git a/src/ui/widgets/xmlview.rs b/src/ui/widgets/xmlview.rs
+deleted file mode 100644
+index ec39cd2020c52af8ad8f89abb0a39df5942ba5f6..0000000000000000000000000000000000000000
+--- a/src/ui/widgets/xmlview.rs
++++ /dev/null
+@@ -1,4 +0,0 @@
+-//! xmlview widget (PLAN.md section 7).
+-//! XmlView (PLAN.md 7.18).
+-pub const DIFF_MINUS: &str = "- ";
+-pub const DIFF_PLUS: &str = "+ ";

@@ -1,0 +1,180 @@
+From cc4fe3b0c748196bec02cca696510dcec5d76e5f Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 2 Nov 2026 22:24:21 +0100
+Subject: [PATCH 03/23] fix(theme): support truecolor on Windows, fix xterm-256
+ nearest matching, and fix help z-order
+
+---
+ docs/DECISIONS.md       |  2 +
+ src/app/settings.rs     |  6 ++-
+ src/theme/mod.rs        | 93 +++++++++++++++++++++++++++--------------
+ src/ui/overlays/help.rs |  3 +-
+ 4 files changed, 70 insertions(+), 34 deletions(-)
+
+diff --git a/docs/DECISIONS.md b/docs/DECISIONS.md
+index 249144d3a66a4566936a70689b4603fcd52bc4ec..6d41e76525c2e2113e07e5290cdc47f58ead1d80 100644
+--- a/docs/DECISIONS.md
++++ b/docs/DECISIONS.md
+@@ -154,3 +154,5 @@
+ ## Theming, terminal background, and overlay rendering (2026-11-02)
+ 
+ - **Full-frame background fill:** The root frame draw and individual views now render a background `Block` with `theme.base()` covering the full area, and `panel::block` sets `.style(theme.base())`. Previously, unpainted frame cells (column margins, panel gutters, empty rows below paragraphs and modals) defaulted to `Color::Reset`, which caused transparent gaps in transparent terminals while text elements rendered with opaque background colors.
++- **Truecolor detection and nearest 256-color matching:** `truecolor()` previously only checked `COLORTERM=truecolor|24bit`, which is not set by default on Windows terminals (Windows Terminal, PowerShell, CMD) or terminals setting `TERM_PROGRAM` / 24-bit `TERM`, causing the app to unnecessarily downgrade all themes to xterm-256 indexed colors. Additionally, `xterm256()` previously bypassed the 24 greyscale ramp for non-monochrome RGBs and used rough thresholds, mapping Dracula (`#282a36`) to xterm 17 (VESA navy blue) and Everforest (`#2d353b`) to xterm 23 (VESA teal/green). `truecolor()` now recognizes Windows console subsystem, `WT_SESSION`, `TERM_PROGRAM`, and 24-bit `TERM`, and `xterm256()` implements true Euclidean distance nearest match across the entire 6×6×6 cube and 24 greyscale ramp.
++- **Help modal render ordering:** In `ui::overlays::help`, the outer modal `Block` is rendered before the inner column paragraphs and footer line. When `.style(theme.base())` was added to the block, calling `render_widget(block, modal)` at the end of the function wiped the inner foreground spans back to default text style.
+diff --git a/src/app/settings.rs b/src/app/settings.rs
+index 3e7e0fec3f4b11bd71c02166be9acf6c7b37bfc3..a81978acaf37ec3564b0ca66b56f5a15c41b5ff7 100644
+--- a/src/app/settings.rs
++++ b/src/app/settings.rs
+@@ -60,7 +60,11 @@ pub(super) fn move_settings(
+             st.move_theme(delta);
+             // Live preview of the whole app.
+             let (base, _) = ui::views::settings::resolve(st.selected_theme());
+-            *theme = ui::views::settings::apply_appearance(base, config);
++            let mut t = ui::views::settings::apply_appearance(base, config);
++            if !crate::theme::truecolor() {
++                t = crate::theme::downgrade(t);
++            }
++            *theme = t;
+         }
+         SettingsPane::Options => {
+             let n = ui::views::settings::option_count(category(st), config).max(1) as i32;
+diff --git a/src/theme/mod.rs b/src/theme/mod.rs
+index 35eb3d605ed0b861493bb88892b8e8a7e72abdfa..87f8d2a3f53f59621c4288c8c006ccbf546e105b 100644
+--- a/src/theme/mod.rs
++++ b/src/theme/mod.rs
+@@ -245,38 +245,36 @@ fn rgb(hex: &str) -> Color {
+     Color::Rgb(r, g, b)
+ }
+ 
+-/// Nearest xterm-256 index for an RGB colour (6x6x6 cube + greyscale).
++/// Nearest xterm-256 index for an RGB colour (6x6x6 cube + greyscale nearest match).
+ pub fn xterm256(color: Color) -> u8 {
+     let (r, g, b) = match color {
+         Color::Rgb(r, g, b) => (r, g, b),
+         _ => return 7,
+     };
+-    // Greyscale ramp.
+-    if r == g && g == b {
+-        if r < 8 {
+-            return 16;
+-        }
+-        if r > 248 {
+-            return 231;
+-        }
+-        return (232.0 + ((f64::from(r) - 8.0) / 10.0).round()) as u8;
+-    }
+-    let level = |v: u8| {
+-        if v < 48 {
+-            0
+-        } else if v < 115 {
+-            1
+-        } else if v < 155 {
+-            2
+-        } else if v < 195 {
+-            3
+-        } else if v < 235 {
+-            4
++    let mut best_idx = 16u8;
++    let mut best_dist = u32::MAX;
++    for idx in 16..=255u8 {
++        let (cr, cg, cb) = if idx <= 231 {
++            let n = idx - 16;
++            let bi = n % 6;
++            let gi = (n / 6) % 6;
++            let ri = n / 36;
++            let c = |v: u8| if v == 0 { 0 } else { 55 + 40 * v };
++            (c(ri), c(gi), c(bi))
+         } else {
+-            5
++            let v = 8 + 10 * (idx - 232);
++            (v, v, v)
++        };
++        let dr = (r as i32) - (cr as i32);
++        let dg = (g as i32) - (cg as i32);
++        let db = (b as i32) - (cb as i32);
++        let dist = (dr * dr + dg * dg + db * db) as u32;
++        if dist < best_dist {
++            best_dist = dist;
++            best_idx = idx;
+         }
+-    };
+-    16 + 36 * level(r) + 6 * level(g) + level(b)
++    }
++    best_idx
+ }
+ 
+ /// Downgrade a theme to xterm-256 indexes when truecolor is unavailable.
+@@ -306,14 +304,45 @@ pub fn downgrade(mut theme: Theme) -> Theme {
+     theme
+ }
+ 
+-/// Truecolor available (`COLORTERM=truecolor|24bit`).
++/// Truecolor available (`COLORTERM=truecolor|24bit`, known 24-bit terminal, or Windows console).
+ pub fn truecolor() -> bool {
+-    std::env::var("COLORTERM")
+-        .map(|v| {
+-            let v = v.to_lowercase();
+-            v.contains("truecolor") || v.contains("24bit")
+-        })
+-        .unwrap_or(false)
++    if let Ok(v) = std::env::var("COLORTERM") {
++        let v = v.to_lowercase();
++        return v.contains("truecolor") || v.contains("24bit");
++    }
++    if let Ok(tp) = std::env::var("TERM_PROGRAM") {
++        let tp = tp.to_lowercase();
++        if matches!(
++            tp.as_str(),
++            "vscode" | "iterm.app" | "apple_terminal" | "wezterm" | "ghostty" | "hyper" | "alacritty"
++        ) {
++            return true;
++        }
++    }
++    if let Ok(term) = std::env::var("TERM") {
++        let term = term.to_lowercase();
++        if term.contains("truecolor")
++            || term.contains("24bit")
++            || term.contains("direct")
++            || term.contains("kitty")
++            || term.contains("alacritty")
++            || term.contains("foot")
++            || term.contains("wezterm")
++        {
++            return true;
++        }
++    }
++    if std::env::var("WT_SESSION").is_ok() {
++        return true;
++    }
++    #[cfg(windows)]
++    {
++        true
++    }
++    #[cfg(not(windows))]
++    {
++        false
++    }
+ }
+ 
+ #[cfg(test)]
+diff --git a/src/ui/overlays/help.rs b/src/ui/overlays/help.rs
+index a66bbfcb192ed29745ea5e104eea2a9d700608b6..94d9084c28828de2ff75d1fe0d33db8fb167f16e 100644
+--- a/src/ui/overlays/help.rs
++++ b/src/ui/overlays/help.rs
+@@ -262,8 +262,10 @@ pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
+         .borders(Borders::ALL)
+         .border_type(theme.border)
+         .border_style(Style::default().fg(t.blue).bg(t.bg))
++        .style(theme.base())
+         .title(Span::styled(" ? Keybindings ", theme.panel_title(true)))
+         .title_top(Line::from(Span::styled(" / search · ⎋ close ", theme.dim())).right_aligned());
++    frame.render_widget(block, modal);
+     let inner = Rect::new(modal.x + 2, modal.y + 1, modal.width - 4, modal.height - 2);
+     let cols = Layout::default()
+         .direction(Direction::Horizontal)
+@@ -326,5 +328,4 @@ pub fn render(frame: &mut Frame, theme: &Theme, filter: &str, map: &Keymap) {
+     ]);
+     let footer_area = Rect::new(inner.x, inner.y + inner.height - 1, inner.width, 1);
+     frame.render_widget(Paragraph::new(footer).style(theme.base()), footer_area);
+-    frame.render_widget(block, modal);
+ }

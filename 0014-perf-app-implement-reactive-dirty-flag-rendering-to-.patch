@@ -1,0 +1,114 @@
+From 73408ebef2edfacac733097e4b11d126c07813ea Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Wed, 4 Nov 2026 10:18:03 +0100
+Subject: [PATCH 14/23] perf(app): implement reactive dirty-flag rendering to
+ avoid idle redraws
+
+---
+ src/app/mod.rs | 53 +++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 42 insertions(+), 11 deletions(-)
+
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index 5b96d19249c3f98a6530bb11862cac25d8263537..3af9ef7efa78ae1f5fa45ef698af53bac9d5f60f 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -287,12 +287,17 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         virsh_index: None,
+         virsh_flags: std::collections::HashMap::new(),
+     };
++    let mut needs_draw = true;
+     loop {
+         // After $EDITOR / console: repaint every cell, not just the diff.
+         if external::take_full_redraw() {
+             terminal.clear()?;
++            needs_draw = true;
++        }
++        if needs_draw {
++            terminal.draw(|f| app.draw(f))?;
++            needs_draw = false;
+         }
+-        terminal.draw(|f| app.draw(f))?;
+         app.sync_poller();
+         tokio::select! {
+             Some(msg) = async {
+@@ -300,21 +305,37 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+                     Some(p) => p.rx.recv().await,
+                     None => std::future::pending().await,
+                 }
+-            } => app.on_live(msg),
+-            Some(loaded) = loads_rx.recv() => app.on_loaded(loaded),
+-            _ = ticker.tick() => app.on_tick().await,
++            } => {
++                app.on_live(msg);
++                needs_draw = true;
++            }
++            Some(loaded) = loads_rx.recv() => {
++                app.on_loaded(loaded);
++                needs_draw = true;
++            }
++            _ = ticker.tick() => {
++                if app.on_tick().await {
++                    needs_draw = true;
++                }
++            }
+             maybe = events.recv() => {
+                 match maybe {
+                     Some(Event::Key(key)) => {
+-                        if app.on_key(key).await {
+-                            break;
+-                        }
+-                        if std::mem::take(&mut app.dash.redraw_requested) {
+-                            terminal.clear()?;
++                        if key.kind == crossterm::event::KeyEventKind::Press {
++                            if app.on_key(key).await {
++                                break;
++                            }
++                            if std::mem::take(&mut app.dash.redraw_requested) {
++                                terminal.clear()?;
++                            }
++                            needs_draw = true;
+                         }
+                     }
+                     // Terminal resized: repaint everything at the new size.
+-                    Some(Event::Resize(..)) => terminal.clear()?,
++                    Some(Event::Resize(..)) => {
++                        terminal.clear()?;
++                        needs_draw = true;
++                    }
+                     Some(_) => {}
+                     None => break,
+                 }
+@@ -708,7 +729,9 @@ impl App {
+     }
+ 
+     /// One-second housekeeping: events, first-enter refreshes.
+-    async fn on_tick(&mut self) {
++    /// Returns true if state changed such that a redraw is required.
++    async fn on_tick(&mut self) -> bool {
++        let mut changed = false;
+         if let Some(rx) = self.events_rx.as_mut() {
+             while let Ok(ev) = rx.try_recv() {
+                 self.dash.recent_events.push(ev.clone());
+@@ -716,6 +739,7 @@ impl App {
+                     self.dash.recent_events.remove(0);
+                 }
+                 self.events_state.push(ev);
++                changed = true;
+             }
+         }
+         // Refresh Host/Networks/Storage every time they are entered (they are
+@@ -726,7 +750,14 @@ impl App {
+                 self.entered.insert(self.view);
+                 spawn_load(&self.uri, self.view, &self.loads_tx);
+             }
++            changed = true;
++        }
++        // In live mode the top bar clock is ticking (HH:MM:SS), so we redraw once a second.
++        // In demo mode or tests the clock is frozen/mockup, so we don't redraw unless state changed.
++        if crate::ui::chrome::is_live() {
++            changed = true;
+         }
++        changed
+     }
+ 
+     /// A background view load finished: swap it in (keeping the status

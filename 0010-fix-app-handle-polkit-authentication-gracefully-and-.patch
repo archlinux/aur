@@ -1,0 +1,335 @@
+From 76354ad937956d925f1674c7a6c3be0bd675f96f Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 2 Nov 2026 23:40:49 +0100
+Subject: [PATCH 10/23] fix(app): handle polkit authentication gracefully and
+ detach tty during TUI
+
+---
+ docs/DECISIONS.md           |   6 ++
+ src/app/external.rs         |   2 +
+ src/app/mod.rs              |  24 +++++++-
+ src/backend/virsh/events.rs |   9 +--
+ src/backend/virsh/exec.rs   | 114 ++++++++++++++++++++++++++++++++++--
+ src/command/exec.rs         |   9 ++-
+ src/main.rs                 |   5 +-
+ 7 files changed, 148 insertions(+), 21 deletions(-)
+
+diff --git a/docs/DECISIONS.md b/docs/DECISIONS.md
+index a6ff7cc61b1fcb0e7f06776803d8c0852a144bdd..11870eb9d414890615646cc07818dc40bf45e256 100644
+--- a/docs/DECISIONS.md
++++ b/docs/DECISIONS.md
+@@ -165,3 +165,9 @@
+ - **Session-based remote domain uptimes:** For remote connections where PID files in `/run/libvirt/qemu/` are inaccessible, the poller tracks when running domains were first observed during the session and displays uptimes prefixed with `≥ ` (e.g. `≥ 5m`, `≥ 1h 20m`), matching `PLAN.md` §4.2.
+ - **Dynamic hypervisor hostname and live chrome:** `LIVE` chrome state in `ui::chrome` uses `RwLock` so hostname and refresh interval update dynamically. `virsh hostname` queries the remote hypervisor's hostname at startup and on connection change, displaying the remote hostname across the top bar and views.
+ - **Complete `:connect <uri>` lifecycle:** Executing `:connect <uri>` updates URIs across all views (`dash`, `host`, `networks`, `storage`, `events`), re-subscribes the live libvirt event stream (`virsh event --loop`), clears stale domains/selection, and restarts background polling.
++
++## Polkit authentication handling (2026-11-02)
++
++- **Deferred alternate screen and raw mode:** Previously, `enable_raw_mode()` and `EnterAlternateScreen` were called immediately in `main.rs` before `app::run`. When virsh connected to an unauthorized socket (e.g. non-root `qemu:///system`), PolicyKit's textual agent (`pkttyagent`) opened `/dev/tty` while the terminal was already in raw mode. In raw mode, `\n` without `\r` produced staircase formatting, canonical line input/echo was disabled so users could not type responses, and `terminal.clear()` timed out querying the cursor position (`The cursor position could not be read within a normal duration`). Terminal initialization is now managed by an RAII `TerminalGuard` in `app::run` after the initial connection and state preflight, so startup Polkit prompts display with proper line breaks and accept interactive identity and password input.
++- **Detached controlling TTY during active TUI session:** Once the TUI is active, `exec::set_detach_tty(true)` ensures background commands and event streams (in `exec::run`, `exec::run_blocking`, `command::exec::execute`, and `events::stream_once`) run in a new session (`setsid()` on Unix). If permission is denied while the TUI is running or unauthorized, child processes fail immediately with an authentication error without opening `/dev/tty` or corrupting the ratatui interface.
++- **Actionable authentication error messages:** `friendly_first_line` in `exec.rs` recognizes Polkit denial messages (e.g., `authentication unavailable`, `access denied by policy`, `polkit`) and appends `(not in the libvirt group?)`, matching `PLAN.md` §14 error UX.
+diff --git a/src/app/external.rs b/src/app/external.rs
+index 42c78760e3eea986fcfaaa9e9c9da607ab5eb367..33e60e57e471bc3fdc7d1685adbc2c5ae1dbd89f 100644
+--- a/src/app/external.rs
++++ b/src/app/external.rs
+@@ -65,7 +65,9 @@ pub fn with_suspended_terminal<T>(f: impl FnOnce() -> T) -> T {
+         crossterm::cursor::Show
+     );
+     let _ = crossterm::terminal::disable_raw_mode();
++    crate::backend::virsh::exec::set_detach_tty(false);
+     let out = f();
++    crate::backend::virsh::exec::set_detach_tty(true);
+     let _ = crossterm::terminal::enable_raw_mode();
+     let _ = crossterm::execute!(
+         std::io::stdout(),
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index e33de054ed29e71fc09cc7770eff135a1224baf9..fcd732c2ab51465f9cbaf7d4920da16949153831 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -54,6 +54,25 @@ fn current_theme(config: &Config) -> Theme {
+     theme
+ }
+ 
++struct TerminalGuard;
++
++impl TerminalGuard {
++    fn enter() -> Result<Self> {
++        crossterm::terminal::enable_raw_mode()?;
++        crossterm::execute!(std::io::stdout(), crossterm::terminal::EnterAlternateScreen)?;
++        crate::backend::virsh::exec::set_detach_tty(true);
++        Ok(Self)
++    }
++}
++
++impl Drop for TerminalGuard {
++    fn drop(&mut self) {
++        crate::backend::virsh::exec::set_detach_tty(false);
++        let _ = crossterm::execute!(std::io::stdout(), crossterm::terminal::LeaveAlternateScreen);
++        let _ = crossterm::terminal::disable_raw_mode();
++    }
++}
++
+ /// Run the TUI until quit.
+ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+     let mut config = config.clone();
+@@ -156,7 +175,7 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+     let settings: Option<ui::views::settings::SettingsState> = None;
+     let palette: Option<ui::overlays::palette::PaletteState> = None;
+     let help_filter: Option<String> = None;
+-    let events_rx = if cli.demo {
++    let events_rx = if cli.demo || !dash.connected {
+         None
+     } else {
+         Some(crate::backend::virsh::events::subscribe(&cli.connect))
+@@ -194,6 +213,7 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+         return Ok(());
+     }
+ 
++    let _terminal_guard = TerminalGuard::enter()?;
+     let backend = CrosstermBackend::new(std::io::stdout());
+     let mut terminal = Terminal::new(backend)?;
+     terminal.clear()?;
+@@ -224,7 +244,7 @@ pub async fn run(cli: &Cli, config: &Config) -> Result<()> {
+     let mut entered: std::collections::HashSet<View> = std::collections::HashSet::new();
+     entered.insert(view);
+     let (loads_tx, mut loads_rx) = tokio::sync::mpsc::unbounded_channel();
+-    if !cli.demo {
++    if !cli.demo && dash.connected {
+         for v in [View::Host, View::Networks, View::Storage] {
+             spawn_load(&cli.connect, v, &loads_tx);
+         }
+diff --git a/src/backend/virsh/events.rs b/src/backend/virsh/events.rs
+index 07232bde42ac7301b32c9fc68b7e381c84f9812d..ba663391a7a6f4c3ee613fb4a8e228085bafcfdc 100644
+--- a/src/backend/virsh/events.rs
++++ b/src/backend/virsh/events.rs
+@@ -138,8 +138,8 @@ async fn stream_once(
+ ) -> color_eyre::Result<()> {
+     use tokio::io::{AsyncBufReadExt, BufReader};
+     use tokio::process::Command;
+-    let mut child = Command::new("virsh")
+-        .arg("-c")
++    let mut cmd = Command::new("virsh");
++    cmd.arg("-c")
+         .arg(uri)
+         .arg(sub)
+         .args(filter)
+@@ -149,8 +149,9 @@ async fn stream_once(
+         .stdout(std::process::Stdio::piped())
+         // Never inherit stderr: it would draw over the TUI.
+         .stderr(std::process::Stdio::null())
+-        .kill_on_drop(true)
+-        .spawn()?;
++        .kill_on_drop(true);
++    crate::backend::virsh::exec::detach_controlling_tty(&mut cmd);
++    let mut child = cmd.spawn()?;
+     let stdout = child
+         .stdout
+         .take()
+diff --git a/src/backend/virsh/exec.rs b/src/backend/virsh/exec.rs
+index 177aaf169197d508801d670f87a4b42a84f4e824..8d1c069b104a28a4075d5483f3d71716dc78b20d 100644
+--- a/src/backend/virsh/exec.rs
++++ b/src/backend/virsh/exec.rs
+@@ -1,8 +1,66 @@
+ //! Process spawning: LC_ALL=C, explicit URI, timeouts, stderr capture.
+ 
++use std::sync::atomic::{AtomicBool, Ordering};
++
+ use color_eyre::{Result, eyre::eyre};
+ use tokio::process::Command;
+ 
++static DETACH_TTY: AtomicBool = AtomicBool::new(false);
++
++/// Set whether child virsh processes should be detached from controlling TTY (setsid).
++/// Active while the TUI is running so background virsh calls cannot trigger interactive
++/// PolicyKit prompts on /dev/tty.
++pub fn set_detach_tty(detach: bool) {
++    DETACH_TTY.store(detach, Ordering::SeqCst);
++}
++
++/// Check if virsh processes should be detached from controlling TTY.
++pub fn is_detach_tty() -> bool {
++    DETACH_TTY.load(Ordering::SeqCst)
++}
++
++#[cfg(unix)]
++unsafe extern "C" {
++    fn setsid() -> i32;
++}
++
++/// Configure the async command so it does not attach to a controlling terminal
++/// (preventing PolicyKit's pkttyagent from hijacking /dev/tty while the TUI is active).
++pub fn detach_controlling_tty(cmd: &mut Command) {
++    #[cfg(unix)]
++    {
++        use std::os::unix::process::CommandExt;
++        unsafe {
++            cmd.as_std_mut().pre_exec(|| {
++                setsid();
++                Ok(())
++            });
++        }
++    }
++    #[cfg(not(unix))]
++    {
++        let _ = cmd;
++    }
++}
++
++/// Configure the synchronous command so it does not attach to a controlling terminal.
++pub fn detach_controlling_tty_sync(cmd: &mut std::process::Command) {
++    #[cfg(unix)]
++    {
++        use std::os::unix::process::CommandExt;
++        unsafe {
++            cmd.pre_exec(|| {
++                setsid();
++                Ok(())
++            });
++        }
++    }
++    #[cfg(not(unix))]
++    {
++        let _ = cmd;
++    }
++}
++
+ /// How long a virsh subcommand may run. Long jobs (migration, cloning, wiping,
+ /// snapshots with memory, uploads) get hours; everything else 30 s.
+ pub fn timeout_for(program: &str, sub: &str) -> std::time::Duration {
+@@ -47,6 +105,9 @@ pub async fn run(uri: &str, args: &[&str]) -> Result<String> {
+     cmd.stderr(std::process::Stdio::piped());
+     // A timed-out command must not keep running unattended.
+     cmd.kill_on_drop(true);
++    if is_detach_tty() {
++        detach_controlling_tty(&mut cmd);
++    }
+     let limit = timeout_for("virsh", args.first().copied().unwrap_or(""));
+     let output = tokio::time::timeout(limit, cmd.output())
+         .await
+@@ -66,14 +127,19 @@ pub async fn run(uri: &str, args: &[&str]) -> Result<String> {
+ }
+ 
+ /// First stderr line plus actionable hints (permissions, daemon down).
+-fn friendly_first_line(stderr: &[u8]) -> String {
++pub fn friendly_first_line(stderr: &[u8]) -> String {
+     let first = String::from_utf8_lossy(stderr)
+         .lines()
+         .next()
+         .unwrap_or("unknown error")
+         .to_string();
+     let lower = first.to_lowercase();
+-    if lower.contains("permission denied") || lower.contains("not authorized") {
++    if lower.contains("permission denied")
++        || lower.contains("not authorized")
++        || lower.contains("authentication")
++        || lower.contains("polkit")
++        || lower.contains("access denied")
++    {
+         format!("{first} (not in the libvirt group?)")
+     } else if lower.contains("failed to connect") || lower.contains("no connection") {
+         format!("{first} (is libvirtd running?)")
+@@ -87,16 +153,52 @@ pub fn run_blocking(uri: &str, args: &[&str]) -> Result<String> {
+     if crate::command::exec::is_demo() {
+         return Err(eyre!("demo mode: virsh is not executed"));
+     }
+-    let output = std::process::Command::new("virsh")
+-        .arg("-c")
++    let mut cmd = std::process::Command::new("virsh");
++    cmd.arg("-c")
+         .arg(uri)
+         .args(args)
+         .env("LC_ALL", "C")
+-        .stdin(std::process::Stdio::null())
+-        .output()?;
++        .stdin(std::process::Stdio::null());
++    if is_detach_tty() {
++        detach_controlling_tty_sync(&mut cmd);
++    }
++    let output = cmd.output()?;
+     if output.status.success() {
+         Ok(String::from_utf8_lossy(&output.stdout).into_owned())
+     } else {
+         Err(eyre!("virsh failed"))
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn friendly_first_line_polkit_hints() {
++        assert_eq!(
++            friendly_first_line(b"error: authentication unavailable: no polkit agent available"),
++            "error: authentication unavailable: no polkit agent available (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: failed to connect: access denied by policy\nmore details"),
++            "error: failed to connect: access denied by policy (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: authentication failed"),
++            "error: authentication failed (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: failed to connect to socket: Permission denied"),
++            "error: failed to connect to socket: Permission denied (not in the libvirt group?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: failed to connect to the hypervisor"),
++            "error: failed to connect to the hypervisor (is libvirtd running?)"
++        );
++        assert_eq!(
++            friendly_first_line(b"error: unknown domain 'foo'"),
++            "error: unknown domain 'foo'"
++        );
++    }
++}
+diff --git a/src/command/exec.rs b/src/command/exec.rs
+index 9118f6f41ee37da1404c9d944c573befb58b28fc..396d060ea64e0c1aa14143625069cf49afda0874 100644
+--- a/src/command/exec.rs
++++ b/src/command/exec.rs
+@@ -50,6 +50,9 @@ pub async fn execute(uri: &str, plan: &CommandPlan, dry_run: bool) -> Result<Str
+         cmd.stdout(std::process::Stdio::piped());
+         cmd.stderr(std::process::Stdio::piped());
+         cmd.kill_on_drop(true);
++        if crate::backend::virsh::exec::is_detach_tty() {
++            crate::backend::virsh::exec::detach_controlling_tty(&mut cmd);
++        }
+         let limit = crate::backend::virsh::exec::timeout_for(
+             &step.program,
+             step.argv.first().map(String::as_str).unwrap_or(""),
+@@ -58,11 +61,7 @@ pub async fn execute(uri: &str, plan: &CommandPlan, dry_run: bool) -> Result<Str
+             .await
+             .map_err(|_| eyre!("step {}/{} timed out", i + 1, n))??;
+         if !output.status.success() {
+-            let first_line = String::from_utf8_lossy(&output.stderr)
+-                .lines()
+-                .next()
+-                .unwrap_or("unknown error")
+-                .to_string();
++            let first_line = crate::backend::virsh::exec::friendly_first_line(&output.stderr);
+             return Err(eyre!("✗ step {}/{} failed: {first_line}", i + 1, n));
+         }
+     }
+diff --git a/src/main.rs b/src/main.rs
+index 750e5a8ffddec780d937a9a1241ffc10962c50fa..5947f91e1cd1ed999856e57893b66351b6e9780a 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -59,15 +59,12 @@ fn run_tui(cli: &Cli, config: &Config) -> Result<()> {
+         let runtime = tokio::runtime::Builder::new_multi_thread().enable_all().build()?;
+         return runtime.block_on(app::run(cli, config));
+     }
+-    let mut stdout = std::io::stdout();
+-    crossterm::terminal::enable_raw_mode()?;
+-    crossterm::execute!(stdout, crossterm::terminal::EnterAlternateScreen)?;
+     let runtime = tokio::runtime::Builder::new_multi_thread().enable_all().build()?;
+     let result = runtime.block_on(async {
+         install_signal_hook();
+         app::run(cli, config).await
+     });
+-    let _ = crossterm::execute!(stdout, crossterm::terminal::LeaveAlternateScreen);
++    let _ = crossterm::execute!(std::io::stdout(), crossterm::terminal::LeaveAlternateScreen);
+     let _ = crossterm::terminal::disable_raw_mode();
+     result
+ }

@@ -1,0 +1,86 @@
+From 55209d2590d775410eb755cfa5d3b658339dd39b Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Wed, 4 Nov 2026 23:27:26 +0100
+Subject: [PATCH 19/23] feat(events): cycle filters with Tab instead of f/F
+
+---
+ book/src/views/events.md |  2 +-
+ docs/INPUT_AND_KEYMAP.md |  1 +
+ src/app/mod.rs           | 10 +++-------
+ src/input/keymap.rs      |  1 +
+ src/ui/views/events.rs   |  2 +-
+ 5 files changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/book/src/views/events.md b/book/src/views/events.md
+index 0ecf96c002ae335b656518c2fda9989075bbb644..84cc115e28d9478f8d0009648180197349d5c8b3 100644
+--- a/book/src/views/events.md
++++ b/book/src/views/events.md
+@@ -10,7 +10,7 @@ connections, balloon changes, media changes, network and pool state changes.
+ | Key | Action |
+ |-----|--------|
+ | `j` / `k` | move through the log |
+-| `f` / `F` | filter by type: all, lifecycle, devices, jobs, network, storage, app |
++| `Tab` | filter by type: all, lifecycle, devices, jobs, network, storage, app |
+ | `/` | search the log |
+ | `Enter` | jump to the object of the event |
+ 
+diff --git a/docs/INPUT_AND_KEYMAP.md b/docs/INPUT_AND_KEYMAP.md
+index 786a3fc39166872d50b4d27720c857901293d5d0..40bafb4209da296e066554d814f7c0011be03120 100644
+--- a/docs/INPUT_AND_KEYMAP.md
++++ b/docs/INPUT_AND_KEYMAP.md
+@@ -56,6 +56,7 @@ virsh-tui uses `Tab` and `Shift+Tab` (`BackTab`) mapped to `KeyAction::CycleFocu
+ 
+ - **Networks View (Tab 3)**: Cycles focus between the virtual networks table and the active DHCP leases table.
+ - **Storage View (Tab 4)**: Cycles focus between the storage pools table and the volumes table.
++- **Events View (Tab 5)**: Cycles filter chips (all, lifecycle, devices, jobs, network, storage, app).
+ - **Settings View**: Cycles focus between the settings category list and the configuration options panel.
+ 
+ This consistent focus model avoids conflicting with vim cursor navigation (`h`/`l`/`j`/`k`).
+diff --git a/src/app/mod.rs b/src/app/mod.rs
+index b4be2dcac34bf771a3ccf833f931fd782a6f76c3..9640cf65b770a4dac08e7b587d7c682f08bb1daf 100644
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -1160,15 +1160,11 @@ impl App {
+                         ev.selected = ev.selected.saturating_sub(10);
+                         true
+                     }
+-                    A::ChipCycle | A::ChipCycleBack => {
++                    A::CycleFocus => {
+                         let all = ui::views::events::EventFilter::ALL;
+                         let i = all.iter().position(|f| *f == ev.filter).unwrap_or(0);
+-                        let len = all.len();
+-                        let next = if resolved.action == A::ChipCycle {
+-                            (i + 1) % len
+-                        } else {
+-                            (i + len - 1) % len
+-                        };
++                        let next = (i + 1) % all.len();
++
+                         ev.filter = all[next];
+                         ev.selected = 0;
+                         true
+diff --git a/src/input/keymap.rs b/src/input/keymap.rs
+index f411b4c55e8d1ff85e6cdc0274f425a8832e41a3..81893a54f8dfc170391a3d2bad08c62d6c798d77 100644
+--- a/src/input/keymap.rs
++++ b/src/input/keymap.rs
+@@ -63,6 +63,7 @@ pub const DEFAULT_BINDINGS: &[(&[&str], KeyAction)] = &[
+     (&["m"], KeyAction::Mark),
+     (&["V"], KeyAction::Visual),
+     (&["Tab"], KeyAction::CycleFocus),
++    (&["S-Tab"], KeyAction::CycleFocus),
+     (&["H"], KeyAction::PrevTab),
+     (&["L"], KeyAction::NextTab),
+     (&["["], KeyAction::PrevTab),
+diff --git a/src/ui/views/events.rs b/src/ui/views/events.rs
+index bc239aa44919045672e48fc21a9f8f86dbc6a419..7fd6fee2cba75b53c26f565c05b43c361dc6fad4 100644
+--- a/src/ui/views/events.rs
++++ b/src/ui/views/events.rs
+@@ -284,7 +284,7 @@ pub fn render(frame: &mut Frame, theme: &Theme, state: &EventsState) {
+             Style::default().fg(t.bg2).bg(t.blue).add_modifier(Modifier::BOLD),
+         ),
+         Span::styled(" events ", Style::default().fg(t.fg2).bg(t.hl)),
+-        Span::styled("  j/k move  f/F filter  / search  ⏎ jump to object", theme.dim()),
++        Span::styled("  j/k move  Tab filter  / search  ⏎ jump to object", theme.dim()),
+     ]);
+     frame.render_widget(Paragraph::new(status).style(theme.topbar()), rows[2]);
+     crate::ui::chrome::message_line(frame, theme, rows[3], "");
