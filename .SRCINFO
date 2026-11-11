@@ -1,7 +1,7 @@
 pkgbase = ddcci-probe-git
 	pkgdesc = detect monitor connection status and attach/detach ddcci automatically
 	pkgver = r4.8d4cd53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kobe-koto/ddcci-probe
 	arch = any
 	license = MIT

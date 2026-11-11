@@ -1,7 +1,7 @@
 # Maintainer: kobe-koto <k@koto.cc>
 
 pkgname=ddcci-probe-git
-pkgver=r4.8d4cd53
+pkgver=r4.29426c2
 pkgrel=1
 pkgdesc="detect monitor connection status and attach/detach ddcci automatically"
 url="https://github.com/kobe-koto/ddcci-probe"
