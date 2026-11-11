@@ -1,6 +1,6 @@
 pkgbase = oh-my-pi-bin
 	pkgdesc = Coding agent with the IDE wired in (release binary)
-	pkgver = 18.18.7
+	pkgver = 18.18.8
 	pkgrel = 1
 	url = https://omp.sh/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = oh-my-pi-bin
 	provides = oh-my-pi
 	conflicts = oh-my-pi
 	options = !strip
-	source = LICENSE-18.18.7::https://raw.githubusercontent.com/can1357/oh-my-pi/v18.18.7/LICENSE
+	source = LICENSE-18.18.8::https://raw.githubusercontent.com/can1357/oh-my-pi/v18.18.8/LICENSE
 	sha256sums = 16c45f9d667442781f03fa198914cc39abcaa48ec5ed8f644643e554ca2fbf63
-	source_x86_64 = omp-18.18.7::https://github.com/can1357/oh-my-pi/releases/download/v18.18.7/omp-linux-x64
-	sha256sums_x86_64 = ea6c216feb260a3766a591760aad06bdc608efd5c632912603f5ccb41b0a4bb1
-	source_aarch64 = omp-18.18.7::https://github.com/can1357/oh-my-pi/releases/download/v18.18.7/omp-linux-arm64
-	sha256sums_aarch64 = 297dbd6dafb2f21277891b75471dc6c16e44ead0d39cfa7f0cd9dc3447c8a79e
+	source_x86_64 = omp-18.18.8::https://github.com/can1357/oh-my-pi/releases/download/v18.18.8/omp-linux-x64
+	sha256sums_x86_64 = bfb7a85cceade6e5580fad59ff87570b4de50039b0428ed30339cf4286bd052f
+	source_aarch64 = omp-18.18.8::https://github.com/can1357/oh-my-pi/releases/download/v18.18.8/omp-linux-arm64
+	sha256sums_aarch64 = 5e4de8d03d543414115480e03d6d232a43cacf25dcb9df8d8f93a44a8a0e7667
 
 pkgname = oh-my-pi-bin
