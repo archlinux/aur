@@ -1,7 +1,7 @@
 # Maintainer: Ning Sun <n@sunng.info>
 
 pkgname=questdb
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc='Fast timeseries database'
 arch=('any')
@@ -14,7 +14,7 @@ source=(https://github.com/questdb/questdb/releases/download/${pkgver}/questdb-$
     'questdb.sysusers'
     'questdb-tmpfile.conf'
     'questdb.service')
-sha1sums=('0e5aa4533296aff95344cb80c8274dd3a63f26ae'
+sha1sums=('702f012547f48ab4145c570bb829a5f3cc9c571a'
           '93bb0d903471da5a8c04b2bd54ea72c952a6e831'
           '79459d2e7ab4a78364359cb40368bbc0778fd9cf'
           'bcd990f6257a0501c82a03384a9d4c5703b03abb'
