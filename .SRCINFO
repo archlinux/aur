@@ -1,4 +1,4 @@
-pkgbase = libgweather-4
+pkgbase = libgweather-4-precipitation
 	pkgdesc = Location and timezone database and weather-lookup library
 	pkgver = 4.6.0
 	pkgrel = 1

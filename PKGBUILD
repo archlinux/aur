@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=libgweather-4
+pkgbase=libgweather-4-precipitation
 pkgname=(
   libgweather-4
   libgweather-4-docs
