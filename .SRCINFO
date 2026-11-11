@@ -1,6 +1,6 @@
 pkgbase = etherpad-lite-bin
 	pkgdesc = Real-time collaborative editor for the web (upstream .deb build)
-	pkgver = 3.3.16
+	pkgver = 3.3.17
 	pkgrel = 1
 	url = https://etherpad.org
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = etherpad-lite-bin
 	source = etherpad.tmpfiles
 	sha256sums = ecb57e3ac038f09b9f593e920d73e13a9b2dd54659fdc68195e121c9da9fcf97
 	sha256sums = 4f5b24e9b4a1d73309d9b02ef52dd1417b26c2cda16249699280fa93453d5401
-	source_x86_64 = etherpad_3.3.16-1_amd64.deb::https://github.com/ether/etherpad-lite/releases/download/v3.3.16/etherpad_3.3.16-1_amd64.deb
-	sha256sums_x86_64 = 3377ba76d230aee28bf3dbda382bf2f2acd6a98ecac7a176c668976404c69175
-	source_aarch64 = etherpad_3.3.16-1_arm64.deb::https://github.com/ether/etherpad-lite/releases/download/v3.3.16/etherpad_3.3.16-1_arm64.deb
-	sha256sums_aarch64 = 9907b9491cc4cdbc44f9cec4118ca62121de26ea7043f474e641b4bc6130f388
+	source_x86_64 = etherpad_3.3.17-1_amd64.deb::https://github.com/ether/etherpad-lite/releases/download/v3.3.17/etherpad_3.3.17-1_amd64.deb
+	sha256sums_x86_64 = 4ce87fd5f7b3c22549e0f746a267f7f9d005a9c1dae8b3954c5303135f1b5942
+	source_aarch64 = etherpad_3.3.17-1_arm64.deb::https://github.com/ether/etherpad-lite/releases/download/v3.3.17/etherpad_3.3.17-1_arm64.deb
+	sha256sums_aarch64 = 64e82212513783dfc0a3997eeb88bb1922318fdd47ba73a860b2d469d20a9257
 
 pkgname = etherpad-lite-bin
