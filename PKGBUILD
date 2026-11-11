@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wlink-git
-pkgver=0.1.1.r14.g690bec1
+pkgver=0.1.3.r6.g0ff5a1e
 pkgrel=1
 pkgdesc="wlink - WCH-Link(RV) command line tool"
 arch=($CARCH)
@@ -11,9 +11,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    gcc-libs
-    glibc
-    libusb
+    libgcc
     systemd-libs
 )
 makedepends=(
@@ -21,7 +19,7 @@ makedepends=(
     rust
 )
 backup=()
-options=('!strip' '!debug')
+options=('!lto' '!strip' '!debug')
 install=
 source=("${pkgname}::git+$url.git")
 sha256sums=('SKIP')
