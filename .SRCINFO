@@ -1,7 +1,7 @@
 pkgbase = certbot-isolated
 	pkgdesc = An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon
-	pkgver = 5.8.0
-	pkgrel = 3
+	pkgver = 5.10.0
+	pkgrel = 1
 	url = https://certbot.eff.org
 	arch = any
 	license = Apache-2.0
@@ -27,15 +27,15 @@ pkgbase = certbot-isolated
 	depends = python-pyrfc3339
 	depends = python-requests
 	depends = dns-lexicon-isolated
-	source = github.com-certbot-certbot::git+https://github.com/certbot/certbot#tag=v5.8.0
+	source = github.com-certbot-certbot::git+https://github.com/certbot/certbot#tag=v5.10.0
 	source = tmpfiles.conf
 	source = certbot-renew.service
 	source = certbot-renew.timer
-	sha512sums = 71d9a98365de26f7a8eeef40116f2afefdb4a539fa6d080024f1f5773299222974d79340d05fac83953aaffaa31ac169220a56001a8e3889b483365a65c8f78c
+	sha512sums = 92eb1fdb590d2f64ac112e1194c5aaa9b2d81d9f29fd9da6a9440f67308375fc8bc08df2256dbb3815126af3990a664475e941aa26a8d4b14717411ae8a567cb
 	sha512sums = fbb7bb4591876aeb2e118c3f3fc8ff507b6a3127de0f921c689e1d74c70320b4f2b8bf05b488ec4f714259701f1ac54e64a9f6181475da6bd6d1e3da3a602217
 	sha512sums = ad639f33201089d5531d1b1dcd163e2f85bd84a6a9aa233bb04f1f86b34a4f9afa4aed274a27cc89a0664150e80af31742d425923015d585b781a8b139cb8954
 	sha512sums = 471d371de385daf18f58a2e4eaed74f0d2d9931beb74ee28481ffb17ce4e4450752c135b920b6efd17a16f84f99fe38b69e6602e230ba09059f85390b08aaba1
-	b2sums = 969d082dfd6543e6c62e8374d9cead8889b62c3956b95055a39361423aeaf4f33b879b7b2958d1336b86d5d7d30190de7b0144f4f3e76bc305c73a2576b870e2
+	b2sums = 6b1fac9634cdfa5f5d975fe566d7967da505590c8568648274b6cd241191ce7d7344fba126c92ca28c7772b8cb50e21de5f848e929e7be96d7552f3bb36ab5f9
 	b2sums = 7d2c26a9953d3b5a899053bdd7bd77051c67abe6480af2bfaaee06f20a399b0b4ccccc0af35cfe9e6d2b1fc833dbff928ba46771a9127720073dda29aef9a2e0
 	b2sums = 773be7c45aaf84b79b260053dd4555be1b913238f680cf2c816e20d585db21c11ff41c985915ab0804bb3bc78af2e1e09133ed3b04e276e6379f63e9522064c1
 	b2sums = a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81
@@ -57,7 +57,7 @@ pkgname = certbot-isolated
 	url = https://certbot.eff.org
 	depends = ca-certificates
 	depends = python
-	depends = python-acme-isolated=5.8.0-3
+	depends = python-acme-isolated=5.10.0-1
 	depends = python-configargparse
 	depends = python-configobj
 	depends = python-cryptography
@@ -74,7 +74,7 @@ pkgname = certbot-isolated
 pkgname = certbot-dns-ovh-isolated
 	pkgdesc = OVH DNS Authenticator plugin for Certbot - version with isolated dns-lexicon to avoid conflict with python-lexicon
 	url = https://pypi.python.org/pypi/certbot-dns-ovh
-	depends = certbot-isolated=5.8.0-3
-	depends = python-acme-isolated=5.8.0-3
+	depends = certbot-isolated=5.10.0-1
+	depends = python-acme-isolated=5.10.0-1
 	provides = certbot-dns-ovh
 	conflicts = certbot-dns-ovh
