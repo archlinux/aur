@@ -1,6 +1,6 @@
 pkgbase = dux-qt-base
 	pkgdesc = Quickshell QML runtime as a shared library with a C entry point
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/duxlabs-dev/dux-qt-base
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = dux-qt-base
 	provides = libdux-qt-base.so
 	conflicts = dux-qt-base-git
 	conflicts = dux-qt-base-bin
-	source = dux-qt-base-0.4.0.tar.gz::https://github.com/duxlabs-dev/dux-qt-base/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 0e36c0dcecddab7f708b81aa648b34d7604f157cd8fcb3c1acb6aa31a7cbb8ae
+	source = dux-qt-base-0.4.1.tar.gz::https://github.com/duxlabs-dev/dux-qt-base/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 3242106f61d27c58a252cdde2fd00c7ffab215443347a5fa021cca5e80b99a4f
 
 pkgname = dux-qt-base
