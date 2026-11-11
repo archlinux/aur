@@ -1,5 +1,5 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
-# Contributor: architekton <architekton350@gmail.com>
+# Issues and fixes: https://github.com/shbernal/aur-packages
 
 pkgname=amass
 pkgver=5.1.3
