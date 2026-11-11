@@ -1,0 +1,18 @@
+pkgbase = jerc
+	pkgdesc = Keyboard-driven terminal email client written in Rust
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/HiFiveJazz/jerc
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = rust
+	depends = ca-certificates
+	optdepends = poppler: render PDF attachment previews with pdftoppm
+	optdepends = xdg-utils: open links in the default browser
+	conflicts = jerc-bin
+	options = !lto
+	source = jerc-v0.6.1.tar.gz::https://github.com/HiFiveJazz/jerc/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = cb2423a070988d7e85d1d47238df44c9f6d67cc0e8358d691ee36eb0de1d0122
+
+pkgname = jerc
