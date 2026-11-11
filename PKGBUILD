@@ -1,12 +1,12 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=3
+pkgrel=4
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
 license=('LicenseRef-proprietary')
-# deps re-derived from payload 2026-11-10 (DT_NEEDED + dlopen probes vs core/extra files indexes; runtime-verified in clean archlinux:latest container)
+# deps re-derived from payload 2026-11-11 (DT_NEEDED union + ASCII/UTF-16 dlopen probes vs live core/extra .files indexes; libvlc, libspeechd.so.2, libcurl.so.4, liblivekit_ffi GPU probes all confirmed in shipped binaries)
 depends=('alsa-lib'
          'at-spi2-core'
          'ca-certificates-mozilla'
@@ -108,7 +108,7 @@ run="${XDG_DATA_HOME:-$HOME/.local/share}/rootapp-bin"
 stamp=__STAMP__
 mkdir -p "$run"
 chmod 700 "$run" 2>/dev/null || true
-if [ "$(cat "$run/.stamp" 2>/dev/null || true)" != "$stamp" ]; then
+if [ "$(cat "$run/.stamp" 2>/dev/null || true)" != "$stamp" ] || [ ! -x "$run/Root" ]; then
     cp --reflink=auto "/opt/rootapp-bin/usr/bin/Root" "$run/Root.part"
     chmod 755 "$run/Root.part"
     mv -f "$run/Root.part" "$run/Root"
