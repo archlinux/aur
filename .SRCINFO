@@ -1,6 +1,6 @@
 pkgbase = python-lauterbach-trace32-pystart
 	pkgdesc = start Lauterbach TRACE32
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://pypi.org/project/lauterbach-trace32-pystart
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = python-lauterbach-trace32-pystart
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
 	provides = lauterbach-trace32-pystart
 	conflicts = lauterbach-trace32-pystart
 	replaces = lauterbach-trace32-pystart
-	source = lauterbach_trace32_pystart-0.6.0.tar.gz::https://files.pythonhosted.org/packages/source/l/lauterbach_trace32_pystart/lauterbach_trace32_pystart-0.6.0.tar.gz
-	sha512sums = 7969ba8afc3a6b1147aad5d9c613e3a45b2f7405eeaf86eb002a73b7a77091f86ae05396720c959f8b856382baf5eca08b12d255f3e29d67531ddb2bc7000687
+	source = lauterbach_trace32_pystart-0.7.0.tar.gz::https://files.pythonhosted.org/packages/source/l/lauterbach_trace32_pystart/lauterbach_trace32_pystart-0.7.0.tar.gz
+	sha512sums = 3dbfc6635e6b5eff46dbc2e3cef132cfd7eba5b5f92f13d6b0f99882c99d11d7c04bbb18d0265464bf410b963a252aabe86d15527e6d306bbe712bdc7c5d1e79
 
 pkgname = python-lauterbach-trace32-pystart
