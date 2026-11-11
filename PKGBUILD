@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc' 'libxkbcommon' 'wayland' 'libglvnd')
 optdepends=('xdg-desktop-portal: file picker for profile import/export in the GUI')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a59e9be84e9da66294e1fecda9ad05a752bb25002b611e7208644fd2bb9f1a4')
+sha256sums=('c4d4d8c513a1fe3b5f7bd9895ff853273d94cd3346f1071ea85d55350619c122')
 
 prepare() {
   cd "$pkgname-$pkgver"
