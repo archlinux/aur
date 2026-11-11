@@ -1,0 +1,16 @@
+pkgbase = vanta
+	pkgdesc = Linux game launcher with Wine, Proton and OnlineFix support
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/ArthurSimin/Vanta
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-svg
+	depends = zlib
+	source = vanta-1.3.0.tar.gz::https://github.com/ArthurSimin/Vanta/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = dd9ef3d7225a0b436ffb0c5b79cd48dba7921a4e8857a72f220afd73407c35b1
+
+pkgname = vanta
