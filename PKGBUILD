@@ -1,5 +1,5 @@
 pkgname=legio-launcher-git
-pkgver=0.2.2.r225.gc70a18e
+pkgver=0.3.1.r292.ga4d3808
 pkgrel=1
 epoch=1
 pkgdesc='Legio desktop game launcher (development sources)'
