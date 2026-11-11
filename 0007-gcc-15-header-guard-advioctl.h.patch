@@ -1,0 +1,12 @@
+diff -pNaru5 a/driver/advioctl.h b/driver/advioctl.h
+--- a/driver/advioctl.h	2025-03-07 04:57:02.000000000 -0500
++++ b/driver/advioctl.h	2026-11-09 01:05:10.014652116 -0500
+@@ -1,7 +1,7 @@
+ #ifndef __ADV_IOCTL_H
+-#define __ADVIOCTL_H
++#define __ADV_IOCTL_H
+ #define ADVVCOM_IOC_MAGIC	'A'
+ #define ADVVCOM_IOCGTXHEAD	_IOR(ADVVCOM_IOC_MAGIC, 1, int)
+ #define ADVVCOM_IOCGTXTAIL	_IOR(ADVVCOM_IOC_MAGIC, 2, int)
+ #define ADVVCOM_IOCGTXSIZE	_IOR(ADVVCOM_IOC_MAGIC, 3, int)
+ #define ADVVCOM_IOCGRXHEAD	_IOR(ADVVCOM_IOC_MAGIC, 4, int)

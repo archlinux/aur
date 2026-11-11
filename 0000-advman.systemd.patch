@@ -1,29 +1,23 @@
---- a/script/advman	2018-07-01 23:09:35.220397779 -0400
-+++ b/script/advman	2018-07-01 23:10:19.464063029 -0400
-@@ -1,146 +1,35 @@
+diff -pNaru5 a/script/advman b/script/advman
+--- a/script/advman	2018-11-14 11:29:12.000000000 -0500
++++ b/script/advman	2026-11-09 23:35:17.042134977 -0500
+@@ -1,119 +1,9 @@
  #!/bin/bash
- 
- set -u
- if [ "${EUID}" -ne 0 ]; then
-   echo "Must be root"
-   exit 1
- fi
- 
--COMMAND=0
+ COMMAND=0
 -SCRIPT=$0
--INSTALLPATH=/usr/share/advtty
+-INSTALLPATH=/usr/local/advtty
 -DEAMON=advttyd
 -SERVICE=vcomd
 -DRIVER=advvcom
--CONFIGFILE=/etc/advttyd.conf
+-CONFIGFILE=$INSTALLPATH/advttyd.conf
 -DEAMONFILE=$INSTALLPATH/$DEAMON
--#DKMSFILE=/lib/modules/`uname -r`/updates/dkms/$DRIVER.ko
--#KERNEL=`uname -r|cut -c1-3`
--if false # [ $KERNEL = "2.4" ]
+-DKMSFILE=/lib/modules/`uname -r`/updates/dkms/$DRIVER.ko
+-KERNEL=`uname -r|cut -c1-3`
+-if [ $KERNEL = "2.4" ] 
 -then
 -DRIVERFILE=$INSTALLPATH/$DRIVER.o
 -else
--DRIVERFILE=$DRIVER
+-DRIVERFILE=$INSTALLPATH/$DRIVER.ko
 -fi
 -
 -echo $DRIVERFILE
@@ -46,23 +40,23 @@
 -
 -insdriver()
 -{
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -	echo "inserting kernel moduel $DRIVER.o..."
--	modprobe $DRIVERFILE
--	elif false # [ -e $DKMSFILE ]
+-	insmod $DRIVERFILE
+-	elif [ -e $DKMSFILE ]
 -	then
 -	echo "inserting DKMS module $DRIVER.ko..."
--	modprobe $DKMSFILE
+-	insmod $DKMSFILE
 -	else
 -	echo "inserting kernel moduel $DRIVER.ko..."
--	modprobe $DRIVERFILE
+-	insmod $DRIVERFILE
 -	fi
 -}
 -
 -rmdriver()
 -{
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -	echo "removing kernel moduel $DRIVER..."
 -	rmmod $DRIVER
@@ -81,7 +75,7 @@
 -startDeamon()
 -{
 -	# for 2.4.x kernel, we should make node by myself
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -		i=1
 -		while [[ $i -le 256 ]]
@@ -89,14 +83,14 @@
 -			if [ -z $(awk '$2=="vttyAP"{print $1}' /proc/devices) ]
 -			then
 -				mknod /dev/vttyAP$i c $(awk '$2=="vttyap/%d"{print $1}' /proc/devices) $i
--			else
+-			else			
 -				mknod /dev/vttyAP$i c $(awk '$2=="vttyAP"{print $1}' /proc/devices) $i
--			fi
+-			fi			
 -			((i = i + 1))
 -		done
 -	fi
 -	echo "invoking local deamon..."
--	install -m 700 -oroot -groot -d /tmp/advmon
+-	install -m 777 -d /tmp/advmon
 -	#`$DEAMONFILE`
 -	$DEAMONFILE
 -
@@ -115,7 +109,7 @@
 -#		COUNT=`ps -A|grep $DEAMON -c`
 -#	done
 -	killall -s 9 $DEAMON
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -        	rm -rf /dev/vttyAP*
 -	fi
@@ -127,9 +121,7 @@
  cat << EOF
  usage: $0 options
  
- This script lists helps you manage local advtty service.
- 
- OPTIONS:
+@@ -123,12 +13,12 @@ OPTIONS:
     -h      Show this message
     -o	   Execute objective:
     		start 	- start advtty local service
@@ -144,17 +136,7 @@
  	$0 -o start
  	$0 -o restart
  	$0 -o stop
- 
- EOF
- }
- 
- while getopts 'ho:' OPTION
-@@ -155,61 +44,42 @@ do
-              ;;
-          ?)
- 	     usage
-              exit
-              ;;
+@@ -153,50 +43,36 @@ do
       esac
  done
  
@@ -170,9 +152,10 @@
 -			insdriver
 -			startDeamon
 -		fi
+-		exit 1
 +		systemctl start 'advtty-vcom.service'
- 		# systemd-notify --ready
- 		exit 0
++		# systemd-notify --ready
++		exit 0
  	;;
  	restart)
 -		hasdriver
@@ -185,38 +168,40 @@
 -			insdriver
 -			startDeamon
 -		fi
-+		systemctl reload 'advtty-vcom.service'
- 		# systemd-notify --ready
- 		exit 0
+-		exit 1
 -
++		systemctl reload 'advtty-vcom.service'
++		# systemd-notify --ready
++		exit 0
  	;;
  	stop)
 -		echo stop
 -		stopService
 -		stopDeamon
+-		exit 1
 +		systemctl stop 'advtty-vcom.service'
- 		# systemd-notify --ready
- 		exit 0
++		# systemd-notify --ready
++		exit 0
  	;;
  	insert)
 -		insdriver
+-		exit 1
 +		modprobe 'advvcom'
- 		# systemd-notify --ready
- 		exit 0
++		# systemd-notify --ready
++		exit 0
  	;;
  	remove)
 -		stopService
 -		stopDeamon
 -		rmdriver
 +		systemctl stop 'advtty-vcom.service'
- 		# systemd-notify --ready
- 		exit 0
- 	;;
++		# systemd-notify --ready
++		exit 0
++	;;
 +	*)
 +		usage
-+		exit 1
-+	;;
+ 		exit 1
+ 	;;
  esac
  usage
- 
  

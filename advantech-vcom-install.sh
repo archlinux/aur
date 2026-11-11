@@ -3,12 +3,14 @@ _tp_configps="${_tp_config}.pacsave"
 
 post_upgrade() {
   set -u
-  systemctl daemon-reload
-  # Handle the module update if DKMS doesn't
-  if [ ! -d /usr/src/advtty-vcom-*/ ]; then
+  #systemctl daemon-reload # handled by pacman hook
+  # Handle the module update when not using DKMS
+  if [ "${_opt_DKMS}" -eq 0 ] && [ "${_opt_AutoRestart}" -ne 0 ]; then
     # depmod -a # now done by a pacman hook
     if systemctl -q is-enabled 'advtty-vcom.service'; then
-      systemctl start 'advtty-vcom.service'
+      #systemctl restart 'advtty-vcom.service'
+      # Executed by 35-systemd-enqueue-marked.hook, too early for DKMS
+      systemctl set-property 'advtty-vcom.service' Markers='needs-restart'
     fi
   fi
   set +u
@@ -30,7 +32,7 @@ post_install() {
 
 pre_upgrade() {
   set -u
-  if [ ! -d /usr/src/advtty-vcom-*/ ]; then
+  if [ "${_opt_DKMS}" -eq 0 ] && [ "${_opt_AutoRestart}" -ne 0 ]; then
     systemctl stop 'advtty-vcom.service' # also rmmod the module
   fi
   set +u
@@ -48,6 +50,6 @@ pre_remove() {
 
 post_remove() {
   set -u
-  systemctl daemon-reload
+  #systemctl daemon-reload
   set +u
 }

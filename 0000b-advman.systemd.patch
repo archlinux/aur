@@ -1,31 +1,24 @@
-diff -pNaru10 a/script/advman b/script/advman
---- a/script/advman	2023-01-04 01:54:06.896867183 -0500
-+++ b/script/advman	2023-01-04 01:55:04.966770369 -0500
-@@ -1,148 +1,35 @@
+diff -pNaru5 a/script/advman b/script/advman
+--- a/script/advman	2021-07-15 01:48:25.000000000 -0400
++++ b/script/advman	2026-11-09 23:42:51.709191734 -0500
+@@ -1,121 +1,9 @@
  #!/bin/bash
- 
- set -u
- if [ "${EUID}" -ne 0 ]; then
-   echo "Must be root"
-   exit 1
- fi
- 
--COMMAND=0
+ COMMAND=0
 -SCRIPT=$0
--INSTALLPATH=/usr/share/advtty
+-INSTALLPATH=/usr/local/advtty
 -DEAMON=advttyd
 -SERVICE=vcomd
 -DRIVER=advvcom
 -SSLPROXY=advsslvcom
--CONFIGFILE=/etc/advttyd.conf
+-CONFIGFILE=$INSTALLPATH/advttyd.conf
 -DEAMONFILE=$INSTALLPATH/$DEAMON
--#DKMSFILE=/lib/modules/`uname -r`/updates/dkms/$DRIVER.ko
--#KERNEL=`uname -r|cut -c1-3`
--if false # [ $KERNEL = "2.4" ]
+-DKMSFILE=/lib/modules/`uname -r`/updates/dkms/$DRIVER.ko
+-KERNEL=`uname -r|cut -c1-3`
+-if [ $KERNEL = "2.4" ] 
 -then
 -DRIVERFILE=$INSTALLPATH/$DRIVER.o
 -else
--DRIVERFILE=$DRIVER
+-DRIVERFILE=$INSTALLPATH/$DRIVER.ko
 -fi
 -
 -RETURN=
@@ -46,14 +39,14 @@ diff -pNaru10 a/script/advman b/script/advman
 -
 -insdriver()
 -{
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -	echo "inserting kernel moduel $DRIVER.o ..."
--	modprobe $DRIVERFILE
+-	insmod $DRIVERFILE
 -	elif [ -e $DRIVERFILE ]
 -	then
 -	echo "inserting kernel module $DRIVER.ko ..."
--	modprobe $DRIVERFILE
+-	insmod $DRIVERFILE
 -	else
 -	echo "inserting DKMS moduel $DRIVER ..."
 -	modprobe $DRIVER
@@ -62,7 +55,7 @@ diff -pNaru10 a/script/advman b/script/advman
 -
 -rmdriver()
 -{
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -	echo "removing kernel moduel $DRIVER..."
 -	rmmod $DRIVER
@@ -81,7 +74,7 @@ diff -pNaru10 a/script/advman b/script/advman
 -startDeamon()
 -{
 -	# for 2.4.x kernel, we should make node by myself
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -		i=1
 -		while [[ $i -le 256 ]]
@@ -89,14 +82,14 @@ diff -pNaru10 a/script/advman b/script/advman
 -			if [ -z $(awk '$2=="vttyAP"{print $1}' /proc/devices) ]
 -			then
 -				mknod /dev/vttyAP$i c $(awk '$2=="vttyap/%d"{print $1}' /proc/devices) $i
--			else
+-			else			
 -				mknod /dev/vttyAP$i c $(awk '$2=="vttyAP"{print $1}' /proc/devices) $i
--			fi
+-			fi			
 -			((i = i + 1))
 -		done
 -	fi
 -	echo "invoking local deamon..."
--	install -m 700 -oroot -groot -d /tmp/advmon
+-	install -m 777 -d /tmp/advmon
 -	install -m 777 -d /tmp/advsslmsg
 -	#`$DEAMONFILE`
 -	$DEAMONFILE
@@ -116,7 +109,7 @@ diff -pNaru10 a/script/advman b/script/advman
 -#		COUNT=`ps -A|grep $DEAMON -c`
 -#	done
 -	killall -s 9 $DEAMON
--	if false # [ $KERNEL = "2.4" ]
+-	if [ $KERNEL = "2.4" ] 
 -	then
 -        	rm -rf /dev/vttyAP*
 -	fi
@@ -130,9 +123,7 @@ diff -pNaru10 a/script/advman b/script/advman
  cat << EOF
  usage: $0 options
  
- This script lists helps you manage local advtty service.
- 
- OPTIONS:
+@@ -125,12 +13,12 @@ OPTIONS:
     -h      Show this message
     -o	   Execute objective:
     		start 	- start advtty local service
@@ -147,17 +138,7 @@ diff -pNaru10 a/script/advman b/script/advman
  	$0 -o start
  	$0 -o restart
  	$0 -o stop
- 
- EOF
- }
- 
- while getopts 'ho:' OPTION
-@@ -157,56 +44,38 @@ do
-              ;;
-          ?)
- 	     usage
-              exit
-              ;;
+@@ -155,51 +43,38 @@ do
       esac
  done
  
@@ -174,6 +155,7 @@ diff -pNaru10 a/script/advman b/script/advman
 -			startDeamon
 -		fi
 +		systemctl start 'advtty-vcom.service'
++		# systemd-notify --ready
  		exit 0
  	;;
  	restart)
@@ -188,6 +170,7 @@ diff -pNaru10 a/script/advman b/script/advman
 -			startDeamon
 -		fi
 +		systemctl reload 'advtty-vcom.service'
++		# systemd-notify --ready
  		exit 0
  
  	;;
@@ -196,11 +179,13 @@ diff -pNaru10 a/script/advman b/script/advman
 -		stopService
 -		stopDeamon
 +		systemctl stop 'advtty-vcom.service'
++		# systemd-notify --ready
  		exit 0
  	;;
  	insert)
 -		insdriver
 +		modprobe 'advvcom'
++		# systemd-notify --ready
  		exit 0
  	;;
  	remove)
@@ -208,6 +193,7 @@ diff -pNaru10 a/script/advman b/script/advman
 -		stopDeamon
 -		rmdriver
 +		systemctl stop 'advtty-vcom.service'
++		# systemd-notify --ready
  		exit 0
  	;;
 +	*)

@@ -1,0 +1,9 @@
+diff -pNaru5 a/daemon/state_mach/vc_client_idle.h b/daemon/state_mach/vc_client_idle.h
+--- a/daemon/state_mach/vc_client_idle.h	2025-03-07 04:57:02.000000000 -0500
++++ b/daemon/state_mach/vc_client_idle.h	2026-11-09 01:08:17.242723762 -0500
+@@ -1,4 +1,4 @@
+-#ifndef _VC_CLIENT_IDEL_H
++#ifndef _VC_CLIENT_IDLE_H
+ #define _VC_CLIENT_IDLE_H
+ extern struct vc_ops vc_idle_ops;
+ #endif
