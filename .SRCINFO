@@ -1,0 +1,17 @@
+pkgbase = terratag
+	pkgdesc = Automatically create and maintain tags across AWS, Azure and GCP resources in Terraform
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/env0/terratag
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = go
+	depends = glibc
+	optdepends = opentofu: provider schemas for Terraform files
+	optdepends = terraform: provider schemas for Terraform files
+	optdepends = terragrunt: tagging Terragrunt projects
+	source = terratag-0.8.3.tar.gz::https://github.com/env0/terratag/archive/refs/tags/v0.8.3.tar.gz
+	sha256sums = 74a8f4ca1553cbdd2f9c84dde2312ec0debbbd2093486234fa7a7b107ac8c863
+
+pkgname = terratag
