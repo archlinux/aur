@@ -32,7 +32,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export CARGO_PROFILE_RELEASE_STRIP=false
-  python -m build --wheel --no-isolation -Cbuild-args=--frozen
+  python -m build --wheel --no-isolation -Cbuild-args="--frozen --target $(rustc --print host-tuple)"
 }
 
 package() {
