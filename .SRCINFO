@@ -1,7 +1,7 @@
 pkgbase = gpgfrontend
 	pkgdesc = A modern OpenPGP tool with a unique dual-engine core
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpgfrontend.bktus.com
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -23,7 +23,7 @@ pkgbase = gpgfrontend
 	depends = libsecret
 	depends = libsodium
 	depends = libstdc++
-	depends = openssl
+	depends = openssl-3
 	depends = qt6-base
 	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.2.4
 	source = git+https://github.com/qt/qttranslations.git

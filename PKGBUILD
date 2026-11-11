@@ -3,7 +3,7 @@
 pkgname=gpgfrontend
 _app_id="com.bktus.$pkgname"
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern OpenPGP tool with a unique dual-engine core"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
@@ -19,7 +19,7 @@ depends=(
   'libsecret'
   'libsodium'
   'libstdc++'
-  'openssl'
+  'openssl-3'
   'qt6-base'
 )
 makedepends=(
@@ -78,6 +78,7 @@ prepare() {
 }
 
 build() {
+  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_PROFILE_RELEASE_LTO=true
   export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
