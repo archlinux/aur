@@ -1,7 +1,7 @@
 # Maintainer: Antigravity <antigravity@google.com>
 pkgname=cuda-api-wrappers-git
 _pkgname=cuda-api-wrappers
-pkgver=0.8.2.r0.gc2f2a2b
+pkgver=0.9.0.r0.g3583bef
 pkgrel=1
 pkgdesc="Thin, unified, C++-flavored wrappers for the CUDA APIs"
 arch=('x86_64')
