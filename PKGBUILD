@@ -7,7 +7,7 @@
 #   paru -Ui        (oder)   yay -Bi .
 pkgname=dream-voicetraining
 _repo=Dream-VoiceTraining          # das GitHub-Archiv entpackt unter diesem Namen
-pkgver=1.1.7
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Voice analysis for training your speaking voice: pitch, formants, resonance and voice quality"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d2f38c0aacbe6e7b6f39e08f6879ec94fc48ffa045a955ce4a9b110008453627')
+sha256sums=('f1e9f02cca7606cc989ff34ad55035c9d6db5a5a4ad74c0262d5a4d84cff5c8e')
 
 check() {
   cd "$srcdir/$_repo-$pkgver"
@@ -48,6 +48,7 @@ package() {
   for dir in core voice ui; do
     install -Dm644 "$dir"/*.py -t "$pkgdir/usr/lib/$pkgname/$dir"
   done
+  install -Dm644 locales/*.json -t "$pkgdir/usr/lib/$pkgname/locales"
 
   # Bildschirmfotos der Einfuehrung liegen neben main.py, dort sucht
   # paths.intro_shot() zuerst.
