@@ -1,7 +1,7 @@
 # Maintainer: dnt_tnd dnt_arch@proton.me
 
 pkgname=pd2-trade-bin
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Project Diablo 2 app for price checking"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("PD2.Trader_${pkgver}_amd64.deb::${url}/releases/download/app-v${pkgver}/PD2.Trader_${pkgver}_amd64.deb")
-sha256sums_x86_64=('625836ba957a33915167a3dbc06fa5687e3da0e598cd20e042d8a8b8c19fe90a')
+sha256sums_x86_64=('f530d23bf939d5ed3052d3fa4c07777523104aaea00efb97b64ccb717855c68d')
 
 package() {
   # Extract package data
