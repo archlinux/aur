@@ -3,7 +3,7 @@
 pkgname=zigfetch-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.32.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Zigfetch is a minimal neofetch/fastfetch like system information tool.'
 arch=('x86_64')
 url='https://github.com/utox39/zigfetch'
@@ -16,7 +16,7 @@ options=('!debug')
 depends=('pciutils')
 
 source=(
-	"${url}/releases/download/v${pkgver}/zigfetch-${arch}-linux.zip"
+	"${pkgname}-${arch}-${pkgver}.zip::${url}/releases/download/v${pkgver}/zigfetch-${arch}-linux.zip"
 	"LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 	"README-${pkgver}.md::${_ghurlraw}/README.md"
 	"${_ghurlraw}/config.json"
