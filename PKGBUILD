@@ -1,21 +1,26 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile' 'renderd')
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
 url='https://github.com/openstreetmap/mod_tile'
 license=('GPL-2.0-or-later')
 optdepends=('libmemcached: Memcached tile storage support')
-makedepends=('apache' 'apr' 'cmake' 'glib2' 'iniparser' 'mapnik')
+makedepends=('apache'
+             'apr'
+             'cmake'
+             'glib2'
+             'iniparser'
+             'mapnik')
 checkdepends=('curl' 'jq')
 source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
         'renderd.service'
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
-sha256sums=('f7245d315e265eb75acf06d1a7fdd35cd17e9f6d4a9e6022b96cd65f819ac008'
+sha256sums=('909ba5c52aec27f8b6998843f5df1c4ae271e470d047952ad7ff8dc68733be1f'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
@@ -30,7 +35,7 @@ prepare() {
 
   export CXXFLAGS CFLAGS LDFLAGS
   cmake -B build -S mod_tile \
-    -D CMAKE_CXX_STANDARD:STRING=17 \
+    -D CMAKE_BUILD_TYPE:STRING=Release \
     -D CMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D CMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
@@ -47,9 +52,9 @@ build() {
 }
 
 check() {
-  export CTEST_PARALLEL_LEVEL=${CTEST_PARALLEL_LEVEL:-$(nproc)}
   ctest \
     --output-on-failure \
+    --parallel \
     --test-dir build
 }
 
