@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=lanlink
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A small KDE Connect alternative: daemon and TUI in one Rust binary'
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,12 @@ url='https://github.com/adelmonte/lanlink'
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-optdepends=('sshfs: browse the phone from the computer')
+optdepends=('sshfs: browse the phone from the computer'
+            'wl-clipboard: clipboard sending and receiving on Wayland'
+            'xclip: clipboard sending and receiving on X11')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('15e01de2c56b35f5c9535a5db4a6c48eaacd6c0873e753770cd2b6b36a029a2a')
+sha256sums=('d9923a9ae452c9ea713a860ad826b788fc5673bee9beda32391dd6156128fb14')
 
 prepare() {
   cd "$pkgname-$pkgver"
