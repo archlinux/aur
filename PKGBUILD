@@ -1,6 +1,6 @@
 # Maintainer: HexRebel (AUR: rebellen) <200467570+HexRebel@users.noreply.github.com>
 pkgname=mascot
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Shimeji-style desktop mascots for Wayland that you can talk to (a chat bubble for local or hosted language models)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("$pkgname::git+https://github.com/HexRebel/mascot.git#tag=v$pkgver"
         "py-qoi::git+https://github.com/mathpn/py-qoi.git")
 # The tag's checksum (makepkg -g after tagging, pacman 6.1 or newer): a tag moved
 # later does not build. The others only give the submodules, which Mascot pins
-sha256sums=('2f66e9319bbad23e559a8f1dc4b1a0debcd8d5bb3822b4a0ad7ddc98e9e74556'
+sha256sums=('5c984442f75ad4ce22f0aa106ea90d89fb876a5c86155f4abbf1e08e5ed43395'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -44,5 +44,6 @@ package() {
     make PREFIX=/usr DESTDIR="$pkgdir" install
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
     install -Dm644 prototypes/Shimeji.Robo/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/Robo-CC0.txt"
+    install -Dm644 prototypes/Shimeji.Owl/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/Owl-CC0.txt"
     install -Dm644 prototypes/Shimeji.Shimeji/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/Shimeji.txt"
 }
