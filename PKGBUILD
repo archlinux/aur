@@ -3,7 +3,7 @@
 
 pkgname=b4-bin
 pkgver=1.90.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Network packet processor with a friendly UI for circumventing Deep Packet Inspection (DPI) systems"
 arch=('x86_64' 'i686' 'aarch64' 'riscv64' 'loong64' 'ppc64' 'ppc64le' 's390x')
 url="https://github.com/DanielLavrushin/b4"
@@ -37,8 +37,6 @@ sha256sums_ppc64=('047826df67caefe4dba21ffa6cc1ab30e941e2356355178d7a46630c0dc3d
 sha256sums_ppc64le=('1e566c2c269a93157e0206b2dc80d8b25a4c3f6f424a46991d2052a360cc7917')
 sha256sums_s390x=('d63fd5f81bb4f5946bc37cb98defaee2e56977c98f7e0796ecf25a2b070d7205')
 
-backup=('etc/b4/b4.json')
-
 package() {
     case "$CARCH" in
         x86_64)  _tarball="${pkgname}-${pkgver}-x86_64.tar.gz" ;;
@@ -58,5 +56,4 @@ package() {
     tar -xzf "${srcdir}/${_tarball}" -C "${srcdir}"
     install -Dm755 "${srcdir}/${_bin}" "${pkgdir}/usr/bin/b4"
     install -Dm644 "${srcdir}/b4.service" "${pkgdir}/usr/lib/systemd/system/b4.service"
-    install -dm755 "${pkgdir}/etc/b4"
 }
