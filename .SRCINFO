@@ -1,6 +1,6 @@
 pkgbase = ordo
 	pkgdesc = Terminal-first, single-user project planning tool
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://github.com/ilyasturki/ordo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ordo
 	makedepends = go
 	provides = ordo
 	conflicts = ordo-bin
-	source = ordo-0.14.2.tar.gz::https://github.com/ilyasturki/ordo/archive/v0.14.2.tar.gz
-	sha256sums = c0295e5fe78bfb945eb986dee2e0edfe4c48023fe24024d142f13fbba31584d1
+	source = ordo-0.14.3.tar.gz::https://github.com/ilyasturki/ordo/archive/v0.14.3.tar.gz
+	sha256sums = 012b99de00db6e6c811b614301005db7daf03ca783d69b06206234d0d374d91e
 
 pkgname = ordo
