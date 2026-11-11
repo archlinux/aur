@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=hitokoto
+GenericName=Markdown Editor
+Comment=A native, single-file hybrid Markdown editor
+Exec=hitokoto %F
+Icon=hitokoto
+Terminal=false
+Categories=Office;WordProcessor;
+MimeType=text/markdown;text/x-markdown;
+StartupNotify=true
+StartupWMClass=hitokoto
+Keywords=markdown;editor;notes;text;
