@@ -6,7 +6,7 @@
 
 pkgname=python-textual-image
 _pkgname=textual-image
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="Render images in the terminal with Textual and Rich"
 arch=('any')
@@ -35,15 +35,17 @@ checkdepends=(
 )
 source=("https://github.com/lnqs/textual-image/archive/refs/tags/v${pkgver}.tar.gz")
 license=('LGPL-3.0-or-later')
-sha256sums=('a7a9fc7432771919f4b8c9639acd832553150f8cd380d7b8068427a24269af7c')
+sha256sums=('f892182096f3978b909f651a249e4e40e1b849ae70b58078c2e65e787a5f25cf')
 
 build() {
   cd "${_pkgname}-${pkgver}"
+
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "${_pkgname}-${pkgver}"
+
   export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   export PYTEST_PLUGINS="pytest_asyncio.plugin,syrupy"
   pytest
@@ -51,6 +53,7 @@ check() {
 
 package() {
   cd "${_pkgname}-${pkgver}"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
 }
