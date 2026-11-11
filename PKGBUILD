@@ -20,7 +20,12 @@ latestver() {
     # icon payload identical) and pacman sorts it OLDER than the base version;
     # strip it. A new real version published only as buildN will surface
     # loudly as asset-missing if its bare tarball doesn't exist.
-    curl -fsSL 'https://api.launchpad.net/1.0/ubuntu/+archive/primary?ws.op=getPublishedSources&source_name=humanity-icon-theme&exact_match=true&status=Published' |
+    # Launchpad answers in under a second when healthy but stalls or resets the
+    # connection under load, so each attempt is bounded and retried: three
+    # 20-second attempts stay under the version check's own 90-second cap and
+    # fail with curl's error, which names the cause, instead of a bare timeout.
+    curl -fsSL --max-time 20 --retry 2 --retry-delay 2 --retry-all-errors \
+        'https://api.launchpad.net/1.0/ubuntu/+archive/primary?ws.op=getPublishedSources&source_name=humanity-icon-theme&exact_match=true&status=Published' |
         jq -r '.entries[].source_package_version' | sed 's/build[0-9]*$//' |
         sort -V | tail -1
 }
