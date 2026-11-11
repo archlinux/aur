@@ -2,8 +2,8 @@
 AppName=SynthMultiViewer
 appid=synthmultiviewer
 pkgname=${appid}-appimage
-pkgver=1.4
-pkgrel=1.2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Cross-platform editor and viewer for VapourSynth and AviSynth"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mysteryx93/SynthMultiViewer"
@@ -19,8 +19,8 @@ _src_aarch64="${pkgname}-${pkgver}-${pkgrel}-aarch64.AppImage"
 source_x86_64=("${_src_x86_64}::https://github.com/mysteryx93/SynthMultiViewer/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
 source_aarch64=("${_src_aarch64}::https://github.com/mysteryx93/SynthMultiViewer/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_arm64.AppImage")
 noextract=("${_src_x86_64}" "${_src_aarch64}")
-sha256sums_x86_64=('14230fddd14e8b36213e8b5a1a780d1ec95ad8de1bb4711a713b000f590cc80c')
-sha256sums_aarch64=('211cab4eabf9fdfcb922fe82a6b0bd7db2d98ff077b9d53e5d55169e41a882b7')
+sha256sums_x86_64=('95b1a52b2c333417c27b50c454667ac2c3b85de01a99d7d310bf3897ece9aeef')
+sha256sums_aarch64=('243701bb4a577d64c14fbf2f218413dfc0e9e5c4c7491adf9ec2213c8e6a57c1')
 
 _appimage() {
     case "$CARCH" in
@@ -37,8 +37,11 @@ prepare() {
 }
 
 build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${appid} %u|"\
+    # Pupnet writes Exec=/usr/bin/SynthMultiViewer. prepare() rewrites that path.
+    # Launching the AppImage must not install a second desktop file and icon under ~/.local.
+    sed -i -E "s|^Exec=.*|Exec=env DESKTOPINTEGRATION=false /usr/bin/${appid} %F|" \
+        "squashfs-root/${appid}.desktop"
+    sed -i -E "s|^X-AppImage-Integrate=.*|X-AppImage-Integrate=false|" \
         "squashfs-root/${appid}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
