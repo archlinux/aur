@@ -3,7 +3,7 @@
 #Maintainer: lifespirit <life at crabs dot com>
 
 pkgname="mongodb90-bin"
-pkgver="9.0.4"
+pkgver="9.0.8"
 _basever="9.0"
 _basedist="resolute"
 pkgrel=1
@@ -41,10 +41,10 @@ sha256sums=('47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
 
-sha256sums_x86_64=('b70284cda1682f3013c6941fec480833fb6cc3a13f20d12d96b163c59409daaf'
-                   'e5e8de048d408cd2585df91bfc28af3cded6536b920251d1845e3f0e800b75b4')
-sha256sums_aarch64=('faba92b12c3e8289a4f4cbd7c66f89ee4c69538a57820181ef77a342a86cbb08'
-                    '35ac17be33f728aa1712bed764234575cafeb29cde9a83bbd6beffedbabaa01b')
+sha256sums_x86_64=('bc5af0743d44c0715a85620d7de502cc7f72d58fc6491468cc55afac63beca9c'
+                   'cd10e4327d25e0e5dcd8d0b9a7657f4c7bf94c94074cde9a5a59b3336d897a78')
+sha256sums_aarch64=('b83a7d02243805ba3569767ccc0a52edb0ab371b2c3d2a644030a244a1b02e37'
+                    '32d17b5c91adf261646ea759964eeac4ee6501518abc8a04bed2ff308f2d6826')
 
 prepare() {
 	mkdir -p output
