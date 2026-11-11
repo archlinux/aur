@@ -1,0 +1,25 @@
+pkgbase = firecracker-guest-kernel
+	pkgdesc = Linux guest kernel for Firecracker microVMs
+	pkgver = 6.18.62.127.178
+	pkgrel = 1
+	url = https://github.com/firecracker-microvm/firecracker/blob/main/docs/kernel-policy.md
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = bc
+	makedepends = libelf
+	makedepends = openssl
+	makedepends = perl
+	options = !debug
+	options = !strip
+	source = kernel6.18-6.18.62-127.178.amzn2023.tar.gz::https://github.com/amazonlinux/linux/archive/refs/tags/kernel6.18-6.18.62-127.178.amzn2023.tar.gz
+	source = firecracker-1.18.0-microvm-kernel-ci-x86_64-6.18.config::https://raw.githubusercontent.com/firecracker-microvm/firecracker/v1.18.0/resources/guest_configs/microvm-kernel-ci-x86_64-6.18.config
+	source = firecracker-1.18.0-ci.config::https://raw.githubusercontent.com/firecracker-microvm/firecracker/v1.18.0/resources/guest_configs/ci.config
+	source = firecracker-1.18.0-nvme.config::https://raw.githubusercontent.com/firecracker-microvm/firecracker/v1.18.0/resources/guest_configs/nvme.config
+	source = firecracker-1.18.0-efi.config::https://raw.githubusercontent.com/firecracker-microvm/firecracker/v1.18.0/resources/guest_configs/efi.config
+	sha256sums = b7109e283717d0a068fb5d2b7596e2825c011ea1293d0db652fb72980ae8fb36
+	sha256sums = ba22401a0c7292a4c024ebcd10a562d4a1f1bfd2faed671406d3b159c0cf5215
+	sha256sums = 6ce47107d9fb695a873ffc4733a1d8e1b4941c4f272e20dac4bf163dfb77f47e
+	sha256sums = 4bdf0432753742401ad07fee1bb62478be8066434b84aedc4150766a7ff1eecd
+	sha256sums = ef237613d79df5f9df03ff0cb873a43c9558245081824568c35b074d44d3ebd6
+
+pkgname = firecracker-guest-kernel
