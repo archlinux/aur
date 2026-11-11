@@ -2,7 +2,7 @@
 
 pkgname=uu-remote-linux
 pkgver=0.2.57
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Linux host for NetEase UU Remote (remote desktop)'
 arch=('x86_64')
 url='https://github.com/VallierDev/uu-remote-linux'
@@ -45,7 +45,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('d97db5a93d6cfd71b1973a41694032d6b81d1f894f6359ffa93b3b2b871cb04b'
             '3cff7ebb654c1f9a2434bc80ce4442d5fd0b0e6ff79462f7e3a20271d05d3c98'
             '2752412c9c2ddbffa4d5882be06a2f10d7ee590c3d1f3b16bf37ea5c1b8d1f34')
-options=('!lto')
+options=('!lto' '!debug')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
