@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/vnd.mathworks.matlab.mlx">
+        <comment>MatLivre Live Script</comment>
+        <sub-class-of type="application/zip"/>
+        <icon name="matlivre"/>
+        <glob pattern="*.mlx"/>
+    </mime-type>
+</mime-info>
