@@ -1,6 +1,6 @@
 pkgbase = nekomote
 	pkgdesc = A native 2D model runtime and live wallpaper for Linux.
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://www.nekopara.uk/archives/NekoMote.html
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = nekomote
 	makedepends = stb
 	makedepends = glad
 	makedepends = libxrandr
+	makedepends = qt6-tools
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -33,11 +34,11 @@ pkgbase = nekomote
 	depends = glfw
 	optdepends = libplasma: Use the KDE Wallpaper
 	optdepends = python: Extract assets from Nekopara Game
-	optdepends = nekomote-assets=0.5.5: Managed assets
+	optdepends = nekomote-assets=0.5.6: Managed assets
 	optdepends = libxrandr: Using wallpaper in the X11 session
-	source = git+https://github.com/Chocola-X/NekoMote.git#tag=v0.5.5
+	source = git+https://github.com/Chocola-X/NekoMote.git#tag=v0.5.6
 	source = 0003-fix-test-flags.diff
-	sha256sums = 1da3d65033b38ca144c2b24c90c5be6f538ffec3edb67546e5efecf264c37a00
+	sha256sums = f6d05aeae817771fca9376b313c046d90ade2e01e5131a8e60d66ea123c7d6c4
 	sha256sums = ea311d5381df1d1076ee728d25309322738b83fb72531c2072a76b78acc862ad
 
 pkgname = nekomote

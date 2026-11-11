@@ -1,5 +1,5 @@
 pkgname=nekomote
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="A native 2D model runtime and live wallpaper for Linux."
 arch=(x86_64)
@@ -7,7 +7,7 @@ url=https://www.nekopara.uk/archives/NekoMote.html
 license=(AGPL-3.0-only)
 depends=(glibc libgcc libstdc++ libglvnd wayland vulkan-icd-loader fontconfig libpng zlib libpulse glfw)
 makedepends=(git cmake extra-cmake-modules nlohmann-json vulkan-headers glslang python-jinja
-             libplasma fast_float stb glad libxrandr)
+             libplasma fast_float stb glad libxrandr qt6-tools)
 checkdepends=(catch2 python-pillow nodejs)
 optdepends=('libplasma: Use the KDE Wallpaper'
             'python: Extract assets from Nekopara Game'
@@ -15,7 +15,7 @@ optdepends=('libplasma: Use the KDE Wallpaper'
             'libxrandr: Using wallpaper in the X11 session')
 source=("git+https://github.com/Chocola-X/NekoMote.git#tag=v${pkgver}"
         "0003-fix-test-flags.diff")
-sha256sums=('1da3d65033b38ca144c2b24c90c5be6f538ffec3edb67546e5efecf264c37a00'
+sha256sums=('f6d05aeae817771fca9376b313c046d90ade2e01e5131a8e60d66ea123c7d6c4'
             'ea311d5381df1d1076ee728d25309322738b83fb72531c2072a76b78acc862ad')
 
 
