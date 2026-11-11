@@ -1,7 +1,7 @@
 # Maintainer: Faizan Asad <m.faizanasad97@gmail.com>
 
 pkgname=zuno
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="YouTube Music as a focused desktop app — tabs, offline downloads, synced lyrics"
 arch=('x86_64')
@@ -54,7 +54,7 @@ conflicts=('zuno-bin')
 options=('!strip' '!emptydirs')
 
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Zuno_${pkgver}_amd64.deb")
-sha256sums=('bc4c0eb87ba2f3bc90dfbb3d5740df43ab4faa8c30b9ddcb1bbaf316afd4756a')
+sha256sums=('de11f4a880e08c96c4957bfb7a7c61300844277297da516c9599e5a93077aaf2')
 
 package() {
   # bsdtar reads the ar archive and the inner tarball without needing dpkg installed.
