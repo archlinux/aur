@@ -1,6 +1,6 @@
 pkgbase = 0c-ime
 	pkgdesc = Zhuyin (Bopomofo) input method with statistical and neural candidate selection, for Fcitx5 and IBus
-	pkgver = 0.2.9
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://github.com/0c-biggo/0c-ime
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = 0c-ime
 	optdepends = python: neural candidate selection and punctuation
 	optdepends = python-numpy: neural candidate selection and punctuation
 	optdepends = python-onnxruntime: neural candidate selection and punctuation
-	source = https://github.com/0c-biggo/0c-ime/releases/download/v0.2.9/0c-ime-0.2.9.tar.xz
-	sha256sums = 67bf34104ae52953f5b9fb586e2320c262e4a7907692b288598853db6cde1b96
+	source = https://github.com/0c-biggo/0c-ime/releases/download/v0.2.11/0c-ime-0.2.11.tar.xz
+	sha256sums = ff16d6e878ec5948856a7f6a92fda020dca3735a31de7090111104cb033b0d45
 
 pkgname = 0c-ime
