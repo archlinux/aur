@@ -5,7 +5,7 @@
 # Contributor: b4283 <unknown@unknowndomain.com>
 
 pkgname=spike-git
-pkgver=r4235.4ffd6ba8
+pkgver=r4442.020edce6
 pkgrel=1
 pkgdesc="Spike, a RISC-V ISA Simulator"
 arch=(x86_64)
@@ -20,9 +20,13 @@ source=('git+https://github.com/riscv-software-src/riscv-isa-sim')
 md5sums=('SKIP')
 noextract=()
 
-pkgver() {
+prepare() {
   cd "$srcdir/riscv-isa-sim"
   git submodule update --init --recursive
+}
+
+pkgver() {
+  cd "$srcdir/riscv-isa-sim"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
