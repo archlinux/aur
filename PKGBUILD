@@ -3,7 +3,7 @@
 # Prospero: a new coding harness for a more civilized age
 # https://nullprogram.com/blog/2026/10/31/
 pkgname=prospero-bin
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Native GUI for running and supervising AI coding agents (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ conflicts=('prospero')
 options=(!strip !debug)
 source_x86_64=("$url/releases/download/v$pkgver/prospero-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/prospero-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('8a71640eb2fede4935c53133476c9734079adc80b4a4bcf5567e47d9e22cc0a6')
-sha256sums_aarch64=('b8f888263bec76d110e26fd4964f92ed6f8e5ab8b3f279076f5d98a2383fcd10')
+sha256sums_x86_64=('033f006bc0d668920d42f1a7a5c399c997a180501adfeb5941aabf13d9cfb0db')
+sha256sums_aarch64=('49efbcc17d120d2fd823baad78fbe4accb4a872c83124970f18a0862fdbd0efe')
 
 package() {
   cd "$srcdir/prospero-$pkgver-linux-$CARCH"
