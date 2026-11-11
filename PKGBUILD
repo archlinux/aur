@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='tequilashot-bin'
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Tequilashot - screenshots and screen recording for Wayland'
 url='https://github.com/chmouel/tequilashot'
@@ -14,7 +14,7 @@ depends=('gtk4' 'libadwaita>=1:1.9' 'libgirepository')
 optdepends=('gtk4-layer-shell: round camera bubble')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/tequilashot/releases/download/v${pkgver}/tequilashot_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('476a4295968ae09481686c799508913284d61d6a82d370cc6502986b6a01410c')
+sha256sums_x86_64=('6a5d133664fb3c093cd24a66929a5e97cdb38531a4c2ebd83c869c161d4d9b28')
 
 package() {
   install -Dm755 "./tequilashot" "${pkgdir}/usr/bin/tequilashot"
