@@ -2,7 +2,7 @@
 
 pkgname=minimax-code
 _pkgname='@minimax-ai/code'
-pkgver=0.6.3
+pkgver=0.7.6
 pkgrel=1
 # upstream optionalDependencies pin
 _better_sqlite3_ver=12.11.1
@@ -34,6 +34,9 @@ prepare() {
   install -dm755 app
   cd app
 
+  # 放一个空 package.json，避免 npm 向上找到上层目录的项目文件把依赖装到别处
+  printf '{"private":true}\n' > package.json
+
   # 固定用系统 /usr/bin/node 附带的 npm 安装，保证后面编译的原生绑定和运行时 ABI（Node 内部模块版本）一致
   PATH="/usr/bin:/usr/sbin:/bin" /usr/bin/npm install \
     --ignore-scripts \
@@ -49,16 +52,20 @@ prepare() {
 
   cd "${srcdir}/app/node_modules"
 
-  # ripgrep 和剪贴板库带了各平台预编译包，只保留当前架构用到的
-  local keep_rid keep_cid entry
+  # 带各平台预编译包的依赖，只保留当前架构用到的
+  local keep_rid keep_cid keep_nid keep_cud entry
   case "${CARCH}" in
     x86_64)
       keep_rid='ripgrep-linux-x64'
       keep_cid='clipboard-linux-x64-gnu'
+      keep_nid='node-linux-x64-gnu'
+      keep_cud='cua-driver-linux-x64-gnu'
       ;;
     aarch64)
       keep_rid='ripgrep-linux-arm64'
       keep_cid='clipboard-linux-arm64-gnu'
+      keep_nid='node-linux-arm64-gnu'
+      keep_cud='cua-driver-linux-arm64-gnu'
       ;;
     *)
       printf 'unsupported architecture: %s\n' "${CARCH}" >&2
@@ -66,12 +73,16 @@ prepare() {
       ;;
   esac
 
-  for entry in @vscode/ripgrep-* @mariozechner/clipboard-*; do
+  for entry in @vscode/ripgrep-* @mariozechner/clipboard-* @ubjs/node-* @trycua/cua-driver-*; do
     case "${entry}" in
-      "@vscode/${keep_rid}"|"@mariozechner/${keep_cid}") ;;
+      "@vscode/${keep_rid}"|"@mariozechner/${keep_cid}"|"@ubjs/${keep_nid}"|"@trycua/${keep_cud}") ;;
       *) rm -rf "${entry}" ;;
     esac
   done
+
+  # 嵌入的 computer-use 应用和 mcode-tools 原生模块只有 macOS / Windows 版
+  rm -rf "${srcdir}/app/node_modules/${_pkgname}/embedded/computer-use" \
+    "${srcdir}/app/node_modules/${_pkgname}/embedded/mcode-tools/native"
 
   # macOS / Windows 的原生小模块和 Windows 启动脚本在 Linux 上不会被加载
   rm -rf "${srcdir}/app/node_modules/${_pkgname}/native/darwin" \

@@ -1,6 +1,6 @@
 pkgbase = minimax-code
 	pkgdesc = MiniMax Code terminal AI coding agent (mcode CLI)
-	pkgver = 0.6.3
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://agent.minimax.cn/download
 	arch = x86_64
