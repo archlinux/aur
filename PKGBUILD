@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=hclient-cli-bin
-pkgver=1.5.1
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Lazycat Microserver CLI client (懒猫微服命令行客户端)"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,9 +13,9 @@ source_x86_64=("${pkgname}-${pkgver}-amd64::https://dl.lazycatmicroserver.com/hc
 source_aarch64=("${pkgname}-${pkgver}-arm64::https://dl.lazycatmicroserver.com/hclient-cli/v${pkgver}/hclient-cli-linux-arm64")
 source_riscv64=("${pkgname}-${pkgver}-riscv64::https://dl.lazycatmicroserver.com/hclient-cli/v${pkgver}/hclient-cli-linux-riscv64")
 
-sha256sums_x86_64=('a0cdebcb652bdae4ba26ff96827c558f368af0673ad910545b4499f9897cfa6c')
-sha256sums_aarch64=('348c55c87a4c345ea9c0591eba308e7b286b34096543b1e47e4e2457c5832ede')
-sha256sums_riscv64=('32af44f2adda9a4cc696716a6512f176f63e627347f1918e8ec876ee4cf55404')
+sha256sums_x86_64=('db86594506460be52408ccf7351a63e5cb7099052d068db07e1b20daaa7dc9d2')
+sha256sums_aarch64=('05a99aeba33d769fce091d1d554558987dede17bf87b0af4e819fef585f30e41')
+sha256sums_riscv64=('42ba24372dec402b940547add39ebdcb0122186c223b7b39812e256ef43ab6a0')
 
 package() {
     case "$CARCH" in

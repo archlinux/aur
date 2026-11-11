@@ -1,6 +1,6 @@
 pkgbase = hclient-cli-bin
 	pkgdesc = Lazycat Microserver CLI client (懒猫微服命令行客户端)
-	pkgver = 1.5.1
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://lazycat.cloud/download
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = hclient-cli-bin
 	license = MIT
 	provides = hclient-cli
 	conflicts = hclient-cli
-	source_x86_64 = hclient-cli-bin-1.5.1-amd64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.1/hclient-cli-linux-amd64
-	sha256sums_x86_64 = a0cdebcb652bdae4ba26ff96827c558f368af0673ad910545b4499f9897cfa6c
-	source_aarch64 = hclient-cli-bin-1.5.1-arm64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.1/hclient-cli-linux-arm64
-	sha256sums_aarch64 = 348c55c87a4c345ea9c0591eba308e7b286b34096543b1e47e4e2457c5832ede
-	source_riscv64 = hclient-cli-bin-1.5.1-riscv64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.1/hclient-cli-linux-riscv64
-	sha256sums_riscv64 = 32af44f2adda9a4cc696716a6512f176f63e627347f1918e8ec876ee4cf55404
+	source_x86_64 = hclient-cli-bin-1.5.7-amd64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.7/hclient-cli-linux-amd64
+	sha256sums_x86_64 = db86594506460be52408ccf7351a63e5cb7099052d068db07e1b20daaa7dc9d2
+	source_aarch64 = hclient-cli-bin-1.5.7-arm64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.7/hclient-cli-linux-arm64
+	sha256sums_aarch64 = 05a99aeba33d769fce091d1d554558987dede17bf87b0af4e819fef585f30e41
+	source_riscv64 = hclient-cli-bin-1.5.7-riscv64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.7/hclient-cli-linux-riscv64
+	sha256sums_riscv64 = 42ba24372dec402b940547add39ebdcb0122186c223b7b39812e256ef43ab6a0
 
 pkgname = hclient-cli-bin
