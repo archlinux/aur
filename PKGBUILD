@@ -1,8 +1,9 @@
-# Maintainer: MiguVT <contacto@miguvt.com>
+# Maintainer: ohli <olifriedrich at gmail dot com>
+# Previous maintainer: MiguVT <contacto@miguvt.com>
 # Previous maintainer: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -11,20 +12,22 @@ license=(GPL-3.0-or-later)
 depends=(
   dconf
   glib2
-  gstreamer
   gst-plugins-base
   gst-plugins-good
+  gstreamer
   gtk4
   hicolor-icon-theme
   libadwaita
   libportal
   libsecret
+  org.freedesktop.secrets
   python
   python-gobject
-  'python-tidalapi>=0.8.6'
-  org.freedesktop.secrets
-  xdg-desktop-portal
   python-pypresence
+  python-requests
+  'python-tidalapi>=0.8.6'
+  python-urllib3
+  xdg-desktop-portal
 )
 optdepends=(
   'alsa-utils: Advanced details in ALSA device picker'
@@ -35,8 +38,8 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nokse22/high-tide/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0fcc6d192bc24b2e9c22d74d35cb244ee7f003b9de1b9ca29b945dbff2f58a69')
-b2sums=('09f3209c7f33c2753705445f23d7a1dda5aab29600b9ece0542c0ca1a6fb434ed5ebb34711c3c9b951f585b3e296f8f829144906f30679feed196b862a488207')
+sha256sums=('c1b547c3430a3d1d9996a2c7eacb1f2932ee1a09ba35a781d9ac0255e9c0b810')
+b2sums=('4b626a65e9906eabd69e3085ccef4317a02da1628f2847fc32f693792d4895fcef25f49349f45d80150dfed61a2b7275045121db0de5ad0d95eeeeb8797a1ef9')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
@@ -44,7 +47,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs ||:
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
