@@ -1,6 +1,6 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=herdr-core-bin
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc='Background server that keeps Herdr terminals and coding agents running'
 url='https://herdr.dev/core/'
@@ -27,8 +27,8 @@ source_x86_64=(
 source_aarch64=(
     "$pkgname-$pkgver-aarch64.tar.gz::https://releases.herdr.dev/core/$pkgver/herdr-core-linux-aarch64.tar.gz"
 )
-sha256sums_x86_64=('4adcfb423d52f24c5cc4a1e2cd2fcad1f62d28bb77876ac472c29082a3eaa424')
-sha256sums_aarch64=('f95c34fd7177ed58807d74fe4ee78bb3dc73eb37f21c69496064000a21abcb10')
+sha256sums_x86_64=('ac6b86890c451a37584620aaa438b71bc0d0bd430a2e7c1d7e095f052c414e74')
+sha256sums_aarch64=('5f3037379d15cc76cfc72d2fd1a4262ea1c5b24df278bf7cfd8adcff7b914862')
 
 package() {
     install -Dm755 "$srcdir/herdr-core" "$pkgdir/usr/bin/herdr-core"
