@@ -1,5 +1,5 @@
 pkgname=mingw-w64-lz4
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='Very fast lossless compression algorithm (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/lz4/lz4/archive/v${pkgver}.tar.gz")
-sha256sums=('247e5fa64da5f7b75ee3dd3bed484076396c9ebe8254d9ccf693eb62800c5e26')
+sha256sums=('683fed08a844ad012196381e40badf80c0bbe4962959761416d41c9e67d77ec7')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
