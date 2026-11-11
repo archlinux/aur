@@ -12,7 +12,7 @@
 # package, so an RC or preview build would downgrade every Arch user.
 
 pkgname=vibex-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Local-first AI coding workbench: Agent sessions, Git, terminals, and previews'
 arch=('x86_64' 'aarch64')
@@ -55,11 +55,11 @@ source_aarch64=(
   "vibex-${pkgver}-LICENSE::https://raw.githubusercontent.com/vibex-ai/vibex/v${pkgver}/LICENSE"
 )
 sha256sums_x86_64=(
-  '89e64dcff0a209d2f5ef2b0fd74434f7c75e5c4dd5b67b13b75cb992348c7d75'
+  '0c783b838fa547b57042d0e03aac5338bb2536ba035bb7925030e37ba248b576'
   '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
 )
 sha256sums_aarch64=(
-  'ec533713a6d38f06ccff08a7c5d043f89df4f98c61aa888222794ae79085457f'
+  '870c4a858f2eefba81500836cee33255e28fcc16c7201972fceff575d6e6c472'
   '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
 )
 

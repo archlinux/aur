@@ -1,6 +1,6 @@
 pkgbase = vibex-bin
 	pkgdesc = Local-first AI coding workbench: Agent sessions, Git, terminals, and previews
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/vibex-ai/vibex
 	arch = x86_64
@@ -20,17 +20,17 @@ pkgbase = vibex-bin
 	optdepends = nodejs: managed ACP Agent installs
 	optdepends = npm: managed ACP Agent installs
 	optdepends = chromium: embedded browser surface
-	provides = vibex=0.1.0
+	provides = vibex=0.1.1
 	conflicts = vibex
 	options = !strip
 	options = !debug
-	source_x86_64 = vibex-0.1.0-linux-x86_64-deb.deb::https://github.com/vibex-ai/vibex/releases/download/v0.1.0/vibex-0.1.0-linux-x86_64-deb.deb
-	source_x86_64 = vibex-0.1.0-LICENSE::https://raw.githubusercontent.com/vibex-ai/vibex/v0.1.0/LICENSE
-	sha256sums_x86_64 = 89e64dcff0a209d2f5ef2b0fd74434f7c75e5c4dd5b67b13b75cb992348c7d75
+	source_x86_64 = vibex-0.1.1-linux-x86_64-deb.deb::https://github.com/vibex-ai/vibex/releases/download/v0.1.1/vibex-0.1.1-linux-x86_64-deb.deb
+	source_x86_64 = vibex-0.1.1-LICENSE::https://raw.githubusercontent.com/vibex-ai/vibex/v0.1.1/LICENSE
+	sha256sums_x86_64 = 0c783b838fa547b57042d0e03aac5338bb2536ba035bb7925030e37ba248b576
 	sha256sums_x86_64 = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	source_aarch64 = vibex-0.1.0-linux-aarch64-deb.deb::https://github.com/vibex-ai/vibex/releases/download/v0.1.0/vibex-0.1.0-linux-aarch64-deb.deb
-	source_aarch64 = vibex-0.1.0-LICENSE::https://raw.githubusercontent.com/vibex-ai/vibex/v0.1.0/LICENSE
-	sha256sums_aarch64 = ec533713a6d38f06ccff08a7c5d043f89df4f98c61aa888222794ae79085457f
+	source_aarch64 = vibex-0.1.1-linux-aarch64-deb.deb::https://github.com/vibex-ai/vibex/releases/download/v0.1.1/vibex-0.1.1-linux-aarch64-deb.deb
+	source_aarch64 = vibex-0.1.1-LICENSE::https://raw.githubusercontent.com/vibex-ai/vibex/v0.1.1/LICENSE
+	sha256sums_aarch64 = 870c4a858f2eefba81500836cee33255e28fcc16c7201972fceff575d6e6c472
 	sha256sums_aarch64 = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = vibex-bin
