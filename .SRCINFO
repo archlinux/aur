@@ -1,6 +1,6 @@
 pkgbase = mx-cleanup
 	pkgdesc = GUI for system cleanup and maintenance
-	pkgver = 26.10
+	pkgver = 26.11
 	pkgrel = 1
 	url = https://github.com/mxlinux/mx-cleanup
 	install = mx-cleanup.install
@@ -12,7 +12,7 @@ pkgbase = mx-cleanup
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = polkit
-	source = https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.10.tar.gz
-	sha256sums = d44c213b8f750b493a0ba65c986c013b9ba14f0c653616515b9f3349b3301a7a
+	source = https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.11.tar.gz
+	sha256sums = abc618b018fa7eedbe9d3805447f5e82b30ee26b8e624bd7f49ed6dce0ce0c80
 
 pkgname = mx-cleanup

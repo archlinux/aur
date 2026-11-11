@@ -12,7 +12,7 @@
 # suffix and may run ahead of the Debian version.
 
 pkgname=mx-cleanup
-pkgver=26.10
+pkgver=26.11
 pkgrel=1
 pkgdesc="GUI for system cleanup and maintenance"
 arch=('x86_64' 'i686')
@@ -25,12 +25,12 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 # so arch/mx-cleanup.install is a copy of the one in the repository root.
 install=mx-cleanup.install
 
-source=("https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.10.tar.gz")
-sha256sums=('d44c213b8f750b493a0ba65c986c013b9ba14f0c653616515b9f3349b3301a7a')
+source=("https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.11.tar.gz")
+sha256sums=('abc618b018fa7eedbe9d3805447f5e82b30ee26b8e624bd7f49ed6dce0ce0c80')
 
 # dpkg-source packed this tarball from a directory called "src", so that - not
 # ${pkgname}-${pkgver} - is what it unpacks to.
-_srcdir="mx-cleanup-26.10"
+_srcdir="mx-cleanup-26.11"
 
 build() {
     cd "${srcdir}/${_srcdir}"
