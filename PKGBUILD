@@ -1,6 +1,6 @@
 # Maintainer: adelmonte
 pkgname=solitaire-rs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Windows 95 style Klondike solitaire for Wayland"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c93b8e695505ec6b3d82366d9607fc2a7c597dff14c0e1e0c648bd112c0e6910')
+sha256sums=('43d038ce0237379d40d88ce6fede7257e712910bc0903236ab08f30a20bebe66')
 
 _host() {
   rustc -vV | sed -n 's/^host: //p'
