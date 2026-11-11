@@ -1,7 +1,7 @@
 # Maintainer: shbernal <shbernal.01@gmail.com>
 
 pkgname=tsuzuri
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Block-based notebook for the terminal with plain Markdown files and Vim editing'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('wl-clipboard: clipboard access on Wayland'
             'zenity: file picker for attachments'
             'kdialog: file picker for attachments')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1b1b9cf58e70a3e74d84eda68976213eaf1a2db8f43e08658f136057ab8bbe04')
+sha256sums=('9fb1a7ffe01471db44747db60591c8d6072c29639d6409213241bf13be2db796')
 
 build() {
   cd "${pkgname}-${pkgver}"
