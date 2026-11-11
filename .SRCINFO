@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-inspector-plugin
 	pkgdesc = An app inspector for use with an Appium server
-	pkgver = 2026.9.2
+	pkgver = 2026.11.3
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-inspector-plugin
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-inspector-plugin-2026.9.2.tgz
-	source = nodejs-appium-inspector-plugin-2026.9.2.tgz::https://registry.npmjs.org/appium-inspector-plugin/-/appium-inspector-plugin-2026.9.2.tgz
-	sha256sums = aba1d2e2b53975b7b49c28066b6bb6d2e5adf374c67286f95123aae0ca6c9e23
+	noextract = nodejs-appium-inspector-plugin-2026.11.3.tgz
+	source = nodejs-appium-inspector-plugin-2026.11.3.tgz::https://registry.npmjs.org/appium-inspector-plugin/-/appium-inspector-plugin-2026.11.3.tgz
+	sha256sums = bdb772259ad7678fd3debc6b5b23216faef09a6f6d57dfda46035e1a2abf2b05
 
 pkgname = nodejs-appium-inspector-plugin
