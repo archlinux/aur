@@ -1,0 +1,18 @@
+pkgbase = miga-messenger
+	pkgdesc = End-to-end encrypted messenger with no account
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://miga.vniverse77.com
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	source = miga::git+https://github.com/Vniverse77/MIGA.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = miga-messenger
