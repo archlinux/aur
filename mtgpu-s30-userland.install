@@ -1,10 +1,18 @@
 post_install() {
+    # Fix KDE Plasma 6 desktop icon text background box under software rendering fallback
+    local qml="/usr/lib/qt6/qml/org/kde/plasma/extras/ShadowedLabel.qml"
+    if [ -f "$qml" ] && grep -q "visible: GraphicsInfo.api === GraphicsInfo.Software" "$qml"; then
+        sed -i.mtt-orig 's/visible: GraphicsInfo.api === GraphicsInfo.Software/visible: false/g' "$qml" 2>/dev/null || true
+    fi
+
     cat << "MSG"
 :: Moore Threads MTT S30 userland graphics and compute driver installed.
 :: 
 :: Tips for KDE Plasma 6 (Wayland) & Xwayland:
 ::  - Desktop hints are placed in /etc/environment.d/10-mtt-s30.conf
 ::  - Device access rules are placed in /usr/lib/udev/rules.d/70-mtgpu.rules
+::  - Hardware monitoring for KDE System Monitor is installed to:
+::      /usr/lib/mtgpu/plugins/ksystemstats/ksystemstats_plugin_gpu.so
 ::  - To verify GPU status and temperature, run:
 ::      mthreads-gmi
 ::  - Documentation and issue tracker:
@@ -14,4 +22,11 @@ MSG
 
 post_upgrade() {
     post_install
+}
+
+post_remove() {
+    local qml="/usr/lib/qt6/qml/org/kde/plasma/extras/ShadowedLabel.qml"
+    if [ -f "${qml}.mtt-orig" ]; then
+        mv "${qml}.mtt-orig" "$qml" 2>/dev/null || true
+    fi
 }

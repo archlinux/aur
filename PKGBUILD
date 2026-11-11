@@ -3,7 +3,7 @@
 
 pkgname=mtgpu-s30-userland
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Moore Threads MTT S30 userland graphics and compute drivers (OpenGL, Vulkan, VA-API, MUSA)'
 arch=('x86_64')
 install='mtgpu-s30-userland.install'
@@ -17,6 +17,12 @@ depends=(
     'spirv-tools'
     'libx11'
     'libxcb'
+)
+makedepends=(
+    "cmake"
+    "extra-cmake-modules"
+    "libksysguard"
+    "qt6-base"
 )
 optdepends=(
     'libva: hardware video acceleration (VA-API)'
@@ -35,6 +41,8 @@ source=(
     '70-mtgpu.rules'
     'plasma-plasmashell-mtt-s30.conf'
     'chromium-flags.conf'
+    'plasma-ksystemstats-mtt-s30.conf'
+    'ksystemstats-plugin.tar.gz'
 )
 noextract=("musa_3.1.0-pc_x86.deb")
 sha256sums=('04c286ba452fe0cfbea2c47465f0c48b0659c09b896f05f363feba680dd8efda'
@@ -45,7 +53,9 @@ sha256sums=('04c286ba452fe0cfbea2c47465f0c48b0659c09b896f05f363feba680dd8efda'
             'e70c7dbe4a1a3d4d5d7c05932b32012c41b7f81a762fac4af504f6e8033f3cb7'
             '0435a924991e6e0a4e75f4fd9534195c5927026766bad3863de515bffdc05be8'
             'e37b7b255b1e3dd4d88e82220beb1bb80ef76838b6c4cae1b3ef4f7047bf5b1c'
-            '434c9f3309436f92abd3a8b02a4a128e13883ca8b12d146931db5925a91bb6d9')
+            '434c9f3309436f92abd3a8b02a4a128e13883ca8b12d146931db5925a91bb6d9'
+            'd7195d3c9dba83ff9cf743a6bdb7dfc4c17902ecdab7f5bfcc572e3ebc2697b9'
+            '11716f9be8035f185aa4a5ac8fac71bc3bc3fb6e2e13ab0986ec37a4a9c712cb')
 
 prepare() {
     rm -rf "$srcdir/deb-data"
@@ -56,6 +66,14 @@ prepare() {
     # Repair WaylandSwapChain destructor double-free in-place
     python3 "$srcdir/repair-mtgpu-dri.py" \
         "$srcdir/deb-data/usr/lib/x86_64-linux-gnu/dri/mtgpu_dri.so"
+}
+
+
+build() {
+    cmake -B "$srcdir/build-ksys" -S "$srcdir/ksystemstats-plugin" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTING=OFF
+    cmake --build "$srcdir/build-ksys"
 }
 
 package() {
@@ -126,6 +144,16 @@ package() {
 
     install -d "$pkgdir/usr/lib/udev/rules.d"
     install -m644 "$srcdir/70-mtgpu.rules" "$pkgdir/usr/lib/udev/rules.d/"
+
+
+    # 10. KDE System Monitor GPU metrics plugin
+    install -d "$pkgdir/usr/lib/mtgpu/plugins/ksystemstats"
+    install -m755 "$srcdir/build-ksys/ksystemstats_plugin_gpu.so" \
+        "$pkgdir/usr/lib/mtgpu/plugins/ksystemstats/"
+
+    install -d "$pkgdir/usr/lib/systemd/user/plasma-ksystemstats.service.d"
+    install -m644 "$srcdir/plasma-ksystemstats-mtt-s30.conf" \
+        "$pkgdir/usr/lib/systemd/user/plasma-ksystemstats.service.d/10-mtt-s30.conf"
 
     # 9. Upstream License
     install -d "$pkgdir/usr/share/licenses/$pkgname"
