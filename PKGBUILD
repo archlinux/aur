@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=gotatun
 pkgname=(gotatun libgotatun)
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Userspace WireGuard® Implementation in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('a77a78f568c48b4f791dbf91f73a419dfbbc4dd7ead8c50b2cf0ca234b82636c')
+sha256sums=('17c2df7d9dcfc0836f34364614b3696f4fd9e803d74ac93e94938890b993383d')
 validpgpkeys=()
 
 prepare() {
