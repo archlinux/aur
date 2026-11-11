@@ -1,6 +1,6 @@
 pkgbase = stackablectl-git
 	pkgdesc = Command line tool to interact with a Stackable Data Platform
-	pkgver = stackablectl.1.5.1.r0.g6357a12
+	pkgver = stackablectl.1.5.2.r2.gab449df
 	pkgrel = 1
 	url = https://github.com/stackabletech/stackablectl/
 	arch = x86_64
