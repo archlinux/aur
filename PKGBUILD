@@ -12,7 +12,7 @@
 # build()).
 pkgbase=nimdow-wl-git
 pkgname=(nimdow-wl-git nimdow-wl-desktop-git)
-pkgver=0.7.41.r545.g7896c1b
+pkgver=0.7.41.r546.g70e0280
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Vyrnexis/nimdow-wl'
@@ -73,16 +73,18 @@ package_nimdow-wl-desktop-git() {
   depends=(nimdow-wl-git polkit-gnome mako swaybg xdg-desktop-portal-gtk xorg-xwayland
            gnome-keyring kitty nimlaunch-bin nimdow-wl-status wl-clipboard grim slurp
            libnotify pipewire pipewire-pulse wireplumber brightnessctl networkmanager
-           ttf-meslo-nerd pacman-contrib rtkit)
-  optdepends=('pavucontrol: volume mixer'
+           ttf-meslo-nerd pacman-contrib rtkit pavucontrol)
+  optdepends=('firefox: web browser (super+i)'
               'nautilus: file manager'
               'adw-gtk-theme: GTK theme'
               'network-manager-applet: tray network applet'
               'sddm: graphical login manager'
               'greetd-tuigreet: lightweight login manager')
-  backup=('etc/xdg/nimdow-wl/config.toml')
+  backup=('etc/xdg/nimdow-wl/config.toml' 'etc/xdg/nimdow-wl/status.toml')
   install=nimdow-wl-desktop.install
 
   cd nimdow-wl
   install -Dm644 packaging/desktop/config.toml "$pkgdir/etc/xdg/nimdow-wl/config.toml"
+  install -Dm644 packaging/desktop/status.toml "$pkgdir/etc/xdg/nimdow-wl/status.toml"
+  install -Dm644 -t "$pkgdir/usr/share/backgrounds/nimdow-wl" packaging/desktop/reverie.jpg
 }
