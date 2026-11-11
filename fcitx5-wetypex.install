@@ -1,35 +1,34 @@
 post_install() {
     cat <<'EOF'
 
-WeTypeX 已安装。首次使用请依次执行：
+WeTypeX 已安装。请以日常用户身份准备官方运行时：
 
-  1. 准备官方运行时（二选一）：
-     fcitx5-wetypex-setup --download --accept-upstream-license
-     fcitx5-wetypex-setup --archive /path/to/WeType_2.2.3_657.zip
+  fcitx5-wetypex-setup --download --accept-upstream-license
+  fcitx5-wetypex-setup --check --transport
 
-  2. 检查输入核心：
-     fcitx5-wetypex-setup --check
+随后重启 Fcitx5，再在 fcitx5-configtool 中添加 WeTypeX。
+KDE Plasma Wayland：在系统设置的“虚拟键盘”中先选“无”，再选 Fcitx 5，
+也可注销并重新登录。X11 或独立启动的 Fcitx5 可执行 fcitx5 -r -d。
 
-  3. 打开 fcitx5-configtool，将 WeTypeX 添加到当前输入法列表。
-
-  4. 重启 Fcitx5：
-     fcitx5 -rd
-
-完整说明：https://github.com/panxuc/fcitx5-wetypex#首次设置
+离线安装与详细步骤：
+https://github.com/panxuc/fcitx5-wetypex/blob/main/docs/installation.md
 EOF
 }
 
 post_upgrade() {
     cat <<'EOF'
 
-WeTypeX 已升级。请重启 Fcitx5 以加载新版本：
+WeTypeX 已升级。请重启 Fcitx5 以加载新适配层。
+KDE Plasma Wayland：在系统设置的“虚拟键盘”中先选“无”，再选 Fcitx 5，
+也可注销并重新登录。X11 或独立启动的 Fcitx5 可执行 fcitx5 -r -d。
 
-  fcitx5 -rd
+原版核心可在设置的“升级和反馈”中更新，或运行：
+  fcitx5-wetypex-setup --update --download --accept-upstream-license
 
-如输入核心不可用，请运行：
+排查核心与传输：
+  fcitx5-wetypex-setup --check --transport
 
-  fcitx5-wetypex-setup --check
-
-如果检查报告运行时文件缺失，请重新执行首次安装时的运行时准备命令。
+详细步骤：
+https://github.com/panxuc/fcitx5-wetypex/blob/main/docs/runtime-updates.md
 EOF
 }
