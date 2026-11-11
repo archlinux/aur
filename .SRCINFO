@@ -1,6 +1,6 @@
 pkgbase = mdcat-bin
 	pkgdesc = Fancy 'cat' for Markdown
-	pkgver = 2.19.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://github.com/BIRSAx2/mdcat
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = mdcat-bin
 	provides = mdpick
 	conflicts = mdcat
 	options = !strip
-	source_x86_64 = mdcat-x86_64-2.19.0.tgz::https://github.com/BIRSAx2/mdcat/releases/download/mdcat-2.19.0/mdcat-2.19.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 789f0a2d1f6266cc4d49a7444359ef475665dac24c52211dd96db9cb48b78bad
+	source_x86_64 = mdcat-x86_64-2.20.0.tgz::https://github.com/BIRSAx2/mdcat/releases/download/mdcat-2.20.0/mdcat-2.20.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 11cd85cd9a8d9a34991d2e3c26f401b4219268708d5a6786e824d7baf3354f1c
 
 pkgname = mdcat-bin
