@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=ferrite-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "ferrite_512_$pkgver.png::$_rawurl/assets/icons/linux/512x512/ferrite.png"
 )
 
-sha256sums=('338b201bf071728ddb08b7466008257e8e3e7325c717586cbfe5cc5edcc63ed8'
+sha256sums=('c88ad57ca4f53b415ada9b124792f47219f463821a440cb0dc5dc2fe31897a50'
             'c94952dae4438b71667a129c1f7dd0e196e6d7dbf37db4525511c69536c27ac1'
             '79415739aa458c27bfb595d40ce73d81d81aae81fb53771d978209b6f193c7b2'
             '2e6a7b55e4bf576c3ba6619b66175dcd82df94852056a1ab3512d80ddb1e1532'
