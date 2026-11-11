@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 epoch=1
 pkgdesc="Detect and invoke build systems"
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('48951a89ede2e5b7eee7adf1cab5f483d06b2cae46cef791e29f9b88204b33e7')
+sha256sums=('045709b86faad168fca8fe91408ae972149b2b1da159750d9d1cf5f12865f47c')
 
 prepare() {
   cd "$pkgname-$pkgver"
