@@ -2,7 +2,7 @@
 pkgname=subview-nightly-bin
 provides=('subview')
 conflicts=('subview' 'subview-bin')
-pkgver=0.2.0+nightly+20261107+0+g5bc0e727
+pkgver=0.2.0+nightly+20261111+1+g3770ea00
 pkgrel=1
 pkgdesc="Display a subtitle stream from stdin as a desktop overlay — nightly build"
 arch=('x86_64' 'aarch64')
