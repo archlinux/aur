@@ -6,7 +6,7 @@ _pkgname=asyncer
 pkgname=python-${_pkgname}
 pkgdesc="Asyncer, async and await, focused on developer experience."
 
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pdm-backen
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('98f4fb7e9f978c84ea17e983bdaa5d2f200d23e3555075827e6b7fc295df7217')
+sha256sums=('5b553f4cc526097e2b3fbf32fd7bae637603c838292df0c30821b268de6e3fc3')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
