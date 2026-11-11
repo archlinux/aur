@@ -6,8 +6,8 @@ pkgbase=xorg-server-phoenix
 pkgname=('xorg-server-phoenix' 'xorg-server-xephyr-phoenix' 'xorg-server-xvfb-phoenix' 'xorg-server-xnest-phoenix'
          'xorg-server-common-phoenix' 'xorg-server-devel-phoenix' 'xorg-server-src-phoenix')
 pkgver=26.1.99.1
-pkgrel=16
-_commit=048a38d30a78444c8817ba9363f85609b24aa0cd
+pkgrel=17
+_commit=c604ecba579f5bfe03c70715b79bd5152edff5b4
 _srcname=xserver-${_commit}
 _upstreamname=xorg-server
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(${_upstreamname}-${_commit}.tar.gz::https://github.com/dec05eba/xserver/
         xvfb-run # with updates from FC master
         xvfb-run.1
 )
-sha512sums=('f08e94b7ff7ac67fa443345f534ab07b3512a040fbd0fa85727b0780150b5ba15cc1fc6c0df4bdace2063b4b967ba0ac87101b13e06d4b2f29885a4082910c20'
+sha512sums=('be3c78273e66e1eeec687dcf96b6802c0bbbec8dcd4d705665189edcd103efebdb849704568607b1724b7be6d01e2f6d04948ee2116eadda2e7dfdda6c5b89d8'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
@@ -73,6 +73,7 @@ build() {
     -D dtrace=false \
     -D systemd_logind=true \
     -D suid_wrapper=true \
+    -D cap_sys_nice=false \
     -D linux_acpi=false \
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb \
