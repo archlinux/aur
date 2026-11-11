@@ -1,6 +1,6 @@
 pkgbase = ofdgo-git
 	pkgdesc = Native cross-platform pure-Go OFD / PDF rendering and viewing tool
-	pkgver = r1075.be69e2a
+	pkgver = r1077.3edf351
 	pkgrel = 1
 	url = https://github.com/xiaoqidun/ofdgo
 	arch = x86_64
