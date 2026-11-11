@@ -1,7 +1,7 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=waynote-bin
 _pkgname=waynote
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Wayland-native markdown sticky notes for tiling WMs (wlr-layer-shell) — prebuilt binary'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("waynote-${pkgver}::https://github.com/mryll/waynote/releases/download/v
         "waynote-${pkgver}.svg::https://raw.githubusercontent.com/mryll/waynote/v${pkgver}/assets/waynote.svg"
         "waynote-${pkgver}.desktop::https://raw.githubusercontent.com/mryll/waynote/v${pkgver}/packaging/waynote.desktop"
         "waynote-${pkgver}.service::https://raw.githubusercontent.com/mryll/waynote/v${pkgver}/packaging/waynote.service")
-sha256sums=('69b318b4183d182eda7b693a146848830b6c3da495614c5b5f0a2d5317beb53b'
+sha256sums=('edee66e6ce8ab9f810e0fd1550eb1abb5fb3b45ca3e05ef1490d9b700a2fea4b'
             'd5f99ad0559c66d3641d188c3aa3787fd8ed6a12ca45836661648f2755a51a2a'
             '9dfc535d312fc30f001065faa50fcb5c8aeabe9e89733953b2c209f62eb953c5'
             '98d01a5708b3400566310a863bf49be5e66181e51373656f203769278f041646'
