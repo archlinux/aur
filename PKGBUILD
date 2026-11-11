@@ -2,7 +2,7 @@
 
 pkgname=gui.for.clash
 _name=GUI.for.Clash
-pkgver=1.28.1
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="GUI.for.Clash Modern A GUI program developed by vue3 + wails."
 arch=($CARCH)
@@ -12,18 +12,13 @@ provides=(${pkgname} ${pkgname//./-})
 conflicts=(${pkgname} ${pkgname//./-})
 # replaces=(${pkgname})
 depends=(
-    gdk-pixbuf2
-    glib2
-    gtk3
     hicolor-icon-theme
-    libsoup3
-    webkit2gtk-4.1
 )
 makedepends=(
     pnpm
     git
     go
-    wails
+    nodejs
 )
 optdepends=(
     'mihomo: Another Clash Kernel by MetaCubeX, formerly known as Clash.Meta'
@@ -37,7 +32,7 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('702297c284e55cde70b1bb4fb73f1b28947e2384e83dd7cf721bbbdc45b2aacf'
+sha256sums=('bcdf232c821746f54e056524484e16370b317d2a3986ba6cda0cdbfe5ddfe42a'
             'e24b2134498ae4b46b297b637684a66669cb18ed7f0600f7183e4c6d955f785d'
             '9282f9ebf164e1f7f2c312eb2d7eb6f53bb2ce52765a51bfc1999d05846cccf0'
             'adcad01703f4359470a14d2817303ce242fb1cc7d729cdd3da04df642b1ed501')
@@ -68,11 +63,7 @@ build() {
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
 
-    wails build \
-        -m -s -trimpath -skipbindings \
-        -devtools \
-        -tags webkit2_41 \
-        -o ${_name}
+    go build -o "build/bin/${_name}" .
 }
 
 package() {

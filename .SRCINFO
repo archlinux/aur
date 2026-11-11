@@ -1,6 +1,6 @@
 pkgbase = gui.for.clash
 	pkgdesc = GUI.for.Clash Modern A GUI program developed by vue3 + wails.
-	pkgver = 1.28.1
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://github.com/GUI-for-Cores/GUI.for.Clash
 	install = gui.for.clash.install
@@ -9,13 +9,8 @@ pkgbase = gui.for.clash
 	makedepends = pnpm
 	makedepends = git
 	makedepends = go
-	makedepends = wails
-	depends = gdk-pixbuf2
-	depends = glib2
-	depends = gtk3
+	makedepends = nodejs
 	depends = hicolor-icon-theme
-	depends = libsoup3
-	depends = webkit2gtk-4.1
 	optdepends = mihomo: Another Clash Kernel by MetaCubeX, formerly known as Clash.Meta
 	provides = gui.for.clash
 	provides = gui-for-clash
@@ -25,11 +20,11 @@ pkgbase = gui.for.clash
 	options = !strip
 	options = !lto
 	options = emptydirs
-	source = gui.for.clash::git+https://github.com/GUI-for-Cores/GUI.for.Clash.git#tag=v1.28.1
+	source = gui.for.clash::git+https://github.com/GUI-for-Cores/GUI.for.Clash.git#tag=v1.29.0
 	source = gui.for.clash.tmpfiles
 	source = gui.for.clash.sysusers
 	source = gui.for.clash.install
-	sha256sums = 702297c284e55cde70b1bb4fb73f1b28947e2384e83dd7cf721bbbdc45b2aacf
+	sha256sums = bcdf232c821746f54e056524484e16370b317d2a3986ba6cda0cdbfe5ddfe42a
 	sha256sums = e24b2134498ae4b46b297b637684a66669cb18ed7f0600f7183e4c6d955f785d
 	sha256sums = 9282f9ebf164e1f7f2c312eb2d7eb6f53bb2ce52765a51bfc1999d05846cccf0
 	sha256sums = adcad01703f4359470a14d2817303ce242fb1cc7d729cdd3da04df642b1ed501
