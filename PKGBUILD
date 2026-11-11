@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-desktop-git
-pkgver=0.13.0.r374.gde67a7370
+pkgver=0.13.0.r383.gee6a2bba7
 pkgrel=2
 # Publish targets: aur + Arch release + Debian release (opt-in per format).
 _publish_targets="aur github-arch github-deb"
