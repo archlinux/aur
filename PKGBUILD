@@ -2,7 +2,7 @@
 
 pkgname=g0v0-robin-bin
 _pkgname=${pkgname%-bin}
-pkgver=2026.1101.0
+pkgver=2026.1111.1
 _pkgtag=v${pkgver}-g0v0
 pkgrel=1
 pkgdesc="g0v0! -- free and open rhythm experience! (Robin pre-release channel)"
@@ -37,8 +37,8 @@ sha256sums=('c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '26ecc3e357b03798cd8cc4ada4348d9e8eef1f3c725f8176e3b9533185c0bd0a'
             'dfbe774cb090a23f4000859dd9bb6c79717e20d091737893b915a55db5b4965a'
             '437545915242c3284ed8da47e125d37f63b416e3edff8c9bf4ce7d79a007bd59')
-sha256sums_x86_64=('14452694e7f225e72f1aa740530d4b8a92b12d4dfa2cfa514b97afdea96fa65f')
-sha256sums_aarch64=('c7a3d727d11c3844318663e9da05f3133138bb8b90cc68e37358540c6c090062')
+sha256sums_x86_64=('a16b7e3d18fcad039241bb0085735d893688910dbb8c75c6dab9b918e98ba82e')
+sha256sums_aarch64=('6276acf2540c0d8e2c0863bc61716632e098a1d7e99fcfec88f01c6923e76c19')
 
 package() {
   cd "$srcdir"
