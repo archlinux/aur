@@ -1,0 +1,16 @@
+pkgbase = stela-bin
+	pkgdesc = General purpose Apple Silicon layer for x86-64 PCs: boots macOS on a PC from a USB stick
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tylertms/Stela
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = libgcc
+	conflicts = stela
+	options = !strip
+	options = !debug
+	source = stela-v0.2.0-linux-x86_64.tar.gz::https://github.com/tylertms/Stela/releases/download/v0.2.0/stela-v0.2.0-linux-x86_64.tar.gz
+	sha256sums = c77c38e87e42bfc314c728d4c4303d6e682397a51bd383a3e90926451e5e0a89
+
+pkgname = stela-bin
