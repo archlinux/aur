@@ -1,4 +1,5 @@
-# Maintainer: smesa
+# Maintainer: Samuel Mesa <samuel.mesa etal linuxmail.org>
+# Contributor: Jason Fisher <jlf12345@gmail.com> (Clang/CachyOS build fixes)
 # AMD XDNA NPU driver + XRT plugin (git/main)
 
 pkgname=amdxdna-git
@@ -16,11 +17,11 @@ conflicts=('amdxdna')
 
 depends=('dkms' 'linux-headers')
 makedepends=(
-    base-devel boost cmake curl dkms elfutils gcc gdb git
+    base-devel boost cmake curl dkms elfutils gcc gdb git git-lfs
     json-glib libdrm libffi libjpeg-turbo libpng
     libtiff libyaml lm_sensors ncurses ocl-icd opencl-headers
     openssl pciutils perl pkgconf protobuf python python-pip
-    rapidjson strace jq
+    pybind11 rapidjson strace jq
 )
 install=amdxdna.install
 
@@ -77,6 +78,12 @@ build() {
             || msg "WARNING: firmware sync failed"
     fi
 
+    # Detect Clang kernel (must be in build() — prepare() subshell doesn't persist)
+    if grep -q "CONFIG_CC_IS_CLANG=y" \
+        /usr/lib/modules/$(uname -r)/build/include/config/auto.conf 2>/dev/null; then
+        export LLVM=1
+        msg "Kernel built with Clang — exporting LLVM=1"
+    fi
     # CMake
     local builddir="${repo}/Release"
     mkdir -p "$builddir"
