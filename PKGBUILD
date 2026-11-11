@@ -4,14 +4,14 @@ _gitauthor=excelano
 _gitname=ved
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="The verbose ed — a drop-in compatible ed clone with friendly errors, written in pure-stdlib Rust."
+pkgdesc="The verbose ed — a drop-in compatible ed clone with friendly errors, written in pure-stdlib Rust"
 
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
-_barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
+_barch=('amd64' 'arm64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -23,30 +23,25 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 depends=('glibc' 'libgcc')
 
-options=(!strip)
+options=('!strip')
 
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
-source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('d7cd82392aa16866ce343ef97267ad9988f8cdc6767c5425fbe8313986ffe5fb')
-sha256sums_aarch64=('e32a3d7b8de633a003eebd098fde1fe89440eef49c2672b8ca01a3b3bf2a5826')
+source=("README-${pkgver}.md::${_ghurlraw}/README.md"
+		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[0]}.deb")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}-${pkgrel}_${_barch[1]}.deb")
+sha256sums=('5143564c65e6703021dd682d38971bdf776b6413f4d896db39653f03ef6d616f'
+            '3f497ab835deeb8c179da91c333f2e0be83b27bf1d2dadcc76a625f6c8da8405')
+sha256sums_x86_64=('16e3362afcbf753b403bc23304b7f1d2c85b80dfb5022ceceb4e94e54243faa3')
+sha256sums_aarch64=('edbac4956b777ba9f1b2d678a7ce22f0b157bc9e6abdaab020e567c443af839b')
 
-
-case ${CARCH} in
-  ${arch[0]})
-    _CARCH=${_barch[0]}
-    ;;
-
-  ${arch[1]})
-    _CARCH=${_barch[1]}
-    ;;
-esac
 
 package() {
-	cd "${srcdir}/${_appname}-${_CARCH}/" || exit
+	cd "${pkgdir}"
 
-	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	# this extracts all into the pkgdir
+	tar -xvf "${srcdir}/data.tar.xz" --exclude="usr/share/doc"
 
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
