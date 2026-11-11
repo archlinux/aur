@@ -3,7 +3,7 @@
 pkgname=atk-control
 pkgver=0.8.0
 pkgrel=1
-pkgdesc="Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice (MAD R, VXE R1)"
+pkgdesc="Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice"
 arch=('any')
 url="https://github.com/NasirA1991/atk-control"
 license=('MIT')
