@@ -1,6 +1,6 @@
 pkgbase = docker-credential-helpers
 	pkgdesc = Credential helpers for Docker (pass and secretservice)
-	pkgver = 0.9.12
+	pkgver = 0.9.13
 	pkgrel = 1
 	url = https://github.com/docker/docker-credential-helpers
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = docker-credential-helpers
 	makedepends = go
 	depends = libsecret
 	depends = pass
-	provides = docker-credential-pass=0.9.12
-	provides = docker-credential-secretservice=0.9.12
+	provides = docker-credential-pass=0.9.13
+	provides = docker-credential-secretservice=0.9.13
 	conflicts = docker-credential-pass
 	conflicts = docker-credential-pass-bin
 	conflicts = docker-credential-secretservice
 	conflicts = docker-credential-secretservice-bin
-	source = https://github.com/docker/docker-credential-helpers/archive/refs/tags/v0.9.12.tar.gz
-	sha256sums = 26fe64555610f1cf521628b957f91e811ea64c47182d4dc19261e3aed5a1bea7
+	source = https://github.com/docker/docker-credential-helpers/archive/refs/tags/v0.9.13.tar.gz
+	sha256sums = b5bdcd9fe7539cbb4feb90aaf734e76c1232cd9ec5f0c976ad549657f53d7048
 
 pkgname = docker-credential-helpers

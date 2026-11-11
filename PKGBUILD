@@ -1,7 +1,7 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 pkgname=docker-credential-helpers
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc='Credential helpers for Docker (pass and secretservice)'
 arch=(x86_64)
@@ -20,7 +20,7 @@ conflicts=(
     'docker-credential-secretservice-bin'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('26fe64555610f1cf521628b957f91e811ea64c47182d4dc19261e3aed5a1bea7')
+sha256sums=('b5bdcd9fe7539cbb4feb90aaf734e76c1232cd9ec5f0c976ad549657f53d7048')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
