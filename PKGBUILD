@@ -3,7 +3,7 @@
 # Contributor: adiprasetya <ignilium.inc@gmail.com>
 
 pkgname=mihomo-bin
-pkgver=1.19.33
+pkgver=1.19.34
 pkgrel=1
 pkgdesc="Binary version of mihomo."
 arch=("i686" "x86_64" "armv7h" "aarch64" "loong64" "riscv64")
@@ -34,12 +34,12 @@ source_riscv64=("${pkgname}-riscv64-${pkgver}.gz::${url}/releases/download/v${pk
 sha256sums=('b4b011a4b5670b09cc7d21a73cbaf47e038ff3f504deb16afab460555572f3a4'
             'b4b011a4b5670b09cc7d21a73cbaf47e038ff3f504deb16afab460555572f3a4'
             '65696f4b2ac4ec31987b3783b712a2452418cbe464c23b648fca2a515e478377')
-sha256sums_i686=('e5580e1b8484e484936b0cefb14f22e9c6e86028c64e14824858fdb5eeedbd3e')
-sha256sums_x86_64=('386508bfb1c72c43b6a0eda73708ecdce82546581b0ebcb16366c53757c622b6')
-sha256sums_armv7h=('c8a8f9bcaab914269fbdca7569e4a9f024cc667ecf12eb43e8ccdc01b3731604')
-sha256sums_aarch64=('ba408b317080ee265c46cb923a50018c1b82cbd708551cdd46a1e3e307396187')
-sha256sums_loong64=('d125e62a3f5dc79a85f8463a965e745ccd658b5177c2f95480977c2cb8584176')
-sha256sums_riscv64=('bdcf02e83108c2e94ca38ee95c891509a7b188082f5ec85c2481ea28f607fa41')
+sha256sums_i686=('035c37e926a396bffacf4109caab451df891b8c32978238f3757e2b788715287')
+sha256sums_x86_64=('2763f5b414527f7baf6dc57e3f82f3ab561eedf34bfd7c2f2cde1f7e592efe06')
+sha256sums_armv7h=('aa5e51572e29ce22ace7b6e28e611e1f1f635210d76420d161ce12a5431bf93e')
+sha256sums_aarch64=('daaf78a6240a282cdfd75bcbf98fe321f6bd52765cc29e79f344191198f0b50f')
+sha256sums_loong64=('011c4f38152a976ad79cb0fec07444cbc725089a4a3bb71fa268f4639db9d751')
+sha256sums_riscv64=('0778b1f9c3449be12071c5f5c59b7599009158d0ebe92856f5f3d81f22704d62')
 
 package() {
     cd "${srcdir}"
