@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=onair
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,9 @@ license=('GPL-3.0-or-later')
 # bundles mbelib at all (dlopen is the only way). If the system libraries ever prove
 # unusable, fall back to the vendored codec2: drop the codec2 depend and remove
 # -DDECT2_BUNDLE_CODEC2=OFF below.
-depends=('ffmpeg' 'glibc' 'libgcc' 'libstdc++' 'glfw' 'hackrf' 'hicolor-icon-theme' 'libusb' 'soapysdr')
+# openssl: since 3.8 the app and onair-server link libssl/libcrypto directly
+# (Internet TV over https), so it is a hard dependency, not a dlopen'd one.
+depends=('ffmpeg' 'glibc' 'libgcc' 'libstdc++' 'glfw' 'hackrf' 'hicolor-icon-theme' 'libusb' 'soapysdr' 'openssl')
 makedepends=('cmake' 'pkgconf' 'rust')  # rust: core protocol/FEC/file/net layers are Rust-only since 0.2.8
 optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /usr/lib)'
             'mbelib: DMR/P25/NXDN/dPMR/D-STAR voice (dlopened at run time, searched in /usr/lib)'
@@ -26,10 +28,12 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'onair-dra: DRA/DRA+ audio decoder for CDR radio sound (dlopened at run time)'
             'onair-avsplus: AVS+ (Guangdian) video for Chinese DTMB TV, decoded natively (dlopened at run time)'
             'faad2: HE-AAC SBR/PS decoding for DAB/DAB+ (dlopened at run time)'
-            'libfdk-aac: xHE-AAC (USAC) decoding for DRM (dlopened at run time)')
+            'libfdk-aac: xHE-AAC (USAC) decoding for DRM (dlopened at run time)'
+            'wireshark-qt: View > Wireshark output (pcapng files and the onair-extcap live capture)'
+            'wireshark-cli: tshark, the same Wireshark output without the GUI')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('669906e6c86f8b83bb0344a781aa3a013959ea04b54a6fb809b2b7469131d16a')
+sha256sums=('ccda2df7a715cb0ecf2cb5eca7330336b5864503d9846d86bad458a698ffbba4')
 
 prepare() {
     # The udev-rule / blacklist fix-it hints tell the user to run
