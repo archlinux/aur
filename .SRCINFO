@@ -1,0 +1,17 @@
+pkgbase = lanlink
+	pkgdesc = A small KDE Connect alternative: daemon and TUI in one Rust binary
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/adelmonte/lanlink
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = sshfs: browse the phone from the computer
+	options = !lto
+	source = lanlink-0.1.0.tar.gz::https://github.com/adelmonte/lanlink/archive/v0.1.0.tar.gz
+	sha256sums = 15e01de2c56b35f5c9535a5db4a6c48eaacd6c0873e753770cd2b6b36a029a2a
+
+pkgname = lanlink
