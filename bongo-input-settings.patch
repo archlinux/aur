@@ -1,0 +1,94 @@
+diff --git a/platforms/linux/ui/bongo_settings.py b/platforms/linux/ui/bongo_settings.py
+index ec51604..7db652d 100755
+--- a/platforms/linux/ui/bongo_settings.py
++++ b/platforms/linux/ui/bongo_settings.py
+@@ -200,6 +200,37 @@ def scan_bengali_fonts():
+     return font_list
+ 
+ 
++def input_settings_commands(desktop):
++    """Return the commands that open the desktop's input-method settings.
++
++    The ``fcitx5-configtool`` executable shipped by the fcitx5 package is only
++    a wrapper. When the real GUI (``fcitx5-config-qt``) is missing it falls
++    back to opening ``~/.config/fcitx5`` in the file manager, which made the
++    "Open Input Settings..." button open Files on Omarchy/Hyprland. Prefer the
++    real GUI and never select that wrapper.
++    """
++    desktop = (desktop or "").lower()
++
++    if any(name in desktop for name in ("gnome", "unity", "pantheon", "budgie")):
++        return [
++            ["gnome-control-center", "keyboard"],
++            ["ibus-setup"],
++            ["fcitx5-config-qt"],
++        ]
++
++    commands = [["fcitx5-config-qt"]]
++    if any(name in desktop for name in ("kde", "plasma")):
++        commands.extend([
++            ["kcmshell6", "kcm_fcitx5"],
++            ["kcmshell5", "kcm_fcitx5"],
++            ["kcmshell6", "kcm_keyboard"],
++            ["kcmshell5", "kcm_keyboard"],
++        ])
++
++    commands.append(["ibus-setup"])
++    return commands
++
++
+ # CSS Styling matching modern Bongo design language
+ BONGO_CSS = """
+ /* Bongo Global Application Theme */
+@@ -763,7 +794,8 @@ class BongoSettingsApp:
+             label=(
+                 "GNOME / IBus: Settings -> Keyboard -> Input Sources -> Add, "
+                 "then choose Bengali (Bongo).\n"
+-                "KDE / Hyprland / Omarchy / fcitx5: run fcitx5-configtool and "
++                "KDE / Hyprland / Omarchy / fcitx5: install the "
++                "fcitx5-configtool package, then run fcitx5-config-qt and "
+                 "add Bongo under Input Method."
+             )
+         )
+@@ -845,24 +877,9 @@ class BongoSettingsApp:
+         return box
+ 
+     def open_system_keyboard_settings(self, _btn):
+-        desktop = os.environ.get("XDG_CURRENT_DESKTOP", "").lower()
+-        gnome_like = any(
+-            name in desktop for name in ("gnome", "unity", "pantheon")
++        commands = input_settings_commands(
++            os.environ.get("XDG_CURRENT_DESKTOP", "")
+         )
+-        if gnome_like:
+-            commands = [
+-                ["gnome-control-center", "keyboard"],
+-                ["ibus-setup"],
+-                ["fcitx5-configtool"],
+-            ]
+-        else:
+-            commands = [
+-                ["fcitx5-configtool"],
+-                ["kcmshell6", "kcm_keyboard"],
+-                ["kcmshell5", "kcm_keyboard"],
+-                ["gnome-control-center", "keyboard"],
+-                ["ibus-setup"],
+-            ]
+         for cmd in commands:
+             if not shutil.which(cmd[0]):
+                 continue
+@@ -872,6 +889,14 @@ class BongoSettingsApp:
+             except OSError:
+                 continue
+ 
++        self.show_dialog(
++            "Input settings unavailable",
++            "No graphical input-method configuration tool was found.\n\n"
++            "For fcitx5, install the fcitx5-configtool package "
++            "(on Arch/Omarchy: sudo pacman -S fcitx5-configtool) "
++            "and try again."
++        )
++
+     # -------------------------------------------------------------
+     # 2. Cheatsheet / Layout Tab
+     # -------------------------------------------------------------
