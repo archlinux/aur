@@ -1,7 +1,7 @@
 pkgbase = argon-chat-bin
 	pkgdesc = Argon voice, video and text chat (official AppImage)
 	pkgver = 3.1.3.82
-	pkgrel = 1
+	pkgrel = 2
 	url = https://argon.gl
 	arch = x86_64
 	license = custom

@@ -3,7 +3,7 @@
 pkgname=argon-chat-bin
 # Read the release version dynamically; no pinned version in this file.
 pkgver=$(bash "${startdir:-.}/argon-fetch.sh" --version) || return 1
-pkgrel=1
+pkgrel=2
 pkgdesc='Argon voice, video and text chat (official AppImage)'
 arch=('x86_64')
 url='https://argon.gl'

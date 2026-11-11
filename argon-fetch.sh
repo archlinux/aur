@@ -4,7 +4,6 @@ set -euo pipefail
 # p0: EU / default; p1: US, CA; p2: RU, BY.
 # app.argon.gl selects the region. Missing or unrecognised links fall back to RU.
 readonly page_url='https://app.argon.gl'
-readonly release_url='https://eu-central-manifest.argon.gl/live/release.json'
 readonly fallback_mirror='https://ru-central-updates.argon.gl'
 readonly appimage_name='ArgonChat-x86_64.AppImage'
 readonly -a curl_options=(
@@ -30,14 +29,13 @@ release_version() {
 }
 
 if [[ ${1:-} == --version ]]; then
-  curl "${curl_options[@]}" "$release_url" | release_version
-  exit
+  work_dir=$(mktemp -d "${TMPDIR:-/tmp}/argon-fetch.XXXXXXXX")
+else
+  output_dir=${1:-.}
+  expected_version=${2:-}
+  mkdir -p -- "$output_dir"
+  work_dir=$(mktemp -d "$output_dir/.argon-fetch.XXXXXXXX")
 fi
-
-output_dir=${1:-.}
-expected_version=${2:-}
-mkdir -p -- "$output_dir"
-work_dir=$(mktemp -d "$output_dir/.argon-fetch.XXXXXXXX")
 trap 'rm -rf -- "$work_dir"' EXIT
 
 mirror=$fallback_mirror
@@ -57,11 +55,17 @@ else
 fi
 printf 'Mirror: %s\n' "$mirror" >&2
 
+# The manifest and AppImage must use the same selected region.
+release_url="${mirror/-updates.argon.gl/-manifest.argon.gl}/live/release.json"
 curl "${curl_options[@]}" "$release_url" -o "$work_dir/release.json"
 version=$(release_version "$work_dir/release.json") || {
   printf 'release.json has no valid bootstrapper.version string.\n' >&2
   exit 1
 }
+if [[ ${1:-} == --version ]]; then
+  printf '%s\n' "$version"
+  exit 0
+fi
 if [[ -n $expected_version && $version != "$expected_version" ]]; then
   printf 'Release changed from %s to %s; restart makepkg.\n' "$expected_version" "$version" >&2
   exit 1
