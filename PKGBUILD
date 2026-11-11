@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=dearsql-bin
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="A simple, cross-platform database client built with Dear ImGui"
 arch=(x86_64)
@@ -13,7 +13,7 @@ _src="https://github.com/dunkbing/dearsql"
 source=("DearSQL-$pkgver-x86_64.AppImage::$_src/releases/download/v$pkgver/DearSQL-x86_64.AppImage"
 "$_src/raw/v$pkgver/packaging/io.gitlab.dunkbing.dearsql.desktop"
 "dearsql.png::$_src/raw/v$pkgver/assets/appicon.png")
-b2sums=('4e8b4c79389f7e66bc80125fd4355e78b7828cbaa4ca1758a02095bcc0766c729b76048508017bce7eca5cb232723791f6e39018507af1c7afac8fa4039f0bc3'
+b2sums=('c160652129dd9d734e6b1590509fd79ce060e72850ff67322d986be1f19ab4ca58556c0634469e906542e44d66e67208ffef4452b8dc1c6f2ed1443648746d02'
         '826b5faf63d8a79308a9c975b915baaafde84f383b4fa00c2ec318ec2945347cd019cdb8e1b0a50887b6c8388d8cd16857e0b8c98c67adfd6666d422c1b6006f'
         'dc1d873dfa2a32909eff289e8f9c5b39646fe717f0d7ff4096a27e30c3cee8694979eca3ff1c24f30fdbfd58d0d73ba2c81c74c616c6422a53b56344ac01f2db')
 
