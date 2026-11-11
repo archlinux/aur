@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -147,7 +147,6 @@ source=(
   "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
   "${__pkgname}.desktop"
   "default192x192.png"
-  "entrypoint.sh"
   "security-state--intermediates-${_tag}.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
 )
 noextract=("security-state--intermediates-${_tag}.zip")
@@ -439,7 +438,7 @@ END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1553771
-  install -Dvm755 "${srcdir}/entrypoint.sh" "$pkgdir/usr/lib/$__pkgname/${__pkgname}"
+  install -Dvm755 "${srcdir}/src/assets/entrypoint.sh" "$pkgdir/usr/lib/$__pkgname/${__pkgname}"
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srfv "${pkgdir}/usr/lib/${__pkgname}/${__pkgname}" "${pkgdir}/usr/bin/${__pkgname}"
