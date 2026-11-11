@@ -5,7 +5,7 @@
 # Arch's Node.js and PostgreSQL.
 # Maintainer: Athan Clark <athan.clark@gmail.com>
 pkgname=openchronology-server
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='Exact timelines, shared on your terms: the OpenChronology platform server'
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug' '!lto')
 install=openchronology-server.install
 # The exact-rational type for PostgreSQL, pinned as the other packages pin it.
 _pgmp=1849585416f2bc3d070bf8cef6a659907687ec7f
-source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openchronology/timeline-app/releases/download/v0.25.0/openchronology-server-platform.tar.gz"
+source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openchronology/timeline-app/releases/download/v0.26.0/openchronology-server-platform.tar.gz"
         "pgmp-$_pgmp.tar.gz::https://codeload.github.com/dvarrazzo/pgmp/tar.gz/$_pgmp"
         'openchronology.service'
         'openchronology-mail.service'
@@ -40,7 +40,7 @@ source=("openchronology-server-platform-$pkgver.tar.gz::https://github.com/openc
         'openchronology-server.tmpfiles'
         'README.Arch')
 noextract=("openchronology-server-platform-$pkgver.tar.gz")
-sha256sums=('365a45ea0f60b421d149c912c65be9b34ab194049b858d7bf94926bf30967860'
+sha256sums=('9c64c6fae0b1f5f52ba47b374c54a39a5e39488ae7e8a07e3fcdf874c0066e66'
             'cf7d04d364cadde4304e4130fd314525a637037c4f20f1406a3aa27d47a1302f'
             'bbdbd4512b6b067a0386db30e9063481f458efb8be1e5393e4902770e985258f'
             '276dd4ed7abb74585d05c43c790fe8aa27aaca5261d5ee9ce4cb74d1f80d8b14'
@@ -49,7 +49,7 @@ sha256sums=('365a45ea0f60b421d149c912c65be9b34ab194049b858d7bf94926bf30967860'
             'c6f8bdc03ba86c93380b7f839f60abded956d9f6ab96cb420fbf494d8ff1d4f0'
             '857aa840ea8d15fef8d047d56e84d41a53765fa30e9c2cb9932978b665100601'
             '4f82142be7fd1b5277a8f227334f6095cfebf82a64eb60d9a19227b065c73d90'
-            'e3055f1697068df1465f0697df4a4c7e7fc88c3735ee12be3fb165a049e10aac'
+            '44f3180a06140bd2a9127f2d8762239e20b6a4c836228294d42ee1f36bbe0100'
             '95cfdee08ff5c1dc7a85d52c76e8f3b3c5461cb29fe450f23a8f44865e659757'
             '1ba54b6c618fc212cf58d9edc1f8d36e1c6932bfe0792ba7377e66d280efce48'
             'd98214c2530b3de542750b6974d445574a83c178fe313511aecdde6df94f4514'
