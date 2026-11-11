@@ -1,0 +1,26 @@
+pkgbase = all-smi-bin
+	pkgdesc = Command-line utility for monitoring GPU hardware (prebuilt)
+	pkgver = 0.28.1
+	pkgrel = 1
+	url = https://github.com/lablup/all-smi
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libdrm
+	depends = libgcc
+	provides = all-smi=0.28.1
+	conflicts = all-smi
+	backup = etc/default/all-smi
+	source = all-smi-0.28.1.service::https://raw.githubusercontent.com/lablup/all-smi/v0.28.1/packaging/systemd/all-smi.service
+	source = all-smi-0.28.1.sysusers::https://raw.githubusercontent.com/lablup/all-smi/v0.28.1/debian/all-smi.sysusers
+	source = all-smi-0.28.1.default::https://raw.githubusercontent.com/lablup/all-smi/v0.28.1/debian/all-smi.default
+	sha256sums = 64316c3974ec055c4edf9ace4366a658eb3f5f75bcd2d2d2eabe1eb698841d61
+	sha256sums = 3c515d5ed296f482bebc0ad16508cf4010004722adc959df1378f42bc4d20f1c
+	sha256sums = e7d8f95f2c0511f675eb91ae351fc13333e065704047fce1f33268e9a77d7e5b
+	source_x86_64 = all-smi-0.28.1-x86_64.tar.gz::https://github.com/lablup/all-smi/releases/download/v0.28.1/all-smi-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e1f67795c49f5271b71a18ffb70b1e519ebf0eab732ec0e3d42e2d2185d39369
+	source_aarch64 = all-smi-0.28.1-aarch64.tar.gz::https://github.com/lablup/all-smi/releases/download/v0.28.1/all-smi-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 655642f211678c9e64a8d51d4dfd58651cb6e745de0b7e25becb1700bf6a5979
+
+pkgname = all-smi-bin
