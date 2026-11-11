@@ -2,7 +2,7 @@
 
 _name=kokkos
 pkgname=kokkos-cuda
-pkgver=5.2.2
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="C++ performance portability programming ecosystem (with CUDA)"
 arch=('x86_64')
@@ -13,13 +13,14 @@ depends=('bash'
          'libgcc'
          'libstdc++'
          'hwloc'
+         'libquadmath'
          'cuda')
 makedepends=('cmake')
 provides=("kokkos=$pkgver")
 conflicts=('kokkos')
 options=('!lto')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('491fe02cb127559dd3c996f6693686f1eab00a53fd5c184e18e663896884175e')
+sha256sums=('71590c348be05d83b12b3b21ccac36072be0006e23ada3ff4cb91f018cfbb042')
 
 prepare() {
   cd "$_name-$pkgver"
@@ -30,7 +31,7 @@ prepare() {
 build() {
   cd "$_name-$pkgver"
   export PATH="/opt/cuda/bin:$PATH"
-  cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -DCMAKE_CXX_COMPILER="$PWD"/bin/nvcc_wrapper -DBUILD_SHARED_LIBS=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_CONSTEXPR=ON -DKokkos_ARCH_TURING75=ON -DKokkos_ENABLE_HWLOC=ON -DKokkos_ENABLE_LIBDL=ON -Wno-dev
+  cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -DCMAKE_CXX_COMPILER="$PWD"/bin/nvcc_wrapper -DBUILD_SHARED_LIBS=ON -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=ON -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_CONSTEXPR=ON -DKokkos_ARCH_TURING75=ON -DKokkos_ENABLE_HWLOC=ON -DKokkos_ENABLE_LIBDL=ON -DKokkos_ENABLE_LIBQUADMATH=ON -DKokkos_ENABLE_TUNING=ON -Wno-dev
   cmake --build build
 }
 
