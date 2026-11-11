@@ -272,7 +272,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=7.3
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -308,7 +308,7 @@ _tagrel=1
 # the same kernel version, so every build has its own `uname -r` and installs as a
 # visible upgrade. That is all it does: it does not protect the running kernel's
 # module tree, see the HAZARD above.
-pkgrel=3
+pkgrel=1
 _srcname=cachyos-${_major}.${_minor}-${_tagrel}
 # Kept short: the split packages append their own suffixes to this string
 # ("... kernel and modules", "Non-stripped vmlinux file for the ..."), so a long
@@ -1250,7 +1250,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('15dfdf1513a06b087a9f8b9fee00a1e48fa95ee80caefc55d646a14cab1d0050a7c0c0209164fa42d79d3281143e559b148bc7c623a85328d3dd70aa01579c90'
+b2sums=('438505cf485af55d63f82675df5d57c8f584abad72c1aacf5e126e8cdc5b2a0153e05ec017769aaf70fc081e3969ba3e83760556a6d53d3f7a0641961c71cce2'
         'SKIP'
         '5baf33674ece3b265a616cef987683f053b4f7e179c83dcce1b193ab8910a4b0c97e9915cbde976a360cfc81015295f89a6d6f61217e2a8c46f9893241e24093'
         '4103183a51f761fcc79e38dd6c48560a1bc7e7bd952bdaa5c2fbe0bf5e1ed593f896c00cfa2ce031ce720654c2078ecdb37d6c586417c75db7356569f44cb850'
