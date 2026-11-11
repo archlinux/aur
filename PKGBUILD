@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=texturecraft
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('255a84846b5495abcc95e87539fd79044e770a03af91e091b85bce84b3fb6a60')
+sha256sums=('65b182458e49b962439752ece19617caa16855edefc797f3c09066b8e15bdda4')
 
 _srcenv() {
 	cd "$_archive"
