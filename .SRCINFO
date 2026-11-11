@@ -1,6 +1,6 @@
 pkgbase = python-pypdfium2
 	pkgdesc = Python bindings to PDFium (community package)
-	pkgver = 5.15.1
+	pkgver = 5.15.2
 	pkgrel = 1
 	url = https://github.com/pypdfium2-team
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = python-pypdfium2
 	optdepends = python-opencv: saving renders with OpenCV in the CLI
 	optdepends = python-pillow: PIL image conversion and image saving in the CLI
 	optdepends = python-tabulate: nicer table output in the CLI
-	source = pypdfium2::git+https://github.com/pypdfium2-team/pypdfium2.git#tag=5.15.1
+	source = pypdfium2::git+https://github.com/pypdfium2-team/pypdfium2.git#tag=5.15.2
 	source = pypdfium2-ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen.git
 	source = sys-pdfium-ver-fix.patch
-	sha256sums = 32718a14faed073dabd058bd13bcbc567dc46ffcf1ac7192937d0fbb1ed5d285
+	sha256sums = 7b408a70826eb9854d9724ff25b791221edfdc55449623de442190d71999e464
 	sha256sums = SKIP
 	sha256sums = 605bd13795cb2ca3bc112002983e7993c2add5dbf8ab6925b6e0b991f2dd91de
 
