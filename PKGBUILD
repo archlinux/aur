@@ -1,15 +1,16 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat-bin
-pkgver=0.18.7
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kvunoff/whoisthat"
 license=('MIT')
-depends=('iproute2' 'nftables' 'libcap' 'systemd')
+depends=('iproute2' 'nftables' 'libcap')
 optdepends=(
     'iptables: legacy firewall backend for TUN mode'
     'polkit: pkexec-based capability setup from the TUI'
+    'systemd: autostart via user unit and linger'
     'xray: system Xray-core binary (managed runtime used automatically if absent)'
 )
 provides=('whoisthat')
@@ -20,8 +21,8 @@ options=(!strip !debug)
 source_x86_64=("whoisthat-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/whoisthat-linux-amd64.tar.gz")
 source_aarch64=("whoisthat-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/whoisthat-linux-arm64.tar.gz")
 # CI pins the checksums of the published release assets.
-sha256sums_x86_64=('4092183db46bdfc335fe04dffc77392061c9ccff0e0b7408c72063a0bba93f61')
-sha256sums_aarch64=('acb6e2e45eade936511422c5511ee7daa6189fadb4ee178c86377fc5167c29bd')
+sha256sums_x86_64=('c4378ac7d9adfe88a935da8adec93ff669396335c3b19a3df6958668174f4b14')
+sha256sums_aarch64=('c36741e2d871d3fe2b6238a42b7be09895f9cab1e180d00b6967bf335ad0ad01')
 
 package() {
     local src
@@ -34,6 +35,9 @@ package() {
     tar -xzf "${srcdir}/${src}" -C "${srcdir}"
     install -Dm755 "${srcdir}/whoisthat"                 "${pkgdir}/usr/bin/whoisthat"
     install -Dm755 "${srcdir}/whoisthat-core"            "${pkgdir}/usr/bin/whoisthat-core"
+    install -Dm755 "${srcdir}/whoisthat-runner"          "${pkgdir}/usr/bin/whoisthat-runner"
+    install -d "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/lib/whoisthat" "${pkgdir}/usr/lib/"
     install -Dm644 "${srcdir}/whoisthat.desktop"         "${pkgdir}/usr/share/applications/whoisthat.desktop"
     install -Dm644 "${srcdir}/whoisthat-url.desktop"     "${pkgdir}/usr/share/applications/whoisthat-url.desktop"
     install -Dm644 "${srcdir}/whoisthat.svg"             "${pkgdir}/usr/share/icons/hicolor/scalable/apps/whoisthat.svg"
