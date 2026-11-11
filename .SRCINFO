@@ -1,0 +1,21 @@
+pkgbase = canvast-bin
+	pkgdesc = Your references, drawings and notes, in one place. A creative workspace on an endless canvas: reference boards, vector drawing, comics, a library of your files and linked notes. Offline: one HTML file or a desktop app, no account, no network.
+	pkgver = 0.56.0
+	pkgrel = 1
+	url = https://github.com/emarpiee/canvast
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = electron44
+	provides = canvast=0.56.0
+	conflicts = canvast
+	source = canvast.js
+	source = canvast.sh
+	sha256sums = 562897be8a17076176f8d985c0d7bc1c685f2e7c9b3a932339ce015963243627
+	sha256sums = d1e4e7e73d690e97039739dd1bf8f1eb046c2fd7e44305b15008ad842a503904
+	source_aarch64 = canvast-0.56.0-aarch64.deb::https://github.com/emarpiee/canvast/releases/download/v0.56.0/canvast-0.56.0-aarch64.deb
+	sha256sums_aarch64 = fce3ae16e01fdcea891c49f6b28cc7afd9acf33436750fc9a2036acbe04ebdfd
+	source_x86_64 = canvast-0.56.0-amd64.deb::https://github.com/emarpiee/canvast/releases/download/v0.56.0/canvast-0.56.0-x86_64.deb
+	sha256sums_x86_64 = 351f038d43d74b2380c28c4063083ed78edd3592d4ae6f1f490dc0b74e20ace9
+
+pkgname = canvast-bin
