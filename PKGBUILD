@@ -1,6 +1,6 @@
 # Maintainer: aic0d3r <funforfreeapps@gmail.com>
 pkgname=z13-tablet-kit
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Posture-aware tablet mode for the 2025 ASUS ROG Flow Z13 (GZ302) 3-in-1 on KDE Plasma 6 / Wayland'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('maliit-keyboard: alternative on-screen keyboard in the session'
             'z13gui-plus-bin: posture/health overlay and tablet settings')
 install=z13-tablet-kit.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aic0d3r/z13-tablet-kit/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b946edf34848acf3dbf717101b3a8d752a254e97182c622d8237056a65394c15')
+sha256sums=('c59b126326768224d914580f14510cce21ff9c0a4365672becaed0b9ab0ce1eb')
 
 package() {
     cd "${pkgname}-${pkgver}"
@@ -24,4 +24,5 @@ package() {
     install -Dm644 sddm/z13-osk.conf "${pkgdir}/usr/lib/sddm/sddm.conf.d/zzz-z13-osk.conf"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 README.md CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 docs/ARCHITECTURE.md docs/INSTALL.md docs/TIPS.md -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
 }
