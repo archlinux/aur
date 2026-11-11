@@ -1,0 +1,16 @@
+pkgbase = solitaire-rs
+	pkgdesc = Windows 95 style Klondike solitaire for Wayland
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/adelmonte/solitaire-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = solitaire-rs-0.2.0.tar.gz::https://github.com/adelmonte/solitaire-rs/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c93b8e695505ec6b3d82366d9607fc2a7c597dff14c0e1e0c648bd112c0e6910
+
+pkgname = solitaire-rs
