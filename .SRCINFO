@@ -1,0 +1,20 @@
+pkgbase = clavirio-bin
+	pkgdesc = A terminal typing tutor built with Rust and Ratatui
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/alexylon/clavirio
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = clavirio
+	conflicts = clavirio
+	options = !strip
+	source = README-0.4.5.md::https://raw.githubusercontent.com/alexylon/clavirio/v0.4.5/README.md
+	source = LICENSE-0.4.5::https://raw.githubusercontent.com/alexylon/clavirio/v0.4.5/LICENSE
+	sha256sums = 43190a47c2c26b9a93c2c424c771b5a4c7be4bc7dab6229da8abf3000ee921cf
+	sha256sums = 58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+	source_x86_64 = clavirio-x86_64-0.4.5.tgz::https://github.com/alexylon/clavirio/releases/download/v0.4.5/clavirio-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 59039c40bc491fc3c48b79da41ae04f2b9ba9cbd6f243ddffb985c72de2d7f25
+
+pkgname = clavirio-bin
