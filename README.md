@@ -11,12 +11,12 @@ git clone https://aur.archlinux.org/deskwaifu-bin.git
 cd deskwaifu-bin
 makepkg -s
 sudo pacman -U ./deskwaifu-bin-*.pkg.tar.zst
-# Optional: install the matching deskwaifu-ocr-bin package as well.
+# Optional: install the deskwaifu-ocr-bin package as well.
 ```
 
 Run makepkg as a regular user. Alternatively, use `yay -S deskwaifu-bin` or
-`yay -S deskwaifu-ocr-bin`. The OCR package requires the exact main package
-version, OpenCV and yaml-cpp; models and dictionaries must be supplied separately.
+`yay -S deskwaifu-ocr-bin`. The OCR package requires `deskwaifu-bin`, OpenCV,
+yaml-cpp and system onnxruntime-cpu; models and dictionaries must be supplied separately.
 
 Use a Wayland compositor supporting layer-shell, such as Hyprland or Sway.
 Start `deskwaifu`, then `deskwaifu-control`. The control panel does not start

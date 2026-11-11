@@ -3,7 +3,7 @@
 pkgbase=deskwaifu-bin
 pkgname=('deskwaifu-bin' 'deskwaifu-ocr-bin')
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='DeskWaifu application and all default plugins'
 arch=('x86_64')
 url='https://github.com/ad2248/DeskWaifu'
@@ -26,7 +26,7 @@ sha256sums=(
 package_deskwaifu-bin() {
   depends=('glibc' 'gcc-libs' 'wayland' 'libglvnd' 'systemd-libs' 'qt6-base>=6.5' 'qt6-wayland>=6.5' 'qt6-scxml>=6.5' 'qt6-websockets>=6.5' 'qt6-multimedia>=6.5' 'layer-shell-qt>=6.6' 'bash' 'python' 'psmisc' 'libsamplerate' 'wl-clipboard')
   optdepends=('deskwaifu-ocr-bin: optional in-process OCR module (models provisioned separately)')
-  provides=("deskwaifu=$pkgver")
+  provides=('deskwaifu')
   conflicts=('deskwaifu')
   # Select only the installed payload; never nest upstream package metadata.
   bsdtar -xpf "$srcdir/$_main" -C "$pkgdir" usr
@@ -35,8 +35,8 @@ package_deskwaifu-bin() {
 package_deskwaifu-ocr-bin() {
   pkgdesc='DeskWaifu in-process OCR module using system ONNX Runtime (no models or dictionaries)'
   license=('MIT' 'Apache-2.0')
-  depends=("deskwaifu-bin>=$pkgver" 'glibc' 'gcc-libs' 'qt6-base>=6.5' 'opencv' 'yaml-cpp' 'onnxruntime-cpu')
-  provides=("deskwaifu-ocr=$pkgver")
+  depends=('deskwaifu-bin' 'glibc' 'gcc-libs' 'qt6-base>=6.5' 'opencv' 'yaml-cpp' 'onnxruntime-cpu')
+  provides=('deskwaifu-ocr')
   conflicts=('deskwaifu-ocr')
   bsdtar -xpf "$srcdir/$_ocr" -C "$pkgdir" usr
   # The upstream component uses the un-suffixed name for its license directory.

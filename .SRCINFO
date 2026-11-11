@@ -1,7 +1,7 @@
 pkgbase = deskwaifu-bin
 	pkgdesc = DeskWaifu application and all default plugins
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ad2248/DeskWaifu
 	arch = x86_64
 	license = LicenseRef-Live2D-Open-Software
@@ -36,19 +36,19 @@ pkgname = deskwaifu-bin
 	depends = libsamplerate
 	depends = wl-clipboard
 	optdepends = deskwaifu-ocr-bin: optional in-process OCR module (models provisioned separately)
-	provides = deskwaifu=0.2.4
+	provides = deskwaifu
 	conflicts = deskwaifu
 
 pkgname = deskwaifu-ocr-bin
 	pkgdesc = DeskWaifu in-process OCR module using system ONNX Runtime (no models or dictionaries)
 	license = MIT
 	license = Apache-2.0
-	depends = deskwaifu-bin>=0.2.4
+	depends = deskwaifu-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = qt6-base>=6.5
 	depends = opencv
 	depends = yaml-cpp
 	depends = onnxruntime-cpu
-	provides = deskwaifu-ocr=0.2.4
+	provides = deskwaifu-ocr
 	conflicts = deskwaifu-ocr
