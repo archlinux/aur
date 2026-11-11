@@ -1,21 +1,21 @@
 pkgbase = zigfetch-bin
 	pkgdesc = Zigfetch is a minimal neofetch/fastfetch like system information tool.
-	pkgver = 0.31.0
-	pkgrel = 2
+	pkgver = 0.32.0
+	pkgrel = 1
 	url = https://github.com/utox39/zigfetch
 	arch = x86_64
 	license = MIT
 	depends = pciutils
-	provides = zigfetch=0.31.0
+	provides = zigfetch=0.32.0
 	conflicts = zigfetch
 	options = !debug
-	source = https://github.com/utox39/zigfetch/releases/download/v0.31.0/zigfetch-x86_64-linux.zip
-	source = LICENSE-0.31.0::https://raw.githubusercontent.com/utox39/zigfetch/v0.31.0/LICENSE
-	source = https://raw.githubusercontent.com/utox39/zigfetch/v0.31.0/README.md
-	source = https://raw.githubusercontent.com/utox39/zigfetch/v0.31.0/config.json
-	sha256sums = fa0ba31960675cf9eef731bf39eee190c278eae5333fd8bbb1671117795646d7
+	source = https://github.com/utox39/zigfetch/releases/download/v0.32.0/zigfetch-x86_64-linux.zip
+	source = LICENSE-0.32.0::https://raw.githubusercontent.com/utox39/zigfetch/v0.32.0/LICENSE
+	source = https://raw.githubusercontent.com/utox39/zigfetch/v0.32.0/README.md
+	source = https://raw.githubusercontent.com/utox39/zigfetch/v0.32.0/config.json
+	sha256sums = a6c008a2cbde197efaf512317e2c43170eae45b134f6fc10044630448ec8c9ea
 	sha256sums = bb0cdfa1f9f726f12d3704bfc930c1b8a2c06c0382da34181921429a59dec8d9
-	sha256sums = 6af335b1ed0a158d103488f5ed94db03c86f9b82e7428c7d4e6538e1681bc88f
+	sha256sums = d17db83e680755b8c200186c55d2bd37c9cdd6ca5ec25fd9aa62b905deec1ca2
 	sha256sums = 38f97c39b209e9f41b3fb3646ecba2acbeae4446bd3d56fc46d198dcf407d09f
 
 pkgname = zigfetch-bin

@@ -2,8 +2,8 @@
 
 pkgname=zigfetch-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.31.0
-pkgrel=2
+pkgver=0.32.0
+pkgrel=1
 pkgdesc='Zigfetch is a minimal neofetch/fastfetch like system information tool.'
 arch=('x86_64')
 url='https://github.com/utox39/zigfetch'
@@ -21,9 +21,9 @@ source=(
 	"${_ghurlraw}/README.md"
 	"${_ghurlraw}/config.json"
 )
-sha256sums=('fa0ba31960675cf9eef731bf39eee190c278eae5333fd8bbb1671117795646d7'
+sha256sums=('a6c008a2cbde197efaf512317e2c43170eae45b134f6fc10044630448ec8c9ea'
             'bb0cdfa1f9f726f12d3704bfc930c1b8a2c06c0382da34181921429a59dec8d9'
-            '6af335b1ed0a158d103488f5ed94db03c86f9b82e7428c7d4e6538e1681bc88f'
+            'd17db83e680755b8c200186c55d2bd37c9cdd6ca5ec25fd9aa62b905deec1ca2'
             '38f97c39b209e9f41b3fb3646ecba2acbeae4446bd3d56fc46d198dcf407d09f')
 
 package() {
