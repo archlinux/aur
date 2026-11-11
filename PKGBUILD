@@ -1,13 +1,16 @@
 # Maintainer: James Farr Gomez <james@nertwork.com>
 pkgname=imsg
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Native Linux Qt6/QML desktop & CLI client for iMessage, RCS, and SMS backed by BlueBubbles"
+pkgdesc="[Renamed to bluepill] BluePill — Native Linux Qt6/QML desktop & CLI client for iMessage, RCS, and SMS (with macOS chat.db relay & BlueBubbles support)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/nertwork/imsg"
+url="https://github.com/nertwork/bluepill"
 license=('MIT')
+provides=('imsg')
+replaces=('imsg')
+conflicts=('imsg')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland' 'libnotify')
-makedepends=('qt6-base' 'qt6-declarative')
+makedepends=('qt6-base' 'qt6-declarative' 'git')
 checkdepends=('libheif' 'imagemagick')
 optdepends=(
     'libheif: Fast HEIC/HEIF photo attachment decoding'
@@ -16,25 +19,31 @@ optdepends=(
     'pipewire-pulse: Notification sound playback (paplay)'
 )
 options=('!debug')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nertwork/imsg/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('66f14d0306ff5b429c0550b1ae64c6ab1bfc216e7be79901ca1cdb93d6e5f829')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nertwork/bluepill/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/bluepill-${pkgver}"
     ./bin/build
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/bluepill-${pkgver}"
     QT_QPA_PLATFORM=offscreen ./bin/test
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 build/imsg "$pkgdir/usr/bin/imsg"
+    cd "$srcdir/bluepill-${pkgver}"
+    install -Dm755 build/bluepill "$pkgdir/usr/bin/bluepill"
+    ln -sf bluepill "$pkgdir/usr/bin/imsg"
+    install -Dm644 pkgbuild/bluepill.service "$pkgdir/usr/lib/systemd/user/bluepill.service"
     install -Dm644 pkgbuild/imsg.service "$pkgdir/usr/lib/systemd/user/imsg.service"
+    install -Dm644 pkgbuild/bluepill.desktop "$pkgdir/usr/share/applications/bluepill.desktop"
     install -Dm644 pkgbuild/imsg.desktop "$pkgdir/usr/share/applications/imsg.desktop"
+    install -Dm644 pkgbuild/bluepill.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bluepill.svg"
     install -Dm644 pkgbuild/imsg.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/imsg.svg"
+    install -Dm644 assets/bluepill.png "$pkgdir/usr/share/pixmaps/bluepill.png"
+    install -Dm644 resources/imessage-notify.wav "$pkgdir/usr/share/bluepill/imessage-notify.wav"
     install -Dm644 resources/imessage-notify.wav "$pkgdir/usr/share/imsg/imessage-notify.wav"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
