@@ -1,6 +1,6 @@
 pkgbase = slicenv-bin
 	pkgdesc = Fast native 3D printing slicer front-end for OrcaSlicer and Bambu Studio engines
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/arximus88/slicenv
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = slicenv-bin
 	conflicts = slicenv-git
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/arximus88/slicenv/releases/download/v0.1.2/slicenv-0.1.2-x86_64-linux.tar.gz
-	sha256sums_x86_64 = a1cd9b4836d8584ea51068ea6df3ba60504659fd2ccb48bd1705b4832d031d6f
+	source_x86_64 = https://github.com/arximus88/slicenv/releases/download/v0.1.3/slicenv-0.1.3-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 5a8978ac88e22e6a08ac002978b4d26eda476e380b0cfc13d4a4814db5d0ecf6
 
 pkgname = slicenv-bin
