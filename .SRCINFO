@@ -1,6 +1,6 @@
 pkgbase = garnet-bin
 	pkgdesc = A high-performance cache-store from Microsoft Research
-	pkgver = 2.2.9
+	pkgver = 2.2.10
 	pkgrel = 1
 	url = https://microsoft.github.io/garnet
 	arch = aarch64
@@ -13,13 +13,13 @@ pkgbase = garnet-bin
 	provides = garnet
 	conflicts = garnet
 	options = !strip
-	source = LICENSE-2.2.9::https://raw.githubusercontent.com/microsoft/garnet/refs/tags/v2.2.9/LICENSE
+	source = LICENSE-2.2.10::https://raw.githubusercontent.com/microsoft/garnet/refs/tags/v2.2.10/LICENSE
 	source = garnet-server.service
 	sha256sums = c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
 	sha256sums = a536b51496a330d8faa8f00fea134177d6e48f404663211db876af5adc7e6470
-	source_aarch64 = garnet-arm64-2.2.9.tar.xz::https://github.com/microsoft/garnet/releases/download/v2.2.9/linux-x64-based.tar.xz
-	sha256sums_aarch64 = d05220ca3731d08168223a7cbda11bfccea7a659ac0d780c53fa5fac7047c1b8
-	source_x86_64 = garnet-x64-2.2.9.tar.xz::https://github.com/microsoft/garnet/releases/download/v2.2.9/linux-x64-based.tar.xz
-	sha256sums_x86_64 = d05220ca3731d08168223a7cbda11bfccea7a659ac0d780c53fa5fac7047c1b8
+	source_aarch64 = garnet-arm64-2.2.10.tar.xz::https://github.com/microsoft/garnet/releases/download/v2.2.10/linux-x64-based.tar.xz
+	sha256sums_aarch64 = fe7f9ec7429422d23bbf5a8431093b27ec139785298b9cc322a46ee7af88f63a
+	source_x86_64 = garnet-x64-2.2.10.tar.xz::https://github.com/microsoft/garnet/releases/download/v2.2.10/linux-x64-based.tar.xz
+	sha256sums_x86_64 = fe7f9ec7429422d23bbf5a8431093b27ec139785298b9cc322a46ee7af88f63a
 
 pkgname = garnet-bin
