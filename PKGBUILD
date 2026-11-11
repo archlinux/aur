@@ -1,5 +1,5 @@
 pkgname=vleer-nightly-bin
-pkgver=0.1.0_nightly.20261110.433
+pkgver=0.1.1_nightly.20261111.434
 pkgrel=1
 pkgdesc='Music, but without the subscription (nightly build)'
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ source_x86_64=("https://cdn.vleer.app/nightly/Vleer-${_ver}-x86_64.tar.gz"
                "https://cdn.vleer.app/nightly/Vleer-${_ver}-x86_64.tar.gz.minisig")
 source_aarch64=("https://cdn.vleer.app/nightly/Vleer-${_ver}-aarch64.tar.gz"
                 "https://cdn.vleer.app/nightly/Vleer-${_ver}-aarch64.tar.gz.minisig")
-sha256sums_x86_64=('4b3c853c05934d4fa8203ea13000389ec69db3a3ae66c82704cec6bd5e0da668'
+sha256sums_x86_64=('5504cc7805386bca783954392735dab72f7b97746cfe34ab130204a2f4c70228'
                    'SKIP')
-sha256sums_aarch64=('e79bcd395a0e6306b46ce4af471160a2cd93d52a197b7d83d1dda4bb9574f82e'
+sha256sums_aarch64=('1dfdcf43a68e87550828cb41399274b283e0712e33dd2e7901cee010a814f46c'
                     'SKIP')
 
 prepare() {
