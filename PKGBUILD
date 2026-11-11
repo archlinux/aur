@@ -3,7 +3,7 @@
 # Contributor: Julian <juliannfairfax@protonmail.com>
 pkgname=pipeline-gtk
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/schmiddi-on-mobile/pipeline"
@@ -14,7 +14,7 @@ depends=(
   'libadwaita'
   'libclapper'
   'libclapper-gtk'
-  'openssl'
+  'openssl-3'
   'sqlite'
   'yt-dlp'
 )
@@ -38,11 +38,13 @@ prepare() {
 }
 
 build() {
+  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
   export GETTEXT_SYSTEM=true
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+  export OPENSSL_NO_VENDOR=1
   export RUSTUP_TOOLCHAIN=stable
-	arch-meson pipeline-$pkgver build
-	meson compile -C build
+  arch-meson pipeline-$pkgver build
+  meson compile -C build
 }
 
 check() {
@@ -50,5 +52,5 @@ check() {
 }
 
 package() {
-	meson install -C build --no-rebuild --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
