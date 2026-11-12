@@ -1,15 +1,15 @@
 # Maintainer: Michael König <m.koenig@kit.edu>
 pkgname=bwlog
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Lightweight logger for network throughput, CPU utilization, and interrupt rates"
 arch=('x86_64')
 url="https://gitlab.kit.edu/kit/tm/telematics/congestion-control/logging/bwlog"
 license=('MIT')
-depends=()
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/v$pkgver.tar.gz")
-sha256sums=('1b444f3310a2125ce6fd3e90c8340b4f96e0360243f2ab16c7a4be7ba250b272')
+sha256sums=('d2aba67d7b67d277c1382dcdcca30ccdfd2b30329e75ff2ee4487d2a6cb7e8da')
 
 prepare() {
     cd "$pkgname-v$pkgver-"*
@@ -18,6 +18,9 @@ prepare() {
 
 build() {
     cd "$pkgname-v$pkgver-"*
+    # GitLab names the archive folder bwlog-v<version>-<commit>; bwlog's
+    # build.rs records this commit in the output metadata.
+    export BWLOG_GIT_COMMIT="${PWD##*-}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export CFLAGS="${CFLAGS/-flto=auto/}"
