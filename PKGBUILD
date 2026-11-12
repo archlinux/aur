@@ -57,7 +57,7 @@ prepare() {
 
     # Fix deprecated warn openssl 3.0 
     #patch -p1 -i ${srcdir}/3285.patch
-    patch -p1 -i ${srcdir}/fix-openssl-deprecated-warn.patch
+    #patch -p1 -i ${srcdir}/fix-openssl-deprecated-warn.patch
 
     # libaegis 0.9.1
     #patch -p1 -i ${srcdir}/3552.patch
