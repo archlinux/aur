@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=m-flasher
-pkgver=0.7.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Back up, restore and reinstall the firmware of an M-VAVE FM-1 or SMK-37"
 arch=('x86_64' 'armv7h')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('glibc' 'libgcc' 'systemd-libs')
 makedepends=('cargo')
 source=("https://github.com/jvitkauskas/m-flasher/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c1a6644ecbcc720062e762e8de3965e1310d71e7ef0b7a74d914abbd6519698752cb1fd9c739a96883dab3b539a5041dcb0f94b835f65f36f38184dc326e22ce')
-sha256sums=('f0c577b52af94a02e47938ed72557c77913d7e365b3c67ccfb061f3b9fc2e696')
+sha256sums=('b6759ee644e00fe5951eee49a2ee1a56f138016fa797b133371670614c960cb3')
+b2sums=('0ef8fdbd5ca1b7092a83b6f59f4a6f62006e6729e17b40afe853fa4e7e6478cc7768c7798842bc9c6e33252a3c4780a0e1c656549a4a230580a4bb2945ec738b')
 
 prepare() {
     cd "$pkgname-$pkgver"
