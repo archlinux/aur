@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r65987.f8815ee40f4
+pkgver=r73885.991f18b116a
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -38,8 +38,8 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'taglib'
-  'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre2' 'tinyxml2' 'libdisplay-info'
+  'tinyxml' 'swig' 'upower' 'giflib' 'nlohmann-json' 'ghostscript' 'meson' 'gtest'
+  'graphviz' 'pcre2' 'tinyxml2' 'libdisplay-info' 'exiv2'
   # cmake/scripts/linux/Install.cmake calls distutils
   # python 3.12 does no longer come with distutils on board
   'python-setuptools'
@@ -53,52 +53,49 @@ options=(!lto)
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname=xbmc
-_codename=Omega
+_codename=Piers
 
-_libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
-_libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
-_libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
-_ffmpeg_version="6.0.1"
+options=(!lto !debug)
+
+
+_libdvdcss_version="1.5.0"
+_libdvdnav_version="7.0.0"
+_libdvdread_version="7.0.1"
+_ffmpeg_version="9.0.2"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="23.3.3"
-_libudfread_version="1.1.2"
+_libudfread_version="1.2.0"
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
-  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
-  "https://ffmpeg.org/releases/ffmpeg-$_ffmpeg_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/libdvdcss-$_libdvdcss_version.tar.bz2"
+  "https://mirrors.kodi.tv/build-deps/sources/libdvdnav-$_libdvdnav_version.tar.bz2"
+  "https://mirrors.kodi.tv/build-deps/sources/libdvdread-$_libdvdread_version.tar.bz2"
+  "https://ffmpeg.org/releases/ffmpeg-$_ffmpeg_version.tar.xz"
   "https://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
-  "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  "https://github.com/xbmc/xbmc/pull/28016.patch"
-  "kodi-21.3-pcre2.patch"
-  "kodi-21.3-gbm-atomic-modeset.patch"
+  "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.bz2"
 )
 noextract=(
-  "libdvdcss-$_libdvdcss_version.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz"
-  "ffmpeg-$_ffmpeg_version.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.bz2"
+  "libdvdnav-$_libdvdnav_version.tar.bz2"
+  "libdvdread-$_libdvdread_version.tar.bz2"
+  "ffmpeg-$_ffmpeg_version.tar.xz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
-  "libudfread-$_libudfread_version.tar.gz"
+  "libudfread-$_libudfread_version.tar.bz2"
 )
 b2sums=('SKIP'
-        '2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c'
-        'db4d05836d8fbb3637ae50bdbfc0e4b612ee6b3be24addfea94ce772c3bf28d58b63a3f252d6f9f016f72f8cbb841cc1820b091226b136f4c4664385a32da73c'
-        'c94feb5a03a12efa5b7767965118d2500a088299ea36f3b82e46d157e45893e6b04503cb50f179ca681bac914457607fab26acfa6e304752b355c407578572d1'
-        '6424e30c6d354abbbea8a807822ae61589413189e9c4ba7aa51c307179287506b9072626e9745861fe83753c0015b50d179f9b4f298fe9abf74bee13936639af'
+        '0fbaf0fef65c9c538100cc48257c0cbf52c4d6b45bc90b2373ebcf4c12405f506260a04d21dd85172f80964d9ec70397f680795f892a318ade2b89fe351eb2db'
+        'f6e5cd2ae45d61392fa2c1c01dd0eb7bc1f0ab8d2fe5153f44107eaf3e12b78b96482ad3f54dd1cabb92cb456f204927f179f133f88f1598949438067516aca5'
+        'b4d7f6e760100a55b96e412b0e36196f82c508c97a53f96f84013b5427a4add1ae7ae02db43dace6429b98f3bedf5baaf118219701255c1475c4505c021bbdf9'
+        'c768e75f3b129d7e51131ebe36813fdddbf8087637a15d3bad6e10a73b1d4fc815deee189809ff51750c5e00c4df401134417c911a3c97393d40e56cf3fd8308'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
-        '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '6ff64fa3028dca88b1ae6e898218149811a995e13053dd6e25abcf3cacbfeac8e31a02d04592f3b5fee432d007cebda8fee5c87f673f7cdc3410855b43f5a2ee'
-        'd5b5b6b9e9863f277ebe6c427f240b1ed8d1c7ba83b52cbda38fa1d0b0e5e14f39fb3cd9a5fdf125614a54156a0c454dae0c4c240dfb58362dacf3d1bc94ad7a'
-        'dd2f3d494bd3d283df676c08be2fdab2cda49da4037c6b2e711d1b1a11ccfa9d96785f935f400ce7efef45afef4ca16e9f0b088ee336637450d4b656d82cd810')
+        '954caea7ae3cc91034ce1ba802e445f4989b9a75ec34b9373b523a312d7ed6296f14c32579edb5ef094379fbd1f48dd94d7dbc9a34ecdb263d765c23b63a81d4')
 
 pkgver() {
   cd "$_gitname"
@@ -110,15 +107,6 @@ prepare() {
   mkdir "$srcdir/kodi-build"
 
   cd "$_gitname"
-  
-  # TexturePacker will not build with giflib-6.1.2
-  # https://github.com/xbmc/xbmc/pull/28016
-  patch -p1 -i "$srcdir/28016.patch"
-  # PCRE2 support from Debian https://sources.debian.org/patches/kodi/2:21.3+dfsg-1.1/workarounds/0003-pcre2.patch/
-  patch -p1 -i "$srcdir/kodi-21.3-pcre2.patch"
-  # gbm screen refresh rate crash: https://gitlab.archlinux.org/archlinux/packaging/packages/kodi/-/work_items/20
-  # patch extracted from https://github.com/xbmc/xbmc/pull/28246/changes/2530a9be035f4b369dcccaff7ba4bb22ce5b3289
-  patch -p1 -i "$srcdir/kodi-21.3-gbm-atomic-modeset.patch"
 
   rm -rf system/certs # remove not needed cacert
 
@@ -173,14 +161,15 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
-    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
-    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
-    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
-    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz"
+    -DLIBDVDCSS_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.bz2"
+    -DLIBDVDNAV_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.bz2"
+    -DLIBDVDREAD_URL="$srcdir/libdvdread-$_libdvdread_version.tar.bz2"
+    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.xz"
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
-    -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
+    -DFLATC_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
+    -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.bz2"
     -DAPP_RENDER_SYSTEM=$_renderer
   )
 
@@ -200,7 +189,7 @@ package_kodi-stable-git() {
   'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
   'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'sqlite'
   'tinyxml' 'taglib' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-  'pcre' 'tinyxml2' 'libdisplay-info'
+  'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
 )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
