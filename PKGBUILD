@@ -7,7 +7,7 @@
 # Wine/Proton prefix or native install). Nothing here runs on the Arch host, so
 # arch=any: the DLLs are x86_64 PE *guest* code, not host binaries.
 pkgname=ue4ss
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (stable)"
 arch=('any')
@@ -16,12 +16,9 @@ license=('MIT')
 depends=('bash')
 optdepends=('wine: run Windows Unreal Engine games under Wine/Proton to mod them')
 options=('!strip' '!debug')
-# The stable v3.0.1 release zip ships no LICENSE; pull it from the repo at the tag.
 source=("ue4ss-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/v${pkgver}/UE4SS_v${pkgver}.zip"
-        "LICENSE::https://raw.githubusercontent.com/UE4SS-RE/RE-UE4SS/v${pkgver}/LICENSE"
         "ue4ss-install")
-sha256sums=('4b47d4bceddd2f561a4e395bfa00924ccfc945af576a2d0c613e6537846c57ec'
-            'ddc030e25d0ea87aca4ae84c0ed3f868d69273c00c0c12ea1e26f1c6130f5d2e'
+sha256sums=('251ad0d1381a241750e036f5918cbf2b5d7ec58ebc608cb2dd09d459d0c81e45'
             'd5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0')
 
 latestver() {
@@ -31,14 +28,16 @@ latestver() {
 }
 
 package() {
-    # v3.0.1 uses the flat layout: dwmapi.dll + UE4SS.dll + UE4SS-settings.ini +
-    # Mods/ all at the archive root. Ship the functional payload only (skip the
-    # bundled Changelog.md / README.md — they are noise in a game folder).
+    # Upstream's install shape: only the dwmapi.dll proxy sits in the game's
+    # Win64 directory, and every other file lives in a ue4ss/ subfolder beside
+    # it. Mirror that tree so the deploy helper reproduces it verbatim.
     install -d "$pkgdir/usr/share/ue4ss"
-    cp -r "$srcdir/dwmapi.dll" "$srcdir/UE4SS.dll" "$srcdir/UE4SS-settings.ini" \
-          "$srcdir/Mods" "$pkgdir/usr/share/ue4ss/"
-    chmod -R u=rwX,go=rX "$pkgdir/usr/share/ue4ss"
+    cp -r "$srcdir/dwmapi.dll" "$srcdir/ue4ss" "$pkgdir/usr/share/ue4ss/"
 
+    install -Dm644 "$srcdir/ue4ss/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # The license belongs under /usr/share/licenses, not in the game folder.
+    rm -f "$pkgdir/usr/share/ue4ss/ue4ss/LICENSE"
+
+    chmod -R u=rwX,go=rX "$pkgdir/usr/share/ue4ss"
     install -Dm755 "$srcdir/ue4ss-install" "$pkgdir/usr/bin/ue4ss-install"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
