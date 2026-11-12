@@ -1,0 +1,33 @@
+pkgbase = sz3
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/szcompressor/SZ3
+	arch = x86_64
+	license = LicenseRef-SZ3
+	checkdepends = gtest
+	makedepends = cmake
+	makedepends = zstd
+	makedepends = hdf5
+	makedepends = paraview
+	makedepends = cli11
+	makedepends = fast_float
+	makedepends = nlohmann-json
+	source = sz3-3.4.0.tar.gz::https://github.com/szcompressor/SZ3/archive/refs/tags/v3.4.0.tar.gz
+	sha256sums = 4e1559d291cd0b892350bd74ddb749ad4aa4d6fbba170e588eb54f325a529e0d
+
+pkgname = sz3
+	pkgdesc = Modular error-bounded lossy compression framework for scientific data
+	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	depends = zstd
+	depends = hdf5
+
+pkgname = paraview-sz3-plugin
+	pkgdesc = ParaView reader plugin for SZ3-compressed data
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zstd
+	depends = paraview
