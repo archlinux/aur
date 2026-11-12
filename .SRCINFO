@@ -53,6 +53,7 @@ pkgname = linux-lts515
 pkgname = linux-lts515-headers
 	pkgdesc = Headers and scripts for building modules for the LTS Linux 5.15.x kernel
 	depends = pahole
+	depends = openssl-3
 
 pkgname = linux-lts515-docs
 	pkgdesc = Documentation for the LTS Linux 5.15.x kernel

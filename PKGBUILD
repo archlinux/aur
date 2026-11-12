@@ -122,6 +122,15 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
+  # scripts/sign-file and scripts/extract-cert (shipped here for
+  # out-of-tree module signing) link against libcrypto.so.3 whenever
+  # build()'s PKG_CONFIG_PATH override above activated -- same
+  # condition, so this needs to track it: a real runtime depends, not
+  # just build()'s makedepend, or these binaries would fail to run on
+  # any installed system without openssl-3 too.
+  if [[ $CARCH == x86_64 ]]; then
+    depends+=(openssl-3)
+  fi
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
