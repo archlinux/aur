@@ -1,0 +1,9 @@
+# shellcheck shell=bash
+# xzram install hooks (Arch). Hint-only: never enable or start units here
+# (Arch packaging policy). xzramd is D-Bus activated and starts on demand.
+
+post_install() {
+  echo ":: xzramd is D-Bus activated and starts on demand; no action is required."
+  echo ":: Optional: enable it at boot with 'systemctl enable --now xzramd.service'."
+  echo ":: For zram swap, install the 'zram-generator' package (optional dependency)."
+}
