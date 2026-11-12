@@ -1,0 +1,25 @@
+pkgbase = greycard-bin
+	pkgdesc = A raw photo editor with a scene-referred, color-managed pipeline
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://greycard.org
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = vulkan-driver: GPU acceleration for pipeline and AI features
+	provides = greycard
+	conflicts = greycard
+	source_x86_64 = greycard-bin-0.11.0.tar.gz::https://github.com/jessolmstead/greycard/releases/download/v0.11.0/greycard-0.11.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = e5df09a72f0908312036cf0b4be6e380f37c28ec857d92c0e6e9ba86c3759cbf
+
+pkgname = greycard-bin
