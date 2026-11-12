@@ -1,7 +1,7 @@
 # Maintainer: Boris Brock <gabrielborisbrock@gmail.com>
 pkgname=hivemind
 _appname=Hivemind
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Kanban board for running AI coding agents (Claude Code, OpenCode) across projects'
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,12 @@ optdepends=('claude-code: Claude Code agent'
 conflicts=('hivemind-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5352d6ee258065a6f136851f5198b704b4f65221f793b7f1fbbeb23806a18deb')
+sha256sums=('49ca5ef257a73861138952833bc0c16fa67409efcc0e0a555ea5659911cb7180')
 
 prepare() {
   cd "$_appname-$pkgver"
+  # The source keeps the placeholder version 0.0.0, the release version comes from the tag
+  tools/set-version.sh "$pkgver"
   npm ci --no-audit --no-fund
   cargo fetch --locked --manifest-path src-tauri/Cargo.toml --target "$(rustc -vV | sed -n 's/host: //p')"
 }

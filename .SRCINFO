@@ -1,6 +1,6 @@
 pkgbase = hivemind
 	pkgdesc = Kanban board for running AI coding agents (Claude Code, OpenCode) across projects
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/BorisBrock/Hivemind
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = hivemind
 	optdepends = opencode: OpenCode agent
 	conflicts = hivemind-bin
 	options = !lto
-	source = hivemind-1.0.0.tar.gz::https://github.com/BorisBrock/Hivemind/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 5352d6ee258065a6f136851f5198b704b4f65221f793b7f1fbbeb23806a18deb
+	source = hivemind-1.0.1.tar.gz::https://github.com/BorisBrock/Hivemind/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 49ca5ef257a73861138952833bc0c16fa67409efcc0e0a555ea5659911cb7180
 
 pkgname = hivemind
