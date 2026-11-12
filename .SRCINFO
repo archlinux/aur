@@ -1,7 +1,7 @@
 pkgbase = python-sgl-kernel
 	pkgdesc = Compiled CUDA kernels for the SGLang serving framework
 	pkgver = 0.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sgl-project/sglang/tree/main/sgl-kernel
 	arch = x86_64
 	license = Apache-2.0

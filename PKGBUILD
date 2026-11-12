@@ -3,7 +3,7 @@ pkgname=python-sgl-kernel
 _pkgname=sgl-kernel
 _sglang_ver=0.5.16
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Compiled CUDA kernels for the SGLang serving framework'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang/tree/main/sgl-kernel'
@@ -54,6 +54,11 @@ build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export CMAKE_ARGS="${CMAKE_ARGS:--DSGL_KERNEL_COMPILE_THREADS=1}"
+  # CUDA is outside Arch's default PATH. Select its canonical torch CMake files;
+  # following the copies under /opt/cuda makes Torch resolve libraries there.
+  export CUDA_HOME=/opt/cuda CUDACXX=/opt/cuda/bin/nvcc CUDAToolkit_ROOT=/opt/cuda
+  export PATH="/opt/cuda/bin:$PATH"
+  export CMAKE_ARGS="$CMAKE_ARGS -DTorch_DIR=/usr/lib/cmake/Torch -DCaffe2_DIR=/usr/lib/cmake/Caffe2"
   export CUDAHOSTCXX=/usr/bin/g++-15
   export CC=/usr/bin/gcc-15 CXX=/usr/bin/g++-15
   python -m build --wheel --no-isolation --skip-dependency-check \
