@@ -1,6 +1,6 @@
 pkgbase = c6-git
 	pkgdesc = c6 — TinyCC with language extensions
-	pkgver = r361.95d45d2
+	pkgver = r373.711f2ce
 	pkgrel = 1
 	url = https://github.com/c6lang/c6
 	arch = x86_64

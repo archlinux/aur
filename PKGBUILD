@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=c6-git
-pkgver=r361.95d45d2
+pkgver=r373.711f2ce
 pkgrel=1
 pkgdesc="c6 — TinyCC with language extensions"
 arch=($CARCH)
