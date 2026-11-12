@@ -1,6 +1,6 @@
 pkgbase = rg-sens
 	pkgdesc = A fast, customizable system monitoring dashboard for Linux
-	pkgver = 0.9.2
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/hilgardt-collab/rg-Sens
 	install = rg-sens.install
@@ -19,7 +19,7 @@ pkgbase = rg-sens
 	optdepends = webkit2gtk-4.1: CSS Template panel with WebView support
 	provides = rg-sens
 	conflicts = rg-sens-git
-	source = rg-sens-0.9.2.tar.gz::https://github.com/hilgardt-collab/rg-Sens/archive/v0.9.2.tar.gz
-	sha256sums = a7872fe97113d0c2fee3b4209ceb8e7e0c3d24a38e35570f4587852c11e63950
+	source = rg-sens-0.9.4.tar.gz::https://github.com/hilgardt-collab/rg-Sens/archive/v0.9.4.tar.gz
+	sha256sums = f7661a4f5eb8b0ac42f3cdb908fb568adbd4ef73d9f70bf909464737ff676251
 
 pkgname = rg-sens
