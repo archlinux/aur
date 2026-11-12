@@ -1,0 +1,19 @@
+pkgbase = mcumgrctl-bin
+	pkgdesc = Rust CLI for Zephyr MCUmgr (prebuilt binary)
+	pkgver = 0.20.0
+	pkgrel = 2
+	url = https://github.com/Finomnis/mcumgr-toolkit
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = mcumgrctl
+	conflicts = mcumgrctl
+	options = !debug
+	source = mcumgrctl::https://github.com/Finomnis/mcumgr-toolkit/releases/download/0.20.0/mcumgrctl-linux
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/Finomnis/mcumgr-toolkit/0.20.0/LICENSE-APACHE
+	source = LICENSE-MIT::https://raw.githubusercontent.com/Finomnis/mcumgr-toolkit/0.20.0/LICENSE-MIT
+	sha256sums = 1df820bb2ffaa6f12a21152e8a3c949dc2a989e01608dda6bb90308e32bdcf3c
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	sha256sums = d4e182b6d0e8776794e0b59f70abb99aece14e745952711edbcdbdac9efcc931
+
+pkgname = mcumgrctl-bin
