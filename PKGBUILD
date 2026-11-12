@@ -4,7 +4,7 @@
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
 pkgver=1.2.130.r2.g45416258
-pkgrel=2
+pkgrel=4
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
@@ -77,6 +77,7 @@ optdepends=(
     # hpsdr, no aur package yet
     # runds, no aur package yet
 )
+backup=('etc/openwebrx/openwebrx.conf' 'etc/openwebrx/bands.json' 'etc/openwebrx/bands-r1.json' 'etc/openwebrx/bands-r2.json' 'etc/openwebrx/bands-r3.json' 'etc/openwebrx/bookmarks.txt')
 makedepends=('git' 'python-distutils-extra')
 source=(
     "$_pkgname"::"git+https://github.com/luarvique/openwebrx.git"
