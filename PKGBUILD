@@ -22,7 +22,7 @@ provides=(
   'jittersamples'
   )
 conflicts=('jitterdebugger')
-options=('!emptydirs' '!debug')
+options=('!emptydirs')
 source=("$pkgname"::"git+${url}")
 sha256sums=('SKIP')
 
