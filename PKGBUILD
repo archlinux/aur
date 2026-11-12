@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A lightweight console-based .NET IDE with LSP IntelliSense, built-in terminal, and git integration"
 
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('662c83fad4bc331f632948cf56f4c06f2993e825d946a0325dba62be80a7459a'
             'dd9eeb7fbd91f48147f181650bf8751228ff67c0fb5ddb2d09ed132280791f4f')
-sha256sums_x86_64=('1889fe6445e97bc8fe54c9d07f3e85b2c5208b21dacc700082777d1c5b3d96c9')
-sha256sums_aarch64=('9fe36f86a014331f42e31b51b4dca2543ae5c08f8d057ab0634f3531a52a11a1')
+sha256sums_x86_64=('bfffb40673a2dfbadf922df8029f3113b8fd79701d8078e0432ca3d2cc73b243')
+sha256sums_aarch64=('c11757cf5e1afcfcd6dc7b0965da49f31fc6469bf5ae66cf018fe664c3036f10')
 
 
 package() {
