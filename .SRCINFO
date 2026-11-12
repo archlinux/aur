@@ -1,6 +1,6 @@
 pkgbase = forge-ide-bin
 	pkgdesc = PHPStorm-style IDE for PHP, web and Lua (prebuilt release)
-	pkgver = 0.1.1beta.2
+	pkgver = 0.1.1beta.3
 	pkgrel = 1
 	url = https://github.com/Reeperk/Forge
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = forge-ide-bin
 	depends = libayatana-appindicator
 	depends = openssl
 	depends = hicolor-icon-theme
-	provides = forge-ide=0.1.1beta.2
+	provides = forge-ide=0.1.1beta.3
 	conflicts = forge-ide
 	conflicts = forge
 	conflicts = foundry
 	options = !strip
 	options = !debug
-	source_x86_64 = Forge_0.1.1-beta.2_amd64.deb::https://github.com/stdimnet/forge-ide-bin/releases/download/v0.1.1-beta.2/Forge_0.1.1-beta.2_amd64.deb
-	sha256sums_x86_64 = 71e3f74ce5bb8879db13445cf4ba0e95011106e485140db97589a073357d88e2
+	source_x86_64 = Forge_0.1.1-beta.3_amd64.deb::https://github.com/stdimnet/forge-ide-bin/releases/download/v0.1.1-beta.3/Forge_0.1.1-beta.3_amd64.deb
+	sha256sums_x86_64 = 5ef0166bf6aa20571306223e06326cc96d6ca40bc3c3aaece853cbbc76d7f85c
 
 pkgname = forge-ide-bin
