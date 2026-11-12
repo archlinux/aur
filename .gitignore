@@ -1,0 +1,8 @@
+# Ignore makepkg build artifacts and downloaded sources
+pkg/
+src/
+*.pkg.tar*
+*.tar.gz
+*.deb
+*.1
+*.log

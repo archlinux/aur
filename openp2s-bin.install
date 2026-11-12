@@ -1,0 +1,17 @@
+post_install() {
+    echo "==> OpenP2S was created by Mykhailo Tseluiko (@wyruweso): https://github.com/wyruweso/openp2s"
+    echo "==> Run 'openp2s doctor' (or 'openp2s doctor <profile>.xml') to verify systemd-resolved and /dev/net/tun."
+
+    if [[ -e /usr/local/bin/openp2s || -e /usr/local/lib/openp2s ]]; then
+        echo ""
+        echo "WARNING: A manual installation of openp2s was detected under /usr/local!"
+        echo "         /usr/local/bin usually takes precedence over /usr/bin in PATH."
+        echo "         Remove the manual installation with:"
+        echo "           sudo rm -rf /usr/local/bin/openp2s /usr/local/lib/openp2s"
+        echo ""
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
