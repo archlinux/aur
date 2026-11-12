@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables telemetry and a daily update check by default: helix-db"
+  echo "  sends install, compile and deploy events to telemetry.helix-db.com."
+  echo "  Disable them with DO_NOT_TRACK=1 and HELIX_NO_UPDATE_CHECK=1."
+}
