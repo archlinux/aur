@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=passless
 pkgname="${_pkgname}-bin"
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("https://github.com/pando85/passless/releases/download/v${pkgver}/passle
         "passless-${pkgver}.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/pando85/passless/releases/download/v${pkgver}/passless-completions-${pkgver}.tar.gz"
         "passless.install")
-sha256sums=('281dbf6148f9105998a28188450b1ffbbd5b42c610dd65fcc228fcdf4b366398'
+sha256sums=('a0230a918cdf52907abfb2dd34e2d3c94b42b5d08de3875ab7f1c90fdf208be1'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -27,23 +27,15 @@ package() {
 	install -Dm755 sign-proxy "${pkgdir}/usr/bin/sign-proxy"
 	install -Dm755 agent-prompt-probe "${pkgdir}/usr/bin/agent-prompt-probe"
 
-	# Install shell completions
-	if [ -f "passless.bash" ]; then
-		install -Dm0644 passless.bash \
-			"${pkgdir}/usr/share/bash-completion/completions/passless"
-	fi
-	if [ -f "passless.fish" ]; then
-		install -Dm0644 passless.fish \
-			"${pkgdir}/usr/share/fish/vendor_completions.d/passless.fish"
-	fi
-	if [ -f "_passless" ]; then
-		install -Dm0644 _passless \
-			"${pkgdir}/usr/share/zsh/site-functions/_passless"
-	fi
-	if [ -f "passless.elv" ]; then
-		install -Dm0644 passless.elv \
-			"${pkgdir}/usr/share/elvish/lib/passless.elv"
-	fi
+	# Install shell completions (the tarball is required, fail if any file is missing)
+	install -Dm0644 passless.bash \
+		"${pkgdir}/usr/share/bash-completion/completions/passless"
+	install -Dm0644 passless.fish \
+		"${pkgdir}/usr/share/fish/vendor_completions.d/passless.fish"
+	install -Dm0644 _passless \
+		"${pkgdir}/usr/share/zsh/site-functions/_passless"
+	install -Dm0644 passless.elv \
+		"${pkgdir}/usr/share/elvish/lib/passless.elv"
 
 	install -Dm0644 "passless-${pkgver}/contrib/systemd/passless.service" \
 		"${pkgdir}/usr/lib/systemd/user/passless.service"
