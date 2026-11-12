@@ -5,7 +5,7 @@
 
 pkgname=kimi-code-cn-bin
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 _appname='Kimi Code'
 _prefix='/opt/kimi-code-cn'
 pkgdesc='Kimi Code Desktop, mainland China build pinned to the China API'
@@ -45,7 +45,7 @@ noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 sha256sums=(
   'a4804317888ab08982c0206672f73a9e0ae2e0ba00fe6fd37ad7afbb2a96dec4'
   '0ae14e3358d32ed99d1651a0455f0c449f05de2a77f62ada6f3156886900d1e3'
-  '37c495e6f19acba4847361aff61dd9cdb4540adca2de51b315181a53967cb509'
+  'cd3a8e58ee3e369d19b17e1bf4d6ac9bdaa490f2994a2936a17910d3a81b7ab6'
   '85d85fd09213f93b5f05b36b366fa0198015ac37b6050b4e2779c4e33fbfd8c3'
   '2c26abb1ca0208f866db6975a894570d55bd94cb08fb2f1feb183a9d98443ba8'
   '884ac98a6e69847d68cc4ea3fb92d203ceccd1b4dd652c17fb74d0a824648f54'
