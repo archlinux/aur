@@ -1,6 +1,6 @@
 pkgbase = rbw-enhanced
 	pkgdesc = Unofficial Bitwarden client: TUI, full editing, howdy/fingerprint/PIN unlock, persistent login (rbw fork)
-	pkgver = 1.15.0.r54.g7280f06
+	pkgver = 1.15.0.r57.g6ca8ae7
 	pkgrel = 1
 	url = https://github.com/rylos/rbw
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = rbw-enhanced
 	optdepends = fprintd: fingerprint unlock through polkit
 	optdepends = openssh: create ssh key items
 	optdepends = dotool: type credentials from rbw tui (or wtype, ydotool, xdotool)
-	provides = rbw=1.15.0.r54.g7280f06
+	provides = rbw=1.15.0.r57.g6ca8ae7
 	conflicts = rbw
 	options = !lto
-	source = rbw-7280f06c238fbf2164d6a4d51b31c595bbf02102.tar.gz::https://github.com/rylos/rbw/archive/7280f06c238fbf2164d6a4d51b31c595bbf02102.tar.gz
-	sha256sums = 25ce1b8b0d6b55f823e9caa275f7fd248dd1fb93d4399e71c57d1e94eff14e88
+	source = rbw-6ca8ae724ce7aea718a91fff3a34b268d9fcff4d.tar.gz::https://github.com/rylos/rbw/archive/6ca8ae724ce7aea718a91fff3a34b268d9fcff4d.tar.gz
+	sha256sums = c51d661e7b47f9a8e748bae8e9c0136367634b86a8384e40e34ef1cfd0199485
 
 pkgname = rbw-enhanced
