@@ -7,12 +7,12 @@ pkgdesc="Distribute hackage packages to archlinux"
 arch=('x86_64')
 url="https://github.com/berberman/arch-hs"
 license=('MIT')
-depends=('ghc-libs' 'haskell-aeson' 'haskell-hackage-db' 'haskell-megaparsec' 
-  'haskell-algebraic-graphs' 'haskell-conduit' 'haskell-tar-conduit' 'haskell-conduit-extra' 
-  'haskell-split' 'haskell-neat-interpolation' 'haskell-microlens' 'haskell-microlens-th' 
-  'haskell-polysemy' 'haskell-optparse-simple' 'libalpm.so' 'haskell-diff' 
-  'haskell-prettyprinter' 'haskell-prettyprinter-ansi-terminal' 'haskell-arch-web'
-)
+depends=('ghc-libs' 'pacman' 'haskell-diff' 'haskell-aeson' 'haskell-algebraic-graphs'
+         'haskell-arch-web' 'haskell-conduit' 'haskell-conduit-extra' 'haskell-hackage-db'
+         'haskell-http-client' 'haskell-http-client-tls' 'haskell-http-types' 'haskell-megaparsec' 'haskell-microlens'
+         'haskell-microlens-th' 'haskell-neat-interpolation' 'haskell-optparse-simple'
+         'haskell-polysemy' 'haskell-prettyprinter' 'haskell-prettyprinter-ansi-terminal'
+         'haskell-servant-client' 'haskell-split' 'haskell-tar-conduit' 'haskell-yaml')
 makedepends=('ghc' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}") 
