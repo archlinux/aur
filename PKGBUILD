@@ -1,12 +1,12 @@
 # Maintainer: va2bbw <antelaurijssen@gmail.com>
 pkgname=mercury-modem
-pkgver=1.9.22
+pkgver=1.9.23
 pkgrel=1
 pkgdesc="Digital Radio OFDM HF modem protocol for ARQ data connections"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Rhizomatica/mercury"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'libpulse' 'hamlib' 'hidapi')
+depends=('alsa-lib' 'glibc' 'hamlib' 'hidapi' 'libpulse' 'openssl')
 makedepends=('pkgconf')
 backup=('etc/mercury/mercury.ini')
 source=("${pkgname%-modem}-${pkgver}.tar.gz::https://github.com/Rhizomatica/mercury/archive/refs/tags/v${pkgver}.tar.gz")
@@ -49,4 +49,4 @@ package() {
     install -Dm644 audioio/ffaudio/UNLICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE-ffaudio"
 }
-sha256sums=('17e5ba53299325603ea91e101051b9f837dfe5fcabed21e32e16068b7b17829d')
+sha256sums=('e2fc99d4dd1f493baafca7a005babff64a6eed132a462b047dc191e0eb598dd0')
