@@ -1,6 +1,6 @@
 pkgbase = merman-bin
 	pkgdesc = Mermaid.js, but headless, in Rust (prebuilt)
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/Latias94/merman
 	arch = x86_64
@@ -8,15 +8,15 @@ pkgbase = merman-bin
 	license = MIT OR Apache-2.0
 	depends = glibc
 	depends = libgcc
-	provides = merman=0.9.3
+	provides = merman=0.10.0
 	conflicts = merman
-	source_x86_64 = merman-cli-0.9.3-x86_64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.9.3/merman-cli-x86_64-unknown-linux-gnu.tar.xz
-	source_x86_64 = merman-lsp-0.9.3-x86_64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.9.3/merman-lsp-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = e93dbf741319190d53107c4277b373d357dcdad3f4f7e50f114a51c9b682109b
-	sha256sums_x86_64 = 6be41a75fcd4acde7aa133b23ce0110ea39703a9791acbb0643f05d062bd25aa
-	source_aarch64 = merman-cli-0.9.3-aarch64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.9.3/merman-cli-aarch64-unknown-linux-gnu.tar.xz
-	source_aarch64 = merman-lsp-0.9.3-aarch64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.9.3/merman-lsp-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = afea2472d232d0642b430f1db03a8d216925fbad04144348c2fe0838069c7f54
-	sha256sums_aarch64 = a4e1c25c71875463ed89c38844f24343c34a13d64e9f8ce01c125e1f14181b67
+	source_x86_64 = merman-cli-0.10.0-x86_64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.10.0/merman-cli-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = merman-lsp-0.10.0-x86_64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.10.0/merman-lsp-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = f0273090f6c0973793139365bbe496035d1e89cd5bd514663ceaffb3d4f00926
+	sha256sums_x86_64 = 4028b5f4f954af84d5b890813518bad10e42db6302cdbe6107e2365c3b4e0292
+	source_aarch64 = merman-cli-0.10.0-aarch64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.10.0/merman-cli-aarch64-unknown-linux-gnu.tar.xz
+	source_aarch64 = merman-lsp-0.10.0-aarch64.tar.xz::https://github.com/Latias94/merman/releases/download/v0.10.0/merman-lsp-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 5481cfebf8b642d77e9924d001330b6eb3a1cf75fb7f56aa1cd8f01115d76223
+	sha256sums_aarch64 = 242fef3f8e81921b19001e9bf7753827bba774e539197a3053f3e8cb711c8747
 
 pkgname = merman-bin
