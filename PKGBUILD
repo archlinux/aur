@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -71,18 +71,21 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/sign-proxy"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/agent-prompt-probe"
 
-    # Install shell completions
-    local _completion_dir="$(find target/release/build/passless-rs-*/out/completions -type d 2>/dev/null | head -1)"
-    if [ -n "$_completion_dir" ]; then
-        install -Dm0644 "${_completion_dir}/passless.bash" \
-            "${pkgdir}/usr/share/bash-completion/completions/passless"
-        install -Dm0644 "${_completion_dir}/passless.fish" \
-            "${pkgdir}/usr/share/fish/vendor_completions.d/passless.fish"
-        install -Dm0644 "${_completion_dir}/_passless" \
-            "${pkgdir}/usr/share/zsh/site-functions/_passless"
-        install -Dm0644 "${_completion_dir}/passless.elv" \
-            "${pkgdir}/usr/share/elvish/lib/passless.elv"
+    # Install shell completions. Cargo >= 1.100 uses build/<pkg>/<hash>/out, older versions build/<pkg>-<hash>/out.
+    local _completion_dir
+    _completion_dir="$(find target/release/build -type d -path '*/passless-rs*/out/completions' -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -n1 | cut -d' ' -f2-)"
+    if [ -z "$_completion_dir" ]; then
+        error "shell completions directory not found under target/release/build"
+        return 1
     fi
+    install -Dm0644 "${_completion_dir}/passless.bash" \
+        "${pkgdir}/usr/share/bash-completion/completions/passless"
+    install -Dm0644 "${_completion_dir}/passless.fish" \
+        "${pkgdir}/usr/share/fish/vendor_completions.d/passless.fish"
+    install -Dm0644 "${_completion_dir}/_passless" \
+        "${pkgdir}/usr/share/zsh/site-functions/_passless"
+    install -Dm0644 "${_completion_dir}/passless.elv" \
+        "${pkgdir}/usr/share/elvish/lib/passless.elv"
 
     install -Dm0644 contrib/systemd/passless.service "$pkgdir/usr/lib/systemd/user/passless.service"
     install -Dm0644 contrib/udev/90-passless.rules "$pkgdir/usr/lib/udev/rules.d/90-passless.rules"
