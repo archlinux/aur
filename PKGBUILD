@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern terminal mail client for Gmail and Microsoft 365, with an MCP server for AI agents"
 
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('681ba05844866ebf1eaa21a66871eac433d7a9ee42f7006deef90236c78aed57')
-sha256sums_aarch64=('3a7e3bbf3625d036cd92d5743952f10df60671fb46b32c6501d2eb7c4ce122e6')
+sha256sums_x86_64=('766fd315cf685074b9ea2edd232d4fc27b0bce250b7242365c9c3ae10d798874')
+sha256sums_aarch64=('75b7b0582685132b7f7c83878a9f6d405bab169fb65bdd9489db25399f6580dc')
 
 
 case ${CARCH} in

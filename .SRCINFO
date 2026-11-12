@@ -1,6 +1,6 @@
 pkgbase = rail-bin
 	pkgdesc = A modern terminal mail client for Gmail and Microsoft 365, with an MCP server for AI agents
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/vitosans/rail
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rail-bin
 	provides = rail
 	conflicts = rail
 	options = !strip
-	source_x86_64 = rail-x86_64-0.10.2.tgz::https://github.com/vitosans/rail/releases/download/v0.10.2/rail-v0.10.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 681ba05844866ebf1eaa21a66871eac433d7a9ee42f7006deef90236c78aed57
-	source_aarch64 = rail-aarch64-0.10.2.tgz::https://github.com/vitosans/rail/releases/download/v0.10.2/rail-v0.10.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 3a7e3bbf3625d036cd92d5743952f10df60671fb46b32c6501d2eb7c4ce122e6
+	source_x86_64 = rail-x86_64-0.10.3.tgz::https://github.com/vitosans/rail/releases/download/v0.10.3/rail-v0.10.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 766fd315cf685074b9ea2edd232d4fc27b0bce250b7242365c9c3ae10d798874
+	source_aarch64 = rail-aarch64-0.10.3.tgz::https://github.com/vitosans/rail/releases/download/v0.10.3/rail-v0.10.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 75b7b0582685132b7f7c83878a9f6d405bab169fb65bdd9489db25399f6580dc
 
 pkgname = rail-bin
