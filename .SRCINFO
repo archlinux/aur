@@ -1,0 +1,23 @@
+pkgbase = zfs-file-history
+	pkgdesc = Terminal UI for inspecting and restoring file history on ZFS snapshots.
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/markusressel/zfs-file-history
+	install = zfs-file-history.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = go
+	makedepends = just
+	depends = glibc
+	depends = zfs-utils
+	optdepends = diffutils: diffs of file versions
+	optdepends = smartmontools: disk health of the pools
+	optdepends = sudo: the permission setup and the operations that need root
+	optdepends = wl-clipboard: copying to the clipboard on Wayland
+	optdepends = xclip: copying to the clipboard on X11
+	provides = zfs-file-history
+	conflicts = zfs-file-history-git
+	source = zfs-file-history-2.10.0.tar.gz::https://github.com/markusressel/zfs-file-history/archive/refs/tags/2.10.0.tar.gz
+	sha256sums = 41ea57d0192120fe0effd3f86608f701577c0fdb88faa550f2fe4da40894fac5
+
+pkgname = zfs-file-history
