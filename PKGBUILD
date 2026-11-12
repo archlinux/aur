@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-wetypex
 pkgver=3.0.1.684
-pkgrel=4
+pkgrel=5
 pkgdesc="Native Linux compatibility layer for WeType on Fcitx5"
 arch=('x86_64' 'aarch64')
 url="https://github.com/panxuc/fcitx5-wetypex"
@@ -34,16 +34,16 @@ depends=(
     'libnotify'
     'polkit'
 )
-optdepends_aarch64=('qemu-user: compatibility provider for older ARM64 CPUs')
 
 makedepends=('cmake' 'clang' 'git' 'boost' 'openssl')
-optdepends=('fcitx5-configtool: manage input methods')
+optdepends=('fcitx5-configtool: manage input methods'
+            'qemu-user: original-engine compatibility for CPUs missing required instructions')
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}.tar.gz"
     'https://curl.se/download/curl-8.22.0.tar.xz'
     'libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b'
 )
-sha256sums=("bf6eb7012c76f7264e89e5b97499d1ee6bd71d1e8ba6e7b883a95899c4e28b5f" "f7ef3ae8a22e521f289803fe93543eb64c329b58aa73a9e224dfd915a2a5f4f7" "SKIP") # first checksum is filled by the release workflow
+sha256sums=("5078c8eac076dc0f8f7959a2e41e799c7b1b042d8685cf38c11899c717a77318" "f7ef3ae8a22e521f289803fe93543eb64c329b58aa73a9e224dfd915a2a5f4f7" "SKIP") # first checksum is filled by the release workflow
 install=fcitx5-wetypex.install
 
 
