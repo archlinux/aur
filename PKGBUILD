@@ -2,7 +2,7 @@
 
 pkgname=kyverno-cli-bin
 _pkgname=kyverno-cli
-pkgver=1.19.2
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Kubernetes Native Policy Management - CLI"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=(kyverno-git)
 provides=(kyverno-git)
 source=("${_pkgname}_v${pkgver}_linux_x86_64.tar.gz::https://github.com/kyverno/kyverno/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_x86_64.tar.gz")
 
-sha256sums=('357eaf1df8bc24ddd5a73979fadeaae6a032e8710f11af264229756e4956bf4a')
+sha256sums=('06b8f3ca7b5626473be8fb4d343ad54ab84e317142766f72420e7d44b80942e2')
 
 package() {
   install -Dm755 "$srcdir/kyverno" "$pkgdir/usr/bin/kyverno"

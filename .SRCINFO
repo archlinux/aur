@@ -1,13 +1,13 @@
 pkgbase = kyverno-cli-bin
 	pkgdesc = Kubernetes Native Policy Management - CLI
-	pkgver = 1.19.2
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://github.com/kyverno/kyverno
 	arch = x86_64
 	license = Apache-2.0
 	provides = kyverno-git
 	conflicts = kyverno-git
-	source = kyverno-cli_v1.19.2_linux_x86_64.tar.gz::https://github.com/kyverno/kyverno/releases/download/v1.19.2/kyverno-cli_v1.19.2_linux_x86_64.tar.gz
-	sha256sums = 357eaf1df8bc24ddd5a73979fadeaae6a032e8710f11af264229756e4956bf4a
+	source = kyverno-cli_v1.20.0_linux_x86_64.tar.gz::https://github.com/kyverno/kyverno/releases/download/v1.20.0/kyverno-cli_v1.20.0_linux_x86_64.tar.gz
+	sha256sums = 06b8f3ca7b5626473be8fb4d343ad54ab84e317142766f72420e7d44b80942e2
 
 pkgname = kyverno-cli-bin
