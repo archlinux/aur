@@ -25,10 +25,6 @@ makedepends=(
   lld
   python
   asciidoc
-  # plugins disabled for now because https://github.com/libjxl/libjxl/issues/4037
-  #gdk-pixbuf2 # for building gdk-pixbuf loader
-  #gimp # for building GIMP plugin
-  #java-environment # for building JNI bindings
 )
 provides=(
   $_pkgname
@@ -80,7 +76,6 @@ build() {
     -DJPEGXL_ENABLE_DEVTOOLS=ON \
     -DJPEGXL_ENABLE_DOXYGEN=OFF \
     -DJPEGXL_ENABLE_EXAMPLES=OFF \
-    -DJPEGXL_ENABLE_PLUGINS=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
     -DJPEGXL_FORCE_SYSTEM_HWY=ON
   make -C build
