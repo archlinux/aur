@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -53,8 +53,6 @@ check() {
     # sync with the safe subset in tools/agent-validation/test-deterministic.sh.
     cargo test --frozen --workspace --all-features --lib --bins -- \
         --skip agent::prompt::dbus_tests \
-        --skip ceremony_observer \
-        --skip agent::storage_factory::tests::composition_conformance \
         --skip tpm_portable_missing_parent_errors \
         --skip agent::browser::tests::test_cdp_pipes_drop_closes_fds \
         --skip agent::browser::tests::test_child_in_separate_process_group \
