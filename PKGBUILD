@@ -1,8 +1,8 @@
 # Maintainer: mensylisir <710080675@qq.com>
 
 pkgname=catpaw
-pkgver=2026.0929.1948
-pkgrel=3
+pkgver=2026.1111.1938
+pkgrel=1
 _electron=42.11.2
 _node=24.18.0
 _python=3.12.13
@@ -29,7 +29,7 @@ optdepends=(
 options=('!strip' '!debug' '!lto')
 
 source=(
-  "catpaw-${pkgver}.exe::https://s3-fra01-eu.mykeeta.net/catpaw-overseas/ide/win32-x64/stable/${pkgver}/17906831719554905511_CatPaw-overseas-${pkgver}-x64.exe"
+  "catpaw-${pkgver}.exe::https://s3-fra01-eu.mykeeta.net/catpaw-overseas/ide/win32-x64/stable/${pkgver}/17944024919433946072_CatPaw-${pkgver}-x64.exe"
   "electron-v${_electron}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron}/electron-v${_electron}-linux-x64.zip"
   "node-v${_electron}-headers.tar.gz::https://artifacts.electronjs.org/headers/dist/v${_electron}/node-v${_electron}-headers.tar.gz"
   "node-v${_node}-linux-x64.tar.gz::https://nodejs.org/dist/v${_node}/node-v${_node}-linux-x64.tar.gz"
@@ -70,7 +70,7 @@ source=(
   'innoextract-linux-amd64::https://github.com/crazy-max/innoextract/releases/download/v1.13.0/innoextract-linux-amd64'
 )
 sha256sums=(
-  'd5767b1b2ecbd83bf7f5d657d6dee30ad2ca63ab497e8d019a25daf3e6e98a17'
+  'd608d7a18c7151b262e0e2ada2766efbfc86b68bc7d5062bcd0c348698ce0a29'
   '1e0b2a6d59bb8836858a24dec454c36e15a904dd1000a1053c8e36ecc44333bc'
   'b586bf9cc6352053f9e075ed06a160a42653971742fd1746e8951e6942d55879'
   '783130984963db7ba9cbd01089eaf2c2efb055c7c1693c943174b967b3050cb8'
@@ -90,7 +90,7 @@ sha256sums=(
   '2bf84853274ce6b39f3c363d5ed00573ad5ea99796c362dbb2c9a5e2be669c9c'
   'e0836baacc6c50e1ed0e346a8d0e8b9c1211924eedd9332df99383b65c56c910'
   'ef50b80ae1d55a5f48c94db21cf74c3543723af4e89f85eb9d80c0900b1efdf1'
-  'f3e0d720d575cb6521f639754157d86b7aed60b993bc62708b99ac37ae8e1248'
+  'b8ab0307783580d66191ba8bfa49d57f0e16e635a6bfac24765d51a289561bcb'
   'ffa303d2f54724e538f4696cc7e108d7b73c254e92250f1cd2a0ac583aee22a6'
   '8b7c70e7c9381857ef57b06adfe3abbaef16abc1ddc1bfe33ad403db742f657f'
   'c9e8109a3657b04261796d3882f29819853b63ce13ccc8f31feadb0d5ca3f2d1'

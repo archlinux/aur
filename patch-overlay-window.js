@@ -93,9 +93,9 @@ const RULES = [
   },
   {
     // doShowOverlay 的延迟显示回调只在 darwin 下 showInactive，Linux 需要同样处理
-    old: 'process.platform===`darwin`&&!i.isVisible()&&i.showInactive()',
-    new: '(process.platform===`darwin`||process.platform===`linux`)&&!i.isVisible()&&i.showInactive()',
-    mustContain: '(process.platform===`darwin`||process.platform===`linux`)&&!i.isVisible()&&i.showInactive()',
+    old: 'process.platform===`darwin`&&!r.isVisible()&&r.showInactive()',
+    new: '(process.platform===`darwin`||process.platform===`linux`)&&!r.isVisible()&&r.showInactive()',
+    mustContain: '(process.platform===`darwin`||process.platform===`linux`)&&!r.isVisible()&&r.showInactive()',
   },
 ];
 
