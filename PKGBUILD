@@ -23,7 +23,7 @@ options=('lto')
 #source=("git+https://github.com/h2o/h2o.git"
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
         # openssl
-        fix-openssl-deprecated-warn.patch
+        #fix-openssl-deprecated-warn.patch
         #openssl-no-engine.patch
         #https://github.com/h2o/h2o/pull/3285.patch
         #openssl-no-engine-1.patch::https://github.com/openbsd/ports/raw/c1521c4eb969ddf29306117ea125802a2644e734/www/h2o/patches/patch-deps_neverbleed_neverbleed_c
@@ -35,7 +35,7 @@ source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 
         'h2o.service')
 sha256sums=('a0419d11b3cca8dc2a37dec94eef35d04c67237cb52944cd677955ecc3aaae2a'
-            '632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1'
+            #'632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1'
             '930bed0a8b6d75973e21cacb4cfda6bcacf08bc6d1b504b5cc36f56f9d6bfaf8'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
