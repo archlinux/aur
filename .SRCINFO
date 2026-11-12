@@ -1,6 +1,6 @@
 pkgbase = raffi-bin
 	pkgdesc = raffi - fuzzel launcher based on yaml configuration
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/chmouel/raffi
 	license = Apache 2.0
@@ -8,7 +8,7 @@ pkgbase = raffi-bin
 	conflicts = raffi
 	provides = raffi
 	arch = x86_64
-	source_x86_64 = raffi-bin_0.26.0_x86_64.tar.gz::https://github.com/chmouel/raffi/releases/download/v0.26.0/raffi_0.26.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7de3ca5b7adc2a7e43bffcfa4a171a7cbe3c36b2ed653d6ad82d2d5bb80bc769
+	source_x86_64 = raffi-bin_0.27.0_x86_64.tar.gz::https://github.com/chmouel/raffi/releases/download/v0.27.0/raffi_0.27.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 35fa8538e5f3b51acdf6f0196a83d1b69088615fc6b1678b6abdb6a513b25295
 	
 pkgname = raffi-bin
