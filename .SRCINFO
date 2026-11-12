@@ -1,0 +1,15 @@
+pkgbase = nyora-desktop-appimage
+	pkgdesc = A free, independent, open-source manga reader
+	pkgver = 3.1.12
+	pkgrel = 1
+	url = https://nyora.xyz/
+	arch = x86_64
+	license = Apache-2.0
+	options = !strip
+	options = !debug
+	source = https://github.com/Nyora-Manga/nyora-desktop/releases/download/v3.1.12/Nyora-3.1.12-linux-x64.AppImage
+	source = nyora-desktop.sh
+	sha256sums = 19ce0d0eb976794ec2b1605dbd28f5ee4df3a48a8d18693b518941bbbf7ab847
+	sha256sums = af6fbcec6e5f8f5c60bebd160f52b02ed8d6ad93918524db8483e88fd221cbd5
+
+pkgname = nyora-desktop-appimage
