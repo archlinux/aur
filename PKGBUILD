@@ -1,7 +1,7 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, customizable system monitoring dashboard for Linux"
 arch=('x86_64')
 url="https://github.com/hilgardt-collab/rg-Sens"
@@ -23,6 +23,9 @@ optdepends=(
     'nvidia-utils: NVIDIA GPU monitoring support'
 )
 install=rg-sens.install
+# Disable makepkg's global LTO: -flto=auto leaks into the `ring` crate's C/asm
+# objects and breaks the final link (same fix as rg-sens-git).
+options=(!lto)
 provides=('rg-sens')
 conflicts=('rg-sens-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -46,8 +49,8 @@ package() {
     install -Dm755 "target/release/rg-sens" "$pkgdir/usr/bin/rg-sens"
 
     # Install desktop file
-    install -Dm644 "data/rg-sens.desktop" \
-        "$pkgdir/usr/share/applications/rg-sens.desktop"
+    install -Dm644 "data/com.github.rg-sens.desktop" \
+        "$pkgdir/usr/share/applications/com.github.rg-sens.desktop"
 
     # Install icon
     install -Dm644 "rg-sens.png" \
