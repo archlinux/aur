@@ -1,6 +1,6 @@
 pkgbase = bc250-control-center-git
 	pkgdesc = BC-250 monitoring, tuning and recovery control center
-	pkgver = 1.22.4.r144.g12ae021
+	pkgver = 1.22.7.r148.ge54e4ae
 	pkgrel = 1
 	url = https://github.com/movacx/bc250-control-center
 	install = bc250-control-center.install
@@ -37,7 +37,7 @@ pkgbase = bc250-control-center-git
 	optdepends = libnotify: desktop notifications through notify-send
 	optdepends = python-evdev: preferred Linux gamepad input backend
 	optdepends = nct6687d-dkms-git: experimental PWM fan control on BC-250
-	provides = bc250-control-center=1.22.4.r144.g12ae021
+	provides = bc250-control-center=1.22.7.r148.ge54e4ae
 	conflicts = bc250-control-center
 	source = git+https://github.com/movacx/bc250-control-center.git#branch=main
 	sha256sums = SKIP
