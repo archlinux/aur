@@ -1,6 +1,6 @@
 pkgbase = openshock-desktop-bin
 	pkgdesc = An OpenShock application with module support (pre-built version)
-	pkgver = 1.2.1
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/OpenShock/Desktop
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = openshock-desktop-bin
 	depends = libxtst
 	provides = openshock-desktop
 	conflicts = openshock-desktop
-	noextract = OpenShock.Desktop.Photino.Linux.1.2.1.zip
-	source = OpenShock.Desktop.Photino.Linux.1.2.1.zip::https://github.com/OpenShock/Desktop/releases/download/1.2.1/OpenShock.Desktop.Photino.Linux.zip
+	noextract = OpenShock.Desktop.Photino.Linux.1.3.1.zip
+	source = OpenShock.Desktop.Photino.Linux.1.3.1.zip::https://github.com/OpenShock/Desktop/releases/download/1.3.1/OpenShock.Desktop.Photino.Linux.zip
 	source = openshock-desktop
 	source = OpenShock-Desktop.desktop
-	sha256sums = e9e2d777b3b037c98b975175145bc940ab2ead7b9d0438c141edc0dbbbedab79
+	sha256sums = 00feffc4f4d283d2471a46ab75a352dd8d849d72e73b3ea592dc29813c21ee58
 	sha256sums = 4fe84f7aa610d36698d4386e57f4c5a141700032ec94df14e0e03eb48ef9e1ca
 	sha256sums = f56461a0d3dba950a927e225ceb34b885b256907098d1bbcd35c972d6a867c6e
 

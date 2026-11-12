@@ -2,12 +2,12 @@
 
 _omit_dlls=false
 _dotnet_ver=10.0
-_runtime_ver=4
-_sdk_ver=104
+_runtime_ver=14
+_sdk_ver=114
 
 pkgname='openshock-desktop-bin'
 pkgdesc='An OpenShock application with module support (pre-built version)'
-pkgver='1.2.1'
+pkgver='1.3.1'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/OpenShock/Desktop'
@@ -19,7 +19,7 @@ source=("OpenShock.Desktop.Photino.Linux.$pkgver.zip::https://github.com/OpenSho
         'openshock-desktop'
         'OpenShock-Desktop.desktop')
 noextract=("OpenShock.Desktop.Photino.Linux.$pkgver.zip")
-sha256sums=('e9e2d777b3b037c98b975175145bc940ab2ead7b9d0438c141edc0dbbbedab79'
+sha256sums=('00feffc4f4d283d2471a46ab75a352dd8d849d72e73b3ea592dc29813c21ee58'
             '4fe84f7aa610d36698d4386e57f4c5a141700032ec94df14e0e03eb48ef9e1ca'
             'f56461a0d3dba950a927e225ceb34b885b256907098d1bbcd35c972d6a867c6e')
 
