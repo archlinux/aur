@@ -1,6 +1,6 @@
 pkgbase = cap-bin
 	pkgdesc = Screen recording with Studio, Instant, and screenshot modes
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://cap.so
 	arch = x86_64
@@ -25,16 +25,16 @@ pkgbase = cap-bin
 	depends = xdg-utils
 	optdepends = xdg-desktop-portal-hyprland: screen capture on Hyprland and Omarchy
 	optdepends = vulkan-driver: hardware accelerated recording and editing
-	provides = cap=0.6.2
+	provides = cap=0.6.3
 	conflicts = cap
-	noextract = cap-bin-0.6.2.deb
+	noextract = cap-bin-0.6.3.deb
 	options = !strip
 	options = !debug
-	source = cap-bin-0.6.2.deb::https://cdn.crabnebula.app/download/cap/cap/latest/Cap_0.6.2_amd64.deb
-	source = LICENSE-0.6.2::https://raw.githubusercontent.com/CapSoftware/Cap/cap-v0.6.2/LICENSE
-	source = LICENSE-MIT-0.6.2::https://raw.githubusercontent.com/CapSoftware/Cap/cap-v0.6.2/licenses/LICENSE-MIT
+	source = cap-bin-0.6.3.deb::https://cdn.crabnebula.app/download/cap/cap/latest/Cap_0.6.3_amd64.deb
+	source = LICENSE-0.6.3::https://raw.githubusercontent.com/CapSoftware/Cap/cap-v0.6.3/LICENSE
+	source = LICENSE-MIT-0.6.3::https://raw.githubusercontent.com/CapSoftware/Cap/cap-v0.6.3/licenses/LICENSE-MIT
 	source = LICENSE-onnxruntime-1.24.3::https://raw.githubusercontent.com/microsoft/onnxruntime/v1.24.3/LICENSE
-	sha256sums = 4e7427eb7a46a1ef567419bbca7a82c356746baa51eed7f622a283ad8d223868
+	sha256sums = 44cfcce7f87c7b4d8c139e36b0ce811a8253fa62a15837d91bea61dbdae30a9b
 	sha256sums = 146364c489e69407a2deaf7621a872339bde0be46d8db6495a51f3d63d95c8dc
 	sha256sums = 8078cb8be22f999ac72697dc96d930031203d18a52f22edd8f20b0f9f4defc1a
 	sha256sums = 2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c

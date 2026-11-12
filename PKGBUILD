@@ -5,7 +5,7 @@ pkgname=cap-bin
 _pkgname=cap
 # Version of the bundled libonnxruntime.so.1, only used to fetch its license
 _onnxver=1.24.3
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Screen recording with Studio, Instant, and screenshot modes'
 arch=('x86_64')
@@ -47,7 +47,7 @@ source=("$pkgname-$pkgver.deb::https://cdn.crabnebula.app/download/cap/cap/lates
         "LICENSE-MIT-$pkgver::https://raw.githubusercontent.com/CapSoftware/Cap/cap-v$pkgver/licenses/LICENSE-MIT"
         "LICENSE-onnxruntime-$_onnxver::https://raw.githubusercontent.com/microsoft/onnxruntime/v$_onnxver/LICENSE")
 noextract=("$pkgname-$pkgver.deb")
-sha256sums=('4e7427eb7a46a1ef567419bbca7a82c356746baa51eed7f622a283ad8d223868'
+sha256sums=('44cfcce7f87c7b4d8c139e36b0ce811a8253fa62a15837d91bea61dbdae30a9b'
             '146364c489e69407a2deaf7621a872339bde0be46d8db6495a51f3d63d95c8dc'
             '8078cb8be22f999ac72697dc96d930031203d18a52f22edd8f20b0f9f4defc1a'
             '2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c')
