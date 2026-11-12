@@ -8,13 +8,13 @@
 
 pkgname=python310
 pkgver=3.10.22
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
-pkgdesc="The Python programming language (version 3.10)"
+pkgdesc="The Python programming language (version $_pybasever)"
 arch=("x86_64" "aarch64")
 license=("PSF-2.0")
 url="https://www.python.org/"
-depends=("mpdecimal")
+depends=("mpdecimal" "openssl-3")
 makedepends=("gdb" "tk")
 optdepends=("python-pip" "python-pipx" "python-setuptools" "tk")
 options=(strip !debug !lto)
@@ -52,7 +52,8 @@ build() {
 	CFLAGS="${CFLAGS/-O2/-O3} -ffat-lto-objects"
 
 	# Disable bundled pip & setuptools
-	./configure \
+	PKG_CONFIG_PATH=/usr/lib/openssl-3/pkgconfig \
+		./configure \
 		ax_cv_c_float_words_bigendian=no \
 		--prefix=/usr \
 		--enable-shared \
@@ -65,6 +66,7 @@ build() {
 		--with-system-libmpdec \
 		--enable-loadable-sqlite-extensions \
 		--without-ensurepip \
+		--with-openssl-rpath=auto \
 		--with-tzpath=/usr/share/zoneinfo
 
 	make EXTRA_CFLAGS="$CFLAGS"
