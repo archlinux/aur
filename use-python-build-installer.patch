@@ -1,0 +1,35 @@
+From: Mohamed Amine Zghal <medaminezghal@outlook.com>
+Subject: [PATCH] Build and install pbt2ptt with python-build and python-installer
+
+Use the system build and installer modules instead of pip, so the
+pbt2ptt module is built without network access from the installed
+setuptools and Cython. The test copy is the extracted wheel.
+---
+diff --git a/tools/profiling/python/CMakeLists.txt b/tools/profiling/python/CMakeLists.txt
+index a29aa04..4052341 100644
+--- a/tools/profiling/python/CMakeLists.txt
++++ b/tools/profiling/python/CMakeLists.txt
+@@ -57,16 +57,19 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in
+ # location and import the pbt2ptt module.
+ add_custom_command(OUTPUT ${OUTPUT}
+                    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${SRC_PYTHON_SUPPORT} ${CMAKE_CURRENT_BINARY_DIR}
+-                   COMMAND ${Python_EXECUTABLE} -m pip install --quiet --upgrade --target=${CMAKE_CURRENT_BINARY_DIR}/python.test .
++                   COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_CURRENT_BINARY_DIR}/dist ${CMAKE_CURRENT_BINARY_DIR}/python.test
++                   COMMAND ${Python_EXECUTABLE} -m build --wheel --no-isolation --outdir ${CMAKE_CURRENT_BINARY_DIR}/dist .
++                   COMMAND ${Python_EXECUTABLE} -c "import glob, zipfile; zipfile.ZipFile(glob.glob('dist/*.whl')[0]).extractall('python.test')"
+                    COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
+-                   DEPENDS parsec-base ${SRC_PYTHON_SUPPORT})
++                   DEPENDS parsec-base ${SRC_PYTHON_SUPPORT}
++                   VERBATIM)
+ add_custom_target(pbt2ptt ALL DEPENDS ${OUTPUT})
+ 
+ # Call python distutils to install all python support in the right location
+ # (aka. according to the OS demands). Prepare to reconfigure the shell
+ # helper scripts to point to the right location
+-install(CODE "execute_process(COMMAND ${Python_EXECUTABLE} -m pip install --quiet --prefix=\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX} .
+-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})")
++install(CODE "file(GLOB _pbt2ptt_wheel ${CMAKE_CURRENT_BINARY_DIR}/dist/*.whl)
++        execute_process(COMMAND ${Python_EXECUTABLE} -m installer --destdir=\$ENV{DESTDIR} --prefix=${CMAKE_INSTALL_PREFIX} \${_pbt2ptt_wheel} COMMAND_ERROR_IS_FATAL ANY)")
+ 
+ # Create bash environment PaRSEC python support
+ configure_file(utilities/bash.env.in
