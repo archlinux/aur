@@ -5,7 +5,7 @@ _author=raujonas
 _extname="${_pkgname}@${_author}.github.io"
 
 pkgname="gnome-shell-extension-${_pkgname}"
-pkgver=30
+pkgver=32
 pkgrel=1
 pkgdesc='Execute multiple shell commands periodically with separate intervals and display the output in gnome top bar'
 arch=('any')
@@ -14,7 +14,7 @@ url="https://github.com/${_author}/${_pkgname}"
 # license=('')
 depends=('gnome-shell')
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_extname}")
-sha256sums=('0a855c5a35309a1220e40cf8ee0e3b76fb5364ae5e6fc267daa03e25c038551c')
+sha256sums=('32a6d6b28cd1b0b0e0decc6479c2e9e44228463330295a5fb966d073ab64b707')
 noextract=("${_pkgname}-${pkgver}.zip")
 
 prepare() {
