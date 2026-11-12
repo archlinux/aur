@@ -3,7 +3,7 @@
 _libadwaita_support=1
 
 pkgname=darkly-gtk-git
-pkgver=r13.36d24ba
+pkgver=r17.cc2d8bb
 pkgrel=1
 pkgdesc="Darkly GTK theme"
 arch=('any')
@@ -61,6 +61,12 @@ build() {
     sassc $SASSC_OPT sass/gtk3-light.scss build/gtk3-light.css
     sassc $SASSC_OPT sass/gtk3-dark.scss build/gtk3-dark.css
     sassc $SASSC_OPT sass/gtk4.scss build/gtk4.css
+
+    # the theme uses a darkly-gtk-assets symlink to ../assets
+    # this replaces the path instead of relying on the symlink
+    sed -i 's#darkly-gtk-assets#../assets#g' build/gtk3-light.css
+    sed -i 's#darkly-gtk-assets#../assets#g' build/gtk3-dark.css
+    sed -i 's#darkly-gtk-assets#../assets#g' build/gtk4.css
 }
 
 package() {
@@ -71,20 +77,16 @@ package() {
     cp -r assets/*.png assets/*.svg "$pkgdir/usr/share/themes/Darkly/assets/"
 
     install -d "$pkgdir/usr/share/themes/Darkly/gtk-3.0"
-    ln -fns ../assets "$pkgdir/usr/share/themes/Darkly/gtk-3.0/darkly-gtk-assets"
     cp build/gtk3-light.css "$pkgdir/usr/share/themes/Darkly/gtk-3.0/gtk.css"
     cp build/gtk3-dark.css "$pkgdir/usr/share/themes/Darkly/gtk-3.0/gtk-dark.css"
 
     install -d "$pkgdir/usr/share/themes/Darkly/gtk-4.0"
-    ln -fns ../assets "$pkgdir/usr/share/themes/Darkly/gtk-4.0/darkly-gtk-assets"
 
     if [[ $_libadwaita_support -eq 1 ]]; then
-        cp build/gtk4.css "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk-base.css"
-        ln -fs ./gtk-base.css "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk-dark.css"
+        cp build/gtk4.css "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk-dark.css"
         echo -n $'@import \'gtk-dark.css\';\n@import \'colors.css\';' > "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk.css"
     else
-        cp build/gtk4.css "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk.css"
-        ln -fs ./gtk.css "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk-dark.css"
+        cp build/gtk4.css "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk-dark.css"
+        ln -fs ./gtk-dark.css "$pkgdir/usr/share/themes/Darkly/gtk-4.0/gtk.css"
     fi
-
 }

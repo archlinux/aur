@@ -1,6 +1,6 @@
 pkgbase = darkly-gtk-git
 	pkgdesc = Darkly GTK theme
-	pkgver = r13.36d24ba
+	pkgver = r17.cc2d8bb
 	pkgrel = 1
 	url = https://github.com/wrymt/darkly-gtk
 	arch = any
