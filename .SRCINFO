@@ -1,6 +1,6 @@
 pkgbase = crum-bs
 	pkgdesc = Find and remove app leftovers, caches and system bloat
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/asafelobotomy/crumbs
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = crum-bs
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	optdepends = uq: the Storage and cleanup page in Settings and an "Uninstall…" entry in the app menus
 	conflicts = crumbs
 	options = !lto
-	source = https://github.com/asafelobotomy/crumbs/releases/download/v0.4.0/crumbs-0.4.0.tar.gz
-	sha256sums = 60c5a2d1b995a8c63b580b7dcd8d4a370c1d4610d5b6ae3ec2242fc4cd04db8f
+	source = https://github.com/asafelobotomy/crumbs/releases/download/v0.5.0/crumbs-0.5.0.tar.gz
+	sha256sums = d6a81ab2349af06ed27d77e58e47ca06e5dbd6b51ad486d8b10c50fe4879f40a
 
 pkgname = crum-bs
