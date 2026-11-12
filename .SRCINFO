@@ -1,10 +1,10 @@
 pkgbase = adguardvpn-cli-bin
 	pkgdesc = Fast, flexible and reliable VPN solution for command-line enthusiasts.
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://adguard-vpn.com/
 	arch = x86_64
-	source = https://github.com/AdguardTeam/AdGuardVPNCLI/releases/download/v1.8.2-release/adguardvpn-cli-1.8.2-linux-x86_64.tar.gz
-	sha256sums = 7e78aff6e890435ec8f67390a228282cabfa16d39a8fefbf908a5a0176bc61cb
+	source = https://github.com/AdguardTeam/AdGuardVPNCLI/releases/download/v1.8.3-release/adguardvpn-cli-1.8.3-linux-x86_64.tar.gz
+	sha256sums = 00722863c705ba6e0dff0533bcab693561423987f3db6dcd78d16b76fff70a3c
 
 pkgname = adguardvpn-cli-bin
