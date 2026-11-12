@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=IGV (beta, High Resolution Screen mode)
+GenericName=Integrative Genomics Viewer
+X-GNOME-FullName=Integrative Genomics Viewer (beta)
+Comment=Integrative Genomics Viewer (Broad Institute) - 3.0 beta
+Keywords=genome;
+Exec=igv-beta_hidpi
+Icon=igv-beta
+Terminal=false
+Categories=Science
