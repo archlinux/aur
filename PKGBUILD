@@ -1,7 +1,7 @@
 # Maintainer: Rinne <aur@rinne.in>
 pkgname=your-szu-life-bin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="泥深 - 你的SZU助手"
 arch=('x86_64')
 url='https://github.com/rinnein/your-szu-life'
