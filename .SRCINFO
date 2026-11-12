@@ -1,19 +1,21 @@
 pkgbase = python-terminaltables3
 	pkgdesc = Easily draw tables in terminal/console applications from a list of lists of strings
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/matthewdeanmartin/terminaltables3
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-pytest-snapshot
 	checkdepends = python-colorama
+	checkdepends = python-hypothesis
 	checkdepends = python-termcolor
 	checkdepends = python-colorclass
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
+	makedepends = python-hatchling
 	depends = python
-	source = terminaltables3-4.0.0.tar.gz::https://github.com/matthewdeanmartin/terminaltables3/archive/v4.0.0.tar.gz
-	sha256sums = 44df92e82b45fadf4e6af8e3a77214cce455a4e1ee66c3f8c871988e1f58f776
+	source = terminaltables3-4.1.0.tar.gz::https://github.com/matthewdeanmartin/terminaltables3/archive/v4.1.0.tar.gz
+	sha256sums = 6cfefc1e7e5de535d28f848bc2e80141960a2fbc610ef2735b9ae0ccade227b6
 
 pkgname = python-terminaltables3
