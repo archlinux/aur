@@ -59,7 +59,7 @@ package_sabnzbd-podman() {
     install=sabnzbd-podman.install
 #     conflicts=('sabnzbd-docker')
     provides=('sabnzbd-podman')
-    depends=('podman-compose')
+    depends=('podman-compose' 'gettext')
 
     dest=${pkgdir}/opt/podman-sabnzbd
 	mkdir -p ${dest}

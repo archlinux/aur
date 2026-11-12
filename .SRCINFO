@@ -33,5 +33,6 @@ pkgname = sabnzbd-docker
 pkgname = sabnzbd-podman
 	install = sabnzbd-podman.install
 	depends = podman-compose
+	depends = gettext
 	provides = sabnzbd-podman
 	conflicts = sabnzbd-docker
