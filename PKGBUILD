@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/figcraft/releases/download/v${pkgver}/figcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/figcraft/releases/download/v${pkgver}/figcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('d2b37692cd25f883dac9eb363ae319dd9de350f8e4640e7c219348d0f8eca2cf')
 
 package() {

@@ -30,7 +30,7 @@ pkgbase = figcraft-private-bin
 	conflicts = figcraft-bin
 	conflicts = figcraft-git
 	conflicts = ai.storyteller.figcraft
-	source = https://github.com/storytold/figcraft/releases/download/v0.18.1/figcraft-0.18.1-linux-x86_64.pkg.tar.zst
+	source = https://gh-proxy.com/https://github.com/storytold/figcraft/releases/download/v0.18.1/figcraft-0.18.1-linux-x86_64.pkg.tar.zst
 	sha256sums = d2b37692cd25f883dac9eb363ae319dd9de350f8e4640e7c219348d0f8eca2cf
 
 pkgname = figcraft-private-bin
