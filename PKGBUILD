@@ -4,22 +4,22 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20260822.2db2083b6
+pkgver=20261111.1037e2069
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
 url=https://mupdf.com/
 license=(AGPL3)
-makedepends=(git glu libxi)
+makedepends=(ctags git glu libxi nodejs pandoc)
 depends=(gumbo-parser harfbuzz libarchive libgl
          libjpeg-turbo libxrandr mujs openjpeg2)
-source=(git://git.ghostscript.com/mupdf.git
-        git://git.ghostscript.com/extract.git
-        git://git.ghostscript.com/jbig2dec.git
-        git://git.ghostscript.com/thirdparty-cmark-gfm.git
-        git://git.ghostscript.com/thirdparty-freeglut.git
-        git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt
-        https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
+source=(git+https://github.com/ArtifexSoftware/mupdf.git
+        git+https://github.com/ArtifexSoftware/extract.git
+        git+https://github.com/ArtifexSoftware/jbig2dec.git
+        git+https://github.com/ArtifexSoftware/thirdparty-cmark-gfm.git
+        git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
+        git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
+        https://raw.githubusercontent.com/ArtifexSoftware/mujs/refs/heads/master/regexp.h
         desktop)
 sha256sums=(SKIP
             SKIP
@@ -50,9 +50,6 @@ prepare() {
 
 	# No idea what that is for
 	sed -e '/autoheaderid/d' -i source/html/md.c Makelists
-
-	# Not yet available in Arch package
-	sed -e '/GUMBO_NODE_PROCESSING_INSTRUCTION/d' -i source/fitz/xml.c
 }
 
 build() {
@@ -70,7 +67,8 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	make archive=yes install DESTDIR="${pkgdir}" prefix=/usr
-	mv "${pkgdir}"/usr/bin/mupdf{-gl,}
+	ln -s mupdf-gl.1.gz "${pkgdir}"/usr/share/man/man1/mupdf.1.gz
+	ln -s mupdf-gl "${pkgdir}"/usr/bin/mupdf
 	rm -fr "${pkgdir}"/usr/{include,lib}
 	find "${pkgdir}"/usr/share -type f -exec chmod 0644 {} +
 	install -Dm644 ../desktop "${pkgdir}"/usr/share/applications/mupdf.desktop
