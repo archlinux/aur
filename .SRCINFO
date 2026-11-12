@@ -1,0 +1,22 @@
+pkgbase = rgy-search-git
+	pkgdesc = Whole-filesystem name search and content search in one stack (built from source, SIMD detected)
+	pkgver = r0.1.10.4.35a94d7
+	pkgrel = 1
+	url = https://github.com/danalec/rgy
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = rgy-search-bin
+	conflicts = rgy-search-bin
+	conflicts = rgy-search-avx2-bin
+	conflicts = rgy-search-znver4-bin
+	options = !strip
+	options = !debug
+	source = rgy::git+https://github.com/danalec/rgy.git
+	sha256sums = SKIP
+
+pkgname = rgy-search-git
