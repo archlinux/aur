@@ -3,7 +3,7 @@
 # Contributor: Sotirios M. Roussis (xToNouSou) <xtonousou@gmail.com>
 
 pkgname=airgeddon
-pkgver=12.02
+pkgver=12.10
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -56,7 +56,7 @@ optdepends=(
 )
 makedepends=('binutils')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('72b89c45d30e508003e1892e356c2c2804be0731e0133d7440f3d0fed04669e4')
+sha256sums=('cf0c850000da237e7d40a354c37045cdfd026c81168a54eb97f760caa0576448')
 
 
 prepare() {
@@ -70,7 +70,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/airgeddon"
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/airgeddon/" README.md CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/airgeddon/LICENSE"
 
   rm -rf *.md .git* .editor* binaries imgs Dockerfile pindb_checksum.txt
