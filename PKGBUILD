@@ -2,7 +2,7 @@
 
 pkgname=anicraft-bin
 _pkgname=anicraft
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Open-source native 2D animation studio, Adobe Animate alternative (binary release)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,10 @@ _repo='https://github.com/storytold/anicraft'
 # none). Upstream's docs/legal/third-party-inventory.txt predates
 # v0.2.0. A crate that offers MIT or Apache-2.0 adds nothing; only the
 # other terms are listed. Left out: clipboard-win and error-code
-# (BSL-1.0, Windows only), boa_engine and its ICU crates (Unicode-3.0,
-# test tooling only). Only egui's four fonts are embedded: Inter and
+# (BSL-1.0, Windows only), webpki-root-certs (CDLA-Permissive-2.0, wasm
+# builds only), boa_engine (test tooling only). The update check
+# (Help > Check for Updates, craft-update) brings an HTTPS client and
+# signature checks. Only egui's four fonts are embedded: Inter and
 # JetBrains Mono, named in NOTICE, are not in these builds, nor the
 # fonts whose OFL texts upstream ships in share/doc/anicraft. No
 # ArtCraft brand mark is embedded (eframe's default icon is).
@@ -25,17 +27,21 @@ license=(
   # AniCraft
   'MIT OR Apache-2.0'
   # Crates with no choice: MIT only, or Apache-2.0 only (winit, cpal,
-  # glutin, accesskit_winit, codespan-reporting, unicode-general-category)
+  # glutin, accesskit_winit, codespan-reporting, unicode-general-category,
+  # ring)
   'MIT'
   'Apache-2.0'
-  # ogg (lewton's Ogg reader)
+  # ogg (lewton's Ogg reader); subtle (rustls), verifysign (update
+  # signatures)
   'BSD-3-Clause'
-  # libloading; Lucide icons
+  # libloading; ring, rustls-webpki, untrusted (update check); Lucide
+  # icons
   'ISC'
   # foldhash (hashbrown, glifo), slotmap
   'Zlib'
-  # unicode-ident (naga's WGSL parser); plural rules restated from the
-  # Unicode CLDR (src/i18n/plural.rs)
+  # unicode-ident (naga's WGSL parser); ICU crates of idna (update
+  # check); plural rules restated from the Unicode CLDR
+  # (src/i18n/plural.rs)
   'Unicode-3.0'
   # Noto Emoji (egui)
   'OFL-1.1'
@@ -96,8 +102,8 @@ sha256sums=('2f0015108d68627bd788d313f529c21ff4da2c2c42a5e1f3883acc83480f9002'
             '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2'
             'b9d2c1d909aa149996fd4c91dcb92b2362a04431640c1d200959da94caf8cde1'
             'b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57')
-sha256sums_x86_64=('fdf1958ea485fca6e58b3ef4e3f59173ed4c09d4ca00567b69244cd93ccc81cb')
-sha256sums_aarch64=('cedc72dddd0efa7dbcd034f2b568b23d8bac5e21378514a76721b34f11a29161')
+sha256sums_x86_64=('a3a8795bd6aea4b4bc5ca0f26c226a072330d38fe93f4edf5526360ebf7156fd')
+sha256sums_aarch64=('aba2a43b3d96b61905386d738af9d636809de23ddbae1e6cabb473ee79db28ad')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"
