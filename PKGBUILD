@@ -11,7 +11,7 @@ conflicts=("python-fmpy")
 provides=("python-fmpy")
 options=(!lto)
 depends=(python-attrs python-jinja python-lark python-lxml python-msgpack python-numpy sundials)
-makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git python-hatchling python-toml rust)
+makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git python-hatchling python-toml rust openssl-3)
 # checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
 optdepends=('python-matplotlib: for plot results'
   'python-kaleido: for notebook support'
@@ -70,7 +70,7 @@ build() {
   cd ${_base}/native
   PYTHONPATH=$PWD/../src python build_binaries.py
   PYTHONPATH=$PWD/../src python build_remoting.py
-  PYTHONPATH=$PWD/../src python build_container_fmu.py
+  CFLAGS="${CFLAGS} -I/usr/include/openssl-3" PYTHONPATH=$PWD/../src python build_container_fmu.py
   cd ..
   python -m build --wheel --skip-dependency-check --no-isolation
 }

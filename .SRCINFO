@@ -15,6 +15,7 @@ pkgbase = python-fmpy-sundials6
 	makedepends = python-hatchling
 	makedepends = python-toml
 	makedepends = rust
+	makedepends = openssl-3
 	depends = python-attrs
 	depends = python-jinja
 	depends = python-lark
