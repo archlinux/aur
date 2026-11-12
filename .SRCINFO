@@ -1,6 +1,6 @@
 pkgbase = neoko-terminal-desktop-bin
 	pkgdesc = Native neoko-terminal client: local and remote terminal with Relay pairing (GTK 4)
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/lazycat-contrib/lazycat-neko-webshell
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = neoko-terminal-desktop-bin
 	provides = neko-remoted-desktop
 	conflicts = neoko-terminal
 	conflicts = neko-remoted-desktop
-	noextract = neoko-terminal-0.4.1-x86_64-unknown-linux-gnu.deb
+	noextract = neoko-terminal-0.5.0-x86_64-unknown-linux-gnu.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = neoko-terminal-0.4.1-x86_64-unknown-linux-gnu.deb::https://github.com/lazycat-contrib/lazycat-neko-webshell/releases/download/neoko-terminal-desktop-v0.4.1/neoko-terminal-0.4.1-x86_64-unknown-linux-gnu.deb
-	sha256sums_x86_64 = c5e1b330819f2d29f488a1aafbb7b25aef22162f54fcd95aa6a37500cf9899be
+	source_x86_64 = neoko-terminal-0.5.0-x86_64-unknown-linux-gnu.deb::https://github.com/lazycat-contrib/lazycat-neko-webshell/releases/download/neoko-terminal-desktop-v0.5.0/neoko-terminal-0.5.0-x86_64-unknown-linux-gnu.deb
+	sha256sums_x86_64 = f4fccb79bb3a1b44f73701f48ae6cb6cdec664e23d3112d0baf170e11ed93d2e
 
 pkgname = neoko-terminal-desktop-bin
