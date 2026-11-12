@@ -1,6 +1,6 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: crian <crian84@gmail.com>
 pkgname=gweather-add-loc-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Add custom locations with arbitrary coordinates to GNOME Weather (prebuilt binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('gnome-weather: the weather application to add locations to'
             'flatpak: support for Flatpak installations of GNOME Weather')
 provides=("${pkgname%-bin}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crian/gweather-add-loc/releases/download/v${pkgver}/gweather-add-loc-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('b72fd9bf17379eb2f0cc14aef1b2b66b575ecf99822a4c11e7fda59c146929ab')
+sha256sums=('2b1ba010da15250fae7f88e5ed7f302431d6115af9aa00883a55e2a6c69c6aa2')
 
 package() {
     cd "$srcdir/gweather-add-loc-${pkgver}-x86_64-linux"
