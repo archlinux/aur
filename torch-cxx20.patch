@@ -1,0 +1,38 @@
+--- a/sgl-kernel/CMakeLists.txt
++++ b/sgl-kernel/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ find_package(Python COMPONENTS Interpreter Development.Module ${SKBUILD_SABI_COMPONENT} REQUIRED)
+ 
+ # CXX
+-set(CMAKE_CXX_STANDARD 17)
++set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+ 
+ # CUDA
+@@ -125,7 +125,7 @@
+     "-Xcompiler"
+     "-fPIC"
+     "-gencode=arch=compute_90,code=sm_90"
+-    "-std=c++17"
++    "-std=c++20"
+     "-DFLASHINFER_ENABLE_F16"
+     "-DCUTE_USE_PACKED_TUPLE=1"
+     "-DCUTLASS_ENABLE_TENSOR_CORE_MMA=1"
+@@ -393,7 +393,7 @@
+         "-Xcompiler"
+         "-fPIC"
+         "-gencode=arch=compute_90a,code=sm_90a"
+-        "-std=c++17"
++        "-std=c++20"
+         "-DCUTE_USE_PACKED_TUPLE=1"
+         "-DCUTLASS_ENABLE_TENSOR_CORE_MMA=1"
+         "-DCUTLASS_VERSIONS_GENERATED"
+@@ -487,7 +487,7 @@
+ set(INFLLM_FLASH_CUDA_FLAGS
+     "-DNDEBUG"
+     "-O3"
+-    "-std=c++17"
++    "-std=c++20"
+     "-Xcompiler"
+     "-fPIC"
+     "-U__CUDA_NO_HALF_OPERATORS__"
