@@ -2,7 +2,7 @@
 # Issues and fixes: https://github.com/shbernal/aur-packages
 
 pkgname=och
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Small helper for OpenClaw TUI session management.'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/shbernal/och'
 license=('MIT')
 depends=('bash' 'jq' 'moreutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('82c1ea5266c354e935408555e311838ea733f47e8b81ecc52d36d0d8749882d2')
+sha256sums=('87f3c6d3bfad493ebadd0642dd782f3fc1bcc2d43759a7e0eceaef025d84b7e6')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
