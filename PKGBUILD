@@ -1,7 +1,7 @@
 # Maintainer: illusory <becomeillusory@gmail.com>
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=photocraft-private-bin
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc='自用维护：开源 clean-room 版 Adobe Photoshop 替代（图像编辑），上游 storytold/photocraft'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('alsa-lib: sound support'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
 source=("https://gh-proxy.com/https://github.com/storytold/photocraft/releases/download/v${pkgver}/photocraft-${pkgver}-linux-x86_64.pkg.tar.zst")
-sha256sums=('74179d3d3ce9098b0cfe10f09a05144a9ae1f226fdb3777e0624351124ed846d')
+sha256sums=('6f55b05a7880a6db38374ac7985730304bcc9b499dae0f18f9d2dbd6bbb8d201')
 
 package() {
   bsdtar -xf "$srcdir/photocraft-$pkgver-linux-x86_64.pkg.tar.zst" \

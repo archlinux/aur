@@ -1,6 +1,6 @@
 pkgbase = photocraft-private-bin
 	pkgdesc = 自用维护：开源 clean-room 版 Adobe Photoshop 替代（图像编辑），上游 storytold/photocraft
-	pkgver = 0.23.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://getartcraft.com/apps/photocraft
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = photocraft-private-bin
 	optdepends = vulkan-driver: GPU rendering through Vulkan
 	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
 	optdepends = cups: printing support
-	provides = photocraft=0.23.0
+	provides = photocraft=0.23.1
 	conflicts = photocraft
 	conflicts = photocraft-bin
 	conflicts = photocraft-git
 	conflicts = ai.storyteller.photocraft
-	source = https://gh-proxy.com/https://github.com/storytold/photocraft/releases/download/v0.23.0/photocraft-0.23.0-linux-x86_64.pkg.tar.zst
-	sha256sums = 74179d3d3ce9098b0cfe10f09a05144a9ae1f226fdb3777e0624351124ed846d
+	source = https://gh-proxy.com/https://github.com/storytold/photocraft/releases/download/v0.23.1/photocraft-0.23.1-linux-x86_64.pkg.tar.zst
+	sha256sums = 6f55b05a7880a6db38374ac7985730304bcc9b499dae0f18f9d2dbd6bbb8d201
 
 pkgname = photocraft-private-bin
