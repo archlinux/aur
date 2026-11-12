@@ -1,6 +1,6 @@
 pkgbase = veasel-code-bin
 	pkgdesc = V-native AI coding agent (official prebuilt Linux release)
-	pkgver = 0.71.1.next.0
+	pkgver = 0.74.0.next.0
 	pkgrel = 1
 	url = https://veasel.dev
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = veasel-code-bin
 	noextract = veasel-Linux.tar.gz
 	options = !debug
 	options = !strip
-	source = veasel-Linux.tar.gz::https://github.com/veasel-labs/veasel/releases/download/v0.71.1-next.0/veasel-Linux.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/veasel-labs/veasel/v0.71.1-next.0/LICENSE
-	sha256sums = e0f857ab294e603277e183b65267750ba1f9cb690fbee6941befd7ccf1eb6340
+	source = veasel-Linux.tar.gz::https://github.com/veasel-labs/veasel/releases/download/v0.74.0-next.0/veasel-Linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/veasel-labs/veasel/v0.74.0-next.0/LICENSE
+	sha256sums = 6baee8fd1a7f86afa36817e6e38f934618d91a439f19e2c319f870bb55f7907e
 	sha256sums = e150ff1e9cd21b388ec966f3d77ed4731e86e4731b17f127e879f72ff5b2e3d5
 
 pkgname = veasel-code-bin
