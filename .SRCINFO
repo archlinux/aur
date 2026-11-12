@@ -1,7 +1,7 @@
 pkgbase = limusic-bin-prerelease
 	pkgdesc = Feature rich, native desktop, YouTube Music client (prerelease channel). Tauri + Rust + SvelteKit, ad-free playback through libmpv, Last.fm scrobbling and Discord Rich Presence, no Electron.
 	pkgver = 1.4.0rc.6
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/SimoHypers/limusic
 	arch = x86_64
 	license = GPL-3.0-or-later

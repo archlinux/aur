@@ -4,7 +4,7 @@
 pkgname=limusic-bin-prerelease
 _pkgname=limusic
 pkgver=1.4.0rc.6
-pkgrel=2
+pkgrel=1
 # Upstream tag without the leading "v"; pkgver drops the hyphen because Arch
 # forbids it (and 1.4.0rc.6 correctly sorts before 1.4.0).
 _tag=1.4.0-rc.6
