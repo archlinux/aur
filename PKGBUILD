@@ -1,17 +1,18 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux"
 arch=('x86_64')
 url="https://github.com/hilgardt-collab/rg-Sens"
-license=('MIT' 'Apache-2.0')
+license=('MIT' 'Apache-2.0' 'OFL-1.1')
 depends=(
     'gtk4'
     'cairo'
     'pango'
     'glib2'
     'hicolor-icon-theme'
+    'webkitgtk-6.0'
 )
 makedepends=(
     'rust'
@@ -20,13 +21,12 @@ makedepends=(
 )
 optdepends=(
     'nvidia-utils: NVIDIA GPU monitoring support'
-    'webkit2gtk-4.1: CSS Template panel with WebView support'
 )
 install=rg-sens.install
 provides=('rg-sens')
 conflicts=('rg-sens-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f7661a4f5eb8b0ac42f3cdb908fb568adbd4ef73d9f70bf909464737ff676251')
+sha256sums=('bffde9443b60f2b9f582c6018460bb0bfd0557f46911557be7343d5227563d7a')
 
 build() {
     cd "rg-Sens-$pkgver"
@@ -62,6 +62,9 @@ package() {
     for f in examples/*.{html,css,js,json}; do
         [ -f "$f" ] && install -Dm644 "$f" "$pkgdir/usr/share/rg-sens/$f"
     done
+    # Fonts the Art Deco / Art Nouveau templates load from next to themselves
+    # (SIL Open Font License; each family carries its OFL.txt)
+    cp -r examples/fonts "$pkgdir/usr/share/rg-sens/examples/"
 
     # Install documentation
     install -d "$pkgdir/usr/share/doc/rg-sens"
