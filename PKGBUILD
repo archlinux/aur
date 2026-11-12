@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/soundcraft/releases/download/v${pkgver}/soundcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/soundcraft/releases/download/v${pkgver}/soundcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('fa629b37c70c03ed89e5e20617a049de725fc28cbb50a7f4cbcd4c3c26a3727d')
 
 package() {
