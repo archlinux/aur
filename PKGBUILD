@@ -22,9 +22,14 @@
 # setuid. A package can: chrome-sandbox is installed root-owned and setuid, as in `uzumaki`, and
 # nothing here turns the sandbox off. The app adds --no-sandbox only when it runs from inside an
 # AppImage (APPIMAGE and APPDIR set and the binary under APPDIR; bridge.rs, running_from_appimage),
-# never from /usr/lib. AppImages built from the 0.1.0 source wrap Electron instead (electron is a
-# script that starts electron.bin with --no-sandbox, see packaging/appimage/build.sh); prepare()
-# puts the real binary back.
+# never from /usr/lib. AppImages built from the 0.1.0 source wrapped Electron instead (electron was
+# a script that starts electron.bin with --no-sandbox, see packaging/appimage/build.sh); from 0.1.1
+# there is no wrapper, and prepare() still puts the real binary back if one ever shows up.
+#
+# Update notice and channel: the AppImage is built without UZUMAKI_CHANNEL (on purpose), so this
+# binary under /usr/lib/uzumaki counts as a package install: its notice says "Update with your
+# package manager" (not "yay -Syu uzumaki", which would name the other package) and its daily check
+# reports the channel "system". Only a copy running from inside an AppImage reports "appimage".
 #
 # Libraries: the AppImage bundles libxkbcommon-x11 and libxcb-xkb for distributions without them;
 # this package drops that copy and depends on Arch's. Everything else (GTK, NSS, ...) comes from
@@ -33,7 +38,7 @@
 
 pkgname=uzumaki-bin
 _name=uzumaki
-pkgver=0.1.0
+pkgver=0.1.1
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>.
 _build=1
 if ((_build > 1)); then _rel=$pkgver-$_build; else _rel=$pkgver; fi
@@ -87,7 +92,7 @@ options=('!strip' '!debug')
 _appimage=Uzumaki-$_rel-x86_64.AppImage
 source=("$_appimage::https://github.com/hanami117/uzumaki/releases/download/v$_rel/$_appimage")
 noextract=("$_appimage")
-sha256sums=('d0c616fbd70ca3bc6e4fa519fe62cef0e6ad65dc13acf6e2e96a961e471cb7ad')
+sha256sums=('3c09eaeed66d9d6b06658691732c183230cdd8abc22ec6146dbe75a5ef77d8ce')
 
 prepare() {
   # The AppImage's runtime unpacks its own squashfs into squashfs-root/ (no FUSE needed). Nothing
@@ -100,7 +105,7 @@ prepare() {
   # Arch's libxkbcommon-x11 / libxcb-xkb instead of the bundled copies (the binary's RUNPATH
   # $ORIGIN/lib then finds nothing and the loader uses the system's).
   rm -rf "$lib/lib"
-  # The 0.1.0 AppImage's --no-sandbox wrapper (see the top): back to the real Electron.
+  # A --no-sandbox wrapper (AppImages built from 0.1.0, see the top): back to the real Electron.
   local dist=$lib/bridge/node_modules/electron/dist
   if [[ -f $dist/electron.bin ]]; then
     mv -f "$dist/electron.bin" "$dist/electron"
