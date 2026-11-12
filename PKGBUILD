@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=4
+pkgrel=5
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -63,7 +63,9 @@ optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
             'pipewire: PipeWire daemon that feeds the portal ScreenCast capture'
             'pipewire-pulse: PulseAudio-compatible server for voice and audio devices'
             'dunst: org.freedesktop.Notifications daemon for sessions without one'
+            'gnome-keyring: org.freedesktop.secrets service for session-token and password storage on GNOME and GTK desktops'
             'gnome-shell-extension-appindicator: org.kde.StatusNotifierItem tray host on GNOME'
+            'kwallet: Plasma 6 secret storage (ksecretd) and kwalletd6 wallet for session-token and password storage on KDE Plasma'
             'snixembed: StatusNotifierItem-to-XEmbed bridge for trays on minimal X11 sessions'
             'waybar: org.kde.StatusNotifierWatcher tray host on wlroots compositors'
             'speech-dispatcher: text-to-speech service for the Chromium libspeechd.so.2 probe (pulls libspeechd)'
