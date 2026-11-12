@@ -55,6 +55,7 @@ SPDX-License-Identifier = "Apache-2.0"
 [[annotations]]
 path = [
   "psresourceget-net11.patch",
+  "powershellget-2.2.6.patch",
 ]
 SPDX-FileCopyrightText = "Microsoft Corporation"
 SPDX-License-Identifier = "MIT"

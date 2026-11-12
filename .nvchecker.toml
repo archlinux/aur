@@ -1,11 +1,15 @@
-# The prereleases of PowerShell (7.7.0-preview.5, 7.7.0-rc.1), without the hyphen pacman doesn't allow
-# in pkgver. Sorted like pacman does, which puts previews before release candidates.
+# The prereleases of PowerShell (7.7.0-preview.5, 7.7.0-rc.1) and its releases (7.7.0), without the
+# hyphen pacman doesn't allow in pkgver. Sorted like pacman does, which puts previews before release
+# candidates. vercmp sorts the tags before the hyphen goes and reads -rc.1 as a pkgrel, so from a
+# release until the next version's first prerelease, the check reports the release's last release
+# candidate, which is older than the release: the package stays, and moves to the release by hand.
+# pkgctl disallows the cmd source, which could order them exactly.
 [powershell-preview]
 source = "git"
 git = "https://github.com/PowerShell/PowerShell.git"
 use_max_tag = true
 prefix = "v"
-include_regex = 'v7\.\d+\.\d+-(preview|rc)\.\d+'
+include_regex = 'v7\.\d+\.\d+(-(preview|rc)\.\d+)?'
 sort_version_key = "vercmp"
 from_pattern = '^([\d.]+)-'
 to_pattern = '\1'

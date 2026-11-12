@@ -29,14 +29,23 @@ $modules = @(
 # the server since the help was published again on 2026-10-28, redirects to its documentation page now,
 # so Update-Help fails for it. Its help is taken from the container directly instead.
 # Upstream issue: https://github.com/PowerShell/PSResourceGet/issues/2078
+# PowerShellGet 2.2.6 changed its HelpInfoUri to the fwlink of its documentation page
+# (https://go.microsoft.com/fwlink/?linkid=2113539); its help is still in the container of PowerShell 6's
+# modules, where 2.2.5's fwlink (https://go.microsoft.com/fwlink/?linkid=855963) leads.
 $helpContainers = @{
     'Microsoft.PowerShell.PSResourceGet' = 'https://pshelpprod.z22.web.core.windows.net/powershellget-3.x/'
+    'PowerShellGet' = 'https://pshelpprod.z22.web.core.windows.net/powershell-6/'
 }
 
 Update-Help -Module $modules -UICulture en-US -Scope AllUsers -ErrorAction SilentlyContinue -ErrorVariable helpErrors
 foreach ($helpError in $helpErrors) {
-    $failed = @($modules | Where-Object { $helpContainers.ContainsKey($_) -and $helpError.Exception.Message.Contains("'$_'") })
-    if (-not $failed) {
+    # Update-Help names all modules that failed in one message: "... for the module(s) 'A, B' with ..."
+    $failedNames = @()
+    if ($helpError.Exception.Message -match "module\(s\)\s+'([^']+)'") {
+        $failedNames = @($Matches[1] -split ',\s*')
+    }
+    $failed = @($failedNames | Where-Object { $helpContainers.ContainsKey($_) })
+    if (-not $failedNames -or $failed.Count -ne $failedNames.Count) {
         throw $helpError
     }
     foreach ($name in $failed) {

@@ -26,6 +26,7 @@ oneget/
 NuGetProvider/
 PSResourceGet/
 Microsoft.PowerShell.Archive/
+Microsoft.PowerShell.Archive-*.nupkg
 PSReadLine/
 Pager/
 MarkdownRender/
