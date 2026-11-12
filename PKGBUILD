@@ -1,6 +1,6 @@
 # Maintainer: deddroid <deddo9412@gmail.com>
 pkgname=bticino-easykit
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Unofficial client for the BTicino EASYKIT WiFi video door entry kit (live view, two-way audio, door release)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'pkgconf')
 conflicts=('bticino-easykit-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fcd77c70d3e50d9a459227f2c37251148ee9d9a04945842e9a063245c5eda1f3')
+sha256sums=('176326cfdf6e1bab9235a12ee06d45a05e675e1d7cd538feab9ff16d139877f8')
 
 # Crates are fetched under $srcdir so that the path remap below also hides
 # the registry paths compiled into panic messages.
