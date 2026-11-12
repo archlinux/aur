@@ -1,6 +1,6 @@
 pkgbase = genoma
 	pkgdesc = A Wayland shell toolkit: a Rust core drawing through Vulkan, interfaces written in Luau and reloaded live
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/AkusenArcade/Genoma
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = genoma
 	depends = libpipewire
 	depends = pam
 	options = !lto
-	source = genoma-0.1.11.tar.gz::https://github.com/AkusenArcade/Genoma/archive/refs/tags/v0.1.11.tar.gz
-	sha256sums = f1e49405fd804d1009d4b0828dc25fc696aae6fd25b285129521373a4d5d8a28
+	source = genoma-0.1.12.tar.gz::https://github.com/AkusenArcade/Genoma/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = ae0f825717e5643edc3a199ce8428675e37cbb5eef3e093fa49e2292b803bbe8
 
 pkgname = genoma
