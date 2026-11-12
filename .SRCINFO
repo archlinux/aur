@@ -1,6 +1,6 @@
 pkgbase = telesfor-bin
 	pkgdesc = Live TV from streaming services in Plex, as a virtual HDHomeRun tuner.
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/combor/telesfor
 	license = BSD-3-Clause
@@ -11,10 +11,10 @@ pkgbase = telesfor-bin
 	backup = etc/telesfor/telesfor.env
 	install = telesfor.install
 	arch = aarch64
-	source_aarch64 = telesfor-bin_0.3.7_aarch64.tar.gz::https://github.com/combor/telesfor/releases/download/v0.3.7/telesfor_0.3.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = fae215d51acccc104efd1076ce268954863b193a63b6ec6f6113ab84e5c013dc
+	source_aarch64 = telesfor-bin_0.3.8_aarch64.tar.gz::https://github.com/combor/telesfor/releases/download/v0.3.8/telesfor_0.3.8_linux_arm64.tar.gz
+	sha256sums_aarch64 = 75feee34ffec54a13edce0e03d218259eed91ad2d50c69c79e412cce92bb55b2
 	arch = x86_64
-	source_x86_64 = telesfor-bin_0.3.7_x86_64.tar.gz::https://github.com/combor/telesfor/releases/download/v0.3.7/telesfor_0.3.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5ecfc93608884b0e5e63e4912942c0a593b75a0c28a41d44db884f9d74d7dacf
+	source_x86_64 = telesfor-bin_0.3.8_x86_64.tar.gz::https://github.com/combor/telesfor/releases/download/v0.3.8/telesfor_0.3.8_linux_amd64.tar.gz
+	sha256sums_x86_64 = 47d38f213d75c0e29a8014aaad7fc0a3e2e3f5618a834ddc12a44ef563e085a4
 	
 pkgname = telesfor-bin
