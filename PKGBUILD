@@ -1,6 +1,6 @@
 # Maintainer: Jasmeet (Jazz) Bhatia
 pkgname=jerc
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Keyboard-driven terminal email client written in Rust'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 
 # Replace after publishing v0.6.1 using updpkgsums.
-sha256sums=('0c31422109849ec1bde55ea95ef8182f6ecb630e753fdaa1820d1594a80e6680')
+sha256sums=('8a33b8f2ae4a789c9e454508256974ade23f0404a86beefe86e6c630ea012902')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
