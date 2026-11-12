@@ -30,7 +30,7 @@ pkgbase = vectorcraft-private-bin
 	conflicts = vectorcraft-bin
 	conflicts = vectorcraft-git
 	conflicts = ai.storyteller.vectorcraft
-	source = https://github.com/storytold/vectorcraft/releases/download/v0.24.0/vectorcraft-0.24.0-linux-x86_64.pkg.tar.zst
+	source = https://gh-proxy.com/https://github.com/storytold/vectorcraft/releases/download/v0.24.0/vectorcraft-0.24.0-linux-x86_64.pkg.tar.zst
 	sha256sums = c0ca5a646152aa8e79a135dee81b857a0130fbbc53da594223b95accd203824c
 
 pkgname = vectorcraft-private-bin

@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/vectorcraft/releases/download/v${pkgver}/vectorcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/vectorcraft/releases/download/v${pkgver}/vectorcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('c0ca5a646152aa8e79a135dee81b857a0130fbbc53da594223b95accd203824c')
 
 package() {
