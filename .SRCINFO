@@ -1,0 +1,15 @@
+pkgbase = meld-qt
+	pkgdesc = Visual diff and merge tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Alexander-r/meld-qt
+	arch = x86_64
+	license = MIT
+	makedepends = qt6-tools
+	makedepends = cmake
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	source = meld-qt-1.0.0.tar.gz::https://codeload.github.com/Alexander-r/meld-qt/tar.gz/refs/tags/v1.0.0
+	sha256sums = 5b4d9902604e91f66e2460a1b392f055069e5f7ac751ef3d410b407d7bf46d2f
+
+pkgname = meld-qt
