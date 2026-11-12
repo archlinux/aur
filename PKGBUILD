@@ -1,6 +1,6 @@
 # Maintainer: manupernas <120756979+manupernas@users.noreply.github.com>
 pkgname=syn-iptv
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc='GTK4 IPTV player with XMLTV EPG, FFmpeg DVR and Chromecast support'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/manupernas/SYN/archive/refs/tags/v${pkgver}.tar.gz")
 # El script preparar_en_imac.sh sustituye SKIP por el SHA-256 real.
-sha256sums=('cd26ee1a96941f2c22863c326a8abe35e9c37ce3fe5c7b64e0e69ceb5c670016')
+sha256sums=('83649fed3364402c156a30885ca8a7e2ee70b4bb30d9d44a92a6acea75947b13')
 
 package() {
   cd "${srcdir}/SYN-${pkgver}"
