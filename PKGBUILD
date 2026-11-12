@@ -21,8 +21,8 @@
 # that contract, unlike scattering files across /usr/bin and /usr/share.
 
 pkgname=cua-driver-bin
-pkgver=0.47.8
-pkgrel=2
+pkgver=0.47.19
+pkgrel=1
 pkgdesc="Desktop control daemon (cua-driver-rs) from trycua/cua — background window driving, clicks, typing, browser automation via MCP"
 arch=('x86_64')
 url="https://github.com/trycua/cua"
@@ -52,7 +52,7 @@ source=(
     "LICENSE.md::https://raw.githubusercontent.com/trycua/cua/cua-driver-rs-v${pkgver}/LICENSE.md"
     "cua-driver.service"
 )
-sha256sums=('d9abbe5f1db278210ff88e14fcefdc099dbc767b41849457cfc02838ba4180ec'
+sha256sums=('a9b89435e4257467749e5da12770d74882e1e250925e3079b05a392f824b0e71'
             'c0779290c1d4783169aa3dbfb55feb505e563ef8a004bbf55298ceffcfbda8d9'
             'SKIP')
 
