@@ -1,12 +1,12 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.31.1
+pkgver=3.31.2
 pkgrel=1
 pkgdesc="Intelligent update advisor and wrapper for Arch Linux and derivatives"
 arch=('any')
 url="https://github.com/motorrin/arch-smart-update"
 license=('MIT')
-depends=('bash' 'python' 'pacman' 'pacman-contrib' 'tar' 'gawk' 'coreutils' 'curl' 'zstd' 'grep' 'sed')
+depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'findutils' 'diffutils' 'util-linux' 'procps-ng' 'curl' 'zstd' 'grep' 'sed' 'sudo')
 optdepends=(
     'rate-mirrors: for fast Arch Linux mirror ranking (primary)'
     'reflector: for Arch Linux mirror ranking (fallback)'
@@ -27,7 +27,6 @@ optdepends=(
     'topgrade: for comprehensive system updates'
     'fakeroot: for running the background update checker without sudo'
     'libnotify: for desktop notifications in daemon mode'
-    'util-linux: for terminal log capture (script), state locking (flock) and detached execution (setsid)'
     'xdg-utils: for opening Arch News links in default browser (xdg-open)'
     'xdg-terminal-exec: for spawning default desktop terminal from notifications'
     'flatpak: for cleaning unused runtimes during post-update cleanup'
@@ -36,7 +35,7 @@ optdepends=(
     'psmisc: for alternative pacman lock detection using fuser'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd43585dbaab5a7a13ab741ad298d5eabec90eb1c1810112fd97a43ed0f4ba5e')
+sha256sums=('e502ecf5d59427ef00b8abebebdf2fa1627b17168bad629ee86a7ccc5c4972bf')
 
 package() {
     cd "${pkgname}-${pkgver}"
