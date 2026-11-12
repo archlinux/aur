@@ -1,7 +1,7 @@
 # Maintainer: Nasir A. <112448715+NasirA1991@users.noreply.github.com>
 # Rendered by .github/workflows/aur-git.yml.
 pkgname=atk-control-git
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice (git)"
 arch=('any')
