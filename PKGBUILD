@@ -1,6 +1,6 @@
 pkgname=samba-util-bin
-pkgver=4.1.1
-pkgrel=6
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="A simple and modern GUI for managing Samba."
 arch=('x86_64')
 url="https://github.com/mijocecr/samba-util"
@@ -13,6 +13,7 @@ depends=(
 )
 
 optdepends=(
+  'cups: impresión a través de Samba'
   'gvfs-smb: integración con exploradores de archivos'
   'nss-mdns: descubrimiento de red mDNS'
   'avahi: soporte para mDNS/zeroconf'
@@ -20,9 +21,9 @@ optdepends=(
 
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.1/SAMBA-Util.tar.gz")
+source=("https://github.com/mijocecr/samba-util/releases/download/samba-util_v4.2/SAMBA-Util.tar.gz")
 
-sha256sums=('SKIP')
+sha256sums=('cf5104f91e926483ab571ecb5e9a4d380c6b82df11cd3d9b2b1efdb87297112f')
 
 package() {
   # Crear la estructura de destino en /usr/lib
