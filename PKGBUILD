@@ -1,6 +1,6 @@
 _pkgname=gnome-keyring
 pkgname="${_pkgname}-git"
-pkgver=51.0+8+ge9706199
+pkgver=51.0+9+g8561976b
 pkgrel=1
 epoch=1
 pkgdesc="Stores passwords and encryption keys"
