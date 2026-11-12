@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=okr
-pkgver=0.1.11 # renovate: datasource=github-releases depName=nanxstats/okr
+pkgver=0.1.12 # renovate: datasource=github-releases depName=nanxstats/okr
 pkgrel=1
 pkgdesc="Reproducible R source context for coding agents"
 url="https://github.com/nanxstats/okr"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('42cbe59a68e688b1523dee8e30d874bf3fb2b8f64d01d53e8c143c322f0ea481ee3c70bc32d1b97830192bd3803131e59a42f8cf295c9c57464c2b4946ecb0fc')
+sha512sums=('75f8dd70f53c8804d5e5b2a2af8ecb883c448c97e58a2aab959b093bb43152331f9c782883b304c1d20df93a65c04ba1106661a60e0333e44ff456d0efca1cef')

@@ -1,6 +1,6 @@
 pkgbase = okr
 	pkgdesc = Reproducible R source context for coding agents
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/nanxstats/okr
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = okr
 	conflicts = okr-bin
 	options = !lto
 	options = !debug
-	source = okr-0.1.11.tar.gz::https://github.com/nanxstats/okr/archive/v0.1.11.tar.gz
-	sha512sums = 42cbe59a68e688b1523dee8e30d874bf3fb2b8f64d01d53e8c143c322f0ea481ee3c70bc32d1b97830192bd3803131e59a42f8cf295c9c57464c2b4946ecb0fc
+	source = okr-0.1.12.tar.gz::https://github.com/nanxstats/okr/archive/v0.1.12.tar.gz
+	sha512sums = 75f8dd70f53c8804d5e5b2a2af8ecb883c448c97e58a2aab959b093bb43152331f9c782883b304c1d20df93a65c04ba1106661a60e0333e44ff456d0efca1cef
 
 pkgname = okr
