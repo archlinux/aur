@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=filestash-git
-pkgver=r2447.cbcd1e96
-pkgrel=2
+pkgver=r2569.d8211c54
+pkgrel=1
 pkgdesc="Universal file management platform / storage-agnostic Dropbox alternative"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mickael-kerjean/filestash"
