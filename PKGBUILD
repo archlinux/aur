@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/wordcraft/releases/download/v${pkgver}/wordcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/wordcraft/releases/download/v${pkgver}/wordcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('5b1b2851bdebf75a23f2ce2efdbda2b2b542749b9fe653f9b7b16dc209dcbb64')
 
 package() {
