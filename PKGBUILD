@@ -1,15 +1,25 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
+#
+# This file is maintained in https://github.com/markusressel/zfs-file-history/tree/main/packaging/aur/zfs-file-history-git
+# and published to the AUR with packaging/aur/publish.sh (see RELEASING.md). Don't edit it on the AUR directly.
 pkgname=zfs-file-history-git
-pkgver=1.0.0.r12.g0802b62
+pkgver=2.10.0.r0.g98a0650
 pkgrel=1
 pkgdesc="Terminal UI for inspecting and restoring file history on ZFS snapshots."
 arch=('x86_64')
 url="https://github.com/markusressel/zfs-file-history"
 license=('AGPL3')
-depends=('glibc')
+# zfs-utils: libzfs (linked) and the zfs and zpool commands
+depends=('glibc' 'zfs-utils')
 makedepends=('go' 'git' 'just')
+optdepends=('diffutils: diffs of file versions'
+            'smartmontools: disk health of the pools'
+            'sudo: the permission setup and the operations that need root'
+            'wl-clipboard: copying to the clipboard on Wayland'
+            'xclip: copying to the clipboard on X11')
 provides=("zfs-file-history")
 conflicts=("zfs-file-history")
+install=zfs-file-history.install
 source=('git+https://github.com/markusressel/zfs-file-history')
 sha256sums=('SKIP')
 
@@ -31,7 +41,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	just build
+	just VERSION="${pkgver}" build
 }
 
 package() {
