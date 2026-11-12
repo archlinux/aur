@@ -1,8 +1,8 @@
 pkgbase = hyprland-focused-booster
 	pkgdesc = Active window VRAM booster for Hyprland
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
-	url = https://github.com/tumrin/hyprland-focused-booster
+	url = https://codeberg.org/tumrin/hyprland-focused-booster
 	install = hyprland-focused-booster.install
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = hyprland-focused-booster
 	depends = dmemcg-booster
 	depends = glibc
 	depends = systemd
-	source = https://github.com/tumrin/hyprland-focused-booster/archive/refs/tags/0.1.6.tar.gz
-	sha256sums = 779ceecb037b5a2df4dcfe7d17c7698f1386aef31089f9a1a2dc3995721d4696
+	source = https://codeberg.org/tumrin/hyprland-focused-booster/archive/0.1.7.tar.gz
+	sha256sums = 46d20b90e48d93bcde07b98db4180b24829d5935eda3179782a5c88c0930328a
 
 pkgname = hyprland-focused-booster
