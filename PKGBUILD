@@ -5,13 +5,13 @@
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname=davix-git
-pkgver=0.8.11rc1.r0.g3054c828
+pkgver=0.9.0.r2.g3198e7fe
 pkgrel=1
 pkgdesc="Client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP procols"
 arch=('x86_64')
 url="https://github.com/cern-fts/davix"
 license=('LGPL-2.1-or-later')
-depends=('curl' 'libxml2' 'openssl' 'util-linux-libs')
+depends=('curl' 'libxml2' 'openssl-3' 'util-linux-libs')
 provides=('davix')
 conflicts=('davix')
 makedepends=('doxygen' 'boost' 'cmake' 'git' 'python' 'gtest' 'nlohmann-json')
@@ -28,6 +28,9 @@ build() {
     -DLIB_SUFFIX="" \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_BUILD_TYPE=Release \
+    -DOPENSSL_INCLUDE_DIR=/usr/include/openssl-3 \
+    -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-3/libssl.so \
+    -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-3/libcrypto.so \
     -Wno-dev
   cmake --build build
 }
