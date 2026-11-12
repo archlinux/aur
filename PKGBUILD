@@ -1,6 +1,6 @@
-# Maintainer: Akrm Al-Hakimi <alhakimiakrmj@gmail.com>
+# Maintainer: Akrm Al-Hakimi <akrm@cachebag.sh>
 pkgname=nmrs
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="NetworkManager client built on nmrs and gpui"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('networkmanager' 'fontconfig' 'freetype2' 'libxkbcommon' 'libxkbcommon-
 makedepends=('cargo')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8799bbd39da82e47e7fe09d1fa6b68f8aa6eb405426bc0126cfb2ecede667e90')
+sha256sums=('d751cba9365142141f9aacabc49d0d83fa3e01df761c9d689343fb0ef09f81d9')
 
 prepare() {
   cd "nmrs-gui-$pkgver"
@@ -30,5 +30,6 @@ package() {
   install -Dm755 target/release/nmrs-gui "$pkgdir/usr/bin/nmrs-gui"
   ln -s nmrs-gui "$pkgdir/usr/bin/nmrs"
   install -Dm644 nmrs.desktop "$pkgdir/usr/share/applications/nmrs.desktop"
+  install -Dm644 assets/nmrs.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/nmrs.svg"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
