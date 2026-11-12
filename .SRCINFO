@@ -1,6 +1,6 @@
 pkgbase = nmrs-bin
 	pkgdesc = NetworkManager client built on nmrs and gpui (prebuilt binary)
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/freedesktop-rs/nmrs-gui
 	arch = x86_64
@@ -16,11 +16,13 @@ pkgbase = nmrs-bin
 	conflicts = nmrs
 	options = !strip
 	options = !debug
-	source = nmrs-gui-2.1.0::https://github.com/freedesktop-rs/nmrs-gui/releases/download/v2.1.0/nmrs-gui-x86_64-linux
-	source = nmrs-2.1.0.desktop::https://raw.githubusercontent.com/freedesktop-rs/nmrs-gui/v2.1.0/nmrs.desktop
-	source = LICENSE-2.1.0::https://raw.githubusercontent.com/freedesktop-rs/nmrs-gui/v2.1.0/LICENSE-MIT
-	sha256sums = ad9bc1d3decc93fa8ee92a0e5086225039a334a9f491d7f51a75e184e10fd7e2
-	sha256sums = eb8d6cb65349cf1a317d31f9f840a5c77473a9814428d277cb79daefcb24501d
+	source = nmrs-gui-2.2.0::https://github.com/freedesktop-rs/nmrs-gui/releases/download/v2.2.0/nmrs-gui-x86_64-linux
+	source = nmrs-2.2.0.desktop::https://raw.githubusercontent.com/freedesktop-rs/nmrs-gui/v2.2.0/nmrs.desktop
+	source = nmrs-2.2.0.svg::https://raw.githubusercontent.com/freedesktop-rs/nmrs-gui/v2.2.0/assets/nmrs.svg
+	source = LICENSE-2.2.0::https://raw.githubusercontent.com/freedesktop-rs/nmrs-gui/v2.2.0/LICENSE-MIT
+	sha256sums = 7132d58965488a4ff182513b3891f0ed052f1e606e775b59dc863339db6747bb
+	sha256sums = 87e1e8998c98b576bcc2e8f714a8a39d2253deb8ac2a05ac183567dee6988ce0
+	sha256sums = bfc602256b752e50ef60349e1adb6bf30afceae9097339da256a220f537b1dbb
 	sha256sums = d1bcd30549a79e7c68f5ac178494332b8cf32b6d1ac3f3ac703188cf7f9b0ee1
 
 pkgname = nmrs-bin
