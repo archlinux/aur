@@ -25,7 +25,7 @@ _renderer=gl
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r73067.9076c3af25d
+pkgver=r74570.2c17cdd58fe
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -74,7 +74,7 @@ _libdvdread_version="7.0.1"
 _ffmpeg_version="9.0.2"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
-_flatbuffers_version="23.3.3"
+_flatbuffers_version="25.12.19"
 _libudfread_version="1.2.0"
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
@@ -104,7 +104,7 @@ b2sums=('SKIP'
         'c768e75f3b129d7e51131ebe36813fdddbf8087637a15d3bad6e10a73b1d4fc815deee189809ff51750c5e00c4df401134417c911a3c97393d40e56cf3fd8308'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
-        'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
+        'd06cce5a2c715d2859823161bab0c5b24e20f8cb20d45df25e66a51872ada981c61aa0e64145fe0073bc7b3a0a009de622b19e188f6e951a1d50f00fe39a9292'
         '954caea7ae3cc91034ce1ba802e445f4989b9a75ec34b9373b523a312d7ed6296f14c32579edb5ef094379fbd1f48dd94d7dbc9a34ecdb263d765c23b63a81d4')
 
 pkgver() {
