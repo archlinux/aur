@@ -1,7 +1,7 @@
 pkgbase = bettbox
 	pkgdesc = A cross-platform network traffic routing and DNS debugging tool, deeply built on the powerful Mihomo core.
 	pkgver = 1.19.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/appshubcc/Bettbox
 	install = bettbox.install
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = bettbox
 	source = restart-bettbox.hook
 	source = bettbox.desktop
 	source = bettbox.install
-	sha256sums = 7b912446c618fd22418fe29e77bbeb849c1666ce0a3a08c3053a2102cdf10c64
+	sha256sums = 524ecaa3350f6b319919f79943337ffdbc90c39fcab2051a552b193ac047b14d
 	sha256sums = 03d4aadb32c7a3876ac3dbafeb3d2ecd38b0fc87d19ff57d5dc46d452fd026a2
 	sha256sums = d7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f
 	sha256sums = c6a494309939447475c29c83020d0ad19b12bed0b3f5aaae3c7c8b5f32942d2b
