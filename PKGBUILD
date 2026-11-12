@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}
 pkgdesc="A selection-first modal text editor for the terminal, scriptable in Scheme"
 
-pkgver=0.20.1
+pkgver=0.21.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_gitversion}.tar.gz")
-sha256sums=('d55abc741a79f920244e43e9860c801bb089b9b5d547e212c261c81ff7ea68b1')
+sha256sums=('dba86ca6c02019fa0a65842522f921e1e3a9e4cac6275d78a1af3537db0d0253')
 
 
 prepare() {
