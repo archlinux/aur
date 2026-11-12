@@ -21,6 +21,7 @@ pkgbase = solian-git
 	depends = libsecret
 	depends = libpdfium-nojs
 	depends = icu76
+	depends = lld
 	provides = solian
 	conflicts = solian
 	conflicts = solian-bin

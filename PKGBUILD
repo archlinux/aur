@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r2940.acde0de6
+pkgver=r3608.d167c36c
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   'libsecret'
   'libpdfium-nojs'
   'icu76'
+  'lld'
 )
 
 makedepends=(
@@ -48,7 +49,7 @@ options=('!debug')
 
 _binname="island"
 
-_flutter_ver=3.44.1
+_flutter_ver=3.47.9
 _flutter_repo=https://github.com/flutter/flutter.git
 
 pkgver() {
