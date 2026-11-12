@@ -1,6 +1,6 @@
 # Maintainer: codekoala <arch@cloudlery.com>
 pkgname=skysend-bin
-pkgver=2.12.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Command-line client for SkySend end-to-end encrypted file and note sharing'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('skysend')
 options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/skysend-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/skysend-linux-arm64")
-sha256sums_x86_64=('a423bc417e58aa5e3ea3f6c5c7817bc132da829b90bf58f34856a52d6a8940dd')
-sha256sums_aarch64=('434bb1307171be9190a9d8779b7aa00887b21818fea5ed2fed6f858677c64df8')
+sha256sums_x86_64=('90a565dc7a328f85f8e6f0593cad6d61ec153c2d16cb71af92041e9760f112d8')
+sha256sums_aarch64=('06fcc0e641b214663aab07e628b2525f50855bd0b6a217835351f8e823cc9440')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/skysend"

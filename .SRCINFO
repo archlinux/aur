@@ -1,6 +1,6 @@
 pkgbase = skysend-bin
 	pkgdesc = Command-line client for SkySend end-to-end encrypted file and note sharing
-	pkgver = 2.12.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/Skyfay/SkySend
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = skysend-bin
 	provides = skysend
 	conflicts = skysend
 	options = !strip
-	source_x86_64 = skysend-bin-2.12.1-x86_64::https://github.com/Skyfay/SkySend/releases/download/v2.12.1/skysend-linux-x64
-	sha256sums_x86_64 = a423bc417e58aa5e3ea3f6c5c7817bc132da829b90bf58f34856a52d6a8940dd
-	source_aarch64 = skysend-bin-2.12.1-aarch64::https://github.com/Skyfay/SkySend/releases/download/v2.12.1/skysend-linux-arm64
-	sha256sums_aarch64 = 434bb1307171be9190a9d8779b7aa00887b21818fea5ed2fed6f858677c64df8
+	source_x86_64 = skysend-bin-3.3.0-x86_64::https://github.com/Skyfay/SkySend/releases/download/v3.3.0/skysend-linux-x64
+	sha256sums_x86_64 = 90a565dc7a328f85f8e6f0593cad6d61ec153c2d16cb71af92041e9760f112d8
+	source_aarch64 = skysend-bin-3.3.0-aarch64::https://github.com/Skyfay/SkySend/releases/download/v3.3.0/skysend-linux-arm64
+	sha256sums_aarch64 = 06fcc0e641b214663aab07e628b2525f50855bd0b6a217835351f8e823cc9440
 
 pkgname = skysend-bin
