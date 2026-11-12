@@ -1,0 +1,23 @@
+pkgbase = geetree-bin
+	pkgdesc = GPU-rendered Git client built for very large repositories
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://geetree.app
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = git
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	provides = geetree
+	conflicts = geetree
+	noextract = geetree-0.5.6-amd64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = geetree-0.5.6-amd64.deb::https://github.com/cmzy/geetree/releases/download/v0.5.6/GeeTree_amd64.deb
+	sha256sums_x86_64 = 781b979f7388a60b6a2d37b9dba838180606da55548275fd9ca28c480b1b8888
+
+pkgname = geetree-bin
