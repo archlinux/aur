@@ -1,0 +1,4 @@
+[rehex]
+source = "github"
+github = "solemnwarning/rehex"
+use_latest_release = true
