@@ -33,7 +33,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_PLAYGROUND=OFF \
-    -DSLITSCAN_REGENERATE_UI=OFF \
+    -DSLITSCAN_REGENERATE_UI=OFF
   cmake --build build
 }
 
