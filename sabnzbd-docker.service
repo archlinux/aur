@@ -10,9 +10,8 @@ EnvironmentFile=/opt/docker-sabnzbd/default.env
 EnvironmentFile=%h/.docker-sabnzbd.env
 Environment="PUID=%U"
 Environment="PGID=%G"
-ExecStart=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml up
-ExecStop=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml down
+ExecStart=docker compose -p sabnzbd-docker -f /opt/docker-sabnzbd/docker-compose.yaml up
+ExecStop=docker compose -p sabnzbd-docker -f /opt/docker-sabnzbd/docker-compose.yaml down
 
 [Install]
 WantedBy=default.target
-

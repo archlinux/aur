@@ -75,6 +75,7 @@ Your values override the packaged defaults.
 Docker Compose reads `/opt/docker-sabnzbd/.env` to calculate paths from the effective prefixes.
 The package installs this file from `docker.env`.
 Exported service variables take precedence over Compose `.env` values.
+All Compose commands use the explicit project name `sabnzbd-docker`, regardless of the Compose file's location.
 
 You can override an individual path in your user configuration.
 For example, let Sonarr access SABnzbd's completed downloads:
@@ -138,3 +139,11 @@ loginctl enable-linger "$USER"
 ```
 
 For a rootless Docker daemon, ensure its user service also starts without an interactive login.
+
+### Upgrade from an inferred project name
+
+Stop the old launch service before installing the new units.
+Older units normally infer the project name `docker-sabnzbd` from the installation directory.
+The explicit name `sabnzbd-docker` can cause conflicts with containers belonging to an older project.
+Inspect remaining containers with `docker ps -a` before proceeding.
+Verify persistent data mounts and backups before removing any old containers.

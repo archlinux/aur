@@ -88,6 +88,7 @@ Systemd creates separate private runtime directories with mode `0700`:
 
 For user services, `%t` normally means `/run/user/UID`.
 Systemd removes each directory when its service stops, after stop commands finish.
+All Compose commands use the explicit project name `sabnzbd-podman`, regardless of the generated file's location.
 
 ## Start and inspect
 
@@ -140,9 +141,10 @@ To keep enabled user services running without an interactive login, enable linge
 loginctl enable-linger "$USER"
 ```
 
-### Upgrade from generated files under `/tmp`
+### Upgrade from an inferred project name
 
 Stop the old launch service before installing the new units.
-Moving the Compose file changes its inferred project name and can cause conflicts with existing containers.
+Older units infer the project name from the Compose file's directory, such as `tmp` for files under `/tmp`.
+The explicit name `sabnzbd-podman` can cause conflicts with containers belonging to an older project.
 Inspect remaining containers with `podman ps -a` before proceeding.
 Verify persistent data mounts and backups before removing any old containers.

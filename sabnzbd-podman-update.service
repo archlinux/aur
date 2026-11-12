@@ -12,5 +12,5 @@ Environment="PUID=%U"
 Environment="PGID=%G"
 Type=oneshot
 ExecStartPre=/bin/bash /opt/podman-sabnzbd/render-compose.sh %h/.podman-sabnzbd.env %t/sabnzbd-podman-update/compose.yaml
-ExecStart=podman-compose -f %t/sabnzbd-podman-update/compose.yaml pull
+ExecStart=podman-compose -p sabnzbd-podman -f %t/sabnzbd-podman-update/compose.yaml pull
 ExecStartPost=systemctl --user --no-block try-restart sabnzbd-podman.service
