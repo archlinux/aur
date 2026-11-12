@@ -1,5 +1,5 @@
 pkgname=patchy-image-editor-bin
-pkgver=1.32
+pkgver=1.33
 pkgrel=1
 pkgdesc="PSD-oriented image editor repackaged from the upstream Flatpak bundle"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   "PatchyLinux-${pkgver}.flatpak::https://github.com/SethRobinson/Patchy/releases/download/v${pkgver}/PatchyLinux.flatpak"
   'LICENSE'
 )
-sha256sums=('682f098d89da986b2b6eb42fede764e0fe314e6dbc3d41acad37d37918884b2e'
+sha256sums=('fb770fdca403ceb8ee589341b8987148256fec68b5c817df4dedc7aa0dedf1ff'
             'bbc50c8c376e0e5980939be7df6769feed1a30289c7efc6391b204dfb15de88d')
 
 prepare() {
