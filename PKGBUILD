@@ -1,6 +1,6 @@
 # Maintainer: massiveadam <massiveadam@users.noreply.github.com>
 pkgname=massiveeq-git
-pkgver=0.3.0.beta.2.r37.gc508209
+pkgver=0.3.0.beta.2.r40.ga7b8cdd
 pkgrel=1
 pkgdesc='Beta device-aware equalizer for PipeWire and Wayland desktops'
 arch=('x86_64')
@@ -10,7 +10,9 @@ depends=('pipewire>=1:1.4' 'libpipewire' 'wireplumber>=0.5' 'gtk4>=4.18' 'libadw
 makedepends=('cargo' 'clang' 'git' 'python')
 optdepends=('carla: native VST3/LV2 microphone plugin hosting'
             'pipewire-jack: independent microphone plugin routing'
-            'python: microphone companion')
+            'python: microphone companion'
+            'lsp-plugins-lv2: microphone EQ, gate and compressor'
+            'noise-suppression-for-voice: microphone RNNoise noise reduction')
 provides=('massiveeq')
 conflicts=('massiveeq')
 options=('!debug')

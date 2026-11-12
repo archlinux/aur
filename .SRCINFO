@@ -1,6 +1,6 @@
 pkgbase = massiveeq-git
 	pkgdesc = Beta device-aware equalizer for PipeWire and Wayland desktops
-	pkgver = 0.3.0.beta.2.r37.gc508209
+	pkgver = 0.3.0.beta.2.r40.ga7b8cdd
 	pkgrel = 1
 	url = https://github.com/massiveadam/massiveeq
 	install = massiveeq.install
@@ -26,6 +26,8 @@ pkgbase = massiveeq-git
 	optdepends = carla: native VST3/LV2 microphone plugin hosting
 	optdepends = pipewire-jack: independent microphone plugin routing
 	optdepends = python: microphone companion
+	optdepends = lsp-plugins-lv2: microphone EQ, gate and compressor
+	optdepends = noise-suppression-for-voice: microphone RNNoise noise reduction
 	provides = massiveeq
 	conflicts = massiveeq
 	options = !debug
