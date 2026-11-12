@@ -2,7 +2,7 @@
 
 pkgname=mailcraft-bin
 _pkgname=mailcraft
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Open-source native mail, calendar, contacts and tasks app, Outlook alternative (binary release)'
 arch=('x86_64' 'aarch64')
@@ -20,10 +20,11 @@ license=(
   # MailCraft
   'MIT OR Apache-2.0'
   # Crates with no choice: MIT only, or Apache-2.0 only (accesskit_winit,
-  # codespan-reporting, unicode-general-category, ring)
+  # codespan-reporting, unicode-general-category, ring, cryptoki)
   'MIT'
   'Apache-2.0'
-  # tiny-skia, encoding_rs (WHATWG data), subtle
+  # tiny-skia, encoding_rs (WHATWG data), subtle; curve25519-dalek,
+  # ed25519-dalek, x25519-dalek and cx448 (OpenPGP)
   'BSD-3-Clause'
   # arrayref (tiny-skia)
   'BSD-2-Clause'
@@ -61,7 +62,11 @@ depends=(
   'wayland'
 )
 optdepends=(
+  'gnupg: OpenPGP keys kept in GnuPG'
+  'opensc: S/MIME keys on smart cards and USB tokens (PKCS#11)'
   'org.freedesktop.secrets: remember sign-ins between sessions (e.g. gnome-keyring)'
+  'pdfcraft: preview PDF attachments (off by default)'
+  'photocraft: preview image attachments (off by default)'
   'vulkan-driver: Vulkan rendering (falls back to OpenGL/EGL without one)'
   'xdg-desktop-portal: native open and save dialogs'
   'xdg-utils: open attachments with xdg-open'
@@ -88,8 +93,8 @@ sha256sums=('24cae84af9daaafda42a085ebdbbfcd33e14b713b6449e312a018e32c2d3e07a'
             '56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328'
             'a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697'
             'cfc1cc505827f4c23eedc297975a0fd038268d41293f389dd8ff3b574aefab19')
-sha256sums_x86_64=('380197207e9484991e8916f56e7f45725b0e8471d4324f57f0482ccce18f3b3e')
-sha256sums_aarch64=('5a9d16dc227a3c8c48425f5bc6e4ec647c436133ce61e5df18e55594075b8fe6')
+sha256sums_x86_64=('7fc41da4bf5a16e4e4535e9e34fe1e2df075c43e09e95dedfa03570aac8fb692')
+sha256sums_aarch64=('589c990c25f498f1cfde1d4077c60cd11d09c0e91fac3aa99ad66df2d7f17ae4')
 
 package() {
   cd "$_pkgname-$pkgver-linux-$CARCH"
