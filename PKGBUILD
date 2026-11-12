@@ -1,43 +1,31 @@
-# Maintainer: eirikr <151315375+Oichkatzelesfrettschen@users.noreply.github.com>
-# Why: AUR python-torch-tensorrt by Smoolak is 2.9.0-5; system torch is 2.11.0; version mismatch prevents import.
-#      This package targets Python 3.14 (cp314); the AUR package targets cp313.
-#      Updated to 2.11.0, matching system python-pytorch-opt-cuda 2.11.0.
-#      Bazel 8.4.2 (required by .bazelversion in 2.11.0 repo).
-#      MODULE.bazel TensorRT section patching: tensorrt http_archive at lines 101-109,
-#      commented new_local_repository at lines 167-171.
-#      fix-prim-namespace.patch REMOVED: fixed upstream in 2.11.0.
-#      fix-py314-converter-registry.patch REMOVED: FX frontend loading removed upstream in 2.11.0.
-#      Builds for system Python 3.14 (cp314); TensorRT/DALI use py3.13 - this uses py3.14.
+# Maintainer: Eirikr
 #
-# Python 3.14 (cp314) compatibility patches:
-#   fix-py314-trt-stub.patch: Install a deep-proxy stub in sys.modules["tensorrt"] when the
-#     real TensorRT Python bindings fail to load (cp313-only). The stub uses a recursive
-#     placeholder metaclass with a shared _trt_cache so trt.ITensor and trt.tensorrt.ITensor
-#     are the SAME class object -- required for enforce_tensor_types identity checks.
-#     Also sets __file__=None, a valid ModuleSpec, and __path__=[] to prevent Python
-#     import machinery from calling __getattr__ on module dunder attributes.
-#   fix-py314-trt-logging.patch: Wrap TRT_LOGGER = _TRTLogger() in try/except because
-#     _TRTLogger inherits trt.ILogger (placeholder under cp314), and calling the stub's
-#     __init__ raises RuntimeError by design.
-#   fix-py314-fx-converters.patch: Wrap trt.Logger() and trt.init_libnvinfer_plugins() in
-#     try/except for the same reason; the if hasattr(trt,"__version__") guard is True for
-#     the stub (version string is set), so the block runs even under cp314.
+# torch-tensorrt 2.13.0 pairs with PyTorch 2.13 and TensorRT 11, which is what
+# this host runs: python-pytorch-opt-cuda 2.13.0, tensorrt 11.2.1.2. The prior
+# 2.10.0 pin produced libtorchtrt.so linked against libnvinfer.so.10, so the
+# TensorRT 10 -> 11 soname bump left it unloadable.
 #
-# Wheel post-processing in build():
-#   python -m build --wheel invokes 'bazel build ... --config=python', a different config than
-#   our manual 'bazel build //:libtorchtrt --compilation_mode=opt'. The --config=python config
-#   uses cached nightly libtorch artifacts that lack symbols present in the CachyOS
-#   python-pytorch-opt-cuda 2.11.0 build, causing undefined symbol errors at runtime.
-#   Fix: after the wheel is built, run Python zipfile surgery to replace the three bad
-#   libtorchtrt*.so files inside the wheel with the correct ones from py/torch_tensorrt/lib/
-#   (which were built against system torch by our manual bazel build step above).
-#   The RECORD file SHA256 checksums are updated accordingly.
+# Every patch the 2.10.0 build carried is dropped, because each condition is
+# gone upstream or in the distribution:
+#   fix-prim-namespace.patch          2.13.0 already ships the collapsed
+#                                     "namespace jit {}" form the patch created.
+#   fix-py314-trt-stub.patch          python-tensorrt 11.2.1.2 installs real
+#   fix-py314-trt-logging.patch       cp314 bindings under
+#   fix-py314-fx-converters.patch     /usr/lib/python3.14/site-packages/tensorrt,
+#   fix-py314-converter-registry.patch so the deep-proxy stub they guarded is moot.
+#
+# MODULE.bazel surgery shrinks for the same reason: 2.13.0 resolves libtorch
+# through local_torch(), a repo rule that detects the installed PyTorch and
+# honors TORCH_PATH, replacing the hand-written new_local_repository block.
+# Only the TensorRT source needs redirecting, from the NVIDIA CDN tarball to the
+# system install, and that edit is keyed on block content rather than line
+# numbers so an upstream reflow does not silently retarget it.
 
 pkgname=python-torch-tensorrt-cp314
 _pkgname=torch-tensorrt
-pkgver=2.11.0
+pkgver=2.13.0
 pkgrel=1
-pkgdesc="PyTorch/TensorRT integration for Python 3.14 (cp314) -- 2.11.0 matching system pytorch-opt-cuda"
+pkgdesc="PyTorch/TensorRT integration for Python 3.14 (cp314) -- 2.13.0 against system pytorch-opt-cuda 2.13 and TensorRT 11"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
 license=('BSD-3-Clause')
@@ -63,126 +51,115 @@ makedepends=(
     'pybind11'
     'python-ninja'
 )
-optdepends=(
-    'python-pydot: for engine visualization features'
-    'python-graphviz: for graph utilities'
-)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v${pkgver}.tar.gz"
-        "fix-py314-trt-stub.patch"
-        "fix-py314-trt-logging.patch"
-        "fix-py314-fx-converters.patch")
+provides=('python-torch-tensorrt')
+conflicts=('python-torch-tensorrt')
+# !ccache: Bazel sandboxes each compile action and mounts ~/.cache/ccache
+# read-only, so ccache aborts with "failed to create temporary file ...
+# Read-only file system". PKGBUILD options override makepkg's BUILDENV per
+# package, which is the documented way to opt one build out of the global
+# ccache setting without touching /etc/makepkg.conf.
+options=(!strip !debug !ccache)
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/TensorRT/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("bazel-8.4.2::https://github.com/bazelbuild/bazel/releases/download/8.4.2/bazel-8.4.2-linux-x86_64")
-sha256sums=('2240a241ad312e32eda560f2e5ac1b4e65135d7248424416b2380e490e4c5b76'
-            '6c67b94d9504aadfa2f4e4eb5f6964bff7c5fc00b23c54ed00b2202c438e7c27'
-            '05f1f396611ba969ae99d415f7dca2c5b0c9e80588c705800db6ee82396b20ed'
-            'd39e20b3ddb6346437f16a544df66de772e3cb652d7de904648ed6b115d0426f')
+sha256sums=('55575a1e971aca35642df6c114b3912dbcc9d4c5e2cf990154c8da282404aa2f')
 sha256sums_x86_64=('4dc8e99dfa802e252dac176d08201fd15c542ae78c448c8a89974b6f387c282c')
 
 prepare() {
     cd "TensorRT-${pkgver}"
 
-    # Python 3.14 (cp314) compatibility: install a deep-proxy TensorRT stub so that
-    # torch_tensorrt can be imported for runtime inference even though TensorRT Python
-    # bindings are cp313-only. The stub provides recursive placeholder classes with
-    # identity-preserving caching so enforce_tensor_types checks pass correctly.
-    patch -p1 < "${srcdir}/fix-py314-trt-stub.patch"
-
-    # Python 3.14: TRT_LOGGER = _TRTLogger() raises RuntimeError under the stub because
-    # _TRTLogger inherits trt.ILogger (placeholder). Wrap in try/except.
-    patch -p1 < "${srcdir}/fix-py314-trt-logging.patch"
-
-    # Python 3.14: trt.Logger() and trt.init_libnvinfer_plugins() at module level raise
-    # RuntimeError under the stub. The if hasattr(trt,"__version__") guard is True for the
-    # stub (version string is set), so the block runs. Wrap in try/except.
-    patch -p1 < "${srcdir}/fix-py314-fx-converters.patch"
-
-    # Fix pybind11 version requirement to work with system pybind11
+    # System pybind11 is newer than the == pin upstream carries.
     sed -i 's/pybind11==2.6.2/pybind11>=2.6.2/' pyproject.toml
 
     # glog 0.7 on Arch requires GLOG_USE_GLOG_EXPORT for correct symbol export.
-    # Injected via .bazelrc so setup.py's Bazel invocation picks it up automatically.
-    # (CXXFLAGS env var alone is not forwarded into Bazel sandboxed actions.)
-    printf '\n# glog 0.7 Arch Linux: export symbols macro required\nbuild --cxxopt=-DGLOG_USE_GLOG_EXPORT\n' \
-        >> .bazelrc
+    # .bazelrc carries it because CXXFLAGS does not reach Bazel sandboxed actions.
+    # .bazelrc rather than command-line flags, because setup.py launches a
+    # SECOND bazel run of its own (bazelisk build //:libtorchtrt --config=python)
+    # during `python -m build`. Flags passed to our invocation never reach it, so
+    # every setting that must hold for both lives here.
+    #
+    #   glog 0.7 on Arch needs GLOG_USE_GLOG_EXPORT, and CXXFLAGS does not reach
+    #   Bazel sandboxed actions.
+    #   -std=gnu17 for C: rules_foreign_cc bootstraps pkg-config against a bundled
+    #   glib whose goption.c declares "gboolean bool;". GCC 16 defaults to C23,
+    #   where bool is a keyword, so that is a hard error.
+    #   CCACHE_DISABLE must arrive via action_env: Bazel scrubs the environment
+    #   for hermeticity, so an exported variable never reaches a sandboxed action.
+    cat >> .bazelrc <<'BAZELRC'
 
-    # Make downloaded Bazel executable
+# Arch/CachyOS host toolchain settings
+build --cxxopt=-DGLOG_USE_GLOG_EXPORT
+build --repo_env=CC=/usr/bin/gcc
+build --repo_env=CXX=/usr/bin/g++
+build --conlyopt=-std=gnu17
+build --host_conlyopt=-std=gnu17
+build --action_env=CCACHE_DISABLE=1
+build --host_action_env=CCACHE_DISABLE=1
+BAZELRC
+
+    # setup.py builds a PyTorch C++ extension through torch.utils.cpp_extension,
+    # which runs ninja directly and reads neither CXXFLAGS nor CPPFLAGS from the
+    # environment, so the .bazelrc --cxxopt above cannot reach it. glog 0.7 hard
+    # -#errors in logging.h line 59 unless GLOG_EXPORT is defined, and only
+    # -DGLOG_USE_GLOG_EXPORT pulls in glog/export.h to define it. The define
+    # therefore goes into setup.py's own extra_compile_args list.
+    sed -i 's/^                    "-Wno-deprecated",$/                    "-Wno-deprecated",\n                    "-DGLOG_USE_GLOG_EXPORT",/' setup.py
+    grep -n 'GLOG_USE_GLOG_EXPORT' setup.py
+
     chmod +x "${srcdir}/bazel-8.4.2"
-
-    # Create a bazel symlink that setup.py can find
     ln -sf "${srcdir}/bazel-8.4.2" "${srcdir}/bazel"
 
-    # TensorRT lib architecture path for x86_64
     _trt_arch="x86_64-linux-gnu"
-
-    # Create a local directory structure that matches what Bazel's third_party/tensorrt/local/BUILD expects
-    mkdir -p "tensorrt_local/lib/${_trt_arch}"
-    mkdir -p "tensorrt_local/include/${_trt_arch}"
-
-    # Link system TensorRT libraries
-    ln -sf /usr/lib/libnvinfer*.so* "tensorrt_local/lib/${_trt_arch}/"
-    ln -sf /usr/lib/libnvparsers.so* "tensorrt_local/lib/${_trt_arch}/" 2>/dev/null || true
-    ln -sf /usr/lib/libnvonnxparser*.so* "tensorrt_local/lib/${_trt_arch}/"
+    mkdir -p "tensorrt_local/lib/${_trt_arch}" "tensorrt_local/include/${_trt_arch}"
+    ln -sf /usr/lib/libnvinfer*.so*        "tensorrt_local/lib/${_trt_arch}/"
+    ln -sf /usr/lib/libnvonnxparser*.so*   "tensorrt_local/lib/${_trt_arch}/"
     ln -sf /usr/lib/libnvinfer_plugin*.so* "tensorrt_local/lib/${_trt_arch}/"
+    ln -sf /usr/lib/libnvparsers.so*       "tensorrt_local/lib/${_trt_arch}/" 2>/dev/null || true
+    ln -sf /usr/include/NvInfer*.h         "tensorrt_local/include/${_trt_arch}/"
+    ln -sf /usr/include/NvOnnx*.h          "tensorrt_local/include/${_trt_arch}/"
+    ln -sf /usr/include/NvCaffeParser.h    "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
+    ln -sf /usr/include/NvUffParser.h      "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
 
-    # Link system TensorRT headers
-    ln -sf /usr/include/NvInfer*.h "tensorrt_local/include/${_trt_arch}/"
-    ln -sf /usr/include/NvOnnx*.h "tensorrt_local/include/${_trt_arch}/"
-    ln -sf /usr/include/NvCaffeParser.h "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
-    ln -sf /usr/include/NvUffParser.h "tensorrt_local/include/${_trt_arch}/" 2>/dev/null || true
+    # Redirect the TensorRT dependency from the NVIDIA CDN tarball to the system
+    # install, and point CUDA at Arch's /opt/cuda. Both edits match on block
+    # content, so they fail loudly rather than silently hitting the wrong lines.
+    TRT_LOCAL="${srcdir}/TensorRT-${pkgver}/tensorrt_local" python3 << 'PYEOF'
+import os, re, sys
 
-    # MODULE.bazel: replace nightly libtorch download with the system PyTorch installation.
-    # The nightly (cu130) libtorch has symbols (e.g. CUDAStream::synchronize) absent from
-    # the CachyOS python-pytorch-opt-cuda 2.11.0 build; building against the system torch
-    # guarantees ABI compatibility at runtime.
-    python3 << 'PYEOF'
-import sys
 path = "MODULE.bazel"
-with open(path) as f:
-    content = f.read()
-old = (
-    'http_archive(\n'
-    '    name = "libtorch",\n'
-    '    build_file = "@//third_party/libtorch:BUILD",\n'
-    '    strip_prefix = "libtorch",\n'
-    '    urls = ["https://download.pytorch.org/libtorch/nightly/cu130/libtorch-shared-with-deps-latest.zip"],\n'
-    ')'
-)
-new = (
-    '# Use system PyTorch instead of downloading nightly\n'
-    'new_local_repository(\n'
-    '    name = "libtorch",\n'
-    '    path = "/usr/lib/python3.14/site-packages/torch",\n'
-    '    build_file = "@//third_party/libtorch:BUILD",\n'
-    ')'
-)
-if old not in content:
-    print("ERROR: libtorch http_archive not found in MODULE.bazel", file=sys.stderr)
-    sys.exit(1)
-content = content.replace(old, new)
-with open(path, "w") as f:
-    f.write(content)
+src = open(path).read()
+trt_local = os.environ["TRT_LOCAL"]
+
+# 1. Disable the http_archive that downloads TensorRT from developer.nvidia.com.
+m = re.search(r'^http_archive\(\n    name = "tensorrt",\n(?:.*\n)*?\)\n', src, re.M)
+if not m:
+    sys.exit("ERROR: tensorrt http_archive block not found in MODULE.bazel")
+src = src[:m.start()] + "".join("#" + l if l.strip() else l
+                               for l in m.group(0).splitlines(keepends=True)) + src[m.end():]
+
+# 2. Enable the commented new_local_repository for tensorrt, pointed at our tree.
+old_local = ('#new_local_repository(\n'
+             '#   name = "tensorrt",\n'
+             '#   path = "/usr/",\n'
+             '#   build_file = "@//third_party/tensorrt/local:BUILD"\n'
+             '#)')
+new_local = ('new_local_repository(\n'
+             '    name = "tensorrt",\n'
+             f'    path = "{trt_local}",\n'
+             '    build_file = "@//third_party/tensorrt/local:BUILD",\n'
+             ')')
+if old_local not in src:
+    sys.exit("ERROR: commented tensorrt new_local_repository block not found")
+src = src.replace(old_local, new_local, 1)
+
+# 3. Arch installs CUDA at /opt/cuda, not /usr/local/cuda-<ver>.
+src, n = re.subn(r'path = "/usr/local/cuda-[0-9.]+/"', 'path = "/opt/cuda/"', src)
+if n == 0:
+    sys.exit("ERROR: cuda new_local_repository path not found")
+
+open(path, "w").write(src)
+print(f"MODULE.bazel: tensorrt -> {trt_local}, cuda -> /opt/cuda, CDN archive disabled")
 PYEOF
-
-    # MODULE.bazel: use local TensorRT instead of downloading from NVIDIA CDN
-    # Lines 101-109: comment out http_archive for tensorrt
-    sed -i '101,109s/^/#/' MODULE.bazel
-
-    # Lines 167-171: uncomment new_local_repository for tensorrt and set correct path
-    sed -i '167,171s/^#//' MODULE.bazel
-    sed -i 's|path = "/usr/"|path = "'"${srcdir}/TensorRT-${pkgver}/tensorrt_local"'"|' MODULE.bazel
-
-    # Update CUDA path in MODULE.bazel to use /opt/cuda
-    sed -i 's|path = "/usr/local/cuda-13.0/"|path = "/opt/cuda/"|' MODULE.bazel
-
-    # Patch setup.py to use system TensorRT directory directly
-    sed -i '/tensorrt_x86_64_external_dir = (/,/^    )$/c\    tensorrt_x86_64_external_dir = lambda: "/usr"' setup.py
-    sed -i '/tensorrt_rtx_external_dir = (/,/^    )$/c\    tensorrt_rtx_external_dir = lambda: "/usr"' setup.py
-    sed -i '/tensorrt_sbsa_external_dir = (/,/^    )$/c\    tensorrt_sbsa_external_dir = lambda: "/usr"' setup.py
-
-    # glog 0.7 on Arch requires -DGLOG_USE_GLOG_EXPORT.
-    # Must be injected into setup.py's CUDAExtension extra_compile_args (ninja path)
-    # AND into .bazelrc (Bazel path) -- CXXFLAGS env var is not forwarded into either.
-    sed -i 's|+ \["-D_GLIBCXX_USE_CXX11_ABI=1"\]|+ ["-D_GLIBCXX_USE_CXX11_ABI=1"]\n                + ["-DGLOG_USE_GLOG_EXPORT"]|' setup.py
 }
 
 build() {
@@ -193,105 +170,58 @@ build() {
     export TENSORRT_DIR=/usr
     export LD_LIBRARY_PATH=/usr/lib:${LD_LIBRARY_PATH}
 
+    # local_torch() detects the installed PyTorch; name it explicitly so the
+    # headers match the runtime libtorch_cuda.so this package links against.
+    export TORCH_PATH=/usr/lib/python3.14/site-packages/torch
+
     export PATH="${srcdir}:${PATH}"
     export BAZEL_EXE="${srcdir}/bazel-8.4.2"
     export USE_HOST_BAZEL=1
     export COMPILATION_MODE=opt
-
     export CXXFLAGS="${CXXFLAGS} -DGLOG_USE_GLOG_EXPORT"
 
-    # Build C++ library with Bazel against system torch (guarantees ABI compatibility).
-    # This uses --compilation_mode=opt (not --config=python), so it links against the
-    # system torch libraries discovered via new_local_repository in MODULE.bazel.
-    "${srcdir}/bazel-8.4.2" build //:libtorchtrt --compilation_mode=opt
+    # Name the real compilers rather than the ccache masquerade. Bazel sandboxes
+    # each compile action with ~/.cache/ccache mounted read-only, so a ccache
+    # wrapper aborts with "failed to create temporary file". --repo_env forces
+    # local_config_cc to regenerate; without it Bazel reuses a toolchain it
+    # configured on an earlier run and the masqueraded path persists.
+    # -std=gnu17 for C targets: rules_foreign_cc bootstraps pkg-config against
+    # its bundled internal glib, whose goption.c declares "gboolean bool;" and
+    # reads "change->prev.bool". GCC 16 defaults to C23, where bool is a
+    # reserved keyword, so those become "two or more data types in declaration
+    # specifiers". Only the C compiles need the older standard; C++ is untouched.
+    export CC=/usr/bin/gcc
+    export CXX=/usr/bin/g++
 
-    # Extract built libraries
+    # CCACHE_DISABLE covers the paths options=(!ccache) cannot reach. That option
+    # only drops /usr/lib/ccache/bin from PATH; /usr/bin/ccache still exists, and
+    # the vendored ExecuTorch CMake project find_program()s it directly, then
+    # dies the same way inside Bazel's read-only sandbox. Disabling ccache
+    # outright makes it a passthrough regardless of who invokes it. Exporting it
+    # here is not enough on its own: Bazel scrubs the environment for hermeticity,
+    # so the variable only reaches sandboxed actions via --action_env below.
+    export CCACHE_DISABLE=1
+
+    "${srcdir}/bazel-8.4.2" build //:libtorchtrt \
+        --compilation_mode=opt \
+        --repo_env=CC=/usr/bin/gcc \
+        --repo_env=CXX=/usr/bin/g++ \
+        --conlyopt=-std=gnu17 \
+        --host_conlyopt=-std=gnu17 \
+        --action_env=CCACHE_DISABLE=1 \
+        --host_action_env=CCACHE_DISABLE=1
+
     tar -xzf bazel-bin/libtorchtrt.tar.gz
-
-    # Copy built libraries to location expected by setup.py
     mkdir -p py/torch_tensorrt/lib
     cp -v torch_tensorrt/lib/*.so py/torch_tensorrt/lib/
 
-    # Build Python wheel for system Python (3.14/cp314).
-    # NOTE: python -m build invokes 'bazel build ... --config=python', which uses a
-    # different Bazel configuration than our manual build above. The --config=python
-    # path may resolve libtorch differently (e.g. from cache) and produce .so files
-    # that are missing symbols from the system torch build. We fix this by replacing
-    # the three libtorchtrt*.so files inside the resulting wheel with our clean ones.
     python -m build --wheel --no-isolation
-
-    # Post-process wheel: replace bad libtorchtrt*.so with our clean Bazel-built ones.
-    # The --config=python Bazel run inside python -m build may use a different libtorch
-    # resolution path; our manual bazel build above used new_local_repository pointing
-    # to system torch, guaranteeing correct ABI. Zip-surgery avoids a full rebuild.
-    python3 << 'PYEOF'
-import hashlib, zipfile, glob, os, base64
-
-whl_in = sorted(glob.glob("dist/torch_tensorrt-*.whl"))[-1]
-whl_out = whl_in + ".new"
-
-# The three .so files that need replacing (paths inside the wheel zip)
-so_names = [
-    "torch_tensorrt/lib/libtorchtrt.so",
-    "torch_tensorrt/lib/libtorchtrt_plugins.so",
-    "torch_tensorrt/lib/libtorchtrt_runtime.so",
-]
-# Map from wheel-internal path -> on-disk path of clean replacement
-replacements = {
-    name: os.path.join("py", name)
-    for name in so_names
-}
-
-def sha256_record(data: bytes) -> str:
-    digest = hashlib.sha256(data).digest()
-    return "sha256=" + base64.urlsafe_b64encode(digest).rstrip(b"=").decode()
-
-# Build replacement data dict upfront
-new_data = {}
-for whl_path, disk_path in replacements.items():
-    with open(disk_path, "rb") as f:
-        new_data[whl_path] = f.read()
-
-record_name = None
-with zipfile.ZipFile(whl_in, "r") as zin:
-    for item in zin.infolist():
-        if item.filename.endswith("/RECORD"):
-            record_name = item.filename
-            break
-
-with zipfile.ZipFile(whl_in, "r") as zin, \
-     zipfile.ZipFile(whl_out, "w", compression=zipfile.ZIP_DEFLATED) as zout:
-    for item in zin.infolist():
-        if item.filename == record_name:
-            # Rebuild RECORD with updated checksums for replaced files
-            old_record = zin.read(record_name).decode()
-            new_lines = []
-            for line in old_record.splitlines():
-                parts = line.split(",")
-                if len(parts) >= 3 and parts[0] in new_data:
-                    data = new_data[parts[0]]
-                    new_lines.append(f"{parts[0]},{sha256_record(data)},{len(data)}")
-                else:
-                    new_lines.append(line)
-            zout.writestr(item, "\n".join(new_lines) + "\n")
-        elif item.filename in new_data:
-            # Replace with clean .so
-            info = zipfile.ZipInfo(item.filename)
-            info.external_attr = item.external_attr
-            zout.writestr(info, new_data[item.filename])
-        else:
-            zout.writestr(item, zin.read(item.filename))
-
-os.replace(whl_out, whl_in)
-print(f"Wheel post-processed: replaced {len(new_data)} .so files with clean Bazel build")
-PYEOF
 }
 
 package() {
     cd "TensorRT-${pkgver}"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
-
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     if [ -d "py/torch_tensorrt/include" ]; then
