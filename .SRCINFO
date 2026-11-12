@@ -1,6 +1,6 @@
 pkgbase = kytyps5-git
 	pkgdesc = PlayStation 5 emulator for Windows, Linux and macOS
-	pkgver = 2026.10.05.r0.cdb64bfd
+	pkgver = 2026.11.12.r0.58ca8d1d7
 	pkgrel = 1
 	url = https://github.com/KytyPS5/KytyPS5
 	arch = x86_64

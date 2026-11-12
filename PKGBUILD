@@ -5,7 +5,7 @@
 #   Additionally, a lot of things ends up directly linked against .so files in /opt/kytyps5/plugins/
 
 pkgname=kytyps5-git
-pkgver=2026.10.05.r0.cdb64bfd
+pkgver=2026.11.12.r0.58ca8d1d7
 pkgrel=1
 pkgdesc="PlayStation 5 emulator for Windows, Linux and macOS"
 arch=("x86_64")
@@ -78,6 +78,6 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 
-	ln -s "/opt/${pkgname%-git}/launcher" "${pkgdir}/usr/bin/${pkgname%-git}"
+	ln -s "/opt/${pkgname%-git}/kyty_launcher" "${pkgdir}/usr/bin/kyty_launcher"
 	ln -s "/opt/${pkgname%-git}/kyty_emulator" "${pkgdir}/usr/bin/kyty_emulator"
 }
