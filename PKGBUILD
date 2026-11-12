@@ -1,7 +1,7 @@
 
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
-pkgver=26.11.5
+pkgver=26.11.12
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
@@ -11,13 +11,13 @@ makedepends=('cargo' 'git' 'cmake' 'base-devel' 'gtk3')
 depends=()
 provides=('lockbook-desktop')
 conflicts=('lockbook-desktop')
-source=("git+https://github.com/lockbook/aur-lockbook-desktop.git" "git+https://github.com/lockbook/lockbook.git#tag=$pkgver")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/lockbook/lockbook.git#tag=$pkgver")
+sha256sums=('SKIP')
 groups=('lockbook')
 options=(!lto)
 
 pkgver() {
-  echo "26.11.5"
+  echo "26.11.12"
 }
 
 build() {
@@ -28,6 +28,6 @@ build() {
 
 package() {
   install -D -m755 "$srcdir/lockbook/target/release/lockbook-linux" "$pkgdir/usr/bin/lockbook-desktop"
-  install -D -m644 "$srcdir/aur-lockbook-desktop/logo.svg" "$pkgdir/usr/share/pixmaps/logo.svg"
-  install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
+  install -D -m644 "$srcdir/lockbook/docs/graphics/logo.svg" "$pkgdir/usr/share/pixmaps/logo.svg"
+  install -D -m644 "$srcdir/lockbook/utils/dev/aur-package/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
 }

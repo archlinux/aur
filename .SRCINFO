@@ -1,7 +1,7 @@
 
 pkgbase = lockbook-desktop
 	pkgdesc = The private, polished note-taking platform.
-	pkgver = 26.11.5
+	pkgver = 26.11.12
 	pkgrel = 1
 	url = https://github.com/lockbook/lockbook
 	arch = any
@@ -13,9 +13,7 @@ pkgbase = lockbook-desktop
 	makedepends = base-devel
 	provides = lockbook-desktop
 	conflicts = lockbook-desktop
-	source = git+https://github.com/lockbook/aur-lockbook-desktop.git
-	source = git+https://github.com/lockbook/lockbook.git#tag=v26.11.5
-	sha256sums = SKIP
+	source = git+https://github.com/lockbook/lockbook.git#tag=v26.11.12
 	sha256sums = SKIP
 
 pkgname = lockbook-desktop
