@@ -15,13 +15,16 @@ provides=("whodb-cli=${pkgver}")
 conflicts=('whodb-cli')
 install=whodb-cli.install
 _release="${url}/releases/download/${pkgver}"
+source=("whodb-${pkgver}-NOTICE::https://raw.githubusercontent.com/clidey/whodb/${pkgver}/NOTICE")
 source_x86_64=("${_cli}-${pkgver}-linux-amd64::${_release}/${_cli}-linux-amd64")
 source_aarch64=("${_cli}-${pkgver}-linux-arm64::${_release}/${_cli}-linux-arm64")
 source_armv7h=("${_cli}-${pkgver}-linux-armv7::${_release}/${_cli}-linux-armv7")
+sha256sums=('37540f248340b95d3a57125a8c5bda9a5a5cd332ec747d0ca15e2d7b83c5f4c0')
 sha256sums_x86_64=('ce36f4b3cb535119a59b3e764c64537c0d3fcf0483c8fcf678da71339dbc823e')
 sha256sums_aarch64=('fea566bffd3c4f0d4b2670a769d9776a47d586620c63c7dea19617c7ef601f70')
 sha256sums_armv7h=('105cdd2e44aac813eadde003df6868de244be7bf1a6806868e19eac564bb68b4')
 
 package() {
   install -Dm755 "${_cli}-${pkgver}"-linux-* "${pkgdir}/usr/bin/whodb"
+  install -Dm644 "whodb-${pkgver}-NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }

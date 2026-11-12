@@ -11,6 +11,8 @@ pkgbase = whodb-cli-bin
 	depends = glibc
 	provides = whodb-cli=0.138.0
 	conflicts = whodb-cli
+	source = whodb-0.138.0-NOTICE::https://raw.githubusercontent.com/clidey/whodb/0.138.0/NOTICE
+	sha256sums = 37540f248340b95d3a57125a8c5bda9a5a5cd332ec747d0ca15e2d7b83c5f4c0
 	source_x86_64 = whodb-cli-0.138.0-linux-amd64::https://github.com/clidey/whodb/releases/download/0.138.0/whodb-cli-linux-amd64
 	depends_x86_64 = libgcc
 	depends_x86_64 = libstdc++
