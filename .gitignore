@@ -1,0 +1,5 @@
+# AUR repo: only PKGBUILD, .SRCINFO and this file are tracked
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO

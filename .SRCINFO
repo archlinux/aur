@@ -1,0 +1,18 @@
+pkgbase = mcumgrctl
+	pkgdesc = Rust CLI for Zephyr MCUmgr (built from source)
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/Finomnis/mcumgr-toolkit
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = pkg-config
+	makedepends = dbus
+	depends = dbus
+	depends = gcc-libs
+	conflicts = mcumgrctl-bin
+	options = !debug
+	source = mcumgrctl-0.20.0.tar.gz::https://github.com/Finomnis/mcumgr-toolkit/archive/refs/tags/0.20.0.tar.gz
+	sha256sums = c7b29cb792eda9924cc4b810f9830b83b504f076a891252500e65ac99d8f385e
+
+pkgname = mcumgrctl
