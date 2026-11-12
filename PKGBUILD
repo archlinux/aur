@@ -1,6 +1,6 @@
 # Maintainer: mensylisir <710080675@qq.com>
 pkgname=appclone-bin
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="为任意 Linux 应用再开一个分身，只隔离它自己的数据（预编译版本）"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ install="${pkgname}.install"
 
 source_x86_64=("appclone_${pkgver}_linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/appclone_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("appclone_${pkgver}_linux_arm64.tar.gz::${url}/releases/download/v${pkgver}/appclone_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('715be28820eaf56b4451e03d910135d1c0c3d7096e28e240cc3ffc18085eb5ec')
-sha256sums_aarch64=('dc9fe5037e42b36ba840b8d8e37e9e07427d820d3d3a378901b06f96cb8d5953')
+sha256sums_x86_64=('dd86f8c32c4a03a21816a5f146ac470084db4f803786c92e3d0fd5796b76147f')
+sha256sums_aarch64=('8a5f05d0d32424fb835d3efa62acab35231e34ca184e8f1a8568f662543a302a')
 
 package() {
     install -Dm755 "${srcdir}/appclone" "${pkgdir}/usr/bin/appclone"
