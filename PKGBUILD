@@ -1,7 +1,7 @@
 # Maintainer: isaacangello <isaacangello@inf.ufpell.edu.br>
 # Binários standalone do Bun (~100 MB por arquitetura), publicados no GitHub Releases.
 pkgname=nimsync-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Sync the NVIDIA NIM catalog (build.nvidia.com) with the OpenCode model whitelist"
 arch=('x86_64' 'aarch64')
@@ -13,14 +13,14 @@ conflicts=('nimsync')
 _url="https://github.com/isaacangello/nimsync/releases/download/v${pkgver}"
 source=("nimsync-LICENSE-${pkgver}::https://raw.githubusercontent.com/isaacangello/nimsync/v${pkgver}/LICENSE")
 sha256sums=('75cdde8fdba948258a170beb8095fac4a0967a04e213d51a58eaafdd78c3f9ac')
-source_x86_64=("${_url}/nimsync-linux-x64")
-source_aarch64=("${_url}/nimsync-linux-arm64")
-sha256sums_x86_64=('d41a810ce50b134505b90278c020f91e7390d7ec5020f168ce59d025881417ec')
-sha256sums_aarch64=('659befde01bf43617e13f4239f2b096d4f792ea82f4253c810cee6255cf62e7e')
+source_x86_64=("${_url}/nimsync-${pkgver}-linux-x64")
+source_aarch64=("${_url}/nimsync-${pkgver}-linux-arm64")
+sha256sums_x86_64=('14b709f85880a8167a8bc3d460bf17e70cf8fb3a2dcfac35ecaf78aa8e2db84d')
+sha256sums_aarch64=('7dcf8c37c4b45abba6aeaaa45c2dabf4ef776801bd2f86bb39532c0adad1923d')
 
 case "${CARCH}" in
-  x86_64) _bin="nimsync-linux-x64" ;;
-  aarch64) _bin="nimsync-linux-arm64" ;;
+  x86_64) _bin="nimsync-${pkgver}-linux-x64" ;;
+  aarch64) _bin="nimsync-${pkgver}-linux-arm64" ;;
 esac
 
 package() {
