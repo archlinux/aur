@@ -3,8 +3,8 @@
 pkgbase=pappl-retrofit
 pkgname=($pkgbase 'legacy-printer-app')
 pkgver=1.0b2
-pkgrel=1
-arch=('x86_64')
+pkgrel=2
+arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/pappl-retrofit"
 license=('Apache-2.0')
 makedepends=('git' 'libcups' 'libcupsfilters' 'libppd' 'pappl')
