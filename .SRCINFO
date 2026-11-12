@@ -1,11 +1,12 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)
-	pkgver = r3130.442df353
+	pkgver = r3266.94e7a602
 	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
 	install = margo-git.install
 	arch = x86_64
 	license = GPL-3.0-or-later
+	checkdepends = gst-libav
 	makedepends = rust
 	makedepends = cargo
 	makedepends = clang
@@ -65,10 +66,14 @@ pkgbase = margo-git
 	optdepends = satty: alternative annotation editor for mscreenshot
 	optdepends = wf-recorder: screen recording via wlr-screencopy
 	optdepends = gpu-screen-recorder: hardware-encoded screen recording backend
+	optdepends = ffmpeg: webcam picture-in-picture in screen recordings
+	optdepends = v4l-utils: webcam overlay camera / mode detection (v4l2-ctl)
 	optdepends = tesseract: OCR of a screenshot region (mscreenshot / mshell screenshot menu)
 	optdepends = tesseract-data-eng: English language data for the screenshot OCR
 	optdepends = zbar: QR-code decoding of a screenshot region (zbarimg)
-	optdepends = yt-dlp: `mshellctl play play`/`download` of YouTube + other streaming URLs
+	optdepends = qrencode: QR codes to share text / Wi-Fi with a phone (mshellctl qr, Network menu)
+	optdepends = openssh: SSH Sessions menu port forwards
+	optdepends = yt-dlp: `mshellctl play play`/`download` of YouTube + other streaming URLs, the launcher `yt` provider
 	optdepends = copyq: clipboard manager via wlr-data-control
 	optdepends = wl-clip-persist: keep clipboard alive after the producer exits
 	optdepends = networkmanager: NetworkManager backend for mshell network + ndns
@@ -87,6 +92,7 @@ pkgbase = margo-git
 	optdepends = curl: used by the nip public-IP widget (already pulled by base)
 	optdepends = udisks2: removable-drive pill (mount / unmount / eject)
 	optdepends = smartmontools: drive health in the CPU dashboard
+	optdepends = efibootmgr: session menu Reboot into… (UEFI BootNext)
 	optdepends = cava: audio visualizer pill
 	optdepends = wireplumber: wpctl for the launcher audio provider
 	optdepends = noise-suppression-for-voice: microphone noise suppression (RNNoise LADSPA plugin)
@@ -103,6 +109,8 @@ pkgbase = margo-git
 	optdepends = pass: launcher password-store provider
 	optdepends = playerctl: launcher media provider + media keys on the lock screen
 	optdepends = libqalculate: calculator units, currency and percentages (qalc)
+	optdepends = neovim: launcher `nv` provider (reopen Neovim sessions / projects)
+	optdepends = wtype: launcher typing (pass type/autotype, case convert Ctrl+Enter)
 	optdepends = wlr-randr: mlayout monitor apply / capture
 	optdepends = git: mdots repositories, mtm plugins
 	optdepends = age: mdots secrets (age-keygen)
@@ -112,11 +120,11 @@ pkgbase = margo-git
 	optdepends = fzf: interactive picker for mtm buffer/clip/speed
 	optdepends = cliphist: mtm clip's clipboard-history backend
 	optdepends = gst-libav: mtune playback of AAC / M4A / ALAC / WMA and other ffmpeg-only codecs
-	optdepends = gst-plugins-bad: mtune playback of extra containers / codecs (M4A via faad, etc.)
-	provides = margo=r3130.442df353
+	optdepends = gst-plugins-bad: mtune playback of extra containers / codecs (M4A via faad, etc.) and HLS radio streams
+	provides = margo=r3266.94e7a602
 	provides = wayland-compositor
-	provides = mshell=r3130.442df353
-	provides = margo-mshell-git=r3130.442df353
+	provides = mshell=r3266.94e7a602
+	provides = margo-mshell-git=r3266.94e7a602
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell

@@ -22,7 +22,7 @@
 # bar can simply not run mshell; the helpers stay useful on their own.
 
 pkgname=margo-git
-pkgver=r3130.442df353
+pkgver=r3266.94e7a602
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -106,6 +106,9 @@ makedepends=(
   libadwaita      # `mtune` links libadwaita-1
   mpv             # mshellctl links libmpv directly (build.rs -lmpv) for the wallpaper engine
 )
+checkdepends=(
+  gst-libav       # avenc_aac / avdec_aac for mtune's live-radio unit tests
+)
 optdepends=(
   # Every external program the code runs is listed in
   # scripts/runtime-tools.txt with the package that provides it;
@@ -124,10 +127,14 @@ optdepends=(
   "satty: alternative annotation editor for mscreenshot"
   "wf-recorder: screen recording via wlr-screencopy"
   "gpu-screen-recorder: hardware-encoded screen recording backend"
+  "ffmpeg: webcam picture-in-picture in screen recordings"
+  "v4l-utils: webcam overlay camera / mode detection (v4l2-ctl)"
   "tesseract: OCR of a screenshot region (mscreenshot / mshell screenshot menu)"
   "tesseract-data-eng: English language data for the screenshot OCR"
   "zbar: QR-code decoding of a screenshot region (zbarimg)"
-  "yt-dlp: \`mshellctl play play\`/\`download\` of YouTube + other streaming URLs"
+  "qrencode: QR codes to share text / Wi-Fi with a phone (mshellctl qr, Network menu)"
+  "openssh: SSH Sessions menu port forwards"
+  "yt-dlp: \`mshellctl play play\`/\`download\` of YouTube + other streaming URLs, the launcher \`yt\` provider"
   # Clipboard managers — mshell clipboard widget + mshellshare paste
   "copyq: clipboard manager via wlr-data-control"
   "wl-clip-persist: keep clipboard alive after the producer exits"
@@ -150,6 +157,7 @@ optdepends=(
   "curl: used by the nip public-IP widget (already pulled by base)"
   "udisks2: removable-drive pill (mount / unmount / eject)"
   "smartmontools: drive health in the CPU dashboard"
+  "efibootmgr: session menu Reboot into… (UEFI BootNext)"
   "cava: audio visualizer pill"
   "wireplumber: wpctl for the launcher audio provider"
   "noise-suppression-for-voice: microphone noise suppression (RNNoise LADSPA plugin)"
@@ -168,6 +176,8 @@ optdepends=(
   "pass: launcher password-store provider"
   "playerctl: launcher media provider + media keys on the lock screen"
   "libqalculate: calculator units, currency and percentages (qalc)"
+  "neovim: launcher \`nv\` provider (reopen Neovim sessions / projects)"
+  "wtype: launcher typing (pass type/autotype, case convert Ctrl+Enter)"
   # mlayout (per-tag layout profiles)
   "wlr-randr: mlayout monitor apply / capture"
   # mdots (dotfiles manager) + mtm + launcher git providers
@@ -184,7 +194,7 @@ optdepends=(
   # MP3 / Ogg / Opus / FLAC / WAV; these add the rest of a
   # typical library.
   "gst-libav: mtune playback of AAC / M4A / ALAC / WMA and other ffmpeg-only codecs"
-  "gst-plugins-bad: mtune playback of extra containers / codecs (M4A via faad, etc.)"
+  "gst-plugins-bad: mtune playback of extra containers / codecs (M4A via faad, etc.) and HLS radio streams"
 )
 # `provides` exposes the legacy compositor- and mshell-only package
 # names that older AUR helpers may pin. `conflicts` makes the
