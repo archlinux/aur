@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=tracedraw
-pkgver=0.41.0
+pkgver=0.44.2
 pkgrel=1
 url="https://$pkgname.github.io/$pkgname/"
 _url="https://github.com/$pkgname/$pkgname"
@@ -14,7 +14,7 @@ depends=(glibc # libc.so libm.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('292bd86877e18bdfa4132685c931b030e19cdd9b5bf9e62f9d12c17f52ce4dce')
+sha256sums=('db565fdbcf89e90e995d9e281a03885d65420bca168bf3d63a48a098a7474971')
 
 _srcenv() {
 	cd "$_archive"
