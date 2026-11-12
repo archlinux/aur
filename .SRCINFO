@@ -1,6 +1,6 @@
 pkgbase = thinkwatch-core-bin
 	pkgdesc = Gateway engine for Claude Code, Codex and other AI clients (server build of twcore)
-	pkgver = 0.93.0
+	pkgver = 0.94.0
 	pkgrel = 1
 	url = https://github.com/ThinkWatchProject/ThinkWatch-Core
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = thinkwatch-core-bin
 	depends = glibc
 	depends = gcc-libs
 	options = !debug
-	source = 0.93.0-twcore-x86_64-unknown-linux-gnu.tar.gz::https://github.com/ThinkWatchProject/ThinkWatch-Core/releases/download/v0.93.0/twcore-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 96cc73d378e2d7a07aa8589dbbb58e32c2eba8a3ffe4edb58ebd53529381b0e8
+	source = 0.94.0-twcore-x86_64-unknown-linux-gnu.tar.gz::https://github.com/ThinkWatchProject/ThinkWatch-Core/releases/download/v0.94.0/twcore-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 6c3f5eebfcff6bead3fd8decb61e96d20daa010f24efa0abc9346ef174f9ed89
 
 pkgname = thinkwatch-core-bin
