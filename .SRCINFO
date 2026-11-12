@@ -1,0 +1,21 @@
+pkgbase = rynas-agent
+	pkgdesc = rynas PC backup agent: file backups to a rynas NAS and bare-metal restore from any live Linux
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/rylos/rynas
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	optdepends = btrfs-progs: btrfs snapshots and restores
+	optdepends = lvm2: LVM snapshots
+	optdepends = dosfstools: restoring an ESP
+	optdepends = cryptsetup: restoring LUKS volumes
+	conflicts = rynas-agent-bin
+	options = !lto
+	source = rynas-0.5.0.tar.gz::https://github.com/rylos/rynas/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = d27fdd91a6c6757d27bb307bd2b2534c96d29906ff02a1991b02d9c746ecd5c0
+
+pkgname = rynas-agent
