@@ -1,6 +1,6 @@
 pkgbase = libtde
 	pkgdesc = What TDE applications share: configuration, theme, window frame and dialogs
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/zskamljic/libtde
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = libtde
 	optdepends = librsvg: drawing icons that Qt draws with black patches
 	optdepends = adwaita-icon-theme: fallback for icons missing from the icon theme
 	provides = libtde.so
-	source = libtde-0.3.1.tar.gz::https://github.com/zskamljic/libtde/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = b8d3f1583c219e1ce681852bbdea80a65373c41cdbfa62316c81c13531017663
+	source = libtde-0.4.0.tar.gz::https://github.com/zskamljic/libtde/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 2cb57690450478bd6356160d99d37543d33c0b16cafe1bf3b976d45de8b95366
 
 pkgname = libtde
