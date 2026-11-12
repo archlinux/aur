@@ -1,6 +1,6 @@
 # Maintainer: Wyrd Company <support@wyrd.company>
 pkgname='wyrwood-bin'
-pkgver='0.6.1'
+pkgver='0.7.0'
 pkgrel=1
 pkgdesc='Filtered SSH-agent endpoints for containers'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ provides=('wyrwood')
 conflicts=('wyrwood')
 options=('!strip')
 install='wyrwood-bin.install'
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.6.1/wyrwood_0.6.1_linux_x86_64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.6.1/wyrwood_0.6.1_linux_aarch64.tar.gz")
-sha256sums_x86_64=('1652cb9b193693007a0e01e83a0e0084a181d0692e87e88d380d84cf430b38e0')
-sha256sums_aarch64=('eb792fd945d536457a2ec78cdce3b682b56891e6733a1f43c1c13e6275848af0')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.7.0/wyrwood_0.7.0_linux_x86_64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/wyrwood/0.7.0/wyrwood_0.7.0_linux_aarch64.tar.gz")
+sha256sums_x86_64=('d7b58cece2ee849da124a91aea1d37fb1fec2927bdcafe2d05a70f43c9ecf5f2')
+sha256sums_aarch64=('b764f2ecc6dad0525127fe465591d213281a9e9132cf026afaf353328aa560a4')
 
 package() {
   install -Dm755 "${srcdir}/wyrwood" "${pkgdir}/usr/bin/wyrwood"
