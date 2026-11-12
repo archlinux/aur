@@ -1,6 +1,9 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
+#
+# This file is maintained in https://github.com/markusressel/fan2go/tree/master/packaging/aur/fan2go-git
+# and published to the AUR with packaging/aur/publish.sh (see RELEASING.md). Don't edit it on the AUR directly.
 pkgname=fan2go-git
-pkgver=0.15.0.r8.gdb2b5a4
+pkgver=0.16.0.r0.gab3397c
 pkgrel=1
 pkgdesc="A simple daemon providing dynamic fan speed control based on temperature sensors"
 arch=('x86_64')
@@ -8,8 +11,11 @@ url="https://github.com/markusressel/fan2go"
 license=('AGPL3')
 depends=('glibc' 'lm_sensors')
 makedepends=('go' 'git')
+optdepends=('libnotify: desktop notifications on errors'
+            'nvidia-utils: NVIDIA GPU fan and temperature support')
 provides=("fan2go")
 conflicts=("fan2go")
+install=fan2go.install
 source=('git+https://github.com/markusressel/fan2go')
 sha256sums=('SKIP')
 
@@ -33,7 +39,7 @@ build() {
 	# causes issues with nvml
 	# export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	make build
+	make build VERSION="${pkgver}"
 }
 
 package() {
