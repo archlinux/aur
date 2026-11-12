@@ -3,8 +3,8 @@
 
 pkgbase="libgourou"
 pkgname=("libgourou" "libgourou-utils")
-pkgver=0.8.10
-pkgrel=4
+pkgver=0.9
+pkgrel=1
 pkgdesc="Free implementation of Adobe's ADEPT protocol used to add DRM on EPUB/PDF files"
 arch=('any')
 license=('LGPL-3.0-or-later' 'BSD-3-Clause')
@@ -23,11 +23,11 @@ depends=(
 conflicts=('gourou-git' 'gourou-bin' 'gourou-appimage')
 source=(
     "libgourou-$pkgver.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v$pkgver.tar.gz"
-    "inherit-cxxflags.patch"
+    "fix-lto.patch"
 )
 sha512sums=(
-    'bf9c4341f45b1fe77a9c95b5844da7ac5cc96b0edf7ef39caf11b980e82765f6a7c5932aaee998df002b965215cd7fbae2606dbbb86da12f88eafa830e7c5c14'
-    '98e1b81a655468f13d7974ba8d9bfd6bfcf6ef58709b9cfb2046c385e4d1bd0c38c1bd55bd0db9fe232c955723dd5adfd66b50c1dbf37e74df69b41152fbcda7'
+    '9d1804efcc66689e3dda3060443cdfce16a553770e8e973c3eb990845076879beaf78a8ebf9d1b496defbcaf4c602d8528f0e214242ec02f146e13c187e40c7b'
+    'fd203dd8ffcfc4644805c32588c880f8beb3424821e8844e210f7d8596bf6ce36b0993eb8fc7bbe2fdff084b4088f877f189c86d10fcebc4f80d74201f7572a6'
 )
 # For dealing with the humanity check
 _cookie=$(curl -s https://forge.soutade.fr/402.html | sed -nE 's/.*document\.cookie = "([^;"]*).*/\1/p')
@@ -35,8 +35,7 @@ DLAGENTS=("https::/usr/bin/curl -b $_cookie -o %o %u")
 
 prepare() {
     cd libgourou
-    # Patch utils/Makefile to inherit CXXFLAGS, and utils/drmprocessorclientimpl.h to work with flto=auto which is set by default in makepkg.conf
-    patch -Np1 < ../inherit-cxxflags.patch
+    patch -Np1 < ../fix-lto.patch
 }
 
 build() {
@@ -46,7 +45,7 @@ build() {
         BUILD_STATIC=0 \
         BUILD_SHARED=1 \
         UPDFPARSERLIB="/dev/null" \
-        LDFLAGS="$LDFLAGS -lpugixml -lupdfparser" \
+        LDLIBS="-lpugixml -lupdfparser" \
         obj libgourou
 
     cd utils

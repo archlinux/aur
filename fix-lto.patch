@@ -1,0 +1,12 @@
+diff --git a/utils/drmprocessorclientimpl.h b/utils/drmprocessorclientimpl.h
+index d12bb1f..6d103b9 100644
+--- a/utils/drmprocessorclientimpl.h
++++ b/utils/drmprocessorclientimpl.h
+@@ -31,6 +31,7 @@
+ 
+ #include <string>
+ 
++#include <openssl/opensslv.h>
+ #if OPENSSL_VERSION_MAJOR >= 3
+ #include <openssl/provider.h>
+ #endif
