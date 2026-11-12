@@ -1,0 +1,36 @@
+pkgbase = ibus-areca-git
+	pkgdesc = Areca Vietnamese input method for IBus using the Bamboo engine
+	pkgver = r32.2b7f74e
+	pkgrel = 1
+	url = https://github.com/xhkzeroone/ibus-areca
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = go
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = ibus
+	depends = glib2
+	depends = libxkbcommon
+	depends = gtk4
+	depends = python
+	depends = python-gobject
+	depends = gdk-pixbuf2
+	depends = libinput
+	depends = libei
+	depends = libportal
+	depends = systemd-libs
+	depends = dbus
+	depends = libx11
+	depends = libxtst
+	provides = ibus-areca
+	conflicts = ibus-areca
+	conflicts = ibus-areca-bin
+	options = !debug
+	source = ibus-areca::git+https://github.com/xhkzeroone/ibus-areca.git
+	source = bamboo-core::git+https://github.com/BambooEngine/bamboo-core.git#commit=b2e49a2b48c7d3772a3673142a7747eccd9d5f79
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ibus-areca-git
