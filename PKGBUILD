@@ -81,6 +81,9 @@ package() {
   # Translations: compiled from po/ into /usr/share/locale.
   po/build.sh "$pkgdir/usr/share/locale"
 
+  # Shell completion for bash, zsh and fish.
+  packaging/completions.sh target/release/pdfs "$pkgdir/usr/share"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
