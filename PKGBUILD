@@ -18,14 +18,16 @@ install=whodb.install
 _release="${url}/releases/download/${pkgver}"
 source=('whodb.conf'
         'whodb.service'
-        'whodb.sysusers')
+        'whodb.sysusers'
+        "whodb-${pkgver}-NOTICE::https://raw.githubusercontent.com/clidey/whodb/${pkgver}/NOTICE")
 source_x86_64=("${_release}/${_bin}-linux-amd64")
 source_aarch64=("${_release}/${_bin}-linux-arm64")
 source_armv7h=("${_release}/${_bin}-linux-armv7")
 source_riscv64=("${_release}/${_bin}-linux-riscv64")
 sha256sums=('94de90ec29ed45fef786194d005b6011ddcdf4dff923448920cb11054f1c4055'
             'f90fb36508968f08d52f0b859bbd8a0b0a36e6258e78ed105fd7e6dd78a6ddbc'
-            '907874f38c2748569413955d5722119c9c855efabbbfe30a5a8c7dec8e2e803e')
+            '907874f38c2748569413955d5722119c9c855efabbbfe30a5a8c7dec8e2e803e'
+            '37540f248340b95d3a57125a8c5bda9a5a5cd332ec747d0ca15e2d7b83c5f4c0')
 sha256sums_x86_64=('e642952a7e4d8630bb9609e56325ec65842b8483470011de2ff4c5f600ab9151')
 sha256sums_aarch64=('25fb0840f8ca0bfdb03053998e1a7307de17dcfb376f91a744fadfaee0ad27fc')
 sha256sums_armv7h=('532dce733116c579bc27b36514ebe55f3241098444e3a58f112892f289445322')
@@ -36,4 +38,5 @@ package() {
   install -Dm600 whodb.conf "${pkgdir}/etc/conf.d/whodb"
   install -Dm644 whodb.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm644 whodb.sysusers "${pkgdir}/usr/lib/sysusers.d/whodb.conf"
+  install -Dm644 "whodb-${pkgver}-NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
