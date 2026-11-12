@@ -1,0 +1,36 @@
+pkgbase = wordcraft-private-bin
+	pkgdesc = 自用维护：开源 clean-room 版 Microsoft Word 替代（纯 Rust 字处理器），上游 storytold/wordcraft
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://getartcraft.com/apps/wordcraft
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	optdepends = alsa-lib: sound support
+	optdepends = pipewire-alsa: audio playback and recording via PipeWire
+	optdepends = pulseaudio: audio playback and recording via PulseAudio
+	optdepends = wayland: native Wayland display support
+	optdepends = libx11: X11 and XWayland display support
+	optdepends = libxcursor: X11 cursor handling
+	optdepends = libxi: X11 input handling
+	optdepends = libxrandr: X11 display resolution handling
+	optdepends = libglvnd: GPU rendering through EGL
+	optdepends = mesa: GPU rendering through EGL
+	optdepends = vulkan-driver: GPU rendering through Vulkan
+	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
+	optdepends = cups: printing support
+	provides = wordcraft=0.18.1
+	conflicts = wordcraft
+	conflicts = wordcraft-bin
+	conflicts = wordcraft-git
+	conflicts = ai.storyteller.wordcraft
+	source = https://github.com/storytold/wordcraft/releases/download/v0.18.1/wordcraft-0.18.1-linux-x86_64.pkg.tar.zst
+	sha256sums = 5b1b2851bdebf75a23f2ce2efdbda2b2b542749b9fe653f9b7b16dc209dcbb64
+
+pkgname = wordcraft-private-bin
