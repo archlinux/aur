@@ -1,6 +1,6 @@
 # Maintainer: Wyrd Company <support@wyrd.company>
 pkgname='trowel-bin'
-pkgver='0.2.0'
+pkgver='0.3.0'
 pkgrel=1
 pkgdesc='Relay HTTP webhooks into NATS JetStream and JetStream messages out to HTTP or commands'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ provides=('trowel')
 conflicts=('trowel')
 options=('!strip')
 install='trowel-bin.install'
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/trowel/0.2.0/trowel_0.2.0_linux_x86_64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/trowel/0.2.0/trowel_0.2.0_linux_aarch64.tar.gz")
-sha256sums_x86_64=('787bda1d8f12f00c2f07e2540e5428b956d7805173e6ddf1b639a63dbc723bea')
-sha256sums_aarch64=('9b70aa5f0c764b6d008a5d3911d2a39d7d1a3f73f8856a4d761850e2e67f5c02')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://repo.wyrd.foo/artifacts/trowel/0.3.0/trowel_0.3.0_linux_x86_64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://repo.wyrd.foo/artifacts/trowel/0.3.0/trowel_0.3.0_linux_aarch64.tar.gz")
+sha256sums_x86_64=('05a10ff51df10ad229eda3509c611ab8a7b8ef7f0835816b0f634cd7cb387202')
+sha256sums_aarch64=('e333d50b3f03a97f97d46c0629e2d10224b6f8288aff83f7314887e83f432fc7')
 
 package() {
   install -Dm755 "${srcdir}/trowel" "${pkgdir}/usr/bin/trowel"
