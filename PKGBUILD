@@ -2,20 +2,20 @@
 
 _pname=python_blazarclient
 pkgname=python-blazarclient
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc='Client library for the Blazar API'
 arch=(any)
 url="https://docs.openstack.org/$pkgname/"
-license=(Apache)
+license=(Apache-2.0)
 makedepends=(python-setuptools)
 depends=(python-pbr python-cliff python-prettytable python-oslo-i18n
          python-oslo-log python-oslo-utils python-keystoneauth1
-         python-osc-lib)
+         python-osc-lib python-oslo-serialization python-requests)
 checkdepends=(python-oslotest python-fixtures python-stestr
               python-testtools)
 source=("https://tarballs.opendev.org/openstack/$pkgname/$_pname-$pkgver.tar.gz")
-sha512sums=('3bdb4c6fb2ed71d81241c1f936cdf090624f2a744f9d713498c81b4bf7723ab315eaf614aba61d655b1e2612c9a52690d0ba04973904520183cfabd1279194f7')
+sha512sums=('ba786d2d2f58c875e7ef85f4ed6a9d114ed27c4bdcd166844fb2b557fe507686207449eab3b216c4dd61d92c245bd14028d9a8de0e582aba00664565ac4282eb')
 
 export PBR_VERSION=$pkgver
 
