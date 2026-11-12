@@ -1,6 +1,6 @@
 pkgbase = nbb
 	pkgdesc = Scripting in Clojure on Node.js using SCI
-	pkgver = 1.6.214
+	pkgver = 1.6.215
 	pkgrel = 1
 	url = https://github.com/babashka/nbb
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = nbb
 	depends = bun
 	provides = nbb
 	provides = nbbum
-	noextract = nbb-1.6.214.tgz
+	noextract = nbb-1.6.215.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = nbb-1.6.214.tgz::https://registry.npmjs.org/nbb/-/nbb-1.6.214.tgz
-	b2sums = 5fc37d9faf5322ad597ca716c11fe9cb1c76acb1c4571c0fcf34b6bedf638878d0d473595339a3252b409c7bcec331bc3cad2be9da68000fc08245204619c728
+	source = nbb-1.6.215.tgz::https://registry.npmjs.org/nbb/-/nbb-1.6.215.tgz
+	b2sums = 9b6ccc7eaf4c9417856ea8e508ff2c46d13b3a46ca7f336df9b2ff2344e94a70e2cff34179d257a730e01644d8cf975a4df92ee89440de8e1c150a3fae3a4305
 
 pkgname = nbb
