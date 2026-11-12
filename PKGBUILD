@@ -4,7 +4,6 @@ pkgver=0.1.0.r5.ge15be2f
 pkgrel=1
 pkgdesc="Flamegraph viewer in the terminal"
 arch=('x86_64')
-options=('!debug')
 url="https://github.com/YS-L/flamelens"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'libunwind')
