@@ -2,7 +2,7 @@
 pkgname=python-kaldialign
 _pyname=kaldialign
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wrappers for Kaldi sequence alignment + edit-distance utilities'
 arch=('x86_64')
 url='https://github.com/pzelasko/kaldialign'
@@ -21,7 +21,7 @@ sha256sums=('15491654690ce5fb3d938d0086771bda9ae382e29c6fcda5e76905d9cab09d2f')
 
 build() {
     cd "$_pyname-$pkgver"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
