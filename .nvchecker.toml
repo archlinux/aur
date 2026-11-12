@@ -1,0 +1,4 @@
+[reticulum-meshchatx-bin]
+source = "git"
+git = "https://github.com/Quad4-Software/MeshChatX.git"
+prefix = "v"
