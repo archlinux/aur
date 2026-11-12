@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=greenmask-bin
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc='PostgreSQL dump, anonymization and restore tool (prebuilt)'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'riscv64' 'powerpc64le')
@@ -17,12 +17,12 @@ source_armv7h=("greenmask-${pkgver}-armv7.tar.gz::${_release}/greenmask-linux-ar
 source_armv6h=("greenmask-${pkgver}-armv6.tar.gz::${_release}/greenmask-linux-armv6.tar.gz")
 source_riscv64=("greenmask-${pkgver}-riscv64.tar.gz::${_release}/greenmask-linux-riscv64.tar.gz")
 source_powerpc64le=("greenmask-${pkgver}-ppc64le.tar.gz::${_release}/greenmask-linux-ppc64le.tar.gz")
-sha256sums_x86_64=('1ed5a679f792c688b4df5bb89ecfb7dae1270bc3a438f1e605561fd30d1c0eb2')
-sha256sums_aarch64=('72e2503e4b1254745c5aa8dda2be72056a0e5466b7ae5b94446df934bbdbea4a')
-sha256sums_armv7h=('0c99bdad6304558be488fe4d5a90a710db9b519376f58b09d72ede87188614a1')
-sha256sums_armv6h=('8e690bca9efe3504b60288b3d71b992e313170d19cd64bd693aaf8dd5922e807')
-sha256sums_riscv64=('496263c78c1046666101b0ecb16f4631c6a76a12dc3a005f647dc766ec30c493')
-sha256sums_powerpc64le=('4f2e0aae7ce32e5de06f122037ef93afbd2e74e35abc8d726a4297828393941b')
+sha256sums_x86_64=('8e80881880c263a7d89ee70209964702d9219c71e7376f8734372630feb5284d')
+sha256sums_aarch64=('61daa1d3caaecbf41d660cb496f6d5872bb8fc9c087bf05170eb8adade7aec44')
+sha256sums_armv7h=('32728ed222169601f8f157fa88e68c8278ccd2009f8693e3988b9ec4e3d19532')
+sha256sums_armv6h=('bed013e9efb88fcb2dd5924d663a475fe16119c375d83567f22c068ce050012c')
+sha256sums_riscv64=('fe304835409446eaab7a98a0317f914dd2f2e76332c4eb94685d9a400d5f1cc1')
+sha256sums_powerpc64le=('df4fbd0456b900bf3a380ce7e10e699ca331b778b01b9e1f20a26f475d000405')
 
 build() {
   for shell in bash fish zsh; do
