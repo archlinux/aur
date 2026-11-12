@@ -1,6 +1,6 @@
 pkgbase = basecamp-cli
 	pkgdesc = CLI for Basecamp project management
-	pkgver = 0.27.0
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/basecamp/basecamp-cli
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = basecamp-cli
 	optdepends = bash-completion: for bash shell completions
 	optdepends = zsh: for zsh shell completions
 	optdepends = fish: for fish shell completions
-	source_x86_64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.27.0/basecamp_0.27.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6e7d19117a2cb211a65f62c1b2ba3ef5d89b044a5de2dabf1897783e1c355ea7
-	source_aarch64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.27.0/basecamp_0.27.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 383c2cda9329b8e2459746890e185b346f48224a5ab3b86c6a1799aee7563096
+	source_x86_64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.28.0/basecamp_0.28.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5de24d47803195917a27133a7840216aa2d988a5d5d527bb72a9da32cb42d52d
+	source_aarch64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.28.0/basecamp_0.28.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = cf30c1b222a7e5ffb244e508884608d7bc48a459bbfe62a86aaace32e4b82ea8
 
 pkgname = basecamp-cli
