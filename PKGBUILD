@@ -1,8 +1,8 @@
 # Maintainer: mensylisir <710080675@qq.com>
 
 pkgname=minimax-code-intl-bin
-pkgver=3.1.12
-pkgrel=3
+pkgver=3.1.14
+pkgrel=1
 _electron=42.11.16
 pkgdesc='MiniMax Code 桌面应用（国际版），非官方 Linux 移植'
 arch=('x86_64')
@@ -28,8 +28,11 @@ options=('!strip' '!debug' '!lto')
 # official build of the same version so native modules rebuild against matching
 # headers. Upstream republishes installers in place, so the checksum below is
 # the only thing that changes between identical pkgver builds.
+# Since 3.1.14 the download page on code.minimax.io offers the same installer on
+# both filecdn.minimax.chat and file.cdn.minimax.io; the latter is unreachable
+# from mainland China, so the reachable official mirror is used here.
 source=(
-  "minimax-code-${pkgver}.exe::https://file.cdn.minimax.io/public/minimax-agent-prod/release/MiniMax%20Code%20Setup%20${pkgver}.exe"
+  "minimax-code-${pkgver}.exe::https://filecdn.minimax.chat/public/minimax-agent-prod/release/MiniMax%20Code%20Setup%20${pkgver}.exe"
   "electron-v${_electron}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron}/electron-v${_electron}-linux-x64.zip"
   "node-v${_electron}-headers.tar.gz::https://artifacts.electronjs.org/headers/dist/v${_electron}/node-v${_electron}-headers.tar.gz"
   'node-pty-1.1.0.tgz::https://registry.npmjs.org/node-pty/-/node-pty-1.1.0.tgz'
@@ -53,7 +56,7 @@ source=(
   'minimax-code-intl-512.png'
 )
 sha256sums=(
-  '323e5c116f243ca097d4d236a39c396ab7f7d5d9bfb10676783e53287832d42b'
+  '4969f347895d6a2e905351956384105452d05f7f10b19f1a099656d4d7f5c521'
   'e27e9ec78d12edc83c817a1454b706530c000eedd217f65aed2a5d9657ec1be0'
   '4cad5a9290c681202d92bd9e991dc1708b69df4c9c3bdcfd67a9ba1e0bdb2646'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
