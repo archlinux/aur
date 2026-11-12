@@ -19,6 +19,6 @@ pkgbase = correlation
 	depends = fftw
 	depends = vulkan-icd-loader
 	source = correlation-4.3.0.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v4.3.0.tar.gz
-	sha256sums = 2be9ad18bf7e02871f0188ee2196d242998b8281b82d9aa621f5f1913bd18955
+	sha256sums = 826aca1c4e1fdb07153c1125bec4ad5b835822a92e536587ead7a1a8ce894373
 
 pkgname = correlation

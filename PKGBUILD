@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('intel-oneapi-tbb' 'hdf5' 'arrow' 'fontconfig' 'freetype2' 'libxcb' 'fftw' 'vulkan-icd-loader')
 makedepends=('cmake' 'ninja' 'rust' 'pkgconf' 'vulkan-headers')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2be9ad18bf7e02871f0188ee2196d242998b8281b82d9aa621f5f1913bd18955')
+sha256sums=('826aca1c4e1fdb07153c1125bec4ad5b835822a92e536587ead7a1a8ce894373')
 
 prepare() {
   cmake -B build -S "Correlation-${pkgver}" \
