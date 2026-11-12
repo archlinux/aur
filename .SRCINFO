@@ -1,6 +1,6 @@
 pkgbase = ltext
 	pkgdesc = Text-file templating utility that treats files as higher-order functions
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ltext/ltext
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ltext
 	depends = glibc
 	depends = libgcc
 	options = !debug
-	source = ltext-0.2.1.tar.gz::https://github.com/ltext/ltext/archive/v0.2.1.tar.gz
-	sha256sums = 7ab03c0f47b937e0351d69accca7e7240dd3fdb575f07ad3f92aef9d3a45f7d3
+	source = ltext-0.2.2.tar.gz::https://github.com/ltext/ltext/archive/v0.2.2.tar.gz
+	sha256sums = 9c92592217b2db678beda46545adfe5d8a9c4d75d788aca02956b79bcac78288
 
 pkgname = ltext
