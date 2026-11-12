@@ -1,6 +1,6 @@
 pkgbase = modrinth-app-bin
 	pkgdesc = Minecraft mod manager and launcher from Modrinth (upstream binary)
-	pkgver = 0.23.1
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://modrinth.com/app
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = modrinth-app-bin
 	optdepends = xorg-xrandr: for older Minecraft versions
 	provides = modrinth-app
 	conflicts = modrinth-app
-	noextract = modrinth-app-bin-0.23.1.deb
+	noextract = modrinth-app-bin-0.23.2.deb
 	options = !strip
 	options = !debug
-	source = modrinth-app-bin-0.23.1.deb::https://github.com/modrinth/code/releases/download/v0.23.1/Modrinth.App_0.23.1_amd64.deb
-	sha256sums = dd32e14299875d711d21ac7650b66da465d7b40a75f557d749849af305099678
+	source = modrinth-app-bin-0.23.2.deb::https://github.com/modrinth/code/releases/download/v0.23.2/Modrinth.App_0.23.2_amd64.deb
+	sha256sums = 4bcb152a7397e8ed4c1d2d243156119573392e3bbff20cdcc40377f8ab20538f
 
 pkgname = modrinth-app-bin
