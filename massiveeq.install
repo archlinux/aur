@@ -2,7 +2,9 @@ post_install() {
   printf '%s\n' \
     'MassiveEQ is installed.' \
     'Launch MassiveEQ from the application menu, or enable its login service with:' \
-    '  systemctl --user enable --now massiveeq.service massiveeq-tray.service'
+    '  systemctl --user enable --now massiveeq.service massiveeq-tray.service' \
+    'Waybar/Omarchy: use the existing tray (expand its drawer on Omarchy).' \
+    'Setup guide: /usr/share/doc/massiveeq-git/waybar-omarchy.md'
 }
 
 post_upgrade() {
