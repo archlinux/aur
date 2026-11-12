@@ -1,7 +1,7 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
 	pkgver = 22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
 	changelog = aurutils.changelog
@@ -24,6 +24,6 @@ pkgbase = aurutils
 	optdepends = python-srcinfo: sync-rebuild example script
 	optdepends = expect: non-interactive usage
 	source = aurutils-22.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/22.tar.gz
-	sha256sums = 463d904d5d591b590cb04dcd16ee5acaf19c30144b3a6f8adc082492354693ef
+	sha256sums = c2d84529bcdbe733bcb522b2c9883f2048bca27cf916d10ef5739a1d7d3bccbb
 
 pkgname = aurutils
