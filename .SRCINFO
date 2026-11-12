@@ -1,6 +1,6 @@
 pkgbase = pdfcraft-bin
 	pkgdesc = Open-source native PDF workbench, Acrobat alternative (prebuilt binary)
-	pkgver = 0.21.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/storytold/pdfcraft
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = pdfcraft-bin
 	provides = pdfcraft
 	conflicts = pdfcraft
 	options = !strip
-	source_x86_64 = pdfcraft-0.21.0-linux-x86_64.tar.gz::https://github.com/storytold/pdfcraft/releases/download/v0.21.0/pdfcraft-0.21.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 79a8c76e23ad6e671de3b856a476936afc000f8aa7fefff190d43de62fa35ba1
-	source_aarch64 = pdfcraft-0.21.0-linux-aarch64.tar.gz::https://github.com/storytold/pdfcraft/releases/download/v0.21.0/pdfcraft-0.21.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 1cd79a184d58aa2392fbdc007560e3939878d96f12b2c06c96f4f385fc613d09
+	source_x86_64 = pdfcraft-0.21.1-linux-x86_64.tar.gz::https://github.com/storytold/pdfcraft/releases/download/v0.21.1/pdfcraft-0.21.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c2919e9044effde318e66807ad2a21bbb74a9555b3c0b99f9ad0c40cf61ce25e
+	source_aarch64 = pdfcraft-0.21.1-linux-aarch64.tar.gz::https://github.com/storytold/pdfcraft/releases/download/v0.21.1/pdfcraft-0.21.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b08efe416c1da450b04b3e4ec5f0389d71d7580f4398f9eda06d33d04713c770
 
 pkgname = pdfcraft-bin
