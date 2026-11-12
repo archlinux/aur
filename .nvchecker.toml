@@ -1,5 +1,6 @@
 [python-elevenlabs]
 source = "github"
 github = "elevenlabs/elevenlabs-python"
+exclude_regex = '.*-(alpha|beta|rc).*'
 use_max_tag = true
 prefix = "v"
