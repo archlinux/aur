@@ -1,0 +1,4 @@
+[blaze-engine]
+source = "git"
+git = "https://github.com/indexable-inc/blaze.git"
+prefix = "v"

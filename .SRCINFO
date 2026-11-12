@@ -1,0 +1,21 @@
+pkgbase = blaze-engine
+	pkgdesc = Incremental rust builds up to 92x faster than cargo/rustc
+	pkgver = 0.20261027.0
+	pkgrel = 1
+	url = https://github.com/indexable-inc/blaze
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = cargo-nightly
+	depends = glibc
+	depends = libgcc
+	depends = rustup
+	source = https://github.com/indexable-inc/blaze/archive/refs/tags/v0.20261027.0/blaze-0.20261027.0.tar.gz
+	sha256sums = 06d75f41fa8516778050dc95fd376b87e5a1be87da511fafa01e31294ecb87cf
+
+pkgname = blaze-engine
+	depends = cargo-nightly
+	depends = glibc
+	depends = libgcc
+	depends = rustup
+	depends = libgcc_s.so
