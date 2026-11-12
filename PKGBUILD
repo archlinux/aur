@@ -5,23 +5,20 @@
 # The .NET packages build against the packages of one .NET build, never a mix: they makedepend on
 # dotnet-build-deps-11.0, which this package (Microsoft's build) provides. Arch Linux has no .NET 11
 # yet, so there's no source-built variant of it (dotnet-build-deps-11.0) either: the packages of .NET
-# itself come from nuget.org, Microsoft's build that matches the SDK. It's for the prereleases that
-# build with .NET 11 before it's released, like powershell-preview. It ships nothing.
+# itself come from nuget.org, Microsoft's build that matches the SDK. It's for packages that build
+# with .NET 11 before Arch Linux has it, like powershell-preview. It ships nothing.
 _dotnetver=11.0
 pkgname=dotnet-build-deps-$_dotnetver-bin
-# The version of Microsoft's .NET SDK (dotnet-sdk-preview-bin) like dotnet-build-deps-10.0-bin has the
-# one of dotnet-sdk-bin: the runtime version and the SDK's feature band and patch, here with the
-# prerelease and build. The SDK is pinned to exactly that release, so the version provided is the one
-# installed.
-pkgver=11.0.0.sdk100rc3.26522.148
+# The version of Microsoft's .NET SDK (dotnet-sdk-bin): the runtime version and the SDK's feature band
+# and patch. The SDK is pinned to exactly that release, so the version provided is the one installed.
+pkgver=11.0.0.sdk100
 pkgrel=1
 pkgdesc="Build dependencies of the .NET packages from Microsoft's build of .NET $_dotnetver and nuget.org (meta package)"
 arch=(x86_64 aarch64)
 url='https://dotnet.microsoft.com/'
 license=(0BSD)
-# Microsoft's previews and release candidates of the next .NET, which has an epoch the version here
-# leaves out
-depends=("dotnet-sdk-preview-bin=1:$pkgver")
+# Microsoft's build of the current .NET
+depends=("dotnet-sdk-bin=$pkgver")
 provides=("dotnet-build-deps-$_dotnetver=$pkgver")
 conflicts=(
   "dotnet-build-deps-$_dotnetver"

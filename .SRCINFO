@@ -1,13 +1,13 @@
 pkgbase = dotnet-build-deps-11.0-bin
 	pkgdesc = Build dependencies of the .NET packages from Microsoft's build of .NET 11.0 and nuget.org (meta package)
-	pkgver = 11.0.0.sdk100rc3.26522.148
+	pkgver = 11.0.0.sdk100
 	pkgrel = 1
 	url = https://dotnet.microsoft.com/
 	arch = x86_64
 	arch = aarch64
 	license = 0BSD
-	depends = dotnet-sdk-preview-bin=1:11.0.0.sdk100rc3.26522.148
-	provides = dotnet-build-deps-11.0=11.0.0.sdk100rc3.26522.148
+	depends = dotnet-sdk-bin=11.0.0.sdk100
+	provides = dotnet-build-deps-11.0=11.0.0.sdk100
 	conflicts = dotnet-build-deps-11.0
 	conflicts = dotnet-source-built-artifacts-11.0
 	source = LICENSE
