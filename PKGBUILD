@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/gridcraft/releases/download/v${pkgver}/gridcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/gridcraft/releases/download/v${pkgver}/gridcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('ab8f44806b81e79ead6d408bf8f9f63bb896330380ec30a71b70359edcf66d44')
 
 package() {
