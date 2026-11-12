@@ -6,9 +6,9 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=706842c0f8c0d9422efb97a4d8ef7d6ec9df87b7
+_commit=d19f742b00a4bb71207524f2eed99464854d24cd
 pkgname=h2o-git
-pkgver=2.2.0.r8813.g706842c
+pkgver=2.2.0.r9236.gd19f742
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -34,7 +34,7 @@ source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
         #https://github.com/h2o/h2o/pull/3551.patch
 
         'h2o.service')
-sha256sums=('431f75c69e0d5538281bc701b82b55122de7aebd9bd61bf70100839d77b6fd90'
+sha256sums=('a0419d11b3cca8dc2a37dec94eef35d04c67237cb52944cd677955ecc3aaae2a'
             '632f219cc21128810bba4de869de4961ebff9083af31231f721f451d2e58f7e1'
             '930bed0a8b6d75973e21cacb4cfda6bcacf08bc6d1b504b5cc36f56f9d6bfaf8'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
