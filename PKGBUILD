@@ -3,7 +3,7 @@
 pkgname="booruflow-bin"
 pkgdesc="An open-source, cross-platform booru browser and image downloader."
 pkgrel=1
-pkgver=0.12.0
+pkgver=0.13.0
 
 url="https://github.com/normalllll/BooruFlow"
 arch=('x86_64')
@@ -14,9 +14,9 @@ depends=('gtk3' 'gcc-libs')
 option=('!strip')
 
 source=(
-  "https://github.com/normalllll/BooruFlow/releases/download/v${pkgver}%2B39/linux_amd64.deb"
+  "https://github.com/normalllll/BooruFlow/releases/download/v${pkgver}%2B40/linux_amd64.deb"
 )
-sha256sums=('e346b068aca7b49bf918df9633693432281a98bac55ee4ff4e2e701dd82cdc4d')
+sha256sums=('c29fee6f0fc5774c77f25c83b6beea4deb29b7cfa526e7c1ae15ef8445b5da6f')
 
 prepare() {
   bsdtar -xf "${srcdir}/linux_amd64.deb" -C "${srcdir}" data.tar.zst
