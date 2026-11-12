@@ -1,7 +1,7 @@
 # Maintainer: sk8thing <sk8thing[at]tuta[dot]com>
 
 pkgname=arch-skm
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Automated linux kernel building with Signed Kernel Modules (in-tree & out-of-tree)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 
 _tag="v${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('ff5903575ef586c60299bbf5e2f7184061e2bbad4651907fd471420b03c294e4')
+sha256sums=('db283178dda7926ce10e59230b351b9f14633f6c688cca55afa1cd235c64ea0f')
 
 build() {
   cd "${pkgname}-${pkgver}"
