@@ -1,0 +1,17 @@
+pkgbase = gruppled-svg-cursor-theme-git
+	pkgdesc = Vector (SVG) redraw of the Gruppled cursor theme, black and white variants (Plasma 6.2+ scalable and Xcursor)
+	pkgver = r4.9952fc7
+	pkgrel = 1
+	url = https://github.com/3zet/gruppled-svg
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	optdepends = breeze: fallback cursors for shapes missing from the theme (index.theme Inherits=breeze_cursors)
+	provides = gruppled-svg-cursor-theme
+	conflicts = gruppled-svg-cursor-theme
+	options = !strip
+	options = !debug
+	source = gruppled-svg::git+https://github.com/3zet/gruppled-svg.git
+	sha256sums = SKIP
+
+pkgname = gruppled-svg-cursor-theme-git
