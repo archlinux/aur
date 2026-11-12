@@ -1,6 +1,6 @@
 pkgbase = momentum-git
 	pkgdesc = CLI for Sennheiser Momentum 4 headphones (git version)
-	pkgver = 0.1.0.r188.g55afeeb
+	pkgver = 0.1.0.r189.gfbbd6cc
 	pkgrel = 1
 	url = https://github.com/timmo001/omarchy-momentumctl
 	arch = x86_64
