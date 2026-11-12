@@ -36,7 +36,9 @@ bump:
     GIT_DEPTH: "0"
     UPSTREAM_REPO: KytyPS5/KytyPS5
   before_script:
-    - pacman -Sy --noconfirm --needed git jq openssh curl
+    # Full upgrade (-Syu), never a bare -Sy: the image lags the mirrors, and a
+    # partial upgrade breaks on soname bumps (e.g. openssl vs libcrypto.so=3-64).
+    - pacman -Syu --noconfirm --needed git jq openssh curl
     # makepkg refuses to run as root, and it checks that before it handles
     # --printsrcinfo, so the .SRCINFO regeneration needs a real user.
     - useradd -m builder
