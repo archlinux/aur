@@ -11,7 +11,7 @@
 # repositories. All downloads happen in the sources and in prepare(); build() needs
 # no network.
 pkgname=efr-code-git
-pkgver=0.0.6.r2250.g8bb1c161
+pkgver=0.0.8.r2394.g04e5c7f6
 pkgrel=1
 pkgdesc='Terminal-first AI agent harness that lives in zsh, with a daemon that owns the state (main branch)'
 arch=('x86_64')
@@ -24,6 +24,7 @@ checkdepends=('cargo-nextest' 'git')
 optdepends=('bubblewrap: the kernel sandbox of the auto mode (also needs Linux 7.1 or newer)'
             'fzf: the live search picker of ,resume (0.46 or newer)'
             'git: project roots and the git facts of a turn'
+            'ripgrep: the search that the model uses for text and file names (rg)'
             'xdg-dbus-proxy: read-only system queries in the auto mode (0.1.9 or newer)'
             'xdg-utils: let efr login openai open the browser with EFR_OPEN_BROWSER=1')
 provides=("efr-code=${pkgver%%.r*}")
