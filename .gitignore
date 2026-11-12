@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!nyora-desktop.sh
+!.nvchecker.toml
+

@@ -1,0 +1,5 @@
+[nyora-desktop-appimage]
+source = "github"
+github = "Nyora-Manga/nyora-desktop"
+use_latest_release = true
+prefix = "v"
