@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Chekhovskyi <oleksandr.chekhovskyi@gmail.com>
 
 pkgname=hax
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Minimalist, terminal-native coding agent written in C"
 arch=("x86_64" "aarch64")
@@ -18,7 +18,7 @@ optdepends=(
     "xsel: clipboard support on X11"
 )
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=("b46c13187770dfab577cee3b0a77d0c7d62280c715c3b839602ca88a1ae37a1a")
+sha256sums=("b1f90f87f87630c89292b141eaa8d000a54e0b3fd5214180d0cf92299bf55827")
 
 build() {
     arch-meson "$pkgname-$pkgver" build
