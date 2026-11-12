@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=greenmask
-pkgver=0.2.26
+pkgver=0.2.27
 pkgrel=1
 pkgdesc='PostgreSQL dump, anonymization and restore tool'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc' 'postgresql-libs')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2e77626183f52cf6309ed8db4d84ff143fe0e045d8b3c5d47d98d2e50e70a016')
+sha256sums=('d4cbb8dfe2c399d5c37764d7ba4320032cfae25569b658bd8f1f3f489bf92675')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
