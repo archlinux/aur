@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=lichii-shader-sync
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Downloads shared Vulkan shader caches into Lichii and Eden, so games stutter less on first play"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('unknown')
 depends=('glibc' 'procps-ng')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8f620db4beb121182c71d862400993c8249fdc84df359c32879949ca915a103d')
+sha256sums=('de40babe73240bcddb542a879216f0bd0b66a46fa2f248d47a59a4a379888bda')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -29,7 +29,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  # -buildvcs=false: makepkg runs inside a git checkout (this repository in
+  # CI), and Go fails to read its VCS status there
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -buildvcs=false"
   # the command line tool; ./gui is the Windows-only GUI
   go build -o lichii-sync .
 }
