@@ -2889,8 +2889,8 @@ FUNCAO_INSTALAR_ARCH_UPDATE_FULL() {
 
 FUNCAO_INSTALAR_WALLPAPERS() {
     local resp_wall=""
-    local zip_nome="wallpapers personalizados.zip"
-    local zip_url="https://raw.githubusercontent.com/GustavoGianeli/post-install-arch-full/main/wallpapers%20personalizados.zip"
+    local zip_nome="wallpapers-personalizados.zip"
+    local zip_url="https://raw.githubusercontent.com/GustavoGianeli/post-install-arch-full/main/wallpapers-personalizados.zip"
     local alvo_user=""
     local alvo_home=""
     local img_dir=""
@@ -2905,9 +2905,9 @@ FUNCAO_INSTALAR_WALLPAPERS() {
 
     while true; do
         echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
-        msg "${CYAN_NEON}Deseja instalar os wallpapers personalizados do Projeto Odin? (s/n):${NC}" \
-            "${CYAN_NEON}Do you want to install Project Odin's custom wallpapers? (y/n):${NC}" \
-            "${CYAN_NEON}¿Deseas instalar los fondos de pantalla personalizados del Proyecto Odin? (s/n):${NC}"
+        msg "${CYAN_NEON}Deseja baixar os wallpapers personalizados do Projeto Odin? (s/n):${NC}" \
+            "${CYAN_NEON}Do you want to download Project Odin's custom wallpapers? (y/n):${NC}" \
+            "${CYAN_NEON}¿Deseas descargar los fondos de pantalla personalizados del Proyecto Odin? (s/n):${NC}"
         echo ""
         if ! read -rp "Opção / Choice / Opción [s/y/n]: =>  " resp_wall; then
             return 1
@@ -2916,13 +2916,13 @@ FUNCAO_INSTALAR_WALLPAPERS() {
         resp_wall="${resp_wall,,}"
 
         case "$resp_wall" in
-            s|sim|y|yes)
+            s|S|sim|Sim|SIM|si|Si|SI|y|Y|yes|Yes|YES)
                 break
                 ;;
-            n|no|nao|não)
-                msg "${YELLOW_NEON}Instalação de wallpapers ignorada. Continuando o script...${NC}" \
-                    "${YELLOW_NEON}Wallpapers installation skipped. Continuing script...${NC}" \
-                    "${YELLOW_NEON}Instalación de fondos de pantalla omitida. Continuando el script...${NC}"
+            n|N|não|Não|NÃO|nao|Nao|NAO|no|No|NO|not|Not|NOT)
+                msg "${YELLOW_NEON}Download de wallpapers ignorado. Continuando o script...${NC}" \
+                    "${YELLOW_NEON}Wallpapers download skipped. Continuing script...${NC}" \
+                    "${YELLOW_NEON}Descarga de fondos de pantalla omitida. Continuando el script...${NC}"
                 echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
                 return 0
                 ;;
@@ -3080,9 +3080,9 @@ FUNCAO_INSTALAR_WALLPAPERS() {
     fi
 
   
-    msg "${CYAN_NEON}Instalando wallpapers personalizados em: $target_folder${NC}" \
-        "${CYAN_NEON}Installing custom wallpapers at: $target_folder${NC}" \
-        "${CYAN_NEON}Instalando fondos de pantalla personalizados en: $target_folder${NC}"
+    msg "${CYAN_NEON}Baixando o wallpapers personalizados na sua pasta de imagens: $target_folder${NC}" \
+        "${CYAN_NEON}Downloading custom wallpapers to: $target_folder${NC}" \
+        "${CYAN_NEON}Descargando fondos de pantalla personalizados a: $target_folder${NC}"
     echo ""
 
     if ! "${como_user[@]}" mkdir -p "$target_folder"; then
@@ -3097,9 +3097,9 @@ FUNCAO_INSTALAR_WALLPAPERS() {
     if "${como_user[@]}" unzip -q -o -j "$zip_usar" -d "$target_folder"; then
         [ -n "$zip_temp" ] && rm -f "$zip_temp"
         qtd_imgs=$(find "$target_folder" -maxdepth 1 -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' \) 2>/dev/null | wc -l)
-        msg "${CYAN_NEON}[SUCESSO] Wallpapers instalados com sucesso em: $target_folder ($qtd_imgs imagens)${NC}" \
-            "${CYAN_NEON}[SUCCESS] Wallpapers successfully installed at: $target_folder ($qtd_imgs images)${NC}" \
-            "${CYAN_NEON}[ÉXITO] Fondos de pantalla instalados con éxito en: $target_folder ($qtd_imgs imágenes)${NC}"
+        msg "${CYAN_NEON}[SUCESSO] Wallpapers salvos em $target_folder ($qtd_imgs imagens) Escolha seu favorito na sua pasta.${NC}" \
+            "${CYAN_NEON}[SUCCESS] Wallpapers saved to: $target_folder ($qtd_imgs images) Choose your favorite from the folder.${NC}" \
+            "${CYAN_NEON}[ÉXITO] Fondos de pantalla guardados con éxito en: $target_folder ($qtd_imgs imágenes) Elija su favorito de la carpeta.${NC}"
         echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
         return 0
     fi
@@ -6972,7 +6972,7 @@ PERGUNTAR_REINICIAR() {
     read -rp " =>  " RESPOSTA
 
     case "$RESPOSTA" in
-        [Ss]|[Yy])
+        s|S|sim|Sim|SIM|si|Si|SI|y|Y|yes|Yes|YES)
             echo ""
             msg "${RED_NEON} [!] Reiniciando o sistema...${NC}" \
                 "${RED_NEON} [!] Rebooting system...${NC}" \
@@ -6986,20 +6986,22 @@ PERGUNTAR_REINICIAR() {
             sudo reboot
             ;;
 
-        [Nn])
+        n|N|não|Não|NÃO|nao|Nao|NAO|no|No|NO|not|Not|NOT)
             echo ""
-            msg "${CYAN_NEON} [i] Reinicialização ignorada. Voltando ao menu...${NC}" \
-                "${CYAN_NEON} [i] Reboot skipped. Returning to menu...${NC}" \
-                "${CYAN_NEON} [i] Reinicio omitido. Volviendo al menú...${NC}"
+            msg "${CYAN_NEON}[i] Inicialização ignorada. Saindo do instalador...${NC}" \
+                "${CYAN_NEON}[i] Reboot skipped. Exiting installer...${NC}" \
+                "${CYAN_NEON}[i] Inicio omitido. Saliendo del instalador..."
             sleep 1
-            ;;
+            exit 0
+             ;;
 
         *)
-            echo ""
-            msg "${RED_NEON} [!] Opção inválida. Retornando ao menu por segurança...${NC}" \
-                "${RED_NEON} [!] Invalid option. Returning to menu for safety...${NC}" \
-                "${RED_NEON} [!] Opción inválida. Volviendo al menú por seguridad...${NC}"
+           echo ""
+            msg "${RED_NEON}[!] Opção inválida. Encerrando por segurança...${NC}" \
+                "${RED_NEON}[!] Invalid option. Exiting for safety..." \
+                "${RED_NEON}[!] Opción inválida. Saliendo por seguridad..."
             sleep 1
+            exit 1
             ;;
     esac
 }
@@ -7237,7 +7239,7 @@ OPCAO_PRE_DEFINIDAS_SCRIPTS() {
     ${RED_NEON}3) Modo Predefinido: Hacker/Pentest ${NC} 
     Prepara el sistema para pentesting, habilita los repositorios de BlackArch e instala las herramientas principales.
 
-    ${YELLOW_NEON}4) Salir del programa o Volver al menú principal${NC}"
+    ${YELLOW_NEON}4) Salir del programa on Volver al menú principal${NC}"
     echo ""
     msg "\nEscolha uma opção [1-2-3-4]:" \
         "\nChoose an option [1-2-3-4]:" \
