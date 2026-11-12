@@ -1,0 +1,76 @@
+pkgbase = extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extensions (official release dist builds)
+	pkgver = 2026.10.2
+	pkgrel = 1
+	url = https://github.com/bitwarden/clients
+	arch = any
+	license = GPL-3.0-or-later
+	noextract = dist-chrome-2026.10.2.zip
+	noextract = dist-edge-2026.10.2.zip
+	noextract = dist-firefox-2026.10.2.zip
+	noextract = dist-opera-2026.10.2.zip
+	source = dist-chrome-2026.10.2.zip::https://github.com/bitwarden/clients/releases/download/browser-v2026.10.2/dist-chrome-2026.10.2.zip
+	source = dist-edge-2026.10.2.zip::https://github.com/bitwarden/clients/releases/download/browser-v2026.10.2/dist-edge-2026.10.2.zip
+	source = dist-firefox-2026.10.2.zip::https://github.com/bitwarden/clients/releases/download/browser-v2026.10.2/dist-firefox-2026.10.2.zip
+	source = dist-opera-2026.10.2.zip::https://github.com/bitwarden/clients/releases/download/browser-v2026.10.2/dist-opera-2026.10.2.zip
+	source = LICENSE_GPL-2026.10.2.txt::https://raw.githubusercontent.com/bitwarden/clients/browser-v2026.10.2/LICENSE_GPL.txt
+	sha256sums = 2ebc61246a2ea82a65c589b8484e26a5678253fa6474c26dc5b6a7a7fcacbda4
+	sha256sums = f688b7c9880323803a71b8db66cc68db463549c178a7da4446779411660d2102
+	sha256sums = 4f812658de3ef86385348aeeae81a24b072bc26171d5db8931217e6a3c4b94aa
+	sha256sums = a0e549db7702086f101271e6c2d9e9f8a7367dc63241648ad02eadb8ece0b8bb
+	sha256sums = b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c
+
+pkgname = brave-extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extension for Brave (official dist build)
+	install = brave-extension-bitwarden-dist.install
+	optdepends = brave: the browser this extension is for
+	provides = brave-extension-bitwarden
+	conflicts = brave-extension-bitwarden
+	conflicts = brave-extension-bitwarden-git
+
+pkgname = chrome-extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extension for Google Chrome (official dist build)
+	install = chrome-extension-bitwarden-dist.install
+	optdepends = google-chrome: the browser this extension is for
+	provides = chrome-extension-bitwarden
+	conflicts = chrome-extension-bitwarden
+	conflicts = chrome-extension-bitwarden-git
+
+pkgname = chromium-extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extension for Chromium (official dist build)
+	install = chromium-extension-bitwarden-dist.install
+	optdepends = chromium: the browser this extension is for
+	provides = chromium-extension-bitwarden
+	conflicts = chromium-extension-bitwarden
+	conflicts = chromium-extension-bitwarden-git
+
+pkgname = edge-extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extension for Microsoft Edge (official dist build)
+	install = edge-extension-bitwarden-dist.install
+	optdepends = microsoft-edge-stable-bin: the browser this extension is for
+	provides = edge-extension-bitwarden
+	conflicts = edge-extension-bitwarden
+	conflicts = edge-extension-bitwarden-git
+
+pkgname = firefox-extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extension for Firefox (official dist build)
+	groups = firefox-addons
+	optdepends = firefox: the browser this extension is for
+	provides = firefox-extension-bitwarden
+	conflicts = firefox-extension-bitwarden
+	conflicts = firefox-extension-bitwarden-git
+
+pkgname = librewolf-extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extension for LibreWolf (official dist build)
+	optdepends = librewolf: the browser this extension is for
+	provides = librewolf-extension-bitwarden
+	conflicts = librewolf-extension-bitwarden
+	conflicts = librewolf-extension-bitwarden-git
+
+pkgname = opera-extension-bitwarden-dist
+	pkgdesc = Bitwarden browser extension for Opera (official dist build)
+	install = opera-extension-bitwarden-dist.install
+	optdepends = opera: the browser this extension is for
+	provides = opera-extension-bitwarden
+	conflicts = opera-extension-bitwarden
+	conflicts = opera-extension-bitwarden-git
