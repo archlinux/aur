@@ -10,7 +10,7 @@
 # Caleb Maclennan <caleb@alerque.com>
 _pkgname=electron47
 pkgname=electron-nightly-bin
-_pkgver=47.0.0-nightly.20261102
+_pkgver=47.0.0-nightly.20261111
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt nightly binary"
@@ -48,7 +48,7 @@ noextract=("electron-${_pkgver}-${CARCH}.zip")
 #source_armv7h=("electron-${_pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
-b2sums_x86_64=('7c9240cd5d0a219e34e9101f6872e1184d88ba164f3421c68b9de4b1d0c7ba87c3675a6bffa497b1a0c00ff59bf4e46eda7dc32d62349a7b71eb7c6896745115'
+b2sums_x86_64=('7c9826b087718af0fd0e279339aaa08585297795b68d71159809112768840745d7ffd96a062132001a89c23e22076f6d6de3d2de0d2f6a2a1b458d7a262263e0'
                'd72d172f2644d38d4151a4d99ea52e6dc86209fce6353b9ef39679e73113c579b02f39a9044ddbdc72344c9c5495d0f4cbcea7316a571f605b8e8010ec172bdf')
 
 prepare() {
