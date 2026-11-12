@@ -1,7 +1,7 @@
 pkgbase = python-manimgl
 	pkgdesc = Animation engine for explanatory math videos
 	pkgver = 1.7.2
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/3b1b/manim
 	arch = any
 	license = MIT

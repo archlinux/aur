@@ -4,7 +4,7 @@
 _name=manim
 pkgname=python-manimgl
 pkgver=1.7.2
-pkgrel=3
+pkgrel=1
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
 url="https://github.com/3b1b/manim"
