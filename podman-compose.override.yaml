@@ -1,0 +1,9 @@
+---
+x-podman: &podman
+  userns_mode: keep-id
+  user: "0:0"
+
+services:
+  sabnzbd: *podman
+  nzbhydra2: *podman
+  sonarr: *podman

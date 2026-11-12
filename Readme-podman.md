@@ -63,8 +63,26 @@ mkdir -p "$HOME/usenet/nzbhydra2/config"
 mkdir -p "$HOME/usenet/sonarr"/{config,tv,downloads}
 ```
 
-Ensure the applications can write to their bind mounts under your rootless user mapping.
-Do not make directories world-writable to bypass ownership problems.
+### Rootless file permissions
+
+The package installs `podman-compose.override.yaml` alongside the shared Compose file.
+Podman merges this override for startup, shutdown, and image pulls. Docker does not use it.
+
+The override sets `userns_mode: keep-id` and `user: "0:0"` for all three applications.
+The service passes your user and group IDs as `PUID` and `PGID`.
+Together, these settings map the application account to your host account while initialization starts as container root.
+Podman remains rootless; container root does not become host root.
+
+Keep data directories writable by your host account. Do not make them world-writable to bypass ownership problems.
+Existing files from older mappings can retain subordinate user IDs. Inspect their ownership before changing it.
+
+Recreate existing containers through a service restart, then inspect the application process:
+
+```bash
+podman top sabnzbd user huser args
+```
+
+The SABnzbd Python process should show your host account under `HUSER`.
 
 ### Configuration processing
 

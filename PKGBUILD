@@ -25,17 +25,19 @@ source=("file://sabnzbd-docker.service"
         "file://docker-compose.yaml"
         "file://default.env"
         "file://docker.env"
-        "file://render-compose.sh")
-md5sums=('09d427d3b1de5bb5d14d674d18b778df'
+        "file://render-compose.sh"
+        "file://podman-compose.override.yaml")
+md5sums=('423657768bc2d9479b1d4d94a071a2e8'
          'c0abd821b7fa46bf65aacb53802d8f75'
-         'ea97809a538b2c58e39c6828c6e412ed'
-         'df3cb6453c3232926a4457711abcc63c'
+         '69190df0c3b2ee74dce0cfa9476a75d7'
+         '0b59e68cdc2c05467c2824edc7517a0b'
          '0ad65ce3028c32f9fdd451c13b8ed2e1'
-         '63d924b88b035c4a52b86e3bed931412'
+         'c6e2066c6293f33a0960376236b7d3be'
          '86c471c654c795796dbef4f8f2f4bb8f'
          '7101f988ca10464d1332268f7d5126d2'
          '7ae799fcd90c612477ace9f39593d01f'
-         'e897baedbae9c51c019ebc105e6b1bb9')
+         'e897baedbae9c51c019ebc105e6b1bb9'
+         '8a8c5c133ead1bd60bc4d1e18596b087')
 noextract=()
 
 package_sabnzbd-docker() {
@@ -69,6 +71,7 @@ package_sabnzbd-podman() {
 	cp default.env ${dest} # for Unit service
 	cp docker.env ${dest}/.env # for podman-compose
 	install -m644 render-compose.sh "${dest}/render-compose.sh"
+	install -m644 podman-compose.override.yaml "${dest}/podman-compose.override.yaml"
 
     dest=${pkgdir}/usr/lib/systemd/user/
 	mkdir -p ${dest}

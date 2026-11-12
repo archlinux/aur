@@ -12,8 +12,8 @@ EnvironmentFile=%h/.podman-sabnzbd.env
 Environment="PUID=%U"
 Environment="PGID=%G"
 ExecStartPre=/bin/bash /opt/podman-sabnzbd/render-compose.sh %h/.podman-sabnzbd.env %t/sabnzbd-podman/compose.yaml
-ExecStart=podman-compose -p sabnzbd-podman -f %t/sabnzbd-podman/compose.yaml up
-ExecStop=podman-compose -p sabnzbd-podman -f %t/sabnzbd-podman/compose.yaml down
+ExecStart=podman-compose -p sabnzbd-podman -f %t/sabnzbd-podman/compose.yaml -f /opt/podman-sabnzbd/podman-compose.override.yaml up
+ExecStop=podman-compose -p sabnzbd-podman -f %t/sabnzbd-podman/compose.yaml -f /opt/podman-sabnzbd/podman-compose.override.yaml down
 
 [Install]
 WantedBy=default.target
