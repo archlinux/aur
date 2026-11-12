@@ -31,6 +31,19 @@ request. If you boot with AppArmor, the bundled profile
 (/etc/apparmor.d/usr.bin.irlumed) is loaded automatically.
 Password is always the fallback.
 EOF
+    # Where to report a problem, on first install only: the six lines of
+    # WHERE_TO_REPORT in crates/irlume-cli/src/where_to_report.rs, whose test
+    # compares every copy with it.
+    cat <<'EOF'
+
+Security problem (a photo, video, mask or another person got in,
+face sign-in worked without your face, or face data was exposed),
+or not sure? Never post it publicly. Report it privately:
+https://github.com/archledger/irlume/security/advisories/new
+or the e-mail address in SECURITY.md.
+Anything else: https://github.com/archledger/irlume/issues/new/choose
+Your own words are fine; attach the file `irlume support-report` writes.
+EOF
 }
 
 post_upgrade() {
