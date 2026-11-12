@@ -1,7 +1,7 @@
 pkgbase = rua-fork
 	pkgdesc = Opinionated fork of rua, an AUR helper written in Rust that provides control, review, patch application, and safe build options
 	pkgver = 0.20.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/J101R/rua
 	arch = x86_64
 	arch = i686

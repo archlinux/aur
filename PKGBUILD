@@ -2,7 +2,7 @@
 # Contributor: Vasili Novikov (replace "vvv" with "v" in email) vvvasya.novikov+cm3513git@gmail.com
 pkgname=rua-fork
 pkgver=0.20.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Opinionated fork of rua, an AUR helper written in Rust that provides control, review, patch application, and safe build options'
 url='https://github.com/J101R/rua'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/J101R/rua/archive/v${pkgver}.tar.gz")
@@ -28,12 +28,12 @@ sha256sums=(0c28688bf7aa504c918c45ec21a152ab70af57c4d79e35f78e1b15a1c3f7a280)
 #options+=(!strip)  # uncomment if you want readable stack traces
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname%-*}-$pkgver"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build () {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname%-*}-$pkgver"
   mkdir -p target/completions
 
   # RUSTUP_TOOLCHAIN is specified in project's .rust-toolchain.toml
@@ -43,12 +43,12 @@ build () {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname%-*}-$pkgver"
   cargo test --frozen
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname%-*}-$pkgver"
   install -Dm0755 target/release/rua "${pkgdir}/usr/bin/rua"
 
   install -Dm0644 target/completions/rua.bash "${pkgdir}/usr/share/bash-completion/completions/rua.bash"
