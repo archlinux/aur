@@ -9,4 +9,4 @@ EnvironmentFile=%h/.podman-sabnzbd.env
 Environment="PUID=%U"
 Environment="PGID=%G"
 Type=oneshot
-ExecStart=podman-compose -f /tmp/podman-compose-processed.yaml pull
+ExecStart=podman-compose -f /tmp/sabnzbd-podman-compose-%U.yaml pull
