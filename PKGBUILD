@@ -1,10 +1,10 @@
 # Maintainer: Bernardo Gomes <bernardopg@users.noreply.github.com>
 pkgname=wingdrive-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='WingDrive desktop file manager'
 arch=('x86_64')
-url='https://github.com/bernardopg/wingdrive'
+url='https://wingdrive.org'
 license=('Apache-2.0' 'GPL-3.0-only')
 depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'webkit2gtk-4.1' 'libsoup3' 'cairo' 'gdk-pixbuf2' 'dbus' 'libheif' 'libva' 'xdg-utils' 'libayatana-appindicator')
 optdepends=('gst-plugins-good: audio and video playback in previews'
@@ -17,10 +17,10 @@ optdepends=('gst-plugins-good: audio and video playback in previews'
 provides=('wingdrive')
 conflicts=('wingdrive' 'wingdrive-nightly')
 options=('!strip' '!debug')
-_upstream_version=3.1.0
-source=("WingDrive-3.1.0-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.1.0-x86_64.AppImage"
+_upstream_version=3.1.1
+source=("WingDrive-3.1.1-x86_64.AppImage::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/WingDrive-3.1.1-x86_64.AppImage"
         "LICENSE::https://github.com/bernardopg/wingdrive/releases/download/v${_upstream_version}/LICENSE")
-sha256sums=('fa1e921730a6e9147618aec7755fd97e512f291a2d35b4528e9e0316b0b7400f' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
+sha256sums=('36856475e2086fd3d8c185353be519d6b4525aeb563f8992eacc34cdedc3ba8c' '57b9dfbad7aaae518f06685835124ca850c722aceef664feaf6a05144b0e7ae8')
 
 # The AppImage carries an Ubuntu GTK/WebKit stack. Loading it next to Arch's
 # libraries breaks host tools (gdbus) and crashes WebKit on exit, so only the
@@ -29,8 +29,8 @@ sha256sums=('fa1e921730a6e9147618aec7755fd97e512f291a2d35b4528e9e0316b0b7400f' '
 _bundled_libs='libavcodec.so.* libavfilter.so.* libavformat.so.* libavutil.so.* libpostproc.so.* libswresample.so.* libswscale.so.*'
 
 prepare() {
-  chmod +x "WingDrive-3.1.0-x86_64.AppImage"
-  "./WingDrive-3.1.0-x86_64.AppImage" --appimage-extract > /dev/null
+  chmod +x "WingDrive-3.1.1-x86_64.AppImage"
+  "./WingDrive-3.1.1-x86_64.AppImage" --appimage-extract > /dev/null
   find squashfs-root -type d -exec chmod 755 {} +
 }
 
@@ -75,6 +75,19 @@ DESKTOP
   # No D-Bus activation file for org.freedesktop.FileManager1: the name
   # belongs to the user's default file manager. WingDrive claims it at runtime
   # only when it is the default for inode/directory (filemanager1.rs).
+  # The FileChooser portal backend (DESK-051). The portal only uses it once
+  # the Settings switch names it in portals.conf, so installing it changes
+  # nothing by itself; activation starts WingDrive in the tray for a request.
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/xdg-desktop-portal/portals/wingdrive.portal" <<'PORTAL'
+[portal]
+DBusName=org.freedesktop.impl.portal.desktop.wingdrive
+Interfaces=org.freedesktop.impl.portal.FileChooser;
+PORTAL
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.wingdrive.service" <<'SERVICE'
+[D-BUS Service]
+Name=org.freedesktop.impl.portal.desktop.wingdrive
+Exec=/usr/bin/wingdrive --hidden
+SERVICE
   if [[ -d squashfs-root/usr/share/icons ]]; then
     install -d "$pkgdir/usr/share/icons"
     cp -a squashfs-root/usr/share/icons/. "$pkgdir/usr/share/icons/"
