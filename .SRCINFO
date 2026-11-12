@@ -1,7 +1,7 @@
 pkgbase = wkgtk-html2pdf
 	pkgdesc = C++ Library with CLI tool to convert HTML to PDF, A modern replacement for wkhtmltopdf
 	pkgver = 1.0.99
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wkgtk-html2pdf.com
 	install = wk2gtkpdf.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = wkgtk-html2pdf
 	depends = json-c
 	depends = libsystemd
 	depends = xorg-server-xvfb
-	source = https://github.com/Timh1970/wkgtk-html2pdf/archive/v1.0.13.tar.gz
+	source = https://github.com/Timh1970/wkgtk-html2pdf/archive/v1.0.99.tar.gz
 	sha256sums = 806befd87d49f55f526b2e4971de2374ca79e58a2dc1a090f49a4d7ad3bb14de 
 
 pkgname = wkgtk-html2pdf
