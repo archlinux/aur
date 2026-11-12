@@ -3,7 +3,7 @@
 _pkgauthor=meowrain
 _pkgname=localsend-go
 pkgname=${_pkgname}-bin
-pkgver=1.2.7
+pkgver=1.3.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="CLI implementation of LocalSend protocol in Go"
@@ -23,9 +23,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('28621f9484984c64ca4c97486ba7edc4aaee3e23cc602279de073cf252289d72'
-            'f7ae1a26590541dda2f2bce92bc5487ae2fd3468d773fa92adeabbdb56f15884')
-sha256sums_x86_64=('103d1a7fcfdcfc4149d3b877e37ccca95aa4de80d9d1a08695bf43ce58463174')
-sha256sums_aarch64=('1197a3d7b18b051eec289326c11eb394b171075699fc1505fbcaad04dcf5a535')
+            '7326ff7a39e63d2a101fa5969b44086d0f4e62c31aff7e26819d56144e8928e2')
+sha256sums_x86_64=('6765b4e45f82be8887a00ff08d048337b78c55dcbeb9d5a6c5cf9774c5116744')
+sha256sums_aarch64=('ae5c3fa06aae4904980c8e7c3de3457e82a91565da673eec1cbe4ff9c0163ae0')
 
 
 package() {
