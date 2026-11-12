@@ -1,6 +1,6 @@
 pkgbase = planisphere-bin
 	pkgdesc = Elite Dangerous expedition flight planner, fleet carrier router, and astrometric telemetry terminal
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/amot-dev/planisphere
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = planisphere-bin
 	depends = webkit2gtk-4.1
 	provides = planisphere
 	conflicts = planisphere
-	source = https://github.com/amot-dev/planisphere/releases/download/v0.3.2/planisphere-v0.3.2-linux-amd64.tar.gz
-	sha256sums = 0c654ff095de4dfaf6c32c8e9d4907cd61d29cbdda45927d265d8068706f6f1c
+	source = https://github.com/amot-dev/planisphere/releases/download/v0.4.0/planisphere-v0.4.0-linux-amd64.tar.gz
+	sha256sums = 40bef6e448499dd865a177604ea2982cd3af09923d5f03429f9a7674359e5ee8
 
 pkgname = planisphere-bin
