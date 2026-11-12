@@ -1,0 +1,25 @@
+pkgbase = comic-caret
+	pkgdesc = A hand-drawn monospaced font for code and terminals, derived from Comic Shanns Mono
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/sunshine-syz/comic-caret
+	arch = any
+	license = MIT
+	provides = comic-caret
+	options = !strip
+	source = https://github.com/sunshine-syz/comic-caret/releases/download/v2.7/ComicCaret-2.7.zip
+	source = https://github.com/sunshine-syz/comic-caret/releases/download/v2.7/ComicCaretNerdFont-2.7.zip
+	sha256sums = b7466674cb82ea83afe51401e64902db76ac364f975fe8c897b9a0b0d0e30231
+	sha256sums = e7580ea0c9ef3dedc6b504c0e5f1db453976acbac2ff6bc87d3324eb87b8a171
+
+pkgname = ttf-comic-caret
+	pkgdesc = A hand-drawn monospaced font for code and terminals, derived from Comic Shanns Mono (TTF)
+
+pkgname = ttf-comic-caret-nerd
+	pkgdesc = A hand-drawn monospaced font for code and terminals, derived from Comic Shanns Mono (TTF) (Nerd)
+
+pkgname = otf-comic-caret
+	pkgdesc = A hand-drawn monospaced font for code and terminals, derived from Comic Shanns Mono (OTF)
+
+pkgname = otf-comic-caret-nerd
+	pkgdesc = A hand-drawn monospaced font for code and terminals, derived from Comic Shanns Mono (OTF) (Nerd)

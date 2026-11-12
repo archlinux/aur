@@ -1,0 +1,5 @@
+[comic-caret]
+source = "github"
+github = "sunshine-syz/comic-caret"
+use_latest_release = true
+prefix = "v"
