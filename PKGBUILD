@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper and Parakeet"
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '0ede45ab999675db76b21196704b0be12a52ddd7c0b7a9a0fc4c86946c610906'
+    'a68c14937584ec97e200dad2ea97404a283e096f8349e5d01153333cdce7b68e'
     'ff1a9053feb509ff9d7729703355541ae9690073a6b1c40eb692c962e0dc1720'
 )
 
