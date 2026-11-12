@@ -1,7 +1,7 @@
 pkgbase = bettbox-bin
 	pkgdesc = Another Better Network Toolbox
 	pkgver = 1.19.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/appshubcc/Bettbox
 	install = bettbox.install
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = bettbox-bin
 	sha256sums = 9d8b0a54499c9325ed64d987184a229af75c34600ca28afd016dff43ebb53cd0
 	sha256sums = ba5165cd9c2fa422507323c1942bea73c001613fb5b4ffeb0d41c5c451709810
 	source_x86_64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.8/Bettbox-1.19.8-linux-amd64.deb
-	sha256sums_x86_64 = bb3de11b91a71c3d8e72d6856954fe86aa90c9dd1e1f43d1be805b9f0c1fd6ac
+	sha256sums_x86_64 = 2c522c41bd7b13a320b6a329fe3c5c56864436d30025b75251fd3cf9723f0b86
 	source_aarch64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.8/Bettbox-1.19.8-linux-arm64.deb
-	sha256sums_aarch64 = 47a7418f1b5a05f1d5385e18ed26781b9c4e10feec0f93393bacfc7f1a59c380
+	sha256sums_aarch64 = a814e6ef74387d086c66f0b113022e60e8f8fc52ea2e25fd090c2acce2f83808
 
 pkgname = bettbox-bin
