@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-gui
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Feature rich Discord 'TUI' client. Windowed 'GUI' version using GTK3."
 arch=('x86_64')
