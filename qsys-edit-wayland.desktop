@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Quartus Platform Designer (Wayland)
+Comment=Platform Designer and Java IP editors using WLToolkit
+Icon=/opt/intelFPGA/25.1/quartus/adm/quartusii.png
+Exec=qsys-edit-wayland %f
+TryExec=qsys-edit-wayland
+Terminal=false
+Categories=Development;Electronics;

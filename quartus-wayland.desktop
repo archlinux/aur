@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Application
+Name=Quartus Prime Lite (Wayland)
+GenericName=FPGA IDE
+Comment=Quartus Prime Lite with native Wayland support
+Icon=/opt/intelFPGA/25.1/quartus/adm/quartusii.png
+Exec=quartus-wayland %f
+TryExec=quartus-wayland
+Terminal=false
+Categories=Development;IDE;
+Actions=MegaWizard;PlatformDesigner;
+
+[Desktop Action MegaWizard]
+Name=MegaWizard (Wayland)
+Exec=qmegawiz-wayland
+
+[Desktop Action PlatformDesigner]
+Name=Platform Designer (Wayland)
+Exec=qsys-edit-wayland

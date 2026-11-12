@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Quartus MegaWizard (Wayland)
+Comment=Configure Quartus IP with native Wayland support
+Icon=/opt/intelFPGA/25.1/quartus/adm/quartusii.png
+Exec=qmegawiz-wayland %f
+TryExec=qmegawiz-wayland
+Terminal=false
+Categories=Development;Electronics;

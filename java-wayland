@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+set -e
+
+runtime_home=${QUARTUS_WAYLAND_HOME:-/opt/quartus-wayland}
+: "${QUARTUS_WAYLAND_JAVA_HOME:=$runtime_home/jbr}"
+: "${QUARTUS_WAYLAND_ACTIVATION_JAR:=$runtime_home/lib/javax.activation-1.2.0.jar}"
+if [[ ! -x "$QUARTUS_WAYLAND_JAVA_HOME/bin/java" || ! -r "$QUARTUS_WAYLAND_JAVA_HOME/lib/libawt_wlawt.so" ]]; then
+    printf 'JetBrains Runtime with WLToolkit not found: %s\n' "$QUARTUS_WAYLAND_JAVA_HOME" >&2
+    exit 1
+fi
+if [[ ! -r "$QUARTUS_WAYLAND_ACTIVATION_JAR" ]]; then
+    printf 'Java Activation library missing: %s\n' "$QUARTUS_WAYLAND_ACTIVATION_JAR" >&2
+    exit 1
+fi
+args=()
+while (($#)); do
+    case $1 in
+        -splash:*) shift ;;
+        -cp|-classpath|--class-path)
+            [[ $# -ge 2 ]] || { printf 'Missing Java class path.\n' >&2; exit 2; }
+            args+=("$1" "$2:$QUARTUS_WAYLAND_ACTIVATION_JAR")
+            shift 2 ;;
+        *) args+=("$1"); shift ;;
+    esac
+done
+exec "$QUARTUS_WAYLAND_JAVA_HOME/bin/java" \
+    -Dawt.toolkit.name=WLToolkit \
+    -Djava.awt.headless=false \
+    -Dcom.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize=true \
+    "${args[@]}"

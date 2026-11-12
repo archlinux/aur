@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Questa FPGA (HiDPI)
+Comment=Questa with sharp fonts and enlarged icons inside Gamescope
+Icon=/opt/intelFPGA/25.1/questa_fse/questa.gif
+Exec=questa-hidpi
+TryExec=questa-hidpi
+Terminal=false
+Categories=Development;Electronics;

@@ -1,0 +1,75 @@
+#!/usr/bin/bash
+set -e
+
+config=${XDG_CONFIG_HOME:-$HOME/.config}/quartus-wayland/config
+[[ ! -r "$config" ]] || source "$config"
+: "${QUARTUS_ROOTDIR:=/opt/intelFPGA/25.1/quartus}"
+: "${QUARTUS_WAYLAND_HOME:=/opt/quartus-wayland}"
+
+if [[ -z ${QUARTUS_WAYLAND_QT6_PREFIX:-} ]]; then
+    for prefix in /opt/qt657-wayland "${XDG_DATA_HOME:-$HOME/.local/share}/quartus-wayland/qt6" "$HOME/qt657/install"; do
+        if [[ -r "$prefix/plugins/platforms/libqwayland-generic.so" ]]; then
+            QUARTUS_WAYLAND_QT6_PREFIX=$prefix
+            break
+        fi
+    done
+fi
+
+case ${0##*/} in
+    qmegawiz-wayland) tool=qmegawiz ;;
+    qsys-edit-wayland) tool=qsys-edit ;;
+    *) tool=quartus ;;
+esac
+if [[ ${1:-} == --tool ]]; then
+    [[ $# -ge 2 ]] || { printf 'Usage: quartus-wayland --tool NAME [arguments...]\n' >&2; exit 2; }
+    tool=$2
+    shift 2
+fi
+case $tool in
+    qsys-edit) executable=$QUARTUS_ROOTDIR/sopc_builder/bin/$tool ;;
+    quartus|qmegawiz|qmegawizq|mega_*|quartus_*) executable=$QUARTUS_ROOTDIR/linux64/$tool ;;
+    *) printf 'Unsupported Quartus tool: %s\n' "$tool" >&2; exit 2 ;;
+esac
+if [[ ! -r "$QUARTUS_ROOTDIR/adm/qenv.sh" || ! -x "$executable" ]]; then
+    printf 'Quartus tool not found: %s\nSet QUARTUS_ROOTDIR to your Quartus installation.\n' "$executable" >&2
+    exit 1
+fi
+if [[ -z ${QUARTUS_WAYLAND_QT6_PREFIX:-} || ! -r "$QUARTUS_WAYLAND_QT6_PREFIX/plugins/platforms/libqwayland-generic.so" ]]; then
+    printf 'Qt 6.5.7 Wayland runtime missing. Set QUARTUS_WAYLAND_QT6_PREFIX.\n' >&2
+    exit 1
+fi
+
+export QUARTUS_ROOTDIR
+export CMD_NAME=$tool
+# qenv.sh includes probes whose nonzero status is expected.
+set +e
+source "$QUARTUS_ROOTDIR/adm/qenv.sh"
+set -e
+if [[ ${QENV_STATUS:-1} != 0 ]]; then
+    printf 'Quartus environment initialization failed (QENV_STATUS=%s).\n' "${QENV_STATUS:-unset}" >&2
+    exit 1
+fi
+export QSYS_ROOTDIR=$QUARTUS_ROOTDIR/sopc_builder/bin
+if [[ -d "$QUARTUS_WAYLAND_HOME/questa/bin" ]]; then
+    export PATH=$QUARTUS_WAYLAND_HOME/questa/bin:$PATH
+fi
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM_PLUGIN_PATH=$QUARTUS_WAYLAND_QT6_PREFIX/plugins/platforms
+export QT_PLUGIN_PATH=$QUARTUS_WAYLAND_QT6_PREFIX/plugins:$QUARTUS_ROOTDIR/linux64/qt6/plugins
+export QT_WAYLAND_SHELL_INTEGRATION=xdg-shell
+export LD_LIBRARY_PATH=$QUARTUS_ROOTDIR/linux64:$QUARTUS_WAYLAND_QT6_PREFIX/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+# Arch-built plugins need the current C++ runtime; retain the vendor Qt ABI.
+export LD_PRELOAD=/usr/lib/libstdc++.so.6${LD_PRELOAD:+:$LD_PRELOAD}
+unset QT_QPA_PLATFORMTHEME
+
+# Native Java launchers inherit this override, including IP editors opened
+# from Quartus. The shim passes Wayland options on java's command line.
+if [[ -x "$QUARTUS_WAYLAND_HOME/java/bin/java" ]]; then
+    export NATIVE_WRAP_JRE_DIR_OVERRIDE=$QUARTUS_WAYLAND_HOME/java
+    export QUARTUS_WAYLAND_HOME
+fi
+if [[ $tool == qsys-edit && ! -x ${NATIVE_WRAP_JRE_DIR_OVERRIDE:-/nonexistent}/bin/java ]]; then
+    printf 'Wayland Java runtime missing. Run quartus-wayland-setup first.\n' >&2
+    exit 1
+fi
+exec "$executable" "$@"

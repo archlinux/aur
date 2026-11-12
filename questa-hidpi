@@ -1,0 +1,59 @@
+#!/usr/bin/bash
+set -e
+
+config=${XDG_CONFIG_HOME:-$HOME/.config}/quartus-wayland/config
+[[ ! -r "$config" ]] || source "$config"
+: "${QUARTUS_WAYLAND_HOME:=/opt/quartus-wayland}"
+: "${QUESTA_ROOTDIR:=/opt/intelFPGA/25.1/questa_fse}"
+vsim=$QUESTA_ROOTDIR/bin/vsim
+[[ -x "$vsim" ]] || { printf 'Questa not found: %s\n' "$vsim" >&2; exit 1; }
+export QUESTA_ROOTDIR
+# Quartus and Questa ship different Tcl/Tk runtimes.
+export LD_LIBRARY_PATH=$QUESTA_ROOTDIR/linux_x86_64${QUARTUS_ORIG_LIBPATH:+:$QUARTUS_ORIG_LIBPATH}
+
+# NativeLink also queries the simulator version and runs batch jobs here.
+for argument in "$@"; do
+    case $argument in
+        -c|-batch|-version|-help) exec "$vsim" "$@" ;;
+    esac
+done
+if [[ ${QUESTA_HIDPI_ACTIVE:-0} == 1 ]]; then
+    exec "$vsim" "$@"
+fi
+command -v gamescope >/dev/null || { printf 'Install gamescope to use the Questa HiDPI launcher.\n' >&2; exit 1; }
+if [[ ! -r "$QUARTUS_WAYLAND_HOME/questa-hidpi.tcl" ]]; then
+    printf 'Questa HiDPI settings missing: %s/questa-hidpi.tcl\n' "$QUARTUS_WAYLAND_HOME" >&2
+    exit 1
+fi
+
+# Use the physical output resolution for both rendering and presentation.
+# Scaling is applied by Tk to fonts and icons before they are rendered.
+read -r width height output_scale < <(python3 - <<'PY'
+import json, os, re, subprocess
+resolution = os.environ.get('QUESTA_HIDPI_RESOLUTION', '')
+width, height, scale = 3120, 2080, 2
+try:
+    outputs = json.loads(subprocess.check_output(['niri', 'msg', '--json', 'outputs'], stderr=subprocess.DEVNULL))
+    output = next(o for o in outputs.values() if o.get('current_mode') is not None and o.get('logical'))
+    mode = output['modes'][output['current_mode']]
+    width, height, scale = mode['width'], mode['height'], output['logical']['scale']
+except (OSError, ValueError, StopIteration, KeyError, subprocess.CalledProcessError):
+    pass
+if resolution:
+    match = re.fullmatch(r'([1-9]\d*)x([1-9]\d*)', resolution)
+    if not match:
+        raise SystemExit('QUESTA_HIDPI_RESOLUTION must be WIDTHxHEIGHT')
+    width, height = map(int, match.groups())
+print(width, height, scale)
+PY
+)
+[[ -n $width && -n $height ]] || exit 1
+export QUESTA_HIDPI_SCALE=${QUESTA_HIDPI_SCALE:-$output_scale}
+export QUESTA_HIDPI_TCL=$QUARTUS_WAYLAND_HOME/questa-hidpi.tcl
+export QUESTA_HIDPI_ACTIVE=1
+unset QT_PLUGIN_PATH QT_QPA_PLATFORM_PLUGIN_PATH QT_QPA_PLATFORMTHEME
+if (($# == 0)); then set -- -gui; fi
+exec gamescope --backend wayland --fullscreen \
+    -w "$width" -h "$height" -W "$width" -H "$height" \
+    -S integer -F nearest -r 60 --force-windows-fullscreen \
+    -- "$vsim" "$@"
