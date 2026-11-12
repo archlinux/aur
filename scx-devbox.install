@@ -1,0 +1,23 @@
+# shellcheck shell=bash
+# Sourced by pacman (no shebang).
+post_install() {
+  cat <<'MSG'
+==> scx_devbox is installed but not running. Only one sched_ext scheduler can
+    run at a time, so stop any other first (scxctl stop), then:
+      systemctl enable --now scx_devbox
+    Leave scdr's own [sched_ext] switching off while it runs; scdr's rules
+    and roles keep working underneath. Back to EEVDF:
+      systemctl disable --now scx_devbox
+MSG
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet scx_devbox; then
+    echo "==> Restart scx_devbox to use the new version: systemctl restart scx_devbox"
+  fi
+}
+
+pre_remove() {
+  # Unloading returns the system to EEVDF straight away.
+  systemctl stop scx_devbox 2>/dev/null || true
+}
