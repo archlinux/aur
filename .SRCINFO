@@ -27,6 +27,7 @@ pkgbase = simplex-desktop-bin
 	depends = openssl
 	depends = xdg-utils
 	depends = zlib
+	depends = zstd
 	provides = simplex-desktop
 	conflicts = simplex-desktop
 	options = !debug
