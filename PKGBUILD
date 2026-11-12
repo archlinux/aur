@@ -3,7 +3,7 @@
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics-git
-pkgver=0.12.snapshot.r2.196a43d9
+pkgver=0.13.snapshot.r0.9e020710
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -87,4 +87,5 @@ package() {
     -t "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/bin/butteraugli_main "$pkgdir"/usr/bin/butteraugli
   ln -s /usr/bin/ssimulacra_main "$pkgdir"/usr/bin/ssimulacra
+  rm -f "$pkgdir"/usr/bin/djxl_fuzzer_corpus
 }
