@@ -2,8 +2,8 @@
 
 _pkgname=privacynotes
 pkgname=${_pkgname}-bin
-pkgver=0.735.0
-pkgrel=2
+pkgver=0.757.0
+pkgrel=1
 pkgdesc='End-to-end encrypted notes, tasks, files, passwords, journal and bookmarks. (deb version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LifetimeLabsDev/PrivacyNotes.app'
@@ -27,8 +27,8 @@ options=(!debug)
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/PrivacyNotes_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/PrivacyNotes_${pkgver}_arm64.deb")
-sha256sums_x86_64=('4106895ec01c1558d36e6bc96dee6daa376d91698ecbb331de4bdbc4dd9c9b68')
-sha256sums_aarch64=('896409150472b65c23b7d8d3d4a85d59121e9cb22a02b053c146178ea6552428')
+sha256sums_x86_64=('4e8d497bd1205b181c89300dc06b75e1eed44db29ffcf8c8c37d2e5af87f2440')
+sha256sums_aarch64=('b6333fdaeb68f7110885f50b5745d543ef6b870b767ce56ac11fabdbeda6884c')
 
 package() {
 
