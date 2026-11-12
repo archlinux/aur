@@ -1,7 +1,7 @@
 pkgbase = texlive-minted-git
 	pkgdesc = Git version of minted with conditional local Python selection
-	pkgver = 0
-	pkgrel = 1
+	pkgver = 3.8.0.r355.g7cf9042
+	pkgrel = 2
 	url = https://github.com/arkadesOrg/minted
 	install = texlive-minted-git.install
 	arch = any

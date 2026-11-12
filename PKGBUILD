@@ -1,4 +1,4 @@
-# Maintainer: arkadesOrgAssist
+# Maintainer: Dominik Kummer <admin@arkades.org>
 # Experimental alternative launcher for the TeX Live minted installation.
 #
 # This package deliberately does not own /usr/bin/latexminted.  That symlink
@@ -7,8 +7,8 @@
 # Source branch: conditional-local-python
 
 pkgname=texlive-minted-git
-pkgver=0
-pkgrel=1
+pkgver=3.8.0.r355.g7cf9042
+pkgrel=2
 pkgdesc='Git version of minted with conditional local Python selection'
 arch=('any')
 url='https://github.com/arkadesOrg/minted'
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/minted"
 
-    local upstream_version revision commit
+    # local upstream_version revision commit
     upstream_version=$(grep -m1 -oE 'v[0-9]+([.][0-9]+)+' \
         latex/minted/minted.sty | sed 's/^v//')
     revision=$(git rev-list --count HEAD)
