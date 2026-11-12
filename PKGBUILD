@@ -2,14 +2,14 @@
 # Binary assets are produced by the main repository's Gitea release workflow.
 pkgbase=deskwaifu-bin
 pkgname=('deskwaifu-bin' 'deskwaifu-ocr-bin')
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc='DeskWaifu application and all default plugins'
 arch=('x86_64')
 url='https://github.com/ad2248/DeskWaifu'
 license=('LicenseRef-Live2D-Open-Software' 'LicenseRef-Live2D-Proprietary' 'BSD-3-Clause' 'MIT' 'Unlicense')
 options=('!strip' '!debug')
-_tag=0.2.4
+_tag=0.2.5
 _upstream_pkgrel=1
 _main="upstream-deskwaifu-bin-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
 _ocr="upstream-deskwaifu-ocr-bin-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
@@ -19,8 +19,8 @@ source=(
 )
 noextract=("$_main" "$_ocr")
 sha256sums=(
-  'd183d7f1aea0adfa3fd9c560dc5e732a4f8fafb81a413b812dd2688b7e8b8beb'
-  '57ae342144c6b091e86b5ef14508a741e8ce84f20ddf798d608c7a15fcf90914'
+  'f2b427546db930f7a665240d054e3702bfda9f88d511785af25a8492ff99a7c6'
+  '76e6baee3fbfcfd09c6fbd33ac365dca3591c36452b7775beffe585a93a5b740'
 )
 
 package_deskwaifu-bin() {
