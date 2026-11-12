@@ -1,0 +1,22 @@
+pkgbase = helix-db-bin
+	pkgdesc = CLI for an OLTP graph database with vector and full-text search (prebuilt)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://github.com/HelixDB/helix-db
+	install = helix-db.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	optdepends = docker: run local instances
+	optdepends = npm: TypeScript queries and agent skill installs
+	optdepends = podman: run local instances
+	provides = helix-db=3.7.0
+	conflicts = helix-db
+	source_x86_64 = helix-3.7.0-x86_64-unknown-linux-gnu::https://github.com/HelixDB/helix-db/releases/download/v3.7.0/helix-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = eccac5d127462ff2e760747f5bc13053c8a7ef86277fe43dd45b284d5df0740f
+	source_aarch64 = helix-3.7.0-aarch64-unknown-linux-gnu::https://github.com/HelixDB/helix-db/releases/download/v3.7.0/helix-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 2dd4f48763621b5a44e127ac94ece7ec20f14cec7899d5514dc1294310ef3109
+
+pkgname = helix-db-bin
