@@ -30,7 +30,7 @@
 # are the same while the current release is the LTS one; when powershell moves on to the next version,
 # this one stays with the LTS series.
 pkgname=powershell-lts
-pkgver=7.6.9
+pkgver=7.6.10
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (LTS release)"
 arch=(x86_64 aarch64)
@@ -42,14 +42,16 @@ _dotnetsdkver="10.0"
 _psnativecommit="f24d5494b373de20ec3e3d2fdc7c3fc98af1f9f1"
 # The modules PowerShell bundles (src/Modules/PSGalleryModules.csproj) are built from source as well.
 # Most of their releases aren't tagged, so these are commits:
-_psresourcegetver="1.2.0"
+_psresourcegetver="1.2.1"
 _psreadlinever="2.4.5"
 # - PowerShellGet 2.2.5: last commit (2.2.5.1) of the archived PowerShellGetv2 repository
 _psgetcommit="3b38eec8742d6b6f26cf0f010e0dd95691ed5ade"
 # - PackageManagement 1.4.8.1: release commit, later ones drop .NET Core support
 _onegetcommit="923260b2f2cbc5b66d90ef2e31f240b9d8579a74"
-# - Microsoft.PowerShell.Archive 1.2.6: release commit on the servicing branch
-_archivecommit="87428e309898a728fb0287eab31b5cd214ceb9ba"
+# - Microsoft.PowerShell.Archive 1.2.7: its package from the PowerShell Gallery, a script module whose
+#   files are its source, as the release isn't in its repository yet (the servicing branch ends at
+#   1.2.6); back to the release commit once it is
+_archivever="1.2.7"
 # - Microsoft.PowerShell.ThreadJob 2.2.0: release commit
 _threadjobcommit="21d19c867ef05d22fe70aa39e45ab0c479a930e0"
 # - Microsoft.PowerShell.Pager 1.0.0, a dependency of PSReadLine: last commit of the archived repository
@@ -116,6 +118,8 @@ checkdepends=(
   xclip         # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
 )
 install=powershell.install
+# Unpacked into its folder in prepare()
+noextract=("Microsoft.PowerShell.Archive-$_archivever.nupkg")
 
 source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/PowerShell/PowerShell-Native.git#commit=$_psnativecommit"
@@ -123,7 +127,7 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "git+https://github.com/OneGet/oneget.git#commit=$_onegetcommit"
   "git+https://github.com/OneGet/NuGetProvider.git"
   "git+https://github.com/PowerShell/PSResourceGet.git#tag=v$_psresourcegetver"
-  "git+https://github.com/PowerShell/Microsoft.PowerShell.Archive.git#commit=$_archivecommit"
+  "Microsoft.PowerShell.Archive-$_archivever.nupkg::https://www.powershellgallery.com/api/v2/package/Microsoft.PowerShell.Archive/$_archivever"
   "git+https://github.com/PowerShell/PSReadLine.git#tag=v$_psreadlinever"
   "git+https://github.com/PowerShell/Pager.git#commit=$_pagercommit"
   "git+https://github.com/PowerShell/MarkdownRender.git#commit=$_markdownrendercommit"
@@ -134,7 +138,6 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "psmodulepath-combined-paths.patch"
   "mmi-optional.patch"
   "telemetry-optional.patch"
-  "test-json-list-output.patch"
   "help-cache-reset.patch"
   "wayland-clipboard.patch"
   "system-drawing-windows-only.patch"
@@ -150,13 +153,13 @@ source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
   "update-pwsh-deps.ps1"
   "update-pwsh-deps"
   "powershell-deps.hook")
-sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd784255b61790322ba17e912edb3942b77df752eacb39f062128647418a502'
+sha512sums=('144a72752fceddcd89b741d745d9ace6bbdbef5275c63680c5a55d3bff9ee7f790ba4f49b478ca36b2ed15d23b992fab84f96cb04608a953aff6ef99478f5b3e'
   '673e931ea136511fa2c638035334a7ea1800aafb1d4100d94cf0adf1086888f765a3d92f9f294060c5f088eab4d4c12c2d70cc5dc5a4ec4f56b80f26d16cc644'
   '326b55c2eff49b21b427812c394afd000ef3e5b4da86dca087fb897e39e423be3b5c105e087f79da5dc39b0b268a9c0876f198ab67b845f31ee765caa4694aac'
   'c9efa8a5c497dad6dfb773c17f01e004f65e842bac4612c5842563efe0d07fff5d64a1729c8436e4bcdb5f4cac24202168855fded3c31e1cff764303718883c3'
   'SKIP'
-  '54d081330468a9629f5aa8166defef423cd923f5a53065a4657ab15c691946f0c04c398525a99bdc3652a4d1bbf0965f4575e814216f3ae16e83d08127eeaadb'
-  '6c3004608cc1d2089712e8400001a4557c0de8e1e7e755184cd3e683e6b2ba497f373c1f77cd3a52d2fcd2045ee089957095d54fb899e02bf7185cbe8ad17ccd'
+  '6770298e0f8950731a38e238ce8523a70a041bc4242bbc31844ac291896a7f9dcb909ca987c1edfc6170abb1aa4a8d5c7d7227830fac394bebbe2857692c56ef'
+  'f3b3119d572b94de1f2914e2bccda5b413759278243d1e2142021be7df5c9d5cf30e2328738a4a5ac8aa4d7d180cfd5148e6b4218991c609224c7705620cad8c'
   '4b4ac87e70c04e4d85ac4b772024c3cf5aec574259654bc9f58f9d06cccacfd84d68415de87e5804f7beb33ae8679b47d58221a014c7b55e960eba93e70cfaae'
   '177593575d59629bb9f8020a52205c9617170b3212033ab21787d8739ac3af3d283b706ee607f29d6473415cee9ed5a8d23a4d53e90d52360a72f796f9b1bda8'
   'f5527cf012bd495bc54107e446448b12895d78c0f1653ec29b9dc1110d028cdc36feef7dbc281ae70aae14b735156024ccaac3f3049f7cf4a7555116eaf3eef6'
@@ -167,29 +170,28 @@ sha512sums=('4b0cc568a858d1c8fa38a6fc8a48e7c3d7c00bdb182f8c1905d11ed73d44e4111dd
   '79e554984a743d8ced1789a7103ed684e3af37a3b415820fb7da5e51f5f513d5131eb813b0e9b5dbeace9cb06558a548212fa503600d16c301fcc53cb483e423'
   'c510ec133160d0f8aafc3ac37e3db7a2854f7e0bb67d22a287fa5ffbf9f3e205ed2a73a04413cf7f412290062b814cdbefb8445991447454db1dc27e71d78ba9'
   '01cc421451dda2428b3a62fa6476c87bb00b79277098dd3f02ee0095da7fe706565a5c4e449dd4b43e5b5651bb929a685e74a139c0f30fa122fbfa36d79e734c'
-  'cf70b41d0ee4b4282f38e9277b743b2749a0e728cb43123304f6218ee48a026e9bc26493ccb23b50991f453188a29559e6fea799a11c4701fe7719d8ec18e485'
   '50912ff845d107ca0b3b3401b8253289bb8ee00f06191e657a37b2e49dd48fa56b1cf1f1d7d63cf54b123e1d88e2fc9b7f13341fd5d9c0609ccc579a86057fef'
   '3f82a01dd2077f29e067cfa449f88172a7a78b4318d1fd0ffbe7f23043134b654dc574500353e57b2c508b9c044b63660bb1fa3156704c072b098855126cf556'
-  'a805ef8f83ac366a2519e9c30efdb0842d9bede92f30686826fcfaf2904c395c0c4128b35a122c43dfd4c07231eea8b78807026bb3034f213736450bab0e65fb'
+  '43471f378ab6201a42e8b312e0757bacf19575436386999790f739e1682cb1146644a543fc1aff5624ef35b280e29e0dbb9b8ef272578fd9813a75debbe3376e'
   '9a08f25fceaf92c01dc178d4e54f41342de24be4710c0c57decc4cb80cf8a73cf73301d4eb23a7815d953a7e6ac16b92f1da3604833f373d6ef6904ab7b0e1ac'
   'd778770716591c573c8526a647eaafb4788338e2cc076b2c05d1e450cc8068f3cd101d4f415fd631b127344998038e7656ad454de14c6f442c19513250ff92f3'
   '7f0df1c1eadfc39f7075cf6de7b1d2b99959042b2a3ee1cc0158ead26128ae8086463c563178b22c325c965352d5d756d2b02abf1137ad91b116fd753aeed8b6'
   '330a83bbd7bf6f6f7c048fabc506724fbce3a4abb2579b7ae1ef528eea194d9424ce7d6419fab28f7c7a3b46a1f2fc65fd7ecaefe3413fee31961b4a6f068ede'
   'f48a6fb7a90ce1af85f0e7587b0d38ec614e81ce58fe32534ec8c7eb3aef1b34d31d9fceb8935cc8f526e3ec12a5ea3c9d768497a52d3be4e9a12f51b717708a'
   '0e1d6cc06c5ba0fcb465d3560d15dc63372e612be3c398cac09f225a40c6a8032781733e1aeda503ea64da97c9b9470fc5554bca2f6254ae45b9d0b3cf8d37a9'
-  '0ff265aac61ee9efb2895b6f5151a9d9bdeafc51e30db39ea80bfb7d32d706b79a781d99d7d6770e76640f4abadc7aeffeef25429fb4c1a660faaf1531089aaf'
+  '7a3d5bf415d68cc9994a34723287d2903abdc42d5cd08978dc9725693ec0c7c4484017b8be977d9f8fe23f26ce69ff0d824a03172741730fa84b4829dd7817a8'
   '647b8486bbb67395fd195d9d09cd248ad5eb811b594efc0dd3e12559c378ee879cdec0a8dde39a154dd818b3ce668e68d129b7a6bff2650e73a3a3390c76820b'
   '1f4c1a2aeb19b0ed83142fb55e6ca938ecac3ec8f5a7095f85e000eef79729f48719ea83c04e8c2aafdbcbafa7faddd1b67555107e850094506346470b1c15c7'
   '501e304575a23c12d2e8466de14b51d1b4d25d72a64c633ea9170a6d64ef65df38fb542e1f42c6ffdaa5a55dbbfbca2327ff5c81b77cc6019fda717dbef68351'
   '1a6acc32f7cecbf0e32f540870cc1d19c5f6fa59a24334eab51c41245b6b039ae0b2f17ab644d9229291626a9887611e442815f916fd8fdd2193ab558762307b'
   '1afffe7e4797188f0ac2378f6032db5d0ffdeca12d5804250b62e0a946a65e7dab7a7d6c9674dedeebfb3e0501360b549e4d333841d0da6662c266b4589bdba0')
-b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebeda63c026a4eb0f4ccdb8f43b2d7c84301c7d065220b05282332c59a4c'
+b2sums=('68497c62186c5f6708fa58c34d9f21676c9477e228c88ec7f130410f3c9b76abdfeeb2db183a95b90a6756320a1fc7f5ae2a887679e59a1a739ce39149aaf37a'
   '225d5b6a94fed8a1bb9c6b57412e719bfe2c5cc2ce8730fcd3ecd3193df4a3d54e0d12052b08ace97e5099ca75c59d39510005baf70d2b99b9b08abd243c2731'
   'ce0b02fbdcb1b179f2b04cc230ac2c720563f33f09cb6787e706056638ea7c105cd4c35b4d8dc240cb08191107fe5d0053b9060705b9e4fb1da44e50763e0032'
   '79b0ef16583d5c36f30319c377f4f6f1bca8f05eadb2aac1df5544ca6db82c7bc978ad2c45e6aebf99813c059dd0e523b8093dbd47285cf0b4a85c0b6cf35f59'
   'SKIP'
-  '48483be8ff69963d96ba4f15651943c3237f98edbf13fc899adcad725ed55e1cc01075fc27ece91a3c1cdc223f77995fe9769cc852db72637233854e2d3056ca'
-  '55a484f6d835a08384349ed04649ab41730aa0619129b1aacf21431021b238810051885eec49d503627b75ee3864202e0aa4caaa0a3588692d5a9c8dffa19f42'
+  'ae73349446fcc7146c8146f25225198256be0d83ea9a12fce92c3adfa3b1e24c2fd07668804f6879aa9ee2a35496da7b3019413bfe4b57a3ef65e7b32d619a3b'
+  'd6e8ced9b36aeea25e17319bd3b26f652c017225403057fec6b9c81c2fac9e461ab12d81400b15bc0b5ad601dcf22c43c91bcfc129556951eafb966ae93e1779'
   'fd6b6f6044b8b9f2581a21f5cfb6c4e030ea895cbc8c0498925632f0d863cb272b9fc061134c14aece172d82a6f0a0f4f663ee4aa4169f6912b0c6e746af2eb4'
   '83ae40c17c7c8f2f201049f81def4081262077f90e703cc2e7dcbb52f777b4476053a87861d572f9b24da0977496f15e148b1130c14951854f5b9fb60d2c9962'
   '63222fc3995a2090c72804bcdb4f9389f0aea2d05c780698dae0648e53b512236e3c91c3bbe0777df9330c45bb40ab2cf080b4bf9403064f069657ee522ddec3'
@@ -200,17 +202,16 @@ b2sums=('4646e39fda817e26ca00dbad2fd93675d15be7f6877cb29856009fecdfe5adcab604ebe
   'a689ff17cc325445e8bd974b83047594056f9c7b57dbae3cefd66738b9a8742307243e204e5860b799710887011ac32f3627b8700ec629b726813d95b5345d6a'
   'b742e9e0de7a0e4ce3e077f01481328ee8245aecc144aade29f284560668ac551415d7228b88bdc31e9c8d4fd970bb0b1b1467772bd17802a21dfc21d078c5e9'
   '8f3bf0c3fb85e458d24a4ae11b24cc8c881c4c579d4fead5248557ca1a65a91e40d291d2d457cf8a2187540ccbaf1e8495e616256da1d829245067cfb62ef6c5'
-  'afc912b63c9211373fbcfeec519631c84dd034a48832de4e7973d788bbd7a7af08935de6da2cbd10031e8755d1f02ab4bd3ba62d3f382b0cb3a3d2a10a897cf4'
   'b44a43b3cb575264177a75e720b5ace94c1a79c2b1b9793885ff06e0b27dfae11f1d5397712eb58a14fe9cadb69c593eca0cd9fddbd9ad1432842347211bea67'
   '48a060b49e1f1e4266896c5fbfe12b57348bb2efafc82ca7fe8b77f397cd6b5806d03029d41da0bba626f56499a58c8125dc4d121e4cfbe24126ff406a1dd404'
-  'c63abea627ba33ebbd2f651eff99363b69d306c6dc7f6f5124c6af8afbccd31689bdf72259f3ec31c0437190acb60da892d7a596ae554048e61bb5c91c821706'
+  '267386ee4b025528587f7afb062492e85d93435d0ed5d816297e0dc862be8998fd52e2331e381f14119ae4186efde5d0bce9e1b06d7b0c39ab2a02b13e3e6aed'
   '07d61a4c195a13807f11655f479d71f8f3b668ed6cfd81f130caf879fa48f13dca4c98955826e6257fcc94acb2771250e622aa9523247a8012d8274a2a1de87b'
   'b1d5446a953a87aeaa6e58102c461b2c1bcd0b21da0333f44e08d1908f5f2568161043b3a14e25121fedf2a7da589f55ae9dbc3f24512488563ffa069947884f'
   '93382f5100b58b1cf763054c4a839546f4c7cc8a141cf11d34ddf3b01a7c7e6663630e5ad32df32f69ff84c1d50073ce6c43ef3e4a7a934bbe6b344156e5c54e'
   '82d9f12d92c5c08e634bfea36f8d3cafc5db4a3c13acd6b99242453855ffaa1df192dafea7facbbc972a32c8d2a1db876457a626359403e3d51c4ab8c3bccc81'
   '6e2f143d782bbe68b049586ba2639d3c466ebda80443ad7df05ccef4a569229a1d14b115c5209d5e0b859c49b816a21b6a24a2a83ed5530b9b0b82c86b20ba2c'
   '1c6d0dd9a35c57922f1ee7d746785106cb16666106b806a787c80e2a9e18c3523a241e68b6c0d964ff8378ef1c41a4875bb3ecb3366a21ff0e54b833c4e7d8a4'
-  '1eb6cb6ed69f9535aed7be5e73726775242591c29223122e2431cbc5b3646db42790d141efbbba7ee752a272c2a07d4d53d421c93ffd87dab3e4a1a1f13c68e1'
+  'a4e17acf94688c21524d726ab96ef8fe3fa41c242b1d10c8d8c181a5e6c399b8df3309bcfa78d22d568c0154d4e866a867279a223761553e0aeb196ca88c7774'
   'e69a43062d745f832b734821ca7679b1c4b67e455906d7d093227205e8607b5c6b637eb9f28a00eb0778b0f69cdd1aa471d416e8ae7bf0990a97a07824353956'
   '956db6619cedbdf41d36a8d28e35035c0414cd81a08bd077c0b9097c122e8d8870cbc7d30d43654e2575853a338169fd1042633ff45c92d0cf0ce100147125ea'
   'f46fcb1d242979be39dbd14c6e5dc8c04ede57ed2de52a74e56bf18ce3c6b5985351d70ec0e291ed3ccec1655ebee4da931c88680c7ef60dec4797d78f015833'
@@ -427,6 +428,14 @@ prepare() {
   git -C "$srcdir"/oneget submodule foreach --quiet 'git checkout --force --quiet && git clean -dffxq'
   rm -rf "$srcdir"/{nuget-local,dotnet-home,build-psl-native}
 
+  # Microsoft.PowerShell.Archive's files from its package, where build-modules.ps1 finds them in its
+  # repository: the module, its manifest and its resources
+  rm -rf "$srcdir"/Microsoft.PowerShell.Archive
+  mkdir -p "$srcdir"/Microsoft.PowerShell.Archive/Microsoft.PowerShell.Archive
+  bsdtar -xf "$srcdir/Microsoft.PowerShell.Archive-$_archivever.nupkg" \
+    -C "$srcdir"/Microsoft.PowerShell.Archive/Microsoft.PowerShell.Archive \
+    Microsoft.PowerShell.Archive.psm1 Microsoft.PowerShell.Archive.psd1 en-US/ArchiveResources.psd1
+
   # libpsl-native is built from source instead of using the prebuilt Microsoft.PowerShell.Native package
   cd "$srcdir"/PowerShell-Native/src/libpsl-native || exit
   # Arch already sets _FORTIFY_SOURCE=3 and we don't want new compiler warnings to break the build
@@ -488,11 +497,6 @@ prepare() {
   # ApplicationInsightsTelemetry with the same members instead, without Microsoft.ApplicationInsights.
   # Built normally, nothing changes. The telemetry tests are skipped in builds without telemetry.
   patch -Np1 -i "$srcdir/telemetry-optional.patch"
-
-  # Test-Json only reports the first error since 7.6.7, e.g. nothing for invalid array items
-  # Upstream issue: https://github.com/PowerShell/PowerShell/issues/28218
-  # Upstream fix: https://github.com/PowerShell/PowerShell/pull/28273, in 7.6.10
-  patch -Np1 -i "$srcdir/test-json-list-output.patch"
 
   # Get-Help keeps loading the help file it found first, even after Update-Help installed help that
   # takes precedence or the UI culture changed, as the full path stays in the HelpFile of the command
@@ -916,8 +920,13 @@ check() {
       -Repository "$srcdir/PowerShell" -ModulePath "$srcdir/test-modules" -Script "$PWD"
   )
 
-  # Not -NonInteractive, some tests rely on prompts
-  pwsh -NoProfile -File "$srcdir/invoke-pester.ps1" -Repository "$PWD" -ModulePath "$srcdir/test-modules"
+  # Not -NonInteractive, some tests rely on prompts. Without TERM: in a clean chroot without a terminal,
+  # systemd-nspawn sets TERM=dumb, and .NET takes a console size of 80x-1 from terminfo for it. The tests
+  # that need a console then run against one that isn't there (Format-Table -RepeatHeader), and the
+  # default formatting wraps at 80 columns (PSStyle.Tests.ps1, AutoSize). Without TERM, the console size
+  # is 0 as in upstream's CI, and with a terminal, .NET reads its size from the terminal itself.
+  # Upstream fix of the tests: https://github.com/PowerShell/PowerShell/pull/28409
+  env -u TERM pwsh -NoProfile -File "$srcdir/invoke-pester.ps1" -Repository "$PWD" -ModulePath "$srcdir/test-modules"
 
   # The xUnit tests
   dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r "$_rid" --test-adapter-path:.
