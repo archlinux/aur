@@ -1,24 +1,25 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=python-qtpy-git
-pkgver=2.4.1.r1.gb3b222a
+pkgver=2.4.3.r41.g07b7aae
 pkgrel=1
-pkgdesc='Provides a uniform layer to support PyQt5 and PySide2 with a single codebase'
+pkgdesc='Provides a uniform layer to support PyQt5, PySide2, PyQt6, PySide6 with a single codebase'
 arch=(any)
 url=https://github.com/spyder-ide/qtpy
 license=(MIT)
 depends=(python-pyqt5)
 makedepends=(git python-build python-installer python-wheel python-setuptools)
-optdepends=('python-pyqt5: Qt5 Python bindings'
-            'python-pyqt6: Qt6 Python bindings'
-            'python-pyqt5-webengine: Qt5-WebEngine python bindings'
-            'python-pyqt6-webengine: Qt6-WebEngine python bindings'
-            'pyside2: PySide Qt5 Python bindings'
-            'pyside6: PySide Qt6 Python bindings')
+optdepends=(
+  'python-pyqt5: Qt5 Python bindings'
+  'python-pyqt6: Qt6 Python bindings'
+  'python-pyqt5-webengine: Qt5-WebEngine python bindings'
+  'python-pyqt6-webengine: Qt6-WebEngine python bindings'
+  'pyside2: PySide Qt5 Python bindings'
+  'pyside6: PySide Qt6 Python bindings')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   git -C $pkgname describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
