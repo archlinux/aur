@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -16,7 +16,7 @@ optdepends=(
   "yt-dlp: automatic video downloads"
 )
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('0b1b1ad56fefe08703804a772ff3664cde2463de74f6f34a0e5f8dcd21f44917')
+sha256sums=('d75e8131035ca8998df4a36008e9f0007c5c236670b357c4e2ca8399624c7a0a')
 
 prepare() {
   cd $pkgname
