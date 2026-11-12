@@ -1,0 +1,20 @@
+pkgbase = c6-git
+	pkgdesc = c6 — TinyCC with language extensions
+	pkgver = r359.8ffdb1f
+	pkgrel = 1
+	url = https://github.com/c6lang/c6
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	provides = c6
+	provides = tcc
+	conflicts = c6
+	conflicts = tcc
+	options = docs
+	options = staticlibs
+	options = !lto
+	source = c6::git+https://github.com/c6lang/c6.git
+	sha256sums = SKIP
+
+pkgname = c6-git
