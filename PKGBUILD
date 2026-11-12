@@ -2,7 +2,7 @@
 # Builds MIGA desktop from source. The name "miga" on the AUR belongs to an unrelated tool
 # (a Go database migration CLI), so both the package and the command are called miga-messenger.
 pkgname=miga-messenger
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="End-to-end encrypted messenger with no account"
 arch=('x86_64')
@@ -30,4 +30,6 @@ package() {
 	install -Dm644 desktop/src-tauri/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/com.vniverse77.miga.png"
 	install -Dm644 desktop/src-tauri/icons/128x128@2x.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.vniverse77.miga.png"
 	install -Dm644 desktop/src-tauri/icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/com.vniverse77.miga.png"
+	install -Dm644 desktop/src-tauri/icons/64x64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/com.vniverse77.miga.png"
+	install -Dm644 desktop/src-tauri/icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/com.vniverse77.miga.png"
 }
