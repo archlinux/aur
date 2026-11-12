@@ -1,5 +1,8 @@
+# The releases of the 7.6 line: 7.7 needs .NET 11, which Arch Linux doesn't build from source yet. Back
+# to the latest release (source = "github", use_latest_release) once it does.
 [powershell]
-source = "github"
-github = "PowerShell/PowerShell"
+source = "git"
+git = "https://github.com/PowerShell/PowerShell.git"
+use_max_tag = true
 prefix = "v"
-use_latest_release = true
+include_regex = 'v7\.6\.\d+'
