@@ -3,7 +3,7 @@
 
 pkgname=jellyfin-ffmpeg-bin
 _pkgver=8.1.3
-_pkgrel_upstream=1
+_pkgrel_upstream=2
 pkgver="${_pkgver}p${_pkgrel_upstream}"
 pkgrel=1
 _debver="${_pkgver}-${_pkgrel_upstream}"
@@ -16,8 +16,8 @@ conflicts=('jellyfin-ffmpeg')
 depends=('glibc')
 source_x86_64=("https://repo.jellyfin.org/files/ffmpeg/linux/8.x/$_debver/amd64/jellyfin-ffmpeg_${_debver}_portable_linux64-gpl.tar.xz")
 source_aarch64=("https://repo.jellyfin.org/files/ffmpeg/linux/8.x/$_debver/arm64/jellyfin-ffmpeg_${_debver}_portable_linuxarm64-gpl.tar.xz")
-sha256sums_x86_64=('b86dc023c64a5a9a410e6e3a938a970460214fae78f31c1553c9f88f1c289b6a')
-sha256sums_aarch64=('7bc8e8d0986f7f4693f63e9728570f671f07b6e21c05d5465dd7ce461d1631dc')
+sha256sums_x86_64=('1df84d04c4322902dba81c290508cdf3d89524d210b9fe03154bea6c4e3bfbb6')
+sha256sums_aarch64=('6522585818059cc886363fb1dee86ac9b8579fec3b914337fb92974ef9eb9884')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/jellyfin-ffmpeg"
