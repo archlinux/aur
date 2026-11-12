@@ -3,13 +3,13 @@
 
 pkgname=tracy
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
 license=('BSD-3-Clause')
 depends=('wayland' 'libglvnd' 'libxkbcommon' 'freetype2' 'dbus' 'hicolor-icon-theme' 'pugixml')
-makedepends=('pkgconf' 'git' 'cmake')
+makedepends=('wayland-protocols' 'pkgconf' 'git' 'cmake')
 optdepends=('xdg-desktop-portal: file dialogs')
 options=('!lto')
 provides=('tracy')

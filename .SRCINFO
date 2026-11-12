@@ -1,11 +1,12 @@
 pkgbase = tracy
 	pkgdesc = Real-time, nanosecond resolution frame profiler
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wolfpld/tracy
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = wayland-protocols
 	makedepends = pkgconf
 	makedepends = git
 	makedepends = cmake
