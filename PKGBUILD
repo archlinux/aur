@@ -18,7 +18,7 @@
 # deleted and re-uploaded on every CI build, 404ing published URLs).
 pkgname=ue4ss-experimental-zdev
 pkgver=3.0.1_1208_g6f8dc3cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (experimental, with debug symbols and dev tool mods)"
 arch=('any')
 url="https://docs.ue4ss.com/"
@@ -33,7 +33,7 @@ _verstr="${pkgver//_/-}"
 source=("ue4ss-experimental-zdev-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/zDEV-UE4SS_v${_verstr}.zip"
         "ue4ss-install")
 sha256sums=('58beb4ebf6e7daf9aca0b8e527e348e5163379dd788514d4df62c4df672070f5'
-            'd5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0')
+            '4b8f23e80ab84888d75200987bf7aa315a21c53b956cdc51d6ee689031996f0b')
 
 latestver() {
     # Newest build on the archival `experimental` tag by git-describe commit

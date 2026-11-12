@@ -1,7 +1,7 @@
 pkgbase = ue4ss-experimental-zdev
 	pkgdesc = Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (experimental, with debug symbols and dev tool mods)
 	pkgver = 3.0.1_1208_g6f8dc3cc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.ue4ss.com/
 	arch = any
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = ue4ss-experimental-zdev
 	source = ue4ss-experimental-zdev-3.0.1_1208_g6f8dc3cc.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/zDEV-UE4SS_v3.0.1-1208-g6f8dc3cc.zip
 	source = ue4ss-install
 	sha256sums = 58beb4ebf6e7daf9aca0b8e527e348e5163379dd788514d4df62c4df672070f5
-	sha256sums = d5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0
+	sha256sums = 4b8f23e80ab84888d75200987bf7aa315a21c53b956cdc51d6ee689031996f0b
 
 pkgname = ue4ss-experimental-zdev
