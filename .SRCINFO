@@ -10,7 +10,6 @@ pkgbase = neco-git
 	depends = gcc-libs
 	provides = neco
 	conflicts = neco
-	options = !debug
 	source = neco-git::git+https://github.com/tidwall/neco
 	sha256sums = SKIP
 

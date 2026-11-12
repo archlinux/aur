@@ -4,7 +4,6 @@ pkgver=0.3.2.r12.g84ed4c4
 pkgrel=1
 pkgdesc="Concurrency library for C (coroutines)"
 arch=('x86_64')
-options=('!debug')
 url="https://github.com/tidwall/neco"
 license=('MIT')
 provides=('neco')
