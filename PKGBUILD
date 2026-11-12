@@ -1,15 +1,15 @@
 # Maintainer: Mianling AI <karentia@maoertech.cn>
 #
-# 面灵网申助手是闭源产品，安装包不放 GitHub Releases，而是由发版 CI 构建后上传到自有
+# 面灵求职网申助手是闭源产品，安装包不放 GitHub Releases，而是由发版 CI 构建后上传到自有
 # storage（storage2.maoertech.cn），下载 URL 由版本号确定性推导。所以本包是
 # 「重打包预编译产物」的 -bin 包：下载官方 .deb，把里面的文件装进系统。
 #
 # pkgver 与 sha256sums 由发版工作流（.github/workflows/apply-release.yml 的
 # publish-aur 任务）在每次 apply-v* tag 发布时自动改写并推送到 AUR，不要手改。
 pkgname=mianling-apply-bin
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
-pkgdesc="面灵网申助手 — 校招网申自动填表：一处填好档案，打开投递页自动填好重复字段，最后一步由你点"
+pkgdesc="面灵求职网申助手 — AI 网申投递与 Boss 直聘 HR 沟通"
 arch=('x86_64')
 url="https://www.mianlingai.com/job-apply"
 license=('LicenseRef-proprietary')
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("mianling-apply-${pkgver}-amd64.deb::https://storage2.maoertech.cn/job-apply/mianling-apply-${pkgver}-amd64.deb")
 noextract=("mianling-apply-${pkgver}-amd64.deb")
-sha256sums=('708d9bcc89c1bdb2ec7ca28a1d59f56ff3e79f27dd332f001c183350dba3ae92')
+sha256sums=('317d3dcb227385573f5d593acf5c63771095459cfca917f5235ac9de9656b0d5')
 
 package() {
   cd "$srcdir"
