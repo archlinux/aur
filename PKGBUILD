@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=2.1.0
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, in Rust; one tool for the repos, the AUR, Flatpak and Snap: install, search, update, lock, clean. Arch and Arch-based distros; no desktop needed; works on a text console (tty)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ options=('!debug')
 # validpgpkeys instead, so its checksum is SKIP.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('fc6ed6880e7ce1294b095571d58bc59cec804859d63d9923ecc54832485fd897'
+sha256sums=('81241c852edd06c2b0c08e11d8de57455b91c4266190bfa7ef21fcb57b69591c'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   curl -s https://github.com/jetomev.gpg | gpg --import
