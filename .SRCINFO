@@ -1,6 +1,6 @@
 pkgbase = cup-docker
 	pkgdesc = Cup is the easiest way to check for container image updates.
-	pkgver = 3.5.1
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/sergi0g/cup
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cup-docker
 	makedepends = bun
 	makedepends = typescript
 	options = !lto
-	source = cup-3.5.1.tar.gz::https://github.com/sergi0g/cup/archive/refs/tags/v3.5.1.tar.gz
-	sha256sums = 0c4138fe3b566ba42ea0e6de8fcf1898ad2a37cca09ba0be1f48c137b3c7ecf0
+	source = cup-3.6.0.tar.gz::https://github.com/sergi0g/cup/archive/refs/tags/v3.6.0.tar.gz
+	sha256sums = a9800f8d9fb6ebd0bead766701bf61e7f48f8afc80f5adaa320505d55657a870
 
 pkgname = cup-docker
