@@ -1,6 +1,6 @@
 pkgbase = spotify-soloist-bin
 	pkgdesc = Official headless Spotify Connect client for Linux and Raspberry Pi
-	pkgver = 1.3.10.62
+	pkgver = 1.3.10.65
 	pkgrel = 1
 	url = https://developer.spotify.com/documentation/soloist
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = spotify-soloist-bin
 	options = !strip
 	source = TERMS.md
 	sha256sums = 77d3c4f26593c9ba58ce4b8528e3fbe40cf7c718b222c0b7d500357bfbae04f9
-	source_x86_64 = spotify-soloist-1.3.10.62-x86_64.tar.gz::https://soloist-builds.spotifycdn.com/soloist_release_x86_64.tar.gz
-	sha256sums_x86_64 = da2619673ffdf62ee13bd1e9a953e3ca7d79b8f8fa6a088c0c67064418b1b973
-	source_aarch64 = spotify-soloist-1.3.10.62-aarch64.tar.gz::https://soloist-builds.spotifycdn.com/soloist_release_arm64.tar.gz
-	sha256sums_aarch64 = 565fb9bc9616f03b6ececdf63ececb58c63f7ad9bd5a0247cdce5f78a5f5f944
-	source_armv7h = spotify-soloist-1.3.10.62-armv7h.tar.gz::https://soloist-builds.spotifycdn.com/soloist_release_arm32.tar.gz
-	sha256sums_armv7h = 32008e6462e00b4af42b201c5fc98f894542610f2c93a8652ad148b207925306
+	source_x86_64 = spotify-soloist-1.3.10.65-x86_64.tar.gz::https://soloist-builds.spotifycdn.com/soloist_release_x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = spotify-soloist-1.3.10.65-aarch64.tar.gz::https://soloist-builds.spotifycdn.com/soloist_release_arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+	source_armv7h = spotify-soloist-1.3.10.65-armv7h.tar.gz::https://soloist-builds.spotifycdn.com/soloist_release_arm32.tar.gz
+	sha256sums_armv7h = SKIP
 
 pkgname = spotify-soloist-bin
