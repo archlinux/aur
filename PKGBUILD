@@ -26,7 +26,6 @@ depends=(
   'libshumate'
   'onnxruntime'
   'opencv'
-  'openssl'
   'xdg-desktop-portal'
 )
 makedepends=(
@@ -45,7 +44,6 @@ sha256sums=('285987f44fccae02f81d085c2d927a5570d25f943dffab788981033ca3b3e113')
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-
   cargo fetch --target host-tuple
 }
 

@@ -28,7 +28,6 @@ pkgbase = fotema
 	depends = libshumate
 	depends = onnxruntime
 	depends = opencv
-	depends = openssl
 	depends = xdg-desktop-portal
 	source = fotema-2.5.2.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v2.5.2.tar.gz
 	sha256sums = 285987f44fccae02f81d085c2d927a5570d25f943dffab788981033ca3b3e113
