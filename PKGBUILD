@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='ecspresso-bin'
-pkgver=2.8.8
+pkgver=2.8.9
 pkgrel=1
 pkgdesc='ecspresso is a deployment tool for Amazon ECS'
 url='https://github.com/kayac/ecspresso'
@@ -13,8 +13,8 @@ depends=()
 conflicts=()
 source_aarch64=("${url}/releases/download/v${pkgver}/${pkgname%%-bin}_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('a50e341caaa249829af4f7cc372d7989787635da7c4b95bc4ef9145defb85af1')
-sha256sums_x86_64=('595e0027e95c2c0ec1108d2ff582082a6b87da94f7db4b959696c789a98a6fd9')
+sha256sums_aarch64=('9274e5db8cc1b73dbe6f9c7205f6ca887c58192be3399cde611b4ace76a463bc')
+sha256sums_x86_64=('85b071d9325c073d2e0bdf765b1c565e3ce5afd52de4a7c5b10cbce0a09731ba')
 
 package() {
   install -Dm644 ${srcdir}/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
