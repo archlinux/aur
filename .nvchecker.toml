@@ -1,0 +1,5 @@
+[hume]
+source = "github"
+github = "cvlmtg/HUME"
+use_latest_release = true
+prefix = "v"

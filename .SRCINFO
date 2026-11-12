@@ -1,0 +1,15 @@
+pkgbase = hume
+	pkgdesc = A selection-first modal text editor for the terminal, scriptable in Scheme
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/cvlmtg/HUME
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = hume
+	options = !lto
+	options = !strip
+	source = hume-0.20.1.tgz::https://github.com/cvlmtg/HUME/archive/v0.20.1.tar.gz
+	sha256sums = d55abc741a79f920244e43e9860c801bb089b9b5d547e212c261c81ff7ea68b1
+
+pkgname = hume
