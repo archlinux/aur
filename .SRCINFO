@@ -1,0 +1,19 @@
+pkgbase = zero
+	pkgdesc = Fast, multi-provider terminal coding agent
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/Twigpine/zero
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = agent-browser: browser control
+	optdepends = bubblewrap: sandbox for shell commands
+	optdepends = git: repository info, plugin and skill installs
+	optdepends = poppler: PDF text and rendering of image-only PDFs
+	optdepends = tuistory: terminal control
+	source = zero-0.13.0.tar.gz::https://github.com/Twigpine/zero/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 6b826c0189e117c6ae4b8adfd1199fa41bf2e3a14c1d030ead18d82e22c20b65
+
+pkgname = zero
