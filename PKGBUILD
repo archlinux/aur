@@ -8,7 +8,7 @@
 # arch=any: the DLLs are x86_64 PE *guest* code, not host binaries.
 pkgname=ue4ss
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (stable)"
 arch=('any')
 url="https://docs.ue4ss.com/"
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 source=("ue4ss-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/v${pkgver}/UE4SS_v${pkgver}.zip"
         "ue4ss-install")
 sha256sums=('251ad0d1381a241750e036f5918cbf2b5d7ec58ebc608cb2dd09d459d0c81e45'
-            'd5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0')
+            '4b8f23e80ab84888d75200987bf7aa315a21c53b956cdc51d6ee689031996f0b')
 
 latestver() {
     # Latest non-prerelease release (the experimental-latest rolling build is a
