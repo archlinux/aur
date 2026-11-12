@@ -1,6 +1,6 @@
 pkgbase = kopuz-nightly
 	pkgdesc = A modern music player, built nightly from the latest development code
-	pkgver = 0.68.0_nightly.20261112.2
+	pkgver = 0.68.0_nightly.20261112.3
 	pkgrel = 1
 	url = https://github.com/Kopuz-org/kopuz
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = kopuz-nightly
 	depends = freetype2
 	optdepends = ffmpeg: converting YouTube downloads to MP3, FLAC or WAV
 	options = !lto
-	source = kopuz-nightly-0.68.0-nightly.20261112.2.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v0.68.0-nightly.20261112.2.tar.gz
-	sha256sums = 42b602b268441aa67fa7a8a65b1c894df1490764f1b140dbbae9d7e81a347d07
+	source = kopuz-nightly-0.68.0-nightly.20261112.3.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v0.68.0-nightly.20261112.3.tar.gz
+	sha256sums = 6dc817d9fe5e4bb91e3509b53c112793b27b4090d2fc2746152f4856d571125f
 
 pkgname = kopuz-nightly
