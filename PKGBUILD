@@ -1,8 +1,8 @@
 # Maintainer: Ketchup901 <ketchup901@riseup.net>
 
 pkgname=updfparser-git
-pkgver=r33.6060d12344
-pkgrel=3
+pkgver=0.1.r0.g6060d12344
+pkgrel=1
 pkgdesc="Very simple PDF parser"
 arch=('any')
 url="https://forge.soutade.fr/soutade/uPDFParser"
@@ -29,7 +29,7 @@ _srcdir="uPDFParser"
 
 pkgver() {
     cd $_srcdir
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
+    git describe --long --tags --abbrev=10 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
