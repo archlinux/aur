@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Porta
+GenericName=SSH Client
+Comment=An open-source terminal SSH client
+Exec=porta-gui
+Icon=porta
+Terminal=false
+Categories=Network;RemoteAccess;
+Keywords=ssh;sftp;terminal;tunnel;
+StartupWMClass=porta-gui

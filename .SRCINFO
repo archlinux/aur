@@ -1,0 +1,25 @@
+pkgbase = porta-gui-bin
+	pkgdesc = Open-source SSH client with an encrypted local vault and zero-trust sync (desktop GUI)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/porta-ssh/porta
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libsoup3
+	depends = libx11
+	depends = webkit2gtk-4.1
+	provides = porta-gui
+	conflicts = porta-gui
+	options = !debug
+	source = porta-gui-bin-1.0.0::https://gitlab.com/porta-ssh/porta/-/jobs/17916099027/artifacts/raw/gui/build/bin/porta-gui
+	source = porta-gui-bin-1.0.0.png::https://gitlab.com/porta-ssh/porta/-/raw/v1.0.0/gui/build/appicon.png
+	source = porta-gui.desktop
+	sha256sums = c31b16005e33b0bcbeda861a8deccf0ed52545b5889bb0d60ea46651354709c6
+	sha256sums = d47a61ad7c5d78265ac9f4b9c858705a134239e47e1e811d2602ff2408c75d95
+	sha256sums = c456f215581b1d380c669a1c2f36422c250ea0a1ac3f05f8eaf711c00ee5ef17
+
+pkgname = porta-gui-bin
