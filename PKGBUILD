@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.163
-pkgrel=5
+pkgrel=6
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -54,7 +54,8 @@ depends=('alsa-lib'
          'xdg-utils')
 provides=('rootapp')
 conflicts=('rootapp')
-optdepends=('xdg-desktop-portal: file-picker and screen-share dialogs'
+optdepends=('bluez: org.bluez Bluetooth service (bluetooth.service) for Web Bluetooth peripherals'
+            'xdg-desktop-portal: file-picker and screen-share dialogs'
             'xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME'
             'xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops'
             'xdg-desktop-portal-kde: file-picker and screen-share backend on KDE Plasma'

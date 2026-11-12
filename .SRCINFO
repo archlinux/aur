@@ -1,7 +1,7 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
 	pkgver = 0.9.163
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.rootapp.com
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -50,6 +50,7 @@ pkgbase = rootapp-bin
 	depends = vulkan-icd-loader
 	depends = wayland
 	depends = xdg-utils
+	optdepends = bluez: org.bluez Bluetooth service (bluetooth.service) for Web Bluetooth peripherals
 	optdepends = xdg-desktop-portal: file-picker and screen-share dialogs
 	optdepends = xdg-desktop-portal-gnome: file-picker, settings and screen-share backend on GNOME
 	optdepends = xdg-desktop-portal-gtk: file-picker and settings backend on GTK desktops
