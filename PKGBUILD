@@ -1,13 +1,13 @@
-# Maintainer: xiryuu < farrel2008ganteng@protonmail.com >
+# Maintainer: xiryuu <farrel2008ganteng@protonmail.com>
 pkgname=limusic-bin
 _pkgname=limusic
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature rich, native desktop, YouTube Music client. Tauri + Rust + SvelteKit, ad-free playback through libmpv, Last.fm scrobbling and Discord Rich Presence, no Electron."
 arch=("x86_64")
 url="https://github.com/SimoHypers/limusic"
 license=("GPL-3.0-or-later")
-depends=("libsoup3" "glib2" "glibc" "webkit2gtk-4.1" "dbus" "gtk3" "hicolor-icon-theme" "cairo" "libgcc" "libmpv.so=2-64" "gdk-pixbuf2" "openssl")
+depends=("libsoup3" "glib2" "glibc" "webkit2gtk-4.1" "dbus" "gtk3" "hicolor-icon-theme" "cairo" "libgcc" "libmpv.so=2-64" "gdk-pixbuf2" "libcrypto.so=3-64" "libssl.so=3-64")
 options=("!strip" "!buildflags")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
