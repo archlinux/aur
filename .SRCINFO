@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-highs
 	pkgdesc = Linear optimization software (mingw-w64)
-	pkgver = 1.15.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/ERGO-Code/HiGHS
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-highs
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v1.15.1.tar.gz
-	sha256sums = a840d269dff2fafb371dd247df13ad5e026d7ce3b35ad3dc1eedd59bf0c2fb16
+	source = https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v1.16.0.tar.gz
+	sha256sums = 0fa9da512955fb08c6cca7bfb274ca12e8a0e8a12e44189bd6e0c355ce7701bc
 
 pkgname = mingw-w64-highs
