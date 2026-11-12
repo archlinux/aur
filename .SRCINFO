@@ -30,7 +30,7 @@ pkgbase = lightcraft-private-bin
 	conflicts = lightcraft-bin
 	conflicts = lightcraft-git
 	conflicts = ai.storyteller.lightcraft
-	source = https://github.com/storytold/lightcraft/releases/download/v0.21.0/lightcraft-0.21.0-linux-x86_64.pkg.tar.zst
+	source = https://gh-proxy.com/https://github.com/storytold/lightcraft/releases/download/v0.21.0/lightcraft-0.21.0-linux-x86_64.pkg.tar.zst
 	sha256sums = 8a953bf0bbfc9dfcc405358aa462909494bf8aca5848ac56e8c36d9a6b258d7c
 
 pkgname = lightcraft-private-bin

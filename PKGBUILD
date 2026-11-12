@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/lightcraft/releases/download/v${pkgver}/lightcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/lightcraft/releases/download/v${pkgver}/lightcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('8a953bf0bbfc9dfcc405358aa462909494bf8aca5848ac56e8c36d9a6b258d7c')
 
 package() {
