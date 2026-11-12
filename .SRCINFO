@@ -12,7 +12,6 @@ pkgbase = delance-langserver
 	optdepends = python: Pylance Python language features
 	optdepends = python-pytest: pytest option discovery
 	optdepends = python-numpy: NumPy type stubs support
-	options = !debug
 	source = delance-runtime-v2026.3.102.tar.gz::https://git.sr.ht/~self/delance-runtime/archive/v2026.3.102.tar.gz
 	source = use-delance-builder-0.4.3.patch
 	sha256sums = fa74bd430fd9ce01698ccfeaee157f0c3ac1d1857061c15c2c10b415b35de7ef

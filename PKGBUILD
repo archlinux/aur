@@ -7,7 +7,6 @@ pkgver=2026.3.102
 pkgrel=2
 pkgdesc="A spear to the Python language server built with black magic"
 arch=('x86_64')
-options=('!debug')
 url="https://sr.ht/~self/delance/"
 license=('0BSD')
 depends=(glibc nodejs)
