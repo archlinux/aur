@@ -1,6 +1,6 @@
 pkgbase = texturecraft
 	pkgdesc = vibe coded clean-room reimplementation of Adobe Substance 3D Painter
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://getartcraft.com/apps/texturecraft
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = texturecraft
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libgcc
-	source = https://github.com/storytold/texturecraft/archive/refs/tags/v0.6.0/texturecraft-0.6.0.tar.gz
-	sha256sums = 65b182458e49b962439752ece19617caa16855edefc797f3c09066b8e15bdda4
+	source = https://github.com/storytold/texturecraft/archive/refs/tags/v0.6.1/texturecraft-0.6.1.tar.gz
+	sha256sums = b710a8b46d2f885ed20b2fe6a8154789dbba914a05f982cc7be28e3d1c33db34
 
 pkgname = texturecraft
 	depends = glibc
