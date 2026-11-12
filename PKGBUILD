@@ -2,18 +2,18 @@
 # Maintainer: Dom
 pkgname=texlive-emo-git
 _pkgname=emo
-pkgver=0.4.r85.g0000000
-pkgrel=1
+pkgver=0.4.r85.g1ed3bb4
+pkgrel=6
 pkgdesc="Emoji support for all LaTeX engines (development version)"
 arch=('any')
 url="https://github.com/apparebit/emo"
 license=('LPPL-1.3c' 'Apache-2.0' 'Unicode-3.0' 'OFL-1.1')
 
-depends=('texlive-latexrecommended')
+depends=('texlive-latexextra')
 makedepends=('git')
 
-provides=('texlive-emo')
-conflicts=('texlive-emo')
+provides=('texlive-emo-full')
+conflicts=('texlive-emo-full')
 
 source=("emo::git+https://github.com/apparebit/emo.git#branch=boss")
 sha256sums=('SKIP')
@@ -29,7 +29,7 @@ pkgver() {
 package() {
     cd "$srcdir/$_pkgname"
 
-    local texmf="$pkgdir/usr/local/share/texmf-dist/tex/latex/emo"
+    local texmf="$pkgdir/usr/share/texmf/tex/latex/emo"
 
     install -d "$texmf"
   
