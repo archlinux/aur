@@ -13,7 +13,7 @@
 # packaging rationale.
 pkgname=ue4ss-zdev
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (stable, with debug symbols and dev assets)"
 arch=('any')
 url="https://docs.ue4ss.com/"
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 source=("ue4ss-zdev-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/v${pkgver}/zDEV-UE4SS_v${pkgver}.zip"
         "ue4ss-install")
 sha256sums=('02401c207b8fecfa0f38e8bf4df1d83ee87d7e190af2f02ca5d4bc7cd7c2ef8c'
-            'd5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0')
+            '4b8f23e80ab84888d75200987bf7aa315a21c53b956cdc51d6ee689031996f0b')
 
 latestver() {
     # Latest non-prerelease release (the experimental-latest rolling build is a
