@@ -1,0 +1,36 @@
+pkgbase = filmcraft-private-bin
+	pkgdesc = 自用维护：开源 clean-room 版 Adobe Premiere Pro 替代（视频编辑），上游 storytold/filmcraft
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://getartcraft.com/apps/filmcraft
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	optdepends = alsa-lib: sound support
+	optdepends = pipewire-alsa: audio playback and recording via PipeWire
+	optdepends = pulseaudio: audio playback and recording via PulseAudio
+	optdepends = wayland: native Wayland display support
+	optdepends = libx11: X11 and XWayland display support
+	optdepends = libxcursor: X11 cursor handling
+	optdepends = libxi: X11 input handling
+	optdepends = libxrandr: X11 display resolution handling
+	optdepends = libglvnd: GPU rendering through EGL
+	optdepends = mesa: GPU rendering through EGL
+	optdepends = vulkan-driver: GPU rendering through Vulkan
+	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
+	optdepends = cups: printing support
+	provides = filmcraft=0.20.1
+	conflicts = filmcraft
+	conflicts = filmcraft-bin
+	conflicts = filmcraft-git
+	conflicts = ai.storyteller.filmcraft
+	source = https://github.com/storytold/filmcraft/releases/download/v0.20.1/filmcraft-0.20.1-linux-x86_64.pkg.tar.zst
+	sha256sums = bbdee1fe9e8671094e4e548d3920a808b7c7411a802d743b19158753d951d722
+
+pkgname = filmcraft-private-bin
