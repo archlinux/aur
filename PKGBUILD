@@ -24,13 +24,14 @@
 # them at runtime -- the application locates every file relative to its own directory.
 
 pkgname=deepseek-harness-desktop
-_tag=dsh-v0.2.2-rc.1
-pkgver=0.2.2rc.1
+_tag=dsh-v0.2.2-rc.2
+pkgver=0.2.2rc.2
 pkgrel=1
 pkgdesc='DeepSeek Harness desktop application (Electron shell and bundled dsh runtime)'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
 license=('MIT')
+install="$pkgname.install"
 depends=(
   'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'gtk3' 'libcups'
   'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes'
@@ -49,7 +50,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '9bc5cfb021ff62d73883224543b8553cc4581c13f0e5230734c9d2595eb33dc4'
+  '1e7363c52c500d1ecdc35a475476e18b1c45439dc8d7617e90adc76a47ca41ad'
   'c9783ffd57bf481f89ec59beb6047c7cf40098e4790c6098bf60370c408a4c7d'
 )
 

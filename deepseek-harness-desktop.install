@@ -1,0 +1,18 @@
+# The application is a single-instance process that keeps running in the tray after
+# its window closes, so an upgrade does not replace the code a live process executes.
+# Its plugin manager then fails every enable with a bare "operation error" because the
+# running runtime and the files on disk disagree.
+
+post_install() {
+  printf '%s\n' \
+    ':: DeepSeek Harness loads its runtime from /usr/lib/deepseek-harness-desktop;' \
+    '   quit the application completely (tray menu) before the next upgrade.'
+}
+
+post_upgrade() {
+  printf '%s\n' \
+    ':: If DeepSeek Harness was running during this upgrade, quit it completely before' \
+    '   starting it again: closing the window only hides it to the tray, and a stale' \
+    '   process rejects every plugin enable with "operation error".' \
+    '   Tray menu -> Quit, or: pkill -f /usr/lib/deepseek-harness-desktop/deepseek-harness'
+}
