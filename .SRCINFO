@@ -1,6 +1,6 @@
 pkgbase = thumbgrid-bin
 	pkgdesc = Qt image viewer (fork of easymodo/qimgv), prebuilt binary release (exiv2/mpv)
-	pkgver = 2026.10.5
+	pkgver = 2026.11.2
 	pkgrel = 1
 	url = https://github.com/do-i/thumbgrid
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = thumbgrid-bin
 	conflicts = thumbgrid
 	options = !strip
 	options = !debug
-	source = thumbgrid-2026.10.5-1-x86_64.pkg.tar.zst::https://github.com/do-i/thumbgrid/releases/download/v2026.10.5/thumbgrid-2026.10.5-1-x86_64.pkg.tar.zst
-	sha256sums = f37f0bb3fa3217ab18526d2fc00be420181eb79eb6417cd16ca249981fd785df
+	source = thumbgrid-2026.11.2-1-x86_64.pkg.tar.zst::https://github.com/do-i/thumbgrid/releases/download/v2026.11.2/thumbgrid-2026.11.2-1-x86_64.pkg.tar.zst
+	sha256sums = 3520dfd7c3b837a18b0677553588831978eb4617443baf8df4e465efd6b2c1f2
 
 pkgname = thumbgrid-bin
