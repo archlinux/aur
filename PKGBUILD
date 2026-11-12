@@ -4,7 +4,7 @@
 # release version, pkgrel, source location, and checksum into the AUR metadata.
 
 pkgname=chan
-pkgver=0.127.0
+pkgver=0.128.0
 pkgrel=1
 pkgdesc='Supercharged terminal emulator, headless server and CLI'
 # Native CI builds both architectures; aarch64 is observed-only for v0.73.0.
@@ -21,8 +21,8 @@ conflicts=('chan-desktop')
 # Cargo owns thin LTO. makepkg's additional -flto=auto reaches native C/C++
 # dependencies and can leave rustc unable to resolve their symbols at link time.
 options=(!lto)
-source=('chan-0.127.0.tar.gz::https://github.com/fiorix/chan/archive/v0.127.0.tar.gz')
-sha256sums=('f3314d97199b373383ef59a57642bcc42bfba25140aa3ed7b17ddeb8bb51c259')
+source=('chan-0.128.0.tar.gz::https://github.com/fiorix/chan/archive/v0.128.0.tar.gz')
+sha256sums=('9685f63086b055e55148a0f420006e18cc0ea33a1146b072dadc5021fff48fd7')
 
 # RUSTUP_TOOLCHAIN keeps the tree's rust-toolchain.toml pin from making a
 # rustup-provided cargo download a second toolchain mid-build, per Arch's Rust
@@ -58,6 +58,8 @@ package() {
     cd "chan-$pkgver"
     install -Dm755 package-bin/chan "$pkgdir/usr/bin/chan"
     ln -s chan "$pkgdir/usr/bin/cs"
+    ln -s chan "$pkgdir/usr/bin/chan-files"
+    ln -s chan "$pkgdir/usr/bin/chan-edit"
     install -Dm644 packaging/distros/shared/chan-devserver.service \
         "$pkgdir/usr/lib/systemd/user/chan-devserver.service"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chan/LICENSE"
