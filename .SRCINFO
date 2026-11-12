@@ -1,6 +1,6 @@
 pkgbase = gramtty-bin
 	pkgdesc = A terminal Telegram client (prebuilt binary, TDLib linked statically)
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/methamphetaminelab/gramtty
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = gramtty-bin
 	conflicts = gramtty
 	options = !strip
 	options = !debug
-	source = https://github.com/methamphetaminelab/gramtty/releases/download/v1.5.1/gramtty-1.5.1-x86_64-linux.tar.gz
-	sha256sums = 9a134ca2f550c5e9b395e8136698a5574e1551a406b4276206e0590bff6386a1
+	source = https://github.com/methamphetaminelab/gramtty/releases/download/v1.6.0/gramtty-1.6.0-x86_64-linux.tar.gz
+	sha256sums = 2718a1546fd84414f386b6826d1c710a495ab067c9446318177a25de15fd2ccd
 
 pkgname = gramtty-bin
