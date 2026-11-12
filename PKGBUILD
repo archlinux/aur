@@ -3,7 +3,7 @@
 # Source: https://github.com/jmelahman/pkgbuilds
 
 pkgname=tinyfeed
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Generate a static HTML page from a collection of feeds wtih a simple CLI tool"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/TheBigRoomXXL/tinyfeed"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='60ddd6d1d23422c029e4dadf210c18840d1ffbb9'
+_commit='a99c8ccfef65d864b633f0ffd58df91cec521da2'
 source=("git+https://github.com/TheBigRoomXXL/tinyfeed.git#commit=$_commit")
 sha256sums=('SKIP')
 
