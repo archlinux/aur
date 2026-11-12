@@ -1,0 +1,31 @@
+pkgbase = uu-remote-linux-private-bin
+	pkgdesc = 自用维护：非官方 UU 远程 Linux 被控端 + 实验性控制端（网易 UU 远程），上游 VallierDev/uu-remote-linux
+	pkgver = 0.2.57
+	pkgrel = 1
+	url = https://github.com/VallierDev/uu-remote-linux
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = libcairo
+	depends = glib2
+	depends = pango
+	depends = gcc-libs
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxtst
+	depends = ffmpeg
+	optdepends = sdl2: 控制端画面渲染
+	optdepends = wayland: Wayland 原生支持
+	optdepends = libxkbcommon: X11/wayland 键盘布局
+	optdepends = xdg-desktop-portal: 桌面通知
+	provides = uu-remote-linux=0.2.57
+	conflicts = uu-remote-linux
+	source_x86_64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.57/uu-remote-linux-v0.2.57-x86_64-linux.tar.gz
+	sha256sums_x86_64 = f8893f63afafd239fcaaa177f64b9469e4d9f77b75357e5847a0726ad4dceeed
+	source_aarch64 = https://gh-proxy.com/https://github.com/VallierDev/uu-remote-linux/releases/download/v0.2.57/uu-remote-linux-v0.2.57-aarch64-linux.tar.gz
+	sha256sums_aarch64 = b5ed678489e297de0dc274b8b39c4fcd96647f2e63a370da725e1de0ca89ec85
+
+pkgname = uu-remote-linux-private-bin
