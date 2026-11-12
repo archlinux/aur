@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=doltlite
-pkgver=0.51.10
+pkgver=0.51.11
 pkgrel=1
 pkgdesc='SQLite fork with Git-style version control'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0 AND blessing')
 depends=('glibc' 'readline' 'zlib')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-autoconf-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}-LICENSE.md::https://raw.githubusercontent.com/dolthub/doltlite/v${pkgver}/LICENSE.md")
-sha256sums=('0763c478ac3a7b79a42c18259b05cc17e7ec9c72af9a3aaaa77dfc6baa10bdf0'
+sha256sums=('b88e2192a7fb0e0e04502556ec599799a510aa93385ef4f8bb002adcb22dde01'
             '29665b418abe9d65f3bdd723ca27336a998477566e9426d436530ede0e65efcf')
 
 build() {
