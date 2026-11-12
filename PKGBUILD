@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aish
-pkgver=0.3.15
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Empower the Shell to think. Evolve Operations. '
 arch=($CARCH)
 url='https://github.com/AI-Shell-Team/aish'
@@ -28,7 +28,7 @@ options=('!lto' '!debug' '!strip')
 source=(
   "${pkgname}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('332c7135bee1aa9c497c992ddadcde0366c4d9962f11aebe8f2acd7d555ba046')
+sha256sums=('43b8a6712d4a790d58d0e557dac05d9dc4a1b4b6da4870f50696b6ef59e71e95')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
