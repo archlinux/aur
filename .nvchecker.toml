@@ -1,0 +1,5 @@
+[pitwall-bin]
+source = "github"
+github = "quanticstudios/pitwall"
+use_latest_release = true
+prefix = "v"
