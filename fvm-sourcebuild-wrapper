@@ -12,19 +12,18 @@ _ln() {
 	rm -rf "$2" && ln -sf "$1" "$2"
 }
 
-if [[ ! -v ARCH_FLUTTER_TARGET_CPU || -z "$ARCH_FLUTTER_TARGET_CPU" ]]; then
-	CARCH="${CARCH:-}"
+CARCH="${CARCH:-}"
 
-	if [[ $CARCH == 'aarch64' ]]; then
-		ARCH_FLUTTER_TARGET_CPU=arm64
-	else
-		ARCH_FLUTTER_TARGET_CPU=x64
-	fi
+if [[ $CARCH == 'aarch64' ]]; then
+	ARCH_FLUTTER_TARGET_CPU=arm64
+else
+	ARCH_FLUTTER_TARGET_CPU=x64
 fi
 
 ARCH_FLUTTER_ENGINE_URL="${ARCH_FLUTTER_ENGINE_URL:-https://github.com/flutter/engine.git}"
 ARCH_FLUTTER_DEPOT_TOOL_URL="${ARCH_FLUTTER_DEPOT_TOOL_URL:-https://chromium.googlesource.com/chromium/tools/depot_tools.git}"
-readonly flutter_outdir="linux_release_$ARCH_FLUTTER_TARGET_CPU"
+ARCH_FLUTTER_CLEAN_ON_INSTALL="${ARCH_FLUTTER_CLEAN_ON_INSTALL:-1}"
+readonly flutter_outdir='host_release'
 
 if [[ -v FVM_CACHE_PATH_OVERRIDE ]]; then
 	>&2 echo 'Overriding FVM_CACHE_PATH.'
@@ -183,9 +182,7 @@ _build_3_27_and_lower()
 
 	pushd "$outdir/src"
 
-	"./flutter/tools/gn" --no-prebuilt-dart-sdk --verbose --out-dir="$outdir" \
-		--linux \
-		--linux-cpu="$ARCH_FLUTTER_TARGET_CPU" \
+	"./flutter/tools/gn" --verbose --out-dir="$outdir" \
 		--no-goma \
 		--lto \
 		--enable-vulkan \
@@ -198,8 +195,8 @@ _build_3_27_and_lower()
 	ninja -v -C "$outdir/out/$flutter_outdir" \
 		|| { >&2 echo 'Flutter engine build failed.'; return 1; }
 
-	#export PATH+=":${srcdir}/src/flutter/lib/web_ui/dev"
-	#felt build
+	export PATH="$(pwd)/engine/src/flutter/lib/web_ui/dev:$PATH"
+	felt build
 
 	popd
 }
@@ -257,12 +254,6 @@ EOF
 	_run_gclient -R \
 		|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
 
-	if (( $(vercmp "$version" '3.44.0') >= 0 )); then
-		sed -i "/recursedeps = \\[/a\\  'engine/src/flutter/third_party/angle'," 'src/flutter/DEPS'
-		_run_gclient \
-			|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
-	fi
-
 	gclient.py runhooks \
 		|| { >&2 echo '`gclient.py runhooks` command failed.'; return 1; }
 
@@ -273,23 +264,6 @@ EOF
 		-e 's|}/|}|g' \
 		-e 's|rebase|#|g' \
 		'build/toolchain/linux/BUILD.gn' # use system clang
-
-	if [[ -e 'third_party/angle/BUILD.gn' ]]; then
-		sed -i 's|$wayland_dir|//third_party/angle/third_party/wayland|' \
-			'third_party/angle/BUILD.gn' \
-			'third_party/angle/src/common/vulkan/BUILD.gn' \
-			'third_party/angle/src/third_party/volk/BUILD.gn'
-		sed -i 's|import("//build/config/chromecast_build.gni")||' 'third_party/angle/src/tests/BUILD.gn'
-	fi
-	if [[ -e 'flutter/third_party/angle/BUILD.gn' ]]; then
-		sed -i 's|$wayland_dir|//flutter/third_party/angle/third_party/wayland|' \
-			'flutter/third_party/angle/BUILD.gn' \
-			'flutter/third_party/angle/src/common/vulkan/BUILD.gn' \
-			'flutter/third_party/angle/src/third_party/volk/BUILD.gn'
-		sed -i 's|"//build/config/linux/libdrm"|"$angle_root/third_party/libdrm"|' 'flutter/third_party/angle/src/libANGLE/renderer/gl/BUILD.gn'
-		sed -i 's|angle_build_tests = angle_has_build|angle_build_tests = false|' 'flutter/third_party/angle/gni/angle.gni'
-		sed -i 's|defines = \[|defines = [ "_DEFAULT_SOURCE", |' 'flutter/third_party/angle/third_party/libdrm/BUILD.gn'
-	fi
 
 	sed -i '/-Wno-deprecated-literal-operator/d' 'build/config/compiler/BUILD.gn'
 	sed -i \
@@ -322,9 +296,9 @@ _build()
 
 	pushd '.engine-src/flutter'
 
-	'./engine/src/flutter/tools/gn' --no-prebuilt-dart-sdk --verbose \
-		--linux \
-		--linux-cpu="$ARCH_FLUTTER_TARGET_CPU" \
+	# --no-prebuilt-dart-sdk
+	'./engine/src/flutter/tools/gn' \
+		--verbose \
 		--no-goma \
 		--lto \
 		--enable-vulkan \
@@ -333,7 +307,7 @@ _build()
 		--no-enable-unittests \
 	|| { >&2 echo '`gn gen` command failed.'; return 1; }
 
-	sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' "engine/src/out/$flutter_outdir/toolchain.ninja" # use system linker
+	sed -i 's|ldflags}|ldflags} -fuse-ld=mold --rtlib=libgcc --unwindlib=libgcc|g' "engine/src/out/$flutter_outdir/toolchain.ninja" # use system linker
 	ninja -v -C "engine/src/out/$flutter_outdir" \
 		|| { >&2 echo 'Flutter engine build failed.'; return 1; }
 
@@ -350,8 +324,14 @@ _install()
 	pushd "$dest"
 
 	rm -rf 'out'
-	mv -f 'flutter/engine/src/out' "$dest"
-	rm -rf 'flutter'
+
+	if ((ARCH_FLUTTER_CLEAN_ON_INSTALL)); then
+		mv -f 'flutter/engine/src/out' .
+		rm -rf 'flutter'
+	else
+		cp -rf 'flutter/engine/src/out' .
+	fi
+
 	rm -rf "out/$flutter_outdir/"{gen,obj,lib.unstripped,exe.unstripped}
 
 	popd
@@ -429,7 +409,7 @@ build_engine()
 	{
 		flock -s 3
 
-		if [[ ! -e "$cached_flutter_engine_dir/out" ]]; then
+		if [[ ! -e "$cached_flutter_engine_dir/out/$flutter_outdir" ]]; then
 			_download
 
 			if [[ $(vercmp "$engine_version" '3.29.0') == -1 ]]; then
