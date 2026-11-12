@@ -2,7 +2,7 @@
 
 pkgname=python-appdaemon
 _reponame=appdaemon
-pkgver=4.5.13
+pkgver=4.5.15
 pkgrel=1
 pkgdesc="Python Apps for Home Automation"
 url="https://github.com/AppDaemon/appdaemon"
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AppDaemon/appdaemon/archive/${pkgver}.tar.gz")
-sha256sums=('81e0a0fee9d7e2f22d1975b14009a6db659ace992f3bef6ba074d1eccf4ec637')
+sha256sums=('194ec97393d39398722bceb2883bf51061388ce0b6853e350bf20a0e5ed1ddab')
 
 build() {
 	cd "${srcdir}/${_reponame//-/_}-${pkgver}"
