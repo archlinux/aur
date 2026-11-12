@@ -1,6 +1,6 @@
 pkgbase = raft-desktop-bin
 	pkgdesc = Collaborative human and AI messaging desktop app
-	pkgver = 1.21.66
+	pkgver = 1.23.1
 	pkgrel = 1
 	url = https://raft.build
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = raft-desktop-bin
 	conflicts = raft-desktop
 	options = !strip
 	options = !debug
-	source = https://github.com/botiverse/desktop/releases/download/v1.21.66/Raft-Desktop-1.21.66-amd64.deb
-	sha256sums = b690f3355c8086acb6cd1f71f7b3d80311586e65f50e3862985f3cf6a3f41aae
+	source = https://github.com/botiverse/desktop/releases/download/v1.23.1/Raft-Desktop-1.23.1-amd64.deb
+	sha256sums = 938bc6f57d9d8081965935ed10bbd11b727b4ba656ba2b5df1c9ba938031fb7c
 
 pkgname = raft-desktop-bin
