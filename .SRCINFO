@@ -1,0 +1,17 @@
+pkgbase = porta-bin
+	pkgdesc = Open-source SSH client with an encrypted local vault and zero-trust sync (terminal UI)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/porta-ssh/porta
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = glibc
+	optdepends = wl-clipboard: copy public keys to the clipboard on Wayland
+	optdepends = xclip: copy public keys to the clipboard on X11
+	provides = porta
+	conflicts = porta
+	options = !debug
+	source = porta-bin-1.0.0::https://gitlab.com/porta-ssh/porta/-/jobs/17916099027/artifacts/raw/build/porta
+	sha256sums = e7287ce95bb002bbc5f172404d177e272e3d65a440e33e5ff338d34486051632
+
+pkgname = porta-bin
