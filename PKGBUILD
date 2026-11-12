@@ -2,7 +2,7 @@
 
 _pkgname=echoed
 pkgname="${_pkgname}-appimage"
-pkgver=1.7.15
+pkgver=1.7.21
 pkgrel=1
 pkgdesc="Lightweight Discord alternative — No Ads, No Tracking, Built on Tauri"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source_x86_64=(
 )
 
 noextract=("${_appimage}")
-sha256sums_x86_64=('e7d690de91f0fa18d744b6254745dff77fa2d94c02c9f8e5a652c0d7d69e33ae')
+sha256sums_x86_64=('f994fe0ea8b8a3d1599bbf4cd6460a29e8aa891dea72fb86a4c175c17612d3ae')
 
 prepare() {
   # Clean old paths

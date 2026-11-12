@@ -1,6 +1,6 @@
 pkgbase = echoed-appimage
 	pkgdesc = Lightweight Discord alternative — No Ads, No Tracking, Built on Tauri
-	pkgver = 1.7.15
+	pkgver = 1.7.21
 	pkgrel = 1
 	url = https://echoed.gg
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = echoed-appimage
 	makedepends = squashfs-tools
 	depends = fuse2
 	depends = hicolor-icon-theme
-	noextract = echoed-1.7.15-amd64.AppImage
+	noextract = echoed-1.7.21-amd64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = echoed-1.7.15-amd64.AppImage::https://software.echoed.gg/v1.7.15/Echoed_1.7.15_amd64.AppImage
-	sha256sums_x86_64 = e7d690de91f0fa18d744b6254745dff77fa2d94c02c9f8e5a652c0d7d69e33ae
+	source_x86_64 = echoed-1.7.21-amd64.AppImage::https://software.echoed.gg/v1.7.21/Echoed_1.7.21_amd64.AppImage
+	sha256sums_x86_64 = f994fe0ea8b8a3d1599bbf4cd6460a29e8aa891dea72fb86a4c175c17612d3ae
 
 pkgname = echoed-appimage
