@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=modbux-bin
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Free open-source Modbus client GUI and server simulator for TCP, RTU, and RTU over TCP"
 arch=('x86_64' 'aarch64')
@@ -57,8 +57,8 @@ source_aarch64=(
 )
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
 sha256sums=('9dbe8bb5febf603abca49dd6ddf4a7175ecccc91404ff07906ccc036025ddca8')
-sha256sums_x86_64=('a809a521d2433aac6e60118f74cdfb6037761f622b1ca30f1330ea433bbd26f8')
-sha256sums_aarch64=('a64d27e79222dbc3fd73ebf889e909df59a6d0237e83326f6a0acb03d80d474e')
+sha256sums_x86_64=('700648ebb510eea6064fe8c75a36edd91e63e692ac9cc3bc5fd7c51dbbc3a516')
+sha256sums_aarch64=('db3f5755ddaee043f7c0358650fb81d71c68be08ef1ffc8b8cdd1c65ac0b6833')
 
 package() {
   local deb_var="_deb_${CARCH}"
