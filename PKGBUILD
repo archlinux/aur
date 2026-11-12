@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.1.r6990.26ce6d2
+pkgver=3.11.1.r7173.b2ea1489fd
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -11,7 +11,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'go>=1.27.1'
+  'go>=1.27.3'
 )
 provides=("nuclei=$pkgver")
 conflicts=("nuclei"{,-debug})
@@ -21,7 +21,7 @@ b2sums=('SKIP')
 pkgver() {
   cd nuclei
   _tag="$(grep -P '^\s+Version' pkg/catalog/config/constants.go | awk -F\` '{print $2}' | sed 's/^v//')"
-  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
 }
 
 prepare() {

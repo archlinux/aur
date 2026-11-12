@@ -1,6 +1,6 @@
 pkgbase = nuclei-git
 	pkgdesc = Fast and customizable vulnerability scanner
-	pkgver = 3.11.1.r6990.26ce6d2
+	pkgver = 3.11.1.r7173.b2ea1489fd
 	pkgrel = 1
 	url = https://projectdiscovery.io/nuclei
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nuclei-git
 	arch = armv7h
 	license = MIT
 	makedepends = git
-	makedepends = go>=1.27.1
+	makedepends = go>=1.27.3
 	depends = glibc
-	provides = nuclei=3.11.1.r6990.26ce6d2
+	provides = nuclei=3.11.1.r7173.b2ea1489fd
 	conflicts = nuclei
 	conflicts = nuclei-debug
 	source = git+https://github.com/projectdiscovery/nuclei
