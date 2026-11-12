@@ -11,7 +11,7 @@ conflicts=('brum' 'commanderdog' 'commanderdog-bin')
 depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates')
 optdepends=('proton-drive-cli-bin: Proton Drive (Brum can also install it in Settings)')
 source=("brum-v${pkgver}-linux-${arch}.tar.gz::https://github.com/Woofson/brum/releases/download/v${pkgver}/brum-v${pkgver}-linux-${arch}.tar.gz")
-sha256sums=('0e15d1585a24cc58e36c867f076ca6a847150e57b193691f8328278636f1a6e8')
+sha256sums=('d11d92a2f48809babb54fc1f3cb7e6dfaae1a8517a422bfc6bd62712ac0a31f3')
 
 package() {
     cd "$srcdir/brum-v${pkgver}-linux-${arch}"
