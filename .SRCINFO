@@ -1,0 +1,26 @@
+pkgbase = scale_tail
+	pkgdesc = System-tray control centre for the Tailscale CLI
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/asafelobotomy/scale_tail
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = tailscale
+	depends = gcc-libs
+	depends = glibc
+	depends = dbus
+	depends = hicolor-icon-theme
+	optdepends = libnotify: notifications (notify-send)
+	optdepends = xdg-utils: open login and release pages in the browser
+	optdepends = wl-clipboard: copy IPs and names (Wayland)
+	optdepends = xclip: copy IPs and names (X11)
+	optdepends = zenity: pick files to send with Taildrop
+	optdepends = uq: Tailscale tile in uQ quick settings instead of the tray
+	options = !lto
+	options = !debug
+	source = scale_tail-0.6.0.tar.gz::https://github.com/asafelobotomy/scale_tail/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 72b72b5b1e097c225d72437b1e964711db05c3c656e3625f9b2e06b4aa7dbefa
+
+pkgname = scale_tail
