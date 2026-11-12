@@ -1,0 +1,22 @@
+pkgbase = packslip-bin
+	pkgdesc = A signed release manifest for vendor binaries
+	pkgver = 1.11.4
+	pkgrel = 1
+	url = https://github.com/jdx/packslip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = packslip
+	conflicts = packslip
+	source = LICENSE-1.11.4::https://raw.githubusercontent.com/jdx/packslip/v1.11.4/LICENSE
+	source = README-1.11.4.md::https://raw.githubusercontent.com/jdx/packslip/v1.11.4/README.md
+	sha256sums = b88d66b6653e1c48856f66ad51b5a7c97e9496b85b9ae23fe7a1c9ec17fd02d8
+	sha256sums = 821abac2a5f69f55177241b3eeff61125a9f37e83b1d297639300ef8b93b0c73
+	source_x86_64 = packslip-x86_64-1.11.4.tar.xz::https://github.com/jdx/packslip/releases/download/v1.11.4/packslip-v1.11.4-linux-x64.tar.xz
+	sha256sums_x86_64 = 011ccc784584a466bd12a96f76c8e7a3ff365a2c99aee53884140cecf020aadd
+	source_aarch64 = packslip-aarch64-1.11.4.tar.xz::https://github.com/jdx/packslip/releases/download/v1.11.4/packslip-v1.11.4-linux-arm64.tar.xz
+	sha256sums_aarch64 = 0cd0e3f96917dacbc0a993affacfc2a838df2503e3ac2017cee072c064cb30bc
+
+pkgname = packslip-bin

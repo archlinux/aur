@@ -1,0 +1,5 @@
+[packslip-bin]
+source = "github"
+github = "jdx/packslip"
+use_latest_release = true
+prefix = "v"
