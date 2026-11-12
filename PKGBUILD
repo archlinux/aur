@@ -3,7 +3,7 @@
 pkgname=texlive-emo
 _pkgname=emo
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Emoji support for all LaTeX engines"
 arch=('any')
 url="https://github.com/apparebit/emo"
@@ -23,7 +23,7 @@ prepare() {
 package() {
   cd "$srcdir/$_pkgname"
   
-  local texmf="$pkgdir/usr/local/share/texmf-dist/tex/latex/emo"
+  local texmf="$pkgdir/usr/share/texmf/tex/latex/emo"
 
   install -d "$texmf"
 
