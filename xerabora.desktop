@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=xerabora
+GenericName=RetroAchievements Client
+Comment=RetroAchievements library, leaderboards and live tracking for a real PlayStation 2
+Exec=xerabora
+Icon=xerabora
+Terminal=false
+StartupNotify=false
+Categories=Game;
+Keywords=RetroAchievements;PS2;PlayStation;achievements;
