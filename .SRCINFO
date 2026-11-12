@@ -1,0 +1,26 @@
+pkgbase = pixtuoid-bin
+	pkgdesc = Terminal pixel-art office for AI coding agents (prebuilt)
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/pixtuoid/pixtuoid
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pixtuoid=0.22.0
+	conflicts = pixtuoid
+	source_x86_64 = https://github.com/pixtuoid/pixtuoid/releases/download/v0.22.0/pixtuoid-v0.22.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = bc752d9265545e86b0c593308ac0c6875cd923fbaa8e4760ea5a6ea26c324e91
+	source_aarch64 = https://github.com/pixtuoid/pixtuoid/releases/download/v0.22.0/pixtuoid-v0.22.0-aarch64-unknown-linux-gnu.tar.gz
+	depends_aarch64 = glibc
+	depends_aarch64 = libgcc
+	optdepends_aarch64 = libxkbcommon: floating window
+	optdepends_aarch64 = wayland: floating window on Wayland
+	optdepends_aarch64 = libx11: floating window on X11
+	optdepends_aarch64 = libxcursor: floating window on X11
+	optdepends_aarch64 = libxi: floating window on X11
+	optdepends_aarch64 = libxkbcommon-x11: floating window on X11
+	optdepends_aarch64 = vulkan-icd-loader: floating window with Vulkan, OpenGL without it
+	optdepends_aarch64 = libglvnd: floating window with OpenGL
+	sha256sums_aarch64 = f489dbbbbbe02e99c823bc3a55625be86b24dcd7b686edbd2d4a7d5a9140c4af
+
+pkgname = pixtuoid-bin
