@@ -2,7 +2,7 @@
 
 _name=pyvoy
 pkgname=python-$_name
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A Python application server implemented in Envoy.'
 arch=('x86_64' 'aarch64')
@@ -30,27 +30,25 @@ checkdepends=('python-anyio'
               'python-trio'
               'python-trustme'
               'python-websockets')
-source=("$_name::git+$url.git#tag=v$pkgver"
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "kosoku::git+https://github.com/curioswitch/kosoku.git")
-sha256sums=('01a9141359fa98ae788e7cc1ee064736f1f96b340333b932ae3238367fa58b28'
+sha256sums=('d0e8dbbf37f0b1584c35ad952963dd2b1687eb02a3cbafe01a7e9cf4ccb1a60b'
             'SKIP')
 
 prepare() {
-  cd "$_name"
+  cd "$_name-$pkgver"
   # Use the maturin version shipped by Arch
   sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
-  # Tests expect RemoteProtocolError from newer pyqwest, same as upstream fix in curioswitch/pyvoy#322
-  sed -i 's/\bReadError\b/RemoteProtocolError/g' tests/test_kitchensink.py
-  cd ../kosoku
+  cd "$srcdir"/kosoku
   git checkout --quiet "$(git tag -l 'v*' --sort=-v:refname | head -1)"
   # Use the maturin version shipped by Arch
   sed -i '/^requires = /s/"maturin[<>=!~][^"]*"/"maturin"/' pyproject.toml
 }
 
 build() {
-  cd "$_name"
+  cd "$_name-$pkgver"
   python -m build --wheel --no-isolation
-  cd ../kosoku
+  cd "$srcdir"/kosoku
   python -m build --wheel --no-isolation
 }
 
@@ -59,7 +57,7 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$_name"
+  cd "$_name-$pkgver"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer "$srcdir"/kosoku/dist/*.whl
@@ -67,6 +65,7 @@ check() {
 }
 
 package() {
-  cd "$_name"
+  cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
