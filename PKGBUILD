@@ -1,6 +1,6 @@
 # Maintainer: ynk
 pkgname=wb2api-git
-pkgver=2026.11.5.2306.r2.gdab1b08
+pkgver=2026.11.12.1729.r0.g1c007bb
 pkgrel=1
 pkgdesc="wb2api - Go API panel service (git, auto-follows upstream)"
 arch=('x86_64' 'aarch64')
