@@ -14,6 +14,13 @@ if (!root || !['mainland-cn', 'global'].includes(region) || !appName) {
   process.exit(1);
 }
 
+const outDir = path.join(root, 'out');
+const jsFiles = () =>
+  fs
+    .readdirSync(outDir)
+    .filter((file) => file.endsWith('.cjs') || file.endsWith('.js'))
+    .map((file) => path.join(outDir, file));
+
 // 1. 配置目录隔离：Electron 用 package.json 的 name 推导 userData 路径，
 //    国际版和国内版共用同一名称会互相覆盖登录态。
 const pkgPath = path.join(root, 'package.json');
@@ -25,68 +32,63 @@ pkg.desktopName =
   region === 'mainland-cn' ? 'kimi-code-cn.desktop' : 'kimi-code-intl.desktop';
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 
-// 2. 区域判定函数 Ei 的原始实现按环境变量、登录态、区域标记和默认值依次判定，
-//    这里整体替换为常量。打包产物里有多个同名压缩函数 Ei，必须以同文件内的
-//    $ie 与 OAuth 变量一起定位。
-const candidates = [];
-for (const file of fs.readdirSync(path.join(root, 'out'))) {
-  if (!file.endsWith('.cjs') && !file.endsWith('.js')) continue;
-  const filePath = path.join(root, 'out', file);
+// 2. 区域判定函数按环境变量、登录态、区域标记和默认值依次判定，这里整体替换
+//    为常量。1.3.4 起该函数被压缩成 Gt，函数体从 env 读取 KIMI_CODE_OAUTH_HOST。
+//    同名压缩函数可能出现在别的产物体里，因此以签名加首个 return 一起定位。
+const regionPattern =
+  /function ([A-Za-z_$][\w$]*)\(e\)\{let t=e\.env\?\?process\.env,n=t\.KIMI_CODE_OAUTH_HOST\?\?t\.KIMI_OAUTH_HOST;if\(n!==void 0&&n\.length>0\)return\{region:/;
+const regionCandidates = [];
+for (const filePath of jsFiles()) {
   const source = fs.readFileSync(filePath, 'utf8');
-  if (
-    source.includes('function Ei(e){') &&
-    source.includes('function $ie(') &&
-    source.includes('KIMI_CODE_OAUTH_HOST')
-  ) {
-    candidates.push({ filePath, source });
-  }
+  if (regionPattern.test(source)) regionCandidates.push({ filePath, source });
 }
 
-if (candidates.length !== 1) {
-  console.error(`区域判定函数 Ei 候选数量异常: ${candidates.length}`);
+if (regionCandidates.length !== 1) {
+  console.error(`区域判定函数候选数量异常: ${regionCandidates.length}`);
   process.exit(1);
 }
 
-const target = candidates[0];
-
-const start = target.source.indexOf('function Ei(e){');
-const next = target.source.indexOf('function $ie(', start);
+const target = regionCandidates[0];
+const match = target.source.match(regionPattern);
+const start = match.index;
+const next = target.source.indexOf('function ', start + match[0].length);
 if (next < 0) {
-  console.error('未找到 Ei 之后的 $ie 函数，补丁位置异常');
+  console.error('未找到区域判定函数之后的函数，补丁位置异常');
   process.exit(1);
 }
 
-const replacement = `function Ei(e){return{region:\`${region}\`,source:\`env\`}}`;
+const replacement = `function ${match[1]}(e){return{region:\`${region}\`,source:\`env\`}}`;
 const patched =
   target.source.slice(0, start) + replacement + target.source.slice(next);
-
 fs.writeFileSync(target.filePath, patched);
-console.log(`patched ${path.basename(target.filePath)}: region=${region}, name=${appName}`);
+console.log(
+  `patched ${path.basename(target.filePath)}: region=${region}, name=${appName}`
+);
 
 // 3. 国内版改用独立的自定义协议：两版都注册 kimi-code:// 时，xdg 无法确定
 //    由哪个包处理深链，打开链接会落到随机一版。这里把注册常量与回调协议
 //    判断一起改成 kimi-code-cn，与国际版彻底分离。
 if (region === 'mainland-cn') {
-  const outDir = path.join(root, 'out');
+  const schemePattern = /const ([A-Za-z_$][\w$]*)=`kimi-code`;/g;
   let schemePatched = 0;
   let protocolPatched = 0;
-  for (const file of fs.readdirSync(outDir)) {
-    if (!file.endsWith('.cjs') && !file.endsWith('.js')) continue;
-    const filePath = path.join(outDir, file);
+  for (const filePath of jsFiles()) {
     let source = fs.readFileSync(filePath, 'utf8');
-    const gns = source.split('const gn=`kimi-code`').length - 1;
+    const schemes = source.match(schemePattern) || [];
     const protocols = source.split('protocol===`kimi-code:`').length - 1;
-    if (gns === 0 && protocols === 0) continue;
+    if (schemes.length === 0 && protocols === 0) continue;
+    source = source.replace(
+      schemePattern,
+      (_all, name) => `const ${name}=\`kimi-code-cn\`;`
+    );
     source = source
-      .split('const gn=`kimi-code`')
-      .join('const gn=`kimi-code-cn`')
       .split('protocol===`kimi-code:`')
       .join('protocol===`kimi-code-cn:`');
     fs.writeFileSync(filePath, source);
-    schemePatched += gns;
+    schemePatched += schemes.length;
     protocolPatched += protocols;
     console.log(
-      `patched ${file}: scheme=kimi-code-cn (${gns} register, ${protocols} check)`
+      `patched ${path.basename(filePath)}: scheme=kimi-code-cn (${schemes.length} register, ${protocols} check)`
     );
   }
   if (schemePatched !== 1 || protocolPatched === 0) {

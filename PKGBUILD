@@ -4,8 +4,8 @@
 # 应用整体安装在独立 /opt 前缀，命令名 kimi-code，与国内版可并存。
 
 pkgname=kimi-code-intl-bin
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 _appname='Kimi Code'
 _prefix='/opt/kimi-code-intl'
 pkgdesc='Kimi Code Desktop, international build pinned to the global API'
@@ -44,8 +44,8 @@ source=(
 )
 noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 sha256sums=(
-  '2e1ed27232c1166a521741833ee77233a0793c8719b7f2b2b05d2d9895c53422'
-  'ea518e5c5eae5f1e2c7d7a4e8dfa62609169d05845b8d9b7d3ae7c4500996f2d'
+  'a4804317888ab08982c0206672f73a9e0ae2e0ba00fe6fd37ad7afbb2a96dec4'
+  '0ae14e3358d32ed99d1651a0455f0c449f05de2a77f62ada6f3156886900d1e3'
   'ab395aa009b442d4a30a2c682fe3ce07930abdf814b2fae59a41f20d032c9c55'
   'c2ce2c7e3267701aa192cae428bf9aebb356402c5bb04131c1d89a361d5f1457'
   'dd64d29089377b6718b81eeb2e63c83c8e31d3f817d3893a3439c445b3b8d47f'
@@ -76,7 +76,7 @@ prepare() {
   asar pack "${srcdir}/asar" "${srcdir}/app.asar"
 
   # 确认补丁确实落到了唯一的区域判定函数上。
-  grep -rqF 'function Ei(e){return{region:`global`' "${srcdir}/asar/out"
+  grep -rqF 'function Gt(e){return{region:`global`' "${srcdir}/asar/out"
 }
 
 package() {
