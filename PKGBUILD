@@ -2,8 +2,8 @@
 
 pkgname=kor
 # renovate: datasource=github-releases depName=yonahd/kor
-pkgver=0.6.9
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Kubernetes Orphaned Resources Finder'
 arch=('x86_64')
 url=https://github.com/yonahd/kor
@@ -13,8 +13,8 @@ makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 groups=('kubectl-plugins')
 provides=("kubectl-${pkgname}")
-sha256sums=('2b354562dd032a629dec136bb38c288886f5d362dabbd2597bf9bde8628b59e1')
-b2sums=('cf91c436e183a980a5d965c06c48fcede849d8a910e791879eb93bc0556685eafef13587242373950b507ad44714c747ab480bdd3b956357b79578f4cb189f24')
+sha256sums=('3556833e78da34d4ec66bd87ceaa12aa1550d2c2d250141356f6684a133e1eda')
+b2sums=('70e5ebdbfbfd6d7b40cffa87f0072d7b4e988d3cd878f015993d8108c1a6eda54d4a6b5f683ebfd55ec1c3b92f0f2ff6fa17726c50923c3e17c601496a72941f')
 
 build() {
   local _x _commit
