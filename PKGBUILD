@@ -2,7 +2,7 @@
 
 pkgname=slit-scan
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming slit-scan animations from images, videos and a camera"
 arch=('x86_64' 'aarch64')
 url="https://github.com/flajann2/slit-scan-cpp"
@@ -20,7 +20,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_PLAYGROUND=OFF \
-    -DSLITSCAN_REGENERATE_UI=OFF \
+    -DSLITSCAN_REGENERATE_UI=OFF 
   cmake --build build
 }
 

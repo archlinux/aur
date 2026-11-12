@@ -1,7 +1,7 @@
 pkgbase = slit-scan
 	pkgdesc = Streaming slit-scan animations from images, videos and a camera
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flajann2/slit-scan-cpp
 	arch = x86_64
 	arch = aarch64
