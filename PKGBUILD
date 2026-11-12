@@ -1,7 +1,7 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-nightly-bin
-pkgver=0.1.10_nightly.20261111.4544
+pkgver=0.1.10_nightly.20261112.4564
 pkgrel=1
 pkgdesc='Nightly desktop control surface for local coding agents'
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=(
   "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${_upstream_version}/LICENSE"
 )
 sha256sums=(
-  '4cd6a06de928d488d76f194dab6db1cff0b52e2eaf9ad3ec1a42ff28bb48ac50' # AppImage
+  '1b87e12174540c1ed0965103eceef703446b6ca494d63a4974e0641c3053d4f3' # AppImage
   '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
 )
 
@@ -74,7 +74,9 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/t3code-nightly" <<'EOF'
 #!/bin/sh
-exec /opt/t3code-nightly-bin/AppRun "$@"
+# AppRun computes APPDIR but doesn't export it. The server's AppImage env scrub needs it
+# to keep /opt/t3code-nightly-bin/usr/lib etc. out of terminal and agent shells (#28993).
+exec env APPDIR=/opt/t3code-nightly-bin /opt/t3code-nightly-bin/AppRun "$@"
 EOF
   ln -s t3code-nightly "$pkgdir/usr/bin/t3-code-nightly-desktop"
 
