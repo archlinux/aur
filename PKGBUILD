@@ -2,7 +2,7 @@
 # Builds kache from the latest `main`. pkgver() derives the version from git,
 # so this tracks unreleased/dev code — rebuild to update.
 pkgname=kache-git
-pkgver=2.0.0.r1312.ge465eff
+pkgver=2.1.1.r1357.g7fe0b28
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (latest git main)'
 arch=('x86_64' 'aarch64')
@@ -42,6 +42,9 @@ package() {
   if [[ -f target/release/kache-engine ]]; then
     install -Dm0755 target/release/kache-engine "$pkgdir/usr/bin/kache-engine"
   fi
+  for launcher in kache-clang-cl kache-cl; do
+    install -Dm0755 "target/release/$launcher" "$pkgdir/usr/bin/$launcher"
+  done
 
   local shell
   for shell in bash zsh fish elvish; do
