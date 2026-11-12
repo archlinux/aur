@@ -1,18 +1,18 @@
 pkgbase = ltext-bin
 	pkgdesc = Text-file templating utility that treats files as higher-order functions (static binary)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ltext/ltext
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause
-	provides = ltext=0.2.1
+	provides = ltext=0.2.2
 	conflicts = ltext
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/ltext/ltext/releases/download/v0.2.1/ltext-0.2.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 8d7a34f5fb7ddbf0ddd82f9860850a0664450f4123ef63d4a4a5f999843d9470
-	source_aarch64 = https://github.com/ltext/ltext/releases/download/v0.2.1/ltext-0.2.1-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 4a72796c3171ae24693120f0ba8a2ec76be8d602fcd2edcb43d1ae0c29f9738a
+	source_x86_64 = https://github.com/ltext/ltext/releases/download/v0.2.2/ltext-0.2.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 1652196566bf12f10ec61de3f728ea8baace2c70acaed7598d4984fb5c7f8380
+	source_aarch64 = https://github.com/ltext/ltext/releases/download/v0.2.2/ltext-0.2.2-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 0dc7273d8c70f3672a41a02cbe83fe00ea496e5b5a8ad7664b6b365f1415fd1b
 
 pkgname = ltext-bin
