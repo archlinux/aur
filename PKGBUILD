@@ -2,10 +2,10 @@
 # Contributor: Charlotte <cemetery394@gmail.com>
 pkgname=citron-neo
 pkgver=2026.04.27
-pkgrel=4
+pkgrel=5
 pkgdesc="Nintendo Switch emulator fork from citron-neo (git version)"
 arch=('x86_64')
-url="https://github.com/citron-neo/emulator"
+url="https://git.mythrax-rs.org/Citron-NEO/emulator.git"
 license=('GPL-3.0-or-later')
 
 depends=(
@@ -24,7 +24,7 @@ makedepends=(
 provides=('citron' 'citron-git' "${pkgname::-4}")
 conflicts=('citron' 'citron-git' "${pkgname::-4}")
 
-source=("git+https://github.com/citron-neo/emulator.git#tag=${pkgver//./-}"
+source=("git+https://git.mythrax-rs.org/Citron-NEO/emulator.git#tag=${pkgver//./-}"
 	"git+https://github.com/lsalzman/enet.git"
 	"git+https://github.com/mozilla/cubeb.git"
 	"git+https://github.com/xinitrcn1/dynarmic.git"
@@ -63,7 +63,7 @@ source=("git+https://github.com/citron-neo/emulator.git#tag=${pkgver//./-}"
 	#tzdb_to_nx submodules
 	"git+https://github.com/eggert/tz.git"
 	#sirit submodules includes SPIRV-Headers
-	"fix.patch::https://github.com/citron-neo/emulator/commit/bb6ca099e7f8ae5dc6de33da52419a4a62b95ada.diff"
+	"fix.patch::https://git.mythrax-rs.org/Citron-NEO/emulator/commit/bb6ca099e7f8ae5dc6de33da52419a4a62b95ada.patch"
 	)
 sha256sums=('725134f15505326c4e175a7789bbdd91021baa5d0e54e6b97a60d4c05af36830'
             'SKIP'
@@ -98,7 +98,7 @@ sha256sums=('725134f15505326c4e175a7789bbdd91021baa5d0e54e6b97a60d4c05af36830'
             'SKIP'
             'SKIP'
             'SKIP'
-            '1120a1fb92143791127c3516938aaf371ec92ad85adb076b707183d6d2873383')
+            'e31f8a33332b9e8e184d2656eff03243ba9bed282bccf9fe7e33bb9184933c34')
 
 prepare() {
   cd emulator
