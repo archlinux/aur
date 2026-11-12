@@ -3,4 +3,4 @@ source = "git"
 git = "https://github.com/frostwire/frostwire.git"
 include_regex = 'frostwire-desktop-([\d\.]+)-build-(\d+)'
 from_pattern = 'frostwire-desktop-([\d\.]+)-build-(\d+)'
-to_pattern= '\1'
+to_pattern = '\1'
