@@ -1,0 +1,34 @@
+pkgbase = ampl-bin
+	pkgdesc = A Mathematical Programming Language
+	pkgver = 20261109
+	pkgrel = 1
+	url = https://ampl.com
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = EPL-1.0
+	license = LicenseRef-AMPL
+	license = MIT
+	license = Zlib
+	depends = glibc
+	depends = gmp
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	provides = ampl=20261109
+	conflicts = ampl
+	options = !debug
+	options = !strip
+	source = ampl.sh
+	sha256sums = 67215ec21c6c7d443f487ea5ed39ab07c753c83475bae0b5b39f447a9dd9649b
+	source_aarch64 = ampl-20261109-aarch64.tgz::https://portal.ampl.com/dl/amplce/ampl.linux-arm64.tgz
+	sha256sums_aarch64 = SKIP
+	source_x86_64 = ampl-20261109-x86_64.tgz::https://portal.ampl.com/dl/amplce/ampl.linux64.tgz
+	optdepends_x86_64 = cuda: CUDA support for HiGHS and Xpress
+	optdepends_x86_64 = dotnet-runtime: .NET support for AMPL API
+	optdepends_x86_64 = java-runtime: Java support for AMPL API
+	optdepends_x86_64 = unixodbc: ODBC support
+	sha256sums_x86_64 = SKIP
+
+pkgname = ampl-bin
