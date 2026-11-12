@@ -4,7 +4,7 @@
 # release version, pkgrel, source location, and checksum into the AUR metadata.
 
 pkgname=chan-desktop
-pkgver=0.127.0
+pkgver=0.128.0
 pkgrel=1
 pkgdesc='Supercharged terminal emulator, desktop app'
 # Native CI builds both architectures; aarch64 is observed-only for v0.73.0.
@@ -33,8 +33,8 @@ conflicts=('chan')
 # Cargo owns thin LTO. makepkg's additional -flto=auto reaches native C/C++
 # dependencies and can leave rustc unable to resolve their symbols at link time.
 options=(!lto)
-source=('chan-0.127.0.tar.gz::https://github.com/fiorix/chan/archive/v0.127.0.tar.gz')
-sha256sums=('f3314d97199b373383ef59a57642bcc42bfba25140aa3ed7b17ddeb8bb51c259')
+source=('chan-0.128.0.tar.gz::https://github.com/fiorix/chan/archive/v0.128.0.tar.gz')
+sha256sums=('9685f63086b055e55148a0f420006e18cc0ea33a1146b072dadc5021fff48fd7')
 
 # RUSTUP_TOOLCHAIN keeps the tree's rust-toolchain.toml pin from making a
 # rustup-provided cargo download a second toolchain mid-build, per Arch's Rust
@@ -65,6 +65,8 @@ check() {
     export CHAN_PACKAGED=aur
     cargo test --frozen --release -p chan-desktop
     desktop-file-validate packaging/distros/shared/chan-desktop.desktop
+    desktop-file-validate packaging/distros/shared/chan-files.desktop
+    desktop-file-validate packaging/distros/shared/chan-edit.desktop
 }
 
 package() {
@@ -72,9 +74,15 @@ package() {
     install -Dm755 package-bin/chan-desktop "$pkgdir/usr/bin/chan-desktop"
     ln -s chan-desktop "$pkgdir/usr/bin/chan"
     ln -s chan-desktop "$pkgdir/usr/bin/cs"
+    ln -s chan-desktop "$pkgdir/usr/bin/chan-files"
+    ln -s chan-desktop "$pkgdir/usr/bin/chan-edit"
 
     install -Dm644 packaging/distros/shared/chan-desktop.desktop \
         "$pkgdir/usr/share/applications/chan-desktop.desktop"
+    install -Dm644 packaging/distros/shared/chan-files.desktop \
+        "$pkgdir/usr/share/applications/chan-files.desktop"
+    install -Dm644 packaging/distros/shared/chan-edit.desktop \
+        "$pkgdir/usr/share/applications/chan-edit.desktop"
     install -Dm644 desktop/src-tauri/icons/32x32.png \
         "$pkgdir/usr/share/icons/hicolor/32x32/apps/chan-desktop.png"
     install -Dm644 desktop/src-tauri/icons/64x64.png \
