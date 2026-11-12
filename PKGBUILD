@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/texturecraft/releases/download/v${pkgver}/texturecraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/texturecraft/releases/download/v${pkgver}/texturecraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('e67d2c661d1e6c7c82a2a59ee9a9757bf62db998749ccd3f40a5423d895feb61')
 
 package() {
