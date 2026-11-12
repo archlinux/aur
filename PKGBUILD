@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="MongoDB TUI manager designed to simplify data visualization and quick manipulation"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('204e81a924670a20d88b5eee77ce5594c7bc8cf95df182b780cd3c9a944560ff')
-sha256sums_aarch64=('efb83b255a573be8a02c37a00ec68a281f44f02a2e1d03aaadce0ea068fb58a9')
+sha256sums_x86_64=('aeedb914189a631ef110473348a31fc4aaee80eac0dc3b3ffa163e25abe8f1f1')
+sha256sums_aarch64=('dacf1f4c59967c409d64420bea4a88af335ef1e8712d87a74db047521a4be677')
 
 
 package() {
