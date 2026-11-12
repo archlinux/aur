@@ -9,7 +9,7 @@
 # of the ente/ente monorepo, release candidates and betas excluded.
 pkgname=ente-auth-bin-jetm
 pkgver=4.4.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Ente two-factor authenticator'
 arch=('x86_64')
 url='https://ente.io/auth'
@@ -26,6 +26,7 @@ license=('AGPL-3.0-or-later')
 depends=('gtk3' 'libayatana-appindicator' 'ayatana-ido' 'libayatana-indicator'
          'libsecret' 'org.freedesktop.secrets' 'xdg-user-dirs' 'polkit'
          'sqlite' 'curl')
+makedepends=('patchelf')
 provides=('ente-auth')
 conflicts=('ente-auth' 'ente-auth-bin')
 
@@ -52,6 +53,22 @@ package() {
     echo 'error: enteauth or lib/libapp.so missing after extraction' >&2
     return 1
   }
+
+  # Upstream's CI build leaves its own checkout path in the RUNPATH of nine
+  # plugin libraries (/home/runner/work/ente/...), which namcap rejects as
+  # insecure: a directory by that name on the user's machine would be searched
+  # for libraries. Everything these plugins need from the bundle sits beside
+  # them in lib/, so point them there. A glob over lib/ rather than a fixed
+  # list, so a plugin added in a later release is covered too.
+  local _lib
+  for _lib in "${pkgdir}"/usr/share/enteauth/lib/*.so; do
+    [[ $(patchelf --print-rpath "${_lib}") == /home/runner/* ]] || continue
+    patchelf --set-rpath '$ORIGIN' "${_lib}"
+    [[ $(patchelf --print-rpath "${_lib}") == '$ORIGIN' ]] || {
+      echo "error: could not rewrite the RUNPATH of ${_lib##*/}" >&2
+      return 1
+    }
+  done
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /usr/share/enteauth/enteauth "${pkgdir}/usr/bin/enteauth"

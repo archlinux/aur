@@ -1,10 +1,11 @@
 pkgbase = ente-auth-bin-jetm
 	pkgdesc = Ente two-factor authenticator
 	pkgver = 4.4.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ente.io/auth
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	makedepends = patchelf
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = ayatana-ido
