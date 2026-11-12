@@ -3,7 +3,7 @@
 pkgname=reasonix-studio-bin
 _pkgname=reasonix-studio
 pkgver=2.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reasonix Studio - Electron desktop GUI for the DeepSeek-native AI coding agent (repackaged from .deb)'
 arch=('x86_64')
 url='https://github.com/esengine/DeepSeek-Reasonix'
@@ -56,7 +56,14 @@ package() {
     -e 's|^Icon=.*|Icon=reasonix-studio|' \
     -e 's|^StartupWMClass=.*|StartupWMClass=Reasonix Studio|' \
     "${pkgdir}/usr/share/applications/reasonix-studio.desktop"
-  ln -s reasonix-studio.desktop "${pkgdir}/usr/share/applications/reasonix-studio-electron.desktop"
+
+  # Keep upstream's desktop file ID (reasonix-studio-electron.desktop) so
+  # Wayland app_id matching and pinned-app lookups keep working, but hide the
+  # entry so menus do not list Reasonix Studio twice.
+  install -Dm644 "${pkgdir}/usr/share/applications/reasonix-studio.desktop" \
+    "${pkgdir}/usr/share/applications/reasonix-studio-electron.desktop"
+  sed -i '/^\[Desktop Entry\]/a NoDisplay=true' \
+    "${pkgdir}/usr/share/applications/reasonix-studio-electron.desktop"
 
   # Icons
   local _icon _dir
