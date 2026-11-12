@@ -1,0 +1,14 @@
+pkgbase = xombe
+	pkgdesc = C99 library implementing AMBE 2400 and AMBE+2 used by D-STAR and DMR
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/9M2PJU/xombe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	source = xombe-0.1.0.tar.gz::https://github.com/9M2PJU/xombe/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 499818e971926c3dbbc9a058a27faba825fbdd97f8c1ab58b578ba3848575633
+
+pkgname = xombe
