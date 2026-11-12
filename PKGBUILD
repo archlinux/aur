@@ -1,4 +1,4 @@
-# Maintainer: Fred Mitchell <your-email-here>
+# Maintainer: Fred Mitchell <fred at atomlogik dot de>
 
 pkgname=slit-scan-git
 _pkgname=slit-scan
@@ -34,7 +34,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_PLAYGROUND=OFF \
     -DSLITSCAN_REGENERATE_UI=OFF \
-    -Wno-dev
   cmake --build build
 }
 
