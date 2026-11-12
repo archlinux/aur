@@ -4,8 +4,8 @@
 _channel=latest
 pkgname="ibgateway"
 provides=('ibgateway')
-_version_short=10.51
-pkgver="$_version_short".1a
+_version_short=10.52
+pkgver="$_version_short".1c
 pkgrel=1
 pkgdesc='InteractiveBrokers Gateway - Latest'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom:proprietary')
 depends=('jdk-openjdk')
 optdepends=()
 source=("https://download2.interactivebrokers.com/installers/ibgateway/$_channel-standalone/ibgateway-$_channel-standalone-linux-x64.sh")
-sha512sums=('e650b9ddb21cb438d9b01e355ed6ddf3b0157f4b527ffea56ab5c02a5f8ef56504101c9f1ab593a85ddecb74f4e973a4be9e5fd06410e0e0c37c1895aef806d5')
+sha512sums=('4a06f237aa1f57fbd13419424f87a524145eb73547a5a2f30b8b7aa364c2b15ddb33b6b43ffb930ddc19b1a0664b62b23b2e3c55e674ba76d33cf09fb4fa49ba')
 options=('!strip' '!debug')
 
 prepare() {
