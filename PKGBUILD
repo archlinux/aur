@@ -2,7 +2,7 @@
 pkgname=firmware-manager-git
 _app_id=com.system76.FirmwareManager
 pkgver=0.1.5.r15.ga45bdc7
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/firmware-manager"
@@ -69,7 +69,7 @@ build() {
 }
 
 check() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   appstreamcli validate --no-net "assets/${_app_id}.appdata.xml"
   desktop-file-validate target/*.desktop
 }
