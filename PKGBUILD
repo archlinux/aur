@@ -2,7 +2,7 @@
 
 pkgname=onair
 pkgver=3.9.0
-pkgrel=3
+pkgrel=5
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
 url="https://github.com/adswill/OnAir"
@@ -40,7 +40,9 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'airspy: native Airspy driver (dlopened at run time)'
             'bladerf: native bladeRF driver (dlopened at run time)'
             'libiio: native IIO/PlutoSDR driver (dlopened at run time)'
-            'libuhd: native USRP/UHD driver (dlopened at run time)')
+            'libuhd: native USRP/UHD driver (dlopened at run time)'
+            'libsdrplay: native SDRplay driver (dlopened at run time)'
+            'libsecret: store credentials for the plugin store (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ccda2df7a715cb0ecf2cb5eca7330336b5864503d9846d86bad458a698ffbba4')
