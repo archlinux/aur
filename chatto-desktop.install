@@ -1,0 +1,14 @@
+post_install () {
+   ln -s /usr/lib/chatto-desktop/libffmpeg.so /opt/chatto-desktop/
+   ln -s /usr/lib/chatto-desktop/libvk_swiftshader.so /opt/chatto-desktop
+}
+
+post_upgrade () {
+   ln -sf /usr/lib/chatto-desktop/libffmpeg.so /opt/chatto-desktop/
+   ln -sf /usr/lib/chatto-desktop/libvk_swiftshader.so /opt/chatto-desktop
+}
+
+pre_remove () {
+   unlink /opt/chatto-desktop/libffmpeg.so
+   unlink /opt/chatto-desktop/libvk_swiftshader.so
+}

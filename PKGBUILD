@@ -121,17 +121,18 @@
 # ————————————————————————————— PKGBUILD —————————————————————————————————
 pkgname=chatto-desktop-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Team and group chat desktop application'
 arch=('x86_64' 'arm64')
 url="https://github.com/chattocorp/chatto"
-license=('AGPL-3.0','Apache-2.0','MIT','OFL','Unicode')
+license=('AGPL-3.0',' Apache-2.0',' MIT ',' OFL',' Unicode')
 provides=('chatto-desktop')
 conflicts=('chatto-desktop')
-depends=('cef' 'vulkan-icd-loader')
+depends=('vulkan-icd-loader')
 source_x86_64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${provides}_${pkgver}_Linux_X64.tar.gz")
 source_arm64=("https://github.com/chattocorp/chatto/releases/download/v${pkgver}/${provides}_${pkgver}_Linux_ARM64.tar.gz")
 source=('chatto-desktop.desktop')
+install='chatto-desktop.install'
 sha256sums_x86_64=('40d01de1a3f6a230f69f6369ddb3bf03734ee9eb6547c26b4ee1163325ecebc4')
 sha256sums_arm64=('a1aaeb591ef6c3b29b9454b2b2f09cb0d72fdc88249e688f9124888361fc92ba')
 sha256sums=('43e3c9b72fc187f6c0b3c9515369513258426c0642e202982efac337e43eb84f')
@@ -140,10 +141,15 @@ package() {
     bsdtar -C "${pkgdir}" -xf ${provides}_${pkgver}_*.tar.gz
     _licenses=$(printf "%s\n" $(ls ${pkgdir}/${provides}/resources/LICENSES/))
     _libvk_swiftshader="libvk_swiftshader.so"
+    _libffmpeg="libffmpeg.so"
     _libvulkan="libvulkan.so.1"
     _icons_dir_src="resources/build/icons"
     _icons_dir_dst="usr/share/icons/hicolor"
-   
+
+    #---------------- LIBRARIES
+    install "${pkgdir}/${provides}/${_libvk_swiftshader}" -Dm755 -t "${pkgdir}/usr/lib/${provides}/"
+    install "${pkgdir}/${provides}/${_libffmpeg}" -Dm755 -t "${pkgdir}/usr/lib/${provides}/"
+
     #---------------- LICENSES
     mapfile -t _licenses_list <<< ${_licenses[0]}
     _licenses_list=$(printf "%s\n" "${_licenses_list[*]}")
@@ -163,7 +169,6 @@ package() {
     mkdir -p "${pkgdir}/$_icons_dir_dst/192x192@2/apps"
     mkdir -p "${pkgdir}/$_icons_dir_dst/512x512@2/apps"
 
-
     install "${pkgdir}/${provides}/$_icons_dir_src/favicon.png" -m 644 "${pkgdir}/$_icons_dir_dst/32x32/apps/${provides}.png"
     install "${pkgdir}/${provides}/$_icons_dir_src/notification-badge.png" -m 644 "${pkgdir}/$_icons_dir_dst/96x96/apps/${provides}.png"
     install "${pkgdir}/${provides}/$_icons_dir_src/apple-touch-icon.png" -m 644 "${pkgdir}/$_icons_dir_dst/180x180/apps/${provides}.png"
@@ -173,20 +178,20 @@ package() {
     install "${pkgdir}/${provides}/$_icons_dir_src/icon-maskable-512.png" -m 644 "${pkgdir}/$_icons_dir_dst/512x512@2/apps/${provides}.png"
 
     #---------------- DESKTOP
-    mkdir -p "${pkgdir}/usr/share/applications"
-    install "${provides}.desktop" -m644 "${pkgdir}/usr/share/applications/${provides}.desktop"
+    install "${provides}.desktop" -Dm644 -t "${pkgdir}/usr/share/applications/"
     
+    #---------------- /OPT
     mkdir "${pkgdir}/opt/"
-    cp -r "${pkgdir}/${provides}" "${pkgdir}/opt/"
+    cp --preserve=timestamps -r "${pkgdir}/${provides}" "${pkgdir}/opt/"
 
     rm "${pkgdir}/opt/${provides}/resources/NOTICE" "${pkgdir}/opt/${provides}/LICENSE" "${pkgdir}/opt/${provides}/LICENSES.chromium.html"
     rm "${pkgdir}/opt/${provides}/resources/LICENSE" "${pkgdir}/opt/${provides}/resources/LICENSES.chromium.html"
-    rm "${pkgdir}/opt/${provides}/${_libvk_swiftshader}" "${pkgdir}/opt/${provides}/${_libvulkan}"
+    rm "${pkgdir}/opt/${provides}/${_libvk_swiftshader}" "${pkgdir}/opt/${provides}/${_libffmpeg}" "${pkgdir}/opt/${provides}/${_libvulkan}"
     rm -r "${pkgdir}/opt/${provides}/resources/LICENSES" "${pkgdir}/opt/${provides}/resources/build/icons"
     rm -r "${pkgdir}/${provides}"
 
 
-    #---------------- SYMBOLIC LINKS
+    #---------------- SYMBOLIC LINK
     mkdir "${pkgdir}/usr/bin"
     ln -s "/opt/${provides}/${provides}" "${pkgdir}/usr/bin/${provides}"
     chmod 711 "${pkgdir}/opt/${provides}"
