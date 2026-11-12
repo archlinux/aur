@@ -1,7 +1,7 @@
 # Maintainer: Fabrice Aneche <akh@inair.space>
 
 pkgname=wpail
-pkgver=0.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="Show what port or application is listening, with developer build metadata"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/akhenakh/wpail"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akhenakh/wpail/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fdc6356b0f146bb8711d23b0c5a0253467c2fcfc005314671688245b93016535')
+sha256sums=('2c4cf1cc6fc39dbf092fc8e5be292a733aa9b1c8e40f7f59c266420134b82fbc')
 
 build() {
   cd "$pkgname-$pkgver"
