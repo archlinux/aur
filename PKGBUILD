@@ -1,16 +1,16 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lianwall-bin
-pkgver=5.5.3
+pkgver=5.6.0
 pkgrel=1
-pkgdesc="LianWall CLI - wallpaper engine based on awww/swww and mpvpaper"
+pkgdesc="LianWall CLI - wallpaper engine based on awww and mpvpaper"
 arch=('x86_64')
 url="https://github.com/Yueosa/lianwall"
 license=('MIT')
-depends=('lianwalld-bin')
+depends=('lianwalld-bin>=5.6.0')
 provides=('lianwall')
 conflicts=('lianwall')
 source=("https://github.com/Yueosa/lianwall/releases/download/v${pkgver}/lianwall_${pkgver}_linux_x86_64")
-sha256sums=('3e569d0a8c2b1c8098eaf1afa5d240bd232555a75cf10d7a0410084ccc538ad9')
+sha256sums=('f301aca26170a08a51960956f35e21d459c0568913ddbf13a8e776e5dbbc06d3')
 
 package() {
     install -Dm755 "lianwall_${pkgver}_linux_x86_64" "$pkgdir/usr/bin/lianwall"
