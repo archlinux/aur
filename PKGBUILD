@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/designcraft/releases/download/v${pkgver}/designcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/designcraft/releases/download/v${pkgver}/designcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('50744692323feb1805ffe2bab1dc30af3d5d958e88b94cc9f36959bbb46fac67')
 
 package() {
