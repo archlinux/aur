@@ -1,3 +1,0 @@
-[zalo-for-linux-bin]
-source = "cmd"
-cmd = 'python3 -c "import urllib.request, json, re; assets = json.loads(urllib.request.urlopen(\"https://api.github.com/repos/VN-Linux-Family/zalo-for-linux/releases/latest\").read()).get(\"assets\", []); print(next(f\"{m.group(1)}+{m.group(2)}-{m.group(3)}\" for m in (re.search(r\"Zalo-(.+?)\+ZaDark-(.+?)-([a-f0-9]+)-x86_64\.AppImage\", a[\"name\"]) for a in assets) if m))"'
