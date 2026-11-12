@@ -1,7 +1,7 @@
 # Maintainer: Kercy <kercyding@users.noreply.github.com>
 
 pkgname=kocr-gui-bin
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Offline OCR for images (prebuilt GUI)'
 arch=('x86_64' 'aarch64')
@@ -17,27 +17,23 @@ provides=('kocr-gui')
 conflicts=('kocr-qt-bin' 'kocr-gtk-bin')
 
 source_x86_64=(
-    "kocr-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/kocr-${pkgver}-linux-amd64.tar.gz"
+    "kocr_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/kocr_${pkgver}_amd64.deb"
 )
 source_aarch64=(
-    "kocr-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/kocr-${pkgver}-linux-arm64.tar.gz"
+    "kocr_${pkgver}_arm64.deb::${url}/releases/download/v${pkgver}/kocr_${pkgver}_arm64.deb"
 )
 # The release workflow fills these from the release's .sha256 files.
-sha256sums_x86_64=('d2688a4f08619e3b52fcac278579c7b2c181314fa68e4d54eaed15f9d4d996ff')
-sha256sums_aarch64=('f19c0e0de19206b855d81c1cb0c4545cb98649721d78e8a0165aec7df109ab93')
+sha256sums_x86_64=('6ddf048cefff5a848be4b3142b47d85027085624e0fea9b451f93381a6354211')
+sha256sums_aarch64=('9cb5c18794a0c5681ad9d34d488cd9f64765f93ec8577d00b4ada94d55f04312')
 
 package() {
-    local dir="kocr-${pkgver}"
+    local deb
+    case "$CARCH" in
+        x86_64) deb="kocr_${pkgver}_amd64.deb" ;;
+        aarch64) deb="kocr_${pkgver}_arm64.deb" ;;
+        *) error "Unsupported architecture: $CARCH"; exit 1 ;;
+    esac
 
-    install -Dm755 "${srcdir}/${dir}/bin/kocr-gui" "${pkgdir}/usr/bin/kocr-gui"
-
-    install -Dm644 "${srcdir}/${dir}/share/applications/kocr-gui.desktop" \
-        "${pkgdir}/usr/share/applications/kocr-gui.desktop"
-    for size in 16 32 128 256 512; do
-        install -Dm644 "${srcdir}/${dir}/share/icons/hicolor/${size}x${size}/apps/kocr.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/kocr.png"
-    done
-
-    install -Dm644 "${srcdir}/${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    bsdtar -xf "$srcdir/$deb" -C "$srcdir" data.tar.gz
+    bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
 }
