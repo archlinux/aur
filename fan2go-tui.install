@@ -1,0 +1,58 @@
+# Upgrade warnings for the fan2go-tui and fan2go-tui-git Arch packages.
+#
+# Maintained in https://github.com/markusressel/fan2go-tui/tree/main/packaging/aur and copied into both AUR packages by
+# packaging/aur/publish.sh. See RELEASING.md for how to add an entry.
+#
+# Each entry starts with a line "== <version>", followed by the upgrade notes for that version. post_upgrade prints
+# every entry whose version is newer than the installed one and not newer than the new one. Keep entries ordered
+# oldest first (append new versions at the end).
+
+_fan2go_tui_upgrade_notes() {
+	cat <<'NOTES'
+NOTES
+}
+
+_fan2go_tui_print_notes() {
+	local old="$1" new="$2" version="" text="" printed=0
+
+	_fan2go_tui_flush() {
+		if [ -n "$version" ] && [ "$(vercmp "$old" "$version")" -lt 0 ] && [ "$(vercmp "$new" "$version")" -ge 0 ]; then
+			if [ "$printed" -eq 0 ]; then
+				echo "==> fan2go-tui: this upgrade contains breaking changes. Please review before starting fan2go-tui:"
+				printed=1
+			fi
+			echo "==> fan2go-tui ${version}:"
+			printf '%s\n' "$text" | sed 's/^/    /'
+		fi
+	}
+
+	while IFS= read -r line; do
+		case "$line" in
+		"== "*)
+			_fan2go_tui_flush
+			version="${line#== }"
+			text=""
+			;;
+		*)
+			if [ -n "$text" ]; then
+				text="${text}
+${line}"
+			else
+				text="$line"
+			fi
+			;;
+		esac
+	done <<EOF_NOTES
+$(_fan2go_tui_upgrade_notes)
+EOF_NOTES
+	_fan2go_tui_flush
+
+	if [ "$printed" -eq 1 ]; then
+		echo "==> Full release notes: https://github.com/markusressel/fan2go-tui/releases"
+	fi
+}
+
+post_upgrade() {
+	# $1: new package version, $2: old package version (both "<pkgver>-<pkgrel>")
+	_fan2go_tui_print_notes "$2" "$1"
+}
