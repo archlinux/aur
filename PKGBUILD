@@ -1,13 +1,13 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gentritbiba/cogpit"
 license=('MIT')
 depends=('bun')
-makedepends=('git' 'python' 'nodejs')
+makedepends=('git' 'python' 'nodejs' 'cargo')
 conflicts=()
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -23,6 +23,8 @@ build() {
   bun install --frozen-lockfile
   # not `bun run build`: that also typechecks packages/* which this package neither installs deps for nor ships
   bun run build:web
+  # The Rust core the server runs beside itself (the unit passes it with --core-bin).
+  cargo build --release --locked -p cogpit-core
 }
 
 package() {
@@ -36,7 +38,6 @@ package() {
 
   # Copy server sources
   cp -r server "${pkgdir}/opt/${pkgname}/"
-  cp -r electron "${pkgdir}/opt/${pkgname}/"
   cp -r src "${pkgdir}/opt/${pkgname}/"
   cp -r shared "${pkgdir}/opt/${pkgname}/"
   # Built by build:web: the bundled plugin packages the server seeds on first start.
@@ -50,6 +51,8 @@ package() {
   for link in node_modules/@cogpit/*; do
     [ -L "$link" ] && cp -r "packages/$(basename "$(readlink "$link")")" "${pkgdir}/opt/${pkgname}/packages/"
   done
+
+  install -Dm755 target/release/cogpit-core "${pkgdir}/opt/${pkgname}/bin/cogpit-core"
 
   # Install systemd user unit
   install -Dm644 aur/cogpit-server.service \

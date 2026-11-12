@@ -14,7 +14,7 @@ Environment=COGPIT_PORT=19384
 #   Environment=COGPIT_DEVICE_NAME=%H
 #   LoadCredential=cogpit-pw:/etc/cogpit/network-password
 #   Environment=COGPIT_NETWORK_PASSWORD_FILE=%d/cogpit-pw
-ExecStart=/usr/bin/bun /opt/cogpit-server/server/standalone.ts
+ExecStart=/usr/bin/bun /opt/cogpit-server/server/standalone.ts --core-bin /opt/cogpit-server/bin/cogpit-core
 Restart=on-failure
 RestartSec=5
 

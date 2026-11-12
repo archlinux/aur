@@ -1,6 +1,6 @@
 pkgbase = cogpit-server
 	pkgdesc = Headless web server for Cogpit — Claude Code session dashboard
-	pkgver = 3.6.1
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/gentritbiba/cogpit
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = cogpit-server
 	makedepends = git
 	makedepends = python
 	makedepends = nodejs
+	makedepends = cargo
 	depends = bun
 	options = !strip
 	options = !debug
-	source = git+https://github.com/gentritbiba/cogpit.git#tag=v3.6.1
+	source = git+https://github.com/gentritbiba/cogpit.git#tag=v3.7.0
 	sha256sums = SKIP
 
 pkgname = cogpit-server
