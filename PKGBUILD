@@ -9,7 +9,7 @@
 
 pkgver=9.5.0
 pkgname="ida-pro"
-pkgrel=2
+pkgrel=3
 pkgdesc="Hex-Rays IDA Pro"
 url="https://hex-rays.com/ida-pro"
 license=('custom')
@@ -31,7 +31,7 @@ source=("file://${_installer}"
 		"${pkgname}.xml")
 
 sha256sums=('f8bbc7904ab7ab1b864bbaa698374396d52afacd3c39403db6dff2d0cf355075'
-            '8e5565769ca1729c9b3199b6bf32a3e3943281340bb7019cae7ff32c22531489'
+            '327cd353538e10a67d39722691ba10aaf01b0fb564315058c3172cd4238d74a8'
             'd6b8b1f78b89ba9949d675f40266f3b53335af1fde0610c99ef1aaa645abc7d7')
 
 arch=('x86_64')

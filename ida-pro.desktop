@@ -7,3 +7,4 @@ Terminal=false
 Type=Application
 Categories=Development
 MimeType=application/x-ida-idb;application/x-ida-i64;
+StartupWMClass=com.hex_rays.IDA.pro._9_5
