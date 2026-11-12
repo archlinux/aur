@@ -2,7 +2,7 @@
 
 pkgname=onair
 pkgver=3.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc="SDR receiver for digital TV (DVB-T/T2, DVB-S/S2, ATSC), DAB+, FM, DRM, ADS-B, GNSS and DMR"
 arch=('x86_64' 'aarch64')
 url="https://github.com/adswill/OnAir"
@@ -30,7 +30,17 @@ optdepends=('codec2: FreeDV and M17 speech (dlopened at run time, searched in /u
             'faad2: HE-AAC SBR/PS decoding for DAB/DAB+ (dlopened at run time)'
             'libfdk-aac: xHE-AAC (USAC) decoding for DRM (dlopened at run time)'
             'wireshark-qt: View > Wireshark output (pcapng files and the onair-extcap live capture)'
-            'wireshark-cli: tshark, the same Wireshark output without the GUI')
+            'wireshark-cli: tshark, the same Wireshark output without the GUI'
+            'alsa-lib: ALSA audio output (dlopened at run time)'
+            'libpulse: PulseAudio audio output (dlopened at run time)'
+            'jack2: JACK audio output (dlopened at run time; pipewire-jack also provides it)'
+            'lame: MP3 recording (dlopened at run time)'
+            'vulkan-icd-loader: GPU-accelerated LDPC decoding (dlopened at run time)'
+            'rtl-sdr: native RTL-SDR driver (dlopened at run time)'
+            'airspy: native Airspy driver (dlopened at run time)'
+            'bladerf: native bladeRF driver (dlopened at run time)'
+            'libiio: native IIO/PlutoSDR driver (dlopened at run time)'
+            'libuhd: native USRP/UHD driver (dlopened at run time)')
 conflicts=('onair-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adswill/OnAir/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ccda2df7a715cb0ecf2cb5eca7330336b5864503d9846d86bad458a698ffbba4')
