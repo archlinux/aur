@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=soundcraft
-pkgver=0.19.0
+pkgver=0.20.1
 pkgrel=1
 url="https://getartcraft.com/apps/$pkgname"
 _url="https://github.com/storytold/$pkgname"
@@ -15,7 +15,7 @@ depends=(alsa-lib
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('3e6878dc590c125ebfaff48d702fb37fffd9c99c98df32165c1efa15ce6ed725')
+sha256sums=('f0ebdb92df0e25806ec7e4678e054e88f49dd4f2e0084d251dbac2c147ec4393')
 
 _srcenv() {
 	cd "$_archive"
