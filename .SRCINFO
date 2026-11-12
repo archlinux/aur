@@ -1,6 +1,6 @@
 pkgbase = cc-switch
 	pkgdesc = All-in-One assistant tool for Claude Code, Codex, OpenCode, openclaw & Gemini CLI
-	pkgver = 4.0.29
+	pkgver = 4.0.30
 	pkgrel = 1
 	url = https://github.com/farion1231/cc-switch
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = cc-switch
 	depends = openssl
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = cc-switch-4.0.29.tar.gz::https://github.com/farion1231/cc-switch/archive/refs/tags/v4.0.29.tar.gz
-	sha256sums = 51885f0e63e452ff61380934c468347e46982fcbe00e5f4d7b97a5cd013f82cd
+	source = cc-switch-4.0.30.tar.gz::https://github.com/farion1231/cc-switch/archive/refs/tags/v4.0.30.tar.gz
+	sha256sums = 8542febbab2d5ccff298945a79ae609594aa50506465b6e482771838c7216424
 
 pkgname = cc-switch
