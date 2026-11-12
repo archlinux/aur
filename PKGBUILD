@@ -1,8 +1,8 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r185.1124f77
+pkgver=r193.6e19f7d
 pkgrel=1
-pkgdesc="A bare KWin Wayland session to run any shell on (Dux, digit, Quickshell configs), with Hyprland-style workspaces"
+pkgdesc="A bare KWin Wayland session for any shell, with Hyprland-style workspaces, config and IPC"
 # Not 'any': the KWin plugins (workspace sharing, and the protocols shells
 # use) are compiled against the installed KWin, so this package has to be
 # rebuilt when KWin is updated.
@@ -19,6 +19,8 @@ optdepends=(
   'libnotify: a notification when mmsimpulse.lua has a mistake'
   'powerdevil: idle timeouts, DPMS, suspend and brightness'
   'upower: battery status'
+  'libkscreen: monitors in mmsimpulse.lua, and the modes niri and Hyprland IPC report (kscreen-doctor)'
+  'wireplumber: the volume keys (wpctl)'
   'kdeplasma-addons: task switcher layouts, without which Alt+Tab draws nothing'
   'kitty: the terminal on Meta+Return'
   'cliphist: clipboard history'
