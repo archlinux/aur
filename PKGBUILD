@@ -3,7 +3,7 @@
 _pkgname=3dslicer
 pkgname=3dslicer
 pkgver=5.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -27,7 +27,7 @@ depends=(
   libxext
   libxfixes
   libxrender
-  openssl
+  openssl-3
   qt5-base
   qt5-declarative
   qt5-location
@@ -76,6 +76,13 @@ prepare() {
 build() {
   export CC=clang
   export CXX=clang++
+
+  # openssl 4 makes ASN1_STRING internals opaque and CPython 3.12's _ssl.c
+  # accesses those fields, so build the embedded Python against openssl-3.
+  # FindOpenSSL resolves through pkg-config first; its hints take precedence
+  # over the system openssl in /usr/lib, and the resulting OPENSSL_INCLUDE_DIR
+  # / OPENSSL_LIBRARIES are forwarded to the Python superbuild.
+  export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
   cmake \
     -B "${srcdir}/build" \
     -DBUILD_TESTING=OFF \
