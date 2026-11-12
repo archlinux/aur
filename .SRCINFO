@@ -1,0 +1,25 @@
+pkgbase = refconnect-bin
+	pkgdesc = D-STAR reflector client (REF/XRF/XLX/DCS)
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/S7R4nG3/refconnect
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxi
+	depends = libxxf86vm
+	depends = wayland
+	depends = libxkbcommon
+	provides = refconnect
+	conflicts = refconnect
+	conflicts = refconnect-git
+	source_x86_64 = https://github.com/S7R4nG3/refconnect/releases/download/v0.14.0/refconnect_linux_amd64.tar.gz
+	sha256sums_x86_64 = 881a6c4e7c7f73573e77b4c091faf9bc45762068df12e785a9aa6e7fc03e94aa
+	source_aarch64 = https://github.com/S7R4nG3/refconnect/releases/download/v0.14.0/refconnect_linux_arm64.tar.gz
+	sha256sums_aarch64 = 49fa510cbdf5a33545a32914354832b296a70c14c4bb1481b6b11ecfac191b7e
+
+pkgname = refconnect-bin
