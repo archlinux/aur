@@ -8,7 +8,7 @@
 
 pkgname=metamorph-bin
 _name=metamorph
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Gym workout tracker (desktop app)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=('!debug')
 source=("$_name-$pkgver.deb::$url/releases/download/v$pkgver/Metamorph-$pkgver-linux-amd64.deb"
         "$_name-$pkgver-LICENSE::https://raw.githubusercontent.com/swarnimcodes/metamorph/v$pkgver/LICENSE")
 # Replaced with real checksums by `updpkgsums` in the release workflow.
-sha256sums=('6d4ffabd37a04216be5acc2e9e2caa7f95fd43f598c895f24e5fcc499806be44'
+sha256sums=('b1f6714fd957b60fedf1fc5b9947159716e1acd322e6cdfac7d9f5623ed71b99'
             'fca9b3ecac64f6a5f5c9f38de72e5d0974f1ef1a50782120d09f96e1ad0db2be')
 
 package() {
