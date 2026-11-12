@@ -1,8 +1,9 @@
 # Maintainer: Wensheng Tang <sp3478 at gmail dot com>
 pkgname=welink-wine
-pkgver=7.60.2
-_build=202607081412_36816_release_2026.06.0_cloud_7.60.2_615
-pkgrel=3
+pkgver=7.63.2
+_build=202610132338_437_release_2026.09.1_cloud_7.63.2_636
+_fileid=66972d965a1f4a5f9bd4a1294b35b6f2
+pkgrel=1
 pkgdesc="华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框无法打字）"
 arch=('x86_64')
 url="https://www.huaweicloud.com/product/welink.html"
@@ -23,11 +24,11 @@ _installer="WeLink_Win_cloud_${_build}.exe"
 # 官方安装器是自研格式：应用文件以 5 个 7z 存放在 PE 资源段 .rsrc/ZIPRES/ 里，
 # 7z 可直接取出，无需运行安装器。本包只随包分发这些 7z，首次启动时解到用户容器。
 source=(
-    "${_installer}::https://welink.huaweicloud.com/appstore/file/web/free/down/7a8e659ca19b40e5bfa81411b4f92bcb/${_installer}"
+    "${_installer}::https://welink.huaweicloud.com/appstore/file/web/free/down/${_fileid}/${_installer}"
     "${pkgname}.sh"
     "welink-mkfont.py"
 )
-sha256sums=('6042c4409431dd7827d7f351531e6957387b198f2fef7e007fbb83f84fc42301'
+sha256sums=('3042e753ed7457791b59b56f9e42a49c2ea7aeba4ece9e2aa35c61d8367b8cb4'
             'SKIP'
             'SKIP')
 noextract=("${_installer}")
