@@ -1,6 +1,6 @@
 pkgbase = engined
 	pkgdesc = Local model door: one OpenAI-shaped endpoint that owns every inference container on the box
-	pkgver = 0.2.14
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/Rethunk-Tech/engined
 	install = engined.install
@@ -8,10 +8,11 @@ pkgbase = engined
 	license = MIT
 	depends = bun
 	optdepends = docker: run the inference engines and the Cursor TLS bridge
-	optdepends = bubblewrap: read-only sandbox for the opencode engine
+	optdepends = bubblewrap: sandbox every agentic engine runs under
+	optdepends = passt: private network namespace for the agentic sandbox
 	options = !strip
 	options = !debug
-	source = https://github.com/Rethunk-Tech/engined/releases/download/v0.2.14/engined-0.2.14.tar.gz
-	sha256sums = b53ed3dd542d10948e5c9ccf8ca5a83c12b956a70bfb4b805a9feb8dce4482d5
+	source = https://github.com/Rethunk-Tech/engined/releases/download/v0.2.16/engined-0.2.16.tar.gz
+	sha256sums = ab24e17a22b27425b4c6d2f32d23d2734bdfc69dbd3fe94a83acf70c829ae994
 
 pkgname = engined

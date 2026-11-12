@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=engined
-pkgver=0.2.14
+pkgver=0.2.16
 pkgrel=1
 pkgdesc="Local model door: one OpenAI-shaped endpoint that owns every inference container on the box"
 arch=('any')
@@ -13,12 +13,13 @@ license=('MIT')
 depends=('bun')
 optdepends=(
   'docker: run the inference engines and the Cursor TLS bridge'
-  'bubblewrap: read-only sandbox for the opencode engine'
+  'bubblewrap: sandbox every agentic engine runs under'
+  'passt: private network namespace for the agentic sandbox'
 )
 install=engined.install
 # The release workflow builds this tarball once; nothing is built here.
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b53ed3dd542d10948e5c9ccf8ca5a83c12b956a70bfb4b805a9feb8dce4482d5')
+sha256sums=('ab24e17a22b27425b4c6d2f32d23d2734bdfc69dbd3fe94a83acf70c829ae994')
 
 package() {
   cd "$pkgname-$pkgver"
@@ -46,6 +47,10 @@ LAUNCHER
     for unit in engined.service engined-configsvc.service engined-probe.service engined-probe.timer engined-tls.service; do
       render_unit_file "$unit.in" "$pkgdir/usr/lib/systemd/user/$unit"
     done
+    # Generated from the bundle being packaged, so they match its --help.
+    install_completions "$pkgdir/usr/share/bash-completion/completions" \
+      "$pkgdir/usr/share/zsh/site-functions" "$pkgdir/usr/share/fish/vendor_completions.d" \
+      "$pkgdir/usr/share/man/man1" bun dist/main.js
   )
 
   # Not under /usr/share/doc, which NoExtract commonly strips: the install
