@@ -5,8 +5,8 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.3.4.258
-_commit=gc60b10b0946a
+pkgver=1.3.8.620
+_commit=g39b276d5d7ac
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -14,15 +14,12 @@ license=('custom')
 url='https://www.spotify.com'
 depends=('alsa-lib'
 	'at-spi2-core'
+	'gnutls'
 	'gtk3'
 	'libayatana-appindicator'
-	'libcurl-gnutls'
-	'libdbusmenu-glib'
+	'libayatana-indicator'
 	'libglvnd'
-	'libice'
-	'libsm'
 	'nss'
-	'nspr'
 	'vulkan-icd-loader')
 optdepends=('ffmpeg: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
@@ -35,7 +32,7 @@ source=("${_pkgname}-Release::https://repository.spotify.com/dists/testing/Relea
 	"${_pkgname}-${CARCH}-Packages::https://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
 	'LICENSE')
 sha512sums=('SKIP'
-	'ad2198da6be2f3286a661d0315c124cb94c51084fabf630e34a296f3683599f1d8067e95512c150ed04b3c86526c8a0cff9b93584b39a145befaf6c478deb883'
+	'09179c52c37666b7e66f32b9aeb640eb5d8babb163f79ddb68922dfa44c4f1bdb3541bc3b1116d3df3f9747f2756568d9cb4e2fb1c28a66e0152770aa9d4b06d'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
 
