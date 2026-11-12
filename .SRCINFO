@@ -1,0 +1,23 @@
+pkgbase = pi-bolt-bin
+	pkgdesc = Pi coding agent compiled ahead of time to native code (prebuilt binary, x86-64 baseline and ARM64)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/opensec-git/Pi-Bolt
+	install = pi-bolt-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = libxcb
+	optdepends = ripgrep: native backend for the grep tool, instead of the built-in walker
+	provides = pi-bolt
+	conflicts = pi-bolt
+	conflicts = pi-bolt-avx2-bin
+	conflicts = pi-bolt-avx2-bin-release-git
+	options = !strip
+	options = !debug
+	source_x86_64 = pi-bolt-linux-x64-baseline-1.2.1.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.2.1/pi-bolt-linux-x64-baseline.tar.xz
+	sha256sums_x86_64 = b25a15ae164f169d60316379b6197d444bf7f52b46c056ed4bd9e12d0cddc79a
+	source_aarch64 = pi-bolt-linux-arm64-1.2.1.tar.xz::https://github.com/opensec-git/Pi-Bolt/releases/download/bolt-v1.2.1/pi-bolt-linux-arm64.tar.xz
+	sha256sums_aarch64 = f0b99778ed246bf1acaeb3d0e5e632a4fc8570880a35381c6169f8b9aa5f9cc4
+
+pkgname = pi-bolt-bin
