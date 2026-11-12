@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn-ru
 _pkgname=rustconn
-_app_id=io.github.totoshko88.RustConn
-pkgver=0.24.10
+_app_id=io.github.zbndev.RustConnRu
+pkgver=0.24.11
 pkgrel=1
 # A new translation of the same pkgver needs a new fork tag and pkgrel.
 _tag="v${pkgver}-ru.1"
@@ -65,7 +65,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=('rustconn' 'rustconn-appimage' 'rustconn-bin')
 
 source=("RustConn-${_tag#v}.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('0028ec7a1ac74d083e3e59e0c5c5d7944d9ebb1c8db13511e2c7fb33befc963e')
+sha256sums=('73e59109ecc8b41da5fd2283050afb67cee26724ca092138dd2c0990b486faf6')
 
 prepare() {
   cd "$_srcdir"
