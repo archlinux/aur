@@ -1,5 +1,5 @@
 pkgname=sdroxide-soapysdr
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64')
@@ -57,7 +57,7 @@ source=("sdroxide-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz"
         "faad2-$_faad2_commit.tar.gz::https://github.com/knik0/faad2/archive/$_faad2_commit.tar.gz"
         "xng-$_xng_commit.tar.gz::https://github.com/airframesio/xng/archive/$_xng_commit.tar.gz")
-sha256sums=('35f1d075d2752bbeb4480e3a682c6197b1d2b899277d7e5c68e0135bad1f4640'
+sha256sums=('b440b91078f73358cbb4bb0053e22300f33b6bcc0df781ee4bd161dab7aa49b5'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
             '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753'
             '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9'
