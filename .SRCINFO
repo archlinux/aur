@@ -32,7 +32,6 @@ pkgbase = uu-remote-linux
 	optdepends = xdg-desktop-portal-gnome: GNOME Wayland capture and input backend
 	optdepends = xdg-desktop-portal-kde: KDE Wayland capture and input backend
 	options = !lto
-	options = !debug
 	source = uu-remote-linux-0.2.57.tar.gz::https://github.com/VallierDev/uu-remote-linux/archive/refs/tags/v0.2.57.tar.gz
 	source = uuremote-native.service
 	source = 60-uu-remote-linux-uinput.rules
