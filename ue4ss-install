@@ -14,9 +14,10 @@ readonly self=${0##*/}
 readonly -a config_basenames=(UE4SS-settings.ini mods.txt mods.json load_order.txt)
 
 usage() {
-    local proxy override
+    local proxy override edit_hint
     proxy=$(proxy_dll)
     override="${proxy%.dll}=n,b"
+    edit_hint=$(config_hint)
     cat <<EOF
 $self — deploy UE4SS into a game's Binaries/Win64 folder
 
@@ -51,7 +52,7 @@ PROTON / WINE (REQUIRED)
     Native Windows needs no override. This step is printed again after deploy.
 
 AFTER DEPLOY
-    Edit UE4SS-settings.ini and Mods/mods.txt in the target.
+    $edit_hint
     Launch the game with --disable-ue4ss to bypass, or --ue4ss-path=<DIR>
     to load UE4SS from an alternative directory.
 
@@ -86,6 +87,27 @@ proxy_dll() {
         return 0
     done
     printf 'dwmapi.dll'  # UE4SS's documented default if detection finds nothing
+}
+
+# Where an editable file lands relative to the target, derived from the payload
+# rather than hardcoded: upstream's install layout has moved these between
+# releases (4.0.0 put everything but the proxy into a ue4ss/ subfolder).
+config_rel() {
+    local found
+    found=$(find "$payload" -type f -name "$1" -print -quit 2>/dev/null)
+    [[ -n $found ]] && printf '%s' "${found#"$payload"/}"
+    return 0
+}
+
+config_hint() {
+    local settings mods
+    settings=$(config_rel UE4SS-settings.ini)
+    mods=$(config_rel mods.txt)
+    if [[ -n $settings && -n $mods ]]; then
+        printf 'Edit %s and %s in the target.' "$settings" "$mods"
+    else
+        printf 'Edit UE4SS-settings.ini and Mods/mods.txt in the target.'
+    fi
 }
 
 print_proton_step() {
@@ -151,7 +173,7 @@ deploy() {
         printf '    %s\n' "${preserved[@]}"
     fi
     print_proton_step
-    printf '%s: done. Edit UE4SS-settings.ini / Mods/mods.txt in the target as needed.\n' "$self"
+    printf '%s: done. %s\n' "$self" "$(config_hint)"
     printf '%s: undo with: %s --uninstall %q\n' "$self" "$self" "$target"
 }
 
