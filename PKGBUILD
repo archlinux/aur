@@ -1,7 +1,7 @@
 # Maintainer: visorcraft <thomas@visorcraft.com>
 
 pkgname=zigit
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Fast screenshots, clipboard handoff, and annotation for Wayland'
 arch=('x86_64' 'aarch64')
@@ -18,16 +18,17 @@ depends=(
 makedepends=(
   'libxkbcommon'
   'mesa'
-  'zig>=0.16.0'
+  'zig>=0.17.0'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/visorcraft/ZigIt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8075cd18d4e7342c81ff46bd8815d9f9b0aed2bc51a2580c8e3253ac7f6d638')
+sha256sums=('1fbbba2f3ececbf7bb7182593ce4914d51bc8eac413aa109a52069bce603895c')
 
 build() {
   cd "ZigIt-$pkgver"
-  zig build -Doptimize=ReleaseSafe \
-    --cache-dir "$srcdir/zig-cache" \
-    --global-cache-dir "$srcdir/zig-global-cache"
+  # Zig 0.17 dropped `zig build --global-cache-dir`; the env var replaces it.
+  ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache" \
+    zig build -Doptimize=ReleaseSafe \
+      --cache-dir "$srcdir/zig-cache"
 }
 
 package() {
