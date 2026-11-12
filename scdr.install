@@ -1,0 +1,25 @@
+# shellcheck shell=bash
+# Sourced by pacman (no shebang).
+post_install() {
+  cat <<'MSG'
+==> SCDR is installed but not running. To start it:
+      systemctl enable --now scdrd
+    For focus, audio and game roles, each user runs:
+      systemctl --user enable --now scdr-session
+    On GNOME, also: gnome-extensions enable scdr-foreground@scdr
+    Check what it does with: scdrctl status / scdrctl explain <pid|name>
+    Import ananicy game rules: scdrctl import ananicy /etc/ananicy.d --only Game \
+      -o /etc/scdr/rules.d/50-ananicy.toml
+MSG
+}
+
+post_upgrade() {
+  if systemctl is-active --quiet scdrd; then
+    echo "==> Restart scdrd to use the new version: systemctl restart scdrd"
+  fi
+}
+
+pre_remove() {
+  # Stopping restores every priority, unit weight and scheduler it changed.
+  systemctl stop scdrd 2>/dev/null || true
+}
