@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=xdman-bin
-pkgver=9.0.8
-pkgrel=2
+pkgver=9.0.9
+pkgrel=1
 pkgdesc="Xtreme Download Manager Download accelerator and video downloader"
 arch=('x86_64')
 url="https://github.com/subhra74/xdm"
@@ -11,7 +11,7 @@ depends=('fontconfig' 'freetype2' 'gtk3' 'libx11' 'libxext' 'libxi' 'libxrender'
 provides=("xdman")
 conflicts=("xdman")
 source=("$url/releases/download/$pkgver/xdm-app-$pkgver-1.x86_64.rpm")
-sha256sums=('e3d10a14e62ff0fe15d76b85a24cff6c44b547dba3b6ffaa28922ffa6c2270da')
+sha256sums=('081db9ce608dc2ccab93b19a3a8ec913881f3ea50fec31f2bde2899b16bde509')
 
 package() {
   mv opt "$pkgdir"
