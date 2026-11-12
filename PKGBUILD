@@ -5,14 +5,16 @@
 #
 # Split package:
 #   nimdow-wl-git          the window manager
-#   nimdow-wl-desktop-git  complete desktop: dependencies + /etc/xdg/nimdow-wl/config.toml
+#   nimdow-wl-desktop-git  complete desktop: dependencies, /etc/xdg/nimdow-wl/config.toml and
+#                          status.toml (copied to ~/.config/nimdow-wl/ on first run by
+#                          nimdow-wl and nimdow-wl-status), wallpaper
 #
 # The only Nim dependency (parsetoml) is a pinned source tarball, so nothing
 # but the sources below is downloaded at build time (no nimble, no network in
 # build()).
 pkgbase=nimdow-wl-git
 pkgname=(nimdow-wl-git nimdow-wl-desktop-git)
-pkgver=0.7.41.r546.g70e0280
+pkgver=0.7.41.r555.g5ba42e9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Vyrnexis/nimdow-wl'
@@ -70,7 +72,7 @@ package_nimdow-wl-git() {
 package_nimdow-wl-desktop-git() {
   pkgdesc='Complete nimdow-wl desktop: notifications, polkit agent, launcher, status bar, portals and default config'
   arch=('any')
-  depends=(nimdow-wl-git polkit-gnome mako swaybg xdg-desktop-portal-gtk xorg-xwayland
+  depends=(nimdow-wl-git polkit-gnome mako swaybg swaylock swayidle xdg-desktop-portal-gtk xorg-xwayland
            gnome-keyring kitty nimlaunch-bin nimdow-wl-status wl-clipboard grim slurp
            libnotify pipewire pipewire-pulse wireplumber brightnessctl networkmanager
            ttf-meslo-nerd pacman-contrib rtkit pavucontrol)

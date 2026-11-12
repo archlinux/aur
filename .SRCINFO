@@ -1,5 +1,5 @@
 pkgbase = nimdow-wl-git
-	pkgver = 0.7.41.r546.g70e0280
+	pkgver = 0.7.41.r555.g5ba42e9
 	pkgrel = 1
 	url = https://github.com/Vyrnexis/nimdow-wl
 	arch = x86_64
@@ -39,6 +39,8 @@ pkgname = nimdow-wl-desktop-git
 	depends = polkit-gnome
 	depends = mako
 	depends = swaybg
+	depends = swaylock
+	depends = swayidle
 	depends = xdg-desktop-portal-gtk
 	depends = xorg-xwayland
 	depends = gnome-keyring
