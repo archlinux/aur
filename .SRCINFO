@@ -1,6 +1,6 @@
 pkgbase = slippi-launcher-bin
 	pkgdesc = The way to play Slippi Online and watch replays (binary release, system Electron)
-	pkgver = 2.15.1
+	pkgver = 2.15.2
 	pkgrel = 1
 	url = https://github.com/project-slippi/slippi-launcher
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = slippi-launcher-bin
 	optdepends = libappindicator-gtk3
 	provides = slippi-launcher
 	conflicts = slippi-launcher
-	source = https://github.com/project-slippi/slippi-launcher/releases/download/v2.15.1/Slippi-Launcher-2.15.1-x86_64.AppImage
-	sha256sums = b18287fa1f29546f2ea3a0a0f66b461ab929fdf9306c194e81ce41799800bb1b
+	source = https://github.com/project-slippi/slippi-launcher/releases/download/v2.15.2/Slippi-Launcher-2.15.2-x86_64.AppImage
+	sha256sums = 1aae09b82aca7dd51dd1099ce90b252039dc10509f1708edd5501e9178991c96
 
 pkgname = slippi-launcher-bin

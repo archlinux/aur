@@ -3,7 +3,7 @@
 _pkgname=slippi-launcher
 pkgname=$_pkgname-bin
 pkgdesc="The way to play Slippi Online and watch replays (binary release, system Electron)"
-pkgver=2.15.1
+pkgver=2.15.2
 pkgrel=1
 url="https://github.com/project-slippi/slippi-launcher"
 license=('GPL-3.0-or-later')
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 _appimage=Slippi-Launcher-$pkgver-x86_64.AppImage
 _desktop=$_pkgname.desktop
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('b18287fa1f29546f2ea3a0a0f66b461ab929fdf9306c194e81ce41799800bb1b')
+sha256sums=('1aae09b82aca7dd51dd1099ce90b252039dc10509f1708edd5501e9178991c96')
 
 _fix_permissions() (
   target=$1
@@ -59,9 +59,6 @@ package() {
 # Clean up
   cd squashfs-root/resources
   rm app-update.yml
-  cd app.asar.unpacked/node_modules
-  rm -dr bufferutil/prebuilds/linux-arm*
-  rm -dr utf-8-validate/prebuilds/linux-arm*
 # Install
   cd "$srcdir"
   install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
