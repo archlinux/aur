@@ -1,24 +1,24 @@
 # Maintainer: Bryan Childs <godeater[at]gmail[dot]com>
 
 pkgname=cfnrain
-pkgver=1.25.4
+pkgver=1.26.0_beta.2
 pkgrel=1
 pkgdesc='A development workflow tool for working with AWS CloudFormation'
 arch=('x86_64')
 url="https://github.com/awesome-foundation/cfnrain"
 license=('Apache-2.0')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2177007e75c8ab40b86e3a48404ff98d1cc3dd8ac2b0e21f0e663040ca481fdab45de8df59145cd3e06756b802dc03f8e8eea4df5b7f94147b4aac4aa8471c95')
-b2sums=('8989a8d1ce6ce45f53a466605041d6c74f541ebfcc3f2441b66cf18694b6e12f971769a6f25dc3102c0cb4a4ba5ff006ab2487508e064e1f0b19258125cf116d')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
+sha512sums=('3bbc924420c02cf22dae1d7be33a6846f79552f0e87c22b4fd75323d2c12d482a771e964338e7006330bf9e535bd8ac8f554dd2365065e064b07f12290008897')
+b2sums=('348c6ce7decd13d1cb2baf0332a778a96307864798d4458dc8ce2a8b3130061942c2dc08e93e56400d381812286413a0588ff943b6406c82eea1f096d4856c9a')
 
 prepare(){
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver//_/-}"
   mkdir -p build/
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver//_/-}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -28,13 +28,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver//_/-}"
   go test ./...
   go test -tags=func_test ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-${pkgver//_/-}"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-${pkgver//_/-}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
