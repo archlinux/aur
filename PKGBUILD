@@ -5,13 +5,14 @@ pkgrel=2
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
 url="https://github.com/hilgardt-collab/rg-Sens"
-license=('MIT' 'Apache-2.0')
+license=('MIT' 'Apache-2.0' 'OFL-1.1')
 depends=(
     'gtk4'
     'cairo'
     'pango'
     'glib2'
     'hicolor-icon-theme'
+    'webkitgtk-6.0'
 )
 makedepends=(
     'rust'
@@ -21,7 +22,6 @@ makedepends=(
 )
 optdepends=(
     'nvidia-utils: NVIDIA GPU monitoring support'
-    'webkit2gtk-4.1: CSS Template panel with WebView support'
 )
 install=rg-sens.install
 # Disable makepkg's global LTO: -flto=auto leaks into the `ring` crate's C/asm
@@ -82,6 +82,9 @@ package() {
     for f in examples/*.{html,css,js,json}; do
         [ -f "$f" ] && install -Dm644 "$f" "$pkgdir/usr/share/rg-sens/$f"
     done
+    # Fonts the Art Deco / Art Nouveau templates load from next to themselves
+    # (SIL Open Font License; each family carries its OFL.txt)
+    cp -r examples/fonts "$pkgdir/usr/share/rg-sens/examples/"
 
     # Install documentation
     install -d "$pkgdir/usr/share/doc/rg-sens"
