@@ -4,7 +4,7 @@
 
 pkgname=idevicerestore
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Restore/upgrade firmware of iOS devices'
 arch=('x86_64')
 url='https://www.libimobiledevice.org'
@@ -14,8 +14,16 @@ depends=('curl' 'libimobiledevice' 'libplist' 'libirecovery' 'libzip' 'openssl' 
 makedepends=('git')
 # https://aur.archlinux.org/packages/idevicerestore-git/#comment-759041
 conflicts=('idevicerestore-git')
-source=("git+https://github.com/libimobiledevice/$pkgname.git#tag=$pkgver")
-sha256sums=('b0d4d202deffdbd5d5e5b05e41a5a6687b582c89c0a6efd982b38ca2e4385921')
+source=("git+https://github.com/libimobiledevice/$pkgname.git#tag=$pkgver"
+        '0001-Ensure-libirecovery-API-compatibility.patch')
+sha256sums=('b0d4d202deffdbd5d5e5b05e41a5a6687b582c89c0a6efd982b38ca2e4385921'
+            '8dfb7eb28e686d36b422cc343dfaa5cbb3b2e1aec9fd82512de717c196a2d5e8')
+
+prepare() {
+  cd "$pkgname"
+
+  patch -Np1 -i "$srcdir/0001-Ensure-libirecovery-API-compatibility.patch"
+}
 
 build() {
   cd "$pkgname"

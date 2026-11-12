@@ -1,0 +1,97 @@
+From 0df195e2680867f28e07e1e4ca79efb6da748bf1 Mon Sep 17 00:00:00 2001
+From: Seirra <sophietheopossum@yandex.ru>
+Date: Tue, 28 Oct 2025 02:45:30 +0000
+Subject: [PATCH] Ensure libirecovery API compatibility
+
+Adapts to API changes in libirecovery where the `irecv_init()` function may no longer be available or required.
+
+Introduces a configure check to determine the presence of `irecv_init()`. `IRECV_MAYBE_INIT()`, is then used to conditionally call `irecv_init()` only if it exists, preventing build failures and ensuring proper behaviour across different versions of libirecovery.
+---
+ configure.ac   | 15 +++++++++++++++
+ src/common.h   |  7 +++++++
+ src/dfu.c      |  4 ++--
+ src/recovery.c |  2 +-
+ 4 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 7c4ad95..6b70b10 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -113,6 +113,21 @@ fi
+ 
+ CFLAGS="$CACHED_CFLAGS"
+ 
++# check if libirecovery has irecv_init (older API)
++CACHED_CFLAGS2="$CFLAGS"
++CFLAGS+=" $libirecovery_CFLAGS"
++AC_CACHE_CHECK([for irecv_init in libirecovery], [ac_cv_have_irecv_init],
++	AC_TRY_COMPILE([
++		#include <libirecovery.h>
++		], [
++			irecv_init();
++			return 0;
++		], ac_cv_have_irecv_init=yes, ac_cv_have_irecv_init=no))
++if test "$ac_cv_have_irecv_init" = "yes"; then
++	AC_DEFINE([HAVE_IRECV_INIT], [1], [Define if libirecovery provides irecv_init])
++fi
++CFLAGS="$CACHED_CFLAGS2"
++
+ AC_ARG_WITH([openssl],
+             [AS_HELP_STRING([--without-openssl],
+             [Do not use OpenSSL])],
+diff --git a/src/common.h b/src/common.h
+index 215d18a..1e48ed4 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -38,6 +38,13 @@ extern "C" {
+ #include <plist/plist.h>
+ #include <libirecovery.h>
+ 
++/* Backward compatibility for libirecovery API changes */
++#ifdef HAVE_IRECV_INIT
++#define IRECV_MAYBE_INIT() irecv_init()
++#else
++#define IRECV_MAYBE_INIT() ((void)0)
++#endif
++
+ #include "idevicerestore.h"
+ #include "thread.h"
+ 
+diff --git a/src/dfu.c b/src/dfu.c
+index fab05de..5c41fb7 100644
+--- a/src/dfu.c
++++ b/src/dfu.c
+@@ -95,7 +95,7 @@ int dfu_check_mode(struct idevicerestore_client_t* client, int* mode) {
+ 		return -1;
+ 	}
+ 
+-	irecv_init();
++	IRECV_MAYBE_INIT();
+ 	if (irecv_open_with_ecid(&dfu, client->ecid) != IRECV_E_SUCCESS) {
+ 		return -1;
+ 	}
+@@ -119,7 +119,7 @@ irecv_device_t dfu_get_irecv_device(struct idevicerestore_client_t* client) {
+ 	irecv_error_t dfu_error = IRECV_E_SUCCESS;
+ 	irecv_device_t device = NULL;
+ 
+-	irecv_init();
++	IRECV_MAYBE_INIT();
+ 	if (irecv_open_with_ecid(&dfu, client->ecid) != IRECV_E_SUCCESS) {
+ 		return NULL;
+ 	}
+diff --git a/src/recovery.c b/src/recovery.c
+index c518b28..bf42840 100644
+--- a/src/recovery.c
++++ b/src/recovery.c
+@@ -108,7 +108,7 @@ int recovery_check_mode(struct idevicerestore_client_t* client) {
+ 		return -1;
+ 	}
+ 
+-	irecv_init();
++	IRECV_MAYBE_INIT();
+ 	recovery_error=irecv_open_with_ecid(&recovery, client->ecid);
+ 
+ 	if (recovery_error != IRECV_E_SUCCESS) {
+-- 
+2.56.1
+
