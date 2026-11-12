@@ -10,7 +10,7 @@ depends=('glibc' 'zstd' 'sqlite3')
 makedepends=('cargo')
 # rust-lld, the default linker since rustc 1.90, cannot read the GCC LTO
 # objects the `lto` makepkg option injects into CFLAGS, which breaks ring.
-options=('!lto' '!debug')
+options=('!lto')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/eunomia-bpf/agentsight/archive/refs/tags/v${pkgver}.tar.gz"
     'system-libsqlite3.patch'

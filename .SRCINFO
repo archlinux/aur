@@ -10,7 +10,6 @@ pkgbase = agentsight
 	depends = zstd
 	depends = sqlite3
 	options = !lto
-	options = !debug
 	source = agentsight-1.0.35.tar.gz::https://github.com/eunomia-bpf/agentsight/archive/refs/tags/v1.0.35.tar.gz
 	source = system-libsqlite3.patch
 	sha256sums = 4080188e682c7b6f802cc475acb2231dcb3e62de1f5ea1b3a0d3d3302299e5c8
