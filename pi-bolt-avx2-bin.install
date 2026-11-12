@@ -1,0 +1,15 @@
+post_install() {
+  cat <<'EOF'
+Optional extensions from OpenSec, which this package does not install:
+
+  pi-bolt install npm:opensec-pi-subagents   # specialized agents in separate sessions
+  pi-bolt install npm:opensec-pi-todo        # todo list shown above the editor
+  pi-bolt install npm:opensec-pi-fff         # fast file and content search
+
+Upgrade this copy with pacman. `pi-bolt update` replaces the executable next to
+itself, and this one lives in pacman-owned /usr/lib/pi-bolt.
+
+This build needs AVX2 (Intel Haswell, AMD Zen and later). On an older CPU use
+pi-bolt-bin, which runs on any x86-64.
+EOF
+}
