@@ -1,0 +1,16 @@
+pkgbase = roughenough
+	pkgdesc = Roughtime (RFC 10049) server and client
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/int08h/roughenough
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = roughenough-2.2.0.tar.gz::https://github.com/int08h/roughenough/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = 720e610abdc862b05a49537030ba3333d7c287afcd7455c7963d6214fc66b357
+
+pkgname = roughenough
