@@ -1,5 +1,5 @@
 pkgname=mingw-w64-minizip
-pkgver=1.3.2
+pkgver=1.4
 pkgrel=1
 pkgdesc='Mini zip and unzip based on zlib (mingw-w64)'
 url='https://www.zlib.net/'
@@ -9,7 +9,8 @@ makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-zlib')
 source=(https://github.com/madler/zlib/releases/download/v$pkgver/zlib-$pkgver.tar.xz{,.asc})
-sha256sums=('d7a0654783a4da529d1bb793b7ad9c3318020af77667bcae35f95d0e42a792f3' 'SKIP')
+sha256sums=('4f11c512053d7bab8d9e9b89bde3575add3e4c50a383b42ef6cb837035fc5a7c'
+            'SKIP')
 validpgpkeys=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA')  # Mark Adler <madler@alumni.caltech.edu>
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
@@ -35,8 +36,6 @@ package () {
   for _arch in ${_architectures}; do
     DESTDIR="${pkgdir}" cmake --install build-${_arch}
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
-    # https://github.com/madler/zlib/pull/229
-    rm "$pkgdir/usr/${_arch}/include/minizip/crypt.h"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
