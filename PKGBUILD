@@ -22,10 +22,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "hitokoto.desktop"
 )
-sha256sums=(
-    'SKIP'
-    'eabd8f8ea10edf6b570fe7772df7219c78ef7a63fe846cd7044ddf12f5e754e9'
-)
+sha256sums=('bf59617beb1712ed0765a48e7b9ab8af2540fe347ee0f6bf84214ee96a729b8e'
+            'eabd8f8ea10edf6b570fe7772df7219c78ef7a63fe846cd7044ddf12f5e754e9')
 
 build() {
     local _src="${srcdir}/${pkgname}-${pkgver}"
