@@ -4,8 +4,8 @@
 # 应用整体安装在独立 /opt 前缀，命令名 kimi-code-cn，与国际版可并存。
 
 pkgname=kimi-code-cn-bin
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 _appname='Kimi Code'
 _prefix='/opt/kimi-code-cn'
 pkgdesc='Kimi Code Desktop, mainland China build pinned to the China API'
@@ -43,8 +43,8 @@ source=(
 )
 noextract=("KimiCode-${pkgver}-linux-amd64.deb")
 sha256sums=(
-  '2e1ed27232c1166a521741833ee77233a0793c8719b7f2b2b05d2d9895c53422'
-  'ea518e5c5eae5f1e2c7d7a4e8dfa62609169d05845b8d9b7d3ae7c4500996f2d'
+  'a4804317888ab08982c0206672f73a9e0ae2e0ba00fe6fd37ad7afbb2a96dec4'
+  '0ae14e3358d32ed99d1651a0455f0c449f05de2a77f62ada6f3156886900d1e3'
   '37c495e6f19acba4847361aff61dd9cdb4540adca2de51b315181a53967cb509'
   '85d85fd09213f93b5f05b36b366fa0198015ac37b6050b4e2779c4e33fbfd8c3'
   '2c26abb1ca0208f866db6975a894570d55bd94cb08fb2f1feb183a9d98443ba8'
@@ -75,9 +75,9 @@ prepare() {
   asar pack "${srcdir}/asar" "${srcdir}/app.asar"
 
   # 确认补丁确实落到了唯一的区域判定函数上。
-  grep -rqF 'function Ei(e){return{region:`mainland-cn`' "${srcdir}/asar/out"
+  grep -rqF 'function Gt(e){return{region:`mainland-cn`' "${srcdir}/asar/out"
   # 国内版使用自己的自定义协议，避免与国际版抢 kimi-code:// 的默认处理程序。
-  grep -rqF 'const gn=`kimi-code-cn`' "${srcdir}/asar/out"
+  grep -rqF 'const fn=`kimi-code-cn`' "${srcdir}/asar/out"
 }
 
 package() {
