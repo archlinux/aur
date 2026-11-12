@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models (git)"
 arch=("x86_64")
 url="https://github.com/VitaminDB/synthos"
-license=("MIT" "Apache-2.0")
+license=("GPL-3.0-only")
 
 depends=(
     "alsa-lib"
@@ -30,7 +30,13 @@ makedepends=(
     "clang"
 )
 optdepends=(
-    "nvidia-utils: GPU-инференс (CUDA-драйвер грузится в рантайме)"
+    "nvidia-utils: нейросети на видеокарте NVIDIA (драйвер CUDA грузится в рантайме)"
+    "cuda: компилятор ядер NVRTC — ядра собираются на лету под карту (sm_80+)"
+    "openvino-intel-npu-plugin: нейросети на Intel NPU"
+    "intel-npu-driver: драйвер Intel NPU"
+    "intel-npu-compiler: компилятор моделей для Intel NPU"
+    "synaptix: системная служба synaptixd — synthos подключается к ней и делит загруженные модели с synshell; без неё работает свой встроенный движок"
+    "synshell-ai: ассистент synshell — ставит службу synaptix, с которой synthos делит модели"
 )
 # makepkg.conf по умолчанию включает lto и добавляет -flto=auto в CFLAGS: C-код,
 # который крейты собирают сами (встроенный SQLite у rusqlite), становится
@@ -41,18 +47,20 @@ options=("!lto")
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname" "$_pkgname-bin")
 
-# synthos path-зависит на соседние syngui и synaptix, и makepkg кладёт все три
-# рядом в $srcdir — ровно та раскладка, которую ждут манифесты.
+# synthos path-зависит на соседние syngui, synaptix и synshell (встроенный
+# движок synaptixd, ассистент, заметки), и makepkg кладёт все четыре рядом в
+# $srcdir — ровно та раскладка, которую ждут манифесты.
 #
-# Берётся master всех трёх, а не пины из packaging/deps.lock: пины описывают
+# Берётся master всех четырёх, а не пины из packaging/deps.lock: пины описывают
 # релиз по тегу и устаревают, как только master synthos переходит на новый API
 # syngui. Master же пушится согласованно, и окно рассинхрона — минуты.
 source=(
     "$_pkgname::git+$url.git"
     "syngui::git+https://github.com/VitaminDB/syngui.git"
     "synaptix::git+https://github.com/VitaminDB/synaptix.git"
+    "synshell::git+https://github.com/VitaminDB/synshell.git"
 )
-sha256sums=("SKIP" "SKIP" "SKIP")
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -66,8 +74,9 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # Без --all-features: в манифесте есть фичи android и testing, они здесь
-    # только навредят. Без --frozen: Cargo.lock synthos не обязан совпадать с
+    # Фичи по умолчанию: встроенный движок (engine) с CUDA и NPU — служба
+    # synaptixd не нужна. Без --all-features: в манифесте есть фичи android и
+    # testing, они здесь только навредят. Без --frozen: Cargo.lock synthos не обязан совпадать с
     # версиями крейтов на master syngui/synaptix.
     cargo build --release -p synthos
 }
@@ -82,6 +91,5 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/synthos.svg"
 
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
-    install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-    install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+    install -Dm644 LICENSE LICENSE-COMMERCIAL.md LICENSE-EXCEPTION.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
