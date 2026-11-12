@@ -15,6 +15,12 @@ _launcher_commit=e9668076bae4f6d95456d193066a6042452c5726
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
 pkgver=1.4.0.6103
+# rel 2 (1.4.0.6103): build against Arch's own libcurl. Arch moved to OpenSSL 4
+# on 2026-11-10, and the prebuilt static libcurl linux.mk fetches calls the ENGINE
+# API that OpenSSL 4 removed, so the engine stopped linking and the package
+# stopped building. keeperfx-tux-system-curl.patch gives this tag's linux.mk the
+# SYSTEM_CURL switch later tags carry; the game itself is unchanged.
+#
 # rel 4: ship the pacman hook that reports a library break the soname
 # dependencies below cannot catch, and pick up the launcher fix that stops a
 # crash report carrying a log the failing run never wrote.
@@ -31,7 +37,7 @@ pkgver=1.4.0.6103
 # rel 1 kept the previous stable's launcher pin, so it paired a month-newer
 # engine with a launcher lacking the RAR installer, the updater's engine stash
 # and the channel fixes.
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-tux-edition"
 license=('GPL-2.0-or-later')
@@ -46,7 +52,9 @@ makedepends=('git' 'python' 'curl' 'p7zip'
              # engine
              'sdl3' 'sdl3_mixer' 'sdl3_image'
              'ffmpeg' 'openal' 'luajit' 'libspng' 'minizip' 'zlib'
-             'miniupnpc' 'libnatpmp' 'openssl' 'zstd'
+             # libcurl comes from 'curl' above: the engine links the system's
+             # (SYSTEM_CURL=1 below), which also brings the OpenSSL it uses
+             'miniupnpc' 'libnatpmp'
              # Qt launcher
              'cmake' 'ninja' 'qt6-base' 'qt6-tools')
 # !strip: this is an alpha -- usable backtraces in bug reports beat the saved MBs.
@@ -68,6 +76,7 @@ source=(
   'keeperfx-tux-stash.hook'
   'keeperfx-tux-unstash.hook'
   'keeperfx-tux-previous.sh'
+  'keeperfx-tux-system-curl.patch'
 )
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
@@ -83,6 +92,7 @@ sha256sums=(
   'fa54e53295a854ef148ef34b9f369c44caeaa6d2c72ce45c7111668ae79fc3d8'
   '34594e360bcf608a99cce2b531df11f41ec6d0e650c91bd637b9ce73034fa6dc'
   'a300b1debacad0a8ddf92fc4c0ad6b297c4d7d1f82f3f0b8e9a65ec78f0d6af3'
+  '6a7b0789188562bdcb33ec9c473cbfa721592741668a27bead56c4cb6c7b48f9'
 )
 
 # Data trees taken from the release archive. It also contains the engine binary,
@@ -92,14 +102,19 @@ _data_trees=(data sound ldata campgns levels lang fxdata creatrs mods music mult
 
 prepare() {
   cd "${srcdir}/${pkgbase}"
-  # These four deps are fetched by the makefile rather than vendored. Doing it in
+  # The SYSTEM_CURL switch (see build()), which this tag's linux.mk predates.
+  # Guarded so a second prepare() over the same tree (makepkg -e) does not fail.
+  if ! grep -q 'SYSTEM_CURL' linux.mk; then
+    patch -Np1 -i "${srcdir}/keeperfx-tux-system-curl.patch"
+  fi
+  # These three deps are fetched by the makefile rather than vendored. Doing it in
   # prepare() keeps the network access out of build(), which is where makepkg
-  # expects an already-populated source tree.
+  # expects an already-populated source tree. libcurl is not one of them: see
+  # SYSTEM_CURL in build().
   make -f linux.mk \
     deps/centijson/include/json.h \
     deps/astronomy/include/astronomy.h \
-    deps/enet6/include/enet6/enet.h \
-    deps/libcurl/lib/libcurl.a
+    deps/enet6/include/enet6/enet.h
 
   cd "${srcdir}"
   7z x -y "keeperfx-tux-${pkgver}-full.7z" -o"extracted" > /dev/null
@@ -144,7 +159,13 @@ build() {
   else
     _build_number="$(git rev-list --count HEAD)"
   fi
+  # SYSTEM_CURL=1: link Arch's libcurl, not the prebuilt static one the bundled
+  # builds use. The prebuilt is compiled against OpenSSL 3 and calls its ENGINE
+  # API, which OpenSSL 4 removed (Arch, 2026-11-10): linking it failed, so the
+  # package stopped building for everyone. Arch's libcurl is rebuilt with each
+  # OpenSSL, and its soname has been libcurl.so.4 for twenty years.
   make -f linux.mk \
+    SYSTEM_CURL=1 \
     BUILD_NUMBER="${_build_number}" \
     VER_SUFFIX="${_ver_suffix}" \
     -j"$(nproc)"
@@ -213,7 +234,7 @@ package_keeperfx-tux() {
     # before it happens: an explicit rebuild prompt instead of a broken install.
     'libavformat.so' 'libavcodec.so' 'libswresample.so' 'libswscale.so'
     'libavutil.so' 'libopenal.so' 'libspng.so' 'libz.so'
-    'libminiupnpc.so' 'libssl.so' 'libcrypto.so' 'libzstd.so'
+    'libminiupnpc.so' 'libcurl.so'
     # These four ship no soname in provides= at all, so they can only be named
     # directly and stay exposed to the same failure. SDL3 holds its ABI at
     # .so.0 by project policy and the other three are low-churn, which is why

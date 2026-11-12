@@ -1,0 +1,75 @@
+diff --git a/linux.mk b/linux.mk
+index 99711b0d2..4529bb8db 100644
+--- a/linux.mk
++++ b/linux.mk
+@@ -376,13 +376,32 @@ KFX_OBJECTS = $(KFX_C_OBJECTS) $(KFX_CXX_OBJECTS)
+ # its entry points from SDL_GL_GetProcAddress at runtime.
+ GLAD_OBJECTS = obj/glad/glad.o
+ 
++# libcurl (the lobby's websocket). By default the team's prebuilt static library
++# from kfx-deps, which the bundled builds (AppImage, Flatpak, portable) ship.
++# SYSTEM_CURL=1 links the distribution's libcurl instead: the prebuilt is
++# compiled against OpenSSL 3 and calls its ENGINE API, which OpenSSL 4 removed,
++# so it no longer links where the system has OpenSSL 4 (Arch since 2026-11-10).
++# The AUR package sets it; the engine itself uses OpenSSL only through libcurl.
++ifeq ($(SYSTEM_CURL),1)
++ifneq ($(shell pkg-config --exists libcurl && echo yes),yes)
++$(error SYSTEM_CURL=1 needs libcurl's pkg-config file (libcurl.pc): install your distribution's libcurl development package)
++endif
++CURL_INCLUDES = $(shell pkg-config --cflags-only-I libcurl)
++CURL_LIBS = $(shell pkg-config --libs-only-l libcurl)
++CURL_PREBUILT =
++else
++CURL_INCLUDES = -Ideps/libcurl/include
++CURL_LIBS = -Ldeps/libcurl/lib -lcurl -lssl -lcrypto -lzstd
++CURL_PREBUILT = deps/libcurl/lib/libcurl.a
++endif
++
+ KFX_INCLUDES = \
+ 	-Isrc \
+ 	-Ideps/centijson/include \
+ 	-Ideps/centitoml \
+ 	-Ideps/astronomy/include \
+ 	-Ideps/enet6/include \
+-	-Ideps/libcurl/include \
++	$(CURL_INCLUDES) \
+ 	$(shell pkg-config --cflags-only-I luajit) \
+ 	-isystem deps/glad/include \
+ 	$(shell pkg-config --cflags-only-I libavformat)
+@@ -429,7 +448,7 @@ KFX_LDFLAGS += \
+ 	$(shell pkg-config --libs-only-l zlib) \
+ 	-lminiupnpc \
+ 	-lnatpmp \
+-	-Ldeps/libcurl/lib -lcurl -lssl -lcrypto -lzstd \
++	$(CURL_LIBS) \
+ 	-ldl
+ 
+ TOML_SOURCES = \
+@@ -463,7 +482,7 @@ DEPS_EXTRACTED = \
+ 	deps/centijson/include/json.h \
+ 	deps/astronomy/include/astronomy.h \
+ 	deps/enet6/include/enet6/enet.h \
+-	deps/libcurl/lib/libcurl.a
++	$(CURL_PREBUILT)
+ 
+ all: bin/keeperfx
+ 
+@@ -480,7 +499,7 @@ print-%:
+ 	$(info $($*))
+ 	@:
+ 
+-bin/keeperfx: $(KFX_OBJECTS) $(TOML_OBJECTS) $(GLAD_OBJECTS) deps/libcurl/lib/libcurl.a | bin
++bin/keeperfx: $(KFX_OBJECTS) $(TOML_OBJECTS) $(GLAD_OBJECTS) $(CURL_PREBUILT) | bin
+ 	$(CXX) -o $@ $(KFX_OBJECTS) $(TOML_OBJECTS) $(GLAD_OBJECTS) $(KFX_LDFLAGS)
+ 
+ $(KFX_C_OBJECTS): obj/%.o: src/%.c src/ver_defs.h | obj $(DEPS_EXTRACTED)
+@@ -506,7 +525,9 @@ src/api.c: deps/centijson/include/json.h
+ src/bflib_enet.cpp: deps/enet6/include/enet6/enet.h
+ src/moonphase.c: deps/astronomy/include/astronomy.h
+ src/net_holepunch.c: deps/enet6/include/enet6/enet.h
++ifneq ($(SYSTEM_CURL),1)
+ src/net_matchmaking.c: deps/libcurl/include/curl/curl.h
++endif
+ deps/centitoml/toml_api.c: deps/centijson/include/json.h
+ deps/centitoml/toml_conv.c: deps/centijson/include/json.h
+ 
