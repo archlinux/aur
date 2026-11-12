@@ -2,7 +2,7 @@
 
 _pkgname=tde-ariadne
 pkgname=tde-ariadne-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='A Nautilus-style file manager built with Qt 6'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(
   libarchive
   libgcc
   libstdc++
-  'libtde>=0.3.0'
+  'libtde>=0.4.0'
   qt6-base
   qt6-svg
   wayland
@@ -40,7 +40,7 @@ conflicts=("$_pkgname")
 # Built by the release workflow of the sources' repository, from the tag.
 source=("$_pkgname-$pkgver-x86_64.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.zst")
 noextract=("$_pkgname-$pkgver-x86_64.tar.zst")
-sha256sums=('4d29e2bc0fdc1ca7b624bc94666c3cde404a37abe8696bb48e21ce79fa8fdf99')
+sha256sums=('42ddf7586be5ad6736647dad719f552befa1bc880e3bc107dc7f8effe1465887')
 
 package() {
   bsdtar -xf "$_pkgname-$pkgver-x86_64.tar.zst" -C "$pkgdir"
