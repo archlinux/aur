@@ -1,6 +1,6 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 pkgname=turso
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='An in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
@@ -10,7 +10,7 @@ options=(!lto)
 depends=(glibc libgcc)
 makedepends=(cargo libaegis libgit2 mimalloc simsimd)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz")
-sha256sums=('2d3b37b39e071e88267a9676b5472b66f22123a58b54a387ab7998d868869566')
+sha256sums=('5a47bee73c66be9abccc92ae03d1ca519e5d706b48a2bad8945147bb388ef84c')
 
 prepare() {
     cd "${pkgname}_cli-$pkgver"
