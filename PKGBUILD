@@ -2,18 +2,18 @@
 # Created with assistance from Nemotron 3.5 Lightning 30B A3B.
 
 pkgname=coros-link-appimage
-pkgver=0.1.76
+pkgver=0.1.77
 pkgrel=1
 pkgdesc="Unofficial COROS watch companion — media sync, offline maps, route builder, and training analytics (AppImage)"
 arch=('x86_64')
 url="https://coros-link.vercel.app/"
 license=('MIT')
-depends=('fuse2')
+depends=('fuse2' 'zlib' 'hicolor-icon-theme')
 makedepends=('squashfs-tools')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/JunAkerBuilds/CorosLink/releases/download/v${pkgver}/CorosLink-${pkgver}.AppImage"
         "LICENSE::https://raw.githubusercontent.com/JunAkerBuilds/CorosLink/main/LICENSE")
-sha256sums=('ce0d1e8bbc13cb46fcbaf5d0b21c0618c1bbd0f4c61997d5f8bf42b58f72db34'
+sha256sums=('9b4b8b41848b50624ab8ba0795e44123b4401151d63fe0ba1bbe0f1165653dc1'
             '852251d268287b43ae09daa3cb5ece6ccb6cb03245da1ec7ad23d7054dc1a8da')
 
 prepare() {
