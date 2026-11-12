@@ -11,9 +11,9 @@ extend-ignore-re = [
   "(?:^|[\\s\"'(=])--?[A-Za-z][-A-Za-z0-9:]*",
   # HTTP's header
   "\\bAuthorization:",
-  # Names: mago's command, a package, the SourceMod libraries (Colors, More Colors, Multi-Colors),
-  # CryptPad's folders
-  "\\bmago[ -]analyze\\b",
+  # Names: mago's and systemd's commands, a package, the SourceMod libraries (Colors, More Colors,
+  # Multi-Colors), CryptPad's folders
+  "\\b(?:mago[ -]|systemd-)analyze\\b",
   "\\bdotnet-pluralize-net\\b",
   "\\b(?:Multi-|More )?Colors\\b",
   "\\bcustomize(?:\\.dist)?\\b",
