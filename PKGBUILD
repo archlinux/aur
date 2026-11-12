@@ -1,7 +1,7 @@
 # Maintainer: Bagas Sanjaya <bagasdotme@gmail.com>
 pkgname=kryoptic
 pkgver=1.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A PKCS #11 software token written in Rust"
 arch=('x86_64')
 url="https://github.com/latchset/kryoptic"
@@ -49,7 +49,6 @@ check() {
 }
 
 package() {
-	_tools=('kryoptic_init' 'kryoptic_otp' 'softhsm_migrate')
 	cd "$pkgname-$pkgver"
 	install -v -D -m 0755 -t "$pkgdir/usr/bin" target/release/kryoptic_init
 	install -v -D -m 0755 -t "$pkgdir/usr/bin" target/release/kryoptic_otp
