@@ -1,7 +1,7 @@
 # Maintainer: N3oRay <n3oray77 at gmail dot com>
 pkgname=proton-autogen
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Proton/Wine launcher for Windows executables"
 arch=('any')
 url="https://github.com/N3oRay/proton-autogen"
@@ -17,6 +17,7 @@ depends=(
     python-xlib
     gtk4
     gdk-pixbuf2
+    glycin
     graphene
 )
 

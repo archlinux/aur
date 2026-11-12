@@ -1,7 +1,7 @@
 pkgbase = proton-autogen
 	pkgdesc = Automatic Proton/Wine launcher for Windows executables
 	pkgver = 3.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/N3oRay/proton-autogen
 	arch = any
 	license = MIT
@@ -18,6 +18,7 @@ pkgbase = proton-autogen
 	depends = python-xlib
 	depends = gtk4
 	depends = gdk-pixbuf2
+	depends = glycin
 	depends = graphene
 	optdepends = steam: Proton runtime
 	optdepends = wine: Wine fallback
