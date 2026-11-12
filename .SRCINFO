@@ -1,6 +1,6 @@
 pkgbase = spoti-git
 	pkgdesc = lightweight native Spotify client
-	pkgver = 0.1.0.r0
+	pkgver = 0.6.1.r4.gaa2c7de
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/spoti
 	arch = x86_64
@@ -10,22 +10,24 @@ pkgbase = spoti-git
 	makedepends = just
 	makedepends = odin>=dev_2026_10
 	depends = curl
-	depends = fontconfig
+	depends = cairo
+	depends = pango>=1.56
 	depends = glib2
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libsecret
 	depends = sdl3
 	depends = sdl3_image
-	depends = sdl3_ttf
 	depends = systemd-libs
 	depends = xdg-utils
 	optdepends = noto-fonts: additional script and symbol coverage
 	optdepends = noto-fonts-cjk: CJK characters
 	optdepends = noto-fonts-emoji: color emoji
 	optdepends = org.freedesktop.secrets: save login credentials
-	provides = spoti=0.1.0.r0
+	provides = spoti=0.6.1.r4.gaa2c7de
 	conflicts = spoti
+	options = !debug
+	options = !lto
 	source = spoti::git+https://github.com/hyperpuncher/spoti.git#branch=main
 	sha256sums = SKIP
 
