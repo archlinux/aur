@@ -1,7 +1,7 @@
 # Maintainer: Răzvan Cojocaru <rzvncj@gmail.com>
 
 pkgname=gdbuspp-git
-pkgver=makepkg_8c2703bd364f9baf
+pkgver=makepkg_4be2e4677f69e9fd
 pkgrel=1
 pkgdesc="glib2 D-Bus C++ interface"
 arch=('x86_64')
