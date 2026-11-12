@@ -1,6 +1,6 @@
 pkgbase = senpi
 	pkgdesc = Opinionated coding agent CLI based on pi
-	pkgver = 2026.11.11
+	pkgver = 2026.11.12
 	pkgrel = 1
 	url = https://github.com/code-yeongyu/senpi
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = senpi
 	optdepends = python: Python eval kernel support
 	conflicts = senpi-bin
 	conflicts = senpi-git
-	noextract = senpi-2026.11.11.tgz
+	noextract = senpi-2026.11.12.tgz
 	options = !strip
 	options = !debug
-	source = senpi-2026.11.11.tgz::https://registry.npmjs.org/@code-yeongyu/senpi/-/senpi-2026.11.11.tgz
-	source = senpi-2026.11.11-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v2026.11.11/LICENSE
-	sha256sums = 3d64c517526b6b3163f624257251bca135a2958d51b9a567c9b8d792a039be45
+	source = senpi-2026.11.12.tgz::https://registry.npmjs.org/@code-yeongyu/senpi/-/senpi-2026.11.12.tgz
+	source = senpi-2026.11.12-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v2026.11.12/LICENSE
+	sha256sums = b4065a5bcb4b33d84cb375afedc69d7a0c731ad686e0cf1c8ad9c1177c74d307
 	sha256sums = b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c
 
 pkgname = senpi
