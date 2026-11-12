@@ -1,13 +1,12 @@
 pkgbase = libdragon-unstable-git
-	pkgver = r4925.b68f57190
+	pkgver = r5404.f26e1c161
 	pkgrel = 1
-	url = http://www.dragonminded.com/n64dev/libdragon
 	arch = x86_64
 	license = custom:UNLICENSE
 	makedepends = git
 	depends = mips64-elf-gcc
 	depends = mips64-elf-newlib
-	source = git+https://github.com/DragonMinded/libdragon.git#branch=preview
+	source = git+https://github.com/n64brew/libdragon.git#branch=preview
 	sha256sums = SKIP
 
 pkgname = libdragon-unstable-git
