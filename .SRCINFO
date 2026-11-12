@@ -1,6 +1,6 @@
 pkgbase = sudostamp
 	pkgdesc = Approve sudo with your Android phone's fingerprint (computer side: pairing and PAM setup)
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://gitlab.com/ritwick7/sudostamp
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = sudostamp
 	depends = openssh
 	depends = pam_rssh
 	optdepends = fprintd: try this computer's own fingerprint reader first when at the desk
-	source = sudostamp-v1.3.0.tar.gz::https://gitlab.com/ritwick7/sudostamp/-/archive/v1.3.0/sudostamp-v1.3.0.tar.gz
-	sha256sums = ea1ca9a634dfa0c208b283a5898eb642491451ccb693c34360b3f111de4ae2fd
+	source = sudostamp-v1.4.0.tar.gz::https://gitlab.com/ritwick7/sudostamp/-/archive/v1.4.0/sudostamp-v1.4.0.tar.gz
+	sha256sums = cc81c01389a29c0f7a5e1e9dabaa15e7484b74995657a8903e7dbabe4edda1d8
 
 pkgname = sudostamp
