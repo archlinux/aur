@@ -9,7 +9,7 @@ _alias=runed
 pkgname=${_appname}-bin
 pkgdesc="An editor-first, agent-ready terminal workspace for software development"
 
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_edition}-${_gitversion}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_edition}-${_gitversion}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('96b9c3e06b642906d849619980ccd9a25c0b38a1e8f1675832418a6827930be8')
-sha256sums_aarch64=('3a79303f9a7ab833f32b9f323b7ff4162ce1c8e3058ebfe0660a77cc847077fe')
+sha256sums_x86_64=('25301e070855dbfab4bce906b6fc74440bb3006ea93789ff1457cd1910cb3b1c')
+sha256sums_aarch64=('b8425c7d9da388538dc895cd0f28f358287331be4e0ee9ebb34a3b5907173ee2')
 
 
 case ${CARCH} in
