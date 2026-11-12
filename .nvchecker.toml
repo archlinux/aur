@@ -1,4 +1,4 @@
 [tracedraw]
 source = "git"
-git = "https://github.com/igtoth/tracedraw.git"
+git = "https://github.com/tracedraw/tracedraw.git"
 prefix = "v"
