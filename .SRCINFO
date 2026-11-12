@@ -1,0 +1,22 @@
+pkgbase = iwdtray
+	pkgdesc = Tray icon and GUI front-end for iwd
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bsd-source/iwdtray
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = iwd
+	depends = gtk4>=4.12
+	depends = glib2
+	depends = libgcc
+	depends = glibc
+	conflicts = iwgtk
+	options = !lto
+	options = !debug
+	backup = etc/iwdtray.conf
+	source = iwdtray::git+https://github.com/bsd-source/iwdtray.git#tag=v0.1.0
+	sha256sums = c14de5e41994ba80a21707bc022404222cc7a8a62bc8f034038b438b4f668870
+
+pkgname = iwdtray
