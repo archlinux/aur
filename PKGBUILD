@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/deckcraft/releases/download/v${pkgver}/deckcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/deckcraft/releases/download/v${pkgver}/deckcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('ecd7d10ac3792ea9e0949baab81c264b2fe615d5c1e2b5a85b9611ac9c7d4d1b')
 
 package() {
