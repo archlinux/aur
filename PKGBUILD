@@ -1,8 +1,8 @@
 # Maintainer: mensylisir <710080675@qq.com>
 
 pkgname=minimax-code-cn-bin
-pkgver=3.1.12
-pkgrel=3
+pkgver=3.1.14
+pkgrel=1
 _electron=42.11.16
 pkgdesc='MiniMax Code 桌面应用（国内版），非官方 Linux 移植'
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=(
   'minimax-code-cn-512.png'
 )
 sha256sums=(
-  'a945a3054deb5b7201a07497d9adda6e8f6b654839693c80741c6460f485fa36'
+  '4969f347895d6a2e905351956384105452d05f7f10b19f1a099656d4d7f5c521'
   'e27e9ec78d12edc83c817a1454b706530c000eedd217f65aed2a5d9657ec1be0'
   '4cad5a9290c681202d92bd9e991dc1708b69df4c9c3bdcfd67a9ba1e0bdb2646'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
