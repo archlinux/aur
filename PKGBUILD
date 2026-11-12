@@ -1,6 +1,9 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
+#
+# This file is maintained in https://github.com/markusressel/fan2go-tui/tree/main/packaging/aur/fan2go-tui-git
+# and published to the AUR with packaging/aur/publish.sh (see RELEASING.md). Don't edit it on the AUR directly.
 pkgname=fan2go-tui-git
-pkgver=0.4.0.r38.g76df3e0
+pkgver=0.5.0.r0.gf915e5b
 pkgrel=1
 pkgdesc="Terminal UI for fan2go."
 arch=('x86_64')
@@ -10,6 +13,7 @@ depends=('glibc')
 makedepends=('go' 'git' 'just')
 provides=("fan2go-tui")
 conflicts=("fan2go-tui")
+install=fan2go-tui.install
 source=('git+https://github.com/markusressel/fan2go-tui')
 sha256sums=('SKIP')
 
@@ -31,7 +35,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	just build
+	just VERSION="${pkgver}" build
 }
 
 package() {
