@@ -4,7 +4,7 @@
 # pkgver is the Cargo.toml version with '-rc.N' written 'rcN' (pacman forbids '-');
 # scripts/bump-version.sh keeps them in step.
 pkgname=uq
-pkgver=0.3.0rc1
+pkgver=0.3.0rc2
 pkgrel=1
 _tag=${pkgver/rc/-rc.}
 pkgdesc="Themeable Hyprland desktop: shell, theme and layout daemon, CLI and base config"
@@ -32,9 +32,12 @@ optdepends=(
   'noti-fi: notification backend'
   'fprintd: fingerprint unlock'
   'crum-bs: uninstall apps with their leftovers and clean up storage'
+  'xzram: the Memory and swap page in Settings'
+  'scale_tail: the Tailscale page and quick-settings tile'
   'greetd: the uQ login screen (run0 uqctl greeter enable)'
   'networkmanager-openvpn: OpenVPN connections on the Network settings page'
   'sound-theme-freedesktop: the test sound on the Sound settings page'
+  'xorg-xrandr: tells X11 apps which display is the main one'
 )
 # Keep !lto: rustc links with lld, and makepkg's LTO flags make the cxx-qt C++ objects unreadable to it.
 options=(!lto)
@@ -43,7 +46,7 @@ backup=(etc/pam.d/uq-lock etc/pam.d/uq-lock-fingerprint etc/uq/greetd.toml etc/u
 # (so its checksum) can change. The release workflow uploads exactly this file and prints its sum.
 source=("$pkgname-$_tag.tar.gz::$url/releases/download/v$_tag/$pkgname-$_tag.tar.gz")
 # The release asset's sha256 for this tag; update it with pkgver at each release (docs/releasing.md).
-sha256sums=('a4e373603409d35b09bc40d7a0f41cd2eb9970babbf8fa490cf48c6f657a51a3')
+sha256sums=('e2e93b51e1029dacefc0c78755c8ae5e89e727ede820545f9e337742632023dd')
 
 prepare() {
   cd "$srcdir/$pkgname-$_tag"
