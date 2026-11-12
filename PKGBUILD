@@ -1,10 +1,13 @@
 # Maintainer: Daniel Fürst <daniel@fuerst.priv.at>
 
+# pkgver, pkgrel and the checksum of the source archive are filled in by the workflow
+# .github/workflows/packaging.yml for every new version before it goes to the AUR (S034); 'SKIP'
+# keeps a local makepkg working. .SRCINFO is generated, not kept here.
 pkgname=hitokoto
-pkgver=$(git ls-remote --tags --refs --sort="-v:refname" "https://github.com/Daniel-Fuerst/hitokoto.git" | head -n1 | sed 's/.*refs\/tags\/v//')
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A native, single-file hybrid Markdown editor"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/Daniel-Fuerst/hitokoto"
 license=('GPL-3.0-or-later')
 depends=(
@@ -22,8 +25,10 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "hitokoto.desktop"
 )
-sha256sums=('bf59617beb1712ed0765a48e7b9ab8af2540fe347ee0f6bf84214ee96a729b8e'
-            'eabd8f8ea10edf6b570fe7772df7219c78ef7a63fe846cd7044ddf12f5e754e9')
+sha256sums=(
+    'd65daec4f9ec83e5785d11581ead4336c2884f806aff110c77d8bbd5736b64d6'
+    '6e780a4fce0fc06cb349b88a8976bb2793cdbe949f60afb0573de375083659b6'
+)
 
 build() {
     local _src="${srcdir}/${pkgname}-${pkgver}"
