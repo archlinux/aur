@@ -1,0 +1,4 @@
+[obs-avip]
+source = "git"
+git = "https://github.com/obs-rust/obs-avip.git"
+prefix = "v"
