@@ -3,3 +3,4 @@ src/
 *.zst
 *.iml
 .idea
+.ai-jail

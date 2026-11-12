@@ -10,4 +10,5 @@ EnvironmentFile=%h/.docker-sabnzbd.env
 Environment="PUID=%U"
 Environment="PGID=%G"
 Type=oneshot
-ExecStart=docker compose -f /opt/docker-sabnzbd/docker-compose.yaml pull
+ExecStart=docker compose -p sabnzbd-docker -f /opt/docker-sabnzbd/docker-compose.yaml pull
+ExecStartPost=systemctl --user --no-block try-restart sabnzbd-docker.service

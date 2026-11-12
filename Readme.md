@@ -1,81 +1,38 @@
-Sabnzbd-docker
-==============
+# SABnzbd container services
 
-`sabnzbd-docker` is a service unit that starts `sabnzbd`, `nzbhydra2` and `sonarr` in their respective docker containers.
+Run SABnzbd, NZBHydra2, and Sonarr with systemd user services and Docker or Podman.
+The packages target Arch Linux.
 
-The services are provided as-is by linuxserver.io, direct from docker hub:
-* [sabnzbd](https://hub.docker.com/r/linuxserver/sabnzbd)
-* [nzbhydra2](https://hub.docker.com/r/linuxserver/nzbhydra2)
-* [sonarr](https://hub.docker.com/r/linuxserver/sonarr)
+## Choose a runtime
 
-This package is Arch Linux centric, but it should work on any system that uses `systemd` and `docker`.
+- [Podman setup and usage](Readme-podman.md): install `sabnzbd-podman` and configure `~/.podman-sabnzbd.env`.
+- [Docker setup and usage](Readme-docker.md): install `sabnzbd-docker` and configure `~/.docker-sabnzbd.env`.
 
-An [Aur package](https://aur.archlinux.org/packages/sabnzbd-docker) is provided for easy installation.
+Install only one variant. Both use the same container names and default ports.
+The Docker package also declares a conflict with the Podman package.
 
-## Configuration
+The [sabnzbd-docker AUR entry](https://aur.archlinux.org/packages/sabnzbd-docker) provides another installation option.
 
-1. Create a user config file at `~/.docker-sabnzbd.env` with the following content:
+## Applications
 
-   These directories represent the paths _on the host_ where config files, logs, et al. for each service will go. They will be bound to the docker instances of each service.  
+The Compose file uses these LinuxServer.io images:
 
-   `docker-compose.yaml` has a few other directories and paths you can set for further customisation. You only need to set up corresponding the  `*_PREFIX` paths for services you intend to use.
+| Application | Image | Default address |
+| --- | --- | --- |
+| SABnzbd | `lscr.io/linuxserver/sabnzbd:latest` | <http://localhost:8080> |
+| NZBHydra2 | `lscr.io/linuxserver/nzbhydra2:latest` | <http://localhost:5076> |
+| Sonarr | `lscr.io/linuxserver/sonarr:latest` | <http://localhost:8989> |
 
-         SABNZBD_PATH_PREFIX   = /path/to/prefix
-         NZBHYDRA2_PATH_PREFIX = /path/to/prefix
-         SONARR_PATH_PREFIX    = /path/to/prefix
+Ports bind to all host interfaces by default. Restrict access with application settings and your firewall.
 
-      <details>
-      For example, you can run it with something like:
-   
-         cat ~/.docker-sabnzbd.env
+## Configuration rules
 
-         TZ=Europe/Madrid
-         COMPOSE_PROFILES=sabnzbd,nzbhydra2                    # does not start sonarr
-         
-         SABNZBD_PATH_PREFIX=/data/banjo/Downloads/sabnzbd     # config and logs
-         SABNZBD_PATH_DOWNLOADS=/data/banjo/Downloads          # downloads will go one level up
-         
-         NZBHYDRA2_PATH_PREFIX=/data/banjo/Downloads/nzbhydra2 # config, logs and everything
-      </details>
+- Use persistent, absolute host paths. The packaged `/tmp` data defaults are not suitable for persistent storage.
+- Create the host directories before starting containers.
+- Configure application paths using container paths, such as `/downloads`, rather than host paths.
+- Keep assignments in `NAME=value` form, without spaces around `=`.
+- Put comments on separate lines. Systemd environment files do not support shell-style inline comments.
+- Use literal absolute paths in user configuration files. Do not rely on `$HOME` or `~` expansion.
+- Use `COMPOSE_PROFILES=all` for all applications, or select profiles such as `sabnzbd,nzbhydra2`.
 
-2. Create the following directories (for services you choose to run):
-
-        # Sabnzbd
-        mkdir -p /path/to/prefix/sabnzbd/config      # /config
-        mkdir -p /path/to/prefix/sabnzbd/temp        # /incomplete-downloads
-        mkdir -p /path/to/prefix/sabnzbd/downloads   # /downloads
-
-        # NZBHydra2
-        mkdir -p /path/to/prefix/nzbhydra2/config    # /config 
-
-        # Sonarr
-        mkdir -p /path/to/prefix/sonarr/config       # /config
-        mkdir -p /path/to/prefix/sonarr/tv           # /tv
-        mkdir -p /path/to/prefix/sonarr/downloads    # /downloads
-
-3. _Optional._ Defines the services to start, also in `~/.docker-sabnzbd.env`:
-
-        COMPOSE_PROFILES=sabnzbd,nzbhydra2,sonarr # default is 'all'
-
-4. _Optional._ Set the ports for the services in the same user config file:
-
-        SABNZBD_PORT   = 8080
-        NZBHYDRA2_PORT = 5076
-        SONARR_PORT    = 8989
-
-## Installation
-
-      makepkg      
-      pacman -U sabnzbd-docker-x.y-z-x86_64.pkg.tar.zst
-
-or get it from the [Aur](https://aur.archlinux.org/packages/sabnzbd-docker) repository.
-## Usage
-
-      # Optional. sabnzbd-docker-update.timer pull new updates from docker hub each day
-      systemctl --user --now enable sabnzbd-docker-update.timer
-
-      systemctl --user --now enable sabnzbd-docker
-
-Navigate to [http://localhost:8080](http://localhost:8080) to access `sabnzbd`.
-
-Configure `sabnzbd`, `nzbhydra2` and `sonarr` to use the mapped directories defined in step 2.
+Run service-management commands on the host, not inside a restricted development sandbox.

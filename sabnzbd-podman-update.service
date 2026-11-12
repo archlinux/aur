@@ -1,0 +1,16 @@
+[Unit]
+Description=Convenience update service for sabnzbd-podman.service
+After=network.target
+Before=sabnzbd-podman.service
+
+[Service]
+RuntimeDirectory=sabnzbd-podman-update
+RuntimeDirectoryMode=0700
+EnvironmentFile=/opt/podman-sabnzbd/default.env
+EnvironmentFile=%h/.podman-sabnzbd.env
+Environment="PUID=%U"
+Environment="PGID=%G"
+Type=oneshot
+ExecStartPre=/bin/bash /opt/podman-sabnzbd/render-compose.sh %h/.podman-sabnzbd.env %t/sabnzbd-podman-update/compose.yaml
+ExecStart=podman-compose -p sabnzbd-podman -f %t/sabnzbd-podman-update/compose.yaml -f /opt/podman-sabnzbd/podman-compose.override.yaml pull
+ExecStartPost=systemctl --user --no-block try-restart sabnzbd-podman.service
