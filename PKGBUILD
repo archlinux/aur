@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/effectcraft/releases/download/v${pkgver}/effectcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/effectcraft/releases/download/v${pkgver}/effectcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('438cec894542593369b90ddc6842501e12fb39ee34a5f210f09e93255417eed4')
 
 package() {

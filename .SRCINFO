@@ -30,7 +30,7 @@ pkgbase = effectcraft-private-bin
 	conflicts = effectcraft-bin
 	conflicts = effectcraft-git
 	conflicts = ai.storyteller.effectcraft
-	source = https://github.com/storytold/effectcraft/releases/download/v0.24.1/effectcraft-0.24.1-linux-x86_64.pkg.tar.zst
+	source = https://gh-proxy.com/https://github.com/storytold/effectcraft/releases/download/v0.24.1/effectcraft-0.24.1-linux-x86_64.pkg.tar.zst
 	sha256sums = 438cec894542593369b90ddc6842501e12fb39ee34a5f210f09e93255417eed4
 
 pkgname = effectcraft-private-bin
