@@ -1,12 +1,12 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=copilot-api
 pkgver=0.7.0
-pkgrel=1
+pkgrel=5
 pkgdesc='Turn GitHub Copilot into OpenAI/Anthropic API compatible server'
 arch=('any')
 url='https://github.com/ericc-ch/copilot-api'
 license=('MIT')
-depends=('bun')
+depends=('bash' 'bun')
 optdepends=('xsel: clipboard support for manual usage')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ericc-ch/$pkgname/archive/v$pkgver.tar.gz"

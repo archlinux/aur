@@ -1,11 +1,12 @@
 pkgbase = copilot-api
 	pkgdesc = Turn GitHub Copilot into OpenAI/Anthropic API compatible server
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/ericc-ch/copilot-api
 	install = copilot-api.install
 	arch = any
 	license = MIT
+	depends = bash
 	depends = bun
 	optdepends = xsel: clipboard support for manual usage
 	source = copilot-api-0.7.0.tar.gz::https://github.com/ericc-ch/copilot-api/archive/v0.7.0.tar.gz
