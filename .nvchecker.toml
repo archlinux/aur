@@ -1,0 +1,5 @@
+[bankperfect]
+source = "github"
+github = "fabiochelly/bankperfect"
+use_latest_release = true
+prefix = "v"
