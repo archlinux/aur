@@ -6,14 +6,16 @@
 
 pkgname=amp-desktop-bin
 _pkgname=amp-desktop
-pkgver=0.1.29907961
+pkgver=0.1.29908259
 pkgrel=1
 pkgdesc='Amp, the frontier coding agent, as a desktop app'
 arch=('x86_64' 'aarch64')
 url='https://ampcode.com'
-license=('LicenseRef-proprietary')
+# The phone passkey helper in resources/ is LGPL-2.1-or-later (amp-passkey-helper.NOTICE).
+license=('LicenseRef-proprietary' 'LGPL-2.1-or-later')
 # What the Electron binary links, libnotify for notifications, and xdg-open for sign-in and links.
 depends=('gtk3' 'nss' 'alsa-lib' 'libcups' 'mesa' 'libnotify' 'xdg-utils')
+optdepends=('bluez: passkeys on your phone')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
@@ -23,8 +25,8 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${_url}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${_url}-arm64.deb")
 noextract=("${_pkgname}-${pkgver}-x86_64.deb" "${_pkgname}-${pkgver}-aarch64.deb")
 # Publishing (.buildkite/scripts/linux-desktop-build.sh) sets these to the debs' checksums.
-sha256sums_x86_64=('7f2f61d0e74dbf4f53d6659746ac6e7381fda80a03c9a5386946f7c200b32c11')
-sha256sums_aarch64=('18935eb7c6109f1a7b44c947bfc4984e240eec5fb8d6cbc962447e0f6f5605e2')
+sha256sums_x86_64=('97ccb272711c4bbcbdbcb30ef781a5378b136ab68c6f580c7485f08650e5f741')
+sha256sums_aarch64=('12010f515dc4344a30462bfb59ae77f07632d0820fc90f154d2010b9a0aa2547')
 
 package() {
 	bsdtar -xOf "${_pkgname}-${pkgver}-${CARCH}.deb" 'data.tar.*' | bsdtar -xf - -C "${pkgdir}"
@@ -38,5 +40,8 @@ package() {
 	# Not `license`: makepkg reads that array after package() returns.
 	for file in LICENSE.electron.txt LICENSES.chromium.html; do
 		ln -s "/opt/amp/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
+	done
+	for file in amp-passkey-helper.COPYING amp-passkey-helper.NOTICE; do
+		ln -s "/opt/amp/resources/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
 	done
 }
