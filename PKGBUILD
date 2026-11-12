@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=daftar-bin
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="A native GTK app and a command line for an Obsidian vault in a Git repository"
 arch=(x86_64)
@@ -17,7 +17,7 @@ provides=('daftar' 'daftar-cli')
 conflicts=('daftar' 'daftar-cli' 'daftar-cli-bin')
 source=("https://github.com/parham-alvani/notes-linux/releases/download/v${pkgver}/daftar-${pkgver}-x86_64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/parham-alvani/notes-linux/v${pkgver}/LICENSE")
-sha256sums=('a46cd63efe2aacf3523a71e77cd6197d1b439bd8e9ac8cf57e4b6af25b34316f'
+sha256sums=('be4f2c5f6fbd493d7fc398d2dbedcfe0c3a506b7be203373a55f8e0f86838eaf'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
