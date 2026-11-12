@@ -10,11 +10,7 @@
 # never turns it on. A removal gives the VTs back first, with vtium console
 # disable --all, which turns off whichever mode each VT has, while
 # /usr/bin/vtium is still installed. An upgrade changes no VT, so a user who
-# gave the VTs back keeps them back, with one exception: an install or an
-# upgrade that finds vtium's template link autovt@.service and no other link
-# to vtium, as an install from before the claim left it, runs the claim
-# once. vtium console disable --all moves the template link back, so a user
-# who gave the VTs back has none. Nothing here starts, stops or restarts
+# gave the VTs back keeps them back. Nothing here starts, stops or restarts
 # a unit: a restart hangs up every session on that VT, so the claim and a
 # new build take effect at each VT's next start.
 #
@@ -161,29 +157,6 @@ EOF
 EOF
 }
 
-# Succeeds when the only link to vtium's units is the template link
-# autovt@.service to vtium@.service, with no VT's own link and no want at
-# boot, as an install of vtium from before the claim left it. That install
-# claimed no VT and told the user to run vtium console enable --all, whose
-# vtium then linked the template to vtium and turned off the gettys on VTs
-# 2 to 6, and made no VT's own link. Its removal script runs no vtium
-# console, so the template link outlives it when another console package
-# takes its place. The argument is what _vtium_links printed.
-_vtium_template_only() {
-  [ "$1" = /etc/systemd/system/autovt@.service ] &&
-    [ "$(readlink /etc/systemd/system/autovt@.service)" = /usr/lib/systemd/system/vtium@.service ]
-}
-
-# The claim, run once on a machine that _vtium_template_only finds, with a
-# note that says why. Such a machine starts vtium on a VT only when you
-# switch to it, and the claim makes systemd start vtium at boot on each
-# free VT, as on a first install.
-_vtium_migrate() {
-  printf '%s\n' "This install gives vtium the free VTs, so that vtium starts at boot on them. A free VT is one that no display manager or other program holds. The install found the link autovt@.service, which an earlier version of vtium left. That link starts vtium on a VT only when you switch to that VT, so nothing held those VTs open at boot. A first install gives vtium the free VTs in the same way." |
-    fold -s -w 74 | sed -e 's/ *$//' -e '1s/^/==> /' -e '2,$s/^/    /'
-  _vtium_claim
-}
-
 # The links among those _vtium_links prints that name seat mode's unit,
 # when this package does not ship it, one path a line, or nothing. A console
 # built without libseat and logind, such as a minspec one, ships no
@@ -201,12 +174,10 @@ _vtium_seat_orphans() {
 # A first install claims the free VTs. When vtium already holds VTs through
 # links that an earlier install left, or that were made by hand, those VTs
 # stay vtium's and the install claims no more, so a choice made earlier
-# stands. The template link alone, which an install from before the claim
-# left, is the exception, and the install then runs the claim once. A link
-# to seat mode's unit, when this package does not ship it, leaves its VTs
-# with no console unit, and the message says how to give them to vtium in
-# direct mode. A vtium that still runs keeps the build it started with
-# until it restarts.
+# stands. A link to seat mode's unit, when this package does not ship it,
+# leaves its VTs with no console unit, and the message says how to give
+# them to vtium in direct mode. A vtium that still runs keeps the build it
+# started with until it restarts.
 post_install() {
   local links running orphans direct
   links=$(_vtium_links)
@@ -239,8 +210,6 @@ EOF
       sudo vtium console enable --direct --all
     vtium console status lists what each VT runs.
 EOF
-  elif _vtium_template_only "$links"; then
-    _vtium_migrate
   elif [ -n "$links" ]; then
     cat <<'EOF'
 ==> vtium already holds VTs on this machine, through these links, which an
@@ -272,10 +241,8 @@ EOF
   return 0
 }
 
-# An upgrade changes no VT, apart from the claim it runs once over the
-# template link alone, as post_install does. It names each vtium that still
-# runs the old build, and the VTs that vtium holds but does not start at
-# boot on.
+# An upgrade changes no VT. It names each vtium that still runs the old
+# build, and the VTs that vtium holds but does not start at boot on.
 post_upgrade() {
   cat <<'EOF'
 ==> vtium was upgraded, and no running vtium was restarted: a restart ends
@@ -285,11 +252,7 @@ post_upgrade() {
       sudo systemctl restart vtium@tty3.service
 EOF
   _vtium_still_running
-  if _vtium_template_only "$(_vtium_links)"; then
-    _vtium_migrate
-  else
-    _vtium_boot_note
-  fi
+  _vtium_boot_note
   return 0
 }
 
