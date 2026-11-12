@@ -5,7 +5,7 @@
 
 pkgname=arsu-bin
 _pkgname=arsu
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Offline TOTP/HOTP authenticator with an encrypted local vault (prebuilt)'
 arch=('x86_64')
@@ -44,9 +44,9 @@ source=(
   "$pkgname-$pkgver-512.png::$_tree/src-tauri/icons/icon.png"
   'Arsu.desktop'
 )
-sha256sums=('0003afa192d6c3a110815d38aa83734d051f64629ed946bb05e66ab132b473d9'
-            '1d232ef69f8ff133e891972184716823218f4ee3938f3bbb8db0c26a85e58f50'
-            'SKIP'
+sha256sums=('ab0bc5c5db4516015971b72fae9659fabd56e3124c59c94ab7f48976a5a91951'
+            '11f412b36861da1091974ec240f31ea83cc17cb4aa2bc2edd40d070dc5191fde'
+            '8b120a320f0012ae58ac506d310e178fdf9d388a471099731cc1851d6d7d2291'
             '083d1f47386dfb5ff3ced55505021ebb00dca5ee7438308ef7b898629c97b59c'
             '1e124c7ced39b868698ac8841ff5f577120c3ffa6812ddd629c7665f1bb7a3f9'
             'f1095a50dca1d94f8d9621fbfac032170e6c060c74092f1e371eaa71fbee4dfc'
