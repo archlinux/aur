@@ -1,6 +1,6 @@
-*
-!PKGBUILD
-!.SRCINFO
-!dotnet.sh
-!LICENSE
-!.gitignore
+src/
+pkg/
+dotnet-*.tar.gz
+dotnet-*.tar.zst
+aspnet-*.tar.zst
+netstandard-*.tar.zst

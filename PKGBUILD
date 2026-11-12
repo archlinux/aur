@@ -1,107 +1,89 @@
-# Maintainer: Pahasara DvNET <pahasaradev[at]proton[dot]me>
-# Contributor: Attila Greguss <floyd0122[at]gmail[dot]com>
-# Contributor: Nate Plumm <nate[at]ceresta[dot]com>
+# Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
+# armv7h and aarch64 Comaintainers needed
 
 pkgbase=dotnet-core-10.0-bin
 pkgname=(
-  'dotnet-host-10.0-bin'
   'aspnet-runtime-10.0-bin'
   'dotnet-runtime-10.0-bin'
   'dotnet-sdk-10.0-bin'
   'dotnet-targeting-pack-10.0-bin'
   'aspnet-targeting-pack-10.0-bin'
  )
-pkgver=10.0.0.sdk100
-_runtimever=10.0.0
-_sdkver=10.0.100
-_short_ver=10.0
-pkgrel=3
+pkgver=10.0.15.sdk404
+_runtimever=10.0.15
+_sdkver=10.0.404
+pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
-source=('dotnet.sh')
 source_armv7h=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm.tar.gz")
 source_aarch64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm64.tar.gz")
 source_x86_64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-x64.tar.gz")
-sha512sums=('768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06')
-sha512sums_armv7h=('45f2d7fd05670a5a14fa480889e45920782277575dba0da44c259997d059d64070b40ac7aae9f0c3a3076d9fed5b787854a8abdc2dfdb4783b449c05c1c9b49c')
-sha512sums_aarch64=('24fc2b105ab8484c34213ef57ac4e6a36a6593241f0ebc6cf0a40ec2f5fea2d76de85c4b87b2a53814d194e32ec1288dd5053cd6f52768d79cd0ac948cbf84ea')
-sha512sums_x86_64=('f78dbac30c9af2230d67ff5c224de3a5dbf63f8a78d1c206594dedb80e6909d2cc8a9d865d5105c72c2fd2aa266fc0c6c77dedac60408cbccf272b116bd11b07')
-
-package_dotnet-host-10.0-bin() {
-  pkgdesc='A generic driver for the .NET Core Command Line Interface (binary) - .NET 10.0 LTS'
-  provides=("dotnet-host=${_runtimever}")
-  depends=(
-    'gcc-libs'
-    'glibc'
-  )
-  conflicts=('dotnet-host')
-
-  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,dnx,licenses/dotnet-host-10.0}}
-  cp -dr --no-preserve='ownership' dotnet host dnx "${pkgdir}"/usr/share/dotnet/
-  cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host-10.0
-  ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
-  ln -sf /usr/share/dotnet/dnx "${pkgdir}"/usr/bin/dnx
-  ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
-  install -Dm 644 "${srcdir}"/dotnet.sh -t "${pkgdir}"/etc/profile.d/
-}
+sha512sums_armv7h=('8842c932018ecd242a27128183a89f9729671c07fd3b5a0ea6a1149289abfd110572a5a488ebfa4da6b9b6212ba94dc085ac7c606dd4e7d504b8a4a6c54cf741')
+sha512sums_aarch64=('3533a3869da219cac45c567aadac3d8e96cdf1c6a04fe1c1d5fdeefea5d45af8424488f0144730d11b4a751f7ad546fb11e4c2b2725cd8401efee726711f8f11')
+sha512sums_x86_64=('577d0eb17fec33d029104c5c63a1ab0accc3e28776274abef2218dbac5af18d2109b5406d26b31d76f5c245215e3ba0926a94c20246c672c41847c9e1eb1dc50')
 
 package_dotnet-runtime-10.0-bin() {
-  pkgdesc='The .NET Core runtime (binary) - .NET 10.0 LTS'
+  pkgdesc='The .NET Core runtime (binary)'
   depends=(
-    "dotnet-host>=${_runtimever}"
-    'gcc-libs'
+  	"dotnet-host>=${_runtimever}"
+    'libgcc'
+    'libstdc++'
     'glibc'
     'icu'
+    'krb5'
     'libunwind'
     'zlib'
     'openssl'
   )
   optdepends=('lttng-ust2.12: CoreCLR tracing')
-  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
-
-  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
+  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-10.0")
+  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-10.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
-  ln -s dotnet-host-10.0-bin "${pkgdir}"/usr/share/licenses/dotnet-runtime-10.0-bin
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-runtime-10.0-bin
 }
 
 package_aspnet-runtime-10.0-bin() {
-  pkgdesc='The ASP.NET Core runtime (binary) - .NET 10.0 LTS'
+  pkgdesc='The ASP.NET Core runtime (binary)'
   depends=('dotnet-runtime-10.0-bin')
-  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-${_short_ver}")
-  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-${_short_ver}")
+  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-10.0")
+  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-10.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
-  ln -s dotnet-host-10.0-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-10.0-bin
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-10.0-bin
 }
 
 package_dotnet-sdk-10.0-bin() {
-  pkgdesc='The .NET Core SDK (binary) - .NET 10.0 LTS'
+  pkgdesc='The .NET Core SDK (binary)'
   depends=(
     'glibc'
-    'gcc-libs'
+    'libgcc'
+    'libstdc++'
     'dotnet-runtime-10.0-bin'
     'dotnet-targeting-pack-10.0-bin'
-    'aspnet-runtime-10.0-bin'
-    'aspnet-targeting-pack-10.0-bin'
-  )
-  provides=("dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}=${pkgver}")
-  conflicts=("dotnet-sdk=${_runtimever}" "dotnet-sdk-${_short_ver}")
+    'netstandard-targeting-pack')
+  optdepends=('aspnet-targeting-pack-bin: Build ASP.NET Core applications')
+  provides=("dotnet-sdk=${pkgver}" "dotnet-sdk-10.0")
+  conflicts=("dotnet-sdk=${pkgver}" "dotnet-sdk-10.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
-  ln -s dotnet-host-10.0-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-10.0-bin
+  install -dm 755 "${pkgdir}"/usr/share/dotnet/metadata/workloads/"${_sdkver}"
+  touch "${pkgdir}"/usr/share/dotnet/metadata/workloads/"${_sdkver}"/userlocal
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-10.0-bin
 }
 
 package_dotnet-targeting-pack-10.0-bin() {
-  pkgdesc='The .NET Core targeting pack (binary) - .NET 10.0 LTS'
-  depends=()
-  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-${_short_ver})
-  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-${_short_ver})
+  pkgdesc='The .NET Core targeting pack (binary)'
+  depends=(
+    'netstandard-targeting-pack'
+  )
+  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-10.0)
+  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-10.0)
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
   elif [ $CARCH = 'armv7h' ]; then msarch=arm;
@@ -109,16 +91,18 @@ package_dotnet-targeting-pack-10.0-bin() {
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-${msarch},Ref} "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host-10.0-bin "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-10.0-bin
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-10.0-bin
 }
 
 package_aspnet-targeting-pack-10.0-bin() {
-  pkgdesc='The ASP.NET Core targeting pack (binary) - .NET 10.0 LTS'
-  depends=(dotnet-targeting-pack-10.0-bin)
-  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-${_short_ver})
-  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-${_short_ver})
+  pkgdesc='The ASP.NET Core targeting pack (binary)'
+  depends=(
+    'dotnet-targeting-pack-10.0-bin'
+  )
+  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-10.0)
+  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-10.0)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host-10.0-bin "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-10.0-bin
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-10.0-bin
 }

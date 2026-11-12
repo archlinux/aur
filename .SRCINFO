@@ -1,76 +1,70 @@
 pkgbase = dotnet-core-10.0-bin
-	pkgver = 10.0.0.sdk100
-	pkgrel = 3
+	pkgver = 10.0.15.sdk404
+	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source = dotnet.sh
-	sha512sums = 768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100/dotnet-sdk-10.0.100-linux-x64.tar.gz
-	sha512sums_x86_64 = f78dbac30c9af2230d67ff5c224de3a5dbf63f8a78d1c206594dedb80e6909d2cc8a9d865d5105c72c2fd2aa266fc0c6c77dedac60408cbccf272b116bd11b07
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100/dotnet-sdk-10.0.100-linux-arm.tar.gz
-	sha512sums_armv7h = 45f2d7fd05670a5a14fa480889e45920782277575dba0da44c259997d059d64070b40ac7aae9f0c3a3076d9fed5b787854a8abdc2dfdb4783b449c05c1c9b49c
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.100/dotnet-sdk-10.0.100-linux-arm64.tar.gz
-	sha512sums_aarch64 = 24fc2b105ab8484c34213ef57ac4e6a36a6593241f0ebc6cf0a40ec2f5fea2d76de85c4b87b2a53814d194e32ec1288dd5053cd6f52768d79cd0ac948cbf84ea
-
-pkgname = dotnet-host-10.0-bin
-	pkgdesc = A generic driver for the .NET Core Command Line Interface (binary) - .NET 10.0 LTS
-	depends = gcc-libs
-	depends = glibc
-	provides = dotnet-host=10.0.0
-	conflicts = dotnet-host
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.404/dotnet-sdk-10.0.404-linux-x64.tar.gz
+	sha512sums_x86_64 = 577d0eb17fec33d029104c5c63a1ab0accc3e28776274abef2218dbac5af18d2109b5406d26b31d76f5c245215e3ba0926a94c20246c672c41847c9e1eb1dc50
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.404/dotnet-sdk-10.0.404-linux-arm.tar.gz
+	sha512sums_armv7h = 8842c932018ecd242a27128183a89f9729671c07fd3b5a0ea6a1149289abfd110572a5a488ebfa4da6b9b6212ba94dc085ac7c606dd4e7d504b8a4a6c54cf741
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.404/dotnet-sdk-10.0.404-linux-arm64.tar.gz
+	sha512sums_aarch64 = 3533a3869da219cac45c567aadac3d8e96cdf1c6a04fe1c1d5fdeefea5d45af8424488f0144730d11b4a751f7ad546fb11e4c2b2725cd8401efee726711f8f11
 
 pkgname = aspnet-runtime-10.0-bin
-	pkgdesc = The ASP.NET Core runtime (binary) - .NET 10.0 LTS
+	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-10.0-bin
-	provides = aspnet-runtime=10.0.0
+	provides = aspnet-runtime=10.0.15
 	provides = aspnet-runtime-10.0
-	conflicts = aspnet-runtime=10.0.0
+	conflicts = aspnet-runtime=10.0.15
 	conflicts = aspnet-runtime-10.0
 
 pkgname = dotnet-runtime-10.0-bin
-	pkgdesc = The .NET Core runtime (binary) - .NET 10.0 LTS
-	depends = dotnet-host>=10.0.0
-	depends = gcc-libs
+	pkgdesc = The .NET Core runtime (binary)
+	depends = dotnet-host>=10.0.15
+	depends = libgcc
+	depends = libstdc++
 	depends = glibc
 	depends = icu
+	depends = krb5
 	depends = libunwind
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust2.12: CoreCLR tracing
-	provides = dotnet-runtime=10.0.0
+	provides = dotnet-runtime=10.0.15
 	provides = dotnet-runtime-10.0
-	conflicts = dotnet-runtime=10.0.0
+	conflicts = dotnet-runtime=10.0.15
 	conflicts = dotnet-runtime-10.0
 
 pkgname = dotnet-sdk-10.0-bin
-	pkgdesc = The .NET Core SDK (binary) - .NET 10.0 LTS
+	pkgdesc = The .NET Core SDK (binary)
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	depends = dotnet-runtime-10.0-bin
 	depends = dotnet-targeting-pack-10.0-bin
-	depends = aspnet-runtime-10.0-bin
-	depends = aspnet-targeting-pack-10.0-bin
-	provides = dotnet-sdk=10.0.0.sdk100
-	provides = dotnet-sdk-10.0=10.0.0.sdk100
-	conflicts = dotnet-sdk=10.0.0
+	depends = netstandard-targeting-pack
+	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
+	provides = dotnet-sdk=10.0.15.sdk404
+	provides = dotnet-sdk-10.0
+	conflicts = dotnet-sdk=10.0.15.sdk404
 	conflicts = dotnet-sdk-10.0
 
 pkgname = dotnet-targeting-pack-10.0-bin
-	pkgdesc = The .NET Core targeting pack (binary) - .NET 10.0 LTS
-	depends = 
-	provides = dotnet-targeting-pack=10.0.0
+	pkgdesc = The .NET Core targeting pack (binary)
+	depends = netstandard-targeting-pack
+	provides = dotnet-targeting-pack=10.0.15
 	provides = dotnet-targeting-pack-10.0
-	conflicts = dotnet-targeting-pack=10.0.0
+	conflicts = dotnet-targeting-pack=10.0.15
 	conflicts = dotnet-targeting-pack-10.0
 
 pkgname = aspnet-targeting-pack-10.0-bin
-	pkgdesc = The ASP.NET Core targeting pack (binary) - .NET 10.0 LTS
+	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-10.0-bin
-	provides = aspnet-targeting-pack=10.0.0
+	provides = aspnet-targeting-pack=10.0.15
 	provides = aspnet-targeting-pack-10.0
-	conflicts = aspnet-targeting-pack=10.0.0
+	conflicts = aspnet-targeting-pack=10.0.15
 	conflicts = aspnet-targeting-pack-10.0
