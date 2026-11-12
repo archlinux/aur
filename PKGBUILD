@@ -1,7 +1,7 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 
 pkgname=tidra
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Keep every project you maintain up to date from one desktop app"
 arch=('x86_64' 'aarch64')
@@ -36,7 +36,7 @@ optdepends=(
     'github-cli: import an existing GitHub CLI authentication token'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7774a1b365c9f81f7ebcd596fb90fb46971e1902d41469983e56958dddc78baa')
+sha256sums=('13007f6a9eb49ec75d1fbb29831c91e0a587d005487948f42a92df0e3086fb1e')
 # Use upstream's Rust LTO settings instead of makepkg's compiler flags.
 options=('!lto')
 
