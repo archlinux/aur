@@ -1,7 +1,7 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 # Release-pinned binary recipe; generated updates follow published assets.
 pkgname=ibus-misstype-bin
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='Offline, fuzzy Zhuyin input method for IBus (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ conflicts=('ibus-misstype' 'ibus-misstype-git' 'fcitx5-misstype'
            'fcitx5-misstype-git' 'fcitx5-misstype-bin' 'fcitx5-mistype-git')
 options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/MisstypeIBus-$pkgver-arch-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('fed6025e66a2e9b813a498dc225889659c034799e4bd292402fb0ccd5210e3c3')
+sha256sums_x86_64=('4fe55804e8f1a1756457804f1eab8449c819ad1c51c1df3fa66b264b76428929')
 source_aarch64=("$url/releases/download/v$pkgver/MisstypeIBus-$pkgver-arch-aarch64.pkg.tar.zst")
 # Placeholder: prepare_aur_bin.py pins it, or drops aarch64 for releases without that asset.
-sha256sums_aarch64=('08978ffe8520dd8dd28605a0eb2b36de63740c7dbf59dd5bdf543286b89a8383')
+sha256sums_aarch64=('01ca79f2b368da05b62b1bc1c653bcc4a1abd1ce38cc89515b60a0314f2ac2fe')
 noextract=("MisstypeIBus-$pkgver-arch-x86_64.pkg.tar.zst"
             "MisstypeIBus-$pkgver-arch-aarch64.pkg.tar.zst")
 
