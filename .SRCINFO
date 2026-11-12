@@ -1,0 +1,17 @@
+pkgbase = dnsometer
+	pkgdesc = DNS latency testing with a terminal interface and JSON output
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/nathanchere/dnsometer
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = go>=1.25
+	makedepends = git
+	makedepends = make
+	depends = ca-certificates
+	options = !strip
+	options = !emptydirs
+	source = dnsometer::git+https://gitlab.com/nathanchere/dnsometer.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = dnsometer
