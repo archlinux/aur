@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'dbus' 'libxcb')
 makedepends=('make' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4ca7654cdacdb55fc6268e954eddc71fb5baf71db3444757759d68186cd446db')
+sha256sums=('eb0bc24a4e578551f20686b288e616658f4548ff4eff3bd45207199daa895fb8')
 
 build() {
     cd "$pkgname-$pkgver"
