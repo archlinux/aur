@@ -22,11 +22,14 @@
 
 pkgname=cua-driver-bin
 pkgver=0.47.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop control daemon (cua-driver-rs) from trycua/cua — background window driving, clicks, typing, browser automation via MCP"
 arch=('x86_64')
 url="https://github.com/trycua/cua"
-license=('Apache-2.0')
+# Upstream root LICENSE.md is MIT and covers Cua Driver unless a subdirectory
+# ships its own LICENSE (see legal/LICENSING.md); the driver crate declares
+# license = "MIT" in libs/cua-driver/rust/Cargo.toml.
+license=('MIT')
 depends=(
     'libx11'
     'libxi'
@@ -42,11 +45,15 @@ optdepends=(
 
 # Binary tarball from the cua-driver-rs-v* release tag (official channel).
 # Only linux-x86_64 assets are published (aarch64/armv7 return 404).
+# The tarball carries no license text, so LICENSE.md is fetched from the
+# same tag and installed under /usr/share/licenses/.
 source=(
     "cua-driver-rs-${pkgver}-linux-x86_64-binary.tar.gz::https://github.com/trycua/cua/releases/download/cua-driver-rs-v${pkgver}/cua-driver-rs-${pkgver}-linux-x86_64-binary.tar.gz"
+    "LICENSE.md::https://raw.githubusercontent.com/trycua/cua/cua-driver-rs-v${pkgver}/LICENSE.md"
     "cua-driver.service"
 )
 sha256sums=('d9abbe5f1db278210ff88e14fcefdc099dbc767b41849457cfc02838ba4180ec'
+            'c0779290c1d4783169aa3dbfb55feb505e563ef8a004bbf55298ceffcfbda8d9'
             'SKIP')
 
 # ── Package ─────────────────────────────────────────────────────────
@@ -57,7 +64,10 @@ package() {
     # Extract everything into /usr/lib/cua-driver/ — cua-driver finds
     # cua-cursor-theme, libcua_driver_sdk.so, cua_driver_node_runtime.node
     # and wayland-helper/ relative to its own real path.
-    tar xzf "${srcdir}/cua-driver-rs-${pkgver}-linux-x86_64-binary.tar.gz" -C "$_libdir"
+    # --no-same-owner: the tarball is root-owned; don't rely on chown() to
+    # restore it (inside fakeroot the archive already lands as root).
+    tar xzf "${srcdir}/cua-driver-rs-${pkgver}-linux-x86_64-binary.tar.gz" \
+        -C "$_libdir" --no-same-owner
 
     # Visible PATH entries (symlinks; real binary stays in /usr/lib).
     install -d "${pkgdir}/usr/bin"
@@ -67,6 +77,10 @@ package() {
     # systemd user service for the daemon.
     install -Dm644 "${srcdir}/cua-driver.service" \
         "${pkgdir}/usr/lib/systemd/user/cua-driver.service"
+
+    # MIT requires shipping the copyright notice with the binaries.
+    install -Dm644 "${srcdir}/LICENSE.md" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 install=${pkgname}.install
