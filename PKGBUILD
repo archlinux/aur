@@ -1,15 +1,15 @@
 # Maintainer: Dominik Kummer <admin@arkades.org>
 
-pkgname=texlive-emo
+pkgname=texlive-emo-full
 _pkgname=emo
 pkgver=1.0
-pkgrel=3
-pkgdesc="Emoji support for all LaTeX engines"
+pkgrel=1
+pkgdesc="Emoji support for all LaTeX engines (including all emo-graphics)"
 arch=('any')
 url="https://github.com/apparebit/emo"
 license=('LPPL-1.3c' 'Apache-2.0' 'Unicode-3.0' 'OFL-1.1')
 
-depends=('texlive-latexrecommended')
+depends=('texlive-latexextra')
 makedepends=('unzip')
 
 source=("https://github.com/apparebit/emo/releases/download/v1.0/emo-$pkgver.zip")

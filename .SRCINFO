@@ -1,7 +1,7 @@
-pkgbase = texlive-emo
-	pkgdesc = Emoji support for all LaTeX engines
+pkgbase = texlive-emo-full
+	pkgdesc = Emoji support for all LaTeX engines (including all emo-graphics)
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/apparebit/emo
 	arch = any
 	license = LPPL-1.3c
@@ -9,8 +9,8 @@ pkgbase = texlive-emo
 	license = Unicode-3.0
 	license = OFL-1.1
 	makedepends = unzip
-	depends = texlive-latexrecommended
+	depends = texlive-latexextra
 	source = https://github.com/apparebit/emo/releases/download/v1.0/emo-1.0.zip
 	sha256sums = 022c6c41b9c8124b3cf661130d76a505f08ae71edea81a58da7469f642d7ece0
 
-pkgname = texlive-emo
+pkgname = texlive-emo-full
