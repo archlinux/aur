@@ -16,8 +16,9 @@
 #                                      (the app finds it beside its binary: bridge.rs, bridge_in_libdir)
 #   /usr/share/applications, /usr/share/icons/hicolor, /usr/share/licenses/uzumaki
 #   /usr/share/uzumaki/icons/<variant>/<size>.png   the App icon choices (source for app_icon.rs)
-# Installed under /usr, the app's update notice says "update with your package manager" and never
-# offers a download (app/src/update.rs).
+# Built with UZUMAKI_CHANNEL=aur (build() below): the app's update notice says "Update with your
+# package manager: yay -Syu uzumaki" and never offers a download, and its daily update check reports
+# the channel "aur" (app/src/update.rs).
 #
 # Checked on Arch (0.1.0): makepkg from the release tarball (715 files, chrome-sandbox setuid root).
 # Still to check, with namcap and devtools installed:
@@ -36,7 +37,7 @@
 # The Widevine CDM is not in this package: Chromium downloads it from Google on first use.
 
 pkgname=uzumaki
-pkgver=0.1.0
+pkgver=0.1.1
 # The upstream build: 1 is tag v<version>, a rebuild of the same version is v<version>-<build>
 # (tarball uzumaki-<version>-<build>.tar.gz, still unpacking to uzumaki-<version>/).
 _build=1
@@ -93,7 +94,7 @@ makedepends=('cargo' 'npm' 'git' 'pkgconf')
 options=('!lto')
 source=("$pkgname-$_rel.tar.gz::https://github.com/hanami117/uzumaki/releases/download/v$_rel/uzumaki-$_rel.tar.gz")
 # The tarball's sha256 (packaging/release.sh prints it; uzumaki-<version>.tar.gz.sha256 on the release).
-sha256sums=('93110c312f197e137c7fa4fd155a858e56e88a1cbaf7c0d08a2822367fd065eb')
+sha256sums=('a7e0831634566b3852343737a192c08b6213e4e761c74bec7c6c5e82d13abb02')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -114,6 +115,8 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Read at compile time: the update notice points at the package manager, the check says "aur".
+  export UZUMAKI_CHANNEL=aur
   cargo build --frozen --release -p uzumaki -p uzumaki-ctl
 }
 
