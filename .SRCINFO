@@ -1,6 +1,6 @@
 pkgbase = bentwire-bin
 	pkgdesc = Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland (release binaries)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/mschabhuettl/bentwire
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = bentwire-bin
 	depends = glibc
 	depends = libgcc
 	depends = libxkbcommon
-	provides = bentwire=0.1.1
+	provides = bentwire=0.1.2
 	conflicts = bentwire
 	options = !debug
-	source_x86_64 = https://github.com/mschabhuettl/bentwire/releases/download/v0.1.1/bentwire-0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 016b3cef4efe04ac7d657816967436e125b923dd6d6e3f82bcc35ed3b16d3f33
+	source_x86_64 = https://github.com/mschabhuettl/bentwire/releases/download/v0.1.2/bentwire-0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = acb128265a1a9a155c2945fbb2ef79137b1708ca1cdc2253f3688a0c3d938ee4
 
 pkgname = bentwire-bin
