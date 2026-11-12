@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-installer
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Installer script for endcord - feature rich Discord TUI client."
 arch=('any')
