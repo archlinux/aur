@@ -1,0 +1,18 @@
+pkgbase = linaudit-git
+	pkgdesc = A read-only security audit tool for Linux systems with a score from 1 to 10
+	pkgver = r16.ecf16d1
+	pkgrel = 1
+	url = https://github.com/alexiarstein/linaudit
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = linaudit
+	conflicts = linaudit
+	backup = etc/linaudit/waivers.conf
+	source = git+https://github.com/alexiarstein/linaudit.git
+	sha256sums = SKIP
+
+pkgname = linaudit-git
