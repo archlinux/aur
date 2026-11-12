@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=steve-git
-pkgver=r12357.0206752739
+pkgver=r13660.cee8158374
 pkgrel=1
 pkgdesc="Steve: a coding agent for the terminal, forked from OpenAI Codex, for self-hosted and non-OpenAI model providers"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ optdepends=('bubblewrap: system sandbox helper, preferred over the bundled one')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!lto !debug)
-source=("${pkgname%-git}::git+$url.git")
+source=("${pkgname%-git}::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 _target() {
@@ -45,7 +45,7 @@ build() {
 	. "$srcdir/v8/env"
 	set +a
 	export STEVE_REPO_ROOT="$PWD" PYTHONPATH="$PWD/scripts"
-	export CARGO_TARGET_DIR="$srcdir/target" CARGO_NET_OFFLINE=true
+	export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-$srcdir/target}" CARGO_NET_OFFLINE=true
 	export STABLE_GIT_COMMIT="$(git rev-parse HEAD)"
 	python scripts/build_codex_package.py \
 		--target "$(_target)" --variant steve --cargo-profile release \
