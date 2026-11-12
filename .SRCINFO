@@ -36,6 +36,7 @@ pkgbase = linux-lts515
 	sha256sums = 8357f000b2b622e73dcfd41c2bad42b5e99fffe8f7ee64f774aa771f86cef43c
 	sha256sums = 5c1ee81fdd5818442af6081de987f9c1a9ce3c8d183566b3dfc19a8433aa3dde
 	sha256sums = 067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9
+	makedepends_x86_64 = openssl-3
 
 pkgname = linux-lts515
 	pkgdesc = The LTS Linux 5.15.x kernel and modules

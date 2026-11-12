@@ -11,6 +11,14 @@ license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz python gcc
 )
+# openssl-3: side-by-side compat package (official Arch core/ package,
+# ships /usr/lib/openssl-3) some local chroots' system openssl has
+# already jumped to 4.x on, which dropped the ENGINE API this kernel's
+# own scripts/sign-file.c/extract-cert.c (CONFIG_MODULE_SIG host tools)
+# still use -- see build()'s PKG_CONFIG_PATH override below. Not every
+# arch's chroot is on openssl 4.x yet, so this is x86_64-only for now;
+# add other archs here too once/if their own chroots make the jump.
+makedepends_x86_64=(openssl-3)
 options=('!strip')
 _srcname=linux-$pkgver
 source=(
@@ -68,6 +76,17 @@ prepare() {
 
 build() {
   cd $_srcname
+
+  # scripts/sign-file.c and scripts/extract-cert.c (CONFIG_MODULE_SIG
+  # host tools) link against libcrypto via `pkg-config --libs/--cflags
+  # libcrypto` (see scripts/Makefile's CRYPTO_LIBS/CRYPTO_CFLAGS) --
+  # point that at the side-by-side openssl-3 compat package when it's
+  # installed (self-adapting: a no-op on any arch whose system openssl
+  # hasn't dropped the ENGINE API yet, see makedepends_x86_64 above).
+  if [[ -d /usr/lib/openssl-3/pkgconfig ]]; then
+    export PKG_CONFIG_PATH="/usr/lib/openssl-3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+  fi
+
 # breaks brilliantly, disabled htmldocs
   make CC=gcc all
 }
