@@ -4,7 +4,8 @@ pkgname=tracedraw-git
 _pkgname=${pkgname%-git}
 pkgver=0.17.0.r0.g94271e2
 pkgrel=1
-url="https://github.com/igtoth/$_pkgname"
+url="https://$_pkgname.github.io/$_pkgname/"
+_url="https://github.com/$_pkgname/$_pkgname"
 pkgdesc='vibe coded clean-room reimplementation of Corel Draw'
 arch=(x86_64)
 license=(MIT Apache-2.0)
@@ -15,7 +16,7 @@ makedepends=(cargo
              git)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("git+$_url.git")
 sha256sums=('SKIP')
 
 _srcenv() {

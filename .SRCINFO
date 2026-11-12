@@ -2,7 +2,7 @@ pkgbase = tracedraw-git
 	pkgdesc = vibe coded clean-room reimplementation of Corel Draw
 	pkgver = 0.17.0.r0.g94271e2
 	pkgrel = 1
-	url = https://github.com/igtoth/tracedraw
+	url = https://tracedraw.github.io/tracedraw/
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
@@ -13,7 +13,7 @@ pkgbase = tracedraw-git
 	depends = libgcc
 	provides = tracedraw=0.17.0.r0.g94271e2
 	conflicts = tracedraw
-	source = git+https://github.com/igtoth/tracedraw.git
+	source = git+https://github.com/tracedraw/tracedraw.git
 	sha256sums = SKIP
 
 pkgname = tracedraw-git
