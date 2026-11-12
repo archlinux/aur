@@ -1,6 +1,6 @@
 # Maintainer: rotko <hq@rotko.net>
 pkgname=peek2
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Region screen recorder with audio, straight to the clipboard (Rust rewrite of Peek, no GTK)"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
   'zenity: ask_save_location file dialog'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotkonetworks/peek2/archive/v$pkgver.tar.gz")
-sha256sums=('df56d8a0dfcb2c7c996b576d3957a214c99a0e0b380dd72a68f3dce74385372c')
+sha256sums=('5626a32f90d6bb9d889d9c5ae1770286113bfa1c7dfa9f158bb7b120d1c339f8')
 
 prepare() {
   cd "$pkgname-$pkgver"
