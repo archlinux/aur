@@ -3,7 +3,7 @@
 pkgname='aprs-symbols-git'
 _pkgname='aprs-symbols'
 pkgver=r29.f2286a9
-pkgrel=4
+pkgrel=6
 pkgdesc='aprs.fi APRS symbol set, high-resolution, vector'
 arch=('any')
 makedepends=('git')
@@ -33,5 +33,5 @@ package() {
     for file in png/*; do
         install -Dm 0644 $srcdir/$_pkgname/$file "$pkgdir"/usr/share/$_pkgname/$file
     done
-    install -Dm 0644 $srcdir/$_pkgname/COPYRIGHT.md "$pkgdir"/usr/share/licenses/$_pkgname/COPYRIGHT.md
+    install -Dm 0644 $srcdir/$_pkgname/COPYRIGHT.md "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT.md
 }
