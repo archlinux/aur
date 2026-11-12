@@ -2,7 +2,7 @@
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
 url="https://github.com/Recol/DLSS-Updater"
@@ -15,11 +15,13 @@ depends=(
   'python-flet'
   'python-msgpack'
   'python-msgspec'
+  'python-niquests'
   'python-packaging'
   'python-pefile'
   'python-pillow'
   'python-platformdirs'
   'python-psutil'
+  'python-rapidfuzz'
   'python-tomli-w'
   'python-uvloop'
 )
@@ -34,11 +36,7 @@ checkdepends=(
   'appstream'
   'desktop-file-utils'
 )
-optdepends=(
-  'python-niquests: Fallback for DLL downloads when aiohttp fails'
-  'python-nvidia-ml-py: NVML GPU detection'
-  'python-rapidfuzz: Fast fuzzy string matching for game search'
-)
+optdepends=('python-nvidia-ml-py: NVML GPU detection')
 
 # Use commit of what tag should be
 # until upstream fixes CI pipeline
