@@ -1,0 +1,36 @@
+pkgbase = texturecraft-private-bin
+	pkgdesc = 自用维护：开源 clean-room 版 Adobe Substance Painter 替代（PBR 3D 纹理），上游 storytold/texturecraft
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://getartcraft.com/apps/texturecraft
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	optdepends = alsa-lib: sound support
+	optdepends = pipewire-alsa: audio playback and recording via PipeWire
+	optdepends = pulseaudio: audio playback and recording via PulseAudio
+	optdepends = wayland: native Wayland display support
+	optdepends = libx11: X11 and XWayland display support
+	optdepends = libxcursor: X11 cursor handling
+	optdepends = libxi: X11 input handling
+	optdepends = libxrandr: X11 display resolution handling
+	optdepends = libglvnd: GPU rendering through EGL
+	optdepends = mesa: GPU rendering through EGL
+	optdepends = vulkan-driver: GPU rendering through Vulkan
+	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
+	optdepends = cups: printing support
+	provides = texturecraft=0.6.1
+	conflicts = texturecraft
+	conflicts = texturecraft-bin
+	conflicts = texturecraft-git
+	conflicts = ai.storyteller.texturecraft
+	source = https://github.com/storytold/texturecraft/releases/download/v0.6.1/texturecraft-0.6.1-linux-x86_64.pkg.tar.zst
+	sha256sums = e67d2c661d1e6c7c82a2a59ee9a9757bf62db998749ccd3f40a5423d895feb61
+
+pkgname = texturecraft-private-bin
