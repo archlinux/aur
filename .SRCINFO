@@ -1,0 +1,36 @@
+pkgbase = photocraft-private-bin
+	pkgdesc = 自用维护：开源 clean-room 版 Adobe Photoshop 替代（图像编辑），上游 storytold/photocraft
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://getartcraft.com/apps/photocraft
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	optdepends = alsa-lib: sound support
+	optdepends = pipewire-alsa: audio playback and recording via PipeWire
+	optdepends = pulseaudio: audio playback and recording via PulseAudio
+	optdepends = wayland: native Wayland display support
+	optdepends = libx11: X11 and XWayland display support
+	optdepends = libxcursor: X11 cursor handling
+	optdepends = libxi: X11 input handling
+	optdepends = libxrandr: X11 display resolution handling
+	optdepends = libglvnd: GPU rendering through EGL
+	optdepends = mesa: GPU rendering through EGL
+	optdepends = vulkan-driver: GPU rendering through Vulkan
+	optdepends = xdg-desktop-portal: native desktop integration and file dialogs
+	optdepends = cups: printing support
+	provides = photocraft=0.23.0
+	conflicts = photocraft
+	conflicts = photocraft-bin
+	conflicts = photocraft-git
+	conflicts = ai.storyteller.photocraft
+	source = https://github.com/storytold/photocraft/releases/download/v0.23.0/photocraft-0.23.0-linux-x86_64.pkg.tar.zst
+	sha256sums = 74179d3d3ce9098b0cfe10f09a05144a9ae1f226fdb3777e0624351124ed846d
+
+pkgname = photocraft-private-bin
