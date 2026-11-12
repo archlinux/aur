@@ -1,0 +1,70 @@
+# Maintainer: temidaradev <temidaradev@proton.me>
+pkgname=kopuz-legacy
+pkgver=0.67.1
+pkgrel=1
+pkgdesc="The legacy Dioxus interface of the Kopuz music player, with the daemon built in"
+arch=('x86_64')
+url="https://github.com/Kopuz-org/kopuz"
+license=('EUPL-1.2')
+depends=(
+    'webkit2gtk-4.1'
+    'gtk3'
+    'libsoup3'
+    'glib-networking'
+    'alsa-lib'
+    'openssl'
+    'xdotool'
+    'dbus'
+    'opus'
+    'libayatana-appindicator'
+    'gst-plugins-base'
+    'gst-plugins-good'
+)
+# rustup, not rust: the bundled plugins build for wasm32-wasip2, which rust-toolchain.toml pins.
+makedepends=('rustup' 'npm' 'pkgconf' 'cmake' 'clang')
+optdepends=(
+    'ffmpeg: converting YouTube downloads to MP3, FLAC or WAV'
+)
+# makepkg's -flto turns the bundled sqlite3.c into bitcode that the sqlx-macros link then drops.
+options=('!lto')
+source=("kopuz-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/archive/refs/tags/v$pkgver.tar.gz")
+# Filled in at publish time from the tag's source tarball.
+sha256sums=('8190de289db3ad8e5ddea1684201dc86ea1336a5ca1a73655a8d97bba675f57a')
+
+# Legacy tags cut from release-0.67 still have the old crates/ layout, where the app is the kopuz crate.
+_layout() {
+    if [[ -d apps/legacy/kopuz ]]; then
+        _crate=kopuz-legacy _dir=apps/legacy/kopuz _desktop=data/moe.kopuz.legacy.desktop
+    else
+        _crate=kopuz _dir=crates/kopuz _desktop=data/moe.kopuz.kopuz.desktop
+    fi
+}
+
+prepare() {
+    cd "kopuz-$pkgver"
+    rustup toolchain install
+    cargo fetch --locked
+    npm ci
+}
+
+build() {
+    cd "kopuz-$pkgver"
+    _layout
+    export SQLX_OFFLINE=true
+    npx @tailwindcss/cli -i ./tailwind.css -o "./$_dir/assets/tailwind.css" --minify
+    cargo build --frozen --release -p "$_crate"
+}
+
+package() {
+    cd "kopuz-$pkgver"
+    _layout
+    install -Dm755 "target/release/$_crate" "$pkgdir/usr/bin/kopuz-legacy"
+    sed -e 's/^Name=Kopuz$/Name=Kopuz Legacy/' \
+        -e 's/^Exec=kopuz$/Exec=kopuz-legacy/' \
+        -e 's/^Icon=moe\.kopuz\.kopuz$/Icon=moe.kopuz.legacy/' \
+        "$_desktop" | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/applications/moe.kopuz.legacy.desktop"
+    install -Dm644 "$_dir/assets/logo.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/moe.kopuz.legacy.png"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
