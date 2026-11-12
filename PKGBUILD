@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/filmcraft/releases/download/v${pkgver}/filmcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/filmcraft/releases/download/v${pkgver}/filmcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('bbdee1fe9e8671094e4e548d3920a808b7c7411a802d743b19158753d951d722')
 
 package() {
