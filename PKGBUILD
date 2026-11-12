@@ -1,9 +1,8 @@
 # Maintainer: username227 [gfrank227 [at] gmail [dot] com
-# Stable release package built from the unified source archive.
 
 pkgname=viper4linux-re
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc='ViPERDSP audio effects for PipeWire with a Qt6 interface'
 arch=('x86_64')
 url='https://github.com/username227/viper4linux-re'
@@ -13,23 +12,23 @@ makedepends=('cmake' 'pkgconf')
 conflicts=('viper4linux-re-git' 'viper4linux' 'viper4linux-git')
 options=('!debug')
 source=("https://github.com/username227/viper4linux-re/releases/download/v${pkgver}/viper4linux-re-${pkgver}-unified-source.tar.xz")
-sha256sums=('c83fe09b9c846b97d7e8b096af4105988526b642c7de034a781d63a50c0c8fb6')
+sha256sums=('3cc2880487eb2fcf1aba5903fd1baf6a714da5771e4fb7da8d3dad4ad821d75a')
 
 build() {
-    cmake -S "$srcdir/viper4linux-re-$pkgver" -B "$srcdir/viper4linux-build" \
+    local tree="$srcdir/viper4linux-re-$pkgver"
+    local built="$srcdir/viper4linux-build"
+    cmake -S "$tree" -B "$built" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DVIPER_ENABLE_SYSTEM_INSTALL=ON \
-        -DVIPER_SYSTEM_INSTALL_LAYOUT=arch
-
-    cmake --build "$srcdir/viper4linux-build"
+        -DVIPER_SYSTEM_INSTALL_LAYOUT=arch \
+        -DVIPER_SYSTEM_PACKAGE_NAME="$pkgname"
+    cmake --build "$built"
 }
 
 check() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    bash tests/check-package.sh
-    nm -D "$srcdir/viper4linux-build/viper_dsp_ladspa.so" |
-        grep -Eq ' [TW] ladspa_descriptor$'
+    ctest --test-dir "$srcdir/viper4linux-build" --output-on-failure --no-tests=error
+    nm -D "$srcdir/viper4linux-build/viper_dsp_ladspa.so" | grep -Eq ' [TW] ladspa_descriptor$'
 }
 
 package() {
