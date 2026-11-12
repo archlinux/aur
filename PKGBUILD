@@ -2,7 +2,7 @@
 # Contributor: Jeff Henson <jeff@henson.io>
 
 pkgname=mobsh
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc="Fast git handover for remote mob programming"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ optdepends=('espeak-ng-espeak: Multi-lingual software speech synthesizer'
 makedepends=('go')
 conflicts=('mob')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('be6adc58ffd92cc21fd3fa96bb8eba48f9d3669ed3c1de1df568c37f3625664c')
+sha256sums=('06c28a01ea0f88bbdd5f203ffe42e5865e42d04ff2374c3699fbb1c0ea82ae9d')
 
 build() {
   cd "mob-${pkgver}"
