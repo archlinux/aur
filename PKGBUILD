@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/pdfcraft/releases/download/v${pkgver}/pdfcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/pdfcraft/releases/download/v${pkgver}/pdfcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('1fb565339968cb12947544ec3b74472ef4ea196c308ea3c0efdaf1ca566046e5')
 
 package() {
