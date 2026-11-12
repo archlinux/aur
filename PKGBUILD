@@ -1,16 +1,18 @@
 # Maintainer: Piotr Balwierz <nikt@tuta.com>
 pkgname=jbrowse-desktop-git
 _appname=jbrowse-desktop
-pkgver=4.3.0.r11311.g76002d07d6
+pkgver=5.0.0beta.21.r38016.g9445a8ee68
 pkgrel=1
 pkgdesc="JBrowse 2 — pluggable open-source genome browser (desktop Electron app, git version)"
 arch=('any')
 url="https://jbrowse.org/jb2/"
 license=('Apache-2.0')
-# Runtime: system Electron (upstream targets electron ^42). Renderer + main are
+# Runtime: system Electron (upstream targets electron ^45; newest in [extra] is 44,
+# fine since we ship no native modules). Renderer + main are
 # bundled at build time (esbuild main with external:electron, webpack renderer),
 # so no node_modules are needed at runtime.
-depends=('electron42' 'hicolor-icon-theme')
+_electron=electron44
+depends=("$_electron" 'hicolor-icon-theme')
 makedepends=('git' 'pnpm' 'nodejs')
 provides=('jbrowse-desktop')
 conflicts=('jbrowse-desktop')
@@ -22,7 +24,9 @@ pkgver() {
   cd "$srcdir/$_appname"
   local _v
   _v=$(node -p "require('./products/jbrowse-desktop/package.json').version")
-  printf "%s.r%s.g%s" "$_v" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Upstream uses semver pre-releases (e.g. 5.0.0-beta.21); pkgver forbids '-'.
+  # Dropping it gives 5.0.0beta.21, which vercmp sorts below the final 5.0.0.
+  printf "%s.r%s.g%s" "${_v//-/}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -42,6 +46,8 @@ build() {
   pnpm install --frozen-lockfile --filter "@jbrowse/desktop..."
   cd products/jbrowse-desktop
   pnpm build
+  # electron main is built by the postbuild hook; ensure it exists regardless
+  [ -f build/electron.js ] || pnpm build:electron-main
 }
 
 package() {
@@ -70,11 +76,11 @@ package() {
 }
 EOF
 
-  # Launcher using the system Electron 42 runtime
+  # Launcher using the system Electron runtime
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/$_appname" <<EOF
 #!/bin/sh
-exec electron42 /usr/lib/$_appname --ozone-platform-hint=auto "\$@"
+exec $_electron /usr/lib/$_appname --ozone-platform-hint=auto "\$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/$_appname"
 
