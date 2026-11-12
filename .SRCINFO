@@ -4,6 +4,7 @@ pkgbase = libjxl-metrics
 	pkgrel = 4
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
+	arch = aarch64
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cmake

@@ -6,7 +6,10 @@ pkgname=$_pkgname-metrics
 pkgver=0.12.0
 pkgrel=4
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
-arch=(x86_64)
+arch=(
+  x86_64
+  aarch64
+)
 url=https://jpeg.org/jpegxl/
 license=(BSD-3-Clause)
 depends=(
@@ -25,10 +28,6 @@ makedepends=(
   lld
   python
   asciidoc
-  # plugins disabled for now because https://github.com/libjxl/libjxl/issues/4037
-  #gdk-pixbuf2 # for building gdk-pixbuf loader
-  #gimp # for building GIMP plugin
-  #java-environment # for building JNI bindings
 )
 provides=(
   $_pkgname
@@ -75,7 +74,6 @@ build() {
     -DJPEGXL_ENABLE_DEVTOOLS=ON \
     -DJPEGXL_ENABLE_DOXYGEN=OFF \
     -DJPEGXL_ENABLE_EXAMPLES=OFF \
-    -DJPEGXL_ENABLE_PLUGINS=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
     -DJPEGXL_FORCE_SYSTEM_HWY=ON
   make -C build
