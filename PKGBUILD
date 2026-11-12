@@ -2,7 +2,7 @@
 # Upstream: TIANLI0 <wutianli@tianli0.top>
 
 pkgname=thrm-bin
-pkgver=3.7.3
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Flydigi BS-series laptop cooler controller (prebuilt)'
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=(
   'gdk-pixbuf2'
   'glib2'
   'glibc'
-  'gtk3'
+  'gtk4'
   'libx11'
   'libsoup3'
   'systemd-libs'
-  'webkit2gtk-4.1'
+  'webkitgtk-6.0'
 )
 optdepends=('bluez: BS1 BLE support')
 provides=("thrm=${pkgver}")
@@ -29,7 +29,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/TIANLI0/THRM/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '5e2532199a08cb230bcfd507febf67f0760165ede17181d221b96bb807fadf6e'
+  '774c0355ef792ae410974ab2aba286d3f7ff0d88e61bd774f16401ce01e563ad'
   '4144920f63b10e483bcf5f69094e8ccfc1af01f76836d6785ceca3ee66e4bb28'
   'bb4f94dbe3dcfdc66e27d35cae627a73c9e8f66ec792971e569d272893b08ac6'
 )
