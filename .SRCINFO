@@ -1,7 +1,7 @@
 pkgbase = python311
 	pkgdesc = The Python programming language (version 3.11)
 	pkgver = 3.11.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = python311
 	makedepends = gdb
 	makedepends = tk
 	depends = mpdecimal
+	depends = openssl-3
 	optdepends = python-pip
 	optdepends = python-pipx
 	optdepends = python-setuptools
