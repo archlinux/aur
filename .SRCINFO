@@ -1,7 +1,7 @@
 pkgbase = python-holidays
 	pkgdesc = Generate and work with holidays in Python
 	pkgver = 0.108
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vacanza/holidays
 	arch = any
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = python-holidays
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-convertdate
 	depends = python-dateutil
 	source = https://files.pythonhosted.org/packages/source/h/holidays/holidays-0.108.tar.gz
 	b2sums = d4a594e8c9cb6f44b1d69e78f81cb15253f65334c3887051d1c81d80d0431bdc53b698be6db07d44081ca09ae9ac3e8cd39842db50a4a01154cdda54f48ef48b
