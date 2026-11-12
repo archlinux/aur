@@ -1,6 +1,6 @@
 pkgbase = craft-anything-bin
 	pkgdesc = Understand how any software works, and craft your own (prebuilt binary)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/storytold/craft-anything
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = craft-anything-bin
 	provides = craft-anything
 	conflicts = craft-anything
 	options = !strip
-	source_x86_64 = craft-anything-0.6.0-linux-x86_64.tar.gz::https://github.com/storytold/craft-anything/releases/download/v0.6.0/craft-anything-0.6.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = cbc65972a8eb4c89ed74b99bcf14aa5ea0f7aa9da709def38da79ccacc5e07a0
-	source_aarch64 = craft-anything-0.6.0-linux-aarch64.tar.gz::https://github.com/storytold/craft-anything/releases/download/v0.6.0/craft-anything-0.6.0-linux-aarch64.tar.gz
+	source_x86_64 = craft-anything-0.6.1-linux-x86_64.tar.gz::https://github.com/storytold/craft-anything/releases/download/v0.6.1/craft-anything-0.6.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 83ec0730c9117f399122b315c63ed4c3a8d31ac55bddd74cb8b33cd2f76ef704
+	source_aarch64 = craft-anything-0.6.1-linux-aarch64.tar.gz::https://github.com/storytold/craft-anything/releases/download/v0.6.1/craft-anything-0.6.1-linux-aarch64.tar.gz
 	depends_aarch64 = libxcb
 	optdepends_aarch64 = vulkan-icd-loader: GPU-accelerated rendering
-	sha256sums_aarch64 = e22f2df940882421d95395a685647168aa828618058dd2f8ed4b21c2dffbee01
+	sha256sums_aarch64 = b4255ac806e2a598b9fc6dba4e8ed2190e49baafd2f68dd7e037f3294e472941
 
 pkgname = craft-anything-bin
