@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=2.8.0.r0.gd15aabb
+pkgver=2.13.0.r3.gcc4bbd2
 pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
@@ -24,6 +24,7 @@ makedepends=(
     ninja
     git
     $_qt-5compat
+    $_qt-declarative
     $_qt-svg
     $_qt-tools
     pkgconf
@@ -59,8 +60,12 @@ source=(
     "uvm-core::git+https://github.com/accellera-official/uvm-core.git"
     "z3::git+https://github.com/Z3Prover/z3.git"
     "aws-lc::git+https://github.com/aws/aws-lc.git"
+    "boost-regex::git+https://github.com/MikePopoloski/regex.git"
+    "tomlplusplus::git+https://github.com/marzer/tomlplusplus.git"
 )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -112,6 +117,8 @@ prepare() {
     git config submodule.external/uvm-core.url "$srcdir/uvm-core"
     git config submodule.external/z3.url "$srcdir/z3"
     git config submodule.external/aws-lc.url "$srcdir/aws-lc"
+    git config submodule.external/boost-regex.url "$srcdir/boost-regex"
+    git config submodule.external/tomlplusplus.url "$srcdir/tomlplusplus"
     git -c protocol.file.allow=always submodule update
 }
 
@@ -120,7 +127,6 @@ build() {
 
     cmake -D CMAKE_INSTALL_PREFIX=/usr \
         -D ENABLE_UNIT_TEST=OFF \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-author \
         -B build \
         -G Ninja
