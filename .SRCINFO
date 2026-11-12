@@ -1,6 +1,6 @@
 pkgbase = rgy-search-git
 	pkgdesc = Whole-filesystem name search and content search in one stack (built from source, SIMD detected)
-	pkgver = r0.1.10.4.35a94d7
+	pkgver = r20261112.rea9814f
 	pkgrel = 1
 	url = https://github.com/danalec/rgy
 	arch = x86_64

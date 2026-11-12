@@ -1,6 +1,6 @@
 # Maintainer: danalec
 pkgname=rgy-search-git
-pkgver=r0.1.10.4.35a94d7
+pkgver=r20261112.rea9814f
 pkgrel=1
 pkgdesc="Whole-filesystem name search and content search in one stack (built from source, SIMD detected)"
 arch=('x86_64')
@@ -67,17 +67,43 @@ build() {
     local target
     target=$(_rgy_target_cpu)
     echo "the CPU carries $target"
-    RUSTFLAGS="--target-cpu=$target" \
-    CARGO_BUILD_JOBS="${MAKEFLAGS:-}" \
-    cargo build --release --locked
+    # The flags go into the TARGET's own variable, not RUSTFLAGS: the
+    # per-target ones are the flags of the target's own artifacts, and
+    # RUSTFLAGS reaches every target the build makes. The form is cargo's
+    # own ("-C target-cpu=..."), which is what the tree's release build
+    # uses for the same three variants.
+    #
+    # The build command is the tree's release build's own: --workspace and
+    # an explicit --target. The explicit target is not decoration: it is
+    # what puts the binaries under target/<triple>/release, and what the
+    # build scripts see as the target they are building for.
+    #
+    # CFLAGS is replaced on purpose, for two measured reasons.
+    #
+    #  * Arch's CFLAGS carry `-flto=auto`, and the tree's only C library
+    #    is mimalloc: the `cc` crate compiles it with those flags, the
+    #    objects come out as LTO bitcode, and rust-lld cannot read them --
+    #    the link then fails with "undefined symbol: mi_free". MEASURED on
+    #    the CachyOS box on 2026-11-12.
+    #  * Arch's CFLAGS carry `-march=native`, which would bake THIS
+    #    machine's instructions into a package that is meant to be built
+    #    on the machine that will run it. The `-march` here is the one
+    #    the detection chose, so the C half and the Rust half are built
+    #    for the same CPU.
+    CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS="-C target-cpu=$target" \
+    CARGO_BUILD_JOBS="$(nproc)" \
+    MAKEFLAGS="" \
+    CFLAGS="-O3 -march=$target -pipe -fno-plt" \
+    CXXFLAGS="-O3 -march=$target -pipe -fno-plt" \
+    cargo build --release --locked --workspace --target x86_64-unknown-linux-gnu
 }
 
 package() {
     cd "$srcdir/rgy"
-    install -Dm755 target/release/searchctl "${pkgdir}/usr/bin/searchctl"
-    install -Dm755 target/release/searchd "${pkgdir}/usr/bin/searchd"
-    install -Dm755 target/release/rgy-autostart "${pkgdir}/usr/bin/rgy-autostart"
-    install -Dm755 target/release/rgxy "${pkgdir}/usr/bin/rgxy"
+    install -Dm755 target/x86_64-unknown-linux-gnu/release/searchctl "${pkgdir}/usr/bin/searchctl"
+    install -Dm755 target/x86_64-unknown-linux-gnu/release/searchd "${pkgdir}/usr/bin/searchd"
+    install -Dm755 target/x86_64-unknown-linux-gnu/release/rgy-autostart "${pkgdir}/usr/bin/rgy-autostart"
+    install -Dm755 target/x86_64-unknown-linux-gnu/release/rgxy "${pkgdir}/usr/bin/rgxy"
     ln -s searchctl "${pkgdir}/usr/bin/rgy"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 MANUAL.md "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
