@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Fetch Android SDK build-tools into /opt/android-auto-maker/tools.
+# Those binaries (zipalign, apksigner.jar, libc++.so) are under the
+# Android SDK license and cannot be shipped in the package.
+set -euo pipefail
+PREFIX="${PREFIX:-/opt/android-auto-maker}"
+BUILD_TOOLS_VERSION="${BUILD_TOOLS_VERSION:-36.0.0}"
+CMDLINE_TOOLS_URL="${CMDLINE_TOOLS_URL:-https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip}"
+
+[ "$(id -u)" -eq 0 ] || { echo "run as root (or with sudo)" >&2; exit 1; }
+[ -d "$PREFIX" ] || { echo "$PREFIX not found - install android-auto-maker-git first" >&2; exit 1; }
+if [ -x "$PREFIX/tools/zipalign" ] && [ -f "$PREFIX/tools/apksigner.jar" ]; then
+  echo "build-tools already present in $PREFIX/tools"
+  exit 0
+fi
+command -v unzip >/dev/null || { echo "unzip is required" >&2; exit 1; }
+
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+echo "downloading Android commandline tools..."
+curl -fsSL "$CMDLINE_TOOLS_URL" -o "$tmp/cmdtools.zip"
+sdk="$tmp/sdk"
+mkdir -p "$sdk/cmdline-tools"
+unzip -q "$tmp/cmdtools.zip" -d "$tmp"
+mv "$tmp/cmdline-tools" "$sdk/cmdline-tools/latest"
+yes | "$sdk/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$sdk" --licenses >/dev/null
+"$sdk/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$sdk" \
+  "build-tools;$BUILD_TOOLS_VERSION" >/dev/null
+bt="$sdk/build-tools/$BUILD_TOOLS_VERSION"
+cp -f "$bt/zipalign" "$PREFIX/tools/zipalign"
+cp -f "$bt/lib/apksigner.jar" "$PREFIX/tools/apksigner.jar"
+chmod +x "$PREFIX/tools/zipalign"
+mkdir -p "$PREFIX/tools/lib64"
+cp -f "$bt/lib64/libc++.so" "$bt/lib64/libc++.so.1" "$PREFIX/tools/lib64/" 2>/dev/null || true
+echo "done: $PREFIX/tools/zipalign + apksigner.jar (+ lib64/libc++.so)"

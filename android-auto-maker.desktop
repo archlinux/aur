@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Android Auto Maker
+Comment=Prepare an APK or XAPK for Android Auto
+Exec=xdg-open http://127.0.0.1:4173
+Icon=/opt/android-auto-maker/public/favicon.svg
+Categories=Development;Utility;
+Terminal=false

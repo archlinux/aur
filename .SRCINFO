@@ -1,0 +1,31 @@
+pkgbase = android-auto-maker-git
+	pkgdesc = Turn an APK or XAPK into a package Android Auto offers as a parked game (local web converter)
+	pkgver = 1.1.15.r5.ga43dc7d
+	pkgrel = 1
+	url = https://github.com/malebuffy/AndroidAutoMaker
+	install = android-auto-maker.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = java-runtime>=11
+	depends = unzip
+	depends = curl
+	optdepends = android-tools: Install on phone button via USB (adb)
+	optdepends = xdg-utils: open the web UI from the desktop entry
+	optdepends = android-sdk-build-tools: zipalign, apksigner and aapt (or run android-auto-maker-setup)
+	provides = android-auto-maker
+	conflicts = android-auto-maker
+	source = android-auto-maker-git::git+https://github.com/9M2PJU/AndroidAutoMaker.git#branch=linux-install
+	source = android-auto-maker.install
+	source = android-auto-maker.service
+	source = android-auto-maker.desktop
+	source = android-auto-maker-setup
+	sha256sums = SKIP
+	sha256sums = 6bee366657a6171d6f355bef0575f8574155efcb1da8485e22ce2d3f15a6a366
+	sha256sums = f49c3befd3ddf8dcb9239e72086857f560b66bb91dec2dad968efc37402d032d
+	sha256sums = d3a7ca021230453b8dbc043392aef6c99a47083586364f95a28e9447e0f58879
+	sha256sums = 311f18872082a4a87e115dd4f4f24bb75acb555bdc0e9a7289f6cf7cc08ec626
+
+pkgname = android-auto-maker-git

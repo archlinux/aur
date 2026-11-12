@@ -1,0 +1,13 @@
+[Unit]
+Description=Android Auto Maker (local APK converter)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/android-auto-maker
+Environment=PORT=4173
+ExecStart=/usr/bin/node /opt/android-auto-maker/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
