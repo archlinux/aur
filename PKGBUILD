@@ -2,7 +2,7 @@
 
 pkgname=python-msmart-ng
 _reponame=midea-msmart
-pkgver=2026.9.0
+pkgver=2026.11.0
 pkgrel=1
 pkgdesc="Client for interacting with Help Scout's API"
 url="https://github.com/mill1000/midea-msmart"
@@ -22,7 +22,7 @@ optdepends=(
 	'python-yaml: Dump capabilities to .yaml'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mill1000/midea-msmart/archive/${pkgver}.tar.gz")
-sha256sums=('58939b40811e2f9d58874e7f9cc865c8c831821dc0241f2f0c4a4268c5b22ca8')
+sha256sums=('ae36e230c1fdbd268c05294373091f0e36d5685deb2b43fcf69177b850dcfdc7')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
