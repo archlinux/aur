@@ -1,6 +1,6 @@
 pkgname=qudelix-app-bin
 epoch=1
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Unofficial GTK desktop app for the Qudelix 5K: volume, DAC filter, EQ, presets, AutoEq, tray menu"
 arch=('x86_64')
@@ -35,7 +35,7 @@ options=('!strip' '!debug')
 source=("LICENSE::https://raw.githubusercontent.com/FrankieMa77/qudelix/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname%-bin}_${pkgver}_amd64.deb::https://github.com/FrankieMa77/qudelix/releases/download/linux-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('bf471dedf60354a5ab065b9446dcdf99a047327e841a3ceca5182ef0f4cb4216')
-sha256sums_x86_64=('7b9138c9986931466c259d0c26392f9bd14f57152fc5b0b83770bd7c57b86efd')
+sha256sums_x86_64=('f23356524c05561415705cbacfc788d9e9836736451053756aeee3e94a4d0ac0')
 
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${srcdir}/"
