@@ -26,15 +26,15 @@ source=("file://sabnzbd-docker.service"
         "file://default.env"
         "file://docker.env"
         "file://render-compose.sh")
-md5sums=('28218eceaa33e2777f8abc6fe8006182'
+md5sums=('09d427d3b1de5bb5d14d674d18b778df'
          'c0abd821b7fa46bf65aacb53802d8f75'
-         '4b68561e20a9a4ff85dc3be07032aa1d'
-         'e615dec9ab95052952c21beff32ed843'
+         'ea97809a538b2c58e39c6828c6e412ed'
+         'df3cb6453c3232926a4457711abcc63c'
          '0ad65ce3028c32f9fdd451c13b8ed2e1'
-         '7cc3d2e7951881d25b6afe317cccfc6c'
+         '63d924b88b035c4a52b86e3bed931412'
          '86c471c654c795796dbef4f8f2f4bb8f'
-         '50488e9c47e2ca980e00623c3b768d82'
-         '6af9cc13d7ddf3b2721208ef4bdc156f'
+         '7101f988ca10464d1332268f7d5126d2'
+         '7ae799fcd90c612477ace9f39593d01f'
          'e897baedbae9c51c019ebc105e6b1bb9')
 noextract=()
 
