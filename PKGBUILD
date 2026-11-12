@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/cadcraft/releases/download/v${pkgver}/cadcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/cadcraft/releases/download/v${pkgver}/cadcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('856959a0bbd6f589a68a6c4a17d8f7dde2984f2f443b363519fb388da10ab0ea')
 
 package() {
