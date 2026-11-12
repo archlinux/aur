@@ -1,6 +1,6 @@
 # Maintainer: Alper Ortac <alportac@gmail.com>
 pkgname=localflow-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Private, native dictation with local speech recognition and text cleanup (prebuilt)'
 arch=('x86_64')
@@ -25,8 +25,8 @@ options=('!strip' '!debug')
 source=("localflow-${pkgver}-${CARCH}.AppImage::$url/releases/download/v${pkgver}/localflow-${pkgver}-${CARCH}.AppImage"
         "localflow-${pkgver}-README.md::https://raw.githubusercontent.com/radiumcoders/localflow/v${pkgver}/README.md")
 noextract=("localflow-${pkgver}-${CARCH}.AppImage")
-sha256sums=('01bfffe413c78480fbdd24001c9b69167fa56af8f10906d1487a848ecfdad11b'
-            'a03668e1a8897c0a936547271e16cf91bfb8a10675a2e29e98a2a223aeb1be23')
+sha256sums=('00d540a83be660546e80318fc59236f3b426191580ebc21035f020269ede6195'
+            'ba82efa02298f6da683e916ac1bf87374aa81f207de457052ad898d0efc7704b')
 
 prepare() {
   chmod +x "localflow-${pkgver}-${CARCH}.AppImage"
