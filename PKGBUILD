@@ -23,7 +23,7 @@ optdepends=('alsa-lib: sound support'
             'vulkan-driver: GPU rendering through Vulkan'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
-source=("https://github.com/storytold/photocraft/releases/download/v${pkgver}/photocraft-${pkgver}-linux-x86_64.pkg.tar.zst")
+source=("https://gh-proxy.com/https://github.com/storytold/photocraft/releases/download/v${pkgver}/photocraft-${pkgver}-linux-x86_64.pkg.tar.zst")
 sha256sums=('74179d3d3ce9098b0cfe10f09a05144a9ae1f226fdb3777e0624351124ed846d')
 
 package() {

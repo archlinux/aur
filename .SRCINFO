@@ -30,7 +30,7 @@ pkgbase = photocraft-private-bin
 	conflicts = photocraft-bin
 	conflicts = photocraft-git
 	conflicts = ai.storyteller.photocraft
-	source = https://github.com/storytold/photocraft/releases/download/v0.23.0/photocraft-0.23.0-linux-x86_64.pkg.tar.zst
+	source = https://gh-proxy.com/https://github.com/storytold/photocraft/releases/download/v0.23.0/photocraft-0.23.0-linux-x86_64.pkg.tar.zst
 	sha256sums = 74179d3d3ce9098b0cfe10f09a05144a9ae1f226fdb3777e0624351124ed846d
 
 pkgname = photocraft-private-bin
