@@ -1,13 +1,13 @@
 pkgbase = wpail
 	pkgdesc = Show what port or application is listening, with developer build metadata
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/akhenakh/wpail
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = wpail-0.3.tar.gz::https://github.com/akhenakh/wpail/archive/refs/tags/v0.3.tar.gz
-	sha256sums = 2c4cf1cc6fc39dbf092fc8e5be292a733aa9b1c8e40f7f59c266420134b82fbc
+	source = wpail-0.4.tar.gz::https://github.com/akhenakh/wpail/archive/refs/tags/v0.4.tar.gz
+	sha256sums = 1e1f11e369bf982c3548e680ed9f930acc6b730242a0d74073b29183492e7750
 
 pkgname = wpail
