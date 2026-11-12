@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2154,SC2164
 
 pkgname=arsu
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Offline TOTP/HOTP authenticator with an encrypted local vault'
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
   "git+$url.git#tag=v$pkgver?signed"
   'Arsu.desktop'
 )
-sha256sums=('d144cb905ca52c446d21f586ef02cd03ece836c4842bfb3742553c9389a25d56'
+sha256sums=('501617c51cdafb039970a30ad7dcb737ad59abe8da9c1a45f404583fa493a09b'
             '92992d20dde9d11e7171bd9aab1b1de4b85ecaf8fc62dfe20b3ee665e5adf04b')
 validpgpkeys=('6A700E00396820D93A829FF91CAC141C34516CB6') # Mohamed Jouini <amad3v@gmail.com>
 
