@@ -4,7 +4,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(
   x86_64
