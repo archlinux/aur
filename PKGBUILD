@@ -6,7 +6,7 @@
 #   sha256 锁构建时产物，source 走 gh-proxy 加速。
 pkgname=oplus-connect-private-bin
 pkgver=1.0.0.r19.gfd752ee
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux client for OPPO and OnePlus device connectivity（自用维护，CI 自编译重打包版）'
 arch=('x86_64')
 url='https://github.com/YuKongA/oplus-connect'
@@ -25,7 +25,7 @@ optdepends=(
 provides=("oplus-connect=$pkgver")
 conflicts=('oplus-connect' 'oplus-connect-git')
 source=("${pkgname}-${pkgver}.pkg.tar.zst::https://gh-proxy.com/https://github.com/Become-ILLUSORY/aur-auto-update/releases/download/oplus-connect-latest/oplus-connect-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('378f5f5fb8c11f327455545a81e30276e3f369c4aed26b7546f53162bdc27dbc')
+sha256sums=('cbc2c361cfd182bf72c10192cf3412cad33b8d24a1cad32cff5394be4121f5d1')
 
 package() {
   bsdtar -xf "$srcdir/${pkgname}-${pkgver}.pkg.tar.zst" \
