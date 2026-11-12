@@ -10,6 +10,7 @@ pkgbase = dv-processing
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = pkgconf
+	makedepends = python-jinja
 	depends = boost
 	depends = opencv
 	depends = eigen
