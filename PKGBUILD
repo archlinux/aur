@@ -3,7 +3,7 @@
 _pkgauthor='acelot'
 _pkgname='termtastic'
 pkgname="${_pkgname}-bin"
-pkgver='1.0.0_beta1'
+pkgver='1.0.0_beta4'
 _pkgvername="v${pkgver/_/-}"
 pkgrel=1
 pkgdesc='Feature-rich handmade Meshtastic console client'
@@ -30,9 +30,9 @@ source_aarch64=(
 )
 
 sha256sums=('3ffa9a413dd0013d4d0cb81d16ba51a5caa51b31708b9d5ad2dd10a4d4e534ed'
-            'b07d123a726a392ce12f021ebf71cf56d34a73260d38f19e716cd05f51756fab')
-sha256sums_x86_64=('1a2a920c76cc003f064dee5e44320503ac3ab57fe2e10aa356d85a35c822c664')
-sha256sums_aarch64=('c985b0b44867591fc76d7a8344e558ee4c226d63fd023e102794a248bc439d94')
+            '4076703c60f2febcf99415df241eb38c9262201bb6e40b56552d26d7f2bb278e')
+sha256sums_x86_64=('0d0b207809d050a22a0b3f6bf32eb11b004b80e3db1612e5a062b40e129fdddb')
+sha256sums_aarch64=('3af86f63e6c9e0c7bfd1691e5d6bf3ed4229e292454c191467a58bd11ee5f8cb')
 
 package() {
     install -Dm755 "$srcdir/termtastic" "$pkgdir/usr/bin/termtastic"
