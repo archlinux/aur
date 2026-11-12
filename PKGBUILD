@@ -4,7 +4,7 @@
 pkgname=limusic-bin-prerelease
 _pkgname=limusic
 pkgver=1.4.0rc.6
-pkgrel=1
+pkgrel=2
 # Upstream tag without the leading "v"; pkgver drops the hyphen because Arch
 # forbids it (and 1.4.0rc.6 correctly sorts before 1.4.0).
 _tag=1.4.0-rc.6
@@ -14,7 +14,11 @@ url="https://github.com/SimoHypers/limusic"
 license=("GPL-3.0-or-later")
 depends=("libsoup3" "glib2" "glibc" "webkit2gtk-4.1" "dbus" "gtk3" "hicolor-icon-theme" "cairo" "libgcc" "libmpv.so=2-64" "gdk-pixbuf2" "libcrypto.so=3-64" "libssl.so=3-64")
 options=("!strip" "!buildflags")
-provides=("${_pkgname}-prerelease")
+# Provides the same virtual as limusic-bin, so `paru -S limusic` offers both
+# channels as providers. Conflicts are the mirror image: this package already
+# conflicted with `limusic`, and a package that blocks a virtual name it does not
+# provide is inconsistent — pacman could not satisfy the dependency it declares.
+provides=("${_pkgname}" "${_pkgname}-prerelease")
 conflicts=("${_pkgname}" "limusic-bin")
 
 source=("limusic_${_tag}_amd64.AppImage::https://github.com/SimoHypers/limusic/releases/download/v${_tag}/limusic_${_tag}_amd64.AppImage")
