@@ -3,10 +3,10 @@
 pkgname=aerial-lock-git
 _project=aerial-lock
 pkgver=0.1.0.r0.g2f00ea1
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland session lock with video backgrounds and an idle/session companion'
 arch=('x86_64')
-url='https://github.com/alexindigo/aerial-lock'
+url='https://github.com/atmosphera-dev/aerial-lock'
 license=('GPL-3.0-or-later')
 depends=('quickshell>=0.3' 'quickshell<0.4' 'qt6-mpvqml>=0.2.0'
          'qt6-5compat' 'qt6-base' 'qt6-declarative' 'pam' 'wayland'
@@ -23,7 +23,7 @@ provides=('aerial-lock')
 conflicts=('aerial-lock')
 backup=('etc/pam.d/aerial-lock')
 install=aerial-lock-git.install
-source=("${_project}::git+https://github.com/alexindigo/aerial-lock.git")
+source=("${_project}::git+https://github.com/atmosphera-dev/aerial-lock.git")
 sha256sums=('SKIP')
 
 pkgver() {
