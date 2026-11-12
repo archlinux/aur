@@ -20,7 +20,6 @@ pkgbase = plasma6-applets-kurve-git
 	provides = plasma6-applets-kurve
 	conflicts = plasma6-applets-plasma-audio-visualizer
 	conflicts = plasma6-applets-kurve
-	options = !debug
 	source = kurve::git+https://github.com/luisbocanegra/kurve
 	sha256sums = SKIP
 

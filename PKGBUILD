@@ -6,7 +6,6 @@ pkgver=1.1.0.r9.g6b832f2
 pkgrel=2
 pkgdesc="Audio visualizer widget powered by CAVA for the KDE Plasma Desktop"
 arch=('x86_64')
-options=('!debug')
 url="https://github.com/luisbocanegra/$_gitname"
 license=('GPL-3.0-only')
 depends=('libplasma' 'cava' 'kcmutils' 'plasma-workspace' 'plasma5support' 'python' 'python-websockets' 'qt6-websockets')
