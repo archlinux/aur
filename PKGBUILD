@@ -1,7 +1,7 @@
 # Maintainer: agony <27015 at riseup dot net>
 
 pkgname=pocket-tts-git
-pkgver=r214.0d20106
+pkgver=r217.306918e
 pkgrel=1
 pkgdesc="Kyutai's pocket-sized text-to-speech on the CPU, without Python (git version)"
 arch=('x86_64' 'aarch64')
