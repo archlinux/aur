@@ -1,15 +1,18 @@
 pkgbase = vfio-isolate
 	pkgdesc = commandline tool to facilitate CPU core isolation
-	pkgver = 0.5.2
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://pypi.org/project/vfio-isolate
+	url = https://github.com/spheenik/vfio-isolate
 	arch = any
-	license = unknown
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-click
 	depends = python-psutil
-	source = https://files.pythonhosted.org/packages/source/v/vfio-isolate/vfio-isolate-0.5.2.tar.gz
-	md5sums = b3e0e426989f0d7cdf000bd412c2ebb8
+	source = https://files.pythonhosted.org/packages/source/v/vfio-isolate/vfio_isolate-1.0.0.tar.gz
+	sha256sums = ad52c3cd4a544bf4543e10e73ad479e600b00ab65592ee94bef639a8357a3380
 
 pkgname = vfio-isolate

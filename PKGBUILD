@@ -1,29 +1,33 @@
 # Maintainer: Martin Schrodt <martin@schrodt.org>
 
 pkgname=vfio-isolate
-pkgver=0.5.2
+_name=vfio_isolate
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="commandline tool to facilitate CPU core isolation"
-arch=('i686' 'x86_64')
-url="https://pypi.org/project/vfio-isolate"
+arch=('any')
+url="https://github.com/spheenik/vfio-isolate"
 license=('MIT')
 depends=('python' 'python-click' 'python-psutil')
-makedepends=('python-setuptools')
-license=('unknown')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('b3e0e426989f0d7cdf000bd412c2ebb8')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_name-$pkgver.tar.gz")
+sha256sums=('ad52c3cd4a544bf4543e10e73ad479e600b00ab65592ee94bef639a8357a3380')
 
 build() {
-    cd "$pkgname-$pkgver"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    mkdir -p "$pkgdir/usr/share/zsh/site-functions"  
-    _VFIO_ISOLATE_COMPLETE=source_zsh python "$pkgdir/usr/lib/python3.9/site-packages/vfio_isolate/cli.py" > "$pkgdir/usr/share/zsh/site-functions/_vfio-isolate" || true
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions"  
-    _VFIO_ISOLATE_COMPLETE=source_bash python "$pkgdir/usr/lib/python3.9/site-packages/vfio_isolate/cli.py" > "$pkgdir/usr/share/bash-completion/completions/vfio-isolate" || true
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    local site_packages
+    site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    install -d "$pkgdir/usr/share/zsh/site-functions" "$pkgdir/usr/share/bash-completion/completions"
+    PYTHONPATH="$pkgdir$site_packages" _VFIO_ISOLATE_COMPLETE=zsh_source \
+        python "$pkgdir/usr/bin/vfio-isolate" > "$pkgdir/usr/share/zsh/site-functions/_vfio-isolate"
+    PYTHONPATH="$pkgdir$site_packages" _VFIO_ISOLATE_COMPLETE=bash_source \
+        python "$pkgdir/usr/bin/vfio-isolate" > "$pkgdir/usr/share/bash-completion/completions/vfio-isolate"
 }
