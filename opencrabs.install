@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Upstream enables auto-update by default: the TUI downloads each new"
+  echo "  release from GitHub to replace its own binary. Set auto_update = false"
+  echo "  under [agent] in ~/.opencrabs/config.toml to get a prompt instead."
+}
