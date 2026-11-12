@@ -2,7 +2,7 @@
 # Previous Maintainer: Y7n05h < echo WTduMDVoQHk3bjA1aC5kZXY= | base64 -d >
 # Contributor: Y7n05h
 pkgname=ecapture
-pkgver=2.8.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="capture SSL/TLS text content without CA cert using eBPF"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ license=("Apache-2.0")
 depends=("glibc")
 makedepends=("clang" "go" "bpf" "git" "linux-headers" "libelf" "llvm" "pkgconf")
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('2b044da048deb63993dad77f7fa001d1852aa34ff96d4d5e1c113ffe20122e38')
+sha256sums=('93d1c4b6020ef1deba09b67b0642fde927407249afa8ef87e4da496e809f5023')
 prepare() {
 	cd "$pkgname"
 	# Linux >= 6.19 headers use tagged anonymous structs (needs -fms-extensions),
