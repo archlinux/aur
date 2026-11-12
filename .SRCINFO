@@ -1,0 +1,18 @@
+pkgbase = phpantom_lsp-bin
+	pkgdesc = Fast PHP language server with deep type intelligence (prebuilt)
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/PHPantom-dev/phpantom_lsp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = phpantom_lsp=0.11.1
+	conflicts = phpantom_lsp
+	source = phpantom_lsp-0.11.1-LICENSE::https://raw.githubusercontent.com/PHPantom-dev/phpantom_lsp/0.11.1/LICENSE
+	sha256sums = 0558c8ee80c9eacd4168299a3e6479b65287353a691a107a8681575f0b038dca
+	source_x86_64 = phpantom_lsp-0.11.1-x86_64.tar.gz::https://github.com/PHPantom-dev/phpantom_lsp/releases/download/0.11.1/phpantom_lsp-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 906dd8104d4bf82aa1c4225fba297a90ff1cff0552df635ee858fc272f445fc6
+	source_aarch64 = phpantom_lsp-0.11.1-aarch64.tar.gz::https://github.com/PHPantom-dev/phpantom_lsp/releases/download/0.11.1/phpantom_lsp-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5c7483504e0bc245b3c6c91d746e0709a4564e559076154d25692da5a96d591c
+
+pkgname = phpantom_lsp-bin
