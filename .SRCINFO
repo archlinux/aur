@@ -1,0 +1,19 @@
+pkgbase = syn-iptv
+	pkgdesc = GTK4 IPTV player with XMLTV EPG, FFmpeg DVR and Chromecast support
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = https://github.com/manupernas/SYN
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk4
+	depends = libadwaita
+	depends = mpv
+	depends = ffmpeg
+	depends = python-pychromecast
+	source = syn-iptv-2.0.8.tar.gz::https://github.com/manupernas/SYN/archive/refs/tags/v2.0.8.tar.gz
+	sha256sums = cd26ee1a96941f2c22863c326a8abe35e9c37ce3fe5c7b64e0e69ceb5c670016
+
+pkgname = syn-iptv
