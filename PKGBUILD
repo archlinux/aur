@@ -6,16 +6,15 @@
 pkgname="python-holidays"
 _pkgname="${pkgname#python-}"
 pkgver=0.108
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate and work with holidays in Python"
 arch=("any")
 url="https://github.com/vacanza/holidays"
 license=("MIT")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 depends=("python"
-"python-convertdate"
-"python-korean_lunar_calendar"
-"python-hijridate")
+	 "python-convertdate"
+	 "python-dateutil")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 b2sums=('d4a594e8c9cb6f44b1d69e78f81cb15253f65334c3887051d1c81d80d0431bdc53b698be6db07d44081ca09ae9ac3e8cd39842db50a4a01154cdda54f48ef48b')
 
