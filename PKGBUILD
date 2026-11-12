@@ -1,4 +1,5 @@
-# Maintainer: Laël Guillemenot <zeppelinlg@gmail.com>
+# Maintainer: KennyStier <https://github.com/KennyStier>
+# Contributor: Laël Guillemenot <zeppelinlg@gmail.com>
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: Eric Belanger <eric@archlinux.org>
@@ -6,58 +7,54 @@
 # Contributor: Daenyth <Daenyth+Arch AT gmail DOT com>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
+#
+# Builds the latest commit of https://github.com/KennyStier/warmux
+# (kept in sync with packaging/arch/PKGBUILD there)
 
 pkgname=warmux-git
-pkgver=e0dc503
+pkgver=12.0.0.r0.g246bd33
 pkgrel=1
-pkgdesc="Clone of turn-based artillery games like Scorched Earth or Worms (formerly known as Wormux)"
-arch=('i686' 'x86_64')
-url="http://gna.org/projects/warmux/"
-license=('GPL')
-depends=('libxml++' 'sdl_image' 'sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'sdl_net' 'curl' 'gcc-libs' 'libxml2')
-replaces=('wormux' 'warmux-data')
-conflicts=('warmux-data')
-source=("$pkgname::git://github.com/a-team/wormux.git"
-        'include-zlib.patch'
-        'gcc-fix.patch'
-        'return-null.patch'
-        'curl-ptr.patch')
-sha256sums=('SKIP'
-            '665c4a64e54478491284f6cb6251bd58f96ba81671a7c439cffe175b86462852'
-            '3f271dc6249ababe919733268c34464fc3050fc7c2b0329e9017f1b32c7760f5'
-            '0e0692fb2acc5697c3083deeff41dcdb055f3330cbac146ebab4aa0f021ad03c'
-            'de232b7f2264f9d576ba77f43f79dc698f6ba987d059468f5b2bb5f40cf644d3')
+pkgdesc="Turn-based artillery game with free-software mascots (maintained fork, includes index/game servers)"
+arch=('x86_64' 'aarch64')
+url="https://github.com/KennyStier/warmux"
+license=('GPL-2.0-or-later')
+depends=('sdl2' 'sdl2_image' 'sdl2_gfx' 'sdl2_ttf' 'sdl2_mixer' 'sdl2_net'
+         'curl' 'libxml2' 'libpng' 'libstdc++' 'glibc' 'hicolor-icon-theme')
+makedepends=('git' 'autoconf' 'automake')
+provides=('warmux')
+conflicts=('warmux' 'warmux-data')
+source=("warmux::git+https://github.com/KennyStier/warmux.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe --always | sed 's|-|.|g'
+  cd warmux
+  # From the latest release tag (v12.0.0 -> 12.0.0.r<commits since>.g<hash>),
+  # or from the upstream version before the first tag
+  if git describe --long --tags --match 'v*' >/dev/null 2>&1; then
+    git describe --long --tags --match 'v*' | sed 's/^v//;s/-\([0-9]*\)-g/.r\1.g/'
+  else
+    printf "11.04.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  fi
 }
 
 prepare() {
-
-  cd "$pkgname"
-
-  # libpng fix
-  patch -Np1 < ../include-zlib.patch
-
-  # compilation fixes
-  #patch -Np1 < ../gcc-fix.patch
-  patch -Np0 < ../return-null.patch
-  patch -Np1 < ../curl-ptr.patch
-
+  cd warmux
+  # makepkg reuses this checkout between runs; drop old build output so
+  # objects compiled against older dependencies are never linked in
+  git clean -dfxq
+  # Regenerate the build system with the installed autotools
+  autoreconf -fi
 }
 
 build() {
-
-  cd "$pkgname"
-  ./configure --prefix=/usr
+  cd warmux
+  # To make clients find your own lobby by default, add:
+  #   --with-index-server=your.host[:9997]
+  ./configure --prefix=/usr --enable-servers
   make
-
 }
 
 package() {
-
-  cd "$pkgname"
+  cd warmux
   make DESTDIR="$pkgdir" install
-
 }
