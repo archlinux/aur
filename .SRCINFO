@@ -1,0 +1,27 @@
+pkgbase = tildaz-bin
+	pkgdesc = Quake-style drop-down terminal for Wayland, built on libghostty-vt
+	pkgver = 0.10.10
+	pkgrel = 1
+	url = https://github.com/ensky0/tildaz
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	depends = libxkbcommon
+	depends = freetype2
+	depends = fontconfig
+	optdepends = harfbuzz: ligature rendering
+	optdepends = dbus: KDE Plasma global hotkey (KGlobalAccel)
+	optdepends = glib2: GNOME / Cinnamon Shell extension settings
+	optdepends = libglvnd: GPU rendering (EGL / GLES)
+	optdepends = mesa: GPU rendering (GBM buffers)
+	provides = tildaz=0.10.10
+	conflicts = tildaz
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/ensky0/tildaz/releases/download/v0.10.10/tildaz-v0.10.10-linux-x86_64.tar.gz
+	sha256sums_x86_64 = a89a1d84060e9cd69ec2126ad9b4242c7dc5a5fb526113b203656d1c9e00e5c5
+	source_aarch64 = https://github.com/ensky0/tildaz/releases/download/v0.10.10/tildaz-v0.10.10-linux-aarch64.tar.gz
+	sha256sums_aarch64 = aaae362edf22a084161c508698e616bfc47517a753b90f7453894519b4b80823
+
+pkgname = tildaz-bin
