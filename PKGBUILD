@@ -1,7 +1,7 @@
 # Maintainer: Athan Clark <athan dot clark at gmail dot com>
 
 pkgname=ltext
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Text-file templating utility that treats files as higher-order functions'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ options=('!debug')
 makedepends=('cargo')
 checkdepends=('diffutils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('44177f2ccb0da4b0b9031a8cfa906a4a52ef9713f445f5ed1d3a0bc0e35a62d4')
+sha256sums=('7ab03c0f47b937e0351d69accca7e7240dd3fdb575f07ad3f92aef9d3a45f7d3')
 
 prepare() {
   cd "$pkgname-$pkgver"
