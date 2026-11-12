@@ -1,7 +1,7 @@
 # Maintainer: Yellow <yellow@example.com>
 pkgname=nuvio-desktop-bin
-_pkgver=0.1.34-alpha
-pkgver=0.1.34alpha
+_pkgver=0.1.35-alpha
+pkgver=0.1.35alpha
 pkgrel=1
 pkgdesc="Desktop media app to browse, organize, and play media from sources you add"
 arch=('x86_64')
@@ -23,7 +23,6 @@ depends=(
   'glibc'
   'gst-libav'
   'gst-plugins-good'
-  'libbsd'
   'libglvnd'
   'libpng'
   'libx11'
@@ -39,7 +38,7 @@ depends=(
 options=('!strip' '!debug')  # prebuilt binaries: don't strip, don't emit a debug package
 source=("nuvio-${_pkgver}.deb::${url}/releases/download/${_pkgver}/Nuvio-Linux-${CARCH}-${_pkgver}.deb")
 noextract=("nuvio-${_pkgver}.deb")
-sha256sums=('465c825d5aadf7698e44c9d853cb0f4122cdb9fadd11e43bc8612fdb20e3eb03')
+sha256sums=('5b234d4012fe254bfd371dc31c6534aeea69557911735caecdb5cb1fc95918ac')
 
 package() {
   bsdtar -xf "${srcdir}/nuvio-${_pkgver}.deb" -C "${srcdir}" data.tar.zst
