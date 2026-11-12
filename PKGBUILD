@@ -1,7 +1,7 @@
 # Maintainer: Locez <locez@locez.com>
 pkgname=kotonoha-git
 _pkgname=kotonoha
-pkgver=0.3.0.r254.g5a98630
+pkgver=0.3.2.r277.g381db09
 pkgrel=1
 pkgdesc="Wayland lyrics overlay for MPRIS-compatible media players"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'python-dbus-fast'
     'python-pyqt6'
     'python-qasync'
+    'python-yaml'
     'qt6-base'
     'qt6-svg'
     'qt6-wayland'
