@@ -6,7 +6,6 @@ pkgver=2.16.0.r5.gab3b90b
 pkgrel=1
 pkgdesc="Smart KDE Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen"
 arch=('x86_64')
-options=('!debug')
 url="https://github.com/luisbocanegra/$_gitname"
 license=('GPL-2.0-or-later')
 depends=('plasma-workspace' 'plasma5support' 'qt6-multimedia' 'qt6-multimedia-backend')
