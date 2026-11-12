@@ -1,6 +1,6 @@
 pkgbase = lunar-client-bin
 	pkgdesc = All-in-one modpack with mods, settings and cosmetics for all Minecraft versions (upstream AppImage)
-	pkgver = 3.7.34
+	pkgver = 3.7.35
 	pkgrel = 1
 	url = https://lunarclient.com
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = lunar-client-bin
 	conflicts = lunarclient
 	options = !strip
 	options = !debug
-	source = lunarclient-3.7.34.AppImage::https://launcher-releases.lunarclientprod.com/master/6e18b5a4f4ebbd4c7ecff572f1700cedce1f248bcb157adce5ec49be9e081a23/Lunar%20Client-3.7.34-ow.AppImage
-	sha256sums = afe2f1db17d35afc6f3c2b2e5b24c9ef8cb5ff3ea99c8a839756057023a3e191
+	source = lunarclient-3.7.35.AppImage::https://launcher-releases.lunarclientprod.com/master/6e18b5a4f4ebbd4c7ecff572f1700cedce1f248bcb157adce5ec49be9e081a23/Lunar%20Client-3.7.35-ow.AppImage
+	sha256sums = 8512346344a7f2f2cef05f11e2e783ddba2bcd40294984e734dab8105d54f032
 
 pkgname = lunar-client-bin
