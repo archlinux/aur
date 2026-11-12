@@ -1,0 +1,19 @@
+pkgbase = remder-bin
+	pkgdesc = Render your markdown in the terminal with lots of bells and whistles
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Keyboard1000n17/remder
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	provides = remder
+	conflicts = remder
+	options = !strip
+	options = !debug
+	source_x86_64 = remder-1.0.1-x86_64::https://github.com/Keyboard1000n17/remder/releases/download/remder-v1.0.1/remder-linux-x64
+	sha256sums_x86_64 = d99ceeacefa214f86561384f315fd3c1f9b24fb0283a5dadd9b4acecc5a1cfcb
+	source_aarch64 = remder-1.0.1-aarch64::https://github.com/Keyboard1000n17/remder/releases/download/remder-v1.0.1/remder-linux-arm64
+	sha256sums_aarch64 = 13afcb79363bd5b6076ac5392d4bedb0ce8c0a5df26ecbd02843671d72ad3c9b
+
+pkgname = remder-bin
