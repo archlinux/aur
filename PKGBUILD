@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name=trufflehog
 pkgname="$_name-git"
-pkgver=3.99.2.r20.g048de9ff0
+pkgver=3.99.8.r21.g2c0788405
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'go>=1.25.10'
+  'go>=1.26.0'
 )
 source=("git+https://github.com/trufflesecurity/$_name")
 b2sums=('SKIP')
