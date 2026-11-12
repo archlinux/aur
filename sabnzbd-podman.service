@@ -1,18 +1,17 @@
 [Unit]
-Description=Convenience launch service for Sabnzd, Nzbhydra2 and Sonarr in docker
+Description=Convenience launch service for Sabnzd, Nzbhydra2 and Sonarr in podman
 After=network.target
-After=docker.service
-After=sabnzbd-docker-update.service
-PartOf=sabnzbd-docker-update.service
+After=sabnzbd-podman-update.service
+PartOf=sabnzbd-podman-update.service
 
 [Service]
-EnvironmentFile=/opt/docker-sabnzbd/default.env
-EnvironmentFile=%h/.docker-sabnzbd.env
+EnvironmentFile=/opt/podman-sabnzbd/default.env
+EnvironmentFile=%h/.podman-sabnzbd.env
 Environment="PUID=%U"
 Environment="PGID=%G"
-ExecStart=podman-compose -f /opt/docker-sabnzbd/docker-compose.yaml up
-ExecStop=podman-compose -f /opt/docker-sabnzbd/docker-compose.yaml down
+ExecStartPre=/bin/bash -c "set -a && source /opt/podman-sabnzbd/default.env && source %h/.podman-sabnzbd.env && set +a && envsubst < /opt/podman-sabnzbd/docker-compose.yaml > /tmp/podman-compose-processed.yaml"
+ExecStart=podman-compose -f /tmp/podman-compose-processed.yaml up
+ExecStop=podman-compose -f /tmp/podman-compose-processed.yaml down
 
 [Install]
 WantedBy=default.target
-

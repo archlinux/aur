@@ -4,9 +4,9 @@ After=network.target
 Before=sabnzbd-podman.service
 
 [Service]
-EnvironmentFile=/opt/docker-sabnzbd/default.env
-EnvironmentFile=%h/.docker-sabnzbd.env
+EnvironmentFile=/opt/podman-sabnzbd/default.env
+EnvironmentFile=%h/.podman-sabnzbd.env
 Environment="PUID=%U"
 Environment="PGID=%G"
 Type=oneshot
-ExecStart=podman-compose -f /opt/docker-sabnzbd/docker-compose.yaml pull
+ExecStart=podman-compose -f /tmp/podman-compose-processed.yaml pull

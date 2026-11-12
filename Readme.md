@@ -1,9 +1,11 @@
-Sabnzbd-docker
+Sabnzbd-podman
 ==============
 
-`sabnzbd-docker` is a service unit that starts `sabnzbd`, `nzbhydra2` and `sonarr` in their respective docker containers.
+`sabnzbd-podman` is a service unit that starts `sabnzbd`, `nzbhydra2` and `sonarr` in their respective docker
+containers.
 
 The services are provided as-is by linuxserver.io, direct from docker hub:
+
 * [sabnzbd](https://hub.docker.com/r/linuxserver/sabnzbd)
 * [nzbhydra2](https://hub.docker.com/r/linuxserver/nzbhydra2)
 * [sonarr](https://hub.docker.com/r/linuxserver/sonarr)
@@ -14,11 +16,14 @@ An [Aur package](https://aur.archlinux.org/packages/sabnzbd-docker) is provided 
 
 ## Configuration
 
-1. Create a user config file at `~/.docker-sabnzbd.env` with the following content:
+1. Create a user config file at `~/.podman-sabnzbd.env` (even if using `sabnzbd-docker-x.x-x-any` version) with the
+   following content:
 
-   These directories represent the paths _on the host_ where config files, logs, et al. for each service will go. They will be bound to the docker instances of each service.  
+   These directories represent the paths _on the host_ where config files, logs, et al. for each service will go. They
+   will be bound to the docker instances of each service.
 
-   `docker-compose.yaml` has a few other directories and paths you can set for further customisation. You only need to set up corresponding the  `*_PREFIX` paths for services you intend to use.
+   `docker-compose.yaml` has a few other directories and paths you can set for further customisation. You only need to
+   set up corresponding the  `*_PREFIX` paths for services you intend to use.
 
          SABNZBD_PATH_PREFIX   = /path/to/prefix
          NZBHYDRA2_PATH_PREFIX = /path/to/prefix
@@ -26,32 +31,32 @@ An [Aur package](https://aur.archlinux.org/packages/sabnzbd-docker) is provided 
 
       <details>
       For example, you can run it with something like:
-   
-         cat ~/.docker-sabnzbd.env
+
+         cat ~/.podman-sabnzbd.env
 
          TZ=Europe/Madrid
-         COMPOSE_PROFILES=sabnzbd,nzbhydra2                    # does not start sonarr
+         COMPOSE_PROFILES=sabnzbd,nzbhydra2                    # Does not start sonarr. Default is 'all'
          
-         SABNZBD_PATH_PREFIX=/data/banjo/Downloads/sabnzbd     # config and logs
-         SABNZBD_PATH_DOWNLOADS=/data/banjo/Downloads          # downloads will go one level up
+         SABNZBD_PATH_PREFIX=/data/banjo/Downloads/sabnzbd     # Config and logs
+         SABNZBD_PATH_DOWNLOADS=/data/banjo/Downloads          # [Optional] Downloads will go one level up
          
-         NZBHYDRA2_PATH_PREFIX=/data/banjo/Downloads/nzbhydra2 # config, logs and everything
+         NZBHYDRA2_PATH_PREFIX=/data/banjo/Downloads/nzbhydra2 # Config, logs and everything
       </details>
 
 2. Create the following directories (for services you choose to run):
 
         # Sabnzbd
-        mkdir -p /path/to/prefix/sabnzbd/config      # /config
-        mkdir -p /path/to/prefix/sabnzbd/temp        # /incomplete-downloads
-        mkdir -p /path/to/prefix/sabnzbd/downloads   # /downloads
+        mkdir -p <SABNZBD_PATH_PREFIX>/config      # /config
+        mkdir -p <SABNZBD_PATH_PREFIX>/temp        # /incomplete-downloads
+        mkdir -p <SABNZBD_PATH_PREFIX>/downloads   # /downloads
 
         # NZBHydra2
-        mkdir -p /path/to/prefix/nzbhydra2/config    # /config 
+        mkdir -p <NZBHYDRA2_PATH_PREFIX>/config    # /config 
 
         # Sonarr
-        mkdir -p /path/to/prefix/sonarr/config       # /config
-        mkdir -p /path/to/prefix/sonarr/tv           # /tv
-        mkdir -p /path/to/prefix/sonarr/downloads    # /downloads
+        mkdir -p <SONARR_PATH_PREFIX>/config       # /config
+        mkdir -p <SONARR_PATH_PREFIX>/tv           # /tv
+        mkdir -p <SONARR_PATH_PREFIX>/downloads    # /downloads
 
 3. _Optional._ Defines the services to start, also in `~/.docker-sabnzbd.env`:
 
@@ -66,15 +71,16 @@ An [Aur package](https://aur.archlinux.org/packages/sabnzbd-docker) is provided 
 ## Installation
 
       makepkg      
-      pacman -U sabnzbd-docker-x.y-z-x86_64.pkg.tar.zst
+      pacman -U sabnzbd-podman-x.y-z-x86_64.pkg.tar.zst
 
 or get it from the [Aur](https://aur.archlinux.org/packages/sabnzbd-docker) repository.
+
 ## Usage
 
-      # Optional. sabnzbd-docker-update.timer pull new updates from docker hub each day
-      systemctl --user --now enable sabnzbd-docker-update.timer
+      # Optional. sabnzbd-podman-update.timer pull new updates from docker hub each day
+      systemctl --user --now enable sabnzbd-podman-update.timer
 
-      systemctl --user --now enable sabnzbd-docker
+      systemctl --user --now enable sabnzbd-podman
 
 Navigate to [http://localhost:8080](http://localhost:8080) to access `sabnzbd`.
 

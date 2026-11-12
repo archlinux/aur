@@ -1,0 +1,9 @@
+post_install() {
+    echo "Enable service with:"
+    echo "   systemctl --user enable --now sabnzbd-podman.service"
+
+    echo
+
+    echo "Enable timer with:"
+    echo "   systemctl --user enable --now sabnzbd-podman-update.timer"
+}
