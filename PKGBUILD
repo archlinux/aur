@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai-bin
-pkgver=0.8.17
+pkgver=0.8.18
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ conflicts=('kanban4ai')
 options=('!strip')
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/kanban4ai-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('34e0bb77cd530955a5f8b088a8cb63d7b098e3f0ffa544e64aab54d2feed937f')
-sha256sums_aarch64=('7d9df2d12d1e17a41893f13707a2247bc0ef61ea8fc489324a077c58c9c3720d')
+sha256sums_x86_64=('5992537d21e4b27d5777ed873460b194a3410bc0d01506294907850e0fc1c17c')
+sha256sums_aarch64=('eb049f27d8563e522426e5dcf4c05d24285ea9c86bc1801f5f08275d09f8fd8e')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/kanban4ai-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
