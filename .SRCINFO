@@ -1,0 +1,18 @@
+pkgbase = gnome-voice-server
+	pkgdesc = Stores voicegrams and serves them for listening. Includes gnome-voice-send. Needs GLib 2.66 or newer.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Voice
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = libchamplain
+	depends = geoclue
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	source = https://gnomevoice.org/src/gnome-voice-server-1.0.0.tar.xz
+	sha256sums = 0f6f38ec5b882758308712de44fd627ecd3ddebd7a294b7847e840b3a7dfd41b
+
+pkgname = gnome-voice-server
