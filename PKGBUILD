@@ -1,7 +1,7 @@
 # Maintainer: illusory <becomeillusory@gmail.com>
 # 自用维护：仅信任官方 GitHub release 资产，sha256 锁定官方 SHA256SUMS.txt。
 pkgname=lightcraft-private-bin
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc='自用维护：开源 clean-room 版 Adobe Lightroom 替代（照片管理与 raw），上游 storytold/lightcraft'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('alsa-lib: sound support'
             'xdg-desktop-portal: native desktop integration and file dialogs'
             'cups: printing support')
 source=("https://gh-proxy.com/https://github.com/storytold/lightcraft/releases/download/v${pkgver}/lightcraft-${pkgver}-linux-x86_64.pkg.tar.zst")
-sha256sums=('8a953bf0bbfc9dfcc405358aa462909494bf8aca5848ac56e8c36d9a6b258d7c')
+sha256sums=('84c8ac2a29611665f7e4b1078b7b1503b0564225f4ab1285448963aa92f4fec0')
 
 package() {
   bsdtar -xf "$srcdir/lightcraft-$pkgver-linux-x86_64.pkg.tar.zst" \
