@@ -1,3 +1,4 @@
 pkg
 src
 *.zst
+ibgateway-stable-standalone-linux-x64.sh

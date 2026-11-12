@@ -5,7 +5,7 @@ pkgname="ibgateway-stable"
 provides=('ibgateway')
 conflicts=('ibgateway')
 _version_short=10.50
-pkgver="$_version_short".1e
+pkgver="$_version_short".1g
 pkgrel=1
 pkgdesc='InteractiveBrokers Gateway - Stable'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom:proprietary')
 depends=('jdk-openjdk')
 optdepends=()
 source=("https://download2.interactivebrokers.com/installers/ibgateway/$_channel-standalone/ibgateway-$_channel-standalone-linux-x64.sh")
-sha512sums=('9598d35b4df6b77fba1435fb8a70e6021ae28bca4a0770d781eb30991015f515b218d5a07a00e5884d5fca99adb17369919136d637adb93c36cbe01907c875e0')
+sha512sums=('ee75969cba75dc0e4fefa6ebf1ce47609a42f626e8082d694606efe6a11cf10cb79e52c64942d2365005bde5cb8561969172d7cc1be2f118a136e62a0dd58a79')
 options=('!strip' '!debug')
 
 prepare() {
