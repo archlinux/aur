@@ -1,0 +1,17 @@
+pkgbase = xombe-git
+	pkgdesc = C99 library implementing AMBE 2400 and AMBE+2 used by D-STAR and DMR (git)
+	pkgver = 0.1.0.r0.g2f0a8e7
+	pkgrel = 1
+	url = https://github.com/9M2PJU/xombe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = xombe
+	conflicts = xombe
+	source = xombe-git::git+https://github.com/9M2PJU/xombe.git
+	sha256sums = SKIP
+
+pkgname = xombe-git
