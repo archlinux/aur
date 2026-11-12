@@ -1,6 +1,6 @@
 pkgbase = thinwire-nightly-bin
 	pkgdesc = Thin multi-protocol desktop messenger (nightly build of main)
-	pkgver = 0.1.0.r331.ge45fb98
+	pkgver = 0.1.0.r333.gb56591c
 	pkgrel = 1
 	url = https://github.com/jaysonsantos/thinwire
 	arch = x86_64
@@ -27,12 +27,12 @@ pkgbase = thinwire-nightly-bin
 	provides = thinwire
 	conflicts = thinwire
 	conflicts = thinwire-git
-	noextract = thinwire-linux-x86_64-0.1.0.r331.ge45fb98.tar.gz
+	noextract = thinwire-linux-x86_64-0.1.0.r333.gb56591c.tar.gz
 	options = !debug
-	source = thinwire-linux-x86_64-0.1.0.r331.ge45fb98.tar.gz::https://github.com/jaysonsantos/thinwire/releases/download/nightly/thinwire-linux-x86_64-0.1.0.r331.ge45fb98.tar.gz
+	source = thinwire-linux-x86_64-0.1.0.r333.gb56591c.tar.gz::https://github.com/jaysonsantos/thinwire/releases/download/nightly/thinwire-linux-x86_64-0.1.0.r333.gb56591c.tar.gz
 	source = thinwire.desktop
 	source = thinwire.svg
-	sha256sums = 6ea0da96e4cdf875b3a64fbedb8e1d1592ddff5b535aa6c3a7299550216e6919
+	sha256sums = 5314722c94c5601a53777c16eea01312e58772b16c258790a94da73f45759a22
 	sha256sums = ab5aee42e19c83ef29d941cdf2de29a24c5b198a3b49e750ffe802274605a26d
 	sha256sums = 98f6e18715c5cba816fa30e26b22f18582a2ac2d4e68ab38aa9701f8a5e615e6
 
