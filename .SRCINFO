@@ -1,0 +1,19 @@
+pkgbase = texlive-mermaid
+	pkgdesc = LaTeX packages for embedding Mermaid diagrams with pdfLaTeX, XeLaTeX, upLaTeX and LuaLaTeX
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/ryoya9826/ltMermaid
+	arch = any
+	license = LPPL
+	depends = mermaid-cli
+	depends = texlive-bin
+	depends = texlive-latex
+	depends = texlive-latexextra
+	depends = texlive-latexrecommended
+	depends = texlive-luatex
+	provides = mermaid
+	provides = ltmermaid
+	source = texlive-mermaid-1.1.zip::https://mirrors.ctan.org/macros/latex/contrib/ltmermaid.zip
+	sha256sums = SKIP
+
+pkgname = texlive-mermaid
