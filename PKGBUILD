@@ -1,6 +1,6 @@
 pkgname=qudelix-cli-bin
 epoch=1
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Unofficial command-line control for the Qudelix 5K: volume, DAC filter, EQ, presets, AutoEq"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 source=("LICENSE::https://raw.githubusercontent.com/FrankieMa77/qudelix/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname%-bin}_${pkgver}_amd64.deb::https://github.com/FrankieMa77/qudelix/releases/download/linux-v${pkgver}/qudelix_${pkgver}_amd64.deb")
 sha256sums=('bf471dedf60354a5ab065b9446dcdf99a047327e841a3ceca5182ef0f4cb4216')
-sha256sums_x86_64=('e18a0d4ec6fe5e992447b57ea6995efa62cf7e945f56e5cc1063755016037637')
+sha256sums_x86_64=('ab3139958d2aad93a788aa621dba87fc7be4f9d74a8b81e2d9a4969e6d3791fc')
 
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${srcdir}/"

@@ -1,6 +1,6 @@
 pkgbase = qudelix-cli-bin
 	pkgdesc = Unofficial command-line control for the Qudelix 5K: volume, DAC filter, EQ, presets, AutoEq
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/FrankieMa77/qudelix
@@ -15,9 +15,9 @@ pkgbase = qudelix-cli-bin
 	conflicts = qudelix-cli
 	options = !strip
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/FrankieMa77/qudelix/refs/tags/v0.7.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/FrankieMa77/qudelix/refs/tags/v0.7.1/LICENSE
 	sha256sums = bf471dedf60354a5ab065b9446dcdf99a047327e841a3ceca5182ef0f4cb4216
-	source_x86_64 = qudelix-cli_0.7.0_amd64.deb::https://github.com/FrankieMa77/qudelix/releases/download/linux-v0.7.0/qudelix_0.7.0_amd64.deb
-	sha256sums_x86_64 = e18a0d4ec6fe5e992447b57ea6995efa62cf7e945f56e5cc1063755016037637
+	source_x86_64 = qudelix-cli_0.7.1_amd64.deb::https://github.com/FrankieMa77/qudelix/releases/download/linux-v0.7.1/qudelix_0.7.1_amd64.deb
+	sha256sums_x86_64 = ab3139958d2aad93a788aa621dba87fc7be4f9d74a8b81e2d9a4969e6d3791fc
 
 pkgname = qudelix-cli-bin
