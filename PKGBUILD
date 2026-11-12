@@ -1,26 +1,28 @@
 pkgname=grimaur-git
-pkgver=r7.g88ebc08
+pkgver=r216.g17893eb
 pkgrel=1
-pkgdesc="Lightweight AUR helper that uses the official AUR git mirror"
+pkgdesc="Lightweight Arch package builder that builds from any git source"
 arch=('any')
-url="https://github.com/ryk4rd/grimaur"
-license=('unknown')
-depends=('python' 'git')
-provides=('grimaur')
-conflicts=('grimaur')
-source=("git+$url.git")
+url="https://github.com/mackilanu/grimaur"
+
+# _dev_url="https://github.com/h8d13/grimoire"
+# _dev_branch="dot-cache"
+
+license=('MIT')
+depends=('python' 'git' 'base-devel')
+provides=('grimaur' 'grimoire')
+conflicts=('grimaur' 'grimoire')
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/grimaur"
-  if git describe --tags --long >/dev/null 2>&1; then
-    git describe --tags --long | sed 's/^v//;s/-/./g'
-  else
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
+	cd "${srcdir}/${pkgname}"
+	# always use git hash for version
+	printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/grimaur"
-  install -Dm755 grimaur "${pkgdir}/usr/bin/grimaur"
+	cd "${srcdir}/${pkgname}"
+	install -Dm755 grimoire "${pkgdir}/usr/bin/grimoire"
+	sed -i "s/^__version__ = .*/__version__ = \"${pkgver}\"/" "${pkgdir}/usr/bin/grimoire"
 }
