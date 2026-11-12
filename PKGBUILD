@@ -2,7 +2,7 @@
 
 
 pkgname=gnome-voice
-pkgver=49.0
+pkgver=51.0
 pkgrel=1
 pkgdesc="Voice is Public Voice Communication Software for GNOME 48 more information on on https://wiki.gnome.org/Apps/Voice and http://www.gnomevoice.org/"
 arch=('x86_64')
@@ -10,12 +10,12 @@ url="https://wiki.gnome.org/Apps/Voice"
 license=(GPL3)
 depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad')
 makedepends=('intltool' 'itstool' 'python')
-source=(http://www.aamot.engineering/software/voice/www/src/gnome-voice-49.0.tar.xz)
-sha256sums=('366fdee38d66da3b62ee115e2df9ab8e7cfb3fbf09a19141d6872f4214a33934')
+source=(https://www.gnomevoice.org/src/gnome-voice-51.0.tar.gz)
+sha256sums=('16412c9f5006eb4cc6af188ff1ebf23c2c1cda1eacc18b70840baaee2f3bc29e')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --with-recording
+  ./autogen.sh
   make
 }
 
