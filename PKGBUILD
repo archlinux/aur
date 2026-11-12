@@ -2,7 +2,7 @@
 # Maintainer: Charm Team <vt100@charm.land>
 
 pkgname='charmtone-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A command line tool for rendering the CharmTone color palette.'
 url='https://charm.land/'
@@ -12,16 +12,16 @@ provides=('charmtone')
 conflicts=('charmtone')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/tone/releases/download/v${pkgver}/charmtone_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f7be394809d7392ff7095d1c2be6720b6a7381895a3e407e7da4af308b839147')
+sha256sums_aarch64=('d9668d8b5c6f5ebf2a136f54068fa6e16c8e717f3e2e3c09cfa336e539e73966')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/tone/releases/download/v${pkgver}/charmtone_${pkgver}_Linux_arm.tar.gz")
-sha256sums_armv7h=('95956563bce672995b77af4f0e2b15da4b07e6d86b81f51479397db529f21cee')
+sha256sums_armv7h=('98bfee00e44e4e4395b3c22f94e0396a1a66ca2102779da22db3eb1d70dc2a41')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/tone/releases/download/v${pkgver}/charmtone_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('9f1187a4916acd0b524d97e1e2b79e8063276d223f8ad259c375cb8ebc652a7f')
+sha256sums_i686=('6ebc1fd5e5ee5d60c532ede05da0823bdb54ae72aed9119e95d62bd0781e6782')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/tone/releases/download/v${pkgver}/charmtone_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d6d2a9088fa160ea457ad668540c0e929bc774557919b2d758e3dabca233f355')
+sha256sums_x86_64=('1113382a55b9ba7343c61866ed82c46634570a65ee024738def19dbe9108d5ec')
 
 package() {
   cd "${srcdir}/charmtone_${pkgver}_Linux_${CARCH}"
