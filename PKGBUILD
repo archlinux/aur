@@ -1,14 +1,14 @@
 # Maintainer:  Markus Hansmair <archlinux at zendro dot de>
 
 pkgname=mkinitcpio-systemd-extras
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Collection of mkinitcpio install hooks for systemd based initramfs"
 arch=('any')
 url="https://github.com/wolegis/mkinitcpio-systemd-extras"
 license=('GPL')
 depends=('mkinitcpio')
-makedepends=('git')
+makedepends=()
 optdepends=('tinyssh: for sd-tinyssh'
             'python: for sd-tinyssh (converting OpenSSH host keys to tinyssh format)'
             'dropbear: for sd-dropbear'
@@ -18,11 +18,11 @@ optdepends=('tinyssh: for sd-tinyssh'
             'curl: for sd-clevis (unlocking with tang)'
             'nftables: for sd-nftables')
 conflicts=('mkinitcpio-netconf' 'mkinitcpio-tinyssh' 'mkinitcpio-dropbear')
-source=("repo::git+https://github.com/wolegis/mkinitcpio-systemd-extras.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("https://github.com/wolegis/mkinitcpio-systemd-extras/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3154df8ad481f0744d5fab1b4d4e8eeeb7440f2353c5e50ddcc5d491b27f6b96')
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/initcpio/"{install,functions.d}
-    cp "${srcdir}/repo/sd-"* "${pkgdir}/usr/lib/initcpio/install"
-    cp "${srcdir}/repo/functions" "${pkgdir}/usr/lib/initcpio/functions.d/systemd-extras"
+    cp "${srcdir}/${pkgname}-${pkgver}/sd-"* "${pkgdir}/usr/lib/initcpio/install"
+    cp "${srcdir}/${pkgname}-${pkgver}/functions" "${pkgdir}/usr/lib/initcpio/functions.d/systemd-extras"
 }
