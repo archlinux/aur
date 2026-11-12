@@ -24,7 +24,8 @@ source=("file://sabnzbd-docker.service"
         "file://sabnzbd-podman-update.service"
         "file://docker-compose.yaml"
         "file://default.env"
-        "file://docker.env")
+        "file://docker.env"
+        "file://render-compose.sh")
 md5sums=('28218eceaa33e2777f8abc6fe8006182'
          'c0abd821b7fa46bf65aacb53802d8f75'
          '4b68561e20a9a4ff85dc3be07032aa1d'
@@ -33,7 +34,8 @@ md5sums=('28218eceaa33e2777f8abc6fe8006182'
          '7cc3d2e7951881d25b6afe317cccfc6c'
          '86c471c654c795796dbef4f8f2f4bb8f'
          '50488e9c47e2ca980e00623c3b768d82'
-         '6af9cc13d7ddf3b2721208ef4bdc156f')
+         '6af9cc13d7ddf3b2721208ef4bdc156f'
+         'e897baedbae9c51c019ebc105e6b1bb9')
 noextract=()
 
 package_sabnzbd-docker() {
@@ -66,6 +68,7 @@ package_sabnzbd-podman() {
 	cp docker-compose.yaml ${dest}
 	cp default.env ${dest} # for Unit service
 	cp docker.env ${dest}/.env # for podman-compose
+	install -m644 render-compose.sh "${dest}/render-compose.sh"
 
     dest=${pkgdir}/usr/lib/systemd/user/
 	mkdir -p ${dest}
