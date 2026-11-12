@@ -2,7 +2,7 @@
 
 pkgname=jotty-bin
 _pkgname=jotty
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='An opinionated, Wayland-native terminal emulator that supports both CPU and GPU renderer'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-linux.tar.gz")
-sha256sums_x86_64=('8e63bcc4b6de1b8c4b45bec57e0db0ce3d2454eb94bc14f2d47374b19001e598')
-sha256sums_aarch64=('480138c50e6ab9ea8f8041150b80f19a590b4fbd388a45ba058f043ec2742ec8')
+sha256sums_x86_64=('7cb7f2f5082106fb2a3d5dfd2c2b2852ea72fb1aecf5afa51d2254759ff0434c')
+sha256sums_aarch64=('2ff5942a12384a987f419f44d8cb41fb36b6a2091f618e07820556959cbefbe2')
 options=('!debug' '!strip')
 
 package() {
